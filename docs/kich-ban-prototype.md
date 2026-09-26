@@ -166,7 +166,94 @@
 
 ## Phần 4 — Giải trình {part: debrief}
 
-(đang viết)
+### deb-01 — Ban Pháp chế thẩm tra {scene: debrief-room}
+
+> NHIỆM VỤ: Trình bày cách CLB dùng dữ liệu
+
+- [DÀN DỰNG] Cảnh phòng giải trình (tông lạnh). Quân ngồi một bên bàn, hồ sơ xếp thẳng mép. Minh Anh, Hà Vy, người chơi ngồi bên kia. Màn chiếu sau lưng Quân. Bước 1 của QĐ-024.
+- **quan** (neutral): Tôi là Quân, Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi không xét nội dung lá thư.
+- **quan** (neutral): CLB là bên bị đề nghị thu hồi phòng, lại tự tra người bỏ thư. Tôi cần xem CLB dùng dữ liệu thế nào.
+- **quan** (smug): Dữ liệu không nói dối. Nhưng người đọc dữ liệu thì có.
+- **quan** (neutral): Tôi đã tự chạy lại ba manh mối của CLB, trên đúng view CLB được cấp.
+- [DÀN DỰNG] Màn chiếu hiện truy vấn của Quân nguyên văn (5 dòng, §4.4), chạy thật trên dataset chính: bảng kết quả 24 dòng, dòng đếm "24 dòng" (QĐ-012).
+
+```sql
+SELECT ma_sv, ho_dem, ten, ma_lop, clb
+FROM sinh_vien
+WHERE ten LIKE 'H%'
+   OR ma_lop IN ('KT24A', 'QT24B')
+   OR clb = 'Báo chí';
+```
+
+- **quan** (smug): Hai mươi tư người, hơn nửa số sinh viên trong view. Manh mối kiểu này thì vô dụng.
+- **quan** (neutral): Vậy danh sách hai người của CLB từ đâu ra?
+- **minh-anh** (worried): Hai mươi tư? Cùng ba manh mối mà sao lệch nhiều thế…
+- **ha-vy** (thinking): Có gì đó sai. Đọc kỹ từng dòng truy vấn của anh ấy.
+
+> NHIỆM VỤ: Chỉ ra dòng lỗi trong truy vấn của Quân
+
+- [DÀN DỰNG] Bước 2 của QĐ-024. Năm dòng SQL trên màn chiếu thành năm vùng chạm được. Dòng 4 và dòng 5 đều đúng (cùng một lỗi `OR`). Chạm sai không phạt, không giới hạn số lần.
+- [CHỌN DÒNG q-quan-lines]
+
+| dòng | SQL | đúng? | phản hồi (speaker, biểu cảm, lời) |
+|---|---|---|---|
+| 1 | `SELECT ma_sv, ho_dem, ten, ma_lop, clb` | không | **quan** (neutral): Đủ cột cả: mã, họ tên, lớp, câu lạc bộ. <br> **ha-vy** (thinking): Cột thì ổn. Xem anh ấy nối ba manh mối bằng từ gì: "và" hay "hoặc"? |
+| 2 | `FROM sinh_vien` | không | **quan** (neutral): Người cần tìm nằm trong bảng này. Không sai. <br> **ha-vy** (thinking): Bảng thì đúng. Xem anh ấy nối ba manh mối bằng từ gì: "và" hay "hoặc"? |
+| 3 | `WHERE ten LIKE 'H%'` | không | **quan** (neutral): Điều kiện này lấy đúng từ chữ ký CLB đưa ra. <br> **ha-vy** (thinking): Điều kiện này đúng. Xem nó được nối với hai điều kiện kia bằng từ gì. |
+| 4 | `OR ma_lop IN ('KT24A', 'QT24B')` | ĐÚNG | (không có; đi tiếp dòng kế) |
+| 5 | `OR clb = 'Báo chí';` | ĐÚNG | (không có; đi tiếp dòng kế) |
+
+- [ĐI TỚI deb-02]
+
+### deb-02 — Có số liệu đây: bất kỳ hay đồng thời {scene: debrief-room}
+
+- [HIỆU ỨNG co-so-lieu-day]
+- [DÀN DỰNG] Bước 3 của QĐ-024, lần dùng hiệu ứng thứ nhất (QĐ-025).
+- **player**: Anh nối ba manh mối bằng OR. Chỉ cần khớp một manh mối là đã vào danh sách.
+- **player**: Tên bắt đầu bằng H, hoặc học lớp tòa B, hoặc ở CLB Báo chí. Bảo sao ra 24 người.
+- **player**: Người bỏ thư phải khớp cả ba cùng lúc. Phải nối bằng AND.
+- **quan** (stunned): …
+- **quan** (neutral): Nói thì dễ. Sửa ngay trên truy vấn của tôi, rồi chạy cho mọi người cùng xem.
+
+> NHIỆM VỤ: Sửa truy vấn của Quân và chạy lại
+
+- [DÀN DỰNG] Bước 4 của QĐ-024: trình dựng mở với truy vấn của Quân nạp sẵn (thẻ debrief-fix).
+- [SỬA TRUY VẤN debrief-fix]
+- [ĐI TỚI deb-03]
+
+### deb-03 — Hai dòng nghĩa là gì {scene: debrief-room}
+
+- [HIỆU ỨNG co-so-lieu-day]
+- [DÀN DỰNG] Lần dùng hiệu ứng thứ hai, cũng là lần cuối (QĐ-025). Màn chiếu hiện truy vấn đã sửa và kết quả 2 dòng.
+- **player**: Vẫn ba manh mối ấy, nối bằng AND: còn hai dòng.
+- **quan** (stunned): …Lần này là tôi đọc vội.
+- **quan** (neutral): Tôi công nhận truy vấn. Giờ đến câu quan trọng hơn.
+
+> NHIỆM VỤ: Giải thích hai dòng kết quả
+
+- [DÀN DỰNG] Bước 5 của QĐ-024. Đây là lần đầu game hỏi ranh giới giữa nghi vấn và kết luận (QĐ-023).
+- [HỎI q-two-rows] quan: "Hai dòng này nghĩa là gì?"
+  - (A) Một trong hai bạn chắc chắn đã bỏ thư → phản hồi: **ha-vy** (thinking): Hai dòng này cho biết ai cần hỏi tiếp, hay đã đủ để kết luận ai làm?
+  - (B) Chẳng nói lên gì, vì manh mối nào cũng có thể trùng hợp → phản hồi: **ha-vy** (thinking): Từ bốn mươi người còn hai. Thu hẹp được thế là có ích chứ. Nhưng ích đến đâu?
+  - (C) Hai bạn khớp cả ba manh mối, cần xác minh thêm, chưa phải người bỏ thư [ĐÚNG] → phản hồi: **quan** (neutral): Đúng. Khớp manh mối là một chuyện. Đã bỏ thư là chuyện khác.
+- [DÀN DỰNG] Phản hồi (A) là câu gợi ý chuẩn hint-ask-or-conclude (§5.2). Telemetry ghi lựa chọn ĐẦU TIÊN của q-two-rows: đo chỉ số "trả lời đúng rằng kết quả truy vấn chưa tự chứng minh hành vi" (§10).
+- [ĐI TỚI deb-04]
+
+### deb-04 — Cú lật: dựa vào đâu? {scene: debrief-room}
+
+- **quan** (neutral): Vậy tôi hỏi thẳng.
+
+> NHIỆM VỤ: Trả lời câu hỏi của Quân
+
+- [DÀN DỰNG] Bước 6 của QĐ-024, cú lật chính (§4.4). Câu hỏi của Quân giữ nguyên văn.
+- [HỎI q-verify] quan: "Nếu dữ liệu chưa kết luận được, CLB dựa vào đâu để biết ai đã bỏ thư?"
+  - (A) Thêm điều kiện cho đến khi chỉ còn một dòng → phản hồi: **quan** (neutral): Thêm điều kiện nào? Không có manh mối đứng sau thì chỉ là cắt cho gọn. Cắt nhầm là mất người thật.
+  - (B) Chọn bạn trông đáng ngờ hơn → phản hồi: **quan** (neutral): Đáng ngờ theo cột nào? Bảng này không có cột "đáng ngờ".
+  - (C) Mời cả hai bạn lên, yêu cầu nhận → phản hồi: **minh-anh** (worried): Bắt nhận thì người vô can cũng bị làm khó. CLB tìm sự thật, không để làm ai bẽ mặt.
+  - (D) Đề nghị một nguồn độc lập đối chiếu, như cô phụ trách hộp góp ý [ĐÚNG] → phản hồi: **quan** (neutral): Đó là câu tôi chờ. Tôi sẽ chuyển đề nghị ngay.
+- [DÀN DỰNG] Telemetry ghi lựa chọn ĐẦU TIÊN của q-verify (câu "dữ liệu đã đủ kết luận chưa?", §9.3); cho chọn lại không giới hạn. Thứ tự lựa chọn có thể xáo; telemetry ghi theo nội dung lựa chọn, không theo chữ cái.
+- **minh-anh** (neutral): CLB chỉ xin cô đối chiếu đúng hai mã này thôi, không hơn.
+- [ĐI TỚI end-01]
 
 ---
 
@@ -317,7 +404,34 @@ WHERE ten LIKE 'H%'
 
 ### debrief-fix — Sửa truy vấn của Quân {challenge: debrief-fix}
 
-(đang viết)
+- Tiêu đề: Sửa truy vấn của Quân
+- Đề bài hiển thị: Truy vấn của Quân đã nạp sẵn. Sửa để chỉ lấy những người khớp đồng thời cả ba manh mối, rồi chạy. Kết quả cần có: mã sinh viên, họ đệm, tên (giữ lớp và câu lạc bộ để đối chiếu).
+- Cột bắt buộc: `ma_sv`, `ho_dem`, `ten` · Kết quả chuẩn: 2 dòng, giống c3 · Chạy thêm dataset ẩn: có (QĐ-015)
+- Nạp sẵn vào trình dựng: `FROM sinh_vien`; `SELECT ma_sv, ho_dem, ten, ma_lop, clb`; ba điều kiện của §4.4; phép nối chung `OR` (QĐ-016).
+- Manh mối liên quan: clue-signature-h, clue-box-building-b (qua ev-c2-classes-b), clue-bookmark-baochi
+- Mục tiêu học: `OR` lấy người thỏa bất kỳ điều kiện nào; `AND` lấy người thỏa đồng thời mọi điều kiện.
+- SQL chuẩn:
+
+```sql
+SELECT ma_sv, ho_dem, ten, ma_lop, clb
+FROM sinh_vien
+WHERE ten LIKE 'H%'
+  AND ma_lop IN ('KT24A', 'QT24B')
+  AND clb = 'Báo chí';
+```
+
+- [KHI: or-connector] dùng hint-any-or-all
+- [KHI: missing-condition] **ha-vy** (thinking): Bớt một manh mối thì danh sách lại rộng ra. Giữ đủ ba điều kiện, chỉ đổi cách nối.
+- [KHI: hardcoded-ids] **ha-vy** (thinking): Truy vấn này gọi thẳng mã sinh viên, tức là đi từ đáp án. Hãy lọc bằng manh mối.
+- [KHI: limit-used] **ha-vy** (thinking): LIMIT chỉ cắt bớt số dòng, không lọc theo manh mối.
+- [KHI: missing-columns] dùng hint-right-columns
+- [GỢI Ý 1] **ha-vy** (neutral): Truy vấn của anh Quân lấy cả người chỉ khớp một manh mối. Mình cần người khớp cả ba.
+- [GỢI Ý 2] **ha-vy** (thinking): Giữ nguyên ba điều kiện. Chỉ đổi phép nối giữa chúng: bấm vào chữ OR để đổi cả loạt.
+- [GỢI Ý 3] **ha-vy** (smile): Đổi OR thành AND: `WHERE ten LIKE 'H%' AND ma_lop IN ('KT24A', 'QT24B') AND clb = 'Báo chí'`.
+- [KHI ĐÚNG] **ha-vy** (smile): Hai dòng. Đưa lên màn chiếu đi!
+- Vật chứng lưu vào hồ sơ: ev-quan-fixed
+  - Tiêu đề: Truy vấn của Quân, đã sửa
+  - Mô tả: Cùng ba điều kiện, đổi `OR` thành `AND`: từ 24 dòng còn 2 dòng. Thẻ kèm hai câu SQL (trước và sau khi sửa) và số dòng của mỗi câu.
 
 ---
 
