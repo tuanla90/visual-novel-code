@@ -2,9 +2,12 @@ import { describe, expect, it } from 'vitest';
 import { NotImplementedError, gradeChallenge, modelToSql, runQuery, sqlToModel } from './index';
 import { emptyQueryModel } from '../types';
 
-describe('stub engine SQL (gói sql-engine thay thế)', () => {
-  it('mọi hàm ném/reject NotImplementedError có ghi tên gói', async () => {
-    await expect(runQuery('SELECT 1')).rejects.toBeInstanceOf(NotImplementedError);
+describe('engine SQL — điểm vào', () => {
+  it('runQuery đã hiện thực (không còn stub)', async () => {
+    await expect(runQuery('SELECT COUNT(*) FROM sinh_vien')).resolves.toMatchObject({ ok: true, rows: [[40]] });
+  });
+
+  it('các hàm chưa hiện thực ném/reject NotImplementedError có ghi tên gói', async () => {
     await expect(
       gradeChallenge(
         {
