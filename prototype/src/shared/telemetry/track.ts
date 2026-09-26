@@ -1,7 +1,7 @@
 /**
- * API ghi sự kiện. Hiện thực TẠM (gói nen-mong): mảng trong bộ nhớ + console.debug.
- * Gói `telemetry` (gói 8) thay `TelemetrySink` bằng localStorage + xuất JSON; giữ nguyên
- * chữ ký `track()` để mọi nơi gọi không phải đổi.
+ * API ghi sự kiện. Mặc định (test, hoặc trước khi khởi động) là mảng trong bộ nhớ;
+ * `installPersistentTelemetry()` (setup.ts, gọi ở main.tsx) cắm nơi lưu localStorage (QĐ-029).
+ * Chữ ký `track()` giữ nguyên để mọi nơi gọi không phải đổi.
  */
 import type { TelemetryEvent, TelemetryEventBody } from './events';
 
@@ -9,6 +9,12 @@ export interface TelemetrySink {
   write(event: TelemetryEvent): void;
   readAll(): TelemetryEvent[];
   clear(): void;
+}
+
+/** Nơi giữ mã phiên hiện tại qua F5 (xem `createSessionIdStore`). */
+export interface SessionIdStore {
+  load(): string | null;
+  save(id: string): void;
 }
 
 function randomSessionId(): string {
@@ -38,22 +44,47 @@ function isTestRuntime(): boolean {
   return g.process?.env?.VITEST === 'true';
 }
 
+/** Nơi lưu trong bộ nhớ (mặc định; test dùng để trả lại trạng thái ban đầu). */
+export function createMemorySink(): TelemetrySink {
+  return new MemorySink();
+}
+
 let sink: TelemetrySink = new MemorySink();
 let sessionId = randomSessionId();
 let clock: () => number = () => Date.now();
+let sessionIdStore: SessionIdStore | null = null;
 
+/** Ghi một sự kiện. Không bao giờ ném lỗi: telemetry hỏng thì game vẫn chạy. */
 export function track(event: TelemetryEventBody): TelemetryEvent {
   const full: TelemetryEvent = { ...event, at: clock(), sessionId };
-  sink.write(full);
+  try {
+    sink.write(full);
+  } catch (err) {
+    if (typeof console !== 'undefined' && !isTestRuntime()) console.warn('[telemetry] Không ghi được sự kiện', err);
+  }
   return full;
 }
 
+/** Mọi sự kiện của mọi phiên trong trình duyệt này (theo thứ tự phiên, rồi thời gian). */
 export function getTelemetryEvents(): TelemetryEvent[] {
-  return sink.readAll();
+  try {
+    return sink.readAll();
+  } catch {
+    return [];
+  }
 }
 
 export function clearTelemetry(): void {
-  sink.clear();
+  try {
+    sink.clear();
+  } catch {
+    /* Không xóa được: bảng người quan sát đọc trạng thái lưu để báo. */
+  }
+}
+
+/** Nơi lưu hiện tại (bảng người quan sát đọc trạng thái lỗi lưu nếu có). */
+export function getTelemetrySink(): TelemetrySink {
+  return sink;
 }
 
 export function getSessionId(): string {
@@ -63,11 +94,25 @@ export function getSessionId(): string {
 /** Bắt đầu phiên ẩn danh mới (khi "Chơi lại từ đầu"). */
 export function newTelemetrySession(): string {
   sessionId = randomSessionId();
+  sessionIdStore?.save(sessionId);
   return sessionId;
 }
 
-/** Điểm cắm cho gói telemetry / test: thay nơi lưu và đồng hồ. */
-export function configureTelemetry(options: { sink?: TelemetrySink; clock?: () => number }): void {
+/**
+ * Điểm cắm cho gói telemetry / test: thay nơi lưu, đồng hồ, nơi giữ mã phiên.
+ * Có `sessionIdStore` → dùng lại mã phiên đã lưu (F5 giữ phiên), chưa có thì lưu mã hiện tại.
+ */
+export function configureTelemetry(options: {
+  sink?: TelemetrySink;
+  clock?: () => number;
+  sessionIdStore?: SessionIdStore | null;
+}): void {
   if (options.sink) sink = options.sink;
   if (options.clock) clock = options.clock;
+  if (options.sessionIdStore !== undefined) {
+    sessionIdStore = options.sessionIdStore;
+    const saved = sessionIdStore?.load() ?? null;
+    if (saved) sessionId = saved;
+    else sessionIdStore?.save(sessionId);
+  }
 }
