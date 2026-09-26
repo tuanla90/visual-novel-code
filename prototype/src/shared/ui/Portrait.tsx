@@ -1,12 +1,15 @@
 /**
  * Chân dung nhân vật: ảnh thật trong ô ảnh `<nhân vật>-<biểu cảm>` nếu có (thiếu biểu cảm → mượn ảnh
- * biểu cảm đầu), không thì SVG vẽ tạm (QĐ-060). Props giữ nguyên từ khung (ARCHITECTURE.md §4).
- * Trình đọc màn hình nghe "Tên, biểu cảm" bằng tiếng Việt — không bao giờ định danh thô.
+ * biểu cảm đầu), không thì SVG vẽ tạm (QĐ-060). Ảnh nền xám phẳng của user được tự tách nền
+ * (QĐ-063, `visuals/portrait-cutout.ts`); trong lúc tách hiện hình vẽ tạm. Props giữ nguyên từ khung
+ * (ARCHITECTURE.md §4). Trình đọc màn hình nghe "Tên, biểu cảm" bằng tiếng Việt — không bao giờ
+ * định danh thô.
  */
 import { characterName, expressionName } from '../display-names';
 import type { CharacterId } from '../ids';
 import { artDataAttributes, resolvePortrait } from './visuals/art-slots';
 import { PortraitArt } from './visuals/PortraitArt';
+import { usePortraitCutout } from './visuals/portrait-cutout';
 
 export interface PortraitProps {
   character: CharacterId;
@@ -19,9 +22,18 @@ export function Portrait({ character, expression, size = 'normal' }: PortraitPro
   const name = characterName(character);
   const mood = expressionName(expression);
   const art = resolvePortrait(character, expression);
+  const cutout = usePortraitCutout(art.url);
+  // data-art-source phản ánh cái ĐANG hiện: đang tách nền → hình vẽ tạm.
+  const shown = cutout?.src ? art : { slot: art.slot };
   return (
-    <figure className={`portrait portrait--${size}`} role="img" aria-label={`${name}, ${mood}`} {...artDataAttributes(art)}>
-      {art.url ? <img className="portrait__img" src={art.url} alt="" draggable={false} /> : <PortraitArt character={character} expression={expression} />}
+    <figure
+      className={`portrait portrait--${size}`}
+      role="img"
+      aria-label={`${name}, ${mood}`}
+      {...artDataAttributes(shown)}
+      {...(cutout ? { 'data-art-cutout': cutout.status } : {})}
+    >
+      {cutout?.src ? <img className="portrait__img" src={cutout.src} alt="" draggable={false} /> : <PortraitArt character={character} expression={expression} />}
     </figure>
   );
 }
