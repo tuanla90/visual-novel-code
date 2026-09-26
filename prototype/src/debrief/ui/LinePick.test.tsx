@@ -46,7 +46,7 @@ describe('LinePick — chọn dòng', () => {
     expect(onPick).toHaveBeenCalledWith(n);
   });
 
-  it('bàn phím: Tab tới dòng 4 rồi Enter gọi onPick(4); Tab tới dòng 2 rồi Space gọi onPick(2)', async () => {
+  it('bàn phím: Tab tới dòng 4 rồi Enter gọi onPick(4); dòng 2 + Enter gọi onPick(2); dòng 2 + Space cũng vậy', async () => {
     const user = userEvent.setup();
     const onPick = vi.fn();
     const { unmount } = render(<LinePick pick={PICK} attempts={0} onPick={onPick} />);
@@ -61,12 +61,19 @@ describe('LinePick — chọn dòng', () => {
     expect(onPick).toHaveBeenLastCalledWith(4);
     unmount();
 
+    const second = render(<LinePick pick={PICK} attempts={0} onPick={onPick} />);
+    await user.tab();
+    await user.tab();
+    await user.keyboard('{Enter}');
+    expect(onPick).toHaveBeenLastCalledWith(2);
+    second.unmount();
+
     render(<LinePick pick={PICK} attempts={0} onPick={onPick} />);
     await user.tab();
     await user.tab();
     await user.keyboard(' ');
     expect(onPick).toHaveBeenLastCalledWith(2);
-    expect(onPick).toHaveBeenCalledTimes(2);
+    expect(onPick).toHaveBeenCalledTimes(3);
   });
 
   it('bấm đúp chỉ tính một lần chọn', async () => {

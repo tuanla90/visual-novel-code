@@ -46,7 +46,8 @@ function overlayOpen(root: HTMLElement): boolean {
 export function Projector({ spec, evidence, onClose }: ProjectorProps) {
   const titleId = useId();
   const rootRef = useRef<HTMLElement>(null);
-  const closed = useRef(false);
+  // Đã đóng màn chiếu nào (theo id): hai màn chiếu liền nhau dùng lại cùng component vẫn đóng được.
+  const closedFor = useRef<string | null>(null);
 
   const sql = spec.source.kind === 'sql' ? spec.source.sql : evidence?.sql;
   const hasSql = sql !== undefined && sql.trim() !== '';
@@ -72,13 +73,13 @@ export function Projector({ spec, evidence, onClose }: ProjectorProps) {
 
   useEffect(() => {
     rootRef.current?.focus({ preventScroll: true });
-  }, []);
+  }, [spec.id]);
 
   const close = useCallback(() => {
-    if (closed.current) return;
-    closed.current = true;
+    if (closedFor.current === spec.id) return;
+    closedFor.current = spec.id;
     onClose();
-  }, [onClose]);
+  }, [onClose, spec.id]);
 
   // Phím Enter: bật sau khi kết quả (hoặc câu báo) đã hiện một nhịp.
   useEffect(() => {

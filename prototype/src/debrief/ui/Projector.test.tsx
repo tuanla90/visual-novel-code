@@ -130,6 +130,18 @@ describe('Projector — nguồn SQL, chạy thật', () => {
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
+  it('hai màn chiếu liền nhau dùng lại cùng một component: đóng được cả hai, mỗi màn đúng một lần', async () => {
+    const onClose = vi.fn();
+    const { rerender } = render(<Projector spec={sqlSpec(QUAN_OR_QUERY, { id: 'proj-a' })} evidence={undefined} onClose={onClose} />);
+    await screen.findByText('24 dòng');
+    await userEvent.click(screen.getByRole('button', { name: /Tiếp tục/ }));
+    rerender(<Projector spec={sqlSpec("SELECT ma_sv FROM sinh_vien WHERE clb = 'Guitar'", { id: 'proj-b' })} evidence={undefined} onClose={onClose} />);
+    await screen.findByRole('table');
+    await userEvent.click(screen.getByRole('button', { name: /Tiếp tục/ }));
+    await userEvent.click(screen.getByRole('button', { name: /Tiếp tục/ }));
+    expect(onClose).toHaveBeenCalledTimes(2);
+  });
+
   it('Enter không đóng màn chiếu khi ngăn kéo Hồ sơ đang mở', async () => {
     const user = userEvent.setup();
     const onClose = vi.fn();
