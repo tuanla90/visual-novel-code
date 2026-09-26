@@ -1,16 +1,40 @@
 /**
  * Telemetry của màn thử thách (union events.ts, QĐ-029/QĐ-043): primaryCode của query_run là mã
- * ĐÃ HIỆN (pickDiagnostic theo nội dung), không phải mã đầu của engine — ca dưới đây hai mã KHÁC nhau
- * (c1 không có lời riêng cho or-connector → hiện lời `other`), nên test phân biệt được.
+ * ĐÃ HIỆN (pickDiagnostic theo nội dung), không phải mã đầu của engine.
+ *
+ * Từ QĐ-054, nội dung thật có lời chung cho or-connector nên với c1 + OR hai mã TRÙNG nhau — test mất
+ * sức phân biệt. Vì vậy tệp này chạy trên một bản nội dung GIẢ: sao từ nội dung thật rồi xóa lời của
+ * mã engine trả về (or-connector) ở cả thẻ c1 lẫn "Nhận xét chung" → mã hiện là `other` ≠ mã engine.
+ * Test tiền đề khẳng định hai mã khác nhau trên bản giả (và trùng nhau trên nội dung thật).
  */
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { realContent } from '../../content/real';
 import { gameContent } from '../../shared/store';
+import type * as StoreModule from '../../shared/store';
 import { CHALLENGE_SPECS } from '../data/challenges';
 import { gradeChallenge, modelToSql } from '../engine';
+import { pickDiagnostic } from '../engine/priority';
 import type { QueryModel } from '../types';
 import { eventsOf, presetModel, renderChallenge, resetGame } from './test-utils';
+
+// Bản nội dung giả cho CẢ tệp (màn thử thách và test-utils đọc `gameContent` của module store).
+vi.mock('../../shared/store', async (importOriginal) => {
+  const real = await importOriginal<typeof StoreModule>();
+  const content = real.gameContent;
+  const drop = <T extends object>(lines: T): T =>
+    Object.fromEntries(Object.entries(lines).filter(([code]) => code !== 'or-connector')) as T;
+  const c1 = content.challenges.c1;
+  return {
+    ...real,
+    gameContent: {
+      ...content,
+      commonDiagnosticLines: drop(content.commonDiagnosticLines),
+      challenges: { ...content.challenges, c1: { ...c1, content: { ...c1.content, diagnosticLines: drop(c1.content.diagnosticLines) } } },
+    },
+  };
+});
 
 const C1_OR: QueryModel = {
   table: 'sinh_vien',
@@ -25,10 +49,16 @@ const C1_OR: QueryModel = {
 describe('telemetry query_run ghi mã ĐÃ HIỆN', () => {
   beforeEach(() => resetGame(['clue-signature-h', 'clue-bookmark-baochi']));
 
-  it('tiền đề: với c1 + OR, mã đầu của engine (or-connector) KHÁC mã hiển thị (other)', async () => {
+  it('tiền đề: với c1 + OR trên bản giả, mã đầu của engine (or-connector) KHÁC mã hiển thị (other)', async () => {
     const grade = await gradeChallenge(CHALLENGE_SPECS.c1, modelToSql(C1_OR), C1_OR);
     expect(grade.primaryCode).toBe('or-connector');
-    expect(gameContent.challenges.c1.content.diagnosticLines['or-connector']).toBeUndefined();
+    const codes = grade.diagnostics.map((d) => d.code);
+    const fake = gameContent.challenges.c1.content.diagnosticLines;
+    expect(gameContent.commonDiagnosticLines['or-connector']).toBeUndefined();
+    expect(pickDiagnostic(codes, fake, gameContent.commonDiagnosticLines)?.code).toBe('other');
+    // Nội dung thật (QĐ-054) hiện đúng mã engine — lý do phải dùng bản giả ở đây.
+    const real = realContent.challenges.c1.content.diagnosticLines;
+    expect(pickDiagnostic(codes, real, realContent.commonDiagnosticLines)?.code).toBe('or-connector');
   });
 
   it('c1 + OR: Hà Vy nói lời `other` của nội dung và query_run.primaryCode = other', async () => {

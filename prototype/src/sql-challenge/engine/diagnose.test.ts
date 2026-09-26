@@ -131,8 +131,21 @@ describe('pickDiagnostic — quy tắc ưu tiên và fallback', () => {
   it('mã trong thẻ theo thứ tự khóa của thẻ, trước mã chung', () => {
     expect(pickDiagnostic(['missing-columns', 'limit-used', 'missing-condition', 'or-connector'], FULL_CARD_LINES.c3, FULL_COMMON_LINES)?.code).toBe('or-connector');
     expect(pickDiagnostic(['limit-used', 'wrong-column-ho-dem'], FULL_CARD_LINES.c1, FULL_COMMON_LINES)?.code).toBe('wrong-column-ho-dem');
-    // wrong-table không có trong thẻ c1 và mục chung → other.
-    expect(pickDiagnostic(['wrong-table'], FULL_CARD_LINES.c1, FULL_COMMON_LINES)).toEqual({ code: 'other', response: line('other') });
+    // QĐ-054: wrong-table không có trong thẻ c1 nhưng có ở mục chung → lời chung (không còn rơi về other).
+    expect(pickDiagnostic(['wrong-table'], FULL_CARD_LINES.c1, FULL_COMMON_LINES)).toEqual({ code: 'wrong-table', response: line('wrong-table') });
+  });
+
+  it('mã không có lời ở thẻ lẫn mục chung vẫn rơi về other (missing-condition ở c1, no-filter ở c3 / debrief-fix)', () => {
+    // Tiền đề: các mã này thật sự không có trong thẻ tương ứng và không có ở mục chung.
+    expect(COMMON_DIAGNOSTIC_ORDER).not.toContain('missing-condition');
+    expect(COMMON_DIAGNOSTIC_ORDER).not.toContain('no-filter');
+    expect(CHALLENGE_DIAGNOSTIC_ORDER.c1).not.toContain('missing-condition');
+    expect(CHALLENGE_DIAGNOSTIC_ORDER.c3).not.toContain('no-filter');
+    expect(CHALLENGE_DIAGNOSTIC_ORDER['debrief-fix']).not.toContain('no-filter');
+    const other = { code: 'other', response: line('other') };
+    expect(pickDiagnostic(['missing-condition'], FULL_CARD_LINES.c1, FULL_COMMON_LINES)).toEqual(other);
+    expect(pickDiagnostic(['no-filter'], FULL_CARD_LINES.c3, FULL_COMMON_LINES)).toEqual(other);
+    expect(pickDiagnostic(['no-filter'], FULL_CARD_LINES['debrief-fix'], FULL_COMMON_LINES)).toEqual(other);
   });
 
   it('lời: thẻ trước, chung sau; blocking chưa có lời → response null nhưng vẫn trả mã', () => {
