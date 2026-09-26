@@ -14,9 +14,10 @@
 - Dòng `> NHIỆM VỤ: …` đổi chữ trên thanh "Nhiệm vụ hiện tại" tại đúng vị trí của nó trong chuỗi.
 - Một chuỗi chạy từ trên xuống. Chuỗi được mở từ một điểm xem xét, khi chạy xong, quay về cảnh đang đứng (không cần `[ĐI TỚI]`).
 - `[ĐIỂM XEM XÉT]`: manh mối ghi ở "mở manh mối" được thêm vào Hồ sơ khi chuỗi của điểm đó chạy xong. Điểm đã xem được đánh dấu.
-- `[HIỆN TÀI LIỆU x]`: hiện tài liệu x (hình và chữ, xem mục Hồ sơ vật chứng) và thêm vào Hồ sơ.
+- `[HIỆN TÀI LIỆU <mã tài liệu>]`: hiện tài liệu đó (hình và chữ, xem mục Hồ sơ vật chứng) và thêm vào Hồ sơ.
 - `[HỎI]` và `[CHỌN DÒNG]`: chọn sai → hiện phản hồi của lựa chọn đó, cho chọn lại, không phạt. Chọn đúng → hiện phản hồi rồi đi tiếp dòng kế.
-- `[THỬ THÁCH x]` và `[SỬA TRUY VẤN x]`: mở màn truy vấn theo thẻ x ở mục "Nội dung thử thách". Người chơi lưu vật chứng xong thì đi tiếp dòng kế.
+- Lựa chọn của `[HỎI]`: `(A) {id: <id lựa chọn>} <lời lựa chọn> [ĐÚNG] → phản hồi: …`. Chữ (A), (B)… chỉ là nhãn khi viết, không hiển thị. Giao diện xáo thứ tự lựa chọn mỗi lần hiện câu hỏi; telemetry ghi `<mã câu hỏi>:<id lựa chọn>` (QĐ-035).
+- `[THỬ THÁCH <mã>]` và `[SỬA TRUY VẤN <mã>]`: mở màn truy vấn theo thẻ cùng mã ở mục "Nội dung thử thách". Người chơi lưu vật chứng xong thì đi tiếp dòng kế.
 - `[ĐIỀU KIỆN QUA] cần: …`: khi Hồ sơ có đủ các mục đã liệt kê thì hiện nút "Nhiệm vụ tiếp theo →". Bấm nút thì chuyển cảnh, sang chuỗi đích.
 - Khối mã `sql` nằm ngay dưới một dòng `[DÀN DỰNG]` là nội dung hiển thị nguyên văn.
 - Dấu `<br>` trong ô bảng tách các lời thoại chạy nối tiếp nhau.
@@ -73,9 +74,10 @@
 - **narrator**: Thư đánh máy, không có tên người viết. Ngoài phong bì có một chữ ký tay: "H."
 - **ha-vy** (thinking): Chữ ký chỉ có một chữ cái. H là họ, hay là tên?
 - [HỎI q-sig-h] ha-vy: "Theo cậu, chữ H nhiều khả năng là chữ đầu của gì?"
-  - (A) Họ, vì họ đứng đầu họ tên → phản hồi: **ha-vy** (neutral): Họ đứng đầu thật. Nhưng người Việt được gọi bằng tên, và cũng hay ký bằng tên.
-  - (B) Tên gọi, vì người Việt hay ký bằng tên [ĐÚNG] → phản hồi: **ha-vy** (smile): Mình cũng nghĩ thế. Mình ký "Vy.", có bao giờ ký "Lê." đâu.
-  - (C) Mã lớp của người gửi → phản hồi: **ha-vy** (neutral): Ai lại ký tay bằng mã lớp. Thử nghĩ xem cậu hay ký bằng chữ gì.
+  - (A) {id: ho} Họ, vì trong họ tên, họ đứng đầu tiên. → phản hồi: **ha-vy** (neutral): Họ đứng đầu thật. Nhưng người Việt được gọi bằng tên, và cũng hay ký bằng tên.
+  - (B) {id: ten} Tên gọi, vì người Việt hay ký bằng tên. [ĐÚNG] → phản hồi: **ha-vy** (smile): Mình cũng nghĩ thế. Mình ký "Vy.", có bao giờ ký "Lê." đâu.
+  - (C) {id: ma-lop} Mã lớp, vì giấy tờ ở trường hay ghi mã lớp. → phản hồi: **ha-vy** (neutral): Mã lớp thì ai lại ký tay. Thử nghĩ xem cậu hay ký bằng chữ gì.
+- [DÀN DỰNG] Giao diện xáo thứ tự lựa chọn mỗi lần hiện câu hỏi; chữ (A)/(B)/(C) chỉ là nhãn khi viết, không hiển thị; telemetry ghi id lựa chọn (QĐ-035).
 - **minh-anh** (neutral): Vẫn chỉ là khả năng thôi. Nhưng là khả năng đáng thử trước.
 - [DÀN DỰNG] Vì sao giữ manh mối này: nó quyết định cấu trúc truy vấn — lọc cột `ten` (không phải `ho_dem`) bằng phép "bắt đầu bằng" (`LIKE 'H%'`); đây là điều kiện của c1 và điều kiện đầu tiên của c3. Sau chuỗi này, mục "Từ manh mối" của trình dựng có giá trị `H`.
 - **minh-anh** (neutral): Thư lấy ra từ hộp góp ý sáng nay. Mà trường có ba hộp, ở ba giảng đường.
@@ -233,10 +235,11 @@ WHERE ten LIKE 'H%'
 
 - [DÀN DỰNG] Bước 5 của QĐ-024. Đây là lần đầu game hỏi ranh giới giữa nghi vấn và kết luận (QĐ-023).
 - [HỎI q-two-rows] quan: "Hai dòng này nghĩa là gì?"
-  - (A) Một trong hai bạn chắc chắn đã bỏ thư → phản hồi: **ha-vy** (thinking): Hai dòng này cho biết ai cần hỏi tiếp, hay đã đủ để kết luận ai làm?
-  - (B) Chẳng nói lên gì, vì manh mối nào cũng có thể trùng hợp → phản hồi: **ha-vy** (thinking): Từ bốn mươi người còn hai. Thu hẹp được thế là có ích chứ. Nhưng ích đến đâu?
-  - (C) Hai bạn khớp cả ba manh mối, cần xác minh thêm, chưa phải người bỏ thư [ĐÚNG] → phản hồi: **quan** (neutral): Đúng. Khớp manh mối là một chuyện. Đã bỏ thư là chuyện khác.
-- [DÀN DỰNG] Phản hồi (A) là câu gợi ý chuẩn hint-ask-or-conclude (§5.2). Telemetry ghi lựa chọn ĐẦU TIÊN của q-two-rows: đo chỉ số "trả lời đúng rằng kết quả truy vấn chưa tự chứng minh hành vi" (§10).
+  - (A) {id: tim-ra-roi} Tìm ra rồi: người bỏ thư là một trong hai bạn này. → phản hồi: **ha-vy** (thinking): Hai dòng này cho biết ai cần hỏi tiếp, hay đã đủ để kết luận ai làm?
+  - (B) {id: can-xac-minh} Hai người cần xác minh thêm, chưa phải người bỏ thư. [ĐÚNG] → phản hồi: **quan** (neutral): Đúng. Khớp manh mối là một chuyện. Đã bỏ thư là chuyện khác.
+  - (C) {id: vo-dung} Chưa nói lên gì, vì manh mối nào cũng có thể trùng hợp. → phản hồi: **ha-vy** (thinking): Từ bốn mươi người còn hai. Thu hẹp được thế là có ích chứ. Nhưng ích đến đâu?
+- [DÀN DỰNG] Ba lựa chọn dài 11–13 chữ, cùng giọng thường; lựa chọn `tim-ra-roi` nối tiếp câu "Tìm ra rồi!" của Minh Anh, `vo-dung` nối tiếp kết luận của Quân (QĐ-035). Phản hồi của `tim-ra-roi` là câu gợi ý chuẩn hint-ask-or-conclude (§5.2).
+- [DÀN DỰNG] Giao diện xáo thứ tự lựa chọn mỗi lần hiện câu hỏi; chữ (A)/(B)/(C) chỉ là nhãn khi viết, không hiển thị; telemetry ghi id lựa chọn (QĐ-035). Ghi riêng lựa chọn ĐẦU TIÊN của q-two-rows: đo chỉ số "trả lời đúng rằng kết quả truy vấn chưa tự chứng minh hành vi" (§10).
 - [ĐI TỚI deb-04]
 
 ### deb-04 — Cú lật: dựa vào đâu? {scene: debrief-room}
@@ -247,19 +250,69 @@ WHERE ten LIKE 'H%'
 
 - [DÀN DỰNG] Bước 6 của QĐ-024, cú lật chính (§4.4). Câu hỏi của Quân giữ nguyên văn.
 - [HỎI q-verify] quan: "Nếu dữ liệu chưa kết luận được, CLB dựa vào đâu để biết ai đã bỏ thư?"
-  - (A) Thêm điều kiện cho đến khi chỉ còn một dòng → phản hồi: **quan** (neutral): Thêm điều kiện nào? Không có manh mối đứng sau thì chỉ là cắt cho gọn. Cắt nhầm là mất người thật.
-  - (B) Chọn bạn trông đáng ngờ hơn → phản hồi: **quan** (neutral): Đáng ngờ theo cột nào? Bảng này không có cột "đáng ngờ".
-  - (C) Mời cả hai bạn lên, yêu cầu nhận → phản hồi: **minh-anh** (worried): Bắt nhận thì người vô can cũng bị làm khó. CLB tìm sự thật, không để làm ai bẽ mặt.
-  - (D) Đề nghị một nguồn độc lập đối chiếu, như cô phụ trách hộp góp ý [ĐÚNG] → phản hồi: **quan** (neutral): Đó là câu tôi chờ. Tôi sẽ chuyển đề nghị ngay.
-- [DÀN DỰNG] Telemetry ghi lựa chọn ĐẦU TIÊN của q-verify (câu "dữ liệu đã đủ kết luận chưa?", §9.3); cho chọn lại không giới hạn. Thứ tự lựa chọn có thể xáo; telemetry ghi theo nội dung lựa chọn, không theo chữ cái.
+  - (A) {id: them-dieu-kien} Thêm điều kiện vào truy vấn cho đến khi chỉ còn một dòng. → phản hồi: **quan** (neutral): Thêm điều kiện nào? Không có manh mối đứng sau thì chỉ là cắt cho gọn. Cắt nhầm là mất người thật.
+  - (B) {id: chon-dang-ngo} Chọn bạn trông đáng ngờ hơn trong hai bạn để hỏi trước. → phản hồi: **quan** (neutral): Đáng ngờ theo cột nào? Bảng này không có cột "đáng ngờ".
+  - (C) {id: goi-ca-hai} Mời cả hai bạn lên, hỏi thẳng xem ai đã bỏ thư. → phản hồi: **minh-anh** (worried): Gọi cả hai lên thì người vô can cũng bị làm phiền. CLB tìm sự thật, không để làm ai bẽ mặt.
+  - (D) {id: nguon-doc-lap} Tìm một nguồn khác ngoài dữ liệu để đối chiếu hai bạn này. [ĐÚNG] → phản hồi: **quan** (neutral): Đó là câu tôi chờ. Nguồn nào?
+- [DÀN DỰNG] Bốn lựa chọn dài 12–13 chữ, cùng giọng thường. Lựa chọn đúng không nêu nguồn cụ thể: người chơi tự nối với lời bác Tư ở inv-bac-tu (QĐ-035).
+- [DÀN DỰNG] Giao diện xáo thứ tự lựa chọn mỗi lần hiện câu hỏi; chữ (A)…(D) chỉ là nhãn khi viết, không hiển thị; telemetry ghi id lựa chọn (QĐ-035). Ghi riêng lựa chọn ĐẦU TIÊN của q-verify (câu "dữ liệu đã đủ kết luận chưa?", §9.3); cho chọn lại không giới hạn.
+- **player**: Cô phụ trách hộp góp ý. Bác Tư bảo sáng nay cô mở hộp B.
 - **minh-anh** (neutral): CLB chỉ xin cô đối chiếu đúng hai mã này thôi, không hơn.
+- **quan** (neutral): Tôi sẽ chuyển đề nghị ngay.
 - [ĐI TỚI end-01]
 
 ---
 
 ## Phần 5 — Kết {part: ending}
 
-(đang viết)
+### end-01 — Sổ bàn giao niêm phong {scene: debrief-room}
+
+> NHIỆM VỤ: Đối chiếu với sổ bàn giao
+
+- [DÀN DỰNG] Bước 7 của QĐ-024; theo §2.1, phần Kết bắt đầu từ bước xác minh độc lập. Cô phụ trách hộp góp ý không lên hình, chỉ xuất hiện qua lời kể và tài liệu. Không dùng hiệu ứng "Có số liệu đây!" ở đây: khoảnh khắc này dẫn tới nhân chứng, cần nhẹ nhàng.
+- **narrator**: Hai mươi phút sau, cô phụ trách hộp góp ý gửi lên kết quả đối chiếu.
+- [HIỆN TÀI LIỆU doc-handover-log]
+- **ha-vy** (thinking): Sổ không cho xem tên. Cô chỉ trả lời mã nào có, mã nào không.
+- **quan** (neutral): SV240317 có trong sổ. Phòng CTSV sẽ mời bạn ấy lên.
+- **quan** (neutral): Nói trước: bạn ấy đến để kể lại, không phải để bị xét.
+- [ĐI TỚI end-02]
+
+### end-02 — Người bỏ hộ lá thư {scene: debrief-room}
+
+> NHIỆM VỤ: Nghe nhân chứng kể lại
+
+- [DÀN DỰNG] Hoài xuất hiện lần đầu (một mẫu chân dung, ba biểu cảm), bước vào, ôm balo trước ngực. Không tiêu đề "lời khai", không nhạc thẩm vấn. Không ai gọi Hoài là thủ phạm.
+- **hoai** (nervous): Em là Hoài, lớp QT24B. Em… có làm gì sai không ạ?
+- **minh-anh** (neutral): Không ai trách em cả. Bọn chị chỉ muốn biết lá thư từ đâu đến.
+- **hoai** (downcast): Em không viết thư đó. Em chỉ bỏ hộ thôi ạ.
+- **hoai** (downcast): Chiều thứ Sáu, một anh năm cuối đeo huy hiệu Robotics nhờ em. Anh ấy đang vội.
+- **hoai** (nervous): Phiếu gửi phải ký và ghi mã. Anh ấy bảo em ký giúp. Em không đọc thư.
+- **minh-anh** (neutral): Cảm ơn em. Chuyện ký hộ là quy trình phải sửa, không phải lỗi của em.
+- **hoai** (relieved): Dạ… Em cứ tưởng mình bị gọi lên vì làm sai.
+- [ĐI TỚI end-03]
+
+### end-03 — Khép buổi làm việc {scene: debrief-room}
+
+- [DÀN DỰNG] Bước 8 của QĐ-024. Hoài cúi chào rồi ra về trước khi Quân nói về người còn lại.
+- **quan** (neutral): Bạn Hiếu, SV240228, không có trong sổ. Bạn ấy vô can, CTSV sẽ không liên hệ.
+- **quan** (neutral): Tìm được người bỏ thư chưa phải là tìm được người viết thư, CLB Thám Tử.
+- **ha-vy** (neutral): Chúng em biết.
+- **narrator**: Năm giờ chiều. Quyền xem dữ liệu của CLB hết hạn. Danh sách hai người được hủy.
+- [DÀN DỰNG] Thẻ ev-c3-shortlist được gắn chú thích sau giải trình (mục Hồ sơ vật chứng); tên và mã trong thẻ bị làm mờ; nút mở trình dựng truy vấn bị khóa. Quân chứng kiến việc hủy.
+
+> NHIỆM VỤ: Về phòng CLB
+
+- [ĐIỀU KIỆN QUA] cần: doc-handover-log → nút "Nhiệm vụ tiếp theo →" sang end-04
+
+### end-04 — Phòng CLB, chiều muộn {scene: clb-room}
+
+- **minh-anh** (happy): Giá mà còn quyền, chị tra ngay CLB Robotics.
+- **ha-vy** (smile): Quyền cấp cho việc này thôi chị. Hết việc là hết quyền.
+- **narrator**: SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.
+- [DÀN DỰNG] Câu trên là thông điệp kết của §4.5, giữ nguyên văn, hiện dạng thẻ chữ lớn giữa màn hình.
+- **minh-anh** (happy): Rồi, việc hôm nay xong. Anh năm cuối đeo huy hiệu Robotics… để vụ sau. Em đi tiếp cùng CLB chứ?
+- [DÀN DỰNG] Sau `[KẾT THÚC]`, gói khác hiện khảo sát cuối game (QĐ-031); kịch bản này không viết khảo sát.
+- [KẾT THÚC]
 
 ---
 
@@ -281,7 +334,7 @@ WHERE ten LIKE 'H%'
 - [GỢI Ý CHUẨN hint-right-columns] **ha-vy** (thinking): Kết quả đã có đúng cột cần để trả lời câu hỏi chưa? Đọc lại đề xem cần những cột nào.
   - Dùng khi: ở bất kỳ thử thách nào, kết quả ra đúng các dòng nhưng thiếu cột bắt buộc (mã `missing-columns`, QĐ-019).
 - [GỢI Ý CHUẨN hint-ask-or-conclude] **ha-vy** (thinking): Hai dòng này cho biết ai cần hỏi tiếp, hay đã đủ để kết luận ai làm?
-  - Dùng khi: CHỈ ở màn giải trình, là phản hồi khi chọn "Một trong hai bạn chắc chắn đã bỏ thư" ở q-two-rows (deb-03). Không dùng ở c3, không dùng ở bất kỳ đâu trước màn giải trình (QĐ-023).
+  - Dùng khi: CHỈ ở màn giải trình, là phản hồi khi chọn lựa chọn `tim-ra-roi` ở q-two-rows (deb-03). Không dùng ở c3, không dùng ở bất kỳ đâu trước màn giải trình (QĐ-023).
 
 ### Nhận xét chung cho mọi thử thách
 
@@ -324,9 +377,10 @@ WHERE ten LIKE 'H%';
 - [GỢI Ý 3] **ha-vy** (smile): Gần như đáp án đây: `SELECT ma_sv, ho_dem, ten FROM sinh_vien WHERE ten LIKE 'H%';`
 - [KHI ĐÚNG] **ha-vy** (smile): Truy vấn đầu tiên của cậu đấy! Mười dòng, đúng như bộ lọc.
 - [HỎI q-c1-read] ha-vy: "Mười dòng này là những ai?"
-  - (A) Những người có chữ H ở bất kỳ đâu trong họ tên → phản hồi: **ha-vy** (thinking): 'H%' chỉ khớp khi H đứng đầu. H ở giữa hay ở cuối đều không tính.
-  - (B) Những người có tên gọi bắt đầu bằng H [ĐÚNG] → phản hồi: **ha-vy** (smile): Chuẩn. Cột ten, H đứng đầu, phía sau là gì cũng được.
-  - (C) Những người có họ bắt đầu bằng H → phản hồi: **ha-vy** (thinking): Điều kiện đặt ở cột ten, không phải ho_dem. Người họ Hoàng mà tên Lan sẽ không có ở đây.
+  - (A) {id: chua-h} Những người có chữ H trong họ tên. → phản hồi: **ha-vy** (thinking): 'H%' chỉ khớp khi H đứng đầu. H ở giữa hay ở cuối đều không tính.
+  - (B) {id: ten-h} Những người có tên gọi bắt đầu bằng H. [ĐÚNG] → phản hồi: **ha-vy** (smile): Chuẩn. Cột ten, H đứng đầu, phía sau là gì cũng được.
+  - (C) {id: ho-h} Những người có họ bắt đầu bằng H. → phản hồi: **ha-vy** (thinking): Điều kiện đặt ở cột ten, không phải ho_dem. Người họ Hoàng mà tên Lan sẽ không có ở đây.
+- [DÀN DỰNG] Giao diện xáo thứ tự lựa chọn mỗi lần hiện câu hỏi; chữ (A)/(B)/(C) chỉ là nhãn khi viết, không hiển thị; telemetry ghi id lựa chọn (QĐ-035).
 - Vật chứng lưu vào hồ sơ: ev-c1-names-h
   - Tiêu đề: Sinh viên có tên bắt đầu bằng H
   - Mô tả: 10 dòng từ bảng `sinh_vien`, lọc `ten LIKE 'H%'`. Nguồn: truy vấn của bạn ở thử thách 1. Thẻ kèm câu SQL đã chạy và bảng kết quả.
@@ -356,9 +410,10 @@ WHERE toa_nha = 'B';
 - [GỢI Ý 3] **ha-vy** (smile): Gần như đáp án: `SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha = 'B';`
 - [KHI ĐÚNG] **ha-vy** (smile): KT24A và QT24B. Hai lớp sinh hoạt ở tòa B.
 - [HỎI q-c2-read] ha-vy: "Hai mã lớp này dùng để làm gì tiếp?"
-  - (A) Làm điều kiện lọc lớp trong bảng sinh_vien [ĐÚNG] → phản hồi: **ha-vy** (smile): Đúng. Kết quả của truy vấn này thành đầu vào cho truy vấn sau.
-  - (B) Đếm xem tòa B có bao nhiêu sinh viên → phản hồi: **ha-vy** (thinking): Bảng lớp không chứa sinh viên. Muốn biết ai, phải mang hai mã này sang bảng sinh_vien.
-  - (C) Không dùng được, vì bảng sinh_vien không có cột tòa nhà → phản hồi: **ha-vy** (thinking): Không có cột tòa nhà, nhưng có cột ma_lop. Hai mã này chính là cầu nối.
+  - (A) {id: loc-sinh-vien} Làm điều kiện lọc lớp trong bảng sinh_vien. [ĐÚNG] → phản hồi: **ha-vy** (smile): Đúng. Kết quả của truy vấn này thành đầu vào cho truy vấn sau.
+  - (B) {id: dem-toa-b} Đếm xem tòa B có bao nhiêu sinh viên. → phản hồi: **ha-vy** (thinking): Bảng lớp không chứa sinh viên. Muốn biết ai, phải mang hai mã này sang bảng sinh_vien.
+  - (C) {id: bo-qua} Bỏ qua, vì bảng sinh_vien không có tòa nhà. → phản hồi: **ha-vy** (thinking): Không có cột tòa nhà, nhưng có cột ma_lop. Hai mã này chính là cầu nối.
+- [DÀN DỰNG] Giao diện xáo thứ tự lựa chọn mỗi lần hiện câu hỏi; chữ (A)/(B)/(C) chỉ là nhãn khi viết, không hiển thị; telemetry ghi id lựa chọn (QĐ-035).
 - Vật chứng lưu vào hồ sơ: ev-c2-classes-b
   - Tiêu đề: Lớp sinh hoạt ở giảng đường B
   - Mô tả: 2 dòng: `KT24A`, `QT24B`. Từ bảng `lop_sinh_hoat`, lọc `toa_nha = 'B'`. Dùng làm giá trị "Từ manh mối" cho điều kiện lớp ở thử thách 3.
@@ -394,10 +449,11 @@ WHERE ten LIKE 'H%'
 - [GỢI Ý 3] **ha-vy** (smile): Gần như đáp án: `SELECT ma_sv, ho_dem, ten, ma_lop, clb FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop IN ('KT24A', 'QT24B') AND clb = 'Báo chí';`
 - [KHI ĐÚNG] **ha-vy** (smile): Ba manh mối, một truy vấn, hai dòng.
 - [HỎI q-c3-read] ha-vy: "Vì sao chỉ còn 2 dòng?"
-  - (A) Vì dữ liệu chỉ có hai người tên bắt đầu bằng H → phản hồi: **ha-vy** (thinking): Thử thách 1 ra mười người tên H cơ mà. Có gì đó đã lọc bớt họ.
-  - (B) Vì trình dựng tự cắt bớt kết quả cho gọn → phản hồi: **ha-vy** (thinking): Trình dựng không tự cắt dòng nào. Kết quả ít đi là do các điều kiện.
-  - (C) Vì AND chỉ giữ người khớp đồng thời cả ba điều kiện [ĐÚNG] → phản hồi: **ha-vy** (smile): Đúng. Như bật Filter ở ba cột cùng lúc: trượt một cột là rơi khỏi bảng.
-- [DÀN DỰNG] Câu hỏi này chỉ hỏi ý nghĩa của `AND`. Không lựa chọn và không phản hồi nào nói hai dòng là nghi vấn hay bằng chứng (QĐ-023).
+  - (A) {id: chi-hai-ten-h} Vì LIKE 'H%' chỉ tìm được hai người tên H. → phản hồi: **ha-vy** (thinking): Thử thách 1 ra mười người tên H cơ mà. Có gì đó đã lọc bớt họ.
+  - (B) {id: in-ca-hai-lop} Vì IN chỉ lấy người thuộc cả hai lớp một lúc. → phản hồi: **ha-vy** (thinking): IN nghĩa là thuộc một lớp bất kỳ trong danh sách. Mỗi người chỉ học một lớp thôi.
+  - (C) {id: and-dong-thoi} Vì AND giữ người khớp cả ba điều kiện cùng lúc. [ĐÚNG] → phản hồi: **ha-vy** (smile): Đúng. Như bật Filter ở ba cột cùng lúc: trượt một cột là rơi khỏi bảng.
+- [DÀN DỰNG] Câu hỏi này chỉ hỏi ý nghĩa của `AND`; lựa chọn `in-ca-hai-lop` là một hiểu nhầm hay gặp về `IN`. Không lựa chọn và không phản hồi nào nói hai dòng là nghi vấn hay bằng chứng (QĐ-023).
+- [DÀN DỰNG] Giao diện xáo thứ tự lựa chọn mỗi lần hiện câu hỏi; chữ (A)/(B)/(C) chỉ là nhãn khi viết, không hiển thị; telemetry ghi id lựa chọn (QĐ-035).
 - Vật chứng lưu vào hồ sơ: ev-c3-shortlist
   - Tiêu đề: Người khớp cả ba manh mối
   - Mô tả: 2 dòng: Lê Thị Hoài — SV240317 — QT24B — Báo chí; Phạm Minh Hiếu — SV240228 — KT24A — Báo chí. Truy vấn: `ten LIKE 'H%' AND ma_lop IN ('KT24A', 'QT24B') AND clb = 'Báo chí'`. Chú thích gắn sau màn giải trình: xem mục Hồ sơ vật chứng.
