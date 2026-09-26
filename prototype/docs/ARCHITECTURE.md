@@ -184,6 +184,11 @@ nội dung (GameContent) ──► runtime story (thuần) ──► StoryView �
   `onComplete()` để runtime đi tiếp. Chạy/chấm: `gradeChallenge(spec, sql, model)` của gói 3.
   Kết quả đúng → `SavedQueryEvidence` vào hồ sơ; câu đọc kết quả (`readQuestion`) dùng chung
   component `MultipleChoice` nhưng do màn thử thách điều khiển (không qua runtime story).
+  **QĐ-043:** vì không qua runtime, màn thử thách (gói 4) phải TỰ gọi
+  `track({ type: 'question_answered', questionId, choiceId, attempt, correct, isFirstChoice })`
+  cho mỗi lần chọn ở `readQuestion` — runtime chỉ tự ghi cho `[HỎI]` trong chuỗi kể chuyện.
+  Thứ tự lựa chọn xáo một lần khi câu hỏi xuất hiện, giữ nguyên khi chọn lại (QĐ-041 —
+  `MultipleChoice` đã làm sẵn).
 - **Màn chiếu.** `ProjectorNode.source` là SQL viết cứng (truy vấn `OR` của Quân) hoặc vật chứng
   đã lưu (`ev-quan-fixed`, tức câu người chơi đã sửa); `run: true` → gói 6 gọi `runQuery`.
 - **Hết quyền truy cập (end-03).** `set-flag access-revoked` (lưu trong `progress.flags`) +
