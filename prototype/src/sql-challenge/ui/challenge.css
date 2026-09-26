@@ -225,6 +225,18 @@
 .qb-text .qb-input {
   width: 8rem;
 }
+.qb-text .qb-input--list {
+  width: 12rem;
+}
+.qb-hint {
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  align-self: center;
+}
+.qb-cond.is-pending > .qb-select {
+  border-style: dashed;
+  border-color: var(--c-focus);
+}
 .qb-list {
   display: inline-flex;
   flex-wrap: wrap;

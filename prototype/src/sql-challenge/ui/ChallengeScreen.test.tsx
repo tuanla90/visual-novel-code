@@ -139,6 +139,7 @@ describe('ChallengeScreen — hàng WHERE, "Từ manh mối", phép nối chưa 
     expect(and).toHaveAttribute('aria-pressed', 'false');
 
     await user.click(screen.getByRole('button', { name: /Thêm điều kiện/ }));
+    await user.selectOptions(screen.getByLabelText('Cột lọc của điều kiện 3'), 'ma_lop');
     await user.selectOptions(screen.getByLabelText('Phép so sánh của điều kiện 3'), 'contains');
     await user.type(screen.getByLabelText('Giá trị (chữ) của điều kiện 3'), '2');
     const ors = screen.getAllByRole('button', { name: 'OR — thỏa bất kỳ' });

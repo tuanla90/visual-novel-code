@@ -23,7 +23,8 @@ import { HaVyPanel, type HaVyNote } from './HaVyPanel';
 import { IconClose, IconPlay } from './icons';
 import { rowCountText, tableReadable } from './labels';
 import { blockingReason, showDiagnostic, type LineSources } from './lines';
-import { attributeSources } from './model-edit';
+import { attributeSources, withoutPending } from './model-edit';
+import { preloadDistinctValues } from './use-distinct-values';
 import { QueryBuilder } from './QueryBuilder';
 import { ResultTable } from './ResultTable';
 import { SchemaPanel } from './SchemaPanel';
@@ -87,10 +88,17 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
     openChallenge(challengeId);
   }, [challengeId, openChallenge]);
 
+  // Chọn bảng xong thì đếm sẵn giá trị của từng cột: ô giá trị biết ngay là danh sách hay ô chữ (QĐ-056).
+  const chosenTable = state?.model.table ?? null;
+  useEffect(() => {
+    if (chosenTable) preloadDistinctValues(chosenTable);
+  }, [chosenTable]);
+
   const evidenceOptions = useMemo(() => evidenceValueOptions(gameContent, unlocked, classEvidence), [unlocked, classEvidence]);
 
   const setModel = useCallback(
-    (model: QueryModel) => updateChallenge(challengeId, { model, sql: modelToSql(model) }),
+    // Điều kiện chưa chọn cột (QĐ-056) không đi vào SQL.
+    (model: QueryModel) => updateChallenge(challengeId, { model, sql: modelToSql(withoutPending(model)) }),
     [challengeId, updateChallenge],
   );
 
@@ -137,7 +145,7 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
 
   const src: LineSources = { content, common: gameContent.commonDiagnosticLines, standardHints: gameContent.standardHints };
   const model = state.model;
-  const builderSql = modelToSql(model);
+  const builderSql = modelToSql(withoutPending(model));
   const locked = accessRevoked;
   const sqlMode = state.mode === 'sql';
   const solved = outcome !== null && outcome.grade.status === 'correct' && outcome.grade.run.ok;
@@ -168,7 +176,7 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
   };
   const backToLastBuilder = (): void => {
     setConfirmBack(false);
-    updateChallenge(challengeId, { mode: 'builder', sql: modelToSql(state.model) });
+    updateChallenge(challengeId, { mode: 'builder', sql: modelToSql(withoutPending(state.model)) });
   };
 
   const askHaVy = (): void => {

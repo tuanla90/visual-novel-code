@@ -13,6 +13,35 @@ import type { EvidenceValueOption } from './model-edit';
 
 export const CLASS_LIST_EVIDENCE_ID = 'ev-c2-classes-b' as const;
 
+/**
+ * Cột có không quá chừng này giá trị khác nhau (ĐẾM TỪ DỮ LIỆU, không viết cứng tên cột) thì ô giá trị
+ * là danh sách chọn; cột nhiều giá trị hơn (mã SV, họ đệm, tên) dùng ô chữ — danh sách 40 mã vừa vô ích
+ * vừa gợi ý lối tắt "chọn thẳng mã" (QĐ-056).
+ */
+export const LIST_MAX_DISTINCT = 12;
+
+export function usesValueList(distinctCount: number): boolean {
+  return distinctCount <= LIST_MAX_DISTINCT;
+}
+
+/** Ô chữ của phép IN: "An, Bình ,, Chi" → ["An", "Bình", "Chi"] (bỏ khoảng trắng thừa, ô rỗng, giá trị trùng). */
+export function parseListText(text: string): string[] {
+  const out: string[] = [];
+  for (const part of text.split(',')) {
+    const v = part.trim();
+    if (v !== '' && !out.includes(v)) out.push(v);
+  }
+  return out;
+}
+
+export function formatListText(values: readonly string[]): string {
+  return values.join(', ');
+}
+
+export function sameList(a: readonly string[], b: readonly string[]): boolean {
+  return a.length === b.length && a.every((v, i) => v === b[i]);
+}
+
 const CLASS_CODES = new Set(CLASS_ROWS.map((r) => r.ma_lop));
 
 /**

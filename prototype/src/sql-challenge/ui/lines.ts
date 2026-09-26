@@ -6,6 +6,7 @@ import type { DiagnosticCode } from '../../shared/ids';
 import type { DialogueLine } from '../../story/types';
 import { pickDiagnostic, validateModel } from '../engine';
 import type { ChallengeContent, CommonDiagnosticLines, DiagnosticResponse, QueryModel, StandardHints } from '../types';
+import { isPendingCondition } from './model-edit';
 
 /** Lời dự phòng khi nội dung không có lời cho mã (và cả lời `other`). */
 export const FALLBACK_LINE: DialogueLine = {
@@ -48,12 +49,13 @@ export function showDiagnostic(codes: readonly DiagnosticCode[], src: LineSource
   return { code: picked.code, line: lineFor(picked.response, src) };
 }
 
-/** Lý do model trình dựng CHƯA chạy được (mã blocking của validateModel) + lời tương ứng; `null` = chạy được. */
+/**
+ * Lý do model trình dựng CHƯA chạy được (mã blocking của validateModel) + lời tương ứng; `null` = chạy được.
+ * Điều kiện chưa chọn cột (QĐ-056) luôn tính là `no-value` (không thêm mã mới) — kể cả khi lỡ có giá trị.
+ */
 export function blockingReason(model: QueryModel, src: LineSources): ShownDiagnostic | null {
-  const issues = validateModel(model);
-  if (issues.length === 0) return null;
-  return showDiagnostic(
-    issues.map((d) => d.code),
-    src,
-  );
+  const codes: DiagnosticCode[] = validateModel(model).map((d) => d.code);
+  if (model.conditions.some(isPendingCondition) && !codes.includes('no-value')) codes.push('no-value');
+  if (codes.length === 0) return null;
+  return showDiagnostic(codes, src);
 }

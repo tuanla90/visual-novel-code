@@ -2,9 +2,31 @@
  * Phép sửa model trình dựng (thuần, không React) — mỗi hàm trả model MỚI.
  * Quy ước: cột trong SELECT luôn theo thứ tự cột của bảng (SQL song song đọc tự nhiên, giống đáp án);
  * đổi bảng thì bỏ cột/điều kiện không thuộc bảng mới; phép nối giữ nguyên lựa chọn của người chơi.
+ *
+ * Điều kiện "chưa chọn cột" (QĐ-056): kiểu `QueryCondition.column` (tệp đóng băng) không cho rỗng, nên
+ * trạng thái này được ghi bằng TIỀN TỐ CỦA ID (`new-N`; chọn cột xong đổi thành `cond-N`). Cột giữ chỗ
+ * là cột đầu của bảng, KHÔNG bao giờ đi vào SQL (`withoutPending`) và không hiện trên giao diện; giá trị
+ * rỗng nên `validateModel` chặn nút Chạy bằng `no-value`. Lưu được qua tải lại trang (nằm trong model).
  */
 import { columnsOf, isColumnOf, type ColumnName, type TableName } from '../schema';
 import type { ConditionOp, ConditionValueSource, Connector, QueryCondition, QueryModel } from '../types';
+
+export const PENDING_ID_PREFIX = 'new-';
+
+/** Điều kiện vừa thêm, chưa chọn cột (QĐ-056). */
+export function isPendingCondition(c: Pick<QueryCondition, 'id'>): boolean {
+  return c.id.startsWith(PENDING_ID_PREFIX);
+}
+
+/** Khóa React ổn định khi điều kiện đổi từ "chưa chọn cột" (`new-N`) sang đã chọn (`cond-N`). */
+export function conditionKey(c: Pick<QueryCondition, 'id'>): string {
+  return isPendingCondition(c) ? `cond-${c.id.slice(PENDING_ID_PREFIX.length)}` : c.id;
+}
+
+/** Model bỏ các điều kiện chưa chọn cột — dùng để sinh SQL (song song, lưu store). */
+export function withoutPending(model: QueryModel): QueryModel {
+  return model.conditions.some(isPendingCondition) ? { ...model, conditions: model.conditions.filter((c) => !isPendingCondition(c)) } : model;
+}
 
 function sortColumns(table: TableName, columns: ColumnName[]): ColumnName[] {
   const order = columnsOf(table);
@@ -14,7 +36,11 @@ function sortColumns(table: TableName, columns: ColumnName[]): ColumnName[] {
 export function setTable(model: QueryModel, table: TableName): QueryModel {
   if (model.table === table) return model;
   const columns = model.columns === '*' ? '*' : sortColumns(table, model.columns.filter((c) => isColumnOf(table, c)));
-  const conditions = model.conditions.filter((c) => isColumnOf(table, c.column));
+  const placeholder = columnsOf(table)[0];
+  // Điều kiện chưa chọn cột không thuộc bảng nào → giữ lại, trỏ cột giữ chỗ sang bảng mới.
+  const conditions = model.conditions
+    .filter((c) => isPendingCondition(c) || isColumnOf(table, c.column))
+    .map((c) => (isPendingCondition(c) && placeholder ? { ...c, column: placeholder } : c));
   return { ...model, table, columns, conditions };
 }
 
@@ -29,27 +55,35 @@ export function setAllColumns(model: QueryModel, on: boolean): QueryModel {
   return { ...model, columns: on ? '*' : [] };
 }
 
-function nextConditionId(model: QueryModel): string {
-  let max = 0;
+/** Số N lớn hơn mọi `cond-N` / `new-N` đang có (và không nhỏ hơn số điều kiện). */
+function nextConditionNumber(model: QueryModel): number {
+  let max = model.conditions.length;
   for (const c of model.conditions) {
-    const m = /^cond-(\d+)$/.exec(c.id);
+    const m = /^(?:cond|new)-(\d+)$/.exec(c.id);
     if (m) max = Math.max(max, Number(m[1]));
   }
-  let n = Math.max(max, model.conditions.length) + 1;
-  while (model.conditions.some((c) => c.id === `cond-${n}`)) n += 1;
-  return `cond-${n}`;
+  return max + 1;
 }
 
 export function emptyValueFor(op: ConditionOp): string | string[] {
   return op === 'in' ? [] : '';
 }
 
-/** Thêm một điều kiện trống (cột đầu của bảng, phép "bằng", chưa có giá trị). */
+/**
+ * Thêm một điều kiện CHƯA CHỌN CỘT (QĐ-056): giao diện hiện "Chọn cột…", phép + giá trị chỉ hiện sau
+ * khi chọn cột. Cột giữ chỗ (cột đầu của bảng) không bao giờ hiện ra hay đi vào SQL.
+ */
 export function addCondition(model: QueryModel): QueryModel {
   if (model.table === null) return model;
-  const column = columnsOf(model.table)[0];
-  if (!column) return model;
-  const cond: QueryCondition = { id: nextConditionId(model), column, op: 'eq', value: '', source: { kind: 'manual' } };
+  const placeholder = columnsOf(model.table)[0];
+  if (!placeholder) return model;
+  const cond: QueryCondition = {
+    id: `${PENDING_ID_PREFIX}${nextConditionNumber(model)}`,
+    column: placeholder,
+    op: 'eq',
+    value: '',
+    source: { kind: 'manual' },
+  };
   return { ...model, conditions: [...model.conditions, cond] };
 }
 
@@ -61,9 +95,20 @@ function mapCondition(model: QueryModel, id: string, f: (c: QueryCondition) => Q
   return { ...model, conditions: model.conditions.map((c) => (c.id === id ? f(c) : c)) };
 }
 
-/** Đổi cột: giá trị cũ thuộc cột cũ nên xóa về trống. */
+/**
+ * Chọn/đổi cột: giá trị cũ thuộc cột cũ nên xóa về trống. Điều kiện chưa chọn cột thì thành điều kiện
+ * thật (`new-N` → `cond-N`) kể cả khi cột chọn trùng cột giữ chỗ.
+ */
 export function setConditionColumn(model: QueryModel, id: string, column: ColumnName): QueryModel {
-  return mapCondition(model, id, (c) => (c.column === column ? c : { ...c, column, value: emptyValueFor(c.op), source: { kind: 'manual' } }));
+  return mapCondition(model, id, (c) => {
+    if (isPendingCondition(c)) {
+      let n = Number(c.id.slice(PENDING_ID_PREFIX.length));
+      if (!Number.isFinite(n)) n = nextConditionNumber(model);
+      while (model.conditions.some((x) => x.id === `cond-${n}`)) n += 1;
+      return { ...c, id: `cond-${n}`, column, value: emptyValueFor(c.op), source: { kind: 'manual' } };
+    }
+    return c.column === column ? c : { ...c, column, value: emptyValueFor(c.op), source: { kind: 'manual' } };
+  });
 }
 
 /** Đổi phép: giữ giá trị khi còn dùng được (chuỗi ↔ danh sách một phần tử). */
