@@ -353,6 +353,16 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Hướng dẫn thả ảnh cho user: `prototype/src/assets/art/README.md`.
 - Ghi chú: agent thấy 3 cú bấm chuột thật không phải của nó trong lúc chơi thử (có thể user đang xem khung trình duyệt) — luồng vẫn đi hết.
 
+**Nghiệm thu gói `telemetry` — ĐẠT (điều phối viên tự nghiệm thu; agent bị dừng).** · 27/09 03:05
+- Sự cố canh: commit cuối 01:50 (nhóm 6/7); 40 phút không commit → nhắc 02:31; 16 phút sau vẫn không tệp nào đổi, không tiến trình nào của worktree chạy → dừng agent 02:48 theo skill. Thu hồi: cả 6 nhóm code đã commit; phần "sửa dở" `main.tsx` chỉ là đổi dấu xuống dòng (bản vá rỗng) → bỏ. Mất: bước đi thử trên trình duyệt và báo cáo cuối của agent.
+- Điều phối viên tự kiểm tại `main` (ff `7e42874`): typecheck 0 lỗi, 569/569 test, lint sạch, build đạt. Bẻ phanh (b): tóm tắt lấy lựa chọn CUỐI thay vì ĐẦU → test "lấy bản SỚM NHẤT" đỏ; khôi phục → xanh. Trên trình duyệt 1366×768: khảo sát đầu game đúng QĐ-031/QĐ-042; bảng người quan sát có vị trí, phiên, dung lượng lưu, xuất/xóa/đặt lại; nhảy tới "Giải trình" có hộp xác nhận, tự điền 8 mục hồ sơ bằng SQL chuẩn, đánh dấu phiên "có nhảy phần"; màn chiếu deb-01 chạy thật 24 dòng; 0 lỗi console. Không bấm "Xuất JSON" (thao tác tải tệp) — cấu trúc tệp đã có test.
+- **Lỗi tìm thấy:** bảng người quan sát khi mở rộng (x 12–472, y 190–756 ở 1366×768) che nút "Bắt đầu" của màn tiêu đề — trong khi muốn nhảy phần phải bấm "Bắt đầu" trước. Giao gói sau sửa.
+
+**QĐ-063 — Ô ảnh khớp theo quy ước ảnh thật của user.** · Nguồn: điều phối viên thấy user đã bắt đầu sinh ảnh · 27/09 03:05
+- Bối cảnh: user đã đặt `char-minh-anh-anchor.png`, `char-minh-anh-worried.png` vào `prototype/src/assets/characters/` (chưa đưa vào git) theo tệp `prompts-characters-prototype-flow-v0.1.md`: tên `char-<nhân vật>-<biểu cảm>`, `-anchor` = biểu cảm gốc (trung tính; riêng Hoài = rụt rè), ảnh 1536×2048 NỀN XÁM PHẲNG (không trong suốt). Hệ ô ảnh của gói 7 chỉ quét `src/assets/art/` với tên `minh-anh-worried` → ảnh của user không được nhận.
+- Phương án: A — bảo user đổi tên, dời thư mục, tự tách nền; **B — cho game khớp theo quy ước của user: quét mọi thư mục con của `src/assets/`, nhận tiền tố `char-`, hiểu `-anchor` là biểu cảm đầu của nhân vật, và tự tách nền phẳng (loang từ mép ảnh, có ngưỡng) khi ảnh chưa trong suốt; giữ quy ước cũ song song.**
+- **Chọn B.** Theo đúng tinh thần QĐ-060 (user sinh ảnh, game tự nhận); user không phải làm thêm bước nào. Không đụng/xóa/đổi tên tệp của user.
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**
