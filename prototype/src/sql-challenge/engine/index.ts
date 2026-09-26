@@ -4,24 +4,17 @@
  *
  * Đã có sẵn: loader sql.js (./sqljs.ts).
  */
-import type { ChallengeSpec, GradeResult, QueryModel } from '../types';
-
-export class NotImplementedError extends Error {
-  override readonly name = 'NotImplementedError';
-  constructor(what: string) {
-    super(`${what}: chưa hiện thực — gói sql-engine`);
-  }
-}
-
 export type { DatasetKind } from '../data/types';
 
 /** Chạy một câu SQL (chỉ SELECT / WITH … SELECT — QĐ-006) trên dataset chính hoặc ẩn. */
 export { runQuery } from './run';
 
 /** Chấm một lần chạy theo QĐ-019/QĐ-040 (chạy dataset chính, và dataset ẩn nếu spec yêu cầu). */
-export function gradeChallenge(_spec: ChallengeSpec, _sql: string, _model: QueryModel | null): Promise<GradeResult> {
-  return Promise.reject(new NotImplementedError('gradeChallenge'));
-}
+export { gradeChallenge } from './grade';
+
+/** So tập kết quả (QĐ-019) và thứ tự ưu tiên mã (Quy ước thẻ thử thách). */
+export { compareResults, type CompareResult, type SetRelation } from './compare';
+export { orderDiagnostics, priorityKey } from './priority';
 
 /**
  * Sinh SQL từ model trình dựng (connector null với ≥ 2 điều kiện → SQL không hợp lệ để chạy; UI chặn
