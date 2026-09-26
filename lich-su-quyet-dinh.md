@@ -379,6 +379,19 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Tại `main`: typecheck 0 lỗi, 600/600 test, lint sạch, build đạt. Bẻ phanh của điều phối viên: trả `MultipleChoice` về cách xáo trong component → test "thứ tự y hệt" đỏ; khôi phục → xanh.
 - Mất: báo cáo cuối của agent (ước tính thời lượng, kết quả kiểm bản build, số đo từng màn) → chuyển sang gói rà soát (lượt chơi thật + đo) và điều phối viên tự kiểm bản build.
 
+**Kết quả gói `ra-soat-code` (10a, Scout Fable).** · 27/09 06:05
+- 10 phát hiện, tất cả tự tái hiện: 1 CAO (bấm đúp lên lựa chọn câu hỏi → cú bấm thứ hai rơi vào hộp phản hồi, bỏ qua lời giải thích — kể cả ở `q-two-rows`/`q-verify`), 7 TRUNG (StrictMode ở `npm run dev` xáo lại thứ tự lựa chọn — bản sửa gói 9b chỉ đúng trên bản build; "Bắt đầu lại" sau F5 không xác nhận + ghi `survey_skipped` giả; bấm đúp "Hỏi Hà Vy" đếm đôi, mất gợi ý 1; khoảng trắng thừa/NFD trong giá trị gõ tay → 0 dòng khó hiểu; `runQuery` không giới hạn số dòng; tài liệu nói telemetry ghi câu SQL nhưng code không ghi; phiên chơi lại không được đánh dấu), 2 THẤP.
+- Không lỗi: 37 cách vượt rào chỉ-đọc đều bị chặn; chấm 30 ca biên hợp lý; lựa chọn đầu ở hai câu đo lường đúng qua F5/bấm đúp/nhảy phần; không đếm đôi `challenge_start`/`first_run`/`challenge_complete`; DOM Hồ sơ sau end-03 không tên/mã; blob URL không rò.
+
+**QĐ-065 — Hai câu hỏi của gói 10a.** · 27/09 06:05
+- Có ghi câu SQL người chơi gõ vào telemetry không? **Không, ở vòng 1** — câu SQL gõ tay là chữ tự do (người chơi có thể gõ bất cứ gì, kể cả tên thật), trái tinh thần QĐ-042; mã chẩn đoán + chế độ + phép nối đã đủ để tìm 2–3 lỗi phổ biến (§11.4). Sửa README/ARCHITECTURE cho khớp code. Cân nhắc vòng 2: ghi "dạng câu" đã bỏ giá trị hằng.
+- Buổi thử chạy bản nào? **Bản build** (`npm run build` + `npx vite preview`), README ghi rõ; đồng thời vẫn sửa lỗi StrictMode để chế độ dev cũng đúng QĐ-041.
+
+**QĐ-066 — Kế hoạch sửa lỗi.** · 27/09 06:05
+- Gom MỌI phát hiện đã xác nhận của 10a và của rà soát sư phạm (10b, chạy tiếp theo) vào MỘT gói `sua-loi` (Opus), tránh sửa chồng lên cùng tệp hai lần.
+- Từ 10a, sửa: chống bấm đúp/giữ phím cho `DialogBox`, `MultipleChoice`, câu đọc kết quả và "Hỏi Hà Vy" (theo mẫu có sẵn của `ObjectionEffect`); thứ tự lựa chọn nhớ theo khóa phiên chơi + id câu hỏi, không ghi đè (chịu được StrictMode); "Bắt đầu lại" có hộp xác nhận và mang khảo sát đầu sang phiên mới; chuẩn hóa giá trị (bỏ khoảng trắng thừa ở trình dựng, NFC cả câu SQL trước khi chạy); giới hạn 2.000 dòng kèm một mã chẩn đoán mới `too-many-rows` và lời Hà Vy riêng (không dùng lời `other` chung chung); đánh dấu phiên chơi lại (`resetFrom`) trong tóm tắt và bảng người quan sát; chân dung ảnh hỏng quay về hình vẽ tạm; sửa tài liệu theo QĐ-065.
+- Để vòng 2: F5 khi đã đúng nhưng chưa lưu (+1 `query_run`); bản ghi `isFirstChoice` trùng của câu đọc kết quả sau F5 (tóm tắt lấy bản sớm nhất nên chỉ số không đổi).
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**
