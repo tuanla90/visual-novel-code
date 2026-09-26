@@ -6,11 +6,15 @@
 import { useState } from 'react';
 import { partName } from '../shared/display-names';
 import type { PartId } from '../shared/ids';
-import { buildTelemetryExport, downloadJson, exportFileName } from '../shared/telemetry/export';
+import { gameContent } from '../shared/store';
+import { exportAllTelemetry } from '../shared/telemetry/export-file';
+import { clearSessionMeta, getSessionMeta } from '../shared/telemetry/session-meta';
+import { EXCEL_OPTIONS, MEMORABLE_OPTIONS, PLAY_NEXT_OPTIONS, SQL_OPTIONS, optionLabel } from '../shared/telemetry/survey';
+import { MEASURED_QUESTIONS, formatDuration, summarizeSessions, type SessionSummary } from '../shared/telemetry/summary';
 import { clearTelemetry, getSessionId, getTelemetryEvents } from '../shared/telemetry/track';
 import { getTelemetryStorageStatus, useTelemetryVersion } from '../shared/telemetry/use-telemetry';
 import { ConfirmDialog } from '../shared/ui/ConfirmDialog';
-import { storageMessage, viewLabel } from './facilitator-mode';
+import { challengeTitle, choiceText, formatClock, pickedLineText, storageMessage, viewLabel } from './facilitator-mode';
 
 export interface FacilitatorPanelProps {
   part: PartId | null;
@@ -36,12 +40,11 @@ export function FacilitatorPanel({ part, sequenceId, nodeIndex, viewKind, eventC
   const hasUnreadable = (status?.unreadableSessions ?? 0) > 0;
   const partText = part ? `${partName(part)} (${part})` : 'Chưa bắt đầu';
   const viewText = viewKind ? `${viewLabel(viewKind)} (${viewKind})` : '—';
+  const summaries = open ? summarizeSessions(events, getSessionMeta()) : [];
 
   const exportNow = () => {
-    const now = Date.now();
-    const data = buildTelemetryExport(events, now);
-    const name = exportFileName(now, data.sessionCount);
-    setNotice(downloadJson(name, data) ? `Đã tạo tệp ${name}.` : 'Trình duyệt không cho tải tệp về. Thử trình duyệt khác.');
+    const name = exportAllTelemetry();
+    setNotice(name ? `Đã tạo tệp ${name}.` : 'Trình duyệt không cho tải tệp về. Thử trình duyệt khác.');
   };
 
   return (
@@ -113,6 +116,17 @@ export function FacilitatorPanel({ part, sequenceId, nodeIndex, viewKind, eventC
               </p>
             ) : null}
           </section>
+
+          {summaries.length > 0 ? (
+            <section aria-labelledby="fac-sum" className="facilitator__section">
+              <h2 id="fac-sum" className="facilitator__h">
+                Tóm tắt chỉ số §10 theo phiên ({summaries.length})
+              </h2>
+              {[...summaries].reverse().map((sum) => (
+                <SessionCard key={sum.sessionId} summary={sum} current={sum.sessionId === sessionId} />
+              ))}
+            </section>
+          ) : null}
         </div>
       ) : null}
 
@@ -124,6 +138,7 @@ export function FacilitatorPanel({ part, sequenceId, nodeIndex, viewKind, eventC
         onConfirm={() => {
           setConfirm(null);
           clearTelemetry();
+          clearSessionMeta();
           setNotice('Đã xóa dữ liệu thử nghiệm trong trình duyệt này.');
         }}
         onCancel={() => setConfirm(null)}
@@ -141,5 +156,140 @@ export function FacilitatorPanel({ part, sequenceId, nodeIndex, viewKind, eventC
         onCancel={() => setConfirm(null)}
       />
     </aside>
+  );
+}
+
+function yesNo(v: boolean | null): string {
+  return v === null ? '—' : v ? 'Có' : 'Không';
+}
+
+function preText(s: SessionSummary): string {
+  if (s.pre.status === 'skipped') return 'Bỏ qua';
+  if (s.pre.status === 'none') return 'Chưa có';
+  return `Excel: ${optionLabel(EXCEL_OPTIONS, s.pre.excelLevel)} · SQL: ${optionLabel(SQL_OPTIONS, s.pre.sqlBefore)}`;
+}
+
+function postText(s: SessionSummary): string {
+  if (s.post.status === 'skipped') return 'Bỏ qua';
+  if (s.post.status === 'none') return 'Chưa có';
+  const memorable = s.post.memorable.map((m) => optionLabel(MEMORABLE_OPTIONS, m)).join(', ') || '(không chọn)';
+  const annoying = s.post.annoying ? optionLabel(MEMORABLE_OPTIONS, s.post.annoying) : 'không có / không chọn';
+  return `Chơi tiếp: ${optionLabel(PLAY_NEXT_OPTIONS, s.post.playNext)} · Đáng nhớ: ${memorable} · Phản bác trong 2 phần đáng nhớ: ${yesNo(
+    s.post.rebutInTop2,
+  )} · Khó chịu: ${annoying}`;
+}
+
+function SessionCard({ summary: s, current }: { summary: SessionSummary; current: boolean }) {
+  const status = s.completed ? `Hoàn thành · ${formatDuration(s.gameDurationMs)}` : s.reset ? 'Đã đặt lại, chưa hoàn thành' : 'Chưa hoàn thành';
+  const challenges = s.challenges.filter((c) => c.started || c.runs > 0 || c.skippedByJump);
+  const picks = Object.entries(s.firstLinePicks);
+  return (
+    <details className={`facilitator__session${s.jumped ? ' facilitator__session--jumped' : ''}`} open={current}>
+      <summary>
+        <span className="mono">{s.sessionId.slice(0, 8)}</span> · {formatClock(s.firstAt)} · {status}
+        {current ? ' · phiên hiện tại' : ''}
+        {s.jumped ? <strong className="facilitator__flag"> · CÓ NHẢY PHẦN</strong> : null}
+      </summary>
+      {s.jumped ? (
+        <p className="facilitator__note">
+          Có nhảy phần (tới {s.jumpTargets.map((p) => partName(p)).join(', ')}): {s.autoEventCount} sự kiện do game tự chơi đã bị loại khỏi số liệu.
+          Không dùng phiên này cho tỷ lệ §10.
+        </p>
+      ) : null}
+      <dl className="facilitator__grid">
+        <dt>Hoàn thành game</dt>
+        <dd>
+          {yesNo(s.completed)}
+          {s.within35Min !== null ? ` · trong 35 phút: ${yesNo(s.within35Min)}` : ''}
+        </dd>
+        <dt>Khảo sát đầu</dt>
+        <dd>{preText(s)}</dd>
+        <dt>Khảo sát cuối</dt>
+        <dd>{postText(s)}</dd>
+        {MEASURED_QUESTIONS.map((q) => {
+          const c = s.firstChoices[q];
+          return [
+            <dt key={`${q}-t`}>
+              Lựa chọn đầu <span className="mono">{q}</span>
+            </dt>,
+            <dd key={`${q}-d`}>
+              {c ? (
+                <>
+                  <strong>{c.correct ? 'Đúng' : 'Sai'}</strong> · <span className="mono">{c.choiceId}</span> — {choiceText(gameContent, q, c.choiceId)}
+                </>
+              ) : (
+                'Chưa trả lời'
+              )}
+            </dd>,
+          ];
+        })}
+        {picks.map(([pickId, p]) => [
+          <dt key={`${pickId}-t`}>
+            Chọn dòng đầu <span className="mono">{pickId}</span>
+          </dt>,
+          <dd key={`${pickId}-d`}>
+            {p ? (
+              <>
+                <strong>{p.correct ? 'Đúng' : 'Sai'}</strong> · dòng {p.lineIndex}: <span className="mono">{pickedLineText(gameContent, pickId, p.lineIndex)}</span>
+              </>
+            ) : (
+              'Không tính (game tự chọn khi nhảy phần)'
+            )}
+          </dd>,
+        ])}
+        <dt>Mở Hồ sơ</dt>
+        <dd>{s.notebookOpens} lần</dd>
+      </dl>
+      <table className="facilitator__table">
+        <caption>Thời gian từng phần</caption>
+        <thead>
+          <tr>
+            <th scope="col">Phần</th>
+            <th scope="col">Thời gian</th>
+          </tr>
+        </thead>
+        <tbody>
+          {s.parts.map((p) => (
+            <tr key={p.part}>
+              <th scope="row">{partName(p.part)}</th>
+              <td>{p.skippedByJump ? 'Nhảy qua' : p.durationMs !== null ? formatDuration(p.durationMs) : p.started ? 'Đang chơi' : '—'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {challenges.length > 0 ? (
+        <table className="facilitator__table">
+          <caption>Thử thách (lỗi CP/LG = cú pháp/logic)</caption>
+          <thead>
+            <tr>
+              <th scope="col">Thử thách</th>
+              <th scope="col">Chạy</th>
+              <th scope="col">Lỗi CP/LG</th>
+              <th scope="col">Gợi ý</th>
+              <th scope="col">Đến lần chạy đầu</th>
+              <th scope="col">Hoàn thành</th>
+            </tr>
+          </thead>
+          <tbody>
+            {challenges.map((c) => (
+              <tr key={c.challengeId}>
+                <th scope="row">
+                  {challengeTitle(gameContent, c.challengeId)} <span className="mono">({c.challengeId})</span>
+                </th>
+                <td>{c.runs}</td>
+                <td>
+                  {c.syntaxErrors}/{c.logicErrors}
+                </td>
+                <td>{c.hints}</td>
+                <td>{formatDuration(c.msToFirstRun)}</td>
+                <td>{c.skippedByJump ? 'Nhảy qua' : c.completed ? formatDuration(c.durationMs) : 'Chưa'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p className="facilitator__muted">Chưa mở thử thách nào.</p>
+      )}
+    </details>
   );
 }

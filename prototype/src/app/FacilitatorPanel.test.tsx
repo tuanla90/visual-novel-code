@@ -120,4 +120,42 @@ describe('bảng người quan sát', () => {
     expect(storageMessage({ ...base, persistent: true, problem: null, usedChars: 90 }).tone).toBe('warn');
     expect(storageMessage(null).text).toMatch(/bộ nhớ của tab/);
   });
+
+  it('tóm tắt §10 của phiên hiện tại: lựa chọn đầu kèm nhãn dễ đọc, khảo sát, thử thách', async () => {
+    track({ type: 'survey_submitted', stage: 'pre', answers: { excelLevel: 'confident', sqlBefore: 'some' } });
+    track({ type: 'game_start' });
+    track({ type: 'challenge_start', challengeId: 'c1' });
+    track({ type: 'first_run', challengeId: 'c1', msSinceStart: 45_000 });
+    track({
+      type: 'query_run',
+      challengeId: 'c1',
+      mode: 'builder',
+      attempt: 1,
+      rowCount: 10,
+      status: 'correct',
+      primaryCode: null,
+      errorClass: null,
+      connector: null,
+      msSinceStart: 45_000,
+    });
+    track({ type: 'question_answered', questionId: 'q-two-rows', choiceId: 'tim-ra-roi', attempt: 1, correct: false, isFirstChoice: true });
+    render(<FacilitatorPanel {...baseProps} />);
+    await openPanel();
+    expect(screen.getByRole('heading', { name: 'Tóm tắt chỉ số §10 theo phiên (1)' })).toBeInTheDocument();
+    expect(screen.getByText(/Excel: Dùng thành thạo: hàm, lọc, pivot · SQL: Học qua một ít/)).toBeInTheDocument();
+    const firstChoice = screen.getByText('tim-ra-roi').closest('dd');
+    expect(firstChoice).toHaveTextContent('Sai · tim-ra-roi — Tìm ra rồi');
+    expect(screen.getByRole('row', { name: /\(c1\)/ })).toHaveTextContent('45 giây');
+  });
+
+  it('xuất JSON kèm tóm tắt và ghi chú phiên', async () => {
+    track({ type: 'game_start' });
+    render(<FacilitatorPanel {...baseProps} />);
+    await openPanel();
+    await userEvent.click(screen.getByRole('button', { name: 'Xuất dữ liệu thử nghiệm (JSON)' }));
+    const data = JSON.parse(await blobs[0]!.text()) as { summaries: { sessionId: string; started: boolean }[]; sessionMeta: object };
+    expect(data.summaries).toHaveLength(1);
+    expect(data.summaries[0]?.started).toBe(true);
+    expect(data.sessionMeta).toEqual({});
+  });
 });

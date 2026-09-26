@@ -4,6 +4,7 @@
  * với tiến độ chơi). Trình duyệt chặn bộ nhớ → vẫn chạy, chỉ giữ trong bộ nhớ của tab.
  */
 import { createLocalStorageSink, createSessionIdStore, safeBrowserStorage, type PersistentTelemetrySink } from './local-sink';
+import { configureSessionMeta } from './session-meta';
 import { configureTelemetry } from './track';
 
 export function installPersistentTelemetry(
@@ -14,5 +15,6 @@ export function installPersistentTelemetry(
 ): PersistentTelemetrySink {
   const sink = createLocalStorageSink({ storage: storages.local });
   configureTelemetry({ sink, sessionIdStore: createSessionIdStore(storages.session) });
+  configureSessionMeta(storages.local);
   return sink;
 }

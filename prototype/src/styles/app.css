@@ -1304,6 +1304,67 @@
   margin: var(--sp-2) 0 0;
   color: var(--c-text-muted);
 }
+.facilitator__session {
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-1) var(--sp-2);
+  margin-top: var(--sp-2);
+}
+.facilitator__session > summary {
+  cursor: pointer;
+  min-height: 24px;
+  padding: 2px 0;
+}
+.facilitator__session[open] > summary {
+  margin-bottom: var(--sp-2);
+}
+.facilitator__session--jumped {
+  border-color: var(--c-warning);
+  border-width: 2px;
+}
+.facilitator__flag {
+  color: var(--c-warning);
+}
+.facilitator__note {
+  margin: 0 0 var(--sp-2);
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--radius-sm);
+  background: var(--c-warning-bg);
+  color: var(--c-warning);
+}
+.facilitator__table {
+  width: 100%;
+  margin-top: var(--sp-2);
+  border-collapse: collapse;
+}
+.facilitator__table caption {
+  text-align: left;
+  font-weight: 700;
+  padding-bottom: 2px;
+}
+.facilitator__table th,
+.facilitator__table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 2px var(--sp-1);
+  border-top: 1px solid var(--c-border);
+}
+.facilitator__table thead th {
+  color: var(--c-text-muted);
+  font-weight: 600;
+}
+.facilitator__table tbody th {
+  font-weight: 600;
+}
+.facilitator__jumps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+}
+.facilitator__jumps .btn {
+  min-height: 32px;
+  padding: 2px var(--sp-2);
+}
 
 /* ---------- Thông báo ---------- */
 .game__rejection {
