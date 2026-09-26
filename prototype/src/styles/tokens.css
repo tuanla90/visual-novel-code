@@ -1,0 +1,96 @@
+/* Token thiết kế dùng chung. Gói 7 (hinh-giao-dien) được đổi GIÁ TRỊ, không đổi TÊN token. */
+:root {
+  /* Phông */
+  --font-ui: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, 'Courier New', monospace;
+
+  /* Cỡ chữ: nội dung ≥ 16px */
+  --fs-sm: 0.875rem; /* 14px — chỉ dùng cho nhãn phụ, không dùng cho nội dung đọc */
+  --fs-base: 1rem; /* 16px */
+  --fs-md: 1.125rem; /* 18px */
+  --fs-lg: 1.375rem; /* 22px */
+  --fs-xl: 1.75rem; /* 28px */
+  --fs-2xl: 2.5rem; /* 40px */
+  --lh-body: 1.55;
+
+  /* Khoảng cách */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-8: 3rem;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  /* Vùng chạm tối thiểu */
+  --tap-min: 24px;
+  --hotspot-min: 44px;
+
+  /* Màu nền/chữ chung (tương phản ≥ 4.5:1 với chữ) */
+  --c-bg: #f6f3ee;
+  --c-surface: #ffffff;
+  --c-text: #1f2328;
+  --c-text-muted: #4b5563;
+  --c-border: #d6d1c8;
+  --c-focus: #1d4ed8;
+  --c-success: #166534;
+  --c-success-bg: #dcfce7;
+  --c-warning: #92400e;
+  --c-warning-bg: #fef3c7;
+  --c-error: #991b1b;
+  --c-error-bg: #fee2e2;
+
+  /* Màu chủ đạo nhân vật (GDD §15.1, QĐ-026) */
+  --c-char-minh-anh: #c8102e; /* đỏ phượng */
+  --c-char-minh-anh-ink: #ffffff;
+  --c-char-ha-vy: #0f766e; /* xanh ngọc */
+  --c-char-ha-vy-ink: #ffffff;
+  --c-char-quan: #334155; /* xanh than / xám */
+  --c-char-quan-ink: #ffffff;
+  --c-char-hoai: #7c3aed; /* nhân chứng — tím dịu, tạm */
+  --c-char-hoai-ink: #ffffff;
+  --c-char-bac-tu: #78350f; /* bác Tư — nâu ấm, tạm */
+  --c-char-bac-tu-ink: #ffffff;
+  --c-char-player: #1d4ed8;
+  --c-char-player-ink: #ffffff;
+  --c-char-narrator: #6b7280;
+  --c-char-narrator-ink: #ffffff;
+
+  /* Nền cảnh tạm (gói 7 thay bằng hình) */
+  --c-scene-clb-room: #f3e4c8; /* phòng CLB — ấm */
+  --c-scene-corridor-b: #dfe7ee; /* hành lang giảng đường B */
+  --c-scene-debrief-room: #cfd8e3; /* phòng giải trình — lạnh */
+
+  /* Tông giấy hồ sơ (QĐ-026: kem, ghim) */
+  --c-paper: #fbf5e6;
+  --c-paper-edge: #e0d3b4;
+  --c-paper-ink: #2b2118;
+  --c-paper-note: #8a6d3b;
+  --c-pin: #b91c1c;
+
+  /* Tông màn hình SQL (GDD §15.4: hiện đại, tối) */
+  --c-sql-bg: #0f172a;
+  --c-sql-surface: #1e293b;
+  --c-sql-text: #e2e8f0;
+  --c-sql-keyword: #7dd3fc;
+  --c-sql-string: #fcd34d;
+  --c-sql-number: #86efac;
+  --c-sql-comment: #94a3b8;
+  --c-sql-border: #334155;
+  --c-sql-highlight: #facc15;
+
+  /* Hộp thoại */
+  --c-dialog-bg: rgba(255, 255, 255, 0.96);
+  --c-dialog-border: #b8b0a2;
+
+  /* Thanh trên */
+  --c-topbar-bg: #1f2328;
+  --c-topbar-text: #f6f3ee;
+  --c-topbar-accent: #fbbf24;
+
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+}

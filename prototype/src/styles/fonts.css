@@ -1,0 +1,8 @@
+/* Phông chữ đóng gói cục bộ qua @fontsource (QĐ-009): không phụ thuộc Google Fonts lúc chạy.
+   Chỉ nạp các trọng số dùng đến để giảm kích thước bundle. */
+@import '@fontsource/be-vietnam-pro/400.css';
+@import '@fontsource/be-vietnam-pro/500.css';
+@import '@fontsource/be-vietnam-pro/600.css';
+@import '@fontsource/be-vietnam-pro/700.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/600.css';
