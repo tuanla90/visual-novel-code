@@ -340,6 +340,19 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Tại `main` (cherry-pick 8 commit + sửa chú thích): typecheck 0 lỗi, 460/460 test (`--maxWorkers=2`), lint sạch, build đạt. Bẻ phanh của agent: tô riêng `OR` → đỏ; bỏ chạy thật → đỏ; đảo thứ tự mã chung → đỏ; phanh telemetry QĐ-059 → đỏ; tất cả khôi phục xanh.
 - Điểm đáng ghi: agent tránh dùng lại `SqlCode` của gói 4 vì bộ đó gắn chú thích riêng cho `OR` — dùng lại sẽ vô tình lộ đáp án bước chọn dòng lỗi.
 
+**QĐ-062 — Phạm vi "hủy dữ liệu" khi quyền truy cập kết thúc.** · Nguồn: Q1/Q2 của agent `hinh-giao-dien` · 27/09 01:20
+- Vấn đề: kịch bản chỉ gắn `redact` cho `ev-c3-shortlist`; thẻ `ev-quan-fixed` (đúng hai người đó) và `ev-c1-names-h` (10 người, có cả hai) vẫn hiện tên + mã sau câu "Danh sách hai người được hủy". Dòng chú thích trên thẻ đã hủy còn nêu mã SV240317, SV240228.
+- Phương án: A — sửa nội dung, gắn `redact` cho thêm các thẻ có dữ liệu cá nhân; B — giao diện tự che mọi bảng truy vấn khi có chú thích hủy (luật ngầm); C — để nguyên.
+- **Chọn A, mở rộng:** ở end-03, che MỌI thẻ kết quả truy vấn có dữ liệu cá nhân (`ev-c1-names-h`, `ev-c3-shortlist`, `ev-quan-fixed`); giữ `ev-c2-classes-b` (chỉ có mã lớp). Bỏ mã sinh viên khỏi dòng chú thích của thẻ đã hủy (viết trung tính, ví dụ "một người trong danh sách đã ký gửi hộ; người còn lại vô can"); sổ bàn giao vẫn giữ mã vì đó là tài liệu của cán bộ, không phải dữ liệu CLB trích xuất. Giao gói `tich-hop` (sửa kịch bản + nội dung + test trung thành).
+- Q3 (khung màn chiếu vượt mép màn chiếu vẽ ở ≤ 1100 px do bố cục xếp dọc của gói 6): **để nguyên** cho vòng test 1 (máy mục tiêu 1366×768; ở 1024 vẫn đọc được, 0 lỗi đo).
+- Đề xuất đặt điểm xem xét lên hình nền: **để nguyên** (danh sách nút có nhãn) cho vòng test 1; cân nhắc khi có ảnh thật.
+
+**Nghiệm thu gói `hinh-giao-dien` — ĐẠT.** · 27/09 01:20
+- Tại `main` (ff `002849b`): typecheck 0 lỗi, 509/509 test, lint sạch, build đạt. Điều phối viên xem tận mắt màn tiêu đề và phòng CLB ở 1366×768: nền SVG đúng bố cục tệp prompt của user, chân dung đúng màu chủ đạo, người đang nói nổi bật.
+- Bẻ phanh của agent: thả ảnh thử `bg-prototype-hallway.png` → game dùng ảnh, đặt sai tên → test đỏ; thẻ hủy chỉ `blur` → đỏ; dòng nhắc nêu tên manh mối → đỏ; bỏ chặn bấm lặp của hiệu ứng → đỏ.
+- Hướng dẫn thả ảnh cho user: `prototype/src/assets/art/README.md`.
+- Ghi chú: agent thấy 3 cú bấm chuột thật không phải của nó trong lúc chơi thử (có thể user đang xem khung trình duyệt) — luồng vẫn đi hết.
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**
