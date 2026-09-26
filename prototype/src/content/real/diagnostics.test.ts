@@ -71,8 +71,9 @@ describe('Nhận xét chung', () => {
     expect(Object.keys(common).filter((c) => !isBlocking(c))).toEqual(COMMON_DIAGNOSTIC_ORDER.filter((c) => !isBlocking(c)));
   });
 
-  it('mọi mã blocking (kể cả no-columns, no-value của gói 3) có lời chung', () => {
+  it('mọi mã blocking (kể cả no-columns, no-value của gói 3) có lời chung, xếp đúng thứ tự engine (QĐ-052)', () => {
     for (const code of BLOCKING_DIAGNOSTIC_CODES) expect(common[code], code).toBeDefined();
+    expect(Object.keys(common).filter(isBlocking)).toEqual([...BLOCKING_DIAGNOSTIC_CODES]);
   });
 
   it('wrong-value có lời chung; thẻ c2 vẫn giữ lời riêng (QĐ-047)', () => {

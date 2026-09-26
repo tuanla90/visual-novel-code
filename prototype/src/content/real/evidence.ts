@@ -84,7 +84,7 @@ export const realEvidence: EvidenceContent = {
     'doc-handover-log': {
       id: 'doc-handover-log',
       title: 'Sổ bàn giao niêm phong — kết quả đối chiếu',
-      source: 'Cô phụ trách hộp góp ý, gửi qua Phòng CTSV theo đề nghị của CLB (end-01)',
+      source: 'Cô phụ trách hộp góp ý, gửi qua Phòng CTSV theo đề nghị của CLB',
       body: [
         'Hộp góp ý giảng đường B, mở sáng thứ Hai: 1 phong bì có yêu cầu phản hồi chính thức. Người gửi ký "H.". Mã sinh viên ghi trên phiếu gửi đã chép vào sổ.',
         'Đối chiếu theo đề nghị: SV240317 — có trong sổ. SV240228 — không có trong sổ.',

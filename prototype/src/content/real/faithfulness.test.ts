@@ -10,7 +10,7 @@
  */
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { CLUE_IDS, DOCUMENT_IDS, CHALLENGE_IDS } from '../../shared/ids';
+import { BLOCKING_DIAGNOSTIC_CODES, CLUE_IDS, DOCUMENT_IDS, CHALLENGE_IDS } from '../../shared/ids';
 import { CHALLENGE_SPECS } from '../../sql-challenge/data/challenges';
 import type { DiagnosticResponse } from '../../sql-challenge/types';
 import { DEFAULT_GATE_LABEL } from '../../story/engine/runtime';
@@ -319,11 +319,7 @@ describe('thẻ thử thách, gợi ý chuẩn, nhận xét chung — hai chiề
     const [required = '', encouraged = ''] = requiredPart.split('(khuyến khích');
     const ticks = (s: string): string[] => [...s.matchAll(/`([a-z_]+)`/g)].map((m) => m[1] ?? '');
     expect(spec.requiredColumns).toEqual(ticks(required));
-    // Cột khuyến khích: dòng "Cột bắt buộc" ghi "(khuyến khích thêm `…`)"; thẻ debrief-fix không ghi ở
-    // dòng đó mà ghi trong đề bài "(giữ lớp và câu lạc bộ để đối chiếu)" — đọc cả hai chỗ.
-    const prompt = card.fields['Đề bài hiển thị'] ?? '';
-    const encouragedCols = ticks(encouraged).length > 0 ? ticks(encouraged) : prompt.includes('lớp và câu lạc bộ') ? ['ma_lop', 'clb'] : [];
-    expect(spec.encouragedColumns).toEqual(encouragedCols);
+    expect(spec.encouragedColumns).toEqual(ticks(encouraged));
     expect(spec.expectedRowCount).toBe(Number(/Kết quả chuẩn: (\d+) dòng/.exec(cols)?.[1]));
     expect(spec.runHiddenDataset).toBe(/dataset ẩn: có/.test(cols));
     const preload = card.fields['Nạp sẵn vào trình dựng'];
@@ -340,6 +336,13 @@ describe('thẻ thử thách, gợi ý chuẩn, nhận xét chung — hai chiề
   it('nhận xét chung: đủ mã, đúng lời, ĐÚNG THỨ TỰ liệt kê', () => {
     const actual = Object.entries(realContent.commonDiagnosticLines).map(([k, v]) => [k, plainResponse(v)]);
     expect(actual).toEqual(script.commonDiagnostics.map((d) => [d.code, { line: toDialogue(d.line) }]));
+  });
+
+  it('QĐ-052: kịch bản liệt kê mã blocking đúng thứ tự engine — ở dòng quy ước ưu tiên và ở "Nhận xét chung"', () => {
+    const convention = /lỗi không chạy được \(([^)]*)\)/.exec(MARKDOWN)?.[1] ?? '';
+    expect([...convention.matchAll(/`([a-z-]+)`/g)].map((m) => m[1])).toEqual([...BLOCKING_DIAGNOSTIC_CODES]);
+    const blocking = script.commonDiagnostics.map((d) => d.code).filter((c) => (BLOCKING_DIAGNOSTIC_CODES as readonly string[]).includes(c));
+    expect(blocking).toEqual([...BLOCKING_DIAGNOSTIC_CODES]);
   });
 
   it('phản hồi tim-ra-roi của q-two-rows chính là câu gợi ý chuẩn hint-ask-or-conclude', () => {

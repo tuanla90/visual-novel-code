@@ -60,13 +60,6 @@ export const realCommonDiagnosticLines: CommonDiagnosticLines = {
   'no-table': {
     line: { speaker: 'ha-vy', expression: 'neutral', text: 'Hàng FROM còn trống. Mình lấy dữ liệu từ bảng nào?' },
   },
-  'connector-unset': {
-    line: {
-      speaker: 'ha-vy',
-      expression: 'neutral',
-      text: 'Chưa chọn cách nối các điều kiện. Cậu cần người thỏa bất kỳ, hay thỏa đồng thời?',
-    },
-  },
   'no-columns': {
     line: {
       speaker: 'ha-vy',
@@ -79,6 +72,13 @@ export const realCommonDiagnosticLines: CommonDiagnosticLines = {
       speaker: 'ha-vy',
       expression: 'neutral',
       text: 'Có một điều kiện chưa có giá trị. Cậu lọc theo gì? Chọn trong mục "Từ manh mối" nhé.',
+    },
+  },
+  'connector-unset': {
+    line: {
+      speaker: 'ha-vy',
+      expression: 'neutral',
+      text: 'Chưa chọn cách nối các điều kiện. Cậu cần người thỏa bất kỳ, hay thỏa đồng thời?',
     },
   },
   'wrong-column-ho-dem': {
@@ -249,7 +249,7 @@ const c1: ChallengeContent = {
     id: 'ev-c1-names-h',
     title: 'Sinh viên có tên bắt đầu bằng H',
     description:
-      "10 dòng từ bảng `sinh_vien`, lọc `ten LIKE 'H%'`. Nguồn: truy vấn của bạn ở thử thách 1. Thẻ kèm câu SQL đã chạy và bảng kết quả.",
+      "10 dòng từ bảng `sinh_vien`, lọc `ten LIKE 'H%'`. Nguồn: truy vấn của bạn ở thử thách 1.",
   },
 };
 
@@ -450,7 +450,7 @@ const c3: ChallengeContent = {
     id: 'ev-c3-shortlist',
     title: 'Người khớp cả ba manh mối',
     description:
-      "2 dòng: Lê Thị Hoài — SV240317 — QT24B — Báo chí; Phạm Minh Hiếu — SV240228 — KT24A — Báo chí. Truy vấn: `ten LIKE 'H%' AND ma_lop IN ('KT24A', 'QT24B') AND clb = 'Báo chí'`. Chú thích gắn sau màn giải trình: xem mục Hồ sơ vật chứng.",
+      "2 dòng: Lê Thị Hoài — SV240317 — QT24B — Báo chí; Phạm Minh Hiếu — SV240228 — KT24A — Báo chí. Truy vấn: `ten LIKE 'H%' AND ma_lop IN ('KT24A', 'QT24B') AND clb = 'Báo chí'`.",
   },
 };
 
@@ -494,7 +494,7 @@ const debriefFix: ChallengeContent = {
     id: 'ev-quan-fixed',
     title: 'Truy vấn của Quân, đã sửa',
     description:
-      'Cùng ba điều kiện, đổi `OR` thành `AND`: từ 24 dòng còn 2 dòng. Thẻ kèm hai câu SQL (trước và sau khi sửa) và số dòng của mỗi câu.',
+      'Cùng ba điều kiện, đổi `OR` thành `AND`: từ 24 dòng còn 2 dòng.',
   },
 };
 

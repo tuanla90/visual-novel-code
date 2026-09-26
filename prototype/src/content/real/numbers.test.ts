@@ -7,8 +7,8 @@ import { describe, expect, it } from 'vitest';
 import { C1_REFERENCE_SQL, C2_REFERENCE_SQL, C3_REFERENCE_SQL, CHALLENGE_SPECS, QUAN_OR_QUERY } from '../../sql-challenge/data/challenges';
 import { runQuery } from '../../sql-challenge/engine';
 import type { SqlValue } from '../../sql-challenge/types';
-import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
 import { realContent } from '.';
+import { shownStrings } from './testing/shown-strings';
 
 async function run(sql: string): Promise<{ rowCount: number; rows: SqlValue[][]; columns: string[] }> {
   const r = await runQuery(sql);
@@ -16,38 +16,8 @@ async function run(sql: string): Promise<{ rowCount: number; rows: SqlValue[][];
   return r;
 }
 
-/** Mọi chữ người chơi đọc được: lời thoại, câu hỏi, lựa chọn, phản hồi, gợi ý, mô tả thẻ. */
-function shownTexts(): string[] {
-  const out: string[] = [];
-  const line = (l: DialogueLine): void => void out.push(l.text);
-  const question = (q: MultipleChoiceQuestion): void => {
-    line(q.asker);
-    for (const c of q.choices) {
-      out.push(c.text);
-      c.feedback.forEach(line);
-    }
-  };
-  for (const seq of realContent.story.sequences) {
-    for (const n of seq.nodes) {
-      if (n.type === 'line') line(n);
-      else if (n.type === 'question') question(n.question);
-      else if (n.type === 'line-pick') n.pick.lines.forEach((l) => l.feedback.forEach(line));
-    }
-  }
-  for (const def of Object.values(realContent.challenges)) {
-    const c = def.content;
-    out.push(c.prompt, c.evidence.description);
-    c.hints.forEach(line);
-    c.steps.forEach((s) => line(s.line));
-    line(c.onCorrect);
-    if (c.readQuestion) question(c.readQuestion);
-    for (const r of Object.values(c.diagnosticLines)) if (r && 'line' in r) line(r.line);
-  }
-  for (const r of Object.values(realContent.commonDiagnosticLines)) if (r && 'line' in r) line(r.line);
-  return out;
-}
-
-const TEXTS = shownTexts();
+/** Mọi chữ người chơi đọc được (lời thoại, câu hỏi, lựa chọn, phản hồi, gợi ý, thẻ…). */
+const TEXTS = shownStrings(realContent).map((s) => s.text);
 const said = (phrase: string): boolean => TEXTS.some((t) => t.includes(phrase));
 
 describe('lời thoại nói đúng số dòng mà engine chạy ra', () => {
