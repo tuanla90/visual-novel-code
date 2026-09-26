@@ -1,17 +1,25 @@
 /**
  * gradeChallenge (QĐ-018/QĐ-019/QĐ-040): chạy SQL của người chơi trên dataset chính, so tập kết quả
- * với SQL chuẩn; nếu đúng và spec yêu cầu thì chạy thêm dataset ẩn; gom mã chẩn đoán và sắp theo
- * thứ tự ưu tiên của thẻ.
+ * với SQL chuẩn; nếu đúng và spec yêu cầu thì chạy thêm dataset ẩn; gom mã chẩn đoán (cấu trúc +
+ * kết quả) và sắp theo thứ tự ưu tiên của thẻ.
  *
  * Trạng thái:
- * - `error`: không chạy được (model chưa hợp lệ, câu không phải SELECT, lỗi SQLite) — diagnostics có mã blocking.
- * - `incorrect`: chạy được nhưng chưa đúng (kể cả đạt dataset chính mà trượt dataset ẩn).
+ * - `error`: không chạy được (model chưa hợp lệ, câu không phải SELECT, lỗi SQLite). Diagnostics thường
+ *   là mã blocking; riêng lỗi "no such column" khi FROM sai bảng cho `wrong-table` (không blocking) vì
+ *   đó là lời cần hiện.
+ * - `incorrect`: chạy được nhưng chưa đúng, kể cả đạt dataset chính mà trượt dataset ẩn (khi đó nếu
+ *   cấu trúc không cho mã cụ thể hơn thì `hardcoded-ids`).
  * - `correct`: đúng trên dataset chính (và ẩn nếu có); có thể kèm mẹo `extra-columns`.
+ *
+ * `primaryCode` = phần tử đầu của `diagnostics` đã sắp theo ưu tiên mặc định của engine (bảng thứ tự
+ * trong data/challenges.ts, chép từ kịch bản). Khi có nội dung thật, gói UI gọi `pickDiagnostic(codes,
+ * content.diagnosticLines, commonDiagnosticLines)` để lấy mã hiển thị + lời; hai kết quả trùng nhau khi
+ * nội dung liệt kê mã đúng thứ tự kịch bản.
  */
 import type { DiagnosticCode } from '../../shared/ids';
 import type { ChallengeSpec, Diagnostic, GradeResult, QueryModel, RunFailure, RunResult } from '../types';
 import { compareResults } from './compare';
-import { codeForRunFailure, diagnoseFromResult } from './diagnose';
+import { analyzeStructure, conditionsEquivalent, diagnoseFromResult, diagnoseRunFailure, diagnoseStructure, referenceStructure } from './diagnose';
 import { validateModel } from './model-sql';
 import { orderDiagnostics } from './priority';
 import { getReferenceResult, getTableRowCount } from './reference';
@@ -22,8 +30,10 @@ function dedupe(diagnostics: Diagnostic[]): Diagnostic[] {
   return diagnostics.filter((d) => (seen.has(d.code) ? false : (seen.add(d.code), true)));
 }
 
+/** Sắp theo ưu tiên; lần chạy chưa đúng mà không có mã nào → `other` (không đoán mã cụ thể). */
 function finish(spec: ChallengeSpec, status: GradeResult['status'], diagnostics: Diagnostic[], run: RunResult, hidden: GradeResult['hidden'], extraColumns: boolean): GradeResult {
   const ordered = orderDiagnostics(spec.id, dedupe(diagnostics));
+  if (status === 'incorrect' && ordered.length === 0) ordered.push({ code: 'other', severity: 'error' });
   return { status, diagnostics: ordered, primaryCode: ordered[0]?.code ?? null, extraColumns, hidden, run };
 }
 
@@ -39,19 +49,25 @@ export async function gradeChallenge(spec: ChallengeSpec, sql: string, model: Qu
     }
   }
 
+  const structure = analyzeStructure(sql, model);
+  const reference = referenceStructure(spec);
+
   // 1. Chạy trên dataset chính.
   const run = await runQuery(sql, 'main');
   if (!run.ok) {
-    return finish(spec, 'error', [{ code: codeForRunFailure(run), severity: 'blocking', detail: run.message }], run, NOT_RUN, false);
+    return finish(spec, 'error', diagnoseRunFailure(spec, run, structure), run, NOT_RUN, false);
   }
 
   // 2. So với đáp án chính.
-  const reference = await getReferenceResult(spec, 'main');
-  const compare = compareResults(run, reference, spec.requiredColumns, spec.encouragedColumns);
+  const referenceRun = await getReferenceResult(spec, 'main');
+  const compare = compareResults(run, referenceRun, spec.requiredColumns, spec.encouragedColumns);
 
   if (!compare.matches) {
     const tableRowCount = await getTableRowCount(spec.table, 'main');
-    const diagnostics = diagnoseFromResult({ compare, playerRowCount: run.rowCount, tableRowCount, conditionsEquivalent: null });
+    const diagnostics = [
+      ...diagnoseStructure(spec, structure, reference),
+      ...diagnoseFromResult({ compare, playerRowCount: run.rowCount, tableRowCount, conditionsEquivalent: conditionsEquivalent(structure, reference) }),
+    ];
     return finish(spec, 'incorrect', diagnostics, run, NOT_RUN, false);
   }
 
@@ -66,7 +82,9 @@ export async function gradeChallenge(spec: ChallengeSpec, sql: string, model: Qu
     }
     hidden = { ran: true, passed };
     if (!passed) {
-      return finish(spec, 'incorrect', [{ code: 'hardcoded-ids', severity: 'error', detail: 'đạt dataset chính, trượt dataset ẩn' }], run, hidden, false);
+      const structural = diagnoseStructure(spec, structure, reference).filter((d) => d.code !== 'no-filter');
+      const diagnostics = structural.length > 0 ? structural : [{ code: 'hardcoded-ids', severity: 'error', detail: 'đạt dataset chính, trượt dataset ẩn' } satisfies Diagnostic];
+      return finish(spec, 'incorrect', diagnostics, run, hidden, false);
     }
   }
 

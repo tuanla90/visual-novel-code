@@ -10,7 +10,44 @@
  */
 import { BLOCKING_DIAGNOSTIC_CODES, DIAGNOSTIC_CODES, type ChallengeId, type DiagnosticCode } from '../../shared/ids';
 import { CHALLENGE_DIAGNOSTIC_ORDER, COMMON_DIAGNOSTIC_ORDER } from '../data/challenges';
-import type { Diagnostic } from '../types';
+import type { ChallengeContent, CommonDiagnosticLines, Diagnostic, DiagnosticResponse } from '../types';
+
+export interface PickedDiagnostic {
+  /** Mã đã chọn để hiển thị — cũng là `primaryCode` ghi vào telemetry `query_run`. */
+  code: DiagnosticCode;
+  /** Lời tương ứng; `null` khi nội dung chưa có lời cho mã đó (UI hiện lời dự phòng, không hiện mã thô). */
+  response: DiagnosticResponse | null;
+}
+
+/**
+ * Chọn MỘT mã để hiện lời, theo "Quy ước thẻ thử thách": mã blocking (theo thứ tự
+ * BLOCKING_DIAGNOSTIC_CODES) → mã có trong `challengeLines` theo thứ tự khóa của thẻ → mã có trong
+ * `commonLines` theo thứ tự khóa → `other`. Thứ tự khóa của hai bảng lời CHÍNH LÀ thứ tự ưu tiên,
+ * nên gói noi-dung phải liệt kê đúng thứ tự trong kịch bản.
+ *
+ * Trả `null` khi không có mã nào (chạy đúng, không mẹo → UI hiện lời `[KHI ĐÚNG]`).
+ * Hàm thuần, không phụ thuộc thử thách nào — gói UI dùng để hiện lời và ghi telemetry đúng mã đã hiện.
+ */
+export function pickDiagnostic(
+  codes: readonly DiagnosticCode[],
+  challengeLines: ChallengeContent['diagnosticLines'],
+  commonLines: CommonDiagnosticLines,
+): PickedDiagnostic | null {
+  if (codes.length === 0) return null;
+  const has = (code: string): code is DiagnosticCode => (codes as readonly string[]).includes(code);
+  const responseFor = (code: DiagnosticCode): DiagnosticResponse | null => challengeLines[code] ?? commonLines[code] ?? null;
+
+  const blocking = BLOCKING_DIAGNOSTIC_CODES.find(has);
+  if (blocking) return { code: blocking, response: responseFor(blocking) };
+
+  for (const key of Object.keys(challengeLines)) {
+    if (key !== 'other' && has(key) && challengeLines[key]) return { code: key, response: challengeLines[key] ?? null };
+  }
+  for (const key of Object.keys(commonLines)) {
+    if (key !== 'other' && has(key) && commonLines[key]) return { code: key, response: commonLines[key] ?? null };
+  }
+  return { code: 'other', response: responseFor('other') };
+}
 
 function rank(order: readonly DiagnosticCode[], code: DiagnosticCode): number {
   const i = order.indexOf(code);

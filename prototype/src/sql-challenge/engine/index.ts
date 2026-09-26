@@ -14,7 +14,8 @@ export { gradeChallenge } from './grade';
 
 /** So tập kết quả (QĐ-019) và thứ tự ưu tiên mã (Quy ước thẻ thử thách). */
 export { compareResults, type CompareResult, type SetRelation } from './compare';
-export { orderDiagnostics, priorityKey } from './priority';
+export { orderDiagnostics, pickDiagnostic, priorityKey, type PickedDiagnostic } from './priority';
+export { analyzeStructure, diagnoseStructure, referenceStructure, type QueryStructure } from './diagnose';
 
 /**
  * Sinh SQL từ model trình dựng (connector null với ≥ 2 điều kiện → SQL không hợp lệ để chạy; UI chặn

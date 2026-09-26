@@ -209,9 +209,17 @@ export interface LikeShape {
   wildcard: 'starts' | 'ends' | 'contains' | 'none' | 'other';
 }
 
+export interface ComparisonShape {
+  column: string;
+  op: 'eq' | 'in';
+  values: string[];
+}
+
 export interface QueryShape {
   /** Bảng đầu tiên sau FROM (chữ thường), hoặc null nếu không thấy. */
   table: string | null;
+  /** So sánh `cột = hằng` và `cột IN (hằng, …)` ở tầng ngoài của WHERE (IN chứa truy vấn con thì bỏ qua). */
+  comparisons: ComparisonShape[];
   hasWhere: boolean;
   /** Từ khóa nối ở TẦNG NGOÀI của WHERE. */
   hasTopLevelOr: boolean;
@@ -235,6 +243,7 @@ export function analyzeShape(rawSql: string): QueryShape {
   const { tokens } = tokenize(stripComments(rawSql));
   const shape: QueryShape = {
     table: null,
+    comparisons: [],
     hasWhere: false,
     hasTopLevelOr: false,
     hasTopLevelAnd: false,
@@ -303,16 +312,44 @@ export function analyzeShape(rawSql: string): QueryShape {
     } else if (w === 'IN' || w === 'IS' || w === 'BETWEEN') {
       const col = where[i - 1];
       if (col && col.kind === 'word') pushUnique(shape.whereColumns, col.value.toLowerCase());
+      if (w === 'IN' && col && col.kind === 'word') {
+        const values = readLiteralList(where, i + 1);
+        if (values) shape.comparisons.push({ column: col.value.toLowerCase(), op: 'in', values });
+      }
     } else {
       const next = where[i + 1];
       if (next && next.kind === 'punct' && ['=', '<>', '!=', '<', '>', '<=', '>='].includes(next.value)) {
         pushUnique(shape.whereColumns, t.value.toLowerCase());
+        const lit = where[i + 2];
+        if (next.value === '=' && lit && (lit.kind === 'string' || lit.kind === 'number')) {
+          shape.comparisons.push({ column: t.value.toLowerCase(), op: 'eq', values: [lit.value] });
+        }
       } else if (next && next.kind === 'word' && ['LIKE', 'IN', 'IS', 'BETWEEN', 'NOT', 'GLOB'].includes(next.value.toUpperCase())) {
         pushUnique(shape.whereColumns, t.value.toLowerCase());
       }
     }
   }
   return shape;
+}
+
+/** `( hằng, hằng, … )` bắt đầu tại `start`; null nếu không phải danh sách hằng thuần. */
+function readLiteralList(tokens: Token[], start: number): string[] | null {
+  const open = tokens[start];
+  if (!open || open.kind !== 'punct' || open.value !== '(') return null;
+  const values: string[] = [];
+  let i = start + 1;
+  for (;;) {
+    const t = tokens[i];
+    if (!t) return null;
+    if (t.kind === 'punct' && t.value === ')' && values.length === 0) return values;
+    if (t.kind !== 'string' && t.kind !== 'number') return null;
+    values.push(t.value);
+    const sep = tokens[i + 1];
+    if (!sep || sep.kind !== 'punct') return null;
+    if (sep.value === ')') return values;
+    if (sep.value !== ',') return null;
+    i += 2;
+  }
 }
 
 export function classifyLike(pattern: string): LikeShape['wildcard'] {

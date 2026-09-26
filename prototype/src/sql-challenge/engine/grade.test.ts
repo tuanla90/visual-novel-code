@@ -118,11 +118,12 @@ describe('gradeChallenge — chưa đúng theo tập kết quả', () => {
     expect(g.run).toMatchObject({ ok: true, rowCount: 3 });
   });
 
-  it('c1: 0 dòng (LIKE không có %) → incorrect, không có mã cụ thể → primaryCode null hoặc other', async () => {
+  it('c1: 0 dòng (LIKE không có %) → incorrect, không có mã cụ thể → other (không đoán)', async () => {
     const g = await gradeChallenge(c1, "SELECT ma_sv, ho_dem, ten FROM sinh_vien WHERE ten LIKE 'H'", null);
     expect(g.status).toBe('incorrect');
     expect(g.run).toMatchObject({ ok: true, rowCount: 0 });
-    expect([null, 'other']).toContain(g.primaryCode);
+    expect(g.diagnostics).toEqual([{ code: 'other', severity: 'error' }]);
+    expect(g.primaryCode).toBe('other');
   });
 });
 
