@@ -214,6 +214,34 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 **QĐ-040 — Mã chẩn đoán.** · Nguồn: thẻ thử thách của agent `kich-ban` · 26/09 15:30
 - **Chọn:** dùng bộ mã trong `docs/kich-ban-prototype.md` làm hợp đồng giữa nội dung và engine: `not-select`, `syntax-error`, `no-table`, `wrong-table`, `no-filter`, `missing-columns`, `extra-columns`, `wrong-column-ho-dem`, `like-ends-with`, `like-contains`, `class-prefix`, `wrong-value`, `hardcoded-ids`, `limit-used`, `or-connector`, `missing-condition`, `connector-unset` (bổ sung 15:36 theo QĐ-039: lời nhắc khi bấm Chạy lúc chưa chọn phép nối, xếp vào nhóm "không chạy được"), `other`; thứ tự ưu tiên như mục "Quy ước thẻ thử thách". Gói `sql-engine` được thêm mã mới nếu cần nhưng phải báo lại; mã không phát hiện được thì rơi về `other`.
 
+**QĐ-041 — Xáo lựa chọn một lần mỗi lần câu hỏi xuất hiện.** · Nguồn: câu hỏi 1 của agent `nen-mong` · 26/09 16:30
+- Phương án: A — xáo lại sau mỗi lần chọn sai (đúng chữ QĐ-035, nhưng nút vừa bấm "chạy chỗ khác"); B — xáo một lần khi câu hỏi xuất hiện, giữ nguyên thứ tự khi chọn lại.
+- **Chọn B.** Làm rõ QĐ-035: "mỗi lần hiện câu hỏi" = mỗi lần câu hỏi được mở (mount), không phải mỗi lần thử lại.
+- Lý do: lần đầu đã xáo là đủ chống mẹo "chọn câu dài"; người mới không bị mất dấu sau khi đọc phản hồi.
+
+**QĐ-042 — Khảo sát chỉ có lựa chọn đóng.** · Nguồn: câu hỏi 2 của agent `nen-mong` · 26/09 16:30
+- Phương án: A — "đoạn gây khó chịu" là lựa chọn đóng (như "phần đáng nhớ"); B — thêm ô chữ tự do.
+- **Chọn A** cho vòng 1. Câu hỏi mở đã có trong phỏng vấn miệng (§9.2 bước 5).
+- Lý do: ô chữ tự do có thể chứa tên thật của bạn bè/giảng viên — trái §9.3 "không thu tên thật".
+
+**QĐ-043 — Câu đọc kết quả do màn thử thách điều khiển.** · Nguồn: câu hỏi 3 của agent `nen-mong` · 26/09 16:30
+- Phương án: A — `readQuestion` nằm trong màn thử thách, hiện ngay dưới bảng kết quả, trước nút "Lưu vào hồ sơ"; B — tách thành `QuestionNode` sau `ChallengeNode`.
+- **Chọn A.** Ràng buộc cho gói `trinh-dung-ui`: tự gọi `track({ type: 'question_answered', … })` với id lựa chọn, số lần thử, cờ lựa chọn đầu — giống hệt câu hỏi trong chuỗi truyện.
+- Lý do: người chơi cần nhìn bảng kết quả khi trả lời "kết quả này nghĩa là gì".
+
+**QĐ-044 — Sự kiện `notebook_opened`.** · Nguồn: agent `nen-mong` báo thiếu · 26/09 16:30
+- **Chọn:** phát khi người chơi mở Hồ sơ (kèm phần hiện tại); gói `telemetry` gắn lời gọi vào nút "Hồ sơ".
+- Lý do: rẻ, và giúp đọc lại QĐ-037 (người chơi có đọc "Câu hỏi còn mở" không) khi phân tích buổi test.
+
+**Nghiệm thu gói `nen-mong` lần 1 — KHÔNG ĐẠT (trả lại).** · 26/09 16:33
+- Tại `main`: typecheck 0 lỗi (canary TS2322 bắt được), 48/48 test, lint sạch, build + wasm đạt.
+- Lỗi chặn: `npm run dev` trắng trang — `sql-wasm-browser.js does not provide an export named 'default'`. Cơ chế: `optimizeDeps.exclude: ['sql.js']` khiến Vite dev phục vụ nguyên tệp CommonJS như ES module; bản build dùng bộ gói khác nên không lộ. Agent đã nêu đúng rủi ro này (chưa kiểm dev) nhưng chưa kiểm. Trả lại agent sửa + thêm bước kiểm dev.
+
+**Nghiệm thu gói `nen-mong` lần 2 — ĐẠT.** · 26/09 16:45
+- Sửa: `optimizeDeps.include: ['sql.js']`. Canary mới `sqljs.dev.test.ts` khởi động Vite dev thật và nạp module như trình duyệt. Điều phối viên tự bẻ phanh tại `main`: đổi lại `exclude` → canary đỏ đúng thông điệp "không có default export"; khôi phục → xanh.
+- Tại `main`: typecheck 0 lỗi, 51/51 test, lint sạch, build đạt; chế độ dev trên trình duyệt 1366×768: 0 lỗi console, màn tiêu đề hiển thị đủ.
+- Đặc tả thử thách (`ChallengeSpec`) thuộc gói `sql-engine`, đặt một nơi duy nhất; gói `noi-dung` ghép với `ChallengeContent` thành `ChallengeDefinition`.
+
 **Ghi chú không đổi quyết định:**
 - GDD v0.5 ghi Hà Vy "không biết SQL"; prototype để Hà Vy hướng dẫn từng bước và đưa gợi ý mức 3 gần như đáp án (QĐ-021, tài liệu prototype ghi Hà Vy "gợi ý cách đọc dữ liệu"). Cần cập nhật GDD sau vòng test.
 - Lời thoại viết cứng số liệu (10 người, 24 người, 40 sinh viên, 8 lớp): QĐ-010/QĐ-012 là nguồn; test dataset (gói 3) và test nội dung (gói 5) phải khẳng định các số này.
