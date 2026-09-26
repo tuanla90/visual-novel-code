@@ -17,6 +17,9 @@ export { compareResults, type CompareResult, type SetRelation } from './compare'
 export { orderDiagnostics, pickDiagnostic, priorityKey, type PickedDiagnostic } from './priority';
 export { analyzeStructure, diagnoseStructure, referenceStructure, type QueryStructure } from './diagnose';
 
+/** Hàm phụ cho trình dựng: giá trị khác nhau của một cột (sắp tiếng Việt), 5 dòng đầu của một bảng. */
+export { compareVietnamese, distinctValues, previewRows } from './helpers';
+
 /**
  * Sinh SQL từ model trình dựng (connector null với ≥ 2 điều kiện → SQL không hợp lệ để chạy; UI chặn
  * trước bằng validateModel). Phân tích ngược SQL về model; `null` nếu ngoài tập con (QĐ-016).
