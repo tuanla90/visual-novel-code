@@ -9,6 +9,7 @@
 import './challenge.css';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { SavedQueryEvidence } from '../../evidence/types';
+import { speakerLabel } from '../../shared/display-names';
 import type { ChallengeId } from '../../shared/ids';
 import { gameContent, useGameStore } from '../../shared/store';
 import { CodeText } from '../../shared/ui/CodeText';
@@ -282,7 +283,7 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
             </button>
             {blocked && !locked ? (
               <p id="chal-run-reason" className="chal-runbar__reason" role="status">
-                <span className="chal-runbar__who">Hà Vy:</span> {blocked.line.text}
+                <span className="chal-runbar__who">{speakerLabel(blocked.line.speaker)}:</span> <CodeText text={blocked.line.text} />
               </p>
             ) : null}
           </div>

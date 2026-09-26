@@ -5,6 +5,7 @@
 import { useEffect, useRef } from 'react';
 import { speakerLabel } from '../display-names';
 import type { DialogueLine } from '../../story/types';
+import { CodeText } from './CodeText';
 
 export interface DialogBoxProps {
   line: DialogueLine;
@@ -49,7 +50,9 @@ export function DialogBox({ line, display = 'dialog', hint, onAdvance, keyboardE
       data-speaker={line.speaker}
     >
       {label ? <div className="dialog__speaker">{label}</div> : null}
-      <p className="dialog__text">{line.text}</p>
+      <p className="dialog__text">
+        <CodeText text={line.text} />
+      </p>
       <div className="dialog__footer">
         {hint ? <span className="dialog__hint">{hint}</span> : null}
         <button
