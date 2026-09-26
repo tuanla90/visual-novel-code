@@ -65,7 +65,16 @@
 }
 
 /* ---------- Trình dựng ---------- */
+/*
+ * Ba khung tự cuộn (trình dựng, kết quả, mô tả bảng) đặt `position: relative` để các phần tử chỉ dành
+ * cho trình đọc màn hình (`.visually-hidden`: position absolute) bên trong bị kẹp theo khung cuộn.
+ * Không có nó, caption của bảng lop_sinh_hoat thoát khỏi khung mô tả bảng, rơi xuống dưới đáy `.chal`
+ * (overflow hidden) và nới vùng cuộn thêm ~45 px ở 1366×768: mỗi lần tiêu điểm chuyển tới nút ở
+ * thấp (Chạy, lựa chọn câu đọc kết quả, Lưu) trình duyệt cuộn cả `.chal` lên, cắt mất tiêu đề thử
+ * thách và đầu khung SQL (đo bằng script trong trang, gói 9b).
+ */
 .chal-builder {
+  position: relative;
   flex: 0 1 auto;
   min-height: 0;
   overflow: auto;
@@ -351,6 +360,7 @@
 
 /* ---------- Khung kết quả ---------- */
 .chal-result {
+  position: relative;
   flex: 1 1 160px;
   min-height: 120px;
   overflow: auto;
@@ -580,6 +590,7 @@
   color: var(--c-text-muted);
 }
 .schema__body {
+  position: relative;
   min-height: 0;
   overflow: auto;
   padding: 0 var(--sp-3) var(--sp-2);

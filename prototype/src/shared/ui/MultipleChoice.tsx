@@ -1,14 +1,16 @@
 /**
  * Câu hỏi nhiều lựa chọn dùng chung ([HỎI] trong chuỗi và câu đọc kết quả thử thách).
  * Xáo thứ tự MỘT LẦN khi câu hỏi xuất hiện (QĐ-035 + QĐ-041); khi chọn sai rồi chọn lại,
- * thứ tự giữ nguyên để người mới không mất dấu. Phản hồi và chọn lại do runtime điều khiển
- * (khung nhìn `feedback`), component này chỉ hiện lựa chọn và gọi `onChoose(id)`.
+ * thứ tự giữ nguyên để người mới không mất dấu — kể cả khi component bị gỡ rồi dựng lại giữa chừng
+ * (GameScreen thay nó bằng hộp thoại phản hồi): thứ tự nhớ ở `choice-order.ts`, không chỉ trong
+ * `useMemo`. Phản hồi và chọn lại do runtime điều khiển (khung nhìn `feedback`), component này chỉ
+ * hiện lựa chọn và gọi `onChoose(id)`.
  */
 import { useMemo } from 'react';
 import { speakerLabel } from '../display-names';
 import type { MultipleChoiceQuestion } from '../../story/types';
+import { orderedChoices } from './choice-order';
 import { CodeText } from './CodeText';
-import { shuffle } from './shuffle';
 
 export interface MultipleChoiceProps {
   question: MultipleChoiceQuestion;
@@ -21,8 +23,9 @@ export interface MultipleChoiceProps {
 
 export function MultipleChoice({ question, attempts, onChoose, random }: MultipleChoiceProps) {
   const ordered = useMemo(
-    () => shuffle(question.choices, random),
-    // Chỉ xáo lại khi sang câu hỏi khác (QĐ-041): cố ý KHÔNG phụ thuộc `attempts`/`random`.
+    () => orderedChoices(question, attempts, random),
+    // Chỉ tính lại khi sang câu hỏi khác (QĐ-041): cố ý KHÔNG phụ thuộc `attempts`/`random`;
+    // dựng lại component với attempts > 0 thì orderedChoices trả đúng thứ tự đã nhớ.
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [question.id],
   );
