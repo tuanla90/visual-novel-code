@@ -309,6 +309,11 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Tại `main`: typecheck 0 lỗi, 419/419 test (`--maxWorkers=2`; chạy song song mặc định bị hết bộ nhớ trên máy này), lint sạch, build đạt. Điều phối viên tự chơi từ đầu tới hết c1 ở 1366×768: SQL sinh đúng, 10 dòng, lời Hà Vy, câu đọc kết quả đã xáo, 0 lỗi console. Nghi vấn "ô chọn cột có tên truy cập 'on'" đã kiểm bằng DOM: ô nằm trong `<label>` có tên cột → báo động giả của công cụ chụp cây truy cập, không phải lỗi.
 - Agent phản biện đúng: store đã ghi phần lớn sự kiện telemetry của thử thách; nếu màn thử thách ghi thêm theo brief sẽ đếm đôi.
 
+**QĐ-057 — Giữ chạy tuần tự một agent (QUYẾT ĐỊNH CỦA USER).** · Nguồn: điều phối viên hỏi user sau khi phiên bị ngắt · 26/09 21:58
+- Câu hỏi: gói 6 (giải trình), 7 (hình), 8 (telemetry) có vùng tệp tách biệt — chạy song song 2 agent để nhanh hơn ~1,5 giờ (rủi ro hết RAM, tranh chấp khung trình duyệt) hay giữ tuần tự?
+- **User chọn: tuần tự 1 agent** (đúng luật skill `/giao-viec`).
+- Sự cố liên quan: phiên của điều phối viên bị ngắt lúc 21:45 ngay sau khi giao việc bổ sung QĐ-056; agent chưa kịp làm gì (worktree không đổi) → giao lại lúc 21:55, không mất việc.
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**
