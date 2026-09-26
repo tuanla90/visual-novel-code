@@ -59,6 +59,40 @@ const PAIRS: [string, string][] = [
   ['--c-text', '--c-scene-debrief-room'],
 ];
 
+/**
+ * Cặp (chữ, nền, chỗ dùng) — token hoặc mã màu viết thẳng trong CSS/SVG.
+ * Phần 1: 12 cặp của màn thử thách, gộp từ src/sql-challenge/ui/contrast-ui.test.ts (gói 4 — tệp đó
+ * giữ nguyên). Phần 2: cặp mới của gói 7 (hinh-giao-dien).
+ */
+const USED_PAIRS: [string, string, string][] = [
+  // --- Gộp từ contrast-ui.test.ts (gói 4) ---
+  ['--c-sql-text', '--c-sql-surface', 'tiêu đề khung SQL, nút "Sửa SQL trực tiếp"'],
+  ['--c-sql-comment', '--c-sql-surface', 'dòng nhắc dưới ô soạn SQL'],
+  ['--c-sql-highlight', '--c-sql-bg', 'chỗ giữ AND/OR khi chưa chọn phép nối'],
+  ['--c-focus', '--c-surface', 'từ khóa SELECT/FROM/WHERE ở đầu hàng'],
+  ['#ffffff', '--c-focus', 'nút Chạy, phép nối đang chọn'],
+  ['--c-warning', '--c-surface', '"chưa chọn cách nối"; chữ mã trong chú thích Hồ sơ'],
+  ['--c-char-ha-vy', '--c-surface', 'tên Hà Vy, nút "Hỏi Hà Vy"'],
+  ['--c-char-player', '--c-surface', '"Bạn chọn:"'],
+  ['--c-text', '--c-bg', 'chữ mã (nền nhạt) trong khung sáng'],
+  ['--c-paper-ink', '--c-bg', 'chữ mã trong thẻ chữ lớn và trong Hồ sơ'],
+  ['--c-char-ha-vy', '--c-bg', '"Hà Vy:" trong khung phản hồi nền nhạt'],
+  ['--c-text-muted', '--c-bg', 'ghi chú phụ trên nền nhạt'],
+  // --- Gói 7 (hinh-giao-dien) ---
+  ['--c-surface', '--c-text', 'bảng tên người hỏi (MultipleChoice)'],
+  ['--c-text', '--c-surface', 'nhãn cảnh, dòng nhắc màn xem xét, dòng từ chối trên nền panel'],
+  ['--c-paper-ink', '--c-paper-edge', 'tiêu đề "Hồ sơ" trên bìa kraft'],
+  ['--c-paper-ink', '--c-surface', 'ghi chú thẻ, bảng kết quả trong Hồ sơ'],
+  ['--c-focus', '--c-paper', 'nút "Xem đủ N dòng" trên thẻ giấy'],
+  ['--c-success', '--c-paper', 'số dòng sau khi sửa (dải 24 → 2)'],
+  ['--c-paper-ink', '#fbfaf5', 'chữ lá thư trên giấy bản chụp (SVG tạm)'],
+  ['--c-paper-ink', '#fbf4e2', 'chữ sổ bàn giao trên giấy kẻ dòng (SVG tạm)'],
+  ['#1e3a5f', '#fdf6e3', 'chữ "…ÁO CHÍ" trên bookmark (SVG tạm)'],
+  ['#0f172a', '#facc15', 'câu hô "Có số liệu đây!" trên mảng nổ vàng'],
+  ['#0f172a', '#f8fafc', 'câu hô trên viền trắng của chính nó'],
+  ['#f8fafc', '#0f172a', 'nút "Bỏ qua" của hiệu ứng'],
+];
+
 describe('tương phản WCAG AA (≥ 4.5:1 cho chữ thường)', () => {
   it('tự kiểm công cụ: #111 trên #dc2626 bị bắt', () => {
     expect(contrastRatio('#111111', '#dc2626')).toBeLessThan(4.5);
@@ -77,6 +111,23 @@ describe('tương phản WCAG AA (≥ 4.5:1 cho chữ thường)', () => {
       }
       const ratio = contrastRatio(f, b);
       if (ratio < 4.5) failures.push(`${fg} (${f}) trên ${bg} (${b}) = ${ratio.toFixed(2)}`);
+    }
+    expect(failures).toEqual([]);
+  });
+
+  it('mọi cặp chữ/nền đang dùng (thử thách + hình giao diện) đạt AA', () => {
+    const tokens = readTokens();
+    const resolve = (x: string): string | undefined => (x.startsWith('#') ? x : tokens[x]);
+    const failures: string[] = [];
+    for (const [fg, bg, where] of USED_PAIRS) {
+      const f = resolve(fg);
+      const b = resolve(bg);
+      if (!f || !b) {
+        failures.push(`${fg} / ${bg}: thiếu token (${where})`);
+        continue;
+      }
+      const ratio = contrastRatio(f, b);
+      if (ratio < 4.5) failures.push(`${fg} (${f}) trên ${bg} (${b}) = ${ratio.toFixed(2)} — ${where}`);
     }
     expect(failures).toEqual([]);
   });

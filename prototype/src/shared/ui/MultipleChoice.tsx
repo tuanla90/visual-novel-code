@@ -7,6 +7,7 @@
 import { useMemo } from 'react';
 import { speakerLabel } from '../display-names';
 import type { MultipleChoiceQuestion } from '../../story/types';
+import { CodeText } from './CodeText';
 import { shuffle } from './shuffle';
 
 export interface MultipleChoiceProps {
@@ -31,14 +32,14 @@ export function MultipleChoice({ question, attempts, onChoose, random }: Multipl
       <div className="mc__asker">
         {askerLabel ? <span className="mc__asker-name">{askerLabel}</span> : null}
         <p id={`mc-${question.id}`} className="mc__prompt">
-          {question.asker.text}
+          <CodeText text={question.asker.text} />
         </p>
       </div>
       <ul className="mc__choices">
         {ordered.map((c) => (
           <li key={c.id}>
             <button type="button" className="mc__choice" onClick={() => onChoose(c.id)}>
-              {c.text}
+              <CodeText text={c.text} />
             </button>
           </li>
         ))}

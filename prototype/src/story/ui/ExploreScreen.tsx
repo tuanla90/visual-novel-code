@@ -1,10 +1,21 @@
 /**
  * Màn xem xét: điểm xem xét là nút có nhãn ≥ 44×44px, đánh dấu đã xem, nút "Nhiệm vụ tiếp theo →"
- * khi đủ điều kiện (QĐ-027). Vị trí trong cảnh: gói `hinh-giao-dien` đặt tọa độ theo `hotspot.id`.
+ * khi đủ điều kiện (QĐ-027). Props giữ nguyên.
+ *
+ * QĐ-053: dòng nhắc khi chưa đủ điều kiện CHỈ nêu SỐ điểm còn lại ("Còn 1 điểm chưa xem xét"),
+ * không nêu tên manh mối/tài liệu còn thiếu — nêu tên là lộ trước manh mối (ví dụ "bookmark"
+ * trước khi người chơi xem hộp góp ý).
  */
 import type { GameContent } from '../../content/types';
-import { evidenceTitle } from '../../evidence/labels';
 import type { GateStatus, HotspotView } from '../engine/state';
+
+/** Dòng nhắc chỉ có số lượng (QĐ-053). */
+function missingLine(hotspots: HotspotView[], gate: GateStatus): string {
+  const unvisited = hotspots.filter((h) => !h.visited).length;
+  if (unvisited > 0) return `Còn ${unvisited} điểm chưa xem xét.`;
+  // Đã xem hết điểm mà Hồ sơ vẫn thiếu (nội dung lệch): vẫn chỉ nêu số lượng.
+  return `Hồ sơ còn thiếu ${gate.missing.length} mục để đi tiếp.`;
+}
 
 export interface ExploreScreenProps {
   hotspots: HotspotView[];
@@ -14,7 +25,8 @@ export interface ExploreScreenProps {
   onProceed: () => void;
 }
 
-export function ExploreScreen({ hotspots, gate, content, onInspect, onProceed }: ExploreScreenProps) {
+// `content` giữ trong props (khung đã chốt) nhưng không còn dùng để tra tên mục thiếu (QĐ-053).
+export function ExploreScreen({ hotspots, gate, onInspect, onProceed }: ExploreScreenProps) {
   return (
     <div className="explore">
       <p className="explore__lead">Chọn một điểm để xem xét.</p>
@@ -40,8 +52,8 @@ export function ExploreScreen({ hotspots, gate, content, onInspect, onProceed }:
             {gate.buttonLabel}
           </button>
         ) : (
-          <p className="explore__missing">
-            Để đi tiếp, Hồ sơ cần thêm: {gate.missing.map((id) => evidenceTitle(content, id)).join(', ')}.
+          <p className="explore__missing" role="status">
+            {missingLine(hotspots, gate)}
           </p>
         )
       ) : null}
