@@ -32,7 +32,7 @@ describe('Màn sửa truy vấn của Quân', () => {
     const onComplete = vi.fn();
     renderChallenge('debrief-fix', { mode: 'fix-query', onComplete });
 
-    expect(screen.getByText('Sửa truy vấn', { selector: '.chal-head__tag' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Sửa truy vấn của Quân');
     expect(challengeState('debrief-fix')?.model.connector).toBe('OR');
     for (const b of screen.getAllByRole('button', { name: 'OR — thỏa bất kỳ' })) expect(b).toHaveAttribute('aria-pressed', 'true');
     expect(screen.getByLabelText('Câu SQL sinh từ trình dựng').textContent).toBe(
@@ -49,8 +49,9 @@ describe('Màn sửa truy vấn của Quân', () => {
     await user.click(screen.getByRole('button', { name: /Chạy truy vấn/ }));
     expect(await screen.findByText('2 dòng')).toBeInTheDocument();
     expect(havyText()).toContain('Hai dòng. Đưa lên màn chiếu đi!');
-    // không có câu đọc kết quả ở màn này → nút lưu hiện ngay
+    // không có câu đọc kết quả ở màn này → nút lưu hiện ngay, dòng nhắc không nhắc tới câu hỏi
     expect(within(screen.getByRole('region', { name: 'Kết quả' })).queryByRole('group')).not.toBeInTheDocument();
+    expect(screen.getByText('Truy vấn đã đúng — lưu vào hồ sơ để đi tiếp.')).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: 'Lưu vào hồ sơ' }));
 
     await vi.waitFor(() => expect(onComplete).toHaveBeenCalledTimes(1));

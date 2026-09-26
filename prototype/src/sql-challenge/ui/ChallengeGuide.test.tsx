@@ -111,12 +111,12 @@ describe('"Hỏi Hà Vy" và bảng dữ liệu', () => {
     expect(challengeState('c3')).toMatchObject({ hintLevel: 3, hintsUsed: 4 });
   });
 
-  it('bảng dữ liệu: mô tả cột tiếng Việt, thu gọn được, "Xem 5 dòng đầu" từng bảng', async () => {
+  it('bảng mô tả (schema): mô tả cột tiếng Việt, thu gọn được, "Xem 5 dòng đầu" từng bảng', async () => {
     const user = userEvent.setup();
     renderChallenge('c2');
-    const schema = screen.getByRole('region', { name: /Bảng dữ liệu/ });
+    const schema = screen.getByRole('region', { name: /Mô tả các bảng/ });
     expect(within(schema).getByText('Tòa nhà sinh hoạt (A, B, C)', { exact: false })).toBeInTheDocument();
-    const toggle = within(schema).getByRole('button', { name: /Bảng dữ liệu/ });
+    const toggle = within(schema).getByRole('button', { name: /Mô tả các bảng/ });
     expect(toggle).toHaveAttribute('aria-expanded', 'true');
     await user.click(within(schema).getByRole('button', { name: 'Xem 5 dòng đầu của bảng lop_sinh_hoat' }));
     const t = await screen.findByRole('table', { name: '5 dòng đầu của bảng lop_sinh_hoat' });

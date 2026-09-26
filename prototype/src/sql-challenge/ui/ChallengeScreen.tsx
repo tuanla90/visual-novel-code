@@ -240,11 +240,10 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
     ) : null;
 
   return (
-    <div className="chal" role="region" aria-labelledby="chal-title">
+    <div className={`chal${solved ? ' chal--solved' : ''}`} role="region" aria-labelledby="chal-title">
       <div className="chal__left">
         <header className="chal-card chal-head">
           <h2 id="chal-title" className="chal-head__title">
-            {mode === 'fix-query' ? <span className="chal-head__tag">Sửa truy vấn</span> : null}
             <CodeText text={content.title} />
           </h2>
           <p className="chal-head__prompt">
@@ -259,7 +258,11 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
         ) : null}
 
         <section className="chal-card chal-builder" aria-label="Trình dựng truy vấn">
-          {solved ? <p className="chal-solved">Truy vấn đã đúng — trả lời câu hỏi bên dưới rồi lưu vào hồ sơ.</p> : null}
+          {solved ? (
+            <p className="chal-solved">
+              {content.readQuestion ? 'Truy vấn đã đúng — trả lời câu hỏi bên dưới rồi lưu vào hồ sơ.' : 'Truy vấn đã đúng — lưu vào hồ sơ để đi tiếp.'}
+            </p>
+          ) : null}
           {sqlMode && !solved ? (
             <p className="chal-sqlmode">Đang sửa SQL trực tiếp ở khung bên phải. Bấm “Quay về trình dựng” để dùng lại các hàng dưới đây.</p>
           ) : null}
@@ -271,23 +274,26 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
             onPreview={showPreview}
             whereRow={<WhereRow model={model} onChange={setModel} evidenceOptions={evidenceOptions} disabled={locked || solved || sqlMode} />}
           />
-          <div className={`chal-runbar${guided === 'run' ? ' is-guided' : ''}`} data-region="run">
-            <button
-              type="button"
-              className="btn btn--primary chal-run"
-              disabled={!canRun}
-              aria-describedby={blocked && !locked ? 'chal-run-reason' : undefined}
-              onClick={() => void run()}
-            >
-              <IconPlay /> {running ? 'Đang chạy…' : 'Chạy truy vấn'}
-            </button>
-            {blocked && !locked ? (
-              <p id="chal-run-reason" className="chal-runbar__reason" role="status">
-                <span className="chal-runbar__who">{speakerLabel(blocked.line.speaker)}:</span> <CodeText text={blocked.line.text} />
-              </p>
-            ) : null}
-          </div>
         </section>
+
+        {/* Thanh Chạy nằm NGOÀI khung trình dựng (khung đó có thể tự cuộn) để nút Chạy + lý do chặn luôn thấy được.
+            Đã đúng thì ẩn (trình dựng đã khóa) để nhường chỗ cho câu đọc kết quả. */}
+        <div className={`chal-card chal-runbar${guided === 'run' ? ' is-guided' : ''}`} data-region="run" hidden={solved}>
+          <button
+            type="button"
+            className="btn btn--primary chal-run"
+            disabled={!canRun}
+            aria-describedby={blocked && !locked ? 'chal-run-reason' : undefined}
+            onClick={() => void run()}
+          >
+            <IconPlay /> {running ? 'Đang chạy…' : 'Chạy truy vấn'}
+          </button>
+          {blocked && !locked ? (
+            <p id="chal-run-reason" className="chal-runbar__reason" role="status">
+              <span className="chal-runbar__who">{speakerLabel(blocked.line.speaker)}:</span> <CodeText text={blocked.line.text} />
+            </p>
+          ) : null}
+        </div>
 
         <section className="chal-card chal-result" aria-label="Kết quả" ref={resultRef}>
           {preview ? (

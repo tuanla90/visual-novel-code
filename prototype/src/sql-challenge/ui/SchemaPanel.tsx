@@ -1,5 +1,5 @@
 /**
- * Bảng dữ liệu (QĐ-021): mô tả cột tiếng Việt từ schema.ts, thu gọn được; mỗi bảng có nút
+ * "Mô tả các bảng" (bảng schema, QĐ-021): mô tả cột tiếng Việt từ schema.ts, thu gọn được; mỗi bảng có nút
  * "Xem 5 dòng đầu" (kết quả hiện ở khung kết quả bên trái).
  */
 import { useState } from 'react';
@@ -24,7 +24,7 @@ export function SchemaPanel({ onPreview, previewDisabled }: SchemaPanelProps) {
       <h3 id="schema-title" className="schema__title">
         <button type="button" className="schema__toggle" aria-expanded={open} aria-controls="schema-body" onClick={() => setOpen((o) => !o)}>
           <IconChevron open={open} />
-          Bảng dữ liệu
+          Mô tả các bảng
           <span className="schema__hint">{open ? 'Thu gọn' : 'Mở ra'}</span>
         </button>
       </h3>

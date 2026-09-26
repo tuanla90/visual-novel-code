@@ -32,9 +32,10 @@ describe('Thành công → câu đọc kết quả → Lưu vào hồ sơ', () =
     expect(await screen.findByText('Đúng rồi', { selector: '.result__ok' })).toBeInTheDocument();
     expect(screen.getByText('10 dòng')).toBeInTheDocument();
     expect(havyText()).toContain('Truy vấn đầu tiên của cậu đấy! Mười dòng.');
-    // trình dựng khóa khi đã đúng, không cho chạy thêm
+    // trình dựng khóa khi đã đúng, thanh Chạy ẩn đi (không cho chạy thêm)
     expect(screen.getByLabelText('Bảng dữ liệu')).toBeDisabled();
-    expect(screen.getByRole('button', { name: /Chạy truy vấn/ })).toBeDisabled();
+    expect(screen.queryByRole('button', { name: /Chạy truy vấn/ })).not.toBeInTheDocument();
+    expect(screen.getByText('Truy vấn đã đúng — trả lời câu hỏi bên dưới rồi lưu vào hồ sơ.')).toBeInTheDocument();
     // chưa trả lời câu đọc kết quả → chưa có nút lưu
     expect(screen.queryByRole('button', { name: 'Lưu vào hồ sơ' })).not.toBeInTheDocument();
 
