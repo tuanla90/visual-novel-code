@@ -1,6 +1,7 @@
 /**
  * Câu hỏi nhiều lựa chọn dùng chung ([HỎI] trong chuỗi và câu đọc kết quả thử thách).
- * Xáo thứ tự mỗi lần hiện (QĐ-035); phản hồi và chọn lại do runtime điều khiển
+ * Xáo thứ tự MỘT LẦN khi câu hỏi xuất hiện (QĐ-035 + QĐ-041); khi chọn sai rồi chọn lại,
+ * thứ tự giữ nguyên để người mới không mất dấu. Phản hồi và chọn lại do runtime điều khiển
  * (khung nhìn `feedback`), component này chỉ hiện lựa chọn và gọi `onChoose(id)`.
  */
 import { useMemo } from 'react';
@@ -10,7 +11,7 @@ import { shuffle } from './shuffle';
 
 export interface MultipleChoiceProps {
   question: MultipleChoiceQuestion;
-  /** Số lần đã thử — đổi thì xáo lại. */
+  /** Số lần đã thử — chỉ để hiện lời nhắc "chọn lại", KHÔNG xáo lại (QĐ-041). */
   attempts: number;
   onChoose: (choiceId: string) => void;
   /** Nguồn ngẫu nhiên tiêm được cho test. */
@@ -20,9 +21,9 @@ export interface MultipleChoiceProps {
 export function MultipleChoice({ question, attempts, onChoose, random }: MultipleChoiceProps) {
   const ordered = useMemo(
     () => shuffle(question.choices, random),
-    // Xáo lại khi câu hỏi hoặc lượt thử đổi (QĐ-035: mỗi lần hiện).
+    // Chỉ xáo lại khi sang câu hỏi khác (QĐ-041): cố ý KHÔNG phụ thuộc `attempts`/`random`.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [question.id, attempts],
+    [question.id],
   );
   const askerLabel = speakerLabel(question.asker.speaker);
   return (

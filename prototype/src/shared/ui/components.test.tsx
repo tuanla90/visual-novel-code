@@ -39,16 +39,45 @@ const question: MultipleChoiceQuestion = {
   ],
 };
 
+const question2: MultipleChoiceQuestion = {
+  ...question,
+  id: 'q-test-2',
+  asker: { speaker: 'quan', expression: 'neutral', text: 'Câu thứ hai?' },
+};
+
+function order(): string[] {
+  return screen.getAllByRole('button').map((b) => b.textContent ?? '');
+}
+
 describe('MultipleChoice', () => {
   it('xáo thứ tự theo nguồn ngẫu nhiên và gọi onChoose với id lựa chọn', async () => {
     const user = userEvent.setup();
     const onChoose = vi.fn();
     render(<MultipleChoice question={question} attempts={0} onChoose={onChoose} random={() => 0} />);
-    const buttons = screen.getAllByRole('button');
-    expect(buttons.map((b) => b.textContent)).toEqual(['Lựa chọn B', 'Lựa chọn C', 'Lựa chọn A']);
+    expect(order()).toEqual(['Lựa chọn B', 'Lựa chọn C', 'Lựa chọn A']);
     await user.click(screen.getByText('Lựa chọn B'));
     expect(onChoose).toHaveBeenCalledWith('b');
     expect(screen.getByText('Chữ H là gì?')).toBeInTheDocument();
     expect(screen.getByText('Hà Vy')).toBeInTheDocument();
+  });
+
+  it('QĐ-041: chọn sai rồi chọn lại giữ nguyên thứ tự; sang câu hỏi khác mới xáo lại', () => {
+    // Nguồn ngẫu nhiên đổi giữa các lần render: nếu component xáo lại thì thứ tự sẽ đổi.
+    let seed = 0;
+    const random = (): number => seed;
+    const { rerender } = render(<MultipleChoice question={question} attempts={0} onChoose={() => {}} random={random} />);
+    const first = order();
+    expect(first).toEqual(['Lựa chọn B', 'Lựa chọn C', 'Lựa chọn A']);
+
+    seed = 0.99; // với seed này shuffle sẽ cho ['A','B','C'] nếu bị gọi lại
+    rerender(<MultipleChoice question={question} attempts={1} onChoose={() => {}} random={random} />);
+    expect(order()).toEqual(first);
+    expect(screen.getByText(/chọn lại thoải mái/)).toBeInTheDocument();
+    rerender(<MultipleChoice question={question} attempts={2} onChoose={() => {}} random={random} />);
+    expect(order()).toEqual(first);
+
+    rerender(<MultipleChoice question={question2} attempts={0} onChoose={() => {}} random={random} />);
+    expect(order()).toEqual(['Lựa chọn A', 'Lựa chọn B', 'Lựa chọn C']);
+    expect(screen.getByText('Quân')).toBeInTheDocument();
   });
 });
