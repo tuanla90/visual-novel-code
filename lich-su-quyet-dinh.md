@@ -325,6 +325,10 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Vấn đề: `diagnose.test.ts` (c1 + wrong-table → other) và `ChallengeTelemetry.test.tsx` (c1 + OR → lời other, primaryCode other) khẳng định hành vi cũ mà QĐ-054 cố ý đổi. Test thứ hai là phanh của gói 4, chứng minh telemetry ghi "mã đã hiện" chứ không phải mã đầu của engine; sau QĐ-054, với nội dung thật hai mã trùng nhau nên nếu chỉ đổi kỳ vọng thì phanh mất tác dụng.
 - **Chọn:** cho agent `giai-trinh-ui` sửa đúng 2 tệp test đó; giữ một ca "rơi về other" bằng mã thật sự không có lời; viết lại test telemetry bằng nội dung giả trong test (xóa lời của mã engine trả về) để mã hiện ≠ mã engine; bẻ phanh lại để chứng minh.
 
+**QĐ-060 — Hình tạm vẽ bằng code + ô thay ảnh thật (QUYẾT ĐỊNH CỦA USER).** · Nguồn: user hỏi "vẽ hay sinh ảnh?", điều phối viên trình bày, user chốt · 26/09 22:50
+- **User chọn:** điều phối viên cho vẽ tạm (SVG/CSS, không sinh ảnh, không dịch vụ trả phí) và chừa sẵn chỗ thay ảnh; user sẽ tự sinh ảnh thật sau và thả vào.
+- Ràng buộc cho gói `hinh-giao-dien`: ô ảnh cho **cảnh nền** (id theo tệp `prompts-background-prototype-v0.1.md` của user: `bg-prototype-club-room`, `bg-prototype-hallway`, `bg-prototype-hearing-room`), **chân dung** (`<nhân vật>-<biểu cảm>`, PNG nền trong, cùng khung như GDD §16.7) và **tài liệu** (lá thư, bookmark, sổ bàn giao — ảnh chỉ là nền, chữ vẫn chồng bằng giao diện); có ảnh thì dùng ảnh, không có thì dùng hình vẽ tạm; kèm README ghi rõ tên tệp, kích thước, vùng an toàn, và cách kiểm tra ảnh đã được nhận.
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**
