@@ -12,6 +12,13 @@ function editor(): HTMLTextAreaElement {
   return screen.getByLabelText<HTMLTextAreaElement>('Câu SQL gõ tay');
 }
 
+/** Xóa ô soạn rồi dán cả câu (gõ từng phím một câu dài làm test chậm khi cả bộ chạy song song). */
+async function pasteSql(user: ReturnType<typeof userEvent.setup>, sql: string): Promise<void> {
+  await user.clear(editor());
+  await user.click(editor());
+  await user.paste(sql);
+}
+
 describe('Sửa SQL trực tiếp ↔ trình dựng', () => {
   beforeEach(() => resetGame(['clue-signature-h']));
 
@@ -24,8 +31,7 @@ describe('Sửa SQL trực tiếp ↔ trình dựng', () => {
     expect(challengeState('c1')?.mode).toBe('sql');
     expect(screen.getByLabelText('Bảng dữ liệu')).toBeDisabled();
 
-    await user.clear(editor());
-    await user.type(editor(), "select ma_sv, ho_dem, ten from sinh_vien where ten like 'H%'");
+    await pasteSql(user,"select ma_sv, ho_dem, ten from sinh_vien where ten like 'H%'");
     await user.click(screen.getByRole('button', { name: 'Quay về trình dựng' }));
 
     expect(challengeState('c1')?.mode).toBe('builder');
@@ -41,8 +47,7 @@ describe('Sửa SQL trực tiếp ↔ trình dựng', () => {
     presetModel('c1', C1_CORRECT);
     renderChallenge('c1');
     await user.click(screen.getByRole('button', { name: 'Sửa SQL trực tiếp' }));
-    await user.clear(editor());
-    await user.type(editor(), "SELECT ma_sv FROM sinh_vien WHERE (ten LIKE 'H%') ORDER BY ten");
+    await pasteSql(user,"SELECT ma_sv FROM sinh_vien WHERE (ten LIKE 'H%') ORDER BY ten");
     await user.click(screen.getByRole('button', { name: 'Quay về trình dựng' }));
 
     const dialog = screen.getByRole('alertdialog', { name: 'Quay về trình dựng?' });
@@ -63,15 +68,13 @@ describe('Sửa SQL trực tiếp ↔ trình dựng', () => {
     const user = userEvent.setup();
     renderChallenge('c1');
     await user.click(screen.getByRole('button', { name: 'Sửa SQL trực tiếp' }));
-    await user.clear(editor());
-    await user.type(editor(), "SELECT ma_sv, ho_dem, ten FROM sinh_vien WHERE ho_dem LIKE 'H%'");
+    await pasteSql(user,"SELECT ma_sv, ho_dem, ten FROM sinh_vien WHERE ho_dem LIKE 'H%'");
     await user.keyboard('{Control>}{Enter}{/Control}');
     await screen.findByText('Lần chạy 1');
     expect(document.querySelector('.havy__body')?.textContent).toContain('Cậu đang lọc theo cột ho_dem.');
     expect(eventsOf('query_run')[0]).toMatchObject({ mode: 'sql', status: 'incorrect', primaryCode: 'wrong-column-ho-dem' });
 
-    await user.clear(editor());
-    await user.type(editor(), "SELECT ma_sv, ho_dem, ten FROM sinh_vien WHERE ten LIKE 'H%' ORDER BY ten");
+    await pasteSql(user,"SELECT ma_sv, ho_dem, ten FROM sinh_vien WHERE ten LIKE 'H%' ORDER BY ten");
     await user.click(screen.getByRole('button', { name: /Chạy truy vấn/ }));
     expect(await screen.findByText('10 dòng')).toBeInTheDocument();
     expect(eventsOf('query_run')[1]).toMatchObject({ mode: 'sql', status: 'correct' });
@@ -81,8 +84,7 @@ describe('Sửa SQL trực tiếp ↔ trình dựng', () => {
     const user = userEvent.setup();
     renderChallenge('c1');
     await user.click(screen.getByRole('button', { name: 'Sửa SQL trực tiếp' }));
-    await user.clear(editor());
-    await user.type(editor(), 'DELETE FROM sinh_vien');
+    await pasteSql(user,'DELETE FROM sinh_vien');
     await user.click(screen.getByRole('button', { name: /Chạy truy vấn/ }));
     expect(await screen.findByText(/Câu này chưa chạy được nên chưa có bảng kết quả/)).toBeInTheDocument();
     expect(within(screen.getByRole('region', { name: 'Kết quả' })).queryByRole('table')).not.toBeInTheDocument();

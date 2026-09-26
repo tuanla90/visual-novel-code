@@ -3,6 +3,7 @@
  * render màn với định nghĩa thật của thử thách.
  */
 import { render } from '@testing-library/react';
+import { vi } from 'vitest';
 import { gameContent, useGameStore } from '../../shared/store';
 import { initialGameData } from '../../shared/store/store';
 import { clearTelemetry, getTelemetryEvents } from '../../shared/telemetry/track';
@@ -12,6 +13,10 @@ import type { SavedQueryEvidence } from '../../evidence/types';
 import { modelToSql } from '../engine';
 import type { QueryModel } from '../types';
 import { ChallengeScreen } from './ChallengeScreen';
+
+// Test tích hợp chạy engine thật (sql.js) + store thật: chạy riêng mất < 1 giây mỗi test, nhưng khi cả bộ
+// test chạy song song trên máy yếu có thể vượt mức mặc định 5 giây → nới cho mọi tệp dùng tiện ích này.
+vi.setConfig({ testTimeout: 20_000 });
 
 export function resetGame(unlocked: EvidenceId[] = []): void {
   useGameStore.setState({ ...initialGameData() });

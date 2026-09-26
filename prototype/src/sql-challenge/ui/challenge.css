@@ -18,6 +18,11 @@
   overflow: hidden;
 }
 
+/* Hộp xác nhận dùng chung (ConfirmDialog) nằm trong .chal: không kế thừa chữ sáng của nền tối. */
+.chal .modal {
+  color: var(--c-text);
+}
+
 .chal__left,
 .chal__right {
   min-height: 0;
@@ -81,7 +86,7 @@
 
 .qb-row {
   display: grid;
-  grid-template-columns: 88px minmax(0, 1fr);
+  grid-template-columns: 72px minmax(0, 1fr);
   align-items: start;
   gap: var(--sp-2);
   padding: 2px var(--sp-2);
