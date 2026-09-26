@@ -3,8 +3,10 @@
  * ánh xạ sang một component (thật hoặc stub với props đã chốt).
  */
 import { useCallback, useState } from 'react';
+import type { LinePick as LinePickContent } from '../debrief/types';
 import { LinePick } from '../debrief/ui/LinePick';
 import { Projector } from '../debrief/ui/Projector';
+import { SqlRecall } from '../debrief/ui/SqlRecall';
 import { DocumentReveal } from '../evidence/ui/DocumentReveal';
 import { EvidenceNotebook } from '../evidence/ui/EvidenceNotebook';
 import { PART_IDS, type PartId } from '../shared/ids';
@@ -18,9 +20,18 @@ import { ChallengeScreen } from '../sql-challenge/ui/ChallengeScreen';
 import { ExploreScreen } from '../story/ui/ExploreScreen';
 import { ObjectionEffect } from '../story/ui/ObjectionEffect';
 import type { StoryView } from '../story/engine/state';
+import type { Sequence } from '../story/types';
 import { EndScreen } from './EndScreen';
 import { FacilitatorPanel } from './FacilitatorPanel';
 import { isFacilitatorMode } from './facilitator-mode';
+
+/** Màn chọn dòng có id `pickId` trong chuỗi đang đứng (phản hồi chọn dòng luôn ở cùng chuỗi). */
+function linePickInSequence(sequence: Sequence | null, pickId: string): LinePickContent | null {
+  for (const node of sequence?.nodes ?? []) {
+    if (node.type === 'line-pick' && node.pick.id === pickId) return node.pick;
+  }
+  return null;
+}
 
 export function GameScreen() {
   const progress = useGameStore((s) => s.progress);
@@ -101,8 +112,16 @@ export function GameScreen() {
     switch (v.kind) {
       case 'line':
         return <DialogBox line={v.node} display={v.node.display} onAdvance={advance} keyboardEnabled={!notebookOpen} />;
-      case 'feedback':
-        return <DialogBox line={v.line} hint={`Phản hồi ${v.index + 1}/${v.total}`} onAdvance={advance} keyboardEnabled={!notebookOpen} />;
+      case 'feedback': {
+        // QĐ-061-Đ1: phản hồi của lần chọn dòng sai → câu SQL của Quân vẫn hiện (chỉ đọc) phía trên hộp thoại.
+        const pick = v.origin === 'line-pick' ? linePickInSequence(v.sequence, v.sourceId) : null;
+        return (
+          <>
+            {pick ? <SqlRecall lines={pick.lines} /> : null}
+            <DialogBox line={v.line} hint={`Phản hồi ${v.index + 1}/${v.total}`} onAdvance={advance} keyboardEnabled={!notebookOpen} />
+          </>
+        );
+      }
       case 'explore':
         return (
           <ExploreScreen

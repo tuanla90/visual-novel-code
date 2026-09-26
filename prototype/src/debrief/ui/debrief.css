@@ -197,6 +197,18 @@
   color: var(--dbf-ink-muted);
 }
 
+/* ---------- Truy vấn giữ trên màn chiếu khi đọc phản hồi chọn dòng (QĐ-061-Đ1) ---------- */
+/* Cao theo nội dung (5 dòng), không kéo tới đáy khung → không lấn hộp thoại ở đáy sân khấu. */
+.dbf-recall {
+  bottom: auto;
+  z-index: 0;
+  grid-template-rows: auto auto;
+  gap: var(--sp-2);
+  max-height: calc(100% - var(--projector-top) - 200px);
+  pointer-events: none;
+  user-select: none;
+}
+
 /* ---------- Màn chiếu ---------- */
 .dbf-proj__head {
   display: flex;
