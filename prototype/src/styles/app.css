@@ -144,6 +144,97 @@
   flex-wrap: wrap;
 }
 
+/* ---------- Khảo sát đầu/cuối game (gói telemetry — QĐ-031/042: chỉ lựa chọn đóng) ---------- */
+.survey {
+  display: grid;
+  gap: var(--sp-2);
+  color: var(--c-text);
+}
+.survey__title {
+  margin: 0;
+  font-weight: 700;
+}
+.survey__optional {
+  font-weight: 400;
+  color: var(--c-text-muted);
+}
+.survey__q {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.survey__legend {
+  padding: 0;
+  margin-bottom: var(--sp-1);
+  font-weight: 600;
+}
+.survey__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.survey__option {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: var(--sp-1) var(--sp-3);
+  border: 2px solid var(--c-border);
+  border-radius: var(--radius-md);
+  background: var(--c-surface);
+  color: var(--c-text);
+  cursor: pointer;
+}
+.survey__option:hover {
+  border-color: var(--c-text);
+}
+.survey__option input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+}
+.survey__option:focus-within {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 2px;
+}
+.survey__option--on {
+  background: var(--c-focus);
+  border-color: var(--c-focus);
+  color: #fff;
+}
+.survey__option--disabled {
+  cursor: not-allowed;
+  color: var(--c-text-muted);
+  border-style: dashed;
+}
+.survey__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-3);
+}
+.survey__note {
+  margin: 0;
+  color: var(--c-text-muted);
+  font-size: var(--fs-sm);
+}
+.survey__skip,
+.survey__link {
+  min-height: 36px;
+  padding: var(--sp-1) var(--sp-3);
+}
+.survey--done {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-3);
+}
+
 /* ---------- Khung game ---------- */
 .game {
   height: 100%;

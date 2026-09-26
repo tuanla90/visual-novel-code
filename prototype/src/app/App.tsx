@@ -1,29 +1,75 @@
 import { useState } from 'react';
 import { gameContent, useGameStore } from '../shared/store';
+import { EMPTY_PRE_DRAFT, resolvePreSurvey, type PreSurveyDraft } from '../shared/telemetry/survey';
+import { getTelemetryEvents } from '../shared/telemetry/track';
+import { FacilitatorPanel } from './FacilitatorPanel';
 import { GameScreen } from './GameScreen';
+import { PreSurvey } from './PreSurvey';
 import { TitleScreen } from './TitleScreen';
+import { isFacilitatorMode } from './facilitator-mode';
 
 export default function App() {
   const progress = useGameStore((s) => s.progress);
+  const survey = useGameStore((s) => s.survey);
   const startGame = useGameStore((s) => s.startGame);
   const resetGame = useGameStore((s) => s.resetGame);
+  const submitSurvey = useGameStore((s) => s.submitSurvey);
+  const skipSurvey = useGameStore((s) => s.skipSurvey);
   // Màn tiêu đề hiện khi mở ứng dụng, kể cả khi có tiến độ đã lưu (để chọn "Chơi tiếp").
   const [titleDismissed, setTitleDismissed] = useState(false);
+  const [preDraft, setPreDraft] = useState<PreSurveyDraft>(EMPTY_PRE_DRAFT);
   const showTitle = !titleDismissed || progress === null;
 
+  /** Ghi khảo sát đầu game vào phiên hiện tại (một lần mỗi phiên): gửi nếu trả lời đủ, không thì bỏ qua. */
+  const commitPreSurvey = () => {
+    const current = useGameStore.getState().survey;
+    if (current.pre !== null || current.preSkipped) return;
+    const r = resolvePreSurvey(preDraft);
+    if (r.kind === 'submit') submitSurvey('pre', r.answers);
+    else skipSurvey('pre');
+    setPreDraft(EMPTY_PRE_DRAFT);
+  };
+
   if (showTitle) {
+    const preDone = survey.pre !== null || survey.preSkipped;
+    const facilitator = typeof window !== 'undefined' && isFacilitatorMode(window.location.search);
     return (
-      <TitleScreen
-        title={gameContent.meta.title}
-        isSample={gameContent.meta.isSample}
-        hasSavedProgress={progress !== null}
-        onStart={() => {
-          if (progress) resetGame();
-          startGame();
-          setTitleDismissed(true);
-        }}
-        onContinue={() => setTitleDismissed(true)}
-      />
+      <>
+        <TitleScreen
+          title={gameContent.meta.title}
+          isSample={gameContent.meta.isSample}
+          hasSavedProgress={progress !== null}
+          onStart={() => {
+            if (progress) resetGame(); // phiên mới; khảo sát ghi SAU khi đổi phiên
+            commitPreSurvey();
+            startGame();
+            setTitleDismissed(true);
+          }}
+          onContinue={() => {
+            commitPreSurvey();
+            setTitleDismissed(true);
+          }}
+          preSurveySlot={
+            preDone && progress !== null ? (
+              <p className="survey__note">
+                {survey.pre !== null ? 'Bạn đã trả lời khảo sát đầu game. Cảm ơn bạn!' : 'Bạn đã bỏ qua khảo sát đầu game.'}
+              </p>
+            ) : (
+              <PreSurvey value={preDraft} onChange={setPreDraft} />
+            )
+          }
+        />
+        {facilitator ? (
+          <FacilitatorPanel
+            part={progress?.currentPart ?? null}
+            sequenceId={progress?.cursor.sequenceId ?? null}
+            nodeIndex={progress?.cursor.nodeIndex ?? null}
+            viewKind="title"
+            eventCount={getTelemetryEvents().length}
+            onReset={resetGame}
+          />
+        ) : null}
+      </>
     );
   }
   return <GameScreen />;
