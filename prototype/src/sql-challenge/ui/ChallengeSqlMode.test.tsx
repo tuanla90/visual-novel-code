@@ -3,7 +3,7 @@
  * ngược được (nạp model, ghi lại nguồn manh mối), không được thì hộp xác nhận quay về trạng thái
  * trình dựng gần nhất; SQL gõ tay vẫn chạy và được chấm như thường.
  */
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { C1_CORRECT, challengeState, eventsOf, presetModel, renderChallenge, resetGame } from './test-utils';
@@ -85,7 +85,7 @@ describe('Sửa SQL trực tiếp ↔ trình dựng', () => {
     await user.type(editor(), 'DELETE FROM sinh_vien');
     await user.click(screen.getByRole('button', { name: /Chạy truy vấn/ }));
     expect(await screen.findByText(/Câu này chưa chạy được nên chưa có bảng kết quả/)).toBeInTheDocument();
-    expect(screen.queryByRole('table')).not.toBeInTheDocument();
+    expect(within(screen.getByRole('region', { name: 'Kết quả' })).queryByRole('table')).not.toBeInTheDocument();
     expect(document.querySelector('.havy__body')?.textContent).toContain('Trong buổi làm việc này CLB chỉ có quyền xem dữ liệu.');
     expect(document.body.textContent).not.toMatch(/not-select|syntax-error/);
     expect(eventsOf('query_run')[0]).toMatchObject({ status: 'error', errorClass: 'syntax', primaryCode: 'not-select', rowCount: null });

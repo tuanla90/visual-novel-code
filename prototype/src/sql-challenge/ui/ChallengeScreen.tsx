@@ -8,24 +8,26 @@
  */
 import './challenge.css';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { SavedQueryEvidence } from '../../evidence/types';
 import type { ChallengeId } from '../../shared/ids';
 import { gameContent, useGameStore } from '../../shared/store';
 import { CodeText } from '../../shared/ui/CodeText';
-import type { SavedQueryEvidence } from '../../evidence/types';
-import { QUAN_OR_QUERY } from '../data/challenges';
-import { gradeChallenge, modelToSql, runQuery, sqlToModel } from '../engine';
-import type { TableName } from '../schema';
-import type { BuilderMode, ChallengeDefinition, GradeResult, QueryModel } from '../types';
-import { SuccessPanel } from './SuccessPanel';
-import { HaVyPanel, type HaVyNote } from './HaVyPanel';
-import { IconPlay } from './icons';
-import { rowCountText } from './labels';
-import { blockingReason, showDiagnostic, type LineSources } from './lines';
 import { ConfirmDialog } from '../../shared/ui/ConfirmDialog';
+import { QUAN_OR_QUERY } from '../data/challenges';
+import { gradeChallenge, modelToSql, previewRows, runQuery, sqlToModel } from '../engine';
+import type { TableName } from '../schema';
+import type { BuilderMode, BuilderRegion, ChallengeDefinition, GradeResult, QueryModel, RunSuccess } from '../types';
+import { nextGuideStep } from './guide';
+import { HaVyPanel, type HaVyNote } from './HaVyPanel';
+import { IconClose, IconPlay } from './icons';
+import { rowCountText, tableReadable } from './labels';
+import { blockingReason, showDiagnostic, type LineSources } from './lines';
 import { attributeSources } from './model-edit';
 import { QueryBuilder } from './QueryBuilder';
 import { ResultTable } from './ResultTable';
+import { SchemaPanel } from './SchemaPanel';
 import { SqlPane } from './SqlPane';
+import { SuccessPanel } from './SuccessPanel';
 import { CLASS_LIST_EVIDENCE_ID, evidenceValueOptions } from './value-options';
 import { WhereRow } from './WhereRow';
 
@@ -50,10 +52,17 @@ interface RunOutcome {
   conditionCount: number | null;
 }
 
+type Preview = { table: TableName; status: 'loading' } | { table: TableName; status: 'ready'; run: RunSuccess } | { table: TableName; status: 'error' };
+
+/** Lời trong khung Hà Vy + bước hướng dẫn lúc lời được tạo (bước đổi thì lời bước mới thay). */
+type Note = HaVyNote & { guideStep: number };
+
 export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, onComplete }: ChallengeScreenProps) {
   const openChallenge = useGameStore((s) => s.openChallenge);
   const updateChallenge = useGameStore((s) => s.updateChallenge);
   const recordRun = useGameStore((s) => s.recordRun);
+  // Đặt tên khác "use…" để quy tắc hook không nhầm lời gọi trong trình xử lý sự kiện là hook.
+  const takeHint = useGameStore((s) => s.useHint);
   const completeChallenge = useGameStore((s) => s.completeChallenge);
   const state = useGameStore((s) => s.challenges[challengeId]);
   const unlocked = useGameStore((s) => s.evidence.unlocked);
@@ -62,9 +71,12 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
   const [running, setRunning] = useState(false);
   const [saving, setSaving] = useState(false);
   const [outcome, setOutcome] = useState<RunOutcome | null>(null);
-  const [note, setNote] = useState<HaVyNote | null>(null);
+  const [note, setNote] = useState<Note | null>(null);
   const [confirmBack, setConfirmBack] = useState(false);
+  const [preview, setPreview] = useState<Preview | null>(null);
+  const [previewed, setPreviewed] = useState(false);
   const resultRef = useRef<HTMLElement>(null);
+  const previewSeq = useRef(0);
   const cancelBack = useCallback(() => setConfirmBack(false), []);
 
   useEffect(() => {
@@ -78,9 +90,31 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
     [challengeId, updateChallenge],
   );
 
-  const onPreview = useCallback((_table: TableName) => {
-    // Nhóm sau: hiện 5 dòng đầu trong khung kết quả.
+  const showPreview = useCallback((table: TableName) => {
+    previewSeq.current += 1;
+    const seq = previewSeq.current;
+    setPreviewed(true);
+    setPreview({ table, status: 'loading' });
+    previewRows(table, 5).then(
+      (run) => {
+        if (previewSeq.current === seq) setPreview({ table, status: 'ready', run });
+      },
+      () => {
+        if (previewSeq.current === seq) setPreview({ table, status: 'error' });
+      },
+    );
   }, []);
+
+  // Hướng dẫn từng bước: tự sang bước khi thao tác của vùng đã xong (QĐ-021).
+  const steps = definition?.content.steps;
+  const guideStep = state?.guideStep ?? 0;
+  const guideModel = state?.model;
+  const ranWithFilter = outcome !== null && (outcome.conditionCount ?? 0) > 0;
+  useEffect(() => {
+    if (!steps || !guideModel || guideStep === 0) return;
+    const next = nextGuideStep(steps, guideStep, { model: guideModel, previewed, ranWithFilter });
+    if (next !== guideStep) updateChallenge(challengeId, { guideStep: next });
+  }, [steps, guideStep, guideModel, previewed, ranWithFilter, challengeId, updateChallenge]);
 
   if (!definition) {
     return (
@@ -107,6 +141,13 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
   const blocked = sqlMode ? null : blockingReason(model, src);
   const canRun = !locked && !solved && !running && blocked === null;
 
+  const currentStep = guideStep > 0 && !locked ? content.steps[guideStep - 1] : undefined;
+  const guided: BuilderRegion | null = currentStep?.highlight ?? null;
+  const stepNote: Note | null = currentStep
+    ? { key: `step-${currentStep.step}`, label: `Hướng dẫn · bước ${guideStep}/${content.steps.length}`, line: currentStep.line, guideStep }
+    : null;
+  const shownNote: Note | null = stepNote && (note === null || note.guideStep !== guideStep) ? stepNote : note;
+
   /** "Sửa SQL trực tiếp" ↔ trình dựng (QĐ-016): về được thì nạp model, không được thì hỏi xác nhận. */
   const toggleSqlMode = (): void => {
     if (!sqlMode) {
@@ -124,6 +165,12 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
   const backToLastBuilder = (): void => {
     setConfirmBack(false);
     updateChallenge(challengeId, { mode: 'builder', sql: modelToSql(state.model) });
+  };
+
+  const askHaVy = (): void => {
+    const level = takeHint(challengeId);
+    const line = content.hints[level - 1] ?? content.hints[2];
+    setNote({ key: `hint-${state.hintsUsed + 1}`, label: `Gợi ý ${level}/3`, line, guideStep });
   };
 
   const save = async (): Promise<void> => {
@@ -170,17 +217,26 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
         primaryCode: shown?.code ?? null,
         connector: shape && shape.conditions.length >= 2 ? shape.connector : null,
       });
+      setPreview(null);
+      previewSeq.current += 1;
       setOutcome({ attempt, mode: runMode, sql, grade, table: shape?.table ?? null, conditionCount: shape ? shape.conditions.length : null });
       if (grade.status === 'correct') {
-        setNote({ key: `run-${attempt}`, label: 'Đúng rồi', tone: 'success', line: shown?.line ?? content.onCorrect });
+        setNote({ key: `run-${attempt}`, label: 'Đúng rồi', tone: 'success', line: shown?.line ?? content.onCorrect, guideStep });
       } else if (shown) {
-        setNote({ key: `run-${attempt}`, label: `Nhận xét lần chạy ${attempt}`, line: shown.line });
+        setNote({ key: `run-${attempt}`, label: `Nhận xét lần chạy ${attempt}`, line: shown.line, guideStep });
       }
       resultRef.current?.scrollTo?.({ top: 0 });
     } finally {
       setRunning(false);
     }
   };
+
+  const guideActions =
+    currentStep !== undefined ? (
+      <button type="button" className="btn btn--small" onClick={() => updateChallenge(challengeId, { guideStep: 0 })}>
+        Bỏ qua hướng dẫn
+      </button>
+    ) : null;
 
   return (
     <div className="chal" role="region" aria-labelledby="chal-title">
@@ -209,12 +265,12 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
           <QueryBuilder
             model={model}
             onChange={setModel}
-            guided={null}
+            guided={guided}
             disabled={locked || solved || sqlMode}
-            onPreview={onPreview}
+            onPreview={showPreview}
             whereRow={<WhereRow model={model} onChange={setModel} evidenceOptions={evidenceOptions} disabled={locked || solved || sqlMode} />}
           />
-          <div className="chal-runbar" data-region="run">
+          <div className={`chal-runbar${guided === 'run' ? ' is-guided' : ''}`} data-region="run">
             <button
               type="button"
               className="btn btn--primary chal-run"
@@ -233,7 +289,9 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
         </section>
 
         <section className="chal-card chal-result" aria-label="Kết quả" ref={resultRef}>
-          {outcome && solved && outcome.grade.run.ok ? (
+          {preview ? (
+            <PreviewView preview={preview} onClose={() => setPreview(null)} />
+          ) : outcome && solved && outcome.grade.run.ok ? (
             <SuccessPanel
               attempt={outcome.attempt}
               run={outcome.grade.run}
@@ -263,7 +321,19 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
           disabled={locked || solved}
           guided={false}
         />
-        <HaVyPanel note={note} idle="Dựng truy vấn theo đề bài rồi bấm “Chạy truy vấn”. Chạy sai không sao — chạy lại bao nhiêu lần cũng được." />
+        <HaVyPanel
+          note={shownNote}
+          idle="Dựng truy vấn theo đề bài rồi bấm “Chạy truy vấn”. Chạy sai không sao — chạy lại bao nhiêu lần cũng được."
+          actions={
+            <>
+              <button type="button" className="btn btn--small btn--havy" onClick={askHaVy} disabled={locked || solved}>
+                Hỏi Hà Vy
+              </button>
+              {guideActions}
+            </>
+          }
+        />
+        <SchemaPanel onPreview={showPreview} previewDisabled={locked || solved} />
       </aside>
       <ConfirmDialog
         open={confirmBack}
@@ -274,6 +344,26 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
         onConfirm={backToLastBuilder}
         onCancel={cancelBack}
       />
+    </div>
+  );
+}
+
+function PreviewView({ preview, onClose }: { preview: Preview; onClose: () => void }) {
+  const title = `5 dòng đầu của bảng ${preview.table}`;
+  return (
+    <div className="result result--preview">
+      <div className="result__head">
+        <strong className="result__count">
+          <span className="mono">{preview.table}</span> — 5 dòng đầu
+        </strong>
+        <span className="result__attempt">Chỉ để xem bảng {tableReadable(preview.table)} trông thế nào, chưa phải kết quả truy vấn.</span>
+        <button type="button" className="qb-icon-btn result__close" aria-label="Đóng bản xem trước" title="Đóng bản xem trước" onClick={onClose}>
+          <IconClose />
+        </button>
+      </div>
+      {preview.status === 'loading' ? <p className="qb-empty">Đang mở bảng…</p> : null}
+      {preview.status === 'error' ? <p className="qb-empty">Không mở được bảng này. Thử bấm lại “Xem 5 dòng đầu”.</p> : null}
+      {preview.status === 'ready' ? <ResultTable columns={preview.run.columns} rows={preview.run.rows} caption={title} /> : null}
     </div>
   );
 }

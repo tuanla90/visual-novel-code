@@ -518,6 +518,91 @@
   }
 }
 
+.btn--havy {
+  border-color: var(--c-char-ha-vy);
+  color: var(--c-char-ha-vy);
+}
+.result__close {
+  margin-left: auto;
+}
+
+/* ---------- Bảng dữ liệu (schema) ---------- */
+.schema {
+  flex: 0 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--c-surface);
+  color: var(--c-text);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.schema__title {
+  margin: 0;
+  font-size: var(--fs-base);
+}
+.schema__toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border: 0;
+  background: transparent;
+  color: var(--c-text);
+  font-weight: 700;
+  text-align: left;
+}
+.schema__hint {
+  margin-left: auto;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--c-text-muted);
+}
+.schema__body {
+  min-height: 0;
+  overflow: auto;
+  padding: 0 var(--sp-3) var(--sp-2);
+  display: grid;
+  gap: var(--sp-2);
+}
+.schema__body[hidden] {
+  display: none;
+}
+.schema__table-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+.schema__name {
+  font-weight: 700;
+}
+.schema__desc {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+.schema__cols {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+}
+.schema__cols th,
+.schema__cols td {
+  text-align: left;
+  padding: 1px var(--sp-2) 1px 0;
+  border-bottom: 1px solid var(--c-border);
+  vertical-align: top;
+}
+.schema__cols thead th {
+  color: var(--c-text-muted);
+  font-weight: 600;
+}
+.schema__type {
+  color: var(--c-text-muted);
+}
+
 /* ---------- Cột phải ---------- */
 .chal-sql {
   flex: none;

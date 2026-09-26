@@ -48,7 +48,7 @@ describe('Chạy truy vấn → bảng kết quả + số dòng + nhận xét th
     renderChallenge('c1');
     await user.click(screen.getByRole('button', { name: /Chạy truy vấn/ }));
     expect(await screen.findByText('0 dòng — không sinh viên nào thỏa điều kiện lọc')).toBeInTheDocument();
-    expect(screen.queryByRole('table')).not.toBeInTheDocument();
+    expect(within(screen.getByRole('region', { name: 'Kết quả' })).queryByRole('table')).not.toBeInTheDocument();
     expect(havyText().length).toBeGreaterThan(10);
   });
 
