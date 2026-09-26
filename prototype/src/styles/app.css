@@ -203,42 +203,55 @@
   color: var(--c-text);
   font-weight: 600;
 }
+/* Dàn chân dung: lớp tuyệt đối dưới nội dung (hộp thoại đè lên phần thân dưới như visual novel). */
 .stage__portraits {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  min-height: 160px;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.cast-member {
+  position: absolute;
+  bottom: 0;
+  left: var(--cast-x, 50%);
+  height: min(76%, 600px);
+  aspect-ratio: 3 / 4;
+  transform: translateX(-50%);
+  transform-origin: 50% 100%;
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+.cast-member--small {
+  height: min(52%, 400px);
+}
+.cast-member--speaking {
+  z-index: 1;
+}
+.cast-member--idle {
+  transform: translateX(-50%) translateY(3%) scale(0.93);
+  filter: saturate(0.65) brightness(0.9);
 }
 .stage__content {
+  grid-row: 3;
   width: min(960px, 100%);
   margin: 0 auto;
 }
 
 .portrait {
   margin: 0;
-  width: 160px;
-  height: 200px;
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding: var(--sp-3);
-  gap: var(--sp-1);
-  border: 3px solid rgba(0, 0, 0, 0.25);
-  border-bottom: 0;
+  width: 100%;
+  height: 100%;
 }
-.portrait--small {
-  width: 110px;
-  height: 130px;
-}
-.portrait__name {
-  font-weight: 700;
-  font-size: var(--fs-md);
-}
-.portrait__mood {
-  font-size: var(--fs-sm);
-  opacity: 0.9;
+.portrait__img,
+.portrait .portrait-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: 50% 100%;
+  user-select: none;
 }
 
 /* ---------- Hộp thoại ---------- */

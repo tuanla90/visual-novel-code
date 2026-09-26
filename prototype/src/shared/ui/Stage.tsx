@@ -1,12 +1,14 @@
 /**
- * Sân khấu: nền cảnh (ảnh thật trong ô ảnh hoặc SVG vẽ tạm — QĐ-060) + chỗ đặt chân dung + nội dung.
- * Props giữ nguyên từ khung (ARCHITECTURE.md §4).
+ * Sân khấu: nền cảnh (ảnh thật trong ô ảnh hoặc SVG vẽ tạm — QĐ-060) + dàn chân dung + nội dung.
+ * Props giữ nguyên từ khung (ARCHITECTURE.md §4). Dàn chân dung: các nhân vật đã nói trong cảnh
+ * hiện tại đứng ở vị trí cố định; người đang nói nổi bật, người khác lùi nhẹ (visuals/cast.ts).
  */
-import type { ReactNode } from 'react';
+import { useState, type CSSProperties, type ReactNode } from 'react';
 import { sceneName } from '../display-names';
-import { isCharacterId, type SceneId } from '../ids';
+import type { SceneId } from '../ids';
 import { Portrait } from './Portrait';
 import { SceneBackdrop } from './visuals/SceneBackdrop';
+import { castPosition, nextCast, type CastState } from './visuals/cast';
 
 export interface StageProps {
   scene: SceneId;
@@ -17,13 +19,30 @@ export interface StageProps {
 }
 
 export function Stage({ scene, speaker, expression, children }: StageProps) {
-  const showPortrait = speaker !== undefined && isCharacterId(speaker);
+  const [cast, setCast] = useState<CastState>(() => nextCast(null, scene, speaker, expression));
+  const current = nextCast(cast, scene, speaker, expression);
+  // Suy trạng thái từ props lúc render (mẫu "lưu thông tin từ lần render trước" của React).
+  if (current !== cast) setCast(current);
+
   return (
     <section className="stage" data-scene={scene} style={{ backgroundColor: `var(--c-scene-${scene})` }} aria-label={`Cảnh: ${sceneName(scene)}`}>
       <SceneBackdrop scene={scene} />
       <div className="stage__scene-label">{sceneName(scene)}</div>
       <div className="stage__portraits">
-        {showPortrait ? <Portrait character={speaker} expression={expression ?? 'neutral'} size={speaker === 'bac-tu' ? 'small' : 'normal'} /> : null}
+        {current.members.map((m) => {
+          const speaking = m.character === speaker;
+          const style = { '--cast-x': `${castPosition(scene, m.character) * 100}%` } as CSSProperties;
+          return (
+            <div
+              key={m.character}
+              className={`cast-member${speaking ? ' cast-member--speaking' : ' cast-member--idle'}${m.character === 'bac-tu' ? ' cast-member--small' : ''}`}
+              style={style}
+              data-speaking={speaking ? 'true' : 'false'}
+            >
+              <Portrait character={m.character} expression={m.expression} size={m.character === 'bac-tu' ? 'small' : 'normal'} />
+            </div>
+          );
+        })}
       </div>
       <div className="stage__content">{children}</div>
     </section>
