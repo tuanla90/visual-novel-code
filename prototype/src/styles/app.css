@@ -1212,36 +1212,44 @@
   gap: var(--sp-3);
 }
 
-/* ---------- Người quan sát (gói telemetry — chỉ hiện với ?facilitator=1) ---------- */
+/* ---------- Người quan sát (gói telemetry — chỉ hiện với ?facilitator=1) ----------
+ * Thanh thu gọn = dải RIÊNG ở đáy màn hình: khi có bảng (lớp `facilitator-on` trên <html>, do
+ * FacilitatorPanel gắn), #root thấp đi đúng bằng dải nên dải không bao giờ che nút của game (màn
+ * thử thách dùng hết chiều cao sân khấu, hai góc dưới đều có nội dung cuộn). Phần mở rộng neo mép
+ * phải, dưới thanh trên của game, trên dải đáy; cao theo khung nhìn, cuộn bên trong — không che
+ * nút "Bắt đầu"/"Bỏ qua khảo sát" ở giữa-trái màn tiêu đề. */
+:root {
+  --facilitator-strip: 44px;
+}
+html.facilitator-on #root {
+  height: calc(100% - var(--facilitator-strip));
+}
 .facilitator {
   position: fixed;
-  left: var(--sp-3);
-  bottom: var(--sp-3);
-  width: min(460px, calc(100vw - 2 * var(--sp-3)));
-  max-height: calc(100vh - 2 * var(--sp-3));
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--facilitator-strip);
   background: var(--c-surface);
   color: var(--c-text);
-  border: 2px solid var(--c-text);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
+  border-top: 2px solid var(--c-text);
   font-size: var(--fs-sm);
   z-index: 15;
 }
-.facilitator:not(.facilitator--open) {
-  width: auto;
-  max-width: calc(100vw - 2 * var(--sp-3));
-}
 .facilitator__bar {
+  height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--sp-3);
-  padding: var(--sp-2) var(--sp-3);
+  padding: 0 var(--sp-3);
 }
 .facilitator__brief {
   margin: 0;
   min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .facilitator__toggle {
   min-height: 32px;
@@ -1249,12 +1257,22 @@
   flex: none;
 }
 .facilitator__body {
+  position: fixed;
+  right: var(--sp-3);
+  /* Dưới thanh trên của game (60 px) để nút "Hồ sơ"/"Chơi lại" vẫn bấm được. */
+  top: calc(60px + var(--sp-2));
+  bottom: calc(var(--facilitator-strip) + var(--sp-2));
+  width: min(460px, calc(100vw - 2 * var(--sp-3)));
   overflow: auto;
+  overscroll-behavior: contain;
   padding: 0 var(--sp-3) var(--sp-3);
   display: grid;
   gap: var(--sp-3);
   align-content: start;
-  border-top: 1px solid var(--c-border);
+  background: var(--c-surface);
+  border: 2px solid var(--c-text);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
 }
 .facilitator__h {
   margin: var(--sp-2) 0 var(--sp-1);

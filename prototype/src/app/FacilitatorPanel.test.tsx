@@ -1,3 +1,6 @@
+import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -157,5 +160,32 @@ describe('bảng người quan sát', () => {
     expect(data.summaries).toHaveLength(1);
     expect(data.summaries[0]?.started).toBe(true);
     expect(data.sessionMeta).toEqual({});
+  });
+});
+
+describe('bảng người quan sát: không che nút của game (nghiệm thu gói telemetry)', () => {
+  it('khi có bảng, <html> mang lớp facilitator-on (CSS thu #root lại chừa dải đáy); gỡ bảng thì bỏ lớp', () => {
+    const first = render(<FacilitatorPanel {...baseProps} />);
+    expect(document.documentElement).toHaveClass('facilitator-on');
+    // Chuyển từ màn tiêu đề sang màn chơi: hai bảng có thể cùng gắn trong một lượt vẽ.
+    const second = render(<FacilitatorPanel {...baseProps} viewKind="line" />);
+    first.unmount();
+    expect(document.documentElement).toHaveClass('facilitator-on');
+    second.unmount();
+    expect(document.documentElement).not.toHaveClass('facilitator-on');
+  });
+
+  it('CSS: dải thu gọn neo đáy, #root thấp đi đúng bằng dải; phần mở rộng neo mép phải, cuộn bên trong', () => {
+    const css = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '../styles/app.css'), 'utf8');
+    const rule = (selector: string) => new RegExp(`\\n${selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*\\{([^}]*)\\}`).exec(css)?.[1] ?? '';
+    expect(rule('html.facilitator-on #root')).toMatch(/height:\s*calc\(100% - var\(--facilitator-strip\)\)/);
+    const strip = rule('.facilitator');
+    expect(strip).toMatch(/position:\s*fixed/);
+    expect(strip).toMatch(/bottom:\s*0/);
+    expect(strip).toMatch(/height:\s*var\(--facilitator-strip\)/);
+    const body = rule('.facilitator__body');
+    expect(body).toMatch(/right:\s*var\(--sp-3\)/);
+    expect(body).not.toMatch(/\bleft:/);
+    expect(body).toMatch(/overflow:\s*auto/);
   });
 });

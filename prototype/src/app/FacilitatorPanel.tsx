@@ -2,8 +2,28 @@
  * Bảng người quan sát (QĐ-030) — chỉ hiện khi URL có `?facilitator=1`; người chơi không thấy.
  * Vị trí hiện tại, số sự kiện, trạng thái lưu, xuất/xóa dữ liệu thử nghiệm (JSON), đặt lại phiên.
  * Props đã chốt; phần telemetry đọc thẳng từ `shared/telemetry`.
+ *
+ * Bố cục (nghiệm thu gói telemetry: bảng mở rộng che nút "Bắt đầu"): thanh thu gọn là một dải
+ * RIÊNG ở đáy màn hình — khi bảng có mặt, game được thu thấp lại đúng bằng dải đó (lớp
+ * `facilitator-on` trên <html>, xem app.css) nên dải không che nút nào của game ở mọi màn. Phần mở
+ * rộng neo mép phải, cao theo khung nhìn, cuộn bên trong.
  */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+/** Số bảng đang gắn (màn tiêu đề và màn chơi mỗi nơi gắn một bảng; khi chuyển màn có thể chồng nhau). */
+let mountedPanels = 0;
+
+/** Gắn lớp `facilitator-on` lên <html> khi có bảng để CSS chừa dải đáy cho thanh thu gọn. */
+function useReserveFacilitatorStrip(): void {
+  useEffect(() => {
+    mountedPanels++;
+    document.documentElement.classList.add('facilitator-on');
+    return () => {
+      mountedPanels--;
+      if (mountedPanels === 0) document.documentElement.classList.remove('facilitator-on');
+    };
+  }, []);
+}
 import { partIndex, partName } from '../shared/display-names';
 import { PART_IDS, type PartId } from '../shared/ids';
 import { gameContent, useGameStore } from '../shared/store';
@@ -37,6 +57,7 @@ export interface FacilitatorPanelProps {
 
 export function FacilitatorPanel({ part, sequenceId, nodeIndex, viewKind, eventCount, onReset }: FacilitatorPanelProps) {
   useTelemetryVersion(); // vẽ lại khi có sự kiện mới / xóa / đổi phiên
+  useReserveFacilitatorStrip();
   const [open, setOpen] = useState(false);
   const [confirm, setConfirm] = useState<'clear' | 'reset' | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
