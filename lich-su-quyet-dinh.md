@@ -291,6 +291,24 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Tại `main`: typecheck 0 lỗi, 384/384 test, lint sạch, build đạt. Điều phối viên tự bẻ phanh canary định danh thô bằng cách khác agent đã thử (cắm `q-sig-h` vào nhãn điểm xem xét "Hộp góp ý") → đỏ, bắt ở cả hai mẫu; khôi phục → xanh. Nội dung thật hiển thị trên trình duyệt 1366×768, 0 lỗi console.
 - Chuyển cho gói sau: yêu cầu "thẻ vật chứng truy vấn kèm câu SQL, bảng kết quả, câu trước/sau khi sửa" không còn trong kịch bản (QĐ-049 đã gỡ) → ghi vào brief gói `hinh-giao-dien`. Chú thích của `COMMON_DIAGNOSTIC_ORDER` chưa liệt kê `no-columns`, `no-value` (không ảnh hưởng hành vi) → gói `tich-hop` dọn.
 
+**QĐ-054 — Lời chung cho mã mà thẻ thử thách không có.** · Nguồn: Đ1 của agent `trinh-dung-ui` · 26/09 21:45
+- Vấn đề: dùng OR ở c1/c2, sai bảng ở c1, lọc theo tiền tố mã lớp ở c1/màn sửa → engine phát hiện đúng nhưng `pickDiagnostic` rơi về lời `other` chung chung.
+- Phương án: A — để nguyên; **B — thêm lời chung cho `or-connector` (dùng câu gợi ý chuẩn `hint-any-or-all`), `wrong-table`, `class-prefix` vào "Nhận xét chung" + `COMMON_DIAGNOSTIC_ORDER`**; C — giao diện hiện lời theo mã của engine (phá QĐ-047).
+- **Chọn B.** Giao cho gói `giai-trinh-ui` làm thành một nhóm việc nội dung riêng (kịch bản + `src/content/real` + thứ tự; test trung thành/thứ tự của gói 5 tự khẳng định lại).
+
+**QĐ-055 — Thanh trên chiếm 3 hàng ở màn ≤ 1100 px.** · Nguồn: Đ2 của agent `trinh-dung-ui` · 26/09 21:45
+- **Chọn B:** gói `hinh-giao-dien` sửa `app.css` để cụm nút giữ hàng đầu (khoảng một quy tắc CSS), đo lại ở 1024×768.
+
+**QĐ-056 — Điều kiện mới không chọn sẵn cột; cột nhiều giá trị dùng ô chữ.** · Nguồn: điều phối viên chơi thử c1 khi nghiệm thu · 26/09 21:45
+- Vấn đề: bấm "Thêm điều kiện" → mặc định `ma_sv` · "bằng" · danh sách đủ 40 mã sinh viên. Người mới được gợi ý ngầm cách "chọn thẳng mã" — đúng lối tắt mà game dạy tránh (`hardcoded-ids`), và lệch triết lý "FROM để trống, chọn là một hành động học" (QĐ-016).
+- Phương án: A — để nguyên; **B — cột của điều kiện mới ở trạng thái "Chọn cột…"; danh sách giá trị có trong dữ liệu chỉ hiện cho cột ít giá trị (≤ 12 giá trị khác nhau: `ma_lop`, `clb`, `toa_nha`, `nganh`, `khoa_hoc`); cột nhiều giá trị (`ma_sv`, `ho_dem`, `ten`) dùng ô chữ + "Từ manh mối"** (với `IN`: nhập nhiều giá trị cách nhau bằng dấu phẩy).
+- **Chọn B.** Gọi lại agent `trinh-dung-ui` làm (giữ ngữ cảnh), kèm test.
+- Lý do: giống ô tìm trong bộ lọc Excel với cột tên; danh sách dài 40 mã vừa vô ích vừa dẫn sai.
+
+**Nghiệm thu gói `trinh-dung-ui` — ĐẠT (kèm một việc bổ sung QĐ-056).** · 26/09 21:45
+- Tại `main`: typecheck 0 lỗi, 419/419 test (`--maxWorkers=2`; chạy song song mặc định bị hết bộ nhớ trên máy này), lint sạch, build đạt. Điều phối viên tự chơi từ đầu tới hết c1 ở 1366×768: SQL sinh đúng, 10 dòng, lời Hà Vy, câu đọc kết quả đã xáo, 0 lỗi console. Nghi vấn "ô chọn cột có tên truy cập 'on'" đã kiểm bằng DOM: ô nằm trong `<label>` có tên cột → báo động giả của công cụ chụp cây truy cập, không phải lỗi.
+- Agent phản biện đúng: store đã ghi phần lớn sự kiện telemetry của thử thách; nếu màn thử thách ghi thêm theo brief sẽ đếm đôi.
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**
