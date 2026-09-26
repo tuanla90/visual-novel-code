@@ -181,3 +181,39 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 ## 3. Quyết định từ vòng phản hồi với agent
 
 *(Điều phối viên ghi tiếp bên dưới khi trả lời câu hỏi của agent.)*
+
+**QĐ-035 — Cân bằng lựa chọn ở câu hỏi đo lường, xáo thứ tự mọi câu hỏi.** · Nguồn: điều phối viên rà commit `d64f707` của gói `kich-ban` (Phần 4) · 26/09 15:12
+- Vấn đề: ở `q-two-rows` và `q-verify`, lựa chọn đúng dài nhất và dùng giọng thận trọng nhất ("cần xác minh thêm, chưa phải…", "nguồn độc lập đối chiếu, như cô phụ trách…"). Người quen làm trắc nghiệm sẽ chọn đúng nhờ mẹo "chọn câu dài, câu cẩn thận", làm thổi phồng hai chỉ số của §10 ("≥ 60% trả lời đúng rằng kết quả chưa chứng minh hành vi") và §9.3 (lựa chọn ở câu "dữ liệu đã đủ kết luận chưa").
+- Phương án: A — để nguyên; B — cân độ dài/giọng các lựa chọn của hai câu đo lường; C — B + xáo thứ tự lựa chọn của mọi câu `[HỎI]` và ghi telemetry theo id lựa chọn.
+- **Chọn C.** Mỗi lựa chọn của `q-two-rows`, `q-verify` dài xấp xỉ nhau (chênh ≤ 30%), đều nghe hợp lý với người mới; lựa chọn sai phải hấp dẫn thật (ví dụ tiếp nối câu "Tìm ra rồi!" của Minh Anh). Giao diện xáo thứ tự lựa chọn mỗi lần hiện câu hỏi; telemetry ghi id lựa chọn, không ghi chữ cái.
+- Lý do: hai câu này là thước đo chính của prototype; đo sai thì quyết định sau thử nghiệm (§10.1) sai theo.
+
+**QĐ-036 — Ranh giới Phần 4 (Giải trình) / Phần 5 (Kết).** · Nguồn: agent `kich-ban` phản biện brief · 26/09 15:30
+- Câu hỏi: brief đặt đủ 8 bước của QĐ-024 trong Phần Giải trình; §2.1 của tài liệu user ghi phần Kết gồm "xác minh độc lập, hé lộ người nhờ bỏ thư".
+- Phương án: A — theo §2.1 (Kết bắt đầu từ sổ bàn giao, `end-01`); B — theo brief.
+- **Chọn A.** Brief của điều phối viên sai ở điểm này; agent đúng. QĐ-024 giữ nguyên trình tự, chỉ đổi chỗ chia phần: bước 1–6 thuộc `debrief`, bước 7–8 thuộc `ending`.
+- Lý do: tài liệu của user có ưu tiên cao hơn; mốc "xong Giải trình" trùng với câu hỏi đo lường chính nên số liệu thời lượng từng phần có nghĩa hơn.
+
+**QĐ-037 — Thẻ hồ sơ: "Câu hỏi còn mở" trước, "Lưu ý" sau.** · Nguồn: đề xuất (2) của agent `kich-ban` · 26/09 15:30
+- Vấn đề: dòng "Lưu ý" của các thẻ hồ sơ có dạng "X cho biết A, không cho biết B" — đúng khuôn của câu đo lường `q-two-rows`; thẻ lá thư còn lộ trước cú lật ("chữ ký… chưa chắc là của người viết").
+- Phương án: A — để nguyên; B — ẩn "Lưu ý" đến cuối giải trình (agent nghiêng về B); C — để nguyên + ghi sự kiện mở thẻ; **D — trước Phần 5, mỗi thẻ manh mối/tài liệu hiện dòng "Câu hỏi còn mở" (câu hỏi mà manh mối đó đặt ra, đẩy điều tra đi tiếp); "Lưu ý" (giới hạn của bằng chứng) chỉ hiện từ Phần 5 `ending` trở đi, như phần tổng kết bài học.**
+- **Chọn D.** "Câu hỏi còn mở" không được nói ra nguyên tắc "khớp manh mối ≠ kết luận"; chỉ nêu điều người chơi cần tìm tiếp (ví dụ "H là chữ đầu tên của ai?").
+- Lý do: giữ được chỗ dạy "đọc giới hạn bằng chứng" (B làm mất), bảo vệ thước đo chính (A, C không bảo vệ), và củng cố nguyên tắc §3 "mỗi manh mối phải đổi câu hỏi người chơi đang muốn trả lời".
+
+**QĐ-038 — Người chơi tự nêu nguồn độc lập?** · Nguồn: đề xuất (3) của agent `kich-ban` · 26/09 15:30
+- Phương án: A — giữ lời thoại "Bạn" tự nói "cô phụ trách hộp góp ý"; B — thêm câu hỏi `q-source`.
+- **Chọn A** cho vòng test 1. Sau buổi thử, hỏi người chơi "cú lật có công bằng không"; nếu nhiều người thấy "bị dắt tay", vòng 2 cân nhắc B.
+- Lý do: `q-verify` đã đo được điều cốt lõi (chọn nguồn độc lập thay vì thêm điều kiện); B vượt ngân sách chữ, thêm một chỗ có thể vấp.
+
+**QĐ-039 — Phép nối AND/OR không có mặc định.** · Nguồn: rủi ro agent `kich-ban` nêu (mục 5) · 26/09 15:30
+- Vấn đề: nếu trình dựng mặc định `AND`, người chơi qua c3 mà chưa từng phải nghĩ "bất kỳ hay đồng thời"; gợi ý `hint-any-or-all` gần như không bao giờ hiện ở c3, và mục tiêu học §1.2-3 ("phân biệt AND với OR trong tình huống có ý nghĩa") chỉ được chạm tới ở màn giải trình.
+- Phương án: A — mặc định AND; B — mặc định OR (bẫy cố ý, thiếu tự nhiên); **C — khi có từ 2 điều kiện, phép nối ở trạng thái "chưa chọn"; người chơi phải tự chọn "AND — thỏa đồng thời" hoặc "OR — thỏa bất kỳ" (nhãn giải thích ngay trên nút chọn); chưa chọn thì nút Chạy bị vô hiệu kèm lời nhắc lý do.**
+- **Chọn C.** Kiểu `QueryModel.connector` là `'AND' | 'OR' | null`. Riêng `debrief-fix` nạp sẵn `OR` (truy vấn của Quân).
+- Lý do: biến AND/OR thành một quyết định có chủ ý ngay ở c3 — đúng mục tiêu học — mà không dùng bẫy.
+
+**QĐ-040 — Mã chẩn đoán.** · Nguồn: thẻ thử thách của agent `kich-ban` · 26/09 15:30
+- **Chọn:** dùng bộ mã trong `docs/kich-ban-prototype.md` làm hợp đồng giữa nội dung và engine: `not-select`, `syntax-error`, `no-table`, `wrong-table`, `no-filter`, `missing-columns`, `extra-columns`, `wrong-column-ho-dem`, `like-ends-with`, `like-contains`, `class-prefix`, `wrong-value`, `hardcoded-ids`, `limit-used`, `or-connector`, `missing-condition`, `connector-unset` (bổ sung 15:36 theo QĐ-039: lời nhắc khi bấm Chạy lúc chưa chọn phép nối, xếp vào nhóm "không chạy được"), `other`; thứ tự ưu tiên như mục "Quy ước thẻ thử thách". Gói `sql-engine` được thêm mã mới nếu cần nhưng phải báo lại; mã không phát hiện được thì rơi về `other`.
+
+**Ghi chú không đổi quyết định:**
+- GDD v0.5 ghi Hà Vy "không biết SQL"; prototype để Hà Vy hướng dẫn từng bước và đưa gợi ý mức 3 gần như đáp án (QĐ-021, tài liệu prototype ghi Hà Vy "gợi ý cách đọc dữ liệu"). Cần cập nhật GDD sau vòng test.
+- Lời thoại viết cứng số liệu (10 người, 24 người, 40 sinh viên, 8 lớp): QĐ-010/QĐ-012 là nguồn; test dataset (gói 3) và test nội dung (gói 5) phải khẳng định các số này.
