@@ -92,11 +92,23 @@ export const CHALLENGE_DIAGNOSTIC_ORDER: Record<ChallengeId, readonly Diagnostic
   'debrief-fix': ['or-connector', 'missing-condition', 'missing-columns'],
 };
 
-/** Mã ở "Nhận xét chung cho mọi thử thách", đúng thứ tự liệt kê (blocking đứng đầu, `other` cuối). */
+/**
+ * Mã ở "Nhận xét chung cho mọi thử thách" của kịch bản, ĐÚNG THỨ TỰ LIỆT KÊ — đủ 18 mã hiện có trừ 4 mã
+ * chỉ có trong thẻ riêng (`no-filter`, `missing-columns`, `missing-condition` và `wrong-value` của c2 —
+ * `wrong-value` vẫn có lời chung, QĐ-047):
+ * - 6 mã blocking đứng đầu, theo thứ tự engine `BLOCKING_DIAGNOSTIC_CODES` (QĐ-052; `no-columns`,
+ *   `no-value` do gói 3 thêm — QĐ-047). Thứ tự ưu tiên của nhóm này do `BLOCKING_DIAGNOSTIC_CODES`
+ *   quyết định (priority.ts), liệt kê ở đây để trùng với kịch bản.
+ * - Rồi các mã "chưa đúng" chung (QĐ-054 thêm `wrong-table`, `or-connector`, `class-prefix`), mã mẹo
+ *   `extra-columns` và `other` cuối.
+ * Thứ tự khóa của `commonDiagnosticLines` trong nội dung PHẢI trùng mảng này (test diagnostics.test.ts).
+ */
 export const COMMON_DIAGNOSTIC_ORDER: readonly DiagnosticCode[] = [
   'not-select',
   'syntax-error',
   'no-table',
+  'no-columns',
+  'no-value',
   'connector-unset',
   // QĐ-054: ba mã thẻ thử thách không có — sai bảng trước tiên, rồi phép nối, rồi các mã lọc cột.
   'wrong-table',

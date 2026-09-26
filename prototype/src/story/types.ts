@@ -167,7 +167,11 @@ export interface SetFlagNode {
   flag: FlagId;
 }
 
-/** Gắn chú thích sau vào một thẻ hồ sơ (ev-c3-shortlist ở end-03); `redact` làm mờ tên/mã. */
+/**
+ * Gắn chú thích sau vào một thẻ hồ sơ. Ở end-03 (hết quyền truy cập) kịch bản gắn cho CẢ BA thẻ kết quả
+ * truy vấn có dữ liệu cá nhân — ev-c1-names-h, ev-c3-shortlist, ev-quan-fixed (QĐ-062); ev-c2-classes-b
+ * chỉ có mã lớp nên không. `redact`: giao diện KHÔNG render tên/mã của thẻ nữa (QĐ-050, không chỉ làm mờ).
+ */
 export interface AnnotateEvidenceNode {
   type: 'annotate-evidence';
   evidenceId: EvidenceId;

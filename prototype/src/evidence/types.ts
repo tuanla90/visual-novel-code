@@ -59,11 +59,14 @@ export interface SavedQueryEvidence {
   before?: { sql: string; rowCount: number };
 }
 
-/** Chú thích gắn sau vào một thẻ (ev-c3-shortlist ở end-03). */
+/**
+ * Chú thích gắn sau vào một thẻ. Ở end-03 kịch bản gắn cho ba thẻ kết quả truy vấn có dữ liệu cá nhân
+ * (ev-c1-names-h, ev-c3-shortlist, ev-quan-fixed — QĐ-062); Hồ sơ hiện chú thích dưới thẻ.
+ */
 export interface EvidenceAnnotation {
   evidenceId: EvidenceId;
   note: string;
-  /** Làm mờ tên/mã trong bảng của thẻ. */
+  /** Thẻ đã hủy: Hồ sơ KHÔNG render tên/mã (bảng lẫn mô tả), chỉ còn vạch che + lý do (QĐ-050). */
   redact: boolean;
   at: number;
 }
