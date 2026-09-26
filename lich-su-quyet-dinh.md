@@ -363,6 +363,16 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Phương án: A — bảo user đổi tên, dời thư mục, tự tách nền; **B — cho game khớp theo quy ước của user: quét mọi thư mục con của `src/assets/`, nhận tiền tố `char-`, hiểu `-anchor` là biểu cảm đầu của nhân vật, và tự tách nền phẳng (loang từ mép ảnh, có ngưỡng) khi ảnh chưa trong suốt; giữ quy ước cũ song song.**
 - **Chọn B.** Theo đúng tinh thần QĐ-060 (user sinh ảnh, game tự nhận); user không phải làm thêm bước nào. Không đụng/xóa/đổi tên tệp của user.
 
+**Nghiệm thu gói `tich-hop-a` (9a) — ĐẠT.** · 27/09 04:05
+- Tại `main` (ff `9c811b2`): typecheck 0 lỗi, 592/592 test, lint sạch, build đạt. Điều phối viên kiểm trên trình duyệt: chân dung "Minh Anh, lo lắng" dùng ảnh thật của user (`data-art-source="image"`, `data-art-cutout="cut"`), nhãn truy cập tiếng Việt, không lộ tên tệp. Agent đo: 4 góc trong suốt, 0 điểm xám ở viền người; tách nền 1536×2048 ≈ 180–224 ms cả chuỗi; bảng người quan sát không che nút nào (đo `elementFromPoint`); sau end-03 cả 3 thẻ có dữ liệu cá nhân bị che, chú thích không còn mã sinh viên.
+- Phát hiện của agent: hai tệp `.png` của user thực chất là JPEG 896×1200 (không phải PNG 1536×2048 như tệp prompt) — game vẫn nhận, ngưỡng tách đã chỉnh theo nhiễu nén.
+
+**QĐ-064 — Các đề xuất của gói 9a.** · 27/09 04:05
+- Tách nền chạy trên luồng chính (50–300 ms lần đầu mỗi ảnh): **để nguyên** cho vòng test 1; nếu máy test chậm → tách sẵn lúc màn tiêu đề rảnh, rồi mới tới Web Worker.
+- Hai câu cùng ý trên thẻ đã hủy ("Tên và mã đã hủy…" + chú thích): **để nguyên** (chuyện chữ nghĩa, không phải lỗi).
+- Tài liệu cũ (ARCHITECTURE.md §3 chỉ nhắc một thẻ bị hủy; chú thích trong `src/story/types.ts`, `src/evidence/types.ts`; số "Tự kiểm" của kịch bản): giao gói `tich-hop-b` dọn.
+- Ghi chú công cụ (agent nêu): `TaskStop` trên Windows không tắt tiến trình node con, phải `taskkill` theo PID — đề xuất user cân nhắc thêm vào skill `/giao-viec` (điều phối viên không tự sửa skill của user).
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**
