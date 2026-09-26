@@ -35,7 +35,9 @@ export function TopBar({ currentPart, completedParts, task, notebookCount, noteb
       </ol>
       <div className="topbar__task" aria-live="polite">
         <span className="topbar__task-label">Nhiệm vụ hiện tại:</span>{' '}
-        <span className="topbar__task-text">{task ?? 'Chưa có nhiệm vụ'}</span>
+        <span className="topbar__task-text" title={task ?? undefined}>
+          {task ?? 'Chưa có nhiệm vụ'}
+        </span>
       </div>
       <div className="topbar__actions">
         {isSample ? <span className="badge badge--sample">NỘI DUNG MẪU</span> : null}
