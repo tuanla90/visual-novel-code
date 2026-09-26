@@ -19,6 +19,13 @@ export interface CutoutState {
   src?: string;
 }
 
+/**
+ * Ảnh cao hơn ngần này được thu nhỏ trước khi tách: chân dung hiện cao ~500 px ở 1366×768 và
+ * ~720 px ở 1920×1080, nên 1400 px vẫn dư cho màn mật độ điểm 1,5–2; ảnh 1536×2048 của bộ prompt
+ * còn 1050×1400 (ít hơn ~2 lần số điểm) → tách + ghi WebP nhanh gấp đôi.
+ */
+export const MAX_CUTOUT_HEIGHT = 1400;
+
 const PENDING: CutoutState = { status: 'pending' };
 const states = new Map<string, CutoutState>();
 const listeners = new Set<() => void>();
@@ -36,10 +43,12 @@ async function cutOut(url: string): Promise<CutoutState> {
   const response = await fetch(url);
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   const bitmap = await createImageBitmap(await response.blob());
-  const canvas = new OffscreenCanvas(bitmap.width, bitmap.height);
+  const scale = Math.min(1, MAX_CUTOUT_HEIGHT / bitmap.height);
+  const canvas = new OffscreenCanvas(Math.round(bitmap.width * scale), Math.round(bitmap.height * scale));
   const ctx = canvas.getContext('2d', { willReadFrequently: true });
   if (!ctx) throw new Error('no 2d context');
-  ctx.drawImage(bitmap, 0, 0);
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
   bitmap.close();
   const image = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const result = removeFlatBackground(image);

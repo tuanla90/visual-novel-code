@@ -136,69 +136,63 @@ export function removeFlatBackground(img: PixelData, options: Partial<CutoutOpti
     cls[p] = d2 <= holeTol2 ? HOLE : d2 <= fillTol2 ? FILL : FAR;
   }
 
-  // 3. Loang từ mép qua các điểm gần màu nền.
+  // Mọi vòng loang dưới đây dùng mảng byte `open` (1 = còn được đi tới, đặt 0 khi đã ghé) thay
+  // cho hàm kiểm tra, để ảnh 1536×2048 (3,1 triệu điểm) chạy nhanh.
   const mask = new Uint8Array(n);
   const stack = new Int32Array(n);
-  let top = 0;
-  const seed = (p: number): void => {
-    if (mask[p] === 0 && cls[p] !== FAR) {
-      mask[p] = BG;
-      stack[top++] = p;
+  const members = new Int32Array(n);
+  const open = new Uint8Array(n);
+
+  /** Loang 4 hướng từ `start` qua các điểm `open`; ghi danh sách điểm vào `members`, trả số điểm. */
+  const flood = (start: number): number => {
+    let count = 0;
+    let top = 0;
+    open[start] = 0;
+    stack[top++] = start;
+    while (top > 0) {
+      const p = stack[--top] ?? 0;
+      members[count++] = p;
+      const x = p % w;
+      if (x > 0 && open[p - 1] === 1) {
+        open[p - 1] = 0;
+        stack[top++] = p - 1;
+      }
+      if (x < w - 1 && open[p + 1] === 1) {
+        open[p + 1] = 0;
+        stack[top++] = p + 1;
+      }
+      if (p >= w && open[p - w] === 1) {
+        open[p - w] = 0;
+        stack[top++] = p - w;
+      }
+      if (p < n - w && open[p + w] === 1) {
+        open[p + w] = 0;
+        stack[top++] = p + w;
+      }
     }
+    return count;
   };
-  for (let x = 0; x < w; x++) {
-    seed(x);
-    seed((h - 1) * w + x);
-  }
-  for (let y = 1; y < h - 1; y++) {
-    seed(y * w);
-    seed(y * w + w - 1);
-  }
+
+  // 3. Loang từ mép qua các điểm gần màu nền.
+  for (let p = 0; p < n; p++) open[p] = cls[p] === FAR ? 0 : 1;
   let removed = 0;
-  while (top > 0) {
-    const p = stack[--top] ?? 0;
-    removed++;
-    const x = p % w;
-    if (x > 0) seed(p - 1);
-    if (x < w - 1) seed(p + 1);
-    if (p >= w) seed(p - w);
-    if (p < n - w) seed(p + w);
+  const border: number[] = [];
+  for (let x = 0; x < w; x++) border.push(x, (h - 1) * w + x);
+  for (let y = 1; y < h - 1; y++) border.push(y * w, y * w + w - 1);
+  for (const start of border) {
+    if (open[start] !== 1) continue;
+    const count = flood(start);
+    for (let i = 0; i < count; i++) mask[members[i] ?? 0] = BG;
+    removed += count;
   }
   if (removed === 0) return { status: 'skipped', reason: 'no-background' };
 
-  // Gom các mảng liên thông (4 hướng) thỏa `inside`; `decide` nhận danh sách điểm → true = xóa.
-  const label = new Uint8Array(n);
-  const members = new Int32Array(n);
-  const sweep = (inside: (p: number) => boolean, decide: (count: number) => boolean): number => {
-    label.fill(0);
+  /** Gom các mảng liên thông của điểm `open`; `decide(count)` true → cả mảng thành nền. */
+  const sweep = (decide: (count: number) => boolean): number => {
     let hits = 0;
     for (let start = 0; start < n; start++) {
-      if (label[start] !== 0 || !inside(start)) continue;
-      let count = 0;
-      top = 0;
-      label[start] = 1;
-      stack[top++] = start;
-      while (top > 0) {
-        const p = stack[--top] ?? 0;
-        members[count++] = p;
-        const x = p % w;
-        if (x > 0 && label[p - 1] === 0 && inside(p - 1)) {
-          label[p - 1] = 1;
-          stack[top++] = p - 1;
-        }
-        if (x < w - 1 && label[p + 1] === 0 && inside(p + 1)) {
-          label[p + 1] = 1;
-          stack[top++] = p + 1;
-        }
-        if (p >= w && label[p - w] === 0 && inside(p - w)) {
-          label[p - w] = 1;
-          stack[top++] = p - w;
-        }
-        if (p < n - w && label[p + w] === 0 && inside(p + w)) {
-          label[p + w] = 1;
-          stack[top++] = p + w;
-        }
-      }
+      if (open[start] !== 1) continue;
+      const count = flood(start);
       if (decide(count)) {
         hits++;
         for (let i = 0; i < count; i++) mask[members[i] ?? 0] = BG;
@@ -210,22 +204,18 @@ export function removeFlatBackground(img: PixelData, options: Partial<CutoutOpti
 
   // 4. Đảo nhỏ không nối với phần người → nền.
   const maxIsland = Math.floor(opt.maxIslandRatio * n);
-  const islands = sweep(
-    (p) => mask[p] !== BG,
-    (count) => count <= maxIsland,
-  );
+  for (let p = 0; p < n; p++) open[p] = mask[p] === BG ? 0 : 1;
+  const islands = sweep((count) => count <= maxIsland);
 
   // 5. Khoảng nền kẹt bên trong: phẳng như nền thật và đủ lớn → nền.
   const minHole = Math.max(1, Math.ceil(opt.minHoleRatio * n));
-  const holes = sweep(
-    (p) => mask[p] !== BG && cls[p] === HOLE,
-    (count) => {
-      if (count < minHole) return false;
-      let sum = 0;
-      for (let i = 0; i < count; i++) sum += dist(members[i] ?? 0);
-      return sum / count <= opt.holeMeanTolerance;
-    },
-  );
+  for (let p = 0; p < n; p++) open[p] = mask[p] !== BG && cls[p] === HOLE ? 1 : 0;
+  const holes = sweep((count) => {
+    if (count < minHole) return false;
+    let sum = 0;
+    for (let i = 0; i < count; i++) sum += dist(members[i] ?? 0);
+    return sum / count <= opt.holeMeanTolerance;
+  });
 
   // 6. Xóa nền + làm mềm 1 px ở biên (gỡ phần màu nền pha vào điểm biên).
   const edgeTol = Math.max(opt.edgeTolerance, opt.fillTolerance + 1);
