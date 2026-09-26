@@ -1,10 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { NotImplementedError, gradeChallenge, modelToSql, runQuery, sqlToModel } from './index';
+import { gradeChallenge, modelToSql, runQuery, sqlToModel, validateModel } from './index';
 import { emptyQueryModel } from '../types';
 
 describe('engine SQL — điểm vào', () => {
-  it('runQuery đã hiện thực (không còn stub)', async () => {
+  it('runQuery, modelToSql, sqlToModel, validateModel đã hiện thực (không còn stub)', async () => {
     await expect(runQuery('SELECT COUNT(*) FROM sinh_vien')).resolves.toMatchObject({ ok: true, rows: [[40]] });
+    expect(modelToSql(emptyQueryModel())).toBe('SELECT\nFROM;');
+    expect(sqlToModel('SELECT * FROM sinh_vien')).toEqual({ table: 'sinh_vien', columns: '*', conditions: [], connector: null });
+    expect(validateModel(emptyQueryModel())[0]?.code).toBe('no-table');
   });
 
   it('các hàm chưa hiện thực ném/reject NotImplementedError có ghi tên gói', async () => {
@@ -23,7 +26,5 @@ describe('engine SQL — điểm vào', () => {
         null,
       ),
     ).rejects.toThrow(/gói sql-engine/);
-    expect(() => modelToSql(emptyQueryModel())).toThrow(NotImplementedError);
-    expect(() => sqlToModel('SELECT 1')).toThrow(/chưa hiện thực/);
   });
 });

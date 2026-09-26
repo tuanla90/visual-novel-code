@@ -117,11 +117,18 @@ export const STANDARD_HINT_IDS = [
 export type StandardHintId = (typeof STANDARD_HINT_IDS)[number];
 
 // ---------- Mã chẩn đoán (QĐ-040) ----------
-/** Nhóm "không chạy được": ưu tiên cao nhất khi nhiều mã cùng khớp. */
+/**
+ * Nhóm "không chạy được": ưu tiên cao nhất khi nhiều mã cùng khớp.
+ * `no-columns` (hàng SELECT chưa chọn cột) và `no-value` (điều kiện chưa có giá trị) do gói
+ * sql-engine thêm cho trạng thái "chưa chạy được" của trình dựng (brief gói 3, mục 6); gói
+ * noi-dung viết lời Hà Vy cho hai mã này.
+ */
 export const BLOCKING_DIAGNOSTIC_CODES = [
   'not-select',
   'syntax-error',
   'no-table',
+  'no-columns',
+  'no-value',
   'connector-unset',
 ] as const;
 

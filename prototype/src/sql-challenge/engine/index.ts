@@ -23,12 +23,8 @@ export function gradeChallenge(_spec: ChallengeSpec, _sql: string, _model: Query
   return Promise.reject(new NotImplementedError('gradeChallenge'));
 }
 
-/** Sinh SQL từ model trình dựng (connector null với ≥ 2 điều kiện → SQL không hợp lệ để chạy; UI chặn trước). */
-export function modelToSql(_model: QueryModel): string {
-  throw new NotImplementedError('modelToSql');
-}
-
-/** Phân tích ngược SQL người chơi gõ về model; `null` nếu không phân tích được (QĐ-016). */
-export function sqlToModel(_sql: string): QueryModel | null {
-  throw new NotImplementedError('sqlToModel');
-}
+/**
+ * Sinh SQL từ model trình dựng (connector null với ≥ 2 điều kiện → SQL không hợp lệ để chạy; UI chặn
+ * trước bằng validateModel). Phân tích ngược SQL về model; `null` nếu ngoài tập con (QĐ-016).
+ */
+export { CONNECTOR_PLACEHOLDER, isModelRunnable, modelToSql, sqlToModel, validateModel } from './model-sql';
