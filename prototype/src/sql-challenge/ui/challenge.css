@@ -383,6 +383,75 @@
   font-style: italic;
 }
 
+/* ---------- Khung thành công + câu đọc kết quả ---------- */
+.chal-solved {
+  margin: 0 0 var(--sp-1);
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--radius-sm);
+  background: var(--c-success-bg);
+  color: var(--c-success);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+}
+.result__ok {
+  padding: 0 var(--sp-2);
+  border-radius: var(--radius-sm);
+  background: var(--c-success-bg);
+  color: var(--c-success);
+}
+.result__split {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--sp-3);
+}
+.result__table {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.result__next {
+  flex: 1 1 320px;
+  min-width: 0;
+  display: grid;
+  gap: var(--sp-2);
+  align-content: start;
+}
+.result__next .mc {
+  padding: var(--sp-3);
+  gap: var(--sp-2);
+}
+.result__next .mc__prompt {
+  font-size: var(--fs-base);
+}
+.result__next .mc__choice {
+  padding: var(--sp-2) var(--sp-3);
+}
+.result__answered p,
+.result__feedback p {
+  margin: 0 0 var(--sp-1);
+}
+.result__who {
+  font-weight: 700;
+  color: var(--c-char-ha-vy);
+}
+.result__who--player {
+  color: var(--c-char-player);
+}
+.result__feedback {
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-sm);
+  background: var(--c-bg);
+  border-left: 4px solid var(--c-char-ha-vy);
+}
+.result__feedback.is-correct {
+  border-left-color: var(--c-success);
+}
+.result__save {
+  justify-self: start;
+}
+
 /* ---------- Khung Hà Vy ---------- */
 .havy {
   flex: none;

@@ -11,9 +11,12 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ChallengeId } from '../../shared/ids';
 import { gameContent, useGameStore } from '../../shared/store';
 import { CodeText } from '../../shared/ui/CodeText';
-import { gradeChallenge, modelToSql, sqlToModel } from '../engine';
+import type { SavedQueryEvidence } from '../../evidence/types';
+import { QUAN_OR_QUERY } from '../data/challenges';
+import { gradeChallenge, modelToSql, runQuery, sqlToModel } from '../engine';
 import type { TableName } from '../schema';
 import type { BuilderMode, ChallengeDefinition, GradeResult, QueryModel } from '../types';
+import { SuccessPanel } from './SuccessPanel';
 import { HaVyPanel, type HaVyNote } from './HaVyPanel';
 import { IconPlay } from './icons';
 import { rowCountText } from './labels';
@@ -45,15 +48,17 @@ interface RunOutcome {
   conditionCount: number | null;
 }
 
-export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, onComplete: _onComplete }: ChallengeScreenProps) {
+export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, onComplete }: ChallengeScreenProps) {
   const openChallenge = useGameStore((s) => s.openChallenge);
   const updateChallenge = useGameStore((s) => s.updateChallenge);
   const recordRun = useGameStore((s) => s.recordRun);
+  const completeChallenge = useGameStore((s) => s.completeChallenge);
   const state = useGameStore((s) => s.challenges[challengeId]);
   const unlocked = useGameStore((s) => s.evidence.unlocked);
   const classEvidence = useGameStore((s) => s.evidence.savedQueries[CLASS_LIST_EVIDENCE_ID]);
 
   const [running, setRunning] = useState(false);
+  const [saving, setSaving] = useState(false);
   const [outcome, setOutcome] = useState<RunOutcome | null>(null);
   const [note, setNote] = useState<HaVyNote | null>(null);
   const resultRef = useRef<HTMLElement>(null);
@@ -92,8 +97,32 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
   const model = state.model;
   const builderSql = modelToSql(model);
   const locked = accessRevoked;
+  const solved = outcome !== null && outcome.grade.status === 'correct' && outcome.grade.run.ok;
   const blocked = blockingReason(model, src);
-  const canRun = !locked && !running && blocked === null;
+  const canRun = !locked && !solved && !running && blocked === null;
+
+  const save = async (): Promise<void> => {
+    if (!outcome || !solved || saving || locked || !outcome.grade.run.ok) return;
+    const r = outcome.grade.run;
+    setSaving(true);
+    let before: SavedQueryEvidence['before'];
+    if (mode === 'fix-query') {
+      // Số dòng "trước khi sửa" lấy từ lần chạy thật truy vấn OR của Quân (không viết cứng).
+      const quan = await runQuery(QUAN_OR_QUERY);
+      if (quan.ok) before = { sql: QUAN_OR_QUERY, rowCount: quan.rowCount };
+    }
+    completeChallenge(challengeId, {
+      id: content.evidence.id,
+      challengeId,
+      sql: outcome.sql,
+      columns: r.columns,
+      rows: r.rows,
+      rowCount: r.rowCount,
+      savedAt: Date.now(),
+      ...(before ? { before } : {}),
+    });
+    onComplete();
+  };
 
   const run = async (): Promise<void> => {
     if (!canRun) return;
@@ -148,13 +177,14 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
         ) : null}
 
         <section className="chal-card chal-builder" aria-label="Trình dựng truy vấn">
+          {solved ? <p className="chal-solved">Truy vấn đã đúng — trả lời câu hỏi bên dưới rồi lưu vào hồ sơ.</p> : null}
           <QueryBuilder
             model={model}
             onChange={setModel}
             guided={null}
-            disabled={locked}
+            disabled={locked || solved}
             onPreview={onPreview}
-            whereRow={<WhereRow model={model} onChange={setModel} evidenceOptions={evidenceOptions} disabled={locked} />}
+            whereRow={<WhereRow model={model} onChange={setModel} evidenceOptions={evidenceOptions} disabled={locked || solved} />}
           />
           <div className="chal-runbar" data-region="run">
             <button
@@ -175,7 +205,22 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
         </section>
 
         <section className="chal-card chal-result" aria-label="Kết quả" ref={resultRef}>
-          {outcome ? <RunResultView outcome={outcome} /> : <p className="qb-empty">Chưa chạy truy vấn nào. Dựng truy vấn rồi bấm “Chạy truy vấn” để xem kết quả ở đây.</p>}
+          {outcome && solved && outcome.grade.run.ok ? (
+            <SuccessPanel
+              attempt={outcome.attempt}
+              run={outcome.grade.run}
+              table={outcome.table}
+              conditionCount={outcome.conditionCount}
+              question={content.readQuestion}
+              saving={saving}
+              disabled={locked}
+              onSave={() => void save()}
+            />
+          ) : outcome ? (
+            <RunResultView outcome={outcome} />
+          ) : (
+            <p className="qb-empty">Chưa chạy truy vấn nào. Dựng truy vấn rồi bấm “Chạy truy vấn” để xem kết quả ở đây.</p>
+          )}
         </section>
       </div>
 
