@@ -4,7 +4,7 @@
  * Màn này TỰ ghi `question_answered` (id lựa chọn, số lần thử, cờ lựa chọn đầu) vì câu hỏi không
  * đi qua runtime kể chuyện. `debrief-fix` không có câu hỏi: nút lưu hiện ngay.
  */
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { speakerLabel } from '../../shared/display-names';
 import { track } from '../../shared/telemetry/track';
 import { CodeText } from '../../shared/ui/CodeText';
@@ -28,13 +28,17 @@ export interface SuccessPanelProps {
 export function SuccessPanel({ attempt, run, table, conditionCount, question, saving, disabled, onSave }: SuccessPanelProps) {
   const [attempts, setAttempts] = useState(0);
   const [lastChoice, setLastChoice] = useState<{ id: string; correct: boolean; feedback: DialogueLine[] } | null>(null);
+  // Đếm lần thử bằng ref (đồng bộ) để hai cú bấm liền nhau không cùng ghi attempt = 1 / isFirstChoice.
+  const tries = useRef({ count: 0, done: false });
   const answered = question === null || lastChoice?.correct === true;
 
   const choose = (choiceId: string): void => {
-    if (!question || answered) return;
+    if (!question || answered || tries.current.done) return;
     const choice = question.choices.find((c) => c.id === choiceId);
     if (!choice) return;
-    const attempt = attempts + 1;
+    tries.current.count += 1;
+    if (choice.correct) tries.current.done = true;
+    const attempt = tries.current.count;
     track({ type: 'question_answered', questionId: question.id, choiceId, attempt, correct: choice.correct, isFirstChoice: attempt === 1 });
     setAttempts(attempt);
     setLastChoice({ id: choiceId, correct: choice.correct, feedback: choice.feedback });

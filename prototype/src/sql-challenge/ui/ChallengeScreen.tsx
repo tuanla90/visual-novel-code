@@ -78,6 +78,9 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
   const [previewed, setPreviewed] = useState(false);
   const resultRef = useRef<HTMLElement>(null);
   const previewSeq = useRef(0);
+  // Chặn bấm đúp (hai cú bấm trước khi React vẽ lại): chạy/lưu hai lần sẽ ghi telemetry hai lần và
+  // gọi onComplete hai lần (lần hai rơi vào node kế tiếp của runtime).
+  const busy = useRef({ running: false, saving: false });
   const cancelBack = useCallback(() => setConfirmBack(false), []);
 
   useEffect(() => {
@@ -175,7 +178,8 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
   };
 
   const save = async (): Promise<void> => {
-    if (!outcome || !solved || saving || locked || !outcome.grade.run.ok) return;
+    if (!outcome || !solved || saving || locked || !outcome.grade.run.ok || busy.current.saving) return;
+    busy.current.saving = true;
     const r = outcome.grade.run;
     setSaving(true);
     let before: SavedQueryEvidence['before'];
@@ -198,7 +202,8 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
   };
 
   const run = async (): Promise<void> => {
-    if (!canRun) return;
+    if (!canRun || busy.current.running) return;
+    busy.current.running = true;
     const runMode: BuilderMode = state.mode;
     const sql = runMode === 'sql' ? state.sql : builderSql;
     const shape = runMode === 'sql' ? sqlToModel(sql) : model;
@@ -228,6 +233,7 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
       }
       resultRef.current?.scrollTo?.({ top: 0 });
     } finally {
+      busy.current.running = false;
       setRunning(false);
     }
   };

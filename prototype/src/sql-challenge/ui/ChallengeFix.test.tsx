@@ -2,7 +2,7 @@
  * Màn sửa truy vấn của Quân (`fix-query`, debrief-fix): nạp sẵn model OR, không có câu đọc kết quả,
  * vật chứng ev-quan-fixed kèm `before` (SQL OR của Quân + số dòng THẬT của nó). Hết quyền → khóa.
  */
-import { screen, within } from '@testing-library/react';
+import { fireEvent, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { QUAN_OR_QUERY } from '../data/challenges';
@@ -64,6 +64,21 @@ describe('Màn sửa truy vấn của Quân', () => {
       ['AND', 2, 'correct'],
     ]);
     expect(eventsOf('question_answered')).toHaveLength(0);
+  });
+
+  it('bấm đúp "Lưu vào hồ sơ" chỉ lưu và gọi onComplete MỘT lần', async () => {
+    const user = userEvent.setup();
+    const onComplete = vi.fn();
+    renderChallenge('debrief-fix', { mode: 'fix-query', onComplete });
+    await user.click(screen.getAllByRole('button', { name: 'AND — thỏa đồng thời' })[0]!);
+    await user.click(screen.getByRole('button', { name: /Chạy truy vấn/ }));
+    const saveBtn = await screen.findByRole('button', { name: 'Lưu vào hồ sơ' });
+    fireEvent.click(saveBtn);
+    fireEvent.click(saveBtn);
+    await vi.waitFor(() => expect(onComplete).toHaveBeenCalled());
+    await new Promise((r) => setTimeout(r, 50));
+    expect(onComplete).toHaveBeenCalledTimes(1);
+    expect(eventsOf('challenge_complete')).toHaveLength(1);
   });
 
   it('hết quyền truy cập: khóa toàn bộ, nêu lý do, không chạy / không hỏi / không sửa SQL được', () => {
