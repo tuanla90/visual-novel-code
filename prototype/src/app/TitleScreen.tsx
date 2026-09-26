@@ -1,7 +1,11 @@
 /**
  * Màn tiêu đề. Có chỗ cho khảo sát đầu game (gói telemetry — QĐ-031) qua `preSurveySlot`.
+ * Hình (gói hinh-giao-dien): nền phòng CLB (ô ảnh `bg-prototype-club-room` hoặc SVG tạm) + Minh
+ * Anh và Hà Vy hai bên, thẻ tiêu đề như bìa hồ sơ. Chữ và hành vi giữ nguyên.
  */
 import type { ReactNode } from 'react';
+import { Portrait } from '../shared/ui/Portrait';
+import { SceneBackdrop } from '../shared/ui/visuals/SceneBackdrop';
 
 export interface TitleScreenProps {
   title: string;
@@ -16,6 +20,15 @@ export interface TitleScreenProps {
 export function TitleScreen({ title, isSample, hasSavedProgress, onStart, onContinue, preSurveySlot }: TitleScreenProps) {
   return (
     <main className="title">
+      <SceneBackdrop scene="clb-room" />
+      <div className="title__cast" aria-hidden="true">
+        <div className="title__cast-member title__cast-member--left">
+          <Portrait character="minh-anh" expression="happy" />
+        </div>
+        <div className="title__cast-member title__cast-member--right">
+          <Portrait character="ha-vy" expression="smile" />
+        </div>
+      </div>
       <div className="title__card">
         <p className="title__kicker">Prototype · vòng thử nghiệm 1</p>
         <h1 className="title__name">{title}</h1>

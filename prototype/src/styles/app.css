@@ -60,31 +60,73 @@
 
 /* ---------- Màn tiêu đề ---------- */
 .title {
+  position: relative;
+  /* Nền phòng CLB (ảnh thật hoặc SVG tạm) + hai chân dung nằm dưới thẻ tiêu đề. */
+  isolation: isolate;
+  overflow: hidden;
   min-height: 100%;
   display: grid;
   place-items: center;
   padding: var(--sp-6) var(--sp-4);
-  background: linear-gradient(160deg, var(--c-scene-clb-room), var(--c-bg));
+  background: var(--c-scene-clb-room);
 }
+.title__cast {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.title__cast-member {
+  position: absolute;
+  bottom: 0;
+  height: min(82%, 640px);
+  aspect-ratio: 3 / 4;
+}
+.title__cast-member--left {
+  left: max(-4%, calc(50% - 720px));
+}
+.title__cast-member--right {
+  right: max(-4%, calc(50% - 720px));
+}
+/* Thẻ tiêu đề = bìa hồ sơ vụ án: giấy kem, ghim đỏ, dải mép bìa. */
 .title__card {
+  position: relative;
   width: min(720px, 100%);
-  background: var(--c-surface);
-  border: 2px solid var(--c-border);
-  border-radius: var(--radius-lg);
+  background: var(--c-paper);
+  color: var(--c-paper-ink);
+  border: 2px solid var(--c-paper-edge);
+  border-top: 10px solid var(--c-char-minh-anh);
+  border-radius: var(--radius-md);
   padding: var(--sp-6);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 18px 40px rgba(43, 33, 24, 0.28);
   display: grid;
   gap: var(--sp-4);
 }
+.title__card::before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  border-radius: 50%;
+  background: var(--c-pin);
+  border: 3px solid var(--c-paper-ink);
+}
 .title__kicker {
   margin: 0;
-  color: var(--c-text-muted);
-  font-weight: 600;
+  color: var(--c-paper-note);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: var(--fs-sm);
 }
 .title__name {
   margin: 0;
-  font-size: var(--fs-2xl);
-  line-height: 1.15;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  line-height: 1.1;
+  font-weight: 800;
 }
 .title__lead {
   margin: 0;
@@ -92,8 +134,9 @@
 }
 .title__survey {
   padding: var(--sp-3);
-  border: 1px dashed var(--c-border);
+  border: 1px dashed var(--c-paper-edge);
   border-radius: var(--radius-md);
+  background: var(--c-surface);
 }
 .title__actions {
   display: flex;
@@ -256,31 +299,55 @@
 
 /* ---------- Hộp thoại ---------- */
 .dialog {
+  position: relative;
   background: var(--c-dialog-bg);
-  border: 2px solid var(--c-dialog-border);
+  border: 3px solid var(--c-dialog-border);
   border-radius: var(--radius-lg);
-  padding: var(--sp-4) var(--sp-5);
-  box-shadow: var(--shadow-md);
+  padding: var(--sp-5) var(--sp-5) var(--sp-3);
+  box-shadow: 0 10px 28px rgba(31, 35, 40, 0.22);
   cursor: pointer;
   min-height: 132px;
   display: grid;
   gap: var(--sp-2);
 }
+/* Bảng tên người nói: đè lên mép trên hộp, màu chủ đạo của nhân vật (QĐ-026). */
 .dialog__speaker {
+  position: absolute;
+  top: 0;
+  left: var(--sp-5);
+  transform: translateY(-55%);
+  padding: 2px var(--sp-4);
+  border-radius: var(--radius-sm);
+  background: var(--c-char-narrator);
+  color: var(--c-char-narrator-ink);
   font-weight: 700;
-  color: var(--c-text-muted);
+  font-size: var(--fs-md);
+  line-height: 1.45;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 .dialog[data-speaker='player'] .dialog__speaker {
-  color: var(--c-char-player);
+  background: var(--c-char-player);
+  color: var(--c-char-player-ink);
 }
 .dialog[data-speaker='minh-anh'] .dialog__speaker {
-  color: var(--c-char-minh-anh);
+  background: var(--c-char-minh-anh);
+  color: var(--c-char-minh-anh-ink);
 }
 .dialog[data-speaker='ha-vy'] .dialog__speaker {
-  color: var(--c-char-ha-vy);
+  background: var(--c-char-ha-vy);
+  color: var(--c-char-ha-vy-ink);
 }
 .dialog[data-speaker='quan'] .dialog__speaker {
-  color: var(--c-char-quan);
+  background: var(--c-char-quan);
+  color: var(--c-char-quan-ink);
+}
+.dialog[data-speaker='hoai'] .dialog__speaker {
+  background: var(--c-char-hoai);
+  color: var(--c-char-hoai-ink);
+}
+.dialog[data-speaker='bac-tu'] .dialog__speaker {
+  background: var(--c-char-bac-tu);
+  color: var(--c-char-bac-tu-ink);
 }
 .dialog__text {
   margin: 0;
@@ -319,15 +386,21 @@
 /* ---------- Câu hỏi nhiều lựa chọn ---------- */
 .mc {
   background: var(--c-dialog-bg);
-  border: 2px solid var(--c-dialog-border);
+  border: 3px solid var(--c-dialog-border);
   border-radius: var(--radius-lg);
   padding: var(--sp-4) var(--sp-5);
+  box-shadow: 0 10px 28px rgba(31, 35, 40, 0.22);
   display: grid;
   gap: var(--sp-3);
 }
 .mc__asker-name {
+  display: inline-block;
+  margin-bottom: var(--sp-1);
+  padding: 0 var(--sp-3);
+  border-radius: var(--radius-sm);
+  background: var(--c-text);
+  color: var(--c-surface);
   font-weight: 700;
-  color: var(--c-text-muted);
 }
 .mc__prompt {
   margin: 0;
@@ -638,12 +711,24 @@
   border-radius: var(--radius-md);
 }
 
+/* QĐ-055: ≤ 1100 px — 2 hàng: tiến trình + cụm nút ở hàng đầu, nhiệm vụ xuống hàng hai. */
 @media (max-width: 1100px) {
   .topbar {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: var(--sp-1);
+  }
+  .topbar__parts {
+    grid-column: 1;
+    grid-row: 1;
+    flex-wrap: wrap;
+  }
+  .topbar__actions {
+    grid-column: 2;
+    grid-row: 1;
   }
   .topbar__task {
     grid-column: 1 / -1;
+    grid-row: 2;
     white-space: normal;
   }
 }
