@@ -169,15 +169,38 @@
 /* ---------- Sân khấu ---------- */
 .stage {
   position: relative;
+  /* Lớp nền (z-index -1) nằm dưới nội dung nhưng trên màu nền dự phòng của sân khấu. */
+  isolation: isolate;
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 0;
   padding: var(--sp-4);
   gap: var(--sp-3);
 }
+/* Nền cảnh (QĐ-060): ảnh thật hoặc SVG tạm, phủ kín + neo giữa. */
+.stage__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.stage__backdrop-img,
+.stage__backdrop .scene-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  user-select: none;
+}
 .stage__scene-label {
+  justify-self: start;
+  padding: 2px var(--sp-3);
+  border-radius: var(--radius-sm);
+  background: var(--c-dialog-bg);
   font-size: var(--fs-sm);
-  color: var(--c-text-muted);
+  color: var(--c-text);
   font-weight: 600;
 }
 .stage__portraits {
