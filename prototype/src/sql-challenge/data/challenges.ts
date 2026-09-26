@@ -103,6 +103,7 @@ export const COMMON_DIAGNOSTIC_ORDER: readonly DiagnosticCode[] = [
   'like-contains',
   'hardcoded-ids',
   'limit-used',
+  'wrong-value',
   'extra-columns',
   'other',
 ];
