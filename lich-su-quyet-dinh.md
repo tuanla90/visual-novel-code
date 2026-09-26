@@ -265,6 +265,34 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Tại `main`: typecheck 0 lỗi, 244/244 test, lint sạch, build đạt. Bài kiểm độc lập của điều phối viên (tệp tạm, không commit) 4/4: 40 sinh viên / 8 lớp / c1 = 10 / OR của Quân = 24 / c3 đúng Hiếu + Hoài; một câu c3 viết khác hẳn (chữ thường, alias, truy vấn con, đảo điều kiện, `ten >= 'H' AND ten < 'I'`) được chấm đúng; gõ cứng mã bị dataset ẩn bắt; `UPDATE` bị chặn, dữ liệu nguyên vẹn.
 - Sự cố canh: 76 phút không commit và không tệp nào đổi sau commit đầu → đánh thức; agent hoạt động lại ngay, không phải dừng.
 
+**QĐ-049 — Gỡ ghi chú của người viết khỏi chữ hiển thị.** · Nguồn: Q1/Đ1 của agent `noi-dung` · 26/09 19:50
+- Vấn đề: vài câu chỉ dẫn cho người dựng nằm trong trường hiển thị: `(end-01)` ở dòng Nguồn của sổ bàn giao; "Thẻ kèm câu SQL đã chạy và bảng kết quả." (ev-c1); "Thẻ kèm hai câu SQL (trước và sau khi sửa)…" (ev-quan-fixed); "Chú thích gắn sau màn giải trình: xem mục Hồ sơ vật chứng." (ev-c3-shortlist — người chơi đọc được ở Phần 3, trước màn giải trình, trái QĐ-023).
+- Phương án: A — để nguyên; **B — sửa kịch bản bỏ các câu đó, chép lại dữ liệu**; C — thêm trường "ghi chú dựng" (đụng kiểu đóng băng).
+- **Chọn B**, kèm một test canh giữ quét mọi chuỗi hiển thị của nội dung: không được chứa định danh thô (`intro-/inv-/ana-/deb-/end-NN`, `hs-`, `q-`, `clue-`, `doc-`, `ev-`, mã chẩn đoán) hay cụm chỉ dẫn ("xem mục", "Thẻ kèm"); canary phải tự chứng minh bắt được lỗi.
+
+**QĐ-050 — "Hủy danh sách" nghĩa là không hiển thị tên/mã nữa.** · Nguồn: Q2/Đ2 của agent `noi-dung` · 26/09 19:50
+- Vấn đề: sau end-03 Hồ sơ chỉ làm mờ bảng kết quả, mô tả thẻ `ev-c3-shortlist` vẫn ghi rõ họ tên + mã — trái lời "Danh sách hai người được hủy".
+- Phương án: A — làm mờ cả mô tả; B — bỏ tên khỏi mô tả trong kịch bản; C — để nguyên.
+- **Chọn A, bản chặt:** khi thẻ bị `redact`, giao diện KHÔNG render tên/mã (cả bảng lẫn mô tả) — thay bằng vạch che + dòng "đã hủy khi quyền truy cập kết thúc"; không dùng chỉ `filter: blur` vì chữ vẫn nằm trong DOM, trình đọc màn hình vẫn đọc được. Gói `hinh-giao-dien` làm.
+- Lý do: thông điệp đạo đức dữ liệu của prototype phải nhất quán giữa lời thoại và giao diện.
+
+**QĐ-051 — Chữ mã trong nội dung.** · Nguồn: Q3/Đ3 của agent `noi-dung` · 26/09 19:50
+- **Chọn A:** dữ liệu giữ nguyên dấu `` ` `` (nguyên văn kịch bản); giao diện hiển thị đoạn trong dấu thành chữ mã (phông mono, nền nhạt). Gói `trinh-dung-ui` tạo helper dùng chung trong `src/shared/ui/` (tệp mới) và áp cho màn thử thách + hộp thoại; gói `hinh-giao-dien` áp cho Hồ sơ.
+
+**QĐ-052 — Chỉnh cho kịch bản khớp engine; chấp nhận vượt ngân sách chữ 2%.** · Nguồn: Q4 của agent `noi-dung` · 26/09 19:50
+- Agent `noi-dung` được sửa kịch bản: dòng quy ước ưu tiên liệt kê đủ 6 mã blocking; thứ tự các mã blocking ở "Nhận xét chung" theo engine (`no-table` → `no-columns` → `no-value` → `connector-unset`); dòng "Cột bắt buộc" của debrief-fix thêm "(khuyến khích thêm `ma_lop`, `clb`)"; cập nhật mục "Tự kiểm".
+- Tổng chữ 2.648 so với ngân sách 2.600 (ngân sách do điều phối viên đặt ở gói 1, tài liệu user không có): chấp nhận; thời lượng thật sẽ đo bằng telemetry.
+
+**QĐ-053 — Màn xem xét không được nêu tên manh mối còn thiếu.** · Nguồn: rủi ro agent `noi-dung` nêu · 26/09 19:50
+- Vấn đề: dòng nhắc ở hành lang ghi "còn thiếu: Nửa bookmark CLB Báo chí" trước khi người chơi xem hộp góp ý — lộ trước manh mối.
+- **Chọn:** chỉ nêu số điểm còn lại ("Còn 1 điểm chưa xem xét"). Gói `hinh-giao-dien` sửa `ExploreScreen` (được phép, ngoài bản đồ sở hữu cũ); kèm đưa thẻ chữ lớn (end-04) vào giữa màn hình.
+
+**Nghiệm thu gói `noi-dung` — ĐẠT.** · 26/09 20:05
+- Tại `main`: typecheck 0 lỗi, 384/384 test, lint sạch, build đạt. Điều phối viên tự bẻ phanh canary định danh thô bằng cách khác agent đã thử (cắm `q-sig-h` vào nhãn điểm xem xét "Hộp góp ý") → đỏ, bắt ở cả hai mẫu; khôi phục → xanh. Nội dung thật hiển thị trên trình duyệt 1366×768, 0 lỗi console.
+- Chuyển cho gói sau: yêu cầu "thẻ vật chứng truy vấn kèm câu SQL, bảng kết quả, câu trước/sau khi sửa" không còn trong kịch bản (QĐ-049 đã gỡ) → ghi vào brief gói `hinh-giao-dien`. Chú thích của `COMMON_DIAGNOSTIC_ORDER` chưa liệt kê `no-columns`, `no-value` (không ảnh hưởng hành vi) → gói `tich-hop` dọn.
+
+**Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
+
 **Ghi chú không đổi quyết định:**
 - Tệp `prompts-background-prototype-v0.1.md` (bộ prompt tạo 3 ảnh cảnh nền + 1 ảnh neo phong cách) xuất hiện ở gốc repo lúc 18:33, không do agent nào tạo — coi là tài liệu của user. Gói hình/giao diện sẽ nhận ảnh nền thật theo đúng id trong tệp đó, dùng hình SVG tạm khi chưa có ảnh.
 - GDD v0.5 ghi Hà Vy "không biết SQL"; prototype để Hà Vy hướng dẫn từng bước và đưa gợi ý mức 3 gần như đáp án (QĐ-021, tài liệu prototype ghi Hà Vy "gợi ý cách đọc dữ liệu"). Cần cập nhật GDD sau vòng test.
