@@ -343,6 +343,112 @@
   overflow: auto;
 }
 
+.result {
+  display: grid;
+  gap: var(--sp-2);
+}
+.result__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-1) var(--sp-3);
+}
+.result__attempt {
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+.result__count {
+  font-size: var(--fs-base);
+}
+.result-table {
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+  min-width: 50%;
+}
+.result-table th,
+.result-table td {
+  border: 1px solid var(--c-border);
+  padding: 2px var(--sp-2);
+  text-align: left;
+  white-space: nowrap;
+}
+.result-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--c-bg);
+  z-index: 1;
+}
+.result-table__null {
+  color: var(--c-text-muted);
+  font-style: italic;
+}
+
+/* ---------- Khung Hà Vy ---------- */
+.havy {
+  flex: none;
+  background: var(--c-surface);
+  color: var(--c-text);
+  border-radius: var(--radius-md);
+  border-left: 6px solid var(--c-char-ha-vy);
+  padding: var(--sp-2) var(--sp-3);
+  display: grid;
+  gap: var(--sp-1);
+}
+.havy--success {
+  border-left-color: var(--c-success);
+}
+.havy__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.havy__avatar {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--c-char-ha-vy);
+  color: var(--c-char-ha-vy-ink);
+}
+.havy__name {
+  margin: 0;
+  font-size: var(--fs-base);
+  color: var(--c-char-ha-vy);
+}
+.havy__label {
+  margin-left: auto;
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  font-weight: 600;
+}
+.havy__text,
+.havy__idle {
+  margin: 0;
+  line-height: 1.5;
+}
+.havy__text {
+  animation: havy-in 0.35s ease-out;
+}
+.havy__idle {
+  color: var(--c-text-muted);
+}
+.havy__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+@keyframes havy-in {
+  from {
+    opacity: 0.2;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* ---------- Cột phải ---------- */
 .chal-sql {
   flex: none;

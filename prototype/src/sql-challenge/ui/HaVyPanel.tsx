@@ -1,0 +1,56 @@
+/**
+ * Khung Hà Vy (cột phải): một lời tại một thời điểm — bước hướng dẫn, gợi ý, hoặc nhận xét sau lần
+ * chạy. Lời lấy từ nội dung; nhãn nhỏ cho biết lời thuộc loại nào. Chữ mã hiển thị qua CodeText.
+ */
+import type { ReactNode } from 'react';
+import { speakerLabel } from '../../shared/display-names';
+import { CodeText } from '../../shared/ui/CodeText';
+import type { DialogueLine } from '../../story/types';
+
+export interface HaVyNote {
+  /** Nhãn nhỏ: "Bước 2/5", "Gợi ý 1/3", "Nhận xét lần chạy 3"… */
+  label: string;
+  line: DialogueLine;
+  tone?: 'default' | 'success';
+  /** Đổi khi có lời mới (để khung nháy nhẹ). */
+  key: string;
+}
+
+export interface HaVyPanelProps {
+  note: HaVyNote | null;
+  /** Chữ khi chưa có lời nào. */
+  idle: string;
+  actions?: ReactNode;
+}
+
+export function HaVyPanel({ note, idle, actions }: HaVyPanelProps) {
+  const who = note ? speakerLabel(note.line.speaker) : speakerLabel('ha-vy');
+  return (
+    <section className={`havy${note?.tone === 'success' ? ' havy--success' : ''}`} aria-labelledby="havy-name">
+      <div className="havy__head">
+        <span className="havy__avatar" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="12" cy="8" r="4" />
+            <circle cx="10.2" cy="8" r="1.1" />
+            <circle cx="13.8" cy="8" r="1.1" />
+            <path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" />
+          </svg>
+        </span>
+        <h3 id="havy-name" className="havy__name">
+          {who}
+        </h3>
+        {note ? <span className="havy__label">{note.label}</span> : null}
+      </div>
+      <div className="havy__body" aria-live="polite">
+        {note ? (
+          <p key={note.key} className="havy__text">
+            <CodeText text={note.line.text} />
+          </p>
+        ) : (
+          <p className="havy__idle">{idle}</p>
+        )}
+      </div>
+      {actions ? <div className="havy__actions">{actions}</div> : null}
+    </section>
+  );
+}

@@ -5,9 +5,12 @@
 import { render } from '@testing-library/react';
 import { gameContent, useGameStore } from '../../shared/store';
 import { initialGameData } from '../../shared/store/store';
-import { clearTelemetry } from '../../shared/telemetry/track';
+import { clearTelemetry, getTelemetryEvents } from '../../shared/telemetry/track';
+import type { TelemetryEvent } from '../../shared/telemetry/events';
 import type { ChallengeId, EvidenceId } from '../../shared/ids';
 import type { SavedQueryEvidence } from '../../evidence/types';
+import { modelToSql } from '../engine';
+import type { QueryModel } from '../types';
 import { ChallengeScreen } from './ChallengeScreen';
 
 export function resetGame(unlocked: EvidenceId[] = []): void {
@@ -37,4 +40,35 @@ export function renderChallenge(
 
 export function challengeState(id: ChallengeId) {
   return useGameStore.getState().challenges[id];
+}
+
+/** Mở thử thách trong store rồi đặt sẵn model (như người chơi đã dựng) trước khi render. */
+export function presetModel(id: ChallengeId, model: QueryModel): void {
+  const s = useGameStore.getState();
+  s.openChallenge(id);
+  s.updateChallenge(id, { model, sql: modelToSql(model) });
+}
+
+export const C1_CORRECT: QueryModel = {
+  table: 'sinh_vien',
+  columns: ['ma_sv', 'ho_dem', 'ten'],
+  conditions: [{ id: 'cond-1', column: 'ten', op: 'startsWith', value: 'H', source: { kind: 'clue', clueId: 'clue-signature-h' } }],
+  connector: null,
+};
+
+export function c3Model(connector: 'AND' | 'OR' | null): QueryModel {
+  return {
+    table: 'sinh_vien',
+    columns: ['ma_sv', 'ho_dem', 'ten', 'ma_lop', 'clb'],
+    conditions: [
+      { id: 'cond-1', column: 'ten', op: 'startsWith', value: 'H', source: { kind: 'clue', clueId: 'clue-signature-h' } },
+      { id: 'cond-2', column: 'ma_lop', op: 'in', value: ['KT24A', 'QT24B'], source: { kind: 'evidence', evidenceId: 'ev-c2-classes-b' } },
+      { id: 'cond-3', column: 'clb', op: 'eq', value: 'Báo chí', source: { kind: 'clue', clueId: 'clue-bookmark-baochi' } },
+    ],
+    connector,
+  };
+}
+
+export function eventsOf<T extends TelemetryEvent['type']>(type: T): Extract<TelemetryEvent, { type: T }>[] {
+  return getTelemetryEvents().filter((e): e is Extract<TelemetryEvent, { type: T }> => e.type === type);
 }
