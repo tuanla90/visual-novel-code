@@ -788,23 +788,26 @@
   }
 }
 
-/* ---------- Hồ sơ (ngăn kéo tạm) ---------- */
+/* ---------- Hồ sơ: ngăn kéo tông giấy hồ sơ (QĐ-026: kem, ghim, kẹp giấy) ---------- */
 .notebook {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   width: min(480px, 100%);
-  background: var(--c-paper);
+  /* Bìa hồ sơ màu giấy kraft nhạt; thẻ bên trong là giấy kem. */
+  background: var(--c-paper-edge);
   color: var(--c-paper-ink);
-  border-left: 3px solid var(--c-paper-edge);
-  box-shadow: var(--shadow-md);
+  border-left: 6px solid var(--c-paper-note);
+  box-shadow: -8px 0 24px rgba(43, 33, 24, 0.28);
   overflow: auto;
   padding: var(--sp-4);
   display: grid;
   gap: var(--sp-4);
   align-content: start;
   z-index: 10;
+  /* Chữ mã (CodeText) trên giấy: nền kem đậm hơn một chút. */
+  --code-text-bg: var(--c-bg);
 }
 .notebook__head {
   display: flex;
@@ -813,30 +816,70 @@
 }
 .notebook__title {
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.notebook__icon {
+  flex: none;
 }
 .notebook__empty {
   margin: 0;
-  color: var(--c-paper-note);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--c-paper);
+  border-radius: var(--radius-sm);
+  color: var(--c-paper-ink);
 }
 .notebook__group {
   display: grid;
-  gap: var(--sp-3);
+  gap: var(--sp-4);
 }
 .notebook__group-title {
   margin: 0;
+  justify-self: start;
+  padding: 2px var(--sp-3);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  background: var(--c-paper);
   font-size: var(--fs-base);
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  color: var(--c-paper-ink);
+}
+.notebook__group-count {
   color: var(--c-paper-note);
+  font-weight: 600;
 }
 .card {
-  background: #fff;
+  position: relative;
+  background: var(--c-paper);
+  color: var(--c-paper-ink);
   border: 1px solid var(--c-paper-edge);
-  border-top: 6px solid var(--c-pin);
   border-radius: var(--radius-sm);
-  padding: var(--sp-3) var(--sp-4);
+  box-shadow: 0 3px 8px rgba(43, 33, 24, 0.18);
+  padding: var(--sp-4) var(--sp-4) var(--sp-3);
   display: grid;
   gap: var(--sp-2);
+}
+/* Ghim đỏ (manh mối, kết quả truy vấn) và kẹp giấy (tài liệu) — trang trí thuần. */
+.card__pin {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  border-radius: 50%;
+  background: var(--c-pin);
+  border: 2px solid var(--c-paper-ink);
+}
+.card__clip {
+  position: absolute;
+  top: -10px;
+  left: var(--sp-5);
+  width: 14px;
+  height: 34px;
+  border: 3px solid #8a8f98;
+  border-radius: 8px;
 }
 .card__title {
   margin: 0;
@@ -863,7 +906,11 @@
   margin: 0;
   padding: var(--sp-2) var(--sp-3);
   border-radius: var(--radius-sm);
-  background: var(--c-paper);
+  background: var(--c-surface);
+  border-left: 4px solid var(--c-paper-note);
+}
+.card__note--caveat {
+  border-left-color: var(--c-pin);
 }
 .card__sql {
   margin: 0;
@@ -872,12 +919,23 @@
   color: var(--c-sql-text);
   border-radius: var(--radius-sm);
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
   font-size: var(--fs-sm);
+}
+.card__count {
+  margin: 0;
+  font-weight: 700;
+}
+.card__table-wrap {
+  display: grid;
+  gap: var(--sp-1);
+  overflow-x: auto;
 }
 .card__table {
   border-collapse: collapse;
   width: 100%;
   font-size: var(--fs-sm);
+  background: var(--c-surface);
 }
 .card__table th,
 .card__table td {
@@ -885,9 +943,80 @@
   padding: 2px var(--sp-2);
   text-align: left;
 }
-.card__table--redacted td {
-  filter: blur(4px);
-  user-select: none;
+.card__table th code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+.card__more {
+  justify-self: start;
+  border: 0;
+  background: transparent;
+  color: var(--c-focus);
+  font-weight: 700;
+  padding: var(--sp-1) 0;
+  text-decoration: underline;
+}
+/* Thẻ đã hủy (QĐ-050): ô là vạch che, không có chữ trong DOM. */
+.card__redacted {
+  display: grid;
+  gap: var(--sp-1);
+}
+.card__redacted-bar,
+.card__redacted-cell {
+  display: block;
+  height: 0.9em;
+  border-radius: 2px;
+  background: var(--c-paper-ink);
+}
+.card__redacted-bar {
+  width: 92%;
+}
+.card__redacted-bar--short {
+  width: 64%;
+}
+.card__redacted-cell {
+  width: 100%;
+  min-width: 2.5em;
+  margin: 3px 0;
+}
+.card__redacted-note {
+  margin: var(--sp-1) 0 0;
+  font-weight: 700;
+  color: var(--c-paper-ink);
+}
+/* Truy vấn đã sửa: dải "24 → 2" + câu trước/sau. */
+.card__compare {
+  display: grid;
+  gap: var(--sp-1);
+}
+.card__compare-strip {
+  margin: 0 0 var(--sp-1);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-xl);
+  font-weight: 800;
+}
+.card__compare-num--before {
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+  color: var(--c-paper-note);
+}
+.card__compare-num--after {
+  color: var(--c-success);
+}
+.card__compare-unit {
+  font-size: var(--fs-base);
+  font-weight: 600;
+}
+.card__compare-label {
+  margin: var(--sp-1) 0 0;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--c-paper-note);
+}
+.card__sql--before {
+  opacity: 0.85;
 }
 .card__annotations {
   margin: 0;
@@ -899,6 +1028,7 @@
   background: var(--c-warning-bg);
   color: var(--c-warning);
   border-radius: var(--radius-sm);
+  --code-text-bg: var(--c-surface);
 }
 
 /* ---------- Hộp xác nhận ---------- */
