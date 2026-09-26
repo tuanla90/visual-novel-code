@@ -65,10 +65,13 @@ describe('ô ảnh: danh sách và README', () => {
     );
   });
 
-  it('README trong thư mục ô ảnh liệt kê đủ mọi tên ô và mọi đuôi được nhận', () => {
+  it('README trong thư mục ô ảnh liệt kê đủ mọi tên ô, 13 id của user và mọi đuôi được nhận', () => {
     const readme = readFileSync(join(ART_DIR, 'README.md'), 'utf8');
     for (const slot of ART_SLOTS) expect(readme, slot.name).toContain(`\`${slot.name}\``);
+    for (const id of Object.keys(USER_MANIFEST)) expect(readme, id).toContain(`\`${id}\``);
     for (const ext of ART_EXTENSIONS) expect(readme).toContain(`.${ext}`);
+    // Bảng Manifest trong README: mỗi dòng id ↔ đúng ô.
+    for (const [id, slot] of Object.entries(USER_MANIFEST)) expect(readme).toMatch(new RegExp(`\\| \`${id}\`[^\\n]*\`${slot}\``));
   });
 
   it('tệp ảnh trong src/assets: không tệp nào nghi gõ sai tên; in bảng ô ↔ tệp, tệp bị che, tệp bỏ qua', () => {
