@@ -208,6 +208,15 @@
   gap: var(--sp-4);
   min-height: 0;
 }
+.dbf-proj__body--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+.dbf-proj__foot-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-width: 0;
+}
 .dbf-proj__col {
   display: flex;
   flex-direction: column;
