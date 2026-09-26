@@ -220,6 +220,17 @@
   padding: var(--sp-4);
   gap: var(--sp-3);
 }
+/*
+ * Vùng màn chiếu (biến của gói 6, debrief.css) ở phòng giải trình: Stage tính đúng theo khung màn
+ * chiếu trong ảnh nền (visuals/scene-geometry.ts → HEARING_ROOM_SCREEN) và đặt inline trên .stage.
+ * Giá trị dưới đây chỉ là dự phòng (đã quy ra cho 1366×768) khi trình duyệt không chạy được phép đo.
+ */
+.stage[data-scene='debrief-room'] {
+  --projector-top: 6.6%;
+  --projector-right: 9%;
+  --projector-bottom: 26%;
+  --projector-left: 9%;
+}
 /* Nền cảnh (QĐ-060): ảnh thật hoặc SVG tạm, phủ kín + neo giữa. */
 .stage__backdrop {
   position: absolute;

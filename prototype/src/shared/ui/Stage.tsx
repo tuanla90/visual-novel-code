@@ -3,12 +3,13 @@
  * Props giữ nguyên từ khung (ARCHITECTURE.md §4). Dàn chân dung: các nhân vật đã nói trong cảnh
  * hiện tại đứng ở vị trí cố định; người đang nói nổi bật, người khác lùi nhẹ (visuals/cast.ts).
  */
-import { useState, type CSSProperties, type ReactNode } from 'react';
+import { useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { sceneName } from '../display-names';
 import type { SceneId } from '../ids';
 import { Portrait } from './Portrait';
 import { SceneBackdrop } from './visuals/SceneBackdrop';
 import { castPosition, nextCast, type CastState } from './visuals/cast';
+import { useProjectorInsets } from './visuals/use-projector-insets';
 
 export interface StageProps {
   scene: SceneId;
@@ -23,9 +24,12 @@ export function Stage({ scene, speaker, expression, children }: StageProps) {
   const current = nextCast(cast, scene, speaker, expression);
   // Suy trạng thái từ props lúc render (mẫu "lưu thông tin từ lần render trước" của React).
   if (current !== cast) setCast(current);
+  const ref = useRef<HTMLElement>(null);
+  // Phòng giải trình: vùng màn chiếu (gói 6) khớp màn chiếu trong ảnh nền.
+  useProjectorInsets(ref, scene);
 
   return (
-    <section className="stage" data-scene={scene} style={{ backgroundColor: `var(--c-scene-${scene})` }} aria-label={`Cảnh: ${sceneName(scene)}`}>
+    <section ref={ref} className="stage" data-scene={scene} style={{ backgroundColor: `var(--c-scene-${scene})` }} aria-label={`Cảnh: ${sceneName(scene)}`}>
       <SceneBackdrop scene={scene} />
       <div className="stage__scene-label">{sceneName(scene)}</div>
       <div className="stage__portraits">

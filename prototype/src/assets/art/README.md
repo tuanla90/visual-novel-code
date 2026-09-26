@@ -23,8 +23,21 @@ ngang) và để **35% dưới** thoáng cho nhân vật + hộp thoại (theo `
 
 ### Vùng màn chiếu (chỉ phòng giải trình)
 
-Giao diện truy vấn được chồng lên sân khấu tại "vùng màn chiếu" = 4 biến
-`--projector-top/right/bottom/left` (mặc định trong `prototype/src/debrief/ui/debrief.css`).
+Giao diện truy vấn (màn chiếu, màn chọn dòng lỗi) được chồng lên **đúng khung màn chiếu trống** trong
+ảnh nền. Khung đó khai báo bằng 4 số trong `prototype/src/shared/ui/visuals/scene-geometry.ts`
+(`HEARING_ROOM_SCREEN`), mỗi số là **phần của ảnh** (0–1). Khi thay ảnh thật, đo khung màn chiếu trên
+ảnh 2560×1440 rồi đổi 4 số:
+
+- `x0` = mép trái màn chiếu (px) ÷ 2560, `x1` = mép phải ÷ 2560
+- `y0` = mép trên (px) ÷ 1440, `y1` = mép dưới ÷ 1440
+
+Ví dụ màn chiếu từ (230, 144) đến (2330, 1037) → `x0: 0.09, y0: 0.1, x1: 0.91, y1: 0.72` (giá trị
+của nền vẽ tạm). Game tự quy ra 4 biến `--projector-top/right/bottom/left` (của
+`prototype/src/debrief/ui/debrief.css`) theo kích thước màn hình, cùng cách cắt `cover` với ảnh nền.
+Màn chiếu trong ảnh nên chiếm khoảng **80% bề ngang và 60% chiều cao** ảnh (mép trên thấp hơn
+khoảng 10% để chừa nhãn cảnh ở góc trên trái): nhỏ hơn thì game nới khung giao diện ra (tối thiểu
+900×420 px; màn ≤ 1100 px cao tối thiểu 600 px vì SQL và bảng xếp chồng) để SQL còn đọc được, và khung
+sẽ tràn ra ngoài màn chiếu vẽ trong ảnh.
 
 ## Chân dung — PNG nền trong, nửa người, khung 1200×1600
 

@@ -278,50 +278,51 @@ function HearingRoomArt() {
     <>
       <rect width={1600} height={900} fill="#d3dbe3" />
       <rect width={1600} height={40} fill="#e3e8ed" />
-      <rect y={500} width={1600} height={60} fill="#c7d0da" />
-      {/* Rèm lá dọc hai bên */}
+      {/* Rèm lá dọc hai bên (vùng mép — bị cắt khi màn hẹp, không chứa vật kể chuyện) */}
       {[0, 1].map((side) => (
         <g key={`blind${side}`}>
-          <rect x={side ? 1360 : 40} y={90} width={200} height={380} fill="#eef2f4" />
-          {Array.from({ length: 9 }, (_, i) => (
-            <rect key={i} x={(side ? 1368 : 48) + i * 21.5} y={96} width={14} height={368} fill="#e0e6ea" />
+          <rect x={side ? 1432 : 18} y={96} width={150} height={440} fill="#eef2f4" />
+          {Array.from({ length: 7 }, (_, i) => (
+            <rect key={i} x={(side ? 1438 : 24) + i * 20.5} y={102} width={13} height={428} fill="#e0e6ea" />
           ))}
         </g>
       ))}
       {/* Đồng hồ treo tường không số */}
-      <circle cx={1270} cy={120} r={34} fill="#f2f4f6" stroke="#a9b6c3" strokeWidth={5} />
-      <line x1={1270} y1={120} x2={1270} y2={98} stroke="#6c7c8f" strokeWidth={4} />
-      <line x1={1270} y1={120} x2={1286} y2={128} stroke="#6c7c8f" strokeWidth={4} />
-      {/* Máy chiếu gắn trần */}
-      <rect x={784} y={0} width={10} height={26} fill="#b4bec9" />
-      <rect x={756} y={24} width={66} height={22} rx={5} fill="#c3ccd6" />
-      {/* Màn chiếu trống */}
-      <rect x={sx - 12} y={sy - 14} width={sw + 24} height={14} rx={4} fill="#9eabb9" />
+      <circle cx={1507} cy={64} r={22} fill="#f2f4f6" stroke="#a9b6c3" strokeWidth={4} />
+      <line x1={1507} y1={64} x2={1507} y2={50} stroke="#6c7c8f" strokeWidth={3} />
+      <line x1={1507} y1={64} x2={1517} y2={69} stroke="#6c7c8f" strokeWidth={3} />
+      {/* Màn chiếu trống cỡ lớn trên tường chính (giao diện truy vấn chồng lên đúng khung này) */}
+      <rect x={sx - 14} y={sy - 16} width={sw + 28} height={16} rx={5} fill="#9eabb9" />
+      <rect x={sx + 6} y={sy + 8} width={sw} height={sh} fill="#b8c3cf" opacity={0.5} />
       <rect x={sx} y={sy} width={sw} height={sh} fill="#f3f5f7" stroke="#b9c4cf" strokeWidth={4} />
-      {/* Bàn chủ trì phía xa chính giữa */}
-      <rect x={700} y={470} width={200} height={70} fill="#9d826b" />
-      <rect x={700} y={470} width={200} height={12} fill="#b09780" />
-      <rect x={770} y={430} width={60} height={44} rx={12} fill="#6d7d93" />
+      {/* Máy chiếu gắn trần, phía trước màn */}
+      <rect x={795} y={0} width={10} height={30} fill="#b4bec9" />
+      <rect x={764} y={28} width={72} height={24} rx={6} fill="#c3ccd6" />
+      <circle cx={800} cy={40} r={7} fill="#9eabb9" />
       {/* Tủ văn phòng thấp + bìa xếp gọn */}
-      <rect x={60} y={480} width={190} height={80} fill="#c2ccd6" />
-      <rect x={72} y={454} width={20} height={26} fill="#e9e4d8" />
-      <rect x={96} y={454} width={20} height={26} fill="#8fa3bb" />
-      <rect x={120} y={454} width={20} height={26} fill="#e9e4d8" />
+      <rect x={28} y={560} width={160} height={90} fill="#c2ccd6" />
+      <rect x={40} y={534} width={20} height={26} fill="#e9e4d8" />
+      <rect x={64} y={534} width={20} height={26} fill="#8fa3bb" />
+      <rect x={88} y={534} width={20} height={26} fill="#e9e4d8" />
       {/* Sàn */}
-      <rect y={560} width={1600} height={340} fill="#c9d1d9" />
-      <FloorGrid vx={800} top={560} color="#bcc6d0" rows={[600, 660, 740, 840]} cols={6} />
+      <rect y={646} width={1600} height={254} fill="#c9d1d9" />
+      <FloorGrid vx={800} top={646} color="#bcc6d0" rows={[680, 730, 800, 880]} cols={6} />
+      {/* Bàn chủ trì chính giữa, trước màn chiếu */}
+      <rect x={766} y={566} width={68} height={48} rx={12} fill="#6d7d93" />
+      <rect x={690} y={604} width={220} height={60} fill="#9d826b" />
+      <rect x={690} y={604} width={220} height={12} fill="#b09780" />
       {/* Bàn họp dài: hai phía đối diện nhau, ghế bọc vải xanh than nhạt */}
       {[0, 1].map((side) =>
         [0, 1, 2].map((i) => {
-          const x = side ? 930 + i * 120 : 560 - i * 120;
-          const y = 560 + i * 26;
-          return <rect key={`ch${side}-${i}`} x={x} y={y} width={92} height={90} rx={16} fill="#6f7f95" />;
+          const x = side ? 972 + i * 118 : 536 - i * 118;
+          const y = 668 + i * 24;
+          return <rect key={`ch${side}-${i}`} x={x} y={y} width={92} height={86} rx={16} fill="#6f7f95" />;
         }),
       )}
-      <polygon points="600,580 1000,580 1260,700 340,700" fill="#a88c73" />
-      <polygon points="340,700 1260,700 1260,722 340,722" fill="#8e7560" />
-      <rect x={560} y={600} width={80} height={34} fill="#eef0f2" transform="rotate(-6 600 617)" />
-      <rect x={960} y={606} width={80} height={34} fill="#eef0f2" transform="rotate(5 1000 623)" />
+      <polygon points="640,690 960,690 1200,812 400,812" fill="#a88c73" />
+      <polygon points="400,812 1200,812 1200,832 400,832" fill="#8e7560" />
+      <rect x={560} y={716} width={80} height={32} fill="#eef0f2" transform="rotate(-6 600 732)" />
+      <rect x={960} y={720} width={80} height={32} fill="#eef0f2" transform="rotate(5 1000 736)" />
       {/* Ánh đèn huỳnh quang lạnh phủ nhẹ */}
       <rect width={1600} height={900} fill="#e8f0f8" opacity={0.08} />
     </>
