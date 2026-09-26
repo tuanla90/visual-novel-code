@@ -117,7 +117,50 @@
 
 ## Phần 3 — Phân tích dữ liệu {part: analysis}
 
-(đang viết)
+### ana-01 — Mở dữ liệu {scene: clb-room}
+
+> NHIỆM VỤ: Tìm sinh viên có tên bắt đầu bằng H
+
+- **narrator**: Về phòng CLB. Laptop đã mở sẵn trình dựng truy vấn, nối vào view dữ liệu.
+- **minh-anh** (neutral): Ba manh mối rồi. Giờ đến lượt hỏi dữ liệu.
+- **ha-vy** (neutral): View có hai bảng: sinh_vien và lop_sinh_hoat. Bắt đầu từ manh mối dễ nhất: chữ H.
+- **ha-vy** (smile): Lần đầu thì mình chỉ từng bước. Chạy sai cứ chạy lại, bao nhiêu lần cũng được.
+- [THỬ THÁCH c1]
+- [ĐI TỚI ana-c2-intro]
+
+### ana-c2-intro — Manh mối tòa B {scene: clb-room}
+
+> NHIỆM VỤ: Tìm các lớp sinh hoạt ở giảng đường B
+
+- **minh-anh** (worried): Mười người. Đi hỏi từng người thì hết buổi mất.
+- **ha-vy** (thinking): Thêm manh mối tòa B vào. Nhưng bảng sinh_vien không có cột tòa nhà.
+- **ha-vy** (neutral): Mở bảng mô tả cột ra xem. Cột tòa nhà nằm ở bảng nào?
+- [DÀN DỰNG] Ô FROM để trống như mọi thử thách (QĐ-016): chọn đúng bảng là việc của người chơi.
+- [THỬ THÁCH c2]
+- [ĐI TỚI ana-c3-intro]
+
+### ana-c3-intro — Ghép ba manh mối {scene: clb-room}
+
+> NHIỆM VỤ: Tìm người khớp cả ba manh mối
+
+- **ha-vy** (neutral): KT24A và QT24B. Hai mã lớp này giờ cũng là manh mối.
+- **minh-anh** (neutral): Chữ ký, tòa B, bookmark. Ai khớp cả ba?
+- [DÀN DỰNG] Mục "Từ manh mối" của trình dựng lúc này có: `H` (chữ ký), danh sách `KT24A, QT24B` (vật chứng ev-c2-classes-b), `Báo chí` (bookmark) — QĐ-017.
+- [THỬ THÁCH c3]
+- [ĐI TỚI ana-c3-done]
+
+### ana-c3-done — "Tìm ra rồi!" {scene: clb-room}
+
+- **minh-anh** (happy): Hai người! Tìm ra rồi! Gửi Phòng CTSV ngay thôi!
+- **narrator**: Điện thoại Minh Anh rung. Tin nhắn từ Phòng CTSV.
+- **minh-anh** (worried): "Trước khi CTSV liên hệ ai, Ban Pháp chế – Kiểm tra Hội sinh viên sẽ thẩm tra cách CLB dùng dữ liệu."
+- **ha-vy** (thinking): Ban của anh Quân. Người gọi CLB mình là "hội trinh thám nghiệp dư".
+- **minh-anh** (worried): Mười lăm phút nữa, ở phòng giải trình. Mang theo hồ sơ.
+- [DÀN DỰNG] Không nhân vật nào nói hai dòng này là gì trước màn giải trình (QĐ-023). Hà Vy không sửa câu "Tìm ra rồi!" của Minh Anh.
+
+> NHIỆM VỤ: Đến phòng giải trình
+
+- [ĐIỀU KIỆN QUA] cần: ev-c3-shortlist → nút "Nhiệm vụ tiếp theo →" sang deb-01
 
 ---
 
@@ -134,6 +177,145 @@
 ---
 
 ## Nội dung thử thách
+
+### Quy ước thẻ thử thách
+
+- Trình tự một thử thách: (chỉ c1) các bước hướng dẫn → người chơi chạy truy vấn, không giới hạn số lần → khi chạy đúng: khung thành công và lời `[KHI ĐÚNG]` → câu hỏi đọc kết quả `[HỎI]` → nút "Lưu vào hồ sơ" → vật chứng vào Hồ sơ → quay về chuỗi kể chuyện. `debrief-fix` không có câu hỏi đọc kết quả (QĐ-024 đã có).
+- `[BƯỚC n · nổi bật: <vùng>]`: bước hướng dẫn của Hà Vy; vùng là `from`, `select`, `where`, `run`, `preview` (nút "Xem 5 dòng đầu"). Bước tự chuyển khi người chơi làm xong thao tác đang nổi bật; không khóa thao tác (QĐ-021).
+- `[GỢI Ý n]`: lời cho lần bấm "Hỏi Hà Vy" thứ n (n = 1, 2, 3; bấm thêm thì lặp mức 3). Đếm số lần bấm cho telemetry.
+- `[KHI: <mã chẩn đoán>]`: nhận xét tự động khi một lần chạy chưa đúng rơi vào trường hợp đó. Mã chẩn đoán là đề xuất cho gói sql-engine, đổi tên được. Nhiều mã cùng khớp thì ưu tiên theo thứ tự liệt kê trong thẻ.
+- `dùng <mã gợi ý chuẩn>`: hiện đúng lời của câu gợi ý chuẩn đó (mục ngay dưới).
+- Không có lời phạt, không trừ điểm; chạy sai chỉ nhận một nhận xét theo ý nghĩa (QĐ-018).
+
+### Ba câu gợi ý chuẩn (§5.2) — giọng Hà Vy
+
+- [GỢI Ý CHUẨN hint-any-or-all] **ha-vy** (thinking): Truy vấn này đang lấy cả người chỉ khớp một manh mối. Cậu muốn khớp bất kỳ, hay khớp đồng thời?
+  - Dùng khi: c3 hoặc debrief-fix chạy với phép nối `OR` (mã `or-connector`). Không có ở c1, c2 vì chỉ có một điều kiện.
+- [GỢI Ý CHUẨN hint-right-columns] **ha-vy** (thinking): Kết quả đã có đúng cột cần để trả lời câu hỏi chưa? Đọc lại đề xem cần những cột nào.
+  - Dùng khi: ở bất kỳ thử thách nào, kết quả ra đúng các dòng nhưng thiếu cột bắt buộc (mã `missing-columns`, QĐ-019).
+- [GỢI Ý CHUẨN hint-ask-or-conclude] **ha-vy** (thinking): Hai dòng này cho biết ai cần hỏi tiếp, hay đã đủ để kết luận ai làm?
+  - Dùng khi: CHỈ ở màn giải trình, là phản hồi khi chọn "Một trong hai bạn chắc chắn đã bỏ thư" ở q-two-rows (deb-03). Không dùng ở c3, không dùng ở bất kỳ đâu trước màn giải trình (QĐ-023).
+
+### Nhận xét chung cho mọi thử thách
+
+- [KHI: not-select] **ha-vy** (neutral): Trong buổi làm việc này CLB chỉ có quyền xem dữ liệu.
+- [KHI: syntax-error] **ha-vy** (thinking): Máy chưa đọc được câu lệnh này. Soát lại dấu nháy, dấu phẩy, hoặc quay về trình dựng.
+- [KHI: no-table] **ha-vy** (neutral): Hàng FROM còn trống. Mình lấy dữ liệu từ bảng nào?
+- [KHI: extra-columns] **ha-vy** (smile): Đúng rồi! Mẹo nhỏ: chỉ cần các cột đề bài hỏi là đủ.
+  - Vẫn tính là chạy đúng; lời này thay cho lời `[KHI ĐÚNG]` của thử thách (QĐ-019).
+- [KHI: other] **ha-vy** (thinking): Kết quả chưa khớp câu hỏi. So từng điều kiện với manh mối trong hồ sơ xem.
+
+### c1 — Ai có tên bắt đầu bằng H? {challenge: c1}
+
+- Tiêu đề: Thử thách 1 — Ai có tên bắt đầu bằng H?
+- Đề bài hiển thị: Trong dữ liệu có những sinh viên nào có tên (tên gọi, không phải họ) bắt đầu bằng chữ H? Kết quả cần có: mã sinh viên, họ đệm, tên.
+- Cột bắt buộc: `ma_sv`, `ho_dem`, `ten` · Kết quả chuẩn: 10 dòng (QĐ-012) · Chạy thêm dataset ẩn: có (QĐ-015)
+- Manh mối liên quan: clue-signature-h
+- Mục tiêu học: `SELECT`, `FROM`, `WHERE`, `LIKE` và ký hiệu `%`.
+- SQL chuẩn:
+
+```sql
+SELECT ma_sv, ho_dem, ten
+FROM sinh_vien
+WHERE ten LIKE 'H%';
+```
+
+- [BƯỚC 1 · nổi bật: from] **ha-vy** (neutral): Hàng FROM trước: lấy dữ liệu từ bảng nào. Người mình tìm nằm trong bảng sinh_vien.
+- [BƯỚC 2 · nổi bật: preview] **ha-vy** (smile): Muốn nhìn bảng trước thì bấm "Xem 5 dòng đầu". Như liếc qua sheet trước khi lọc.
+- [BƯỚC 3 · nổi bật: select] **ha-vy** (neutral): Hàng SELECT: chọn cột muốn hiện. Đề bài cần ma_sv, ho_dem và ten.
+- [BƯỚC 4 · nổi bật: where] **ha-vy** (neutral): Hàng WHERE là bộ lọc, như nút Filter trong Excel. Chọn cột ten, phép "bắt đầu bằng", giá trị H trong mục "Từ manh mối".
+- [BƯỚC 5 · nổi bật: run] **ha-vy** (smile): Bên cạnh là câu SQL tự viết theo lựa chọn của cậu. Dấu % nghĩa là "sau đó là gì cũng được". Bấm Chạy nào!
+- [KHI: wrong-column-ho-dem] **ha-vy** (thinking): Cậu đang lọc theo cột ho_dem. Chữ ký thường là tên gọi, tức cột ten.
+- [KHI: like-ends-with] **ha-vy** (thinking): "Kết thúc bằng H" sẽ bắt cả những tên như Linh, Thanh. Trên chữ ký, H đứng đầu.
+- [KHI: like-contains] **ha-vy** (thinking): "Chứa H" bắt cả tên có chữ h ở giữa. Mình chỉ cần H đứng đầu tên.
+- [KHI: no-filter] **ha-vy** (neutral): Đây là cả bảng, chưa lọc gì. Như mở sheet mà chưa bật Filter.
+- [KHI: hardcoded-ids] **ha-vy** (thinking): Truy vấn này gọi thẳng mã sinh viên, tức là đi từ đáp án. Hãy lọc bằng manh mối.
+- [KHI: limit-used] **ha-vy** (thinking): LIMIT chỉ cắt bớt số dòng, không lọc theo manh mối.
+- [KHI: missing-columns] dùng hint-right-columns
+- [GỢI Ý 1] **ha-vy** (neutral): Mình đang tìm người có tên gọi bắt đầu bằng chữ trên chữ ký. Chỉ cần một điều kiện lọc.
+- [GỢI Ý 2] **ha-vy** (thinking): Bảng sinh_vien. Lọc cột ten, phép "bắt đầu bằng", giá trị H. Hiện ba cột ma_sv, ho_dem, ten.
+- [GỢI Ý 3] **ha-vy** (smile): Gần như đáp án đây: `SELECT ma_sv, ho_dem, ten FROM sinh_vien WHERE ten LIKE 'H%';`
+- [KHI ĐÚNG] **ha-vy** (smile): Truy vấn đầu tiên của cậu đấy! Mười dòng, đúng như bộ lọc.
+- [HỎI q-c1-read] ha-vy: "Mười dòng này là những ai?"
+  - (A) Những người có chữ H ở bất kỳ đâu trong họ tên → phản hồi: **ha-vy** (thinking): 'H%' chỉ khớp khi H đứng đầu. H ở giữa hay ở cuối đều không tính.
+  - (B) Những người có tên gọi bắt đầu bằng H [ĐÚNG] → phản hồi: **ha-vy** (smile): Chuẩn. Cột ten, H đứng đầu, phía sau là gì cũng được.
+  - (C) Những người có họ bắt đầu bằng H → phản hồi: **ha-vy** (thinking): Điều kiện đặt ở cột ten, không phải ho_dem. Người họ Hoàng mà tên Lan sẽ không có ở đây.
+- Vật chứng lưu vào hồ sơ: ev-c1-names-h
+  - Tiêu đề: Sinh viên có tên bắt đầu bằng H
+  - Mô tả: 10 dòng từ bảng `sinh_vien`, lọc `ten LIKE 'H%'`. Nguồn: truy vấn của bạn ở thử thách 1. Thẻ kèm câu SQL đã chạy và bảng kết quả.
+
+### c2 — Lớp nào sinh hoạt ở giảng đường B? {challenge: c2}
+
+- Tiêu đề: Thử thách 2 — Lớp nào sinh hoạt ở giảng đường B?
+- Đề bài hiển thị: Những lớp sinh hoạt nào thuộc giảng đường B? Kết quả cần có: mã lớp.
+- Cột bắt buộc: `ma_lop` · Kết quả chuẩn: 2 dòng, `KT24A` và `QT24B` (QĐ-011, QĐ-012) · Chạy thêm dataset ẩn: không (QĐ-015)
+- Manh mối liên quan: clue-box-building-b
+- Mục tiêu học: chọn đúng bảng, chọn đúng cột; kết quả của một truy vấn có thể thành đầu vào cho câu hỏi tiếp theo.
+- SQL chuẩn:
+
+```sql
+SELECT ma_lop
+FROM lop_sinh_hoat
+WHERE toa_nha = 'B';
+```
+
+- [KHI: wrong-table] **ha-vy** (thinking): Bảng sinh_vien không có cột tòa nhà. Xem bảng mô tả cột: toa_nha nằm ở bảng nào?
+- [KHI: class-prefix] **ha-vy** (thinking): Mã lớp có chữ B chưa chắc sinh hoạt ở tòa B. Tòa nhà nằm ở cột toa_nha.
+- [KHI: no-filter] **ha-vy** (neutral): Đây là cả tám lớp. Lọc lại, chỉ giữ lớp ở tòa B thôi.
+- [KHI: wrong-value] **ha-vy** (neutral): Soát lại giá trị tòa nhà. Bác Tư nói hộp được mở ở giảng đường B.
+- [KHI: missing-columns] dùng hint-right-columns
+- [GỢI Ý 1] **ha-vy** (neutral): Mình cần biết lớp nào sinh hoạt ở tòa B, để lát nữa lọc sinh viên theo lớp.
+- [GỢI Ý 2] **ha-vy** (thinking): Bảng lop_sinh_hoat có cột toa_nha. Lọc toa_nha bằng B, rồi hiện cột ma_lop.
+- [GỢI Ý 3] **ha-vy** (smile): Gần như đáp án: `SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha = 'B';`
+- [KHI ĐÚNG] **ha-vy** (smile): KT24A và QT24B. Hai lớp sinh hoạt ở tòa B.
+- [HỎI q-c2-read] ha-vy: "Hai mã lớp này dùng để làm gì tiếp?"
+  - (A) Làm điều kiện lọc lớp trong bảng sinh_vien [ĐÚNG] → phản hồi: **ha-vy** (smile): Đúng. Kết quả của truy vấn này thành đầu vào cho truy vấn sau.
+  - (B) Đếm xem tòa B có bao nhiêu sinh viên → phản hồi: **ha-vy** (thinking): Bảng lớp không chứa sinh viên. Muốn biết ai, phải mang hai mã này sang bảng sinh_vien.
+  - (C) Không dùng được, vì bảng sinh_vien không có cột tòa nhà → phản hồi: **ha-vy** (thinking): Không có cột tòa nhà, nhưng có cột ma_lop. Hai mã này chính là cầu nối.
+- Vật chứng lưu vào hồ sơ: ev-c2-classes-b
+  - Tiêu đề: Lớp sinh hoạt ở giảng đường B
+  - Mô tả: 2 dòng: `KT24A`, `QT24B`. Từ bảng `lop_sinh_hoat`, lọc `toa_nha = 'B'`. Dùng làm giá trị "Từ manh mối" cho điều kiện lớp ở thử thách 3.
+
+### c3 — Ai khớp cả ba manh mối? {challenge: c3}
+
+- Tiêu đề: Thử thách 3 — Ai khớp cả ba manh mối?
+- Đề bài hiển thị: Ai đồng thời khớp cả ba manh mối: tên bắt đầu bằng H, học một lớp sinh hoạt ở giảng đường B, thuộc CLB Báo chí? Kết quả cần có: mã sinh viên, họ đệm, tên. Nên thêm lớp và câu lạc bộ để dễ đối chiếu.
+- Cột bắt buộc: `ma_sv`, `ho_dem`, `ten` (khuyến khích thêm `ma_lop`, `clb`) · Kết quả chuẩn: 2 dòng — Lê Thị Hoài, SV240317, QT24B, Báo chí; Phạm Minh Hiếu, SV240228, KT24A, Báo chí (QĐ-011, QĐ-012) · Chạy thêm dataset ẩn: có (QĐ-015)
+- Manh mối liên quan: clue-signature-h, clue-box-building-b (qua ev-c2-classes-b), clue-bookmark-baochi
+- Mục tiêu học: `AND`, `IN` và ý nghĩa của việc thỏa đồng thời nhiều điều kiện.
+- SQL chuẩn:
+
+```sql
+SELECT ma_sv, ho_dem, ten, ma_lop, clb
+FROM sinh_vien
+WHERE ten LIKE 'H%'
+  AND ma_lop IN ('KT24A', 'QT24B')
+  AND clb = 'Báo chí';
+```
+
+- [KHI: or-connector] dùng hint-any-or-all
+- [KHI: missing-condition] **ha-vy** (thinking): Vẫn còn nhiều người hơn mình nghĩ. Soát lại xem đủ ba manh mối chưa: chữ ký, tòa B, bookmark.
+- [KHI: class-prefix] **ha-vy** (thinking): Mã lớp có chữ B chưa chắc ở tòa B. Dùng đúng danh sách lớp từ thử thách 2.
+- [KHI: wrong-column-ho-dem] **ha-vy** (thinking): Cậu đang lọc theo cột ho_dem. Chữ ký thường là tên gọi, tức cột ten.
+- [KHI: like-ends-with] **ha-vy** (thinking): "Kết thúc bằng H" sẽ bắt cả những tên như Linh, Thanh. Trên chữ ký, H đứng đầu.
+- [KHI: like-contains] **ha-vy** (thinking): "Chứa H" bắt cả tên có chữ h ở giữa. Mình chỉ cần H đứng đầu tên.
+- [KHI: hardcoded-ids] **ha-vy** (thinking): Truy vấn này gọi thẳng mã sinh viên, tức là đi từ đáp án. Hãy lọc bằng manh mối.
+- [KHI: limit-used] **ha-vy** (thinking): LIMIT chỉ cắt bớt số dòng, không lọc theo manh mối.
+- [KHI: missing-columns] dùng hint-right-columns
+- [GỢI Ý 1] **ha-vy** (neutral): Ghép cả ba manh mối vào một truy vấn: chữ ký, tòa B, bookmark. Người cần tìm phải khớp hết.
+- [GỢI Ý 2] **ha-vy** (thinking): Bảng sinh_vien, ba điều kiện: ten bắt đầu bằng H; ma_lop thuộc danh sách lớp tòa B; clb bằng Báo chí. Như lọc ba cột cùng lúc trong Excel.
+- [GỢI Ý 3] **ha-vy** (smile): Gần như đáp án: `SELECT ma_sv, ho_dem, ten, ma_lop, clb FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop IN ('KT24A', 'QT24B') AND clb = 'Báo chí';`
+- [KHI ĐÚNG] **ha-vy** (smile): Ba manh mối, một truy vấn, hai dòng.
+- [HỎI q-c3-read] ha-vy: "Vì sao chỉ còn 2 dòng?"
+  - (A) Vì dữ liệu chỉ có hai người tên bắt đầu bằng H → phản hồi: **ha-vy** (thinking): Thử thách 1 ra mười người tên H cơ mà. Có gì đó đã lọc bớt họ.
+  - (B) Vì trình dựng tự cắt bớt kết quả cho gọn → phản hồi: **ha-vy** (thinking): Trình dựng không tự cắt dòng nào. Kết quả ít đi là do các điều kiện.
+  - (C) Vì AND chỉ giữ người khớp đồng thời cả ba điều kiện [ĐÚNG] → phản hồi: **ha-vy** (smile): Đúng. Như bật Filter ở ba cột cùng lúc: trượt một cột là rơi khỏi bảng.
+- [DÀN DỰNG] Câu hỏi này chỉ hỏi ý nghĩa của `AND`. Không lựa chọn và không phản hồi nào nói hai dòng là nghi vấn hay bằng chứng (QĐ-023).
+- Vật chứng lưu vào hồ sơ: ev-c3-shortlist
+  - Tiêu đề: Người khớp cả ba manh mối
+  - Mô tả: 2 dòng: Lê Thị Hoài — SV240317 — QT24B — Báo chí; Phạm Minh Hiếu — SV240228 — KT24A — Báo chí. Truy vấn: `ten LIKE 'H%' AND ma_lop IN ('KT24A', 'QT24B') AND clb = 'Báo chí'`. Chú thích gắn sau màn giải trình: xem mục Hồ sơ vật chứng.
+
+### debrief-fix — Sửa truy vấn của Quân {challenge: debrief-fix}
 
 (đang viết)
 
