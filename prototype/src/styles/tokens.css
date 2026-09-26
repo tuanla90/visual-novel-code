@@ -69,7 +69,7 @@
   --c-paper: #fbf5e6;
   --c-paper-edge: #e0d3b4;
   --c-paper-ink: #2b2118;
-  --c-paper-note: #8a6d3b;
+  --c-paper-note: #7a5f31; /* 5.4:1 trên --c-paper (test contrast.test.ts) */
   --c-pin: #b91c1c;
 
   /* Tông màn hình SQL (GDD §15.4: hiện đại, tối) */

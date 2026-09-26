@@ -1,10 +1,11 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App';
+import App from './app/App';
 import { loadSqlJs } from './sql-challenge/engine/sqljs';
 import './styles/fonts.css';
 import './styles/tokens.css';
 import './styles/base.css';
+import './styles/app.css';
 
 const rootEl = document.getElementById('root');
 if (!rootEl) {
