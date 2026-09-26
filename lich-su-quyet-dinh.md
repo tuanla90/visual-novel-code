@@ -329,6 +329,17 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - **User chọn:** điều phối viên cho vẽ tạm (SVG/CSS, không sinh ảnh, không dịch vụ trả phí) và chừa sẵn chỗ thay ảnh; user sẽ tự sinh ảnh thật sau và thả vào.
 - Ràng buộc cho gói `hinh-giao-dien`: ô ảnh cho **cảnh nền** (id theo tệp `prompts-background-prototype-v0.1.md` của user: `bg-prototype-club-room`, `bg-prototype-hallway`, `bg-prototype-hearing-room`), **chân dung** (`<nhân vật>-<biểu cảm>`, PNG nền trong, cùng khung như GDD §16.7) và **tài liệu** (lá thư, bookmark, sổ bàn giao — ảnh chỉ là nền, chữ vẫn chồng bằng giao diện); có ảnh thì dùng ảnh, không có thì dùng hình vẽ tạm; kèm README ghi rõ tên tệp, kích thước, vùng an toàn, và cách kiểm tra ảnh đã được nhận.
 
+**QĐ-061 — Các câu của gói `giai-trinh-ui`.** · 26/09 23:55
+- Q1 (câu chú thích "Năm mã trên…" trong kịch bản lệch nghĩa sau QĐ-054): **chọn B** — liệt kê đích danh 5 mã; điều phối viên tự sửa (1 dòng không hiển thị), test trung thành vẫn xanh.
+- Đ1 (câu SQL biến mất khi hiện phản hồi chọn sai, trong khi Hà Vy đang bảo "xem anh ấy nối… bằng từ gì"): **chọn B** — giữ câu SQL chỉ đọc phía trên hộp thoại khi phản hồi đến từ màn chọn dòng; giao gói `tich-hop` (đụng `GameScreen.tsx`).
+- Đ2 (hiệu ứng "Có số liệu đây!" có thể bị bỏ qua do bấm đúp/giữ phím): **chọn B** — bỏ qua cú bấm lặp và phím trong ~400 ms đầu; giao gói `hinh-giao-dien`.
+- Đ3 (dấu "đã thử" mất khi tải lại trang): **chọn A** — để nguyên; số lần thử vẫn do runtime giữ.
+- Tổng chữ kịch bản 2.686 (vượt ngân sách 2.600 của điều phối viên 86 chữ, do các lời chẩn đoán bổ sung QĐ-047/QĐ-054; năm Phần truyện vẫn 1.652): chấp nhận, mở rộng QĐ-052.
+
+**Nghiệm thu gói `giai-trinh-ui` — ĐẠT.** · 26/09 23:55
+- Tại `main` (cherry-pick 8 commit + sửa chú thích): typecheck 0 lỗi, 460/460 test (`--maxWorkers=2`), lint sạch, build đạt. Bẻ phanh của agent: tô riêng `OR` → đỏ; bỏ chạy thật → đỏ; đảo thứ tự mã chung → đỏ; phanh telemetry QĐ-059 → đỏ; tất cả khôi phục xanh.
+- Điểm đáng ghi: agent tránh dùng lại `SqlCode` của gói 4 vì bộ đó gắn chú thích riêng cho `OR` — dùng lại sẽ vô tình lộ đáp án bước chọn dòng lỗi.
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**

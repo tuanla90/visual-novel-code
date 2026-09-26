@@ -353,7 +353,7 @@ WHERE ten LIKE 'H%'
 - [KHI: class-prefix] **ha-vy** (thinking): Mã lớp giống nhau vài chữ chưa chắc cùng tòa. Cậu lọc bằng đúng danh sách lớp trong hồ sơ.
 - [KHI: hardcoded-ids] **ha-vy** (thinking): Truy vấn này gọi thẳng mã sinh viên, tức đi từ đáp án. Hãy lọc bằng manh mối.
 - [KHI: limit-used] **ha-vy** (thinking): LIMIT chỉ cắt bớt số dòng, không lọc theo manh mối.
-  - Năm mã trên chỉ gặp ở c1, c3, debrief-fix (những thử thách lọc cột `ten` trên bảng `sinh_vien`).
+  - Các mã `wrong-column-ho-dem`, `like-ends-with`, `like-contains`, `hardcoded-ids`, `limit-used` chỉ gặp ở c1, c3, debrief-fix (những thử thách lọc cột `ten` trên bảng `sinh_vien`).
 - [KHI: wrong-value] **ha-vy** (neutral): Giá trị lọc chưa khớp manh mối trong hồ sơ. Cậu soát lại từng chữ, cả dấu tiếng Việt.
 - [KHI: extra-columns] **ha-vy** (smile): Đúng rồi! Mẹo nhỏ: chỉ cần các cột đề bài hỏi là đủ.
   - Vẫn tính là chạy đúng; lời này thay cho lời `[KHI ĐÚNG]` của thử thách (QĐ-019).
