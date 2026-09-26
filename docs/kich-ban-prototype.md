@@ -323,7 +323,7 @@ WHERE ten LIKE 'H%'
 - Trình tự một thử thách: (chỉ c1) các bước hướng dẫn → người chơi chạy truy vấn, không giới hạn số lần → khi chạy đúng: khung thành công và lời `[KHI ĐÚNG]` → câu hỏi đọc kết quả `[HỎI]` → nút "Lưu vào hồ sơ" → vật chứng vào Hồ sơ → quay về chuỗi kể chuyện. `debrief-fix` không có câu hỏi đọc kết quả (QĐ-024 đã có).
 - `[BƯỚC n · nổi bật: <vùng>]`: bước hướng dẫn của Hà Vy; vùng là `from`, `select`, `where`, `run`, `preview` (nút "Xem 5 dòng đầu"). Bước tự chuyển khi người chơi làm xong thao tác đang nổi bật; không khóa thao tác (QĐ-021).
 - `[GỢI Ý n]`: lời cho lần bấm "Hỏi Hà Vy" thứ n (n = 1, 2, 3; bấm thêm thì lặp mức 3). Đếm số lần bấm cho telemetry.
-- `[KHI: <mã chẩn đoán>]`: nhận xét tự động khi một lần chạy chưa đúng rơi vào trường hợp đó; mỗi lần chạy chỉ hiện một nhận xét. Mã chẩn đoán là đề xuất cho gói sql-engine, đổi tên được. Thứ tự ưu tiên khi nhiều mã cùng khớp: lỗi không chạy được (`not-select`, `syntax-error`, `no-table`) → mã trong thẻ thử thách, theo thứ tự liệt kê → mã ở "Nhận xét chung", theo thứ tự liệt kê → `other`.
+- `[KHI: <mã chẩn đoán>]`: nhận xét tự động khi một lần chạy chưa đúng rơi vào trường hợp đó; mỗi lần chạy chỉ hiện một nhận xét. Mã chẩn đoán là đề xuất cho gói sql-engine, đổi tên được. Thứ tự ưu tiên khi nhiều mã cùng khớp: lỗi không chạy được (`not-select`, `syntax-error`, `no-table`, `connector-unset`) → mã trong thẻ thử thách, theo thứ tự liệt kê → mã ở "Nhận xét chung", theo thứ tự liệt kê → `other`.
 - `dùng <mã gợi ý chuẩn>`: hiện đúng lời của câu gợi ý chuẩn đó (mục ngay dưới).
 - Không có lời phạt, không trừ điểm; chạy sai chỉ nhận một nhận xét theo ý nghĩa (QĐ-018).
 
@@ -341,9 +341,11 @@ WHERE ten LIKE 'H%'
 - [KHI: not-select] **ha-vy** (neutral): Trong buổi làm việc này CLB chỉ có quyền xem dữ liệu.
 - [KHI: syntax-error] **ha-vy** (thinking): Máy chưa đọc được câu này. Soát dấu nháy, dấu phẩy, hoặc quay về trình dựng.
 - [KHI: no-table] **ha-vy** (neutral): Hàng FROM còn trống. Mình lấy dữ liệu từ bảng nào?
+- [KHI: connector-unset] **ha-vy** (neutral): Chưa chọn cách nối các điều kiện. Cậu cần người thỏa bất kỳ, hay thỏa đồng thời?
+  - QĐ-039: khi có từ 2 điều kiện mà phép nối chưa chọn, nút Chạy bị vô hiệu; lời này hiện khi người chơi bấm Chạy (hoặc rê chuột lên nút). Gặp được ở mọi thử thách người chơi tự thêm điều kiện thứ hai; không gặp ở debrief-fix vì phép nối nạp sẵn `OR`.
 - [KHI: wrong-column-ho-dem] **ha-vy** (thinking): Cậu đang lọc theo cột ho_dem. Chữ ký thường là tên gọi, tức cột ten.
-- [KHI: like-ends-with] **ha-vy** (thinking): "Kết thúc bằng H" sẽ bắt cả những tên như Linh, Thanh. Trên chữ ký, H đứng đầu.
-- [KHI: like-contains] **ha-vy** (thinking): "Chứa H" bắt cả tên có chữ h ở giữa. Mình chỉ cần H đứng đầu tên.
+- [KHI: like-ends-with] **ha-vy** (thinking): "Kết thúc bằng H" bắt cả tên như Linh, Thanh. Trên chữ ký, H đứng đầu.
+- [KHI: like-contains] **ha-vy** (thinking): "Chứa H" bắt cả tên có h ở giữa. Mình cần H đứng đầu tên.
 - [KHI: hardcoded-ids] **ha-vy** (thinking): Truy vấn này gọi thẳng mã sinh viên, tức đi từ đáp án. Hãy lọc bằng manh mối.
 - [KHI: limit-used] **ha-vy** (thinking): LIMIT chỉ cắt bớt số dòng, không lọc theo manh mối.
   - Năm mã trên chỉ gặp ở c1, c3, debrief-fix (những thử thách lọc cột `ten` trên bảng `sinh_vien`).
@@ -376,7 +378,7 @@ WHERE ten LIKE 'H%';
 - [GỢI Ý 1] **ha-vy** (neutral): Mình đang tìm người có tên gọi bắt đầu bằng chữ trên chữ ký. Chỉ cần một điều kiện lọc.
 - [GỢI Ý 2] **ha-vy** (thinking): Bảng sinh_vien. Lọc cột ten, phép "bắt đầu bằng", giá trị H. Hiện ba cột ma_sv, ho_dem, ten.
 - [GỢI Ý 3] **ha-vy** (smile): Gần như đáp án đây: `SELECT ma_sv, ho_dem, ten FROM sinh_vien WHERE ten LIKE 'H%';`
-- [KHI ĐÚNG] **ha-vy** (smile): Truy vấn đầu tiên của cậu đấy! Mười dòng, đúng như bộ lọc.
+- [KHI ĐÚNG] **ha-vy** (smile): Truy vấn đầu tiên của cậu đấy! Mười dòng.
 - [HỎI q-c1-read] ha-vy: "Mười dòng này là những ai?"
   - (A) {id: chua-h} Những người có chữ H trong cả họ tên. → phản hồi: **ha-vy** (thinking): 'H%' chỉ khớp khi H đứng đầu. H ở giữa hay ở cuối đều không tính.
   - (B) {id: ten-h} Những người có tên gọi bắt đầu bằng H. [ĐÚNG] → phản hồi: **ha-vy** (smile): Chuẩn. Cột ten, H đứng đầu, phía sau là gì cũng được.
@@ -401,7 +403,7 @@ FROM lop_sinh_hoat
 WHERE toa_nha = 'B';
 ```
 
-- [KHI: wrong-table] **ha-vy** (thinking): Bảng sinh_vien không có cột tòa nhà. Xem bảng mô tả cột: toa_nha nằm ở bảng nào?
+- [KHI: wrong-table] **ha-vy** (thinking): Bảng sinh_vien không có cột tòa nhà. Xem mô tả cột: toa_nha nằm ở bảng nào?
 - [KHI: class-prefix] **ha-vy** (thinking): Mã lớp có chữ B chưa chắc sinh hoạt ở tòa B. Tòa nhà nằm ở cột toa_nha.
 - [KHI: no-filter] **ha-vy** (neutral): Đây là cả tám lớp. Lọc lại, chỉ giữ lớp ở tòa B thôi.
 - [KHI: wrong-value] **ha-vy** (neutral): Soát lại giá trị tòa nhà. Bác Tư nói hộp được mở ở giảng đường B.
@@ -436,6 +438,7 @@ WHERE ten LIKE 'H%'
   AND clb = 'Báo chí';
 ```
 
+- [DÀN DỰNG] Khi có từ 2 điều kiện, phép nối ở trạng thái chưa chọn; người chơi phải tự chọn AND (thỏa đồng thời) hoặc OR (thỏa bất kỳ) — QĐ-039. Chưa chọn thì nút Chạy bị vô hiệu, lời nhắc là `connector-unset` (mục "Nhận xét chung").
 - [KHI: or-connector] dùng hint-any-or-all
 - [KHI: missing-condition] **ha-vy** (thinking): Còn nhiều người quá. Đã đủ ba manh mối chưa: chữ ký, tòa B, bookmark?
 - [KHI: class-prefix] **ha-vy** (thinking): Mã lớp có chữ B chưa chắc ở tòa B. Dùng đúng danh sách lớp từ thử thách 2.
@@ -459,7 +462,7 @@ WHERE ten LIKE 'H%'
 - Tiêu đề: Sửa truy vấn của Quân
 - Đề bài hiển thị: Truy vấn của Quân đã nạp sẵn. Sửa để chỉ lấy những người khớp đồng thời cả ba manh mối, rồi chạy. Kết quả cần có: mã sinh viên, họ đệm, tên (giữ lớp và câu lạc bộ để đối chiếu).
 - Cột bắt buộc: `ma_sv`, `ho_dem`, `ten` · Kết quả chuẩn: 2 dòng, giống c3 · Chạy thêm dataset ẩn: có (QĐ-015)
-- Nạp sẵn vào trình dựng: `FROM sinh_vien`; `SELECT ma_sv, ho_dem, ten, ma_lop, clb`; ba điều kiện của §4.4; phép nối chung `OR` (QĐ-016).
+- Nạp sẵn vào trình dựng: `FROM sinh_vien`; `SELECT ma_sv, ho_dem, ten, ma_lop, clb`; ba điều kiện của §4.4; phép nối chung `OR` (QĐ-016; theo QĐ-039 phép nối ở đây nạp sẵn `OR`, không ở trạng thái chưa chọn).
 - Manh mối liên quan: clue-signature-h, clue-box-building-b (qua ev-c2-classes-b), clue-bookmark-baochi
 - Mục tiêu học: `OR` lấy người thỏa bất kỳ điều kiện nào; `AND` lấy người thỏa đồng thời mọi điều kiện.
 - SQL chuẩn:
@@ -476,7 +479,7 @@ WHERE ten LIKE 'H%'
 - [KHI: missing-condition] **ha-vy** (thinking): Bớt manh mối thì danh sách rộng ra. Giữ đủ ba điều kiện, chỉ đổi cách nối.
 - [KHI: missing-columns] dùng hint-right-columns
 - [GỢI Ý 1] **ha-vy** (neutral): Truy vấn của anh Quân lấy cả người chỉ khớp một manh mối. Mình cần người khớp cả ba.
-- [GỢI Ý 2] **ha-vy** (thinking): Giữ nguyên ba điều kiện. Chỉ đổi phép nối giữa chúng: bấm vào chữ OR để đổi cả loạt.
+- [GỢI Ý 2] **ha-vy** (thinking): Giữ nguyên ba điều kiện. Chỉ đổi phép nối giữa chúng.
 - [GỢI Ý 3] **ha-vy** (smile): Đổi OR thành AND: `WHERE ten LIKE 'H%' AND ma_lop IN ('KT24A', 'QT24B') AND clb = 'Báo chí'`.
 - [KHI ĐÚNG] **ha-vy** (smile): Hai dòng. Đưa lên màn chiếu đi!
 - Vật chứng lưu vào hồ sơ: ev-quan-fixed
@@ -488,22 +491,25 @@ WHERE ten LIKE 'H%'
 ## Hồ sơ vật chứng
 
 - [DÀN DỰNG] Mở bằng nút "Hồ sơ" trên thanh trên cùng (QĐ-027). Tông giấy: nền kem, ghim (QĐ-026). Ba nhóm: Manh mối (`clue-…`), Tài liệu (`doc-…`), Kết quả truy vấn (`ev-…`). Tiêu đề và mô tả của thẻ `ev-…` nằm ở thẻ thử thách tương ứng; mục này chỉ thêm chú thích sau giải trình cho `ev-c3-shortlist`.
-- [DÀN DỰNG] "Lưu ý" là giới hạn của bằng chứng, luôn hiện ở cuối thẻ. Không thẻ nào nói kết quả truy vấn là "danh sách cần xác minh" trước màn giải trình (QĐ-023).
+- [DÀN DỰNG] QĐ-037: "Câu hỏi còn mở" (điều người chơi cần tìm tiếp nhờ manh mối đó) hiện từ lúc mở thẻ đến hết Phần 4. "Lưu ý" (giới hạn của bằng chứng) chỉ hiện từ Phần 5 (`ending`) trở đi, như phần tổng kết bài học; khi đó thay cho "Câu hỏi còn mở". doc-handover-log xuất hiện ở Phần 5 nên hiện "Lưu ý" ngay, không có "Câu hỏi còn mở". Không thẻ nào nói kết quả truy vấn là "danh sách cần xác minh" trước màn giải trình (QĐ-023).
+- [DÀN DỰNG] Dòng "Giá trị cho trình dựng" là đặc tả cho mục "Từ manh mối" (QĐ-017), không hiện trên thẻ. `[HIỆN TÀI LIỆU]` trong chuỗi kể chuyện chỉ hiện phần nội dung của tài liệu; "Câu hỏi còn mở" và "Lưu ý" chỉ nằm trên thẻ trong Hồ sơ.
 
 ### clue-signature-h — Chữ ký "H."
 
 - Tiêu đề: Chữ ký "H."
 - Nguồn: Phong bì lá thư, bản chụp do Phòng CTSV chuyển cho CLB
 - Nội dung: Ngoài phong bì có chữ ký tay "H.". Người Việt thường ký bằng tên gọi, nên H nhiều khả năng là chữ đầu của tên (cột `ten`), không phải của họ đệm (`ho_dem`).
-- Giá trị trong mục "Từ manh mối": `H`, dùng với phép "bắt đầu bằng" trên cột `ten`.
+- Giá trị cho trình dựng: `H`, dùng với phép "bắt đầu bằng" trên cột `ten`.
+- Câu hỏi còn mở: Trong dữ liệu, những ai có tên bắt đầu bằng H?
 - Lưu ý: Chỉ là khả năng. Chữ ký cho biết một chữ cái, không cho biết đó là ai.
 
 ### clue-box-building-b — Hộp góp ý giảng đường B
 
 - Tiêu đề: Hộp góp ý giảng đường B
 - Nguồn: Lời bác Tư lao công, hành lang giảng đường B
-- Nội dung: Sáng nay cô phụ trách hộp góp ý chỉ mở một hộp: hộp ở giảng đường B. Hộp tòa A và tòa C tuần này chưa đến lượt mở. Bảng `sinh_vien` không có cột tòa nhà; tòa nhà nằm ở cột `toa_nha` của bảng `lop_sinh_hoat`.
-- Giá trị trong mục "Từ manh mối": `B`, dùng cho cột `toa_nha`.
+- Nội dung: Sáng nay cô phụ trách hộp góp ý chỉ mở một hộp: hộp ở giảng đường B. Hộp tòa A và tòa C tuần này chưa đến lượt mở. Bảng `sinh_vien` không có cột tòa nhà.
+- Giá trị cho trình dựng: `B`, dùng cho cột `toa_nha`.
+- Câu hỏi còn mở: Những lớp nào sinh hoạt ở giảng đường B?
 - Lưu ý: Cho biết lá thư được bỏ vào hộp nào, không cho biết ai bỏ.
 
 ### clue-bookmark-baochi — Nửa bookmark CLB Báo chí
@@ -511,7 +517,8 @@ WHERE ten LIKE 'H%'
 - Tiêu đề: Nửa bookmark CLB Báo chí
 - Nguồn: Kẹt sát khe hộp góp ý giảng đường B
 - Nội dung: Nửa mẩu bookmark bị xé, còn nửa logo ngòi bút và mấy chữ "…ÁO CHÍ": bookmark CLB Báo chí phát ở ngày hội CLB.
-- Giá trị trong mục "Từ manh mối": `Báo chí`, dùng cho cột `clb`.
+- Giá trị cho trình dựng: `Báo chí`, dùng cho cột `clb`.
+- Câu hỏi còn mở: Những sinh viên nào thuộc CLB Báo chí?
 - Lưu ý: Bookmark cho biết câu lạc bộ, không cho biết ai làm rơi.
 
 ### doc-letter — Bản chụp lá thư
@@ -527,6 +534,7 @@ WHERE ten LIKE 'H%'
 > Đề nghị Phòng phản hồi chính thức.
 
 - Mặt ngoài phong bì: chữ ký tay "H.", không có tên, không có mã sinh viên.
+- Câu hỏi còn mở: Lá thư được bỏ vào hộp góp ý ở tòa nào?
 - Lưu ý: Thư đánh máy, không có tên người viết. Chữ ký ngoài phong bì là của người gửi, chưa chắc là của người viết.
 
 ### doc-bookmark — Mẩu bookmark bị xé
@@ -534,6 +542,7 @@ WHERE ten LIKE 'H%'
 - Tiêu đề: Mẩu bookmark bị xé
 - Nguồn: Nhặt ở khe hộp góp ý giảng đường B
 - Nội dung hiển thị: hình nửa bookmark giấy cứng, nửa logo ngòi bút, chữ "…ÁO CHÍ" sát mép rách.
+- Câu hỏi còn mở: Chủ của mẩu bookmark này là ai?
 - Lưu ý: Chỉ còn nửa mẩu; không có tên chủ, không cho biết rơi lúc nào.
 
 ### doc-handover-log — Sổ bàn giao niêm phong
@@ -574,7 +583,7 @@ Tự kiểm công cụ trước khi tin số 0: thêm tạm vào cuối file m�
 
 ```text
       3 bac-tu (neutral)
-     21 ha-vy (neutral)
+     22 ha-vy (neutral)
      20 ha-vy (smile)
      39 ha-vy (thinking)
       2 hoai (downcast)
@@ -607,7 +616,7 @@ ev-c3-shortlist
 ev-quan-fixed
 ```
 
-Đủ 10 định danh của QĐ-033, không có định danh lạ.
+Đủ 10 định danh của QĐ-033, không có định danh lạ. Lệnh chạy ba cách cho ra cùng một danh sách: lệnh gốc của brief; có ranh giới từ (`grep -o -w`); và ranh giới tính cả dấu gạch nối, tức ký tự đứng trước phải là đầu dòng hoặc không thuộc `[a-z0-9-]`. Cách thứ ba mới chặn được trường hợp định danh nằm lọt trong một id khác có gạch nối, vì `-w` và `\b` vẫn coi dấu gạch nối là ranh giới.
 
 ### Lệnh 4 — số chữ lời thoại theo phần (awk của brief)
 
@@ -632,7 +641,7 @@ Lệnh awk của brief chỉ đếm dòng bắt đầu bằng `- **`, tính cả
 | Nội dung thử thách (không tính vào Phân tích) | — | 838 + 85 + 21 = 944 | — |
 | Toàn file | — | 2.596 | ≤ 2.600 |
 
-Độ dài từng lời: dài nhất 24 chữ trong năm phần, 26 chữ trong thẻ thử thách; 0 lời quá 30 chữ; 15/156 lời quá 20 chữ.
+Độ dài từng lời: dài nhất 24 chữ trong năm phần, 26 chữ trong thẻ thử thách; 0 lời quá 30 chữ; 15/157 lời quá 20 chữ. Dòng "Câu hỏi còn mở" trên thẻ hồ sơ là chữ trên thẻ, không phải lời thoại, nên không tính vào bảng trên; độ dài 11, 9, 7, 11, 7 chữ (giới hạn ≤ 12).
 
 ### Đối chiếu con trỏ
 
