@@ -182,6 +182,144 @@
   font-size: var(--fs-sm);
 }
 
+/* ---------- WHERE ---------- */
+.qb-where {
+  display: grid;
+  gap: var(--sp-1);
+  justify-items: start;
+}
+.qb-conds {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--sp-1);
+  width: 100%;
+}
+.qb-cond-item {
+  display: grid;
+  gap: var(--sp-1);
+}
+.qb-cond {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1) var(--sp-2);
+}
+.qb-op {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+.qb-op__sql {
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  white-space: nowrap;
+}
+.qb-value {
+  min-width: 9rem;
+}
+.qb-text {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+}
+.qb-text .qb-input {
+  width: 8rem;
+}
+.qb-list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1);
+}
+.qb-list__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 0 0 var(--sp-2);
+  border: 2px solid var(--c-focus);
+  border-radius: 999px;
+  min-height: 34px;
+}
+.qb-icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--c-text-muted);
+}
+.qb-icon-btn:hover:not(:disabled) {
+  background: var(--c-bg);
+  color: var(--c-text);
+}
+.qb-remove {
+  margin-left: auto;
+}
+
+.qb-connector {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1) var(--sp-2);
+  padding-left: var(--sp-4);
+}
+.qb-connector__btn {
+  min-height: 30px;
+  padding: 0 var(--sp-3);
+  border: 2px solid var(--c-border);
+  border-radius: 999px;
+  background: var(--c-surface);
+  color: var(--c-text);
+  font-size: var(--fs-sm);
+}
+.qb-connector__btn.is-on {
+  background: var(--c-focus);
+  border-color: var(--c-focus);
+  color: #fff;
+}
+.qb-connector__kw {
+  font-weight: 700;
+}
+.qb-connector.is-unset .qb-connector__btn {
+  border-style: dashed;
+  border-color: var(--c-warning);
+}
+.qb-connector__note {
+  font-size: var(--fs-sm);
+  color: var(--c-warning);
+  font-weight: 600;
+}
+
+/* ---------- Thanh Chạy ---------- */
+.chal-runbar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-2);
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+}
+.chal-run {
+  flex: none;
+}
+.chal-runbar__reason {
+  margin: 0;
+  color: var(--c-text);
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+}
+.chal-runbar__who {
+  font-weight: 700;
+  color: var(--c-char-ha-vy);
+}
+
 /* Vùng đang được hướng dẫn (QĐ-021): viền vàng nổi trên nền tối, không khóa thao tác. */
 .is-guided {
   border-color: var(--c-sql-highlight) !important;

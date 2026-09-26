@@ -5,14 +5,18 @@
  * qua `challengeId`, rồi gọi `onComplete()` sau khi vật chứng đã lưu để runtime đi tiếp.
  */
 import './challenge.css';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import type { ChallengeId } from '../../shared/ids';
-import { useGameStore } from '../../shared/store';
+import { gameContent, useGameStore } from '../../shared/store';
 import { modelToSql } from '../engine';
 import type { TableName } from '../schema';
 import type { ChallengeDefinition, QueryModel } from '../types';
+import { IconPlay } from './icons';
+import { blockingReason, type LineSources } from './lines';
 import { QueryBuilder } from './QueryBuilder';
 import { SqlCode } from './SqlCode';
+import { CLASS_LIST_EVIDENCE_ID, evidenceValueOptions } from './value-options';
+import { WhereRow } from './WhereRow';
 
 export interface ChallengeScreenProps {
   challengeId: ChallengeId;
@@ -28,10 +32,14 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
   const openChallenge = useGameStore((s) => s.openChallenge);
   const updateChallenge = useGameStore((s) => s.updateChallenge);
   const state = useGameStore((s) => s.challenges[challengeId]);
+  const unlocked = useGameStore((s) => s.evidence.unlocked);
+  const classEvidence = useGameStore((s) => s.evidence.savedQueries[CLASS_LIST_EVIDENCE_ID]);
 
   useEffect(() => {
     openChallenge(challengeId);
   }, [challengeId, openChallenge]);
+
+  const evidenceOptions = useMemo(() => evidenceValueOptions(gameContent, unlocked, classEvidence), [unlocked, classEvidence]);
 
   const setModel = useCallback(
     (model: QueryModel) => updateChallenge(challengeId, { model, sql: modelToSql(model) }),
@@ -57,9 +65,12 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
   const { content } = definition;
   if (!state) return null;
 
+  const src: LineSources = { content, common: gameContent.commonDiagnosticLines, standardHints: gameContent.standardHints };
   const model = state.model;
   const sql = modelToSql(model);
   const locked = accessRevoked;
+  const blocked = blockingReason(model, src);
+  const canRun = !locked && blocked === null;
 
   return (
     <div className="chal" role="region" aria-labelledby="chal-title">
@@ -85,8 +96,23 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
             guided={null}
             disabled={locked}
             onPreview={onPreview}
-            whereRow={<p className="qb-empty">Chưa có điều kiện lọc — lúc này truy vấn lấy mọi dòng của bảng.</p>}
+            whereRow={<WhereRow model={model} onChange={setModel} evidenceOptions={evidenceOptions} disabled={locked} />}
           />
+          <div className="chal-runbar" data-region="run">
+            <button
+              type="button"
+              className="btn btn--primary chal-run"
+              disabled={!canRun}
+              aria-describedby={blocked && !locked ? 'chal-run-reason' : undefined}
+            >
+              <IconPlay /> Chạy truy vấn
+            </button>
+            {blocked && !locked ? (
+              <p id="chal-run-reason" className="chal-runbar__reason" role="status">
+                <span className="chal-runbar__who">Hà Vy:</span> {blocked.line.text}
+              </p>
+            ) : null}
+          </div>
         </section>
 
         <section className="chal-card chal-result" aria-label="Kết quả">
