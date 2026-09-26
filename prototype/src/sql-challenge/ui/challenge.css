@@ -1,0 +1,299 @@
+/*
+ * Màn thử thách — tông "màn hình máy tính hiện đại" (GDD §15.4) bằng token có sẵn.
+ * Phủ trọn sân khấu (position: absolute trong .stage) để có đủ chỗ ở 1366×768 mà không cuộn trang:
+ * cột trái = đề bài + trình dựng + kết quả (cuộn trong khung); cột phải = SQL song song + Hà Vy + bảng dữ liệu.
+ * Tên lớp có tiền tố riêng (chal-, qb-, sqlcode, havy-, schema-, result-) để không đụng app.css.
+ */
+
+.chal {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(300px, 30vw, 420px);
+  gap: var(--sp-3);
+  padding: var(--sp-3);
+  background: var(--c-sql-bg);
+  color: var(--c-sql-text);
+  overflow: hidden;
+}
+
+.chal__left,
+.chal__right {
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+/* ---------- Thẻ nền sáng (đọc dễ) ---------- */
+.chal-card {
+  background: var(--c-surface);
+  color: var(--c-text);
+  border-radius: var(--radius-md);
+  padding: var(--sp-3) var(--sp-4);
+}
+
+.chal-head {
+  flex: none;
+}
+.chal-head__title {
+  margin: 0;
+  font-size: var(--fs-md);
+  line-height: 1.3;
+}
+.chal-head__tag {
+  display: inline-block;
+  margin-right: var(--sp-2);
+  padding: 0 var(--sp-2);
+  border-radius: var(--radius-sm);
+  background: var(--c-sql-bg);
+  color: var(--c-sql-text);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  vertical-align: 2px;
+}
+.chal-head__prompt {
+  margin: var(--sp-1) 0 0;
+  font-size: var(--fs-base);
+  line-height: 1.45;
+}
+
+.chal-locked {
+  flex: none;
+  margin: 0;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-md);
+  background: var(--c-warning-bg);
+  color: var(--c-warning);
+  font-weight: 600;
+}
+
+/* ---------- Trình dựng ---------- */
+.chal-builder {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--sp-2) var(--sp-3);
+}
+
+.qb {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+  display: grid;
+  gap: var(--sp-1);
+}
+.qb:disabled {
+  opacity: 0.75;
+}
+
+.qb-row {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  align-items: start;
+  gap: var(--sp-2);
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+}
+.qb-row__kw {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--c-focus);
+  padding-top: 6px;
+}
+.qb-row__body {
+  min-width: 0;
+}
+
+.qb-empty {
+  margin: 0;
+  padding: 6px 0;
+  color: var(--c-text-muted);
+}
+
+.qb-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-2);
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  min-height: 34px;
+  padding: 2px var(--sp-2);
+  border: 2px solid var(--c-border);
+  border-radius: 999px;
+  background: var(--c-surface);
+  cursor: pointer;
+}
+.chip input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--c-focus);
+}
+.chip.is-on {
+  border-color: var(--c-focus);
+}
+.chip.is-dim {
+  opacity: 0.7;
+  cursor: default;
+}
+.chip:focus-within {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 1px;
+}
+
+.qb-from {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.qb-select,
+.qb-input {
+  min-height: 34px;
+  padding: 2px var(--sp-2);
+  border: 2px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  background: var(--c-surface);
+  color: var(--c-text);
+  max-width: 100%;
+}
+.qb-select:focus-visible,
+.qb-input:focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 1px;
+}
+.qb-preview {
+  display: inline-flex;
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+}
+
+.btn--small {
+  min-height: 34px;
+  padding: 2px var(--sp-3);
+  font-size: var(--fs-sm);
+}
+
+/* Vùng đang được hướng dẫn (QĐ-021): viền vàng nổi trên nền tối, không khóa thao tác. */
+.is-guided {
+  border-color: var(--c-sql-highlight) !important;
+  box-shadow: 0 0 0 3px var(--c-sql-highlight);
+  animation: chal-pulse 1.6s ease-in-out infinite;
+}
+@keyframes chal-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px var(--c-sql-highlight);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(250, 204, 21, 0.45);
+  }
+}
+
+/* ---------- Khung kết quả ---------- */
+.chal-result {
+  flex: 1 1 200px;
+  min-height: 150px;
+  overflow: auto;
+}
+
+/* ---------- Cột phải ---------- */
+.chal-sql {
+  flex: none;
+  background: var(--c-sql-surface);
+  color: var(--c-sql-text);
+  border: 1px solid var(--c-sql-border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-2) var(--sp-3);
+  display: grid;
+  gap: var(--sp-2);
+}
+.chal-sql__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+.chal-sql__title {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.sqlcode {
+  position: relative;
+}
+.sqlcode__pre {
+  margin: 0;
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--c-sql-bg);
+  color: var(--c-sql-text);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  min-height: 5.5em;
+}
+.sql-tok--keyword {
+  color: var(--c-sql-keyword);
+  font-weight: 700;
+}
+.sql-tok--string,
+.sql-tok--wildcard {
+  color: var(--c-sql-string);
+}
+.sql-tok--wildcard {
+  font-weight: 700;
+}
+.sql-tok--number {
+  color: var(--c-sql-number);
+}
+.sql-tok--comment {
+  color: var(--c-sql-comment);
+}
+.sql-tok--placeholder {
+  color: var(--c-sql-highlight);
+  font-weight: 700;
+}
+.sql-term {
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  cursor: help;
+  border-radius: 3px;
+}
+.sql-term:focus-visible {
+  outline: 2px solid var(--c-sql-highlight);
+  outline-offset: 1px;
+}
+.sqlcode__tip {
+  position: absolute;
+  z-index: 5;
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--c-surface);
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  font-size: var(--fs-sm);
+  line-height: 1.45;
+}
+.sqlcode__tip-title {
+  font-family: var(--font-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-guided {
+    animation: none;
+  }
+}
