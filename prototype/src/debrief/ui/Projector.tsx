@@ -13,6 +13,7 @@
 import './debrief.css';
 import { useCallback, useEffect, useId, useRef, useState, type MouseEvent } from 'react';
 import type { SavedQueryEvidence } from '../../evidence/types';
+import { gameContent } from '../../shared/store';
 import { CodeText } from '../../shared/ui/CodeText';
 import { runQuery } from '../../sql-challenge/engine';
 import type { RunResult, SqlValue } from '../../sql-challenge/types';
@@ -24,6 +25,7 @@ import {
   RUNNING_TEXT,
   rowCountLabel,
 } from './projector-text';
+import { soleConnector } from './sql-highlight';
 import { SqlText } from './SqlText';
 
 export interface ProjectorProps {
@@ -109,7 +111,13 @@ export function Projector({ spec, evidence, onClose }: ProjectorProps) {
     close();
   };
 
-  const title = spec.source.kind === 'sql' ? 'Truy vấn trên màn chiếu' : 'Truy vấn đã sửa';
+  const title =
+    spec.source.kind === 'sql'
+      ? 'Truy vấn trên màn chiếu'
+      : (evidence && gameContent.challenges[evidence.challengeId]?.content.evidence.title) || 'Truy vấn đã sửa';
+  // Dải so sánh trước/sau: chỉ với vật chứng có `before`; số "sau" theo lần chạy (hoặc số đã lưu khi không chạy).
+  const before = spec.source.kind === 'evidence' ? evidence?.before : undefined;
+  const afterCount = !evidence ? null : spec.run ? (result?.ok ? result.rowCount : null) : evidence.rowCount;
   const lines = hasSql ? sql.split('\n') : [];
 
   return (
@@ -118,7 +126,7 @@ export function Projector({ spec, evidence, onClose }: ProjectorProps) {
         <div className="dbf-screen__head">
           <p className="dbf-screen__eyebrow">Màn chiếu</p>
           <h2 id={titleId} className="dbf-screen__title">
-            {title}
+            <CodeText text={title} />
           </h2>
         </div>
         <p className="dbf-count" aria-live="polite">
@@ -157,6 +165,9 @@ export function Projector({ spec, evidence, onClose }: ProjectorProps) {
                 </p>
               ) : null}
               {result?.ok ? <ResultGrid columns={result.columns} rows={result.rows} /> : null}
+              {before && afterCount !== null && evidence ? (
+                <CompareStrip before={before} afterSql={evidence.sql} afterCount={afterCount} />
+              ) : null}
             </div>
           ) : null}
         </div>
@@ -164,6 +175,9 @@ export function Projector({ spec, evidence, onClose }: ProjectorProps) {
 
       <footer className="dbf-screen__foot">
         <div className="dbf-proj__foot-info">
+          {before && afterCount !== null && evidence && !spec.run ? (
+            <CompareStrip before={before} afterSql={evidence.sql} afterCount={afterCount} />
+          ) : null}
           {spec.caption ? (
             <p className="dbf-screen__caption">
               <CodeText text={spec.caption} />
@@ -175,6 +189,37 @@ export function Projector({ spec, evidence, onClose }: ProjectorProps) {
         </button>
       </footer>
     </section>
+  );
+}
+
+interface CompareStripProps {
+  before: { sql: string; rowCount: number };
+  afterSql: string;
+  afterCount: number;
+}
+
+/**
+ * "Trước: 24 dòng (OR) → Sau: 2 dòng (AND)" — số trước lấy từ `before` của vật chứng (lần chạy thật
+ * truy vấn gốc lúc lưu), số sau từ lần chạy trên màn chiếu; phép nối đọc từ chính câu SQL.
+ */
+function CompareStrip({ before, afterSql, afterCount }: CompareStripProps) {
+  const beforeConn = soleConnector(before.sql);
+  const afterConn = soleConnector(afterSql);
+  return (
+    <p className="dbf-compare">
+      <span className="dbf-compare__before">
+        Trước: {rowCountLabel(before.rowCount)}
+        {beforeConn ? ` (${beforeConn})` : ''}
+      </span>
+      <svg className="dbf-compare__arrow" width="28" height="16" viewBox="0 0 28 16" aria-hidden="true" focusable="false">
+        <path d="M1 8h24M18 2l7 6-7 6" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+      <span className="visually-hidden">, </span>
+      <span className="dbf-compare__after">
+        Sau: {rowCountLabel(afterCount)}
+        {afterConn ? ` (${afterConn})` : ''}
+      </span>
+    </p>
   );
 }
 

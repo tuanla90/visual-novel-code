@@ -1,6 +1,8 @@
 /**
  * Màn chiếu (QĐ-024): engine THẬT (sql.js) trong Vitest.
  * - Nguồn SQL (deb-01): chạy truy vấn OR của Quân → "24 dòng" + 24 dòng bảng; số lấy từ lần chạy.
+ * - Nguồn vật chứng (deb-03): SQL đã sửa + 2 dòng + dải "Trước: 24 dòng (OR) → Sau: 2 dòng (AND)"
+ *   lấy từ `before` của vật chứng.
  * - Chạy lỗi → câu theo lý do; thiếu nguồn → câu theo lý do; vẫn đi tiếp được.
  * - Enter / nút "Tiếp tục" gọi onClose đúng một lần; không lộ định danh thô.
  */
@@ -8,12 +10,13 @@ import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { realContent } from '../../content/real';
-import { QUAN_OR_QUERY } from '../../sql-challenge/data/challenges';
-import { runQuery } from '../../sql-challenge/engine';
+import type { SavedQueryEvidence } from '../../evidence/types';
+import { QUAN_OR_QUERY, QUAN_QUERY_MODEL } from '../../sql-challenge/data/challenges';
+import { modelToSql, runQuery } from '../../sql-challenge/engine';
 import type { ProjectorNode } from '../../story/types';
 import type { ProjectorSpec } from '../types';
 import { Projector } from './Projector';
-import { RUN_FAILURE_TEXT } from './projector-text';
+import { MISSING_EVIDENCE_TEXT, RUN_FAILURE_TEXT } from './projector-text';
 
 // Engine thật: lần nạp sql.js đầu tiên có thể chậm trên máy yếu.
 vi.setConfig({ testTimeout: 20_000 });
@@ -140,5 +143,71 @@ describe('Projector — nguồn SQL, chạy thật', () => {
     await waitArm();
     await user.keyboard('{Enter}');
     expect(onClose).not.toHaveBeenCalled();
+  });
+});
+
+describe('Projector — nguồn vật chứng (deb-03) + dải so sánh trước/sau', () => {
+  const FIXED = projectorOf('deb-03');
+  /** Vật chứng như màn sửa truy vấn lưu: SQL của trình dựng (Quân, đổi OR → AND) + `before` từ lần chạy thật. */
+  async function fixedEvidence(overrides: Partial<SavedQueryEvidence> = {}): Promise<SavedQueryEvidence> {
+    const sql = modelToSql({ ...QUAN_QUERY_MODEL, connector: 'AND' });
+    const run = await runQuery(sql);
+    const quan = await runQuery(QUAN_OR_QUERY);
+    if (!run.ok || !quan.ok) throw new Error('truy vấn kiểm phải chạy được');
+    return {
+      id: 'ev-quan-fixed',
+      challengeId: 'debrief-fix',
+      sql,
+      columns: run.columns,
+      rows: run.rows,
+      rowCount: run.rowCount,
+      savedAt: 1,
+      before: { sql: QUAN_OR_QUERY, rowCount: quan.rowCount },
+      ...overrides,
+    };
+  }
+
+  it('nội dung thật: hiện SQL đã sửa, "2 dòng", 2 dòng bảng, dải "Trước: 24 dòng (OR) → Sau: 2 dòng (AND)"', async () => {
+    expect(FIXED.source).toEqual({ kind: 'evidence', evidenceId: 'ev-quan-fixed' });
+    const ev = await fixedEvidence();
+    render(<Projector spec={FIXED} evidence={ev} onClose={() => {}} />);
+    expect(await screen.findByText('2 dòng', { selector: '.dbf-count' })).toBeInTheDocument();
+    expect(bodyRows()).toHaveLength(2);
+    const strip = document.querySelector('.dbf-compare');
+    expect(strip?.querySelector('.dbf-compare__before')?.textContent).toBe('Trước: 24 dòng (OR)');
+    expect(strip?.querySelector('.dbf-compare__after')?.textContent).toBe('Sau: 2 dòng (AND)');
+    expect(strip?.querySelector('svg')).toHaveAttribute('aria-hidden', 'true');
+    // SQL đã sửa trên màn chiếu có AND, không còn OR.
+    const listing = screen.getByRole('list', { name: 'Câu truy vấn trên màn chiếu' });
+    expect(listing.textContent).toMatch(/\bAND\b/);
+    expect(listing.textContent).not.toMatch(/\bOR\b/);
+    // Tiêu đề lấy từ nội dung (thẻ vật chứng), không lộ định danh thô.
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Truy vấn của Quân, đã sửa');
+    expect(document.body.textContent).not.toMatch(/ev-quan|proj-|debrief-fix/);
+  });
+
+  it('số "Trước" lấy từ `before` của vật chứng, không viết cứng', async () => {
+    const ev = await fixedEvidence({ before: { sql: QUAN_OR_QUERY, rowCount: 17 } });
+    render(<Projector spec={FIXED} evidence={ev} onClose={() => {}} />);
+    await screen.findByText('2 dòng', { selector: '.dbf-count' });
+    expect(document.querySelector('.dbf-compare__before')?.textContent).toBe('Trước: 17 dòng (OR)');
+    expect(screen.queryByText(/24 dòng/)).toBeNull();
+  });
+
+  it('vật chứng không có `before` → không có dải so sánh (không bịa số)', async () => {
+    const ev = await fixedEvidence();
+    delete ev.before;
+    render(<Projector spec={FIXED} evidence={ev} onClose={() => {}} />);
+    await screen.findByText('2 dòng', { selector: '.dbf-count' });
+    expect(document.querySelector('.dbf-compare')).toBeNull();
+  });
+
+  it('chưa lưu vật chứng → câu theo lý do, vẫn đi tiếp được', async () => {
+    const onClose = vi.fn();
+    render(<Projector spec={FIXED} evidence={undefined} onClose={onClose} />);
+    expect(screen.getByText(MISSING_EVIDENCE_TEXT)).toBeInTheDocument();
+    expect(screen.queryByRole('table')).toBeNull();
+    await userEvent.click(screen.getByRole('button', { name: /Tiếp tục/ }));
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 });

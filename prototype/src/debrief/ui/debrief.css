@@ -268,7 +268,7 @@
   border-color: var(--dbf-error);
 }
 .dbf-table-wrap {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-height: 0;
   overflow: auto;
   border: 1px solid var(--dbf-panel-border);
@@ -304,6 +304,8 @@
 
 /* Dải so sánh trước/sau (màn chiếu truy vấn đã sửa). */
 .dbf-compare {
+  flex: none;
+  align-self: flex-start;
   display: flex;
   align-items: center;
   gap: var(--sp-3);
