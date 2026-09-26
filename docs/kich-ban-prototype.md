@@ -378,9 +378,9 @@ WHERE ten LIKE 'H%';
 - [GỢI Ý 3] **ha-vy** (smile): Gần như đáp án đây: `SELECT ma_sv, ho_dem, ten FROM sinh_vien WHERE ten LIKE 'H%';`
 - [KHI ĐÚNG] **ha-vy** (smile): Truy vấn đầu tiên của cậu đấy! Mười dòng, đúng như bộ lọc.
 - [HỎI q-c1-read] ha-vy: "Mười dòng này là những ai?"
-  - (A) {id: chua-h} Những người có chữ H trong họ tên. → phản hồi: **ha-vy** (thinking): 'H%' chỉ khớp khi H đứng đầu. H ở giữa hay ở cuối đều không tính.
+  - (A) {id: chua-h} Những người có chữ H trong cả họ tên. → phản hồi: **ha-vy** (thinking): 'H%' chỉ khớp khi H đứng đầu. H ở giữa hay ở cuối đều không tính.
   - (B) {id: ten-h} Những người có tên gọi bắt đầu bằng H. [ĐÚNG] → phản hồi: **ha-vy** (smile): Chuẩn. Cột ten, H đứng đầu, phía sau là gì cũng được.
-  - (C) {id: ho-h} Những người có họ bắt đầu bằng H. → phản hồi: **ha-vy** (thinking): Điều kiện đặt ở cột ten, không phải ho_dem. Người họ Hoàng mà tên Lan sẽ không có ở đây.
+  - (C) {id: ho-h} Những người có họ đệm bắt đầu bằng H. → phản hồi: **ha-vy** (thinking): Điều kiện đặt ở cột ten, không phải ho_dem. Người họ Hoàng mà tên Lan sẽ không có ở đây.
 - [DÀN DỰNG] Giao diện xáo thứ tự lựa chọn mỗi lần hiện câu hỏi; chữ (A)/(B)/(C) chỉ là nhãn khi viết, không hiển thị; telemetry ghi id lựa chọn (QĐ-035).
 - Vật chứng lưu vào hồ sơ: ev-c1-names-h
   - Tiêu đề: Sinh viên có tên bắt đầu bằng H
@@ -560,4 +560,100 @@ WHERE ten LIKE 'H%'
 
 ## Tự kiểm
 
-(đang viết)
+- [DÀN DỰNG] Mục này không hiển thị trong game. Các lệnh KIỂM TRA của brief chạy bằng Git Bash ở gốc worktree sau mỗi Phần; output dưới đây là của nội dung cuối cùng (commit chứa mục này). Tệp tạm ghi vào thư mục scratchpad của phiên thay cho `/tmp`. Ở lệnh 2 đã bỏ hai dấu sao quanh tên người nói để chính mục này không bị lệnh grep đếm lại; ở lệnh 1 không chép lại mẫu tìm kiếm vì mẫu chứa chính các từ cấm.
+
+### Lệnh 1 — từ cấm (phải 0 dòng)
+
+Tự kiểm công cụ trước khi tin số 0: thêm tạm vào cuối file một dòng chứa một tên cấm → lệnh ra đúng 1 dòng → đã xóa dòng đó, file trở lại như cũ.
+
+```text
+0
+```
+
+### Lệnh 2 — tổ hợp người nói / biểu cảm
+
+```text
+      3 bac-tu (neutral)
+     21 ha-vy (neutral)
+     20 ha-vy (smile)
+     39 ha-vy (thinking)
+      2 hoai (downcast)
+      2 hoai (nervous)
+      1 hoai (relieved)
+      4 minh-anh (happy)
+     16 minh-anh (neutral)
+     10 minh-anh (worried)
+      9 narrator
+      6 player
+     19 quan (neutral)
+      2 quan (smug)
+      2 quan (stunned)
+```
+
+Mọi tổ hợp đều thuộc QĐ-033; `narrator`, `player` không có biểu cảm; `bac-tu` chỉ dùng `neutral`.
+
+### Lệnh 3 — định danh clue / doc / ev
+
+```text
+clue-bookmark-baochi
+clue-box-building-b
+clue-signature-h
+doc-bookmark
+doc-handover-log
+doc-letter
+ev-c1-names-h
+ev-c2-classes-b
+ev-c3-shortlist
+ev-quan-fixed
+```
+
+Đủ 10 định danh của QĐ-033, không có định danh lạ.
+
+### Lệnh 4 — số chữ lời thoại theo phần (awk của brief)
+
+```text
+274	## Phần 4 — Giải trình {part: debrief}
+278	## Phần 2 — Điều tra {part: investigation}
+290	## Phần 5 — Kết {part: ending}
+206	## Phần 3 — Phân tích dữ liệu {part: analysis}
+293	## Phần 1 — Mở đầu {part: intro}
+```
+
+Lệnh awk của brief chỉ đếm dòng bắt đầu bằng `- **`, tính cả thẻ biểu cảm như một chữ, và bỏ sót phản hồi trong lựa chọn `[HỎI]` và trong bảng `[CHỌN DÒNG]`. Vì vậy có thêm một lần đếm đủ: đếm chữ sau mỗi thẻ người nói ở mọi nơi (kể cả phản hồi lựa chọn, ô bảng), cộng chữ của lời lựa chọn và câu hỏi; không tính thẻ.
+
+| Phần | awk của brief | Đếm đủ: thoại + lựa chọn + câu hỏi | Ngân sách |
+|---|---:|---:|---:|
+| Mở đầu | 293 | 276 | ≤ 400 |
+| Điều tra | 278 | 310 + 29 + 12 = 351 | ≤ 550 |
+| Phân tích dữ liệu | 206 | 194 | ≤ 450 |
+| Giải trình | 274 | 448 + 86 + 23 = 557 | ≤ 900 |
+| Kết | 290 | 274 | ≤ 300 |
+| Cộng năm phần | 1.341 | 1.652 | ≤ 2.600 |
+| Nội dung thử thách (không tính vào Phân tích) | — | 838 + 85 + 21 = 944 | — |
+| Toàn file | — | 2.596 | ≤ 2.600 |
+
+Độ dài từng lời: dài nhất 24 chữ trong năm phần, 26 chữ trong thẻ thử thách; 0 lời quá 30 chữ; 15/156 lời quá 20 chữ.
+
+### Đối chiếu con trỏ
+
+```text
+So chuoi: 19 · so con tro: 18
+Con tro tro toi chuoi KHONG ton tai: (khong co)
+Chuoi mo coi (khong ai tro toi): intro-01   <- chuoi mo dau, hop le
+seq-id trung lap: (khong co)
+```
+
+Mọi con trỏ (lệnh đi tới, "chạy chuỗi" của điểm xem xét, nút "Nhiệm vụ tiếp theo →") đều trỏ tới một tiêu đề chuỗi có thật. Mọi mục trong danh sách "cần" của điều kiện qua cảnh là định danh có trong Hồ sơ.
+
+### Độ dài lựa chọn của các câu hỏi (QĐ-035)
+
+```text
+q-sig-h      min=9  max=11 chenh=22% |  ho=9  *ten=9  ma-lop=11
+q-two-rows   min=11 max=13 chenh=18% |  tim-ra-roi=12  *can-xac-minh=11  vo-dung=13
+q-verify     min=12 max=13 chenh=8%  |  them-dieu-kien=13  chon-dang-ngo=12  goi-ca-hai=12  *nguon-khac=13
+q-c1-read    min=9  max=9  chenh=0%  |  chua-h=9  *ten-h=9  ho-h=9
+q-c2-read    min=8  max=9  chenh=13% |  *loc-sinh-vien=8  dem-toa-b=9  bo-qua=9
+q-c3-read    min=10 max=11 chenh=10% |  chi-hai-ten-h=10  in-ca-hai-lop=11  *and-dong-thoi=11
+```
+
+Dấu `*` là lựa chọn đúng. Mọi câu hỏi chênh ≤ 30%; lựa chọn đúng không phải là lựa chọn dài nhất riêng một mình ở câu nào.
