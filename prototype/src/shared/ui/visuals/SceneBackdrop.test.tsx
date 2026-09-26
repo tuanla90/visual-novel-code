@@ -3,19 +3,24 @@
  * không lộ tên ô ra chữ/alt/aria.
  */
 import { render } from '@testing-library/react';
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { SCENE_IDS } from '../../ids';
 import { Stage } from '../Stage';
-import { BACKGROUND_SLOTS, parseArtFileName } from './art-slots';
+import { BACKGROUND_SLOTS, parseArtFileName, slotForFileName } from './art-slots';
 
-const ART_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../assets/art');
+const ASSETS_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../assets');
 
-function hasFileFor(slot: string): boolean {
-  if (!existsSync(ART_DIR)) return false;
-  return readdirSync(ART_DIR).some((f) => parseArtFileName(f)?.name === slot);
+/** Có tệp ảnh cấp cho ô này ở bất kỳ thư mục con nào của src/assets (QĐ-063)? */
+function hasFileFor(slot: string, dir = ASSETS_DIR): boolean {
+  if (!existsSync(dir)) return false;
+  return readdirSync(dir).some((f) => {
+    if (statSync(join(dir, f)).isDirectory()) return hasFileFor(slot, join(dir, f));
+    const parsed = parseArtFileName(f);
+    return parsed !== null && slotForFileName(parsed.name)?.slot === slot;
+  });
 }
 
 describe('SceneBackdrop trong Stage', () => {
