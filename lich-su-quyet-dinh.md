@@ -321,6 +321,10 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Không thêm lời riêng cho "chưa chọn cột": dòng nhắc ngay trong hàng điều kiện ("Chọn cột muốn lọc trước, rồi đến phép so sánh và giá trị.") đã đủ, lời `no-value` vẫn đúng.
 - Nghiệm thu QĐ-056 tại `main` (cherry-pick `cc68d94`): typecheck 0 lỗi, 427/427 test, lint sạch, build đạt.
 
+**QĐ-059 — QĐ-054 làm đỏ 2 test cũ: sửa kỳ vọng nhưng giữ sức phân biệt của phanh.** · Nguồn: agent `giai-trinh-ui` báo giữa chừng · 26/09 22:35
+- Vấn đề: `diagnose.test.ts` (c1 + wrong-table → other) và `ChallengeTelemetry.test.tsx` (c1 + OR → lời other, primaryCode other) khẳng định hành vi cũ mà QĐ-054 cố ý đổi. Test thứ hai là phanh của gói 4, chứng minh telemetry ghi "mã đã hiện" chứ không phải mã đầu của engine; sau QĐ-054, với nội dung thật hai mã trùng nhau nên nếu chỉ đổi kỳ vọng thì phanh mất tác dụng.
+- **Chọn:** cho agent `giai-trinh-ui` sửa đúng 2 tệp test đó; giữ một ca "rơi về other" bằng mã thật sự không có lời; viết lại test telemetry bằng nội dung giả trong test (xóa lời của mã engine trả về) để mã hiện ≠ mã engine; bẻ phanh lại để chứng minh.
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**
