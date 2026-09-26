@@ -1,0 +1,348 @@
+/*
+ * Màn giải trình (gói 6 giai-trinh-ui): màn chiếu + màn chọn dòng — tông màn chiếu LẠNH.
+ * Phủ lên sân khấu (position: absolute trong .stage, như màn thử thách) tại "vùng màn chiếu".
+ * Tên lớp có tiền tố riêng `dbf-` để không đụng app.css / challenge.css.
+ *
+ * VÙNG MÀN CHIẾU = 4 biến dưới đây: khoảng cách từ 4 mép sân khấu tới khung màn chiếu (% theo sân
+ * khấu). Gói 7 (hinh-giao-dien) chỉnh cho khớp khung màn chiếu trong ảnh nền
+ * `bg-prototype-hearing-room` bằng cách đặt lại biến ở `.stage` (hoặc ở :root trong tệp nạp sau) —
+ * không cần sửa tệp này. Nội dung bên trong tự cuộn khi vùng nhỏ.
+ *
+ * Màu riêng (--dbf-*) được đo tương phản trong src/debrief/ui/contrast-debrief.test.ts.
+ */
+:root {
+  --projector-top: 2.5%;
+  --projector-right: 3%;
+  --projector-bottom: 2.5%;
+  --projector-left: 3%;
+}
+
+/* ---------- Khung màn chiếu dùng chung ---------- */
+.dbf-screen {
+  --dbf-screen-bg: #0d1a2b;
+  --dbf-screen-glow: #15283f;
+  --dbf-screen-edge: #6b8bad;
+  --dbf-panel-bg: #13253a;
+  --dbf-panel-hover: #1a3350;
+  --dbf-panel-border: #34506f;
+  --dbf-ink: #e2e8f0;
+  --dbf-ink-muted: #a9bdd3;
+  --dbf-kw: #7dd3fc;
+  --dbf-str: #fcd34d;
+  --dbf-num: #86efac;
+  --dbf-punct: #cbd5e1;
+  --dbf-count: #facc15;
+  --dbf-table-head: #1a2e46;
+  --dbf-row-alt: #112338;
+  --dbf-error: #fca5a5;
+  --dbf-focus: #93c5fd;
+  --dbf-btn-bg: #bfdbfe;
+  --dbf-btn-ink: #0d1a2b;
+  --dbf-btn-hover: #dbeafe;
+
+  position: absolute;
+  top: var(--projector-top);
+  right: var(--projector-right);
+  bottom: var(--projector-bottom);
+  left: var(--projector-left);
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5);
+  background: radial-gradient(ellipse at 50% 0%, var(--dbf-screen-glow) 0%, var(--dbf-screen-bg) 70%);
+  color: var(--dbf-ink);
+  border: 3px solid var(--dbf-screen-edge);
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 0 0 6px rgba(13, 26, 43, 0.35),
+    0 12px 32px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+.dbf-screen:focus {
+  outline: none;
+}
+.dbf-screen :focus-visible {
+  outline: 3px solid var(--dbf-focus);
+  outline-offset: 2px;
+}
+
+.dbf-screen__head {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.dbf-screen__eyebrow {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dbf-ink-muted);
+}
+.dbf-screen__title {
+  margin: 0;
+  font-size: var(--fs-lg);
+  line-height: 1.25;
+  color: var(--dbf-ink);
+}
+.dbf-screen__lead,
+.dbf-screen__caption {
+  margin: 0;
+  font-size: var(--fs-base);
+  color: var(--dbf-ink-muted);
+}
+.dbf-screen__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+/* Chữ mã (CodeText) trên nền tối. */
+.dbf-screen {
+  --code-text-bg: var(--dbf-panel-bg);
+  --code-text-fg: var(--dbf-ink);
+}
+
+/* ---------- SQL tô màu đồng đều ---------- */
+.dbf-code {
+  font-family: var(--font-mono);
+  white-space: pre;
+  overflow-wrap: normal;
+}
+.dbf-tok--kw {
+  color: var(--dbf-kw);
+  font-weight: 700;
+}
+.dbf-tok--id {
+  color: var(--dbf-ink);
+}
+.dbf-tok--str {
+  color: var(--dbf-str);
+}
+.dbf-tok--num {
+  color: var(--dbf-num);
+}
+.dbf-tok--punct,
+.dbf-tok--cmt {
+  color: var(--dbf-punct);
+}
+.dbf-lineno {
+  flex: none;
+  min-width: 2ch;
+  text-align: right;
+  font-family: var(--font-mono);
+  color: var(--dbf-ink-muted);
+  user-select: none;
+}
+
+/* ---------- Màn chọn dòng ---------- */
+.dbf-pick {
+  grid-template-rows: auto auto minmax(0, 1fr);
+  align-content: start;
+}
+.dbf-pick__lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--sp-2);
+  min-height: 0;
+  overflow: auto;
+}
+.dbf-pick__line {
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-2) var(--sp-4);
+  border: 2px solid var(--dbf-panel-border);
+  border-radius: var(--radius-md);
+  background: var(--dbf-panel-bg);
+  color: var(--dbf-ink);
+  font-size: var(--fs-md);
+  text-align: left;
+  overflow-x: auto;
+}
+.dbf-pick__line:hover {
+  background: var(--dbf-panel-hover);
+  border-color: var(--dbf-screen-edge);
+}
+.dbf-pick__line .dbf-code {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+/* Đã chọn sai: đánh dấu nhẹ (viền nét đứt + nhãn nhỏ), vẫn chọn lại được. */
+.dbf-pick__line--tried {
+  border-style: dashed;
+}
+.dbf-pick__tag {
+  flex: none;
+  padding: 0 var(--sp-2);
+  border: 1px solid var(--dbf-panel-border);
+  border-radius: 999px;
+  font-size: var(--fs-sm);
+  color: var(--dbf-ink-muted);
+}
+.dbf-pick__note {
+  margin: 0;
+  min-height: 1.5em;
+  color: var(--dbf-ink-muted);
+}
+
+/* ---------- Màn chiếu ---------- */
+.dbf-proj__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  min-width: 0;
+}
+.dbf-proj__body {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--sp-4);
+  min-height: 0;
+}
+.dbf-proj__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-height: 0;
+  min-width: 0;
+}
+.dbf-proj__label {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--dbf-ink-muted);
+}
+.dbf-listing {
+  list-style: none;
+  margin: 0;
+  padding: var(--sp-3) var(--sp-4);
+  display: grid;
+  gap: var(--sp-1);
+  background: var(--dbf-panel-bg);
+  border: 1px solid var(--dbf-panel-border);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  overflow: auto;
+  min-height: 0;
+}
+.dbf-listing__line {
+  display: flex;
+  gap: var(--sp-4);
+}
+.dbf-count {
+  margin: 0;
+  font-size: var(--fs-2xl);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--dbf-count);
+  white-space: nowrap;
+}
+.dbf-status {
+  margin: 0;
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px dashed var(--dbf-panel-border);
+  border-radius: var(--radius-md);
+  color: var(--dbf-ink-muted);
+}
+.dbf-status--error {
+  color: var(--dbf-error);
+  border-color: var(--dbf-error);
+}
+.dbf-table-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  border: 1px solid var(--dbf-panel-border);
+  border-radius: var(--radius-md);
+}
+.dbf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-base);
+}
+.dbf-table th,
+.dbf-table td {
+  padding: 6px var(--sp-3);
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--dbf-panel-border);
+}
+.dbf-table th {
+  position: sticky;
+  top: 0;
+  background: var(--dbf-table-head);
+  color: var(--dbf-ink);
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+.dbf-table tbody tr:nth-child(even) {
+  background: var(--dbf-row-alt);
+}
+.dbf-table__null {
+  color: var(--dbf-ink-muted);
+  font-style: italic;
+}
+
+/* Dải so sánh trước/sau (màn chiếu truy vấn đã sửa). */
+.dbf-compare {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  margin: 0;
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--dbf-panel-bg);
+  border: 1px solid var(--dbf-panel-border);
+  border-radius: 999px;
+  font-size: var(--fs-md);
+}
+.dbf-compare__before {
+  color: var(--dbf-ink-muted);
+}
+.dbf-compare__after {
+  color: var(--dbf-count);
+  font-weight: 800;
+}
+.dbf-compare__arrow {
+  flex: none;
+  color: var(--dbf-ink-muted);
+}
+
+.dbf-btn {
+  min-height: 44px;
+  padding: var(--sp-2) var(--sp-5);
+  border: 2px solid var(--dbf-btn-bg);
+  border-radius: var(--radius-md);
+  background: var(--dbf-btn-bg);
+  color: var(--dbf-btn-ink);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.dbf-btn:hover {
+  background: var(--dbf-btn-hover);
+  border-color: var(--dbf-btn-hover);
+}
+.dbf-btn__key {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+/* Màn hẹp (≤ 1100px): cột SQL trên, bảng dưới. */
+@media (max-width: 1100px) {
+  .dbf-proj__body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+}
