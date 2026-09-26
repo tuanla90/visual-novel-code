@@ -7,11 +7,13 @@
  * khấu). Gói 7 (hinh-giao-dien) chỉnh cho khớp khung màn chiếu trong ảnh nền
  * `bg-prototype-hearing-room` bằng cách đặt lại biến ở `.stage` (hoặc ở :root trong tệp nạp sau) —
  * không cần sửa tệp này. Nội dung bên trong tự cuộn khi vùng nhỏ.
+ * Mặc định mép trên chừa chỗ cho nhãn cảnh ("Phòng giải trình") ở góc trên sân khấu — đo ở
+ * 1366×768: mép trên 2.5% làm khung che mất nửa nhãn.
  *
  * Màu riêng (--dbf-*) được đo tương phản trong src/debrief/ui/contrast-debrief.test.ts.
  */
 :root {
-  --projector-top: 2.5%;
+  --projector-top: 7%;
   --projector-right: 3%;
   --projector-bottom: 2.5%;
   --projector-left: 3%;
@@ -50,7 +52,8 @@
   grid-template-rows: auto minmax(0, 1fr) auto;
   gap: var(--sp-3);
   padding: var(--sp-4) var(--sp-5);
-  background: radial-gradient(ellipse at 50% 0%, var(--dbf-screen-glow) 0%, var(--dbf-screen-bg) 70%);
+  background-color: var(--dbf-screen-bg);
+  background-image: radial-gradient(ellipse at 50% 0%, var(--dbf-screen-glow) 0%, var(--dbf-screen-bg) 70%);
   color: var(--dbf-ink);
   border: 3px solid var(--dbf-screen-edge);
   border-radius: var(--radius-md);
@@ -311,11 +314,11 @@
   gap: var(--sp-3);
   flex-wrap: wrap;
   margin: 0;
-  padding: var(--sp-2) var(--sp-4);
+  padding: var(--sp-2) var(--sp-5);
   background: var(--dbf-panel-bg);
   border: 1px solid var(--dbf-panel-border);
   border-radius: 999px;
-  font-size: var(--fs-md);
+  font-size: var(--fs-lg);
 }
 .dbf-compare__before {
   color: var(--dbf-ink-muted);
