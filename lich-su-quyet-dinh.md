@@ -392,6 +392,30 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Từ 10a, sửa: chống bấm đúp/giữ phím cho `DialogBox`, `MultipleChoice`, câu đọc kết quả và "Hỏi Hà Vy" (theo mẫu có sẵn của `ObjectionEffect`); thứ tự lựa chọn nhớ theo khóa phiên chơi + id câu hỏi, không ghi đè (chịu được StrictMode); "Bắt đầu lại" có hộp xác nhận và mang khảo sát đầu sang phiên mới; chuẩn hóa giá trị (bỏ khoảng trắng thừa ở trình dựng, NFC cả câu SQL trước khi chạy); giới hạn 2.000 dòng kèm một mã chẩn đoán mới `too-many-rows` và lời Hà Vy riêng (không dùng lời `other` chung chung); đánh dấu phiên chơi lại (`resetFrom`) trong tóm tắt và bảng người quan sát; chân dung ảnh hỏng quay về hình vẽ tạm; sửa tài liệu theo QĐ-065.
 - Để vòng 2: F5 khi đã đúng nhưng chưa lưu (+1 `query_run`); bản ghi `isFirstChoice` trùng của câu đọc kết quả sau F5 (tóm tắt lấy bản sớm nhất nên chỉ số không đổi).
 
+**Kết quả gói `ra-soat-su-pham` (10b, Scout Opus).** · 27/09 07:05
+- Chơi bản build như người mới (cố tình mắc lỗi, dùng đủ gợi ý), rồi kiểm lại bằng phiên thứ hai. Kết luận: gần sẵn sàng cho vòng 1; vòng lõi thành hình, lời nhận xét khi chạy sai tốt, xưng hô và ngôn ngữ không phạt đạt. 15 phát hiện: 1 CAO, 9 TRUNG, 5 THẤP.
+- Thời lượng ước tính một lượt người mới: ~27 phút (dải 21–35) với giả định 180 chữ/phút — trong khung 20–30 nhưng sát trần; Phần 3 ~12,5 phút (khung 8–10), chủ yếu do c3.
+
+**QĐ-067 — Quyết định cho 15 phát hiện sư phạm.** · 27/09 07:05
+- F1 (CAO, c3 bắt tự khám phá `IN` chưa được dạy; lọc một lớp → 1 dòng, hai lớp nối AND → 0 dòng đều chỉ nhận lời `other`): **B** — lời Hà Vy trước c3 giới thiệu "thuộc danh sách" bằng phép so Excel (tick hai ô trong Filter); thêm 2 mã chẩn đoán `class-subset` (lọc thiếu lớp) và `same-column-and` (hai điều kiện cùng cột nối AND) kèm lời Hà Vy; chưa làm "tự đổi phép" (biến IN thành thụ động).
+- F2 (`q-two-rows`: lựa chọn đúng "…chưa phải người bỏ thư" mâu thuẫn với kết): **B** — đúng: "Hai người cần xác minh thêm, chưa đủ để nói ai bỏ thư."; sai: "Tìm ra rồi: dữ liệu đã chứng minh một trong hai bạn bỏ thư." (giữ cân độ dài QĐ-035).
+- F3 (`q-verify` đoán được bằng khớp chữ "dữ liệu"): **B** — chỉ đổi các lựa chọn (câu hỏi của Quân là nguyên văn §4.4 của USER, giữ nguyên); đúng: "Nhờ người giữ giấy tờ gốc đối chiếu riêng hai mã này."; sai tương ứng: "Lọc thêm trong dữ liệu cho đến khi chỉ còn một dòng."; hai lựa chọn còn lại chỉnh cân độ dài.
+- F4 (lời "Bạn" tự động nói luôn "Phải nối bằng AND." trước bước sửa): **B** — lời thứ ba thành "Người bỏ thư phải khớp cả ba cùng lúc, không phải chỉ một."
+- F5 (tài liệu, kể cả sổ bàn giao, bị đóng mất bởi một cú Space/bấm đúp): **B** — bỏ `autoFocus`, khóa ~400 ms, bỏ qua phím giữ; gộp vào nhóm chống bấm đúp của QĐ-066.
+- F6 ("Từ manh mối" chỉ hiện ở cột đúng → lộ cột; lời `no-value` chỉ tới mục không có): **C** — gợi ý manh mối chữ hiện cho mọi cột chữ cùng bảng (H cho cả `ten` lẫn `ho_dem`…); lời `no-value` thành "…Gõ vào ô, hoặc chọn 'Từ manh mối'.".
+- F7 (câu đọc kết quả c1 không đo hiểu `%`): **B** — câu mới về ý nghĩa `%` trong `'H%'` (3 lựa chọn cân độ dài, có phản hồi).
+- F8 ("Hỏi Hà Vy" xóa lời nhận xét cụ thể): **B** — khung Hà Vy giữ cả nhận xét của lần chạy gần nhất lẫn gợi ý.
+- F9 (Quân đọc to tên + mã người vô can khi Hoài còn trên màn): **C** — lời dẫn "Hoài cúi chào rồi ra về." (rút chân dung Hoài khỏi cảnh) rồi mới tới lời Quân, và lời Quân không nêu tên/mã: "Mã còn lại không có trong sổ. Bạn ấy vô can, CTSV sẽ không liên hệ."
+- F10 (mạch "giữ phòng CLB" không được khép): **B** — lời cuối của Minh Anh: "Lá thư tự bác chính nó rồi. Anh năm cuối đeo huy hiệu Robotics… để vụ sau. Em đi tiếp chứ?"
+- F11–F15 (THẤP): giải thích "view" một lần bằng lời thường; bỏ chữ "B" khỏi nhãn cảnh hành lang; gợi ý mức 3 ghi đúng là đáp án ("Đáp án đây:"); viết lại mô tả bookmark thành câu hoàn chỉnh; tóm tắt phiên ở bảng người quan sát liệt kê số lần gặp từng mã lỗi (phục vụ §11.4).
+- Hai điểm là lời của USER, giữ nguyên: đề c3 có chữ "đồng thời" (§4.3) nên chọn AND ở c3 không được coi là bằng chứng hiểu — đo AND/OR bằng phỏng vấn §9.2 bước 4; câu hỏi của Quân ở `q-verify` (§4.4).
+- Để vòng 2: câu `q-source` (người chơi tự nêu nguồn, QĐ-038) nếu phỏng vấn cho thấy cú lật "dắt tay".
+
+**QĐ-068 — Chia gói sửa lỗi.** · 27/09 07:05
+- **11a `sua-loi-giao-dien` (Opus, 6 điểm):** mọi sửa code/giao diện của QĐ-066 + F5, F6 (phần hiển thị gợi ý), F8, F12 (nhãn cảnh), F15; engine phát hiện 2 mã mới của F1 và mã `too-many-rows` (thêm vào `DIAGNOSTIC_CODES`, tạm rơi về lời `other` cho tới 11b).
+- **11b `sua-loi-noi-dung` (Opus, 5 điểm):** kịch bản + nội dung + test trung thành: lời cho `class-subset`, `same-column-and`, `too-many-rows`, lời dẫn IN trước c3, F2, F3, F4, F6 (lời `no-value`), F7, F9, F10, F11, F13, F14.
+- Chạy tuần tự 11a → 11b (QĐ-057).
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**
