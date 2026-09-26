@@ -144,6 +144,43 @@
   flex-wrap: wrap;
 }
 
+/* ---------- Màn kết (gói telemetry) — giữa sân khấu như tài liệu, cuộn được nếu thấp ---------- */
+.stage__content:has(> .endscreen) {
+  grid-row: 2 / 4;
+  align-self: center;
+  min-height: 0;
+  max-height: 100%;
+  display: grid;
+}
+.endscreen {
+  min-height: 0;
+  max-height: 100%;
+  overflow: auto;
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5);
+  background: var(--c-dialog-bg);
+  color: var(--c-text);
+  border: 3px solid var(--c-dialog-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 28px rgba(31, 35, 40, 0.22);
+}
+.endscreen__title {
+  margin: 0;
+  font-size: var(--fs-xl);
+}
+.endscreen__lead {
+  margin: 0;
+}
+.endscreen__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-3);
+}
+.survey--post {
+  gap: var(--sp-3);
+}
+
 /* ---------- Khảo sát đầu/cuối game (gói telemetry — QĐ-031/042: chỉ lựa chọn đóng) ---------- */
 .survey {
   display: grid;
