@@ -314,6 +314,13 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - **User chọn: tuần tự 1 agent** (đúng luật skill `/giao-viec`).
 - Sự cố liên quan: phiên của điều phối viên bị ngắt lúc 21:45 ngay sau khi giao việc bổ sung QĐ-056; agent chưa kịp làm gì (worktree không đổi) → giao lại lúc 21:55, không mất việc.
 
+**QĐ-058 — Cách mã hóa "điều kiện chưa chọn cột".** · Nguồn: câu hỏi của agent `trinh-dung-ui` khi làm QĐ-056 · 26/09 22:15
+- Bối cảnh: `QueryCondition.column` (tệp đóng băng) không cho rỗng; agent đánh dấu điều kiện chưa chọn cột bằng tiền tố id `new-N` (cột giữ chỗ không hiện, không vào SQL, nút Chạy khóa với lời `no-value`).
+- Phương án: A — chấp nhận cho prototype; B — mở kiểu `column: ColumnName | null` (sửa tệp đóng băng, lan sang engine và nội dung).
+- **Chọn A.** Ghi vào danh sách dọn của gói `tich-hop`: nếu người rà soát code đánh giá cách này dễ gãy thì chuyển sang B.
+- Không thêm lời riêng cho "chưa chọn cột": dòng nhắc ngay trong hàng điều kiện ("Chọn cột muốn lọc trước, rồi đến phép so sánh và giá trị.") đã đủ, lời `no-value` vẫn đúng.
+- Nghiệm thu QĐ-056 tại `main` (cherry-pick `cc68d94`): typecheck 0 lỗi, 427/427 test, lint sạch, build đạt.
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**
