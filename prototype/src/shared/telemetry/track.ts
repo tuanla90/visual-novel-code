@@ -54,6 +54,38 @@ let sessionId = randomSessionId();
 let clock: () => number = () => Date.now();
 let sessionIdStore: SessionIdStore | null = null;
 
+// Người nghe thay đổi (bảng người quan sát vẽ lại khi có sự kiện mới / xóa / đổi phiên).
+const listeners = new Set<() => void>();
+let version = 0;
+let notifyScheduled = false;
+/** Báo sau một microtask (gộp nhiều sự kiện liền nhau, không cập nhật React giữa lúc vẽ). */
+function notify(): void {
+  version += 1;
+  if (notifyScheduled || listeners.size === 0) return;
+  notifyScheduled = true;
+  queueMicrotask(() => {
+    notifyScheduled = false;
+    for (const l of [...listeners]) {
+      try {
+        l();
+      } catch {
+        /* người nghe lỗi không được làm hỏng game */
+      }
+    }
+  });
+}
+
+/** Đăng ký nghe thay đổi; trả về hàm hủy. Dùng với `useSyncExternalStore`. */
+export function subscribeTelemetry(listener: () => void): () => void {
+  listeners.add(listener);
+  return () => listeners.delete(listener);
+}
+
+/** Số tăng dần mỗi lần có thay đổi (ảnh chụp cho `useSyncExternalStore`). */
+export function getTelemetryVersion(): number {
+  return version;
+}
+
 /** Ghi một sự kiện. Không bao giờ ném lỗi: telemetry hỏng thì game vẫn chạy. */
 export function track(event: TelemetryEventBody): TelemetryEvent {
   const full: TelemetryEvent = { ...event, at: clock(), sessionId };
@@ -62,6 +94,7 @@ export function track(event: TelemetryEventBody): TelemetryEvent {
   } catch (err) {
     if (typeof console !== 'undefined' && !isTestRuntime()) console.warn('[telemetry] Không ghi được sự kiện', err);
   }
+  notify();
   return full;
 }
 
@@ -80,6 +113,7 @@ export function clearTelemetry(): void {
   } catch {
     /* Không xóa được: bảng người quan sát đọc trạng thái lưu để báo. */
   }
+  notify();
 }
 
 /** Nơi lưu hiện tại (bảng người quan sát đọc trạng thái lỗi lưu nếu có). */
@@ -95,6 +129,7 @@ export function getSessionId(): string {
 export function newTelemetrySession(): string {
   sessionId = randomSessionId();
   sessionIdStore?.save(sessionId);
+  notify();
   return sessionId;
 }
 
@@ -115,4 +150,5 @@ export function configureTelemetry(options: {
     if (saved) sessionId = saved;
     else sessionIdStore?.save(sessionId);
   }
+  notify();
 }

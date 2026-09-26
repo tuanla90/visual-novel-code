@@ -1084,19 +1084,53 @@
   gap: var(--sp-3);
 }
 
-/* ---------- Người quan sát ---------- */
+/* ---------- Người quan sát (gói telemetry — chỉ hiện với ?facilitator=1) ---------- */
 .facilitator {
-  position: absolute;
+  position: fixed;
   left: var(--sp-3);
   bottom: var(--sp-3);
-  background: var(--c-surface);
-  border: 2px solid var(--c-border);
-  border-radius: var(--radius-md);
-  padding: var(--sp-3);
+  width: min(460px, calc(100vw - 2 * var(--sp-3)));
+  max-height: calc(100vh - 2 * var(--sp-3));
   display: grid;
-  gap: var(--sp-2);
+  grid-template-rows: auto minmax(0, 1fr);
+  background: var(--c-surface);
+  color: var(--c-text);
+  border: 2px solid var(--c-text);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
   font-size: var(--fs-sm);
-  z-index: 10;
+  z-index: 15;
+}
+.facilitator:not(.facilitator--open) {
+  width: auto;
+  max-width: calc(100vw - 2 * var(--sp-3));
+}
+.facilitator__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-3);
+}
+.facilitator__brief {
+  margin: 0;
+  min-width: 0;
+}
+.facilitator__toggle {
+  min-height: 32px;
+  padding: 2px var(--sp-3);
+  flex: none;
+}
+.facilitator__body {
+  overflow: auto;
+  padding: 0 var(--sp-3) var(--sp-3);
+  display: grid;
+  gap: var(--sp-3);
+  align-content: start;
+  border-top: 1px solid var(--c-border);
+}
+.facilitator__h {
+  margin: var(--sp-2) 0 var(--sp-1);
+  font-size: var(--fs-base);
 }
 .facilitator__grid {
   margin: 0;
@@ -1104,8 +1138,43 @@
   grid-template-columns: auto 1fr;
   gap: 2px var(--sp-3);
 }
+.facilitator__grid dt {
+  color: var(--c-text-muted);
+}
 .facilitator__grid dd {
   margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.facilitator__storage {
+  margin: var(--sp-2) 0 0;
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--radius-sm);
+}
+.facilitator__storage--ok {
+  background: var(--c-success-bg);
+  color: var(--c-success);
+}
+.facilitator__storage--warn {
+  background: var(--c-warning-bg);
+  color: var(--c-warning);
+}
+.facilitator__storage--error {
+  background: var(--c-error-bg);
+  color: var(--c-error);
+}
+.facilitator__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.facilitator__actions .btn {
+  min-height: 36px;
+  padding: var(--sp-1) var(--sp-3);
+}
+.facilitator__muted {
+  margin: var(--sp-2) 0 0;
+  color: var(--c-text-muted);
 }
 
 /* ---------- Thông báo ---------- */
