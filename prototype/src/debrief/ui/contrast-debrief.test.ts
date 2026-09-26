@@ -94,3 +94,14 @@ describe('tương phản — màn chiếu / màn chọn dòng', () => {
     expect(failuresOf(readVars(CSS))).toEqual([]);
   });
 });
+
+describe('vùng màn chiếu: 4 biến CSS có giá trị mặc định, khung dùng đúng 4 biến đó', () => {
+  it('định nghĩa ở :root và dùng ở .dbf-screen', () => {
+    const root = /:root\s*\{([^}]*)\}/.exec(CSS)?.[1] ?? '';
+    const screen = /\.dbf-screen\s*\{([^}]*)\}/.exec(CSS)?.[1] ?? '';
+    for (const side of ['top', 'right', 'bottom', 'left']) {
+      expect(root, side).toMatch(new RegExp(`--projector-${side}:\\s*\\d+(\\.\\d+)?%;`));
+      expect(screen, side).toContain(`${side}: var(--projector-${side});`);
+    }
+  });
+});
