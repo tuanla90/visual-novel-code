@@ -71,8 +71,9 @@ nội dung), nên ảnh **không được nướng chữ vào**. Nền giấy n�
 
 ## Kiểm ảnh đã được nhận
 
-1. Chạy `npx vitest run src/shared/ui/visuals` trong `prototype/`: bộ kiểm in bảng từng ô đang
-   dùng **ảnh thật** hay **hình vẽ tạm**, và báo đỏ nếu thư mục có tệp không khớp ô nào (sai tên).
+1. Chạy `npx vitest run src/shared/ui/visuals/art-slots.test.ts --reporter=verbose` trong
+   `prototype/`: bộ kiểm in bảng từng ô đang dùng **ẢNH THẬT** hay **vẽ tạm**, và báo đỏ nếu thư mục
+   có tệp không khớp ô nào (sai tên, ví dụ `bg-prototype-halway.png`).
 2. Trên trang đang chơi: mở công cụ nhà phát triển (F12), tìm phần tử có `data-art-slot` —
    `data-art-source="image"` là đang dùng ảnh thật, `"placeholder"` là hình vẽ tạm;
    `data-art-borrowed-from` cho biết chân dung đang mượn ảnh biểu cảm nào.

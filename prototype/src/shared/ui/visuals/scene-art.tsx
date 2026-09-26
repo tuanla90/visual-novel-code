@@ -247,16 +247,18 @@ function HallwayArt() {
       <polygon points="900,512 1600,548 1600,560 900,520" fill="#b8c1bd" />
       {/* Cột vuông kết cấu; hộp góp ý kim loại gắn ở cột gần, nhãn trống */}
       <rect x={880} y={296} width={40} height={250} fill="#e4dccb" />
-      <rect x={1080} y={180} width={130} height={560} fill="#ece4d3" />
-      <rect x={1080} y={180} width={16} height={560} fill="#ddd3bf" />
+      <rect x={1070} y={180} width={160} height={560} fill="#ece4d3" />
+      <rect x={1070} y={180} width={16} height={560} fill="#ddd3bf" />
       <rect x={1440} y={0} width={180} height={900} fill="#e8dfcd" />
       <rect x={1440} y={0} width={20} height={900} fill="#d9ceb8" />
+      {/* Hộp góp ý: kim loại sơn xanh công sở, khe thư, nhãn trống, khóa — nhận ra ngay, không phát sáng */}
       <g>
-        <rect x={1100} y={378} width={96} height={104} rx={6} fill="#7f9c8c" />
-        <rect x={1100} y={378} width={96} height={20} rx={6} fill="#6f8c7c" />
-        <rect x={1118} y={404} width={60} height={7} rx={3} fill="#3e5347" />
-        <rect x={1122} y={424} width={52} height={24} rx={3} fill="#f1ece0" />
-        <circle cx={1148} cy={464} r={5} fill="#c9c3b3" />
+        <rect x={1096} y={372} width={124} height={132} rx={8} fill="#b8b09c" opacity={0.5} transform="translate(6 8)" />
+        <rect x={1092} y={366} width={124} height={132} rx={8} fill="#5f8a74" />
+        <rect x={1092} y={366} width={124} height={26} rx={8} fill="#4f7864" />
+        <rect x={1114} y={400} width={80} height={9} rx={4} fill="#243a2f" />
+        <rect x={1118} y={422} width={72} height={34} rx={4} fill="#f1ece0" />
+        <circle cx={1154} cy={478} r={6} fill="#d9d3c3" />
       </g>
       {/* Ánh ngày mát phủ nhẹ */}
       <rect width={1600} height={900} fill="#dfeaf0" opacity={0.08} />
