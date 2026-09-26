@@ -82,10 +82,12 @@ export interface SessionSummary {
   };
 }
 
-function isAutoFactory(meta: SessionMeta | undefined): (e: TelemetryEvent) => boolean {
+/** Sự kiện do game tự chơi khi nhảy phần: theo chỉ số trong phiên (thứ tự ghi). */
+function isAutoFactory(events: readonly TelemetryEvent[], meta: SessionMeta | undefined): (e: TelemetryEvent) => boolean {
   const jumps = meta?.jumps ?? [];
   if (jumps.length === 0) return () => false;
-  return (e) => jumps.some((j) => e.at >= j.startAt && e.at <= j.endAt);
+  const auto = new Set(events.filter((_, i) => jumps.some((j) => i >= j.fromIndex && i < j.toIndex)));
+  return (e) => auto.has(e);
 }
 
 /** Phần tử sớm nhất theo `at` (bằng nhau thì giữ thứ tự ghi). */
@@ -102,8 +104,8 @@ const ofType =
     e.type === type;
 
 export function summarizeSession(sessionId: string, events: readonly TelemetryEvent[], meta?: SessionMeta): SessionSummary {
-  const isAuto = isAutoFactory(meta);
   const all = [...events];
+  const isAuto = isAutoFactory(all, meta);
   const real = all.filter((e) => !isAuto(e));
   const jumped = (meta?.jumps.length ?? 0) > 0;
 

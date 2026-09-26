@@ -5,6 +5,7 @@
 import { useState } from 'react';
 import { partName } from '../display-names';
 import { PART_IDS, type PartId } from '../ids';
+import { track } from '../telemetry/track';
 import { ConfirmDialog } from './ConfirmDialog';
 
 export interface TopBarProps {
@@ -47,7 +48,11 @@ export function TopBar({ currentPart, completedParts, task, notebookCount, noteb
           aria-pressed={notebookOpen}
           aria-label={notebookOpen ? 'Đóng hồ sơ vật chứng' : 'Mở hồ sơ vật chứng'}
           title={notebookOpen ? 'Đóng hồ sơ vật chứng' : 'Mở hồ sơ vật chứng'}
-          onClick={onToggleNotebook}
+          onClick={() => {
+            // QĐ-044: ghi khi MỞ Hồ sơ (kèm phần hiện tại), không ghi khi đóng.
+            if (!notebookOpen) track({ type: 'notebook_opened', part: currentPart });
+            onToggleNotebook();
+          }}
         >
           Hồ sơ ({notebookCount})
         </button>

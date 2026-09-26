@@ -112,7 +112,7 @@ describe('tóm tắt chỉ số §10 theo phiên', () => {
       e({ type: 'challenge_complete', challengeId: 'c3', durationMs: 40_000, runs: 1, hintsUsed: 0 }, 100_000),
       e({ type: 'part_complete', part: 'analysis', durationMs: 200_000 }, 205_080),
     ];
-    const s = summarizeSession('s-jump', events, { jumps: [{ target: 'analysis', startAt: 5_000, endAt: 5_080, ok: true }] });
+    const s = summarizeSession('s-jump', events, { jumps: [{ target: 'analysis', startAt: 5_000, endAt: 5_080, fromIndex: 0, toIndex: 9, ok: true }] });
     expect(s.jumped).toBe(true);
     expect(s.jumpTargets).toEqual(['analysis']);
     expect(s.autoEventCount).toBe(9);

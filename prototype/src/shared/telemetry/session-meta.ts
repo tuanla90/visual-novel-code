@@ -10,9 +10,15 @@ export const SESSION_META_KEY = `${TELEMETRY_KEY_PREFIX}:meta`;
 
 export interface JumpMark {
   target: PartId;
-  /** Khoảng thời gian game tự chơi để tới đầu phần (sự kiện trong khoảng này là tự động). */
+  /** Lúc bắt đầu / kết thúc tự chơi (để hiển thị). */
   startAt: number;
   endAt: number;
+  /**
+   * Sự kiện thứ [fromIndex, toIndex) của phiên (theo thứ tự ghi) là do game tự chơi. Dùng chỉ số
+   * thay cho thời gian: không lẫn sự kiện thật ghi cùng mili-giây với lúc bắt đầu nhảy.
+   */
+  fromIndex: number;
+  toIndex: number;
   /** false khi tự chơi dừng giữa chừng (không tới được đầu phần). */
   ok: boolean;
 }

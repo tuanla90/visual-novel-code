@@ -4,9 +4,9 @@
  * Props đã chốt; phần telemetry đọc thẳng từ `shared/telemetry`.
  */
 import { useState } from 'react';
-import { partName } from '../shared/display-names';
-import type { PartId } from '../shared/ids';
-import { gameContent } from '../shared/store';
+import { partIndex, partName } from '../shared/display-names';
+import { PART_IDS, type PartId } from '../shared/ids';
+import { gameContent, useGameStore } from '../shared/store';
 import { exportAllTelemetry } from '../shared/telemetry/export-file';
 import { clearSessionMeta, getSessionMeta } from '../shared/telemetry/session-meta';
 import { EXCEL_OPTIONS, MEMORABLE_OPTIONS, PLAY_NEXT_OPTIONS, SQL_OPTIONS, optionLabel } from '../shared/telemetry/survey';
@@ -14,7 +14,17 @@ import { MEASURED_QUESTIONS, formatDuration, summarizeSessions, type SessionSumm
 import { clearTelemetry, getSessionId, getTelemetryEvents } from '../shared/telemetry/track';
 import { getTelemetryStorageStatus, useTelemetryVersion } from '../shared/telemetry/use-telemetry';
 import { ConfirmDialog } from '../shared/ui/ConfirmDialog';
-import { challengeTitle, choiceText, formatClock, pickedLineText, storageMessage, viewLabel } from './facilitator-mode';
+import { runQuery } from '../sql-challenge/engine';
+import {
+  challengeTitle,
+  choiceText,
+  formatClock,
+  jumpNeedsRestart,
+  jumpToPartStart,
+  pickedLineText,
+  storageMessage,
+  viewLabel,
+} from './facilitator-mode';
 
 export interface FacilitatorPanelProps {
   part: PartId | null;
@@ -30,6 +40,8 @@ export function FacilitatorPanel({ part, sequenceId, nodeIndex, viewKind, eventC
   const [open, setOpen] = useState(false);
   const [confirm, setConfirm] = useState<'clear' | 'reset' | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const [jumpTarget, setJumpTarget] = useState<PartId | null>(null);
+  const [jumping, setJumping] = useState(false);
 
   const events = getTelemetryEvents();
   const sessionId = getSessionId();
@@ -46,6 +58,20 @@ export function FacilitatorPanel({ part, sequenceId, nodeIndex, viewKind, eventC
     const name = exportAllTelemetry();
     setNotice(name ? `Đã tạo tệp ${name}.` : 'Trình duyệt không cho tải tệp về. Thử trình duyệt khác.');
   };
+
+  const jump = async (target: PartId) => {
+    setJumpTarget(null);
+    setJumping(true);
+    setNotice(`Đang tự chơi tới đầu phần ${partName(target)}…`);
+    const r = await jumpToPartStart(target, { store: useGameStore, content: gameContent, run: runQuery });
+    setJumping(false);
+    setNotice(
+      r.ok
+        ? `Đã tới đầu Phần ${partIndex(target)} — ${partName(target)}. Phiên này được đánh dấu "có nhảy phần".`
+        : `Không nhảy tới được ${partName(target)}: ${r.reason}`,
+    );
+  };
+  const inGame = viewKind !== null && viewKind !== 'title';
 
   return (
     <aside className={`facilitator${open ? ' facilitator--open' : ''}`} aria-label="Bảng người quan sát">
@@ -117,6 +143,29 @@ export function FacilitatorPanel({ part, sequenceId, nodeIndex, viewKind, eventC
             ) : null}
           </section>
 
+          <section aria-labelledby="fac-jump" className="facilitator__section">
+            <h2 id="fac-jump" className="facilitator__h">
+              Nhảy tới đầu phần
+            </h2>
+            {inGame ? (
+              <>
+                <p className="facilitator__muted">
+                  Cho kiểm thử nội bộ hoặc khi game kẹt: game tự chơi các đoạn trước (tự điền vật chứng bằng SQL chuẩn). Phiên bị đánh dấu "có
+                  nhảy phần".
+                </p>
+                <div className="facilitator__jumps">
+                  {PART_IDS.map((p) => (
+                    <button key={p} type="button" className="btn" disabled={jumping} onClick={() => setJumpTarget(p)}>
+                      {partIndex(p)}. {partName(p)}
+                    </button>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <p className="facilitator__muted">Bấm "Bắt đầu" hoặc "Chơi tiếp" trên màn tiêu đề rồi mới nhảy phần được.</p>
+            )}
+          </section>
+
           {summaries.length > 0 ? (
             <section aria-labelledby="fac-sum" className="facilitator__section">
               <h2 id="fac-sum" className="facilitator__h">
@@ -142,6 +191,20 @@ export function FacilitatorPanel({ part, sequenceId, nodeIndex, viewKind, eventC
           setNotice('Đã xóa dữ liệu thử nghiệm trong trình duyệt này.');
         }}
         onCancel={() => setConfirm(null)}
+      />
+      <ConfirmDialog
+        open={jumpTarget !== null}
+        title={jumpTarget ? `Nhảy tới đầu phần ${partName(jumpTarget)}?` : 'Nhảy phần?'}
+        message={
+          jumpTarget && jumpNeedsRestart(part, jumpTarget)
+            ? 'Tiến độ hiện tại bị xóa, game mở phiên mới rồi tự chơi tới đầu phần này. Phiên mới bị đánh dấu "có nhảy phần".'
+            : 'Game tự chơi tiếp từ chỗ hiện tại tới đầu phần này (tự điền vật chứng bằng SQL chuẩn). Phiên bị đánh dấu "có nhảy phần".'
+        }
+        confirmLabel="Nhảy tới đó"
+        onConfirm={() => {
+          if (jumpTarget) void jump(jumpTarget);
+        }}
+        onCancel={() => setJumpTarget(null)}
       />
       <ConfirmDialog
         open={confirm === 'reset'}
