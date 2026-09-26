@@ -16,18 +16,21 @@
 
 ## 1. Sơ đồ điều phối và chọn model
 
-| Agent | Giai đoạn | Model | Lý do chọn model |
-|---|---|---|---|
-| `architect` | 1 — Nền móng | Opus | Hợp đồng dữ liệu, store, runtime kể chuyện; sai ở đây lan ra mọi module |
-| `story-writer` | 1 → 2 | Opus | Lời thoại tiếng Việt + ràng buộc sư phạm tinh tế; quyết định giả thuyết "câu chuyện có hấp dẫn không" |
-| `sql-engine` | 2 | Opus | Đúng/sai quyết định giá trị học: dataset có bất biến, chấm theo ngữ nghĩa, dataset ẩn, parser |
-| `builder-ui` | 2 | Sonnet | Giao diện React có đặc tả rõ |
-| `art-ui` | 2 | Sonnet | Hình tạm SVG/CSS, bố cục, hiệu ứng; độ khó trung bình |
-| `debrief-ui` | 2 | Sonnet | Các thành phần tương tác của màn giải trình, đặc tả rõ |
-| `telemetry` | 2 | Haiku | Ghi sự kiện, xuất JSON, bảng điều khiển người quan sát — đơn giản, đặc tả chặt |
-| `integrator` | 3 | Opus | Ghép module, xử lý lệch hợp đồng, cần phán đoán xuyên module |
-| `reviewer-code`, `reviewer-pedagogy` | 4 | Opus | Tìm lỗi logic và lỗi sư phạm cần suy luận sâu |
-| `fixer` | 4 | Sonnet | Sửa theo danh sách lỗi đã xác minh |
+Quy trình theo skill `/giao-viec` của user: **mỗi lúc chỉ một agent** (máy từng hết RAM khi chạy song song); chấm độ phức tạp 5 tiêu chí × 0–2 điểm (quy mô · choke point · giá của sai sót · độ mơ hồ · suy luận); **0–6 → Opus, 7–10 hoặc thiết kế kiến trúc → Fable**; không dùng Sonnet/Haiku (trừ việc cơ học thuần và phải được user đồng ý). Mỗi gói Ship chạy trên nhánh `claude/<slug>` trong worktree riêng, commit từng bước; điều phối viên tự kiểm lại (typecheck, test, lint) trên `main` trước khi gộp.
+
+| # | Gói | Loại | Điểm (quy mô·choke·giá sai·mơ hồ·suy luận) | Model |
+|---|---|---|---|---|
+| 1 | `kich-ban` — kịch bản đầy đủ dạng Markdown | Ship | 0·0·1·2·1 = 4 | Opus |
+| 2 | `nen-mong` — khung dự án, hợp đồng kiểu, store, runtime kể chuyện | Ship | 2·2·1·2·2 = 9 (+ thiết kế kiến trúc) | Fable |
+| 3 | `sql-engine` — dataset chính/ẩn, chạy, chấm, chẩn đoán, sinh/đọc SQL | Ship | 2·1·1·1·2 = 7 | Fable |
+| 4 | `trinh-dung-ui` — trình dựng truy vấn, màn thử thách | Ship | 2·1·1·1·1 = 6 | Opus |
+| 5 | `noi-dung` — chuyển kịch bản thành dữ liệu TypeScript | Ship | 1·1·1·1·1 = 5 | Opus |
+| 6 | `giai-trinh-ui` — tương tác màn giải trình, kết | Ship | 1·1·1·1·1 = 5 | Opus |
+| 7 | `hinh-giao-dien` — hình tạm SVG, cảnh, hiệu ứng, hồ sơ | Ship | 2·1·1·2·0 = 6 | Opus |
+| 8 | `telemetry` — ghi sự kiện, bảng người quan sát, khảo sát | Ship | 1·1·1·0·0 = 3 | Opus |
+| 9 | `tich-hop` — ghép toàn luồng, sửa lệch hợp đồng | Ship | 2·2·1·1·2 = 8 | Fable |
+| 10 | `ra-soat-code` / `ra-soat-su-pham` | Scout | 8 / 4 | Fable / Opus |
+| 11 | `sua-loi` — sửa theo danh sách đã xác minh | Ship | tùy | Opus (nâng bậc nếu gói đã fail) |
 
 (Bảng được cập nhật nếu điều phối viên đổi kế hoạch.)
 
@@ -57,6 +60,9 @@ Lý do: tránh `DROP`/`UPDATE` phá dữ liệu giữa chừng; đồng thời c
 **QĐ-007 — Kiểm thử.** **Chọn:** Vitest cho bất biến dataset, bộ chấm, chuyển đổi trình dựng ↔ SQL, toàn vẹn kịch bản; `tsc --noEmit` strict và `vite build` phải qua; điều phối viên tự chơi thử toàn bộ trên trình duyệt.
 
 **QĐ-008 — Ngôn ngữ.** **Chọn:** giao diện và nội dung tiếng Việt; tên biến/hàm tiếng Anh (tên bảng/cột SQL giữ tiếng Việt không dấu như tài liệu).
+
+**QĐ-034 — Quản lý mã nguồn.** **Chọn:** khởi tạo git cục bộ (nhánh `main`, không có remote), `core.autocrlf=false` + `.gitattributes` `eol=lf`; mỗi gói làm trên nhánh `claude/<slug>`, điều phối viên kiểm rồi gộp vào `main`.
+Lý do: skill `/giao-viec` cần commit làm bản ghi tiến độ và để thu hồi khi agent bị dừng; thư mục ban đầu chưa có git.
 
 **QĐ-009 — Phông chữ.** **Chọn:** đóng gói cục bộ qua `@fontsource` (Be Vietnam Pro cho giao diện, JetBrains Mono cho SQL; nếu thiếu glyph tiếng Việt thì dùng phông mono khác có tiếng Việt), không phụ thuộc Google Fonts lúc chạy.
 Lý do: buổi test có thể không có mạng ổn định.
