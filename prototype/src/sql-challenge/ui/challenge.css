@@ -543,6 +543,46 @@
   text-transform: uppercase;
 }
 
+.btn--dark {
+  background: transparent;
+  color: var(--c-sql-text);
+  border-color: var(--c-sql-border);
+}
+.btn--dark:hover:not(:disabled) {
+  border-color: var(--c-sql-text);
+}
+.chal-sql__editor {
+  width: 100%;
+  resize: vertical;
+  min-height: 9em;
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--c-sql-bg);
+  color: var(--c-sql-text);
+  border: 2px solid var(--c-sql-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+}
+.chal-sql__editor:focus-visible {
+  outline: 3px solid var(--c-sql-keyword);
+  outline-offset: 1px;
+}
+.chal-sql__help {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--c-sql-comment);
+}
+.chal-sqlmode {
+  margin: 0 0 var(--sp-1);
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--radius-sm);
+  background: var(--c-warning-bg);
+  color: var(--c-warning);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+}
+
 .sqlcode {
   position: relative;
 }

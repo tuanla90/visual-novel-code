@@ -21,9 +21,11 @@ import { HaVyPanel, type HaVyNote } from './HaVyPanel';
 import { IconPlay } from './icons';
 import { rowCountText } from './labels';
 import { blockingReason, showDiagnostic, type LineSources } from './lines';
+import { ConfirmDialog } from '../../shared/ui/ConfirmDialog';
+import { attributeSources } from './model-edit';
 import { QueryBuilder } from './QueryBuilder';
 import { ResultTable } from './ResultTable';
-import { SqlCode } from './SqlCode';
+import { SqlPane } from './SqlPane';
 import { CLASS_LIST_EVIDENCE_ID, evidenceValueOptions } from './value-options';
 import { WhereRow } from './WhereRow';
 
@@ -61,7 +63,9 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
   const [saving, setSaving] = useState(false);
   const [outcome, setOutcome] = useState<RunOutcome | null>(null);
   const [note, setNote] = useState<HaVyNote | null>(null);
+  const [confirmBack, setConfirmBack] = useState(false);
   const resultRef = useRef<HTMLElement>(null);
+  const cancelBack = useCallback(() => setConfirmBack(false), []);
 
   useEffect(() => {
     openChallenge(challengeId);
@@ -97,9 +101,30 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
   const model = state.model;
   const builderSql = modelToSql(model);
   const locked = accessRevoked;
+  const sqlMode = state.mode === 'sql';
   const solved = outcome !== null && outcome.grade.status === 'correct' && outcome.grade.run.ok;
-  const blocked = blockingReason(model, src);
+  // Lý do chặn chỉ áp cho trình dựng; SQL gõ tay luôn chạy được (engine chấm và nói lỗi nếu có).
+  const blocked = sqlMode ? null : blockingReason(model, src);
   const canRun = !locked && !solved && !running && blocked === null;
+
+  /** "Sửa SQL trực tiếp" ↔ trình dựng (QĐ-016): về được thì nạp model, không được thì hỏi xác nhận. */
+  const toggleSqlMode = (): void => {
+    if (!sqlMode) {
+      updateChallenge(challengeId, { mode: 'sql', sql: builderSql });
+      return;
+    }
+    const parsed = sqlToModel(state.sql);
+    if (parsed) {
+      const next = attributeSources(parsed, evidenceOptions);
+      updateChallenge(challengeId, { mode: 'builder', model: next, sql: modelToSql(next) });
+    } else {
+      setConfirmBack(true);
+    }
+  };
+  const backToLastBuilder = (): void => {
+    setConfirmBack(false);
+    updateChallenge(challengeId, { mode: 'builder', sql: modelToSql(state.model) });
+  };
 
   const save = async (): Promise<void> => {
     if (!outcome || !solved || saving || locked || !outcome.grade.run.ok) return;
@@ -178,13 +203,16 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
 
         <section className="chal-card chal-builder" aria-label="Trình dựng truy vấn">
           {solved ? <p className="chal-solved">Truy vấn đã đúng — trả lời câu hỏi bên dưới rồi lưu vào hồ sơ.</p> : null}
+          {sqlMode && !solved ? (
+            <p className="chal-sqlmode">Đang sửa SQL trực tiếp ở khung bên phải. Bấm “Quay về trình dựng” để dùng lại các hàng dưới đây.</p>
+          ) : null}
           <QueryBuilder
             model={model}
             onChange={setModel}
             guided={null}
-            disabled={locked || solved}
+            disabled={locked || solved || sqlMode}
             onPreview={onPreview}
-            whereRow={<WhereRow model={model} onChange={setModel} evidenceOptions={evidenceOptions} disabled={locked || solved} />}
+            whereRow={<WhereRow model={model} onChange={setModel} evidenceOptions={evidenceOptions} disabled={locked || solved || sqlMode} />}
           />
           <div className="chal-runbar" data-region="run">
             <button
@@ -225,16 +253,27 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
       </div>
 
       <aside className="chal__right" aria-label="Câu SQL và trợ giúp">
-        <section className="chal-sql" aria-labelledby="chal-sql-title">
-          <div className="chal-sql__head">
-            <h3 id="chal-sql-title" className="chal-sql__title">
-              Câu SQL tương ứng
-            </h3>
-          </div>
-          <SqlCode sql={builderSql} label="Câu SQL sinh từ trình dựng" />
-        </section>
+        <SqlPane
+          mode={state.mode}
+          builderSql={builderSql}
+          draft={state.sql}
+          onDraft={(sql) => updateChallenge(challengeId, { sql })}
+          onToggle={toggleSqlMode}
+          onRunShortcut={() => void run()}
+          disabled={locked || solved}
+          guided={false}
+        />
         <HaVyPanel note={note} idle="Dựng truy vấn theo đề bài rồi bấm “Chạy truy vấn”. Chạy sai không sao — chạy lại bao nhiêu lần cũng được." />
       </aside>
+      <ConfirmDialog
+        open={confirmBack}
+        title="Quay về trình dựng?"
+        message="Trình dựng chưa đọc được câu SQL này (có phần nằm ngoài các hàng SELECT / FROM / WHERE của trình dựng). Quay về trạng thái trình dựng gần nhất thì phần sửa trong ô SQL sẽ không được giữ lại."
+        confirmLabel="Quay về trạng thái gần nhất"
+        cancelLabel="Ở lại sửa SQL"
+        onConfirm={backToLastBuilder}
+        onCancel={cancelBack}
+      />
     </div>
   );
 }
