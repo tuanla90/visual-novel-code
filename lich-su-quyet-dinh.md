@@ -373,6 +373,12 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Tài liệu cũ (ARCHITECTURE.md §3 chỉ nhắc một thẻ bị hủy; chú thích trong `src/story/types.ts`, `src/evidence/types.ts`; số "Tự kiểm" của kịch bản): giao gói `tich-hop-b` dọn.
 - Ghi chú công cụ (agent nêu): `TaskStop` trên Windows không tắt tiến trình node con, phải `taskkill` theo PID — đề xuất user cân nhắc thêm vào skill `/giao-viec` (điều phối viên không tự sửa skill của user).
 
+**Nghiệm thu gói `tich-hop-b` (9b) — ĐẠT PHẦN LỚN; điều phối viên thu hồi và tự khép.** · 27/09 05:35
+- Agent commit 4 nhóm (test chơi trọn luồng intro-01 → [KẾT THÚC] bằng store/runtime/engine thật; câu SQL của Quân vẫn hiện khi đọc phản hồi chọn sai — QĐ-061-Đ1; dọn ARCHITECTURE.md/chú thích/script test; README tiếng Việt), rồi trong lúc chơi thật tìm ra 2 lỗi và sửa dở. Sự cố canh: 40 phút không commit → nhắc 05:01; 20 phút sau không tệp nào đổi, agent không nhận lời nhắc (kẹt trong một lệnh dài) → dừng 05:21, `taskkill` server vite còn sót (TaskStop không tắt tiến trình con trên Windows).
+- Thu hồi: gộp 4 commit (ff `aba1b38`); lưu phần sửa dở thành bản vá + 2 tệp mới, áp lên `main`, tự kiểm và commit `Sửa 2 lỗi tìm thấy khi chơi thật`: (1) câu hỏi trong truyện bị xáo lại sau khi chọn sai (GameScreen gỡ rồi dựng lại `MultipleChoice`) — trái QĐ-041, sửa bằng nhớ thứ tự ngoài component; (2) chữ ẩn cho trình đọc màn hình lọt khỏi khung cuộn làm màn thử thách cuộn lên, cắt tiêu đề.
+- Tại `main`: typecheck 0 lỗi, 600/600 test, lint sạch, build đạt. Bẻ phanh của điều phối viên: trả `MultipleChoice` về cách xáo trong component → test "thứ tự y hệt" đỏ; khôi phục → xanh.
+- Mất: báo cáo cuối của agent (ước tính thời lượng, kết quả kiểm bản build, số đo từng màn) → chuyển sang gói rà soát (lượt chơi thật + đo) và điều phối viên tự kiểm bản build.
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**
