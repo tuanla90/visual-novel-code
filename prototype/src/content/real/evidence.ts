@@ -8,7 +8,8 @@
  *   · Lưu ý → caveat.
  * Chữ trong dấu `…` là mã (tên cột, tên bảng) — giữ nguyên dấu để giao diện hiện dạng mã.
  * Tiêu đề/mô tả thẻ `ev-…` nằm ở thẻ thử thách (real/challenges.ts); chú thích sau giải trình
- * của ev-c3-shortlist nằm ở node annotate-evidence của end-03 (real/story/ending.ts).
+ * của ev-c1-names-h, ev-c3-shortlist, ev-quan-fixed (QĐ-062) nằm ở các node annotate-evidence của
+ * end-03 (real/story/ending.ts).
  */
 import type { BuilderValue, ClueCard, EvidenceContent } from '../../evidence/types';
 

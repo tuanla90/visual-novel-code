@@ -74,9 +74,8 @@ describe('Hồ sơ: thẻ đã hủy (QĐ-050)', () => {
     const html = card?.innerHTML ?? '';
     // Tên: không ở đâu trong Hồ sơ (kể cả chú thích — chú thích không nêu tên).
     for (const name of ['Lê Thị', 'Hoài', 'Phạm Minh', 'Hiếu']) expect(container.innerHTML, name).not.toContain(name);
-    // Mã sinh viên: không ở bảng/mô tả/nhãn; chỉ chú thích nguyên văn của kịch bản được nhắc (xem báo cáo).
-    const withoutAnnotation = html.replace(/<ul class="card__annotations">[\s\S]*<\/ul>/, '');
-    for (const code of ['SV240317', 'SV240228']) expect(withoutAnnotation, code).not.toContain(code);
+    // Mã sinh viên: không ở đâu trong thẻ, kể cả chú thích (QĐ-062: chú thích viết trung tính).
+    for (const code of ['SV240317', 'SV240228']) expect(html, code).not.toContain(code);
     expect(card?.querySelector('.card__table--redacted')).not.toBeNull();
     expect(card?.querySelectorAll('.card__redacted-cell').length).toBe(SHORTLIST.rows.length * SHORTLIST.columns.length);
     expect(card?.querySelector('.card__table--redacted td')?.textContent).toBe('');

@@ -122,8 +122,9 @@ function fixQueryEvidence(seqs: RawSequence[], upTo: RawSequence): string {
  * (ARCHITECTURE.md §5), suy ra từ chính chữ của note:
  * - "Màn chiếu hiện … kết quả N dòng": màn chiếu chạy thật, N dòng; SQL là khối ```sql ngay dưới
  *   (deb-01), không có khối thì là vật chứng của màn sửa truy vấn trước đó (deb-03).
- * - "Thẻ ev-… được gắn chú thích sau giải trình …": cờ hết quyền `access-revoked` (ids.ts: "đặt ở
- *   end-03") + gắn chú thích nguyên văn mục "Hồ sơ vật chứng › ev-…" (redact khi note nói "làm mờ").
+ * - "Thẻ ev-…[, ev-… và ev-…] được gắn chú thích sau giải trình …": cờ hết quyền `access-revoked`
+ *   (ids.ts: "đặt ở end-03") + với TỪNG thẻ, theo thứ tự nêu, gắn chú thích nguyên văn mục
+ *   "Hồ sơ vật chứng › ev-…" (redact khi note nói "làm mờ") — QĐ-062.
  * - Lời ngay trước note "… hiện dạng thẻ chữ lớn …": thẻ chữ lớn (`display: 'card'`).
  */
 function scriptKeys(seq: RawSequence): string[] {
@@ -151,11 +152,13 @@ function scriptKeys(seq: RawSequence): string[] {
             out.push(`projector|evidence:${fixQueryEvidence(script.sequences, seq)}|run=true|rows=${rows}|caption=`);
           }
         }
-        const annotated = /Thẻ (ev-[a-z0-9-]+) được gắn chú thích sau giải trình/.exec(it.text)?.[1];
+        const annotated = /Thẻ (ev-[a-z0-9-]+(?:(?:, | và )ev-[a-z0-9-]+)*) được gắn chú thích sau giải trình/.exec(it.text)?.[1];
         if (annotated) {
           out.push('set-flag|access-revoked');
           const redact = it.text.includes('bị làm mờ');
-          out.push(`annotate-evidence|${annotated}|${dossierField(annotated, 'Chú thích')}|redact=${String(redact)}`);
+          for (const id of annotated.split(/, | và /)) {
+            out.push(`annotate-evidence|${id}|${dossierField(id, 'Chú thích')}|redact=${String(redact)}`);
+          }
         }
         break;
       }
@@ -251,11 +254,11 @@ function expectedChallenge(card: RawChallengeCard): unknown {
 // ---------- Test ----------
 
 describe('kịch bản đọc được trọn (bộ đọc chặt)', () => {
-  it('đủ 5 phần theo thứ tự, 19 chuỗi, 4 thẻ thử thách, 7 thẻ hồ sơ + chú thích ev-c3-shortlist', () => {
+  it('đủ 5 phần theo thứ tự, 19 chuỗi, 4 thẻ thử thách, 7 thẻ hồ sơ + chú thích của 3 thẻ có dữ liệu cá nhân (QĐ-062)', () => {
     expect(script.parts.map((p) => p.id)).toEqual(['intro', 'investigation', 'analysis', 'debrief', 'ending']);
     expect(script.sequences).toHaveLength(19);
     expect(script.challenges.map((c) => c.id)).toEqual([...CHALLENGE_IDS]);
-    expect(script.dossier.map((d) => d.id)).toEqual([...CLUE_IDS, ...DOCUMENT_IDS, 'ev-c3-shortlist']);
+    expect(script.dossier.map((d) => d.id)).toEqual([...CLUE_IDS, ...DOCUMENT_IDS, 'ev-c1-names-h', 'ev-c3-shortlist', 'ev-quan-fixed']);
   });
 });
 

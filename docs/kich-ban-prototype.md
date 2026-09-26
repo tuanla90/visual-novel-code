@@ -298,7 +298,7 @@ WHERE ten LIKE 'H%'
 - **quan** (neutral): Tìm được người bỏ thư chưa phải là tìm được người viết thư, CLB Thám Tử.
 - **ha-vy** (neutral): Chúng em biết.
 - **narrator**: Năm giờ chiều. Quyền xem dữ liệu của CLB hết hạn. Danh sách hai người được hủy.
-- [DÀN DỰNG] Thẻ ev-c3-shortlist được gắn chú thích sau giải trình (mục Hồ sơ vật chứng); tên và mã trong thẻ bị làm mờ; nút mở trình dựng truy vấn bị khóa. Quân chứng kiến việc hủy.
+- [DÀN DỰNG] Thẻ ev-c1-names-h, ev-c3-shortlist và ev-quan-fixed được gắn chú thích sau giải trình (mục Hồ sơ vật chứng); tên và mã trong các thẻ bị làm mờ; nút mở trình dựng truy vấn bị khóa. Quân chứng kiến việc hủy.
 
 > NHIỆM VỤ: Về phòng CLB
 
@@ -496,7 +496,7 @@ WHERE ten LIKE 'H%'
 
 ## Hồ sơ vật chứng
 
-- [DÀN DỰNG] Mở bằng nút "Hồ sơ" trên thanh trên cùng (QĐ-027). Tông giấy: nền kem, ghim (QĐ-026). Ba nhóm: Manh mối (`clue-…`), Tài liệu (`doc-…`), Kết quả truy vấn (`ev-…`). Tiêu đề và mô tả của thẻ `ev-…` nằm ở thẻ thử thách tương ứng; mục này chỉ thêm chú thích sau giải trình cho `ev-c3-shortlist`.
+- [DÀN DỰNG] Mở bằng nút "Hồ sơ" trên thanh trên cùng (QĐ-027). Tông giấy: nền kem, ghim (QĐ-026). Ba nhóm: Manh mối (`clue-…`), Tài liệu (`doc-…`), Kết quả truy vấn (`ev-…`). Tiêu đề và mô tả của thẻ `ev-…` nằm ở thẻ thử thách tương ứng; mục này chỉ thêm chú thích sau giải trình cho ba thẻ kết quả truy vấn có dữ liệu cá nhân: `ev-c1-names-h`, `ev-c3-shortlist`, `ev-quan-fixed` (QĐ-062). `ev-c2-classes-b` chỉ có mã lớp nên giữ nguyên.
 - [DÀN DỰNG] QĐ-037: "Câu hỏi còn mở" (điều người chơi cần tìm tiếp nhờ manh mối đó) hiện từ lúc mở thẻ đến hết Phần 4. "Lưu ý" (giới hạn của bằng chứng) chỉ hiện từ Phần 5 (`ending`) trở đi, như phần tổng kết bài học; khi đó thay cho "Câu hỏi còn mở". doc-handover-log xuất hiện ở Phần 5 nên hiện "Lưu ý" ngay, không có "Câu hỏi còn mở". Không thẻ nào nói kết quả truy vấn là "danh sách cần xác minh" trước màn giải trình (QĐ-023).
 - [DÀN DỰNG] Dòng "Giá trị cho trình dựng" là đặc tả cho mục "Từ manh mối" (QĐ-017), không hiện trên thẻ. `[HIỆN TÀI LIỆU]` trong chuỗi kể chuyện chỉ hiện phần nội dung của tài liệu; "Câu hỏi còn mở" và "Lưu ý" chỉ nằm trên thẻ trong Hồ sơ.
 
@@ -565,11 +565,23 @@ WHERE ten LIKE 'H%'
 
 - Lưu ý: Sổ cho biết ai đã ký gửi phong bì, không cho biết ai viết lá thư.
 
+### ev-c1-names-h — chú thích gắn sau màn giải trình
+
+- Gắn vào thẻ ev-c1-names-h tại end-03, khi quyền truy cập kết thúc. Trước lúc đó thẻ không có dòng này.
+- Chú thích: Dữ liệu cá nhân trong thẻ đã hủy khi quyền truy cập kết thúc.
+- [DÀN DỰNG] Sau khi gắn chú thích, tên và mã trong bảng của thẻ bị làm mờ; tiêu đề, câu truy vấn, số dòng và chú thích vẫn đọc được.
+
 ### ev-c3-shortlist — chú thích gắn sau màn giải trình
 
 - Gắn vào thẻ ev-c3-shortlist tại end-03, khi quyền truy cập kết thúc. Trước lúc đó thẻ không có dòng này.
-- Chú thích: Đây là danh sách người cần xác minh, chưa phải kết luận. Sổ bàn giao xác nhận SV240317 đã ký gửi hộ lá thư; SV240228 vô can. Danh sách đã hủy khi quyền truy cập kết thúc.
-- [DÀN DỰNG] Sau khi gắn chú thích, tên và mã trong bảng của thẻ bị làm mờ; tiêu đề và chú thích vẫn đọc được.
+- Chú thích: Đây là danh sách người cần xác minh, chưa phải kết luận. Theo sổ bàn giao, một người trong danh sách đã ký gửi hộ lá thư; người còn lại vô can. Danh sách đã hủy khi quyền truy cập kết thúc.
+- [DÀN DỰNG] Sau khi gắn chú thích, tên và mã trong bảng của thẻ bị làm mờ; tiêu đề và chú thích vẫn đọc được. Chú thích không nêu mã sinh viên (QĐ-062); sổ bàn giao vẫn giữ mã vì đó là tài liệu của cán bộ.
+
+### ev-quan-fixed — chú thích gắn sau màn giải trình
+
+- Gắn vào thẻ ev-quan-fixed tại end-03, khi quyền truy cập kết thúc. Trước lúc đó thẻ không có dòng này.
+- Chú thích: Dữ liệu cá nhân trong thẻ đã hủy khi quyền truy cập kết thúc.
+- [DÀN DỰNG] Sau khi gắn chú thích, tên và mã trong bảng của thẻ bị làm mờ; câu truy vấn trước/sau khi sửa và dải số dòng "24 → 2" vẫn đọc được.
 
 ---
 

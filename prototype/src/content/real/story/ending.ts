@@ -2,15 +2,19 @@
  * Phần 5 — Kết {part: ending}. Chuyển NGUYÊN VĂN từ docs/kich-ban-prototype.md.
  *
  * Hiệu ứng phụ trong `[DÀN DỰNG]` thành node tường minh (ARCHITECTURE.md §5), `note` vẫn giữ:
- * - end-03: hết quyền xem dữ liệu → `set-flag access-revoked` + `annotate-evidence ev-c3-shortlist`
- *   (chú thích nguyên văn mục "Hồ sơ vật chứng › ev-c3-shortlist", làm mờ tên và mã).
+ * - end-03: hết quyền xem dữ liệu → `set-flag access-revoked` + `annotate-evidence` cho MỌI thẻ kết quả
+ *   truy vấn có dữ liệu cá nhân (QĐ-062): `ev-c1-names-h`, `ev-c3-shortlist`, `ev-quan-fixed` (chú thích
+ *   nguyên văn mục "Hồ sơ vật chứng › ev-…", `redact`: không render tên/mã). `ev-c2-classes-b` chỉ có mã lớp.
  * - end-04: thông điệp kết của narrator hiện dạng thẻ chữ lớn (`display: 'card'`).
  */
 import type { Sequence } from '../../../story/types';
 
-/** Chú thích gắn sau màn giải trình cho ev-c3-shortlist (mục "Hồ sơ vật chứng" của kịch bản). */
+/** Chú thích gắn sau màn giải trình cho ev-c3-shortlist (mục "Hồ sơ vật chứng" của kịch bản); không nêu mã sinh viên (QĐ-062). */
 export const SHORTLIST_ANNOTATION =
-  'Đây là danh sách người cần xác minh, chưa phải kết luận. Sổ bàn giao xác nhận SV240317 đã ký gửi hộ lá thư; SV240228 vô can. Danh sách đã hủy khi quyền truy cập kết thúc.';
+  'Đây là danh sách người cần xác minh, chưa phải kết luận. Theo sổ bàn giao, một người trong danh sách đã ký gửi hộ lá thư; người còn lại vô can. Danh sách đã hủy khi quyền truy cập kết thúc.';
+
+/** Chú thích gắn sau màn giải trình cho ev-c1-names-h và ev-quan-fixed (mục "Hồ sơ vật chứng" của kịch bản). */
+export const PERSONAL_DATA_ANNOTATION = 'Dữ liệu cá nhân trong thẻ đã hủy khi quyền truy cập kết thúc.';
 
 export const endingSequences: Sequence[] = [
   {
@@ -112,10 +116,12 @@ export const endingSequences: Sequence[] = [
       },
       {
         type: 'note',
-        text: 'Thẻ ev-c3-shortlist được gắn chú thích sau giải trình (mục Hồ sơ vật chứng); tên và mã trong thẻ bị làm mờ; nút mở trình dựng truy vấn bị khóa. Quân chứng kiến việc hủy.',
+        text: 'Thẻ ev-c1-names-h, ev-c3-shortlist và ev-quan-fixed được gắn chú thích sau giải trình (mục Hồ sơ vật chứng); tên và mã trong các thẻ bị làm mờ; nút mở trình dựng truy vấn bị khóa. Quân chứng kiến việc hủy.',
       },
       { type: 'set-flag', flag: 'access-revoked' },
+      { type: 'annotate-evidence', evidenceId: 'ev-c1-names-h', note: PERSONAL_DATA_ANNOTATION, redact: true },
       { type: 'annotate-evidence', evidenceId: 'ev-c3-shortlist', note: SHORTLIST_ANNOTATION, redact: true },
+      { type: 'annotate-evidence', evidenceId: 'ev-quan-fixed', note: PERSONAL_DATA_ANNOTATION, redact: true },
       { type: 'task', text: 'Về phòng CLB' },
       { type: 'gate', requires: ['doc-handover-log'], to: 'end-04' },
     ],
