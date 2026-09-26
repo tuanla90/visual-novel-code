@@ -335,7 +335,7 @@ describe('thẻ thử thách, gợi ý chuẩn, nhận xét chung — hai chiề
 
   it('nhận xét chung: đủ mã, đúng lời, ĐÚNG THỨ TỰ liệt kê', () => {
     const actual = Object.entries(realContent.commonDiagnosticLines).map(([k, v]) => [k, plainResponse(v)]);
-    expect(actual).toEqual(script.commonDiagnostics.map((d) => [d.code, { line: toDialogue(d.line) }]));
+    expect(actual).toEqual(script.commonDiagnostics.map((d) => [d.code, toResponse(d.response)]));
   });
 
   it('QĐ-052: kịch bản liệt kê mã blocking đúng thứ tự engine — ở dòng quy ước ưu tiên và ở "Nhận xét chung"', () => {
@@ -442,7 +442,7 @@ describe('lưới an toàn: mọi chuỗi hiển thị trong dữ liệu đều 
       }
     }
     for (const h of script.standardHints) addLine(h.line);
-    for (const d of script.commonDiagnostics) addLine(d.line);
+    for (const d of script.commonDiagnostics) if ('line' in d.response) addLine(d.response.line);
     for (const c of script.challenges) {
       Object.values(c.fields).forEach((v) => s.add(v));
       c.steps.forEach((st) => addLine(st.line));

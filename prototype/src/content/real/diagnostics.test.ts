@@ -85,6 +85,24 @@ describe('Nhận xét chung', () => {
     expect(pickDiagnostic(['wrong-value'], c3, common)?.response).toBe(common['wrong-value']);
   });
 
+  it('QĐ-054: wrong-table, class-prefix có lời Hà Vy ≤ 20 chữ; or-connector dùng hint-any-or-all', () => {
+    for (const code of ['wrong-table', 'class-prefix'] as const) {
+      const r = common[code];
+      if (!r || !('line' in r)) throw new Error(`thiếu lời ${code}`);
+      expect(r.line.speaker).toBe('ha-vy');
+      expect(r.line.text.split(/\s+/).filter(Boolean).length, code).toBeLessThanOrEqual(20);
+      expect(r.line.text).not.toMatch(/[a-z]+-[a-z]+/);
+    }
+    expect(common['or-connector']).toEqual({ useStandardHint: 'hint-any-or-all' });
+    // Thẻ không có mã → không còn rơi về `other` (vấn đề của QĐ-054).
+    const c1 = realContent.challenges.c1.content.diagnosticLines;
+    for (const code of ['wrong-table', 'or-connector', 'class-prefix'] as const) {
+      expect(pickDiagnostic([code], c1, common)?.code, code).toBe(code);
+    }
+    const fix = realContent.challenges['debrief-fix'].content.diagnosticLines;
+    expect(pickDiagnostic(['class-prefix'], fix, common)?.response).toBe(common['class-prefix']);
+  });
+
   it('ba lời mới (QĐ-047): giọng Hà Vy, ≤ 20 chữ, không dùng mã thô', () => {
     for (const code of ['no-columns', 'no-value', 'wrong-value'] as const) {
       const r = common[code];

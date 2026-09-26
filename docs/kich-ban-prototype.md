@@ -345,9 +345,12 @@ WHERE ten LIKE 'H%'
 - [KHI: no-value] **ha-vy** (neutral): Có một điều kiện chưa có giá trị. Cậu lọc theo gì? Chọn trong mục "Từ manh mối" nhé.
 - [KHI: connector-unset] **ha-vy** (neutral): Chưa chọn cách nối các điều kiện. Cậu cần người thỏa bất kỳ, hay thỏa đồng thời?
   - QĐ-039: khi có từ 2 điều kiện mà phép nối chưa chọn, nút Chạy bị vô hiệu; lời này hiện khi người chơi bấm Chạy (hoặc rê chuột lên nút). Gặp được ở mọi thử thách người chơi tự thêm điều kiện thứ hai; không gặp ở debrief-fix vì phép nối nạp sẵn `OR`.
+- [KHI: wrong-table] **ha-vy** (thinking): Thông tin cậu cần nằm ở bảng khác. Mở bảng mô tả cột xem nó ở đâu nhé.
+- [KHI: or-connector] dùng hint-any-or-all
 - [KHI: wrong-column-ho-dem] **ha-vy** (thinking): Cậu đang lọc theo cột ho_dem. Chữ ký thường là tên gọi, tức cột ten.
 - [KHI: like-ends-with] **ha-vy** (thinking): "Kết thúc bằng H" bắt cả tên như Linh, Thanh. Trên chữ ký, H đứng đầu.
 - [KHI: like-contains] **ha-vy** (thinking): "Chứa H" bắt cả tên có h ở giữa. Mình cần H đứng đầu tên.
+- [KHI: class-prefix] **ha-vy** (thinking): Mã lớp giống nhau vài chữ chưa chắc cùng tòa. Cậu lọc bằng đúng danh sách lớp trong hồ sơ.
 - [KHI: hardcoded-ids] **ha-vy** (thinking): Truy vấn này gọi thẳng mã sinh viên, tức đi từ đáp án. Hãy lọc bằng manh mối.
 - [KHI: limit-used] **ha-vy** (thinking): LIMIT chỉ cắt bớt số dòng, không lọc theo manh mối.
   - Năm mã trên chỉ gặp ở c1, c3, debrief-fix (những thử thách lọc cột `ten` trên bảng `sinh_vien`).
@@ -574,6 +577,7 @@ WHERE ten LIKE 'H%'
 
 - [DÀN DỰNG] Mục này không hiển thị trong game. Các lệnh KIỂM TRA của brief chạy bằng Git Bash ở gốc worktree sau mỗi Phần; output dưới đây là của nội dung cuối cùng (commit chứa mục này). Tệp tạm ghi vào thư mục scratchpad của phiên thay cho `/tmp`. Ở lệnh 2 đã bỏ hai dấu sao quanh tên người nói để chính mục này không bị lệnh grep đếm lại; ở lệnh 1 không chép lại mẫu tìm kiếm vì mẫu chứa chính các từ cấm.
 - [DÀN DỰNG] Cập nhật bởi gói 5 `noi-dung` theo QĐ-052. Thay đổi của gói 5 trong tệp này: thêm ba lời `no-columns`, `no-value`, `wrong-value` ở "Nhận xét chung" (QĐ-047); xếp các mã blocking theo thứ tự engine; dòng quy ước ưu tiên liệt kê đủ 6 mã blocking; thêm cột khuyến khích vào dòng "Cột bắt buộc" của debrief-fix; gỡ bốn ghi chú của người viết khỏi chữ hiển thị (QĐ-049). Lệnh 2, 3 và phép đếm đủ ở lệnh 4 được chạy lại bằng một script tái lập; script cho ra đúng từng số cũ khi chạy trên bản trước gói 5, rồi mới chạy trên bản này. Năm Phần không đổi chữ nào.
+- [DÀN DỰNG] Cập nhật bởi gói 6 `giai-trinh-ui` theo QĐ-054: thêm ba dòng `wrong-table`, `or-connector`, `class-prefix` ở "Nhận xét chung", theo thứ tự của `COMMON_DIAGNOSTIC_ORDER`. Số đổi theo: lệnh 2 (ha-vy thinking 39 → 41), lệnh 4 (nội dung thử thách và toàn file thêm 38 chữ; 162 lời). Chênh lệch đo bằng cùng một phép đếm chạy trên bản trước và bản sau gói 6. Năm Phần không đổi chữ nào.
 
 ### Lệnh 1 — từ cấm (phải 0 dòng)
 
@@ -591,7 +595,7 @@ Gói 5 không chạy lại lệnh này: mẫu tìm kiếm không được ghi tr
       3 bac-tu (neutral)
      25 ha-vy (neutral)
      20 ha-vy (smile)
-     39 ha-vy (thinking)
+     41 ha-vy (thinking)
       2 hoai (downcast)
       2 hoai (nervous)
       1 hoai (relieved)
@@ -644,12 +648,12 @@ Lệnh awk của brief chỉ đếm dòng bắt đầu bằng `- **`, tính cả
 | Giải trình | 274 | 448 + 86 + 23 = 557 | ≤ 900 |
 | Kết | 290 | 274 | ≤ 300 |
 | Cộng năm phần | 1.341 | 1.652 | ≤ 2.600 |
-| Nội dung thử thách (không tính vào Phân tích) | — | 890 + 85 + 21 = 996 | — |
-| Toàn file | — | 2.648 | ≤ 2.600 |
+| Nội dung thử thách (không tính vào Phân tích) | — | 928 + 85 + 21 = 1.034 | — |
+| Toàn file | — | 2.686 | ≤ 2.600 |
 
-Toàn file 2.648 chữ, vượt ngân sách 48 chữ (khoảng 2%), phần vượt là ba lời mới của QĐ-047 (14 + 19 + 19 = 52 chữ). Đã được chấp nhận theo QĐ-052: ngân sách 2.600 do điều phối viên đặt ở gói 1, tài liệu của user không có; thời lượng thật sẽ đo bằng telemetry. Năm Phần vẫn 1.652 chữ, trong ngân sách.
+Toàn file 2.686 chữ, vượt ngân sách 86 chữ (khoảng 3%), phần vượt là ba lời mới của QĐ-047 (14 + 19 + 19 = 52 chữ) và hai lời mới của QĐ-054 (18 + 20 = 38 chữ; lời `or-connector` dùng câu gợi ý chuẩn, không thêm chữ). Phần của QĐ-047 đã được chấp nhận theo QĐ-052: ngân sách 2.600 do điều phối viên đặt ở gói 1, tài liệu của user không có; thời lượng thật sẽ đo bằng telemetry. Năm Phần vẫn 1.652 chữ, trong ngân sách.
 
-Độ dài từng lời: dài nhất 24 chữ trong năm phần, 26 chữ trong thẻ thử thách; 0 lời quá 30 chữ; 15/160 lời quá 20 chữ. Dòng "Câu hỏi còn mở" trên thẻ hồ sơ là chữ trên thẻ, không phải lời thoại, nên không tính vào bảng trên; độ dài 11, 9, 7, 11, 7 chữ (giới hạn ≤ 12).
+Độ dài từng lời: dài nhất 24 chữ trong năm phần, 26 chữ trong thẻ thử thách; 0 lời quá 30 chữ; 15/162 lời quá 20 chữ. Dòng "Câu hỏi còn mở" trên thẻ hồ sơ là chữ trên thẻ, không phải lời thoại, nên không tính vào bảng trên; độ dài 11, 9, 7, 11, 7 chữ (giới hạn ≤ 12).
 
 ### Đối chiếu con trỏ
 

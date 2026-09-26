@@ -81,6 +81,15 @@ export const realCommonDiagnosticLines: CommonDiagnosticLines = {
       text: 'Chưa chọn cách nối các điều kiện. Cậu cần người thỏa bất kỳ, hay thỏa đồng thời?',
     },
   },
+  // QĐ-054: lời chung cho mã mà thẻ thử thách không có (OR ở c1/c2, sai bảng ở c1, tiền tố mã lớp ở c1/màn sửa).
+  'wrong-table': {
+    line: {
+      speaker: 'ha-vy',
+      expression: 'thinking',
+      text: 'Thông tin cậu cần nằm ở bảng khác. Mở bảng mô tả cột xem nó ở đâu nhé.',
+    },
+  },
+  'or-connector': { useStandardHint: 'hint-any-or-all' },
   'wrong-column-ho-dem': {
     line: {
       speaker: 'ha-vy',
@@ -97,6 +106,13 @@ export const realCommonDiagnosticLines: CommonDiagnosticLines = {
   },
   'like-contains': {
     line: { speaker: 'ha-vy', expression: 'thinking', text: '"Chứa H" bắt cả tên có h ở giữa. Mình cần H đứng đầu tên.' },
+  },
+  'class-prefix': {
+    line: {
+      speaker: 'ha-vy',
+      expression: 'thinking',
+      text: 'Mã lớp giống nhau vài chữ chưa chắc cùng tòa. Cậu lọc bằng đúng danh sách lớp trong hồ sơ.',
+    },
   },
   'hardcoded-ids': {
     line: {

@@ -92,7 +92,7 @@ export interface RawScript {
   parts: { id: string; name: string }[];
   sequences: RawSequence[];
   standardHints: { id: string; line: RawLine }[];
-  commonDiagnostics: { code: string; line: RawLine }[];
+  commonDiagnostics: { code: string; response: RawDiagnosticResponse }[];
   challenges: RawChallengeCard[];
   dossier: RawDossierCard[];
 }
@@ -105,6 +105,12 @@ export function parseSpoken(s: string, where: string): RawLine {
   const m = SPOKEN_RE.exec(s.trim());
   if (!m) throw new Error(`${where}: không đọc được lời "${s}"`);
   return { speaker: m[1] ?? '', expression: m[2] ?? null, text: m[3] ?? '' };
+}
+
+/** Phần sau `[KHI: mã]`: `dùng <mã gợi ý chuẩn>` hoặc một lời. */
+function parseDiagnosticResponse(rest: string, where: string): RawDiagnosticResponse {
+  const use = /^dùng ([a-z-]+)$/.exec(rest);
+  return use ? { useStandardHint: use[1] ?? '' } : { line: parseSpoken(rest, where) };
 }
 
 function parseFeedback(s: string, where: string): RawLine[] {
@@ -327,7 +333,8 @@ export function readScript(markdown: string): RawScript {
       if (line.startsWith('  - ')) return; // chỉ dẫn dưới một mã
       const m = /^- \[KHI: ([a-z-]+)\] (.+)$/.exec(line);
       if (!m) throw new Error(`${where}: dòng lạ trong "Nhận xét chung": "${line}"`);
-      out.commonDiagnostics.push({ code: m[1] ?? '', line: parseSpoken(m[2] ?? '', where) });
+      // QĐ-054: "Nhận xét chung" dùng được câu gợi ý chuẩn như thẻ thử thách (`dùng hint-x`).
+      out.commonDiagnostics.push({ code: m[1] ?? '', response: parseDiagnosticResponse(m[2] ?? '', where) });
       return;
     }
     if (!card) throw new Error(`${where}: dòng nằm ngoài thẻ thử thách`);
@@ -353,10 +360,7 @@ export function readScript(markdown: string): RawScript {
     }
     const diag = /^- \[KHI: ([a-z-]+)\] (.+)$/.exec(line);
     if (diag) {
-      const rest = diag[2] ?? '';
-      const use = /^dùng ([a-z-]+)$/.exec(rest);
-      const response: RawDiagnosticResponse = use ? { useStandardHint: use[1] ?? '' } : { line: parseSpoken(rest, where) };
-      return void card.diagnostics.push({ code: diag[1] ?? '', response });
+      return void card.diagnostics.push({ code: diag[1] ?? '', response: parseDiagnosticResponse(diag[2] ?? '', where) });
     }
     const hint = /^- \[GỢI Ý (\d)\] (.+)$/.exec(line);
     if (hint) return void card.hints.push({ level: Number(hint[1]), line: parseSpoken(hint[2] ?? '', where) });

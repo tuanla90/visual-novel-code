@@ -98,9 +98,13 @@ export const COMMON_DIAGNOSTIC_ORDER: readonly DiagnosticCode[] = [
   'syntax-error',
   'no-table',
   'connector-unset',
+  // QĐ-054: ba mã thẻ thử thách không có — sai bảng trước tiên, rồi phép nối, rồi các mã lọc cột.
+  'wrong-table',
+  'or-connector',
   'wrong-column-ho-dem',
   'like-ends-with',
   'like-contains',
+  'class-prefix',
   'hardcoded-ids',
   'limit-used',
   'wrong-value',
