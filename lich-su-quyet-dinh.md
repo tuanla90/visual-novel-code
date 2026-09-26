@@ -242,6 +242,30 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Tại `main`: typecheck 0 lỗi, 51/51 test, lint sạch, build đạt; chế độ dev trên trình duyệt 1366×768: 0 lỗi console, màn tiêu đề hiển thị đủ.
 - Đặc tả thử thách (`ChallengeSpec`) thuộc gói `sql-engine`, đặt một nơi duy nhất; gói `noi-dung` ghép với `ChallengeContent` thành `ChallengeDefinition`.
 
+**QĐ-045 — Đổi thứ tự gói: nội dung thật trước giao diện.** · Nguồn: điều phối viên, khi soạn brief gói 4 · 26/09 16:40
+- Vấn đề: theo kế hoạch cũ, gói 4 (trình dựng UI) và gói 6 (giải trình UI) dựng và tự kiểm trên nội dung MẪU; lỗi lệch giữa kịch bản thật và giao diện (độ dài chữ, số bước hướng dẫn, mã chẩn đoán thiếu lời…) chỉ lộ ở gói tích hợp.
+- Phương án: A — giữ thứ tự 3 → 4 → 5; **B — 3 → 5 → 4 → 6 → 7 → 8 → 9** (gói 5 chỉ cần kiểu của gói 2 và specs của gói 3).
+- **Chọn B.**
+- Lý do: mọi lần kiểm trên trình duyệt từ gói 4 trở đi dùng lời thoại thật, nên phát hiện sớm chữ tràn, gợi ý thiếu, chẩn đoán không có lời; chi phí đổi thứ tự bằng 0 vì các gói chạy tuần tự.
+
+**QĐ-046 — Ba ca chấm biên của engine.** · Nguồn: câu hỏi 1–3 của agent `sql-engine` · 26/09 18:45
+- (1) Sai bảng làm câu không chạy được (`SELECT ma_lop FROM sinh_vien WHERE toa_nha = 'B'` → "no such column"): **chọn A** — `status: 'error'` + chẩn đoán `wrong-table`; giao diện rẽ nhánh theo `run.ok` để hiện bảng, theo mã đã chọn để hiện lời. Loại C vì mất lời "sai bảng" đúng ngữ cảnh.
+- (2) `LIMIT` không cắt mất dòng nào trên cả hai dataset: **chọn A** — vẫn `correct` (QĐ-019 chấm theo tập kết quả); mọi `LIMIT` "cắt cho gọn" đều trượt dataset ẩn.
+- (3) Đạt dataset chính mà trượt dataset ẩn, không phát hiện được mã cấu trúc nào: **chọn A** — `hardcoded-ids` ("đi từ đáp án"), vì dataset ẩn được dựng đúng để bắt kiểu truy vấn đó.
+
+**QĐ-047 — Lời cho mã chẩn đoán mới và `wrong-value` chung.** · Nguồn: đề xuất Đ1 + rủi ro của agent `sql-engine` · 26/09 18:45
+- Engine thêm 2 mã blocking: `no-columns` (chưa chọn cột), `no-value` (điều kiện chưa có giá trị). **Chọn A:** gói `noi-dung` viết lời Hà Vy cho hai mã này ở "Nhận xét chung" của kịch bản; giao diện KHÔNG được in mã thô khi `response` rỗng.
+- Thêm một lời `wrong-value` CHUNG (giá trị không có trong dữ liệu — soát chính tả và dấu tiếng Việt) để người gõ SQL tay kiểu `clb = 'Bao chi'` ở c3/màn sửa nhận lời có ích thay vì lời `other`; thẻ c2 vẫn giữ lời `wrong-value` riêng. Gói `noi-dung` được phép thêm `wrong-value` vào `COMMON_DIAGNOSTIC_ORDER` (sau `limit-used`, trước `extra-columns`) — đúng một dòng ngoài phạm vi.
+- Chặn lệch hai nguồn thứ tự: `pickDiagnostic` dùng thứ tự khóa của nội dung, engine dùng `CHALLENGE_DIAGNOSTIC_ORDER`/`COMMON_DIAGNOSTIC_ORDER` → gói `noi-dung` phải có test khẳng định hai thứ tự trùng nhau.
+
+**QĐ-048 — Giữ thứ tự dòng dataset chính.** · Nguồn: đề xuất Đ2 của agent `sql-engine` · 26/09 18:45
+- **Chọn A (giữ):** Hiếu, Hoài đứng trước các thành viên khác của các tập giao, nên "thiếu điều kiện + `LIMIT 2`" ra bảng trông đúng trên dataset chính nhưng vẫn nhận lời `missing-condition` và trượt dataset ẩn — đúng tinh thần QĐ-015.
+
+**Nghiệm thu gói `sql-engine` — ĐẠT.** · 26/09 18:45
+- Tại `main`: typecheck 0 lỗi, 244/244 test, lint sạch, build đạt. Bài kiểm độc lập của điều phối viên (tệp tạm, không commit) 4/4: 40 sinh viên / 8 lớp / c1 = 10 / OR của Quân = 24 / c3 đúng Hiếu + Hoài; một câu c3 viết khác hẳn (chữ thường, alias, truy vấn con, đảo điều kiện, `ten >= 'H' AND ten < 'I'`) được chấm đúng; gõ cứng mã bị dataset ẩn bắt; `UPDATE` bị chặn, dữ liệu nguyên vẹn.
+- Sự cố canh: 76 phút không commit và không tệp nào đổi sau commit đầu → đánh thức; agent hoạt động lại ngay, không phải dừng.
+
 **Ghi chú không đổi quyết định:**
+- Tệp `prompts-background-prototype-v0.1.md` (bộ prompt tạo 3 ảnh cảnh nền + 1 ảnh neo phong cách) xuất hiện ở gốc repo lúc 18:33, không do agent nào tạo — coi là tài liệu của user. Gói hình/giao diện sẽ nhận ảnh nền thật theo đúng id trong tệp đó, dùng hình SVG tạm khi chưa có ảnh.
 - GDD v0.5 ghi Hà Vy "không biết SQL"; prototype để Hà Vy hướng dẫn từng bước và đưa gợi ý mức 3 gần như đáp án (QĐ-021, tài liệu prototype ghi Hà Vy "gợi ý cách đọc dữ liệu"). Cần cập nhật GDD sau vòng test.
 - Lời thoại viết cứng số liệu (10 người, 24 người, 40 sinh viên, 8 lớp): QĐ-010/QĐ-012 là nguồn; test dataset (gói 3) và test nội dung (gói 5) phải khẳng định các số này.

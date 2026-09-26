@@ -59,7 +59,8 @@ CHARACTER_EXPRESSIONS = { 'minh-anh': [...], 'ha-vy': [...], quan, hoai, 'bac-tu
 CLUE_IDS · DOCUMENT_IDS · QUERY_EVIDENCE_IDS → EvidenceId (hợp của ba)
 CHALLENGE_IDS = ['c1','c2','c3','debrief-fix'] · EFFECT_IDS = ['co-so-lieu-day']
 FLAG_IDS = ['access-revoked'] · STANDARD_HINT_IDS (3 câu §5.2)
-DIAGNOSTIC_CODES (QĐ-040, có 'connector-unset'); BLOCKING_DIAGNOSTIC_CODES = 4 mã "không chạy được"
+DIAGNOSTIC_CODES (QĐ-040, có 'connector-unset'); BLOCKING_DIAGNOSTIC_CODES = 6 mã "không chạy được"
+  (not-select, syntax-error, no-table, connector-unset, no-columns, no-value — hai mã cuối do gói 3 thêm, QĐ-047)
 ```
 
 Tra cứu tên hiển thị (`display-names.ts`, `evidence/labels.ts`) luôn có nhánh dự phòng
@@ -133,6 +134,19 @@ gradeChallenge(spec, sql, model | null): Promise<GradeResult>
 modelToSql(model): string
 sqlToModel(sql): QueryModel | null
 ```
+
+Hàm phụ đã có (gói 3) — dùng, đừng viết lại:
+
+```ts
+validateModel(model) / isModelRunnable(model)   // mã blocking khi model chưa chạy được (no-table, no-columns, no-value, connector-unset)
+pickDiagnostic(codes, challengeLines, commonLines) → { code, response } | null   // mã HIỂN THỊ theo thứ tự khóa của nội dung
+orderDiagnostics(challengeId, diagnostics)      // thứ tự mặc định của engine (CHALLENGE_/COMMON_DIAGNOSTIC_ORDER)
+distinctValues(table, column) · previewRows(table, limit = 5)   // ô chọn giá trị, nút "Xem 5 dòng đầu"
+```
+
+Dữ liệu (`src/sql-challenge/data/`): `CHALLENGE_SPECS` (spec 4 thử thách — nguồn DUY NHẤT), `QUAN_OR_QUERY`,
+`QUAN_QUERY_MODEL`, `CHALLENGE_DIAGNOSTIC_ORDER`, `COMMON_DIAGNOSTIC_ORDER`, `MAIN_DATASET`, `HIDDEN_DATASET`.
+Thứ tự khóa `diagnosticLines`/`commonDiagnosticLines` trong nội dung PHẢI trùng hai mảng thứ tự (QĐ-047, có test).
 
 ### 2.5 Debrief — `src/debrief/types.ts`
 
