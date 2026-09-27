@@ -26,13 +26,13 @@ describe('Sửa SQL trực tiếp ↔ trình dựng', () => {
     const user = userEvent.setup();
     presetModel('c1', { table: 'sinh_vien', columns: ['ma_sv'], conditions: [], connector: null });
     renderChallenge('c1');
-    await user.click(screen.getByRole('button', { name: 'Sửa SQL trực tiếp' }));
+    await user.click(screen.getByRole('button', { name: 'Viết SQL' }));
     expect(editor().value).toBe('SELECT ma_sv\nFROM sinh_vien;');
     expect(challengeState('c1')?.mode).toBe('sql');
-    expect(screen.getByLabelText('Bảng dữ liệu')).toBeDisabled();
+    expect(screen.queryByLabelText('Bảng dữ liệu')).not.toBeInTheDocument();
 
     await pasteSql(user,"select ma_sv, ho_dem, ten from sinh_vien where ten like 'H%'");
-    await user.click(screen.getByRole('button', { name: 'Quay về trình dựng' }));
+    await user.click(screen.getByRole('button', { name: 'Dựng truy vấn' }));
 
     expect(challengeState('c1')?.mode).toBe('builder');
     const m = challengeState('c1')?.model;
@@ -46,9 +46,9 @@ describe('Sửa SQL trực tiếp ↔ trình dựng', () => {
     const user = userEvent.setup();
     presetModel('c1', C1_CORRECT);
     renderChallenge('c1');
-    await user.click(screen.getByRole('button', { name: 'Sửa SQL trực tiếp' }));
+    await user.click(screen.getByRole('button', { name: 'Viết SQL' }));
     await pasteSql(user,"SELECT ma_sv FROM sinh_vien WHERE (ten LIKE 'H%') ORDER BY ten");
-    await user.click(screen.getByRole('button', { name: 'Quay về trình dựng' }));
+    await user.click(screen.getByRole('button', { name: 'Dựng truy vấn' }));
 
     const dialog = screen.getByRole('alertdialog', { name: 'Quay về trình dựng?' });
     expect(dialog).toHaveTextContent('trạng thái trình dựng gần nhất');
@@ -57,7 +57,7 @@ describe('Sửa SQL trực tiếp ↔ trình dựng', () => {
     expect(challengeState('c1')?.mode).toBe('sql');
     expect(editor().value).toContain('ORDER BY ten');
 
-    await user.click(screen.getByRole('button', { name: 'Quay về trình dựng' }));
+    await user.click(screen.getByRole('button', { name: 'Dựng truy vấn' }));
     await user.click(screen.getByRole('button', { name: 'Quay về trạng thái gần nhất' }));
     expect(challengeState('c1')?.mode).toBe('builder');
     expect(challengeState('c1')?.model).toEqual(C1_CORRECT);
@@ -67,7 +67,7 @@ describe('Sửa SQL trực tiếp ↔ trình dựng', () => {
   it('SQL gõ tay vẫn chạy và được chấm như thường (mode sql trong telemetry); Ctrl+Enter chạy', async () => {
     const user = userEvent.setup();
     renderChallenge('c1');
-    await user.click(screen.getByRole('button', { name: 'Sửa SQL trực tiếp' }));
+    await user.click(screen.getByRole('button', { name: 'Viết SQL' }));
     await pasteSql(user,"SELECT ma_sv, ho_dem, ten FROM sinh_vien WHERE ho_dem LIKE 'H%'");
     await user.keyboard('{Control>}{Enter}{/Control}');
     await screen.findByText('Lần chạy 1');
@@ -83,7 +83,7 @@ describe('Sửa SQL trực tiếp ↔ trình dựng', () => {
   it('câu SQL không chạy được: không có bảng, lời của mã blocking (not-select), không in mã thô', async () => {
     const user = userEvent.setup();
     renderChallenge('c1');
-    await user.click(screen.getByRole('button', { name: 'Sửa SQL trực tiếp' }));
+    await user.click(screen.getByRole('button', { name: 'Viết SQL' }));
     await pasteSql(user,'DELETE FROM sinh_vien');
     await user.click(screen.getByRole('button', { name: /Chạy truy vấn/ }));
     expect(await screen.findByText(/Câu này chưa chạy được nên chưa có bảng kết quả/)).toBeInTheDocument();

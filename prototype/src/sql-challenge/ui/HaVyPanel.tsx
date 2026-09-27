@@ -2,7 +2,7 @@
  * Khung Hà Vy (cột phải): một lời tại một thời điểm — bước hướng dẫn, gợi ý, hoặc nhận xét sau lần
  * chạy. Lời lấy từ nội dung; nhãn nhỏ cho biết lời thuộc loại nào. Chữ mã hiển thị qua CodeText.
  */
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { speakerLabel } from '../../shared/display-names';
 import { CodeText } from '../../shared/ui/CodeText';
 import { usePressGuard } from '../../shared/ui/use-press-guard';
@@ -28,6 +28,7 @@ export interface HaVyPanelProps {
 }
 
 export function HaVyPanel({ note, idle, actions, onAskHaVy, askDisabled }: HaVyPanelProps) {
+  const [minimized, setMinimized] = useState(false);
   const who = note ? speakerLabel(note.line.speaker) : speakerLabel('ha-vy');
   const guardedAskHaVy = usePressGuard(onAskHaVy);
   const avatarArt = resolvePortrait('ha-vy', note?.tone === 'success' ? 'smile' : 'thinking');
@@ -51,7 +52,11 @@ export function HaVyPanel({ note, idle, actions, onAskHaVy, askDisabled }: HaVyP
           {who}
         </h3>
         {note ? <span className="havy__label">{note.label}</span> : null}
+        <button type="button" className="qb-icon-btn" aria-label={minimized ? 'Mở chat Hà Vy' : 'Thu nhỏ chat Hà Vy'} aria-expanded={!minimized} aria-controls="havy-chat" onClick={() => setMinimized(!minimized)}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d={minimized ? 'M5 12h14M12 5v14' : 'M5 12h14'} /></svg>
+        </button>
       </div>
+      <div id="havy-chat" className="havy__chat" hidden={minimized}>
       <div className="havy__body" aria-live="polite">
         {note ? (
           <p key={note.key} className="havy__text">
@@ -71,6 +76,7 @@ export function HaVyPanel({ note, idle, actions, onAskHaVy, askDisabled }: HaVyP
           {actions}
         </div>
       ) : null}
+      </div>
     </section>
   );
 }

@@ -14,13 +14,14 @@ export interface SqlPaneProps {
   onRunShortcut: () => void;
   disabled: boolean;
   guided: boolean;
+  compact?: boolean;
 }
 
-export function SqlPane({ mode, builderSql, draft, onDraft, onToggle, onRunShortcut, disabled, guided }: SqlPaneProps) {
+export function SqlPane({ mode, builderSql, draft, onDraft, onToggle, onRunShortcut, disabled, guided, compact = false }: SqlPaneProps) {
   const editing = mode === 'sql';
   return (
     <section className={`chal-sql${guided ? ' is-guided' : ''}`} aria-labelledby="chal-sql-title" data-region="sql">
-      <div className="chal-sql__head">
+      <div className="chal-sql__head" hidden={compact}>
         <h3 id="chal-sql-title" className="chal-sql__title">
           {editing ? 'Sửa SQL trực tiếp' : 'Câu SQL tương ứng'}
         </h3>

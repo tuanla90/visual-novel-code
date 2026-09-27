@@ -40,6 +40,7 @@ export function BuilderRow({
   return (
     <div className={`qb-row${guided === region ? ' is-guided' : ''}`} data-region={region} role="group" aria-labelledby={labelId}>
       <span className="qb-row__kw" id={labelId}>
+        <small className="qb-row__step" aria-hidden="true">{region === "from" ? "1 · Chọn bảng" : region === "select" ? "2 · Chọn cột" : "3 · Lọc dữ liệu"}</small>
         {keyword}
       </span>
       <div className="qb-row__body">{children}</div>
@@ -54,35 +55,6 @@ export function QueryBuilder({ model, onChange, guided, disabled, onPreview, whe
   return (
     <fieldset className="qb" disabled={disabled}>
       <legend className="visually-hidden">Trình dựng truy vấn</legend>
-
-      <BuilderRow keyword="SELECT" region="select" guided={guided} labelId="qb-kw-select">
-        {table === null ? (
-          <p className="qb-empty">Chọn bảng ở hàng FROM trước, rồi chọn cột muốn hiện.</p>
-        ) : (
-          <div className="qb-chips">
-            {columnsOf(table).map((col) => {
-              const checked = all || (model.columns as ColumnName[]).includes(col);
-              return (
-                <label key={col} className={`chip${checked ? ' is-on' : ''}${all ? ' is-dim' : ''}`} title={columnDescription(table, col)}>
-                  <input
-                    type="checkbox"
-                    checked={checked}
-                    disabled={all}
-                    onChange={(e) => onChange(toggleColumn(model, col, e.target.checked))}
-                  />
-                  <span className="mono">{col}</span>
-                </label>
-              );
-            })}
-            <label className={`chip chip--all${all ? ' is-on' : ''}`} title="Hiện mọi cột của bảng">
-              <input type="checkbox" checked={all} onChange={(e) => onChange(setAllColumns(model, e.target.checked))} />
-              <span>
-                <span className="mono">*</span> mọi cột
-              </span>
-            </label>
-          </div>
-        )}
-      </BuilderRow>
 
       <BuilderRow keyword="FROM" region="from" guided={guided} labelId="qb-kw-from">
         <div className="qb-from">
@@ -118,6 +90,35 @@ export function QueryBuilder({ model, onChange, guided, disabled, onPreview, whe
             </button>
           </span>
         </div>
+      </BuilderRow>
+
+      <BuilderRow keyword="SELECT" region="select" guided={guided} labelId="qb-kw-select">
+        {table === null ? (
+          <p className="qb-empty">Chọn bảng ở hàng FROM trước, rồi chọn cột muốn hiện.</p>
+        ) : (
+          <div className="qb-chips">
+            {columnsOf(table).map((col) => {
+              const checked = all || (model.columns as ColumnName[]).includes(col);
+              return (
+                <label key={col} className={`chip${checked ? ' is-on' : ''}${all ? ' is-dim' : ''}`} title={columnDescription(table, col)}>
+                  <input
+                    type="checkbox"
+                    checked={checked}
+                    disabled={all}
+                    onChange={(e) => onChange(toggleColumn(model, col, e.target.checked))}
+                  />
+                  <span className="mono">{col}</span>
+                </label>
+              );
+            })}
+            <label className={`chip chip--all${all ? ' is-on' : ''}`} title="Hiện mọi cột của bảng">
+              <input type="checkbox" checked={all} onChange={(e) => onChange(setAllColumns(model, e.target.checked))} />
+              <span>
+                <span className="mono">*</span> mọi cột
+              </span>
+            </label>
+          </div>
+        )}
       </BuilderRow>
 
       <BuilderRow keyword="WHERE" region="where" guided={guided} labelId="qb-kw-where">

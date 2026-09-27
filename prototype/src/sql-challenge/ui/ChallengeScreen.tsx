@@ -7,6 +7,7 @@
  * theo mã đã chọn bằng `pickDiagnostic` (QĐ-046) — mã ĐÃ HIỆN cũng là mã ghi vào telemetry.
  */
 import './challenge.css';
+import './terminal.css';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { SavedQueryEvidence } from '../../evidence/types';
 import { speakerLabel } from '../../shared/display-names';
@@ -255,8 +256,10 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
 
   return (
     <div className={`chal${solved ? ' chal--solved' : ''}`} role="region" aria-labelledby="chal-title">
+      <div className="terminal-bar"><span className="terminal-bar__brand"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 8l3 3-3 3M13 14h4"/></svg> Máy tính CLB</span><span className="terminal-bar__status">Phiên điều tra / {challengeId.toUpperCase()}</span></div>
       <div className="chal__left">
         <div className="chal-card chal-workspace">
+          <div className="terminal-windowbar"><span>Trạm truy vấn</span><span className="terminal-windowbar__lights" aria-hidden="true"><i/><i/><i/></span></div>
           <header className="chal-head">
             <h2 id="chal-title" className="chal-head__title">
               <CodeText text={content.title} />
@@ -267,10 +270,11 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
           </header>
 
           {/* Thanh chuyển đổi cơ chế giải đố (Visual Builder ↔ Direct SQL) */}
-          {!locked && !solved ? (
-            <div className="chal-mode-switcher" aria-label="Chuyển đổi chế độ soạn thảo">
+          <div className="chal-mode-switcher" aria-label="Chuyển đổi chế độ soạn thảo">
               <button
                 type="button"
+                disabled={locked || solved}
+                aria-pressed={!sqlMode}
                 className={`chal-mode-tab${!sqlMode ? ' chal-mode-tab--active' : ''}`}
                 onClick={() => {
                   if (sqlMode) toggleSqlMode();
@@ -282,10 +286,12 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
                   <rect x="14" y="14" width="7" height="7" />
                   <rect x="3" y="14" width="7" height="7" />
                 </svg>
-                Trình dựng Khối (Visual Builder)
+                Dựng truy vấn
               </button>
               <button
                 type="button"
+                disabled={locked || solved}
+                aria-pressed={sqlMode}
                 className={`chal-mode-tab${sqlMode ? ' chal-mode-tab--active' : ''}`}
                 onClick={() => {
                   if (!sqlMode) toggleSqlMode();
@@ -295,10 +301,9 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
                   <polyline points="16 18 22 12 16 6" />
                   <polyline points="8 6 2 12 8 18" />
                 </svg>
-                Gõ SQL Trực Tiếp (Editor)
+                Viết SQL
               </button>
             </div>
-          ) : null}
 
           {locked ? (
             <p className="chal-locked" role="status">
@@ -312,9 +317,19 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
                 {content.readQuestion ? 'Truy vấn đã đúng — trả lời câu hỏi bên dưới rồi lưu vào hồ sơ.' : 'Truy vấn đã đúng — lưu vào hồ sơ để đi tiếp.'}
               </p>
             ) : null}
-            {sqlMode && !solved ? (
-              <p className="chal-sqlmode">Đang sửa SQL trực tiếp ở khung bên phải. Bấm “Quay về trình dựng” để dùng lại các hàng dưới đây.</p>
-            ) : null}
+            {sqlMode ? (
+        <SqlPane
+          compact
+          mode={state.mode}
+          builderSql={builderSql}
+          draft={state.sql}
+          onDraft={(sql) => updateChallenge(challengeId, { sql })}
+          onToggle={toggleSqlMode}
+          onRunShortcut={() => void run()}
+          disabled={locked || solved}
+          guided={false}
+        />
+            ) : (
             <QueryBuilder
               model={model}
               onChange={setModel}
@@ -323,7 +338,21 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
               onPreview={showPreview}
               whereRow={<WhereRow model={model} onChange={setModel} evidenceOptions={evidenceOptions} disabled={locked || solved || sqlMode} />}
             />
+            )}
           </section>
+
+          {!sqlMode && <details className="terminal-source"><summary>Xem câu SQL tương ứng</summary>        <SqlPane
+          compact
+          mode={state.mode}
+          builderSql={builderSql}
+          draft={state.sql}
+          onDraft={(sql) => updateChallenge(challengeId, { sql })}
+          onToggle={toggleSqlMode}
+          onRunShortcut={() => void run()}
+          disabled={locked || solved}
+          guided={false}
+        />
+</details>}
 
           {/* Thanh Chạy nằm liền kề dưới đáy workspace để thao tác tự nhiên */}
           <div className={`chal-runbar${guided === 'run' ? ' is-guided' : ''}`} data-region="run" hidden={solved}>
@@ -345,6 +374,7 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
         </div>
 
         <section className="chal-card chal-result" aria-label="Kết quả" ref={resultRef}>
+          <div className="terminal-resultbar"><span>Kết quả truy vấn</span><span>{preview ? "Xem trước" : outcome ? "Đã thực thi" : "Chờ truy vấn"}</span></div>
           {preview ? (
             <PreviewView preview={preview} onClose={() => setPreview(null)} />
           ) : outcome && solved && outcome.grade.run.ok ? (
@@ -361,22 +391,12 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
           ) : outcome ? (
             <RunResultView outcome={outcome} />
           ) : (
-            <p className="qb-empty">Chưa chạy truy vấn nào. Dựng truy vấn rồi bấm “Chạy truy vấn” để xem kết quả ở đây.</p>
+            <p className="qb-empty terminal-empty">Chưa chạy truy vấn nào. Dựng truy vấn rồi bấm “Chạy truy vấn” để xem kết quả ở đây.</p>
           )}
         </section>
       </div>
 
       <aside className="chal__right" aria-label="Câu SQL và trợ giúp">
-        <SqlPane
-          mode={state.mode}
-          builderSql={builderSql}
-          draft={state.sql}
-          onDraft={(sql) => updateChallenge(challengeId, { sql })}
-          onToggle={toggleSqlMode}
-          onRunShortcut={() => void run()}
-          disabled={locked || solved}
-          guided={false}
-        />
         <HaVyPanel
           note={shownNote}
           idle="Dựng truy vấn theo đề bài rồi bấm “Chạy truy vấn”. Chạy sai không sao — chạy lại bao nhiêu lần cũng được."

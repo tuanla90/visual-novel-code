@@ -18,7 +18,7 @@ function describe(table: TableName, column: string): { type: string; description
 }
 
 export function SchemaPanel({ onPreview, previewDisabled }: SchemaPanelProps) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   return (
     <section className={`schema${open ? ' is-open' : ''}`} aria-labelledby="schema-title">
       <h3 id="schema-title" className="schema__title">

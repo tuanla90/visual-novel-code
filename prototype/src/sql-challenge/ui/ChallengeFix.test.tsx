@@ -86,7 +86,7 @@ describe('Màn sửa truy vấn của Quân', () => {
     expect(screen.getByText(/Quyền xem dữ liệu của CLB đã kết thúc/)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Chạy truy vấn/ })).toBeDisabled();
     expect(screen.getByRole('button', { name: 'Hỏi Hà Vy' })).toBeDisabled();
-    expect(screen.getByRole('button', { name: 'Sửa SQL trực tiếp' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Viết SQL' })).toBeDisabled();
     expect(screen.getByLabelText('Bảng dữ liệu')).toBeDisabled();
     for (const b of screen.getAllByRole('button', { name: /Xem 5 dòng đầu/ })) expect(b).toBeDisabled();
     expect(screen.queryByText(/Hàng FROM còn trống/)).not.toBeInTheDocument();

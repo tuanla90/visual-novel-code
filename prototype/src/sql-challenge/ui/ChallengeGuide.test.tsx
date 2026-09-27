@@ -117,6 +117,8 @@ describe('"Hỏi Hà Vy" và bảng dữ liệu', () => {
     const schema = screen.getByRole('region', { name: /Mô tả các bảng/ });
     expect(within(schema).getByText('Tòa nhà sinh hoạt (A, B, C)', { exact: false })).toBeInTheDocument();
     const toggle = within(schema).getByRole('button', { name: /Mô tả các bảng/ });
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    await user.click(toggle);
     expect(toggle).toHaveAttribute('aria-expanded', 'true');
     await user.click(within(schema).getByRole('button', { name: 'Xem 5 dòng đầu của bảng lop_sinh_hoat' }));
     const t = await screen.findByRole('table', { name: '5 dòng đầu của bảng lop_sinh_hoat' });
