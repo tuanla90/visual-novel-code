@@ -8,6 +8,7 @@
  * - quy ước của user (bộ prompt `prompts-characters-prototype-flow-v0.1.md`): `char-minh-anh-worried`,
  *   và `char-<nhân vật>-anchor` = biểu cảm ĐẦU của nhân vật (`CHARACTER_EXPRESSIONS`, Hoài = `nervous`);
  * - ảnh toàn thân cho hồ sơ nhân vật và màn ra mắt: `char-<nhân vật>-full` (ô `<nhân vật>-full`);
+ * - ảnh giới thiệu 16:9 cho màn "Nhân vật mới": `intro-<nhân vật>` (có thì dùng thay khung chân dung);
  *   chưa có thì hai màn đó dùng chân dung (ảnh thật hoặc hình vẽ tạm).
  *
  * Kiểm ô nào đang dùng ảnh thật:
@@ -27,7 +28,7 @@ import {
   type SceneId,
 } from '../../ids';
 
-export type ArtKind = 'background' | 'portrait' | 'full' | 'document';
+export type ArtKind = 'background' | 'portrait' | 'full' | 'intro' | 'document';
 
 export interface ArtSlot {
   /** Tên tệp không có đuôi, ví dụ `bg-prototype-hallway`. */
@@ -72,6 +73,11 @@ export function fullArtSlotName(character: CharacterId): string {
   return `${character}-full`;
 }
 
+/** Tên ô ảnh giới thiệu 16:9 của một nhân vật (màn "Nhân vật mới"). */
+export function introArtSlotName(character: CharacterId): string {
+  return `intro-${character}`;
+}
+
 /** Tên ô chân dung của một nhân vật ở một biểu cảm. */
 export function portraitSlotName(character: CharacterId, expression: string): string {
   return `${character}-${expression}`;
@@ -95,6 +101,11 @@ export const ART_SLOTS: readonly ArtSlot[] = [
     name: fullArtSlotName(character),
     kind: 'full' as const,
     usage: 'Ảnh toàn thân (hồ sơ nhân vật, màn ra mắt)',
+  })),
+  ...CHARACTER_IDS.map((character) => ({
+    name: introArtSlotName(character),
+    kind: 'intro' as const,
+    usage: 'Ảnh giới thiệu 16:9 (màn "Nhân vật mới")',
   })),
   ...DOCUMENT_IDS.map((doc) => ({ name: doc, kind: 'document' as const, usage: DOCUMENT_USAGE[doc] })),
 ];
@@ -312,6 +323,13 @@ export function resolvePortrait(
 /** Ô ảnh toàn thân; không có tệp → `url` rỗng, nơi dùng tự rơi về chân dung. */
 export function resolveFullArt(character: CharacterId, index: ReadonlyMap<string, string> = ART_INDEX): ResolvedArt {
   const slot = fullArtSlotName(character);
+  const url = artUrl(slot, index);
+  return url ? { slot, from: slot, url } : { slot };
+}
+
+/** Ô ảnh giới thiệu 16:9; không có tệp → màn "Nhân vật mới" dùng khung chân dung như cũ. */
+export function resolveIntroArt(character: CharacterId, index: ReadonlyMap<string, string> = ART_INDEX): ResolvedArt {
+  const slot = introArtSlotName(character);
   const url = artUrl(slot, index);
   return url ? { slot, from: slot, url } : { slot };
 }

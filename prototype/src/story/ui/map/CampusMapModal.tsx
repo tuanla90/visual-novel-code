@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { CAMPUS_POIS, type CampusPoi } from './campus-map-data';
+import { IllustratedMap } from './IllustratedMap';
 import { soundEngine } from '../../../shared/audio/sound-engine';
 import '../../../shared/vn/vn-controls.css';
 
@@ -118,6 +119,12 @@ export function CampusMapModal({ open, onClose, currentScene }: CampusMapModalPr
     return CAMPUS_POIS.find((p) => p.sceneId === currentScene) ?? CAMPUS_POIS[5]!;
   });
   const closeBtnRef = useRef<HTMLButtonElement>(null);
+  // Ảnh bản đồ lỗi → quay về sơ đồ SVG.
+  const [artFailed, setArtFailed] = useState(false);
+  const selectPoi = (poi: CampusPoi): void => {
+    soundEngine.playSfx('select');
+    setSelectedPoi(poi);
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -154,6 +161,15 @@ export function CampusMapModal({ open, onClose, currentScene }: CampusMapModalPr
 
         {/* Khu vực Bản đồ SVG tương tác */}
         <div className="campus-map__view">
+          {!artFailed ? (
+            <IllustratedMap
+              pois={CAMPUS_POIS}
+              selectedId={selectedPoi.id}
+              currentScene={currentScene}
+              onSelect={selectPoi}
+              onArtError={() => setArtFailed(true)}
+            />
+          ) : (
           <svg className="campus-map__svg" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid meet">
             {/* Nền bãi cỏ khuôn viên xanh thẫm */}
             <rect width="1000" height="520" fill="#0f241a" />
@@ -297,6 +313,7 @@ export function CampusMapModal({ open, onClose, currentScene }: CampusMapModalPr
               );
             })}
           </svg>
+          )}
         </div>
 
         {/* Bảng chi tiết POI đã chọn */}

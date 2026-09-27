@@ -92,6 +92,21 @@ hiện chân dung ở trên (ảnh thật, hoặc hình vẽ tạm). Khung dọc
 | `char-bac-tu-full`    | Bác Tư   | `bac-tu-full`   |
 | `char-tung-full`      | Tùng     | `tung-full`     |
 
+### Ảnh giới thiệu 16:9 — màn "Nhân vật mới"
+
+Có tệp `intro-<nhân vật>` thì màn "Nhân vật mới" phủ ảnh này kín khung 16:9 và đặt tên + lời giới
+thiệu vào khoảng trống ảnh chừa sẵn (prompt mục E: nhân vật một bên, ~40% bên kia trống). Hà Vy và
+Quân đứng bên phải nên chữ nằm bên trái; các nhân vật khác chữ bên phải. Chưa có tệp → khung chân dung.
+
+| Tên tệp (không đuôi) | Nhân vật |
+| -------------------- | -------- |
+| `intro-minh-anh`     | Minh Anh |
+| `intro-ha-vy`        | Hà Vy    |
+| `intro-quan`         | Quân     |
+| `intro-hoai`         | Hoài     |
+| `intro-bac-tu`       | Bác Tư   |
+| `intro-tung`         | Tùng     |
+
 ### Nền xám phẳng được tự tách
 
 Ảnh sinh theo bộ prompt có nền xám phẳng một màu (#E2E6EA–#E8ECEF). Game **tự tách nền** cho chân

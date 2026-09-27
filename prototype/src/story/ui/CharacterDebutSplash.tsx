@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import type { CharacterId } from '../../shared/ids';
 import { Portrait } from '../../shared/ui/Portrait';
 import { FullArtImage } from '../../shared/ui/FullArt';
-import { resolveFullArt } from '../../shared/ui/visuals/art-slots';
+import { resolveFullArt, resolveIntroArt } from '../../shared/ui/visuals/art-slots';
 import { CHARACTER_PROFILES } from '../../evidence/character-profiles';
 import './character-debut.css';
 
@@ -11,9 +11,19 @@ export interface CharacterDebutSplashProps {
   onDismiss: () => void;
 }
 
+/**
+ * Ảnh giới thiệu (prompt E, prompts-assets-prototype-full-v0.1.md) đặt nhân vật ở một bên và chừa
+ * ~40% khung bên kia cho tên: chữ đi vào phía còn trống. Mặc định nhân vật bên trái → chữ bên phải.
+ */
+const INTRO_TEXT_SIDE: Partial<Record<CharacterId, 'left' | 'right'>> = {
+  'ha-vy': 'left',
+  quan: 'left',
+};
+
 export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutSplashProps) {
   const profile = CHARACTER_PROFILES[characterId];
   const fullArt = resolveFullArt(characterId);
+  const intro = resolveIntroArt(characterId);
   const rootRef = useRef<HTMLDivElement>(null);
   const continueRef = useRef<HTMLButtonElement>(null);
 
@@ -47,8 +57,16 @@ export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutS
     >
       <div className="chara-debut__backdrop" />
 
-      <div className="chara-debut__card">
-        {/* Khung ảnh Full Picture / Spotlight */}
+      <div
+        className={
+          intro.url
+            ? `chara-debut__card chara-debut__card--intro is-text-${INTRO_TEXT_SIDE[characterId] ?? 'right'}`
+            : 'chara-debut__card'
+        }
+      >
+        {intro.url ? <img className="chara-debut__intro-img" src={intro.url} alt="" draggable={false} data-art-slot={intro.slot} /> : null}
+        {/* Khung ảnh Full Picture / Spotlight (khi chưa có ảnh giới thiệu) */}
+        {intro.url ? null : (
         <div className="chara-debut__visual">
           <div className="chara-debut__spotlight" />
           {fullArt.url ? (
@@ -59,6 +77,7 @@ export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutS
             </div>
           )}
         </div>
+        )}
 
         {/* Khung chữ giới thiệu nhân vật phong cách Visual Novel */}
         <div className="chara-debut__content">

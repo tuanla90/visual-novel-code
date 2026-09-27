@@ -6,7 +6,8 @@
  */
 import { useLayoutEffect, type RefObject } from 'react';
 import type { SceneId } from '../../ids';
-import { projectorInsets } from './scene-geometry';
+import { resolveBackground } from './art-slots';
+import { HEARING_ROOM_IMAGE_SCREEN, HEARING_ROOM_SCREEN, projectorInsets } from './scene-geometry';
 
 const VARS = ['--projector-top', '--projector-right', '--projector-bottom', '--projector-left'] as const;
 
@@ -24,7 +25,9 @@ export function useProjectorInsets(ref: RefObject<HTMLElement | null>, scene: Sc
     const apply = (): void => {
       const { width, height } = el.getBoundingClientRect();
       if (width <= 0 || height <= 0) return;
-      const i = projectorInsets(width, height);
+      // Có ảnh nền thật → khung đo trên ảnh; không → khung của hình vẽ tạm.
+      const frame = resolveBackground('debrief-room').url ? HEARING_ROOM_IMAGE_SCREEN : HEARING_ROOM_SCREEN;
+      const i = projectorInsets(width, height, frame);
       el.style.setProperty('--projector-top', `${i.top.toFixed(1)}px`);
       el.style.setProperty('--projector-right', `${i.right.toFixed(1)}px`);
       el.style.setProperty('--projector-bottom', `${i.bottom.toFixed(1)}px`);
