@@ -421,6 +421,11 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Phương án: A — chỉ thêm lời dẫn, để chân dung ở lại (hình và lời lệch nhau); B — sân khấu chỉ giữ nhân vật đã nói trong CHUỖI hiện tại (đổi hành vi mọi cảnh); **C — thêm node tự động `{ type: 'exit', character }` (sửa tệp đóng băng `src/story/types.ts` có kiểm soát: runtime xử lý như node tự động, bộ kiểm toàn vẹn nhận biết, sân khấu bỏ nhân vật khỏi dàn).**
 - **Chọn C**, giao gói 11b; kèm test runtime + sân khấu + toàn vẹn nội dung. Đây là ngoại lệ có chủ đích của luật "tệp đóng băng", ghi tại đây.
 
+**Sự cố gói `sua-loi-giao-dien` (11a) — THẤT BẠI, giao lại thu hẹp.** · 27/09 08:00
+- Agent (Opus) làm nhóm 1 (chống bấm đúp) ~55 phút KHÔNG commit (vi phạm nhịp 40 phút), rồi luồng đứng 600 giây, cơ chế giám sát báo thất bại. Thu hồi: bản vá dở 442 dòng (hook `use-press-guard.ts`, sửa DialogBox/MultipleChoice/DocumentReveal/"Hỏi Hà Vy", một phần test) lưu ở scratchpad; worktree và nhánh bỏ.
+- Theo skill `/giao-viec` ("gói đã fail → giao lại ở model cao hơn một bậc", "cắt nhỏ"): tách 11a thành **11a-1 `sua-loi-tuong-tac` (Fable)** — áp bản vá dở + chống bấm đúp + thứ tự lựa chọn chịu StrictMode + "Bắt đầu lại" có xác nhận; và **11a-2** (engine: trim/NFC, giới hạn dòng, mã mới; trình dựng F6/F8/F12; đánh dấu chơi lại; tóm tắt mã lỗi; ảnh hỏng; tài liệu) giao sau.
+- Biện pháp chống treo mới cho mọi brief: bọc lệnh dài bằng `timeout`, nhịp commit 25 phút cho gói giao lại, commit đầu trong 10 phút.
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**
