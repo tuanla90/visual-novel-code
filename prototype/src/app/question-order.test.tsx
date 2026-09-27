@@ -6,7 +6,7 @@
  * Nguồn ngẫu nhiên được thay bằng dãy đổi liên tục, và test tự chứng minh: xáo hai lần liên tiếp bằng dãy
  * đó cho hai thứ tự KHÁC nhau — nên nếu component xáo lại sau khi dựng lại, thứ tự sẽ đổi và test đỏ.
  */
-import { render, screen, within } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { realContent } from '../content/real';
@@ -79,6 +79,25 @@ describe('thứ tự lựa chọn giữ nguyên khi chọn lại (QĐ-041, qua G
     await user.click(screen.getByRole('button', { name: wrong[1]?.text }));
     await user.click(await screen.findByRole('button', { name: /Tiếp tục/ }));
     expect(choiceTexts()).toEqual(before);
+  });
+
+  it('bấm đúp lựa chọn sai (phát hiện CAO rà soát code): cú bấm thứ hai KHÔNG qua mất lời phản hồi', async () => {
+    const user = userEvent.setup();
+    render(<GameScreen />);
+    const wrong = QUESTION.choices.find((c) => !c.correct);
+    if (!wrong) throw new Error('q-two-rows thiếu lựa chọn sai');
+    await passPressGuard();
+    await user.click(screen.getByRole('button', { name: wrong.text }));
+    // Cú bấm thứ hai của bấm đúp (~100–200 ms sau, `detail: 2`) rơi vào HỘP PHẢN HỒI vừa thay chỗ danh
+    // sách lựa chọn (jsdom không hit-test theo vị trí nên phải bắn thẳng vào hộp như trình duyệt làm).
+    const box = document.querySelector('.dialog');
+    if (!box) throw new Error('hộp phản hồi chưa hiện sau khi chọn sai');
+    fireEvent.click(box, { detail: 2 });
+    expect(screen.queryByRole('group')).toBeNull();
+    expect(screen.getByText(/Phản hồi 1\//)).toBeInTheDocument();
+    const shown = document.querySelector('.dialog__text')?.textContent?.replace(/\s+/g, ' ');
+    expect(shown).toBe(wrong.feedback[0]?.text.replace(/`/g, '').replace(/\s+/g, ' '));
+    expect(useGameStore.getState().progress?.choices['q-two-rows']?.attempts).toBe(1);
   });
 
   it('chơi lại từ đầu (attempts = 0) thì câu hỏi được xáo mới', async () => {

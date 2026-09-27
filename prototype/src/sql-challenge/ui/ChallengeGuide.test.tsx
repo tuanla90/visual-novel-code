@@ -2,7 +2,7 @@
  * Hướng dẫn từng bước c1 (QĐ-021), "Hỏi Hà Vy" (gợi ý 1 → 2 → 3, rồi lặp 3), bảng dữ liệu +
  * "Xem 5 dòng đầu".
  */
-import { screen, within } from '@testing-library/react';
+import { fireEvent, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { challengeState, eventsOf, renderChallenge, resetGame } from './test-utils';
@@ -109,6 +109,20 @@ describe('"Hỏi Hà Vy" và bảng dữ liệu', () => {
       [3, 4],
     ]);
     expect(challengeState('c3')).toMatchObject({ hintLevel: 3, hintsUsed: 4 });
+  });
+
+  it('bấm đúp "Hỏi Hà Vy" → chỉ lên MỘT mức, một hint_used (QĐ-066); Enter đang giữ không bấm lặp', async () => {
+    const user = userEvent.setup();
+    renderChallenge('c3');
+    const ask = screen.getByRole('button', { name: 'Hỏi Hà Vy' });
+    await user.dblClick(ask);
+    expect(havyLabel()).toBe('Gợi ý 1/3');
+    expect(eventsOf('hint_used').map((e) => [e.level, e.count])).toEqual([[1, 1]]);
+    expect(challengeState('c3')).toMatchObject({ hintLevel: 1, hintsUsed: 1 });
+    // Giữ Enter: keydown lặp bị chặn (trình duyệt không sinh click), keydown thường thì không.
+    expect(fireEvent.keyDown(ask, { key: 'Enter', repeat: true })).toBe(false);
+    expect(fireEvent.keyDown(ask, { key: 'Enter', repeat: false })).toBe(true);
+    expect(havyLabel()).toBe('Gợi ý 1/3');
   });
 
   it('bảng mô tả (schema): mô tả cột tiếng Việt, thu gọn được, "Xem 5 dòng đầu" từng bảng', async () => {
