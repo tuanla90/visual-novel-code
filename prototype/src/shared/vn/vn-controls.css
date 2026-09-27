@@ -31,7 +31,12 @@
   transition: all 0.15s ease;
 }
 
-.vn-btn:hover {
+.vn-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.vn-btn:hover:not(:disabled) {
   background: rgba(30, 41, 59, 0.85);
   color: #fff;
   border-color: rgba(56, 189, 248, 0.5);
@@ -261,6 +266,16 @@
   gap: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
+  /* Ô lưu là <button>: bỏ kiểu mặc định của trình duyệt */
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  width: 100%;
+}
+
+.save-slot:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
 }
 
 .save-slot:hover {

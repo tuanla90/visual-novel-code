@@ -426,6 +426,16 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Theo skill `/giao-viec` ("gói đã fail → giao lại ở model cao hơn một bậc", "cắt nhỏ"): tách 11a thành **11a-1 `sua-loi-tuong-tac` (Fable)** — áp bản vá dở + chống bấm đúp + thứ tự lựa chọn chịu StrictMode + "Bắt đầu lại" có xác nhận; và **11a-2** (engine: trim/NFC, giới hạn dòng, mã mới; trình dựng F6/F8/F12; đánh dấu chơi lại; tóm tắt mã lỗi; ảnh hỏng; tài liệu) giao sau.
 - Biện pháp chống treo mới cho mọi brief: bọc lệnh dài bằng `timeout`, nhịp commit 25 phút cho gói giao lại, commit đầu trong 10 phút.
 
+**QĐ-070 — Rà và sửa bộ tính năng Visual Novel của commit `fa5ffd3`.** · Nguồn: user yêu cầu rà lỗi sau commit "feat(vn)…" · 27/09 16:45
+- Bối cảnh: commit thêm Auto/Skip/Lịch sử thoại/Ẩn giao diện/Lưu–Nạp nhiều ô/âm thanh tổng hợp/màn giới thiệu nhân vật/bản đồ trường. Test xanh nhưng khi chạy có 7 lỗi hành vi (chữ hiện dần bị kéo lùi; Skip đứng sau một câu vì đi qua bộ chống bấm đúp; Auto/Skip chạy ngầm sau lớp phủ; phím H không hiện lại giao diện; ô lưu thiếu slice `challenges`; ô lưu ở localStorage trộn phiên người thử; nhạc nền không bao giờ phát).
+- **Chọn:**
+  - Ô lưu, danh sách thoại đã đọc và nhân vật đã giới thiệu nằm trong **sessionStorage**, cùng chỗ với tiến độ (giữ QĐ-004); "Chơi lại từ đầu" xóa hết (cùng lúc với phiên telemetry mới). Ô lưu chụp đủ `progress + evidence + challenges`, có `version` = `STORE_VERSION`.
+  - **Skip chỉ tua thoại đã đọc** và tự tắt ở câu hỏi/thử thách/xem xét (chuẩn VN; không để người mới lỡ manh mối). Auto/Skip tạm dừng khi có lớp phủ.
+  - Tốc độ chữ (Chậm/Vừa/Nhanh/Hiện ngay) nằm trong hộp **Cài đặt** cùng âm thanh; là tùy chọn cá nhân nên lưu localStorage như cài đặt âm thanh.
+  - Màn giới thiệu nhân vật dùng cùng ô ảnh + tách nền của chân dung (bỏ `fullArtPath` trỏ tới tệp không tồn tại, đường dẫn `/src/…` hỏng khi build); chờ ảnh sẵn sàng rồi mới mờ vào, không phóng 1,35 lần (cắt mất đầu).
+  - Telemetry thêm 5 sự kiện (`vn_mode_toggled`, `backlog_opened`, `text_speed_changed`, `progress_saved`, `progress_loaded`); tóm tắt phiên có mục `vn` và cờ `loadedSave` (có nạp ô lưu → thời lượng không so trực tiếp). Nút "Hồ sơ" trong hộp thoại giờ cũng ghi `notebook_opened` (trước đó đếm thiếu chỉ số §10).
+- **User quyết (27/09 17:10): GIỮ bản đồ trường và Lưu/Nạp nhiều ô** (ngoại lệ có chủ đích của QĐ-032; hướng tới bản MVP). Trước đó: commit đưa vào **bản đồ trường** và **Lưu/Nạp nhiều ô** — cả hai nằm trong danh sách "không làm" (QĐ-032, §8 tài liệu phạm vi). Đã giữ nguyên (chỉ sửa lỗi), cần user xác nhận giữ hay tắt trước vòng thử nghiệm 1. Chuỗi mở đầu mới `intro-00` (Tùng dẫn đi) nhắc "khu B" hai lần trước khi manh mối "tòa B" xuất hiện — có thể làm người chơi lẫn; cần user xem lại lời thoại.
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**

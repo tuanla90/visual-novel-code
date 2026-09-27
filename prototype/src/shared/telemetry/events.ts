@@ -105,7 +105,14 @@ export type TelemetryEventBody =
   | { type: 'survey_submitted'; stage: 'pre'; answers: PreSurveyAnswers }
   | { type: 'survey_submitted'; stage: 'post'; answers: PostSurveyAnswers }
   | { type: 'survey_skipped'; stage: SurveyStage }
-  | { type: 'game_reset' };
+  | { type: 'game_reset' }
+  // Điều khiển kiểu Visual Novel: người dùng bật/tắt Auto/Skip làm lệch thời gian đọc → cần biết để diễn giải số liệu.
+  | { type: 'vn_mode_toggled'; mode: 'auto' | 'skip'; on: boolean }
+  | { type: 'backlog_opened'; part: PartId | null }
+  | { type: 'text_speed_changed'; speed: 'slow' | 'normal' | 'fast' | 'instant' }
+  | { type: 'progress_saved'; slot: number; part: PartId | null }
+  /** Nạp ô lưu: tiến độ nhảy tới/lùi về chỗ khác → thời lượng phần/game không còn so được trực tiếp. */
+  | { type: 'progress_loaded'; slot: number; part: PartId | null };
 
 export type TelemetryEventType = TelemetryEventBody['type'];
 

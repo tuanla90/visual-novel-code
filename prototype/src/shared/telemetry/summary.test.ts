@@ -77,8 +77,27 @@ describe('tóm tắt chỉ số §10 theo phiên', () => {
     expect(s.firstChoices['q-verify']).toMatchObject({ choiceId: 'nguon-khac', correct: true });
     expect(s.firstLinePicks).toEqual({ 'pick-or-line': { lineIndex: 3, correct: true } });
     expect(s.notebookOpens).toBe(1);
+    expect(s.vn).toEqual({ autoOn: 0, skipOn: 0, backlogOpens: 0, saves: 0, loads: 0, textSpeed: null });
+    expect(s.loadedSave).toBe(false);
     expect(s.pre).toEqual({ status: 'submitted', excelLevel: 'basic', sqlBefore: 'no' });
     expect(s.post).toEqual({ status: 'submitted', memorable: ['rebut-quan', 'clues'], annoying: null, playNext: 'yes', rebutInTop2: true });
+  });
+
+  it('điều khiển VN: đếm lần bật Auto/Skip, mở lịch sử, lưu/nạp; đánh dấu phiên có nạp ô lưu', () => {
+    clock = 0;
+    const e = mk('s-vn');
+    const s = summarizeSession('s-vn', [
+      e({ type: 'game_start' }),
+      e({ type: 'vn_mode_toggled', mode: 'auto', on: true }),
+      e({ type: 'vn_mode_toggled', mode: 'auto', on: false }),
+      e({ type: 'vn_mode_toggled', mode: 'skip', on: true }),
+      e({ type: 'backlog_opened', part: 'intro' }),
+      e({ type: 'text_speed_changed', speed: 'fast' }),
+      e({ type: 'progress_saved', slot: 0, part: 'intro' }),
+      e({ type: 'progress_loaded', slot: 0, part: 'intro' }),
+    ]);
+    expect(s.vn).toEqual({ autoOn: 1, skipOn: 1, backlogOpens: 1, saves: 1, loads: 1, textSpeed: 'fast' });
+    expect(s.loadedSave).toBe(true);
   });
 
   it('nhiều bản ghi isFirstChoice cho cùng câu (tải lại trang) → lấy bản SỚM NHẤT', () => {

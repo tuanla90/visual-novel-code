@@ -57,23 +57,13 @@ export function CharaProfileView({
         {/* Cột trái: Ảnh nhân vật to toàn thân + bộ nút chuyển biểu cảm */}
         <div className="chara-profile__showcase">
           <div className="chara-profile__art-wrap">
-            {profile.id === 'minh-anh' && profile.fullArtPath ? (
-              <div className="chara-profile__full-art">
-                <img
-                  src={profile.fullArtPath}
-                  alt={`${profile.name} toàn thân`}
-                  className="chara-profile__full-img"
-                />
-              </div>
-            ) : (
-              <div className="chara-profile__portrait-large">
-                <Portrait
-                  character={profile.id}
-                  expression={activeExpression as ExpressionOf<typeof profile.id>}
-                  size="normal"
-                />
-              </div>
-            )}
+            <div className="chara-profile__portrait-large">
+              <Portrait
+                character={profile.id}
+                expression={activeExpression as ExpressionOf<typeof profile.id>}
+                size="normal"
+              />
+            </div>
           </div>
 
           {/* Dải nút chọn biểu cảm (Expression Hexagonal / Pill Buttons) */}

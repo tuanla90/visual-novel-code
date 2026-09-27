@@ -127,7 +127,7 @@ export function TopBar({
                   onOpenAudio();
                 }}
               >
-                Cài đặt âm thanh
+                Cài đặt (tốc độ chữ, âm thanh)
               </button>
             ) : null}
             <button

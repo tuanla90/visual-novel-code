@@ -1,16 +1,14 @@
 import { useEffect, useRef } from 'react';
-import { useVnStore, type SaveSlot } from './vn-store';
+import { useVnStore, type SaveSlot, type SaveSnapshot } from './vn-store';
 import { soundEngine } from '../audio/sound-engine';
-import type { StoryProgress } from '../../story/engine/state';
-import type { GameData } from '../store/store';
 import './vn-controls.css';
 
 export interface SaveLoadModalProps {
   open: boolean;
   mode: 'save' | 'load';
   onClose: () => void;
-  progress: StoryProgress | null;
-  evidence: GameData['evidence'] | null;
+  /** Trạng thái game hiện tại để lưu (null khi chưa bắt đầu). */
+  snapshot: SaveSnapshot | null;
   scene: string;
   onRestore: (slot: SaveSlot) => void;
   onToast: (msg: string) => void;
@@ -20,8 +18,7 @@ export function SaveLoadModal({
   open,
   mode,
   onClose,
-  progress,
-  evidence,
+  snapshot,
   scene,
   onRestore,
   onToast,
@@ -49,8 +46,8 @@ export function SaveLoadModal({
 
   const handleSlotClick = (index: number) => {
     if (mode === 'save') {
-      if (!progress || !evidence) return;
-      saveToSlot(index, progress, evidence, scene);
+      if (!snapshot) return;
+      saveToSlot(index, snapshot, scene);
       soundEngine.playSfx('select');
       onToast(`Đã lưu tiến độ vào Ô số ${index + 1}!`);
       onClose();
@@ -83,23 +80,25 @@ export function SaveLoadModal({
 
         <div className="saveload-grid">
           {saveSlots.map((slot, idx) => (
-            <div
+            <button
+              type="button"
               key={idx}
               className="save-slot"
               onClick={() => handleSlotClick(idx)}
+              disabled={mode === 'load' && !slot}
               style={mode === 'load' && !slot ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
             >
-              <div className="save-slot__header">
+              <span className="save-slot__header">
                 <span className="save-slot__index">Ô SỐ {idx + 1}</span>
                 <span>{slot ? slot.date : 'Trống'}</span>
-              </div>
-              <div className="save-slot__thumb">
+              </span>
+              <span className="save-slot__thumb">
                 {slot ? slot.thumbnailText : <span className="save-slot__empty">— Trống —</span>}
-              </div>
-              <div className="save-slot__task">
+              </span>
+              <span className="save-slot__task">
                 {slot ? slot.task : mode === 'save' ? 'Bấm để lưu vào đây' : 'Chưa có dữ liệu'}
-              </div>
-            </div>
+              </span>
+            </button>
           ))}
         </div>
       </div>

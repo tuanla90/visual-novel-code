@@ -121,22 +121,6 @@
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.04);
 }
 
-.chara-profile__full-art {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.chara-profile__full-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  transition: transform 0.3s ease;
-}
-
 .chara-profile__portrait-large {
   transform: scale(1.6);
   transform-origin: top center;

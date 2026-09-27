@@ -14,7 +14,6 @@ export interface CharacterProfile<C extends CharacterId = CharacterId> {
   detectiveNote: string[];
   expressions: readonly ExpressionOf<C>[];
   accentColor: string;
-  fullArtPath?: string;
 }
 
 export const CHARACTER_PROFILES: Record<CharacterId, CharacterProfile> = {
@@ -39,7 +38,6 @@ export const CHARACTER_PROFILES: Record<CharacterId, CharacterProfile> = {
     ],
     expressions: ['neutral', 'worried', 'happy'] as const,
     accentColor: '#c8102e',
-    fullArtPath: '/src/assets/characters/char-minh-anh-full.jpg',
   },
   'ha-vy': {
     id: 'ha-vy',
@@ -150,6 +148,5 @@ export const CHARACTER_PROFILES: Record<CharacterId, CharacterProfile> = {
     ],
     expressions: ['neutral'] as const,
     accentColor: '#c2410c',
-    fullArtPath: '/src/assets/characters/char-tung-anchor.png',
   },
 };
