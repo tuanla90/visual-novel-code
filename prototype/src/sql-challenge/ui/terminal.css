@@ -297,3 +297,93 @@
   .result-scanline { display: none; }
   .clue-card, .clue-card:hover:not(:disabled), .clue-card.is-held { transition: none; transform: none; }
 }
+
+/* ---------- Trình dựng dạng khối ghép (QueryBuilder) ---------- */
+.chal-builder { --blk-hole: #14252a; background: var(--blk-hole); }
+/* Khe hẹp để mấu lồi của khối trên cắm vừa vào mấu lõm của khối dưới. */
+.chal .qb { gap: 2px; }
+.chal .qb-block {
+  --blk: #4a8fb4;
+  position: relative;
+  grid-template-columns: 135px minmax(0, 1fr);
+  padding: 12px 14px 10px 12px;
+  background: color-mix(in srgb, var(--blk) 15%, #0f1c20);
+  border: 1px solid color-mix(in srgb, var(--blk) 60%, transparent);
+  border-left: 6px solid var(--blk);
+  border-radius: 6px;
+}
+.chal .qb-block--select { --blk: #56a878; }
+.chal .qb-block--where { --blk: #c99a45; }
+/* Mấu lõm phía trên (chỗ khối trước cắm vào) và mấu lồi phía dưới (cắm vào khối sau). */
+.chal .qb-block::before,
+.chal .qb-block::after {
+  content: '';
+  position: absolute;
+  left: 30px;
+  width: 28px;
+  height: 8px;
+  border-radius: 0 0 7px 7px;
+  pointer-events: none;
+}
+.chal .qb-block::before {
+  top: -1px;
+  background: var(--blk-hole);
+  border: 1px solid color-mix(in srgb, var(--blk) 60%, transparent);
+  border-top: 0;
+}
+.chal .qb-block::after {
+  bottom: -9px;
+  z-index: 1;
+  background: color-mix(in srgb, var(--blk) 15%, #0f1c20);
+  border: 1px solid color-mix(in srgb, var(--blk) 60%, transparent);
+  border-top: 0;
+}
+.chal .qb-block:first-child::before { display: none; }
+.chal .qb-block--where::after { display: none; }
+.chal .qb-block .qb-row__kw { color: color-mix(in srgb, var(--blk) 70%, white); letter-spacing: 0.04em; }
+/* Khối còn thiếu: viền đứt, nhạt — như một ô chờ lắp. */
+.chal .qb-block.is-empty {
+  background: color-mix(in srgb, var(--blk) 6%, #0f1c20);
+  border-style: dashed;
+  border-left-style: solid;
+  border-left-color: color-mix(in srgb, var(--blk) 45%, transparent);
+}
+.chal .qb-block.is-empty .qb-row__kw { color: color-mix(in srgb, var(--blk) 45%, #afc3bf); }
+.chal .qb-block.is-optional { border-style: dashed; border-left-style: solid; }
+/* Khối vừa khớp: nảy nhẹ + lóe sáng. */
+.chal .qb-block.is-filled { animation: qb-snap 0.38s cubic-bezier(0.3, 1.6, 0.5, 1) 1; }
+@keyframes qb-snap {
+  0% { transform: translateY(-4px) scale(1.01); box-shadow: 0 0 0 0 color-mix(in srgb, var(--blk) 70%, transparent); }
+  60% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--blk) 25%, transparent); }
+  100% { transform: none; box-shadow: none; }
+}
+/* Mảnh SQL của khối, ghép dần thành câu hoàn chỉnh. */
+.chal .qb-block__frag {
+  grid-column: 1 / -1;
+  justify-self: end;
+  max-width: 100%;
+  margin-top: 6px;
+  padding: 2px 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.28);
+  color: color-mix(in srgb, var(--blk) 55%, white);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.chal .qb-block.is-empty .qb-block__frag { opacity: 0.55; }
+/* Điều kiện là các khối con trong khối WHERE. */
+.chal .qb-block--where .qb-cond {
+  padding: 6px 8px;
+  border-left: 3px solid var(--blk);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--blk) 9%, transparent);
+}
+.chal .qb-block--where .qb-cond.is-pending { border-left-style: dashed; }
+@media (prefers-reduced-motion: reduce) {
+  .chal .qb-block.is-filled { animation: none; }
+}
+@media (max-width: 1100px) { .chal .qb-block { grid-template-columns: 110px minmax(0, 1fr); } }
+@media (max-width: 520px) { .chal .qb-block { grid-template-columns: minmax(0, 1fr); } }

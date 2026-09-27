@@ -83,6 +83,23 @@ describe('ChallengeScreen — hàng WHERE, "Từ manh mối", phép nối chưa 
     expect(screen.getByRole('status')).toHaveTextContent('Hàng SELECT chưa chọn cột nào.');
   });
 
+  it('khối ghép: FROM/SELECT trống → đã khớp khi điền; WHERE được để trống; mảnh SQL theo từng khối', async () => {
+    const user = userEvent.setup();
+    renderChallenge('c1');
+    const block = (name: string) => screen.getByRole('group', { name });
+    expect(block('FROM')).toHaveClass('is-empty');
+    expect(block('WHERE')).toHaveClass('is-optional');
+    await user.selectOptions(screen.getByLabelText('Bảng dữ liệu'), 'sinh_vien');
+    expect(block('FROM')).toHaveClass('is-filled');
+    expect(block('FROM')).toHaveTextContent('FROM sinh_vien');
+    expect(block('SELECT')).toHaveClass('is-empty');
+    await user.click(within(block('SELECT')).getByText('ten'));
+    expect(block('SELECT')).toHaveClass('is-filled');
+    expect(block('SELECT')).toHaveTextContent('SELECT ten');
+    await user.click(screen.getByRole('button', { name: /Thêm điều kiện/ }));
+    expect(block('WHERE')).toHaveClass('is-empty');
+  });
+
   it('thẻ manh mối: bấm thẻ rồi "Đặt manh mối vào đây" = chọn trong "Từ manh mối"; chỉ điều kiện nhận được mới có nút đặt', async () => {
     const user = userEvent.setup();
     renderChallenge('c1');
