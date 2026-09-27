@@ -7,6 +7,7 @@
  * đó cho hai thứ tự KHÁC nhau — nên nếu component xáo lại sau khi dựng lại, thứ tự sẽ đổi và test đỏ.
  */
 import { fireEvent, render, screen, within } from '@testing-library/react';
+import { StrictMode } from 'react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { realContent } from '../content/real';
@@ -64,7 +65,7 @@ describe('thứ tự lựa chọn giữ nguyên khi chọn lại (QĐ-041, qua G
 
   it('chọn sai → đọc phản hồi → quay lại: thứ tự y hệt; chọn sai lần nữa vẫn y hệt', async () => {
     const user = userEvent.setup();
-    render(<GameScreen />);
+    render(<StrictMode><GameScreen /></StrictMode>);
     const before = choiceTexts();
     expect(before).toHaveLength(3);
     const wrong = QUESTION.choices.filter((c) => !c.correct);
@@ -83,7 +84,7 @@ describe('thứ tự lựa chọn giữ nguyên khi chọn lại (QĐ-041, qua G
 
   it('bấm đúp lựa chọn sai (phát hiện CAO rà soát code): cú bấm thứ hai KHÔNG qua mất lời phản hồi', async () => {
     const user = userEvent.setup();
-    render(<GameScreen />);
+    render(<StrictMode><GameScreen /></StrictMode>);
     const wrong = QUESTION.choices.find((c) => !c.correct);
     if (!wrong) throw new Error('q-two-rows thiếu lựa chọn sai');
     await passPressGuard();
@@ -102,7 +103,7 @@ describe('thứ tự lựa chọn giữ nguyên khi chọn lại (QĐ-041, qua G
 
   it('chơi lại từ đầu (attempts = 0) thì câu hỏi được xáo mới', async () => {
     const user = userEvent.setup();
-    const first = render(<GameScreen />);
+    const first = render(<StrictMode><GameScreen /></StrictMode>);
     const before = choiceTexts();
     await passPressGuard();
     await user.click(screen.getByRole('button', { name: QUESTION.choices.find((c) => !c.correct)?.text }));
@@ -110,7 +111,7 @@ describe('thứ tự lựa chọn giữ nguyên khi chọn lại (QĐ-041, qua G
 
     // Phiên mới: runtime báo attempts = 0 → xáo mới (dãy ngẫu nhiên khác → thứ tự khác).
     startAtQuestion();
-    render(<GameScreen />);
+    render(<StrictMode><GameScreen /></StrictMode>);
     expect(useGameStore.getState().progress?.choices['q-two-rows']).toBeUndefined();
     expect(choiceTexts()).not.toEqual(before);
   });

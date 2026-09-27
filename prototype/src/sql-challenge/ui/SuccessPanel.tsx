@@ -6,6 +6,7 @@
  */
 import { useRef, useState } from 'react';
 import { speakerLabel } from '../../shared/display-names';
+import { useGameStore } from '../../shared/store';
 import { track } from '../../shared/telemetry/track';
 import { CodeText } from '../../shared/ui/CodeText';
 import { MultipleChoice } from '../../shared/ui/MultipleChoice';
@@ -30,6 +31,8 @@ export function SuccessPanel({ attempt, run, table, conditionCount, question, sa
   const [lastChoice, setLastChoice] = useState<{ id: string; correct: boolean; feedback: DialogueLine[] } | null>(null);
   // Đếm lần thử bằng ref (đồng bộ) để hai cú bấm liền nhau không cùng ghi attempt = 1 / isFirstChoice.
   const tries = useRef({ count: 0, done: false });
+  // Khóa nhớ thứ tự lựa chọn (QĐ-041/QĐ-066): chơi lại từ đầu → phiên mới → xáo mới.
+  const gameKey = useGameStore((s) => s.progress?.startedAt ?? null);
   const answered = question === null || lastChoice?.correct === true;
 
   const choose = (choiceId: string): void => {
@@ -59,7 +62,7 @@ export function SuccessPanel({ attempt, run, table, conditionCount, question, sa
         </div>
         <div className="result__next">
           {question && !answered ? (
-            <MultipleChoice question={question} attempts={attempts} onChoose={choose} />
+            <MultipleChoice question={question} attempts={attempts} gameKey={gameKey} onChoose={choose} />
           ) : null}
           {question && answered && chosenText ? (
             <div className="result__answered">
