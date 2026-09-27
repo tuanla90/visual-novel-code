@@ -40,8 +40,18 @@ export default function App() {
           isSample={gameContent.meta.isSample}
           hasSavedProgress={progress !== null}
           onStart={() => {
-            if (progress) resetGame(); // phiên mới; khảo sát ghi SAU khi đổi phiên
-            commitPreSurvey();
+            // "Bắt đầu lại" (TitleScreen đã hỏi xác nhận): phiên mới; khảo sát ghi SAU khi đổi phiên.
+            const previous = useGameStore.getState().survey;
+            if (progress) resetGame();
+            if (progress && (previous.pre !== null || previous.preSkipped)) {
+              // Khảo sát đầu đã trả lời/bỏ qua ở phiên cũ (form không hiện nữa) → mang nguyên sang phiên
+              // mới thay vì ghi `survey_skipped` giả từ bản nháp rỗng (QĐ-066).
+              if (previous.pre !== null) submitSurvey('pre', previous.pre);
+              else skipSurvey('pre');
+              setPreDraft(EMPTY_PRE_DRAFT);
+            } else {
+              commitPreSurvey();
+            }
             startGame();
             setTitleDismissed(true);
           }}
