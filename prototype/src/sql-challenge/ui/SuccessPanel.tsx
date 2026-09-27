@@ -9,6 +9,7 @@ import { speakerLabel } from '../../shared/display-names';
 import { track } from '../../shared/telemetry/track';
 import { CodeText } from '../../shared/ui/CodeText';
 import { MultipleChoice } from '../../shared/ui/MultipleChoice';
+import { usePressGuard } from '../../shared/ui/use-press-guard';
 import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
 import type { RunSuccess } from '../types';
 import { rowCountText } from './labels';
@@ -26,6 +27,7 @@ export interface SuccessPanelProps {
 }
 
 export function SuccessPanel({ attempt, run, table, conditionCount, question, saving, disabled, onSave }: SuccessPanelProps) {
+  const guardedSave = usePressGuard(onSave);
   const [attempts, setAttempts] = useState(0);
   const [lastChoice, setLastChoice] = useState<{ id: string; correct: boolean; feedback: DialogueLine[] } | null>(null);
   // Đếm lần thử bằng ref (đồng bộ) để hai cú bấm liền nhau không cùng ghi attempt = 1 / isFirstChoice.
@@ -81,7 +83,7 @@ export function SuccessPanel({ attempt, run, table, conditionCount, question, sa
             </div>
           ) : null}
           {answered ? (
-            <button type="button" className="btn btn--primary result__save" onClick={onSave} disabled={saving || disabled}>
+            <button type="button" className="btn btn--primary result__save" onClick={guardedSave} disabled={saving || disabled}>
               {saving ? 'Đang lưu…' : 'Lưu vào hồ sơ'}
             </button>
           ) : null}

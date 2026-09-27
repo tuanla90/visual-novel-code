@@ -222,7 +222,7 @@ describe('chơi trọn luồng intro-01 → [KẾT THÚC] (store + runtime + eng
 
     // Kết thúc thật, đi từ chuỗi đầu tới chuỗi cuối.
     expect(progress.ended).toBe(true);
-    expect(log.sequences[0]).toBe('intro-01');
+    expect(log.sequences[0]).toBe('intro-00');
     expect(log.sequences.at(-1)).toBe('end-04');
     expect(log.steps).toBeGreaterThan(100);
 

@@ -8,7 +8,7 @@
 
 ## Quy ước đọc file
 
-- Thứ tự phần: `intro` → `investigation` → `analysis` → `debrief` → `ending`. Chuỗi mở đầu của game: `intro-01`.
+- Thứ tự phần: `intro` → `investigation` → `analysis` → `debrief` → `ending`. Chuỗi mở đầu của game: `intro-00`.
 - Tiêu đề phần: `## Phần N — <Tên> {part: <part-id>}`. Tiêu đề chuỗi: `### <seq-id> — <mô tả> {scene: <scene-id>}`.
 - Dòng bắt đầu bằng `- **<người nói>**` là lời thoại hiển thị. Mọi dòng khác là chỉ dẫn, không hiển thị nguyên văn.
 - Dòng `> NHIỆM VỤ: …` đổi chữ trên thanh "Nhiệm vụ hiện tại" tại đúng vị trí của nó trong chuỗi.
@@ -25,6 +25,22 @@
 ---
 
 ## Phần 1 — Mở đầu {part: intro}
+
+### intro-00 — Dạo quanh khuôn viên cùng Trần Tùng {scene: corridor-b}
+
+> NHIỆM VỤ: Dạo quanh khuôn viên trường cùng Tùng
+
+- [DÀN DỰNG] Cảnh hành lang thoáng đãng nhìn ra sân trường và hàng phượng vĩ. Tùng cầm cẩm nang bản đồ trường, hồ hởi dẫn đường.
+- **narrator**: Tuần đầu tiên bước chân vào cổng trường Đại học Hoa Phượng.
+- **tung** (neutral): Đi một vòng từ sáng tới giờ đã thấy trường mình rộng chưa? Phòng KTX tụi mình ở tầng 3 khu B là thoáng nhất rồi đấy!
+- **player**: Công nhận, từ khu giảng đường A qua khu B mà hoa hết cả mắt.
+- **tung** (neutral): Phía bên kia là Thư viện trung tâm bốn tầng điều hòa mát rượi, còn đằng sau là Căng tin với sân thể thao.
+- **player**: Cảm ơn cậu đã làm hướng dẫn viên nhiệt tình suốt cả buổi sáng nhé.
+- **tung** (neutral): Bạn cùng phòng với nhau cả, khách khí làm gì! Cơ mà nghe bảo cậu mới ghi danh vào CLB Thám tử Dữ liệu à?
+- **player**: Đúng rồi, hôm nay là buổi gặp mặt đầu tiên của CLB.
+- **tung** (neutral): Phòng CLB ở ngay cuối hành lang này này. Cậu vào đi kẻo muộn, tớ lượn sang căng tin làm cốc trà đá đây!
+- **tung** (neutral): Chiều về KTX nhớ kể tớ nghe xem CLB thám tử có vụ án gì ly kỳ không nhé!
+- [ĐI TỚI intro-01]
 
 ### intro-01 — Phòng CLB, lá thư và việc được nhờ {scene: clb-room}
 
@@ -147,6 +163,7 @@
 
 - **ha-vy** (neutral): KT24A và QT24B. Hai mã lớp này giờ cũng là manh mối.
 - **minh-anh** (neutral): Chữ ký, tòa B, bookmark. Ai khớp cả ba?
+- **ha-vy** (smile): Chọn nhiều lớp trong danh sách giống như tick chọn nhiều ô trong Filter của Excel vậy.
 - [DÀN DỰNG] Mục "Từ manh mối" của trình dựng lúc này có: `H` (chữ ký), danh sách `KT24A, QT24B` (vật chứng ev-c2-classes-b), `Báo chí` (bookmark) — QĐ-017.
 - [THỬ THÁCH c3]
 - [ĐI TỚI ana-c3-done]
@@ -345,6 +362,7 @@ WHERE ten LIKE 'H%'
 - [KHI: no-value] **ha-vy** (neutral): Có một điều kiện chưa có giá trị. Cậu lọc theo gì? Chọn trong mục "Từ manh mối" nhé.
 - [KHI: connector-unset] **ha-vy** (neutral): Chưa chọn cách nối các điều kiện. Cậu cần người thỏa bất kỳ, hay thỏa đồng thời?
   - QĐ-039: khi có từ 2 điều kiện mà phép nối chưa chọn, nút Chạy bị vô hiệu; lời này hiện khi người chơi bấm Chạy (hoặc rê chuột lên nút). Gặp được ở mọi thử thách người chơi tự thêm điều kiện thứ hai; không gặp ở debrief-fix vì phép nối nạp sẵn `OR`.
+- [KHI: too-many-rows] **ha-vy** (thinking): Kết quả vượt quá 2000 dòng. Cậu hãy thêm điều kiện lọc để thu hẹp kết quả nhé.
 - [KHI: wrong-table] **ha-vy** (thinking): Thông tin cậu cần nằm ở bảng khác. Mở bảng mô tả cột xem nó ở đâu nhé.
 - [KHI: or-connector] dùng hint-any-or-all
 - [KHI: wrong-column-ho-dem] **ha-vy** (thinking): Cậu đang lọc theo cột ho_dem. Chữ ký thường là tên gọi, tức cột ten.
@@ -446,8 +464,10 @@ WHERE ten LIKE 'H%'
 
 - [DÀN DỰNG] Khi có từ 2 điều kiện, phép nối ở trạng thái chưa chọn; người chơi phải tự chọn AND (thỏa đồng thời) hoặc OR (thỏa bất kỳ) — QĐ-039. Chưa chọn thì nút Chạy bị vô hiệu, lời nhắc là `connector-unset` (mục "Nhận xét chung").
 - [KHI: or-connector] dùng hint-any-or-all
+- [KHI: same-column-and] **ha-vy** (thinking): Một bạn không thể học hai lớp cùng lúc. Hãy dùng danh sách lớp trong mục manh mối.
 - [KHI: missing-condition] **ha-vy** (thinking): Còn nhiều người quá. Đã đủ ba manh mối chưa: chữ ký, tòa B, bookmark?
 - [KHI: class-prefix] **ha-vy** (thinking): Mã lớp có chữ B chưa chắc ở tòa B. Dùng đúng danh sách lớp từ thử thách 2.
+- [KHI: class-subset] **ha-vy** (thinking): Tòa B có hai lớp sinh hoạt. Cậu mới lọc một lớp, hãy chọn cả hai lớp nhé.
 - [KHI: missing-columns] dùng hint-right-columns
 - [GỢI Ý 1] **ha-vy** (neutral): Ghép cả ba manh mối vào một truy vấn: chữ ký, tòa B, bookmark. Người cần tìm phải khớp hết.
 - [GỢI Ý 2] **ha-vy** (thinking): Bảng sinh_vien: ten bắt đầu bằng H, ma_lop thuộc danh sách tòa B, clb bằng Báo chí. Như lọc ba cột một lúc trong Excel.

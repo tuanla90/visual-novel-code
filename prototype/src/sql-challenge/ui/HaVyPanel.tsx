@@ -5,6 +5,8 @@
 import type { ReactNode } from 'react';
 import { speakerLabel } from '../../shared/display-names';
 import { CodeText } from '../../shared/ui/CodeText';
+import { usePressGuard } from '../../shared/ui/use-press-guard';
+import { resolvePortrait } from '../../shared/ui/visuals/art-slots';
 import type { DialogueLine } from '../../story/types';
 
 export interface HaVyNote {
@@ -21,20 +23,29 @@ export interface HaVyPanelProps {
   /** Chữ khi chưa có lời nào. */
   idle: string;
   actions?: ReactNode;
+  onAskHaVy?: () => void;
+  askDisabled?: boolean;
 }
 
-export function HaVyPanel({ note, idle, actions }: HaVyPanelProps) {
+export function HaVyPanel({ note, idle, actions, onAskHaVy, askDisabled }: HaVyPanelProps) {
   const who = note ? speakerLabel(note.line.speaker) : speakerLabel('ha-vy');
+  const guardedAskHaVy = usePressGuard(onAskHaVy);
+  const avatarArt = resolvePortrait('ha-vy', note?.tone === 'success' ? 'smile' : 'thinking');
+
   return (
     <section className={`havy${note?.tone === 'success' ? ' havy--success' : ''}`} aria-labelledby="havy-name">
       <div className="havy__head">
         <span className="havy__avatar" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="12" cy="8" r="4" />
-            <circle cx="10.2" cy="8" r="1.1" />
-            <circle cx="13.8" cy="8" r="1.1" />
-            <path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" />
-          </svg>
+          {avatarArt.url ? (
+            <img src={avatarArt.url} alt="" className="havy__avatar-img" />
+          ) : (
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="8" r="4" />
+              <circle cx="10.2" cy="8" r="1.1" />
+              <circle cx="13.8" cy="8" r="1.1" />
+              <path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" />
+            </svg>
+          )}
         </span>
         <h3 id="havy-name" className="havy__name">
           {who}
@@ -50,7 +61,16 @@ export function HaVyPanel({ note, idle, actions }: HaVyPanelProps) {
           <p className="havy__idle">{idle}</p>
         )}
       </div>
-      {actions ? <div className="havy__actions">{actions}</div> : null}
+      {onAskHaVy || actions ? (
+        <div className="havy__actions">
+          {onAskHaVy ? (
+            <button type="button" className="btn btn--small btn--havy" onClick={guardedAskHaVy} disabled={askDisabled}>
+              Hỏi Hà Vy
+            </button>
+          ) : null}
+          {actions}
+        </div>
+      ) : null}
     </section>
   );
 }

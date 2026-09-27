@@ -254,9 +254,9 @@ function expectedChallenge(card: RawChallengeCard): unknown {
 // ---------- Test ----------
 
 describe('kịch bản đọc được trọn (bộ đọc chặt)', () => {
-  it('đủ 5 phần theo thứ tự, 19 chuỗi, 4 thẻ thử thách, 7 thẻ hồ sơ + chú thích của 3 thẻ có dữ liệu cá nhân (QĐ-062)', () => {
+  it('đủ 5 phần theo thứ tự, 20 chuỗi, 4 thẻ thử thách, 7 thẻ hồ sơ + chú thích của 3 thẻ có dữ liệu cá nhân (QĐ-062)', () => {
     expect(script.parts.map((p) => p.id)).toEqual(['intro', 'investigation', 'analysis', 'debrief', 'ending']);
-    expect(script.sequences).toHaveLength(19);
+    expect(script.sequences).toHaveLength(20);
     expect(script.challenges.map((c) => c.id)).toEqual([...CHALLENGE_IDS]);
     expect(script.dossier.map((d) => d.id)).toEqual([...CLUE_IDS, ...DOCUMENT_IDS, 'ev-c1-names-h', 'ev-c3-shortlist', 'ev-quan-fixed']);
   });
@@ -508,16 +508,16 @@ describe('số liệu kịch bản (BỐI CẢNH của brief gói 5) — kịch 
 
   /** Dòng thô trong 5 Phần (không qua bộ đọc) · mục của bộ đọc · node của dữ liệu · số kỳ vọng. */
   const ROWS: { name: string; re: RegExp; item: string | null; node: string | null; n: number }[] = [
-    { name: 'chuỗi `### `', re: /^### /, item: null, node: null, n: 19 },
-    { name: 'lời thoại `- **người nói**`', re: /^- \*\*/, item: 'line', node: 'line', n: 89 },
-    { name: '`> NHIỆM VỤ`', re: /^> NHIỆM VỤ: /, item: 'task', node: 'task', n: 16 },
+    { name: 'chuỗi `### `', re: /^### /, item: null, node: null, n: 20 },
+    { name: 'lời thoại `- **người nói**`', re: /^- \*\*/, item: 'line', node: 'line', n: 99 },
+    { name: '`> NHIỆM VỤ`', re: /^> NHIỆM VỤ: /, item: 'task', node: 'task', n: 17 },
     { name: '[HỎI] trong chuỗi truyện', re: /^- \[HỎI /, item: 'question', node: 'question', n: 3 },
     { name: '[ĐIỀU KIỆN QUA]', re: /^- \[ĐIỀU KIỆN QUA\]/, item: 'gate', node: 'gate', n: 4 },
     { name: '[HIỆN TÀI LIỆU]', re: /^- \[HIỆN TÀI LIỆU /, item: 'show-document', node: 'show-document', n: 3 },
     { name: '[HIỆU ỨNG]', re: /^- \[HIỆU ỨNG /, item: 'effect', node: 'effect', n: 2 },
     { name: '[CHỌN DÒNG]', re: /^- \[CHỌN DÒNG /, item: 'line-pick', node: 'line-pick', n: 1 },
-    { name: '[DÀN DỰNG]', re: /^- \[DÀN DỰNG\] /, item: 'note', node: 'note', n: 28 },
-    { name: '[ĐI TỚI]', re: /^- \[ĐI TỚI /, item: 'goto', node: 'goto', n: 11 },
+    { name: '[DÀN DỰNG]', re: /^- \[DÀN DỰNG\] /, item: 'note', node: 'note', n: 29 },
+    { name: '[ĐI TỚI]', re: /^- \[ĐI TỚI /, item: 'goto', node: 'goto', n: 12 },
     { name: '[THỬ THÁCH]', re: /^- \[THỬ THÁCH /, item: 'challenge', node: 'challenge', n: 3 },
     { name: '[SỬA TRUY VẤN]', re: /^- \[SỬA TRUY VẤN /, item: 'fix-query', node: 'fix-query', n: 1 },
     { name: '[KẾT THÚC]', re: /^- \[KẾT THÚC\]$/, item: 'end', node: 'end', n: 1 },

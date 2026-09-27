@@ -11,6 +11,8 @@ import { speakerLabel } from '../display-names';
 import type { MultipleChoiceQuestion } from '../../story/types';
 import { orderedChoices } from './choice-order';
 import { CodeText } from './CodeText';
+import { usePressGuard } from './use-press-guard';
+import { soundEngine } from '../audio/sound-engine';
 
 export interface MultipleChoiceProps {
   question: MultipleChoiceQuestion;
@@ -22,6 +24,7 @@ export interface MultipleChoiceProps {
 }
 
 export function MultipleChoice({ question, attempts, onChoose, random }: MultipleChoiceProps) {
+  const guardedChoose = usePressGuard(onChoose);
   const ordered = useMemo(
     () => orderedChoices(question, attempts, random),
     // Chỉ tính lại khi sang câu hỏi khác (QĐ-041): cố ý KHÔNG phụ thuộc `attempts`/`random`;
@@ -41,7 +44,14 @@ export function MultipleChoice({ question, attempts, onChoose, random }: Multipl
       <ul className="mc__choices">
         {ordered.map((c) => (
           <li key={c.id}>
-            <button type="button" className="mc__choice" onClick={() => onChoose(c.id)}>
+            <button
+              type="button"
+              className="mc__choice"
+              onClick={() => {
+                soundEngine.playSfx('select');
+                guardedChoose(c.id);
+              }}
+            >
               <CodeText text={c.text} />
             </button>
           </li>

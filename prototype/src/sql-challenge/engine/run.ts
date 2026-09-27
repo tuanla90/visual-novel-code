@@ -38,7 +38,8 @@ function toSqlValue(v: unknown): SqlValue {
 
 /** Chạy SQL trên CSDL của `dataset`; không bao giờ ném — mọi lỗi thành RunFailure. */
 export async function runQuery(sql: string, dataset: DatasetKind = 'main'): Promise<RunResult> {
-  const check = checkSingleSelect(sql);
+  const normalizedSql = sql.normalize('NFC').trim();
+  const check = checkSingleSelect(normalizedSql);
   if (!check.ok) {
     const failure: RunFailure = { ok: false, kind: 'not_select', message: NOT_SELECT_MESSAGES[check.reason] };
     return failure;
@@ -59,7 +60,11 @@ export async function runQuery(sql: string, dataset: DatasetKind = 'main'): Prom
   try {
     const columns = stmt.getColumnNames();
     const rows: SqlValue[][] = [];
+    const MAX_ROWS = 2000;
     while (stmt.step()) {
+      if (rows.length >= MAX_ROWS) {
+        return { ok: false, kind: 'too_many_rows', message: 'Kết quả vượt quá 2000 dòng.' };
+      }
       rows.push(stmt.get().map(toSqlValue));
     }
     return { ok: true, columns, rows, rowCount: rows.length };

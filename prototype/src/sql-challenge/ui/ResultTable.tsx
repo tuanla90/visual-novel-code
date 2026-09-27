@@ -9,26 +9,28 @@ export interface ResultTableProps {
 
 export function ResultTable({ columns, rows, caption }: ResultTableProps) {
   return (
-    <table className="result-table">
-      <caption className="visually-hidden">{caption}</caption>
-      <thead>
-        <tr>
-          {columns.map((c, i) => (
-            <th key={`${c}-${i}`} scope="col" className="mono">
-              {c}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map((r, i) => (
-          <tr key={i}>
-            {r.map((v, j) => (
-              <td key={j}>{v === null ? <span className="result-table__null">(trống)</span> : String(v)}</td>
+    <div className="result-table-wrap">
+      <table className="result-table">
+        <caption className="visually-hidden">{caption}</caption>
+        <thead>
+          <tr>
+            {columns.map((c, i) => (
+              <th key={`${c}-${i}`} scope="col" className="mono">
+                {c}
+              </th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {rows.map((r, i) => (
+            <tr key={i}>
+              {r.map((v, j) => (
+                <td key={j}>{v === null ? <span className="result-table__null">(trống)</span> : String(v)}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

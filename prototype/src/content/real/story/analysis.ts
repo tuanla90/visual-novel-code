@@ -64,6 +64,12 @@ export const analysisSequences: Sequence[] = [
       { type: 'line', speaker: 'ha-vy', expression: 'neutral', text: 'KT24A và QT24B. Hai mã lớp này giờ cũng là manh mối.' },
       { type: 'line', speaker: 'minh-anh', expression: 'neutral', text: 'Chữ ký, tòa B, bookmark. Ai khớp cả ba?' },
       {
+        type: 'line',
+        speaker: 'ha-vy',
+        expression: 'smile',
+        text: 'Chọn nhiều lớp trong danh sách giống như tick chọn nhiều ô trong Filter của Excel vậy.',
+      },
+      {
         type: 'note',
         text: 'Mục "Từ manh mối" của trình dựng lúc này có: `H` (chữ ký), danh sách `KT24A, QT24B` (vật chứng ev-c2-classes-b), `Báo chí` (bookmark) — QĐ-017.',
       },

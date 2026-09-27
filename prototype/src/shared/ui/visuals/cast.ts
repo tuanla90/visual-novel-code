@@ -21,9 +21,9 @@ export interface CastState {
  * Quân + nhân chứng bên phải (bộ prompt: hai vùng đứng đối diện trái/phải, màn chiếu ở giữa).
  */
 const POSITIONS: Record<SceneId, Record<CharacterId, number>> = {
-  'clb-room': { 'minh-anh': 0.24, 'ha-vy': 0.76, quan: 0.6, hoai: 0.5, 'bac-tu': 0.88 },
-  'corridor-b': { 'minh-anh': 0.2, 'ha-vy': 0.44, quan: 0.6, hoai: 0.5, 'bac-tu': 0.9 },
-  'debrief-room': { 'minh-anh': 0.28, 'ha-vy': 0.11, quan: 0.87, hoai: 0.68, 'bac-tu': 0.5 },
+  'clb-room': { 'minh-anh': 0.24, 'ha-vy': 0.76, quan: 0.6, hoai: 0.5, 'bac-tu': 0.88, tung: 0.5 },
+  'corridor-b': { 'minh-anh': 0.2, 'ha-vy': 0.44, quan: 0.6, hoai: 0.5, 'bac-tu': 0.9, tung: 0.65 },
+  'debrief-room': { 'minh-anh': 0.28, 'ha-vy': 0.11, quan: 0.87, hoai: 0.68, 'bac-tu': 0.5, tung: 0.5 },
 };
 
 export function castPosition(scene: SceneId, character: CharacterId): number {

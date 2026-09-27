@@ -256,57 +256,92 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
   return (
     <div className={`chal${solved ? ' chal--solved' : ''}`} role="region" aria-labelledby="chal-title">
       <div className="chal__left">
-        <header className="chal-card chal-head">
-          <h2 id="chal-title" className="chal-head__title">
-            <CodeText text={content.title} />
-          </h2>
-          <p className="chal-head__prompt">
-            <CodeText text={content.prompt} />
-          </p>
-        </header>
+        <div className="chal-card chal-workspace">
+          <header className="chal-head">
+            <h2 id="chal-title" className="chal-head__title">
+              <CodeText text={content.title} />
+            </h2>
+            <p className="chal-head__prompt">
+              <CodeText text={content.prompt} />
+            </p>
+          </header>
 
-        {locked ? (
-          <p className="chal-locked" role="status">
-            Quyền xem dữ liệu của CLB đã kết thúc, nên trình dựng bị khóa: không chọn, không chạy được truy vấn nữa.
-          </p>
-        ) : null}
+          {/* Thanh chuyển đổi cơ chế giải đố (Visual Builder ↔ Direct SQL) */}
+          {!locked && !solved ? (
+            <div className="chal-mode-switcher" aria-label="Chuyển đổi chế độ soạn thảo">
+              <button
+                type="button"
+                className={`chal-mode-tab${!sqlMode ? ' chal-mode-tab--active' : ''}`}
+                onClick={() => {
+                  if (sqlMode) toggleSqlMode();
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                  <rect x="14" y="14" width="7" height="7" />
+                  <rect x="3" y="14" width="7" height="7" />
+                </svg>
+                Trình dựng Khối (Visual Builder)
+              </button>
+              <button
+                type="button"
+                className={`chal-mode-tab${sqlMode ? ' chal-mode-tab--active' : ''}`}
+                onClick={() => {
+                  if (!sqlMode) toggleSqlMode();
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+                Gõ SQL Trực Tiếp (Editor)
+              </button>
+            </div>
+          ) : null}
 
-        <section className="chal-card chal-builder" aria-label="Trình dựng truy vấn">
-          {solved ? (
-            <p className="chal-solved">
-              {content.readQuestion ? 'Truy vấn đã đúng — trả lời câu hỏi bên dưới rồi lưu vào hồ sơ.' : 'Truy vấn đã đúng — lưu vào hồ sơ để đi tiếp.'}
+          {locked ? (
+            <p className="chal-locked" role="status">
+              Quyền xem dữ liệu của CLB đã kết thúc, nên trình dựng bị khóa: không chọn, không chạy được truy vấn nữa.
             </p>
           ) : null}
-          {sqlMode && !solved ? (
-            <p className="chal-sqlmode">Đang sửa SQL trực tiếp ở khung bên phải. Bấm “Quay về trình dựng” để dùng lại các hàng dưới đây.</p>
-          ) : null}
-          <QueryBuilder
-            model={model}
-            onChange={setModel}
-            guided={guided}
-            disabled={locked || solved || sqlMode}
-            onPreview={showPreview}
-            whereRow={<WhereRow model={model} onChange={setModel} evidenceOptions={evidenceOptions} disabled={locked || solved || sqlMode} />}
-          />
-        </section>
 
-        {/* Thanh Chạy nằm NGOÀI khung trình dựng (khung đó có thể tự cuộn) để nút Chạy + lý do chặn luôn thấy được.
-            Đã đúng thì ẩn (trình dựng đã khóa) để nhường chỗ cho câu đọc kết quả. */}
-        <div className={`chal-card chal-runbar${guided === 'run' ? ' is-guided' : ''}`} data-region="run" hidden={solved}>
-          <button
-            type="button"
-            className="btn btn--primary chal-run"
-            disabled={!canRun}
-            aria-describedby={blocked && !locked ? 'chal-run-reason' : undefined}
-            onClick={() => void run()}
-          >
-            <IconPlay /> {running ? 'Đang chạy…' : 'Chạy truy vấn'}
-          </button>
-          {blocked && !locked ? (
-            <p id="chal-run-reason" className="chal-runbar__reason" role="status">
-              <span className="chal-runbar__who">{speakerLabel(blocked.line.speaker)}:</span> <CodeText text={blocked.line.text} />
-            </p>
-          ) : null}
+          <section className="chal-builder" aria-label="Trình dựng truy vấn">
+            {solved ? (
+              <p className="chal-solved">
+                {content.readQuestion ? 'Truy vấn đã đúng — trả lời câu hỏi bên dưới rồi lưu vào hồ sơ.' : 'Truy vấn đã đúng — lưu vào hồ sơ để đi tiếp.'}
+              </p>
+            ) : null}
+            {sqlMode && !solved ? (
+              <p className="chal-sqlmode">Đang sửa SQL trực tiếp ở khung bên phải. Bấm “Quay về trình dựng” để dùng lại các hàng dưới đây.</p>
+            ) : null}
+            <QueryBuilder
+              model={model}
+              onChange={setModel}
+              guided={guided}
+              disabled={locked || solved || sqlMode}
+              onPreview={showPreview}
+              whereRow={<WhereRow model={model} onChange={setModel} evidenceOptions={evidenceOptions} disabled={locked || solved || sqlMode} />}
+            />
+          </section>
+
+          {/* Thanh Chạy nằm liền kề dưới đáy workspace để thao tác tự nhiên */}
+          <div className={`chal-runbar${guided === 'run' ? ' is-guided' : ''}`} data-region="run" hidden={solved}>
+            <button
+              type="button"
+              className="btn btn--primary chal-run"
+              disabled={!canRun}
+              aria-describedby={blocked && !locked ? 'chal-run-reason' : undefined}
+              onClick={() => void run()}
+            >
+              <IconPlay /> {running ? 'Đang chạy…' : 'Chạy truy vấn'}
+            </button>
+            {blocked && !locked ? (
+              <p id="chal-run-reason" className="chal-runbar__reason" role="status">
+                <span className="chal-runbar__who">{speakerLabel(blocked.line.speaker)}:</span> <CodeText text={blocked.line.text} />
+              </p>
+            ) : null}
+          </div>
         </div>
 
         <section className="chal-card chal-result" aria-label="Kết quả" ref={resultRef}>
@@ -345,14 +380,9 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
         <HaVyPanel
           note={shownNote}
           idle="Dựng truy vấn theo đề bài rồi bấm “Chạy truy vấn”. Chạy sai không sao — chạy lại bao nhiêu lần cũng được."
-          actions={
-            <>
-              <button type="button" className="btn btn--small btn--havy" onClick={askHaVy} disabled={locked || solved}>
-                Hỏi Hà Vy
-              </button>
-              {guideActions}
-            </>
-          }
+          onAskHaVy={askHaVy}
+          askDisabled={locked || solved}
+          actions={guideActions}
         />
         <SchemaPanel onPreview={showPreview} previewDisabled={locked || solved} />
       </aside>

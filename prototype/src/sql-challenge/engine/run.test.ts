@@ -50,6 +50,20 @@ describe('runQuery — chạy được', () => {
     const res = await runQuery("SELECT khoa_hoc FROM lop_sinh_hoat WHERE ma_lop = 'KT24A'");
     expect(res.ok && res.rows[0]?.[0]).toBe(2024);
   });
+
+  it('chuẩn hóa NFC và trim khoảng trắng thừa', async () => {
+    const nfdSql = "   SELECT ma_sv FROM sinh_vien WHERE clb = '" + 'Báo chí'.normalize('NFD') + "'   \n";
+    const res = await runQuery(nfdSql);
+    expect(res.ok).toBe(true);
+    if (res.ok) {
+      expect(res.rowCount).toBeGreaterThan(0);
+    }
+  });
+
+  it('vượt quá giới hạn an toàn 2000 dòng → too_many_rows', async () => {
+    const res = await runQuery('SELECT a.ma_sv FROM sinh_vien a, sinh_vien b, sinh_vien c');
+    expect(res).toMatchObject({ ok: false, kind: 'too_many_rows' });
+  });
 });
 
 describe('runQuery — từ chối câu không phải SELECT, dữ liệu còn nguyên (QĐ-006)', () => {

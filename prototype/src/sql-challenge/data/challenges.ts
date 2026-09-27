@@ -88,18 +88,16 @@ export const CHALLENGE_SPECS: Record<ChallengeId, ChallengeSpec> = {
 export const CHALLENGE_DIAGNOSTIC_ORDER: Record<ChallengeId, readonly DiagnosticCode[]> = {
   c1: ['no-filter', 'missing-columns'],
   c2: ['wrong-table', 'class-prefix', 'no-filter', 'wrong-value', 'missing-columns'],
-  c3: ['or-connector', 'missing-condition', 'class-prefix', 'missing-columns'],
+  c3: ['or-connector', 'same-column-and', 'missing-condition', 'class-prefix', 'class-subset', 'missing-columns'],
   'debrief-fix': ['or-connector', 'missing-condition', 'missing-columns'],
 };
 
 /**
- * Mã ở "Nhận xét chung cho mọi thử thách" của kịch bản, ĐÚNG THỨ TỰ LIỆT KÊ — đủ 18 mã hiện có trừ 4 mã
- * chỉ có trong thẻ riêng (`no-filter`, `missing-columns`, `missing-condition` và `wrong-value` của c2 —
- * `wrong-value` vẫn có lời chung, QĐ-047):
+ * Mã ở "Nhận xét chung cho mọi thử thách" của kịch bản, ĐÚNG THỨ TỰ LIỆT KÊ — đủ mã theo kịch bản:
  * - 6 mã blocking đứng đầu, theo thứ tự engine `BLOCKING_DIAGNOSTIC_CODES` (QĐ-052; `no-columns`,
  *   `no-value` do gói 3 thêm — QĐ-047). Thứ tự ưu tiên của nhóm này do `BLOCKING_DIAGNOSTIC_CODES`
  *   quyết định (priority.ts), liệt kê ở đây để trùng với kịch bản.
- * - Rồi các mã "chưa đúng" chung (QĐ-054 thêm `wrong-table`, `or-connector`, `class-prefix`), mã mẹo
+ * - Rồi các mã "chưa đúng" chung (gồm `too-many-rows`, QĐ-054 thêm `wrong-table`, `or-connector`, `class-prefix`), mã mẹo
  *   `extra-columns` và `other` cuối.
  * Thứ tự khóa của `commonDiagnosticLines` trong nội dung PHẢI trùng mảng này (test diagnostics.test.ts).
  */
@@ -110,6 +108,7 @@ export const COMMON_DIAGNOSTIC_ORDER: readonly DiagnosticCode[] = [
   'no-columns',
   'no-value',
   'connector-unset',
+  'too-many-rows',
   // QĐ-054: ba mã thẻ thử thách không có — sai bảng trước tiên, rồi phép nối, rồi các mã lọc cột.
   'wrong-table',
   'or-connector',

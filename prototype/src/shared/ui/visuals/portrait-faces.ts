@@ -97,6 +97,17 @@ export const CHARACTER_LOOKS: Record<CharacterId, CharacterLook> = {
     hairStyle: 'gray-cap',
     mustache: true,
   },
+  tung: {
+    main: '#c2410c',
+    mainShade: '#9a3412',
+    inner: '#ffedd5',
+    hair: '#292524',
+    hairShade: '#1c1917',
+    iris: '#44403c',
+    skin: '#fed7aa',
+    skinShade: '#fdba74',
+    hairStyle: 'short-messy',
+  },
 };
 
 type FaceTable = { [C in CharacterId]: Record<ExpressionOf<C>, Face> };
@@ -124,6 +135,9 @@ export const FACES: FaceTable = {
   },
   'bac-tu': {
     neutral: { brows: 'soft', eyes: 'soft', mouth: 'smile' },
+  },
+  tung: {
+    neutral: { brows: 'raised', eyes: 'happy', mouth: 'grin' },
   },
 };
 

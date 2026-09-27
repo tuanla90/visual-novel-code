@@ -56,7 +56,7 @@ export type BuilderMode = 'builder' | 'sql';
 /** Giá trị ô kết quả (schema chỉ có TEXT/INTEGER; NULL phòng hờ). */
 export type SqlValue = string | number | null;
 
-export type RunErrorKind = 'not_select' | 'syntax' | 'no_table' | 'no_column' | 'other';
+export type RunErrorKind = 'not_select' | 'syntax' | 'no_table' | 'no_column' | 'too_many_rows' | 'other';
 
 export interface RunSuccess {
   ok: true;

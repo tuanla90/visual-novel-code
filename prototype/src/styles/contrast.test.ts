@@ -52,6 +52,7 @@ const PAIRS: [string, string][] = [
   ['--c-char-quan-ink', '--c-char-quan'],
   ['--c-char-hoai-ink', '--c-char-hoai'],
   ['--c-char-bac-tu-ink', '--c-char-bac-tu'],
+  ['--c-char-tung-ink', '--c-char-tung'],
   ['--c-char-player-ink', '--c-char-player'],
   ['--c-char-narrator-ink', '--c-char-narrator'],
   ['--c-text', '--c-scene-clb-room'],

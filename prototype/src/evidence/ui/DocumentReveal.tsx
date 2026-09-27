@@ -6,6 +6,7 @@
  */
 import { useId, type CSSProperties, type ReactNode } from 'react';
 import { CodeText } from '../../shared/ui/CodeText';
+import { usePressGuard } from '../../shared/ui/use-press-guard';
 import { artDataAttributes, resolveDocument } from '../../shared/ui/visuals/art-slots';
 import { BookmarkArt, EnvelopeArt, LedgerPaperArt, LetterPaperArt, SealArt } from '../../shared/ui/visuals/DocumentArt';
 import type { DocumentCard } from '../types';
@@ -33,6 +34,7 @@ function Paper({ doc, art, className, children }: { doc: DocumentCard; art: Reac
 
 export function DocumentReveal({ document, onClose }: DocumentRevealProps) {
   const titleId = useId();
+  const guardedClose = usePressGuard(onClose);
   return (
     <div className="docview" role="dialog" aria-labelledby={titleId}>
       <header className="docview__head">
@@ -43,7 +45,7 @@ export function DocumentReveal({ document, onClose }: DocumentRevealProps) {
       </header>
       {document ? <DocumentBody doc={document} /> : <p className="docview__missing">Thẻ tài liệu này chưa được viết trong nội dung.</p>}
       <div className="docview__actions">
-        <button type="button" className="btn btn--primary" onClick={onClose} autoFocus>
+        <button type="button" className="btn btn--primary" onClick={guardedClose} autoFocus>
           Cất vào hồ sơ
         </button>
       </div>

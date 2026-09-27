@@ -6,6 +6,66 @@ import type { Sequence } from '../../../story/types';
 
 export const introSequences: Sequence[] = [
   {
+    id: 'intro-00',
+    part: 'intro',
+    scene: 'corridor-b',
+    title: 'Dạo quanh khuôn viên cùng Trần Tùng',
+    nodes: [
+      { type: 'task', text: 'Dạo quanh khuôn viên trường cùng Tùng' },
+      {
+        type: 'note',
+        text: 'Cảnh hành lang thoáng đãng nhìn ra sân trường và hàng phượng vĩ. Tùng cầm cẩm nang bản đồ trường, hồ hởi dẫn đường.',
+      },
+      { type: 'line', speaker: 'narrator', text: 'Tuần đầu tiên bước chân vào cổng trường Đại học Hoa Phượng.' },
+      {
+        type: 'line',
+        speaker: 'tung',
+        expression: 'neutral',
+        text: 'Đi một vòng từ sáng tới giờ đã thấy trường mình rộng chưa? Phòng KTX tụi mình ở tầng 3 khu B là thoáng nhất rồi đấy!',
+      },
+      {
+        type: 'line',
+        speaker: 'player',
+        text: 'Công nhận, từ khu giảng đường A qua khu B mà hoa hết cả mắt.',
+      },
+      {
+        type: 'line',
+        speaker: 'tung',
+        expression: 'neutral',
+        text: 'Phía bên kia là Thư viện trung tâm bốn tầng điều hòa mát rượi, còn đằng sau là Căng tin với sân thể thao.',
+      },
+      {
+        type: 'line',
+        speaker: 'player',
+        text: 'Cảm ơn cậu đã làm hướng dẫn viên nhiệt tình suốt cả buổi sáng nhé.',
+      },
+      {
+        type: 'line',
+        speaker: 'tung',
+        expression: 'neutral',
+        text: 'Bạn cùng phòng với nhau cả, khách khí làm gì! Cơ mà nghe bảo cậu mới ghi danh vào CLB Thám tử Dữ liệu à?',
+      },
+      {
+        type: 'line',
+        speaker: 'player',
+        text: 'Đúng rồi, hôm nay là buổi gặp mặt đầu tiên của CLB.',
+      },
+      {
+        type: 'line',
+        speaker: 'tung',
+        expression: 'neutral',
+        text: 'Phòng CLB ở ngay cuối hành lang này này. Cậu vào đi kẻo muộn, tớ lượn sang căng tin làm cốc trà đá đây!',
+      },
+      {
+        type: 'line',
+        speaker: 'tung',
+        expression: 'neutral',
+        text: 'Chiều về KTX nhớ kể tớ nghe xem CLB thám tử có vụ án gì ly kỳ không nhé!',
+      },
+      { type: 'goto', to: 'intro-01' },
+    ],
+  },
+  {
     id: 'intro-01',
     part: 'intro',
     scene: 'clb-room',

@@ -7,7 +7,7 @@ import { introSequences } from './intro';
 import { investigationSequences } from './investigation';
 
 export const realStory: StoryContent = {
-  startSequenceId: 'intro-01',
+  startSequenceId: 'intro-00',
   sequences: [
     ...introSequences,
     ...investigationSequences,

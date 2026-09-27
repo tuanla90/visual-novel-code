@@ -75,7 +75,7 @@ describe('thứ tự ưu tiên mã chẩn đoán theo kịch bản', () => {
     for (const code of COMMON_DIAGNOSTIC_ORDER) expect(DIAGNOSTIC_CODES).toContain(code);
     expect(CHALLENGE_DIAGNOSTIC_ORDER.c1).toEqual(['no-filter', 'missing-columns']);
     expect(CHALLENGE_DIAGNOSTIC_ORDER.c2).toEqual(['wrong-table', 'class-prefix', 'no-filter', 'wrong-value', 'missing-columns']);
-    expect(CHALLENGE_DIAGNOSTIC_ORDER.c3).toEqual(['or-connector', 'missing-condition', 'class-prefix', 'missing-columns']);
+    expect(CHALLENGE_DIAGNOSTIC_ORDER.c3).toEqual(['or-connector', 'same-column-and', 'missing-condition', 'class-prefix', 'class-subset', 'missing-columns']);
     expect(CHALLENGE_DIAGNOSTIC_ORDER['debrief-fix']).toEqual(['or-connector', 'missing-condition', 'missing-columns']);
     expect(COMMON_DIAGNOSTIC_ORDER[0]).toBe('not-select');
     expect(COMMON_DIAGNOSTIC_ORDER.at(-1)).toBe('other');

@@ -53,6 +53,7 @@ const USER_MANIFEST: Record<string, string> = {
   'char-hoai-downcast': 'hoai-downcast',
   'char-hoai-relieved': 'hoai-relieved',
   'char-bac-tu-neutral': 'bac-tu-neutral',
+  'char-tung-anchor': 'tung-neutral',
 };
 
 describe('ô ảnh: danh sách và README', () => {

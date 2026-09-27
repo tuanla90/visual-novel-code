@@ -8,3 +8,8 @@ coverage/
 *.log
 tsc.txt
 .claude/launch.json
+scratch/
+debug-*.png
+flow-*.png
+prototype-flow-debug.png
+prototype/art-cu/

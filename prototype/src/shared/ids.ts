@@ -22,6 +22,7 @@ export const CHARACTER_EXPRESSIONS = {
   quan: ['neutral', 'smug', 'stunned'],
   hoai: ['nervous', 'downcast', 'relieved'],
   'bac-tu': ['neutral'],
+  tung: ['neutral'],
 } as const satisfies Record<string, readonly string[]>;
 
 export type CharacterId = keyof typeof CHARACTER_EXPRESSIONS;
@@ -147,6 +148,9 @@ export const DIAGNOSTIC_CODES = [
   'limit-used',
   'or-connector',
   'missing-condition',
+  'same-column-and',
+  'class-subset',
+  'too-many-rows',
   'other',
 ] as const;
 export type DiagnosticCode = (typeof DIAGNOSTIC_CODES)[number];

@@ -81,6 +81,13 @@ export const realCommonDiagnosticLines: CommonDiagnosticLines = {
       text: 'Chưa chọn cách nối các điều kiện. Cậu cần người thỏa bất kỳ, hay thỏa đồng thời?',
     },
   },
+  'too-many-rows': {
+    line: {
+      speaker: 'ha-vy',
+      expression: 'thinking',
+      text: 'Kết quả vượt quá 2000 dòng. Cậu hãy thêm điều kiện lọc để thu hẹp kết quả nhé.',
+    },
+  },
   // QĐ-054: lời chung cho mã mà thẻ thử thách không có (OR ở c1/c2, sai bảng ở c1, tiền tố mã lớp ở c1/màn sửa).
   'wrong-table': {
     line: {
@@ -386,6 +393,13 @@ const c3: ChallengeContent = {
   steps: [],
   diagnosticLines: {
     'or-connector': { useStandardHint: 'hint-any-or-all' },
+    'same-column-and': {
+      line: {
+        speaker: 'ha-vy',
+        expression: 'thinking',
+        text: 'Một bạn không thể học hai lớp cùng lúc. Hãy dùng danh sách lớp trong mục manh mối.',
+      },
+    },
     'missing-condition': {
       line: {
         speaker: 'ha-vy',
@@ -398,6 +412,13 @@ const c3: ChallengeContent = {
         speaker: 'ha-vy',
         expression: 'thinking',
         text: 'Mã lớp có chữ B chưa chắc ở tòa B. Dùng đúng danh sách lớp từ thử thách 2.',
+      },
+    },
+    'class-subset': {
+      line: {
+        speaker: 'ha-vy',
+        expression: 'thinking',
+        text: 'Tòa B có hai lớp sinh hoạt. Cậu mới lọc một lớp, hãy chọn cả hai lớp nhé.',
       },
     },
     'missing-columns': { useStandardHint: 'hint-right-columns' },

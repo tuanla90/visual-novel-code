@@ -9,6 +9,7 @@ export const RUN_FAILURE_TEXT: Record<RunErrorKind, string> = {
   syntax: 'Máy chưa đọc được câu này (sai cú pháp) nên chưa có bảng kết quả.',
   no_table: 'Câu này lấy dữ liệu từ một bảng không có trong dữ liệu nên chưa có bảng kết quả.',
   no_column: 'Câu này dùng một cột không có trong bảng nên chưa có bảng kết quả.',
+  too_many_rows: 'Kết quả trả về quá nhiều dòng nên chưa thể hiển thị hết trên màn chiếu.',
   other: 'Bộ chạy SQL gặp lỗi khi chạy câu này nên chưa có bảng kết quả. Tải lại trang rồi thử lại.',
 };
 

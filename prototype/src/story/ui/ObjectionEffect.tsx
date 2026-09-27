@@ -10,7 +10,7 @@
  * Tắt rung/thu phóng khi `prefers-reduced-motion` (app.css). Trình đọc màn hình đọc câu hô qua
  * vùng `role="alert"`. Vẽ qua portal vào `document.body` để phủ cả thanh trên và ngăn hồ sơ.
  */
-import { useCallback, useEffect, useRef, type MouseEvent as ReactMouseEvent } from 'react';
+import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { effectName } from '../../shared/display-names';
 import type { EffectId } from '../../shared/ids';
@@ -22,6 +22,12 @@ export interface ObjectionEffectProps {
 }
 
 const SKIP_KEYS = new Set(['Enter', ' ', 'Escape']);
+
+/** Kiểm tra thiết lập giảm chuyển động của hệ điều hành / trình duyệt. */
+function checkReducedMotion(): boolean {
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return false;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 
 /** Đường tốc độ tỏa từ tâm (tam giác mảnh) — tính sẵn một lần. */
 const SPEED_LINES = Array.from({ length: 36 }, (_, i) => {
@@ -41,7 +47,8 @@ const BURST = Array.from({ length: 28 }, (_, i) => {
 
 export function ObjectionEffect({ effectId, onDone }: ObjectionEffectProps) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const armed = useRef(false);
+  const [reducedMotion, setReducedMotion] = useState(checkReducedMotion);
+  const armed = useRef(reducedMotion);
   const done = useRef(false);
   const onDoneRef = useRef(onDone);
   useEffect(() => {
@@ -55,12 +62,30 @@ export function ObjectionEffect({ effectId, onDone }: ObjectionEffectProps) {
   }, []);
 
   useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return;
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const onChange = () => {
+      const isReduced = media.matches;
+      setReducedMotion(isReduced);
+      if (isReduced) armed.current = true;
+    };
+    media.addEventListener?.('change', onChange);
+    return () => media.removeEventListener?.('change', onChange);
+  }, []);
+
+  useEffect(() => {
     done.current = false;
-    armed.current = false;
+    const isReduced = checkReducedMotion();
+    armed.current = isReduced;
     rootRef.current?.focus({ preventScroll: true });
-    const arm = window.setTimeout(() => {
-      armed.current = true;
-    }, EFFECT_SKIP_GUARD_MS);
+
+    // Khi người dùng bật giảm chuyển động, không bắt người dùng phải đợi 400ms mới được bỏ qua
+    const arm = isReduced
+      ? undefined
+      : window.setTimeout(() => {
+          armed.current = true;
+        }, EFFECT_SKIP_GUARD_MS);
+
     const auto = window.setTimeout(finish, EFFECT_DURATION_MS);
     const onKey = (e: KeyboardEvent): void => {
       if (!SKIP_KEYS.has(e.key)) return;
@@ -70,7 +95,7 @@ export function ObjectionEffect({ effectId, onDone }: ObjectionEffectProps) {
     };
     window.addEventListener('keydown', onKey);
     return () => {
-      window.clearTimeout(arm);
+      if (arm) window.clearTimeout(arm);
       window.clearTimeout(auto);
       window.removeEventListener('keydown', onKey);
     };
@@ -78,13 +103,24 @@ export function ObjectionEffect({ effectId, onDone }: ObjectionEffectProps) {
 
   const onClick = (e: ReactMouseEvent): void => {
     // Cú bấm thứ hai của bấm đúp (detail > 1) và mọi cú bấm trong ~400 ms đầu không bỏ qua.
-    if (e.detail > 1 || !armed.current) return;
+    // Với reduced motion thì cho phép bỏ qua ngay lập tức.
+    if (!armed.current) return;
+    if (!reducedMotion && e.detail > 1) return;
     finish();
   };
 
   const shout = effectName(effectId);
   return createPortal(
-    <div ref={rootRef} className="objection" onClick={onClick} tabIndex={-1} aria-modal="true" role="dialog" aria-label={shout}>
+    <div
+      ref={rootRef}
+      className="objection"
+      data-reduced-motion={reducedMotion ? 'true' : undefined}
+      onClick={onClick}
+      tabIndex={-1}
+      aria-modal="true"
+      role="dialog"
+      aria-label={shout}
+    >
       <svg className="objection__art" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
         <rect width={1600} height={900} fill="#0f172a" />
         <g className="objection__lines" fill="#f8fafc" opacity={0.55}>

@@ -78,9 +78,12 @@ const CASES: Case[] = [
   { id: 'c3', label: 'gõ cứng hai mã', sql: `${C3} WHERE ma_sv IN ('SV240317','SV240228')`, status: 'incorrect', shown: 'hardcoded-ids', hiddenPassed: false },
   { id: 'c3', label: 'lớp bằng hậu tố %B', sql: `${C3} WHERE ${H} AND ma_lop LIKE '%B' AND ${P}`, status: 'incorrect', shown: 'class-prefix' },
   { id: 'c3', label: "lớp KT24B (chữ B trong mã)", sql: `${C3} WHERE ${H} AND ma_lop IN ('KT24B', 'QT24B') AND ${P}`, status: 'incorrect', shown: 'class-prefix' },
+  { id: 'c3', label: 'cùng một cột nối AND', sql: `${C3} WHERE ${H} AND ma_lop = 'KT24A' AND ma_lop = 'QT24B' AND ${P}`, status: 'incorrect', shown: 'same-column-and', rowCount: 0 },
+  { id: 'c3', label: 'chỉ lọc 1 lớp KT24A (thiếu lớp)', sql: `${C3} WHERE ${H} AND ma_lop = 'KT24A' AND ${P}`, status: 'incorrect', shown: 'class-subset', rowCount: 1 },
   { id: 'c3', label: 'không lọc gì', sql: C3, status: 'incorrect', shown: 'missing-condition', also: ['no-filter'], rowCount: 40 },
   { id: 'c3', label: 'đúng dòng, thiếu cột', sql: `SELECT ten FROM sinh_vien WHERE ${H} AND ${B} AND ${P}`, status: 'incorrect', shown: 'missing-columns' },
   { id: 'c3', label: 'đủ ba điều kiện + LIMIT 2 (đáp án ẩn 3 dòng)', sql: `${C3} WHERE ${H} AND ${B} AND ${P} LIMIT 2`, status: 'incorrect', shown: 'limit-used', hiddenPassed: false },
+  { id: 'c1', label: 'quá 2000 dòng', sql: 'SELECT a.ma_sv FROM sinh_vien a, sinh_vien b, sinh_vien c', status: 'error', shown: 'too-many-rows' },
   { id: 'debrief-fix', label: 'truy vấn Quân nguyên văn (model OR)', sql: QUAN_OR_QUERY, model: fixModel, status: 'incorrect', shown: 'or-connector', rowCount: 24 },
   { id: 'debrief-fix', label: 'truy vấn Quân nguyên văn (SQL tay)', sql: QUAN_OR_QUERY, status: 'incorrect', shown: 'or-connector', rowCount: 24 },
   { id: 'debrief-fix', label: 'đổi OR → AND', sql: CHALLENGE_SPECS['debrief-fix'].referenceSql, model: { ...fixModel, connector: 'AND' }, status: 'correct', shown: null, rowCount: 2 },
@@ -203,8 +206,7 @@ describe('phân tích cấu trúc (model → parse → văn bản)', () => {
     }
     const spec = CHALLENGE_SPECS.c3;
     const codes = (sql: string) => diagnoseStructure(spec, analyzeStructure(sql, null), referenceStructure(spec)).map((d) => d.code);
-    expect(codes(`${C3} WHERE ten LIKE 'K%' AND ${B} AND ${P}`)).toEqual(['wrong-value']);
-    expect(codes(`${C3} WHERE ${H} AND ma_lop IN ('KT24A') AND ${P}`)).toEqual([]); // tập con danh sách lớp: không phải giá trị sai
+    expect(codes(`${C3} WHERE ${H} AND ma_lop IN ('KT24A') AND ${P}`)).toEqual(['class-subset']);
     expect(codes(`${C3} WHERE ${H} AND ${B} AND clb = 'Văn học'`)).toEqual(['wrong-value']);
   });
 });

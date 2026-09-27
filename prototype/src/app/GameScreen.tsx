@@ -1,7 +1,3 @@
-/**
- * Màn chơi: thanh trên + sân khấu + khung nhìn hiện tại của runtime. Mỗi loại khung nhìn
- * ánh xạ sang một component (thật hoặc stub với props đã chốt).
- */
 import { useCallback, useState } from 'react';
 import type { LinePick as LinePickContent } from '../debrief/types';
 import { LinePick } from '../debrief/ui/LinePick';
@@ -9,7 +5,7 @@ import { Projector } from '../debrief/ui/Projector';
 import { SqlRecall } from '../debrief/ui/SqlRecall';
 import { DocumentReveal } from '../evidence/ui/DocumentReveal';
 import { EvidenceNotebook } from '../evidence/ui/EvidenceNotebook';
-import { PART_IDS, type PartId } from '../shared/ids';
+import { isCharacterId, PART_IDS, type CharacterId, type PartId } from '../shared/ids';
 import { gameContent, useGameStore } from '../shared/store';
 import { getTelemetryEvents } from '../shared/telemetry/track';
 import { DialogBox } from '../shared/ui/DialogBox';
@@ -17,6 +13,7 @@ import { MultipleChoice } from '../shared/ui/MultipleChoice';
 import { Stage } from '../shared/ui/Stage';
 import { TopBar } from '../shared/ui/TopBar';
 import { ChallengeScreen } from '../sql-challenge/ui/ChallengeScreen';
+import { CharacterDebutSplash } from '../story/ui/CharacterDebutSplash';
 import { ExploreScreen } from '../story/ui/ExploreScreen';
 import { ObjectionEffect } from '../story/ui/ObjectionEffect';
 import type { StoryView } from '../story/engine/state';
@@ -24,6 +21,12 @@ import type { Sequence } from '../story/types';
 import { EndScreen } from './EndScreen';
 import { FacilitatorPanel } from './FacilitatorPanel';
 import { isFacilitatorMode } from './facilitator-mode';
+
+import { useVnStore, type SaveSlot } from '../shared/vn/vn-store';
+import { BacklogModal } from '../shared/vn/BacklogModal';
+import { SaveLoadModal } from '../shared/vn/SaveLoadModal';
+import { AudioSettingsModal } from '../shared/audio/AudioSettingsModal';
+import { CampusMapModal } from '../story/ui/map/CampusMapModal';
 
 /** Màn chọn dòng có id `pickId` trong chuỗi đang đứng (phản hồi chọn dòng luôn ở cùng chuỗi). */
 function linePickInSequence(sequence: Sequence | null, pickId: string): LinePickContent | null {
@@ -45,6 +48,31 @@ export function GameScreen() {
 
   const [notebookOpen, setNotebookOpen] = useState(false);
   const [lastRejection, setLastRejection] = useState<string | null>(null);
+  const [seenDebuts, setSeenDebuts] = useState<Set<CharacterId>>(() => new Set());
+
+  // VN Systems Modals State
+  const [backlogOpen, setBacklogOpen] = useState(false);
+  const [saveLoadMode, setSaveLoadMode] = useState<'save' | 'load' | null>(null);
+  const [audioModalOpen, setAudioModalOpen] = useState(false);
+  const [mapOpen, setMapOpen] = useState(false);
+  const [toastMsg, setToastMsg] = useState<string | null>(null);
+
+  const hideUi = useVnStore((s) => s.hideUi);
+  const toggleHideUi = useVnStore((s) => s.toggleHideUi);
+
+  const showToast = useCallback((msg: string) => {
+    setToastMsg(msg);
+    setTimeout(() => {
+      setToastMsg((cur) => (cur === msg ? null : cur));
+    }, 2800);
+  }, []);
+
+  const handleRestoreSlot = useCallback((slot: SaveSlot) => {
+    useGameStore.setState({
+      progress: slot.progress,
+      evidence: slot.evidence,
+    });
+  }, []);
 
   const act = useCallback(
     (action: Parameters<typeof dispatchStory>[0]) => {
@@ -56,6 +84,10 @@ export function GameScreen() {
   const advance = useCallback(() => act({ type: 'advance' }), [act]);
   const complete = useCallback(() => act({ type: 'complete' }), [act]);
 
+  const dismissDebut = useCallback((id: CharacterId) => {
+    setSeenDebuts((prev) => new Set([...prev, id]));
+  }, []);
+
   // getView đọc từ progress + evidence (đã subscribe ở trên) nên luôn mới.
   const view: StoryView | null = progress ? getView() : null;
   if (!progress || !view) return null;
@@ -66,26 +98,59 @@ export function GameScreen() {
   const accessRevoked = progress.flags.includes('access-revoked');
   const facilitator = typeof window !== 'undefined' && isFacilitatorMode(window.location.search);
 
+  // Kích hoạt Character Debut Splash khi nhân vật lần đầu xuất hiện trong hội thoại thông thường
+  const spk = speakerLine?.speaker;
+  const activeDebut: CharacterId | null =
+    view.kind === 'line' && spk && isCharacterId(spk) && !seenDebuts.has(spk) ? spk : null;
+
   return (
-    <div className="game">
-      <TopBar
-        currentPart={progress.currentPart}
-        completedParts={completedParts}
-        task={progress.task}
-        notebookCount={evidence.unlocked.length}
-        notebookOpen={notebookOpen}
-        onToggleNotebook={() => setNotebookOpen((o) => !o)}
-        onReset={resetGame}
-        isSample={gameContent.meta.isSample}
-      />
-      <Stage scene={scene} speaker={speakerLine?.speaker} expression={speakerLine?.expression}>
-        {renderView(view)}
-        {lastRejection ? (
+    <div className={`game${activeDebut ? ' game--debut' : ''}${hideUi ? ' game--hide-ui' : ''}`}>
+      {/* Thông báo Toast VN */}
+      {toastMsg ? <div className="vn-toast" role="status">{toastMsg}</div> : null}
+
+      {/* Lớp phủ khi Ẩn UI để xem cảnh toàn màn hình */}
+      {hideUi ? (
+        <div className="vn-hide-ui-overlay" onClick={toggleHideUi} title="Bấm để hiện lại giao diện">
+          <div className="vn-hide-ui-hint">Giao diện đang ẩn · Bấm chuột hoặc phím H để hiện lại</div>
+        </div>
+      ) : null}
+
+      {activeDebut ? (
+        <CharacterDebutSplash characterId={activeDebut} onDismiss={() => dismissDebut(activeDebut)} />
+      ) : null}
+
+      {!hideUi ? (
+        <TopBar
+          currentPart={progress.currentPart}
+          completedParts={completedParts}
+          task={progress.task}
+          notebookCount={evidence.unlocked.length}
+          notebookOpen={notebookOpen}
+          onToggleNotebook={() => setNotebookOpen((o) => !o)}
+          onReset={resetGame}
+          isSample={gameContent.meta.isSample}
+          onOpenMap={() => setMapOpen(true)}
+          onOpenAudio={() => setAudioModalOpen(true)}
+          onOpenSave={() => setSaveLoadMode('save')}
+          onOpenLoad={() => setSaveLoadMode('load')}
+        />
+      ) : null}
+
+      <Stage
+        scene={scene}
+        part={progress.currentPart}
+        sequenceId={progress.cursor.sequenceId}
+        speaker={speakerLine?.speaker}
+        expression={speakerLine?.expression}
+      >
+        {!hideUi ? renderView(view) : null}
+        {lastRejection && !hideUi ? (
           <p className="game__rejection" role="status">
             {lastRejection}
           </p>
         ) : null}
       </Stage>
+
       <EvidenceNotebook
         open={notebookOpen}
         onClose={() => setNotebookOpen(false)}
@@ -95,7 +160,26 @@ export function GameScreen() {
         savedQueries={evidence.savedQueries}
         annotations={evidence.annotations}
       />
-      {facilitator ? (
+
+      {/* Các Modals Visual Novel */}
+      <BacklogModal open={backlogOpen} onClose={() => setBacklogOpen(false)} />
+
+      <SaveLoadModal
+        open={saveLoadMode !== null}
+        mode={saveLoadMode ?? 'save'}
+        onClose={() => setSaveLoadMode(null)}
+        progress={progress}
+        evidence={evidence}
+        scene={scene}
+        onRestore={handleRestoreSlot}
+        onToast={showToast}
+      />
+
+      <CampusMapModal open={mapOpen} onClose={() => setMapOpen(false)} currentScene={scene} />
+
+      <AudioSettingsModal open={audioModalOpen} onClose={() => setAudioModalOpen(false)} />
+
+      {facilitator && !hideUi ? (
         <FacilitatorPanel
           part={progress.currentPart}
           sequenceId={progress.cursor.sequenceId}
@@ -111,14 +195,37 @@ export function GameScreen() {
   function renderView(v: StoryView) {
     switch (v.kind) {
       case 'line':
-        return <DialogBox line={v.node} display={v.node.display} onAdvance={advance} keyboardEnabled={!notebookOpen} />;
+        return (
+          <DialogBox
+            line={v.node}
+            display={v.node.display}
+            onAdvance={advance}
+            keyboardEnabled={!notebookOpen && !backlogOpen && saveLoadMode === null && !audioModalOpen && !mapOpen}
+            onOpenNotebook={() => setNotebookOpen(true)}
+            notebookCount={evidence.unlocked.length}
+            onOpenBacklog={() => setBacklogOpen(true)}
+            onOpenSave={() => setSaveLoadMode('save')}
+            onOpenLoad={() => setSaveLoadMode('load')}
+            onOpenAudio={() => setAudioModalOpen(true)}
+          />
+        );
       case 'feedback': {
-        // QĐ-061-Đ1: phản hồi của lần chọn dòng sai → câu SQL của Quân vẫn hiện (chỉ đọc) phía trên hộp thoại.
         const pick = v.origin === 'line-pick' ? linePickInSequence(v.sequence, v.sourceId) : null;
         return (
           <>
             {pick ? <SqlRecall lines={pick.lines} /> : null}
-            <DialogBox line={v.line} hint={`Phản hồi ${v.index + 1}/${v.total}`} onAdvance={advance} keyboardEnabled={!notebookOpen} />
+            <DialogBox
+              line={v.line}
+              hint={`Phản hồi ${v.index + 1}/${v.total}`}
+              onAdvance={advance}
+              keyboardEnabled={!notebookOpen && !backlogOpen && saveLoadMode === null && !audioModalOpen && !mapOpen}
+              onOpenNotebook={() => setNotebookOpen(true)}
+              notebookCount={evidence.unlocked.length}
+              onOpenBacklog={() => setBacklogOpen(true)}
+              onOpenSave={() => setSaveLoadMode('save')}
+              onOpenLoad={() => setSaveLoadMode('load')}
+              onOpenAudio={() => setAudioModalOpen(true)}
+            />
           </>
         );
       }

@@ -72,6 +72,7 @@ bị giật. Game hiển thị theo chiều cao, neo đáy khung. Thiếu một 
 | `char-hoai-downcast`    | Hoài     | cúi mặt (downcast)       | `hoai-downcast`           |
 | `char-hoai-relieved`    | Hoài     | nhẹ nhõm (relieved)      | `hoai-relieved`           |
 | `char-bac-tu-neutral`   | Bác Tư   | bình thường, cỡ nhỏ      | `bac-tu-neutral`          |
+| `char-tung-anchor`      | Tùng     | bình thường (neutral)    | `tung-neutral`            |
 
 `char-<nhân vật>-<biểu cảm>` cũng nhận được cho biểu cảm gốc (ví dụ `char-minh-anh-neutral`,
 `char-hoai-nervous`) — dùng khi muốn thay ảnh neo bằng một ảnh riêng cho biểu cảm đó.

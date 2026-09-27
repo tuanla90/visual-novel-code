@@ -5,21 +5,24 @@
  */
 import { useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { sceneName } from '../display-names';
-import type { SceneId } from '../ids';
+import type { SceneId, PartId } from '../ids';
 import { Portrait } from './Portrait';
 import { SceneBackdrop } from './visuals/SceneBackdrop';
+import { SceneTransitionOverlay } from './visuals/SceneTransitionOverlay';
 import { castPosition, nextCast, type CastState } from './visuals/cast';
 import { useProjectorInsets } from './visuals/use-projector-insets';
 
 export interface StageProps {
   scene: SceneId;
+  part?: PartId | null;
+  sequenceId?: string;
   /** Người đang nói (nếu là nhân vật thì hiện chân dung). */
   speaker?: string;
   expression?: string;
   children?: ReactNode;
 }
 
-export function Stage({ scene, speaker, expression, children }: StageProps) {
+export function Stage({ scene, part, sequenceId, speaker, expression, children }: StageProps) {
   const [cast, setCast] = useState<CastState>(() => nextCast(null, scene, speaker, expression));
   const current = nextCast(cast, scene, speaker, expression);
   // Suy trạng thái từ props lúc render (mẫu "lưu thông tin từ lần render trước" của React).
@@ -31,17 +34,21 @@ export function Stage({ scene, speaker, expression, children }: StageProps) {
   return (
     <section ref={ref} className="stage" data-scene={scene} style={{ backgroundColor: `var(--c-scene-${scene})` }} aria-label={`Cảnh: ${sceneName(scene)}`}>
       <SceneBackdrop scene={scene} />
+      <SceneTransitionOverlay scene={scene} part={part} sequenceId={sequenceId} />
       <div className="stage__scene-label">{sceneName(scene)}</div>
       <div className="stage__portraits">
         {current.members.map((m) => {
           const speaking = m.character === speaker;
-          const style = { '--cast-x': `${castPosition(scene, m.character) * 100}%` } as CSSProperties;
+          const pos = castPosition(scene, m.character);
+          const isRight = pos > 0.5;
+          const style = { '--cast-x': `${pos * 100}%` } as CSSProperties;
           return (
             <div
               key={m.character}
-              className={`cast-member${speaking ? ' cast-member--speaking' : ' cast-member--idle'}${m.character === 'bac-tu' ? ' cast-member--small' : ''}`}
+              className={`cast-member${speaking ? ' cast-member--speaking' : ' cast-member--idle'}${m.character === 'bac-tu' ? ' cast-member--small' : ''}${isRight ? ' cast-member--side-right' : ' cast-member--side-left'}`}
               style={style}
               data-speaking={speaking ? 'true' : 'false'}
+              data-side={isRight ? 'right' : 'left'}
             >
               <Portrait character={m.character} expression={m.expression} size={m.character === 'bac-tu' ? 'small' : 'normal'} />
             </div>

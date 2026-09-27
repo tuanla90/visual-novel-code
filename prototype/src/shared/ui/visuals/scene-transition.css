@@ -1,0 +1,101 @@
+/* ==========================================================================
+   CINEMATIC SCENE TRANSITION & TIME CARD OVERLAY
+   ========================================================================== */
+
+.scene-trans {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  background: #090d16;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation: sceneTransitionSequence 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.scene-trans__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  animation: contentPulse 1.6s ease forwards;
+}
+
+.scene-trans__time {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #38bdf8;
+  margin-bottom: 8px;
+  padding: 4px 16px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 20px;
+}
+
+.scene-trans__title {
+  font-size: 2.25rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin: 0 0 10px;
+  text-shadow: 0 0 24px rgba(56, 189, 248, 0.6), 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.scene-trans__line {
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+  margin-bottom: 12px;
+}
+
+.scene-trans__desc {
+  font-size: 1.05rem;
+  color: #94a3b8;
+  margin: 0;
+  max-width: 480px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+@keyframes sceneTransitionSequence {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes contentPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.04) translateY(-6px);
+  }
+}

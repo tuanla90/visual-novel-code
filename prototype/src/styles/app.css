@@ -279,62 +279,158 @@
   grid-template-rows: auto 1fr;
   position: relative;
 }
+.game--hide-ui {
+  grid-template-rows: 1fr;
+}
+.game--hide-ui .stage {
+  height: 100%;
+  min-height: 100%;
+  grid-template-rows: auto 1fr;
+}
 
 /* ---------- Thanh trên ---------- */
 .topbar {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(12rem, 1fr) auto;
   align-items: center;
-  gap: var(--sp-4);
-  padding: var(--sp-2) var(--sp-4);
-  background: var(--c-topbar-bg);
+  gap: var(--sp-3);
+  padding: 4px var(--sp-3);
+  background: color-mix(in srgb, var(--c-topbar-bg) 94%, transparent);
   color: var(--c-topbar-text);
+  min-height: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 4px 18px rgba(12, 18, 28, 0.2);
+  z-index: 5;
 }
-.topbar__parts {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: var(--sp-1);
-}
-.topbar__part {
+.topbar__chapter {
   display: flex;
   align-items: center;
-  gap: var(--sp-1);
-  padding: var(--sp-1) var(--sp-2);
+  gap: var(--sp-2);
+  white-space: nowrap;
+}
+.topbar__chapter-count {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--c-topbar-accent);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.topbar__chapter-name {
   font-size: var(--fs-sm);
-}
-.topbar__part-index {
   font-weight: 700;
-}
-.topbar__part--current {
-  background: var(--c-topbar-accent);
-  color: var(--c-topbar-bg);
-  border-color: var(--c-topbar-accent);
-}
-.topbar__part--done {
-  opacity: 0.85;
-  text-decoration: line-through;
-}
-.topbar__part--todo {
-  opacity: 0.6;
 }
 .topbar__task {
   min-width: 0;
+  display: grid;
+  gap: 0;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 .topbar__task-label {
   color: var(--c-topbar-accent);
-  font-weight: 600;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.topbar__task-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--fs-sm);
 }
 .topbar__actions {
   display: flex;
   align-items: center;
   gap: var(--sp-2);
+  flex-shrink: 0;
+}
+.topbar__dossier,
+.topbar__menu > summary {
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  cursor: pointer;
+}
+.topbar__dossier {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0 var(--sp-2);
+  font: inherit;
+  font-weight: 700;
+}
+.topbar__dossier svg,
+.topbar__menu svg,
+.dialog__btn-notebook svg,
+.dialog__next svg,
+.chara-debut__prompt svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.topbar__dossier-count {
+  display: grid;
+  min-width: 24px;
+  min-height: 24px;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--c-topbar-accent);
+  color: var(--c-topbar-bg);
+  font-size: 0.75rem;
+}
+.topbar__dossier:hover,
+.topbar__menu > summary:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+.topbar__menu {
+  position: relative;
+}
+.topbar__menu > summary {
+  display: grid;
+  width: 44px;
+  place-items: center;
+  list-style: none;
+}
+.topbar__menu > summary::-webkit-details-marker {
+  display: none;
+}
+.topbar__menu-panel {
+  position: absolute;
+  top: calc(100% + var(--sp-2));
+  right: 0;
+  width: 210px;
+  padding: var(--sp-3);
+  display: grid;
+  gap: var(--sp-2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  background: var(--c-topbar-bg);
+  box-shadow: 0 12px 30px rgba(10, 16, 25, 0.35);
+}
+.topbar__menu-panel button {
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  padding: 0 var(--sp-3);
+}
+.game--debut > .topbar {
+  visibility: hidden;
 }
 
 /* ---------- Sân khấu ---------- */
@@ -345,6 +441,7 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 0;
+  height: 100%;
   padding: var(--sp-4);
   gap: var(--sp-3);
 }
@@ -402,18 +499,29 @@
   transform: translateX(-50%);
   transform-origin: 50% 100%;
   transition:
-    transform 0.25s ease,
-    filter 0.25s ease;
+    filter 0.2s ease,
+    opacity 0.2s ease;
 }
 .cast-member--small {
   height: min(52%, 400px);
 }
 .cast-member--speaking {
-  z-index: 1;
+  z-index: 2;
+  transform: translateX(-50%) scale(1.015);
+  filter: saturate(1) brightness(1) drop-shadow(0 8px 16px rgba(15, 23, 42, 0.2));
+  opacity: 1;
 }
 .cast-member--idle {
-  transform: translateX(-50%) translateY(3%) scale(0.93);
-  filter: saturate(0.65) brightness(0.9);
+  z-index: 1;
+  transform: translateX(-50%);
+  filter: saturate(0.88) brightness(0.92);
+  opacity: 0.96;
+}
+/* Tự động xoay lật nhân vật bên phải để hướng mặt vào trung tâm sân khấu */
+.cast-member--side-right .portrait__img,
+.cast-member--side-right .portrait--placeholder {
+  transform: scaleX(-1);
+  transform-origin: 50% 50%;
 }
 .stage__content {
   grid-row: 3;
@@ -581,30 +689,33 @@
 /* ---------- Hộp thoại ---------- */
 .dialog {
   position: relative;
-  background: var(--c-dialog-bg);
-  border: 3px solid var(--c-dialog-border);
-  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--c-dialog-bg) 94%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c-dialog-border) 72%, white);
+  border-radius: 4px 18px 18px 18px;
   padding: var(--sp-5) var(--sp-5) var(--sp-3);
-  box-shadow: 0 10px 28px rgba(31, 35, 40, 0.22);
+  box-shadow: 0 16px 36px rgba(18, 25, 38, 0.3);
   cursor: pointer;
-  min-height: 132px;
+  min-height: 126px;
   display: grid;
   gap: var(--sp-2);
+  overflow: visible;
 }
 /* Bảng tên người nói: đè lên mép trên hộp, màu chủ đạo của nhân vật (QĐ-026). */
 .dialog__speaker {
   position: absolute;
-  top: 0;
-  left: var(--sp-5);
-  transform: translateY(-55%);
-  padding: 2px var(--sp-4);
-  border-radius: var(--radius-sm);
+  top: -16px;
+  left: var(--sp-4);
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--sp-4);
+  border-radius: 3px 12px 3px 3px;
   background: var(--c-char-narrator);
   color: var(--c-char-narrator-ink);
-  font-weight: 700;
-  font-size: var(--fs-md);
-  line-height: 1.45;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-weight: 800;
+  font-size: var(--fs-base);
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.24);
 }
 .dialog[data-speaker='player'] .dialog__speaker {
   background: var(--c-char-player);
@@ -630,12 +741,20 @@
   background: var(--c-char-bac-tu);
   color: var(--c-char-bac-tu-ink);
 }
+.dialog[data-speaker='tung'] .dialog__speaker {
+  background: var(--c-char-tung);
+  color: var(--c-char-tung-ink);
+}
 .dialog__text {
   margin: 0;
   font-size: var(--fs-md);
+  line-height: 1.55;
+  max-width: 72ch;
+  text-wrap: pretty;
 }
 .dialog__footer {
   display: flex;
+  min-height: 44px;
   justify-content: flex-end;
   align-items: center;
   gap: var(--sp-3);
@@ -644,12 +763,36 @@
   color: var(--c-text-muted);
   font-size: var(--fs-sm);
 }
+.dialog__btn-notebook,
 .dialog__next {
-  border: 0;
-  background: transparent;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.56);
   color: var(--c-focus);
+  font: inherit;
   font-weight: 700;
-  padding: var(--sp-1) var(--sp-2);
+  padding: 0 var(--sp-3);
+  cursor: pointer;
+}
+.dialog__btn-notebook {
+  margin-right: auto;
+  color: var(--c-text);
+}
+.dialog__btn-notebook:hover,
+.dialog__next:hover {
+  border-color: var(--c-dialog-border);
+  background: var(--c-surface);
+}
+.dialog__next svg {
+  width: 18px;
+  animation: dialog-cue 1.5s ease-in-out infinite;
+}
+@keyframes dialog-cue {
+  50% { transform: translateX(3px); }
 }
 .dialog--card {
   text-align: center;
@@ -664,51 +807,87 @@
   line-height: 1.35;
 }
 
-/* ---------- Câu hỏi nhiều lựa chọn ---------- */
+/* ---------- Câu hỏi nhiều lựa chọn (Visual Novel Choice Box) ---------- */
 .mc {
-  background: var(--c-dialog-bg);
-  border: 3px solid var(--c-dialog-border);
-  border-radius: var(--radius-lg);
-  padding: var(--sp-4) var(--sp-5);
-  box-shadow: 0 10px 28px rgba(31, 35, 40, 0.22);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.88) 0%, rgba(10, 15, 30, 0.96) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 20px rgba(56, 189, 248, 0.15);
   display: grid;
-  gap: var(--sp-3);
+  gap: 16px;
+  color: #f8fafc;
 }
 .mc__asker-name {
   display: inline-block;
-  margin-bottom: var(--sp-1);
-  padding: 0 var(--sp-3);
-  border-radius: var(--radius-sm);
-  background: var(--c-text);
-  color: var(--c-surface);
-  font-weight: 700;
+  margin-bottom: 8px;
+  padding: 4px 14px;
+  border-radius: 6px;
+  background: #0284c7;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
 }
 .mc__prompt {
   margin: 0;
-  font-size: var(--fs-md);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #f1f5f9;
 }
 .mc__choices {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  gap: var(--sp-2);
+  gap: 12px;
 }
 .mc__choice {
   width: 100%;
   text-align: left;
-  padding: var(--sp-3) var(--sp-4);
-  border: 2px solid var(--c-border);
-  border-radius: var(--radius-md);
-  background: var(--c-surface);
+  padding: 14px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(30, 41, 59, 0.85) 0%, rgba(15, 23, 42, 0.75) 100%);
+  color: #e2e8f0;
+  font-size: 1.05rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+.mc__choice::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #38bdf8;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  transition: transform 0.2s, background-color 0.2s;
+  flex-shrink: 0;
 }
 .mc__choice:hover {
-  border-color: var(--c-focus);
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.25) 0%, rgba(14, 165, 233, 0.15) 100%);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateX(6px);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3);
+}
+.mc__choice:hover::before {
+  transform: scale(1.35);
+  background-color: #7dd3fc;
 }
 .mc__note {
   margin: 0;
-  color: var(--c-text-muted);
-  font-size: var(--fs-sm);
+  color: #94a3b8;
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 /* ---------- Xem xét ---------- */
@@ -963,10 +1142,73 @@
   /* Chữ mã (CodeText) trên giấy: nền kem đậm hơn một chút. */
   --code-text-bg: var(--c-bg);
 }
+
+/* Modal Hòm đồ toàn màn hình (Visual Novel / RPG Style) */
+aside.notebook.inventory-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: rgba(6, 7, 12, 0.88) !important;
+  backdrop-filter: blur(10px) !important;
+  padding: clamp(8px, 2vw, 24px) !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  z-index: 9999 !important;
+  box-shadow: none !important;
+}
+
+.notebook--expanded {
+  width: min(940px, 100%);
+  background: var(--c-surface, #ffffff);
+}
+.notebook__title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.notebook__tabs {
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+.notebook__tab {
+  background: var(--c-paper);
+  border: 1px solid var(--c-paper-edge);
+  color: var(--c-paper-ink);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.notebook__tab:hover {
+  background: var(--c-paper-edge);
+}
+.notebook__tab.is-active {
+  background: var(--c-topbar-bg, #1f2328);
+  color: #ffffff;
+  border-color: var(--c-topbar-bg, #1f2328);
+}
+.notebook__chara-container {
+  width: 100%;
+}
 .notebook__head {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: var(--sp-3);
 }
 .notebook__title {
   margin: 0;
@@ -1401,24 +1643,64 @@ html.facilitator-on #root {
   border-radius: var(--radius-md);
 }
 
-/* QĐ-055: ≤ 1100 px — 2 hàng: tiến trình + cụm nút ở hàng đầu, nhiệm vụ xuống hàng hai. */
 @media (max-width: 1100px) {
   .topbar {
-    grid-template-columns: minmax(0, 1fr) auto;
-    row-gap: var(--sp-1);
-  }
-  .topbar__parts {
-    grid-column: 1;
-    grid-row: 1;
-    flex-wrap: wrap;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: var(--sp-2);
+    padding: 2px var(--sp-2);
   }
   .topbar__actions {
-    grid-column: 2;
-    grid-row: 1;
+    gap: var(--sp-1);
   }
-  .topbar__task {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    white-space: normal;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    gap: var(--sp-1);
+    padding: var(--sp-1) var(--sp-2);
+  }
+  .topbar__chapter-name,
+  .topbar__dossier > span:not(.topbar__dossier-count) {
+    display: none;
+  }
+  .topbar__dossier {
+    width: 56px;
+    justify-content: center;
+    gap: 2px;
+  }
+}
+
+/* Chiều cao viewport bị hạn chế (≤ 768px hoặc laptop bật Windows Display Scaling) */
+@media (max-height: 768px) {
+  .stage {
+    padding: var(--sp-2) var(--sp-4);
+    gap: var(--sp-2);
+  }
+  .cast-member {
+    height: min(68%, 460px);
+  }
+  .dialog {
+    min-height: 116px;
+    padding: var(--sp-4) var(--sp-4) var(--sp-2);
+  }
+}
+
+@media (max-height: 640px) {
+  .stage {
+    padding: var(--sp-1) var(--sp-3);
+    gap: var(--sp-1);
+  }
+  .cast-member {
+    height: min(58%, 350px);
+  }
+  .dialog {
+    min-height: 108px;
+    padding: var(--sp-4) var(--sp-3) var(--sp-1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog__next svg {
+    animation: none;
   }
 }

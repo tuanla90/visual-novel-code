@@ -141,11 +141,35 @@ export function diagnoseStructure(spec: ChallengeSpec, s: QueryStructure, ref: Q
     if (c.column === 'ten' && c.op === 'contains') add('like-contains', c.values[0]);
   }
 
+  // same-column-and: khi điều kiện WHERE có hai mệnh đề trên cùng một cột nối bằng AND (ví dụ ma_lop = 'B101' AND ma_lop = 'B202').
+  if (s.connector === 'AND') {
+    const colCounts = new Map<string, number>();
+    for (const c of s.conditions) {
+      const col = c.column.toLowerCase();
+      colCounts.set(col, (colCounts.get(col) ?? 0) + 1);
+    }
+    for (const [col, count] of colCounts) {
+      if (count >= 2) {
+        add('same-column-and', col);
+        break;
+      }
+    }
+  }
+
   // class-prefix: lọc ma_lop bằng LIKE, hoặc bằng =/IN với mã lớp có chữ B ở cuối mà không thuộc danh sách lớp tòa B của SQL chuẩn.
   const refClasses = ref?.conditions.filter((c) => c.column === 'ma_lop' && VALUE_OPS.has(c.op)).flatMap((c) => c.values) ?? [];
   for (const c of s.conditions.filter((c) => c.column === 'ma_lop')) {
     if (LIKE_OPS.has(c.op) || c.op === 'unknown') add('class-prefix', c.values[0]);
     else if (c.values.some((v) => !refClasses.includes(v) && /b$/i.test(v))) add('class-prefix', c.values.join(', '));
+  }
+
+  // class-subset: khi câu truy vấn lọc thiếu một trong hai lớp mục tiêu của Thử thách 3.
+  if (refClasses.length >= 2) {
+    const playerClasses = s.conditions.filter((c) => c.column === 'ma_lop').flatMap((c) => c.values);
+    const matched = refClasses.filter((rc) => playerClasses.includes(rc));
+    if (matched.length > 0 && matched.length < refClasses.length) {
+      add('class-subset', matched.join(', '));
+    }
   }
 
   // wrong-value: cùng cột, cùng loại phép, giá trị khác SQL chuẩn.
@@ -190,8 +214,11 @@ export function diagnoseRunFailure(spec: ChallengeSpec, failure: RunFailure, str
         return [{ code: 'wrong-table', severity: 'error', detail: `${structure.table}: ${failure.message}` }];
       }
       return [{ code: 'syntax-error', severity: 'blocking', detail: failure.message }];
+    case 'too_many_rows':
+      return [{ code: 'too-many-rows', severity: 'error', detail: failure.message }];
     case 'syntax':
     case 'other':
+    default:
       return [{ code: 'syntax-error', severity: 'blocking', detail: failure.message }];
   }
 }

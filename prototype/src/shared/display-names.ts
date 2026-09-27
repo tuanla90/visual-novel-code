@@ -18,6 +18,7 @@ const CHARACTER_NAMES: Record<CharacterId, string> = {
   quan: 'Quân',
   hoai: 'Hoài',
   'bac-tu': 'Bác Tư',
+  tung: 'Tùng',
 };
 
 const SPEAKER_LABELS: Record<SpeakerId, string> = {
