@@ -6,6 +6,7 @@ import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { useGameStore } from '../../shared/store';
+import { passPressGuard } from '../../test/press-guard';
 import { challengeState, eventsOf, renderChallenge, resetGame } from './test-utils';
 
 function havyText(): string {
@@ -39,6 +40,7 @@ describe('Thành công → câu đọc kết quả → Lưu vào hồ sơ', () =
     // chưa trả lời câu đọc kết quả → chưa có nút lưu
     expect(screen.queryByRole('button', { name: 'Lưu vào hồ sơ' })).not.toBeInTheDocument();
 
+    await passPressGuard();
     await user.click(screen.getByRole('button', { name: 'Những người có tên gọi bắt đầu bằng H.' }));
     expect(screen.getByText(/Chuẩn\. Cột ten, H đứng đầu/)).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: 'Lưu vào hồ sơ' }));
@@ -74,10 +76,12 @@ describe('Thành công → câu đọc kết quả → Lưu vào hồ sơ', () =
 
     const choiceTexts = (): string[] => within(screen.getByRole('group', { name: 'Mười dòng này là những ai?' })).getAllByRole('button').map((b) => b.textContent ?? '');
     const before = choiceTexts();
+    await passPressGuard();
     await user.click(screen.getByRole('button', { name: 'Những người có họ đệm bắt đầu bằng H.' }));
     expect(screen.getByText(/Điều kiện đặt ở cột ten, không phải ho_dem/)).toBeInTheDocument();
     expect(choiceTexts()).toEqual(before);
     expect(screen.getByText('Chưa đúng cũng không sao — chọn lại thoải mái.')).toBeInTheDocument();
+    await passPressGuard();
     await user.click(screen.getByRole('button', { name: 'Những người có tên gọi bắt đầu bằng H.' }));
 
     const answers = eventsOf('question_answered');

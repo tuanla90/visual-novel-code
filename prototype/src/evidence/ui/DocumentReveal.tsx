@@ -3,9 +3,14 @@
  * Hình (QĐ-026, QĐ-060): nền giấy lấy từ ô ảnh `doc-letter` / `doc-bookmark` / `doc-handover-log`
  * nếu có, không thì hình vẽ tạm; CHỮ luôn do giao diện chồng lên (không nướng vào ảnh).
  * Props giữ nguyên. Chỉ hiện phần nội dung của tài liệu; "Câu hỏi còn mở"/"Lưu ý" ở Hồ sơ.
+ *
+ * Chống đóng mất (QĐ-066, F5 rà soát sư phạm): tài liệu hiện ngay sau một lời vừa qua bằng Space/bấm,
+ * nên tiêu điểm đặt vào KHUNG tài liệu (không vào nút — Space không kích hoạt nút), nút "Cất vào hồ sơ"
+ * bỏ cú bấm/phím trong ~400 ms đầu, cú bấm thứ hai của bấm đúp và Enter đang giữ (`use-press-guard.ts`).
  */
-import { useId, type CSSProperties, type ReactNode } from 'react';
+import { useEffect, useId, useRef, type CSSProperties, type ReactNode } from 'react';
 import { CodeText } from '../../shared/ui/CodeText';
+import { usePressGuard } from '../../shared/ui/use-press-guard';
 import { artDataAttributes, resolveDocument } from '../../shared/ui/visuals/art-slots';
 import { BookmarkArt, EnvelopeArt, LedgerPaperArt, LetterPaperArt, SealArt } from '../../shared/ui/visuals/DocumentArt';
 import type { DocumentCard } from '../types';
@@ -33,8 +38,13 @@ function Paper({ doc, art, className, children }: { doc: DocumentCard; art: Reac
 
 export function DocumentReveal({ document, onClose }: DocumentRevealProps) {
   const titleId = useId();
+  const rootRef = useRef<HTMLDivElement>(null);
+  const guard = usePressGuard(document?.id ?? null);
+  useEffect(() => {
+    rootRef.current?.focus({ preventScroll: true });
+  }, [document?.id]);
   return (
-    <div className="docview" role="dialog" aria-labelledby={titleId}>
+    <div ref={rootRef} className="docview" role="dialog" aria-labelledby={titleId} tabIndex={-1}>
       <header className="docview__head">
         <h2 id={titleId} className="docview__title">
           {document?.title ?? 'Tài liệu chưa có nội dung'}
@@ -43,7 +53,14 @@ export function DocumentReveal({ document, onClose }: DocumentRevealProps) {
       </header>
       {document ? <DocumentBody doc={document} /> : <p className="docview__missing">Thẻ tài liệu này chưa được viết trong nội dung.</p>}
       <div className="docview__actions">
-        <button type="button" className="btn btn--primary" onClick={onClose} autoFocus>
+        <button
+          type="button"
+          className="btn btn--primary"
+          onKeyDown={guard.holdKey}
+          onClick={(e) => {
+            if (guard.click(e)) onClose();
+          }}
+        >
           Cất vào hồ sơ
         </button>
       </div>

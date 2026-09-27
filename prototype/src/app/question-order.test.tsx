@@ -16,6 +16,7 @@ import { clearTelemetry } from '../shared/telemetry/track';
 import { forgetChoiceOrders } from '../shared/ui/choice-order';
 import { shuffle } from '../shared/ui/shuffle';
 import type { QuestionNode } from '../story/types';
+import { passPressGuard } from '../test/press-guard';
 import { GameScreen } from './GameScreen';
 
 const SEQ = 'deb-03';
@@ -68,11 +69,13 @@ describe('thứ tự lựa chọn giữ nguyên khi chọn lại (QĐ-041, qua G
     expect(before).toHaveLength(3);
     const wrong = QUESTION.choices.filter((c) => !c.correct);
 
+    await passPressGuard();
     await user.click(screen.getByRole('button', { name: wrong[0]?.text }));
     await user.click(await screen.findByRole('button', { name: /Tiếp tục/ }));
     expect(choiceTexts()).toEqual(before);
     expect(screen.getByText('Chưa đúng cũng không sao — chọn lại thoải mái.')).toBeInTheDocument();
 
+    await passPressGuard();
     await user.click(screen.getByRole('button', { name: wrong[1]?.text }));
     await user.click(await screen.findByRole('button', { name: /Tiếp tục/ }));
     expect(choiceTexts()).toEqual(before);
@@ -82,6 +85,7 @@ describe('thứ tự lựa chọn giữ nguyên khi chọn lại (QĐ-041, qua G
     const user = userEvent.setup();
     const first = render(<GameScreen />);
     const before = choiceTexts();
+    await passPressGuard();
     await user.click(screen.getByRole('button', { name: QUESTION.choices.find((c) => !c.correct)?.text }));
     first.unmount();
 

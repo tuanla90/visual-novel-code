@@ -5,12 +5,17 @@
  * (GameScreen thay nó bằng hộp thoại phản hồi): thứ tự nhớ ở `choice-order.ts`, không chỉ trong
  * `useMemo`. Phản hồi và chọn lại do runtime điều khiển (khung nhìn `feedback`), component này chỉ
  * hiện lựa chọn và gọi `onChoose(id)`.
+ *
+ * Chống bấm đúp (QĐ-066, `use-press-guard.ts`): câu hỏi hiện đúng chỗ lời thoại vừa bấm qua, và ở câu
+ * đọc kết quả danh sách vẫn nằm yên sau một lựa chọn sai — nên cú bấm thứ hai của bấm đúp, Enter đang
+ * giữ, hay cú bấm trong ~400 ms sau khi câu hỏi hiện / sau lần chọn trước KHÔNG được tính là chọn.
  */
 import { useMemo } from 'react';
 import { speakerLabel } from '../display-names';
 import type { MultipleChoiceQuestion } from '../../story/types';
 import { orderedChoices } from './choice-order';
 import { CodeText } from './CodeText';
+import { usePressGuard } from './use-press-guard';
 
 export interface MultipleChoiceProps {
   question: MultipleChoiceQuestion;
@@ -30,6 +35,7 @@ export function MultipleChoice({ question, attempts, onChoose, random }: Multipl
     [question.id],
   );
   const askerLabel = speakerLabel(question.asker.speaker);
+  const guard = usePressGuard(`${question.id}|${attempts}`);
   return (
     <div className="mc" role="group" aria-labelledby={`mc-${question.id}`}>
       <div className="mc__asker">
@@ -41,7 +47,14 @@ export function MultipleChoice({ question, attempts, onChoose, random }: Multipl
       <ul className="mc__choices">
         {ordered.map((c) => (
           <li key={c.id}>
-            <button type="button" className="mc__choice" onClick={() => onChoose(c.id)}>
+            <button
+              type="button"
+              className="mc__choice"
+              onKeyDown={guard.holdKey}
+              onClick={(e) => {
+                if (guard.click(e)) onChoose(c.id);
+              }}
+            >
               <CodeText text={c.text} />
             </button>
           </li>

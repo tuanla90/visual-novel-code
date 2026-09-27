@@ -8,6 +8,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { realEvidence } from '../../../content/real/evidence';
 import { DocumentReveal } from '../../../evidence/ui/DocumentReveal';
 import { DOCUMENT_IDS } from '../../ids';
+import { passPressGuard } from '../../../test/press-guard';
 import { artUrl } from './art-slots';
 
 describe('DocumentReveal', () => {
@@ -46,6 +47,7 @@ describe('DocumentReveal', () => {
     const onClose = vi.fn();
     render(<DocumentReveal document={undefined} onClose={onClose} />);
     expect(screen.getByText('Thẻ tài liệu này chưa được viết trong nội dung.')).toBeInTheDocument();
+    await passPressGuard();
     await user.click(screen.getByRole('button', { name: 'Cất vào hồ sơ' }));
     expect(onClose).toHaveBeenCalledTimes(1);
   });

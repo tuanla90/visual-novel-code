@@ -13,6 +13,7 @@ import { useGameStore } from '../../shared/store';
 import { initialGameData } from '../../shared/store/store';
 import { clearTelemetry } from '../../shared/telemetry/track';
 import type { LinePickNode, QuestionNode } from '../../story/types';
+import { passPressGuard } from '../../test/press-guard';
 import { SQL_RECALL_LABEL } from './SqlRecall';
 
 function nodeIndexOf(sequenceId: string, predicate: (n: LinePickNode | QuestionNode) => boolean): number {
@@ -98,6 +99,7 @@ describe('SqlRecall — câu SQL của Quân khi hiện phản hồi chọn dòn
     const user = userEvent.setup();
     render(<GameScreen />);
     const wrongText = (realContent.story.sequences.find((s) => s.id === 'deb-03')?.nodes[Q_INDEX] as QuestionNode).question.choices.find((c) => !c.correct)?.text;
+    await passPressGuard();
     await user.click(screen.getByRole('button', { name: wrongText }));
     expect(await screen.findByRole('button', { name: /Tiếp tục/ })).toBeInTheDocument();
     expect(recall()).toBeNull();

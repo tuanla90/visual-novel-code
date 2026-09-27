@@ -443,6 +443,10 @@
   border-radius: var(--radius-lg);
   box-shadow: 0 14px 36px rgba(31, 35, 40, 0.28);
 }
+/* Tiêu điểm đặt vào khung (không vào nút) để Space vừa dùng qua lời không đóng tài liệu (QĐ-066). */
+.docview:focus {
+  outline: none;
+}
 .docview__head {
   display: grid;
   gap: 2px;
