@@ -83,6 +83,25 @@ describe('ChallengeScreen — hàng WHERE, "Từ manh mối", phép nối chưa 
     expect(screen.getByRole('status')).toHaveTextContent('Hàng SELECT chưa chọn cột nào.');
   });
 
+  it('thẻ manh mối: bấm thẻ rồi "Đặt manh mối vào đây" = chọn trong "Từ manh mối"; chỉ điều kiện nhận được mới có nút đặt', async () => {
+    const user = userEvent.setup();
+    renderChallenge('c1');
+    await user.selectOptions(screen.getByLabelText('Bảng dữ liệu'), 'sinh_vien');
+    await user.click(screen.getByRole('button', { name: /Thêm điều kiện/ }));
+    const card = within(screen.getByRole('group', { name: 'Thẻ manh mối' })).getByRole('button', { name: /H — Chữ ký/ });
+    // Điều kiện chưa chọn cột thì không nhận thẻ nào.
+    await user.click(card);
+    expect(card).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.queryByRole('button', { name: 'Đặt manh mối vào đây' })).not.toBeInTheDocument();
+    await user.selectOptions(screen.getByLabelText('Cột lọc của điều kiện 1'), 'ten');
+    await user.selectOptions(screen.getByLabelText('Phép so sánh của điều kiện 1'), 'startsWith');
+    await user.click(screen.getByRole('button', { name: 'Đặt manh mối vào đây' }));
+    expect(screen.getByLabelText<HTMLInputElement>('Giá trị (chữ) của điều kiện 1').value).toBe('H');
+    expect(challengeState('c1')?.model.conditions[0]?.source).toEqual({ kind: 'clue', clueId: 'clue-signature-h' });
+    expect(card).toHaveAttribute('aria-pressed', 'false');
+    expect(screen.queryByRole('button', { name: 'Đặt manh mối vào đây' })).not.toBeInTheDocument();
+  });
+
   it('ô giá trị "=": giá trị có trong dữ liệu + "Từ manh mối"; IN với ma_lop: danh sách lớp từ vật chứng c2 đã lưu', async () => {
     const user = userEvent.setup();
     saveEvidence({

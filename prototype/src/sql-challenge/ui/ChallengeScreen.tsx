@@ -33,6 +33,8 @@ import { SqlPane } from './SqlPane';
 import { SuccessPanel } from './SuccessPanel';
 import { CLASS_LIST_EVIDENCE_ID, evidenceValueOptions } from './value-options';
 import { WhereRow } from './WhereRow';
+import { BootSequence, RowCounter, SessionClock } from './terminal-fx';
+import { soundEngine } from '../../shared/audio/sound-engine';
 
 export interface ChallengeScreenProps {
   challengeId: ChallengeId;
@@ -217,8 +219,10 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
     const sql = runMode === 'sql' ? state.sql : builderSql;
     const shape = runMode === 'sql' ? sqlToModel(sql) : model;
     setRunning(true);
+    soundEngine.playSfx('typewriter');
     try {
       const grade = await gradeChallenge(spec, sql, runMode === 'sql' ? null : model);
+      if (grade.status === 'correct') soundEngine.playSfx('chime');
       const shown = showDiagnostic(
         grade.diagnostics.map((d) => d.code),
         src,
@@ -256,7 +260,8 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
 
   return (
     <div className={`chal${solved ? ' chal--solved' : ''}`} role="region" aria-labelledby="chal-title">
-      <div className="terminal-bar"><span className="terminal-bar__brand"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 8l3 3-3 3M13 14h4"/></svg> Máy tính CLB</span><span className="terminal-bar__status">Phiên điều tra / {challengeId.toUpperCase()}</span></div>
+      <div className="terminal-bar"><span className="terminal-bar__brand"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 8l3 3-3 3M13 14h4"/></svg> Máy tính CLB</span><span className="terminal-bar__status"><SessionClock closed={locked} /><span>Phiên điều tra / {challengeId.toUpperCase()}</span></span></div>
+      <BootSequence challengeId={challengeId} />
       <div className="chal__left">
         <div className="chal-card chal-workspace">
           <div className="terminal-windowbar"><span>Trạm truy vấn</span><span className="terminal-windowbar__lights" aria-hidden="true"><i/><i/><i/></span></div>
@@ -374,7 +379,15 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
         </div>
 
         <section className="chal-card chal-result" aria-label="Kết quả" ref={resultRef}>
-          <div className="terminal-resultbar"><span>Kết quả truy vấn</span><span>{preview ? "Xem trước" : outcome ? "Đã thực thi" : "Chờ truy vấn"}</span></div>
+          <div className="terminal-resultbar">
+            <span>Kết quả truy vấn</span>
+            {outcome && !preview ? (
+              <RowCounter key={outcome.attempt} value={outcome.grade.run.ok ? outcome.grade.run.rowCount : 0} failed={!outcome.grade.run.ok} />
+            ) : (
+              <span>{preview ? 'Xem trước' : 'Chờ truy vấn'}</span>
+            )}
+          </div>
+          {outcome && !preview ? <span key={`scan-${outcome.attempt}`} className="result-scanline" aria-hidden="true" /> : null}
           {preview ? (
             <PreviewView preview={preview} onClose={() => setPreview(null)} />
           ) : outcome && solved && outcome.grade.run.ok ? (
@@ -456,7 +469,7 @@ function RunResultView({ outcome }: { outcome: RunOutcome }) {
           </strong>
         )}
       </div>
-      {run.ok && run.rowCount > 0 ? <ResultTable columns={run.columns} rows={run.rows} caption={`Kết quả lần chạy ${outcome.attempt}`} /> : null}
+      {run.ok && run.rowCount > 0 ? <ResultTable key={outcome.attempt} reveal columns={run.columns} rows={run.rows} caption={`Kết quả lần chạy ${outcome.attempt}`} /> : null}
     </div>
   );
 }

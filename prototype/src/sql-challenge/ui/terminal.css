@@ -131,3 +131,169 @@
   .chal-runbar { padding: 12px 16px; flex-wrap: wrap; }
   .terminal-bar__status { font-size: 9px; }
 }
+
+/* ---------- Hiệu ứng máy tính CLB (terminal-fx.tsx) ---------- */
+/* Vạch quét CRT rất mờ phủ toàn màn (không nhận chuột). */
+.chal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 3px);
+  mix-blend-mode: overlay;
+}
+.terminal-bar__status { display: flex; align-items: center; gap: 14px; }
+.terminal-clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border: 1px solid #3f6a5e;
+  border-radius: 3px;
+  color: #9de2cb;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+.terminal-clock__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7ef0b8;
+  box-shadow: 0 0 6px #7ef0b8;
+  animation: terminal-blink 1.4s steps(2, jump-none) infinite;
+}
+.terminal-clock.is-closed { color: #f1d39a; border-color: #6b5a3a; }
+.terminal-clock.is-closed .terminal-clock__dot { background: #f1d39a; box-shadow: none; animation: none; }
+@keyframes terminal-blink { 50% { opacity: 0.25; } }
+
+/* Màn khởi động: phủ lên màn thử thách, bấm/nhấn phím để bỏ qua. */
+.terminal-boot {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(ellipse at center, #10272b 0%, #070f12 75%);
+  cursor: pointer;
+  animation: terminal-boot-out 0.25s ease 1 reverse;
+}
+.terminal-boot__screen {
+  width: min(560px, 90%);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.9;
+  color: #9de2cb;
+  text-shadow: 0 0 6px rgba(157, 226, 203, 0.45);
+}
+.terminal-boot__screen p { margin: 0; }
+.terminal-boot__prompt { color: #e8c281; }
+.terminal-boot__screen .is-typing::after {
+  content: '█';
+  margin-left: 4px;
+  animation: terminal-blink 0.8s steps(2, jump-none) infinite;
+}
+.terminal-boot__skip { margin-top: 18px !important; font-size: 11px; color: #6f8c86; text-shadow: none; }
+@keyframes terminal-boot-out { from { opacity: 0; } to { opacity: 1; } }
+
+/* Bộ đếm số dòng trên thanh kết quả. */
+.terminal-counter {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #afc3bf;
+  letter-spacing: 0.06em;
+}
+.terminal-counter b {
+  font-size: 18px;
+  color: #e8c281;
+  text-shadow: 0 0 8px rgba(232, 194, 129, 0.45);
+  font-variant-numeric: tabular-nums;
+}
+.terminal-counter.is-failed { color: #f1a39a; font-weight: 700; }
+
+/* Vệt quét lướt qua khung kết quả mỗi lần chạy. */
+.chal-result { position: relative; overflow: hidden; }
+.result-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 60px;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(157, 226, 203, 0.16) 70%, rgba(157, 226, 203, 0.55) 100%);
+  border-bottom: 1px solid rgba(157, 226, 203, 0.8);
+  transform: translateY(-70px);
+  animation: result-scan 0.7s ease-out 1 forwards;
+}
+@keyframes result-scan {
+  0% { transform: translateY(-70px); opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateY(420px); opacity: 0; }
+}
+/* Dòng kết quả hiện lần lượt. */
+.result-table.is-reveal tbody tr {
+  animation: result-row-in 0.28s ease-out both;
+  animation-delay: calc(var(--row, 0) * 35ms + 120ms);
+}
+@keyframes result-row-in {
+  from { opacity: 0; transform: translateX(-6px); background: rgba(157, 226, 203, 0.18); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Thẻ manh mối (WhereRow). */
+.clue-tray {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 8px;
+  padding: 10px;
+  border: 1px dashed #4b6567;
+  border-radius: 6px;
+  background: #0f1d21;
+}
+.clue-tray__cards { display: flex; flex-wrap: wrap; gap: 8px; }
+.clue-tray__hint { margin: 0; font-size: 11px; color: #afc3bf; }
+.clue-card {
+  display: grid;
+  gap: 2px;
+  min-width: 132px;
+  max-width: 260px;
+  padding: 8px 12px 9px;
+  text-align: left;
+  border: 1px solid #b89c62;
+  border-left-width: 4px;
+  border-radius: 3px;
+  background: linear-gradient(160deg, #f4ead2 0%, #e6d6b1 100%);
+  color: #2b2418;
+  font: inherit;
+  cursor: grab;
+  box-shadow: 0 3px 0 #8a7243, 0 6px 14px rgba(0, 0, 0, 0.35);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.clue-card:hover:not(:disabled) { transform: translateY(-2px) rotate(-0.6deg); }
+.clue-card:active { cursor: grabbing; }
+.clue-card.is-held {
+  transform: translateY(-3px) rotate(-1deg);
+  border-color: #e8c281;
+  box-shadow: 0 0 0 2px #e8c281, 0 10px 20px rgba(0, 0, 0, 0.45);
+}
+.clue-card.is-used { opacity: 0.72; }
+.clue-card:disabled { cursor: not-allowed; opacity: 0.5; }
+.clue-card__kicker { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #8a6d2f; }
+.clue-card__label { font-size: 13px; font-weight: 700; line-height: 1.35; }
+.qb-cond.is-drop-target {
+  outline: 2px dashed #e8c281;
+  outline-offset: 3px;
+  border-radius: 4px;
+  background: rgba(232, 194, 129, 0.06);
+}
+.clue-place { border-color: #e8c281 !important; color: #f4dfae !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-clock__dot,
+  .terminal-boot__screen .is-typing::after,
+  .result-scanline,
+  .result-table.is-reveal tbody tr,
+  .terminal-boot { animation: none; }
+  .result-scanline { display: none; }
+  .clue-card, .clue-card:hover:not(:disabled), .clue-card.is-held { transition: none; transform: none; }
+}

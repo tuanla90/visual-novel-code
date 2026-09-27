@@ -5,6 +5,9 @@
  *   `=` chọn từ danh sách, `IN` là chip + ô thêm; cột NHIỀU giá trị → ô chữ (`IN`: nhiều giá trị cách nhau
  *   bằng dấu phẩy); ba phép LIKE luôn là ô chữ. Kiểu nào cũng kèm nhóm "Từ manh mối".
  * - Phép nối hiện giữa từng cặp điều kiện, ban đầu CHƯA CHỌN; chọn ở một chỗ là đổi cả loạt.
+ * - Thẻ manh mối: cùng các lựa chọn của nhóm "Từ manh mối", nhưng dạng thẻ kéo vào một điều kiện
+ *   (hoặc bấm thẻ rồi bấm "Đặt manh mối vào đây" — cho bàn phím). Chỉ nhận ở điều kiện mà ô chọn
+ *   "Từ manh mối" cũng nhận (`optionsFor`), nên thẻ không lộ thêm cột nào so với ô chọn.
  */
 import { useId, useState, type ReactNode } from 'react';
 import { columnsOf, COLUMN_DESCRIPTIONS, isColumnOf, type ColumnName, type TableName } from '../schema';
@@ -50,8 +53,15 @@ function columnTitle(table: TableName, column: ColumnName): string {
 
 export function WhereRow({ model, onChange, evidenceOptions, disabled }: WhereRowProps) {
   const table = model.table;
+  // Thẻ đang cầm (bấm chọn hoặc đang kéo); đặt xong hoặc bấm lại thẻ thì bỏ.
+  const [held, setHeld] = useState<string | null>(null);
+  const heldOption = held === null ? null : (evidenceOptions.find((o) => o.key === held) ?? null);
+  const usedKeys = new Set(model.conditions.map((c) => selectedOptionKey(evidenceOptions, c)).filter((k): k is string => k !== null));
   return (
     <div className="qb-where">
+      {table !== null && evidenceOptions.length > 0 ? (
+        <ClueTray options={evidenceOptions} held={held} usedKeys={usedKeys} disabled={disabled} onHold={setHeld} />
+      ) : null}
       {model.conditions.length === 0 ? (
         <p className="qb-empty">Chưa có điều kiện lọc — lúc này truy vấn lấy mọi dòng của bảng.</p>
       ) : (
@@ -60,7 +70,16 @@ export function WhereRow({ model, onChange, evidenceOptions, disabled }: WhereRo
             <li key={conditionKey(c)} className="qb-cond-item">
               {i > 0 ? <ConnectorPicker connector={model.connector} onPick={(k) => onChange(setConnector(model, k))} index={i} /> : null}
               {table ? (
-                <ConditionRow table={table} cond={c} index={i} model={model} onChange={onChange} evidenceOptions={evidenceOptions} />
+                <ConditionRow
+                  table={table}
+                  cond={c}
+                  index={i}
+                  model={model}
+                  onChange={onChange}
+                  evidenceOptions={evidenceOptions}
+                  heldOption={disabled ? null : heldOption}
+                  onPlaced={() => setHeld(null)}
+                />
               ) : null}
             </li>
           ))}
@@ -75,6 +94,53 @@ export function WhereRow({ model, onChange, evidenceOptions, disabled }: WhereRo
       >
         <IconPlus /> Thêm điều kiện
       </button>
+    </div>
+  );
+}
+
+function ClueTray({
+  options,
+  held,
+  usedKeys,
+  disabled,
+  onHold,
+}: {
+  options: readonly EvidenceValueOption[];
+  held: string | null;
+  usedKeys: ReadonlySet<string>;
+  disabled: boolean;
+  onHold: (key: string | null) => void;
+}) {
+  return (
+    <div className="clue-tray" role="group" aria-label="Thẻ manh mối">
+      <div className="clue-tray__cards">
+        {options.map((o) => (
+          <button
+            key={o.key}
+            type="button"
+            className={`clue-card${held === o.key ? ' is-held' : ''}${usedKeys.has(o.key) ? ' is-used' : ''}`}
+            aria-pressed={held === o.key}
+            draggable={!disabled}
+            onClick={() => onHold(held === o.key ? null : o.key)}
+            onDragStart={(e) => {
+              e.dataTransfer.effectAllowed = 'copy';
+              e.dataTransfer.setData('text/plain', o.label);
+              onHold(o.key);
+            }}
+            onDragEnd={() => onHold(null)}
+          >
+            <span className="clue-card__kicker" aria-hidden="true">
+              {usedKeys.has(o.key) ? 'Đã dùng' : 'Manh mối'}
+            </span>
+            <span className="clue-card__label">{o.label}</span>
+          </button>
+        ))}
+      </div>
+      <p className="clue-tray__hint" aria-live="polite">
+        {held === null
+          ? 'Kéo thẻ vào một điều kiện, hoặc bấm thẻ rồi chọn điều kiện.'
+          : 'Đang cầm thẻ — thả vào điều kiện phù hợp, hoặc bấm “Đặt manh mối vào đây”.'}
+      </p>
     </div>
   );
 }
@@ -106,9 +172,12 @@ interface ConditionRowProps {
   model: QueryModel;
   onChange: (model: QueryModel) => void;
   evidenceOptions: readonly EvidenceValueOption[];
+  /** Thẻ manh mối đang cầm (nếu có). */
+  heldOption: EvidenceValueOption | null;
+  onPlaced: () => void;
 }
 
-function ConditionRow({ table, cond, index, model, onChange, evidenceOptions }: ConditionRowProps) {
+function ConditionRow({ table, cond, index, model, onChange, evidenceOptions, heldOption, onPlaced }: ConditionRowProps) {
   const n = index + 1;
   const pending = isPendingCondition(cond);
   const column = !pending && isColumnOf(table, cond.column) ? cond.column : null;
@@ -124,6 +193,13 @@ function ConditionRow({ table, cond, index, model, onChange, evidenceOptions }: 
   const applyOption = (key: string): void => {
     const opt = clueOpts.find((o) => o.key === key);
     if (opt) onChange(setConditionValue(model, cond.id, optionValue(opt, cond.op), opt.source));
+  };
+  // Thẻ đang cầm có dùng được ở điều kiện này không (cùng luật với ô chọn "Từ manh mối").
+  const accepts = heldOption !== null && clueOpts.some((o) => o.key === heldOption.key);
+  const placeHeld = (): void => {
+    if (!heldOption || !accepts) return;
+    applyOption(heldOption.key);
+    onPlaced();
   };
 
   const clueSelect =
@@ -285,7 +361,21 @@ function ConditionRow({ table, cond, index, model, onChange, evidenceOptions }: 
   }
 
   return (
-    <div className={`qb-cond${pending ? ' is-pending' : ''}`} role="group" aria-label={`Điều kiện ${n}`}>
+    <div
+      className={`qb-cond${pending ? ' is-pending' : ''}${accepts ? ' is-drop-target' : ''}`}
+      role="group"
+      aria-label={`Điều kiện ${n}`}
+      onDragOver={(e) => {
+        if (!accepts) return;
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'copy';
+      }}
+      onDrop={(e) => {
+        if (!accepts) return;
+        e.preventDefault();
+        placeHeld();
+      }}
+    >
       <select
         className="qb-select mono"
         aria-label={`Cột lọc của điều kiện ${n}`}
@@ -330,6 +420,11 @@ function ConditionRow({ table, cond, index, model, onChange, evidenceOptions }: 
         </span>
       )}
       {valueEditor}
+      {accepts ? (
+        <button type="button" className="btn btn--small clue-place" onClick={placeHeld}>
+          Đặt manh mối vào đây
+        </button>
+      ) : null}
       <button
         type="button"
         className="qb-icon-btn qb-remove"

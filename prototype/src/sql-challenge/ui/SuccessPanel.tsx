@@ -57,7 +57,7 @@ export function SuccessPanel({ attempt, run, table, conditionCount, question, sa
       </div>
       <div className="result__split">
         <div className="result__table">
-          <ResultTable columns={run.columns} rows={run.rows} caption={`Kết quả đúng — lần chạy ${attempt}`} />
+          <ResultTable reveal columns={run.columns} rows={run.rows} caption={`Kết quả đúng — lần chạy ${attempt}`} />
         </div>
         <div className="result__next">
           {question && !answered ? (
