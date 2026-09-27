@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import type { CharacterId } from '../../shared/ids';
 import { Portrait } from '../../shared/ui/Portrait';
+import { FullArtImage } from '../../shared/ui/FullArt';
+import { resolveFullArt } from '../../shared/ui/visuals/art-slots';
 import { CHARACTER_PROFILES } from '../../evidence/character-profiles';
 import './character-debut.css';
 
@@ -11,6 +13,7 @@ export interface CharacterDebutSplashProps {
 
 export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutSplashProps) {
   const profile = CHARACTER_PROFILES[characterId];
+  const fullArt = resolveFullArt(characterId);
   const rootRef = useRef<HTMLDivElement>(null);
   const continueRef = useRef<HTMLButtonElement>(null);
 
@@ -48,12 +51,8 @@ export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutS
         {/* Khung ảnh Full Picture / Spotlight */}
         <div className="chara-debut__visual">
           <div className="chara-debut__spotlight" />
-          {profile.id === 'minh-anh' && profile.fullArtPath ? (
-            <img
-              src={profile.fullArtPath}
-              alt={profile.fullName}
-              className="chara-debut__full-img"
-            />
+          {fullArt.url ? (
+            <FullArtImage art={fullArt} alt={profile.fullName} className="chara-debut__full-img" />
           ) : (
             <div className="chara-debut__portrait-wrap">
               <Portrait character={profile.id} expression={profile.expressions[0] ?? 'smile'} size="normal" />

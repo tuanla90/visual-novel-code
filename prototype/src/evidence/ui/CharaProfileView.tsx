@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { CHARACTER_IDS, type CharacterId, type ExpressionOf } from '../../shared/ids';
 import { Portrait } from '../../shared/ui/Portrait';
+import { FullArtImage } from '../../shared/ui/FullArt';
+import { resolveFullArt } from '../../shared/ui/visuals/art-slots';
 import { CHARACTER_PROFILES, type CharacterProfile } from '../character-profiles';
 import './chara-profile.css';
 
@@ -15,6 +17,7 @@ export function CharaProfileView({
 }: CharaProfileViewProps) {
   const [selectedId, setSelectedId] = useState<CharacterId>(initialCharacterId);
   const profile: CharacterProfile = CHARACTER_PROFILES[selectedId] ?? CHARACTER_PROFILES['minh-anh'];
+  const fullArt = resolveFullArt(profile.id);
   const [activeExpression, setActiveExpression] = useState<string>(profile.expressions[0] ?? 'smile');
 
   // Khi đổi nhân vật, tự động gán lại biểu cảm đầu tiên của nhân vật đó
@@ -57,13 +60,9 @@ export function CharaProfileView({
         {/* Cột trái: Ảnh nhân vật to toàn thân + bộ nút chuyển biểu cảm */}
         <div className="chara-profile__showcase">
           <div className="chara-profile__art-wrap">
-            {profile.id === 'minh-anh' && profile.fullArtPath ? (
+            {fullArt.url ? (
               <div className="chara-profile__full-art">
-                <img
-                  src={profile.fullArtPath}
-                  alt={`${profile.name} toàn thân`}
-                  className="chara-profile__full-img"
-                />
+                <FullArtImage art={fullArt} alt={`${profile.name} toàn thân`} className="chara-profile__full-img" />
               </div>
             ) : (
               <div className="chara-profile__portrait-large">

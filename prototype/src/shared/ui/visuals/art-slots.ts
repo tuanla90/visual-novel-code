@@ -6,7 +6,9 @@
  * Tên tệp được nhận (không phân biệt hoa/thường):
  * - tên ô (quy ước cũ của gói 7): `bg-prototype-hallway`, `minh-anh-worried`, `doc-letter`;
  * - quy ước của user (bộ prompt `prompts-characters-prototype-flow-v0.1.md`): `char-minh-anh-worried`,
- *   và `char-<nhân vật>-anchor` = biểu cảm ĐẦU của nhân vật (`CHARACTER_EXPRESSIONS`, Hoài = `nervous`).
+ *   và `char-<nhân vật>-anchor` = biểu cảm ĐẦU của nhân vật (`CHARACTER_EXPRESSIONS`, Hoài = `nervous`);
+ * - ảnh toàn thân cho hồ sơ nhân vật và màn ra mắt: `char-<nhân vật>-full` (ô `<nhân vật>-full`);
+ *   chưa có thì hai màn đó dùng chân dung (ảnh thật hoặc hình vẽ tạm).
  *
  * Kiểm ô nào đang dùng ảnh thật:
  * - trên màn chơi: phần tử hình có `data-art-slot="<tên ô>"` và `data-art-source="image" | "placeholder"`;
@@ -25,7 +27,7 @@ import {
   type SceneId,
 } from '../../ids';
 
-export type ArtKind = 'background' | 'portrait' | 'document';
+export type ArtKind = 'background' | 'portrait' | 'full' | 'document';
 
 export interface ArtSlot {
   /** Tên tệp không có đuôi, ví dụ `bg-prototype-hallway`. */
@@ -65,6 +67,11 @@ const DOCUMENT_USAGE: Record<DocumentId, string> = {
   'doc-handover-log': 'Nền giấy sổ bàn giao hộp góp ý',
 };
 
+/** Tên ô ảnh toàn thân của một nhân vật (hồ sơ nhân vật, màn ra mắt). */
+export function fullArtSlotName(character: CharacterId): string {
+  return `${character}-full`;
+}
+
 /** Tên ô chân dung của một nhân vật ở một biểu cảm. */
 export function portraitSlotName(character: CharacterId, expression: string): string {
   return `${character}-${expression}`;
@@ -84,6 +91,11 @@ export const ART_SLOTS: readonly ArtSlot[] = [
       usage: 'Chân dung',
     })),
   ),
+  ...CHARACTER_IDS.map((character) => ({
+    name: fullArtSlotName(character),
+    kind: 'full' as const,
+    usage: 'Ảnh toàn thân (hồ sơ nhân vật, màn ra mắt)',
+  })),
   ...DOCUMENT_IDS.map((doc) => ({ name: doc, kind: 'document' as const, usage: DOCUMENT_USAGE[doc] })),
 ];
 
@@ -113,7 +125,8 @@ export function slotForFileName(name: string): { slot: string; form: ArtNameForm
       const character = rest.slice(0, -USER_ANCHOR_SUFFIX.length);
       return isCharacterId(character) ? { slot: anchorSlotName(character), form: 'anchor' } : null;
     }
-    return SLOT_BY_NAME.get(rest)?.kind === 'portrait' ? { slot: rest, form: 'user' } : null;
+    const kind = SLOT_BY_NAME.get(rest)?.kind;
+    return kind === 'portrait' || kind === 'full' ? { slot: rest, form: 'user' } : null;
   }
   return SLOT_BY_NAME.has(lower) ? { slot: lower, form: 'slot' } : null;
 }
@@ -121,7 +134,7 @@ export function slotForFileName(name: string): { slot: string; form: ArtNameForm
 /** Mọi tên tệp (không đuôi) được nhận: tên ô + `char-<ô chân dung>` + `char-<nhân vật>-anchor`. */
 export const KNOWN_FILE_NAMES: readonly string[] = [
   ...ART_SLOTS.map((s) => s.name),
-  ...ART_SLOTS.filter((s) => s.kind === 'portrait').map((s) => `${USER_PORTRAIT_PREFIX}${s.name}`),
+  ...ART_SLOTS.filter((s) => s.kind === 'portrait' || s.kind === 'full').map((s) => `${USER_PORTRAIT_PREFIX}${s.name}`),
   ...CHARACTER_IDS.map((c) => `${USER_PORTRAIT_PREFIX}${c}${USER_ANCHOR_SUFFIX}`),
 ];
 
@@ -294,6 +307,13 @@ export function resolvePortrait(
   const fallbackSlot = anchorSlotName(character);
   const fallback = artUrl(fallbackSlot, index);
   return fallback ? { slot, from: fallbackSlot, url: fallback } : { slot };
+}
+
+/** Ô ảnh toàn thân; không có tệp → `url` rỗng, nơi dùng tự rơi về chân dung. */
+export function resolveFullArt(character: CharacterId, index: ReadonlyMap<string, string> = ART_INDEX): ResolvedArt {
+  const slot = fullArtSlotName(character);
+  const url = artUrl(slot, index);
+  return url ? { slot, from: slot, url } : { slot };
 }
 
 /** Ô nền giấy tài liệu. */

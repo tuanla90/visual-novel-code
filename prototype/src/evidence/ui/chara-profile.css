@@ -143,6 +143,14 @@
   margin-top: 40px;
 }
 
+/* Phóng to chỉ dành cho hình vẽ tạm; ảnh chân dung thật lấp đầy khung theo chiều cao. */
+.chara-profile__portrait-large:has(.portrait[data-art-source='image']) {
+  transform: none;
+  margin-top: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* Bộ nút chọn biểu cảm */
 .chara-profile__expressions {
   width: 100%;

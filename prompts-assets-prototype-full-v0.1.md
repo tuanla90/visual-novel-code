@@ -13,7 +13,13 @@ cần gắn ảnh nào (Select from Canvas) trước khi dán prompt. `img_1` = 
 | Tài liệu | 4:3 | 1K → Upscale (đích 1600×1200) |
 | Biểu tượng | 1:1 | 1K |
 
-**Thứ tự chạy**: A1 → A2 → A3 → B1 → B2 → B3 → B4 → B5 → C1 → D (tuỳ chọn) → E1–E8 → F1–F3 → G1–G4.
+**Thứ tự chạy**: H1–H8 (biểu cảm) → I1–I6 (toàn thân) → A1 → A2 → A3 → B1 → B2 → B3 → B4 → B5 → C1 →
+F1–F3 → D, E, G (tuỳ chọn).
+
+> **Dùng ngay khi chưa có lớp vật bấm được.** Game hiện hiện điểm xem xét dạng danh sách nút, chưa đặt
+> vật lên ảnh. Vì vậy có thể lưu luôn ảnh **A1** thành `bg-prototype-club-room.png` và **B1** thành
+> `bg-prototype-hallway.png` (vật nằm sẵn trong nền, giống hình vẽ tạm hiện tại). Khi code lớp vật
+> xong mới thay bằng nền sạch A2/B3.
 Khối "sửa ảnh" phải chạy trên kết quả của khối trước nó.
 
 ---
@@ -170,7 +176,10 @@ Avoid: luxury apartment, hotel room, high-school dorm, bunk-bed barracks, clutte
 
 ---
 
-## E. Cảnh giới thiệu nhân vật (16:9, ảnh đầy khung)
+## E. Cảnh giới thiệu nhân vật (16:9, ảnh đầy khung) — tuỳ chọn
+
+> Game **chưa có chỗ hiện ảnh 16:9 này**: màn "Nhân vật mới" và hồ sơ nhân vật dùng ảnh **toàn thân
+> khung dọc** (mục I). Giữ mục E cho trailer, trang giới thiệu hoặc một màn ra mắt kiểu khác sau này.
 
 Mỗi khối gắn **2 ảnh theo đúng thứ tự**: ảnh thứ nhất `img_1` (phong cách), ảnh thứ hai là chân dung
 nhân vật (ghi ở dòng "Gắn ảnh").
@@ -425,4 +434,179 @@ Composition: single object, centered, three-quarter top view, filling about 70 p
 Style: match the attached reference's art style only (clean 2D visual novel rendering, soft cel shading); do not include the person from the reference; slightly bolder outline than backgrounds so it reads at 96 px
 Background: perfectly flat solid #E2E6EA, no gradient, no shadow on the background
 Constraints: no readable text, no letters, no logo, no watermark
+```
+
+---
+
+## H. Biểu cảm còn thiếu (sửa ảnh chân dung; khung 9:16, 1K)
+
+Game đang cho 8 biểu cảm này **mượn** ảnh neo. Mỗi khối là **sửa ảnh** (Generate Image với chân dung làm
+đầu vào) để giữ nguyên khung và vị trí đầu; nhờ vậy đổi biểu cảm trong game không bị giật (README ô ảnh).
+Lưu kết quả đúng tên id vào `prototype/src/assets/characters/`.
+
+### H1. `char-minh-anh-worried`
+
+Gắn ảnh: chân dung Minh Anh (`img_1` trên canvas). Khung 9:16.
+
+```text
+[id: char-minh-anh-worried]
+Edit this exact image. Keep EVERYTHING identical: same character, face shape, hairstyle, glasses and accessories, outfit, colors, line art, lighting, the same 9:16 canvas, the same scale, and the exact same position of the head, shoulders and body in the frame, on the same plain flat light gray background #E2E6EA. Change only the following:
+Expression: worried and tense. Eyebrows drawn together and slightly raised in the middle, eyes looking a little down and to the side, lips pressed together. Hands: her fingers gripping each other tightly at waist level. Still composed, not crying, no sweat drops.
+Do not move, resize or re-crop the character. No text, no logo, no watermark.
+```
+
+### H2. `char-minh-anh-happy`
+
+Gắn ảnh: chân dung Minh Anh (`img_1` trên canvas). Khung 9:16.
+
+```text
+[id: char-minh-anh-happy]
+Edit this exact image. Keep EVERYTHING identical: same character, face shape, hairstyle, glasses and accessories, outfit, colors, line art, lighting, the same 9:16 canvas, the same scale, and the exact same position of the head, shoulders and body in the frame, on the same plain flat light gray background #E2E6EA. Change only the following:
+Expression: relieved and happy. Soft genuine smile with lips gently closed or slightly parted, relaxed eyebrows, warm eyes, shoulders a little more relaxed. Not laughing, no open-mouth grin.
+Do not move, resize or re-crop the character. No text, no logo, no watermark.
+```
+
+### H3. `char-ha-vy-thinking`
+
+Gắn ảnh: chân dung Hà Vy (`img_2` trên canvas). Khung 9:16.
+
+```text
+[id: char-ha-vy-thinking]
+Edit this exact image. Keep EVERYTHING identical: same character, face shape, hairstyle, glasses and accessories, outfit, colors, line art, lighting, the same 9:16 canvas, the same scale, and the exact same position of the head, shoulders and body in the frame, on the same plain flat light gray background #E2E6EA. Change only the following:
+Expression: skeptical and thinking. One eyebrow slightly raised, eyes narrowed a little as if checking a number, mouth in a small flat line. Hand: the hand that was adjusting her glasses now rests with the index finger lightly touching her chin; the notebook stays in her other arm.
+Do not move, resize or re-crop the character. No text, no logo, no watermark.
+```
+
+### H4. `char-ha-vy-smile`
+
+Gắn ảnh: chân dung Hà Vy (`img_2` trên canvas). Khung 9:16.
+
+```text
+[id: char-ha-vy-smile]
+Edit this exact image. Keep EVERYTHING identical: same character, face shape, hairstyle, glasses and accessories, outfit, colors, line art, lighting, the same 9:16 canvas, the same scale, and the exact same position of the head, shoulders and body in the frame, on the same plain flat light gray background #E2E6EA. Change only the following:
+Expression: her rare, quietly proud smile after the numbers have been checked and confirmed. Small closed-lip smile, calm confident eyes behind her glasses, relaxed eyebrows. Not laughing, not smug.
+Do not move, resize or re-crop the character. No text, no logo, no watermark.
+```
+
+### H5. `char-quan-smug`
+
+Gắn ảnh: chân dung Quân (`img_3` trên canvas). Khung 9:16.
+
+```text
+[id: char-quan-smug]
+Edit this exact image. Keep EVERYTHING identical: same character, face shape, hairstyle, glasses and accessories, outfit, colors, line art, lighting, the same 9:16 canvas, the same scale, and the exact same position of the head, shoulders and body in the frame, on the same plain flat light gray background #E2E6EA. Change only the following:
+Expression: cool and self-assured. A very slight one-sided smile, chin raised a little, eyelids a bit lowered, confident gaze. Refined and composed, not a villain grimace, no teeth.
+Do not move, resize or re-crop the character. No text, no logo, no watermark.
+```
+
+### H6. `char-quan-stunned`
+
+Gắn ảnh: chân dung Quân (`img_3` trên canvas). Khung 9:16.
+
+```text
+[id: char-quan-stunned]
+Edit this exact image. Keep EVERYTHING identical: same character, face shape, hairstyle, glasses and accessories, outfit, colors, line art, lighting, the same 9:16 canvas, the same scale, and the exact same position of the head, shoulders and body in the frame, on the same plain flat light gray background #E2E6EA. Change only the following:
+Expression: caught off guard. Eyes slightly widened, eyebrows lifted, lips a little parted, body frozen for a moment. Still dignified: no comic shock lines, no sweat drops, no falling.
+Do not move, resize or re-crop the character. No text, no logo, no watermark.
+```
+
+### H7. `char-hoai-downcast`
+
+Gắn ảnh: chân dung Hoài (`img_4` trên canvas). Khung 9:16.
+
+```text
+[id: char-hoai-downcast]
+Edit this exact image. Keep EVERYTHING identical: same character, face shape, hairstyle, glasses and accessories, outfit, colors, line art, lighting, the same 9:16 canvas, the same scale, and the exact same position of the head, shoulders and body in the frame, on the same plain flat light gray background #E2E6EA. Change only the following:
+Expression: downcast and apologetic. Head tilted slightly down, eyes lowered, eyebrows sad, mouth small and closed, both hands gripping the tote bag strap tighter. No tears.
+Do not move, resize or re-crop the character. No text, no logo, no watermark.
+```
+
+### H8. `char-hoai-relieved`
+
+Gắn ảnh: chân dung Hoài (`img_4` trên canvas). Khung 9:16.
+
+```text
+[id: char-hoai-relieved]
+Edit this exact image. Keep EVERYTHING identical: same character, face shape, hairstyle, glasses and accessories, outfit, colors, line art, lighting, the same 9:16 canvas, the same scale, and the exact same position of the head, shoulders and body in the frame, on the same plain flat light gray background #E2E6EA. Change only the following:
+Expression: relieved. A small shy smile, eyebrows relaxed, eyes softened, shoulders lowered as if she just exhaled; one hand lightly on her chest, the other still holding the bag strap.
+Do not move, resize or re-crop the character. No text, no logo, no watermark.
+```
+
+---
+
+## I. Ảnh toàn thân cho hồ sơ nhân vật và màn "Nhân vật mới" (khung 9:16, 1K)
+
+Hai màn này tự dùng tệp `char-<nhân vật>-full` (ô mới, xem README ô ảnh); chưa có thì hiện chân dung.
+Khung dọc đầu-tới-giày, nền xám phẳng để game tự tách nền.
+
+### I1. `char-minh-anh-full`
+
+Gắn ảnh: chân dung Minh Anh (`img_1` trên canvas). Khung 9:16.
+
+```text
+[id: char-minh-anh-full]
+Use the attached image as the exact character. Create a full-body standing visual novel sprite of the same person from the top of the hair down to the shoes.
+Preserve the exact face, hairstyle, glasses and accessories, outfit, colors, proportions, art style, line weight and lighting of the attached image.
+Standing pose: relaxed and upright, facing slightly three-quarter, hands loosely clasped in front at waist level as in the attached image. Lower body: black straight-leg trousers and clean white sneakers.
+Composition: 9:16 portrait, the whole figure centered and fully inside the frame, head near the top with clear empty margin above the hair, both shoes fully visible with a small margin below, clear empty space on both sides; nothing cropped, no hand or prop touching the edges. Plain perfectly flat light gray background #E2E6EA, no floor line, no cast shadow, no gradient. No text, no logo, no watermark. Avoid chibi proportions, photorealism, 3D, changed outfit, different face.
+```
+
+### I2. `char-ha-vy-full`
+
+Gắn ảnh: chân dung Hà Vy (`img_2` trên canvas). Khung 9:16.
+
+```text
+[id: char-ha-vy-full]
+Use the attached image as the exact character. Create a full-body standing visual novel sprite of the same person from the top of the hair down to the shoes.
+Preserve the exact face, hairstyle, glasses and accessories, outfit, colors, proportions, art style, line weight and lighting of the attached image.
+Standing pose: holding her navy notebook against her side, the other hand adjusting her glasses as in the attached image. Lower body: black trousers and simple dark loafers.
+Composition: 9:16 portrait, the whole figure centered and fully inside the frame, head near the top with clear empty margin above the hair, both shoes fully visible with a small margin below, clear empty space on both sides; nothing cropped, no hand or prop touching the edges. Plain perfectly flat light gray background #E2E6EA, no floor line, no cast shadow, no gradient. No text, no logo, no watermark. Avoid chibi proportions, photorealism, 3D, changed outfit, different face.
+```
+
+### I3. `char-quan-full`
+
+Gắn ảnh: chân dung Quân (`img_3` trên canvas). Khung 9:16.
+
+```text
+[id: char-quan-full]
+Use the attached image as the exact character. Create a full-body standing visual novel sprite of the same person from the top of the hair down to the shoes.
+Preserve the exact face, hairstyle, glasses and accessories, outfit, colors, proportions, art style, line weight and lighting of the attached image.
+Standing pose: upright and composed, a dark leather folder held under one arm, the other hand in his trouser pocket as in the attached image. Lower body: dark tailored trousers and polished black leather shoes.
+Composition: 9:16 portrait, the whole figure centered and fully inside the frame, head near the top with clear empty margin above the hair, both shoes fully visible with a small margin below, clear empty space on both sides; nothing cropped, no hand or prop touching the edges. Plain perfectly flat light gray background #E2E6EA, no floor line, no cast shadow, no gradient. No text, no logo, no watermark. Avoid chibi proportions, photorealism, 3D, changed outfit, different face.
+```
+
+### I4. `char-hoai-full`
+
+Gắn ảnh: chân dung Hoài (`img_4` trên canvas). Khung 9:16.
+
+```text
+[id: char-hoai-full]
+Use the attached image as the exact character. Create a full-body standing visual novel sprite of the same person from the top of the hair down to the shoes.
+Preserve the exact face, hairstyle, glasses and accessories, outfit, colors, proportions, art style, line weight and lighting of the attached image.
+Standing pose: slightly timid, both hands holding the strap of her canvas tote bag as in the attached image. Lower body: black trousers and white canvas sneakers.
+Composition: 9:16 portrait, the whole figure centered and fully inside the frame, head near the top with clear empty margin above the hair, both shoes fully visible with a small margin below, clear empty space on both sides; nothing cropped, no hand or prop touching the edges. Plain perfectly flat light gray background #E2E6EA, no floor line, no cast shadow, no gradient. No text, no logo, no watermark. Avoid chibi proportions, photorealism, 3D, changed outfit, different face.
+```
+
+### I5. `char-bac-tu-full`
+
+Gắn ảnh: chân dung Bác Tư (`img_6` trên canvas). Khung 9:16.
+
+```text
+[id: char-bac-tu-full]
+Use the attached image as the exact character. Create a full-body standing visual novel sprite of the same person from the top of the hair down to the shoes.
+Preserve the exact face, hairstyle, glasses and accessories, outfit, colors, proportions, art style, line weight and lighting of the attached image.
+Standing pose: relaxed and friendly, arms at his sides, a ring of keys hanging from his belt. Lower body: navy uniform trousers with a black belt and sturdy black work shoes.
+Composition: 9:16 portrait, the whole figure centered and fully inside the frame, head near the top with clear empty margin above the hair, both shoes fully visible with a small margin below, clear empty space on both sides; nothing cropped, no hand or prop touching the edges. Plain perfectly flat light gray background #E2E6EA, no floor line, no cast shadow, no gradient. No text, no logo, no watermark. Avoid chibi proportions, photorealism, 3D, changed outfit, different face.
+```
+
+### I6. `char-tung-full`
+
+Gắn ảnh: chân dung Tùng (ô "Trần Tùng v2 (đủ tay)" trên canvas). Khung 9:16.
+
+```text
+[id: char-tung-full]
+Use the attached image as the exact character. Create a full-body standing visual novel sprite of the same person from the top of the hair down to the shoes.
+Preserve the exact face, hairstyle, glasses and accessories, outfit, colors, proportions, art style, line weight and lighting of the attached image.
+Standing pose: thumbs-up with one hand, the folded campus map brochure in the other, as in the attached image. Lower body: dark trousers and casual white sneakers.
+Composition: 9:16 portrait, the whole figure centered and fully inside the frame, head near the top with clear empty margin above the hair, both shoes fully visible with a small margin below, clear empty space on both sides; nothing cropped, no hand or prop touching the edges. Plain perfectly flat light gray background #E2E6EA, no floor line, no cast shadow, no gradient. No text, no logo, no watermark. Avoid chibi proportions, photorealism, 3D, changed outfit, different face.
 ```

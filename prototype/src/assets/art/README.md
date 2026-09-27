@@ -77,6 +77,21 @@ bị giật. Game hiển thị theo chiều cao, neo đáy khung. Thiếu một 
 `char-<nhân vật>-<biểu cảm>` cũng nhận được cho biểu cảm gốc (ví dụ `char-minh-anh-neutral`,
 `char-hoai-nervous`) — dùng khi muốn thay ảnh neo bằng một ảnh riêng cho biểu cảm đó.
 
+### Ảnh toàn thân — hồ sơ nhân vật và màn "Nhân vật mới"
+
+Hai màn này hiện ảnh **toàn thân** (đầu tới giày) nếu có tệp `char-<nhân vật>-full`; chưa có thì
+hiện chân dung ở trên (ảnh thật, hoặc hình vẽ tạm). Khung dọc 9:16, nền xám phẳng như chân dung
+(game tự tách nền), đặt trong khung theo chiều cao, neo đáy. Prompt: `prompts-assets-prototype-full-v0.1.md`.
+
+| Tên tệp (không đuôi)  | Nhân vật | Ô               |
+| --------------------- | -------- | --------------- |
+| `char-minh-anh-full`  | Minh Anh | `minh-anh-full` |
+| `char-ha-vy-full`     | Hà Vy    | `ha-vy-full`    |
+| `char-quan-full`      | Quân     | `quan-full`     |
+| `char-hoai-full`      | Hoài     | `hoai-full`     |
+| `char-bac-tu-full`    | Bác Tư   | `bac-tu-full`   |
+| `char-tung-full`      | Tùng     | `tung-full`     |
+
 ### Nền xám phẳng được tự tách
 
 Ảnh sinh theo bộ prompt có nền xám phẳng một màu (#E2E6EA–#E8ECEF). Game **tự tách nền** cho chân

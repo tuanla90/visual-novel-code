@@ -124,6 +124,11 @@
   z-index: 1;
 }
 
+/* Phóng to chỉ dành cho hình vẽ tạm; ảnh chân dung thật khung dọc sẽ bị cắt mất đầu nếu phóng. */
+.chara-debut__portrait-wrap:has(.portrait[data-art-source='image']) {
+  transform: none;
+}
+
 /* Khung nội dung */
 .chara-debut__content {
   display: flex;

@@ -20,6 +20,7 @@ import {
   parseArtFileName,
   resolveBackground,
   resolveDocument,
+  resolveFullArt,
   resolvePortrait,
   slotForFileName,
 } from './art-slots';
@@ -57,9 +58,9 @@ const USER_MANIFEST: Record<string, string> = {
 };
 
 describe('ô ảnh: danh sách và README', () => {
-  it('đủ ô: 3 nền + mọi biểu cảm của mọi nhân vật + 3 tài liệu, không trùng tên', () => {
+  it('đủ ô: 3 nền + mọi biểu cảm của mọi nhân vật + ảnh toàn thân mỗi nhân vật + 3 tài liệu, không trùng tên', () => {
     const expressions = CHARACTER_IDS.reduce((n, c) => n + CHARACTER_EXPRESSIONS[c].length, 0);
-    expect(ART_SLOTS).toHaveLength(SCENE_IDS.length + expressions + DOCUMENT_IDS.length);
+    expect(ART_SLOTS).toHaveLength(SCENE_IDS.length + expressions + CHARACTER_IDS.length + DOCUMENT_IDS.length);
     expect(new Set(ART_SLOTS.map((s) => s.name)).size).toBe(ART_SLOTS.length);
     expect(ART_SLOTS.map((s) => s.name)).toEqual(
       expect.arrayContaining(['bg-prototype-club-room', 'bg-prototype-hallway', 'bg-prototype-hearing-room', 'minh-anh-neutral', 'ha-vy-thinking', 'quan-stunned', 'hoai-relieved', 'bac-tu-neutral', 'doc-letter', 'doc-bookmark', 'doc-handover-log']),
@@ -83,11 +84,13 @@ describe('ô ảnh: danh sách và README', () => {
       ...CHARACTER_IDS.flatMap((c) => CHARACTER_EXPRESSIONS[c].map((e: string) => resolvePortrait(c, e))),
       ...DOCUMENT_IDS.map((doc) => resolveDocument(doc)),
     ];
+    const fullArt = CHARACTER_IDS.map((c) => resolveFullArt(c));
     const lines = resolved.map((art) => {
       if (!art.url) return `vẽ tạm    ${art.slot}`;
       if (art.from !== art.slot) return `mượn      ${art.slot} ← ô ${art.from ?? '?'}`;
       return `ẢNH THẬT  ${art.slot} ← ${usedBySlot.get(art.slot) ?? '?'}`;
     });
+    for (const art of fullArt) lines.push(art.url ? `ẢNH THẬT  ${art.slot} ← ${usedBySlot.get(art.slot) ?? '?'}` : `dùng chân dung ${art.slot}`);
     for (const s of report.shadowed) lines.push(`bị che    ${s.path} (ô ${s.slot} dùng ${s.by})`);
     for (const path of report.ignored) lines.push(`bỏ qua    ${path} (không khớp ô nào — tệp tham khảo/bản nháp?)`);
     for (const s of report.suspicious) lines.push(`NGHI SAI  ${s.path} (gần giống \`${s.closest}\`)`);
