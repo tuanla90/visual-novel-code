@@ -426,6 +426,17 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Theo skill `/giao-viec` ("gói đã fail → giao lại ở model cao hơn một bậc", "cắt nhỏ"): tách 11a thành **11a-1 `sua-loi-tuong-tac` (Fable)** — áp bản vá dở + chống bấm đúp + thứ tự lựa chọn chịu StrictMode + "Bắt đầu lại" có xác nhận; và **11a-2** (engine: trim/NFC, giới hạn dòng, mã mới; trình dựng F6/F8/F12; đánh dấu chơi lại; tóm tắt mã lỗi; ảnh hỏng; tài liệu) giao sau.
 - Biện pháp chống treo mới cho mọi brief: bọc lệnh dài bằng `timeout`, nhịp commit 25 phút cho gói giao lại, commit đầu trong 10 phút.
 
+**QĐ-070 — "Có số liệu đây!" thành câu của người chơi; Hà Vy nhận câu "Khoan, đếm lại đã."** · Nguồn: USER · 27/09 18:05
+- Vấn đề: GDD §3.1 ghi "Có số liệu đây!" là câu cửa miệng của Hà Vy, nhưng trong kịch bản prototype Hà Vy chưa nói câu này lần nào; ở deb-02 và deb-03, ngay sau hiệu ứng là **người chơi** giải thích lỗi. Để Hà Vy hô thì cướp khoảnh khắc người chơi tự chạm đúng dòng lỗi (QĐ-024 bước 2–3), và Hà Vy lại là người đưa gợi ý nên dễ thành "Hà Vy giải, người chơi bấm theo".
+- Phương án: A — giữ cho Hà Vy; B — người chơi hô, Hà Vy "trao" câu cho người chơi; **C — người chơi tự nghĩ ra câu này, Hà Vy có câu riêng**.
+- **Chọn C.**
+  - **Người chơi — "Có số liệu đây!"**: lần đầu buột miệng ở phần Phân tích, khi truy vấn đầu tiên ra kết quả, dạng lời thoại thường, không bật hiệu ứng; Minh Anh (hoặc Tùng) nhận xét câu đó. Từ deb-02 trở đi là câu hô kèm hiệu ứng QĐ-025, vẫn tối đa 2–3 lần.
+  - **Hà Vy — "Khoan, đếm lại đã."**: nói khi thấy con số có vấn đề, ngay trước lúc người chơi tìm ra lỗi, tạo nhịp *Hà Vy "Khoan, đếm lại đã." → người chơi tìm ra → "Có số liệu đây!"*. Hợp tính kỹ tính, hoài nghi, tốt bụng; dạy thói quen kiểm số dòng. Châm ngôn phụ (thẻ nhân vật, lời dặn): "Kiểm hai lần, kết luận một lần."
+  - Cặp đối đáp phần hài với Tùng (tuỳ chọn): Tùng "Tui cá là…" / Hà Vy "Đừng cá. Đếm."
+- Loại bỏ (từ bộ gợi ý của Gemini): câu có chữ "thủ phạm" (ngược QĐ-023/024); "CSDL của tớ" (Hà Vy không biết SQL); "ấn Next" (game không có nút này); châm ngôn "dữ liệu không biết nói dối…" (trùng câu của Quân); hỏi vặn người chơi khi bấm "Hỏi Hà Vy" (gợi ý thứ hai trở đi trừ điểm, và QĐ-020 yêu cầu gợi ý nói đúng ý).
+- Đã sửa theo quyết định này: GDD §3.1 (người chơi, Hà Vy), GDD §16.1 (tư thế Hà Vy), prompt `char-ha-vy-smile` trong `prompts-characters-prototype-flow-v0.1.md`.
+- **Còn phải làm** (gói nội dung kế tiếp): thêm cảnh người chơi buột miệng ở phần Phân tích và chèn "Khoan, đếm lại đã." của Hà Vy (vd. trước khi người chơi chạm dòng lỗi ở deb-01) vào `docs/kich-ban-prototype.md` và `src/content/real/story/`, cập nhật test trung thành; nếu hiệu ứng hiện chân dung thì dùng ảnh người chơi nam/nữ theo lựa chọn.
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**

@@ -111,7 +111,7 @@ Avoid: goofy caricature, anime swirl glasses, altered clothes, removed glasses
 
 Use case: precise-object-edit
 Asset type: 2D anime visual-novel character sprite, expression variant
-Primary request: modify the facial expression of Le Ha Vy from [ref: char-ha-vy-anchor] to show her iconic "Có số liệu đây!" triumphant and supportive smile
+Primary request: modify the facial expression of Le Ha Vy from [ref: char-ha-vy-anchor] to show her rare, quietly proud and supportive smile after the numbers have been checked and confirmed
 Character: exact same character as [ref: char-ha-vy-anchor], identical glasses, hair, cream shirt and jade-green cardigan
 Expression: satisfied confident smile, eyes shining with clarity behind glasses, subtle triumph of proving facts through structured data
 Pose/framing: waist-up portrait, identical scale and framing as [ref: char-ha-vy-anchor], posture confident and upright

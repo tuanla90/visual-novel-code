@@ -77,6 +77,7 @@ Tuần đầu năm học 2026–2027, phòng Công tác sinh viên nhận thư n
 **Người chơi — tân sinh viên năm nhất**
 - Chọn ngành: Kế toán – Kiểm toán, Quản trị kinh doanh hoặc Marketing (đổi vài câu thoại và manh mối phụ).
 - Ở ký túc xá, cùng phòng với Tùng. Chưa biết SQL.
+- Câu cửa miệng — và là câu "Objection!" của game: **"Có số liệu đây!"**. Người chơi tự nghĩ ra: lần đầu buột miệng khi truy vấn đầu tiên ra kết quả, về sau hô khi phản bác ở buổi giải trình (QĐ-070).
 
 **Trần Tùng — bạn cùng phòng, năm nhất ngành Quản trị du lịch – lữ hành**
 - Vui vẻ, mê game, hay đoán bừa. Câu cửa miệng: "Tui cá là…"
@@ -90,7 +91,7 @@ Tuần đầu năm học 2026–2027, phòng Công tác sinh viên nhận thư n
 - Câu cửa miệng: "Rồi, việc hôm nay là…"
 
 **Lê Hà Vy — năm 2 ngành Toán ứng dụng**
-- Kỹ tính, hoài nghi, tốt bụng. Câu cửa miệng — và là câu "Objection!" của game: **"Có số liệu đây!"**
+- Kỹ tính, hoài nghi, tốt bụng. Câu cửa miệng: **"Khoan, đếm lại đã."**, nói khi thấy con số có vấn đề, ngay trước lúc người chơi tìm ra lỗi. Châm ngôn: "Kiểm hai lần, kết luận một lần." (QĐ-070)
 - Vai trò: **trợ thủ trong buổi giải trình**. Khi người chơi bí, Hà Vy gợi ý (mỗi buổi giải trình được 1 gợi ý miễn phí, sau đó mỗi gợi ý trừ điểm đánh giá).
 - Hà Vy biết chút ít về số liệu nhưng không biết SQL — cô là người đầu tiên tin người chơi có thể cứu CLB.
 
@@ -617,7 +618,7 @@ WHERE ten LIKE 'H%'
 |---|---|---|
 | Tùng | Đứng thường · giơ ngón cái · gãi đầu | 7 |
 | Minh Anh | Đứng thường, cầm sổ đỏ · chống tay lên bàn · khoanh tay suy nghĩ | 7 |
-| Hà Vy | Đứng thường · đẩy kính · chỉ tay "Có số liệu đây!" | 7 |
+| Hà Vy | Đứng thường · đẩy kính · giơ tay ngăn "Khoan, đếm lại đã." | 7 |
 | Quân | Khoanh tay · cầm laptop/hồ sơ · chỉ tay phản bác | 7 |
 
 Bảy biểu cảm chuẩn: bình thường, vui, ngạc nhiên, suy nghĩ, lo lắng, nghiêm/bực, và một biểu cảm đặc trưng (Tùng đắc ý, Hà Vy mỉm cười hiếm hoi, Quân khựng lại khi bị bác, Minh Anh thở phào).
