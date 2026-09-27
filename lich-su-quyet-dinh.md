@@ -416,6 +416,11 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - **11b `sua-loi-noi-dung` (Opus, 5 điểm):** kịch bản + nội dung + test trung thành: lời cho `class-subset`, `same-column-and`, `too-many-rows`, lời dẫn IN trước c3, F2, F3, F4, F6 (lời `no-value`), F7, F9, F10, F11, F13, F14.
 - Chạy tuần tự 11a → 11b (QĐ-057).
 
+**QĐ-069 — Cho phép một loại node mới `exit` (nhân vật rời cảnh).** · Nguồn: điều phối viên khi soạn gói 11b (F9 của QĐ-067) · 27/09 07:10
+- Vấn đề: F9 cần Hoài "cúi chào rồi ra về" trước khi Quân nói về người còn lại; sân khấu (gói 7) giữ mọi nhân vật đã nói trong cùng cảnh, và kiểu nội dung không có cách cho nhân vật rời cảnh → chân dung Hoài vẫn đứng đó.
+- Phương án: A — chỉ thêm lời dẫn, để chân dung ở lại (hình và lời lệch nhau); B — sân khấu chỉ giữ nhân vật đã nói trong CHUỖI hiện tại (đổi hành vi mọi cảnh); **C — thêm node tự động `{ type: 'exit', character }` (sửa tệp đóng băng `src/story/types.ts` có kiểm soát: runtime xử lý như node tự động, bộ kiểm toàn vẹn nhận biết, sân khấu bỏ nhân vật khỏi dàn).**
+- **Chọn C**, giao gói 11b; kèm test runtime + sân khấu + toàn vẹn nội dung. Đây là ngoại lệ có chủ đích của luật "tệp đóng băng", ghi tại đây.
+
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
 **Ghi chú không đổi quyết định:**
