@@ -42,10 +42,29 @@ export function TopBar({
   return (
     <header className="topbar">
       <div className="topbar__chapter" aria-label={`Tiến trình: ${completedParts.length} trên ${PART_IDS.length} phần hoàn thành`}>
-        <span className="topbar__chapter-count">{currentIndex >= 0 ? `${currentIndex + 1}/${PART_IDS.length}` : `0/${PART_IDS.length}`}</span>
-        <span className="topbar__chapter-name">{currentPart ? partName(currentPart) : 'Mở đầu'}</span>
+        <span className="topbar__chapter-count">
+          <span className="topbar__chapter-kicker" aria-hidden="true">Phần</span>
+          {currentIndex >= 0 ? `${currentIndex + 1}/${PART_IDS.length}` : `0/${PART_IDS.length}`}
+        </span>
+        <span className="topbar__chapter-info">
+          <span className="topbar__chapter-name">{currentPart ? partName(currentPart) : 'Mở đầu'}</span>
+          <span className="topbar__pips" aria-hidden="true">
+            {PART_IDS.map((part, i) => (
+              <span
+                key={part}
+                className={`topbar__pip${completedParts.includes(part) ? ' is-done' : ''}${i === currentIndex ? ' is-current' : ''}`}
+                title={partName(part)}
+              />
+            ))}
+          </span>
+        </span>
       </div>
       <div className="topbar__task" aria-live="polite">
+        <svg className="topbar__task-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="8" />
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 1v4M12 19v4M1 12h4M19 12h4" />
+        </svg>
         <span className="topbar__task-label">Mục tiêu</span>
         <span className="topbar__task-text" title={task ?? undefined}>
           {task ?? 'Chưa có nhiệm vụ'}

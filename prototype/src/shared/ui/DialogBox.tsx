@@ -253,7 +253,6 @@ export function DialogBox({
         <p className="dialog__text">
           <CodeText text={displayedText} />
         </p>
-        {isDone ? <span className="dialog__indicator">▼</span> : null}
         <div className="dialog__footer">
           {onOpenNotebook ? (
             <button

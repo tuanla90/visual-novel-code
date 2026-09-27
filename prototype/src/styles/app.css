@@ -288,53 +288,123 @@
   grid-template-rows: auto 1fr;
 }
 
-/* ---------- Thanh trên ---------- */
+/* ---------- Thanh trên (HUD) ---------- */
 .topbar {
+  --hud-accent: var(--c-topbar-accent);
+  --hud-chamfer: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  position: relative;
   display: grid;
   grid-template-columns: auto minmax(12rem, 1fr) auto;
   align-items: center;
-  gap: var(--sp-3);
-  padding: 4px var(--sp-3);
-  background: color-mix(in srgb, var(--c-topbar-bg) 94%, transparent);
+  gap: var(--sp-4);
+  padding: 6px var(--sp-4);
+  background:
+    linear-gradient(90deg, rgba(251, 191, 36, 0.08) 0%, transparent 30%, transparent 70%, rgba(56, 189, 248, 0.06) 100%),
+    linear-gradient(180deg, #161c29 0%, #0c111b 100%);
   color: var(--c-topbar-text);
-  min-height: 48px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 4px 18px rgba(12, 18, 28, 0.2);
+  min-height: 52px;
+  border-bottom: 1px solid rgba(251, 191, 36, 0.22);
+  box-shadow: 0 6px 20px rgba(6, 10, 18, 0.45);
   z-index: 5;
+}
+/* Đường sáng mảnh dưới đáy thanh, đậm ở giữa. */
+.topbar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--hud-accent) 50%, transparent);
+  opacity: 0.55;
+  pointer-events: none;
 }
 .topbar__chapter {
   display: flex;
   align-items: center;
-  gap: var(--sp-2);
+  gap: var(--sp-3);
   white-space: nowrap;
 }
 .topbar__chapter-count {
   display: grid;
   place-items: center;
-  min-width: 44px;
-  min-height: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-sm);
-  color: var(--c-topbar-accent);
-  font-weight: 800;
+  align-content: center;
+  min-width: 52px;
+  min-height: 40px;
+  padding: 0 var(--sp-2);
+  clip-path: var(--hud-chamfer);
+  background: linear-gradient(135deg, #fcd34d 0%, var(--hud-accent) 55%, #f59e0b 100%);
+  color: #111827;
+  font-weight: 900;
+  font-size: 1.05rem;
+  line-height: 1;
   font-variant-numeric: tabular-nums;
+}
+.topbar__chapter-kicker {
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 2px;
+}
+.topbar__chapter-info {
+  display: grid;
+  gap: 5px;
 }
 .topbar__chapter-name {
   font-size: var(--fs-sm);
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+.topbar__pips {
+  display: flex;
+  gap: 3px;
+}
+.topbar__pip {
+  width: 16px;
+  height: 4px;
+  transform: skewX(-20deg);
+  background: rgba(255, 255, 255, 0.16);
+}
+.topbar__pip.is-done {
+  background: var(--hud-accent);
+}
+.topbar__pip.is-current {
+  background: var(--hud-accent);
+  box-shadow: 0 0 8px var(--hud-accent);
+  animation: hud-pip 1.6s ease-in-out infinite;
+}
+@keyframes hud-pip {
+  50% { opacity: 0.55; }
 }
 .topbar__task {
   min-width: 0;
   display: grid;
-  gap: 0;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--sp-2);
+  align-items: center;
+  padding-left: var(--sp-3);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
+.topbar__task-icon {
+  grid-row: span 2;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: var(--hud-accent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.45));
+}
 .topbar__task-label {
-  color: var(--c-topbar-accent);
-  font-size: 0.65rem;
+  color: var(--hud-accent);
+  font-size: 0.62rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
-  line-height: 1;
+  letter-spacing: 0.14em;
+  line-height: 1.1;
   text-transform: uppercase;
 }
 .topbar__task-text {
@@ -342,6 +412,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: var(--fs-sm);
+  font-weight: 600;
 }
 .topbar__actions {
   display: flex;
@@ -351,20 +422,24 @@
 }
 .topbar__dossier,
 .topbar__menu > summary {
-  min-height: 44px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.08);
+  min-height: 42px;
+  border: 0;
+  clip-path: var(--hud-chamfer);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
   color: inherit;
   cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
 }
 .topbar__dossier {
   display: flex;
   align-items: center;
   gap: var(--sp-2);
-  padding: 0 var(--sp-2);
+  padding: 0 var(--sp-3);
   font: inherit;
-  font-weight: 700;
+  font-size: var(--fs-sm);
+  font-weight: 800;
+  letter-spacing: 0.03em;
 }
 .topbar__dossier svg,
 .topbar__menu svg,
@@ -381,17 +456,34 @@
 }
 .topbar__dossier-count {
   display: grid;
-  min-width: 24px;
-  min-height: 24px;
+  min-width: 22px;
+  min-height: 20px;
+  padding: 0 4px;
   place-items: center;
-  border-radius: 999px;
-  background: var(--c-topbar-accent);
-  color: var(--c-topbar-bg);
-  font-size: 0.75rem;
+  clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
+  background: var(--hud-accent);
+  color: #111827;
+  font-size: 0.72rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
 }
 .topbar__dossier:hover,
-.topbar__menu > summary:hover {
-  background: rgba(255, 255, 255, 0.16);
+.topbar__menu > summary:hover,
+.topbar__menu[open] > summary {
+  background: rgba(251, 191, 36, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.65);
+  color: #fde68a;
+}
+.topbar__dossier[aria-pressed='true'] {
+  background: rgba(251, 191, 36, 0.2);
+  box-shadow: inset 0 0 0 1px var(--hud-accent);
+  color: #fde68a;
+}
+.topbar__dossier:focus-visible,
+.topbar__menu > summary:focus-visible {
+  /* clip-path cắt mất outline bên ngoài → dùng viền trong. */
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--hud-accent);
 }
 .topbar__menu {
   position: relative;
@@ -409,25 +501,36 @@
   position: absolute;
   top: calc(100% + var(--sp-2));
   right: 0;
-  width: 210px;
+  width: 220px;
   padding: var(--sp-3);
   display: grid;
   gap: var(--sp-2);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-md);
-  background: var(--c-topbar-bg);
-  box-shadow: 0 12px 30px rgba(10, 16, 25, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 2px solid var(--hud-accent);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  background: linear-gradient(180deg, #161c29 0%, #0c111b 100%);
+  box-shadow: 0 16px 32px rgba(6, 10, 18, 0.55);
+}
+.topbar__menu-panel strong {
+  color: var(--hud-accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 .topbar__menu-panel button {
   min-height: 44px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius-sm);
-  background: transparent;
+  background: rgba(255, 255, 255, 0.03);
   color: inherit;
   font: inherit;
   text-align: left;
   cursor: pointer;
   padding: 0 var(--sp-3);
+}
+.topbar__menu-panel button:hover {
+  border-color: rgba(251, 191, 36, 0.6);
+  background: rgba(251, 191, 36, 0.1);
 }
 .game--debut > .topbar {
   visibility: hidden;
@@ -442,6 +545,8 @@
   grid-template-rows: auto 1fr auto;
   min-height: 0;
   height: 100%;
+  --stage-pad-x: var(--sp-4);
+  --stage-pad-b: var(--sp-4);
   padding: var(--sp-4);
   gap: var(--sp-3);
 }
@@ -527,6 +632,11 @@
   grid-row: 3;
   width: min(960px, 100%);
   margin: 0 auto;
+}
+/* Hộp thoại thường: trải hết chiều ngang, sát đáy sân khấu (bù phần đệm của .stage). */
+.stage__content:has(> .dialog-container > .dialog--glass) {
+  width: auto;
+  margin: 0 calc(-1 * var(--stage-pad-x)) calc(-1 * var(--stage-pad-b));
 }
 /* Tài liệu và thẻ chữ lớn (QĐ-053) nằm GIỮA sân khấu thay vì sát đáy như hộp thoại. */
 .stage__content:has(> .docview),
@@ -1673,6 +1783,8 @@ html.facilitator-on #root {
 /* Chiều cao viewport bị hạn chế (≤ 768px hoặc laptop bật Windows Display Scaling) */
 @media (max-height: 768px) {
   .stage {
+    --stage-pad-x: var(--sp-4);
+    --stage-pad-b: var(--sp-2);
     padding: var(--sp-2) var(--sp-4);
     gap: var(--sp-2);
   }
@@ -1687,6 +1799,8 @@ html.facilitator-on #root {
 
 @media (max-height: 640px) {
   .stage {
+    --stage-pad-x: var(--sp-3);
+    --stage-pad-b: var(--sp-1);
     padding: var(--sp-1) var(--sp-3);
     gap: var(--sp-1);
   }
