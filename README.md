@@ -12,6 +12,7 @@ bị bản MVP (QĐ-077).
 ├── docs/                         tài liệu sản phẩm (không có code)
 │   ├── lich-su-quyet-dinh.md     sổ quyết định QĐ-xxx — "luật" ràng buộc mọi agent
 │   ├── dac-ta-dinh-dang-noi-dung.md   đặc tả định dạng nội dung (QĐ-075): kịch bản MD + YAML, biến SQL
+│   ├── ke-hoach-goi-chuan-hoa.md      kế hoạch bước 1 của QĐ-075 (chuẩn hóa nội dung, chưa giao)
 │   ├── thiet-ke/                 thiết kế dài hạn của cả game
 │   │   ├── vu-tru-hoa-phuong-tong-quan.md   vũ trụ chung: tầm nhìn, nhân vật, dòng thời gian
 │   │   ├── clb-tham-tu-du-lieu-GDD-v0.5.md  tài liệu thiết kế game (GDD)
