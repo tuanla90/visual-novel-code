@@ -39,7 +39,7 @@ export function Portrait({ character, expression, size = 'normal', talking = fal
       {...(cutout ? { 'data-art-cutout': cutout.status } : {})}
     >
       {cutout?.src ? <img className="portrait__img" src={cutout.src} alt="" draggable={false} /> : <PortraitArt character={character} expression={expression} />}
-      {rig ? <TalkOverlay rig={rig} talking={talking} /> : null}
+      {rig ? <TalkOverlay rig={rig} talking={talking} cutoutSrc={cutout?.src} /> : null}
     </figure>
   );
 }

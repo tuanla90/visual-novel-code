@@ -779,14 +779,16 @@
 .cast-member--speaking {
   z-index: 2;
   transform: translateX(-50%) scale(1.02);
-  filter: saturate(1.05) brightness(1) drop-shadow(0 10px 26px rgba(15, 23, 42, 0.28));
+  /* Không tăng độ rực: màu áo/tóc phải giống hệt lúc im lặng, chỉ khác độ sáng. */
+  filter: drop-shadow(0 10px 26px rgba(15, 23, 42, 0.28));
   opacity: 1;
 }
 .cast-member--idle {
   z-index: 1;
   transform: translateX(-50%) scale(0.97);
-  /* Không dùng opacity: nhân vật đang im lặng chỉ tối đi, không được trong suốt (ảnh nền xuyên qua người). */
-  filter: saturate(0.85) brightness(0.88);
+  /* Không dùng opacity: nhân vật đang im lặng chỉ tối đi, không được trong suốt (ảnh nền xuyên qua người).
+     Không giảm độ rực (saturate): cùng một chiếc áo từng trông như hai màu khi đổi người nói. */
+  filter: brightness(0.9);
   opacity: 1;
 }
 /* Tự động xoay lật nhân vật bên phải để hướng mặt vào trung tâm sân khấu */

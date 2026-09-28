@@ -6,8 +6,10 @@
  *   (thỉnh thoảng lâu hơn); chữ chạy xong → về ảnh gốc.
  * - Mắt chớp ngẫu nhiên mỗi 2,5–6 s (nhắm ~110 ms), thỉnh thoảng chớp đôi.
  * Trang trí thuần (`aria-hidden`); tắt khi bật giảm chuyển động / không có `matchMedia` (test).
+ * Miếng được cắt theo `cutoutSrc` (chính ảnh chân dung đã tách nền, làm mặt nạ alpha): miếng sinh từ
+ * ảnh sửa nên mép có thể lấn ra nền xám cạnh cằm/má; không cắt thì hiện thành mảng xám ngoài đầu.
  */
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { mouthHoldMs, type TalkPatch, type TalkRig } from './talk-rigs';
 
 const BLINK_CLOSED_MS = 110;
@@ -21,7 +23,8 @@ function Patch({ patch, hidden = false }: { patch: TalkPatch; hidden?: boolean }
   return <image href={patch.src} x={patch.x} y={patch.y} width={patch.w} height={patch.h} opacity={hidden ? 0 : 1} />;
 }
 
-export function TalkOverlay({ rig, talking }: { rig: TalkRig; talking: boolean }) {
+export function TalkOverlay({ rig, talking, cutoutSrc }: { rig: TalkRig; talking: boolean; cutoutSrc?: string }) {
+  const maskId = `talk-mask-${useId().replace(/:/g, '')}`;
   const [motion] = useState(motionAllowed);
   const [mouthOpen, setMouthOpen] = useState(false);
   const [eyesClosed, setEyesClosed] = useState(false);
@@ -60,8 +63,17 @@ export function TalkOverlay({ rig, talking }: { rig: TalkRig; talking: boolean }
   // Miếng luôn nằm trong SVG (ẩn bằng opacity) → ảnh đã nạp sẵn, đổi khung không nháy trống.
   return (
     <svg className="portrait__talk" viewBox={`0 0 ${rig.width} ${rig.height}`} preserveAspectRatio="xMidYMin meet" aria-hidden="true" focusable="false">
-      <Patch patch={rig.eyes} hidden={!eyesClosed} />
-      <Patch patch={rig.mouth} hidden={!mouthOpen} />
+      {cutoutSrc ? (
+        <defs>
+          <mask id={maskId} maskUnits="userSpaceOnUse" x={0} y={0} width={rig.width} height={rig.height} style={{ maskType: 'alpha' }}>
+            <image href={cutoutSrc} x={0} y={0} width={rig.width} height={rig.height} preserveAspectRatio="none" />
+          </mask>
+        </defs>
+      ) : null}
+      <g mask={cutoutSrc ? `url(#${maskId})` : undefined}>
+        <Patch patch={rig.eyes} hidden={!eyesClosed} />
+        <Patch patch={rig.mouth} hidden={!mouthOpen} />
+      </g>
     </svg>
   );
 }
