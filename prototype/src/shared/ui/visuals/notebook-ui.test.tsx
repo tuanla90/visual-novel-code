@@ -8,7 +8,6 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import { realContent } from '../../../content/real';
-import { SHORTLIST_ANNOTATION } from '../../../content/real/story/ending';
 import { EvidenceNotebook } from '../../../evidence/ui/EvidenceNotebook';
 import type { EvidenceAnnotation, SavedQueryEvidence } from '../../../evidence/types';
 import type { EvidenceId, PartId, QueryEvidenceId } from '../../ids';
@@ -64,7 +63,11 @@ function renderNotebook(opts: { part: PartId; unlocked: EvidenceId[]; saved?: Pa
   );
 }
 
-const REDACT: EvidenceAnnotation = { evidenceId: 'ev-c3-shortlist', note: SHORTLIST_ANNOTATION, redact: true, at: 3 };
+/** Chú thích của ev-c3-shortlist ở end-03 (nguồn: dòng "Chú thích:" của thẻ hồ sơ). */
+const SHORTLIST_ANNOTATION = realContent.story.sequences
+  .flatMap((s) => s.nodes)
+  .find((n) => n.type === 'annotate-evidence' && n.evidenceId === 'ev-c3-shortlist');
+const REDACT: EvidenceAnnotation = { evidenceId: 'ev-c3-shortlist', note: SHORTLIST_ANNOTATION?.type === 'annotate-evidence' ? SHORTLIST_ANNOTATION.note : '', redact: true, at: 3 };
 
 describe('Hồ sơ: thẻ đã hủy (QĐ-050)', () => {
   it('không còn tên/mã sinh viên trong DOM của thẻ (bảng, mô tả, nhãn); có vạch che + dòng lý do', () => {

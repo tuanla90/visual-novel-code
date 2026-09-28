@@ -5,11 +5,13 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
-import { realEvidence } from '../../../content/real/evidence';
+import { realContent } from '../../../content/real';
 import { DocumentReveal } from '../../../evidence/ui/DocumentReveal';
 import { DOCUMENT_IDS } from '../../ids';
 import { passPressGuard } from '../../../test/press-guard';
 import { artUrl } from './art-slots';
+
+const realEvidence = realContent.evidence;
 
 describe('DocumentReveal', () => {
   it.each(DOCUMENT_IDS)('%s: tiêu đề, nguồn, toàn bộ chữ tài liệu hiện bằng giao diện; nền giấy gắn đúng ô', (id) => {
