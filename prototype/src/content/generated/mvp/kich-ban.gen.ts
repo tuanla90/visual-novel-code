@@ -1369,7 +1369,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Tớ đăng ký qua form. Tớ mê Sherlock Holmes từ hồi cấp hai, thấy trường có CLB thám tử là đăng ký luôn."
+          "text": "Tớ đăng ký qua form. Tớ mê Sherlock Holmes từ cấp hai, nghe tên CLB thám tử là đăng ký luôn."
         },
         {
           "type": "line",
@@ -1534,7 +1534,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Nằm trên cùng… vậy là bỏ vào sau cùng, hoặc bỏ từ sáng sớm thứ Hai."
+          "text": "Nằm trên cùng… vậy là bỏ vào muộn nhất, hoặc từ sáng sớm thứ Hai."
         },
         {
           "type": "line",
@@ -1909,13 +1909,13 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Tớ cá là cậu này gửi thư!"
+          "text": "Nghe gắt thế, chắc cậu này gửi thư đấy."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Khoan. Nói thế là ý kiến. Gửi thư là việc khác."
+          "text": "Ghét CLB với gửi thư là hai chuyện khác nhau."
         },
         {
           "type": "line",
@@ -1966,7 +1966,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "chu-cuong",
           "expression": "neutral",
-          "text": "Con bé đi ngang ngay chốt chú, đeo dây thẻ ngành Báo chí."
+          "text": "Con bé đi ngang ngay chốt chú, đeo dây thẻ khoa Báo chí."
         },
         {
           "type": "line",
@@ -2001,7 +2001,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "tung",
           "expression": "neutral",
-          "text": "CTSV sắp hết giờ tiếp sinh viên rồi. Chạy nhanh kẻo các cô về!"
+          "text": "CTSV sắp đóng cửa rồi. Chạy nhanh kẻo các cô về!"
         },
         {
           "type": "goto",
@@ -2120,7 +2120,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Vâng ạ. Bọn em cũng chưa nói là biết ai viết."
+          "text": "Vâng ạ. Bọn em mới biết ai nộp thôi."
         },
         {
           "type": "note",
@@ -2247,7 +2247,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Anh đang lấy phần hợp. Câu hỏi của bọn em cần phần giao."
+          "text": "Anh đang gộp hai nhóm vào làm một rồi ạ. Bọn em chỉ cần người vừa đúng tên, vừa đúng lớp thôi."
         },
         {
           "type": "line",
@@ -2417,7 +2417,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Vậy là thư do người khác soạn, rồi mượn tay một bạn năm nhất đi nộp."
+          "text": "Vậy em chỉ nộp giúp, còn nội dung thư là do anh khóa trên viết."
         },
         {
           "type": "line",
@@ -2441,7 +2441,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "quan",
           "expression": "stunned",
-          "text": "…Em nhìn con số nhiều mà tưởng là chắc. Em xin nhận đã vội kết luận ạ."
+          "text": "…Em thấy ra nhiều dòng là tưởng chắc rồi. Em xin lỗi, em kết luận sớm quá ạ."
         },
         {
           "type": "line",

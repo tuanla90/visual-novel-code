@@ -107,7 +107,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';
 
 - [DÀN DỰNG] Có mặt: {{nv.minh-anh}}, {{nv.duy}}, {{nv.ha-vy}}, {{nv.tung}}, người chơi.
 - **tung** (happy): Ơ, hôm Ngày hội tớ không thấy cậu nhỉ?
-- **ha-vy** (neutral): Tớ đăng ký qua form. Tớ mê Sherlock Holmes từ hồi cấp hai, thấy trường có CLB thám tử là đăng ký luôn.
+- **ha-vy** (neutral): Tớ đăng ký qua form. Tớ mê Sherlock Holmes từ cấp hai, nghe tên CLB thám tử là đăng ký luôn.
 - **tung** (happy): Thế cậu đoán được tớ học gì không?
 - **ha-vy** (neutral): Khỏi đoán. Áo đội tình nguyện, huy hiệu khoa trên balo. Du lịch chứ gì.
 - **player**: Thế ai giữ chìa khóa phòng này ạ?

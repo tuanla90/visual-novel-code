@@ -13,7 +13,7 @@
 - [DÀN DỰNG] Nhịp 1: người chơi chạm vào OR (chạm sai mất 1 vạch). Nhịp 2: sửa thành AND → 2 dòng → "Số liệu đây!". Chạy thử không phạt.
 - [SỬA TRUY VẤN c-sua-or-quan]
 - [HIỆU ỨNG co-so-lieu-day]
-- **ha-vy** (neutral): Anh đang lấy phần hợp. Câu hỏi của bọn em cần phần giao.
+- **ha-vy** (neutral): Anh đang gộp hai nhóm vào làm một rồi ạ. Bọn em chỉ cần người vừa đúng tên, vừa đúng lớp thôi.
 - **quan** (neutral): …Hai dòng. Được. Tiếp đi.
 - [ĐI TỚI hop-01]
 
@@ -35,11 +35,11 @@
 - [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa.
 - **thay-quang** (neutral): Em Hoài, em kể lại giúp thầy hôm em nộp thư.
 - **hoai** (nervous): Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy dặn cứ ký "H." là được. Em không đọc thư ạ.
-- **thay-quang** (neutral): Vậy là thư do người khác soạn, rồi mượn tay một bạn năm nhất đi nộp.
+- **thay-quang** (neutral): Vậy em chỉ nộp giúp, còn nội dung thư là do anh khóa trên viết.
 - **thay-quang** (neutral): Lá thư này không tính vào hồ sơ rà soát. CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện.
 - **hoai** (relieved): Em xin lỗi vì làm mọi người mất công ạ.
 - **minh-anh** (happy): Không sao đâu em. Cảm ơn thầy ạ.
-- **quan** (stunned): …Em nhìn con số nhiều mà tưởng là chắc. Em xin nhận đã vội kết luận ạ.
+- **quan** (stunned): …Em thấy ra nhiều dòng là tưởng chắc rồi. Em xin lỗi, em kết luận sớm quá ạ.
 - [THẺ CHỮ] **narrator**: SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.
 - **tung** (happy): Giữ được phòng rồi! Tối nay tớ khao trà đá.
 - **ha-vy** (smile): Được. Lần này cậu trả thật đấy nhé.

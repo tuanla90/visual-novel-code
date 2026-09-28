@@ -10,7 +10,7 @@
 > NHIỆM VỤ: Hỏi bác bảo vệ tòa B về cái hộp
 
 - **bac-tu** (neutral): Cháu hỏi cái hộp à? Sáng thứ Hai 9 giờ, bác với cô phụ trách mở. Lá thư ấy nằm trên cùng.
-- **player**: Nằm trên cùng… vậy là bỏ vào sau cùng, hoặc bỏ từ sáng sớm thứ Hai.
+- **player**: Nằm trên cùng… vậy là bỏ vào muộn nhất, hoặc từ sáng sớm thứ Hai.
 - **bac-tu** (neutral): Ai bỏ thì bác chịu. Bác chỉ có mặt lúc mở hộp thôi.
 - [DÀN DỰNG] Người chơi tự soi khe hộp: mắc ở mép tôn là một tấm thẻ lịch, phần in còn nguyên "Khoa Báo chí – Truyền thông · K24", dòng viết tay "Họ tên / Lớp" bị xé mất.
 - **player**: Thẻ lịch Tuần sinh hoạt công dân… giống hệt thẻ của tớ, mà in cho khoa Báo chí.
