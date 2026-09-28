@@ -20,38 +20,23 @@ describe('orderedChoices — ổn định trong React 19 StrictMode', () => {
     clearTelemetry();
   });
 
-  it('giữ nguyên trật tự lựa chọn qua các lần render trong cùng tick ở attempts = 0 (React 19 StrictMode double-render)', () => {
-    // Lần render 1 (nguồn ngẫu nhiên A)
-    const firstRender = orderedChoices(SAMPLE_QUESTION, 0, () => 0.1);
-    const firstIds = firstRender.map((c) => c.id);
-
-    // Lần render 2 (cùng tick trong StrictMode, nguồn ngẫu nhiên B khác hẳn nếu bị tính lại)
-    const secondRender = orderedChoices(SAMPLE_QUESTION, 0, () => 0.9);
-    const secondIds = secondRender.map((c) => c.id);
-
-    // StrictMode double render phải giữ nguyên kết quả của lần xáo đầu tiên!
+  it('cùng phiên: gọi hai lần liền (React 19 StrictMode double-render) giữ đúng lần xáo đầu', () => {
+    const firstIds = orderedChoices(SAMPLE_QUESTION, 'phien-1', () => 0.1).map((c) => c.id);
+    // Lần gọi thứ hai với nguồn ngẫu nhiên khác hẳn: nếu bị xáo lại / ghi đè thì thứ tự đổi.
+    const secondIds = orderedChoices(SAMPLE_QUESTION, 'phien-1', () => 0.9).map((c) => c.id);
     expect(secondIds).toEqual(firstIds);
   });
 
-  it('giữ nguyên trật tự khi attempts > 0 (chọn sai rồi chọn lại)', async () => {
-    const initial = orderedChoices(SAMPLE_QUESTION, 0);
-    // Chờ microtask để sang tick mới
-    await Promise.resolve();
-    const retry = orderedChoices(SAMPLE_QUESTION, 1);
-
+  it('cùng phiên: chọn sai rồi chọn lại (dựng lại component) → giữ nguyên trật tự', async () => {
+    const initial = orderedChoices(SAMPLE_QUESTION, 'phien-1');
+    await new Promise((resolve) => setTimeout(resolve, 10));
+    const retry = orderedChoices(SAMPLE_QUESTION, 'phien-1');
     expect(retry.map((c) => c.id)).toEqual(initial.map((c) => c.id));
   });
 
-  it('xáo mới khi chơi lại từ đầu ở phiên mới (attempts = 0 qua microtask mới)', async () => {
-    // Lần chơi 1
-    const session1Order = orderedChoices(SAMPLE_QUESTION, 0, () => 0.1).map((c) => c.id);
-
-    // Sang microtask tiếp theo (mô phỏng chu trình unmount và chơi lại từ đầu)
-    await new Promise((resolve) => setTimeout(resolve, 10));
-
-    // Lần chơi 2 với attempts = 0
-    const session2Order = orderedChoices(SAMPLE_QUESTION, 0, () => 0.8).map((c) => c.id);
-
+  it('chơi lại từ đầu (phiên mới, khóa `startedAt` mới) → xáo mới', () => {
+    const session1Order = orderedChoices(SAMPLE_QUESTION, 1000, () => 0.1).map((c) => c.id);
+    const session2Order = orderedChoices(SAMPLE_QUESTION, 2000, () => 0.8).map((c) => c.id);
     expect(session1Order).not.toEqual(session2Order);
   });
 });

@@ -6,6 +6,7 @@
  */
 import { useRef, useState } from 'react';
 import { speakerLabel } from '../../shared/display-names';
+import { useGameStore } from '../../shared/store';
 import { track } from '../../shared/telemetry/track';
 import { CodeText } from '../../shared/ui/CodeText';
 import { MultipleChoice } from '../../shared/ui/MultipleChoice';
@@ -27,11 +28,14 @@ export interface SuccessPanelProps {
 }
 
 export function SuccessPanel({ attempt, run, table, conditionCount, question, saving, disabled, onSave }: SuccessPanelProps) {
-  const guardedSave = usePressGuard(onSave);
+  // Nút chủ ý: nhận ngay cú bấm đơn, bỏ cú bấm lặp của bấm đúp và Enter đang giữ (QĐ-066).
+  const saveGuard = usePressGuard(null);
   const [attempts, setAttempts] = useState(0);
   const [lastChoice, setLastChoice] = useState<{ id: string; correct: boolean; feedback: DialogueLine[] } | null>(null);
   // Đếm lần thử bằng ref (đồng bộ) để hai cú bấm liền nhau không cùng ghi attempt = 1 / isFirstChoice.
   const tries = useRef({ count: 0, done: false });
+  // Khóa nhớ thứ tự lựa chọn (QĐ-041/QĐ-066): chơi lại từ đầu → phiên mới → xáo mới.
+  const gameKey = useGameStore((s) => s.progress?.startedAt ?? null);
   const answered = question === null || lastChoice?.correct === true;
 
   const choose = (choiceId: string): void => {
@@ -61,7 +65,7 @@ export function SuccessPanel({ attempt, run, table, conditionCount, question, sa
         </div>
         <div className="result__next">
           {question && !answered ? (
-            <MultipleChoice question={question} attempts={attempts} onChoose={choose} />
+            <MultipleChoice question={question} attempts={attempts} gameKey={gameKey} onChoose={choose} />
           ) : null}
           {question && answered && chosenText ? (
             <div className="result__answered">
@@ -83,7 +87,12 @@ export function SuccessPanel({ attempt, run, table, conditionCount, question, sa
             </div>
           ) : null}
           {answered ? (
-            <button type="button" className="btn btn--primary result__save" onClick={guardedSave} disabled={saving || disabled}>
+            <button type="button" className="btn btn--primary result__save" onKeyDown={saveGuard.holdKey}
+              onClick={(e) => {
+                if (saveGuard.click(e, { immediate: true })) void onSave();
+              }}
+              disabled={saving || disabled}
+            >
               {saving ? 'Đang lưu…' : 'Lưu vào hồ sơ'}
             </button>
           ) : null}

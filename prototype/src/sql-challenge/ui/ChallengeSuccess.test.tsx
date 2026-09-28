@@ -6,6 +6,7 @@ import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { useGameStore } from '../../shared/store';
+import { passPressGuard } from '../../test/press-guard';
 import { challengeState, eventsOf, renderChallenge, resetGame } from './test-utils';
 
 function havyText(): string {
@@ -39,6 +40,7 @@ describe('Thành công → câu đọc kết quả → Lưu vào hồ sơ', () =
     // chưa trả lời câu đọc kết quả → chưa có nút lưu
     expect(screen.queryByRole('button', { name: 'Lưu vào hồ sơ' })).not.toBeInTheDocument();
 
+    await passPressGuard();
     await user.click(screen.getByRole('button', { name: 'Những người có tên gọi bắt đầu bằng H.' }));
     expect(screen.getByText(/Chuẩn\. Cột ten, H đứng đầu/)).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: 'Lưu vào hồ sơ' }));
@@ -74,10 +76,12 @@ describe('Thành công → câu đọc kết quả → Lưu vào hồ sơ', () =
 
     const choiceTexts = (): string[] => within(screen.getByRole('group', { name: 'Mười dòng này là những ai?' })).getAllByRole('button').map((b) => b.textContent ?? '');
     const before = choiceTexts();
+    await passPressGuard();
     await user.click(screen.getByRole('button', { name: 'Những người có họ đệm bắt đầu bằng H.' }));
     expect(screen.getByText(/Điều kiện đặt ở cột ten, không phải ho_dem/)).toBeInTheDocument();
     expect(choiceTexts()).toEqual(before);
     expect(screen.getByText('Chưa đúng cũng không sao — chọn lại thoải mái.')).toBeInTheDocument();
+    await passPressGuard();
     await user.click(screen.getByRole('button', { name: 'Những người có tên gọi bắt đầu bằng H.' }));
 
     const answers = eventsOf('question_answered');
@@ -86,6 +90,37 @@ describe('Thành công → câu đọc kết quả → Lưu vào hồ sơ', () =
     expect(answers[1]).toMatchObject({ questionId: 'q-c1-read', choiceId: 'ten-h', attempt: 2, correct: true, isFirstChoice: false });
     expect(screen.getByRole('button', { name: 'Lưu vào hồ sơ' })).toBeEnabled();
     expect(document.body.textContent).not.toMatch(/q-c1-read|ten-h|ho-h/);
+  });
+
+  it('bấm đúp lựa chọn sai ở câu đọc kết quả → chỉ MỘT question_answered (QĐ-066); chọn đúng sau đó là lần 2', async () => {
+    const user = userEvent.setup();
+    const s = useGameStore.getState();
+    s.openChallenge('c1');
+    s.updateChallenge('c1', {
+      model: {
+        table: 'sinh_vien',
+        columns: ['ma_sv', 'ho_dem', 'ten'],
+        conditions: [{ id: 'cond-1', column: 'ten', op: 'startsWith', value: 'H', source: { kind: 'manual' } }],
+        connector: null,
+      },
+    });
+    renderChallenge('c1');
+    await user.click(screen.getByRole('button', { name: /Chạy truy vấn/ }));
+    await screen.findByText('10 dòng');
+    await passPressGuard();
+    await user.dblClick(screen.getByRole('button', { name: 'Những người có họ đệm bắt đầu bằng H.' }));
+    expect(eventsOf('question_answered')).toHaveLength(1);
+    expect(eventsOf('question_answered')[0]).toMatchObject({ choiceId: 'ho-h', attempt: 1, isFirstChoice: true });
+    expect(screen.getByText(/Điều kiện đặt ở cột ten, không phải ho_dem/)).toBeInTheDocument();
+    // Cú bấm ngay sau lần chọn (trong khoảng khóa) cũng không tính.
+    await user.click(screen.getByRole('button', { name: 'Những người có họ đệm bắt đầu bằng H.' }));
+    expect(eventsOf('question_answered')).toHaveLength(1);
+    await passPressGuard();
+    await user.click(screen.getByRole('button', { name: 'Những người có tên gọi bắt đầu bằng H.' }));
+    expect(eventsOf('question_answered').map((e) => [e.attempt, e.correct])).toEqual([
+      [1, false],
+      [2, true],
+    ]);
   });
 
   it('cột thừa (`*`) vẫn đúng: lời extra-columns thay cho lời [KHI ĐÚNG]', async () => {

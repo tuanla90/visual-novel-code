@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { useGameStore } from '../shared/store';
@@ -61,13 +61,66 @@ describe('khảo sát đầu game trên màn tiêu đề (QĐ-031)', () => {
     expect(screen.getAllByRole('radio')).toHaveLength(6);
   });
 
-  it('"Bắt đầu lại" khi có tiến độ: khảo sát rơi vào PHIÊN MỚI, không vào phiên cũ', async () => {
+  it('"Bắt đầu" khi chưa có tiến độ: không hỏi xác nhận', async () => {
+    render(<App />);
+    await userEvent.click(screen.getByRole('button', { name: 'Bắt đầu' }));
+    expect(screen.queryByRole('alertdialog')).toBeNull();
+    expect(useGameStore.getState().progress).not.toBeNull();
+  });
+
+  it('"Bắt đầu lại" khi có tiến độ: hỏi xác nhận nói rõ hậu quả; Hủy → tiến độ, phiên, sự kiện giữ nguyên', async () => {
+    useGameStore.getState().startGame();
+    useGameStore.getState().submitSurvey('pre', { excelLevel: 'basic', sqlBefore: 'no' });
+    const oldSession = getSessionId();
+    const oldProgress = useGameStore.getState().progress;
+    const oldCount = getTelemetryEvents().length;
+    render(<App />);
+    await userEvent.click(screen.getByRole('button', { name: 'Bắt đầu lại' }));
+    const dialog = screen.getByRole('alertdialog');
+    expect(within(dialog).getByText(/sẽ bị xóa/)).toBeInTheDocument();
+    expect(within(dialog).getByText(/khảo sát đầu game được giữ/)).toBeInTheDocument();
+    await userEvent.click(within(dialog).getByRole('button', { name: 'Hủy' }));
+    expect(screen.queryByRole('alertdialog')).toBeNull();
+    expect(useGameStore.getState().progress).toBe(oldProgress);
+    expect(getSessionId()).toBe(oldSession);
+    expect(getTelemetryEvents()).toHaveLength(oldCount);
+    // Vẫn ở màn tiêu đề với hai nút.
+    expect(screen.getByRole('button', { name: 'Chơi tiếp' })).toBeInTheDocument();
+  });
+
+  it('"Bắt đầu lại" sau khi ĐÃ TRẢ LỜI khảo sát ở phiên cũ → phiên mới ghi lại đúng câu trả lời, KHÔNG có survey_skipped giả', async () => {
+    useGameStore.getState().startGame();
+    const freshCursor = structuredClone(useGameStore.getState().progress?.cursor);
+    useGameStore.getState().dispatchStory({ type: 'advance' });
+    useGameStore.getState().dispatchStory({ type: 'advance' });
+    expect(useGameStore.getState().progress?.cursor).not.toEqual(freshCursor);
+    useGameStore.getState().submitSurvey('pre', { excelLevel: 'confident', sqlBefore: 'some' });
+    const oldSession = getSessionId();
+    render(<App />);
+    expect(screen.getByText('Bạn đã trả lời khảo sát đầu game. Cảm ơn bạn!')).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('button', { name: 'Bắt đầu lại' }));
+    await userEvent.click(within(screen.getByRole('alertdialog')).getByRole('button', { name: 'Xóa và bắt đầu lại' }));
+    const newSession = getSessionId();
+    expect(newSession).not.toBe(oldSession);
+    const inNew = getTelemetryEvents().filter((e) => e.sessionId === newSession);
+    expect(inNew.map((e) => e.type).filter((t) => t === 'survey_skipped')).toEqual([]);
+    expect(inNew[0]).toMatchObject({ type: 'survey_submitted', stage: 'pre', answers: { excelLevel: 'confident', sqlBefore: 'some' } });
+    expect(inNew.map((e) => e.type)).toContain('game_start');
+    expect(useGameStore.getState().survey.pre).toEqual({ excelLevel: 'confident', sqlBefore: 'some' });
+    // Phiên cũ: đúng một lần trả lời, không thêm gì.
+    expect(surveyEvents().filter((e) => e.sessionId === oldSession)).toHaveLength(1);
+    // Con trỏ về đầu game (tiến độ cũ đã xóa).
+    expect(useGameStore.getState().progress?.cursor).toEqual(freshCursor);
+  });
+
+  it('"Bắt đầu lại" khi có tiến độ (khảo sát cũ đã bỏ qua): khảo sát rơi vào PHIÊN MỚI, không vào phiên cũ', async () => {
     useGameStore.getState().startGame();
     useGameStore.getState().skipSurvey('pre');
     const oldSession = getSessionId();
     render(<App />);
     expect(screen.getByText('Bạn đã bỏ qua khảo sát đầu game.')).toBeInTheDocument();
     await userEvent.click(screen.getByRole('button', { name: 'Bắt đầu lại' }));
+    await userEvent.click(within(screen.getByRole('alertdialog')).getByRole('button', { name: 'Xóa và bắt đầu lại' }));
     const newSession = getSessionId();
     expect(newSession).not.toBe(oldSession);
     const inNew = getTelemetryEvents().filter((e) => e.sessionId === newSession).map((e) => e.type);

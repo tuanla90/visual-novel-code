@@ -1,3 +1,12 @@
+/**
+ * Hộp thoại: một lời với nhãn người nói ("Bạn" cho player, không nhãn cho narrator).
+ * Bấm vào hộp hoặc nhấn Space/Enter để qua (QĐ-028). `display: 'card'` → thẻ chữ lớn giữa màn hình.
+ *
+ * Chống bỏ lỡ (QĐ-066, mẫu ObjectionEffect — `use-press-guard.ts`): hộp phản hồi hiện đúng chỗ danh
+ * sách lựa chọn vừa bấm, nên cú bấm thứ hai của bấm đúp, phím đang giữ, hay cú bấm/phím trong ~400 ms
+ * sau khi lời đổi KHÔNG qua lời. Nút "Tiếp tục ▸" là cú bấm chủ ý: nhận ngay cú bấm đơn, chỉ bỏ cú
+ * bấm lặp của bấm đúp.
+ */
 import { useCallback, useEffect, useRef } from 'react';
 import { speakerLabel } from '../display-names';
 import type { DialogueLine } from '../../story/types';
@@ -61,9 +70,10 @@ export function DialogBox({
     markRead(readKey);
     onAdvance();
   }, [markRead, readKey, onAdvance]);
-  // Chống bấm đúp chỉ áp cho thao tác của người chơi; Auto/Skip gọi thẳng `advanceFromLine`
-  // (nếu đi qua bộ chống bấm đúp 400 ms, Skip 80 ms/câu sẽ bị chặn và đứng lại sau câu đầu).
-  const guardedAdvance = usePressGuard(advanceFromLine);
+  // Chống bấm đúp (QĐ-066) chỉ áp cho thao tác của người chơi; Auto/Skip gọi thẳng `advanceFromLine`
+  // (nếu đi qua bộ chống bấm đúp, Skip 80 ms/câu sẽ bị chặn và đứng lại sau câu đầu).
+  // Khóa lại mỗi khi lời đổi (khóa theo chữ, không theo đối tượng, để lời dựng tại chỗ không khóa mãi).
+  const guard = usePressGuard(`${line.speaker}|${line.text}|${hint ?? ''}`);
 
   const autoMode = useVnStore((s) => s.autoMode);
   const toggleAutoMode = useVnStore((s) => s.toggleAutoMode);
@@ -121,12 +131,10 @@ export function DialogBox({
     }
   }, [isDone, keyboardEnabled, autoMode, skipping, line.text.length, advanceFromLine]);
 
-  const handleBoxClick = () => {
-    if (!isDone) {
-      completeImmediately();
-    } else {
-      guardedAdvance();
-    }
+  const handleBoxClick = (e: { detail: number }) => {
+    if (!guard.click(e)) return;
+    if (!isDone) completeImmediately();
+    else advanceFromLine();
   };
 
   useEffect(() => {
@@ -137,16 +145,13 @@ export function DialogBox({
       const active = document.activeElement;
       if (active instanceof HTMLButtonElement && !rootRef.current?.contains(active)) return;
       e.preventDefault();
-
-      if (!isDone) {
-        completeImmediately();
-      } else {
-        guardedAdvance();
-      }
+      if (!guard.key(e)) return;
+      if (!isDone) completeImmediately();
+      else advanceFromLine();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [guardedAdvance, keyboardEnabled, isDone, completeImmediately]);
+  }, [guard, advanceFromLine, keyboardEnabled, isDone, completeImmediately]);
 
   return (
     <div className="dialog-container">
@@ -302,10 +307,13 @@ export function DialogBox({
           <button
             type="button"
             className="dialog__next"
+            onKeyDown={guard.holdKey}
             onClick={(e) => {
               e.stopPropagation();
+              // Nút chủ ý: nhận ngay cú bấm đơn, chỉ bỏ cú bấm lặp của bấm đúp.
+              if (!guard.click(e, { immediate: true })) return;
               completeImmediately();
-              guardedAdvance();
+              advanceFromLine();
             }}
           >
             <span>Tiếp tục</span>

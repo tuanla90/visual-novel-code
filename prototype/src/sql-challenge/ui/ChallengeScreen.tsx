@@ -15,6 +15,7 @@ import type { ChallengeId } from '../../shared/ids';
 import { gameContent, useGameStore } from '../../shared/store';
 import { CodeText } from '../../shared/ui/CodeText';
 import { ConfirmDialog } from '../../shared/ui/ConfirmDialog';
+import { usePressGuard } from '../../shared/ui/use-press-guard';
 import { QUAN_OR_QUERY } from '../data/challenges';
 import { gradeChallenge, modelToSql, previewRows, runQuery, sqlToModel } from '../engine';
 import type { TableName } from '../schema';
@@ -81,6 +82,8 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
   const [preview, setPreview] = useState<Preview | null>(null);
   const [previewed, setPreviewed] = useState(false);
   const resultRef = useRef<HTMLElement>(null);
+  // "Hỏi Hà Vy" là cú bấm chủ ý: nhận ngay, nhưng bấm đúp/giữ Enter không nhảy 2 mức gợi ý (QĐ-066).
+  const hintGuard = usePressGuard(challengeId);
   const previewSeq = useRef(0);
   // Chặn bấm đúp (hai cú bấm trước khi React vẽ lại): chạy/lưu hai lần sẽ ghi telemetry hai lần và
   // gọi onComplete hai lần (lần hai rơi vào node kế tiếp của runtime).
@@ -182,7 +185,8 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
     updateChallenge(challengeId, { mode: 'builder', sql: modelToSql(withoutPending(state.model)) });
   };
 
-  const askHaVy = (): void => {
+  const askHaVy = (e: { detail: number }): void => {
+    if (!hintGuard.click(e, { immediate: true })) return;
     const level = takeHint(challengeId);
     const line = content.hints[level - 1] ?? content.hints[2];
     setNote({ key: `hint-${state.hintsUsed + 1}`, label: `Gợi ý ${level}/3`, line, guideStep });
@@ -414,6 +418,7 @@ export function ChallengeScreen({ challengeId, definition, mode, accessRevoked, 
           note={shownNote}
           idle="Dựng truy vấn theo đề bài rồi bấm “Chạy truy vấn”. Chạy sai không sao — chạy lại bao nhiêu lần cũng được."
           onAskHaVy={askHaVy}
+          onAskKeyDown={hintGuard.holdKey}
           askDisabled={locked || solved}
           actions={guideActions}
         />

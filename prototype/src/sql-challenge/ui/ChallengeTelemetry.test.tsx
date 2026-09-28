@@ -17,6 +17,7 @@ import { CHALLENGE_SPECS } from '../data/challenges';
 import { gradeChallenge, modelToSql } from '../engine';
 import { pickDiagnostic } from '../engine/priority';
 import type { QueryModel } from '../types';
+import { passPressGuard } from '../../test/press-guard';
 import { eventsOf, presetModel, renderChallenge, resetGame } from './test-utils';
 
 // Bản nội dung giả cho CẢ tệp (màn thử thách và test-utils đọc `gameContent` của module store).
@@ -89,6 +90,7 @@ describe('telemetry query_run ghi mã ĐÃ HIỆN', () => {
     await user.click(screen.getByRole('button', { name: 'Hỏi Hà Vy' }));
     await user.click(screen.getByRole('button', { name: /Chạy truy vấn/ }));
     await screen.findByText('10 dòng');
+    await passPressGuard();
     await user.click(screen.getByRole('button', { name: 'Những người có tên gọi bắt đầu bằng H.' }));
     await user.click(screen.getByRole('button', { name: 'Lưu vào hồ sơ' }));
     const types = [

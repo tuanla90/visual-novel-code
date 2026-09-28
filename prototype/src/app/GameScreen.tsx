@@ -169,6 +169,8 @@ export function GameScreen() {
   const scene = view.sequence?.scene ?? 'clb-room';
   const speakerLine = view.kind === 'line' ? view.node : view.kind === 'feedback' ? view.line : view.kind === 'question' ? view.node.question.asker : null;
   const accessRevoked = progress.flags.includes('access-revoked');
+  // Khóa nhớ thứ tự lựa chọn của phiên chơi (QĐ-041/QĐ-066): chơi lại từ đầu → giá trị mới → xáo mới.
+  const gameKey = progress.startedAt;
   const facilitator = typeof window !== 'undefined' && isFacilitatorMode(window.location.search);
 
   // Kích hoạt Character Debut Splash khi nhân vật lần đầu xuất hiện trong hội thoại thông thường
@@ -324,7 +326,14 @@ export function GameScreen() {
           </div>
         );
       case 'question':
-        return <MultipleChoice question={v.node.question} attempts={v.progress.attempts} onChoose={(id) => act({ type: 'choose', choiceId: id })} />;
+        return (
+          <MultipleChoice
+            question={v.node.question}
+            attempts={v.progress.attempts}
+            gameKey={gameKey}
+            onChoose={(id) => act({ type: 'choose', choiceId: id })}
+          />
+        );
       case 'line-pick':
         return <LinePick pick={v.node.pick} attempts={v.progress.attempts} onPick={(i) => act({ type: 'pick-line', lineIndex: i })} />;
       case 'show-document':

@@ -25,16 +25,23 @@ describe('MultipleChoice', () => {
     vi.useRealTimers();
   });
 
-  it('ngăn bấm đúp câu hỏi (rapid double-click) trong vòng 400ms', async () => {
+  it('ngăn bấm đúp câu hỏi (rapid double-click) trong vòng 400ms (QĐ-066: kể cả 400ms đầu khi câu hỏi vừa hiện)', async () => {
     const onChoose = vi.fn();
-    render(<MultipleChoice question={QUESTION} attempts={0} onChoose={onChoose} />);
+    render(<MultipleChoice question={QUESTION} attempts={0} gameKey={null} onChoose={onChoose} />);
 
     const buttons = screen.getAllByRole('button');
     const firstButton = buttons[0];
     expect(firstButton).toBeDefined();
 
-    // Bấm lần 1
+    // Bấm ngay khi câu hỏi vừa hiện (cú bấm thứ hai của bấm đúp rơi vào câu hỏi mới) → không tính
     act(() => {
+      firstButton!.click();
+    });
+    expect(onChoose).toHaveBeenCalledTimes(0);
+
+    // Bấm lần 1 sau khoảng khóa
+    act(() => {
+      vi.advanceTimersByTime(401);
       firstButton!.click();
     });
     expect(onChoose).toHaveBeenCalledTimes(1);
@@ -57,7 +64,7 @@ describe('MultipleChoice', () => {
     const onChoose = vi.fn();
     const { container: c1 } = render(
       <StrictMode>
-        <MultipleChoice question={QUESTION} attempts={0} onChoose={onChoose} />
+        <MultipleChoice question={QUESTION} attempts={0} gameKey={null} onChoose={onChoose} />
       </StrictMode>,
     );
 
@@ -66,7 +73,7 @@ describe('MultipleChoice', () => {
     // Render lần nữa với attempts=0 cùng phiên
     const { container: c2 } = render(
       <StrictMode>
-        <MultipleChoice question={QUESTION} attempts={0} onChoose={onChoose} />
+        <MultipleChoice question={QUESTION} attempts={0} gameKey={null} onChoose={onChoose} />
       </StrictMode>,
     );
     const labels2 = [...c2.querySelectorAll('.mc__choice')].map((el) => el.textContent);

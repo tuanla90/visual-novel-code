@@ -1,92 +1,64 @@
-import { useCallback, useEffect, useRef } from 'react';
-
-export const DEFAULT_PRESS_GUARD_DELAY_MS = 400;
-
-interface GuardableEvent {
-  detail?: number;
-  repeat?: boolean;
-  key?: string;
-  preventDefault?: () => void;
-  stopPropagation?: () => void;
-}
-
-function findGuardableEvent(args: unknown[]): GuardableEvent | undefined {
-  for (const arg of args) {
-    if (arg && typeof arg === 'object' && ('preventDefault' in arg || 'detail' in arg || 'repeat' in arg || 'key' in arg)) {
-      return arg as GuardableEvent;
-    }
-  }
-  return undefined;
-}
-
-function isTestRuntime(): boolean {
-  const g = globalThis as { process?: { env?: Record<string, string | undefined> } };
-  return g.process?.env?.VITEST === 'true';
-}
-
-function hasFakeTimers(): boolean {
-  const g = globalThis as {
-    Date?: { isFake?: boolean; clock?: unknown };
-    setTimeout?: { clock?: unknown };
-  };
-  const hasViFake = typeof vi !== 'undefined' && typeof vi.isFakeTimers === 'function' && vi.isFakeTimers();
-  return Boolean(
-    hasViFake ||
-    g.Date?.isFake ||
-    g.Date?.clock ||
-    g.setTimeout?.clock,
-  );
-}
-
 /**
- * Hook bọc hàm callback để chống bấm đúp (rapid double-click) và spam phím (Space/Enter)
- * trong khoảng `delay` (mặc định 400ms) sau cú bấm đầu tiên.
- * Hỗ trợ cả thao tác chuột (event.detail > 1) và bàn phím (event.repeat, Space/Enter).
+ * Chống bấm đúp / giữ phím dùng chung (QĐ-061 Đ2, QĐ-066) — theo mẫu `ObjectionEffect`:
+ *
+ * - Khoảng khóa ngắn (~400 ms) mỗi khi NỘI DUNG đổi (`contentKey`) và ngay sau mỗi lần bấm được nhận:
+ *   cú bấm thứ hai của một lần bấm đúp rơi vào nội dung vừa hiện (hộp phản hồi thay chỗ lựa chọn,
+ *   câu hỏi thay chỗ lời thoại, tài liệu vừa mở) không được tính.
+ * - Bỏ cú bấm có `detail > 1` (cú thứ hai/ba của bấm đúp/ba) và phím đang giữ (`repeat`).
+ * - `immediate`: nút bấm CHỦ Ý (ví dụ "Tiếp tục ▸", "Hỏi Hà Vy") nhận ngay cú bấm đơn, chỉ bỏ cú bấm
+ *   lặp của bấm đúp.
+ * - `holdKey`: gắn vào `onKeyDown` của nút — Enter đang giữ không bấm lặp nút (trình duyệt tự sinh
+ *   click cho mỗi keydown lặp của Enter).
  */
-export function usePressGuard<Args extends unknown[], Return = void>(
-  callback?: ((...args: Args) => Return) | undefined,
-  delay: number = DEFAULT_PRESS_GUARD_DELAY_MS,
-): (...args: Args) => Return | undefined {
-  const callbackRef = useRef(callback);
-  useEffect(() => {
-    callbackRef.current = callback;
-  });
-  const lastPressAt = useRef<number>(Number.NEGATIVE_INFINITY);
+import { useCallback, useLayoutEffect, useMemo, useRef } from 'react';
 
-  return useCallback(
-    (...args: Args): Return | undefined => {
-      const now = Date.now();
-      const event = findGuardableEvent(args);
+/** Khoảng khóa sau khi nội dung đổi / sau một lần bấm được nhận. */
+export const PRESS_GUARD_MS = 400;
 
-      // Cú bấm đúp / bấm ba chuột từ browser event (detail > 1)
-      if (event?.detail !== undefined && event.detail > 1) {
-        event.preventDefault?.();
-        return undefined;
-      }
+export interface PressGuard {
+  /** Cú bấm chuột/chạm (hoặc click do bàn phím sinh ra) có được tính không. */
+  click: (e: { detail: number }, options?: { immediate?: boolean }) => boolean;
+  /** Phím tắt (keydown trên cửa sổ) có được tính không. */
+  key: (e: { repeat: boolean }) => boolean;
+  /** `onKeyDown` cho nút: chặn click lặp do giữ Enter. */
+  holdKey: (e: { repeat: boolean; preventDefault: () => void }) => void;
+}
 
-      // Phím đang giữ tự động lặp (key repeat)
-      if (event?.repeat) {
-        event.preventDefault?.();
-        return undefined;
-      }
+export function usePressGuard(contentKey: unknown, ms: number = PRESS_GUARD_MS): PressGuard {
+  const armed = useRef(false);
+  const timer = useRef<number | undefined>(undefined);
 
-      // Trong môi trường test chạy real timer (userEvent chạy tuần tự trong vài ms giữa các bước await):
-      // chặn cú bấm đúp đồng bộ (same tick).
-      // Trong môi trường thực tế (trình duyệt) hoặc test có fake timers (vi.useFakeTimers):
-      // áp dụng đầy đủ khoảng thời gian delay 400ms.
-      const isRealTimerTest = isTestRuntime() && !hasFakeTimers();
-      const isTooSoon = isRealTimerTest
-        ? now === lastPressAt.current
-        : now - lastPressAt.current < delay;
+  const disarm = useCallback(() => {
+    armed.current = false;
+    window.clearTimeout(timer.current);
+    timer.current = window.setTimeout(() => {
+      armed.current = true;
+    }, ms);
+  }, [ms]);
 
-      if (isTooSoon) {
-        event?.preventDefault?.();
-        return undefined;
-      }
+  // Layout effect: khóa ngay lúc nội dung mới được gắn vào trang, trước khi cú bấm kế tiếp tới.
+  useLayoutEffect(() => {
+    disarm();
+    return () => window.clearTimeout(timer.current);
+  }, [contentKey, disarm]);
 
-      lastPressAt.current = now;
-      return callbackRef.current?.(...args);
-    },
-    [delay],
+  return useMemo<PressGuard>(
+    () => ({
+      click: (e, options) => {
+        if (e.detail > 1) return false;
+        if (options?.immediate !== true && !armed.current) return false;
+        disarm();
+        return true;
+      },
+      key: (e) => {
+        if (e.repeat || !armed.current) return false;
+        disarm();
+        return true;
+      },
+      holdKey: (e) => {
+        if (e.repeat) e.preventDefault();
+      },
+    }),
+    [disarm],
   );
 }

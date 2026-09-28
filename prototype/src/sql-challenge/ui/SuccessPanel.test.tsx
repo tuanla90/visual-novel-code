@@ -37,8 +37,8 @@ describe('SuccessPanel — chống bấm đúp Lưu vào hồ sơ', () => {
     const saveBtn = screen.getByRole('button', { name: 'Lưu vào hồ sơ' });
 
     act(() => {
-      fireEvent.click(saveBtn);
-      fireEvent.click(saveBtn);
+      fireEvent.click(saveBtn, { detail: 1 });
+      fireEvent.click(saveBtn, { detail: 2 }); // cú thứ hai của bấm đúp thật (QĐ-066)
     });
 
     expect(onSave).toHaveBeenCalledTimes(1);

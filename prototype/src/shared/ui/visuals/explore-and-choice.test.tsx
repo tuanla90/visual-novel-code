@@ -57,7 +57,7 @@ describe('MultipleChoice hiển thị chữ mã (QĐ-051)', () => {
         { id: 'b', text: 'Cột `ho_dem`', correct: false, feedback: [] },
       ],
     };
-    const { container } = render(<MultipleChoice question={question} attempts={0} onChoose={() => {}} random={() => 0} />);
+    const { container } = render(<MultipleChoice question={question} attempts={0} gameKey="t" onChoose={() => {}} random={() => 0} />);
     expect(container.textContent).not.toContain('`');
     const codes = Array.from(container.querySelectorAll('code.code-text')).map((c) => c.textContent);
     expect(codes.sort()).toEqual(['ho_dem', 'ho_dem', 'ten', 'ten']);

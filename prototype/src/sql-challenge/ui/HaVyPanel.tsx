@@ -2,10 +2,9 @@
  * Khung Hà Vy (cột phải): một lời tại một thời điểm — bước hướng dẫn, gợi ý, hoặc nhận xét sau lần
  * chạy. Lời lấy từ nội dung; nhãn nhỏ cho biết lời thuộc loại nào. Chữ mã hiển thị qua CodeText.
  */
-import { useState, type ReactNode } from 'react';
+import { useState, type KeyboardEvent, type MouseEvent, type ReactNode } from 'react';
 import { speakerLabel } from '../../shared/display-names';
 import { CodeText } from '../../shared/ui/CodeText';
-import { usePressGuard } from '../../shared/ui/use-press-guard';
 import { resolvePortrait } from '../../shared/ui/visuals/art-slots';
 import type { DialogueLine } from '../../story/types';
 
@@ -23,14 +22,16 @@ export interface HaVyPanelProps {
   /** Chữ khi chưa có lời nào. */
   idle: string;
   actions?: ReactNode;
-  onAskHaVy?: () => void;
+  /** Bấm "Hỏi Hà Vy" — lớp gọi tự lọc bấm đúp (QĐ-066, `usePressGuard` ở ChallengeScreen). */
+  onAskHaVy?: (e: MouseEvent<HTMLButtonElement>) => void;
+  /** `onKeyDown` của nút: chặn bấm lặp khi giữ Enter. */
+  onAskKeyDown?: (e: KeyboardEvent<HTMLButtonElement>) => void;
   askDisabled?: boolean;
 }
 
-export function HaVyPanel({ note, idle, actions, onAskHaVy, askDisabled }: HaVyPanelProps) {
+export function HaVyPanel({ note, idle, actions, onAskHaVy, onAskKeyDown, askDisabled }: HaVyPanelProps) {
   const [minimized, setMinimized] = useState(false);
   const who = note ? speakerLabel(note.line.speaker) : speakerLabel('ha-vy');
-  const guardedAskHaVy = usePressGuard(onAskHaVy);
   const avatarArt = resolvePortrait('ha-vy', note?.tone === 'success' ? 'smile' : 'thinking');
 
   return (
@@ -69,7 +70,7 @@ export function HaVyPanel({ note, idle, actions, onAskHaVy, askDisabled }: HaVyP
       {onAskHaVy || actions ? (
         <div className="havy__actions">
           {onAskHaVy ? (
-            <button type="button" className="btn btn--small btn--havy" onClick={guardedAskHaVy} disabled={askDisabled}>
+            <button type="button" className="btn btn--small btn--havy" onClick={onAskHaVy} onKeyDown={onAskKeyDown} disabled={askDisabled}>
               Hỏi Hà Vy
             </button>
           ) : null}

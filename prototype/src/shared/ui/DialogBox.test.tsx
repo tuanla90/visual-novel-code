@@ -25,8 +25,8 @@ describe('DialogBox — chống nhảy cóc thoại (press guard)', () => {
     const nextBtn = screen.getByRole('button', { name: /Tiếp tục/ });
 
     act(() => {
-      fireEvent.click(nextBtn);
-      fireEvent.click(nextBtn);
+      fireEvent.click(nextBtn, { detail: 1 });
+      fireEvent.click(nextBtn, { detail: 2 }); // cú thứ hai của bấm đúp thật (QĐ-066)
     });
 
     expect(onAdvance).toHaveBeenCalledTimes(1);
@@ -42,6 +42,8 @@ describe('DialogBox — chống nhảy cóc thoại (press guard)', () => {
   it('spam phím Space hoặc Enter liên tiếp chỉ kích hoạt onAdvance một lần trong 400ms', () => {
     const onAdvance = vi.fn();
     render(<DialogBox line={LINE} onAdvance={onAdvance} />);
+    // QĐ-066: phím trong ~400 ms đầu sau khi lời hiện không được tính (cú bấm lọt từ màn trước).
+    act(() => vi.advanceTimersByTime(401));
 
     act(() => {
       fireEvent.keyDown(window, { key: ' ' });
@@ -65,6 +67,7 @@ describe('DialogBox — chống nhảy cóc thoại (press guard)', () => {
 
     const dialog = container.querySelector('.dialog')!;
     expect(dialog).toBeDefined();
+    act(() => vi.advanceTimersByTime(401)); // QĐ-066: qua khoảng khóa khi lời vừa hiện
 
     act(() => {
       fireEvent.click(dialog);

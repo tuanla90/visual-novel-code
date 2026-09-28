@@ -2,12 +2,13 @@
  * Màn tài liệu (QĐ-026, QĐ-060): chữ tài liệu do giao diện chồng lên (có trong DOM, đọc được), nền
  * giấy gắn ô ảnh theo mã tài liệu, không định danh thô trên màn hình, nút cất vào hồ sơ gọi onClose.
  */
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { realEvidence } from '../../../content/real/evidence';
 import { DocumentReveal } from '../../../evidence/ui/DocumentReveal';
 import { DOCUMENT_IDS } from '../../ids';
+import { passPressGuard } from '../../../test/press-guard';
 import { artUrl } from './art-slots';
 
 describe('DocumentReveal', () => {
@@ -41,11 +42,35 @@ describe('DocumentReveal', () => {
     expect(container.querySelector('figcaption')?.textContent).toContain('"…ÁO CHÍ"');
   });
 
+  it('vừa mở (F5 rà soát sư phạm): tiêu điểm ở khung, không ở nút; Space/Enter/bấm/giữ phím ngay lúc mở KHÔNG đóng', async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    render(<DocumentReveal document={realEvidence.documents['doc-handover-log']} onClose={onClose} />);
+    const dialog = screen.getByRole('dialog');
+    const button = screen.getByRole('button', { name: 'Cất vào hồ sơ' });
+    expect(document.activeElement).toBe(dialog);
+    expect(button).not.toHaveFocus();
+    // Cú Space/Enter tiếp theo của người vừa qua lời bằng phím: không có nút nào nhận.
+    await user.keyboard(' ');
+    await user.keyboard('{Enter}');
+    // Cú bấm thứ hai của bấm đúp và cú bấm trong khoảng khóa rơi vào nút: không đóng.
+    fireEvent.click(button, { detail: 2 });
+    fireEvent.click(button, { detail: 1 });
+    // Enter đang giữ trên nút: keydown lặp bị chặn (trình duyệt không sinh click).
+    expect(fireEvent.keyDown(button, { key: 'Enter', repeat: true })).toBe(false);
+    expect(onClose).not.toHaveBeenCalled();
+    // Hết khoảng khóa: bấm chủ ý (chuột hoặc Tab tới nút rồi Enter) mới đóng, đúng một lần.
+    await passPressGuard();
+    await user.click(button);
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
   it('nút "Cất vào hồ sơ" gọi onClose; thiếu nội dung thì nói đúng lý do', async () => {
     const user = userEvent.setup();
     const onClose = vi.fn();
     render(<DocumentReveal document={undefined} onClose={onClose} />);
     expect(screen.getByText('Thẻ tài liệu này chưa được viết trong nội dung.')).toBeInTheDocument();
+    await passPressGuard();
     await user.click(screen.getByRole('button', { name: 'Cất vào hồ sơ' }));
     expect(onClose).toHaveBeenCalledTimes(1);
   });

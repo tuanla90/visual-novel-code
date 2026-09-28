@@ -72,6 +72,7 @@ describe('DialogBox — Auto/Skip', () => {
   it('qua câu bằng tay thì câu đó được ghi là đã đọc', () => {
     const onAdvance = vi.fn();
     render(<DialogBox line={A} onAdvance={onAdvance} />);
+    act(() => vi.advanceTimersByTime(401)); // QĐ-066: qua khoảng khóa khi lời vừa hiện
     act(() => {
       window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     });
