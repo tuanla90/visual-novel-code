@@ -535,3 +535,16 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
   - Nhật ký của Antigravity: `.agent/changelog.md` (bản đủ) chuyển thành `prototype/docs/nhat-ky-thay-doi-2026-09-27.md`; `.agents/changelog.md` là bản cũ hơn, thiếu mục 5–6, nên đã xóa.
 - Đã sửa theo: đường dẫn `docs/kich-ban-prototype.md` → `docs/prototype/kich-ban-prototype.md` trong code, test (`faithfulness.test.ts`) và tài liệu; phần đầu các tài liệu dẫn sang nhau; `prototype/README.md`, `ARCHITECTURE.md`, `src/assets/art/README.md`; skill `google-flow-image` (`--file art/prompts/…`). Link `file:///` tuyệt đối trong bộ prompt nhân vật đổi thành link tương đối.
 - Không đụng `prototype/src/` ngoài chú thích đường dẫn: cấu trúc code đã theo tính năng và đang có các gói MVP chạy song song.
+
+**QĐ-079 — Kế hoạch gói chuẩn hóa nội dung, bước 1 của QĐ-075 (ĐỀ XUẤT, CHỜ USER CHỐT).** · Nguồn: điều phối viên, khảo sát code 28/09 · 28/09
+- Kế hoạch đầy đủ: `docs/ke-hoach-goi-chuan-hoa.md`. Mục tiêu: chuyển nội dung hiện tại sang `prototype/noi-dung/` làm nguồn duy nhất, bộ đọc sinh dữ liệu cho game, xóa khoảng 1.600 dòng chép tay. Không đổi chữ nội dung nào; game chạy y hệt, test xanh.
+- **Ba phát hiện làm đổi kế hoạch:**
+  1. Màn chiếu chạy SQL (deb-01, deb-03), đặt cờ hết quyền truy cập, chú thích thẻ hồ sơ (end-03), thẻ chữ lớn (end-04) chỉ có trong bản chép tay; kịch bản chỉ tả bằng lời trong `[DÀN DỰNG]`. Phải thêm cú pháp máy đọc được.
+  2. Runtime chưa có kích hoạt, cờ tùy ý, bộ đếm. Đổi sang `[KÍCH HOẠT]` ngay ở bước 1 là phải sửa runtime, trái mục tiêu "chạy y hệt".
+  3. Worktree mới không có `node_modules`: gói đầu phải cài phụ thuộc và chạy test lấy mốc trước khi sửa.
+- **Chia 4 gói, tuần tự (QĐ-057):** 12a-1 `bo-doc` (Opus) → 12a-2 `sinh-noi-dung` (Opus) → 12b `nhan-vat-canh` (Opus, đụng tệp đóng băng `ids.ts`, cần QĐ riêng khi giao) → 12c `du-lieu-yaml` (Sonnet). Đợt sau: 13 runtime `[KÍCH HOẠT]`/cờ/`[RẼ NHÁNH]` · 14 biến SQL, seed, ràng buộc · 15 màn thử thách mới · 16 viết lại nội dung.
+- **Chờ user chốt** (khuyến nghị của điều phối viên in đậm):
+  1. Cách sinh dữ liệu: **A. sinh file `.gen.ts` và commit** (tsc, test, editor chạy ngay, giữ kiểm kiểu) · B. plugin Vite sinh module ảo · C. sinh JSON, kiểm lúc chạy.
+  2. Điều chỉnh mục 15 của đặc tả: **bước 1 vẫn nhận `[ĐIỂM XEM XÉT]`, `[ĐIỀU KIỆN QUA]`, `[KHI ĐÚNG]`, `[KHI: mã]`; chuyển sang cú pháp mới ở đợt 13.**
+  3. Model từng gói như trên.
+- **Khi chốt phải sửa:** mục 15 và 17 của `docs/dac-ta-dinh-dang-noi-dung.md`, dòng trạng thái của `docs/ke-hoach-goi-chuan-hoa.md`, và mục này (bỏ chữ "CHỜ USER CHỐT", ghi phương án được chọn).

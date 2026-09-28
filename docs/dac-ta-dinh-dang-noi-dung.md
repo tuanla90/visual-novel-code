@@ -616,6 +616,8 @@ Lệnh (gói chuẩn hóa sẽ tạo): `npm run kiem-noi-dung` để chạy riê
 
 Bước 1 của QĐ-075: chuyển **nguyên văn** nội dung hiện tại sang cấu trúc mới, game chạy y hệt.
 
+> **Đang đề xuất điều chỉnh (QĐ-079, chờ user chốt):** runtime chưa có kích hoạt, cờ, bộ đếm, nên ở bước 1 bộ đọc **vẫn nhận cú pháp cũ** `[ĐIỂM XEM XÉT]`, `[ĐIỀU KIỆN QUA]`, `[KHI ĐÚNG]`, `[KHI: <mã>]`; các dòng tương ứng trong bảng dưới chỉ áp dụng từ đợt 13. Ngoài ra bước 1 thêm cú pháp cho màn chiếu, đặt cờ, chú thích hồ sơ, thẻ chữ (mục 6.3). Chi tiết: `docs/ke-hoach-goi-chuan-hoa.md`.
+
 | Cũ (`docs/prototype/kich-ban-prototype.md`) | Mới |
 |---|---|
 | `## Phần N — … {part: …}` | tên file trong `kich-ban/chinh/` + khai báo `phần:` ở đầu file |
@@ -772,3 +774,4 @@ Lưu ý: khối `[KHI CHẠY]` không bộ lọc đặt **cuối** để làm m�
 3. **Kho tên hư cấu** (`kho/ho-dem.txt`, `kho/ten.txt`) cần bao nhiêu tên và ai duyệt để không trùng tên người thật trong trường?
 4. **Seed cho người chơi** khi bật ngẫu nhiên: lấy từ câu trả lời với Tùng ở phần mở đầu (GDD) hay ngẫu nhiên thuần? Ảnh hưởng tới khả năng hai người chơi so đáp án với nhau.
 5. **Thứ tự dòng dữ liệu** có cần cố định để giữ bẫy `LIMIT` như QĐ-048 không, hay bỏ bẫy này vì vòng chính không còn dạy `LIMIT`?
+6. **Ba câu hỏi của kế hoạch chuẩn hóa** (QĐ-079): cách sinh dữ liệu, dời cú pháp `[KÍCH HOẠT]` sang đợt 13, model từng gói. Xem cuối `docs/ke-hoach-goi-chuan-hoa.md`.

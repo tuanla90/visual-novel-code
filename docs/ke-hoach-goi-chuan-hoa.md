@@ -1,6 +1,6 @@
 # Kế hoạch gói chuẩn hóa nội dung (bước 1 của QĐ-075)
 
-28/09 · Trạng thái: **kế hoạch, chưa giao** · Đặc tả: `docs/dac-ta-dinh-dang-noi-dung.md`
+28/09 · Trạng thái: **kế hoạch, chưa giao, chờ user chốt 3 câu hỏi cuối tệp** (QĐ-079) · Đặc tả: `docs/dac-ta-dinh-dang-noi-dung.md`
 
 ## Mục tiêu và tiêu chí xong
 
