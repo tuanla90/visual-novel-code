@@ -270,6 +270,7 @@ phong-clb:
 | `[HẬU QUẢ] …` | Đặt ở giữa chuỗi thì chạy ngay tại đó; ở cuối thì chạy khi xong chuỗi. |
 | `[MÀN CHIẾU <mã> · chạy · <n> dòng]` + khối ` ```sql ` ngay dưới | Màn chiếu (buổi giải trình) hiện câu SQL trong khối; `chạy` = chạy thật trên dataset chính; `<n> dòng` = số dòng kỳ vọng (không bắt buộc). Giữa dòng chỉ dẫn và khối chỉ được có dòng trống. |
 | `[MÀN CHIẾU <mã> · vật chứng <ev-…> · chạy · <n> dòng]` | Như trên nhưng câu SQL lấy từ vật chứng người chơi đã lưu (vd truy vấn vừa sửa). `không chạy` = chỉ hiện câu SQL. |
+| `[MÀN CHIẾU <mã> · truy vấn nạp sẵn <mã thẻ> · chạy · <n> dòng]` | Như trên nhưng câu SQL lấy từ dòng `Truy vấn nạp sẵn:` của thẻ thử thách đó (§9.1) — câu SQL chỉ viết một chỗ (gói 12a-2; deb-01 dùng cách này cho truy vấn OR của Quân). Không có khối sql ngay dưới. Thẻ không có "Truy vấn nạp sẵn" là lỗi. |
 | `[ĐẶT CỜ <cờ>]` | Bật một cờ của game ngay tại đó (bước 1 chỉ có cờ `access-revoked`: hết quyền xem dữ liệu, khóa nút mở trình dựng). |
 | `[CHÚ THÍCH HỒ SƠ <ev-…>]` / `[CHÚ THÍCH HỒ SƠ <ev-…> · làm mờ]` | Gắn chú thích vào thẻ kết quả truy vấn trong Hồ sơ; chữ lấy nguyên văn dòng `- Chú thích:` của thẻ hồ sơ cùng mã (§12). `làm mờ` = tên và mã trong bảng của thẻ bị làm mờ (QĐ-062). |
 | `[THẺ CHỮ] **<người nói>** …: <lời>` | Tiền tố trước một lời thoại: lời đó hiện dạng thẻ chữ lớn giữa màn hình (thông điệp kết). |
@@ -497,6 +498,7 @@ Tên riêng không viết cứng trong lời: đổi tên một nhân vật hay 
 | `{{nv.<mã>.<dạng>}}` | một dạng tên khác | Dạng dự kiến: `ten` (tên hiển thị), `ho-ten` (họ tên đầy đủ), `trong-cau` (tên gọi giữa câu, danh xưng viết thường: "bác Tư", "thầy Khải"). |
 | `{{truong.ten-day-du}}` | tên đầy đủ của trường | QĐ-080: "Trường Đại học Chấn Hưng". |
 | `{{truong.ten-ngan}}` | tên ngắn | QĐ-080: "Chấn Hưng". |
+| `{{truong.ten-khong-tien-to}}` | tên đầy đủ bỏ chữ "Trường" đầu | "Đại học Chấn Hưng" — dùng khi câu đã có chữ "trường" viết thường ("cổng trường {{truong.ten-khong-tien-to}}"). Thêm ở gói 12a-2. |
 
 Luật:
 - **Mã là khóa, không đổi khi đổi tên** (vd `bac-tu` giữ nguyên dù tên hiển thị thành "Bác Thịnh"). Không dùng mã vai trò cho nhân vật xuyên suốt; vai trong vụ án (nhân chứng, người vô can…) là biến của vụ, làm ở đợt 14.
@@ -506,6 +508,7 @@ Luật:
 
 **Nguồn tên theo bước:**
 - Bước 1 (gói 12a-1): nguồn tạm là `CHARACTER_NAMES` của game (`src/shared/display-names.ts`, qua `src/content/real/testing/nguon-ten.ts`), mới có dạng `ten`; tên trường **vẫn là tên cũ** "Trường Đại học Hoa Phượng" / "Hoa Phượng" để không đổi chữ. Nội dung chưa dùng biến (gói 12a-2 thay tên bằng biến bằng script).
+- Gói 12a-2: nội dung đã thay tên bằng biến (script, chữ hiển thị giữ nguyên — dữ liệu sinh bằng đúng dữ liệu cũ); test chặn tên nhân vật có mã và tên trường viết trần trong `noi-dung/` (trừ `quy-uoc.md`; ngoại lệ: tên sinh viên trong dòng kết quả truy vấn, là dữ liệu SQL — đợt 14). Nguồn tạm có thêm dạng `ho-ten` (họ tên trong hồ sơ nhân vật của game) và `trong-cau` (danh xưng đầu tên viết thường); tên trường có thêm `ten-khong-tien-to`, vẫn là tên cũ.
 - Gói 12b: nguồn chuyển sang `nhan-vat.yaml` (§4: `ten-hien-thi`, `ho-ten`, dạng trong câu); tên trường vào tệp cấu hình chung.
 
 ---

@@ -2,7 +2,7 @@
 /**
  * Test của BỘ ĐỌC NỘI DUNG (tools/noi-dung): báo lỗi đúng `<tệp>:<dòng>`, biến tên, cú pháp mới
  * (màn chiếu, đặt cờ, chú thích hồ sơ, thẻ chữ, truy vấn nạp sẵn), lệnh `kiem-noi-dung`.
- * Nội dung thật đọc được trọn và khớp game: xem faithfulness.test.ts.
+ * Nội dung thật đọc được trọn và khớp game: xem ../noi-dung.test.ts và ../../generated/generated.test.ts.
  */
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';

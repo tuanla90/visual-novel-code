@@ -13,6 +13,9 @@
 prototype/
 ├── index.html · vite.config.ts · tsconfig.json · eslint.config.js · package.json
 ├── README.md                          hướng dẫn chạy / thử nghiệm (tiếng Việt)
+├── noi-dung/                          NGUỒN CHỮ DUY NHẤT (kịch bản, thẻ thử thách, lời chung, hồ sơ) — xem noi-dung/README.md
+├── tools/noi-dung/                    bộ đọc (doc, bien, nap-san, thu-muc) · chuyen.ts (kết quả đọc → dữ liệu game) ·
+│                                      kiem.ts (`npm run kiem-noi-dung`) · sinh.ts (`npm run noi-dung:sinh`) — không import src/ trừ nguồn tên
 ├── docs/ARCHITECTURE.md               ← tài liệu này
 ├── docs/nhat-ky-thay-doi-2026-09-27.md  nhật ký gói VN của commit fa5ffd3 (Antigravity viết; lỗi đã sửa ở QĐ-076)
 └── src/
@@ -25,8 +28,10 @@ prototype/
     │   └── facilitator-mode.ts        isFacilitatorMode, nhãn, câu trạng thái lưu, jumpToPartStart (tự chơi tới đầu phần)
     ├── content/
     │   ├── types.ts                   GameContent (đóng băng) · index.ts: activeContent = realContent
-    │   ├── real/                      NỘI DUNG THẬT chép nguyên văn từ kịch bản: story/{intro,investigation,analysis,debrief,ending}.ts,
-    │   │                              challenges.ts (thẻ + lời chung + gợi ý chuẩn), evidence.ts (thẻ hồ sơ); testing/ (bộ đọc kịch bản, chuỗi hiển thị — chỉ test)
+    │   ├── generated/                 *.gen.ts SINH từ noi-dung/ (ĐỪNG SỬA TAY, được commit): cot-truyen (mạch chính, tên game),
+    │   │                              ho-so (manh mối, tài liệu), thu-thach (thẻ, SQL của thẻ, gợi ý chuẩn, nhận xét chung) · generated.test.ts
+    │   ├── real/                      index.ts: realContent = dữ liệu sinh + CHALLENGE_SPECS; test nội dung; testing/ (nguồn tên tạm
+    │   │                              cho biến {{nv.…}}, chuỗi hiển thị, test bộ đọc — chỉ test/công cụ)
     │   └── sample/                    nội dung MẪU "(MẪU)" — đủ mọi loại node; còn dùng trong vài test
     ├── shared/
     │   ├── ids.ts                     ĐỊNH DANH QĐ-033 + mã chẩn đoán QĐ-040 (đóng băng)
@@ -45,7 +50,7 @@ prototype/
     ├── evidence/                      types.ts (đóng băng) · notebook.ts (QĐ-037) · labels.ts · ui/EvidenceNotebook (ngăn kéo Hồ sơ, che thẻ đã hủy) · ui/DocumentReveal
     ├── sql-challenge/
     │   ├── schema.ts · types.ts       (đóng băng) bảng/cột, QueryModel, RunResult, GradeResult, ChallengeSpec/Content
-    │   ├── data/                      CHALLENGE_SPECS, QUAN_OR_QUERY, QUAN_QUERY_MODEL, thứ tự mã chẩn đoán, dataset chính + ẩn
+    │   ├── data/                      CHALLENGE_SPECS (SQL lấy từ dữ liệu sinh), QUAN_OR_QUERY, QUAN_QUERY_MODEL, thứ tự mã chẩn đoán, dataset chính + ẩn
     │   ├── engine/                    sqljs (loader DUY NHẤT) · database · run · grade · compare · diagnose · priority · reference ·
     │   │                              sql-text · helpers · model-sql · index (chữ ký công khai, đóng băng)
     │   └── ui/                        ChallengeScreen (+ chế độ fix-query), QueryBuilder, WhereRow, SqlPane, SqlCode (có chú thích OR/AND/LIKE/IN),
@@ -164,7 +169,9 @@ orderDiagnostics(challengeId, diagnostics)      // thứ tự mặc định củ
 distinctValues(table, column) · previewRows(table, limit = 5)
 ```
 
-Dữ liệu (`src/sql-challenge/data/`): `CHALLENGE_SPECS` (spec 4 thử thách — nguồn DUY NHẤT), `QUAN_OR_QUERY`,
+Dữ liệu (`src/sql-challenge/data/`): `CHALLENGE_SPECS` (spec 4 thử thách — nguồn DUY NHẤT của cột bắt buộc, số dòng,
+dataset ẩn; SQL chuẩn và model nạp sẵn lấy từ `content/generated/thu-thach.gen.ts` › `SQL_THU_THACH`, tức dòng "SQL chuẩn",
+"Truy vấn nạp sẵn", "Nguồn điều kiện nạp sẵn" của thẻ trong `noi-dung/thu-thach/`), `QUAN_OR_QUERY`,
 `QUAN_QUERY_MODEL`, `CHALLENGE_DIAGNOSTIC_ORDER`, `COMMON_DIAGNOSTIC_ORDER` (đủ 6 mã blocking + mã chung + `other`),
 `MAIN_DATASET` (40 sinh viên / 8 lớp), `HIDDEN_DATASET` (bắt truy vấn "đi từ đáp án", QĐ-015).
 Thứ tự khóa `diagnosticLines`/`commonDiagnosticLines` trong nội dung PHẢI trùng hai mảng thứ tự (QĐ-047,
@@ -206,7 +213,7 @@ Không lưu bảng kết quả lớn: chỉ `SavedQueryEvidence` (≤ vài chụ
 ## 3. Luồng dữ liệu
 
 ```
-nội dung (GameContent, activeContent = realContent)
+noi-dung/*.md ──(npm run noi-dung:sinh)──► content/generated/*.gen.ts ──► GameContent (activeContent = realContent)
    │
    ▼                       effects: unlock-evidence / annotate-evidence / set-flag / telemetry
 runtime story (thuần) ──► store áp effects ──► track() ──► sink localStorage ──► summary ──► FacilitatorPanel / xuất JSON
@@ -251,7 +258,7 @@ StoryView ──► GameScreen → component theo view.kind (DialogBox, ExploreS
 | Vùng | Mã chính | Test canh giữ |
 |---|---|---|
 | Kể chuyện | `story/engine/{runtime,state,validate}.ts`, `story/ui/*` | `runtime.test.ts`, `validate.test.ts`, `visuals/explore-and-choice.test.tsx`, `objection-effect.test.tsx` |
-| Nội dung thật | `content/real/**` | `faithfulness.test.ts` (kịch bản ↔ dữ liệu hai chiều từng ký tự), `display-hygiene.test.ts` (không id thô/ghi chú người viết trong chữ hiển thị), `integrity.test.ts`, `diagnostics.test.ts` (thứ tự mã), `numbers.test.ts` (10/2/2/24 — QĐ-012), `redaction.test.tsx` |
+| Nội dung thật | `noi-dung/**`, `tools/noi-dung/**`, `content/generated/**`, `content/real/**` | `generated.test.ts` (file sinh khớp nội dung — quên sinh lại / sửa tay .gen.ts là đỏ), `noi-dung.test.ts` (bộ đọc không bỏ sót dòng, `CHALLENGE_SPECS` ↔ thẻ, biểu cảm người hỏi, không tên riêng viết trần), `testing/bo-doc.test.ts` (lỗi `<tệp>:<dòng>`, cú pháp, biến tên), `display-hygiene.test.ts` (không id thô/ghi chú người viết trong chữ hiển thị), `integrity.test.ts`, `diagnostics.test.ts` (thứ tự mã), `numbers.test.ts` (10/2/2/24 — QĐ-012), `redaction.test.tsx` |
 | Engine SQL + dữ liệu | `sql-challenge/engine/**`, `sql-challenge/data/**` | `engine/*.test.ts` (kể cả `sqljs.dev.test.ts`: canary Vite dev nạp sql.js như trình duyệt), `data/*.test.ts` |
 | Trình dựng | `sql-challenge/ui/**` | `ChallengeScreen/Guide/Run/SqlMode/Success/Telemetry/ValueEditors/Fix.test.tsx`, `CodeText.test.tsx`, `contrast-ui.test.ts` |
 | Giải trình | `debrief/ui/**` | `LinePick.test.tsx`, `Projector.test.tsx`, `SqlRecall.test.tsx`, `contrast-debrief.test.ts` |
@@ -320,11 +327,13 @@ trong store, `package.json` (không cài thêm phụ thuộc nếu không hỏi)
 
 ## 7. Cách thêm / đổi nội dung
 
-1. Nội dung (`prototype/noi-dung/`, xem `noi-dung/README.md`) là nguồn duy nhất: đổi chữ ở đó trước, chạy
-   `npm run kiem-noi-dung`, rồi chép lại vào `src/content/real/{story/*,challenges,evidence}.ts` (bản chép tay còn tới
-   gói 12a-2). `faithfulness.test.ts` đọc cả thư mục bằng bộ đọc `tools/noi-dung/` (không import `src/`; lỗi dạng
-   `<tệp>:<dòng>`) và so hai chiều từng ký tự — lệch là đỏ, báo `lệch đầu tiên ở <tệp>:<dòng>`.
-2. Ánh xạ kịch bản → node: xem bảng đầu `src/story/types.ts`. Chú ý: `[ĐIỂM XEM XÉT]` nhiều điểm trong một cảnh
+1. Nội dung (`prototype/noi-dung/`, xem `noi-dung/README.md`) là nguồn DUY NHẤT (gói 12a-2 đã bỏ bản chép tay):
+   sửa `.md` → `npm run kiem-noi-dung` (lỗi dạng `<tệp>:<dòng>`, không ghi gì) → `npm run noi-dung:sinh` (ghi
+   `src/content/generated/*.gen.ts`, có lỗi thì không ghi) → commit **cả** `.md` lẫn `.gen.ts`. `predev`/`prebuild` tự
+   sinh lại; `generated.test.ts` đỏ nếu tệp sinh đã commit khác bản sinh lại. Tên nhân vật/tên trường viết bằng biến
+   `{{nv.<mã>[.ten|.ho-ten|.trong-cau]}}`, `{{truong.ten-day-du|ten-ngan|ten-khong-tien-to}}` (nguồn tạm:
+   `content/real/testing/nguon-ten.ts`; gói 12b chuyển sang `noi-dung/nhan-vat.yaml`).
+2. Ánh xạ kịch bản → node: luật nằm ở `tools/noi-dung/chuyen.ts` (bảng loại node ở đầu `src/story/types.ts`). Chú ý: `[ĐIỂM XEM XÉT]` nhiều điểm trong một cảnh
    → **một** `explore` node + `gate` ngay sau; màn chiếu `[MÀN CHIẾU]` → `projector`, hết quyền `[ĐẶT CỜ access-revoked]`
    → `set-flag`, `[CHÚ THÍCH HỒ SƠ ev-… · làm mờ]` → `annotate-evidence`, `[THẺ CHỮ]` → `display: 'card'`;
    `[GỢI Ý CHUẨN]` → `standardHints`; "Nhận xét chung" → `commonDiagnosticLines`; `[KHI: mã] dùng hint-x` →

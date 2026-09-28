@@ -1,7 +1,7 @@
 /**
  * Gói nội dung đầy đủ của game: mọi thứ runtime, màn hình và bộ kiểm toàn vẹn cần.
- * Gói `noi-dung` (gói 5) tạo một GameContent từ docs/prototype/kich-ban-prototype.md;
- * gói nen-mong chỉ cung cấp nội dung MẪU (src/content/sample).
+ * Nội dung thật: sinh từ prototype/noi-dung/*.md (`npm run noi-dung:sinh` → src/content/generated/,
+ * ghép ở src/content/real/index.ts); nội dung MẪU cho test: src/content/sample.
  */
 import type { ChallengeId } from '../shared/ids';
 import type { EvidenceContent } from '../evidence/types';
