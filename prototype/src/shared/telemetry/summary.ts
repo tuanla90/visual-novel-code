@@ -71,6 +71,10 @@ export interface SessionSummary {
   /** Lần chọn dòng đầu tiên trên màn chiếu (tham khảo cho chỉ số AND/OR). */
   firstLinePicks: Record<string, { lineIndex: number; correct: boolean } | null>;
   notebookOpens: number;
+  /** Điều khiển kiểu Visual Novel (số lần bật Auto/Skip, mở lịch sử thoại, lưu/nạp). */
+  vn: { autoOn: number; skipOn: number; backlogOpens: number; saves: number; loads: number; textSpeed: string | null };
+  /** Có nạp ô lưu → thời lượng không so trực tiếp được với người chơi một mạch. */
+  loadedSave: boolean;
   pre: { status: 'submitted' | 'skipped' | 'none'; excelLevel: ExcelLevel | null; sqlBefore: SqlBefore | null };
   post: {
     status: 'submitted' | 'skipped' | 'none';
@@ -187,6 +191,15 @@ export function summarizeSession(sessionId: string, events: readonly TelemetryEv
     firstChoices,
     firstLinePicks,
     notebookOpens: real.filter((e) => e.type === 'notebook_opened').length,
+    vn: {
+      autoOn: real.filter((e) => e.type === 'vn_mode_toggled' && e.mode === 'auto' && e.on).length,
+      skipOn: real.filter((e) => e.type === 'vn_mode_toggled' && e.mode === 'skip' && e.on).length,
+      backlogOpens: real.filter((e) => e.type === 'backlog_opened').length,
+      saves: real.filter((e) => e.type === 'progress_saved').length,
+      loads: real.filter((e) => e.type === 'progress_loaded').length,
+      textSpeed: real.filter(ofType('text_speed_changed')).at(-1)?.speed ?? null,
+    },
+    loadedSave: real.some((e) => e.type === 'progress_loaded'),
     pre: { status: preS.status, excelLevel: preAnswers?.excelLevel ?? null, sqlBefore: preAnswers?.sqlBefore ?? null },
     post: {
       status: postS.status,

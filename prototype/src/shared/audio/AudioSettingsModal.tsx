@@ -1,11 +1,33 @@
 import { useEffect, useRef } from 'react';
 import { useAudioStore } from './audio-store';
 import { soundEngine } from './sound-engine';
+import { SPEED_MS, useVnStore, type TextSpeed } from '../vn/vn-store';
+import { useTypewriter } from '../ui/use-typewriter';
 import './audio.css';
 
 export interface AudioSettingsModalProps {
   open: boolean;
   onClose: () => void;
+}
+
+const SPEED_OPTIONS: { value: TextSpeed; label: string }[] = [
+  { value: 'slow', label: 'Chậm' },
+  { value: 'normal', label: 'Vừa' },
+  { value: 'fast', label: 'Nhanh' },
+  { value: 'instant', label: 'Hiện ngay' },
+];
+
+const PREVIEW_TEXT = 'Chữ sẽ hiện với tốc độ này. Bấm hoặc nhấn Space để hiện hết câu.';
+
+/** Dòng xem trước: chạy lại mỗi khi đổi tốc độ (key đổi → gắn lại). */
+function SpeedPreview({ speed }: { speed: TextSpeed }) {
+  const { displayedText } = useTypewriter({ text: PREVIEW_TEXT, speedMs: SPEED_MS[speed], instant: speed === 'instant' });
+  return (
+    <p className="settings-speed__preview" aria-hidden="true">
+      {displayedText}
+      <span className="settings-speed__rest">{PREVIEW_TEXT.slice(displayedText.length)}</span>
+    </p>
+  );
 }
 
 export function AudioSettingsModal({ open, onClose }: AudioSettingsModalProps) {
@@ -20,6 +42,9 @@ export function AudioSettingsModal({ open, onClose }: AudioSettingsModalProps) {
   const setSfxVolume = useAudioStore((s) => s.setSfxVolume);
   const toggleMute = useAudioStore((s) => s.toggleMute);
   const toggleBgm = useAudioStore((s) => s.toggleBgm);
+
+  const textSpeed = useVnStore((s) => s.textSpeed);
+  const setTextSpeed = useVnStore((s) => s.setTextSpeed);
 
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -48,7 +73,7 @@ export function AudioSettingsModal({ open, onClose }: AudioSettingsModalProps) {
               <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
               <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
             </svg>
-            Cài đặt Âm thanh
+            Cài đặt
           </h2>
           <button ref={closeBtnRef} type="button" className="audio-modal__close" onClick={onClose} aria-label="Đóng">
             ×
@@ -56,6 +81,25 @@ export function AudioSettingsModal({ open, onClose }: AudioSettingsModalProps) {
         </div>
 
         <div className="audio-modal__content">
+          <fieldset className="settings-speed">
+            <legend className="settings-speed__legend">Tốc độ chạy chữ</legend>
+            <div className="settings-speed__options" role="radiogroup" aria-label="Tốc độ chạy chữ">
+              {SPEED_OPTIONS.map((o) => (
+                <label key={o.value} className={`settings-speed__option${textSpeed === o.value ? ' is-active' : ''}`}>
+                  <input
+                    type="radio"
+                    name="text-speed"
+                    value={o.value}
+                    checked={textSpeed === o.value}
+                    onChange={() => setTextSpeed(o.value)}
+                  />
+                  <span>{o.label}</span>
+                </label>
+              ))}
+            </div>
+            <SpeedPreview key={textSpeed} speed={textSpeed} />
+          </fieldset>
+
           <label className="audio-row">
             <div className="audio-row__label">
               <span>Tổng âm lượng (Master)</span>
@@ -101,18 +145,25 @@ export function AudioSettingsModal({ open, onClose }: AudioSettingsModalProps) {
             />
           </label>
 
-          <div className="audio-toggle" onClick={toggleMute}>
+          <label className="audio-toggle">
             <span>Tắt toàn bộ âm thanh (Mute)</span>
-            <input type="checkbox" checked={muted} onChange={() => {}} style={{ pointerEvents: 'none' }} />
-          </div>
+            <input type="checkbox" checked={muted} onChange={toggleMute} />
+          </label>
 
-          <div className="audio-toggle" onClick={() => {
-            toggleBgm();
-            soundEngine.toggleBgmPlayback();
-          }}>
+          <label className="audio-toggle">
             <span>Phát nhạc nền học đường (Ambient BGM)</span>
-            <input type="checkbox" checked={bgmEnabled} onChange={() => {}} style={{ pointerEvents: 'none' }} />
-          </div>
+            <input
+              type="checkbox"
+              checked={bgmEnabled}
+              onChange={() => {
+                // Phát/dừng theo trạng thái MỚI (cú bấm này là thao tác người dùng nên được phép phát âm thanh).
+                const next = !bgmEnabled;
+                toggleBgm();
+                if (next) soundEngine.startBgm();
+                else soundEngine.stopBgm();
+              }}
+            />
+          </label>
         </div>
 
         <div className="audio-modal__actions">

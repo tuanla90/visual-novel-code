@@ -1,8 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { useVnStore, type SaveSlot } from './vn-store';
+import { useVnStore, type SaveSlot, type SaveSnapshot } from './vn-store';
 import { soundEngine } from '../audio/sound-engine';
-import type { StoryProgress } from '../../story/engine/state';
-import type { GameData } from '../store/store';
 import { resolveBackground } from '../ui/visuals/art-slots';
 import type { SceneId } from '../ids';
 import { partName, sceneName } from '../display-names';
@@ -12,8 +10,8 @@ export interface SaveLoadModalProps {
   open: boolean;
   mode: 'save' | 'load';
   onClose: () => void;
-  progress: StoryProgress | null;
-  evidence: GameData['evidence'] | null;
+  /** Trạng thái game hiện tại để lưu (null khi chưa bắt đầu). */
+  snapshot: SaveSnapshot | null;
   scene: string;
   onRestore: (slot: SaveSlot) => void;
   onToast: (msg: string) => void;
@@ -48,8 +46,7 @@ export function SaveLoadModal({
   open,
   mode,
   onClose,
-  progress,
-  evidence,
+  snapshot,
   scene,
   onRestore,
   onToast,
@@ -77,9 +74,8 @@ export function SaveLoadModal({
 
   const handleSlotClick = (index: number) => {
     if (mode === 'save') {
-      if (!progress || !evidence) return;
-      const screenshot = captureCurrentScreenshot(scene);
-      saveToSlot(index, progress, evidence, scene, screenshot);
+      if (!snapshot) return;
+      saveToSlot(index, snapshot, scene, captureCurrentScreenshot(scene));
       soundEngine.playSfx('select');
       onToast(`Đã lưu tiến độ vào Ô số ${index + 1}!`);
       onClose();
@@ -180,6 +176,7 @@ export function SaveLoadModal({
                 className={`save-slot-card ${hasData ? 'is-saved' : 'is-empty'}`}
                 tabIndex={0}
                 role="button"
+                aria-disabled={mode === 'load' && !slot}
                 onClick={() => handleSlotClick(idx)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {

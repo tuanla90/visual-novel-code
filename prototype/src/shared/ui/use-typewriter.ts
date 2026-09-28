@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { soundEngine } from '../audio/sound-engine';
 
 export interface UseTypewriterOptions {
   text: string;
   speedMs?: number;
   instant?: boolean;
-  onDone?: () => void;
 }
 
 export interface UseTypewriterResult {
@@ -16,14 +15,9 @@ export interface UseTypewriterResult {
 
 /**
  * Hook gõ chữ từng ký tự phong cách Visual Novel.
- * Hỗ trợ bấm để hiện hết câu ngay lập tức, phát SFX gõ phím lách cách tinh tế.
+ * Bấm để hiện hết câu ngay: dừng hẳn bộ đếm (không để nhịp sau kéo chữ lùi lại), phát SFX gõ phím nhẹ.
  */
-export function useTypewriter({
-  text,
-  speedMs = 22,
-  instant = false,
-  onDone,
-}: UseTypewriterOptions): UseTypewriterResult {
+export function useTypewriter({ text, speedMs = 22, instant = false }: UseTypewriterOptions): UseTypewriterResult {
   const [prevText, setPrevText] = useState(text);
   const [charIndex, setCharIndex] = useState(instant ? text.length : 0);
 
@@ -32,42 +26,33 @@ export function useTypewriter({
     setCharIndex(instant ? text.length : 0);
   }
 
-  const onDoneRef = useRef(onDone);
-  useEffect(() => {
-    onDoneRef.current = onDone;
-  }, [onDone]);
-
-  useEffect(() => {
-    if (instant) {
-      onDoneRef.current?.();
-      return;
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const stop = useCallback(() => {
+    if (intervalRef.current !== null) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
+  }, []);
 
+  useEffect(() => {
+    if (instant || speedMs <= 0) return;
     let current = 0;
-    const interval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       current++;
       setCharIndex(current);
-
-      // Phát tiếng gõ phím nhẹ nhàng mỗi 2-3 ký tự
-      if (current % 2 === 0 && current < text.length) {
-        soundEngine.playSfx('typewriter');
-      }
-
-      if (current >= text.length) {
-        clearInterval(interval);
-        onDoneRef.current?.();
-      }
+      // Tiếng gõ phím nhẹ mỗi 2 ký tự
+      if (current % 2 === 0 && current < text.length) soundEngine.playSfx('typewriter');
+      if (current >= text.length) stop();
     }, speedMs);
+    return stop;
+  }, [text, speedMs, instant, stop]);
 
-    return () => clearInterval(interval);
-  }, [text, speedMs, instant]);
-
-  const completeImmediately = () => {
+  const completeImmediately = useCallback(() => {
+    stop();
     setCharIndex(text.length);
-    onDoneRef.current?.();
-  };
+  }, [stop, text.length]);
 
-  const isDone = instant || charIndex >= text.length;
+  const isDone = instant || speedMs <= 0 || charIndex >= text.length;
 
   return {
     displayedText: isDone ? text : text.slice(0, charIndex),

@@ -22,17 +22,30 @@ interface AudioStoreState extends AudioSettings {
 
 const STORAGE_KEY = 'clb_audio_settings_v1';
 
+const DEFAULT_SETTINGS: AudioSettings = { masterVolume: 80, bgmVolume: 50, sfxVolume: 80, muted: false, bgmEnabled: true };
+
 function loadStoredSettings(): AudioSettings {
-  if (typeof window === 'undefined') {
-    return { masterVolume: 80, bgmVolume: 50, sfxVolume: 80, muted: false, bgmEnabled: true };
-  }
+  if (typeof window === 'undefined') return { ...DEFAULT_SETTINGS };
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
+    const parsed: unknown = raw ? JSON.parse(raw) : null;
+    if (parsed && typeof parsed === 'object') {
+      // Chỉ nhận trường đúng kiểu; thiếu/hỏng thì dùng mặc định (tránh NaN làm hỏng GainNode).
+      const o = parsed as Record<string, unknown>;
+      const num = (k: keyof AudioSettings, d: number) => (typeof o[k] === 'number' && Number.isFinite(o[k]) ? Math.max(0, Math.min(100, o[k] as number)) : d);
+      const bool = (k: keyof AudioSettings, d: boolean) => (typeof o[k] === 'boolean' ? (o[k] as boolean) : d);
+      return {
+        masterVolume: num('masterVolume', DEFAULT_SETTINGS.masterVolume),
+        bgmVolume: num('bgmVolume', DEFAULT_SETTINGS.bgmVolume),
+        sfxVolume: num('sfxVolume', DEFAULT_SETTINGS.sfxVolume),
+        muted: bool('muted', DEFAULT_SETTINGS.muted),
+        bgmEnabled: bool('bgmEnabled', DEFAULT_SETTINGS.bgmEnabled),
+      };
+    }
   } catch {
     // fallback default
   }
-  return { masterVolume: 80, bgmVolume: 50, sfxVolume: 80, muted: false, bgmEnabled: true };
+  return { ...DEFAULT_SETTINGS };
 }
 
 function persistSettings(settings: AudioSettings): void {

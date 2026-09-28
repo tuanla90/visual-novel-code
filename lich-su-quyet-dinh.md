@@ -504,3 +504,24 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - **Biến SQL:** mọi con số, mã, danh sách nhắc đến trong lời thoại (cả ba loại) đều là biến, định nghĩa bằng câu SQL trên dữ liệu của lượt chơi. Dữ liệu sinh theo seed, gồm phần cố định (nhân vật truyện, các nhịp truyện) và phần đệm ngẫu nhiên (tên, mã lớp, dữ liệu gây nhiễu). Mọi ràng buộc được viết bằng SQL; khi build, máy chạy thử nhiều seed và kiểm tra hết.
 - **Tạm dùng một seed cố định** (QĐ-032 vẫn gác phần ngẫu nhiên cho người chơi); bật ngẫu nhiên sau.
 - Đặc tả: `docs/dac-ta-dinh-dang-noi-dung.md`.
+
+*Ghi chú đánh số (28/09, khi gộp nhánh `claude/visual-novel-github-projects-053457` vào main): hai quyết định dưới đây được viết song song với QĐ-070 → QĐ-075 và mang số cũ QĐ-070 (sửa bộ VN) và QĐ-071 (phạm vi MVP), trùng số đã có; đổi thành QĐ-076 và QĐ-077, nội dung giữ nguyên.*
+
+**QĐ-076 — Rà và sửa bộ tính năng Visual Novel của commit `fa5ffd3`.** · Nguồn: user yêu cầu rà lỗi sau commit "feat(vn)…" · 27/09 16:45
+- Bối cảnh: commit thêm Auto/Skip/Lịch sử thoại/Ẩn giao diện/Lưu–Nạp nhiều ô/âm thanh tổng hợp/màn giới thiệu nhân vật/bản đồ trường. Test xanh nhưng khi chạy có 7 lỗi hành vi (chữ hiện dần bị kéo lùi; Skip đứng sau một câu vì đi qua bộ chống bấm đúp; Auto/Skip chạy ngầm sau lớp phủ; phím H không hiện lại giao diện; ô lưu thiếu slice `challenges`; ô lưu ở localStorage trộn phiên người thử; nhạc nền không bao giờ phát).
+- **Chọn:**
+  - Ô lưu, danh sách thoại đã đọc và nhân vật đã giới thiệu nằm trong **sessionStorage**, cùng chỗ với tiến độ (giữ QĐ-004); "Chơi lại từ đầu" xóa hết (cùng lúc với phiên telemetry mới). Ô lưu chụp đủ `progress + evidence + challenges`, có `version` = `STORE_VERSION`.
+  - **Skip chỉ tua thoại đã đọc** và tự tắt ở câu hỏi/thử thách/xem xét (chuẩn VN; không để người mới lỡ manh mối). Auto/Skip tạm dừng khi có lớp phủ.
+  - Tốc độ chữ (Chậm/Vừa/Nhanh/Hiện ngay) nằm trong hộp **Cài đặt** cùng âm thanh; là tùy chọn cá nhân nên lưu localStorage như cài đặt âm thanh.
+  - Màn giới thiệu nhân vật dùng cùng ô ảnh + tách nền của chân dung (bỏ `fullArtPath` trỏ tới tệp không tồn tại, đường dẫn `/src/…` hỏng khi build); chờ ảnh sẵn sàng rồi mới mờ vào, không phóng 1,35 lần (cắt mất đầu).
+  - Telemetry thêm 5 sự kiện (`vn_mode_toggled`, `backlog_opened`, `text_speed_changed`, `progress_saved`, `progress_loaded`); tóm tắt phiên có mục `vn` và cờ `loadedSave` (có nạp ô lưu → thời lượng không so trực tiếp). Nút "Hồ sơ" trong hộp thoại giờ cũng ghi `notebook_opened` (trước đó đếm thiếu chỉ số §10).
+- **User quyết (27/09 17:10): GIỮ bản đồ trường và Lưu/Nạp nhiều ô** (ngoại lệ có chủ đích của QĐ-032; hướng tới bản MVP). Trước đó: commit đưa vào **bản đồ trường** và **Lưu/Nạp nhiều ô** — cả hai nằm trong danh sách "không làm" (QĐ-032, §8 tài liệu phạm vi). Đã giữ nguyên (chỉ sửa lỗi), cần user xác nhận giữ hay tắt trước vòng thử nghiệm 1. Chuỗi mở đầu mới `intro-00` (Tùng dẫn đi) nhắc "khu B" hai lần trước khi manh mối "tòa B" xuất hiện — có thể làm người chơi lẫn; cần user xem lại lời thoại.
+
+**QĐ-077 — Phạm vi bản MVP.** · Nguồn: user · 27/09 17:20
+- **Nội dung:** tuần 1 (đêm đầu KTX, Tùng dẫn đi khắp trường, ngày hội CLB) + Vụ 1 đủ 4 buổi (Nhận vụ, Điều tra I, Điều tra II, Giải trình theo `vu1-buoi-giai-trinh-kich-ban.md`). Kịch bản mới do agent viết theo GDD §4, §5, §14; **user không duyệt trước** — xem lại khi chơi thử.
+- **Tính năng:** bản đồ đi lại được; tạo nhân vật (tên, ngành, nam/nữ; nút "Ngẫu nhiên"; không thu thông tin thật, không ghi tên vào telemetry); thanh uy tín 5 vạch khi giải trình (hết vạch → hoãn, quay lại điều tra, không mất tiến độ); mode SQL thuần + xếp hạng S/A/B/C. Giữ Lưu/Nạp và bản đồ (QĐ-076).
+- **Dữ liệu cố định**, không mã đề: Hoài/SV240317/QT24B, chữ H, tòa B, Báo chí–Văn học (như prototype). Kiến trúc để chỗ cho biến mã đề sau MVP.
+- **Hardcore mở SAU Vụ 1** như GDD (thầy Khải kiểm tra). Đề xuất của điều phối viên (chưa được user xác nhận): màn kết cho "Chơi lại Vụ 1 ở mode Hardcore" để người chơi dùng được mode này.
+- **Mục đích:** vẫn là thử nghiệm người chơi trên laptop — giữ khảo sát, telemetry, bảng người quan sát; QĐ-028 giữ nguyên.
+- Thay đổi so với §8 tài liệu phạm vi / QĐ-032: bản đồ, tạo nhân vật, Hardcore, thanh uy tín, xếp hạng chuyển từ "không làm" thành "làm" cho MVP. Mã đề, Blockly, trang phục, mini game, mobile-first vẫn "không làm".
+- Chia gói (theo `/giao-viec`, mỗi lúc một agent): 1 `kien-truc-mvp` (Fable) → 2 `kich-ban-mvp` (Opus) → 3 `noi-dung-mvp` (Opus) → 4 `giai-trinh-uy-tin` (Fable) → 5 `tao-nhan-vat` (Opus) → 6 `ban-do-di-lai` (Opus) → 7 `hardcore-xep-hang` (Opus) → 8 `hinh-mvp` (Opus).

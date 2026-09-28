@@ -172,3 +172,84 @@
     transform: scale(1);
   }
 }
+
+/* Tốc độ chạy chữ (hộp Cài đặt) */
+.audio-modal__card {
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+}
+
+.settings-speed {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-speed__legend {
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.settings-speed__options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.settings-speed__option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  cursor: pointer;
+}
+
+.settings-speed__option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.settings-speed__option:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.settings-speed__option.is-active {
+  background: #0284c7;
+  border-color: #38bdf8;
+  color: #fff;
+}
+
+.settings-speed__option:has(input:focus-visible) {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+}
+
+.settings-speed__preview {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #f1f5f9;
+}
+
+/* Phần chưa hiện vẫn chiếm chỗ để khung xem trước không co giãn khi chữ chạy */
+.settings-speed__rest {
+  visibility: hidden;
+}

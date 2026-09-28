@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type CSSProperties } from 'react';
 import type { CharacterId } from '../../shared/ids';
 import { Portrait } from '../../shared/ui/Portrait';
 import { FullArtImage } from '../../shared/ui/FullArt';
@@ -8,7 +8,8 @@ import './character-debut.css';
 
 export interface CharacterDebutSplashProps {
   characterId: CharacterId;
-  onDismiss: () => void;
+  /** Nhận id nhân vật để truyền thẳng hàm ổn định của store (không tạo hàm mới mỗi lần render). */
+  onDismiss: (id: CharacterId) => void;
 }
 
 /**
@@ -26,6 +27,10 @@ export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutS
   const intro = resolveIntroArt(characterId);
   const rootRef = useRef<HTMLDivElement>(null);
   const continueRef = useRef<HTMLButtonElement>(null);
+  const onDismissRef = useRef(onDismiss);
+  useEffect(() => {
+    onDismissRef.current = onDismiss;
+  }, [onDismiss]);
 
   useEffect(() => {
     const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
@@ -33,7 +38,7 @@ export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutS
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === ' ' || e.key === 'Enter' || e.key === 'Escape') {
         e.preventDefault();
-        onDismiss();
+        onDismissRef.current(characterId);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -41,7 +46,12 @@ export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutS
       window.removeEventListener('keydown', handleKeyDown);
       previousFocus?.focus();
     };
-  }, [onDismiss]);
+  }, [characterId]);
+
+  // Không có hồ sơ → không chặn màn chơi.
+  useEffect(() => {
+    if (!profile) onDismissRef.current(characterId);
+  }, [profile, characterId]);
 
   if (!profile) return null;
 
@@ -50,11 +60,11 @@ export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutS
       ref={rootRef}
       className="chara-debut"
       data-character={characterId}
-      onClick={onDismiss}
+      onClick={() => onDismiss(characterId)}
       role="dialog"
       aria-modal="true"
       aria-label={`Giới thiệu nhân vật: ${profile.fullName}`}
-      style={{ '--debut-accent': profile.accentColor } as React.CSSProperties}
+      style={{ '--debut-accent': profile.accentColor } as CSSProperties}
     >
       <div className="chara-debut__backdrop" />
 
@@ -80,7 +90,6 @@ export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutS
         </div>
         )}
 
-        {/* Khung chữ giới thiệu nhân vật phong cách Visual Novel */}
         <div className="chara-debut__content">
           {/* KHỐI 1: Khối thông tin nhân vật nền đậm, vát góc chéo */}
           <div className="chara-debut__panel chara-debut__panel--header">
@@ -128,7 +137,7 @@ export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutS
             className="chara-debut__prompt"
             onClick={(event) => {
               event.stopPropagation();
-              onDismiss();
+              onDismiss(characterId);
             }}
           >
             <span className="chara-debut__prompt-chat-icon" aria-hidden="true">

@@ -148,25 +148,33 @@
   }
 }
 
-.chara-debut__full-img {
+.chara-debut__art {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  /* Chừa khoảng trên để đầu nhân vật không sát/chạm mép khung */
+  padding-top: 12px;
+  box-sizing: border-box;
+}
+
+.chara-debut__img,
+.chara-debut__art--placeholder .portrait-art {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: center bottom;
-  position: relative;
-  z-index: 1;
+  object-position: 50% 100%;
+  user-select: none;
 }
 
-.chara-debut__portrait-wrap {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: scale(1.35);
-  transform-origin: center bottom;
-  position: relative;
-  z-index: 1;
+.chara-debut__img {
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+
+.chara-debut__img.is-loaded {
+  opacity: 1;
 }
 
 .chara-debut__portrait-wrap:has(.portrait[data-art-source='image']) {
@@ -478,5 +486,8 @@
   .chara-debut__spotlight,
   .chara-debut__prompt {
     animation: none;
+  }
+  .chara-debut__img {
+    transition: none;
   }
 }

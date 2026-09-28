@@ -7,6 +7,7 @@ import { GameScreen } from './GameScreen';
 import { PreSurvey } from './PreSurvey';
 import { TitleScreen } from './TitleScreen';
 import { isFacilitatorMode } from './facilitator-mode';
+import { useVnStore } from '../shared/vn/vn-store';
 
 export default function App() {
   const progress = useGameStore((s) => s.progress);
@@ -40,7 +41,10 @@ export default function App() {
           isSample={gameContent.meta.isSample}
           hasSavedProgress={progress !== null}
           onStart={() => {
-            if (progress) resetGame(); // phiên mới; khảo sát ghi SAU khi đổi phiên
+            if (progress) {
+              useVnStore.getState().resetSession();
+              resetGame();
+            } // phiên mới; khảo sát ghi SAU khi đổi phiên
             commitPreSurvey();
             startGame();
             setTitleDismissed(true);
@@ -66,7 +70,10 @@ export default function App() {
             nodeIndex={progress?.cursor.nodeIndex ?? null}
             viewKind="title"
             eventCount={getTelemetryEvents().length}
-            onReset={resetGame}
+            onReset={() => {
+              useVnStore.getState().resetSession();
+              resetGame();
+            }}
           />
         ) : null}
       </>

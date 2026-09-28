@@ -323,6 +323,12 @@ function SessionCard({ summary: s, current }: { summary: SessionSummary; current
         ])}
         <dt>Mở Hồ sơ</dt>
         <dd>{s.notebookOpens} lần</dd>
+        <dt>Điều khiển VN</dt>
+        <dd>
+          Auto {s.vn.autoOn} · Skip {s.vn.skipOn} · Lịch sử thoại {s.vn.backlogOpens} · Lưu {s.vn.saves} · Nạp {s.vn.loads}
+          {s.vn.textSpeed ? ` · Tốc độ chữ: ${s.vn.textSpeed}` : ''}
+          {s.loadedSave ? ' — CÓ NẠP Ô LƯU: thời lượng không so trực tiếp được' : ''}
+        </dd>
       </dl>
       <table className="facilitator__table">
         <caption>Thời gian từng phần</caption>

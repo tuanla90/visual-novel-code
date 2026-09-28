@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import type { LinePick as LinePickContent } from '../debrief/types';
 import { LinePick } from '../debrief/ui/LinePick';
 import { Projector } from '../debrief/ui/Projector';
@@ -7,7 +7,7 @@ import { DocumentReveal } from '../evidence/ui/DocumentReveal';
 import { EvidenceNotebook } from '../evidence/ui/EvidenceNotebook';
 import { isCharacterId, PART_IDS, type CharacterId, type PartId } from '../shared/ids';
 import { gameContent, useGameStore } from '../shared/store';
-import { getTelemetryEvents } from '../shared/telemetry/track';
+import { getTelemetryEvents, track } from '../shared/telemetry/track';
 import { DialogBox } from '../shared/ui/DialogBox';
 import { MultipleChoice } from '../shared/ui/MultipleChoice';
 import { Stage } from '../shared/ui/Stage';
@@ -23,6 +23,8 @@ import { FacilitatorPanel } from './FacilitatorPanel';
 import { isFacilitatorMode } from './facilitator-mode';
 
 import { useVnStore, type SaveSlot } from '../shared/vn/vn-store';
+import { useAudioStore } from '../shared/audio/audio-store';
+import { soundEngine } from '../shared/audio/sound-engine';
 import { BacklogModal } from '../shared/vn/BacklogModal';
 import { SaveLoadModal } from '../shared/vn/SaveLoadModal';
 import { AudioSettingsModal } from '../shared/audio/AudioSettingsModal';
@@ -39,6 +41,7 @@ function linePickInSequence(sequence: Sequence | null, pickId: string): LinePick
 export function GameScreen() {
   const progress = useGameStore((s) => s.progress);
   const evidence = useGameStore((s) => s.evidence);
+  const challenges = useGameStore((s) => s.challenges);
   const survey = useGameStore((s) => s.survey);
   const dispatchStory = useGameStore((s) => s.dispatchStory);
   const getView = useGameStore((s) => s.getView);
@@ -48,7 +51,6 @@ export function GameScreen() {
 
   const [notebookOpen, setNotebookOpen] = useState(false);
   const [lastRejection, setLastRejection] = useState<string | null>(null);
-  const [seenDebuts, setSeenDebuts] = useState<Set<CharacterId>>(() => new Set());
 
   // VN Systems Modals State
   const [backlogOpen, setBacklogOpen] = useState(false);
@@ -59,6 +61,63 @@ export function GameScreen() {
 
   const hideUi = useVnStore((s) => s.hideUi);
   const toggleHideUi = useVnStore((s) => s.toggleHideUi);
+  const setSkipMode = useVnStore((s) => s.setSkipMode);
+  const resetVnSession = useVnStore((s) => s.resetSession);
+  const bgmEnabled = useAudioStore((s) => s.bgmEnabled);
+
+  /** Chơi lại từ đầu = phiên telemetry mới: xóa luôn lịch sử thoại, thoại đã đọc và ô lưu của phiên cũ. */
+  const resetAll = useCallback(() => {
+    resetVnSession();
+    resetGame();
+  }, [resetVnSession, resetGame]);
+
+  const currentPart = progress?.currentPart ?? null;
+  // Nút "Hồ sơ" trong hộp thoại cũng phải ghi notebook_opened như nút trên thanh trên (chỉ số §10).
+  const openNotebook = useCallback(() => {
+    setNotebookOpen(true);
+    track({ type: 'notebook_opened', part: currentPart });
+  }, [currentPart]);
+  const openBacklog = useCallback(() => {
+    setBacklogOpen(true);
+    track({ type: 'backlog_opened', part: currentPart });
+  }, [currentPart]);
+
+  const anyModalOpen = notebookOpen || backlogOpen || saveLoadMode !== null || audioModalOpen || mapOpen;
+
+  // Phím H ẩn/hiện giao diện — nghe ở cấp màn chơi (không phải trong hộp thoại) để khi giao diện
+  // đã ẩn (hộp thoại không còn) vẫn bấm H hoặc Esc để hiện lại được.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent): void => {
+      const t = e.target;
+      if (t instanceof HTMLElement && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable)) return;
+      if (e.key === 'h' || e.key === 'H') {
+        if (anyModalOpen) return;
+        e.preventDefault();
+        toggleHideUi();
+      } else if (e.key === 'Escape' && hideUi) {
+        e.preventDefault();
+        toggleHideUi();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [anyModalOpen, hideUi, toggleHideUi]);
+
+  // Nhạc nền: trình duyệt chỉ cho phát âm thanh sau thao tác đầu tiên của người chơi.
+  useEffect(() => {
+    if (!bgmEnabled) {
+      soundEngine.stopBgm();
+      return;
+    }
+    const start = (): void => soundEngine.startBgm();
+    window.addEventListener('pointerdown', start, { once: true });
+    window.addEventListener('keydown', start, { once: true });
+    return () => {
+      window.removeEventListener('pointerdown', start);
+      window.removeEventListener('keydown', start);
+    };
+  }, [bgmEnabled]);
+  useEffect(() => () => soundEngine.stopBgm(), []);
 
   const showToast = useCallback((msg: string) => {
     setToastMsg(msg);
@@ -67,12 +126,21 @@ export function GameScreen() {
     }, 2800);
   }, []);
 
-  const handleRestoreSlot = useCallback((slot: SaveSlot) => {
-    useGameStore.setState({
-      progress: slot.progress,
-      evidence: slot.evidence,
-    });
-  }, []);
+  const clearBacklog = useVnStore((s) => s.clearBacklog);
+  const handleRestoreSlot = useCallback(
+    (slot: SaveSlot) => {
+      // Khôi phục đủ các slice liên quan (kể cả thử thách SQL) — chỉ đổi progress/evidence thì thử thách
+      // đã giải ở "tương lai" vẫn hiện là đã xong, hoặc thử thách đã giải lại mất trạng thái.
+      const { progress: p, evidence: ev, challenges: ch } = structuredClone(slot);
+      useGameStore.setState({ progress: p, evidence: ev, challenges: ch });
+      track({ type: 'progress_loaded', slot: slot.slotIndex, part: p.currentPart ?? null });
+      clearBacklog();
+      setSkipMode(false);
+      setLastRejection(null);
+      setNotebookOpen(false);
+    },
+    [clearBacklog, setSkipMode],
+  );
 
   const act = useCallback(
     (action: Parameters<typeof dispatchStory>[0]) => {
@@ -84,12 +152,17 @@ export function GameScreen() {
   const advance = useCallback(() => act({ type: 'advance' }), [act]);
   const complete = useCallback(() => act({ type: 'complete' }), [act]);
 
-  const dismissDebut = useCallback((id: CharacterId) => {
-    setSeenDebuts((prev) => new Set([...prev, id]));
-  }, []);
+  // Nhân vật đã giới thiệu lưu trong phiên (vn-store, sessionStorage) để F5 không giới thiệu lại.
+  const seenDebuts = useVnStore((s) => s.seenDebuts);
+  const markDebutSeen = useVnStore((s) => s.markDebutSeen);
 
   // getView đọc từ progress + evidence (đã subscribe ở trên) nên luôn mới.
   const view: StoryView | null = progress ? getView() : null;
+  const viewKind = view?.kind;
+  // Skip dừng ở mọi chỗ cần người chơi quyết định (câu hỏi, thử thách, xem xét…), như các VN thông thường.
+  useEffect(() => {
+    if (viewKind !== 'line' && viewKind !== 'feedback') setSkipMode(false);
+  }, [viewKind, setSkipMode]);
   if (!progress || !view) return null;
 
   const completedParts = PART_IDS.filter((p): p is PartId => progress.partCompletedAt[p] !== undefined);
@@ -101,7 +174,7 @@ export function GameScreen() {
   // Kích hoạt Character Debut Splash khi nhân vật lần đầu xuất hiện trong hội thoại thông thường
   const spk = speakerLine?.speaker;
   const activeDebut: CharacterId | null =
-    view.kind === 'line' && spk && isCharacterId(spk) && !seenDebuts.has(spk) ? spk : null;
+    view.kind === 'line' && spk && isCharacterId(spk) && !seenDebuts.includes(spk) ? spk : null;
 
   return (
     <div className={`game${activeDebut ? ' game--debut' : ''}${hideUi ? ' game--hide-ui' : ''}`}>
@@ -116,7 +189,7 @@ export function GameScreen() {
       ) : null}
 
       {activeDebut ? (
-        <CharacterDebutSplash characterId={activeDebut} onDismiss={() => dismissDebut(activeDebut)} />
+        <CharacterDebutSplash key={activeDebut} characterId={activeDebut} onDismiss={markDebutSeen} />
       ) : null}
 
       {!hideUi ? (
@@ -127,7 +200,7 @@ export function GameScreen() {
           notebookCount={evidence.unlocked.length}
           notebookOpen={notebookOpen}
           onToggleNotebook={() => setNotebookOpen((o) => !o)}
-          onReset={resetGame}
+          onReset={resetAll}
           isSample={gameContent.meta.isSample}
           onOpenMap={() => setMapOpen(true)}
           onOpenAudio={() => setAudioModalOpen(true)}
@@ -168,8 +241,7 @@ export function GameScreen() {
         open={saveLoadMode !== null}
         mode={saveLoadMode ?? 'save'}
         onClose={() => setSaveLoadMode(null)}
-        progress={progress}
-        evidence={evidence}
+        snapshot={{ progress, evidence, challenges }}
         scene={scene}
         onRestore={handleRestoreSlot}
         onToast={showToast}
@@ -186,7 +258,7 @@ export function GameScreen() {
           nodeIndex={progress.cursor.nodeIndex}
           viewKind={view.kind}
           eventCount={getTelemetryEvents().length}
-          onReset={resetGame}
+          onReset={resetAll}
         />
       ) : null}
     </div>
@@ -200,10 +272,10 @@ export function GameScreen() {
             line={v.node}
             display={v.node.display}
             onAdvance={advance}
-            keyboardEnabled={!notebookOpen && !backlogOpen && saveLoadMode === null && !audioModalOpen && !mapOpen}
-            onOpenNotebook={() => setNotebookOpen(true)}
+            keyboardEnabled={!anyModalOpen && !activeDebut}
+            onOpenNotebook={openNotebook}
             notebookCount={evidence.unlocked.length}
-            onOpenBacklog={() => setBacklogOpen(true)}
+            onOpenBacklog={openBacklog}
             onOpenSave={() => setSaveLoadMode('save')}
             onOpenLoad={() => setSaveLoadMode('load')}
             onOpenAudio={() => setAudioModalOpen(true)}
@@ -218,10 +290,10 @@ export function GameScreen() {
               line={v.line}
               hint={`Phản hồi ${v.index + 1}/${v.total}`}
               onAdvance={advance}
-              keyboardEnabled={!notebookOpen && !backlogOpen && saveLoadMode === null && !audioModalOpen && !mapOpen}
-              onOpenNotebook={() => setNotebookOpen(true)}
+              keyboardEnabled={!anyModalOpen && !activeDebut}
+              onOpenNotebook={openNotebook}
               notebookCount={evidence.unlocked.length}
-              onOpenBacklog={() => setBacklogOpen(true)}
+              onOpenBacklog={openBacklog}
               onOpenSave={() => setSaveLoadMode('save')}
               onOpenLoad={() => setSaveLoadMode('load')}
               onOpenAudio={() => setAudioModalOpen(true)}
@@ -283,7 +355,7 @@ export function GameScreen() {
           <EndScreen
             onSubmitSurvey={submitPostSurvey}
             onSkipSurvey={() => skipSurvey('post')}
-            onReplay={resetGame}
+            onReplay={resetAll}
             surveyDone={survey.post !== null || survey.postSkipped}
           />
         );
