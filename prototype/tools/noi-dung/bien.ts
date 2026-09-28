@@ -28,8 +28,19 @@ function coKhoa(o: Record<string, unknown>, k: string): boolean {
   return Object.prototype.hasOwnProperty.call(o, k);
 }
 
-/** Giá trị của một biến, hoặc thông báo lỗi (chuỗi bắt đầu bằng "!"). */
-function giaTri(ten: string, bang: BangTen): { chu: string } | { loi: string } {
+export interface TuyChonThayBien {
+  /**
+   * Bộ MVP (đặc tả §18.2): giữ nguyên chữ `{{nv.nguoi-choi}}` trong kết quả (runtime thay bằng tên người
+   * chơi đặt), không báo lỗi. Mặc định (bộ prototype): biến giữ chỗ là lỗi.
+   */
+  giuCho?: boolean;
+}
+
+/** Đánh dấu tạm cho biến giữ chỗ, để phép kiểm "dấu {{ lẻ" không bắt nhầm. */
+const DAU_GIU = '\u0000GIU\u0000';
+
+/** Giá trị của một biến, hoặc thông báo lỗi, hoặc `giu` (giữ nguyên chữ gốc). */
+function giaTri(ten: string, bang: BangTen, tuyChon: TuyChonThayBien): { chu: string } | { loi: string } | { giu: true } {
   const phan = ten.split('.');
   if (phan[0] === 'nv') {
     const [, ma = '', dang = DANG_MAC_DINH, ...du] = phan;
@@ -37,6 +48,7 @@ function giaTri(ten: string, bang: BangTen): { chu: string } | { loi: string } {
       return { loi: `biến "{{${ten}}}" sai dạng — viết {{nv.<mã>}} hoặc {{nv.<mã>.<dạng>}}` };
     }
     if ((MA_GIU_CHO as readonly string[]).includes(ma)) {
+      if (tuyChon.giuCho && dang === DANG_MAC_DINH) return { giu: true };
       return { loi: `biến "{{${ten}}}": mã "${ma}" đang giữ chỗ, chưa dùng được (QĐ-077)` };
     }
     if (!coKhoa(bang.nv, ma)) {
@@ -59,16 +71,22 @@ function giaTri(ten: string, bang: BangTen): { chu: string } | { loi: string } {
 }
 
 /** Thay mọi biến trong một dòng. Biến sai thì giữ nguyên chỗ đó và trả lỗi. */
-export function thayBien(dong: string, bang: BangTen): { chu: string; loi: string[] } {
+export function thayBien(dong: string, bang: BangTen, tuyChon: TuyChonThayBien = {}): { chu: string; loi: string[] } {
   const loi: string[] = [];
-  const chu = dong.replace(BIEN_RE, (nguyen, ten: string) => {
-    const kq = giaTri(ten, bang);
+  const giu: string[] = [];
+  let chu = dong.replace(BIEN_RE, (nguyen, ten: string) => {
+    const kq = giaTri(ten, bang, tuyChon);
     if ('loi' in kq) {
       loi.push(kq.loi);
       return nguyen;
     }
+    if ('giu' in kq) {
+      giu.push(nguyen);
+      return DAU_GIU;
+    }
     return kq.chu;
   });
   if (loi.length === 0 && /\{\{|\}\}/.test(chu)) loi.push('dấu {{ hoặc }} lẻ — biến phải viết liền {{…}}');
+  for (const g of giu) chu = chu.replace(DAU_GIU, g);
   return { chu, loi };
 }
