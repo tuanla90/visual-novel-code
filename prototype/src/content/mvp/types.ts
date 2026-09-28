@@ -164,7 +164,7 @@ export interface TrangSoMvp {
   chuThich: string | null;
 }
 
-/** Cặp (câu SQL, số dòng người viết khai, vị trí) — đợt 14 chạy trên dữ liệu thật để kiểm. */
+/** Cặp (câu SQL, số dòng người viết khai, vị trí) — `kiem-noi-dung:mvp` chạy thật trên `duLieu` và so số dòng (QĐ-089). */
 export interface SoDongKhaiMvp {
   sql: string;
   soDong: number;
@@ -185,4 +185,24 @@ export interface KichBanMvp {
   soTay: Record<string, TrangSoMvp>;
   loiChung: { matUyTin: { loi: LoiMvp[]; hetVach: LoiMvp } | null };
   soDongKhai: SoDongKhaiMvp[];
+  /** Bộ dữ liệu SQL cố định của vụ (noi-dung-mvp/du-lieu.md; QĐ-087, QĐ-089). */
+  duLieu: BoDuLieuMvp | null;
+}
+
+/** Bảng dữ liệu: cột có kiểu SQLite, hàng theo đúng thứ tự cột; `null` = ô NULL. */
+export interface BangDuLieuMvp {
+  ten: string;
+  cot: { ten: string; kieu: 'TEXT' | 'INTEGER' }[];
+  dong: (string | number | null)[][];
+}
+
+/** Bảng ảo (VIEW): runtime tạo bằng `CREATE VIEW <ten> AS <sql>` sau khi nạp bảng. */
+export interface BangAoMvp {
+  ten: string;
+  sql: string;
+}
+
+export interface BoDuLieuMvp {
+  bang: BangDuLieuMvp[];
+  bangAo: BangAoMvp[];
 }

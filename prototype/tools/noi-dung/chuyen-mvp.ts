@@ -1,6 +1,6 @@
 /**
  * BỘ CHUYỂN bộ MVP: `RawMvp` (đã đọc, đã kiểm chéo, KHÔNG lỗi) → dữ liệu có hình dạng `KichBanMvp`
- * (src/content/mvp/types.ts). Bỏ vị trí `<tệp>:<dòng>`, đổi mốc chữ sang `Moc`, gom `soDongKhai`.
+ * (src/content/mvp/types.ts). Bỏ vị trí `<tệp>:<dòng>`, đổi mốc chữ sang `Moc`, gom `soDongKhai`, chép bộ dữ liệu `duLieu`.
  * Không import gì từ `src/` (kiểu được ép bằng `satisfies` ở tệp sinh).
  */
 import type { Moc } from './dieu-kien.ts';
@@ -24,6 +24,7 @@ export interface DuLieuMvp {
   soTay: Record<string, Obj>;
   loiChung: Obj;
   soDongKhai: { sql: string; soDong: number; noi: string }[];
+  duLieu: { bang: { ten: string; cot: { ten: string; kieu: string }[]; dong: (string | number | null)[][] }[]; bangAo: { ten: string; sql: string }[] } | null;
 }
 
 const loi = (l: RawLine): Obj => (l.expression === null ? { speaker: l.speaker, text: l.text } : { speaker: l.speaker, expression: l.expression, text: l.text });
@@ -200,5 +201,11 @@ export function chuyenMvp(mvp: RawMvp, luat: KetQuaLuat): DuLieuMvp {
     soTay,
     loiChung: { matUyTin: mvp.loiChung.matUyTin ? { loi: mvp.loiChung.matUyTin.loi.map(loi), hetVach: loi(mvp.loiChung.matUyTin.hetVach) } : null },
     soDongKhai,
+    duLieu: mvp.duLieu
+      ? {
+          bang: mvp.duLieu.bang.map((b) => ({ ten: b.ten, cot: b.cot, dong: b.dong })),
+          bangAo: mvp.duLieu.bangAo.map((v) => ({ ten: v.ten, sql: v.sql })),
+        }
+      : null,
   };
 }

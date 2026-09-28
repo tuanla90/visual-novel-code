@@ -8,6 +8,7 @@
  */
 import { thayBien, type BangTen } from './bien.ts';
 import { docDieuKien, docHauQua, type DieuKien, type HauQua } from './dieu-kien.ts';
+import { docDuLieuMvp, type BoDuLieuMvp } from './du-lieu-mvp.ts';
 import {
   docNoiDung,
   FIELD_RE,
@@ -185,9 +186,11 @@ export interface RawMvp {
   dossier: RawDossierCard[];
   soTay: RawTrangSo[];
   loiChung: RawLoiChungMvp;
+  /** Bộ dữ liệu SQL cố định (du-lieu.md, đọc bằng du-lieu-mvp.ts); `null` = không có tệp. */
+  duLieu: BoDuLieuMvp | null;
 }
 
-export type LoaiTepMvp = 'quy-uoc' | 'nhan-vat' | 'canh' | 'dia-diem' | 'lich' | 'kich-ban' | 'thu-thach' | 'so-tay' | 'loi-chung' | 'ho-so';
+export type LoaiTepMvp = 'quy-uoc' | 'nhan-vat' | 'canh' | 'dia-diem' | 'lich' | 'du-lieu' | 'kich-ban' | 'thu-thach' | 'so-tay' | 'loi-chung' | 'ho-so';
 
 export interface TepMvp {
   duongDan: string;
@@ -268,6 +271,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
     dossier: [],
     soTay: [],
     loiChung: { matUyTin: null },
+    duLieu: null,
   };
 
   // Lượt 1: quy-uoc.md (dòng cấu hình) và nhan-vat.md — hai tệp này không được dùng biến.
@@ -311,6 +315,14 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       case 'loi-chung':
         docTheoDong(tep, bangTen, docLoiChung);
         break;
+      case 'du-lieu': {
+        // Dữ liệu không thay biến {{…}}: giá trị ô là dữ liệu thô.
+        const d = docDuLieuMvp(tep);
+        loi.push(...d.loi);
+        if (mvp.duLieu) loi.push({ tep: tep.duongDan, dong: 1, thongBao: `chỉ một tệp dữ liệu (đã có ${mvp.duLieu.viTri.tep})` });
+        else mvp.duLieu = d.duLieu;
+        break;
+      }
       default:
         break;
     }

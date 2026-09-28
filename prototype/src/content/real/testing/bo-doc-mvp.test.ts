@@ -2,13 +2,16 @@
 /**
  * Test BỘ ĐỌC MVP (tools/noi-dung/doc-mvp.ts + luat-mvp.ts, đặc tả §18): lỗi báo đúng `<tệp>:<dòng>` cho các luật
  * chính — chi phí khung của dữ kiện chính, nhân vật nói trước "Xuất hiện từ", true end tham chiếu sai, chuỗi lẻ,
- * tên cấm, [TẠO NHÂN VẬT], `trừ uy tín` ngoài ngày họp, buổi tối không dẫn tới dữ kiện chính, {{nv.nguoi-choi}}.
+ * tên cấm, [TẠO NHÂN VẬT], `trừ uy tín` ngoài ngày họp, buổi tối không dẫn tới dữ kiện chính, {{nv.nguoi-choi}};
+ * luật địa điểm 1–3 phụ/nhiễu (QĐ-089); bộ đọc du-lieu.md và chạy thật số dòng khai bằng sql.js (QĐ-089).
  * Nội dung thật đọc sạch và khớp .gen.ts: xem ../../generated/mvp/mvp.gen.test.ts.
  */
 import { describe, expect, it } from 'vitest';
 import { danhGiaDieuKien, docDieuKien, docHauQua, docMoc, maTrongDieuKien } from '../../../../tools/noi-dung/dieu-kien.ts';
 import { dinhDangLoi, docNoiDungMvp, type TepMvp } from '../../../../tools/noi-dung/doc-mvp.ts';
+import { docDuLieuMvp } from '../../../../tools/noi-dung/du-lieu-mvp.ts';
 import { kiemLuatMvp } from '../../../../tools/noi-dung/luat-mvp.ts';
+import { kiemSoDongMvp } from '../../../../tools/noi-dung/sql-mvp.ts';
 
 /** Bộ MVP tối thiểu hợp lệ: 1 ngày, 2 địa điểm, họp, hai kết. Mỗi test sửa một chỗ rồi xem lỗi. */
 const GOC: Record<string, string> = {
@@ -220,5 +223,83 @@ describe('cú pháp nhỏ: điều kiện, hậu quả, mốc', () => {
     expect(docMoc('ngày 2', khung)).toEqual({ kind: 'ngay', ngay: 2, khung: 'sang' });
     expect(docMoc('mở đầu', khung)).toEqual({ kind: 'mo-dau' });
     expect(() => docMoc('tuần 2', khung)).toThrow(/mốc thời gian lạ/);
+  });
+});
+
+describe('dữ liệu cố định (du-lieu.md) và chạy thật số dòng khai (QĐ-089)', () => {
+  const DU_LIEU = [
+    '# Dữ liệu thử {dữ liệu: vu0}',
+    '## lop {bảng}',
+    '- Cột: ma_lop TEXT, toa INTEGER',
+    '| ma_lop | toa |',
+    '|---|---|',
+    '| A1 | 1 |',
+    '| A2 | 2 |',
+    '<!-- chú thích',
+    '     nhiều dòng -->',
+    '| B1 | 1 |',
+    '## lop_toa_1 {bảng ảo}',
+    '- Ghi chú: lớp ở tòa 1',
+    '```sql',
+    'SELECT ma_lop FROM lop WHERE toa = 1',
+    '```',
+    '',
+  ].join('\n');
+  const tep =(noiDung: string) => ({ duongDan: 'noi-dung-mvp/du-lieu.md', noiDung });
+
+  it('đọc bảng, kiểu cột, bảng ảo; chú thích nhiều dòng bỏ qua', () => {
+    const kq = docDuLieuMvp(tep(DU_LIEU));
+    expect(kq.loi).toEqual([]);
+    expect(kq.duLieu.bang).toEqual([
+      {
+        ten: 'lop',
+        cot: [
+          { ten: 'ma_lop', kieu: 'TEXT' },
+          { ten: 'toa', kieu: 'INTEGER' },
+        ],
+        dong: [
+          ['A1', 1],
+          ['A2', 2],
+          ['B1', 1],
+        ],
+        viTri: { tep: 'noi-dung-mvp/du-lieu.md', dong: 2 },
+      },
+    ]);
+    expect(kq.duLieu.bangAo.map((v) => [v.ten, v.sql])).toEqual([['lop_toa_1', 'SELECT ma_lop FROM lop WHERE toa = 1']]);
+  });
+
+  it('lỗi dữ liệu báo đúng <tệp>:<dòng>: tiêu đề cột lệch, ô không phải số, thiếu ô, ô trống, bảng trùng', () => {
+    const sai = DU_LIEU.replace('| ma_lop | toa |', '| ma_lop | toa_nha |')
+      .replace('| A2 | 2 |', '| A2 | hai |')
+      .replace('| B1 | 1 |', '| B1 |\n| | 3 |')
+      .replace('## lop_toa_1 {bảng ảo}', '## lop {bảng ảo}');
+    expect(docDuLieuMvp(tep(sai)).loi.map(dinhDangLoi)).toEqual([
+      'noi-dung-mvp/du-lieu.md:4: bảng lop: hàng tiêu đề phải đúng tên cột theo thứ tự "- Cột:" (ma_lop, toa); đang là: ma_lop, toa_nha',
+      'noi-dung-mvp/du-lieu.md:7: bảng lop, cột toa (INTEGER): "hai" không phải số nguyên',
+      'noi-dung-mvp/du-lieu.md:10: bảng lop: hàng có 1 ô, bảng có 2 cột',
+      'noi-dung-mvp/du-lieu.md:11: bảng lop, cột ma_lop: ô trống — ghi NULL nếu cố ý để rỗng',
+      'noi-dung-mvp/du-lieu.md:12: bảng "lop" khai hai lần (lần đầu ở dòng 2)',
+    ]);
+  });
+
+  it('chạy thật: khớp thì không lỗi; lệch số dòng hay SQL lỗi báo <tệp>:<dòng> của chỗ khai', async () => {
+    const { duLieu } = docDuLieuMvp(tep(DU_LIEU));
+    const kq = await kiemSoDongMvp(duLieu, [
+      { sql: 'SELECT * FROM lop_toa_1;', soDong: 2, noi: 'noi-dung-mvp/kich-ban/01.md:12 [LỌC THỬ lt-1]' },
+      { sql: "SELECT * FROM lop WHERE toa = 1 OR ma_lop = 'A2'", soDong: 2, noi: 'noi-dung-mvp/kich-ban/06.md:8 [MÀN CHIẾU mc-or]' },
+      { sql: 'SELECT ten FROM lop', soDong: 1, noi: 'noi-dung-mvp/thu-thach/c1.md:5 thẻ c1, SQL chuẩn' },
+      { sql: 'DELETE FROM lop', soDong: 0, noi: 'noi-dung-mvp/thu-thach/c1.md:9 thẻ c2, SQL chuẩn' },
+    ]);
+    expect(kq.ketQua.map((k) => k.soDongThat)).toEqual([2, 3, null, null]);
+    expect(kq.loi).toEqual([
+      "noi-dung-mvp/kich-ban/06.md:8: [MÀN CHIẾU mc-or]: khai 2 dòng nhưng chạy thật trên noi-dung-mvp/du-lieu.md ra 3 dòng — SELECT * FROM lop WHERE toa = 1 OR ma_lop = 'A2'",
+      'noi-dung-mvp/thu-thach/c1.md:5: thẻ c1, SQL chuẩn: câu SQL lỗi khi chạy trên noi-dung-mvp/du-lieu.md: no such column: ten — SELECT ten FROM lop',
+      'noi-dung-mvp/thu-thach/c1.md:9: thẻ c2, SQL chuẩn: câu SQL lỗi khi chạy trên noi-dung-mvp/du-lieu.md: chỉ chạy được câu SELECT — DELETE FROM lop',
+    ]);
+  });
+
+  it('có câu khai số dòng mà thiếu du-lieu.md là lỗi', async () => {
+    const kq = await kiemSoDongMvp(null, [{ sql: 'SELECT 1', soDong: 1, noi: 'noi-dung-mvp/kich-ban/01.md:12 [LỌC THỬ lt-1]' }]);
+    expect(kq.loi).toEqual(['noi-dung-mvp/kich-ban/01.md:12: [LỌC THỬ lt-1]: khai 1 dòng nhưng noi-dung-mvp/ thiếu du-lieu.md để chạy thật (QĐ-089)']);
   });
 });
