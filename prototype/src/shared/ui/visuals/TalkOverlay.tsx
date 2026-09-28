@@ -1,6 +1,6 @@
 /**
  * Lớp nhép môi + chớp mắt đặt chồng lên ảnh chân dung (bộ miếng ở `talk-rigs.ts`). SVG cùng hệ tọa
- * độ ảnh gốc, `xMidYMax meet` = đúng cách `.portrait__img` hiển thị (contain, canh đáy giữa) nên
+ * độ ảnh gốc, `xMidYMin meet` = đúng cách `.portrait__img` hiển thị (contain, canh trên giữa) nên
  * miếng luôn trùng mặt dù khung co giãn.
  * - Đang nói (`talking`): miệng đổi qua lại giữa ảnh gốc và miếng "đang nói", mỗi khung giữ 70–150 ms
  *   (thỉnh thoảng lâu hơn); chữ chạy xong → về ảnh gốc.
@@ -59,7 +59,7 @@ export function TalkOverlay({ rig, talking }: { rig: TalkRig; talking: boolean }
   if (!motion) return null;
   // Miếng luôn nằm trong SVG (ẩn bằng opacity) → ảnh đã nạp sẵn, đổi khung không nháy trống.
   return (
-    <svg className="portrait__talk" viewBox={`0 0 ${rig.width} ${rig.height}`} preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+    <svg className="portrait__talk" viewBox={`0 0 ${rig.width} ${rig.height}`} preserveAspectRatio="xMidYMin meet" aria-hidden="true" focusable="false">
       <Patch patch={rig.eyes} hidden={!eyesClosed} />
       <Patch patch={rig.mouth} hidden={!mouthOpen} />
     </svg>

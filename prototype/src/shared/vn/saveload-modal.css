@@ -1,0 +1,423 @@
+/* ==========================================================================
+   SAVE / LOAD MODAL STYLES (Mockup Parchment & Golden Amber Visual Novel)
+   ========================================================================== */
+
+/* Lớp backdrop trong suốt kèm blur, nhìn thấu background game bên dưới */
+.saveload-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(16px, 3vh, 32px);
+  animation: saveloadFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  user-select: none;
+}
+
+@keyframes saveloadFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Nút "Quay lại" ở góc dưới bên trái màn hình */
+.saveload-back-btn {
+  position: fixed;
+  bottom: clamp(18px, 3vh, 32px);
+  left: clamp(18px, 3vw, 40px);
+  z-index: 10001;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(24, 30, 48, 0.94) 0%, rgba(14, 18, 32, 0.98) 100%);
+  border: 1.5px solid rgba(245, 158, 11, 0.5);
+  border-radius: 28px;
+  padding: 8px 18px 8px 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 14px rgba(245, 158, 11, 0.25);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.saveload-back-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  border-color: #fbbf24;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.45);
+  background: linear-gradient(135deg, rgba(32, 42, 68, 0.96) 0%, rgba(18, 24, 44, 0.98) 100%);
+}
+
+.saveload-back-btn:active {
+  transform: translateY(0) scale(1);
+}
+
+/* Icon mũi tên và icon lá đồng nhất màu vàng ấm #fbbf24, căn giữa trục dọc */
+.saveload-back-btn__arrow {
+  color: #fbbf24;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6));
+}
+
+.saveload-back-btn__text {
+  font-family: 'Playwrite IS', 'Playwrite VN', cursive;
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 700;
+  color: #fbbf24;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  display: inline-block;
+  line-height: 1;
+}
+
+.saveload-back-btn__leaves {
+  color: #fbbf24;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.5));
+}
+
+/* Khung modal dạng sổ tay giấy ngà cổ điển */
+.saveload-card {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  max-height: calc(100dvh - clamp(24px, 5vh, 60px));
+  background: linear-gradient(135deg, #fffdf8 0%, #fcf7ed 50%, #fbf5e6 100%);
+  border: 2px solid rgba(245, 158, 11, 0.35);
+  border-radius: 20px;
+  padding: clamp(20px, 3vh, 30px) clamp(22px, 3.5vw, 36px);
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    0 0 35px rgba(245, 158, 11, 0.15),
+    inset 0 0 40px rgba(254, 243, 199, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vh, 22px);
+  overflow: hidden;
+  animation: saveloadCardZoom 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes saveloadCardZoom {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header của modal */
+.saveload-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Khối nhãn tiêu đề: Gradient vàng cam đồng nhất với các button/design khác trong game */
+.saveload-title-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.saveload-title-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px 18px 8px 18px;
+  padding: 7px 20px 7px 16px;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+}
+
+.saveload-title-badge__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.saveload-title-badge__text {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  margin: 0;
+}
+
+.saveload-title-sub {
+  font-family: 'Playwrite IS', 'Playwrite VN', cursive;
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #b45309;
+}
+
+/* Nút Đóng '×': Dùng SVG và xoay đúng tâm tuyệt đối */
+.saveload-close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(120, 53, 15, 0.25);
+  background: rgba(255, 255, 255, 0.85);
+  color: #78350f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform-origin: center center;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.saveload-close-btn svg {
+  display: block;
+  transform-origin: center center;
+}
+
+.saveload-close-btn:hover {
+  background: #fef3c7;
+  color: #b45309;
+  border-color: #f59e0b;
+  transform: rotate(90deg);
+}
+
+/* Lưới 6 ô lưu (3 cột x 2 hàng) */
+.saveload-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 2vw, 20px);
+  position: relative;
+  z-index: 2;
+  overflow-y: auto;
+  max-height: calc(100dvh - 180px);
+  padding: 4px;
+}
+
+@media (max-width: 840px) {
+  .saveload-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .saveload-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Từng ô lưu: Dạng thẻ kẹp ảnh Polaroid */
+.save-slot-card {
+  position: relative;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 14px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Miếng băng dính washi tape dán mép trên: bán trong suốt màu giấy ngà có mép răng cưa */
+.save-slot-card::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 54px;
+  height: 15px;
+  background: rgba(254, 243, 199, 0.75);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-left: 2px dashed rgba(217, 119, 6, 0.35);
+  border-right: 2px dashed rgba(217, 119, 6, 0.35);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 1px;
+  z-index: 3;
+}
+
+/* Hiệu ứng Hover & Active: Viền vàng cam gradient và hoa văn lá góc dưới */
+.save-slot-card:hover {
+  transform: translateY(-3px);
+  border-color: #f59e0b;
+  box-shadow: 0 10px 24px rgba(245, 158, 11, 0.25), 0 0 14px rgba(251, 191, 36, 0.3);
+}
+
+.save-slot-card.is-active,
+.save-slot-card:focus-visible {
+  border: 2px solid #f59e0b;
+  box-shadow: 0 10px 26px rgba(245, 158, 11, 0.32), 0 0 18px rgba(251, 191, 36, 0.4);
+  outline: none;
+}
+
+/* Hoa văn lá trang trí ở góc dưới phải khi hover / active */
+.save-slot-card__decor-corner {
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  color: #f59e0b;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.save-slot-card:hover .save-slot-card__decor-corner,
+.save-slot-card.is-active .save-slot-card__decor-corner {
+  opacity: 0.85;
+}
+
+/* Header của ô lưu */
+.save-slot-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.84rem;
+}
+
+/* Nhãn 'Ô số X' */
+.save-slot-card__badge {
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  border-radius: 4px;
+  padding: 2px 8px;
+  color: #78350f;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.3px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.save-slot-card:hover .save-slot-card__badge {
+  background: #fed7aa;
+  border-color: #f97316;
+  color: #451a03;
+}
+
+.save-slot-card__status {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.save-slot-card__status.has-data {
+  color: #78350f;
+  font-weight: 700;
+}
+
+/* Khung ảnh thumbnail / Polaroid */
+.save-slot-card__thumb-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2.1 / 1;
+  background: #e2e8f0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ảnh đen trắng placeholder khi ô trống */
+.save-slot-card__thumb-img--placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.1) brightness(0.9);
+  opacity: 0.65;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.save-slot-card:hover .save-slot-card__thumb-img--placeholder {
+  opacity: 0.8;
+}
+
+/* Ảnh có màu khi ô đã có tiến độ lưu */
+.save-slot-card__thumb-img--saved {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.save-slot-card:hover .save-slot-card__thumb-img--saved {
+  transform: scale(1.04);
+}
+
+/* Overlay hiển thị tên cảnh / thông tin lưu trên ảnh */
+.save-slot-card__thumb-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4px 8px;
+  background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.85) 100%);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Footer của ô lưu */
+.save-slot-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.save-slot-card__clock-icon {
+  color: #78350f;
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.save-slot-card__footer-text {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-style: italic;
+  font-size: 0.84rem;
+  color: #475569;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.save-slot-card:hover .save-slot-card__footer-text {
+  color: #78350f;
+  font-weight: 600;
+}

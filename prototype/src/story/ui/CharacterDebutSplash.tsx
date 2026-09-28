@@ -49,6 +49,7 @@ export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutS
     <div
       ref={rootRef}
       className="chara-debut"
+      data-character={characterId}
       onClick={onDismiss}
       role="dialog"
       aria-modal="true"
@@ -81,16 +82,46 @@ export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutS
 
         {/* Khung chữ giới thiệu nhân vật phong cách Visual Novel */}
         <div className="chara-debut__content">
-          <div className="chara-debut__tag">NHÂN VẬT MỚI</div>
+          {/* KHỐI 1: Khối thông tin nhân vật nền đậm, vát góc chéo */}
+          <div className="chara-debut__panel chara-debut__panel--header">
+            <div className="chara-debut__header-top">
+              <div className="chara-debut__tag">
+                <span className="chara-debut__tag-sparkle" aria-hidden="true">✦</span>
+                <span>NHÂN VẬT MỚI</span>
+              </div>
+            </div>
 
-          <h2 className="chara-debut__name">{profile.fullName}</h2>
-          <div className="chara-debut__role">{profile.title}</div>
-          <div className="chara-debut__meta">{profile.year} • {profile.major}</div>
+            <div className="chara-debut__name-row">
+              <h2 className="chara-debut__name">{profile.fullName}</h2>
+            </div>
 
-          <blockquote className="chara-debut__quote">
-            “{profile.quote}”
+            <div className="chara-debut__role">{profile.title}</div>
+
+            <div className="chara-debut__chips">
+              <span className="chara-debut__chip">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+                <span>{profile.year}</span>
+              </span>
+              <span className="chara-debut__chip">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                <span>{profile.major}</span>
+              </span>
+            </div>
+          </div>
+
+          {/* KHỐI 2: Khung quote vát chéo có icon ngoặc kép */}
+          <blockquote className="chara-debut__panel chara-debut__panel--quote">
+            <span className="chara-debut__quote-icon" aria-hidden="true">“</span>
+            <p className="chara-debut__quote-text">“{profile.quote}”</p>
           </blockquote>
 
+          {/* KHỐI 3: Button Tiếp tục dạng gradient theo từng nhân vật */}
           <button
             ref={continueRef}
             type="button"
@@ -100,8 +131,15 @@ export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutS
               onDismiss();
             }}
           >
-            <span>Tiếp tục</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
+            <span className="chara-debut__prompt-chat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
+              </svg>
+            </span>
+            <span className="chara-debut__prompt-text">Tiếp tục</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="m9 6 6 6-6 6" />
+            </svg>
           </button>
         </div>
       </div>

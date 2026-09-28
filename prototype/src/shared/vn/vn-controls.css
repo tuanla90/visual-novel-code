@@ -4,27 +4,34 @@
 
 /* Thanh điều khiển nhanh VN nằm ngay trên / cạnh hộp thoại */
 .vn-quick-bar {
-  display: flex;
+  align-self: flex-end;
+  display: inline-flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-  margin-bottom: 6px;
-  padding-inline: max(16px, calc((100% - 1040px) / 2));
+  gap: 2px;
+  background: rgba(18, 24, 44, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 3px 6px;
+  margin-bottom: 8px;
+  margin-right: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   pointer-events: auto;
   user-select: none;
+  z-index: 10;
 }
 
 .vn-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
+  gap: 5px;
+  background: transparent;
+  border: 0;
   color: #cbd5e1;
   padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.75rem;
+  border-radius: 14px;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -33,10 +40,8 @@
 }
 
 .vn-btn:hover {
-  background: rgba(30, 41, 59, 0.85);
-  color: #fff;
-  border-color: rgba(56, 189, 248, 0.5);
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
   transform: translateY(-1px);
 }
 
@@ -44,93 +49,264 @@
   background: #0284c7;
   color: #ffffff;
   border-color: #38bdf8;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
-  animation: pulseActive 1.8s infinite;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
-@keyframes pulseActive {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
+.dialog-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
-/* Khung thoại: dải trong mờ trải hết chiều ngang đáy sân khấu; chữ nằm trong cột giữa dễ đọc. */
+/* Khung thoại: hộp thoại bo góc tròn nổi bồng bềnh chuẩn phong cách visual novel */
 .dialog--glass {
-  --dialog-inset: max(24px, calc((100% - 1040px) / 2));
+  position: relative;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
   background: linear-gradient(
     180deg,
-    rgba(8, 12, 24, 0.42) 0%,
-    rgba(8, 12, 24, 0.7) 38%,
-    rgba(8, 12, 24, 0.8) 100%
+    rgba(20, 28, 48, 0.58) 0%,
+    rgba(12, 18, 34, 0.65) 100%
   ) !important;
-  backdrop-filter: blur(6px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(6px) saturate(140%) !important;
-  border: 0 !important;
-  border-top: 1px solid rgba(251, 191, 36, 0.45) !important;
-  border-radius: 0 !important;
-  box-shadow: 0 -12px 32px rgba(8, 12, 24, 0.25) !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
+  border: 1.5px solid rgba(253, 230, 138, 0.95) !important;
+  border-radius: 18px !important;
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.45),
+    0 0 16px rgba(245, 158, 11, 0.22),
+    inset 0 0 12px rgba(253, 230, 138, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
   color: #f8fafc !important;
-  padding: 26px var(--dialog-inset) 12px !important;
-  position: relative;
+  padding: 18px 36px 14px !important;
+  min-height: 72px;
   transition: opacity 0.25s ease, transform 0.25s ease;
-}
-.dialog--glass .dialog__speaker {
-  left: var(--dialog-inset) !important;
+  overflow: visible !important;
 }
 
-/* Nút trong dải thoại tối: nền trong, viền mảnh; "Tiếp tục" mang màu nhấn của HUD. */
-.dialog--glass .dialog__btn-notebook,
-.dialog--glass .dialog__next {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #e2e8f0;
-  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
-  border-radius: 0;
-}
-.dialog--glass .dialog__next {
-  color: #fde68a;
-  border-color: rgba(251, 191, 36, 0.55);
-  background: rgba(251, 191, 36, 0.1);
-}
-.dialog--glass .dialog__btn-notebook:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.4);
-}
-.dialog--glass .dialog__next:hover {
-  background: rgba(251, 191, 36, 0.22);
-  border-color: #fbbf24;
-  color: #fff7d6;
-}
-.dialog--glass .dialog__btn-notebook:focus-visible,
-.dialog--glass .dialog__next:focus-visible {
-  /* clip-path cắt mất outline bên ngoài → dùng viền trong. */
-  outline: none;
-  box-shadow: inset 0 0 0 2px #fbbf24;
-}
-.dialog--glass .dialog__hint {
-  color: #cbd5e1;
+/* Họa tiết cành lá mờ tinh tế ở góc dưới bên trái của hộp thoại */
+.dialog--glass::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 130px;
+  height: 90px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 130 90' fill='none' stroke='rgba(246, 216, 140, 0.16)' stroke-width='1.5'%3E%3Cpath d='M10 80 C 25 60, 45 40, 85 15'/%3E%3Cpath d='M30 50 C 40 38, 55 42, 50 55 C 45 68, 30 62, 30 50'/%3E%3Cpath d='M55 35 C 65 22, 78 26, 74 38 C 70 50, 56 46, 55 35'/%3E%3Cpath d='M20 68 C 10 58, 15 45, 28 50'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* Nameplate người nói nổi bật */
-.dialog--glass .dialog__speaker {
-  font-size: 1.05rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.04em !important;
+/* Footer ngoài khung thoại chứa nút Hồ sơ và Tiếp tục */
+.dialog__footer--external {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 1320px !important;
+  margin: 6px auto 0 !important;
+  padding: 0 4px !important;
+  position: relative !important;
+  z-index: 10 !important;
+  pointer-events: auto !important;
+}
+
+.dialog__footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.dialog__footer-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: -6px;
+}
+
+/* Nút Hồ sơ ở ngoài khung */
+.dialog__btn-notebook {
+  background: rgba(18, 24, 44, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 20px !important;
+  clip-path: none !important;
+  color: #f1f5f9 !important;
   padding: 6px 18px !important;
-  border-radius: 8px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  margin-bottom: 12px !important;
-  display: inline-block;
+  font-size: 0.84rem !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.dialog__btn-notebook:hover {
+  background: rgba(28, 38, 64, 0.96) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Nút "Tiếp tục" phong cách dải lụa/vệt cọ giấy vàng với font Playwrite IS & assets thực */
+.dialog__next {
+  isolation: isolate;
+  position: relative !important;
+  width: 146px !important;
+  height: 52px !important;
+  padding: 0 34px 0 26px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: transparent !important;
+  background-image: url('../../assets/gui/gui-next-normal.png') !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  clip-path: none !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  transform: rotate(-1deg);
+  transition: transform 0.16s ease, filter 0.16s ease !important;
+}
+
+.dialog__next::before,
+.dialog__next::after {
+  display: none !important;
+}
+
+.dialog__next:hover {
+  background-image: url('../../assets/gui/gui-next-hover.png') !important;
+  transform: rotate(-1deg) scale(1.05) translateY(-2px) !important;
+  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.65)) !important;
+}
+
+.dialog__next:active {
+  background-image: url('../../assets/gui/gui-next-active.png') !important;
+  transform: rotate(-1deg) scale(0.98) translateY(1px) !important;
+}
+
+.dialog__next span {
+  font-family: 'Playwrite IS', cursive, sans-serif !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  color: #3e1f04 !important;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.dialog__next svg {
+  display: none !important;
+}
+
+.dialog__btn-notebook:focus-visible,
+.dialog__next:focus-visible {
+  outline: none;
+  filter: drop-shadow(0 0 8px #fbbf24) !important;
+}
+
+.dialog__hint {
+  color: #cbd5e1;
+  font-size: 0.85rem;
+}
+
+/* Nameplate người nói: font Playwrite IS, icon lá nâu cam */
+.dialog--glass .dialog__speaker {
+  position: absolute !important;
+  top: -16px !important;
+  left: 28px !important;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #f59e0b 100%) !important;
+  color: #2b1803 !important;
+  border: 1.5px solid #d97706 !important;
+  border-radius: 8px 18px 8px 18px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+  padding: 3px 18px 3px 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  user-select: none;
+  z-index: 5;
+}
+
+.dialog--glass .dialog__speaker span {
+  font-family: 'Playwrite IS', cursive, sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: #2b1803 !important;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+
+.dialog--glass .dialog__speaker-icon {
+  width: 16px;
+  height: 16px;
+  color: #92400e !important;
+  flex-shrink: 0;
+}
+
+/* Mũi tên nhấp nháy chuyển câu ở góc dưới phải của hộp thoại */
+.dialog__indicator {
+  position: absolute;
+  right: 28px;
+  bottom: 18px;
+  color: rgba(246, 216, 140, 0.85);
+  animation: indicatorPulse 1.2s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes indicatorPulse {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  50% { transform: translateX(4px); opacity: 1; }
 }
 
 /* Chữ thoại chạy */
 .dialog--glass .dialog__text {
-  font-size: 1.125rem !important;
-  line-height: 1.7 !important;
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif !important;
+  font-size: 1.24rem !important;
+  line-height: 1.75 !important;
   color: #f1f5f9 !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  min-height: 3.4em;
-  font-weight: 450;
+  min-height: 2.2em;
+  font-weight: 400;
+  letter-spacing: 0.012em;
+}
+
+/* Các biến thể phông chữ hội thoại */
+.dialog--glass .dialog__text--source-serif {
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif !important;
+  font-size: 1.24rem !important;
+  line-height: 1.75 !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.012em;
+}
+
+.dialog--glass .dialog__text--dancing-script {
+  font-family: 'Dancing Script', cursive, sans-serif !important;
+  font-size: 1.48rem !important;
+  line-height: 1.55 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+}
+
+.dialog--glass .dialog__text--playwrite-vn {
+  font-family: 'Playwrite VN', cursive, sans-serif !important;
+  font-size: 1.12rem !important;
+  line-height: 1.85 !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.015em;
+}
+
+.dialog--glass .dialog__text--be-vietnam-pro {
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif !important;
+  font-size: 1.125rem !important;
+  line-height: 1.7 !important;
 }
 
 
@@ -234,8 +410,9 @@
 }
 
 .backlog-item__text {
-  font-size: 1.05rem;
-  line-height: 1.6;
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-size: 1.08rem;
+  line-height: 1.65;
   color: #e2e8f0;
 }
 
@@ -428,13 +605,14 @@
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(15, 23, 42, 0.95);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.4);
-  padding: 10px 24px;
+  background: rgba(18, 24, 42, 0.96);
+  color: #fef08a;
+  border: 1.5px solid rgba(245, 158, 11, 0.6);
+  padding: 10px 26px;
   border-radius: 30px;
   font-weight: 700;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.3px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 18px rgba(245, 158, 11, 0.35);
   backdrop-filter: blur(8px);
   z-index: 10000;
   animation: toastPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);

@@ -61,6 +61,7 @@ export function DialogBox({
   const toggleSkipMode = useVnStore((s) => s.toggleSkipMode);
   const toggleHideUi = useVnStore((s) => s.toggleHideUi);
   const textSpeed = useVnStore((s) => s.textSpeed);
+  const dialogueFont = useVnStore((s) => s.dialogueFont);
   const pushBacklog = useVnStore((s) => s.pushBacklog);
 
   // Lưu vào Backlog
@@ -158,7 +159,7 @@ export function DialogBox({
             }}
             title="Tự động chạy hội thoại"
           >
-            <IconPlay width={10} height={10} />
+            <IconPlay width={14} height={14} />
             <span>Auto</span>
           </button>
           <button
@@ -171,7 +172,7 @@ export function DialogBox({
             }}
             title="Tua nhanh qua đoạn thoại"
           >
-            <IconFastForward width={11} height={11} />
+            <IconFastForward width={14} height={14} />
             <span>Skip</span>
           </button>
           {onOpenBacklog ? (
@@ -184,7 +185,7 @@ export function DialogBox({
               }}
               title="Xem lại lịch sử trò chuyện"
             >
-              <IconHistory width={11} height={11} />
+              <IconHistory width={14} height={14} />
               <span>Log</span>
             </button>
           ) : null}
@@ -198,7 +199,7 @@ export function DialogBox({
               }}
               title="Lưu tiến độ game"
             >
-              <IconSave width={11} height={11} />
+              <IconSave width={14} height={14} />
               <span>Lưu</span>
             </button>
           ) : null}
@@ -212,7 +213,7 @@ export function DialogBox({
               }}
               title="Nạp tiến độ game"
             >
-              <IconFolderOpen width={11} height={11} />
+              <IconFolderOpen width={14} height={14} />
               <span>Nạp</span>
             </button>
           ) : null}
@@ -226,7 +227,7 @@ export function DialogBox({
             }}
             title="Ẩn giao diện để xem cảnh (Phím tắt: H)"
           >
-            <IconEyeOff width={11} height={11} />
+            <IconEyeOff width={14} height={14} />
             <span>Ẩn UI</span>
           </button>
           {onOpenAudio ? (
@@ -239,7 +240,7 @@ export function DialogBox({
               }}
               title="Cài đặt âm lượng"
             >
-              <IconVolume width={11} height={11} />
+              <IconVolume width={14} height={14} />
               <span>Âm</span>
             </button>
           ) : null}
@@ -254,13 +255,25 @@ export function DialogBox({
       >
         {label ? (
           <div className="dialog__speaker">
+            <svg className="dialog__speaker-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+              <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z" />
+            </svg>
             <span>{label}</span>
           </div>
         ) : null}
-        <p className="dialog__text">
+        <p className={`dialog__text dialog__text--${dialogueFont}`}>
           <CodeText text={displayedText} />
         </p>
-        <div className="dialog__footer">
+        <div className="dialog__indicator" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Button Hồ sơ và Tiếp tục nằm ngoài khung thoại */}
+      <div className="dialog__footer dialog__footer--external">
+        <div className="dialog__footer-left">
           {onOpenNotebook ? (
             <button
               type="button"
@@ -272,13 +285,15 @@ export function DialogBox({
               }}
               title="Mở hòm đồ & hồ sơ vụ án"
             >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 5.5h5l1.5 2H20v11H4z" />
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
               </svg>
-              Hồ sơ {notebookCount !== undefined ? `(${notebookCount})` : ''}
+              <span>Hồ sơ {notebookCount !== undefined ? `(${notebookCount})` : ''}</span>
             </button>
           ) : null}
-          {hint ? <span className="dialog__hint">{hint}</span> : null}
+        </div>
+        {hint ? <span className="dialog__hint">{hint}</span> : null}
+        <div className="dialog__footer-right">
           <button
             type="button"
             className="dialog__next"
@@ -289,8 +304,8 @@ export function DialogBox({
             }}
           >
             <span>Tiếp tục</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="m9 6 6 6-6 6" />
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </button>
         </div>
