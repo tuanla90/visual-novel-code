@@ -3,7 +3,7 @@
 Game học SQL kể chuyện, 20–30 phút, cho sinh viên năm nhất khối kinh tế chưa học SQL. Tài liệu này dành cho
 **nhóm làm thử nghiệm**: cách chạy, cách quan sát một buổi, ảnh, quyền riêng tư, giới hạn đã biết.
 Tài liệu sản phẩm: `../docs/prototype/prototype-scope-down-v0.1.md` (mục 9 là kế hoạch thử nghiệm). Mọi quyết định thiết kế:
-`../docs/lich-su-quyet-dinh.md` (QĐ-xxx). Kịch bản (lời thoại, thẻ thử thách): `../docs/prototype/kich-ban-prototype.md`.
+`../docs/lich-su-quyet-dinh.md` (QĐ-xxx). Kịch bản (lời thoại, thẻ thử thách): `noi-dung/` (hướng dẫn trong `noi-dung/README.md`; kiểm bằng `npm run kiem-noi-dung`).
 Kiến trúc code: `docs/ARCHITECTURE.md`. Bản đồ toàn repo: `../README.md`.
 
 ## 1. Chạy nhanh (máy phát triển)
