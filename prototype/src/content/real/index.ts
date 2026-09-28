@@ -1,5 +1,5 @@
 /**
- * NỘI DUNG THẬT — chuyển nguyên văn từ docs/kich-ban-prototype.md (gói 5 `noi-dung`).
+ * NỘI DUNG THẬT — chuyển nguyên văn từ docs/prototype/kich-ban-prototype.md (gói 5 `noi-dung`).
  * Kịch bản là nguồn duy nhất: muốn đổi chữ thì sửa kịch bản trước, rồi chép lại; test trung thành
  * (faithfulness.test.ts) so hai chiều từng ký tự.
  */

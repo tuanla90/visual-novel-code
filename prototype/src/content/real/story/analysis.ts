@@ -1,4 +1,4 @@
-/** Phần 3 — Phân tích dữ liệu {part: analysis}. Chuyển NGUYÊN VĂN từ docs/kich-ban-prototype.md. */
+/** Phần 3 — Phân tích dữ liệu {part: analysis}. Chuyển NGUYÊN VĂN từ docs/prototype/kich-ban-prototype.md. */
 import type { Sequence } from '../../../story/types';
 
 export const analysisSequences: Sequence[] = [

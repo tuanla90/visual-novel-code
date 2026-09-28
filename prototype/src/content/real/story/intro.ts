@@ -1,5 +1,5 @@
 /**
- * Phần 1 — Mở đầu {part: intro}. Chuyển NGUYÊN VĂN từ docs/kich-ban-prototype.md.
+ * Phần 1 — Mở đầu {part: intro}. Chuyển NGUYÊN VĂN từ docs/prototype/kich-ban-prototype.md.
  * Không sửa chữ ở đây: sửa kịch bản trước, rồi chép lại (test trung thành so hai chiều).
  */
 import type { Sequence } from '../../../story/types';

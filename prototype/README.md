@@ -2,9 +2,9 @@
 
 Game học SQL kể chuyện, 20–30 phút, cho sinh viên năm nhất khối kinh tế chưa học SQL. Tài liệu này dành cho
 **nhóm làm thử nghiệm**: cách chạy, cách quan sát một buổi, ảnh, quyền riêng tư, giới hạn đã biết.
-Tài liệu sản phẩm: `../prototype-scope-down-v0.1.md` (mục 9 là kế hoạch thử nghiệm). Mọi quyết định thiết kế:
-`../lich-su-quyet-dinh.md` (QĐ-xxx). Kịch bản (lời thoại, thẻ thử thách): `../docs/kich-ban-prototype.md`.
-Kiến trúc code: `docs/ARCHITECTURE.md`.
+Tài liệu sản phẩm: `../docs/prototype/prototype-scope-down-v0.1.md` (mục 9 là kế hoạch thử nghiệm). Mọi quyết định thiết kế:
+`../docs/lich-su-quyet-dinh.md` (QĐ-xxx). Kịch bản (lời thoại, thẻ thử thách): `../docs/prototype/kich-ban-prototype.md`.
+Kiến trúc code: `docs/ARCHITECTURE.md`. Bản đồ toàn repo: `../README.md`.
 
 ## 1. Chạy nhanh (máy phát triển)
 
@@ -87,11 +87,11 @@ Mọi hình đang là **hình vẽ tạm bằng code**; ảnh thật thả vào 
 ảnh của người sinh ảnh:
 
 - Thả tệp `.webp`/`.png`/`.jpg` vào **bất kỳ thư mục con nào** của `src/assets/` (ví dụ `src/assets/characters/`).
-- Chân dung đặt tên theo bộ prompt `prompts-characters-prototype-flow-v0.1.md`: `char-<nhân vật>-<biểu cảm>`;
+- Chân dung đặt tên theo bộ prompt `../art/prompts/prompts-characters-prototype-flow-v0.1.md`: `char-<nhân vật>-<biểu cảm>`;
   `char-<nhân vật>-anchor` là ảnh neo = biểu cảm gốc (Minh Anh, Hà Vy, Quân, Bác Tư: bình thường; Hoài: rụt rè).
   Thiếu biểu cảm thì game mượn ảnh neo. Ảnh nền xám phẳng (chưa trong suốt) được **tự tách nền** khi hiển thị,
   tệp gốc không bị sửa.
-- Cảnh nền đặt tên theo `prompts-background-prototype-v0.1.md`: `bg-prototype-club-room`, `bg-prototype-hallway`,
+- Cảnh nền đặt tên theo `../art/prompts/prompts-background-prototype-v0.1.md`: `bg-prototype-club-room`, `bg-prototype-hallway`,
   `bg-prototype-hearing-room`. Tài liệu (`doc-letter`, `doc-bookmark`, `doc-handover-log`) chỉ là nền giấy, chữ do
   giao diện chồng lên.
 - Kiểm nhanh: `npx vitest run src/shared/ui/visuals/art-slots.test.ts --reporter=verbose` in bảng ô ↔ tệp và

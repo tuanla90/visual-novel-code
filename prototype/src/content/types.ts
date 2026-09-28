@@ -1,6 +1,6 @@
 /**
  * Gói nội dung đầy đủ của game: mọi thứ runtime, màn hình và bộ kiểm toàn vẹn cần.
- * Gói `noi-dung` (gói 5) tạo một GameContent từ docs/kich-ban-prototype.md;
+ * Gói `noi-dung` (gói 5) tạo một GameContent từ docs/prototype/kich-ban-prototype.md;
  * gói nen-mong chỉ cung cấp nội dung MẪU (src/content/sample).
  */
 import type { ChallengeId } from '../shared/ids';

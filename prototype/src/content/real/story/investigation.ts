@@ -1,5 +1,5 @@
 /**
- * Phần 2 — Điều tra {part: investigation}. Chuyển NGUYÊN VĂN từ docs/kich-ban-prototype.md.
+ * Phần 2 — Điều tra {part: investigation}. Chuyển NGUYÊN VĂN từ docs/prototype/kich-ban-prototype.md.
  *
  * Biểu cảm của người hỏi ở `[HỎI]`: kịch bản chỉ ghi `ha-vy: "…"` (không biểu cảm) mà kiểu
  * DialogueLine bắt buộc có — quy ước của gói noi-dung: lấy biểu cảm ở lời gần nhất của chính

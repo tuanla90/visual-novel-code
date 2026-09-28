@@ -48,7 +48,7 @@ Skill này cung cấp quy trình và công cụ tự động hóa việc tạo �
 Kích hoạt skill này khi:
 * Người dùng yêu cầu tạo ảnh/cảnh nền bằng Google Flow hoặc Google Labs.
 * Người dùng gõ lệnh slash command: `/google-flow-image` (hoặc `/flow-generate`).
-* Cần chạy tự động danh sách prompt trong tệp markdown (ví dụ: `prompts-background-prototype-v0.1.md`) có các khối thẻ `[id: ...]`, `[type: image]`, `[ref: ...]`.
+* Cần chạy tự động danh sách prompt trong tệp markdown (ví dụ: `art/prompts/prompts-background-prototype-v0.1.md`) có các khối thẻ `[id: ...]`, `[type: image]`, `[ref: ...]`.
 * Cần kiểm tra trạng thái trình duyệt CDP hoặc chụp ảnh màn hình kiểm thử Google Flow.
 
 ---
@@ -97,7 +97,7 @@ node .agents/skills/google-flow-image/scripts/cdp-flow.mjs status
 ### Bước 2: Phân tích tệp Prompt
 Đọc và trích xuất danh sách các prompt có trong tệp:
 ```bash
-node .agents/skills/google-flow-image/scripts/cdp-flow.mjs parse --file prompts-background-prototype-v0.1.md
+node .agents/skills/google-flow-image/scripts/cdp-flow.mjs parse --file art/prompts/prompts-background-prototype-v0.1.md
 ```
 
 ---
@@ -108,7 +108,7 @@ node .agents/skills/google-flow-image/scripts/cdp-flow.mjs parse --file prompts-
 Tạo ảnh neo phong cách trước, hoặc một cảnh nền cụ thể:
 ```bash
 node .agents/skills/google-flow-image/scripts/cdp-flow.mjs generate \
-  --file prompts-background-prototype-v0.1.md \
+  --file art/prompts/prompts-background-prototype-v0.1.md \
   --id hoa-phuong-environment-style-anchor \
   --out ./prototype/src/assets/images/hoa-phuong-environment-style-anchor.png
 ```
@@ -117,7 +117,7 @@ node .agents/skills/google-flow-image/scripts/cdp-flow.mjs generate \
 Tạo toàn bộ các cảnh trong file theo thứ tự:
 ```bash
 node .agents/skills/google-flow-image/scripts/cdp-flow.mjs batch \
-  --file prompts-background-prototype-v0.1.md \
+  --file art/prompts/prompts-background-prototype-v0.1.md \
   --outDir ./prototype/src/assets/images/
 ```
 

@@ -70,7 +70,7 @@ describe('truy vấn OR của Quân và model nạp sẵn của debrief-fix', ()
 });
 
 describe('thứ tự ưu tiên mã chẩn đoán theo kịch bản', () => {
-  it('mã trong thẻ và mục chung đều là mã hợp lệ, đúng thứ tự liệt kê của docs/kich-ban-prototype.md', () => {
+  it('mã trong thẻ và mục chung đều là mã hợp lệ, đúng thứ tự liệt kê của docs/prototype/kich-ban-prototype.md', () => {
     for (const id of CHALLENGE_IDS) for (const code of CHALLENGE_DIAGNOSTIC_ORDER[id]) expect(DIAGNOSTIC_CODES).toContain(code);
     for (const code of COMMON_DIAGNOSTIC_ORDER) expect(DIAGNOSTIC_CODES).toContain(code);
     expect(CHALLENGE_DIAGNOSTIC_ORDER.c1).toEqual(['no-filter', 'missing-columns']);

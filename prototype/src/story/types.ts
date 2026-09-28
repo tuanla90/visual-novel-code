@@ -1,7 +1,7 @@
 /**
  * Hợp đồng kiểu phần `story`: phần, cảnh, chuỗi, node và lời thoại.
  *
- * Mỗi cấu trúc trong docs/kich-ban-prototype.md có một loại node tương ứng:
+ * Mỗi cấu trúc trong docs/prototype/kich-ban-prototype.md có một loại node tương ứng:
  *   - `- **speaker** (expr): …`      → LineNode
  *   - `> NHIỆM VỤ: …`                → TaskNode
  *   - `[DÀN DỰNG]`                   → NoteNode (không hiển thị)

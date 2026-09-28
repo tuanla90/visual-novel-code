@@ -2,7 +2,7 @@
  * Đặc tả bốn thử thách (phía engine) — NƠI DUY NHẤT (nghiệm thu nen-mong lần 2): SQL chuẩn, cột bắt
  * buộc/khuyến khích (QĐ-019), chạy dataset ẩn (QĐ-015), số dòng kỳ vọng (QĐ-012), model nạp sẵn của
  * debrief-fix (QĐ-016/QĐ-039), truy vấn OR của Quân nguyên văn (§4.4), và thứ tự ưu tiên mã chẩn đoán
- * theo thẻ (docs/kich-ban-prototype.md, "Quy ước thẻ thử thách"). Gói noi-dung ghép với
+ * theo thẻ (docs/prototype/kich-ban-prototype.md, "Quy ước thẻ thử thách"). Gói noi-dung ghép với
  * ChallengeContent thành ChallengeDefinition.
  */
 import type { ChallengeId, DiagnosticCode } from '../../shared/ids';

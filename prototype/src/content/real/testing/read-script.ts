@@ -1,5 +1,5 @@
 /**
- * Đọc docs/kich-ban-prototype.md theo "Quy ước đọc file" + "Quy ước thẻ thử thách" thành cấu trúc
+ * Đọc docs/prototype/kich-ban-prototype.md theo "Quy ước đọc file" + "Quy ước thẻ thử thách" thành cấu trúc
  * thô — CHỈ dùng trong test (so khớp hai chiều với dữ liệu ở src/content/real). Không import
  * trong ứng dụng.
  *

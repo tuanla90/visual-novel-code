@@ -1,7 +1,7 @@
 /**
  * NỘI DUNG MẪU — KHÔNG PHẢI KỊCH BẢN THẬT.
  * Mục đích: chạy thử trọn luồng 5 phần với đủ mọi loại node. 1–3 lời mỗi phần.
- * Gói `noi-dung` (gói 5) thay bằng dữ liệu chuyển từ docs/kich-ban-prototype.md.
+ * Gói `noi-dung` (gói 5) thay bằng dữ liệu chuyển từ docs/prototype/kich-ban-prototype.md.
  */
 import type { StoryContent } from '../../story/types';
 

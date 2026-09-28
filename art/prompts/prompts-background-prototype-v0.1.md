@@ -1,6 +1,6 @@
 # Bộ prompt tạo cảnh nền prototype — CLB Thám Tử Dữ Liệu (v0.1)
 
-> Phạm vi: ba cảnh nền của `prototype-scope-down-v0.1.md`, cộng một ảnh neo phong cách để giữ hình ảnh nhất quán.
+> Phạm vi: ba cảnh nền của [`prototype-scope-down-v0.1.md`](../../docs/prototype/prototype-scope-down-v0.1.md), cộng một ảnh neo phong cách để giữ hình ảnh nhất quán.
 >
 > Định dạng mỗi job tuân theo mẫu `[id]`, `[type]`, `[ref]` như ví dụ cung cấp. Phần mô tả bên trong dùng schema prompt tạo ảnh: use case, asset type, scene, style, composition, lighting và constraints.
 

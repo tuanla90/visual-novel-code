@@ -1,4 +1,4 @@
-/** Chuỗi kể chuyện thật, đúng thứ tự xuất hiện trong docs/kich-ban-prototype.md. */
+/** Chuỗi kể chuyện thật, đúng thứ tự xuất hiện trong docs/prototype/kich-ban-prototype.md. */
 import type { StoryContent } from '../../../story/types';
 import { analysisSequences } from './analysis';
 import { debriefSequences } from './debrief';
