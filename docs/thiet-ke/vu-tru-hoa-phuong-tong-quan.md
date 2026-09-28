@@ -1,7 +1,9 @@
 # Vũ trụ Hoa Phượng — Tài liệu tổng quan (v0.1)
 
-> Chuỗi game học lập trình nhập vai, cùng diễn ra ở Trường Đại học Hoa Phượng. Mỗi ngôn ngữ là một câu lạc bộ với câu chuyện riêng; nhân vật và sự kiện đan chéo giữa các game.
+> Chuỗi game học lập trình nhập vai, cùng diễn ra ở Trường Đại học Chấn Hưng. Mỗi ngôn ngữ là một câu lạc bộ với câu chuyện riêng; nhân vật và sự kiện đan chéo giữa các game.
 > Tài liệu này giữ **hướng chung, nhân vật chung, dòng thời gian và kiến trúc dùng chung**. Chi tiết từng game nằm trong tài liệu thiết kế riêng (ví dụ `clb-tham-tu-du-lieu-GDD-v0.5.md`).
+>
+> **Cập nhật 28/09/2026 (QĐ-074, QĐ-080 → QĐ-082):** trường đổi tên thành **Trường Đại học Chấn Hưng** (tên trường là biến trong nội dung); tên chuỗi "Vũ trụ Hoa Phượng" và tên dòng game "Đội Robot Hoa Phượng" **chưa chốt**, giữ tạm. Bộ ba của dòng SQL cùng năm 1 (Tùng, nhân vật chính, Hà Vy); chú Bảy đổi thành chú Cường; câu hô của dòng SQL là "Số liệu đây!". Nguồn chuẩn về nhân vật là `nhan-vat.yaml` (đặc tả nội dung §4).
 
 ---
 
@@ -20,7 +22,7 @@
 
 ---
 
-## 2. Trường Đại học Hoa Phượng (bối cảnh chung)
+## 2. Trường Đại học Chấn Hưng (bối cảnh chung)
 
 Trường đại học đa ngành hư cấu ở một thành phố cỡ vừa: kinh tế, kế toán, du lịch, luật, ngôn ngữ, thiết kế, kỹ thuật, công nghệ thông tin.
 
@@ -65,7 +67,7 @@ Mỗi dòng có **câu cửa miệng đặc trưng** thay cho "Objection!":
 
 | Dòng | Câu hô khi phản bác |
 |---|---|
-| SQL | **"Có số liệu đây!"** |
+| SQL | **"Số liệu đây!"** |
 | HTML/CSS | **"Nhìn kỹ đây!"** |
 | Robotics | **"Chạy thử là biết!"** |
 | Game | **"Test lại đi!"** |
@@ -187,14 +189,14 @@ Xem tài liệu thiết kế riêng. Tóm tắt:
 
 | Nhân vật | Nhà | Vai trong các dòng khác |
 |---|---|---|
-| **Tùng** | SQL (bạn cùng phòng) | Cộng sự chính của dòng Game; cộng tác viên ảnh ở Truyền thông |
+| **Tùng** | SQL (bạn cùng phòng KTX của nhân vật chính, thành viên CLB Thám Tử, trong bộ ba; giỏi tìm kiếm trên bản đồ) | Cộng sự chính của dòng Game; cộng tác viên ảnh ở Truyền thông |
 | **Minh Anh** | SQL (chủ nhiệm CLB Thám Tử) | Khách hàng ở Truyền thông; người chơi thử khó tính ở Game |
-| **Hà Vy** | SQL (trợ thủ) | Giúp tính toán ở Robotics; kiểm toán ở Đi Làm |
+| **Hà Vy** | SQL (năm 1 Toán ứng dụng, trong bộ ba; giỏi logic toán, diễn giải bằng ẩn dụ toán) | Giúp tính toán ở Robotics; kiểm toán ở Đi Làm |
 | **Quân** | SQL (rival) | Trọng tài giải trong trường ở Robotics; đối tác ở Đi Làm |
 | **Khánh** | SQL (người đứng sau bức thư) | Nhân vật chính phụ ở Robotics (tuyến chuộc lỗi); mở startup ở Đi Làm |
 | **Thầy Khải** | SQL (cố vấn) | Cố vấn kỹ thuật chung của mọi CLB |
 | **Thầy Quang** | SQL (Phó hiệu trưởng) | Người trao giải, chủ trì các buổi duyệt quan trọng |
-| **Chú Bảy** | SQL (bảo vệ KTX) | Xuất hiện ở KTX mọi dòng |
+| **Chú Cường** | SQL (bảo vệ KTX, chú ruột của Tùng; trước là "chú Bảy") | Xuất hiện ở KTX mọi dòng |
 | **Chị Linh** | SQL (cựu chủ nhiệm, du học) | Lời nhắn, email thỉnh thoảng; có thể trở về ở Đi Làm |
 | **Bảo** | Truyền thông (rival) | Vẽ hình cho game ở dòng Game |
 | **Chị Ngọc Hân** | Truyền thông | Người lo truyền thông cho giải robot, ngày hội |
@@ -218,9 +220,9 @@ Xem tài liệu thiết kế riêng. Tóm tắt:
 
 1. **Không tiết lộ nút thắt của dòng trước ở dòng sau** một cách bắt buộc. Người chơi Robotics có thể chưa chơi SQL: chuyện Khánh viết thư nặc danh chỉ được nhắc mơ hồ ("chuyện hồi học kỳ trước"); chuyện thầy Quang sáng lập CLB Thám Tử không được nhắc.
 2. **Mỗi game đứng độc lập.** Không bắt buộc chơi game trước; cameo là phần thưởng cho người đã chơi, không phải điều kiện hiểu truyện.
-3. **Tên, ngành, năm học, tính cách** của nhân vật chung ghi trong một **bảng nhân vật gốc** duy nhất; mọi kịch bản tra bảng này.
+3. **Tên, ngành, năm học, tính cách** của nhân vật chung ghi trong một **bảng nhân vật gốc** duy nhất — `nhan-vat.yaml` (đặc tả nội dung §4); mọi kịch bản tra bảng này.
 4. **Địa điểm và sự kiện** dùng chung một lịch năm học.
-5. **Giọng nói nhân vật ổn định:** Tùng luôn "Tui cá là…", Hà Vy luôn đẩy kính, Quân luôn điềm tĩnh.
+5. **Giọng nói nhân vật ổn định:** Tùng luôn "Tớ cá là…", Hà Vy luôn "Khoan, tính lại đã." và đẩy kính, Quân luôn điềm tĩnh. Sinh viên cùng khóa xưng "tớ – cậu", khóa dưới gọi khóa trên "anh/chị"; người lớn gọi kèm tên kiểu miền Bắc (bác Thịnh, chú Cường).
 
 ---
 

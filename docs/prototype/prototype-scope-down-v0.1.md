@@ -4,6 +4,8 @@
 >
 > Prototype không phải bản demo thương mại và không phải Vụ 1 hoàn chỉnh. Mục tiêu của nó là trả lời nhanh, với chi phí thấp, liệu trải nghiệm **tìm manh mối → viết truy vấn → diễn giải kết quả → dùng bằng chứng để phản bác** có dễ hiểu, có giá trị học tập và có đủ hấp dẫn để tiếp tục đầu tư hay không.
 >
+> **Trạng thái 28/09/2026:** tài liệu này là phạm vi của **prototype vòng thử nghiệm 1** và vẫn đúng cho prototype đang chạy. Với bản MVP, nhiều mục đã bị các quyết định sau thay: §2.2 và §8 (bản đồ, tạo nhân vật, uy tín, xếp hạng — QĐ-076, QĐ-077); §2.3 (Tùng, bộ ba — QĐ-074, QĐ-081); §4.2–§4.4 và §5.1 (thứ tự thử thách, dữ liệu BC24A, câu OR 14 dòng, bàn làm việc với giấy nhớ — QĐ-071 → QĐ-073); §4.4 (phản biện 5 nhịp, câu hô "Số liệu đây!" — QĐ-082, QĐ-083); trường nay là Đại học Chấn Hưng (QĐ-080). Khi làm MVP, theo `docs/lich-su-quyet-dinh.md`.
+>
 > Tài liệu liên quan:
 > - [`clb-tham-tu-du-lieu-GDD-v0.5.md`](../thiet-ke/clb-tham-tu-du-lieu-GDD-v0.5.md)
 > - [`vu1-buoi-giai-trinh-kich-ban.md`](../thiet-ke/vu1-buoi-giai-trinh-kich-ban.md)

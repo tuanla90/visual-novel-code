@@ -1,4 +1,6 @@
 # BẢN ĐỀ XUẤT KỊCH BẢN TOÀN DIỆN (FULL SCRIPT PROPOSALS)
+
+> **Trạng thái 28/09/2026: đề xuất chưa duyệt, đã lỗi thời.** Viết dựa trên kịch bản prototype cũ (thử thách 1 = tên H, câu OR 24 dòng, Tùng rời đi). Các quyết định QĐ-072 → QĐ-083 đã đổi thứ tự thử thách, dữ liệu, vai Tùng/Hà Vy, tên bác Tư (→ bác Thịnh, bảo vệ), câu hô ("Số liệu đây!") và cấu trúc buổi giải trình. Chỉ dùng để tham khảo câu chữ khi viết lại nội dung (đợt 16 / gói kịch bản MVP); không áp dụng nguyên khối.
 ## CLB Thám Tử Dữ Liệu — Đại học Hoa Phượng
 
 > **Người quản lý kịch bản:** Senior Narrative Director & Subagent Manager  

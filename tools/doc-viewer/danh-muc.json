@@ -3,16 +3,17 @@
     "docs/mockups/": "Mockup giao diện (docs/mockups/)"
   },
   "ghi_chu_chung": [
-    "**Đọc sổ quyết định trước**: nó là thước đo cho mọi tài liệu sau. Không cần đọc hết 79 mục — đọc phần đầu (luật, thứ tự ưu tiên) và kỹ QĐ-070 → QĐ-079; các QĐ cũ hơn thì bấm link khi tài liệu khác nhắc tới.",
-    "**Bảy chỗ mâu thuẫn lớn nhất** tìm được khi đánh giá (mỗi tài liệu có danh sách chi tiết ở mục “Cần rà khi đọc”):",
-    "① Thứ tự ưu tiên khi mâu thuẫn (lich-su-quyet-dinh.md:11) đã cũ: xếp tài liệu phạm vi prototype trên sổ QĐ, trong khi QĐ-071 → QĐ-077 của user đã lật nhiều mục; chưa có kịch bản prototype, đặc tả, MVP trong danh sách.",
-    "② Lớp của Hoài: QĐ-073 ghi BC24A, QĐ-077 ghi QT24B (QĐ-077 viết trước nhưng đứng sau vì đổi số).",
-    "③ Cách kết buổi giải trình: kịch bản Vụ 1 và GDD kết bằng truy vấn ra đúng một người; prototype (QĐ-023/024) dạy “2 dòng chưa đủ kết luận, cần xác minh độc lập”. MVP theo hướng nào chưa có QĐ.",
-    "④ Nhân vật: Tùng “tớ” và “Tớ cá là…” (QĐ-074) nhưng nhiều nơi còn “tui”; Hà Vy xưng “mình” (QĐ-022) hay “tớ” (đặc tả); họ Hà Vy “Lê” (GDD) hay “Trần” (đặc tả); Hà Vy “không biết SQL” (GDD) hay dẫn SQL (QĐ-021/072).",
-    "⑤ Thanh uy tín, hết vạch thì hoãn, xếp hạng S/A/B/C (QĐ-077) căng với “không phán đúng/sai” (QĐ-071), “không thanh uy tín, không hạng” (QĐ-018) và “không có bad ending” (đặc tả).",
-    "⑥ Thứ tự giữa 8 gói MVP (QĐ-077) và các gói chuẩn hóa 12a → 16 (QĐ-079): 12a-2 xóa đúng các tệp mà gói kịch bản/nội dung MVP sẽ ghi vào.",
-    "⑦ prototype/README.md:106 (tài liệu đưa nhóm thử nghiệm) còn ghi telemetry lưu câu SQL người chơi gõ — trái QĐ-065 (lich-su-quyet-dinh.md:387). Liên quan quyền riêng tư, nên sửa sớm.",
-    "Mẹo: bấm `tệp.md:123` hoặc “dòng 123” trong thẻ đánh giá để nhảy tới đúng chỗ (dòng được tô vàng); bấm QĐ-xxx để mở mục đó trong sổ; tab “Nguồn (có số dòng)” để xem nguyên văn."
+    "**Đọc sổ quyết định trước**: đọc phần đầu (luật, thứ tự ưu tiên) và kỹ QĐ-070 → QĐ-083; các QĐ cũ hơn thì bấm link khi tài liệu khác nhắc tới.",
+    "**Cập nhật chiều 28/09:** GDD, tổng quan vũ trụ, kịch bản Vụ 1 và đặc tả nội dung đã được sửa theo QĐ-080 → QĐ-083 (có khối \"Cập nhật 28/09\" ở đầu mỗi tệp). Thẻ đánh giá tác động bên dưới viết **trước** lần sửa này, nên số dòng dẫn và một số điểm \"cần rà\" có thể đã được xử lý.",
+    "**Bảy chỗ mâu thuẫn lớn nhất** tìm được khi đánh giá — tình trạng sau QĐ-083:",
+    "① Thứ tự ưu tiên khi mâu thuẫn (lich-su-quyet-dinh.md:11) đã cũ — **còn treo**.",
+    "② Lớp của Hoài: QĐ-073 ghi BC24A, QĐ-077 ghi QT24B — **còn treo**.",
+    "③ Cách kết buổi giải trình — **đã chốt** (QĐ-082): nhịp 5 là \"chưa đủ kết luận, cần nguồn xác minh độc lập\", không kết bằng truy vấn ra một người.",
+    "④ Nhân vật (xưng hô, câu cửa miệng, vai Hà Vy) — **phần lớn đã chốt** (QĐ-080, QĐ-081); còn treo họ đầy đủ của Minh Anh (Nguyễn/Lê) và Hà Vy (Lê/Trần).",
+    "⑤ Uy tín, xếp hạng so với \"không phán đúng/sai\" — **đã chốt** (QĐ-080, QĐ-083): màn thử thách không phán; uy tín chỉ ở buổi giải trình; xếp hạng không tính gợi ý.",
+    "⑥ Thứ tự giữa 8 gói MVP (QĐ-077) và các gói chuẩn hóa 12a → 16 (QĐ-079) — **còn treo**.",
+    "⑦ prototype/README.md:106 còn ghi telemetry lưu câu SQL người chơi gõ, trái QĐ-065 — **còn treo**, nên sửa sớm vì liên quan quyền riêng tư.",
+    "Mẹo: bấm `tệp.md:123` hoặc “dòng 123” trong thẻ đánh giá để nhảy tới đúng chỗ; bấm QĐ-xxx để mở mục đó trong sổ; tab “Nguồn (có số dòng)” để xem nguyên văn."
   ],
   "giai_doan": [
     {

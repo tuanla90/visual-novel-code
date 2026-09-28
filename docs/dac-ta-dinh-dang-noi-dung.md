@@ -1,6 +1,8 @@
 # Đặc tả định dạng nội dung — CLB Thám Tử Dữ Liệu
 
-Phiên bản 0.1 · 28/09 · theo QĐ-075 (kèm QĐ-071 → QĐ-074)
+Phiên bản 0.2 · 28/09 · theo QĐ-075 (kèm QĐ-071 → QĐ-074), cập nhật theo QĐ-080 → QĐ-083
+
+> **Thay đổi ở 0.2:** nhân vật theo QĐ-080/081 (bộ ba cùng năm 1, Hà Vy không giải thích cú pháp SQL, bác Tư → bác Thịnh) (§4); **sổ tay**: trang sổ chị Linh hiện qua hoạt cảnh, người chơi chép vào sổ cá nhân qua câu kiểm tra toán của Hà Vy — cú pháp mới `[TRA SỔ]`, `[CHÉP SỔ]` và thư mục `so-tay/` (§2, §9.2, §12.5); **bỏ gợi ý 3 cấp** và lời nhận xét theo mã chẩn đoán (§9.2, §9.5); **buổi phản biện** trừ uy tín, Minh Anh giải cứu (§7); luật kiểm tra mới cho buổi phản biện và dữ liệu hoa thường (§14); ví dụ thử thách 1 viết lại (§16.1). Cú pháp sổ tay là đề xuất, hoàn thiện khi làm gói 12a-1 / đợt 15.
 
 Tài liệu này quy định cách viết **toàn bộ nội dung** của game (lời thoại, lựa chọn, thử thách, hồ sơ, nhân vật, dữ liệu SQL) để:
 
@@ -69,10 +71,13 @@ prototype/noi-dung/
 │   ├── c1-lop-nao.md
 │   └── c2-ten-h.md
 ├── ho-so/                     # thẻ manh mối, tài liệu, vật chứng (§12)
+├── so-tay/                    # trang sổ chị Linh + mục vào sổ cá nhân, mỗi trang một file (§12.5)
+│   ├── where.md
+│   └── and-or.md
 │   ├── manh-moi.md
 │   └── tai-lieu.md
 └── chung/
-    └── loi-chung.md           # lời dùng chung: nhận xét theo mã chẩn đoán, gợi ý chuẩn
+    └── loi-chung.md           # lời dùng chung: Tùng khi người chơi bí, Hà Vy khi con số bất thường, soát hồ sơ, Minh Anh giải cứu
 ```
 
 Bộ đọc gom tất cả file lại thành một khối dữ liệu. Định danh phải duy nhất trên **toàn bộ** thư mục, không chỉ trong một file.
@@ -84,12 +89,12 @@ Bộ đọc gom tất cả file lại thành một khối dữ liệu. Định d
 | Khái niệm | Viết thế nào | Ví dụ | Ghi chú |
 |---|---|---|---|
 | **Chuỗi** (sequence) | tiêu đề `###` có định danh | `### bac-tu-3 — Soát sổ mượn phòng {cảnh: hanh-lang-b}` | Đơn vị nhỏ nhất chạy được. Chạy từ trên xuống. |
-| **Lời thoại** | `- **<người nói>** (<biểu cảm>): <lời>` | `- **ha-vy** (thinking): Khoan, đếm lại đã.` | `player` và `narrator` không ghi biểu cảm. |
+| **Lời thoại** | `- **<người nói>** (<biểu cảm>): <lời>` | `- **ha-vy** (thinking): Khoan, tính lại đã.` | `player` và `narrator` không ghi biểu cảm. |
 | **Chỉ dẫn** | `- [TỪ KHÓA …]` | `- [VÀO tung]` | Không hiển thị. |
 | **Cờ** (flag) | `co.<tên>` | `co.da-gap-bac-tu` | Đúng/sai. Mặc định sai. |
 | **Bộ đếm** | `dem.<tên>` | `dem.than-thiet.bac-tu` | Số nguyên ≥ 0. Mặc định 0. |
 | **Biến** | `{{<tên>}}` trong lời | `{{so-lop-toa-b}} lớp` | Xem §10. |
-| **Nhiệm vụ hiện tại** | `> NHIỆM VỤ: <chữ>` | `> NHIỆM VỤ: Giúp Bác Tư soát sổ` | Đổi chữ trên thanh trên cùng. |
+| **Nhiệm vụ hiện tại** | `> NHIỆM VỤ: <chữ>` | `> NHIỆM VỤ: Giúp Bác Thịnh soát sổ` | Đổi chữ trên thanh trên cùng. |
 
 **Mức độ thân thiết với NPC** (QĐ về nhiệm vụ phụ) là bộ đếm `dem.than-thiet.<npc>`. Không hiển thị thành thanh. Giao diện chỉ được thể hiện qua thái độ nhân vật và, nếu cần, dãy chấm trong Sổ vụ việc.
 
@@ -103,38 +108,58 @@ Nguồn chuẩn duy nhất về nhân vật, dùng cho **cả game lẫn ngườ
 tung:
   ten-hien-thi: Tùng
   ho-ten: Trần Tùng
-  vai: Thành viên CLB, bạn cùng phòng KTX của người chơi, người kéo người chơi vào CLB. Một trong bộ ba.
-  xung-ho: { voi-nguoi-choi: "tớ / cậu", voi-ha-vy: "tớ / cậu", voi-minh-anh: "em / chị" }
+  vai: >
+    Năm 1 Du lịch, thành viên CLB, bạn cùng phòng KTX của người chơi, người kéo người chơi vào CLB. Một trong bộ ba.
+    Giỏi tìm kiếm trên bản đồ: chỉ đường, nhắc lịch và nhiệm vụ; gợi ý "tra sổ chị Linh" khi cần (QĐ-081, QĐ-083).
+  xung-ho: { voi-nguoi-choi: "tớ / cậu", voi-ha-vy: "tớ / cậu", voi-minh-anh: "em / chị", voi-quan: "em / anh" }
   cau-cua-mieng: ["Tớ cá là…"]
   tinh-cach: Lạc quan, xởi lởi, hay đoán bừa, trung thành, biết nhận sai.
-  khong-bao-gio: ["Giải thích SQL đúng thay Hà Vy", "Nói giọng khinh người"]
+  khong-bao-gio: ["Giải thích SQL", "Tra sổ hộ người chơi", "Nói giọng khinh người"]
   bieu-cam: [neutral]                     # chỉ khai báo biểu cảm ĐÃ CÓ ẢNH
   mau: "#c2410c"
   anh: { ban-than: char-tung, chan-dung: char-tung }
 
 ha-vy:
   ten-hien-thi: Hà Vy
-  ho-ten: Trần Hà Vy
-  vai: Thành viên CLB, người hướng dẫn đọc dữ liệu. Một trong bộ ba.
-  xung-ho: { voi-nguoi-choi: "tớ / cậu", voi-tung: "tớ / cậu" }
-  cau-cua-mieng: ["Khoan, đếm lại đã.", "Đừng cá. Đếm.", "Kiểm hai lần, kết luận một lần."]
+  ho-ten: Trần Hà Vy                     # GDD ghi "Lê Hà Vy" — chờ chốt họ
+  vai: >
+    Năm 1 Toán ứng dụng, thành viên CLB. Một trong bộ ba. Giỏi logic toán: diễn giải bằng ẩn dụ toán,
+    câu kiểm tra của cô là bước chép sổ (§12.5); soát hồ sơ; gọi tên lỗi ở buổi phản biện (QĐ-080 → QĐ-083).
+  xung-ho: { voi-nguoi-choi: "tớ / cậu", voi-tung: "tớ / cậu", voi-minh-anh: "em / chị" }
+  cau-cua-mieng: ["Khoan, tính lại đã.", "Đừng cá. Đếm."]   # câu đáp Tùng đang cân nhắc "Đừng cá. Tính."
   tinh-cach: Điềm tĩnh, kỹ tính, ghét võ đoán, tốt bụng.
-  khong-bao-gio: ["Cố ý dẫn sai", "Nói 'đúng rồi' / 'sai rồi' về kết quả truy vấn trong màn thử thách"]
+  khong-bao-gio: ["Giải thích cú pháp SQL", "Cố ý dẫn sai", "Nói 'đúng rồi' / 'sai rồi' về kết quả truy vấn trong màn thử thách"]
   bieu-cam: [neutral, thinking, smile]
   mau: "#0f5c55"
+
+minh-anh:
+  ten-hien-thi: Minh Anh
+  vai: >
+    Năm 3 Luật kinh tế, chủ nhiệm CLB. Giao vụ; dẫn người chơi đi gặp thầy cô, người quản lý dữ liệu → mở địa điểm mới.
+    Ở buổi giải trình: cảm xúc theo thanh uy tín; mỗi lần người chơi mất vạch thì giải cứu (xin làm lại, nói đỡ) (QĐ-083).
+  xung-ho: { voi-bo-ba: "chị / em" }
+  cau-cua-mieng: ["Rồi, việc hôm nay là…"]          # đang cân nhắc đổi
+  khong-bao-gio: ["Nói thay đáp án cho người chơi", "Hoàn lại vạch uy tín"]
+  bieu-cam: [neutral, worried, happy]
 
 quan:
   ten-hien-thi: Quân
   vai: Người của Ban Pháp chế – Kiểm tra Hội sinh viên. Chỉ xuất hiện từ phần Giải trình. KHÔNG phải thành viên CLB.
-  xung-ho: { voi-clb: "tôi / các bạn" }
+  xung-ho: { voi-clb: "tôi / các bạn", voi-nguoi-choi: "tôi / em" }
   tinh-cach: Lạnh, chính xác, hơi kẻ cả; biết công nhận khi sai.
   xuat-hien-tu: debrief                  # bộ đọc báo lỗi nếu Quân nói trước phần này
   bieu-cam: [neutral, smug, stunned]
+
+bac-tu:                                  # mã giữ nguyên khi đổi tên (QĐ-079 câu 4)
+  ten-hien-thi: Bác Thịnh                # trước là "Bác Thịnh" (QĐ-081)
+  vai: Bảo vệ giảng đường B, khoảng 55 tuổi; nhân chứng Vụ 1.
+  xung-ho: { voi-sinh-vien: "bác / cháu" }
+  bieu-cam: [neutral]
 ```
 
 Trường bắt buộc: `ten-hien-thi`, `vai`, `bieu-cam`. Các trường khác là hướng dẫn cho người viết; bộ đọc chỉ kiểm tra `bieu-cam` và `xuat-hien-tu`.
 
-Hai người nói đặc biệt không khai báo trong file: `player` (hiển thị nhãn "Bạn") và `narrator` (không nhãn).
+Hai người nói đặc biệt không khai báo trong file: `player` (hiển thị tên người chơi đặt; câu hô "Số liệu đây!", QĐ-082) và `narrator` (không nhãn). Tên nhân vật trong câu thoại viết bằng biến `{{nv.<mã>}}` (QĐ-079 câu 4), tên trường bằng `{{truong.ten-day-du}}` / `{{truong.ten-ngan}}` (QĐ-080).
 
 ---
 
@@ -145,7 +170,7 @@ hanh-lang-b:
   ten: Hành lang giảng đường B
   anh-nen: bg-corridor-b
   diem-xem-xet:
-    bac-tu:   { nhan: "Bác Tư",    loai: npc, vi-tri: [62, 55] }   # % theo chiều ngang, dọc
+    bac-tu:   { nhan: "Bác Thịnh",    loai: npc, vi-tri: [62, 55] }   # % theo chiều ngang, dọc
     hop-gop-y: { nhan: "Hộp góp ý", loai: vat, vi-tri: [30, 48] }
 
 phong-clb:
@@ -195,12 +220,12 @@ phong-clb:
 **Khi nhiều chuỗi cùng khớp một lần bấm:** chạy chuỗi có **nhiều điều kiện hơn**; nếu bằng nhau thì chuỗi viết trước. Nhờ vậy viết được lời thoại "mặc định" và lời thoại "đặc biệt" cho cùng một NPC:
 
 ```markdown
-### bac-tu-chao — Bác Tư, lần gặp đầu {cảnh: hanh-lang-b}
+### bac-tu-chao — Bác Thịnh, lần gặp đầu {cảnh: hanh-lang-b}
 - [KÍCH HOẠT] bấm: bac-tu
 - [LẶP] mỗi lần
 - **bac-tu** (neutral): Cậu sinh viên tìm ai?
 
-### bac-tu-tin — Bác Tư, khi đã thân {cảnh: hanh-lang-b}
+### bac-tu-tin — Bác Thịnh, khi đã thân {cảnh: hanh-lang-b}
 - [KÍCH HOẠT] bấm: bac-tu
 - [ĐIỀU KIỆN] dem.than-thiet.bac-tu >= 2
 - [LẶP] mỗi lần
@@ -236,7 +261,8 @@ Giữ nguyên cú pháp `[HỎI]` và `[CHỌN DÒNG]` hiện có.
 Luật:
 - Có **đúng một** lựa chọn `[ĐÚNG]`. Chọn sai: hiện phản hồi, cho chọn lại, không phạt. Chọn đúng: hiện phản hồi rồi đi tiếp.
 - Giao diện xáo thứ tự; nhãn (A), (B) không hiển thị; telemetry ghi `<mã câu hỏi>:<id>` và **lần chọn đầu tiên** (QĐ-035).
-- Được dùng ở chuỗi thường (loại 1). **Không** dùng trong màn thử thách (loại 3), vì màn thử thách không phán đúng/sai (QĐ-071).
+- Được dùng ở chuỗi thường (loại 1) và trong trang sổ (§12.5, bước chọn đoạn code). **Không** dùng trong màn thử thách (loại 3), vì màn thử thách không phán đúng/sai (QĐ-071).
+- **Ở buổi phản biện** (QĐ-082, QĐ-083) viết `[HỎI <mã> · trừ uy tín]` và `[CHỌN DÒNG <mã> · trừ uy tín]`: mỗi lần chọn sai mất 1 vạch, chạy khối `[KHI MẤT UY TÍN]` trong `chung/loi-chung.md` (Minh Anh đổi sắc mặt, xin làm lại hoặc nói đỡ, không nói đáp án), rồi cho chọn lại. Telemetry vẫn ghi lần chọn đầu tiên.
 - Phản hồi có thể nhiều câu, nối bằng ` <br> ` như hiện tại.
 
 ---
@@ -244,7 +270,7 @@ Luật:
 ## 8. Loại 2b — Lựa chọn rẽ nhánh
 
 ```markdown
-- [RẼ NHÁNH r-giup-bac-tu] player: "Bác Tư đang loay hoay với cuốn sổ mượn phòng…"
+- [RẼ NHÁNH r-giup-bac-tu] player: "Bác Thịnh đang loay hoay với cuốn sổ mượn phòng…"
   - {id: giup-ngay} Qua giúp bác một tay. → hậu quả: đi tới bac-tu-3
   - {id: de-sau} Để sau, giờ phải về phòng CLB. → hậu quả: đặt co.hen-bac-tu, đi tới phan-tich-02
 ```
@@ -275,7 +301,7 @@ Mỗi thử thách là một file trong `thu-thach/`. File gồm **phần khai b
 - Bảng được chọn: …                          ← chỉ khi bảng không khóa: danh sách bảng hiện trong ô chọn
 - Phép so sánh: bằng                          ← tập con của: bằng, bắt đầu bằng, có chứa, kết thúc bằng, thuộc danh sách
 - Số điều kiện: 1 → tối đa 2                  ← lúc mở màn → tối đa
-- Nhân vật: ha-vy (phải), tung (trái)
+- Nhân vật: ha-vy, tung                     ← xuất hiện theo kịch bản, không ngồi cạnh màn hình (QĐ-081)
 - SQL chuẩn:
   ```sql
   SELECT ma_lop, nganh, toa_nha FROM lop_sinh_hoat
@@ -300,7 +326,7 @@ Kịch bản trong màn thử thách là **danh sách khối**. Mỗi khối b�
 ## Kịch bản
 
 [KHI VÀO]
-- **ha-vy** (smile): Hộp góp ý với bookmark đều chỉ về một lớp. Cậu chỉ lo hàng WHERE thôi.
+- **tung** (neutral): Hộp góp ý với bookmark đều chỉ về một lớp. Tớ cá là tìm ra ngay!
 
 [KHI CHẠY · điều kiện = 1 · phép nối = OR]
 - …
@@ -315,7 +341,6 @@ Kịch bản trong màn thử thách là **danh sách khối**. Mỗi khối b�
 | `KHI SỬA` | Người chơi đổi một ô trong trình dựng (kèm bộ lọc). Dùng cho bước dẫn. |
 | `KHI KÉO NOTE` | Thả note vào ô giá trị. Thêm `lần đầu` để chỉ chạy một lần trong cả game. |
 | `KHI NGỒI YÊN <n> giây` | Không thao tác n giây. |
-| `KHI HỎI GỢI Ý <n>` | Lần bấm vào Hà Vy thứ n (1, 2, 3; bấm thêm thì lặp mức 3). |
 | `KHI GHI NOTE` / `KHI DÁN NOTE` | Mở tờ note trắng / dán lên tường. |
 
 **Bộ lọc** nối bằng dấu `·` (nghĩa là "và"). Chỉ dùng được các bộ lọc sau:
@@ -341,7 +366,9 @@ Kịch bản trong màn thử thách là **danh sách khối**. Mỗi khối b�
 | `[LÀM] đặt phép nối AND \| OR` | Nhân vật tự chọn phép nối. |
 | `[NỔI BẬT <vùng>]` | Viền nhấp nháy: `cot-1`, `gia-tri-1`, `cot-2`, `gia-tri-2`, `phep-noi`, `chay`, `ghi-note`, `tuong`. |
 | `[SANG BƯỚC <tên>]` | Chuyển bước (§9.3). |
-| `[THU GỌN <nhân vật>]` | Nhân vật thu xuống góc, vẫn có mặt. |
+| `[THU GỌN <nhân vật>]` | Nhân vật rời khung hình, vẫn có mặt trong cảnh. |
+| `[TRA SỔ <trang> · <phần>]` | Hoạt cảnh: một trang sổ chị Linh phóng to rồi đóng (`phần`: cú pháp, tâm đắc, lỗi thường gặp) (§12.5). |
+| `[CHÉP SỔ <trang>]` | Chạy trọn trang sổ: trang chị Linh → lời Hà Vy → chọn đoạn code → vào sổ cá nhân; xong quay lại màn (§12.5). |
 | `[HẬU QUẢ] …` | Như §13.2. |
 
 **Lời nào tự tắt, lời nào giữ:** lời trong khối có `bước` giữ nguyên tới khối kế tiếp; lời trong khối không có `bước` tự thu sau 7 giây (QĐ-072).
@@ -376,7 +403,7 @@ Màn có hướng dẫn (như c1) khai báo **danh sách bước**. Mỗi bướ
 
 ### 9.5 Lời chung
 
-`chung/loi-chung.md` chứa các khối dùng cho mọi thử thách (nhận xét theo mã chẩn đoán, lời khi ngồi yên, lời khi kéo note lần đầu). Engine ghép **khối của thẻ trước, khối chung sau**, nên thẻ luôn ghi đè được lời chung.
+`chung/loi-chung.md` chứa các khối dùng cho mọi thử thách: lời Tùng khi người chơi bí (`KHI NGỒI YÊN`, hoặc `mã chẩn đoán = …` · `lặp n lần`) kèm `[TRA SỔ … · lỗi thường gặp]`; lời Hà Vy khi con số bất thường (vd `số dòng = 0`, nói bằng ngôn ngữ toán); lời khi kéo note lần đầu. **Không còn lời nhận xét hiện theo từng mã chẩn đoán và gợi ý 3 cấp** (QĐ-080, QĐ-081); mã chẩn đoán chỉ dùng để chọn khối và ghi telemetry. Engine ghép **khối của thẻ trước, khối chung sau**, nên thẻ luôn ghi đè được lời chung.
 
 ---
 
@@ -512,7 +539,7 @@ Thẻ có `Dataset ẩn: có` được chấm thêm trên một bộ dữ liệu
 
 ---
 
-## 12. Hồ sơ vật chứng và giấy note
+## 12. Hồ sơ vật chứng, giấy note và sổ tay
 
 ### 12.1 Thẻ manh mối và tài liệu
 
@@ -538,7 +565,7 @@ Chạy tại chuỗi có chỉ dẫn `[SOÁT HỒ SƠ]` (đặt trước phần 
 
 ```markdown
 [KHI SOÁT · lệch dữ kiện]
-- **ha-vy** (thinking): Khoan, đếm lại đã. Tờ "{{note.tieu-de}}": {{soat.so-dong-lech}} dòng không khớp với dữ kiện {{soat.ten-du-kien}}: {{soat.ds-lech | noi}}.
+- **ha-vy** (thinking): Khoan, tính lại đã. Tờ "{{note.tieu-de}}": {{soat.so-dong-lech}} dòng không khớp với dữ kiện {{soat.ten-du-kien}}: {{soat.ds-lech | noi}}.
 [KHI SOÁT · thiếu dòng]
 - **ha-vy** (thinking): Còn {{soat.so-dong-thieu}} {{soat.don-vi}} khớp đủ dữ kiện nhưng chưa có trên tờ note.
 [KHI SOÁT · khớp]
@@ -546,6 +573,37 @@ Chạy tại chuỗi có chỉ dẫn `[SOÁT HỒ SƠ]` (đặt trước phần 
 ```
 
 Tờ nào lệch thì có nút mở lại đúng thử thách đó. Đây là chỗ duy nhất người chơi biết mình ghi sai (QĐ-071).
+
+### 12.5 Sổ tay (QĐ-083)
+
+Hai cuốn: **sổ chị Linh** (đủ nội dung từ đầu, để ở phòng CLB, chỉ hiện qua hoạt cảnh) và **sổ cá nhân** của người chơi (cuốn duy nhất có giao diện, lớn dần). Mỗi trang là một file `so-tay/<trang>.md`:
+
+```markdown
+# and-or — Nối điều kiện: AND và OR {trang sổ: and-or}
+
+- Loại: cú pháp                                ← cú pháp | tâm đắc | lỗi thường gặp
+- Mã chẩn đoán liên quan: or-connector, same-column-and   ← dùng cho luật kiểm §14
+
+## Trang chị Linh
+(chữ viết tay hiện trong hoạt cảnh; ngắn, có ví dụ)
+
+## Hà Vy
+- **ha-vy** (thinking): Hai vòng tròn: một vòng là các lớp ở tòa {{toa-hop-gop-y}}, một vòng là các lớp ngành {{nganh-bookmark}}. Lớp mình cần nằm ở phần chung của hai vòng.
+
+## Chọn đoạn code
+- (A) {id: giao} `WHERE toa_nha = '{{toa-hop-gop-y}}' AND nganh = '{{nganh-bookmark}}'` [ĐÚNG] → phản hồi: **ha-vy** (smile): Phần giao. Chép vào sổ đi.
+- (B) {id: hop} `WHERE toa_nha = '{{toa-hop-gop-y}}' OR nganh = '{{nganh-bookmark}}'` → phản hồi: **ha-vy** (neutral): Cái đó là phần hợp, lấy cả hai vòng rồi.
+
+## Vào sổ cá nhân
+- Chú thích: "Phần giao là AND, phần hợp là OR."
+```
+
+Luật:
+- `[CHÉP SỔ <trang>]` chạy trọn trang: hoạt cảnh trang chị Linh → lời Hà Vy → chọn đoạn code (loại 2a: đúng một `[ĐÚNG]`, chọn sai thì Hà Vy đáp bằng toán và chọn lại, **không phạt, không đếm**) → đoạn đúng cùng chú thích vào sổ cá nhân.
+- `[TRA SỔ <trang> · <phần>]` chỉ hiện trang chị Linh (vd Tùng gợi ý khi người chơi bí → phần `lỗi thường gặp`), không thêm gì vào sổ cá nhân.
+- Trang **tâm đắc / lỗi thường gặp** không có mục "Chọn đoạn code".
+- Cuối vụ, giấy nhớ của các nhiệm vụ được đính vào sổ cá nhân. Sổ cá nhân xuất ra được để in ôn tập (không in dữ liệu hay lời giải vụ án).
+- Ở buổi giải trình, sổ cá nhân chỉ để tự mở xem, không có bước bắt chọn trang (QĐ-082).
 
 ---
 
@@ -573,6 +631,7 @@ Nối bằng ` và ` hoặc ` hoặc `; `và` ưu tiên hơn `hoặc`; dùng ngo
 tăng dem.<tên>            tăng dem.<tên> <số>
 mở manh mối <định danh>   hiện tài liệu <định danh>
 đi tới <chuỗi>            mở nhiệm vụ phụ <chuỗi>
+chép sổ <trang>           trừ uy tín
 ```
 
 Nối bằng dấu phẩy, chạy theo thứ tự viết.
@@ -601,12 +660,16 @@ Bộ đọc dừng build khi gặp **lỗi**; in ra **cảnh báo** nhưng vẫn
 - `[HỎI]` không có đúng một `[ĐÚNG]`; `[RẼ NHÁNH]` có `[ĐÚNG]` hoặc lựa chọn thiếu hậu quả.
 - Biến dùng trong lời nhưng không định nghĩa; biến lặp vòng; bộ lọc hoặc hành động không có trong bảng §9.2.
 - Chuỗi không thể tới được từ `intro-00` (trừ chuỗi `gọi` có người gọi).
+- **Buổi phản biện (QĐ-082):** mỗi buổi giải trình có **đúng một lỗi chính** của đối thủ (một `[CHỌN DÒNG]` gắn mã chẩn đoán); mã đó phải nằm trong `Mã chẩn đoán liên quan` của một trang sổ đã được `[CHÉP SỔ]` trên **mọi** đường đi tới buổi đó; truy vấn của đối thủ chạy được và số dòng trước/sau khi sửa khác nhau.
+- Trang sổ: mục "Chọn đoạn code" có đúng một `[ĐÚNG]`; mọi đoạn code chạy được trên dữ liệu.
 - **Chạy 1.000 seed:** mỗi seed phải thỏa mọi ràng buộc; mọi biến có giá trị; SQL chuẩn của mọi thử thách chạy được và ra ≥ 1 dòng; mọi dòng cố định có mặt.
 
 **Cảnh báo:**
 - Số viết cứng trong lời thoại (§10.3).
 - Lời thoại dài quá 2 dòng hộp thoại (~35 từ; ngưỡng đặt trong cấu hình).
 - Nhiệm vụ phụ không có hậu quả nào (người chơi làm mà không được gì).
+- **Dữ liệu mạch chính có hai giá trị chỉ khác nhau hoa thường** trong cùng một cột (QĐ-082: sắc thái hoa thường chỉ dạy ở nhiệm vụ phụ; dữ liệu mạch chính phải nhất quán, trừ vụ cố ý dạy bài học này).
+- Câu hỏi ở buổi phản biện nên nói rõ đọc cái gì (điều kiện, số dòng hay ý nghĩa các dòng); phương án sai phản ánh hiểu lầm có thật (người viết tự kiểm, máy không kiểm được).
 
 Lệnh (gói chuẩn hóa sẽ tạo): `npm run kiem-noi-dung` để chạy riêng; tự chạy trước `build` và trong `test`.
 
@@ -628,7 +691,7 @@ Bước 1 của QĐ-075: chuyển **nguyên văn** nội dung hiện tại sang 
 | `[HỎI]`, `[CHỌN DÒNG]` | giữ nguyên (loại 2a) |
 | Thẻ thử thách: `[BƯỚC n · nổi bật: …]` | danh sách `## Bước` + khối `[KHI SỬA · bước = …]` |
 | `[KHI: <mã>]` | `[KHI CHẠY · mã chẩn đoán = <mã>]` |
-| `[GỢI Ý n]` | `[KHI HỎI GỢI Ý n]` |
+| `[GỢI Ý n]` | **bỏ** (QĐ-080: không còn gợi ý 3 cấp); dùng `[TRA SỔ]` qua lời Tùng |
 | `[KHI ĐÚNG]` | **bỏ** (QĐ-071); tạm chuyển thành `[KHI CHẠY · khớp SQL chuẩn]` ở giai đoạn chuyển để game chạy y hệt |
 | "Giá trị cho trình dựng: `H`…" | `Note: giá trị "H" · …` |
 | Số viết cứng ("Hai mươi tư", "mười") | giữ và gắn `[SỐ CỐ ĐỊNH]` ở giai đoạn chuyển; thay bằng biến ở bước viết lại |
@@ -653,7 +716,7 @@ Tiêu chí xong bước 1: toàn bộ test hiện có (trừ các test bị xóa
 - Cột: ma_lop, nganh, toa_nha 🔒
 - Phép so sánh: bằng
 - Số điều kiện: 1 → tối đa 2
-- Nhân vật: ha-vy (phải), tung (trái, vào sau)
+- Nhân vật: tung, ha-vy                     ← xuất hiện theo kịch bản (QĐ-081)
 - SQL chuẩn:
   ```sql
   SELECT ma_lop, nganh, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí';
@@ -663,7 +726,7 @@ Tiêu chí xong bước 1: toàn bộ test hiện có (trừ các test bị xóa
 - Soát: mỗi dòng phải khớp "toa_nha = 'B'" (hộp góp ý giảng đường B), "nganh = 'Báo chí'" (bookmark ngành Báo chí)
 
 ## Bước
-- mo-dau → sang: chon-cot sau 3 giây
+- mo-dau → (chuyển trong khối)
 - chon-cot → sang: dien-gia-tri khi SỬA · có điều kiện toa_nha
 - dien-gia-tri → sang: chay-1 khi SỬA · điều kiện = 1
 - chay-1
@@ -676,85 +739,72 @@ Tiêu chí xong bước 1: toàn bộ test hiện có (trừ các test bị xóa
 ## Kịch bản
 
 [KHI VÀO · bước = mo-dau]
-- **ha-vy** (smile): Hộp góp ý với bookmark đều chỉ về một lớp. Bảng và cột tớ chọn sẵn rồi, cậu chỉ lo hàng WHERE thôi.
+- **tung** (neutral): Hộp góp ý với bookmark đều chỉ về một lớp. Lọc lớp thì… hình như sổ chị Linh có trang "lọc" đấy. Tra thử đi!
+- [CHÉP SỔ where]
+- [SANG BƯỚC chon-cot]
 
-[KHI SỬA · bước = chon-cot]
+[KHI VÀO · bước = chon-cot]
 - [NỔI BẬT cot-1]
-- **ha-vy** (neutral): WHERE là bộ lọc, như nút Filter trong Excel. Bắt đầu từ hộp góp ý: ô đầu tiên chọn cột toa_nha.
 
 [KHI SỬA · bước = dien-gia-tri]
 - [NỔI BẬT gia-tri-1]
-- **ha-vy** (neutral): Phép so sánh để "bằng". Giờ kéo tờ note "B" trên tường, thả vào ô giá trị.
 
 [KHI SỬA · bước = chay-1]
 - [NỔI BẬT chay]
-- **ha-vy** (smile): Câu SQL bên dưới đọc là: chỉ giữ lớp có toa_nha bằng B. Bấm Chạy xem.
 
 [KHI CHẠY · bước = chay-1 · có điều kiện toa_nha bằng 'B' · điều kiện = 1]
-- **ha-vy** (thinking): {{kq.so-dong}} lớp ở tòa B: {{kq.ds.ma_lop | noi}}. Vẫn còn nhiều. Bookmark còn nói gì nữa?
-- [CHỜ 2 giây]
-- [VÀO tung]
-- **tung** (neutral): Trà tắc tới đây! Ơ, {{kq.so-dong}} lớp à? Dễ! Tớ cá là thêm dòng nganh bằng Báo chí, nối OR vào, kiểu gì chả ra.
+- **tung** (neutral): {{kq.so-dong}} lớp ở tòa B. Vẫn nhiều nhỉ… Tớ cá là thêm dòng nganh bằng Báo chí, nối OR vào, kiểu gì chả ra.
 - [LÀM] thêm điều kiện nganh bằng (để trống)
 - [LÀM] đặt phép nối OR
-- [CHỜ 2 giây]
 - [NỔI BẬT gia-tri-2]
-- **ha-vy** (neutral): Được, thử cách của Tùng xem. Cậu kéo tờ note "Báo chí" vào ô giá trị dòng thứ hai.
 - [SANG BƯỚC tung-vao]
 
 [KHI CHẠY · bước = chay-or · phép nối = OR · số dòng > kq.lan-truoc.so-dong]
 - **tung** (neutral): Ơ… {{kq.so-dong}} lớp? Thêm manh mối mà lại ra nhiều hơn lúc nãy? Tớ cá là máy lỗi.
-- [CHỜ 2 giây]
+- **ha-vy** (thinking): Đừng cá. Đếm. Khoan, tính lại đã.
+- [CHÉP SỔ and-or]
 - [NỔI BẬT phep-noi]
-- **ha-vy** (thinking): Đừng cá. Đếm. OR là thỏa bất kỳ: lớp nào ở tòa B, hoặc lớp nào ngành Báo chí, đều lọt vào. Mình cần lớp thỏa cả hai cùng lúc. Đổi phép nối sang AND rồi chạy lại.
 - [SANG BƯỚC sua-and]
 
 [KHI CHẠY · bước = sua-and · phép nối = AND · số dòng = 1]
-- **tung** (neutral): Một lớp: {{kq.dong-1.ma_lop}}! OR là "hoặc", AND là "và"… Được rồi, lần này tớ cá thua.
-- [CHỜ 2 giây]
+- **tung** (neutral): Một lớp: {{kq.dong-1.ma_lop}}! Được rồi, lần này tớ cá thua.
 - [NỔI BẬT ghi-note]
-- **ha-vy** (smile): Giờ bấm "Ghi thành dữ kiện". Tờ note này cậu tự ghi.
 - [SANG BƯỚC ghi-note]
 
 [KHI CHẠY · bước = chay-or · phép nối = AND · số dòng = 1]
-- **tung** (neutral): Ơ, AND luôn à? Ừ nhỉ… phải khớp cả hai mới đúng là lớp mình tìm.
-- [CHỜ 2 giây]
+- **tung** (neutral): Ơ, AND luôn à? Ừ nhỉ… phải khớp cả hai.
 - [NỔI BẬT ghi-note]
-- **ha-vy** (smile): Giờ bấm "Ghi thành dữ kiện". Tờ note này cậu tự ghi.
 - [SANG BƯỚC ghi-note]
 
 [KHI GHI NOTE · bước = ghi-note]
 - [NỔI BẬT tuong]
-- **ha-vy** (neutral): Xong thì kéo tờ note dán lên tường, cạnh mấy manh mối kia.
 
 [KHI DÁN NOTE · bước = ghi-note]
-- **ha-vy** (smile): Dữ kiện đầu tiên của cậu đấy. Vòng sau cậu tự làm nhé, tớ ngồi đây, cần thì gọi.
-- [CHỜ 2 giây]
-- **tung** (neutral): Vòng sau cậu cứ làm, tớ ngồi uống trà cổ vũ. Không cá nữa đâu… chắc thế.
+- **tung** (neutral): Dữ kiện đầu tiên của cậu đấy! Vòng sau cậu cứ làm, tớ đi dò đường chỗ khác.
 - [THU GỌN tung]
 - [SANG BƯỚC tu-do]
 
-[KHI CHẠY]
-- **ha-vy** (neutral): {{kq.so-dong | dem "dòng"}}. Đọc lướt một lượt, thấy ổn thì ghi lại thành dữ kiện.
+[KHI CHẠY · số dòng = 0]
+- **ha-vy** (thinking): Khoan, tính lại đã. Tập rỗng — không lớp nào thỏa. Xem lại mấy tờ note trên tường đi.
 
-[KHI HỎI GỢI Ý 1]
-- **ha-vy** (neutral): Lớp cần tìm phải khớp CẢ hai manh mối: ở tòa B, và thuộc ngành Báo chí.
-[KHI HỎI GỢI Ý 2]
-- **ha-vy** (thinking): Hai điều kiện: toa_nha bằng B, nganh bằng Báo chí. Phép nối nào nghĩa là "cả hai cùng lúc"?
-[KHI HỎI GỢI Ý 3]
-- **ha-vy** (thinking): Gần như đáp án: WHERE toa_nha = 'B' AND nganh = 'Báo chí'.
+[KHI NGỒI YÊN 40 giây]
+- **tung** (neutral): Bí à? Hay mở sổ chị Linh ra tra đi.
+- [TRA SỔ and-or · lỗi thường gặp]
+
+[KHI CHẠY]
+- (không lời — chỉ hiện bảng kết quả và số dòng)
 ```
 
-Lưu ý: khối `[KHI CHẠY]` không bộ lọc đặt **cuối** để làm mặc định, và không có chữ "đúng/sai".
+Lưu ý: khối `[KHI CHẠY]` không bộ lọc đặt **cuối** để làm mặc định, và không có chữ "đúng/sai". Không nhân vật nào giải thích cú pháp: cú pháp đến từ trang sổ chị Linh, Hà Vy chỉ nói bằng ngôn ngữ toán, bước làm được dẫn bằng `[NỔI BẬT]`.
 
-### 16.2 Nhiệm vụ phụ Bác Tư, lần 3 (loại 1 + loại 2b + true ending)
+### 16.2 Nhiệm vụ phụ Bác Thịnh, lần 3 (loại 1 + loại 2b + true ending)
 
 ```markdown
-### bac-tu-3-moi — Bác Tư loay hoay với sổ mượn phòng {cảnh: hanh-lang-b}
+### bac-tu-3-moi — Bác Thịnh loay hoay với sổ mượn phòng {cảnh: hanh-lang-b}
 - [KÍCH HOẠT] bấm: bac-tu
 - [ĐIỀU KIỆN] dem.than-thiet.bac-tu = 2 và phần = analysis
 - **bac-tu** (neutral): Cháu đấy à. Sổ mượn phòng tuần này bác soát mãi không khớp.
-- [RẼ NHÁNH r-bac-tu-3] player: "Bác Tư đang loay hoay với cuốn sổ mượn phòng…"
+- [RẼ NHÁNH r-bac-tu-3] player: "Bác Thịnh đang loay hoay với cuốn sổ mượn phòng…"
   - {id: giup-ngay} Để cháu soát giúp bác. → hậu quả: đi tới bac-tu-3-lam
   - {id: de-sau} Cháu phải về phòng CLB, lát cháu quay lại ạ. → hậu quả: đặt co.hen-bac-tu
 
@@ -775,3 +825,4 @@ Lưu ý: khối `[KHI CHẠY]` không bộ lọc đặt **cuối** để làm m�
 4. **Seed cho người chơi** khi bật ngẫu nhiên: lấy từ câu trả lời với Tùng ở phần mở đầu (GDD) hay ngẫu nhiên thuần? Ảnh hưởng tới khả năng hai người chơi so đáp án với nhau.
 5. **Thứ tự dòng dữ liệu** có cần cố định để giữ bẫy `LIMIT` như QĐ-048 không, hay bỏ bẫy này vì vòng chính không còn dạy `LIMIT`?
 6. **Bốn câu hỏi của kế hoạch chuẩn hóa** (QĐ-079): cách sinh dữ liệu, dời cú pháp `[KÍCH HOẠT]` sang đợt 13, model từng gói, tên nhân vật thành biến `{{nv.<mã>}}` (sẽ thêm vào mục 10). Xem cuối `docs/ke-hoach-goi-chuan-hoa.md`.
+7. **Cú pháp sổ tay** (`[TRA SỔ]`, `[CHÉP SỔ]`, file `so-tay/`) mới là đề xuất ở bản 0.2; chốt khi làm gói 12a-1 (bộ đọc) và đợt 15 (giao diện sổ cá nhân).

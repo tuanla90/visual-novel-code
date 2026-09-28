@@ -1,7 +1,15 @@
 # Vụ 1 — Buổi giải trình (kịch bản lời thoại)
 
-> Thuộc tài liệu thiết kế v0.3 · Buổi 4 của vụ "Bức thư nặc danh"
+> Viết theo tài liệu thiết kế v0.3 · Buổi 4 của vụ "Bức thư nặc danh"
 > Thời lượng dự kiến: 15–25 phút chơi
+>
+> **Lưu ý 28/09/2026 — bản này chưa viết lại theo các quyết định mới.** Khi mâu thuẫn, `docs/lich-su-quyet-dinh.md` thắng:
+> - **Dữ liệu và kiến thức (QĐ-073, QĐ-077):** MVP dùng dữ liệu cố định, không có biến theo mã đề; vòng chính chỉ WHERE, `=`, `LIKE`, AND/OR; "Báo chí" là **ngành** (cột `nganh`), không phải câu lạc bộ; cột `clb` bị ẩn; lớp BC24A; câu OR của Quân ra 14 dòng. Lời khai 2 (câu lạc bộ) và lời khai 3 (ngày nhập học) cần viết lại theo dữ liệu này.
+> - **Cách kết (QĐ-024):** không kết bằng truy vấn ra "đúng một người"; kết bằng "kết quả chưa đủ kết luận, cần nguồn xác minh độc lập".
+> - **Phản biện Quân theo 5 nhịp (QĐ-082, QĐ-083):** Quân nói lập luận sai bằng lời → chỉ dòng sai → sửa và chạy lại ("Số liệu đây!") → Hà Vy gọi tên lỗi bằng toán → câu đọc kết quả → thầy Quang hỏi kết luận. Trừ uy tín ở nhịp 1, 4, 5; mỗi lần mất vạch Minh Anh giải cứu.
+> - **Nhân vật (QĐ-074, QĐ-081):** bộ ba Tùng – người chơi – Hà Vy cùng năm 1, xưng "tớ – cậu"; Tùng là thành viên CLB (chỗ ngồi ở phòng giải trình chưa chốt); Hà Vy không giải thích cú pháp SQL; bác Tư → bác Thịnh (bảo vệ giảng đường B). Câu hô là **"Số liệu đây!"** (QĐ-082).
+> - **Xếp hạng (QĐ-080):** không tính số lần dùng gợi ý.
+> - Sẽ viết lại ở gói kịch bản MVP (QĐ-077). Bản này chỉ sửa máy móc: câu hô, tên bác Thịnh, xưng hô của Tùng, câu của Hà Vy ở cuối, bảng xếp hạng.
 
 ---
 
@@ -29,14 +37,14 @@
 - `✔` — nhánh đúng. `✘` — nhánh sai.
 - `⚠ −1 uy tín` — mất một vạch uy tín (tối đa 5 vạch).
 - `[HIỆU ỨNG]` — ghi chú âm thanh, hình ảnh.
-- **"Có số liệu đây!"** — câu hô khi đưa vật chứng hoặc kết quả truy vấn phản bác. Hiện chữ lớn, rung màn hình.
+- **"Số liệu đây!"** — câu hô khi đưa vật chứng hoặc kết quả truy vấn phản bác. Hiện chữ lớn, rung màn hình.
 
 **Vật chứng người chơi mang vào** (đã lưu ở buổi điều tra)
 
 | # | Tên vật chứng | Loại | Nội dung |
 |---|---|---|---|
 | 1 | Bản chụp lá thư | Vật thể | Thư đề nghị thu hồi phòng CLB, ký "{CHU_CAI}." |
-| 2 | Lời bác Tư lao công | Lời khai | Hộp góp ý được mở sáng thứ Hai là hộp ở giảng đường {TOA} |
+| 2 | Lời bác Thịnh (bảo vệ giảng đường B) | Lời khai | Hộp góp ý được mở sáng thứ Hai là hộp ở giảng đường {TOA} |
 | 3 | Mẩu bookmark bị xé | Vật thể | Nửa logo, khớp với {CLB_1} và {CLB_2} |
 | 4 | Lớp sinh hoạt tại giảng đường {TOA} | Kết quả truy vấn | Danh sách mã lớp có `toa_nha = '{TOA}'` |
 | 5 | Danh sách thu hẹp | Kết quả truy vấn | Sinh viên tên bắt đầu bằng {CHU_CAI}, thuộc các lớp ở giảng đường {TOA}, thuộc {CLB_1} hoặc {CLB_2} (2–3 người) |
@@ -103,7 +111,7 @@
 
 **✔ Câu 2 + Vật chứng #4 "Lớp sinh hoạt tại giảng đường {TOA}"**
 
-> `[HIỆU ỨNG]` **"Có số liệu đây!"** — màn hình rung.
+> `[HIỆU ỨNG]` **"Số liệu đây!"** — màn hình rung.
 > **{TEN_NV}**: Đây là danh sách các lớp sinh hoạt ở giảng đường {TOA}, lấy từ dữ liệu phòng Đào tạo. Lớp {NC_LOP} — lớp của bạn — nằm ngay trong danh sách.
 > **{NC_TEN}** [giật mình]: Đó… đó là lớp sinh hoạt thôi mà!
 > **Quân** [nhướng mày]: Lớp sinh hoạt ở đó không có nghĩa bạn ấy có mặt hôm đó.
@@ -166,7 +174,7 @@
 
 **✔ Truy vấn đúng**
 
-> `[HIỆU ỨNG]` Kết quả hiện: **{NC_HOTEN} — {NC_CLB}**. **"Có số liệu đây!"**
+> `[HIỆU ỨNG]` Kết quả hiện: **{NC_HOTEN} — {NC_CLB}**. **"Số liệu đây!"**
 > **{TEN_NV}**: Theo dữ liệu, bạn là thành viên CLB {NC_CLB}. Và logo trên mẩu bookmark khớp với CLB {NC_CLB}.
 > **{NC_TEN}** [tái mặt]: …
 > **Quân** [đặt bút xuống]: Đăng ký một câu lạc bộ rồi không sinh hoạt cũng là chuyện thường.
@@ -204,7 +212,7 @@
 **▶ Hỏi thêm câu 2**
 > **{TEN_NV}**: Tân sinh viên năm nay, giống mình?
 > **{NC_TEN}** [gật]: Ừ… giống bạn.
-> **Tùng** [thì thầm to]: Ơ, hồi đón tân sinh viên tui đâu có thấy bạn này!
+> **Tùng** [thì thầm to]: Ơ, hồi đón tân sinh viên tớ đâu có thấy bạn này!
 > **Thầy Quang** [liếc]: Người dự thính.
 > **Tùng**: Dạ dạ.
 
@@ -225,7 +233,7 @@
 
 **✔ Truy vấn đúng**
 
-> `[HIỆU ỨNG]` Kết quả: **ngày nhập học: 09/{NAM_NHAP}**. **"Có số liệu đây!"**
+> `[HIỆU ỨNG]` Kết quả: **ngày nhập học: 09/{NAM_NHAP}**. **"Số liệu đây!"**
 > **{TEN_NV}**: Bạn nhập học từ năm {NAM_NHAP}. Bạn không phải tân sinh viên.
 > **{NC_TEN}** [ôm chặt balo]: …
 > **Minh Anh** [nhẹ giọng]: Bạn ở trường đủ lâu để biết CLB Thám Tử ngày trước thế nào. Đủ lâu để viết được câu "không còn giải quyết được việc gì".
@@ -270,7 +278,7 @@ WHERE ten LIKE 'H%'
 
 **✔ Chạm dòng `OR clb = …`**
 
-> `[HIỆU ỨNG]` **"Có số liệu đây!"**
+> `[HIỆU ỨNG]` **"Số liệu đây!"**
 > **{TEN_NV}**: Anh dùng OR. Truy vấn này lấy tất cả những ai tên bắt đầu bằng {CHU_CAI}, **hoặc** thuộc {CLB_1}, **hoặc** thuộc {CLB_2}. Chỉ cần thỏa một điều kiện là đã vào danh sách.
 > **{TEN_NV}**: Người bỏ thư phải thỏa **tất cả** manh mối cùng lúc. Phải dùng AND.
 > **Quân** [khựng lại]: …
@@ -299,7 +307,7 @@ WHERE ten LIKE 'H%'
 
 **✔ Truy vấn đúng**
 
-> `[HIỆU ỨNG]` Kết quả: **1 dòng — {NC_HOTEN}**. **"Có số liệu đây!"** Màn hình rung mạnh.
+> `[HIỆU ỨNG]` Kết quả: **1 dòng — {NC_HOTEN}**. **"Số liệu đây!"** Màn hình rung mạnh.
 > **{TEN_NV}**: Chỉ có một người thỏa tất cả manh mối cùng lúc.
 > **Quân** [nhìn màn hình rất lâu, rồi gập laptop]: …Lần này là do tôi đọc vội.
 > **Minh Anh** [thở phào]: …
@@ -368,9 +376,9 @@ WHERE ten LIKE 'H%'
 
 `[HIỆU ỨNG]` Quân rời đi.
 
-**Tùng** [chạy tới]: Trời đất, ông/bà ngầu quá! Cái đoạn "Có số liệu đây!" đó, tui nổi da gà!
+**Tùng** [chạy tới]: Trời đất, cậu ngầu quá! Cái đoạn "Số liệu đây!" đó, tớ nổi da gà!
 
-**Hà Vy** [khẽ mỉm cười]: Câu đó là của tôi đấy.
+**Hà Vy** [khẽ mỉm cười]: Lần sau hô xong nhớ tính lại đã nhé.
 
 **Minh Anh** [cười lần đầu trong game]: Lần đầu tiên sau ba năm, CLB mình giải được một vụ.
 
@@ -380,8 +388,8 @@ WHERE ten LIKE 'H%'
 
 | Thanh uy tín còn lại | Hạng |
 |---|---|
-| 5 vạch, không dùng gợi ý | **S** — mở trang phục "Áo CLB Thám Tử" |
-| 4–5 vạch | **A** |
+| 5 vạch | **S** — mở trang phục "Áo CLB Thám Tử" |
+| 4 vạch | **A** |
 | 2–3 vạch | **B** |
 | 1 vạch | **C** |
 
@@ -398,7 +406,7 @@ Thưởng thêm: +1 hạng hiển thị dạng huy hiệu nếu hoàn thành to�
 
 `[HIỆU ỨNG]` Phòng KTX, tối.
 
-**Thầy Khải** (tin nhắn): *Nghe nói hôm nay có người hô "Có số liệu đây!" giữa phòng họp. Mai ghé phòng thực hành, thầy có bài kiểm tra nhỏ. Qua được thì thầy cho em bỏ mấy cái khối lệnh ra.*
+**Thầy Khải** (tin nhắn): *Nghe nói hôm nay có người hô "Số liệu đây!" giữa phòng họp. Mai ghé phòng thực hành, thầy có bài kiểm tra nhỏ. Qua được thì thầy cho em bỏ mấy cái khối lệnh ra.*
 
 → Mở bài kiểm tra lên **mode Hardcore**.
 

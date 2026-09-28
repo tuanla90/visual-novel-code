@@ -17,6 +17,8 @@ Thư mục này giữ **nguồn** của ảnh: prompt đã dùng để sinh ản
 
 Đang sinh ảnh trên Topview (GPT Image 2.5, 1K, medium); Google Flow là cách cũ.
 
+**Lưu ý 28/09/2026:** các bộ prompt là **bản ghi nguyên văn** prompt đã dùng, không sửa lại. Khi viết prompt mới, theo các quyết định sau (nguồn chuẩn: `nhan-vat.yaml` trong đặc tả nội dung): Hà Vy **năm 1** (QĐ-081); Tùng nói "Tớ cá là…" (QĐ-074); bác Tư đổi tên thành **bác Thịnh, bảo vệ giảng đường B** (khớp ảnh `char-bac-tu-neutral` đã vẽ); chú Bảy → chú Cường; trường là **Đại học Chấn Hưng** (QĐ-080). Màu áo thầy Khải trong ảnh (xanh xám) đang lệch GDD §15.1 (nâu cà phê), chưa chốt bên nào.
+
 ## `nguon/` — ảnh gốc
 
 `nguon/topview-2026-09-27/`: ảnh Topview chưa xử lý, để dành cho lớp vật bấm được (commit 221051e): nền
