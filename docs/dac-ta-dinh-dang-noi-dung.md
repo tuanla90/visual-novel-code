@@ -894,3 +894,163 @@ Lưu ý: khối `[KHI CHẠY]` không bộ lọc đặt **cuối** để làm m�
 5. **Thứ tự dòng dữ liệu** có cần cố định để giữ bẫy `LIMIT` như QĐ-048 không, hay bỏ bẫy này vì vòng chính không còn dạy `LIMIT`?
 6. ~~**Bốn câu hỏi của kế hoạch chuẩn hóa** (QĐ-079)~~ — đã chốt ở QĐ-088; biến tên nhân vật và tên trường ở §10.4.
 7. **Cú pháp sổ tay** (`[TRA SỔ]`, `[CHÉP SỔ]`, file `so-tay/`) mới là đề xuất ở bản 0.2; chốt khi làm gói 12a-1 (bộ đọc) và đợt 15 (giao diện sổ cá nhân).
+
+---
+
+## 18. Cú pháp kịch bản MVP (gói 12m, QĐ-086 → QĐ-088)
+
+Cú pháp cho kịch bản khung `docs/mvp/kich-ban-vu1-mvp-khung.md`: mở đầu tuần 1, Vụ 1 theo **ngày × 3 khung giờ**, địa điểm × dữ kiện, phòng máy, bằng chứng, buổi họp rà soát, hai kết. Gói 12m chỉ làm **bộ đọc + kiểu + bộ sinh + kiểm lỗi**; runtime chơi được nhịp này là gói kiến trúc MVP sau (QĐ-077). Nội dung prototype (`noi-dung/`) và game hiện tại không đổi.
+
+Nguyên tắc: **tận dụng cú pháp đã có** (lời thoại, `[HỎI]`, `[CHỌN DÒNG]`, `[RẼ NHÁNH]`, `[ĐIỀU KIỆN]`, `[HẬU QUẢ]`, `[TRA SỔ]`, `[CHÉP SỔ]`, `[MÀN CHIẾU]`, `[THẺ CHỮ]`, `[KẾT THÚC]`, thẻ thử thách, thẻ hồ sơ, biến `{{nv.…}}`); chỉ thêm phần **khai báo** (lịch, địa điểm, dữ kiện, nhân vật) và bốn chỉ dẫn mới (`[TẠO NHÂN VẬT]`, `[LỌC THỬ]`, `[RẼ KẾT]`, `[LƯU BẰNG CHỨNG]`). **Toàn bộ là Markdown** — kể cả nhân vật (đặc tả §4 dự kiến YAML; repo chưa có bộ đọc YAML và người viết chỉ cần một định dạng; gói 12b đổi sang YAML nếu muốn, bộ đọc thay một tệp). Mọi thẻ khai báo dùng dạng `- Nhãn: giá trị` như thẻ hồ sơ, nên lỗi luôn báo được `<tệp>:<dòng>`.
+
+### 18.1 Thư mục `prototype/noi-dung-mvp/`
+
+```
+prototype/noi-dung-mvp/
+├── README.md              # hướng dẫn viết (bộ đọc bỏ qua mọi README.md)
+├── quy-uoc.md             # "# <tên game> — <tên bản>", "- Tên trường: …", "- Tên cấm: …"
+├── nhan-vat.md            # thẻ nhân vật (§18.2) — nguồn tên cho {{nv.…}}
+├── canh.md                # thẻ cảnh nền (§18.3)
+├── dia-diem.md            # địa điểm × dữ kiện (§18.4)
+├── lich.md                # vụ, luật, ngày × khung, buổi tối, ngày họp, kết (§18.5)
+├── kich-ban/*.md          # chuỗi hội thoại (§18.6): 00-mo-dau.md, 01-ngay-1.md, …, 06-hop.md, 07-ket.md
+├── thu-thach/*.md         # thẻ thử thách phòng máy — khuôn hiện có (§9.1 "bước 1"), thêm "Số dòng kỳ vọng"
+├── so-tay/*.md            # trang sổ chị Linh (§12.5), một trang một tệp
+├── chung/loi-chung.md     # "Khi mất uy tín" (§18.7)
+└── ho-so/*.md             # thẻ manh mối clue-… (giấy nhớ), tài liệu doc-…, bằng chứng ev-… (§18.8)
+```
+
+Tách khỏi `noi-dung/` để bộ đọc prototype không thấy tệp lạ và dữ liệu sinh của prototype không đổi. Thứ tự đọc: `quy-uoc.md` → `nhan-vat.md` → `canh.md` → `dia-diem.md` → `lich.md` → `kich-ban/` → `thu-thach/` → `so-tay/` → `chung/` → `ho-so/`. Tệp `.md` chỗ khác là lỗi. Định danh duy nhất trên toàn thư mục.
+
+Lệnh (trong `prototype/`): `npm run kiem-noi-dung:mvp` (chỉ kiểm), `npm run noi-dung:sinh:mvp` (ghi `src/content/generated/mvp/kich-ban.gen.ts`, `satisfies KichBanMvp` ở `src/content/mvp/types.ts`). `npm run kiem-noi-dung` / `noi-dung:sinh` chạy **cả hai** bộ. Test "file sinh khớp nội dung" cho MVP: `src/content/generated/mvp/mvp.gen.test.ts`. Tệp sinh MVP nằm thư mục con vì test hiện có của prototype đòi `generated/` không có `.gen.ts` thừa.
+
+### 18.2 Nhân vật — `nhan-vat.md`
+
+```markdown
+### tung — Tùng
+- Họ tên: Trần Tùng
+- Vai: Năm 1 Du lịch, bạn cùng phòng KTX, cháu chú Cường. Dẫn đường, nhắc lịch.
+- Biểu cảm: neutral, happy
+
+### quan — Quân
+- Vai: Trưởng ban Pháp chế – Kiểm tra Hội sinh viên.
+- Biểu cảm: neutral, smug, stunned
+- Xuất hiện từ: ngày 3
+
+### co-phu-trach — Cô phụ trách hộp kiến nghị
+- Vai: Chỉ xuất hiện qua lời kể và tài liệu.
+- Chỉ qua lời kể: có
+```
+
+- Tiêu đề `### <mã> — <tên hiển thị>`. Bắt buộc: `Vai`, `Biểu cảm` (trừ khi `Chỉ qua lời kể: có`). `Họ tên` không bắt buộc; `Trong câu` (tên gọi giữa câu, vd "chú Cường") mặc định = tên hiển thị với danh xưng đầu viết thường.
+- `Xuất hiện từ`: `mở đầu` (mặc định), `ngày <n>`, `ngày <n> <khung>`, `ngày họp`. Nhân vật **nói** (hay được `[VÀO]`) ở chuỗi chạy trước mốc đó là lỗi tại dòng lời đó. `Chỉ qua lời kể: có` → nhân vật không được nói ở đâu cả.
+- Biến: `{{nv.<mã>}}` = tên hiển thị, `{{nv.<mã>.ho-ten}}`, `{{nv.<mã>.trong-cau}}` (§10.4); tên trường `{{truong.…}}` lấy từ dòng `- Tên trường:` của `quy-uoc.md` (tự suy `ten-ngan` = bỏ "Trường Đại học", `ten-khong-tien-to` = bỏ "Trường").
+- **`{{nv.nguoi-choi}}` dùng được** trong bộ MVP: bộ đọc giữ nguyên chuỗi `{{nv.nguoi-choi}}` trong dữ liệu sinh, runtime thay bằng tên người chơi đặt ở `[TẠO NHÂN VẬT]` (QĐ-077). Bộ prototype vẫn coi là lỗi (không đổi).
+- `player` (nam, QĐ-087) và `narrator` không khai báo.
+
+### 18.3 Cảnh — `canh.md`
+
+```markdown
+### phong-ktx — Phòng KTX 408
+- Ảnh nền: bg-ktx-408          ← không bắt buộc; chưa có ảnh thì bỏ
+```
+
+Mọi `{cảnh: …}` ở chuỗi và `Cảnh:` ở địa điểm phải có ở đây.
+
+### 18.4 Địa điểm × dữ kiện — `dia-diem.md`
+
+```markdown
+## toa-b — Sảnh tòa B và hộp kiến nghị {địa điểm: toa-b}
+- Cảnh: sanh-toa-b
+- Mở từ: ngày 1                       ← mặc định "ngày 1 sáng"; "ngày 3 trưa" = từ khung trưa ngày 3
+- Tốn khung: mỗi dữ kiện 1            ← mặc định. Phòng máy: "vào 1, bên trong 0"
+- Phân biệt: Tờ rơi ở chân cầu thang, không kẹt trong khe; chỉ thẻ lịch mắc vào mép tôn   ← cho người viết
+
+### dk-bac-thinh-the-lich — Bác Thịnh kể lúc mở hộp; thẻ lịch rách ở khe {dữ kiện: chính}
+- Chuỗi: n1-bac-thinh
+- Mở manh mối: clue-toa-b, clue-bao-chi-k24
+- Lưu bằng chứng: ev-the-lich
+
+### dk-to-roi-guitar — Tờ rơi CLB Guitar dưới chân cầu thang {dữ kiện: nhiễu}
+- Chuỗi: n1-to-roi
+
+### dk-nhat-ky-in — Một dòng nhật ký in 23:10 Chủ nhật {dữ kiện: phụ}
+- Mở từ: ngày 4
+- Cần: có ev-hai-ma
+- Chuỗi: n4-nhat-ky-in
+- Lưu bằng chứng: ev-nhat-ky-in
+```
+
+- Địa điểm là tiêu đề `##`, dữ kiện là các `###` ngay dưới. Nhãn `chính` / `phụ` / `nhiễu` **chỉ người viết thấy** (không vào giao diện); dòng `Phân biệt:` ghi người chơi dựa vào gì để phân biệt.
+- Dữ kiện: bắt buộc `Chuỗi` (chuỗi chạy khi người chơi chọn dữ kiện) **hoặc** `Thử thách` (dữ kiện là một màn phòng máy: `- Thử thách: c-loc-lop`; bằng chứng lấy từ "Vật chứng lưu vào hồ sơ" của thẻ). Không bắt buộc: `Mở từ` (mặc định = của địa điểm), `Cần` (điều kiện §13.1, chỉ dạng `có <mã>` / `không có <mã>`, `và`, `hoặc`, ngoặc), `Mở manh mối`, `Hiện tài liệu`, `Lưu bằng chứng`, `Lặp: mỗi lần` (mặc định một lần).
+- Mỗi địa điểm có **1–3 dữ kiện** (số trong `## Luật` của lich.md). Hai [chính] cùng chỗ cùng ngày trong kịch bản khung (lời bác Thịnh + thẻ lịch) viết thành **một** dữ kiện chính có nhiều hậu quả — vì QĐ-086 "mỗi ngày giải được 1 dữ kiện chính".
+
+### 18.5 Lịch — `lich.md`
+
+```markdown
+# Vụ 1 — Chữ ký H. {vụ: vu1}
+
+## Luật
+- Khung giờ: sang "Sáng", trua "Trưa", chieu "Chiều"
+- Buổi tối: toi "Buổi tối"
+- Dữ kiện chính tối đa: 2 khung
+- Mỗi địa điểm: 1–3 dữ kiện
+- Uy tín: 5 vạch
+
+## Mở đầu
+- Chuỗi đầu: md-01-ktx
+
+## Ngày 1 — Thực địa {ngày: 1}
+- Dữ kiện chính: dk-bac-thinh-the-lich
+- Mở ngày: n1-mo                      ← không bắt buộc: chuỗi chạy đầu ngày (HUD "Ngày 1 — Sáng")
+- Buổi tối: toi-1                     ← bắt buộc: chuỗi khi hết 3 khung mà chưa có dữ kiện chính
+
+## Ngày 6 — Buổi họp rà soát {ngày họp}
+- Chuỗi: hop-00
+
+## Kết
+- Kết thật: ket-that
+- Kết thường: ket-thuong
+```
+
+- Mỗi ngày điều tra có **đúng một** `Dữ kiện chính` (phải là dữ kiện gắn nhãn `chính`, mỗi dữ kiện chính thuộc đúng một ngày, `Mở từ` của nó ≤ ngày đó) và một `Buổi tối`. Buổi tối = "đồng đội dẫn tới đúng chỗ, người chơi tự làm bước cuối": chuỗi buổi tối phải `[ĐI TỚI]` (trực tiếp hoặc qua chuỗi khác) chuỗi của dữ kiện chính ngày đó.
+- **Kiểm "≤ 2 khung":** chi phí = tổng `Tốn khung` của dữ kiện chính cộng các dữ kiện nó `Cần` (đệ quy) mà mở **cùng ngày**, cộng chi phí "vào" của mỗi địa điểm phòng máy phải ghé. Lớn hơn `Dữ kiện chính tối đa` là lỗi tại dòng `Dữ kiện chính`.
+- `{ngày họp}`: không có khung; `Chuỗi` bắt buộc. `[HỎI … · trừ uy tín]`, `[CHỌN DÒNG … · trừ uy tín]` chỉ được dùng ở chuỗi tới được từ ngày họp.
+- `## Kết`: `Kết thật` là chuỗi có `[ĐIỀU KIỆN]` ở đầu (§6.1) — đó là **điều kiện true end**; `Kết thường` không có `[ĐIỀU KIỆN]`. Cả hai kết thúc bằng `[KẾT THÚC]`. Kiểm: mọi mã trong điều kiện tồn tại và **có cách đạt được** (do một dữ kiện `Mở manh mối`/`Lưu bằng chứng`, hoặc thẻ thử thách lưu); điều kiện thỏa khi có đủ mọi thứ đạt được; và **không** thỏa khi chỉ có các thứ từ dữ kiện chính (true end phải cần dữ kiện phụ).
+
+### 18.6 Chuỗi — `kich-ban/*.md`
+
+Khuôn như §6.1, tiêu đề `### <mã> — <mô tả> {cảnh: <cảnh>}`; không cần `## Phần`. Chuỗi phải được **nối vào đâu đó**: lịch (`Chuỗi đầu`, `Mở ngày`, `Buổi tối`, ngày họp, kết), dữ kiện (`Chuỗi:`), hay `[ĐI TỚI]` / `→ hậu quả: đi tới` từ chuỗi khác; chuỗi lẻ là lỗi. Mốc thời gian của chuỗi (để kiểm `Xuất hiện từ`) = mốc sớm nhất trong các đường nối tới nó.
+
+Dùng được trong chuỗi (ngoài §6.3: `[VÀO]`, `[RA]`, `[ĐI TỚI]`, `[HIỆN TÀI LIỆU]`, `[THỬ THÁCH]`, `[CHỜ n giây]`, `[HIỆU ỨNG]`, `[DÀN DỰNG]`, `[MÀN CHIẾU]`, `[THẺ CHỮ]`, `[KẾT THÚC]`, `[HẬU QUẢ]`; §7 `[HỎI]`, `[CHỌN DÒNG]` kèm `· trừ uy tín`; §8 `[RẼ NHÁNH]`; §12.5 `[TRA SỔ]`, `[CHÉP SỔ]`; `> NHIỆM VỤ:`):
+
+| Chỉ dẫn | Nghĩa |
+|---|---|
+| `- [TẠO NHÂN VẬT ten] tung (neutral): "Cậu tên gì?"` + dòng con `  - xúc xắc: <lời Tùng khi bấm xúc xắc>` | Câu 1 tạo nhân vật: ô tên có nút xúc xắc. |
+| `- [TẠO NHÂN VẬT nganh] tung (neutral): "Học ngành gì?"` + dòng con `  - lựa chọn: Kế toán · Quản trị kinh doanh · …` | Câu 2: chọn ngành. Cả game có đúng một `ten` và một `nganh`, đều trong mở đầu, `ten` trước `nganh`. |
+| `- [LỌC THỬ <mã> · <n> dòng · chọn <cột> = <giá trị>]` + khối ` ```sql ` ngay dưới | Lọc thử một lần trên giao diện bàn làm việc (Ngày hội): câu SQL trong khối, số dòng kỳ vọng, dòng người chơi phải chọn. |
+| `- [LƯU BẰNG CHỨNG <ev-…>]` | Lưu bằng chứng (key item) ngay tại đây — dùng khi bằng chứng nảy ra giữa chuỗi; thường khai báo ở dữ kiện là đủ. |
+| `- [RẼ KẾT]` | Runtime chọn `Kết thật` nếu `[ĐIỀU KIỆN]` của nó thỏa, không thì `Kết thường`. Đúng một lần trong game. |
+| `- [ĐIỀU KIỆN] có ev-nhat-ky-in và (có clue-loi-chu-cuong hoặc có clue-loi-dat)` | Dòng đầu chuỗi kết thật (và chuỗi có điều kiện khác). |
+| `- [HẬU QUẢ] mở manh mối clue-x, lưu bằng chứng ev-y, đặt co.z, đi tới <chuỗi>` | §13.2 thêm `lưu bằng chứng`. |
+
+Số dòng ghi trong `[LỌC THỬ]`, `[MÀN CHIẾU]`, "Số dòng kỳ vọng" của thẻ là **số người viết khai**; kiểm khớp dữ liệu thật là việc đợt 14 (bộ đọc gom sẵn mọi cặp `(sql, số dòng, vị trí)` vào `soDongKhai` của dữ liệu sinh để đợt 14 chỉ cần chạy).
+
+### 18.7 Lời chung — `chung/loi-chung.md`
+
+```markdown
+### Khi mất uy tín {lời chung: mat-uy-tin}
+- **minh-anh** (worried): Thầy cho em nó làm lại một lần ạ.        ← lần mất vạch thứ 1
+- **minh-anh** (worried): Em xin nói đỡ: …                          ← lần 2, lần 3 lặp câu cuối
+- [HẾT VẠCH] **minh-anh** (worried): CLB xin phép hoãn buổi hôm nay.  ← hết vạch: hoãn, quay lại điều tra
+```
+
+Bắt buộc có khi lịch có `Uy tín`. Không được nói đáp án (người viết tự kiểm).
+
+### 18.8 Hồ sơ — `ho-so/*.md`
+
+Khuôn thẻ hiện có. Tiền tố: `clue-` = **giấy nhớ** người chơi tự tạo ("[H.]", "[Tòa B]"…), `doc-` = tài liệu, `ev-` = **bằng chứng / key item** (từ phòng máy hay thực địa). Thẻ `clue-` ở MVP chỉ cần `Tiêu đề`, `Nguồn`, `Nội dung` (không còn "Giá trị cho trình dựng"); thẻ `ev-` cần `Tiêu đề`, `Nội dung`. Mọi thẻ phải được ít nhất một dữ kiện / thẻ thử thách / `[HẬU QUẢ]` / `[HIỆN TÀI LIỆU]` / `[LƯU BẰNG CHỨNG]` tạo ra (thẻ không ai tạo là lỗi).
+
+### 18.9 Kiểm lỗi của bộ MVP (`npm run kiem-noi-dung:mvp`)
+
+Lỗi, báo `<tệp>:<dòng>`: dòng không khớp quy ước; định danh trùng; tham chiếu không tồn tại (cảnh, địa điểm, dữ kiện, chuỗi, nhân vật, biểu cảm, thẻ hồ sơ, thẻ thử thách, trang sổ); mỗi ngày đúng một dữ kiện chính và một buổi tối; dữ kiện chính đạt được trong ≤ N khung; buổi tối dẫn tới dữ kiện chính; mỗi địa điểm 1–3 dữ kiện; điều kiện true end đạt được và cần dữ kiện phụ; nhân vật nói trước `Xuất hiện từ`; `trừ uy tín` ngoài ngày họp; `[TẠO NHÂN VẬT]` thiếu/thừa/sai thứ tự; `[RẼ KẾT]` không đúng một lần; chuỗi lẻ; thẻ hồ sơ không ai tạo; tên cấm (`- Tên cấm: Vương Khánh` trong quy-uoc.md) xuất hiện trong chữ hiển thị.
