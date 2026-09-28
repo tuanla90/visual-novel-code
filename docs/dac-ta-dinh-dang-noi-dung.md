@@ -913,6 +913,7 @@ prototype/noi-dung-mvp/
 ├── canh.md                # thẻ cảnh nền (§18.3)
 ├── dia-diem.md            # địa điểm × dữ kiện (§18.4)
 ├── lich.md                # vụ, luật, ngày × khung, buổi tối, ngày họp, kết (§18.5)
+├── du-lieu.md             # bộ dữ liệu SQL cố định của vụ: bảng + bảng ảo (§18.10)
 ├── kich-ban/*.md          # chuỗi hội thoại (§18.6): 00-mo-dau.md, 01-ngay-1.md, …, 06-hop.md, 07-ket.md
 ├── thu-thach/*.md         # thẻ thử thách phòng máy — khuôn hiện có (§9.1 "bước 1"), thêm "Số dòng kỳ vọng"
 ├── so-tay/*.md            # trang sổ chị Linh (§12.5), một trang một tệp
@@ -920,7 +921,7 @@ prototype/noi-dung-mvp/
 └── ho-so/*.md             # thẻ manh mối clue-… (giấy nhớ), tài liệu doc-…, bằng chứng ev-… (§18.8)
 ```
 
-Tách khỏi `noi-dung/` để bộ đọc prototype không thấy tệp lạ và dữ liệu sinh của prototype không đổi. Thứ tự đọc: `quy-uoc.md` → `nhan-vat.md` → `canh.md` → `dia-diem.md` → `lich.md` → `kich-ban/` → `thu-thach/` → `so-tay/` → `chung/` → `ho-so/`. Tệp `.md` chỗ khác là lỗi. Định danh duy nhất trên toàn thư mục.
+Tách khỏi `noi-dung/` để bộ đọc prototype không thấy tệp lạ và dữ liệu sinh của prototype không đổi. Thứ tự đọc: `quy-uoc.md` → `nhan-vat.md` → `canh.md` → `dia-diem.md` → `lich.md` → `du-lieu.md` → `kich-ban/` → `thu-thach/` → `so-tay/` → `chung/` → `ho-so/`. Tệp `.md` chỗ khác là lỗi. Định danh duy nhất trên toàn thư mục.
 
 Lệnh (trong `prototype/`): `npm run kiem-noi-dung:mvp` (chỉ kiểm), `npm run noi-dung:sinh:mvp` (ghi `src/content/generated/mvp/kich-ban.gen.ts`, `satisfies KichBanMvp` ở `src/content/mvp/types.ts`). `npm run kiem-noi-dung` / `noi-dung:sinh` chạy **cả hai** bộ. Test "file sinh khớp nội dung" cho MVP: `src/content/generated/mvp/mvp.gen.test.ts`. Tệp sinh MVP nằm thư mục con vì test hiện có của prototype đòi `generated/` không có `.gen.ts` thừa.
 
@@ -1034,7 +1035,7 @@ Dùng được trong chuỗi (ngoài §6.3: `[VÀO]`, `[RA]`, `[ĐI TỚI]`, `[H
 | `- [ĐIỀU KIỆN] có ev-nhat-ky-in và (có clue-loi-chu-cuong hoặc có clue-loi-dat)` | Dòng đầu chuỗi kết thật (và chuỗi có điều kiện khác). |
 | `- [HẬU QUẢ] mở manh mối clue-x, lưu bằng chứng ev-y, đặt co.z, đi tới <chuỗi>` | §13.2 thêm `lưu bằng chứng`. |
 
-Số dòng ghi trong `[LỌC THỬ]`, `[MÀN CHIẾU … · <n> dòng]` (khi có khối sql), "Số dòng kỳ vọng" của thẻ (đi với "SQL chuẩn") là **số người viết khai**; kiểm khớp dữ liệu thật là việc đợt 14: bộ chuyển gom sẵn mọi cặp `(sql, soDong, noi)` vào `soDongKhai` của dữ liệu sinh, đợt 14 chỉ cần chạy từng câu trên dữ liệu (`docs/mvp/kiem-du-lieu-vu1.py` là bộ dữ liệu minh họa) và so số dòng.
+Số dòng ghi trong `[LỌC THỬ]`, `[MÀN CHIẾU … · <n> dòng]` (khi có khối sql), "Số dòng kỳ vọng" của thẻ (đi với "SQL chuẩn") là **số người viết khai**. Bộ chuyển gom mọi cặp `(sql, soDong, noi)` vào `soDongKhai` của dữ liệu sinh; `kiem-noi-dung:mvp` **chạy thật** từng câu trên bộ dữ liệu cố định `du-lieu.md` (§18.10) và báo lỗi `<tệp>:<dòng>` khi số khai lệch kết quả (QĐ-089). Số dòng chỉ ghi trong `[DÀN DỰNG]` (không kèm câu SQL) chưa được kiểm.
 
 ### 18.7 Lời chung — `chung/loi-chung.md`
 
@@ -1053,4 +1054,38 @@ Khuôn thẻ hiện có. Tiền tố: `clue-` = **giấy nhớ** người chơi 
 
 ### 18.9 Kiểm lỗi của bộ MVP (`npm run kiem-noi-dung:mvp`)
 
-Đã cài ở gói 12m (`tools/noi-dung/luat-mvp.ts`; test `src/content/real/testing/bo-doc-mvp.test.ts`). Lỗi, báo `<tệp>:<dòng>`: dòng không khớp quy ước; định danh trùng; tham chiếu không tồn tại (cảnh, địa điểm, dữ kiện, chuỗi, nhân vật, biểu cảm, thẻ hồ sơ, thẻ thử thách, trang sổ); mỗi ngày đúng một dữ kiện chính và một buổi tối; dữ kiện chính đạt được trong ≤ N khung; buổi tối dẫn tới dữ kiện chính; mỗi địa điểm 1–3 dữ kiện; điều kiện true end đạt được và cần dữ kiện phụ; nhân vật nói trước `Xuất hiện từ`; `trừ uy tín` ngoài ngày họp; `[TẠO NHÂN VẬT]` thiếu/thừa/sai thứ tự; `[RẼ KẾT]` không đúng một lần; chuỗi lẻ; thẻ hồ sơ không ai tạo; tên cấm (`- Tên cấm: Vương Khánh` trong quy-uoc.md) xuất hiện trong chữ hiển thị.
+Đã cài ở gói 12m (`tools/noi-dung/luat-mvp.ts`; test `src/content/real/testing/bo-doc-mvp.test.ts`). Lỗi, báo `<tệp>:<dòng>`: dòng không khớp quy ước; định danh trùng; tham chiếu không tồn tại (cảnh, địa điểm, dữ kiện, chuỗi, nhân vật, biểu cảm, thẻ hồ sơ, thẻ thử thách, trang sổ); mỗi ngày đúng một dữ kiện chính và một buổi tối; dữ kiện chính đạt được trong ≤ N khung; buổi tối dẫn tới dữ kiện chính; mỗi địa điểm 1–3 dữ kiện phụ/nhiễu (không tính chính, QĐ-089); điều kiện true end đạt được và cần dữ kiện phụ; nhân vật nói trước `Xuất hiện từ`; `trừ uy tín` ngoài ngày họp; `[TẠO NHÂN VẬT]` thiếu/thừa/sai thứ tự; `[RẼ KẾT]` không đúng một lần; chuỗi lẻ; thẻ hồ sơ không ai tạo; tên cấm (`- Tên cấm: Vương Khánh` trong quy-uoc.md) xuất hiện trong chữ hiển thị.
+
+Gói 12m2 (QĐ-089) thêm: **số dòng khai lệch kết quả chạy thật** trên `du-lieu.md` (§18.10), báo ở dòng khai (`[LỌC THỬ]`, `[MÀN CHIẾU … · n dòng]`, hoặc tiêu đề thẻ thử thách có "Số dòng kỳ vọng"); câu SQL khai số dòng mà chạy lỗi (bảng/cột không có, không phải một câu SELECT); thiếu `du-lieu.md` khi có câu khai; lỗi cú pháp của chính `du-lieu.md`. Ví dụ:
+
+```
+noi-dung-mvp/kich-ban/06-hop-va-ket.md:8: [MÀN CHIẾU hop-chieu-or]: khai 13 dòng nhưng chạy thật trên noi-dung-mvp/du-lieu.md ra 14 dòng — SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';
+```
+
+### 18.10 Dữ liệu cố định — `du-lieu.md` (gói 12m2, QĐ-087, QĐ-089)
+
+Bộ dữ liệu SQL **cố định** của vụ (chưa làm dữ liệu ngẫu nhiên). `kiem-noi-dung:mvp` nạp nó vào SQLite bằng sql.js (cùng thư viện game dùng) rồi chạy từng câu trong `soDongKhai`. Dữ liệu sinh MVP chép nguyên bộ này vào `duLieu` (`BoDuLieuMvp` ở `src/content/mvp/types.ts`) để runtime MVP nạp đúng dữ liệu người viết đã kiểm.
+
+````markdown
+# Dữ liệu Vụ 1 — bộ cố định {dữ liệu: vu1}
+
+## lop_sinh_hoat {bảng}
+- Cột: ma_lop TEXT, nganh TEXT, khoa_hoc INTEGER, toa_nha TEXT
+
+| ma_lop | nganh | khoa_hoc | toa_nha |
+|---|---|---|---|
+| KT24A | Kế toán | 2024 | B |
+
+## tra_cuu_k24 {bảng ảo}
+- Ghi chú: Danh sách tra cứu tân sinh viên K24 phát ở Ngày hội.
+
+```sql
+SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l ON s.ma_lop = l.ma_lop
+```
+````
+
+- `## <tên_bảng> {bảng}`: tên chữ thường, số, gạch dưới. Dòng `- Cột:` bắt buộc, mỗi cột `<tên> TEXT` hoặc `<tên> INTEGER`; hàng tiêu đề của bảng Markdown phải đúng tên cột theo thứ tự đó, rồi hàng `|---|`. Ô `NULL` là rỗng; ô trống là lỗi; ô INTEGER phải là số nguyên.
+- `## <tên> {bảng ảo}`: một khối ` ```sql ` là **một câu SELECT** trên các bảng đã khai; nạp thành `CREATE VIEW`. Dùng khi kịch bản gọi một "bảng" chỉ là cách nhìn khác của cùng dữ liệu (danh sách tra cứu Ngày hội).
+- Chú thích `<!-- … -->` (một hay nhiều dòng) bỏ qua. Không thay biến `{{…}}` trong tệp này.
+- Câu SQL được kiểm chỉ nhận **một** câu `SELECT`/`WITH` (dấu `;` cuối được phép).
+- Bộ đọc nằm riêng ở `tools/noi-dung/du-lieu-mvp.ts` (`docDuLieuMvp`); phần chạy ở `tools/noi-dung/sql-mvp.ts`. Đổi nguồn dữ liệu sang YAML (§11) chỉ cần thay bộ đọc, giữ đầu ra `BoDuLieuMvp`.
