@@ -785,8 +785,9 @@
 .cast-member--idle {
   z-index: 1;
   transform: translateX(-50%) scale(0.97);
+  /* Không dùng opacity: nhân vật đang im lặng chỉ tối đi, không được trong suốt (ảnh nền xuyên qua người). */
   filter: saturate(0.85) brightness(0.88);
-  opacity: 0.92;
+  opacity: 1;
 }
 /* Tự động xoay lật nhân vật bên phải để hướng mặt vào trung tâm sân khấu */
 .cast-member--side-right .portrait__img,
