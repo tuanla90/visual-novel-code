@@ -6,7 +6,9 @@
 import { readdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { tepLechTrenDia } from '../../../../tools/noi-dung/sinh.ts';
-import { sinhVanBanMvp, THU_MUC_SINH_MVP } from '../../../../tools/noi-dung/sinh-mvp.ts';
+import { sinhVanBanMvp, THU_MUC_NOI_DUNG_MVP, THU_MUC_SINH_MVP } from '../../../../tools/noi-dung/sinh-mvp.ts';
+import { kiemSoDongMvp } from '../../../../tools/noi-dung/sql-mvp.ts';
+import { docThuMucMvp } from '../../../../tools/noi-dung/thu-muc-mvp.ts';
 import type { KichBanMvp } from '../../mvp/types';
 
 describe('bộ MVP: file sinh khớp nội dung', () => {
@@ -38,5 +40,28 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
     expect(d.soDongKhai.length).toBeGreaterThan(0);
     expect(d.chuoi.find((c) => c.id === 'md-01-ktx')?.mocSomNhat).toBe(0);
     expect(d.nhanVat.find((n) => n.id === 'quan')?.xuatHienTu).toEqual({ kind: 'ngay', ngay: 3, khung: 'sang' });
+  });
+
+  it('bộ dữ liệu cố định Vụ 1 (du-lieu.md): 11 lớp, 25 sinh viên, bảng ảo tra_cuu_k24', () => {
+    const d = kq.duLieu as unknown as KichBanMvp | null;
+    expect(d?.duLieu?.bang.map((b) => [b.ten, b.dong.length])).toEqual([
+      ['lop_sinh_hoat', 11],
+      ['sinh_vien', 25],
+    ]);
+    expect(d?.duLieu?.bangAo.map((v) => v.ten)).toEqual(['tra_cuu_k24']);
+  });
+
+  it('QĐ-089: mọi câu SQL khai số dòng chạy thật trên du-lieu.md ra đúng số khai (số đối chiếu: docs/mvp/kiem-du-lieu-vu1.py)', async () => {
+    const d = kq.duLieu as unknown as KichBanMvp | null;
+    const raw = docThuMucMvp(THU_MUC_NOI_DUNG_MVP).mvp.duLieu;
+    const chay = await kiemSoDongMvp(raw, d?.soDongKhai ?? []);
+    expect(chay.loi).toEqual([]);
+    expect(chay.ketQua.map((k) => [k.noi.split(' ')[0], k.soDong, k.soDongThat])).toEqual([
+      ['noi-dung-mvp/thu-thach/c-loc-lop.md:5', 1, 1],
+      ['noi-dung-mvp/thu-thach/c-ten-h.md:3', 2, 2],
+      ['noi-dung-mvp/thu-thach/c-ten-h.md:21', 2, 2],
+      ['noi-dung-mvp/kich-ban/00-mo-dau.md:92', 3, 3],
+      ['noi-dung-mvp/kich-ban/06-hop-va-ket.md:8', 14, 14],
+    ]);
   });
 });

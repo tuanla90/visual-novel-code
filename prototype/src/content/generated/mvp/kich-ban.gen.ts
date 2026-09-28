@@ -2710,5 +2710,277 @@ export const KICH_BAN_MVP = {
       "soDong": 14,
       "noi": "noi-dung-mvp/kich-ban/06-hop-va-ket.md:8 [MÀN CHIẾU hop-chieu-or]"
     }
-  ]
+  ],
+  "duLieu": {
+    "bang": [
+      {
+        "ten": "lop_sinh_hoat",
+        "cot": [
+          {
+            "ten": "ma_lop",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "nganh",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "khoa_hoc",
+            "kieu": "INTEGER"
+          },
+          {
+            "ten": "toa_nha",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "KT24A",
+            "Kế toán",
+            2024,
+            "B"
+          ],
+          [
+            "KT24B",
+            "Kế toán",
+            2024,
+            "A"
+          ],
+          [
+            "QT24A",
+            "Quản trị kinh doanh",
+            2024,
+            "C"
+          ],
+          [
+            "QT24B",
+            "Quản trị kinh doanh",
+            2024,
+            "B"
+          ],
+          [
+            "BC24A",
+            "Báo chí",
+            2024,
+            "B"
+          ],
+          [
+            "BC24B",
+            "Báo chí",
+            2024,
+            "C"
+          ],
+          [
+            "TC24A",
+            "Tài chính – Ngân hàng",
+            2024,
+            "A"
+          ],
+          [
+            "MK24A",
+            "Marketing",
+            2024,
+            "A"
+          ],
+          [
+            "DL24A",
+            "Du lịch",
+            2024,
+            "C"
+          ],
+          [
+            "CT24A",
+            "Công nghệ thông tin",
+            2024,
+            "A"
+          ],
+          [
+            "TM24A",
+            "Thương mại điện tử",
+            2024,
+            "C"
+          ]
+        ]
+      },
+      {
+        "ten": "sinh_vien",
+        "cot": [
+          {
+            "ten": "ma_sv",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ho_dem",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ten",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ma_lop",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "SV240228",
+            "Trần Minh",
+            "Hiếu",
+            "BC24A"
+          ],
+          [
+            "SV240317",
+            "Lê Thu",
+            "Hoài",
+            "BC24A"
+          ],
+          [
+            "SV240105",
+            "Hồ Ngọc",
+            "Mai",
+            "BC24A"
+          ],
+          [
+            "SV240122",
+            "Phạm Tiến",
+            "Đạt",
+            "BC24A"
+          ],
+          [
+            "SV240131",
+            "Vũ Hải",
+            "Yến",
+            "BC24A"
+          ],
+          [
+            "SV240146",
+            "Đỗ Gia",
+            "Phúc",
+            "BC24A"
+          ],
+          [
+            "SV240412",
+            "Đỗ Thu",
+            "Hồng",
+            "BC24B"
+          ],
+          [
+            "SV240415",
+            "Nguyễn Bảo",
+            "Ngọc",
+            "BC24B"
+          ],
+          [
+            "SV240418",
+            "Bùi Đức",
+            "Toàn",
+            "BC24B"
+          ],
+          [
+            "SV240201",
+            "Nguyễn Văn",
+            "Hải",
+            "KT24A"
+          ],
+          [
+            "SV240204",
+            "Phan Quốc",
+            "Huy",
+            "QT24B"
+          ],
+          [
+            "SV240207",
+            "Đinh Thị",
+            "Hương",
+            "KT24B"
+          ],
+          [
+            "SV240210",
+            "Lương Mạnh",
+            "Hùng",
+            "TC24A"
+          ],
+          [
+            "SV240213",
+            "Cao Văn",
+            "Hậu",
+            "MK24A"
+          ],
+          [
+            "SV240216",
+            "Tạ Thu",
+            "Hằng",
+            "DL24A"
+          ],
+          [
+            "SV240219",
+            "Kiều Minh",
+            "Hưng",
+            "TM24A"
+          ],
+          [
+            "SV240251",
+            "Trần",
+            "Tùng",
+            "DL24A"
+          ],
+          [
+            "SV240254",
+            "Nguyễn Thanh",
+            "Tùng",
+            "KT24B"
+          ],
+          [
+            "SV240257",
+            "Vũ Sơn",
+            "Tùng",
+            "CT24A"
+          ],
+          [
+            "SV240301",
+            "Hoàng Anh",
+            "Tuấn",
+            "QT24A"
+          ],
+          [
+            "SV240304",
+            "Trịnh Mỹ",
+            "Châu",
+            "KT24A"
+          ],
+          [
+            "SV240307",
+            "Mạc Văn",
+            "Khoa",
+            "QT24B"
+          ],
+          [
+            "SV240310",
+            "Lâm Thị",
+            "Nga",
+            "MK24A"
+          ],
+          [
+            "SV240313",
+            "Tô Bảo",
+            "Long",
+            "TC24A"
+          ],
+          [
+            "SV240316",
+            "Âu Minh",
+            "Trang",
+            "DL24A"
+          ]
+        ]
+      }
+    ],
+    "bangAo": [
+      {
+        "ten": "tra_cuu_k24",
+        "sql": "SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l ON s.ma_lop = l.ma_lop"
+      }
+    ]
+  }
 } satisfies KichBanMvp;

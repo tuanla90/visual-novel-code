@@ -1,6 +1,6 @@
 /**
  * Gom tệp của `prototype/noi-dung-mvp/` (đặc tả §18.1), ĐÚNG THỨ TỰ đọc:
- * quy-uoc.md → nhan-vat.md → canh.md → dia-diem.md → lich.md → kich-ban/ → thu-thach/ → so-tay/ → chung/ → ho-so/.
+ * quy-uoc.md → nhan-vat.md → canh.md → dia-diem.md → lich.md → du-lieu.md → kich-ban/ → thu-thach/ → so-tay/ → chung/ → ho-so/.
  * README.md bỏ qua; tệp .md chỗ khác là lỗi. Không import gì từ `src/`.
  */
 import { readdirSync, readFileSync, statSync } from 'node:fs';
@@ -13,6 +13,7 @@ const CHO_DOC: readonly { duongDan: string; loai: LoaiTepMvp; thuMuc: boolean }[
   { duongDan: 'canh.md', loai: 'canh', thuMuc: false },
   { duongDan: 'dia-diem.md', loai: 'dia-diem', thuMuc: false },
   { duongDan: 'lich.md', loai: 'lich', thuMuc: false },
+  { duongDan: 'du-lieu.md', loai: 'du-lieu', thuMuc: false },
   { duongDan: 'kich-ban', loai: 'kich-ban', thuMuc: true },
   { duongDan: 'thu-thach', loai: 'thu-thach', thuMuc: true },
   { duongDan: 'so-tay', loai: 'so-tay', thuMuc: true },
