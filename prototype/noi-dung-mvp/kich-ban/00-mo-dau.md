@@ -6,8 +6,8 @@
 
 > NHIỆM VỤ: Nhận phòng KTX
 
-- [DÀN DỰNG] Cửa phòng 408 mở, một cậu sinh viên đội mũ lưỡi trai đang xách hộ vali.
-- **tung** (happy): Phòng 408 hả? Đưa đây, tớ xách cho.
+- [DÀN DỰNG] Cửa phòng 408 mở. Một cậu sinh viên đội mũ lưỡi trai bước ra, đỡ lấy cái vali của người chơi.
+- **tung** (happy): Phòng 408 hả? Đưa đây, tớ xách vào cho.
 - **player**: Ơ, cảm ơn cậu… Cậu cũng ở phòng này à?
 - **tung** (neutral): Ừ, giường trong sát cửa sổ là của tớ. Tớ {{nv.tung}}, học Du lịch.
 - [TẠO NHÂN VẬT ten] tung (neutral): "Thế cậu tên gì?"
@@ -81,7 +81,7 @@
 
 - [DÀN DỰNG] Bàn Robotics đông, dán "Đang xin mở rộng xưởng thực hành". Bàn Thám Tử chỉ có {{nv.minh-anh}}.
 - **tung** (neutral): Chị ơi, CLB mình đang điều tra vụ nào không ạ?
-- **minh-anh** (neutral): Không có em ạ. Hồ sơ, đăng ký giờ tra trên hệ thống là ra. Cách làm cũ của CLB ít đất dùng hơn trước.
+- **minh-anh** (neutral): Không có em ạ. Hồ sơ, đăng ký giờ tra trên hệ thống là ra hết. Mấy kiểu điều tra ngày xưa hết đất diễn rồi.
 - **tung** (happy): Thế giờ CLB chuyên điều tra… mật khẩu Wi-Fi ạ?
 - **minh-anh** (worried): Em ra đây để đùa thì bàn bên kia vui hơn đấy.
 - **tung** (worried): Dạ em đùa hơi quá. Em xin lỗi chị.
@@ -106,10 +106,12 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';
 > NHIỆM VỤ: Dọn tủ hồ sơ cùng CLB
 
 - [DÀN DỰNG] Có mặt: {{nv.minh-anh}}, {{nv.duy}}, {{nv.ha-vy}}, {{nv.tung}}, người chơi.
-- **ha-vy** (neutral): Tớ đăng ký qua form nên hôm Ngày hội không ra. Tớ thích mấy thứ có quy luật. Đọc Sherlock Holmes từ hồi cấp hai.
+- **tung** (happy): Ơ, hôm Ngày hội tớ không thấy cậu nhỉ?
+- **ha-vy** (neutral): Tớ đăng ký qua form. Tớ mê Sherlock Holmes từ hồi cấp hai, thấy trường có CLB thám tử là đăng ký luôn.
 - **tung** (happy): Thế cậu đoán được tớ học gì không?
 - **ha-vy** (neutral): Khỏi đoán. Áo đội tình nguyện, huy hiệu khoa trên balo. Du lịch chứ gì.
-- **duy** (neutral): Tớ là {{nv.duy}}, năm hai Hành chính học. Chìa khóa, tủ hồ sơ với cái máy tính cũ của CLB đều do tớ giữ.
+- **player**: Thế ai giữ chìa khóa phòng này ạ?
+- **duy** (neutral): Tớ. {{nv.duy}}, năm hai Hành chính học. Chìa khóa, tủ hồ sơ với cái máy tính cũ đều tớ giữ.
 - **duy** (neutral): Ngăn dưới tớ chưa kiểm kê tới. Cậu mở xem có gì trong đấy.
 - [HIỆN TÀI LIỆU doc-so-chi-linh]
 - [TRA SỔ kiem-hai-lan · tâm đắc]

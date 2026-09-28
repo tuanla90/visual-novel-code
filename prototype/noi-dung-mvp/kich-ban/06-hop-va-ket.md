@@ -39,7 +39,7 @@
 - **thay-quang** (neutral): Lá thư này không tính vào hồ sơ rà soát. CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện.
 - **hoai** (relieved): Em xin lỗi vì làm mọi người mất công ạ.
 - **minh-anh** (happy): Không sao đâu em. Cảm ơn thầy ạ.
-- **quan** (stunned): Dữ liệu không nói dối. Nhưng người đọc dữ liệu thì có… hôm nay là tôi.
+- **quan** (stunned): …Em nhìn con số nhiều mà tưởng là chắc. Em xin nhận đã vội kết luận ạ.
 - [THẺ CHỮ] **narrator**: SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.
 - **tung** (happy): Giữ được phòng rồi! Tối nay tớ khao trà đá.
 - **ha-vy** (smile): Được. Lần này cậu trả thật đấy nhé.
@@ -51,6 +51,6 @@
 - **thay-quang** (neutral): Em Hoài, lá thư ký "H." là em nộp vào hộp phải không?
 - **hoai** (nervous): Dạ… em chỉ nộp thôi ạ.
 - **thay-quang** (neutral): Thư vẫn được tính là một ý kiến sinh viên trong hồ sơ. Chưa thu phòng ngay. CLB được sinh hoạt đến hết học kỳ, nộp báo cáo hoạt động hằng tháng.
-- **minh-anh** (worried): Dạ, bọn em sẽ báo cáo đầy đủ ạ.
+- **minh-anh** (worried): Dạ, tháng nào bọn em cũng sẽ nộp đủ ạ.
 - [THẺ CHỮ] **narrator**: Hai dòng chỉ cho ta chỗ cần đến. Phần còn lại phải chờ một nguồn khác.
 - [KẾT THÚC]

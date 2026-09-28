@@ -9,7 +9,7 @@
 
 > NHIỆM VỤ: Nhận quyền dữ liệu tạm ở Phòng Đào tạo
 
-- **co-hanh** (neutral): Cô nhận văn bản của {{nv.thay-quang}} rồi. Hai bảng thôi, chỉ những cột cần thiết. Họp xong là cô thu hồi quyền nhé.
+- **co-hanh** (neutral): Cô nhận văn bản của {{nv.thay-quang}} rồi. Hai bảng thôi, chỉ những cột cần thiết. Họp xong là cô khóa quyền lại nhé.
 - **co-hanh** (neutral): Bảng lớp sinh hoạt có mã lớp, ngành, tòa nhà. Bảng sinh viên có mã, họ đệm, tên, mã lớp. Ngoài ra không có gì khác đâu.
 - **player**: Dạ, thế là đủ để khoanh vùng rồi ạ. Em cảm ơn cô.
 - [DÀN DỰNG] Giấy nhớ [Quyền dữ liệu tạm] và văn bản của thầy Quang (khai báo ở dữ kiện).

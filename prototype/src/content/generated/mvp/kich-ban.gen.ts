@@ -946,13 +946,13 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "note",
-          "text": "Cửa phòng 408 mở, một cậu sinh viên đội mũ lưỡi trai đang xách hộ vali."
+          "text": "Cửa phòng 408 mở. Một cậu sinh viên đội mũ lưỡi trai bước ra, đỡ lấy cái vali của người chơi."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Phòng 408 hả? Đưa đây, tớ xách cho."
+          "text": "Phòng 408 hả? Đưa đây, tớ xách vào cho."
         },
         {
           "type": "line",
@@ -1267,7 +1267,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Không có em ạ. Hồ sơ, đăng ký giờ tra trên hệ thống là ra. Cách làm cũ của CLB ít đất dùng hơn trước."
+          "text": "Không có em ạ. Hồ sơ, đăng ký giờ tra trên hệ thống là ra hết. Mấy kiểu điều tra ngày xưa hết đất diễn rồi."
         },
         {
           "type": "line",
@@ -1361,9 +1361,15 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Ơ, hôm Ngày hội tớ không thấy cậu nhỉ?"
+        },
+        {
+          "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Tớ đăng ký qua form nên hôm Ngày hội không ra. Tớ thích mấy thứ có quy luật. Đọc Sherlock Holmes từ hồi cấp hai."
+          "text": "Tớ đăng ký qua form. Tớ mê Sherlock Holmes từ hồi cấp hai, thấy trường có CLB thám tử là đăng ký luôn."
         },
         {
           "type": "line",
@@ -1379,9 +1385,14 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "line",
+          "speaker": "player",
+          "text": "Thế ai giữ chìa khóa phòng này ạ?"
+        },
+        {
+          "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Tớ là Duy, năm hai Hành chính học. Chìa khóa, tủ hồ sơ với cái máy tính cũ của CLB đều do tớ giữ."
+          "text": "Tớ. Duy, năm hai Hành chính học. Chìa khóa, tủ hồ sơ với cái máy tính cũ đều tớ giữ."
         },
         {
           "type": "line",
@@ -1662,7 +1673,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "co-hanh",
           "expression": "neutral",
-          "text": "Cô nhận văn bản của Thầy Quang rồi. Hai bảng thôi, chỉ những cột cần thiết. Họp xong là cô thu hồi quyền nhé."
+          "text": "Cô nhận văn bản của Thầy Quang rồi. Hai bảng thôi, chỉ những cột cần thiết. Họp xong là cô khóa quyền lại nhé."
         },
         {
           "type": "line",
@@ -1808,7 +1819,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
-          "text": "Sổ niêm phong thì không ai được mở, kể cả cô."
+          "text": "Sổ đó niêm phong. Cô cũng không được tự mở."
         },
         {
           "type": "line",
@@ -1819,7 +1830,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
-          "text": "Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô phụ trách mới tra và trả lời có hoặc không."
+          "text": "Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô phụ trách hộp mới tra và trả lời có hoặc không."
         },
         {
           "type": "note",
@@ -1864,7 +1875,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "tung",
           "expression": "neutral",
-          "text": "Chữ ký ngoáy thật. Nhưng không có chữ H nào."
+          "text": "Chữ ký khó đọc thật. Nhưng nhìn mãi cũng chẳng thấy chữ H."
         }
       ]
     },
@@ -1892,19 +1903,19 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "hieu",
           "expression": "neutral",
-          "text": "Tôi thấy thông báo họp rà soát rồi. Nói thật, CLB các cậu giữ phòng cả năm mà có làm gì đâu."
+          "text": "Tôi đọc thông báo rà soát rồi. Nói thẳng nhé, CLB các cậu giữ cái phòng cả năm chả để làm gì."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Tớ cá là cậu này viết thư!"
+          "text": "Tớ cá là cậu này gửi thư!"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Khoan. Nói thế là ý kiến. Viết thư là việc khác."
+          "text": "Khoan. Nói thế là ý kiến. Gửi thư là việc khác."
         },
         {
           "type": "line",
@@ -1949,18 +1960,24 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "chu-cuong",
           "expression": "neutral",
-          "text": "Sáng thứ Hai à… 6 giờ 45, chú thấy một anh năm cuối đeo huy hiệu bánh răng, đưa phong bì nâu cho một bạn nữ đeo dây thẻ ngành Báo chí."
-        },
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "Chú có nhìn rõ mặt anh ấy không ạ?"
+          "text": "Sáng thứ Hai à… 6 giờ 45, chú thấy một anh năm cuối đeo huy hiệu bánh răng, đứng ngoài cổng đưa phong bì nâu cho một bạn nữ."
         },
         {
           "type": "line",
           "speaker": "chu-cuong",
           "expression": "neutral",
-          "text": "Không. Sáng sớm, chú chỉ để ý cái huy hiệu với dáng người thôi."
+          "text": "Con bé đi ngang ngay chốt chú, đeo dây thẻ ngành Báo chí."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Còn anh kia, chú có nhìn rõ mặt không ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "chu-cuong",
+          "expression": "neutral",
+          "text": "Không. Anh ấy đứng xa, sáng sớm, chú chỉ để ý cái huy hiệu với dáng người thôi."
         },
         {
           "type": "note",
@@ -1984,7 +2001,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "tung",
           "expression": "neutral",
-          "text": "CTSV còn mở tới 6 giờ đấy. Chạy thôi!"
+          "text": "CTSV sắp hết giờ tiếp sinh viên rồi. Chạy nhanh kẻo các cô về!"
         },
         {
           "type": "goto",
@@ -2007,7 +2024,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "23:10 Chủ nhật, một trang, tệp \"kien-nghi-phong…\", tài khoản SV21… — năm 4."
+          "text": "23:10 Chủ nhật. Một trang, tệp \"kien-nghi-phong…\", tài khoản SV21… Năm 4."
         },
         {
           "type": "line",
@@ -2103,7 +2120,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Đúng. Mình cũng chưa nói là biết."
+          "text": "Vâng ạ. Bọn em cũng chưa nói là biết ai viết."
         },
         {
           "type": "note",
@@ -2424,7 +2441,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "quan",
           "expression": "stunned",
-          "text": "Dữ liệu không nói dối. Nhưng người đọc dữ liệu thì có… hôm nay là tôi."
+          "text": "…Em nhìn con số nhiều mà tưởng là chắc. Em xin nhận đã vội kết luận ạ."
         },
         {
           "type": "line",
@@ -2481,7 +2498,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "worried",
-          "text": "Dạ, bọn em sẽ báo cáo đầy đủ ạ."
+          "text": "Dạ, tháng nào bọn em cũng sẽ nộp đủ ạ."
         },
         {
           "type": "line",
