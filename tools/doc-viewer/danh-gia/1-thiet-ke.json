@@ -1,0 +1,181 @@
+[
+ {
+  "path": "docs/thiet-ke/vu-tru-hoa-phuong-tong-quan.md",
+  "vai_tro": "Tài liệu định hướng chung cho cả chuỗi game Vũ trụ Hoa Phượng: tầm nhìn, bối cảnh trường, các dòng game, nhân vật dùng chung, dòng thời gian, kiến trúc dùng chung, lộ trình ra mắt và mô hình kinh doanh. Người đọc là chủ dự án và agent viết nội dung, khi cần hiểu game “muốn trở thành gì” (README.md:41).",
+  "trang_thai": "mot-phan-loi-thoi",
+  "trang_thai_giai_thich": "Phần tầm nhìn và bối cảnh vẫn dùng được, nhưng vai và câu cửa miệng của Tùng đã bị QĐ-074 thay, và sổ quyết định xếp tệp này ở mức ưu tiên thấp nhất khi có mâu thuẫn (lich-su-quyet-dinh.md:11).",
+  "tom_tat": [
+   "Bảy nguyên tắc chung (vu-tru-hoa-phuong-tong-quan.md:12-19): kỹ năng thật, có truyện xuyên suốt, chấm theo kết quả, mỗi người một đề, sai là để học, người không học IT vẫn chơi được, không có tuyến tình cảm.",
+   "Năm dòng game và câu hô riêng của từng dòng; dòng SQL hô “Có số liệu đây!” (:52-72).",
+   "Tóm tắt dòng SQL (:78-85) và mô tả chi tiết các dòng HTML/CSS, Robotics, Game, Đi Làm (:87-182).",
+   "Bảng nhân vật chung, các vai xuất hiện chéo, dòng thời gian trong truyện và quy tắc canon (:186-223).",
+   "Kiến trúc tách phần kể chuyện khỏi phần giải đố, kèm bảng chức năng mỗi bộ giải đố phải có (:227-253).",
+   "Lộ trình ra mắt (chưa mở dòng thứ hai khi dòng SQL chưa có người trả tiền) và các gói kinh doanh (:257-281)."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "clb-tham-tu-du-lieu-GDD-v0.5.md — trỏ về tệp này để lấy nhân vật chung, dòng thời gian và kiến trúc (GDD:4, GDD:418).",
+    "prototype-scope-down-v0.1.md — liệt kê tệp này là tài liệu liên quan (prototype-scope-down-v0.1.md:10).",
+    "README.md — đặt tệp này ở bước 1 trong thứ tự đọc (README.md:17, :41, :48).",
+    "lich-su-quyet-dinh.md — QĐ-074 yêu cầu sửa phần cameo của Tùng trong tệp này (lich-su-quyet-dinh.md:496).",
+    "dac-ta-dinh-dang-noi-dung.md — tự nhận là nguồn chuẩn duy nhất về nhân vật, thắng khi lệch (dac-ta-dinh-dang-noi-dung.md:101); vì vậy mô tả Tùng/Hà Vy ở tệp này phải khớp với nhan-vat.yaml."
+   ],
+   "quyet_dinh": [
+    "QĐ-074 — thay tệp này: Tùng thành viên CLB, nằm trong bộ ba, câu cửa miệng đổi thành “Tớ cá là…”; tệp vẫn ghi Tùng là “bạn cùng phòng” (:190) và “Tui cá là…” (:223).",
+    "QĐ-032 — prototype không làm “kiến trúc chung đa dòng game”; §8 của tệp này là định hướng dài hạn, chưa ràng buộc.",
+    "QĐ-077 — MVP làm bản đồ, tạo nhân vật, thanh uy tín, xếp hạng (khớp §8.1, :233-235) nhưng không làm mã đề; vì vậy nguyên tắc 4 “Mỗi người một đề” (:16) chưa áp dụng.",
+    "QĐ-075 — kịch bản dạng dữ liệu Markdown + YAML, cùng hướng với :237 “JSON/Markdown”."
+   ],
+   "gameplay": [
+    "Chỉ định hướng: vòng point and click → truy vấn → vật chứng → giải trình (:84), chấm theo tập kết quả (:15, :85), luôn hiện code song song với chế độ kéo thả (:13).",
+    "Quyết định bối cảnh và địa điểm dùng chung (:27-39) và giọng nhân vật (:223)."
+   ],
+   "workload": [
+    "Sửa theo QĐ-074 (dòng Tùng ở :190, :223; thêm ý “bộ ba”): chỉ đụng tài liệu, nhỏ, không kéo theo gói code nào.",
+    "Nếu đổi §8 (kiến trúc) thì không ảnh hưởng các gói 12a-1…16 hay gói MVP, vì QĐ-032 gác phần đa dòng game; nhỏ."
+   ]
+  },
+  "can_ra_khi_doc": [
+   "vu-tru-hoa-phuong-tong-quan.md:223 ghi “Tùng luôn ‘Tui cá là…’”, lệch QĐ-074 (lich-su-quyet-dinh.md:497) và dac-ta-dinh-dang-noi-dung.md:108 (“Tớ cá là…”).",
+   "vu-tru-hoa-phuong-tong-quan.md:190 ghi nhà của Tùng là “SQL (bạn cùng phòng)”, chưa ghi Tùng là thành viên CLB, người kéo người chơi vào CLB và nằm trong bộ ba (QĐ-074, lich-su-quyet-dinh.md:495-496). QĐ-074 nêu đích danh chỗ này phải sửa.",
+   "vu-tru-hoa-phuong-tong-quan.md:192 ghi Hà Vy là “trợ thủ”; QĐ-074 xếp Hà Vy vào bộ ba, và nhan-vat.yaml ghi “người hướng dẫn đọc dữ liệu” (dac-ta-dinh-dang-noi-dung.md:117). Vai này đang được mô tả khác nhau giữa các tệp.",
+   "vu-tru-hoa-phuong-tong-quan.md:16 “Mỗi người một đề” và :245 “Sinh đề từ mã đề”: MVP dùng dữ liệu cố định (QĐ-077, lich-su-quyet-dinh.md:523); QĐ-075 chuyển hướng sang dữ liệu sinh theo seed. Không mâu thuẫn trực tiếp nhưng cần hiểu đây là đích xa, chưa làm.",
+   "vu-tru-hoa-phuong-tong-quan.md:246 ghi trình soạn cơ bản là “Khối lệnh + chip”; prototype dùng trình dựng dạng ô chọn (QĐ-016) và nay là bàn làm việc với giấy note (QĐ-071). QĐ-077 vẫn để Blockly ở diện “không làm”.",
+   "vu-tru-hoa-phuong-tong-quan.md:221 nói có một “bảng nhân vật gốc” duy nhất. Bảng này nay chính là nhan-vat.yaml (dac-ta-dinh-dang-noi-dung.md:101), nhưng tệp chưa trỏ tới."
+  ],
+  "muc_uu_tien_doc": "thap",
+  "thoi_gian_doc_phut": 12
+ },
+ {
+  "path": "docs/thiet-ke/clb-tham-tu-du-lieu-GDD-v0.5.md",
+  "vai_tro": "Tài liệu thiết kế đầy đủ (GDD) của game SQL, cho mùa 1: nhân vật, vòng vụ 4 buổi, giải trình, mode chơi, chip dữ kiện, schema, sinh đề, bí ẩn tổng, Vụ 1, mỹ thuật, asset, ước lượng thời gian. Chủ dự án và các agent viết kịch bản/hình cho MVP đọc tệp này (QĐ-077 giao viết kịch bản “theo GDD §4, §5, §14”).",
+  "trang_thai": "mot-phan-loi-thoi",
+  "trang_thai_giai_thich": "Tệp là nguồn chính cho MVP (QĐ-077), nhưng nhiều phần đã bị các QĐ sau thay: vai và giọng của Tùng/Hà Vy, dữ liệu Vụ 1, phạm vi kiến thức, Blockly. Sổ quyết định cũng tự ghi “cần cập nhật GDD” (lich-su-quyet-dinh.md:444).",
+  "tom_tat": [
+   "Bảng quyết định đã chốt (clb-tham-tu-du-lieu-GDD-v0.5.md:29-42): nhân vật chính học ngành không phải IT, vòng vụ 4 buổi, mã đề tạo từ câu trả lời với Tùng, hai mode Blockly và Hardcore, phần thưởng trang phục.",
+   "Nhân vật (clb-tham-tu-du-lieu-GDD-v0.5.md:73-128): người chơi hô “Có số liệu đây!”, Hà Vy nói “Khoan, đếm lại đã.” (đã sửa theo QĐ-070), Quân là rival ở Ban Pháp chế, Khánh đứng sau lá thư, thầy Quang là nút thắt cuối mùa.",
+   "Vòng vụ 4 buổi; giải trình có lời khai, “Hỏi thêm”, đưa vật chứng, truy vấn tại chỗ, phản bác rival, thanh uy tín 5 vạch, xếp hạng S/A/B/C (clb-tham-tu-du-lieu-GDD-v0.5.md:156-194).",
+   "Lối chơi cốt lõi (40% point and click, 60% viết code), chip dữ kiện kéo vào khối lệnh, Bảng phân tích kiểu Power BI và Sơ đồ quan hệ cho các vụ sau (clb-tham-tu-du-lieu-GDD-v0.5.md:243-338).",
+   "Schema toàn mùa, sinh đề (khoảng 300 sinh viên, mồi nhử, kho lỗi của rival theo vụ), bí ẩn tổng qua 6 vụ (clb-tham-tu-du-lieu-GDD-v0.5.md:342-433).",
+   "Vụ 1 chi tiết từng buổi (clb-tham-tu-du-lieu-GDD-v0.5.md:437-555); phong cách hội họa, danh sách khoảng 125 lớp hình, chuẩn kỹ thuật ảnh, ước lượng thời gian và việc tiếp theo (:559-731)."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "vu1-buoi-giai-trinh-kich-ban.md — lời thoại chi tiết của Buổi 4 trong GDD §14 (clb-tham-tu-du-lieu-GDD-v0.5.md:16, :726).",
+    "prototype-scope-down-v0.1.md — cắt gọn từ GDD và hẹn cập nhật GDD sau test (prototype-scope-down-v0.1.md:8, :434).",
+    "lich-su-quyet-dinh.md — nhiều QĐ dẫn GDD: QĐ-017 (§10.2), QĐ-026 (§15.4, bảng màu), QĐ-070 (đã sửa §3.1 và §16.1), QĐ-077 (MVP dựa trên §4, §5, §14).",
+    "art/prompts/*.md — prompt nhân vật và cảnh dựa trên §15–16. prompts-characters-topview-v0.2.md:242 vẫn dùng “Tui cá là…”.",
+    "prototype/src/assets/art/README.md:51 và code `portrait-faces.ts` — dẫn GDD §16.7 và §15.1 (theo grep; không đọc code).",
+    "dac-ta-dinh-dang-noi-dung.md:775 — câu hỏi còn mở: seed có lấy từ câu trả lời với Tùng ở phần mở đầu của GDD không."
+   ],
+   "quyet_dinh": [
+    "QĐ-070 — tệp đã được sửa theo QĐ này ở §3.1 (clb-tham-tu-du-lieu-GDD-v0.5.md:80, :94) và §16.1 (:621).",
+    "QĐ-074 — mâu thuẫn: clb-tham-tu-du-lieu-GDD-v0.5.md:83 và :137 vẫn dùng “Tui cá là…” và xưng “Ông/bà… Tui”; Tùng chưa được ghi là thành viên CLB hay thuộc bộ ba (:82-86).",
+    "QĐ-021/QĐ-072 — mâu thuẫn: clb-tham-tu-du-lieu-GDD-v0.5.md:96 ghi Hà Vy “không biết SQL” và chỉ là trợ thủ ở buổi giải trình (:95). Prototype để Hà Vy dẫn từng bước và ngồi cạnh ở màn thử thách; sổ quyết định đã ghi nhận chỗ lệch này (lich-su-quyet-dinh.md:444).",
+    "QĐ-073 — mâu thuẫn: clb-tham-tu-du-lieu-GDD-v0.5.md:205 và :443 đưa IN và so sánh ngày vào Vụ 1; QĐ-073 thu vòng chính về WHERE, =/LIKE, AND/OR, còn IN chuyển sang màn phụ. Bookmark nay là ngành (cột nganh), không phải CLB, và cột clb bị ẩn, trong khi :461, :482, :502 dùng cột clb.",
+    "QĐ-010/011/012 — số liệu GDD lệch: lớp ở tòa B ghi ‘KT24A’,‘QT25B’,‘MK23A’ (clb-tham-tu-du-lieu-GDD-v0.5.md:484) so với KT24A, QT24B (QĐ-011); câu OR của Quân “57 người” (:535) so với 24 (QĐ-012) và 14 (QĐ-073).",
+    "QĐ-014 — mâu thuẫn: clb-tham-tu-du-lieu-GDD-v0.5.md:461 truy vấn clb = ‘Thám Tử’ ra 3 thành viên, tức đưa nhân vật cốt truyện vào dữ liệu.",
+    "QĐ-024 — lệch hướng: clb-tham-tu-du-lieu-GDD-v0.5.md:537-545 cho người chơi thêm điều kiện ngày để ra “đúng một người”; prototype dạy rằng kết quả 2 dòng chưa đủ kết luận, phải có nguồn xác minh độc lập.",
+    "QĐ-077 — GDD là nguồn của MVP: thanh uy tín 5 vạch và hoãn khi hết vạch (clb-tham-tu-du-lieu-GDD-v0.5.md:192), xếp hạng (:194), Hardcore mở sau Vụ 1 (:268, :553). Mã đề (:40, §4, §12), Blockly (:41), trang phục (§8) và mini game (§7) vẫn “không làm”.",
+    "QĐ-071 — giấy note kéo thả gần với ý “chip dữ kiện” ở GDD §10.2 (clb-tham-tu-du-lieu-GDD-v0.5.md:271-293); QĐ-017 từng ghi “Không làm kéo-thả”.",
+    "QĐ-075 — việc kiểm nhiều seed gần với clb-tham-tu-du-lieu-GDD-v0.5.md:420 (“ít nhất 1.000 mã đề”), nhưng MVP tạm dùng một seed cố định (QĐ-075, QĐ-077).",
+    "QĐ-028 — prototype và MVP tối ưu cho laptop; GDD vẫn nhắm điện thoại (clb-tham-tu-du-lieu-GDD-v0.5.md:260, :657, :696)."
+   ],
+   "gameplay": [
+    "Cấu trúc vụ 4 buổi và nhịp học kỳ (clb-tham-tu-du-lieu-GDD-v0.5.md:156-213) — nền cho nội dung MVP (QĐ-077).",
+    "Cơ chế giải trình: lời khai, Hỏi thêm, đưa vật chứng, truy vấn tại chỗ, uy tín, xếp hạng (clb-tham-tu-du-lieu-GDD-v0.5.md:182-194) — gói MVP 4 và 7.",
+    "Tạo nhân vật và đoạn mở đầu với Tùng (clb-tham-tu-du-lieu-GDD-v0.5.md:132-152) — gói MVP 5 (chỉ lấy tên, ngành, nam/nữ theo QĐ-077).",
+    "Tỉ lệ point and click / code, cách tránh săn điểm ảnh, bản đồ (clb-tham-tu-du-lieu-GDD-v0.5.md:243-260, :657) — gói MVP 6.",
+    "Mode Hardcore và thưởng khi xếp hạng (clb-tham-tu-du-lieu-GDD-v0.5.md:266-269) — gói MVP 7.",
+    "Phong cách hình, màu chủ đạo từng nhân vật, danh sách asset (clb-tham-tu-du-lieu-GDD-v0.5.md:559-707) — gói MVP 8 và art/prompts."
+   ],
+   "workload": [
+    "Cập nhật GDD theo QĐ-070…074 (Tùng, Hà Vy, phạm vi kiến thức Vụ 1, dữ liệu ngành/lớp, số liệu Quân): chỉ tài liệu, vừa. Nên làm trước gói MVP 2 `kich-ban-mvp`, vì QĐ-077 cho agent viết kịch bản theo GDD §4, §5, §14 mà user không duyệt trước.",
+    "Nếu giữ đúng GDD §14 cho MVP (thêm ngay_nhap_hoc, cột clb, 3 lớp tòa B, truy vấn tại chỗ) thì kéo theo dữ liệu và test (gói 14 hoặc gói MVP 3 `noi-dung-mvp`) và cú pháp mới trong đặc tả cho lời khai/truy vấn tại chỗ (gói 13/16). Lớn.",
+    "Đổi §5.2 hoặc bảng xếp hạng: ảnh hưởng gói MVP 4 `giai-trinh-uy-tin` và 7 `hardcore-xep-hang`. Vừa.",
+    "Đổi §15–16: kéo theo art/prompts và gói MVP 8 `hinh-mvp`. Vừa.",
+    "Các gói 12a-1…12c (chuẩn hóa, không đổi chữ) không phụ thuộc tệp này."
+   ]
+  },
+  "can_ra_khi_doc": [
+   "clb-tham-tu-du-lieu-GDD-v0.5.md:83 “Tui cá là…” và :137, :469, :487 xưng “tui”, lệch QĐ-074 (“Tớ cá là…”, tớ/cậu) và dac-ta-dinh-dang-noi-dung.md:106-108.",
+   "clb-tham-tu-du-lieu-GDD-v0.5.md:82-86: Tùng chỉ là người chỉ đường và tạo mã đề; theo QĐ-074, Tùng vào CLB, kéo người chơi vào và thuộc bộ ba (lich-su-quyet-dinh.md:495-496).",
+   "clb-tham-tu-du-lieu-GDD-v0.5.md:93 ghi “Lê Hà Vy”, còn nhan-vat.yaml ghi “Trần Hà Vy” (dac-ta-dinh-dang-noi-dung.md:115). Họ bị lệch; theo dac-ta-dinh-dang-noi-dung.md:101, tệp YAML thắng.",
+   "clb-tham-tu-du-lieu-GDD-v0.5.md:95-96: Hà Vy “không biết SQL”, chỉ làm trợ thủ ở giải trình; lệch với QĐ-021, QĐ-072 và ghi chú ở lich-su-quyet-dinh.md:444.",
+   "clb-tham-tu-du-lieu-GDD-v0.5.md:95: được 1 gợi ý miễn phí mỗi buổi, nhưng vu1-buoi-giai-trinh-kich-ban.md:383 lại đòi hạng S “không dùng gợi ý”. Cần chốt trước gói MVP 7.",
+   "clb-tham-tu-du-lieu-GDD-v0.5.md:205, :443: Vụ 1 gồm IN và so sánh ngày; lệch QĐ-073 (vòng chính chỉ WHERE + AND/OR, IN chuyển sang màn phụ).",
+   "clb-tham-tu-du-lieu-GDD-v0.5.md:461 truy vấn clb = ‘Thám Tử’ ra 3 thành viên: trái QĐ-014, và cột clb đã bị ẩn (QĐ-073).",
+   "clb-tham-tu-du-lieu-GDD-v0.5.md:484 và :501 có ‘QT25B’ và ‘MK23A’; vu1-buoi-giai-trinh-kich-ban.md:294 lại dùng ‘QT24B’; QĐ-011 chỉ có KT24A, QT24B; QĐ-073 có KT24A, QT24B, BC24A. Danh sách lớp lệch ở cả ba nơi.",
+   "clb-tham-tu-du-lieu-GDD-v0.5.md:530-535: Quân nói “hơn 40 người” rồi “57 người”, lệch QĐ-012 (24) và QĐ-073 (14).",
+   "clb-tham-tu-du-lieu-GDD-v0.5.md:537-545 kết bằng truy vấn ra đúng một người; prototype (QĐ-023/024) cố ý dạy rằng dữ liệu chưa đủ kết luận. Đây là quyết định sư phạm cần chốt cho MVP.",
+   "clb-tham-tu-du-lieu-GDD-v0.5.md:180 viết “chị lao công ở giảng đường B”, nhưng :469-470 và vu1-buoi-giai-trinh-kich-ban.md:39 là “bác Tư lao công”.",
+   "clb-tham-tu-du-lieu-GDD-v0.5.md:40, :144-152, §12: mã đề và sinh đề; MVP không làm (QĐ-077). :41, §10.1: Blockly vẫn “không làm” (QĐ-077).",
+   "clb-tham-tu-du-lieu-GDD-v0.5.md:657, :696: bản đồ dạng dọc và ảnh cắt dọc cho điện thoại; lệch QĐ-028 (laptop). Cần lưu ý khi làm gói MVP 6 và 8.",
+   "clb-tham-tu-du-lieu-GDD-v0.5.md:718-720 (ước lượng thời gian) và :726-731 (việc tiếp theo) viết trước prototype, chưa phản ánh tiến độ thật (prototype-scope-down-v0.1.md:11 cũng yêu cầu ước tính lại)."
+  ],
+  "muc_uu_tien_doc": "cao",
+  "thoi_gian_doc_phut": 35
+ },
+ {
+  "path": "docs/thiet-ke/vu1-buoi-giai-trinh-kich-ban.md",
+  "vai_tro": "Kịch bản lời thoại đầy đủ của Buổi 4 (Giải trình) Vụ 1 “Bức thư nặc danh”, có biến theo mã đề, nhánh đúng/sai, thanh uy tín, màn đánh giá. Theo QĐ-077, người viết kịch bản và dựng gói giải trình của MVP đọc tệp này; prototype lấy lời thoại từ đây (prototype-scope-down-v0.1.md:429).",
+  "trang_thai": "mot-phan-loi-thoi",
+  "trang_thai_giai_thich": "QĐ-077 nêu đích danh tệp này là chuẩn cho buổi Giải trình của MVP, nhưng dữ liệu (cột clb, số dòng, lớp), giọng Tùng/Hà Vy và cách kết (ra đúng một người) đã bị QĐ-012, 024, 070, 073, 074 thay.",
+  "tom_tat": [
+   "Bảng biến theo mã đề ({TEN_NV}, {NC_*}, {CHU_CAI}, {TOA}, {CLB_1}/{CLB_2}, {NAM_NHAP}, {SO_QUAN}) và 5 vật chứng mang vào (vu1-buoi-giai-trinh-kich-ban.md:10-42).",
+   "Ba lượt lời khai của nhân chứng: lớp ở giảng đường {TOA} (đưa vật chứng #4), câu lạc bộ (truy vấn tại chỗ theo mã SV), “tân sinh viên” (truy vấn tại chỗ lấy ngay_nhap_hoc) (vu1-buoi-giai-trinh-kich-ban.md:74-239).",
+   "Quân chiếu truy vấn OR ra {SO_QUAN} người; người chơi chạm dòng OR, rồi sửa truy vấn để ra đúng 1 người; có 4 biến thể lỗi A–D (vu1-buoi-giai-trinh-kich-ban.md:243-323).",
+   "Sự thật: nhân chứng chỉ bỏ hộ thư cho một anh năm cuối đeo huy hiệu Robotics. Kết buổi có thầy Quang, Quân, Tùng, Hà Vy, Minh Anh (vu1-buoi-giai-trinh-kich-ban.md:327-375).",
+   "Màn đánh giá S/A/B/C theo số vạch uy tín; hết vạch thì hoãn, quay lại điều tra mà giữ vật chứng (vu1-buoi-giai-trinh-kich-ban.md:379-393).",
+   "Đoạn sau kết vụ: thầy Khải mở bài kiểm tra Hardcore, Tùng thấy dãy số trên mẩu giấy của chị Linh, mở mini game (vu1-buoi-giai-trinh-kich-ban.md:397-413)."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "clb-tham-tu-du-lieu-GDD-v0.5.md — GDD §14 Buổi 4 là bản tóm tắt của tệp này (clb-tham-tu-du-lieu-GDD-v0.5.md:507-555, :726).",
+    "prototype-scope-down-v0.1.md — dùng lại lời thoại của tệp này (prototype-scope-down-v0.1.md:9, :429).",
+    "kich-ban-prototype.md — phần deb-* của prototype dựa trên tệp này nhưng đổi hướng theo QĐ-024 (kết 2 dòng, xác minh độc lập).",
+    "lich-su-quyet-dinh.md — xếp tệp này ở mức ưu tiên thứ 3, trên GDD (lich-su-quyet-dinh.md:11); QĐ-077 lấy tệp này làm chuẩn cho buổi Giải trình MVP (lich-su-quyet-dinh.md:521).",
+    "dac-ta-dinh-dang-noi-dung.md — grep không thấy cú pháp cho “lời khai”, “Hỏi thêm”, “đưa vật chứng”, “uy tín”. Nếu chuyển tệp này thành nội dung MVP thì phải mở rộng đặc tả."
+   ],
+   "quyet_dinh": [
+    "QĐ-077 — tệp này là nguồn: buổi Giải trình của MVP “theo vu1-buoi-giai-trinh-kich-ban.md”; thanh uy tín 5 vạch, hoãn khi hết vạch và xếp hạng S/A/B/C lấy từ vu1-buoi-giai-trinh-kich-ban.md:30, :379-393.",
+    "QĐ-024 / QĐ-073 — mâu thuẫn về cách kết: tệp này kết bằng truy vấn ra 1 người (vu1-buoi-giai-trinh-kich-ban.md:289-303); QĐ-024 kết bằng 2 dòng rồi đòi xác minh độc lập; QĐ-073 “giữ lỗi OR của Quân (QĐ-024)”. Chưa có QĐ nói rõ MVP theo hướng nào (chưa chắc).",
+    "QĐ-070 — mâu thuẫn: Hà Vy nói “Câu đó là của tôi đấy.” (vu1-buoi-giai-trinh-kich-ban.md:373), nhận “Có số liệu đây!” là câu của mình; QĐ-070 giao câu này cho người chơi.",
+    "QĐ-074 / QĐ-022 — mâu thuẫn xưng hô: Tùng dùng “tui”, “ông/bà” (vu1-buoi-giai-trinh-kich-ban.md:207, :371), trong khi phải là tớ/cậu; Hà Vy xưng “tôi” (:345, :373), trong khi QĐ-022 ghi “mình/cậu” và nhan-vat.yaml ghi “tớ/cậu”.",
+    "QĐ-073 — mâu thuẫn dữ liệu: lời khai 2 và truy vấn dựa trên cột clb, CLB Báo chí (vu1-buoi-giai-trinh-kich-ban.md:127-188, :251-258); QĐ-073 đổi bookmark thành ngành và ẩn cột clb. QĐ-073 xếp Hoài vào BC24A, còn tệp này (:18) và QĐ-077 (lich-su-quyet-dinh.md:523) vẫn ghi QT24B.",
+    "QĐ-012 — lệch số: {SO_QUAN} lấy ví dụ 57 (vu1-buoi-giai-trinh-kich-ban.md:24), trong khi bất biến là 24 (QĐ-012), nay là 14 (QĐ-073).",
+    "QĐ-010 — schema prototype không có ngay_nhap_hoc, nhưng lời khai 3 và truy vấn sửa cần cột này (vu1-buoi-giai-trinh-kich-ban.md:221-228, :296).",
+    "QĐ-016 — biến thể B cần dấu ngoặc (vu1-buoi-giai-trinh-kich-ban.md:321), trong khi trình dựng chỉ có một phép nối chung. MVP không có mã đề nên có lẽ chỉ dùng biến thể A (chưa chắc).",
+    "QĐ-075 — {SO_QUAN} và các biến số trong lời thoại khớp ý “biến SQL”; riêng câu SQL mẫu viết cứng ‘SV240317’ và ‘H%’ (vu1-buoi-giai-trinh-kich-ban.md:163, :223, :256, :293)."
+   ],
+   "gameplay": [
+    "Toàn bộ buổi Giải trình Vụ 1 của MVP: thứ tự lời khai, chỗ đưa vật chứng, truy vấn tại chỗ, chạm dòng lỗi, sửa truy vấn (vu1-buoi-giai-trinh-kich-ban.md:74-323).",
+    "Luật phạt: −1 uy tín khi đưa sai vật chứng, truy vấn sai hoặc chạm sai dòng (vu1-buoi-giai-trinh-kich-ban.md:116-120, :178-188, :279-283, :310-314); prototype thì không phạt (QĐ-024 bước 2).",
+    "Xếp hạng và thưởng Hardcore (vu1-buoi-giai-trinh-kich-ban.md:381-388); luồng hoãn khi hết uy tín (:390-393).",
+    "Mở Hardcore sau Vụ 1 qua thầy Khải (vu1-buoi-giai-trinh-kich-ban.md:401-403), khớp QĐ-077."
+   ],
+   "workload": [
+    "Viết lại theo QĐ-070/073/074 (xưng hô, câu hô, ngành thay CLB, số liệu, Hoài ở lớp nào): tài liệu, vừa. Nên làm trước gói MVP 2 `kich-ban-mvp`.",
+    "Nếu theo đúng tệp này cho MVP: thêm cột ngay_nhap_hoc (và clb hoặc nganh) vào dataset, tính lại bất biến và dataset ẩn (gói MVP 3 hoặc gói 14), thêm loại node lời khai, Hỏi thêm, đưa vật chứng, truy vấn tại chỗ, uy tín vào đặc tả và runtime (gói 13/16, gói MVP 4 `giai-trinh-uy-tin`). Lớn.",
+    "Chốt cách kết (1 người hay 2 dòng + xác minh độc lập) trước khi giao gói MVP 4: cần một QĐ của user; việc ghi quyết định thì nhỏ, nhưng hệ quả lên nội dung lớn.",
+    "Không ảnh hưởng các gói 12a-1…12c (chuẩn hóa nội dung prototype hiện có)."
+   ]
+  },
+  "can_ra_khi_doc": [
+   "vu1-buoi-giai-trinh-kich-ban.md:3 ghi “Thuộc tài liệu thiết kế v0.3”, trong khi GDD hiện là v0.5.",
+   "vu1-buoi-giai-trinh-kich-ban.md:373 Hà Vy nói “Câu đó là của tôi đấy.”, trái QĐ-070 (lich-su-quyet-dinh.md:433). Cả :371 (Tùng khen người chơi hô câu đó) cũng cần đọc lại.",
+   "vu1-buoi-giai-trinh-kich-ban.md:207, :371 Tùng xưng “tui”, “ông/bà”, lệch QĐ-074 (tớ/cậu). :345, :373 Hà Vy xưng “tôi”, lệch QĐ-022 và dac-ta-dinh-dang-noi-dung.md:117.",
+   "vu1-buoi-giai-trinh-kich-ban.md:48, :98, :207, :306: Tùng ngồi hàng ghế dự thính; theo QĐ-074, Tùng đã là thành viên CLB và thuộc bộ ba. Có cần đổi chỗ ngồi hay không thì chưa có QĐ (chưa chắc).",
+   "vu1-buoi-giai-trinh-kich-ban.md:24 lấy {SO_QUAN} = 57; lệch QĐ-012 (24) và QĐ-073 (14).",
+   "vu1-buoi-giai-trinh-kich-ban.md:294 liệt kê lớp ‘KT24A’,‘QT24B’,‘MK23A’; lệch QĐ-011 (KT24A, QT24B), QĐ-073 (thêm BC24A) và clb-tham-tu-du-lieu-GDD-v0.5.md:484 (QT25B).",
+   "vu1-buoi-giai-trinh-kich-ban.md:18 cho Hoài học QT24B, khớp QĐ-077; nhưng QĐ-073 xếp Hiếu và Hoài vào BC24A. Hai QĐ mâu thuẫn, cần user chốt.",
+   "vu1-buoi-giai-trinh-kich-ban.md:127-188 (lời khai 2) xoay quanh cột clb và CLB Báo chí; QĐ-073 đổi bookmark thành ngành Báo chí và ẩn cột clb, nên cả lượt lời khai này phải viết lại.",
+   "vu1-buoi-giai-trinh-kich-ban.md:289-303 kết bằng “trả về đúng một người”, trái tinh thần QĐ-023/024 và prototype-scope-down-v0.1.md:393 (ranh giới giữa nghi vấn, bằng chứng và kết luận).",
+   "vu1-buoi-giai-trinh-kich-ban.md:413 dùng biến {QUE_NV}, nhưng biến này không có trong bảng biến :12-24. Các câu SQL mẫu :163, :223 viết cứng ‘SV240317’ thay vì {NC_MASV}.",
+   "vu1-buoi-giai-trinh-kich-ban.md:383-384: hạng S = 5 vạch và không dùng gợi ý; hạng A = 4–5 vạch. clb-tham-tu-du-lieu-GDD-v0.5.md:95 lại cho 1 gợi ý miễn phí. Cần chốt trước gói MVP 7.",
+   "vu1-buoi-giai-trinh-kich-ban.md:321 biến thể B cần dấu ngoặc; trình dựng hiện có một phép nối chung (QĐ-016). Với MVP không có mã đề (QĐ-077), biến thể B–D có lẽ không dùng."
+  ],
+  "muc_uu_tien_doc": "cao",
+  "thoi_gian_doc_phut": 20
+ }
+]

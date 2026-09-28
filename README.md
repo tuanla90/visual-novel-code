@@ -28,6 +28,7 @@ bị bản MVP (QĐ-077).
 │   ├── README.md                 trạng thái từng bộ prompt, quy trình ảnh
 │   ├── prompts/                  các bộ prompt sinh ảnh (Google Flow, Topview)
 │   └── nguon/                    ảnh gốc chưa xử lý, để dành cho lớp vật bấm được
+├── tools/doc-viewer/             dựng tài liệu thành trang HTML để đọc và rà soát (xem README trong đó)
 ├── prototype/                    code game (Vite + React + TypeScript + sql.js)
 │   ├── README.md                 cách chạy, hướng dẫn người quan sát, quyền riêng tư
 │   ├── docs/ARCHITECTURE.md      kiến trúc code

@@ -1,0 +1,24 @@
+[
+ {
+  "path": "README.md",
+  "vai_tro": "Bản đồ repo: mỗi thư mục chứa gì, thứ tự đọc, thứ tự ưu tiên khi tài liệu mâu thuẫn, quy ước đặt tên. Viết lúc sắp xếp lại thư mục (QĐ-078).",
+  "trang_thai": "hieu-luc",
+  "trang_thai_giai_thich": "Mới viết ngày 28/09, khớp cấu trúc hiện tại; riêng dòng thứ tự ưu tiên chép lại từ sổ QĐ nên cũ theo sổ.",
+  "tom_tat": [
+   "Cây thư mục: `docs/` (tài liệu sản phẩm), `art/` (nguồn ảnh), `prototype/` (code), `.agents/` (skill cho Antigravity).",
+   "Thứ tự đọc 5 bước và thứ tự ưu tiên khi mâu thuẫn.",
+   "Quy ước: tên tiếng Việt không dấu, gạch ngang, `-vX.Y` cho tài liệu có phiên bản; link tương đối."
+  ],
+  "tac_dong": {
+   "tai_lieu": ["lich-su-quyet-dinh.md — thứ tự ưu tiên ở README chép từ dòng 11 của sổ; sửa một bên phải sửa bên kia.", "prototype/README.md và ARCHITECTURE.md — trỏ về README gốc làm bản đồ repo."],
+   "quyet_dinh": ["QĐ-078 — nguồn của tệp này.", "QĐ-077 — README nói “chuẩn bị bản MVP”."],
+   "gameplay": [],
+   "workload": ["Mỗi lần thêm/chuyển tài liệu: sửa cây thư mục — nhỏ."]
+  },
+  "can_ra_khi_doc": [
+   "Dòng “Khi tài liệu mâu thuẫn” lặp lại thứ tự ưu tiên cũ của sổ QĐ (xem mâu thuẫn ① ở trang chủ). Khi chốt thứ tự mới, sửa cả hai nơi."
+  ],
+  "muc_uu_tien_doc": "trung",
+  "thoi_gian_doc_phut": 3
+ }
+]

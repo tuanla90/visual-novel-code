@@ -1,0 +1,172 @@
+[
+ {
+  "path": "docs/prototype/prototype-scope-down-v0.1.md",
+  "vai_tro": "Định nghĩa phạm vi prototype v0.1: người chơi mục tiêu, vòng chơi lõi, kịch bản khung, trình dựng truy vấn, danh sách không làm, kế hoạch thử nghiệm và tiêu chí thành công. Người đọc: user, điều phối viên và mọi agent (sổ QĐ xếp tệp này ưu tiên cao nhất, lich-su-quyet-dinh.md:11).",
+  "trang_thai": "mot-phan-loi-thoi",
+  "trang_thai_giai_thich": "§1, §3, §9, §10 vẫn dùng (QĐ-077 giữ mục đích thử nghiệm). Nhưng §2.2, §2.3, §4.2–§4.4, §5.1 và §8 đã bị QĐ-071→077 thay mà tệp chưa sửa.",
+  "tom_tat": [
+   "Người chơi mục tiêu: sinh viên năm nhất khối kinh tế, quen bảng tính, chưa học SQL, chơi trên laptop; 20–30 phút (dòng 20, 54).",
+   "Vòng lõi: manh mối → điều kiện dữ liệu → chạy truy vấn → diễn giải → phản bác → xác minh độc lập (dòng 108–120).",
+   "Kịch bản khung: ba manh mối (H, tòa B, bookmark CLB Báo chí), ba thử thách H → tòa B → ghép bằng AND + IN, câu OR của Quân, sổ bàn giao, nhân chứng (dòng 140–222).",
+   "Trình dựng có cấu trúc, SQL hiện song song, được sửa SQL trực tiếp, không phạt khi chạy sai (dòng 226–248).",
+   "§8 liệt kê những thứ chủ động không làm: bản đồ, tạo nhân vật, Hardcore, thanh uy tín, xếp hạng, mã đề… (dòng 312–331).",
+   "§9–§11: 5 người rồi 10–15 người, danh sách sự kiện telemetry, ngưỡng thành công (≥70%, ≥60%…), điều kiện nâng lên vertical slice."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "lich-su-quyet-dinh.md — dòng 3 và 11 lấy tệp này làm gốc, xếp nó trên chính sổ QĐ; phần 2 của sổ (QĐ-010→QĐ-033) dẫn các § của tệp.",
+    "kich-ban-prototype.md — dòng 5 ghi cấu trúc “theo §2–§5”; chép nguyên văn câu hỏi của Quân (§4.4) và thông điệp kết (§4.5).",
+    "prototype/README.md:5 và ARCHITECTURE.md:4 — coi đây là “sự thật về sản phẩm”.",
+    "prompts-background-prototype-v0.1.md:3 — ba cảnh nền lấy từ §2.2.",
+    "README.md:21, 42 — bản đồ repo; code `challenges.sample.ts` có nhắc tên tệp (grep, chưa đọc nội dung)."
+   ],
+   "quyet_dinh": [
+    "QĐ-010→QĐ-033 — lấy tệp này làm nguồn: schema (§2.4), trình dựng (§5), chấm (§6.2), giải trình (§4.4–4.5), telemetry (§9.3), ngoài phạm vi (QĐ-032 = §8).",
+    "QĐ-076, QĐ-077 — thay §8 và §2.2: giữ bản đồ, Lưu/Nạp; MVP làm tạo nhân vật, Hardcore, thanh uy tín, xếp hạng S/A/B/C.",
+    "QĐ-071, QĐ-072, QĐ-073 — thay §4.3, §5.1, §6: đảo thứ tự thử thách, bỏ IN và màn ghép ba manh mối khỏi mạch chính, khóa FROM/SELECT, kéo note, không báo đúng/sai khi chạy.",
+    "QĐ-073 — thay §4.2 và §4.4: bookmark thuộc ngành Báo chí; câu của Quân thành `ten LIKE 'H%' OR ma_lop='BC24A'`, ra 14 dòng.",
+    "QĐ-074 — mâu thuẫn §2.3 (dòng 86 ghi Tùng chưa xuất hiện; nay Tùng thuộc bộ ba chính).",
+    "QĐ-075 — dữ liệu sinh theo seed, tạm dùng seed cố định; hiện chưa trái §2.4 nhưng đi ngược hướng “không sinh dữ liệu” của §8."
+   ],
+   "gameplay": [
+    "Chọn người chơi mục tiêu và thời lượng 20–30 phút.",
+    "Năm phần của game và ba cảnh (dòng 56–72).",
+    "Luật không phạt, thử lại không giới hạn (dòng 246).",
+    "Cú lật “dựa vào đâu” dẫn tới nguồn xác minh độc lập (dòng 208–210).",
+    "Các chỉ số thành công §10 mà telemetry và khảo sát phải đo (QĐ-029, QĐ-031)."
+   ],
+   "workload": [
+    "Sửa để khớp QĐ-071→077: chỉ sửa tài liệu, không có code đọc tệp này (grep chỉ thấy chú thích trong `challenges.sample.ts`). Mức nhỏ–vừa.",
+    "Nếu đổi §4.4 hoặc §4.5 (chữ nguyên văn) thì kéo theo kich-ban-prototype.md, rồi code và `faithfulness.test.ts`. Mức vừa.",
+    "Nếu đổi thứ tự ưu tiên (lich-su-quyet-dinh.md:11) thì phải sửa ghi chú ở sổ, README và ARCHITECTURE.md. Mức nhỏ.",
+    "Gói 12a-1…16 và gói MVP QĐ-077 không phụ thuộc trực tiếp; chỉ dùng §9–§10 cho telemetry và khảo sát."
+   ]
+  },
+  "can_ra_khi_doc": [
+   "Thứ tự ưu tiên ở lich-su-quyet-dinh.md:11 xếp tệp này trên sổ QĐ, nhưng QĐ-071→077 (quyết định của user) đã lật nhiều mục mà tệp chưa sửa. Cần chốt bên nào thắng.",
+   "§2.3 dòng 86 ghi “Tùng… chưa xuất hiện”. Đối chiếu: kich-ban-prototype.md:29–43 (intro-00 có Tùng) và QĐ-074.",
+   "§2.2 dòng 72 và §8 dòng 317–321 (không bản đồ, không tạo nhân vật, không Hardcore, uy tín, xếp hạng) trái QĐ-076 và QĐ-077.",
+   "§4.3 dòng 150–188 (thứ tự H → tòa B → ghép bằng IN, cột `clb`) trái QĐ-072 và QĐ-073 (tòa B trước, chỉ WHERE + AND/OR, bỏ IN, bỏ cột clb, BC24A).",
+   "§4.2 dòng 144 ghi “CLB Báo chí”; QĐ-073 đổi thành ngành Báo chí. §2.4 dòng 96 ghi “4 câu lạc bộ”; QĐ-073 bỏ cột clb khỏi phần người chơi thấy.",
+   "§4.4 dòng 194–200: câu OR ba điều kiện (24 dòng theo QĐ-012). QĐ-073 đổi thành câu hai điều kiện, 14 dòng.",
+   "§2.4 dòng 95 ghi “6–8 lớp”; QĐ-073 thêm BC24A, BC24B vào 8 lớp hiện có (QĐ-010), có thể thành 10 lớp (chưa chắc).",
+   "§1.2 dòng 31 và §5.1 dòng 232–233 (người chơi tự dựng SELECT/FROM, chọn giá trị từ danh sách) lệch QĐ-073 (khóa FROM/SELECT) và QĐ-071 (kéo note vào ô).",
+   "§6.1 dòng 263 và §6.2 (“chấm” khi chạy): QĐ-071 bỏ báo đúng/sai khi chạy, chỉ chấm ngầm. §6.2 dòng 277 chỉ nói dataset ẩn cho c3; QĐ-015 đã mở rộng sang c1 và debrief-fix.",
+   "§2.1 dòng 60 ghi “ba thử thách”; QĐ-073 còn hai thử thách ở vòng chính. §7 dòng 300 ghi “4 bộ chân dung”, chưa có Tùng.",
+   "§13 dòng 428–434 là việc đã làm xong (dataset, kịch bản, bản dựng); nên đọc như lịch sử."
+  ],
+  "muc_uu_tien_doc": "cao",
+  "thoi_gian_doc_phut": 15
+ },
+ {
+  "path": "docs/prototype/kich-ban-prototype.md",
+  "vai_tro": "Kịch bản chơi được đầy đủ của prototype: lời thoại 5 phần, thẻ thử thách c1–c3/debrief-fix, mã chẩn đoán, gợi ý, hồ sơ vật chứng, mục Tự kiểm. Là nguồn chữ của `src/content/real`; `faithfulness.test.ts` so khớp từng ký tự. Người đọc: người viết nội dung, agent gói nội dung, gói chuẩn hóa 12a.",
+  "trang_thai": "hieu-luc",
+  "trang_thai_giai_thich": "Đây là nội dung game đang chạy và được test khóa, nhưng đã có QĐ-070, QĐ-072→074 bắt viết lại nhiều đoạn. QĐ-079 định tách tệp này sang `prototype/noi-dung/` rồi thay bằng trang trỏ.",
+  "tom_tat": [
+   "Quy ước tiền tố máy đọc được: `[ĐIỂM XEM XÉT]`, `[HỎI]`, `[CHỌN DÒNG]`, `[THỬ THÁCH]`, `[ĐIỀU KIỆN QUA]`, `[DÀN DỰNG]`… (dòng 9–23).",
+   "Năm phần: intro-00 (Tùng dẫn đi) → intro-01/02 → điều tra ba manh mối → phân tích c1 (H) → c2 (tòa B) → c3 (AND + IN + clb) → giải trình 4 bước với Quân → kết có sổ bàn giao, Hoài, hủy dữ liệu (dòng 27–332).",
+   "Thẻ thử thách: SQL chuẩn, cột bắt buộc, số dòng chuẩn (10/2/2/2), bước hướng dẫn của c1, gợi ý 3 cấp, mã chẩn đoán, câu hỏi đọc kết quả, vật chứng (dòng 336–513).",
+   "Ba câu gợi ý chuẩn §5.2 và bộ “Nhận xét chung” theo thứ tự ưu tiên của engine (dòng 343–378).",
+   "Hồ sơ vật chứng: 3 clue, 3 doc, chú thích sau giải trình làm mờ dữ liệu cá nhân (QĐ-062) (dòng 517–604).",
+   "Mục Tự kiểm: số người nói/biểu cảm, định danh, đếm chữ theo phần, con trỏ chuỗi, độ dài lựa chọn (dòng 608–713)."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "Code `src/content/real/story/*.ts`, `challenges.ts`, `evidence.ts` — bản chép tay, phải khớp từng ký tự (`faithfulness.test.ts`, `testing/read-script.ts` đọc tệp này).",
+    "Code `src/sql-challenge/data/challenges.ts` và `challenges.test.ts`, `content/types.ts`, `story/types.ts`, `sample/*.sample.ts` — có nhắc tên tệp (grep, chưa đọc nội dung).",
+    "ke-hoach-goi-chuan-hoa.md:19, 49 — gói 12a-1 tách tệp này thành `prototype/noi-dung/…` rồi thay bằng một trang ngắn trỏ sang thư mục mới.",
+    "dac-ta-dinh-dang-noi-dung.md:621 — bảng đối chiếu cú pháp cũ (tệp này) sang cú pháp mới.",
+    "kich-ban-de-xuat-full.md — lấy tệp này làm “script gốc” để đề xuất viết lại.",
+    "ARCHITECTURE.md:323 — “kịch bản là nguồn duy nhất: đổi chữ ở kịch bản trước”."
+   ],
+   "quyet_dinh": [
+    "Hiện thực QĐ-011, 012, 015–027, 033, 035, 039, 047, 052, 054, 062 (ghi ngay trong các dòng [DÀN DỰNG]).",
+    "QĐ-070 — “còn phải làm”: chèn câu người chơi buột miệng “Có số liệu đây!” ở Phân tích và câu Hà Vy “Khoan, đếm lại đã.”; grep ra 0 dòng, chưa làm.",
+    "QĐ-072 — bắt đảo c1/c2, sửa ana-01, ana-c2-intro, câu hỏi đọc kết quả, câu “Thử thách 1 ra mười người tên H” ở q-c3-read (dòng 477).",
+    "QĐ-073 — bắt sửa inv-box, clue bookmark, ana-*, c1/c2, debrief-fix, deb-01…03 theo dữ liệu BC24A và ngành Báo chí.",
+    "QĐ-074 — bắt viết lại intro-00 (Tùng kéo người chơi vào CLB) và intro-01 (câu “Giờ còn ba người, tính cả cậu”, dòng 54).",
+    "QĐ-075/QĐ-079 — tệp bị tách sang `noi-dung/` (12a-1); bỏ bản chép tay và test so khớp (12a-2). Viết lại nội dung là gói 16.",
+    "QĐ-076 — intro-00 do commit fa5ffd3 thêm; QĐ-076 lưu ý “khu B” nhắc hai lần trước manh mối tòa B, cần user xem lại."
+   ],
+   "gameplay": [
+    "Toàn bộ lời thoại, thứ tự chuỗi, điểm xem xét, điều kiện qua cảnh.",
+    "Nội dung học SQL và nhịp độ: thứ tự c1/c2/c3, bước hướng dẫn, gợi ý 3 cấp, mã chẩn đoán, câu hỏi đọc kết quả.",
+    "Màn giải trình: chạm dòng lỗi OR, sửa truy vấn, q-two-rows, q-verify (đo chỉ số §10).",
+    "Kết truyện: sổ bàn giao, nhân chứng Hoài, hủy dữ liệu, móc câu Robotics.",
+    "Hồ sơ vật chứng: “Câu hỏi còn mở” và “Lưu ý” theo phần (QĐ-037)."
+   ],
+   "workload": [
+    "Sửa bất kỳ chữ hiển thị nào lúc này: phải sửa bản chép tay .ts tương ứng, nếu không `faithfulness.test.ts` đỏ. Mức vừa mỗi lần.",
+    "Nên đóng băng tệp cho tới khi 12a-1 tách xong. Sửa song song với gói 12a-1/12a-2 dễ xung đột hoặc sót dòng. Mức lớn nếu va chạm.",
+    "Viết lại theo QĐ-070, 072→074: kéo theo `src/sql-challenge/data/*` (dataset chính và ẩn, bất biến số dòng), mã chẩn đoán, test, màn thử thách mới (gói 15, 16). Mức lớn.",
+    "Cập nhật mục Tự kiểm sau mỗi lần sửa chữ. Mức nhỏ.",
+    "Gói MVP QĐ-077 (2 `kich-ban-mvp`, 3 `noi-dung-mvp`) sẽ viết kịch bản mới theo GDD. Có dùng tệp này làm nền hay không thì chưa rõ (chưa chắc)."
+   ]
+  },
+  "can_ra_khi_doc": [
+   "Thứ tự và nội dung thử thách (dòng 138–169, 380–484: H → tòa B → ghép bằng IN) trái QĐ-072/073: tòa B trước, chỉ WHERE + AND/OR, FROM/SELECT khóa sẵn, bỏ IN khỏi mạch chính.",
+   "Dữ liệu cũ KT24A/QT24B và cột `clb` (dòng 164, 419, 438, 446, 452, 484) trái QĐ-073 (BC24A, ngành Báo chí, bỏ cột clb).",
+   "Câu OR của Quân (24 dòng, dòng 197–207 và 513) trái QĐ-073: câu hai điều kiện, 14 dòng.",
+   "Hoài “lớp QT24B” (dòng 302): QĐ-073 cho Hoài học BC24A, nhưng QĐ-077 (cũ hơn) vẫn ghi QT24B. Hai QĐ lệch nhau, cần chốt.",
+   "`[KHI ĐÚNG]`, khung thành công, “Lưu vào hồ sơ” (dòng 340, 405, 438, 475, 510) trái QĐ-071: không báo đúng/sai khi chạy, lưu bằng note.",
+   "Hướng dẫn từng bước ở c1 (dòng 395–399, QĐ-021) nay chuyển sang câu hỏi tòa B (QĐ-072). “FROM để trống” (dòng 156) trái QĐ-073 (khóa FROM). Mục “Từ manh mối” (QĐ-017) trái kéo note (QĐ-071).",
+   "intro-00 (dòng 41–42): Tùng đi uống trà, trái QĐ-074. intro-01 dòng 54 phải đổi. Tùng chưa có mặt ở thử thách 1 như QĐ-073 yêu cầu.",
+   "Chưa có hai câu của QĐ-070 (“Có số liệu đây!” lần đầu ở Phân tích, “Khoan, đếm lại đã.”); grep ra 0.",
+   "Lệch mốc thời gian: dòng 34 “Tuần đầu tiên” và dòng 50 “Tuần thứ hai năm nhất”. “khu B” ở dòng 35–36 (QĐ-076 đã lưu ý).",
+   "Người nói `tung` không có trong bảng biểu cảm QĐ-033 (lich-su-quyet-dinh.md:171), nhưng Tự kiểm dòng 645 vẫn ghi “mọi tổ hợp đều thuộc QĐ-033”.",
+   "Tự kiểm đã cũ, chạy lại lệnh của chính tệp thì ra khác. Lệnh 2: ha-vy smile 21 (ghi 20), thinking 44 (41), narrator 10 (9), player 9 (6), thiếu “tung (neutral)” 5. Số chuỗi 20 (ghi 19); dòng 696 vẫn coi intro-01 là chuỗi mở đầu. Awk phần Mở đầu 471 (ghi 293), Phân tích 224 (206).",
+   "Ngân sách chữ phần Mở đầu (≤ 400, dòng 678) nhiều khả năng đã vượt sau khi thêm intro-00 (awk 471; phép đếm đủ chưa chạy lại, chưa chắc)."
+  ],
+  "muc_uu_tien_doc": "cao",
+  "thoi_gian_doc_phut": 35
+ },
+ {
+  "path": "docs/prototype/kich-ban-de-xuat-full.md",
+  "vai_tro": "Bản đề xuất viết lại lời thoại: mỗi đoạn có “Script gốc” chép từ kich-ban-prototype.md, kèm Phương án 1 (anime VN giàu cảm xúc) và có đoạn thêm Phương án 2 (đời thường). Viết cho user chọn phương án; người viết tự xưng “Senior Narrative Director & Subagent Manager”.",
+  "trang_thai": "de-xuat-chua-duyet",
+  "trang_thai_giai_thich": "README.md:23 ghi “(chưa duyệt)” và không QĐ nào duyệt tệp này (QĐ-078 chỉ chuyển chỗ). Nền của nó (c1 = H, câu OR 24 dòng, Tùng rời đi) đã bị QĐ-072→074 vượt qua.",
+  "tom_tat": [
+   "Ràng buộc tự đặt: biểu cảm theo `src/shared/ids.ts` (thêm `tung: neutral`), mỗi lời ≤ 2 dòng (~35 từ), giữ nguyên mã và câu hỏi `[HỎI]` (dòng 7–17).",
+   "Đề xuất cho intro-00, 01, 02 (có 2 phương án), rồi inv-letter, inv-bac-tu, inv-box, ana-*, deb-01…04, end-02…04 (chỉ Phương án 1).",
+   "Phương án 1 đẩy giọng kịch tính: Quân kiểu “Ace Attorney” (dòng 448), Hà Vy nhắc SQL/CSDL, kết có thông điệp mới.",
+   "Không đề xuất gì cho thẻ thử thách, mã chẩn đoán, hồ sơ vật chứng, end-01.",
+   "Bảng tự kiểm cuối tệp tuyên bố “Đạt 100%” mọi ràng buộc và sẽ qua `faithfulness.test.ts` (dòng 605–613)."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "kich-ban-prototype.md — nguồn “script gốc”. Nếu được duyệt thì chép nguyên văn sang tệp đó và mã TypeScript (dòng 17).",
+    "README.md:23 — ghi là đề xuất chưa duyệt; ngoài sổ QĐ (QĐ-078) không tài liệu hay code nào khác nhắc tới (grep).",
+    "Mượn tiểu sử Tùng (ngành Du lịch) từ GDD (clb-tham-tu-du-lieu-GDD-v0.5.md:82) và họ tên Quân (clb-tham-tu-du-lieu-GDD-v0.5.md:104)."
+   ],
+   "quyet_dinh": [
+    "Không có QĐ nào làm nguồn hay duyệt tệp này.",
+    "Mâu thuẫn QĐ-074: intro-00 ở cả hai phương án cho Tùng đi Căng tin, không kéo người chơi vào CLB.",
+    "Mâu thuẫn QĐ-024 và chính ràng buộc số 3 của tệp: PA1 dòng 521 đổi câu hỏi q-verify, trong khi QĐ-024 và kich-ban-prototype.md:268 yêu cầu giữ nguyên văn.",
+    "Mâu thuẫn QĐ-011: dòng 538 gọi nhân chứng là “Nguyễn Thu Hoài”; QĐ-011 ghi “Lê Thị Hoài”.",
+    "Mâu thuẫn QĐ-022: Hà Vy xưng “tớ” ở dòng 218 và 351; QĐ-022 định Hà Vy xưng “mình”.",
+    "QĐ-033: coi `tung: neutral` là hợp lệ, nhưng bảng QĐ-033 chưa có Tùng.",
+    "QĐ-075: dòng 613 hứa qua test so khớp hai chiều, trong khi QĐ-075 bỏ loại test này. QĐ-032: tiêu đề dòng 358 ghi “IN / JOIN”, mà JOIN nằm ngoài phạm vi."
+   ],
+   "gameplay": [
+    "Chỉ đổi giọng và nội dung lời thoại. Nếu áp dụng thì đổi không khí VN, tính cách Quân, Hà Vy, bác Tư và thông điệp kết.",
+    "Có đoạn đổi chi tiết cốt truyện: bác Tư thành bảo vệ, người mở hộp là “cô bên Đoàn trường”, tin nhắn đến từ Đoàn trường. Việc này làm yếu mối cài “cô phụ trách hộp góp ý” cho cú lật ở deb-04 và end-01."
+   ],
+   "workload": [
+    "Nếu duyệt một phương án: chép vào kich-ban-prototype.md, sửa bản chép tay .ts, chạy `faithfulness.test.ts`, cập nhật Tự kiểm. Mức vừa.",
+    "Làm vậy bây giờ sẽ đụng gói 12a-1/12a-2 (QĐ-079). Đằng nào nội dung cũng phải viết lại theo QĐ-072→074 ở gói 16, nên phần lớn đề xuất phải làm lại. Khuyến nghị: không áp dụng nguyên khối.",
+    "Nếu chỉ lấy vài câu hay (vd. sửa lệch “Tuần đầu tiên”/“Tuần thứ hai” ở intro-00): mức nhỏ, nên gộp vào gói 16."
+   ]
+  },
+  "can_ra_khi_doc": [
+   "“Script gốc” chép thiếu nên không dùng thay bản gốc được: deb-01 bỏ khối SQL và bảng [CHỌN DÒNG] (dòng 435–444), deb-03 bỏ q-two-rows (492–497), lựa chọn q-verify mất phản hồi (502–505), không có end-01, bỏ các dòng [DÀN DỰNG] ở inv-letter và inv-box.",
+   "Nhân vật và cốt truyện lệch: bác Tư “bảo vệ 58 tuổi” (dòng 262, 270) trong khi kich-ban-prototype.md:100 và vu1-buoi-giai-trinh-kich-ban.md:39 ghi lao công; “cô bên Đoàn trường” (dòng 291) thay “cô phụ trách hộp góp ý”; “thầy phụ trách giao” (dòng 151) và “Đoàn trường” (dòng 416) thay Phòng CTSV.",
+   "PA1 end-04 dòng 598 viết lại thông điệp kết, trong khi §4.5 của scope-down và kich-ban-prototype.md:329 yêu cầu giữ nguyên văn. PA1 end-03 dòng 590–591 bỏ câu then chốt của Quân “Tìm được người bỏ thư chưa phải là tìm được người viết thư”.",
+   "Bảng kiểm dòng 610 ghi mọi lời 15–32 từ, nhưng đếm thật có lời 38 từ (dòng 452), 36 (dòng 598), 35 (dòng 562), 33 (dòng 481). Mười lời vượt giới hạn 30 chữ của kich-ban-prototype.md:689.",
+   "Nền nội dung đã lỗi thời theo QĐ-072/073/074: c1 = H, KT24A/QT24B, câu OR 24 dòng, Tùng rời đi; mọi phương án đều dựa trên nền này.",
+   "Giọng Quân ở PA1 deb-01 (“chụp mũ”, “ngụy tạo”, dòng 455–456) và “đập bàn” (dòng 430) khác tính “luôn điềm tĩnh” ghi ở vu-tru-hoa-phuong-tong-quan.md:223."
+  ],
+  "muc_uu_tien_doc": "thap",
+  "thoi_gian_doc_phut": 20
+ }
+]

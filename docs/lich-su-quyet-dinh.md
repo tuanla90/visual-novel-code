@@ -534,7 +534,7 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
   - `art/prompts/`: sáu bộ `prompts-*.md`; `art/nguon/`: ảnh gốc Topview (trước ở `prototype/art-src/`). `art/README.md` ghi trạng thái từng bộ prompt.
   - Nhật ký của Antigravity: `.agent/changelog.md` (bản đủ) chuyển thành `prototype/docs/nhat-ky-thay-doi-2026-09-27.md`; `.agents/changelog.md` là bản cũ hơn, thiếu mục 5–6, nên đã xóa.
 - Đã sửa theo: đường dẫn `docs/kich-ban-prototype.md` → `docs/prototype/kich-ban-prototype.md` trong code, test (`faithfulness.test.ts`) và tài liệu; phần đầu các tài liệu dẫn sang nhau; `prototype/README.md`, `ARCHITECTURE.md`, `src/assets/art/README.md`; skill `google-flow-image` (`--file art/prompts/…`). Link `file:///` tuyệt đối trong bộ prompt nhân vật đổi thành link tương đối.
-- Không đụng `prototype/src/` ngoài chú thích đường dẫn: cấu trúc code đã theo tính năng và đang có các gói MVP chạy song song.
+- Không đụng `prototype/src/` ngoài chú thích đường dẫn: cấu trúc code đã theo tính năng, và sắp có các gói MVP (QĐ-077) sửa vào đó.
 
 **QĐ-079 — Kế hoạch gói chuẩn hóa nội dung, bước 1 của QĐ-075 (ĐỀ XUẤT, CHỜ USER CHỐT).** · Nguồn: điều phối viên, khảo sát code 28/09 · 28/09
 - Kế hoạch đầy đủ: `docs/ke-hoach-goi-chuan-hoa.md`. Mục tiêu: chuyển nội dung hiện tại sang `prototype/noi-dung/` làm nguồn duy nhất, bộ đọc sinh dữ liệu cho game, xóa khoảng 1.600 dòng chép tay. Không đổi chữ nội dung nào; game chạy y hệt, test xanh.

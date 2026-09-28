@@ -1,0 +1,89 @@
+{
+  "ten_thu_muc": {
+    "docs/mockups/": "Mockup giao diện (docs/mockups/)"
+  },
+  "ghi_chu_chung": [
+    "**Đọc sổ quyết định trước**: nó là thước đo cho mọi tài liệu sau. Không cần đọc hết 79 mục — đọc phần đầu (luật, thứ tự ưu tiên) và kỹ QĐ-070 → QĐ-079; các QĐ cũ hơn thì bấm link khi tài liệu khác nhắc tới.",
+    "**Bảy chỗ mâu thuẫn lớn nhất** tìm được khi đánh giá (mỗi tài liệu có danh sách chi tiết ở mục “Cần rà khi đọc”):",
+    "① Thứ tự ưu tiên khi mâu thuẫn (lich-su-quyet-dinh.md:11) đã cũ: xếp tài liệu phạm vi prototype trên sổ QĐ, trong khi QĐ-071 → QĐ-077 của user đã lật nhiều mục; chưa có kịch bản prototype, đặc tả, MVP trong danh sách.",
+    "② Lớp của Hoài: QĐ-073 ghi BC24A, QĐ-077 ghi QT24B (QĐ-077 viết trước nhưng đứng sau vì đổi số).",
+    "③ Cách kết buổi giải trình: kịch bản Vụ 1 và GDD kết bằng truy vấn ra đúng một người; prototype (QĐ-023/024) dạy “2 dòng chưa đủ kết luận, cần xác minh độc lập”. MVP theo hướng nào chưa có QĐ.",
+    "④ Nhân vật: Tùng “tớ” và “Tớ cá là…” (QĐ-074) nhưng nhiều nơi còn “tui”; Hà Vy xưng “mình” (QĐ-022) hay “tớ” (đặc tả); họ Hà Vy “Lê” (GDD) hay “Trần” (đặc tả); Hà Vy “không biết SQL” (GDD) hay dẫn SQL (QĐ-021/072).",
+    "⑤ Thanh uy tín, hết vạch thì hoãn, xếp hạng S/A/B/C (QĐ-077) căng với “không phán đúng/sai” (QĐ-071), “không thanh uy tín, không hạng” (QĐ-018) và “không có bad ending” (đặc tả).",
+    "⑥ Thứ tự giữa 8 gói MVP (QĐ-077) và các gói chuẩn hóa 12a → 16 (QĐ-079): 12a-2 xóa đúng các tệp mà gói kịch bản/nội dung MVP sẽ ghi vào.",
+    "⑦ prototype/README.md:106 (tài liệu đưa nhóm thử nghiệm) còn ghi telemetry lưu câu SQL người chơi gõ — trái QĐ-065 (lich-su-quyet-dinh.md:387). Liên quan quyền riêng tư, nên sửa sớm.",
+    "Mẹo: bấm `tệp.md:123` hoặc “dòng 123” trong thẻ đánh giá để nhảy tới đúng chỗ (dòng được tô vàng); bấm QĐ-xxx để mở mục đó trong sổ; tab “Nguồn (có số dòng)” để xem nguyên văn."
+  ],
+  "giai_doan": [
+    {
+      "ten": "1 · Luật và hướng hiện tại",
+      "muc_dich": "Nắm các quyết định đang có hiệu lực trước khi đọc tài liệu khác. Mọi đánh giá “lệch” ở các bước sau đều so với sổ này.",
+      "tai_lieu": [
+        "README.md",
+        "docs/lich-su-quyet-dinh.md"
+      ]
+    },
+    {
+      "ten": "2 · Thiết kế gốc của game",
+      "muc_dich": "Tài liệu nguồn cho bản MVP (QĐ-077 giao viết kịch bản theo GDD §4, §5, §14 và buổi giải trình theo kịch bản Vụ 1). Chỗ lệch ở đây sẽ đi thẳng vào kịch bản MVP mà user không duyệt trước.",
+      "tai_lieu": [
+        "docs/thiet-ke/clb-tham-tu-du-lieu-GDD-v0.5.md",
+        "docs/thiet-ke/vu1-buoi-giai-trinh-kich-ban.md",
+        "docs/thiet-ke/vu-tru-hoa-phuong-tong-quan.md"
+      ]
+    },
+    {
+      "ten": "3 · Prototype đang chạy",
+      "muc_dich": "Phạm vi, kịch bản và màn thử thách mới của prototype. Kịch bản bị test khóa từng ký tự nên mọi sửa chữ đều kéo theo code.",
+      "tai_lieu": [
+        "docs/prototype/prototype-scope-down-v0.1.md",
+        "docs/prototype/kich-ban-prototype.md",
+        "docs/mockups/",
+        "docs/prototype/kich-ban-de-xuat-full.md"
+      ]
+    },
+    {
+      "ten": "4 · Chuẩn hóa nội dung (sắp làm)",
+      "muc_dich": "Định dạng nội dung mới và kế hoạch 4 gói đang chờ bạn chốt (QĐ-079). Đọc sau bước 3 để thấy cái gì sẽ được chuyển.",
+      "tai_lieu": [
+        "docs/dac-ta-dinh-dang-noi-dung.md",
+        "docs/ke-hoach-goi-chuan-hoa.md"
+      ]
+    },
+    {
+      "ten": "5 · Vận hành và kỹ thuật",
+      "muc_dich": "Tài liệu cho nhóm thử nghiệm và cho người sửa code. Chủ yếu kiểm có lỗi thời so với tính năng đã thêm (QĐ-076/077) không.",
+      "tai_lieu": [
+        "prototype/README.md",
+        "prototype/docs/ARCHITECTURE.md",
+        "prototype/docs/nhat-ky-thay-doi-2026-09-27.md"
+      ]
+    },
+    {
+      "ten": "6 · Ảnh",
+      "muc_dich": "Bộ prompt và hướng dẫn ô ảnh. Ưu tiên thấp trừ khi sắp làm gói hình MVP; bốn tệp cuối là lịch sử/tham khảo, đọc lướt.",
+      "tai_lieu": [
+        "art/README.md",
+        "art/prompts/prompts-characters-topview-v0.2.md",
+        "art/prompts/prompts-assets-prototype-full-v0.1.md",
+        "prototype/src/assets/art/README.md",
+        "art/prompts/prompts-assets-prototype-v0.1.md",
+        "art/prompts/prompts-characters-prototype-flow-v0.1.md",
+        "art/prompts/prompts-background-prototype-v0.1.md",
+        "art/prompts/prompts-background-prototype-flow-v0.2.md"
+      ]
+    }
+  ],
+  "ngoai": [
+    {
+      "ten": "Mockup màn thử thách mới",
+      "path": "docs/mockups/ban-lam-viec-thu-thach.html",
+      "mo_ta": "Chơi được: c1 có Tùng đoán bừa OR, c2 tự làm, ghi và dán note, soát hồ sơ (QĐ-071 → QĐ-074)."
+    },
+    {
+      "ten": "Nháp bảng dữ liệu SQL",
+      "path": "docs/mockups/sql-table-draft.html",
+      "mo_ta": "Nháp giao diện cũ, không có hiệu lực (xem đánh giá ở trang mockup)."
+    }
+  ]
+}

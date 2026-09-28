@@ -1,0 +1,355 @@
+[
+ {
+  "path": "art/README.md",
+  "vai_tro": "Mục lục nguồn ảnh: liệt kê các bộ prompt trong `prompts/`, trạng thái đang dùng/tham khảo/đã gộp, và cấu trúc `nguon/`.",
+  "trang_thai": "hieu-luc",
+  "trang_thai_giai_thich": "Phản ánh đúng cấu trúc thư mục và trạng thái các bộ prompt sau QĐ-078; không thấy mâu thuẫn.",
+  "tom_tat": [
+   "Bảng 6 bộ prompt với trạng thái (đang dùng / tham khảo / đã gộp vào bản full).",
+   "Ghi đang sinh ảnh trên Topview (GPT Image 2.5, 1K, medium); Google Flow là “cách cũ”.",
+   "Mô tả `nguon/topview-2026-09-27/` chứa ảnh gốc Topview chưa xử lý, hậu tố `-flat` cho lớp vật chưa Remove Background.",
+   "Hướng dẫn 3 bước thêm ảnh mới (viết prompt → giữ ảnh gốc → chuyển .webp/.png vào `prototype/src/assets/`)."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "prototype/src/assets/art/README.md — mô tả ô ảnh phía code; hai tệp phải khớp tên id với nhau.",
+    "lich-su-quyet-dinh.md QĐ-060 — nguồn gốc chủ trương hình vẽ tạm + ô thay ảnh."
+   ],
+   "quyet_dinh": [
+    "QĐ-078 — chuyển `art/` ra khỏi `prototype/`; README ghi đúng vị trí mới.",
+    "QĐ-060/QĐ-063 — quy ước ô ảnh mà README này trỏ tới."
+   ],
+   "gameplay": [],
+   "workload": [
+    "Thêm bộ prompt mới: chỉ thêm 1 dòng bảng — nhỏ.",
+    "Nếu bỏ hẳn Google Flow: sửa dòng 18 và ghi rõ hai tệp `*-flow-*.md` chỉ còn giá trị lịch sử — nhỏ."
+   ]
+  },
+  "can_ra_khi_doc": [
+   "Dòng 15–16: hai tệp *-flow-v0.1/v0.2 ghi “đã gộp vào full” hoặc “tham khảo”. Xác nhận không ai còn dùng trực tiếp hai tệp này để sinh ảnh mới.",
+   "Dòng 18: xác nhận đã chuyển hẳn sang Topview, không còn sinh ảnh mới bằng Google Flow (skill `.agents/skills/google-flow-image` vẫn trỏ vào prompts-background-prototype-v0.1.md)."
+  ],
+  "muc_uu_tien_doc": "trung",
+  "thoi_gian_doc_phut": 5
+ },
+ {
+  "path": "art/prompts/prompts-assets-prototype-full-v0.1.md",
+  "vai_tro": "Bộ prompt Topview gộp đầy đủ, dùng trực tiếp cho nền, ảnh giới thiệu nhân vật, biểu cảm còn thiếu, tài liệu, biểu tượng; theo art/README.md là bộ “đang dùng” chính.",
+  "trang_thai": "mot-phan-loi-thoi",
+  "trang_thai_giai_thich": "Đa số khớp GDD/QĐ hiện hành, nhưng màu áo Thầy Khải (khối E7) lệch bảng màu chủ đạo GDD §15.1, và chưa có mục nào cho asset của các tính năng MVP mới.",
+  "tom_tat": [
+   "Khối A–I: nền có vật / nền sạch / lớp vật (A, B, C), phòng KTX tùy chọn (D), 8 ảnh giới thiệu nhân vật 16:9 (E), tài liệu 4:3 (F), icon 1:1 (G), 8 biểu cảm còn thiếu 9:16 (H), 6 ảnh toàn thân 9:16 (I).",
+   "Ghi chú “dùng ngay khi chưa có lớp vật bấm được”: lưu A1/B1 làm nền tạm có vật sẵn trong ảnh.",
+   "Mọi khối là prompt hoàn chỉnh, copy nguyên khối vào Topview.",
+   "Thứ tự chạy khuyến nghị: H1–H8 → I1–I6 → A → B → C → F1–F3 → D/E/G tùy chọn."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "prompts-assets-prototype-v0.1.md — nguồn phần layer/nền, đã gộp vào đây.",
+    "prompts-background-prototype-flow-v0.2.md — nguồn 3 prompt nền, đã gộp vào đây.",
+    "prototype/src/assets/art/README.md — dùng cùng id tên tệp (bg-prototype-*, char-*-full, intro-*, doc-*).",
+    "clb-tham-tu-du-lieu-GDD-v0.5.md §15.1, §16 — bảng màu chủ đạo và danh sách asset tối thiểu."
+   ],
+   "quyet_dinh": [
+    "QĐ-060 — hình vẽ tạm + ô ảnh thay bằng ảnh thật.",
+    "QĐ-063 — quy ước nhận tên theo tiền tố `char-`."
+   ],
+   "gameplay": [
+    "Ảnh nền 3 cảnh chính (clb-room, corridor-b, debrief-room).",
+    "Ảnh giới thiệu nhân vật ở màn “Nhân vật mới”.",
+    "Biểu cảm bổ sung cho hội thoại (worried/happy/thinking/smile/smug/stunned/downcast/relieved)."
+   ],
+   "workload": [
+    "Sửa màu Thầy Khải cho khớp GDD: sinh lại ảnh intro/full liên quan và ảnh neo ở bộ chân dung — vừa.",
+    "Asset cho tính năng MVP (tạo nhân vật, bản đồ đi lại — QĐ-077, gói `hinh-mvp`) chưa có mục nào trong tệp — vừa đến lớn tùy phạm vi."
+   ]
+  },
+  "can_ra_khi_doc": [
+   "Dòng 310 (E7 intro-thay-khai): “blue-gray open shirt … charcoal T-shirt”, trong khi clb-tham-tu-du-lieu-GDD-v0.5.md:584 ghi màu chủ đạo Thầy Khải là “Nâu cà phê”.",
+   "Khối E1–E8 (dòng 187–337) không có ảnh giới thiệu cho người chơi nam/nữ dù QĐ-077 thêm màn tạo nhân vật (chưa chắc có cần)."
+  ],
+  "muc_uu_tien_doc": "trung",
+  "thoi_gian_doc_phut": 20
+ },
+ {
+  "path": "art/prompts/prompts-assets-prototype-v0.1.md",
+  "vai_tro": "Kế hoạch tách layer (nền sạch / vật phẩm / nhân vật trong cảnh) và bản prompt từng phần, trước khi gộp vào bản full.",
+  "trang_thai": "mot-phan-loi-thoi",
+  "trang_thai_giai_thich": "Prompt cụ thể đã gộp vào bản full, nhưng §1 (kế hoạch tách layer, quy tắc hover, tọa độ) vẫn là tài liệu duy nhất giải thích lý do và chưa lặp lại ở nơi khác.",
+  "tom_tat": [
+   "§1: layer L0–L4 (nền sạch, vật phẩm, nhân vật trong cảnh, tiền cảnh che, chân dung + UI); viền hover sinh từ kênh alpha, không vẽ viền vào ảnh.",
+   "Tọa độ vật phẩm khai báo x0, y0, x1, y1 theo phần ảnh 2560×1440, cùng cách với HEARING_ROOM_SCREEN.",
+   "§1.4: bảng ánh xạ 3 cảnh ↔ vật phẩm bấm được ↔ nhân vật trong cảnh.",
+   "Ghi rõ code chưa làm lớp vật bấm được: ExploreScreen vẫn là danh sách nút (dòng 77–79)."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "prompts-assets-prototype-full-v0.1.md — bản đích đã gộp prompt cụ thể.",
+    "art/README.md — xác nhận trạng thái “tham khảo” của tệp này."
+   ],
+   "quyet_dinh": ["QĐ-060/QĐ-063 — nền tảng của kế hoạch layer."],
+   "gameplay": ["Thiết kế tương lai: bấm thẳng vào vật trên ảnh (chưa làm), thay cho danh sách nút hiện tại."],
+   "workload": ["Nếu làm lớp vật bấm được (L1/L2) như §1: thêm tọa độ vào `scene-geometry.ts`, hit-test theo alpha, sinh lại ảnh theo quy trình 4 bước ở §1.3 — lớn. Liên quan gói MVP `ban-do-di-lai` / `hinh-mvp`."]
+  },
+  "can_ra_khi_doc": [
+   "Dòng 77–79 nói ExploreScreen còn là danh sách nút: kiểm lại còn đúng không trước khi lập gói lớp vật bấm được (lượt rà này không đọc code)."
+  ],
+  "muc_uu_tien_doc": "thap",
+  "thoi_gian_doc_phut": 12
+ },
+ {
+  "path": "art/prompts/prompts-characters-topview-v0.2.md",
+  "vai_tro": "Nguyên văn 10 prompt chân dung nhân vật đang dùng trong game (ảnh neo 9:16); art/README.md ghi đây là bộ “đang dùng” cho chân dung, thay bộ flow-v0.1 về phong cách.",
+  "trang_thai": "mot-phan-loi-thoi",
+  "trang_thai_giai_thich": "Đa số khớp GDD/QĐ hiện hành, nhưng mô tả Tùng còn “Tui cá là…” (QĐ-074 đổi thành “Tớ cá là…”) và màu áo Thầy Khải lệch GDD §15.1.",
+  "tom_tat": [
+   "10 ảnh neo: Minh Anh, Hà Vy, Quân, Hoài, Bác Tư, Tùng, Thầy Quang, người chơi nam/nữ, Thầy Khải; khung 9:16, nền phẳng #E2E6EA.",
+   "Mọi ảnh trừ Minh Anh là sửa ảnh (image edit) với ảnh Minh Anh làm tham chiếu phong cách.",
+   "Mỗi prompt có mục AVOID chặn hiểu lầm phổ biến (đồng phục cấp 3, chibi, quân phục…).",
+   "Thầy Khải làm 2 bước (tạo mới rồi sửa ảnh); Tùng có bản sửa khung “đủ tay”."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "clb-tham-tu-du-lieu-GDD-v0.5.md §3.1, §15.1 — mô tả nhân vật và bảng màu chủ đạo.",
+    "prompts-characters-prototype-flow-v0.1.md — bộ cũ (không có Tùng), phong cách đã bị thay.",
+    "prototype/src/assets/art/README.md — bảng ánh xạ id ↔ ô ảnh, có Tùng."
+   ],
+   "quyet_dinh": [
+    "QĐ-074 — đổi câu cửa miệng Tùng “Tui cá là…” → “Tớ cá là…”.",
+    "QĐ-070 — nguồn gốc câu cửa miệng (khi đó còn “Tui cá là…”)."
+   ],
+   "gameplay": ["Toàn bộ chân dung nhân vật hiển thị trong hội thoại."],
+   "workload": [
+    "Sửa chữ “Tui cá là” trong prompt: nhỏ, không bắt buộc sinh lại ảnh (câu này chỉ tả biểu cảm, không hiện chữ trên ảnh).",
+    "Đổi màu Thầy Khải theo GDD: sinh lại ảnh neo + ảnh phái sinh (full, intro) — vừa đến lớn."
+   ]
+  },
+  "can_ra_khi_doc": [
+   "Dòng 242: “he is about to say, ‘Tui cá là…’”, trong khi QĐ-074 (lich-su-quyet-dinh.md:497) chốt “Tớ cá là…”.",
+   "Dòng 406: Thầy Khải mặc “muted blue-gray button-up shirt”, trong khi clb-tham-tu-du-lieu-GDD-v0.5.md:584 ghi màu chủ đạo là “Nâu cà phê”. Chốt: sửa GDD theo ảnh đã có, hay sinh lại ảnh."
+  ],
+  "muc_uu_tien_doc": "trung",
+  "thoi_gian_doc_phut": 20
+ },
+ {
+  "path": "art/prompts/prompts-characters-prototype-flow-v0.1.md",
+  "vai_tro": "Bộ prompt chân dung gốc (Google Flow, khung 3:4). Phong cách đã bị thay bằng v0.2, nhưng quy ước đặt tên ở §1 Manifest vẫn là chuẩn mà code và test dựa vào.",
+  "trang_thai": "da-bi-thay",
+  "trang_thai_giai_thich": "art/README.md ghi rõ phong cách đã thay bằng v0.2; mô tả ngoại hình không còn dùng để sinh ảnh, chỉ còn giá trị ở quy ước tên `char-<nhân vật>-<biểu cảm>`.",
+  "tom_tat": [
+   "Manifest 13 ảnh: Minh Anh×3, Hà Vy×3, Quân×3, Hoài×3, Bác Tư×1 — không có Tùng.",
+   "Mỗi nhân vật có 1 ảnh neo + 2 biến thể biểu cảm (Bác Tư chỉ có 1).",
+   "Cơ chế `[ref: …]` tham chiếu ảnh neo để sinh biến thể biểu cảm, giữ nguyên trang phục/tóc/kính.",
+   "Art direction chung: nền #E8ECEF, khung 3:4 (1536×2048), không logo/chữ."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "prompts-characters-topview-v0.2.md — bản thay thế về phong cách, có thêm Tùng, Thầy Quang, người chơi, Thầy Khải.",
+    "prototype/README.md:90, prototype/src/assets/art/README.md:55 — vẫn dẫn tệp này làm chuẩn quy ước tên.",
+    "Test `art-slots.test.ts` kiểm “13 id của user” theo Manifest của tệp này."
+   ],
+   "quyet_dinh": [
+    "QĐ-033 — định danh (dẫn ở đầu tệp).",
+    "QĐ-074 — Tùng thuộc bộ ba chính nhưng vắng trong Manifest."
+   ],
+   "gameplay": [],
+   "workload": ["Không cần việc gì để sinh ảnh; nên ghi chú ngay đầu tệp rằng phong cách đã bị thay, thay vì chỉ ghi ở art/README.md — nhỏ."]
+  },
+  "can_ra_khi_doc": [
+   "Dòng 9–24: Manifest 13 ảnh không có Tùng (quy ước tên đã mở rộng sang Tùng ở prototype/src/assets/art/README.md:75).",
+   "prototype/README.md:90 và prototype/src/assets/art/README.md:55 dẫn tệp này làm “bộ prompt của bạn” mà không nói v0.2 mới là mô tả ngoại hình hiện hành."
+  ],
+  "muc_uu_tien_doc": "thap",
+  "thoi_gian_doc_phut": 12
+ },
+ {
+  "path": "art/prompts/prompts-background-prototype-v0.1.md",
+  "vai_tro": "Bộ prompt nền Google Flow đầu tiên (định dạng `[id]` `[type]` `[ref]`); tên `bg-prototype-*` là chuẩn và tệp là đầu vào của skill google-flow-image.",
+  "trang_thai": "mot-phan-loi-thoi",
+  "trang_thai_giai_thich": "Công cụ đã đổi sang Topview, nhưng id cảnh và quy tắc không gian (đích 2560×1440, vùng an toàn 70%/35%) vẫn là nguồn tham chiếu.",
+  "tom_tat": [
+   "Ảnh neo phong cách hoa-phuong-environment-style-anchor chạy trước; 3 cảnh bg-prototype-* tham chiếu ảnh neo.",
+   "Có “Điều kiện duyệt ảnh neo” và “Kiểm tra đầu ra” dạng checklist cho từng cảnh — bản full không có.",
+   "Quy định 16:9, đích 2560×1440, vùng an toàn giữa 70%, dưới 35% cho nhân vật/hộp thoại.",
+   "§6: 3 prompt chỉnh sửa dùng lại (giảm bão hòa, tạo vùng trống, đổi ánh sáng)."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "prompts-assets-prototype-full-v0.1.md — bản Topview dùng thực tế, kế thừa cùng id cảnh.",
+    "prototype/src/assets/art/README.md:22 — trích quy tắc vùng an toàn 70%/35%.",
+    "Skill `.agents/skills/google-flow-image/SKILL.md` — dùng tệp này làm ví dụ đầu vào."
+   ],
+   "quyet_dinh": ["QĐ-060/QĐ-063 — nền tảng ô ảnh thay hình vẽ tạm."],
+   "gameplay": ["Bố cục 3 cảnh nền chính, vùng an toàn cho nhân vật/hộp thoại."],
+   "workload": ["Nếu đổi vùng an toàn (vd. do bố cục màn thử thách QĐ-071) phải sửa đồng bộ ở đây, ở bản full và ở `scene-geometry.ts` — vừa."]
+  },
+  "can_ra_khi_doc": [
+   "Tệp không ghi “đã chuyển sang Topview” (chỉ art/README.md ghi), đọc riêng dễ tưởng vẫn dùng Google Flow."
+  ],
+  "muc_uu_tien_doc": "thap",
+  "thoi_gian_doc_phut": 10
+ },
+ {
+  "path": "art/prompts/prompts-background-prototype-flow-v0.2.md",
+  "vai_tro": "Bản tiếng Anh súc tích của 3 prompt nền, dịch ảnh chụp tham khảo thành chữ; bước trung gian trước khi gộp vào bản full.",
+  "trang_thai": "da-bi-thay",
+  "trang_thai_giai_thich": "art/README.md ghi “Đã gộp vào bản full”; không còn dùng độc lập.",
+  "tom_tat": [
+   "3 prompt nền (club-room, hallway, hearing-room), gọn hơn bản v0.1.",
+   "Không có ảnh neo phong cách riêng.",
+   "Đầu tệp ghi rõ không tải ảnh chụp thật lên Google Flow, chỉ dịch thành chữ.",
+   "Không có phần “Điều kiện duyệt” / “Kiểm tra đầu ra”."
+  ],
+  "tac_dong": {
+   "tai_lieu": ["prompts-assets-prototype-full-v0.1.md — đích gộp nội dung.", "prompts-background-prototype-v0.1.md — bản gốc chi tiết hơn."],
+   "quyet_dinh": ["QĐ-060/QĐ-063."],
+   "gameplay": [],
+   "workload": ["Không còn việc; có thể chuyển sang lưu trữ hoặc xóa — nhỏ."]
+  },
+  "can_ra_khi_doc": [
+   "Chỉ cần xác nhận không ai còn dùng tệp này để sinh ảnh mới."
+  ],
+  "muc_uu_tien_doc": "thap",
+  "thoi_gian_doc_phut": 5
+ },
+ {
+  "path": "prototype/README.md",
+  "vai_tro": "Hướng dẫn cho nhóm làm thử nghiệm: chạy dev/build, trình duyệt hỗ trợ, hướng dẫn người quan sát, ảnh, quyền riêng tư, lệnh kiểm tra, giới hạn đã biết.",
+  "trang_thai": "mot-phan-loi-thoi",
+  "trang_thai_giai_thich": "Đúng cho prototype vòng 1 nhưng chưa nhắc các tính năng đã giữ theo QĐ-076/077 (bản đồ, Lưu/Nạp nhiều ô, Auto/Skip/Lịch sử thoại) và còn một câu trái QĐ-065 về telemetry.",
+  "tom_tat": [
+   "Chạy dev (`npm run dev`) và bản tĩnh (`npm run build` + `vite preview`); cảnh báo không mở `file://`.",
+   "Trình duyệt: Chrome/Edge mới, Firefox ≥ 121; màn mục tiêu 1366×768, không hỗ trợ điện thoại.",
+   "9 bước cho người quan sát (`?facilitator=1`): đặt lại phiên, khảo sát, nhảy phần, xuất/xóa dữ liệu.",
+   "§5 tóm tắt quy ước ô ảnh; §6 quyền riêng tư; §8 các giới hạn đã biết của vòng 1."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "ARCHITECTURE.md — cùng vấn đề lỗi thời về tính năng VN/MVP.",
+    "prototype-scope-down-v0.1.md — tài liệu sản phẩm gốc mà README dẫn tới (mục 9 là kế hoạch thử nghiệm).",
+    "prototype/src/assets/art/README.md, art/prompts — README dẫn sang khi nói về ảnh."
+   ],
+   "quyet_dinh": [
+    "QĐ-042 — khảo sát chỉ lựa chọn đóng (mô tả đúng).",
+    "QĐ-065/066 — telemetry không ghi câu SQL; dòng 106 vẫn ghi “câu SQL người chơi chạy trong thử thách”.",
+    "QĐ-076/077 — bản đồ, Lưu/Nạp nhiều ô, tạo nhân vật chuyển thành “làm”; README chưa nhắc.",
+    "QĐ-078 — đường dẫn tài liệu đã cập nhật đúng."
+   ],
+   "gameplay": ["Quy trình vận hành một buổi thử nghiệm (luồng người quan sát)."],
+   "workload": [
+    "Sửa câu telemetry ở dòng 106 theo QĐ-065 — nhỏ, nên làm ngay vì README là tài liệu đưa cho nhóm thử nghiệm (liên quan quyền riêng tư).",
+    "Cập nhật mô tả tính năng VN/MVP khi các gói MVP (QĐ-077) xong — vừa."
+   ]
+  },
+  "can_ra_khi_doc": [
+   "Dòng 106: “câu SQL người chơi chạy trong thử thách” nằm trong danh sách dữ liệu được ghi — trái QĐ-065/066 (telemetry không ghi câu SQL). Đây là phần quyền riêng tư đưa cho nhóm thử nghiệm.",
+   "§8 (dòng 124–133) không nhắc bản đồ, Lưu/Nạp nhiều ô, Auto/Skip/Lịch sử thoại, dù QĐ-076 đã giữ các tính năng này; hướng dẫn người quan sát chưa nói nạp ô lưu làm thời lượng phiên không so được (cờ `loadedSave`).",
+   "Dòng 90 dẫn prompts-characters-prototype-flow-v0.1.md làm chuẩn tên — đúng, nhưng không nhắc v0.2 là bản phong cách hiện hành."
+  ],
+  "muc_uu_tien_doc": "trung",
+  "thoi_gian_doc_phut": 10
+ },
+ {
+  "path": "prototype/docs/ARCHITECTURE.md",
+  "vai_tro": "Tài liệu kỹ thuật duy nhất mô tả cây thư mục, hợp đồng kiểu, luồng dữ liệu, các hệ con (ô ảnh, telemetry, che dữ liệu) và cách kiểm tra của code prototype.",
+  "trang_thai": "mot-phan-loi-thoi",
+  "trang_thai_giai_thich": "Dòng 3 tự ghi viết “sau gói 9b, trước vòng thử nghiệm 1” — trước commit tính năng VN fa5ffd3 và QĐ-074→077; §2.1 thiếu `tung` dù `src/shared/ids.ts` đã có.",
+  "tom_tat": [
+   "§1: cây thư mục theo giai đoạn 9b (story/evidence/sql-challenge/debrief/shared); chưa có mục cho VN (lưu/nạp, lịch sử thoại, âm thanh, bản đồ, hồ sơ nhân vật).",
+   "§2.1: CHARACTER_EXPRESSIONS chỉ liệt kê minh-anh/ha-vy/quan/hoai/bac-tu.",
+   "§5–6: hệ ô ảnh (glob, tách nền) và telemetry/người quan sát — có vẻ vẫn đúng ở tầng nền.",
+   "§7: cách thêm/đổi nội dung (kịch bản là nguồn, chép vào .ts, faithfulness test) — sẽ đổi hẳn sau gói 12a-2.",
+   "§9: quy ước commit và luật cho agent."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "nhat-ky-thay-doi-2026-09-27.md — nhật ký các tính năng mà ARCHITECTURE.md chưa mô tả.",
+    "ke-hoach-goi-chuan-hoa.md — gói 12a-2 phải cập nhật tệp này.",
+    "prototype/README.md — cùng thiếu mô tả tính năng VN/MVP."
+   ],
+   "quyet_dinh": [
+    "QĐ-074 — Tùng vào bộ ba, chưa có trong CHARACTER_EXPRESSIONS của tài liệu (code đã có).",
+    "QĐ-076 — bộ tính năng VN chưa được nhắc.",
+    "QĐ-077 — phạm vi MVP vắng mặt.",
+    "QĐ-065 — dòng 303 còn ghi “SQL chỉ nằm trong query_run”.",
+    "QĐ-078 — đường dẫn tài liệu đã cập nhật."
+   ],
+   "gameplay": [],
+   "workload": ["Viết lại §1, §2.1, §4, §6, §7 cho khớp code hiện tại và sau gói 12a-2 — vừa đến lớn. Nên gộp vào gói 12a-2 (đã có trong kế hoạch) thay vì làm riêng."]
+  },
+  "can_ra_khi_doc": [
+   "Dòng 3: mốc “sau gói 9b” — cũ hơn commit fa5ffd3 và QĐ-074→077.",
+   "Dòng 72–74: CHARACTER_EXPRESSIONS không có `tung`, trong khi `src/shared/ids.ts` đã có `tung: ['neutral']`.",
+   "Dòng 303: telemetry còn mô tả SQL nằm trong query_run — đối chiếu QĐ-065/066.",
+   "§1 không có thư mục `shared/vn`, `shared/audio`, `story/ui/map` (có trong code, xem nhật ký)."
+  ],
+  "muc_uu_tien_doc": "trung",
+  "thoi_gian_doc_phut": 15
+ },
+ {
+  "path": "prototype/docs/nhat-ky-thay-doi-2026-09-27.md",
+  "vai_tro": "Nhật ký do Antigravity viết cho đợt sửa UI/UX và thêm tính năng VN (Auto/Skip, Lưu/Nạp, âm thanh, bản đồ, màn giới thiệu nhân vật) ở commit fa5ffd3.",
+  "trang_thai": "lich-su",
+  "trang_thai_giai_thich": "Bản ghi lịch sử một đợt commit; nhiều khẳng định đã bị QĐ-076 xác minh lại và sửa sau khi chơi thử thật.",
+  "tom_tat": [
+   "§1–3: chống bấm đúp, chẩn đoán sư phạm thử thách 3, responsive ≤ 1100 px — không bị QĐ-076 nêu lỗi.",
+   "§5: Lưu/Nạp + Auto/Skip/Lịch sử thoại lưu vào localStorage; âm thanh tổng hợp Web Audio; bản đồ khuôn viên; màn giới thiệu nhân vật.",
+   "§6: sửa giao diện hòm đồ, bản đồ, thay icon SVG.",
+   "§7: tự nhận 637/637 test xanh, typecheck/lint/build sạch."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "lich-su-quyet-dinh.md QĐ-076 — rà và sửa chính bộ tính năng này, ghi 7 lỗi hành vi dù test xanh.",
+    "ARCHITECTURE.md — chưa cập nhật theo các tính năng trong nhật ký."
+   ],
+   "quyet_dinh": [
+    "QĐ-076 — sửa nhiều điểm (xem mục cần rà).",
+    "QĐ-077 — giữ bản đồ + Lưu/Nạp nhiều ô, vốn nằm trong danh sách “không làm” của QĐ-032."
+   ],
+   "gameplay": ["Trải nghiệm VN (Auto/Skip/lịch sử thoại/âm thanh/bản đồ/màn giới thiệu nhân vật)."],
+   "workload": ["Không cần sửa (tài liệu lịch sử). Có thể thêm một dòng đầu tệp trỏ sang QĐ-076 để người đọc không tin nhầm — nhỏ."]
+  },
+  "can_ra_khi_doc": [
+   "Dòng 68: lưu vào localStorage — QĐ-076 đổi thành sessionStorage (giữ QĐ-004).",
+   "Dòng 76–80: tự nhận tích hợp nhạc nền, nhưng QĐ-076 ghi “nhạc nền không bao giờ phát”.",
+   "Dòng 48–50 (màn giới thiệu nhân vật): QĐ-076 ghi `fullArtPath` trỏ tới tệp không tồn tại, hỏng khi build.",
+   "Lưu/Nạp nhiều ô và bản đồ nằm ngoài phạm vi đã duyệt lúc đó (QĐ-032); QĐ-076/077 mới giữ lại.",
+   "Dòng 116: “637/637 test xanh” đúng về kỹ thuật nhưng không bắt được 7 lỗi hành vi (QĐ-076)."
+  ],
+  "muc_uu_tien_doc": "thap",
+  "thoi_gian_doc_phut": 8
+ },
+ {
+  "path": "prototype/src/assets/art/README.md",
+  "vai_tro": "Hướng dẫn kỹ thuật cho người sinh ảnh: thả tệp đúng tên ô, kích thước, vùng an toàn, cách kiểm ảnh đã được nhận. Test `art-slots.test.ts` đọc tệp này.",
+  "trang_thai": "hieu-luc",
+  "trang_thai_giai_thich": "Bảng ánh xạ id ↔ ô ↔ nhân vật khớp các bộ prompt hiện hành (có Tùng, ảnh toàn thân, ảnh giới thiệu); không thấy mâu thuẫn với QĐ hiện hành.",
+  "tom_tat": [
+   "Đuôi nhận .webp/.png/.jpg/.jpeg; nhận 2 kiểu tên song song (theo prompt và tên ô kiểu cũ).",
+   "Cảnh nền 2560×1440; khung màn chiếu theo HEARING_ROOM_SCREEN, có ví dụ số.",
+   "Bảng chân dung (có Tùng), 6 ảnh toàn thân, 6 ảnh giới thiệu 16:9, tách nền tự động, thứ tự ưu tiên khi 2 tệp cùng ô.",
+   "Tài liệu (doc-letter/bookmark/handover-log): chỉ nền giấy, không chữ, không tách nền.",
+   "Cách kiểm: `art-slots.test.ts` và thuộc tính data-art-* trong DevTools."
+  ],
+  "tac_dong": {
+   "tai_lieu": [
+    "art/README.md — mục lục nguồn ảnh; hai README phải khớp tên id.",
+    "prompts-assets-prototype-full-v0.1.md, prompts-characters-topview-v0.2.md — nguồn id thực tế.",
+    "prototype/README.md §5 — tóm tắt của chính tệp này.",
+    "ARCHITECTURE.md §5 — mô tả kỹ thuật hệ ô ảnh, dẫn ngược lại tệp này."
+   ],
+   "quyet_dinh": ["QĐ-060 — hình vẽ tạm + ô ảnh.", "QĐ-063 — quy ước tiền tố `char-`, tự tách nền phẳng."],
+   "gameplay": ["Toàn bộ hiển thị hình trong game (nền, chân dung, tài liệu, ảnh giới thiệu, ảnh toàn thân)."],
+   "workload": [
+    "Sửa bảng tên ô: test `art-slots.test.ts` kiểm README liệt kê đủ mọi ô và 13 id Manifest — đổi chữ phải giữ đúng định dạng bảng, nếu không test đỏ. Nhỏ.",
+    "Đo lại 4 số HEARING_ROOM_SCREEN khi có ảnh phòng giải trình mới — nhỏ đến vừa."
+   ]
+  },
+  "can_ra_khi_doc": [
+   "Dòng 55 vẫn dẫn prompts-characters-prototype-flow-v0.1.md làm nguồn quy ước tên; không cần đổi nhưng có thể thêm trỏ sang v0.2 cho phần ngoại hình.",
+   "Tệp này được test đọc: sửa bảng phải chạy lại `npx vitest run src/shared/ui/visuals/art-slots.test.ts`."
+  ],
+  "muc_uu_tien_doc": "thap",
+  "thoi_gian_doc_phut": 10
+ }
+]
