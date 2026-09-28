@@ -2,7 +2,7 @@
  * KIỂM CHÉO bộ MVP (đặc tả §18.9): chạy sau khi doc-mvp.ts đọc xong, trên `RawMvp`.
  *
  * Kiểm: tham chiếu tồn tại; mốc thời gian ("Mở từ", "Xuất hiện từ"); mỗi ngày một dữ kiện chính đạt được
- * trong ≤ N khung và buổi tối dẫn tới nó; mỗi địa điểm min–max dữ kiện; true end đạt được và cần dữ kiện
+ * trong ≤ N khung và buổi tối dẫn tới nó; mỗi địa điểm min–max dữ kiện phụ/nhiễu (không tính chính); true end đạt được và cần dữ kiện
  * phụ; nhân vật không nói trước "Xuất hiện từ"; `trừ uy tín` chỉ ở ngày họp; [TẠO NHÂN VẬT], [RẼ KẾT];
  * chuỗi lẻ; thẻ hồ sơ không ai tạo; tên cấm. Đồng thời GẮN kết quả suy ra vào dữ liệu thô: mốc đã đổi sang
  * `Moc`, mốc sớm nhất của từng chuỗi (`mocChuoi`), câu SQL nạp sẵn cho [MÀN CHIẾU … truy vấn nạp sẵn].
@@ -97,9 +97,11 @@ export function kiemLuatMvp(mvp: RawMvp): KetQuaLuat {
   const them = (id: string, p: Producer): void => void (producers.get(id) ?? producers.set(id, []).get(id))?.push(p);
   for (const d of mvp.diaDiem) {
     if (!canh.has(d.canh)) err(d.viTri, `địa điểm ${d.id}: không có cảnh "${d.canh}" trong canh.md`);
-    const n = d.duKien.length;
-    if (n < lich.luat.diaDiemMin || n > lich.luat.diaDiemMax) {
-      err(d.viTri, `địa điểm ${d.id} có ${n} dữ kiện — luật "Mỗi địa điểm: ${lich.luat.diaDiemMin}–${lich.luat.diaDiemMax} dữ kiện" (lich.md)`);
+    // QĐ-089: chỉ đếm dữ kiện phụ/nhiễu; dữ kiện chính không tính vào con số của luật.
+    const n = d.duKien.filter((k) => k.nhan !== 'chinh').length;
+    if (n < lich.luat.phuNhieuMin || n > lich.luat.phuNhieuMax) {
+      const chinh = d.duKien.length - n;
+      err(d.viTri, `địa điểm ${d.id} có ${n} dữ kiện phụ/nhiễu (không tính ${chinh} chính) — luật "Mỗi địa điểm: ${lich.luat.phuNhieuMin}–${lich.luat.phuNhieuMax} dữ kiện phụ/nhiễu" (lich.md)`);
     }
     for (const k of d.duKien) {
       if (k.chuoi !== null && !chuoi.has(k.chuoi)) err(k.viTri, `dữ kiện ${k.id}: không có chuỗi "${k.chuoi}"`);

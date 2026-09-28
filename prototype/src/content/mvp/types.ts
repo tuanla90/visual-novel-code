@@ -92,7 +92,7 @@ export interface LichMvp {
   vu: { id: string; ten: string };
   khung: { id: string; ten: string }[];
   buoiToi: { id: string; ten: string };
-  luat: { chinhToiDaKhung: number; diaDiemMin: number; diaDiemMax: number; uyTin: number | null };
+  luat: { chinhToiDaKhung: number; phuNhieuMin: number; phuNhieuMax: number; uyTin: number | null };
   chuoiDau: string;
   ngay: NgayMvp[];
   ngayHop: { chuoi: string } | null;

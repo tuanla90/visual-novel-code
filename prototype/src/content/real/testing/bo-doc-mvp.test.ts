@@ -48,7 +48,7 @@ const GOC: Record<string, string> = {
     '## Luật',
     '- Khung giờ: sang "Sáng", trua "Trưa", chieu "Chiều"',
     '- Dữ kiện chính tối đa: 2 khung',
-    '- Mỗi địa điểm: 1–3 dữ kiện',
+    '- Mỗi địa điểm: 1–3 dữ kiện phụ/nhiễu',
     '- Uy tín: 5 vạch',
     '## Mở đầu',
     '- Chuỗi đầu: md-1',
@@ -171,11 +171,12 @@ describe('bộ MVP: lỗi báo đúng <tệp>:<dòng>', () => {
     const loi = doc({
       'kich-ban/01.md': (s) => s.replace('- **tung** (neutral): Đây là dữ kiện chính.', '- **tung** (happy): Đây là dữ kiện chính.\n- [NHẢY MÚA]'),
       'ho-so/01.md': (s) => `${s}### doc-z — Tài liệu Z\n- Tiêu đề: Z\n`,
-      'lich.md': (s) => s.replace('- Mỗi địa điểm: 1–3 dữ kiện', '- Mỗi địa điểm: 1–1 dữ kiện'),
+      'lich.md': (s) => s.replace('- Mỗi địa điểm: 1–3 dữ kiện phụ/nhiễu', '- Mỗi địa điểm: 2–3 dữ kiện phụ/nhiễu'),
     });
     expect(loi).toEqual([
       'noi-dung-mvp/kich-ban/01.md:9: chỉ dẫn "[NHẢY MÚA…]" không có trong đặc tả §18.6 hoặc viết sai chính tả: "- [NHẢY MÚA]"',
-      'noi-dung-mvp/dia-diem.md:1: địa điểm a có 2 dữ kiện — luật "Mỗi địa điểm: 1–1 dữ kiện" (lich.md)',
+      'noi-dung-mvp/dia-diem.md:1: địa điểm a có 1 dữ kiện phụ/nhiễu (không tính 1 chính) — luật "Mỗi địa điểm: 2–3 dữ kiện phụ/nhiễu" (lich.md)',
+      'noi-dung-mvp/dia-diem.md:9: địa điểm b có 1 dữ kiện phụ/nhiễu (không tính 0 chính) — luật "Mỗi địa điểm: 2–3 dữ kiện phụ/nhiễu" (lich.md)',
       'noi-dung-mvp/kich-ban/01.md:8: nhân vật tung không có biểu cảm "happy" (có: neutral)',
       'noi-dung-mvp/ho-so/01.md:8: thẻ hồ sơ "doc-z" không được dữ kiện, thẻ thử thách, [HẬU QUẢ], [HIỆN TÀI LIỆU] hay [LƯU BẰNG CHỨNG] nào tạo ra',
     ]);
@@ -189,6 +190,14 @@ describe('bộ MVP: lỗi báo đúng <tệp>:<dòng>', () => {
     expect(loi).toContain('noi-dung-mvp/lich.md:10: ngày 1: chỉ MỘT dữ kiện chính mỗi ngày (QĐ-086); dữ kiện đi kèm khai bằng "Cần" ở dữ kiện chính');
     expect(loi).toContain('noi-dung-mvp/dia-diem.md:12: dữ kiện dk-may phải có đúng một trong hai dòng "- Chuỗi: <chuỗi>" hoặc "- Thử thách: <thẻ>"');
     expect(loi).toContain('noi-dung-mvp/dia-diem.md:12: dữ kiện dk-may, "Mở từ": khung giờ lạ "đêm" — có: sang (Sáng), trua (Trưa), chieu (Chiều)');
+  });
+
+  it('luật địa điểm (QĐ-089): chỉ đếm phụ/nhiễu, dữ kiện chính không tính; dòng luật cũ thiếu "phụ/nhiễu" là lỗi', () => {
+    // Nơi A có 1 chính + 1 phụ: với "1–1 dữ kiện phụ/nhiễu" vẫn hợp lệ (luật cũ đếm cả chính sẽ ra 2).
+    expect(doc({ 'lich.md': (s) => s.replace('- Mỗi địa điểm: 1–3 dữ kiện phụ/nhiễu', '- Mỗi địa điểm: 1–1 dữ kiện phụ/nhiễu') })).toEqual([]);
+    expect(doc({ 'lich.md': (s) => s.replace('- Mỗi địa điểm: 1–3 dữ kiện phụ/nhiễu', '- Mỗi địa điểm: 1–4 dữ kiện') })).toEqual([
+      'noi-dung-mvp/lich.md:2: "Mỗi địa điểm" phải là "<min>–<max> dữ kiện phụ/nhiễu" (dữ kiện chính không tính, QĐ-089): "1–4 dữ kiện"',
+    ]);
   });
 });
 

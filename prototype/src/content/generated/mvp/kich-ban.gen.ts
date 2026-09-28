@@ -881,8 +881,8 @@ export const KICH_BAN_MVP = {
     },
     "luat": {
       "chinhToiDaKhung": 2,
-      "diaDiemMin": 1,
-      "diaDiemMax": 4,
+      "phuNhieuMin": 1,
+      "phuNhieuMax": 3,
       "uyTin": 5
     },
     "chuoiDau": "md-01-ktx",

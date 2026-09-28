@@ -96,7 +96,7 @@ export interface RawLich {
   vu: { id: string; ten: string };
   khung: { id: string; ten: string }[];
   buoiToi: { id: string; ten: string };
-  luat: { chinhToiDaKhung: number; diaDiemMin: number; diaDiemMax: number; uyTin: number | null };
+  luat: { chinhToiDaKhung: number; phuNhieuMin: number; phuNhieuMax: number; uyTin: number | null };
   chuoiDau: string;
   ngay: RawNgay[];
   ngayHop: { chuoi: string; viTri: ViTri } | null;
@@ -566,7 +566,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       vu: { id: '', ten: '' },
       khung: [],
       buoiToi: { id: 'toi', ten: 'Buổi tối' },
-      luat: { chinhToiDaKhung: 2, diaDiemMin: 1, diaDiemMax: 3, uyTin: null },
+      luat: { chinhToiDaKhung: 2, phuNhieuMin: 1, phuNhieuMax: 3, uyTin: null },
       chuoiDau: '',
       ngay: [],
       ngayHop: null,
@@ -614,9 +614,10 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           }
           const md = f['Mỗi địa điểm'];
           if (md !== undefined) {
-            const m = /^(\d+)[–-](\d+) dữ kiện$/.exec(md);
-            if (!m) loi.push({ ...vt, thongBao: `"Mỗi địa điểm" phải là "<min>–<max> dữ kiện": "${md}"` });
-            else lich.luat = { ...lich.luat, diaDiemMin: Number(m[1]), diaDiemMax: Number(m[2]) };
+            // QĐ-089: con số chỉ đếm dữ kiện phụ/nhiễu, nên dòng luật phải ghi rõ "phụ/nhiễu".
+            const m = /^(\d+)[–-](\d+) dữ kiện phụ\/nhiễu$/.exec(md);
+            if (!m) loi.push({ ...vt, thongBao: `"Mỗi địa điểm" phải là "<min>–<max> dữ kiện phụ/nhiễu" (dữ kiện chính không tính, QĐ-089): "${md}"` });
+            else lich.luat = { ...lich.luat, phuNhieuMin: Number(m[1]), phuNhieuMax: Number(m[2]) };
           }
           const ut = f['Uy tín'];
           if (ut !== undefined) {
