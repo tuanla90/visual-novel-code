@@ -372,7 +372,7 @@ export const COT_TRUYEN = {
         },
         {
           "type": "note",
-          "text": "Cảnh hành lang: bác Tư (chân dung nhỏ) đang lau sàn cạnh hộp góp ý. Biển \"Giảng đường B\" nhỏ trên tường, không nhấn mạnh. Hai điểm xem xét, chọn theo thứ tự nào cũng được."
+          "text": "Cảnh hành lang: bác Tư đang lau sàn cạnh hộp góp ý. Biển \"Giảng đường B\" nhỏ trên tường, không nhấn mạnh. Hai điểm xem xét, chọn theo thứ tự nào cũng được."
         },
         {
           "type": "line",

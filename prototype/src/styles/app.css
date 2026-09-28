@@ -803,11 +803,13 @@
   z-index: 20;
 }
 /*
- * Màn thử thách SQL (.chal, challenge.css) phủ trọn sân khấu bằng position: absolute; inset: 0.
- * Khối chứa của nó phải là .stage, nên ở đây KHÔNG được position: relative (vùng nội dung cao 0px
- * ở hàng cuối lưới → khung thử thách bị ép còn vài chục px, mất hết nút).
+ * Màn thử thách SQL (.chal, challenge.css) phủ trọn sân khấu bằng position: absolute; inset: 0;
+ * màn chiếu ở phòng giải trình (.dbf-screen, debrief.css) neo theo --projector-* của .stage.
+ * Khối chứa của chúng phải là .stage, nên ở đây KHÔNG được position: relative (vùng nội dung cao 0px
+ * ở hàng cuối lưới → khung bị ép còn vài chục px ở đáy, mất hết nút).
  */
-.stage__content:has(> .chal) {
+.stage__content:has(> .chal),
+.stage__content:has(> .dbf-screen) {
   position: static;
 }
 /* Hộp thoại thường & màn xem xét điểm: hộp thoại bo góc tròn nổi bồng bềnh chuẩn phong cách visual novel */

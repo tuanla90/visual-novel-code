@@ -29,7 +29,7 @@
 
 > NHIỆM VỤ: Hỏi {{nv.bac-tu.trong-cau}}, xem xét hộp góp ý
 
-- [DÀN DỰNG] Cảnh hành lang: {{nv.bac-tu.trong-cau}} (chân dung nhỏ) đang lau sàn cạnh hộp góp ý. Biển "Giảng đường B" nhỏ trên tường, không nhấn mạnh. Hai điểm xem xét, chọn theo thứ tự nào cũng được.
+- [DÀN DỰNG] Cảnh hành lang: {{nv.bac-tu.trong-cau}} đang lau sàn cạnh hộp góp ý. Biển "Giảng đường B" nhỏ trên tường, không nhấn mạnh. Hai điểm xem xét, chọn theo thứ tự nào cũng được.
 - **narrator**: Hành lang giảng đường. {{nv.bac-tu}} đang lau sàn cạnh một hộp góp ý.
 - [ĐIỂM XEM XÉT hs-bac-tu] nhãn: "{{nv.bac-tu}}" · mở manh mối: clue-box-building-b · chạy chuỗi: inv-bac-tu
 - [ĐIỂM XEM XÉT hs-box] nhãn: "Hộp góp ý" · mở manh mối: clue-bookmark-baochi · chạy chuỗi: inv-box
