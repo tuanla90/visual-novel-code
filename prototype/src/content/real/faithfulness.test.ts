@@ -109,9 +109,10 @@ function nodeKeys(node: StoryNode): string[] {
  * - `[CHÚ THÍCH HỒ SƠ <ev> · làm mờ]`: chú thích lấy nguyên văn dòng "Chú thích:" của thẻ hồ sơ — QĐ-062.
  * - `[THẺ CHỮ] **…**: …`: lời hiện dạng thẻ chữ lớn (`display: 'card'`).
  */
-function scriptKeys(seq: RawSequence): string[] {
+function scriptKeys(seq: RawSequence): { keys: string[]; dong: number[] } {
   const out: string[] = [];
-  for (const it of seq.items) {
+  const dong: number[] = [];
+  for (const [k, it] of seq.items.entries()) {
     switch (it.kind) {
       case 'line':
         out.push(`${it.card ? 'card' : 'line'}|${lineKey(it.line)}`);
@@ -168,8 +169,9 @@ function scriptKeys(seq: RawSequence): string[] {
         out.push('end');
         break;
     }
+    while (dong.length < out.length) dong.push(seq.itemDong[k] ?? seq.viTri.dong);
   }
-  return out;
+  return { keys: out, dong };
 }
 
 const toDialogue = (l: RawLine): AnyLine =>
@@ -239,7 +241,13 @@ describe('chuỗi kể chuyện — hai chiều', () => {
     const expected = script.sequences.find((s) => s.id === id);
     const actual = realContent.story.sequences.find((s) => s.id === id);
     if (!expected || !actual) throw new Error(`thiếu chuỗi ${id}`);
-    expect(actual.nodes.flatMap(nodeKeys)).toEqual(scriptKeys(expected));
+    const got = actual.nodes.flatMap(nodeKeys);
+    const want = scriptKeys(expected);
+    // Lệch thì chỉ ra dòng nguồn của khóa lệch đầu tiên (<tệp>:<dòng>) để người viết mở đúng chỗ.
+    const lech = want.keys.findIndex((key, n) => got[n] !== key);
+    const n = lech >= 0 ? lech : Math.min(got.length, want.keys.length);
+    const dong = want.dong[Math.min(n, want.dong.length - 1)] ?? expected.viTri.dong;
+    expect(got, `lệch đầu tiên ở ${expected.viTri.tep}:${dong}`).toEqual(want.keys);
   });
 
   it('biểu cảm người hỏi (kịch bản không ghi): lấy ở lời gần nhất của chính người đó ngay trước', () => {

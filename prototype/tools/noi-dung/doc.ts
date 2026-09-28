@@ -85,6 +85,8 @@ export interface RawSequence {
   scene: string;
   title: string;
   items: StoryItem[];
+  /** Số dòng (trong `viTri.tep`) của từng mục trong `items`, cùng chỉ số — để báo lệch đúng dòng. */
+  itemDong: number[];
   viTri: ViTri;
 }
 
@@ -345,12 +347,12 @@ export function docNoiDung(tepList: readonly TepNoiDung[], tuyChon: TuyChonDoc =
         quoteField = null;
         evidenceOpen = false;
         sqlField = null;
-        if (chieuCho) throw new Error(`[MÀN CHIẾU ${chieuCho.id}] thiếu khối \`\`\`sql ngay dưới`);
+        hetChoChieu();
         if (tep.loai === 'kich-ban') {
           if (!partSeen) throw new Error('chuỗi nằm trước tiêu đề "## Phần …"');
           const m = /^### (\S+) — (.+) \{scene: ([a-z0-9-]+)\}$/.exec(line);
           if (!m) throw new Error(`tiêu đề chuỗi sai quy ước "${line}"`);
-          seq = { id: m[1] ?? '', part, scene: m[3] ?? '', title: m[2] ?? '', items: [], viTri: viTri() };
+          seq = { id: m[1] ?? '', part, scene: m[3] ?? '', title: m[2] ?? '', items: [], itemDong: [], viTri: viTri() };
           out.sequences.push(seq);
         } else if (tep.loai === 'thu-thach') {
           const cm = /^### (\S+) — .+ \{challenge: ([a-z0-9-]+)\}$/.exec(line);
@@ -397,34 +399,57 @@ export function docNoiDung(tepList: readonly TepNoiDung[], tuyChon: TuyChonDoc =
           j++;
         }
         if (j >= lines.length) throw new Error('khối mã không có dòng ``` đóng');
-        const code = body.join('\n');
-        if (lang !== 'sql') throw new Error(`khối mã phải là \`\`\`sql (gặp "${line}")`);
-        if (tep.loai === 'kich-ban') {
-          if (!seq || !chieuCho) throw new Error('khối ```sql trong kịch bản phải nằm ngay dưới một [MÀN CHIẾU …] (không ghi "vật chứng")');
-          chieuCho.source = { kind: 'sql', sql: code };
-          chieuCho = null;
-        } else if (tep.loai === 'thu-thach' && card) {
-          if (!sqlField) throw new Error('khối ```sql trong thẻ thử thách phải nằm ngay dưới một dòng "- Nhãn:" bỏ trống (vd "- SQL chuẩn:")');
-          if (card.sql[sqlField] !== undefined) throw new Error(`nhãn "${sqlField}" đã có khối sql`);
-          card.sql[sqlField] = code;
-          sqlField = null;
-        } else {
-          throw new Error('khối mã ở chỗ không nhận khối mã');
+        // Lỗi của khối vẫn phải nhảy qua cả khối (không đọc thân khối như dòng thường).
+        try {
+          ganKhoiMa(lang, body.join('\n'), line);
+        } catch (e) {
+          loi.push({ ...viTri(), thongBao: (e as Error).message });
         }
         return j;
       }
 
-      if (tep.loai === 'kich-ban') readStoryLine(line);
-      else if (tep.loai === 'thu-thach' || tep.loai === 'loi-chung') readChallengeLine(line);
+      if (tep.loai === 'kich-ban') {
+        try {
+          readStoryLine(line);
+        } finally {
+          const s = seq as RawSequence | null;
+          if (s) while (s.itemDong.length < s.items.length) s.itemDong.push(dongHienTai);
+        }
+      } else if (tep.loai === 'thu-thach' || tep.loai === 'loi-chung') readChallengeLine(line);
       else readDossierLine(line);
       return i;
+    }
+
+    function ganKhoiMa(lang: string, code: string, line: string): void {
+      if (lang !== 'sql') throw new Error(`khối mã phải là \`\`\`sql (gặp "${line}")`);
+      if (tep.loai === 'kich-ban') {
+        if (!seq || !chieuCho) throw new Error('khối ```sql trong kịch bản phải nằm ngay dưới một [MÀN CHIẾU …] (không ghi "vật chứng")');
+        chieuCho.source = { kind: 'sql', sql: code };
+        chieuCho = null;
+      } else if (tep.loai === 'thu-thach' && card) {
+        if (!sqlField) throw new Error('khối ```sql trong thẻ thử thách phải nằm ngay dưới một dòng "- Nhãn:" bỏ trống (vd "- SQL chuẩn:")');
+        const nhan: string = sqlField;
+        sqlField = null;
+        if (card.sql[nhan] !== undefined) throw new Error(`nhãn "${nhan}" đã có khối sql`);
+        card.sql[nhan] = code;
+      } else {
+        throw new Error('khối mã ở chỗ không nhận khối mã');
+      }
+    }
+
+    /** Màn chiếu đang chờ khối sql mà gặp dòng khác: báo MỘT lần rồi bỏ chờ. */
+    function hetChoChieu(): void {
+      const cho = chieuCho as (StoryItem & { kind: 'projector' }) | null;
+      if (!cho) return;
+      chieuCho = null;
+      throw new Error(`[MÀN CHIẾU ${cho.id}] thiếu khối \`\`\`sql ngay dưới`);
     }
 
     // ---------- Phần kể chuyện ----------
     function readStoryLine(line: string): void {
       if (line.trim() === '' || line === '---') return;
       if (!seq) throw new Error(`dòng nằm ngoài chuỗi "${line}"`);
-      if (chieuCho) throw new Error(`[MÀN CHIẾU ${chieuCho.id}] thiếu khối \`\`\`sql ngay dưới`);
+      hetChoChieu();
       const items = seq.items;
       const here = viTri();
 
