@@ -1,5 +1,5 @@
 /**
- * Phần 5 — Kết {part: ending}. Chuyển NGUYÊN VĂN từ docs/kich-ban-prototype.md.
+ * Phần 5 — Kết {part: ending}. Chuyển NGUYÊN VĂN từ docs/prototype/kich-ban-prototype.md.
  *
  * Hiệu ứng phụ trong `[DÀN DỰNG]` thành node tường minh (ARCHITECTURE.md §5), `note` vẫn giữ:
  * - end-03: hết quyền xem dữ liệu → `set-flag access-revoked` + `annotate-evidence` cho MỌI thẻ kết quả

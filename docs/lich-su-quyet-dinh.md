@@ -1,6 +1,6 @@
 # CLB Thám Tử Dữ Liệu — Lịch sử quyết định (prototype v0.1)
 
-> File này ghi lại **mọi quyết định** trong quá trình dựng prototype theo `prototype-scope-down-v0.1.md`.
+> File này ghi lại **mọi quyết định** trong quá trình dựng prototype theo [`prototype-scope-down-v0.1.md`](prototype/prototype-scope-down-v0.1.md).
 >
 > **Cơ chế vòng phản hồi (feedback loop):**
 > 1. Điều phối viên (Claude Opus 5.5) giao việc cho các subagent kèm file này làm "luật".
@@ -8,7 +8,7 @@
 > 3. Điều phối viên trả lời theo hướng **có lợi nhất cho mục tiêu prototype** (kiểm chứng vòng chơi tìm manh mối → truy vấn → diễn giải → phản bác, với người mới học SQL), ghi vào file này, rồi gửi câu trả lời lại cho agent.
 > 4. Chỉ điều phối viên được sửa file này. Agent đọc file này trước khi làm việc; quyết định ở đây có hiệu lực ràng buộc.
 >
-> **Thứ tự ưu tiên khi mâu thuẫn:** `prototype-scope-down-v0.1.md` > file này > `vu1-buoi-giai-trinh-kich-ban.md` > `clb-tham-tu-du-lieu-GDD-v0.5.md` > `vu-tru-hoa-phuong-tong-quan.md`.
+> **Thứ tự ưu tiên khi mâu thuẫn:** `prototype/prototype-scope-down-v0.1.md` > file này > `thiet-ke/vu1-buoi-giai-trinh-kich-ban.md` > `thiet-ke/clb-tham-tu-du-lieu-GDD-v0.5.md` > `thiet-ke/vu-tru-hoa-phuong-tong-quan.md` (đường dẫn tính từ `docs/`).
 >
 > **Mẫu một mục:** `QĐ-xxx — Tiêu đề` · Nguồn (ai hỏi / giai đoạn) · Câu hỏi hoặc bối cảnh · Phương án · **Chọn** · Lý do.
 
@@ -212,7 +212,7 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Lý do: biến AND/OR thành một quyết định có chủ ý ngay ở c3 — đúng mục tiêu học — mà không dùng bẫy.
 
 **QĐ-040 — Mã chẩn đoán.** · Nguồn: thẻ thử thách của agent `kich-ban` · 26/09 15:30
-- **Chọn:** dùng bộ mã trong `docs/kich-ban-prototype.md` làm hợp đồng giữa nội dung và engine: `not-select`, `syntax-error`, `no-table`, `wrong-table`, `no-filter`, `missing-columns`, `extra-columns`, `wrong-column-ho-dem`, `like-ends-with`, `like-contains`, `class-prefix`, `wrong-value`, `hardcoded-ids`, `limit-used`, `or-connector`, `missing-condition`, `connector-unset` (bổ sung 15:36 theo QĐ-039: lời nhắc khi bấm Chạy lúc chưa chọn phép nối, xếp vào nhóm "không chạy được"), `other`; thứ tự ưu tiên như mục "Quy ước thẻ thử thách". Gói `sql-engine` được thêm mã mới nếu cần nhưng phải báo lại; mã không phát hiện được thì rơi về `other`.
+- **Chọn:** dùng bộ mã trong `docs/prototype/kich-ban-prototype.md` làm hợp đồng giữa nội dung và engine: `not-select`, `syntax-error`, `no-table`, `wrong-table`, `no-filter`, `missing-columns`, `extra-columns`, `wrong-column-ho-dem`, `like-ends-with`, `like-contains`, `class-prefix`, `wrong-value`, `hardcoded-ids`, `limit-used`, `or-connector`, `missing-condition`, `connector-unset` (bổ sung 15:36 theo QĐ-039: lời nhắc khi bấm Chạy lúc chưa chọn phép nối, xếp vào nhóm "không chạy được"), `other`; thứ tự ưu tiên như mục "Quy ước thẻ thử thách". Gói `sql-engine` được thêm mã mới nếu cần nhưng phải báo lại; mã không phát hiện được thì rơi về `other`.
 
 **QĐ-041 — Xáo lựa chọn một lần mỗi lần câu hỏi xuất hiện.** · Nguồn: câu hỏi 1 của agent `nen-mong` · 26/09 16:30
 - Phương án: A — xáo lại sau mỗi lần chọn sai (đúng chữ QĐ-035, nhưng nút vừa bấm "chạy chỗ khác"); B — xáo một lần khi câu hỏi xuất hiện, giữ nguyên thứ tự khi chọn lại.
@@ -435,7 +435,7 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
   - Cặp đối đáp phần hài với Tùng (tuỳ chọn): Tùng "Tui cá là…" / Hà Vy "Đừng cá. Đếm."
 - Loại bỏ (từ bộ gợi ý của Gemini): câu có chữ "thủ phạm" (ngược QĐ-023/024); "CSDL của tớ" (Hà Vy không biết SQL); "ấn Next" (game không có nút này); châm ngôn "dữ liệu không biết nói dối…" (trùng câu của Quân); hỏi vặn người chơi khi bấm "Hỏi Hà Vy" (gợi ý thứ hai trở đi trừ điểm, và QĐ-020 yêu cầu gợi ý nói đúng ý).
 - Đã sửa theo quyết định này: GDD §3.1 (người chơi, Hà Vy), GDD §16.1 (tư thế Hà Vy), prompt `char-ha-vy-smile` trong `prompts-characters-prototype-flow-v0.1.md`.
-- **Còn phải làm** (gói nội dung kế tiếp): thêm cảnh người chơi buột miệng ở phần Phân tích và chèn "Khoan, đếm lại đã." của Hà Vy (vd. trước khi người chơi chạm dòng lỗi ở deb-01) vào `docs/kich-ban-prototype.md` và `src/content/real/story/`, cập nhật test trung thành; nếu hiệu ứng hiện chân dung thì dùng ảnh người chơi nam/nữ theo lựa chọn.
+- **Còn phải làm** (gói nội dung kế tiếp): thêm cảnh người chơi buột miệng ở phần Phân tích và chèn "Khoan, đếm lại đã." của Hà Vy (vd. trước khi người chơi chạm dòng lỗi ở deb-01) vào `docs/prototype/kich-ban-prototype.md` và `src/content/real/story/`, cập nhật test trung thành; nếu hiệu ứng hiện chân dung thì dùng ảnh người chơi nam/nữ theo lựa chọn.
 
 **Bài học quy trình:** `preview_start` theo tên đọc `.claude/launch.json` của `main` → agent chạy nhầm server của main một phút. Từ gói 4: agent tự chạy `vite` bằng Bash ở cổng riêng rồi `navigate`, không gọi `preview_start` theo tên. Điều phối viên đếm sai "6 `[HỎI]` trong chuỗi truyện" (thật: 3 + 3 câu đọc kết quả) — agent đã đính chính.
 
@@ -461,7 +461,7 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
   - **Thử thách 1 — Lớp nào ở giảng đường B?** Hà Vy dẫn từng bước. FROM (`lop_sinh_hoat`) và SELECT (`ma_lop`) được **chọn sẵn và khóa**, người chơi chỉ làm WHERE: chọn cột `toa_nha`, phép "bằng", kéo note "B" vào → chạy → ghi thành note → dán lên tường. Ở màn này phép so sánh chỉ có "bằng".
   - **Thử thách 2 — Ai có tên bắt đầu bằng H?** Người chơi **tự làm**, dựng cả FROM, SELECT và WHERE. Hà Vy chỉ nói một câu mở đầu, còn lại chờ người chơi hỏi mới gợi ý.
   - Tiếp theo là các màn `IN` (sẽ thiết kế), rồi đến màn ghép ba manh mối.
-  - Thay QĐ-021 (Hà Vy dẫn ở c1 nay áp dụng cho câu hỏi lớp tòa B) và thứ tự c1/c2 trong `docs/kich-ban-prototype.md`. Khi làm code phải sửa theo: ana-01, ana-c2-intro, câu hỏi đọc kết quả của hai thử thách, và câu "Thử thách 1 ra mười người tên H" trong phản hồi q-c3-read.
+  - Thay QĐ-021 (Hà Vy dẫn ở c1 nay áp dụng cho câu hỏi lớp tòa B) và thứ tự c1/c2 trong `docs/prototype/kich-ban-prototype.md`. Khi làm code phải sửa theo: ana-01, ana-c2-intro, câu hỏi đọc kết quả của hai thử thách, và câu "Thử thách 1 ra mười người tên H" trong phản hồi q-c3-read.
 - **Ghi dữ kiện:** bấm "Ghi thành dữ kiện" → **nhân vật chính viết tay** lên một tờ note trắng, chữ hiện dần, nội dung lấy từ kết quả người chơi đã chạy (kể cả khi kết quả sai) → người chơi **kéo note dán lên tường** (hoặc bấm "Dán lên tường"). Note đã dán dùng được ở thử thách sau như các manh mối khác. Hà Vy chỉ hướng dẫn thao tác này ở lần đầu.
 - **Hà Vy ngồi cạnh, không nhắn tin** (sửa ý "khung chat" của QĐ-071): lý do là cảnh Phân tích diễn ra ở `clb-room`, Hà Vy có mặt, và cả game là visual novel. Hiển thị ảnh bán thân ở góc dưới bên phải, bên ngoài màn hình máy tính, lời thoại trong bong bóng kiểu hộp thoại VN. Khi im lặng cô ấy thu xuống, chỉ còn đầu và vai; bấm vào thì mở gợi ý 1 → 2 → 3. Có một "sổ" nhỏ để xem lại các câu đã nói. Biểu cảm đổi theo tình huống (neutral / thinking / smile). Kiểu nhắn tin để dành cho cảnh có nhân vật vắng mặt.
 
@@ -487,7 +487,7 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - **Thử thách 2 — Ai tên bắt đầu bằng H trong lớp BC24A?** Người chơi **tự làm**: kéo note "H" và note "BC24A", tự chọn phép nối → 2 người (Hiếu, Hoài). Không báo đúng/sai (QĐ-071).
 - **Phần Giải trình:** giữ lỗi OR của Quân (QĐ-024). Người chơi đã học AND/OR ở thử thách 1 nên tự bắt được lỗi, theo tinh thần "học rồi thì tự áp dụng".
 - **Hiển thị Tùng:** ảnh bán thân ở góc dưới bên trái, trượt vào khi có thoại, có bong bóng riêng; khi im lặng thu xuống giống Hà Vy.
-- Phải sửa theo quyết định này: `docs/kich-ban-prototype.md` (inv-box, clue bookmark, ana-*, c1/c2, debrief-fix, deb-01…03), `src/sql-challenge/data/*`, các mã chẩn đoán và test.
+- Phải sửa theo quyết định này: `docs/prototype/kich-ban-prototype.md` (inv-box, clue bookmark, ana-*, c1/c2, debrief-fix, deb-01…03), `src/sql-challenge/data/*`, các mã chẩn đoán và test.
 
 **QĐ-074 — Bộ ba Tùng, người chơi, Hà Vy; Tùng vào CLB và là người kéo người chơi vào (QUYẾT ĐỊNH CỦA USER).** · Nguồn: USER, khi chỉ ra mockup QĐ-073 đặt Quân sai vai · 28/09
 - **Sự cố:** mockup QĐ-073 cho Quân ngồi trong phòng CLB, xưng "tớ" và đoán bừa OR. Sai kịch bản: Quân là người của **Ban Pháp chế – Kiểm tra Hội sinh viên**, xưng "tôi", chỉ gặp CLB lần đầu ở phần Giải trình (deb-01). Nguyên nhân: điều phối viên lấy bảng persona dán trong phiên ("Quân phụ trách trích xuất dữ liệu, hấp tấp") mà không đối chiếu kịch bản. **Bảng persona đó lệch với kịch bản ở vai Quân; kịch bản là chuẩn.**
@@ -525,3 +525,13 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - **Mục đích:** vẫn là thử nghiệm người chơi trên laptop — giữ khảo sát, telemetry, bảng người quan sát; QĐ-028 giữ nguyên.
 - Thay đổi so với §8 tài liệu phạm vi / QĐ-032: bản đồ, tạo nhân vật, Hardcore, thanh uy tín, xếp hạng chuyển từ "không làm" thành "làm" cho MVP. Mã đề, Blockly, trang phục, mini game, mobile-first vẫn "không làm".
 - Chia gói (theo `/giao-viec`, mỗi lúc một agent): 1 `kien-truc-mvp` (Fable) → 2 `kich-ban-mvp` (Opus) → 3 `noi-dung-mvp` (Opus) → 4 `giai-trinh-uy-tin` (Fable) → 5 `tao-nhan-vat` (Opus) → 6 `ban-do-di-lai` (Opus) → 7 `hardcore-xep-hang` (Opus) → 8 `hinh-mvp` (Opus).
+
+**QĐ-078 — Sắp xếp lại thư mục repo.** · Nguồn: user yêu cầu hệ thống lại cấu trúc thư mục · 28/09
+- **Chọn:** gốc repo chỉ còn `README.md` (bản đồ repo) và ba thư mục: `docs/` (tài liệu sản phẩm), `art/` (nguồn ảnh), `prototype/` (code). Chỉ di chuyển, **không đổi tên** tài liệu, nên các chỗ nhắc tên tệp trong sổ này vẫn tìm được.
+  - `docs/thiet-ke/`: `vu-tru-hoa-phuong-tong-quan.md`, `clb-tham-tu-du-lieu-GDD-v0.5.md`, `vu1-buoi-giai-trinh-kich-ban.md`.
+  - `docs/prototype/`: `prototype-scope-down-v0.1.md`, `kich-ban-prototype.md`, `kich-ban-de-xuat-full.md`.
+  - `docs/` giữ tệp dùng chung: sổ này, `dac-ta-dinh-dang-noi-dung.md`, `mockups/` (thêm `sql-table-draft.html`, chuyển từ `prototype/public/` vì tệp nháp này bị đóng gói vào bản build).
+  - `art/prompts/`: sáu bộ `prompts-*.md`; `art/nguon/`: ảnh gốc Topview (trước ở `prototype/art-src/`). `art/README.md` ghi trạng thái từng bộ prompt.
+  - Nhật ký của Antigravity: `.agent/changelog.md` (bản đủ) chuyển thành `prototype/docs/nhat-ky-thay-doi-2026-09-27.md`; `.agents/changelog.md` là bản cũ hơn, thiếu mục 5–6, nên đã xóa.
+- Đã sửa theo: đường dẫn `docs/kich-ban-prototype.md` → `docs/prototype/kich-ban-prototype.md` trong code, test (`faithfulness.test.ts`) và tài liệu; phần đầu các tài liệu dẫn sang nhau; `prototype/README.md`, `ARCHITECTURE.md`, `src/assets/art/README.md`; skill `google-flow-image` (`--file art/prompts/…`). Link `file:///` tuyệt đối trong bộ prompt nhân vật đổi thành link tương đối.
+- Không đụng `prototype/src/` ngoài chú thích đường dẫn: cấu trúc code đã theo tính năng và đang có các gói MVP chạy song song.

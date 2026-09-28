@@ -616,7 +616,7 @@ Lệnh (gói chuẩn hóa sẽ tạo): `npm run kiem-noi-dung` để chạy riê
 
 Bước 1 của QĐ-075: chuyển **nguyên văn** nội dung hiện tại sang cấu trúc mới, game chạy y hệt.
 
-| Cũ (`docs/kich-ban-prototype.md`) | Mới |
+| Cũ (`docs/prototype/kich-ban-prototype.md`) | Mới |
 |---|---|
 | `## Phần N — … {part: …}` | tên file trong `kich-ban/chinh/` + khai báo `phần:` ở đầu file |
 | `### <id> — … {scene: …}` | `### <id> — … {cảnh: …}` (chấp nhận cả `scene` trong giai đoạn chuyển) |

@@ -1,8 +1,9 @@
 # Kiến trúc prototype — CLB Thám Tử Dữ Liệu
 
 > Tài liệu kỹ thuật về **code hiện có** (sau gói 9b `tich-hop-b`, trước vòng thử nghiệm 1). Nguồn sự
-> thật về sản phẩm là `prototype-scope-down-v0.1.md` (gốc repo); ràng buộc là `lich-su-quyet-dinh.md`
-> (QĐ-xxx); kịch bản là `docs/kich-ban-prototype.md` (**ở gốc repo**, không phải `prototype/docs/`).
+> thật về sản phẩm là `docs/prototype/prototype-scope-down-v0.1.md`; ràng buộc là `docs/lich-su-quyet-dinh.md`
+> (QĐ-xxx); kịch bản là `docs/prototype/kich-ban-prototype.md` (các đường dẫn này tính từ **gốc repo**, không phải
+> `prototype/docs/`; bản đồ toàn repo ở `README.md` gốc).
 > Ở đây chỉ nói về code: cây thư mục, hợp đồng kiểu, luồng dữ liệu, các hệ con (ô ảnh, telemetry,
 > bảng người quan sát, che dữ liệu), cách kiểm tra. Hướng dẫn chạy cho nhóm thử nghiệm: `README.md`.
 
@@ -13,6 +14,7 @@ prototype/
 ├── index.html · vite.config.ts · tsconfig.json · eslint.config.js · package.json
 ├── README.md                          hướng dẫn chạy / thử nghiệm (tiếng Việt)
 ├── docs/ARCHITECTURE.md               ← tài liệu này
+├── docs/nhat-ky-thay-doi-2026-09-27.md  nhật ký gói VN của commit fa5ffd3 (Antigravity viết; lỗi đã sửa ở QĐ-076)
 └── src/
     ├── main.tsx                       nạp phông/CSS, bật telemetry bền, nạp sớm sql.js (wasm), render <App/>
     ├── app/
@@ -273,7 +275,7 @@ trong store, `package.json` (không cài thêm phụ thuộc nếu không hỏi)
   `<nhân vật>-<biểu cảm>`, tài liệu `doc-*`).
 - `import.meta.glob('/src/assets/**/*.{webp,png,jpg,jpeg}')` quét MỌI thư mục con của `src/assets/`
   lúc build/dev; tệp đúng tên ô → dùng ảnh, không thì hình vẽ tạm. Nhận song song hai quy ước tên: tên ô
-  (`minh-anh-worried`, `bg-prototype-hallway`) và **quy ước của user** (`prompts-characters-prototype-flow-v0.1.md`):
+  (`minh-anh-worried`, `bg-prototype-hallway`) và **quy ước của user** (`art/prompts/prompts-characters-prototype-flow-v0.1.md`):
   `char-<nhân vật>-<biểu cảm>`, `char-<nhân vật>-anchor` = biểu cảm ĐẦU của nhân vật (Hoài = `nervous`).
   Thiếu biểu cảm → mượn ảnh biểu cảm đầu (`data-art-borrowed-from`).
 - **Tách nền** (`visuals/bg-cutout.ts` thuật toán thuần trên `ImageData`; `portrait-cutout.ts` lớp canvas +
@@ -318,7 +320,7 @@ trong store, `package.json` (không cài thêm phụ thuộc nếu không hỏi)
 
 ## 7. Cách thêm / đổi nội dung
 
-1. Kịch bản (`docs/kich-ban-prototype.md` ở gốc repo) là nguồn duy nhất: đổi chữ ở kịch bản trước, rồi chép
+1. Kịch bản (`docs/prototype/kich-ban-prototype.md`, tính từ gốc repo) là nguồn duy nhất: đổi chữ ở kịch bản trước, rồi chép
    lại vào `src/content/real/{story/*,challenges,evidence}.ts`. `faithfulness.test.ts` đọc kịch bản bằng
    `content/real/testing/read-script.ts` và so hai chiều từng ký tự — lệch là đỏ.
 2. Ánh xạ kịch bản → node: xem bảng đầu `src/story/types.ts`. Chú ý: `[ĐIỂM XEM XÉT]` nhiều điểm trong một cảnh
@@ -357,5 +359,5 @@ Bẻ phanh mẫu cho các test tích hợp: bỏ bước giải `debrief-fix` tr
   kết thúc bằng `Co-Authored-By: Claude <noreply@anthropic.com>`.
 - Trước mỗi commit: `npm run typecheck && npm test && npm run lint` xanh; commit có UI thì
   `npm run build` cũng phải qua.
-- Không sửa file ở gốc repo (`*.md`, `.gitignore`, `.gitattributes`) và lời thoại trong
-  `docs/kich-ban-prototype.md` (chỉ mục "Tự kiểm"/chú thích dàn dựng khi được giao); cần gì thì ghi vào báo cáo.
+- Không sửa tài liệu ngoài `prototype/` (`docs/`, `art/`, `README.md`, `.gitignore`, `.gitattributes`) và lời thoại trong
+  `docs/prototype/kich-ban-prototype.md` (chỉ mục "Tự kiểm"/chú thích dàn dựng khi được giao); cần gì thì ghi vào báo cáo.

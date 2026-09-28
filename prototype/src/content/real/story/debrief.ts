@@ -1,5 +1,5 @@
 /**
- * Phần 4 — Giải trình {part: debrief}. Chuyển NGUYÊN VĂN từ docs/kich-ban-prototype.md.
+ * Phần 4 — Giải trình {part: debrief}. Chuyển NGUYÊN VĂN từ docs/prototype/kich-ban-prototype.md.
  *
  * Hai hiệu ứng phụ nằm trong `[DÀN DỰNG]` thành node tường minh (ARCHITECTURE.md §5), `note`
  * vẫn giữ nguyên văn ngay trước:

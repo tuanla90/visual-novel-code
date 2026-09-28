@@ -19,7 +19,7 @@ ra là game quay về hình vẽ tạm.
 
 Ảnh phủ kín sân khấu kiểu `object-fit: cover`, neo giữa: màn rộng cắt bớt trên/dưới, màn hẹp
 (1024×768) cắt bớt trái/phải khoảng 8% mỗi bên. Giữ vật kể chuyện trong **70% giữa** (theo chiều
-ngang) và để **35% dưới** thoáng cho nhân vật + hộp thoại (theo `prompts-background-prototype-*.md`).
+ngang) và để **35% dưới** thoáng cho nhân vật + hộp thoại (theo `art/prompts/prompts-background-prototype-*.md` ở gốc repo).
 Tên tệp giống hệt id trong bộ prompt cảnh nền. Ảnh cảnh nền **không** bị tách nền.
 
 | Tên tệp (không đuôi)        | Chỗ dùng                                  |
@@ -52,7 +52,7 @@ Mọi chân dung **cùng chiều cao khung** và **đầu cùng một vị trí*
 bị giật. Game hiển thị theo chiều cao, neo đáy khung. Thiếu một biểu cảm → game mượn ảnh biểu cảm
 **đầu tiên** của nhân vật đó (chính là ảnh `-anchor`); nhân vật chưa có ảnh nào → hình vẽ tạm.
 
-### Tên theo bộ prompt của bạn (`prompts-characters-prototype-flow-v0.1.md`, §1 Manifest)
+### Tên theo bộ prompt của bạn (`art/prompts/prompts-characters-prototype-flow-v0.1.md`, §1 Manifest)
 
 `-anchor` = ảnh neo = biểu cảm gốc của nhân vật: **trung tính** với Minh Anh, Hà Vy, Quân, Bác Tư;
 **rụt rè** (`nervous`) với Hoài.
@@ -81,7 +81,7 @@ bị giật. Game hiển thị theo chiều cao, neo đáy khung. Thiếu một 
 
 Hai màn này hiện ảnh **toàn thân** (đầu tới giày) nếu có tệp `char-<nhân vật>-full`; chưa có thì
 hiện chân dung ở trên (ảnh thật, hoặc hình vẽ tạm). Khung dọc 9:16, nền xám phẳng như chân dung
-(game tự tách nền), đặt trong khung theo chiều cao, neo đáy. Prompt: `prompts-assets-prototype-full-v0.1.md`.
+(game tự tách nền), đặt trong khung theo chiều cao, neo đáy. Prompt: `art/prompts/prompts-assets-prototype-full-v0.1.md`.
 
 | Tên tệp (không đuôi)  | Nhân vật | Ô               |
 | --------------------- | -------- | --------------- |

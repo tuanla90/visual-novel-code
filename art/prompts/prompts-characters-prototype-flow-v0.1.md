@@ -1,6 +1,6 @@
 # Google Flow prototype characters — prompt specification (v0.1)
 
-Tài liệu prompt tạo nhân vật cho bản prototype **CLB Thám Tử Dữ Liệu** (Vũ trụ Hoa Phượng), tuân thủ định danh [QĐ-033](file:///d:/Users/tuanla2/game/learn-code-by-game/lich-su-quyet-dinh.md#L166-L178) và phong cách hội họa của dự án.
+Tài liệu prompt tạo nhân vật cho bản prototype **CLB Thám Tử Dữ Liệu** (Vũ trụ Hoa Phượng), tuân thủ định danh [QĐ-033](../../docs/lich-su-quyet-dinh.md) và phong cách hội họa của dự án.
 
 Shared art direction: original clean 2D anime visual-novel character sprite illustration; half-body / waist-up framing for visual novel dialog; clean crisp line art; restrained two-level cel-shading; contemporary Vietnamese university students (aged 18–21); adult proportions; simple solid neutral background (#E8ECEF or pure light gray) easy for sprite extraction; no logos; no readable text; no watermark; no imitation of named commercial studios or artists.
 

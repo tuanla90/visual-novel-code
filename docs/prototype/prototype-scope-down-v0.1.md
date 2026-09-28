@@ -5,9 +5,9 @@
 > Prototype không phải bản demo thương mại và không phải Vụ 1 hoàn chỉnh. Mục tiêu của nó là trả lời nhanh, với chi phí thấp, liệu trải nghiệm **tìm manh mối → viết truy vấn → diễn giải kết quả → dùng bằng chứng để phản bác** có dễ hiểu, có giá trị học tập và có đủ hấp dẫn để tiếp tục đầu tư hay không.
 >
 > Tài liệu liên quan:
-> - `clb-tham-tu-du-lieu-GDD-v0.5.md`
-> - `vu1-buoi-giai-trinh-kich-ban.md`
-> - `vu-tru-hoa-phuong-tong-quan.md`
+> - [`clb-tham-tu-du-lieu-GDD-v0.5.md`](../thiet-ke/clb-tham-tu-du-lieu-GDD-v0.5.md)
+> - [`vu1-buoi-giai-trinh-kich-ban.md`](../thiet-ke/vu1-buoi-giai-trinh-kich-ban.md)
+> - [`vu-tru-hoa-phuong-tong-quan.md`](../thiet-ke/vu-tru-hoa-phuong-tong-quan.md)
 
 ---
 

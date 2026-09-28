@@ -1,6 +1,6 @@
 // @vitest-environment node
 /**
- * Test TRUNG THÀNH: dữ liệu ở src/content/real là bản chép nguyên văn docs/kich-ban-prototype.md.
+ * Test TRUNG THÀNH: dữ liệu ở src/content/real là bản chép nguyên văn docs/prototype/kich-ban-prototype.md.
  *
  * Kịch bản được đọc theo đúng "Quy ước đọc file" (testing/read-script.ts — bộ đọc chặt, gặp dòng lạ
  * là ném lỗi) rồi so HAI CHIỀU với dữ liệu: mỗi chuỗi, mỗi thẻ được làm phẳng thành danh sách khóa
@@ -25,7 +25,7 @@ import {
   type RawSequence,
 } from './testing/read-script';
 
-const MARKDOWN = readFileSync(new URL('../../../../docs/kich-ban-prototype.md', import.meta.url), 'utf8').replace(
+const MARKDOWN = readFileSync(new URL('../../../../docs/prototype/kich-ban-prototype.md', import.meta.url), 'utf8').replace(
   /\r\n?/g,
   '\n',
 );

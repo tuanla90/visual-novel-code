@@ -2,7 +2,7 @@
 ## CLB Thám Tử Dữ Liệu — Đại học Hoa Phượng
 
 > **Người quản lý kịch bản:** Senior Narrative Director & Subagent Manager  
-> **Tài liệu đối chiếu gốc:** `docs/kich-ban-prototype.md`  
+> **Tài liệu đối chiếu gốc:** `docs/prototype/kich-ban-prototype.md`  
 > **Ràng buộc kỹ thuật nghiêm ngặt:**  
 > 1. **Biểu cảm hợp lệ (`src/shared/ids.ts`):**  
 >    - `minh-anh`: `neutral`, `worried`, `happy`  

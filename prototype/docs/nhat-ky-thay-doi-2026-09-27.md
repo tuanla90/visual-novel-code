@@ -28,7 +28,7 @@
 - **Chẩn đoán sư phạm cho Thử thách 3** (`src/sql-challenge/engine/diagnose.ts`, `ids.ts`, `challenges.ts`):
   - Bổ sung mã `same-column-and`: Bắt lỗi khi người học dùng `ma_lop = 'B101' AND ma_lop = 'B202'` trên cùng một cột dẫn đến tập rỗng.
   - Bổ sung mã `class-subset`: Bắt lỗi khi lọc thiếu 1 trong 2 lớp cần thiết.
-- **Đồng bộ kịch bản hai chiều** (`docs/kich-ban-prototype.md`, `src/content/real/`):
+- **Đồng bộ kịch bản hai chiều** (`docs/prototype/kich-ban-prototype.md`, `src/content/real/`):
   - Bổ sung lời thoại Hà Vy trước Thử thách 3 dùng ẩn dụ bộ lọc danh sách trong Excel (tick chọn nhiều ô trong Filter).
   - Bổ sung lời thoại chẩn đoán chi tiết cho các mã mới.
 

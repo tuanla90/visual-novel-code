@@ -1,5 +1,5 @@
 /**
- * Thẻ thử thách thật — mục "Nội dung thử thách" của docs/kich-ban-prototype.md, chép NGUYÊN VĂN,
+ * Thẻ thử thách thật — mục "Nội dung thử thách" của docs/prototype/kich-ban-prototype.md, chép NGUYÊN VĂN,
  * ghép với đặc tả engine `CHALLENGE_SPECS[id]` (nguồn DUY NHẤT của SQL chuẩn, cột bắt buộc,
  * dataset ẩn, model nạp sẵn — không chép lại ở đây) thành ChallengeDefinition.
  *

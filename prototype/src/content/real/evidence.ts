@@ -1,5 +1,5 @@
 /**
- * Thẻ hồ sơ thật — mục "Hồ sơ vật chứng" của docs/kich-ban-prototype.md, chép NGUYÊN VĂN.
+ * Thẻ hồ sơ thật — mục "Hồ sơ vật chứng" của docs/prototype/kich-ban-prototype.md, chép NGUYÊN VĂN.
  *
  * Ánh xạ dòng của kịch bản → trường (QĐ-037):
  *   Tiêu đề → title · Nguồn → source · Nội dung / Nội dung hiển thị → content | body
