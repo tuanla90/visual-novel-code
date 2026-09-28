@@ -83,6 +83,22 @@ describe('tách nền phẳng của chân dung', () => {
     expect(pixel(img, 132, 112)).toEqual([228, 231, 235, 255]);
   });
 
+  it('khe nền nhỏ kẹt giữa các lọn tóc (viền pha màu tóc) → trong suốt; tóc giữ nguyên', () => {
+    // Cỡ chân dung thật (~1,1 triệu điểm): khe tóc chỉ ~150 điểm — trước đây nhỏ hơn ngưỡng nên bị giữ,
+    // hiện thành mảng xám giữa các lọn tóc.
+    const img = makeImage(800, 1400);
+    fillRect(img, 200, 300, 600, 1400, INK); // khối tóc chạm mép dưới
+    // Khe 10×10 màu nền, viền 1 px pha 5% màu tóc (lệch nền ≈ 17: mép khe kiểu khử răng cưa).
+    const rim: RGB = [BG[0] * 0.95 + INK[0] * 0.05, BG[1] * 0.95 + INK[1] * 0.05, BG[2] * 0.95 + INK[2] * 0.05].map(Math.round) as RGB;
+    fillRect(img, 399, 499, 411, 511, rim);
+    fillRect(img, 400, 500, 410, 510, BG);
+    const result = removeFlatBackground(img);
+    expect(result).toMatchObject({ status: 'cut', holes: 1 });
+    expect(pixel(img, 405, 505)[3]).toBe(0);
+    expect(pixel(img, 399, 505)[3]).toBe(0); // viền pha nhẹ đi cùng khe
+    expect(pixel(img, 300, 800)).toEqual([...INK, 255]);
+  });
+
   it('logo/dấu nhỏ nằm giữa nền (không nối với người) → xóa; phần người không bị đụng', () => {
     const img = fakePortrait();
     fillRect(img, 262, 352, 272, 362, [252, 252, 252]); // ngôi sao mờ góc dưới phải

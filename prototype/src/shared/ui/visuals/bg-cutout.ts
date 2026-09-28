@@ -12,10 +12,12 @@
  *    viền bao nên không bị loang tới; thân người chạm mép dưới có màu khác nền nên không bị ăn.
  * 4. Đảo nhỏ còn sót giữa vùng nền đã xóa (dấu logo nhỏ của công cụ sinh ảnh, vụn nhiễu), diện tích
  *    ≤ `maxIslandRatio` × diện tích ảnh → xóa. Phần người là một mảng lớn nên không bị đụng.
- * 5. Khoảng nền KẸT bên trong (giữa tay và thân, giữa đuôi tóc và cổ) — không nối với mép nên bước 3
- *    không tới — chỉ bị xóa khi đủ cả ba điều kiện rất chặt: mọi điểm lệch màu nền ≤ `holeTolerance`,
- *    lệch trung bình ≤ `holeMeanTolerance` (phẳng như nền thật), diện tích ≥ `minHoleRatio` × ảnh
- *    (lớn hơn một con mắt). Cổ áo trắng / điểm sáng lệch nền xa hơn nhiều nên vẫn giữ.
+ * 5. Khoảng nền KẸT bên trong (khe giữa các lọn tóc, giữa tay và thân) — không nối với mép nên bước 3
+ *    không tới. Gom theo cùng ngưỡng loang (`fillTolerance`) như bước 3 rồi xóa cả khe khi: trung vị
+ *    lệch màu nền ≤ `holeMedianTolerance`, ít nhất `holeCoreRatio` số điểm lệch ≤ `holeTolerance`
+ *    (lõi phẳng như nền thật — mép khe pha màu tóc được bước 6 làm mềm), diện tích ≥ `minHoleRatio` ×
+ *    ảnh và ≥ `MIN_HOLE_PX` (lớn hơn một con mắt). Cổ áo trắng, lòng trắng mắt, áo xám nhạt lệch nền
+ *    xa hơn nhiều nên vẫn giữ (đo trên 18 ảnh nhân vật 28/09: chỉ khe tóc / khe tay bị xóa).
  * 6. Làm mềm 1 px ở biên: điểm của người kề nền mà màu còn gần nền (< `edgeTolerance`) → trong một
  *    phần, màu được "gỡ" phần nền pha vào để không còn viền xám.
  */
@@ -35,11 +37,13 @@ export interface CutoutOptions {
   edgeTolerance: number;
   /** Đảo không nối với phần người, diện tích ≤ tỉ lệ này của ảnh → xóa. */
   maxIslandRatio: number;
-  /** Khoảng nền kẹt bên trong: mọi điểm lệch màu nền ≤ ngưỡng này… */
+  /** Khoảng nền kẹt bên trong: điểm "lõi" = lệch màu nền ≤ ngưỡng này… */
   holeTolerance: number;
-  /** …lệch trung bình ≤ ngưỡng này… */
-  holeMeanTolerance: number;
-  /** …và diện tích ≥ tỉ lệ này của ảnh → xóa. */
+  /** …tỉ lệ điểm lõi trong khe ≥ ngưỡng này… */
+  holeCoreRatio: number;
+  /** …trung vị lệch màu nền của khe ≤ ngưỡng này… */
+  holeMedianTolerance: number;
+  /** …và diện tích ≥ tỉ lệ này của ảnh (và ≥ `MIN_HOLE_PX`) → xóa. */
   minHoleRatio: number;
 }
 
@@ -49,9 +53,13 @@ export const DEFAULT_CUTOUT_OPTIONS: CutoutOptions = {
   edgeTolerance: 60,
   maxIslandRatio: 0.004,
   holeTolerance: 10,
-  holeMeanTolerance: 5,
-  minHoleRatio: 0.0003,
+  holeCoreRatio: 0.5,
+  holeMedianTolerance: 8,
+  minHoleRatio: 0.00005,
 };
+
+/** Khe nhỏ hơn ngần này điểm không bao giờ bị coi là nền kẹt (một "mắt" gần màu nền vẫn giữ). */
+export const MIN_HOLE_PX = 40;
 
 export type CutoutResult =
   | { status: 'cut'; background: [number, number, number]; removed: number; islands: number; holes: number }
@@ -207,14 +215,21 @@ export function removeFlatBackground(img: PixelData, options: Partial<CutoutOpti
   for (let p = 0; p < n; p++) open[p] = mask[p] === BG ? 0 : 1;
   const islands = sweep((count) => count <= maxIsland);
 
-  // 5. Khoảng nền kẹt bên trong: phẳng như nền thật và đủ lớn → nền.
-  const minHole = Math.max(1, Math.ceil(opt.minHoleRatio * n));
-  for (let p = 0; p < n; p++) open[p] = mask[p] !== BG && cls[p] === HOLE ? 1 : 0;
+  // 5. Khoảng nền kẹt bên trong (khe tóc, khe tay): lõi phẳng như nền thật và đủ lớn → nền.
+  const minHole = Math.max(MIN_HOLE_PX, Math.ceil(opt.minHoleRatio * n));
+  for (let p = 0; p < n; p++) open[p] = mask[p] !== BG && cls[p] !== FAR ? 1 : 0;
   const holes = sweep((count) => {
     if (count < minHole) return false;
-    let sum = 0;
-    for (let i = 0; i < count; i++) sum += dist(members[i] ?? 0);
-    return sum / count <= opt.holeMeanTolerance;
+    let core = 0;
+    const d = new Float32Array(count);
+    for (let i = 0; i < count; i++) {
+      const p = members[i] ?? 0;
+      if (cls[p] === HOLE) core++;
+      d[i] = dist(p);
+    }
+    if (core < opt.holeCoreRatio * count) return false;
+    d.sort();
+    return (d[count >> 1] ?? Infinity) <= opt.holeMedianTolerance;
   });
 
   // 6. Xóa nền + làm mềm 1 px ở biên (gỡ phần màu nền pha vào điểm biên).
