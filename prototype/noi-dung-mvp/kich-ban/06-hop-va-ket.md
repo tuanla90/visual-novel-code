@@ -6,7 +6,7 @@
 
 - [DÀN DỰNG] {{nv.thay-quang}} ngồi giữa; {{nv.co-lan}} và {{nv.quan}} một bên, CLB một bên. {{nv.hoai}} chưa được mời vào.
 - **thay-quang** (neutral): Mời CLB Thám Tử trình bày căn cứ của mình.
-- **minh-anh** (neutral): Dạ, bọn em xin trình bày truy vấn đã dùng ạ.
+- **minh-anh** (neutral): Dạ, bọn em xin trình bày cách bọn em lọc ra danh sách ạ.
 - **quan** (smug): Phản ánh là diện rộng. Tên bắt đầu bằng H hoặc lớp BC24A: mười bốn dòng. Các bạn chỉ đưa ra hai.
 - [MÀN CHIẾU hop-chieu-or · truy vấn nạp sẵn c-sua-or-quan · chạy · 14 dòng]
 - **tung** (worried): Ơ… mười bốn dòng thật.
@@ -35,11 +35,11 @@
 - [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa.
 - **thay-quang** (neutral): Em Hoài, em kể lại giúp thầy hôm em nộp thư.
 - **hoai** (nervous): Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy dặn cứ ký "H." là được. Em không đọc thư ạ.
-- **thay-quang** (neutral): Vậy em chỉ nộp giúp, còn nội dung thư là do anh khóa trên viết.
+- **thay-quang** (neutral): Nhật ký in cho thấy thư được in từ tài khoản một sinh viên năm 4, lời em cũng khớp. Vậy em chỉ nộp giúp, người soạn thư là người khác.
 - **thay-quang** (neutral): Lá thư này không tính vào hồ sơ rà soát. CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện.
 - **hoai** (relieved): Em xin lỗi vì làm mọi người mất công ạ.
 - **minh-anh** (happy): Không sao đâu em. Cảm ơn thầy ạ.
-- **quan** (stunned): …Em thấy ra nhiều dòng là tưởng chắc rồi. Em xin lỗi, em kết luận sớm quá ạ.
+- **quan** (stunned): …Em thấy ra nhiều dòng là tưởng chắc rồi. Em xin lỗi thầy, em kết luận vội quá ạ.
 - [THẺ CHỮ] **narrator**: SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.
 - **tung** (happy): Giữ được phòng rồi! Tối nay tớ khao trà đá.
 - **ha-vy** (smile): Được. Lần này cậu trả thật đấy nhé.

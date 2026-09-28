@@ -42,7 +42,7 @@
 
 - [DÀN DỰNG] Dạy cơ chế khung giờ. Quầy bún cá đã đóng.
 - **tung** (worried): Bún cá dọn mất rồi. Quầy này chỉ bán sáng với trưa, giờ còn mỗi bánh mì.
-- **tung** (neutral): Ở trường này lệch giờ một cái là hụt việc ngay.
+- **tung** (neutral): Ở đây mà lệch giờ một cái là mất phần ngay.
 - [ĐI TỚI md-05-phong-may]
 
 ### md-05-phong-may — Ngoài phòng máy {cảnh: ngoai-phong-may}
@@ -109,7 +109,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';
 - **tung** (happy): Ơ, hôm Ngày hội tớ không thấy cậu nhỉ?
 - **ha-vy** (neutral): Tớ đăng ký qua form. Tớ mê Sherlock Holmes từ cấp hai, nghe tên CLB thám tử là đăng ký luôn.
 - **tung** (happy): Thế cậu đoán được tớ học gì không?
-- **ha-vy** (neutral): Khỏi đoán. Áo đội tình nguyện, huy hiệu khoa trên balo. Du lịch chứ gì.
+- **ha-vy** (neutral): Khỏi đoán. Áo đội tình nguyện, balo cài huy hiệu khoa thế kia. Du lịch chứ gì.
 - **player**: Thế ai giữ chìa khóa phòng này ạ?
 - **duy** (neutral): Tớ. {{nv.duy}}, năm hai Hành chính học. Chìa khóa, tủ hồ sơ với cái máy tính cũ đều tớ giữ.
 - **duy** (neutral): Ngăn dưới tớ chưa kiểm kê tới. Cậu mở xem có gì trong đấy.

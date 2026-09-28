@@ -1113,7 +1113,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "tung",
           "expression": "neutral",
-          "text": "Ở trường này lệch giờ một cái là hụt việc ngay."
+          "text": "Ở đây mà lệch giờ một cái là mất phần ngay."
         },
         {
           "type": "goto",
@@ -1381,7 +1381,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Khỏi đoán. Áo đội tình nguyện, huy hiệu khoa trên balo. Du lịch chứ gì."
+          "text": "Khỏi đoán. Áo đội tình nguyện, balo cài huy hiệu khoa thế kia. Du lịch chứ gì."
         },
         {
           "type": "line",
@@ -1770,7 +1770,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Yếu thật ạ? Nghe nản ghê."
+          "text": "Yếu thật á? Nghe nản ghê."
         },
         {
           "type": "line",
@@ -2069,7 +2069,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Vào phòng máy đi. Chữ H ấy mà dùng \"bằng\" thì không ra đâu."
+          "text": "Vào phòng máy đi. Chữ H ấy mà dùng dấu bằng là không ra đâu."
         },
         {
           "type": "challenge",
@@ -2207,7 +2207,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Dạ, bọn em xin trình bày truy vấn đã dùng ạ."
+          "text": "Dạ, bọn em xin trình bày cách bọn em lọc ra danh sách ạ."
         },
         {
           "type": "line",
@@ -2417,7 +2417,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Vậy em chỉ nộp giúp, còn nội dung thư là do anh khóa trên viết."
+          "text": "Nhật ký in cho thấy thư được in từ tài khoản một sinh viên năm 4, lời em cũng khớp. Vậy em chỉ nộp giúp, người soạn thư là người khác."
         },
         {
           "type": "line",
@@ -2441,7 +2441,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "quan",
           "expression": "stunned",
-          "text": "…Em thấy ra nhiều dòng là tưởng chắc rồi. Em xin lỗi, em kết luận sớm quá ạ."
+          "text": "…Em thấy ra nhiều dòng là tưởng chắc rồi. Em xin lỗi thầy, em kết luận vội quá ạ."
         },
         {
           "type": "line",

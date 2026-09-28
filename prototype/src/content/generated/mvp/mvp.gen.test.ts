@@ -56,12 +56,13 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
     const raw = docThuMucMvp(THU_MUC_NOI_DUNG_MVP).mvp.duLieu;
     const chay = await kiemSoDongMvp(raw, d?.soDongKhai ?? []);
     expect(chay.loi).toEqual([]);
-    expect(chay.ketQua.map((k) => [k.noi.split(' ')[0], k.soDong, k.soDongThat])).toEqual([
-      ['noi-dung-mvp/thu-thach/c-loc-lop.md:5', 1, 1],
-      ['noi-dung-mvp/thu-thach/c-ten-h.md:3', 2, 2],
-      ['noi-dung-mvp/thu-thach/c-ten-h.md:21', 2, 2],
-      ['noi-dung-mvp/kich-ban/00-mo-dau.md:92', 3, 3],
-      ['noi-dung-mvp/kich-ban/06-hop-va-ket.md:8', 14, 14],
+    // So theo tệp (bỏ số dòng): viết lại lời thoại phía trên chỉ dẫn không được làm test đỏ oan.
+    expect(chay.ketQua.map((k) => [(k.noi.split(' ')[0] ?? '').replace(/:\d+$/, ''), k.soDong, k.soDongThat])).toEqual([
+      ['noi-dung-mvp/thu-thach/c-loc-lop.md', 1, 1],
+      ['noi-dung-mvp/thu-thach/c-ten-h.md', 2, 2],
+      ['noi-dung-mvp/thu-thach/c-ten-h.md', 2, 2],
+      ['noi-dung-mvp/kich-ban/00-mo-dau.md', 3, 3],
+      ['noi-dung-mvp/kich-ban/06-hop-va-ket.md', 14, 14],
     ]);
   });
 });
