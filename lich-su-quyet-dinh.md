@@ -443,3 +443,64 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Tệp `prompts-background-prototype-v0.1.md` (bộ prompt tạo 3 ảnh cảnh nền + 1 ảnh neo phong cách) xuất hiện ở gốc repo lúc 18:33, không do agent nào tạo — coi là tài liệu của user. Gói hình/giao diện sẽ nhận ảnh nền thật theo đúng id trong tệp đó, dùng hình SVG tạm khi chưa có ảnh.
 - GDD v0.5 ghi Hà Vy "không biết SQL"; prototype để Hà Vy hướng dẫn từng bước và đưa gợi ý mức 3 gần như đáp án (QĐ-021, tài liệu prototype ghi Hà Vy "gợi ý cách đọc dữ liệu"). Cần cập nhật GDD sau vòng test.
 - Lời thoại viết cứng số liệu (10 người, 24 người, 40 sinh viên, 8 lớp): QĐ-010/QĐ-012 là nguồn; test dataset (gói 3) và test nội dung (gói 5) phải khẳng định các số này.
+
+**QĐ-071 — Màn thử thách thành "bàn làm việc thám tử"; bỏ chấm đúng/sai khi chạy (QUYẾT ĐỊNH CỦA USER).** · Nguồn: USER, kèm ảnh mẫu "Phòng dữ liệu" · 27/09
+- **Bố cục:** mọi thứ nằm trong một màn, không cuộn. Phần ngoài (bàn, tường, viền màn hình máy tính) là **ảnh**. Lòng màn hình dựng bằng HTML/CSS: bên trái là trình dựng truy vấn và câu SQL, bên phải là bảng kết quả, dưới cùng là khay lưu. Khi màn hình ≤ 1100 px thì bỏ ảnh, dùng giao diện phẳng (QĐ-055).
+- **Manh mối là giấy note** dán quanh màn hình, dựng bằng HTML vì phải đổi theo tiến trình. Người chơi **kéo note thả vào ô giá trị** của điều kiện WHERE. Cách thay thế: bấm note rồi bấm ô cần điền, dùng cho bàn phím và những ai không kéo được. Kết quả lưu từ thử thách trước cũng thành note (ví dụ danh sách lớp tòa B ở c2 → dùng cho `IN` ở c3). Điều này bổ sung cho QĐ-017.
+- **Không báo đúng/sai khi chạy** (sửa QĐ-018): chỉ hiện bảng kết quả và số dòng. Lời của Hà Vy chỉ **mô tả** kết quả đang thấy (ví dụ "Đây là cả bảng, chưa lọc gì"), không phán xét. Máy vẫn chấm ngầm (có dataset ẩn, QĐ-015/019) để ghi telemetry và dùng ở chốt soát.
+- **Lưu kết quả:** nếu kết quả là một giá trị (bước trung gian tìm dữ kiện) thì người chơi **chọn đúng 1 dòng**. Nếu kết quả ra nhiều dòng thì chỉ có **"Lưu cả kết quả"**. Với nội dung hiện tại, c1, c2, c3 đều là "lưu cả".
+- **Chốt soát hồ sơ trước phần Giải trình:** Hà Vy soát hồ sơ theo kiểu đối soát nghiệp vụ, so từng mục với dữ kiện ("Mục này không khớp với dữ kiện chữ ký 'H.'"), không dùng chữ đúng/sai. Nếu có mục lệch thì mở lại đúng thử thách đó. Đây là chỗ duy nhất người chơi biết mình ghi sai.
+- **Hà Vy thành khung chat ở góc dưới bên phải:** bình thường thu gọn thành avatar có chấm báo tin mới. Cô ấy tự lên tiếng khi có lý do: hướng dẫn từng bước ở c1 (QĐ-021), lần đầu kéo note, người chơi ngồi yên khoảng 40 giây, hoặc chạy ra cùng một mã chẩn đoán 2–3 lần. Nút "Hỏi Hà Vy" giữ gợi ý 3 cấp (QĐ-020). Bố cục chừa sẵn chỗ để khung chat không che bảng kết quả.
+- **Câu hỏi đọc kết quả (QĐ-023):** chưa đổi, xem lại khi làm gói này.
+- **Hoãn:** thêm bước trung gian mới (khoa nào, khung giờ nào…) cần bảng dữ liệu mới, chỉ làm khi có nhu cầu.
+- Mockup: `docs/mockups/ban-lam-viec-thu-thach.html`.
+
+**QĐ-072 — Đổi thứ tự thử thách để người chơi thắng nhanh ngay đầu; người chơi tự ghi và dán note; Hà Vy ngồi cạnh (QUYẾT ĐỊNH CỦA USER).** · Nguồn: USER, góp ý mockup QĐ-071 · 28/09
+- **Nhịp độ:** đầu game làm đơn giản để người chơi thắng nhanh, chỉ dùng `=` và `LIKE`. `IN` dời sang **vài màn ở giữa**, thiết kế sau; các màn này cũng giúp tăng thời lượng chơi.
+- **Thứ tự mới:**
+  - **Thử thách 1 — Lớp nào ở giảng đường B?** Hà Vy dẫn từng bước. FROM (`lop_sinh_hoat`) và SELECT (`ma_lop`) được **chọn sẵn và khóa**, người chơi chỉ làm WHERE: chọn cột `toa_nha`, phép "bằng", kéo note "B" vào → chạy → ghi thành note → dán lên tường. Ở màn này phép so sánh chỉ có "bằng".
+  - **Thử thách 2 — Ai có tên bắt đầu bằng H?** Người chơi **tự làm**, dựng cả FROM, SELECT và WHERE. Hà Vy chỉ nói một câu mở đầu, còn lại chờ người chơi hỏi mới gợi ý.
+  - Tiếp theo là các màn `IN` (sẽ thiết kế), rồi đến màn ghép ba manh mối.
+  - Thay QĐ-021 (Hà Vy dẫn ở c1 nay áp dụng cho câu hỏi lớp tòa B) và thứ tự c1/c2 trong `docs/kich-ban-prototype.md`. Khi làm code phải sửa theo: ana-01, ana-c2-intro, câu hỏi đọc kết quả của hai thử thách, và câu "Thử thách 1 ra mười người tên H" trong phản hồi q-c3-read.
+- **Ghi dữ kiện:** bấm "Ghi thành dữ kiện" → **nhân vật chính viết tay** lên một tờ note trắng, chữ hiện dần, nội dung lấy từ kết quả người chơi đã chạy (kể cả khi kết quả sai) → người chơi **kéo note dán lên tường** (hoặc bấm "Dán lên tường"). Note đã dán dùng được ở thử thách sau như các manh mối khác. Hà Vy chỉ hướng dẫn thao tác này ở lần đầu.
+- **Hà Vy ngồi cạnh, không nhắn tin** (sửa ý "khung chat" của QĐ-071): lý do là cảnh Phân tích diễn ra ở `clb-room`, Hà Vy có mặt, và cả game là visual novel. Hiển thị ảnh bán thân ở góc dưới bên phải, bên ngoài màn hình máy tính, lời thoại trong bong bóng kiểu hộp thoại VN. Khi im lặng cô ấy thu xuống, chỉ còn đầu và vai; bấm vào thì mở gợi ý 1 → 2 → 3. Có một "sổ" nhỏ để xem lại các câu đã nói. Biểu cảm đổi theo tình huống (neutral / thinking / smile). Kiểu nhắn tin để dành cho cảnh có nhân vật vắng mặt.
+
+**QĐ-073 — Vòng thử thách chính chỉ dạy WHERE + AND/OR; "Báo chí" thành ngành; Tùng đoán bừa OR ở thử thách 1 (sửa theo QĐ-074) (QUYẾT ĐỊNH CỦA USER).** · Nguồn: USER, góp ý mockup QĐ-072 · 28/09
+- **Phạm vi học của vòng chính:** chỉ WHERE, `=`/`LIKE` và AND/OR. FROM và SELECT **khóa sẵn ở cả hai thử thách**. `IN` và màn ghép ba manh mối rời khỏi mạch chính, để dành cho màn phụ sau này.
+- **Dữ liệu (user cho sửa thoải mái):**
+  - Bookmark là của **ngành** Báo chí – Truyền thông (cột `nganh`), không còn là CLB Báo chí.
+  - Bảng `lop_sinh_hoat` có thêm `BC24A` (Báo chí, tòa B) và `BC24B` (Báo chí, tòa C).
+  - **Hiếu và Hoài cùng học lớp BC24A.**
+  - Ở tòa B có 3 lớp (KT24A, QT24B, BC24A). Lọc `toa_nha='B' OR nganh='Báo chí'` ra 4 lớp; lọc bằng AND ra 1 lớp (BC24A).
+  - Có đúng 10 người tên bắt đầu bằng H, trong đó 2 người ở BC24A.
+  - Bẫy dữ liệu: Hồng (tên H) học BC24B, nên lọc `ma_lop LIKE 'BC%'` sẽ lẫn Hồng; Hồ Ngọc Mai có họ đệm bắt đầu bằng H và học BC24A.
+  - Câu OR của Quân ở phần Giải trình (`ten LIKE 'H%' OR ma_lop='BC24A'`) ra 14 người.
+  - Cột `clb` bỏ khỏi phần người chơi thấy.
+  - Thay QĐ-010 → QĐ-013 ở những điểm trên; khi làm code phải tính lại test bất biến và dataset ẩn.
+- **Thử thách 1 — Lớp nào khớp cả hộp góp ý lẫn bookmark?** Hà Vy dẫn, **Tùng có mặt** (ban đầu ghi là Quân, đã sửa theo QĐ-074):
+  1. `toa_nha = 'B'` → 3 lớp. Hà Vy: "bookmark còn nói gì nữa?"
+  2. Tùng chen vào, tự thêm dòng `nganh` và chọn **OR** ("Tớ cá là cứ OR vào, tòa B hoặc Báo chí"). Người chơi kéo note "Báo chí" vào rồi chạy → 4 lớp, nhiều hơn lần đầu.
+  3. Tùng: "Ơ… thêm manh mối mà ra nhiều hơn? Tớ cá là máy lỗi." → Hà Vy: "Đừng cá. Đếm." và giải thích OR là thỏa bất kỳ, AND là thỏa đồng thời.
+  4. Người chơi đổi sang AND → 1 lớp **BC24A**. Tùng nhận là mình đoán sai.
+  5. Người chơi ghi note BC24A và dán lên tường. Tùng ngồi lại, thu gọn ở góc.
+  - Hà Vy không bao giờ cố ý dẫn sai; người đoán sai là Tùng, đúng tính "hay đoán bừa".
+- **Thử thách 2 — Ai tên bắt đầu bằng H trong lớp BC24A?** Người chơi **tự làm**: kéo note "H" và note "BC24A", tự chọn phép nối → 2 người (Hiếu, Hoài). Không báo đúng/sai (QĐ-071).
+- **Phần Giải trình:** giữ lỗi OR của Quân (QĐ-024). Người chơi đã học AND/OR ở thử thách 1 nên tự bắt được lỗi, theo tinh thần "học rồi thì tự áp dụng".
+- **Hiển thị Tùng:** ảnh bán thân ở góc dưới bên trái, trượt vào khi có thoại, có bong bóng riêng; khi im lặng thu xuống giống Hà Vy.
+- Phải sửa theo quyết định này: `docs/kich-ban-prototype.md` (inv-box, clue bookmark, ana-*, c1/c2, debrief-fix, deb-01…03), `src/sql-challenge/data/*`, các mã chẩn đoán và test.
+
+**QĐ-074 — Bộ ba Tùng, người chơi, Hà Vy; Tùng vào CLB và là người kéo người chơi vào (QUYẾT ĐỊNH CỦA USER).** · Nguồn: USER, khi chỉ ra mockup QĐ-073 đặt Quân sai vai · 28/09
+- **Sự cố:** mockup QĐ-073 cho Quân ngồi trong phòng CLB, xưng "tớ" và đoán bừa OR. Sai kịch bản: Quân là người của **Ban Pháp chế – Kiểm tra Hội sinh viên**, xưng "tôi", chỉ gặp CLB lần đầu ở phần Giải trình (deb-01). Nguyên nhân: điều phối viên lấy bảng persona dán trong phiên ("Quân phụ trách trích xuất dữ liệu, hấp tấp") mà không đối chiếu kịch bản. **Bảng persona đó lệch với kịch bản ở vai Quân; kịch bản là chuẩn.**
+- **Chọn:** người đoán sai OR ở thử thách 1 là **Tùng**. Quân giữ nguyên vai ở phần Giải trình; lỗi OR của Quân vẫn là khoảnh khắc chính ở đó, lúc này người chơi đã học AND/OR nên tự bắt được.
+- **Bộ ba chính** (kiểu Harry Potter): **Tùng** (hay đoán bừa, vui tính, trung thành) · **người chơi** (ở giữa, tự làm và tự ghi dữ kiện) · **Hà Vy** (kỹ tính, "Khoan, đếm lại đã.", "Đừng cá. Đếm."). Minh Anh là chủ nhiệm, đứng ngoài bộ ba.
+- **Tùng vào CLB và là người kéo người chơi vào.** Phải viết lại intro-00 (Tùng không còn chỉ đường rồi đi uống trà mà rủ, thậm chí lôi người chơi vào CLB) và intro-01 (số người của CLB: câu "Giờ còn ba người, tính cả cậu" phải đổi). Thay phần cameo của Tùng trong `vu-tru-hoa-phuong-tong-quan.md` cho dòng SQL.
+- **Xưng hô của Tùng:** giữ "tớ/cậu" như intro-00. Câu cửa miệng đổi thành **"Tớ cá là…"** (QĐ-070 ghi "Tui cá là…"; chữ "tui" lệch với "tớ"). Cặp thoại với Hà Vy: Tùng "Tớ cá là…" / Hà Vy "Đừng cá. Đếm."
+- Ở các màn thử thách, Tùng ngồi góc dưới bên trái, Hà Vy góc dưới bên phải; người chơi là người ngồi trước máy.
+
+**QĐ-075 — Chuẩn hóa nội dung: một nguồn, bốn loại hội thoại, biến SQL (QUYẾT ĐỊNH CỦA USER).** · Nguồn: USER · 28/09
+- **Một nguồn cho mỗi loại nội dung.** Kịch bản viết bằng Markdown theo quy ước; nhân vật, cảnh, biến, dữ liệu viết bằng YAML. Bộ đọc chạy khi build và sinh dữ liệu cho game. Bỏ các file `.ts` chép tay và test so khớp hai chiều.
+- **Làm chuẩn hóa trước**, dùng nguyên nội dung hiện tại (game chạy y hệt, test xanh), rồi mới viết lại nội dung theo QĐ-071 → QĐ-074.
+- **Bốn loại hội thoại:** (1) thường, có điều kiện kích hoạt (bấm vào đâu, ở cảnh nào…); (2a) lựa chọn kiểm tra hiểu, có đúng/sai, cho chọn lại; (2b) lựa chọn rẽ nhánh, không có đúng/sai, chọn là chốt, dùng để kích hoạt hoặc chia route; (3) hội thoại trong màn thử thách, gắn với sự kiện của màn truy vấn.
+- **Biến SQL:** mọi con số, mã, danh sách nhắc đến trong lời thoại (cả ba loại) đều là biến, định nghĩa bằng câu SQL trên dữ liệu của lượt chơi. Dữ liệu sinh theo seed, gồm phần cố định (nhân vật truyện, các nhịp truyện) và phần đệm ngẫu nhiên (tên, mã lớp, dữ liệu gây nhiễu). Mọi ràng buộc được viết bằng SQL; khi build, máy chạy thử nhiều seed và kiểm tra hết.
+- **Tạm dùng một seed cố định** (QĐ-032 vẫn gác phần ngẫu nhiên cho người chơi); bật ngẫu nhiên sau.
+- Đặc tả: `docs/dac-ta-dinh-dang-noi-dung.md`.

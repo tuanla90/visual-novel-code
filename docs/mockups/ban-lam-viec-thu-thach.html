@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bàn làm việc thám tử</title>
+<!-- Mockup QĐ-071 + QĐ-072: màn thử thách dạng "bàn làm việc". Dữ liệu chép từ prototype/src/sql-challenge/data. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{
+  --screen-bg:#f6f1e4; --screen-panel:#fffaf0; --ink:#1f2328; --ink-soft:#57606a; --line:#ded4bd;
+  --accent:#9f2d20; --accent-ink:#fff; --teal:#0f5c55; --teal-soft:#dff0ec;
+  --code-bg:#172a36; --code-ink:#e6edf3; --kw:#7cc4ff; --str:#f2c572;
+  --note-y:#fbe38e; --note-p:#f8c7cf; --note-b:#bfe3f2; --note-g:#cdeac0; --note-w:#fdfbf4;
+  --focus:#1d4ed8;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#1b1512;font-family:"Be Vietnam Pro",system-ui,sans-serif;color:var(--ink);overflow:hidden}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+
+/* ---- thanh điều khiển mockup (không thuộc game) ---- */
+#mock-bar{position:fixed;top:0;left:0;right:0;height:36px;display:flex;gap:6px;align-items:center;padding:0 10px;background:#000c;color:#eee;font-size:13px;z-index:50;white-space:nowrap;overflow-x:auto}
+#mock-bar b{color:#fbbf24;margin-right:6px}
+#mock-bar button{background:#333;border:1px solid #555;border-radius:4px;padding:3px 9px;cursor:pointer}
+#mock-bar button[aria-pressed=true]{background:#fbbf24;color:#111;border-color:#fbbf24}
+#mock-bar .sep{width:1px;height:20px;background:#555;margin:0 4px;flex:none}
+
+/* ---- sân khấu 1600×900, co giãn vừa khung ---- */
+#viewport{position:fixed;inset:36px 0 0 0;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform-origin:center}
+
+/* Ảnh nền tạm: tường bần + bàn gỗ + viền màn hình. Sẽ thay bằng 1 ảnh 16:9 có lòng màn hình phẳng. */
+.bg{position:absolute;inset:0;border-radius:6px;overflow:hidden;
+  background:
+   linear-gradient(#0000 0 800px,#5b3a24 800px 804px,#7a4e30 804px),
+   radial-gradient(circle at 20% 30%,#b58a5c 0 1px,#0000 2px) 0 0/14px 14px,
+   radial-gradient(circle at 70% 60%,#9c7248 0 1px,#0000 2px) 0 0/19px 19px,
+   linear-gradient(#a57c52,#8c653f)}
+.bg::after{content:"ẢNH NỀN TẠM — sẽ thay bằng ảnh (bàn, tường, viền màn hình)";position:absolute;left:12px;bottom:8px;font-size:12px;color:#fff9;letter-spacing:.3px}
+.bezel{position:absolute;left:176px;top:26px;width:1168px;height:752px;border-radius:18px;background:linear-gradient(#34383d,#23262a);box-shadow:0 18px 40px #0008,inset 0 0 0 2px #454a50}
+.bezel::after{content:"SCH-17";position:absolute;bottom:4px;left:0;right:0;text-align:center;font:600 11px "JetBrains Mono";color:#7d848c;letter-spacing:2px}
+.stand{position:absolute;left:690px;top:776px;width:140px;height:40px;background:linear-gradient(#2a2d31,#1c1e21);clip-path:polygon(20% 0,80% 0,100% 100%,0 100%)}
+
+/* ---- lòng màn hình (HTML thật) ---- */
+#screen{position:absolute;left:196px;top:44px;width:1128px;height:704px;border-radius:6px;background:var(--screen-bg);display:grid;grid-template-rows:40px auto 1fr;overflow:hidden}
+.titlebar{display:flex;align-items:center;gap:10px;padding:0 14px;background:#1d2b36;color:#f3ead7;font-weight:600;letter-spacing:.5px;font-size:14px}
+.titlebar .dot{width:18px;height:18px;border-radius:4px;background:#c9a24a;display:grid;place-items:center;color:#1d2b36;font-size:11px}
+.titlebar .sp{flex:1}
+.titlebar .sess{font:400 12px "JetBrains Mono";color:#9fb3c2}
+.brief{padding:10px 18px 8px;border-bottom:1px solid var(--line);background:var(--screen-panel)}
+.brief h1{margin:0 0 2px;font-size:19px}
+.brief p{margin:0;font-size:14px;color:var(--ink-soft);line-height:1.45}
+.body{display:grid;grid-template-columns:400px 1fr;min-height:0}
+
+/* trình dựng */
+.builder{border-right:1px solid var(--line);padding:12px 14px;display:flex;flex-direction:column;gap:10px;min-height:0;overflow:auto}
+.step{border:1px solid var(--line);border-left:4px solid #b9ad92;border-radius:6px;background:var(--screen-panel);padding:8px 10px}
+.step .lab{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-soft);margin-bottom:6px}
+.step .lab b{font:600 12px "JetBrains Mono";color:var(--teal)}
+.step.locked{background:#f1ece0;border-left-color:#d6ccb6}
+.step.locked .fixed{font:13px "JetBrains Mono";display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.step.locked .fixed span{background:#e6ddc9;border-radius:4px;padding:2px 8px}
+.step.locked .fixed small{font-family:"Be Vietnam Pro";color:var(--ink-soft)}
+.step.focus{border-left-color:var(--accent)}
+.guide-hl{box-shadow:0 0 0 3px #f5c542;border-radius:6px;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 5px #f5c54288}}
+select,input.val{border:1px solid #cbbf9f;border-radius:5px;background:#fff;padding:5px 7px;font-size:13px;min-height:32px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid #cbbf9f;border-radius:999px;padding:3px 10px;font:13px "JetBrains Mono";background:#fff;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--teal);color:#fff;border-color:var(--teal)}
+.cond{display:grid;grid-template-columns:98px 116px 1fr 26px;gap:5px;align-items:center;margin-bottom:6px}
+.cond .x{border:0;background:none;cursor:pointer;color:var(--ink-soft);font-size:16px}
+.slot input{width:100%}
+.slot.drop-hot input{outline:3px dashed #e0a100;outline-offset:1px;background:#fff8dc}
+.slot.armed input{background:#fff8dc}
+.conn{display:flex;align-items:center;gap:6px;margin:-2px 0 6px 0;font-size:12px;color:var(--ink-soft)}
+.conn select{min-height:26px;padding:2px 6px;font:600 12px "JetBrains Mono"}
+.conn select.unset{border-color:#e0a100;background:#fff8dc}
+.add{border:1px dashed #b9ad92;border-radius:5px;background:none;padding:4px 10px;font-size:13px;cursor:pointer;color:var(--ink-soft)}
+.sql{background:var(--code-bg);color:var(--code-ink);border-radius:6px;padding:9px 11px;font:13px/1.55 "JetBrains Mono";white-space:pre-wrap;min-height:74px}
+.sql .k{color:var(--kw);font-weight:600}.sql .s{color:var(--str)}
+.run{display:flex;gap:10px;align-items:center;padding:2px}
+.btn{border:0;border-radius:6px;padding:9px 16px;font-weight:600;cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn:disabled{background:#c9bfae;color:#fff;cursor:not-allowed}
+.btn.ghost{background:none;border:1px solid #b9ad92;color:var(--ink)}
+.run small{color:var(--ink-soft);font-size:12px}
+
+/* kết quả */
+.results{display:grid;grid-template-rows:auto 1fr auto;min-height:0}
+.rhead{display:flex;justify-content:space-between;align-items:baseline;padding:10px 16px 6px}
+.rhead h2{margin:0;font-size:15px}
+.rhead span{font:600 13px "JetBrains Mono";color:var(--teal)}
+.tablewrap{overflow:auto;margin:0 16px;border:1px solid var(--line);border-radius:6px;background:#fff;align-self:start;max-height:100%}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{position:sticky;top:0;background:#efe7d4;text-align:left;font:600 12px "JetBrains Mono";padding:6px 10px;border-bottom:1px solid var(--line)}
+td{padding:5px 10px;border-bottom:1px solid #f0eadb}
+td.mono{font-family:"JetBrains Mono";font-size:12.5px}
+td.pick{width:34px}
+tr.sel td{background:var(--teal-soft)}
+.empty{padding:40px 20px;text-align:center;color:var(--ink-soft);font-size:14px}
+.tray{display:flex;align-items:center;gap:12px;margin:10px 16px 12px;padding:9px 12px;border:1px solid var(--line);border-radius:6px;background:var(--screen-panel)}
+.tray .t{flex:1;font-size:13px;color:var(--ink-soft)}
+.tray .t b{color:var(--ink)}
+
+/* ---- giấy note trên tường ---- */
+#wall{position:absolute;left:8px;top:30px;width:162px;height:760px;display:flex;flex-direction:column;gap:16px;padding:6px;border-radius:8px}
+#wall.drop-hot{outline:3px dashed #fde68a;outline-offset:2px;background:#fff2}
+.note{position:relative;display:block;width:150px;min-height:92px;padding:16px 11px 9px;border:0;text-align:left;cursor:grab;
+  font-family:"Patrick Hand",cursive;color:#2a2418;box-shadow:2px 5px 10px #0005;transform:rotate(var(--r,-2deg));touch-action:none;user-select:none}
+.note::before{content:"";position:absolute;top:-7px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff7b6b,#b3261e);box-shadow:0 2px 3px #0006}
+.note .k{display:block;font-size:15px;opacity:.75}
+.note .v{display:block;font-size:24px;line-height:1.05;margin-top:2px;word-break:break-word}
+.note .src{display:block;font-size:13px;opacity:.65;margin-top:4px}
+.note.mine{background:var(--note-w)}
+.note.mine .by{position:absolute;right:8px;bottom:4px;font-size:12px;opacity:.55}
+.note.armed{outline:3px solid var(--focus);outline-offset:3px}
+.note.fresh{animation:pop .5s ease-out}
+.note[data-val=""]{cursor:default}
+@keyframes pop{from{transform:scale(.6) rotate(8deg);opacity:0}}
+.ghost{position:fixed;pointer-events:none;z-index:60;opacity:.92;transform:rotate(4deg) scale(.95)}
+
+/* ---- nghi thức ghi note: nhân vật chính viết tay ---- */
+#writer{position:absolute;inset:0;z-index:20;display:grid;place-items:center;background:#0006}
+#writer[hidden]{display:none}
+.wbox{display:flex;flex-direction:column;align-items:center;gap:14px}
+.wnote{width:300px;min-height:200px;padding:26px 20px 16px;background:var(--note-w);box-shadow:4px 10px 24px #0008;transform:rotate(-2deg);font-family:"Patrick Hand",cursive;color:#1f2a44;cursor:grab;touch-action:none;user-select:none;position:relative}
+.wnote .k{font-size:20px;opacity:.75;min-height:26px}
+.wnote .v{font-size:36px;line-height:1.1;min-height:44px;word-break:break-word}
+.wnote .src{font-size:16px;opacity:.6;margin-top:10px}
+.wnote .caret{display:inline-block;width:2px;height:1em;background:#1f2a44;vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.wnote .pen{position:absolute;right:-26px;bottom:18px;font-size:34px;transform:rotate(-20deg)}
+.wcap{color:#fff;font-size:15px;text-shadow:0 1px 3px #000;text-align:center;max-width:420px}
+.wbtns{display:flex;gap:10px}
+
+/* ---- Hà Vy ngồi cạnh (bán thân, ngoài màn hình) ---- */
+#havy{position:absolute;right:0;bottom:0;width:262px;height:900px;pointer-events:none}
+#havy .bust{position:absolute;right:-6px;bottom:-4px;width:262px;pointer-events:auto;cursor:pointer;background:none;border:0;padding:0;
+  filter:drop-shadow(0 8px 16px #0008);transition:transform .45s cubic-bezier(.3,1.3,.5,1)}
+#havy .bust img{display:block;width:100%}
+#havy.quiet .bust{transform:translateY(58%)}
+#havy .tag{position:absolute;right:14px;bottom:10px;background:var(--teal);color:#fff;font-weight:700;font-size:13px;padding:3px 10px;border-radius:4px;pointer-events:none;transition:opacity .3s}
+#havy.quiet .tag{opacity:0}
+.bubble{position:absolute;right:10px;bottom:372px;width:244px;background:#fffdf7;border:2px solid var(--teal);border-radius:12px;padding:10px 12px 10px;font-size:14px;line-height:1.5;box-shadow:0 8px 18px #0006;pointer-events:auto;transition:opacity .3s,transform .3s}
+.bubble::after{content:"";position:absolute;right:92px;bottom:-12px;border:10px solid transparent;border-top-color:var(--teal);border-bottom:0}
+.bubble .who{font-weight:700;color:var(--teal);font-size:13px;margin-bottom:2px;display:flex;justify-content:space-between}
+.bubble .who .ex{font-weight:400;color:var(--ink-soft);font-style:italic}
+.bubble.hide{opacity:0;transform:translateY(8px);pointer-events:none}
+#havy.quiet .bubble{bottom:170px}
+#havy.quiet .bubble::after{display:none}
+.hv-tools{position:absolute;right:12px;top:40px;display:flex;gap:6px;pointer-events:auto}
+.hv-tools button{background:#fffdf7;border:1px solid #b9ad92;border-radius:6px;padding:5px 9px;font-size:13px;cursor:pointer;box-shadow:0 2px 6px #0004}
+.log{position:absolute;right:12px;top:78px;width:240px;max-height:360px;overflow:auto;background:#fffdf7;border-radius:8px;box-shadow:0 8px 18px #0007;padding:8px 10px;pointer-events:auto;font-size:13px}
+.log[hidden]{display:none}
+.log p{margin:0 0 6px;padding-bottom:6px;border-bottom:1px solid #eee}
+.log h4{margin:0 0 6px;font-size:13px;color:var(--teal)}
+
+/* ---- màn soát hồ sơ ---- */
+.audit{padding:14px 18px;overflow:auto;display:flex;flex-direction:column;gap:10px}
+.item{border:1px solid var(--line);border-radius:8px;background:#fff;padding:10px 14px;display:grid;grid-template-columns:1fr auto;gap:4px 14px}
+.item h3{margin:0;font-size:15px}
+.item .meta{font:12px "JetBrains Mono";color:var(--ink-soft)}
+.item .st{grid-row:1 / span 3;grid-column:2;align-self:center;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:#eee}
+.item .st.ok{background:#e3f1e3;color:#1e6b33}.item .st.bad{background:#fde8d3;color:#8a3b00}.item .st.wait{background:#eef1f4;color:#57606a}
+.item ul{margin:4px 0 0;padding-left:18px;font-size:13px;color:#6b3a0a}
+
+/* ---- Tùng: ngồi góc dưới bên trái; trượt lên khi nói, thu xuống khi im ---- */
+#tung{position:absolute;left:0;bottom:0;width:250px;height:900px;pointer-events:none;z-index:15}
+#tung .bust{position:absolute;left:-8px;bottom:-4px;width:250px;filter:drop-shadow(0 8px 16px #0008);transform:translateX(-110%);transition:transform .5s cubic-bezier(.3,1.2,.5,1)}
+#tung .bust img{display:block;width:100%}
+#tung.on .bust{transform:none}
+#tung.quiet .bust{transform:translateY(62%)}
+#tung .bubble{left:8px;right:auto;width:178px;font-size:13.5px;border-color:#c2410c;bottom:330px}
+#tung .bubble::after{left:70px;right:auto;border-top-color:#c2410c}
+#tung .bubble .who{color:#c2410c}
+.conn select.guide-hl{animation:pulse 1.6s ease-in-out infinite}
+</style>
+</head>
+<body>
+<div id="mock-bar" aria-label="Điều khiển mockup">
+  <b>MOCKUP</b>
+  <button data-go="c1">1 · Lớp nào? (Hà Vy dẫn, Tùng đoán bừa)</button><button data-go="c2">2 · Ai tên H trong lớp đó? (tự làm)</button>
+  <button data-go="audit">Soát hồ sơ</button>
+  <span class="sep"></span>
+  <button id="toggle-pick" aria-pressed="false" title="Xem giao diện bước tìm dữ kiện: chọn đúng 1 dòng">Kiểu lưu: chọn 1 dòng</button>
+  <button id="autofill">Điền nhanh đáp án</button>
+  <button id="reset">Chơi lại từ đầu</button>
+</div>
+
+<div id="viewport"><div id="stage">
+  <div class="bg"></div><div class="bezel"></div><div class="stand"></div>
+
+  <div id="wall" aria-label="Tường ghim manh mối"></div>
+
+  <section id="screen" aria-label="Màn hình máy tính CLB">
+    <div class="titlebar"><span class="dot">◆</span>PHÒNG DỮ LIỆU<span class="sp"></span><span class="sess">Phiên truy cập 00:11</span></div>
+    <div class="brief"><h1 id="ch-title"></h1><p id="ch-brief"></p></div>
+    <div class="body" id="body"></div>
+  </section>
+
+  <aside id="havy" class="quiet" aria-label="Hà Vy ngồi cạnh">
+    <div class="hv-tools"><button id="log-btn" aria-expanded="false">📓 Sổ lời Hà Vy</button></div>
+    <div class="log" id="log" hidden><h4>Hà Vy đã nói</h4><div id="log-list"></div></div>
+    <div class="bubble hide" id="bubble" aria-live="polite"><div class="who"><span>Hà Vy</span><span class="ex" id="ex"></span></div><div id="say"></div></div>
+    <button class="bust" id="bust" aria-label="Hỏi Hà Vy (gợi ý)"><img src="havy-bust.png" alt="Hà Vy"></button>
+    <span class="tag">Hà Vy · bấm để hỏi</span>
+  </aside>
+
+  <aside id="tung" aria-label="Tùng">
+    <div class="bubble hide" id="q-bubble" aria-live="polite"><div class="who"><span>Tùng</span><span class="ex" id="q-ex"></span></div><div id="q-say"></div></div>
+    <div class="bust"><img src="tung-bust.png" alt="Tùng"></div>
+  </aside>
+
+  <div id="writer" hidden>
+    <div class="wbox">
+      <div class="wcap" id="wcap">Bạn ghi lại kết quả…</div>
+      <div class="wnote" id="wnote"><div class="k" id="wk"></div><div class="v" id="wv"></div><div class="src" id="wsrc"></div><span class="pen">✒️</span></div>
+      <div class="wbtns"><button class="btn" id="pin" disabled>📌 Dán lên tường</button><button class="btn ghost" id="wcancel" style="color:#fff;border-color:#fff8">Để sau</button></div>
+    </div>
+  </div>
+</div></div>
+
+<script src="ban-lam-viec-thu-thach.js"></script>
+</body>
+</html>
