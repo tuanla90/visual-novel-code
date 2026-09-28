@@ -21,17 +21,17 @@
 - **minh-anh** (neutral): Vẫn chỉ là khả năng thôi. Nhưng là khả năng đáng thử trước.
 - [DÀN DỰNG] Vì sao giữ manh mối này: nó quyết định cấu trúc truy vấn — lọc cột `ten` (không phải `ho_dem`) bằng phép "bắt đầu bằng" (`LIKE 'H%'`); đây là điều kiện của c1 và điều kiện đầu tiên của c3. Sau chuỗi này, mục "Từ manh mối" của trình dựng có giá trị `H`.
 - **minh-anh** (neutral): Thư lấy ra từ hộp góp ý sáng nay. Mà trường có ba hộp, ở ba giảng đường.
-- **ha-vy** (neutral): Bác Tư lao công sáng nào cũng đi cả ba tòa. Hỏi bác là nhanh nhất.
+- **ha-vy** (neutral): {{nv.bac-tu}} lao công sáng nào cũng đi cả ba tòa. Hỏi bác là nhanh nhất.
 
 > NHIỆM VỤ: Tìm hộp góp ý đã chứa lá thư
 
 ### inv-02 — Hành lang giảng đường {scene: corridor-b}
 
-> NHIỆM VỤ: Hỏi bác Tư, xem xét hộp góp ý
+> NHIỆM VỤ: Hỏi {{nv.bac-tu.trong-cau}}, xem xét hộp góp ý
 
-- [DÀN DỰNG] Cảnh hành lang: bác Tư (chân dung nhỏ) đang lau sàn cạnh hộp góp ý. Biển "Giảng đường B" nhỏ trên tường, không nhấn mạnh. Hai điểm xem xét, chọn theo thứ tự nào cũng được.
-- **narrator**: Hành lang giảng đường. Bác Tư đang lau sàn cạnh một hộp góp ý.
-- [ĐIỂM XEM XÉT hs-bac-tu] nhãn: "Bác Tư" · mở manh mối: clue-box-building-b · chạy chuỗi: inv-bac-tu
+- [DÀN DỰNG] Cảnh hành lang: {{nv.bac-tu.trong-cau}} (chân dung nhỏ) đang lau sàn cạnh hộp góp ý. Biển "Giảng đường B" nhỏ trên tường, không nhấn mạnh. Hai điểm xem xét, chọn theo thứ tự nào cũng được.
+- **narrator**: Hành lang giảng đường. {{nv.bac-tu}} đang lau sàn cạnh một hộp góp ý.
+- [ĐIỂM XEM XÉT hs-bac-tu] nhãn: "{{nv.bac-tu}}" · mở manh mối: clue-box-building-b · chạy chuỗi: inv-bac-tu
 - [ĐIỂM XEM XÉT hs-box] nhãn: "Hộp góp ý" · mở manh mối: clue-bookmark-baochi · chạy chuỗi: inv-box
 - [ĐIỀU KIỆN QUA] cần: clue-signature-h, clue-box-building-b, clue-bookmark-baochi → nút "Nhiệm vụ tiếp theo →" sang ana-01
 

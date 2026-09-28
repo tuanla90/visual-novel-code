@@ -14,7 +14,8 @@ import { kiemNoiDung } from '../../../../tools/noi-dung/kiem.ts';
 import { docModelNapSan } from '../../../../tools/noi-dung/nap-san.ts';
 import { characterName } from '../../../shared/display-names';
 import { CHARACTER_IDS } from '../../../shared/ids';
-import { bangTenTam, TRUONG_TAM } from './nguon-ten';
+import { CHARACTER_PROFILES } from '../../../evidence/character-profiles';
+import { bangTenTam, tenTrongCau, TRUONG_TAM } from './nguon-ten';
 
 const BANG: BangTen = bangTenTam();
 
@@ -185,10 +186,13 @@ describe('truy vấn nạp sẵn (đặc tả 9.1)', () => {
 });
 
 describe('biến tên (đặc tả 10.4)', () => {
-  it('nguồn tạm = CHARACTER_NAMES của game; tên trường giữ tên cũ ở bước chuẩn hóa', () => {
+  it('nguồn tạm = CHARACTER_NAMES + họ tên hồ sơ nhân vật; tên trường giữ tên cũ ở bước chuẩn hóa', () => {
     expect(Object.keys(BANG.nv)).toEqual([...CHARACTER_IDS]);
-    for (const id of CHARACTER_IDS) expect(BANG.nv[id]).toEqual({ ten: characterName(id) });
+    for (const id of CHARACTER_IDS) {
+      expect(BANG.nv[id]).toEqual({ ten: characterName(id), 'ho-ten': CHARACTER_PROFILES[id].fullName, 'trong-cau': tenTrongCau(characterName(id)) });
+    }
     expect(BANG.truong).toEqual(TRUONG_TAM);
+    expect(TRUONG_TAM['ten-khong-tien-to']).toBe('Đại học Hoa Phượng');
   });
 
   it('thay đúng: mặc định dạng `ten`, dạng ghi rõ, tên trường', () => {
@@ -200,7 +204,7 @@ describe('biến tên (đặc tả 10.4)', () => {
 
   it('mã / dạng không tồn tại, mã giữ chỗ, biến lạ, ngoặc lẻ', () => {
     expect(thayBien('{{nv.khong-co}}', BANG).loi[0]).toMatch(/^biến "\{\{nv\.khong-co\}\}": không có nhân vật mã "khong-co"/);
-    expect(thayBien('{{nv.bac-tu.ho-ten}}', BANG).loi).toEqual(['biến "{{nv.bac-tu.ho-ten}}": nhân vật "bac-tu" không có dạng tên "ho-ten" (có: ten)']);
+    expect(thayBien('{{nv.bac-tu.biet-danh}}', BANG).loi).toEqual(['biến "{{nv.bac-tu.biet-danh}}": nhân vật "bac-tu" không có dạng tên "biet-danh" (có: ten, ho-ten, trong-cau)']);
     expect(thayBien('{{nv.nguoi-choi}}', BANG).loi[0]).toContain('giữ chỗ');
     expect(thayBien('{{truong.ten}}', BANG).loi[0]).toContain('truong.ten-day-du, truong.ten-ngan');
     expect(thayBien('{{so-lop-toa-b}}', BANG).loi[0]).toContain('không tồn tại');

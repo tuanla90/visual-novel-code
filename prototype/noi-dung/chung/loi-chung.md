@@ -1,4 +1,4 @@
-### Ba câu gợi ý chuẩn (§5.2) — giọng Hà Vy
+### Ba câu gợi ý chuẩn (§5.2) — giọng {{nv.ha-vy}}
 
 - [GỢI Ý CHUẨN hint-any-or-all] **ha-vy** (thinking): Truy vấn này đang lấy cả người chỉ khớp một manh mối. Cậu muốn khớp bất kỳ, hay khớp đồng thời?
   - Dùng khi: c3 hoặc debrief-fix chạy với phép nối `OR` (mã `or-connector`). Không có ở c1, c2 vì chỉ có một điều kiện.

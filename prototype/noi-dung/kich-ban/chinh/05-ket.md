@@ -16,8 +16,8 @@
 
 > NHIỆM VỤ: Nghe nhân chứng kể lại
 
-- [DÀN DỰNG] Hoài xuất hiện lần đầu (một mẫu chân dung, ba biểu cảm), bước vào, ôm balo trước ngực. Không tiêu đề "lời khai", không nhạc thẩm vấn. Không ai gọi Hoài là thủ phạm.
-- **hoai** (nervous): Em là Hoài, lớp QT24B. Em… có làm gì sai không ạ?
+- [DÀN DỰNG] {{nv.hoai}} xuất hiện lần đầu (một mẫu chân dung, ba biểu cảm), bước vào, ôm balo trước ngực. Không tiêu đề "lời khai", không nhạc thẩm vấn. Không ai gọi {{nv.hoai}} là thủ phạm.
+- **hoai** (nervous): Em là {{nv.hoai}}, lớp QT24B. Em… có làm gì sai không ạ?
 - **minh-anh** (neutral): Không ai trách em cả. Bọn chị chỉ muốn biết lá thư từ đâu đến.
 - **hoai** (downcast): Em không viết thư đó. Em chỉ bỏ hộ thôi ạ.
 - **hoai** (downcast): Chiều thứ Sáu, một anh năm cuối đeo huy hiệu Robotics nhờ em. Anh ấy đang vội.
@@ -28,12 +28,12 @@
 
 ### end-03 — Khép buổi làm việc {scene: debrief-room}
 
-- [DÀN DỰNG] Bước 8 của QĐ-024. Hoài cúi chào rồi ra về trước khi Quân nói về người còn lại.
+- [DÀN DỰNG] Bước 8 của QĐ-024. {{nv.hoai}} cúi chào rồi ra về trước khi {{nv.quan}} nói về người còn lại.
 - **quan** (neutral): Bạn Hiếu, SV240228, không có trong sổ. Bạn ấy vô can, CTSV sẽ không liên hệ.
 - **quan** (neutral): Tìm được người bỏ thư chưa phải là tìm được người viết thư, CLB Thám Tử.
 - **ha-vy** (neutral): Chúng em biết.
 - **narrator**: Năm giờ chiều. Quyền xem dữ liệu của CLB hết hạn. Danh sách hai người được hủy.
-- [DÀN DỰNG] Thẻ ev-c1-names-h, ev-c3-shortlist và ev-quan-fixed được gắn chú thích sau giải trình (mục Hồ sơ vật chứng); tên và mã trong các thẻ bị làm mờ; nút mở trình dựng truy vấn bị khóa. Quân chứng kiến việc hủy.
+- [DÀN DỰNG] Thẻ ev-c1-names-h, ev-c3-shortlist và ev-quan-fixed được gắn chú thích sau giải trình (mục Hồ sơ vật chứng); tên và mã trong các thẻ bị làm mờ; nút mở trình dựng truy vấn bị khóa. {{nv.quan}} chứng kiến việc hủy.
 - [ĐẶT CỜ access-revoked]
 - [CHÚ THÍCH HỒ SƠ ev-c1-names-h · làm mờ]
 - [CHÚ THÍCH HỒ SƠ ev-c3-shortlist · làm mờ]

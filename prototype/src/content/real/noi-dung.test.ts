@@ -73,6 +73,39 @@ describe('luật nội dung trên dữ liệu sinh', () => {
   });
 });
 
+describe('tên riêng trong nguồn viết bằng biến {{nv.…}} / {{truong.…}} (đặc tả 10.4)', () => {
+  /**
+   * Ngoại lệ: tên sinh viên nằm trong DỮ LIỆU SQL (dòng kết quả truy vấn), không phải tên nhân vật trong
+   * lời — thành biến dữ liệu ở đợt 14 (cùng "Phạm Minh Hiếu", nhân vật chưa có mã).
+   */
+  const NGOAI_LE = ['Lê Thị Hoài'];
+  const bang = bangTenTam();
+  const TEN = [...new Set([...Object.values(bang.nv).flatMap((d) => Object.values(d)), ...Object.values(bang.truong)])]
+    .filter((t) => t.trim() !== '')
+    .sort((a, b) => b.length - a.length);
+
+  it('mọi tệp bộ đọc đọc (trừ quy-uoc.md): không còn tên nhân vật / tên trường viết trần', () => {
+    const tran: string[] = [];
+    for (const t of doc.tep.filter((x) => x.loai !== 'quy-uoc')) {
+      let trongMa = false;
+      t.noiDung.replace(/\r\n?/g, '\n').split('\n').forEach((dong, i) => {
+        if (dong.startsWith('```')) trongMa = !trongMa;
+        if (trongMa || dong.startsWith('```')) return;
+        let chu = dong.replace(/`[^`]*`/g, '').replace(/\{\{[^{}]*\}\}/g, '');
+        for (const n of NGOAI_LE) chu = chu.split(n).join('');
+        for (const ten of TEN) if (new RegExp(`(?<![\\p{L}])${ten}(?![\\p{L}])`, 'u').test(chu)) tran.push(`${t.duongDan}:${i + 1}: "${ten}"`);
+      });
+    }
+    expect(tran).toEqual([]);
+  });
+
+  it('dạng tên: trong-cau viết thường danh xưng; tên trường không tiền tố', () => {
+    expect(bang.nv['bac-tu']?.['trong-cau']).toBe((bang.nv['bac-tu']?.ten ?? '').replace(/^Bác /, 'bác '));
+    expect(bang.nv['ha-vy']?.['trong-cau']).toBe(bang.nv['ha-vy']?.ten);
+    expect(bang.truong['ten-day-du']).toBe(`Trường ${bang.truong['ten-khong-tien-to'] ?? ''}`);
+  });
+});
+
 describe('đặc tả engine (CHALLENGE_SPECS) khớp dòng của thẻ thử thách', () => {
   it.each([...CHALLENGE_IDS])('%s: SQL chuẩn, cột bắt buộc/khuyến khích, số dòng, dataset ẩn, nạp sẵn', (id) => {
     const card = script.challenges.find((c) => c.id === id);

@@ -14,6 +14,7 @@ import type { EvidenceId, PartId, QueryEvidenceId } from '../../shared/ids';
 import { CodeText } from '../../shared/ui/CodeText';
 import { resolvePortrait } from '../../shared/ui/visuals/art-slots';
 import type { SqlValue } from '../../sql-challenge/types';
+import { CHARACTER_PROFILES } from '../character-profiles';
 import { EVIDENCE_GROUP_LABELS, evidenceGroup, evidenceTitle } from '../labels';
 import { cardNoteForPart, type CardNote } from '../notebook';
 import type { EvidenceAnnotation, EvidenceGroup, SavedQueryEvidence } from '../types';
@@ -168,7 +169,7 @@ export function EvidenceNotebook({ open, onClose, content, part, unlocked, saved
                   </div>
                 </div>
                 <div className="inv-chara-art">
-                  {detectiveArt ? <img src={detectiveArt} alt="Lê Minh Anh" /> : null}
+                  {detectiveArt ? <img src={detectiveArt} alt={CHARACTER_PROFILES['minh-anh'].fullName} /> : null}
                 </div>
               </div>
               <div className="inv-stats-box">

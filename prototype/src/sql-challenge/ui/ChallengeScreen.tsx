@@ -10,7 +10,7 @@ import './challenge.css';
 import './terminal.css';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { SavedQueryEvidence } from '../../evidence/types';
-import { speakerLabel } from '../../shared/display-names';
+import { characterName, speakerLabel } from '../../shared/display-names';
 import type { ChallengeId } from '../../shared/ids';
 import { gameContent, useGameStore } from '../../shared/store';
 import { CodeText } from '../../shared/ui/CodeText';
@@ -470,7 +470,7 @@ function RunResultView({ outcome }: { outcome: RunOutcome }) {
           </strong>
         ) : (
           <strong className="result__count" role="status">
-            Câu này chưa chạy được nên chưa có bảng kết quả — xem nhận xét của Hà Vy.
+            Câu này chưa chạy được nên chưa có bảng kết quả — xem nhận xét của {characterName('ha-vy')}.
           </strong>
         )}
       </div>

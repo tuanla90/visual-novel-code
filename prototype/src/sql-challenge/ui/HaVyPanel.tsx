@@ -3,7 +3,7 @@
  * chạy. Lời lấy từ nội dung; nhãn nhỏ cho biết lời thuộc loại nào. Chữ mã hiển thị qua CodeText.
  */
 import { useState, type KeyboardEvent, type MouseEvent, type ReactNode } from 'react';
-import { speakerLabel } from '../../shared/display-names';
+import { characterName, speakerLabel } from '../../shared/display-names';
 import { CodeText } from '../../shared/ui/CodeText';
 import { resolvePortrait } from '../../shared/ui/visuals/art-slots';
 import type { DialogueLine } from '../../story/types';
@@ -53,7 +53,7 @@ export function HaVyPanel({ note, idle, actions, onAskHaVy, onAskKeyDown, askDis
           {who}
         </h3>
         {note ? <span className="havy__label">{note.label}</span> : null}
-        <button type="button" className="qb-icon-btn" aria-label={minimized ? 'Mở chat Hà Vy' : 'Thu nhỏ chat Hà Vy'} aria-expanded={!minimized} aria-controls="havy-chat" onClick={() => setMinimized(!minimized)}>
+        <button type="button" className="qb-icon-btn" aria-label={`${minimized ? 'Mở' : 'Thu nhỏ'} chat ${characterName('ha-vy')}`} aria-expanded={!minimized} aria-controls="havy-chat" onClick={() => setMinimized(!minimized)}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d={minimized ? 'M5 12h14M12 5v14' : 'M5 12h14'} /></svg>
         </button>
       </div>
@@ -71,7 +71,7 @@ export function HaVyPanel({ note, idle, actions, onAskHaVy, onAskKeyDown, askDis
         <div className="havy__actions">
           {onAskHaVy ? (
             <button type="button" className="btn btn--small btn--havy" onClick={onAskHaVy} onKeyDown={onAskKeyDown} disabled={askDisabled}>
-              Hỏi Hà Vy
+              Hỏi {characterName('ha-vy')}
             </button>
           ) : null}
           {actions}

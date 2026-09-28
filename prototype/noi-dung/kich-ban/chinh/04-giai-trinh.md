@@ -4,12 +4,12 @@
 
 > NHIỆM VỤ: Trình bày cách CLB dùng dữ liệu
 
-- [DÀN DỰNG] Cảnh phòng giải trình (tông lạnh). Quân ngồi một bên bàn, hồ sơ xếp thẳng mép. Minh Anh, Hà Vy, người chơi ngồi bên kia. Màn chiếu sau lưng Quân. Bước 1 của QĐ-024.
-- **quan** (neutral): Tôi là Quân, Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi không xét nội dung lá thư.
+- [DÀN DỰNG] Cảnh phòng giải trình (tông lạnh). {{nv.quan}} ngồi một bên bàn, hồ sơ xếp thẳng mép. {{nv.minh-anh}}, {{nv.ha-vy}}, người chơi ngồi bên kia. Màn chiếu sau lưng {{nv.quan}}. Bước 1 của QĐ-024.
+- **quan** (neutral): Tôi là {{nv.quan}}, Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi không xét nội dung lá thư.
 - **quan** (neutral): CLB là bên bị đề nghị thu hồi phòng, lại tự tra người bỏ thư. Tôi cần xem CLB dùng dữ liệu thế nào.
 - **quan** (smug): Dữ liệu không nói dối. Nhưng người đọc dữ liệu thì có.
 - **quan** (neutral): Tôi đã tự chạy lại ba manh mối của CLB, trên đúng view CLB được cấp.
-- [DÀN DỰNG] Màn chiếu hiện truy vấn của Quân nguyên văn (5 dòng, §4.4), chạy thật trên dataset chính: bảng kết quả 24 dòng, dòng đếm "24 dòng" (QĐ-012).
+- [DÀN DỰNG] Màn chiếu hiện truy vấn của {{nv.quan}} nguyên văn (5 dòng, §4.4), chạy thật trên dataset chính: bảng kết quả 24 dòng, dòng đếm "24 dòng" (QĐ-012).
 - [MÀN CHIẾU proj-quan-or · truy vấn nạp sẵn debrief-fix · chạy · 24 dòng]
 
 - **quan** (smug): Hai mươi tư người, hơn nửa số sinh viên trong view. Manh mối kiểu này thì vô dụng.
@@ -17,7 +17,7 @@
 - **minh-anh** (worried): Hai mươi tư? Cùng ba manh mối mà sao lệch nhiều thế…
 - **ha-vy** (thinking): Có gì đó sai. Đọc kỹ từng dòng truy vấn của anh ấy.
 
-> NHIỆM VỤ: Chỉ ra dòng lỗi trong truy vấn của Quân
+> NHIỆM VỤ: Chỉ ra dòng lỗi trong truy vấn của {{nv.quan}}
 
 - [DÀN DỰNG] Bước 2 của QĐ-024. Năm dòng SQL trên màn chiếu thành năm vùng chạm được. Dòng 4 và dòng 5 đều đúng (cùng một lỗi `OR`). Chạm sai không phạt, không giới hạn số lần.
 - [CHỌN DÒNG q-quan-lines]
@@ -42,9 +42,9 @@
 - **quan** (stunned): …
 - **quan** (neutral): Nói thì dễ. Sửa ngay trên truy vấn của tôi, rồi chạy cho mọi người cùng xem.
 
-> NHIỆM VỤ: Sửa truy vấn của Quân và chạy lại
+> NHIỆM VỤ: Sửa truy vấn của {{nv.quan}} và chạy lại
 
-- [DÀN DỰNG] Bước 4 của QĐ-024: trình dựng mở với truy vấn của Quân nạp sẵn (thẻ debrief-fix).
+- [DÀN DỰNG] Bước 4 của QĐ-024: trình dựng mở với truy vấn của {{nv.quan}} nạp sẵn (thẻ debrief-fix).
 - [SỬA TRUY VẤN debrief-fix]
 - [ĐI TỚI deb-03]
 
@@ -64,7 +64,7 @@
   - (A) {id: tim-ra-roi} Tìm ra rồi: người bỏ thư là một trong hai bạn này. → phản hồi: **ha-vy** (thinking): Hai dòng này cho biết ai cần hỏi tiếp, hay đã đủ để kết luận ai làm?
   - (B) {id: can-xac-minh} Hai người cần xác minh thêm, chưa phải người bỏ thư. [ĐÚNG] → phản hồi: **quan** (neutral): Đúng. Khớp manh mối là một chuyện. Đã bỏ thư là chuyện khác.
   - (C) {id: vo-dung} Chưa nói lên gì, vì manh mối nào cũng có thể trùng hợp. → phản hồi: **ha-vy** (thinking): Từ bốn mươi người còn hai. Thu hẹp được thế là có ích chứ. Nhưng ích đến đâu?
-- [DÀN DỰNG] Ba lựa chọn dài 11–13 chữ, cùng giọng thường; lựa chọn `tim-ra-roi` nối tiếp câu "Tìm ra rồi!" của Minh Anh, `vo-dung` nối tiếp kết luận của Quân (QĐ-035). Phản hồi của `tim-ra-roi` là câu gợi ý chuẩn hint-ask-or-conclude (§5.2).
+- [DÀN DỰNG] Ba lựa chọn dài 11–13 chữ, cùng giọng thường; lựa chọn `tim-ra-roi` nối tiếp câu "Tìm ra rồi!" của {{nv.minh-anh}}, `vo-dung` nối tiếp kết luận của {{nv.quan}} (QĐ-035). Phản hồi của `tim-ra-roi` là câu gợi ý chuẩn hint-ask-or-conclude (§5.2).
 - [DÀN DỰNG] Giao diện xáo thứ tự lựa chọn mỗi lần hiện câu hỏi; chữ (A)/(B)/(C) chỉ là nhãn khi viết, không hiển thị; telemetry ghi id lựa chọn (QĐ-035). Ghi riêng lựa chọn ĐẦU TIÊN của q-two-rows: đo chỉ số "trả lời đúng rằng kết quả truy vấn chưa tự chứng minh hành vi" (§10).
 - [ĐI TỚI deb-04]
 
@@ -72,17 +72,17 @@
 
 - **quan** (neutral): Vậy tôi hỏi thẳng.
 
-> NHIỆM VỤ: Trả lời câu hỏi của Quân
+> NHIỆM VỤ: Trả lời câu hỏi của {{nv.quan}}
 
-- [DÀN DỰNG] Bước 6 của QĐ-024, cú lật chính (§4.4). Câu hỏi của Quân giữ nguyên văn.
+- [DÀN DỰNG] Bước 6 của QĐ-024, cú lật chính (§4.4). Câu hỏi của {{nv.quan}} giữ nguyên văn.
 - [HỎI q-verify] quan: "Nếu dữ liệu chưa kết luận được, CLB dựa vào đâu để biết ai đã bỏ thư?"
   - (A) {id: them-dieu-kien} Thêm điều kiện vào truy vấn cho đến khi chỉ còn một dòng. → phản hồi: **quan** (neutral): Thêm điều kiện nào? Không có manh mối đứng sau thì chỉ là cắt cho gọn. Cắt nhầm là mất người thật.
   - (B) {id: chon-dang-ngo} Chọn bạn trông đáng ngờ hơn trong hai bạn để hỏi trước. → phản hồi: **quan** (neutral): Đáng ngờ theo cột nào? Bảng này không có cột "đáng ngờ".
   - (C) {id: goi-ca-hai} Mời cả hai bạn lên, hỏi thẳng xem ai đã bỏ thư. → phản hồi: **minh-anh** (worried): Gọi cả hai lên thì người vô can cũng bị làm phiền. CLB tìm sự thật, không để làm ai bẽ mặt.
   - (D) {id: nguon-khac} Tìm một nguồn khác ngoài dữ liệu để đối chiếu hai bạn này. [ĐÚNG] → phản hồi: **quan** (neutral): Đó là câu tôi chờ. Nguồn nào?
-- [DÀN DỰNG] Bốn lựa chọn dài 12–13 chữ, cùng giọng thường. Lựa chọn đúng không nêu nguồn cụ thể: người chơi tự nối với lời bác Tư ở inv-bac-tu (QĐ-035).
+- [DÀN DỰNG] Bốn lựa chọn dài 12–13 chữ, cùng giọng thường. Lựa chọn đúng không nêu nguồn cụ thể: người chơi tự nối với lời {{nv.bac-tu.trong-cau}} ở inv-bac-tu (QĐ-035).
 - [DÀN DỰNG] Giao diện xáo thứ tự lựa chọn mỗi lần hiện câu hỏi; chữ (A)…(D) chỉ là nhãn khi viết, không hiển thị; telemetry ghi id lựa chọn (QĐ-035). Ghi riêng lựa chọn ĐẦU TIÊN của q-verify (câu "dữ liệu đã đủ kết luận chưa?", §9.3); cho chọn lại không giới hạn.
-- **player**: Cô phụ trách hộp góp ý. Bác Tư bảo sáng nay cô mở hộp B.
+- **player**: Cô phụ trách hộp góp ý. {{nv.bac-tu}} bảo sáng nay cô mở hộp B.
 - **minh-anh** (neutral): CLB chỉ xin cô đối chiếu đúng hai mã này thôi, không hơn.
 - **quan** (neutral): Tôi sẽ chuyển đề nghị ngay.
 - [ĐI TỚI end-01]

@@ -36,11 +36,11 @@
 ### ana-c3-done — "Tìm ra rồi!" {scene: clb-room}
 
 - **minh-anh** (happy): Hai người! Tìm ra rồi! Gửi Phòng CTSV ngay thôi!
-- **narrator**: Minh Anh gửi kết quả đi. Vài phút sau, điện thoại rung: tin nhắn từ Phòng CTSV.
+- **narrator**: {{nv.minh-anh}} gửi kết quả đi. Vài phút sau, điện thoại rung: tin nhắn từ Phòng CTSV.
 - **minh-anh** (worried): "Trước khi CTSV liên hệ ai, Ban Pháp chế – Kiểm tra Hội sinh viên sẽ thẩm tra cách CLB dùng dữ liệu."
-- **ha-vy** (thinking): Ban của anh Quân. Người gọi CLB mình là "hội trinh thám nghiệp dư".
+- **ha-vy** (thinking): Ban của anh {{nv.quan}}. Người gọi CLB mình là "hội trinh thám nghiệp dư".
 - **minh-anh** (worried): Mười lăm phút nữa, ở phòng giải trình. Mang theo hồ sơ.
-- [DÀN DỰNG] Không nhân vật nào nói hai dòng này là gì trước màn giải trình (QĐ-023). Hà Vy không sửa câu "Tìm ra rồi!" của Minh Anh.
+- [DÀN DỰNG] Không nhân vật nào nói hai dòng này là gì trước màn giải trình (QĐ-023). {{nv.ha-vy}} không sửa câu "Tìm ra rồi!" của {{nv.minh-anh}}.
 
 > NHIỆM VỤ: Đến phòng giải trình
 
