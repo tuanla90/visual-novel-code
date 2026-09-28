@@ -4,6 +4,8 @@ Phiên bản 0.2 · 28/09 · theo QĐ-075 (kèm QĐ-071 → QĐ-074), cập nh�
 
 > **Thay đổi ở 0.2:** nhân vật theo QĐ-080/081 (bộ ba cùng năm 1, Hà Vy không giải thích cú pháp SQL, bác Tư → bác Thịnh) (§4); **sổ tay**: trang sổ chị Linh hiện qua hoạt cảnh, người chơi chép vào sổ cá nhân qua câu kiểm tra toán của Hà Vy — cú pháp mới `[TRA SỔ]`, `[CHÉP SỔ]` và thư mục `so-tay/` (§2, §9.2, §12.5); **bỏ gợi ý 3 cấp** và lời nhận xét theo mã chẩn đoán (§9.2, §9.5); **buổi phản biện** trừ uy tín, Minh Anh giải cứu (§7); luật kiểm tra mới cho buổi phản biện và dữ liệu hoa thường (§14); ví dụ thử thách 1 viết lại (§16.1). Cú pháp sổ tay là đề xuất, hoàn thiện khi làm gói 12a-1 / đợt 15.
 
+> **Thêm ở gói 12a-1 (28/09):** thư mục đang có ở bước 1 (§2); chỉ dẫn `[MÀN CHIẾU]`, `[ĐẶT CỜ]`, `[CHÚ THÍCH HỒ SƠ]`, `[THẺ CHỮ]`, `[KẾT THÚC]` (§6.3); `Truy vấn nạp sẵn`, `Nguồn điều kiện nạp sẵn` trong thẻ thử thách (§9.1); biến tên `{{nv.…}}`, `{{truong.…}}` (§10.4); lệnh `npm run kiem-noi-dung` (§14).
+
 Tài liệu này quy định cách viết **toàn bộ nội dung** của game (lời thoại, lựa chọn, thử thách, hồ sơ, nhân vật, dữ liệu SQL) để:
 
 1. **Mỗi thứ chỉ viết ở một chỗ.** Sửa kịch bản là sửa file nội dung, không đụng code.
@@ -81,6 +83,20 @@ prototype/noi-dung/
 ```
 
 Bộ đọc gom tất cả file lại thành một khối dữ liệu. Định danh phải duy nhất trên **toàn bộ** thư mục, không chỉ trong một file.
+
+**Đang có ở bước 1 (gói 12a-1).** Cây trên là đích. Nội dung prototype hiện nằm ở:
+
+```
+prototype/noi-dung/
+├── README.md                  # cách dùng lệnh kiểm (bộ đọc bỏ qua mọi README.md)
+├── quy-uoc.md                 # "# <tên game> — …" + quy ước đọc file + quy ước thẻ thử thách
+├── kich-ban/chinh/01-mo-dau.md … 05-ket.md   # mỗi tệp mở đầu bằng "## Phần N — <Tên> {part: <mã>}"
+├── thu-thach/c1.md, c2.md, c3.md, debrief-fix.md
+├── chung/loi-chung.md         # "Ba câu gợi ý chuẩn" + "Nhận xét chung cho mọi thử thách"
+└── ho-so/00-chung.md, 01-manh-moi.md, 02-tai-lieu.md, 03-chu-thich-ket-qua.md
+```
+
+Thứ tự đọc: `quy-uoc.md` → `kich-ban/chinh/` → `thu-thach/` → `chung/` → `ho-so/`; trong mỗi thư mục theo tên tệp (nên có tiền tố `01-`, `02-` khi thứ tự có nghĩa). Tệp `.md` nằm ngoài các chỗ trên là lỗi. Bộ đọc: `prototype/tools/noi-dung/`; lệnh kiểm: §14.
 
 ---
 
@@ -252,6 +268,14 @@ phong-clb:
 | `[HIỆU ỨNG <tên>]` | Ví dụ `co-so-lieu-day` (QĐ-025, QĐ-070). |
 | `[DÀN DỰNG] <chữ>` | Ghi chú cho người dựng. Không hiển thị, không chạy. |
 | `[HẬU QUẢ] …` | Đặt ở giữa chuỗi thì chạy ngay tại đó; ở cuối thì chạy khi xong chuỗi. |
+| `[MÀN CHIẾU <mã> · chạy · <n> dòng]` + khối ` ```sql ` ngay dưới | Màn chiếu (buổi giải trình) hiện câu SQL trong khối; `chạy` = chạy thật trên dataset chính; `<n> dòng` = số dòng kỳ vọng (không bắt buộc). Giữa dòng chỉ dẫn và khối chỉ được có dòng trống. |
+| `[MÀN CHIẾU <mã> · vật chứng <ev-…> · chạy · <n> dòng]` | Như trên nhưng câu SQL lấy từ vật chứng người chơi đã lưu (vd truy vấn vừa sửa). `không chạy` = chỉ hiện câu SQL. |
+| `[ĐẶT CỜ <cờ>]` | Bật một cờ của game ngay tại đó (bước 1 chỉ có cờ `access-revoked`: hết quyền xem dữ liệu, khóa nút mở trình dựng). |
+| `[CHÚ THÍCH HỒ SƠ <ev-…>]` / `[CHÚ THÍCH HỒ SƠ <ev-…> · làm mờ]` | Gắn chú thích vào thẻ kết quả truy vấn trong Hồ sơ; chữ lấy nguyên văn dòng `- Chú thích:` của thẻ hồ sơ cùng mã (§12). `làm mờ` = tên và mã trong bảng của thẻ bị làm mờ (QĐ-062). |
+| `[THẺ CHỮ] **<người nói>** …: <lời>` | Tiền tố trước một lời thoại: lời đó hiện dạng thẻ chữ lớn giữa màn hình (thông điệp kết). |
+| `[KẾT THÚC]` | Hết game; sau đó là khảo sát cuối game (không viết trong nội dung). |
+
+Bốn chỉ dẫn `[MÀN CHIẾU]`, `[ĐẶT CỜ]`, `[CHÚ THÍCH HỒ SƠ]`, `[THẺ CHỮ]` có từ gói 12a-1: trước đó các việc này chỉ tả bằng lời trong `[DÀN DỰNG]` và người dựng chép tay thành node. Dòng `[DÀN DỰNG]` cũ vẫn giữ để người đọc hiểu cảnh; máy chỉ đọc chỉ dẫn. Khi runtime có `[HẬU QUẢ]` và cờ tùy ý (đợt 13), `[ĐẶT CỜ x]` tương đương `[HẬU QUẢ] co.x`.
 
 ---
 
@@ -325,6 +349,16 @@ Ghi chú:
 - **SQL chuẩn** dùng để chấm ngầm (telemetry) và để bước soát biết đáp án. Game không nói đúng/sai lúc chạy.
 - **Note** là tờ note người chơi tự ghi rồi dán (QĐ-072). `giá trị` là một khuôn có biến (§10). `kéo vào ô được: có` nghĩa là tờ note dùng làm giá trị điều kiện ở thử thách sau.
 - **Soát** liệt kê dữ kiện dạng SQL kèm tên dữ kiện. Bước soát hồ sơ dùng dòng này để viết câu đối soát (§12.4).
+
+**Thẻ thử thách ở bước 1 (gói 12a-1, định dạng cũ `### <mã> — … {challenge: <mã>}`).** Khối ` ```sql ` thuộc dòng `- <Nhãn>:` bỏ trống **ngay trên nó** (chỉ cách bằng dòng trống). Ba dòng máy đọc:
+
+| Dòng | Nghĩa |
+|---|---|
+| `- SQL chuẩn:` + khối sql | Câu SQL chuẩn của thử thách (engine dùng để chấm và đếm số dòng kỳ vọng). |
+| `- Truy vấn nạp sẵn:` + khối sql | Truy vấn đã nằm sẵn trong trình dựng khi mở màn (vd truy vấn `OR` của Quân ở `debrief-fix`). Chỉ nhận dạng trình dựng dựng được: `SELECT <cột>, … FROM <bảng> WHERE <đk> {AND hoặc OR <đk>};` với **một** phép nối chung; điều kiện `cột = '…'`, `cột LIKE '…%'` (bắt đầu bằng) / `'%…'` / `'%…%'`, `cột IN ('…', …)`. |
+| `- Nguồn điều kiện nạp sẵn: <id> ← <nguồn> · <id> ← <nguồn> · …` | Đúng thứ tự điều kiện trong `WHERE`: mã cục bộ của điều kiện và nguồn giá trị — `clue-…` (manh mối), `ev-…` (vật chứng) hoặc `tu-nhap` (QĐ-017). |
+
+Dòng tả bằng lời `- Nạp sẵn vào trình dựng: …` vẫn giữ cho người đọc; máy đọc các dòng trên.
 
 ### 9.2 Phần kịch bản: khối sự kiện
 
@@ -452,6 +486,27 @@ so-nguoi-or-quan: SELECT COUNT(*) FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop =
 
 - **Cấm số viết cứng** chỉ số lượng hay mã trong dữ liệu. Bộ đọc cảnh báo khi một lời thoại có chữ số hoặc số bằng chữ ("hai mươi tư", "mười") mà không nằm trong biến. Muốn giữ (ví dụ "ba tòa nhà", "năm nhất") thì ghi `[SỐ CỐ ĐỊNH]` ở cuối dòng.
 - Giá trị **khóa của truyện** (tên Hiếu, Hoài) viết thẳng được, vì chúng nằm trong phần cố định của dữ liệu (§11.2). Bộ đọc kiểm tra chúng có trong dữ liệu mọi seed.
+
+### 10.4 Biến tên nhân vật và tên trường (QĐ-079 câu 4, QĐ-080, QĐ-088)
+
+Tên riêng không viết cứng trong lời: đổi tên một nhân vật hay tên trường chỉ sửa **một** chỗ.
+
+| Viết | Ra | Ghi chú |
+|---|---|---|
+| `{{nv.<mã>}}` | tên hiển thị của nhân vật | = `{{nv.<mã>.ten}}` |
+| `{{nv.<mã>.<dạng>}}` | một dạng tên khác | Dạng dự kiến: `ten` (tên hiển thị), `ho-ten` (họ tên đầy đủ), `trong-cau` (tên gọi giữa câu, danh xưng viết thường: "bác Tư", "thầy Khải"). |
+| `{{truong.ten-day-du}}` | tên đầy đủ của trường | QĐ-080: "Trường Đại học Chấn Hưng". |
+| `{{truong.ten-ngan}}` | tên ngắn | QĐ-080: "Chấn Hưng". |
+
+Luật:
+- **Mã là khóa, không đổi khi đổi tên** (vd `bac-tu` giữ nguyên dù tên hiển thị thành "Bác Thịnh"). Không dùng mã vai trò cho nhân vật xuyên suốt; vai trong vụ án (nhân chứng, người vô can…) là biến của vụ, làm ở đợt 14.
+- Bộ đọc thay biến **trước khi** đọc dòng, ở mọi tệp nội dung (kể cả khối sql). Mã hoặc dạng không tồn tại, biến lạ, dấu `{{` / `}}` lẻ là **lỗi** `<tệp>:<dòng>`.
+- `{{nv.nguoi-choi}}` (tên người chơi tự đặt, QĐ-077) **giữ chỗ**: chỉ biết lúc chạy game nên bộ đọc chưa thay; viết vào bây giờ là lỗi.
+- Biến tên khác biến SQL (§10.1): biến tên có tiền tố `nv.` / `truong.`, không tính bằng SQL, không có bộ định dạng.
+
+**Nguồn tên theo bước:**
+- Bước 1 (gói 12a-1): nguồn tạm là `CHARACTER_NAMES` của game (`src/shared/display-names.ts`, qua `src/content/real/testing/nguon-ten.ts`), mới có dạng `ten`; tên trường **vẫn là tên cũ** "Trường Đại học Hoa Phượng" / "Hoa Phượng" để không đổi chữ. Nội dung chưa dùng biến (gói 12a-2 thay tên bằng biến bằng script).
+- Gói 12b: nguồn chuyển sang `nhan-vat.yaml` (§4: `ten-hien-thi`, `ho-ten`, dạng trong câu); tên trường vào tệp cấu hình chung.
 
 ---
 
@@ -679,7 +734,7 @@ Bộ đọc dừng build khi gặp **lỗi**; in ra **cảnh báo** nhưng vẫn
 - **Dữ liệu mạch chính có hai giá trị chỉ khác nhau hoa thường** trong cùng một cột (QĐ-082: sắc thái hoa thường chỉ dạy ở nhiệm vụ phụ; dữ liệu mạch chính phải nhất quán, trừ vụ cố ý dạy bài học này).
 - Câu hỏi ở buổi phản biện nên nói rõ đọc cái gì (điều kiện, số dòng hay ý nghĩa các dòng); phương án sai phản ánh hiểu lầm có thật (người viết tự kiểm, máy không kiểm được).
 
-Lệnh (gói chuẩn hóa sẽ tạo): `npm run kiem-noi-dung` để chạy riêng; tự chạy trước `build` và trong `test`.
+Lệnh: `npm run kiem-noi-dung` (trong `prototype/`, có từ gói 12a-1) đọc cả `noi-dung/`, in mỗi lỗi một dòng `<tệp>:<dòng>: <lỗi>`, không ghi tệp nào; mã thoát 1 khi có lỗi. Bước 1 mới kiểm: dòng không khớp quy ước, tham chiếu tới chuỗi / thẻ thử thách / thẻ hồ sơ / vật chứng không tồn tại, định danh trùng, màn chiếu thiếu khối sql, truy vấn nạp sẵn không dựng được, biến tên sai. Nối vào `build` và `test` ở gói 12a-2 (hiện test `faithfulness` đã đọc cả thư mục nên lỗi đọc cũng làm test đỏ).
 
 ---
 
@@ -687,7 +742,9 @@ Lệnh (gói chuẩn hóa sẽ tạo): `npm run kiem-noi-dung` để chạy riê
 
 Bước 1 của QĐ-075: chuyển **nguyên văn** nội dung hiện tại sang cấu trúc mới, game chạy y hệt.
 
-> **Đang đề xuất điều chỉnh (QĐ-079, chờ user chốt):** runtime chưa có kích hoạt, cờ, bộ đếm, nên ở bước 1 bộ đọc **vẫn nhận cú pháp cũ** `[ĐIỂM XEM XÉT]`, `[ĐIỀU KIỆN QUA]`, `[KHI ĐÚNG]`, `[KHI: <mã>]`; các dòng tương ứng trong bảng dưới chỉ áp dụng từ đợt 13. Ngoài ra bước 1 thêm cú pháp cho màn chiếu, đặt cờ, chú thích hồ sơ, thẻ chữ (mục 6.3). Chi tiết: `docs/ke-hoach-goi-chuan-hoa.md`.
+> **Điều chỉnh đã chốt (QĐ-079, user chốt ở QĐ-088):** runtime chưa có kích hoạt, cờ, bộ đếm, nên ở bước 1 bộ đọc **vẫn nhận cú pháp cũ** `[ĐIỂM XEM XÉT]`, `[ĐIỀU KIỆN QUA]`, `[KHI ĐÚNG]`, `[KHI: <mã>]` (và `[GỢI Ý n]`, tiêu đề `{scene: …}`, `{part: …}`); các dòng tương ứng trong bảng dưới chỉ áp dụng từ đợt 13. Bước 1 thêm cú pháp cho màn chiếu, đặt cờ, chú thích hồ sơ, thẻ chữ (§6.3), truy vấn nạp sẵn (§9.1) và biến tên (§10.4). Chi tiết: `docs/ke-hoach-goi-chuan-hoa.md`.
+>
+> **Đã làm ở gói 12a-1:** tách tệp (§2 "Đang có ở bước 1"), bộ đọc thành công cụ `prototype/tools/noi-dung/`, lệnh `npm run kiem-noi-dung`. Tiêu đề phần vẫn là `## Phần N — … {part: …}` ở đầu mỗi tệp `kich-ban/chinh/` (chưa đổi sang khai báo `phần:`). Bản chép tay và `faithfulness.test.ts` còn giữ tới gói 12a-2.
 
 | Cũ (`docs/prototype/kich-ban-prototype.md`) | Mới |
 |---|---|
@@ -832,5 +889,5 @@ Lưu ý: khối `[KHI CHẠY]` không bộ lọc đặt **cuối** để làm m�
 3. **Kho tên hư cấu** (`kho/ho-dem.txt`, `kho/ten.txt`) cần bao nhiêu tên và ai duyệt để không trùng tên người thật trong trường?
 4. **Seed cho người chơi** khi bật ngẫu nhiên: lấy từ câu trả lời với Tùng ở phần mở đầu (GDD) hay ngẫu nhiên thuần? Ảnh hưởng tới khả năng hai người chơi so đáp án với nhau.
 5. **Thứ tự dòng dữ liệu** có cần cố định để giữ bẫy `LIMIT` như QĐ-048 không, hay bỏ bẫy này vì vòng chính không còn dạy `LIMIT`?
-6. **Bốn câu hỏi của kế hoạch chuẩn hóa** (QĐ-079): cách sinh dữ liệu, dời cú pháp `[KÍCH HOẠT]` sang đợt 13, model từng gói, tên nhân vật thành biến `{{nv.<mã>}}` (sẽ thêm vào mục 10). Xem cuối `docs/ke-hoach-goi-chuan-hoa.md`.
+6. ~~**Bốn câu hỏi của kế hoạch chuẩn hóa** (QĐ-079)~~ — đã chốt ở QĐ-088; biến tên nhân vật và tên trường ở §10.4.
 7. **Cú pháp sổ tay** (`[TRA SỔ]`, `[CHÉP SỔ]`, file `so-tay/`) mới là đề xuất ở bản 0.2; chốt khi làm gói 12a-1 (bộ đọc) và đợt 15 (giao diện sổ cá nhân).

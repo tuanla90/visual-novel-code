@@ -2,7 +2,7 @@
 
 > Tài liệu kỹ thuật về **code hiện có** (sau gói 9b `tich-hop-b`, trước vòng thử nghiệm 1). Nguồn sự
 > thật về sản phẩm là `docs/prototype/prototype-scope-down-v0.1.md`; ràng buộc là `docs/lich-su-quyet-dinh.md`
-> (QĐ-xxx); kịch bản là `docs/prototype/kich-ban-prototype.md` (các đường dẫn này tính từ **gốc repo**, không phải
+> (QĐ-xxx); kịch bản là `prototype/noi-dung/` (từ gói 12a-1; trước đó `docs/prototype/kich-ban-prototype.md`) (các đường dẫn này tính từ **gốc repo**, không phải
 > `prototype/docs/`; bản đồ toàn repo ở `README.md` gốc).
 > Ở đây chỉ nói về code: cây thư mục, hợp đồng kiểu, luồng dữ liệu, các hệ con (ô ảnh, telemetry,
 > bảng người quan sát, che dữ liệu), cách kiểm tra. Hướng dẫn chạy cho nhóm thử nghiệm: `README.md`.
@@ -320,12 +320,13 @@ trong store, `package.json` (không cài thêm phụ thuộc nếu không hỏi)
 
 ## 7. Cách thêm / đổi nội dung
 
-1. Kịch bản (`docs/prototype/kich-ban-prototype.md`, tính từ gốc repo) là nguồn duy nhất: đổi chữ ở kịch bản trước, rồi chép
-   lại vào `src/content/real/{story/*,challenges,evidence}.ts`. `faithfulness.test.ts` đọc kịch bản bằng
-   `content/real/testing/read-script.ts` và so hai chiều từng ký tự — lệch là đỏ.
+1. Nội dung (`prototype/noi-dung/`, xem `noi-dung/README.md`) là nguồn duy nhất: đổi chữ ở đó trước, chạy
+   `npm run kiem-noi-dung`, rồi chép lại vào `src/content/real/{story/*,challenges,evidence}.ts` (bản chép tay còn tới
+   gói 12a-2). `faithfulness.test.ts` đọc cả thư mục bằng bộ đọc `tools/noi-dung/` (không import `src/`; lỗi dạng
+   `<tệp>:<dòng>`) và so hai chiều từng ký tự — lệch là đỏ, báo `lệch đầu tiên ở <tệp>:<dòng>`.
 2. Ánh xạ kịch bản → node: xem bảng đầu `src/story/types.ts`. Chú ý: `[ĐIỂM XEM XÉT]` nhiều điểm trong một cảnh
-   → **một** `explore` node + `gate` ngay sau; hiệu ứng phụ trong `[DÀN DỰNG]` thành node tường minh (màn chiếu
-   `projector`, hết quyền `set-flag` + 3 `annotate-evidence`, thẻ chữ lớn `display: 'card'`);
+   → **một** `explore` node + `gate` ngay sau; màn chiếu `[MÀN CHIẾU]` → `projector`, hết quyền `[ĐẶT CỜ access-revoked]`
+   → `set-flag`, `[CHÚ THÍCH HỒ SƠ ev-… · làm mờ]` → `annotate-evidence`, `[THẺ CHỮ]` → `display: 'card'`;
    `[GỢI Ý CHUẨN]` → `standardHints`; "Nhận xét chung" → `commonDiagnosticLines`; `[KHI: mã] dùng hint-x` →
    `{ useStandardHint: 'hint-x' }`.
 3. Thêm mã chẩn đoán / thay đổi thứ tự: sửa `CHALLENGE_/COMMON_DIAGNOSTIC_ORDER` **và** thứ tự khóa trong nội
@@ -360,4 +361,4 @@ Bẻ phanh mẫu cho các test tích hợp: bỏ bước giải `debrief-fix` tr
 - Trước mỗi commit: `npm run typecheck && npm test && npm run lint` xanh; commit có UI thì
   `npm run build` cũng phải qua.
 - Không sửa tài liệu ngoài `prototype/` (`docs/`, `art/`, `README.md`, `.gitignore`, `.gitattributes`) và lời thoại trong
-  `docs/prototype/kich-ban-prototype.md` (chỉ mục "Tự kiểm"/chú thích dàn dựng khi được giao); cần gì thì ghi vào báo cáo.
+  `prototype/noi-dung/` (chỉ chỉ dẫn máy đọc / chú thích dàn dựng khi được giao); cần gì thì ghi vào báo cáo.
