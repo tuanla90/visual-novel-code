@@ -4,13 +4,16 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "predev": "npm run -s noi-dung:sinh",
     "dev": "vite",
+    "prebuild": "npm run -s noi-dung:sinh",
     "build": "npm run typecheck && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run --maxWorkers=2",
     "lint": "eslint .",
-    "kiem-noi-dung": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/kiem.ts"
+    "kiem-noi-dung": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/kiem.ts",
+    "noi-dung:sinh": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/sinh.ts"
   },
   "dependencies": {
     "@fontsource/be-vietnam-pro": "^5.3.0",
