@@ -10,6 +10,7 @@
 > - **Sổ tay:** sổ chị Linh chỉ hiện qua hoạt cảnh; người chơi có **sổ cá nhân**, chép dần qua câu kiểm tra toán của Hà Vy; bỏ gợi ý 3 cấp và không đếm gợi ý (QĐ-080, QĐ-083).
 > - **Buổi giải trình: phản biện 5 nhịp**, trừ uy tín ở nhịp 1, 4, 5, Minh Anh giải cứu (QĐ-082, QĐ-083) (§5.2). Câu hô đổi thành **"Số liệu đây!"**.
 > - **Nhân vật phụ kiểu miền Bắc:** bác Tư → **bác Thịnh** (bảo vệ giảng đường B), chú Bảy → **chú Cường** (QĐ-081).
+> - **MVP thử lịch ngày × 3 khung giờ, query thoải mái, 2 kết (QĐ-086)** — chỉ áp cho MVP; nhịp 4 buổi/vụ của GDD giữ nguyên tới khi playtest.
 > - **MVP (QĐ-077):** dữ liệu cố định, chưa có mã đề (§4, §12 là đích sau MVP); trình dựng dạng **bàn làm việc với giấy nhớ** thay cho Khối lệnh/Blockly (QĐ-071); chưa làm trang phục, mini game.
 > - **Vụ 1 (§14) viết trước QĐ-073:** vòng chính nay chỉ dạy WHERE, `=`, `LIKE`, AND/OR; "Báo chí" là ngành, có lớp BC24A; câu OR của Quân ra 14 dòng. Phần §14 sẽ viết lại ở gói kịch bản MVP; khi mâu thuẫn, sổ quyết định thắng.
 >
@@ -182,6 +183,8 @@ Tuần đầu năm học 2026–2027, phòng Công tác sinh viên nhận thư n
 | 4 | **Giải trình** | Đối chất với nhân chứng, phản bác rival, trình bày kết luận trước thầy Quang |
 
 Giữa các buổi: nhóm chat CLB, mini game giúp NPC.
+
+> **MVP đang thử nhịp khác (QĐ-086):** truyện tuyến tính theo **ngày × 3 khung giờ** (sáng, trưa, chiều) — 5 ngày điều tra, mỗi ngày một dữ kiện chính, ngày 6 giải trình; hết khung thì sang "Buổi tối" để làm nốt dữ kiện chính; dữ kiện phụ ghép thành nguồn xác minh độc lập mở true end. Nhịp 4 buổi ở mục này giữ nguyên cho tới khi playtest MVP xong.
 
 ### 5.1. Pha Điều tra
 
