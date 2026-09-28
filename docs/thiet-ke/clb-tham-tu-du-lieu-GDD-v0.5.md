@@ -1,10 +1,10 @@
 # CLB Thám Tử Dữ Liệu — Tài liệu thiết kế (v0.5, cập nhật 28/09/2026)
 
 > Game học SQL nhập vai tân sinh viên năm nhất, lối chơi lấy cảm hứng từ dòng game điều tra – xét xử kiểu Ace Attorney.
-> Là dòng game đầu tiên của **Vũ trụ Hoa Phượng** — xem `vu-tru-hoa-phuong-tong-quan.md` cho nhân vật chung, dòng thời gian và kiến trúc dùng chung.
+> Là dòng game đầu tiên của **Vũ trụ Chấn Hưng** — xem `vu-tru-chan-hung-tong-quan.md` cho nhân vật chung, dòng thời gian và kiến trúc dùng chung.
 >
 > **Cập nhật 28/09/2026 (theo QĐ-070 → QĐ-083 trong `docs/lich-su-quyet-dinh.md`):**
-> - Trường đổi tên thành **Trường Đại học Chấn Hưng** (QĐ-080); tên trường là biến trong nội dung. Tên chuỗi "Vũ trụ Hoa Phượng" **sẽ đổi**, chờ tên mới (QĐ-084).
+> - Trường đổi tên thành **Trường Đại học Chấn Hưng** (QĐ-080); tên trường là biến trong nội dung. Chuỗi đổi tên thành **Vũ trụ Chấn Hưng** (QĐ-085).
 > - Họ tên: **Lê Minh Anh**, **Trần Hà Vy**; câu cửa miệng theo QĐ-084. Thứ tự ưu tiên tài liệu: vũ trụ → GDD → MVP → prototype (QĐ-084).
 > - **Bộ ba cùng năm 1** (QĐ-074, QĐ-081): Tùng giỏi tìm kiếm trên bản đồ, người chơi giỏi tin học, Hà Vy giỏi logic toán; xưng "tớ – cậu". Minh Anh giao vụ, mở địa điểm, bảo vệ người chơi ở giải trình (§3.1).
 > - **Sổ tay:** sổ chị Linh chỉ hiện qua hoạt cảnh; người chơi có **sổ cá nhân**, chép dần qua câu kiểm tra toán của Hà Vy; bỏ gợi ý 3 cấp và không đếm gợi ý (QĐ-080, QĐ-083).
@@ -49,6 +49,7 @@
 | Dữ kiện | Một phần phải tìm bằng cách đi bản đồ, xem xét cảnh, nói chuyện |
 | Mã đề | Tạo từ câu trả lời của người chơi với Tùng + chuỗi ngẫu nhiên riêng — **sau MVP**; MVP dùng dữ liệu cố định (QĐ-077) |
 | Mode chơi | Trình dựng truy vấn dạng **bàn làm việc với giấy nhớ** (QĐ-071, thay Blockly) và Hardcore (SQL thuần, mở sau Vụ 1) |
+| Thiết bị | **Laptop là nền chính** (QĐ-028, QĐ-085); điện thoại là mục tiêu sau — các chi tiết cho điện thoại trong tài liệu này (bản đồ dọc, vùng chạm 44 pt, cắt ảnh dọc) để dành cho lúc đó |
 | Phần thưởng phụ | Trang phục cho nhân vật chính, kiếm bằng mini game giúp NPC — chưa làm ở MVP |
 
 ---
@@ -286,13 +287,13 @@ Game có hai lối chơi đan xen. Thiết kế xoay quanh việc **cái này d�
 **Ba lỗi point and click cần tránh:**
 - **Săn từng điểm ảnh:** có nút "hiện điểm có thể xem xét" — gắn với Tùng (QĐ-081); điểm đã xem được đánh dấu.
 - **Bí không biết làm gì:** Tùng nhắc khi người chơi loay hoay quá lâu; khi bí ở màn truy vấn, Tùng gợi ý tra phần "điểm tâm đắc / lỗi thường gặp" của sổ chị Linh (QĐ-083).
-- **Điểm chạm quá nhỏ trên điện thoại:** vùng chạm của mỗi vật thể đủ to cho ngón tay (tối thiểu khoảng 44×44 pt), kể cả khi hình vật thể nhỏ.
+- **Điểm chạm quá nhỏ trên điện thoại** (khi làm bản điện thoại, QĐ-085): vùng chạm của mỗi vật thể đủ to cho ngón tay (tối thiểu khoảng 44×44 pt), kể cả khi hình vật thể nhỏ.
 
 ---
 
 ## 10. Hai mode chơi và chip dữ kiện
 
-> **Cập nhật (QĐ-071, QĐ-077):** mode Khối lệnh/Blockly được thay bằng **bàn làm việc**: FROM/SELECT khóa sẵn ở vòng chính, người chơi kéo **giấy nhớ dữ kiện** vào ô giá trị (giấy nhớ đóng vai chip bên dưới), không báo đúng/sai khi chạy. Phần dưới giữ làm tham khảo.
+> **Cập nhật (QĐ-071, QĐ-085):** **bàn làm việc là hướng của sản phẩm**, không chỉ của MVP — mode Khối lệnh/Blockly được thay bằng bàn làm việc: FROM/SELECT khóa sẵn ở vòng chính, người chơi kéo **giấy nhớ dữ kiện** vào ô giá trị (giấy nhớ đóng vai chip bên dưới), không báo đúng/sai khi chạy. Phần dưới giữ làm tham khảo.
 
 ### 10.1. Hai mode
 - **Khối lệnh:** Blockly, khối tiếng Việt, SQL hiện song song, có mức "điền vào chỗ trống".
@@ -356,7 +357,7 @@ Game có hai lối chơi đan xen. Thiết kế xoay quanh việc **cái này d�
 
 | Vụ | Công cụ mở | Ví dụ dùng |
 |---|---|---|
-| 1 | Khối lệnh + chip (chỉ lọc) | Lọc sinh viên theo chữ ký, giảng đường, CLB |
+| 1 | Bàn làm việc + giấy nhớ (chỉ lọc) | Lọc sinh viên theo chữ ký, giảng đường, CLB |
 | 2 | **Bảng phân tích** | Kéo `ma_lop_hp` vào Chiều phân tích, "Đếm sinh viên" vào Chỉ số, lọc lớp dưới sĩ số tối thiểu |
 | 3 | **Sơ đồ quan hệ** | Nối `muon_sach.ma_sv` với `sinh_vien.ma_sv`, `muon_sach.ma_sach` với `sach.ma_sach` |
 | 4 | "Hiện cả mục không có dữ liệu" | Tìm thẻ quẹt vào mà không có lần quẹt ra |
@@ -446,7 +447,7 @@ CREATE TABLE nhat_ky_he_thong (
 
 ### 12.1. Ghi chú kiến trúc
 
-Tách **phần kể chuyện** (bản đồ, hội thoại, vật chứng, giải trình, mã đề, tiến độ) khỏi **phần giải đố SQL** (sql.js, Khối lệnh, Bảng phân tích, Sơ đồ quan hệ, chấm bài, sinh lỗi rival) ngay từ prototype. Các dòng HTML/CSS và Python của Vũ trụ Hoa Phượng sẽ dùng lại phần kể chuyện và chỉ viết phần giải đố mới. Chi tiết giao diện chung giữa hai phần xem mục 8 của `vu-tru-hoa-phuong-tong-quan.md`.
+Tách **phần kể chuyện** (bản đồ, hội thoại, vật chứng, giải trình, mã đề, tiến độ) khỏi **phần giải đố SQL** (sql.js, Khối lệnh, Bảng phân tích, Sơ đồ quan hệ, chấm bài, sinh lỗi rival) ngay từ prototype. Các dòng HTML/CSS và Python của Vũ trụ Chấn Hưng sẽ dùng lại phần kể chuyện và chỉ viết phần giải đố mới. Chi tiết giao diện chung giữa hai phần xem mục 8 của `vu-tru-chan-hung-tong-quan.md`.
 - Chấm bài: so sánh tập kết quả với truy vấn chuẩn chạy trên cùng dữ liệu.
 - Kiểm thử: mỗi khuôn đề chạy ít nhất 1.000 mã đề, bảo đảm có đúng một đáp án và lỗi của rival luôn lộ ra.
 

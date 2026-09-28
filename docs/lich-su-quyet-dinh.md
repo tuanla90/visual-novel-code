@@ -8,7 +8,7 @@
 > 3. Điều phối viên trả lời theo hướng **có lợi nhất cho mục tiêu prototype** (kiểm chứng vòng chơi tìm manh mối → truy vấn → diễn giải → phản bác, với người mới học SQL), ghi vào file này, rồi gửi câu trả lời lại cho agent.
 > 4. Chỉ điều phối viên được sửa file này. Agent đọc file này trước khi làm việc; quyết định ở đây có hiệu lực ràng buộc.
 >
-> **Thứ tự ưu tiên tài liệu (QĐ-084):** tổng quan vũ trụ → tầm nhìn sản phẩm chính (GDD) → tầm nhìn MVP → tầm nhìn prototype. Quyết định trong sổ này phải được đưa vào tài liệu đúng tầng. **Khi các tài liệu mâu thuẫn, điều phối viên đưa user quyết**, không tự phân xử. *(Thứ tự cũ, trước QĐ-084: `prototype/prototype-scope-down-v0.1.md` > file này > `thiet-ke/vu1-buoi-giai-trinh-kich-ban.md` > `thiet-ke/clb-tham-tu-du-lieu-GDD-v0.5.md` > `thiet-ke/vu-tru-hoa-phuong-tong-quan.md` (đường dẫn tính từ `docs/`).)*
+> **Thứ tự ưu tiên tài liệu (QĐ-084):** tổng quan vũ trụ → tầm nhìn sản phẩm chính (GDD) → tầm nhìn MVP → tầm nhìn prototype. Quyết định trong sổ này phải được đưa vào tài liệu đúng tầng. **Khi các tài liệu mâu thuẫn, điều phối viên đưa user quyết**, không tự phân xử. *(Thứ tự cũ, trước QĐ-084: `prototype/prototype-scope-down-v0.1.md` > file này > `thiet-ke/vu1-buoi-giai-trinh-kich-ban.md` > `thiet-ke/clb-tham-tu-du-lieu-GDD-v0.5.md` > `thiet-ke/vu-tru-chan-hung-tong-quan.md` (đường dẫn tính từ `docs/`).)*
 >
 > **Mẫu một mục:** `QĐ-xxx — Tiêu đề` · Nguồn (ai hỏi / giai đoạn) · Câu hỏi hoặc bối cảnh · Phương án · **Chọn** · Lý do.
 
@@ -493,7 +493,7 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - **Sự cố:** mockup QĐ-073 cho Quân ngồi trong phòng CLB, xưng "tớ" và đoán bừa OR. Sai kịch bản: Quân là người của **Ban Pháp chế – Kiểm tra Hội sinh viên**, xưng "tôi", chỉ gặp CLB lần đầu ở phần Giải trình (deb-01). Nguyên nhân: điều phối viên lấy bảng persona dán trong phiên ("Quân phụ trách trích xuất dữ liệu, hấp tấp") mà không đối chiếu kịch bản. **Bảng persona đó lệch với kịch bản ở vai Quân; kịch bản là chuẩn.**
 - **Chọn:** người đoán sai OR ở thử thách 1 là **Tùng**. Quân giữ nguyên vai ở phần Giải trình; lỗi OR của Quân vẫn là khoảnh khắc chính ở đó, lúc này người chơi đã học AND/OR nên tự bắt được.
 - **Bộ ba chính** (kiểu Harry Potter): **Tùng** (hay đoán bừa, vui tính, trung thành) · **người chơi** (ở giữa, tự làm và tự ghi dữ kiện) · **Hà Vy** (kỹ tính, "Khoan, đếm lại đã.", "Đừng cá. Đếm."). Minh Anh là chủ nhiệm, đứng ngoài bộ ba.
-- **Tùng vào CLB và là người kéo người chơi vào.** Phải viết lại intro-00 (Tùng không còn chỉ đường rồi đi uống trà mà rủ, thậm chí lôi người chơi vào CLB) và intro-01 (số người của CLB: câu "Giờ còn ba người, tính cả cậu" phải đổi). Thay phần cameo của Tùng trong `vu-tru-hoa-phuong-tong-quan.md` cho dòng SQL.
+- **Tùng vào CLB và là người kéo người chơi vào.** Phải viết lại intro-00 (Tùng không còn chỉ đường rồi đi uống trà mà rủ, thậm chí lôi người chơi vào CLB) và intro-01 (số người của CLB: câu "Giờ còn ba người, tính cả cậu" phải đổi). Thay phần cameo của Tùng trong `vu-tru-chan-hung-tong-quan.md` cho dòng SQL.
 - **Xưng hô của Tùng:** giữ "tớ/cậu" như intro-00. Câu cửa miệng đổi thành **"Tớ cá là…"** (QĐ-070 ghi "Tui cá là…"; chữ "tui" lệch với "tớ"). Cặp thoại với Hà Vy: Tùng "Tớ cá là…" / Hà Vy "Đừng cá. Đếm."
 - Ở các màn thử thách, Tùng ngồi góc dưới bên trái, Hà Vy góc dưới bên phải; người chơi là người ngồi trước máy.
 
@@ -528,7 +528,7 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 
 **QĐ-078 — Sắp xếp lại thư mục repo.** · Nguồn: user yêu cầu hệ thống lại cấu trúc thư mục · 28/09
 - **Chọn:** gốc repo chỉ còn `README.md` (bản đồ repo) và ba thư mục: `docs/` (tài liệu sản phẩm), `art/` (nguồn ảnh), `prototype/` (code). Chỉ di chuyển, **không đổi tên** tài liệu, nên các chỗ nhắc tên tệp trong sổ này vẫn tìm được.
-  - `docs/thiet-ke/`: `vu-tru-hoa-phuong-tong-quan.md`, `clb-tham-tu-du-lieu-GDD-v0.5.md`, `vu1-buoi-giai-trinh-kich-ban.md`.
+  - `docs/thiet-ke/`: `vu-tru-chan-hung-tong-quan.md`, `clb-tham-tu-du-lieu-GDD-v0.5.md`, `vu1-buoi-giai-trinh-kich-ban.md`.
   - `docs/prototype/`: `prototype-scope-down-v0.1.md`, `kich-ban-prototype.md`, `kich-ban-de-xuat-full.md`.
   - `docs/` giữ tệp dùng chung: sổ này, `dac-ta-dinh-dang-noi-dung.md`, `mockups/` (thêm `sql-table-draft.html`, chuyển từ `prototype/public/` vì tệp nháp này bị đóng gói vào bản build).
   - `art/prompts/`: sáu bộ `prompts-*.md`; `art/nguon/`: ảnh gốc Topview (trước ở `prototype/art-src/`). `art/README.md` ghi trạng thái từng bộ prompt.
@@ -635,5 +635,11 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - **Lớp của Hoài** (QĐ-073 ghi BC24A, QĐ-077 ghi QT24B): chọn theo câu đố, **chốt cùng lúc rà soát và viết nội dung** (gói kịch bản MVP).
 - **Câu hỏi tạo nhân vật:** tối đa **3–4 câu**. MVP: tên, ngành, nam/nữ (QĐ-077); sau MVP nếu cần cho mã đề hoặc nội dung thì thêm tối đa 1 câu (thay 6 câu ở GDD §4).
 - **Remotion:** không dùng trong game; chỉ dùng sau này khi làm video (xuất MP4 ra ngoài).
-- **Tên "Vũ trụ Hoa Phượng" chắc chắn phải đổi**; tên mới chờ user chọn. Kéo theo: tên tệp `docs/thiet-ke/vu-tru-hoa-phuong-tong-quan.md`, tên dòng game "Đội Robot Hoa Phượng", các chỗ nhắc trong README và tài liệu. Id ảnh `hoa-phuong-environment-style-anchor` giữ nguyên (id không đổi theo tên).
+- **Tên "Vũ trụ Hoa Phượng" chắc chắn phải đổi**; tên mới chờ user chọn. Kéo theo: tên tệp `docs/thiet-ke/vu-tru-chan-hung-tong-quan.md`, tên dòng game "Đội Robot Hoa Phượng", các chỗ nhắc trong README và tài liệu. Id ảnh `hoa-phuong-environment-style-anchor` giữ nguyên (id không đổi theo tên).
 - **Còn treo:** tên vũ trụ mới; thứ tự làm giữa các gói MVP và gói chuẩn hóa 12a → 16; câu về telemetry ở `prototype/README.md:106` trái QĐ-065; chị Linh có giọng kể không; có ghi lặng lẽ số lần mở sổ không.
+
+**QĐ-085 — Vũ trụ Chấn Hưng; bàn làm việc là hướng sản phẩm; laptop trước, điện thoại sau (QUYẾT ĐỊNH CỦA USER).** · Nguồn: USER, quyết các mâu thuẫn giữa tầng GDD/vũ trụ và tầng MVP theo QĐ-084 · 28/09
+- **Tên chuỗi: Vũ trụ Chấn Hưng** (trùng tên trường, QĐ-080). Dòng Robotics: "Đội Robot Chấn Hưng". Tệp tổng quan đổi tên thành `docs/thiet-ke/vu-tru-chan-hung-tong-quan.md`. Id ảnh `hoa-phuong-environment-style-anchor` giữ nguyên. Kịch bản prototype (còn ghi "Đại học Hoa Phượng", có test so khớp) và code sửa ở đợt viết lại.
+- **Trình dựng: bàn làm việc với giấy nhớ (QĐ-071) là hướng của sản phẩm**, không chỉ của MVP. GDD §10 và tài liệu vũ trụ §8.2 ("Khối lệnh + chip") sửa theo; Bảng phân tích kiểu Power BI ở các vụ sau xây trên bàn làm việc.
+- **Thiết bị: laptop là nền chính**; điện thoại là mục tiêu sau. Các chi tiết cho điện thoại trong GDD (bản đồ dọc, vùng chạm 44 pt, cắt ảnh dọc) để dành cho lúc làm bản điện thoại.
+- **Bàn sau:** GDD §14 và kịch bản giải trình Vụ 1 (dạy IN và so sánh ngày, cột `clb`, kết bằng truy vấn ra đúng một người) mâu thuẫn QĐ-073/QĐ-082 (chỉ WHERE, `=`, `LIKE`, AND/OR; ngành Báo chí; kết "chưa đủ kết luận"). GDD là tầng cao hơn nên cần user quyết bên nào là hướng sản phẩm; user để bàn sau.

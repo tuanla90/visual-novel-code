@@ -1,9 +1,9 @@
-# Vũ trụ Hoa Phượng — Tài liệu tổng quan (v0.1)
+# Vũ trụ Chấn Hưng — Tài liệu tổng quan (v0.1)
 
 > Chuỗi game học lập trình nhập vai, cùng diễn ra ở Trường Đại học Chấn Hưng. Mỗi ngôn ngữ là một câu lạc bộ với câu chuyện riêng; nhân vật và sự kiện đan chéo giữa các game.
 > Tài liệu này giữ **hướng chung, nhân vật chung, dòng thời gian và kiến trúc dùng chung**. Chi tiết từng game nằm trong tài liệu thiết kế riêng (ví dụ `clb-tham-tu-du-lieu-GDD-v0.5.md`).
 >
-> **Cập nhật 28/09/2026 (QĐ-074, QĐ-080 → QĐ-082):** trường đổi tên thành **Trường Đại học Chấn Hưng** (tên trường là biến trong nội dung); tên chuỗi "Vũ trụ Hoa Phượng" và tên dòng game "Đội Robot Hoa Phượng" **sẽ đổi** (QĐ-084), giữ tạm tới khi có tên mới. Thứ tự ưu tiên tài liệu: tài liệu này → GDD → MVP → prototype (QĐ-084). Bộ ba của dòng SQL cùng năm 1 (Tùng, nhân vật chính, Hà Vy); chú Bảy đổi thành chú Cường; câu hô của dòng SQL là "Số liệu đây!". Nguồn chuẩn về nhân vật là `nhan-vat.yaml` (đặc tả nội dung §4).
+> **Cập nhật 28/09/2026 (QĐ-074, QĐ-080 → QĐ-085):** chuỗi đổi tên thành **Vũ trụ Chấn Hưng**, trường là **Trường Đại học Chấn Hưng** (tên trường là biến trong nội dung); dòng Robotics thành "Đội Robot Chấn Hưng". Thứ tự ưu tiên tài liệu: tài liệu này → GDD → MVP → prototype (QĐ-084). Bộ ba của dòng SQL cùng năm 1 (Tùng, nhân vật chính, Hà Vy); chú Bảy đổi thành chú Cường; câu hô của dòng SQL là "Số liệu đây!". Trình soạn chế độ cơ bản là **bàn làm việc với giấy nhớ**; nền chính là **laptop**, điện thoại làm sau (QĐ-085). Nguồn chuẩn về nhân vật là `nhan-vat.yaml` (đặc tả nội dung §4).
 
 ---
 
@@ -57,7 +57,7 @@ Trường đại học đa ngành hư cấu ở một thành phố cỡ vừa: k
 |---|---|---|---|---|
 | **1. CLB Thám Tử Dữ Liệu** | CLB Thám Tử | SQL, bảng phân tích kiểu Power BI | SV năm 1–2, học sinh cuối cấp | **Đang làm (mùa 1)** |
 | **2. Trang Web Không Ngủ** | CLB Truyền thông | HTML/CSS, responsive, accessibility | SV, học sinh, người mới học web | Ý tưởng |
-| **3. Đội Robot Hoa Phượng** | CLB Robotics | Python cơ bản (điều khiển robot) | Học sinh, SV mới học lập trình | Ý tưởng |
+| **3. Đội Robot Chấn Hưng** | CLB Robotics | Python cơ bản (điều khiển robot) | Học sinh, SV mới học lập trình | Ý tưởng |
 | **4. Gian Hàng Số 7** | CLB Game | Python làm game | Học sinh, SV thích game | Ý tưởng |
 | **5. Đi Làm** | — (công ty) | SQL + Power BI + Python phân tích | Người đi làm: kế toán, phân tích dữ liệu | Ý tưởng, dòng thương mại riêng |
 
@@ -125,7 +125,7 @@ Xem tài liệu thiết kế riêng. Tóm tắt:
 | 5 | Trang ảnh ngày hội | Grid, ảnh responsive |
 | 6 | Buổi duyệt cuối cùng | Accessibility, form, tổng hợp |
 
-### 4.3. Đội Robot Hoa Phượng (Python cơ bản)
+### 4.3. Đội Robot Chấn Hưng (Python cơ bản)
 
 **Bối cảnh:** diễn ra **ngay sau mùa 1 của SQL**. Khánh đã nhận lỗi, CLB Robotics và CLB Thám Tử dùng chung phòng. Đội robot cần thành viên mới để kịp giải robot quốc gia tháng 4.
 
@@ -245,7 +245,7 @@ Mỗi bộ giải đố cần cung cấp cùng một bộ chức năng:
 | Chức năng | SQL | HTML/CSS | Python robot | Python game |
 |---|---|---|---|---|
 | **Sinh đề** từ mã đề | Dữ liệu, mồi nhử | Bản thiết kế, nội dung | Sân thi đấu, vật cản | Tài nguyên, yêu cầu tính năng |
-| **Trình soạn — chế độ cơ bản** | Khối lệnh + chip; Bảng phân tích | Bảng thuộc tính + chip | Sắp xếp dòng code | Sắp xếp dòng code + điền chỗ trống |
+| **Trình soạn — chế độ cơ bản** | Bàn làm việc với giấy nhớ (QĐ-071, QĐ-085); Bảng phân tích | Bảng thuộc tính + chip | Sắp xếp dòng code | Sắp xếp dòng code + điền chỗ trống |
 | **Trình soạn — Hardcore** | SQL thuần | HTML/CSS thuần | Python thuần | Python thuần |
 | **Chạy** | sql.js (SQLite) trong trình duyệt | iframe cô lập | Pyodide | Pyodide + khung vẽ |
 | **Chấm** | So tập kết quả | So kết quả hiển thị | Test sân ẩn | Test tính năng ẩn |

@@ -1,7 +1,7 @@
 # CLB Thám Tử Dữ Liệu
 
 Game học SQL kể chuyện (lối chơi điều tra – giải trình kiểu Ace Attorney) cho sinh viên năm nhất khối kinh tế.
-Là dòng game đầu tiên của **Vũ trụ Hoa Phượng**. Hiện đang ở giai đoạn prototype (vòng thử nghiệm 1) và chuẩn
+Là dòng game đầu tiên của **Vũ trụ Chấn Hưng**. Hiện đang ở giai đoạn prototype (vòng thử nghiệm 1) và chuẩn
 bị bản MVP (QĐ-077).
 
 ## Bản đồ repo
@@ -14,7 +14,7 @@ bị bản MVP (QĐ-077).
 │   ├── dac-ta-dinh-dang-noi-dung.md   đặc tả định dạng nội dung (QĐ-075): kịch bản MD + YAML, biến SQL
 │   ├── ke-hoach-goi-chuan-hoa.md      kế hoạch bước 1 của QĐ-075 (chuẩn hóa nội dung, chưa giao)
 │   ├── thiet-ke/                 thiết kế dài hạn của cả game
-│   │   ├── vu-tru-hoa-phuong-tong-quan.md   vũ trụ chung: tầm nhìn, nhân vật, dòng thời gian
+│   │   ├── vu-tru-chan-hung-tong-quan.md   vũ trụ chung: tầm nhìn, nhân vật, dòng thời gian
 │   │   ├── clb-tham-tu-du-lieu-GDD-v0.5.md  tài liệu thiết kế game (GDD)
 │   │   └── vu1-buoi-giai-trinh-kich-ban.md  kịch bản buổi giải trình Vụ 1 (bản đầy đủ)
 │   ├── prototype/                prototype tinh gọn (vòng thử nghiệm 1)
@@ -39,7 +39,7 @@ bị bản MVP (QĐ-077).
 
 ## Đọc theo thứ tự nào
 
-1. `docs/thiet-ke/vu-tru-hoa-phuong-tong-quan.md` → `docs/thiet-ke/clb-tham-tu-du-lieu-GDD-v0.5.md`: game muốn trở thành gì.
+1. `docs/thiet-ke/vu-tru-chan-hung-tong-quan.md` → `docs/thiet-ke/clb-tham-tu-du-lieu-GDD-v0.5.md`: game muốn trở thành gì.
 2. `docs/prototype/prototype-scope-down-v0.1.md`: prototype cắt gọn ra sao, đo cái gì.
 3. `docs/lich-su-quyet-dinh.md`: các quyết định đã chốt; mục mới nhất ở cuối tệp.
 4. `docs/prototype/kich-ban-prototype.md`: nội dung đang chạy trong game.

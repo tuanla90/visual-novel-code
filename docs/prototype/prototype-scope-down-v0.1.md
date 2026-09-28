@@ -9,7 +9,7 @@
 > Tài liệu liên quan:
 > - [`clb-tham-tu-du-lieu-GDD-v0.5.md`](../thiet-ke/clb-tham-tu-du-lieu-GDD-v0.5.md)
 > - [`vu1-buoi-giai-trinh-kich-ban.md`](../thiet-ke/vu1-buoi-giai-trinh-kich-ban.md)
-> - [`vu-tru-hoa-phuong-tong-quan.md`](../thiet-ke/vu-tru-hoa-phuong-tong-quan.md)
+> - [`vu-tru-chan-hung-tong-quan.md`](../thiet-ke/vu-tru-chan-hung-tong-quan.md)
 
 ---
 

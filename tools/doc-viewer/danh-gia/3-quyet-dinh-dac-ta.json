@@ -35,7 +35,7 @@
    "QĐ-070 (dòng 438) yêu cầu thêm cảnh người chơi buột miệng “Có số liệu đây!” và câu “Khoan, đếm lại đã.” của Hà Vy vào kich-ban-prototype.md — CHƯA sửa (grep “Khoan, đếm lại đã” trong kịch bản = 0). Phần “đã sửa theo” ở GDD:80, 94, 621 thì đã làm.",
    "QĐ-072 (dòng 464) yêu cầu sửa ana-01, ana-c2-intro, câu hỏi đọc kết quả, câu “Thử thách 1 ra mười người” — CHƯA sửa (vẫn còn ở kich-ban-prototype.md:138, 149, 477). QĐ ghi “khi làm code”, nên đây là việc của đợt 16.",
    "QĐ-073 (dòng 490) yêu cầu sửa kich-ban-prototype.md (inv-box, bookmark, ana-*, c1/c2, debrief-fix, deb-01…03) và `src/sql-challenge/data` — CHƯA sửa: BC24A chỉ có trong sổ QĐ, đặc tả và mockup js; prototype-scope-down-v0.1.md:144, 183, 199 vẫn ghi “CLB Báo chí” và `clb = 'Báo chí'`.",
-   "QĐ-074 (dòng 496–497) yêu cầu viết lại intro-00 và intro-01, thay cameo của Tùng trong vu-tru, đổi câu cửa miệng — CHƯA sửa: kich-ban-prototype.md:41 (Tùng vẫn “lượn sang căng tin”), kich-ban-prototype.md:54 (“Giờ còn ba người”), vu-tru-hoa-phuong-tong-quan.md:98 (cameo), “Tui cá” còn ở GDD:83, 487 và vu-tru-hoa-phuong-tong-quan.md:223.",
+   "QĐ-074 (dòng 496–497) yêu cầu viết lại intro-00 và intro-01, thay cameo của Tùng trong vu-tru, đổi câu cửa miệng — CHƯA sửa: kich-ban-prototype.md:41 (Tùng vẫn “lượn sang căng tin”), kich-ban-prototype.md:54 (“Giờ còn ba người”), vu-tru-chan-hung-tong-quan.md:98 (cameo), “Tui cá” còn ở GDD:83, 487 và vu-tru-chan-hung-tong-quan.md:223.",
    "QĐ-067/068, gói 11b (sửa nội dung) — mới làm một phần: F1 (mã class-subset/same-column-and), F4, F10 đã có trong kịch bản; F2 (kich-ban-prototype.md:256), F3 (kich-ban-prototype.md:273), F13 (kich-ban-prototype.md:404, 437 vẫn ghi “Gần như đáp án”) CHƯA làm; F9 mới làm nửa: có lời dẫn dàn dựng, nhưng Quân vẫn nói “Bạn Hiếu, SV240228” (kich-ban-prototype.md:314), trái yêu cầu “không nêu tên/mã”.",
    "QĐ-065/066 yêu cầu sửa README/ARCHITECTURE: telemetry không ghi câu SQL — CHƯA sửa: prototype/README.md:106 vẫn ghi “câu SQL người chơi chạy”, ARCHITECTURE.md:303 vẫn ghi “SQL chỉ nằm trong query_run”.",
    "Sổ không có biên bản nghiệm thu cho 11a-1, 11a-2, 11b, dù git đã gộp 491d230…1c25d14 (chống bấm đúp) và nhật ký Antigravity (nhat-ky-thay-doi-2026-09-27.md) báo đã làm NFC, too-many-rows, class-subset.",
@@ -49,7 +49,7 @@
     "kich-ban-prototype.md — nguồn chữ, phải sửa theo QĐ-070/072/073/074 và 11b.",
     "dac-ta-dinh-dang-noi-dung.md — đặc tả của QĐ-075; phải sửa theo QĐ-079.",
     "ke-hoach-goi-chuan-hoa.md — chi tiết của QĐ-079.",
-    "clb-tham-tu-du-lieu-GDD-v0.5.md và vu-tru-hoa-phuong-tong-quan.md — bị QĐ-070/074 yêu cầu sửa.",
+    "clb-tham-tu-du-lieu-GDD-v0.5.md và vu-tru-chan-hung-tong-quan.md — bị QĐ-070/074 yêu cầu sửa.",
     "Mockup `docs/mockups/ban-lam-viec-thu-thach.html` — mockup của QĐ-071 → QĐ-074.",
     "prototype/README.md, ARCHITECTURE.md — bị QĐ-065/078 yêu cầu sửa."
    ],

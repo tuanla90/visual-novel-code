@@ -1,11 +1,11 @@
 [
  {
-  "path": "docs/thiet-ke/vu-tru-hoa-phuong-tong-quan.md",
-  "vai_tro": "Tài liệu định hướng chung cho cả chuỗi game Vũ trụ Hoa Phượng: tầm nhìn, bối cảnh trường, các dòng game, nhân vật dùng chung, dòng thời gian, kiến trúc dùng chung, lộ trình ra mắt và mô hình kinh doanh. Người đọc là chủ dự án và agent viết nội dung, khi cần hiểu game “muốn trở thành gì” (README.md:41).",
+  "path": "docs/thiet-ke/vu-tru-chan-hung-tong-quan.md",
+  "vai_tro": "Tài liệu định hướng chung cho cả chuỗi game Vũ trụ Chấn Hưng: tầm nhìn, bối cảnh trường, các dòng game, nhân vật dùng chung, dòng thời gian, kiến trúc dùng chung, lộ trình ra mắt và mô hình kinh doanh. Người đọc là chủ dự án và agent viết nội dung, khi cần hiểu game “muốn trở thành gì” (README.md:41).",
   "trang_thai": "mot-phan-loi-thoi",
   "trang_thai_giai_thich": "Phần tầm nhìn và bối cảnh vẫn dùng được, nhưng vai và câu cửa miệng của Tùng đã bị QĐ-074 thay, và sổ quyết định xếp tệp này ở mức ưu tiên thấp nhất khi có mâu thuẫn (lich-su-quyet-dinh.md:11).",
   "tom_tat": [
-   "Bảy nguyên tắc chung (vu-tru-hoa-phuong-tong-quan.md:12-19): kỹ năng thật, có truyện xuyên suốt, chấm theo kết quả, mỗi người một đề, sai là để học, người không học IT vẫn chơi được, không có tuyến tình cảm.",
+   "Bảy nguyên tắc chung (vu-tru-chan-hung-tong-quan.md:12-19): kỹ năng thật, có truyện xuyên suốt, chấm theo kết quả, mỗi người một đề, sai là để học, người không học IT vẫn chơi được, không có tuyến tình cảm.",
    "Năm dòng game và câu hô riêng của từng dòng; dòng SQL hô “Có số liệu đây!” (:52-72).",
    "Tóm tắt dòng SQL (:78-85) và mô tả chi tiết các dòng HTML/CSS, Robotics, Game, Đi Làm (:87-182).",
    "Bảng nhân vật chung, các vai xuất hiện chéo, dòng thời gian trong truyện và quy tắc canon (:186-223).",
@@ -36,12 +36,12 @@
    ]
   },
   "can_ra_khi_doc": [
-   "vu-tru-hoa-phuong-tong-quan.md:223 ghi “Tùng luôn ‘Tui cá là…’”, lệch QĐ-074 (lich-su-quyet-dinh.md:497) và dac-ta-dinh-dang-noi-dung.md:108 (“Tớ cá là…”).",
-   "vu-tru-hoa-phuong-tong-quan.md:190 ghi nhà của Tùng là “SQL (bạn cùng phòng)”, chưa ghi Tùng là thành viên CLB, người kéo người chơi vào CLB và nằm trong bộ ba (QĐ-074, lich-su-quyet-dinh.md:495-496). QĐ-074 nêu đích danh chỗ này phải sửa.",
-   "vu-tru-hoa-phuong-tong-quan.md:192 ghi Hà Vy là “trợ thủ”; QĐ-074 xếp Hà Vy vào bộ ba, và nhan-vat.yaml ghi “người hướng dẫn đọc dữ liệu” (dac-ta-dinh-dang-noi-dung.md:117). Vai này đang được mô tả khác nhau giữa các tệp.",
-   "vu-tru-hoa-phuong-tong-quan.md:16 “Mỗi người một đề” và :245 “Sinh đề từ mã đề”: MVP dùng dữ liệu cố định (QĐ-077, lich-su-quyet-dinh.md:523); QĐ-075 chuyển hướng sang dữ liệu sinh theo seed. Không mâu thuẫn trực tiếp nhưng cần hiểu đây là đích xa, chưa làm.",
-   "vu-tru-hoa-phuong-tong-quan.md:246 ghi trình soạn cơ bản là “Khối lệnh + chip”; prototype dùng trình dựng dạng ô chọn (QĐ-016) và nay là bàn làm việc với giấy note (QĐ-071). QĐ-077 vẫn để Blockly ở diện “không làm”.",
-   "vu-tru-hoa-phuong-tong-quan.md:221 nói có một “bảng nhân vật gốc” duy nhất. Bảng này nay chính là nhan-vat.yaml (dac-ta-dinh-dang-noi-dung.md:101), nhưng tệp chưa trỏ tới."
+   "vu-tru-chan-hung-tong-quan.md:223 ghi “Tùng luôn ‘Tui cá là…’”, lệch QĐ-074 (lich-su-quyet-dinh.md:497) và dac-ta-dinh-dang-noi-dung.md:108 (“Tớ cá là…”).",
+   "vu-tru-chan-hung-tong-quan.md:190 ghi nhà của Tùng là “SQL (bạn cùng phòng)”, chưa ghi Tùng là thành viên CLB, người kéo người chơi vào CLB và nằm trong bộ ba (QĐ-074, lich-su-quyet-dinh.md:495-496). QĐ-074 nêu đích danh chỗ này phải sửa.",
+   "vu-tru-chan-hung-tong-quan.md:192 ghi Hà Vy là “trợ thủ”; QĐ-074 xếp Hà Vy vào bộ ba, và nhan-vat.yaml ghi “người hướng dẫn đọc dữ liệu” (dac-ta-dinh-dang-noi-dung.md:117). Vai này đang được mô tả khác nhau giữa các tệp.",
+   "vu-tru-chan-hung-tong-quan.md:16 “Mỗi người một đề” và :245 “Sinh đề từ mã đề”: MVP dùng dữ liệu cố định (QĐ-077, lich-su-quyet-dinh.md:523); QĐ-075 chuyển hướng sang dữ liệu sinh theo seed. Không mâu thuẫn trực tiếp nhưng cần hiểu đây là đích xa, chưa làm.",
+   "vu-tru-chan-hung-tong-quan.md:246 ghi trình soạn cơ bản là “Khối lệnh + chip”; prototype dùng trình dựng dạng ô chọn (QĐ-016) và nay là bàn làm việc với giấy note (QĐ-071). QĐ-077 vẫn để Blockly ở diện “không làm”.",
+   "vu-tru-chan-hung-tong-quan.md:221 nói có một “bảng nhân vật gốc” duy nhất. Bảng này nay chính là nhan-vat.yaml (dac-ta-dinh-dang-noi-dung.md:101), nhưng tệp chưa trỏ tới."
   ],
   "muc_uu_tien_doc": "thap",
   "thoi_gian_doc_phut": 12
