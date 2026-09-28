@@ -983,7 +983,7 @@ Mọi `{cảnh: …}` ở chuỗi và `Cảnh:` ở địa điểm phải có �
 
 - Địa điểm là tiêu đề `##`, dữ kiện là các `###` ngay dưới. Nhãn `chính` / `phụ` / `nhiễu` **chỉ người viết thấy** (không vào giao diện); dòng `Phân biệt:` ghi người chơi dựa vào gì để phân biệt.
 - Dữ kiện: bắt buộc `Chuỗi` (chuỗi chạy khi người chơi chọn dữ kiện) **hoặc** `Thử thách` (dữ kiện là một màn phòng máy: `- Thử thách: c-loc-lop`; bằng chứng lấy từ "Vật chứng lưu vào hồ sơ" của thẻ). Không bắt buộc: `Mở từ` (mặc định = của địa điểm), `Cần` (điều kiện §13.1, chỉ dạng `có <mã>` / `không có <mã>`, `và`, `hoặc`, ngoặc), `Mở manh mối`, `Hiện tài liệu`, `Lưu bằng chứng`, `Lặp: mỗi lần` (mặc định một lần).
-- Mỗi địa điểm có **1–3 dữ kiện** (số trong `## Luật` của lich.md). Hai [chính] cùng chỗ cùng ngày trong kịch bản khung (lời bác Thịnh + thẻ lịch) viết thành **một** dữ kiện chính có nhiều hậu quả — vì QĐ-086 "mỗi ngày giải được 1 dữ kiện chính".
+- Mỗi địa điểm có **min–max dữ kiện** (dòng `Mỗi địa điểm` trong `## Luật` của lich.md; bộ mẫu đặt `1–4` vì phòng máy và CTSV mỗi nơi gánh hai ngày: dữ kiện chính ngày 2 + ngày 4, ngày 3 + ngày 5). Hai [chính] cùng chỗ cùng ngày trong kịch bản khung (lời bác Thịnh + thẻ lịch) viết thành **một** dữ kiện chính có nhiều hậu quả — vì QĐ-086 "mỗi ngày giải được 1 dữ kiện chính". Dữ kiện gắn nhãn `chính` nhưng chỉ là bước đệm (cô Hạnh cấp quyền trước khi vào phòng máy) không ghi ở lịch mà được dữ kiện chính của ngày `Cần` (qua vật phẩm nó tạo ra); bộ kiểm gộp nó vào chi phí khung của ngày đó.
 
 ### 18.5 Lịch — `lich.md`
 
@@ -1014,7 +1014,7 @@ Mọi `{cảnh: …}` ở chuỗi và `Cảnh:` ở địa điểm phải có �
 ```
 
 - Mỗi ngày điều tra có **đúng một** `Dữ kiện chính` (phải là dữ kiện gắn nhãn `chính`, mỗi dữ kiện chính thuộc đúng một ngày, `Mở từ` của nó ≤ ngày đó) và một `Buổi tối`. Buổi tối = "đồng đội dẫn tới đúng chỗ, người chơi tự làm bước cuối": chuỗi buổi tối phải `[ĐI TỚI]` (trực tiếp hoặc qua chuỗi khác) chuỗi của dữ kiện chính ngày đó.
-- **Kiểm "≤ 2 khung":** chi phí = tổng `Tốn khung` của dữ kiện chính cộng các dữ kiện nó `Cần` (đệ quy) mà mở **cùng ngày**, cộng chi phí "vào" của mỗi địa điểm phòng máy phải ghé. Lớn hơn `Dữ kiện chính tối đa` là lỗi tại dòng `Dữ kiện chính`.
+- **Kiểm "≤ 2 khung":** chi phí = tổng `Tốn khung` của dữ kiện chính cộng các dữ kiện tạo ra vật phẩm nó `Cần` (đệ quy) mà mở **cùng ngày**, cộng chi phí "vào" của mỗi địa điểm phòng máy phải ghé. Lớn hơn `Dữ kiện chính tối đa` là lỗi tại dòng `Dữ kiện chính`. Ví dụ ngày 2: cô Hạnh (1) + vào phòng máy (1) + bàn làm việc bên trong (0) = 2. Mọi dữ kiện `chính` phải thuộc đúng một ngày theo cách này.
 - `{ngày họp}`: không có khung; `Chuỗi` bắt buộc. `[HỎI … · trừ uy tín]`, `[CHỌN DÒNG … · trừ uy tín]` chỉ được dùng ở chuỗi tới được từ ngày họp.
 - `## Kết`: `Kết thật` là chuỗi có `[ĐIỀU KIỆN]` ở đầu (§6.1) — đó là **điều kiện true end**; `Kết thường` không có `[ĐIỀU KIỆN]`. Cả hai kết thúc bằng `[KẾT THÚC]`. Kiểm: mọi mã trong điều kiện tồn tại và **có cách đạt được** (do một dữ kiện `Mở manh mối`/`Lưu bằng chứng`, hoặc thẻ thử thách lưu); điều kiện thỏa khi có đủ mọi thứ đạt được; và **không** thỏa khi chỉ có các thứ từ dữ kiện chính (true end phải cần dữ kiện phụ).
 
@@ -1034,7 +1034,7 @@ Dùng được trong chuỗi (ngoài §6.3: `[VÀO]`, `[RA]`, `[ĐI TỚI]`, `[H
 | `- [ĐIỀU KIỆN] có ev-nhat-ky-in và (có clue-loi-chu-cuong hoặc có clue-loi-dat)` | Dòng đầu chuỗi kết thật (và chuỗi có điều kiện khác). |
 | `- [HẬU QUẢ] mở manh mối clue-x, lưu bằng chứng ev-y, đặt co.z, đi tới <chuỗi>` | §13.2 thêm `lưu bằng chứng`. |
 
-Số dòng ghi trong `[LỌC THỬ]`, `[MÀN CHIẾU]`, "Số dòng kỳ vọng" của thẻ là **số người viết khai**; kiểm khớp dữ liệu thật là việc đợt 14 (bộ đọc gom sẵn mọi cặp `(sql, số dòng, vị trí)` vào `soDongKhai` của dữ liệu sinh để đợt 14 chỉ cần chạy).
+Số dòng ghi trong `[LỌC THỬ]`, `[MÀN CHIẾU … · <n> dòng]` (khi có khối sql), "Số dòng kỳ vọng" của thẻ (đi với "SQL chuẩn") là **số người viết khai**; kiểm khớp dữ liệu thật là việc đợt 14: bộ chuyển gom sẵn mọi cặp `(sql, soDong, noi)` vào `soDongKhai` của dữ liệu sinh, đợt 14 chỉ cần chạy từng câu trên dữ liệu (`docs/mvp/kiem-du-lieu-vu1.py` là bộ dữ liệu minh họa) và so số dòng.
 
 ### 18.7 Lời chung — `chung/loi-chung.md`
 
@@ -1053,4 +1053,4 @@ Khuôn thẻ hiện có. Tiền tố: `clue-` = **giấy nhớ** người chơi 
 
 ### 18.9 Kiểm lỗi của bộ MVP (`npm run kiem-noi-dung:mvp`)
 
-Lỗi, báo `<tệp>:<dòng>`: dòng không khớp quy ước; định danh trùng; tham chiếu không tồn tại (cảnh, địa điểm, dữ kiện, chuỗi, nhân vật, biểu cảm, thẻ hồ sơ, thẻ thử thách, trang sổ); mỗi ngày đúng một dữ kiện chính và một buổi tối; dữ kiện chính đạt được trong ≤ N khung; buổi tối dẫn tới dữ kiện chính; mỗi địa điểm 1–3 dữ kiện; điều kiện true end đạt được và cần dữ kiện phụ; nhân vật nói trước `Xuất hiện từ`; `trừ uy tín` ngoài ngày họp; `[TẠO NHÂN VẬT]` thiếu/thừa/sai thứ tự; `[RẼ KẾT]` không đúng một lần; chuỗi lẻ; thẻ hồ sơ không ai tạo; tên cấm (`- Tên cấm: Vương Khánh` trong quy-uoc.md) xuất hiện trong chữ hiển thị.
+Đã cài ở gói 12m (`tools/noi-dung/luat-mvp.ts`; test `src/content/real/testing/bo-doc-mvp.test.ts`). Lỗi, báo `<tệp>:<dòng>`: dòng không khớp quy ước; định danh trùng; tham chiếu không tồn tại (cảnh, địa điểm, dữ kiện, chuỗi, nhân vật, biểu cảm, thẻ hồ sơ, thẻ thử thách, trang sổ); mỗi ngày đúng một dữ kiện chính và một buổi tối; dữ kiện chính đạt được trong ≤ N khung; buổi tối dẫn tới dữ kiện chính; mỗi địa điểm 1–3 dữ kiện; điều kiện true end đạt được và cần dữ kiện phụ; nhân vật nói trước `Xuất hiện từ`; `trừ uy tín` ngoài ngày họp; `[TẠO NHÂN VẬT]` thiếu/thừa/sai thứ tự; `[RẼ KẾT]` không đúng một lần; chuỗi lẻ; thẻ hồ sơ không ai tạo; tên cấm (`- Tên cấm: Vương Khánh` trong quy-uoc.md) xuất hiện trong chữ hiển thị.
