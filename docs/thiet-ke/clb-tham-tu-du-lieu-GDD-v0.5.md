@@ -10,6 +10,7 @@
 > - **Sổ tay:** sổ chị Linh chỉ hiện qua hoạt cảnh; người chơi có **sổ cá nhân**, chép dần qua câu kiểm tra toán của Hà Vy; bỏ gợi ý 3 cấp và không đếm gợi ý (QĐ-080, QĐ-083).
 > - **Buổi giải trình: phản biện 5 nhịp**, trừ uy tín ở nhịp 1, 4, 5, Minh Anh giải cứu (QĐ-082, QĐ-083) (§5.2). Câu hô đổi thành **"Số liệu đây!"**.
 > - **Nhân vật phụ kiểu miền Bắc:** bác Tư → **bác Thịnh** (bảo vệ giảng đường B), chú Bảy → **chú Cường** (QĐ-081).
+> - **Kịch bản khung MVP (QĐ-087):** `docs/mvp/kich-ban-vu1-mvp-khung.md` — mở đầu tuần 1 và Vụ 1; với MVP thay §14. Nhân vật chính là nam, tạo nhân vật 2 câu (tên, ngành); thêm Duy (giữ tài sản CLB).
 > - **MVP thử lịch ngày × 3 khung giờ, query thoải mái, 2 kết (QĐ-086)** — chỉ áp cho MVP; nhịp 4 buổi/vụ của GDD giữ nguyên tới khi playtest.
 > - **MVP (QĐ-077):** dữ liệu cố định, chưa có mã đề (§4, §12 là đích sau MVP); trình dựng dạng **bàn làm việc với giấy nhớ** thay cho Khối lệnh/Blockly (QĐ-071); chưa làm trang phục, mini game.
 > - **Vụ 1 (§14) viết trước QĐ-073:** vòng chính nay chỉ dạy WHERE, `=`, `LIKE`, AND/OR; "Báo chí" là ngành, có lớp BC24A; câu OR của Quân ra 14 dòng. Phần §14 sẽ viết lại ở gói kịch bản MVP; khi mâu thuẫn, sổ quyết định thắng.
@@ -89,7 +90,7 @@ Tuần đầu năm học 2026–2027, phòng Công tác sinh viên nhận thư n
 **Bộ ba cùng năm 1** (QĐ-074, QĐ-081), mỗi người giỏi một thứ, khớp ba mảng lối chơi ở §9: **Tùng** tìm kiếm trên bản đồ · **người chơi** tin học · **Hà Vy** logic toán. Ba người xưng **"tớ – cậu"**. Minh Anh là chủ nhiệm, đứng ngoài bộ ba.
 
 **Người chơi — tân sinh viên năm nhất**
-- Tự tạo nhân vật: tên, ngành (khối kinh tế), nam/nữ; có nút "Ngẫu nhiên" (QĐ-077). Ở KTX cùng phòng với Tùng.
+- **Nam** (QĐ-087). Tự tạo nhân vật: tên, ngành (khối kinh tế); có nút "Ngẫu nhiên"; không hỏi giới tính. Ở KTX cùng phòng với Tùng.
 - **Giỏi tin học** theo nghĩa quen Excel, máy tính; vẫn học ngành kinh tế, chưa biết SQL. **Tự học**: chép dần kiến thức từ sổ chị Linh vào **sổ cá nhân** (QĐ-083).
 - Câu hô khi phản bác — câu "Objection!" của game: **"Số liệu đây!"** (QĐ-082). Lần đầu buột miệng khi truy vấn đầu tiên ra kết quả, về sau hô ở buổi giải trình khi chạy lại truy vấn đã sửa.
 
@@ -109,6 +110,10 @@ Tuần đầu năm học 2026–2027, phòng Công tác sinh viên nhận thư n
 - Kỹ tính, hoài nghi, tốt bụng. Câu cửa miệng: **"Khoan, tính lại đã."** (QĐ-081); đáp Tùng: **"Đừng cá. Tính."** (QĐ-084).
 - **Giỏi logic toán, không giải thích cú pháp SQL** (QĐ-080). Diễn giải bằng ẩn dụ toán học (vd hai vòng tròn giao – hợp cho AND/OR); câu hỏi kiểm tra của cô — người chơi chọn đoạn code khớp lời toán học — **chính là bước chép kiến thức vào sổ cá nhân** (QĐ-083).
 - Soát hồ sơ trước buổi giải trình (so từng giấy nhớ với dữ kiện). Ở buổi giải trình, gọi tên lỗi của Quân bằng ngôn ngữ toán sau khi người chơi sửa xong (QĐ-082). Chỉ lên tiếng khi con số bất thường; không nói "đúng rồi / sai rồi" về kết quả truy vấn.
+
+**Nguyễn Đức Duy — năm 2 ngành Hành chính học, thành viên từ năm nhất** (QĐ-087)
+- **Giữ tài sản CLB:** chìa khóa phòng, tủ hồ sơ, sổ tài sản, máy tính cũ của CLB (làm sổ hoạt động, không truy cập dữ liệu trường). Lập biên bản kiểm kê; nắm quy trình rà soát, hồ sơ CLB.
+- Không phá án, không đưa manh mối quyết định. Móc cho mùa: nhận ra người đo đạc phòng qua sổ tài sản (Vụ 4), giữ chìa ngăn tủ (Vụ 5).
 
 **Phạm Diệu Linh — cựu chủ nhiệm (đã tốt nghiệp, đi du học)**
 - Để lại **cuốn sổ tự học SQL** ở phòng CLB: đủ nội dung từ đầu (cú pháp, điểm tâm đắc, lỗi thường gặp). Sổ chỉ hiện qua **hoạt cảnh** (một trang viết tay phóng to), không có giao diện lật riêng (QĐ-083).
@@ -149,7 +154,7 @@ Tuần đầu năm học 2026–2027, phòng Công tác sinh viên nhận thư n
 
 ## 4. Đoạn mở đầu: Tùng hỏi chuyện, tạo mã đề
 
-> **Giới hạn 3–4 câu (QĐ-084).** **MVP (QĐ-077):** chỉ hỏi tên, ngành, nam/nữ (có nút "Ngẫu nhiên"), không tạo mã đề; sau MVP thêm tối đa 1 câu nếu cần cho mã đề hoặc nội dung (thay 6 câu bên dưới); không thu thông tin thật, không ghi tên vào telemetry. Phần mã đề dưới đây là đích sau MVP.
+> **Giới hạn 3–4 câu (QĐ-084).** **MVP (QĐ-077, QĐ-087):** chỉ hỏi tên, ngành (có nút "Ngẫu nhiên"); nhân vật chính là nam, không hỏi giới tính; Tùng hỏi trong cảnh làm quen ở phòng KTX, không tạo mã đề; sau MVP thêm tối đa 1 câu nếu cần cho mã đề hoặc nội dung (thay 6 câu bên dưới); không thu thông tin thật, không ghi tên vào telemetry. Phần mã đề dưới đây là đích sau MVP.
 
 **Bối cảnh:** tối đầu tiên ở ký túc xá. Tùng vừa đi đón tân sinh viên về, vừa dọn đồ vừa làm quen.
 
@@ -471,6 +476,8 @@ Tách **phần kể chuyện** (bản đồ, hội thoại, vật chứng, giả
 
 ## 14. Vụ 1 — Bức thư nặc danh
 
+> **Cho MVP (QĐ-087):** Vụ 1 theo `docs/mvp/kich-ban-vu1-mvp-khung.md`. Mục này giữ làm tham khảo cho bản đầy đủ; thống nhất ở tầng sản phẩm vẫn "bàn sau" (QĐ-085).
+>
 > **Lưu ý (28/09):** mục này viết trước QĐ-073/074/077/082. Khi mâu thuẫn, theo sổ quyết định: dữ liệu cố định cho MVP; vòng chính chỉ WHERE, `=`, `LIKE`, AND/OR; "Báo chí" là ngành, có lớp BC24A; câu OR của Quân ra 14 dòng; kết buổi giải trình là "chưa đủ kết luận, cần nguồn xác minh độc lập" (QĐ-024), không phải truy vấn ra đúng một người; bác Tư → bác Thịnh (bảo vệ). Viết lại ở gói kịch bản MVP.
 
 > Nguyên tắc cho vụ đầu: **ngắn, dễ, có một cú lật lời khai thật đã**. Người chơi nên nghi đúng người khá sớm; cái thú nằm ở việc chứng minh.

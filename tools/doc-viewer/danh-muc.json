@@ -34,7 +34,15 @@
       ]
     },
     {
-      "ten": "3 · Prototype đang chạy",
+      "ten": "3 · Tầm nhìn MVP",
+      "muc_dich": "Kịch bản khung MVP đã duyệt (QĐ-087): mở đầu tuần 1 và Vụ 1 theo nhịp ngày × 3 khung giờ (QĐ-086). Tầng thứ ba theo QĐ-084; với MVP thay GDD §14. Bản ghi brainstorm là tư liệu nguồn.",
+      "tai_lieu": [
+        "docs/mvp/kich-ban-vu1-mvp-khung.md",
+        "docs/session-trao-doi-2026-09-28.md"
+      ]
+    },
+    {
+      "ten": "4 · Prototype đang chạy",
       "muc_dich": "Phạm vi, kịch bản và màn thử thách mới của prototype. Kịch bản bị test khóa từng ký tự nên mọi sửa chữ đều kéo theo code.",
       "tai_lieu": [
         "docs/prototype/prototype-scope-down-v0.1.md",
@@ -44,7 +52,7 @@
       ]
     },
     {
-      "ten": "4 · Chuẩn hóa nội dung (sắp làm)",
+      "ten": "5 · Chuẩn hóa nội dung (sắp làm)",
       "muc_dich": "Định dạng nội dung mới và kế hoạch 4 gói đang chờ bạn chốt (QĐ-079). Đọc sau bước 3 để thấy cái gì sẽ được chuyển.",
       "tai_lieu": [
         "docs/dac-ta-dinh-dang-noi-dung.md",
@@ -52,7 +60,7 @@
       ]
     },
     {
-      "ten": "5 · Vận hành và kỹ thuật",
+      "ten": "6 · Vận hành và kỹ thuật",
       "muc_dich": "Tài liệu cho nhóm thử nghiệm và cho người sửa code. Chủ yếu kiểm có lỗi thời so với tính năng đã thêm (QĐ-076/077) không.",
       "tai_lieu": [
         "prototype/README.md",
@@ -61,7 +69,7 @@
       ]
     },
     {
-      "ten": "6 · Ảnh",
+      "ten": "7 · Ảnh",
       "muc_dich": "Bộ prompt và hướng dẫn ô ảnh. Ưu tiên thấp trừ khi sắp làm gói hình MVP; bốn tệp cuối là lịch sử/tham khảo, đọc lướt.",
       "tai_lieu": [
         "art/README.md",

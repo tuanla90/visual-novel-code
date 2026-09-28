@@ -145,11 +145,18 @@ minh-anh:
 
 quan:
   ten-hien-thi: Quân
-  vai: Người của Ban Pháp chế – Kiểm tra Hội sinh viên. Chỉ xuất hiện từ phần Giải trình. KHÔNG phải thành viên CLB.
+  vai: Người của Ban Pháp chế – Kiểm tra Hội sinh viên. KHÔNG phải thành viên CLB. Gặp CLB lần đầu ở CTSV ngày 3 Vụ 1 (giám sát việc lập căn cứ), chất vấn ở buổi họp rà soát (QĐ-087).
   xung-ho: { voi-clb: "tôi / các bạn", voi-nguoi-choi: "tôi / em" }
   tinh-cach: Lạnh, chính xác, hơi kẻ cả; biết công nhận khi sai.
-  xuat-hien-tu: debrief                  # bộ đọc báo lỗi nếu Quân nói trước phần này
+  xuat-hien-tu: vu1-ngay-3               # bộ đọc báo lỗi nếu Quân nói trước phần này (QĐ-087; trước là debrief)
   bieu-cam: [neutral, smug, stunned]
+
+duy:                                     # QĐ-087
+  ten-hien-thi: Duy
+  ho-ten: Nguyễn Đức Duy
+  vai: Năm 2 Hành chính học, thành viên CLB từ năm nhất. Giữ tài sản CLB (chìa khóa, tủ hồ sơ, sổ tài sản, máy tính cũ); nắm quy trình rà soát. Không phá án.
+  xung-ho: { voi-bo-ba: "tớ / cậu", voi-minh-anh: "em / chị" }
+  bieu-cam: [neutral]
 
 bac-tu:                                  # mã giữ nguyên khi đổi tên (QĐ-079 câu 4)
   ten-hien-thi: Bác Thịnh                # trước là "Bác Thịnh" (QĐ-081)
@@ -160,7 +167,7 @@ bac-tu:                                  # mã giữ nguyên khi đổi tên (Q�
 
 Trường bắt buộc: `ten-hien-thi`, `vai`, `bieu-cam`. Các trường khác là hướng dẫn cho người viết; bộ đọc chỉ kiểm tra `bieu-cam` và `xuat-hien-tu`.
 
-Hai người nói đặc biệt không khai báo trong file: `player` (hiển thị tên người chơi đặt; câu hô "Số liệu đây!", QĐ-082) và `narrator` (không nhãn). Tên nhân vật trong câu thoại viết bằng biến `{{nv.<mã>}}` (QĐ-079 câu 4), tên trường bằng `{{truong.ten-day-du}}` / `{{truong.ten-ngan}}` (QĐ-080).
+Hai người nói đặc biệt không khai báo trong file: `player` (nam, QĐ-087; hiển thị tên người chơi đặt; câu hô "Số liệu đây!", QĐ-082) và `narrator` (không nhãn). Tên nhân vật trong câu thoại viết bằng biến `{{nv.<mã>}}` (QĐ-079 câu 4), tên trường bằng `{{truong.ten-day-du}}` / `{{truong.ten-ngan}}` (QĐ-080).
 
 ---
 

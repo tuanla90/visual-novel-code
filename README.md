@@ -17,6 +17,10 @@ bị bản MVP (QĐ-077).
 │   │   ├── vu-tru-chan-hung-tong-quan.md   vũ trụ chung: tầm nhìn, nhân vật, dòng thời gian
 │   │   ├── clb-tham-tu-du-lieu-GDD-v0.5.md  tài liệu thiết kế game (GDD)
 │   │   └── vu1-buoi-giai-trinh-kich-ban.md  kịch bản buổi giải trình Vụ 1 (bản đầy đủ)
+│   ├── session-trao-doi-2026-09-28.md  bản ghi buổi brainstorm hướng MVP (tư liệu)
+│   ├── mvp/                      tầm nhìn MVP
+│   │   ├── kich-ban-vu1-mvp-khung.md       kịch bản khung: mở đầu tuần 1 + Vụ 1 (QĐ-087)
+│   │   └── kiem-du-lieu-vu1.py             dữ liệu minh họa Vụ 1 + lệnh kiểm số dòng
 │   ├── prototype/                prototype tinh gọn (vòng thử nghiệm 1)
 │   │   ├── prototype-scope-down-v0.1.md     phạm vi prototype + kế hoạch thử nghiệm (§9)
 │   │   ├── kich-ban-prototype.md            kịch bản chơi được — NGUỒN của src/content/real (có test so khớp)
@@ -40,10 +44,11 @@ bị bản MVP (QĐ-077).
 ## Đọc theo thứ tự nào
 
 1. `docs/thiet-ke/vu-tru-chan-hung-tong-quan.md` → `docs/thiet-ke/clb-tham-tu-du-lieu-GDD-v0.5.md`: game muốn trở thành gì.
-2. `docs/prototype/prototype-scope-down-v0.1.md`: prototype cắt gọn ra sao, đo cái gì.
-3. `docs/lich-su-quyet-dinh.md`: các quyết định đã chốt; mục mới nhất ở cuối tệp.
-4. `docs/prototype/kich-ban-prototype.md`: nội dung đang chạy trong game.
-5. `prototype/README.md` và `prototype/docs/ARCHITECTURE.md`: chạy và sửa code.
+2. `docs/mvp/kich-ban-vu1-mvp-khung.md`: bản MVP sẽ chơi ra sao (mở đầu + Vụ 1).
+3. `docs/prototype/prototype-scope-down-v0.1.md`: prototype cắt gọn ra sao, đo cái gì.
+4. `docs/lich-su-quyet-dinh.md`: các quyết định đã chốt; mục mới nhất ở cuối tệp.
+5. `docs/prototype/kich-ban-prototype.md`: nội dung đang chạy trong game.
+6. `prototype/README.md` và `prototype/docs/ARCHITECTURE.md`: chạy và sửa code.
 
 **Thứ tự ưu tiên tài liệu** (QĐ-084): tổng quan vũ trụ → GDD → tầm nhìn MVP → tầm nhìn prototype. Khi các tài liệu mâu thuẫn, đưa người quyết định (user) chốt, không tự phân xử.
 
