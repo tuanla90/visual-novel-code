@@ -4,40 +4,53 @@
 
 > NHIỆM VỤ: Buổi họp rà soát
 
-- **quan** (smug): Phản ánh là diện rộng. Tên H hoặc lớp BC24A: mười bốn dòng. Các bạn chỉ đưa ra hai.
+- [DÀN DỰNG] {{nv.thay-quang}} ngồi giữa; {{nv.co-lan}} và {{nv.quan}} một bên, CLB một bên. {{nv.hoai}} chưa được mời vào.
+- **thay-quang** (neutral): Mời CLB Thám Tử trình bày căn cứ của mình.
+- **minh-anh** (neutral): Dạ, bọn em xin trình bày truy vấn đã dùng ạ.
+- **quan** (smug): Phản ánh là diện rộng. Tên bắt đầu bằng H hoặc lớp BC24A: mười bốn dòng. Các bạn chỉ đưa ra hai.
 - [MÀN CHIẾU hop-chieu-or · truy vấn nạp sẵn c-sua-or-quan · chạy · 14 dòng]
+- **tung** (worried): Ơ… mười bốn dòng thật.
 - [DÀN DỰNG] Nhịp 1: người chơi chạm vào OR (chạm sai mất 1 vạch). Nhịp 2: sửa thành AND → 2 dòng → "Số liệu đây!". Chạy thử không phạt.
 - [SỬA TRUY VẤN c-sua-or-quan]
 - [HIỆU ỨNG co-so-lieu-day]
-- **ha-vy** (neutral): Anh lấy phần hợp, câu hỏi cần phần giao.
+- **ha-vy** (neutral): Anh đang lấy phần hợp. Câu hỏi của bọn em cần phần giao.
+- **quan** (neutral): …Hai dòng. Được. Tiếp đi.
 - [ĐI TỚI hop-01]
 
 ### hop-01 — Nhịp 4–5: đọc hai dòng {cảnh: phong-hop}
 
 - [HỎI q-hai-dong · trừ uy tín] quan: "Theo điều kiện trên màn hình, hai dòng này là ai?"
-  - (A) {id: thoa-dieu-kien} Hai người thỏa điều kiện lọc, cần kiểm tiếp. [ĐÚNG] → phản hồi: **quan** (neutral): Đúng là chỉ có thế.
-  - (B) {id: da-bo-thu} Hai người đã bỏ thư. → phản hồi: **ha-vy** (thinking): Khoan. Điều kiện lọc là tên và lớp, không phải hành động.
-  - (C) {id: cung-dong-co} Hai người cùng động cơ. → phản hồi: **ha-vy** (thinking): Dữ liệu không có cột động cơ.
-- [HỎI q-thu-pham · trừ uy tín] thay-quang: "Vậy hai bạn này là thủ phạm?"
-  - (A) {id: khong-so-niem-phong} Không. Sổ niêm phong chỉ cho biết {{nv.hoai}} là người nộp, chưa cho biết ai viết. [ĐÚNG] → phản hồi: **thay-quang** (neutral): Nguồn độc lập. Được.
-  - (B) {id: co} Có. → phản hồi: **minh-anh** (worried): Em xin phép nói lại: dữ liệu chỉ thu hẹp.
-  - (C) {id: khong-ket-luan} Không kết luận được gì. → phản hồi: **ha-vy** (thinking): Có một điều kết luận được: ai là người nộp.
+  - (A) {id: thoa-dieu-kien} Hai người thỏa điều kiện lọc, cần kiểm tiếp. [ĐÚNG] → phản hồi: **quan** (neutral): Đúng. Dữ liệu chỉ nói được đến đó.
+  - (B) {id: da-bo-thu} Hai người đã bỏ thư. → phản hồi: **ha-vy** (thinking): Khoan. Điều kiện lọc là tên với lớp, có phải hành động đâu.
+  - (C) {id: cung-dong-co} Hai người cùng động cơ. → phản hồi: **ha-vy** (thinking): Dữ liệu này làm gì có cột động cơ.
+- [HỎI q-thu-pham · trừ uy tín] thay-quang: "Vậy hai bạn này là người viết thư?"
+  - (A) {id: khong-so-niem-phong} Không. Sổ niêm phong chỉ cho biết {{nv.hoai}} là người nộp, chưa cho biết ai viết. [ĐÚNG] → phản hồi: **thay-quang** (neutral): Tách được người nộp với người viết. Được, thầy ghi nhận.
+  - (B) {id: co} Có. → phản hồi: **minh-anh** (worried): Thầy cho em nói lại ạ: dữ liệu chỉ giúp thu hẹp thôi.
+  - (C) {id: khong-ket-luan} Không kết luận được gì. → phản hồi: **ha-vy** (thinking): Có chứ. Kết luận được một điều: ai là người nộp.
 - [RẼ KẾT]
 
 ### ket-that — True end: Hoài kể chuyện được nhờ {cảnh: phong-hop}
 
 - [ĐIỀU KIỆN] có ev-nhat-ky-in và (có clue-loi-chu-cuong hoặc có clue-loi-dat)
-- **hoai** (nervous): Một anh khóa trên nhờ em nộp hộ bản kiến nghị, dặn ký "H." cho có. Em không đọc thư.
-- **thay-quang** (neutral): Thư này soạn bởi người khác rồi mượn tay tân sinh viên. Loại khỏi hồ sơ rà soát. CLB được đến hết học kỳ, không kèm điều kiện.
+- [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa.
+- **thay-quang** (neutral): Em Hoài, em kể lại giúp thầy hôm em nộp thư.
+- **hoai** (nervous): Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy dặn cứ ký "H." là được. Em không đọc thư ạ.
+- **thay-quang** (neutral): Vậy là thư do người khác soạn, rồi mượn tay một bạn năm nhất đi nộp.
+- **thay-quang** (neutral): Lá thư này không tính vào hồ sơ rà soát. CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện.
+- **hoai** (relieved): Em xin lỗi vì làm mọi người mất công ạ.
+- **minh-anh** (happy): Không sao đâu em. Cảm ơn thầy ạ.
 - **quan** (stunned): Dữ liệu không nói dối. Nhưng người đọc dữ liệu thì có… hôm nay là tôi.
 - [THẺ CHỮ] **narrator**: SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.
-- **tung** (happy): Tớ cá là…
-- **ha-vy** (smile): Đừng cá.
+- **tung** (happy): Giữ được phòng rồi! Tối nay tớ khao trà đá.
+- **ha-vy** (smile): Được. Lần này cậu trả thật đấy nhé.
 - [KẾT THÚC]
 
 ### ket-thuong — Kết thường: chỉ là một ý kiến sinh viên {cảnh: phong-hop}
 
-- **hoai** (nervous): Em chỉ nộp thôi.
-- **thay-quang** (neutral): Thư vẫn tính là một ý kiến sinh viên trong hồ sơ. Không thu phòng ngay. CLB được đến hết học kỳ, báo cáo hoạt động hằng tháng.
-- [THẺ CHỮ] **narrator**: Hai dòng chỉ cho ta chỗ cần đến. Phần còn lại phải đợi một nguồn khác.
+- [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa.
+- **thay-quang** (neutral): Em Hoài, lá thư ký "H." là em nộp vào hộp phải không?
+- **hoai** (nervous): Dạ… em chỉ nộp thôi ạ.
+- **thay-quang** (neutral): Thư vẫn được tính là một ý kiến sinh viên trong hồ sơ. Chưa thu phòng ngay. CLB được sinh hoạt đến hết học kỳ, nộp báo cáo hoạt động hằng tháng.
+- **minh-anh** (worried): Dạ, bọn em sẽ báo cáo đầy đủ ạ.
+- [THẺ CHỮ] **narrator**: Hai dòng chỉ cho ta chỗ cần đến. Phần còn lại phải chờ một nguồn khác.
 - [KẾT THÚC]

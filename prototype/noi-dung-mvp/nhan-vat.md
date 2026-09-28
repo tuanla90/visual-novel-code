@@ -55,7 +55,7 @@
 ### hoai — Hoài
 - Họ tên: Lê Thu Hoài
 - Vai: Lớp BC24A, người nộp thư hộ. Được mời vào ở buổi họp; không nêu tên người nhờ.
-- Biểu cảm: neutral, nervous
+- Biểu cảm: neutral, nervous, downcast, relieved
 - Xuất hiện từ: ngày họp
 
 ### hieu — Hiếu
