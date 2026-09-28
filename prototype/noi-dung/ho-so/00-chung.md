@@ -1,0 +1,5 @@
+## Hồ sơ vật chứng
+
+- [DÀN DỰNG] Mở bằng nút "Hồ sơ" trên thanh trên cùng (QĐ-027). Tông giấy: nền kem, ghim (QĐ-026). Ba nhóm: Manh mối (`clue-…`), Tài liệu (`doc-…`), Kết quả truy vấn (`ev-…`). Tiêu đề và mô tả của thẻ `ev-…` nằm ở thẻ thử thách tương ứng; mục này chỉ thêm chú thích sau giải trình cho ba thẻ kết quả truy vấn có dữ liệu cá nhân: `ev-c1-names-h`, `ev-c3-shortlist`, `ev-quan-fixed` (QĐ-062). `ev-c2-classes-b` chỉ có mã lớp nên giữ nguyên.
+- [DÀN DỰNG] QĐ-037: "Câu hỏi còn mở" (điều người chơi cần tìm tiếp nhờ manh mối đó) hiện từ lúc mở thẻ đến hết Phần 4. "Lưu ý" (giới hạn của bằng chứng) chỉ hiện từ Phần 5 (`ending`) trở đi, như phần tổng kết bài học; khi đó thay cho "Câu hỏi còn mở". doc-handover-log xuất hiện ở Phần 5 nên hiện "Lưu ý" ngay, không có "Câu hỏi còn mở". Không thẻ nào nói kết quả truy vấn là "danh sách cần xác minh" trước màn giải trình (QĐ-023).
+- [DÀN DỰNG] Dòng "Giá trị cho trình dựng" là đặc tả cho mục "Từ manh mối" (QĐ-017), không hiện trên thẻ. `[HIỆN TÀI LIỆU]` trong chuỗi kể chuyện chỉ hiện phần nội dung của tài liệu; "Câu hỏi còn mở" và "Lưu ý" chỉ nằm trên thẻ trong Hồ sơ.

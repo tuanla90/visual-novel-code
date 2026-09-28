@@ -1,35 +1,38 @@
 // @vitest-environment node
 /**
- * Test TRUNG THÀNH: dữ liệu ở src/content/real là bản chép nguyên văn docs/prototype/kich-ban-prototype.md.
+ * Test TRUNG THÀNH: dữ liệu ở src/content/real là bản chép nguyên văn nội dung trong prototype/noi-dung/.
  *
- * Kịch bản được đọc theo đúng "Quy ước đọc file" (testing/read-script.ts — bộ đọc chặt, gặp dòng lạ
- * là ném lỗi) rồi so HAI CHIỀU với dữ liệu: mỗi chuỗi, mỗi thẻ được làm phẳng thành danh sách khóa
- * `loại|trường|…|chữ` ở cả hai phía và so bằng toEqual — thiếu, thừa, sai thứ tự hay sai một ký tự
- * đều đỏ. Thêm một lưới an toàn: mọi chuỗi hiển thị nằm bất kỳ đâu trong dữ liệu phải có nguyên văn
- * trong kịch bản.
+ * Nội dung được đọc bằng bộ đọc chặt (tools/noi-dung — gặp dòng lạ là lỗi `<tệp>:<dòng>`), biến tên
+ * `{{nv.…}}`/`{{truong.…}}` được thay trước, rồi so HAI CHIỀU với dữ liệu: mỗi chuỗi, mỗi thẻ được làm
+ * phẳng thành danh sách khóa `loại|trường|…|chữ` ở cả hai phía và so bằng toEqual — thiếu, thừa, sai
+ * thứ tự hay sai một ký tự đều đỏ. Thêm một lưới an toàn: mọi chuỗi hiển thị nằm bất kỳ đâu trong dữ
+ * liệu phải có nguyên văn trong nội dung.
  */
-import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { BLOCKING_DIAGNOSTIC_CODES, CLUE_IDS, DOCUMENT_IDS, CHALLENGE_IDS } from '../../shared/ids';
-import { CHALLENGE_SPECS } from '../../sql-challenge/data/challenges';
+import { CHALLENGE_SPECS, QUAN_OR_QUERY } from '../../sql-challenge/data/challenges';
 import type { DiagnosticResponse } from '../../sql-challenge/types';
 import { DEFAULT_GATE_LABEL } from '../../story/engine/runtime';
 import type { MultipleChoiceQuestion, StoryNode } from '../../story/types';
 import { realContent } from '.';
 import {
-  readScript,
+  dinhDangLoi,
   type RawChallengeCard,
   type RawDiagnosticResponse,
   type RawLine,
   type RawQuestion,
   type RawSequence,
-} from './testing/read-script';
+} from '../../../tools/noi-dung/doc.ts';
+import { docThuMuc } from '../../../tools/noi-dung/thu-muc.ts';
+import { bangTenTam } from './testing/nguon-ten';
 
-const MARKDOWN = readFileSync(new URL('../../../../docs/prototype/kich-ban-prototype.md', import.meta.url), 'utf8').replace(
-  /\r\n?/g,
-  '\n',
-);
-const script = readScript(MARKDOWN);
+const NOI_DUNG = fileURLToPath(new URL('../../../noi-dung/', import.meta.url));
+const doc = docThuMuc(NOI_DUNG, { bangTen: bangTenTam() });
+if (doc.loi.length > 0) throw new Error(`bộ đọc báo lỗi:\n${doc.loi.map(dinhDangLoi).join('\n')}`);
+const script = doc.script;
+/** Toàn bộ chữ các tệp bộ đọc đọc (đúng thứ tự đọc), chưa thay biến. */
+const MARKDOWN = doc.tep.map((t) => t.noiDung.replace(/\r\n?/g, '\n')).join('\n');
 
 // ---------- Làm phẳng hai phía thành khóa so sánh ----------
 
@@ -87,7 +90,7 @@ function nodeKeys(node: StoryNode): string[] {
     case 'projector': {
       const p = node.projector;
       const src = p.source.kind === 'sql' ? `sql:${p.source.sql}` : `evidence:${p.source.evidenceId}`;
-      return [`projector|${src}|run=${String(p.run)}|rows=${p.expectedRowCount ?? ''}|caption=${p.caption ?? ''}`];
+      return [`projector|${p.id}|${src}|run=${String(p.run)}|rows=${p.expectedRowCount ?? ''}|caption=${p.caption ?? ''}`];
     }
     case 'set-flag':
       return [`set-flag|${node.flag}`];
@@ -98,72 +101,35 @@ function nodeKeys(node: StoryNode): string[] {
   }
 }
 
-function dossierField(id: string, label: string): string {
-  const card = script.dossier.find((d) => d.id === id);
-  const value = card?.fields[label];
-  if (value === undefined) throw new Error(`kịch bản: thẻ ${id} không có dòng "${label}"`);
-  return value;
-}
-
-/** Vật chứng do màn sửa truy vấn gần nhất tạo ra (theo thẻ thử thách của kịch bản). */
-function fixQueryEvidence(seqs: RawSequence[], upTo: RawSequence): string {
-  let last: string | null = null;
-  for (const s of seqs) {
-    for (const it of s.items) if (it.kind === 'fix-query') last = it.id;
-    if (s === upTo) break;
-  }
-  const ev = script.challenges.find((c) => c.id === last)?.evidence?.id;
-  if (!ev) throw new Error('kịch bản: không tìm được vật chứng của màn sửa truy vấn trước màn chiếu');
-  return ev;
-}
-
 /**
- * Kịch bản → khóa. Ba hiệu ứng phụ nằm trong [DÀN DỰNG] thành node tường minh NGAY SAU note
- * (ARCHITECTURE.md §5), suy ra từ chính chữ của note:
- * - "Màn chiếu hiện … kết quả N dòng": màn chiếu chạy thật, N dòng; SQL là khối ```sql ngay dưới
- *   (deb-01), không có khối thì là vật chứng của màn sửa truy vấn trước đó (deb-03).
- * - "Thẻ ev-…[, ev-… và ev-…] được gắn chú thích sau giải trình …": cờ hết quyền `access-revoked`
- *   (ids.ts: "đặt ở end-03") + với TỪNG thẻ, theo thứ tự nêu, gắn chú thích nguyên văn mục
- *   "Hồ sơ vật chứng › ev-…" (redact khi note nói "làm mờ") — QĐ-062.
- * - Lời ngay trước note "… hiện dạng thẻ chữ lớn …": thẻ chữ lớn (`display: 'card'`).
+ * Nội dung → khóa. Bốn loại node trước đây chỉ tả bằng lời trong [DÀN DỰNG] nay có cú pháp máy đọc
+ * được (đặc tả mục 6.3), bộ đọc trả thẳng:
+ * - `[MÀN CHIẾU <mã> · chạy · N dòng]` + khối ```sql ngay dưới (deb-01), hoặc `· vật chứng <ev>` (deb-03).
+ * - `[ĐẶT CỜ access-revoked]` (ids.ts: "đặt ở end-03").
+ * - `[CHÚ THÍCH HỒ SƠ <ev> · làm mờ]`: chú thích lấy nguyên văn dòng "Chú thích:" của thẻ hồ sơ — QĐ-062.
+ * - `[THẺ CHỮ] **…**: …`: lời hiện dạng thẻ chữ lớn (`display: 'card'`).
  */
 function scriptKeys(seq: RawSequence): string[] {
   const out: string[] = [];
-  const items = seq.items;
-  for (let i = 0; i < items.length; i++) {
-    const it = items[i];
-    if (!it) continue;
+  for (const it of seq.items) {
     switch (it.kind) {
-      case 'line': {
-        const next = items[i + 1];
-        const card = next?.kind === 'note' && next.text.includes('hiện dạng thẻ chữ lớn');
-        out.push(`${card ? 'card' : 'line'}|${lineKey(it.line)}`);
+      case 'line':
+        out.push(`${it.card ? 'card' : 'line'}|${lineKey(it.line)}`);
         break;
-      }
-      case 'note': {
+      case 'note':
         out.push(`note|${it.text}`);
-        const rows = /kết quả (\d+) dòng/.exec(it.text)?.[1];
-        if (it.text.includes('Màn chiếu hiện') && rows !== undefined) {
-          const next = items[i + 1];
-          if (next?.kind === 'sql-block') {
-            out.push(`projector|sql:${next.sql}|run=true|rows=${rows}|caption=`);
-            i++;
-          } else {
-            out.push(`projector|evidence:${fixQueryEvidence(script.sequences, seq)}|run=true|rows=${rows}|caption=`);
-          }
-        }
-        const annotated = /Thẻ (ev-[a-z0-9-]+(?:(?:, | và )ev-[a-z0-9-]+)*) được gắn chú thích sau giải trình/.exec(it.text)?.[1];
-        if (annotated) {
-          out.push('set-flag|access-revoked');
-          const redact = it.text.includes('bị làm mờ');
-          for (const id of annotated.split(/, | và /)) {
-            out.push(`annotate-evidence|${id}|${dossierField(id, 'Chú thích')}|redact=${String(redact)}`);
-          }
-        }
+        break;
+      case 'projector': {
+        const src = it.source.kind === 'sql' ? `sql:${it.source.sql}` : `evidence:${it.source.evidenceId}`;
+        out.push(`projector|${it.id}|${src}|run=${String(it.run)}|rows=${it.rows ?? ''}|caption=`);
         break;
       }
-      case 'sql-block':
-        throw new Error(`kịch bản ${seq.id}: khối SQL không nằm ngay dưới một [DÀN DỰNG] "Màn chiếu hiện …"`);
+      case 'set-flag':
+        out.push(`set-flag|${it.flag}`);
+        break;
+      case 'annotate-evidence':
+        out.push(`annotate-evidence|${it.id}|${it.note}|redact=${String(it.redact)}`);
+        break;
       case 'task':
         out.push(`task|${it.text}`);
         break;
@@ -316,7 +282,8 @@ describe('thẻ thử thách, gợi ý chuẩn, nhận xét chung — hai chiề
     if (!card) throw new Error(`kịch bản thiếu thẻ ${id}`);
     const spec = realContent.challenges[id].spec;
     expect(spec).toBe(CHALLENGE_SPECS[id]); // ghép, không chép lại
-    expect(card.sqlBlocks).toEqual([spec.referenceSql]);
+    expect(card.sql['SQL chuẩn']).toBe(spec.referenceSql);
+    expect(Object.keys(card.sql).sort()).toEqual(spec.initialModel ? ['SQL chuẩn', 'Truy vấn nạp sẵn'] : ['SQL chuẩn']);
     const cols = card.fields['Cột bắt buộc'] ?? '';
     const [requiredPart = ''] = cols.split(' · ');
     const [required = '', encouraged = ''] = requiredPart.split('(khuyến khích');
@@ -328,6 +295,14 @@ describe('thẻ thử thách, gợi ý chuẩn, nhận xét chung — hai chiề
     const preload = card.fields['Nạp sẵn vào trình dựng'];
     expect(spec.initialModel !== undefined).toBe(preload !== undefined);
     if (preload !== undefined) expect(spec.initialModel?.connector).toBe(/phép nối chung `OR`/.test(preload) ? 'OR' : null);
+    // Model nạp sẵn đọc từ "Truy vấn nạp sẵn" + "Nguồn điều kiện nạp sẵn" = model của engine.
+    expect(card.napSan).toEqual(spec.initialModel ?? null);
+  });
+
+  it('truy vấn OR của Quân: thẻ debrief-fix ("Truy vấn nạp sẵn") = màn chiếu deb-01 = QUAN_OR_QUERY', () => {
+    expect(script.challenges.find((c) => c.id === 'debrief-fix')?.sql['Truy vấn nạp sẵn']).toBe(QUAN_OR_QUERY);
+    const proj = script.sequences.find((s) => s.id === 'deb-01')?.items.find((it) => it.kind === 'projector');
+    expect(proj?.kind === 'projector' ? proj.source : null).toEqual({ kind: 'sql', sql: QUAN_OR_QUERY });
   });
 
   it('ba câu gợi ý chuẩn', () => {
@@ -435,7 +410,8 @@ describe('lưới an toàn: mọi chuỗi hiển thị trong dữ liệu đều 
         else if (it.kind === 'hotspot') s.add(it.label);
         else if (it.kind === 'gate') s.add(it.button);
         else if (it.kind === 'question') addQuestion(it.question);
-        else if (it.kind === 'sql-block') s.add(it.sql);
+        else if (it.kind === 'projector' && it.source.kind === 'sql') s.add(it.source.sql);
+        else if (it.kind === 'annotate-evidence') s.add(it.note);
         else if (it.kind === 'line-pick') {
           for (const r of it.rows) {
             s.add(r.sql);
@@ -499,7 +475,7 @@ describe('lưới an toàn: mọi chuỗi hiển thị trong dữ liệu đều 
 });
 
 describe('số liệu kịch bản (BỐI CẢNH của brief gói 5) — kịch bản thô, bộ đọc, dữ liệu cùng khớp', () => {
-  const storyText = MARKDOWN.slice(MARKDOWN.indexOf('## Phần 1'), MARKDOWN.indexOf('## Nội dung thử thách'));
+  const storyText = doc.tep.filter((t) => t.loai === 'kich-ban').map((t) => t.noiDung.replace(/\r\n?/g, '\n')).join('\n');
   const rawCount = (text: string, re: RegExp): number => text.split('\n').filter((l) => re.test(l)).length;
   const items = script.sequences.flatMap((s) => s.items);
   const nodes = realContent.story.sequences.flatMap((s) => s.nodes);
@@ -509,7 +485,7 @@ describe('số liệu kịch bản (BỐI CẢNH của brief gói 5) — kịch 
   /** Dòng thô trong 5 Phần (không qua bộ đọc) · mục của bộ đọc · node của dữ liệu · số kỳ vọng. */
   const ROWS: { name: string; re: RegExp; item: string | null; node: string | null; n: number }[] = [
     { name: 'chuỗi `### `', re: /^### /, item: null, node: null, n: 20 },
-    { name: 'lời thoại `- **người nói**`', re: /^- \*\*/, item: 'line', node: 'line', n: 99 },
+    { name: 'lời thoại `- **người nói**` (kể cả `- [THẺ CHỮ] **…**`)', re: /^- (\[THẺ CHỮ\] )?\*\*/, item: 'line', node: 'line', n: 99 },
     { name: '`> NHIỆM VỤ`', re: /^> NHIỆM VỤ: /, item: 'task', node: 'task', n: 17 },
     { name: '[HỎI] trong chuỗi truyện', re: /^- \[HỎI /, item: 'question', node: 'question', n: 3 },
     { name: '[ĐIỀU KIỆN QUA]', re: /^- \[ĐIỀU KIỆN QUA\]/, item: 'gate', node: 'gate', n: 4 },
@@ -521,6 +497,10 @@ describe('số liệu kịch bản (BỐI CẢNH của brief gói 5) — kịch 
     { name: '[THỬ THÁCH]', re: /^- \[THỬ THÁCH /, item: 'challenge', node: 'challenge', n: 3 },
     { name: '[SỬA TRUY VẤN]', re: /^- \[SỬA TRUY VẤN /, item: 'fix-query', node: 'fix-query', n: 1 },
     { name: '[KẾT THÚC]', re: /^- \[KẾT THÚC\]$/, item: 'end', node: 'end', n: 1 },
+    { name: '[MÀN CHIẾU]', re: /^- \[MÀN CHIẾU /, item: 'projector', node: 'projector', n: 2 },
+    { name: '[ĐẶT CỜ]', re: /^- \[ĐẶT CỜ /, item: 'set-flag', node: 'set-flag', n: 1 },
+    { name: '[CHÚ THÍCH HỒ SƠ]', re: /^- \[CHÚ THÍCH HỒ SƠ /, item: 'annotate-evidence', node: 'annotate-evidence', n: 3 },
+    { name: '[THẺ CHỮ]', re: /^- \[THẺ CHỮ\] /, item: null, node: null, n: 1 },
   ];
 
   it.each(ROWS)('$name: $n', ({ re, item, node, n }) => {
