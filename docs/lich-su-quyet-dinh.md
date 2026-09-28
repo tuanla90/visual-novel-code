@@ -586,3 +586,27 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
   - Mã nhân vật `bac-tu` giữ nguyên, chỉ đổi tên hiển thị (QĐ-079 câu 4). "Thịnh", "Cường" không trùng tên nào trong 40 + 8 dòng dữ liệu và không bắt đầu bằng H; khi làm code phải thêm hai tên này vào danh sách cấm của test QĐ-014.
 - **Chưa chốt** (để lượt sau): cách mở khóa trang sổ (hội đồng đề xuất: sổ đủ trang từ đầu, chương chưa học bị chị Linh kẹp lại kèm lời dặn, người chơi tự tháo khi vụ cần; lời nhắn của chị Linh chỉ lo bí ẩn mùa); câu đáp Tùng "Đừng cá. Đếm." giữ hay đổi thành "Đừng cá. Tính."; câu cửa miệng của Minh Anh, thầy Quang, thầy Khải, chị Linh (đề xuất trong phiên hội đồng); sổ in ra để ôn (mục đích, có phụ lục giấy nhớ cá nhân không); các điểm còn treo của QĐ-080.
 - **Phải sửa theo:** GDD §3.1 (Hà Vy năm 1, kỹ năng bộ ba), §3.3 và §16.1 (bác Tư → bác Thịnh bảo vệ, chú Bảy → chú Cường), §5.2 (phản biện dẫn trang sổ), §9 (nút hiện điểm xem xét gắn Tùng); tài liệu vũ trụ §5 (bảng nhân vật: Hà Vy, chú Cường) và §7 (giọng Hà Vy); kịch bản Vụ 1 (buổi giải trình); đặc tả §4 (`nhan-vat.yaml`: Hà Vy năm 1, xưng hô, câu cửa miệng; thêm bác Thịnh, chú Cường), §9 (bỏ sự kiện bật trang sổ, bỏ lời chẩn đoán hiện cho người chơi); prompt ảnh (Hà Vy "năm 2", tên Bác Tư); khi làm code: `display-names.ts`, `character-profiles.ts`, lời chẩn đoán trong `challenges.ts`, test QĐ-014, màn chọn dòng lỗi ở giải trình (thêm bước chọn trang sổ).
+
+**QĐ-082 — Chia nội dung theo hậu quả; bài học hoa thường là tư duy dữ liệu; buổi phản biện 5 nhịp; câu hô "Số liệu đây!" (QUYẾT ĐỊNH CỦA USER).** · Nguồn: USER, sau phiên hội đồng `~/.claude/hoi-dong/sessions/20260928-1346-phan-bien-giai-trinh-mach-chinh-side-que` · 28/09
+- **Tiêu chí chia nội dung** (thay cách chia "mạch chính = cú pháp mới, nhiệm vụ phụ = bẫy áp dụng"):
+  - **Mạch chính:** kiến thức cần để phá án vụ này, hoặc sẽ được coi là người chơi đã biết ở các vụ sau.
+  - **Nhiệm vụ phụ / minigame:** biến thể, tinh chỉnh, mẹo nâng cao; bỏ qua không ảnh hưởng tới việc hiểu vụ này và các vụ sau.
+- **Hoa thường.** Kiểm trên SQLite (sql.js) của game ngày 28/09: `=` phân biệt hoa thường; `LIKE` bỏ qua hoa thường **chỉ với chữ không dấu** (`LIKE 'hoài'` khớp "Hoài", "hoài", không khớp "HOÀI"; `LIKE 'đ%'` không khớp "Đức"); `lower('HOÀI')` ra "hoÀi"; `COLLATE NOCASE` cũng không khớp chữ hoa có dấu; `LIKE '%oài'` khớp cả "Toài". Vì dễ dạy sai:
+  - **Mạch chính chỉ dạy tư duy dữ liệu:** "`=` so khớp chính xác từng ký tự; dữ liệu nhập tay có thể viết khác; ra 0 dòng thì kiểm lại dữ liệu trước khi kết luận". Không dạy "SQL phân biệt hoa thường" như luật chung.
+  - **Sắc thái `LIKE` và chữ có dấu** để nhiệm vụ phụ nâng cao, luôn ghi rõ "trong SQLite"; các hệ quản trị khác mỗi nơi một kiểu.
+  - Dữ liệu của mạch chính viết hoa thường **nhất quán**, trừ vụ cố ý dạy bài học trên.
+- **Buổi phản biện 5 nhịp** (thay bước "lật trang sổ tay" của QĐ-081; phần "phản biện 2 bước" chính là nhịp 1–2):
+  0. **Quân nói lập luận sai bằng lời** (vd "tôi lấy những ai thỏa một trong hai điều kiện…"), rồi chiếu truy vấn.
+  1. Người chơi **chỉ dòng sai** — đây là cáo buộc; chạm sai mất 1 vạch uy tín (MVP).
+  2. Người chơi **sửa và chạy lại** trên màn chiếu → "Số liệu đây!". Chạy thử không phạt.
+  3. **Hà Vy gọi tên lỗi bằng ngôn ngữ toán**, không hỏi, không chấm (vd "cậu vừa đổi phần hợp thành phần giao") — giữ từ vựng để nhận ra lỗi cùng loại ở vụ sau.
+  4. Câu đọc kết quả, viết lại cho rõ: **"Theo điều kiện trên màn hình, hai dòng này là ai?"** (thay "Hai dòng này nghĩa là gì?").
+  5. Thầy Quang: **"Vậy hai bạn này là thủ phạm?"** → đáp đúng: yêu cầu nguồn xác minh độc lập (giữ nội dung câu `q-verify` của QĐ-024).
+  - Nhịp 4–5 là hai câu đo của vòng thử nghiệm: ghi **lựa chọn đầu tiên**, cho chọn lại. **Chưa chốt:** chọn sai ở nhịp 4–5 có trừ uy tín không.
+- **Luật viết nội dung cho buổi phản biện** (thêm vào đặc tả §14, bộ đọc kiểm được):
+  - Mỗi buổi giải trình **một lỗi chính** của đối thủ.
+  - Lỗi đó người chơi **đã gặp và tự sửa trước** (trong Điều tra I/II của vụ, hoặc vụ trước); không dùng kiến thức chưa dạy hay mặc định của hệ quản trị khác.
+  - Truy vấn của đối thủ **chạy được**, chỉ sai logic; kết quả trước và sau khi sửa **lệch rõ**.
+  - Đáp án mỗi câu hỏi **kiểm bằng cách chạy trên dữ liệu vụ**, có đúng một phương án đúng; câu hỏi nói rõ đọc cái gì (điều kiện, số dòng, hay ý nghĩa các dòng); phương án sai phản ánh hiểu lầm có thật, không đánh đố.
+- **Câu hô của người chơi: "Số liệu đây!"** (thay "Có số liệu đây!" của QĐ-070/QĐ-025) — ngắn, ba âm như "Objection!". Mã hiệu ứng `co-so-lieu-day` giữ nguyên, chỉ đổi chữ hiển thị.
+- **Phải sửa theo:** GDD §3.1 (câu hô), §5.2 (buổi giải trình); tài liệu vũ trụ §3 (câu hô dòng SQL); kịch bản Vụ 1 (buổi giải trình, câu hô); kịch bản prototype deb-02, deb-03 (câu hô, câu hỏi đọc kết quả — kèm bản chép tay và test so khớp, làm ở đợt viết lại); đặc tả §9/§14; khi làm code: `EFFECT_NAMES` trong `display-names.ts`, `ObjectionEffect`, `effect-timing.ts`, `app.css`, các test nhắc chữ cũ, `ending.ts`, `debrief.ts`.
