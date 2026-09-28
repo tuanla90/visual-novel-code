@@ -13,9 +13,13 @@
 prototype/
 ├── index.html · vite.config.ts · tsconfig.json · eslint.config.js · package.json
 ├── README.md                          hướng dẫn chạy / thử nghiệm (tiếng Việt)
-├── noi-dung/                          NGUỒN CHỮ DUY NHẤT (kịch bản, thẻ thử thách, lời chung, hồ sơ) — xem noi-dung/README.md
+├── noi-dung/                          NGUỒN CHỮ DUY NHẤT của game hiện tại (kịch bản, thẻ thử thách, lời chung, hồ sơ) — xem noi-dung/README.md
+├── noi-dung-mvp/                      kịch bản MVP (mở đầu + Vụ 1 theo ngày × khung giờ; gói 12m, đặc tả §18) — CHƯA có runtime; xem noi-dung-mvp/README.md
 ├── tools/noi-dung/                    bộ đọc (doc, bien, nap-san, thu-muc) · chuyen.ts (kết quả đọc → dữ liệu game) ·
 │                                      kiem.ts (`npm run kiem-noi-dung`) · sinh.ts (`npm run noi-dung:sinh`) — không import src/ trừ nguồn tên
+│                                      bộ MVP: dieu-kien.ts (điều kiện/hậu quả/mốc) · doc-mvp.ts (đọc lich, nhan-vat, canh, dia-diem, kich-ban, so-tay,
+│                                      chung; dùng lại doc.ts cho thẻ thử thách/hồ sơ) · luat-mvp.ts (kiểm chéo §18.9) · chuyen-mvp.ts · thu-muc-mvp.ts ·
+│                                      kiem-mvp.ts (`kiem-noi-dung:mvp`) · sinh-mvp.ts (`noi-dung:sinh:mvp`) — không import src/
 ├── docs/ARCHITECTURE.md               ← tài liệu này
 ├── docs/nhat-ky-thay-doi-2026-09-27.md  nhật ký gói VN của commit fa5ffd3 (Antigravity viết; lỗi đã sửa ở QĐ-076)
 └── src/
@@ -30,6 +34,8 @@ prototype/
     │   ├── types.ts                   GameContent (đóng băng) · index.ts: activeContent = realContent
     │   ├── generated/                 *.gen.ts SINH từ noi-dung/ (ĐỪNG SỬA TAY, được commit): cot-truyen (mạch chính, tên game),
     │   │                              ho-so (manh mối, tài liệu), thu-thach (thẻ, SQL của thẻ, gợi ý chuẩn, nhận xét chung) · generated.test.ts
+    │   │   └── mvp/                   kich-ban.gen.ts SINH từ noi-dung-mvp/ (`satisfies KichBanMvp`) · mvp.gen.test.ts — game chưa import
+    │   ├── mvp/types.ts               KichBanMvp: lịch, địa điểm × dữ kiện, chuỗi (NutMvp), thẻ, hồ sơ, sổ tay, soDongKhai (cho đợt 14)
     │   ├── real/                      index.ts: realContent = dữ liệu sinh + CHALLENGE_SPECS; test nội dung; testing/ (nguồn tên tạm
     │   │                              cho biến {{nv.…}}, chuỗi hiển thị, test bộ đọc — chỉ test/công cụ)
     │   └── sample/                    nội dung MẪU "(MẪU)" — đủ mọi loại node; còn dùng trong vài test
@@ -214,6 +220,7 @@ Không lưu bảng kết quả lớn: chỉ `SavedQueryEvidence` (≤ vài chụ
 
 ```
 noi-dung/*.md ──(npm run noi-dung:sinh)──► content/generated/*.gen.ts ──► GameContent (activeContent = realContent)
+noi-dung-mvp/**/*.md ──(noi-dung:sinh:mvp: doc-mvp → luat-mvp → chuyen-mvp)──► content/generated/mvp/kich-ban.gen.ts ──► (chưa ai đọc; runtime MVP là gói sau)
    │
    ▼                       effects: unlock-evidence / annotate-evidence / set-flag / telemetry
 runtime story (thuần) ──► store áp effects ──► track() ──► sink localStorage ──► summary ──► FacilitatorPanel / xuất JSON
@@ -258,6 +265,7 @@ StoryView ──► GameScreen → component theo view.kind (DialogBox, ExploreS
 | Vùng | Mã chính | Test canh giữ |
 |---|---|---|
 | Kể chuyện | `story/engine/{runtime,state,validate}.ts`, `story/ui/*` | `runtime.test.ts`, `validate.test.ts`, `visuals/explore-and-choice.test.tsx`, `objection-effect.test.tsx` |
+| Kịch bản MVP (chưa có runtime) | `noi-dung-mvp/**`, `tools/noi-dung/*-mvp.ts`, `dieu-kien.ts`, `content/mvp/types.ts`, `content/generated/mvp/**` | `generated/mvp/mvp.gen.test.ts` (đọc sạch, file sinh khớp, hình dạng lịch/kết), `testing/bo-doc-mvp.test.ts` (lỗi `<tệp>:<dòng>`: chi phí khung, Xuất hiện từ, true end, chuỗi lẻ, tên cấm, trừ uy tín, TẠO NHÂN VẬT; cú pháp điều kiện/hậu quả/mốc) |
 | Nội dung thật | `noi-dung/**`, `tools/noi-dung/**`, `content/generated/**`, `content/real/**` | `generated.test.ts` (file sinh khớp nội dung — quên sinh lại / sửa tay .gen.ts là đỏ), `noi-dung.test.ts` (bộ đọc không bỏ sót dòng, `CHALLENGE_SPECS` ↔ thẻ, biểu cảm người hỏi, không tên riêng viết trần), `testing/bo-doc.test.ts` (lỗi `<tệp>:<dòng>`, cú pháp, biến tên), `display-hygiene.test.ts` (không id thô/ghi chú người viết trong chữ hiển thị), `integrity.test.ts`, `diagnostics.test.ts` (thứ tự mã), `numbers.test.ts` (10/2/2/24 — QĐ-012), `redaction.test.tsx` |
 | Engine SQL + dữ liệu | `sql-challenge/engine/**`, `sql-challenge/data/**` | `engine/*.test.ts` (kể cả `sqljs.dev.test.ts`: canary Vite dev nạp sql.js như trình duyệt), `data/*.test.ts` |
 | Trình dựng | `sql-challenge/ui/**` | `ChallengeScreen/Guide/Run/SqlMode/Success/Telemetry/ValueEditors/Fix.test.tsx`, `CodeText.test.tsx`, `contrast-ui.test.ts` |
@@ -333,6 +341,10 @@ trong store, `package.json` (không cài thêm phụ thuộc nếu không hỏi)
    sinh lại; `generated.test.ts` đỏ nếu tệp sinh đã commit khác bản sinh lại. Tên nhân vật/tên trường viết bằng biến
    `{{nv.<mã>[.ten|.ho-ten|.trong-cau]}}`, `{{truong.ten-day-du|ten-ngan|ten-khong-tien-to}}` (nguồn tạm:
    `content/real/testing/nguon-ten.ts`; gói 12b chuyển sang `noi-dung/nhan-vat.yaml`).
+   **Bộ MVP** (`prototype/noi-dung-mvp/`, xem README ở đó và đặc tả §18): `npm run kiem-noi-dung:mvp` → `npm run noi-dung:sinh:mvp`
+   → commit `.md` + `src/content/generated/mvp/kich-ban.gen.ts`. Bảng tên cho `{{nv.…}}` lấy từ `noi-dung-mvp/nhan-vat.md`
+   (không qua `src/`); `{{nv.nguoi-choi}}` được giữ nguyên trong dữ liệu sinh (tùy chọn `giuCho` của `bien.ts`), runtime MVP
+   sẽ thay bằng tên người chơi. Lệnh không đuôi `:mvp` chạy cả hai bộ.
 2. Ánh xạ kịch bản → node: luật nằm ở `tools/noi-dung/chuyen.ts` (bảng loại node ở đầu `src/story/types.ts`). Chú ý: `[ĐIỂM XEM XÉT]` nhiều điểm trong một cảnh
    → **một** `explore` node + `gate` ngay sau; màn chiếu `[MÀN CHIẾU]` → `projector`, hết quyền `[ĐẶT CỜ access-revoked]`
    → `set-flag`, `[CHÚ THÍCH HỒ SƠ ev-… · làm mờ]` → `annotate-evidence`, `[THẺ CHỮ]` → `display: 'card'`;
