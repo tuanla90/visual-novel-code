@@ -10,15 +10,7 @@
 - **quan** (smug): Dữ liệu không nói dối. Nhưng người đọc dữ liệu thì có.
 - **quan** (neutral): Tôi đã tự chạy lại ba manh mối của CLB, trên đúng view CLB được cấp.
 - [DÀN DỰNG] Màn chiếu hiện truy vấn của Quân nguyên văn (5 dòng, §4.4), chạy thật trên dataset chính: bảng kết quả 24 dòng, dòng đếm "24 dòng" (QĐ-012).
-- [MÀN CHIẾU proj-quan-or · chạy · 24 dòng]
-
-```sql
-SELECT ma_sv, ho_dem, ten, ma_lop, clb
-FROM sinh_vien
-WHERE ten LIKE 'H%'
-   OR ma_lop IN ('KT24A', 'QT24B')
-   OR clb = 'Báo chí';
-```
+- [MÀN CHIẾU proj-quan-or · truy vấn nạp sẵn debrief-fix · chạy · 24 dòng]
 
 - **quan** (smug): Hai mươi tư người, hơn nửa số sinh viên trong view. Manh mối kiểu này thì vô dụng.
 - **quan** (neutral): Vậy danh sách hai người của CLB từ đâu ra?

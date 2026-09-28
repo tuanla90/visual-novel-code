@@ -93,7 +93,7 @@ describe('báo lỗi <tệp>:<dòng>', () => {
     expect(loiCua(r)).toContain('k.md:1: tệp kịch bản phải mở đầu bằng "## Phần N — <Tên> {part: <mã>}"');
     const r2 = doc(KB('```sql', 'SELECT 1;', '```'));
     expect(loiCua(r2)).toEqual([
-      'noi-dung/kich-ban/chinh/01-thu.md:5: khối ```sql trong kịch bản phải nằm ngay dưới một [MÀN CHIẾU …] (không ghi "vật chứng")',
+      'noi-dung/kich-ban/chinh/01-thu.md:5: khối ```sql trong kịch bản phải nằm ngay dưới một [MÀN CHIẾU …] (không ghi "vật chứng" hay "truy vấn nạp sẵn")',
     ]);
   });
 });
@@ -105,6 +105,20 @@ describe('cú pháp mới (đặc tả 6.3)', () => {
     expect(r.script.sequences[0]?.items).toEqual([
       { kind: 'projector', id: 'p1', source: { kind: 'sql', sql: 'SELECT a\nFROM t;' }, run: true, rows: 24 },
       { kind: 'projector', id: 'p2', source: { kind: 'evidence', evidenceId: 'ev-x' }, run: false, rows: null },
+    ]);
+  });
+
+  it('[MÀN CHIẾU … · truy vấn nạp sẵn <thẻ>]: SQL lấy từ "Truy vấn nạp sẵn" của thẻ (viết một chỗ)', () => {
+    const the = ['### c2 — B {challenge: c2}', '- Truy vấn nạp sẵn:', '', '```sql', 'SELECT a', 'FROM t;', '```'].join('\n');
+    const r = doc(KB('- [MÀN CHIẾU p1 · truy vấn nạp sẵn c2 · chạy · 3 dòng]'), [{ duongDan: 'noi-dung/thu-thach/c2.md', loai: 'thu-thach', noiDung: the }]);
+    expect(loiCua(r)).toEqual([]);
+    expect(r.script.sequences[0]?.items).toEqual([{ kind: 'projector', id: 'p1', source: { kind: 'sql', sql: 'SELECT a\nFROM t;' }, run: true, rows: 3 }]);
+    expect(loiCua(doc(KB('- [MÀN CHIẾU p1 · truy vấn nạp sẵn c1 · chạy]')))).toEqual([
+      'noi-dung/kich-ban/chinh/01-thu.md:5: [MÀN CHIẾU p1]: thẻ "c1" không có "- Truy vấn nạp sẵn:" + khối sql',
+    ]);
+    expect(loiCua(doc(KB('- [MÀN CHIẾU p1 · truy vấn nạp sẵn c9 · chạy]')))).toEqual(['noi-dung/kich-ban/chinh/01-thu.md:5: không có thẻ thử thách "c9"']);
+    expect(loiCua(doc(KB('- [MÀN CHIẾU p1 · vật chứng ev-x · truy vấn nạp sẵn c1 · chạy]')))).toEqual([
+      'noi-dung/kich-ban/chinh/01-thu.md:5: [MÀN CHIẾU]: chỉ một nguồn — "vật chứng <mã>" hoặc "truy vấn nạp sẵn <thẻ>"',
     ]);
   });
 

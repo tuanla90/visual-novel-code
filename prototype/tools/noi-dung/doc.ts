@@ -65,7 +65,11 @@ export type StoryItem =
   | { kind: 'fix-query'; id: string }
   | { kind: 'effect'; id: string }
   | { kind: 'line-pick'; id: string; rows: RawPickRow[] }
-  /** `[MÀN CHIẾU <id> · [vật chứng <ev>] · chạy|không chạy · <n> dòng]`; nguồn sql = khối ```sql ngay dưới. */
+  /**
+   * `[MÀN CHIẾU <id> · [vật chứng <ev> | truy vấn nạp sẵn <thẻ>] · chạy|không chạy · <n> dòng]`; không ghi
+   * nguồn thì nguồn sql = khối ```sql ngay dưới. `truy vấn nạp sẵn <thẻ>`: lấy khối sql dưới dòng
+   * "Truy vấn nạp sẵn:" của thẻ thử thách đó (câu SQL chỉ viết ở một chỗ).
+   */
   | { kind: 'projector'; id: string; source: RawProjectorSource; run: boolean; rows: number | null }
   /** `[ĐẶT CỜ <cờ>]` */
   | { kind: 'set-flag'; flag: string }
@@ -199,24 +203,30 @@ function parseChoice(line: string): RawChoice | null {
 }
 
 /** `[MÀN CHIẾU <id> · vật chứng <ev> · chạy · 2 dòng]` — các mục sau id theo thứ tự tùy ý. */
-function parseProjector(line: string): { id: string; evidence: string | null; run: boolean; rows: number | null } | null {
+function parseProjector(
+  line: string,
+): { id: string; evidence: string | null; preload: string | null; run: boolean; rows: number | null } | null {
   const m = /^- \[MÀN CHIẾU ([a-z0-9-]+)((?: · [^\]·]+)*)\]$/.exec(line);
   if (!m) return null;
   let evidence: string | null = null;
+  let preload: string | null = null;
   let run: boolean | null = null;
   let rows: number | null = null;
   for (const raw of (m[2] ?? '').split(' · ').slice(1)) {
     const p = raw.trim();
     const ev = /^vật chứng ([a-z0-9-]+)$/.exec(p);
+    const pl = /^truy vấn nạp sẵn ([a-z0-9-]+)$/.exec(p);
     const r = /^(\d+) dòng$/.exec(p);
     if (ev) evidence = ev[1] ?? '';
+    else if (pl) preload = pl[1] ?? '';
     else if (p === 'chạy') run = true;
     else if (p === 'không chạy') run = false;
     else if (r) rows = Number(r[1]);
-    else throw new Error(`[MÀN CHIẾU]: mục lạ "${p}" — dùng "vật chứng <mã>", "chạy" / "không chạy", "<n> dòng"`);
+    else throw new Error(`[MÀN CHIẾU]: mục lạ "${p}" — dùng "vật chứng <mã>", "truy vấn nạp sẵn <thẻ>", "chạy" / "không chạy", "<n> dòng"`);
   }
   if (run === null) throw new Error('[MÀN CHIẾU]: phải ghi "chạy" hoặc "không chạy"');
-  return { id: m[1] ?? '', evidence, run, rows };
+  if (evidence !== null && preload !== null) throw new Error('[MÀN CHIẾU]: chỉ một nguồn — "vật chứng <mã>" hoặc "truy vấn nạp sẵn <thẻ>"');
+  return { id: m[1] ?? '', evidence, preload, run, rows };
 }
 
 // ---------- Bộ đọc ----------
@@ -423,7 +433,7 @@ export function docNoiDung(tepList: readonly TepNoiDung[], tuyChon: TuyChonDoc =
     function ganKhoiMa(lang: string, code: string, line: string): void {
       if (lang !== 'sql') throw new Error(`khối mã phải là \`\`\`sql (gặp "${line}")`);
       if (tep.loai === 'kich-ban') {
-        if (!seq || !chieuCho) throw new Error('khối ```sql trong kịch bản phải nằm ngay dưới một [MÀN CHIẾU …] (không ghi "vật chứng")');
+        if (!seq || !chieuCho) throw new Error('khối ```sql trong kịch bản phải nằm ngay dưới một [MÀN CHIẾU …] (không ghi "vật chứng" hay "truy vấn nạp sẵn")');
         chieuCho.source = { kind: 'sql', sql: code };
         chieuCho = null;
       } else if (tep.loai === 'thu-thach' && card) {
@@ -553,6 +563,17 @@ export function docNoiDung(tepList: readonly TepNoiDung[], tuyChon: TuyChonDoc =
         if (p.evidence) {
           const ev = p.evidence;
           kiemSau.push({ viTri: here, kiem: () => canVatChungThuThach(ev) });
+        } else if (p.preload) {
+          const ma = p.preload;
+          kiemSau.push({
+            viTri: here,
+            kiem: () => {
+              canThuThach(ma);
+              const sql = out.challenges.find((c) => c.id === ma)?.sql['Truy vấn nạp sẵn'];
+              if (sql === undefined) throw new Error(`[MÀN CHIẾU ${item.id}]: thẻ "${ma}" không có "- Truy vấn nạp sẵn:" + khối sql`);
+              item.source = { kind: 'sql', sql };
+            },
+          });
         } else chieuCho = item;
         return void items.push(item);
       }
