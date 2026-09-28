@@ -1,6 +1,6 @@
 # Kế hoạch gói chuẩn hóa nội dung (bước 1 của QĐ-075)
 
-28/09 · Trạng thái: **kế hoạch, chưa giao, chờ user chốt 4 câu hỏi cuối tệp** (QĐ-079) · Đặc tả: `docs/dac-ta-dinh-dang-noi-dung.md`
+28/09 · Trạng thái: **đã chốt (QĐ-088), đang giao 12a-1**; thứ tự 12a-1 → 12a-2 → 12m (cú pháp MVP) → 12b, 12c · Đặc tả: `docs/dac-ta-dinh-dang-noi-dung.md`
 
 ## Mục tiêu và tiêu chí xong
 
@@ -65,6 +65,14 @@ Chuyển nội dung **hiện tại** sang một nguồn duy nhất (`prototype/n
 - **Nghiệm thu:** file sinh qua `tsc` với `satisfies GameContent`; `JSON.stringify(dữ liệu sinh)` **bằng đúng** `JSON.stringify(realContent cũ)` (kiểm một lần trước khi xóa, ghi kết quả vào báo cáo); test xanh; chơi hết game qua trình duyệt.
 - Đề xuất model: **Opus**. Gói lớn nhất; nhịp commit 25 phút.
 
+### 12m `cu-phap-mvp` — Cú pháp cho kịch bản MVP (thêm theo QĐ-088)
+
+- Thiết kế và cài vào bộ đọc cú pháp cho kịch bản khung `docs/mvp/kich-ban-vu1-mvp-khung.md`: ngày × 3 khung giờ, địa điểm × dữ kiện chính/phụ/nhiễu (mở từ ngày nào, khung nào), key item, "Buổi tối", điều kiện true end, rẽ nhánh 2 kết, cảnh mở đầu (tạo nhân vật 2 câu, lọc thử ở Ngày hội).
+- Sinh kiểu dữ liệu và `.gen.ts` cho phần MVP; kiểm lỗi `<file>:<dòng>` (dữ kiện chính mỗi ngày có đường đạt trong 2 khung, true end đạt được, nhân vật không nói trước `xuat-hien-tu`).
+- Viết thử một phần Vụ 1 MVP bằng cú pháp mới làm mẫu (không cần đủ thoại).
+- **Chưa làm runtime** chơi được nhịp mới (gói kiến trúc MVP, QĐ-077). Cập nhật đặc tả.
+- Đề xuất model: **Fable** (tự thiết kế cú pháp).
+
 ### 12b `nhan-vat-canh` — Nhân vật, cảnh, định danh sinh từ YAML
 
 - Tạo `noi-dung/nhan-vat.yaml` (mục 4 của đặc tả, điền đúng theo kịch bản hiện tại: Quân là Ban Pháp chế, `xuat-hien-tu: debrief`) và `noi-dung/canh.yaml`.
@@ -99,7 +107,7 @@ Chuyển nội dung **hiện tại** sang một nguồn duy nhất (`prototype/n
 | 15 | Màn thử thách mới (QĐ-071 → QĐ-074) và kịch bản loại 3 (khối sự kiện, bước, hành động nhân vật, note, soát hồ sơ) | 13, 14 |
 | 16 | Viết lại nội dung: Tùng vào CLB, c1/c2 mới, "Báo chí" thành ngành, chuỗi Bác Tư, true ending | 15 |
 
-## Cần chốt trước khi giao
+## Cần chốt trước khi giao (đã chốt ở QĐ-088)
 
 1. Sinh dữ liệu theo **cách A** (file `.ts` sinh ra và commit)?
 2. Đồng ý **điều chỉnh mục 15 của đặc tả**: bước 1 vẫn nhận `[ĐIỂM XEM XÉT]`, `[ĐIỀU KIỆN QUA]`, `[KHI ĐÚNG]`, `[KHI: mã]`; chuyển sang cú pháp mới ở đợt 13?

@@ -536,7 +536,7 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - Đã sửa theo: đường dẫn `docs/kich-ban-prototype.md` → `docs/prototype/kich-ban-prototype.md` trong code, test (`faithfulness.test.ts`) và tài liệu; phần đầu các tài liệu dẫn sang nhau; `prototype/README.md`, `ARCHITECTURE.md`, `src/assets/art/README.md`; skill `google-flow-image` (`--file art/prompts/…`). Link `file:///` tuyệt đối trong bộ prompt nhân vật đổi thành link tương đối.
 - Không đụng `prototype/src/` ngoài chú thích đường dẫn: cấu trúc code đã theo tính năng, và sắp có các gói MVP (QĐ-077) sửa vào đó.
 
-**QĐ-079 — Kế hoạch gói chuẩn hóa nội dung, bước 1 của QĐ-075 (ĐỀ XUẤT, CHỜ USER CHỐT).** · Nguồn: điều phối viên, khảo sát code 28/09 · 28/09
+**QĐ-079 — Kế hoạch gói chuẩn hóa nội dung, bước 1 của QĐ-075 (USER CHỐT 28/09, xem QĐ-088).** · Nguồn: điều phối viên, khảo sát code 28/09 · 28/09
 - Kế hoạch đầy đủ: `docs/ke-hoach-goi-chuan-hoa.md`. Mục tiêu: chuyển nội dung hiện tại sang `prototype/noi-dung/` làm nguồn duy nhất, bộ đọc sinh dữ liệu cho game, xóa khoảng 1.600 dòng chép tay. Không đổi chữ nội dung nào; game chạy y hệt, test xanh.
 - **Ba phát hiện làm đổi kế hoạch:**
   1. Màn chiếu chạy SQL (deb-01, deb-03), đặt cờ hết quyền truy cập, chú thích thẻ hồ sơ (end-03), thẻ chữ lớn (end-04) chỉ có trong bản chép tay; kịch bản chỉ tả bằng lời trong `[DÀN DỰNG]`. Phải thêm cú pháp máy đọc được.
@@ -677,3 +677,8 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - **Dữ liệu:** chốt bộ dữ liệu trước rồi mới viết thoại đọc số (bài học từ vòng 2: hai thành viên hội đồng tính sai câu OR thành 18 dòng). Đã chạy SQLite: OR của Quân 14 dòng, AND 2 dòng; tra "Tùng" 3 dòng. Test QĐ-014 cần ngoại lệ cho tên "Tùng".
 - **Tài sản:** 7 cảnh nền cho mở đầu; ảnh bán thân mới cho Duy, Hiếu.
 - **Phải sửa theo:** GDD §3.1 (người chơi nam, Duy), §4 (2 câu), §14 (trỏ sang tệp MVP); đặc tả §4 (`nhan-vat.yaml`: Quân, Duy, người chơi); `vu1-buoi-giai-trinh-kich-ban.md` (bị thay cho MVP); kịch bản prototype `intro-00`, `intro-01` (viết lại khi làm gói nội dung MVP); gói MVP của QĐ-077 cần chia lại (kiến trúc thêm ngày × khung giờ, key item, "Buổi tối").
+
+**QĐ-088 — Chốt QĐ-079 và giao việc xây engine kịch bản Markdown (QUYẾT ĐỊNH CỦA USER).** · Nguồn: USER · 28/09
+- **Chốt bốn câu của QĐ-079:** (1) sinh dữ liệu theo **cách A** — file `src/content/generated/*.gen.ts` được commit, có test "file sinh khớp nội dung"; (2) bước chuẩn hóa **vẫn nhận cú pháp cũ** (`[ĐIỂM XEM XÉT]`, `[ĐIỀU KIỆN QUA]`, `[KHI ĐÚNG]`, `[KHI: mã]`); (3) 12a-1, 12a-2 dùng **Opus**; (4) tên nhân vật thành biến `{{nv.<mã>}}`, giữ mã làm khóa (đã đồng ý trước đó).
+- **Mở rộng phạm vi (user chọn "làm luôn cú pháp MVP"):** sau 12a-1 → 12a-2, làm tiếp gói **12m `cu-phap-mvp`**: thiết kế và cài cú pháp cho kịch bản MVP (QĐ-086/087) — ngày × 3 khung giờ, địa điểm × dữ kiện chính/phụ/nhiễu, key item, "Buổi tối", điều kiện true end, rẽ nhánh 2 kết, cảnh mở đầu (tạo nhân vật 2 câu, lọc thử ở Ngày hội) — vào bộ đọc, kiểu dữ liệu sinh ra và phần kiểm lỗi; cập nhật đặc tả. Gói này **chưa làm runtime** chơi được nhịp mới (đó là gói kiến trúc MVP của QĐ-077). Model đề xuất cho 12m: **Fable** (phải tự thiết kế cú pháp, chấm 8/10 theo /giao-viec). 12b, 12c làm sau 12m hoặc gộp khi cần.
+- **Thứ tự:** tuần tự, một agent một lúc (QĐ-057): 12a-1 → 12a-2 → 12m.
