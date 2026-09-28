@@ -803,6 +803,14 @@
   position: relative;
   z-index: 20;
 }
+/*
+ * Màn thử thách SQL (.chal, challenge.css) phủ trọn sân khấu bằng position: absolute; inset: 0.
+ * Khối chứa của nó phải là .stage, nên ở đây KHÔNG được position: relative (vùng nội dung cao 0px
+ * ở hàng cuối lưới → khung thử thách bị ép còn vài chục px, mất hết nút).
+ */
+.stage__content:has(> .chal) {
+  position: static;
+}
 /* Hộp thoại thường & màn xem xét điểm: hộp thoại bo góc tròn nổi bồng bềnh chuẩn phong cách visual novel */
 .stage__content:has(> .dialog-container),
 .stage__content:has(> .explore) {
