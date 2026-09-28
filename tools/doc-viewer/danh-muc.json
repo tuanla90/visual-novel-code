@@ -3,13 +3,13 @@
     "docs/mockups/": "Mockup giao diện (docs/mockups/)"
   },
   "ghi_chu_chung": [
-    "**Đọc sổ quyết định trước**: đọc phần đầu (luật, thứ tự ưu tiên) và kỹ QĐ-070 → QĐ-083; các QĐ cũ hơn thì bấm link khi tài liệu khác nhắc tới.",
+    "**Đọc sổ quyết định trước**: đọc phần đầu (luật, thứ tự ưu tiên) và kỹ QĐ-070 → QĐ-084; các QĐ cũ hơn thì bấm link khi tài liệu khác nhắc tới.",
     "**Cập nhật chiều 28/09:** GDD, tổng quan vũ trụ, kịch bản Vụ 1 và đặc tả nội dung đã được sửa theo QĐ-080 → QĐ-083 (có khối \"Cập nhật 28/09\" ở đầu mỗi tệp). Thẻ đánh giá tác động bên dưới viết **trước** lần sửa này, nên số dòng dẫn và một số điểm \"cần rà\" có thể đã được xử lý.",
     "**Bảy chỗ mâu thuẫn lớn nhất** tìm được khi đánh giá — tình trạng sau QĐ-083:",
-    "① Thứ tự ưu tiên khi mâu thuẫn (lich-su-quyet-dinh.md:11) đã cũ — **còn treo**.",
-    "② Lớp của Hoài: QĐ-073 ghi BC24A, QĐ-077 ghi QT24B — **còn treo**.",
+    "① Thứ tự ưu tiên — **đã chốt** (QĐ-084): vũ trụ → GDD → MVP → prototype; mâu thuẫn thì đưa user quyết.",
+    "② Lớp của Hoài — **chốt khi viết nội dung**, theo câu đố (QĐ-084).",
     "③ Cách kết buổi giải trình — **đã chốt** (QĐ-082): nhịp 5 là \"chưa đủ kết luận, cần nguồn xác minh độc lập\", không kết bằng truy vấn ra một người.",
-    "④ Nhân vật (xưng hô, câu cửa miệng, vai Hà Vy) — **phần lớn đã chốt** (QĐ-080, QĐ-081); còn treo họ đầy đủ của Minh Anh (Nguyễn/Lê) và Hà Vy (Lê/Trần).",
+    "④ Nhân vật (xưng hô, câu cửa miệng, vai Hà Vy) — **phần lớn đã chốt** (QĐ-080, QĐ-081); họ tên đã chốt: Lê Minh Anh, Trần Hà Vy (QĐ-084).",
     "⑤ Uy tín, xếp hạng so với \"không phán đúng/sai\" — **đã chốt** (QĐ-080, QĐ-083): màn thử thách không phán; uy tín chỉ ở buổi giải trình; xếp hạng không tính gợi ý.",
     "⑥ Thứ tự giữa 8 gói MVP (QĐ-077) và các gói chuẩn hóa 12a → 16 (QĐ-079) — **còn treo**.",
     "⑦ prototype/README.md:106 còn ghi telemetry lưu câu SQL người chơi gõ, trái QĐ-065 — **còn treo**, nên sửa sớm vì liên quan quyền riêng tư.",

@@ -121,12 +121,12 @@ tung:
 
 ha-vy:
   ten-hien-thi: Hà Vy
-  ho-ten: Trần Hà Vy                     # GDD ghi "Lê Hà Vy" — chờ chốt họ
+  ho-ten: Trần Hà Vy
   vai: >
     Năm 1 Toán ứng dụng, thành viên CLB. Một trong bộ ba. Giỏi logic toán: diễn giải bằng ẩn dụ toán,
     câu kiểm tra của cô là bước chép sổ (§12.5); soát hồ sơ; gọi tên lỗi ở buổi phản biện (QĐ-080 → QĐ-083).
   xung-ho: { voi-nguoi-choi: "tớ / cậu", voi-tung: "tớ / cậu", voi-minh-anh: "em / chị" }
-  cau-cua-mieng: ["Khoan, tính lại đã.", "Đừng cá. Đếm."]   # câu đáp Tùng đang cân nhắc "Đừng cá. Tính."
+  cau-cua-mieng: ["Khoan, tính lại đã.", "Đừng cá. Tính."]   # câu sau là câu đáp Tùng (QĐ-084)
   tinh-cach: Điềm tĩnh, kỹ tính, ghét võ đoán, tốt bụng.
   khong-bao-gio: ["Giải thích cú pháp SQL", "Cố ý dẫn sai", "Nói 'đúng rồi' / 'sai rồi' về kết quả truy vấn trong màn thử thách"]
   bieu-cam: [neutral, thinking, smile]
@@ -138,7 +138,8 @@ minh-anh:
     Năm 3 Luật kinh tế, chủ nhiệm CLB. Giao vụ; dẫn người chơi đi gặp thầy cô, người quản lý dữ liệu → mở địa điểm mới.
     Ở buổi giải trình: cảm xúc theo thanh uy tín; mỗi lần người chơi mất vạch thì giải cứu (xin làm lại, nói đỡ) (QĐ-083).
   xung-ho: { voi-bo-ba: "chị / em" }
-  cau-cua-mieng: ["Rồi, việc hôm nay là…"]          # đang cân nhắc đổi
+  ho-ten: Lê Minh Anh
+  cau-cua-mieng: ["Nói có sách, mách có chứng."]   # đúng thành ngữ, không biến tấu (QĐ-084)
   khong-bao-gio: ["Nói thay đáp án cho người chơi", "Hoàn lại vạch uy tín"]
   bieu-cam: [neutral, worried, happy]
 
@@ -761,7 +762,7 @@ Tiêu chí xong bước 1: toàn bộ test hiện có (trừ các test bị xóa
 
 [KHI CHẠY · bước = chay-or · phép nối = OR · số dòng > kq.lan-truoc.so-dong]
 - **tung** (neutral): Ơ… {{kq.so-dong}} lớp? Thêm manh mối mà lại ra nhiều hơn lúc nãy? Tớ cá là máy lỗi.
-- **ha-vy** (thinking): Đừng cá. Đếm. Khoan, tính lại đã.
+- **ha-vy** (thinking): Đừng cá. Tính. Khoan, tính lại đã.
 - [CHÉP SỔ and-or]
 - [NỔI BẬT phep-noi]
 - [SANG BƯỚC sua-and]

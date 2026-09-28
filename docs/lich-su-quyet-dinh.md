@@ -8,7 +8,7 @@
 > 3. Điều phối viên trả lời theo hướng **có lợi nhất cho mục tiêu prototype** (kiểm chứng vòng chơi tìm manh mối → truy vấn → diễn giải → phản bác, với người mới học SQL), ghi vào file này, rồi gửi câu trả lời lại cho agent.
 > 4. Chỉ điều phối viên được sửa file này. Agent đọc file này trước khi làm việc; quyết định ở đây có hiệu lực ràng buộc.
 >
-> **Thứ tự ưu tiên khi mâu thuẫn:** `prototype/prototype-scope-down-v0.1.md` > file này > `thiet-ke/vu1-buoi-giai-trinh-kich-ban.md` > `thiet-ke/clb-tham-tu-du-lieu-GDD-v0.5.md` > `thiet-ke/vu-tru-hoa-phuong-tong-quan.md` (đường dẫn tính từ `docs/`).
+> **Thứ tự ưu tiên tài liệu (QĐ-084):** tổng quan vũ trụ → tầm nhìn sản phẩm chính (GDD) → tầm nhìn MVP → tầm nhìn prototype. Quyết định trong sổ này phải được đưa vào tài liệu đúng tầng. **Khi các tài liệu mâu thuẫn, điều phối viên đưa user quyết**, không tự phân xử. *(Thứ tự cũ, trước QĐ-084: `prototype/prototype-scope-down-v0.1.md` > file này > `thiet-ke/vu1-buoi-giai-trinh-kich-ban.md` > `thiet-ke/clb-tham-tu-du-lieu-GDD-v0.5.md` > `thiet-ke/vu-tru-hoa-phuong-tong-quan.md` (đường dẫn tính từ `docs/`).)*
 >
 > **Mẫu một mục:** `QĐ-xxx — Tiêu đề` · Nguồn (ai hỏi / giai đoạn) · Câu hỏi hoặc bối cảnh · Phương án · **Chọn** · Lý do.
 
@@ -624,3 +624,16 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - **Lời nhắn chị Linh mỗi vụ chỉ dẫn bí ẩn của mùa**, không còn dùng để mở trang sổ (thay câu "mỗi vụ mở thêm trang qua lời nhắn" của QĐ-080).
 - **Ở buổi giải trình**, sổ cá nhân chỉ là chỗ người chơi tự mở ra xem lại, không bắt chọn trang (QĐ-082).
 - **Còn treo:** tên "Vũ trụ Hoa Phượng"; Remotion chỉ dùng xuất MP4 hay bỏ; chị Linh có giọng kể không; có ghi lặng lẽ số lần mở sổ vào telemetry không; câu đáp Tùng "Đừng cá. Đếm." hay "Đừng cá. Tính."; câu cửa miệng của Minh Anh, thầy Quang, thầy Khải, chị Linh; thứ tự ưu tiên khi tài liệu mâu thuẫn (dòng 11 của sổ này).
+
+**QĐ-084 — Họ tên, câu cửa miệng, thứ tự ưu tiên tài liệu, câu hỏi tạo nhân vật, Remotion, tên vũ trụ (QUYẾT ĐỊNH CỦA USER).** · Nguồn: USER, trả lời các điểm còn treo của QĐ-080 → QĐ-083 · 28/09
+- **Họ tên:** **Lê Minh Anh**, **Trần Hà Vy** (khớp hồ sơ nhân vật đang có trong game; GDD và prompt ảnh cũ ghi "Nguyễn Minh Anh", "Lê Hà Vy" — prompt là bản ghi, không sửa).
+- **Câu cửa miệng** (chốt bảng đề xuất ở phiên hội đồng `…-1257-so-tay-mo-khoa-xung-ho-cau-cua-mieng`):
+  - Người chơi: "Số liệu đây!" (QĐ-082) · Tùng: "Tớ cá là…" · Hà Vy: "Khoan, tính lại đã." (QĐ-081), đáp Tùng: **"Đừng cá. Tính."** (thay "Đừng cá. Đếm.").
+  - Minh Anh: **"Nói có sách, mách có chứng."** — dùng đúng thành ngữ, không sáng tạo thêm (thay "Rồi, việc hôm nay là…").
+  - Quân: "Dữ liệu không nói dối. Nhưng người đọc dữ liệu thì có." (dùng thưa) · Thầy Quang: **"Căn cứ vào đâu?"** · Thầy Khải: **"Máy chạy đúng cái em viết, chứ không chạy cái em nghĩ."** · Chị Linh: châm ngôn ở trang đầu sổ **"Kiểm hai lần, kết luận một lần."**, cuối lời nhắn có thể thêm "Đừng vội tin một con số." · Nhân vật phụ (bác Thịnh, chú Cường, Hoài…): không có câu cố định.
+- **Thứ tự ưu tiên tài liệu** (thay dòng "Thứ tự ưu tiên khi mâu thuẫn" ở đầu sổ này): **tổng quan vũ trụ → tầm nhìn sản phẩm chính (GDD) → tầm nhìn MVP → tầm nhìn prototype**. Sổ quyết định ghi lại quyết định; mỗi quyết định phải được đưa vào tài liệu đúng tầng. **Khi phát hiện mâu thuẫn giữa các tài liệu, điều phối viên không tự phân xử mà đưa user quyết**, kèm vị trí hai bên. Hiện tầm nhìn MVP chỉ nằm trong QĐ-077 → QĐ-083, chưa có tài liệu riêng.
+- **Lớp của Hoài** (QĐ-073 ghi BC24A, QĐ-077 ghi QT24B): chọn theo câu đố, **chốt cùng lúc rà soát và viết nội dung** (gói kịch bản MVP).
+- **Câu hỏi tạo nhân vật:** tối đa **3–4 câu**. MVP: tên, ngành, nam/nữ (QĐ-077); sau MVP nếu cần cho mã đề hoặc nội dung thì thêm tối đa 1 câu (thay 6 câu ở GDD §4).
+- **Remotion:** không dùng trong game; chỉ dùng sau này khi làm video (xuất MP4 ra ngoài).
+- **Tên "Vũ trụ Hoa Phượng" chắc chắn phải đổi**; tên mới chờ user chọn. Kéo theo: tên tệp `docs/thiet-ke/vu-tru-hoa-phuong-tong-quan.md`, tên dòng game "Đội Robot Hoa Phượng", các chỗ nhắc trong README và tài liệu. Id ảnh `hoa-phuong-environment-style-anchor` giữ nguyên (id không đổi theo tên).
+- **Còn treo:** tên vũ trụ mới; thứ tự làm giữa các gói MVP và gói chuẩn hóa 12a → 16; câu về telemetry ở `prototype/README.md:106` trái QĐ-065; chị Linh có giọng kể không; có ghi lặng lẽ số lần mở sổ không.

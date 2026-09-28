@@ -45,8 +45,7 @@ bị bản MVP (QĐ-077).
 4. `docs/prototype/kich-ban-prototype.md`: nội dung đang chạy trong game.
 5. `prototype/README.md` và `prototype/docs/ARCHITECTURE.md`: chạy và sửa code.
 
-**Khi tài liệu mâu thuẫn** (theo `docs/lich-su-quyet-dinh.md`): phạm vi prototype > sổ quyết định > kịch bản
-Vụ 1 > GDD > tổng quan vũ trụ.
+**Thứ tự ưu tiên tài liệu** (QĐ-084): tổng quan vũ trụ → GDD → tầm nhìn MVP → tầm nhìn prototype. Khi các tài liệu mâu thuẫn, đưa người quyết định (user) chốt, không tự phân xử.
 
 ## Quy ước
 

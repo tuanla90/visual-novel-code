@@ -3,7 +3,7 @@
 > Chuỗi game học lập trình nhập vai, cùng diễn ra ở Trường Đại học Chấn Hưng. Mỗi ngôn ngữ là một câu lạc bộ với câu chuyện riêng; nhân vật và sự kiện đan chéo giữa các game.
 > Tài liệu này giữ **hướng chung, nhân vật chung, dòng thời gian và kiến trúc dùng chung**. Chi tiết từng game nằm trong tài liệu thiết kế riêng (ví dụ `clb-tham-tu-du-lieu-GDD-v0.5.md`).
 >
-> **Cập nhật 28/09/2026 (QĐ-074, QĐ-080 → QĐ-082):** trường đổi tên thành **Trường Đại học Chấn Hưng** (tên trường là biến trong nội dung); tên chuỗi "Vũ trụ Hoa Phượng" và tên dòng game "Đội Robot Hoa Phượng" **chưa chốt**, giữ tạm. Bộ ba của dòng SQL cùng năm 1 (Tùng, nhân vật chính, Hà Vy); chú Bảy đổi thành chú Cường; câu hô của dòng SQL là "Số liệu đây!". Nguồn chuẩn về nhân vật là `nhan-vat.yaml` (đặc tả nội dung §4).
+> **Cập nhật 28/09/2026 (QĐ-074, QĐ-080 → QĐ-082):** trường đổi tên thành **Trường Đại học Chấn Hưng** (tên trường là biến trong nội dung); tên chuỗi "Vũ trụ Hoa Phượng" và tên dòng game "Đội Robot Hoa Phượng" **sẽ đổi** (QĐ-084), giữ tạm tới khi có tên mới. Thứ tự ưu tiên tài liệu: tài liệu này → GDD → MVP → prototype (QĐ-084). Bộ ba của dòng SQL cùng năm 1 (Tùng, nhân vật chính, Hà Vy); chú Bảy đổi thành chú Cường; câu hô của dòng SQL là "Số liệu đây!". Nguồn chuẩn về nhân vật là `nhan-vat.yaml` (đặc tả nội dung §4).
 
 ---
 

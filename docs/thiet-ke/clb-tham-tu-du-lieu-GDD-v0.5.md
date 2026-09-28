@@ -4,7 +4,8 @@
 > Là dòng game đầu tiên của **Vũ trụ Hoa Phượng** — xem `vu-tru-hoa-phuong-tong-quan.md` cho nhân vật chung, dòng thời gian và kiến trúc dùng chung.
 >
 > **Cập nhật 28/09/2026 (theo QĐ-070 → QĐ-083 trong `docs/lich-su-quyet-dinh.md`):**
-> - Trường đổi tên thành **Trường Đại học Chấn Hưng** (QĐ-080); tên trường là biến trong nội dung. Tên chuỗi "Vũ trụ Hoa Phượng" chưa chốt.
+> - Trường đổi tên thành **Trường Đại học Chấn Hưng** (QĐ-080); tên trường là biến trong nội dung. Tên chuỗi "Vũ trụ Hoa Phượng" **sẽ đổi**, chờ tên mới (QĐ-084).
+> - Họ tên: **Lê Minh Anh**, **Trần Hà Vy**; câu cửa miệng theo QĐ-084. Thứ tự ưu tiên tài liệu: vũ trụ → GDD → MVP → prototype (QĐ-084).
 > - **Bộ ba cùng năm 1** (QĐ-074, QĐ-081): Tùng giỏi tìm kiếm trên bản đồ, người chơi giỏi tin học, Hà Vy giỏi logic toán; xưng "tớ – cậu". Minh Anh giao vụ, mở địa điểm, bảo vệ người chơi ở giải trình (§3.1).
 > - **Sổ tay:** sổ chị Linh chỉ hiện qua hoạt cảnh; người chơi có **sổ cá nhân**, chép dần qua câu kiểm tra toán của Hà Vy; bỏ gợi ý 3 cấp và không đếm gợi ý (QĐ-080, QĐ-083).
 > - **Buổi giải trình: phản biện 5 nhịp**, trừ uy tín ở nhịp 1, 4, 5, Minh Anh giải cứu (QĐ-082, QĐ-083) (§5.2). Câu hô đổi thành **"Số liệu đây!"**.
@@ -96,20 +97,21 @@ Tuần đầu năm học 2026–2027, phòng Công tác sinh viên nhận thư n
 - **Giỏi tìm kiếm trên bản đồ** (QĐ-081): chỉ đường, nhắc lịch và nhiệm vụ, giúp khi người chơi loay hoay tìm điểm xem xét (§9); khi phát sinh nhu cầu học cú pháp mới hoặc khi người chơi bí, gợi ý "tra sổ chị Linh đi" — chỉ gợi ý, **không tra hộ** (QĐ-080, QĐ-083).
 - Không biết đọc dữ liệu. Ở thử thách đầu, tự chọn OR sai để mở tình huống (QĐ-073).
 
-**Nguyễn Minh Anh — chủ nhiệm CLB, năm 3 ngành Luật kinh tế**
+**Lê Minh Anh — chủ nhiệm CLB, năm 3 ngành Luật kinh tế**
 - Quyết đoán, trách nhiệm, căng thẳng vì sợ CLB bị giải thể. Xưng "chị – em" với bộ ba.
 - **Giao vụ**; dẫn người chơi đi gặp thầy cô và người quản lý dữ liệu mới, qua đó **mở địa điểm mới trên bản đồ** (Minh Anh mở, Tùng dẫn đường trong chỗ đã mở) (QĐ-080). Trao sổ chị Linh cho người chơi xem ở cảnh dọn phòng CLB.
 - Ở buổi giải trình: đại diện CLB cùng người chơi; **thể hiện cảm xúc theo thanh uy tín**; mỗi lần người chơi mất vạch, cô đổi sắc mặt và **giải cứu** — xin cho làm lại hoặc nói đỡ — nhưng không hoàn lại vạch, không nói thay đáp án (QĐ-083).
-- Câu cửa miệng: "Rồi, việc hôm nay là…" (đang cân nhắc đổi).
+- Câu cửa miệng: **"Nói có sách, mách có chứng."** (QĐ-084).
 
-**Lê Hà Vy — năm nhất ngành Toán ứng dụng** *(họ đang lệch: đặc tả nội dung ghi "Trần"; chờ chốt)*
-- Kỹ tính, hoài nghi, tốt bụng. Câu cửa miệng: **"Khoan, tính lại đã."** (QĐ-081); đáp Tùng: "Đừng cá. Đếm." (đang cân nhắc "Đừng cá. Tính.").
+**Trần Hà Vy — năm nhất ngành Toán ứng dụng**
+- Kỹ tính, hoài nghi, tốt bụng. Câu cửa miệng: **"Khoan, tính lại đã."** (QĐ-081); đáp Tùng: **"Đừng cá. Tính."** (QĐ-084).
 - **Giỏi logic toán, không giải thích cú pháp SQL** (QĐ-080). Diễn giải bằng ẩn dụ toán học (vd hai vòng tròn giao – hợp cho AND/OR); câu hỏi kiểm tra của cô — người chơi chọn đoạn code khớp lời toán học — **chính là bước chép kiến thức vào sổ cá nhân** (QĐ-083).
 - Soát hồ sơ trước buổi giải trình (so từng giấy nhớ với dữ kiện). Ở buổi giải trình, gọi tên lỗi của Quân bằng ngôn ngữ toán sau khi người chơi sửa xong (QĐ-082). Chỉ lên tiếng khi con số bất thường; không nói "đúng rồi / sai rồi" về kết quả truy vấn.
 
 **Phạm Diệu Linh — cựu chủ nhiệm (đã tốt nghiệp, đi du học)**
 - Để lại **cuốn sổ tự học SQL** ở phòng CLB: đủ nội dung từ đầu (cú pháp, điểm tâm đắc, lỗi thường gặp). Sổ chỉ hiện qua **hoạt cảnh** (một trang viết tay phóng to), không có giao diện lật riêng (QĐ-083).
 - Mỗi vụ có một lời nhắn của chị dẫn tới bí ẩn tổng của mùa.
+- Châm ngôn ở trang đầu sổ: **"Kiểm hai lần, kết luận một lần."**; cuối lời nhắn đôi khi có "Đừng vội tin một con số." (QĐ-084).
 
 ### 3.2. Rival
 
@@ -124,7 +126,7 @@ Tuần đầu năm học 2026–2027, phòng Công tác sinh viên nhận thư n
 
 | Nhân vật | Vị trí | Dữ liệu phụ trách | Tính cách |
 |---|---|---|---|
-| **Thầy Đỗ Khải** | Giảng viên khoa HTTT, cố vấn CLB | Giải thích cú pháp; `nhat_ky_he_thong` | Dí dỏm, lập dị, không đưa đáp án, chỉ hỏi ngược |
+| **Thầy Đỗ Khải** | Giảng viên khoa HTTT, cố vấn CLB | Giải thích cú pháp; `nhat_ky_he_thong` | Dí dỏm, lập dị, không đưa đáp án, chỉ hỏi ngược. Câu cửa miệng: "Máy chạy đúng cái em viết, chứ không chạy cái em nghĩ." (QĐ-084) |
 | **Cô Vũ Hạnh** | Phòng Đào tạo | `sinh_vien`, `lop_sinh_hoat`, `hoc_phan`, `dang_ky_hoc_phan` | Chu đáo, cẩn thận, luôn nhắc bảo mật |
 | **Cô Đinh Mai** | Thư viện | `sach`, `muon_sach` | Hiền, mê sách |
 | **Chú Cường** | Bảo vệ KTX, chú ruột của Tùng (trước là "chú Bảy", đổi theo QĐ-081) | `ra_vao_ktx` | Xuề xòa, vui tính, nhớ thời hoàng kim của CLB |
@@ -134,7 +136,7 @@ Tuần đầu năm học 2026–2027, phòng Công tác sinh viên nhận thư n
 ### 3.4. Nhân vật gây áp lực
 
 **Thầy Trịnh Quang — Phó hiệu trưởng**
-- Chủ trì các buổi giải trình, đóng vai như thẩm phán. Nghiêm, ít nói, công bằng.
+- Chủ trì các buổi giải trình, đóng vai như thẩm phán. Nghiêm, ít nói, công bằng. Câu cửa miệng: **"Căn cứ vào đâu?"** (QĐ-084).
 - Nút thắt cuối mùa: là một trong những người sáng lập CLB thời "manh mối thực tế".
 
 **Vương Khánh — năm 4, trưởng CLB Robotics**
@@ -145,7 +147,7 @@ Tuần đầu năm học 2026–2027, phòng Công tác sinh viên nhận thư n
 
 ## 4. Đoạn mở đầu: Tùng hỏi chuyện, tạo mã đề
 
-> **MVP (QĐ-077):** chỉ hỏi tên, ngành, nam/nữ (có nút "Ngẫu nhiên"), không tạo mã đề; không thu thông tin thật, không ghi tên vào telemetry. Phần mã đề dưới đây là đích sau MVP.
+> **Giới hạn 3–4 câu (QĐ-084).** **MVP (QĐ-077):** chỉ hỏi tên, ngành, nam/nữ (có nút "Ngẫu nhiên"), không tạo mã đề; sau MVP thêm tối đa 1 câu nếu cần cho mã đề hoặc nội dung (thay 6 câu bên dưới); không thu thông tin thật, không ghi tên vào telemetry. Phần mã đề dưới đây là đích sau MVP.
 
 **Bối cảnh:** tối đầu tiên ở ký túc xá. Tùng vừa đi đón tân sinh viên về, vừa dọn đồ vừa làm quen.
 
