@@ -160,6 +160,8 @@ export const dinhDangLoi = (l: LoiNoiDung): string => `${l.tep}:${l.dong}: ${l.t
 export interface TuyChonDoc {
   /** Có thì thay biến `{{nv.…}}`, `{{truong.…}}` trước khi đọc; không có mà gặp biến thì báo lỗi. */
   bangTen?: BangTen;
+  /** Bộ MVP: giữ nguyên `{{nv.nguoi-choi}}` thay vì báo lỗi (bien.ts). */
+  giuCho?: boolean;
 }
 
 export interface KetQuaDoc {
@@ -171,8 +173,10 @@ export interface KetQuaDoc {
 
 const SPOKEN_RE = /^\*\*([a-z-]+)\*\*(?: \(([a-z]+)\))?: (.*)$/;
 const CHOICE_RE = /^ {2}- \(([A-Z])\) \{id: ([a-z0-9-]+)\} (.+?)( \[ĐÚNG\])? → phản hồi: (.+)$/;
-const QUESTION_RE = /^- \[HỎI ([a-z0-9-]+)\] ([a-z-]+): "(.*)"$/;
-const FIELD_RE = /^- ([^[\]:`]+?):\s*(.*)$/;
+/** `- [HỎI <mã>] <người hỏi>: "<lời>"` (bộ MVP dùng lại, thêm ` · trừ uy tín` trước `]`). */
+export const QUESTION_RE = /^- \[HỎI ([a-z0-9-]+)\] ([a-z-]+): "(.*)"$/;
+/** `- Nhãn: giá trị` (dùng chung với bộ đọc MVP, doc-mvp.ts). */
+export const FIELD_RE = /^- ([^[\]:`]+?):\s*(.*)$/;
 
 export function parseSpoken(s: string): RawLine {
   const m = SPOKEN_RE.exec(s.trim());
@@ -190,7 +194,7 @@ function parseFeedback(s: string): RawLine[] {
   return s.split('<br>').map((part) => parseSpoken(part));
 }
 
-function parseChoice(line: string): RawChoice | null {
+export function parseChoice(line: string): RawChoice | null {
   const m = CHOICE_RE.exec(line);
   if (!m) return null;
   return {
@@ -203,7 +207,7 @@ function parseChoice(line: string): RawChoice | null {
 }
 
 /** `[MÀN CHIẾU <id> · vật chứng <ev> · chạy · 2 dòng]` — các mục sau id theo thứ tự tùy ý. */
-function parseProjector(
+export function parseProjector(
   line: string,
 ): { id: string; evidence: string | null; preload: string | null; run: boolean; rows: number | null } | null {
   const m = /^- \[MÀN CHIẾU ([a-z0-9-]+)((?: · [^\]·]+)*)\]$/.exec(line);
@@ -281,7 +285,7 @@ export function docNoiDung(tepList: readonly TepNoiDung[], tuyChon: TuyChonDoc =
         loi.push({ tep: tep.duongDan, dong: i + 1, thongBao: 'có biến {{…}} nhưng không có bảng tên để thay' });
         continue;
       }
-      const kq = thayBien(raw, bangTen);
+      const kq = thayBien(raw, bangTen, { giuCho: tuyChon.giuCho });
       for (const t of kq.loi) loi.push({ tep: tep.duongDan, dong: i + 1, thongBao: t });
       lines[i] = kq.chu;
     }

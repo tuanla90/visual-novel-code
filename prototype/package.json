@@ -12,8 +12,10 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run --maxWorkers=2",
     "lint": "eslint .",
-    "kiem-noi-dung": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/kiem.ts",
-    "noi-dung:sinh": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/sinh.ts"
+    "kiem-noi-dung": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/kiem.ts && npm run -s kiem-noi-dung:mvp",
+    "noi-dung:sinh": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/sinh.ts && npm run -s noi-dung:sinh:mvp",
+    "kiem-noi-dung:mvp": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/kiem-mvp.ts",
+    "noi-dung:sinh:mvp": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/sinh-mvp.ts"
   },
   "dependencies": {
     "@fontsource/be-vietnam-pro": "^5.3.0",
