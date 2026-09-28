@@ -237,6 +237,7 @@ describe('lệnh kiem-noi-dung', () => {
   it('nội dung thật: không lỗi', () => {
     const kq = kiemNoiDung();
     expect(kq.loi).toEqual([]);
+    expect(kq.tepCu).toEqual([]); // file sinh đã khớp nội dung
     expect(kq.tomTat).toBe('noi-dung: 15 tệp, không lỗi — 5 phần, 20 chuỗi, 99 lời thoại, 4 thẻ thử thách, 9 thẻ hồ sơ.');
   });
 
