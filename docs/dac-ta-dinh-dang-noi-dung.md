@@ -983,7 +983,7 @@ Mọi `{cảnh: …}` ở chuỗi và `Cảnh:` ở địa điểm phải có �
 
 - Địa điểm là tiêu đề `##`, dữ kiện là các `###` ngay dưới. Nhãn `chính` / `phụ` / `nhiễu` **chỉ người viết thấy** (không vào giao diện); dòng `Phân biệt:` ghi người chơi dựa vào gì để phân biệt.
 - Dữ kiện: bắt buộc `Chuỗi` (chuỗi chạy khi người chơi chọn dữ kiện) **hoặc** `Thử thách` (dữ kiện là một màn phòng máy: `- Thử thách: c-loc-lop`; bằng chứng lấy từ "Vật chứng lưu vào hồ sơ" của thẻ). Không bắt buộc: `Mở từ` (mặc định = của địa điểm), `Cần` (điều kiện §13.1, chỉ dạng `có <mã>` / `không có <mã>`, `và`, `hoặc`, ngoặc), `Mở manh mối`, `Hiện tài liệu`, `Lưu bằng chứng`, `Lặp: mỗi lần` (mặc định một lần).
-- Mỗi địa điểm có **min–max dữ kiện** (dòng `Mỗi địa điểm` trong `## Luật` của lich.md; bộ mẫu đặt `1–4` vì phòng máy và CTSV mỗi nơi gánh hai ngày: dữ kiện chính ngày 2 + ngày 4, ngày 3 + ngày 5). Hai [chính] cùng chỗ cùng ngày trong kịch bản khung (lời bác Thịnh + thẻ lịch) viết thành **một** dữ kiện chính có nhiều hậu quả — vì QĐ-086 "mỗi ngày giải được 1 dữ kiện chính". Dữ kiện gắn nhãn `chính` nhưng chỉ là bước đệm (cô Hạnh cấp quyền trước khi vào phòng máy) không ghi ở lịch mà được dữ kiện chính của ngày `Cần` (qua vật phẩm nó tạo ra); bộ kiểm gộp nó vào chi phí khung của ngày đó.
+- Mỗi địa điểm có **min–max dữ kiện phụ/nhiễu**; **dữ kiện chính không tính** vào con số này (QĐ-089). Dòng luật viết `- Mỗi địa điểm: 1–3 dữ kiện phụ/nhiễu` trong `## Luật` của lich.md (viết thiếu "phụ/nhiễu" là lỗi, để không ai đọc nhầm thành đếm cả chính). Phòng máy và CTSV mỗi nơi gánh hai ngày (2 chính + 2 phụ/nhiễu) vẫn hợp lệ. Hai [chính] cùng chỗ cùng ngày trong kịch bản khung (lời bác Thịnh + thẻ lịch) viết thành **một** dữ kiện chính có nhiều hậu quả — vì QĐ-086 "mỗi ngày giải được 1 dữ kiện chính". Dữ kiện gắn nhãn `chính` nhưng chỉ là bước đệm (cô Hạnh cấp quyền trước khi vào phòng máy) không ghi ở lịch mà được dữ kiện chính của ngày `Cần` (qua vật phẩm nó tạo ra); bộ kiểm gộp nó vào chi phí khung của ngày đó.
 
 ### 18.5 Lịch — `lich.md`
 
@@ -994,7 +994,7 @@ Mọi `{cảnh: …}` ở chuỗi và `Cảnh:` ở địa điểm phải có �
 - Khung giờ: sang "Sáng", trua "Trưa", chieu "Chiều"
 - Buổi tối: toi "Buổi tối"
 - Dữ kiện chính tối đa: 2 khung
-- Mỗi địa điểm: 1–3 dữ kiện
+- Mỗi địa điểm: 1–3 dữ kiện phụ/nhiễu
 - Uy tín: 5 vạch
 
 ## Mở đầu
