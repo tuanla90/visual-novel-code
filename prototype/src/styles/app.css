@@ -624,6 +624,7 @@
 }
 /* Tự động xoay lật nhân vật bên phải để hướng mặt vào trung tâm sân khấu */
 .cast-member--side-right .portrait__img,
+.cast-member--side-right .portrait__talk,
 .cast-member--side-right .portrait--placeholder {
   transform: scaleX(-1);
   transform-origin: 50% 50%;
@@ -782,9 +783,18 @@
 }
 
 .portrait {
+  position: relative;
   margin: 0;
   width: 100%;
   height: 100%;
+}
+/* Lớp nhép môi/chớp mắt: trùng khít ảnh (visuals/TalkOverlay.tsx). */
+.portrait__talk {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 .portrait__img,
 .portrait .portrait-art {

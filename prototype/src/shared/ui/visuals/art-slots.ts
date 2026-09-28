@@ -284,6 +284,11 @@ export function foundArtFiles(): string[] {
   return Object.keys(FOUND_FILES);
 }
 
+/** URL Vite của một tệp cụ thể trong `src/assets` (đường dẫn dạng `/src/assets/...`), nếu có. */
+export function artUrlOfFile(path: string): string | undefined {
+  return FOUND_FILES[path];
+}
+
 /** URL ảnh thật của một ô, hoặc `undefined` nếu chưa có tệp. */
 export function artUrl(name: string, index: ReadonlyMap<string, string> = ART_INDEX): string | undefined {
   return index.get(name.toLowerCase());

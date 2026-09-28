@@ -38,6 +38,8 @@ interface VnState {
   autoMode: boolean;
   skipMode: boolean;
   hideUi: boolean;
+  /** Câu thoại hiện tại còn đang chạy chữ (chân dung người nói mấp máy môi). */
+  lineTyping: boolean;
   textSpeed: TextSpeed;
   backlog: BacklogEntry[];
   saveSlots: (SaveSlot | null)[];
@@ -49,6 +51,7 @@ interface VnState {
   toggleSkipMode: () => void;
   setHideUi: (v: boolean) => void;
   toggleHideUi: () => void;
+  setLineTyping: (v: boolean) => void;
   setTextSpeed: (speed: TextSpeed) => void;
 
   pushBacklog: (entry: BacklogEntry) => void;
@@ -89,6 +92,7 @@ export const useVnStore = create<VnState>((set, get) => ({
   autoMode: false,
   skipMode: false,
   hideUi: false,
+  lineTyping: false,
   textSpeed: 'normal',
   backlog: [],
   saveSlots: loadStoredSlots(),
@@ -100,6 +104,7 @@ export const useVnStore = create<VnState>((set, get) => ({
   toggleSkipMode: () => set((s) => ({ skipMode: !s.skipMode, autoMode: false })),
   setHideUi: (hideUi) => set({ hideUi }),
   toggleHideUi: () => set((s) => ({ hideUi: !s.hideUi })),
+  setLineTyping: (lineTyping) => set({ lineTyping }),
   setTextSpeed: (textSpeed) => set({ textSpeed }),
 
   pushBacklog: (entry) => {

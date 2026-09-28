@@ -82,6 +82,13 @@ export function DialogBox({
     instant: isTestEnv || skipMode || textSpeed === 'instant',
   });
 
+  // Chân dung người nói mấp máy môi trong lúc chữ còn chạy (visuals/TalkOverlay.tsx).
+  const setLineTyping = useVnStore((s) => s.setLineTyping);
+  useEffect(() => {
+    setLineTyping(!isDone);
+    return () => setLineTyping(false);
+  }, [isDone, setLineTyping]);
+
   // Xử lý tự động chuyển câu trong chế độ Auto hoặc Skip
   useEffect(() => {
     if (!isDone) return;

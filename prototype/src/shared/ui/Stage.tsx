@@ -11,6 +11,7 @@ import { SceneBackdrop } from './visuals/SceneBackdrop';
 import { SceneTransitionOverlay } from './visuals/SceneTransitionOverlay';
 import { castPosition, nextCast, type CastState } from './visuals/cast';
 import { useProjectorInsets } from './visuals/use-projector-insets';
+import { useVnStore } from '../vn/vn-store';
 
 export interface StageProps {
   scene: SceneId;
@@ -30,6 +31,7 @@ export function Stage({ scene, part, sequenceId, speaker, expression, children }
   const ref = useRef<HTMLElement>(null);
   // Phòng giải trình: vùng màn chiếu (gói 6) khớp màn chiếu trong ảnh nền.
   useProjectorInsets(ref, scene);
+  const lineTyping = useVnStore((s) => s.lineTyping);
 
   return (
     <section ref={ref} className="stage" data-scene={scene} style={{ backgroundColor: `var(--c-scene-${scene})` }} aria-label={`Cảnh: ${sceneName(scene)}`}>
@@ -50,7 +52,7 @@ export function Stage({ scene, part, sequenceId, speaker, expression, children }
               data-speaking={speaking ? 'true' : 'false'}
               data-side={isRight ? 'right' : 'left'}
             >
-              <Portrait character={m.character} expression={m.expression} size={m.character === 'bac-tu' ? 'small' : 'normal'} />
+              <Portrait character={m.character} expression={m.expression} size={m.character === 'bac-tu' ? 'small' : 'normal'} talking={speaking && lineTyping} />
             </div>
           );
         })}
