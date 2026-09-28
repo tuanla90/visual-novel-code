@@ -85,12 +85,12 @@ export function Stage({ scene, part, sequenceId, speaker, expression, children }
           return (
             <div
               key={m.character}
-              className={`cast-member${speaking ? ' cast-member--speaking' : ' cast-member--idle'}${m.character === 'bac-tu' ? ' cast-member--small' : ''}${isRight ? ' cast-member--side-right' : ' cast-member--side-left'}`}
+              className={`cast-member${speaking ? ' cast-member--speaking' : ' cast-member--idle'}${isRight ? ' cast-member--side-right' : ' cast-member--side-left'}`}
               style={style}
               data-speaking={speaking ? 'true' : 'false'}
               data-side={isRight ? 'right' : 'left'}
             >
-              <Portrait character={m.character} expression={m.expression} size={m.character === 'bac-tu' ? 'small' : 'normal'} talking={speaking && lineTyping} />
+              <Portrait character={m.character} expression={m.expression} size="normal" talking={speaking && lineTyping} />
             </div>
           );
         })}

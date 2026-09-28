@@ -22,11 +22,11 @@ export interface ScreenFrame {
 export const HEARING_ROOM_SCREEN: ScreenFrame = { x0: 0.09, y0: 0.1, x1: 0.91, y1: 0.72 };
 
 /**
- * Khung màn chiếu trong ẢNH THẬT `bg-prototype-hearing-room` (đo trên ảnh Topview 1360×768 ngày
- * 27/09). Màn chiếu trong ảnh nhỏ (~35% ngang) nên `projectorInsets` nới khung giao diện ra quanh
+ * Khung màn chiếu trong ẢNH THẬT `bg-prototype-hearing-room` (đo trên ảnh Topview 1360×768 — phòng họp
+ * rà soát MVP, 28/09; màn chiếu lệch phải so với tâm ảnh). Màn chiếu trong ảnh nhỏ (~35% ngang) nên `projectorInsets` nới khung giao diện ra quanh
  * tâm màn chiếu. `HEARING_ROOM_SCREEN` ở trên vẫn là khung của hình vẽ tạm (SVG).
  */
-export const HEARING_ROOM_IMAGE_SCREEN: ScreenFrame = { x0: 0.322, y0: 0.198, x1: 0.676, y1: 0.465 };
+export const HEARING_ROOM_IMAGE_SCREEN: ScreenFrame = { x0: 0.455, y0: 0.162, x1: 0.707, y1: 0.385 };
 
 /**
  * Khung tối thiểu để đọc được SQL + bảng (màn chiếu trong ảnh nhỏ hơn thì nới ra). Màn ≤ 1100 px:

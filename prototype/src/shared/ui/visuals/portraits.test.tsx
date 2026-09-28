@@ -57,7 +57,10 @@ describe('dàn nhân vật trên sân khấu', () => {
 
     rerender(<Stage scene="corridor-b" speaker="bac-tu" expression="neutral" />);
     expect(members()).toHaveLength(1);
-    expect(container.querySelector('.cast-member--small figure')?.getAttribute('aria-label')).toBe('Bác Tư, bình thường');
+    expect(container.querySelector('.cast-member--speaking figure')?.getAttribute('aria-label')).toBe('Bác Tư, bình thường');
+    // Bác Tư cùng cỡ với nhân vật khác (user 28/09: "bác bảo vệ đang bé hơn 2 bạn còn lại").
+    expect(container.querySelector('.cast-member--small')).toBeNull();
+    expect(container.querySelector('.portrait--small')).toBeNull();
   });
 
   it('nextCast trả lại chính trạng thái cũ khi không có gì đổi; lời không ghi biểu cảm giữ biểu cảm cũ', () => {

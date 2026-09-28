@@ -6,6 +6,7 @@
  * Nguồn (Topview 28/09, GPT Image 2.5, image-edit từ chính ảnh chân dung): ảnh biểu cảm sửa từ ảnh
  * neo rồi căn về đúng khung ảnh neo (đổi biểu cảm thân người không xê dịch); ảnh "miệng mở"/"mắt
  * nhắm" sửa từ ảnh biểu cảm, căn khớp + khớp màu, miếng = vùng khác biệt làm mềm mép.
+ * Hà Vy "đang nghĩ" (sinh lại mặt 28/09, ghép vào ảnh neo) chưa có bộ miếng → không nhép môi.
  * Quân sững sờ: ảnh gốc miệng đang há, miếng miệng là miệng KHÉP (nhép vẫn là đổi qua lại).
  * Tệp được sinh bằng công cụ cắt miếng — sửa tay thì giữ đúng tọa độ.
  */
@@ -19,8 +20,6 @@ import minhAnhHappyMouth from './talk/minh-anh-happy/mouth.webp';
 import minhAnhHappyEyes from './talk/minh-anh-happy/eyes.webp';
 import haVyNeutralMouth from './talk/ha-vy-neutral/mouth.webp';
 import haVyNeutralEyes from './talk/ha-vy-neutral/eyes.webp';
-import haVyThinkingMouth from './talk/ha-vy-thinking/mouth.webp';
-import haVyThinkingEyes from './talk/ha-vy-thinking/eyes.webp';
 import haVySmileMouth from './talk/ha-vy-smile/mouth.webp';
 import haVySmileEyes from './talk/ha-vy-smile/eyes.webp';
 import quanNeutralMouth from './talk/quan-neutral/mouth.webp';
@@ -83,13 +82,6 @@ const RIGS: readonly TalkRig[] = [
     height: 1360,
     mouth: { src: haVyNeutralMouth, x: 342, y: 367, w: 133, h: 103 },
     eyes: { src: haVyNeutralEyes, x: 296, y: 271, w: 239, h: 119 },
-  },
-  {
-    sourceFile: '/src/assets/characters/char-ha-vy-thinking.png',
-    width: 768,
-    height: 1360,
-    mouth: { src: haVyThinkingMouth, x: 344, y: 356, w: 135, h: 120 },
-    eyes: { src: haVyThinkingEyes, x: 299, y: 261, w: 236, h: 119 },
   },
   {
     sourceFile: '/src/assets/characters/char-ha-vy-smile.png',

@@ -773,9 +773,6 @@
     opacity 0.2s ease,
     transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.cast-member--small {
-  top: 130px;
-}
 .cast-member--speaking {
   z-index: 2;
   transform: translateX(-50%) scale(1.02);
