@@ -1,6 +1,6 @@
 # Kế hoạch ảnh MVP Vụ 1 — nền, vật tương tác, khung giờ (v0.1)
 
-28/09 · Nguồn nội dung: `prototype/noi-dung-mvp/` (dia-diem.md, canh.md, lich.md), `docs/mvp/kich-ban-vu1-mvp-khung.md` §11.
+28/09 · Đã chốt ở QĐ-089 (ngày/đêm, 1–3 dữ kiện phụ/nhiễu mỗi nơi, vật tương tác có ảnh riêng). Nguồn nội dung: `prototype/noi-dung-mvp/` (dia-diem.md, canh.md, lich.md), `docs/mvp/kich-ban-vu1-mvp-khung.md` §11.
 Phong cách nền giữ nguyên `prompts-background-prototype-flow-v0.2.md`; phong cách nhân vật giữ `prompts-characters-topview-v0.2.md`
 (trừ hai chỗ sửa ở mục 4). Công cụ: Topview (GPT Image 2.5, 1K medium), nền và vật đều sinh bằng **sửa ảnh (image edit)** có
 ảnh tham chiếu để đồng bộ nét vẽ.
@@ -110,3 +110,34 @@ giống ảnh gốc.
 - Cú pháp vị trí sprite trong `dia-diem.md` (ví dụ `- Ảnh: obj-hop-kien-nghi · x 62% · y 48% · rộng 9%`) + viền trắng khi
   rê chuột — thuộc gói kiến trúc/runtime MVP.
 - Lớp màu theo khung giờ (CSS) — cùng gói runtime.
+
+## 6. Tách nền: dùng rembg `isnet-anime` chạy trên máy
+
+Thử 28/09 trên 6 ảnh gốc (Minh Anh, Hà Vy, Quân, Hoài, Tùng, bác Tư/Thịnh): hết vệt sáng bao quanh tóc mà thuật toán
+trong game để lại; không ăn mất phần người nào (phần bị bỏ so với bản của game chỉ là viền mảnh quanh tóc, khối lớn nhất
+~280 điểm ảnh). Mỗi ảnh ~2–3 giây trên CPU. Ảnh đã trong suốt thì game tự bỏ qua bước tách của nó (bg-cutout bước 1).
+
+Cài đặt đã chạy được trên máy này (ghi lại vì có hai bẫy):
+- Đường dẫn thư viện phải **ngắn** (Windows giới hạn 260 ký tự): đặt ở `D:/Users/tuanla2/.cache/rbg`.
+- `onnxruntime` 1.30 **sập khi nạp** (access violation, nghi thư viện Visual C++ trên máy cũ) → dùng `onnxruntime==1.20.1`
+  ở `D:/Users/tuanla2/.cache/ort120`, đặt trước trong `PYTHONPATH`.
+- Mô hình `isnet-anime.onnx` (176MB) ở `D:/Users/tuanla2/.rembg/models/`.
+
+## 7. Kế hoạch sản xuất
+
+Làm theo đợt, mỗi đợt xong thì user duyệt bằng bảng so sánh trước khi thả vào game. Sinh qua Topview MCP (GPT Image 2.5,
+1K medium), gửi song song trong một đợt.
+
+| Đợt | Việc | Số ảnh | Ghi chú |
+|---|---|---|---|
+| 0 | Nối Topview MCP vào phiên làm ảnh | — | Phiên 28/09 không có công cụ Topview; user bật connector (hoặc làm qua web, chậm hơn) |
+| 1 | Sửa chân dung đang dùng: rembg 6 ảnh gốc; 8 ảnh biểu cảm "chỉ thay đầu" dùng viền của ảnh gốc; sinh lại mặt Hà Vy "đang nghĩ" (bớt trợn); thu nhỏ `char-minh-anh-anchor` về 768×1368 (tọa độ bộ nhép môi phải chia đôi) | 1 ảnh sinh + 14 xử lý | Không tốn lượt sinh trừ mặt Hà Vy |
+| 2 | Nền ngày MVP: `bg-mvp-phong-clb` trước (sửa từ nền prototype, thêm máy bàn, làm ảnh neo phong cách), rồi 10 nền còn lại lấy nó làm tham chiếu | 11 | Thứ tự theo truyện: KTX → cổng KTX → nhà văn hóa → sảnh tòa B → Đào tạo → phòng máy → ngoài phòng máy → CTSV → căng tin → phòng họp |
+| 3 | Nền tối: sửa từ ảnh ngày, giữ bố cục | 4–5 | sảnh tòa B, phòng máy, CTSV, phòng KTX, (cổng KTX) |
+| 4 | Vật tương tác: sửa ảnh với nền của nơi đó làm tham chiếu, nền hồng tím, rồi rembg | 14 | 13 vật ở mục 3 + `obj-ban-an-sinh-vien` |
+| 5 | Nhân vật mới (nền hồng tím, không viền sáng): Duy, Hiếu, Đạt, chú Cường, cô Hạnh, cô Lan; biểu cảm Tùng (2–3, chỉ sinh mặt) | 6 + 2–3 | Bác Thịnh dùng lại ảnh `bac-tu` |
+| 6 | Nền giấy tài liệu cho màn xem tài liệu: lá thư nặc danh, sổ niêm phong, nhật ký in, … | theo `ho-so/02-tai-lieu.md` | Chữ do game vẽ, ảnh chỉ là giấy trống |
+
+Tổng lượt sinh ước tính: **~40–45 ảnh** (chưa tính ảnh làm lại). Kiểm mỗi ảnh trước khi nhận: đúng góc máy 1,65 m; không chữ
+đọc được; chỗ trống cho vật còn trống (nền); đường bao trong suốt sạch, không bóng (vật, nhân vật); cỡ vật hợp tỉ lệ khi đặt
+lên nền.
