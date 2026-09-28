@@ -153,7 +153,7 @@
   "path": "docs/ke-hoach-goi-chuan-hoa.md",
   "vai_tro": "Kế hoạch bước 1 của QĐ-075 (chi tiết QĐ-079): chuyển nội dung hiện tại sang `prototype/noi-dung/` làm nguồn duy nhất, sinh dữ liệu cho game, xóa khoảng 1.600 dòng chép tay, không đổi chữ nào.",
   "trang_thai": "de-xuat-chua-duyet",
-  "trang_thai_giai_thich": "Dòng 3 ghi “kế hoạch, chưa giao, chờ user chốt 3 câu hỏi” (khớp QĐ-079).",
+  "trang_thai_giai_thich": "Dòng 3 ghi “kế hoạch, chưa giao, chờ user chốt 4 câu hỏi” (khớp QĐ-079).",
   "tom_tat": [
    "Hiện trạng (dòng 17–25): kịch bản 713 dòng, bản chép tay ~1.600 dòng .ts, read-script.ts mới chỉ dùng trong test, faithfulness.test.ts dài 555 dòng, ids.ts là tệp đóng băng.",
    "Ba phát hiện (dòng 29–31): nhiều node chỉ có trong bản chép tay; runtime chưa có kích hoạt, cờ, bộ đếm nên phải giữ cú pháp cũ; worktree chưa có node_modules.",

@@ -1,6 +1,6 @@
 # Kế hoạch gói chuẩn hóa nội dung (bước 1 của QĐ-075)
 
-28/09 · Trạng thái: **kế hoạch, chưa giao, chờ user chốt 3 câu hỏi cuối tệp** (QĐ-079) · Đặc tả: `docs/dac-ta-dinh-dang-noi-dung.md`
+28/09 · Trạng thái: **kế hoạch, chưa giao, chờ user chốt 4 câu hỏi cuối tệp** (QĐ-079) · Đặc tả: `docs/dac-ta-dinh-dang-noi-dung.md`
 
 ## Mục tiêu và tiêu chí xong
 
@@ -49,6 +49,7 @@ Chuyển nội dung **hiện tại** sang một nguồn duy nhất (`prototype/n
 - **Tách** `docs/prototype/kich-ban-prototype.md` thành cấu trúc `prototype/noi-dung/` theo mục 2 của đặc tả: `kich-ban/chinh/01…05-*.md`, `thu-thach/c1…c3, debrief-fix.md`, `ho-so/*.md`, `chung/loi-chung.md`. Chép nguyên văn, không sửa chữ. `docs/prototype/kich-ban-prototype.md` thay bằng một trang ngắn trỏ sang thư mục mới.
 - Thêm cú pháp máy đọc được cho các node ở phát hiện 1: `[MÀN CHIẾU …]`, `[ĐẶT CỜ …]`, `[CHÚ THÍCH HỒ SƠ …]`, `[THẺ CHỮ]`, `[KẾT THÚC]`. Cập nhật mục 6.3 của đặc tả cho khớp.
 - Chuyển SQL chuẩn, câu OR của Quân, model nạp sẵn từ `sql-challenge/data/challenges.ts` vào thẻ thử thách tương ứng (trường `SQL chuẩn:`, `Truy vấn nạp sẵn:`).
+- **Biến tên nhân vật** (câu 4): thêm cú pháp `{{nv.<mã>}}` và dạng `{{nv.<mã>.<dạng>}}` (tên hiển thị, họ tên, tên trong câu như "bác Tư"/"thầy Khải" viết thường). Ở gói này nguồn tên tạm là `CHARACTER_NAMES` trong `src/shared/display-names.ts`; bộ đọc báo lỗi `<file>:<dòng>` khi mã hoặc dạng không tồn tại, và **tự thay biến trước khi so khớp** nên `faithfulness` vẫn xanh. Giữ chỗ cho `{{nv.nguoi-choi}}` (tạo nhân vật, QĐ-077) nhưng chưa dùng. Viết thành một mục mới trong mục 10 của đặc tả.
 - `faithfulness.test.ts` đọc từ thư mục mới. Bản chép tay **vẫn giữ** ở gói này, nên test so khớp vẫn là lưới an toàn.
 - **Nghiệm thu:** bộ đọc đọc hết `noi-dung/` không lỗi; toàn bộ test xanh bằng mốc; `faithfulness` so với thư mục mới vẫn xanh.
 - Đề xuất model: **Opus**. Điểm rủi ro: tách file mà sót dòng; test so khớp bắt được.
@@ -59,6 +60,7 @@ Chuyển nội dung **hiện tại** sang một nguồn duy nhất (`prototype/n
 - Lệnh `npm run noi-dung:sinh` ghi `src/content/generated/*.gen.ts`; lệnh `npm run kiem-noi-dung` chỉ kiểm, không ghi. Nối vào `predev`, `prebuild`, và test "file sinh khớp nội dung".
 - `activeContent` dùng dữ liệu sinh. `CHALLENGE_SPECS` lấy SQL chuẩn từ dữ liệu sinh.
 - **Xóa** `src/content/real/story/*.ts`, `challenges.ts`, `evidence.ts`, `faithfulness.test.ts`, `testing/read-script.ts`. Giữ và trỏ sang dữ liệu sinh: `integrity`, `numbers`, `diagnostics`, `display-hygiene`, `redaction`.
+- **Thay tên bằng biến** trong `noi-dung/` bằng script (chỉ nhân vật có mã: Minh Anh, Hà Vy, Quân, Hoài, Bác Tư, Tùng; Hiếu chưa có mã nên để nguyên tới đợt 14). Chữ viết cứng ở giao diện đổi sang lấy từ `display-names.ts`: `HaVyPanel.tsx` (nút "Hỏi Hà Vy", nhãn "Mở/Thu nhỏ chat Hà Vy"), `ChallengeScreen.tsx` ("xem nhận xét của Hà Vy"), `EvidenceNotebook.tsx` (alt "Lê Minh Anh"). Thêm test: lời thoại sinh ra không còn tên nhân vật viết trần trong nguồn (có danh sách ngoại lệ nếu cần).
 - Cập nhật `prototype/docs/ARCHITECTURE.md`.
 - **Nghiệm thu:** file sinh qua `tsc` với `satisfies GameContent`; `JSON.stringify(dữ liệu sinh)` **bằng đúng** `JSON.stringify(realContent cũ)` (kiểm một lần trước khi xóa, ghi kết quả vào báo cáo); test xanh; chơi hết game qua trình duyệt.
 - Đề xuất model: **Opus**. Gói lớn nhất; nhịp commit 25 phút.
@@ -68,6 +70,7 @@ Chuyển nội dung **hiện tại** sang một nguồn duy nhất (`prototype/n
 - Tạo `noi-dung/nhan-vat.yaml` (mục 4 của đặc tả, điền đúng theo kịch bản hiện tại: Quân là Ban Pháp chế, `xuat-hien-tu: debrief`) và `noi-dung/canh.yaml`.
 - Bộ sinh ghi `src/shared/ids.gen.ts` (mảng hằng nhân vật + biểu cảm, cảnh, manh mối, tài liệu, vật chứng, thử thách). `ids.ts` giữ các hàm và **re-export** từ file sinh. Đây là ngoại lệ có kiểm soát của luật tệp đóng băng (như QĐ-069); ghi QĐ khi giao.
 - Bộ đọc kiểm tra: người nói có trong `nhan-vat.yaml`, biểu cảm có trong `bieu-cam`, nhân vật không nói trước `xuat-hien-tu`.
+- **Nguồn tên chuyển sang `nhan-vat.yaml`** (câu 4): `ten-hien-thi`, `ho-ten`, dạng tên trong câu. `CHARACTER_NAMES` sinh từ YAML. Ghi luật **mã không đổi khi đổi tên** vào mục 4 của đặc tả. Chốt luôn họ tên đầy đủ, hiện đang lệch: Minh Anh là "Nguyễn" ở GDD và prompt ảnh nhưng "Lê" trong hồ sơ nhân vật của game (`src/evidence/character-profiles.ts`); Hà Vy là "Lê" ở GDD và prompt ảnh nhưng "Trần" ở đặc tả và hồ sơ trong game. Hồ sơ nhân vật (`character-profiles.ts`) cũng nên sinh từ `nhan-vat.yaml`.
 - **Nghiệm thu:** `ids.gen.ts` sinh ra có nội dung **bằng đúng** các mảng hằng hiện tại; `tsc` và test xanh; thử cố ý viết sai biểu cảm trong một file `.md` → build báo lỗi đúng dòng.
 - Đề xuất model: **Opus** (đụng tệp đóng băng và kiểu dùng khắp nơi).
 
@@ -92,7 +95,7 @@ Chuyển nội dung **hiện tại** sang một nguồn duy nhất (`prototype/n
 | Đợt | Việc | Phụ thuộc |
 |---|---|---|
 | 13 | Runtime: `[KÍCH HOẠT]`, `[ĐIỀU KIỆN]`, `[HẬU QUẢ]`, cờ, bộ đếm, `[RẼ NHÁNH]` (2b); chuyển `[ĐIỂM XEM XÉT]`/`[ĐIỀU KIỆN QUA]` sang cú pháp mới | 12a-2 |
-| 14 | Biến SQL (`bien.yaml`), bộ định dạng, bộ sinh theo seed, ràng buộc, kiểm 1.000 seed, dataset ẩn sinh từ seed | 12c |
+| 14 | Biến SQL (`bien.yaml`), bộ định dạng, bộ sinh theo seed, ràng buộc, kiểm 1.000 seed, dataset ẩn sinh từ seed; **biến vai vụ án** (`{{vu1.nhan-chung.ten}}`, người vô can…) thay tên Hoài/Hiếu trong lời thoại | 12c |
 | 15 | Màn thử thách mới (QĐ-071 → QĐ-074) và kịch bản loại 3 (khối sự kiện, bước, hành động nhân vật, note, soát hồ sơ) | 13, 14 |
 | 16 | Viết lại nội dung: Tùng vào CLB, c1/c2 mới, "Báo chí" thành ngành, chuỗi Bác Tư, true ending | 15 |
 
@@ -101,3 +104,4 @@ Chuyển nội dung **hiện tại** sang một nguồn duy nhất (`prototype/n
 1. Sinh dữ liệu theo **cách A** (file `.ts` sinh ra và commit)?
 2. Đồng ý **điều chỉnh mục 15 của đặc tả**: bước 1 vẫn nhận `[ĐIỂM XEM XÉT]`, `[ĐIỀU KIỆN QUA]`, `[KHI ĐÚNG]`, `[KHI: mã]`; chuyển sang cú pháp mới ở đợt 13?
 3. Model đề xuất: 12a-1 Opus, 12a-2 Opus, 12b Opus, 12c Sonnet?
+4. **Tên nhân vật thành biến** `{{nv.<mã>}}`, giữ mã hiện tại làm khóa (không đổi mã khi đổi tên, không dùng mã vai trò cho nhân vật xuyên suốt), vai vụ án đặt theo vai ở đợt 14? Chia việc như ở 12a-1, 12a-2, 12b và đợt 14 bên trên.

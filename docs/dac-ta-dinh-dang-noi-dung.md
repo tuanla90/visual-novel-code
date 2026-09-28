@@ -774,4 +774,4 @@ Lưu ý: khối `[KHI CHẠY]` không bộ lọc đặt **cuối** để làm m�
 3. **Kho tên hư cấu** (`kho/ho-dem.txt`, `kho/ten.txt`) cần bao nhiêu tên và ai duyệt để không trùng tên người thật trong trường?
 4. **Seed cho người chơi** khi bật ngẫu nhiên: lấy từ câu trả lời với Tùng ở phần mở đầu (GDD) hay ngẫu nhiên thuần? Ảnh hưởng tới khả năng hai người chơi so đáp án với nhau.
 5. **Thứ tự dòng dữ liệu** có cần cố định để giữ bẫy `LIMIT` như QĐ-048 không, hay bỏ bẫy này vì vòng chính không còn dạy `LIMIT`?
-6. **Ba câu hỏi của kế hoạch chuẩn hóa** (QĐ-079): cách sinh dữ liệu, dời cú pháp `[KÍCH HOẠT]` sang đợt 13, model từng gói. Xem cuối `docs/ke-hoach-goi-chuan-hoa.md`.
+6. **Bốn câu hỏi của kế hoạch chuẩn hóa** (QĐ-079): cách sinh dữ liệu, dời cú pháp `[KÍCH HOẠT]` sang đợt 13, model từng gói, tên nhân vật thành biến `{{nv.<mã>}}` (sẽ thêm vào mục 10). Xem cuối `docs/ke-hoach-goi-chuan-hoa.md`.
