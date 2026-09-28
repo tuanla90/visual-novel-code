@@ -6,13 +6,14 @@
  * `useMemo`. Phản hồi và chọn lại do runtime điều khiển (khung nhìn `feedback`), component này chỉ
  * hiện lựa chọn và gọi `onChoose(id)`.
  */
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { speakerLabel } from '../display-names';
 import type { MultipleChoiceQuestion } from '../../story/types';
 import { orderedChoices } from './choice-order';
 import { CodeText } from './CodeText';
 import { usePressGuard } from './use-press-guard';
 import { soundEngine } from '../audio/sound-engine';
+import { useVnStore } from '../vn/vn-store';
 
 export interface MultipleChoiceProps {
   question: MultipleChoiceQuestion;
@@ -33,31 +34,80 @@ export function MultipleChoice({ question, attempts, onChoose, random }: Multipl
     [question.id],
   );
   const askerLabel = speakerLabel(question.asker.speaker);
+  const dialogueFont = useVnStore((s) => s.dialogueFont);
+  const pushBacklog = useVnStore((s) => s.pushBacklog);
+
+  // Lưu câu hỏi vào Backlog để người chơi có thể xem lại trong lịch sử
+  useEffect(() => {
+    pushBacklog({
+      id: `${Date.now()}-${Math.random()}`,
+      speaker: question.asker.speaker,
+      speakerName: askerLabel || 'Người dẫn chuyện',
+      text: question.asker.text,
+    });
+  }, [question, askerLabel, pushBacklog]);
+
   return (
     <div className="mc" role="group" aria-labelledby={`mc-${question.id}`}>
-      <div className="mc__asker">
-        {askerLabel ? <span className="mc__asker-name">{askerLabel}</span> : null}
-        <p id={`mc-${question.id}`} className="mc__prompt">
-          <CodeText text={question.asker.text} />
-        </p>
+      {/* Vùng các phương án lựa chọn nổi ở giữa màn hình (phong cách DDLC / Visual Novel) */}
+      <div className="mc__overlay" aria-label="Các lựa chọn">
+        <ul className="mc__choices">
+          {ordered.map((c, idx) => (
+            <li key={c.id} className="mc__choice-item" style={{ animationDelay: `${idx * 0.08}s` }}>
+              <button
+                type="button"
+                className="mc__choice"
+                onClick={() => {
+                  soundEngine.playSfx('select');
+                  guardedChoose(c.id);
+                }}
+              >
+                <CodeText text={c.text} />
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul className="mc__choices">
-        {ordered.map((c) => (
-          <li key={c.id}>
-            <button
-              type="button"
-              className="mc__choice"
-              onClick={() => {
-                soundEngine.playSfx('select');
-                guardedChoose(c.id);
-              }}
-            >
-              <CodeText text={c.text} />
-            </button>
-          </li>
-        ))}
-      </ul>
-      {attempts > 0 ? <p className="mc__note">Chưa đúng cũng không sao — chọn lại thoải mái.</p> : null}
+
+      {/* Khung hội thoại giữ nguyên vị trí dưới đáy sân khấu để hiển thị câu hỏi */}
+      <div className="dialog-container mc__dialog-container">
+        <div
+          className="dialog dialog--glass"
+          data-speaker={question.asker.speaker}
+        >
+          {askerLabel ? (
+            <div className="dialog__speaker">
+              <svg className="dialog__speaker-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z" />
+              </svg>
+              <span>{askerLabel}</span>
+            </div>
+          ) : null}
+          <p id={`mc-${question.id}`} className={`dialog__text mc__prompt dialog__text--${dialogueFont}`}>
+            <CodeText text={question.asker.text} />
+          </p>
+
+          <div className="mc__status-bar">
+            {attempts > 0 ? (
+              <span className="mc__note">Chưa đúng cũng không sao — chọn lại thoải mái.</span>
+            ) : (
+              <span className="mc__hint-box">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 16v-4M12 8h.01" />
+                </svg>
+                <span>Chọn một phương án ở giữa màn hình</span>
+              </span>
+            )}
+          </div>
+
+          <div className="dialog__indicator" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+              <polygon points="12,2 22,12 12,22 2,12" />
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

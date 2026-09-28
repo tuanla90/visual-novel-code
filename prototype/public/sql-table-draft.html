@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hồ sơ dữ liệu — SQL table draft</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+    :root { --ink:#20252b; --muted:#69717a; --line:#ddd8ce; --paper:#fffdf8; --cream:#f4efe5; --navy:#172638; --amber:#f4b742; --red:#c7483d; --green:#26704d; --green-bg:#e8f4ed; --shadow:0 18px 50px rgba(55,43,29,.13); }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:radial-gradient(circle at 85% 0%, #fff8e5 0 18%, transparent 42%), var(--cream); font:14px/1.5 'Be Vietnam Pro',system-ui,sans-serif; }
+    button, input { font:inherit; }
+    button { cursor:pointer; }
+    .app { min-height:100vh; }
+    .topbar { height:66px; display:flex; align-items:center; justify-content:space-between; padding:0 36px; color:#fff; background:var(--navy); box-shadow:0 5px 18px #13223442; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:-.02em; }
+    .brand-mark { width:28px; height:28px; display:grid; place-items:center; color:var(--navy); background:var(--amber); border-radius:7px; font-weight:900; }
+    .top-meta { display:flex; align-items:center; gap:20px; color:#bdc9d4; font-size:12px; }
+    .top-meta b { color:#fff; font-size:14px; }
+    main { width:min(1260px, calc(100% - 48px)); margin:34px auto 60px; }
+    .heading { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:24px; }
+    h1 { margin:0; font-size:30px; letter-spacing:-.04em; line-height:1.1; }
+    .heading p { max-width:560px; margin:8px 0 0; color:var(--muted); }
+    .step { display:inline-flex; align-items:center; gap:8px; padding:7px 11px; border:1px solid #e2c981; border-radius:99px; background:#fff7db; color:#775816; font-size:12px; font-weight:700; white-space:nowrap; }
+    .workspace { display:grid; grid-template-columns:280px 1fr; gap:20px; align-items:start; }
+    .panel, .results { background:rgba(255,253,248,.88); border:1px solid var(--line); border-radius:15px; box-shadow:var(--shadow); }
+    .panel { padding:18px; }
+    .panel h2, .results h2 { margin:0; font-size:14px; letter-spacing:.01em; }
+    .panel__label { display:block; margin:20px 0 7px; color:var(--muted); font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+    .table-name { display:flex; align-items:center; gap:9px; padding:11px 12px; border:1px solid #d9c9a7; border-radius:9px; background:#fff8e5; font-weight:700; }
+    .table-name span { color:#967333; font-family:'JetBrains Mono',monospace; font-size:12px; }
+    .sql-box { min-height:136px; margin-top:7px; padding:13px; border-radius:9px; background:#1b2a3a; color:#dbe7f1; font:12px/1.7 'JetBrains Mono',monospace; }
+    .sql-key { color:#7dd3fc; } .sql-str { color:#f6ce63; } .sql-op { color:#a6e3a1; }
+    .hint { margin:12px 0 0; color:var(--muted); font-size:12px; }
+    .panel-actions { display:flex; gap:8px; margin-top:18px; }
+    .btn { border:1px solid #b7afa3; border-radius:8px; padding:9px 12px; background:#fff; color:var(--ink); font-weight:700; }
+    .btn:hover { border-color:var(--ink); } .btn--primary { border-color:var(--red); background:var(--red); color:#fff; }
+    .btn--quiet { width:100%; margin-top:10px; background:transparent; border-style:dashed; color:var(--muted); }
+    .results { min-width:0; overflow:hidden; }
+    .results-head { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:20px 22px 15px; border-bottom:1px solid var(--line); }
+    .results-head p { margin:5px 0 0; color:var(--muted); font-size:12px; }
+    .count { display:flex; align-items:baseline; gap:6px; white-space:nowrap; }
+    .count strong { color:var(--red); font-size:25px; }
+    .count span { color:var(--muted); font-size:12px; }
+    .table-wrap { overflow:auto; }
+    table { width:100%; min-width:760px; border-collapse:collapse; }
+    th { padding:11px 16px; color:#7b766c; background:#f8f4ec; font-size:10px; letter-spacing:.11em; text-align:left; text-transform:uppercase; }
+    td { padding:14px 16px; border-top:1px solid #ebe6dc; vertical-align:middle; }
+    tr { transition:background .16s ease; } tbody tr:hover { background:#fffaf0; } tbody tr.is-picked { background:var(--green-bg); }
+    .person { display:flex; align-items:center; gap:11px; min-width:190px; }
+    .avatar { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:#e7d7bc; color:#654d2b; font-weight:800; }
+    .person b { display:block; } .person small { color:var(--muted); font-size:11px; }
+    .mono { font-family:'JetBrains Mono',monospace; font-size:12px; }
+    .tag { display:inline-flex; padding:4px 8px; border-radius:5px; background:#f6ecd0; color:#765817; font-size:11px; font-weight:700; }
+    .tag--green { background:#d9efdf; color:#286040; }
+    .check { width:34px; height:34px; border:1px solid #cfc7ba; border-radius:8px; background:#fff; color:transparent; font-weight:900; }
+    .check:hover { border-color:var(--green); } .is-picked .check { border-color:var(--green); background:var(--green); color:#fff; }
+    .evidence-bar { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:14px; padding:12px 16px; border:1px solid #b8dcc5; border-radius:10px; background:#f0faf3; color:#2a5d40; }
+    .evidence-bar strong { font-size:13px; } .evidence-bar span { font-size:12px; }
+    .footnote { margin:16px 0 0; color:var(--muted); font-size:12px; text-align:center; }
+    @media (max-width:760px) { .topbar { padding:0 18px; } .top-meta { display:none; } main { width:min(100% - 24px, 1260px); margin-top:22px; } .heading { display:block; } .step { margin-top:16px; } .workspace { grid-template-columns:1fr; } .panel { order:2; } .results { order:1; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar"><div class="brand"><span class="brand-mark">⌘</span><span>PHÒNG DỮ LIỆU</span></div><div class="top-meta"><span>BÀI 01 · MỆNH ĐỀ WHERE</span><span>Tiến độ <b>1 / 5</b></span></div></header>
+    <main>
+      <section class="heading"><div><h1>Ai có mặt ở Hội An?</h1><p>Lọc bảng <strong>nhân_vật</strong> để tìm những người phù hợp với manh mối. Chọn một vài hồ sơ để lưu làm bằng chứng.</p></div><span class="step">● Đang điều tra · Chưa nộp</span></section>
+      <div class="workspace">
+        <aside class="panel">
+          <h2>Truy vấn đang chạy</h2>
+          <label class="panel__label">Bảng dữ liệu</label>
+          <div class="table-name"><span>▦</span> nhân_vật</div>
+          <label class="panel__label">Câu lệnh SQL</label>
+          <div class="sql-box"><span class="sql-key">SELECT</span> *<br><span class="sql-key">FROM</span> nhân_vật<br><span class="sql-key">WHERE</span> địa_điểm <span class="sql-op">=</span> <span class="sql-str">'Hội An'</span></div>
+          <p class="hint">Kết quả đã được cập nhật. Hãy đọc các dòng còn lại và chọn hồ sơ có ích cho lập luận của bạn.</p>
+          <div class="panel-actions"><button class="btn" id="clear">Xoá điều kiện</button><button class="btn btn--primary" id="run">Chạy lại</button></div>
+          <button class="btn btn--quiet" id="focus">Chế độ tập trung</button>
+        </aside>
+        <section class="results" aria-labelledby="result-title">
+          <div class="results-head"><div><h2 id="result-title">Hồ sơ khớp điều kiện</h2><p>Những dòng bị loại đã được ẩn để bạn tập trung vào bằng chứng còn lại.</p></div><div class="count"><strong id="count">4</strong><span>/ 18 hồ sơ</span></div></div>
+          <div class="table-wrap"><table><thead><tr><th>Hồ sơ</th><th>Vai trò</th><th>Địa điểm</th><th>Độ tin cậy</th><th aria-label="Thêm bằng chứng"></th></tr></thead><tbody id="rows">
+            <tr data-id="1"><td><div class="person"><span class="avatar">MA</span><span><b>Minh Anh</b><small>ID: NV-014</small></span></div></td><td>Chủ nhiệm CLB</td><td class="mono">Hội An</td><td><span class="tag tag--green">Cao</span></td><td><button class="check" aria-label="Chọn Minh Anh">✓</button></td></tr>
+            <tr data-id="2"><td><div class="person"><span class="avatar">HV</span><span><b>Hà Vy</b><small>ID: NV-021</small></span></div></td><td>Nhân chứng</td><td class="mono">Hội An</td><td><span class="tag">Đang xem</span></td><td><button class="check" aria-label="Chọn Hà Vy">✓</button></td></tr>
+            <tr data-id="3"><td><div class="person"><span class="avatar">QT</span><span><b>Quân</b><small>ID: NV-006</small></span></div></td><td>Thành viên</td><td class="mono">Hội An</td><td><span class="tag tag--green">Cao</span></td><td><button class="check" aria-label="Chọn Quân">✓</button></td></tr>
+            <tr data-id="4"><td><div class="person"><span class="avatar">HT</span><span><b>Hoài</b><small>ID: NV-018</small></span></div></td><td>Khách mời</td><td class="mono">Hội An</td><td><span class="tag">Đang xem</span></td><td><button class="check" aria-label="Chọn Hoài">✓</button></td></tr>
+          </tbody></table></div>
+          <div class="evidence-bar"><div><strong id="evidence-count">0 hồ sơ được chọn</strong><br><span>Bấm vào dấu ✓ để thêm hồ sơ vào tập bằng chứng.</span></div><button class="btn btn--primary" id="submit" disabled>Nộp bằng chứng</button></div>
+        </section>
+      </div>
+      <p class="footnote">Gợi ý sư phạm: SQL quyết định kết quả; người học quyết định dòng nào đáng được dùng để lập luận.</p>
+    </main>
+  </div>
+  <script>
+    const rows=[...document.querySelectorAll('tbody tr')], evidence=document.querySelector('#evidence-count'), submit=document.querySelector('#submit');
+    function update(){ const n=rows.filter(r=>r.classList.contains('is-picked')).length; evidence.textContent=n+' hồ sơ được chọn'; submit.disabled=!n; }
+    rows.forEach(r=>r.querySelector('.check').addEventListener('click',()=>{r.classList.toggle('is-picked'); update();}));
+    document.querySelector('#clear').addEventListener('click',()=>{ document.querySelector('.sql-box').innerHTML='<span class="sql-key">SELECT</span> *<br><span class="sql-key">FROM</span> nhân_vật'; document.querySelector('#count').textContent='18'; document.querySelector('.hint').textContent='Không còn điều kiện WHERE. Hãy thử viết lại điều kiện để thu hẹp tập dữ liệu.'; });
+    document.querySelector('#run').addEventListener('click',()=>{ document.querySelector('.sql-box').innerHTML='<span class="sql-key">SELECT</span> *<br><span class="sql-key">FROM</span> nhân_vật<br><span class="sql-key">WHERE</span> địa_điểm <span class="sql-op">=</span> <span class="sql-str">\'Hội An\'</span>'; document.querySelector('#count').textContent='4'; document.querySelector('.hint').textContent='Kết quả đã được cập nhật. Hãy đọc các dòng còn lại và chọn hồ sơ có ích cho lập luận của bạn.'; });
+    document.querySelector('#focus').addEventListener('click',(e)=>{document.body.classList.toggle('focus'); e.currentTarget.textContent=document.body.classList.contains('focus')?'Thoát chế độ tập trung':'Chế độ tập trung';});
+    submit.addEventListener('click',()=>{submit.textContent='Đã lưu bằng chứng ✓'; submit.disabled=true;});
+  </script>
+</body>
+</html>

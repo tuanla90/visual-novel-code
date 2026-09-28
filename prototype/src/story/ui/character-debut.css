@@ -1,9 +1,15 @@
 /* 
  * Hiệu ứng xuất hiện nhân vật mới (Character Debut Splash)
- * Phong cách Spotlight Cinematic Visual Novel (Persona / Ace Attorney).
+ * Phong cách Spotlight Cinematic Visual Novel (Persona / Honkai Star Rail / Danganronpa).
  */
 
+/* Khai báo màu gradient theo từng nhân vật */
 .chara-debut {
+  --debut-accent: #fbbf24;
+  --debut-accent-grad: linear-gradient(135deg, #fde047 0%, #eab308 50%, #a16207 100%);
+  --debut-accent-glow: rgba(234, 179, 8, 0.45);
+  --debut-panel-border: rgba(255, 255, 255, 0.16);
+
   position: fixed;
   inset: 0;
   z-index: 999;
@@ -17,6 +23,42 @@
   animation: charaDebutFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+.chara-debut[data-character="minh-anh"] {
+  --debut-accent: #f87171;
+  --debut-accent-grad: linear-gradient(135deg, #f87171 0%, #ef4444 50%, #b91c1c 100%);
+  --debut-accent-glow: rgba(239, 68, 68, 0.55);
+}
+
+.chara-debut[data-character="tung"] {
+  --debut-accent: #fb923c;
+  --debut-accent-grad: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #c2410c 100%);
+  --debut-accent-glow: rgba(249, 115, 22, 0.55);
+}
+
+.chara-debut[data-character="ha-vy"] {
+  --debut-accent: #34d399;
+  --debut-accent-grad: linear-gradient(135deg, #34d399 0%, #10b981 50%, #047857 100%);
+  --debut-accent-glow: rgba(16, 185, 129, 0.55);
+}
+
+.chara-debut[data-character="quan"] {
+  --debut-accent: #60a5fa;
+  --debut-accent-grad: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #1d4ed8 100%);
+  --debut-accent-glow: rgba(59, 130, 246, 0.55);
+}
+
+.chara-debut[data-character="hoai"] {
+  --debut-accent: #c084fc;
+  --debut-accent-grad: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #7e22ce 100%);
+  --debut-accent-glow: rgba(168, 85, 247, 0.55);
+}
+
+.chara-debut[data-character="bac-tu"] {
+  --debut-accent: #fbbf24;
+  --debut-accent-grad: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #b45309 100%);
+  --debut-accent-glow: rgba(245, 158, 11, 0.55);
+}
+
 @keyframes charaDebutFadeIn {
   from {
     opacity: 0;
@@ -26,27 +68,30 @@
   }
 }
 
+/* Nền mờ trong suốt, nhìn xuyên qua game phía dưới */
 .chara-debut__backdrop {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(15, 23, 42, 0.92) 0%, rgba(2, 6, 23, 0.98) 100%);
-  backdrop-filter: blur(8px);
+  background: radial-gradient(circle at center, rgba(15, 23, 42, 0.5) 0%, rgba(2, 6, 23, 0.72) 100%);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
+/* Card chứa toàn bộ popup (chỉ dùng cho màn chân dung/spotlight không có ảnh 16:9) */
 .chara-debut__card {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(260px, 0.9fr) minmax(320px, 1fr);
+  grid-template-columns: minmax(260px, 0.9fr) minmax(340px, 1fr);
   gap: clamp(20px, 3vw, 32px);
-  max-width: 920px;
+  max-width: 960px;
   max-height: calc(100dvh - clamp(24px, 5vh, 48px));
   width: 100%;
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
-  border: 2px solid var(--debut-accent, #fbbf24);
+  background: linear-gradient(135deg, rgba(20, 30, 48, 0.92) 0%, rgba(10, 16, 30, 0.96) 100%);
+  border: 1px solid var(--debut-panel-border);
   border-radius: var(--radius-lg, 16px);
   padding: clamp(20px, 4vh, 34px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(251, 191, 36, 0.15);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px var(--debut-accent-glow);
   animation: charaDebutSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -74,7 +119,7 @@
   position: relative;
   height: min(480px, calc(100dvh - 112px));
   min-height: 0;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
   border-radius: var(--radius-md, 10px);
   display: flex;
   align-items: center;
@@ -124,146 +169,249 @@
   z-index: 1;
 }
 
-/* Phóng to chỉ dành cho hình vẽ tạm; ảnh chân dung thật khung dọc sẽ bị cắt mất đầu nếu phóng. */
 .chara-debut__portrait-wrap:has(.portrait[data-art-source='image']) {
   transform: none;
 }
 
-/* Khung nội dung */
+/* Khung nội dung text */
 .chara-debut__content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: clamp(8px, 1.8vh, 16px);
+  gap: clamp(14px, 2.2vh, 20px);
   min-height: 0;
   color: #ffffff;
 }
 
+/* 
+ * KHỐI NỀN ĐẬM (PANEL) - Dạng thoi chéo (Parallelogram) sắc sảo, hiện đại
+ * Không dùng border-radius hay clip-path xung đột để triệt tiêu hoàn toàn lỗi 2 lớp / lộ viền bo tròn
+ */
+.chara-debut__panel {
+  position: relative;
+  background: linear-gradient(135deg, rgba(12, 18, 34, 0.92) 0%, rgba(6, 10, 22, 0.96) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: skewX(-8deg);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* Dải màu accent bar chạy chéo song song theo cạnh trái của hình thoi */
+.chara-debut__panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 5px;
+  background: var(--debut-accent-grad);
+  box-shadow: 0 0 12px var(--debut-accent-glow);
+  z-index: 2;
+}
+
+/* Các phần tử con giữ thẳng góc, không bị méo chữ */
+.chara-debut__panel > * {
+  transform: skewX(8deg);
+}
+
+/* Khối thông tin chính: Header */
+.chara-debut__panel--header {
+  padding: clamp(16px, 2.4vh, 22px) clamp(20px, 3vw, 26px) clamp(16px, 2.4vh, 22px) clamp(24px, 3.5vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chara-debut__header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Tag NHÂN VẬT MỚI */
 .chara-debut__tag {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: var(--debut-accent, #c8102e);
+  gap: 6px;
+  background: var(--debut-accent-grad);
   color: #ffffff;
   padding: 4px 12px;
-  border-radius: 3px 10px 3px 3px;
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 1.5px;
-  align-self: flex-start;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 10px var(--debut-accent-glow);
+  border-radius: 3px;
+}
+
+.chara-debut__tag-sparkle {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+/* Hàng Tên nhân vật (chỉ 1 tên chính rõ nét, bỏ chữ ký cam trùng lặp) */
+.chara-debut__name-row {
+  display: flex;
+  align-items: baseline;
+  position: relative;
 }
 
 .chara-debut__name {
   margin: 0;
-  font-size: clamp(1.8rem, 4vw, 2.25rem);
-  font-weight: 800;
+  font-size: clamp(1.85rem, 4vw, 2.4rem);
+  font-weight: 900;
   letter-spacing: 0.5px;
-  line-height: 1.15;
+  line-height: 1.1;
   color: #ffffff;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
+/* Chức danh nhân vật: Dùng font viết tay Playwrite IS & màu accent */
 .chara-debut__role {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--debut-accent, #fbbf24);
+  font-family: 'Playwrite IS', 'Playwrite VN', cursive;
+  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  font-weight: 500;
+  color: var(--debut-accent);
+  letter-spacing: 0.5px;
+  line-height: 1.25;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 14px var(--debut-accent-glow);
+  display: inline-block;
+  margin-top: 2px;
 }
 
-.chara-debut__meta {
-  font-size: 0.9375rem;
-  color: #94a3b8;
+/* Meta chips */
+.chara-debut__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
 }
 
-.chara-debut__quote {
-  margin: 8px 0;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid color-mix(in srgb, var(--debut-accent, #fbbf24) 55%, transparent);
-  border-radius: var(--radius-sm);
+.chara-debut__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: #f1f5f9;
+}
+
+/* Icon dòng dưới chuyển sang màu trắng */
+.chara-debut__chip svg {
+  color: #ffffff;
+  opacity: 0.95;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+/* Khối quote dạng thoi chéo */
+.chara-debut__panel--quote {
+  padding: clamp(14px, 2vh, 18px) clamp(20px, 3vw, 26px) clamp(14px, 2vh, 18px) clamp(24px, 3.5vw, 32px);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Icon quote tươi sáng, nổi bật, phát sáng glow */
+.chara-debut__quote-icon {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 0.7;
+  color: var(--debut-accent);
+  opacity: 1;
+  text-shadow: 0 0 12px var(--debut-accent-glow), 0 2px 4px rgba(0, 0, 0, 0.6);
+  filter: drop-shadow(0 0 8px var(--debut-accent-glow));
+  user-select: none;
+  display: inline-block;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.chara-debut__quote-text {
+  margin: 0;
+  font-family: 'Source Serif 4', Georgia, serif;
   font-style: italic;
   font-size: 1rem;
-  line-height: 1.5;
-  color: #e2e8f0;
+  line-height: 1.55;
+  color: #f8fafc;
 }
 
+/* Button Tiếp tục: Gradient theo nhân vật, vát chéo nhẹ */
 .chara-debut__prompt {
-  margin-top: 12px;
+  margin-top: 4px;
   min-height: 44px;
-  justify-self: start;
+  padding: 0 22px;
   align-self: flex-start;
-  padding: 0 16px;
-  border: 1px solid color-mix(in srgb, var(--debut-accent, #fbbf24) 70%, white);
-  border-radius: var(--radius-sm, 6px);
-  background: transparent;
-  font-size: 0.875rem;
-  font-weight: 600;
+  background: var(--debut-accent-grad);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 18px var(--debut-accent-glow), 0 2px 4px rgba(0, 0, 0, 0.3);
   color: #ffffff;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 10px;
   cursor: pointer;
-  animation: charaDebutPulse 1.6s ease-in-out infinite;
+  transform: skewX(-8deg);
+  border-radius: 4px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  animation: charaDebutPulse 1.8s ease-in-out infinite;
 }
+
+.chara-debut__prompt > * {
+  transform: skewX(8deg);
+}
+
+/* Icon chat căn chỉnh chính xác theo trục dọc */
+.chara-debut__prompt-chat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: skewX(8deg) translateY(2px);
+}
+
+.chara-debut__prompt-text {
+  font-family: 'Playwrite IS', 'Playwrite VN', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Icon mũi tên căn chỉnh chính xác theo trục dọc */
+.chara-debut__prompt > svg:last-child {
+  transform: skewX(8deg) translateY(2px);
+  transition: transform 0.2s ease;
+}
+
 .chara-debut__prompt:hover {
-  background: rgba(255, 255, 255, 0.1);
+  filter: brightness(1.12);
+  box-shadow: 0 6px 24px var(--debut-accent-glow), 0 3px 6px rgba(0, 0, 0, 0.4);
+  transform: skewX(-8deg) translateY(-2px);
+}
+
+.chara-debut__prompt:active {
+  transform: skewX(-8deg) translateY(0);
 }
 
 @keyframes charaDebutPulse {
   0%, 100% {
-    opacity: 0.6;
-    transform: translateX(0);
+    box-shadow: 0 4px 18px var(--debut-accent-glow), 0 2px 4px rgba(0, 0, 0, 0.3);
   }
   50% {
-    opacity: 1;
+    box-shadow: 0 6px 28px var(--debut-accent-glow), 0 2px 8px rgba(0, 0, 0, 0.4);
   }
 }
 
-@media (max-height: 640px) and (min-width: 721px) {
-  .chara-debut__card {
-    grid-template-columns: minmax(220px, 0.8fr) minmax(300px, 1fr);
-    padding: 18px;
-  }
-  .chara-debut__visual {
-    height: calc(100dvh - 60px);
-    max-height: 430px;
-  }
-  .chara-debut__quote {
-    margin: 0;
-    padding: 8px 12px;
-  }
-  .chara-debut__prompt {
-    margin-top: 0;
-  }
-}
-
-@media (max-width: 720px) {
-  .chara-debut__visual {
-    height: min(38dvh, 270px);
-  }
-  .chara-debut__content {
-    gap: 6px;
-  }
-  .chara-debut__quote {
-    margin: 0;
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
-  .chara-debut__prompt {
-    margin-top: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .chara-debut,
-  .chara-debut__card,
-  .chara-debut__spotlight,
-  .chara-debut__prompt {
-    animation: none;
-  }
-}
-
-/* Ảnh giới thiệu 16:9 (ô intro-<nhân vật>): phủ kín khung, chữ nằm ở khoảng trống ảnh chừa sẵn. */
+/* Ảnh giới thiệu 16:9 (ô intro-<nhân vật>): chữ nổi trên nền trong suốt nhờ panels thoi chéo */
 .chara-debut__card--intro {
   display: block;
   padding: 0;
@@ -271,7 +419,12 @@
   width: min(1120px, 100%, calc((100dvh - 48px) * 16 / 9));
   max-width: none;
   aspect-ratio: 16 / 9;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 30px var(--debut-accent-glow);
 }
+
 .chara-debut__intro-img {
   position: absolute;
   inset: 0;
@@ -280,27 +433,31 @@
   object-fit: cover;
   user-select: none;
 }
+
 .chara-debut__card--intro .chara-debut__content {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 44%;
-  padding: clamp(20px, 4vw, 44px);
+  width: clamp(340px, 46%, 480px);
+  padding: clamp(20px, 3.5vw, 40px);
   justify-content: center;
+  background: transparent;
 }
+
 .chara-debut__card--intro.is-text-right .chara-debut__content {
   right: 0;
-  background: linear-gradient(270deg, rgba(2, 6, 23, 0.88) 0%, rgba(2, 6, 23, 0.72) 60%, transparent 100%);
 }
+
 .chara-debut__card--intro.is-text-left .chara-debut__content {
   left: 0;
-  background: linear-gradient(90deg, rgba(2, 6, 23, 0.88) 0%, rgba(2, 6, 23, 0.72) 60%, transparent 100%);
 }
+
 @media (max-width: 720px) {
   .chara-debut__card--intro {
     display: grid;
     aspect-ratio: auto;
     overflow-y: auto;
+    max-height: calc(100dvh - 24px);
   }
   .chara-debut__intro-img {
     position: relative;
@@ -310,7 +467,16 @@
   .chara-debut__card--intro .chara-debut__content {
     position: relative;
     width: auto;
-    padding: var(--sp-4, 1rem);
-    background: rgba(2, 6, 23, 0.94);
+    padding: var(--sp-3, 0.75rem);
+    background: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chara-debut,
+  .chara-debut__card,
+  .chara-debut__spotlight,
+  .chara-debut__prompt {
+    animation: none;
   }
 }

@@ -21,9 +21,19 @@ export interface SaveSlot {
   task: string;
   scene: string;
   thumbnailText: string;
+  screenshot?: string;
   progress: StoryProgress;
   evidence: GameData['evidence'];
 }
+
+export type DialogueFont = 'source-serif' | 'dancing-script' | 'playwrite-vn' | 'be-vietnam-pro';
+
+export const FONT_LABELS: Record<DialogueFont, string> = {
+  'source-serif': 'Source Serif 4',
+  'dancing-script': 'Dancing Script',
+  'playwrite-vn': 'Playwrite VN',
+  'be-vietnam-pro': 'Sans Mặc định',
+};
 
 export type TextSpeed = 'slow' | 'normal' | 'fast' | 'instant';
 
@@ -39,6 +49,7 @@ interface VnState {
   skipMode: boolean;
   hideUi: boolean;
   textSpeed: TextSpeed;
+  dialogueFont: DialogueFont;
   backlog: BacklogEntry[];
   saveSlots: (SaveSlot | null)[];
   quickSaveSlot: SaveSlot | null;
@@ -50,11 +61,12 @@ interface VnState {
   setHideUi: (v: boolean) => void;
   toggleHideUi: () => void;
   setTextSpeed: (speed: TextSpeed) => void;
+  cycleDialogueFont: () => void;
 
   pushBacklog: (entry: BacklogEntry) => void;
   clearBacklog: () => void;
 
-  saveToSlot: (slotIndex: number, progress: StoryProgress, evidence: GameData['evidence'], scene: string) => void;
+  saveToSlot: (slotIndex: number, progress: StoryProgress, evidence: GameData['evidence'], scene: string, screenshot?: string) => void;
   loadFromSlot: (slotIndex: number) => SaveSlot | null;
   quickSave: (progress: StoryProgress, evidence: GameData['evidence'], scene: string) => void;
   quickLoad: () => SaveSlot | null;
@@ -90,6 +102,7 @@ export const useVnStore = create<VnState>((set, get) => ({
   skipMode: false,
   hideUi: false,
   textSpeed: 'normal',
+  dialogueFont: (typeof window !== 'undefined' && (localStorage.getItem('clb_vn_font') as DialogueFont)) || 'source-serif',
   backlog: [],
   saveSlots: loadStoredSlots(),
   quickSaveSlot: loadQuickSave(),
@@ -101,6 +114,17 @@ export const useVnStore = create<VnState>((set, get) => ({
   setHideUi: (hideUi) => set({ hideUi }),
   toggleHideUi: () => set((s) => ({ hideUi: !s.hideUi })),
   setTextSpeed: (textSpeed) => set({ textSpeed }),
+  cycleDialogueFont: () => {
+    const fonts: DialogueFont[] = ['source-serif', 'dancing-script', 'playwrite-vn', 'be-vietnam-pro'];
+    set((s) => {
+      const idx = fonts.indexOf(s.dialogueFont);
+      const nextFont = fonts[(idx + 1) % fonts.length] ?? 'source-serif';
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('clb_vn_font', nextFont);
+      }
+      return { dialogueFont: nextFont };
+    });
+  },
 
   pushBacklog: (entry) => {
     set((s) => {
@@ -115,7 +139,7 @@ export const useVnStore = create<VnState>((set, get) => ({
 
   clearBacklog: () => set({ backlog: [] }),
 
-  saveToSlot: (slotIndex, progress, evidence, scene) => {
+  saveToSlot: (slotIndex, progress, evidence, scene, screenshot) => {
     const now = new Date();
     const dateStr = `${now.toLocaleDateString('vi-VN')} ${now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}`;
     const partName = progress.currentPart ?? 'intro';
@@ -126,6 +150,7 @@ export const useVnStore = create<VnState>((set, get) => ({
       task: progress.task ?? 'Đang điều tra',
       scene,
       thumbnailText: `${partName.toUpperCase()} · ${scene}`,
+      screenshot,
       progress,
       evidence,
     };

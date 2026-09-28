@@ -44,7 +44,7 @@ export function TopBar({
       <div className="topbar__chapter" aria-label={`Tiến trình: ${completedParts.length} trên ${PART_IDS.length} phần hoàn thành`}>
         <span className="topbar__chapter-count">
           <span className="topbar__chapter-kicker" aria-hidden="true">Phần</span>
-          {currentIndex >= 0 ? `${currentIndex + 1}/${PART_IDS.length}` : `0/${PART_IDS.length}`}
+          <span className="topbar__chapter-number">{currentIndex >= 0 ? `${currentIndex + 1}/${PART_IDS.length}` : `0/${PART_IDS.length}`}</span>
         </span>
         <span className="topbar__chapter-info">
           <span className="topbar__chapter-name">{currentPart ? partName(currentPart) : 'Mở đầu'}</span>
@@ -61,106 +61,126 @@ export function TopBar({
       </div>
       <div className="topbar__task" aria-live="polite">
         <svg className="topbar__task-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="8" />
-          <circle cx="12" cy="12" r="3" />
-          <path d="M12 1v4M12 19v4M1 12h4M19 12h4" />
+          <circle cx="12" cy="12" r="7" stroke="currentColor" strokeWidth="1.8" fill="none" />
+          <circle cx="12" cy="12" r="2.5" fill="currentColor" />
+          <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <polygon points="12,0.5 13.5,2 12,3.5 10.5,2" fill="currentColor" />
+          <polygon points="12,20.5 13.5,22 12,23.5 10.5,22" fill="currentColor" />
+          <polygon points="0.5,12 2,10.5 3.5,12 2,13.5" fill="currentColor" />
+          <polygon points="20.5,12 22,10.5 23.5,12 22,13.5" fill="currentColor" />
         </svg>
-        <span className="topbar__task-label">Mục tiêu</span>
-        <span className="topbar__task-text" title={task ?? undefined}>
-          {task ?? 'Chưa có nhiệm vụ'}
-        </span>
+        <div className="topbar__task-content">
+          <span className="topbar__task-label">Mục tiêu</span>
+          <span className="topbar__task-text" title={task ?? undefined}>
+            {task ?? 'Chưa có nhiệm vụ'}
+          </span>
+        </div>
       </div>
       <div className="topbar__actions">
         {isSample ? <span className="badge badge--sample">NỘI DUNG MẪU</span> : null}
 
-        {onOpenMap ? (
-          <button
-            type="button"
-            className="topbar__dossier"
-            aria-label="Mở bản đồ trường"
-            title="Bản đồ khuôn viên Đại học Hoa Phượng"
-            onClick={onOpenMap}
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2">
-              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
-              <line x1="8" y1="2" x2="8" y2="18" />
-              <line x1="16" y1="6" x2="16" y2="22" />
-            </svg>
-            <span>Bản đồ</span>
-          </button>
-        ) : null}
-
-        <button
-          type="button"
-          className="topbar__dossier"
-          aria-pressed={notebookOpen}
-          aria-label={notebookOpen ? 'Đóng hồ sơ vật chứng' : 'Mở hồ sơ vật chứng'}
-          title={notebookOpen ? 'Đóng hồ sơ vật chứng' : 'Mở hồ sơ vật chứng'}
-          onClick={() => {
-            // QĐ-044: ghi khi MỞ Hồ sơ (kèm phần hiện tại), không ghi khi đóng.
-            if (!notebookOpen) track({ type: 'notebook_opened', part: currentPart });
-            onToggleNotebook();
-          }}
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h5l1.5 2H20v11H4z" /></svg>
-          <span>Hồ sơ</span>
-          <span className="topbar__dossier-count" aria-label={`${notebookCount} vật chứng`}>{notebookCount}</span>
-        </button>
-        <details className="topbar__menu" role="presentation">
-          <summary
-            className="topbar__menu-trigger"
-            aria-label="Mở menu tạm dừng"
-            title="Menu"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14" /></svg>
-          </summary>
-          <div className="topbar__menu-panel">
-            <strong>Tùy chọn Game</strong>
-            {onOpenSave ? (
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.currentTarget.closest('details')?.removeAttribute('open');
-                  onOpenSave();
-                }}
-              >
-                Lưu tiến độ (Save)
-              </button>
-            ) : null}
-            {onOpenLoad ? (
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.currentTarget.closest('details')?.removeAttribute('open');
-                  onOpenLoad();
-                }}
-              >
-                Nạp tiến độ (Load)
-              </button>
-            ) : null}
-            {onOpenAudio ? (
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.currentTarget.closest('details')?.removeAttribute('open');
-                  onOpenAudio();
-                }}
-              >
-                Cài đặt âm thanh
-              </button>
-            ) : null}
+        {/* Nhóm button con nhộng liền mạch theo đúng Asset mẫu */}
+        <div className="topbar__capsule-group">
+          {onOpenMap ? (
             <button
               type="button"
-              style={{ color: '#ef4444' }}
-              onClick={(e) => {
-                e.currentTarget.closest('details')?.removeAttribute('open');
-                setConfirmOpen(true);
-              }}
+              className="topbar__capsule-btn topbar__capsule-btn--map"
+              aria-label="Mở bản đồ trường"
+              title="Bản đồ khuôn viên Đại học Hoa Phượng"
+              onClick={onOpenMap}
             >
-              Chơi lại từ đầu
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                <line x1="8" y1="2" x2="8" y2="18" />
+                <line x1="16" y1="6" x2="16" y2="22" />
+              </svg>
+              <span>Bản đồ</span>
             </button>
-          </div>
-        </details>
+          ) : null}
+
+          {onOpenMap ? <span className="topbar__capsule-divider" aria-hidden="true" /> : null}
+
+          <button
+            type="button"
+            className="topbar__capsule-btn topbar__capsule-btn--dossier"
+            aria-pressed={notebookOpen}
+            aria-label={notebookOpen ? 'Đóng hồ sơ vật chứng' : 'Mở hồ sơ vật chứng'}
+            title={notebookOpen ? 'Đóng hồ sơ vật chứng' : 'Mở hồ sơ vật chứng'}
+            onClick={() => {
+              // QĐ-044: ghi khi MỞ Hồ sơ (kèm phần hiện tại), không ghi khi đóng.
+              if (!notebookOpen) track({ type: 'notebook_opened', part: currentPart });
+              onToggleNotebook();
+            }}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 5.5h5l1.5 2H20v11H4z" />
+            </svg>
+            <span>Hồ sơ</span>
+            <span className="topbar__dossier-count" aria-label={`${notebookCount} vật chứng`}>{notebookCount}</span>
+          </button>
+
+          <span className="topbar__capsule-divider" aria-hidden="true" />
+
+          <details className="topbar__menu topbar__capsule-menu" role="presentation">
+            <summary
+              className="topbar__capsule-btn topbar__capsule-btn--menu topbar__menu-trigger"
+              aria-label="Mở menu tạm dừng"
+              title="Menu"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="4" y1="7" x2="20" y2="7" />
+                <line x1="4" y1="12" x2="20" y2="12" />
+                <line x1="4" y1="17" x2="20" y2="17" />
+              </svg>
+            </summary>
+            <div className="topbar__menu-panel">
+              <strong>Tùy chọn Game</strong>
+              {onOpenSave ? (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.currentTarget.closest('details')?.removeAttribute('open');
+                    onOpenSave();
+                  }}
+                >
+                  Lưu tiến độ (Save)
+                </button>
+              ) : null}
+              {onOpenLoad ? (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.currentTarget.closest('details')?.removeAttribute('open');
+                    onOpenLoad();
+                  }}
+                >
+                  Nạp tiến độ (Load)
+                </button>
+              ) : null}
+              {onOpenAudio ? (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.currentTarget.closest('details')?.removeAttribute('open');
+                    onOpenAudio();
+                  }}
+                >
+                  Cài đặt âm thanh
+                </button>
+              ) : null}
+              <button
+                type="button"
+                style={{ color: '#ef4444' }}
+                onClick={(e) => {
+                  e.currentTarget.closest('details')?.removeAttribute('open');
+                  setConfirmOpen(true);
+                }}
+              >
+                Chơi lại từ đầu
+              </button>
+            </div>
+          </details>
+        </div>
       </div>
       <ConfirmDialog
         open={confirmOpen}

@@ -371,7 +371,7 @@ function EvidenceCard({ id, content, part, savedQueries, annotations }: CardProp
   if (group === 'document') {
     const card = content.evidence.documents[id as keyof typeof content.evidence.documents];
     return (
-      <article className="card card--document">
+      <article className="card card--document" data-card-id={id}>
         <span className="card__clip" aria-hidden="true" />
         <h4 className="card__title">{title}</h4>
         {card ? <p className="card__source">Nguồn: {card.source}</p> : null}
