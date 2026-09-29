@@ -1622,3 +1622,21 @@
   justify-self: start;
   margin-top: var(--sp-2);
 }
+
+/* Màn kết: câu hỏi cách nhập (KetMvp). */
+.mvp-ket__hoi {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  margin: var(--sp-3) 0;
+}
+.mvp-ket__cau,
+.mvp-ket__cam-on {
+  margin: 0;
+}
+.mvp-ket__chon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}

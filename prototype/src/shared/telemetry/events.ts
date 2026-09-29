@@ -116,7 +116,9 @@ export type TelemetryEventBody =
   // Bản MVP, phòng máy (QĐ-092): so sánh ba cách nhập câu (kéo thả / bấm khối / gõ tay) — user muốn người chơi thử
   // phản hồi thích cách nào. Chỉ mã thẻ + cách nhập + số dòng; KHÔNG ghi chữ SQL (người chơi gõ tự do, QĐ-042).
   | { type: 'mvp_input_mode'; challengeId: string; mode: 'keo' | 'khoi' | 'go' }
-  | { type: 'mvp_query_run'; challengeId: string; mode: 'keo' | 'khoi' | 'go'; rows: number | null; error: boolean; correct: boolean };
+  | { type: 'mvp_query_run'; challengeId: string; mode: 'keo' | 'khoi' | 'go'; rows: number | null; error: boolean; correct: boolean }
+  /** Câu hỏi đóng ở màn kết MVP: cách nhập nào dễ chơi nhất ("mot-cach" = chỉ thử một cách). */
+  | { type: 'mvp_input_feedback'; preferred: 'keo' | 'khoi' | 'go' | 'mot-cach' };
 
 export type TelemetryEventType = TelemetryEventBody['type'];
 
