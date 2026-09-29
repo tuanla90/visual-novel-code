@@ -1,0 +1,98 @@
+/**
+ * Bảng người quan sát MVP (gói giao-dien-mvp): chỉ hiện với `?facilitator=1`; "Nhảy tới" hỏi xác nhận rồi dựng đúng
+ * trạng thái như người chơi đã tới (máy tự chơi), màn SQL hiện ra, Lưu/Nạp bình thường.
+ */
+import { act, render, screen, waitFor, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
+import type { KichBanMvp } from '../../content/mvp/types';
+import { khungNhin, taoTrangThai, TEN_MAC_DINH } from '../engine/may';
+import type { TrangThaiMvp } from '../engine/trang-thai';
+import { SO_O_LUU_MVP, useKhoMvp } from '../store/kho-mvp';
+import { ManChoiMvp } from './ManChoiMvp';
+
+const kb = KICH_BAN_MVP as unknown as KichBanMvp;
+
+function veManChoi(url: string, s: TrangThaiMvp = taoTrangThai(kb, 1)) {
+  window.history.replaceState({}, '', url);
+  act(() => useKhoMvp.getState().datTrangThai(s));
+  return render(<ManChoiMvp onVeTieuDe={vi.fn()} />);
+}
+const trangThai = (): TrangThaiMvp => {
+  const s = useKhoMvp.getState().trangThai;
+  if (!s) throw new Error('kho trống');
+  return s;
+};
+
+afterEach(() => {
+  window.history.replaceState({}, '', '/');
+  document.documentElement.classList.remove('facilitator-on');
+  act(() => {
+    useKhoMvp.getState().xoa();
+    useKhoMvp.setState({ oLuu: Array.from({ length: SO_O_LUU_MVP }, () => null) });
+  });
+});
+
+async function nhayToiQuaBang(nhan: string): Promise<void> {
+  const bang = screen.getByRole('complementary', { name: 'Bảng người quan sát (MVP)' });
+  await userEvent.click(within(bang).getByRole('button', { name: 'Mở bảng' }));
+  await userEvent.click(within(bang).getByRole('button', { name: nhan }));
+  await userEvent.click(within(screen.getByRole('alertdialog')).getByRole('button', { name: 'Nhảy tới' }));
+  await waitFor(() => expect(within(bang).getByRole('status')).toHaveTextContent(/Đã tới/));
+}
+
+describe('bảng người quan sát MVP', () => {
+  it('không có ?facilitator=1 → không có bảng, không chừa dải đáy', () => {
+    veManChoi('/');
+    expect(screen.queryByRole('complementary', { name: 'Bảng người quan sát (MVP)' })).toBeNull();
+    expect(document.documentElement).not.toHaveClass('facilitator-on');
+  });
+
+  it('?facilitator=1 → có bảng thu gọn, chừa dải đáy; mở ra có ba nút nhảy tới phần SQL', async () => {
+    veManChoi('/?facilitator=1');
+    const bang = screen.getByRole('complementary', { name: 'Bảng người quan sát (MVP)' });
+    expect(document.documentElement).toHaveClass('facilitator-on');
+    await userEvent.click(within(bang).getByRole('button', { name: 'Mở bảng' }));
+    for (const nhan of ['Ngày 2 · Lọc lớp', 'Ngày 4 · Tên bắt đầu bằng H', 'Buổi họp · Sửa câu OR của Quân']) {
+      expect(within(bang).getByRole('button', { name: nhan })).toHaveAttribute('title');
+    }
+  });
+
+  it('hủy xác nhận → không đổi ván', async () => {
+    const dau = taoTrangThai(kb, 1);
+    veManChoi('/?facilitator=1', dau);
+    const bang = screen.getByRole('complementary', { name: 'Bảng người quan sát (MVP)' });
+    await userEvent.click(within(bang).getByRole('button', { name: 'Mở bảng' }));
+    await userEvent.click(within(bang).getByRole('button', { name: 'Ngày 2 · Lọc lớp' }));
+    await userEvent.click(within(screen.getByRole('alertdialog')).getByRole('button', { name: 'Hủy' }));
+    expect(trangThai()).toEqual(dau);
+  });
+
+  it('nhảy "Ngày 2 · Lọc lớp" → ngày 2, màn thử thách c-loc-lop hiện, thanh trên "2/5", tên mặc định', async () => {
+    veManChoi('/?facilitator=1');
+    await nhayToiQuaBang('Ngày 2 · Lọc lớp');
+    const s = trangThai();
+    expect(khungNhin(kb, s)).toMatchObject({ kind: 'challenge', thuThach: { id: 'c-loc-lop' } });
+    expect(s.ngay).toBe(2);
+    expect(s.tenNguoiChoi).toBe(TEN_MAC_DINH);
+    expect(screen.getByRole('banner', { name: 'Thanh trạng thái' }).querySelector('.topbar__chapter-number')).toHaveTextContent(`2/${kb.lich.ngay.length}`);
+    expect(document.querySelector('.mvp-chal')).not.toBeNull();
+  });
+
+  it('nhảy "Buổi họp" → màn sửa truy vấn, đủ vạch uy tín; Lưu rồi Nạp giữ nguyên chỗ', async () => {
+    veManChoi('/?facilitator=1');
+    await nhayToiQuaBang('Buổi họp · Sửa câu OR của Quân');
+    const s = trangThai();
+    expect(khungNhin(kb, s)).toMatchObject({ kind: 'fix-query', thuThach: { id: 'c-sua-or-quan' } });
+    expect(s.uyTin).toBe(kb.lich.luat.uyTin);
+    act(() => {
+      useKhoMvp.getState().luuVaoO(0, 'Buổi họp');
+      useKhoMvp.getState().batDau();
+    });
+    act(() => {
+      useKhoMvp.getState().napTuO(0);
+    });
+    expect(trangThai()).toEqual(s);
+  });
+});

@@ -10,6 +10,7 @@
 import './mvp.css';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { LoiMvp } from '../../content/mvp/types';
+import { isFacilitatorMode } from '../../app/facilitator-mode';
 import { isEffectId } from '../../shared/ids';
 import { DialogBox } from '../../shared/ui/DialogBox';
 import { MultipleChoice } from '../../shared/ui/MultipleChoice';
@@ -20,8 +21,10 @@ import { ObjectionEffect } from '../../story/ui/ObjectionEffect';
 import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
 import { dienTen as dienTenMay, khungNhin, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
+import { nhayToi, type MaDiemNhayMvp } from '../engine/tu-choi';
 import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
 import { BAN_DO_MVP } from './ban-do-mvp';
+import { BangQuanSatMvp } from './BangQuanSatMvp';
 import { BanDoMvp } from './BanDoMvp';
 import { HoSoMvp, type TabHoSoMvp } from './HoSoMvp';
 import { HudMvp } from './HudMvp';
@@ -58,6 +61,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const xoa = useKhoMvp((k) => k.xoa);
   const luuVaoO = useKhoMvp((k) => k.luuVaoO);
   const napTuO = useKhoMvp((k) => k.napTuO);
+  const datTrangThai = useKhoMvp((k) => k.datTrangThai);
 
   /** Hồ sơ và Sổ cá nhân là hai tab của cùng một khung (phong cách hòm đồ prototype); `null` = đóng. */
   const [kho, setKho] = useState<TabHoSoMvp | null>(null);
@@ -118,6 +122,25 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const laDoc = viewportMode === 'mobile';
   const laGiaLap = laDoc && typeof window !== 'undefined' && window.innerWidth > 768;
   const noiDangO = kn.kind === 'chon-dia-diem' && dangO && dangO.ngay === s.ngay ? kn.diaDiem.find((d) => d.diaDiem.id === dangO.noi) : undefined;
+
+  // Bảng người quan sát (`?facilitator=1`): nhảy tới phần SQL = máy tự chơi ván mới tới đó (engine/tu-choi.ts).
+  const quanSat = typeof window !== 'undefined' && isFacilitatorMode(window.location.search);
+  const nhay = (id: MaDiemNhayMvp): string | null => {
+    let moi: TrangThaiMvp;
+    try {
+      moi = nhayToi(kb, id);
+    } catch (e) {
+      return e instanceof Error ? e.message : String(e);
+    }
+    clearBacklog();
+    setKho(null);
+    setLichSuMo(false);
+    setLuuNap(null);
+    setDangO(null);
+    datTrangThai(moi);
+    return null;
+  };
+  const bangQuanSat = quanSat ? <BangQuanSatMvp kb={kb} s={s} loaiManHinh={kn.kind} onNhay={nhay} /> : null;
 
   const nutVn = {
     keyboardEnabled: !modalMo,
@@ -334,10 +357,16 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           {game}
           <div className="game-simulator-home-bar" />
         </div>
+        {bangQuanSat}
       </div>
     );
   }
-  return game;
+  return (
+    <>
+      {game}
+      {bangQuanSat}
+    </>
+  );
 }
 
 /** Hiệu ứng không có trong `EFFECT_IDS` của prototype: bỏ qua ngay (không chặn người chơi). */
