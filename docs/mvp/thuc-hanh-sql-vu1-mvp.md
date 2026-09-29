@@ -107,7 +107,7 @@ lộ SQL), lời Hà Vy mô tả kết quả sau mỗi lần chạy dự kiến 
 | 1 | Thực địa | Bác Thịnh + thẻ lịch rách ở khe hộp | — | `[H]` | giấy nhớ `[Tòa B]`, `[Báo chí K24]`; bằng chứng **thẻ lịch rách** |
 | 2 | **Phòng máy** | Lọc lớp | **Chuỗi 2.1–2.4** (mục 4): số → chữ + nháy → AND/OR → ghép 3 điều kiện | `[Tòa B]`, `[Báo chí K24]`, `[Quyền dữ liệu tạm]` | bằng chứng **lớp BC24A**; sổ: WHERE + số, chữ + nháy, AND/OR |
 | 3 | Thực địa | Quy chế phiếu gửi, sổ niêm phong (CTSV) | — | lớp BC24A | giấy nhớ `[Cần mã và căn cứ]`; (phụ) `[Lời chú Cường]` |
-| 4 | **Phòng máy** | Tên H trong BC24A | **Chuỗi 4.1–4.3** (mục 5): lọc lớp → `= 'H'` ra 0 → `LIKE 'H%'`; (phụ) **nhật ký in 4.4–4.5** | lớp BC24A, `[H]`, `[Cần mã và căn cứ]` | bằng chứng **hai mã** (Hiếu, Hoài); (phụ) **dòng nhật ký in**; sổ: LIKE bắt đầu bằng |
+| 4 | **Phòng máy** | Tên H trong BC24A | **Chuỗi 4.1–4.2** (mục 5): lọc lớp → tên bắt đầu bằng H (`= 'H'` ra 0 là lần chạy sai có ích); (phụ) **nhật ký in 4.4–4.5** | lớp BC24A, `[H]`, `[Cần mã và căn cứ]` | bằng chứng **hai mã** (Hiếu, Hoài); (phụ) **dòng nhật ký in**; sổ: LIKE bắt đầu bằng |
 | 5 | Thực địa | Nộp 2 mã, cô phụ trách tra sổ niêm phong | — | hai mã | giấy nhớ `[Hoài là người nộp]`; (phụ) `[Lời Đạt]` |
 | 6 | Buổi họp | — | **Sửa câu OR của Quân** (nạp sẵn, 14 dòng → sửa AND → 2 dòng); 2 câu hỏi đọc kết quả (trừ uy tín) | hai mã, thẻ lịch, (phụ) nhật ký in + lời chú Cường / lời Đạt | bằng chứng hai dòng sau khi sửa; true end nếu đủ bằng chứng phụ |
 
@@ -143,11 +143,11 @@ Bảng `sinh_vien(ma_sv, ho_dem, ten, ma_lop)`. Người chơi đã có bằng c
 | Bài | Học gì | Vào từ hồ sơ | Cách nhập | SQL chuẩn (WHERE) | Kết quả | Lần chạy "sai có ích" | Dòng sổ tự ghi | Thu vào hồ sơ |
 |---|---|---|---|---|---|---|---|---|
 | 4.1 | Ôn: chữ + nháy trên bảng mới | bằng chứng lớp BC24A | kéo | `ma_lop = 'BC24A'` | 6 người | — | — | — |
-| 4.2 | `=` là so khớp **nguyên chữ** | `[H]` | kéo `[H]` + AND | `ma_lop = 'BC24A' AND ten = 'H'` | **0 dòng** (không ai tên đúng một chữ H) | Chính bài này là lần "sai có ích". Tùng: tra sổ chị Linh (trang "lỗi thường gặp") | — | — |
-| 4.3 | "Bắt đầu bằng" `LIKE 'H%'` | `[H]` | đổi phép "bằng" → "bắt đầu bằng" | `ma_lop = 'BC24A' AND ten LIKE 'H%'` | **2 người: Hiếu (SV240228), Hoài (SV240317)** | Lọc nhầm cột họ `ho_dem LIKE 'H%'` → 1 người (Hồ Ngọc Mai). Hà Vy: H là đầu của tên hay của họ? | "Bắt đầu bằng: `LIKE 'H%'` (dấu % là phần chữ còn lại)." | **Bằng chứng `ev-hai-ma`** "Hai mã tên bắt đầu bằng H trong BC24A" |
+| 4.2 | `=` so khớp **nguyên chữ**; "bắt đầu bằng" `LIKE 'H%'` | `[H]` | kéo `[H]` + AND; đổi phép "bằng" → "bắt đầu bằng" | `ma_lop = 'BC24A' AND ten LIKE 'H%'` | **2 người: Hiếu (SV240228), Hoài (SV240317)** | Kéo `[H]` với "bằng" → **0 dòng** (không ai tên đúng một chữ H) — Tùng: tra sổ chị Linh; lọc nhầm cột họ `ho_dem LIKE 'H%'` → 1 người (Hồ Ngọc Mai) | "`=` phải khớp nguyên chữ. Chỉ biết chữ đầu: `ten LIKE 'H%'`." | **Bằng chứng `ev-hai-ma`** |
 | 4.4 *(phụ)* | Ôn LIKE trên bảng mới | bằng chứng hai mã (thầy Khải cho xem nhật ký) | kéo / ✎ | `ten_tep LIKE 'kien-nghi%'` | 2 dòng (chưa chạy — dữ liệu mới) | — | — | — |
 | 4.5 *(phụ)* | Ôn số + AND | tài liệu bản chụp thư (1 trang) | ✎ thêm `AND so_trang = 1` | `ten_tep LIKE 'kien-nghi%' AND so_trang = 1` | 1 dòng: 23:10 Chủ nhật, tài khoản năm 4 (chưa chạy) | — | — | **Bằng chứng `ev-nhat-ky-in`** (key item true end) |
 
+- (Đã làm, 30/09) 4.2 cũ "= 'H' ra 0 dòng" gộp vào bài LIKE làm lần chạy "sai có ích": một bài mà đáp án là "0 dòng" thì câu sai nào ra 0 dòng cũng qua. Chuỗi `pm4-ten` ở `kich-ban/04-phong-may-ngay-4.md`.
 - 4.4–4.5 **thay** cảnh đọc nhật ký in hiện có (`n4-nhat-ky-in`, chỉ có thoại) bằng hai lần chạy thật trên bảng mới `nhat_ky_in`. Vẫn là dữ kiện
   **phụ**, cần `ev-hai-ma`, không tốn khung. **[cần chốt]**
 - Dòng nhiễu "bài tập kinh tế vi mô in cùng đêm" giữ làm một dòng trong bảng `nhat_ky_in` (lọc `kien-nghi%` sẽ loại nó).

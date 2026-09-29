@@ -62,6 +62,7 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
       ['noi-dung-mvp/thu-thach/c-loc-lop.md', 4, 4],
       ['noi-dung-mvp/thu-thach/c-loc-lop.md', 2, 2],
       ['noi-dung-mvp/thu-thach/c-loc-lop.md', 1, 1],
+      ['noi-dung-mvp/thu-thach/c-ten-h.md', 6, 6],
       ['noi-dung-mvp/thu-thach/c-ten-h.md', 2, 2],
       ['noi-dung-mvp/thu-thach/c-ten-h.md', 2, 2],
       ['noi-dung-mvp/kich-ban/00-mo-dau.md', 3, 3],

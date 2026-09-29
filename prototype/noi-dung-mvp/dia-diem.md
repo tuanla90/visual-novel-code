@@ -61,10 +61,10 @@
 - Chuỗi: pm2-lop
 - Ảnh: obj-ban-may · x 60% · y 78% · rộng 20%
 
-### dk-ten-h — Bàn làm việc ngày 4: kéo [H] vào, tên bắt đầu bằng H trong lớp BC24A {dữ kiện: chính}
+### dk-ten-h — Bàn làm việc ngày 4: lọc lớp BC24A → tên bắt đầu bằng H (kéo [H] với "bằng" ra 0 dòng trước) {dữ kiện: chính}
 - Mở từ: ngày 4
 - Cần: có clue-can-ma-va-can-cu
-- Thử thách: c-ten-h
+- Chuỗi: pm4-ten
 - Ảnh: obj-ban-may · x 60% · y 78% · rộng 20%
 
 ### dk-nhat-ky-in — Một dòng nhật ký in: 23:10 Chủ nhật, tệp kien-nghi-phong…, tài khoản năm 4 {dữ kiện: phụ}

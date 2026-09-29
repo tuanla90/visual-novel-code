@@ -39,9 +39,9 @@ describe('nhảy tới (MVP)', () => {
     expect(sau.chinhXong).toBe(true);
   });
 
-  it('ngày 4 · tên H: đang ở thử thách c-ten-h, ngày 4, hồ sơ có lớp BC24A và căn cứ nộp mã', () => {
+  it('ngày 4 · tên H: đang ở bài đầu chuỗi (c-ten-lop), ngày 4, hồ sơ có lớp BC24A và căn cứ nộp mã', () => {
     const s = nhayToi(KB, 'ten-h', 1);
-    expect(khungNhin(KB, s)).toMatchObject({ kind: 'challenge', thuThach: { id: 'c-ten-h' } });
+    expect(khungNhin(KB, s)).toMatchObject({ kind: 'challenge', thuThach: { id: 'c-ten-lop' } });
     expect(s.giaiDoan).toBe('ngay');
     expect(s.ngay).toBe(4);
     expect(s.duKienDangLam).toBe('dk-ten-h');
@@ -70,7 +70,7 @@ describe('nhảy tới (MVP)', () => {
       // Ván mới cùng mốc: tự chơi cùng đường đi, dừng ở cùng màn.
       nhayToi(KB, 'loc-lop', 7),
       { chonDuKien: chonTheoUuTien(DUONG_DU_BANG_CHUNG, false) },
-      (_st, kn) => kn.kind === 'challenge' && kn.thuThach.id === 'c-ten-h',
+      (_st, kn) => kn.kind === 'challenge' && kn.thuThach.id === 'c-ten-lop',
     );
     expect(thuong).toEqual(s);
     expect(JSON.parse(JSON.stringify(s))).toEqual(s);

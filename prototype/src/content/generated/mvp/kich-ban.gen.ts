@@ -720,7 +720,7 @@ export const KICH_BAN_MVP = {
         },
         {
           "id": "dk-ten-h",
-          "moTa": "Bàn làm việc ngày 4: kéo [H] vào, tên bắt đầu bằng H trong lớp BC24A",
+          "moTa": "Bàn làm việc ngày 4: lọc lớp BC24A → tên bắt đầu bằng H (kéo [H] với \"bằng\" ra 0 dòng trước)",
           "nhan": "chinh",
           "moTu": {
             "kind": "ngay",
@@ -732,8 +732,8 @@ export const KICH_BAN_MVP = {
             "id": "clue-can-ma-va-can-cu"
           },
           "hanhDong": {
-            "kind": "thu-thach",
-            "thuThach": "c-ten-h"
+            "kind": "chuoi",
+            "chuoi": "pm4-ten"
           },
           "moManhMoi": [],
           "hienTaiLieu": [],
@@ -2617,8 +2617,8 @@ export const KICH_BAN_MVP = {
           "text": "Vào phòng máy đi. Chữ H ấy mà dùng dấu bằng là không ra đâu."
         },
         {
-          "type": "challenge",
-          "challengeId": "c-ten-h"
+          "type": "goto",
+          "to": "pm4-ten"
         }
       ]
     },
@@ -2731,6 +2731,46 @@ export const KICH_BAN_MVP = {
         {
           "type": "goto",
           "to": "n5-nop-hai-ma"
+        }
+      ]
+    },
+    {
+      "id": "pm4-ten",
+      "title": "Bàn làm việc: lọc lớp rồi lọc tên",
+      "canh": "phong-may",
+      "mocSomNhat": 41,
+      "nodes": [
+        {
+          "type": "task",
+          "text": "Tìm mã sinh viên khớp chữ ký H"
+        },
+        {
+          "type": "note",
+          "text": "Giấy nhớ trên tường: [H], [BC24A]. Cần ra MÃ sinh viên (quy chế Phòng CTSV). Không tốn thêm khung giờ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Lấy cả lớp BC24A ra trước đã."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-ten-lop"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Chữ ký có chữ H. Lọc tên bằng H là xong."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-ten-h"
+        },
+        {
+          "type": "notebook-note",
+          "trang": "like"
         }
       ]
     },
@@ -3317,6 +3357,20 @@ export const KICH_BAN_MVP = {
         "Dừng ở 2 lớp: Hà Vy mô tả có một lớp khóa khác cũng ở tòa B. Thêm `khoa_hoc = 2024` → BC24A → \"Số liệu đây!\" lần đầu."
       ]
     },
+    "c-ten-lop": {
+      "id": "c-ten-lop",
+      "tieuDe": "Sinh viên lớp BC24A",
+      "deBai": "Lớp đã thu hẹp còn BC24A. Lấy danh sách sinh viên của lớp đó.",
+      "manhMoiLienQuan": [
+        "clue-chu-ky-h"
+      ],
+      "mucTieuHoc": "Ôn WHERE với chữ trong nháy đơn trên một bảng mới.",
+      "soDongKyVong": 6,
+      "sqlChuan": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';",
+      "truyVanNapSan": null,
+      "vatChung": null,
+      "ghiChu": []
+    },
     "c-ten-h": {
       "id": "c-ten-h",
       "tieuDe": "Tên bắt đầu bằng H trong lớp BC24A",
@@ -3335,7 +3389,7 @@ export const KICH_BAN_MVP = {
         "giaTri": []
       },
       "ghiChu": [
-        "Kéo [H] với phép \"bằng\" → 0 dòng (không ai tên đúng một chữ \"H\"). Tùng: \"Tra sổ chị Linh đi\" → trang lỗi thường gặp → đổi \"bắt đầu bằng\" → 2 dòng. Bẫy: `ma_lop LIKE 'BC%'` → 3 dòng; lọc nhầm cột ho_dem → 1 dòng."
+        "Bài 4.2. Lần chạy \"sai có ích\": kéo [H] với phép \"bằng\" → 0 dòng (không ai tên đúng một chữ \"H\"). Tùng: \"Tra sổ chị Linh đi\" → trang lỗi thường gặp → đổi \"bắt đầu bằng\" → 2 dòng. Bẫy: `ma_lop LIKE 'BC%'` → 3 dòng; lọc nhầm cột ho_dem → 1 dòng."
       ]
     },
     "c-sua-or-quan": {
@@ -3698,14 +3752,19 @@ export const KICH_BAN_MVP = {
       "noi": "noi-dung-mvp/thu-thach/c-loc-lop.md:48 thẻ c-loc-lop, SQL chuẩn"
     },
     {
-      "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';",
-      "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:3 thẻ c-ten-h, SQL chuẩn"
+      "sql": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';",
+      "soDong": 6,
+      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:3 thẻ c-ten-lop, SQL chuẩn"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:21 thẻ c-sua-or-quan, SQL chuẩn"
+      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:16 thẻ c-ten-h, SQL chuẩn"
+    },
+    {
+      "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';",
+      "soDong": 2,
+      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:34 thẻ c-sua-or-quan, SQL chuẩn"
     },
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';",

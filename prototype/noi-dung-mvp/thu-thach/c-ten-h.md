@@ -1,4 +1,17 @@
-<!-- Thẻ thử thách phòng máy — ngày 4 và buổi họp -->
+<!-- Thẻ thử thách phòng máy — ngày 4 (chuỗi pm4-ten: 4.1 lọc lớp → 4.2 tên bắt đầu bằng H, QĐ-092) và buổi họp -->
+
+### c-ten-lop — Bài 4.1: sinh viên lớp BC24A {challenge: c-ten-lop}
+
+- Tiêu đề: Sinh viên lớp BC24A
+- Đề bài hiển thị: Lớp đã thu hẹp còn BC24A. Lấy danh sách sinh viên của lớp đó.
+- Manh mối liên quan: clue-chu-ky-h
+- Mục tiêu học: Ôn WHERE với chữ trong nháy đơn trên một bảng mới.
+- Số dòng kỳ vọng: 6
+- SQL chuẩn:
+
+```sql
+SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
+```
 
 ### c-ten-h — Ai trong lớp BC24A có tên bắt đầu bằng H? {challenge: c-ten-h}
 
@@ -13,7 +26,7 @@
 SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';
 ```
 
-- [DÀN DỰNG] Kéo [H] với phép "bằng" → 0 dòng (không ai tên đúng một chữ "H"). Tùng: "Tra sổ chị Linh đi" → trang lỗi thường gặp → đổi "bắt đầu bằng" → 2 dòng. Bẫy: `ma_lop LIKE 'BC%'` → 3 dòng; lọc nhầm cột ho_dem → 1 dòng.
+- [DÀN DỰNG] Bài 4.2. Lần chạy "sai có ích": kéo [H] với phép "bằng" → 0 dòng (không ai tên đúng một chữ "H"). Tùng: "Tra sổ chị Linh đi" → trang lỗi thường gặp → đổi "bắt đầu bằng" → 2 dòng. Bẫy: `ma_lop LIKE 'BC%'` → 3 dòng; lọc nhầm cột ho_dem → 1 dòng.
 - Vật chứng lưu vào hồ sơ: ev-hai-ma
   - Tiêu đề: Hai mã ứng viên kèm căn cứ
   - Mô tả: Kết quả truy vấn: hai sinh viên lớp BC24A có tên bắt đầu bằng H.

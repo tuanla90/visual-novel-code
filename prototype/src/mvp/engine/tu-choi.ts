@@ -149,7 +149,7 @@ const dangOThuThach =
  */
 export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
   { id: 'loc-lop', nhan: 'Ngày 2 · Lọc lớp', moTa: 'Chuỗi bốn bài phòng máy: khóa K24 → tòa B → AND/OR → ba điều kiện.', toi: dangOThuThach('challenge', 'c-loc-khoa') },
-  { id: 'ten-h', nhan: 'Ngày 4 · Tên bắt đầu bằng H', moTa: 'Thử thách SQL: sinh viên lớp BC24A có tên bắt đầu bằng H.', toi: dangOThuThach('challenge', 'c-ten-h') },
+  { id: 'ten-h', nhan: 'Ngày 4 · Tên bắt đầu bằng H', moTa: 'Chuỗi hai bài phòng máy: lọc lớp BC24A → tên bắt đầu bằng H.', toi: dangOThuThach('challenge', 'c-ten-lop') },
   { id: 'hop-sua-or', nhan: 'Buổi họp · Sửa câu OR của Quân', moTa: 'Buổi họp rà soát, màn sửa truy vấn OR → AND.', toi: dangOThuThach('fix-query', 'c-sua-or-quan') },
 ];
 
