@@ -23,13 +23,18 @@ Hưởng ứng chuyển đổi số, tinh thần "kỷ nguyên vươn mình": ch
 | ② Kết quả | Số dòng lớn + dấu trung tính "N DÒNG"; bảng; nút **🔍 Xem từng điều kiện** (✓/✗ theo từng điều kiện, mẫu dòng bị loại) | Nút sáng lên khi số dòng đổi mạnh; **người chơi tự bấm**. Chỉ lần chạy đầu tiên của cả game tự mở, làm bước hướng dẫn |
 | ③ Hồ sơ | "📌 Cất vào hồ sơ" một chạm; dải bằng chứng đã cất | Không hỏi gì lúc cất |
 
-- **Nhịp giới thiệu:** lần vào phòng máy đầu (Vụ 1 ngày 2) chỉ có kéo giấy nhớ + Chạy; Đoán nhanh ra mắt ở ngày 4; ✎ ra mắt khi gặp chỗ bàn làm việc không làm được.
+- **Bố cục (user chốt hướng 29/09, mockup `docs/mockups/core-game-v6-phong-may.html`):** nền là **phòng máy**; **màn hình máy tính giả lập**
+  ở giữa (phần mềm tra cứu chạy trong đó); **giấy nhớ dán quanh viền màn hình**; **sổ chị Linh** và **hồ sơ vụ** nằm trên bàn, bấm được;
+  **không có nhân vật đứng cạnh** — Tùng, Hà Vy chỉ lên tiếng bằng hộp thoại kiểu visual novel khi có chuyện rồi ẩn (khớp QĐ-071 và quyết
+  định "Tùng, Hà Vy không ngồi cạnh màn thử thách"). Bản v5 có hai nhân vật đứng cạnh — bỏ.
+- **Nhịp giới thiệu:** lần vào phòng máy đầu (Vụ 1 ngày 2) chỉ có kéo giấy nhớ + Chạy; ✎ ra mắt khi gặp chỗ bàn làm việc không làm được.
 - **Chữ ký và giấy nhớ [H] (đã chốt, QĐ-090):** chữ ký trên lá thư là chữ ký tay lượn, chỉ đọc được chữ **H** đầu; giấy nhớ là `[H]`
   (không còn `[H.]`). Kéo `[H]` với "bằng" → `ten = 'H'` → 0 dòng (không ai tên đúng một chữ); Hà Vy: "Chữ ký chỉ cho mình chữ đầu thôi"
   → đổi "bắt đầu bằng" → 2 người. Không cần ✎ ở bước này; ✎ ra mắt ở chỗ khác (chưa chọn). Bẫy phụ tự nhiên: H là đầu của tên hay họ (`ho_dem`).
 - Khi playtest, ghi riêng "nút Xem từng điều kiện có sáng" và "người chơi có bấm" (nút sáng vẫn là máy đánh giá nhẹ).
-- **Đoán nhanh** (0 · 1–5 · vài chục · hàng trăm) là một hàng chip cạnh nút Chạy, **chỉ ở lượt chạy đầu của mỗi câu hỏi** (Vụ 1–2);
-  kết quả so bằng thước trung tính "bạn đoán ↔ thực tế", không ✓/✗. Tùng tự nói nếu cá trật.
+- **Đoán / cược trước khi chạy: TẠM BỎ (user 29/09)** cho đến khi có một cơ chế hoàn chỉnh, **có thưởng phạt rõ ràng**. Lý do: bản đoán
+  không chấm và kèo trà đá với Tùng đều chưa có hậu quả thật nên dễ thành bước bấm cho qua. Ý gốc (hội đồng vòng 1, khung PRIMM) để dành
+  khi thiết kế lại: buộc người chơi hình dung kết quả trước khi chạy, tạo khoảnh khắc bất ngờ ở bài VÀ/HOẶC.
 - Máy không gán nghĩa cho kết quả: không có dấu "ứng viên"; Hà Vy nói điều đó bằng lời. Truy vấn ra 0 dòng hay 1.240 dòng đều
   được Hà Vy mô tả trung tính ("0 dòng là một thông tin, không phải lỗi").
 - Đếm lùi theo từng điều kiện (≤ 0,6 giây), mỗi nấc là một điều kiện — diễn giải, không giả vờ máy chạy lâu. Âm thanh: giấy nhớ
@@ -110,7 +115,7 @@ Bốn vật dụng xuyên suốt: **phiếu** (dòng) · **hộp** (nhóm) · **
 
 ## 8. MVP (Vụ 1): làm gì trước
 
-1. Màn 3 vùng + đoán nhanh ở lượt đầu + thước trung tính + đếm lùi.
+1. Màn phòng máy theo bố cục v6 (màn hình giữa, giấy nhớ quanh viền, sổ + hồ sơ trên bàn, hộp thoại) + đếm lùi, đóng dấu.
 2. Nút "Xem từng điều kiện" (WHERE phẳng), tự mở đúng một lần làm hướng dẫn.
 3. Chọn câu kết luận (4 câu cùng khuôn) ở bước soát hồ sơ + 3 câu bắt bẻ của Quân; thử trên giấy trước.
 4. Bậc 1 (✎ dòng WHERE).
@@ -118,5 +123,5 @@ Bốn vật dụng xuyên suốt: **phiếu** (dòng) · **hộp** (nhóm) · **
 6. Cảnh ngắn "cách cũ" ở Ngày hội CLB (Minh Anh dò tay danh sách K24 — đã có trong kịch bản khung) và kết Vụ 1 "câu lệnh vào biên bản".
 
 **Playtest (5 sinh viên không học IT) — hành vi quan trọng nhất cần quan sát:** người chơi có giữ kết luận ở mức "ứng viên" không
-(chọn câu kết luận đúng mức ở bước soát). Chỉ số phụ: tỉ lệ bỏ qua đoán, thời gian mỗi lượt, có tự phát hiện câu OR của Tùng sai
+(chọn câu kết luận đúng mức ở bước soát). Chỉ số phụ: thời gian mỗi lượt, có tự phát hiện câu OR của Tùng sai
 trước Hà Vy không, sau khi chơi có nói được "câu lệnh hơn Excel ở chỗ nào" không.
