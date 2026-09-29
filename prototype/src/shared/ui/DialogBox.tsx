@@ -39,6 +39,11 @@ export interface DialogBoxProps {
   onOpenSave?: () => void;
   onOpenLoad?: () => void;
   onOpenAudio?: () => void;
+  /**
+   * Nhãn người nói thay cho tra cứu `speakerLabel` (bản MVP: nhân vật lấy từ nhan-vat.md, không nằm trong
+   * `shared/ids.ts`). Không truyền → hành vi cũ của prototype.
+   */
+  speakerName?: string;
 }
 
 function isTypingTarget(target: EventTarget | null): boolean {
@@ -186,9 +191,10 @@ export function DialogBox({
   onOpenSave,
   onOpenLoad,
   onOpenAudio,
+  speakerName,
 }: DialogBoxProps) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const label = speakerLabel(line.speaker);
+  const label = speakerName ?? speakerLabel(line.speaker);
   const readKey = readLineKey(line.speaker, line.text);
   const markRead = useVnStore((s) => s.markRead);
   const alreadyRead = useVnStore((s) => s.readLines[readKey] === true);

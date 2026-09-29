@@ -17,9 +17,16 @@ export interface TitleScreenProps {
   onContinue: () => void;
   /** Gói telemetry đặt component khảo sát đầu game vào đây. */
   preSurveySlot?: ReactNode;
+  /**
+   * Lối vào bản MVP (gói kien-truc-mvp, QĐ-077): nút riêng "Chơi bản MVP", tách hẳn prototype. Không truyền →
+   * không hiện nút (test cũ của prototype không đổi).
+   */
+  onStartMvp?: () => void;
+  /** Bản MVP có tiến độ đang chơi → nhãn nút là "Chơi tiếp bản MVP". */
+  hasMvpProgress?: boolean;
 }
 
-export function TitleScreen({ title, isSample, hasSavedProgress, onStart, onContinue, preSurveySlot }: TitleScreenProps) {
+export function TitleScreen({ title, isSample, hasSavedProgress, onStart, onContinue, preSurveySlot, onStartMvp, hasMvpProgress = false }: TitleScreenProps) {
   const [confirmRestart, setConfirmRestart] = useState(false);
   return (
     <main className="title">
@@ -52,6 +59,11 @@ export function TitleScreen({ title, isSample, hasSavedProgress, onStart, onCont
           >
             {hasSavedProgress ? 'Bắt đầu lại' : 'Bắt đầu'}
           </button>
+          {onStartMvp ? (
+            <button type="button" className="btn title__mvp" onClick={onStartMvp} title="Bản MVP Vụ 1 — Chữ ký H. (5 ngày điều tra, buổi họp, hai kết)">
+              {hasMvpProgress ? 'Chơi tiếp bản MVP' : 'Chơi bản MVP'}
+            </button>
+          ) : null}
         </div>
       </div>
       <ConfirmDialog

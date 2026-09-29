@@ -678,6 +678,14 @@ export function tenNguoiNoi(kb: KichBanMvp, speaker: string): string {
   return kb.nhanVat.find((n) => n.id === speaker)?.ten ?? 'Nhân vật';
 }
 
+/** Câu SQL của một `[MÀN CHIẾU]`: viết thẳng, hoặc SQL chuẩn của thẻ có vật chứng được trỏ tới. */
+export function sqlCuaManChieu(kb: KichBanMvp, nut: Extract<NutMvp, { type: 'projector' }>): string | null {
+  const nguon = nut.source;
+  if (nguon.kind === 'sql') return nguon.sql;
+  const the = Object.values(kb.thuThach).find((t) => t.vatChung.id === nguon.evidenceId);
+  return the?.sqlChuan ?? null;
+}
+
 /** Nhãn khung giờ hiện tại cho HUD ("Sáng" … / "Cuối ngày"). */
 export function tenKhungHienTai(kb: KichBanMvp, s: TrangThaiMvp): string {
   if (s.giaiDoan !== 'ngay') return '';
