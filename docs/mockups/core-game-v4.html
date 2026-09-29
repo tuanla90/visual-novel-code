@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Màn core game v4</title>
+<!-- Mockup v4 sau hội đồng vòng 3 (20260929-0920-core-game-man-hinh-v3-cham). Vụ 3 JOIN và bảng hình ảnh Vụ 4–6 giữ nguyên ở core-game-v2.html. -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="core-game.css">
+<style>
+.predict{display:flex;gap:5px;align-items:center;font-size:12.5px}
+.predict .opt{border:1.5px solid var(--line);border-radius:99px;padding:3px 10px;background:#fff}
+.predict .opt.on{background:#1d2b36;color:#fff;border-color:#1d2b36}
+.gauge{position:relative;height:30px;margin:6px 0 18px}
+.gauge .bar{position:absolute;left:0;right:0;top:13px;height:4px;background:#e6dcc4;border-radius:2px}
+.gauge .seg{position:absolute;top:10px;height:10px;background:#1d2b3533;border-radius:3px}
+.gauge .pin{position:absolute;top:4px;width:3px;height:22px;background:var(--accent)}
+.gauge .lab{position:absolute;top:30px;font-size:11px;color:var(--soft);transform:translateX(-50%)}
+.bignum{font:700 54px/1 "JetBrains Mono";color:#1d2b36}
+.stamp2{display:inline-block;border:3px solid #1d2b36;color:#1d2b36;font-weight:800;font-size:17px;padding:2px 12px;border-radius:6px;transform:rotate(-6deg);letter-spacing:1px}
+.chk{font-weight:700;text-align:center;width:60px}
+.chk.y{color:#1a7f37}.chk.n{color:#c0392b}
+tr.out td{color:#999;background:#faf7f0}
+.drawer{border:1px solid var(--line);border-radius:8px;background:#fffdf7}
+.drawer .dh{display:flex;align-items:center;gap:8px;padding:6px 10px;font-size:13px;font-weight:600;border-bottom:1px solid var(--line);background:#f3ecd9;border-radius:8px 8px 0 0}
+.drawer .dh .sp{flex:1}
+.clause{display:flex;align-items:center;gap:8px}
+.clause .pen{font:600 11px "Be Vietnam Pro";color:#fbbf24;border:1px solid #fbbf24;border-radius:4px;padding:0 6px;margin-left:auto}
+.bag{display:flex;gap:8px;align-items:center;font-size:13px}
+.evcard{background:#fffdf5;border-radius:6px;box-shadow:2px 4px 10px #0003;padding:10px 12px;font-size:13px}
+.stmt{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;background:#fff;font-size:14px;line-height:1.45}
+.stmt.on{border-color:var(--teal);background:#e9f7ef;box-shadow:0 0 0 3px #0f5c5522}
+.stmt .r{width:16px;height:16px;border-radius:50%;border:2px solid #999;flex:none;margin-top:2px}
+.stmt.on .r{border-color:var(--teal);background:radial-gradient(var(--teal) 45%,#fff 50%)}
+.toast{background:#1d2b36;color:#f3ead7;border-radius:10px;padding:10px 14px;font-size:13.5px;box-shadow:0 8px 20px #0006}
+.ladder{display:flex;gap:8px}
+.ladder .rung{flex:1;border:1.5px solid var(--line);border-radius:8px;padding:10px;background:#fff;font-size:13px;position:relative}
+.ladder .rung b{display:block;font-size:14px;margin-bottom:3px}
+.ladder .rung.on{border-color:#fbbf24;background:#fff8e1;box-shadow:0 0 0 3px #fbbf2455}
+.ladder .rung .lv{position:absolute;top:-10px;left:8px;background:#1d2b36;color:#fff;font-size:11px;border-radius:99px;padding:0 8px}
+.vcard{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;min-height:0}
+.vcard h4{margin:0;font-size:15px}.vcard .k{font:600 11.5px "JetBrains Mono";color:var(--teal)}
+.vcard p{margin:0;font-size:13.5px;line-height:1.5;color:#333}
+.vcard .warn{color:#9f2d20}
+.mvp{font:700 10.5px "Be Vietnam Pro";background:#0f5c55;color:#fff;border-radius:4px;padding:1px 6px;margin-left:6px}
+</style>
+</head>
+<body>
+<div class="tabs" id="tabs">
+  <button data-s="s1" aria-pressed="true">① Vụ 1 · phòng máy (3 vùng)</button>
+  <button data-s="s2">② Soát hồ sơ trước giải trình</button>
+  <button data-s="s3">③ Vụ 2 · phiếu trùng + dữ liệu mới về</button>
+  <button data-s="s4">④ Thang tự viết 3 bậc</button>
+  <button data-s="s5">⑤ Kết mùa · câu lệnh thành báo cáo</button>
+</div>
+
+<!-- ============ ① VỤ 1 ============ -->
+<section class="stage on" id="s1">
+  <div class="hud"><span>🗂 Vụ 1 · <b>Chữ ký "H."</b></span><span class="pill">Ngày 4 · Chiều</span><span class="pill">Phòng máy</span><span class="sp"></span><span class="pill">📓 Sổ chị Linh</span></div>
+  <div class="wall"><h4>TƯỜNG DỮ KIỆN</h4>
+    <div class="note y used" style="--r:-2deg">H.<small>Chữ ký trên phiếu gửi</small></div>
+    <div class="note b used" style="--r:1.5deg">BC24A<small>Bằng chứng ngày 2</small></div>
+    <div class="note p" style="--r:-1deg">Tòa B<small>Lời bác Thịnh</small></div>
+    <div class="note g" style="--r:2deg">Báo chí K24<small>Thẻ lịch rách ở khe hộp</small></div>
+    <div class="note w dim" style="--r:-2.5deg">"CLB chiếm phòng mà có làm gì đâu"<small>Hiếu · căng tin</small></div>
+  </div>
+  <div class="screen" style="grid-template-columns:500px 1fr;grid-template-rows:1fr 64px;gap:12px;padding:12px">
+    <!-- VÙNG 1 -->
+    <div class="panel" style="grid-column:1;grid-row:1;display:flex;flex-direction:column;gap:12px">
+      <h3>① Câu hỏi của mình</h3>
+      <div class="row"><span class="lbl">Lấy cột</span><span class="chip lock">ma_sv</span><span class="chip lock">ho_dem</span><span class="chip lock">ten</span><span class="chip lock">ma_lop</span></div>
+      <div class="row"><span class="lbl">Từ bảng</span><span class="chip lock">sinh_vien</span><span class="legend">mỗi dòng = một sinh viên</span></div>
+      <div class="row"><span class="lbl">Chỉ giữ dòng</span></div>
+      <div class="row" style="padding-left:18px"><span class="chip col hl1">ten</span><span class="chip op hl1">bắt đầu bằng ▾</span><span class="chip val hl1">H.</span></div>
+      <div class="row" style="padding-left:18px"><span class="chip op" style="background:#1d2b36;color:#fff;border-color:#1d2b36">VÀ ▾</span></div>
+      <div class="row" style="padding-left:18px"><span class="chip col hl2">ma_lop</span><span class="chip op hl2">bằng ▾</span><span class="chip val b hl2">BC24A</span></div>
+      <div class="sql" style="white-space:normal;padding:8px 12px">
+        <div class="clause"><span><span class="k">SELECT</span> ma_sv, ho_dem, ten, ma_lop</span></div>
+        <div class="clause"><span><span class="k">FROM</span> sinh_vien</span></div>
+        <div class="clause"><span><span class="k">WHERE</span> <span class="hl1">ten <span class="k">LIKE</span> <span class="s">'H%'</span></span> <span class="k">AND</span> <span class="hl2">ma_lop = <span class="s">'BC24A'</span></span></span><span class="pen">✎ tự viết dòng này</span></div>
+      </div>
+      <div style="flex:1"></div>
+      <div style="border-top:1px dashed var(--line);padding-top:10px;display:flex;flex-direction:column;gap:8px">
+        <div class="predict"><span style="font-weight:600;margin-right:4px">Đoán nhanh:</span><span class="opt">0</span><span class="opt on">1–5</span><span class="opt">vài chục</span><span class="opt">hàng trăm</span></div>
+        <div style="display:flex;gap:10px;align-items:center"><span class="btn run" style="padding:10px 28px;font-size:16px">▶ Chạy</span><span class="legend">Hàng đoán chỉ hiện ở <b>lượt chạy đầu</b> của mỗi câu hỏi. Các lượt sau bấm Chạy thẳng.</span></div>
+      </div>
+    </div>
+    <!-- VÙNG 2 -->
+    <div class="panel" style="grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:10px">
+      <h3>② Kết quả</h3>
+      <div style="display:flex;gap:28px;align-items:center">
+        <div style="display:flex;align-items:baseline;gap:8px"><span class="bignum">2</span><span style="font-size:16px">dòng</span><span class="stamp2" style="margin-left:14px">2 DÒNG</span></div>
+        <div style="flex:1;max-width:380px"><div class="legend">Bạn đoán ↔ thực tế</div>
+          <div class="gauge"><div class="bar"></div><div class="seg" style="left:12%;width:22%"></div><div class="pin" style="left:18%"></div>
+            <span class="lab" style="left:0%">0</span><span class="lab" style="left:23%">1–5</span><span class="lab" style="left:55%">vài chục</span><span class="lab" style="left:88%">hàng trăm</span></div></div>
+      </div>
+      <table><tr><th class="mono">ma_sv</th><th>ho_dem</th><th>ten</th><th class="mono">ma_lop</th></tr>
+        <tr><td class="mono">SV240228</td><td>Nguyễn Minh</td><td>Hiếu</td><td class="mono">BC24A</td></tr>
+        <tr><td class="mono">SV240317</td><td>Phạm Thu</td><td>Hoài</td><td class="mono">BC24A</td></tr></table>
+      <div style="display:flex;gap:12px;align-items:center">
+        <span class="btn" style="background:#fff8e1;border:2px solid #fbbf24;color:#1d2b36;box-shadow:0 0 0 5px #fbbf2433,0 0 18px #fbbf2488">🔍 Xem từng điều kiện</span>
+        <span class="legend">Nút sáng lên khi số dòng đổi mạnh so với lượt trước. <b>Người chơi tự bấm</b>. Chỉ lần chạy đầu tiên của cả game ngăn soi tự mở, như một bước hướng dẫn.</span>
+      </div>
+      <div class="drawer" style="opacity:.55">
+        <div class="dh">🔍 Từng điều kiện <span class="legend" style="font-weight:400">(khi bấm mở)</span></div>
+        <table style="font-size:12.5px"><tr><th>ten</th><th class="mono">ma_lop</th><th class="chk" style="color:var(--c1)">tên H…</th><th class="chk" style="color:var(--c2)">= BC24A</th><th></th></tr>
+          <tr><td>Hiếu</td><td class="mono">BC24A</td><td class="chk y">✓</td><td class="chk y">✓</td><td>giữ</td></tr>
+          <tr class="out"><td>Hồng</td><td class="mono">BC24B</td><td class="chk y">✓</td><td class="chk n">✗</td><td>loại</td></tr>
+          <tr class="out"><td colspan="5" style="font-style:italic">… mẫu ngẫu nhiên các dòng bị loại ↻</td></tr></table>
+      </div>
+      <div class="legend">Máy chỉ đếm và soi, không nói đúng/sai. ✓/✗ ở đây là "dòng này qua điều kiện nào", không phải chấm bài. MVP: soi được WHERE dạng VÀ/HOẶC phẳng.</div>
+    </div>
+    <!-- VÙNG 3 -->
+    <div class="panel" style="grid-column:1/3;grid-row:2;display:flex;align-items:center;gap:10px">
+      <span class="btn save">📌 Cất vào hồ sơ</span><span class="legend" style="max-width:200px">một chạm, không hỏi gì thêm</span>
+      <div class="bag" style="margin-left:auto"><b>Hồ sơ:</b><span class="chip">📄 4 lớp (câu của Tùng)</span><span class="chip">📄 1 lớp: BC24A</span><span class="chip">📷 Thẻ lịch rách</span></div>
+    </div>
+  </div>
+  <div class="bubble" style="right:40px;bottom:96px;max-width:430px"><div class="face" style="background-image:url(havy-bust.png)"></div><div class="txt"><span class="who">Hà Vy</span>Hai người qua cả hai cửa. Khoan, tính lại đã — đây là <i>ứng viên</i>, chưa phải người gửi.</div></div>
+  <span class="cap">① v4: soi không tự mở (nút sáng, người chơi tự bấm); nhịp giới thiệu: ngày 2 chỉ kéo + Chạy, đoán nhanh ra mắt ở ngày 4 (màn này)</span>
+</section>
+
+<!-- ============ ② SOÁT HỒ SƠ ============ -->
+<section class="stage" id="s2">
+  <div class="hud"><span>🗂 Vụ 1 · <b>Chữ ký "H."</b></span><span class="pill">Ngày 5 · Buổi tối</span><span class="pill">Phòng CLB</span><span class="sp"></span><span class="pill">Soát hồ sơ trước buổi họp rà soát</span></div>
+  <div class="screen" style="left:18px;grid-template-columns:380px 1fr;gap:16px;padding:16px;background:#efe6d0">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="evcard"><div class="legend">Bằng chứng số 3 · phòng máy, ngày 4</div>
+        <div class="sql" style="font-size:12px;margin:6px 0">WHERE ten LIKE 'H%' AND ma_lop = 'BC24A'</div>
+        <table style="font-size:12.5px"><tr><td class="mono">SV240228</td><td>Hiếu</td></tr><tr><td class="mono">SV240317</td><td>Hoài</td></tr></table></div>
+      <div class="evcard"><div class="legend">Bằng chứng số 4 · CTSV, ngày 5</div><div style="margin-top:4px">Cô phụ trách tra sổ niêm phong: <b>SV240317 có</b>, SV240228 không.</div></div>
+      <div class="legend" style="padding:0 4px">Người chơi chỉ phải nói bằng chứng chứng minh gì <b>ở đây, một lần cho mỗi bằng chứng mang vào họp</b> — không phải mỗi lần cất vào hồ sơ.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:18px;font-weight:700">Mang bằng chứng số 3 vào họp, mình sẽ nói nó chứng minh điều gì?</div>
+      <div class="stmt"><span class="r"></span><div><b>A.</b> "Chữ H và lớp BC24A chỉ khớp với Hiếu và Hoài, nên người gửi thư là một trong hai bạn này."</div></div>
+      <div class="stmt on"><span class="r"></span><div><b>B.</b> "Chữ H và lớp BC24A chỉ khớp với Hiếu và Hoài, nên đây là hai mã mình nhờ cô phụ trách tra sổ."</div></div>
+      <div class="stmt"><span class="r"></span><div><b>C.</b> "Hiếu khớp chữ H, lớp BC24A và còn công khai ủng hộ lá thư, nên chỉ cần nhờ cô tra mã của Hiếu."</div></div>
+      <div class="stmt"><span class="r"></span><div><b>D.</b> "Chữ H và thẻ lịch Báo chí K24 chỉ khớp với Hiếu và Hoài, nên cả khóa không còn ai khác cần tra."</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px">
+        <div class="bubble" style="position:static;max-width:none"><div class="face" style="background-image:url(havy-bust.png);width:60px;height:60px"></div><div class="txt"><span class="who">Hà Vy</span>Câu B nói đúng bằng cái bảng nói. Không thừa, không thiếu.</div></div>
+        <div class="evcard" style="background:#fff1ee"><b>Câu nói quá — mỗi câu vượt dữ liệu một kiểu, Quân bắt bẻ đúng chỗ đó</b> (mất 1 vạch, Minh Anh đỡ lời):<br>A: "Thẻ lịch nằm ở khe hộp không chứng minh chủ thẻ là người bỏ thư. Chữ H cũng chưa chắc là tên."<br>C: "Ủng hộ lá thư là ý kiến, không phải hành động. Các bạn bỏ qua Hoài dựa vào đâu?"<br>D: "Bảng của các bạn chỉ lọc BC24A. Khóa K24 còn BC24B — bạn Hồng tên H các bạn chưa xét."<br><i>Bốn câu cùng mở đầu, cùng độ dài, không câu nào có "chắc chắn"; khác nhau ở phần kết luận. Thử trên giấy với 5 người trước khi code.</i></div>
+      </div>
+    </div>
+  </div>
+  <span class="cap">② v4: bốn câu cùng khuôn "X khớp Y, nên Z" — chỉ khác ở Z; mỗi câu sai vượt dữ liệu một kiểu (kết luận người gửi · dựa vào ý kiến · mở rộng quá phạm vi lọc)</span>
+</section>
+
+<!-- ============ ③ VỤ 2 ============ -->
+<section class="stage" id="s3">
+  <div class="hud"><span>🗂 Vụ 2 · <b>Lớp học phần biến mất</b></span><span class="pill">Ngày 3 · Chiều</span><span class="pill">Phòng máy</span><span class="sp"></span><span class="pill">📓 Sổ chị Linh</span></div>
+  <div class="wall"><h4>TƯỜNG DỮ KIỆN</h4>
+    <div class="note y used" style="--r:-2deg">Sĩ số tối thiểu 20 sinh viên<small>Quy chế đào tạo</small></div>
+    <div class="note b used" style="--r:1.5deg">Đợt bổ sung đóng 17:00 thứ Năm, nhật ký gửi ngay sau đó<small>Lịch đăng ký · bảng tin</small></div>
+    <div class="note p" style="--r:-1deg">"Bảng tổng hợp ghi 21. Lớp đủ người, sao lại hủy?"<small>Quân · Hội sinh viên</small></div>
+    <div class="note g" style="--r:2deg">19 bạn chưa được báo lớp bị hủy<small>Đạt · lớp trưởng</small></div>
+  </div>
+  <div class="screen" style="grid-template-columns:360px 1fr;grid-template-rows:1fr 170px;gap:12px;padding:12px">
+    <div class="panel" style="grid-column:1;grid-row:1/3;display:flex;flex-direction:column;gap:9px">
+      <h3>① Dựng bảng</h3>
+      <div class="well"><div class="t"><span>Hiện</span><span>SELECT</span></div><div class="row"><span class="chip col hl2">ma_lop_hp</span><span class="chip col hl3">ma_sv</span><span class="chip op hl3">Đếm không trùng ▾</span></div><div class="legend" style="margin-top:4px">hoặc "Liệt kê không trùng" → danh sách 19 người (SELECT DISTINCT)</div></div>
+      <div class="well"><div class="t"><span>Từ bảng</span><span>FROM</span></div><div class="row"><span class="chip lock">phieu_dang_ky</span></div>
+        <div class="legend" style="margin-top:4px">mỗi dòng = <b>một lần bấm "Đăng ký"</b> thành công. Đêm mở cổng bị nghẽn, có bạn bấm hai lần → hai phiếu</div></div>
+            <div class="well"><div class="t"><span>Gom thành hộp theo</span><span>GROUP BY</span></div><div class="row"><span class="chip col hl2">ma_lop_hp</span></div></div>
+      <div class="legend">Vụ 2 dạy: nhóm, đếm, đếm/liệt kê không trùng, sắp xếp. Lọc sau khi gom (HAVING) để vụ sau.</div>
+      <div class="sql" style="font-size:12.5px"><span class="k">SELECT</span> ma_lop_hp, <span class="k">COUNT</span>(<span class="k">DISTINCT</span> ma_sv)
+<span class="k">FROM</span> phieu_dang_ky
+<span class="k">GROUP BY</span> ma_lop_hp;</div>
+      <span class="btn run" style="text-align:center">▶ Chạy</span>
+    </div>
+    <div class="panel" style="grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:10px">
+      <h3>② Mở hộp MK210 — đếm phiếu hay đếm người?</h3>
+      <div style="display:flex;gap:26px;align-items:flex-end">
+        <div class="box" style="display:inline-flex;flex-direction:column;align-items:center;font-size:11px">
+          <div style="width:140px;height:96px;border:2px solid #555;border-top:0;display:flex;flex-wrap:wrap-reverse;gap:2px;padding:3px;align-content:flex-start">
+            <i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#8a8f98"></i><i style="width:10px;height:11px;background:#e07a5f"></i><i style="width:10px;height:11px;background:#e07a5f"></i></div>MK210 · 21 phiếu</div>
+        <table style="font-size:13.5px;width:auto"><tr><th>Cách đếm</th><th>Số</th><th>Ai dùng</th></tr>
+          <tr><td>Đếm phiếu</td><td class="mono">21</td><td>Bảng tổng hợp (pivot "Count of ma_sv") Quân dẫn</td></tr>
+          <tr><td><b>Đếm sinh viên khác nhau</b></td><td class="mono"><b>19</b></td><td>Quy chế ghi "20 sinh viên"</td></tr></table>
+      </div>
+      <div class="legend">Ô cam: Lan và Tú bấm hai lần lúc cổng nghẽn. Quân không cẩu thả: anh dẫn bảng tổng hợp chính thức, là một pivot để mặc định "Count" (đếm dòng). Cổng đăng ký không chặn bấm lặp, chỉ ghi mỗi lần bấm thành công.</div>
+      <div style="background:#f3ecd9;border-radius:6px;padding:8px 10px;font-size:13px">Lớp bị hủy <b>đúng quy chế</b> — nhưng <b>19 bạn chưa ai được báo</b>. Bằng chứng mang vào họp không chỉ là con số 19, mà là <b>danh sách 19 người cần xếp lớp khác</b>.</div>
+    </div>
+    <div class="panel" style="grid-column:2;grid-row:2;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start">
+      <div class="toast">📨 <b>Thứ Năm 17:00 — đợt bổ sung đóng</b>, Phòng Đào tạo gửi tệp phiếu mới (+312 dòng), đúng như lịch trên giấy nhớ.<br>Quân: "Bảng tổng hợp phải dán lại từ tệp xuất, ký duyệt xong mới gửi, sáng thứ Hai."<br><span style="color:#fbbf24">▶ Chạy lại câu cũ</span> → MK210: 19 · KT201: 18 (mới).</div>
+      <div style="font-size:13px;line-height:1.5"><b>"Sao không làm pivot?"</b> Hà Vy: "Pivot cũng làm được, bật Distinct Count là ra 19." Khác ở chỗ <b>quy tắc đếm là chữ</b>: dán vào biên bản, đặt cạnh cách đếm của Quân để so, và chạy lại trên tệp mới. Tùng: "Ủa… xong luôn á?"</div>
+    </div>
+  </div>
+  <span class="cap">③ v4: phiếu trùng vì bấm hai lần lúc nghẽn (không còn dòng "hủy" gây lỗ hổng đếm); pivot "Count" đếm dòng; dữ liệu mới về theo lịch có trong truyện</span>
+</section>
+
+<!-- ============ ④ THANG 3 BẬC ============ -->
+<section class="stage" id="s4">
+  <div class="hud"><span>🪜 Thang tự viết — thay công tắc "Bàn làm việc / Hardcore"</span><span class="sp"></span></div>
+  <div style="position:absolute;left:18px;right:18px;top:60px;bottom:18px;display:grid;grid-template-rows:auto 1fr;gap:14px">
+    <div class="panel">
+      <div class="ladder">
+        <div class="rung on"><span class="lv">bậc 0 · từ đầu</span><b>Kéo thả <span class="mvp">MVP</span></b>Khối + giấy nhớ, SQL hiện song song. Từ sau Vụ 1 được tự chọn bảng và cột (không còn khóa sẵn).</div>
+        <div class="rung on"><span class="lv">bậc 1 · Vụ 1</span><b>Tự viết một dòng <span class="mvp">MVP</span></b>✎ chỉ hiện ở dòng WHERE trong Vụ 1; từ Vụ 2 hiện ở mọi dòng. Gõ xong, khối đổi theo.</div>
+        <div class="rung"><span class="lv">bậc 2 · thầy Khải</span><b>Gõ cả câu</b>Trình soạn trống, gợi ý tên cột, giấy nhớ chỉ chèn giá trị. Có nút "Đọc thành lời".</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+      <div class="vcard"><h4>Lên bậc để làm được thêm việc</h4>
+        <p>Bàn làm việc cố ý không có:</p>
+        <p>• <span class="mono">LIKE '%…%'</span> (chứa ở giữa)<br>• biểu thức: <span class="mono">so_tin_chi * 2</span><br>• đặt tên cột: <span class="mono">AS so_sv</span><br>• câu gọn để chiếu nguyên văn ở buổi họp</p>
+        <p>Không cộng điểm xếp hạng theo bậc. Lên bậc chỉ mở khả năng, và có huy hiệu trong sổ cá nhân.</p></div>
+      <div class="vcard"><h4>Xếp hạng vụ chỉ tính lập luận</h4>
+        <p>Uy tín còn lại · bằng chứng mang vào họp nói đúng mức (màn ②) · có true end hay không.</p>
+        <p class="warn">Đụng QĐ-077 (đang có "thưởng khi chơi Hardcore") — cần user chốt.</p></div>
+      <div class="vcard"><h4>Chữ có dấu trong LIKE (SQLite)</h4>
+        <p><span class="mono">'Ánh' LIKE 'ánh'</span> → 0 dòng (đã chạy thử trên sql.js). Hai cách:</p>
+        <p>• <b>MVP:</b> giá trị chữ chỉ đến từ giấy nhớ (đúng hoa thường, đúng dấu) → không gặp ở mạch chính.</p>
+        <p>• <b>Nhiệm vụ phụ:</b> ở bậc 1–2, gõ "hoài" ra 0 dòng là bài học có chủ ý: "0 dòng là một thông tin, không phải lỗi".</p></div>
+    </div>
+  </div>
+  <span class="cap">④ v3: 3 bậc thay 4; MVP chỉ làm bậc 0–1; xếp hạng không theo bậc</span>
+</section>
+
+<!-- ============ ⑤ KẾT MÙA ============ -->
+<section class="stage" id="s5">
+  <div class="hud"><span>🎓 Kết Vụ 1 và kết mùa — nơi nói "học code làm được gì" mà không cần khẩu hiệu</span><span class="sp"></span></div>
+  <div style="position:absolute;left:18px;right:18px;top:60px;bottom:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div class="vcard"><span class="k">Kết Vụ 1 · buổi họp rà soát</span><h4>Câu truy vấn của người chơi được đưa vào biên bản</h4>
+      <div class="sql" style="font-size:12.5px">-- Căn cứ lập danh sách mã, CLB Thám Tử, 14/10
+SELECT ma_sv, ho_dem, ten, ma_lop
+FROM sinh_vien
+WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';</div>
+      <p>Thầy Quang: "Để câu này vào biên bản. Lần sau ai rà lại thì chạy lại, không phải nghe kể." Cô phụ trách hộp kiến nghị xin CLB "một câu như thế" để tự tra khi có thư mới.</p>
+      <p>Không nhân vật nào nói "chuyển đổi số". Người chơi thấy một thủ tục của trường vừa đổi cách làm vì câu lệnh của mình.</p></div>
+    <div class="vcard"><span class="k">Kết mùa 1</span><h4>Tủ báo cáo của CLB</h4>
+      <table style="font-size:12.5px"><tr><th>Báo cáo</th><th>Từ vụ</th><th>Ai dùng</th><th>Chạy</th></tr>
+        <tr><td>Lớp dưới sĩ số (đếm người)</td><td>Vụ 2</td><td>Phòng Đào tạo</td><td>mỗi đợt đăng ký</td></tr>
+        <tr><td>Thu − chi lệch số dư</td><td>Vụ 5</td><td>Hội sinh viên · Quân</td><td>cuối tháng</td></tr>
+        <tr style="color:#9f2d20"><td>"Ai hay đi học muộn?"</td><td>—</td><td>một thầy xin</td><td><b>từ chối</b></td></tr></table>
+      <p>CLB từ chối yêu cầu thứ ba: trường không ghi giờ vào lớp. Hà Vy: "Không có dữ liệu thì không có câu trả lời. Không có dữ liệu cũng không có nghĩa là không ai muộn." Biết lúc nào <b>không</b> dùng được dữ liệu cũng là một phần nghề.</p>
+      <p>Báo cáo "hoạt động yếu" năm ngoái được thay bằng biên bản có những câu lệnh này. CLB giữ phòng vì có người trong trường dùng việc CLB làm.</p>
+      <p>Đây là câu trả lời cho "học code để làm gì": một câu lệnh viết một lần, chạy mãi, giúp người khác làm việc.</p></div>
+  </div>
+  <span class="cap">⑤ v4: thu còn 2 báo cáo + 1 yêu cầu bị từ chối vì không có dữ liệu; thông điệp chuyển đổi số nằm ở hậu quả trong truyện (biên bản, tủ báo cáo), không ở panel hay lời thoại</span>
+</section>
+
+<script>
+const tabs=document.getElementById('tabs');
+tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  tabs.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  document.querySelectorAll('.stage').forEach(s=>s.classList.toggle('on',s.id===b.dataset.s));});
+const q=new URLSearchParams(location.search).get('s');if(q){const b=tabs.querySelector(`[data-s=${q}]`);b&&b.click();}
+</script>
+</body>
+</html>

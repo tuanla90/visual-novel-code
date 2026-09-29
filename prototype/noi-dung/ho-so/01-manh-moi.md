@@ -1,8 +1,8 @@
-### clue-signature-h — Chữ ký "H."
+### clue-signature-h — Chữ ký tay (chỉ đọc được chữ H)
 
-- Tiêu đề: Chữ ký "H."
+- Tiêu đề: Chữ ký tay (chỉ đọc được chữ H)
 - Nguồn: Phong bì lá thư, bản chụp do Phòng CTSV chuyển cho CLB
-- Nội dung: Ngoài phong bì có chữ ký tay "H.". Người Việt thường ký bằng tên gọi, nên H nhiều khả năng là chữ đầu của tên (cột `ten`), không phải của họ đệm (`ho_dem`).
+- Nội dung: Ngoài phong bì có chữ ký tay: chữ H viết hoa rõ, phần sau là nét lượn không đọc được. Người Việt thường ký bằng tên gọi, nên H nhiều khả năng là chữ đầu của tên (cột `ten`), không phải của họ đệm (`ho_dem`).
 - Giá trị cho trình dựng: `H`, dùng với phép "bắt đầu bằng" trên cột `ten`.
 - Câu hỏi còn mở: Trong dữ liệu, những ai có tên bắt đầu bằng H?
 - Lưu ý: Chỉ là khả năng. Chữ ký cho biết một chữ cái, không cho biết đó là ai.

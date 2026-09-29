@@ -47,7 +47,7 @@
 - [DÀN DỰNG] {{nv.hoai}} được gọi vào, đứng nép cạnh cửa, nhìn lên màn chiếu có tên mình.
 - **ha-vy** (neutral): Khoan… chiếu tên bạn ấy lên rồi gọi vào thế này, khác gì hỏi cung.
 - **thay-quang** (neutral): Ở đây không ai đối chất với một bạn năm nhất. Thầy hỏi, các em nghe.
-- **thay-quang** (neutral): Em Hoài, lá thư ký "H." là em bỏ vào hộp đúng không?
+- **thay-quang** (neutral): Em Hoài, lá thư có chữ ký này là em bỏ vào hộp đúng không?
 - **hoai** (nervous): Dạ… vâng ạ. Em mang nộp ạ.
 - [DÀN DỰNG] {{nv.hoai}} cúi gằm, không nói thêm.
 - **quan** (smug): Vậy là chính bạn ấy mang thư tới hộp.
@@ -61,10 +61,10 @@
 - [DÀN DỰNG] {{nv.minh-anh}} đặt tập hồ sơ xuống bàn.
 - **minh-anh** (neutral): Thưa thầy, bọn em có thêm nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật từ tài khoản một sinh viên năm 4.
 - **ha-vy** (neutral): Còn sáng thứ Hai, bọn tớ nghe kể có một anh khóa trên đưa phong bì cho một bạn nữ khóa mình. Hoài ơi, phong bì cậu bỏ vào hộp là có người nhờ à?
-- **hoai** (nervous): Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký "H." vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ.
+- **hoai** (nervous): Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký như bình thường vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ.
 - **ha-vy** (neutral): Vậy là cậu ghi mã của mình vì được dặn. Còn người soạn thư thì không đứng tên ở đâu trên phiếu.
 - **thay-quang** (neutral): Nhật ký in và lời kể sáng thứ Hai là hai nguồn riêng, cả hai đều khớp với lời em. Vậy em không phải người soạn thư.
-- **thay-quang** (neutral): Mã trên phiếu là để thầy cô tra cứu và phản hồi người gửi. Ở đây người viết giấu tên, mượn chữ "H." và mã của một bạn năm nhất. Thư như vậy thầy không nhận vào hồ sơ rà soát.
+- **thay-quang** (neutral): Mã trên phiếu là để thầy cô tra cứu và phản hồi người gửi. Ở đây người viết giấu tên, mượn chữ ký và mã của một bạn năm nhất. Thư như vậy thầy không nhận vào hồ sơ rà soát.
 - **thay-quang** (neutral): Em làm theo lời nhờ nên không bị xử lý gì cả.
 - **thay-quang** (neutral): CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện.
 - **thay-quang** (neutral): Còn người soạn thư, thầy sẽ gặp riêng. Không cần nêu tên ở đây.

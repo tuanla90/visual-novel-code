@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Màn core game v1</title>
+<!-- Mockup ý tưởng màn core: 4 màn (Vụ 1 lọc · Vụ 2 Bảng phân tích · Vụ 3 Sơ đồ quan hệ · Hardcore). Tĩnh, chỉ để duyệt ý tưởng. -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="core-game.css">
+</head>
+<body>
+<div class="tabs" id="tabs">
+  <button data-s="s1" aria-pressed="true">① Vụ 1 · Bàn làm việc (lọc)</button>
+  <button data-s="s2">② Vụ 2 · Bảng phân tích (kiểu Power BI)</button>
+  <button data-s="s3">③ Vụ 3 · Sơ đồ quan hệ (dây đỏ)</button>
+  <button data-s="s4">④ Hardcore · tự viết SQL</button>
+</div>
+
+<!-- ============ ① VỤ 1: BÀN LÀM VIỆC LỌC ============ -->
+<section class="stage on" id="s1">
+  <div class="hud"><span>🗂 Vụ 1 · <b>Chữ ký "H."</b></span><span class="pill">Ngày 4 · Chiều</span><span class="pill">Phòng máy</span><span class="sp"></span>
+    <span class="mode"><span class="on">Bàn làm việc</span><span>Hardcore 🔒 mở sau Vụ 1</span></span><span class="pill">📓 Sổ chị Linh</span></div>
+  <div class="wall"><h4>TƯỜNG DỮ KIỆN (kéo vào ô giá trị)</h4>
+    <div class="note y used" style="--r:-2deg">H.<small>Chữ ký trên phiếu gửi</small></div>
+    <div class="note b used" style="--r:1.5deg">BC24A<small>Kết quả ngày 2 · Số liệu đây!</small></div>
+    <div class="note p" style="--r:-1deg">Tòa B<small>Lời bác Thịnh</small></div>
+    <div class="note g" style="--r:2deg">Báo chí K24<small>Thẻ lịch rách ở khe hộp</small></div>
+    <div class="note w dim" style="--r:-2.5deg">"CLB chiếm phòng mà có làm gì đâu"<small>Hiếu · căng tin (ý kiến?)</small></div>
+    <div class="note w" style="--r:1deg">Cần mã + căn cứ<small>Quy chế sổ niêm phong</small></div>
+  </div>
+  <div class="screen" style="grid-template-columns:560px 1fr;grid-template-rows:1fr auto auto;gap:12px;padding:12px">
+    <div class="panel" style="grid-row:1/3">
+      <h3>Câu hỏi của mình <span class="tag">viết như nói</span></h3>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="row"><span class="lbl">Lấy cột</span><span class="chip lock">ma_sv</span><span class="chip lock">ho_dem</span><span class="chip lock">ten</span><span class="chip lock">ma_lop</span></div>
+        <div class="row"><span class="lbl">Từ bảng</span><span class="chip lock">sinh_vien</span><span class="legend">1.240 sinh viên</span></div>
+        <div class="row"><span class="lbl">Chỉ giữ dòng</span></div>
+        <div class="row" style="padding-left:18px"><span class="chip col hl1">ten</span><span class="chip op hl1">bắt đầu bằng ▾</span><span class="chip val hl1">H.</span></div>
+        <div class="row" style="padding-left:18px"><span class="chip op" style="background:#1d2b36;color:#fff;border-color:#1d2b36">VÀ ▾</span><span class="legend">(đổi sang HOẶC để xem hai vòng tròn đổi màu)</span></div>
+        <div class="row" style="padding-left:18px"><span class="chip col hl2">ma_lop</span><span class="chip op hl2">bằng ▾</span><span class="chip val b hl2">BC24A</span></div>
+        <div class="row" style="padding-left:18px"><span class="chip slot">+ thêm điều kiện</span></div>
+      </div>
+      <div style="margin-top:14px" class="sql"><span class="k">SELECT</span> ma_sv, ho_dem, ten, ma_lop
+<span class="k">FROM</span> sinh_vien
+<span class="k">WHERE</span> <span class="hl1">ten <span class="k">LIKE</span> <span class="s">'H%'</span></span>
+  <span class="k">AND</span> <span class="hl2">ma_lop = <span class="s">'BC24A'</span></span>;</div>
+      <div class="legend" style="margin-top:6px">Mỗi mảnh kéo thả gạch chân cùng màu với đoạn SQL nó sinh ra. Sửa trực tiếp SQL → mở Hardcore.</div>
+      <div style="margin-top:14px;display:flex;gap:18px;align-items:flex-start">
+        <div class="funnel">
+          <div class="lv" style="width:220px;background:#8a8f98">sinh_vien · 1.240 dòng</div>
+          <div class="lv hl1" style="width:150px;background:var(--c1)">ten bắt đầu bằng H · 96</div>
+          <div class="lv" style="width:84px;background:var(--c3)">VÀ BC24A · 2</div>
+          <div class="legend">Phễu lọc: dòng rơi ra ở từng tầng</div>
+        </div>
+        <div class="venn"><svg width="200" height="130" viewBox="0 0 200 130">
+          <circle cx="75" cy="62" r="50" fill="#e07a5f55" stroke="#e07a5f" stroke-width="2"/>
+          <circle cx="125" cy="62" r="50" fill="#3d8bfd44" stroke="#3d8bfd" stroke-width="2"/>
+          <path d="M100 19 A50 50 0 0 1 100 105 A50 50 0 0 1 100 19Z" fill="#2a9d8f"/>
+          <text x="40" y="66" fill="#8b3a26">H… 96</text><text x="132" y="66" fill="#1b4f9c">BC24A 38</text><text x="94" y="66" fill="#fff">2</text>
+          <text x="50" y="126" fill="#555">VÀ = phần giao · HOẶC = cả hai hình</text></svg></div>
+      </div>
+    </div>
+    <div class="panel" style="grid-column:2;grid-row:1">
+      <h3>Kết quả <span class="tag">2 dòng · máy không nói đúng/sai</span></h3>
+      <table><tr><th class="mono">ma_sv</th><th>ho_dem</th><th>ten</th><th class="mono">ma_lop</th></tr>
+        <tr class="keep"><td class="mono">SV240228</td><td>Nguyễn Minh</td><td>Hiếu</td><td class="mono">BC24A</td></tr>
+        <tr class="keep"><td class="mono">SV240317</td><td>Phạm Thu</td><td>Hoài</td><td class="mono">BC24A</td></tr>
+      </table>
+      <div style="margin-top:12px" class="legend">Lịch sử chạy (thử thoải mái, không phạt):</div>
+      <table style="margin-top:4px;font-size:12px">
+        <tr><td>① ten <b>bằng</b> 'H.'</td><td>0 dòng</td><td class="legend">"0 dòng ≠ không có ai" — sổ chị Linh, lỗi thường gặp</td></tr>
+        <tr><td>② ten bắt đầu bằng H <b>HOẶC</b> BC24A</td><td>132 dòng</td><td class="legend">vòng tròn phình to</td></tr>
+        <tr><td>③ ma_lop bắt đầu bằng 'BC'</td><td>3 dòng</td><td class="legend">thêm Hồng · BC24B</td></tr>
+        <tr style="font-weight:600"><td>④ bắt đầu bằng H <b>VÀ</b> BC24A</td><td>2 dòng</td><td></td></tr>
+      </table>
+    </div>
+    <div class="panel" style="grid-column:2;grid-row:2;display:flex;gap:10px;align-items:center">
+      <span class="btn run">▶ Chạy</span><span class="btn save">📌 Lưu thành bằng chứng</span><span class="btn ghost">✍ Ghi thành giấy nhớ</span>
+      <span class="legend" style="margin-left:auto">Bằng chứng = key item mang vào buổi giải trình</span>
+    </div>
+    <div class="panel" style="grid-column:1/3;grid-row:3;display:flex;gap:10px;align-items:center;font-size:13px">
+      <b>Khay bằng chứng:</b><span class="chip">📄 4 lớp (câu OR của Tùng)</span><span class="chip">📄 1 lớp: BC24A</span><span class="chip slot">+ kết quả đang xem</span>
+    </div>
+  </div>
+  <div class="bubble"><div class="face" style="background-image:url(havy-bust.png)"></div><div class="txt"><span class="who">Hà Vy</span>Hai vòng tròn, lấy phần chồng lên nhau. Còn hai người. Khoan, tính lại đã — mình mới có <i>ứng viên</i>, chưa có người gửi.</div></div>
+  <span class="cap">① Vụ 1: WHERE · = · LIKE · AND/OR — giấy nhớ là giá trị, phễu lọc + hai vòng tròn là hình ảnh</span>
+</section>
+
+<!-- ============ ② VỤ 2: BẢNG PHÂN TÍCH ============ -->
+<section class="stage" id="s2">
+  <div class="hud"><span>🗂 Vụ 2 · <b>Lớp học phần biến mất</b></span><span class="pill">Ngày 3 · Sáng</span><span class="pill">Phòng máy</span><span class="sp"></span>
+    <span class="mode"><span class="on">Bảng phân tích</span><span>Hardcore</span></span><span class="pill">📓 Sổ chị Linh</span></div>
+  <div class="wall"><h4>TƯỜNG DỮ KIỆN</h4>
+    <div class="note y used" style="--r:-2deg">Sĩ số tối thiểu 20<small>Quy chế đào tạo · Phòng Đào tạo</small></div>
+    <div class="note b used" style="--r:1.5deg">Chỉ tính đăng ký "hợp lệ"<small>Cô Hạnh</small></div>
+    <div class="note p" style="--r:-1deg">KT201 — thứ 5 tiết 1<small>Lịch cũ trên bảng tin</small></div>
+    <div class="note w dim" style="--r:2deg">"Lớp đó ế lắm"<small>Tin đồn căng tin</small></div>
+  </div>
+  <div class="screen" style="grid-template-columns:230px 330px 1fr;grid-template-rows:1fr 250px;gap:12px;padding:12px">
+    <div class="panel" style="grid-row:1/3">
+      <h3>Trường dữ liệu</h3>
+      <div style="font-weight:600;font-size:13px;margin:4px 0">▾ hoc_phan</div>
+      <div class="field"><span class="ty t">Aa</span>ma_lop_hp</div><div class="field"><span class="ty t">Aa</span>ten_hp</div>
+      <div class="field"><span class="ty n">#</span>si_so_toi_thieu</div><div class="field"><span class="ty n">#</span>so_tin_chi</div><div class="field"><span class="ty t">Aa</span>trang_thai</div>
+      <div style="font-weight:600;font-size:13px;margin:10px 0 4px">▾ dang_ky_hoc_phan</div>
+      <div class="field"><span class="ty t">Aa</span>ma_sv</div><div class="field"><span class="ty t">Aa</span>ma_lop_hp</div><div class="field"><span class="ty d">📅</span>thoi_gian_dk</div><div class="field"><span class="ty t">Aa</span>trang_thai</div>
+      <div class="legend" style="margin-top:12px">Kéo cột sang các ô ở giữa. Ô chỉ nhận đúng kiểu (#, Aa, 📅).</div>
+    </div>
+    <div class="panel" style="grid-row:1/3;display:flex;flex-direction:column;gap:9px">
+      <h3>Dựng bảng</h3>
+      <div class="well"><div class="t"><span>① Lọc dòng — TRƯỚC khi gom nhóm</span><span>WHERE</span></div>
+        <div class="row"><span class="chip col hl1">dk.trang_thai</span><span class="chip op">bằng</span><span class="chip val b hl1">hợp lệ</span></div></div>
+      <div class="well"><div class="t"><span>② Chia nhóm theo</span><span>GROUP BY</span></div>
+        <div class="row"><span class="chip col hl2">ma_lop_hp</span></div></div>
+      <div class="well"><div class="t"><span>③ Chỉ số (tự chọn cách tính)</span><span>COUNT…</span></div>
+        <div class="row"><span class="chip col hl3">ma_sv</span><span class="chip op hl3">Đếm không trùng ▾</span></div>
+        <div class="legend" style="margin-top:4px">Đếm · Đếm không trùng · Tổng · Trung bình · Lớn nhất · Nhỏ nhất — không mặc định</div></div>
+      <div class="well"><div class="t"><span>④ Lọc nhóm — SAU khi gom nhóm</span><span>HAVING</span></div>
+        <div class="row"><span class="chip op hl4">số SV</span><span class="chip op hl4">&lt;</span><span class="chip val hl4">20</span></div></div>
+      <div class="well"><div class="t"><span>⑤ Sắp xếp</span><span>ORDER BY</span></div><div class="row"><span class="chip col">số SV ↑</span></div></div>
+      <label style="font-size:13px;display:flex;gap:6px;align-items:center;background:#fff1ee;border-radius:6px;padding:6px 8px"><input type="checkbox"> Hiện cả nhóm không có dòng nào <span class="legend">(mở ở Vụ 4)</span></label>
+      <span class="btn run" style="text-align:center">▶ Chạy</span>
+    </div>
+    <div class="panel">
+      <h3>Kết quả · biểu đồ <span class="tag">số SV hợp lệ mỗi lớp</span></h3>
+      <svg width="100%" height="330" viewBox="0 0 700 330">
+        <line x1="60" y1="20" x2="60" y2="290" stroke="#999"/><line x1="60" y1="290" x2="690" y2="290" stroke="#999"/>
+        <line x1="60" y1="170" x2="690" y2="170" stroke="#9f2d20" stroke-dasharray="6 4" stroke-width="2"/><text x="600" y="162" fill="#9f2d20" font-size="12" font-weight="700">tối thiểu 20</text>
+        <g font-size="12" fill="#333">
+          <rect x="85" y="50" width="60" height="240" fill="#8a8f98"/><text x="90" y="310">KT101</text><text x="100" y="44">40</text>
+          <rect x="175" y="92" width="60" height="198" fill="#8a8f98"/><text x="180" y="310">KT105</text><text x="190" y="86">33</text>
+          <rect x="265" y="176" width="60" height="114" fill="#e07a5f"/><text x="270" y="310">MK210</text><text x="285" y="170">19</text>
+          <rect x="355" y="212" width="60" height="78" fill="#e07a5f"/><text x="360" y="310">TC150</text><text x="375" y="206">13</text>
+          <rect x="445" y="116" width="60" height="174" fill="#8a8f98"/><text x="450" y="310">QT110</text><text x="465" y="110">29</text>
+          <rect x="535" y="40" width="60" height="250" fill="none" stroke="#9f2d20" stroke-dasharray="5 4" stroke-width="2"/><text x="540" y="310" fill="#9f2d20" font-weight="700">KT201 ?</text><text x="538" y="120" fill="#9f2d20">không có</text><text x="545" y="136" fill="#9f2d20">cột nào</text>
+        </g></svg>
+      <div class="legend">Cột KT201 "biến mất": không có dòng đăng ký hợp lệ nào → không có nhóm → không hiện. Vì sao? ← chìa khóa Vụ 2.</div>
+    </div>
+    <div class="panel" style="display:grid;grid-template-columns:1fr 230px;gap:12px">
+      <div class="sql" style="font-size:13px"><span class="k">SELECT</span> <span class="hl2">ma_lop_hp</span>, <span class="hl3"><span class="k">COUNT</span>(<span class="k">DISTINCT</span> ma_sv)</span> <span class="k">AS</span> so_sv
+<span class="k">FROM</span> dang_ky_hoc_phan
+<span class="k">WHERE</span> <span class="hl1">trang_thai = <span class="s">'hợp lệ'</span></span>   <span class="cm">-- ① trước khi gom</span>
+<span class="k">GROUP BY</span> <span class="hl2">ma_lop_hp</span>
+<span class="k">HAVING</span> <span class="hl4">so_sv &lt; <span class="n">20</span></span>            <span class="cm">-- ④ sau khi gom</span>
+<span class="k">ORDER BY</span> so_sv;</div>
+      <div><div class="legend" style="margin-bottom:6px">Hình dung: phiếu đăng ký rơi vào các hộp theo mã lớp, rồi đếm từng hộp.</div>
+        <div style="display:flex;gap:6px;align-items:flex-end">
+          <div style="text-align:center;font-size:11px"><div style="width:44px;height:70px;border:2px solid #555;border-top:0;display:flex;flex-wrap:wrap-reverse;gap:2px;padding:2px;align-content:flex-start"><i style="width:8px;height:10px;background:#e07a5f"></i><i style="width:8px;height:10px;background:#e07a5f"></i><i style="width:8px;height:10px;background:#e07a5f"></i><i style="width:8px;height:10px;background:#e07a5f"></i><i style="width:8px;height:10px;background:#e07a5f"></i><i style="width:8px;height:10px;background:#e07a5f"></i><i style="width:8px;height:10px;background:#e07a5f"></i></div>MK210</div>
+          <div style="text-align:center;font-size:11px"><div style="width:44px;height:70px;border:2px solid #555;border-top:0;display:flex;flex-wrap:wrap-reverse;gap:2px;padding:2px"><i style="width:8px;height:10px;background:#8a8f98"></i><i style="width:8px;height:10px;background:#8a8f98"></i><i style="width:8px;height:10px;background:#8a8f98"></i><i style="width:8px;height:10px;background:#8a8f98"></i><i style="width:8px;height:10px;background:#8a8f98"></i><i style="width:8px;height:10px;background:#8a8f98"></i><i style="width:8px;height:10px;background:#8a8f98"></i><i style="width:8px;height:10px;background:#8a8f98"></i><i style="width:8px;height:10px;background:#8a8f98"></i><i style="width:8px;height:10px;background:#8a8f98"></i></div>KT101</div>
+          <div style="text-align:center;font-size:11px;color:#9f2d20"><div style="width:44px;height:70px;border:2px dashed #9f2d20;border-top:0"></div>KT201</div>
+        </div></div>
+    </div>
+  </div>
+  <div class="bubble" style="bottom:290px"><div class="face" style="background-image:url(tung-bust.png)"></div><div class="txt"><span class="who">Tùng</span>Tớ cá là lớp đó bị xóa khỏi hệ thống rồi! Không có cột nào luôn kìa.</div></div>
+  <span class="cap">② Vụ 2: GROUP BY · COUNT/SUM/AVG · ORDER BY (+ HAVING ở Vụ 5) — ô kéo thả kiểu Power BI, SQL luôn hiện song song</span>
+</section>
+
+<!-- ============ ③ VỤ 3: SƠ ĐỒ QUAN HỆ ============ -->
+<section class="stage" id="s3">
+  <div class="hud"><span>🗂 Vụ 3 · <b>Cuốn sổ biến mất</b></span><span class="pill">Ngày 4 · Chiều</span><span class="pill">Thư viện · máy tra cứu</span><span class="sp"></span>
+    <span class="mode"><span class="on">Sơ đồ quan hệ</span><span>Hardcore</span></span></div>
+  <div class="wall"><h4>TƯỜNG DỮ KIỆN</h4>
+    <div class="note y used" style="--r:-2deg">Sổ tay bìa xanh<small>Mã sách S-0412 · cô Mai</small></div>
+    <div class="note b" style="--r:1.5deg">Mượn tuần 3<small>Thẻ thư viện</small></div>
+    <div class="note p dim" style="--r:-1deg">"Chắc CLB Kịch lấy"<small>Tin đồn</small></div>
+  </div>
+  <div class="screen" style="grid-template-columns:1fr 470px;grid-template-rows:1fr 230px;gap:12px;padding:12px">
+    <div class="cork" style="grid-row:1/2">
+      <svg style="position:absolute;inset:0" width="100%" height="100%">
+        <path d="M232 128 C 300 128, 330 118, 392 118" stroke="#c0392b" stroke-width="4" fill="none"/>
+        <path d="M602 150 C 660 150, 690 188, 742 196" stroke="#c0392b" stroke-width="4" fill="none"/>
+        <path d="M602 124 C 690 90, 700 250, 742 262" stroke="#999" stroke-width="3" fill="none" stroke-dasharray="7 6"/>
+        <circle cx="232" cy="128" r="6" fill="#c0392b"/><circle cx="392" cy="118" r="6" fill="#c0392b"/><circle cx="602" cy="150" r="6" fill="#c0392b"/><circle cx="742" cy="196" r="6" fill="#c0392b"/>
+        <text x="650" y="92" font-size="12" fill="#444" font-weight="600">dây nháp: ma_sach ↔ ma_sv ✗</text>
+      </svg>
+      <div class="card" style="left:22px;top:60px"><div class="hd">📘 sach</div><div class="c key"><span>ma_sach</span><span>🔑</span></div><div class="c"><span>ten_sach</span></div><div class="c"><span>the_loai</span></div><div class="c"><span>vi_tri_ke</span></div></div>
+      <div class="card" style="left:392px;top:60px"><div class="hd">🧾 muon_sach</div><div class="c"><span>id</span></div><div class="c key" style="background:#fff"><span>ma_sach</span><span>🔗</span></div><div class="c key"><span>ma_sv</span><span>🔗</span></div><div class="c"><span>ngay_muon</span></div><div class="c"><span>han_tra</span></div><div class="c"><span>ngay_tra</span></div></div>
+      <div class="card" style="left:742px;top:150px"><div class="hd">🎓 sinh_vien</div><div class="c key"><span>ma_sv</span><span>🔑</span></div><div class="c"><span>ho_dem</span></div><div class="c"><span>ten</span></div><div class="c"><span>ma_lop</span></div></div>
+      <div style="position:absolute;left:22px;bottom:14px;background:#fffdf5;border-radius:6px;padding:8px 12px;font-size:13px;box-shadow:2px 4px 8px #0005;max-width:520px">
+        <b>Luật dây đỏ:</b> kéo dây từ cột này sang cột kia = "hai bảng khớp nhau ở đây". Máy <b>không</b> tự nối. Dây nối sai cột → kết quả vô nghĩa ngay trước mắt (0 dòng hoặc ghép bừa).</div>
+    </div>
+    <div class="panel" style="grid-row:1/3;display:flex;flex-direction:column;gap:10px">
+      <h3>Ghép dòng <span class="tag">xem từng cặp khớp</span></h3>
+      <div class="legend">Hình dung "khóa kéo": mỗi phiếu mượn tìm đúng một cuốn sách và một sinh viên có cùng mã.</div>
+      <table style="font-size:12px">
+        <tr><th style="background:#fde2dc">muon_sach.ma_sach</th><th style="background:#fde2dc">ma_sv</th><th style="background:#dbe9fb">sach.ten_sach</th><th style="background:#d9f0ea">sinh_vien.ten</th></tr>
+        <tr class="keep"><td class="mono">S-0412</td><td class="mono">SV240455</td><td>Sổ tay bìa xanh</td><td>Khánh Linh</td></tr>
+        <tr><td class="mono">S-0412</td><td class="mono">SV230118</td><td>Sổ tay bìa xanh</td><td>Đức Anh</td></tr>
+        <tr><td class="mono">S-0077</td><td class="mono">SV240455</td><td>Kinh tế vi mô</td><td>Khánh Linh</td></tr>
+        <tr class="gone"><td class="mono">S-9999</td><td class="mono">SV240501</td><td style="color:#c0392b">— không có sách —</td><td>Bảo</td></tr>
+      </table>
+      <div class="legend">Dòng gạch: mã sách không có trong bảng <span class="mono">sach</span> → INNER JOIN bỏ đi. (Vụ 4 bật "Giữ cả dòng không khớp" = LEFT JOIN, ô trống hiện NULL.)</div>
+      <div class="sql" style="font-size:12.5px"><span class="k">SELECT</span> s.ten_sach, sv.ten, m.ngay_muon
+<span class="k">FROM</span> muon_sach m
+<span class="k">JOIN</span> sach s      <span class="k">ON</span> <span class="hl1">m.ma_sach = s.ma_sach</span>
+<span class="k">JOIN</span> sinh_vien sv <span class="k">ON</span> <span class="hl2">m.ma_sv = sv.ma_sv</span>
+<span class="k">WHERE</span> s.ma_sach = <span class="s">'S-0412'</span>;</div>
+      <span class="btn run" style="text-align:center">▶ Chạy</span>
+    </div>
+    <div class="panel" style="display:flex;gap:16px">
+      <div style="flex:1"><h3>Vì sao phải nối?</h3>
+        <div style="font-size:13.5px;line-height:1.55">Phiếu mượn chỉ ghi <b>mã</b>, không ghi tên. Muốn biết <i>ai</i> mượn <i>cuốn nào</i> thì phải đem mã đi tra ở hai bảng khác — như đối chiếu biên lai với sổ khách. <span class="stamp">1 phiếu = 1 dòng</span></div></div>
+      <div style="flex:1"><h3>Bẫy của rival (Quân)</h3>
+        <div style="font-size:13.5px;line-height:1.55">Quân nối <span class="mono">ma_sach ↔ ma_sv</span> → "không ai mượn cuốn này cả". Người chơi chỉ vào sợi dây sai, nối lại, chạy trên màn chiếu → <b>Số liệu đây!</b></div></div>
+    </div>
+  </div>
+  <span class="cap">③ Vụ 3: INNER JOIN — bảng ghim chứng cứ, dây đỏ = điều kiện ON, khóa kéo = ghép dòng</span>
+</section>
+
+<!-- ============ ④ HARDCORE ============ -->
+<section class="stage" id="s4">
+  <div class="hud"><span>🗂 Vụ 1 (chơi lại) · <b>Chữ ký "H."</b></span><span class="pill">Ngày 4 · Chiều</span><span class="pill">Phòng máy</span><span class="sp"></span>
+    <span class="mode"><span>Bàn làm việc</span><span class="on">Hardcore ✦ +thưởng xếp hạng</span></span><span class="pill">📓 Sổ chị Linh</span></div>
+  <div class="wall"><h4>TƯỜNG DỮ KIỆN (chạm = chèn giá trị)</h4>
+    <div class="note y" style="--r:-2deg">H.<small>chèn: 'H.'</small></div>
+    <div class="note b" style="--r:1.5deg">BC24A<small>chèn: 'BC24A'</small></div>
+    <div class="note p" style="--r:-1deg">Tòa B<small>chèn: 'B'</small></div>
+    <div class="note g" style="--r:2deg">Báo chí K24<small>chèn: 'Báo chí'</small></div>
+    <div class="legend" style="color:#fff;background:#0006;padding:6px;border-radius:6px">Chỉ chèn giá trị, không kèm cú pháp. Dấu %, dấu nháy, AND/OR tự gõ.</div>
+  </div>
+  <div class="screen" style="grid-template-columns:250px 1fr;grid-template-rows:1fr 260px;gap:12px;padding:12px">
+    <div class="panel" style="grid-row:1/3">
+      <h3>Lược đồ</h3>
+      <div style="font-weight:600;font-size:13px">▾ sinh_vien <span class="legend">1.240</span></div>
+      <div class="field"><span class="ty t">Aa</span>ma_sv</div><div class="field"><span class="ty t">Aa</span>ho_dem</div><div class="field"><span class="ty t">Aa</span>ten</div><div class="field"><span class="ty t">Aa</span>ma_lop</div><div class="field"><span class="ty t">Aa</span>que_quan</div><div class="field"><span class="ty t">Aa</span>clb</div>
+      <div style="font-weight:600;font-size:13px;margin-top:8px">▾ lop_sinh_hoat <span class="legend">42</span></div>
+      <div class="field"><span class="ty t">Aa</span>ma_lop</div><div class="field"><span class="ty t">Aa</span>nganh</div><div class="field"><span class="ty t">Aa</span>toa_nha</div>
+      <div style="margin-top:14px" class="legend">Được mở: chỉ <b>SELECT</b> (QĐ-006). Tối đa 2.000 dòng.</div>
+      <div style="margin-top:10px;background:#f3ecd9;border-radius:6px;padding:8px;font-size:12.5px"><b>Xem dạng khối ⇄</b><br>Câu SQL gõ tay được dịch ngược sang bàn làm việc để tự soát (nếu dịch được).</div>
+    </div>
+    <div class="editor">
+<div><span class="ln">1</span><span style="color:var(--kw);font-weight:600">SELECT</span> ma_sv, ho_dem, ten, ma_lop</div>
+<div><span class="ln">2</span><span style="color:var(--kw);font-weight:600">FROM</span> sinh_vien</div>
+<div><span class="ln">3</span><span style="color:var(--kw);font-weight:600">WHERE</span> ten <span style="color:var(--kw);font-weight:600">LIKE</span> <span style="color:var(--str)">'H%'</span></div>
+<div><span class="ln">4</span>  <span style="color:var(--kw);font-weight:600">AND</span> ma_l<span style="border-left:2px solid #fff;animation:b 1s steps(1) infinite"></span></div>
+<div><span class="ln">5</span></div>
+      <div class="ac"><div class="on"><span>ma_lop</span><small>sinh_vien · Aa</small></div><div><span>ma_lop</span><small>lop_sinh_hoat · Aa</small></div></div>
+      <div style="position:absolute;right:14px;bottom:12px;display:flex;gap:8px"><span class="btn ghost" style="color:#9fb3c2;border-color:#33495a">Ctrl+Enter</span><span class="btn run">▶ Chạy</span></div>
+    </div>
+    <div class="panel" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div><h3>Lần chạy trước</h3>
+        <div class="err">Dòng 3: <b>ten = 'H.'</b> → 0 dòng.<br>Không phải lỗi cú pháp — câu chạy được, chỉ là không có ai tên đúng "H.".</div>
+        <div class="legend" style="margin-top:8px">Hardcore vẫn không chấm đúng/sai. Chỉ khác: không có khối, không có giấy nhớ kéo thả, tự nhớ cú pháp.</div></div>
+      <div><h3>Xếp hạng vụ (dự kiến)</h3>
+        <table style="font-size:12.5px"><tr><td>Uy tín còn</td><td>4/5</td></tr><tr><td>Chế độ</td><td>Hardcore ✦</td></tr><tr><td>Truy vấn tại chỗ ở giải trình</td><td>tự gõ</td></tr><tr><td><b>Hạng</b></td><td><b>A → S nếu true end</b></td></tr></table></div>
+    </div>
+  </div>
+  <span class="cap">④ Hardcore: SQL thuần, mở sau Vụ 1 (bài kiểm tra của thầy Khải), chuyển qua lại bất cứ lúc nào</span>
+</section>
+
+<script>
+const tabs=document.getElementById('tabs');
+tabs.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  tabs.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  document.querySelectorAll('.stage').forEach(s=>s.classList.toggle('on',s.id===b.dataset.s));});
+const q=new URLSearchParams(location.search).get('s');if(q){const b=tabs.querySelector(`[data-s=${q}]`);b&&b.click();}
+</script>
+<style>@keyframes b{50%{border-color:transparent}}</style>
+</body>
+</html>

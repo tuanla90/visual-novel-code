@@ -27,7 +27,7 @@ describe('Thành công → câu đọc kết quả → Lưu vào hồ sơ', () =
     await user.click(screen.getByRole('button', { name: /Thêm điều kiện/ }));
     await user.selectOptions(screen.getByLabelText('Cột lọc của điều kiện 1'), 'ten');
     await user.selectOptions(screen.getByLabelText('Phép so sánh của điều kiện 1'), 'startsWith');
-    await user.selectOptions(screen.getByLabelText('Từ manh mối cho điều kiện 1'), 'H — Chữ ký "H."');
+    await user.selectOptions(screen.getByLabelText('Từ manh mối cho điều kiện 1'), 'H — Chữ ký tay (chỉ đọc được chữ H)');
     await user.click(screen.getByRole('button', { name: /Chạy truy vấn/ }));
 
     expect(await screen.findByText('Đúng rồi', { selector: '.result__ok' })).toBeInTheDocument();

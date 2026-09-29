@@ -4,7 +4,7 @@ import type { ClueCard, DocumentCard } from './types';
 
 const clue: ClueCard = {
   id: 'clue-signature-h',
-  title: 'Chữ ký "H."',
+  title: 'Chữ ký tay (chỉ đọc được chữ H)',
   source: 'nguồn',
   content: 'nội dung',
   openQuestion: 'Trong dữ liệu, những ai có tên bắt đầu bằng H?',

@@ -8,11 +8,11 @@ export const HO_SO = {
   "clues": {
     "clue-signature-h": {
       "id": "clue-signature-h",
-      "title": "Chữ ký \"H.\"",
+      "title": "Chữ ký tay (chỉ đọc được chữ H)",
       "source": "Phong bì lá thư, bản chụp do Phòng CTSV chuyển cho CLB",
-      "content": "Ngoài phong bì có chữ ký tay \"H.\". Người Việt thường ký bằng tên gọi, nên H nhiều khả năng là chữ đầu của tên (cột `ten`), không phải của họ đệm (`ho_dem`).",
+      "content": "Ngoài phong bì có chữ ký tay: chữ H viết hoa rõ, phần sau là nét lượn không đọc được. Người Việt thường ký bằng tên gọi, nên H nhiều khả năng là chữ đầu của tên (cột `ten`), không phải của họ đệm (`ho_dem`).",
       "builderValue": {
-        "label": "H — Chữ ký \"H.\"",
+        "label": "H — Chữ ký tay (chỉ đọc được chữ H)",
         "column": "ten",
         "suggestedOp": "startsWith",
         "value": "H"
@@ -59,7 +59,7 @@ export const HO_SO = {
         "Đề nghị thu hồi phòng sinh hoạt của CLB Thám Tử, vì CLB không còn giải quyết được việc gì.",
         "Đề nghị Phòng phản hồi chính thức."
       ],
-      "extra": "Mặt ngoài phong bì: chữ ký tay \"H.\", không có tên, không có mã sinh viên.",
+      "extra": "Mặt ngoài phong bì: chữ ký tay chỉ đọc được chữ H đầu, không có tên, không có mã sinh viên.",
       "openQuestion": "Lá thư được bỏ vào hộp góp ý ở tòa nào?",
       "caveat": "Thư đánh máy, không có tên người viết. Chữ ký ngoài phong bì là của người gửi, chưa chắc là của người viết."
     },
@@ -76,7 +76,7 @@ export const HO_SO = {
       "title": "Sổ bàn giao niêm phong — kết quả đối chiếu",
       "source": "Cô phụ trách hộp góp ý, gửi qua Phòng CTSV theo đề nghị của CLB",
       "body": [
-        "Hộp góp ý giảng đường B, mở sáng thứ Hai: 1 phong bì có yêu cầu phản hồi chính thức. Người gửi ký \"H.\". Mã sinh viên ghi trên phiếu gửi đã chép vào sổ.",
+        "Hộp góp ý giảng đường B, mở sáng thứ Hai: 1 phong bì có yêu cầu phản hồi chính thức. Chữ ký người gửi chỉ đọc được chữ H đầu. Mã sinh viên ghi trên phiếu gửi đã chép vào sổ.",
         "Đối chiếu theo đề nghị: SV240317 — có trong sổ. SV240228 — không có trong sổ.",
         "Ghi chú: Sổ niêm phong để giữ kín người góp ý. Chỉ trả lời có hoặc không cho từng mã được đề nghị đối chiếu."
       ],

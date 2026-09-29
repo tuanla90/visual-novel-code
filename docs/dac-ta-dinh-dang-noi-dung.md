@@ -1013,7 +1013,7 @@ Mọi `{cảnh: …}` ở chuỗi và `Cảnh:` ở địa điểm phải có �
 ### 18.5 Lịch — `lich.md`
 
 ```markdown
-# Vụ 1 — Chữ ký H. {vụ: vu1}
+# Vụ 1 — Chữ ký H {vụ: vu1}
 
 ## Luật
 - Khung giờ: sang "Sáng", trua "Trưa", chieu "Chiều"
@@ -1074,7 +1074,7 @@ Bắt buộc có khi lịch có `Uy tín`. Không được nói đáp án (ngư�
 
 ### 18.8 Hồ sơ — `ho-so/*.md`
 
-Khuôn thẻ hiện có. Tiền tố: `clue-` = **giấy nhớ** người chơi tự tạo ("[H.]", "[Tòa B]"…), `doc-` = tài liệu, `ev-` = **bằng chứng / key item** (từ phòng máy hay thực địa). Thẻ `clue-` ở MVP chỉ cần `Tiêu đề`, `Nguồn`, `Nội dung` (không còn "Giá trị cho trình dựng"); thẻ `ev-` cần `Tiêu đề`, `Nội dung`. Mọi thẻ phải được ít nhất một dữ kiện / thẻ thử thách / `[HẬU QUẢ]` / `[HIỆN TÀI LIỆU]` / `[LƯU BẰNG CHỨNG]` tạo ra (thẻ không ai tạo là lỗi).
+Khuôn thẻ hiện có. Tiền tố: `clue-` = **giấy nhớ** người chơi tự tạo ("[H]", "[Tòa B]"…), `doc-` = tài liệu, `ev-` = **bằng chứng / key item** (từ phòng máy hay thực địa). Thẻ `clue-` ở MVP chỉ cần `Tiêu đề`, `Nguồn`, `Nội dung` (không còn "Giá trị cho trình dựng"); thẻ `ev-` cần `Tiêu đề`, `Nội dung`. Mọi thẻ phải được ít nhất một dữ kiện / thẻ thử thách / `[HẬU QUẢ]` / `[HIỆN TÀI LIỆU]` / `[LƯU BẰNG CHỨNG]` tạo ra (thẻ không ai tạo là lỗi).
 
 ### 18.9 Kiểm lỗi của bộ MVP (`npm run kiem-noi-dung:mvp`)
 

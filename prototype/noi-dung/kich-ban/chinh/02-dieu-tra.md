@@ -11,7 +11,7 @@
 ### inv-letter — Chữ ký ngoài phong bì {scene: clb-room}
 
 - [HIỆN TÀI LIỆU doc-letter]
-- **narrator**: Thư đánh máy, không có tên người viết. Ngoài phong bì có một chữ ký tay: "H."
+- **narrator**: Thư đánh máy, không có tên người viết. Ngoài phong bì có một chữ ký tay lượn dài, chỉ đọc được chữ H đầu.
 - **ha-vy** (thinking): Chữ ký chỉ có một chữ cái. H là họ, hay là tên?
 - [HỎI q-sig-h] ha-vy: "Theo cậu, chữ H nhiều khả năng là chữ đầu của gì?"
   - (A) {id: ho} Họ, vì trong họ tên, họ đứng đầu tiên. → phản hồi: **ha-vy** (neutral): Họ đứng đầu thật. Nhưng người Việt được gọi bằng tên, và cũng hay ký bằng tên.

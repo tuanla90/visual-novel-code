@@ -89,7 +89,7 @@ describe('canary tự kiểm: bắt đúng lỗi cắm sẵn', () => {
     'Nửa logo ngòi bút, còn mấy chữ "…ÁO CHÍ". Bookmark của CLB Báo chí, họ phát ở ngày hội CLB.',
     'Em là Hoài, lớp QT24B. Em… có làm gì sai không ạ?',
     'Mở bảng mô tả cột ra xem. Cột tòa nhà nằm ở bảng nào?',
-    'H — Chữ ký "H."',
+    'H — Chữ ký tay (chỉ đọc được chữ H)',
     'Dấu % nghĩa là "sau đó là gì cũng được". Bấm Chạy nào!',
     'Nhiệm vụ tiếp theo →',
   ])('không bắt nhầm: %s', (text) => {

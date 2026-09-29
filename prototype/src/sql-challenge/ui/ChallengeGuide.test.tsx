@@ -49,7 +49,7 @@ describe('Hướng dẫn từng bước (chỉ c1)', () => {
     expect(challengeState('c1')?.guideStep).toBe(4); // điều kiện chưa có giá trị → chưa xong
     await user.selectOptions(screen.getByLabelText('Cột lọc của điều kiện 1'), 'ten');
     await user.selectOptions(screen.getByLabelText('Phép so sánh của điều kiện 1'), 'startsWith');
-    await user.selectOptions(screen.getByLabelText('Từ manh mối cho điều kiện 1'), 'H — Chữ ký "H."');
+    await user.selectOptions(screen.getByLabelText('Từ manh mối cho điều kiện 1'), 'H — Chữ ký tay (chỉ đọc được chữ H)');
     expect(challengeState('c1')?.guideStep).toBe(5);
     expect(guidedRegions()).toEqual(['run']);
     expect(havyText()).toContain('Dấu % nghĩa là "sau đó là gì cũng được"');

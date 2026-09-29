@@ -74,8 +74,8 @@ describe('ChallengeScreen — hàng WHERE, "Từ manh mối", phép nối chưa 
     await user.selectOptions(screen.getByLabelText('Cột lọc của điều kiện 1'), 'ten');
     await user.selectOptions(screen.getByLabelText('Phép so sánh của điều kiện 1'), 'startsWith');
     const fromClue = screen.getByLabelText<HTMLSelectElement>('Từ manh mối cho điều kiện 1');
-    expect([...fromClue.options].map((o) => o.textContent)).toEqual(['Từ manh mối…', 'H — Chữ ký "H."']);
-    await user.selectOptions(fromClue, 'H — Chữ ký "H."');
+    expect([...fromClue.options].map((o) => o.textContent)).toEqual(['Từ manh mối…', 'H — Chữ ký tay (chỉ đọc được chữ H)']);
+    await user.selectOptions(fromClue, 'H — Chữ ký tay (chỉ đọc được chữ H)');
     expect(screen.getByLabelText<HTMLInputElement>('Giá trị (chữ) của điều kiện 1').value).toBe('H');
     expect(challengeState('c1')?.model.conditions[0]?.source).toEqual({ kind: 'clue', clueId: 'clue-signature-h' });
     expect(sqlText()).toBe("SELECT\nFROM sinh_vien\nWHERE ten LIKE 'H%';");

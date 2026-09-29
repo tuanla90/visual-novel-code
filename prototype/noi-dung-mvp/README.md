@@ -1,6 +1,6 @@
 # Kịch bản MVP — `prototype/noi-dung-mvp/`
 
-Đây là nguồn chữ của **bản MVP** (mở đầu tuần 1 + Vụ 1 "Chữ ký H.", theo `docs/mvp/kich-ban-vu1-mvp-khung.md`). Cú pháp đầy đủ: [`docs/dac-ta-dinh-dang-noi-dung.md`](../../docs/dac-ta-dinh-dang-noi-dung.md) mục 18. Bộ nội dung prototype (`../noi-dung/`) là bộ khác, game hiện tại vẫn chạy từ bộ đó; bộ này **chưa có runtime** chơi được (gói kiến trúc MVP sau).
+Đây là nguồn chữ của **bản MVP** (mở đầu tuần 1 + Vụ 1 "Chữ ký H", theo `docs/mvp/kich-ban-vu1-mvp-khung.md`). Cú pháp đầy đủ: [`docs/dac-ta-dinh-dang-noi-dung.md`](../../docs/dac-ta-dinh-dang-noi-dung.md) mục 18. Bộ nội dung prototype (`../noi-dung/`) là bộ khác, game hiện tại vẫn chạy từ bộ đó; bộ này **chưa có runtime** chơi được (gói kiến trúc MVP sau).
 
 ## Sửa xong thì kiểm
 

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ghép lớp phòng máy</title>
+<!-- Ghép các lớp ảnh tách riêng (art/nguon/phong-may-core/) để thử cỡ màn hình, vị trí vật, ngày/đêm.
+     Kéo vật bằng chuột để đổi chỗ; thanh trượt đổi cỡ; nút "In cấu hình" chép số liệu để đưa vào game. -->
+<style>
+html,body{margin:0;height:100%;background:#0b0907;font-family:system-ui,sans-serif;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform-origin:center;overflow:hidden;background:#000}
+#stage img{position:absolute;user-select:none;-webkit-user-drag:none}
+.layer{left:0;top:0;width:1600px;height:900px}
+.obj{cursor:grab}
+.obj:hover{filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 0 1px #fff)}
+#screen{position:absolute;background:repeating-linear-gradient(45deg,#ffffff08 0 12px,#0000 12px 24px);outline:2px dashed #fbbf2499;color:#fbbf24aa;font:600 16px system-ui;display:flex;align-items:center;justify-content:center;pointer-events:none}
+#panel{position:fixed;right:12px;top:12px;background:#111d;color:#eee;border-radius:10px;padding:12px 14px;font-size:13px;width:260px;z-index:10}
+#panel label{display:block;margin:8px 0 2px}
+#panel input[type=range]{width:100%}
+#panel button{margin-top:8px;margin-right:6px;padding:5px 10px;border-radius:6px;border:1px solid #555;background:#333;color:#eee;cursor:pointer}
+#panel pre{white-space:pre-wrap;font-size:11px;max-height:180px;overflow:auto;background:#0008;padding:6px;border-radius:6px}
+#stage.dem .ngay{display:none}#stage:not(.dem) .dem{display:none}
+#stage.dem .obj{filter:brightness(.62) saturate(.8) hue-rotate(-8deg)}
+#stage.dem .obj.den{filter:none}
+</style>
+</head>
+<body>
+<div id="stage">
+  <img class="layer ngay" src="../../art/nguon/phong-may-core/bg-phong-may-core-ngay.png" alt="">
+  <img class="layer dem" src="../../art/nguon/phong-may-core/bg-phong-may-core-dem.png" alt="">
+  <img class="layer ngay" src="../../art/nguon/phong-may-core/desk-phong-may-ngay.png" alt="">
+  <img class="layer dem" id="deskDem" src="../../art/nguon/phong-may-core/desk-phong-may-dem.png" alt="" onerror="this.src='../../art/nguon/phong-may-core/desk-phong-may-ngay.png';this.style.filter='brightness(.45) saturate(.7)'">
+  <img class="obj den dem" data-k="den" src="../../art/nguon/phong-may-core/obj-den-ban.png" alt="">
+  <img class="obj" data-k="manHinh" id="manHinh" src="../../art/nguon/phong-may-core/obj-man-hinh.png" alt="">
+  <div id="screen">vùng giao diện HTML</div>
+  <img class="obj" data-k="banPhim" src="../../art/nguon/phong-may-core/obj-ban-phim.png" alt="">
+  <img class="obj" data-k="so" src="../../art/nguon/phong-may-core/obj-so-chi-linh.png" alt="">
+  <img class="obj" data-k="hoSo" src="../../art/nguon/phong-may-core/obj-ho-so-vu.png" alt="">
+  <img class="obj" data-k="gn1" src="../../art/nguon/phong-may-core/obj-giay-nho-1.png" alt="">
+  <img class="obj" data-k="gn2" src="../../art/nguon/phong-may-core/obj-giay-nho-2.png" alt="">
+  <img class="obj" data-k="gn3" src="../../art/nguon/phong-may-core/obj-giay-nho-3.png" alt="">
+  <img class="obj" data-k="gn4" src="../../art/nguon/phong-may-core/obj-giay-nho-4.png" alt="">
+  <img class="obj" data-k="gn5" src="../../art/nguon/phong-may-core/obj-giay-nho-5.png" alt="">
+</div>
+<div id="panel">
+  <b>Ghép lớp phòng máy</b>
+  <label>Cỡ màn hình: <span id="mhv"></span>px</label><input type="range" id="mh" min="600" max="1300" step="10">
+  <label>Độ cao màn hình (top): <span id="mtv"></span>px</label><input type="range" id="mt" min="-40" max="200" step="2">
+  <button id="nd">🌙 Đêm / ☀ Ngày</button><button id="hk">▦ Ẩn/hiện vùng giao diện</button><button id="cfg">In cấu hình</button>
+  <pre id="out">Kéo vật để đổi chỗ. Cuộn chuột trên vật để đổi cỡ.</pre>
+</div>
+<script>
+const stage=document.getElementById('stage');
+function fit(){const s=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform=`translate(-50%,-50%) scale(${s})`;stage.dataset.s=s}
+addEventListener('resize',fit);fit();
+// vị trí mặc định (tọa độ khung 1600×900); rộng tính bằng px, rot độ
+const P={den:{x:40,y:300,w:260},manHinh:{x:340,y:30,w:920},banPhim:{x:560,y:700,w:480},so:{x:210,y:660,w:210,r:8},hoSo:{x:1170,y:670,w:270,r:-6},
+ gn1:{x:250,y:110,w:140,r:-5},gn2:{x:255,y:290,w:140,r:4},gn3:{x:245,y:460,w:140,r:-3},gn4:{x:1210,y:120,w:140,r:5},gn5:{x:1215,y:320,w:140,r:-4}};
+let MK=null;fetch('../../art/nguon/phong-may-core/man-hinh-mat-kinh.json').then(r=>r.json()).then(j=>{MK=j;apply()}).catch(()=>{MK={anh:[902,710],mat_kinh:{x:28,y:27,w:846,h:535}};apply()});
+function apply(){document.querySelectorAll('.obj').forEach(el=>{const p=P[el.dataset.k];el.style.left=p.x+'px';el.style.top=p.y+'px';el.style.width=p.w+'px';el.style.transform=`rotate(${p.r||0}deg)`});
+ if(MK){const p=P.manHinh,k=p.w/MK.anh[0],s=document.getElementById('screen');s.style.left=p.x+MK.mat_kinh.x*k+'px';s.style.top=p.y+MK.mat_kinh.y*k+'px';s.style.width=MK.mat_kinh.w*k+'px';s.style.height=MK.mat_kinh.h*k+'px';s.textContent=`vùng giao diện HTML · ${Math.round(MK.mat_kinh.w*k)}×${Math.round(MK.mat_kinh.h*k)}`}
+ mh.value=P.manHinh.w;mhv.textContent=P.manHinh.w;mt.value=P.manHinh.y;mtv.textContent=P.manHinh.y}
+const mh=document.getElementById('mh'),mt=document.getElementById('mt'),mhv=document.getElementById('mhv'),mtv=document.getElementById('mtv');
+mh.oninput=()=>{const c=P.manHinh.x+P.manHinh.w/2;P.manHinh.w=+mh.value;P.manHinh.x=Math.round(c-P.manHinh.w/2);apply()};
+mt.oninput=()=>{P.manHinh.y=+mt.value;apply()};
+document.getElementById('nd').onclick=()=>stage.classList.toggle('dem');
+document.getElementById('hk').onclick=()=>{const s=document.getElementById('screen');s.style.display=s.style.display==='none'?'flex':'none'};
+document.getElementById('cfg').onclick=()=>{document.getElementById('out').textContent=JSON.stringify(P)};
+let drag=null;document.querySelectorAll('.obj').forEach(el=>{
+ el.addEventListener('pointerdown',e=>{const s=+stage.dataset.s;drag={el,k:el.dataset.k,sx:e.clientX,sy:e.clientY,x:P[el.dataset.k].x,y:P[el.dataset.k].y,s};el.setPointerCapture(e.pointerId)});
+ el.addEventListener('pointermove',e=>{if(!drag||drag.el!==el)return;P[drag.k].x=Math.round(drag.x+(e.clientX-drag.sx)/drag.s);P[drag.k].y=Math.round(drag.y+(e.clientY-drag.sy)/drag.s);apply()});
+ el.addEventListener('pointerup',()=>drag=null);
+ el.addEventListener('wheel',e=>{e.preventDefault();const p=P[el.dataset.k];p.w=Math.max(40,Math.round(p.w*(e.deltaY<0?1.04:0.96)));apply()},{passive:false})});
+if(new URLSearchParams(location.search).get('dem'))stage.classList.add('dem');
+</script>
+</body>
+</html>

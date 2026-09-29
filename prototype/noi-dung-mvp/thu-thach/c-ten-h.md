@@ -3,7 +3,7 @@
 ### c-ten-h — Ai trong lớp BC24A có tên bắt đầu bằng H? {challenge: c-ten-h}
 
 - Tiêu đề: Tên bắt đầu bằng H trong lớp BC24A
-- Đề bài hiển thị: Chữ ký "H." trên phiếu gửi; lớp đã thu hẹp còn BC24A. Những sinh viên nào khớp cả hai?
+- Đề bài hiển thị: Chữ ký tay trên phiếu gửi chỉ đọc được chữ H đầu; lớp đã thu hẹp còn BC24A. Những sinh viên nào khớp cả hai?
 - Manh mối liên quan: clue-chu-ky-h
 - Mục tiêu học: "=" so khớp chính xác, ra 0 dòng thì xem lại dữ liệu; "bắt đầu bằng" (LIKE 'H%') mới khớp một chữ cái.
 - Số dòng kỳ vọng: 2
@@ -13,7 +13,7 @@
 SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';
 ```
 
-- [DÀN DỰNG] Kéo [H.] với phép "bằng" → 0 dòng. Tùng: "Tra sổ chị Linh đi" → trang lỗi thường gặp → đổi "bắt đầu bằng" → 2 dòng. Bẫy: `ma_lop LIKE 'BC%'` → 3 dòng; lọc nhầm cột ho_dem → 1 dòng.
+- [DÀN DỰNG] Kéo [H] với phép "bằng" → 0 dòng (không ai tên đúng một chữ "H"). Tùng: "Tra sổ chị Linh đi" → trang lỗi thường gặp → đổi "bắt đầu bằng" → 2 dòng. Bẫy: `ma_lop LIKE 'BC%'` → 3 dòng; lọc nhầm cột ho_dem → 1 dòng.
 - Vật chứng lưu vào hồ sơ: ev-hai-ma
   - Tiêu đề: Hai mã ứng viên kèm căn cứ
   - Mô tả: Kết quả truy vấn: hai sinh viên lớp BC24A có tên bắt đầu bằng H.
