@@ -23,7 +23,7 @@ import type { TrangThaiMvp } from '../engine/trang-thai';
 import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
 import { BAN_DO_MVP } from './ban-do-mvp';
 import { BanDoMvp } from './BanDoMvp';
-import { HoSoMvp } from './HoSoMvp';
+import { HoSoMvp, type TabHoSoMvp } from './HoSoMvp';
 import { HudMvp } from './HudMvp';
 import { KetMvp } from './KetMvp';
 import { LocThuMvp } from './LocThuMvp';
@@ -34,7 +34,7 @@ import { NoiMvp } from './NoiMvp';
 import { SanKhauMvp } from './SanKhauMvp';
 import { TaiLieuMvp } from './TaiLieuMvp';
 import { TaoNhanVatMvp } from './TaoNhanVatMvp';
-import { ChepSoMvp, SoCaNhanMvp, TraSoMvp } from './TrangSoMvp';
+import { ChepSoMvp, TraSoMvp } from './TrangSoMvp';
 
 export interface ManChoiMvpProps {
   onVeTieuDe: () => void;
@@ -59,8 +59,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const luuVaoO = useKhoMvp((k) => k.luuVaoO);
   const napTuO = useKhoMvp((k) => k.napTuO);
 
-  const [hoSoMo, setHoSoMo] = useState(false);
-  const [soTayMo, setSoTayMo] = useState(false);
+  /** Hồ sơ và Sổ cá nhân là hai tab của cùng một khung (phong cách hòm đồ prototype); `null` = đóng. */
+  const [kho, setKho] = useState<TabHoSoMvp | null>(null);
   const [lichSuMo, setLichSuMo] = useState(false);
   const [luuNap, setLuuNap] = useState<'save' | 'load' | null>(null);
   const [toast, setToast] = useState<string | null>(null);
@@ -95,6 +95,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   }, [loaiKn, setSkipMode]);
 
   const tiep = useCallback(() => hanhDong({ type: 'tiep' }), [hanhDong]);
+  const dongKho = useCallback(() => setKho(null), []);
   const choiLai = useCallback(() => {
     clearBacklog();
     xoa();
@@ -103,7 +104,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
 
   if (!s || !kn) return null;
   const dienTen = (t: string): string => dienTenMay(kb, s, t);
-  const modalMo = hoSoMo || soTayMo || lichSuMo || luuNap !== null;
+  const modalMo = kho !== null || lichSuMo || luuNap !== null;
   const loiHienTai: { speaker: string; expression?: string } | null =
     kn.kind === 'line' || kn.kind === 'feedback'
       ? kn.loi
@@ -120,7 +121,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
 
   const nutVn = {
     keyboardEnabled: !modalMo,
-    onOpenNotebook: () => setHoSoMo(true),
+    onOpenNotebook: () => setKho('ho-so'),
     notebookCount: soHoSo(s),
     onOpenBacklog: () => setLichSuMo(true),
     onOpenSave: () => setLuuNap('save'),
@@ -263,8 +264,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         s={s}
         soHoSo={soHoSo(s)}
         soTrangSo={s.soTay.length}
-        onMoHoSo={() => setHoSoMo(true)}
-        onMoSoTay={() => setSoTayMo(true)}
+        onMoHoSo={() => setKho('ho-so')}
+        onMoSoTay={() => setKho('so-tay')}
         onMoLuu={() => setLuuNap('save')}
         onMoNap={() => setLuuNap('load')}
         onMoLichSu={() => setLichSuMo(true)}
@@ -284,14 +285,26 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         {noiDung}
       </SanKhauMvp>
 
-      {hoSoMo ? <HoSoMvp kb={kb} hoSo={s.hoSo} dienTen={dienTen} onDong={() => setHoSoMo(false)} /> : null}
-      {soTayMo ? <SoCaNhanMvp kb={kb} trang={s.soTay} dienTen={dienTen} onDong={() => setSoTayMo(false)} /> : null}
+      {kho ? (
+        <HoSoMvp
+          kb={kb}
+          hoSo={s.hoSo}
+          soTay={s.soTay}
+          tenNguoiChoi={s.tenNguoiChoi}
+          nganh={s.nganh}
+          tab={kho}
+          onDoiTab={setKho}
+          dienTen={dienTen}
+          onDong={dongKho}
+        />
+      ) : null}
       <BacklogModal open={lichSuMo} onClose={() => setLichSuMo(false)} />
       {luuNap ? (
         <LuuNapMvp
           mode={luuNap}
           oLuu={oLuu}
           coTienDo={kn.kind !== 'end'}
+          canhHienTai={noiDangO ? noiDangO.diaDiem.canh : s.canh}
           onLuu={(o) => {
             luuVaoO(o, nhanTienDo(s));
             baoToast(`Đã lưu vào ô ${o + 1}.`);
