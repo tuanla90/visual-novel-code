@@ -12,12 +12,14 @@ import { kiemLuatMvp } from './luat-mvp.ts';
 import { tepLechTrenDia } from './sinh.ts';
 import { THU_MUC_SINH_MVP, vanBanMvp } from './sinh-mvp.ts';
 import { kiemSoDongMvp, type KetQuaChayMvp } from './sql-mvp.ts';
-import { docThuMucMvp } from './thu-muc-mvp.ts';
+import { docSpriteVat, docThuMucMvp } from './thu-muc-mvp.ts';
 
 export const THU_MUC_NOI_DUNG_MVP = fileURLToPath(new URL('../../noi-dung-mvp/', import.meta.url));
 
 export interface KetQuaKiemMvp {
   loi: string[];
+  /** Nhắc, không tính lỗi (vd. dữ kiện chưa có dòng "- Ảnh:"). */
+  canhBao: string[];
   tomTat: string;
   tepCu: string[];
   /** Kết quả chạy thật từng câu SQL khai số dòng; `null` khi chưa tới bước chạy (có lỗi đọc/luật). */
@@ -33,7 +35,7 @@ function dem(m: RawMvp): string {
 export async function kiemNoiDungMvp(thuMuc: string = THU_MUC_NOI_DUNG_MVP): Promise<KetQuaKiemMvp> {
   const kq = docThuMucMvp(thuMuc);
   const loiDoc = [...kq.loi];
-  const luat = kiemLuatMvp(kq.mvp);
+  const luat = kiemLuatMvp(kq.mvp, { spriteVat: docSpriteVat() });
   loiDoc.push(...luat.loi);
   const loi = loiDoc.map(dinhDangLoi);
   let tepCu: string[] = [];
@@ -54,12 +56,13 @@ export async function kiemNoiDungMvp(thuMuc: string = THU_MUC_NOI_DUNG_MVP): Pro
   }
   const soSql = sql ? `; ${sql.length} câu SQL khai số dòng, chạy thật khớp ${sql.filter((s) => s.soDongThat === s.soDong).length}` : '';
   const tomTat = loi.length === 0 ? `noi-dung-mvp: ${kq.tep.length} tệp, không lỗi — ${dem(kq.mvp)}${soSql}.` : `noi-dung-mvp: ${kq.tep.length} tệp, ${loi.length} lỗi.`;
-  return { loi, tomTat, tepCu, sql };
+  return { loi, canhBao: luat.canhBao.map(dinhDangLoi), tomTat, tepCu, sql };
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const { loi, tomTat, tepCu } = await kiemNoiDungMvp(process.argv[2] ?? THU_MUC_NOI_DUNG_MVP);
+  const { loi, canhBao, tomTat, tepCu } = await kiemNoiDungMvp(process.argv[2] ?? THU_MUC_NOI_DUNG_MVP);
   for (const l of loi) console.error(l);
+  for (const c of canhBao) console.warn(`Cảnh báo: ${c}`);
   console.log(tomTat);
   if (tepCu.length > 0) console.log(`Nhắc: ${tepCu.join(', ')} chưa khớp nội dung — chạy \`npm run noi-dung:sinh:mvp\` rồi commit cả .gen.ts.`);
   process.exitCode = loi.length === 0 ? 0 : 1;

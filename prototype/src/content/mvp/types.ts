@@ -68,6 +68,19 @@ export interface DuKienMvp {
   hienTaiLieu: string[];
   luuBangChung: string[];
   lap: 'mot-lan' | 'moi-lan';
+  /** Vật tương tác trên nền (dòng `- Ảnh:`); `null` = chỉ chọn được qua danh sách chữ. */
+  anh: AnhDuKienMvp | null;
+}
+
+/**
+ * Vị trí ảnh vật tương tác trên nền địa điểm (đặc tả §18, QĐ-089). `sprite`: `obj-…` (ảnh `src/assets/mvp/vat/`)
+ * hoặc `nv:<mã nhân vật>` (chân dung). (x, y) = CHÂN ẢNH (giữa cạnh dưới), % bề rộng / bề cao nền; `rong` = % bề rộng nền.
+ */
+export interface AnhDuKienMvp {
+  sprite: string;
+  x: number;
+  y: number;
+  rong: number;
 }
 
 export interface DiaDiemMvp {

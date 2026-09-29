@@ -8,6 +8,8 @@ import { PreSurvey } from './PreSurvey';
 import { TitleScreen } from './TitleScreen';
 import { isFacilitatorMode } from './facilitator-mode';
 import { useVnStore } from '../shared/vn/vn-store';
+import { ManChoiMvp } from '../mvp/ui/ManChoiMvp';
+import { useKhoMvp } from '../mvp/store/kho-mvp';
 
 export default function App() {
   const progress = useGameStore((s) => s.progress);
@@ -19,7 +21,12 @@ export default function App() {
   // Màn tiêu đề hiện khi mở ứng dụng, kể cả khi có tiến độ đã lưu (để chọn "Chơi tiếp").
   const [titleDismissed, setTitleDismissed] = useState(false);
   const [preDraft, setPreDraft] = useState<PreSurveyDraft>(EMPTY_PRE_DRAFT);
+  // Bản MVP (gói kien-truc-mvp): màn riêng, kho riêng; vào từ nút "Chơi bản MVP", ra bằng menu "Về màn tiêu đề".
+  const [mvpMode, setMvpMode] = useState(false);
+  const hasMvpProgress = useKhoMvp((k) => k.trangThai !== null);
   const showTitle = !titleDismissed || progress === null;
+
+  if (mvpMode) return <ManChoiMvp onVeTieuDe={() => setMvpMode(false)} />;
 
   /** Ghi khảo sát đầu game vào phiên hiện tại (một lần mỗi phiên): gửi nếu trả lời đủ, không thì bỏ qua. */
   const commitPreSurvey = () => {
@@ -63,6 +70,8 @@ export default function App() {
             commitPreSurvey();
             setTitleDismissed(true);
           }}
+          onStartMvp={() => setMvpMode(true)}
+          hasMvpProgress={hasMvpProgress}
           preSurveySlot={
             preDone && progress !== null ? (
               <p className="survey__note">

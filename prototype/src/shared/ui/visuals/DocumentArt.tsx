@@ -24,7 +24,7 @@ export function LetterPaperArt() {
   );
 }
 
-/** Mặt ngoài phong bì với chữ ký tay: chữ H rõ, phần sau là nét lượn không đọc được (QĐ-090; nét vẽ, không phải chữ — dòng mô tả đọc thay). */
+/** Mặt ngoài phong bì với chữ ký tay: chữ H rõ, phần sau là nét lượn không đọc được (QĐ-091; nét vẽ, không phải chữ — dòng mô tả đọc thay). */
 export function EnvelopeArt() {
   return (
     <svg className="doc-art doc-art--envelope" viewBox="0 0 320 210" aria-hidden="true" focusable="false">

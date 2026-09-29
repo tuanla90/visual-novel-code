@@ -265,7 +265,7 @@ StoryView ──► GameScreen → component theo view.kind (DialogBox, ExploreS
 | Vùng | Mã chính | Test canh giữ |
 |---|---|---|
 | Kể chuyện | `story/engine/{runtime,state,validate}.ts`, `story/ui/*` | `runtime.test.ts`, `validate.test.ts`, `visuals/explore-and-choice.test.tsx`, `objection-effect.test.tsx` |
-| Kịch bản MVP (chưa có runtime) | `noi-dung-mvp/**`, `tools/noi-dung/*-mvp.ts`, `dieu-kien.ts`, `content/mvp/types.ts`, `content/generated/mvp/**` | `generated/mvp/mvp.gen.test.ts` (đọc sạch, file sinh khớp, hình dạng lịch/kết), `testing/bo-doc-mvp.test.ts` (lỗi `<tệp>:<dòng>`: chi phí khung, Xuất hiện từ, true end, chuỗi lẻ, tên cấm, trừ uy tín, TẠO NHÂN VẬT; cú pháp điều kiện/hậu quả/mốc) |
+| Kịch bản MVP (nội dung) | `noi-dung-mvp/**`, `tools/noi-dung/*-mvp.ts`, `dieu-kien.ts`, `content/mvp/types.ts`, `content/generated/mvp/**` | `generated/mvp/mvp.gen.test.ts` (đọc sạch, file sinh khớp, hình dạng lịch/kết), `testing/bo-doc-mvp.test.ts` (lỗi `<tệp>:<dòng>`: chi phí khung, Xuất hiện từ, true end, chuỗi lẻ, tên cấm, trừ uy tín, TẠO NHÂN VẬT; cú pháp điều kiện/hậu quả/mốc) |
 | Nội dung thật | `noi-dung/**`, `tools/noi-dung/**`, `content/generated/**`, `content/real/**` | `generated.test.ts` (file sinh khớp nội dung — quên sinh lại / sửa tay .gen.ts là đỏ), `noi-dung.test.ts` (bộ đọc không bỏ sót dòng, `CHALLENGE_SPECS` ↔ thẻ, biểu cảm người hỏi, không tên riêng viết trần), `testing/bo-doc.test.ts` (lỗi `<tệp>:<dòng>`, cú pháp, biến tên), `display-hygiene.test.ts` (không id thô/ghi chú người viết trong chữ hiển thị), `integrity.test.ts`, `diagnostics.test.ts` (thứ tự mã), `numbers.test.ts` (10/2/2/24 — QĐ-012), `redaction.test.tsx` |
 | Engine SQL + dữ liệu | `sql-challenge/engine/**`, `sql-challenge/data/**` | `engine/*.test.ts` (kể cả `sqljs.dev.test.ts`: canary Vite dev nạp sql.js như trình duyệt), `data/*.test.ts` |
 | Trình dựng | `sql-challenge/ui/**` | `ChallengeScreen/Guide/Run/SqlMode/Success/Telemetry/ValueEditors/Fix.test.tsx`, `CodeText.test.tsx`, `contrast-ui.test.ts` |
@@ -274,6 +274,7 @@ StoryView ──► GameScreen → component theo view.kind (DialogBox, ExploreS
 | Hình + ô ảnh | `shared/ui/visuals/**`, `Portrait.tsx`, `Stage.tsx`, `styles/*.css` | `art-slots.test.ts` (bảng ô ↔ tệp), `bg-cutout.test.ts`, `portrait-cutout.test.tsx`, `portraits.test.tsx`, `SceneBackdrop.test.tsx`, `projector-fit.test.tsx`, `styles/contrast.test.ts` |
 | Store | `shared/store/store.ts` | `store.test.ts` |
 | Telemetry + người quan sát | `shared/telemetry/**`, `app/FacilitatorPanel.tsx`, `app/facilitator-mode.ts`, `app/PreSurvey.tsx`, `app/EndScreen.tsx` | `track/local-sink/export/summary/survey.test.ts`, `FacilitatorPanel.test.tsx`, `PreSurvey.test.tsx`, `EndScreen.test.tsx`, `facilitator-jump.test.ts`, `notebook-and-jump-ui.test.tsx` |
+| Runtime MVP (§4a) | `mvp/engine/{trang-thai,may,sql-mvp}.ts`, `mvp/store/kho-mvp.ts`, `mvp/ui/**`, `assets/mvp/**` | `mvp/engine/may.test.ts` (máy thuần: mở đầu → 5 ngày → họp → hai kết, hết khung → cuối ngày, đi lại không tốn khung, uy tín/hết vạch, Lưu/Nạp), `mvp/engine/sql-mvp.test.ts` (3 thẻ chạy thật trên du-lieu.md ra đúng số dòng, chấm, chặn câu ghi), `mvp/engine/diem-tuong-tac.test.ts` (vật chung hai dữ kiện mở đúng theo ngày, ghim chỉ nơi đã mở), `mvp/ui/ban-do-noi.test.tsx` (nhãn trung tính không lộ `moTa`, bấm điểm → đúng dữ kiện, tòa nhiều phòng, đi lại không tốn khung) |
 | Tích hợp | `app/GameScreen.tsx`, `app/App.tsx` | `app/full-playthrough.test.ts` (chơi trọn luồng intro-01 → [KẾT THÚC] bằng store/runtime/engine thật, kèm biến thể chọn sai trước) |
 
 **Tệp đóng băng** (muốn đổi kiểu/chữ ký phải báo người giao, kèm lý do): `src/shared/ids.ts`,
@@ -282,6 +283,54 @@ StoryView ──► GameScreen → component theo view.kind (DialogBox, ExploreS
 (kiểu `StoryView`/`StoryAction`), chữ ký hàm trong `src/sql-challenge/engine/index.ts`, chữ ký `GameActions`
 trong store, `package.json` (không cài thêm phụ thuộc nếu không hỏi). Thêm mã chẩn đoán mới: thêm vào
 `DIAGNOSTIC_CODES` trong `ids.ts` **và** báo lại; mã không phát hiện được rơi về `other`.
+
+## 4a. Runtime bản MVP (`src/mvp/`, gói kien-truc-mvp, QĐ-077/086/089/090)
+
+Bản MVP chạy hoàn toàn từ dữ liệu sinh `KICH_BAN_MVP` (`content/generated/mvp/kich-ban.gen.ts`), **tách hẳn**
+prototype: kho riêng (`mvp/store/kho-mvp.ts`, sessionStorage khóa `clb_mvp_*`, 6 ô lưu), màn riêng
+(`mvp/ui/ManChoiMvp.tsx`), vào từ nút "Chơi bản MVP" ở `TitleScreen` (prop `onStartMvp`; không truyền → như cũ).
+
+- `mvp/engine/trang-thai.ts`: trạng thái ván là MỘT đối tượng JSON thuần (ngày, khung, hồ sơ, cờ, sổ tay, uy tín,
+  con trỏ chuỗi + bối cảnh chuỗi). `mvp/engine/may.ts`: `khungNhin(kb, s)` → thứ cần vẽ; `xuLy(kb, s, hd)` →
+  trạng thái mới (thuần, không React). Luật nhịp: mỗi ngày 3 khung; xem dữ kiện tốn `tonKhung.moiDuKien` (+ `vao`
+  lần đầu vào địa điểm trong ngày); đi lại không tốn; hết khung chưa có dữ kiện chính → chuỗi `buoiToi` (HUD
+  "Cuối ngày", nền `*-dem` nếu có) dẫn tới dữ kiện chính rồi hết ngày; có chính rồi → hết khung hay "kết thúc ngày
+  sớm" → ngày sau; hết 5 ngày → `ngayHop.chuoi`. Ngày họp: `[HỎI · trừ uy tín]` sai → mất 1 vạch + lời
+  `[KHI MẤT UY TÍN]` + hỏi lại; hết vạch → lời `[HẾT VẠCH]` rồi về đầu chuỗi ngày họp với đủ vạch (hồ sơ giữ).
+  `[RẼ KẾT]` → kết thật nếu `[ĐIỀU KIỆN]` đầu chuỗi kết thật thỏa. `[TẠO NHÂN VẬT]`: xem "Tạo nhân vật" dưới.
+- **Tạo nhân vật (gói tao-nhan-vat-mvp, QĐ-084: 2 câu tên + ngành, người chơi nam, không hỏi giới tính).** Máy DỪNG
+  ở nút `create-character` (khung nhìn `create-character`); `dat-ten` nhận tên qua `kiemTen` (bỏ khoảng trắng thừa,
+  NFC, 1–20 ký tự, chỉ chữ Latin/tiếng Việt + khoảng trắng + gạch nối; sai → đứng yên), `chon-nganh` nhận một ngành
+  trong `luaChon`. Trạng thái mới có `tenNguoiChoi: ''`; `dienTen` chỉ rơi về `TEN_MAC_DINH` khi tên rỗng (ô lưu cũ có
+  sẵn 'Khôi' nạp như cũ). Xúc xắc `tenNgauNhien(kb, ngauNhien, khac)`: danh sách `TEN_XUC_XAC` (~30 tên nam, không tên
+  nhân vật, không tên bắt đầu bằng H vì vụ án xoay quanh chữ ký "[H.]"), lọc thêm lúc chạy theo `nhanVat`/`tenCam`;
+  hàm ngẫu nhiên tiêm được. UI `mvp/ui/TaoNhanVatMvp.tsx`: ô tên (`autocomplete="off"`, gợi ý "Không cần dùng tên
+  thật", Enter/"Xong"), nút xúc xắc SVG (điền ô + Tùng nói lời `xúc xắc:`), ngành là nút `.mc__choice`; câu hỏi là lời
+  Tùng trong hộp kính mờ. Màn này không vẽ `DialogBox` nên không có phím tắt VN; Enter dồn lúc màn vừa hiện với ô
+  trống bị bỏ qua. Điện thoại dọc: thẻ tên neo đỉnh `.stage` (`.stage__content`/`.mc` thành static) để bàn phím ảo
+  không che. **Tên không vào telemetry**: máy MVP không ghi sự kiện; tên chỉ nằm trong trạng thái (sessionStorage +
+  ô lưu) — test `mvp/ui/tao-nhan-vat.test.tsx` quét mọi payload.
+- `mvp/engine/sql-mvp.ts`: SQLite riêng dựng từ `duLieu` (bảng + bảng ảo, `PRAGMA query_only`), chấm bằng so tập
+  kết quả với `sqlChuan` của thẻ (ánh xạ cột theo giá trị, không cần đúng tên/thứ tự, cột thừa không sai).
+  Không dùng `sql-challenge/engine/database.ts` (dataset và cột `clb` của prototype khác bộ dữ liệu vụ).
+- `mvp/ui/`: `SanKhauMvp` (nền + dàn chân dung theo tên tệp `anh-mvp.ts`, dùng lại CSS `.stage*`/`.cast-member*`;
+  `Portrait` cho nhân vật có trong `shared/ids.ts`), `HudMvp`, `BanDoMvp` + `NoiMvp` (bản đồ và màn trong địa điểm,
+  xem dưới), `ManThuThachMvp` (ô SQL gõ tay + chạy + chấm; trình dựng kéo-thả để gói sau), `TaiLieuMvp`/`HoSoMvp`/
+  `TrangSoMvp`/`LocThuMvp`/`ManChieuMvp`/`LuuNapMvp`/`KetMvp`. Tái dùng `DialogBox` (prop mới `speakerName`),
+  `MultipleChoice` (prop mới `askerLabel`), `ObjectionEffect`, `BacklogModal`, `SqlCode`, `ResultTable`.
+- **Bản đồ và địa điểm (gói ban-do-di-lai).** Lúc tự do trong ngày (`khungNhin` = `chon-dia-diem`), `ManChoiMvp` giữ
+  "đang đứng ở đâu" là trạng thái GIAO DIỆN (`{ ngày, nơi }`, không lưu, sang ngày khác → về bản đồ): đi lại không đụng
+  máy nên không tốn khung; khung chỉ tính khi chọn một dữ kiện (`chon-du-kien`). `BanDoMvp` vẽ ảnh bản đồ + ghim
+  (`<button>`, Tab đi được) cho nơi đang mở, kèm số chỗ còn mới; ghim tòa nhiều phòng → bảng chọn phòng; nơi không
+  thuộc ghim nào hiện dạng chữ dưới bản đồ. **Mọi thứ phụ thuộc ảnh bản đồ ở `mvp/ui/ban-do-mvp.ts`** (import ảnh,
+  kích thước gốc, ghim `{ id, ten, x%, y%, diaDiem[] }`) — thay ảnh chỉ sửa tệp đó. `NoiMvp` vẽ nền của nơi (buổi tối:
+  `-dem` nếu có, không thì ảnh ngày + lớp tối; Sáng/Chiều: lớp màu CSS nhẹ) trong khung giữ tỉ lệ `TI_LE_NEN`
+  (đơn vị `cq` của vùng chứa) và đặt điểm theo dòng `- Ảnh:` (đặc tả §18.4a; neo = chân ảnh). Điểm là `<button>`
+  `aria-label` = nhãn trung tính (`nhan-cho-xem.ts`, không bao giờ `moTa`), viền trắng = `filter: drop-shadow` chồng
+  lớp theo alpha khi hover / focus bàn phím, vùng chạm ≥ 44px (lớp `::after` vô hình). Phần thuần (gộp dữ kiện chung
+  vật, trạng thái điểm, ghim hiện) ở `mvp/engine/diem-tuong-tac.ts`. Nút "Danh sách" mở danh sách chữ các chỗ xem xét
+  (dự phòng / trợ năng; dữ kiện chưa có `Ảnh:` chỉ chọn được ở đây). Lớp `.mvp-canh` phủ trọn `.stage` như `.chal`,
+  nên `.stage__content` phải `position: static; z-index: auto` (mục lưới có z-index vẫn tạo ngữ cảnh xếp lớp).
 
 ## 5. Ô ảnh, ảnh thật của user, tách nền (QĐ-060, QĐ-063)
 

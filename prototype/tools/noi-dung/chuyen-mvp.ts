@@ -183,6 +183,7 @@ export function chuyenMvp(mvp: RawMvp, luat: KetQuaLuat): DuLieuMvp {
         hienTaiLieu: k.hienTaiLieu,
         luuBangChung: k.luuBangChung,
         lap: k.lap,
+        anh: k.anh ? { sprite: k.anh.sprite, x: k.anh.x, y: k.anh.y, rong: k.anh.rong } : null,
       })),
     })),
     lich: {

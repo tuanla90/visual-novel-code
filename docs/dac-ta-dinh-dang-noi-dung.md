@@ -971,9 +971,11 @@ Mọi `{cảnh: …}` ở chuỗi và `Cảnh:` ở địa điểm phải có �
 - Chuỗi: n1-bac-thinh
 - Mở manh mối: clue-toa-b, clue-bao-chi-k24
 - Lưu bằng chứng: ev-the-lich
+- Ảnh: obj-hop-kien-nghi · x 28% · y 50% · rộng 8%      ← vật bấm được trên nền (§18.4a)
 
 ### dk-to-roi-guitar — Tờ rơi CLB Guitar dưới chân cầu thang {dữ kiện: nhiễu}
 - Chuỗi: n1-to-roi
+- Ảnh: obj-to-roi-guitar · x 72% · y 80% · rộng 6%
 
 ### dk-nhat-ky-in — Một dòng nhật ký in 23:10 Chủ nhật {dữ kiện: phụ}
 - Mở từ: ngày 4
@@ -983,8 +985,30 @@ Mọi `{cảnh: …}` ở chuỗi và `Cảnh:` ở địa điểm phải có �
 ```
 
 - Địa điểm là tiêu đề `##`, dữ kiện là các `###` ngay dưới. Nhãn `chính` / `phụ` / `nhiễu` **chỉ người viết thấy** (không vào giao diện); dòng `Phân biệt:` ghi người chơi dựa vào gì để phân biệt.
-- Dữ kiện: bắt buộc `Chuỗi` (chuỗi chạy khi người chơi chọn dữ kiện) **hoặc** `Thử thách` (dữ kiện là một màn phòng máy: `- Thử thách: c-loc-lop`; bằng chứng lấy từ "Vật chứng lưu vào hồ sơ" của thẻ). Không bắt buộc: `Mở từ` (mặc định = của địa điểm), `Cần` (điều kiện §13.1, chỉ dạng `có <mã>` / `không có <mã>`, `và`, `hoặc`, ngoặc), `Mở manh mối`, `Hiện tài liệu`, `Lưu bằng chứng`, `Lặp: mỗi lần` (mặc định một lần).
+- Dữ kiện: bắt buộc `Chuỗi` (chuỗi chạy khi người chơi chọn dữ kiện) **hoặc** `Thử thách` (dữ kiện là một màn phòng máy: `- Thử thách: c-loc-lop`; bằng chứng lấy từ "Vật chứng lưu vào hồ sơ" của thẻ). Không bắt buộc: `Mở từ` (mặc định = của địa điểm), `Cần` (điều kiện §13.1, chỉ dạng `có <mã>` / `không có <mã>`, `và`, `hoặc`, ngoặc), `Mở manh mối`, `Hiện tài liệu`, `Lưu bằng chứng`, `Lặp: mỗi lần` (mặc định một lần), `Ảnh` (§18.4a).
 - Mỗi địa điểm có **min–max dữ kiện phụ/nhiễu**; **dữ kiện chính không tính** vào con số này (QĐ-089). Dòng luật viết `- Mỗi địa điểm: 1–3 dữ kiện phụ/nhiễu` trong `## Luật` của lich.md (viết thiếu "phụ/nhiễu" là lỗi, để không ai đọc nhầm thành đếm cả chính). Phòng máy và CTSV mỗi nơi gánh hai ngày (2 chính + 2 phụ/nhiễu) vẫn hợp lệ. Hai [chính] cùng chỗ cùng ngày trong kịch bản khung (lời bác Thịnh + thẻ lịch) viết thành **một** dữ kiện chính có nhiều hậu quả — vì QĐ-086 "mỗi ngày giải được 1 dữ kiện chính". Dữ kiện gắn nhãn `chính` nhưng chỉ là bước đệm (cô Hạnh cấp quyền trước khi vào phòng máy) không ghi ở lịch mà được dữ kiện chính của ngày `Cần` (qua vật phẩm nó tạo ra); bộ kiểm gộp nó vào chi phí khung của ngày đó.
+
+### 18.4a Vật tương tác trên nền — dòng `- Ảnh:` (gói ban-do-di-lai, QĐ-089)
+
+```markdown
+- Ảnh: <sprite> · x <n>% · y <n>% · rộng <n>%
+- Ảnh: obj-ban-may · x 60% · y 78% · rộng 20%          ← vật: ảnh src/assets/mvp/vat/obj-ban-may.webp
+- Ảnh: nv:co-hanh · x 58% · y 100% · rộng 17%          ← người: chân dung nhân vật co-hanh (nhan-vat.md)
+```
+
+- **Sprite:** `obj-<tên>` = tệp ảnh (đã tách nền, có alpha, cắt sát vật) trong `prototype/src/assets/mvp/vat/`;
+  `nv:<mã nhân vật>` = chân dung của nhân vật đó (mã trong nhan-vat.md; ảnh tra theo `anh-mvp.ts`).
+- **(x, y) là CHÂN ẢNH** — điểm giữa cạnh dưới của ảnh — tính theo % bề rộng / bề cao ảnh nền (0–100). Vật đặt trên mặt
+  bàn: y = mép mặt bàn; người đứng: y = 100% (chân dung cắt ngang gối, đáy ảnh trùng đáy khung). `rộng` = % bề rộng nền;
+  chiều cao theo tỉ lệ ảnh. Số lẻ viết `12.5` hoặc `12,5`.
+- Mỗi dữ kiện **tối đa một** dòng `Ảnh`. Hai dữ kiện dùng chung một vật (bàn máy, máy in, sổ niêm phong) ghi **cùng**
+  sprite và **cùng** x, y, rộng: game gộp thành một điểm, bấm mở dữ kiện đang mở; hai dữ kiện cùng mở → người chơi chọn
+  nhanh bằng nhãn trung tính.
+- Dữ kiện thiếu dòng `Ảnh` vẫn chơi được (chọn qua danh sách chữ trong nơi đó) — bộ kiểm chỉ **cảnh báo**.
+- Người chơi không bao giờ thấy mô tả dữ kiện (`### <mã> — <mô tả>`): nút và danh sách dùng nhãn trung tính dựng từ dữ
+  liệu (`src/mvp/engine/nhan-cho-xem.ts`).
+- Chọn tọa độ: mở ảnh nền `src/assets/mvp/nen/bg-mvp-<cảnh>.webp` (1360×768), đặt vật vào chỗ để trống (kế hoạch ảnh
+  `art/prompts/prompts-mvp-vu1-v0.1.md` mục 2). Ảnh tối `-dem` cùng bố cục nên dùng chung tọa độ.
 
 ### 18.5 Lịch — `lich.md`
 
@@ -1027,7 +1051,7 @@ Dùng được trong chuỗi (ngoài §6.3: `[VÀO]`, `[RA]`, `[ĐI TỚI]`, `[H
 
 | Chỉ dẫn | Nghĩa |
 |---|---|
-| `- [TẠO NHÂN VẬT ten] tung (neutral): "Cậu tên gì?"` + dòng con `  - xúc xắc: <lời Tùng khi bấm xúc xắc>` | Câu 1 tạo nhân vật: ô tên có nút xúc xắc. |
+| `- [TẠO NHÂN VẬT ten] tung (neutral): "Cậu tên gì?"` + dòng con `  - xúc xắc: <lời Tùng khi bấm xúc xắc>` | Câu 1 tạo nhân vật: ô tên có nút xúc xắc. Dòng `xúc xắc:` vẫn bắt buộc cho bộ đọc nhưng runtime MVP KHÔNG hiện (user chốt 29/09: bấm xúc xắc Tùng không nói gì). |
 | `- [TẠO NHÂN VẬT nganh] tung (neutral): "Học ngành gì?"` + dòng con `  - lựa chọn: Kế toán · Quản trị kinh doanh · …` | Câu 2: chọn ngành. Cả game có đúng một `ten` và một `nganh`, đều trong mở đầu, `ten` trước `nganh`. |
 | `- [LỌC THỬ <mã> · <n> dòng · chọn <cột> = <giá trị>]` + khối ` ```sql ` ngay dưới | Lọc thử một lần trên giao diện bàn làm việc (Ngày hội): câu SQL trong khối, số dòng kỳ vọng, dòng người chơi phải chọn. |
 | `- [LƯU BẰNG CHỨNG <ev-…>]` | Lưu bằng chứng (key item) ngay tại đây — dùng khi bằng chứng nảy ra giữa chuỗi; thường khai báo ở dữ kiện là đủ. |
@@ -1055,6 +1079,11 @@ Khuôn thẻ hiện có. Tiền tố: `clue-` = **giấy nhớ** người chơi 
 ### 18.9 Kiểm lỗi của bộ MVP (`npm run kiem-noi-dung:mvp`)
 
 Đã cài ở gói 12m (`tools/noi-dung/luat-mvp.ts`; test `src/content/real/testing/bo-doc-mvp.test.ts`). Lỗi, báo `<tệp>:<dòng>`: dòng không khớp quy ước; định danh trùng; tham chiếu không tồn tại (cảnh, địa điểm, dữ kiện, chuỗi, nhân vật, biểu cảm, thẻ hồ sơ, thẻ thử thách, trang sổ); mỗi ngày đúng một dữ kiện chính và một buổi tối; dữ kiện chính đạt được trong ≤ N khung; buổi tối dẫn tới dữ kiện chính; mỗi địa điểm 1–3 dữ kiện phụ/nhiễu (không tính chính, QĐ-089); điều kiện true end đạt được và cần dữ kiện phụ; nhân vật nói trước `Xuất hiện từ`; `trừ uy tín` ngoài ngày họp; `[TẠO NHÂN VẬT]` thiếu/thừa/sai thứ tự; `[RẼ KẾT]` không đúng một lần; chuỗi lẻ; thẻ hồ sơ không ai tạo; tên cấm (`- Tên cấm: Vương Khánh` trong quy-uoc.md) xuất hiện trong chữ hiển thị.
+
+Gói ban-do-di-lai thêm (dòng `- Ảnh:`, §18.4a): sai cú pháp; sprite `obj-…` không có tệp trong `src/assets/mvp/vat/`;
+`nv:<mã>` không có trong nhan-vat.md; x, y, rộng ngoài 0–100 (rộng phải > 0); hai dòng `Ảnh` trong một dữ kiện; hai
+dữ kiện cùng nơi cùng sprite mà khác tọa độ. **Cảnh báo** (in `Cảnh báo: …`, không tính lỗi, không chặn sinh): dữ kiện
+chưa có dòng `Ảnh`.
 
 Gói 12m2 (QĐ-089) thêm: **số dòng khai lệch kết quả chạy thật** trên `du-lieu.md` (§18.10), báo ở dòng khai (`[LỌC THỬ]`, `[MÀN CHIẾU … · n dòng]`, hoặc tiêu đề thẻ thử thách có "Số dòng kỳ vọng"); câu SQL khai số dòng mà chạy lỗi (bảng/cột không có, không phải một câu SELECT); thiếu `du-lieu.md` khi có câu khai; lỗi cú pháp của chính `du-lieu.md`. Ví dụ:
 

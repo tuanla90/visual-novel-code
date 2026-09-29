@@ -29,13 +29,15 @@ export interface MultipleChoiceProps {
   onChoose: (choiceId: string) => void;
   /** Nguồn ngẫu nhiên tiêm được cho test. */
   random?: () => number;
+  /** Nhãn người hỏi thay cho tra cứu `speakerLabel` (bản MVP: nhân vật ngoài `shared/ids.ts`). Không truyền → như cũ. */
+  askerLabel?: string;
 }
 
-export function MultipleChoice({ question, attempts, gameKey, onChoose, random }: MultipleChoiceProps) {
+export function MultipleChoice({ question, attempts, gameKey, onChoose, random, askerLabel: askerLabelProp }: MultipleChoiceProps) {
   // Không `useMemo`: `orderedChoices` chỉ xáo lần đầu rồi trả thứ tự đã nhớ theo (phiên, câu hỏi) — StrictMode
   // gọi thân component hai lần hay dựng lại với attempts > 0 đều cho cùng thứ tự (QĐ-041, QĐ-066).
   const ordered = orderedChoices(question, gameKey, random);
-  const askerLabel = speakerLabel(question.asker.speaker);
+  const askerLabel = askerLabelProp ?? speakerLabel(question.asker.speaker);
   const guard = usePressGuard(`${question.id}|${attempts}`);
   const dialogueFont = useVnStore((s) => s.dialogueFont);
   const pushBacklog = useVnStore((s) => s.pushBacklog);

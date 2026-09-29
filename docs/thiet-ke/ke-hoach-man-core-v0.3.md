@@ -28,7 +28,7 @@ Hưởng ứng chuyển đổi số, tinh thần "kỷ nguyên vươn mình": ch
   **không có nhân vật đứng cạnh** — Tùng, Hà Vy chỉ lên tiếng bằng hộp thoại kiểu visual novel khi có chuyện rồi ẩn (khớp QĐ-071 và quyết
   định "Tùng, Hà Vy không ngồi cạnh màn thử thách"). Bản v5 có hai nhân vật đứng cạnh — bỏ.
 - **Nhịp giới thiệu:** lần vào phòng máy đầu (Vụ 1 ngày 2) chỉ có kéo giấy nhớ + Chạy; ✎ ra mắt khi gặp chỗ bàn làm việc không làm được.
-- **Chữ ký và giấy nhớ [H] (đã chốt, QĐ-090):** chữ ký trên lá thư là chữ ký tay lượn, chỉ đọc được chữ **H** đầu; giấy nhớ là `[H]`
+- **Chữ ký và giấy nhớ [H] (đã chốt, QĐ-091):** chữ ký trên lá thư là chữ ký tay lượn, chỉ đọc được chữ **H** đầu; giấy nhớ là `[H]`
   (không còn `[H.]`). Kéo `[H]` với "bằng" → `ten = 'H'` → 0 dòng (không ai tên đúng một chữ); Hà Vy: "Chữ ký chỉ cho mình chữ đầu thôi"
   → đổi "bắt đầu bằng" → 2 người. Không cần ✎ ở bước này; ✎ ra mắt ở chỗ khác (chưa chọn). Bẫy phụ tự nhiên: H là đầu của tên hay họ (`ho_dem`).
 - Khi playtest, ghi riêng "nút Xem từng điều kiện có sáng" và "người chơi có bấm" (nút sáng vẫn là máy đánh giá nhẹ).

@@ -137,7 +137,7 @@ Làm theo đợt, mỗi đợt xong thì user duyệt bằng bảng so sánh tr�
 | 4 | Vật tương tác: sửa ảnh với nền của nơi đó làm tham chiếu, nền hồng tím, rồi rembg | 14 | 13 vật ở mục 3 + `obj-ban-an-sinh-vien` |
 | 5 | Nhân vật mới (nền hồng tím, không viền sáng): Duy, Hiếu, Đạt, chú Cường, cô Hạnh, cô Lan; biểu cảm Tùng (2–3, chỉ sinh mặt) | 6 + 2–3 | Bác Thịnh dùng lại ảnh `bac-tu` |
 | 6 | Nền giấy tài liệu cho màn xem tài liệu: lá thư nặc danh, sổ niêm phong, nhật ký in, … | theo `ho-so/02-tai-lieu.md` | Chữ do game vẽ, ảnh chỉ là giấy trống |
-| 6b | **Chữ ký tay trên lá thư** `doc-chu-ky-h` (QĐ-090): nét mực, tách nền, game đặt lên giấy thư và phóng to khi xem xét | 1 (sinh 3–4 bản, chọn 1) | Câu lệnh dưới bảng |
+| 6b | **Chữ ký tay trên lá thư** `doc-chu-ky-h` (QĐ-091): nét mực, tách nền, game đặt lên giấy thư và phóng to khi xem xét | 1 (sinh 3–4 bản, chọn 1) | Câu lệnh dưới bảng |
 
 **Câu lệnh `doc-chu-ky-h`** (theo ảnh mẫu 1 user gửi 29/09 — chữ H rõ, phần sau lượn không đọc được):
 
