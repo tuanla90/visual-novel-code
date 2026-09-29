@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { LinePick as LinePickContent } from '../debrief/types';
 import { LinePick } from '../debrief/ui/LinePick';
 import { Projector } from '../debrief/ui/Projector';
@@ -126,6 +126,16 @@ export function GameScreen() {
     }, 2800);
   }, []);
 
+  // Hiệu ứng mở khóa manh mối mới (Clue Unlock Toast & Chime)
+  const prevClueCount = useRef(evidence.unlocked.length);
+  useEffect(() => {
+    if (evidence.unlocked.length > prevClueCount.current) {
+      soundEngine.playSfx('clue_unlock');
+      showToast('✦ PHÁT HIỆN MANH MỐI MỚI! Đã thêm vào Hồ sơ.');
+    }
+    prevClueCount.current = evidence.unlocked.length;
+  }, [evidence.unlocked.length, showToast]);
+
   const clearBacklog = useVnStore((s) => s.clearBacklog);
   const handleRestoreSlot = useCallback(
     (slot: SaveSlot) => {
@@ -163,6 +173,15 @@ export function GameScreen() {
   useEffect(() => {
     if (viewKind !== 'line' && viewKind !== 'feedback') setSkipMode(false);
   }, [viewKind, setSkipMode]);
+
+  const speakerExp = (view?.kind === 'line' ? view.node : view?.kind === 'feedback' ? view.line : view?.kind === 'question' ? view.node.question.asker : null)?.expression;
+  // Hiệu ứng âm thanh khi nhân vật kinh ngạc / chấn động
+  useEffect(() => {
+    if (speakerExp === 'stunned') {
+      soundEngine.playSfx('shake');
+    }
+  }, [speakerExp]);
+
   if (!progress || !view) return null;
 
   const completedParts = PART_IDS.filter((p): p is PartId => progress.partCompletedAt[p] !== undefined);
@@ -178,8 +197,13 @@ export function GameScreen() {
   const activeDebut: CharacterId | null =
     view.kind === 'line' && spk && isCharacterId(spk) && !seenDebuts.includes(spk) ? spk : null;
 
-  return (
-    <div className={`game${activeDebut ? ' game--debut' : ''}${hideUi ? ' game--hide-ui' : ''}`}>
+  const isShaking = view.kind === 'effect' || speakerLine?.expression === 'stunned';
+  const viewportMode = useVnStore((s) => s.viewportMode);
+  const isSimulatedMobile = viewportMode === 'mobile' && typeof window !== 'undefined' && window.innerWidth > 768;
+  const isPortrait = viewportMode === 'mobile';
+
+  const gameNode = (
+    <div className={`game${isPortrait ? ' game--portrait' : ''}${activeDebut ? ' game--debut' : ''}${hideUi ? ' game--hide-ui' : ''}`}>
       {/* Thông báo Toast VN */}
       {toastMsg ? <div className="vn-toast" role="status">{toastMsg}</div> : null}
 
@@ -217,6 +241,7 @@ export function GameScreen() {
         sequenceId={progress.cursor.sequenceId}
         speaker={speakerLine?.speaker}
         expression={speakerLine?.expression}
+        shaking={isShaking}
       >
         {!hideUi ? renderView(view) : null}
         {lastRejection && !hideUi ? (
@@ -265,6 +290,22 @@ export function GameScreen() {
       ) : null}
     </div>
   );
+
+  if (isSimulatedMobile) {
+    return (
+      <div className="game-simulator-backdrop">
+        <div className="game-simulator-bezel">
+          <div className="game-simulator-island">
+            <div className="game-simulator-island-camera" />
+          </div>
+          {gameNode}
+          <div className="game-simulator-home-bar" />
+        </div>
+      </div>
+    );
+  }
+
+  return gameNode;
 
   function renderView(v: StoryView) {
     switch (v.kind) {

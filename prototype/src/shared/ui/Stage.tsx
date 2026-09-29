@@ -9,6 +9,7 @@ import type { SceneId, PartId } from '../ids';
 import { Portrait } from './Portrait';
 import { SceneBackdrop } from './visuals/SceneBackdrop';
 import { SceneTransitionOverlay } from './visuals/SceneTransitionOverlay';
+import { AmbientDustOverlay } from './visuals/AmbientDustOverlay';
 import { castPosition, nextCast, type CastMember, type CastState } from './visuals/cast';
 import { useProjectorInsets } from './visuals/use-projector-insets';
 import { useVnStore } from '../vn/vn-store';
@@ -20,6 +21,7 @@ export interface StageProps {
   /** Người đang nói (nếu là nhân vật thì hiện chân dung). */
   speaker?: string;
   expression?: string;
+  shaking?: boolean;
   children?: ReactNode;
 }
 
@@ -48,7 +50,7 @@ function getMemberPosition(members: readonly CastMember[], member: CastMember, s
   return castPosition(scene, member.character);
 }
 
-export function Stage({ scene, part, sequenceId, speaker, expression, children }: StageProps) {
+export function Stage({ scene, part, sequenceId, speaker, expression, shaking, children }: StageProps) {
   const [cast, setCast] = useState<CastState>(() => nextCast(null, scene, speaker, expression));
   const current = nextCast(cast, scene, speaker, expression);
   // Suy trạng thái từ props lúc render (mẫu "lưu thông tin từ lần render trước" của React).
@@ -59,9 +61,16 @@ export function Stage({ scene, part, sequenceId, speaker, expression, children }
   const lineTyping = useVnStore((s) => s.lineTyping);
 
   return (
-    <section ref={ref} className="stage" data-scene={scene} style={{ backgroundColor: `var(--c-scene-${scene})` }} aria-label={`Cảnh: ${sceneName(scene)}`}>
+    <section
+      ref={ref}
+      className={`stage${shaking ? ' is-shaking' : ''}`}
+      data-scene={scene}
+      style={{ backgroundColor: `var(--c-scene-${scene})` }}
+      aria-label={`Cảnh: ${sceneName(scene)}`}
+    >
       <SceneBackdrop scene={scene} />
       <SceneTransitionOverlay scene={scene} part={part} sequenceId={sequenceId} />
+      <AmbientDustOverlay />
       <div className="stage__scene-label">
         <svg
           className="stage__scene-icon"
@@ -71,7 +80,7 @@ export function Stage({ scene, part, sequenceId, speaker, expression, children }
           fill="none"
           aria-hidden="true"
         >
-          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" fill="#ea580c" stroke="#c2410c" strokeWidth="1.2" />
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" fill="#f59e0b" stroke="#d97706" strokeWidth="1.2" />
           <circle cx="12" cy="10" r="3" fill="#fffdf2" />
         </svg>
         <span className="stage__scene-text">{sceneName(scene)}</span>

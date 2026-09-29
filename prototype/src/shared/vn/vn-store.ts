@@ -44,6 +44,8 @@ export const FONT_LABELS: Record<DialogueFont, string> = {
 
 export type TextSpeed = 'slow' | 'normal' | 'fast' | 'instant';
 
+export type ViewportMode = 'auto' | 'mobile' | 'desktop';
+
 export const SPEED_MS: Record<TextSpeed, number> = {
   slow: 35,
   normal: 20,
@@ -57,6 +59,7 @@ interface VnState {
   autoMode: boolean;
   skipMode: boolean;
   hideUi: boolean;
+  viewportMode: ViewportMode;
   /** Câu thoại hiện tại còn đang chạy chữ (chân dung người nói mấp máy môi). */
   lineTyping: boolean;
   textSpeed: TextSpeed;
@@ -75,6 +78,8 @@ interface VnState {
   toggleSkipMode: () => void;
   setHideUi: (v: boolean) => void;
   toggleHideUi: () => void;
+  setViewportMode: (mode: ViewportMode) => void;
+  toggleViewportMode: () => void;
   setLineTyping: (v: boolean) => void;
   setTextSpeed: (speed: TextSpeed) => void;
   cycleDialogueFont: () => void;
@@ -120,6 +125,24 @@ function loadTextSpeed(): TextSpeed {
 function saveTextSpeed(textSpeed: TextSpeed): void {
   try {
     localStorage.setItem(PREFS_KEY, JSON.stringify({ textSpeed }));
+  } catch {
+    // bỏ qua
+  }
+}
+
+function loadViewportMode(): ViewportMode {
+  try {
+    const raw = typeof localStorage !== 'undefined' ? localStorage.getItem('clb_vn_viewport_mode') : null;
+    if (raw === 'mobile' || raw === 'desktop' || raw === 'auto') return raw;
+  } catch {
+    // bỏ qua
+  }
+  return 'auto';
+}
+
+function saveViewportMode(mode: ViewportMode): void {
+  try {
+    localStorage.setItem('clb_vn_viewport_mode', mode);
   } catch {
     // bỏ qua
   }
@@ -227,6 +250,7 @@ export const useVnStore = create<VnState>((set, get) => ({
   autoMode: false,
   skipMode: false,
   hideUi: false,
+  viewportMode: loadViewportMode(),
   lineTyping: false,
   textSpeed: loadTextSpeed(),
   dialogueFont: (typeof window !== 'undefined' && (localStorage.getItem('clb_vn_font') as DialogueFont)) || 'source-serif',
@@ -250,6 +274,16 @@ export const useVnStore = create<VnState>((set, get) => ({
   },
   setHideUi: (hideUi) => set({ hideUi }),
   toggleHideUi: () => set((s) => ({ hideUi: !s.hideUi })),
+  setViewportMode: (viewportMode) => {
+    saveViewportMode(viewportMode);
+    set({ viewportMode });
+  },
+  toggleViewportMode: () => {
+    const current = get().viewportMode;
+    const next: ViewportMode = current === 'mobile' ? 'desktop' : 'mobile';
+    saveViewportMode(next);
+    set({ viewportMode: next });
+  },
   setLineTyping: (lineTyping) => set({ lineTyping }),
   setTextSpeed: (textSpeed) => {
     if (textSpeed === get().textSpeed) return;

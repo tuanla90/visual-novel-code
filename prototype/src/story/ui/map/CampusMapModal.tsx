@@ -66,7 +66,7 @@ const POI_LAYOUTS: Record<string, PoiLayout> = {
     width: 210,
     height: 76,
     categoryLabel: 'HỘI ĐỒNG HỌC VỤ',
-    accentColor: '#38bdf8',
+    accentColor: '#f59e0b',
     icon: (accent) => (
       <svg x="12" y="14" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="M7 21h10" /><path d="M12 3v18" /><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
@@ -147,7 +147,7 @@ export function CampusMapModal({ open, onClose, currentScene }: CampusMapModalPr
       <div className="campus-map__card" onClick={(e) => e.stopPropagation()}>
         <div className="campus-map__header">
           <h2 id="map-title" className="backlog-modal__title">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
               <line x1="8" y1="2" x2="8" y2="18" />
               <line x1="16" y1="6" x2="16" y2="22" />
@@ -267,18 +267,18 @@ export function CampusMapModal({ open, onClose, currentScene }: CampusMapModalPr
                     height={layout.height}
                     rx="10"
                     fill="rgba(15, 23, 42, 0.94)"
-                    stroke={isHere ? '#22c55e' : isSelected ? '#38bdf8' : 'rgba(255, 255, 255, 0.2)'}
+                    stroke={isHere ? '#22c55e' : isSelected ? '#f59e0b' : 'rgba(255, 255, 255, 0.2)'}
                     strokeWidth={isHere || isSelected ? '2.5' : '1.5'}
                   />
 
                   {/* Icon & Category Tag */}
                   <g transform={`translate(${layout.x}, ${layout.y})`}>
-                    {layout.icon(isHere ? '#22c55e' : isSelected ? '#38bdf8' : layout.accentColor)}
+                    {layout.icon(isHere ? '#22c55e' : isSelected ? '#f59e0b' : layout.accentColor)}
                   </g>
                   <text
                     x={layout.x + 38}
                     y={layout.y + 24}
-                    fill={isHere ? '#4ade80' : isSelected ? '#7dd3fc' : layout.accentColor}
+                    fill={isHere ? '#4ade80' : isSelected ? '#fde68a' : layout.accentColor}
                     fontSize="10"
                     fontWeight="800"
                     letterSpacing="0.08em"
@@ -307,7 +307,7 @@ export function CampusMapModal({ open, onClose, currentScene }: CampusMapModalPr
                       <circle r="5" fill="#22c55e" stroke="#ffffff" strokeWidth="1.5" />
                     </g>
                   ) : isSelected ? (
-                    <circle cx={layout.x + layout.width - 18} cy={layout.y + 20} r="4" fill="#38bdf8" />
+                    <circle cx={layout.x + layout.width - 18} cy={layout.y + 20} r="4" fill="#f59e0b" />
                   ) : null}
                 </g>
               );
@@ -319,7 +319,7 @@ export function CampusMapModal({ open, onClose, currentScene }: CampusMapModalPr
         {/* Bảng chi tiết POI đã chọn */}
         <div className="campus-map__info">
           <div>
-            <h3 style={{ margin: 0, fontSize: '1.15rem', color: '#38bdf8', display: 'flex', alignItems: 'center', gap: 10 }}>
+            <h3 style={{ margin: 0, fontSize: '1.15rem', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: 10 }}>
               {selectedPoi.name}
               {selectedPoi.sceneId === currentScene ? (
                 <span style={{ fontSize: '0.75rem', background: '#16a34a', color: '#fff', padding: '3px 10px', borderRadius: 12, fontWeight: 700 }}>
