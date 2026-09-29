@@ -464,6 +464,16 @@
   white-space: nowrap;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
+/* Ghim sát mép phải/trái: nhãn lệch vào trong để không bị cắt trên màn hẹp. */
+.mvp-ghim--phai .mvp-ghim__nhan {
+  left: auto;
+  right: 4px;
+  transform: none;
+}
+.mvp-ghim--trai .mvp-ghim__nhan {
+  left: 4px;
+  transform: none;
+}
 .mvp-ghim__so {
   min-width: 18px;
   height: 18px;

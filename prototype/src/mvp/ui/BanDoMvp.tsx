@@ -61,7 +61,7 @@ export function BanDoMvp({ banDo, diaDiem, khungConLai, chinhXong, tenBuoiToi, o
               <button
                 key={g.id}
                 type="button"
-                className={`mvp-ghim${conMoi === 0 ? ' is-xong' : ''}`}
+                className={`mvp-ghim${conMoi === 0 ? ' is-xong' : ''}${g.x >= 80 ? ' mvp-ghim--phai' : g.x <= 20 ? ' mvp-ghim--trai' : ''}`}
                 style={style}
                 aria-label={`${g.ten}: ${chuMoi(conMoi)}`}
                 aria-haspopup={nhieu ? 'dialog' : undefined}

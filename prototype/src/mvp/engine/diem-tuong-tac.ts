@@ -23,7 +23,10 @@ export interface DiemTuongTac {
   /** Dữ kiện chọn được lúc này (chưa làm, đủ điều kiện). */
   moDuoc: DuKienHienMvp[];
   trangThai: TrangThaiDiem;
-  /** Nhãn trung tính của điểm (nhãn của dữ kiện mở đầu tiên, không thì dữ kiện đầu tiên). */
+  /**
+   * Nhãn trung tính của điểm: nhãn của dữ kiện đại diện (mở đầu tiên, không thì đầu tiên), đánh số chỉ khi hai ĐIỂM
+   * khác nhau trong nơi trùng nhãn (hai dữ kiện chung một vật không làm điểm mang số).
+   */
   nhan: string;
 }
 
@@ -37,7 +40,6 @@ export function nhanTrongNoi(kb: KichBanMvp, noi: DiaDiemHienMvp): Map<string, s
 }
 
 export function diemTrongNoi(kb: KichBanMvp, noi: DiaDiemHienMvp): DiemTuongTac[] {
-  const nhan = nhanTrongNoi(kb, noi);
   const theoVat = new Map<string, DuKienHienMvp[]>();
   for (const k of noi.duKien) {
     const a = k.duKien.anh;
@@ -47,15 +49,20 @@ export function diemTrongNoi(kb: KichBanMvp, noi: DiaDiemHienMvp): DiemTuongTac[
     else theoVat.set(a.sprite, [k]);
   }
   const ra: DiemTuongTac[] = [];
+  const daiDien: DuKienHienMvp[] = [];
   for (const [khoa, duKien] of theoVat) {
     const dau = duKien[0];
     if (!dau?.duKien.anh) continue;
     const moDuoc = duKien.filter((k) => !k.daLam && !k.khoa);
     const trangThai: TrangThaiDiem = moDuoc.length > 0 ? 'mo' : duKien.some((k) => k.khoa) ? 'khoa' : 'da-xem';
-    const chinh = moDuoc[0] ?? dau;
-    ra.push({ khoa, anh: dau.duKien.anh, duKien, moDuoc, trangThai, nhan: nhan.get(chinh.duKien.id) ?? '' });
+    daiDien.push(moDuoc[0] ?? dau);
+    ra.push({ khoa, anh: dau.duKien.anh, duKien, moDuoc, trangThai, nhan: '' });
   }
-  return ra;
+  const nhan = nhanChoXemDs(
+    kb,
+    daiDien.map((k) => k.duKien),
+  );
+  return ra.map((d, i) => ({ ...d, nhan: nhan[i] ?? '' }));
 }
 
 /** Số chỗ còn mới trong một nơi (chưa làm, đủ điều kiện) — con số trên ghim. */
