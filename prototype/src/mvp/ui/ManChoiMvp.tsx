@@ -278,6 +278,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         expression={loiHienTai?.expression}
         shaking={rung}
         coDan={kn.kind !== 'chon-dia-diem'}
+        tenNguoiChoi={s.tenNguoiChoi}
       >
         {noiDung}
       </SanKhauMvp>

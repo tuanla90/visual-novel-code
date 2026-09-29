@@ -239,6 +239,11 @@ export const KICH_BAN_MVP = {
   ],
   "canh": [
     {
+      "id": "cong-truong",
+      "ten": "Cổng trường (trạm xe buýt)",
+      "anhNen": null
+    },
+    {
       "id": "phong-ktx",
       "ten": "Phòng KTX 408",
       "anhNen": null
@@ -1013,7 +1018,7 @@ export const KICH_BAN_MVP = {
       "phuNhieuMax": 3,
       "uyTin": 5
     },
-    "chuoiDau": "md-01-ktx",
+    "chuoiDau": "md-00-xe-buyt",
     "ngay": [
       {
         "so": 1,
@@ -1060,6 +1065,112 @@ export const KICH_BAN_MVP = {
     }
   },
   "chuoi": [
+    {
+      "id": "md-00-xe-buyt",
+      "title": "Chủ nhật tuần 1: xuống xe buýt trước cổng trường",
+      "canh": "cong-truong",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "task",
+          "text": "Tìm đường vào ký túc xá"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Chủ nhật, tuần đầu tiên"
+        },
+        {
+          "type": "note",
+          "text": "Xe buýt dừng sát vỉa hè. Người chơi kéo cái vali xuống bậc, bánh xe va xuống mặt đường đánh cạch một cái."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cửa xe vừa mở, hơi nóng đầu giờ chiều đã hắt vào mặt."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Đến rồi… Cổng trường ngoài đời trông to hơn trên ảnh."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chòi bảo vệ, thanh chắn sơn đỏ trắng, một dòng xe máy nối nhau chạy qua cổng."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Giấy báo ghi ký túc xá, phòng 408. Mà ký túc xá nằm đằng nào nhỉ…"
+        },
+        {
+          "type": "note",
+          "text": "Người chơi mở điện thoại, bản đồ quay vòng mãi không lên."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Pin còn mười hai phần trăm. Thôi, cứ đi theo mấy bạn cũng đang kéo vali kia là chắc ăn nhất."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Phía trước, hai bạn nữ vừa kéo vali vừa gọi điện về nhà: \"Con đến nơi rồi mẹ ạ.\""
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Mẹ cũng dặn đến nơi thì nhắn. Để vào phòng rồi nhắn một thể."
+        },
+        {
+          "type": "goto",
+          "to": "md-00-cong-ktx"
+        }
+      ]
+    },
+    {
+      "id": "md-00-cong-ktx",
+      "title": "Kéo vali qua sân trường tới cổng ký túc xá",
+      "canh": "cong-ktx",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Qua dãy giảng đường sơn vàng, qua cái bãi xe chật kín, con đường rẽ vào một cổng sắt nhỏ hơn."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Ký túc xá đây rồi. Bảy tầng… mong là phòng không ở tầng bảy."
+        },
+        {
+          "type": "note",
+          "text": "Bánh vali vấp mép gạch, người chơi phải xách bổng lên bằng cả hai tay."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Biết thế ở nhà đừng nhét cả cái nồi cơm điện vào."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cửa thang máy dán một tờ giấy: \"Đang bảo trì\"."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Phòng 408. Tầng bốn thôi mà. Cố lên."
+        },
+        {
+          "type": "goto",
+          "to": "md-01-ktx"
+        }
+      ]
+    },
     {
       "id": "md-01-ktx",
       "title": "Phòng KTX 408, Chủ nhật chiều: tạo nhân vật",
@@ -3231,7 +3342,7 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';",
       "soDong": 3,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:92 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:118 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

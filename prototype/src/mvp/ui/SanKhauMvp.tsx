@@ -4,6 +4,8 @@
  * component đó chỉ nhận `SceneId`/`CharacterId` đóng băng trong `shared/ids.ts`.
  * Dàn chân dung: nhân vật đã nói trong cảnh đứng lại (người đang nói sáng, người khác lùi nhẹ) — cùng luật
  * `visuals/cast.ts`; đổi cảnh thì dàn trống.
+ * Người chơi (`player`, nam — QĐ-084) cũng lên dàn khi nói (user yêu cầu 29/09: có hình nhân vật chính ở các đoạn
+ * nói chuyện), ảnh `char-nguoi-choi` (đã tách nền), nhãn là tên người chơi đặt ở màn tạo nhân vật.
  */
 import { useState, type CSSProperties, type ReactNode } from 'react';
 import type { KichBanMvp } from '../../content/mvp/types';
@@ -22,6 +24,8 @@ export interface SanKhauMvpProps {
   shaking?: boolean;
   /** `false` = không vẽ dàn chân dung (bản đồ / màn trong địa điểm phủ kín sân khấu). */
   coDan?: boolean;
+  /** Tên người chơi (nhãn chân dung của `player`); rỗng → "Bạn". */
+  tenNguoiChoi?: string;
   children?: ReactNode;
 }
 
@@ -34,9 +38,10 @@ interface DanDien {
   thanhVien: ThanhVien[];
 }
 
-/** Người nói là nhân vật (không phải `player`/`narrator`) và có trong nhan-vat.md, không "chỉ qua lời kể". */
+/** Người nói lên dàn chân dung: người chơi, hoặc nhân vật có trong nhan-vat.md không "chỉ qua lời kể" (không phải `narrator`). */
 function laNhanVatHien(kb: KichBanMvp, speaker: string | undefined): speaker is string {
-  if (!speaker || speaker === 'player' || speaker === 'narrator') return false;
+  if (speaker === 'player') return true;
+  if (!speaker || speaker === 'narrator') return false;
   const nv = kb.nhanVat.find((n) => n.id === speaker);
   return !!nv && !nv.chiQuaLoiKe;
 }
@@ -60,14 +65,27 @@ function viTri(soNguoi: number, i: number): number {
   return 0.12 + (0.76 * i) / (soNguoi - 1);
 }
 
-function ChanDungMvp({ kb, nhanVat, bieuCam, talking }: { kb: KichBanMvp; nhanVat: string; bieuCam: string | undefined; talking: boolean }) {
+function ChanDungMvp({
+  kb,
+  nhanVat,
+  bieuCam,
+  talking,
+  tenNguoiChoi,
+}: {
+  kb: KichBanMvp;
+  nhanVat: string;
+  bieuCam: string | undefined;
+  talking: boolean;
+  tenNguoiChoi: string | undefined;
+}) {
+  const laNguoiChoi = nhanVat === 'player';
   const nv = kb.nhanVat.find((n) => n.id === nhanVat);
-  const ten = nv?.ten ?? 'Nhân vật';
+  const ten = laNguoiChoi ? tenNguoiChoi || 'Bạn' : (nv?.ten ?? 'Nhân vật');
   // Nhân vật có trong prototype (Tùng, Hà Vy, Minh Anh, Quân, Hoài, bác Thịnh): dùng Portrait (tách nền, nhép môi).
   if (isCharacterId(nhanVat)) {
     return <Portrait character={nhanVat} expression={bieuCam ?? nv?.bieuCam[0] ?? 'neutral'} talking={talking} />;
   }
-  const url = anhChanDung(nhanVat, bieuCam);
+  const url = anhChanDung(laNguoiChoi ? 'nguoi-choi' : nhanVat, bieuCam);
   return (
     <figure className="portrait portrait--normal mvp-portrait" role="img" aria-label={ten} data-art-source={url ? 'image' : 'placeholder'}>
       {url ? (
@@ -81,7 +99,7 @@ function ChanDungMvp({ kb, nhanVat, bieuCam, talking }: { kb: KichBanMvp; nhanVa
   );
 }
 
-export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, coDan = true, children }: SanKhauMvpProps) {
+export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, coDan = true, tenNguoiChoi, children }: SanKhauMvpProps) {
   const [dan, setDan] = useState<DanDien>(() => danKe(kb, null, canh, speaker, expression));
   const moi = danKe(kb, dan, canh, speaker, expression);
   if (moi !== dan) setDan(moi);
@@ -114,7 +132,7 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
               style={style}
               data-speaking={dangNoi ? 'true' : 'false'}
             >
-              <ChanDungMvp kb={kb} nhanVat={t.nhanVat} bieuCam={t.bieuCam} talking={dangNoi && lineTyping} />
+              <ChanDungMvp kb={kb} nhanVat={t.nhanVat} bieuCam={t.bieuCam} talking={dangNoi && lineTyping} tenNguoiChoi={tenNguoiChoi} />
             </div>
           );
         })}

@@ -1,0 +1,31 @@
+/**
+ * Sân khấu MVP: nhân vật chính (`player`) lên dàn chân dung khi nói (user yêu cầu 29/09), dùng ảnh đã tách nền
+ * `char-nguoi-choi`, nhãn là tên người chơi; người kể (`narrator`) thì không.
+ */
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
+import type { KichBanMvp } from '../../content/mvp/types';
+import { SanKhauMvp } from './SanKhauMvp';
+
+const kb = KICH_BAN_MVP as unknown as KichBanMvp;
+
+describe('SanKhauMvp — nhân vật chính lên hình khi nói', () => {
+  it('player nói → có chân dung mang tên người chơi, ảnh char-nguoi-choi, đang nói', () => {
+    render(<SanKhauMvp kb={kb} canh="cong-truong" speaker="player" tenNguoiChoi="An" />);
+    const cd = screen.getByRole('img', { name: 'An' });
+    expect(cd.getAttribute('data-art-source')).toBe('image');
+    expect(cd.querySelector('img')?.getAttribute('src') ?? '').toContain('char-nguoi-choi');
+    expect(cd.closest('.cast-member')?.getAttribute('data-speaking')).toBe('true');
+  });
+
+  it('chưa có tên → nhãn "Bạn"', () => {
+    render(<SanKhauMvp kb={kb} canh="cong-truong" speaker="player" />);
+    expect(screen.getByRole('img', { name: 'Bạn' })).toBeInTheDocument();
+  });
+
+  it('người kể nói → không ai lên dàn', () => {
+    const { container } = render(<SanKhauMvp kb={kb} canh="cong-truong" speaker="narrator" />);
+    expect(container.querySelectorAll('.cast-member')).toHaveLength(0);
+  });
+});

@@ -2,6 +2,7 @@
 
 <!-- 7 cảnh nền mới của MVP + các cảnh Vụ 1 đã có/đã liệt kê (kịch bản khung mục 11). "Ảnh nền" không bắt buộc: chưa có ảnh thì bỏ. -->
 
+### cong-truong — Cổng trường (trạm xe buýt)
 ### phong-ktx — Phòng KTX 408
 ### cong-ktx — Cổng KTX (dùng chung ngày và tối)
 ### sanh-toa-b — Sảnh tòa B, hộp tiếp nhận kiến nghị

@@ -2,6 +2,32 @@
 
 <!-- 11 cảnh theo kịch bản khung mục 3. Thoại bản hội đồng v1 (29/09): giọng sinh viên miền Bắc, tớ/cậu. -->
 
+### md-00-xe-buyt — Chủ nhật tuần 1: xuống xe buýt trước cổng trường {cảnh: cong-truong}
+
+> NHIỆM VỤ: Tìm đường vào ký túc xá
+
+- [THẺ CHỮ] **narrator**: Chủ nhật, tuần đầu tiên
+- [DÀN DỰNG] Xe buýt dừng sát vỉa hè. Người chơi kéo cái vali xuống bậc, bánh xe va xuống mặt đường đánh cạch một cái.
+- **narrator**: Cửa xe vừa mở, hơi nóng đầu giờ chiều đã hắt vào mặt.
+- **player**: Đến rồi… Cổng trường ngoài đời trông to hơn trên ảnh.
+- **narrator**: Chòi bảo vệ, thanh chắn sơn đỏ trắng, một dòng xe máy nối nhau chạy qua cổng.
+- **player**: Giấy báo ghi ký túc xá, phòng 408. Mà ký túc xá nằm đằng nào nhỉ…
+- [DÀN DỰNG] Người chơi mở điện thoại, bản đồ quay vòng mãi không lên.
+- **player**: Pin còn mười hai phần trăm. Thôi, cứ đi theo mấy bạn cũng đang kéo vali kia là chắc ăn nhất.
+- **narrator**: Phía trước, hai bạn nữ vừa kéo vali vừa gọi điện về nhà: "Con đến nơi rồi mẹ ạ."
+- **player**: Mẹ cũng dặn đến nơi thì nhắn. Để vào phòng rồi nhắn một thể.
+- [ĐI TỚI md-00-cong-ktx]
+
+### md-00-cong-ktx — Kéo vali qua sân trường tới cổng ký túc xá {cảnh: cong-ktx}
+
+- **narrator**: Qua dãy giảng đường sơn vàng, qua cái bãi xe chật kín, con đường rẽ vào một cổng sắt nhỏ hơn.
+- **player**: Ký túc xá đây rồi. Bảy tầng… mong là phòng không ở tầng bảy.
+- [DÀN DỰNG] Bánh vali vấp mép gạch, người chơi phải xách bổng lên bằng cả hai tay.
+- **player**: Biết thế ở nhà đừng nhét cả cái nồi cơm điện vào.
+- **narrator**: Cửa thang máy dán một tờ giấy: "Đang bảo trì".
+- **player**: Phòng 408. Tầng bốn thôi mà. Cố lên.
+- [ĐI TỚI md-01-ktx]
+
 ### md-01-ktx — Phòng KTX 408, Chủ nhật chiều: tạo nhân vật {cảnh: phong-ktx}
 
 > NHIỆM VỤ: Nhận phòng KTX
