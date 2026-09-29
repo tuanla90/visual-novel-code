@@ -98,3 +98,57 @@ export function noiKhoi(khoi: readonly string[]): string {
 
 export const KHOI_TU_KHOA: readonly string[] = ['SELECT', '*', 'FROM', 'WHERE', 'AND', 'OR', '=', 'LIKE'];
 export const KHOI_DAU: readonly string[] = ["'", '%'];
+
+// ---------- Xem từng điều kiện (kế hoạch màn core v0.3 mục 2) ----------
+
+export interface WhereTach {
+  /** `SELECT … FROM <bảng>` của câu người chơi. */
+  khung: string;
+  bang: string;
+  /** Từng điều kiện (chữ SQL) theo thứ tự. */
+  dieuKien: string[];
+  noi: ('AND' | 'OR')[];
+}
+
+/**
+ * Tách WHERE PHẲNG (chỉ AND/OR, không ngoặc) thành từng điều kiện — tách ở AND/OR nằm ngoài nháy đơn. Câu có ngoặc,
+ * GROUP BY, ORDER BY… hay không có WHERE → `null` (nút "Xem từng điều kiện" không hiện).
+ */
+export function tachWhere(sql: string): WhereTach | null {
+  const cau = sql.trim().replace(/;\s*$/, '');
+  const m = /^(SELECT\s+[\s\S]+?\s+FROM\s+([A-Za-z_][A-Za-z0-9_]*))\s+WHERE\s+([\s\S]+)$/i.exec(cau);
+  if (!m) return null;
+  const than = m[3] ?? '';
+  const dieuKien: string[] = [];
+  const noi: ('AND' | 'OR')[] = [];
+  let dang = '';
+  let trongNhay = false;
+  const tu = than.split(/(\s+)/);
+  for (const t of tu) {
+    const soNhay = (t.match(/'/g) ?? []).length;
+    if (!trongNhay && /^(AND|OR)$/i.test(t)) {
+      if (dang.trim() === '') return null;
+      dieuKien.push(dang.trim());
+      noi.push(t.toUpperCase() as 'AND' | 'OR');
+      dang = '';
+    } else {
+      dang += t;
+    }
+    if (soNhay % 2 === 1) trongNhay = !trongNhay;
+  }
+  if (trongNhay || dang.trim() === '') return null;
+  dieuKien.push(dang.trim());
+  if (dieuKien.some((d) => /[()]/.test(d.replace(/'[^']*'/g, '')) || /\b(GROUP|ORDER|LIMIT|HAVING)\b/i.test(d.replace(/'[^']*'/g, '')))) return null;
+  return { khung: (m[1] ?? '').replace(/\s+/g, ' '), bang: m[2] ?? '', dieuKien, noi };
+}
+
+/**
+ * Câu soi: mọi dòng của bảng thỏa ÍT NHẤT một điều kiện, kèm cột 0/1 cho từng điều kiện và cột "giữ" theo đúng cách
+ * nối của người chơi — để thấy dòng nào qua cửa nào, vì sao AND loại mà OR giữ.
+ */
+export function cauSoiDieuKien(t: WhereTach, toiDa = 40): string {
+  const cot = t.dieuKien.map((d, i) => `CASE WHEN ${d} THEN 1 ELSE 0 END AS dk${i + 1}`);
+  const giu = t.dieuKien.reduce((acc, d, i) => (i === 0 ? `(${d})` : `${acc} ${t.noi[i - 1] ?? 'AND'} (${d})`), '');
+  const hoac = t.dieuKien.map((d) => `(${d})`).join(' OR ');
+  return `SELECT *, ${cot.join(', ')}, CASE WHEN ${giu} THEN 1 ELSE 0 END AS giu FROM ${t.bang} WHERE ${hoac} LIMIT ${toiDa}`;
+}

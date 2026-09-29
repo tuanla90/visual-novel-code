@@ -1580,3 +1580,45 @@
 .mvp-khoi__nut {
   font-family: var(--font-mono, monospace);
 }
+
+/* "Xem từng điều kiện" (SoiDieuKienMvp): dòng bị loại mờ đi; ✓ xanh, ✗ đỏ. */
+.mvp-soi {
+  display: grid;
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
+}
+.mvp-soi__dau {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.mvp-soi__bang {
+  overflow-x: auto;
+}
+.mvp-soi__bang table {
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.mvp-soi__bang th,
+.mvp-soi__bang td {
+  padding: 4px 10px;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.25);
+  text-align: left;
+}
+.mvp-soi__bang tr.is-loai td {
+  opacity: 0.5;
+}
+.mvp-soi__bang td.is-co {
+  color: #15803d;
+  font-weight: 700;
+}
+.mvp-soi__bang td.is-khong {
+  color: #b91c1c;
+  font-weight: 700;
+}
+.mvp-soi__nut {
+  justify-self: start;
+  margin-top: var(--sp-2);
+}

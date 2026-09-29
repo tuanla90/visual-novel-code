@@ -7,7 +7,7 @@ import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { chaySql } from './sql-mvp';
-import { dieuKienThanhSql, giaTriTuGiayNho, khungTuSqlChuan, noiKhoi, thanhSql, type CauDung, type KieuCot } from './trinh-dung';
+import { cauSoiDieuKien, dieuKienThanhSql, giaTriTuGiayNho, khungTuSqlChuan, noiKhoi, tachWhere, thanhSql, type CauDung, type KieuCot } from './trinh-dung';
 
 const KB = KICH_BAN_MVP as unknown as KichBanMvp;
 const duLieu = KB.duLieu;
@@ -65,5 +65,36 @@ describe('chạy thật trên dữ liệu vụ: hậu quả của từng kiểu 
     const thieuNhay = await chaySql(duLieu, tu('B', 'go'));
     expect(thieuNhay.ok).toBe(false);
     if (!thieuNhay.ok) expect(thieuNhay.loai).toBe('khong-co-cot');
+  });
+});
+
+describe('xem từng điều kiện', () => {
+  it('tách WHERE phẳng ở AND/OR ngoài nháy; có ngoặc / không WHERE → null', () => {
+    expect(tachWhere("SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha = 'B' OR nganh = 'Báo chí';")).toEqual({
+      khung: 'SELECT ma_lop FROM lop_sinh_hoat',
+      bang: 'lop_sinh_hoat',
+      dieuKien: ["toa_nha = 'B'", "nganh = 'Báo chí'"],
+      noi: ['OR'],
+    });
+    expect(tachWhere("SELECT * FROM t WHERE ten = 'AND OR' AND x = 1")?.dieuKien).toEqual(["ten = 'AND OR'", 'x = 1']);
+    expect(tachWhere('SELECT * FROM t WHERE (a = 1 OR b = 2) AND c = 3')).toBeNull();
+    expect(tachWhere('SELECT * FROM t')).toBeNull();
+  });
+
+  it('câu soi chạy thật: OR tòa B / Báo chí → 5 dòng giữ, mỗi dòng có dấu từng điều kiện; AND chỉ giữ 2', async () => {
+    if (!duLieu) throw new Error('thiếu du-lieu.md');
+    const soi = async (sql: string) => {
+      const t = tachWhere(sql);
+      if (!t) throw new Error('không tách được');
+      const kq = await chaySql(duLieu, cauSoiDieuKien(t));
+      if (!kq.ok) throw new Error(kq.thongDiep);
+      const iGiu = kq.cot.indexOf('giu');
+      return { tong: kq.dong.length, giu: kq.dong.filter((d) => d[iGiu] === 1).length, cot: kq.cot };
+    };
+    const hoac = await soi("SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha = 'B' OR nganh = 'Báo chí'");
+    expect(hoac).toMatchObject({ tong: 5, giu: 5 });
+    expect(hoac.cot).toEqual(expect.arrayContaining(['dk1', 'dk2', 'giu']));
+    const va = await soi("SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí'");
+    expect(va).toMatchObject({ tong: 5, giu: 2 });
   });
 });

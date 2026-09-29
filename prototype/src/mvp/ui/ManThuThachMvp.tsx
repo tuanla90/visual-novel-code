@@ -17,9 +17,10 @@ import { ResultTable } from '../../sql-challenge/ui/ResultTable';
 import { SqlCode } from '../../sql-challenge/ui/SqlCode';
 import { track } from '../../shared/telemetry/track';
 import { chamThuThach, chaySql, xemDongDau, type KetQuaChay, type KetQuaCham } from '../engine/sql-mvp';
-import type { CachNhap } from '../engine/trinh-dung';
+import { tachWhere, type CachNhap, type WhereTach } from '../engine/trinh-dung';
 import { docCachNhap, ghiCachNhap } from './cach-nhap';
 import { NhapCauMvp, type GiayNhoDung } from './NhapCauMvp';
+import { SoiDieuKienMvp } from './SoiDieuKienMvp';
 import { TheHoSo } from './TheHoSo';
 import { TrangChiLinh } from './TrangSoMvp';
 
@@ -55,6 +56,9 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong, giayNho
   const [xem, setXem] = useState<XemBang | null>(null);
   const [traSo, setTraSo] = useState<string | null>(null);
   const [luuRoi, setLuuRoi] = useState(false);
+  /** Câu vừa chạy đã tách WHERE (để "Xem từng điều kiện"); `soi` = đang mở bảng soi. */
+  const [daChay, setDaChay] = useState<WhereTach | null>(null);
+  const [soi, setSoi] = useState(false);
   const ketQuaRef = useRef<HTMLElement>(null);
   const banRon = useRef(false);
 
@@ -77,6 +81,8 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong, giayNho
     try {
       const kq = await chamThuThach(duLieu, sql, the.sqlChuan);
       setCham(kq);
+      setDaChay(kq.trangThai === 'loi' ? null : tachWhere(sql));
+      setSoi(false);
       track({
         type: 'mvp_query_run',
         challengeId: the.id,
@@ -212,6 +218,15 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong, giayNho
                   )}
                 </p>
                 <ResultTable columns={cham.chay.cot} rows={cham.chay.dong} caption="Kết quả truy vấn của bạn" reveal />
+                {daChay && duLieu ? (
+                  soi ? (
+                    <SoiDieuKienMvp duLieu={duLieu} where={daChay} onDong={() => setSoi(false)} />
+                  ) : (
+                    <button type="button" className="btn btn--small mvp-soi__nut" onClick={() => setSoi(true)}>
+                      🔍 Xem từng điều kiện
+                    </button>
+                  )
+                ) : null}
               </>
             ) : null}
             {dung ? (

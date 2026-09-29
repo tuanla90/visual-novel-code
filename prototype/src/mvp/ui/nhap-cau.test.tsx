@@ -117,4 +117,16 @@ describe('đổi cách + màn thử thách', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Chạy truy vấn' }));
     await waitFor(() => expect(screen.getByText(/máy hiểu chữ không có nháy là tên một cột/)).toBeInTheDocument());
   });
+
+  it('Xem từng điều kiện: bài 2.3 gõ OR → bảng soi 5 dòng, có cột từng điều kiện và "Giữ lại"', async () => {
+    render(<ManThuThachMvp kb={kb} duLieu={duLieu} the={kb.thuThach['c-loc-and']!} mode="challenge" dienTen={(t) => t} onXong={vi.fn()} giayNho={GIAY} />);
+    await userEvent.click(screen.getByRole('tab', { name: 'Gõ tay' }));
+    await userEvent.type(screen.getByRole('textbox', { name: 'Câu SQL (gõ tay)' }), "toa_nha = 'B' OR nganh = 'Báo chí'");
+    await userEvent.click(screen.getByRole('button', { name: 'Chạy truy vấn' }));
+    await userEvent.click(await screen.findByRole('button', { name: /Xem từng điều kiện/ }));
+    const soi = await screen.findByRole('region', { name: 'Xem từng điều kiện' });
+    await waitFor(() => expect(within(soi).getAllByRole('row')).toHaveLength(1 + 5));
+    expect(within(soi).getByRole('columnheader', { name: 'Giữ lại' })).toBeInTheDocument();
+    expect(within(soi).getByText("toa_nha = 'B'")).toBeInTheDocument();
+  });
 });
