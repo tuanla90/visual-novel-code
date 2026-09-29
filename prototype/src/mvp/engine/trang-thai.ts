@@ -43,7 +43,7 @@ export type GiaiDoanMvp ='mo-dau' | 'ngay' | 'hop' | 'het';
 export interface HoiDapMvp {
   /** Nút đang trả lời (id câu hỏi / chọn dòng / trang sổ). */
   id: string;
-  nguon: 'question' | 'line-pick' | 'notebook-copy';
+  nguon: 'question' | 'line-pick';
   /** Các lời phản hồi đang hiện lần lượt (kể cả lời Minh Anh khi mất vạch). */
   phanHoi: LoiMvp[];
   viTri: number;
@@ -101,7 +101,7 @@ export interface TrangThaiMvp {
   /** Nhân vật đã hiện màn "Nhân vật mới" (theo thứ tự gặp) — cũng là danh sách tab Nhân vật. Ô lưu cũ: không có = []. */
   daGioiThieu?: string[];
   co: string[];
-  /** Trang sổ đã `[CHÉP SỔ]` vào sổ cá nhân. */
+  /** Trang sổ đã vào sổ cá nhân (`[GHI SỔ]`, tự ghi — QĐ-092), theo thứ tự học. */
   soTay: string[];
   thuThachXong: string[];
 

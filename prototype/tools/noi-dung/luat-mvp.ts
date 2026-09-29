@@ -65,10 +65,8 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   }
   for (const c of mvp.challenges) {
     const ev = c.evidence?.id;
-    if (!ev) {
-      err(c.viTri, `thẻ ${c.id} thiếu "Vật chứng lưu vào hồ sơ"`);
-      continue;
-    }
+    // Bài giữa chuỗi phòng máy (QĐ-092) không lưu gì vào hồ sơ: thẻ được phép không có vật chứng.
+    if (!ev) continue;
     if (!ev.startsWith('ev-')) err(c.viTri, `vật chứng của thẻ ${c.id} phải có mã ev-…: "${ev}"`);
     const truoc = vatPham.get(ev);
     if (truoc) err(c.viTri, `bằng chứng "${ev}" khai ở cả thẻ ${c.id} lẫn hồ sơ ${truoc.tep}:${truoc.dong} — chỉ một chỗ`);
@@ -245,10 +243,10 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           else if (tr.loai !== it.phan) err(vt, `[TRA SỔ ${it.trang} · ${it.phan}]: trang này là "${tr.loai}"`);
           break;
         }
-        case 'notebook-copy': {
+        case 'notebook-note': {
           const tr = soTay.get(it.trang);
-          if (!tr) err(vt, `[CHÉP SỔ ${it.trang}]: không có trang sổ "${it.trang}" trong so-tay/`);
-          else if (!tr.chonDoanCode) err(vt, `[CHÉP SỔ ${it.trang}]: trang phải có mục "## Chọn đoạn code"`);
+          if (!tr) err(vt, `[GHI SỔ ${it.trang}]: không có trang sổ "${it.trang}" trong so-tay/`);
+          else if (!tr.chuThich) err(vt, `[GHI SỔ ${it.trang}]: trang phải có mục "## Vào sổ cá nhân" với dòng "- Chú thích: …"`);
           break;
         }
         case 'create-character':

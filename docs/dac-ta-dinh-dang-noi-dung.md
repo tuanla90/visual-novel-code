@@ -665,6 +665,7 @@ Hai cuốn: **sổ chị Linh** (đủ nội dung từ đầu, để ở phòng 
 ```
 
 Luật:
+- **Bộ MVP (QĐ-092) không dùng `[CHÉP SỔ]` và mục "Chọn đoạn code"** — thay bằng `[GHI SỔ <trang>]` (§18.6): dòng "Vào sổ cá nhân" tự vào sổ. Phần dưới giữ cho bộ prototype.
 - `[CHÉP SỔ <trang>]` chạy trọn trang: hoạt cảnh trang chị Linh → lời Hà Vy → chọn đoạn code (loại 2a: đúng một `[ĐÚNG]`, chọn sai thì Hà Vy đáp bằng toán và chọn lại, **không phạt, không đếm**) → đoạn đúng cùng chú thích vào sổ cá nhân.
 - `[TRA SỔ <trang> · <phần>]` chỉ hiện trang chị Linh (vd Tùng gợi ý khi người chơi bí → phần `lỗi thường gặp`), không thêm gì vào sổ cá nhân.
 - Trang **tâm đắc / lỗi thường gặp** không có mục "Chọn đoạn code".
@@ -1062,11 +1063,14 @@ Dùng được trong chuỗi (ngoài §6.3: `[VÀO]`, `[RA]`, `[ĐI TỚI]`, `[H
 | `- [LỌC THỬ <mã> · <n> dòng · chọn <cột> = <giá trị>]` + khối ` ```sql ` ngay dưới | Lọc thử một lần trên giao diện bàn làm việc (Ngày hội): câu SQL trong khối, số dòng kỳ vọng, dòng người chơi phải chọn. |
 | `- [LƯU BẰNG CHỨNG <ev-…>]` | Lưu bằng chứng (key item) ngay tại đây — dùng khi bằng chứng nảy ra giữa chuỗi; thường khai báo ở dữ kiện là đủ. |
 | `- [KHÁM PHÁ <mã>]` + dòng con `  - <obj-… hoặc nv:<mã>> · x <n>% · y <n>% · rộng <n>% → <chuỗi>[ · sau: <chuỗi>, …][ · nhãn: <chữ>]` | Cảnh bấm vật trên nền cảnh của chuỗi (sảnh KTX của mở đầu dạy người chơi bấm). Tọa độ như dòng `- Ảnh:` (§18.4a). Bấm một chỗ → chạy `<chuỗi>`; chuỗi hết nút thì về cảnh, chỗ đó mờ đi. `sau:` = chỉ hiện khi đã xem các chuỗi kia (vd. Tùng hiện sau thang máy và bảng tin). Xem hết mọi chỗ → chạy tiếp dòng sau `[KHÁM PHÁ]`; `[ĐI TỚI]` trong chuỗi của một chỗ → rời cảnh luôn. `nhãn:` = chữ trên nút (không có → "Nói chuyện với …" cho `nv:`, "Xem: <tài liệu>" hay "Xem xét chỗ này" cho đồ vật); dùng khi người chơi chưa biết tên người đứng đó. Kiểm: có ít nhất một chỗ hiện ngay, `sau:` trỏ chỗ khác cùng cảnh, chuỗi và ảnh tồn tại. Chuỗi của các chỗ được tính là nối từ chuỗi chứa `[KHÁM PHÁ]`. |
+| `- [GHI SỔ <trang>]` | (QĐ-092, thay `[CHÉP SỔ]`) Tự thêm dòng "Vào sổ cá nhân" (`- Chú thích: …`) của trang vào sổ cá nhân, không hỏi gì; màn chơi báo một dòng. Đặt sau bài phòng máy vừa dạy xong một mảng kiến thức. Trang sổ MVP chỉ có "Trang chị Linh", "Hà Vy", "Vào sổ cá nhân" — mục "Chọn đoạn code" và `[CHÉP SỔ]` báo lỗi. Kiểm: trang tồn tại và có dòng "Vào sổ cá nhân". |
 | `- [RẼ KẾT]` | Runtime chọn `Kết thật` nếu `[ĐIỀU KIỆN]` của nó thỏa, không thì `Kết thường`. Đúng một lần trong game. |
 | `- [ĐIỀU KIỆN] có ev-nhat-ky-in và (có clue-loi-chu-cuong hoặc có clue-loi-dat)` | Dòng đầu chuỗi kết thật (và chuỗi có điều kiện khác). |
 | `- [HẬU QUẢ] mở manh mối clue-x, lưu bằng chứng ev-y, đặt co.z, đi tới <chuỗi>` | §13.2 thêm `lưu bằng chứng`. |
 
 Số dòng ghi trong `[LỌC THỬ]`, `[MÀN CHIẾU … · <n> dòng]` (khi có khối sql), "Số dòng kỳ vọng" của thẻ (đi với "SQL chuẩn") là **số người viết khai**. Bộ chuyển gom mọi cặp `(sql, soDong, noi)` vào `soDongKhai` của dữ liệu sinh; `kiem-noi-dung:mvp` **chạy thật** từng câu trên bộ dữ liệu cố định `du-lieu.md` (§18.10) và báo lỗi `<tệp>:<dòng>` khi số khai lệch kết quả (QĐ-089). Số dòng chỉ ghi trong `[DÀN DỰNG]` (không kèm câu SQL) chưa được kiểm.
+
+**Chuỗi bài phòng máy (QĐ-092).** Một lần vào phòng máy có thể gồm nhiều bài: dữ kiện dùng `- Chuỗi:` (không phải `- Thử thách:`), chuỗi đó có nhiều `[THỬ THÁCH …]` nối tiếp kèm lời dẫn và `[GHI SỔ]`. Thẻ thử thách của **bài giữa chuỗi được bỏ dòng "Vật chứng lưu vào hồ sơ"** (không lưu gì); bài cuối lưu bằng chứng như cũ. Không tốn thêm khung giờ (vào phòng máy tốn 1, bên trong 0). Kế hoạch bài theo ngày: `docs/mvp/thuc-hanh-sql-vu1-mvp.md`.
 
 ### 18.7 Lời chung — `chung/loi-chung.md`
 

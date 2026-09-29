@@ -142,7 +142,8 @@ export type NutMvp =
   | { type: 'consequence'; hauQua: HauQuaMvp[] }
   | { type: 'branch'; id: string; asker: { speaker: string; text: string }; choices: { id: string; text: string; khi: DieuKienMvp | null; hauQua: HauQuaMvp[] }[] }
   | { type: 'notebook-lookup'; trang: string; phan: string }
-  | { type: 'notebook-copy'; trang: string }
+  /** `[GHI SỔ <trang>]` (QĐ-092): tự thêm dòng "Vào sổ cá nhân" của trang vào sổ cá nhân — không hỏi, máy tự chạy qua. */
+  | { type: 'notebook-note'; trang: string }
   | { type: 'create-character'; truong: 'ten' | 'nganh'; asker: LoiMvp; xucXac: string | null; luaChon: string[] }
   | { type: 'trial-filter'; id: string; sql: string; soDong: number; chon: { cot: string; giaTri: string } }
   | { type: 'save-evidence'; evidenceId: string }
@@ -178,7 +179,8 @@ export interface TheThuThachMvp {
   soDongKyVong: number | null;
   sqlChuan: string;
   truyVanNapSan: string | null;
-  vatChung: { id: string; title: string; description: string };
+  /** Bằng chứng lưu vào hồ sơ khi xong; `null` = bài giữa chuỗi phòng máy, không lưu gì (QĐ-092). */
+  vatChung: { id: string; title: string; description: string } | null;
   ghiChu: string[];
 }
 
@@ -196,7 +198,7 @@ export interface TrangSoMvp {
   loai: 'cú pháp' | 'tâm đắc' | 'lỗi thường gặp';
   trangChiLinh: string[];
   haVy: LoiMvp[];
-  chonDoanCode: LuaChonMvp[] | null;
+  /** Dòng vào sổ cá nhân khi kịch bản `[GHI SỔ]` trang này. */
   chuThich: string | null;
 }
 

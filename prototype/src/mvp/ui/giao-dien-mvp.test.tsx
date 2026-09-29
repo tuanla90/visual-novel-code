@@ -131,8 +131,8 @@ describe('hồ sơ + sổ cá nhân MVP (phong cách hòm đồ prototype)', () 
     expect(o).toHaveLength(s.hoSo.bangChung.length);
   });
 
-  it('nút Sổ tay → cùng khung, tab Sổ cá nhân, mỗi trang đã chép một thẻ; đổi tab được; nút Đóng đóng', async () => {
-    // Nội dung MVP hiện chưa có nút [CHÉP SỔ] → dựng sổ có sẵn các trang (trang có đoạn code để chọn).
+  it('nút Sổ tay → cùng khung, tab Sổ cá nhân, mỗi dòng đã học một thẻ; đổi tab được; nút Đóng đóng', async () => {
+    // Dựng sổ có sẵn vài trang (như sau các [GHI SỔ] của phòng máy).
     const trang = Object.keys(kb.soTay).slice(0, 2);
     expect(trang.length).toBeGreaterThan(0);
     const s = { ...nhayToi(kb, 'hop-sua-or', 1), soTay: trang };
@@ -149,10 +149,10 @@ describe('hồ sơ + sổ cá nhân MVP (phong cách hòm đồ prototype)', () 
     expect(screen.queryByRole('dialog')).toBeNull();
   });
 
-  it('sổ trống: báo chưa chép trang nào', async () => {
+  it('sổ trống: báo sổ còn trống', async () => {
     veManChoi(taoTrangThai(kb, 1));
     await userEvent.click(within(thanhTren()).getByRole('button', { name: /^Mở sổ cá nhân/ }));
-    expect(screen.getByText(/Chưa chép trang nào/)).toBeInTheDocument();
+    expect(screen.getByText(/Sổ còn trống/)).toBeInTheDocument();
   });
 });
 

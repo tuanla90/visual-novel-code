@@ -3467,33 +3467,7 @@ export const KICH_BAN_MVP = {
           "text": "Một vòng là các lớp ở tòa B, một vòng là các lớp ngành Báo chí. Lớp mình cần nằm ở phần chung của hai vòng."
         }
       ],
-      "chonDoanCode": [
-        {
-          "id": "giao",
-          "text": "`WHERE toa_nha = 'B' AND nganh = 'Báo chí'`",
-          "correct": true,
-          "feedback": [
-            {
-              "speaker": "ha-vy",
-              "expression": "smile",
-              "text": "Phần giao. Chép vào sổ đi."
-            }
-          ]
-        },
-        {
-          "id": "hop",
-          "text": "`WHERE toa_nha = 'B' OR nganh = 'Báo chí'`",
-          "correct": false,
-          "feedback": [
-            {
-              "speaker": "ha-vy",
-              "expression": "neutral",
-              "text": "Cái đó là phần hợp, lấy cả hai vòng rồi."
-            }
-          ]
-        }
-      ],
-      "chuThich": "Phần giao là AND, phần hợp là OR."
+      "chuThich": "`AND`: phải thỏa cả hai điều kiện (phần giao). `OR`: thỏa một là đủ (phần hợp)."
     },
     "kiem-hai-lan": {
       "id": "kiem-hai-lan",
@@ -3503,7 +3477,6 @@ export const KICH_BAN_MVP = {
         "Kiểm hai lần, kết luận một lần. Dữ liệu chỉ ra ai cần hỏi, không chỉ ra ai đã làm."
       ],
       "haVy": [],
-      "chonDoanCode": null,
       "chuThich": null
     },
     "like": {
@@ -3520,8 +3493,41 @@ export const KICH_BAN_MVP = {
           "text": "Tập rỗng không có nghĩa là không ai. Nó nghĩa là không ai có tên đúng bằng \"H\"."
         }
       ],
-      "chonDoanCode": null,
-      "chuThich": null
+      "chuThich": "`=` phải khớp nguyên chữ. Chỉ biết chữ đầu thì dùng \"bắt đầu bằng\": `ten LIKE 'H%'` (dấu % là phần chữ còn lại)."
+    },
+    "where-chu": {
+      "id": "where-chu",
+      "ten": "So sánh chữ: đặt trong nháy đơn",
+      "loai": "cú pháp",
+      "trangChiLinh": [
+        "Chữ phải đặt trong nháy đơn: `toa_nha = 'B'`, `nganh = 'Báo chí'`.",
+        "Thiếu nháy, máy tưởng B là tên một cột, nên báo \"no such column: B\"."
+      ],
+      "haVy": [
+        {
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Máy phân biệt tên cột với giá trị bằng cái nháy. Không có nháy là nó đi tìm cột."
+        }
+      ],
+      "chuThich": "Chữ đặt trong nháy đơn: `toa_nha = 'B'`. Thiếu nháy, máy tưởng là tên cột."
+    },
+    "where-so": {
+      "id": "where-so",
+      "ten": "Lọc dòng với WHERE; so sánh số",
+      "loai": "cú pháp",
+      "trangChiLinh": [
+        "Muốn lấy những dòng thỏa một điều kiện thì thêm WHERE: `WHERE cột = giá trị`.",
+        "Số thì viết đúng như dữ liệu đang lưu: cột khóa lưu `2024` thì viết `khoa_hoc = 2024`, không phải \"K24\"."
+      ],
+      "haVy": [
+        {
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Trước khi lọc, nhìn xem cột ấy thật ra đang lưu cái gì đã."
+        }
+      ],
+      "chuThich": "Lọc dòng: `WHERE cột = giá trị`. Số thì viết đúng như dữ liệu đang lưu: `khoa_hoc = 2024`."
     }
   },
   "loiChung": {

@@ -74,8 +74,8 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
       return { type: 'branch', id: it.branch.id, asker: it.branch.asker, choices: it.branch.choices };
     case 'notebook-lookup':
       return { type: 'notebook-lookup', trang: it.trang, phan: it.phan };
-    case 'notebook-copy':
-      return { type: 'notebook-copy', trang: it.trang };
+    case 'notebook-note':
+      return { type: 'notebook-note', trang: it.trang };
     case 'create-character':
       return { type: 'create-character', truong: it.tao.truong, asker: loi(it.tao.asker), xucXac: it.tao.xucXac, luaChon: it.tao.luaChon };
     case 'trial-filter':
@@ -109,7 +109,6 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
   };
   const sqlChuan = t.sql['SQL chuẩn'];
   if (sqlChuan === undefined) throw new Error(`${noi}: thẻ ${t.id} thiếu "- SQL chuẩn:" + khối sql`);
-  if (!t.evidence) throw new Error(`${noi}: thẻ ${t.id} thiếu "Vật chứng lưu vào hồ sơ"`);
   const soDongChu = t.fields['Số dòng kỳ vọng'];
   let soDongKyVong: number | null = null;
   if (soDongChu !== undefined) {
@@ -126,7 +125,7 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     soDongKyVong,
     sqlChuan,
     truyVanNapSan: t.sql['Truy vấn nạp sẵn'] ?? null,
-    vatChung: { id: t.evidence.id, title: t.evidence.title, description: t.evidence.description },
+    vatChung: t.evidence ? { id: t.evidence.id, title: t.evidence.title, description: t.evidence.description } : null,
     ghiChu: t.notes,
   };
 }
@@ -145,7 +144,7 @@ export function chuyenMvp(mvp: RawMvp, luat: KetQuaLuat): DuLieuMvp {
   for (const d of mvp.dossier) hoSo[d.id] = { id: d.id, loai: d.id.split('-')[0], heading: d.heading, fields: d.fields, quotes: d.quotes };
   const soTay: Record<string, Obj> = {};
   for (const s of mvp.soTay) {
-    soTay[s.id] = { id: s.id, ten: s.ten, loai: s.loai, trangChiLinh: s.trangChiLinh, haVy: s.haVy.map(loi), chonDoanCode: s.chonDoanCode ? s.chonDoanCode.map(luaChon) : null, chuThich: s.chuThich };
+    soTay[s.id] = { id: s.id, ten: s.ten, loai: s.loai, trangChiLinh: s.trangChiLinh, haVy: s.haVy.map(loi), chuThich: s.chuThich };
   }
   const chuoiDs = mvp.chuoi.map((c) => {
     const t = luat.mocChuoi.get(c.id);

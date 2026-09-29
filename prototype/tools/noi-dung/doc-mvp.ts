@@ -174,7 +174,7 @@ export type MucMvp =
   | { kind: 'consequence'; hauQua: HauQua[] }
   | { kind: 'branch'; branch: RawReNhanh }
   | { kind: 'notebook-lookup'; trang: string; phan: string }
-  | { kind: 'notebook-copy'; trang: string }
+  | { kind: 'notebook-note'; trang: string }
   | { kind: 'create-character'; tao: RawTaoNhanVat }
   | { kind: 'trial-filter'; id: string; sql: string; soDong: number; chon: { cot: string; giaTri: string } }
   | { kind: 'save-evidence'; id: string }
@@ -224,7 +224,6 @@ export interface RawTrangSo {
   loai: 'cú pháp' | 'tâm đắc' | 'lỗi thường gặp';
   trangChiLinh: string[];
   haVy: RawLine[];
-  chonDoanCode: RawChoice[] | null;
   chuThich: string | null;
   viTri: ViTri;
 }
@@ -953,7 +952,8 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         return add({ kind: 'branch', branch });
       }
       if ((m = new RegExp(`^- \\[TRA SỔ (${MA}) · (cú pháp|tâm đắc|lỗi thường gặp)\\]$`).exec(line))) return add({ kind: 'notebook-lookup', trang: m[1] ?? '', phan: m[2] ?? '' });
-      if ((m = new RegExp(`^- \\[CHÉP SỔ (${MA})\\]$`).exec(line))) return add({ kind: 'notebook-copy', trang: m[1] ?? '' });
+      if ((m = new RegExp(`^- \\[GHI SỔ (${MA})\\]$`).exec(line))) return add({ kind: 'notebook-note', trang: m[1] ?? '' });
+      if (line.startsWith('- [CHÉP SỔ ')) throw new Error('[CHÉP SỔ] đã bỏ (QĐ-092): dùng [GHI SỔ <trang>] — dòng "Vào sổ cá nhân" của trang tự vào sổ cá nhân');
       if ((m = /^- \[TẠO NHÂN VẬT (ten|nganh)\] ([a-z-]+)(?: \(([a-z]+)\))?: "(.*)"$/.exec(line))) {
         tao = { truong: m[1] === 'ten' ? 'ten' : 'nganh', asker: { speaker: m[2] ?? '', expression: m[3] ?? null, text: m[4] ?? '' }, xucXac: null, luaChon: [] };
         return add({ kind: 'create-character', tao });
@@ -987,7 +987,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
   // ---------- so-tay/<trang>.md ----------
   function docSoTay({ viTri }: { viTri: () => ViTri }) {
     let trang: RawTrangSo | null = null;
-    let muc: 'linh' | 'ha-vy' | 'code' | 'so-ca-nhan' | null = null;
+    let muc: 'linh' | 'ha-vy' | 'so-ca-nhan' | null = null;
     const dong = (line: string, i: number): number => {
       if (line.trim() === '') return i;
       if (line.startsWith('# ')) {
@@ -995,7 +995,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         const m = new RegExp(`^# (${MA}) — (.+) \\{trang sổ: (${MA})\\}$`).exec(line);
         if (!m) throw new Error(`tiêu đề trang sổ sai quy ước "${line}" — viết "# <mã> — <Tên> {trang sổ: <mã>}"`);
         if (m[1] !== m[3]) throw new Error(`mã đầu tiêu đề "${m[1] ?? ''}" khác {trang sổ: ${m[3] ?? ''}}`);
-        trang = { id: m[1] ?? '', ten: m[2] ?? '', loai: 'cú pháp', trangChiLinh: [], haVy: [], chonDoanCode: null, chuThich: null, viTri: viTri() };
+        trang = { id: m[1] ?? '', ten: m[2] ?? '', loai: 'cú pháp', trangChiLinh: [], haVy: [], chuThich: null, viTri: viTri() };
         mvp.soTay.push(trang);
         return i;
       }
@@ -1003,11 +1003,9 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       if (line.startsWith('## ')) {
         if (line === '## Trang chị Linh') muc = 'linh';
         else if (line === '## Hà Vy') muc = 'ha-vy';
-        else if (line === '## Chọn đoạn code') {
-          muc = 'code';
-          trang.chonDoanCode = [];
-        } else if (line === '## Vào sổ cá nhân') muc = 'so-ca-nhan';
-        else throw new Error(`mục lạ trong trang sổ "${line}" — dùng "## Trang chị Linh", "## Hà Vy", "## Chọn đoạn code", "## Vào sổ cá nhân"`);
+        else if (line === '## Vào sổ cá nhân') muc = 'so-ca-nhan';
+        else if (line === '## Chọn đoạn code') throw new Error('mục "## Chọn đoạn code" đã bỏ (QĐ-092): dòng "Vào sổ cá nhân" tự vào sổ khi kịch bản [GHI SỔ]');
+        else throw new Error(`mục lạ trong trang sổ "${line}" — dùng "## Trang chị Linh", "## Hà Vy", "## Vào sổ cá nhân"`);
         return i;
       }
       if (muc === null) {
@@ -1023,12 +1021,6 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       if (muc === 'ha-vy') {
         if (!line.startsWith('- **')) throw new Error(`mục "## Hà Vy" chỉ có lời thoại "- **ha-vy** (…): …": "${line}"`);
         trang.haVy.push(parseSpoken(line.slice(2)));
-        return i;
-      }
-      if (muc === 'code') {
-        const c = parseChoice(`  ${line}`);
-        if (!c || !trang.chonDoanCode) throw new Error(`lựa chọn đoạn code sai quy ước "${line}"`);
-        trang.chonDoanCode.push(c);
         return i;
       }
       const ct = /^- Chú thích: (.+)$/.exec(line);

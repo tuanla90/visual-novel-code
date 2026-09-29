@@ -415,3 +415,29 @@ describe('thẻ giới thiệu nhân vật (nhan-vat.md: Danh xưng, Năm, Ngàn
     expect(docNv('- Danh xưng: Bạn cùng phòng\n').loi).toEqual(['noi-dung-mvp/nhan-vat.md:1: nhân vật tung có thẻ giới thiệu nhưng thiếu dòng: Câu nói, Giới thiệu']);
   });
 });
+
+describe('[GHI SỔ] và thẻ thử thách không vật chứng (QĐ-092)', () => {
+  const SO = ['# so1 — Trang thử {trang sổ: so1}', '- Loại: cú pháp', '## Trang chị Linh', 'Lọc bằng WHERE.', '## Vào sổ cá nhân', '- Chú thích: Lọc dòng dùng WHERE.', ''].join('\n');
+  const docVoi = (suaKichBan: (s: string) => string, soTay: string = SO) => {
+    const tep: TepMvp[] = [
+      ...Object.entries(GOC).map(([p, s]) => ({ duongDan: `noi-dung-mvp/${p}`, loai: loaiCua(p), noiDung: p === 'kich-ban/01.md' ? suaKichBan(s) : s })),
+      { duongDan: 'noi-dung-mvp/so-tay/so1.md', loai: 'so-tay' as const, noiDung: soTay },
+    ];
+    const kq = docNoiDungMvp(tep);
+    return { mvp: kq.mvp, loi: [...kq.loi, ...kiemLuatMvp(kq.mvp).loi].map(dinhDangLoi) };
+  };
+  const themVaoMay = (dong: string) => (s: string) => s.replace('- **narrator**: Bàn làm việc.\n', `- **narrator**: Bàn làm việc.\n${dong}\n`);
+
+  it('[GHI SỔ so1] đọc được; trang không có dòng "Vào sổ cá nhân" → lỗi; [CHÉP SỔ] → lỗi chỉ sang [GHI SỔ]', () => {
+    const tot = docVoi(themVaoMay('- [GHI SỔ so1]'));
+    expect(tot.loi).toEqual([]);
+    expect(tot.mvp.chuoi.find((c) => c.id === 's-may')?.items).toContainEqual({ kind: 'notebook-note', trang: 'so1' });
+    expect(docVoi(themVaoMay('- [GHI SỔ so1]'), SO.replace(/## Vào sổ cá nhân\n- Chú thích: .*\n/, '')).loi).toEqual([
+      expect.stringMatching(/\[GHI SỔ so1\]: trang phải có mục "## Vào sổ cá nhân"/),
+    ]);
+    expect(docVoi(themVaoMay('- [CHÉP SỔ so1]')).loi).toEqual([expect.stringMatching(/\[CHÉP SỔ\] đã bỏ \(QĐ-092\)/)]);
+    expect(docVoi((s) => s, SO.replace('## Vào sổ cá nhân', '## Chọn đoạn code\n- (A) {id: a} `x` [ĐÚNG]\n\n## Vào sổ cá nhân')).loi).toEqual([
+      expect.stringMatching(/"## Chọn đoạn code" đã bỏ/),
+    ]);
+  });
+});

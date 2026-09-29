@@ -156,7 +156,6 @@ export type KhungNhinMvp =
   | { kind: 'effect'; effectId: string }
   | { kind: 'projector'; nut: Extract<NutMvp, { type: 'projector' }> }
   | { kind: 'notebook-lookup'; trang: string; phan: string }
-  | { kind: 'notebook-copy'; trang: string; lanThu: number }
   | { kind: 'trial-filter'; nut: Extract<NutMvp, { type: 'trial-filter' }>; lanThu: number }
   | { kind: 'create-character'; nut: Extract<NutMvp, { type: 'create-character' }> }
   | { kind: 'explore'; nut: Extract<NutMvp, { type: 'explore' }>; diem: DiemKhamPhaHienMvp[] }
@@ -461,7 +460,6 @@ function canNguoiChoi(nut: NutMvp): boolean {
     case 'effect':
     case 'projector':
     case 'notebook-lookup':
-    case 'notebook-copy':
     case 'trial-filter':
     case 'create-character':
     case 'explore':
@@ -519,6 +517,9 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
       }
       case 'save-evidence':
         s = tienNut(luuBangChung(s, nut.evidenceId));
+        break;
+      case 'notebook-note':
+        s = tienNut({ ...s, soTay: them(s.soTay, nut.trang) });
         break;
       case 'ending-branch': {
         const ket = kb.lich.ket;
@@ -608,8 +609,6 @@ export function khungNhin(kb: KichBanMvp, s: TrangThaiMvp): KhungNhinMvp {
       return { kind: 'projector', nut };
     case 'notebook-lookup':
       return { kind: 'notebook-lookup', trang: nut.trang, phan: nut.phan };
-    case 'notebook-copy':
-      return { kind: 'notebook-copy', trang: nut.trang, lanThu: lanThu(nut.trang) };
     case 'trial-filter':
       return { kind: 'trial-filter', nut, lanThu: lanThu(nut.id) };
     case 'create-character':
@@ -630,7 +629,7 @@ function batDauPhanHoi(
   kb: KichBanMvp,
   s: TrangThaiMvp,
   id: string,
-  nguon: 'question' | 'line-pick' | 'notebook-copy',
+  nguon: 'question' | 'line-pick',
   dung: boolean,
   phanHoi: LoiMvp[],
   truVach: boolean,
@@ -663,7 +662,6 @@ function ketThucPhanHoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
   if (!hd) return s;
   if (hd.hetVach) return batDauHop(kb, { ...s, hoiDap: null });
   if (!hd.dungRoi) return { ...s, hoiDap: null };
-  if (hd.nguon === 'notebook-copy') s = { ...s, soTay: them(s.soTay, hd.id) };
   return tienNut({ ...s, hoiDap: null });
 }
 
@@ -733,11 +731,6 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
         if (!c) return s;
         const kq = apHauQua(s, c.hauQua);
         moi = kq.daNhay ? kq.s : tienNut(kq.s);
-      } else if (kn.kind === 'notebook-copy') {
-        const trang = kb.soTay[kn.trang];
-        const c = trang?.chonDoanCode?.find((x) => x.id === hd.luaChon);
-        if (!trang || !c) return s;
-        moi = batDauPhanHoi(kb, s, kn.trang, 'notebook-copy', c.correct, c.feedback, false);
       } else {
         return s;
       }
@@ -759,7 +752,7 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
     }
     case 'xong-thu-thach': {
       if ((kn.kind !== 'challenge' && kn.kind !== 'fix-query') || kn.thuThach.id !== hd.thuThach) return s;
-      moi = luuBangChung(s, kn.thuThach.vatChung.id);
+      moi = kn.thuThach.vatChung ? luuBangChung(s, kn.thuThach.vatChung.id) : s;
       moi = { ...moi, thuThachXong: them(moi.thuThachXong, kn.thuThach.id) };
       if (s.thuThachDangLam) {
         // Thử thách mở từ dữ kiện (không trong chuỗi): ghi nhận dữ kiện luôn.
@@ -836,7 +829,7 @@ export function tenNguoiNoi(kb: KichBanMvp, speaker: string): string {
 export function sqlCuaManChieu(kb: KichBanMvp, nut: Extract<NutMvp, { type: 'projector' }>): string | null {
   const nguon = nut.source;
   if (nguon.kind === 'sql') return nguon.sql;
-  const the = Object.values(kb.thuThach).find((t) => t.vatChung.id === nguon.evidenceId);
+  const the = Object.values(kb.thuThach).find((t) => t.vatChung?.id === nguon.evidenceId);
   return the?.sqlChuan ?? null;
 }
 

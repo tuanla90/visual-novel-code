@@ -180,9 +180,11 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong }: ManTh
             ) : null}
             {dung ? (
               <div className="mvp-chal__luu">
-                <p className="mvp-chal__vatchung">
-                  <strong>{dienTen(the.vatChung.title)}</strong> — {dienTen(the.vatChung.description)}
-                </p>
+                {the.vatChung ? (
+                  <p className="mvp-chal__vatchung">
+                    <strong>{dienTen(the.vatChung.title)}</strong> — {dienTen(the.vatChung.description)}
+                  </p>
+                ) : null}
                 <button
                   type="button"
                   className="btn btn--primary"
@@ -194,7 +196,7 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong }: ManTh
                   }}
                   autoFocus
                 >
-                  Lưu vào hồ sơ và đi tiếp
+                  {the.vatChung ? 'Lưu vào hồ sơ và đi tiếp' : 'Đi tiếp'}
                 </button>
               </div>
             ) : null}

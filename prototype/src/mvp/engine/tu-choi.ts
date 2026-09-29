@@ -22,7 +22,7 @@ export interface ChienThuat {
 }
 
 /** Hành động tự chơi cho một khung nhìn (không tính `end` / `error`). */
-function hanhDongTuDong(kb: KichBanMvp, s: TrangThaiMvp, kn: Exclude<KhungNhinMvp, { kind: 'end' | 'error' }>, ct: ChienThuat): HanhDongMvp {
+function hanhDongTuDong(s: TrangThaiMvp, kn: Exclude<KhungNhinMvp, { kind: 'end' | 'error' }>, ct: ChienThuat): HanhDongMvp {
   switch (kn.kind) {
     case 'line':
     case 'feedback':
@@ -43,11 +43,6 @@ function hanhDongTuDong(kb: KichBanMvp, s: TrangThaiMvp, kn: Exclude<KhungNhinMv
       const d = kn.nut.lines.find((x) => x.correct);
       if (!d) throw new Error('Chọn dòng không có dòng đúng');
       return { type: 'chon-dong', index: d.index };
-    }
-    case 'notebook-copy': {
-      const c = kb.soTay[kn.trang]?.chonDoanCode?.find((x) => x.correct);
-      if (!c) throw new Error(`Trang ${kn.trang} không có đoạn đúng`);
-      return { type: 'chon', luaChon: c.id };
     }
     case 'branch':
       return { type: 'chon', luaChon: ct.reNhanh?.(kn.nut.id) ?? kn.luaChon[0]?.id ?? '' };
@@ -81,7 +76,7 @@ export function choiTuDong(
     if (kn.kind === 'error') throw new Error(`Máy báo lỗi: ${kn.message} (ngày ${s.ngay}, chuỗi ${s.conTro?.chuoi ?? '-'})`);
     if (dung(s, kn)) return s;
     if (kn.kind === 'end') return s;
-    const hd = hanhDongTuDong(kb, s, kn, ct);
+    const hd = hanhDongTuDong(s, kn, ct);
     const sau = xuLy(kb, s, hd);
     if (sau === s) throw new Error(`Hành động ${hd.type} bị từ chối ở khung nhìn ${kn.kind} (ngày ${s.ngay}, khung ${s.khung})`);
     s = sau;

@@ -42,7 +42,7 @@ import { NoiMvp } from './NoiMvp';
 import { SanKhauMvp } from './SanKhauMvp';
 import { TaiLieuMvp } from './TaiLieuMvp';
 import { TaoNhanVatMvp } from './TaoNhanVatMvp';
-import { ChepSoMvp, TraSoMvp } from './TrangSoMvp';
+import { TraSoMvp } from './TrangSoMvp';
 
 export interface ManChoiMvpProps {
   onVeTieuDe: () => void;
@@ -117,6 +117,17 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     }
     demTruoc.current = dem;
   }, [s, baoToast]);
+  // Sổ cá nhân tự có dòng mới ([GHI SỔ], QĐ-092) → báo, để người chơi biết mà mở xem.
+  const soTrangTruoc = useRef(s ? s.soTay.length : 0);
+  useEffect(() => {
+    const dem = s ? s.soTay.length : 0;
+    if (dem > soTrangTruoc.current) {
+      const moi = s ? kb.soTay[s.soTay[dem - 1] ?? ''] : undefined;
+      soundEngine.playSfx('page');
+      baoToast(moi?.chuThich ? `Sổ cá nhân có dòng mới: ${moi.chuThich}` : 'Sổ cá nhân có dòng mới.');
+    }
+    soTrangTruoc.current = dem;
+  }, [s, kb, baoToast]);
 
   const kn: KhungNhinMvp | null = s ? khungNhin(kb, s) : null;
   const loaiKn = kn?.kind;
@@ -287,8 +298,6 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         return <ManChieuMvp kb={kb} duLieu={kb.duLieu} nut={kn.nut} onTiep={tiep} />;
       case 'notebook-lookup':
         return <TraSoMvp kb={kb} trang={kn.trang} dienTen={dienTen} onTiep={tiep} />;
-      case 'notebook-copy':
-        return <ChepSoMvp kb={kb} trang={kn.trang} dienTen={dienTen} lanThu={kn.lanThu} tenNguoiNoi={(sp) => tenNguoiNoi(kb, sp)} onChon={(id) => hanhDong({ type: 'chon', luaChon: id })} />;
       case 'trial-filter':
         return <LocThuMvp duLieu={kb.duLieu} nut={kn.nut} lanThu={kn.lanThu} onChon={(giaTri) => hanhDong({ type: 'chon-o', giaTri })} />;
       case 'create-character':

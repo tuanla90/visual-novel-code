@@ -8,7 +8,7 @@
  *   - "Nhân vật": thẻ Polaroid các nhân vật đã gặp (`NhanVatMvp`).
  *   - "Hồ sơ": chân dung người chơi + số đếm; lưới ô giấy nhớ / tài liệu / bằng chứng (lọc theo nhóm, QĐ-086/087);
  *     bấm ô → thẻ chi tiết (`TheHoSo`).
- *   - "Sổ cá nhân": các trang đã chép (đoạn code đúng + chú thích), mỗi trang một thẻ nhật ký.
+ *   - "Sổ cá nhân": các dòng đã học (tự ghi ở `[GHI SỔ]`, QĐ-092) kèm trang chị Linh tương ứng, mỗi trang một thẻ nhật ký.
  * Đóng: nút Đóng, Esc, bấm ra ngoài khung.
  */
 import '../../evidence/ui/inventory-grid.css';
@@ -283,14 +283,13 @@ function NganSoTay({ kb, soTay, dienTen }: { kb: KichBanMvp; soTay: string[]; di
               <IconFileText width={16} height={16} aria-hidden="true" /> SỔ CÁ NHÂN
             </span>
           </div>
-          <p className="mvp-kho__trong">Chưa chép trang nào. Khi Hà Vy bảo "chép vào sổ", đoạn đúng sẽ nằm ở đây.</p>
+          <p className="mvp-kho__trong">Sổ còn trống. Mỗi khi bạn học xong một mảng kiến thức ở phòng máy, một dòng sẽ tự ghi vào đây.</p>
         </div>
       ) : (
-        <ul className="mvp-kho__trang-ds" aria-label="Các trang đã chép">
+        <ul className="mvp-kho__trang-ds" aria-label="Các dòng đã học">
           {soTay.map((id, i) => {
             const t = kb.soTay[id];
             if (!t) return null;
-            const dung = t.chonDoanCode?.find((c) => c.correct);
             return (
               <li key={id} className="notebook__journal-card mvp-kho__trang">
                 <div className="notebook__journal-header">
@@ -301,18 +300,22 @@ function NganSoTay({ kb, soTay, dienTen }: { kb: KichBanMvp; soTay: string[]; di
                 </div>
                 <h3 className="notebook__journal-title">{dienTen(t.ten)}</h3>
                 <div className="notebook__journal-body">
-                  {dung ? (
+                  {t.chuThich ? (
                     <div className="notebook__journal-entry">
-                      <h4>ĐOẠN ĐÃ CHÉP</h4>
+                      <h4>ĐÃ HỌC</h4>
                       <p className="mvp-kho__code">
-                        <CodeText text={dienTen(dung.text)} />
+                        <CodeText text={dienTen(t.chuThich)} />
                       </p>
                     </div>
                   ) : null}
-                  {t.chuThich ? (
+                  {t.trangChiLinh.length > 0 ? (
                     <div className="notebook__journal-entry">
-                      <h4>GHI CHÚ</h4>
-                      <p>{dienTen(t.chuThich)}</p>
+                      <h4>SỔ CHỊ LINH</h4>
+                      {t.trangChiLinh.map((d, k) => (
+                        <p key={k}>
+                          <CodeText text={dienTen(d)} />
+                        </p>
+                      ))}
                     </div>
                   ) : null}
                 </div>
