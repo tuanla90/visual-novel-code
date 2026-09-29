@@ -7,6 +7,8 @@ import { partName } from '../display-names';
 import { PART_IDS, type PartId } from '../ids';
 import { track } from '../telemetry/track';
 import { ConfirmDialog } from './ConfirmDialog';
+import { IconSave, IconFolderOpen, IconSliders, IconRotateCcw } from './icons';
+import { useVnStore } from '../vn/vn-store';
 
 export interface TopBarProps {
   currentPart: PartId | null;
@@ -39,6 +41,8 @@ export function TopBar({
 }: TopBarProps) {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const currentIndex = currentPart ? PART_IDS.indexOf(currentPart) : -1;
+  const viewportMode = useVnStore((s) => s.viewportMode);
+  const toggleViewportMode = useVnStore((s) => s.toggleViewportMode);
   return (
     <header className="topbar">
       <div className="topbar__chapter" aria-label={`Tiến trình: ${completedParts.length} trên ${PART_IDS.length} phần hoàn thành`}>
@@ -81,6 +85,20 @@ export function TopBar({
 
         {/* Nhóm button con nhộng liền mạch theo đúng Asset mẫu */}
         <div className="topbar__capsule-group">
+          <button
+            type="button"
+            className={`topbar__capsule-btn topbar__capsule-btn--viewport${viewportMode === 'mobile' ? ' is-active' : ''}`}
+            aria-label={viewportMode === 'mobile' ? 'Chuyển sang màn hình ngang PC' : 'Chuyển sang màn hình dọc Mobile 9:16'}
+            title={viewportMode === 'mobile' ? 'Chuyển sang màn hình ngang PC' : 'Chuyển sang màn hình dọc Mobile 9:16'}
+            onClick={toggleViewportMode}
+          >
+            <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+              <line x1="12" y1="18" x2="12.01" y2="18" />
+            </svg>
+            <span className="topbar__capsule-text-responsive">{viewportMode === 'mobile' ? 'Dọc' : 'Dọc/Ngang'}</span>
+          </button>
+
           {onOpenMap ? (
             <button
               type="button"
@@ -97,8 +115,6 @@ export function TopBar({
               <span>Bản đồ</span>
             </button>
           ) : null}
-
-          {onOpenMap ? <span className="topbar__capsule-divider" aria-hidden="true" /> : null}
 
           <button
             type="button"
@@ -119,8 +135,6 @@ export function TopBar({
             <span className="topbar__dossier-count" aria-label={`${notebookCount} vật chứng`}>{notebookCount}</span>
           </button>
 
-          <span className="topbar__capsule-divider" aria-hidden="true" />
-
           <details className="topbar__menu topbar__capsule-menu" role="presentation">
             <summary
               className="topbar__capsule-btn topbar__capsule-btn--menu topbar__menu-trigger"
@@ -134,49 +148,70 @@ export function TopBar({
               </svg>
             </summary>
             <div className="topbar__menu-panel">
-              <strong>Tùy chọn Game</strong>
+              <span className="topbar__menu-title">TÙY CHỌN HỆ THỐNG</span>
+              <button
+                type="button"
+                className="topbar__menu-item"
+                onClick={(e) => {
+                  e.currentTarget.closest('details')?.removeAttribute('open');
+                  toggleViewportMode();
+                }}
+              >
+                <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                  <line x1="12" y1="18" x2="12.01" y2="18" />
+                </svg>
+                <span>{viewportMode === 'mobile' ? 'Màn hình Ngang (PC)' : 'Màn hình Dọc (Mobile)'}</span>
+              </button>
               {onOpenSave ? (
                 <button
                   type="button"
+                  className="topbar__menu-item"
                   onClick={(e) => {
                     e.currentTarget.closest('details')?.removeAttribute('open');
                     onOpenSave();
                   }}
                 >
-                  Lưu tiến độ (Save)
+                  <IconSave width={16} height={16} />
+                  <span>Lưu tiến độ (Save)</span>
                 </button>
               ) : null}
               {onOpenLoad ? (
                 <button
                   type="button"
+                  className="topbar__menu-item"
                   onClick={(e) => {
                     e.currentTarget.closest('details')?.removeAttribute('open');
                     onOpenLoad();
                   }}
                 >
-                  Nạp tiến độ (Load)
+                  <IconFolderOpen width={16} height={16} />
+                  <span>Nạp tiến độ (Load)</span>
                 </button>
               ) : null}
               {onOpenAudio ? (
                 <button
                   type="button"
+                  className="topbar__menu-item"
                   onClick={(e) => {
                     e.currentTarget.closest('details')?.removeAttribute('open');
                     onOpenAudio();
                   }}
                 >
-                  Cài đặt (tốc độ chữ, âm thanh)
+                  <IconSliders width={16} height={16} />
+                  <span>Cài đặt (tốc độ chữ, âm thanh)</span>
                 </button>
               ) : null}
               <button
                 type="button"
-                style={{ color: '#ef4444' }}
+                className="topbar__menu-item topbar__menu-item--danger"
                 onClick={(e) => {
                   e.currentTarget.closest('details')?.removeAttribute('open');
                   setConfirmOpen(true);
                 }}
               >
-                Chơi lại từ đầu
+                <IconRotateCcw width={16} height={16} />
+                <span>Chơi lại từ đầu</span>
               </button>
             </div>
           </details>

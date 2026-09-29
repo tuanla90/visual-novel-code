@@ -1,0 +1,365 @@
+/**
+ * Hệ thống bố cục Màn hình Dọc (Mobile Portrait Mode 9:16) cho Visual Novel
+ * Phục vụ chuẩn hóa Fixed Scene Types cho việc tự sinh kịch bản từ file Markdown.
+ */
+
+/* ==========================================================================
+   1. DESKTOP SIMULATOR BEZEL (Giả lập điện thoại trên máy tính)
+   ========================================================================== */
+.game-simulator-backdrop {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0a0f1a 100%);
+  overflow: hidden;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.game-simulator-bezel {
+  position: relative;
+  width: min(414px, 100%);
+  height: min(860px, 98vh);
+  aspect-ratio: 9 / 18.5;
+  border-radius: 44px;
+  box-shadow: 
+    0 0 0 10px #1e293b,
+    0 0 0 12px #334155,
+    0 25px 60px rgba(0, 0, 0, 0.8),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+}
+
+/* Tai thỏ / Dynamic Island giả lập */
+.game-simulator-island {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 22px;
+  background: #000;
+  border-radius: 20px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-simulator-island-camera {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #111827;
+  border: 1.5px solid #1f2937;
+  margin-left: auto;
+  margin-right: 12px;
+}
+
+/* Thanh gạt Home indicator ở đáy */
+.game-simulator-home-bar {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 4px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   2. HỆ THỐNG BỐ CỤC CHÂN DUNG (PORTRAIT RULES)
+   ========================================================================== */
+@media (max-width: 768px), (orientation: portrait) {
+  html, body, #root {
+    height: 100dvh;
+    overflow: hidden;
+  }
+  .game {
+    height: 100% !important;
+    grid-template-rows: auto 1fr !important;
+  }
+}
+
+.game--portrait {
+  height: 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden;
+  grid-template-rows: auto 1fr !important;
+}
+
+/* --- 2.1 TOPBAR TRÊN MÀN HÌNH DỌC --- */
+.game--portrait .topbar,
+@media (max-width: 768px) {
+  .topbar {
+    grid-template-columns: auto 1fr auto !important;
+    gap: 8px !important;
+    padding: 6px 10px !important;
+    min-height: 48px !important;
+  }
+  .topbar__chapter {
+    gap: 4px !important;
+  }
+  .topbar__chapter-count {
+    transform: scale(0.82) !important;
+    transform-origin: left center !important;
+    margin-right: -8px !important;
+  }
+  .topbar__chapter-info {
+    display: none !important;
+  }
+  .topbar__task {
+    max-width: 100% !important;
+    padding: 4px 10px 4px 8px !important;
+    gap: 6px !important;
+  }
+  .topbar__task-icon {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  .topbar__task-label {
+    font-size: 0.55rem !important;
+  }
+  .topbar__task-text {
+    font-size: 0.78rem !important;
+  }
+  .topbar__capsule-group {
+    height: 36px !important;
+  }
+  .topbar__capsule-btn {
+    padding: 0 8px !important;
+    font-size: 0.76rem !important;
+  }
+  .topbar__capsule-text-responsive,
+  .topbar__capsule-btn--map span {
+    display: none !important;
+  }
+  .topbar__capsule-btn--dossier {
+    padding: 0 6px !important;
+  }
+}
+
+/* --- 2.2 SÂN KHẤU (STAGE) & NHÂN VẬT KHUNG DỌC --- */
+.game--portrait .stage,
+@media (max-width: 768px) {
+  .stage {
+    padding: 8px 8px 6px !important;
+    grid-template-rows: auto 1fr auto !important;
+    position: relative !important;
+  }
+  .stage__scene-label {
+    top: 8px !important;
+    left: 8px !important;
+    transform: scale(0.9) !important;
+    transform-origin: top left !important;
+  }
+  .stage__backdrop-img,
+  .stage__backdrop .scene-art {
+    object-position: 50% 50% !important;
+  }
+  /* Chân dung nhân vật đứng chính giữa, chiếm ~70% chiều cao */
+  .cast-member {
+    width: min(390px, 94vw) !important;
+    top: auto !important;
+    bottom: 0 !important;
+    height: 72vh !important;
+    max-height: 560px !important;
+  }
+  .cast-member--side-right {
+    left: 58% !important;
+  }
+  .cast-member--side-left {
+    left: 42% !important;
+  }
+  .stage__content {
+    grid-row: 3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding-bottom: 2px !important;
+  }
+  .stage__content:has(> .dialog-container),
+  .stage__content:has(> .explore) {
+    width: 100% !important;
+    padding-bottom: 2px !important;
+  }
+}
+
+/* --- 2.3 KHUNG THOẠI & NÚT TIẾP TỤC DẠNG TEM GIẤY --- */
+.game--portrait .dialog-container,
+@media (max-width: 768px) {
+  .dialog-container {
+    width: 100% !important;
+  }
+  .dialog--glass {
+    padding: 16px 18px 12px !important;
+    border-radius: 16px !important;
+    min-height: 80px !important;
+  }
+  .dialog--glass .dialog__speaker {
+    top: -14px !important;
+    left: 12px !important;
+    font-size: 0.92rem !important;
+    padding: 4px 12px !important;
+  }
+  .dialog--glass .dialog__text {
+    font-size: 1.05rem !important;
+    line-height: 1.48 !important;
+  }
+  .dialog__footer--external {
+    margin-top: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+  .dialog__btn-notebook {
+    display: none !important; /* Đã có trên Topbar */
+  }
+  /* Nút Tiếp tục dạng tem giấy nghệ thuật */
+  .dialog__next {
+    min-height: 40px !important;
+    padding: 6px 18px 6px 14px !important;
+  }
+  .dialog__next .dialog__next-text,
+  .dialog__next span {
+    font-size: 1.02rem !important;
+  }
+}
+
+/* --- 2.4 THANH ĐIỀU KHIỂN NHANH DƯỚI ĐÁY (QUICK ACTION BAR) --- */
+.game--portrait .vn-quick-bar--mobile,
+@media (max-width: 768px) {
+  .vn-quick-bar--desktop {
+    display: none !important;
+  }
+  .vn-quick-bar--mobile {
+    display: flex !important;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .vn-quick-bar--mobile .vn-btn {
+    min-height: 32px !important;
+    padding: 3px 8px !important;
+    font-size: 0.72rem !important;
+    gap: 4px !important;
+    border-radius: 6px !important;
+    background: rgba(15, 23, 42, 0.65) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  }
+  .vn-quick-bar--mobile .vn-btn svg {
+    width: 12px !important;
+    height: 12px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  :not(.game--portrait) .vn-quick-bar--mobile {
+    display: none !important;
+  }
+  :not(.game--portrait) .vn-quick-bar--desktop {
+    display: flex !important;
+  }
+}
+
+/* --- 2.5 CÂU HỎI TRẮC NGHIỆM TRÊN MÀN HÌNH DỌC --- */
+.game--portrait .mc__overlay,
+@media (max-width: 768px) {
+  .mc__overlay {
+    bottom: clamp(140px, 20vh, 190px) !important;
+    padding: 0 10px 8px !important;
+  }
+  .mc__choices {
+    width: 100% !important;
+    gap: 10px !important;
+  }
+  .mc__choice {
+    min-height: 44px !important;
+    padding: 8px 16px !important;
+    font-size: 0.98rem !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* --- 2.6 MÀN KHÁM PHÁ (EXPLORE) TRÊN MÀN HÌNH DỌC --- */
+.game--portrait .explore,
+@media (max-width: 768px) {
+  .explore {
+    padding: 16px 18px !important;
+    gap: 12px !important;
+    border-radius: 16px !important;
+  }
+  .explore__lead {
+    font-size: 1rem !important;
+  }
+  .explore__hotspots {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
+    gap: 10px !important;
+  }
+  .hotspot {
+    min-height: 44px !important;
+    padding: 8px 14px !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+/* --- 2.7 MODALS & HỒ SƠ TRÊN MÀN HÌNH DỌC --- */
+.game--portrait .notebook,
+.game--portrait .backlog-modal__card,
+.game--portrait .save-load-modal__card,
+.game--portrait .campus-map__card,
+.game--portrait .audio-modal__card,
+@media (max-width: 768px) {
+  .notebook,
+  .backlog-modal__card,
+  .save-load-modal__card,
+  .campus-map__card,
+  .audio-modal__card {
+    width: calc(100% - 16px) !important;
+    max-width: 100% !important;
+    max-height: 92vh !important;
+    border-radius: 16px !important;
+  }
+  .notebook__body {
+    flex-direction: column !important;
+  }
+  .notebook__tabs {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    padding-bottom: 6px !important;
+  }
+}
+
+/* --- 2.8 THU NHẬN VẬT PHẨM (DOCUMENT REVEAL) TRÊN MÀN HÌNH DỌC --- */
+.game--portrait .docview,
+@media (max-width: 768px) {
+  .docview {
+    padding: 16px 14px !important;
+  }
+  .docview__card {
+    width: 100% !important;
+    max-height: 88vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .docview__btn-collect {
+    width: 100% !important;
+    min-height: 44px !important;
+  }
+}
+

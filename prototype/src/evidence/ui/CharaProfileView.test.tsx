@@ -7,7 +7,7 @@ describe('CharaProfileView — Hồ sơ nhân vật chuẩn Visual Novel', () =>
   it('hiển thị đầy đủ thông tin của nhân vật mặc định (Minh Anh)', () => {
     render(<CharaProfileView initialCharacterId="minh-anh" />);
 
-    expect(screen.getByText('CHARA PROFILE')).toBeInTheDocument();
+    expect(screen.getByRole('navigation', { name: /Danh sách nhân vật/i })).toBeInTheDocument();
     expect(screen.getByText('Lê Minh Anh')).toBeInTheDocument();
     expect(screen.getByText('Chủ nhiệm CLB Thám tử Dữ liệu')).toBeInTheDocument();
     expect(screen.getByText(/Kinh tế Quốc tế/)).toBeInTheDocument();

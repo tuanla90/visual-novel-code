@@ -105,12 +105,6 @@ export function MultipleChoice({ question, attempts, gameKey, onChoose, random }
               </span>
             )}
           </div>
-
-          <div className="dialog__indicator" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
-              <polygon points="12,2 22,12 12,22 2,12" />
-            </svg>
-          </div>
         </div>
       </div>
     </div>

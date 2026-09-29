@@ -47,6 +47,133 @@ function isTypingTarget(target: EventTarget | null): boolean {
   return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || target.isContentEditable;
 }
 
+function VnQuickButtons({
+  autoMode,
+  toggleAutoMode,
+  skipMode,
+  toggleSkipMode,
+  alreadyRead,
+  onOpenBacklog,
+  onOpenSave,
+  onOpenLoad,
+  toggleHideUi,
+  onOpenAudio,
+  className,
+}: {
+  autoMode: boolean;
+  toggleAutoMode: () => void;
+  skipMode: boolean;
+  toggleSkipMode: () => void;
+  alreadyRead: boolean;
+  onOpenBacklog?: () => void;
+  onOpenSave?: () => void;
+  onOpenLoad?: () => void;
+  toggleHideUi: () => void;
+  onOpenAudio?: () => void;
+  className?: string;
+}) {
+  return (
+    <div className={`vn-quick-bar ${className ?? ''}`} role="toolbar" aria-label="Điều khiển hội thoại">
+      <button
+        type="button"
+        className={`vn-btn${autoMode ? ' vn-btn--active' : ''}`}
+        onClick={(e) => {
+          e.stopPropagation();
+          soundEngine.playSfx('click');
+          toggleAutoMode();
+        }}
+        title="Tự động chạy hội thoại"
+      >
+        <IconPlay width={14} height={14} />
+        <span>Auto</span>
+      </button>
+      <button
+        type="button"
+        className={`vn-btn${skipMode ? ' vn-btn--active' : ''}`}
+        onClick={(e) => {
+          e.stopPropagation();
+          soundEngine.playSfx('click');
+          toggleSkipMode();
+        }}
+        disabled={!skipMode && !alreadyRead}
+        title={alreadyRead || skipMode ? 'Tua nhanh qua thoại đã đọc' : 'Chỉ tua được thoại đã đọc'}
+      >
+        <IconFastForward width={14} height={14} />
+        <span>Skip</span>
+      </button>
+      {onOpenBacklog ? (
+        <button
+          type="button"
+          className="vn-btn"
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenBacklog();
+          }}
+          title="Xem lại lịch sử trò chuyện"
+        >
+          <IconHistory width={14} height={14} />
+          <span>Log</span>
+        </button>
+      ) : null}
+      {onOpenSave ? (
+        <button
+          type="button"
+          className="vn-btn"
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenSave();
+          }}
+          title="Lưu tiến độ game"
+        >
+          <IconSave width={14} height={14} />
+          <span>Lưu</span>
+        </button>
+      ) : null}
+      {onOpenLoad ? (
+        <button
+          type="button"
+          className="vn-btn"
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenLoad();
+          }}
+          title="Nạp tiến độ game"
+        >
+          <IconFolderOpen width={14} height={14} />
+          <span>Nạp</span>
+        </button>
+      ) : null}
+      <button
+        type="button"
+        className="vn-btn"
+        onClick={(e) => {
+          e.stopPropagation();
+          soundEngine.playSfx('click');
+          toggleHideUi();
+        }}
+        title="Ẩn giao diện để xem cảnh (Phím tắt: H)"
+      >
+        <IconEyeOff width={14} height={14} />
+        <span>Ẩn UI</span>
+      </button>
+      {onOpenAudio ? (
+        <button
+          type="button"
+          className="vn-btn vn-btn--audio-desktop"
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenAudio();
+          }}
+          title="Cài đặt: tốc độ chữ, âm lượng"
+        >
+          <IconSliders width={14} height={14} />
+          <span>Cài đặt</span>
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
 export function DialogBox({
   line,
   display = 'dialog',
@@ -155,106 +282,21 @@ export function DialogBox({
 
   return (
     <div className="dialog-container">
-      {/* Thanh điều khiển nhanh phong cách Visual Novel */}
+      {/* Thanh điều khiển nhanh trên desktop */}
       {display !== 'card' ? (
-        <div className="vn-quick-bar" role="toolbar" aria-label="Điều khiển hội thoại">
-          <button
-            type="button"
-            className={`vn-btn${autoMode ? ' vn-btn--active' : ''}`}
-            onClick={(e) => {
-              e.stopPropagation();
-              soundEngine.playSfx('click');
-              toggleAutoMode();
-            }}
-            title="Tự động chạy hội thoại"
-          >
-            <IconPlay width={14} height={14} />
-            <span>Auto</span>
-          </button>
-          <button
-            type="button"
-            className={`vn-btn${skipMode ? ' vn-btn--active' : ''}`}
-            onClick={(e) => {
-              e.stopPropagation();
-              soundEngine.playSfx('click');
-              toggleSkipMode();
-            }}
-            disabled={!skipMode && !alreadyRead}
-            title={alreadyRead || skipMode ? 'Tua nhanh qua thoại đã đọc' : 'Chỉ tua được thoại đã đọc'}
-          >
-            <IconFastForward width={14} height={14} />
-            <span>Skip</span>
-          </button>
-          {onOpenBacklog ? (
-            <button
-              type="button"
-              className="vn-btn"
-              onClick={(e) => {
-                e.stopPropagation();
-                onOpenBacklog();
-              }}
-              title="Xem lại lịch sử trò chuyện"
-            >
-              <IconHistory width={14} height={14} />
-              <span>Log</span>
-            </button>
-          ) : null}
-          {onOpenSave ? (
-            <button
-              type="button"
-              className="vn-btn"
-              onClick={(e) => {
-                e.stopPropagation();
-                onOpenSave();
-              }}
-              title="Lưu tiến độ game"
-            >
-              <IconSave width={14} height={14} />
-              <span>Lưu</span>
-            </button>
-          ) : null}
-          {onOpenLoad ? (
-            <button
-              type="button"
-              className="vn-btn"
-              onClick={(e) => {
-                e.stopPropagation();
-                onOpenLoad();
-              }}
-              title="Nạp tiến độ game"
-            >
-              <IconFolderOpen width={14} height={14} />
-              <span>Nạp</span>
-            </button>
-          ) : null}
-          <button
-            type="button"
-            className="vn-btn"
-            onClick={(e) => {
-              e.stopPropagation();
-              soundEngine.playSfx('click');
-              toggleHideUi();
-            }}
-            title="Ẩn giao diện để xem cảnh (Phím tắt: H)"
-          >
-            <IconEyeOff width={14} height={14} />
-            <span>Ẩn UI</span>
-          </button>
-          {onOpenAudio ? (
-            <button
-              type="button"
-              className="vn-btn"
-              onClick={(e) => {
-                e.stopPropagation();
-                onOpenAudio();
-              }}
-              title="Cài đặt: tốc độ chữ, âm lượng"
-            >
-              <IconSliders width={14} height={14} />
-              <span>Cài đặt</span>
-            </button>
-          ) : null}
-        </div>
+        <VnQuickButtons
+          className="vn-quick-bar--desktop"
+          autoMode={autoMode}
+          toggleAutoMode={toggleAutoMode}
+          skipMode={skipMode}
+          toggleSkipMode={toggleSkipMode}
+          alreadyRead={alreadyRead}
+          onOpenBacklog={onOpenBacklog}
+          onOpenSave={onOpenSave}
+          onOpenLoad={onOpenLoad}
+          toggleHideUi={toggleHideUi}
+          onOpenAudio={onOpenAudio}
+        />
       ) : null}
 
       <div
@@ -274,14 +316,12 @@ export function DialogBox({
         <p className={`dialog__text dialog__text--${dialogueFont}`}>
           <CodeText text={displayedText} />
         </p>
-        <div className="dialog__indicator" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
+        {isDone ? (
+          <span className="dialog__scroll-arrow" aria-hidden="true">▼</span>
+        ) : null}
       </div>
 
-      {/* Button Hồ sơ và Tiếp tục nằm ngoài khung thoại */}
+      {/* Button Hồ sơ / QuickBar mobile và Tiếp tục nằm ngoài khung thoại */}
       <div className="dialog__footer dialog__footer--external">
         <div className="dialog__footer-left">
           {onOpenNotebook ? (
@@ -301,25 +341,46 @@ export function DialogBox({
               <span>Hồ sơ {notebookCount !== undefined ? `(${notebookCount})` : ''}</span>
             </button>
           ) : null}
+
+          {/* Trên màn hình dọc: hiển thị thanh quick bar ở góc dưới bên trái */}
+          {display !== 'card' ? (
+            <VnQuickButtons
+              className="vn-quick-bar--mobile"
+              autoMode={autoMode}
+              toggleAutoMode={toggleAutoMode}
+              skipMode={skipMode}
+              toggleSkipMode={toggleSkipMode}
+              alreadyRead={alreadyRead}
+              onOpenBacklog={onOpenBacklog}
+              onOpenSave={onOpenSave}
+              onOpenLoad={onOpenLoad}
+              toggleHideUi={toggleHideUi}
+              onOpenAudio={onOpenAudio}
+            />
+          ) : null}
         </div>
         {hint ? <span className="dialog__hint">{hint}</span> : null}
         <div className="dialog__footer-right">
           <button
             type="button"
             className="dialog__next"
+            aria-label="Tiếp tục"
             onKeyDown={guard.holdKey}
             onClick={(e) => {
               e.stopPropagation();
               // Nút chủ ý: nhận ngay cú bấm đơn, chỉ bỏ cú bấm lặp của bấm đúp.
               if (!guard.click(e, { immediate: true })) return;
+              soundEngine.playSfx('page');
               completeImmediately();
               advanceFromLine();
             }}
           >
-            <span>Tiếp tục</span>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+            <span className="dialog__next-text">Tiếp tục</span>
+            <span className="dialog__next-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </span>
           </button>
         </div>
       </div>

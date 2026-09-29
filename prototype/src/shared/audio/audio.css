@@ -40,7 +40,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #38bdf8;
+  color: #f59e0b;
 }
 
 .audio-modal__close {
@@ -80,15 +80,17 @@
 }
 
 .audio-row__val {
-  color: #38bdf8;
+  color: #fbbf24;
   font-family: var(--font-mono, monospace);
+  font-weight: 700;
 }
 
 .audio-slider {
   appearance: none;
   width: 100%;
   height: 8px;
-  background: #334155;
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
   outline: none;
   transition: opacity 0.2s;
@@ -99,9 +101,9 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #38bdf8;
+  background: #f59e0b;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
   border: 2px solid #ffffff;
 }
 
@@ -134,32 +136,37 @@
 }
 
 .audio-btn {
-  padding: 8px 16px;
+  padding: 8px 18px;
   border-radius: 8px;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   border: none;
   transition: all 0.2s;
 }
 
 .audio-btn--test {
-  background: rgba(56, 189, 248, 0.15);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
 }
 
 .audio-btn--test:hover {
-  background: rgba(56, 189, 248, 0.25);
+  background: rgba(245, 158, 11, 0.25);
+  color: #fde68a;
 }
 
 .audio-btn--close {
-  background: #0284c7;
-  color: #fff;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #1e1b18;
+  border: 1px solid #b45309;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
 }
 
 .audio-btn--close:hover {
-  background: #0369a1;
+  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.5);
+  transform: translateY(-1px);
 }
 
 @keyframes audioModalFadeIn {
@@ -229,13 +236,14 @@
 }
 
 .settings-speed__option.is-active {
-  background: #0284c7;
-  border-color: #38bdf8;
-  color: #fff;
+  background: rgba(245, 158, 11, 0.22);
+  border-color: #f59e0b;
+  color: #fef3c7;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.35);
 }
 
 .settings-speed__option:has(input:focus-visible) {
-  outline: 2px solid #38bdf8;
+  outline: 2px solid #f59e0b;
   outline-offset: 2px;
 }
 

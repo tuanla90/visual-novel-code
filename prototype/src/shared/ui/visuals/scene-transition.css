@@ -32,11 +32,11 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #38bdf8;
+  color: #fbbf24;
   margin-bottom: 8px;
   padding: 4px 16px;
-  background: rgba(56, 189, 248, 0.1);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
   border-radius: 20px;
 }
 
@@ -46,19 +46,19 @@
   letter-spacing: 0.05em;
   color: #ffffff;
   margin: 0 0 10px;
-  text-shadow: 0 0 24px rgba(56, 189, 248, 0.6), 0 4px 12px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 24px rgba(245, 158, 11, 0.55), 0 4px 12px rgba(0, 0, 0, 0.8);
 }
 
 .scene-trans__line {
   width: 120px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+  background: linear-gradient(90deg, transparent, #fbbf24, transparent);
   margin-bottom: 12px;
 }
 
 .scene-trans__desc {
   font-size: 1.05rem;
-  color: #94a3b8;
+  color: #fde68a;
   margin: 0;
   max-width: 480px;
   font-style: italic;

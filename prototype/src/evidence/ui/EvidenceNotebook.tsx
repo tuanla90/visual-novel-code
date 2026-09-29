@@ -11,6 +11,7 @@
 import { useEffect, useState } from 'react';
 import type { GameContent } from '../../content/types';
 import type { EvidenceId, PartId, QueryEvidenceId } from '../../shared/ids';
+import { soundEngine } from '../../shared/audio/sound-engine';
 import { CodeText } from '../../shared/ui/CodeText';
 import { resolvePortrait } from '../../shared/ui/visuals/art-slots';
 import type { SqlValue } from '../../sql-challenge/types';
@@ -86,26 +87,24 @@ export function EvidenceNotebook({ open, onClose, content, part, unlocked, saved
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="inventory-frame" role="dialog" aria-modal="true" aria-label="Hòm đồ vật chứng">
+      <div
+        className={`inventory-frame${tab === 'characters' ? ' is-chara-mode' : ''}${tab === 'journal' ? ' is-journal-mode' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Hòm đồ vật chứng"
+      >
         {/* Top Bar Navigation */}
         <header className="inventory-nav">
           <div className="inventory-nav__tabs" role="tablist">
             <button
               type="button"
               role="tab"
-              aria-selected={tab === 'evidence'}
-              className={`inventory-nav__tab${tab === 'evidence' ? ' is-active' : ''}`}
-              onClick={() => setTab('evidence')}
-            >
-              <IconBriefcase width={15} height={15} />
-              <span>Hòm đồ & Vật chứng</span>
-            </button>
-            <button
-              type="button"
-              role="tab"
               aria-selected={tab === 'characters'}
               className={`inventory-nav__tab${tab === 'characters' ? ' is-active' : ''}`}
-              onClick={() => setTab('characters')}
+              onClick={() => {
+                soundEngine.playSfx('tab');
+                setTab('characters');
+              }}
             >
               <IconUsers width={15} height={15} />
               <span>Hồ sơ nhân vật (5)</span>
@@ -113,9 +112,25 @@ export function EvidenceNotebook({ open, onClose, content, part, unlocked, saved
             <button
               type="button"
               role="tab"
+              aria-selected={tab === 'evidence'}
+              className={`inventory-nav__tab${tab === 'evidence' ? ' is-active' : ''}`}
+              onClick={() => {
+                soundEngine.playSfx('tab');
+                setTab('evidence');
+              }}
+            >
+              <IconBriefcase width={15} height={15} />
+              <span>Hòm đồ & Vật chứng</span>
+            </button>
+            <button
+              type="button"
+              role="tab"
               aria-selected={tab === 'journal'}
               className={`inventory-nav__tab${tab === 'journal' ? ' is-active' : ''}`}
-              onClick={() => setTab('journal')}
+              onClick={() => {
+                soundEngine.playSfx('tab');
+                setTab('journal');
+              }}
             >
               <IconFileText width={15} height={15} />
               <span>Nhật ký điều tra</span>
@@ -123,33 +138,47 @@ export function EvidenceNotebook({ open, onClose, content, part, unlocked, saved
           </div>
 
           <div className="inventory-nav__meta">
-            <span className="inventory-nav__capacity">
-              <IconPackage width={14} height={14} /> {unlocked.length}/{TOTAL_SLOTS} ITEMS
-            </span>
             <button
               type="button"
               className="inventory-nav__close"
-              onClick={onClose}
+              onClick={() => {
+                soundEngine.playSfx('cancel');
+                onClose();
+              }}
               aria-label="Đóng hồ sơ vụ án"
               title="Đóng hòm đồ (Esc hoặc bấm ra ngoài)"
             >
-              <IconX width={14} height={14} />
-              <span>ĐÓNG</span>
+              <IconX width={12} height={12} />
+              <span>Đóng</span>
             </button>
           </div>
         </header>
 
         {tab === 'characters' ? (
-          <div className="notebook__chara-container" style={{ flex: '1 1 auto', overflowY: 'auto' }}>
+          <div className="notebook__chara-container">
             <CharaProfileView />
           </div>
         ) : tab === 'journal' ? (
-          <div style={{ flex: '1 1 auto', overflowY: 'auto', padding: 'var(--sp-4)' }}>
-            <h3 style={{ color: '#e6194b', marginTop: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <IconFileText width={20} height={20} /> NHẬT KÝ TIẾN ĐỘ VỤ ÁN
-            </h3>
-            <p><strong>Nhiệm vụ hiện tại:</strong> {content.meta.title} — Phần {part ?? 'Khởi đầu'}</p>
-            <p>Điều tra nguồn gốc bức thư nặc danh cáo buộc sinh viên sửa điểm và bảo vệ danh dự CLB Thám tử Dữ liệu.</p>
+          <div className="notebook__journal-container">
+            <div className="notebook__journal-card">
+              <div className="notebook__journal-header">
+                <span className="notebook__journal-pill">
+                  <IconFileText width={16} height={16} /> NHẬT KÝ TIẾN ĐỘ VỤ ÁN
+                </span>
+                <span className="notebook__journal-time">Phần {part ?? 'Khởi đầu'}</span>
+              </div>
+              <h3 className="notebook__journal-title">{content.meta.title}</h3>
+              <div className="notebook__journal-body">
+                <div className="notebook__journal-entry">
+                  <h4>MỤC TIÊU ĐIỀU TRA:</h4>
+                  <p>Điều tra nguồn gốc bức thư nặc danh cáo buộc sinh viên sửa điểm và bảo vệ danh dự CLB Thám tử Dữ liệu.</p>
+                </div>
+                <div className="notebook__journal-entry">
+                  <h4>TIẾN ĐỘ THU THẬP:</h4>
+                  <p>Đã tìm thấy <strong>{unlocked.length}</strong> vật chứng và manh mối quan trọng.</p>
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
           <div className="inventory-body">
@@ -165,7 +194,7 @@ export function EvidenceNotebook({ open, onClose, content, part, unlocked, saved
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fbbf24" strokeWidth="2"><circle cx="12" cy="8" r="6" /><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" /></svg>
                   </div>
                   <div className="inv-slot-gear" title="Quyền truy cập CSDL">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#38bdf8" strokeWidth="2"><circle cx="7.5" cy="15.5" r="5.5" /><path d="m21 2-9.6 9.6" /><path d="m15.5 7.5 3 3L22 7l-3-3" /></svg>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#f59e0b" strokeWidth="2"><circle cx="7.5" cy="15.5" r="5.5" /><path d="m21 2-9.6 9.6" /><path d="m15.5 7.5 3 3L22 7l-3-3" /></svg>
                   </div>
                 </div>
                 <div className="inv-chara-art">
@@ -195,7 +224,12 @@ export function EvidenceNotebook({ open, onClose, content, part, unlocked, saved
             {/* Cột 2: ITEMS GRID (Lưới ô vuông vật phẩm) */}
             <div className="inv-grid-col">
               <div className="inv-grid-header">
-                <h2 className="inv-grid-title">ITEMS</h2>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <h2 className="inv-grid-title">ITEMS</h2>
+                  <span className="inventory-nav__capacity">
+                    <IconPackage width={12} height={12} /> {unlocked.length}/{TOTAL_SLOTS} ITEMS
+                  </span>
+                </div>
                 <div className="inv-filter-pills">
                   <button
                     type="button"
