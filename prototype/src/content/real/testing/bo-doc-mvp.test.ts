@@ -441,3 +441,24 @@ describe('[GHI SỔ] và thẻ thử thách không vật chứng (QĐ-092)', () 
     ]);
   });
 });
+
+describe('phản ứng sau mỗi lần chạy ("Khi …" trong thẻ thử thách, QĐ-092)', () => {
+  const THE = (dong: string) =>
+    ['### c1 — Thử {challenge: c1}', '- Tiêu đề: T', '- Đề bài hiển thị: Đ', '- SQL chuẩn:', '', '```sql', 'SELECT 1;', '```', '', dong, '- Vật chứng lưu vào hồ sơ: ev-z', '  - Tiêu đề: Z', '  - Mô tả: z', ''].join('\n');
+  const docThe = (dong: string) => {
+    const tep: TepMvp[] = [
+      ...Object.entries(GOC).map(([p, s]) => ({ duongDan: `noi-dung-mvp/${p}`, loai: loaiCua(p), noiDung: p === 'kich-ban/01.md' ? s.replace('- **narrator**: Bàn làm việc.\n', '- **narrator**: Bàn làm việc.\n- [THỬ THÁCH c1]\n') : s })),
+      { duongDan: 'noi-dung-mvp/thu-thach/c1.md', loai: 'thu-thach' as const, noiDung: THE(dong) },
+    ];
+    const kq = docNoiDungMvp(tep);
+    return [...kq.loi, ...kiemLuatMvp(kq.mvp).loi].map(dinhDangLoi);
+  };
+
+  it('đúng quy ước → không lỗi; nhãn lạ, người nói lạ, biểu cảm không có → lỗi ở thẻ', () => {
+    expect(docThe('- Khi chạy ra 0 dòng: **tung** (neutral): Không ai. <br> **minh-anh** (worried): Xem lại.')).toEqual([]);
+    expect(docThe('- Khi lỗi không có cột: **tung**: Máy tìm cột.')).toEqual([]);
+    expect(docThe('- Khi chạy ra nhiều dòng: **tung**: X.')).toEqual([expect.stringMatching(/thẻ c1: dòng "Khi chạy ra nhiều dòng" lạ/)]);
+    expect(docThe('- Khi đúng: **ai-do**: X.')).toEqual([expect.stringMatching(/thẻ c1: phản ứng có người nói lạ "ai-do"/)]);
+    expect(docThe('- Khi đúng: **tung** (smug): X.')).toEqual([expect.stringMatching(/thẻ c1: nhân vật tung không có biểu cảm "smug"/)]);
+  });
+});

@@ -3295,6 +3295,21 @@ export const KICH_BAN_MVP = {
       "soDongKyVong": 11,
       "sqlChuan": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE khoa_hoc = 2024;",
       "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "0 dòng. Cột khóa đang lưu con số 2024, không có chữ K nào cả."
+            }
+          ]
+        }
+      ],
       "vatChung": null,
       "ghiChu": [
         "Lần chạy \"sai có ích\": kéo [K24] vào cột khóa → `khoa_hoc = 'K24'` → 0 dòng. Hà Vy mô tả: cột khóa lưu số 2024. Người chơi ✎ gõ 2024."
@@ -3311,6 +3326,20 @@ export const KICH_BAN_MVP = {
       "soDongKyVong": 4,
       "sqlChuan": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B';",
       "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "loi-cot"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Máy đang đi tìm một cột tên là B. Chữ không có nháy thì nó tưởng là tên cột."
+            }
+          ]
+        }
+      ],
       "vatChung": null,
       "ghiChu": [
         "Lần chạy \"sai có ích\": gõ như số `toa_nha = B` → lỗi \"no such column: B\". Hà Vy mô tả: máy đang đi tìm một cột tên B."
@@ -3328,6 +3357,26 @@ export const KICH_BAN_MVP = {
       "soDongKyVong": 2,
       "sqlChuan": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí';",
       "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 5
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "worried",
+              "text": "Ơ, năm lớp?"
+            },
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Lớp nào ở tòa B, hoặc học Báo chí, đều được lấy hết."
+            }
+          ]
+        }
+      ],
       "vatChung": null,
       "ghiChu": [
         "Tùng nối bằng OR → 5 lớp. Hà Vy mô tả: lấy lớp nào thỏa một trong hai. Đổi AND → 2 lớp (BC24A, BC23A)."
@@ -3345,6 +3394,21 @@ export const KICH_BAN_MVP = {
       "soDongKyVong": 1,
       "sqlChuan": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí' AND khoa_hoc = 2024;",
       "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 2
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Vẫn hai lớp. Một lớp khóa khác cũng ở tòa B."
+            }
+          ]
+        }
+      ],
       "vatChung": {
         "id": "ev-lop-bc24a",
         "title": "Lớp BC24A — tòa B, Báo chí, khóa 2024",
@@ -3368,6 +3432,7 @@ export const KICH_BAN_MVP = {
       "soDongKyVong": 6,
       "sqlChuan": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';",
       "truyVanNapSan": null,
+      "phanUng": [],
       "vatChung": null,
       "ghiChu": []
     },
@@ -3382,6 +3447,39 @@ export const KICH_BAN_MVP = {
       "soDongKyVong": 2,
       "sqlChuan": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';",
       "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không ai tên đúng một chữ H cả."
+            },
+            {
+              "speaker": "tung",
+              "expression": "worried",
+              "text": "Tra sổ chị Linh đi, trang lỗi thường gặp ấy."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 1
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Mai? Họ Hồ bắt đầu bằng H, nhưng tên thì không."
+            }
+          ]
+        }
+      ],
       "vatChung": {
         "id": "ev-hai-ma",
         "title": "Hai mã ứng viên kèm căn cứ",
@@ -3403,6 +3501,7 @@ export const KICH_BAN_MVP = {
       "soDongKyVong": 2,
       "sqlChuan": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';",
       "truyVanNapSan": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",
+      "phanUng": [],
       "vatChung": {
         "id": "ev-hai-dong-sua",
         "title": "Hai dòng sau khi sửa",
@@ -3739,17 +3838,17 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B';",
       "soDong": 4,
-      "noi": "noi-dung-mvp/thu-thach/c-loc-lop.md:18 thẻ c-loc-toa, SQL chuẩn"
+      "noi": "noi-dung-mvp/thu-thach/c-loc-lop.md:19 thẻ c-loc-toa, SQL chuẩn"
     },
     {
       "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí';",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/c-loc-lop.md:33 thẻ c-loc-and, SQL chuẩn"
+      "noi": "noi-dung-mvp/thu-thach/c-loc-lop.md:35 thẻ c-loc-and, SQL chuẩn"
     },
     {
       "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí' AND khoa_hoc = 2024;",
       "soDong": 1,
-      "noi": "noi-dung-mvp/thu-thach/c-loc-lop.md:48 thẻ c-loc-lop, SQL chuẩn"
+      "noi": "noi-dung-mvp/thu-thach/c-loc-lop.md:51 thẻ c-loc-lop, SQL chuẩn"
     },
     {
       "sql": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';",
@@ -3764,7 +3863,7 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:34 thẻ c-sua-or-quan, SQL chuẩn"
+      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:36 thẻ c-sua-or-quan, SQL chuẩn"
     },
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';",

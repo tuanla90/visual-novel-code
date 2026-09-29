@@ -179,9 +179,18 @@ export interface TheThuThachMvp {
   soDongKyVong: number | null;
   sqlChuan: string;
   truyVanNapSan: string | null;
+  /** Lời nhân vật sau mỗi lần chạy, theo kết quả (dòng "Khi …" của thẻ — tools/noi-dung/phan-ung-mvp.ts). */
+  phanUng: PhanUngMvp[];
   /** Bằng chứng lưu vào hồ sơ khi xong; `null` = bài giữa chuỗi phòng máy, không lưu gì (QĐ-092). */
   vatChung: { id: string; title: string; description: string; giaTri: string[] } | null;
   ghiChu: string[];
+}
+
+export type KhiChayMvp = { kind: 'so-dong'; n: number } | { kind: 'loi-cot' } | { kind: 'loi' } | { kind: 'dung' };
+
+export interface PhanUngMvp {
+  khi: KhiChayMvp;
+  loi: LoiMvp[];
 }
 
 export interface TheHoSoMvp {

@@ -16,7 +16,9 @@ import type { BoDuLieuMvp, KichBanMvp, TheThuThachMvp } from '../../content/mvp/
 import { ResultTable } from '../../sql-challenge/ui/ResultTable';
 import { SqlCode } from '../../sql-challenge/ui/SqlCode';
 import { track } from '../../shared/telemetry/track';
-import { chamThuThach, chaySql, xemDongDau, type KetQuaChay, type KetQuaCham } from '../engine/sql-mvp';
+import { CodeText } from '../../shared/ui/CodeText';
+import { tenNguoiNoi } from '../engine/may';
+import { chamThuThach, chaySql, phanUngSauKhiChay, xemDongDau, type KetQuaChay, type KetQuaCham } from '../engine/sql-mvp';
 import { tachWhere, type CachNhap, type WhereTach } from '../engine/trinh-dung';
 import { docCachNhap, ghiCachNhap } from './cach-nhap';
 import { NhapCauMvp, type GiayNhoDung } from './NhapCauMvp';
@@ -189,6 +191,13 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong, giayNho
           </div>
           <section ref={ketQuaRef} className="result mvp-chal__ketqua" aria-live="polite" aria-label="Kết quả">
             {!duLieu ? <p className="game__error">Vụ này chưa có bộ dữ liệu (du-lieu.md) nên không chạy được.</p> : null}
+            {cham
+              ? phanUngSauKhiChay(the, cham).map((l, i) => (
+                  <p key={i} className="mvp-chal__phanung" data-speaker={l.speaker}>
+                    <strong>{tenNguoiNoi(kb, l.speaker) || 'Người kể'}:</strong> <CodeText text={dienTen(l.text)} />
+                  </p>
+                ))
+              : null}
             {cham?.trangThai === 'loi' ? (
               <p className="mvp-chal__loi">
                 Chưa chạy được: {cham.chay.thongDiep}

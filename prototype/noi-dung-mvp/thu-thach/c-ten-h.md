@@ -26,6 +26,8 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';
 ```
 
+- Khi chạy ra 0 dòng: **ha-vy** (thinking): Không ai tên đúng một chữ H cả. <br> **tung** (worried): Tra sổ chị Linh đi, trang lỗi thường gặp ấy.
+- Khi chạy ra 1 dòng: **ha-vy** (thinking): Mai? Họ Hồ bắt đầu bằng H, nhưng tên thì không.
 - [DÀN DỰNG] Bài 4.2. Lần chạy "sai có ích": kéo [H] với phép "bằng" → 0 dòng (không ai tên đúng một chữ "H"). Tùng: "Tra sổ chị Linh đi" → trang lỗi thường gặp → đổi "bắt đầu bằng" → 2 dòng. Bẫy: `ma_lop LIKE 'BC%'` → 3 dòng; lọc nhầm cột ho_dem → 1 dòng.
 - Vật chứng lưu vào hồ sơ: ev-hai-ma
   - Tiêu đề: Hai mã ứng viên kèm căn cứ

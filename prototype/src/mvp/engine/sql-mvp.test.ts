@@ -6,7 +6,7 @@
 import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
-import { chamThuThach, chaySql, soVoiChuan, xemDongDau } from './sql-mvp';
+import { chamThuThach, chaySql, phanUngSauKhiChay, soVoiChuan, xemDongDau } from './sql-mvp';
 
 const KB = KICH_BAN_MVP as unknown as KichBanMvp;
 const DU_LIEU = KB.duLieu;
@@ -70,5 +70,20 @@ describe('SQL MVP trên du-lieu.md', () => {
     const chuan = { ok: true as const, cot: ['a'], dong: [['x'], ['x'], ['y']] };
     expect(soVoiChuan(chuan, { ok: true, cot: ['a'], dong: [['x'], ['y'], ['y']] }).dung).toBe(false);
     expect(soVoiChuan(chuan, { ok: true, cot: ['b'], dong: [['y'], ['x'], ['x']] }).dung).toBe(true);
+  });
+});
+
+describe('phản ứng sau khi chạy (dòng "Khi …" của thẻ)', () => {
+  it('bài 2.1 kéo [K24] ra 0 dòng → lời Hà Vy; bài 2.2 thiếu nháy → lời lỗi thiếu cột; ra số dòng không có lời → []', async () => {
+    const khoa = KB.thuThach['c-loc-khoa'];
+    const toa = KB.thuThach['c-loc-toa'];
+    if (!khoa || !toa) throw new Error('thiếu thẻ');
+    const khung = 'SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat';
+    const k0 = phanUngSauKhiChay(khoa, await chamThuThach(DU_LIEU, `${khung} WHERE khoa_hoc = 'K24'`, khoa.sqlChuan));
+    expect(k0.map((l) => l.speaker)).toEqual(['ha-vy']);
+    expect(k0[0]?.text).toContain('2024');
+    const loi = phanUngSauKhiChay(toa, await chamThuThach(DU_LIEU, `${khung} WHERE toa_nha = B`, toa.sqlChuan));
+    expect(loi[0]?.text).toContain('tên cột');
+    expect(phanUngSauKhiChay(toa, await chamThuThach(DU_LIEU, `${khung} WHERE toa_nha = 'A'`, toa.sqlChuan))).toEqual([]);
   });
 });

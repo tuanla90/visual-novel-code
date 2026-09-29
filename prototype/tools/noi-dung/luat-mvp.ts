@@ -12,6 +12,7 @@
 import { danhGiaDieuKien, docMoc, maTrongDieuKien, taThuTu, THU_TU_BUOI_TOI, thuTuMoc, type HauQua, type Moc } from './dieu-kien.ts';
 import { loiTrongChuoi, type MucMvp, type RawChuoiMvp, type RawDuKien, type RawMvp } from './doc-mvp.ts';
 import type { LoiNoiDung, ViTri } from './doc.ts';
+import { docPhanUng } from './phan-ung-mvp.ts';
 
 export interface KetQuaLuat {
   loi: LoiNoiDung[];
@@ -62,6 +63,18 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   for (const d of mvp.dossier) {
     if (!/^(clue|doc|ev)-/.test(d.id)) err(d.viTri, `thẻ hồ sơ "${d.id}" phải bắt đầu bằng clue- (giấy nhớ), doc- (tài liệu) hoặc ev- (bằng chứng)`);
     vatPham.set(d.id, d.viTri);
+  }
+  // Phản ứng sau mỗi lần chạy ("Khi …", QĐ-092): đúng quy ước, người nói có thật, biểu cảm có.
+  for (const c of mvp.challenges) {
+    const pu = docPhanUng(c.fields);
+    for (const l of pu.loi) err(c.viTri, `thẻ ${c.id}: ${l}`);
+    for (const p of pu.phanUng)
+      for (const l of p.loi) {
+        if (l.speaker === 'player' || l.speaker === 'narrator') continue;
+        const n = nhanVat.get(l.speaker);
+        if (!n) err(c.viTri, `thẻ ${c.id}: phản ứng có người nói lạ "${l.speaker}"`);
+        else if (l.expression !== null && !n.bieuCam.includes(l.expression)) err(c.viTri, `thẻ ${c.id}: nhân vật ${l.speaker} không có biểu cảm "${l.expression}"`);
+      }
   }
   for (const c of mvp.challenges) {
     const ev = c.evidence?.id;

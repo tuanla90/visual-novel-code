@@ -116,6 +116,8 @@ describe('đổi cách + màn thử thách', () => {
     await userEvent.type(screen.getByRole('textbox', { name: 'Câu SQL (gõ tay)' }), 'toa_nha = B');
     await userEvent.click(screen.getByRole('button', { name: 'Chạy truy vấn' }));
     await waitFor(() => expect(screen.getByText(/máy hiểu chữ không có nháy là tên một cột/)).toBeInTheDocument());
+    // Lời nhân vật theo dòng "Khi lỗi không có cột" của thẻ.
+    expect(document.querySelector('.mvp-chal__phanung[data-speaker="ha-vy"]')?.textContent).toMatch(/^Hà Vy:.*cột tên là B/);
   });
 
   it('Xem từng điều kiện: bài 2.3 gõ OR → bảng soi 5 dòng, có cột từng điều kiện và "Giữ lại"', async () => {

@@ -7,6 +7,7 @@ import type { Moc } from './dieu-kien.ts';
 import type { MucMvp, RawChuoiMvp, RawMvp } from './doc-mvp.ts';
 import type { RawChallengeCard, RawLine } from './doc.ts';
 import type { KetQuaLuat } from './luat-mvp.ts';
+import { docPhanUng } from './phan-ung-mvp.ts';
 
 type Obj = Record<string, unknown>;
 
@@ -133,6 +134,7 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     soDongKyVong,
     sqlChuan,
     truyVanNapSan: t.sql['Truy vấn nạp sẵn'] ?? null,
+    phanUng: docPhanUng(t.fields).phanUng.map((p) => ({ khi: p.khi, loi: p.loi.map(loi) })),
     vatChung: t.evidence
       ? { id: t.evidence.id, title: t.evidence.title, description: t.evidence.description, giaTri: chiaGiaTri(t.evidence.giaTri) }
       : null,

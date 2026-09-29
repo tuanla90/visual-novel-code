@@ -1070,6 +1070,10 @@ Dùng được trong chuỗi (ngoài §6.3: `[VÀO]`, `[RA]`, `[ĐI TỚI]`, `[H
 
 Số dòng ghi trong `[LỌC THỬ]`, `[MÀN CHIẾU … · <n> dòng]` (khi có khối sql), "Số dòng kỳ vọng" của thẻ (đi với "SQL chuẩn") là **số người viết khai**. Bộ chuyển gom mọi cặp `(sql, soDong, noi)` vào `soDongKhai` của dữ liệu sinh; `kiem-noi-dung:mvp` **chạy thật** từng câu trên bộ dữ liệu cố định `du-lieu.md` (§18.10) và báo lỗi `<tệp>:<dòng>` khi số khai lệch kết quả (QĐ-089). Số dòng chỉ ghi trong `[DÀN DỰNG]` (không kèm câu SQL) chưa được kiểm.
 
+**Thẻ thử thách MVP có thêm (QĐ-092):**
+- `- Khi chạy ra <n> dòng: **<người nói>** (<biểu cảm>): <lời>` (và `- Khi lỗi không có cột: …`, `- Khi lỗi: …`, `- Khi đúng: …`): lời nhân vật hiện ngay dưới kết quả sau mỗi lần chạy, chọn theo kết quả; nhiều lời nối bằng `<br>`. Chỉ MÔ TẢ kết quả (QĐ-071), không phán đúng/sai. Bộ kiểm: nhãn đúng quy ước, người nói và biểu cảm có thật. Phiên truyện viết các dòng này; phiên logic đặt bẫy và số dòng.
+- Dòng con `  - Giá trị cho trình dựng: BC24A` dưới "Vật chứng lưu vào hồ sơ", và dòng `- Giá trị cho trình dựng: B` (hoặc `Báo chí · K24`) ở thẻ hồ sơ: chữ của giấy nhớ / khối giá trị ở phòng máy (kéo thả, bấm khối). Thẻ không có dòng này thì không hiện trên bàn làm việc.
+
 **Chuỗi bài phòng máy (QĐ-092).** Một lần vào phòng máy có thể gồm nhiều bài: dữ kiện dùng `- Chuỗi:` (không phải `- Thử thách:`), chuỗi đó có nhiều `[THỬ THÁCH …]` nối tiếp kèm lời dẫn và `[GHI SỔ]`. Thẻ thử thách của **bài giữa chuỗi được bỏ dòng "Vật chứng lưu vào hồ sơ"** (không lưu gì); bài cuối lưu bằng chứng như cũ. Không tốn thêm khung giờ (vào phòng máy tốn 1, bên trong 0). Kế hoạch bài theo ngày: `docs/mvp/thuc-hanh-sql-vu1-mvp.md`.
 
 ### 18.7 Lời chung — `chung/loi-chung.md`
