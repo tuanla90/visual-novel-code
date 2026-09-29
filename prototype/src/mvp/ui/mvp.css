@@ -681,18 +681,27 @@
 /* ---------- Điện thoại / dọc ---------- */
 @media (max-width: 768px) {
   .mvp-hud {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: var(--sp-2);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px var(--sp-2);
     padding: 6px 10px;
   }
   .mvp-hud__nhiemvu {
     display: none;
   }
-  .mvp-uytin__nhan {
-    display: none;
+  /* Thanh uy tín xuống hàng riêng, đủ rộng — không chen với dãy nút. */
+  .mvp-uytin {
+    order: 10;
+    flex: 1 0 100%;
+    justify-content: center;
   }
   .mvp-hud__btn-chu {
     display: none;
+  }
+  .mvp-hud__btn {
+    min-width: 34px;
+    padding: 6px 7px;
   }
   .mvp-dd__ds {
     grid-template-columns: 1fr;
