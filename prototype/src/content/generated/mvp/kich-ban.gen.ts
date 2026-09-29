@@ -1079,50 +1079,40 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Chủ nhật, tuần đầu tiên"
+          "text": "Chủ nhật, ngày nhận phòng"
         },
         {
           "type": "note",
-          "text": "Xe buýt dừng sát vỉa hè. Người chơi kéo cái vali xuống bậc, bánh xe va xuống mặt đường đánh cạch một cái."
-        },
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Cửa xe vừa mở, hơi nóng đầu giờ chiều đã hắt vào mặt."
+          "text": "Xe buýt mở cửa, hơi nóng đầu giờ chiều hắt thẳng vào. Người chơi kéo vali xuống vỉa hè, bánh xe va mặt đường đánh cạch một cái."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Đến rồi… Cổng trường ngoài đời trông to hơn trên ảnh."
-        },
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Chòi bảo vệ, thanh chắn sơn đỏ trắng, một dòng xe máy nối nhau chạy qua cổng."
+          "text": "(Nóng thật… Cổng trường ngoài đời trông to hơn trên ảnh.)"
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Giấy báo ghi ký túc xá, phòng 408. Mà ký túc xá nằm đằng nào nhỉ…"
+          "text": "(Thông báo xếp phòng ghi là phòng 408. Cơ mà ký túc xá nằm ở đâu nhỉ…)"
         },
         {
           "type": "note",
-          "text": "Người chơi mở điện thoại, bản đồ quay vòng mãi không lên."
+          "text": "Người chơi mở điện thoại, mạng xoay mãi, bản đồ không lên."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Pin còn mười hai phần trăm. Thôi, cứ đi theo mấy bạn cũng đang kéo vali kia là chắc ăn nhất."
+          "text": "(Pin còn mười hai phần trăm. Mấy bạn đằng trước cũng kéo vali, chắc cùng về ký túc xá. Cứ bám theo đã.)"
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Phía trước, hai bạn nữ vừa kéo vali vừa gọi điện về nhà: \"Con đến nơi rồi mẹ ạ.\""
+          "text": "Một bạn phía trước vừa đi vừa gọi điện báo mẹ là đến nơi rồi."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Mẹ cũng dặn đến nơi thì nhắn. Để vào phòng rồi nhắn một thể."
+          "text": "(Mẹ cũng dặn đến nơi thì nhắn. Lát vào phòng nhắn luôn.)"
         },
         {
           "type": "goto",
@@ -1139,12 +1129,12 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Qua dãy giảng đường sơn vàng, qua cái bãi xe chật kín, con đường rẽ vào một cổng sắt nhỏ hơn."
+          "text": "Qua dãy giảng đường sơn vàng, qua bãi để xe, cuối con đường là một cổng sắt nhỏ, trên biển đề \"Ký túc xá\"."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Ký túc xá đây rồi. Bảy tầng… mong là phòng không ở tầng bảy."
+          "text": "(Đây rồi. Nhà nào cũng tận bảy tầng cơ à…)"
         },
         {
           "type": "note",
@@ -1153,17 +1143,17 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Biết thế ở nhà đừng nhét cả cái nồi cơm điện vào."
+          "text": "(Biết thế đừng nhét cả cái nồi cơm điện vào.)"
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Cửa thang máy dán một tờ giấy: \"Đang bảo trì\"."
+          "text": "Bảng tin cạnh cổng dán sơ đồ khu nhà, kèm một tờ giấy: \"Thang máy bảo trì đến hết tuần\"."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Phòng 408. Tầng bốn thôi mà. Cố lên."
+          "text": "(Phòng 408 ở dãy giữa, tầng bốn. May mà không phải tầng bảy… Leo bộ vậy.)"
         },
         {
           "type": "goto",
@@ -1183,7 +1173,7 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "note",
-          "text": "Cửa phòng 408 mở. Một cậu sinh viên đội mũ lưỡi trai bước ra, đỡ lấy cái vali của người chơi."
+          "text": "Tiếng bánh vali lộc cộc dội lên hành lang tầng bốn; người chơi dừng trước cửa, thở dốc. Cửa phòng 408 mở. Một cậu sinh viên đội mũ lưỡi trai bước ra, đỡ lấy cái vali của người chơi."
         },
         {
           "type": "line",
@@ -3342,7 +3332,7 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';",
       "soDong": 3,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:118 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:116 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",
