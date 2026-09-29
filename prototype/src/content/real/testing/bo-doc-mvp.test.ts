@@ -303,3 +303,45 @@ describe('dữ liệu cố định (du-lieu.md) và chạy thật số dòng kha
     expect(kq.loi).toEqual(['noi-dung-mvp/kich-ban/01.md:12: [LỌC THỬ lt-1]: khai 1 dòng nhưng noi-dung-mvp/ thiếu du-lieu.md để chạy thật (QĐ-089)']);
   });
 });
+
+describe('dòng "- Ảnh:" của dữ kiện (vật tương tác trên nền, QĐ-089)', () => {
+  const docDu = (sua: Record<string, (s: string) => string>, spriteVat?: ReadonlySet<string>) => {
+    const tep: TepMvp[] = Object.entries(GOC).map(([p, s]) => ({ duongDan: `noi-dung-mvp/${p}`, loai: loaiCua(p), noiDung: sua[p]?.(s) ?? s }));
+    const kq = docNoiDungMvp(tep);
+    const luat = kiemLuatMvp(kq.mvp, spriteVat ? { spriteVat } : {});
+    return { mvp: kq.mvp, loi: [...kq.loi, ...luat.loi].map(dinhDangLoi), canhBao: luat.canhBao.map(dinhDangLoi) };
+  };
+  const VAT = new Set(['obj-ban-may']);
+  /** Chèn một dòng ngay sau tiêu đề dữ kiện `dk` (tiêu đề giữ số dòng; lỗi của dữ kiện báo ở dòng tiêu đề). */
+  const themAnh = (dk: string, dong: string) => (s: string) => s.replace(new RegExp(`(### ${dk} — [^\\n]+\\n)`), `$1${dong}\n`);
+
+  it('đúng cú pháp: đọc ra sprite + x, y, rộng; không lỗi; dữ kiện thiếu Ảnh chỉ CẢNH BÁO', () => {
+    const kq = docDu({ 'dia-diem.md': (s) => themAnh('dk-phu', '- Ảnh: nv:tung · x 30% · y 90% · rộng 12,5%')(themAnh('dk-may', '- Ảnh: obj-ban-may · x 62% · y 48% · rộng 9%')(s)) }, VAT);
+    expect(kq.loi).toEqual([]);
+    const tatCa = kq.mvp.diaDiem.flatMap((d) => d.duKien);
+    expect(tatCa.find((k) => k.id === 'dk-may')?.anh).toEqual({ sprite: 'obj-ban-may', x: 62, y: 48, rong: 9 });
+    expect(tatCa.find((k) => k.id === 'dk-phu')?.anh).toEqual({ sprite: 'nv:tung', x: 30, y: 90, rong: 12.5 });
+    expect(kq.canhBao).toEqual(['noi-dung-mvp/dia-diem.md:3: dữ kiện dk-chinh chưa có dòng "- Ảnh:" — chỉ chọn được qua danh sách chữ']);
+  });
+
+  it('sai cú pháp, sprite không tồn tại, nhân vật lạ, ngoài 0–100, hai dòng Ảnh → lỗi <tệp>:<dòng>', () => {
+    const mot = (dong: string): string[] => docDu({ 'dia-diem.md': themAnh('dk-may', dong) }, VAT).loi;
+    expect(mot('- Ảnh: obj-ban-may x 62 y 48')).toEqual([expect.stringMatching(/^noi-dung-mvp\/dia-diem\.md:12: dữ kiện dk-may: "Ảnh" phải là/)]);
+    expect(mot('- Ảnh: obj-khong-co · x 62% · y 48% · rộng 9%')).toEqual(['noi-dung-mvp/dia-diem.md:12: dữ kiện dk-may, "Ảnh": không có ảnh vật "obj-khong-co" trong src/assets/mvp/vat/']);
+    expect(mot('- Ảnh: nv:ai-do · x 62% · y 48% · rộng 9%')).toEqual(['noi-dung-mvp/dia-diem.md:12: dữ kiện dk-may, "Ảnh": không có nhân vật "ai-do" trong nhan-vat.md']);
+    expect(mot('- Ảnh: obj-ban-may · x 162% · y 48% · rộng 0%')).toEqual([
+      'noi-dung-mvp/dia-diem.md:12: dữ kiện dk-may, "Ảnh": x phải trong 0–100%: 162%',
+      'noi-dung-mvp/dia-diem.md:12: dữ kiện dk-may, "Ảnh": rộng phải lớn hơn 0%',
+    ]);
+    expect(mot('- Ảnh: obj-ban-may · x 62% · y 48% · rộng 9%\n- Ảnh: obj-ban-may · x 10% · y 48% · rộng 9%')).toEqual([expect.stringMatching(/^noi-dung-mvp\/dia-diem\.md:14: .*"Ảnh" lặp lại/)]);
+    // Không truyền danh sách ảnh vật (test trong bộ nhớ) → không kiểm tệp.
+    expect(docDu({ 'dia-diem.md': themAnh('dk-may', '- Ảnh: obj-khong-co · x 62% · y 48% · rộng 9%') }).loi).toEqual([]);
+  });
+
+  it('hai dữ kiện cùng nơi dùng chung một vật phải cùng tọa độ', () => {
+    const cung = (x2: string): string[] =>
+      docDu({ 'dia-diem.md': (s) => themAnh('dk-phu', `- Ảnh: obj-ban-may · x ${x2}% · y 48% · rộng 9%`)(themAnh('dk-chinh', '- Ảnh: obj-ban-may · x 62% · y 48% · rộng 9%')(s)) }, VAT).loi;
+    expect(cung('62')).toEqual([]);
+    expect(cung('10')).toEqual(['noi-dung-mvp/dia-diem.md:7: dữ kiện dk-phu, "Ảnh": vật "obj-ban-may" đã đặt ở dữ kiện dk-chinh với tọa độ khác — dùng chung một vật thì cùng x, y, rộng']);
+  });
+});

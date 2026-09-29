@@ -21,17 +21,28 @@ export interface KetQuaLuat {
   mocDiaDiem: Map<string, Moc>;
   /** Số thứ tự mốc sớm nhất mà mỗi chuỗi có thể chạy (0 = mở đầu). Chuỗi lẻ không có. */
   mocChuoi: Map<string, number>;
+  /** Nhắc, KHÔNG tính lỗi (không chặn sinh): hiện chỉ có "dữ kiện chưa có dòng Ảnh". */
+  canhBao: LoiNoiDung[];
+}
+
+export interface TuyChonLuatMvp {
+  /**
+   * Tên (không đuôi) các ảnh vật có trong `src/assets/mvp/vat/` — để kiểm sprite `obj-…` của dòng "Ảnh" tồn tại.
+   * Bỏ trống = không kiểm tệp (test dựng nội dung trong bộ nhớ); `kiem-mvp`/`sinh-mvp` luôn truyền.
+   */
+  spriteVat?: ReadonlySet<string>;
 }
 
 type Producer = { kind: 'du-kien'; id: string } | { kind: 'the'; id: string } | { kind: 'chuoi'; id: string };
 
-export function kiemLuatMvp(mvp: RawMvp): KetQuaLuat {
+export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLuat {
   const loi: LoiNoiDung[] = [];
+  const canhBao: LoiNoiDung[] = [];
   const mocNhanVat = new Map<string, Moc>();
   const mocDuKien = new Map<string, Moc>();
   const mocDiaDiem = new Map<string, Moc>();
   const mocChuoi = new Map<string, number>();
-  const kq: KetQuaLuat = { loi, mocNhanVat, mocDuKien, mocDiaDiem, mocChuoi };
+  const kq: KetQuaLuat = { loi, mocNhanVat, mocDuKien, mocDiaDiem, mocChuoi, canhBao };
   const lich = mvp.lich;
   if (!lich) return kq;
   const khung = lich.khung;
@@ -123,6 +134,34 @@ export function kiemLuatMvp(mvp: RawMvp): KetQuaLuat {
         if (ev) them(ev, { kind: 'du-kien', id: k.id });
       }
       if (k.can) for (const id of maTrongDieuKien(k.can)) canVatPham(id, k.viTri, null, `dữ kiện ${k.id}, "Cần"`);
+    }
+  }
+
+  // ---------- Ảnh vật tương tác (dòng "- Ảnh:", QĐ-089) ----------
+  for (const d of mvp.diaDiem) {
+    const cungVat = new Map<string, RawDuKien>();
+    for (const k of d.duKien) {
+      const a = k.anh;
+      if (!a) {
+        canhBao.push({ ...k.viTri, thongBao: `dữ kiện ${k.id} chưa có dòng "- Ảnh:" — chỉ chọn được qua danh sách chữ` });
+        continue;
+      }
+      const noi = `dữ kiện ${k.id}, "Ảnh"`;
+      if (a.sprite.startsWith('nv:')) {
+        const nv = a.sprite.slice(3);
+        if (!nhanVat.has(nv)) err(k.viTri, `${noi}: không có nhân vật "${nv}" trong nhan-vat.md`);
+      } else if (tuyChon.spriteVat && !tuyChon.spriteVat.has(a.sprite)) {
+        err(k.viTri, `${noi}: không có ảnh vật "${a.sprite}" trong src/assets/mvp/vat/`);
+      }
+      for (const [ten, v] of [['x', a.x], ['y', a.y], ['rộng', a.rong]] as const) {
+        if (!(v >= 0 && v <= 100)) err(k.viTri, `${noi}: ${ten} phải trong 0–100%: ${v}%`);
+      }
+      if (a.rong === 0) err(k.viTri, `${noi}: rộng phải lớn hơn 0%`);
+      // Hai dữ kiện dùng chung một vật trong cùng nơi: runtime gộp thành MỘT điểm → phải cùng tọa độ.
+      const truoc = cungVat.get(a.sprite);
+      if (truoc?.anh && (truoc.anh.x !== a.x || truoc.anh.y !== a.y || truoc.anh.rong !== a.rong)) {
+        err(k.viTri, `${noi}: vật "${a.sprite}" đã đặt ở dữ kiện ${truoc.id} với tọa độ khác — dùng chung một vật thì cùng x, y, rộng`);
+      } else if (!truoc) cungVat.set(a.sprite, k);
     }
   }
 

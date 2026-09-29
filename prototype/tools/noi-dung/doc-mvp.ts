@@ -67,7 +67,28 @@ export interface RawDuKien {
   hienTaiLieu: string[];
   luuBangChung: string[];
   lap: 'mot-lan' | 'moi-lan';
+  /** Dòng `- Ảnh:` (vị trí vật tương tác trên nền, QĐ-089); `null` = chưa đặt (chỉ chọn được qua danh sách chữ). */
+  anh: RawAnhDuKien | null;
   viTri: ViTri;
+}
+
+/**
+ * `- Ảnh: <sprite> · x <n>% · y <n>% · rộng <n>%` — sprite là `obj-…` (tệp src/assets/mvp/vat/) hoặc `nv:<mã nhân vật>`.
+ * (x, y) là CHÂN ẢNH (điểm giữa cạnh dưới) tính theo % bề rộng / bề cao nền; rộng = % bề rộng nền.
+ */
+export interface RawAnhDuKien {
+  sprite: string;
+  x: number;
+  y: number;
+  rong: number;
+}
+
+/** Đọc giá trị dòng "Ảnh"; sai cú pháp → ném lỗi (thông báo đầy đủ). Không kiểm miền 0–100 (luật làm). */
+export function docAnhDuKien(v: string): RawAnhDuKien {
+  const m = /^(obj-[a-z0-9-]+|nv:[a-z0-9-]+)\s*·\s*x\s+(-?\d+(?:[.,]\d+)?)%\s*·\s*y\s+(-?\d+(?:[.,]\d+)?)%\s*·\s*rộng\s+(-?\d+(?:[.,]\d+)?)%$/.exec(v.trim());
+  if (!m) throw new Error(`"Ảnh" phải là "<obj-… hoặc nv:<mã>> · x <n>% · y <n>% · rộng <n>%": "${v}"`);
+  const so = (t: string | undefined): number => Number((t ?? '').replace(',', '.'));
+  return { sprite: m[1] ?? '', x: so(m[2]), y: so(m[3]), rong: so(m[4]) };
 }
 
 export interface RawDiaDiem {
@@ -504,7 +525,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       if (!dk) return;
       const f = fields;
       const vt = dk.viTri;
-      const biet = ['Mở từ', 'Cần', 'Chuỗi', 'Thử thách', 'Mở manh mối', 'Hiện tài liệu', 'Lưu bằng chứng', 'Lặp'];
+      const biet = ['Mở từ', 'Cần', 'Chuỗi', 'Thử thách', 'Mở manh mối', 'Hiện tài liệu', 'Lưu bằng chứng', 'Lặp', 'Ảnh'];
       const la = Object.keys(f).filter((k) => !biet.includes(k));
       if (la.length > 0) loi.push({ ...vt, thongBao: `dữ kiện ${dk.id} có dòng lạ: ${la.join(', ')}` });
       dk.chuoi = f['Chuỗi'] ?? null;
@@ -519,6 +540,14 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       const lap = f['Lặp'];
       if (lap !== undefined && lap !== 'mỗi lần' && lap !== 'một lần') loi.push({ ...vt, thongBao: `"Lặp" chỉ nhận "một lần" hoặc "mỗi lần": "${lap}"` });
       dk.lap = lap === 'mỗi lần' ? 'moi-lan' : 'mot-lan';
+      const anh = f['Ảnh'];
+      if (anh !== undefined) {
+        try {
+          dk.anh = docAnhDuKien(anh);
+        } catch (e) {
+          loi.push({ ...vt, thongBao: `dữ kiện ${dk.id}: ${(e as Error).message}` });
+        }
+      }
       const can = f['Cần'];
       if (can !== undefined) {
         try {
@@ -550,7 +579,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         const m = new RegExp(`^### (${MA}) — (.+) \\{dữ kiện: (chính|phụ|nhiễu)\\}$`).exec(line);
         if (!m) throw new Error(`tiêu đề dữ kiện sai quy ước "${line}" — viết "### <mã> — <Mô tả> {dữ kiện: chính|phụ|nhiễu}"`);
         const nhan: NhanDuKien = m[3] === 'chính' ? 'chinh' : m[3] === 'phụ' ? 'phu' : 'nhieu';
-        dk = { id: m[1] ?? '', moTa: m[2] ?? '', nhan, diaDiem: dd.id, moTu: null, can: null, chuoi: null, thuThach: null, moManhMoi: [], hienTaiLieu: [], luuBangChung: [], lap: 'mot-lan', viTri: viTri() };
+        dk = { id: m[1] ?? '', moTa: m[2] ?? '', nhan, diaDiem: dd.id, moTu: null, can: null, chuoi: null, thuThach: null, moManhMoi: [], hienTaiLieu: [], luuBangChung: [], lap: 'mot-lan', anh: null, viTri: viTri() };
         dd.duKien.push(dk);
         return i;
       }

@@ -3,8 +3,9 @@
  * quy-uoc.md → nhan-vat.md → canh.md → dia-diem.md → lich.md → du-lieu.md → kich-ban/ → thu-thach/ → so-tay/ → chung/ → ho-so/.
  * README.md bỏ qua; tệp .md chỗ khác là lỗi. Không import gì từ `src/`.
  */
-import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { docNoiDungMvp, type KetQuaDocMvp, type LoaiTepMvp, type LoiNoiDung, type TepMvp } from './doc-mvp.ts';
 
 const CHO_DOC: readonly { duongDan: string; loai: LoaiTepMvp; thuMuc: boolean }[] = [
@@ -54,4 +55,18 @@ export function docThuMucMvp(goc: string, hienThi = 'noi-dung-mvp'): KetQuaDocMv
   const g = gomTepMvp(goc, hienThi);
   const kq = docNoiDungMvp(g.tep);
   return { mvp: kq.mvp, loi: [...g.loi, ...kq.loi], tep: g.tep };
+}
+
+/** Thư mục ảnh vật tương tác (sprite `obj-…` của dòng "- Ảnh:" trong dia-diem.md). Chỉ đọc tên tệp. */
+export const THU_MUC_VAT_MVP = fileURLToPath(new URL('../../src/assets/mvp/vat/', import.meta.url));
+
+/** Tên ảnh vật (không đuôi, viết thường) có trên đĩa: webp/png/jpg/jpeg. Thư mục không có → tập rỗng. */
+export function docSpriteVat(thuMuc: string = THU_MUC_VAT_MVP): Set<string> {
+  if (!existsSync(thuMuc)) return new Set();
+  const ra = new Set<string>();
+  for (const ten of readdirSync(thuMuc)) {
+    const m = /^(.+)\.(webp|png|jpe?g)$/i.exec(ten);
+    if (m) ra.add((m[1] ?? '').toLowerCase());
+  }
+  return ra;
 }
