@@ -274,7 +274,7 @@ StoryView ──► GameScreen → component theo view.kind (DialogBox, ExploreS
 | Hình + ô ảnh | `shared/ui/visuals/**`, `Portrait.tsx`, `Stage.tsx`, `styles/*.css` | `art-slots.test.ts` (bảng ô ↔ tệp), `bg-cutout.test.ts`, `portrait-cutout.test.tsx`, `portraits.test.tsx`, `SceneBackdrop.test.tsx`, `projector-fit.test.tsx`, `styles/contrast.test.ts` |
 | Store | `shared/store/store.ts` | `store.test.ts` |
 | Telemetry + người quan sát | `shared/telemetry/**`, `app/FacilitatorPanel.tsx`, `app/facilitator-mode.ts`, `app/PreSurvey.tsx`, `app/EndScreen.tsx` | `track/local-sink/export/summary/survey.test.ts`, `FacilitatorPanel.test.tsx`, `PreSurvey.test.tsx`, `EndScreen.test.tsx`, `facilitator-jump.test.ts`, `notebook-and-jump-ui.test.tsx` |
-| Runtime MVP (§4a) | `mvp/engine/{trang-thai,may,sql-mvp}.ts`, `mvp/store/kho-mvp.ts`, `mvp/ui/**`, `assets/mvp/**` | `mvp/engine/may.test.ts` (máy thuần: mở đầu → 5 ngày → họp → hai kết, hết khung → cuối ngày, đi lại không tốn khung, uy tín/hết vạch, Lưu/Nạp), `mvp/engine/sql-mvp.test.ts` (3 thẻ chạy thật trên du-lieu.md ra đúng số dòng, chấm, chặn câu ghi), `mvp/engine/diem-tuong-tac.test.ts` (vật chung hai dữ kiện mở đúng theo ngày, ghim chỉ nơi đã mở), `mvp/ui/ban-do-noi.test.tsx` (nhãn trung tính không lộ `moTa`, bấm điểm → đúng dữ kiện, tòa nhiều phòng, đi lại không tốn khung) |
+| Runtime MVP (§4a) | `mvp/engine/{trang-thai,may,sql-mvp}.ts`, `mvp/store/kho-mvp.ts`, `mvp/ui/**`, `assets/mvp/**` | `mvp/engine/may.test.ts` (máy thuần: mở đầu → 5 ngày → họp → hai kết, hết khung → cuối ngày, đi lại không tốn khung, uy tín/hết vạch, Lưu/Nạp), `mvp/engine/sql-mvp.test.ts` (3 thẻ chạy thật trên du-lieu.md ra đúng số dòng, chấm, chặn câu ghi), `mvp/engine/diem-tuong-tac.test.ts` (vật chung hai dữ kiện mở đúng theo ngày, ghim chỉ nơi đã mở), `mvp/ui/ban-do-noi.test.tsx` (nhãn trung tính không lộ `moTa`, bấm điểm → đúng dữ kiện, tòa nhiều phòng, đi lại không tốn khung), `mvp/engine/tu-choi.test.ts` (3 điểm nhảy đúng trạng thái, họp → kết thật), `mvp/ui/giao-dien-mvp.test.tsx` (thanh trên / hồ sơ / sổ / lưu-nạp: nút có nhãn, mở-đóng, Esc), `mvp/ui/bang-quan-sat.test.tsx` (bảng chỉ với `?facilitator=1`, nhảy tới) |
 | Tích hợp | `app/GameScreen.tsx`, `app/App.tsx` | `app/full-playthrough.test.ts` (chơi trọn luồng intro-01 → [KẾT THÚC] bằng store/runtime/engine thật, kèm biến thể chọn sai trước) |
 
 **Tệp đóng băng** (muốn đổi kiểu/chữ ký phải báo người giao, kèm lý do): `src/shared/ids.ts`,
@@ -331,6 +331,28 @@ prototype: kho riêng (`mvp/store/kho-mvp.ts`, sessionStorage khóa `clb_mvp_*`,
   vật, trạng thái điểm, ghim hiện) ở `mvp/engine/diem-tuong-tac.ts`. Nút "Danh sách" mở danh sách chữ các chỗ xem xét
   (dự phòng / trợ năng; dữ kiện chưa có `Ảnh:` chỉ chọn được ở đây). Lớp `.mvp-canh` phủ trọn `.stage` như `.chal`,
   nên `.stage__content` phải `position: static; z-index: auto` (mục lưới có z-index vẫn tạo ngữ cảnh xếp lớp).
+- **Giao diện mang phong cách prototype (gói giao-dien-mvp).** Bốn phần là component MVP RIÊNG nhưng DÙNG LẠI lớp CSS
+  + cấu trúc DOM của prototype (component prototype gắn chặt `PART_IDS`/`EvidenceId`/ô lưu `vn-store` — thêm prop cho
+  chúng sẽ đụng hành vi prototype; prototype không đổi dòng nào): `HudMvp` = `.topbar*` của `TopBar` (vé "Ngày n/5" +
+  vạch ngày, viên Nhiệm vụ, nút con nhộng Dọc/Ngang · Hồ sơ · Sổ tay, menu ≡ Lịch sử/Lưu/Nạp/Về tiêu đề/Bắt đầu lại —
+  menu là state React, Esc/bấm ra ngoài đóng; uy tín ở buổi họp là viên tối; điện thoại: `.topbar__actions` thành
+  `display: contents`, uy tín xuống hàng nhiệm vụ). `HoSoMvp` = khung hòm đồ `evidence/ui/inventory-grid.css`, hai
+  tab: "Hồ sơ" (chân dung `char-nguoi-choi` + tên/ngành + số đếm, lưới ô lọc Giấy nhớ/Tài liệu/Bằng chứng theo ngăn
+  máy xếp, cột chi tiết = `TheHoSo`) và "Sổ cá nhân" (thẻ `.notebook__journal-*`, mỗi trang đã chép một thẻ); nút
+  Hồ sơ / Sổ tay trên thanh trên mở đúng tab. `LuuNapMvp` = `shared/vn/saveload-modal.css` (ảnh ô = nền cảnh lúc lưu,
+  ô trống = nền cảnh hiện tại đen trắng; hộp "Ghi đè?" nằm NGOÀI `.saveload-card` vì thẻ có transform). Điện thoại
+  (≤ 768 px và `.game--portrait`): hòm đồ một cột, bỏ cột chân dung/ảnh xem trước, vùng chạm 44 px; lưu/nạp ẩn nút
+  "Quay lại" cố định (đè ô cuối), còn X + Esc. Test: `mvp/ui/giao-dien-mvp.test.tsx`.
+- **Bảng người quan sát + "Nhảy tới" phần SQL (gói giao-dien-mvp).** `mvp/engine/tu-choi.ts`: `choiTuDong(kb, s,
+  chiếnThuật, dừng)` cho máy tự chơi CHỈ qua `khungNhin`/`xuLy` (dùng chung với `may.test.ts`); `nhayToi(kb, id)` =
+  ván mới (tên `TEN_MAC_DINH`, ngành đầu danh sách) tự chơi theo `DUONG_DU_BANG_CHUNG` (mỗi ngày dữ kiện chính trước,
+  rồi nhật ký in / lời chú Cường / lời Đạt → kết thật còn đạt được) tới `DIEM_NHAY_MVP`: `loc-lop` (ngày 2, thẻ
+  `c-loc-lop`), `ten-h` (ngày 4, `c-ten-h`), `hop-sua-or` (buổi họp, `fix-query` `c-sua-or-quan`, 5 vạch). Trạng thái
+  nhảy tới = trạng thái người chơi thật đi đường đó (test so bằng nhau) nên Lưu/Nạp, chơi tiếp không có gì đặc biệt.
+  `mvp/ui/BangQuanSatMvp.tsx` chỉ gắn khi `isFacilitatorMode(location.search)` (`?facilitator=1`), dùng lại
+  `.facilitator*` của `app.css` (dải đáy, lớp `facilitator-on` trên `<html>`), hỏi xác nhận trước khi thay ván (ô lưu
+  giữ nguyên). Bản MVP chưa có telemetry riêng → không ghi sự kiện nhảy. Cách dùng: mở `/?facilitator=1` → "Chơi bản
+  MVP" → dải đáy "Mở bảng" → "Nhảy tới phần SQL". Test: `mvp/engine/tu-choi.test.ts`, `mvp/ui/bang-quan-sat.test.tsx`.
 
 ## 5. Ô ảnh, ảnh thật của user, tách nền (QĐ-060, QĐ-063)
 

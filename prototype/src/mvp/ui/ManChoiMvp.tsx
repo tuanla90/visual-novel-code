@@ -10,6 +10,7 @@
 import './mvp.css';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { LoiMvp } from '../../content/mvp/types';
+import { isFacilitatorMode } from '../../app/facilitator-mode';
 import { isEffectId } from '../../shared/ids';
 import { DialogBox } from '../../shared/ui/DialogBox';
 import { MultipleChoice } from '../../shared/ui/MultipleChoice';
@@ -20,10 +21,12 @@ import { ObjectionEffect } from '../../story/ui/ObjectionEffect';
 import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
 import { dienTen as dienTenMay, khungNhin, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
+import { nhayToi, type MaDiemNhayMvp } from '../engine/tu-choi';
 import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
 import { BAN_DO_MVP } from './ban-do-mvp';
+import { BangQuanSatMvp } from './BangQuanSatMvp';
 import { BanDoMvp } from './BanDoMvp';
-import { HoSoMvp } from './HoSoMvp';
+import { HoSoMvp, type TabHoSoMvp } from './HoSoMvp';
 import { HudMvp } from './HudMvp';
 import { KetMvp } from './KetMvp';
 import { LocThuMvp } from './LocThuMvp';
@@ -34,7 +37,7 @@ import { NoiMvp } from './NoiMvp';
 import { SanKhauMvp } from './SanKhauMvp';
 import { TaiLieuMvp } from './TaiLieuMvp';
 import { TaoNhanVatMvp } from './TaoNhanVatMvp';
-import { ChepSoMvp, SoCaNhanMvp, TraSoMvp } from './TrangSoMvp';
+import { ChepSoMvp, TraSoMvp } from './TrangSoMvp';
 
 export interface ManChoiMvpProps {
   onVeTieuDe: () => void;
@@ -58,9 +61,10 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const xoa = useKhoMvp((k) => k.xoa);
   const luuVaoO = useKhoMvp((k) => k.luuVaoO);
   const napTuO = useKhoMvp((k) => k.napTuO);
+  const datTrangThai = useKhoMvp((k) => k.datTrangThai);
 
-  const [hoSoMo, setHoSoMo] = useState(false);
-  const [soTayMo, setSoTayMo] = useState(false);
+  /** Hồ sơ và Sổ cá nhân là hai tab của cùng một khung (phong cách hòm đồ prototype); `null` = đóng. */
+  const [kho, setKho] = useState<TabHoSoMvp | null>(null);
   const [lichSuMo, setLichSuMo] = useState(false);
   const [luuNap, setLuuNap] = useState<'save' | 'load' | null>(null);
   const [toast, setToast] = useState<string | null>(null);
@@ -95,6 +99,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   }, [loaiKn, setSkipMode]);
 
   const tiep = useCallback(() => hanhDong({ type: 'tiep' }), [hanhDong]);
+  const dongKho = useCallback(() => setKho(null), []);
   const choiLai = useCallback(() => {
     clearBacklog();
     xoa();
@@ -103,7 +108,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
 
   if (!s || !kn) return null;
   const dienTen = (t: string): string => dienTenMay(kb, s, t);
-  const modalMo = hoSoMo || soTayMo || lichSuMo || luuNap !== null;
+  const modalMo = kho !== null || lichSuMo || luuNap !== null;
   const loiHienTai: { speaker: string; expression?: string } | null =
     kn.kind === 'line' || kn.kind === 'feedback'
       ? kn.loi
@@ -118,9 +123,28 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const laGiaLap = laDoc && typeof window !== 'undefined' && window.innerWidth > 768;
   const noiDangO = kn.kind === 'chon-dia-diem' && dangO && dangO.ngay === s.ngay ? kn.diaDiem.find((d) => d.diaDiem.id === dangO.noi) : undefined;
 
+  // Bảng người quan sát (`?facilitator=1`): nhảy tới phần SQL = máy tự chơi ván mới tới đó (engine/tu-choi.ts).
+  const quanSat = typeof window !== 'undefined' && isFacilitatorMode(window.location.search);
+  const nhay = (id: MaDiemNhayMvp): string | null => {
+    let moi: TrangThaiMvp;
+    try {
+      moi = nhayToi(kb, id);
+    } catch (e) {
+      return e instanceof Error ? e.message : String(e);
+    }
+    clearBacklog();
+    setKho(null);
+    setLichSuMo(false);
+    setLuuNap(null);
+    setDangO(null);
+    datTrangThai(moi);
+    return null;
+  };
+  const bangQuanSat = quanSat ? <BangQuanSatMvp kb={kb} s={s} loaiManHinh={kn.kind} onNhay={nhay} /> : null;
+
   const nutVn = {
     keyboardEnabled: !modalMo,
-    onOpenNotebook: () => setHoSoMo(true),
+    onOpenNotebook: () => setKho('ho-so'),
     notebookCount: soHoSo(s),
     onOpenBacklog: () => setLichSuMo(true),
     onOpenSave: () => setLuuNap('save'),
@@ -262,8 +286,9 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         kb={kb}
         s={s}
         soHoSo={soHoSo(s)}
-        onMoHoSo={() => setHoSoMo(true)}
-        onMoSoTay={() => setSoTayMo(true)}
+        soTrangSo={s.soTay.length}
+        onMoHoSo={() => setKho('ho-so')}
+        onMoSoTay={() => setKho('so-tay')}
         onMoLuu={() => setLuuNap('save')}
         onMoNap={() => setLuuNap('load')}
         onMoLichSu={() => setLichSuMo(true)}
@@ -283,14 +308,26 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         {noiDung}
       </SanKhauMvp>
 
-      {hoSoMo ? <HoSoMvp kb={kb} hoSo={s.hoSo} dienTen={dienTen} onDong={() => setHoSoMo(false)} /> : null}
-      {soTayMo ? <SoCaNhanMvp kb={kb} trang={s.soTay} dienTen={dienTen} onDong={() => setSoTayMo(false)} /> : null}
+      {kho ? (
+        <HoSoMvp
+          kb={kb}
+          hoSo={s.hoSo}
+          soTay={s.soTay}
+          tenNguoiChoi={s.tenNguoiChoi}
+          nganh={s.nganh}
+          tab={kho}
+          onDoiTab={setKho}
+          dienTen={dienTen}
+          onDong={dongKho}
+        />
+      ) : null}
       <BacklogModal open={lichSuMo} onClose={() => setLichSuMo(false)} />
       {luuNap ? (
         <LuuNapMvp
           mode={luuNap}
           oLuu={oLuu}
           coTienDo={kn.kind !== 'end'}
+          canhHienTai={noiDangO ? noiDangO.diaDiem.canh : s.canh}
           onLuu={(o) => {
             luuVaoO(o, nhanTienDo(s));
             baoToast(`Đã lưu vào ô ${o + 1}.`);
@@ -320,10 +357,16 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           {game}
           <div className="game-simulator-home-bar" />
         </div>
+        {bangQuanSat}
       </div>
     );
   }
-  return game;
+  return (
+    <>
+      {game}
+      {bangQuanSat}
+    </>
+  );
 }
 
 /** Hiệu ứng không có trong `EFFECT_IDS` của prototype: bỏ qua ngay (không chặn người chơi). */
