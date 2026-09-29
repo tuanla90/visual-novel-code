@@ -235,32 +235,13 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: var(--sp-3);
-}
-.mvp-dd__noi {
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius-md);
-  padding: var(--sp-2) var(--sp-3);
-  display: grid;
-  gap: var(--sp-2);
-  align-content: start;
-}
-.mvp-dd__ten {
-  margin: 0;
-  font-size: var(--fs-md);
 }
 .mvp-dd__trong {
   margin: 0;
   color: var(--c-text-muted);
   font-size: var(--fs-sm);
-}
-.mvp-dd__dk {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: var(--sp-1);
 }
 .mvp-dd__nut {
   width: 100%;
