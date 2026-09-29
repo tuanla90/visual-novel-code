@@ -1089,3 +1089,140 @@
   font-size: var(--fs-sm);
   color: var(--c-text-muted);
 }
+
+/* ---------- Tạo nhân vật (gói tao-nhan-vat-mvp): thẻ tên nổi trên hộp thoại Tùng, ngành dùng nút .mc__choice ----------
+   Chữ ô nhập ≥ 16px để Safari iOS không tự phóng to khi chạm. Điện thoại dọc: thẻ tên neo vào ĐỈNH sân khấu (bỏ
+   position của .stage__content và .mc để lớp phủ tính theo .stage) — bàn phím ảo chiếm nửa dưới màn không che ô nhập. */
+.mvp-tnv__lop {
+  align-items: center;
+}
+.mvp-tnv__the {
+  pointer-events: auto;
+  width: min(460px, 92%);
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  color: #f8fafc;
+  font-family: var(--font-ui);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(10, 16, 30, 0.94) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(253, 230, 138, 0.85);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: mc-choice-slide 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.mvp-tnv__dau {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mvp-tnv__anh {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 8%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(253, 230, 138, 0.7);
+}
+.mvp-tnv__nhan {
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+.mvp-tnv__goiy {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+.mvp-tnv__hang {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+}
+.mvp-tnv__o {
+  flex: 1;
+  min-width: 0;
+  min-height: 48px;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 1.1rem;
+  color: #0f172a;
+  background: #f8fafc;
+  border: 2px solid rgba(253, 230, 138, 0.9);
+  border-radius: 10px;
+}
+.mvp-tnv__o:focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 2px;
+}
+.mvp-tnv__o[aria-invalid='true'] {
+  border-color: #f87171;
+}
+.mvp-tnv__xucxac {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  color: #fde68a;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1.5px solid rgba(253, 230, 138, 0.85);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.mvp-tnv__xucxac:hover {
+  color: #fffbeb;
+  transform: rotate(-12deg);
+}
+.mvp-tnv__xucxac:focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 2px;
+}
+.mvp-tnv__loi {
+  margin: 0;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #fee2e2;
+  background: rgba(127, 29, 29, 0.75);
+}
+/* `.stage .btn--primary` (prototype) đặt justify-self: start → cần độ ưu tiên cao hơn. */
+.mvp-tnv__the .btn.mvp-tnv__xong {
+  justify-self: end;
+  min-height: 44px;
+  min-width: 96px;
+}
+@media (max-width: 768px) {
+  /* Độ ưu tiên phải hơn `.stage__content:has(> .mc)` / `.mc` của app.css (nạp sau mvp.css). */
+  .stage .stage__content:has(> .mvp-tnv--ten),
+  .mc.mvp-tnv--ten {
+    position: static;
+  }
+  .mvp-tnv--ten .mvp-tnv__lop {
+    top: 56px;
+    bottom: auto !important;
+    justify-content: flex-start;
+  }
+  .mvp-tnv__the {
+    width: 100%;
+    padding: 12px;
+  }
+}
+.game--portrait .stage .stage__content:has(> .mvp-tnv--ten),
+.game--portrait .mc.mvp-tnv--ten {
+  position: static;
+}
+.game--portrait .mvp-tnv--ten .mvp-tnv__lop {
+  top: 56px;
+  bottom: auto !important;
+  justify-content: flex-start;
+}
+.game--portrait .mvp-tnv__the {
+  width: 100%;
+  padding: 12px;
+}

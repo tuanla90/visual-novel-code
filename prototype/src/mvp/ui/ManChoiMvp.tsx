@@ -1,7 +1,8 @@
 /**
  * MÀN CHƠI BẢN MVP — lối vào từ nút "Chơi bản MVP" ở màn tiêu đề (QĐ-077 gói 1). Ghép máy `engine/may.ts` với
  * giao diện: HUD (ngày/khung/uy tín), sân khấu MVP, hộp thoại VN (tái dùng `DialogBox`), câu hỏi (`MultipleChoice`),
- * bản đồ trường + màn trong địa điểm (vật tương tác), thử thách SQL, hồ sơ, sổ tay, lịch sử thoại (`BacklogModal`), Lưu/Nạp.
+ * bản đồ trường + màn trong địa điểm (vật tương tác), thử thách SQL, hồ sơ, sổ tay, lịch sử thoại (`BacklogModal`), Lưu/Nạp,
+ * màn tạo nhân vật (`TaoNhanVatMvp`: tên + ngành, không hỏi giới tính — QĐ-084).
  * Người chơi đang đứng ở nơi nào (bản đồ hay trong một nơi) là trạng thái GIAO DIỆN (đi lại không tốn khung, không lưu);
  * sang ngày mới thì về bản đồ.
  * Trạng thái nằm trong `store/kho-mvp.ts` (khóa riêng), không đụng store prototype.
@@ -32,6 +33,7 @@ import { ManThuThachMvp } from './ManThuThachMvp';
 import { NoiMvp } from './NoiMvp';
 import { SanKhauMvp } from './SanKhauMvp';
 import { TaiLieuMvp } from './TaiLieuMvp';
+import { TaoNhanVatMvp } from './TaoNhanVatMvp';
 import { ChepSoMvp, SoCaNhanMvp, TraSoMvp } from './TrangSoMvp';
 
 export interface ManChoiMvpProps {
@@ -103,7 +105,13 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const dienTen = (t: string): string => dienTenMay(kb, s, t);
   const modalMo = hoSoMo || soTayMo || lichSuMo || luuNap !== null;
   const loiHienTai: { speaker: string; expression?: string } | null =
-    kn.kind === 'line' || kn.kind === 'feedback' ? kn.loi : kn.kind === 'question' || kn.kind === 'branch' ? { speaker: kn.nut.asker.speaker } : null;
+    kn.kind === 'line' || kn.kind === 'feedback'
+      ? kn.loi
+      : kn.kind === 'question' || kn.kind === 'branch'
+        ? { speaker: kn.nut.asker.speaker }
+        : kn.kind === 'create-character'
+          ? kn.nut.asker
+          : null;
   const dem = s.giaiDoan === 'ngay' && s.khung >= kb.lich.khung.length;
   const rung = kn.kind === 'effect' || loiHienTai?.expression === 'stunned';
   const laDoc = viewportMode === 'mobile';
@@ -224,6 +232,17 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         return <ChepSoMvp kb={kb} trang={kn.trang} dienTen={dienTen} lanThu={kn.lanThu} tenNguoiNoi={(sp) => tenNguoiNoi(kb, sp)} onChon={(id) => hanhDong({ type: 'chon', luaChon: id })} />;
       case 'trial-filter':
         return <LocThuMvp duLieu={kb.duLieu} nut={kn.nut} lanThu={kn.lanThu} onChon={(giaTri) => hanhDong({ type: 'chon-o', giaTri })} />;
+      case 'create-character':
+        return (
+          <TaoNhanVatMvp
+            key={`${s.conTro?.chuoi ?? ''}-${s.conTro?.nut ?? 0}`}
+            kb={kb}
+            nut={kn.nut}
+            dienTen={dienTen}
+            onDatTen={(ten) => hanhDong({ type: 'dat-ten', ten })}
+            onChonNganh={(nganh) => hanhDong({ type: 'chon-nganh', nganh })}
+          />
+        );
       case 'end':
         return <KetMvp ketQua={kn.ketQua} onChoiLai={choiLai} onVeTieuDe={onVeTieuDe} />;
       case 'error':
