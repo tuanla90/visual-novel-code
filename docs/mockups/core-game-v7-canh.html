@@ -3,8 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Phòng máy · chơi thử v6</title>
-<!-- Mockup v6 (theo ý user 29/09): nền phòng máy, màn hình giả lập ở giữa, giấy nhớ dán quanh viền màn hình,
+<title>Phòng máy · chơi thử v7</title>
+<!-- Mockup v7 (29/09): nền là MỘT ảnh cảnh đầy đủ (art/nguon/phong-may-core/canh/), giao diện lồng vào mặt kính,
+     giấy nhớ là ảnh riêng + chữ do game viết, nhãn sổ/hồ sơ do game vẽ theo phối cảnh, rê chuột = cắt từ chính ảnh nền.
+     Bản trước: Mockup v6 (theo ý user 29/09): nền phòng máy, màn hình giả lập ở giữa, giấy nhớ dán quanh viền màn hình,
      sổ và hồ sơ nằm trên bàn, không có hai nhân vật đứng cạnh — nhân vật chỉ lên tiếng bằng hộp thoại khi có chuyện.
      Khớp QĐ-071 (phần ngoài là ảnh, giấy nhớ dán quanh màn hình) và quyết định "Tùng, Hà Vy không ngồi cạnh màn thử thách". -->
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet">
@@ -69,7 +71,7 @@ button{font:inherit;cursor:pointer}
 .pcard.on{transform:scale(1) rotate(var(--r));opacity:1}
 .pcard .av{width:62px;height:62px;border-radius:50%;margin:0 auto 6px;background:#cfd8dc;display:grid;place-items:center;font:800 28px "Be Vietnam Pro";color:#37474f}
 .pcard b{font-size:19px;display:block}.pcard small{font:600 12px "JetBrains Mono";color:#666}
-.pcard.fly{transition:all .6s ease-in;transform:translate(260px,420px) scale(.1)!important;opacity:0}
+.pcard.fly{transition:all .6s ease-in;transform:translate(560px,420px) scale(.1)!important;opacity:0}
 /* Dòng SQL + thanh dưới */
 .sqlbar{margin:8px 18px 0;background:var(--code);border-radius:9px;padding:8px 12px;font:600 15px "JetBrains Mono";color:#e6edf3;display:flex;align-items:center;gap:10px;min-height:42px}
 .sqlbar .k{color:#7cc4ff}.sqlbar .s{color:#f2c572}
@@ -139,16 +141,49 @@ button{font:inherit;cursor:pointer}
 #notes li{margin-bottom:5px}
 .corner{position:absolute;right:20px;top:640px;display:flex;gap:8px;z-index:5}
 .iconbtn{background:#0008;border:1px solid #fff3;color:#f3ead7;border-radius:10px;padding:5px 10px;font-size:15px}
+
+/* ===== v7: nền là ảnh cảnh đầy đủ ===== */
+#stage{background:#000}
+#bg{position:absolute;left:0;top:0;width:1600px;height:900px;transition:filter .4s}
+#stage.dem .note{filter:brightness(.62) saturate(.8) drop-shadow(2px 5px 6px #0007)}
+#stage.dem .lbl{color:#2a2230;opacity:.85}
+.bezel{left:196px;top:84px;width:1232px;height:628px;padding:0;background:none;box-shadow:0 0 30px #64b5f633;border-radius:3px}
+.bezel::after{display:none}
+.scr{border-radius:2px}
+.hud{left:14px;top:10px}
+.corner{top:10px}
+/* giấy nhớ: ảnh riêng, chữ do game viết */
+.note{width:128px;min-height:128px;padding:16px 30px 12px 12px;background:none!important;box-shadow:none;filter:drop-shadow(2px 5px 6px #0007);color:#2a2320}
+/* giấy xoay 90°: băng keo quay vào phía màn hình, dán đè lên viền; chữ vẫn thẳng */
+.note::before{content:"";position:absolute;inset:0;background:var(--img) center/100% 100% no-repeat;transform:rotate(var(--rot,90deg));z-index:-1}
+.note.phai{padding:16px 12px 12px 30px;--rot:-90deg}
+.note::after{display:none}
+.note:hover{filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff) drop-shadow(2px 6px 8px #0008)}
+.note i{color:#0008}
+.slot.full{height:auto}
+.slot.full .note{width:auto;min-width:104px;min-height:0;padding:20px 16px 9px;font-size:30px;text-align:center;--rot:0deg;filter:drop-shadow(0 3px 0 #0007)!important}
+.slot.full .note::before{display:block;transform:none}
+.slot.full .note.u1{box-shadow:inset 0 -5px 0 var(--c1)!important}.slot.full .note.u2{box-shadow:inset 0 -5px 0 var(--c2)!important}
+/* đống phiếu vẽ bằng canvas (1240 ô DOM + transition làm giật) */
+#cells{position:absolute;left:0;top:0;width:100%;height:100%;display:block}
+/* sổ, hồ sơ: vùng bấm theo đa giác, sáng lên bằng chính ảnh nền */
+#hot{position:absolute;left:0;top:0;width:1600px;height:900px;z-index:4;pointer-events:none}
+#hot g{pointer-events:auto;cursor:pointer;transform:none!important;background:none!important;box-shadow:none!important;padding:0!important}
+#hot .hl{opacity:0;transition:opacity .15s}
+#hot .ol{fill:none;stroke:#fff;stroke-width:0;stroke-linejoin:round;transition:stroke-width .15s;filter:drop-shadow(0 0 6px #fff)}
+#hot .hit{fill:#0000}
+#hot g:hover .hl,#hot g.glow .hl{opacity:1}
+#hot g:hover .ol,#hot g.glow .ol{stroke-width:3}
+.lbl{position:absolute;left:0;top:0;width:200px;height:50px;transform-origin:0 0;display:flex;align-items:center;justify-content:center;font:26px/1 "Patrick Hand",cursive;color:#3a2a18;pointer-events:none;z-index:5;white-space:nowrap}
+.lbl b{background:#a93226;color:#fff;border-radius:99px;font:700 16px "Be Vietnam Pro";padding:1px 8px;margin-left:8px}
 </style>
 </head>
 <body>
 <div id="stage">
-  <div class="window"></div>
-  <div class="room"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="desk"></div>
+  <img id="bg" src="../../art/nguon/phong-may-core/canh/phong-may-ngay.png" alt="">
 
   <div class="hud"><span class="case">🗂 Vụ 1 · Chữ ký H</span><span class="pill">Ngày 4 · Chiều</span><span class="pill">💻 Phòng máy</span></div>
-  <div class="corner"><button class="iconbtn" id="mute">🔊</button><button class="iconbtn" id="notesBtn">📝</button></div>
+  <div class="corner"><button class="iconbtn" id="nd">🌙</button><button class="iconbtn" id="mute">🔊</button><button class="iconbtn" id="notesBtn">📝</button></div>
 
   <div class="bezel"><div class="scr" id="scr">
     <div class="titlebar">▣ tra-cuu-du-lieu.exe — quyền xem tạm (cô Hạnh cấp)<span class="sp"></span><button id="pen2" title="">—</button></div>
@@ -163,7 +198,7 @@ button{font:inherit;cursor:pointer}
       </div>
     </div>
     <div class="field" id="field">
-      <div id="cells"></div><div id="cards"></div>
+      <canvas id="cells"></canvas><div id="cards"></div>
       <div class="stamp" id="stamp">2 DÒNG</div>
       <div class="counter"><div class="n" id="num">1240</div><div class="l" id="lab">DÒNG</div></div>
       <div id="xray"></div>
@@ -175,19 +210,22 @@ button{font:inherit;cursor:pointer}
       <button class="run" id="run">▶ CHẠY</button>
     </div>
   </div></div>
-  <div class="stand"></div>
 
   <!-- giấy nhớ dán quanh viền màn hình -->
-  <div class="note y" draggable="true" data-v="H" style="left:95px;top:70px;--r:-5deg"><svg class="sig" viewBox="0 0 170 44" width="128" height="34"><path d="M14 36 L30 6 M30 22 L8 24 M44 4 L28 38 M30 24 C44 22 46 30 52 26 C58 22 60 30 66 26 C72 22 74 30 82 24 C92 16 100 6 96 14 C90 26 84 40 88 38 C96 32 120 26 164 24" fill="none" stroke="#1f2328" stroke-width="3" stroke-linecap="round"/></svg>H<i>chữ ký: chỉ đọc được chữ đầu</i></div>
-  <div class="note b" draggable="true" data-v="BC24A" style="left:105px;top:240px;--r:4deg">BC24A<i>bằng chứng ngày 2</i></div>
-  <div class="note p" draggable="true" data-v="B" style="left:90px;top:390px;--r:-3deg">Tòa B<i>bác Thịnh</i></div>
-  <div class="note g" draggable="true" data-v="Báo chí" style="left:1348px;top:90px;--r:5deg">Báo chí K24<i>thẻ lịch rách</i></div>
-  <div class="note w" draggable="true" data-v="Hiếu" style="left:1352px;top:260px;--r:-4deg">"Hiếu nói xấu CLB"<i>căng tin</i></div>
+  <div class="note y" draggable="true" data-v="H" style="left:74px;top:114px;--r:-4deg;--img:url(../../art/nguon/phong-may-core/canh/giay-nho-01.png)"><svg class="sig" viewBox="0 0 170 44" width="128" height="34"><path d="M14 36 L30 6 M30 22 L8 24 M44 4 L28 38 M30 24 C44 22 46 30 52 26 C58 22 60 30 66 26 C72 22 74 30 82 24 C92 16 100 6 96 14 C90 26 84 40 88 38 C96 32 120 26 164 24" fill="none" stroke="#1f2328" stroke-width="3" stroke-linecap="round"/></svg>H<i>chữ ký: chỉ đọc được chữ đầu</i></div>
+  <div class="note b" draggable="true" data-v="BC24A" style="left:74px;top:296px;--r:3deg;--img:url(../../art/nguon/phong-may-core/canh/giay-nho-02.png)">BC24A<i>bằng chứng ngày 2</i></div>
+  <div class="note p" draggable="true" data-v="B" style="left:74px;top:478px;--r:-2deg;--img:url(../../art/nguon/phong-may-core/canh/giay-nho-03.png)">Tòa B<i>bác Thịnh</i></div>
+  <div class="note g phai" draggable="true" data-v="Báo chí" style="left:1422px;top:122px;--r:4deg;--img:url(../../art/nguon/phong-may-core/canh/giay-nho-04.png)">Báo chí K24<i>thẻ lịch rách</i></div>
+  <div class="note w phai" draggable="true" data-v="Hiếu" style="left:1422px;top:310px;--r:-3deg;--img:url(../../art/nguon/phong-may-core/canh/giay-nho-05.png)">"Hiếu nói xấu CLB"<i>căng tin</i></div>
 
   <!-- đồ trên bàn -->
-  <div class="kbd"></div>
-  <div class="obj" id="book">Sổ chị Linh<small>điểm tâm đắc · lỗi thường gặp</small></div>
-  <div class="obj" id="folder">📁 Hồ sơ vụ<b id="fcount">2</b><small>bằng chứng đã cất</small></div>
+  <svg id="hot" viewBox="0 0 1600 900">
+    <defs><clipPath id="cpSo"><polygon points="-63,815 250,767 283,768 472,922 469,969 446,982 -63,982"/></clipPath><clipPath id="cpHs"><polygon points="1156,835 1173,815 1644,783 1668,792 1709,841 1709,982 1256,982"/></clipPath></defs>
+    <g id="book"><image class="hl" href="../../art/nguon/phong-may-core/canh/phong-may-ngay.png" width="1600" height="900" clip-path="url(#cpSo)" style="filter:brightness(1.18) saturate(1.1)"/><polygon class="ol" points="-63,815 250,767 283,768 472,922 469,969 446,982 -63,982"/><polygon class="hit" points="-63,815 250,767 283,768 472,922 469,969 446,982 -63,982"/></g>
+    <g id="folder"><image class="hl" href="../../art/nguon/phong-may-core/canh/phong-may-ngay.png" width="1600" height="900" clip-path="url(#cpHs)" style="filter:brightness(1.15) saturate(1.1)"/><polygon class="ol" points="1156,835 1173,815 1644,783 1668,792 1709,841 1709,982 1256,982"/><polygon class="hit" points="1156,835 1173,815 1644,783 1668,792 1709,841 1709,982 1256,982"/></g>
+  </svg>
+  <div class="lbl" id="lblSo" data-q="[[20.8,847.9],[204.6,820.5],[245.0,859.6],[52.1,888.3]]">Sổ chị Linh</div>
+  <div class="lbl" id="lblHs" data-q="[[1357.7,838.8],[1524.4,828.4],[1559.6,868.7],[1388.9,881.8]]">Hồ sơ vụ 1<b id="fcount">2</b></div>
 
   <div id="dlg"><div class="face" id="dlgFace"></div><div><b id="dlgWho"></b><p id="dlgText"></p></div><span class="more">bấm để đóng</span></div>
 
@@ -198,6 +236,7 @@ button{font:inherit;cursor:pointer}
     <p style="font-size:13px;color:#8a7250">(bấm để đóng)</p></div>
 
   <div id="notes"><b>📝 Ghi chú thiết kế (ẩn khi chơi)</b><ul>
+    <li><b>v7:</b> nền là một ảnh cảnh đầy đủ (Topview, phong cách A, khung màn hình to). Giao diện lồng vào mặt kính theo tọa độ đo tự động; giấy nhớ là ảnh riêng, chữ do game viết; chữ trên nhãn sổ/hồ sơ do game vẽ theo phối cảnh; rê chuột = cắt đa giác từ chính ảnh nền nên khớp tuyệt đối.</li>
     <li>Nền là phòng máy; màn hình giả lập ở giữa; giấy nhớ dán quanh viền; sổ chị Linh và hồ sơ vụ nằm trên bàn và bấm được. <b>Không có nhân vật đứng cạnh</b>.</li>
     <li>Nhân vật chỉ lên tiếng bằng <b>hộp thoại</b> khi có chuyện (sau khi chạy, khi bí), rồi ẩn.</li>
     <li><b>Đã bỏ phần cược/đoán</b> (user 29/09): chờ một cơ chế hoàn chỉnh có thưởng phạt rõ ràng.</li>
@@ -207,7 +246,7 @@ button{font:inherit;cursor:pointer}
 
 <script>
 const stage=document.getElementById('stage');
-function fit(){const s=Math.min(innerWidth/1600,innerHeight/900);stage.style.transform=`translate(-50%,-50%) scale(${s})`}
+function fit(){const s=Math.min(innerWidth/1600,innerHeight/900);stage.dataset.scale=s;stage.style.transform=`translate(-50%,-50%) scale(${s})`}
 addEventListener('resize',fit);fit();
 
 // dữ liệu giả, khớp số kịch bản: H… 96, BC24A 38, giao 2, hợp 132
@@ -224,9 +263,27 @@ idx.slice(94,132).forEach(k=>DATA[k].lop='BC24A');
 DATA.forEach(d=>{if(!d.ten)d.ten=O[Math.floor(rnd()*O.length)];if(!d.lop)d.lop=LOP[Math.floor(rnd()*LOP.length)];d.ma='SV24'+String(1000+Math.floor(rnd()*8999)).padStart(4,'0')});
 DATA[idx[94]].ma='SV240228';DATA[idx[95]].ma='SV240317';
 
-const cellsEl=document.getElementById('cells');
-DATA.forEach(()=>{const c=document.createElement('div');c.className='cell';cellsEl.appendChild(c)});
-const CELLS=[...cellsEl.children];
+// đống phiếu: một canvas, một vòng requestAnimationFrame (thay 1240 thẻ div có transition riêng)
+const cv=document.getElementById('cells'),cx=cv.getContext('2d'),NC=DATA.length;
+const COL=new Uint8Array(NC),FALL=new Float64Array(NC).fill(Infinity);   // COL: 0 xám, 1 cam, 2 xanh, 3 trắng
+const PAL=['#9fb3c2','#ff8a65','#64b5f6','#ffffff'];
+let G={cols:62,pw:13,ph:10,cw:11,ch:8,ox:12,oy:12},raf=0;
+function sizeCells(){const f=cv.parentElement,w=f.clientWidth,h=f.clientHeight,sc=(parseFloat(stage.dataset.scale)||1)*(devicePixelRatio||1);
+  cv.width=Math.round(w*sc);cv.height=Math.round(h*sc);cx.setTransform(sc,0,0,sc,0,0);
+  const rows=Math.ceil(NC/G.cols),pw=Math.min((w*.7-12)/G.cols,(h-24)/rows*1.3);G.pw=pw;G.cw=pw-2;G.ch=G.cw*8/11;G.ph=G.ch+2;G.oy=Math.max(12,(h-rows*G.ph)/2-20);draw()}
+const ease=t=>t*t*(1.6-.6*t);   // gần với cubic-bezier(.5,0,.9,.5): chậm lúc đầu, rơi nhanh dần
+function draw(){raf=0;const now=performance.now(),w=cv.width,h=cv.height;cx.clearRect(0,0,w,h);let moving=false;
+  for(let c=0;c<4;c++){cx.fillStyle=PAL[c];cx.beginPath();
+    for(let k=0;k<NC;k++){if(COL[k]!==c||FALL[k]<=now)continue;cx.roundRect(G.ox+(k%G.cols)*G.pw,G.oy+Math.floor(k/G.cols)*G.ph,G.cw,G.ch,2)}
+    if(c===3){cx.shadowColor='#fff';cx.shadowBlur=8}cx.fill();cx.shadowBlur=0}
+  for(let k=0;k<NC;k++){const f=FALL[k];if(f===Infinity)continue;if(f>now){moving=true;continue}const t=Math.min(1,(now-f)/700);if(t>=1)continue;moving=true;
+    const e=ease(t);cx.save();cx.globalAlpha=1-e;cx.translate(G.ox+(k%G.cols)*G.pw+G.cw/2,G.oy+Math.floor(k/G.cols)*G.ph+G.ch/2+360*e);cx.rotate(e*2.8);
+    cx.fillStyle=PAL[COL[k]];cx.fillRect(-G.cw/2,-G.ch/2,G.cw,G.ch);cx.restore()}
+  if(moving)raf=requestAnimationFrame(draw)}
+function kick(){if(!raf)raf=requestAnimationFrame(draw)}
+const isOut=k=>FALL[k]!==Infinity;
+function dropCell(k,delay){FALL[k]=performance.now()+delay}
+addEventListener('resize',sizeCells);
 
 const COLS=['ten','ho_dem','ma_lop'],OPS=['bằng','bắt đầu bằng'];
 const Q={c:[0,2],o:[0,0],v:[null,null],join:'VÀ',edit:[null,null]};
@@ -240,6 +297,7 @@ function renderSQL(){const parts=[0,1].map(i=>{const s=sqlVal(i);if(!s)return nu
   document.getElementById('sqlbar').innerHTML=`<span><span class="k">SELECT</span> * <span class="k">FROM</span> sinh_vien${where}</span><button class="pen" id="pen" title="Tự viết dòng này">✎</button>`;
   document.getElementById('pen').onclick=openPen}
 renderSQL();
+requestAnimationFrame(sizeCells);document.fonts&&document.fonts.ready.then(sizeCells);
 
 let AC=null,muted=false;
 function beep(f=440,d=.06,t='square',v=.05){if(muted)return;AC=AC||new AudioContext();const o=AC.createOscillator(),g=AC.createGain();o.type=t;o.frequency.value=f;g.gain.value=v;g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+d);o.connect(g).connect(AC.destination);o.start();o.stop(AC.currentTime+d)}
@@ -266,7 +324,7 @@ document.querySelectorAll('.slot').forEach(s=>{
   s.addEventListener('drop',e=>{e.preventDefault();s.classList.remove('hot');place(s,picked)});
   s.addEventListener('click',()=>{if(picked&&picked.hasAttribute('draggable'))place(s,picked)})});
 function place(slot,note){if(!note)return;const i=+slot.dataset.s;Q.v[i]=note.dataset.v;Q.edit[i]=null;
-  slot.className='slot full';slot.innerHTML='';const c=note.cloneNode(true);c.removeAttribute('draggable');c.removeAttribute('style');c.classList.remove('sel');c.classList.add('u'+(i+1));c.title='bấm để gỡ';
+  slot.className='slot full';slot.innerHTML='';const c=note.cloneNode(true);c.removeAttribute('draggable');const im=note.style.getPropertyValue('--img');c.removeAttribute('style');c.style.setProperty('--img',im);c.classList.remove('sel','phai');c.classList.add('u'+(i+1));c.title='bấm để gỡ';
   c.onclick=()=>{Q.v[i]=null;Q.edit[i]=null;slot.className='slot';slot.textContent='thả giấy nhớ';renderSQL();reset()};
   slot.appendChild(c);note.classList.remove('sel');picked=null;beep(880,.05,'triangle',.08);setTimeout(()=>beep(1320,.05,'triangle',.06),50);renderSQL();reset()}
 document.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{const i=+b.dataset.c;Q.c[i]=(Q.c[i]+1)%COLS.length;b.textContent=COLS[Q.c[i]];beep(520,.04);renderSQL();reset()});
@@ -277,7 +335,7 @@ const num=document.getElementById('num'),lab=document.getElementById('lab'),stam
 let lastResult=null,prevCount=1240;
 function countTo(from,to,ms,label){lab.textContent=label;return new Promise(r=>{const t0=performance.now();let last=from;
   (function step(t){const k=Math.min(1,(t-t0)/ms),v=Math.round(from+(to-from)*(1-Math.pow(1-k,3)));num.textContent=v;if(v!==last&&k<1&&Math.random()<.5)beep(1200+Math.random()*300,.015,'square',.02);last=v;k<1?requestAnimationFrame(step):r()})(t0)})}
-function reset(){CELLS.forEach(c=>c.className='cell');stamp.classList.remove('on');num.textContent=1240;lab.textContent='DÒNG';
+function reset(){COL.fill(0);FALL.fill(Infinity);kick();stamp.classList.remove('on');num.textContent=1240;lab.textContent='DÒNG';
   document.getElementById('cards').innerHTML='';document.getElementById('xray').classList.remove('on');
   ['xrayBtn','saveBtn'].forEach(id=>document.getElementById(id).classList.remove('show'))}
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
@@ -289,16 +347,16 @@ document.getElementById('run').onclick=async()=>{
   const n=keep.filter(Boolean).length;
   if(Q.join==='VÀ'){let cur=1240;
     for(const i of [0,1]){if(!has[i])continue;const m=i?m1:m0;
-      CELLS.forEach((c,k)=>{if(!c.classList.contains('fall')){if(m[k])c.classList.add(i?'h2':'h1');else setTimeout(()=>c.classList.add('fall'),Math.random()*350)}});
+      for(let k=0;k<NC;k++){if(isOut(k))continue;if(m[k])COL[k]=i?2:1;else dropCell(k,Math.random()*350)}kick();
       const nx=i===0?m0.filter(Boolean).length:n;await countTo(cur,nx,650,i===0?`${COLS[Q.c[0]]} ${OPS[Q.o[0]]} …`:`VÀ ${COLS[Q.c[1]]} ${OPS[Q.o[1]]} …`);cur=nx;await sleep(250)}
-  }else{CELLS.forEach((c,k)=>{if(m0[k]&&has[0])c.classList.add('h1');if(m1[k]&&has[1])c.classList.add(m0[k]&&has[0]?'both':'h2')});
-    await sleep(500);CELLS.forEach((c,k)=>{if(!keep[k])setTimeout(()=>c.classList.add('fall'),Math.random()*350)});await countTo(1240,n,800,'HOẶC: chỉ cần qua một cửa')}
-  CELLS.forEach((c,k)=>{if(keep[k]&&n<=10)c.classList.add('both')});
+  }else{for(let k=0;k<NC;k++){if(m0[k]&&has[0])COL[k]=1;if(m1[k]&&has[1])COL[k]=m0[k]&&has[0]?3:2}kick();
+    await sleep(500);for(let k=0;k<NC;k++)if(!keep[k])dropCell(k,Math.random()*350);kick();await countTo(1240,n,800,'HOẶC: chỉ cần qua một cửa')}
+  if(n<=10){for(let k=0;k<NC;k++)if(keep[k])COL[k]=3;kick()}
   stamp.textContent=`${n} DÒNG`;stamp.classList.add('on');beep(90,.25,'sine',.25);setTimeout(()=>document.querySelector('.bezel').classList.add('shake'),120);setTimeout(()=>document.querySelector('.bezel').classList.remove('shake'),450);
   lastResult={n,keep};await sleep(400);
   if(n>0&&n<=6){const cards=document.getElementById('cards');DATA.forEach((d,k)=>{if(!keep[k])return;const e=document.createElement('div');e.className='pcard';e.style.setProperty('--r',(Math.random()*8-4)+'deg');e.innerHTML=`<div class="av">${d.ten[0]}</div><b>${d.ten}</b><small>${d.ma} · ${d.lop}</small>`;cards.appendChild(e);setTimeout(()=>{e.classList.add('on');beep(700,.05,'triangle',.06)},120*cards.children.length)})}
   const exactH=has[0]&&Q.o[0]===0&&Q.edit[0]==null&&Q.v[0]==='H'&&Q.c[0]===0;
-  if(n===0&&exactH){say('havy','0 dòng. Có ai tên đúng một chữ “H” đâu. Chữ ký chỉ cho mình chữ đầu thôi.');say('tung','Tra sổ chị Linh đi, trang lỗi thường gặp ấy!');document.querySelector('[data-o="0"]').classList.add('hint');document.getElementById('book').style.filter='drop-shadow(0 0 16px #fbbf24)'}
+  if(n===0&&exactH){say('havy','0 dòng. Có ai tên đúng một chữ “H” đâu. Chữ ký chỉ cho mình chữ đầu thôi.');say('tung','Tra sổ chị Linh đi, trang lỗi thường gặp ấy!');document.querySelector('[data-o="0"]').classList.add('hint');document.getElementById('book').classList.add('glow')}
   else if(n===0)say('havy','0 dòng. Không ai khớp cả. Khoan, tính lại đã.');
   else if(n===2&&Q.join==='VÀ')say('havy','Hai người qua cả hai cửa. Đây là ứng viên, chưa phải người gửi.');
   else if(Q.join==='HOẶC')say('havy',`${n} dòng. Hai hình tròn gộp lại, không phải phần chồng lên nhau.`);
@@ -320,8 +378,20 @@ document.getElementById('saveBtn').onclick=()=>{document.querySelectorAll('.pcar
   beep(600,.05,'triangle',.08);setTimeout(()=>beep(900,.08,'triangle',.08),200);
   setTimeout(()=>{const f=document.getElementById('fcount');f.textContent=+f.textContent+1;const fo=document.getElementById('folder');fo.classList.add('shake');setTimeout(()=>fo.classList.remove('shake'),350)},650);
   document.getElementById('saveBtn').classList.remove('show')};
-document.getElementById('book').onclick=()=>{document.getElementById('bookOpen').classList.add('on');document.getElementById('book').style.filter='';beep(420,.08,'sine',.08)};
+document.getElementById('book').onclick=()=>{document.getElementById('bookOpen').classList.add('on');document.getElementById('book').classList.remove('glow');beep(420,.08,'sine',.08)};
 document.getElementById('bookOpen').onclick=e=>e.currentTarget.classList.remove('on');
+
+// nhãn trên sổ/hồ sơ: ánh xạ khung 200x50 vào tứ giác bằng matrix3d
+function h3(w,h,Q){const [[x0,y0],[x1,y1],[x2,y2],[x3,y3]]=Q;
+ const dx1=x1-x2,dx2=x3-x2,dy1=y1-y2,dy2=y3-y2,sx=x0-x1+x2-x3,sy=y0-y1+y2-y3,den=dx1*dy2-dx2*dy1;
+ const g=(sx*dy2-dx2*sy)/den,hh=(dx1*sy-sx*dy1)/den;
+ const a=x1-x0+g*x1,b=x3-x0+hh*x3,c=x0,d=y1-y0+g*y1,e=y3-y0+hh*y3,f=y0;
+ return `matrix3d(${a/w},${d/w},0,${g/w},${b/h},${e/h},0,${hh/h},0,0,1,0,${c},${f},0,1)`}
+document.querySelectorAll('.lbl').forEach(el=>{el.style.transform=h3(200,50,JSON.parse(el.dataset.q))});
+const BG={ngay:'../../art/nguon/phong-may-core/canh/phong-may-ngay.png',dem:'../../art/nguon/phong-may-core/canh/phong-may-dem.png'};
+function setDem(on){stage.classList.toggle('dem',on);const u=on?BG.dem:BG.ngay;document.getElementById('bg').src=u;document.querySelectorAll('#hot .hl').forEach(i=>i.setAttribute('href',u))}
+document.getElementById('nd').onclick=()=>setDem(!stage.classList.contains('dem'));
+if(new URLSearchParams(location.search).get('dem'))setDem(true);
 document.getElementById('notesBtn').onclick=()=>document.getElementById('notes').classList.toggle('on');
 // ?demo=1: tự đặt giấy nhớ, đổi 'bắt đầu bằng' và chạy (để chụp ảnh)
 if(new URLSearchParams(location.search).get('demo')){muted=true;const n=[...document.querySelectorAll('.note[draggable]')];
