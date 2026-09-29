@@ -28,7 +28,7 @@ Cột **Dữ kiện cần lấy** ghi dữ kiện người chơi phải có trư
 
 **Mốc: Vụ 1 · Ngày 1** (thứ Ba tuần 2) — thực địa
 - **Kiến thức:** — (không có SQL; dạy cách xem xét hiện trường, đối chiếu thẻ lịch với thẻ của mình).
-- **Dữ kiện cần lấy:** biết hộp kiến nghị ở sảnh tòa B (hiện: thông báo họp + lời Minh Anh ở mở đầu).
+- **Dữ kiện cần lấy:** biết hộp kiến nghị ở sảnh tòa B (hiện: người chơi thấy cái hộp khi Tùng dẫn đi dạo trường ở mở đầu; sáng Ngày 1 Tùng nhắc "cái hộp ở ngay đó, ra hỏi bác bảo vệ trước").
 - **Hồ sơ thu được:** giấy nhớ **[Tòa B]** và **[Báo chí K24]**, bằng chứng **thẻ lịch rách** (hiện cả ba từ lời bác Thịnh + thẻ lịch mắc ở
   khe hộp) → dùng ở Ngày 2; thẻ lịch còn là căn cứ ở buổi bảo vệ.
 
