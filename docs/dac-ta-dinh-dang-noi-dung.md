@@ -932,6 +932,11 @@ Lệnh (trong `prototype/`): `npm run kiem-noi-dung:mvp` (chỉ kiểm), `npm ru
 - Họ tên: Trần Tùng
 - Vai: Năm 1 Du lịch, bạn cùng phòng KTX, cháu chú Cường. Dẫn đường, nhắc lịch.
 - Biểu cảm: neutral, happy
+- Danh xưng: Bạn cùng phòng 408
+- Năm: Năm nhất
+- Ngành: Du lịch
+- Câu nói: Tớ cá là mười phút là tới nơi.
+- Giới thiệu: Tân sinh viên ngành Du lịch, ở cùng phòng 408 ký túc xá. …
 
 ### quan — Quân
 - Vai: Trưởng ban Pháp chế – Kiểm tra Hội sinh viên.
@@ -948,6 +953,7 @@ Lệnh (trong `prototype/`): `npm run kiem-noi-dung:mvp` (chỉ kiểm), `npm ru
 - Biến: `{{nv.<mã>}}` = tên hiển thị, `{{nv.<mã>.ho-ten}}`, `{{nv.<mã>.trong-cau}}` (§10.4); tên trường `{{truong.…}}` lấy từ dòng `- Tên trường:` của `quy-uoc.md` (tự suy `ten-ngan` = bỏ "Trường Đại học", `ten-khong-tien-to` = bỏ "Trường").
 - **`{{nv.nguoi-choi}}` dùng được** trong bộ MVP: bộ đọc giữ nguyên chuỗi `{{nv.nguoi-choi}}` trong dữ liệu sinh, runtime thay bằng tên người chơi đặt ở `[TẠO NHÂN VẬT]` (QĐ-077). Bộ prototype vẫn coi là lỗi (không đổi).
 - `player` (nam, QĐ-087) và `narrator` không khai báo.
+- **Thẻ giới thiệu** (user yêu cầu 29/09: màn "Nhân vật mới" và tab Nhân vật như prototype): `Danh xưng`, `Câu nói`, `Giới thiệu` bắt buộc nếu có một trong năm dòng; `Năm`, `Ngành` tùy (không có → bỏ "chip" đó). Đây là chữ **người chơi thấy** ngay lần đầu nhân vật nói — chỉ viết điều người chơi biết lúc gặp, không kể trước tình tiết (khác `Vai`, là ghi chú cho người viết). Nhân vật không có thẻ thì không có màn giới thiệu; `Chỉ qua lời kể: có` không được có thẻ. Ảnh: `intro-<mã>` (16:9) nếu có trong `src/assets/`, không thì chân dung.
 
 ### 18.3 Cảnh — `canh.md`
 
@@ -1055,6 +1061,7 @@ Dùng được trong chuỗi (ngoài §6.3: `[VÀO]`, `[RA]`, `[ĐI TỚI]`, `[H
 | `- [TẠO NHÂN VẬT nganh] tung (neutral): "Học ngành gì?"` + dòng con `  - lựa chọn: Kế toán · Quản trị kinh doanh · …` | Câu 2: chọn ngành. Cả game có đúng một `ten` và một `nganh`, đều trong mở đầu, `ten` trước `nganh`. |
 | `- [LỌC THỬ <mã> · <n> dòng · chọn <cột> = <giá trị>]` + khối ` ```sql ` ngay dưới | Lọc thử một lần trên giao diện bàn làm việc (Ngày hội): câu SQL trong khối, số dòng kỳ vọng, dòng người chơi phải chọn. |
 | `- [LƯU BẰNG CHỨNG <ev-…>]` | Lưu bằng chứng (key item) ngay tại đây — dùng khi bằng chứng nảy ra giữa chuỗi; thường khai báo ở dữ kiện là đủ. |
+| `- [KHÁM PHÁ <mã>]` + dòng con `  - <obj-… hoặc nv:<mã>> · x <n>% · y <n>% · rộng <n>% → <chuỗi>[ · sau: <chuỗi>, …][ · nhãn: <chữ>]` | Cảnh bấm vật trên nền cảnh của chuỗi (sảnh KTX của mở đầu dạy người chơi bấm). Tọa độ như dòng `- Ảnh:` (§18.4a). Bấm một chỗ → chạy `<chuỗi>`; chuỗi hết nút thì về cảnh, chỗ đó mờ đi. `sau:` = chỉ hiện khi đã xem các chuỗi kia (vd. Tùng hiện sau thang máy và bảng tin). Xem hết mọi chỗ → chạy tiếp dòng sau `[KHÁM PHÁ]`; `[ĐI TỚI]` trong chuỗi của một chỗ → rời cảnh luôn. `nhãn:` = chữ trên nút (không có → "Nói chuyện với …" cho `nv:`, "Xem: <tài liệu>" hay "Xem xét chỗ này" cho đồ vật); dùng khi người chơi chưa biết tên người đứng đó. Kiểm: có ít nhất một chỗ hiện ngay, `sau:` trỏ chỗ khác cùng cảnh, chuỗi và ảnh tồn tại. Chuỗi của các chỗ được tính là nối từ chuỗi chứa `[KHÁM PHÁ]`. |
 | `- [RẼ KẾT]` | Runtime chọn `Kết thật` nếu `[ĐIỀU KIỆN]` của nó thỏa, không thì `Kết thường`. Đúng một lần trong game. |
 | `- [ĐIỀU KIỆN] có ev-nhat-ky-in và (có clue-loi-chu-cuong hoặc có clue-loi-dat)` | Dòng đầu chuỗi kết thật (và chuỗi có điều kiện khác). |
 | `- [HẬU QUẢ] mở manh mối clue-x, lưu bằng chứng ev-y, đặt co.z, đi tới <chuỗi>` | §13.2 thêm `lưu bằng chứng`. |

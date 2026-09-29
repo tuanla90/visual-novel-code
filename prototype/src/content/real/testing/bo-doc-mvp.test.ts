@@ -345,3 +345,73 @@ describe('dòng "- Ảnh:" của dữ kiện (vật tương tác trên nền, Q�
     expect(cung('10')).toEqual(['noi-dung-mvp/dia-diem.md:7: dữ kiện dk-phu, "Ảnh": vật "obj-ban-may" đã đặt ở dữ kiện dk-chinh với tọa độ khác — dùng chung một vật thì cùng x, y, rộng']);
   });
 });
+
+describe('[KHÁM PHÁ] trong chuỗi (cảnh bấm vật, sảnh KTX của mở đầu)', () => {
+  /** Chèn một [KHÁM PHÁ] vào cuối md-1 (sau [TẠO NHÂN VẬT]) cùng hai chuỗi con x-a, x-b. Dòng [KHÁM PHÁ] là dòng 7. */
+  const themKham = (dongCon: string[]) => (s: string) =>
+    s.replace(
+      '  - lựa chọn: Kế toán · Marketing\n',
+      ['  - lựa chọn: Kế toán · Marketing', '- [KHÁM PHÁ kp1]', ...dongCon, '### x-a — A {cảnh: c1}', '- **narrator**: A.', '### x-b — B {cảnh: c1}', '- **narrator**: B.', ''].join('\n'),
+    );
+  const docKham = (dongCon: string[], spriteVat?: ReadonlySet<string>) => {
+    const tep: TepMvp[] = Object.entries(GOC).map(([p, s]) => ({ duongDan: `noi-dung-mvp/${p}`, loai: loaiCua(p), noiDung: p === 'kich-ban/01.md' ? themKham(dongCon)(s) : s }));
+    const kq = docNoiDungMvp(tep);
+    const luat = kiemLuatMvp(kq.mvp, spriteVat ? { spriteVat } : {});
+    return { mvp: kq.mvp, loi: [...kq.loi, ...luat.loi].map(dinhDangLoi), mocChuoi: luat.mocChuoi };
+  };
+
+  it('đọc chỗ bấm: tọa độ, chuỗi, "sau:", "nhãn:"; chuỗi con nối vào mở đầu (không lẻ)', () => {
+    const kq = docKham(['  - obj-a · x 10% · y 50% · rộng 5% → x-a · nhãn: Xem tờ giấy', '  - nv:tung · x 80% · y 100% · rộng 15% → x-b · sau: x-a'], new Set(['obj-a']));
+    expect(kq.loi).toEqual([]);
+    const kham = kq.mvp.chuoi.find((c) => c.id === 'md-1')?.items.find((it) => it.kind === 'explore');
+    expect(kham).toEqual({
+      kind: 'explore',
+      id: 'kp1',
+      diem: [
+        { sprite: 'obj-a', x: 10, y: 50, rong: 5, chuoi: 'x-a', sau: [], nhan: 'Xem tờ giấy' },
+        { sprite: 'nv:tung', x: 80, y: 100, rong: 15, chuoi: 'x-b', sau: ['x-a'], nhan: null },
+      ],
+    });
+    expect(kq.mocChuoi.get('x-a')).toBe(0);
+    expect(kq.mocChuoi.get('x-b')).toBe(0);
+  });
+
+  it('lỗi: dòng con sai cú pháp, chuỗi không có, "sau:" lạ, mọi chỗ đều "sau:", ảnh vật không có', () => {
+    expect(docKham(['  - obj-a x 10 y 50 → x-a']).loi).toEqual(expect.arrayContaining([expect.stringMatching(/^noi-dung-mvp\/kich-ban\/01\.md:8: \[KHÁM PHÁ\]: "Ảnh" phải là/)]));
+    expect(docKham(['  - obj-a · x 10% · y 50% · rộng 5% → khong-co', '  - obj-a · x 20% · y 50% · rộng 5% → x-b']).loi).toEqual(
+      expect.arrayContaining(['noi-dung-mvp/kich-ban/01.md:7: [KHÁM PHÁ kp1]: không có chuỗi "khong-co"']),
+    );
+    expect(docKham(['  - obj-a · x 10% · y 50% · rộng 5% → x-a · sau: x-b', '  - obj-a · x 20% · y 50% · rộng 5% → x-b · sau: x-a']).loi).toEqual(
+      expect.arrayContaining(['noi-dung-mvp/kich-ban/01.md:7: [KHÁM PHÁ kp1]: phải có ít nhất một chỗ hiện ngay (không "sau:")']),
+    );
+    expect(docKham(['  - obj-a · x 10% · y 50% · rộng 5% → x-a', '  - obj-a · x 20% · y 50% · rộng 5% → x-b · sau: la']).loi).toEqual(
+      expect.arrayContaining(['noi-dung-mvp/kich-ban/01.md:7: [KHÁM PHÁ kp1]: "sau: la" phải là chuỗi của một chỗ bấm khác trong cùng [KHÁM PHÁ]']),
+    );
+    expect(docKham(['  - obj-khong · x 10% · y 50% · rộng 5% → x-a', '  - obj-a · x 20% · y 50% · rộng 5% → x-b'], new Set(['obj-a'])).loi).toEqual([
+      'noi-dung-mvp/kich-ban/01.md:7: [KHÁM PHÁ kp1]: không có ảnh vật "obj-khong" trong src/assets/mvp/vat/',
+    ]);
+  });
+});
+
+describe('thẻ giới thiệu nhân vật (nhan-vat.md: Danh xưng, Năm, Ngành, Câu nói, Giới thiệu)', () => {
+  const docNv = (them: string) => {
+    const tep: TepMvp[] = Object.entries(GOC).map(([p, s]) => ({
+      duongDan: `noi-dung-mvp/${p}`,
+      loai: loaiCua(p),
+      noiDung: p === 'nhan-vat.md' ? s.replace('- Biểu cảm: neutral\n', `- Biểu cảm: neutral\n${them}`) : s,
+    }));
+    const kq = docNoiDungMvp(tep);
+    return { mvp: kq.mvp, loi: [...kq.loi, ...kiemLuatMvp(kq.mvp).loi].map(dinhDangLoi) };
+  };
+
+  it('đủ dòng → đọc ra thẻ; không có dòng nào → null', () => {
+    const kq = docNv('- Danh xưng: Bạn cùng phòng\n- Năm: Năm nhất\n- Câu nói: Tớ cá.\n- Giới thiệu: Hay đùa.\n');
+    expect(kq.loi).toEqual([]);
+    expect(kq.mvp.nhanVat.find((n) => n.id === 'tung')?.gioiThieu).toEqual({ danhXung: 'Bạn cùng phòng', nam: 'Năm nhất', nganh: null, cauNoi: 'Tớ cá.', loi: 'Hay đùa.' });
+    expect(kq.mvp.nhanVat.find((n) => n.id === 'quan')?.gioiThieu).toBeNull();
+  });
+
+  it('thiếu dòng bắt buộc → lỗi ở tiêu đề nhân vật', () => {
+    expect(docNv('- Danh xưng: Bạn cùng phòng\n').loi).toEqual(['noi-dung-mvp/nhan-vat.md:1: nhân vật tung có thẻ giới thiệu nhưng thiếu dòng: Câu nói, Giới thiệu']);
+  });
+});

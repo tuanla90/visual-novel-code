@@ -21,25 +21,54 @@
 - **narrator**: Qua dãy giảng đường sơn vàng, qua bãi để xe, cuối con đường là một cổng sắt nhỏ, trên biển đề "Ký túc xá".
 - **player**: (Đây rồi. Nhà nào cũng tận bảy tầng cơ à…)
 - [DÀN DỰNG] Bánh vali vấp mép gạch, người chơi phải xách bổng lên bằng cả hai tay.
-- **player**: (Biết thế đừng nhét cả cái nồi cơm điện vào.)
-- **narrator**: Bảng tin cạnh cổng dán sơ đồ khu nhà, kèm một tờ giấy: "Thang máy bảo trì đến hết tuần".
-- **player**: (Phòng 408 ở dãy giữa, tầng bốn. May mà không phải tầng bảy… Leo bộ vậy.)
-- [ĐI TỚI md-01-ktx]
+- **player**: (Phòng 408 là tầng bốn. Mong là có thang máy.)
+- [ĐI TỚI md-00-sanh-ktx]
 
-### md-01-ktx — Phòng KTX 408, Chủ nhật chiều: tạo nhân vật {cảnh: phong-ktx}
+### md-00-sanh-ktx — Sảnh tầng một dãy nhà giữa: dạy bấm vật {cảnh: sanh-ktx}
 
-> NHIỆM VỤ: Nhận phòng KTX
+> NHIỆM VỤ: Tìm đường lên phòng 408
 
-- [DÀN DỰNG] Tiếng bánh vali lộc cộc dội lên hành lang tầng bốn; người chơi dừng trước cửa, thở dốc. Cửa phòng 408 mở. Một cậu sinh viên đội mũ lưỡi trai bước ra, đỡ lấy cái vali của người chơi.
-- **tung** (happy): Phòng 408 hả? Đưa đây, tớ xách vào cho.
-- **player**: Ơ, cảm ơn cậu… Cậu cũng ở phòng này à?
-- **tung** (neutral): Ừ, giường trong sát cửa sổ là của tớ. Tớ {{nv.tung}}, học Du lịch.
+- [DÀN DỰNG] Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Lần đầu người chơi tự bấm vật trên nền: vật chưa xem có viền trắng. Xem xong cả hai thì một cậu sinh viên đội mũ lưỡi trai từ hành lang bên phải đi ra.
+- **player**: (Mát hẳn. Giờ lên tầng bốn kiểu gì đây…)
+- [KHÁM PHÁ kp-sanh-ktx]
+  - obj-thong-bao-thang-may · x 22% · y 52% · rộng 5% → md-00-thang-may · nhãn: Xem tờ giấy trên cửa thang máy
+  - obj-so-do-ktx · x 50% · y 50% · rộng 14% → md-00-so-do · nhãn: Xem bảng tin
+  - nv:tung · x 80% · y 100% · rộng 17% → md-00-gap-tung · sau: md-00-thang-may, md-00-so-do · nhãn: Hỏi đường cậu bạn đội mũ
+
+### md-00-thang-may — Tờ giấy dán trên cửa thang máy {cảnh: sanh-ktx}
+
+- **narrator**: Tờ giấy dán ngay giữa cửa thang máy: "Thang máy bảo trì đến hết tuần. Sinh viên vui lòng đi thang bộ."
+- **player**: (Hết tuần… Tức là cả tuần leo bộ.)
+
+### md-00-so-do — Sơ đồ khu nhà trên bảng tin {cảnh: sanh-ktx}
+
+- **narrator**: Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ, có chấm "Bạn đang ở đây".
+- **player**: (Phòng 408 ở dãy giữa, tầng bốn. Đúng nhà này rồi.)
+- **player**: (Sơ đồ vẽ mỗi thang máy, chẳng thấy thang bộ đâu cả.)
+
+### md-00-gap-tung — Hỏi đường cậu bạn đội mũ: tạo nhân vật {cảnh: sanh-ktx}
+
+- **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế? Thang máy đang bảo trì.
+- **tung** (happy): Khuất sau hành lang kia, cạnh phòng giặt. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
+- **player**: Tầng bốn, phòng 408.
+- **tung** (happy): Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ {{nv.tung}}, học Du lịch.
 - [TẠO NHÂN VẬT ten] tung (neutral): "Thế cậu tên gì?"
   - xúc xắc: Ngại nghĩ thì bấm xúc xắc, tớ đặt hộ cho. Đảm bảo không xui.
 - **tung** (happy): {{nv.nguoi-choi}} à. Dễ gọi đấy.
 - [TẠO NHÂN VẬT nganh] tung (neutral): "Cậu học ngành gì?"
   - lựa chọn: Kế toán · Quản trị kinh doanh · Tài chính – Ngân hàng · Marketing · Thương mại điện tử
 - **tung** (neutral): Lại dân kinh tế. Cả phòng chẳng ai học Toán, sau này thi biết mượn vở ai đây.
+- **tung** (happy): Đưa tớ một đầu vali. Hai đứa khiêng, bốn tầng thôi mà.
+- [ĐI TỚI md-01-ktx]
+
+### md-01-ktx — Phòng KTX 408, Chủ nhật chiều {cảnh: phong-ktx}
+
+> NHIỆM VỤ: Nhận phòng KTX
+
+- [DÀN DỰNG] Hai người khiêng vali lên tới tầng bốn, cùng thở dốc. {{nv.tung}} đẩy cửa phòng 408.
+- **tung** (happy): Tới nơi rồi. Giường trong sát cửa sổ là của tớ, cậu chọn giường nào thì chọn.
+- **player**: (Nhắn mẹ cái đã: "Con đến phòng rồi, mẹ ạ.")
+- **tung** (neutral): Cất đồ xong tớ dẫn đi một vòng trường. Đi sớm cho biết đường, tuần sau vào học đỡ lạc.
 - [ĐI TỚI md-02-ban-do]
 
 ### md-02-ban-do — Ra bản đồ trường {cảnh: ban-do}

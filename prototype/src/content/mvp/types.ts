@@ -46,6 +46,17 @@ export interface NhanVatMvp {
   bieuCam: string[];
   xuatHienTu: MocMvp;
   chiQuaLoiKe: boolean;
+  /** Thẻ giới thiệu (màn "Nhân vật mới" khi nói lần đầu, tab Nhân vật của hồ sơ); `null` = không có. */
+  gioiThieu: GioiThieuNhanVatMvp | null;
+}
+
+/** Chữ người chơi thấy về một nhân vật — viết sao cho không lộ tình tiết (nhan-vat.md, đặc tả §18.3). */
+export interface GioiThieuNhanVatMvp {
+  danhXung: string;
+  nam: string | null;
+  nganh: string | null;
+  cauNoi: string;
+  loi: string;
 }
 
 export interface CanhMvp {
@@ -135,7 +146,19 @@ export type NutMvp =
   | { type: 'create-character'; truong: 'ten' | 'nganh'; asker: LoiMvp; xucXac: string | null; luaChon: string[] }
   | { type: 'trial-filter'; id: string; sql: string; soDong: number; chon: { cot: string; giaTri: string } }
   | { type: 'save-evidence'; evidenceId: string }
-  | { type: 'ending-branch' };
+  | { type: 'ending-branch' }
+  | { type: 'explore'; id: string; diem: DiemKhamPhaMvp[] };
+
+/**
+ * Một chỗ bấm được của `[KHÁM PHÁ]` (đặc tả §18.6): vật/người đặt trên nền cảnh của chuỗi, bấm → chạy `chuoi`; chuỗi hết
+ * nút thì quay về cảnh khám phá. `sau`: chỉ hiện khi mọi chuỗi trong danh sách đã xem. `nhan`: nhãn người chơi thấy
+ * (không có → dựng từ sprite, xem `nhan-cho-xem.ts`).
+ */
+export interface DiemKhamPhaMvp extends AnhDuKienMvp {
+  chuoi: string;
+  sau: string[];
+  nhan: string | null;
+}
 
 export interface ChuoiMvp {
   id: string;

@@ -85,6 +85,8 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
       return { type: 'save-evidence', evidenceId: it.id };
     case 'ending-branch':
       return { type: 'ending-branch' };
+    case 'explore':
+      return { type: 'explore', id: it.id, diem: it.diem.map((d) => ({ sprite: d.sprite, x: d.x, y: d.y, rong: d.rong, chuoi: d.chuoi, sau: d.sau, nhan: d.nhan })) };
   }
 }
 
@@ -163,6 +165,7 @@ export function chuyenMvp(mvp: RawMvp, luat: KetQuaLuat): DuLieuMvp {
       bieuCam: n.bieuCam,
       xuatHienTu: moc(luat.mocNhanVat.get(n.id), `nhân vật ${n.id}`),
       chiQuaLoiKe: n.chiQuaLoiKe,
+      gioiThieu: n.gioiThieu,
     })),
     canh: mvp.canh.map((c) => ({ id: c.id, ten: c.ten, anhNen: c.anhNen })),
     diaDiem: mvp.diaDiem.map((d) => ({

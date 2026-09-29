@@ -25,7 +25,14 @@ export const KICH_BAN_MVP = {
       "xuatHienTu": {
         "kind": "mo-dau"
       },
-      "chiQuaLoiKe": false
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Bạn cùng phòng 408",
+        "nam": "Năm nhất",
+        "nganh": "Du lịch",
+        "cauNoi": "Tớ cá là mười phút là tới nơi.",
+        "loi": "Tân sinh viên ngành Du lịch, ở cùng phòng 408 ký túc xá. Mới nhập học mà đã thuộc đường khắp trường. Hay đùa, hay cá cược, nhưng nhắc lịch thì chưa quên bao giờ."
+      }
     },
     {
       "id": "ha-vy",
@@ -41,7 +48,14 @@ export const KICH_BAN_MVP = {
       "xuatHienTu": {
         "kind": "mo-dau"
       },
-      "chiQuaLoiKe": false
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Thành viên mới của CLB Thám Tử",
+        "nam": "Năm nhất",
+        "nganh": "Toán ứng dụng",
+        "cauNoi": "Khoan, tính lại đã.",
+        "loi": "Đăng ký CLB qua form online, mê Sherlock Holmes từ hồi cấp hai. Thích mọi chuyện phải có lý do, nói ít nhưng hay nhìn ra chi tiết người khác bỏ qua."
+      }
     },
     {
       "id": "minh-anh",
@@ -57,7 +71,14 @@ export const KICH_BAN_MVP = {
       "xuatHienTu": {
         "kind": "mo-dau"
       },
-      "chiQuaLoiKe": false
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Chủ nhiệm CLB Thám Tử",
+        "nam": "Năm ba",
+        "nganh": "Luật kinh tế",
+        "cauNoi": "Nói có sách, mách có chứng.",
+        "loi": "Một mình giữ bàn CLB Thám Tử ở Ngày hội CLB. Làm việc nghiêm túc, không thích đùa lúc đang bận, nhưng sẵn lòng cho người mới một cơ hội."
+      }
     },
     {
       "id": "duy",
@@ -71,7 +92,14 @@ export const KICH_BAN_MVP = {
       "xuatHienTu": {
         "kind": "mo-dau"
       },
-      "chiQuaLoiKe": false
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Thành viên CLB, giữ tài sản",
+        "nam": "Năm hai",
+        "nganh": "Hành chính học",
+        "cauNoi": "Chìa khóa, tủ hồ sơ với cái máy tính cũ đều tớ giữ.",
+        "loi": "Ở CLB từ năm nhất. Giữ chìa khóa phòng, tủ hồ sơ và sổ tài sản. Việc gì cũng làm theo đúng quy trình, giấy tờ nào cũng biết nằm ở ngăn nào."
+      }
     },
     {
       "id": "quan",
@@ -89,7 +117,14 @@ export const KICH_BAN_MVP = {
         "ngay": 3,
         "khung": "sang"
       },
-      "chiQuaLoiKe": false
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Ban Pháp chế – Kiểm tra, Hội sinh viên",
+        "nam": null,
+        "nganh": null,
+        "cauNoi": "Biết ai nộp chưa có nghĩa là biết ai viết.",
+        "loi": "Được Hội sinh viên cử xuống giám sát việc CLB lập căn cứ. Nói ngắn, bám quy chế, không bỏ qua câu nào thiếu chứng cứ."
+      }
     },
     {
       "id": "chu-cuong",
@@ -103,7 +138,14 @@ export const KICH_BAN_MVP = {
       "xuatHienTu": {
         "kind": "mo-dau"
       },
-      "chiQuaLoiKe": false
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Bảo vệ ký túc xá",
+        "nam": null,
+        "nganh": null,
+        "cauNoi": "Chịu khó hỏi từng người rồi đối chiếu giấy tờ thôi.",
+        "loi": "Trực cổng ký túc xá, biết mặt gần hết sinh viên trong khu. Nhớ nhiều chuyện cũ của trường, kể cả thời CLB Thám Tử còn nổi tiếng."
+      }
     },
     {
       "id": "bac-tu",
@@ -117,7 +159,14 @@ export const KICH_BAN_MVP = {
       "xuatHienTu": {
         "kind": "mo-dau"
       },
-      "chiQuaLoiKe": false
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Bảo vệ giảng đường B",
+        "nam": null,
+        "nganh": null,
+        "cauNoi": "Mép hộp sắc đấy, đừng thò tay vào.",
+        "loi": "Ngồi bàn trực cạnh cầu thang tòa B. Ít lời, giờ giấc đâu ra đấy, việc gì không tận mắt thấy thì không nói."
+      }
     },
     {
       "id": "co-hanh",
@@ -131,7 +180,14 @@ export const KICH_BAN_MVP = {
       "xuatHienTu": {
         "kind": "mo-dau"
       },
-      "chiQuaLoiKe": false
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Phòng Đào tạo",
+        "nam": null,
+        "nganh": null,
+        "cauNoi": "Hai bảng thôi, chỉ những cột cần thiết.",
+        "loi": "Cán bộ Phòng Đào tạo, phụ trách dữ liệu sinh viên. Cấp quyền rất chặt: xin gì cho nấy, dùng xong là khóa lại."
+      }
     },
     {
       "id": "co-lan",
@@ -145,7 +201,14 @@ export const KICH_BAN_MVP = {
       "xuatHienTu": {
         "kind": "mo-dau"
       },
-      "chiQuaLoiKe": false
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Phòng Công tác sinh viên",
+        "nam": null,
+        "nganh": null,
+        "cauNoi": "Sổ đó niêm phong. Cô cũng không được tự mở.",
+        "loi": "Cán bộ Phòng Công tác sinh viên, người giải thích cho CLB các quy chế về phiếu gửi và hộp kiến nghị."
+      }
     },
     {
       "id": "thay-quang",
@@ -159,7 +222,14 @@ export const KICH_BAN_MVP = {
       "xuatHienTu": {
         "kind": "ngay-hop"
       },
-      "chiQuaLoiKe": false
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Phó hiệu trưởng phụ trách sinh viên",
+        "nam": null,
+        "nganh": null,
+        "cauNoi": "Các em còn gì trình thêm không?",
+        "loi": "Chủ trì buổi họp rà soát phòng CLB. Nghe hết các bên rồi mới quyết, và chỉ quyết dựa trên căn cứ."
+      }
     },
     {
       "id": "thay-khai",
@@ -173,7 +243,14 @@ export const KICH_BAN_MVP = {
       "xuatHienTu": {
         "kind": "mo-dau"
       },
-      "chiQuaLoiKe": false
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Quản lý phòng máy",
+        "nam": null,
+        "nganh": null,
+        "cauNoi": "Các em chỉ xem đúng dòng liên quan thôi nhé.",
+        "loi": "Thầy quản lý phòng máy của trường. Máy nào ai ngồi, lệnh in nào của ai, thầy đều có nhật ký."
+      }
     },
     {
       "id": "hoai",
@@ -190,7 +267,14 @@ export const KICH_BAN_MVP = {
       "xuatHienTu": {
         "kind": "ngay-hop"
       },
-      "chiQuaLoiKe": false
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Sinh viên lớp BC24A",
+        "nam": "Năm nhất",
+        "nganh": null,
+        "cauNoi": "Dạ… vâng ạ.",
+        "loi": "Tân sinh viên lớp BC24A. Rụt rè, nói nhỏ, trả lời câu nào cũng ngập ngừng."
+      }
     },
     {
       "id": "hieu",
@@ -206,7 +290,14 @@ export const KICH_BAN_MVP = {
         "ngay": 3,
         "khung": "sang"
       },
-      "chiQuaLoiKe": false
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Sinh viên lớp BC24A",
+        "nam": "Năm nhất",
+        "nganh": null,
+        "cauNoi": "Tôi nói thẳng vậy thôi.",
+        "loi": "Sinh viên lớp BC24A, nói gì cũng thẳng. Nhóm của Hiếu từng xin phòng làm bài nhóm nhiều lần mà không được."
+      }
     },
     {
       "id": "dat",
@@ -222,7 +313,14 @@ export const KICH_BAN_MVP = {
         "ngay": 5,
         "khung": "sang"
       },
-      "chiQuaLoiKe": false
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Lớp trưởng BC24A",
+        "nam": "Năm nhất",
+        "nganh": null,
+        "cauNoi": "Có thế thôi.",
+        "loi": "Lớp trưởng lớp BC24A. Để ý chuyện trong lớp, nhưng chỉ kể đúng những gì mình nghe thấy."
+      }
     },
     {
       "id": "co-phu-trach",
@@ -234,7 +332,8 @@ export const KICH_BAN_MVP = {
       "xuatHienTu": {
         "kind": "mo-dau"
       },
-      "chiQuaLoiKe": true
+      "chiQuaLoiKe": true,
+      "gioiThieu": null
     }
   ],
   "canh": [
@@ -251,6 +350,11 @@ export const KICH_BAN_MVP = {
     {
       "id": "cong-ktx",
       "ten": "Cổng KTX",
+      "anhNen": null
+    },
+    {
+      "id": "sanh-ktx",
+      "ten": "Sảnh ký túc xá",
       "anhNen": null
     },
     {
@@ -1143,54 +1247,139 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Biết thế đừng nhét cả cái nồi cơm điện vào.)"
-        },
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Bảng tin cạnh cổng dán sơ đồ khu nhà, kèm một tờ giấy: \"Thang máy bảo trì đến hết tuần\"."
-        },
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Phòng 408 ở dãy giữa, tầng bốn. May mà không phải tầng bảy… Leo bộ vậy.)"
+          "text": "(Phòng 408 là tầng bốn. Mong là có thang máy.)"
         },
         {
           "type": "goto",
-          "to": "md-01-ktx"
+          "to": "md-00-sanh-ktx"
         }
       ]
     },
     {
-      "id": "md-01-ktx",
-      "title": "Phòng KTX 408, Chủ nhật chiều: tạo nhân vật",
-      "canh": "phong-ktx",
+      "id": "md-00-sanh-ktx",
+      "title": "Sảnh tầng một dãy nhà giữa: dạy bấm vật",
+      "canh": "sanh-ktx",
       "mocSomNhat": 0,
       "nodes": [
         {
           "type": "task",
-          "text": "Nhận phòng KTX"
+          "text": "Tìm đường lên phòng 408"
         },
         {
           "type": "note",
-          "text": "Tiếng bánh vali lộc cộc dội lên hành lang tầng bốn; người chơi dừng trước cửa, thở dốc. Cửa phòng 408 mở. Một cậu sinh viên đội mũ lưỡi trai bước ra, đỡ lấy cái vali của người chơi."
+          "text": "Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Lần đầu người chơi tự bấm vật trên nền: vật chưa xem có viền trắng. Xem xong cả hai thì một cậu sinh viên đội mũ lưỡi trai từ hành lang bên phải đi ra."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Mát hẳn. Giờ lên tầng bốn kiểu gì đây…)"
+        },
+        {
+          "type": "explore",
+          "id": "kp-sanh-ktx",
+          "diem": [
+            {
+              "sprite": "obj-thong-bao-thang-may",
+              "x": 22,
+              "y": 52,
+              "rong": 5,
+              "chuoi": "md-00-thang-may",
+              "sau": [],
+              "nhan": "Xem tờ giấy trên cửa thang máy"
+            },
+            {
+              "sprite": "obj-so-do-ktx",
+              "x": 50,
+              "y": 50,
+              "rong": 14,
+              "chuoi": "md-00-so-do",
+              "sau": [],
+              "nhan": "Xem bảng tin"
+            },
+            {
+              "sprite": "nv:tung",
+              "x": 80,
+              "y": 100,
+              "rong": 17,
+              "chuoi": "md-00-gap-tung",
+              "sau": [
+                "md-00-thang-may",
+                "md-00-so-do"
+              ],
+              "nhan": "Hỏi đường cậu bạn đội mũ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "md-00-thang-may",
+      "title": "Tờ giấy dán trên cửa thang máy",
+      "canh": "sanh-ktx",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tờ giấy dán ngay giữa cửa thang máy: \"Thang máy bảo trì đến hết tuần. Sinh viên vui lòng đi thang bộ.\""
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Hết tuần… Tức là cả tuần leo bộ.)"
+        }
+      ]
+    },
+    {
+      "id": "md-00-so-do",
+      "title": "Sơ đồ khu nhà trên bảng tin",
+      "canh": "sanh-ktx",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ, có chấm \"Bạn đang ở đây\"."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Phòng 408 ở dãy giữa, tầng bốn. Đúng nhà này rồi.)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Sơ đồ vẽ mỗi thang máy, chẳng thấy thang bộ đâu cả.)"
+        }
+      ]
+    },
+    {
+      "id": "md-00-gap-tung",
+      "title": "Hỏi đường cậu bạn đội mũ: tạo nhân vật",
+      "canh": "sanh-ktx",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Cậu ơi, cho tớ hỏi thang bộ ở đâu thế? Thang máy đang bảo trì."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Phòng 408 hả? Đưa đây, tớ xách vào cho."
+          "text": "Khuất sau hành lang kia, cạnh phòng giặt. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?"
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Ơ, cảm ơn cậu… Cậu cũng ở phòng này à?"
+          "text": "Tầng bốn, phòng 408."
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "neutral",
-          "text": "Ừ, giường trong sát cửa sổ là của tớ. Tớ Tùng, học Du lịch."
+          "expression": "happy",
+          "text": "Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ Tùng, học Du lịch."
         },
         {
           "type": "create-character",
@@ -1231,6 +1420,49 @@ export const KICH_BAN_MVP = {
           "speaker": "tung",
           "expression": "neutral",
           "text": "Lại dân kinh tế. Cả phòng chẳng ai học Toán, sau này thi biết mượn vở ai đây."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Đưa tớ một đầu vali. Hai đứa khiêng, bốn tầng thôi mà."
+        },
+        {
+          "type": "goto",
+          "to": "md-01-ktx"
+        }
+      ]
+    },
+    {
+      "id": "md-01-ktx",
+      "title": "Phòng KTX 408, Chủ nhật chiều",
+      "canh": "phong-ktx",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "task",
+          "text": "Nhận phòng KTX"
+        },
+        {
+          "type": "note",
+          "text": "Hai người khiêng vali lên tới tầng bốn, cùng thở dốc. Tùng đẩy cửa phòng 408."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Tới nơi rồi. Giường trong sát cửa sổ là của tớ, cậu chọn giường nào thì chọn."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Nhắn mẹ cái đã: \"Con đến phòng rồi, mẹ ạ.\")"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "neutral",
+          "text": "Cất đồ xong tớ dẫn đi một vòng trường. Đi sớm cho biết đường, tuần sau vào học đỡ lạc."
         },
         {
           "type": "goto",
@@ -3332,7 +3564,7 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';",
       "soDong": 3,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:116 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:145 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

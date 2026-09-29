@@ -264,6 +264,28 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
         case 'stage':
           if (!nhanVat.has(it.nhanVat)) err(vt, `[${it.action === 'vao' ? 'VÀO' : 'RA'} ${it.nhanVat}]: không có nhân vật "${it.nhanVat}"`);
           break;
+        case 'explore': {
+          const noi = `[KHÁM PHÁ ${it.id}]`;
+          if (it.diem.length === 0) err(vt, `${noi}: cần ít nhất một dòng con "  - <sprite> · x … · y … · rộng … → <chuỗi>"`);
+          const cacChuoi = new Set(it.diem.map((d) => d.chuoi));
+          if (cacChuoi.size !== it.diem.length) err(vt, `${noi}: hai chỗ bấm trỏ cùng một chuỗi`);
+          if (it.diem.length > 0 && it.diem.every((d) => d.sau.length > 0)) err(vt, `${noi}: phải có ít nhất một chỗ hiện ngay (không "sau:")`);
+          for (const d of it.diem) {
+            if (d.chuoi === c.id) err(vt, `${noi}: chỗ bấm không được trỏ về chính chuỗi chứa nó`);
+            canChuoi(d.chuoi, noi);
+            for (const s of d.sau) if (!cacChuoi.has(s) || s === d.chuoi) err(vt, `${noi}: "sau: ${s}" phải là chuỗi của một chỗ bấm khác trong cùng [KHÁM PHÁ]`);
+            if (d.sprite.startsWith('nv:')) {
+              if (!nhanVat.has(d.sprite.slice(3))) err(vt, `${noi}: không có nhân vật "${d.sprite.slice(3)}" trong nhan-vat.md`);
+            } else if (tuyChon.spriteVat && !tuyChon.spriteVat.has(d.sprite)) {
+              err(vt, `${noi}: không có ảnh vật "${d.sprite}" trong src/assets/mvp/vat/`);
+            }
+            for (const [ten, v] of [['x', d.x], ['y', d.y], ['rộng', d.rong]] as const) {
+              if (!(v >= 0 && v <= 100)) err(vt, `${noi}: ${ten} phải trong 0–100%: ${v}%`);
+            }
+            if (d.rong === 0) err(vt, `${noi}: rộng phải lớn hơn 0%`);
+          }
+          break;
+        }
         default:
           break;
       }

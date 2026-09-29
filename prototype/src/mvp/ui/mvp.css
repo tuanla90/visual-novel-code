@@ -287,6 +287,32 @@
   opacity: 0.7;
   filter: grayscale(0.6) brightness(0.85);
 }
+/* Cảnh [KHÁM PHÁ] dạy người chơi bấm vật: chỗ chưa xem luôn có viền trắng (nhịp nhẹ); chỗ mới hiện (có "sau:") mờ dần vào. */
+.mvp-diem--khampha {
+  animation: mvp-hien 0.5s ease-out both;
+}
+.mvp-diem--khampha.is-mo .mvp-diem__anh {
+  filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+  animation: mvp-vien 2s ease-in-out infinite;
+}
+@keyframes mvp-hien {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes mvp-vien {
+  50% {
+    filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
+      drop-shadow(0 0 14px rgba(255, 255, 255, 0.95));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mvp-diem--khampha,
+  .mvp-diem--khampha.is-mo .mvp-diem__anh {
+    animation: none;
+  }
+}
 /* Chấm nhỏ trên đầu vật còn mới: để thấy được trên cảm ứng (viền trắng khi rê chỉ là trang trí). */
 .mvp-diem__cham {
   position: absolute;
@@ -1342,4 +1368,46 @@
 .game--portrait ~ .mvp-quansat .facilitator__body,
 .game-simulator-backdrop .mvp-quansat .facilitator__body {
   top: 120px;
+}
+
+/* Màn "Nhân vật mới" (GioiThieuMvp) khi nhân vật chưa có ảnh giới thiệu 16:9: chân dung tách nền đứng trong khung sáng. */
+.mvp-gioithieu__chandung {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transform: none;
+}
+.mvp-gioithieu__chandung img {
+  display: block;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: 50% 100%;
+  user-select: none;
+}
+
+/* Tab Nhân vật (NhanVatMvp): ảnh chân dung tách nền thay cho <Portrait> của prototype. */
+.mvp-nhanvat__anh {
+  align-items: flex-end;
+}
+.mvp-nhanvat__anh img {
+  display: block;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: 50% 100%;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.15));
+  user-select: none;
+}
+.mvp-nhanvat__nho img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 8%;
+  transform: scale(2.2);
+  transform-origin: 50% 12%;
+}
+.mvp-nhanvat > .mvp-kho__trong {
+  padding: var(--sp-4);
 }

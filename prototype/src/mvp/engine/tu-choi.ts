@@ -60,6 +60,11 @@ function hanhDongTuDong(kb: KichBanMvp, s: TrangThaiMvp, kn: Exclude<KhungNhinMv
     }
     case 'create-character':
       return kn.nut.truong === 'ten' ? { type: 'dat-ten', ten: ct.ten ?? TEN_MAC_DINH } : { type: 'chon-nganh', nganh: kn.nut.luaChon[0] ?? '' };
+    case 'explore': {
+      // Bấm chỗ đầu tiên chưa xem (theo thứ tự trong kịch bản); chỗ có "sau:" hiện dần.
+      const d = kn.diem.find((x) => !x.daXem);
+      return d ? { type: 'xem-diem', chuoi: d.diem.chuoi } : { type: 'tiep' };
+    }
   }
 }
 

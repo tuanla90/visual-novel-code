@@ -5,6 +5,7 @@
 ### cong-truong — Cổng trường
 ### phong-ktx — Phòng KTX 408
 ### cong-ktx — Cổng KTX
+### sanh-ktx — Sảnh ký túc xá
 ### sanh-toa-b — Sảnh tòa B
 ### cang-tin — Căng tin
 ### ngoai-phong-may — Ngoài phòng máy
