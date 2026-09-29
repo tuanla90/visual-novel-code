@@ -182,6 +182,8 @@ export function GameScreen() {
     }
   }, [speakerExp]);
 
+  // Hook phải gọi trước mọi lệnh return sớm (rules-of-hooks).
+  const viewportMode = useVnStore((s) => s.viewportMode);
   if (!progress || !view) return null;
 
   const completedParts = PART_IDS.filter((p): p is PartId => progress.partCompletedAt[p] !== undefined);
@@ -198,7 +200,6 @@ export function GameScreen() {
     view.kind === 'line' && spk && isCharacterId(spk) && !seenDebuts.includes(spk) ? spk : null;
 
   const isShaking = view.kind === 'effect' || speakerLine?.expression === 'stunned';
-  const viewportMode = useVnStore((s) => s.viewportMode);
   const isSimulatedMobile = viewportMode === 'mobile' && typeof window !== 'undefined' && window.innerWidth > 768;
   const isPortrait = viewportMode === 'mobile';
 

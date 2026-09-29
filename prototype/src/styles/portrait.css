@@ -100,7 +100,6 @@
 }
 
 /* --- 2.1 TOPBAR TRÊN MÀN HÌNH DỌC --- */
-.game--portrait .topbar,
 @media (max-width: 768px) {
   .topbar {
     grid-template-columns: auto 1fr auto !important;
@@ -149,9 +148,55 @@
     padding: 0 6px !important;
   }
 }
+/* Cùng luật cho chế độ dọc giả lập (.game--portrait) trên màn rộng. */
+.game--portrait .topbar {
+  grid-template-columns: auto 1fr auto !important;
+  gap: 8px !important;
+  padding: 6px 10px !important;
+  min-height: 48px !important;
+}
+.game--portrait .topbar__chapter {
+  gap: 4px !important;
+}
+.game--portrait .topbar__chapter-count {
+  transform: scale(0.82) !important;
+  transform-origin: left center !important;
+  margin-right: -8px !important;
+}
+.game--portrait .topbar__chapter-info {
+  display: none !important;
+}
+.game--portrait .topbar__task {
+  max-width: 100% !important;
+  padding: 4px 10px 4px 8px !important;
+  gap: 6px !important;
+}
+.game--portrait .topbar__task-icon {
+  width: 18px !important;
+  height: 18px !important;
+}
+.game--portrait .topbar__task-label {
+  font-size: 0.55rem !important;
+}
+.game--portrait .topbar__task-text {
+  font-size: 0.78rem !important;
+}
+.game--portrait .topbar__capsule-group {
+  height: 36px !important;
+}
+.game--portrait .topbar__capsule-btn {
+  padding: 0 8px !important;
+  font-size: 0.76rem !important;
+}
+.game--portrait .topbar__capsule-text-responsive,
+.game--portrait .topbar__capsule-btn--map span {
+  display: none !important;
+}
+.game--portrait .topbar__capsule-btn--dossier {
+  padding: 0 6px !important;
+}
 
 /* --- 2.2 SÂN KHẤU (STAGE) & NHÂN VẬT KHUNG DỌC --- */
-.game--portrait .stage,
 @media (max-width: 768px) {
   .stage {
     padding: 8px 8px 6px !important;
@@ -195,9 +240,50 @@
     padding-bottom: 2px !important;
   }
 }
+/* Cùng luật cho chế độ dọc giả lập (.game--portrait) trên màn rộng. */
+.game--portrait .stage {
+  padding: 8px 8px 6px !important;
+  grid-template-rows: auto 1fr auto !important;
+  position: relative !important;
+}
+.game--portrait .stage__scene-label {
+  top: 8px !important;
+  left: 8px !important;
+  transform: scale(0.9) !important;
+  transform-origin: top left !important;
+}
+.game--portrait .stage__backdrop-img,
+.game--portrait .stage__backdrop .scene-art {
+  object-position: 50% 50% !important;
+}
+/* Chân dung nhân vật đứng chính giữa, chiếm ~70% chiều cao */
+.game--portrait .cast-member {
+  width: min(390px, 94vw) !important;
+  top: auto !important;
+  bottom: 0 !important;
+  height: 72vh !important;
+  max-height: 560px !important;
+}
+.game--portrait .cast-member--side-right {
+  left: 58% !important;
+}
+.game--portrait .cast-member--side-left {
+  left: 42% !important;
+}
+.game--portrait .stage__content {
+  grid-row: 3 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding-bottom: 2px !important;
+}
+.game--portrait .stage__content:has(> .dialog-container),
+.game--portrait .stage__content:has(> .explore) {
+  width: 100% !important;
+  padding-bottom: 2px !important;
+}
 
 /* --- 2.3 KHUNG THOẠI & NÚT TIẾP TỤC DẠNG TEM GIẤY --- */
-.game--portrait .dialog-container,
 @media (max-width: 768px) {
   .dialog-container {
     width: 100% !important;
@@ -237,9 +323,46 @@
     font-size: 1.02rem !important;
   }
 }
+/* Cùng luật cho chế độ dọc giả lập (.game--portrait) trên màn rộng. */
+.game--portrait .dialog-container {
+  width: 100% !important;
+}
+.game--portrait .dialog--glass {
+  padding: 16px 18px 12px !important;
+  border-radius: 16px !important;
+  min-height: 80px !important;
+}
+.game--portrait .dialog--glass .dialog__speaker {
+  top: -14px !important;
+  left: 12px !important;
+  font-size: 0.92rem !important;
+  padding: 4px 12px !important;
+}
+.game--portrait .dialog--glass .dialog__text {
+  font-size: 1.05rem !important;
+  line-height: 1.48 !important;
+}
+.game--portrait .dialog__footer--external {
+  margin-top: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+.game--portrait .dialog__btn-notebook {
+  display: none !important; /* Đã có trên Topbar */
+}
+/* Nút Tiếp tục dạng tem giấy nghệ thuật */
+.game--portrait .dialog__next {
+  min-height: 40px !important;
+  padding: 6px 18px 6px 14px !important;
+}
+.game--portrait .dialog__next .dialog__next-text,
+.game--portrait .dialog__next span {
+  font-size: 1.02rem !important;
+}
 
 /* --- 2.4 THANH ĐIỀU KHIỂN NHANH DƯỚI ĐÁY (QUICK ACTION BAR) --- */
-.game--portrait .vn-quick-bar--mobile,
 @media (max-width: 768px) {
   .vn-quick-bar--desktop {
     display: none !important;
@@ -266,18 +389,42 @@
     height: 12px !important;
   }
 }
+/* Cùng luật cho chế độ dọc giả lập (.game--portrait) trên màn rộng. */
+.game--portrait .vn-quick-bar--desktop {
+  display: none !important;
+}
+.game--portrait .vn-quick-bar--mobile {
+  display: flex !important;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.game--portrait .vn-quick-bar--mobile .vn-btn {
+  min-height: 32px !important;
+  padding: 3px 8px !important;
+  font-size: 0.72rem !important;
+  gap: 4px !important;
+  border-radius: 6px !important;
+  background: rgba(15, 23, 42, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+.game--portrait .vn-quick-bar--mobile .vn-btn svg {
+  width: 12px !important;
+  height: 12px !important;
+}
 
 @media (min-width: 769px) {
-  :not(.game--portrait) .vn-quick-bar--mobile {
+  .game:not(.game--portrait) .vn-quick-bar--mobile {
     display: none !important;
   }
-  :not(.game--portrait) .vn-quick-bar--desktop {
+  .game:not(.game--portrait) .vn-quick-bar--desktop {
     display: flex !important;
   }
 }
 
 /* --- 2.5 CÂU HỎI TRẮC NGHIỆM TRÊN MÀN HÌNH DỌC --- */
-.game--portrait .mc__overlay,
 @media (max-width: 768px) {
   .mc__overlay {
     bottom: clamp(140px, 20vh, 190px) !important;
@@ -294,9 +441,23 @@
     border-radius: 12px !important;
   }
 }
+/* Cùng luật cho chế độ dọc giả lập (.game--portrait) trên màn rộng. */
+.game--portrait .mc__overlay {
+  bottom: clamp(140px, 20vh, 190px) !important;
+  padding: 0 10px 8px !important;
+}
+.game--portrait .mc__choices {
+  width: 100% !important;
+  gap: 10px !important;
+}
+.game--portrait .mc__choice {
+  min-height: 44px !important;
+  padding: 8px 16px !important;
+  font-size: 0.98rem !important;
+  border-radius: 12px !important;
+}
 
 /* --- 2.6 MÀN KHÁM PHÁ (EXPLORE) TRÊN MÀN HÌNH DỌC --- */
-.game--portrait .explore,
 @media (max-width: 768px) {
   .explore {
     padding: 16px 18px !important;
@@ -317,13 +478,27 @@
     font-size: 0.95rem !important;
   }
 }
+/* Cùng luật cho chế độ dọc giả lập (.game--portrait) trên màn rộng. */
+.game--portrait .explore {
+  padding: 16px 18px !important;
+  gap: 12px !important;
+  border-radius: 16px !important;
+}
+.game--portrait .explore__lead {
+  font-size: 1rem !important;
+}
+.game--portrait .explore__hotspots {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
+  gap: 10px !important;
+}
+.game--portrait .hotspot {
+  min-height: 44px !important;
+  padding: 8px 14px !important;
+  font-size: 0.95rem !important;
+}
 
 /* --- 2.7 MODALS & HỒ SƠ TRÊN MÀN HÌNH DỌC --- */
-.game--portrait .notebook,
-.game--portrait .backlog-modal__card,
-.game--portrait .save-load-modal__card,
-.game--portrait .campus-map__card,
-.game--portrait .audio-modal__card,
 @media (max-width: 768px) {
   .notebook,
   .backlog-modal__card,
@@ -344,9 +519,27 @@
     padding-bottom: 6px !important;
   }
 }
+/* Cùng luật cho chế độ dọc giả lập (.game--portrait) trên màn rộng. */
+.game--portrait .notebook,
+.game--portrait .backlog-modal__card,
+.game--portrait .save-load-modal__card,
+.game--portrait .campus-map__card,
+.game--portrait .audio-modal__card {
+  width: calc(100% - 16px) !important;
+  max-width: 100% !important;
+  max-height: 92vh !important;
+  border-radius: 16px !important;
+}
+.game--portrait .notebook__body {
+  flex-direction: column !important;
+}
+.game--portrait .notebook__tabs {
+  flex-direction: row !important;
+  overflow-x: auto !important;
+  padding-bottom: 6px !important;
+}
 
 /* --- 2.8 THU NHẬN VẬT PHẨM (DOCUMENT REVEAL) TRÊN MÀN HÌNH DỌC --- */
-.game--portrait .docview,
 @media (max-width: 768px) {
   .docview {
     padding: 16px 14px !important;
@@ -362,4 +555,116 @@
     min-height: 44px !important;
   }
 }
+/* Cùng luật cho chế độ dọc giả lập (.game--portrait) trên màn rộng. */
+.game--portrait .docview {
+  padding: 16px 14px !important;
+}
+.game--portrait .docview__card {
+  width: 100% !important;
+  max-height: 88vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.game--portrait .docview__btn-collect {
+  width: 100% !important;
+  min-height: 44px !important;
+}
 
+
+/* --- 2.9 GIỮ KHUNG ĐÚNG BỀ RỘNG MÀN (điện thoại thật + chế độ dọc giả lập) ---
+   Lưới .game một cột tự co theo nội dung → thanh trên/hộp thoại kéo khung rộng hơn màn (584 px ở 375 px).
+   minmax(0, 1fr) + min-width: 0 buộc mọi tầng co theo màn; chữ nhiệm vụ dài thì cắt "…". */
+@media (max-width: 768px) {
+  .game {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .topbar {
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
+  }
+  .topbar__task,
+  .stage,
+  .stage__content,
+  .dialog-container {
+    min-width: 0 !important;
+  }
+  .topbar__task-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .topbar__task {
+    grid-row: 2 !important;
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .dialog__footer--external {
+    flex-wrap: wrap !important;
+    row-gap: 6px !important;
+  }
+  .dialog__footer-right {
+    order: 1;
+    margin-left: auto !important;
+  }
+  .dialog__footer-left {
+    order: 2;
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+  }
+  .vn-quick-bar--mobile {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    scrollbar-width: none;
+  }
+  .vn-quick-bar--mobile .vn-btn {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+}
+.game--portrait {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+.game--portrait .topbar {
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+}
+.game--portrait .topbar__task,
+.game--portrait .stage,
+.game--portrait .stage__content,
+.game--portrait .dialog-container {
+  min-width: 0 !important;
+}
+.game--portrait .topbar__task-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.game--portrait .topbar__task {
+  grid-row: 2 !important;
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+.game--portrait .dialog__footer--external {
+  flex-wrap: wrap !important;
+  row-gap: 6px !important;
+}
+.game--portrait .dialog__footer-right {
+  order: 1;
+  margin-left: auto !important;
+}
+.game--portrait .dialog__footer-left {
+  order: 2;
+  flex: 1 1 100% !important;
+  min-width: 0 !important;
+}
+.game--portrait .vn-quick-bar--mobile {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  flex-wrap: nowrap !important;
+  scrollbar-width: none;
+}
+.game--portrait .vn-quick-bar--mobile .vn-btn {
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+}
