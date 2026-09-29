@@ -1,11 +1,18 @@
 /**
- * HUD bản MVP (QĐ-089/090): ngày + khung giờ ("Cuối ngày" khi hết khung), nhiệm vụ hiện tại, thanh uy tín 5 vạch
- * ở ngày họp, nút Hồ sơ / Sổ tay / Lưu / Nạp / Lịch sử / Menu. Mọi nút chỉ biểu tượng có `title` + `aria-label`.
+ * Thanh trên bản MVP (QĐ-089/090) — mang phong cách thanh trên của prototype (gói giao-dien-mvp): DÙNG LẠI lớp CSS
+ * `.topbar*` của `styles/app.css`/`portrait.css` (vé "Ngày n/5" + vạch 5 ngày, viên "Mục tiêu", nhóm nút con nhộng,
+ * menu tạm dừng), nhưng là component riêng: `shared/ui/TopBar` gắn chặt `PART_IDS` (5 phần của prototype) và telemetry
+ * `notebook_opened` — sửa nó để nhận ngày/khung MVP sẽ đụng test và hành vi prototype.
+ *
+ * Nội dung: ngày + khung giờ ("Cuối ngày" khi hết khung), nhiệm vụ hiện tại, thanh uy tín 5 vạch ở ngày họp, nút
+ * Dọc/Ngang / Hồ sơ / Sổ tay, menu (Lịch sử thoại, Lưu, Nạp, Về màn tiêu đề, Bắt đầu lại). Mọi nút có `title` +
+ * `aria-label`; menu đóng bằng Esc hay bấm ra ngoài.
  */
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { ConfirmDialog } from '../../shared/ui/ConfirmDialog';
-import { IconBriefcase, IconFileText, IconFolderOpen, IconHistory, IconRotateCcw, IconSave } from '../../shared/ui/icons';
+import { IconFolderOpen, IconHistory, IconRotateCcw, IconSave } from '../../shared/ui/icons';
+import { useVnStore } from '../../shared/vn/vn-store';
 import { tenKhungHienTai } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 
@@ -13,6 +20,7 @@ export interface HudMvpProps {
   kb: KichBanMvp;
   s: TrangThaiMvp;
   soHoSo: number;
+  soTrangSo: number;
   onMoHoSo: () => void;
   onMoSoTay: () => void;
   onMoLuu: () => void;
@@ -36,76 +44,180 @@ export function ThanhUyTin({ con, tong }: { con: number; tong: number }) {
   );
 }
 
-export function HudMvp({ kb, s, soHoSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onBatDauLai, onVeTieuDe }: HudMvpProps) {
+/** Mốc hiện tại cho vé bên trái: chữ nhỏ ("Ngày"/"Buổi"), số lớn, tên dưới (khung giờ / tên giai đoạn). */
+function mocHud(kb: KichBanMvp, s: TrangThaiMvp): { kicker: string; so: string; ten: string; nhanDai: string } {
+  const tongNgay = kb.lich.ngay.length;
+  if (s.giaiDoan === 'mo-dau') return { kicker: 'Ngày', so: `0/${tongNgay}`, ten: 'Mở đầu', nhanDai: 'Mở đầu' };
+  if (s.giaiDoan === 'ngay') {
+    const khung = tenKhungHienTai(kb, s);
+    return { kicker: 'Ngày', so: `${s.ngay}/${tongNgay}`, ten: khung, nhanDai: `Ngày ${s.ngay} · ${khung}` };
+  }
+  if (s.giaiDoan === 'hop') return { kicker: 'Buổi', so: 'Họp', ten: 'Buổi họp rà soát', nhanDai: 'Buổi họp rà soát' };
+  return { kicker: 'Vụ 1', so: 'Kết', ten: 'Kết thúc', nhanDai: 'Kết thúc' };
+}
+
+export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onBatDauLai, onVeTieuDe }: HudMvpProps) {
   const [menuMo, setMenuMo] = useState(false);
   const [xacNhan, setXacNhan] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const viewportMode = useVnStore((k) => k.viewportMode);
+  const toggleViewportMode = useVnStore((k) => k.toggleViewportMode);
+  const moc = mocHud(kb, s);
   const tenNgay = kb.lich.ngay.find((n) => n.so === s.ngay)?.ten ?? '';
-  let moc: string;
-  let phu = '';
-  if (s.giaiDoan === 'mo-dau') moc = 'Mở đầu';
-  else if (s.giaiDoan === 'ngay') {
-    moc = `Ngày ${s.ngay}`;
-    phu = tenKhungHienTai(kb, s);
-  } else if (s.giaiDoan === 'hop') moc = 'Buổi họp';
-  else moc = 'Kết';
   const tong = kb.lich.luat.uyTin ?? 0;
+  const daXongNgay = (so: number): boolean => s.giaiDoan === 'hop' || s.giaiDoan === 'het' || (s.giaiDoan === 'ngay' && so < s.ngay);
+  const nhanDocNgang = viewportMode === 'mobile' ? 'Chuyển sang màn hình ngang PC' : 'Chuyển sang màn hình dọc Mobile 9:16';
+
+  // Menu: Esc hay bấm ra ngoài thì đóng (không dùng <details> như prototype để bắt được Esc).
+  useEffect(() => {
+    if (!menuMo) return;
+    const onKey = (e: KeyboardEvent): void => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setMenuMo(false);
+      }
+    };
+    const onDown = (e: PointerEvent): void => {
+      if (menuRef.current && e.target instanceof Node && !menuRef.current.contains(e.target)) setMenuMo(false);
+    };
+    window.addEventListener('keydown', onKey);
+    window.addEventListener('pointerdown', onDown);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('pointerdown', onDown);
+    };
+  }, [menuMo]);
+
+  const chon = (viec: () => void) => () => {
+    setMenuMo(false);
+    viec();
+  };
 
   return (
-    <header className="mvp-hud" aria-label="Thanh trạng thái">
-      <div className="mvp-hud__moc" title={tenNgay || moc}>
-        <span className="mvp-hud__ngay">{moc}</span>
-        {phu ? <span className="mvp-hud__khung">{phu}</span> : null}
+    <header className="topbar mvp-topbar" aria-label="Thanh trạng thái">
+      <div className="topbar__chapter" role="group" aria-label={`Tiến trình: ${moc.nhanDai}`} title={tenNgay || moc.nhanDai}>
+        <span className="topbar__chapter-count">
+          <span className="topbar__chapter-kicker" aria-hidden="true">
+            {moc.kicker}
+          </span>
+          <span className="topbar__chapter-number">{moc.so}</span>
+        </span>
+        <span className="topbar__chapter-info">
+          <span className="topbar__chapter-name">{moc.ten}</span>
+          <span className="topbar__pips" aria-hidden="true">
+            {kb.lich.ngay.map((n) => (
+              <span
+                key={n.so}
+                className={`topbar__pip${daXongNgay(n.so) ? ' is-done' : ''}${s.giaiDoan === 'ngay' && n.so === s.ngay ? ' is-current' : ''}`}
+                title={`Ngày ${n.so}${n.ten ? ` · ${n.ten}` : ''}`}
+              />
+            ))}
+          </span>
+        </span>
       </div>
-      {s.nhiemVu ? (
-        <p className="mvp-hud__nhiemvu" title={s.nhiemVu}>
-          <span className="mvp-hud__nhiemvu-nhan">Nhiệm vụ</span>
-          <span className="mvp-hud__nhiemvu-chu">{s.nhiemVu}</span>
-        </p>
-      ) : (
-        <span />
-      )}
-      {s.giaiDoan === 'hop' && tong > 0 ? <ThanhUyTin con={s.uyTin} tong={tong} /> : null}
-      <div className="mvp-hud__nut" role="toolbar" aria-label="Điều khiển">
-        <button type="button" className="mvp-hud__btn" onClick={onMoHoSo} title="Mở hồ sơ (giấy nhớ, tài liệu, bằng chứng)" aria-label="Mở hồ sơ">
-          <IconBriefcase width={18} height={18} aria-hidden="true" />
-          <span className="mvp-hud__btn-chu">Hồ sơ</span>
-          {soHoSo > 0 ? <span className="mvp-hud__dem">{soHoSo}</span> : null}
-        </button>
-        <button type="button" className="mvp-hud__btn" onClick={onMoSoTay} title="Mở sổ cá nhân (trang đã chép)" aria-label="Mở sổ cá nhân">
-          <IconFileText width={18} height={18} aria-hidden="true" />
-          <span className="mvp-hud__btn-chu">Sổ tay</span>
-        </button>
-        <button type="button" className="mvp-hud__btn" onClick={onMoLichSu} title="Xem lại lời thoại đã qua" aria-label="Xem lịch sử thoại">
-          <IconHistory width={18} height={18} aria-hidden="true" />
-        </button>
-        <button type="button" className="mvp-hud__btn" onClick={onMoLuu} title="Lưu tiến độ vào ô lưu" aria-label="Lưu tiến độ">
-          <IconSave width={18} height={18} aria-hidden="true" />
-        </button>
-        <button type="button" className="mvp-hud__btn" onClick={onMoNap} title="Nạp tiến độ từ ô lưu" aria-label="Nạp tiến độ">
-          <IconFolderOpen width={18} height={18} aria-hidden="true" />
-        </button>
-        <div className="mvp-hud__menu">
+      <div className="topbar__task" aria-live="polite">
+        <svg className="topbar__task-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="7" stroke="currentColor" strokeWidth="1.8" fill="none" />
+          <circle cx="12" cy="12" r="2.5" fill="currentColor" />
+          <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+        <div className="topbar__task-content">
+          <span className="topbar__task-label">Nhiệm vụ</span>
+          <span className="topbar__task-text" title={s.nhiemVu ?? undefined}>
+            {s.nhiemVu ?? 'Chưa có nhiệm vụ'}
+          </span>
+        </div>
+      </div>
+      <div className="topbar__actions">
+        {s.giaiDoan === 'hop' && tong > 0 ? <ThanhUyTin con={s.uyTin} tong={tong} /> : null}
+        <div className="topbar__capsule-group" role="toolbar" aria-label="Điều khiển">
           <button
             type="button"
-            className="mvp-hud__btn"
-            onClick={() => setMenuMo((m) => !m)}
-            aria-haspopup="menu"
-            aria-expanded={menuMo}
-            title="Menu: bắt đầu lại, về màn tiêu đề"
-            aria-label="Mở menu"
+            className={`topbar__capsule-btn topbar__capsule-btn--viewport${viewportMode === 'mobile' ? ' is-active' : ''}`}
+            aria-label={nhanDocNgang}
+            title={nhanDocNgang}
+            onClick={toggleViewportMode}
           >
-            <IconRotateCcw width={18} height={18} aria-hidden="true" />
+            <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+              <line x1="12" y1="18" x2="12.01" y2="18" />
+            </svg>
+            <span className="topbar__capsule-text-responsive">{viewportMode === 'mobile' ? 'Dọc' : 'Dọc/Ngang'}</span>
           </button>
-          {menuMo ? (
-            <div className="mvp-hud__menu-panel" role="menu">
-              <button type="button" role="menuitem" className="mvp-hud__menu-item" onClick={() => { setMenuMo(false); onVeTieuDe(); }}>
-                Về màn tiêu đề (giữ tiến độ)
-              </button>
-              <button type="button" role="menuitem" className="mvp-hud__menu-item mvp-hud__menu-item--nguy" onClick={() => { setMenuMo(false); setXacNhan(true); }}>
-                Bắt đầu lại bản MVP từ đầu
-              </button>
-            </div>
-          ) : null}
+          <button
+            type="button"
+            className="topbar__capsule-btn topbar__capsule-btn--dossier"
+            aria-label={`Mở hồ sơ (${soHoSo} mục)`}
+            title="Mở hồ sơ: giấy nhớ, tài liệu, bằng chứng"
+            onClick={onMoHoSo}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 5.5h5l1.5 2H20v11H4z" />
+            </svg>
+            <span className="topbar__capsule-text-responsive">Hồ sơ</span>
+            <span className="topbar__dossier-count" aria-hidden="true">
+              {soHoSo}
+            </span>
+          </button>
+          <button
+            type="button"
+            className="topbar__capsule-btn mvp-topbar__sotay"
+            aria-label={`Mở sổ cá nhân (${soTrangSo} trang)`}
+            title="Mở sổ cá nhân: các đoạn code đã chép"
+            onClick={onMoSoTay}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v16H6.5A1.5 1.5 0 0 0 5 20.5z" />
+              <path d="M5 20.5A1.5 1.5 0 0 0 6.5 22H19v-3" />
+              <path d="M9 7.5h6M9 11h6" />
+            </svg>
+            <span className="topbar__capsule-text-responsive">Sổ tay</span>
+          </button>
+          <div ref={menuRef} className={`topbar__menu topbar__capsule-menu${menuMo ? ' is-open' : ''}`}>
+            <button
+              type="button"
+              className="topbar__capsule-btn topbar__capsule-btn--menu topbar__menu-trigger"
+              aria-haspopup="menu"
+              aria-expanded={menuMo}
+              aria-label={menuMo ? 'Đóng menu tạm dừng' : 'Mở menu tạm dừng'}
+              title="Menu: lịch sử thoại, lưu, nạp, bắt đầu lại"
+              onClick={() => setMenuMo((m) => !m)}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="4" y1="7" x2="20" y2="7" />
+                <line x1="4" y1="12" x2="20" y2="12" />
+                <line x1="4" y1="17" x2="20" y2="17" />
+              </svg>
+            </button>
+            {menuMo ? (
+              <div className="topbar__menu-panel" role="menu" aria-label="Menu tạm dừng">
+                <span className="topbar__menu-title">Tùy chọn</span>
+                <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onMoLichSu)}>
+                  <IconHistory width={16} height={16} aria-hidden="true" />
+                  <span>Lịch sử thoại</span>
+                </button>
+                <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onMoLuu)}>
+                  <IconSave width={16} height={16} aria-hidden="true" />
+                  <span>Lưu tiến độ (Save)</span>
+                </button>
+                <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onMoNap)}>
+                  <IconFolderOpen width={16} height={16} aria-hidden="true" />
+                  <span>Nạp tiến độ (Load)</span>
+                </button>
+                <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onVeTieuDe)}>
+                  <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M3 11.5 12 4l9 7.5" />
+                    <path d="M5.5 10v10h13V10" />
+                  </svg>
+                  <span>Về màn tiêu đề</span>
+                </button>
+                <button type="button" role="menuitem" className="topbar__menu-item topbar__menu-item--danger" onClick={chon(() => setXacNhan(true))}>
+                  <IconRotateCcw width={16} height={16} aria-hidden="true" />
+                  <span>Bắt đầu lại bản MVP</span>
+                </button>
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
       <ConfirmDialog

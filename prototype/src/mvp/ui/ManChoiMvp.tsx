@@ -262,6 +262,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         kb={kb}
         s={s}
         soHoSo={soHoSo(s)}
+        soTrangSo={s.soTay.length}
         onMoHoSo={() => setHoSoMo(true)}
         onMoSoTay={() => setSoTayMo(true)}
         onMoLuu={() => setLuuNap('save')}

@@ -4,139 +4,40 @@
  * Luật rút từ các đợt trước: không gộp @media vào danh sách selector; overlay tuyệt đối cần tổ tiên có position.
  */
 
-/* ---------- HUD ---------- */
-.mvp-hud {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
-  align-items: center;
-  gap: var(--sp-3);
-  padding: var(--sp-2) var(--sp-3);
-  background: var(--c-topbar-bg);
-  color: var(--c-topbar-text);
-  min-height: 52px;
-  position: relative;
+/* ---------- Thanh trên (dùng lại .topbar* của app.css/portrait.css, gói giao-dien-mvp) ---------- */
+/* Menu và hộp chọn của thanh trên phải nổi trên sân khấu MVP (.mvp-canh, .chal…). */
+.topbar.mvp-topbar {
   z-index: 30;
 }
-.mvp-hud__moc {
-  display: flex;
-  align-items: baseline;
-  gap: var(--sp-2);
-  white-space: nowrap;
+.mvp-topbar .topbar__chapter-count {
+  cursor: default;
 }
-.mvp-hud__ngay {
-  font-weight: 700;
-  font-size: var(--fs-md);
+.mvp-topbar .topbar__capsule-menu.is-open .topbar__capsule-btn--menu {
+  background: rgba(255, 255, 255, 0.12) !important;
 }
-.mvp-hud__khung {
-  font-size: var(--fs-sm);
-  padding: 2px 10px;
-  border-radius: 999px;
-  background: var(--c-topbar-accent);
-  color: var(--c-topbar-bg);
-  font-weight: 700;
-}
-.mvp-hud__nhiemvu {
-  margin: 0;
-  min-width: 0;
-  display: flex;
-  align-items: baseline;
-  gap: var(--sp-2);
-  font-size: var(--fs-sm);
-}
-.mvp-hud__nhiemvu-nhan {
-  opacity: 0.7;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 0.72rem;
-  flex: none;
-}
-.mvp-hud__nhiemvu-chu {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.mvp-hud__nut {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-1);
-}
-.mvp-hud__btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-width: 36px;
-  min-height: 36px;
-  padding: 6px 10px;
-  border-radius: var(--radius-sm);
-  border: 1px solid color-mix(in srgb, var(--c-topbar-text) 30%, transparent);
-  background: color-mix(in srgb, var(--c-topbar-text) 8%, transparent);
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  font-size: var(--fs-sm);
-}
-.mvp-hud__btn:hover {
-  background: color-mix(in srgb, var(--c-topbar-text) 18%, transparent);
-}
-.mvp-hud__btn:focus-visible {
-  outline: 2px solid var(--c-focus);
-  outline-offset: 2px;
-}
-.mvp-hud__dem {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 5px;
-  border-radius: 999px;
-  background: var(--c-topbar-accent);
-  color: var(--c-topbar-bg);
-  font-size: 0.7rem;
-  font-weight: 700;
-  display: grid;
-  place-items: center;
-}
-.mvp-hud__menu {
-  position: relative;
-}
-.mvp-hud__menu-panel {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 6px);
-  min-width: 240px;
-  background: var(--c-surface);
-  color: var(--c-text);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  padding: var(--sp-1);
-  display: grid;
-  z-index: 40;
-}
-.mvp-hud__menu-item {
-  text-align: left;
-  padding: 10px 12px;
-  border: 0;
-  background: transparent;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
-}
-.mvp-hud__menu-item:hover {
-  background: color-mix(in srgb, var(--c-text) 8%, transparent);
-}
-.mvp-hud__menu-item--nguy {
-  color: var(--c-error);
+.mvp-topbar .topbar__capsule-btn.is-active {
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* Thanh uy tín */
+/* Viên tối như "Mục tiêu" của thanh trên; vạch nghiêng như `.topbar__pip`. */
 .mvp-uytin {
   display: flex;
   align-items: center;
-  gap: var(--sp-2);
-  font-size: var(--fs-sm);
+  gap: 8px;
+  height: 38px;
+  padding: 0 14px;
+  background: #192334;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: #fbbf24;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 .mvp-uytin__vach {
@@ -145,15 +46,14 @@
 }
 .mvp-uytin__o {
   display: inline-block;
-  width: 18px;
-  height: 10px;
-  border-radius: 3px;
-  border: 1px solid color-mix(in srgb, var(--c-topbar-text) 50%, transparent);
-  background: transparent;
+  width: 16px;
+  height: 8px;
+  transform: skewX(-20deg);
+  background: rgba(255, 255, 255, 0.16);
 }
 .mvp-uytin__o.is-con {
-  background: var(--c-topbar-accent);
-  border-color: var(--c-topbar-accent);
+  background: #fbbf24;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
 }
 
 /* ---------- Sân khấu ---------- */
@@ -973,28 +873,27 @@
 
 /* ---------- Điện thoại / dọc ---------- */
 @media (max-width: 768px) {
-  .mvp-hud {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 4px var(--sp-2);
-    padding: 6px 10px;
+  /* Nút con nhộng cao 30 px (giữ dáng prototype) — vùng chạm mở rộng tới 44 px bằng lớp vô hình, rộng tối thiểu 44 px. */
+  .mvp-topbar .topbar__capsule-btn {
+    min-width: 44px;
   }
-  .mvp-hud__nhiemvu {
-    display: none;
+  .mvp-topbar .topbar__capsule-btn::after {
+    content: '';
+    position: absolute;
+    inset: -7px 0;
   }
-  /* Thanh uy tín xuống hàng riêng, đủ rộng — không chen với dãy nút. */
+  .mvp-topbar .topbar__actions {
+    gap: 6px;
+  }
   .mvp-uytin {
-    order: 10;
-    flex: 1 0 100%;
-    justify-content: center;
+    height: 36px;
+    padding: 0 10px;
   }
-  .mvp-hud__btn-chu {
+  .mvp-uytin__nhan {
     display: none;
   }
-  .mvp-hud__btn {
-    min-width: 34px;
-    padding: 6px 7px;
+  .mvp-uytin__o {
+    width: 11px;
   }
   .mvp-dd__ds {
     grid-template-columns: 1fr;
@@ -1008,15 +907,26 @@
     max-height: 40vh;
   }
 }
-.game--portrait .mvp-hud {
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: var(--sp-2);
-  padding: 6px 10px;
+.game--portrait .mvp-topbar .topbar__capsule-btn {
+  min-width: 44px;
 }
-.game--portrait .mvp-hud__nhiemvu,
-.game--portrait .mvp-uytin__nhan,
-.game--portrait .mvp-hud__btn-chu {
+.game--portrait .mvp-topbar .topbar__capsule-btn::after {
+  content: '';
+  position: absolute;
+  inset: -7px 0;
+}
+.game--portrait .mvp-topbar .topbar__actions {
+  gap: 6px;
+}
+.game--portrait .mvp-uytin {
+  height: 36px;
+  padding: 0 10px;
+}
+.game--portrait .mvp-uytin__nhan {
   display: none;
+}
+.game--portrait .mvp-uytin__o {
+  width: 11px;
 }
 .game--portrait .mvp-dd__ds {
   grid-template-columns: 1fr;
