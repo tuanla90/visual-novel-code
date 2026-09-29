@@ -40,6 +40,8 @@ export function NhanVatMvp({ kb, daGap }: { kb: KichBanMvp; daGap: readonly stri
   const gt = nv.gioiThieu;
   const bc = bieuCam && nv.bieuCam.includes(bieuCam) ? bieuCam : (nv.bieuCam[0] ?? 'neutral');
   const anh = anhChanDung(nv.id, bc);
+  // Nhân vật chỉ có một ảnh (mọi biểu cảm mượn ảnh neo) → không hiện hàng biểu cảm giống hệt nhau.
+  const nhieuAnh = new Set(nv.bieuCam.map((b) => anhChanDung(nv.id, b))).size > 1;
 
   return (
     <div className="chara-profile mvp-nhanvat" data-character={nv.id}>
@@ -81,7 +83,7 @@ export function NhanVatMvp({ kb, daGap }: { kb: KichBanMvp; daGap: readonly stri
             </div>
           </div>
 
-          {nv.bieuCam.length > 1 ? (
+          {nhieuAnh ? (
             <div className="chara-profile__expressions">
               <div className="chara-profile__expr-label">
                 <span>BIỂU CẢM:</span>
