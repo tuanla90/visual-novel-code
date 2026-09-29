@@ -194,6 +194,30 @@ Bảng `sinh_vien(ma_sv, ho_dem, ten, ma_lop)`. Người chơi đã có bằng c
    Trong lúc chưa có màn v7: vẫn chạy được bằng ô gõ SQL hiện tại.
 5. Bằng chứng ghi kèm **điều kiện đã dùng + số dòng** (GPT, phiên hội đồng 22:46).
 
+## 9b. Đã làm ở phiên logic (30/09) và bàn giao
+
+**Đã chạy được trong game (nhánh `claude/reorganize-folder-structure-29690a`):**
+- Chuỗi bài ngày 2 (`pm2-lop`, `kich-ban/02-phong-may-ngay-2.md`: 2.1 → 2.4) và ngày 4 (`pm4-ten`, `kich-ban/04-phong-may-ngay-4.md`: 4.1 → 4.2);
+  thẻ ở `thu-thach/c-loc-lop.md`, `thu-thach/c-ten-h.md`. Dữ liệu thêm 3 lớp (mục 7). Nhảy tới từ bảng người quan sát vào bài đầu mỗi chuỗi.
+- `[GHI SỔ <trang>]` tự ghi sổ cá nhân (trang `where-so`, `where-chu`, `and-or`, `like`); thông báo "Sổ cá nhân có dòng mới".
+- Phòng máy nhập câu **ba cách** (tab Kéo thả / Bấm khối / Gõ tay — người chơi tự đổi; người quan sát ép bằng `?cach=keo|khoi|go`),
+  nút **"Xem từng điều kiện"** (✓/✗ từng điều kiện), lời nhân vật theo dòng **"Khi …"** của thẻ, câu hỏi đóng ở màn kết "cách nào dễ chơi
+  nhất". Telemetry: `mvp_input_mode`, `mvp_query_run` (cách nhập + số dòng, không ghi chữ SQL), `mvp_input_feedback`.
+
+**Việc cho phiên truyện** (được viết lại tự do, không đổi SQL / số dòng / mã):
+- Các dòng `<!-- LỜI TẠM -->` trong `pm2-lop`, `pm4-ten` (lời dẫn từng bài).
+- Dòng `- Khi chạy ra <n> dòng: …`, `- Khi lỗi không có cột: …`, `- Khi đúng: …` trong thẻ thử thách (đặc tả §18.6) — hiện đã có lời tạm
+  cho 2.1, 2.2, 2.3, 2.4, 4.2. Lưu ý: "Khi chạy ra 1 dòng" ở 4.2 bắn cho MỌI câu ra 1 dòng, không chỉ lọc nhầm cột họ — viết sao cho vẫn đúng.
+- Cô Hạnh (`n2-co-hanh`) còn nói bảng lớp có "mã lớp, ngành, tòa nhà" — thiếu **khóa**; bài 2.1 cần cột khóa.
+- Trang sổ `like`: lời Hà Vy viết chữ H trong nháy kép (`"H"`) — nên viết lại cho khỏi lẫn với nháy đơn của SQL.
+- Mốc "lá thư 1 trang" nếu giữ bài nhật ký in (mục 5).
+
+**Việc cho phiên giao diện** (CSS, ảnh; không đổi hành vi):
+- Nền sảnh KTX `src/assets/mvp/nen/bg-mvp-sanh-ktx.webp` + hai vật `src/assets/mvp/vat/obj-thong-bao-thang-may.webp`, `obj-so-do-ktx.webp`
+  (hiện là ảnh tạm, CHƯA commit; thiếu thì `kiem-noi-dung:mvp` báo lỗi). Tọa độ ở `kich-ban/00-mo-dau.md` `[KHÁM PHÁ kp-sanh-ktx]`.
+- Bố cục phòng máy theo mockup v7 (`docs/mockups/core-game-v7-canh.html`): lớp CSS mới `.mvp-nhap*`, `.mvp-keo*`, `.mvp-giay`, `.mvp-khoi*`,
+  `.mvp-soi*`, `.mvp-chal__phanung` (đang là khung chức năng tối giản trong `src/mvp/ui/mvp.css`).
+
 ## 10. Câu hỏi còn mở
 
 - **[cần chốt]** Ngày thực địa có thêm bài SQL ngắn không (mục 3).
