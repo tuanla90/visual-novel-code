@@ -119,7 +119,7 @@ Thầy Quang chủ trì; có cô Lan; Quân trình bày tóm tắt của Hội s
 - **Nhịp 2:** sửa thành AND → **2 dòng** → **"Số liệu đây!"**. Chạy thử không phạt.
 - **Nhịp 3:** Hà Vy: "Anh lấy phần hợp, câu hỏi cần phần giao."
 - **Nhịp 4:** "Theo điều kiện trên màn hình, hai dòng này là ai?" → *hai người thỏa điều kiện lọc, cần kiểm tiếp.* Sai: hai người đã bỏ thư / cùng động cơ / đã viết thư. Sai mất 1 vạch.
-- **Nhịp 5:** thầy Quang: "Vậy hai bạn này là thủ phạm?" → *không; sổ niêm phong (nguồn độc lập) chỉ cho biết Hoài là người nộp, chưa cho biết ai viết.* Sai: "có", hoặc "không kết luận được gì". Sai mất 1 vạch.
+- **Nhịp 5:** thầy Quang: "Vậy hai bạn này là thủ phạm?" → *chưa nói được; sổ niêm phong chỉ cho biết mã của Hoài có trên phiếu gửi, chưa cho biết ai viết thư.* Sai: "có", hoặc "không, hai bạn không liên quan" (QĐ-090). Sai mất 1 vạch.
 - Mỗi lần mất vạch, Minh Anh đổi sắc mặt và giải cứu (xin làm lại hoặc nói đỡ); không hoàn vạch, không nói thay đáp án. Hết vạch thì hoãn buổi, quay lại điều tra, không mất tiến độ.
 - **Cú lật:** Hoài ngồi chờ ngoài phòng họp theo quy chế (thư yêu cầu phản hồi). Người chơi chọn: mời vào tự kể (→ rẽ kết theo bằng chứng) / đối chất (mất 1 vạch, kết thường) / không mời (kết thường) — QĐ-090.
   - **Có đủ bằng chứng true end:** người chơi trình nhật ký in và lời kể. Hoài kể "một anh khóa trên" nhờ cô nộp hộ "bản kiến nghị", dặn ký "H." cho có; cô không đọc thư. Hoài **không nêu tên**.

@@ -703,4 +703,4 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - **Hoài vào phòng họp do người chơi chọn** (`[RẼ NHÁNH r-moi-hoai]` sau `q-thu-pham`): mời vào tự kể → `[RẼ KẾT]` theo bằng chứng; đối chất → mất 1 vạch, kết thường; dừng ở hai dòng → kết thường, không mất vạch. Hoài ngồi chờ ngoài theo quy chế (cô Lan báo ở ngày 5).
 - **Hoài ghi mã của chính mình theo lời dặn**; ở kết thật Hà Vy nói ra: người nhờ không để lại gì trong sổ.
 - **"Số liệu đây!" lần đầu có bạn bè hưởng ứng** (Tùng, Duy); lần 2 ở buổi họp giữ Hà Vy.
-- **Thoại mới chưa qua hội đồng chấm vòng 2.**
+- **Thoại mới qua hội đồng chấm vòng 2–7** (phiên `…-cot-truyen-vong2-cham` … `…-vong7-cham`): TB 86 → 93%; vòng 7 Flash 97, Claude 96, Gemini Pro 95, GPT 84 (GPT giữ hai phản đối trái kết thật đã chốt). Kết quả: đường "dừng" vào thẳng kết thường; kết thật do CLB trình nhật ký in; quy chế "mã trên phiếu phải là mã của chính người viết thư" (cô Lan nêu từ ngày 3).

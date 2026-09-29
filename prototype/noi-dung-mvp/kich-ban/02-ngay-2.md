@@ -5,7 +5,7 @@
 - [THẺ CHỮ] **narrator**: Ngày 2 — Sáng
 - **minh-anh** (neutral): Hôm nay {{nv.co-hanh}} bên Đào tạo cấp quyền dữ liệu. Có quyền rồi mình mới vào phòng máy được.
 - **minh-anh** (neutral): Đơn xin quyền chị đứng tên, có gì chị chịu. Các em gõ, còn {{nv.duy}} ngồi cùng, ký sổ mượn máy.
-- **duy** (neutral): Ừ. Tớ ngồi cạnh thôi, không động vào bàn phím đâu.
+- **duy** (neutral): Tớ chỉ ngồi cạnh thôi, bàn phím là của các cậu.
 
 ### n2-co-hanh — Cô Hạnh cấp quyền tạm {cảnh: phong-dao-tao}
 
@@ -20,7 +20,7 @@
 
 - **tung** (neutral): Tuần này lớp tớ chuyển sang tòa C học. Chắc chẳng dính gì vụ mình đâu.
 
-### toi-2 — Cuối ngày ngày 2: Hà Vy dẫn vào phòng máy {cảnh: phong-may}
+### toi-2 — Cuối ngày 2: Hà Vy dẫn vào phòng máy {cảnh: phong-may}
 
 - [THẺ CHỮ] **narrator**: Cuối ngày
 - **ha-vy** (neutral): {{nv.thay-khai}} cho mượn phòng máy thêm một tiếng. Vào đi, tớ ngồi cạnh.
