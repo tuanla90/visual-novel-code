@@ -170,6 +170,7 @@ function KeoTha({
             draggable={!khoa}
             disabled={khoa}
             aria-pressed={dangChon?.khoa === g.khoa}
+            aria-label={`${g.giaTri} (giấy nhớ ${g.nguon})`}
             title={`${g.nguon} — kéo vào ô giá trị`}
             onDragStart={(e) => e.dataTransfer.setData('text/plain', g.khoa)}
             onClick={() => setDangChon(dangChon?.khoa === g.khoa ? null : g)}

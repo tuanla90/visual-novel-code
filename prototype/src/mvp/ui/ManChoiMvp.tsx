@@ -125,7 +125,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     if (dem > soTrangTruoc.current) {
       const moi = s ? kb.soTay[s.soTay[dem - 1] ?? ''] : undefined;
       soundEngine.playSfx('page');
-      baoToast(moi?.chuThich ? `Sổ cá nhân có dòng mới: ${moi.chuThich}` : 'Sổ cá nhân có dòng mới.');
+      baoToast(moi?.chuThich ? `Sổ cá nhân có dòng mới: ${moi.chuThich.replace(/`/g, '')}` : 'Sổ cá nhân có dòng mới.');
     }
     soTrangTruoc.current = dem;
   }, [s, kb, baoToast]);

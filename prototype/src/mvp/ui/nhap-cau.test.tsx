@@ -45,7 +45,7 @@ describe('kéo thả', () => {
     render(<Vo />);
     expect(sqlHien()).toBe('SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat');
     await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Cột của điều kiện 1' }), 'khoa_hoc');
-    await userEvent.click(screen.getByRole('button', { name: 'K24' }));
+    await userEvent.click(screen.getByRole('button', { name: /^K24 \(giấy nhớ/ }));
     await userEvent.click(screen.getByRole('button', { name: /^Ô giá trị điều kiện 1/ }));
     expect(sqlHien()).toBe("SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE khoa_hoc = 'K24'");
 
@@ -59,11 +59,11 @@ describe('kéo thả', () => {
   it('thêm điều kiện, đổi nối AND ↔ OR, "bắt đầu bằng" thành LIKE \'x%\'', async () => {
     render(<Vo />);
     await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Cột của điều kiện 1' }), 'toa_nha');
-    await userEvent.click(screen.getByRole('button', { name: 'B' }));
+    await userEvent.click(screen.getByRole('button', { name: /^B \(giấy nhớ/ }));
     await userEvent.click(screen.getByRole('button', { name: /^Ô giá trị điều kiện 1/ }));
     await userEvent.click(screen.getByRole('button', { name: '+ Thêm điều kiện' }));
     await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Cột của điều kiện 2' }), 'nganh');
-    await userEvent.click(screen.getByRole('button', { name: 'Báo chí' }));
+    await userEvent.click(screen.getByRole('button', { name: /^Báo chí \(giấy nhớ/ }));
     await userEvent.click(screen.getByRole('button', { name: /^Ô giá trị điều kiện 2/ }));
     expect(sqlHien()).toMatch(/WHERE toa_nha = 'B' AND nganh = 'Báo chí'$/);
     await userEvent.click(screen.getByRole('button', { name: /^Nối điều kiện 2: AND/ }));
@@ -98,7 +98,7 @@ describe('đổi cách + màn thử thách', () => {
     const onXong = vi.fn();
     render(<ManThuThachMvp kb={kb} duLieu={duLieu} the={kb.thuThach['c-loc-toa']!} mode="challenge" dienTen={(t) => t} onXong={onXong} giayNho={GIAY} />);
     await userEvent.selectOptions(screen.getByRole('combobox', { name: 'Cột của điều kiện 1' }), 'toa_nha');
-    await userEvent.click(screen.getByRole('button', { name: 'B' }));
+    await userEvent.click(screen.getByRole('button', { name: /^B \(giấy nhớ/ }));
     await userEvent.click(screen.getByRole('button', { name: /^Ô giá trị điều kiện 1/ }));
     await userEvent.click(screen.getByRole('button', { name: 'Chạy truy vấn' }));
     const ketQua = screen.getByRole('region', { name: 'Kết quả' });
