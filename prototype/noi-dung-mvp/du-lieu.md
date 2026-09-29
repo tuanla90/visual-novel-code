@@ -1,7 +1,8 @@
 # Dữ liệu Vụ 1 — bộ cố định {dữ liệu: vu1}
 
 <!-- Bộ dữ liệu SQL CỐ ĐỊNH của Vụ 1 (QĐ-087, QĐ-089: chưa làm dữ liệu ngẫu nhiên). Chép nguyên từ
-     docs/mvp/kiem-du-lieu-vu1.py (11 lớp, 26 sinh viên). `npm run kiem-noi-dung:mvp` nạp bảng này vào SQLite
+     docs/mvp/kiem-du-lieu-vu1.py (11 lớp, 26 sinh viên). QĐ-092 thêm 3 lớp khác khóa (BC23A, KT25A, QT23A — KHÔNG có sinh viên)
+     cho bài lọc số / ghép 3 điều kiện ngày 2; không đổi bảng ảo tra_cuu_k24, câu 14 dòng của Quân, bẫy ngày 4. `npm run kiem-noi-dung:mvp` nạp bảng này vào SQLite
      (sql.js) rồi chạy từng câu SQL có khai số dòng trong kịch bản ([LỌC THỬ], [MÀN CHIẾU … · n dòng],
      "Số dòng kỳ vọng" của thẻ thử thách): số dòng khai lệch kết quả thật là lỗi. Cú pháp: đặc tả §18.10. -->
 
@@ -21,6 +22,9 @@
 | DL24A | Du lịch | 2024 | C |
 | CT24A | Công nghệ thông tin | 2024 | A |
 | TM24A | Thương mại điện tử | 2024 | C |
+| BC23A | Báo chí | 2023 | B |
+| KT25A | Kế toán | 2025 | A |
+| QT23A | Quản trị kinh doanh | 2023 | C |
 
 ## sinh_vien {bảng}
 - Cột: ma_sv TEXT, ho_dem TEXT, ten TEXT, ma_lop TEXT

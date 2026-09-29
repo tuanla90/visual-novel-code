@@ -15,6 +15,9 @@ const NHOM = new Set(['player', 'narrator', 'tung', 'ha-vy', 'minh-anh', 'duy'])
 
 export function nhanChoXem(kb: KichBanMvp, dk: DuKienMvp): string {
   if (dk.hanhDong.kind === 'thu-thach') return 'Ngồi vào máy tính';
+  // Chuỗi bài phòng máy (QĐ-092): dữ kiện chạy chuỗi có [THỬ THÁCH] cũng là ngồi vào máy.
+  const chuoiDk = dk.hanhDong.chuoi;
+  if (kb.chuoi.find((c) => c.id === chuoiDk)?.nodes.some((n) => n.type === 'challenge')) return 'Ngồi vào máy tính';
 
   const tenNv = (id: string) => kb.nhanVat.find((n) => n.id === id)?.trongCau ?? 'người ở đây';
   const taiLieu = dk.hienTaiLieu[0];

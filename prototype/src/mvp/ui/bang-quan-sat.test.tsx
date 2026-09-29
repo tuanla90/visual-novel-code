@@ -69,11 +69,11 @@ describe('bảng người quan sát MVP', () => {
     expect(trangThai()).toEqual(dau);
   });
 
-  it('nhảy "Ngày 2 · Lọc lớp" → ngày 2, màn thử thách c-loc-lop hiện, thanh trên "2/5", tên mặc định', async () => {
+  it('nhảy "Ngày 2 · Lọc lớp" → ngày 2, bài đầu chuỗi c-loc-khoa hiện, thanh trên "2/5", tên mặc định', async () => {
     veManChoi('/?facilitator=1');
     await nhayToiQuaBang('Ngày 2 · Lọc lớp');
     const s = trangThai();
-    expect(khungNhin(kb, s)).toMatchObject({ kind: 'challenge', thuThach: { id: 'c-loc-lop' } });
+    expect(khungNhin(kb, s)).toMatchObject({ kind: 'challenge', thuThach: { id: 'c-loc-khoa' } });
     expect(s.ngay).toBe(2);
     expect(s.tenNguoiChoi).toBe(TEN_MAC_DINH);
     expect(screen.getByRole('banner', { name: 'Thanh trạng thái' }).querySelector('.topbar__chapter-number')).toHaveTextContent(`2/${kb.lich.ngay.length}`);

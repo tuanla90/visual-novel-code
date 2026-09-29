@@ -42,10 +42,10 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
     expect(d.nhanVat.find((n) => n.id === 'quan')?.xuatHienTu).toEqual({ kind: 'ngay', ngay: 3, khung: 'sang' });
   });
 
-  it('bộ dữ liệu cố định Vụ 1 (du-lieu.md): 11 lớp, 25 sinh viên, bảng ảo tra_cuu_k24', () => {
+  it('bộ dữ liệu cố định Vụ 1 (du-lieu.md): 14 lớp (3 lớp khác khóa, QĐ-092), 25 sinh viên, bảng ảo tra_cuu_k24', () => {
     const d = kq.duLieu as unknown as KichBanMvp | null;
     expect(d?.duLieu?.bang.map((b) => [b.ten, b.dong.length])).toEqual([
-      ['lop_sinh_hoat', 11],
+      ['lop_sinh_hoat', 14],
       ['sinh_vien', 25],
     ]);
     expect(d?.duLieu?.bangAo.map((v) => v.ten)).toEqual(['tra_cuu_k24']);
@@ -58,6 +58,9 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
     expect(chay.loi).toEqual([]);
     // So theo tệp (bỏ số dòng): viết lại lời thoại phía trên chỉ dẫn không được làm test đỏ oan.
     expect(chay.ketQua.map((k) => [(k.noi.split(' ')[0] ?? '').replace(/:\d+$/, ''), k.soDong, k.soDongThat])).toEqual([
+      ['noi-dung-mvp/thu-thach/c-loc-lop.md', 11, 11],
+      ['noi-dung-mvp/thu-thach/c-loc-lop.md', 4, 4],
+      ['noi-dung-mvp/thu-thach/c-loc-lop.md', 2, 2],
       ['noi-dung-mvp/thu-thach/c-loc-lop.md', 1, 1],
       ['noi-dung-mvp/thu-thach/c-ten-h.md', 2, 2],
       ['noi-dung-mvp/thu-thach/c-ten-h.md', 2, 2],

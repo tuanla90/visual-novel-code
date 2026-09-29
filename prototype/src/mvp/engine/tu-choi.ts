@@ -148,7 +148,7 @@ const dangOThuThach =
  * vẫn đạt được nếu chơi tiếp đúng.
  */
 export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
-  { id: 'loc-lop', nhan: 'Ngày 2 · Lọc lớp', moTa: 'Thử thách SQL phòng máy: lớp nào ở tòa B, ngành Báo chí.', toi: dangOThuThach('challenge', 'c-loc-lop') },
+  { id: 'loc-lop', nhan: 'Ngày 2 · Lọc lớp', moTa: 'Chuỗi bốn bài phòng máy: khóa K24 → tòa B → AND/OR → ba điều kiện.', toi: dangOThuThach('challenge', 'c-loc-khoa') },
   { id: 'ten-h', nhan: 'Ngày 4 · Tên bắt đầu bằng H', moTa: 'Thử thách SQL: sinh viên lớp BC24A có tên bắt đầu bằng H.', toi: dangOThuThach('challenge', 'c-ten-h') },
   { id: 'hop-sua-or', nhan: 'Buổi họp · Sửa câu OR của Quân', moTa: 'Buổi họp rà soát, màn sửa truy vấn OR → AND.', toi: dangOThuThach('fix-query', 'c-sua-or-quan') },
 ];

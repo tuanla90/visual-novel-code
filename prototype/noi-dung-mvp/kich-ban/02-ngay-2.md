@@ -24,4 +24,4 @@
 
 - [THẺ CHỮ] **narrator**: Cuối ngày
 - **ha-vy** (neutral): {{nv.thay-khai}} cho mượn phòng máy thêm một tiếng. Vào đi, tớ ngồi cạnh.
-- [THỬ THÁCH c-loc-lop]
+- [ĐI TỚI pm2-lop]

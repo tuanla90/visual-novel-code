@@ -180,7 +180,7 @@ export interface TheThuThachMvp {
   sqlChuan: string;
   truyVanNapSan: string | null;
   /** Bằng chứng lưu vào hồ sơ khi xong; `null` = bài giữa chuỗi phòng máy, không lưu gì (QĐ-092). */
-  vatChung: { id: string; title: string; description: string } | null;
+  vatChung: { id: string; title: string; description: string; giaTri: string[] } | null;
   ghiChu: string[];
 }
 

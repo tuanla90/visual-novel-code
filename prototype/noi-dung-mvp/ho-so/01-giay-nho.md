@@ -2,16 +2,19 @@
 
 ### clue-chu-ky-h — [H]
 - Tiêu đề: Chữ ký tay (chỉ đọc được chữ H)
+- Giá trị cho trình dựng: H
 - Nguồn: Bản chụp thư đã che thông tin, Phòng CTSV chuyển về
 - Nội dung: Chữ ký tay trên phiếu gửi: chữ H viết hoa rõ, phần sau là một nét lượn không đọc được; kèm dòng "đề nghị phản hồi chính thức". Không tên, không mã trên thư.
 
 ### clue-toa-b — [Tòa B]
 - Tiêu đề: Hộp tòa B, mở 9h sáng thứ Hai
+- Giá trị cho trình dựng: B
 - Nguồn: Lời {{nv.bac-tu.trong-cau}}, sảnh tòa B
 - Nội dung: Bác và cô phụ trách mở hộp 9h sáng thứ Hai; thư nằm trên cùng.
 
 ### clue-bao-chi-k24 — [Báo chí K24]
 - Tiêu đề: Thẻ lịch khoa Báo chí K24 mắc ở khe hộp
+- Giá trị cho trình dựng: Báo chí · K24
 - Nguồn: Khe hộp kiến nghị, sảnh tòa B
 - Nội dung: Phần in còn nguyên "Khoa Báo chí – Truyền thông · K24"; dòng viết tay "Họ tên / Lớp" bị xé mất. Chỉ ra cả một khóa (2 lớp).
 

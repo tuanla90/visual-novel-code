@@ -21,9 +21,9 @@ describe('nhảy tới (MVP)', () => {
     }
   });
 
-  it('ngày 2 · lọc lớp: đang ở thử thách c-loc-lop, ngày 2, có quyền dữ liệu + thẻ lịch, tên mặc định, ngành đầu danh sách', () => {
+  it('ngày 2 · lọc lớp: đang ở bài đầu chuỗi (c-loc-khoa), ngày 2, có quyền dữ liệu + thẻ lịch, tên mặc định, ngành đầu danh sách', () => {
     const s = nhayToi(KB, 'loc-lop', 1);
-    expect(khungNhin(KB, s)).toMatchObject({ kind: 'challenge', thuThach: { id: 'c-loc-lop' } });
+    expect(khungNhin(KB, s)).toMatchObject({ kind: 'challenge', thuThach: { id: 'c-loc-khoa' } });
     expect(s.giaiDoan).toBe('ngay');
     expect(s.ngay).toBe(2);
     expect(s.khung).toBe(2);
@@ -33,8 +33,8 @@ describe('nhảy tới (MVP)', () => {
     expect(s.hoSo.bangChung).not.toContain('ev-lop-bc24a');
     expect(s.tenNguoiChoi).toBe(TEN_MAC_DINH);
     expect(s.nganh.length).toBeGreaterThan(0);
-    // Xong thử thách như người chơi → bằng chứng vào hồ sơ, dữ kiện chính đạt.
-    const sau = xuLy(KB, s, { type: 'xong-thu-thach', thuThach: 'c-loc-lop' });
+    // Làm hết chuỗi như người chơi → bằng chứng vào hồ sơ, dữ kiện chính đạt.
+    const sau = choiTuDong(KB, s, { chonDuKien: () => null }, (st) => st.chinhXong);
     expect(sau.hoSo.bangChung).toContain('ev-lop-bc24a');
     expect(sau.chinhXong).toBe(true);
   });
@@ -68,7 +68,7 @@ describe('nhảy tới (MVP)', () => {
     const thuong = choiTuDong(
       KB,
       // Ván mới cùng mốc: tự chơi cùng đường đi, dừng ở cùng màn.
-      xuLy(KB, nhayToi(KB, 'loc-lop', 7), { type: 'xong-thu-thach', thuThach: 'c-loc-lop' }),
+      nhayToi(KB, 'loc-lop', 7),
       { chonDuKien: chonTheoUuTien(DUONG_DU_BANG_CHUNG, false) },
       (_st, kn) => kn.kind === 'challenge' && kn.thuThach.id === 'c-ten-h',
     );

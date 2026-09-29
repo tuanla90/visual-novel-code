@@ -100,6 +100,14 @@ function chuoi(c: RawChuoiMvp, mocSomNhat: number, soDongKhai: DuLieuMvp['soDong
   };
 }
 
+/** "Báo chí · K24" → ["Báo chí", "K24"] (dòng "Giá trị cho trình dựng", QĐ-092). */
+function chiaGiaTri(v: string | undefined): string[] {
+  return (v ?? '')
+    .split('·')
+    .map((x) => x.trim())
+    .filter((x) => x !== '');
+}
+
 function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): Obj {
   const noi = `${t.viTri.tep}:${t.viTri.dong}`;
   const field = (label: string): string => {
@@ -125,7 +133,9 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     soDongKyVong,
     sqlChuan,
     truyVanNapSan: t.sql['Truy vấn nạp sẵn'] ?? null,
-    vatChung: t.evidence ? { id: t.evidence.id, title: t.evidence.title, description: t.evidence.description } : null,
+    vatChung: t.evidence
+      ? { id: t.evidence.id, title: t.evidence.title, description: t.evidence.description, giaTri: chiaGiaTri(t.evidence.giaTri) }
+      : null,
     ghiChu: t.notes,
   };
 }

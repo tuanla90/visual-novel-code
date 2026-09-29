@@ -692,7 +692,7 @@ export const KICH_BAN_MVP = {
       "duKien": [
         {
           "id": "dk-loc-lop",
-          "moTa": "Bàn làm việc: lớp nào ở tòa B và ngành Báo chí",
+          "moTa": "Bàn làm việc: chuỗi bốn bài lọc lớp (khóa → tòa B → AND/OR → ba điều kiện)",
           "nhan": "chinh",
           "moTu": {
             "kind": "ngay",
@@ -704,8 +704,8 @@ export const KICH_BAN_MVP = {
             "id": "clue-quyen-du-lieu"
           },
           "hanhDong": {
-            "kind": "thu-thach",
-            "thuThach": "c-loc-lop"
+            "kind": "chuoi",
+            "chuoi": "pm2-lop"
           },
           "moManhMoi": [],
           "hienTaiLieu": [],
@@ -2196,6 +2196,74 @@ export const KICH_BAN_MVP = {
           "text": "Thầy Khải cho mượn phòng máy thêm một tiếng. Vào đi, tớ ngồi cạnh."
         },
         {
+          "type": "goto",
+          "to": "pm2-lop"
+        }
+      ]
+    },
+    {
+      "id": "pm2-lop",
+      "title": "Bàn làm việc: bốn bài lọc lớp",
+      "canh": "phong-may",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
+          "type": "task",
+          "text": "Lọc ra lớp của thẻ lịch"
+        },
+        {
+          "type": "note",
+          "text": "Ba manh mối trên tường: [K24], [Tòa B], [Báo chí]. Mỗi bài một ý; không tốn thêm khung giờ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Thẻ lịch ghi K24. Lọc thử các lớp khóa đó trước đã."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-loc-khoa"
+        },
+        {
+          "type": "notebook-note",
+          "trang": "where-so"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Giờ đến tòa B."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-loc-toa"
+        },
+        {
+          "type": "notebook-note",
+          "trang": "where-chu"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Tòa B với Báo chí, tớ nối luôn cho nhanh."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-loc-and"
+        },
+        {
+          "type": "notebook-note",
+          "trang": "and-or"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Còn hai lớp. Thẻ lịch còn một chữ nữa chưa dùng."
+        },
+        {
           "type": "challenge",
           "challengeId": "c-loc-lop"
         }
@@ -3176,25 +3244,77 @@ export const KICH_BAN_MVP = {
     }
   ],
   "thuThach": {
-    "c-loc-lop": {
-      "id": "c-loc-lop",
-      "tieuDe": "Lớp nào ở tòa B và thuộc ngành Báo chí?",
-      "deBai": "Hộp được mở ở tòa B; thẻ lịch là của khoa Báo chí K24. Lớp sinh hoạt nào khớp cả hai?",
+    "c-loc-khoa": {
+      "id": "c-loc-khoa",
+      "tieuDe": "Các lớp khóa K24",
+      "deBai": "Thẻ lịch ghi \"K24\". Lọc bảng lớp sinh hoạt lấy các lớp khóa đó.",
+      "manhMoiLienQuan": [
+        "clue-bao-chi-k24"
+      ],
+      "mucTieuHoc": "WHERE lọc dòng; so sánh với số thì viết đúng như dữ liệu đang lưu (2024, không phải K24).",
+      "soDongKyVong": 11,
+      "sqlChuan": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE khoa_hoc = 2024;",
+      "truyVanNapSan": null,
+      "vatChung": null,
+      "ghiChu": [
+        "Lần chạy \"sai có ích\": kéo [K24] vào cột khóa → `khoa_hoc = 'K24'` → 0 dòng. Hà Vy mô tả: cột khóa lưu số 2024. Người chơi ✎ gõ 2024."
+      ]
+    },
+    "c-loc-toa": {
+      "id": "c-loc-toa",
+      "tieuDe": "Các lớp sinh hoạt ở tòa B",
+      "deBai": "Hộp kiến nghị ở tòa B. Lọc các lớp sinh hoạt ở tòa B.",
+      "manhMoiLienQuan": [
+        "clue-toa-b"
+      ],
+      "mucTieuHoc": "So sánh với chữ phải đặt trong nháy đơn; thiếu nháy máy tưởng là tên cột.",
+      "soDongKyVong": 4,
+      "sqlChuan": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B';",
+      "truyVanNapSan": null,
+      "vatChung": null,
+      "ghiChu": [
+        "Lần chạy \"sai có ích\": gõ như số `toa_nha = B` → lỗi \"no such column: B\". Hà Vy mô tả: máy đang đi tìm một cột tên B."
+      ]
+    },
+    "c-loc-and": {
+      "id": "c-loc-and",
+      "tieuDe": "Lớp ở tòa B và thuộc ngành Báo chí",
+      "deBai": "Lớp cần tìm vừa ở tòa B, vừa thuộc ngành Báo chí.",
       "manhMoiLienQuan": [
         "clue-toa-b",
         "clue-bao-chi-k24"
       ],
-      "mucTieuHoc": "Hai điều kiện nối bằng AND (phần giao) và OR (phần hợp) cho kết quả khác nhau.",
+      "mucTieuHoc": "AND giữ dòng thỏa cả hai điều kiện (phần giao); OR giữ dòng thỏa một trong hai (phần hợp).",
+      "soDongKyVong": 2,
+      "sqlChuan": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí';",
+      "truyVanNapSan": null,
+      "vatChung": null,
+      "ghiChu": [
+        "Tùng nối bằng OR → 5 lớp. Hà Vy mô tả: lấy lớp nào thỏa một trong hai. Đổi AND → 2 lớp (BC24A, BC23A)."
+      ]
+    },
+    "c-loc-lop": {
+      "id": "c-loc-lop",
+      "tieuDe": "Lớp ở tòa B, ngành Báo chí, khóa K24",
+      "deBai": "Còn hai lớp. Thêm điều kiện khóa để chỉ còn lớp khớp cả ba manh mối.",
+      "manhMoiLienQuan": [
+        "clue-toa-b",
+        "clue-bao-chi-k24"
+      ],
+      "mucTieuHoc": "Ghép ba điều kiện bằng AND.",
       "soDongKyVong": 1,
-      "sqlChuan": "SELECT ma_lop, nganh, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí';",
+      "sqlChuan": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí' AND khoa_hoc = 2024;",
       "truyVanNapSan": null,
       "vatChung": {
         "id": "ev-lop-bc24a",
-        "title": "Lớp khớp cả hai điều kiện",
-        "description": "Kết quả truy vấn: một lớp sinh hoạt ở tòa B thuộc ngành Báo chí."
+        "title": "Lớp BC24A — tòa B, Báo chí, khóa 2024",
+        "description": "Kết quả truy vấn ghép ba điều kiện (tòa B, ngành Báo chí, khóa 2024): đúng một lớp.",
+        "giaTri": [
+          "BC24A"
+        ]
       },
       "ghiChu": [
-        "Tùng: \"Tớ cá là cứ OR vào…\" → `toa_nha='B' OR nganh='Báo chí'` → 4 lớp. Hà Vy: \"Đừng cá. Tính.\" Đổi AND → 1 lớp: BC24A → \"Số liệu đây!\" lần đầu. Tùng: \"Bốn lớp xuống còn đúng một! Ơ… thế cái OR của tớ sai à?\" Duy (từ ghế bên): \"Gọn đấy.\" Chép sổ trang and-or."
+        "Dừng ở 2 lớp: Hà Vy mô tả có một lớp khóa khác cũng ở tòa B. Thêm `khoa_hoc = 2024` → BC24A → \"Số liệu đây!\" lần đầu."
       ]
     },
     "c-ten-h": {
@@ -3211,7 +3331,8 @@ export const KICH_BAN_MVP = {
       "vatChung": {
         "id": "ev-hai-ma",
         "title": "Hai mã ứng viên kèm căn cứ",
-        "description": "Kết quả truy vấn: hai sinh viên lớp BC24A có tên bắt đầu bằng H."
+        "description": "Kết quả truy vấn: hai sinh viên lớp BC24A có tên bắt đầu bằng H.",
+        "giaTri": []
       },
       "ghiChu": [
         "Kéo [H] với phép \"bằng\" → 0 dòng (không ai tên đúng một chữ \"H\"). Tùng: \"Tra sổ chị Linh đi\" → trang lỗi thường gặp → đổi \"bắt đầu bằng\" → 2 dòng. Bẫy: `ma_lop LIKE 'BC%'` → 3 dòng; lọc nhầm cột ho_dem → 1 dòng."
@@ -3231,7 +3352,8 @@ export const KICH_BAN_MVP = {
       "vatChung": {
         "id": "ev-hai-dong-sua",
         "title": "Hai dòng sau khi sửa",
-        "description": "Truy vấn của Quân sau khi đổi OR thành AND."
+        "description": "Truy vấn của Quân sau khi đổi OR thành AND.",
+        "giaTri": []
       },
       "ghiChu": []
     }
@@ -3243,6 +3365,7 @@ export const KICH_BAN_MVP = {
       "heading": "[H]",
       "fields": {
         "Tiêu đề": "Chữ ký tay (chỉ đọc được chữ H)",
+        "Giá trị cho trình dựng": "H",
         "Nguồn": "Bản chụp thư đã che thông tin, Phòng CTSV chuyển về",
         "Nội dung": "Chữ ký tay trên phiếu gửi: chữ H viết hoa rõ, phần sau là một nét lượn không đọc được; kèm dòng \"đề nghị phản hồi chính thức\". Không tên, không mã trên thư."
       },
@@ -3254,6 +3377,7 @@ export const KICH_BAN_MVP = {
       "heading": "[Tòa B]",
       "fields": {
         "Tiêu đề": "Hộp tòa B, mở 9h sáng thứ Hai",
+        "Giá trị cho trình dựng": "B",
         "Nguồn": "Lời bác Thịnh, sảnh tòa B",
         "Nội dung": "Bác và cô phụ trách mở hộp 9h sáng thứ Hai; thư nằm trên cùng."
       },
@@ -3265,6 +3389,7 @@ export const KICH_BAN_MVP = {
       "heading": "[Báo chí K24]",
       "fields": {
         "Tiêu đề": "Thẻ lịch khoa Báo chí K24 mắc ở khe hộp",
+        "Giá trị cho trình dựng": "Báo chí · K24",
         "Nguồn": "Khe hộp kiến nghị, sảnh tòa B",
         "Nội dung": "Phần in còn nguyên \"Khoa Báo chí – Truyền thông · K24\"; dòng viết tay \"Họ tên / Lớp\" bị xé mất. Chỉ ra cả một khóa (2 lớp)."
       },
@@ -3553,9 +3678,24 @@ export const KICH_BAN_MVP = {
   },
   "soDongKhai": [
     {
-      "sql": "SELECT ma_lop, nganh, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí';",
+      "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE khoa_hoc = 2024;",
+      "soDong": 11,
+      "noi": "noi-dung-mvp/thu-thach/c-loc-lop.md:3 thẻ c-loc-khoa, SQL chuẩn"
+    },
+    {
+      "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B';",
+      "soDong": 4,
+      "noi": "noi-dung-mvp/thu-thach/c-loc-lop.md:18 thẻ c-loc-toa, SQL chuẩn"
+    },
+    {
+      "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí';",
+      "soDong": 2,
+      "noi": "noi-dung-mvp/thu-thach/c-loc-lop.md:33 thẻ c-loc-and, SQL chuẩn"
+    },
+    {
+      "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí' AND khoa_hoc = 2024;",
       "soDong": 1,
-      "noi": "noi-dung-mvp/thu-thach/c-loc-lop.md:5 thẻ c-loc-lop, SQL chuẩn"
+      "noi": "noi-dung-mvp/thu-thach/c-loc-lop.md:48 thẻ c-loc-lop, SQL chuẩn"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';",
@@ -3665,6 +3805,24 @@ export const KICH_BAN_MVP = {
             "TM24A",
             "Thương mại điện tử",
             2024,
+            "C"
+          ],
+          [
+            "BC23A",
+            "Báo chí",
+            2023,
+            "B"
+          ],
+          [
+            "KT25A",
+            "Kế toán",
+            2025,
+            "A"
+          ],
+          [
+            "QT23A",
+            "Quản trị kinh doanh",
+            2023,
             "C"
           ]
         ]

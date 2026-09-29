@@ -56,9 +56,9 @@
 - Tốn khung: vào 1, bên trong 0
 - Phân biệt: Tên tệp và giờ in khớp lúc thư có mặt sáng thứ Hai; dòng in kia là bài tập
 
-### dk-loc-lop — Bàn làm việc: lớp nào ở tòa B và ngành Báo chí {dữ kiện: chính}
+### dk-loc-lop — Bàn làm việc: chuỗi bốn bài lọc lớp (khóa → tòa B → AND/OR → ba điều kiện) {dữ kiện: chính}
 - Cần: có clue-quyen-du-lieu
-- Thử thách: c-loc-lop
+- Chuỗi: pm2-lop
 - Ảnh: obj-ban-may · x 60% · y 78% · rộng 20%
 
 ### dk-ten-h — Bàn làm việc ngày 4: kéo [H] vào, tên bắt đầu bằng H trong lớp BC24A {dữ kiện: chính}

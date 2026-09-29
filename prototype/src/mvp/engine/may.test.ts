@@ -114,7 +114,12 @@ describe('máy MVP: nhịp ngày × khung', () => {
     expect(ds.find((d) => d.diaDiem.id === 'phong-may')?.duKien.find((k) => k.duKien.id === 'dk-loc-lop')).toMatchObject({ khoa: false, tonKhung: 1 });
     s = xuLy(KB, s, { type: 'chon-du-kien', diaDiem: 'phong-may', duKien: 'dk-loc-lop' });
     expect(s.khung).toBe(2);
-    expect(khungNhin(KB, s)).toMatchObject({ kind: 'challenge', thuThach: { id: 'c-loc-lop' } });
+    // Chuỗi bốn bài (QĐ-092): 2.1 khóa → 2.2 tòa B → 2.3 AND/OR → 2.4 ba điều kiện; mỗi mảng tự ghi một dòng sổ.
+    s = choi(s, { chonDuKien: () => null }, (_st, kn) => kn.kind === 'challenge');
+    expect(khungNhin(KB, s)).toMatchObject({ kind: 'challenge', thuThach: { id: 'c-loc-khoa' } });
+    s = choi(s, { chonDuKien: () => null }, (_st, kn) => kn.kind === 'challenge' && kn.thuThach.id === 'c-loc-lop');
+    expect(s.soTay).toEqual(['where-so', 'where-chu', 'and-or']);
+    expect(s.hoSo.bangChung).not.toContain('ev-lop-bc24a');
     s = xuLy(KB, s, { type: 'xong-thu-thach', thuThach: 'c-loc-lop' });
     expect(s.hoSo.bangChung).toContain('ev-lop-bc24a');
     expect(s.chinhXong).toBe(true);
