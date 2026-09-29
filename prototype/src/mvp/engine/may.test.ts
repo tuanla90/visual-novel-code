@@ -6,117 +6,16 @@
 import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
-import { danhSachDiaDiem, khungNhin, taoTrangThai, xuLy, type HanhDongMvp, type KhungNhinMvp } from './may';
+import { danhSachDiaDiem, khungNhin, taoTrangThai, xuLy, type KhungNhinMvp } from './may';
 import type { TrangThaiMvp } from './trang-thai';
+import { choiTuDong, chonTheoUuTien, DUONG_CHI_CHINH, DUONG_DU_BANG_CHUNG, type ChienThuat } from './tu-choi';
 
 const KB = KICH_BAN_MVP as unknown as KichBanMvp;
 
-/** Chiến thuật chơi tự động: chọn gì ở danh sách địa điểm / rẽ nhánh / câu hỏi. */
-interface ChienThuat {
-  /** Trả dữ kiện muốn xem (theo ngày), hay `null` để kết thúc ngày sớm. */
-  chonDuKien: (s: TrangThaiMvp, kn: Extract<KhungNhinMvp, { kind: 'chon-dia-diem' }>) => { diaDiem: string; duKien: string } | null;
-  reNhanh?: (id: string) => string;
-  /** Mặc định chọn đáp án đúng. */
-  traLoi?: (id: string, lan: number) => 'dung' | 'sai';
-  /** Tên gõ ở câu hỏi tên (mặc định "Nam"). */
-  ten?: string;
+/** Chơi tự động (bộ chơi dùng chung `tu-choi.ts`) tới khi gặp `dung(s, kn)` hoặc hết game; tên gõ mặc định "Nam". */
+function choi(s: TrangThaiMvp, ct: ChienThuat, dung: (s: TrangThaiMvp, kn: KhungNhinMvp) => boolean): TrangThaiMvp {
+  return choiTuDong(KB, s, { ten: 'Nam', ...ct }, dung);
 }
-
-/** Chơi tự động tới khi gặp `dung(s, kn)` hoặc hết game; ném lỗi khi máy báo `error`. */
-function choi(s: TrangThaiMvp, ct: ChienThuat, dung: (s: TrangThaiMvp, kn: KhungNhinMvp) => boolean, toiDa = 5000): TrangThaiMvp {
-  for (let i = 0; i < toiDa; i++) {
-    const kn = khungNhin(KB, s);
-    if (kn.kind === 'error') throw new Error(`Máy báo lỗi: ${kn.message} (ngày ${s.ngay}, chuỗi ${s.conTro?.chuoi ?? '-'})`);
-    if (dung(s, kn)) return s;
-    let hd: HanhDongMvp;
-    switch (kn.kind) {
-      case 'line':
-      case 'feedback':
-      case 'show-document':
-      case 'effect':
-      case 'projector':
-      case 'notebook-lookup':
-        hd = { type: 'tiep' };
-        break;
-      case 'trial-filter':
-        hd = { type: 'chon-o', giaTri: kn.nut.chon.giaTri };
-        break;
-      case 'question': {
-        const muon = ct.traLoi?.(kn.nut.id, kn.lanThu) ?? 'dung';
-        const c = kn.nut.choices.find((x) => x.correct === (muon === 'dung'));
-        if (!c) throw new Error(`Câu hỏi ${kn.nut.id} không có lựa chọn ${muon}`);
-        hd = { type: 'chon', luaChon: c.id };
-        break;
-      }
-      case 'line-pick': {
-        const d = kn.nut.lines.find((x) => x.correct);
-        if (!d) throw new Error('Chọn dòng không có dòng đúng');
-        hd = { type: 'chon-dong', index: d.index };
-        break;
-      }
-      case 'notebook-copy': {
-        const c = KB.soTay[kn.trang]?.chonDoanCode?.find((x) => x.correct);
-        if (!c) throw new Error(`Trang ${kn.trang} không có đoạn đúng`);
-        hd = { type: 'chon', luaChon: c.id };
-        break;
-      }
-      case 'branch': {
-        const id = ct.reNhanh?.(kn.nut.id) ?? kn.luaChon[0]?.id ?? '';
-        hd = { type: 'chon', luaChon: id };
-        break;
-      }
-      case 'challenge':
-      case 'fix-query':
-        hd = { type: 'xong-thu-thach', thuThach: kn.thuThach.id };
-        break;
-      case 'chon-dia-diem': {
-        const chon = ct.chonDuKien(s, kn);
-        hd = chon ? { type: 'chon-du-kien', ...chon } : { type: 'ket-thuc-ngay' };
-        break;
-      }
-      case 'create-character':
-        hd = kn.nut.truong === 'ten' ? { type: 'dat-ten', ten: ct.ten ?? 'Nam' } : { type: 'chon-nganh', nganh: kn.nut.luaChon[0] ?? '' };
-        break;
-      case 'end':
-        return s;
-    }
-    const sau = xuLy(KB, s, hd);
-    if (sau === s) throw new Error(`Hành động ${hd.type} bị từ chối ở khung nhìn ${kn.kind} (ngày ${s.ngay}, khung ${s.khung})`);
-    s = sau;
-  }
-  throw new Error('Chơi quá số bước tối đa');
-}
-
-/** Dữ kiện chưa làm, mở được, chọn lọc theo danh sách mã ưu tiên (theo thứ tự), rồi tới bất kỳ dữ kiện phụ/nhiễu nào nếu `vetCan`. */
-function chonTheoUuTien(uuTien: string[], vetCan: boolean): ChienThuat['chonDuKien'] {
-  return (_s, kn) => {
-    const moDuoc = kn.diaDiem.flatMap((dd) => dd.duKien.filter((k) => !k.daLam && !k.khoa).map((k) => ({ diaDiem: dd.diaDiem.id, duKien: k.duKien.id, nhan: k.duKien.nhan })));
-    for (const id of uuTien) {
-      const t = moDuoc.find((m) => m.duKien === id);
-      if (t) return { diaDiem: t.diaDiem, duKien: t.duKien };
-    }
-    if (vetCan) {
-      const t = moDuoc[0];
-      if (t) return { diaDiem: t.diaDiem, duKien: t.duKien };
-    }
-    return null;
-  };
-}
-
-/** Đường "tập trung": mỗi ngày làm dữ kiện chính (và dữ kiện nó cần) trước, rồi lấy đủ dữ kiện phụ cho kết thật. */
-const DUONG_DU_BANG_CHUNG = [
-  'dk-bac-thinh-the-lich',
-  'dk-co-hanh-cap-quyen',
-  'dk-loc-lop',
-  'dk-quy-che-so-niem-phong',
-  'dk-loi-chu-cuong',
-  'dk-ten-h',
-  'dk-nhat-ky-in',
-  'dk-nop-hai-ma',
-  'dk-loi-dat',
-];
-/** Chỉ dữ kiện chính (và thứ nó cần): thiếu `ev-nhat-ky-in`, `clue-loi-chu-cuong`, `clue-loi-dat`. */
-const DUONG_CHI_CHINH = ['dk-bac-thinh-the-lich', 'dk-co-hanh-cap-quyen', 'dk-loc-lop', 'dk-quy-che-so-niem-phong', 'dk-ten-h', 'dk-nop-hai-ma'];
 
 const toiHop = (s: TrangThaiMvp): boolean => s.giaiDoan === 'hop';
 const toiKet = (_s: TrangThaiMvp, kn: KhungNhinMvp): boolean => kn.kind === 'end';
