@@ -240,7 +240,7 @@ export const KICH_BAN_MVP = {
   "canh": [
     {
       "id": "cong-truong",
-      "ten": "Cổng trường (trạm xe buýt)",
+      "ten": "Cổng trường",
       "anhNen": null
     },
     {
@@ -250,12 +250,12 @@ export const KICH_BAN_MVP = {
     },
     {
       "id": "cong-ktx",
-      "ten": "Cổng KTX (dùng chung ngày và tối)",
+      "ten": "Cổng KTX",
       "anhNen": null
     },
     {
       "id": "sanh-toa-b",
-      "ten": "Sảnh tòa B, hộp tiếp nhận kiến nghị",
+      "ten": "Sảnh tòa B",
       "anhNen": null
     },
     {
@@ -270,7 +270,7 @@ export const KICH_BAN_MVP = {
     },
     {
       "id": "nha-van-hoa",
-      "ten": "Nhà văn hóa (bảng tin và Ngày hội CLB)",
+      "ten": "Nhà văn hóa",
       "anhNen": null
     },
     {
