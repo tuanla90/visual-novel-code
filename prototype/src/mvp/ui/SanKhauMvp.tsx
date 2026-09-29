@@ -20,6 +20,8 @@ export interface SanKhauMvpProps {
   speaker?: string;
   expression?: string;
   shaking?: boolean;
+  /** `false` = không vẽ dàn chân dung (bản đồ / màn trong địa điểm phủ kín sân khấu). */
+  coDan?: boolean;
   children?: ReactNode;
 }
 
@@ -79,7 +81,7 @@ function ChanDungMvp({ kb, nhanVat, bieuCam, talking }: { kb: KichBanMvp; nhanVa
   );
 }
 
-export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, children }: SanKhauMvpProps) {
+export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, coDan = true, children }: SanKhauMvpProps) {
   const [dan, setDan] = useState<DanDien>(() => danKe(kb, null, canh, speaker, expression));
   const moi = danKe(kb, dan, canh, speaker, expression);
   if (moi !== dan) setDan(moi);
@@ -100,7 +102,7 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
         <span className="stage__scene-text">{tenCanh}</span>
       </div>
       <div className="stage__portraits">
-        {moi.thanhVien.map((t, i) => {
+        {(coDan ? moi.thanhVien : []).map((t, i) => {
           const dangNoi = t.nhanVat === speaker;
           const pos = viTri(moi.thanhVien.length, i);
           const phai = pos > 0.5;

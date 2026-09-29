@@ -186,9 +186,8 @@
   user-select: none;
 }
 
-/* Lớp nội dung giữa sân khấu (danh sách địa điểm, tài liệu, sổ, lọc thử, màn chiếu, kết): chiếm hàng 2–3 của lưới
+/* Lớp nội dung giữa sân khấu (tài liệu, sổ, lọc thử, màn chiếu, kết): chiếm hàng 2–3 của lưới
    sân khấu và bị kẹp trong chiều cao sân khấu (cuộn bên trong), như .docview của prototype. */
-.stage__content:has(> .mvp-dd),
 .stage__content:has(> .mvp-lop),
 .stage__content:has(> .mvp-ket) {
   grid-row: 2 / 4;
@@ -202,7 +201,310 @@
   z-index: 20;
 }
 
-/* ---------- Danh sách địa điểm ---------- */
+/* ---------- Bản đồ trường + màn trong địa điểm (gói ban-do-di-lai) ----------
+   .mvp-canh phủ trọn sân khấu (absolute; inset: 0 theo .stage, như .chal) → .stage__content phải position: static.
+   Khung ảnh (.mvp-canh__khung) giữ đúng tỉ lệ ảnh (--ti-le, --ti-le-so) và co vừa vùng trống (đơn vị cq của
+   .mvp-canh__vung) → ghim / điểm đặt theo % của khung không trôi khi đổi cỡ màn. */
+.stage__content:has(> .mvp-canh) {
+  position: static;
+  /* Mục lưới có z-index vẫn tạo ngữ cảnh xếp lớp dù static → phải auto, không thì nhãn cảnh (35) đè lên. */
+  z-index: auto;
+}
+.mvp-canh {
+  position: absolute;
+  inset: 0;
+  /* Trên nhãn cảnh của sân khấu (.stage__scene-label, z-index 35). */
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3) var(--sp-3);
+  /* clip (không phải hidden): khối hidden vẫn cuộn được bằng script/focus → cả màn trượt khi rê/Tab tới điểm. */
+  overflow: hidden;
+  overflow: clip;
+  background: #111827;
+  color: #fff;
+}
+/* Nền mờ cùng ảnh lấp hai bên khung (không để dải đen). */
+.mvp-canh__mo {
+  position: absolute;
+  inset: 0;
+  transform: scale(1.08);
+  background-size: cover;
+  background-position: center;
+  filter: blur(14px) brightness(0.5);
+  pointer-events: none;
+}
+.mvp-canh__dau {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-3);
+  flex-wrap: wrap;
+}
+.mvp-canh__tieude {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+.mvp-canh__tieude h2 {
+  margin: 0;
+  font-size: var(--fs-lg);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+.mvp-canh__tieude p {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+.mvp-canh__nhom {
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+.mvp-canh__nut {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+}
+.mvp-canh__vung {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  container-type: size;
+}
+.mvp-canh__khung {
+  position: relative;
+  aspect-ratio: var(--ti-le);
+  width: min(100cqw, calc(100cqh * var(--ti-le-so)));
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+}
+.mvp-canh__nen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  user-select: none;
+}
+/* Lớp màu theo khung giờ (QĐ-089: một ảnh ngày cho Sáng/Trưa/Chiều). Nằm TRÊN vật để ánh sáng đồng bộ; không bắt chuột. */
+.mvp-canh__mau {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+.mvp-canh__khung[data-khung='sang'] .mvp-canh__mau {
+  background: rgba(186, 214, 255, 0.1);
+}
+.mvp-canh__khung[data-khung='chieu'] .mvp-canh__mau {
+  background: linear-gradient(180deg, rgba(255, 170, 80, 0.14), rgba(120, 60, 20, 0.12));
+  mix-blend-mode: multiply;
+}
+.mvp-canh__khung[data-khung='toi'][data-dem-rieng='false'] .mvp-canh__mau {
+  background: rgba(10, 20, 50, 0.5);
+}
+/* Bảng nổi (chọn phòng, chọn việc, danh sách chữ) ở đáy màn. */
+.mvp-canh__bang {
+  position: absolute;
+  left: 50%;
+  bottom: var(--sp-3);
+  transform: translateX(-50%);
+  z-index: 30;
+  width: min(560px, calc(100% - 2 * var(--sp-3)));
+  max-height: calc(100% - 2 * var(--sp-3));
+  overflow: auto;
+  display: grid;
+  gap: var(--sp-2);
+  justify-items: start;
+  padding: var(--sp-3);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--c-surface) 96%, transparent);
+  color: var(--c-text);
+  box-shadow: var(--shadow-md);
+}
+.mvp-canh__bang > .mvp-dd__ds {
+  width: 100%;
+}
+.mvp-canh__bang-tieude {
+  margin: 0;
+  font-size: var(--fs-md, 1rem);
+}
+
+/* Điểm tương tác: (left, top) = chân ảnh; bề rộng theo % khung, cao theo tỉ lệ ảnh. */
+.mvp-diem {
+  position: absolute;
+  z-index: 2;
+  transform: translate(-50%, -100%);
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Vùng chạm vô hình tối thiểu 44×44 quanh vật nhỏ (vật to thì chính là ảnh). */
+.mvp-diem::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(100%, 44px);
+  height: max(100%, 44px);
+  transform: translate(-50%, -50%);
+}
+.mvp-diem__anh {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+  transition: filter 0.12s ease;
+}
+/* Viền trắng bám đường bao trong suốt của ảnh (drop-shadow theo alpha, chồng 4 hướng + quầng mềm). */
+.mvp-diem:hover:not(:disabled) .mvp-diem__anh,
+.mvp-diem:focus-visible .mvp-diem__anh {
+  filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+}
+.mvp-diem:focus-visible {
+  outline: none;
+}
+.mvp-diem:disabled {
+  cursor: default;
+}
+.mvp-diem.is-da-xem .mvp-diem__anh {
+  opacity: 0.55;
+  filter: saturate(0.4);
+}
+.mvp-diem.is-khoa .mvp-diem__anh {
+  opacity: 0.7;
+  filter: grayscale(0.6) brightness(0.85);
+}
+/* Chấm nhỏ trên đầu vật còn mới: để thấy được trên cảm ứng (viền trắng khi rê chỉ là trang trí). */
+.mvp-diem__cham {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  margin: -14px 0 0 -6px;
+  border-radius: 50%;
+  background: var(--c-topbar-accent, #fbbf24);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  animation: mvp-cham 1.6s ease-in-out infinite;
+}
+@keyframes mvp-cham {
+  50% {
+    transform: scale(1.25);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mvp-diem__cham {
+    animation: none;
+  }
+}
+.mvp-diem__tam {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 2px dashed rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Ghim bản đồ: (left, top) = đầu nhọn ghim (đáy nút); nhãn nằm DƯỚI đầu nhọn để ghim sát mép trên không bị cắt. */
+.mvp-bando__khung {
+  overflow: visible;
+}
+.mvp-bando__khung .mvp-canh__nen {
+  border-radius: var(--radius-md);
+}
+.mvp-ghim {
+  position: absolute;
+  z-index: 2;
+  transform: translate(-50%, -100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #dc2626;
+  cursor: pointer;
+  font: inherit;
+}
+.mvp-ghim.is-xong {
+  color: #6b7280;
+}
+.mvp-ghim__nhan {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.85);
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+.mvp-ghim__so {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--c-topbar-accent, #fbbf24);
+  color: #111827;
+  font-size: 0.75rem;
+  line-height: 18px;
+  text-align: center;
+}
+.mvp-ghim__kim {
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.45));
+}
+.mvp-ghim:hover .mvp-ghim__nhan,
+.mvp-ghim:focus-visible .mvp-ghim__nhan {
+  background: #fff;
+  color: #111827;
+}
+.mvp-ghim:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+.mvp-bando__ngoai {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.mvp-bando__goiy {
+  position: relative;
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- Danh sách chữ (chỗ xem xét / chọn phòng) ---------- */
 .mvp-dd {
   background: color-mix(in srgb, var(--c-surface) 94%, transparent);
   color: var(--c-text);
@@ -716,4 +1018,22 @@
 }
 .game--portrait .mvp-chal__phai {
   max-height: 40vh;
+}
+
+/* Bản đồ / màn địa điểm trên điện thoại: nhãn ghim nhỏ lại để không chồng nhau, đầu màn gọn. */
+@media (max-width: 640px) {
+  .mvp-ghim__nhan {
+    font-size: 0.6875rem;
+    padding: 1px 6px;
+  }
+  .mvp-canh {
+    padding: var(--sp-2);
+  }
+}
+.game--portrait .mvp-ghim__nhan {
+  font-size: 0.6875rem;
+  padding: 1px 6px;
+}
+.game--portrait .mvp-canh {
+  padding: var(--sp-2);
 }

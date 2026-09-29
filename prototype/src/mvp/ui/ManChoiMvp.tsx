@@ -1,7 +1,9 @@
 /**
  * MÀN CHƠI BẢN MVP — lối vào từ nút "Chơi bản MVP" ở màn tiêu đề (QĐ-077 gói 1). Ghép máy `engine/may.ts` với
  * giao diện: HUD (ngày/khung/uy tín), sân khấu MVP, hộp thoại VN (tái dùng `DialogBox`), câu hỏi (`MultipleChoice`),
- * danh sách địa điểm, thử thách SQL, hồ sơ, sổ tay, lịch sử thoại (`BacklogModal`), Lưu/Nạp.
+ * bản đồ trường + màn trong địa điểm (vật tương tác), thử thách SQL, hồ sơ, sổ tay, lịch sử thoại (`BacklogModal`), Lưu/Nạp.
+ * Người chơi đang đứng ở nơi nào (bản đồ hay trong một nơi) là trạng thái GIAO DIỆN (đi lại không tốn khung, không lưu);
+ * sang ngày mới thì về bản đồ.
  * Trạng thái nằm trong `store/kho-mvp.ts` (khóa riêng), không đụng store prototype.
  */
 import './mvp.css';
@@ -18,7 +20,8 @@ import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
 import { dienTen as dienTenMay, khungNhin, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
-import { DanhSachDiaDiem } from './DanhSachDiaDiem';
+import { BAN_DO_MVP } from './ban-do-mvp';
+import { BanDoMvp } from './BanDoMvp';
 import { HoSoMvp } from './HoSoMvp';
 import { HudMvp } from './HudMvp';
 import { KetMvp } from './KetMvp';
@@ -26,6 +29,7 @@ import { LocThuMvp } from './LocThuMvp';
 import { LuuNapMvp } from './LuuNapMvp';
 import { ManChieuMvp } from './ManChieuMvp';
 import { ManThuThachMvp } from './ManThuThachMvp';
+import { NoiMvp } from './NoiMvp';
 import { SanKhauMvp } from './SanKhauMvp';
 import { TaiLieuMvp } from './TaiLieuMvp';
 import { ChepSoMvp, SoCaNhanMvp, TraSoMvp } from './TrangSoMvp';
@@ -58,6 +62,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const [lichSuMo, setLichSuMo] = useState(false);
   const [luuNap, setLuuNap] = useState<'save' | 'load' | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  /** Nơi đang đứng trong ngày (`null` = bản đồ). Gắn với ngày: sang ngày khác coi như về bản đồ. */
+  const [dangO, setDangO] = useState<{ ngay: number; noi: string } | null>(null);
 
   const viewportMode = useVnStore((k) => k.viewportMode);
   const setSkipMode = useVnStore((k) => k.setSkipMode);
@@ -102,6 +108,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const rung = kn.kind === 'effect' || loiHienTai?.expression === 'stunned';
   const laDoc = viewportMode === 'mobile';
   const laGiaLap = laDoc && typeof window !== 'undefined' && window.innerWidth > 768;
+  const noiDangO = kn.kind === 'chon-dia-diem' && dangO && dangO.ngay === s.ngay ? kn.diaDiem.find((d) => d.diaDiem.id === dangO.noi) : undefined;
 
   const nutVn = {
     keyboardEnabled: !modalMo,
@@ -119,13 +126,24 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       case 'feedback':
         return <DialogBox line={thanhLine(kb, s, kn.loi)} hint={`Phản hồi ${kn.viTri + 1}/${kn.tong}`} speakerName={tenNguoiNoi(kb, kn.loi.speaker)} onAdvance={tiep} {...nutVn} />;
       case 'chon-dia-diem':
-        return (
-          <DanhSachDiaDiem
+        return noiDangO ? (
+          <NoiMvp
+            key={noiDangO.diaDiem.id}
             kb={kb}
+            noi={noiDangO}
+            khung={kb.lich.khung[s.khung]?.id ?? null}
+            khungConLai={kn.khungConLai}
+            onChon={(duKien) => hanhDong({ type: 'chon-du-kien', diaDiem: noiDangO.diaDiem.id, duKien })}
+            onVeBanDo={() => setDangO(null)}
+          />
+        ) : (
+          <BanDoMvp
+            banDo={BAN_DO_MVP}
             diaDiem={kn.diaDiem}
             khungConLai={kn.khungConLai}
             chinhXong={s.chinhXong}
-            onChon={(diaDiem, duKien) => hanhDong({ type: 'chon-du-kien', diaDiem, duKien })}
+            tenBuoiToi={kb.lich.buoiToi.ten}
+            onDen={(noi) => setDangO({ ngay: s.ngay, noi })}
             onKetThucNgay={() => hanhDong({ type: 'ket-thuc-ngay' })}
           />
         );
@@ -233,7 +251,15 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         onBatDauLai={choiLai}
         onVeTieuDe={onVeTieuDe}
       />
-      <SanKhauMvp kb={kb} canh={s.canh} dem={dem} speaker={loiHienTai?.speaker} expression={loiHienTai?.expression} shaking={rung}>
+      <SanKhauMvp
+        kb={kb}
+        canh={noiDangO ? noiDangO.diaDiem.canh : s.canh}
+        dem={dem}
+        speaker={loiHienTai?.speaker}
+        expression={loiHienTai?.expression}
+        shaking={rung}
+        coDan={kn.kind !== 'chon-dia-diem'}
+      >
         {noiDung}
       </SanKhauMvp>
 

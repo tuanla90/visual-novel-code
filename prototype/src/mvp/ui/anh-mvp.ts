@@ -50,6 +50,20 @@ export function anhNen(canh: string, dem = false, chiMuc: ReadonlyMap<string, st
   return anhTheoTen(`bg-mvp-${canh}`, chiMuc);
 }
 
+/** Nơi có ảnh tối riêng (`bg-mvp-<cảnh>-dem`)? Không có → dùng ảnh ngày + lớp tối. */
+export function coNenDem(canh: string, chiMuc: ReadonlyMap<string, string> = CHI_MUC): boolean {
+  return anhTheoTen(`bg-mvp-${canh}-dem`, chiMuc) !== undefined;
+}
+
+/**
+ * URL ảnh của vật tương tác (dòng `- Ảnh:` trong dia-diem.md): `obj-…` → `src/assets/mvp/vat/obj-….webp`;
+ * `nv:<mã>` → chân dung nhân vật (xem `anhChanDung`). Không có tệp → `undefined` (điểm vẽ tạm).
+ */
+export function anhSprite(sprite: string, chiMuc: ReadonlyMap<string, string> = CHI_MUC): string | undefined {
+  if (sprite.startsWith('nv:')) return anhChanDung(sprite.slice(3), undefined, chiMuc);
+  return anhTheoTen(sprite, chiMuc);
+}
+
 /** URL chân dung; thiếu biểu cảm thì mượn ảnh neo / ảnh duy nhất của nhân vật. */
 export function anhChanDung(nhanVat: string, bieuCam: string | undefined, chiMuc: ReadonlyMap<string, string> = CHI_MUC): string | undefined {
   const ung = [
