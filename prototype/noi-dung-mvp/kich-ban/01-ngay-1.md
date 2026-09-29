@@ -31,8 +31,8 @@
 
 - **tung** (worried): Tối thứ Năm cắt nước đấy. Nhớ hứng sẵn một xô nhé.
 
-### toi-1 — Buổi tối ngày 1: Tùng dẫn tới tòa B trước giờ giao ca {cảnh: sanh-toa-b}
+### toi-1 — Cuối ngày ngày 1: Tùng dẫn tới tòa B trước giờ giao ca {cảnh: sanh-toa-b}
 
-- [THẺ CHỮ] **narrator**: Buổi tối
+- [THẺ CHỮ] **narrator**: Cuối ngày
 - **tung** (neutral): Sắp tới giờ bác Thịnh giao ca rồi. Đi nhanh, tớ biết đường tắt.
 - [ĐI TỚI n1-bac-thinh]

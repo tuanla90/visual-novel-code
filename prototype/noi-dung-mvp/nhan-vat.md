@@ -19,7 +19,7 @@
 
 ### duy — Duy
 - Họ tên: Nguyễn Đức Duy
-- Vai: Năm 2 Hành chính học, thành viên từ năm nhất. Giữ tài sản CLB: chìa khóa, tủ hồ sơ, sổ tài sản, máy tính cũ. Giải thích quy trình rà soát.
+- Vai: Năm 2 Hành chính học, thành viên từ năm nhất. Giữ tài sản CLB: chìa khóa, tủ hồ sơ, sổ tài sản, máy tính cũ. Giải thích quy trình rà soát. Ngồi cùng người chơi ở phòng máy, ký sổ mượn máy (đơn xin quyền dữ liệu do Minh Anh đứng tên, thầy Quang duyệt).
 - Biểu cảm: neutral
 
 ### quan — Quân
@@ -54,7 +54,7 @@
 
 ### hoai — Hoài
 - Họ tên: Lê Thu Hoài
-- Vai: Lớp BC24A, người nộp thư hộ. Được mời vào ở buổi họp; không nêu tên người nhờ.
+- Vai: Lớp BC24A, người nộp thư hộ. Theo quy chế, ngồi chờ ngoài phòng họp; người chơi chọn cách mời vào (tự kể / đối chất / không mời). Không nêu tên người nhờ.
 - Biểu cảm: neutral, nervous, downcast, relieved
 - Xuất hiện từ: ngày họp
 

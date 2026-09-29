@@ -15,7 +15,7 @@
 SELECT ma_lop, nganh, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí';
 ```
 
-- [DÀN DỰNG] Tùng: "Tớ cá là cứ OR vào…" → `toa_nha='B' OR nganh='Báo chí'` → 4 lớp. Hà Vy: "Đừng cá. Tính." Đổi AND → 1 lớp: BC24A → "Số liệu đây!" lần đầu. Chép sổ trang and-or.
+- [DÀN DỰNG] Tùng: "Tớ cá là cứ OR vào…" → `toa_nha='B' OR nganh='Báo chí'` → 4 lớp. Hà Vy: "Đừng cá. Tính." Đổi AND → 1 lớp: BC24A → "Số liệu đây!" lần đầu. Tùng: "Bốn lớp xuống còn đúng một! Ơ… thế cái OR của tớ sai à?" Duy (từ ghế bên): "Gọn đấy." Chép sổ trang and-or.
 - Vật chứng lưu vào hồ sơ: ev-lop-bc24a
   - Tiêu đề: Lớp khớp cả hai điều kiện
   - Mô tả: Kết quả truy vấn: một lớp sinh hoạt ở tòa B thuộc ngành Báo chí.

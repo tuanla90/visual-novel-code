@@ -4,7 +4,8 @@
 
 > NHIỆM VỤ: Buổi họp rà soát
 
-- [DÀN DỰNG] {{nv.thay-quang}} ngồi giữa; {{nv.co-lan}} và {{nv.quan}} một bên, CLB một bên. {{nv.hoai}} chưa được mời vào.
+- [DÀN DỰNG] {{nv.thay-quang}} ngồi giữa; {{nv.co-lan}} và {{nv.quan}} một bên, CLB một bên. {{nv.hoai}} ngồi chờ ngoài hành lang theo quy chế, chưa được mời vào.
+- **thay-quang** (neutral): Sáng nay thầy duyệt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử.
 - **thay-quang** (neutral): Mời CLB Thám Tử trình bày căn cứ của mình.
 - **minh-anh** (neutral): Dạ, bọn em xin trình bày cách bọn em lọc ra danh sách ạ.
 - **quan** (smug): Phản ánh là diện rộng. Tên bắt đầu bằng H hoặc lớp BC24A: mười bốn dòng. Các bạn chỉ đưa ra hai.
@@ -27,15 +28,37 @@
   - (A) {id: khong-so-niem-phong} Không. Sổ niêm phong chỉ cho biết {{nv.hoai}} là người nộp, chưa cho biết ai viết. [ĐÚNG] → phản hồi: **thay-quang** (neutral): Tách được người nộp với người viết. Được, thầy ghi nhận.
   - (B) {id: co} Có. → phản hồi: **minh-anh** (worried): Thầy cho em nói lại ạ: dữ liệu chỉ giúp thu hẹp thôi.
   - (C) {id: khong-ket-luan} Không kết luận được gì. → phản hồi: **ha-vy** (thinking): Có chứ. Kết luận được một điều: ai là người nộp.
+- [RẼ NHÁNH r-moi-hoai] thay-quang: "Em Hoài đang ngồi chờ ngoài hành lang. Các em đề nghị bước tiếp theo thế nào?"
+  - {id: tu-ke} Mời bạn ấy vào để bạn ấy tự kể lại, không hỏi dồn. → hậu quả: đi tới hop-02
+  - {id: doi-chat} Mời bạn ấy vào đối chất với hai dòng trên màn hình. → hậu quả: trừ uy tín, đi tới hop-doi-chat
+  - {id: dung} Dừng ở hai dòng này, không cần mời bạn ấy. → hậu quả: đi tới hop-dung
+
+### hop-02 — Mời Hoài vào tự kể {cảnh: phong-hop}
+
+- [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa.
 - [RẼ KẾT]
+
+### hop-doi-chat — Đối chất: Hoài co người lại {cảnh: phong-hop}
+
+- [DÀN DỰNG] {{nv.hoai}} được gọi vào, đứng nép cạnh cửa, nhìn lên màn chiếu có tên mình.
+- **ha-vy** (thinking): Khoan… gọi bạn ấy vào kiểu này khác gì hỏi cung.
+- **thay-quang** (neutral): Ở đây không ai đối chất với một bạn năm nhất. Thầy hỏi, các em nghe.
+- [ĐI TỚI ket-thuong]
+
+### hop-dung — Dừng ở hai dòng {cảnh: phong-hop}
+
+- **thay-quang** (neutral): Dừng ở hai dòng thì hồ sơ vẫn thiếu một mảnh. Thầy mời em ấy vào hỏi một câu thôi.
+- [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa.
+- [ĐI TỚI ket-thuong]
 
 ### ket-that — True end: Hoài kể chuyện được nhờ {cảnh: phong-hop}
 
 - [ĐIỀU KIỆN] có ev-nhat-ky-in và (có clue-loi-chu-cuong hoặc có clue-loi-dat)
-- [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa.
 - **thay-quang** (neutral): Em Hoài, em kể lại giúp thầy hôm em nộp thư.
-- **hoai** (nervous): Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy dặn cứ ký "H." là được. Em không đọc thư ạ.
+- **hoai** (nervous): Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy dặn cứ ký "H.", ghi mã của em vào để người ta phản hồi. Em không đọc thư ạ.
+- **ha-vy** (thinking): Thảo nào sổ chỉ có mã của bạn ấy. Người nhờ thì chẳng để lại gì trong sổ cả.
 - **thay-quang** (neutral): Nhật ký in cho thấy thư được in từ tài khoản một sinh viên năm 4, lời em cũng khớp. Vậy em chỉ nộp giúp, người soạn thư là người khác.
+- **thay-quang** (neutral): Còn người soạn thư, thầy sẽ gặp riêng. Không cần nêu tên ở đây.
 - **thay-quang** (neutral): Lá thư này không tính vào hồ sơ rà soát. CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện.
 - **hoai** (relieved): Em xin lỗi vì làm mọi người mất công ạ.
 - **minh-anh** (happy): Không sao đâu em. Cảm ơn thầy ạ.
@@ -47,7 +70,6 @@
 
 ### ket-thuong — Kết thường: chỉ là một ý kiến sinh viên {cảnh: phong-hop}
 
-- [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa.
 - **thay-quang** (neutral): Em Hoài, lá thư ký "H." là em nộp vào hộp phải không?
 - **hoai** (nervous): Dạ… em chỉ nộp thôi ạ.
 - **thay-quang** (neutral): Thư vẫn được tính là một ý kiến sinh viên trong hồ sơ. Chưa thu phòng ngay. CLB được sinh hoạt đến hết học kỳ, nộp báo cáo hoạt động hằng tháng.

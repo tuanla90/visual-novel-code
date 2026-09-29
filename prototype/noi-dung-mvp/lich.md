@@ -4,7 +4,7 @@
 
 ## Luật
 - Khung giờ: sang "Sáng", trua "Trưa", chieu "Chiều"
-- Buổi tối: toi "Buổi tối"
+- Buổi tối: toi "Cuối ngày"
 - Dữ kiện chính tối đa: 2 khung
 - Mỗi địa điểm: 1–3 dữ kiện phụ/nhiễu
 - Uy tín: 5 vạch

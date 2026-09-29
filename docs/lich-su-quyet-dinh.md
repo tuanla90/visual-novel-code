@@ -692,3 +692,15 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - **"Xuất hiện từ" của nhân vật sửa trong `noi-dung-mvp/nhan-vat.md`**; mốc agent tạm đặt (Hiếu ngày 3, Đạt ngày 5, thầy Quang/Hoài ngày họp) giữ đến khi user sửa.
 - **SQL chạy thật trên bộ dữ liệu cố định; chưa làm dữ liệu ngẫu nhiên** (nhất quán QĐ-087). Làm ngay phần kiểm "số dòng nêu trong thoại khớp kết quả chạy thật" (đề xuất 3a của 12m, phương án B).
 - **Còn mở, chưa quyết:** bốn chỗ lệch trong `docs/mvp/kich-ban-vu1-mvp-khung.md` do 12m báo — (a) sảnh tòa B gắn hai dữ kiện chính (12m tạm gộp); (b) bảng địa điểm thiếu hàng dữ kiện chính ngày 5; (c) phòng máy một "bàn làm việc" cho cả ngày 2 và ngày 4 dù hai bài khác nhau; (d) sổ chị Linh và báo cáo "hoạt động yếu" vừa ở mở đầu vừa là dữ kiện phòng CLB (12m tạm để phụ).
+
+**QĐ-090 — Chốt 8 điểm cốt truyện/logic của thoại MVP Vụ 1 (QUYẾT ĐỊNH CỦA USER, qua hội đồng).** · Nguồn: USER + hội đồng (Gemini Flash, Gemini Pro, GPT, Claude; ý user tính như một thành viên), phiên `~/.claude/hoi-dong/sessions/20260929-0918-cot-truyen-8-diem` · 29/09
+- **Nhãn "Buổi tối" đổi thành "Cuối ngày"** (một chỗ trong `lich.md`; cú pháp `- Buổi tối:` giữ nguyên). Lý do: QĐ-086 định nghĩa Buổi tối là lúc "các nơi khác đóng cửa" mà dữ kiện chính ngày 3 và 5 ở CTSV. Cảnh cuối ngày 3 và 5 ghi 16:45, CTSV sắp đóng cửa.
+- **Động cơ người soạn thư để ngầm** (khung MVP: không nêu tên Vương Khánh). Kết thật có một câu khép: thầy Quang sẽ gặp riêng người soạn thư.
+- **Hiếu có một câu lý do đời thường** (nhóm xin phòng làm bài nhóm mãi không được). Không vụ sau nào dùng Hiếu nên không chờ "chương sau".
+- **Giữ thầy Quang là Phó hiệu trưởng** (vai toàn mùa: người sáng lập CLB, chủ trì các buổi duyệt; văn bản của thầy mới mở được dữ liệu Phòng Đào tạo). Hạ độ "to" bằng câu mở đầu: thầy duyệt xếp phòng cho các CLB, CLB Thám Tử là một mục.
+- **Quyền dữ liệu:** đơn do Minh Anh đứng tên, thầy Quang duyệt, cô Hạnh cấp; Duy ngồi cùng ở phòng máy, ký sổ mượn máy.
+- **Chú Cường không còn thấy dây thẻ khoa**; bạn nữ cầm phong bì rồi đi thẳng về phía tòa B. Lời chú chỉ cần chứng minh có người khác đưa phong bì.
+- **Hoài vào phòng họp do người chơi chọn** (`[RẼ NHÁNH r-moi-hoai]` sau `q-thu-pham`): mời vào tự kể → `[RẼ KẾT]` theo bằng chứng; đối chất → mất 1 vạch, kết thường; dừng ở hai dòng → kết thường, không mất vạch. Hoài ngồi chờ ngoài theo quy chế (cô Lan báo ở ngày 5).
+- **Hoài ghi mã của chính mình theo lời dặn**; ở kết thật Hà Vy nói ra: người nhờ không để lại gì trong sổ.
+- **"Số liệu đây!" lần đầu có bạn bè hưởng ứng** (Tùng, Duy); lần 2 ở buổi họp giữ Hà Vy.
+- **Thoại mới chưa qua hội đồng chấm vòng 2.**

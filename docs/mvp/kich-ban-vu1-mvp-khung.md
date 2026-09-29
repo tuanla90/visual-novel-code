@@ -12,7 +12,7 @@
 
 - **Game phải thú vị trước**; chấp nhận hi sinh một chút cảm giác code thật, nhưng phải truyền tải được **giá trị của SQL** (QĐ-086).
 - Thông điệp của vụ: *"SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu."*
-- Truyện **tuyến tính**. Vụ 1 có 5 ngày điều tra × 3 khung giờ (sáng, trưa, chiều); ngày 6 là buổi họp rà soát. Mỗi ngày giải 1 dữ kiện chính, **tối đa 2 khung** nếu chơi tập trung. Hết 3 khung mà chưa có dữ kiện chính thì sang **"Buổi tối"**: đồng đội dẫn tới đúng chỗ, người chơi tự làm bước cuối, không nợ khung. Ngày thực địa và ngày phòng máy xen kẽ.
+- Truyện **tuyến tính**. Vụ 1 có 5 ngày điều tra × 3 khung giờ (sáng, trưa, chiều); ngày 6 là buổi họp rà soát. Mỗi ngày giải 1 dữ kiện chính, **tối đa 2 khung** nếu chơi tập trung. Hết 3 khung mà chưa có dữ kiện chính thì sang **"Buổi tối"** (nhãn hiện trên màn hình: **"Cuối ngày"**, QĐ-090): đồng đội dẫn tới đúng chỗ, người chơi tự làm bước cuối, không nợ khung. Ngày thực địa và ngày phòng máy xen kẽ.
 - Phòng máy: vào tốn 1 khung, ở trong thời gian đứng yên, chạy query thoải mái, không báo đúng/sai. Tắt máy thì lưu thành bằng chứng (key item).
 - **Phạm vi SQL:** WHERE, `=`, `LIKE`, AND/OR; thêm bài học tư duy dữ liệu "`=` so khớp chính xác; ra 0 dòng thì xem lại dữ liệu". NULL, hoa/thường, `IN` để nhiệm vụ phụ (QĐ-073, QĐ-082).
 - **Người bị thu hẹp tới chưa phải thủ phạm.** Không ai bị phạt vì dữ liệu chỉ ra họ.
@@ -75,7 +75,7 @@ Thời lượng nhắm tới: 25–35 phút.
 - **Quy chế CLB:** tối thiểu 5 thành viên sinh hoạt thật, tính cả chủ nhiệm. Đây là điều kiện giữ **tư cách CLB**, không phải điều kiện đủ để giữ phòng.
 - **Hộp tiếp nhận kiến nghị và sổ niêm phong:** nội dung thư có thể giấu tên. Người gửi muốn được **phản hồi chính thức** thì ghi mã sinh viên vào phiếu gửi; mã được chép vào **sổ niêm phong**. **Không ai được mở sổ xem**, kể cả CTSV. Chỉ khi có **căn cứ bằng văn bản cho một mã cụ thể**, cô phụ trách mới trả lời có hoặc không. Vì vậy phải dùng SQL mới có mã để hỏi.
 - **Vì sao cần biết người gửi:** thư yêu cầu phản hồi, nên trước khi tính nó là ý kiến sinh viên, nhà trường phải mời người gửi đến làm rõ.
-- **Vì sao CLB được làm việc này:** CLB có quyền lợi liên quan và xin được tự lập căn cứ. Thầy Quang cho phép trong giới hạn: CLB chỉ lập **danh sách mã ứng viên kèm căn cứ**; cô phụ trách tự tra sổ; cô Hạnh cấp quyền dữ liệu tạm (2 bảng, chỉ các cột cần thiết, thu hồi sau buổi họp); Quân giám sát.
+- **Vì sao CLB được làm việc này:** CLB có quyền lợi liên quan và xin được tự lập căn cứ. Thầy Quang cho phép trong giới hạn: CLB chỉ lập **danh sách mã ứng viên kèm căn cứ**; cô phụ trách tự tra sổ; cô Hạnh cấp quyền dữ liệu tạm theo đơn Minh Anh đứng tên, thầy Quang duyệt; Duy ngồi cùng ở phòng máy, ký sổ mượn máy (QĐ-090) (2 bảng, chỉ các cột cần thiết, thu hồi sau buổi họp); Quân giám sát.
 - **Vì sao Hoài ghi mã thật:** cô tin mình đang nộp hộ một bản kiến nghị đàng hoàng. **Vì sao người nhờ không tự nộp:** anh ta biết phiếu ghi mã người nộp.
 - **Kết quả buổi họp** chính là mốc "cho CLB đến hết học kỳ" của GDD §2.2; cả hai kết đều dẫn tới mốc này, chỉ khác điều kiện đi kèm.
 
@@ -91,7 +91,7 @@ Thời lượng nhắm tới: 25–35 phút.
 | **Phòng máy** (N2, N4) | [chính] bàn làm việc · [phụ, chỉ khi đã có 2 mã] một dòng nhật ký in: 23:10 Chủ nhật, 1 trang, tệp `kien-nghi-phong…`, tài khoản `SV21xx…` (năm 4) · [nhiễu] dòng in cùng đêm `bao-cao-nhom-kinh-te-vi-mo.pdf` | Tên tệp và giờ in khớp lúc thư có mặt sáng thứ Hai; dòng kia là bài tập |
 | **Phòng CTSV** (N3, N5) | [chính] quy chế phiếu gửi và sổ niêm phong · [phụ] đơn xin phòng của Robotics, chữ ký "Chủ nhiệm CLB Robotics" (không đọc được tên) · [nhiễu] đơn xin lịch phòng tập của CLB Guitar · **Quân** có mặt (N3) | So đơn Robotics với "huy hiệu bánh răng" trong lời chú Cường |
 | **Căng tin** (từ N3) | [nhiễu] Hiếu: "CLB chiếm phòng mà có làm gì đâu", Tùng cá là Hiếu · [phụ, chỉ N5, giờ ra chơi sau tiết sinh hoạt lớp] Đạt kể sáng thứ Hai Hoài nói "đi gửi hộ anh khóa trên cái phong bì" · [nhiễu] sinh viên phàn nàn Robotics ồn ban đêm | Ý kiến không phải hành động; sổ niêm phong mới loại được Hiếu |
-| **Cổng KTX** (khung sáng) | [phụ, từ N3] chú Cường: 6:45 sáng thứ Hai thấy một anh năm cuối đeo huy hiệu bánh răng đưa phong bì nâu cho một bạn nữ đeo dây thẻ ngành Báo chí · [nhiễu] lịch cắt nước bảo trì | Chú chỉ tả dáng người và huy hiệu, không nhận diện mặt. Tùng nhắc trước: "Tuần này chú tớ đổi sang ca sáng." |
+| **Cổng KTX** (khung sáng) | [phụ, từ N3] chú Cường: 6:45 sáng thứ Hai thấy một anh năm cuối đeo huy hiệu bánh răng đưa phong bì nâu cho một bạn nữ, bạn nữ đi thẳng về phía tòa B (QĐ-090 bỏ chi tiết dây thẻ) · [nhiễu] lịch cắt nước bảo trì | Chú chỉ tả dáng người và huy hiệu, không nhận diện mặt. Tùng nhắc trước: "Tuần này chú tớ đổi sang ca sáng." |
 
 ## 6. Năm ngày điều tra (thứ Ba → thứ Bảy tuần 2)
 
@@ -121,7 +121,7 @@ Thầy Quang chủ trì; có cô Lan; Quân trình bày tóm tắt của Hội s
 - **Nhịp 4:** "Theo điều kiện trên màn hình, hai dòng này là ai?" → *hai người thỏa điều kiện lọc, cần kiểm tiếp.* Sai: hai người đã bỏ thư / cùng động cơ / đã viết thư. Sai mất 1 vạch.
 - **Nhịp 5:** thầy Quang: "Vậy hai bạn này là thủ phạm?" → *không; sổ niêm phong (nguồn độc lập) chỉ cho biết Hoài là người nộp, chưa cho biết ai viết.* Sai: "có", hoặc "không kết luận được gì". Sai mất 1 vạch.
 - Mỗi lần mất vạch, Minh Anh đổi sắc mặt và giải cứu (xin làm lại hoặc nói đỡ); không hoàn vạch, không nói thay đáp án. Hết vạch thì hoãn buổi, quay lại điều tra, không mất tiến độ.
-- **Cú lật:** Hoài được mời vào để làm rõ ý kiến (đúng quy trình với thư yêu cầu phản hồi).
+- **Cú lật:** Hoài ngồi chờ ngoài phòng họp theo quy chế (thư yêu cầu phản hồi). Người chơi chọn: mời vào tự kể (→ rẽ kết theo bằng chứng) / đối chất (mất 1 vạch, kết thường) / không mời (kết thường) — QĐ-090.
   - **Có đủ bằng chứng true end:** người chơi trình nhật ký in và lời kể. Hoài kể "một anh khóa trên" nhờ cô nộp hộ "bản kiến nghị", dặn ký "H." cho có; cô không đọc thư. Hoài **không nêu tên**.
   - **Không đủ:** Hoài chỉ nói "em chỉ nộp thôi", rồi im lặng.
 

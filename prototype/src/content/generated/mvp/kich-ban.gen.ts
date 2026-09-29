@@ -64,7 +64,7 @@ export const KICH_BAN_MVP = {
       "ten": "Duy",
       "hoTen": "Nguyễn Đức Duy",
       "trongCau": "Duy",
-      "vai": "Năm 2 Hành chính học, thành viên từ năm nhất. Giữ tài sản CLB: chìa khóa, tủ hồ sơ, sổ tài sản, máy tính cũ. Giải thích quy trình rà soát.",
+      "vai": "Năm 2 Hành chính học, thành viên từ năm nhất. Giữ tài sản CLB: chìa khóa, tủ hồ sơ, sổ tài sản, máy tính cũ. Giải thích quy trình rà soát. Ngồi cùng người chơi ở phòng máy, ký sổ mượn máy (đơn xin quyền dữ liệu do Minh Anh đứng tên, thầy Quang duyệt).",
       "bieuCam": [
         "neutral"
       ],
@@ -180,7 +180,7 @@ export const KICH_BAN_MVP = {
       "ten": "Hoài",
       "hoTen": "Lê Thu Hoài",
       "trongCau": "Hoài",
-      "vai": "Lớp BC24A, người nộp thư hộ. Được mời vào ở buổi họp; không nêu tên người nhờ.",
+      "vai": "Lớp BC24A, người nộp thư hộ. Theo quy chế, ngồi chờ ngoài phòng họp; người chơi chọn cách mời vào (tự kể / đối chất / không mời). Không nêu tên người nhờ.",
       "bieuCam": [
         "neutral",
         "nervous",
@@ -879,7 +879,7 @@ export const KICH_BAN_MVP = {
     ],
     "buoiToi": {
       "id": "toi",
-      "ten": "Buổi tối"
+      "ten": "Cuối ngày"
     },
     "luat": {
       "chinhToiDaKhung": 2,
@@ -1617,7 +1617,7 @@ export const KICH_BAN_MVP = {
     },
     {
       "id": "toi-1",
-      "title": "Buổi tối ngày 1: Tùng dẫn tới tòa B trước giờ giao ca",
+      "title": "Cuối ngày ngày 1: Tùng dẫn tới tòa B trước giờ giao ca",
       "canh": "sanh-toa-b",
       "mocSomNhat": 19,
       "nodes": [
@@ -1625,7 +1625,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Buổi tối"
+          "text": "Cuối ngày"
         },
         {
           "type": "line",
@@ -1656,6 +1656,18 @@ export const KICH_BAN_MVP = {
           "speaker": "minh-anh",
           "expression": "neutral",
           "text": "Hôm nay Cô Hạnh bên Đào tạo cấp quyền dữ liệu. Có quyền rồi mình mới vào phòng máy được."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Đơn xin quyền chị đứng tên, có gì chị chịu. Các em gõ, còn Duy ngồi cùng, ký sổ mượn máy."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Ừ. Tớ ngồi cạnh thôi, không động vào bàn phím đâu."
         }
       ]
     },
@@ -1673,7 +1685,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "co-hanh",
           "expression": "neutral",
-          "text": "Cô nhận văn bản của Thầy Quang rồi. Hai bảng thôi, chỉ những cột cần thiết. Họp xong là cô khóa quyền lại nhé."
+          "text": "Đơn của em Minh Anh có Thầy Quang duyệt rồi. Hai bảng thôi, chỉ những cột cần thiết. Họp xong là cô khóa quyền lại nhé."
         },
         {
           "type": "line",
@@ -1708,7 +1720,7 @@ export const KICH_BAN_MVP = {
     },
     {
       "id": "toi-2",
-      "title": "Buổi tối ngày 2: Hà Vy dẫn vào phòng máy",
+      "title": "Cuối ngày ngày 2: Hà Vy dẫn vào phòng máy",
       "canh": "phong-may",
       "mocSomNhat": 29,
       "nodes": [
@@ -1716,7 +1728,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Buổi tối"
+          "text": "Cuối ngày"
         },
         {
           "type": "line",
@@ -1907,6 +1919,12 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Nhóm tôi xin phòng làm bài nhóm mấy lần, lần nào cũng bảo hết phòng. Toàn phải ngồi ké thư viện."
+        },
+        {
+          "type": "line",
           "speaker": "tung",
           "expression": "worried",
           "text": "Nghe gắt thế, chắc cậu này gửi thư đấy."
@@ -1966,7 +1984,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "chu-cuong",
           "expression": "neutral",
-          "text": "Con bé đi ngang ngay chốt chú, đeo dây thẻ khoa Báo chí."
+          "text": "Con bé cầm xong là đi thẳng về phía tòa B luôn."
         },
         {
           "type": "line",
@@ -1987,7 +2005,7 @@ export const KICH_BAN_MVP = {
     },
     {
       "id": "toi-3",
-      "title": "Buổi tối ngày 3",
+      "title": "Cuối ngày ngày 3",
       "canh": "phong-ctsv",
       "mocSomNhat": 39,
       "nodes": [
@@ -1995,13 +2013,13 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Buổi tối"
+          "text": "Cuối ngày · 16:45"
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "neutral",
-          "text": "CTSV sắp đóng cửa rồi. Chạy nhanh kẻo các cô về!"
+          "text": "Gần năm giờ rồi, CTSV sắp đóng cửa. Chạy nhanh kẻo các cô về!"
         },
         {
           "type": "goto",
@@ -2055,7 +2073,7 @@ export const KICH_BAN_MVP = {
     },
     {
       "id": "toi-4",
-      "title": "Buổi tối ngày 4",
+      "title": "Cuối ngày ngày 4",
       "canh": "phong-may",
       "mocSomNhat": 49,
       "nodes": [
@@ -2063,7 +2081,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Buổi tối"
+          "text": "Cuối ngày"
         },
         {
           "type": "line",
@@ -2123,6 +2141,12 @@ export const KICH_BAN_MVP = {
           "text": "Vâng ạ. Bọn em mới biết ai nộp thôi."
         },
         {
+          "type": "line",
+          "speaker": "co-lan",
+          "expression": "neutral",
+          "text": "Theo quy chế, người có mã trong sổ sẽ được mời đến buổi họp, ngồi chờ bên ngoài. Có mời vào hay không là do buổi họp."
+        },
+        {
           "type": "note",
           "text": "Giấy nhớ [Hoài là người nộp] (khai báo ở dữ kiện)."
         }
@@ -2161,7 +2185,7 @@ export const KICH_BAN_MVP = {
     },
     {
       "id": "toi-5",
-      "title": "Buổi tối ngày 5: Hà Vy soát hồ sơ",
+      "title": "Cuối ngày ngày 5: Hà Vy soát hồ sơ",
       "canh": "phong-ctsv",
       "mocSomNhat": 59,
       "nodes": [
@@ -2169,13 +2193,13 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Buổi tối"
+          "text": "Cuối ngày · 16:45"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Cái thẻ ở khe hộp mới khoanh được vùng thôi, chưa chứng minh chủ thẻ bỏ thư. Nộp mã trước đã, rồi về soát lại hồ sơ."
+          "text": "Cái thẻ ở khe hộp mới khoanh được vùng thôi, chưa chứng minh chủ thẻ bỏ thư. Nộp mã trước khi CTSV đóng cửa đã, tối về soát lại hồ sơ."
         },
         {
           "type": "goto",
@@ -2195,7 +2219,13 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "note",
-          "text": "Thầy Quang ngồi giữa; Cô Lan và Quân một bên, CLB một bên. Hoài chưa được mời vào."
+          "text": "Thầy Quang ngồi giữa; Cô Lan và Quân một bên, CLB một bên. Hoài ngồi chờ ngoài hành lang theo quy chế, chưa được mời vào."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Sáng nay thầy duyệt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử."
         },
         {
           "type": "line",
@@ -2362,7 +2392,115 @@ export const KICH_BAN_MVP = {
           "truUyTin": true
         },
         {
+          "type": "branch",
+          "id": "r-moi-hoai",
+          "asker": {
+            "speaker": "thay-quang",
+            "text": "Em Hoài đang ngồi chờ ngoài hành lang. Các em đề nghị bước tiếp theo thế nào?"
+          },
+          "choices": [
+            {
+              "id": "tu-ke",
+              "text": "Mời bạn ấy vào để bạn ấy tự kể lại, không hỏi dồn.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "hop-02"
+                }
+              ]
+            },
+            {
+              "id": "doi-chat",
+              "text": "Mời bạn ấy vào đối chất với hai dòng trên màn hình.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "tru-uy-tin"
+                },
+                {
+                  "kind": "di-toi",
+                  "chuoi": "hop-doi-chat"
+                }
+              ]
+            },
+            {
+              "id": "dung",
+              "text": "Dừng ở hai dòng này, không cần mời bạn ấy.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "hop-dung"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hop-02",
+      "title": "Mời Hoài vào tự kể",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "note",
+          "text": "Hoài được mời vào, đứng nép cạnh cửa."
+        },
+        {
           "type": "ending-branch"
+        }
+      ]
+    },
+    {
+      "id": "hop-doi-chat",
+      "title": "Đối chất: Hoài co người lại",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "note",
+          "text": "Hoài được gọi vào, đứng nép cạnh cửa, nhìn lên màn chiếu có tên mình."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Khoan… gọi bạn ấy vào kiểu này khác gì hỏi cung."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Ở đây không ai đối chất với một bạn năm nhất. Thầy hỏi, các em nghe."
+        },
+        {
+          "type": "goto",
+          "to": "ket-thuong"
+        }
+      ]
+    },
+    {
+      "id": "hop-dung",
+      "title": "Dừng ở hai dòng",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Dừng ở hai dòng thì hồ sơ vẫn thiếu một mảnh. Thầy mời em ấy vào hỏi một câu thôi."
+        },
+        {
+          "type": "note",
+          "text": "Hoài được mời vào, đứng nép cạnh cửa."
+        },
+        {
+          "type": "goto",
+          "to": "ket-thuong"
         }
       ]
     },
@@ -2398,10 +2536,6 @@ export const KICH_BAN_MVP = {
           }
         },
         {
-          "type": "note",
-          "text": "Hoài được mời vào, đứng nép cạnh cửa."
-        },
-        {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
@@ -2411,13 +2545,25 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "hoai",
           "expression": "nervous",
-          "text": "Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy dặn cứ ký \"H.\" là được. Em không đọc thư ạ."
+          "text": "Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy dặn cứ ký \"H.\", ghi mã của em vào để người ta phản hồi. Em không đọc thư ạ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Thảo nào sổ chỉ có mã của bạn ấy. Người nhờ thì chẳng để lại gì trong sổ cả."
         },
         {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
           "text": "Nhật ký in cho thấy thư được in từ tài khoản một sinh viên năm 4, lời em cũng khớp. Vậy em chỉ nộp giúp, người soạn thư là người khác."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Còn người soạn thư, thầy sẽ gặp riêng. Không cần nêu tên ở đây."
         },
         {
           "type": "line",
@@ -2473,10 +2619,6 @@ export const KICH_BAN_MVP = {
       "mocSomNhat": 1000,
       "nodes": [
         {
-          "type": "note",
-          "text": "Hoài được mời vào, đứng nép cạnh cửa."
-        },
-        {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
@@ -2531,7 +2673,7 @@ export const KICH_BAN_MVP = {
         "description": "Kết quả truy vấn: một lớp sinh hoạt ở tòa B thuộc ngành Báo chí."
       },
       "ghiChu": [
-        "Tùng: \"Tớ cá là cứ OR vào…\" → `toa_nha='B' OR nganh='Báo chí'` → 4 lớp. Hà Vy: \"Đừng cá. Tính.\" Đổi AND → 1 lớp: BC24A → \"Số liệu đây!\" lần đầu. Chép sổ trang and-or."
+        "Tùng: \"Tớ cá là cứ OR vào…\" → `toa_nha='B' OR nganh='Báo chí'` → 4 lớp. Hà Vy: \"Đừng cá. Tính.\" Đổi AND → 1 lớp: BC24A → \"Số liệu đây!\" lần đầu. Tùng: \"Bốn lớp xuống còn đúng một! Ơ… thế cái OR của tớ sai à?\" Duy (từ ghế bên): \"Gọn đấy.\" Chép sổ trang and-or."
       ]
     },
     "c-ten-h": {
@@ -2636,7 +2778,7 @@ export const KICH_BAN_MVP = {
       "fields": {
         "Tiêu đề": "Phong bì nâu trao tay 6:45 sáng thứ Hai",
         "Nguồn": "Chú Cường, cổng KTX",
-        "Nội dung": "Một anh năm cuối đeo huy hiệu bánh răng đưa phong bì nâu cho một bạn nữ đeo dây thẻ ngành Báo chí. Chú không nhận diện mặt."
+        "Nội dung": "Một anh năm cuối đeo huy hiệu bánh răng đưa phong bì nâu cho một bạn nữ; bạn nữ cầm rồi đi thẳng về phía tòa B. Chú không nhận diện mặt."
       },
       "quotes": {}
     },
@@ -2906,7 +3048,7 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",
       "soDong": 14,
-      "noi": "noi-dung-mvp/kich-ban/06-hop-va-ket.md:11 [MÀN CHIẾU hop-chieu-or]"
+      "noi": "noi-dung-mvp/kich-ban/06-hop-va-ket.md:12 [MÀN CHIẾU hop-chieu-or]"
     }
   ],
   "duLieu": {
