@@ -162,7 +162,7 @@ describe('QĐ-056 — danh sách giá trị chỉ cho cột ít giá trị (đ�
     expect(sqlText()).toContain("WHERE ten IN ('Hoài', 'Hiếu');");
 
     // "Từ manh mối" viết lại ô chữ
-    await user.selectOptions(screen.getByLabelText('Từ manh mối cho điều kiện 1'), 'H — Chữ ký "H."');
+    await user.selectOptions(screen.getByLabelText('Từ manh mối cho điều kiện 1'), 'H — Chữ ký tay (chỉ đọc được chữ H)');
     expect(input.value).toBe('H');
     expect(challengeState('c3')?.model.conditions[0]?.value).toEqual(['H']);
     expect(parseListText(' A ,, B , A ')).toEqual(['A', 'B']);

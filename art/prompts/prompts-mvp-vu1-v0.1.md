@@ -137,6 +137,17 @@ Làm theo đợt, mỗi đợt xong thì user duyệt bằng bảng so sánh tr�
 | 4 | Vật tương tác: sửa ảnh với nền của nơi đó làm tham chiếu, nền hồng tím, rồi rembg | 14 | 13 vật ở mục 3 + `obj-ban-an-sinh-vien` |
 | 5 | Nhân vật mới (nền hồng tím, không viền sáng): Duy, Hiếu, Đạt, chú Cường, cô Hạnh, cô Lan; biểu cảm Tùng (2–3, chỉ sinh mặt) | 6 + 2–3 | Bác Thịnh dùng lại ảnh `bac-tu` |
 | 6 | Nền giấy tài liệu cho màn xem tài liệu: lá thư nặc danh, sổ niêm phong, nhật ký in, … | theo `ho-so/02-tai-lieu.md` | Chữ do game vẽ, ảnh chỉ là giấy trống |
+| 6b | **Chữ ký tay trên lá thư** `doc-chu-ky-h` (QĐ-090): nét mực, tách nền, game đặt lên giấy thư và phóng to khi xem xét | 1 (sinh 3–4 bản, chọn 1) | Câu lệnh dưới bảng |
+
+**Câu lệnh `doc-chu-ky-h`** (theo ảnh mẫu 1 user gửi 29/09 — chữ H rõ, phần sau lượn không đọc được):
+
+> A single handwritten signature in black ballpoint ink on plain white paper, written fast in cursive. The first letter is a
+> clearly legible capital H: two slightly slanted vertical strokes and a long horizontal crossbar that extends past the left
+> stroke. After the H, the rest of the name trails off into small illegible wavy humps, then one tall looping stroke that
+> dips below the baseline, ending in a long flat horizontal tail to the right. No other letter is readable. No printed text,
+> no lines on the paper, no background objects. High contrast, centered, landscape 3:2.
+
+Kiểm khi nhận: người xem phải đọc ra chữ **H** ngay (không nhầm J, K, N), và **không** đọc ra được chữ nào khác.
 
 Tổng lượt sinh ước tính: **~40–45 ảnh** (chưa tính ảnh làm lại). Kiểm mỗi ảnh trước khi nhận: đúng góc máy 1,65 m; không chữ
 đọc được; chỗ trống cho vật còn trống (nền); đường bao trong suốt sạch, không bóng (vật, nhân vật); cỡ vật hợp tỉ lệ khi đặt

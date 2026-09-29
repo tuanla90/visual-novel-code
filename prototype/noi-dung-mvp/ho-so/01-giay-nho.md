@@ -1,9 +1,9 @@
 ## Giấy nhớ (clue-…) — người chơi tự tạo trên bảng hồ sơ vụ
 
-### clue-chu-ky-h — [H.]
-- Tiêu đề: Chữ ký "H."
+### clue-chu-ky-h — [H]
+- Tiêu đề: Chữ ký tay (chỉ đọc được chữ H)
 - Nguồn: Bản chụp thư đã che thông tin, Phòng CTSV chuyển về
-- Nội dung: Phiếu gửi ký tay "H.", kèm dòng "đề nghị phản hồi chính thức". Không tên, không mã trên thư.
+- Nội dung: Chữ ký tay trên phiếu gửi: chữ H viết hoa rõ, phần sau là một nét lượn không đọc được; kèm dòng "đề nghị phản hồi chính thức". Không tên, không mã trên thư.
 
 ### clue-toa-b — [Tòa B]
 - Tiêu đề: Hộp tòa B, mở 9h sáng thứ Hai

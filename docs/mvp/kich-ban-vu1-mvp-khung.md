@@ -1,4 +1,4 @@
-# Kịch bản khung bản MVP — mở đầu (tuần 1) và Vụ 1 "Chữ ký H."
+# Kịch bản khung bản MVP — mở đầu (tuần 1) và Vụ 1 "Chữ ký H"
 
 > **Trạng thái:** kịch bản khung đã được user duyệt (QĐ-087, 28/09/2026). Đây là **tầm nhìn MVP** trong thứ tự ưu tiên tài liệu (vũ trụ → GDD → MVP → prototype, QĐ-084). Gói kịch bản MVP viết lời thoại đầy đủ dựa trên khung này; thoại trong tệp chỉ là thoại mẫu.
 >
@@ -61,7 +61,7 @@ Thời lượng nhắm tới: 25–35 phút.
 | 8 | **Chuyển cảnh: tuần sinh hoạt công dân** | Túi đồ | Người chơi nhận **thẻ lịch của khoa mình** (phần in theo khoa, dòng viết tay "Họ tên / Lớp"). Gieo cho ngày 1 |
 | 9 | **Ngày hội CLB** (thứ Bảy) | Lựa chọn thoại; **lọc thử một lần** trên giao diện của bàn làm việc | Bàn Robotics đông, dán "Đang xin mở rộng xưởng thực hành". Bàn Thám Tử chỉ có Minh Anh. Tùng: "Chị có vụ nào đang điều tra không ạ?" — Minh Anh: "Không. Trường số hóa hồ sơ, đăng ký, phần lớn tra được trên hệ thống. Cách làm cũ của CLB dùng được ít hơn trước." — Tùng: "Thế CLB thám tử giờ điều tra… mật khẩu Wi-Fi ạ?" — Minh Anh: "Nếu em tới để đùa thì bàn bên kia vui hơn." — Tùng: "Em đùa quá. Em xin lỗi chị." Phiếu đăng ký cần **mã sinh viên**; tân sinh viên chưa có thẻ. Đoàn trường phát cho mỗi bàn **danh sách tra cứu tân sinh viên K24** (mã, họ tên, ngành) — Minh Anh: "Danh sách chỉ để điền mã, xong là trả." Tùng tự tin điền mã, nhưng **ghi sai**. Minh Anh bắt đầu dò bằng mắt. Người chơi xin lọc thử: `ten = 'Tùng'` → **3 dòng** (Du lịch, Kế toán, CNTT) → **đọc cột ngành**, chọn Tùng Du lịch. Minh Anh: "…Em lọc nhanh thế. Chị đang cần người làm sổ hoạt động. Thứ Hai tuần sau 4 giờ họp đầu năm. Hai em ghi tên đi." Tùng: "Em thì tìm đường, nhắc lịch…" — Minh Anh: "Em vừa biết xin lỗi. Bắt đầu từ việc đến đúng giờ." |
 | 10 | **Phòng CLB, thứ Hai 16h: làm quen và dọn phòng** | Xem xét để tìm đồ; hoạt cảnh sổ | Có mặt: Minh Anh, Duy, Hà Vy, Tùng, người chơi. Hà Vy: "Tớ đăng ký qua form, không ra Ngày hội. Tớ thích logic. Đọc Sherlock Holmes từ cấp hai." Tùng: "Thế cậu đoán được tớ học gì không?" — Hà Vy: "Không đoán. Áo đội tình nguyện, huy hiệu khoa trên balo. Du lịch." Duy: "Duy, năm hai Hành chính học. Tớ giữ chìa khóa, tủ hồ sơ với cái máy tính cũ của CLB." Dọn tủ: Duy "chưa kiểm kê tới ngăn dưới" → **sổ chị Linh** (hoạt cảnh: "Kiểm hai lần, kết luận một lần.") → Minh Anh: "Sổ tự học của chị Linh. Em cứ giữ mà dùng." Duy lấy ra **báo cáo năm ngoái ghi "hoạt động yếu"** |
-| 11 | **Phòng CLB, 16h40: lá thư** | Xem xét tài liệu → **giấy nhớ đầu tiên**; bật bảng hồ sơ vụ | Cô Lan gọi Minh Anh lên CTSV (còn trong giờ hành chính). Bên bị phản ánh được nghe **nội dung** để giải trình, không được biết danh tính người gửi. 20 phút sau cô mang về **thông báo lịch họp rà soát thứ Hai tuần 3** và **bản chụp thư đã che thông tin**. Người chơi tự xem bản chụp: chữ ký "H.", dòng "đề nghị phản hồi chính thức" → **tự tạo giấy nhớ [H.]**. Duy: "Đủ 5 người chỉ là giữ tư cách CLB. Phòng vẫn bị xét vì báo cáo yếu, đơn của Robotics, giờ thêm cái thư." Minh Anh: "Thư muốn được phản hồi thì người gửi có mã trong sổ niêm phong. Không ai được mở sổ. Thầy Quang cho CLB lập căn cứ, cô phụ trách tự tra, bên Hội sinh viên giám sát." Hà Vy: "Khoan, tính lại đã. Mình có một chữ H và một cái hộp." Minh Anh: "Nói có sách, mách có chứng. Sáng mai bắt đầu." → HUD: **Ngày 1 — Sáng** |
+| 11 | **Phòng CLB, 16h40: lá thư** | Xem xét tài liệu → **giấy nhớ đầu tiên**; bật bảng hồ sơ vụ | Cô Lan gọi Minh Anh lên CTSV (còn trong giờ hành chính). Bên bị phản ánh được nghe **nội dung** để giải trình, không được biết danh tính người gửi. 20 phút sau cô mang về **thông báo lịch họp rà soát thứ Hai tuần 3** và **bản chụp thư đã che thông tin**. Người chơi tự xem bản chụp: chữ ký tay lượn dài, chỉ đọc được chữ **H** đầu (QĐ-090), dòng "đề nghị phản hồi chính thức" → **tự tạo giấy nhớ [H]**. Duy: "Đủ 5 người chỉ là giữ tư cách CLB. Phòng vẫn bị xét vì báo cáo yếu, đơn của Robotics, giờ thêm cái thư." Minh Anh: "Thư muốn được phản hồi thì người gửi có mã trong sổ niêm phong. Không ai được mở sổ. Thầy Quang cho CLB lập căn cứ, cô phụ trách tự tra, bên Hội sinh viên giám sát." Hà Vy: "Khoan, tính lại đã. Mình có một chữ H và một cái hộp." Minh Anh: "Nói có sách, mách có chứng. Sáng mai bắt đầu." → HUD: **Ngày 1 — Sáng** |
 
 **Cặp câu "Tớ cá là…" / "Đừng cá. Tính."** lần đầu xuất hiện ở ngày 2 (Tùng chọn OR), lúc có con số để tính thật. Không dùng ở mở đầu.
 
@@ -69,7 +69,7 @@ Thời lượng nhắm tới: 25–35 phút.
 
 ## 4. Vụ 1 — bối cảnh và chuỗi quyền lực
 
-- **Lá thư** (đánh máy): "Đề nghị thu hồi phòng sinh hoạt của CLB Thám Tử, vì CLB không còn giải quyết được việc gì. Đề nghị Phòng phản hồi chính thức." Ký tay "H." trên phiếu gửi; không có tên, không có mã trên thư.
+- **Lá thư** (đánh máy): "Đề nghị thu hồi phòng sinh hoạt của CLB Thám Tử, vì CLB không còn giải quyết được việc gì. Đề nghị Phòng phản hồi chính thức." Chữ ký tay trên phiếu gửi: chữ H viết hoa rõ, phần sau là một nét lượn không đọc được (QĐ-090); không có tên, không có mã trên thư.
 - **Thư không được thụ lý như tố cáo.** Nó được xếp vào hồ sơ **đợt rà soát phòng CLB đầu năm** như một "ý kiến sinh viên", cùng **báo cáo năm ngoái ghi CLB "hoạt động yếu"** và **đơn chính thức của Robotics xin phòng làm xưởng** (nộp từ tuần trước). Ba thứ cộng lại đưa phòng CLB vào **buổi họp rà soát** (thứ Hai tuần 3). Thư không đủ để kỷ luật ai, không tự động thu phòng.
 - **Ai quản lý:** phòng CTSV quản lý phòng; Hội sinh viên (Ban Pháp chế – Kiểm tra, Quân) quản lý hoạt động CLB và cùng rà soát; thầy Quang (Phó hiệu trưởng phụ trách sinh viên) chủ trì và quyết định.
 - **Quy chế CLB:** tối thiểu 5 thành viên sinh hoạt thật, tính cả chủ nhiệm. Đây là điều kiện giữ **tư cách CLB**, không phải điều kiện đủ để giữ phòng.
@@ -100,7 +100,7 @@ Thời lượng nhắm tới: 25–35 phút.
 | **1 · Thực địa** | Sảnh tòa B: lời bác Thịnh + thẻ lịch → giấy nhớ **[Tòa B]**, **[Báo chí K24]** | Buổi tối: Tùng dẫn tới trước khi bác Thịnh giao ca; người chơi tự soi khe hộp |
 | **2 · Phòng máy** | Cô Hạnh cấp quyền (1 khung), rồi vào phòng máy. Tùng: "Tớ cá là cứ OR vào…" → `toa_nha='B' OR nganh='Báo chí'` → **4 lớp**. Hà Vy: "Đừng cá. Tính." Đổi AND → **1 lớp: BC24A** → **"Số liệu đây!"** lần đầu | Chép sổ: AND/OR bằng hai vòng tròn giao và hợp |
 | **3 · Thực địa** | CTSV: quy chế sổ niêm phong → giấy nhớ **[Cần mã và căn cứ]**. **Quân** có mặt để giám sát, lạnh lùng nhắc: "Các bạn chỉ được lập căn cứ. Tra sổ là việc của cô phụ trách." | Phụ: đơn Robotics; chú Cường (khung sáng, cổng KTX) |
-| **4 · Phòng máy** | Kéo [H.] với phép "bằng" → **0 dòng**. Tùng: "Tra sổ chị Linh đi" → trang lỗi thường gặp → đổi "bắt đầu bằng" (`ten LIKE 'H%' AND ma_lop='BC24A'`) → **2 dòng: Hiếu SV240228, Hoài SV240317** | Bẫy tự chọn: `ma_lop LIKE 'BC%'` → 3 dòng (thêm Hồng BC24B); lọc nhầm cột `ho_dem` → Hồ Ngọc Mai. Phụ: nhật ký in. Chép sổ: LIKE |
+| **4 · Phòng máy** | Kéo [H] với phép "bằng" → **0 dòng** (không ai tên đúng một chữ "H"). Tùng: "Tra sổ chị Linh đi" → trang lỗi thường gặp → đổi "bắt đầu bằng" (`ten LIKE 'H%' AND ma_lop='BC24A'`) → **2 dòng: Hiếu SV240228, Hoài SV240317** | Bẫy tự chọn: `ma_lop LIKE 'BC%'` → 3 dòng (thêm Hồng BC24B); lọc nhầm cột `ho_dem` → Hồ Ngọc Mai. Phụ: nhật ký in. Chép sổ: LIKE |
 | **5 · Thực địa** | Nộp 2 mã kèm căn cứ; cô phụ trách tra sổ: **SV240317 có, SV240228 không** → **[Hoài là người nộp]**. Minh Anh: "Nói có sách, mách có chứng. Tới đây thôi." | Phụ: Đạt. Nhiễu: ảnh Hiếu chạy tiếp sức. Buổi tối: Hà Vy soát hồ sơ |
 
 ## 7. True end
@@ -122,7 +122,7 @@ Thầy Quang chủ trì; có cô Lan; Quân trình bày tóm tắt của Hội s
 - **Nhịp 5:** thầy Quang: "Vậy hai bạn này là thủ phạm?" → *không; sổ niêm phong (nguồn độc lập) chỉ cho biết Hoài là người nộp, chưa cho biết ai viết.* Sai: "có", hoặc "không kết luận được gì". Sai mất 1 vạch.
 - Mỗi lần mất vạch, Minh Anh đổi sắc mặt và giải cứu (xin làm lại hoặc nói đỡ); không hoàn vạch, không nói thay đáp án. Hết vạch thì hoãn buổi, quay lại điều tra, không mất tiến độ.
 - **Cú lật:** Hoài được mời vào để làm rõ ý kiến (đúng quy trình với thư yêu cầu phản hồi).
-  - **Có đủ bằng chứng true end:** người chơi trình nhật ký in và lời kể. Hoài kể "một anh khóa trên" nhờ cô nộp hộ "bản kiến nghị", dặn ký "H." cho có; cô không đọc thư. Hoài **không nêu tên**.
+  - **Có đủ bằng chứng true end:** người chơi trình nhật ký in và lời kể. Hoài kể "một anh khóa trên" nhờ cô nộp hộ "bản kiến nghị", dặn cứ ký như bình thường; cô không đọc thư. Hoài **không nêu tên**.
   - **Không đủ:** Hoài chỉ nói "em chỉ nộp thôi", rồi im lặng.
 
 ## 9. Hai kết
@@ -153,7 +153,7 @@ Bộ dữ liệu đầy đủ và các truy vấn nằm trong `docs/mvp/kiem-du-
 | Ngày hội: `ten = 'Tùng'` | 3 |
 | N2: `toa_nha='B' OR nganh='Báo chí'` | 4 |
 | N2: `toa_nha='B' AND nganh='Báo chí'` | 1 (BC24A) |
-| N4: `ten = 'H'` hoặc `'H.'` | 0 |
+| N4: `ten = 'H'` | 0 |
 | N4: `ten LIKE 'H%' AND ma_lop='BC24A'` | 2 |
 | Bẫy `ma_lop LIKE 'BC%'` | 3 |
 | Bẫy `ho_dem LIKE 'H%'` trong lớp | 1 |

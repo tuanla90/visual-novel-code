@@ -24,19 +24,19 @@ export function LetterPaperArt() {
   );
 }
 
-/** Mặt ngoài phong bì với chữ ký tay "H." (nét vẽ, không phải chữ — dòng mô tả đọc thay). */
+/** Mặt ngoài phong bì với chữ ký tay: chữ H rõ, phần sau là nét lượn không đọc được (QĐ-090; nét vẽ, không phải chữ — dòng mô tả đọc thay). */
 export function EnvelopeArt() {
   return (
     <svg className="doc-art doc-art--envelope" viewBox="0 0 320 210" aria-hidden="true" focusable="false">
       <rect x={6} y={6} width={308} height={198} rx={6} fill="#f3e7cc" stroke={INK} strokeWidth={4} />
       <path d="M6 12 L160 118 L314 12" fill="none" stroke="#c9b58c" strokeWidth={4} />
       <rect x={236} y={22} width={58} height={44} fill="#efe2c4" stroke="#b59d70" strokeWidth={3} strokeDasharray="6 4" />
-      {/* Chữ ký "H." viết tay */}
+      {/* Chữ ký tay: chữ H rõ, phần sau lượn không đọc được */}
       <g fill="none" stroke="#1e3a8a" strokeWidth={6} strokeLinecap="round" strokeLinejoin="round">
-        <path d="M112 118 C110 140 108 160 104 178" />
-        <path d="M150 112 C148 136 146 158 144 180" />
-        <path d="M100 150 C118 144 134 146 156 140" />
-        <path d="M168 176 l3 1" strokeWidth={9} />
+        <path d="M96 176 C104 152 112 128 122 106" />
+        <path d="M140 108 C132 132 124 156 116 180" />
+        <path d="M84 150 C104 146 126 144 150 140" />
+        <path d="M126 150 C138 146 142 158 150 150 C158 142 162 156 170 150 C178 144 182 156 192 146 C204 132 214 112 208 124 C200 142 190 176 196 172 C206 164 236 156 290 152" strokeWidth={5} />
       </g>
     </svg>
   );

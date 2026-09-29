@@ -271,7 +271,7 @@ export const COT_TRUYEN = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Thư đánh máy, không có tên người viết. Ngoài phong bì có một chữ ký tay: \"H.\""
+          "text": "Thư đánh máy, không có tên người viết. Ngoài phong bì có một chữ ký tay lượn dài, chỉ đọc được chữ H đầu."
         },
         {
           "type": "line",

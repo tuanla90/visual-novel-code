@@ -557,7 +557,7 @@ export const KICH_BAN_MVP = {
         },
         {
           "id": "dk-ten-h",
-          "moTa": "Bàn làm việc ngày 4: kéo [H.] vào, tên bắt đầu bằng H trong lớp BC24A",
+          "moTa": "Bàn làm việc ngày 4: kéo [H] vào, tên bắt đầu bằng H trong lớp BC24A",
           "nhan": "chinh",
           "moTu": {
             "kind": "ngay",
@@ -861,7 +861,7 @@ export const KICH_BAN_MVP = {
   "lich": {
     "vu": {
       "id": "vu1",
-      "ten": "Vụ 1 — Chữ ký H."
+      "ten": "Vụ 1 — Chữ ký H"
     },
     "khung": [
       {
@@ -1448,7 +1448,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Ký mỗi chữ \"H.\"… mà lại còn \"đề nghị phản hồi chính thức\"."
+          "text": "Chữ ký lượn thế này, đọc được mỗi chữ H… mà lại còn \"đề nghị phản hồi chính thức\"."
         },
         {
           "type": "note",
@@ -2411,7 +2411,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "hoai",
           "expression": "nervous",
-          "text": "Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy dặn cứ ký \"H.\" là được. Em không đọc thư ạ."
+          "text": "Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy dặn cứ ký như bình thường là được. Em không đọc thư ạ."
         },
         {
           "type": "line",
@@ -2480,7 +2480,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Em Hoài, lá thư ký \"H.\" là em nộp vào hộp phải không?"
+          "text": "Em Hoài, lá thư có chữ ký này là em nộp vào hộp phải không?"
         },
         {
           "type": "line",
@@ -2537,7 +2537,7 @@ export const KICH_BAN_MVP = {
     "c-ten-h": {
       "id": "c-ten-h",
       "tieuDe": "Tên bắt đầu bằng H trong lớp BC24A",
-      "deBai": "Chữ ký \"H.\" trên phiếu gửi; lớp đã thu hẹp còn BC24A. Những sinh viên nào khớp cả hai?",
+      "deBai": "Chữ ký tay trên phiếu gửi chỉ đọc được chữ H đầu; lớp đã thu hẹp còn BC24A. Những sinh viên nào khớp cả hai?",
       "manhMoiLienQuan": [
         "clue-chu-ky-h"
       ],
@@ -2551,7 +2551,7 @@ export const KICH_BAN_MVP = {
         "description": "Kết quả truy vấn: hai sinh viên lớp BC24A có tên bắt đầu bằng H."
       },
       "ghiChu": [
-        "Kéo [H.] với phép \"bằng\" → 0 dòng. Tùng: \"Tra sổ chị Linh đi\" → trang lỗi thường gặp → đổi \"bắt đầu bằng\" → 2 dòng. Bẫy: `ma_lop LIKE 'BC%'` → 3 dòng; lọc nhầm cột ho_dem → 1 dòng."
+        "Kéo [H] với phép \"bằng\" → 0 dòng (không ai tên đúng một chữ \"H\"). Tùng: \"Tra sổ chị Linh đi\" → trang lỗi thường gặp → đổi \"bắt đầu bằng\" → 2 dòng. Bẫy: `ma_lop LIKE 'BC%'` → 3 dòng; lọc nhầm cột ho_dem → 1 dòng."
       ]
     },
     "c-sua-or-quan": {
@@ -2577,11 +2577,11 @@ export const KICH_BAN_MVP = {
     "clue-chu-ky-h": {
       "id": "clue-chu-ky-h",
       "loai": "clue",
-      "heading": "[H.]",
+      "heading": "[H]",
       "fields": {
-        "Tiêu đề": "Chữ ký \"H.\"",
+        "Tiêu đề": "Chữ ký tay (chỉ đọc được chữ H)",
         "Nguồn": "Bản chụp thư đã che thông tin, Phòng CTSV chuyển về",
-        "Nội dung": "Phiếu gửi ký tay \"H.\", kèm dòng \"đề nghị phản hồi chính thức\". Không tên, không mã trên thư."
+        "Nội dung": "Chữ ký tay trên phiếu gửi: chữ H viết hoa rõ, phần sau là một nét lượn không đọc được; kèm dòng \"đề nghị phản hồi chính thức\". Không tên, không mã trên thư."
       },
       "quotes": {}
     },
@@ -2719,7 +2719,7 @@ export const KICH_BAN_MVP = {
       "quotes": {
         "Nội dung hiển thị": [
           "Đề nghị thu hồi phòng sinh hoạt của CLB Thám Tử, vì CLB không còn giải quyết được việc gì. Đề nghị Phòng phản hồi chính thức.",
-          "Ký: H."
+          "Ký: (chữ ký tay — chữ H viết hoa rõ, phần sau là một nét lượn dài, không đọc được)"
         ]
       }
     },

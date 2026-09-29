@@ -34,7 +34,7 @@
 - [ĐIỀU KIỆN] có ev-nhat-ky-in và (có clue-loi-chu-cuong hoặc có clue-loi-dat)
 - [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa.
 - **thay-quang** (neutral): Em Hoài, em kể lại giúp thầy hôm em nộp thư.
-- **hoai** (nervous): Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy dặn cứ ký "H." là được. Em không đọc thư ạ.
+- **hoai** (nervous): Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy dặn cứ ký như bình thường là được. Em không đọc thư ạ.
 - **thay-quang** (neutral): Nhật ký in cho thấy thư được in từ tài khoản một sinh viên năm 4, lời em cũng khớp. Vậy em chỉ nộp giúp, người soạn thư là người khác.
 - **thay-quang** (neutral): Lá thư này không tính vào hồ sơ rà soát. CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện.
 - **hoai** (relieved): Em xin lỗi vì làm mọi người mất công ạ.
@@ -48,7 +48,7 @@
 ### ket-thuong — Kết thường: chỉ là một ý kiến sinh viên {cảnh: phong-hop}
 
 - [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa.
-- **thay-quang** (neutral): Em Hoài, lá thư ký "H." là em nộp vào hộp phải không?
+- **thay-quang** (neutral): Em Hoài, lá thư có chữ ký này là em nộp vào hộp phải không?
 - **hoai** (nervous): Dạ… em chỉ nộp thôi ạ.
 - **thay-quang** (neutral): Thư vẫn được tính là một ý kiến sinh viên trong hồ sơ. Chưa thu phòng ngay. CLB được sinh hoạt đến hết học kỳ, nộp báo cáo hoạt động hằng tháng.
 - **minh-anh** (worried): Dạ, tháng nào bọn em cũng sẽ nộp đủ ạ.

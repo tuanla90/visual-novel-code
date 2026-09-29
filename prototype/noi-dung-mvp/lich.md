@@ -1,4 +1,4 @@
-# Vụ 1 — Chữ ký H. {vụ: vu1}
+# Vụ 1 — Chữ ký H {vụ: vu1}
 
 <!-- Thứ Ba → thứ Bảy tuần 2 là ngày 1–5; thứ Hai tuần 3 là buổi họp rà soát (ngày 6). -->
 

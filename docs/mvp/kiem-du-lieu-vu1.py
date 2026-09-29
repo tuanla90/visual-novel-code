@@ -33,7 +33,6 @@ Q = [
  ("N2 OR (Tùng)", "SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha='B' OR nganh='Báo chí'"),
  ("N2 AND", "SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha='B' AND nganh='Báo chí'"),
  ("N4 = 'H' (0 dòng)", "SELECT ten FROM sinh_vien WHERE ma_lop='BC24A' AND ten='H'"),
- ("N4 = 'H.'", "SELECT ten FROM sinh_vien WHERE ma_lop='BC24A' AND ten='H.'"),
  ("N4 LIKE AND lớp", "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop='BC24A'"),
  ("Bẫy ma_lop LIKE 'BC%'", "SELECT ma_sv, ten, ma_lop FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop LIKE 'BC%'"),
  ("Bẫy cột ho_dem trong lớp", "SELECT ho_dem, ten FROM sinh_vien WHERE ho_dem LIKE 'H%' AND ma_lop='BC24A'"),

@@ -1,4 +1,4 @@
-# CLB Thám Tử Dữ Liệu — Kịch bản MVP (mở đầu tuần 1 + Vụ 1 "Chữ ký H.")
+# CLB Thám Tử Dữ Liệu — Kịch bản MVP (mở đầu tuần 1 + Vụ 1 "Chữ ký H")
 
 > Nguồn: `docs/mvp/kich-ban-vu1-mvp-khung.md` (QĐ-086, QĐ-087). Cú pháp: `docs/dac-ta-dinh-dang-noi-dung.md` mục 18. Cách viết: `README.md` cùng thư mục.
 >

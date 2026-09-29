@@ -5,9 +5,9 @@ export const sampleEvidence: EvidenceContent = {
   clues: {
     'clue-signature-h': {
       id: 'clue-signature-h',
-      title: '(MẪU) Chữ ký "H."',
+      title: '(MẪU) Chữ ký tay (chỉ đọc được chữ H)',
       source: '(MẪU) Phong bì lá thư',
-      content: '(MẪU) Ngoài phong bì có chữ ký tay "H.". H nhiều khả năng là chữ đầu của tên.',
+      content: '(MẪU) Ngoài phong bì có chữ ký tay, chỉ đọc được chữ H đầu. H nhiều khả năng là chữ đầu của tên.',
       builderValue: { label: 'H — chữ ký lá thư', column: 'ten', suggestedOp: 'startsWith', value: 'H' },
       openQuestion: '(MẪU) Trong dữ liệu, những ai có tên bắt đầu bằng H?',
       caveat: '(MẪU) Chỉ là khả năng. Chữ ký cho biết một chữ cái, không cho biết đó là ai.',
@@ -37,7 +37,7 @@ export const sampleEvidence: EvidenceContent = {
       title: '(MẪU) Bản chụp lá thư',
       source: '(MẪU) Phòng Công tác sinh viên',
       body: ['(MẪU) Kính gửi Phòng Công tác sinh viên.', '(MẪU) Đề nghị thu hồi phòng sinh hoạt của CLB Thám Tử.'],
-      extra: '(MẪU) Mặt ngoài phong bì: chữ ký tay "H."',
+      extra: '(MẪU) Mặt ngoài phong bì: chữ ký tay, chỉ đọc được chữ H đầu',
       openQuestion: '(MẪU) Lá thư được bỏ vào hộp góp ý ở tòa nào?',
       caveat: '(MẪU) Chữ ký ngoài phong bì là của người gửi, chưa chắc là của người viết.',
     },

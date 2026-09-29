@@ -52,7 +52,7 @@
 - Cần: có clue-quyen-du-lieu
 - Thử thách: c-loc-lop
 
-### dk-ten-h — Bàn làm việc ngày 4: kéo [H.] vào, tên bắt đầu bằng H trong lớp BC24A {dữ kiện: chính}
+### dk-ten-h — Bàn làm việc ngày 4: kéo [H] vào, tên bắt đầu bằng H trong lớp BC24A {dữ kiện: chính}
 - Mở từ: ngày 4
 - Cần: có clue-can-ma-va-can-cu
 - Thử thách: c-ten-h

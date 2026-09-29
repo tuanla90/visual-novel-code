@@ -124,7 +124,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';
 
 - [DÀN DỰNG] {{nv.co-lan}} gọi {{nv.minh-anh}} lên CTSV. 20 phút sau cô mang về thông báo lịch họp rà soát và bản chụp thư đã che thông tin. Bật bảng hồ sơ vụ.
 - [HIỆN TÀI LIỆU doc-thu-che]
-- **player**: Ký mỗi chữ "H."… mà lại còn "đề nghị phản hồi chính thức".
+- **player**: Chữ ký lượn thế này, đọc được mỗi chữ H… mà lại còn "đề nghị phản hồi chính thức".
 - [DÀN DỰNG] Người chơi tự tạo giấy nhớ đầu tiên.
 - [HẬU QUẢ] mở manh mối clue-chu-ky-h
 - **duy** (neutral): Đủ 5 người mới chỉ giữ được tư cách CLB thôi. Phòng vẫn bị xét vì báo cáo yếu, đơn của Robotics, giờ thêm lá thư này.
