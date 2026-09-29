@@ -335,7 +335,12 @@ export const KICH_BAN_MVP = {
           ],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-so-chi-linh",
+            "x": 36,
+            "y": 32.5,
+            "rong": 2.8
+          }
         },
         {
           "id": "dk-bao-cao-yeu",
@@ -357,7 +362,12 @@ export const KICH_BAN_MVP = {
           ],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-bao-cao-nam-ngoai",
+            "x": 58,
+            "y": 48,
+            "rong": 7
+          }
         },
         {
           "id": "dk-bien-ban-kiem-ke",
@@ -377,7 +387,12 @@ export const KICH_BAN_MVP = {
           "hienTaiLieu": [],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-bien-ban-kiem-ke",
+            "x": 93,
+            "y": 37.5,
+            "rong": 4.5
+          }
         }
       ]
     },
@@ -419,7 +434,12 @@ export const KICH_BAN_MVP = {
             "ev-the-lich"
           ],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-hop-kien-nghi",
+            "x": 28,
+            "y": 50,
+            "rong": 8
+          }
         },
         {
           "id": "dk-to-roi-guitar",
@@ -439,7 +459,12 @@ export const KICH_BAN_MVP = {
           "hienTaiLieu": [],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-to-roi-guitar",
+            "x": 72,
+            "y": 80,
+            "rong": 6
+          }
         },
         {
           "id": "dk-thong-bao-hop",
@@ -461,7 +486,12 @@ export const KICH_BAN_MVP = {
           ],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-thong-bao-hop",
+            "x": 34.5,
+            "y": 44,
+            "rong": 4
+          }
         }
       ]
     },
@@ -502,7 +532,12 @@ export const KICH_BAN_MVP = {
           ],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "nv:co-hanh",
+            "x": 58,
+            "y": 98,
+            "rong": 17
+          }
         },
         {
           "id": "dk-doi-phong-hoc",
@@ -522,7 +557,12 @@ export const KICH_BAN_MVP = {
           "hienTaiLieu": [],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-thong-bao-doi-phong",
+            "x": 80,
+            "y": 32,
+            "rong": 5
+          }
         }
       ]
     },
@@ -562,7 +602,12 @@ export const KICH_BAN_MVP = {
           "hienTaiLieu": [],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-ban-may",
+            "x": 60,
+            "y": 78,
+            "rong": 20
+          }
         },
         {
           "id": "dk-ten-h",
@@ -585,7 +630,12 @@ export const KICH_BAN_MVP = {
           "hienTaiLieu": [],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-ban-may",
+            "x": 60,
+            "y": 78,
+            "rong": 20
+          }
         },
         {
           "id": "dk-nhat-ky-in",
@@ -610,7 +660,12 @@ export const KICH_BAN_MVP = {
             "ev-nhat-ky-in"
           ],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-may-in-nhat-ky",
+            "x": 73,
+            "y": 51,
+            "rong": 7
+          }
         },
         {
           "id": "dk-dong-in-bai-tap",
@@ -630,7 +685,12 @@ export const KICH_BAN_MVP = {
           "hienTaiLieu": [],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-may-in-nhat-ky",
+            "x": 73,
+            "y": 51,
+            "rong": 7
+          }
         }
       ]
     },
@@ -669,7 +729,12 @@ export const KICH_BAN_MVP = {
           "hienTaiLieu": [],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-so-niem-phong",
+            "x": 42,
+            "y": 57,
+            "rong": 8
+          }
         },
         {
           "id": "dk-nop-hai-ma",
@@ -694,7 +759,12 @@ export const KICH_BAN_MVP = {
           "hienTaiLieu": [],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-so-niem-phong",
+            "x": 42,
+            "y": 57,
+            "rong": 8
+          }
         },
         {
           "id": "dk-don-robotics",
@@ -716,7 +786,12 @@ export const KICH_BAN_MVP = {
           ],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-don-robotics",
+            "x": 22,
+            "y": 54,
+            "rong": 8
+          }
         },
         {
           "id": "dk-don-guitar",
@@ -736,7 +811,12 @@ export const KICH_BAN_MVP = {
           "hienTaiLieu": [],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-don-guitar",
+            "x": 76,
+            "y": 40,
+            "rong": 4
+          }
         }
       ]
     },
@@ -773,7 +853,12 @@ export const KICH_BAN_MVP = {
           "hienTaiLieu": [],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "nv:hieu",
+            "x": 20,
+            "y": 98,
+            "rong": 15
+          }
         },
         {
           "id": "dk-loi-dat",
@@ -795,7 +880,12 @@ export const KICH_BAN_MVP = {
           "hienTaiLieu": [],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "nv:dat",
+            "x": 42,
+            "y": 98,
+            "rong": 15
+          }
         },
         {
           "id": "dk-robotics-on",
@@ -815,7 +905,12 @@ export const KICH_BAN_MVP = {
           "hienTaiLieu": [],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-ban-an-sinh-vien",
+            "x": 80,
+            "y": 82,
+            "rong": 22
+          }
         }
       ]
     },
@@ -854,7 +949,12 @@ export const KICH_BAN_MVP = {
           "hienTaiLieu": [],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "nv:chu-cuong",
+            "x": 72,
+            "y": 98,
+            "rong": 16
+          }
         },
         {
           "id": "dk-lich-cat-nuoc",
@@ -874,7 +974,12 @@ export const KICH_BAN_MVP = {
           "hienTaiLieu": [],
           "luuBangChung": [],
           "lap": "mot-lan",
-          "anh": null
+          "anh": {
+            "sprite": "obj-lich-cat-nuoc",
+            "x": 28,
+            "y": 56,
+            "rong": 5
+          }
         }
       ]
     }
