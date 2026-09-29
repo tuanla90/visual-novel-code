@@ -7,7 +7,7 @@
 import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
-import { khungNhin, TEN_MAC_DINH, xuLy } from './may';
+import { khungNhin, TEN_MAC_DINH } from './may';
 import { choiTuDong, chonTheoUuTien, DIEM_NHAY_MVP, DUONG_DU_BANG_CHUNG, nhayToi } from './tu-choi';
 
 const KB = KICH_BAN_MVP as unknown as KichBanMvp;
