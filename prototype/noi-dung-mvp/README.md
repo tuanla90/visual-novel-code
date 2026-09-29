@@ -30,7 +30,7 @@ noi-dung-mvp/kich-ban/06-hop-va-ket.md:8: [MÀN CHIẾU hop-chieu-or]: khai 13 d
 | `quy-uoc.md` | Tên game (`# …`), `- Tên trường:`, `- Tên cấm:` | Tên cấm lọt vào chữ hiển thị là lỗi |
 | `nhan-vat.md` | Thẻ nhân vật `### <mã> — <Tên>` với `Vai`, `Biểu cảm`, `Họ tên`, `Xuất hiện từ`, `Chỉ qua lời kể` | Đây là nguồn cho `{{nv.<mã>}}`. Mã không đổi khi đổi tên (bảo vệ tòa B là `bac-tu` dù tên là Bác Thịnh) |
 | `canh.md` | Cảnh nền `### <mã> — <Tên>` (+ `- Ảnh nền:` nếu có ảnh) | Mọi `{cảnh: …}` phải có ở đây |
-| `dia-diem.md` | `## <mã> — <Tên> {địa điểm: <mã>}` rồi các dữ kiện `### <mã> — <mô tả> {dữ kiện: chính\|phụ\|nhiễu}` | Mỗi dữ kiện có `Chuỗi:` (hội thoại) **hoặc** `Thử thách:` (màn phòng máy); `Mở từ:`, `Cần:`, `Mở manh mối:`, `Hiện tài liệu:`, `Lưu bằng chứng:` |
+| `dia-diem.md` | `## <mã> — <Tên> {địa điểm: <mã>}` rồi các dữ kiện `### <mã> — <mô tả> {dữ kiện: chính\|phụ\|nhiễu}` | Mỗi dữ kiện có `Chuỗi:` (hội thoại) **hoặc** `Thử thách:` (màn phòng máy); `Mở từ:`, `Cần:`, `Mở manh mối:`, `Hiện tài liệu:`, `Lưu bằng chứng:`; `Ảnh:` đặt vật bấm được lên nền (xem dưới) |
 | `lich.md` | `## Luật` (khung giờ, số khung tối đa cho dữ kiện chính, số dữ kiện **phụ/nhiễu** mỗi địa điểm — dữ kiện chính không tính, uy tín), `## Mở đầu`, `## Ngày N … {ngày: N}` (một `Dữ kiện chính`, một `Buổi tối`), `## … {ngày họp}`, `## Kết` | Lịch là chỗ máy kiểm "mỗi ngày một dữ kiện chính, giải được trong ≤ 2 khung" |
 | `du-lieu.md` | Bộ dữ liệu SQL **cố định** của vụ: `## <bảng> {bảng}` + `- Cột: <tên> TEXT\|INTEGER, …` + bảng Markdown; `## <tên> {bảng ảo}` + khối ` ```sql ` một câu SELECT | Máy nạp vào SQLite và **chạy thật** mọi câu SQL có khai số dòng; lệch là lỗi (QĐ-089). Sửa dữ liệu thì chạy lại lệnh kiểm |
 | `kich-ban/*.md` | Chuỗi hội thoại `### <mã> — <mô tả> {cảnh: <mã cảnh>}` | Lời thoại và chỉ dẫn như bộ prototype; thêm `[TẠO NHÂN VẬT]`, `[LỌC THỬ]`, `[RẼ KẾT]`, `[LƯU BẰNG CHỨNG]`, `[ĐIỀU KIỆN]`, `[HẬU QUẢ]`, `[RẼ NHÁNH]`, `[TRA SỔ]`, `[CHÉP SỔ]`, `· trừ uy tín` |
@@ -52,3 +52,11 @@ noi-dung-mvp/kich-ban/06-hop-va-ket.md:8: [MÀN CHIẾU hop-chieu-or]: khai 13 d
 - Số dòng khai ở `[LỌC THỬ … · n dòng]`, `[MÀN CHIẾU … · n dòng]` (có câu SQL) và `- Số dòng kỳ vọng:` của thẻ thử thách phải bằng số dòng câu SQL chạy thật trên `du-lieu.md`. Số dòng chỉ ghi trong `[DÀN DỰNG]` (không kèm câu SQL) máy **chưa** kiểm được.
 
 Nhãn `chính` / `phụ` / `nhiễu` và dòng `Phân biệt:` chỉ để người viết đọc, không hiện trong game.
+
+## Đặt vật bấm được lên nền — dòng `- Ảnh:`
+
+`- Ảnh: obj-hop-kien-nghi · x 28% · y 50% · rộng 8%` (vật, ảnh ở `src/assets/mvp/vat/`) hoặc
+`- Ảnh: nv:hieu · x 20% · y 100% · rộng 15%` (người, dùng chân dung). **(x, y) là chân ảnh** (giữa cạnh dưới), % của ảnh
+nền; `rộng` là % bề rộng nền. Hai dữ kiện chung một vật ghi y hệt nhau (game gộp thành một điểm). Thiếu dòng này chỉ bị
+cảnh báo — dữ kiện vẫn chọn được qua nút "Danh sách" trong nơi đó. Mô tả dữ kiện không bao giờ hiện cho người chơi.
+Chi tiết: đặc tả §18.4a.
