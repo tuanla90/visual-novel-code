@@ -7,10 +7,12 @@
  * `diaDiem` là mã trong `noi-dung-mvp/dia-diem.md`; một ghim nhiều mã = tòa nhiều phòng (bấm ghim → chọn phòng).
  * Nơi không nằm trong ghim nào vẫn đến được (hiện dạng chữ dưới bản đồ) — test `ban-do-mvp.test.ts` bắt thiếu.
  *
- * Hiện DÙNG TẠM ảnh bản đồ của prototype (`src/story/ui/map/art/campus-map.webp`, 1360×768; import, không chép) —
- * ảnh bản đồ MVP mới đang được sinh.
+ * Ảnh: `ban-do-truong.webp` (Topview 29/09, phương án D do user chọn; bản gốc ở `art/mvp-vu1/ban-do/`), 1360×768:
+ * trường công lập nội thành Hà Nội — cổng chính giữa cạnh dưới, nhà hành chính trái dưới, tòa B giữa, nhà phòng máy
+ * (cầu thang kính xanh) phải giữa, căng tin phải, khu KTX có cổng trong trên phải, nhà CLB cạnh sân bóng rổ trên giữa,
+ * nhà văn hóa trên trái (chưa có địa điểm).
  */
-import anhBanDo from '../../story/ui/map/art/campus-map.webp';
+import anhBanDo from '../../assets/mvp/ban-do/ban-do-truong.webp';
 import type { GhimBanDoMvp } from '../engine/diem-tuong-tac';
 
 export interface BanDoMvp {
@@ -26,12 +28,12 @@ export const BAN_DO_MVP: BanDoMvp = {
   rong: 1360,
   cao: 768,
   ghim: [
-    { id: 'toa-b', ten: 'Tòa B', x: 28, y: 16, diaDiem: ['toa-b'] },
-    { id: 'toa-hanh-chinh', ten: 'Tòa hành chính', x: 17, y: 38, diaDiem: ['phong-dao-tao', 'phong-ctsv'] },
-    { id: 'phong-may', ten: 'Phòng máy', x: 62, y: 30, diaDiem: ['phong-may'] },
-    { id: 'phong-clb', ten: 'Phòng CLB', x: 92, y: 40, diaDiem: ['phong-clb'] },
-    { id: 'cang-tin', ten: 'Căng tin', x: 54, y: 9, diaDiem: ['cang-tin'] },
-    { id: 'ktx', ten: 'Cổng KTX', x: 80, y: 62, diaDiem: ['cong-ktx'] },
+    { id: 'toa-b', ten: 'Tòa B', x: 48, y: 29, diaDiem: ['toa-b'] },
+    { id: 'toa-hanh-chinh', ten: 'Tòa hành chính', x: 21, y: 54, diaDiem: ['phong-dao-tao', 'phong-ctsv'] },
+    { id: 'phong-may', ten: 'Phòng máy', x: 73, y: 45, diaDiem: ['phong-may'] },
+    { id: 'phong-clb', ten: 'Phòng CLB', x: 45, y: 8, diaDiem: ['phong-clb'] },
+    { id: 'cang-tin', ten: 'Căng tin', x: 88, y: 41, diaDiem: ['cang-tin'] },
+    { id: 'ktx', ten: 'Cổng KTX', x: 72, y: 30, diaDiem: ['cong-ktx'] },
   ],
 };
 

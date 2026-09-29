@@ -16,3 +16,4 @@ Chưa nối vào game (runtime MVP chưa có). Game prototype hiện chỉ dùng
 - `giay/`: 4 nền giấy tài liệu (chưa dùng: giấy có sẵn dòng kẻ giả, sẽ đè lên chữ thật của màn xem tài liệu).
 
 Chân dung đang dùng trong game (`prototype/src/assets/characters/`) được tách nền bằng rembg `isnet-anime`; 8 ảnh biểu cảm là "chỉ thay đầu": thân và màu áo của ảnh neo, vùng mặt của ảnh biểu cảm (xem `../prompts/prompts-mvp-vu1-v0.1.md` mục 6).
+- `ban-do/ban-do-truong.webp`: bản đồ trường cho bản MVP (Topview 29/09, GPT Image 2.5, 1K, Unlimited). Sinh hai lượt: lượt đầu kiểu "khuôn viên trưng bày" bị user chê chưa giống thật; lượt hai theo trường công lập nội thành Hà Nội (sát phố, cổng + chòi bảo vệ, dãy giảng đường vàng kem hành lang mở, nhà để xe, KTX có cổng trong, căng tin mái tôn), user chọn phương án D. Ghim đặt trong `prototype/src/mvp/ui/ban-do-mvp.ts`.
