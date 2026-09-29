@@ -23,6 +23,7 @@ import { useVnStore } from '../../shared/vn/vn-store';
 import { ObjectionEffect } from '../../story/ui/ObjectionEffect';
 import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
 import { canGioiThieu, dienTen as dienTenMay, khungNhin, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
+import { giaTriTuHoSo } from '../engine/giay-nho';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import { nhayToi, type MaDiemNhayMvp } from '../engine/tu-choi';
 import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
@@ -290,6 +291,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             mode={kn.kind}
             dienTen={dienTen}
             onXong={() => hanhDong({ type: 'xong-thu-thach', thuThach: kn.thuThach.id })}
+            giayNho={giaTriTuHoSo(kb, s.hoSo)}
           />
         );
       case 'effect':

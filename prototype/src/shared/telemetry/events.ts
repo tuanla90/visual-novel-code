@@ -112,7 +112,11 @@ export type TelemetryEventBody =
   | { type: 'text_speed_changed'; speed: 'slow' | 'normal' | 'fast' | 'instant' }
   | { type: 'progress_saved'; slot: number; part: PartId | null }
   /** Nạp ô lưu: tiến độ nhảy tới/lùi về chỗ khác → thời lượng phần/game không còn so được trực tiếp. */
-  | { type: 'progress_loaded'; slot: number; part: PartId | null };
+  | { type: 'progress_loaded'; slot: number; part: PartId | null }
+  // Bản MVP, phòng máy (QĐ-092): so sánh ba cách nhập câu (kéo thả / bấm khối / gõ tay) — user muốn người chơi thử
+  // phản hồi thích cách nào. Chỉ mã thẻ + cách nhập + số dòng; KHÔNG ghi chữ SQL (người chơi gõ tự do, QĐ-042).
+  | { type: 'mvp_input_mode'; challengeId: string; mode: 'keo' | 'khoi' | 'go' }
+  | { type: 'mvp_query_run'; challengeId: string; mode: 'keo' | 'khoi' | 'go'; rows: number | null; error: boolean; correct: boolean };
 
 export type TelemetryEventType = TelemetryEventBody['type'];
 
