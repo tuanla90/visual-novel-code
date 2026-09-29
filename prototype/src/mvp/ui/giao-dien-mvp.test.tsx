@@ -90,6 +90,8 @@ describe('thanh trên MVP (phong cách .topbar của prototype)', () => {
     const s = nhayToi(kb, 'hop-sua-or', 1);
     expect(khungNhin(kb, s).kind).toBe('fix-query');
     veManChoi(s);
+    // Lớp để CSS điện thoại đưa uy tín xuống hàng nhiệm vụ (hàng 1 không đủ chỗ ở 375 px).
+    expect(thanhTren()).toHaveClass('mvp-topbar--uytin');
     const uyTin = within(thanhTren()).getByRole('img', { name: /Uy tín/ });
     expect(uyTin.querySelectorAll('.mvp-uytin__o')).toHaveLength(kb.lich.luat.uyTin ?? 0);
   });

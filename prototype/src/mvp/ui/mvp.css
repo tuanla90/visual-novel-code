@@ -663,8 +663,13 @@
 }
 .mvp-kho .inv-grid-header {
   gap: 8px;
+  flex-wrap: wrap;
+}
+.mvp-kho .inv-grid-title {
+  white-space: nowrap;
 }
 .mvp-kho .inv-filter-pills {
+  flex: 1 1 auto;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
@@ -933,13 +938,13 @@
   }
   .mvp-kho .inv-slots-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-auto-rows: 64px;
+    grid-auto-rows: 72px;
     gap: 8px;
     padding: 4px;
   }
   .mvp-kho .inv-slot {
     width: 100%;
-    height: 64px;
+    height: 72px;
   }
   .mvp-kho .notebook__journal-container {
     padding: 10px;
@@ -959,6 +964,16 @@
   .mvp-luunap .saveload-back-btn {
     display: none;
   }
+  .mvp-luunap .saveload-title-badge__text {
+    white-space: nowrap;
+  }
+  .mvp-luunap .saveload-title-sub {
+    display: none;
+  }
+  /* Thanh trên điện thoại cao 2 hàng (~110 px): bảng người quan sát mở ra nằm dưới nó. */
+  .mvp-quansat .facilitator__body {
+    top: 120px;
+  }
   /* Nút con nhộng cao 30 px (giữ dáng prototype) — vùng chạm mở rộng tới 44 px bằng lớp vô hình, rộng tối thiểu 44 px. */
   .mvp-topbar .topbar__capsule-btn {
     min-width: 44px;
@@ -968,8 +983,23 @@
     position: absolute;
     inset: -7px 0;
   }
+  /* Hàng 1: vé ngày | (trống) | nút con nhộng; hàng 2: nhiệm vụ (+ uy tín ở buổi họp — hàng 1 không đủ chỗ cho
+     4 nút + 5 vạch ở 375 px). `display: contents` để uy tín và nhóm nút tự đặt vào lưới của thanh trên; nhóm nút
+     trải cột 2–3 nên cột 3 chỉ rộng bằng thanh uy tín. */
   .mvp-topbar .topbar__actions {
-    gap: 6px;
+    display: contents;
+  }
+  .mvp-topbar .topbar__capsule-group {
+    grid-row: 1;
+    grid-column: 2 / 4;
+    justify-self: end;
+  }
+  .mvp-topbar .mvp-uytin {
+    grid-row: 2;
+    grid-column: 3;
+  }
+  .mvp-topbar.mvp-topbar--uytin .topbar__task {
+    grid-column: 1 / 3 !important;
   }
   .mvp-uytin {
     height: 36px;
@@ -1002,7 +1032,19 @@
   inset: -7px 0;
 }
 .game--portrait .mvp-topbar .topbar__actions {
-  gap: 6px;
+  display: contents;
+}
+.game--portrait .mvp-topbar .topbar__capsule-group {
+  grid-row: 1;
+  grid-column: 2 / 4;
+  justify-self: end;
+}
+.game--portrait .mvp-topbar .mvp-uytin {
+  grid-row: 2;
+  grid-column: 3;
+}
+.game--portrait .mvp-topbar.mvp-topbar--uytin .topbar__task {
+  grid-column: 1 / 3 !important;
 }
 .game--portrait .mvp-uytin {
   height: 36px;
@@ -1266,13 +1308,13 @@
 }
 .game--portrait .mvp-kho .inv-slots-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-rows: 64px;
+  grid-auto-rows: 72px;
   gap: 8px;
   padding: 4px;
 }
 .game--portrait .mvp-kho .inv-slot {
   width: 100%;
-  height: 64px;
+  height: 72px;
 }
 .game--portrait .mvp-kho .notebook__journal-container {
   padding: 10px;
@@ -1290,4 +1332,14 @@
 }
 .game--portrait .mvp-luunap .saveload-back-btn {
   display: none;
+}
+.game--portrait .mvp-luunap .saveload-title-badge__text {
+  white-space: nowrap;
+}
+.game--portrait .mvp-luunap .saveload-title-sub {
+  display: none;
+}
+.game--portrait ~ .mvp-quansat .facilitator__body,
+.game-simulator-backdrop .mvp-quansat .facilitator__body {
+  top: 120px;
 }

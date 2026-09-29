@@ -65,6 +65,7 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
   const moc = mocHud(kb, s);
   const tenNgay = kb.lich.ngay.find((n) => n.so === s.ngay)?.ten ?? '';
   const tong = kb.lich.luat.uyTin ?? 0;
+  const coUyTin = s.giaiDoan === 'hop' && tong > 0;
   const daXongNgay = (so: number): boolean => s.giaiDoan === 'hop' || s.giaiDoan === 'het' || (s.giaiDoan === 'ngay' && so < s.ngay);
   const nhanDocNgang = viewportMode === 'mobile' ? 'Chuyển sang màn hình ngang PC' : 'Chuyển sang màn hình dọc Mobile 9:16';
 
@@ -94,7 +95,7 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
   };
 
   return (
-    <header className="topbar mvp-topbar" aria-label="Thanh trạng thái">
+    <header className={`topbar mvp-topbar${coUyTin ? ' mvp-topbar--uytin' : ''}`} aria-label="Thanh trạng thái">
       <div className="topbar__chapter" role="group" aria-label={`Tiến trình: ${moc.nhanDai}`} title={tenNgay || moc.nhanDai}>
         <span className="topbar__chapter-count">
           <span className="topbar__chapter-kicker" aria-hidden="true">
@@ -129,7 +130,7 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
         </div>
       </div>
       <div className="topbar__actions">
-        {s.giaiDoan === 'hop' && tong > 0 ? <ThanhUyTin con={s.uyTin} tong={tong} /> : null}
+        {coUyTin ? <ThanhUyTin con={s.uyTin} tong={tong} /> : null}
         <div className="topbar__capsule-group" role="toolbar" aria-label="Điều khiển">
           <button
             type="button"
