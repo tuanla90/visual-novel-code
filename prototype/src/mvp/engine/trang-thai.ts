@@ -58,8 +58,12 @@ export interface TrangThaiMvp {
   phienBan: 1;
   /** Mốc bắt đầu ván (ms) — khóa phiên, dùng làm khóa xáo lựa chọn. */
   batDauLuc: number;
-  /** `[TẠO NHÂN VẬT]` chưa có màn riêng (gói `tao-nhan-vat` sau): giá trị mặc định, xem `may.ts`. */
+  /**
+   * Tên người chơi tự gõ / xúc xắc ở `[TẠO NHÂN VẬT ten]` (rỗng tới lúc đó; ô lưu cũ có sẵn 'Khôi').
+   * Chỉ nằm trong trạng thái (Lưu/Nạp) — KHÔNG ghi vào telemetry (QĐ-077).
+   */
   tenNguoiChoi: string;
+  /** Ngành chọn ở `[TẠO NHÂN VẬT nganh]` (chữ đúng như danh sách `lựa chọn:`); rỗng tới lúc đó. */
   nganh: string;
 
   giaiDoan: GiaiDoanMvp;

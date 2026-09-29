@@ -15,7 +15,9 @@
  *   - Ngày họp: `[HỎI … · trừ uy tín]` sai → mất 1 vạch, lời `[KHI MẤT UY TÍN]`, chọn lại; hết vạch → lời `[HẾT VẠCH]`
  *     rồi hoãn: quay lại đầu chuỗi ngày họp với đủ vạch (cách đơn giản nhất — xem báo cáo gói).
  *   - `[RẼ KẾT]`: kết thật nếu `[ĐIỀU KIỆN]` đầu chuỗi kết thật thỏa, không thì kết thường.
- *   - `[TẠO NHÂN VẬT]`: chưa có màn tạo nhân vật (gói `tao-nhan-vat`) → dùng `TEN_MAC_DINH` / ngành đầu danh sách.
+ *   - `[TẠO NHÂN VẬT]` (gói tao-nhan-vat-mvp, QĐ-084): máy DỪNG chờ người chơi (khung nhìn `create-character`);
+ *     `dat-ten` nhận tên qua `kiemTen`, `chon-nganh` nhận một ngành trong danh sách. Người chơi là nam, không hỏi giới tính.
+ *     Tên KHÔNG đi vào telemetry (QĐ-077) — máy không ghi sự kiện nào; tên chỉ nằm trong trạng thái (Lưu/Nạp).
  */
 import type {
   ChuoiMvp,
@@ -31,8 +33,63 @@ import type {
 } from '../../content/mvp/types';
 import type { BoiCanhChuoi, TrangThaiMvp } from './trang-thai';
 
-/** Tên người chơi khi chưa có màn tạo nhân vật (người chơi là nam, QĐ-087). */
+/**
+ * Tên dự phòng khi trạng thái chưa có tên (chưa qua câu hỏi tên, hay ô lưu hỏng). Không dùng trên đường chạy thường:
+ * trạng thái mới bắt đầu với tên rỗng, người chơi tự gõ hoặc bấm xúc xắc. Ô lưu cũ (trước gói tao-nhan-vat) có sẵn
+ * `tenNguoiChoi: 'Khôi'` nên vẫn nạp được như cũ.
+ */
 export const TEN_MAC_DINH = 'Khôi';
+
+/** Độ dài tối đa của tên người chơi (tính theo ký tự sau khi bỏ khoảng trắng thừa). */
+export const TEN_TOI_DA = 20;
+
+/**
+ * Tên gọi nam Việt Nam phổ biến cho nút xúc xắc. Đã bỏ: tên nhân vật trong truyện (Tùng, Quân, Duy, Hiếu, Đạt,
+ * Cường, Thịnh, Quang, Khải, Đức…) và mọi tên bắt đầu bằng H (vụ án xoay quanh chữ ký "[H.]" — người chơi tên H
+ * sẽ tự thành nghi phạm). `tenNgauNhien` lọc thêm theo `nhan-vat.md` / tên cấm lúc chạy, phòng khi nội dung đổi.
+ */
+export const TEN_XUC_XAC: readonly string[] = [
+  'An', 'Bảo', 'Bình', 'Chiến', 'Công', 'Dũng', 'Giang', 'Khang', 'Khôi', 'Kiên',
+  'Kiệt', 'Lâm', 'Long', 'Nam', 'Nghĩa', 'Nguyên', 'Nhật', 'Phong', 'Phúc', 'Quốc',
+  'Sơn', 'Tâm', 'Thành', 'Thắng', 'Thiện', 'Toàn', 'Trung', 'Tuấn', 'Việt', 'Vinh',
+];
+
+export type KetQuaKiemTen = { ok: true; ten: string } | { ok: false; loi: string };
+
+/** Chữ cái Latin (kể cả chữ có dấu tiếng Việt, dạng dựng sẵn hay tổ hợp), nối nhau bằng khoảng trắng / gạch nối. */
+const MAU_TEN = /^[\p{Script=Latin}\p{M}]+(?:[ -]+[\p{Script=Latin}\p{M}]+)*$/u;
+
+/**
+ * Kiểm tên người chơi gõ: bỏ khoảng trắng thừa (đầu/cuối, giữa gộp còn một), chuẩn NFC; 1–`TEN_TOI_DA` ký tự;
+ * chỉ chữ cái + khoảng trắng + dấu gạch nối (không số, không ký tự lạ). Sai → lời báo thân thiện.
+ */
+export function kiemTen(tho: string): KetQuaKiemTen {
+  const ten = tho.normalize('NFC').replace(/\s+/g, ' ').trim();
+  if (ten.length === 0) return { ok: false, loi: 'Cậu chưa gõ tên. Gõ một cái tên, hoặc bấm xúc xắc.' };
+  if ([...ten].length > TEN_TOI_DA) return { ok: false, loi: `Tên dài quá — tối đa ${TEN_TOI_DA} ký tự thôi.` };
+  if (/\p{N}/u.test(ten)) return { ok: false, loi: 'Tên không có chữ số đâu — bỏ số đi nhé.' };
+  if (!MAU_TEN.test(ten)) return { ok: false, loi: 'Tên chỉ gồm chữ cái, khoảng trắng và dấu gạch nối (-).' };
+  return { ok: true, ten };
+}
+
+/** Các chữ (viết thường) đang là tên / họ tên nhân vật hay tên cấm — xúc xắc không ra những chữ này. */
+function chuDaDung(kb: KichBanMvp): Set<string> {
+  const cac = [...kb.nhanVat.flatMap((n) => [n.ten, n.hoTen ?? '']), ...kb.tenCam];
+  return new Set(cac.flatMap((c) => c.normalize('NFC').toLowerCase().split(/[\s-]+/)).filter(Boolean));
+}
+
+/**
+ * Tên ngẫu nhiên cho nút xúc xắc. `ngauNhien` trả số trong [0, 1) như `Math.random` (tiêm được để test tất định);
+ * `khac` = tên đang có trong ô, để bấm lại luôn ra tên khác.
+ */
+export function tenNgauNhien(kb: KichBanMvp, ngauNhien: () => number = Math.random, khac?: string): string {
+  const cam = chuDaDung(kb);
+  const hopLe = TEN_XUC_XAC.filter((t) => !cam.has(t.toLowerCase()) && !/^h/i.test(t));
+  const conLai = hopLe.filter((t) => t !== khac);
+  const tu = conLai.length > 0 ? conLai : hopLe.length > 0 ? hopLe : [TEN_MAC_DINH];
+  const i = Math.min(tu.length - 1, Math.max(0, Math.floor(ngauNhien() * tu.length)));
+  return tu[i] ?? TEN_MAC_DINH;
+}
 
 /** Mốc "ngày họp" và "buổi tối" theo cách đánh số của bộ sinh (`ChuoiMvp.mocSomNhat`). */
 const MOC_NGAY_HOP = 1000;
@@ -53,7 +110,11 @@ export type HanhDongMvp =
   /** Chọn một ô ở `[LỌC THỬ]` (giá trị cột phải chọn). */
   | { type: 'chon-o'; giaTri: string }
   /** Màn thử thách / sửa truy vấn báo đã xong (vật chứng của thẻ vào hồ sơ). */
-  | { type: 'xong-thu-thach'; thuThach: string };
+  | { type: 'xong-thu-thach'; thuThach: string }
+  /** `[TẠO NHÂN VẬT ten]`: tên người chơi gõ (hay xúc xắc điền); máy kiểm lại bằng `kiemTen`, sai thì đứng yên. */
+  | { type: 'dat-ten'; ten: string }
+  /** `[TẠO NHÂN VẬT nganh]`: một ngành trong `lựa chọn:` của nút. */
+  | { type: 'chon-nganh'; nganh: string };
 
 // ---------- Khung nhìn ----------
 
@@ -86,6 +147,7 @@ export type KhungNhinMvp =
   | { kind: 'notebook-lookup'; trang: string; phan: string }
   | { kind: 'notebook-copy'; trang: string; lanThu: number }
   | { kind: 'trial-filter'; nut: Extract<NutMvp, { type: 'trial-filter' }>; lanThu: number }
+  | { kind: 'create-character'; nut: Extract<NutMvp, { type: 'create-character' }> }
   | { kind: 'end'; ketQua: 'that' | 'thuong' }
   | { kind: 'error'; message: string };
 
@@ -203,7 +265,7 @@ export function taoTrangThai(kb: KichBanMvp, batDauLuc: number = Date.now()): Tr
   const s: TrangThaiMvp = {
     phienBan: 1,
     batDauLuc,
-    tenNguoiChoi: TEN_MAC_DINH,
+    tenNguoiChoi: '',
     nganh: '',
     giaiDoan: 'mo-dau',
     ngay: 0,
@@ -362,6 +424,7 @@ function canNguoiChoi(nut: NutMvp): boolean {
     case 'notebook-lookup':
     case 'notebook-copy':
     case 'trial-filter':
+    case 'create-character':
     case 'end':
       return true;
     default:
@@ -409,10 +472,6 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
       }
       case 'save-evidence':
         s = tienNut(luuBangChung(s, nut.evidenceId));
-        break;
-      case 'create-character':
-        // Chưa có màn tạo nhân vật (gói `tao-nhan-vat`): tên mặc định, ngành = lựa chọn đầu.
-        s = tienNut(nut.truong === 'ten' ? { ...s, tenNguoiChoi: TEN_MAC_DINH } : { ...s, nganh: nut.luaChon[0] ?? '' });
         break;
       case 'ending-branch': {
         const ket = kb.lich.ket;
@@ -506,6 +565,8 @@ export function khungNhin(kb: KichBanMvp, s: TrangThaiMvp): KhungNhinMvp {
       return { kind: 'notebook-copy', trang: nut.trang, lanThu: lanThu(nut.trang) };
     case 'trial-filter':
       return { kind: 'trial-filter', nut, lanThu: lanThu(nut.id) };
+    case 'create-character':
+      return { kind: 'create-character', nut };
     case 'end':
       return { kind: 'end', ketQua: s.ketQua ?? (s.conTro.chuoi === kb.lich.ket?.that ? 'that' : 'thuong') };
     default:
@@ -656,6 +717,18 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       }
       break;
     }
+    case 'dat-ten': {
+      if (kn.kind !== 'create-character' || kn.nut.truong !== 'ten') return s;
+      const kq = kiemTen(hd.ten);
+      if (!kq.ok) return s;
+      moi = tienNut({ ...s, tenNguoiChoi: kq.ten });
+      break;
+    }
+    case 'chon-nganh': {
+      if (kn.kind !== 'create-character' || kn.nut.truong !== 'nganh' || !kn.nut.luaChon.includes(hd.nganh)) return s;
+      moi = tienNut({ ...s, nganh: hd.nganh });
+      break;
+    }
   }
   if (!moi) return s;
   return chayToiNutCanNguoiChoi(kb, moi);
@@ -663,10 +736,13 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
 
 // ---------- Tiện ích cho giao diện ----------
 
-/** Thay `{{nv.nguoi-choi}}` bằng tên người chơi; `{{nv.<mã>}}` khác bằng tên nhân vật trong nhan-vat.md. */
+/**
+ * Thay `{{nv.nguoi-choi}}` bằng tên người chơi (chưa đặt tên → `TEN_MAC_DINH`, chỉ để câu không hụt chữ);
+ * `{{nv.<mã>}}` khác bằng tên nhân vật trong nhan-vat.md.
+ */
 export function dienTen(kb: KichBanMvp, s: TrangThaiMvp, text: string): string {
   return text.replace(/\{\{nv\.([a-z0-9-]+)\}\}/g, (_m, ma: string) => {
-    if (ma === 'nguoi-choi') return s.tenNguoiChoi;
+    if (ma === 'nguoi-choi') return s.tenNguoiChoi || TEN_MAC_DINH;
     return kb.nhanVat.find((n) => n.id === ma)?.trongCau ?? ma;
   });
 }

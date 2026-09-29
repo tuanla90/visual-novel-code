@@ -18,6 +18,8 @@ interface ChienThuat {
   reNhanh?: (id: string) => string;
   /** Mặc định chọn đáp án đúng. */
   traLoi?: (id: string, lan: number) => 'dung' | 'sai';
+  /** Tên gõ ở câu hỏi tên (mặc định "Nam"). */
+  ten?: string;
 }
 
 /** Chơi tự động tới khi gặp `dung(s, kn)` hoặc hết game; ném lỗi khi máy báo `error`. */
@@ -72,6 +74,9 @@ function choi(s: TrangThaiMvp, ct: ChienThuat, dung: (s: TrangThaiMvp, kn: Khung
         hd = chon ? { type: 'chon-du-kien', ...chon } : { type: 'ket-thuc-ngay' };
         break;
       }
+      case 'create-character':
+        hd = kn.nut.truong === 'ten' ? { type: 'dat-ten', ten: ct.ten ?? 'Nam' } : { type: 'chon-nganh', nganh: kn.nut.luaChon[0] ?? '' };
+        break;
       case 'end':
         return s;
     }
@@ -117,12 +122,13 @@ const toiHop = (s: TrangThaiMvp): boolean => s.giaiDoan === 'hop';
 const toiKet = (_s: TrangThaiMvp, kn: KhungNhinMvp): boolean => kn.kind === 'end';
 
 describe('máy MVP: mở đầu', () => {
-  it('khởi tạo đứng ở lời đầu chuỗi mở đầu, tên người chơi mặc định', () => {
+  it('khởi tạo đứng ở lời đầu chuỗi mở đầu, chưa có tên / ngành (người chơi tự đặt ở [TẠO NHÂN VẬT])', () => {
     const s = taoTrangThai(KB, 1);
     expect(s.giaiDoan).toBe('mo-dau');
     expect(s.conTro?.chuoi).toBe(KB.lich.chuoiDau);
     expect(khungNhin(KB, s).kind).toBe('line');
-    expect(s.tenNguoiChoi.length).toBeGreaterThan(0);
+    expect(s.tenNguoiChoi).toBe('');
+    expect(s.nganh).toBe('');
   });
 
   it('đi hết mở đầu (lọc thử ở Ngày hội, sổ chị Linh, lá thư) → ngày 1 sáng, có manh mối [H.]', () => {
