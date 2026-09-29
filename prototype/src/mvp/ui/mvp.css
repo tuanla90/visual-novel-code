@@ -1047,3 +1047,45 @@
 .game--portrait .mvp-canh {
   padding: var(--sp-2);
 }
+
+/* Điện thoại dọc (user chốt 29/09): ảnh nơi chốn cao ~60% màn, rộng hơn khung → vuốt ngang để xem hết.
+   Vật to gấp ~2,5 lần so với co vừa bề ngang. Hai khối giống nhau: máy thật dọc và chế độ dọc giả lập. */
+.mvp-canh__vuot {
+  display: none;
+}
+@media (max-width: 768px) and (orientation: portrait) {
+  .mvp-canh__vung {
+    overflow-x: auto;
+    overflow-y: hidden;
+    place-items: center start;
+    overscroll-behavior-x: contain;
+  }
+  .mvp-canh__khung {
+    width: calc(min(100cqh, 62svh) * var(--ti-le-so));
+    max-width: none;
+  }
+  .mvp-canh__vuot {
+    display: block;
+    margin: 4px 0 0;
+    text-align: center;
+    font-size: var(--fs-sm);
+    color: var(--c-text-muted);
+  }
+}
+.game--portrait .mvp-canh__vung {
+  overflow-x: auto;
+  overflow-y: hidden;
+  place-items: center start;
+  overscroll-behavior-x: contain;
+}
+.game--portrait .mvp-canh__khung {
+  width: calc(min(100cqh, 62svh) * var(--ti-le-so));
+  max-width: none;
+}
+.game--portrait .mvp-canh__vuot {
+  display: block;
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}

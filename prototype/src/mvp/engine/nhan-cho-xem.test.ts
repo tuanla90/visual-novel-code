@@ -22,6 +22,9 @@ describe('nhãn chỗ xem xét (không lộ manh mối)', () => {
     expect(theoId('dk-don-robotics')).toBe('Xem: Đơn xin phòng làm xưởng');
     expect(theoId('dk-loc-lop')).toBe('Ngồi vào máy tính');
     expect(theoId('dk-co-hanh-cap-quyen')).toBe('Nói chuyện với cô Hạnh');
+    // Đồ vật mang nhãn theo đồ vật, không theo người nói trong chuỗi (user chốt 29/09).
+    expect(theoId('dk-nhat-ky-in')).toBe('Xem xét chỗ này');
+    expect(theoId('dk-bac-thinh-the-lich')).toBe('Xem xét chỗ này');
   });
 
   it('trong cùng một địa điểm, nhãn không trùng nhau', () => {

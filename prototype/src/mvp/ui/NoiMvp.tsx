@@ -9,7 +9,7 @@
  * - Vật dùng chung hai dữ kiện: một điểm; một dữ kiện mở → vào thẳng, nhiều hơn → chọn nhanh bằng nhãn trung tính.
  * - Danh sách chữ (`ChoXemXet`) là phương án dự phòng / trợ năng; dữ kiện chưa có dòng `- Ảnh:` chỉ chọn được ở đó.
  */
-import { useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { diemTrongNoi, nhanTrongNoi, type DiemTuongTac } from '../engine/diem-tuong-tac';
 import type { DiaDiemHienMvp, DuKienHienMvp } from '../engine/may';
@@ -33,6 +33,12 @@ function nhanKhung(k: DuKienHienMvp): string {
 export function NoiMvp({ kb, noi, khung, khungConLai, onChon, onVeBanDo }: NoiMvpProps) {
   const [xemDs, setXemDs] = useState(false);
   const [nhomChon, setNhomChon] = useState<string | null>(null);
+  const vungRef = useRef<HTMLDivElement>(null);
+  // Điện thoại dọc: ảnh rộng hơn khung và vuốt ngang được (CSS) — mở ra ở giữa ảnh.
+  useEffect(() => {
+    const v = vungRef.current;
+    if (v && v.scrollWidth > v.clientWidth) v.scrollLeft = (v.scrollWidth - v.clientWidth) / 2;
+  }, [noi.diaDiem.id]);
   const diem = diemTrongNoi(kb, noi);
   const nhan = nhanTrongNoi(kb, noi);
   const canh = noi.diaDiem.canh;
@@ -81,7 +87,7 @@ export function NoiMvp({ kb, noi, khung, khungConLai, onChon, onVeBanDo }: NoiMv
         </div>
       </div>
 
-      <div className="mvp-canh__vung">
+      <div className="mvp-canh__vung" ref={vungRef}>
         <div className="mvp-canh__khung" style={soDe} data-khung={khung ?? 'toi'} data-dem-rieng={nenDemRieng ? 'true' : 'false'}>
           {nen ? <img className="mvp-canh__nen" src={nen} alt="" draggable={false} /> : <div className="mvp-canh__nen mvp-stage__nen-tam" />}
           {diem.map((d) => {
@@ -110,6 +116,7 @@ export function NoiMvp({ kb, noi, khung, khungConLai, onChon, onVeBanDo }: NoiMv
           <div className="mvp-canh__mau" aria-hidden="true" />
         </div>
       </div>
+      <p className="mvp-canh__vuot">Vuốt ngang để xem cả phòng</p>
 
       {nhom ? (
         <div className="mvp-canh__bang" role="dialog" aria-label="Chọn việc ở chỗ này">

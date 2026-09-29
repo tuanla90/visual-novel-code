@@ -4,7 +4,9 @@
  * `moTa` của dữ kiện là dòng viết cho tác giả ("Bác Thịnh kể lúc mở hộp 9h sáng thứ Hai; thẻ lịch rách ở khe")
  * nên KHÔNG được hiện: nó kể trước nội dung manh mối. Nhãn ở đây dựng từ dữ liệu có sẵn, chỉ nói người chơi
  * sẽ làm gì (nói với ai, xem tài liệu nào), không nói sẽ biết được gì. Thứ tự ưu tiên:
- * thử thách → người ngoài nhóm nói trong chuỗi → tài liệu được hiện → chỉ lời kể → còn lại "Xem xét quanh đây".
+ * thử thách → theo loại ảnh đặt trên nền (user chốt 29/09: đồ vật `obj-…` → tên tài liệu hoặc "Xem xét chỗ này";
+ * người `nv:…` → "Nói chuyện với …") → người ngoài nhóm nói trong chuỗi → tài liệu được hiện → chỉ lời kể
+ * → còn lại "Xem xét quanh đây".
  */
 import type { DuKienMvp, KichBanMvp } from '../../content/mvp/types';
 
@@ -14,15 +16,20 @@ const NHOM = new Set(['player', 'narrator', 'tung', 'ha-vy', 'minh-anh', 'duy'])
 export function nhanChoXem(kb: KichBanMvp, dk: DuKienMvp): string {
   if (dk.hanhDong.kind === 'thu-thach') return 'Ngồi vào máy tính';
 
+  const tenNv = (id: string) => kb.nhanVat.find((n) => n.id === id)?.trongCau ?? 'người ở đây';
+  const taiLieu = dk.hienTaiLieu[0];
+  const tieuDe = taiLieu ? kb.hoSo[taiLieu]?.fields['Tiêu đề'] : undefined;
+  const sprite = dk.anh?.sprite;
+  if (sprite?.startsWith('nv:')) return `Nói chuyện với ${tenNv(sprite.slice(3))}`;
+  if (sprite?.startsWith('obj-')) return tieuDe ? `Xem: ${tieuDe}` : 'Xem xét chỗ này';
+
   const tenChuoi = dk.hanhDong.chuoi;
   const chuoi = kb.chuoi.find((c) => c.id === tenChuoi);
   const nguoiNoi = new Set<string>();
   for (const nut of chuoi?.nodes ?? []) if (nut.type === 'line') nguoiNoi.add(nut.speaker);
   const nguoiNgoai = [...nguoiNoi].find((s) => !NHOM.has(s));
-  if (nguoiNgoai) return `Nói chuyện với ${kb.nhanVat.find((n) => n.id === nguoiNgoai)?.trongCau ?? 'người ở đây'}`;
+  if (nguoiNgoai) return `Nói chuyện với ${tenNv(nguoiNgoai)}`;
 
-  const taiLieu = dk.hienTaiLieu[0];
-  const tieuDe = taiLieu ? kb.hoSo[taiLieu]?.fields['Tiêu đề'] : undefined;
   if (tieuDe) return `Xem: ${tieuDe}`;
 
   if (nguoiNoi.size === 1 && nguoiNoi.has('narrator')) return 'Nghe ngóng xung quanh';

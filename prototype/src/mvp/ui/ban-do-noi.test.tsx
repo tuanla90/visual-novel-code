@@ -104,7 +104,10 @@ describe('NoiMvp (màn trong địa điểm)', () => {
     expect(diem).toHaveLength(3);
     for (const k of noi.duKien) {
       const nut = vung.querySelector(`button[data-diem="${k.duKien.anh?.sprite ?? ''}"]`);
-      expect(nut?.getAttribute('aria-label'), k.duKien.id).toBe(nhanChoXem(kb, k.duKien));
+      // Nhãn trùng trong cùng nơi được đánh số "(1)", "(2)" để trình đọc màn hình còn phân biệt.
+      const nhan = nut?.getAttribute('aria-label') ?? '';
+      const goc = nhanChoXem(kb, k.duKien);
+      expect([goc, `${goc} (1)`, `${goc} (2)`, `${goc} (3)`], k.duKien.id).toContain(nhan);
       expect(nut?.getAttribute('aria-label') ?? '', k.duKien.id).not.toContain(k.duKien.moTa);
       expect(nut?.getAttribute('title') ?? '', k.duKien.id).not.toContain(k.duKien.moTa);
     }
