@@ -1,4 +1,4 @@
-# Thực hành SQL theo ngày — MVP Vụ 1 "Chữ ký H" (v0.1, 29/09/2026)
+# Thực hành SQL theo mốc — MVP Vụ 1 "Chữ ký H" (v0.2, 29/09/2026)
 
 > **Trạng thái:** ĐỀ XUẤT theo QĐ-092, chờ user chốt các mục **[cần chốt]**. Mọi số dòng trong tài liệu đã chạy thật trên sql.js
 > (dữ liệu hiện có + phần dữ liệu đề xuất ở mục 7), trừ chỗ ghi "chưa chạy".
@@ -8,6 +8,65 @@
 >   thu vào hồ sơ, dòng sổ** dưới đây.
 > - **Phiên giao diện + cốt truyện**: CSS, ảnh, và **lời dẫn / thoại** giữa các bài. Được viết lại thoại tự do, nhưng **không đổi** câu SQL,
 >   giá trị dữ liệu, số dòng, mã manh mối / bằng chứng. Muốn đổi thì ghi vào mục 10 để phiên logic sửa dữ liệu và bộ kiểm cùng lúc.
+
+## 0. Các mốc của Vụ 1 (để lên kế hoạch nội dung)
+
+**Cách gọi:** đơn vị lớn là **Vụ** (tương đương "chapter"): Vụ 1 "Chữ ký H" chạy từ mở đầu tới **buổi bảo vệ** (buổi họp rà soát).
+Mốc ghi `Vụ 1 · Ngày n`. Lịch trong truyện: mở đầu là **tuần 1** (tuần sinh hoạt công dân), ngày 1–5 là thứ Ba → thứ Bảy **tuần 2**,
+buổi bảo vệ là thứ Hai **tuần 3** — nên không gọi "Tuần 1 · Ngày 2" để khỏi lệch với chữ "tuần" trong thoại.
+
+Cột **Dữ kiện cần lấy** ghi dữ kiện người chơi phải có trước mốc đó và **chỗ đang cài hiện nay** (để bạn quyết cài lại chỗ khác).
+**Hồ sơ thu được** ghi thứ vào hồ sơ và **dùng tiếp ở đâu**. Chi tiết từng bài SQL (câu chuẩn, số dòng, bẫy) ở mục 4–5, dành cho phiên logic.
+
+---
+
+**Mốc: Vụ 1 · Mở đầu** (tuần 1: nhận phòng KTX → Ngày hội CLB → phòng CLB)
+- **Kiến thức:** xem một câu lọc viết sẵn (`WHERE ten = 'Tùng'`) và chọn đúng dòng — thấy "lọc thay vì dò bằng mắt"; chưa tự viết.
+- **Dữ kiện cần lấy:** tên và ngành của bạn cùng phòng (Tùng, Du lịch) — có sẵn trong truyện.
+- **Hồ sơ thu được:** giấy nhớ **[H]** (chữ ký trên lá thư) → dùng ở Ngày 4 và buổi bảo vệ; tài liệu: thẻ lịch của mình (để so với thẻ
+  lịch rách ở Ngày 1), sổ chị Linh, báo cáo năm ngoái, bản chụp lá thư.
+
+**Mốc: Vụ 1 · Ngày 1** (thứ Ba tuần 2) — thực địa
+- **Kiến thức:** — (không có SQL; dạy cách xem xét hiện trường, đối chiếu thẻ lịch với thẻ của mình).
+- **Dữ kiện cần lấy:** biết hộp kiến nghị ở sảnh tòa B (hiện: thông báo họp + lời Minh Anh ở mở đầu).
+- **Hồ sơ thu được:** giấy nhớ **[Tòa B]** và **[Báo chí K24]**, bằng chứng **thẻ lịch rách** (hiện cả ba từ lời bác Thịnh + thẻ lịch mắc ở
+  khe hộp) → dùng ở Ngày 2; thẻ lịch còn là căn cứ ở buổi bảo vệ.
+
+**Mốc: Vụ 1 · Ngày 2** (thứ Tư tuần 2) — phòng máy
+- **Kiến thức:** `WHERE`, so sánh bằng với **số** (viết như dữ liệu lưu), so sánh bằng với **chữ** (nháy đơn `'…'`), `AND` / `OR`.
+- **Dữ kiện cần lấy:** **K24** (khóa 2024), **tòa nhà B**, **ngành Báo chí** (hiện: K24 và Báo chí nằm chung giấy nhớ [Báo chí K24], tòa B là
+  giấy nhớ riêng — đều từ Ngày 1; tách thành 3 giấy nhớ cũng được); **quyền dữ liệu** (cô Hạnh cấp ở Phòng Đào tạo, cùng ngày).
+- **Hồ sơ thu được:** bằng chứng **Lớp BC24A** (tòa B, Báo chí, khóa 2024) → dữ kiện cho bài thực hành Ngày 4 và căn cứ ở buổi bảo vệ.
+  Sổ cá nhân tự ghi 3 dòng: WHERE + số; chữ + nháy đơn; AND/OR.
+
+**Mốc: Vụ 1 · Ngày 3** (thứ Năm tuần 2) — thực địa
+- **Kiến thức:** — (dữ liệu có giới hạn: phải có mã sinh viên và căn cứ mới được tra sổ niêm phong).
+- **Dữ kiện cần lấy:** Lớp BC24A (Ngày 2) để CLB có cái mang lên Phòng CTSV.
+- **Hồ sơ thu được:** giấy nhớ **[Cần mã và căn cứ]** → lý do Ngày 4 phải lọc ra **mã sinh viên**; (phụ) giấy nhớ **[Lời chú Cường]** → cần
+  cho kết thật.
+
+**Mốc: Vụ 1 · Ngày 4** (thứ Sáu tuần 2) — phòng máy
+- **Kiến thức:** ôn chữ + nháy trên bảng mới; `=` so khớp **nguyên chữ** (ra 0 dòng thì xem lại dữ liệu); "bắt đầu bằng" `LIKE 'H%'`.
+  (Phụ) ôn số + `AND` trên nhật ký in.
+- **Dữ kiện cần lấy:** **Lớp BC24A** (Ngày 2), **[H]** (mở đầu), **[Cần mã và căn cứ]** (Ngày 3). (Phụ) **lá thư dài 1 trang** — hiện **chưa cài**
+  (bản chụp thư chưa nói số trang), cần thêm nếu giữ bài nhật ký in.
+- **Hồ sơ thu được:** bằng chứng **Hai mã** (Hiếu SV240228, Hoài SV240317) → nộp ở Ngày 5, căn cứ ở buổi bảo vệ. (Phụ) bằng chứng **Dòng nhật ký
+  in** (Chủ nhật 23:10, tài khoản năm 4) → cần cho kết thật. Sổ cá nhân tự ghi: `=` so nguyên chữ; LIKE bắt đầu bằng.
+
+**Mốc: Vụ 1 · Ngày 5** (thứ Bảy tuần 2) — thực địa
+- **Kiến thức:** — (kết quả lọc là ứng viên, sổ niêm phong mới xác nhận).
+- **Dữ kiện cần lấy:** **Hai mã** (Ngày 4) + căn cứ bằng văn bản.
+- **Hồ sơ thu được:** giấy nhớ **[Hoài là người nộp]** (cô phụ trách tra sổ: SV240317 có, SV240228 không) → buổi bảo vệ; (phụ) **[Lời Đạt]**
+  → cần cho kết thật (thay được lời chú Cường).
+
+**Mốc: Vụ 1 · Buổi bảo vệ** (thứ Hai tuần 3)
+- **Kiến thức:** **đọc và sửa** SQL (câu OR của Quân 14 dòng → sửa AND → 2 dòng); đọc kết quả đúng mức (ứng viên, không phải thủ phạm).
+  Sai mất vạch uy tín.
+- **Dữ kiện cần mang:** Hai mã, [H], Lớp BC24A, thẻ lịch rách, [Hoài là người nộp]; để có **kết thật**: dòng nhật ký in **và** (lời chú Cường
+  **hoặc** lời Đạt).
+- **Hồ sơ thu được:** bằng chứng "Hai dòng sau khi sửa"; kết thường hoặc kết thật.
+
+---
 
 ## 1. Nguyên tắc (tóm QĐ-092)
 
@@ -40,7 +99,7 @@ Mỗi buổi phòng máy viết thành **một bảng bài** + phần việc cho
 **Việc của phiên truyện cho mỗi buổi:** lời mở buổi (vì sao hôm nay tra cái này), một câu **nhiệm vụ** cho mỗi bài (ai giao, vì sao — không
 lộ SQL), lời Hà Vy mô tả kết quả sau mỗi lần chạy dự kiến (cả lần "sai có ích"), lời Tùng ở chỗ ghi "Tùng", câu chốt khi thu được bằng chứng.
 
-## 3. Bản đồ 6 ngày
+## 3. Bản đồ 6 ngày (bảng gọn của mục 0)
 
 | Ngày | Loại | Dữ kiện chính | Thực hành SQL | Vào từ hồ sơ | Thu vào hồ sơ |
 |---|---|---|---|---|---|
@@ -139,6 +198,7 @@ Bảng `sinh_vien(ma_sv, ho_dem, ten, ma_lop)`. Người chơi đã có bằng c
 
 - **[cần chốt]** Ngày thực địa có thêm bài SQL ngắn không (mục 3).
 - **[cần chốt]** Tùng làm OR ra 5 lớp ở 2.3 (mục 4).
-- **[cần chốt]** Nhật ký in thành hai lần chạy thật (4.4–4.5) thay cảnh chỉ đọc (mục 5).
+- **[cần chốt]** Nhật ký in thành hai lần chạy thật (4.4–4.5) thay cảnh chỉ đọc (mục 5); nếu giữ thì cài thêm "lá thư dài 1 trang".
+- Cách gọi "Vụ" / "buổi bảo vệ" (mục 0) — đổi được, chỉ là tên trong tài liệu.
 - Khối bấm kiểu SQL Police: bậc giữa của thang tự viết, sau MVP (QĐ-092, chưa chốt).
 - (Phiên truyện ghi vào đây nếu cần đổi SQL, số dòng hay manh mối.)
