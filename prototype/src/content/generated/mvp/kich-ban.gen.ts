@@ -2348,7 +2348,7 @@ export const KICH_BAN_MVP = {
           "choices": [
             {
               "id": "khong-so-niem-phong",
-              "text": "Dạ, chưa nói được ạ. Mã của Hoài có trên phiếu, chưa cho biết ai viết thư.",
+              "text": "Dạ, chưa nói được ạ. Người có mã trên phiếu chưa chắc đã là người soạn thư.",
               "correct": true,
               "feedback": [
                 {
@@ -2492,7 +2492,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Khoan… gọi bạn ấy vào kiểu này khác gì hỏi cung."
+          "text": "Khoan… chiếu tên bạn ấy lên rồi gọi vào thế này, khác gì hỏi cung."
         },
         {
           "type": "line",
@@ -2579,7 +2579,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Thưa thầy, bọn em có thêm nhật ký in của phòng máy ạ. Thư được in lúc 23:10 tối Chủ nhật, từ tài khoản một sinh viên năm 4."
+          "text": "Thưa thầy, bọn em có thêm nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật từ tài khoản một sinh viên năm 4."
         },
         {
           "type": "line",
@@ -2603,13 +2603,19 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Nhật ký in cho thấy thư in từ tài khoản một sinh viên năm 4, lời em kể cho thấy em chỉ mang thư tới hộp. Vậy người soạn là người khác."
+          "text": "Nhật ký in và lời kể sáng thứ Hai là hai nguồn riêng, cả hai đều khớp với lời em. Vậy em không phải người soạn thư."
         },
         {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Theo quy chế, mã trên phiếu phải là mã của chính người viết thư. Phiếu này ghi mã của em, mà em chỉ nộp hộ, nên thư không được tính là phản ánh hợp lệ trong hồ sơ rà soát."
+          "text": "Mã trên phiếu là để thầy cô tra cứu và phản hồi người gửi. Ở đây người viết giấu tên, mượn chữ \"H.\" và mã của một bạn năm nhất. Thư như vậy thầy không nhận vào hồ sơ rà soát."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Em làm theo lời nhờ nên không bị xử lý gì cả."
         },
         {
           "type": "line",

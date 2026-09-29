@@ -24,7 +24,7 @@
   - (B) {id: da-bo-thu} Hai người đã bỏ thư. → phản hồi: **ha-vy** (thinking): Khoan. Điều kiện lọc là tên với lớp, có phải hành động đâu.
   - (C) {id: cung-dong-co} Hai người cùng động cơ. → phản hồi: **ha-vy** (thinking): Dữ liệu này làm gì có cột động cơ.
 - [HỎI q-thu-pham · trừ uy tín] thay-quang: "Vậy hai bạn này là người viết thư?"
-  - (A) {id: khong-so-niem-phong} Dạ, chưa nói được ạ. Mã của {{nv.hoai}} có trên phiếu, chưa cho biết ai viết thư. [ĐÚNG] → phản hồi: **thay-quang** (neutral): Tách được mã trên phiếu với người viết thư. Được, thầy ghi nhận.
+  - (A) {id: khong-so-niem-phong} Dạ, chưa nói được ạ. Người có mã trên phiếu chưa chắc đã là người soạn thư. [ĐÚNG] → phản hồi: **thay-quang** (neutral): Tách được mã trên phiếu với người viết thư. Được, thầy ghi nhận.
   - (B) {id: co} Có ạ. Hai bạn ấy khớp cả tên lẫn lớp của người ký. → phản hồi: **minh-anh** (worried): Thầy cho em nói lại ạ: dữ liệu chỉ giúp thu hẹp thôi.
   - (C) {id: khong-lien-quan} Không ạ. Hai bạn ấy chỉ trùng tên với lớp thôi. → phản hồi: **ha-vy** (thinking): Chưa loại được đâu. Mã của Hoài có trong sổ mà.
 - [RẼ NHÁNH r-moi-hoai] thay-quang: "Trong hai bạn, sổ chỉ có mã của em Hoài. Em ấy đang ngồi chờ ngoài hành lang. Các em đề nghị bước tiếp theo thế nào?"
@@ -45,7 +45,7 @@
 ### hop-doi-chat — Hỏi thẳng: Hoài co người lại {cảnh: phong-hop}
 
 - [DÀN DỰNG] {{nv.hoai}} được gọi vào, đứng nép cạnh cửa, nhìn lên màn chiếu có tên mình.
-- **ha-vy** (neutral): Khoan… gọi bạn ấy vào kiểu này khác gì hỏi cung.
+- **ha-vy** (neutral): Khoan… chiếu tên bạn ấy lên rồi gọi vào thế này, khác gì hỏi cung.
 - **thay-quang** (neutral): Ở đây không ai đối chất với một bạn năm nhất. Thầy hỏi, các em nghe.
 - **thay-quang** (neutral): Em Hoài, lá thư ký "H." là em bỏ vào hộp đúng không?
 - **hoai** (nervous): Dạ… vâng ạ. Em mang nộp ạ.
@@ -59,12 +59,13 @@
 
 - [ĐIỀU KIỆN] có ev-nhat-ky-in và (có clue-loi-chu-cuong hoặc có clue-loi-dat)
 - [DÀN DỰNG] {{nv.minh-anh}} đặt tập hồ sơ xuống bàn.
-- **minh-anh** (neutral): Thưa thầy, bọn em có thêm nhật ký in của phòng máy ạ. Thư được in lúc 23:10 tối Chủ nhật, từ tài khoản một sinh viên năm 4.
+- **minh-anh** (neutral): Thưa thầy, bọn em có thêm nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật từ tài khoản một sinh viên năm 4.
 - **ha-vy** (neutral): Còn sáng thứ Hai, bọn tớ nghe kể có một anh khóa trên đưa phong bì cho một bạn nữ khóa mình. Hoài ơi, phong bì cậu bỏ vào hộp là có người nhờ à?
 - **hoai** (nervous): Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký "H." vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ.
 - **ha-vy** (neutral): Vậy là cậu ghi mã của mình vì được dặn. Còn người soạn thư thì không đứng tên ở đâu trên phiếu.
-- **thay-quang** (neutral): Nhật ký in cho thấy thư in từ tài khoản một sinh viên năm 4, lời em kể cho thấy em chỉ mang thư tới hộp. Vậy người soạn là người khác.
-- **thay-quang** (neutral): Theo quy chế, mã trên phiếu phải là mã của chính người viết thư. Phiếu này ghi mã của em, mà em chỉ nộp hộ, nên thư không được tính là phản ánh hợp lệ trong hồ sơ rà soát.
+- **thay-quang** (neutral): Nhật ký in và lời kể sáng thứ Hai là hai nguồn riêng, cả hai đều khớp với lời em. Vậy em không phải người soạn thư.
+- **thay-quang** (neutral): Mã trên phiếu là để thầy cô tra cứu và phản hồi người gửi. Ở đây người viết giấu tên, mượn chữ "H." và mã của một bạn năm nhất. Thư như vậy thầy không nhận vào hồ sơ rà soát.
+- **thay-quang** (neutral): Em làm theo lời nhờ nên không bị xử lý gì cả.
 - **thay-quang** (neutral): CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện.
 - **thay-quang** (neutral): Còn người soạn thư, thầy sẽ gặp riêng. Không cần nêu tên ở đây.
 - **hoai** (relieved): Em xin lỗi vì làm mọi người mất công ạ.
