@@ -297,8 +297,19 @@ prototype: kho riêng (`mvp/store/kho-mvp.ts`, sessionStorage khóa `clb_mvp_*`,
   "Cuối ngày", nền `*-dem` nếu có) dẫn tới dữ kiện chính rồi hết ngày; có chính rồi → hết khung hay "kết thúc ngày
   sớm" → ngày sau; hết 5 ngày → `ngayHop.chuoi`. Ngày họp: `[HỎI · trừ uy tín]` sai → mất 1 vạch + lời
   `[KHI MẤT UY TÍN]` + hỏi lại; hết vạch → lời `[HẾT VẠCH]` rồi về đầu chuỗi ngày họp với đủ vạch (hồ sơ giữ).
-  `[RẼ KẾT]` → kết thật nếu `[ĐIỀU KIỆN]` đầu chuỗi kết thật thỏa. `[TẠO NHÂN VẬT]` tạm dùng `TEN_MAC_DINH`
-  (chưa có màn tạo nhân vật).
+  `[RẼ KẾT]` → kết thật nếu `[ĐIỀU KIỆN]` đầu chuỗi kết thật thỏa. `[TẠO NHÂN VẬT]`: xem "Tạo nhân vật" dưới.
+- **Tạo nhân vật (gói tao-nhan-vat-mvp, QĐ-084: 2 câu tên + ngành, người chơi nam, không hỏi giới tính).** Máy DỪNG
+  ở nút `create-character` (khung nhìn `create-character`); `dat-ten` nhận tên qua `kiemTen` (bỏ khoảng trắng thừa,
+  NFC, 1–20 ký tự, chỉ chữ Latin/tiếng Việt + khoảng trắng + gạch nối; sai → đứng yên), `chon-nganh` nhận một ngành
+  trong `luaChon`. Trạng thái mới có `tenNguoiChoi: ''`; `dienTen` chỉ rơi về `TEN_MAC_DINH` khi tên rỗng (ô lưu cũ có
+  sẵn 'Khôi' nạp như cũ). Xúc xắc `tenNgauNhien(kb, ngauNhien, khac)`: danh sách `TEN_XUC_XAC` (~30 tên nam, không tên
+  nhân vật, không tên bắt đầu bằng H vì vụ án xoay quanh chữ ký "[H.]"), lọc thêm lúc chạy theo `nhanVat`/`tenCam`;
+  hàm ngẫu nhiên tiêm được. UI `mvp/ui/TaoNhanVatMvp.tsx`: ô tên (`autocomplete="off"`, gợi ý "Không cần dùng tên
+  thật", Enter/"Xong"), nút xúc xắc SVG (điền ô + Tùng nói lời `xúc xắc:`), ngành là nút `.mc__choice`; câu hỏi là lời
+  Tùng trong hộp kính mờ. Màn này không vẽ `DialogBox` nên không có phím tắt VN; Enter dồn lúc màn vừa hiện với ô
+  trống bị bỏ qua. Điện thoại dọc: thẻ tên neo đỉnh `.stage` (`.stage__content`/`.mc` thành static) để bàn phím ảo
+  không che. **Tên không vào telemetry**: máy MVP không ghi sự kiện; tên chỉ nằm trong trạng thái (sessionStorage +
+  ô lưu) — test `mvp/ui/tao-nhan-vat.test.tsx` quét mọi payload.
 - `mvp/engine/sql-mvp.ts`: SQLite riêng dựng từ `duLieu` (bảng + bảng ảo, `PRAGMA query_only`), chấm bằng so tập
   kết quả với `sqlChuan` của thẻ (ánh xạ cột theo giá trị, không cần đúng tên/thứ tự, cột thừa không sai).
   Không dùng `sql-challenge/engine/database.ts` (dataset và cột `clb` của prototype khác bộ dữ liệu vụ).
