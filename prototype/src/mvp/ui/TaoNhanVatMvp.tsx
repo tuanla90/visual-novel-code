@@ -65,7 +65,6 @@ function CauTen({ kb, nut, dienTen, onDatTen, ngauNhien }: Omit<TaoNhanVatMvpPro
   const idHoi = `${id}-hoi`;
   const [giaTri, setGiaTri] = useState('');
   const [loi, setLoi] = useState<string | null>(null);
-  const [daXucXac, setDaXucXac] = useState(false);
   const oRef = useRef<HTMLInputElement>(null);
   const anhNguoiChoi = anhTheoTen('char-player-nam-anchor');
 
@@ -99,10 +98,10 @@ function CauTen({ kb, nut, dienTen, onDatTen, ngauNhien }: Omit<TaoNhanVatMvpPro
     const ten = tenNgauNhien(kb, ngauNhien, giaTri.trim());
     setGiaTri(ten);
     setLoi(null);
-    if (nut.xucXac) setDaXucXac(true);
   };
 
-  const loiTung: LoiMvp = daXucXac && nut.xucXac ? { ...nut.asker, text: nut.xucXac } : nut.asker;
+  // Bấm xúc xắc thì Tùng KHÔNG nói gì thêm (user chốt 29/09): dòng `xúc xắc:` trong nội dung không hiện.
+  const loiTung: LoiMvp = nut.asker;
 
   return (
     <div className="mc mvp-tnv mvp-tnv--ten" role="group" aria-labelledby={idHoi}>

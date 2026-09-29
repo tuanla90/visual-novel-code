@@ -1051,7 +1051,7 @@ Dùng được trong chuỗi (ngoài §6.3: `[VÀO]`, `[RA]`, `[ĐI TỚI]`, `[H
 
 | Chỉ dẫn | Nghĩa |
 |---|---|
-| `- [TẠO NHÂN VẬT ten] tung (neutral): "Cậu tên gì?"` + dòng con `  - xúc xắc: <lời Tùng khi bấm xúc xắc>` | Câu 1 tạo nhân vật: ô tên có nút xúc xắc. |
+| `- [TẠO NHÂN VẬT ten] tung (neutral): "Cậu tên gì?"` + dòng con `  - xúc xắc: <lời Tùng khi bấm xúc xắc>` | Câu 1 tạo nhân vật: ô tên có nút xúc xắc. Dòng `xúc xắc:` vẫn bắt buộc cho bộ đọc nhưng runtime MVP KHÔNG hiện (user chốt 29/09: bấm xúc xắc Tùng không nói gì). |
 | `- [TẠO NHÂN VẬT nganh] tung (neutral): "Học ngành gì?"` + dòng con `  - lựa chọn: Kế toán · Quản trị kinh doanh · …` | Câu 2: chọn ngành. Cả game có đúng một `ten` và một `nganh`, đều trong mở đầu, `ten` trước `nganh`. |
 | `- [LỌC THỬ <mã> · <n> dòng · chọn <cột> = <giá trị>]` + khối ` ```sql ` ngay dưới | Lọc thử một lần trên giao diện bàn làm việc (Ngày hội): câu SQL trong khối, số dòng kỳ vọng, dòng người chơi phải chọn. |
 | `- [LƯU BẰNG CHỨNG <ev-…>]` | Lưu bằng chứng (key item) ngay tại đây — dùng khi bằng chứng nảy ra giữa chuỗi; thường khai báo ở dữ kiện là đủ. |

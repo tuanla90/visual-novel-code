@@ -117,7 +117,7 @@ describe('nút xúc xắc (TaoNhanVatMvp, hàm ngẫu nhiên giả)', () => {
     return kn.nut;
   };
 
-  it('bấm → điền tên đúng theo hàm ngẫu nhiên, Tùng nói lời xúc xắc; Xong → onDatTen nhận tên đó', async () => {
+  it('bấm → điền tên đúng theo hàm ngẫu nhiên, Tùng KHÔNG nói thêm (user chốt 29/09); Xong → onDatTen nhận tên đó', async () => {
     const onDatTen = vi.fn();
     render(<TaoNhanVatMvp kb={kb} nut={nutTen()} dienTen={(t) => t} onDatTen={onDatTen} onChonNganh={vi.fn()} ngauNhien={() => 0} />);
     const nut = screen.getByRole('button', { name: 'Bấm xúc xắc: đặt tên ngẫu nhiên' });
@@ -125,7 +125,7 @@ describe('nút xúc xắc (TaoNhanVatMvp, hàm ngẫu nhiên giả)', () => {
     expect(nut.querySelector('svg')).not.toBeNull();
     await userEvent.click(nut);
     expect(screen.getByLabelText('Tên nhân vật của bạn')).toHaveValue(TEN_XUC_XAC[0]);
-    expect(screen.getByText(/Ngại nghĩ thì bấm xúc xắc/)).toBeInTheDocument();
+    expect(screen.queryByText(/Ngại nghĩ thì bấm xúc xắc/)).toBeNull();
     // Bấm lại (cùng hàm ngẫu nhiên) → tên khác tên đang có.
     await userEvent.click(nut);
     expect(screen.getByLabelText('Tên nhân vật của bạn')).toHaveValue(TEN_XUC_XAC[1]);
