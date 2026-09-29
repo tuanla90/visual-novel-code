@@ -2,11 +2,35 @@
 
 <!-- 11 cảnh theo kịch bản khung mục 3. Thoại bản hội đồng v1 (29/09): giọng sinh viên miền Bắc, tớ/cậu. -->
 
+### md-00-xe-buyt — Chủ nhật tuần 1: xuống xe buýt trước cổng trường {cảnh: cong-truong}
+
+> NHIỆM VỤ: Tìm đường vào ký túc xá
+
+- [THẺ CHỮ] **narrator**: Chủ nhật, ngày nhận phòng
+- [DÀN DỰNG] Xe buýt mở cửa, hơi nóng đầu giờ chiều hắt thẳng vào. Người chơi kéo vali xuống vỉa hè, bánh xe va mặt đường đánh cạch một cái.
+- **player**: (Nóng thật… Cổng trường ngoài đời trông to hơn trên ảnh.)
+- **player**: (Thông báo xếp phòng ghi là phòng 408. Cơ mà ký túc xá nằm ở đâu nhỉ…)
+- [DÀN DỰNG] Người chơi mở điện thoại, mạng xoay mãi, bản đồ không lên.
+- **player**: (Pin còn mười hai phần trăm. Mấy bạn đằng trước cũng kéo vali, chắc cùng về ký túc xá. Cứ bám theo đã.)
+- **narrator**: Một bạn phía trước vừa đi vừa gọi điện báo mẹ là đến nơi rồi.
+- **player**: (Mẹ cũng dặn đến nơi thì nhắn. Lát vào phòng nhắn luôn.)
+- [ĐI TỚI md-00-cong-ktx]
+
+### md-00-cong-ktx — Kéo vali qua sân trường tới cổng ký túc xá {cảnh: cong-ktx}
+
+- **narrator**: Qua dãy giảng đường sơn vàng, qua bãi để xe, cuối con đường là một cổng sắt nhỏ, trên biển đề "Ký túc xá".
+- **player**: (Đây rồi. Nhà nào cũng tận bảy tầng cơ à…)
+- [DÀN DỰNG] Bánh vali vấp mép gạch, người chơi phải xách bổng lên bằng cả hai tay.
+- **player**: (Biết thế đừng nhét cả cái nồi cơm điện vào.)
+- **narrator**: Bảng tin cạnh cổng dán sơ đồ khu nhà, kèm một tờ giấy: "Thang máy bảo trì đến hết tuần".
+- **player**: (Phòng 408 ở dãy giữa, tầng bốn. May mà không phải tầng bảy… Leo bộ vậy.)
+- [ĐI TỚI md-01-ktx]
+
 ### md-01-ktx — Phòng KTX 408, Chủ nhật chiều: tạo nhân vật {cảnh: phong-ktx}
 
 > NHIỆM VỤ: Nhận phòng KTX
 
-- [DÀN DỰNG] Cửa phòng 408 mở. Một cậu sinh viên đội mũ lưỡi trai bước ra, đỡ lấy cái vali của người chơi.
+- [DÀN DỰNG] Tiếng bánh vali lộc cộc dội lên hành lang tầng bốn; người chơi dừng trước cửa, thở dốc. Cửa phòng 408 mở. Một cậu sinh viên đội mũ lưỡi trai bước ra, đỡ lấy cái vali của người chơi.
 - **tung** (happy): Phòng 408 hả? Đưa đây, tớ xách vào cho.
 - **player**: Ơ, cảm ơn cậu… Cậu cũng ở phòng này à?
 - **tung** (neutral): Ừ, giường trong sát cửa sổ là của tớ. Tớ {{nv.tung}}, học Du lịch.

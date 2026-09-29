@@ -10,7 +10,7 @@
 - Uy tín: 5 vạch
 
 ## Mở đầu
-- Chuỗi đầu: md-01-ktx
+- Chuỗi đầu: md-00-xe-buyt
 
 ## Ngày 1 — Thực địa {ngày: 1}
 - Dữ kiện chính: dk-bac-thinh-the-lich
