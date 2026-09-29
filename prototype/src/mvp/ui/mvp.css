@@ -186,6 +186,22 @@
   user-select: none;
 }
 
+/* Lớp nội dung giữa sân khấu (danh sách địa điểm, tài liệu, sổ, lọc thử, màn chiếu, kết): chiếm hàng 2–3 của lưới
+   sân khấu và bị kẹp trong chiều cao sân khấu (cuộn bên trong), như .docview của prototype. */
+.stage__content:has(> .mvp-dd),
+.stage__content:has(> .mvp-lop),
+.stage__content:has(> .mvp-ket) {
+  grid-row: 2 / 4;
+  align-self: center;
+  min-height: 0;
+  max-height: 100%;
+  display: grid;
+  /* Một hàng bị kẹp (minmax(0, 1fr)) để max-height: 100% của lớp con tính được → lớp con tự cuộn, không tràn sân khấu. */
+  grid-template-rows: minmax(0, 1fr);
+  position: relative;
+  z-index: 20;
+}
+
 /* ---------- Danh sách địa điểm ---------- */
 .mvp-dd {
   background: color-mix(in srgb, var(--c-surface) 94%, transparent);
@@ -493,8 +509,13 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--sp-2);
+}
+@media (max-width: 640px) {
+  .mvp-oluu {
+    grid-template-columns: 1fr;
+  }
 }
 .mvp-oluu__o {
   width: 100%;
