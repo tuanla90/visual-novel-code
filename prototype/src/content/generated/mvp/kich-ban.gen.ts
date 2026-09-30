@@ -2877,10 +2877,6 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "image",
-          "imageId": "cg-ket-that"
-        },
-        {
-          "type": "image",
           "imageId": "cg-bong-huy-hieu"
         },
         {
@@ -2923,10 +2919,6 @@ export const KICH_BAN_MVP = {
           "speaker": "narrator",
           "display": "card",
           "text": "Hai dòng chỉ cho ta chỗ cần đến. Phần còn lại cần thêm bằng chứng, và biết hỏi đúng lúc, đúng cách."
-        },
-        {
-          "type": "image",
-          "imageId": "cg-ket-thuong"
         },
         {
           "type": "end"

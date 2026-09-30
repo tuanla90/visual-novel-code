@@ -40,12 +40,10 @@
 
 - [ĐIỀU KIỆN] có ev-nhat-ky-in và có clue-loi-chu-cuong
 - [LỜI ket-that.1]
-- [ẢNH cg-ket-that]
 - [ẢNH cg-bong-huy-hieu]
 - [KẾT THÚC]
 
 ### ket-thuong — Kết thường: chỉ là một ý kiến sinh viên {cảnh: phong-hop}
 
 - [LỜI ket-thuong.1]
-- [ẢNH cg-ket-thuong]
 - [KẾT THÚC]
