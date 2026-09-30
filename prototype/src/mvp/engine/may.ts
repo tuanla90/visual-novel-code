@@ -113,7 +113,9 @@ export type HanhDongMvp =
   /** Chọn một ô ở `[LỌC THỬ]` (giá trị cột phải chọn). */
   | { type: 'chon-o'; giaTri: string }
   /** Màn thử thách / sửa truy vấn báo đã xong (vật chứng của thẻ vào hồ sơ). */
-  | { type: 'xong-thu-thach'; thuThach: string }
+  | { type: 'xong-thu-thach'; thuThach: string; /** Mã các thẻ đã kéo vào câu đúng — sợi chỉ trên bảng điều tra. */ dung?: string[] }
+  /** Người chơi kéo một thẻ trên bảng điều tra tới chỗ khác (không đổi con trỏ). */
+  | { type: 'doi-cho-the'; the: string; x: number; y: number }
   /** `[TẠO NHÂN VẬT ten]`: tên người chơi gõ (hay xúc xắc điền); máy kiểm lại bằng `kiemTen`, sai thì đứng yên. */
   | { type: 'dat-ten'; ten: string }
   /** `[TẠO NHÂN VẬT nganh]`: một ngành trong `lựa chọn:` của nút. */
@@ -680,6 +682,10 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
     const da = s.daGioiThieu ?? [];
     return da.includes(hd.nhanVat) ? s : { ...s, daGioiThieu: [...da, hd.nhanVat] };
   }
+  if (hd.type === 'doi-cho-the') {
+    const bang = s.bang ?? { day: {}, viTri: {} };
+    return { ...s, bang: { ...bang, viTri: { ...bang.viTri, [hd.the]: { x: Math.round(hd.x), y: Math.round(hd.y) } } } };
+  }
   const kn = khungNhin(kb, s);
   let moi: TrangThaiMvp | null = null;
 
@@ -763,6 +769,10 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       if ((kn.kind !== 'challenge' && kn.kind !== 'fix-query') || kn.thuThach.id !== hd.thuThach) return s;
       moi = kn.thuThach.vatChung ? luuBangChung(s, kn.thuThach.vatChung.id) : s;
       moi = { ...moi, thuThachXong: them(moi.thuThachXong, kn.thuThach.id) };
+      if (kn.thuThach.vatChung && hd.dung && hd.dung.length > 0) {
+        const bang = moi.bang ?? { day: {}, viTri: {} };
+        moi = { ...moi, bang: { ...bang, day: { ...bang.day, [kn.thuThach.vatChung.id]: [...new Set(hd.dung)] } } };
+      }
       if (s.thuThachDangLam) {
         // Thử thách mở từ dữ kiện (không trong chuỗi): ghi nhận dữ kiện luôn.
         moi = { ...moi, thuThachDangLam: null };

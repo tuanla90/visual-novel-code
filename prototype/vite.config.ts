@@ -1,5 +1,6 @@
 /// <reference types="vitest/config" />
-import { defineConfig } from 'vite';
+import { realpathSync } from 'node:fs';
+import { defineConfig, searchForWorkspaceRoot } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // Cấu hình dùng chung cho Vite (dev/build/preview) và Vitest.
@@ -12,6 +13,10 @@ export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
     include: ['sql.js'],
+  },
+  // Ở worktree, node_modules là lối tắt trỏ về bản chính: cho phép nạp tệp (phông @fontsource) từ đường dẫn thật.
+  server: {
+    fs: { allow: [searchForWorkspaceRoot(process.cwd()), realpathSync(new URL('./node_modules', import.meta.url))] },
   },
   build: {
     target: 'es2022',

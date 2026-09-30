@@ -1,9 +1,11 @@
 ## Giấy nhớ (clue-…) — người chơi tự tạo trên bảng hồ sơ vụ
 
 <!-- Chữ do phiên truyện viết (30/09); mã và "Giá trị cho trình dựng" thuộc phiên logic. -->
+<!-- Bảng điều tra: "Ảnh" = tên tệp ảnh của thẻ; "Loại trừ: <mã phiếu>" vẽ sợi chỉ cam tới phiếu đó, "Gạch: <giá trị>" gạch giá trị ấy trên phiếu (engine/bang-dieu-tra.ts). -->
 
 ### clue-chu-ky-h — [H]
 - Tiêu đề: Chữ ký tay (chỉ đọc được chữ H)
+- Ảnh: doc-chu-ky-h
 - Giá trị cho trình dựng: H
 - Nguồn: Bản chụp thư đã che thông tin, Phòng CTSV chuyển về
 - Nội dung: Chữ ký tay trên phiếu gửi: chữ H viết hoa rõ, phần sau là một nét lượn không đọc được; kèm dòng "đề nghị phản hồi chính thức". Không tên, không mã trên thư.
@@ -42,6 +44,9 @@
 
 ### clue-hoai-nguoi-nop — [Hoài là người nộp]
 - Tiêu đề: Sổ niêm phong: SV240317 có, SV240228 không
+- Ảnh: doc-so-niem-phong-trang
+- Loại trừ: ev-hai-ma
+- Gạch: SV240228
 - Nguồn: Cô phụ trách hộp kiến nghị tra sổ, qua Phòng CTSV
 - Nội dung: Nguồn độc lập cho biết ai là người nộp; chưa cho biết ai viết.
 

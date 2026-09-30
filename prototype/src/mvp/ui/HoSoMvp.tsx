@@ -17,7 +17,8 @@ import type { KichBanMvp, TheHoSoMvp } from '../../content/mvp/types';
 import { soundEngine } from '../../shared/audio/sound-engine';
 import { CodeText } from '../../shared/ui/CodeText';
 import { IconBriefcase, IconFileText, IconUsers, IconX, ItemVectorIcon } from '../../shared/ui/icons';
-import type { HoSoMvp as HoSo } from '../engine/trang-thai';
+import type { HoSoMvp as HoSo, TrangThaiMvp } from '../engine/trang-thai';
+import { BangGhimMvp } from './v7/BangGhimMvp';
 import { anhChanDung } from './anh-mvp';
 import { NhanVatMvp } from './NhanVatMvp';
 import { TheHoSo } from './TheHoSo';
@@ -27,6 +28,9 @@ type Nhom = 'tat-ca' | TheHoSoMvp['loai'];
 
 export interface HoSoMvpProps {
   kb: KichBanMvp;
+  /** Ván đang chơi — có thì tab "Bảng điều tra" vẽ bảng ghim (thẻ, sợi chỉ); không có thì vẽ lưới ô kiểu cũ. */
+  trangThai?: TrangThaiMvp;
+  onDoiCho?: (the: string, x: number, y: number) => void;
   hoSo: HoSo;
   soTay: string[];
   tenNguoiChoi: string;
@@ -44,9 +48,9 @@ const NHAN_LOAI_SO: Record<string, string> = { 'cú pháp': 'Cú pháp', 'tâm �
 /** Số ô tối thiểu của lưới (ô trống bù cho đủ, như hòm đồ prototype); đủ hàng 4 ô. */
 const SO_O_TOI_THIEU = 12;
 
-const TEN_TAB: Record<TabHoSoMvp, string> = { 'nhan-vat': 'Nhân vật', 'ho-so': 'Hồ sơ', 'so-tay': 'Sổ cá nhân' };
+const TEN_TAB: Record<TabHoSoMvp, string> = { 'nhan-vat': 'Nhân vật', 'ho-so': 'Bảng điều tra', 'so-tay': 'Sổ cá nhân' };
 
-export function HoSoMvp({ kb, hoSo, soTay, tenNguoiChoi, nganh, daGap, tab, onDoiTab: doiTab, dienTen, onDong: dong }: HoSoMvpProps) {
+export function HoSoMvp({ kb, trangThai, onDoiCho, hoSo, soTay, tenNguoiChoi, nganh, daGap, tab, onDoiTab: doiTab, dienTen, onDong: dong }: HoSoMvpProps) {
   // Tiếng chuyển tab / đóng như hòm đồ prototype.
   const onDoiTab = (t: TabHoSoMvp): void => {
     soundEngine.playSfx('tab');
@@ -77,7 +81,7 @@ export function HoSoMvp({ kb, hoSo, soTay, tenNguoiChoi, nganh, daGap, tab, onDo
       }}
     >
       <div
-        className={`inventory-frame mvp-kho__khung${tab === 'so-tay' ? ' is-journal-mode' : ''}${tab === 'nhan-vat' ? ' is-chara-mode' : ''}`}
+        className={`inventory-frame mvp-kho__khung${tab === 'so-tay' ? ' is-journal-mode' : ''}${tab === 'nhan-vat' ? ' is-chara-mode' : ''}${tab === 'ho-so' && trangThai ? ' is-bang-mode' : ''}`}
         role="dialog"
         aria-modal="true"
         aria-label={tenKhung}
@@ -102,7 +106,7 @@ export function HoSoMvp({ kb, hoSo, soTay, tenNguoiChoi, nganh, daGap, tab, onDo
               onClick={() => onDoiTab('ho-so')}
             >
               <IconBriefcase width={15} height={15} aria-hidden="true" />
-              <span>Hồ sơ</span>
+              <span>Bảng điều tra</span>
             </button>
             <button
               type="button"
@@ -132,6 +136,10 @@ export function HoSoMvp({ kb, hoSo, soTay, tenNguoiChoi, nganh, daGap, tab, onDo
         {tab === 'nhan-vat' ? (
           <div className="notebook__chara-container">
             <NhanVatMvp kb={kb} daGap={daGap} />
+          </div>
+        ) : tab === 'ho-so' && trangThai ? (
+          <div className="mvp-kho__bang">
+            <BangGhimMvp kb={kb} s={trangThai} dienTen={dienTen} onDoiCho={onDoiCho} />
           </div>
         ) : tab === 'ho-so' ? (
           <NganHoSo kb={kb} hoSo={hoSo} soTrangSo={soTay.length} tenNguoiChoi={tenNguoiChoi} nganh={nganh} dienTen={dienTen} />

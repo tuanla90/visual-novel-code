@@ -28,7 +28,6 @@ import type { TrangThaiMvp } from '../engine/trang-thai';
 import { nhayToi, type MaDiemNhayMvp } from '../engine/tu-choi';
 import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
 import { AnhChenMvp } from './AnhChenMvp';
-import { anhNen } from './anh-mvp';
 import { BAN_DO_MVP } from './ban-do-mvp';
 import { BangQuanSatMvp } from './BangQuanSatMvp';
 import { BanDoMvp } from './BanDoMvp';
@@ -40,7 +39,7 @@ import { KhamPhaMvp } from './KhamPhaMvp';
 import { LocThuMvp } from './LocThuMvp';
 import { LuuNapMvp } from './LuuNapMvp';
 import { ManChieuMvp } from './ManChieuMvp';
-import { ManThuThachMvp } from './ManThuThachMvp';
+import { PhongTraMvp } from './v7/PhongTraMvp';
 import { NoiMvp } from './NoiMvp';
 import { SanKhauMvp } from './SanKhauMvp';
 import { TaiLieuMvp } from './TaiLieuMvp';
@@ -117,7 +116,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     const dem = s ? soHoSo(s) : 0;
     if (dem > demTruoc.current) {
       soundEngine.playSfx('clue_unlock');
-      baoToast('Hồ sơ có thêm mục mới.');
+      baoToast('Bảng điều tra có thêm thẻ mới.');
     }
     demTruoc.current = dem;
   }, [s, baoToast]);
@@ -288,17 +287,18 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       case 'challenge':
       case 'fix-query':
         return (
-          <ManThuThachMvp
+          <PhongTraMvp
             key={`${kn.thuThach.id}-${kn.kind}`}
             kb={kb}
+            s={s}
             duLieu={kb.duLieu}
             the={kn.thuThach}
             mode={kn.kind}
             dienTen={dienTen}
-            onXong={() => hanhDong({ type: 'xong-thu-thach', thuThach: kn.thuThach.id })}
             giayNho={giaTriTuHoSo(kb, s.hoSo)}
             noi={kb.canh.find((c) => c.id === s.canh)?.ten}
-            nenCanh={anhNen(s.canh)}
+            onDoiCho={(the, x, y) => hanhDong({ type: 'doi-cho-the', the, x, y })}
+            onXong={(dung) => hanhDong({ type: 'xong-thu-thach', thuThach: kn.thuThach.id, dung })}
           />
         );
       case 'effect':
@@ -368,6 +368,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       {kho ? (
         <HoSoMvp
           kb={kb}
+          trangThai={s}
+          onDoiCho={(the, x, y) => hanhDong({ type: 'doi-cho-the', the, x, y })}
           hoSo={s.hoSo}
           soTay={s.soTay}
           tenNguoiChoi={s.tenNguoiChoi}

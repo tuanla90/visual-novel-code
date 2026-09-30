@@ -3113,6 +3113,7 @@ export const KICH_BAN_MVP = {
       "heading": "[H]",
       "fields": {
         "Tiêu đề": "Chữ ký tay (chỉ đọc được chữ H)",
+        "Ảnh": "doc-chu-ky-h",
         "Giá trị cho trình dựng": "H",
         "Nguồn": "Bản chụp thư đã che thông tin, Phòng CTSV chuyển về",
         "Nội dung": "Chữ ký tay trên phiếu gửi: chữ H viết hoa rõ, phần sau là một nét lượn không đọc được; kèm dòng \"đề nghị phản hồi chính thức\". Không tên, không mã trên thư."
@@ -3193,6 +3194,9 @@ export const KICH_BAN_MVP = {
       "heading": "[Hoài là người nộp]",
       "fields": {
         "Tiêu đề": "Sổ niêm phong: SV240317 có, SV240228 không",
+        "Ảnh": "doc-so-niem-phong-trang",
+        "Loại trừ": "ev-hai-ma",
+        "Gạch": "SV240228",
         "Nguồn": "Cô phụ trách hộp kiến nghị tra sổ, qua Phòng CTSV",
         "Nội dung": "Nguồn độc lập cho biết ai là người nộp; chưa cho biết ai viết."
       },
@@ -3216,6 +3220,7 @@ export const KICH_BAN_MVP = {
       "heading": "Thẻ lịch của khoa mình",
       "fields": {
         "Tiêu đề": "Thẻ lịch Tuần sinh hoạt công dân",
+        "Ảnh": "doc-the-lich-cua-toi",
         "Nguồn": "Phát ở tuần sinh hoạt công dân",
         "Nội dung hiển thị": ""
       },
@@ -3231,6 +3236,7 @@ export const KICH_BAN_MVP = {
       "heading": "Sổ chị Linh",
       "fields": {
         "Tiêu đề": "Sổ tự học của chị Linh",
+        "Ảnh": "doc-so-chi-linh",
         "Nguồn": "Ngăn dưới tủ hồ sơ phòng CLB",
         "Nội dung hiển thị": ""
       },
@@ -3246,6 +3252,7 @@ export const KICH_BAN_MVP = {
       "heading": "Báo cáo năm ngoái",
       "fields": {
         "Tiêu đề": "Báo cáo hoạt động năm ngoái",
+        "Ảnh": "doc-bao-cao-yeu",
         "Nguồn": "Tủ hồ sơ phòng CLB",
         "Nội dung hiển thị": ""
       },
@@ -3261,6 +3268,7 @@ export const KICH_BAN_MVP = {
       "heading": "Bản chụp thư đã che thông tin",
       "fields": {
         "Tiêu đề": "Lá thư (bản chụp, đã che)",
+        "Ảnh": "doc-la-thu-nac-danh",
         "Nguồn": "Phòng CTSV chuyển về",
         "Nội dung hiển thị": ""
       },
@@ -3277,6 +3285,7 @@ export const KICH_BAN_MVP = {
       "heading": "Thông báo lịch họp rà soát",
       "fields": {
         "Tiêu đề": "Thông báo họp rà soát phòng CLB",
+        "Ảnh": "doc-thong-bao-hop",
         "Nguồn": "Dán cạnh hộp kiến nghị, sảnh tòa B",
         "Nội dung hiển thị": ""
       },
@@ -3292,6 +3301,7 @@ export const KICH_BAN_MVP = {
       "heading": "Văn bản cho phép lập căn cứ",
       "fields": {
         "Tiêu đề": "Văn bản của Thầy Quang",
+        "Ảnh": "doc-van-ban-thay-quang",
         "Nguồn": "Phòng Đào tạo",
         "Nội dung hiển thị": ""
       },
@@ -3307,6 +3317,7 @@ export const KICH_BAN_MVP = {
       "heading": "Thẻ lịch rách",
       "fields": {
         "Tiêu đề": "Thẻ lịch khoa Báo chí K24, rách dòng viết tay",
+        "Ảnh": "doc-the-lich-rach",
         "Nội dung": "Mắc ở mép tôn khe hộp. Chưa chứng minh chủ thẻ là người bỏ thư."
       },
       "quotes": {}

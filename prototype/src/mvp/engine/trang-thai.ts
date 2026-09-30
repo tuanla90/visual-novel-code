@@ -63,6 +63,15 @@ export interface HoSoMvp {
   bangChung: string[];
 }
 
+/**
+ * Bảng điều tra (ĐÃ CHỐT B.2, 30/09/2026): sợi chỉ do truy vấn vẽ và chỗ người chơi đã kéo thẻ tới.
+ * `day[<mã phiếu kết quả>]` = các thẻ đã kéo vào câu ra phiếu đó; `viTri` theo khung bảng 1600×900.
+ */
+export interface BangGhimLuuMvp {
+  day: Record<string, string[]>;
+  viTri: Record<string, { x: number; y: number }>;
+}
+
 export interface TrangThaiMvp {
   phienBan: 1;
   /** Mốc bắt đầu ván (ms) — khóa phiên, dùng làm khóa xáo lựa chọn. */
@@ -100,6 +109,8 @@ export interface TrangThaiMvp {
   duKienDaLam: string[];
 
   hoSo: HoSoMvp;
+  /** Bảng điều tra; ô lưu cũ không có trường này = bảng chưa ai kéo, chưa có sợi chỉ ghi lại. */
+  bang?: BangGhimLuuMvp;
   /** Nhân vật đã hiện màn "Nhân vật mới" (theo thứ tự gặp) — cũng là danh sách tab Nhân vật. Ô lưu cũ: không có = []. */
   daGioiThieu?: string[];
   co: string[];

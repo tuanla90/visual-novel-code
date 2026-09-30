@@ -21,7 +21,10 @@ export type PhepSo = 'bang' | 'bat-dau-bang';
 export const TEN_PHEP: Record<PhepSo, string> = { bang: 'bằng', 'bat-dau-bang': 'bắt đầu bằng' };
 
 /** Giá trị một điều kiện: từ giấy nhớ (máy tự bọc nháy khi cần) hay gõ tay qua ✎ (giữ nguyên chữ). */
-export type GiaTriDung = { nguon: 'giay-nho'; tho: string } | { nguon: 'go'; tho: string };
+export type GiaTriDung =
+  /** `nhieu`: phiếu kết quả mang nhiều giá trị (vd hai lớp) — phép "bằng" thành `IN (…)` ("là một trong"). */
+  | { nguon: 'giay-nho'; tho: string; nhieu?: string[]; /** Mã thẻ trên bảng điều tra mà giá trị này lấy từ (để vẽ sợi chỉ). */ the?: string }
+  | { nguon: 'go'; tho: string };
 
 export interface DieuKienDung {
   cot: string;
@@ -57,6 +60,10 @@ export function giaTriTuGiayNho(tho: string, kieuCot: KieuCot, phep: PhepSo): st
 export function dieuKienThanhSql(dk: DieuKienDung, kieuCot: KieuCot): string | null {
   if (!dk.giaTri) return null;
   const phep = dk.phep === 'bat-dau-bang' ? 'LIKE' : '=';
+  if (dk.giaTri.nguon === 'giay-nho' && dk.giaTri.nhieu && dk.giaTri.nhieu.length > 1) {
+    const ds = dk.giaTri.nhieu.map((v) => giaTriTuGiayNho(v, kieuCot, dk.phep));
+    return dk.phep === 'bat-dau-bang' ? `(${ds.map((v) => `${dk.cot} LIKE ${v}`).join(' OR ')})` : `${dk.cot} IN (${ds.join(', ')})`;
+  }
   const gt = dk.giaTri.nguon === 'go' ? dk.giaTri.tho.trim() : giaTriTuGiayNho(dk.giaTri.tho, kieuCot, dk.phep);
   if (gt === '') return null;
   return `${dk.cot} ${phep} ${gt}`;
@@ -88,6 +95,11 @@ export function cauTuSql(sql: string): CauDung | null {
   const dieuKien = t.dieuKien.map((d): DieuKienDung => {
     const bang = /^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(?:'((?:[^']|'')*)'|(-?\d+(?:\.\d+)?))$/.exec(d);
     if (bang) return { cot: bang[1] ?? '', phep: 'bang', giaTri: { nguon: 'giay-nho', tho: (bang[2] ?? bang[3] ?? '').replace(/''/g, "'") } };
+    const trong = /^([A-Za-z_][A-Za-z0-9_]*)\s+IN\s*\(([^()]*)\)$/i.exec(d);
+    if (trong) {
+      const ds = [...(trong[2] ?? '').matchAll(/'((?:[^']|'')*)'|(-?\d+(?:\.\d+)?)/g)].map((x) => (x[1] ?? x[2] ?? '').replace(/''/g, "'"));
+      if (ds.length > 0) return { cot: trong[1] ?? '', phep: 'bang', giaTri: { nguon: 'giay-nho', tho: ds.join(', '), nhieu: ds } };
+    }
     const like = /^([A-Za-z_][A-Za-z0-9_]*)\s+LIKE\s+'((?:[^'%]|'')*)%'$/i.exec(d);
     if (like) return { cot: like[1] ?? '', phep: 'bat-dau-bang', giaTri: { nguon: 'giay-nho', tho: (like[2] ?? '').replace(/''/g, "'") } };
     const cot = /^([A-Za-z_][A-Za-z0-9_]*)\s*(=|LIKE)\s*([\s\S]+)$/i.exec(d);
@@ -160,7 +172,9 @@ export function tachWhere(sql: string): WhereTach | null {
   }
   if (trongNhay || dang.trim() === '') return null;
   dieuKien.push(dang.trim());
-  if (dieuKien.some((d) => /[()]/.test(d.replace(/'[^']*'/g, '')) || /\b(GROUP|ORDER|LIMIT|HAVING)\b/i.test(d.replace(/'[^']*'/g, '')))) return null;
+  // `cot IN ('a', 'b')` là một điều kiện phẳng (phiếu kết quả kéo vào ô); ngoặc khác thì không soi được.
+  const boIn = (d: string): string => d.replace(/'[^']*'/g, '').replace(/\bIN\s*\([^()]*\)/gi, 'IN');
+  if (dieuKien.some((d) => /[()]/.test(boIn(d)) || /\b(GROUP|ORDER|LIMIT|HAVING)\b/i.test(d.replace(/'[^']*'/g, '')))) return null;
   return { khung: (m[1] ?? '').replace(/\s+/g, ' '), bang: m[2] ?? '', dieuKien, noi };
 }
 

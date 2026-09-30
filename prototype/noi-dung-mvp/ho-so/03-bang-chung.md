@@ -4,4 +4,5 @@
 
 ### ev-the-lich — Thẻ lịch rách
 - Tiêu đề: Thẻ lịch khoa Báo chí K24, rách dòng viết tay
+- Ảnh: doc-the-lich-rach
 - Nội dung: Mắc ở mép tôn khe hộp. Chưa chứng minh chủ thẻ là người bỏ thư.
