@@ -2407,9 +2407,19 @@ aside.notebook.inventory-modal {
   place-items: center;
   z-index: 20;
 }
+/* Tự đặt màu chữ + kiểu chữ: hộp có thể nằm trong thanh trên (chữ trắng, HudMvp) — không thừa hưởng. */
 .modal {
   width: min(480px, calc(100% - 2 * var(--sp-4)));
   background: var(--c-surface);
+  color: var(--c-text);
+  font-family: var(--font-ui);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  text-align: left;
+  white-space: normal;
   border-radius: var(--radius-lg);
   padding: var(--sp-5);
   display: grid;
