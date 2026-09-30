@@ -11,7 +11,7 @@ import { chuyenMvp, type DuLieuMvp } from './chuyen-mvp.ts';
 import { dinhDangLoi } from './doc-mvp.ts';
 import { kiemLuatMvp } from './luat-mvp.ts';
 import { tepLechTrenDia } from './sinh.ts';
-import { docSpriteVat, docThuMucMvp } from './thu-muc-mvp.ts';
+import { docSpriteVat, docThuMucMvp, traViTri } from './thu-muc-mvp.ts';
 
 export const THU_MUC_NOI_DUNG_MVP = fileURLToPath(new URL('../../noi-dung-mvp/', import.meta.url));
 export const THU_MUC_SINH_MVP = fileURLToPath(new URL('../../src/content/generated/mvp/', import.meta.url));
@@ -46,7 +46,7 @@ export interface KetQuaSinhMvp {
 export function sinhVanBanMvp(thuMuc: string = THU_MUC_NOI_DUNG_MVP): KetQuaSinhMvp {
   const kq = docThuMucMvp(thuMuc);
   const luat = kiemLuatMvp(kq.mvp, { spriteVat: docSpriteVat() });
-  const loi = [...kq.loi, ...luat.loi].map(dinhDangLoi);
+  const loi = [...kq.loi, ...luat.loi.map((l) => traViTri(l, kq.banDo))].map(dinhDangLoi);
   if (loi.length > 0) return { tep: {}, duLieu: null, loi };
   try {
     const duLieu = chuyenMvp(kq.mvp, luat);

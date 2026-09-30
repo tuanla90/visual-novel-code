@@ -38,6 +38,7 @@ noi-dung-mvp/kich-ban/06-hop-va-ket.md:8: [MÀN CHIẾU hop-chieu-or]: khai 13 d
 | `so-tay/*.md` | Trang sổ chị Linh `# <mã> — <Tên> {trang sổ: <mã>}` với `- Loại:` và các mục `## Trang chị Linh`, `## Hà Vy`, `## Chọn đoạn code`, `## Vào sổ cá nhân` | `[CHÉP SỔ]` cần trang có "Chọn đoạn code" |
 | `chung/loi-chung.md` | `### Khi mất uy tín {lời chung: mat-uy-tin}`: lời Minh Anh từng lần mất vạch, dòng cuối `[HẾT VẠCH]` | Không nói đáp án |
 | `ho-so/*.md` | `clue-…` giấy nhớ, `doc-…` tài liệu, `ev-…` bằng chứng thực địa | Thẻ không ai tạo (không dữ kiện / hậu quả nào mở) là lỗi |
+| `loi/*.md` | **Lời** (phiên truyện sở hữu): đoạn `## <mã>` rồi các dòng thoại `- **ai** (cảm xúc): …`, `- [THẺ CHỮ]`, `- [DÀN DỰNG]`, `> NHIỆM VỤ:`, `- Khi …: …` | Gắn vào dòng `- [LỜI <mã>]` của `kich-ban/` hoặc `thu-thach/` (khung, phiên logic sở hữu). Máy báo lỗi khi khung cần lời mà thiếu, lời không ai dùng, hoặc lời chứa dòng cấu trúc. Dòng có `(tạm)` là lời tạm, được đếm để nhắc |
 
 ## Vài luật máy kiểm thay bạn
 

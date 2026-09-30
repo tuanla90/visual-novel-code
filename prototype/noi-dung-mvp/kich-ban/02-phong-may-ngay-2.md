@@ -4,21 +4,20 @@
 
 ### pm2-lop — Bàn làm việc: bốn bài lọc lớp {cảnh: phong-may}
 
-> NHIỆM VỤ: Lọc ra lớp của thẻ lịch
+- [LỜI pm2-lop.1]
 
-- [DÀN DỰNG] Ba manh mối trên tường: [K24], [Tòa B], [Báo chí]. Mỗi bài một ý; không tốn thêm khung giờ.
-- **ha-vy** (neutral): Thẻ lịch ghi K24. Lọc thử các lớp khóa đó trước đã.
+- [LỜI pm2-lop.2]
 <!-- LỜI TẠM -->
 - [THỬ THÁCH c-loc-khoa]
 - [GHI SỔ where-so]
-- **ha-vy** (neutral): Giờ đến tòa B.
+- [LỜI pm2-lop.3]
 <!-- LỜI TẠM -->
 - [THỬ THÁCH c-loc-toa]
 - [GHI SỔ where-chu]
-- **tung** (happy): Tòa B với Báo chí, tớ nối luôn cho nhanh.
+- [LỜI pm2-lop.4]
 <!-- LỜI TẠM -->
 - [THỬ THÁCH c-loc-and]
 - [GHI SỔ and-or]
-- **ha-vy** (thinking): Còn hai lớp. Thẻ lịch còn một chữ nữa chưa dùng.
+- [LỜI pm2-lop.5]
 <!-- LỜI TẠM -->
 - [THỬ THÁCH c-loc-lop]

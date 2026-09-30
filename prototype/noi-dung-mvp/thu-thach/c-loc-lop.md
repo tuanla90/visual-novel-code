@@ -13,8 +13,7 @@
 SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE khoa_hoc = 2024;
 ```
 
-- Khi chạy ra 0 dòng: **ha-vy** (thinking): 0 dòng. Cột khóa đang lưu con số 2024, không có chữ K nào cả.
-- [DÀN DỰNG] Lần chạy "sai có ích": kéo [K24] vào cột khóa → `khoa_hoc = 'K24'` → 0 dòng. Hà Vy mô tả: cột khóa lưu số 2024. Người chơi ✎ gõ 2024.
+- [LỜI c-loc-khoa.1]
 
 ### c-loc-toa — Bài 2.2: các lớp học ở tòa B {challenge: c-loc-toa}
 
@@ -29,8 +28,7 @@ SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE khoa_hoc = 2024
 SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B';
 ```
 
-- Khi lỗi không có cột: **ha-vy** (thinking): Máy đang đi tìm một cột tên là B. Chữ không có nháy thì nó tưởng là tên cột.
-- [DÀN DỰNG] Lần chạy "sai có ích": gõ như số `toa_nha = B` → lỗi "no such column: B". Hà Vy mô tả: máy đang đi tìm một cột tên B.
+- [LỜI c-loc-toa.1]
 
 ### c-loc-and — Bài 2.3: tòa B và ngành Báo chí {challenge: c-loc-and}
 
@@ -45,8 +43,7 @@ SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B';
 SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí';
 ```
 
-- Khi chạy ra 5 dòng: **tung** (worried): Ơ, năm lớp? <br> **ha-vy** (neutral): Lớp nào ở tòa B, hoặc học Báo chí, đều được lấy hết.
-- [DÀN DỰNG] Tùng nối bằng OR → 5 lớp. Hà Vy mô tả: lấy lớp nào thỏa một trong hai. Đổi AND → 2 lớp (BC24A, BC23A).
+- [LỜI c-loc-and.1]
 
 ### c-loc-lop — Bài 2.4: thêm khóa, chốt một lớp {challenge: c-loc-lop}
 
@@ -61,8 +58,7 @@ SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' A
 SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí' AND khoa_hoc = 2024;
 ```
 
-- Khi chạy ra 2 dòng: **ha-vy** (thinking): Vẫn hai lớp. Một lớp khóa khác cũng ở tòa B.
-- [DÀN DỰNG] Dừng ở 2 lớp: Hà Vy mô tả có một lớp khóa khác cũng ở tòa B. Thêm `khoa_hoc = 2024` → BC24A → "Số liệu đây!" lần đầu.
+- [LỜI c-loc-lop.1]
 - Vật chứng lưu vào hồ sơ: ev-lop-bc24a
   - Tiêu đề: Lớp BC24A — tòa B, Báo chí, khóa 2024
   - Mô tả: Kết quả truy vấn ghép ba điều kiện (tòa B, ngành Báo chí, khóa 2024): đúng một lớp.

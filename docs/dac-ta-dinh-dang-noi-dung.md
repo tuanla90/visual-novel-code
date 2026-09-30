@@ -1076,6 +1076,21 @@ Số dòng ghi trong `[LỌC THỬ]`, `[MÀN CHIẾU … · <n> dòng]` (khi có
 
 **Chuỗi bài phòng máy (QĐ-092).** Một lần vào phòng máy có thể gồm nhiều bài: dữ kiện dùng `- Chuỗi:` (không phải `- Thử thách:`), chuỗi đó có nhiều `[THỬ THÁCH …]` nối tiếp kèm lời dẫn và `[GHI SỔ]`. Thẻ thử thách của **bài giữa chuỗi được bỏ dòng "Vật chứng lưu vào hồ sơ"** (không lưu gì); bài cuối lưu bằng chứng như cũ. Không tốn thêm khung giờ (vào phòng máy tốn 1, bên trong 0). Kế hoạch bài theo ngày: `docs/mvp/thuc-hanh-sql-vu1-mvp.md`.
 
+### 18.6a Tách khung / lời — `loi/*.md` (user chốt 30/09/2026)
+
+Khung (`kich-ban/*.md`, `thu-thach/*.md`) do phiên logic giữ; lời do phiên truyện giữ. Chỗ khung cần lời đặt **một dòng ở đầu dòng** `- [LỜI <mã>]`; lời nằm trong `loi/*.md`:
+
+```markdown
+## n1-mo.1
+- **tung** (neutral): Sáng nay bác bảo vệ tòa B trực đấy.
+- [DÀN DỰNG] Nắng sớm hắt vào sảnh.
+```
+
+- Trước khi đọc, bộ gom thay dòng `- [LỜI mã]` bằng các dòng của đoạn `## mã` (tools/noi-dung/ghep-loi.ts). Lỗi của bộ đọc và bộ kiểm luật được trả về đúng tệp, đúng dòng gốc.
+- Tệp lời chỉ chứa dòng chữ: thoại `- **ai** (cảm xúc): …`, `- [THẺ CHỮ] …`, `- [DÀN DỰNG] …`, `> NHIỆM VỤ: …`, phản ứng thẻ thử thách `- Khi …: …`. Dòng cấu trúc (`[ĐI TỚI]`, `[HỎI]`, `[THỬ THÁCH]`…) trong tệp lời là lỗi.
+- Lỗi: khung cần lời mà thiếu đoạn; đoạn lời không khung nào dùng; trùng mã; một đoạn gắn vào hai chỗ. Dòng chứa `(tạm)` không lỗi, được đếm thành cảnh báo.
+- Mã đoạn: chữ thường, số, `-`, `.`, `_`; quy ước `<mã chuỗi>.<số thứ tự>`.
+
 ### 18.7 Lời chung — `chung/loi-chung.md`
 
 ```markdown

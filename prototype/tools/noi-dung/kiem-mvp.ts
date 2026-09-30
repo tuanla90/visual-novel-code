@@ -12,7 +12,7 @@ import { kiemLuatMvp } from './luat-mvp.ts';
 import { tepLechTrenDia } from './sinh.ts';
 import { THU_MUC_SINH_MVP, vanBanMvp } from './sinh-mvp.ts';
 import { kiemSoDongMvp, type KetQuaChayMvp } from './sql-mvp.ts';
-import { docSpriteVat, docThuMucMvp } from './thu-muc-mvp.ts';
+import { docSpriteVat, docThuMucMvp, traViTri } from './thu-muc-mvp.ts';
 
 export const THU_MUC_NOI_DUNG_MVP = fileURLToPath(new URL('../../noi-dung-mvp/', import.meta.url));
 
@@ -36,7 +36,7 @@ export async function kiemNoiDungMvp(thuMuc: string = THU_MUC_NOI_DUNG_MVP): Pro
   const kq = docThuMucMvp(thuMuc);
   const loiDoc = [...kq.loi];
   const luat = kiemLuatMvp(kq.mvp, { spriteVat: docSpriteVat() });
-  loiDoc.push(...luat.loi);
+  loiDoc.push(...luat.loi.map((l) => traViTri(l, kq.banDo)));
   const loi = loiDoc.map(dinhDangLoi);
   let tepCu: string[] = [];
   let duLieu: DuLieuMvp | null = null;
@@ -56,7 +56,9 @@ export async function kiemNoiDungMvp(thuMuc: string = THU_MUC_NOI_DUNG_MVP): Pro
   }
   const soSql = sql ? `; ${sql.length} câu SQL khai số dòng, chạy thật khớp ${sql.filter((s) => s.soDongThat === s.soDong).length}` : '';
   const tomTat = loi.length === 0 ? `noi-dung-mvp: ${kq.tep.length} tệp, không lỗi — ${dem(kq.mvp)}${soSql}.` : `noi-dung-mvp: ${kq.tep.length} tệp, ${loi.length} lỗi.`;
-  return { loi, canhBao: luat.canhBao.map(dinhDangLoi), tomTat, tepCu, sql };
+  const canhBao = luat.canhBao.map((l) => dinhDangLoi(traViTri(l, kq.banDo)));
+  if (kq.soLoiTam > 0) canhBao.push(`noi-dung-mvp/loi/: còn ${kq.soLoiTam} dòng lời "(tạm)" chờ phiên truyện viết lời thật`);
+  return { loi, canhBao, tomTat, tepCu, sql };
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
