@@ -45,7 +45,8 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem }: KhamPhaMvpProps) 
       <div className="mvp-canh__dau">
         <div className="mvp-canh__tieude">
           <h2>{tenCanh}</h2>
-          <p>{conMoi > 0 ? 'Bấm vào chỗ có viền trắng để xem xét.' : 'Đã xem hết chỗ ở đây.'}</p>
+          {/* Chương 1 (ĐÃ CHỐT C): không câu dặn thao tác — chỉ báo còn bao nhiêu chỗ (có chỗ nằm ngoài khung khi vuốt ngang). */}
+          <p>{conMoi > 0 ? `Còn ${conMoi} chỗ chưa xem` : 'Đã xem hết chỗ ở đây.'}</p>
         </div>
         <div className="mvp-canh__nhom">
           <button

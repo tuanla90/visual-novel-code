@@ -68,7 +68,7 @@ describe('kéo thả', () => {
     await userEvent.click(screen.getByRole('button', { name: /^Báo chí \(giấy nhớ/ }));
     await userEvent.click(screen.getByRole('button', { name: /^Ô giá trị điều kiện 2/ }));
     expect(sqlHien()).toMatch(/WHERE toa_nha = 'B' AND nganh = 'Báo chí'$/);
-    await userEvent.click(screen.getByRole('button', { name: /^Nối điều kiện 2: AND/ }));
+    await userEvent.click(screen.getByRole('button', { name: /^Nối điều kiện 2: VÀ \(AND\)/ }));
     expect(sqlHien()).toMatch(/WHERE toa_nha = 'B' OR nganh = 'Báo chí'$/);
     await userEvent.click(screen.getByRole('button', { name: /^Phép so sánh của điều kiện 2/ }));
     expect(sqlHien()).toMatch(/OR nganh LIKE 'Báo chí%'$/);

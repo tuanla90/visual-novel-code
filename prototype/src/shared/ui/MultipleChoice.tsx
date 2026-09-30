@@ -31,9 +31,11 @@ export interface MultipleChoiceProps {
   random?: () => number;
   /** Nhãn người hỏi thay cho tra cứu `speakerLabel` (bản MVP: nhân vật ngoài `shared/ids.ts`). Không truyền → như cũ. */
   askerLabel?: string;
+  /** Bỏ dòng nhắc "Chọn một phương án ở giữa màn hình" (bản MVP chương 1: không câu dặn thao tác). Không truyền → như cũ. */
+  anNhacChon?: boolean;
 }
 
-export function MultipleChoice({ question, attempts, gameKey, onChoose, random, askerLabel: askerLabelProp }: MultipleChoiceProps) {
+export function MultipleChoice({ question, attempts, gameKey, onChoose, random, askerLabel: askerLabelProp, anNhacChon = false }: MultipleChoiceProps) {
   // Không `useMemo`: `orderedChoices` chỉ xáo lần đầu rồi trả thứ tự đã nhớ theo (phiên, câu hỏi) — StrictMode
   // gọi thân component hai lần hay dựng lại với attempts > 0 đều cho cùng thứ tự (QĐ-041, QĐ-066).
   const ordered = orderedChoices(question, gameKey, random);
@@ -97,7 +99,7 @@ export function MultipleChoice({ question, attempts, gameKey, onChoose, random, 
           <div className="mc__status-bar">
             {attempts > 0 ? (
               <span className="mc__note">Chưa đúng cũng không sao — chọn lại thoải mái.</span>
-            ) : (
+            ) : anNhacChon ? null : (
               <span className="mc__hint-box">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" />

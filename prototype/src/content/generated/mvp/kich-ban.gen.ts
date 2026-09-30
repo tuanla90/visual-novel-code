@@ -1344,8 +1344,8 @@ export const KICH_BAN_MVP = {
             },
             {
               "sprite": "obj-thong-bao-hop",
-              "x": 45,
-              "y": 44,
+              "x": 35.5,
+              "y": 42,
               "rong": 4,
               "chuoi": "n1-thong-bao-hop",
               "sau": [],

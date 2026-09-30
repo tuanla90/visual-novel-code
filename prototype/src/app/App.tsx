@@ -11,6 +11,13 @@ import { useVnStore } from '../shared/vn/vn-store';
 import { ManChoiMvp } from '../mvp/ui/ManChoiMvp';
 import { useKhoMvp } from '../mvp/store/kho-mvp';
 
+/**
+ * Bản gửi chơi thử chỉ có MVP (không màn tiêu đề của prototype): build với `VITE_CHI_MVP=1`, hoặc mở `?mvp=1`.
+ * Vào thẳng ván MVP (ManChoiMvp tự bắt đầu khi chưa có ván); không có mục "Về màn tiêu đề".
+ */
+const CHI_MVP =
+  import.meta.env.VITE_CHI_MVP === '1' || (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('mvp') === '1');
+
 export default function App() {
   const progress = useGameStore((s) => s.progress);
   const survey = useGameStore((s) => s.survey);
@@ -22,11 +29,11 @@ export default function App() {
   const [titleDismissed, setTitleDismissed] = useState(false);
   const [preDraft, setPreDraft] = useState<PreSurveyDraft>(EMPTY_PRE_DRAFT);
   // Bản MVP (gói kien-truc-mvp): màn riêng, kho riêng; vào từ nút "Chơi bản MVP", ra bằng menu "Về màn tiêu đề".
-  const [mvpMode, setMvpMode] = useState(false);
+  const [mvpMode, setMvpMode] = useState(CHI_MVP);
   const hasMvpProgress = useKhoMvp((k) => k.trangThai !== null);
   const showTitle = !titleDismissed || progress === null;
 
-  if (mvpMode) return <ManChoiMvp onVeTieuDe={() => setMvpMode(false)} />;
+  if (mvpMode) return <ManChoiMvp onVeTieuDe={CHI_MVP ? undefined : () => setMvpMode(false)} />;
 
   /** Ghi khảo sát đầu game vào phiên hiện tại (một lần mỗi phiên): gửi nếu trả lời đủ, không thì bỏ qua. */
   const commitPreSurvey = () => {
