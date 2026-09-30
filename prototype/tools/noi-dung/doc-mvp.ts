@@ -164,6 +164,8 @@ export type MucMvp =
   | { kind: 'note'; text: string }
   | { kind: 'goto'; to: string }
   | { kind: 'show-document'; id: string }
+  /** `- [ẢNH <tên tệp>]`: ảnh chèn giữa hội thoại (chibi, CG) — tên tệp ảnh trong src/assets/**, không đuôi. */
+  | { kind: 'image'; id: string }
   | { kind: 'question'; id: string; asker: { speaker: string; text: string }; choices: RawChoice[]; truUyTin: boolean }
   | { kind: 'challenge'; id: string }
   | { kind: 'fix-query'; id: string }
@@ -927,6 +929,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       let m: RegExpExecArray | null;
       if ((m = new RegExp(`^- \\[ĐI TỚI (${MA})\\]$`).exec(line))) return add({ kind: 'goto', to: m[1] ?? '' });
       if ((m = new RegExp(`^- \\[HIỆN TÀI LIỆU (${MA})\\]$`).exec(line))) return add({ kind: 'show-document', id: m[1] ?? '' });
+      if ((m = new RegExp(`^- \\[ẢNH (${MA})\\]$`).exec(line))) return add({ kind: 'image', id: m[1] ?? '' });
       if ((m = new RegExp(`^- \\[HỎI (${MA})( · trừ uy tín)?\\] ([a-z-]+): "(.*)"$`).exec(line))) {
         question = { kind: 'question', id: m[1] ?? '', asker: { speaker: m[3] ?? '', text: m[4] ?? '' }, choices: [], truUyTin: m[2] !== undefined };
         return add(question);

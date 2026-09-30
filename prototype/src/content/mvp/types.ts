@@ -136,6 +136,8 @@ export type NutMvp =
   | { type: 'note'; text: string }
   | { type: 'goto'; to: string }
   | { type: 'show-document'; documentId: string }
+  /** `[ẢNH …]`: ảnh chèn giữa hội thoại (chibi, CG), tra theo tên tệp trong src/assets/**. */
+  | { type: 'image'; imageId: string }
   | { type: 'question'; id: string; asker: { speaker: string; text: string }; choices: LuaChonMvp[]; truUyTin: boolean }
   | { type: 'challenge'; challengeId: string }
   | { type: 'fix-query'; challengeId: string }

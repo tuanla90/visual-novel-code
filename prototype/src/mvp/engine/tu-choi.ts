@@ -27,6 +27,7 @@ function hanhDongTuDong(s: TrangThaiMvp, kn: Exclude<KhungNhinMvp, { kind: 'end'
     case 'line':
     case 'feedback':
     case 'show-document':
+    case 'image':
     case 'effect':
     case 'projector':
     case 'notebook-lookup':

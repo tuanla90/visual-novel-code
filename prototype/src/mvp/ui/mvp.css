@@ -1861,3 +1861,83 @@
     border-radius: 12px;
   }
 }
+
+/* ---------- Ảnh chèn giữa hội thoại ([ẢNH …]: chibi, CG) ---------- */
+.mvp-anhchen {
+  position: absolute;
+  inset: 0;
+  z-index: 45;
+  display: grid;
+  place-items: center;
+  padding: var(--sp-4);
+  background: rgba(8, 12, 18, 0.72);
+  cursor: pointer;
+}
+.mvp-anhchen__anh {
+  max-width: min(92%, 960px);
+  max-height: calc(100% - 72px);
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+.mvp-anhchen__nut {
+  position: absolute;
+  right: var(--sp-4);
+  bottom: var(--sp-4);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mvp-anhchen__anh {
+    animation: mvp-anhchen-vao 0.35s ease-out;
+  }
+  @keyframes mvp-anhchen-vao {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+}
+
+/* ---------- [KHÁM PHÁ] vẽ thẳng trên sân khấu (user hỏi 30/09: "sao lại mở ra một màn hình riêng?") ----------
+   Màn ngang: không khung riêng, không ảnh nền riêng — chỗ bấm nằm trên chính nền sân khấu. Khung chỗ bấm dùng cùng phép
+   "cover, neo giữa" như .stage__backdrop-img nên (x, y) % của ảnh trùng đúng chỗ trên nền. Tên cảnh đã có ở nhãn cảnh
+   của sân khấu; chỉ giữ viên "Còn N chỗ chưa xem" và nút "Danh sách" (trợ năng) ở góc phải.
+   Điện thoại dọc: giữ kiểu ảnh rộng vuốt ngang (user chốt 29/09). */
+@media (min-width: 769px), (orientation: landscape) {
+  .game:not(.game--portrait) .mvp-khampha {
+    padding: 0;
+    background: transparent;
+  }
+  .game:not(.game--portrait) .mvp-khampha .mvp-canh__mo,
+  .game:not(.game--portrait) .mvp-khampha .mvp-canh__vuot,
+  .game:not(.game--portrait) .mvp-khampha .mvp-canh__tieude h2 {
+    display: none;
+  }
+  .game:not(.game--portrait) .mvp-khampha .mvp-canh__dau {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    z-index: 2;
+    flex-wrap: nowrap;
+  }
+  .game:not(.game--portrait) .mvp-khampha .mvp-canh__tieude {
+    flex: none;
+  }
+  .game:not(.game--portrait) .mvp-khampha .mvp-canh__tieude p {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(8, 12, 18, 0.62);
+  }
+  .game:not(.game--portrait) .mvp-khampha .mvp-canh__vung {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .game:not(.game--portrait) .mvp-khampha .mvp-canh__khung {
+    width: max(100cqw, calc(100cqh * var(--ti-le-so)));
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .game:not(.game--portrait) .mvp-khampha .mvp-canh__nen {
+    visibility: hidden;
+  }
+}

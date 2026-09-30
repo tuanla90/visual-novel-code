@@ -12,7 +12,7 @@ import { kiemLuatMvp } from './luat-mvp.ts';
 import { tepLechTrenDia } from './sinh.ts';
 import { THU_MUC_SINH_MVP, vanBanMvp } from './sinh-mvp.ts';
 import { kiemSoDongMvp, type KetQuaChayMvp } from './sql-mvp.ts';
-import { docSpriteVat, docThuMucMvp, traViTri } from './thu-muc-mvp.ts';
+import { docSpriteVat, docTenAnh, docThuMucMvp, traViTri } from './thu-muc-mvp.ts';
 
 export const THU_MUC_NOI_DUNG_MVP = fileURLToPath(new URL('../../noi-dung-mvp/', import.meta.url));
 
@@ -35,7 +35,7 @@ function dem(m: RawMvp): string {
 export async function kiemNoiDungMvp(thuMuc: string = THU_MUC_NOI_DUNG_MVP): Promise<KetQuaKiemMvp> {
   const kq = docThuMucMvp(thuMuc);
   const loiDoc = [...kq.loi];
-  const luat = kiemLuatMvp(kq.mvp, { spriteVat: docSpriteVat() });
+  const luat = kiemLuatMvp(kq.mvp, { spriteVat: docSpriteVat(), anh: docTenAnh() });
   loiDoc.push(...luat.loi.map((l) => traViTri(l, kq.banDo)));
   const loi = loiDoc.map(dinhDangLoi);
   let tepCu: string[] = [];

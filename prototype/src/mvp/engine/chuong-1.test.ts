@@ -109,3 +109,15 @@ describe('chương 1: ngày theo truyện', () => {
     expect(ketB).toEqual(ketA);
   });
 });
+
+describe('ảnh chèn giữa hội thoại ([ẢNH …])', () => {
+  it('máy dừng ở nút ảnh (khung nhìn "image"), "tiep" thì đi tiếp nút sau', () => {
+    const chuoi = KB.chuoi.map((c) => (c.id === KB.lich.chuoiDau ? { ...c, nodes: [{ type: 'image' as const, imageId: 'chibi-thu' }, ...c.nodes] } : c));
+    const kb: KichBanMvp = { ...KB, chuoi };
+    let s = taoTrangThai(kb, 1);
+    expect(khungNhin(kb, s)).toEqual({ kind: 'image', imageId: 'chibi-thu' });
+    s = xuLy(kb, s, { type: 'tiep' });
+    expect(s.conTro?.nut).toBeGreaterThan(0);
+    expect(khungNhin(kb, s).kind).not.toBe('image');
+  });
+});

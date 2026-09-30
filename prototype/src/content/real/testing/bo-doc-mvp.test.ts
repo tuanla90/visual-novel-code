@@ -517,3 +517,23 @@ describe('phản ứng sau mỗi lần chạy ("Khi …" trong thẻ thử thác
     expect(docThe('- Khi đúng: **tung** (smug): X.')).toEqual([expect.stringMatching(/thẻ c1: nhân vật tung không có biểu cảm "smug"/)]);
   });
 });
+
+describe('bộ MVP: [ẢNH …] chèn giữa hội thoại', () => {
+  const tepVoi = (dong: string): TepMvp[] =>
+    Object.entries(GOC).map(([p, s]) => ({
+      duongDan: `noi-dung-mvp/${p}`,
+      loai: loaiCua(p),
+      noiDung: p === 'kich-ban/01.md' ? s.replace('- **tung** (neutral): Đây là dữ kiện phụ.', `- **tung** (neutral): Đây là dữ kiện phụ.
+${dong}`) : s,
+    }));
+  it('đọc thành nút ảnh; có tệp thì sạch, thiếu tệp thì lỗi ở đúng dòng', () => {
+    const kq = docNoiDungMvp(tepVoi('- [ẢNH chibi-408-vali]'));
+    expect(kq.loi).toEqual([]);
+    const phu = kq.mvp.chuoi.find((c) => c.id === 's-phu');
+    expect(phu?.items.some((it) => it.kind === 'image' && it.id === 'chibi-408-vali')).toBe(true);
+    expect(kiemLuatMvp(kq.mvp, { anh: new Set(['chibi-408-vali']) }).loi).toEqual([]);
+    expect(kiemLuatMvp(kq.mvp, { anh: new Set(['khac']) }).loi.map(dinhDangLoi)).toEqual([
+      expect.stringMatching(/kich-ban\/01\.md:\d+: \[ẢNH chibi-408-vali\]: không có tệp ảnh "chibi-408-vali"/),
+    ]);
+  });
+});

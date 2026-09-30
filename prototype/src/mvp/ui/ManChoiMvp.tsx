@@ -27,6 +27,7 @@ import { giaTriTuHoSo } from '../engine/giay-nho';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import { nhayToi, type MaDiemNhayMvp } from '../engine/tu-choi';
 import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
+import { AnhChenMvp } from './AnhChenMvp';
 import { anhNen } from './anh-mvp';
 import { BAN_DO_MVP } from './ban-do-mvp';
 import { BangQuanSatMvp } from './BangQuanSatMvp';
@@ -282,6 +283,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         );
       case 'show-document':
         return <TaiLieuMvp kb={kb} id={kn.documentId} dienTen={dienTen} onCat={tiep} />;
+      case 'image':
+        return <AnhChenMvp key={kn.imageId} id={kn.imageId} onTiep={tiep} />;
       case 'challenge':
       case 'fix-query':
         return (

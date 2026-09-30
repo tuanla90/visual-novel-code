@@ -32,6 +32,8 @@ export interface TuyChonLuatMvp {
    * Bỏ trống = không kiểm tệp (test dựng nội dung trong bộ nhớ); `kiem-mvp`/`sinh-mvp` luôn truyền.
    */
   spriteVat?: ReadonlySet<string>;
+  /** Tên (không đuôi, viết thường) mọi ảnh trong `src/assets/**` — để kiểm `[ẢNH …]`. Bỏ trống = không kiểm tệp. */
+  anh?: ReadonlySet<string>;
 }
 
 type Producer = { kind: 'du-kien'; id: string } | { kind: 'the'; id: string } | { kind: 'chuoi'; id: string };
@@ -211,6 +213,9 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           canVatPham(it.id, vt, 'doc-', '[HIỆN TÀI LIỆU]');
           them(it.id, { kind: 'chuoi', id: c.id });
           tao.add(it.id);
+          break;
+        case 'image':
+          if (tuyChon.anh && !tuyChon.anh.has(it.id.toLowerCase())) err(vt, `[ẢNH ${it.id}]: không có tệp ảnh "${it.id}" (webp/png/jpg) trong src/assets/`);
           break;
         case 'save-evidence':
           canVatPham(it.id, vt, 'ev-', '[LƯU BẰNG CHỨNG]');
