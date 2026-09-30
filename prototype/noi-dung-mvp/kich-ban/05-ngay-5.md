@@ -15,7 +15,7 @@
 - [HẬU QUẢ] mở manh mối clue-loi-chu-cuong
 - [ĐI TỚI n5-toi]
 
-### n5-toi — Tối: Hà Vy tóm tắt trước buổi họp {cảnh: phong-clb}
+### n5-toi — Tối: Hà Vy tóm tắt trước buổi họp {cảnh: phong-clb-dem}
 
 - [LỜI n5-toi.1]
 - [ẢNH chibi-bang-ghim]

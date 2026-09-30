@@ -78,12 +78,12 @@
 - [LỜI md-06-bang-tin.1]
 - [ĐI TỚI md-07-cong-ktx-toi]
 
-### md-07-cong-ktx-toi — Cổng KTX, tối: chú Cường {cảnh: cong-ktx}
+### md-07-cong-ktx-toi — Cổng KTX, tối: chú Cường {cảnh: cong-ktx-dem}
 
 - [LỜI md-07-cong-ktx-toi.1]
 - [ĐI TỚI md-08-tuan-cong-dan]
 
-### md-08-tuan-cong-dan — Chuyển cảnh: tuần sinh hoạt công dân {cảnh: nha-van-hoa}
+### md-08-tuan-cong-dan — Chuyển cảnh: tuần sinh hoạt công dân {cảnh: hoi-truong}
 
 - [LỜI md-08-tuan-cong-dan.1]
 - [HIỆN TÀI LIỆU doc-the-lich-cua-toi]

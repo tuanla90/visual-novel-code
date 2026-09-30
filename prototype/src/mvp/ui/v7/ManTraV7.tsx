@@ -206,12 +206,18 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
       if (!song.current) return;
       setCham(kq);
       setDaChay(t);
-      setLoiNoi(phanUngSauKhiChay(the, kq));
+      setLoiNoi(
+        phanUngSauKhiChay(
+          the,
+          kq,
+          cau.dieuKien.filter((d) => d.giaTri !== null).map((d) => d.cot),
+        ),
+      );
     } finally {
       banRon.current = false;
       if (song.current) setDangChay(false);
     }
-  }, [duLieu, khung, dung, sql, the, tongDong, demToi]);
+  }, [duLieu, khung, dung, sql, the, tongDong, demToi, cau]);
 
   if (!duLieu) return <p className="game__error">Vụ này chưa có bộ dữ liệu (du-lieu.md) nên không chạy được.</p>;
   if (!khung || !bang) return <p className="game__error">Thẻ thử thách này thiếu khung SELECT … FROM … hợp lệ.</p>;

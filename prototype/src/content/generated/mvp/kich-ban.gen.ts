@@ -366,6 +366,11 @@ export const KICH_BAN_MVP = {
       "anhNen": null
     },
     {
+      "id": "cong-ktx-dem",
+      "ten": "Cổng KTX",
+      "anhNen": null
+    },
+    {
       "id": "sanh-ktx",
       "ten": "Sảnh ký túc xá",
       "anhNen": null
@@ -391,9 +396,19 @@ export const KICH_BAN_MVP = {
       "anhNen": null
     },
     {
+      "id": "hoi-truong",
+      "ten": "Hội trường",
+      "anhNen": null
+    },
+    {
       "id": "phong-clb",
       "ten": "Phòng CLB",
       "anhNen": "bg-clb-room"
+    },
+    {
+      "id": "phong-clb-dem",
+      "ten": "Phòng CLB",
+      "anhNen": null
     },
     {
       "id": "phong-may",
@@ -976,7 +991,7 @@ export const KICH_BAN_MVP = {
     {
       "id": "md-07-cong-ktx-toi",
       "title": "Cổng KTX, tối: chú Cường",
-      "canh": "cong-ktx",
+      "canh": "cong-ktx-dem",
       "mocSomNhat": 0,
       "nodes": [
         {
@@ -1039,7 +1054,7 @@ export const KICH_BAN_MVP = {
     {
       "id": "md-08-tuan-cong-dan",
       "title": "Chuyển cảnh: tuần sinh hoạt công dân",
-      "canh": "nha-van-hoa",
+      "canh": "hoi-truong",
       "mocSomNhat": 0,
       "nodes": [
         {
@@ -2383,7 +2398,7 @@ export const KICH_BAN_MVP = {
     {
       "id": "n5-toi",
       "title": "Tối: Hà Vy tóm tắt trước buổi họp",
-      "canh": "phong-clb",
+      "canh": "phong-clb-dem",
       "mocSomNhat": 51,
       "nodes": [
         {
@@ -2942,7 +2957,11 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 0
+            "n": 0,
+            "cot": [
+              "tai_khoan",
+              "ten_tep"
+            ]
           },
           "loi": [
             {
@@ -2954,6 +2973,35 @@ export const KICH_BAN_MVP = {
               "speaker": "tung",
               "expression": "worried",
               "text": "Thế thì ai in?"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0,
+            "cot": [
+              "ten_tep"
+            ]
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không có tệp nào tên đúng bằng mấy chữ ấy. Trên giấy mình mới ghi được đoạn đầu của tên tệp thôi. (tạm)"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào khớp. (tạm)"
             }
           ]
         }
@@ -3043,7 +3091,11 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 0
+            "n": 0,
+            "cot": [
+              "ma_lop",
+              "ten"
+            ]
           },
           "loi": [
             {
@@ -3061,7 +3113,40 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 1
+            "n": 0,
+            "cot": [
+              "ten"
+            ]
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không ai tên đúng một chữ H cả."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào khớp cả. (tạm)"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 1,
+            "cot": [
+              "ma_lop",
+              "ho_dem"
+            ]
           },
           "loi": [
             {
@@ -3441,7 +3526,7 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:24 thẻ c-sua-or-quan, SQL chuẩn"
+      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:26 thẻ c-sua-or-quan, SQL chuẩn"
     },
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';",

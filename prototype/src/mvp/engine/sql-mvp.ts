@@ -196,7 +196,7 @@ export function xemDongDau(duLieu: BoDuLieuMvp, bang: string, soDong = 5): Promi
  * Lời nhân vật sau một lần chạy (dòng "Khi …" của thẻ, QĐ-092): đúng → "Khi đúng"; lỗi thiếu cột → "Khi lỗi không có cột"
  * (không có thì "Khi lỗi"); lỗi khác → "Khi lỗi"; chạy được → "Khi chạy ra <n> dòng" đúng số dòng. Không khớp → [].
  */
-export function phanUngSauKhiChay(the: Pick<TheThuThachMvp, 'phanUng'>, kq: KetQuaCham): LoiMvp[] {
+export function phanUngSauKhiChay(the: Pick<TheThuThachMvp, 'phanUng'>, kq: KetQuaCham, cotDung?: readonly string[]): LoiMvp[] {
   const tim = (f: (k: KhiChayMvp) => boolean): LoiMvp[] => the.phanUng.find((p) => f(p.khi))?.loi ?? [];
   if (kq.trangThai === 'dung') return tim((k) => k.kind === 'dung');
   if (kq.trangThai === 'loi') {
@@ -204,5 +204,8 @@ export function phanUngSauKhiChay(the: Pick<TheThuThachMvp, 'phanUng'>, kq: KetQ
     return cot.length > 0 ? cot : tim((k) => k.kind === 'loi');
   }
   const n = kq.so.soDongNguoiChoi;
-  return tim((k) => k.kind === 'so-dong' && k.n === n);
+  // Lời gắn với tập cột ("… với a, b") chỉ nói khi câu dùng đúng các cột đó — để lời tả đúng lý do; không có thì lời chung.
+  const tap = cotDung ? [...new Set(cotDung)].sort().join(',') : null;
+  const rieng = tap === null ? [] : tim((k) => k.kind === 'so-dong' && k.n === n && !!k.cot && [...k.cot].sort().join(',') === tap);
+  return rieng.length > 0 ? rieng : tim((k) => k.kind === 'so-dong' && k.n === n && !k.cot);
 }

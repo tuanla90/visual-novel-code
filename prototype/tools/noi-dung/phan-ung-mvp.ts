@@ -4,6 +4,7 @@
  *
  *   - Khi chạy ra 0 dòng: **ha-vy** (thinking): Cột khóa đang lưu số 2024.
  *   - Khi chạy ra 5 dòng: **tung** (worried): Ơ, năm lớp? <br> **ha-vy** (neutral): Lớp nào thỏa một trong hai là lấy.
+ *   - Khi chạy ra 0 dòng với tai_khoan, ten_tep: …   (chỉ khi các điều kiện đã điền dùng ĐÚNG các cột này; ưu tiên hơn dòng không ghi cột)
  *   - Khi lỗi không có cột: **ha-vy** (thinking): Máy đang đi tìm một cột tên B.
  *   - Khi lỗi: …            (mọi lỗi khác)
  *   - Khi đúng: …           (kết quả khớp, trước nút lưu / đi tiếp)
@@ -11,7 +12,7 @@
  */
 import { parseSpoken, type RawLine } from './doc.ts';
 
-export type KhiChay = { kind: 'so-dong'; n: number } | { kind: 'loi-cot' } | { kind: 'loi' } | { kind: 'dung' };
+export type KhiChay = { kind: 'so-dong'; n: number; cot?: string[] } | { kind: 'loi-cot' } | { kind: 'loi' } | { kind: 'dung' };
 
 export interface RawPhanUng {
   khi: KhiChay;
@@ -25,13 +26,16 @@ export function docPhanUng(fields: Readonly<Record<string, string>>): { phanUng:
   for (const [nhan, gt] of Object.entries(fields)) {
     if (!nhan.startsWith('Khi ')) continue;
     let khi: KhiChay | null = null;
-    const m = /^Khi chạy ra (\d+) dòng$/.exec(nhan);
-    if (m) khi = { kind: 'so-dong', n: Number(m[1]) };
+    const m = /^Khi chạy ra (\d+) dòng(?: với (.+))?$/.exec(nhan);
+    if (m) {
+      const cot = (m[2] ?? '').split(',').map((c) => c.trim()).filter((c) => c !== '');
+      khi = cot.length > 0 ? { kind: 'so-dong', n: Number(m[1]), cot } : { kind: 'so-dong', n: Number(m[1]) };
+    }
     else if (nhan === 'Khi lỗi không có cột') khi = { kind: 'loi-cot' };
     else if (nhan === 'Khi lỗi') khi = { kind: 'loi' };
     else if (nhan === 'Khi đúng') khi = { kind: 'dung' };
     if (!khi) {
-      loi.push(`dòng "${nhan}" lạ — dùng "Khi chạy ra <n> dòng", "Khi lỗi không có cột", "Khi lỗi", "Khi đúng"`);
+      loi.push(`dòng "${nhan}" lạ — dùng "Khi chạy ra <n> dòng", "Khi chạy ra <n> dòng với <cột>, <cột>", "Khi lỗi không có cột", "Khi lỗi", "Khi đúng"`);
       continue;
     }
     try {

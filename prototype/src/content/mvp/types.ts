@@ -195,7 +195,8 @@ export interface TheThuThachMvp {
   ghiChu: string[];
 }
 
-export type KhiChayMvp = { kind: 'so-dong'; n: number } | { kind: 'loi-cot' } | { kind: 'loi' } | { kind: 'dung' };
+/** `cot`: chỉ khớp khi các điều kiện người chơi đã điền dùng đúng tập cột này ("Khi chạy ra 0 dòng với a, b"). */
+export type KhiChayMvp = { kind: 'so-dong'; n: number; cot?: string[] } | { kind: 'loi-cot' } | { kind: 'loi' } | { kind: 'dung' };
 
 export interface PhanUngMvp {
   khi: KhiChayMvp;
