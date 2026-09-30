@@ -9,10 +9,10 @@
  */
 import { useState, type CSSProperties, type ReactNode } from 'react';
 import type { KichBanMvp } from '../../content/mvp/types';
-import { isCharacterId } from '../../shared/ids';
+import { isCharacterId, isExpressionOf } from '../../shared/ids';
 import { Portrait } from '../../shared/ui/Portrait';
 import { useVnStore } from '../../shared/vn/vn-store';
-import { anhChanDung, anhNen } from './anh-mvp';
+import { anhChanDung, anhNen, anhTheoTen } from './anh-mvp';
 
 export interface SanKhauMvpProps {
   kb: KichBanMvp;
@@ -81,11 +81,18 @@ function ChanDungMvp({
   const laNguoiChoi = nhanVat === 'player';
   const nv = kb.nhanVat.find((n) => n.id === nhanVat);
   const ten = laNguoiChoi ? tenNguoiChoi || 'Bạn' : (nv?.ten ?? 'Nhân vật');
-  // Nhân vật có trong prototype (Tùng, Hà Vy, Minh Anh, Quân, Hoài, bác Thịnh): dùng Portrait (tách nền, nhép môi).
+  // Nhân vật có trong prototype (Tùng, Hà Vy, Minh Anh, Quân, Hoài, bác Thịnh): dùng Portrait (tách nền, nhép môi)
+  // — trừ khi biểu cảm là biểu cảm riêng của MVP (ngoài `CHARACTER_EXPRESSIONS`, vd Tùng `worried`) và có ảnh
+  // `char-<mã>-<biểu cảm>` riêng: ô ảnh của prototype không biết biểu cảm đó (sẽ mượn ảnh neo), nên vẽ thẳng ảnh MVP.
+  // Ảnh MVP cùng khung 768×1360 với ảnh neo → nhân vật không nhảy chỗ khi đổi biểu cảm.
+  let url: string | undefined;
   if (isCharacterId(nhanVat)) {
-    return <Portrait character={nhanVat} expression={bieuCam ?? nv?.bieuCam[0] ?? 'neutral'} talking={talking} />;
+    const bc = bieuCam ?? nv?.bieuCam[0] ?? 'neutral';
+    url = isExpressionOf(nhanVat, bc) ? undefined : anhTheoTen(`char-${nhanVat}-${bc}`);
+    if (!url) return <Portrait character={nhanVat} expression={bc} talking={talking} />;
+  } else {
+    url = anhChanDung(laNguoiChoi ? 'nguoi-choi' : nhanVat, bieuCam);
   }
-  const url = anhChanDung(laNguoiChoi ? 'nguoi-choi' : nhanVat, bieuCam);
   return (
     <figure className="portrait portrait--normal mvp-portrait" role="img" aria-label={ten} data-art-source={url ? 'image' : 'placeholder'}>
       {url ? (

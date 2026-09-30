@@ -29,3 +29,26 @@ describe('SanKhauMvp — nhân vật chính lên hình khi nói', () => {
     expect(container.querySelectorAll('.cast-member')).toHaveLength(0);
   });
 });
+
+describe('SanKhauMvp — biểu cảm riêng của MVP', () => {
+  const anhCua = (container: HTMLElement): string => container.querySelector('.cast-member img')?.getAttribute('src') ?? '';
+
+  it('Tùng worried (ngoài danh sách prototype) → ảnh char-tung-worried, không phải ảnh neo', () => {
+    const { container } = render(<SanKhauMvp kb={kb} canh="cong-truong" speaker="tung" expression="worried" />);
+    expect(anhCua(container)).toContain('char-tung-worried');
+  });
+
+  it('Minh Anh serious, bác Thịnh smile → ảnh MVP riêng', () => {
+    const a = render(<SanKhauMvp kb={kb} canh="cong-truong" speaker="minh-anh" expression="serious" />);
+    expect(anhCua(a.container)).toContain('char-minh-anh-serious');
+    a.unmount();
+    const b = render(<SanKhauMvp kb={kb} canh="cong-truong" speaker="bac-tu" expression="smile" />);
+    expect(anhCua(b.container)).toContain('char-bac-tu-smile');
+  });
+
+  it('biểu cảm prototype đã biết (Hà Vy thinking) → vẫn đi qua Portrait của prototype', () => {
+    const { container } = render(<SanKhauMvp kb={kb} canh="cong-truong" speaker="ha-vy" expression="thinking" />);
+    expect(container.querySelector('.mvp-portrait')).toBeNull();
+    expect(container.querySelector('.cast-member .portrait')).not.toBeNull();
+  });
+});
