@@ -1526,6 +1526,11 @@
   border-color: transparent;
   color: #111;
 }
+.mvp-keo__noi-sql {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7em;
+  opacity: 0.7;
+}
 .mvp-keo__dk select {
   min-height: 36px;
   font-family: var(--font-mono, monospace);

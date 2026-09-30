@@ -7,7 +7,7 @@ import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { chaySql } from './sql-mvp';
-import { cauSoiDieuKien, dieuKienThanhSql, giaTriTuGiayNho, khungTuSqlChuan, noiKhoi, tachWhere, thanhSql, type CauDung, type KieuCot } from './trinh-dung';
+import { cauSoiDieuKien, cauTuSql, dieuKienThanhSql, giaTriTuGiayNho, khungTuSqlChuan, noiKhoi, tachWhere, thanhSql, type CauDung, type KieuCot } from './trinh-dung';
 
 const KB = KICH_BAN_MVP as unknown as KichBanMvp;
 const duLieu = KB.duLieu;
@@ -96,5 +96,31 @@ describe('xem từng điều kiện', () => {
     expect(hoac.cot).toEqual(expect.arrayContaining(['dk1', 'dk2', 'giu']));
     const va = await soi("SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí'");
     expect(va).toMatchObject({ tong: 5, giu: 2 });
+  });
+});
+
+describe('nạp câu có sẵn vào kéo thả (buổi họp, chương 1)', () => {
+  const kieu = (): KieuCot => 'TEXT';
+  it("câu HOẶC của Quân → hai ô giấy nhớ (H bắt đầu bằng, BC24A bằng), nối OR; dựng lại ra đúng câu", () => {
+    const cau = cauTuSql("SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';");
+    expect(cau).toEqual({
+      khung: 'SELECT ma_sv, ten FROM sinh_vien',
+      dieuKien: [
+        { cot: 'ten', phep: 'bat-dau-bang', giaTri: { nguon: 'giay-nho', tho: 'H' } },
+        { cot: 'ma_lop', phep: 'bang', giaTri: { nguon: 'giay-nho', tho: 'BC24A' } },
+      ],
+      noi: ['OR'],
+    });
+    if (!cau) return;
+    expect(thanhSql(cau, kieu)).toBe("SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A'");
+    expect(thanhSql({ ...cau, noi: ['AND'] }, kieu)).toBe("SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A'");
+  });
+
+  it('số để trần, điều kiện lạ giữ nguyên chữ, câu không tách được → null', () => {
+    const cau = cauTuSql('SELECT a FROM t WHERE khoa_hoc = 2024 AND ten <> 1');
+    expect(cau?.dieuKien[0]).toEqual({ cot: 'khoa_hoc', phep: 'bang', giaTri: { nguon: 'giay-nho', tho: '2024' } });
+    expect(cau?.dieuKien[1]?.giaTri).toEqual({ nguon: 'go', tho: 'ten <> 1' });
+    expect(cauTuSql('SELECT a FROM t WHERE (x = 1 OR y = 2) AND z = 3')).toBeNull();
+    expect(cauTuSql('SELECT a FROM t')).toEqual({ khung: 'SELECT a FROM t', dieuKien: [], noi: [] });
   });
 });

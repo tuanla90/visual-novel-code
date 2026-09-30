@@ -9,7 +9,8 @@ import { TEN_CACH_NHAP } from '../engine/trinh-dung';
 export interface KetMvpProps {
   ketQua: 'that' | 'thuong';
   onChoiLai: () => void;
-  onVeTieuDe: () => void;
+  /** Bỏ trống = không có màn tiêu đề (bản chơi thử chỉ MVP). */
+  onVeTieuDe?: () => void;
 }
 
 const LUA_CHON = [
@@ -57,9 +58,11 @@ export function KetMvp({ ketQua, onChoiLai, onVeTieuDe }: KetMvpProps) {
         <button type="button" className="btn btn--primary" onClick={onChoiLai} autoFocus>
           Chơi lại từ đầu
         </button>
-        <button type="button" className="btn" onClick={onVeTieuDe}>
-          Về màn tiêu đề
-        </button>
+        {onVeTieuDe ? (
+          <button type="button" className="btn" onClick={onVeTieuDe}>
+            Về màn tiêu đề
+          </button>
+        ) : null}
       </div>
     </section>
   );

@@ -74,6 +74,28 @@ export function thanhSql(cau: CauDung, kieuCot: (cot: string) => KieuCot): strin
   return phan.length === 0 ? cau.khung : `${cau.khung} WHERE ${phan.join(' ')}`;
 }
 
+/**
+ * Câu có sẵn → cách dựng kéo thả (màn sửa truy vấn ở buổi họp, chương 1: người chơi chỉ cần bấm chữ HOẶC để đổi thành
+ * VÀ). Mỗi điều kiện `cot = 'x'` / `cot = 5` / `cot LIKE 'x%'` thành một ô với giá trị như giấy nhớ; điều kiện khác
+ * giữ nguyên chữ (như gõ tay qua ✎). `null` khi câu không tách được (có ngoặc, GROUP BY…).
+ */
+export function cauTuSql(sql: string): CauDung | null {
+  const t = tachWhere(sql);
+  if (!t) {
+    const k = khungTuSqlChuan(sql);
+    return k && !/\bWHERE\b/i.test(sql) ? { khung: k.khung, dieuKien: [], noi: [] } : null;
+  }
+  const dieuKien = t.dieuKien.map((d): DieuKienDung => {
+    const bang = /^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(?:'((?:[^']|'')*)'|(-?\d+(?:\.\d+)?))$/.exec(d);
+    if (bang) return { cot: bang[1] ?? '', phep: 'bang', giaTri: { nguon: 'giay-nho', tho: (bang[2] ?? bang[3] ?? '').replace(/''/g, "'") } };
+    const like = /^([A-Za-z_][A-Za-z0-9_]*)\s+LIKE\s+'((?:[^'%]|'')*)%'$/i.exec(d);
+    if (like) return { cot: like[1] ?? '', phep: 'bat-dau-bang', giaTri: { nguon: 'giay-nho', tho: (like[2] ?? '').replace(/''/g, "'") } };
+    const cot = /^([A-Za-z_][A-Za-z0-9_]*)\s*(=|LIKE)\s*([\s\S]+)$/i.exec(d);
+    return { cot: cot?.[1] ?? '', phep: cot?.[2]?.toUpperCase() === 'LIKE' ? 'bat-dau-bang' : 'bang', giaTri: { nguon: 'go', tho: cot?.[3] ?? d } };
+  });
+  return { khung: t.khung, dieuKien, noi: t.noi };
+}
+
 // ---------- Bấm khối ----------
 
 /**
