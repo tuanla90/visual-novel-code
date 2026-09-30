@@ -65,10 +65,10 @@
 - Giới thiệu: Ngồi bàn trực cạnh cầu thang tòa B. Ít lời, giờ giấc đâu ra đấy, việc gì không tận mắt thấy thì không nói.
 
 ### co-hanh — Cô Hạnh
-- Vai: Phòng Đào tạo. Cấp quyền dữ liệu tạm (2 bảng, chỉ cột cần thiết), thu hồi sau buổi họp.
+- Vai: Phòng Đào tạo. Tạo tài khoản tra cứu của CLB trên laptop (ngày 2): chỉ xem bảng lớp; bảng có thông tin cá nhân phải có phiếu yêu cầu tra cứu.
 - Biểu cảm: neutral
 - Danh xưng: Phòng Đào tạo
-- Câu nói: Hai bảng thôi, chỉ những cột cần thiết.
+- Câu nói: Tài khoản này chỉ xem được bảng lớp. Muốn xem gì thêm thì mang phiếu sang.
 - Giới thiệu: Cán bộ Phòng Đào tạo, phụ trách dữ liệu sinh viên. Cấp quyền rất chặt: xin gì cho nấy, dùng xong là khóa lại.
 
 ### co-lan — Cô Lan

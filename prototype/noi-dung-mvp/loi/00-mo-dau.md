@@ -122,7 +122,7 @@
 - **minh-anh** (neutral): Đoàn trường có gửi danh sách tân sinh viên khóa này, mã nằm trong đấy. Tra xong là chị xóa khỏi máy.
 - **narrator**: {{nv.tung}} cúi xuống màn hình vài giây rồi điền một mạch.
 - **minh-anh** (worried): Mã này của một bạn Tùng học Kế toán. Em học Du lịch cơ mà?
-- **tung** (worried): Ơ… tên trong này na ná nhau quá, em nhìn nhầm dòng.
+- **tung** (worried): Dạ vâng, em Tùng Du lịch ạ… Tên trong này na ná nhau quá, em nhìn nhầm dòng.
 - **minh-anh** (neutral): Để chị dò lại từng dòng vậy.
 - **player**: Chị cho em thử lọc một cái được không ạ?
 

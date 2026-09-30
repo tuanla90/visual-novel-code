@@ -18,7 +18,7 @@
 - Tiêu đề: Thẻ lịch khoa Báo chí K24 mắc ở khe hộp
 - Giá trị cho trình dựng: Báo chí · K24
 - Nguồn: Khe hộp kiến nghị, sảnh tòa B
-- Nội dung: Phần in còn nguyên "Khoa Báo chí – Truyền thông · K24"; dòng viết tay "Họ tên / Lớp" bị xé mất. Chỉ ra cả một khóa (2 lớp).
+- Nội dung: Phần in còn nguyên "Khoa Báo chí – Truyền thông · K24"; dòng viết tay "Họ tên / Lớp" bị xé mất. Còn biết chủ thẻ học khoa Báo chí; lớp nào thì không.
 
 ### clue-quyen-du-lieu — [Tài khoản CLB]
 - Tiêu đề: Tài khoản CLB

@@ -173,7 +173,7 @@ export const KICH_BAN_MVP = {
       "ten": "Cô Hạnh",
       "hoTen": null,
       "trongCau": "cô Hạnh",
-      "vai": "Phòng Đào tạo. Cấp quyền dữ liệu tạm (2 bảng, chỉ cột cần thiết), thu hồi sau buổi họp.",
+      "vai": "Phòng Đào tạo. Tạo tài khoản tra cứu của CLB trên laptop (ngày 2): chỉ xem bảng lớp; bảng có thông tin cá nhân phải có phiếu yêu cầu tra cứu.",
       "bieuCam": [
         "neutral"
       ],
@@ -185,7 +185,7 @@ export const KICH_BAN_MVP = {
         "danhXung": "Phòng Đào tạo",
         "nam": null,
         "nganh": null,
-        "cauNoi": "Hai bảng thôi, chỉ những cột cần thiết.",
+        "cauNoi": "Tài khoản này chỉ xem được bảng lớp. Muốn xem gì thêm thì mang phiếu sang.",
         "loi": "Cán bộ Phòng Đào tạo, phụ trách dữ liệu sinh viên. Cấp quyền rất chặt: xin gì cho nấy, dùng xong là khóa lại."
       }
     },
@@ -1134,7 +1134,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Ơ… tên trong này na ná nhau quá, em nhìn nhầm dòng."
+          "text": "Dạ vâng, em Tùng Du lịch ạ… Tên trong này na ná nhau quá, em nhìn nhầm dòng."
         },
         {
           "type": "line",
@@ -1623,6 +1623,10 @@ export const KICH_BAN_MVP = {
       "mocSomNhat": 21,
       "nodes": [
         {
+          "type": "task",
+          "text": "Lớp nào vừa ở tòa B vừa học Báo chí?"
+        },
+        {
           "type": "note",
           "text": "(tạm) Phòng CLB. Cái laptop cũ của CLB đã đăng nhập tài khoản mới. Giấy nhớ [Tòa B], [Báo chí K24] nằm trên bàn."
         },
@@ -1813,6 +1817,10 @@ export const KICH_BAN_MVP = {
       "mocSomNhat": 31,
       "nodes": [
         {
+          "type": "task",
+          "text": "Trong hai lớp ấy, ai có thể là người ký chữ H?"
+        },
+        {
           "type": "note",
           "text": "(tạm) Phòng CLB. Phiếu tra cứu đã mở bảng sinh viên. Trên bàn: [H], phiếu hai lớp."
         },
@@ -1969,6 +1977,10 @@ export const KICH_BAN_MVP = {
       "canh": "phong-may",
       "mocSomNhat": 41,
       "nodes": [
+        {
+          "type": "task",
+          "text": "Lá thư được in từ tài khoản nào?"
+        },
         {
           "type": "line",
           "speaker": "thay-khai",
@@ -2144,6 +2156,10 @@ export const KICH_BAN_MVP = {
       "canh": "phong-clb",
       "mocSomNhat": 51,
       "nodes": [
+        {
+          "type": "task",
+          "text": "Soát lại hồ sơ trước buổi họp"
+        },
         {
           "type": "line",
           "speaker": "narrator",
@@ -2742,7 +2758,7 @@ export const KICH_BAN_MVP = {
             {
               "speaker": "tung",
               "expression": "worried",
-              "text": "(tạm) Chữ H thôi mà, phải có tên nào bắt đầu bằng H chứ?"
+              "text": "Ơ, không ai à? Rõ ràng chữ ký có chữ H mà."
             }
           ]
         },
@@ -2827,7 +2843,7 @@ export const KICH_BAN_MVP = {
         "Tiêu đề": "Thẻ lịch khoa Báo chí K24 mắc ở khe hộp",
         "Giá trị cho trình dựng": "Báo chí · K24",
         "Nguồn": "Khe hộp kiến nghị, sảnh tòa B",
-        "Nội dung": "Phần in còn nguyên \"Khoa Báo chí – Truyền thông · K24\"; dòng viết tay \"Họ tên / Lớp\" bị xé mất. Chỉ ra cả một khóa (2 lớp)."
+        "Nội dung": "Phần in còn nguyên \"Khoa Báo chí – Truyền thông · K24\"; dòng viết tay \"Họ tên / Lớp\" bị xé mất. Còn biết chủ thẻ học khoa Báo chí; lớp nào thì không."
       },
       "quotes": {}
     },

@@ -15,6 +15,7 @@
 - **player**: Dạ, thế là đủ để khoanh vùng lớp rồi ạ. Em cảm ơn cô.
 
 ## n2-laptop.1
+> NHIỆM VỤ: Lớp nào vừa ở tòa B vừa học Báo chí?
 - [DÀN DỰNG] (tạm) Phòng CLB. Cái laptop cũ của CLB đã đăng nhập tài khoản mới. Giấy nhớ [Tòa B], [Báo chí K24] nằm trên bàn.
 - **tung** (happy): (tạm) Tòa B với Báo chí à? Cứ nối HOẶC vào cho rộng, kiểu gì chẳng trúng!
 - **ha-vy** (thinking): (tạm) Lớp nào vừa ở tòa B, vừa học Báo chí?

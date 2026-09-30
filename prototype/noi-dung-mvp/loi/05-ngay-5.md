@@ -14,6 +14,7 @@
 - **chu-cuong** (neutral): Không. Anh ấy đứng xa, sáng sớm, chú chỉ để ý cái huy hiệu với dáng người thôi.
 
 ## n5-toi.1
+> NHIỆM VỤ: Soát lại hồ sơ trước buổi họp
 - [THẺ CHỮ] **narrator**: Tối thứ Bảy
 - **ha-vy** (neutral): (tạm) Soát lại nhé. Hai lớp, hai người tên H, sổ chỉ có mã của Hoài.
 - **ha-vy** (thinking): (tạm) Nhưng có mã trên phiếu chưa chắc đã là người viết thư. Thứ Hai họp, mình chỉ nói đúng những gì có chứng.

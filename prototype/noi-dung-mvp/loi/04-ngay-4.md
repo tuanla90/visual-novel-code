@@ -18,6 +18,7 @@
 - **co-lan** (neutral): Theo quy chế, người có mã trong sổ sẽ được mời đến buổi họp, ngồi chờ bên ngoài. Có mời vào hay không là do buổi họp.
 
 ## n4-phong-may.1
+> NHIỆM VỤ: Lá thư được in từ tài khoản nào?
 - **thay-khai** (neutral): (tạm) Máy in phòng máy nhớ hết: ai in, lúc nào, tệp gì. Có phiếu của CTSV thì thầy cho xem.
 - **player**: (tạm) Chân trang lá thư có tên tệp: kien-nghi-phong-clb.docx.
 - **tung** (happy): (tạm) Hoài nộp thư thì chắc Hoài in chứ gì!

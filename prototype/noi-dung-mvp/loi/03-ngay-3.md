@@ -29,6 +29,7 @@
 - **hieu** (neutral): Tôi nói thẳng vậy thôi. Còn thư ai viết thì tôi không biết.
 
 ## n3-laptop.1
+> NHIỆM VỤ: Trong hai lớp ấy, ai có thể là người ký chữ H?
 - [DÀN DỰNG] (tạm) Phòng CLB. Phiếu tra cứu đã mở bảng sinh viên. Trên bàn: [H], phiếu hai lớp.
 - **tung** (happy): (tạm) Tên bắt đầu bằng H mà lại gắt với CLB… Tớ cá là Hiếu!
 - **ha-vy** (thinking): (tạm) Cá thì để sau. Hai lớp ấy, ai có tên bắt đầu bằng H?
