@@ -124,20 +124,21 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
   };
 
   const demToi = useCallback(async (tu: number, toi: number, ms: number, nhan: string): Promise<void> => {
-    if (NHIP === 0 || typeof requestAnimationFrame !== 'function') {
+    if (NHIP === 0) {
       setSo({ n: toi, nhan });
       return;
     }
+    // Đếm bằng setTimeout, không bằng requestAnimationFrame: tab bị ẩn thì rAF đứng, lần chạy sẽ treo ở "ĐANG CHẠY".
     await new Promise<void>((xong) => {
-      const t0 = performance.now();
-      const buoc = (t: number): void => {
+      const t0 = Date.now();
+      const buoc = (): void => {
         if (!song.current) return xong();
-        const k = Math.min(1, (t - t0) / ms);
+        const k = Math.min(1, (Date.now() - t0) / ms);
         setSo({ n: Math.round(tu + (toi - tu) * (1 - Math.pow(1 - k, 3))), nhan });
-        if (k < 1) requestAnimationFrame(buoc);
+        if (k < 1) setTimeout(buoc, 16);
         else xong();
       };
-      requestAnimationFrame(buoc);
+      buoc();
     });
   }, []);
 
