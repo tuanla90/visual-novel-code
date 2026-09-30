@@ -20,7 +20,9 @@ export const KICH_BAN_MVP = {
       "bieuCam": [
         "neutral",
         "happy",
-        "worried"
+        "worried",
+        "surprised",
+        "thinking"
       ],
       "xuatHienTu": {
         "kind": "mo-dau"
@@ -66,7 +68,8 @@ export const KICH_BAN_MVP = {
       "bieuCam": [
         "neutral",
         "worried",
-        "happy"
+        "happy",
+        "serious"
       ],
       "xuatHienTu": {
         "kind": "mo-dau"
@@ -87,7 +90,9 @@ export const KICH_BAN_MVP = {
       "trongCau": "Duy",
       "vai": "Năm 2 Hành chính học, thành viên từ năm nhất. Giữ tài sản CLB: chìa khóa, tủ hồ sơ, sổ tài sản, máy tính cũ. Giải thích quy trình rà soát. Ngồi cùng người chơi ở phòng máy, ký sổ mượn máy (đơn xin quyền dữ liệu do Minh Anh đứng tên, thầy Quang duyệt).",
       "bieuCam": [
-        "neutral"
+        "neutral",
+        "smile",
+        "serious"
       ],
       "xuatHienTu": {
         "kind": "mo-dau"
@@ -133,7 +138,8 @@ export const KICH_BAN_MVP = {
       "trongCau": "chú Cường",
       "vai": "Bảo vệ KTX, chú của Tùng. Tuần 1 trực tối; tuần 2 đổi ca sáng (Tùng nhắc, chú không tự nói). Nhân chứng 6:45 sáng thứ Hai.",
       "bieuCam": [
-        "neutral"
+        "neutral",
+        "smile"
       ],
       "xuatHienTu": {
         "kind": "mo-dau"
@@ -154,7 +160,8 @@ export const KICH_BAN_MVP = {
       "trongCau": "bác Thịnh",
       "vai": "Bảo vệ giảng đường B. Cùng cô phụ trách mở hộp kiến nghị lúc 9h sáng thứ Hai.",
       "bieuCam": [
-        "neutral"
+        "neutral",
+        "smile"
       ],
       "xuatHienTu": {
         "kind": "mo-dau"
@@ -175,7 +182,8 @@ export const KICH_BAN_MVP = {
       "trongCau": "cô Hạnh",
       "vai": "Phòng Đào tạo. Tạo tài khoản tra cứu của CLB trên laptop (ngày 2): chỉ xem bảng lớp; bảng có thông tin cá nhân phải có phiếu yêu cầu tra cứu.",
       "bieuCam": [
-        "neutral"
+        "neutral",
+        "smile"
       ],
       "xuatHienTu": {
         "kind": "mo-dau"
@@ -196,7 +204,8 @@ export const KICH_BAN_MVP = {
       "trongCau": "cô Lan",
       "vai": "Phòng Công tác sinh viên (CTSV). Gọi Minh Anh lên nhận thông báo; giải thích quy chế phiếu gửi.",
       "bieuCam": [
-        "neutral"
+        "neutral",
+        "smile"
       ],
       "xuatHienTu": {
         "kind": "mo-dau"
@@ -217,7 +226,9 @@ export const KICH_BAN_MVP = {
       "trongCau": "thầy Quang",
       "vai": "Phó hiệu trưởng phụ trách sinh viên. Chủ trì buổi họp rà soát, quyết định.",
       "bieuCam": [
-        "neutral"
+        "neutral",
+        "stern",
+        "smile"
       ],
       "xuatHienTu": {
         "kind": "ngay-hop"
@@ -283,7 +294,9 @@ export const KICH_BAN_MVP = {
       "trongCau": "Hiếu",
       "vai": "Lớp BC24A. Công khai đồng ý với lá thư (nghi phạm giả). Lên hình 2–3 cảnh.",
       "bieuCam": [
-        "neutral"
+        "neutral",
+        "annoyed",
+        "surprised"
       ],
       "xuatHienTu": {
         "kind": "ngay",
@@ -590,7 +603,7 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "note",
-          "text": "Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Xem xong cả hai thì một cậu sinh viên đội mũ lưỡi trai từ hành lang bên phải đi ra."
+          "text": "Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Xem xong cả hai thì một cậu sinh viên áo sơ mi cam, cổ đeo thẻ, từ hành lang bên phải đi ra."
         },
         {
           "type": "line",
@@ -603,18 +616,18 @@ export const KICH_BAN_MVP = {
           "diem": [
             {
               "sprite": "obj-thong-bao-thang-may",
-              "x": 22,
-              "y": 52,
-              "rong": 5,
+              "x": 12,
+              "y": 44,
+              "rong": 4,
               "chuoi": "md-00-thang-may",
               "sau": [],
               "nhan": "Xem tờ giấy trên cửa thang máy"
             },
             {
               "sprite": "obj-so-do-ktx",
-              "x": 50,
-              "y": 50,
-              "rong": 14,
+              "x": 44,
+              "y": 40,
+              "rong": 11,
               "chuoi": "md-00-so-do",
               "sau": [],
               "nhan": "Xem bảng tin"
@@ -629,7 +642,7 @@ export const KICH_BAN_MVP = {
                 "md-00-thang-may",
                 "md-00-so-do"
               ],
-              "nhan": "Hỏi đường cậu bạn đội mũ"
+              "nhan": "Hỏi đường cậu bạn áo cam"
             }
           ]
         }
@@ -678,7 +691,7 @@ export const KICH_BAN_MVP = {
     },
     {
       "id": "md-00-gap-tung",
-      "title": "Hỏi đường cậu bạn đội mũ: tạo nhân vật",
+      "title": "Hỏi đường cậu bạn áo cam: tạo nhân vật",
       "canh": "sanh-ktx",
       "mocSomNhat": 0,
       "nodes": [
@@ -947,7 +960,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "neutral",
+          "expression": "surprised",
           "text": "Ơ, có cả CLB Thám Tử này. Lạ nhỉ, chưa nghe bao giờ."
         },
         {
@@ -992,7 +1005,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "chu-cuong",
-          "expression": "neutral",
+          "expression": "smile",
           "text": "À, CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó đều moi ra được bằng chứng."
         },
         {
@@ -1248,7 +1261,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "duy",
-          "expression": "neutral",
+          "expression": "smile",
           "text": "Tớ. Duy, năm hai Hành chính học. Chìa khóa, tủ hồ sơ với cái laptop của CLB đều tớ giữ."
         },
         {
@@ -1366,7 +1379,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "minh-anh",
-          "expression": "neutral",
+          "expression": "serious",
           "text": "Thì bắt đầu từ cái hộp. Nói có sách, mách có chứng. Sáng mai ra tòa B."
         }
       ]
@@ -1693,7 +1706,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "co-hanh",
-          "expression": "neutral",
+          "expression": "smile",
           "text": "Khoanh vùng thôi đấy nhé. Lớp thì không bỏ thư được."
         },
         {
@@ -1913,13 +1926,13 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "hieu",
-          "expression": "neutral",
+          "expression": "annoyed",
           "text": "Tôi đọc thông báo rà soát rồi. Nói thẳng nhé, CLB các cậu giữ cái phòng cả năm chả để làm gì."
         },
         {
           "type": "line",
           "speaker": "hieu",
-          "expression": "neutral",
+          "expression": "annoyed",
           "text": "Nhóm tôi xin phòng làm bài nhóm mấy lần, lần nào cũng bảo hết phòng. Toàn phải ngồi ké thư viện."
         },
         {
@@ -2452,7 +2465,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "worried",
+          "expression": "surprised",
           "text": "Ơ… mười bốn dòng thật."
         },
         {
@@ -2657,7 +2670,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "thay-quang",
-          "expression": "neutral",
+          "expression": "stern",
           "text": "Ở đây không ai đối chất với một bạn năm nhất. Thầy hỏi, các em nghe."
         },
         {
@@ -2776,7 +2789,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "thay-quang",
-          "expression": "neutral",
+          "expression": "smile",
           "text": "CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện."
         },
         {
@@ -3016,7 +3029,7 @@ export const KICH_BAN_MVP = {
             },
             {
               "speaker": "tung",
-              "expression": "worried",
+              "expression": "surprised",
               "text": "Ơ, không ai à? Rõ ràng chữ ký có chữ H mà."
             }
           ]

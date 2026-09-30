@@ -37,7 +37,7 @@ describe('sảnh KTX: [KHÁM PHÁ]', () => {
     const canh = screen.getByRole('region', { name: 'Khám phá: Sảnh ký túc xá' });
     expect(within(canh).getByRole('button', { name: 'Xem tờ giấy trên cửa thang máy' })).toBeEnabled();
     expect(within(canh).getByRole('button', { name: 'Xem bảng tin' })).toBeEnabled();
-    expect(within(canh).queryByRole('button', { name: /cậu bạn đội mũ/ })).toBeNull();
+    expect(within(canh).queryByRole('button', { name: /cậu bạn áo cam/ })).toBeNull();
 
     await userEvent.click(screen.getByRole('button', { name: 'Xem tờ giấy trên cửa thang máy' }));
     expect(screen.queryByRole('region', { name: /^Khám phá/ })).toBeNull();
@@ -54,7 +54,7 @@ describe('sảnh KTX: [KHÁM PHÁ]', () => {
       for (let i = 0; i < 5 && khungNhin(kb, s).kind === 'line'; i++) s = xuLy(kb, s, { type: 'tiep' });
     }
     veManChoi(s);
-    await userEvent.click(screen.getByRole('button', { name: 'Hỏi đường cậu bạn đội mũ' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Hỏi đường cậu bạn áo cam' }));
     expect(document.body.textContent).toContain('thang bộ ở đâu');
     expect(screen.queryByRole('dialog', { name: /Giới thiệu nhân vật/ })).toBeNull();
 

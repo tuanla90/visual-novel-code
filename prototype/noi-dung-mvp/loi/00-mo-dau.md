@@ -24,7 +24,7 @@
 > NHIỆM VỤ: Tìm đường lên phòng 408
 
 ## md-00-sanh-ktx.2
-- [DÀN DỰNG] Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Xem xong cả hai thì một cậu sinh viên đội mũ lưỡi trai từ hành lang bên phải đi ra.
+- [DÀN DỰNG] Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Xem xong cả hai thì một cậu sinh viên áo sơ mi cam, cổ đeo thẻ, từ hành lang bên phải đi ra.
 - **player**: (Mát hẳn. Giờ lên tầng bốn kiểu gì đây…)
 
 ## md-00-thang-may.1
@@ -88,7 +88,7 @@
 
 ## md-06-bang-tin.1
 - [DÀN DỰNG] Đọc bảng tin: hàng chục CLB; poster "Đăng ký CLB năm nay: quét QR hoặc form online".
-- **tung** (neutral): Ơ, có cả CLB Thám Tử này. Lạ nhỉ, chưa nghe bao giờ.
+- **tung** (surprised): Ơ, có cả CLB Thám Tử này. Lạ nhỉ, chưa nghe bao giờ.
 
 ## md-07-cong-ktx-toi.1
 - [DÀN DỰNG] Tối. Hai người quẹt thẻ ở phòng trực cổng KTX. Nền tối bg-mvp-cong-ktx-dem (DX-02).
@@ -96,7 +96,7 @@
 - **chu-cuong** (neutral): Giờ này mới về à? {{nv.tung}} dẫn bạn đi đâu cả buổi thế?
 - **tung** (happy): Bọn cháu đi xem trường ạ. Chú tớ đấy, chú trực cổng này.
 - **tung** (neutral): Chú ơi, qua nhà văn hóa cháu thấy dán poster CLB Thám Tử. Chú biết CLB đấy không?
-- **chu-cuong** (neutral): À, CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó đều moi ra được bằng chứng.
+- **chu-cuong** (smile): À, CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó đều moi ra được bằng chứng.
 - **chu-cuong** (neutral): Chẳng thần thánh gì đâu. Chịu khó hỏi từng người rồi đối chiếu giấy tờ thôi.
 - **chu-cuong** (neutral): Giờ cái gì cũng lên hệ thống, ai còn nhờ sinh viên đi hỏi từng người nữa. Thứ Bảy có Ngày hội CLB đấy, thích thì ra xem.
 - **tung** (happy): Thứ Bảy đi với tớ nhé?
@@ -145,7 +145,7 @@
 - **tung** (happy): Thế cậu đoán được tớ học gì không?
 - **ha-vy** (neutral): Khỏi đoán. Áo đội tình nguyện, balo cài huy hiệu khoa thế kia. Du lịch chứ gì.
 - **player**: Thế ai giữ chìa khóa phòng này ạ?
-- **duy** (neutral): Tớ. {{nv.duy}}, năm hai Hành chính học. Chìa khóa, tủ hồ sơ với cái laptop của CLB đều tớ giữ.
+- **duy** (smile): Tớ. {{nv.duy}}, năm hai Hành chính học. Chìa khóa, tủ hồ sơ với cái laptop của CLB đều tớ giữ.
 - **duy** (neutral): Ngăn dưới tớ chưa kiểm kê tới. Cậu mở xem có gì trong đấy.
 
 ## md-10-phong-clb.3
@@ -169,4 +169,4 @@
 - **minh-anh** (neutral): {{nv.thay-quang}} cho CLB tự lập căn cứ. Cô phụ trách tự tra sổ, Hội sinh viên giám sát. Quyền tra cứu thì chị làm đơn xin.
 - **tung** (neutral): Thế giờ bắt đầu từ đâu ạ?
 - **ha-vy** (thinking): Khoan, tính lại đã. Mình mới có một chữ H với một cái hộp.
-- **minh-anh** (neutral): Thì bắt đầu từ cái hộp. Nói có sách, mách có chứng. Sáng mai ra tòa B.
+- **minh-anh** (serious): Thì bắt đầu từ cái hộp. Nói có sách, mách có chứng. Sáng mai ra tòa B.

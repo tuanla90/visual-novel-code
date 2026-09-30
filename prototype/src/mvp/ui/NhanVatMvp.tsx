@@ -21,6 +21,10 @@ const NHAN_BIEU_CAM: Record<string, string> = {
   nervous: 'Căng thẳng',
   downcast: 'Buồn',
   relieved: 'Nhẹ nhõm',
+  surprised: 'Ngạc nhiên',
+  serious: 'Nghiêm túc',
+  annoyed: 'Khó chịu',
+  stern: 'Nghiêm khắc',
 };
 
 export function NhanVatMvp({ kb, daGap }: { kb: KichBanMvp; daGap: readonly string[] }) {
