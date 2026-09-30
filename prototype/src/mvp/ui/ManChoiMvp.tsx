@@ -359,7 +359,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         speaker={loiHienTai?.speaker}
         expression={loiHienTai?.expression}
         shaking={rung}
-        coDan={kn.kind !== 'chon-dia-diem' && kn.kind !== 'explore'}
+        coDan={!['chon-dia-diem', 'explore', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick'].includes(kn.kind)}
         tenNguoiChoi={s.tenNguoiChoi}
       >
         {noiDung}

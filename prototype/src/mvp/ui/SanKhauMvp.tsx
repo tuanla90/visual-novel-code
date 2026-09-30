@@ -3,16 +3,17 @@
  * Dùng lại lớp CSS `.stage*`, `.cast-member*`, `.portrait` của prototype; KHÔNG dùng `Stage` của prototype vì
  * component đó chỉ nhận `SceneId`/`CharacterId` đóng băng trong `shared/ids.ts`.
  * Dàn chân dung: nhân vật đã nói trong cảnh đứng lại (người đang nói sáng, người khác lùi nhẹ) — cùng luật
- * `visuals/cast.ts`; đổi cảnh thì dàn trống.
+ * `visuals/cast.ts`; đổi cảnh thì dàn trống. Tối đa 3 người (`TOI_DA_TREN_DAN`): người thứ tư nói thì người nói
+ * lâu nhất trước đó rời dàn; 3 người thì mvp.css thu nhỏ chân dung để không ai bị cắt mép.
  * Người chơi (`player`, nam — QĐ-084) cũng lên dàn khi nói (user yêu cầu 29/09: có hình nhân vật chính ở các đoạn
  * nói chuyện), ảnh `char-nguoi-choi` (đã tách nền), nhãn là tên người chơi đặt ở màn tạo nhân vật.
  */
 import { useState, type CSSProperties, type ReactNode } from 'react';
 import type { KichBanMvp } from '../../content/mvp/types';
-import { isCharacterId } from '../../shared/ids';
+import { isCharacterId, isExpressionOf } from '../../shared/ids';
 import { Portrait } from '../../shared/ui/Portrait';
 import { useVnStore } from '../../shared/vn/vn-store';
-import { anhChanDung, anhNen } from './anh-mvp';
+import { anhChanDung, anhNen, anhTheoTen } from './anh-mvp';
 
 export interface SanKhauMvpProps {
   kb: KichBanMvp;
@@ -35,8 +36,14 @@ interface ThanhVien {
 }
 interface DanDien {
   canh: string;
+  /** Thứ tự đứng trên dàn (trái → phải). */
   thanhVien: ThanhVien[];
+  /** Người trên dàn theo lần nói gần nhất: đầu mảng = nói lâu nhất trước đó, cuối = vừa nói. */
+  thuTuNoi: string[];
 }
+
+/** Tối đa bấy nhiêu người đứng trên dàn; người thứ tư nói → người nói lâu nhất trước đó rời dàn. */
+export const TOI_DA_TREN_DAN = 3;
 
 /** Người nói lên dàn chân dung: người chơi, hoặc nhân vật có trong nhan-vat.md không "chỉ qua lời kể" (không phải `narrator`). */
 function laNhanVatHien(kb: KichBanMvp, speaker: string | undefined): speaker is string {
@@ -46,23 +53,44 @@ function laNhanVatHien(kb: KichBanMvp, speaker: string | undefined): speaker is 
   return !!nv && !nv.chiQuaLoiKe;
 }
 
+/**
+ * Dàn sau lời nói này. Không đổi gì → trả lại đúng `truoc` (để không setState vòng lặp).
+ * Người mới nói khi dàn đã đủ `TOI_DA_TREN_DAN` người → người nói lâu nhất trước đó rời dàn, người mới đứng
+ * vào đúng chỗ đó (người khác không xê dịch).
+ */
 function danKe(kb: KichBanMvp, truoc: DanDien | null, canh: string, speaker: string | undefined, expression: string | undefined): DanDien {
-  let dan: DanDien = truoc && truoc.canh === canh ? truoc : { canh, thanhVien: [] };
-  if (laNhanVatHien(kb, speaker)) {
-    const co = dan.thanhVien.find((t) => t.nhanVat === speaker);
-    const bieuCam = expression ?? co?.bieuCam;
-    if (!co) dan = { canh, thanhVien: [...dan.thanhVien, { nhanVat: speaker, bieuCam }] };
-    else if (co.bieuCam !== bieuCam) dan = { canh, thanhVien: dan.thanhVien.map((t) => (t.nhanVat === speaker ? { ...t, bieuCam } : t)) };
+  const dan: DanDien = truoc && truoc.canh === canh ? truoc : { canh, thanhVien: [], thuTuNoi: [] };
+  if (!laNhanVatHien(kb, speaker)) return dan;
+  const co = dan.thanhVien.find((t) => t.nhanVat === speaker);
+  const bieuCam = expression ?? co?.bieuCam;
+  let thanhVien = dan.thanhVien;
+  if (!co) {
+    const moi = { nhanVat: speaker, bieuCam };
+    if (thanhVien.length >= TOI_DA_TREN_DAN) {
+      const roi = dan.thuTuNoi[0] ?? thanhVien[0]?.nhanVat;
+      thanhVien = thanhVien.map((t) => (t.nhanVat === roi ? moi : t));
+    } else {
+      thanhVien = [...thanhVien, moi];
+    }
+  } else if (co.bieuCam !== bieuCam) {
+    thanhVien = thanhVien.map((t) => (t.nhanVat === speaker ? { ...t, bieuCam } : t));
   }
-  return dan;
+  const thuTuNoi =
+    dan.thuTuNoi[dan.thuTuNoi.length - 1] === speaker
+      ? dan.thuTuNoi
+      : [...dan.thuTuNoi.filter((x) => x !== speaker && thanhVien.some((t) => t.nhanVat === x)), speaker];
+  if (thanhVien === dan.thanhVien && thuTuNoi === dan.thuTuNoi) return dan;
+  return { canh, thanhVien, thuTuNoi };
 }
 
-/** Vị trí đứng theo số người (phong cách VN): 1 giữa; 2 hai bên; 3 đều; nhiều hơn chia đều. */
+/**
+ * Vị trí đứng theo số người (phong cách VN): 1 giữa; 2 hai bên; 3 đều (khung ngang). Màn dọc: 3 người thì
+ * mvp.css đặt lại vị trí theo `data-vi-tri` (một phần ba mỗi người).
+ */
 function viTri(soNguoi: number, i: number): number {
   if (soNguoi <= 1) return 0.5;
   if (soNguoi === 2) return i === 0 ? 0.35 : 0.65;
-  if (soNguoi === 3) return [0.22, 0.5, 0.78][i] ?? 0.5;
-  return 0.12 + (0.76 * i) / (soNguoi - 1);
+  return [0.22, 0.5, 0.78][i] ?? 0.5;
 }
 
 function ChanDungMvp({
@@ -81,11 +109,18 @@ function ChanDungMvp({
   const laNguoiChoi = nhanVat === 'player';
   const nv = kb.nhanVat.find((n) => n.id === nhanVat);
   const ten = laNguoiChoi ? tenNguoiChoi || 'Bạn' : (nv?.ten ?? 'Nhân vật');
-  // Nhân vật có trong prototype (Tùng, Hà Vy, Minh Anh, Quân, Hoài, bác Thịnh): dùng Portrait (tách nền, nhép môi).
+  // Nhân vật có trong prototype (Tùng, Hà Vy, Minh Anh, Quân, Hoài, bác Thịnh): dùng Portrait (tách nền, nhép môi)
+  // — trừ khi biểu cảm là biểu cảm riêng của MVP (ngoài `CHARACTER_EXPRESSIONS`, vd Tùng `worried`) và có ảnh
+  // `char-<mã>-<biểu cảm>` riêng: ô ảnh của prototype không biết biểu cảm đó (sẽ mượn ảnh neo), nên vẽ thẳng ảnh MVP.
+  // Ảnh MVP cùng khung 768×1360 với ảnh neo → nhân vật không nhảy chỗ khi đổi biểu cảm.
+  let url: string | undefined;
   if (isCharacterId(nhanVat)) {
-    return <Portrait character={nhanVat} expression={bieuCam ?? nv?.bieuCam[0] ?? 'neutral'} talking={talking} />;
+    const bc = bieuCam ?? nv?.bieuCam[0] ?? 'neutral';
+    url = isExpressionOf(nhanVat, bc) ? undefined : anhTheoTen(`char-${nhanVat}-${bc}`);
+    if (!url) return <Portrait character={nhanVat} expression={bc} talking={talking} />;
+  } else {
+    url = anhChanDung(laNguoiChoi ? 'nguoi-choi' : nhanVat, bieuCam);
   }
-  const url = anhChanDung(laNguoiChoi ? 'nguoi-choi' : nhanVat, bieuCam);
   return (
     <figure className="portrait portrait--normal mvp-portrait" role="img" aria-label={ten} data-art-source={url ? 'image' : 'placeholder'}>
       {url ? (
@@ -119,7 +154,7 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
         </svg>
         <span className="stage__scene-text">{tenCanh}</span>
       </div>
-      <div className="stage__portraits">
+      <div className="stage__portraits" data-so-nguoi={coDan ? moi.thanhVien.length : 0}>
         {(coDan ? moi.thanhVien : []).map((t, i) => {
           const dangNoi = t.nhanVat === speaker;
           const pos = viTri(moi.thanhVien.length, i);
@@ -130,6 +165,8 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
               key={t.nhanVat}
               className={`cast-member${dangNoi ? ' cast-member--speaking' : ' cast-member--idle'}${phai ? ' cast-member--side-right' : ' cast-member--side-left'}`}
               style={style}
+              data-nhan-vat={t.nhanVat}
+              data-vi-tri={i}
               data-speaking={dangNoi ? 'true' : 'false'}
             >
               <ChanDungMvp kb={kb} nhanVat={t.nhanVat} bieuCam={t.bieuCam} talking={dangNoi && lineTyping} tenNguoiChoi={tenNguoiChoi} />

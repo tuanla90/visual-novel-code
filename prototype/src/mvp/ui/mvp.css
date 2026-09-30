@@ -86,6 +86,41 @@
   user-select: none;
 }
 
+/* Dàn 3 người (SanKhauMvp, tối đa 3). Khung ngang: đứng ở 22% / 50% / 78% bề ngang; mỗi ô rộng tối đa 28% bề
+   ngang → ảnh (object-fit: contain) không chồng lên nhau, người ngoài cùng cách mép 8%. Ở 1366×768 ảnh vốn
+   rộng ~385px (bị chiều cao giới hạn) nên gần như không co; màn hẹp hơn thì co theo bề ngang. */
+.mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member {
+  width: min(580px, 28%);
+}
+/* Khung dọc (portrait.css ép mọi người vào 42% / 58%, rộng 94vw): 3 người chia ba bề ngang, mỗi người một
+   phần ba → không cắt mép, không chồng. Viết riêng cho @media và .game--portrait (không gộp selector). */
+@media (max-width: 768px) {
+  .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member {
+    width: 33.333% !important;
+  }
+  .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member[data-vi-tri='0'] {
+    left: 16.667% !important;
+  }
+  .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member[data-vi-tri='1'] {
+    left: 50% !important;
+  }
+  .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member[data-vi-tri='2'] {
+    left: 83.333% !important;
+  }
+}
+.game--portrait .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member {
+  width: 33.333% !important;
+}
+.game--portrait .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member[data-vi-tri='0'] {
+  left: 16.667% !important;
+}
+.game--portrait .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member[data-vi-tri='1'] {
+  left: 50% !important;
+}
+.game--portrait .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member[data-vi-tri='2'] {
+  left: 83.333% !important;
+}
+
 /* Lớp nội dung giữa sân khấu (tài liệu, sổ, lọc thử, màn chiếu, kết): chiếm hàng 2–3 của lưới
    sân khấu và bị kẹp trong chiều cao sân khấu (cuộn bên trong), như .docview của prototype. */
 .stage__content:has(> .mvp-lop),
@@ -1994,4 +2029,36 @@
 }
 .mvp-chal__ketqua {
   overflow: visible;
+}
+
+/* ---------- Nút lựa chọn (.mc__choice: câu hỏi, rẽ nhánh, chọn dòng, chọn ngành) ----------
+   Nút kính mờ của app.css (nền ~40% trong) nằm đè áo/mặt nhân vật → chữ trắng khó đọc. Bản MVP: nền đặc
+   tối (độ mờ 0,96), viền vàng rõ, hover/focus đổi nền + viền + chữ vàng. Tương phản: #f8fafc trên #0f172a
+   ≈ 17:1; #fde68a trên #1e293b ≈ 11:1 (≥ 4,5:1). Chỉ trong .mvp-game — màn prototype cũ giữ nguyên. */
+.mvp-game .mc__choice {
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 2px solid rgba(253, 230, 138, 0.9);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+.mvp-game .mc__choice:hover,
+.mvp-game .mc__choice:focus-visible {
+  color: #fde68a;
+  background: rgba(30, 41, 59, 0.98);
+  border-color: #fbbf24;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.55),
+    0 0 0 1px #fbbf24,
+    0 0 18px rgba(251, 191, 36, 0.45);
+}
+.mvp-game .mc__choice:focus-visible {
+  outline: 3px solid #fef3c7;
+  outline-offset: 3px;
+}
+.mvp-game .mc__choice:active {
+  background: #0b1220;
 }
