@@ -117,10 +117,13 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong, giayNho
   );
 
   const dung = cham?.trangThai === 'dung';
-  /** Chibi cạnh hộp nhận xét: "Số liệu đây!" khi đúng, "0 dòng" khi trống, "ra kết quả" khi có dòng mà chưa khớp. */
+  /**
+   * Chibi cạnh hộp nhận xét: đúng → "ra kết quả" (Hà Vy + người chơi đập tay); 0 dòng → "0 dòng"; có dòng mà chưa khớp →
+   * Hà Vy ngồi tính. KHÔNG dùng "số liệu đây" (vẽ Quân sững sờ — chỉ hợp buổi họp, đã có dòng [ẢNH] ở đó).
+   */
   const chibiNhanXet =
     cham && cham.trangThai !== 'loi'
-      ? anhTheoTen(dung ? 'chibi-so-lieu-day' : cham.so.soDongNguoiChoi === 0 ? 'chibi-0-dong' : 'chibi-ra-ket-qua')
+      ? anhTheoTen(dung ? 'chibi-ra-ket-qua' : cham.so.soDongNguoiChoi === 0 ? 'chibi-0-dong' : 'chibi-goi-y-ha-vy-tinh')
       : undefined;
   const manhMoi = the.manhMoiLienQuan.map((id) => kb.hoSo[id]).filter((x) => x !== undefined);
   const trangSo = Object.values(kb.soTay);
