@@ -86,14 +86,18 @@ describe('thanh trên MVP (phong cách .topbar của prototype)', () => {
     expect(screen.queryByRole('menu')).toBeNull();
   });
 
-  it('buổi họp: thanh uy tín đủ vạch nằm trong thanh trên', () => {
+  it('buổi họp chương 1: không có thanh uy tín (ĐÃ CHỐT C, 30/09/2026 — sai thì chọn lại, không mất vạch)', () => {
     const s = nhayToi(kb, 'hop-sua-or', 1);
     expect(khungNhin(kb, s).kind).toBe('fix-query');
     veManChoi(s);
-    // Lớp để CSS điện thoại đưa uy tín xuống hàng nhiệm vụ (hàng 1 không đủ chỗ ở 375 px).
-    expect(thanhTren()).toHaveClass('mvp-topbar--uytin');
-    const uyTin = within(thanhTren()).getByRole('img', { name: /Uy tín/ });
-    expect(uyTin.querySelectorAll('.mvp-uytin__o')).toHaveLength(kb.lich.luat.uyTin ?? 0);
+    expect(thanhTren()).not.toHaveClass('mvp-topbar--uytin');
+    expect(within(thanhTren()).queryByRole('img', { name: /Uy tín/ })).toBeNull();
+  });
+
+  it('ngày theo truyện: vé ghi tên ngày thay khung giờ', () => {
+    const s = nhayToi(kb, 'lop', 1);
+    veManChoi(s);
+    expect(thanhTren().querySelector('.topbar__chapter-name')).toHaveTextContent('Tài khoản CLB');
   });
 });
 
@@ -131,8 +135,8 @@ describe('hồ sơ + sổ cá nhân MVP (phong cách hòm đồ prototype)', () 
     expect(o).toHaveLength(s.hoSo.bangChung.length);
   });
 
-  it('nút Sổ tay → cùng khung, tab Sổ cá nhân, mỗi trang đã chép một thẻ; đổi tab được; nút Đóng đóng', async () => {
-    // Nội dung MVP hiện chưa có nút [CHÉP SỔ] → dựng sổ có sẵn các trang (trang có đoạn code để chọn).
+  it('nút Sổ tay → cùng khung, tab Sổ cá nhân, mỗi dòng đã học một thẻ; đổi tab được; nút Đóng đóng', async () => {
+    // Dựng sổ có sẵn vài trang (như sau các [GHI SỔ] của phòng máy).
     const trang = Object.keys(kb.soTay).slice(0, 2);
     expect(trang.length).toBeGreaterThan(0);
     const s = { ...nhayToi(kb, 'hop-sua-or', 1), soTay: trang };
@@ -149,16 +153,16 @@ describe('hồ sơ + sổ cá nhân MVP (phong cách hòm đồ prototype)', () 
     expect(screen.queryByRole('dialog')).toBeNull();
   });
 
-  it('sổ trống: báo chưa chép trang nào', async () => {
+  it('sổ trống: báo sổ còn trống', async () => {
     veManChoi(taoTrangThai(kb, 1));
     await userEvent.click(within(thanhTren()).getByRole('button', { name: /^Mở sổ cá nhân/ }));
-    expect(screen.getByText(/Chưa chép trang nào/)).toBeInTheDocument();
+    expect(screen.getByText(/Sổ còn trống/)).toBeInTheDocument();
   });
 });
 
 describe('Lưu / Nạp MVP (phong cách saveload prototype)', () => {
   it('Lưu: thẻ ô kẹp ảnh, mọi nút có aria-label + title; lưu ô trống → đóng, ô có dữ liệu', async () => {
-    veManChoi(nhayToi(kb, 'loc-lop', 1));
+    veManChoi(nhayToi(kb, 'lop', 1));
     await userEvent.click(within(thanhTren()).getByRole('button', { name: 'Mở menu tạm dừng' }));
     await userEvent.click(screen.getByRole('menuitem', { name: 'Lưu tiến độ (Save)' }));
     const hop = screen.getByRole('dialog', { name: 'Lưu tiến độ' });
@@ -174,7 +178,7 @@ describe('Lưu / Nạp MVP (phong cách saveload prototype)', () => {
   });
 
   it('Lưu đè: hỏi xác nhận (nổi trên màn Lưu); Esc chỉ đóng hộp hỏi, màn Lưu còn', async () => {
-    veManChoi(nhayToi(kb, 'loc-lop', 1));
+    veManChoi(nhayToi(kb, 'lop', 1));
     act(() => useKhoMvp.getState().luuVaoO(0, 'Cũ'));
     await userEvent.click(within(thanhTren()).getByRole('button', { name: 'Mở menu tạm dừng' }));
     await userEvent.click(screen.getByRole('menuitem', { name: 'Lưu tiến độ (Save)' }));

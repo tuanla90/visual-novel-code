@@ -16,6 +16,12 @@ import { BanDoMvp } from './BanDoMvp';
 import { ManChoiMvp } from './ManChoiMvp';
 import { NoiMvp } from './NoiMvp';
 
+// Bản đồ + địa điểm là chế độ ngày × địa điểm (dùng lại từ Vụ 2); chương 1 thật không còn địa điểm (ĐÃ CHỐT C,
+// 30/09/2026) nên cả tệp chạy trên fixture đóng băng Vụ 1 bản cũ — kể cả kho (useKhoMvp) và ManChoiMvp.
+vi.mock('../../content/generated/mvp/kich-ban.gen', async () => ({
+  KICH_BAN_MVP: (await import('../engine/testing/kich-ban-dia-diem.fixture')).KICH_BAN_DIA_DIEM,
+}));
+
 const kb = KICH_BAN_MVP as unknown as KichBanMvp;
 
 function tuDo(ngay: number, them: Partial<TrangThaiMvp> & { manhMoi?: string[]; bangChung?: string[] } = {}): TrangThaiMvp {

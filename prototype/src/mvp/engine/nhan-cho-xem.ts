@@ -8,13 +8,16 @@
  * người `nv:…` → "Nói chuyện với …") → người ngoài nhóm nói trong chuỗi → tài liệu được hiện → chỉ lời kể
  * → còn lại "Xem xét quanh đây".
  */
-import type { DuKienMvp, KichBanMvp } from '../../content/mvp/types';
+import type { DiemKhamPhaMvp, DuKienMvp, KichBanMvp } from '../../content/mvp/types';
 
 /** Người chơi và bạn đồng hành: có mặt ở hầu hết cảnh nên không dùng để phân biệt chỗ xem xét. */
 const NHOM = new Set(['player', 'narrator', 'tung', 'ha-vy', 'minh-anh', 'duy']);
 
 export function nhanChoXem(kb: KichBanMvp, dk: DuKienMvp): string {
   if (dk.hanhDong.kind === 'thu-thach') return 'Ngồi vào máy tính';
+  // Chuỗi bài phòng máy (QĐ-092): dữ kiện chạy chuỗi có [THỬ THÁCH] cũng là ngồi vào máy.
+  const chuoiDk = dk.hanhDong.chuoi;
+  if (kb.chuoi.find((c) => c.id === chuoiDk)?.nodes.some((n) => n.type === 'challenge')) return 'Ngồi vào máy tính';
 
   const tenNv = (id: string) => kb.nhanVat.find((n) => n.id === id)?.trongCau ?? 'người ở đây';
   const taiLieu = dk.hienTaiLieu[0];
@@ -36,9 +39,20 @@ export function nhanChoXem(kb: KichBanMvp, dk: DuKienMvp): string {
   return 'Xem xét quanh đây';
 }
 
-/** Nhãn cho cả danh sách trong một địa điểm; nhãn trùng thì đánh số để còn phân biệt được. */
-export function nhanChoXemDs(kb: KichBanMvp, ds: DuKienMvp[]): string[] {
-  const nhan = ds.map((dk) => nhanChoXem(kb, dk));
+/**
+ * Nhãn một chỗ bấm của `[KHÁM PHÁ]`: dòng `nhãn:` của người viết nếu có (vd. khi người chơi chưa biết tên người đứng đó);
+ * không thì như dữ kiện — `nv:` → "Nói chuyện với …", đồ vật → tên tài liệu chuỗi đó hiện, hoặc "Xem xét chỗ này".
+ */
+export function nhanDiemKhamPha(kb: KichBanMvp, d: DiemKhamPhaMvp): string {
+  if (d.nhan) return d.nhan;
+  if (d.sprite.startsWith('nv:')) return `Nói chuyện với ${kb.nhanVat.find((n) => n.id === d.sprite.slice(3))?.trongCau ?? 'người ở đây'}`;
+  const hien = kb.chuoi.find((c) => c.id === d.chuoi)?.nodes.find((n) => n.type === 'show-document');
+  const tieuDe = hien?.type === 'show-document' ? kb.hoSo[hien.documentId]?.fields['Tiêu đề'] : undefined;
+  return tieuDe ? `Xem: ${tieuDe}` : 'Xem xét chỗ này';
+}
+
+/** Đánh số các nhãn trùng ("(1)", "(2)") để trình đọc màn hình còn phân biệt được. */
+export function danhSoTrung(nhan: string[]): string[] {
   const dem = new Map<string, number>();
   for (const n of nhan) dem.set(n, (dem.get(n) ?? 0) + 1);
   const daGap = new Map<string, number>();
@@ -48,4 +62,9 @@ export function nhanChoXemDs(kb: KichBanMvp, ds: DuKienMvp[]): string[] {
     daGap.set(n, i);
     return `${n} (${i})`;
   });
+}
+
+/** Nhãn cho cả danh sách trong một địa điểm; nhãn trùng thì đánh số để còn phân biệt được. */
+export function nhanChoXemDs(kb: KichBanMvp, ds: DuKienMvp[]): string[] {
+  return danhSoTrung(ds.map((dk) => nhanChoXem(kb, dk)));
 }

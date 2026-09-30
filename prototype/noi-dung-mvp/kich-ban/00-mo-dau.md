@@ -4,155 +4,120 @@
 
 ### md-00-xe-buyt — Chủ nhật tuần 1: xuống xe buýt trước cổng trường {cảnh: cong-truong}
 
-> NHIỆM VỤ: Tìm đường vào ký túc xá
+- [LỜI md-00-xe-buyt.1]
 
-- [THẺ CHỮ] **narrator**: Chủ nhật, ngày nhận phòng
-- [DÀN DỰNG] Xe buýt mở cửa, hơi nóng đầu giờ chiều hắt thẳng vào. Người chơi kéo vali xuống vỉa hè, bánh xe va mặt đường đánh cạch một cái.
-- **player**: (Nóng thật… Cổng trường ngoài đời trông to hơn trên ảnh.)
-- **player**: (Thông báo xếp phòng ghi là phòng 408. Cơ mà ký túc xá nằm ở đâu nhỉ…)
-- [DÀN DỰNG] Người chơi mở điện thoại, mạng xoay mãi, bản đồ không lên.
-- **player**: (Pin còn mười hai phần trăm. Mấy bạn đằng trước cũng kéo vali, chắc cùng về ký túc xá. Cứ bám theo đã.)
-- **narrator**: Một bạn phía trước vừa đi vừa gọi điện báo mẹ là đến nơi rồi.
-- **player**: (Mẹ cũng dặn đến nơi thì nhắn. Lát vào phòng nhắn luôn.)
+- [LỜI md-00-xe-buyt.2]
 - [ĐI TỚI md-00-cong-ktx]
 
 ### md-00-cong-ktx — Kéo vali qua sân trường tới cổng ký túc xá {cảnh: cong-ktx}
 
-- **narrator**: Qua dãy giảng đường sơn vàng, qua bãi để xe, cuối con đường là một cổng sắt nhỏ, trên biển đề "Ký túc xá".
-- **player**: (Đây rồi. Nhà nào cũng tận bảy tầng cơ à…)
-- [DÀN DỰNG] Bánh vali vấp mép gạch, người chơi phải xách bổng lên bằng cả hai tay.
-- **player**: (Biết thế đừng nhét cả cái nồi cơm điện vào.)
-- **narrator**: Bảng tin cạnh cổng dán sơ đồ khu nhà, kèm một tờ giấy: "Thang máy bảo trì đến hết tuần".
-- **player**: (Phòng 408 ở dãy giữa, tầng bốn. May mà không phải tầng bảy… Leo bộ vậy.)
-- [ĐI TỚI md-01-ktx]
+- [LỜI md-00-cong-ktx.1]
+- [ĐI TỚI md-00-sanh-ktx]
 
-### md-01-ktx — Phòng KTX 408, Chủ nhật chiều: tạo nhân vật {cảnh: phong-ktx}
+### md-00-sanh-ktx — Sảnh tầng một dãy nhà giữa: dạy bấm vật {cảnh: sanh-ktx}
 
-> NHIỆM VỤ: Nhận phòng KTX
+- [LỜI md-00-sanh-ktx.1]
 
-- [DÀN DỰNG] Tiếng bánh vali lộc cộc dội lên hành lang tầng bốn; người chơi dừng trước cửa, thở dốc. Cửa phòng 408 mở. Một cậu sinh viên đội mũ lưỡi trai bước ra, đỡ lấy cái vali của người chơi.
-- **tung** (happy): Phòng 408 hả? Đưa đây, tớ xách vào cho.
-- **player**: Ơ, cảm ơn cậu… Cậu cũng ở phòng này à?
-- **tung** (neutral): Ừ, giường trong sát cửa sổ là của tớ. Tớ {{nv.tung}}, học Du lịch.
+- [LỜI md-00-sanh-ktx.2]
+- [KHÁM PHÁ kp-sanh-ktx]
+  - obj-thong-bao-thang-may · x 22% · y 52% · rộng 5% → md-00-thang-may · nhãn: Xem tờ giấy trên cửa thang máy
+  - obj-so-do-ktx · x 50% · y 50% · rộng 14% → md-00-so-do · nhãn: Xem bảng tin
+  - nv:tung · x 80% · y 100% · rộng 17% → md-00-gap-tung · sau: md-00-thang-may, md-00-so-do · nhãn: Hỏi đường cậu bạn đội mũ
+
+### md-00-thang-may — Tờ giấy dán trên cửa thang máy {cảnh: sanh-ktx}
+
+- [LỜI md-00-thang-may.1]
+
+### md-00-so-do — Sơ đồ khu nhà trên bảng tin {cảnh: sanh-ktx}
+
+- [LỜI md-00-so-do.1]
+
+### md-00-gap-tung — Hỏi đường cậu bạn đội mũ: tạo nhân vật {cảnh: sanh-ktx}
+
+- [LỜI md-00-gap-tung.1]
 - [TẠO NHÂN VẬT ten] tung (neutral): "Thế cậu tên gì?"
   - xúc xắc: Ngại nghĩ thì bấm xúc xắc, tớ đặt hộ cho. Đảm bảo không xui.
-- **tung** (happy): {{nv.nguoi-choi}} à. Dễ gọi đấy.
+- [LỜI md-00-gap-tung.2]
 - [TẠO NHÂN VẬT nganh] tung (neutral): "Cậu học ngành gì?"
   - lựa chọn: Kế toán · Quản trị kinh doanh · Tài chính – Ngân hàng · Marketing · Thương mại điện tử
-- **tung** (neutral): Lại dân kinh tế. Cả phòng chẳng ai học Toán, sau này thi biết mượn vở ai đây.
+- [LỜI md-00-gap-tung.3]
+- [ĐI TỚI md-01-ktx]
+
+### md-01-ktx — Phòng KTX 408, Chủ nhật chiều {cảnh: phong-ktx}
+
+- [LỜI md-01-ktx.1]
+
+- [LỜI md-01-ktx.2]
 - [ĐI TỚI md-02-ban-do]
 
 ### md-02-ban-do — Ra bản đồ trường {cảnh: ban-do}
 
-> NHIỆM VỤ: Đi dạo trường cùng {{nv.tung}}
+- [LỜI md-02-ban-do.1]
 
-- [DÀN DỰNG] Mở bản đồ lần đầu: hướng dẫn chọn điểm, di chuyển. Chỉ sáng điểm "Sảnh tòa B".
-- **tung** (happy): Tớ cá là mười phút là tới nhà văn hóa.
-- **player**: Cậu thuộc đường thật à?
-- **tung** (neutral): Biết sơ sơ thôi. Lạc thì coi như biết thêm đường.
+- [LỜI md-02-ban-do.2]
 - [ĐI TỚI md-03-toa-b]
 
 ### md-03-toa-b — Sảnh tòa B: cái hộp tôn cũ {cảnh: sanh-toa-b}
 
-- [DÀN DỰNG] Xem xét vật thể lần đầu: hộp tôn cũ treo tường, biển "Hộp tiếp nhận kiến nghị", mép khe sắc. Bác Thịnh ngồi bàn trực gần cầu thang.
-- **tung** (neutral): Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
-- **player**: Mép khe sắc phết. Nhét phong bì dày vào chắc rách mất.
-- **bac-tu** (neutral): Hai cháu tìm phòng nào? Chiều Chủ nhật tòa này khóa hết lớp rồi.
-- **tung** (neutral): Dạ không ạ, cháu dẫn bạn đi xem trường thôi.
-- **bac-tu** (neutral): Xem thì xem. Mép hộp sắc đấy, đừng thò tay vào.
+- [LỜI md-03-toa-b.1]
 - [ĐI TỚI md-04-cang-tin]
 
 ### md-04-cang-tin — Căng tin: khung giờ {cảnh: cang-tin}
 
-- [DÀN DỰNG] Dạy cơ chế khung giờ. Quầy bún cá đã đóng.
-- **tung** (worried): Bún cá dọn mất rồi. Quầy này chỉ bán sáng với trưa, giờ còn mỗi bánh mì.
-- **tung** (neutral): Ở đây mà lệch giờ một cái là mất phần ngay.
+- [LỜI md-04-cang-tin.1]
 - [ĐI TỚI md-05-phong-may]
 
 ### md-05-phong-may — Ngoài phòng máy {cảnh: ngoai-phong-may}
 
-- [DÀN DỰNG] Địa điểm khóa: cửa kính, bên trong tối.
-- **tung** (neutral): Phòng máy của {{nv.thay-khai.trong-cau}} đấy. Chưa có việc thì đứng ngoài ngó thôi.
+- [LỜI md-05-phong-may.1]
 - [ĐI TỚI md-06-bang-tin]
 
 ### md-06-bang-tin — Nhà văn hóa, bảng tin {cảnh: nha-van-hoa}
 
-- [DÀN DỰNG] Đọc bảng tin: hàng chục CLB; poster "Đăng ký CLB năm nay: quét QR hoặc form online".
-- **tung** (neutral): Ơ, có cả CLB Thám Tử này. Lạ nhỉ, chưa nghe bao giờ.
+- [LỜI md-06-bang-tin.1]
 - [ĐI TỚI md-07-cong-ktx-toi]
 
 ### md-07-cong-ktx-toi — Cổng KTX, tối: chú Cường {cảnh: cong-ktx}
 
-- [DÀN DỰNG] Về muộn, quẹt thẻ ở phòng trực. Gợi ý lưu game khi về phòng.
-- **chu-cuong** (neutral): Giờ này mới về à? {{nv.tung}} dẫn bạn đi đâu cả buổi thế?
-- **tung** (neutral): Bọn cháu đi xem trường ạ. Chú ơi, trên bảng tin có CLB Thám Tử, chú biết không?
-- **chu-cuong** (neutral): À, CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó đều moi ra được bằng chứng.
-- **chu-cuong** (neutral): Chẳng thần thánh gì đâu. Chịu khó hỏi từng người rồi đối chiếu giấy tờ thôi.
-- **chu-cuong** (neutral): Giờ cái gì cũng lên hệ thống, ai còn nhờ sinh viên đi hỏi từng người nữa. Thứ Bảy có Ngày hội CLB đấy, thích thì ra xem.
-- **tung** (happy): Thứ Bảy đi với tớ nhé?
+- [LỜI md-07-cong-ktx-toi.1]
 - [ĐI TỚI md-08-tuan-cong-dan]
 
 ### md-08-tuan-cong-dan — Chuyển cảnh: tuần sinh hoạt công dân {cảnh: nha-van-hoa}
 
-- [THẺ CHỮ] **narrator**: Thứ Hai → thứ Sáu tuần 1 — Tuần sinh hoạt công dân.
-- [DÀN DỰNG] Người chơi nhận thẻ lịch của khoa mình: phần in theo khoa, dòng viết tay "Họ tên / Lớp". Gieo cho ngày 1.
+- [LỜI md-08-tuan-cong-dan.1]
 - [HIỆN TÀI LIỆU doc-the-lich-cua-toi]
 - [ĐI TỚI md-09-ngay-hoi]
 
 ### md-09-ngay-hoi — Ngày hội CLB, thứ Bảy: lọc thử một lần {cảnh: nha-van-hoa}
 
-> NHIỆM VỤ: Ghé bàn CLB Thám Tử
+- [LỜI md-09-ngay-hoi.1]
 
-- [DÀN DỰNG] Bàn Robotics đông, dán "Đang xin mở rộng xưởng thực hành". Bàn Thám Tử chỉ có {{nv.minh-anh}}.
-- **tung** (neutral): Chị ơi, CLB mình đang điều tra vụ nào không ạ?
-- **minh-anh** (neutral): Không có em ạ. Hồ sơ, đăng ký giờ tra trên hệ thống là ra hết. Mấy kiểu điều tra ngày xưa hết đất diễn rồi.
-- **tung** (happy): Thế giờ CLB chuyên điều tra… mật khẩu Wi-Fi ạ?
-- **minh-anh** (worried): Em ra đây để đùa thì bàn bên kia vui hơn đấy.
-- **tung** (worried): Dạ em đùa hơi quá. Em xin lỗi chị.
-- [DÀN DỰNG] Phiếu đăng ký cần mã sinh viên; tân sinh viên chưa có thẻ. Đoàn trường phát cho mỗi bàn danh sách tra cứu tân sinh viên K24 (mã, họ tên, ngành).
-- **minh-anh** (neutral): Danh sách này chỉ để tra mã thôi nhé. Điền xong trả chị.
-- [DÀN DỰNG] {{nv.tung}} tự tin điền mã, nhưng ghi sai. {{nv.minh-anh}} bắt đầu dò bằng mắt.
-- **player**: Chị cho em lọc thử một lần được không ạ?
-- [LỌC THỬ lt-ngay-hoi · 3 dòng · chọn ma_sv = SV240251]
+- [LỜI md-09-ngay-hoi.2]
+- [LỌC THỬ lt-ngay-hoi · 3 dòng · chọn nganh = Du lịch]
 
 ```sql
 SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';
 ```
 
-- **player**: Có ba người tên {{nv.tung}}. Nhìn cột ngành… Du lịch, đây rồi.
-- **minh-anh** (neutral): …Em lọc nhanh phết. Chị đang cần người làm sổ hoạt động. Bốn giờ chiều thứ Hai tuần sau CLB họp đầu năm, hai em ghi tên đi.
-- **tung** (neutral): Dạ em thì… tìm đường với nhắc lịch là giỏi nhất ạ.
-- **minh-anh** (neutral): Em biết xin lỗi là được rồi. Bắt đầu từ việc đến đúng giờ nhé.
+- [LỜI md-09-ngay-hoi.3]
 - [ĐI TỚI md-10-phong-clb]
 
 ### md-10-phong-clb — Phòng CLB, thứ Hai 16h: làm quen và dọn phòng {cảnh: phong-clb}
 
-> NHIỆM VỤ: Dọn tủ hồ sơ cùng CLB
+- [LỜI md-10-phong-clb.1]
 
-- [DÀN DỰNG] Có mặt: {{nv.minh-anh}}, {{nv.duy}}, {{nv.ha-vy}}, {{nv.tung}}, người chơi.
-- **tung** (happy): Ơ, hôm Ngày hội tớ không thấy cậu nhỉ?
-- **ha-vy** (neutral): Tớ đăng ký qua form. Tớ mê Sherlock Holmes từ cấp hai, nghe tên CLB thám tử là đăng ký luôn.
-- **tung** (happy): Thế cậu đoán được tớ học gì không?
-- **ha-vy** (neutral): Khỏi đoán. Áo đội tình nguyện, balo cài huy hiệu khoa thế kia. Du lịch chứ gì.
-- **player**: Thế ai giữ chìa khóa phòng này ạ?
-- **duy** (neutral): Tớ. {{nv.duy}}, năm hai Hành chính học. Chìa khóa, tủ hồ sơ với cái máy tính cũ đều tớ giữ.
-- **duy** (neutral): Ngăn dưới tớ chưa kiểm kê tới. Cậu mở xem có gì trong đấy.
+- [LỜI md-10-phong-clb.2]
 - [HIỆN TÀI LIỆU doc-so-chi-linh]
 - [TRA SỔ kiem-hai-lan · tâm đắc]
-- **minh-anh** (neutral): Sổ tự học của chị Linh khóa trước đấy. Em cứ giữ mà dùng.
+- [LỜI md-10-phong-clb.3]
 - [HIỆN TÀI LIỆU doc-bao-cao-yeu]
-- **duy** (neutral): Báo cáo năm ngoái đây. Kết luận đúng hai chữ: "hoạt động yếu".
+- [LỜI md-10-phong-clb.4]
 - [ĐI TỚI md-11-la-thu]
 
 ### md-11-la-thu — Phòng CLB, 16h40: lá thư {cảnh: phong-clb}
 
-- [DÀN DỰNG] {{nv.co-lan}} gọi {{nv.minh-anh}} lên CTSV. 20 phút sau cô mang về thông báo lịch họp rà soát và bản chụp thư đã che thông tin. Bật bảng hồ sơ vụ.
+- [LỜI md-11-la-thu.1]
 - [HIỆN TÀI LIỆU doc-thu-che]
-- **player**: Chữ ký lượn thế này, đọc được mỗi chữ H… mà lại còn "đề nghị phản hồi chính thức".
-- [DÀN DỰNG] Người chơi tự tạo giấy nhớ đầu tiên.
+- [LỜI md-11-la-thu.2]
 - [HẬU QUẢ] mở manh mối clue-chu-ky-h
-- **duy** (neutral): Đủ 5 người mới chỉ giữ được tư cách CLB thôi. Phòng vẫn bị xét vì báo cáo yếu, đơn của Robotics, giờ thêm lá thư này.
-- **minh-anh** (neutral): Người gửi muốn được trả lời thì phải có mã trong sổ niêm phong. Mà sổ đó không ai được mở.
-- **minh-anh** (neutral): {{nv.thay-quang}} cho CLB lập căn cứ. Cô phụ trách tự tra, Hội sinh viên giám sát.
-- **ha-vy** (thinking): Khoan, tính lại đã. Mình mới có một chữ H với một cái hộp.
-- **minh-anh** (neutral): Nói có sách, mách có chứng. Sáng mai bắt đầu.
+- [LỜI md-11-la-thu.3]

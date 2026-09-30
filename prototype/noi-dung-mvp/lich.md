@@ -1,40 +1,30 @@
 # Vụ 1 — Chữ ký H {vụ: vu1}
 
-<!-- Thứ Ba → thứ Bảy tuần 2 là ngày 1–5; thứ Hai tuần 3 là buổi họp rà soát (ngày 6). -->
+<!-- Chương 1 đi theo truyện (docs/thiet-ke/ban-giao-huong-moi-2026-09-30.md, ĐÃ CHỐT C, user chốt 30/09/2026): mỗi ngày chạy MỘT chuỗi, không bản đồ, không khung giờ, không hạn, không uy tín, không kết xấu. Thứ Ba → thứ Bảy tuần 2 là ngày 1–5; thứ Hai tuần 3 là buổi họp rà soát. -->
 
 ## Luật
+<!-- Khung giờ chỉ còn dùng để đọc mốc "Xuất hiện từ: ngày n <khung>" của nhan-vat.md; ngày theo truyện không tiêu khung. -->
 - Khung giờ: sang "Sáng", trua "Trưa", chieu "Chiều"
-- Buổi tối: toi "Cuối ngày"
-- Dữ kiện chính tối đa: 2 khung
-- Mỗi địa điểm: 1–3 dữ kiện phụ/nhiễu
-- Uy tín: 5 vạch
 
 ## Mở đầu
 - Chuỗi đầu: md-00-xe-buyt
 
-## Ngày 1 — Thực địa {ngày: 1}
-- Dữ kiện chính: dk-bac-thinh-the-lich
-- Mở ngày: n1-mo
-- Buổi tối: toi-1
+## Sảnh tòa B {ngày: 1 · theo truyện}
+- Chuỗi: n1-mo
 
-## Ngày 2 — Phòng máy {ngày: 2}
-- Dữ kiện chính: dk-loc-lop
-- Mở ngày: n2-mo
-- Buổi tối: toi-2
+## Tài khoản CLB {ngày: 2 · theo truyện}
+- Chuỗi: n2-mo
 
-## Ngày 3 — Thực địa {ngày: 3}
-- Dữ kiện chính: dk-quy-che-so-niem-phong
-- Buổi tối: toi-3
+## Phiếu tra cứu {ngày: 3 · theo truyện}
+- Chuỗi: n3-mo
 
-## Ngày 4 — Phòng máy {ngày: 4}
-- Dữ kiện chính: dk-ten-h
-- Buổi tối: toi-4
+## Sổ niêm phong {ngày: 4 · theo truyện}
+- Chuỗi: n4-mo
 
-## Ngày 5 — Thực địa {ngày: 5}
-- Dữ kiện chính: dk-nop-hai-ma
-- Buổi tối: toi-5
+## Cổng KTX {ngày: 5 · theo truyện}
+- Chuỗi: n5-mo
 
-## Ngày 6 — Buổi họp rà soát {ngày họp}
+## Buổi họp rà soát {ngày họp}
 - Chuỗi: hop-00
 
 ## Kết

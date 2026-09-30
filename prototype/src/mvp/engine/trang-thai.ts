@@ -19,6 +19,8 @@ export type BoiCanhChuoi =
   | 'du-kien'
   /** Chuỗi "Cuối ngày" (buổi tối): hết → ghi nhận dữ kiện chính, hết ngày. */
   | 'toi'
+  /** Chuỗi của một ngày theo truyện (chương 1): hết → hết ngày. */
+  | 'truyen'
   /** Chuỗi ngày họp: phải tự `[ĐI TỚI]`/`[RẼ KẾT]`; hết nút mà không rẽ là lỗi nội dung. */
   | 'hop'
   /** Chuỗi kết: kết thúc bằng `[KẾT THÚC]`. */
@@ -30,13 +32,20 @@ export interface ConTroMvp {
   boiCanh: BoiCanhChuoi;
 }
 
-export type GiaiDoanMvp = 'mo-dau' | 'ngay' | 'hop' | 'het';
+export interface KhamPhaMvp {
+  /** Vị trí nút `[KHÁM PHÁ]` (chuỗi, chỉ số nút, bối cảnh của chuỗi chứa nó). */
+  veLai: ConTroMvp;
+  /** Chuỗi của các chỗ đã bấm, theo thứ tự. */
+  daXem: string[];
+}
+
+export type GiaiDoanMvp ='mo-dau' | 'ngay' | 'hop' | 'het';
 
 /** Câu hỏi / chọn dòng / chép sổ đang trong pha phản hồi. */
 export interface HoiDapMvp {
   /** Nút đang trả lời (id câu hỏi / chọn dòng / trang sổ). */
   id: string;
-  nguon: 'question' | 'line-pick' | 'notebook-copy';
+  nguon: 'question' | 'line-pick';
   /** Các lời phản hồi đang hiện lần lượt (kể cả lời Minh Anh khi mất vạch). */
   phanHoi: LoiMvp[];
   viTri: number;
@@ -79,6 +88,11 @@ export interface TrangThaiMvp {
   canh: string;
 
   conTro: ConTroMvp | null;
+  /**
+   * Cảnh `[KHÁM PHÁ]` đang mở: con trỏ của nút khám phá (để quay về khi chuỗi của một chỗ bấm hết nút) và các chuỗi đã
+   * xem. `[ĐI TỚI]` / "đi tới" rời cảnh (xóa trường này). Không có trường (ô lưu cũ) = `null`.
+   */
+  khamPha?: KhamPhaMvp | null;
   /** Dữ kiện đang làm (chuỗi hoặc thử thách); ghi nhận khi xong. */
   duKienDangLam: string | null;
   /** Thử thách đang mở từ dữ kiện kiểu `Thử thách:` (không nằm trong chuỗi). */
@@ -86,8 +100,10 @@ export interface TrangThaiMvp {
   duKienDaLam: string[];
 
   hoSo: HoSoMvp;
+  /** Nhân vật đã hiện màn "Nhân vật mới" (theo thứ tự gặp) — cũng là danh sách tab Nhân vật. Ô lưu cũ: không có = []. */
+  daGioiThieu?: string[];
   co: string[];
-  /** Trang sổ đã `[CHÉP SỔ]` vào sổ cá nhân. */
+  /** Trang sổ đã vào sổ cá nhân (`[GHI SỔ]`, tự ghi — QĐ-092), theo thứ tự học. */
   soTay: string[];
   thuThachXong: string[];
 

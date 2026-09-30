@@ -1,0 +1,65 @@
+# Lời · kich-ban/06-hop-va-ket.md
+
+<!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/06-hop-va-ket.md. -->
+
+## hop-00.1
+> NHIỆM VỤ: Buổi họp rà soát
+
+## hop-00.2
+- [DÀN DỰNG] {{nv.thay-quang}} ngồi giữa; {{nv.co-lan}} và {{nv.quan}} một bên, CLB một bên. {{nv.hoai}} ngồi chờ ngoài hành lang theo quy chế, chưa được mời vào.
+- **thay-quang** (neutral): Sáng nay thầy duyệt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử. Mời các em trình bày căn cứ.
+- **minh-anh** (neutral): Dạ, bọn em xin trình bày cách bọn em lọc ra danh sách ạ.
+- **quan** (smug): Phản ánh này đến từ sinh viên nói chung, nên phải lọc diện rộng. Tên bắt đầu bằng H hoặc học lớp BC24A: mười bốn dòng. Trong hồ sơ các bạn nộp lên chỉ liệt kê hai người.
+
+## hop-00.3
+- **tung** (worried): Ơ… mười bốn dòng thật.
+- [DÀN DỰNG] Nhịp 1: người chơi chạm vào chữ HOẶC, đổi thành VÀ → 2 dòng. Nhịp 2: "Số liệu đây!". Chạm sai, chạy thử đều không phạt.
+
+## hop-00.4
+- **ha-vy** (neutral): Anh đang gộp hai nhóm vào làm một rồi ạ. Bọn em cần người vừa có tên bắt đầu bằng H, vừa học lớp BC24A ạ.
+- **quan** (neutral): …Hai dòng. Vâng. Mời các bạn nói tiếp.
+
+## hop-02.1
+- [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa.
+- **thay-quang** (neutral): Em Hoài, em kể lại giúp thầy hôm em nộp thư.
+- **hoai** (nervous): Dạ… sáng thứ Hai em mang phong bì bỏ vào hộp ở tòa B ạ.
+- **thay-quang** (neutral): Chỉ có vậy thôi à em?
+- **hoai** (nervous): Dạ… vâng ạ.
+- **thay-quang** (neutral): Được, em cứ ngồi đó. Các em còn gì trình thêm không?
+
+## hop-doi-chat.1
+- [DÀN DỰNG] {{nv.hoai}} được gọi vào, đứng nép cạnh cửa, nhìn lên màn chiếu có tên mình.
+- **ha-vy** (neutral): Khoan… chiếu tên bạn ấy lên rồi gọi vào thế này, khác gì hỏi cung.
+- **thay-quang** (neutral): Ở đây không ai đối chất với một bạn năm nhất. Thầy hỏi, các em nghe.
+- **thay-quang** (neutral): Em Hoài, lá thư có chữ ký này là em bỏ vào hộp đúng không?
+- **hoai** (nervous): Dạ… vâng ạ. Em mang nộp ạ.
+- [DÀN DỰNG] {{nv.hoai}} cúi gằm, không nói thêm.
+- **quan** (smug): Vậy là chính bạn ấy mang thư tới hộp.
+- **ha-vy** (neutral): Mang tới hộp thôi anh. Chưa biết bạn ấy viết hay chỉ mang hộ.
+- **thay-quang** (neutral): Em Hoài đang rất căng. Hôm nay thầy không hỏi thêm em ở đây.
+
+## ket-that.1
+- [DÀN DỰNG] {{nv.minh-anh}} đặt tập hồ sơ xuống bàn.
+- **minh-anh** (neutral): Thưa thầy, bọn em có thêm nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật từ tài khoản một sinh viên năm 4.
+- **ha-vy** (neutral): Còn sáng thứ Hai, bọn tớ nghe kể có một anh khóa trên đưa phong bì cho một bạn nữ khóa mình. Hoài ơi, phong bì cậu bỏ vào hộp là có người nhờ à?
+- **hoai** (nervous): Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký như bình thường vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ.
+- **ha-vy** (neutral): Vậy là cậu ghi mã của mình vì được dặn. Còn người soạn thư thì không đứng tên ở đâu trên phiếu.
+- **thay-quang** (neutral): Nhật ký in và lời kể sáng thứ Hai là hai nguồn riêng, cả hai đều khớp với lời em. Vậy em không phải người soạn thư.
+- **thay-quang** (neutral): Mã trên phiếu là để thầy cô tra cứu và phản hồi người gửi. Ở đây người viết giấu tên, mượn chữ ký và mã của một bạn năm nhất. Thư như vậy thầy không nhận vào hồ sơ rà soát.
+- **thay-quang** (neutral): Em làm theo lời nhờ nên không bị xử lý gì cả.
+- **thay-quang** (neutral): CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện.
+- **thay-quang** (neutral): Còn người soạn thư, thầy sẽ gặp riêng. Không cần nêu tên ở đây.
+- **hoai** (relieved): Em xin lỗi vì làm mọi người mất công ạ.
+- **minh-anh** (happy): Không sao đâu em. Cảm ơn thầy ạ.
+- **quan** (stunned): …Hóa ra người nộp còn không biết trong thư viết gì. Em xin lỗi thầy, xin lỗi các bạn. Bên em quy kết vội quá ạ.
+- [DÀN DỰNG] {{nv.tung}} thì thầm với {{nv.ha-vy}}.
+- **tung** (happy): Giữ được phòng rồi! Tối nay tớ khao trà đá.
+- **ha-vy** (smile): Được. Tớ nhớ đấy nhé.
+- [THẺ CHỮ] **narrator**: SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.
+
+## ket-thuong.1
+- **minh-anh** (worried): Dạ… bọn em chỉ xác minh được đến đó ạ.
+- **thay-quang** (neutral): Được. Với những gì trình bày ở buổi họp này, thầy chưa đủ căn cứ để biết ai viết thư. Còn em Hoài, em ấy không bị xử lý gì cả.
+- **thay-quang** (neutral): Thư vẫn được tính là một ý kiến sinh viên trong hồ sơ. Chưa thu phòng ngay. CLB được sinh hoạt đến hết học kỳ, nộp báo cáo hoạt động hằng tháng.
+- **minh-anh** (worried): Dạ, tháng nào bọn em cũng sẽ nộp đủ ạ.
+- [THẺ CHỮ] **narrator**: Hai dòng chỉ cho ta chỗ cần đến. Phần còn lại cần thêm bằng chứng, và biết hỏi đúng lúc, đúng cách.

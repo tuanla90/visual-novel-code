@@ -109,7 +109,8 @@ export interface RawChallengeCard {
   hints: { level: number; line: RawLine }[];
   onCorrect: RawLine | null;
   question: RawQuestion | null;
-  evidence: { id: string; title: string; description: string } | null;
+  /** `giaTri`: dòng con "Giá trị cho trình dựng" (MVP, QĐ-092) — chữ của khối/giấy nhớ khi dùng bằng chứng làm giá trị. */
+  evidence: { id: string; title: string; description: string; giaTri?: string } | null;
   notes: string[];
   viTri: ViTri;
 }
@@ -633,10 +634,11 @@ export function docNoiDung(tepList: readonly TepNoiDung[], tuyChon: TuyChonDoc =
         return;
       }
       if (line.startsWith('  - ')) {
-        const m = /^ {2}- (Tiêu đề|Mô tả): (.+)$/.exec(line);
+        const m = /^ {2}- (Tiêu đề|Mô tả|Giá trị cho trình dựng): (.+)$/.exec(line);
         if (!m || !evidenceOpen || !c.evidence) throw new Error(`dòng con lạ trong thẻ thử thách "${line}"`);
         if (m[1] === 'Tiêu đề') c.evidence.title = m[2] ?? '';
-        else c.evidence.description = m[2] ?? '';
+        else if (m[1] === 'Mô tả') c.evidence.description = m[2] ?? '';
+        else c.evidence.giaTri = m[2] ?? '';
         return;
       }
       evidenceOpen = false;

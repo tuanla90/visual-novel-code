@@ -12,11 +12,17 @@ import type { TrangThaiMvp } from './trang-thai';
 
 const KB = KICH_BAN_MVP as unknown as KichBanMvp;
 
-/** Bấm "tiếp" qua các lời cho tới khi gặp khung nhìn `create-character` có trường `truong`. */
+/** Bấm "tiếp" qua các lời (và các chỗ của cảnh khám phá) cho tới khi gặp khung nhìn `create-character` có trường `truong`. */
 function toiCauHoi(s: TrangThaiMvp, truong: 'ten' | 'nganh'): TrangThaiMvp {
   for (let i = 0; i < 50; i++) {
     const kn = khungNhin(KB, s);
     if (kn.kind === 'create-character' && kn.nut.truong === truong) return s;
+    // Sảnh KTX ([KHÁM PHÁ]): bấm lần lượt các chỗ chưa xem (Tùng hiện sau cùng).
+    const cho = kn.kind === 'explore' ? kn.diem.find((d) => !d.daXem) : undefined;
+    if (cho) {
+      s = xuLy(KB, s, { type: 'xem-diem', chuoi: cho.diem.chuoi });
+      continue;
+    }
     if (kn.kind !== 'line') throw new Error(`Gặp ${kn.kind} trước câu hỏi ${truong}`);
     s = xuLy(KB, s, { type: 'tiep' });
   }

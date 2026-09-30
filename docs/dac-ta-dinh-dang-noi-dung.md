@@ -665,6 +665,7 @@ Hai cuốn: **sổ chị Linh** (đủ nội dung từ đầu, để ở phòng 
 ```
 
 Luật:
+- **Bộ MVP (QĐ-092) không dùng `[CHÉP SỔ]` và mục "Chọn đoạn code"** — thay bằng `[GHI SỔ <trang>]` (§18.6): dòng "Vào sổ cá nhân" tự vào sổ. Phần dưới giữ cho bộ prototype.
 - `[CHÉP SỔ <trang>]` chạy trọn trang: hoạt cảnh trang chị Linh → lời Hà Vy → chọn đoạn code (loại 2a: đúng một `[ĐÚNG]`, chọn sai thì Hà Vy đáp bằng toán và chọn lại, **không phạt, không đếm**) → đoạn đúng cùng chú thích vào sổ cá nhân.
 - `[TRA SỔ <trang> · <phần>]` chỉ hiện trang chị Linh (vd Tùng gợi ý khi người chơi bí → phần `lỗi thường gặp`), không thêm gì vào sổ cá nhân.
 - Trang **tâm đắc / lỗi thường gặp** không có mục "Chọn đoạn code".
@@ -932,6 +933,11 @@ Lệnh (trong `prototype/`): `npm run kiem-noi-dung:mvp` (chỉ kiểm), `npm ru
 - Họ tên: Trần Tùng
 - Vai: Năm 1 Du lịch, bạn cùng phòng KTX, cháu chú Cường. Dẫn đường, nhắc lịch.
 - Biểu cảm: neutral, happy
+- Danh xưng: Bạn cùng phòng 408
+- Năm: Năm nhất
+- Ngành: Du lịch
+- Câu nói: Tớ cá là mười phút là tới nơi.
+- Giới thiệu: Tân sinh viên ngành Du lịch, ở cùng phòng 408 ký túc xá. …
 
 ### quan — Quân
 - Vai: Trưởng ban Pháp chế – Kiểm tra Hội sinh viên.
@@ -948,6 +954,7 @@ Lệnh (trong `prototype/`): `npm run kiem-noi-dung:mvp` (chỉ kiểm), `npm ru
 - Biến: `{{nv.<mã>}}` = tên hiển thị, `{{nv.<mã>.ho-ten}}`, `{{nv.<mã>.trong-cau}}` (§10.4); tên trường `{{truong.…}}` lấy từ dòng `- Tên trường:` của `quy-uoc.md` (tự suy `ten-ngan` = bỏ "Trường Đại học", `ten-khong-tien-to` = bỏ "Trường").
 - **`{{nv.nguoi-choi}}` dùng được** trong bộ MVP: bộ đọc giữ nguyên chuỗi `{{nv.nguoi-choi}}` trong dữ liệu sinh, runtime thay bằng tên người chơi đặt ở `[TẠO NHÂN VẬT]` (QĐ-077). Bộ prototype vẫn coi là lỗi (không đổi).
 - `player` (nam, QĐ-087) và `narrator` không khai báo.
+- **Thẻ giới thiệu** (user yêu cầu 29/09: màn "Nhân vật mới" và tab Nhân vật như prototype): `Danh xưng`, `Câu nói`, `Giới thiệu` bắt buộc nếu có một trong năm dòng; `Năm`, `Ngành` tùy (không có → bỏ "chip" đó). Đây là chữ **người chơi thấy** ngay lần đầu nhân vật nói — chỉ viết điều người chơi biết lúc gặp, không kể trước tình tiết (khác `Vai`, là ghi chú cho người viết). Nhân vật không có thẻ thì không có màn giới thiệu; `Chỉ qua lời kể: có` không được có thẻ. Ảnh: `intro-<mã>` (16:9) nếu có trong `src/assets/`, không thì chân dung.
 
 ### 18.3 Cảnh — `canh.md`
 
@@ -1040,8 +1047,9 @@ Mọi `{cảnh: …}` ở chuỗi và `Cảnh:` ở địa điểm phải có �
 
 - Mỗi ngày điều tra có **đúng một** `Dữ kiện chính` (phải là dữ kiện gắn nhãn `chính`, mỗi dữ kiện chính thuộc đúng một ngày, `Mở từ` của nó ≤ ngày đó) và một `Buổi tối`. Buổi tối = "đồng đội dẫn tới đúng chỗ, người chơi tự làm bước cuối": chuỗi buổi tối phải `[ĐI TỚI]` (trực tiếp hoặc qua chuỗi khác) chuỗi của dữ kiện chính ngày đó.
 - **Kiểm "≤ 2 khung":** chi phí = tổng `Tốn khung` của dữ kiện chính cộng các dữ kiện tạo ra vật phẩm nó `Cần` (đệ quy) mà mở **cùng ngày**, cộng chi phí "vào" của mỗi địa điểm phòng máy phải ghé. Lớn hơn `Dữ kiện chính tối đa` là lỗi tại dòng `Dữ kiện chính`. Ví dụ ngày 2: cô Hạnh (1) + vào phòng máy (1) + bàn làm việc bên trong (0) = 2. Mọi dữ kiện `chính` phải thuộc đúng một ngày theo cách này.
+- **Ngày theo truyện** (chương 1, user chốt 30/09/2026 — `docs/thiet-ke/ban-giao-huong-moi-2026-09-30.md` ĐÃ CHỐT C): tiêu đề `## <Tên ngày> {ngày: n · theo truyện}`, một dòng duy nhất `- Chuỗi: <mã>` (bắt buộc; `Dữ kiện chính`, `Mở ngày`, `Buổi tối` là dòng lạ). Máy chạy chuỗi đó từ đầu tới cuối — không bản đồ, không khung giờ, không danh sách địa điểm; chuỗi hết nút (không `[ĐI TỚI]`) thì hết ngày. Chỗ bấm trong cảnh viết bằng `[KHÁM PHÁ]`, lựa chọn nhìn thấy được viết bằng `[RẼ NHÁNH]` (mỗi lựa chọn `đi tới` một chuỗi; chuỗi đó hết nút cũng là hết ngày). HUD ghi tên ngày ở chỗ khung giờ. Lịch toàn ngày theo truyện thì `## Luật` chỉ cần `Khung giờ` (để đọc mốc `Xuất hiện từ: ngày n <khung>`), `dia-diem.md` được để trống (chỉ chú thích). Vật phẩm "bắt buộc" để xét true end = vật phẩm tạo trên đường người chơi không tránh được: chuỗi đầu, chuỗi ngày theo truyện, ngày họp, và mọi chuỗi tới được từ đó qua `[ĐI TỚI]`, `[HẬU QUẢ] đi tới`, chỗ bấm `[KHÁM PHÁ]` (không qua lựa chọn `[RẼ NHÁNH]`).
 - `{ngày họp}`: không có khung; `Chuỗi` bắt buộc. `[HỎI … · trừ uy tín]`, `[CHỌN DÒNG … · trừ uy tín]` chỉ được dùng ở chuỗi tới được từ ngày họp.
-- `## Kết`: `Kết thật` là chuỗi có `[ĐIỀU KIỆN]` ở đầu (§6.1) — đó là **điều kiện true end**; `Kết thường` không có `[ĐIỀU KIỆN]`. Cả hai kết thúc bằng `[KẾT THÚC]`. Kiểm: mọi mã trong điều kiện tồn tại và **có cách đạt được** (do một dữ kiện `Mở manh mối`/`Lưu bằng chứng`, hoặc thẻ thử thách lưu); điều kiện thỏa khi có đủ mọi thứ đạt được; và **không** thỏa khi chỉ có các thứ từ dữ kiện chính (true end phải cần dữ kiện phụ).
+- `## Kết`: `Kết thật` là chuỗi có `[ĐIỀU KIỆN]` ở đầu (§6.1) — đó là **điều kiện true end**; `Kết thường` không có `[ĐIỀU KIỆN]`. Cả hai kết thúc bằng `[KẾT THÚC]`. Kiểm: mọi mã trong điều kiện tồn tại và **có cách đạt được** (do một dữ kiện `Mở manh mối`/`Lưu bằng chứng`, hoặc thẻ thử thách lưu); điều kiện thỏa khi có đủ mọi thứ đạt được; và **không** thỏa khi chỉ có các thứ từ dữ kiện chính hay đường chạy bắt buộc (true end phải cần dữ kiện phụ, hoặc — ở ngày theo truyện — một lựa chọn `[RẼ NHÁNH]`).
 
 ### 18.6 Chuỗi — `kich-ban/*.md`
 
@@ -1055,11 +1063,34 @@ Dùng được trong chuỗi (ngoài §6.3: `[VÀO]`, `[RA]`, `[ĐI TỚI]`, `[H
 | `- [TẠO NHÂN VẬT nganh] tung (neutral): "Học ngành gì?"` + dòng con `  - lựa chọn: Kế toán · Quản trị kinh doanh · …` | Câu 2: chọn ngành. Cả game có đúng một `ten` và một `nganh`, đều trong mở đầu, `ten` trước `nganh`. |
 | `- [LỌC THỬ <mã> · <n> dòng · chọn <cột> = <giá trị>]` + khối ` ```sql ` ngay dưới | Lọc thử một lần trên giao diện bàn làm việc (Ngày hội): câu SQL trong khối, số dòng kỳ vọng, dòng người chơi phải chọn. |
 | `- [LƯU BẰNG CHỨNG <ev-…>]` | Lưu bằng chứng (key item) ngay tại đây — dùng khi bằng chứng nảy ra giữa chuỗi; thường khai báo ở dữ kiện là đủ. |
+| `- [KHÁM PHÁ <mã>]` + dòng con `  - <obj-… hoặc nv:<mã>> · x <n>% · y <n>% · rộng <n>% → <chuỗi>[ · sau: <chuỗi>, …][ · nhãn: <chữ>]` | Cảnh bấm vật trên nền cảnh của chuỗi (sảnh KTX của mở đầu dạy người chơi bấm). Tọa độ như dòng `- Ảnh:` (§18.4a). Bấm một chỗ → chạy `<chuỗi>`; chuỗi hết nút thì về cảnh, chỗ đó mờ đi. `sau:` = chỉ hiện khi đã xem các chuỗi kia (vd. Tùng hiện sau thang máy và bảng tin). Xem hết mọi chỗ → chạy tiếp dòng sau `[KHÁM PHÁ]`; `[ĐI TỚI]` trong chuỗi của một chỗ → rời cảnh luôn. `nhãn:` = chữ trên nút (không có → "Nói chuyện với …" cho `nv:`, "Xem: <tài liệu>" hay "Xem xét chỗ này" cho đồ vật); dùng khi người chơi chưa biết tên người đứng đó. Kiểm: có ít nhất một chỗ hiện ngay, `sau:` trỏ chỗ khác cùng cảnh, chuỗi và ảnh tồn tại. Chuỗi của các chỗ được tính là nối từ chuỗi chứa `[KHÁM PHÁ]`. |
+| `- [GHI SỔ <trang>]` | (QĐ-092, thay `[CHÉP SỔ]`) Tự thêm dòng "Vào sổ cá nhân" (`- Chú thích: …`) của trang vào sổ cá nhân, không hỏi gì; màn chơi báo một dòng. Đặt sau bài phòng máy vừa dạy xong một mảng kiến thức. Trang sổ MVP chỉ có "Trang chị Linh", "Hà Vy", "Vào sổ cá nhân" — mục "Chọn đoạn code" và `[CHÉP SỔ]` báo lỗi. Kiểm: trang tồn tại và có dòng "Vào sổ cá nhân". |
 | `- [RẼ KẾT]` | Runtime chọn `Kết thật` nếu `[ĐIỀU KIỆN]` của nó thỏa, không thì `Kết thường`. Đúng một lần trong game. |
 | `- [ĐIỀU KIỆN] có ev-nhat-ky-in và (có clue-loi-chu-cuong hoặc có clue-loi-dat)` | Dòng đầu chuỗi kết thật (và chuỗi có điều kiện khác). |
 | `- [HẬU QUẢ] mở manh mối clue-x, lưu bằng chứng ev-y, đặt co.z, đi tới <chuỗi>` | §13.2 thêm `lưu bằng chứng`. |
 
 Số dòng ghi trong `[LỌC THỬ]`, `[MÀN CHIẾU … · <n> dòng]` (khi có khối sql), "Số dòng kỳ vọng" của thẻ (đi với "SQL chuẩn") là **số người viết khai**. Bộ chuyển gom mọi cặp `(sql, soDong, noi)` vào `soDongKhai` của dữ liệu sinh; `kiem-noi-dung:mvp` **chạy thật** từng câu trên bộ dữ liệu cố định `du-lieu.md` (§18.10) và báo lỗi `<tệp>:<dòng>` khi số khai lệch kết quả (QĐ-089). Số dòng chỉ ghi trong `[DÀN DỰNG]` (không kèm câu SQL) chưa được kiểm.
+
+**Thẻ thử thách MVP có thêm (QĐ-092):**
+- `- Khi chạy ra <n> dòng: **<người nói>** (<biểu cảm>): <lời>` (và `- Khi lỗi không có cột: …`, `- Khi lỗi: …`, `- Khi đúng: …`): lời nhân vật hiện ngay dưới kết quả sau mỗi lần chạy, chọn theo kết quả; nhiều lời nối bằng `<br>`. Chỉ MÔ TẢ kết quả (QĐ-071), không phán đúng/sai. Bộ kiểm: nhãn đúng quy ước, người nói và biểu cảm có thật. Phiên truyện viết các dòng này; phiên logic đặt bẫy và số dòng.
+- Dòng con `  - Giá trị cho trình dựng: BC24A` dưới "Vật chứng lưu vào hồ sơ", và dòng `- Giá trị cho trình dựng: B` (hoặc `Báo chí · K24`) ở thẻ hồ sơ: chữ của giấy nhớ / khối giá trị ở phòng máy (kéo thả, bấm khối). Thẻ không có dòng này thì không hiện trên bàn làm việc.
+
+**Chuỗi bài phòng máy (QĐ-092).** Một lần vào phòng máy có thể gồm nhiều bài: dữ kiện dùng `- Chuỗi:` (không phải `- Thử thách:`), chuỗi đó có nhiều `[THỬ THÁCH …]` nối tiếp kèm lời dẫn và `[GHI SỔ]`. Thẻ thử thách của **bài giữa chuỗi được bỏ dòng "Vật chứng lưu vào hồ sơ"** (không lưu gì); bài cuối lưu bằng chứng như cũ. Không tốn thêm khung giờ (vào phòng máy tốn 1, bên trong 0). Kế hoạch bài theo ngày: `docs/mvp/thuc-hanh-sql-vu1-mvp.md`.
+
+### 18.6a Tách khung / lời — `loi/*.md` (user chốt 30/09/2026)
+
+Khung (`kich-ban/*.md`, `thu-thach/*.md`) do phiên logic giữ; lời do phiên truyện giữ. Chỗ khung cần lời đặt **một dòng ở đầu dòng** `- [LỜI <mã>]`; lời nằm trong `loi/*.md`:
+
+```markdown
+## n1-mo.1
+- **tung** (neutral): Sáng nay bác bảo vệ tòa B trực đấy.
+- [DÀN DỰNG] Nắng sớm hắt vào sảnh.
+```
+
+- Trước khi đọc, bộ gom thay dòng `- [LỜI mã]` bằng các dòng của đoạn `## mã` (tools/noi-dung/ghep-loi.ts). Lỗi của bộ đọc và bộ kiểm luật được trả về đúng tệp, đúng dòng gốc.
+- Tệp lời chỉ chứa dòng chữ: thoại `- **ai** (cảm xúc): …`, `- [THẺ CHỮ] …`, `- [DÀN DỰNG] …`, `> NHIỆM VỤ: …`, phản ứng thẻ thử thách `- Khi …: …`. Dòng cấu trúc (`[ĐI TỚI]`, `[HỎI]`, `[THỬ THÁCH]`…) trong tệp lời là lỗi.
+- Lỗi: khung cần lời mà thiếu đoạn; đoạn lời không khung nào dùng; trùng mã; một đoạn gắn vào hai chỗ. Dòng chứa `(tạm)` không lỗi, được đếm thành cảnh báo.
+- Mã đoạn: chữ thường, số, `-`, `.`, `_`; quy ước `<mã chuỗi>.<số thứ tự>`.
 
 ### 18.7 Lời chung — `chung/loi-chung.md`
 

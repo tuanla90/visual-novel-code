@@ -1,27 +1,22 @@
-## Ngày 2 — Phòng máy (thứ Tư tuần 2)
+## Ngày 2 — Tài khoản CLB (thứ Tư tuần 2)
 
-### n2-mo — Mở ngày 2 {cảnh: phong-clb}
+<!-- Khung chương 1 (ĐÃ CHỐT C): phòng Đào tạo → laptop phòng CLB. Lần tra đầu tiên có SQL hiện. Điều mới: hai điều kiện; VÀ khác HOẶC (Tùng rủ nối HOẶC → 5 lớp; VÀ → 2 lớp). Lời ở loi/02-ngay-2.md. -->
 
-- [THẺ CHỮ] **narrator**: Ngày 2 — Sáng
-- **minh-anh** (neutral): Hôm nay {{nv.co-hanh}} bên Đào tạo cấp quyền dữ liệu. Có quyền rồi mình mới vào phòng máy được.
-- **minh-anh** (neutral): Đơn xin quyền chị đứng tên, có gì chị chịu. Các em gõ, còn {{nv.duy}} ngồi cùng, ký sổ mượn máy.
-- **duy** (neutral): Tớ chỉ ngồi cạnh thôi, bàn phím là của các cậu.
+### n2-mo — Sáng ngày 2: lên phòng Đào tạo {cảnh: phong-clb}
 
-### n2-co-hanh — Cô Hạnh cấp quyền tạm {cảnh: phong-dao-tao}
+- [LỜI n2-mo.1]
+- [ĐI TỚI n2-co-hanh]
 
-> NHIỆM VỤ: Nhận quyền dữ liệu tạm ở Phòng Đào tạo
+### n2-co-hanh — Cô Hạnh tạo tài khoản CLB (chỉ bảng lớp) {cảnh: phong-dao-tao}
 
-- **co-hanh** (neutral): Đơn của em Minh Anh có {{nv.thay-quang}} duyệt rồi. Hai bảng thôi, chỉ những cột cần thiết. Họp xong là cô khóa quyền lại nhé.
-- **co-hanh** (neutral): Bảng lớp sinh hoạt có mã lớp, ngành, tòa nhà. Bảng sinh viên có mã, họ đệm, tên, mã lớp. Ngoài ra không có gì khác đâu.
-- **player**: Dạ, thế là đủ để khoanh vùng rồi ạ. Em cảm ơn cô.
-- [DÀN DỰNG] Giấy nhớ [Quyền dữ liệu tạm] và văn bản của thầy Quang (khai báo ở dữ kiện).
+- [LỜI n2-co-hanh.1]
+- [HIỆN TÀI LIỆU doc-van-ban-thay-quang]
+- [HẬU QUẢ] mở manh mối clue-quyen-du-lieu
+- [LỜI n2-co-hanh.2]
+- [ĐI TỚI n2-laptop]
 
-### n2-doi-phong-hoc — Thông báo đổi phòng học {cảnh: phong-dao-tao}
+### n2-laptop — Laptop phòng CLB: lớp nào vừa ở tòa B vừa học Báo chí? {cảnh: phong-clb}
 
-- **tung** (neutral): Tuần này lớp tớ chuyển sang tòa C học. Chắc chẳng dính gì vụ mình đâu.
-
-### toi-2 — Cuối ngày 2: Hà Vy dẫn vào phòng máy {cảnh: phong-may}
-
-- [THẺ CHỮ] **narrator**: Cuối ngày
-- **ha-vy** (neutral): {{nv.thay-khai}} cho mượn phòng máy thêm một tiếng. Vào đi, tớ ngồi cạnh.
-- [THỬ THÁCH c-loc-lop]
+- [LỜI n2-laptop.1]
+- [THỬ THÁCH c-lop]
+- [LỜI n2-laptop.2]

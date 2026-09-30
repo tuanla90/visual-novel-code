@@ -5,7 +5,9 @@
  *
  * KHÔNG dùng `ChallengeScreen` của prototype: màn đó gắn với store/kiểu định danh/dataset đóng băng của bản cũ
  * (bảng có cột `clb`, thẻ có bước dẫn + lời Hà Vy theo mã chẩn đoán — bộ MVP chưa có). Tái dùng khung SQL
- * (`SqlCode`, `ResultTable`, CSS `chal-*`). Trình dựng kéo-thả để gói sau (xem báo cáo).
+ * (`SqlCode`, `ResultTable`, CSS `chal-*`). Thử thách phòng máy nhập câu bằng `NhapCauMvp` (kéo thả / bấm khối / gõ tay,
+ * QĐ-092 — người chơi tự đổi, ghi telemetry để so); sửa truy vấn ở buổi họp vẫn là ô chữ nạp sẵn.
+ * Lời sau mỗi lần chạy chỉ MÔ TẢ kết quả (QĐ-071), không phán đúng/sai.
  * Gợi ý không lộ đáp án: giấy nhớ liên quan, mô tả bảng + xem 5 dòng đầu, tra sổ chị Linh. `ghiChu` của thẻ là
  * ghi chú dàn dựng cho người viết (có lời giải) — không hiện.
  */
@@ -13,7 +15,14 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { BoDuLieuMvp, KichBanMvp, TheThuThachMvp } from '../../content/mvp/types';
 import { ResultTable } from '../../sql-challenge/ui/ResultTable';
 import { SqlCode } from '../../sql-challenge/ui/SqlCode';
-import { chamThuThach, chaySql, xemDongDau, type KetQuaChay, type KetQuaCham } from '../engine/sql-mvp';
+import { track } from '../../shared/telemetry/track';
+import { CodeText } from '../../shared/ui/CodeText';
+import { tenNguoiNoi } from '../engine/may';
+import { chamThuThach, chaySql, phanUngSauKhiChay, xemDongDau, type KetQuaChay, type KetQuaCham } from '../engine/sql-mvp';
+import { tachWhere, type CachNhap, type WhereTach } from '../engine/trinh-dung';
+import { docCachNhap, ghiCachNhap } from './cach-nhap';
+import { NhapCauMvp, type GiayNhoDung } from './NhapCauMvp';
+import { SoiDieuKienMvp } from './SoiDieuKienMvp';
 import { TheHoSo } from './TheHoSo';
 import { TrangChiLinh } from './TrangSoMvp';
 
@@ -25,12 +34,23 @@ export interface ManThuThachMvpProps {
   dienTen: (t: string) => string;
   /** Người chơi bấm "Lưu vào hồ sơ" sau khi đúng. */
   onXong: () => void;
+  /** Giá trị giấy nhớ / bằng chứng đang có trong hồ sơ (kéo thả, bấm khối). */
+  giayNho?: GiayNhoDung[];
 }
 
 type XemBang = { bang: string; kq: KetQuaChay | null };
 
-export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong }: ManThuThachMvpProps) {
+export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong, giayNho = [] }: ManThuThachMvpProps) {
   const [sql, setSql] = useState<string>(mode === 'fix-query' ? (the.truyVanNapSan ?? '') : '');
+  const [cachNhap, setCachNhap] = useState<CachNhap>(() => docCachNhap());
+  const doiCach = useCallback(
+    (c: CachNhap) => {
+      setCachNhap(c);
+      ghiCachNhap(c);
+      track({ type: 'mvp_input_mode', challengeId: the.id, mode: c });
+    },
+    [the.id],
+  );
   const [cham, setCham] = useState<KetQuaCham | null>(null);
   const [dangChay, setDangChay] = useState(false);
   const [soLan, setSoLan] = useState(0);
@@ -38,6 +58,9 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong }: ManTh
   const [xem, setXem] = useState<XemBang | null>(null);
   const [traSo, setTraSo] = useState<string | null>(null);
   const [luuRoi, setLuuRoi] = useState(false);
+  /** Câu vừa chạy đã tách WHERE (để "Xem từng điều kiện"); `soi` = đang mở bảng soi. */
+  const [daChay, setDaChay] = useState<WhereTach | null>(null);
+  const [soi, setSoi] = useState(false);
   const ketQuaRef = useRef<HTMLElement>(null);
   const banRon = useRef(false);
 
@@ -60,13 +83,23 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong }: ManTh
     try {
       const kq = await chamThuThach(duLieu, sql, the.sqlChuan);
       setCham(kq);
+      setDaChay(kq.trangThai === 'loi' ? null : tachWhere(sql));
+      setSoi(false);
+      track({
+        type: 'mvp_query_run',
+        challengeId: the.id,
+        mode: mode === 'fix-query' ? 'go' : cachNhap,
+        rows: kq.trangThai === 'loi' ? null : kq.so.soDongNguoiChoi,
+        error: kq.trangThai === 'loi',
+        correct: kq.trangThai === 'dung',
+      });
       setSoLan((n) => n + 1);
-      setTimeout(() => ketQuaRef.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 0);
+      setTimeout(() => ketQuaRef.current?.scrollIntoView?.({ block: 'nearest', behavior: 'smooth' }), 0);
     } finally {
       banRon.current = false;
       setDangChay(false);
     }
-  }, [duLieu, sql, the.sqlChuan]);
+  }, [duLieu, sql, the.sqlChuan, the.id, mode, cachNhap]);
 
   const xemDong = useCallback(
     (bang: string) => {
@@ -113,27 +146,42 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong }: ManTh
             ) : null}
           </header>
           <div className="chal-sql mvp-chal__sql" data-region="sql">
-            <label className="chal-sql__title" htmlFor="mvp-chal-sql">
-              {mode === 'fix-query' ? 'Câu SQL của Quân — sửa rồi chạy' : 'Câu SQL'}
-            </label>
-            <textarea
-              id="mvp-chal-sql"
-              className="chal-sql__editor"
-              spellCheck={false}
-              autoCapitalize="off"
-              autoCorrect="off"
-              rows={5}
-              value={sql}
-              disabled={dung || !duLieu}
-              placeholder="SELECT … FROM … WHERE …"
-              onChange={(e) => setSql(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
-                  e.preventDefault();
-                  void chay();
-                }
-              }}
-            />
+            {mode === 'challenge' && duLieu ? (
+              <NhapCauMvp
+                duLieu={duLieu}
+                sqlChuan={the.sqlChuan}
+                giayNho={giayNho}
+                cachNhap={cachNhap}
+                onDoiCach={doiCach}
+                onSql={setSql}
+                onChay={() => void chay()}
+                khoa={dung}
+              />
+            ) : (
+              <>
+              <label className="chal-sql__title" htmlFor="mvp-chal-sql">
+                {mode === 'fix-query' ? 'Câu SQL của Quân — sửa rồi chạy' : 'Câu SQL'}
+              </label>
+              <textarea
+                id="mvp-chal-sql"
+                className="chal-sql__editor"
+                spellCheck={false}
+                autoCapitalize="off"
+                autoCorrect="off"
+                rows={5}
+                value={sql}
+                disabled={dung || !duLieu}
+                placeholder="SELECT … FROM … WHERE …"
+                onChange={(e) => setSql(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                    e.preventDefault();
+                    void chay();
+                  }
+                }}
+              />
+              </>
+            )}
             <div className="chal-runbar mvp-chal__runbar">
               <button type="button" className="btn btn--primary chal-run" onClick={() => void chay()} disabled={dung || dangChay || !duLieu || sql.trim() === ''}>
                 {dangChay ? 'Đang chạy…' : 'Chạy truy vấn'}
@@ -143,10 +191,17 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong }: ManTh
           </div>
           <section ref={ketQuaRef} className="result mvp-chal__ketqua" aria-live="polite" aria-label="Kết quả">
             {!duLieu ? <p className="game__error">Vụ này chưa có bộ dữ liệu (du-lieu.md) nên không chạy được.</p> : null}
+            {cham
+              ? phanUngSauKhiChay(the, cham).map((l, i) => (
+                  <p key={i} className="mvp-chal__phanung" data-speaker={l.speaker}>
+                    <strong>{tenNguoiNoi(kb, l.speaker) || 'Người kể'}:</strong> <CodeText text={dienTen(l.text)} />
+                  </p>
+                ))
+              : null}
             {cham?.trangThai === 'loi' ? (
               <p className="mvp-chal__loi">
                 Chưa chạy được: {cham.chay.thongDiep}
-                {cham.chay.loai === 'khong-co-cot' ? ' — xem lại tên cột ở "Mô tả các bảng".' : ''}
+                {cham.chay.loai === 'khong-co-cot' ? ' — máy hiểu chữ không có nháy là tên một cột; bảng không có cột nào tên như vậy.' : ''}
                 {cham.chay.loai === 'khong-co-bang' ? ' — xem lại tên bảng ở "Mô tả các bảng".' : ''}
               </p>
             ) : null}
@@ -159,30 +214,37 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong }: ManTh
                     </>
                   ) : (
                     <>
-                      Ra <strong>{cham.so.soDongNguoiChoi} dòng</strong>, chưa khớp kết quả cần tìm.
+                      Ra <strong>{cham.so.soDongNguoiChoi} dòng</strong>.
                       {cham.so.cotThieu.length > 0 ? (
                         <>
-                          {' '}Còn thiếu cột: {cham.so.cotThieu.map((c) => <code key={c}>{c}</code>)}.
+                          {' '}Kết quả chưa có cột: {cham.so.cotThieu.map((c) => <code key={c}>{c}</code>)}.
                         </>
                       ) : cham.so.soDongNguoiChoi === 0 ? (
-                        ' Ra 0 dòng thì xem lại dữ liệu trước khi xem lại câu hỏi.'
-                      ) : cham.so.soDongNguoiChoi > cham.so.soDongChuan ? (
-                        ' Hình như đang lấy rộng hơn cần thiết — điều kiện đã đủ chặt chưa?'
-                      ) : (
-                        ' Hình như đang lọc chặt quá hoặc nhầm cột.'
-                      )}
+                        ' 0 dòng là một thông tin: không dòng nào thỏa điều kiện. Xem lại dữ liệu đang lưu thế nào.'
+                      ) : null}
                       {soLan >= 2 ? ' Bí thì tra sổ chị Linh (bên phải).' : ''}
                     </>
                   )}
                 </p>
                 <ResultTable columns={cham.chay.cot} rows={cham.chay.dong} caption="Kết quả truy vấn của bạn" reveal />
+                {daChay && duLieu ? (
+                  soi ? (
+                    <SoiDieuKienMvp duLieu={duLieu} where={daChay} onDong={() => setSoi(false)} />
+                  ) : (
+                    <button type="button" className="btn btn--small mvp-soi__nut" onClick={() => setSoi(true)}>
+                      🔍 Xem từng điều kiện
+                    </button>
+                  )
+                ) : null}
               </>
             ) : null}
             {dung ? (
               <div className="mvp-chal__luu">
-                <p className="mvp-chal__vatchung">
-                  <strong>{dienTen(the.vatChung.title)}</strong> — {dienTen(the.vatChung.description)}
-                </p>
+                {the.vatChung ? (
+                  <p className="mvp-chal__vatchung">
+                    <strong>{dienTen(the.vatChung.title)}</strong> — {dienTen(the.vatChung.description)}
+                  </p>
+                ) : null}
                 <button
                   type="button"
                   className="btn btn--primary"
@@ -194,7 +256,7 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong }: ManTh
                   }}
                   autoFocus
                 >
-                  Lưu vào hồ sơ và đi tiếp
+                  {the.vatChung ? 'Lưu vào hồ sơ và đi tiếp' : 'Đi tiếp'}
                 </button>
               </div>
             ) : null}

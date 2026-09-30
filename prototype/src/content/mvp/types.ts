@@ -46,6 +46,17 @@ export interface NhanVatMvp {
   bieuCam: string[];
   xuatHienTu: MocMvp;
   chiQuaLoiKe: boolean;
+  /** Thẻ giới thiệu (màn "Nhân vật mới" khi nói lần đầu, tab Nhân vật của hồ sơ); `null` = không có. */
+  gioiThieu: GioiThieuNhanVatMvp | null;
+}
+
+/** Chữ người chơi thấy về một nhân vật — viết sao cho không lộ tình tiết (nhan-vat.md, đặc tả §18.3). */
+export interface GioiThieuNhanVatMvp {
+  danhXung: string;
+  nam: string | null;
+  nganh: string | null;
+  cauNoi: string;
+  loi: string;
 }
 
 export interface CanhMvp {
@@ -96,6 +107,13 @@ export interface DiaDiemMvp {
 export interface NgayMvp {
   so: number;
   ten: string;
+  /**
+   * `dia-diem`: ngày chọn địa điểm × khung giờ (dữ kiện chính, buổi tối — QĐ-086).
+   * `theo-truyen` (chương 1, ĐÃ CHỐT C 30/09/2026): chạy MỘT chuỗi `chuoi` từ đầu tới cuối, không bản đồ, không khung giờ;
+   * chuỗi hết nút → hết ngày. `duKienChinh`, `buoiToi` rỗng.
+   */
+  kieu: 'dia-diem' | 'theo-truyen';
+  chuoi: string | null;
   duKienChinh: string;
   moNgay: string | null;
   buoiToi: string;
@@ -131,11 +149,24 @@ export type NutMvp =
   | { type: 'consequence'; hauQua: HauQuaMvp[] }
   | { type: 'branch'; id: string; asker: { speaker: string; text: string }; choices: { id: string; text: string; khi: DieuKienMvp | null; hauQua: HauQuaMvp[] }[] }
   | { type: 'notebook-lookup'; trang: string; phan: string }
-  | { type: 'notebook-copy'; trang: string }
+  /** `[GHI SỔ <trang>]` (QĐ-092): tự thêm dòng "Vào sổ cá nhân" của trang vào sổ cá nhân — không hỏi, máy tự chạy qua. */
+  | { type: 'notebook-note'; trang: string }
   | { type: 'create-character'; truong: 'ten' | 'nganh'; asker: LoiMvp; xucXac: string | null; luaChon: string[] }
   | { type: 'trial-filter'; id: string; sql: string; soDong: number; chon: { cot: string; giaTri: string } }
   | { type: 'save-evidence'; evidenceId: string }
-  | { type: 'ending-branch' };
+  | { type: 'ending-branch' }
+  | { type: 'explore'; id: string; diem: DiemKhamPhaMvp[] };
+
+/**
+ * Một chỗ bấm được của `[KHÁM PHÁ]` (đặc tả §18.6): vật/người đặt trên nền cảnh của chuỗi, bấm → chạy `chuoi`; chuỗi hết
+ * nút thì quay về cảnh khám phá. `sau`: chỉ hiện khi mọi chuỗi trong danh sách đã xem. `nhan`: nhãn người chơi thấy
+ * (không có → dựng từ sprite, xem `nhan-cho-xem.ts`).
+ */
+export interface DiemKhamPhaMvp extends AnhDuKienMvp {
+  chuoi: string;
+  sau: string[];
+  nhan: string | null;
+}
 
 export interface ChuoiMvp {
   id: string;
@@ -155,8 +186,18 @@ export interface TheThuThachMvp {
   soDongKyVong: number | null;
   sqlChuan: string;
   truyVanNapSan: string | null;
-  vatChung: { id: string; title: string; description: string };
+  /** Lời nhân vật sau mỗi lần chạy, theo kết quả (dòng "Khi …" của thẻ — tools/noi-dung/phan-ung-mvp.ts). */
+  phanUng: PhanUngMvp[];
+  /** Bằng chứng lưu vào hồ sơ khi xong; `null` = bài giữa chuỗi phòng máy, không lưu gì (QĐ-092). */
+  vatChung: { id: string; title: string; description: string; giaTri: string[] } | null;
   ghiChu: string[];
+}
+
+export type KhiChayMvp = { kind: 'so-dong'; n: number } | { kind: 'loi-cot' } | { kind: 'loi' } | { kind: 'dung' };
+
+export interface PhanUngMvp {
+  khi: KhiChayMvp;
+  loi: LoiMvp[];
 }
 
 export interface TheHoSoMvp {
@@ -173,7 +214,7 @@ export interface TrangSoMvp {
   loai: 'cú pháp' | 'tâm đắc' | 'lỗi thường gặp';
   trangChiLinh: string[];
   haVy: LoiMvp[];
-  chonDoanCode: LuaChonMvp[] | null;
+  /** Dòng vào sổ cá nhân khi kịch bản `[GHI SỔ]` trang này. */
   chuThich: string | null;
 }
 

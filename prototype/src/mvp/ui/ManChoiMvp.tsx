@@ -12,6 +12,9 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { LoiMvp } from '../../content/mvp/types';
 import { isFacilitatorMode } from '../../app/facilitator-mode';
 import { isEffectId } from '../../shared/ids';
+import { AudioSettingsModal } from '../../shared/audio/AudioSettingsModal';
+import { useAudioStore } from '../../shared/audio/audio-store';
+import { soundEngine } from '../../shared/audio/sound-engine';
 import { DialogBox } from '../../shared/ui/DialogBox';
 import { MultipleChoice } from '../../shared/ui/MultipleChoice';
 import { CodeText } from '../../shared/ui/CodeText';
@@ -19,16 +22,19 @@ import { BacklogModal } from '../../shared/vn/BacklogModal';
 import { useVnStore } from '../../shared/vn/vn-store';
 import { ObjectionEffect } from '../../story/ui/ObjectionEffect';
 import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
-import { dienTen as dienTenMay, khungNhin, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
+import { canGioiThieu, dienTen as dienTenMay, khungNhin, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
+import { giaTriTuHoSo } from '../engine/giay-nho';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import { nhayToi, type MaDiemNhayMvp } from '../engine/tu-choi';
 import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
 import { BAN_DO_MVP } from './ban-do-mvp';
 import { BangQuanSatMvp } from './BangQuanSatMvp';
 import { BanDoMvp } from './BanDoMvp';
+import { GioiThieuMvp } from './GioiThieuMvp';
 import { HoSoMvp, type TabHoSoMvp } from './HoSoMvp';
 import { HudMvp } from './HudMvp';
 import { KetMvp } from './KetMvp';
+import { KhamPhaMvp } from './KhamPhaMvp';
 import { LocThuMvp } from './LocThuMvp';
 import { LuuNapMvp } from './LuuNapMvp';
 import { ManChieuMvp } from './ManChieuMvp';
@@ -37,7 +43,7 @@ import { NoiMvp } from './NoiMvp';
 import { SanKhauMvp } from './SanKhauMvp';
 import { TaiLieuMvp } from './TaiLieuMvp';
 import { TaoNhanVatMvp } from './TaoNhanVatMvp';
-import { ChepSoMvp, TraSoMvp } from './TrangSoMvp';
+import { TraSoMvp } from './TrangSoMvp';
 
 export interface ManChoiMvpProps {
   onVeTieuDe: () => void;
@@ -67,6 +73,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const [kho, setKho] = useState<TabHoSoMvp | null>(null);
   const [lichSuMo, setLichSuMo] = useState(false);
   const [luuNap, setLuuNap] = useState<'save' | 'load' | null>(null);
+  const [caiDat, setCaiDat] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   /** Nơi đang đứng trong ngày (`null` = bản đồ). Gắn với ngày: sang ngày khác coi như về bản đồ. */
   const [dangO, setDangO] = useState<{ ngay: number; noi: string } | null>(null);
@@ -74,6 +81,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const viewportMode = useVnStore((k) => k.viewportMode);
   const setSkipMode = useVnStore((k) => k.setSkipMode);
   const clearBacklog = useVnStore((k) => k.clearBacklog);
+  const bgmEnabled = useAudioStore((k) => k.bgmEnabled);
 
   useEffect(() => {
     if (!s) batDau();
@@ -84,21 +92,57 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     setTimeout(() => setToast((cur) => (cur === msg ? null : cur)), 2800);
   }, []);
 
-  // Báo khi hồ sơ có thêm mục.
+  // Nhạc nền như prototype: trình duyệt chỉ cho phát âm thanh sau thao tác đầu tiên của người chơi.
+  useEffect(() => {
+    if (!bgmEnabled) {
+      soundEngine.stopBgm();
+      return;
+    }
+    const start = (): void => soundEngine.startBgm();
+    window.addEventListener('pointerdown', start, { once: true });
+    window.addEventListener('keydown', start, { once: true });
+    return () => {
+      window.removeEventListener('pointerdown', start);
+      window.removeEventListener('keydown', start);
+    };
+  }, [bgmEnabled]);
+  useEffect(() => () => soundEngine.stopBgm(), []);
+
+  // Báo khi hồ sơ có thêm mục (kèm tiếng chuông như prototype).
   const demTruoc = useRef(s ? soHoSo(s) : 0);
   useEffect(() => {
     const dem = s ? soHoSo(s) : 0;
-    if (dem > demTruoc.current) baoToast('Hồ sơ có thêm mục mới.');
+    if (dem > demTruoc.current) {
+      soundEngine.playSfx('clue_unlock');
+      baoToast('Hồ sơ có thêm mục mới.');
+    }
     demTruoc.current = dem;
   }, [s, baoToast]);
+  // Sổ cá nhân tự có dòng mới ([GHI SỔ], QĐ-092) → báo, để người chơi biết mà mở xem.
+  const soTrangTruoc = useRef(s ? s.soTay.length : 0);
+  useEffect(() => {
+    const dem = s ? s.soTay.length : 0;
+    if (dem > soTrangTruoc.current) {
+      const moi = s ? kb.soTay[s.soTay[dem - 1] ?? ''] : undefined;
+      soundEngine.playSfx('page');
+      baoToast(moi?.chuThich ? `Sổ cá nhân có dòng mới: ${moi.chuThich.replace(/`/g, '')}` : 'Sổ cá nhân có dòng mới.');
+    }
+    soTrangTruoc.current = dem;
+  }, [s, kb, baoToast]);
 
   const kn: KhungNhinMvp | null = s ? khungNhin(kb, s) : null;
   const loaiKn = kn?.kind;
   useEffect(() => {
     if (loaiKn !== 'line' && loaiKn !== 'feedback') setSkipMode(false);
   }, [loaiKn, setSkipMode]);
+  // Tiếng "rung" khi nhân vật sững sờ (như prototype).
+  const bieuCamNoi = kn?.kind === 'line' || kn?.kind === 'feedback' ? kn.loi.expression : undefined;
+  useEffect(() => {
+    if (bieuCamNoi === 'stunned') soundEngine.playSfx('shake');
+  }, [bieuCamNoi]);
 
   const tiep = useCallback(() => hanhDong({ type: 'tiep' }), [hanhDong]);
+  const dongGioiThieu = useCallback((nhanVat: string) => hanhDong({ type: 'da-gioi-thieu', nhanVat }), [hanhDong]);
   const dongKho = useCallback(() => setKho(null), []);
   const choiLai = useCallback(() => {
     clearBacklog();
@@ -108,7 +152,9 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
 
   if (!s || !kn) return null;
   const dienTen = (t: string): string => dienTenMay(kb, s, t);
-  const modalMo = kho !== null || lichSuMo || luuNap !== null;
+  // Màn "Nhân vật mới" (như prototype): nhân vật có thẻ giới thiệu nói lần đầu → hiện trước lời thoại.
+  const gioiThieu = canGioiThieu(kb, s, kn);
+  const modalMo = kho !== null || lichSuMo || luuNap !== null || caiDat || gioiThieu !== null;
   const loiHienTai: { speaker: string; expression?: string } | null =
     kn.kind === 'line' || kn.kind === 'feedback'
       ? kn.loi
@@ -149,6 +195,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     onOpenBacklog: () => setLichSuMo(true),
     onOpenSave: () => setLuuNap('save'),
     onOpenLoad: () => setLuuNap('load'),
+    onOpenAudio: () => setCaiDat(true),
   };
 
   const noiDung = (() => {
@@ -244,6 +291,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             mode={kn.kind}
             dienTen={dienTen}
             onXong={() => hanhDong({ type: 'xong-thu-thach', thuThach: kn.thuThach.id })}
+            giayNho={giaTriTuHoSo(kb, s.hoSo)}
           />
         );
       case 'effect':
@@ -252,8 +300,6 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         return <ManChieuMvp kb={kb} duLieu={kb.duLieu} nut={kn.nut} onTiep={tiep} />;
       case 'notebook-lookup':
         return <TraSoMvp kb={kb} trang={kn.trang} dienTen={dienTen} onTiep={tiep} />;
-      case 'notebook-copy':
-        return <ChepSoMvp kb={kb} trang={kn.trang} dienTen={dienTen} lanThu={kn.lanThu} tenNguoiNoi={(sp) => tenNguoiNoi(kb, sp)} onChon={(id) => hanhDong({ type: 'chon', luaChon: id })} />;
       case 'trial-filter':
         return <LocThuMvp duLieu={kb.duLieu} nut={kn.nut} lanThu={kn.lanThu} onChon={(giaTri) => hanhDong({ type: 'chon-o', giaTri })} />;
       case 'create-character':
@@ -267,6 +313,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             onChonNganh={(nganh) => hanhDong({ type: 'chon-nganh', nganh })}
           />
         );
+      case 'explore':
+        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} />;
       case 'end':
         return <KetMvp ketQua={kn.ketQua} onChoiLai={choiLai} onVeTieuDe={onVeTieuDe} />;
       case 'error':
@@ -280,8 +328,9 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   })();
 
   const game = (
-    <div className={`game mvp-game${laDoc ? ' game--portrait' : ''}`}>
+    <div className={`game mvp-game${laDoc ? ' game--portrait' : ''}${gioiThieu ? ' game--debut' : ''}`}>
       {toast ? <div className="vn-toast" role="status">{toast}</div> : null}
+      {gioiThieu ? <GioiThieuMvp key={gioiThieu} kb={kb} nhanVat={gioiThieu} onDong={dongGioiThieu} /> : null}
       <HudMvp
         kb={kb}
         s={s}
@@ -292,6 +341,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         onMoLuu={() => setLuuNap('save')}
         onMoNap={() => setLuuNap('load')}
         onMoLichSu={() => setLichSuMo(true)}
+        onMoCaiDat={() => setCaiDat(true)}
         onBatDauLai={choiLai}
         onVeTieuDe={onVeTieuDe}
       />
@@ -302,7 +352,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         speaker={loiHienTai?.speaker}
         expression={loiHienTai?.expression}
         shaking={rung}
-        coDan={kn.kind !== 'chon-dia-diem'}
+        coDan={kn.kind !== 'chon-dia-diem' && kn.kind !== 'explore'}
         tenNguoiChoi={s.tenNguoiChoi}
       >
         {noiDung}
@@ -315,6 +365,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           soTay={s.soTay}
           tenNguoiChoi={s.tenNguoiChoi}
           nganh={s.nganh}
+          daGap={s.daGioiThieu ?? []}
           tab={kho}
           onDoiTab={setKho}
           dienTen={dienTen}
@@ -322,6 +373,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         />
       ) : null}
       <BacklogModal open={lichSuMo} onClose={() => setLichSuMo(false)} />
+      <AudioSettingsModal open={caiDat} onClose={() => setCaiDat(false)} />
       {luuNap ? (
         <LuuNapMvp
           mode={luuNap}

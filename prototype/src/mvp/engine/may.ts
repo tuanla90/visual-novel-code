@@ -12,6 +12,8 @@
  *     tốn thêm `tonKhung.vao`; đi lại giữa địa điểm KHÔNG tốn khung.
  *   - Hết khung mà chưa có dữ kiện chính → chuỗi "Cuối ngày" (`buoiToi`) dẫn tới dữ kiện chính; xong → hết ngày.
  *     Có dữ kiện chính rồi mà hết khung → hết ngày. Người chơi cũng được kết thúc ngày sớm.
+ *   - Ngày theo truyện (`{ngày: n · theo truyện}`, chương 1): chạy một chuỗi, không bản đồ, không khung giờ; chuỗi hết
+ *     nút (ngữ cảnh `truyen`) → hết ngày. Chỗ bấm là `[KHÁM PHÁ]`, lựa chọn là `[RẼ NHÁNH]` trong chuỗi.
  *   - Ngày họp: `[HỎI … · trừ uy tín]` sai → mất 1 vạch, lời `[KHI MẤT UY TÍN]`, chọn lại; hết vạch → lời `[HẾT VẠCH]`
  *     rồi hoãn: quay lại đầu chuỗi ngày họp với đủ vạch (cách đơn giản nhất — xem báo cáo gói).
  *   - `[RẼ KẾT]`: kết thật nếu `[ĐIỀU KIỆN]` đầu chuỗi kết thật thỏa, không thì kết thường.
@@ -22,6 +24,7 @@
 import type {
   ChuoiMvp,
   DiaDiemMvp,
+  DiemKhamPhaMvp,
   DieuKienMvp,
   DuKienMvp,
   HauQuaMvp,
@@ -31,7 +34,7 @@ import type {
   NutMvp,
   TheThuThachMvp,
 } from '../../content/mvp/types';
-import type { BoiCanhChuoi, TrangThaiMvp } from './trang-thai';
+import type { BoiCanhChuoi, KhamPhaMvp, TrangThaiMvp } from './trang-thai';
 
 /**
  * Tên dự phòng khi trạng thái chưa có tên (chưa qua câu hỏi tên, hay ô lưu hỏng). Không dùng trên đường chạy thường:
@@ -114,7 +117,11 @@ export type HanhDongMvp =
   /** `[TẠO NHÂN VẬT ten]`: tên người chơi gõ (hay xúc xắc điền); máy kiểm lại bằng `kiemTen`, sai thì đứng yên. */
   | { type: 'dat-ten'; ten: string }
   /** `[TẠO NHÂN VẬT nganh]`: một ngành trong `lựa chọn:` của nút. */
-  | { type: 'chon-nganh'; nganh: string };
+  | { type: 'chon-nganh'; nganh: string }
+  /** `[KHÁM PHÁ]`: bấm một chỗ đang hiện, chưa xem (khóa = chuỗi của chỗ đó). */
+  | { type: 'xem-diem'; chuoi: string }
+  /** Đóng màn "Nhân vật mới" của một nhân vật (không đổi con trỏ). */
+  | { type: 'da-gioi-thieu'; nhanVat: string };
 
 // ---------- Khung nhìn ----------
 
@@ -133,6 +140,12 @@ export interface DiaDiemHienMvp {
   duKien: DuKienHienMvp[];
 }
 
+/** Một chỗ bấm đang hiện của `[KHÁM PHÁ]` (đã đủ "sau:"). */
+export interface DiemKhamPhaHienMvp {
+  diem: DiemKhamPhaMvp;
+  daXem: boolean;
+}
+
 export type KhungNhinMvp =
   | { kind: 'line'; loi: LoiMvp; display?: 'card' }
   | { kind: 'feedback'; loi: LoiMvp; viTri: number; tong: number }
@@ -145,9 +158,9 @@ export type KhungNhinMvp =
   | { kind: 'effect'; effectId: string }
   | { kind: 'projector'; nut: Extract<NutMvp, { type: 'projector' }> }
   | { kind: 'notebook-lookup'; trang: string; phan: string }
-  | { kind: 'notebook-copy'; trang: string; lanThu: number }
   | { kind: 'trial-filter'; nut: Extract<NutMvp, { type: 'trial-filter' }>; lanThu: number }
   | { kind: 'create-character'; nut: Extract<NutMvp, { type: 'create-character' }> }
+  | { kind: 'explore'; nut: Extract<NutMvp, { type: 'explore' }>; diem: DiemKhamPhaHienMvp[] }
   | { kind: 'end'; ketQua: 'that' | 'thuong' }
   | { kind: 'error'; message: string };
 
@@ -274,10 +287,12 @@ export function taoTrangThai(kb: KichBanMvp, batDauLuc: number = Date.now()): Tr
     daVaoHomNay: [],
     canh: timChuoi(kb, kb.lich.chuoiDau)?.canh ?? kb.canh[0]?.id ?? '',
     conTro: { chuoi: kb.lich.chuoiDau, nut: 0, boiCanh: 'mo-dau' },
+    khamPha: null,
     duKienDangLam: null,
     thuThachDangLam: null,
     duKienDaLam: [],
     hoSo: { manhMoi: [], taiLieu: [], bangChung: [] },
+    daGioiThieu: [],
     co: [],
     soTay: [],
     thuThachXong: [],
@@ -296,8 +311,31 @@ export function taoTrangThai(kb: KichBanMvp, batDauLuc: number = Date.now()): Tr
 
 // ---------- Chuyển cảnh, ngày ----------
 
+/** Sang chuỗi khác (`[ĐI TỚI]`, "đi tới", rẽ kết): rời cảnh `[KHÁM PHÁ]` đang mở, nếu có. */
 function nhayToi(s: TrangThaiMvp, chuoi: string, boiCanh: BoiCanhChuoi): TrangThaiMvp {
-  return { ...s, conTro: { chuoi, nut: 0, boiCanh }, hoiDap: null };
+  return { ...s, conTro: { chuoi, nut: 0, boiCanh }, hoiDap: null, khamPha: null };
+}
+
+// ---------- Khám phá ----------
+
+function nutKhamPha(kb: KichBanMvp, kp: KhamPhaMvp): Extract<NutMvp, { type: 'explore' }> | undefined {
+  const n = timChuoi(kb, kp.veLai.chuoi)?.nodes[kp.veLai.nut];
+  return n?.type === 'explore' ? n : undefined;
+}
+
+/** Chỗ bấm hiện khi mọi chuỗi ở "sau:" đã xem. */
+export function diemDangHien(nut: Extract<NutMvp, { type: 'explore' }>, daXem: readonly string[]): DiemKhamPhaHienMvp[] {
+  return nut.diem.filter((d) => d.sau.every((x) => daXem.includes(x))).map((d) => ({ diem: d, daXem: daXem.includes(d.chuoi) }));
+}
+
+/** Chuỗi của một chỗ bấm hết nút: về cảnh khám phá; đã xem hết mọi chỗ → qua nút `[KHÁM PHÁ]`, chạy tiếp chuỗi chứa nó. */
+function veKhamPha(kb: KichBanMvp, s: TrangThaiMvp, kp: KhamPhaMvp): TrangThaiMvp {
+  const nut = nutKhamPha(kb, kp);
+  if (!nut) return loi({ ...s, khamPha: null }, `Không tìm thấy [KHÁM PHÁ] ở "${kp.veLai.chuoi}" #${kp.veLai.nut}.`);
+  if (nut.diem.every((d) => kp.daXem.includes(d.chuoi))) {
+    return { ...s, conTro: { ...kp.veLai, nut: kp.veLai.nut + 1 }, hoiDap: null, khamPha: null };
+  }
+  return { ...s, conTro: { ...kp.veLai }, hoiDap: null };
 }
 
 function loi(s: TrangThaiMvp, message: string): TrangThaiMvp {
@@ -319,6 +357,7 @@ function batDauNgay(kb: KichBanMvp, s: TrangThaiMvp, so: number): TrangThaiMvp {
     conTro: ngay.moNgay ? { chuoi: ngay.moNgay, nut: 0, boiCanh: 'mo-ngay' } : null,
     nhiemVu: null,
   };
+  if (ngay.kieu === 'theo-truyen') return { ...s, conTro: ngay.chuoi ? { chuoi: ngay.chuoi, nut: 0, boiCanh: 'truyen' } : null };
   return s;
 }
 
@@ -391,6 +430,8 @@ function sauHien(kb: KichBanMvp, s: TrangThaiMvp, viec: 'sau-du-kien' | 'sau-toi
 
 /** Chuỗi hết nút mà không `[ĐI TỚI]`. */
 function hetChuoi(kb: KichBanMvp, s: TrangThaiMvp, boiCanh: BoiCanhChuoi): TrangThaiMvp {
+  const kp = s.khamPha;
+  if (kp && s.conTro && s.conTro.chuoi !== kp.veLai.chuoi) return veKhamPha(kb, s, kp);
   switch (boiCanh) {
     case 'mo-dau':
       return batDauNgay(kb, s, kb.lich.ngay[0]?.so ?? 1);
@@ -400,6 +441,8 @@ function hetChuoi(kb: KichBanMvp, s: TrangThaiMvp, boiCanh: BoiCanhChuoi): Trang
       return s.duKienDangLam ? hoanTatDuKien(kb, s, s.duKienDangLam, 'sau-du-kien') : kiemHetKhung(kb, s);
     case 'toi':
       return s.duKienDangLam ? hoanTatDuKien(kb, s, s.duKienDangLam, 'sau-toi') : ketThucNgay(kb, s);
+    case 'truyen':
+      return ketThucNgay(kb, s);
     case 'hop':
       return loi(s, `Chuỗi "${s.conTro?.chuoi ?? '?'}" của ngày họp hết nút mà không [ĐI TỚI] hay [RẼ KẾT].`);
     case 'ket':
@@ -422,9 +465,9 @@ function canNguoiChoi(nut: NutMvp): boolean {
     case 'effect':
     case 'projector':
     case 'notebook-lookup':
-    case 'notebook-copy':
     case 'trial-filter':
     case 'create-character':
+    case 'explore':
     case 'end':
       return true;
     default:
@@ -451,13 +494,20 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
     const ht = nutHienTai(kb, s);
     if ('loi' in ht) return loi(s, ht.loi);
     const { chuoi, nut } = ht;
-    const boiCanh = s.conTro.boiCanh;
+    const conTro = s.conTro;
+    const boiCanh = conTro.boiCanh;
     if (s.canh !== chuoi.canh) s = { ...s, canh: chuoi.canh };
     if (nut === undefined) {
       s = hetChuoi(kb, s, boiCanh);
       continue;
     }
-    if (canNguoiChoi(nut)) return s;
+    if (canNguoiChoi(nut)) {
+      if (nut.type !== 'explore') return s;
+      // Tới nút [KHÁM PHÁ] lần đầu → mở cảnh (chưa xem chỗ nào); quay về từ chuỗi của một chỗ bấm → giữ danh sách đã xem.
+      const kp = s.khamPha;
+      const cungNut = kp && kp.veLai.chuoi === conTro.chuoi && kp.veLai.nut === conTro.nut;
+      return cungNut ? s : { ...s, khamPha: { veLai: { ...conTro }, daXem: [] } };
+    }
     switch (nut.type) {
       case 'task':
         s = tienNut({ ...s, nhiemVu: nut.text });
@@ -472,6 +522,9 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
       }
       case 'save-evidence':
         s = tienNut(luuBangChung(s, nut.evidenceId));
+        break;
+      case 'notebook-note':
+        s = tienNut({ ...s, soTay: them(s.soTay, nut.trang) });
         break;
       case 'ending-branch': {
         const ket = kb.lich.ket;
@@ -561,12 +614,12 @@ export function khungNhin(kb: KichBanMvp, s: TrangThaiMvp): KhungNhinMvp {
       return { kind: 'projector', nut };
     case 'notebook-lookup':
       return { kind: 'notebook-lookup', trang: nut.trang, phan: nut.phan };
-    case 'notebook-copy':
-      return { kind: 'notebook-copy', trang: nut.trang, lanThu: lanThu(nut.trang) };
     case 'trial-filter':
       return { kind: 'trial-filter', nut, lanThu: lanThu(nut.id) };
     case 'create-character':
       return { kind: 'create-character', nut };
+    case 'explore':
+      return { kind: 'explore', nut, diem: diemDangHien(nut, s.khamPha?.daXem ?? []) };
     case 'end':
       return { kind: 'end', ketQua: s.ketQua ?? (s.conTro.chuoi === kb.lich.ket?.that ? 'that' : 'thuong') };
     default:
@@ -581,7 +634,7 @@ function batDauPhanHoi(
   kb: KichBanMvp,
   s: TrangThaiMvp,
   id: string,
-  nguon: 'question' | 'line-pick' | 'notebook-copy',
+  nguon: 'question' | 'line-pick',
   dung: boolean,
   phanHoi: LoiMvp[],
   truVach: boolean,
@@ -614,12 +667,15 @@ function ketThucPhanHoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
   if (!hd) return s;
   if (hd.hetVach) return batDauHop(kb, { ...s, hoiDap: null });
   if (!hd.dungRoi) return { ...s, hoiDap: null };
-  if (hd.nguon === 'notebook-copy') s = { ...s, soTay: them(s.soTay, hd.id) };
   return tienNut({ ...s, hoiDap: null });
 }
 
 export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangThaiMvp {
   if (s.loi) return s;
+  if (hd.type === 'da-gioi-thieu') {
+    const da = s.daGioiThieu ?? [];
+    return da.includes(hd.nhanVat) ? s : { ...s, daGioiThieu: [...da, hd.nhanVat] };
+  }
   const kn = khungNhin(kb, s);
   let moi: TrangThaiMvp | null = null;
 
@@ -680,11 +736,6 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
         if (!c) return s;
         const kq = apHauQua(s, c.hauQua);
         moi = kq.daNhay ? kq.s : tienNut(kq.s);
-      } else if (kn.kind === 'notebook-copy') {
-        const trang = kb.soTay[kn.trang];
-        const c = trang?.chonDoanCode?.find((x) => x.id === hd.luaChon);
-        if (!trang || !c) return s;
-        moi = batDauPhanHoi(kb, s, kn.trang, 'notebook-copy', c.correct, c.feedback, false);
       } else {
         return s;
       }
@@ -706,7 +757,7 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
     }
     case 'xong-thu-thach': {
       if ((kn.kind !== 'challenge' && kn.kind !== 'fix-query') || kn.thuThach.id !== hd.thuThach) return s;
-      moi = luuBangChung(s, kn.thuThach.vatChung.id);
+      moi = kn.thuThach.vatChung ? luuBangChung(s, kn.thuThach.vatChung.id) : s;
       moi = { ...moi, thuThachXong: them(moi.thuThachXong, kn.thuThach.id) };
       if (s.thuThachDangLam) {
         // Thử thách mở từ dữ kiện (không trong chuỗi): ghi nhận dữ kiện luôn.
@@ -729,6 +780,14 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       moi = tienNut({ ...s, nganh: hd.nganh });
       break;
     }
+    case 'xem-diem': {
+      const kp = s.khamPha;
+      if (kn.kind !== 'explore' || !kp || !s.conTro) return s;
+      const d = kn.diem.find((x) => x.diem.chuoi === hd.chuoi);
+      if (!d || d.daXem) return s;
+      moi = { ...s, khamPha: { ...kp, daXem: [...kp.daXem, d.diem.chuoi] }, conTro: { chuoi: d.diem.chuoi, nut: 0, boiCanh: s.conTro.boiCanh } };
+      break;
+    }
   }
   if (!moi) return s;
   return chayToiNutCanNguoiChoi(kb, moi);
@@ -747,6 +806,23 @@ export function dienTen(kb: KichBanMvp, s: TrangThaiMvp, text: string): string {
   });
 }
 
+/**
+ * Nhân vật cần hiện màn "Nhân vật mới" lúc này: người đang nói (lời, phản hồi, người hỏi) có thẻ giới thiệu trong
+ * nhan-vat.md và chưa được giới thiệu. `null` = không có.
+ */
+export function canGioiThieu(kb: KichBanMvp, s: TrangThaiMvp, kn: KhungNhinMvp): string | null {
+  const nguoi =
+    kn.kind === 'line' || kn.kind === 'feedback'
+      ? kn.loi.speaker
+      : kn.kind === 'question' || kn.kind === 'branch'
+        ? kn.nut.asker.speaker
+        : kn.kind === 'create-character'
+          ? kn.nut.asker.speaker
+          : null;
+  if (!nguoi || (s.daGioiThieu ?? []).includes(nguoi)) return null;
+  return kb.nhanVat.find((n) => n.id === nguoi)?.gioiThieu ? nguoi : null;
+}
+
 /** Tên hiển thị của người nói (`player` → "Bạn", `narrator` → ""). */
 export function tenNguoiNoi(kb: KichBanMvp, speaker: string): string {
   if (speaker === 'player') return 'Bạn';
@@ -758,12 +834,14 @@ export function tenNguoiNoi(kb: KichBanMvp, speaker: string): string {
 export function sqlCuaManChieu(kb: KichBanMvp, nut: Extract<NutMvp, { type: 'projector' }>): string | null {
   const nguon = nut.source;
   if (nguon.kind === 'sql') return nguon.sql;
-  const the = Object.values(kb.thuThach).find((t) => t.vatChung.id === nguon.evidenceId);
+  const the = Object.values(kb.thuThach).find((t) => t.vatChung?.id === nguon.evidenceId);
   return the?.sqlChuan ?? null;
 }
 
-/** Nhãn khung giờ hiện tại cho HUD ("Sáng" … / "Cuối ngày"). */
+/** Nhãn khung giờ hiện tại cho HUD ("Sáng" … / "Cuối ngày"); ngày theo truyện không có khung → tên ngày. */
 export function tenKhungHienTai(kb: KichBanMvp, s: TrangThaiMvp): string {
   if (s.giaiDoan !== 'ngay') return '';
+  const ngay = kb.lich.ngay.find((n) => n.so === s.ngay);
+  if (ngay?.kieu === 'theo-truyen') return ngay.ten;
   return kb.lich.khung[s.khung]?.ten ?? kb.lich.buoiToi.ten;
 }

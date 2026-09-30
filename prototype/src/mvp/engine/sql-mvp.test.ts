@@ -1,21 +1,21 @@
 // @vitest-environment node
 /**
- * (7) SQL của 3 thẻ thử thách MVP chạy THẬT trên bảng của du-lieu.md ra đúng số dòng khai; chấm đúng/sai;
+ * (7) SQL của các thẻ thử thách MVP (chương 1: c-lop, c-ten-h, c-in, c-sua-or-quan) chạy THẬT trên bảng của du-lieu.md ra đúng số dòng khai; chấm đúng/sai;
  * bảng ảo tra_cuu_k24 dùng được; câu ghi bị chặn.
  */
 import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
-import { chamThuThach, chaySql, soVoiChuan, xemDongDau } from './sql-mvp';
+import { chamThuThach, chaySql, phanUngSauKhiChay, soVoiChuan, xemDongDau } from './sql-mvp';
 
 const KB = KICH_BAN_MVP as unknown as KichBanMvp;
 const DU_LIEU = KB.duLieu;
 if (!DU_LIEU) throw new Error('KICH_BAN_MVP.duLieu rỗng');
 
 describe('SQL MVP trên du-lieu.md', () => {
-  it('3 thẻ thử thách: SQL chuẩn ra đúng "Số dòng kỳ vọng" (c-loc-lop 1, c-ten-h 2, c-sua-or-quan 2)', async () => {
+  it('mọi thẻ thử thách: SQL chuẩn ra đúng "Số dòng kỳ vọng" (c-lop 2, c-ten-h 2, c-in 1, c-sua-or-quan 2)', async () => {
     const the = Object.values(KB.thuThach);
-    expect(the.map((t) => t.id).sort()).toEqual(['c-loc-lop', 'c-sua-or-quan', 'c-ten-h']);
+    expect(the.map((t) => t.id).sort()).toEqual(['c-in', 'c-lop', 'c-sua-or-quan', 'c-ten-h']);
     for (const t of the) {
       const kq = await chaySql(DU_LIEU, t.sqlChuan);
       expect(kq.ok, t.id).toBe(true);
@@ -36,14 +36,15 @@ describe('SQL MVP trên du-lieu.md', () => {
   it('chấm đúng khi đổi thứ tự cột, đặt bí danh, thêm cột thừa; sai khi thiếu cột bắt buộc', async () => {
     const the = KB.thuThach['c-ten-h'];
     if (!the) throw new Error('thiếu thẻ c-ten-h');
-    const dung = await chamThuThach(DU_LIEU, "SELECT ten AS ten_goi, ho_dem, ma_sv FROM sinh_vien WHERE ma_lop = 'BC24A' AND ten LIKE 'H%'", the.sqlChuan);
+    // Chấm theo tập kết quả: chỉ lọc lớp BC24A (không có BC23A) vẫn đúng — BC23A không có sinh viên.
+    const dung = await chamThuThach(DU_LIEU, "SELECT ten AS ten_goi, ma_lop, ho_dem, ma_sv FROM sinh_vien WHERE ma_lop = 'BC24A' AND ten LIKE 'H%'", the.sqlChuan);
     expect(dung.trangThai).toBe('dung');
-    const thieu = await chamThuThach(DU_LIEU, "SELECT ten FROM sinh_vien WHERE ma_lop = 'BC24A' AND ten LIKE 'H%'", the.sqlChuan);
+    const thieu = await chamThuThach(DU_LIEU, "SELECT ten, ho_dem, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A' AND ten LIKE 'H%'", the.sqlChuan);
     expect(thieu.trangThai).toBe('sai');
     if (thieu.trangThai === 'sai') expect(thieu.so.cotThieu).toEqual(['ma_sv']);
   });
 
-  it('bảng ảo tra_cuu_k24 dùng được: [LỌC THỦ] Ngày hội ra 3 dòng có SV240251', async () => {
+  it('bảng ảo tra_cuu_k24 dùng được: [LỌC THỦ] Ngày hội ra 3 dòng có SV240251 (Tùng Du lịch)', async () => {
     const kq = await chaySql(DU_LIEU, "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';");
     expect(kq.ok).toBe(true);
     if (kq.ok) {
@@ -70,5 +71,32 @@ describe('SQL MVP trên du-lieu.md', () => {
     const chuan = { ok: true as const, cot: ['a'], dong: [['x'], ['x'], ['y']] };
     expect(soVoiChuan(chuan, { ok: true, cot: ['a'], dong: [['x'], ['y'], ['y']] }).dung).toBe(false);
     expect(soVoiChuan(chuan, { ok: true, cot: ['b'], dong: [['y'], ['x'], ['x']] }).dung).toBe(true);
+  });
+});
+
+describe('phản ứng sau khi chạy (dòng "Khi …" của thẻ)', () => {
+  it('c-lop nối HOẶC ra 5 lớp → Tùng rồi Hà Vy; c-ten-h "bằng" H ra 0 → Hà Vy; c-in mã + tên tệp ra 0 → Hà Vy; số dòng không có lời → []', async () => {
+    const lop = KB.thuThach['c-lop'];
+    const tenH = KB.thuThach['c-ten-h'];
+    const inAn = KB.thuThach['c-in'];
+    if (!lop || !tenH || !inAn) throw new Error('thiếu thẻ');
+    const khungLop = 'SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat';
+    const hoac = phanUngSauKhiChay(lop, await chamThuThach(DU_LIEU, `${khungLop} WHERE toa_nha = 'B' OR nganh = 'Báo chí'`, lop.sqlChuan));
+    expect(hoac.map((l) => l.speaker)).toEqual(['tung', 'ha-vy']);
+    const khongH = phanUngSauKhiChay(tenH, await chamThuThach(DU_LIEU, "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A' AND ten = 'H'", tenH.sqlChuan));
+    expect(khongH[0]?.speaker).toBe('ha-vy');
+    const khongIn = phanUngSauKhiChay(
+      inAn,
+      await chamThuThach(DU_LIEU, "SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE tai_khoan = 'SV240317' AND ten_tep LIKE 'kien-nghi%'", inAn.sqlChuan),
+    );
+    expect(khongIn.map((l) => l.speaker)).toEqual(['ha-vy', 'tung']);
+    expect(phanUngSauKhiChay(lop, await chamThuThach(DU_LIEU, `${khungLop} WHERE nganh = 'Du lịch'`, lop.sqlChuan))).toEqual([]);
+  });
+
+  it('c-in: bỏ điều kiện mã → đúng một dòng SV210745, 23:10 Chủ nhật', async () => {
+    const inAn = KB.thuThach['c-in'];
+    if (!inAn) throw new Error('thiếu thẻ c-in');
+    const kq = await chaySql(DU_LIEU, inAn.sqlChuan);
+    expect(kq.ok && kq.dong).toEqual([['2026-09-13 23:10', 'SV210745', 'kien-nghi-phong-clb.docx', 1]]);
   });
 });

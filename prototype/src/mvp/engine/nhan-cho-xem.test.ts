@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
+// Chế độ địa điểm (ngày × địa điểm): fixture đóng băng Vụ 1 bản cũ — chương 1 thật không còn địa điểm (ĐÃ CHỐT C, 30/09/2026).
+import { KICH_BAN_DIA_DIEM } from './testing/kich-ban-dia-diem.fixture';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { nhanChoXem, nhanChoXemDs } from './nhan-cho-xem';
 
-const kb = KICH_BAN_MVP as unknown as KichBanMvp;
+const kb = KICH_BAN_DIA_DIEM as unknown as KichBanMvp;
 
 describe('nhãn chỗ xem xét (không lộ manh mối)', () => {
   const tatCa = kb.diaDiem.flatMap((dd) => dd.duKien);

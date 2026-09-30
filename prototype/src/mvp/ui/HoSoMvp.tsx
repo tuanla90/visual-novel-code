@@ -4,22 +4,25 @@
  * chân dung `.inv-chara-*`, lưới ô `.inv-slots-grid`, cột chi tiết `.inv-details-*`, thẻ nhật ký `.notebook__journal-*`)
  * nhưng là component riêng: `EvidenceNotebook` gắn chặt `EvidenceId`/`GameContent`/nhân vật của prototype.
  *
- * Hai tab trong cùng một khung (như prototype có tab Hồ sơ nhân vật / Hòm đồ / Nhật ký):
+ * Ba tab trong cùng một khung (như prototype có tab Hồ sơ nhân vật / Hòm đồ / Nhật ký):
+ *   - "Nhân vật": thẻ Polaroid các nhân vật đã gặp (`NhanVatMvp`).
  *   - "Hồ sơ": chân dung người chơi + số đếm; lưới ô giấy nhớ / tài liệu / bằng chứng (lọc theo nhóm, QĐ-086/087);
  *     bấm ô → thẻ chi tiết (`TheHoSo`).
- *   - "Sổ cá nhân": các trang đã chép (đoạn code đúng + chú thích), mỗi trang một thẻ nhật ký.
+ *   - "Sổ cá nhân": các dòng đã học (tự ghi ở `[GHI SỔ]`, QĐ-092) kèm trang chị Linh tương ứng, mỗi trang một thẻ nhật ký.
  * Đóng: nút Đóng, Esc, bấm ra ngoài khung.
  */
 import '../../evidence/ui/inventory-grid.css';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import type { KichBanMvp, TheHoSoMvp } from '../../content/mvp/types';
+import { soundEngine } from '../../shared/audio/sound-engine';
 import { CodeText } from '../../shared/ui/CodeText';
-import { IconBriefcase, IconFileText, IconX, ItemVectorIcon } from '../../shared/ui/icons';
+import { IconBriefcase, IconFileText, IconUsers, IconX, ItemVectorIcon } from '../../shared/ui/icons';
 import type { HoSoMvp as HoSo } from '../engine/trang-thai';
 import { anhChanDung } from './anh-mvp';
+import { NhanVatMvp } from './NhanVatMvp';
 import { TheHoSo } from './TheHoSo';
 
-export type TabHoSoMvp = 'ho-so' | 'so-tay';
+export type TabHoSoMvp = 'nhan-vat' | 'ho-so' | 'so-tay';
 type Nhom = 'tat-ca' | TheHoSoMvp['loai'];
 
 export interface HoSoMvpProps {
@@ -28,6 +31,8 @@ export interface HoSoMvpProps {
   soTay: string[];
   tenNguoiChoi: string;
   nganh: string;
+  /** Nhân vật đã gặp (đã hiện màn "Nhân vật mới"), theo thứ tự — danh sách của tab Nhân vật. */
+  daGap: readonly string[];
   tab: TabHoSoMvp;
   onDoiTab: (tab: TabHoSoMvp) => void;
   dienTen: (t: string) => string;
@@ -39,7 +44,18 @@ const NHAN_LOAI_SO: Record<string, string> = { 'cú pháp': 'Cú pháp', 'tâm �
 /** Số ô tối thiểu của lưới (ô trống bù cho đủ, như hòm đồ prototype); đủ hàng 4 ô. */
 const SO_O_TOI_THIEU = 12;
 
-export function HoSoMvp({ kb, hoSo, soTay, tenNguoiChoi, nganh, tab, onDoiTab, dienTen, onDong }: HoSoMvpProps) {
+const TEN_TAB: Record<TabHoSoMvp, string> = { 'nhan-vat': 'Nhân vật', 'ho-so': 'Hồ sơ', 'so-tay': 'Sổ cá nhân' };
+
+export function HoSoMvp({ kb, hoSo, soTay, tenNguoiChoi, nganh, daGap, tab, onDoiTab: doiTab, dienTen, onDong: dong }: HoSoMvpProps) {
+  // Tiếng chuyển tab / đóng như hòm đồ prototype.
+  const onDoiTab = (t: TabHoSoMvp): void => {
+    soundEngine.playSfx('tab');
+    doiTab(t);
+  };
+  const onDong = useCallback((): void => {
+    soundEngine.playSfx('cancel');
+    dong();
+  }, [dong]);
   useEffect(() => {
     const onKey = (e: KeyboardEvent): void => {
       if (e.key === 'Escape') {
@@ -51,7 +67,7 @@ export function HoSoMvp({ kb, hoSo, soTay, tenNguoiChoi, nganh, tab, onDoiTab, d
     return () => window.removeEventListener('keydown', onKey);
   }, [onDong]);
 
-  const tenKhung = tab === 'ho-so' ? 'Hồ sơ' : 'Sổ cá nhân';
+  const tenKhung = TEN_TAB[tab];
   return (
     <aside
       className="notebook inventory-modal mvp-kho"
@@ -60,9 +76,24 @@ export function HoSoMvp({ kb, hoSo, soTay, tenNguoiChoi, nganh, tab, onDoiTab, d
         if (e.target === e.currentTarget) onDong();
       }}
     >
-      <div className={`inventory-frame mvp-kho__khung${tab === 'so-tay' ? ' is-journal-mode' : ''}`} role="dialog" aria-modal="true" aria-label={tenKhung}>
+      <div
+        className={`inventory-frame mvp-kho__khung${tab === 'so-tay' ? ' is-journal-mode' : ''}${tab === 'nhan-vat' ? ' is-chara-mode' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label={tenKhung}
+      >
         <header className="inventory-nav">
           <div className="inventory-nav__tabs" role="tablist" aria-label="Chọn ngăn">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={tab === 'nhan-vat'}
+              className={`inventory-nav__tab${tab === 'nhan-vat' ? ' is-active' : ''}`}
+              onClick={() => onDoiTab('nhan-vat')}
+            >
+              <IconUsers width={15} height={15} aria-hidden="true" />
+              <span>Nhân vật</span>
+            </button>
             <button
               type="button"
               role="tab"
@@ -98,7 +129,11 @@ export function HoSoMvp({ kb, hoSo, soTay, tenNguoiChoi, nganh, tab, onDoiTab, d
             </button>
           </div>
         </header>
-        {tab === 'ho-so' ? (
+        {tab === 'nhan-vat' ? (
+          <div className="notebook__chara-container">
+            <NhanVatMvp kb={kb} daGap={daGap} />
+          </div>
+        ) : tab === 'ho-so' ? (
           <NganHoSo kb={kb} hoSo={hoSo} soTrangSo={soTay.length} tenNguoiChoi={tenNguoiChoi} nganh={nganh} dienTen={dienTen} />
         ) : (
           <NganSoTay kb={kb} soTay={soTay} dienTen={dienTen} />
@@ -248,14 +283,13 @@ function NganSoTay({ kb, soTay, dienTen }: { kb: KichBanMvp; soTay: string[]; di
               <IconFileText width={16} height={16} aria-hidden="true" /> SỔ CÁ NHÂN
             </span>
           </div>
-          <p className="mvp-kho__trong">Chưa chép trang nào. Khi Hà Vy bảo "chép vào sổ", đoạn đúng sẽ nằm ở đây.</p>
+          <p className="mvp-kho__trong">Sổ còn trống. Mỗi khi bạn học xong một mảng kiến thức ở phòng máy, một dòng sẽ tự ghi vào đây.</p>
         </div>
       ) : (
-        <ul className="mvp-kho__trang-ds" aria-label="Các trang đã chép">
+        <ul className="mvp-kho__trang-ds" aria-label="Các dòng đã học">
           {soTay.map((id, i) => {
             const t = kb.soTay[id];
             if (!t) return null;
-            const dung = t.chonDoanCode?.find((c) => c.correct);
             return (
               <li key={id} className="notebook__journal-card mvp-kho__trang">
                 <div className="notebook__journal-header">
@@ -266,18 +300,22 @@ function NganSoTay({ kb, soTay, dienTen }: { kb: KichBanMvp; soTay: string[]; di
                 </div>
                 <h3 className="notebook__journal-title">{dienTen(t.ten)}</h3>
                 <div className="notebook__journal-body">
-                  {dung ? (
+                  {t.chuThich ? (
                     <div className="notebook__journal-entry">
-                      <h4>ĐOẠN ĐÃ CHÉP</h4>
+                      <h4>ĐÃ HỌC</h4>
                       <p className="mvp-kho__code">
-                        <CodeText text={dienTen(dung.text)} />
+                        <CodeText text={dienTen(t.chuThich)} />
                       </p>
                     </div>
                   ) : null}
-                  {t.chuThich ? (
+                  {t.trangChiLinh.length > 0 ? (
                     <div className="notebook__journal-entry">
-                      <h4>GHI CHÚ</h4>
-                      <p>{dienTen(t.chuThich)}</p>
+                      <h4>SỔ CHỊ LINH</h4>
+                      {t.trangChiLinh.map((d, k) => (
+                        <p key={k}>
+                          <CodeText text={dienTen(d)} />
+                        </p>
+                      ))}
                     </div>
                   ) : null}
                 </div>

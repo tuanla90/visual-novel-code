@@ -11,7 +11,7 @@ import type { KichBanMvp, NutMvp } from '../../content/mvp/types';
 import { clearTelemetry, getTelemetryEvents } from '../../shared/telemetry/track';
 import { PRESS_GUARD_MS } from '../../shared/ui/use-press-guard';
 import { useVnStore } from '../../shared/vn/vn-store';
-import { khungNhin, taoTrangThai, TEN_XUC_XAC, xuLy } from '../engine/may';
+import { canGioiThieu, khungNhin, taoTrangThai, TEN_XUC_XAC, xuLy } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import { useKhoMvp } from '../store/kho-mvp';
 import { ManChoiMvp } from './ManChoiMvp';
@@ -23,8 +23,13 @@ const cho = (ms: number) => act(() => new Promise<void>((r) => setTimeout(r, ms)
 function toiCauHoi(s: TrangThaiMvp, truong: 'ten' | 'nganh'): TrangThaiMvp {
   for (let i = 0; i < 50; i++) {
     const kn = khungNhin(kb, s);
+    // Người chơi thật đóng màn "Nhân vật mới" khi Tùng nói câu đầu; màn đó mở sẽ bắt phím của ô tên.
+    const gt = canGioiThieu(kb, s, kn);
+    if (gt) s = xuLy(kb, s, { type: 'da-gioi-thieu', nhanVat: gt });
     if (kn.kind === 'create-character' && kn.nut.truong === truong) return s;
-    s = xuLy(kb, s, { type: 'tiep' });
+    // Sảnh KTX ([KHÁM PHÁ]): bấm lần lượt các chỗ chưa xem (Tùng hiện sau cùng).
+    const choXem = kn.kind === 'explore' ? kn.diem.find((d) => !d.daXem) : undefined;
+    s = choXem ? xuLy(kb, s, { type: 'xem-diem', chuoi: choXem.diem.chuoi }) : xuLy(kb, s, { type: 'tiep' });
   }
   throw new Error(`không tới câu hỏi ${truong}`);
 }

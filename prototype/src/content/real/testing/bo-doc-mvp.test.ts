@@ -124,6 +124,59 @@ describe('bộ MVP: bộ tối thiểu hợp lệ', () => {
   });
 });
 
+/** Biến thể chương 1 (ĐÃ CHỐT C, 30/09/2026): ngày 1 theo truyện — một chuỗi, không địa điểm, lựa chọn bằng [RẼ NHÁNH]. */
+const THEO_TRUYEN: Record<string, string | ((s: string) => string)> = {
+  'dia-diem.md': '',
+  'lich.md': (s) => s.replace('## Ngày 1 — Thử {ngày: 1}\n- Dữ kiện chính: dk-chinh\n- Buổi tối: toi-1', '## Ngày 1 — Thử {ngày: 1 · theo truyện}\n- Chuỗi: n1'),
+  'kich-ban/01.md': (s) =>
+    s.slice(0, s.indexOf('### s-chinh')) +
+    [
+      '### n1 — Ngày 1 {cảnh: c1}',
+      '- [HẬU QUẢ] mở manh mối clue-x',
+      '- [RẼ NHÁNH r1] tung: "Đi đâu?"',
+      '  - {id: a} Xem thêm. → hậu quả: đi tới s-phu',
+      '  - {id: b} Về. → hậu quả: đi tới s-ve',
+      '### s-phu — Phụ {cảnh: c1}',
+      '- [LƯU BẰNG CHỨNG ev-y]',
+      '### s-ve — Về {cảnh: c1}',
+      '- **tung** (neutral): Về thôi.',
+      '',
+    ].join('\n') +
+    s.slice(s.indexOf('### hop')),
+};
+/** Đọc biến thể theo truyện, rồi áp thêm `them` lên kết quả của biến thể. */
+const docTheoTruyen = (them: Record<string, (s: string) => string> = {}): string[] =>
+  doc(
+    Object.fromEntries(
+      Object.keys({ ...THEO_TRUYEN, ...them }).map((p) => [
+        p,
+        (s: string): string => {
+          const g = THEO_TRUYEN[p];
+          const s1 = g === undefined ? s : typeof g === 'string' ? g : g(s);
+          return them[p]?.(s1) ?? s1;
+        },
+      ]),
+    ),
+  );
+
+describe('bộ MVP: ngày theo truyện', () => {
+  it('đọc sạch: ngày một chuỗi, dia-diem.md rỗng; vật phẩm của một lựa chọn [RẼ NHÁNH] đủ làm điều kiện true end', () => {
+    expect(docTheoTruyen()).toEqual([]);
+  });
+
+  it('true end chỉ cần vật phẩm trên đường bắt buộc (không qua lựa chọn) → lỗi', () => {
+    const loi = docTheoTruyen({ 'kich-ban/01.md': (s) => s.replace('- [ĐIỀU KIỆN] có ev-y', '- [ĐIỀU KIỆN] có clue-x') });
+    expect(loi).toEqual([expect.stringMatching(/kich-ban\/01\.md:\d+: điều kiện true end thỏa chỉ với dữ kiện chính \/ đường chạy bắt buộc/)]);
+  });
+
+  it('thiếu "Chuỗi", có dòng của ngày địa điểm, chuỗi không có → lỗi ở lich.md', () => {
+    expect(docTheoTruyen({ 'lich.md': (s) => s.replace('- Chuỗi: n1', '- Dữ kiện chính: dk-chinh') })).toEqual(
+      expect.arrayContaining([expect.stringMatching(/lich\.md:\d+: ngày 1 \(theo truyện\) có dòng lạ: Dữ kiện chính/), expect.stringMatching(/lich\.md:\d+: ngày 1 \(theo truyện\) thiếu dòng "- Chuỗi: …"/)]),
+    );
+    expect(docTheoTruyen({ 'lich.md': (s) => s.replace('- Chuỗi: n1', '- Chuỗi: khong-co') })).toEqual(expect.arrayContaining([expect.stringMatching(/lich\.md:\d+: ngày 1, "Chuỗi": không có chuỗi "khong-co"/)]));
+  });
+});
+
 describe('bộ MVP: lỗi báo đúng <tệp>:<dòng>', () => {
   it('dữ kiện chính tốn hơn N khung → lỗi ở dòng "Dữ kiện chính" của ngày', () => {
     // Dữ kiện chính chuyển sang phòng máy tốn 3 khung khi vào.
@@ -145,7 +198,9 @@ describe('bộ MVP: lỗi báo đúng <tệp>:<dòng>', () => {
 
   it('true end chỉ cần dữ kiện chính → lỗi (QĐ-086: cần dữ kiện phụ)', () => {
     const loi = doc({ 'kich-ban/01.md': (s) => s.replace('- [ĐIỀU KIỆN] có ev-y', '- [ĐIỀU KIỆN] có clue-x') });
-    expect(loi).toEqual(['noi-dung-mvp/kich-ban/01.md:23: điều kiện true end thỏa chỉ với dữ kiện chính — true end phải cần ít nhất một dữ kiện phụ (QĐ-086)']);
+    expect(loi).toEqual([
+      'noi-dung-mvp/kich-ban/01.md:23: điều kiện true end thỏa chỉ với dữ kiện chính / đường chạy bắt buộc — true end phải cần ít nhất một dữ kiện phụ hay một lựa chọn [RẼ NHÁNH] (QĐ-086)',
+    ]);
   });
 
   it('chuỗi lẻ, buổi tối không dẫn tới dữ kiện chính', () => {
@@ -343,5 +398,122 @@ describe('dòng "- Ảnh:" của dữ kiện (vật tương tác trên nền, Q�
       docDu({ 'dia-diem.md': (s) => themAnh('dk-phu', `- Ảnh: obj-ban-may · x ${x2}% · y 48% · rộng 9%`)(themAnh('dk-chinh', '- Ảnh: obj-ban-may · x 62% · y 48% · rộng 9%')(s)) }, VAT).loi;
     expect(cung('62')).toEqual([]);
     expect(cung('10')).toEqual(['noi-dung-mvp/dia-diem.md:7: dữ kiện dk-phu, "Ảnh": vật "obj-ban-may" đã đặt ở dữ kiện dk-chinh với tọa độ khác — dùng chung một vật thì cùng x, y, rộng']);
+  });
+});
+
+describe('[KHÁM PHÁ] trong chuỗi (cảnh bấm vật, sảnh KTX của mở đầu)', () => {
+  /** Chèn một [KHÁM PHÁ] vào cuối md-1 (sau [TẠO NHÂN VẬT]) cùng hai chuỗi con x-a, x-b. Dòng [KHÁM PHÁ] là dòng 7. */
+  const themKham = (dongCon: string[]) => (s: string) =>
+    s.replace(
+      '  - lựa chọn: Kế toán · Marketing\n',
+      ['  - lựa chọn: Kế toán · Marketing', '- [KHÁM PHÁ kp1]', ...dongCon, '### x-a — A {cảnh: c1}', '- **narrator**: A.', '### x-b — B {cảnh: c1}', '- **narrator**: B.', ''].join('\n'),
+    );
+  const docKham = (dongCon: string[], spriteVat?: ReadonlySet<string>) => {
+    const tep: TepMvp[] = Object.entries(GOC).map(([p, s]) => ({ duongDan: `noi-dung-mvp/${p}`, loai: loaiCua(p), noiDung: p === 'kich-ban/01.md' ? themKham(dongCon)(s) : s }));
+    const kq = docNoiDungMvp(tep);
+    const luat = kiemLuatMvp(kq.mvp, spriteVat ? { spriteVat } : {});
+    return { mvp: kq.mvp, loi: [...kq.loi, ...luat.loi].map(dinhDangLoi), mocChuoi: luat.mocChuoi };
+  };
+
+  it('đọc chỗ bấm: tọa độ, chuỗi, "sau:", "nhãn:"; chuỗi con nối vào mở đầu (không lẻ)', () => {
+    const kq = docKham(['  - obj-a · x 10% · y 50% · rộng 5% → x-a · nhãn: Xem tờ giấy', '  - nv:tung · x 80% · y 100% · rộng 15% → x-b · sau: x-a'], new Set(['obj-a']));
+    expect(kq.loi).toEqual([]);
+    const kham = kq.mvp.chuoi.find((c) => c.id === 'md-1')?.items.find((it) => it.kind === 'explore');
+    expect(kham).toEqual({
+      kind: 'explore',
+      id: 'kp1',
+      diem: [
+        { sprite: 'obj-a', x: 10, y: 50, rong: 5, chuoi: 'x-a', sau: [], nhan: 'Xem tờ giấy' },
+        { sprite: 'nv:tung', x: 80, y: 100, rong: 15, chuoi: 'x-b', sau: ['x-a'], nhan: null },
+      ],
+    });
+    expect(kq.mocChuoi.get('x-a')).toBe(0);
+    expect(kq.mocChuoi.get('x-b')).toBe(0);
+  });
+
+  it('lỗi: dòng con sai cú pháp, chuỗi không có, "sau:" lạ, mọi chỗ đều "sau:", ảnh vật không có', () => {
+    expect(docKham(['  - obj-a x 10 y 50 → x-a']).loi).toEqual(expect.arrayContaining([expect.stringMatching(/^noi-dung-mvp\/kich-ban\/01\.md:8: \[KHÁM PHÁ\]: "Ảnh" phải là/)]));
+    expect(docKham(['  - obj-a · x 10% · y 50% · rộng 5% → khong-co', '  - obj-a · x 20% · y 50% · rộng 5% → x-b']).loi).toEqual(
+      expect.arrayContaining(['noi-dung-mvp/kich-ban/01.md:7: [KHÁM PHÁ kp1]: không có chuỗi "khong-co"']),
+    );
+    expect(docKham(['  - obj-a · x 10% · y 50% · rộng 5% → x-a · sau: x-b', '  - obj-a · x 20% · y 50% · rộng 5% → x-b · sau: x-a']).loi).toEqual(
+      expect.arrayContaining(['noi-dung-mvp/kich-ban/01.md:7: [KHÁM PHÁ kp1]: phải có ít nhất một chỗ hiện ngay (không "sau:")']),
+    );
+    expect(docKham(['  - obj-a · x 10% · y 50% · rộng 5% → x-a', '  - obj-a · x 20% · y 50% · rộng 5% → x-b · sau: la']).loi).toEqual(
+      expect.arrayContaining(['noi-dung-mvp/kich-ban/01.md:7: [KHÁM PHÁ kp1]: "sau: la" phải là chuỗi của một chỗ bấm khác trong cùng [KHÁM PHÁ]']),
+    );
+    expect(docKham(['  - obj-khong · x 10% · y 50% · rộng 5% → x-a', '  - obj-a · x 20% · y 50% · rộng 5% → x-b'], new Set(['obj-a'])).loi).toEqual([
+      'noi-dung-mvp/kich-ban/01.md:7: [KHÁM PHÁ kp1]: không có ảnh vật "obj-khong" trong src/assets/mvp/vat/',
+    ]);
+  });
+});
+
+describe('thẻ giới thiệu nhân vật (nhan-vat.md: Danh xưng, Năm, Ngành, Câu nói, Giới thiệu)', () => {
+  const docNv = (them: string) => {
+    const tep: TepMvp[] = Object.entries(GOC).map(([p, s]) => ({
+      duongDan: `noi-dung-mvp/${p}`,
+      loai: loaiCua(p),
+      noiDung: p === 'nhan-vat.md' ? s.replace('- Biểu cảm: neutral\n', `- Biểu cảm: neutral\n${them}`) : s,
+    }));
+    const kq = docNoiDungMvp(tep);
+    return { mvp: kq.mvp, loi: [...kq.loi, ...kiemLuatMvp(kq.mvp).loi].map(dinhDangLoi) };
+  };
+
+  it('đủ dòng → đọc ra thẻ; không có dòng nào → null', () => {
+    const kq = docNv('- Danh xưng: Bạn cùng phòng\n- Năm: Năm nhất\n- Câu nói: Tớ cá.\n- Giới thiệu: Hay đùa.\n');
+    expect(kq.loi).toEqual([]);
+    expect(kq.mvp.nhanVat.find((n) => n.id === 'tung')?.gioiThieu).toEqual({ danhXung: 'Bạn cùng phòng', nam: 'Năm nhất', nganh: null, cauNoi: 'Tớ cá.', loi: 'Hay đùa.' });
+    expect(kq.mvp.nhanVat.find((n) => n.id === 'quan')?.gioiThieu).toBeNull();
+  });
+
+  it('thiếu dòng bắt buộc → lỗi ở tiêu đề nhân vật', () => {
+    expect(docNv('- Danh xưng: Bạn cùng phòng\n').loi).toEqual(['noi-dung-mvp/nhan-vat.md:1: nhân vật tung có thẻ giới thiệu nhưng thiếu dòng: Câu nói, Giới thiệu']);
+  });
+});
+
+describe('[GHI SỔ] và thẻ thử thách không vật chứng (QĐ-092)', () => {
+  const SO = ['# so1 — Trang thử {trang sổ: so1}', '- Loại: cú pháp', '## Trang chị Linh', 'Lọc bằng WHERE.', '## Vào sổ cá nhân', '- Chú thích: Lọc dòng dùng WHERE.', ''].join('\n');
+  const docVoi = (suaKichBan: (s: string) => string, soTay: string = SO) => {
+    const tep: TepMvp[] = [
+      ...Object.entries(GOC).map(([p, s]) => ({ duongDan: `noi-dung-mvp/${p}`, loai: loaiCua(p), noiDung: p === 'kich-ban/01.md' ? suaKichBan(s) : s })),
+      { duongDan: 'noi-dung-mvp/so-tay/so1.md', loai: 'so-tay' as const, noiDung: soTay },
+    ];
+    const kq = docNoiDungMvp(tep);
+    return { mvp: kq.mvp, loi: [...kq.loi, ...kiemLuatMvp(kq.mvp).loi].map(dinhDangLoi) };
+  };
+  const themVaoMay = (dong: string) => (s: string) => s.replace('- **narrator**: Bàn làm việc.\n', `- **narrator**: Bàn làm việc.\n${dong}\n`);
+
+  it('[GHI SỔ so1] đọc được; trang không có dòng "Vào sổ cá nhân" → lỗi; [CHÉP SỔ] → lỗi chỉ sang [GHI SỔ]', () => {
+    const tot = docVoi(themVaoMay('- [GHI SỔ so1]'));
+    expect(tot.loi).toEqual([]);
+    expect(tot.mvp.chuoi.find((c) => c.id === 's-may')?.items).toContainEqual({ kind: 'notebook-note', trang: 'so1' });
+    expect(docVoi(themVaoMay('- [GHI SỔ so1]'), SO.replace(/## Vào sổ cá nhân\n- Chú thích: .*\n/, '')).loi).toEqual([
+      expect.stringMatching(/\[GHI SỔ so1\]: trang phải có mục "## Vào sổ cá nhân"/),
+    ]);
+    expect(docVoi(themVaoMay('- [CHÉP SỔ so1]')).loi).toEqual([expect.stringMatching(/\[CHÉP SỔ\] đã bỏ \(QĐ-092\)/)]);
+    expect(docVoi((s) => s, SO.replace('## Vào sổ cá nhân', '## Chọn đoạn code\n- (A) {id: a} `x` [ĐÚNG]\n\n## Vào sổ cá nhân')).loi).toEqual([
+      expect.stringMatching(/"## Chọn đoạn code" đã bỏ/),
+    ]);
+  });
+});
+
+describe('phản ứng sau mỗi lần chạy ("Khi …" trong thẻ thử thách, QĐ-092)', () => {
+  const THE = (dong: string) =>
+    ['### c1 — Thử {challenge: c1}', '- Tiêu đề: T', '- Đề bài hiển thị: Đ', '- SQL chuẩn:', '', '```sql', 'SELECT 1;', '```', '', dong, '- Vật chứng lưu vào hồ sơ: ev-z', '  - Tiêu đề: Z', '  - Mô tả: z', ''].join('\n');
+  const docThe = (dong: string) => {
+    const tep: TepMvp[] = [
+      ...Object.entries(GOC).map(([p, s]) => ({ duongDan: `noi-dung-mvp/${p}`, loai: loaiCua(p), noiDung: p === 'kich-ban/01.md' ? s.replace('- **narrator**: Bàn làm việc.\n', '- **narrator**: Bàn làm việc.\n- [THỬ THÁCH c1]\n') : s })),
+      { duongDan: 'noi-dung-mvp/thu-thach/c1.md', loai: 'thu-thach' as const, noiDung: THE(dong) },
+    ];
+    const kq = docNoiDungMvp(tep);
+    return [...kq.loi, ...kiemLuatMvp(kq.mvp).loi].map(dinhDangLoi);
+  };
+
+  it('đúng quy ước → không lỗi; nhãn lạ, người nói lạ, biểu cảm không có → lỗi ở thẻ', () => {
+    expect(docThe('- Khi chạy ra 0 dòng: **tung** (neutral): Không ai. <br> **minh-anh** (worried): Xem lại.')).toEqual([]);
+    expect(docThe('- Khi lỗi không có cột: **tung**: Máy tìm cột.')).toEqual([]);
+    expect(docThe('- Khi chạy ra nhiều dòng: **tung**: X.')).toEqual([expect.stringMatching(/thẻ c1: dòng "Khi chạy ra nhiều dòng" lạ/)]);
+    expect(docThe('- Khi đúng: **ai-do**: X.')).toEqual([expect.stringMatching(/thẻ c1: phản ứng có người nói lạ "ai-do"/)]);
+    expect(docThe('- Khi đúng: **tung** (smug): X.')).toEqual([expect.stringMatching(/thẻ c1: nhân vật tung không có biểu cảm "smug"/)]);
   });
 });

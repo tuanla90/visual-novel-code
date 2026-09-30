@@ -28,37 +28,38 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
     expect(trenDia).toEqual(Object.keys(kq.tep).sort());
   });
 
-  it('dữ liệu sinh đủ hình dạng KichBanMvp: 5 ngày, ngày họp, hai kết, một dữ kiện chính mỗi ngày', () => {
+  it('dữ liệu sinh đủ hình dạng KichBanMvp: 5 ngày theo truyện (chương 1, ĐÃ CHỐT C), ngày họp, hai kết', () => {
     const d = kq.duLieu as unknown as KichBanMvp | null;
     expect(d).not.toBeNull();
     if (!d) return;
     expect(d.lich.ngay.map((n) => n.so)).toEqual([1, 2, 3, 4, 5]);
     expect(d.lich.ngayHop).not.toBeNull();
     expect(d.lich.ket).toEqual({ that: 'ket-that', thuong: 'ket-thuong' });
-    const chinh = d.diaDiem.flatMap((x) => x.duKien).filter((k) => k.nhan === 'chinh').map((k) => k.id);
-    for (const n of d.lich.ngay) expect(chinh).toContain(n.duKienChinh);
+    for (const n of d.lich.ngay) expect([n.kieu, n.chuoi]).toEqual(['theo-truyen', `n${n.so}-mo`]);
     expect(d.soDongKhai.length).toBeGreaterThan(0);
     expect(d.chuoi.find((c) => c.id === 'md-01-ktx')?.mocSomNhat).toBe(0);
     expect(d.nhanVat.find((n) => n.id === 'quan')?.xuatHienTu).toEqual({ kind: 'ngay', ngay: 3, khung: 'sang' });
   });
 
-  it('bộ dữ liệu cố định Vụ 1 (du-lieu.md): 11 lớp, 25 sinh viên, bảng ảo tra_cuu_k24', () => {
+  it('bộ dữ liệu cố định Vụ 1 (du-lieu.md): 14 lớp (3 lớp khác khóa, QĐ-092), 25 sinh viên, 9 dòng nhật ký in, bảng ảo tra_cuu_k24', () => {
     const d = kq.duLieu as unknown as KichBanMvp | null;
     expect(d?.duLieu?.bang.map((b) => [b.ten, b.dong.length])).toEqual([
-      ['lop_sinh_hoat', 11],
+      ['lop_sinh_hoat', 14],
       ['sinh_vien', 25],
+      ['nhat_ky_in', 9],
     ]);
     expect(d?.duLieu?.bangAo.map((v) => v.ten)).toEqual(['tra_cuu_k24']);
   });
 
-  it('QĐ-089: mọi câu SQL khai số dòng chạy thật trên du-lieu.md ra đúng số khai (số đối chiếu: docs/mvp/kiem-du-lieu-vu1.py)', async () => {
+  it('QĐ-089: mọi câu SQL khai số dòng chạy thật trên du-lieu.md ra đúng số khai (số đối chiếu: docs/mvp/kiem-bang-vu1.py)', async () => {
     const d = kq.duLieu as unknown as KichBanMvp | null;
     const raw = docThuMucMvp(THU_MUC_NOI_DUNG_MVP).mvp.duLieu;
     const chay = await kiemSoDongMvp(raw, d?.soDongKhai ?? []);
     expect(chay.loi).toEqual([]);
     // So theo tệp (bỏ số dòng): viết lại lời thoại phía trên chỉ dẫn không được làm test đỏ oan.
     expect(chay.ketQua.map((k) => [(k.noi.split(' ')[0] ?? '').replace(/:\d+$/, ''), k.soDong, k.soDongThat])).toEqual([
-      ['noi-dung-mvp/thu-thach/c-loc-lop.md', 1, 1],
+      ['noi-dung-mvp/thu-thach/c-in.md', 1, 1],
+      ['noi-dung-mvp/thu-thach/c-lop.md', 2, 2],
       ['noi-dung-mvp/thu-thach/c-ten-h.md', 2, 2],
       ['noi-dung-mvp/thu-thach/c-ten-h.md', 2, 2],
       ['noi-dung-mvp/kich-ban/00-mo-dau.md', 3, 3],

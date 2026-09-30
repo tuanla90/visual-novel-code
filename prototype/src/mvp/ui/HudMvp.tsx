@@ -5,13 +5,13 @@
  * `notebook_opened` — sửa nó để nhận ngày/khung MVP sẽ đụng test và hành vi prototype.
  *
  * Nội dung: ngày + khung giờ ("Cuối ngày" khi hết khung), nhiệm vụ hiện tại, thanh uy tín 5 vạch ở ngày họp, nút
- * Dọc/Ngang / Hồ sơ / Sổ tay, menu (Lịch sử thoại, Lưu, Nạp, Về màn tiêu đề, Bắt đầu lại). Mọi nút có `title` +
+ * Dọc/Ngang / Hồ sơ / Sổ tay, menu (Lịch sử thoại, Lưu, Nạp, Cài đặt, Về màn tiêu đề, Bắt đầu lại). Mọi nút có `title` +
  * `aria-label`; menu đóng bằng Esc hay bấm ra ngoài.
  */
 import { useEffect, useRef, useState } from 'react';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { ConfirmDialog } from '../../shared/ui/ConfirmDialog';
-import { IconFolderOpen, IconHistory, IconRotateCcw, IconSave } from '../../shared/ui/icons';
+import { IconFolderOpen, IconHistory, IconRotateCcw, IconSave, IconSliders } from '../../shared/ui/icons';
 import { useVnStore } from '../../shared/vn/vn-store';
 import { tenKhungHienTai } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
@@ -26,6 +26,8 @@ export interface HudMvpProps {
   onMoLuu: () => void;
   onMoNap: () => void;
   onMoLichSu: () => void;
+  /** Cài đặt (tốc độ chữ, âm thanh) — cùng bảng `AudioSettingsModal` của prototype. */
+  onMoCaiDat: () => void;
   onBatDauLai: () => void;
   onVeTieuDe: () => void;
 }
@@ -56,7 +58,7 @@ function mocHud(kb: KichBanMvp, s: TrangThaiMvp): { kicker: string; so: string; 
   return { kicker: 'Vụ 1', so: 'Kết', ten: 'Kết thúc', nhanDai: 'Kết thúc' };
 }
 
-export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onBatDauLai, onVeTieuDe }: HudMvpProps) {
+export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onBatDauLai, onVeTieuDe }: HudMvpProps) {
   const [menuMo, setMenuMo] = useState(false);
   const [xacNhan, setXacNhan] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -204,6 +206,10 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
                 <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onMoNap)}>
                   <IconFolderOpen width={16} height={16} aria-hidden="true" />
                   <span>Nạp tiến độ (Load)</span>
+                </button>
+                <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onMoCaiDat)}>
+                  <IconSliders width={16} height={16} aria-hidden="true" />
+                  <span>Cài đặt (tốc độ chữ, âm thanh)</span>
                 </button>
                 <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onVeTieuDe)}>
                   <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

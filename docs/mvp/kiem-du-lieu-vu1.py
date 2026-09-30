@@ -9,7 +9,9 @@ CREATE TABLE sinh_vien(ma_sv TEXT, ho_dem TEXT, ten TEXT, ma_lop TEXT);
 """)
 lop = [('KT24A','Kế toán',2024,'B'),('KT24B','Kế toán',2024,'A'),('QT24A','Quản trị kinh doanh',2024,'C'),
        ('QT24B','Quản trị kinh doanh',2024,'B'),('BC24A','Báo chí',2024,'B'),('BC24B','Báo chí',2024,'C'),
-       ('TC24A','Tài chính – Ngân hàng',2024,'A'),('MK24A','Marketing',2024,'A'),('DL24A','Du lịch',2024,'C'),('CT24A','Công nghệ thông tin',2024,'A'),('TM24A','Thương mại điện tử',2024,'C')]
+       ('TC24A','Tài chính – Ngân hàng',2024,'A'),('MK24A','Marketing',2024,'A'),('DL24A','Du lịch',2024,'C'),('CT24A','Công nghệ thông tin',2024,'A'),('TM24A','Thương mại điện tử',2024,'C'),
+       # QĐ-092: 3 lớp khác khóa, không có sinh viên (bài lọc số / ghép 3 điều kiện ngày 2)
+       ('BC23A','Báo chí',2023,'B'),('KT25A','Kế toán',2025,'A'),('QT23A','Quản trị kinh doanh',2023,'C')]
 db.executemany('INSERT INTO lop_sinh_hoat VALUES(?,?,?,?)', lop)
 sv = [
  # BC24A: 6 người
@@ -30,7 +32,11 @@ sv = [
 db.executemany('INSERT INTO sinh_vien VALUES(?,?,?,?)', sv)
 Q = [
  ("Ngày hội: ten = 'Tùng' (đọc cột ngành)", "SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s, lop_sinh_hoat l WHERE s.ma_lop=l.ma_lop AND s.ten='Tùng'"),
+ ("N2.1 khoa_hoc = 2024", "SELECT ma_lop FROM lop_sinh_hoat WHERE khoa_hoc = 2024"),
+ ("N2.1 bẫy 'K24'", "SELECT ma_lop FROM lop_sinh_hoat WHERE khoa_hoc = 'K24'"),
+ ("N2.2 toa_nha = 'B'", "SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha = 'B'"),
  ("N2 OR (Tùng)", "SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha='B' OR nganh='Báo chí'"),
+ ("N2.4 ba điều kiện", "SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha='B' AND nganh='Báo chí' AND khoa_hoc = 2024"),
  ("N2 AND", "SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha='B' AND nganh='Báo chí'"),
  ("N4 = 'H' (0 dòng)", "SELECT ten FROM sinh_vien WHERE ma_lop='BC24A' AND ten='H'"),
  ("N4 LIKE AND lớp", "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop='BC24A'"),

@@ -10,7 +10,7 @@
  * quả chuẩn ánh xạ được (theo giá trị, không cần đúng tên/thứ tự) vào một cột của người chơi sao cho đa tập các
  * bộ giá trị trùng nhau. Cột thừa không làm sai.
  */
-import type { BoDuLieuMvp } from '../../content/mvp/types';
+import type { BoDuLieuMvp, KhiChayMvp, LoiMvp, TheThuThachMvp } from '../../content/mvp/types';
 import { checkSingleSelect } from '../../sql-challenge/engine/sql-text';
 import { createDatabase, type Database } from '../../sql-challenge/engine/sqljs';
 
@@ -190,4 +190,19 @@ export async function chamThuThach(duLieu: BoDuLieuMvp, sqlNguoiChoi: string, sq
 /** 5 dòng đầu của một bảng / bảng ảo (nút "Xem 5 dòng đầu"). */
 export function xemDongDau(duLieu: BoDuLieuMvp, bang: string, soDong = 5): Promise<KetQuaChay> {
   return chaySql(duLieu, `SELECT * FROM ${ten(bang)} LIMIT ${soDong}`);
+}
+
+/**
+ * Lời nhân vật sau một lần chạy (dòng "Khi …" của thẻ, QĐ-092): đúng → "Khi đúng"; lỗi thiếu cột → "Khi lỗi không có cột"
+ * (không có thì "Khi lỗi"); lỗi khác → "Khi lỗi"; chạy được → "Khi chạy ra <n> dòng" đúng số dòng. Không khớp → [].
+ */
+export function phanUngSauKhiChay(the: Pick<TheThuThachMvp, 'phanUng'>, kq: KetQuaCham): LoiMvp[] {
+  const tim = (f: (k: KhiChayMvp) => boolean): LoiMvp[] => the.phanUng.find((p) => f(p.khi))?.loi ?? [];
+  if (kq.trangThai === 'dung') return tim((k) => k.kind === 'dung');
+  if (kq.trangThai === 'loi') {
+    const cot = kq.chay.loai === 'khong-co-cot' ? tim((k) => k.kind === 'loi-cot') : [];
+    return cot.length > 0 ? cot : tim((k) => k.kind === 'loi');
+  }
+  const n = kq.so.soDongNguoiChoi;
+  return tim((k) => k.kind === 'so-dong' && k.n === n);
 }

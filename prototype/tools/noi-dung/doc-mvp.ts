@@ -41,7 +41,18 @@ export interface RawNhanVat {
   /** Chữ gốc của "Xuất hiện từ" (mặc định "mở đầu"); luat-mvp.ts đổi sang Moc khi đã biết khung giờ. */
   xuatHienTu: string;
   chiQuaLoiKe: boolean;
+  /** Thẻ giới thiệu người chơi thấy (màn "Nhân vật mới", tab Nhân vật); `null` = nhân vật không có thẻ. */
+  gioiThieu: RawGioiThieu | null;
   viTri: ViTri;
+}
+
+/** Dòng "Danh xưng" / "Năm" / "Ngành" / "Câu nói" / "Giới thiệu" của nhan-vat.md — chữ NGƯỜI CHƠI thấy, không lộ tình tiết. */
+export interface RawGioiThieu {
+  danhXung: string;
+  nam: string | null;
+  nganh: string | null;
+  cauNoi: string;
+  loi: string;
 }
 
 export interface RawCanh {
@@ -106,6 +117,9 @@ export interface RawDiaDiem {
 export interface RawNgay {
   so: number;
   ten: string;
+  /** `{ngày: n · theo truyện}` → `theo-truyen` (một chuỗi, không địa điểm). */
+  kieu: 'dia-diem' | 'theo-truyen';
+  chuoi: string | null;
   duKienChinh: string;
   moNgay: string | null;
   buoiToi: string;
@@ -163,11 +177,40 @@ export type MucMvp =
   | { kind: 'consequence'; hauQua: HauQua[] }
   | { kind: 'branch'; branch: RawReNhanh }
   | { kind: 'notebook-lookup'; trang: string; phan: string }
-  | { kind: 'notebook-copy'; trang: string }
+  | { kind: 'notebook-note'; trang: string }
   | { kind: 'create-character'; tao: RawTaoNhanVat }
   | { kind: 'trial-filter'; id: string; sql: string; soDong: number; chon: { cot: string; giaTri: string } }
   | { kind: 'save-evidence'; id: string }
-  | { kind: 'ending-branch' };
+  | { kind: 'ending-branch' }
+  | { kind: 'explore'; id: string; diem: RawDiemKhamPha[] };
+
+/** Dòng con của `[KHÁM PHÁ]`: `  - <sprite> · x … · y … · rộng … → <chuỗi>[ · sau: a, b][ · nhãn: …]`. */
+export interface RawDiemKhamPha extends RawAnhDuKien {
+  chuoi: string;
+  sau: string[];
+  nhan: string | null;
+}
+
+/** Đọc một dòng con của `[KHÁM PHÁ]` (đã bỏ `  - `); sai cú pháp → ném lỗi. */
+export function docDiemKhamPha(v: string): RawDiemKhamPha {
+  const m = new RegExp(`^(.+?) → (${MA})((?: · (?:sau|nhãn): [^·]+)*)$`).exec(v.trim());
+  if (!m) throw new Error(`[KHÁM PHÁ]: dòng con phải là "<obj-… hoặc nv:<mã>> · x <n>% · y <n>% · rộng <n>% → <chuỗi>[ · sau: <chuỗi>, …][ · nhãn: <chữ>]": "${v}"`);
+  let anh: RawAnhDuKien;
+  try {
+    anh = docAnhDuKien(m[1] ?? '');
+  } catch (e) {
+    throw new Error(`[KHÁM PHÁ]: ${(e as Error).message}`, { cause: e });
+  }
+  let sau: string[] = [];
+  let nhan: string | null = null;
+  for (const phan of (m[3] ?? '').split(' · ').slice(1)) {
+    const [khoa, ...con] = phan.split(': ');
+    const gt = con.join(': ').trim();
+    if (khoa === 'sau') sau = chiaDanhSach(gt);
+    else nhan = gt;
+  }
+  return { ...anh, chuoi: m[2] ?? '', sau, nhan };
+}
 
 export interface RawChuoiMvp {
   id: string;
@@ -184,7 +227,6 @@ export interface RawTrangSo {
   loai: 'cú pháp' | 'tâm đắc' | 'lỗi thường gặp';
   trangChiLinh: string[];
   haVy: RawLine[];
-  chonDoanCode: RawChoice[] | null;
   chuThich: string | null;
   viTri: ViTri;
 }
@@ -227,6 +269,9 @@ export interface KetQuaDocMvp {
 // ---------- Bảng tên từ quy-uoc.md + nhan-vat.md ----------
 
 const DANH_XUNG = ['Bác', 'Chú', 'Cô', 'Thầy', 'Anh', 'Chị', 'Em'];
+/** Dòng của thẻ nhân vật: phần cho người viết / bộ kiểm, và phần giới thiệu người chơi thấy. */
+const TRUONG_NHAN_VAT = ['Họ tên', 'Vai', 'Biểu cảm', 'Xuất hiện từ', 'Chỉ qua lời kể', 'Trong câu'];
+const TRUONG_GIOI_THIEU = ['Danh xưng', 'Năm', 'Ngành', 'Câu nói', 'Giới thiệu'];
 
 export function tenTrongCau(ten: string): string {
   const [dau = '', ...con] = ten.split(' ');
@@ -430,7 +475,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       const chiQuaLoiKe = fields['Chỉ qua lời kể'] === 'có';
       if (vai === undefined) loi.push({ ...vt, thongBao: `nhân vật ${nv.id} thiếu dòng "- Vai: …"` });
       if (bieuCam === undefined && !chiQuaLoiKe) loi.push({ ...vt, thongBao: `nhân vật ${nv.id} thiếu dòng "- Biểu cảm: …" (hoặc "- Chỉ qua lời kể: có")` });
-      const la = Object.keys(fields).filter((k) => !['Họ tên', 'Vai', 'Biểu cảm', 'Xuất hiện từ', 'Chỉ qua lời kể', 'Trong câu'].includes(k));
+      const la = Object.keys(fields).filter((k) => ![...TRUONG_NHAN_VAT, ...TRUONG_GIOI_THIEU].includes(k));
       if (la.length > 0) loi.push({ ...vt, thongBao: `nhân vật ${nv.id} có dòng lạ: ${la.join(', ')}` });
       nv.vai = vai ?? '';
       nv.bieuCam = bieuCam === undefined ? [] : chiaDanhSach(bieuCam);
@@ -438,6 +483,19 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       nv.trongCau = fields['Trong câu'] ?? tenTrongCau(nv.ten);
       nv.xuatHienTu = fields['Xuất hiện từ'] ?? 'mở đầu';
       nv.chiQuaLoiKe = chiQuaLoiKe;
+      const coGt = TRUONG_GIOI_THIEU.filter((k) => fields[k] !== undefined);
+      if (coGt.length > 0) {
+        const thieu = ['Danh xưng', 'Câu nói', 'Giới thiệu'].filter((k) => fields[k] === undefined);
+        if (thieu.length > 0) loi.push({ ...vt, thongBao: `nhân vật ${nv.id} có thẻ giới thiệu nhưng thiếu dòng: ${thieu.join(', ')}` });
+        if (chiQuaLoiKe) loi.push({ ...vt, thongBao: `nhân vật ${nv.id} "Chỉ qua lời kể: có" nên không có thẻ giới thiệu` });
+        nv.gioiThieu = {
+          danhXung: fields['Danh xưng'] ?? '',
+          nam: fields['Năm'] ?? null,
+          nganh: fields['Ngành'] ?? null,
+          cauNoi: fields['Câu nói'] ?? '',
+          loi: fields['Giới thiệu'] ?? '',
+        };
+      }
       mvp.nhanVat.push(nv);
       nv = null;
       fields = {};
@@ -458,7 +516,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           loi.push({ ...vt, thongBao: `"${m[1]}" là người nói đặc biệt, không khai báo trong nhan-vat.md` });
           continue;
         }
-        nv = { id: m[1] ?? '', ten: m[2] ?? '', hoTen: null, trongCau: '', vai: '', bieuCam: [], xuatHienTu: 'mở đầu', chiQuaLoiKe: false, viTri: vt };
+        nv = { id: m[1] ?? '', ten: m[2] ?? '', hoTen: null, trongCau: '', vai: '', bieuCam: [], xuatHienTu: 'mở đầu', chiQuaLoiKe: false, gioiThieu: null, viTri: vt };
         continue;
       }
       if (!nv) {
@@ -674,6 +732,13 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           break;
         case 'ngay': {
           if (!ngay) break;
+          if (ngay.kieu === 'theo-truyen') {
+            laNgoai(['Chuỗi'], `ngày ${ngay.so} (theo truyện)`);
+            ngay.chuoi = canCo(f, 'Chuỗi', vt, `ngày ${ngay.so} (theo truyện)`) ?? '';
+            lich.ngay.push(ngay);
+            ngay = null;
+            break;
+          }
           laNgoai(['Dữ kiện chính', 'Mở ngày', 'Buổi tối'], `ngày ${ngay.so}`);
           ngay.duKienChinh = canCo(f, 'Dữ kiện chính', vt, `ngày ${ngay.so}`) ?? '';
           ngay.buoiToi = canCo(f, 'Buổi tối', vt, `ngày ${ngay.so}`) ?? '';
@@ -716,13 +781,14 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         else if (line === '## Mở đầu') muc = 'mo-dau';
         else if (line === '## Kết') muc = 'ket';
         else {
-          const n = /^## (.+) \{ngày: (\d+)\}$/.exec(line);
+          const n = /^## (.+) \{ngày: (\d+)( · theo truyện)?\}$/.exec(line);
           const h = /^## (.+) \{ngày họp\}$/.exec(line);
           if (n) {
             muc = 'ngay';
-            ngay = { so: Number(n[2]), ten: n[1] ?? '', duKienChinh: '', moNgay: null, buoiToi: '', viTri: viTri(), dongChinh: viTri().dong };
+            const kieu = n[3] ? 'theo-truyen' : 'dia-diem';
+            ngay = { so: Number(n[2]), ten: n[1] ?? '', kieu, chuoi: null, duKienChinh: '', moNgay: null, buoiToi: '', viTri: viTri(), dongChinh: viTri().dong };
           } else if (h) muc = 'ngay-hop';
-          else throw new Error(`tiêu đề lạ trong lich.md "${line}" — dùng "## Luật", "## Mở đầu", "## <Tên> {ngày: n}", "## <Tên> {ngày họp}", "## Kết"`);
+          else throw new Error(`tiêu đề lạ trong lich.md "${line}" — dùng "## Luật", "## Mở đầu", "## <Tên> {ngày: n}", "## <Tên> {ngày: n · theo truyện}", "## <Tên> {ngày họp}", "## Kết"`);
         }
         return i;
       }
@@ -741,6 +807,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
     let branch: RawReNhanh | null = null;
     let pick: (MucMvp & { kind: 'line-pick' }) | null = null;
     let tao: RawTaoNhanVat | null = null;
+    let kham: (MucMvp & { kind: 'explore' }) | null = null;
     let choSql: (MucMvp & { kind: 'trial-filter' }) | (MucMvp & { kind: 'projector' }) | null = null;
 
     const dongCon = (): void => {
@@ -748,6 +815,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       branch = null;
       pick = null;
       tao = null;
+      kham = null;
     };
     const hetChoSql = (): void => {
       const cho = choSql;
@@ -825,7 +893,11 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           else throw new Error(`[TẠO NHÂN VẬT ${tao.truong}]: dòng con phải là "${tao.truong === 'ten' ? 'xúc xắc: <lời>' : 'lựa chọn: A · B · C'}"`);
           return i;
         }
-        throw new Error(`dòng con không thuộc [HỎI], [RẼ NHÁNH] hay [TẠO NHÂN VẬT]: "${line}"`);
+        if (kham) {
+          kham.diem.push(docDiemKhamPha(line.slice(4)));
+          return i;
+        }
+        throw new Error(`dòng con không thuộc [HỎI], [RẼ NHÁNH], [TẠO NHÂN VẬT] hay [KHÁM PHÁ]: "${line}"`);
       }
       if (line.startsWith('|')) {
         if (!pick) throw new Error('bảng nằm ngoài [CHỌN DÒNG]');
@@ -891,18 +963,23 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         return add({ kind: 'branch', branch });
       }
       if ((m = new RegExp(`^- \\[TRA SỔ (${MA}) · (cú pháp|tâm đắc|lỗi thường gặp)\\]$`).exec(line))) return add({ kind: 'notebook-lookup', trang: m[1] ?? '', phan: m[2] ?? '' });
-      if ((m = new RegExp(`^- \\[CHÉP SỔ (${MA})\\]$`).exec(line))) return add({ kind: 'notebook-copy', trang: m[1] ?? '' });
+      if ((m = new RegExp(`^- \\[GHI SỔ (${MA})\\]$`).exec(line))) return add({ kind: 'notebook-note', trang: m[1] ?? '' });
+      if (line.startsWith('- [CHÉP SỔ ')) throw new Error('[CHÉP SỔ] đã bỏ (QĐ-092): dùng [GHI SỔ <trang>] — dòng "Vào sổ cá nhân" của trang tự vào sổ cá nhân');
       if ((m = /^- \[TẠO NHÂN VẬT (ten|nganh)\] ([a-z-]+)(?: \(([a-z]+)\))?: "(.*)"$/.exec(line))) {
         tao = { truong: m[1] === 'ten' ? 'ten' : 'nganh', asker: { speaker: m[2] ?? '', expression: m[3] ?? null, text: m[4] ?? '' }, xucXac: null, luaChon: [] };
         return add({ kind: 'create-character', tao });
       }
-      if ((m = new RegExp(`^- \\[LỌC THỬ (${MA}) · (\\d+) dòng · chọn ([a-z_][a-z0-9_]*) = (\\S+)\\]$`).exec(line))) {
+      if ((m = new RegExp(`^- \\[LỌC THỬ (${MA}) · (\\d+) dòng · chọn ([a-z_][a-z0-9_]*) = (.+)\\]$`).exec(line))) {
         const item: MucMvp & { kind: 'trial-filter' } = { kind: 'trial-filter', id: m[1] ?? '', sql: '', soDong: Number(m[2]), chon: { cot: m[3] ?? '', giaTri: m[4] ?? '' } };
         choSql = item;
         return add(item);
       }
       if ((m = new RegExp(`^- \\[LƯU BẰNG CHỨNG (${MA})\\]$`).exec(line))) return add({ kind: 'save-evidence', id: m[1] ?? '' });
       if (line === '- [RẼ KẾT]') return add({ kind: 'ending-branch' });
+      if ((m = new RegExp(`^- \\[KHÁM PHÁ (${MA})\\]$`).exec(line))) {
+        kham = { kind: 'explore', id: m[1] ?? '', diem: [] };
+        return add(kham);
+      }
       if (line.startsWith('- [') && /^- \[[A-ZÀ-Ỹ]/.test(line)) {
         const tu = /^- \[([^\]·\s]+(?: [^\]·\s]+)*)/.exec(line)?.[1] ?? '';
         throw new Error(`chỉ dẫn "[${tu}…]" không có trong đặc tả §18.6 hoặc viết sai chính tả: "${line}"`);
@@ -921,7 +998,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
   // ---------- so-tay/<trang>.md ----------
   function docSoTay({ viTri }: { viTri: () => ViTri }) {
     let trang: RawTrangSo | null = null;
-    let muc: 'linh' | 'ha-vy' | 'code' | 'so-ca-nhan' | null = null;
+    let muc: 'linh' | 'ha-vy' | 'so-ca-nhan' | null = null;
     const dong = (line: string, i: number): number => {
       if (line.trim() === '') return i;
       if (line.startsWith('# ')) {
@@ -929,7 +1006,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         const m = new RegExp(`^# (${MA}) — (.+) \\{trang sổ: (${MA})\\}$`).exec(line);
         if (!m) throw new Error(`tiêu đề trang sổ sai quy ước "${line}" — viết "# <mã> — <Tên> {trang sổ: <mã>}"`);
         if (m[1] !== m[3]) throw new Error(`mã đầu tiêu đề "${m[1] ?? ''}" khác {trang sổ: ${m[3] ?? ''}}`);
-        trang = { id: m[1] ?? '', ten: m[2] ?? '', loai: 'cú pháp', trangChiLinh: [], haVy: [], chonDoanCode: null, chuThich: null, viTri: viTri() };
+        trang = { id: m[1] ?? '', ten: m[2] ?? '', loai: 'cú pháp', trangChiLinh: [], haVy: [], chuThich: null, viTri: viTri() };
         mvp.soTay.push(trang);
         return i;
       }
@@ -937,11 +1014,9 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       if (line.startsWith('## ')) {
         if (line === '## Trang chị Linh') muc = 'linh';
         else if (line === '## Hà Vy') muc = 'ha-vy';
-        else if (line === '## Chọn đoạn code') {
-          muc = 'code';
-          trang.chonDoanCode = [];
-        } else if (line === '## Vào sổ cá nhân') muc = 'so-ca-nhan';
-        else throw new Error(`mục lạ trong trang sổ "${line}" — dùng "## Trang chị Linh", "## Hà Vy", "## Chọn đoạn code", "## Vào sổ cá nhân"`);
+        else if (line === '## Vào sổ cá nhân') muc = 'so-ca-nhan';
+        else if (line === '## Chọn đoạn code') throw new Error('mục "## Chọn đoạn code" đã bỏ (QĐ-092): dòng "Vào sổ cá nhân" tự vào sổ khi kịch bản [GHI SỔ]');
+        else throw new Error(`mục lạ trong trang sổ "${line}" — dùng "## Trang chị Linh", "## Hà Vy", "## Vào sổ cá nhân"`);
         return i;
       }
       if (muc === null) {
@@ -957,12 +1032,6 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       if (muc === 'ha-vy') {
         if (!line.startsWith('- **')) throw new Error(`mục "## Hà Vy" chỉ có lời thoại "- **ha-vy** (…): …": "${line}"`);
         trang.haVy.push(parseSpoken(line.slice(2)));
-        return i;
-      }
-      if (muc === 'code') {
-        const c = parseChoice(`  ${line}`);
-        if (!c || !trang.chonDoanCode) throw new Error(`lựa chọn đoạn code sai quy ước "${line}"`);
-        trang.chonDoanCode.push(c);
         return i;
       }
       const ct = /^- Chú thích: (.+)$/.exec(line);
