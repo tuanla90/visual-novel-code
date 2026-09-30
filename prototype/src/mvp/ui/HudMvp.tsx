@@ -29,7 +29,8 @@ export interface HudMvpProps {
   /** Cài đặt (tốc độ chữ, âm thanh) — cùng bảng `AudioSettingsModal` của prototype. */
   onMoCaiDat: () => void;
   onBatDauLai: () => void;
-  onVeTieuDe: () => void;
+  /** Bỏ trống = không có màn tiêu đề (bản chơi thử chỉ MVP) → ẩn mục "Về màn tiêu đề". */
+  onVeTieuDe?: () => void;
 }
 
 /** Thanh uy tín: `con` vạch đầy trên `tong`. */
@@ -211,13 +212,15 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
                   <IconSliders width={16} height={16} aria-hidden="true" />
                   <span>Cài đặt (tốc độ chữ, âm thanh)</span>
                 </button>
-                <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onVeTieuDe)}>
-                  <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M3 11.5 12 4l9 7.5" />
-                    <path d="M5.5 10v10h13V10" />
-                  </svg>
-                  <span>Về màn tiêu đề</span>
-                </button>
+                {onVeTieuDe ? (
+                  <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onVeTieuDe)}>
+                    <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M3 11.5 12 4l9 7.5" />
+                      <path d="M5.5 10v10h13V10" />
+                    </svg>
+                    <span>Về màn tiêu đề</span>
+                  </button>
+                ) : null}
                 <button type="button" role="menuitem" className="topbar__menu-item topbar__menu-item--danger" onClick={chon(() => setXacNhan(true))}>
                   <IconRotateCcw width={16} height={16} aria-hidden="true" />
                   <span>Bắt đầu lại bản MVP</span>

@@ -1526,6 +1526,11 @@
   border-color: transparent;
   color: #111;
 }
+.mvp-keo__noi-sql {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7em;
+  opacity: 0.7;
+}
 .mvp-keo__dk select {
   min-height: 36px;
   font-family: var(--font-mono, monospace);
@@ -1639,4 +1644,220 @@
   flex-wrap: wrap;
   gap: 6px;
   justify-content: center;
+}
+
+/* ---------- Màn tra dữ liệu kiểu "bàn làm việc" (chương 1, 30/09/2026) ----------
+   Nền bàn thật (--anh-ban, ảnh Topview ở src/assets/mvp/giao-dien/ hoặc nền cảnh), ô tra là màn hình laptop có viền,
+   cột phải là bảng bần (--anh-bang-ban), thẻ bảng / sổ là thẻ giấy kẻ dòng (--anh-the-giay), giấy nhớ là giấy dán
+   (--anh-giay-nho). Thiếu ảnh nào thì dùng màu thay cho ảnh đó. */
+.mvp-chal--ban {
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(0, 0, 0, 0) 0, rgba(8, 12, 18, 0.55) 100%),
+    var(--anh-ban, none) center / cover no-repeat,
+    linear-gradient(160deg, #6b4a31, #3b2818);
+}
+.mvp-chal--ban.co-anh-ban {
+  background:
+    linear-gradient(rgba(10, 14, 20, 0.28), rgba(10, 14, 20, 0.28)),
+    var(--anh-ban) center / cover no-repeat;
+}
+.mvp-chal--ban .terminal-bar {
+  color: #f4ead7;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+.mvp-chal--ban .terminal-bar__brand {
+  color: #fff6e3;
+}
+/* Màn hình laptop: viền đen bo tròn, chấm camera, bóng đổ xuống bàn. */
+.mvp-chal--ban .mvp-chal__khung {
+  position: relative;
+  border: 14px solid #1b1f27;
+  border-top-width: 22px;
+  border-radius: 18px;
+  background: #122126;
+  box-shadow:
+    0 0 0 1px #3a4150,
+    0 18px 40px rgba(0, 0, 0, 0.55);
+}
+.mvp-chal--ban .mvp-chal__khung::before {
+  content: '';
+  position: sticky;
+  top: -16px;
+  display: block;
+  width: 7px;
+  height: 7px;
+  margin: -16px auto 9px;
+  border-radius: 50%;
+  background: #3d4556;
+  box-shadow: inset 0 0 0 2px #262c38;
+}
+/* Bảng bần: cột phải. */
+.mvp-chal--ban .mvp-chal__phai {
+  padding: 14px;
+  border-radius: 10px;
+  border: 10px solid #7a5230;
+  background: var(--anh-bang-ban, none) center / 320px repeat, #b58a5c;
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.35),
+    0 14px 30px rgba(0, 0, 0, 0.45);
+}
+/* Thẻ giấy trên bảng bần: chữ tối, nền thẻ kẻ dòng. */
+.mvp-chal--ban .mvp-chal__phai .chal-card {
+  --c-text: #2a2320;
+  --c-text-muted: #5b5048;
+  --c-border: #d8cdb8;
+  color-scheme: light;
+  color: #2a2320;
+  border: 0;
+  border-radius: 3px;
+  background: var(--anh-the-giay, none) top / cover no-repeat, #fbf7ee;
+  box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.35);
+  position: relative;
+}
+.mvp-chal--ban .mvp-chal__phai .chal-card::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff8a80, #c62828 60%, #7f1d1d);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.45);
+}
+.mvp-chal--ban .mvp-chal__phai .chal-card:nth-child(odd) {
+  transform: rotate(-0.6deg);
+}
+.mvp-chal--ban .mvp-chal__phai .chal-card:nth-child(even) {
+  transform: rotate(0.5deg);
+}
+.mvp-chal--ban .mvp-chal__phai code,
+.mvp-chal--ban .mvp-chal__phai .schema__name {
+  color: #1d3b53;
+  background: rgba(29, 59, 83, 0.08);
+}
+.mvp-chal--ban .mvp-chal__phai .btn {
+  background: #fffaf0;
+  color: #2a2320;
+  border-color: #b9ab93;
+}
+.mvp-chal--ban .mvp-chal__phai .btn:hover:not(:disabled) {
+  background: #fff3d6;
+  border-color: #8a7353;
+}
+.mvp-chal--ban .mvp-chal__phai .btn--primary {
+  background: #f2b23a;
+  border-color: #d99a24;
+  color: #2a1a05;
+}
+/* Giấy nhớ trong ô lắp câu: giấy dán, nghiêng nhẹ xen kẽ. */
+.mvp-chal--ban .mvp-giay {
+  background: var(--anh-giay-nho, none) center / cover no-repeat, #fbe38e;
+}
+.mvp-chal--ban .mvp-giay:nth-child(odd) {
+  transform: rotate(-1.5deg);
+}
+.mvp-chal--ban .mvp-giay:nth-child(even) {
+  transform: rotate(1.2deg);
+}
+.mvp-chal--ban .mvp-giay:hover,
+.mvp-chal--ban .mvp-giay.is-chon {
+  transform: rotate(0) translateY(-2px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mvp-chal--ban .mvp-giay {
+    transition: transform 0.15s ease;
+  }
+}
+@media (max-width: 900px) {
+  .mvp-chal--ban .mvp-chal__khung {
+    border-width: 10px;
+    border-top-width: 16px;
+  }
+  .mvp-chal--ban .mvp-chal__phai {
+    border-width: 6px;
+  }
+}
+/* Laptop: viền đen đậm + vòng sáng mảnh để tách khỏi màn hình; màn hình xanh than sáng hơn viền. */
+.mvp-chal--ban .mvp-chal__khung {
+  border-color: #0a0c10;
+  background: #16292f;
+  box-shadow:
+    inset 0 0 0 2px #2d3a44,
+    0 0 0 2px #4a5264,
+    0 18px 40px rgba(0, 0, 0, 0.55);
+}
+/* "Giấy nhớ liên quan": không thẻ giấy bọc ngoài, mỗi giấy nhớ là một tờ giấy dán ghim lên bần. */
+.mvp-chal--ban .mvp-chal__phai .mvp-chal__manhmoi {
+  background: none;
+  box-shadow: none;
+  transform: none;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.mvp-chal--ban .mvp-chal__phai .mvp-chal__manhmoi::before {
+  content: none;
+}
+.mvp-chal--ban .mvp-chal__manhmoi .mvp-chal__h3 {
+  justify-self: start;
+  margin: 0;
+  padding: 3px 10px;
+  border-radius: 3px;
+  background: rgba(42, 35, 32, 0.78);
+  color: #fff6e3;
+  font-size: var(--fs-sm);
+}
+.mvp-chal--ban .mvp-chal__manhmoi .mvp-the {
+  --c-text-muted: #6b5a3c;
+  position: relative;
+  border: 0;
+  border-radius: 2px;
+  background: var(--anh-giay-nho, none) center / cover no-repeat, #fbe38e;
+  color: #2a2320;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.35);
+  transform: rotate(-0.8deg);
+}
+.mvp-chal--ban .mvp-chal__manhmoi .mvp-the:nth-of-type(even) {
+  transform: rotate(0.9deg);
+}
+.mvp-chal--ban .mvp-chal__manhmoi .mvp-the::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #90caf9, #1565c0 60%, #0d3c78);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.45);
+}
+.mvp-chal--ban .mvp-chal__manhmoi .mvp-the__tieude {
+  font-family: 'Patrick Hand', var(--font-ui, system-ui), cursive;
+  font-size: 1.35rem;
+}
+/* Điện thoại dọc: laptop được ưu tiên chỗ, bảng bần thấp lại. */
+.game--portrait .mvp-chal--ban .mvp-chal__phai {
+  max-height: 28vh;
+  padding: 8px;
+  border-width: 5px;
+}
+.game--portrait .mvp-chal--ban .mvp-chal__khung {
+  border-width: 8px;
+  border-top-width: 14px;
+  border-radius: 12px;
+}
+@media (max-width: 768px) and (orientation: portrait) {
+  .mvp-chal--ban .mvp-chal__phai {
+    max-height: 28vh;
+    padding: 8px;
+    border-width: 5px;
+  }
+  .mvp-chal--ban .mvp-chal__khung {
+    border-width: 8px;
+    border-top-width: 14px;
+    border-radius: 12px;
+  }
 }

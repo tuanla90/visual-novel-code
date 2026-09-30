@@ -27,6 +27,7 @@ import { giaTriTuHoSo } from '../engine/giay-nho';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import { nhayToi, type MaDiemNhayMvp } from '../engine/tu-choi';
 import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
+import { anhNen } from './anh-mvp';
 import { BAN_DO_MVP } from './ban-do-mvp';
 import { BangQuanSatMvp } from './BangQuanSatMvp';
 import { BanDoMvp } from './BanDoMvp';
@@ -46,7 +47,8 @@ import { TaoNhanVatMvp } from './TaoNhanVatMvp';
 import { TraSoMvp } from './TrangSoMvp';
 
 export interface ManChoiMvpProps {
-  onVeTieuDe: () => void;
+  /** Bỏ trống = bản chơi thử chỉ MVP, không có màn tiêu đề. */
+  onVeTieuDe?: () => void;
 }
 
 function soHoSo(s: TrangThaiMvp): number {
@@ -232,7 +234,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           asker: { speaker: kn.nut.asker.speaker, text: dienTen(kn.nut.asker.text) },
           choices: kn.nut.choices.map((c) => ({ id: c.id, text: dienTen(c.text), correct: c.correct, feedback: [] })),
         } as unknown as MultipleChoiceQuestion;
-        return <MultipleChoice question={q} attempts={kn.lanThu} gameKey={s.batDauLuc} askerLabel={tenNguoiNoi(kb, kn.nut.asker.speaker)} onChoose={(id) => hanhDong({ type: 'chon', luaChon: id })} />;
+        return <MultipleChoice question={q} attempts={kn.lanThu} gameKey={s.batDauLuc} askerLabel={tenNguoiNoi(kb, kn.nut.asker.speaker)} onChoose={(id) => hanhDong({ type: 'chon', luaChon: id })} anNhacChon />;
       }
       case 'branch':
         return (
@@ -292,6 +294,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             dienTen={dienTen}
             onXong={() => hanhDong({ type: 'xong-thu-thach', thuThach: kn.thuThach.id })}
             giayNho={giaTriTuHoSo(kb, s.hoSo)}
+            noi={kb.canh.find((c) => c.id === s.canh)?.ten}
+            nenCanh={anhNen(s.canh)}
           />
         );
       case 'effect':

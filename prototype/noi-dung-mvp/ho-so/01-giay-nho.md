@@ -1,6 +1,6 @@
 ## Giấy nhớ (clue-…) — người chơi tự tạo trên bảng hồ sơ vụ
 
-<!-- Chữ của clue-quyen-du-lieu, clue-phieu-tra-cuu, clue-ten-tep là chữ TẠM của phiên logic (30/09) — phiên truyện viết lại; giữ mã và "Giá trị cho trình dựng". -->
+<!-- Chữ do phiên truyện viết (30/09); mã và "Giá trị cho trình dựng" thuộc phiên logic. -->
 
 ### clue-chu-ky-h — [H]
 - Tiêu đề: Chữ ký tay (chỉ đọc được chữ H)
@@ -12,18 +12,18 @@
 - Tiêu đề: Hộp tòa B, mở 9h sáng thứ Hai
 - Giá trị cho trình dựng: B
 - Nguồn: Lời {{nv.bac-tu.trong-cau}}, sảnh tòa B
-- Nội dung: Bác và cô phụ trách mở hộp 9h sáng thứ Hai; thư nằm trên cùng.
+- Nội dung: Bác và cô phụ trách mở hộp 9h sáng thứ Hai; thư nằm trên cùng. Từ 7 giờ tới lúc mở hộp, ra vào tòa B chỉ có sinh viên các lớp sinh hoạt ở tòa này.
 
 ### clue-bao-chi-k24 — [Báo chí K24]
 - Tiêu đề: Thẻ lịch khoa Báo chí K24 mắc ở khe hộp
 - Giá trị cho trình dựng: Báo chí · K24
 - Nguồn: Khe hộp kiến nghị, sảnh tòa B
-- Nội dung: Phần in còn nguyên "Khoa Báo chí – Truyền thông · K24"; dòng viết tay "Họ tên / Lớp" bị xé mất. Chỉ ra cả một khóa (2 lớp).
+- Nội dung: Phần in còn nguyên "Khoa Báo chí – Truyền thông · K24"; dòng viết tay "Họ tên / Lớp" bị xé mất. Còn biết chủ thẻ học khoa Báo chí; lớp nào thì không.
 
 ### clue-quyen-du-lieu — [Tài khoản CLB]
 - Tiêu đề: Tài khoản CLB
 - Nguồn: {{nv.co-hanh}}, Phòng Đào tạo
-- Nội dung: Tài khoản clb_tham_tu chỉ xem được bảng lớp sinh hoạt. Muốn xem bảng sinh viên phải có phiếu yêu cầu tra cứu của Phòng CTSV.
+- Nội dung: Tài khoản clb_tham_tu trên laptop CLB chỉ xem được bảng lớp sinh hoạt: mã lớp, ngành, khóa, tòa nhà. Bảng có thông tin cá nhân phải có phiếu yêu cầu tra cứu. Tra gì máy cũng ghi lại.
 
 ### clue-can-ma-va-can-cu — [Cần mã và căn cứ]
 - Tiêu đề: Cần mã và căn cứ
@@ -33,7 +33,7 @@
 ### clue-phieu-tra-cuu — [Phiếu tra cứu]
 - Tiêu đề: Phiếu yêu cầu tra cứu
 - Nguồn: {{nv.co-lan}} ký, {{nv.quan}} giám sát, Phòng CTSV
-- Nội dung: Cho CLB xem bảng sinh viên, bốn cột: mã, họ đệm, tên, mã lớp. Chỉ để lập căn cứ, không tự tra sổ niêm phong.
+- Nội dung: Cô Lan ký, anh Quân (Hội sinh viên) ký giám sát. Căn cứ: hai lớp BC24A, BC23A. Mở bảng sinh viên, bốn cột: mã, họ đệm, tên, mã lớp. Chỉ để lập căn cứ; tra sổ niêm phong là việc của cô phụ trách.
 
 ### clue-loi-chu-cuong — [Lời chú Cường]
 - Tiêu đề: Phong bì nâu trao tay 6:45 sáng thứ Hai

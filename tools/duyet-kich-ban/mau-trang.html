@@ -1,0 +1,330 @@
+<title>Duyệt kịch bản chương 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Bố cục: hồ sơ vụ — mỗi chuỗi hội thoại là một tờ hồ sơ: sân khấu (nền + người) bên trái, danh mục ảnh bên phải,
+   thoại bên dưới; giấy nhớ vàng cho chỗ lệch và thoại đề xuất. */
+:root{
+  --ground:#E8ECEF; --surface:#FFFFFF; --sunk:#F2F4F6; --ink:#17202B; --muted:#55616E; --faint:#8A95A1; --rule:#D2D9E0;
+  --accent:#1F4E79; --accent-ink:#FFFFFF;
+  --note:#E9C33F; --note-bg:#FFF3C4; --note-ink:#5A4500;
+  --ok:#2F7D4F; --ok-bg:#DCEFE3; --fix:#B3372B; --fix-bg:#F7DEDA;
+  --lend:#9A5C0C; --lend-bg:#FAEBD4; --art:#5048A6; --art-bg:#E8E6F8; --miss:#B3372B; --miss-bg:#F7DEDA;
+  --card:#141B24; --card-ink:#E7ECF1; --edit:#8A4FB0; --edit-bg:#F1E6F8; --shade:rgba(15,20,27,.62);
+  --ui:"Be Vietnam Pro",system-ui,"Segoe UI",sans-serif; --read:"Literata",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --ground:#0F141A; --surface:#161D25; --sunk:#1B232D; --ink:#E3E9EF; --muted:#9BA8B5; --faint:#6F7C89; --rule:#2A3440;
+  --accent:#8DB8E2; --accent-ink:#0F141A;
+  --note:#E9C33F; --note-bg:#3A3112; --note-ink:#F2DC8C;
+  --ok:#7ED3A0; --ok-bg:#173826; --fix:#F29487; --fix-bg:#44211C;
+  --lend:#E9B46A; --lend-bg:#3A2A14; --art:#B1ACF2; --art-bg:#27244A; --miss:#F29487; --miss-bg:#44211C;
+  --card:#05080B; --card-ink:#E7ECF1; --edit:#D4A6F0; --edit-bg:#34223F; --shade:rgba(0,0,0,.66);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0F141A; --surface:#161D25; --sunk:#1B232D; --ink:#E3E9EF; --muted:#9BA8B5; --faint:#6F7C89; --rule:#2A3440;
+  --accent:#8DB8E2; --accent-ink:#0F141A;
+  --note:#E9C33F; --note-bg:#3A3112; --note-ink:#F2DC8C;
+  --ok:#7ED3A0; --ok-bg:#173826; --fix:#F29487; --fix-bg:#44211C;
+  --lend:#E9B46A; --lend-bg:#3A2A14; --art:#B1ACF2; --art-bg:#27244A; --miss:#F29487; --miss-bg:#44211C;
+  --card:#05080B; --card-ink:#E7ECF1; --edit:#D4A6F0; --edit-bg:#34223F; --shade:rgba(0,0,0,.66);
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:15px/1.55 var(--ui);padding-inline:16px;padding-block:0 80px}
+.wrap{max-width:1200px;margin:0 auto}
+header.top{padding-block:28px 8px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font:600 clamp(26px,4vw,36px)/1.15 var(--read);margin:.35em 0 .3em;text-wrap:balance}
+.lede{max-width:72ch;color:var(--muted);margin:0}
+.lede b{color:var(--ink);font-weight:600}
+.localnote{margin:12px 0 0;padding:9px 12px;border-radius:6px;background:var(--lend-bg);color:var(--lend);font-size:13.5px;max-width:72ch}
+.facts{display:flex;flex-wrap:wrap;gap:10px 26px;margin:18px 0 6px;font-variant-numeric:tabular-nums}
+.fact{display:flex;flex-direction:column}
+.fact .v{font:600 22px/1.2 var(--ui)} .fact .k{font-size:12px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:12px 0 0;font-size:13px;color:var(--muted);align-items:center}
+.st{display:inline-block;font:500 11.5px/1.2 var(--ui);padding:3px 7px;border-radius:4px;white-space:nowrap}
+.st.co{background:var(--ok-bg);color:var(--ok)} .st.muon{background:var(--lend-bg);color:var(--lend)}
+.st.art{background:var(--art-bg);color:var(--art)} .st.thieu{background:var(--miss-bg);color:var(--miss)}
+.progress{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ground);border-bottom:1px solid var(--rule);
+  padding-block:10px;margin-bottom:6px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13px}
+.progress .bar{flex:1 1 140px;height:6px;border-radius:3px;background:var(--rule);overflow:hidden;display:flex;min-width:100px}
+.progress .bar i{display:block;height:100%}
+.progress .cnt{font-variant-numeric:tabular-nums;color:var(--muted)} .progress .cnt b{color:var(--ink)}
+.filters{display:flex;gap:4px;flex-wrap:wrap}
+.filters button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.store{font-size:12px;color:var(--faint)}
+nav.jump{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 0}
+nav.jump a{font:500 12px/1 var(--ui);color:var(--muted);text-decoration:none;padding:6px 8px;border-radius:4px;border:1px solid var(--rule);background:var(--surface)}
+nav.jump a:hover{color:var(--ink)}
+.band{background:var(--card);color:var(--card-ink);border-radius:8px;margin:34px 0 14px;padding:18px 18px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
+.band .bk{font:500 11.5px/1 var(--mono);letter-spacing:.3em;color:var(--note)}
+.band .bt{font:600 19px/1.3 var(--read)}
+section.scene{background:var(--surface);border:1px solid var(--rule);border-radius:10px;margin-bottom:18px;overflow:hidden}
+.shead{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:baseline;padding:16px 18px 12px;border-bottom:1px solid var(--rule)}
+.snum{font:500 26px/1 var(--mono);color:var(--faint);font-variant-numeric:tabular-nums}
+.stitle{font:600 18px/1.3 var(--ui);text-wrap:balance;min-width:0}
+.smeta{grid-column:2;display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12.5px;color:var(--muted);align-items:center}
+.sid{font:400 12px/1.3 var(--mono);color:var(--faint);word-break:break-all}
+.chip{font:500 11.5px/1.2 var(--ui);padding:3px 7px;border-radius:4px;background:var(--sunk);border:1px solid var(--rule);color:var(--muted);white-space:nowrap}
+.chip.quest{border-color:var(--accent);color:var(--accent)}
+.top2{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;padding:16px 18px 4px}
+.stage{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:6px;overflow:hidden;background:var(--sunk);border:1px solid var(--rule)}
+.stage>img.bg{width:100%;height:100%;object-fit:cover;display:block}
+.stage .cast{position:absolute;left:0;right:0;bottom:0;height:86%;display:flex;justify-content:center;align-items:flex-end;gap:2%;pointer-events:none}
+.stage .cast figure{margin:0;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;position:relative}
+.stage .cast img{height:100%;width:auto;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
+.stage .cast .ph{height:78%;aspect-ratio:9/16;border:2px dashed var(--miss);border-radius:6px;background:color-mix(in srgb,var(--miss-bg) 70%,transparent);display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;color:var(--miss);padding:4px}
+.stage .cast figcaption{position:absolute;bottom:6px;font:500 10.5px/1.2 var(--ui);background:var(--shade);color:#fff;padding:3px 6px;border-radius:3px;white-space:nowrap}
+.stage .cast figure.muon figcaption{background:var(--lend);}
+.stage .tag{position:absolute;left:8px;top:8px;font:500 11px/1 var(--ui);padding:4px 6px;border-radius:4px;background:var(--shade);color:#fff}
+.stage .empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--faint);font-size:13px}
+.alt{display:flex;gap:10px;align-items:center;margin-top:8px;font-size:12.5px;color:var(--muted)}
+.alt img{width:120px;border-radius:4px;border:1px solid var(--rule)}
+.assets{display:flex;flex-direction:column;gap:8px;min-width:0}
+.sub{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 4px}
+.asset{display:grid;grid-template-columns:56px minmax(0,1fr);gap:10px;align-items:start;padding:8px;border:1px solid var(--rule);border-radius:6px;background:var(--sunk)}
+.asset .th{width:56px;height:56px;border-radius:4px;background:var(--surface);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.asset .th img{max-width:100%;max-height:100%;object-fit:contain}
+.asset .th.none{background:repeating-linear-gradient(135deg,transparent 0 7px,color-mix(in srgb,var(--rule) 60%,transparent) 7px 8px)}
+.asset .ab{display:flex;flex-direction:column;gap:3px;min-width:0}
+.asset .al{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;font-size:12px;color:var(--muted)}
+.plan{font-size:13.5px;line-height:1.45;cursor:text;border-radius:4px;padding:1px 4px;margin:0 -4px}
+.plan:hover{background:var(--surface)}
+.plan.none{color:var(--faint);font-style:italic}
+.lech{margin:12px 18px 4px;background:var(--note-bg);color:var(--note-ink);border-radius:4px;padding:10px 14px 10px 14px;border-left:4px solid var(--note)}
+.lech b{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.lech ul{margin:6px 0 0;padding-left:18px;font-size:13.5px}
+.script{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;padding:14px 18px 6px}
+.script.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.col{min-width:0;display:flex;flex-direction:column;gap:2px}
+.col.dx{background:color-mix(in srgb,var(--note-bg) 55%,transparent);border-radius:6px;padding:8px 10px;border:1px solid color-mix(in srgb,var(--note) 45%,transparent)}
+.col .why{font-size:12.5px;color:var(--note-ink);margin:0 0 6px}
+.ln{display:grid;grid-template-columns:118px minmax(0,1fr);gap:10px;padding:5px 0;border-bottom:1px dashed var(--rule);font:400 15.5px/1.5 var(--read)}
+.ln:last-child{border-bottom:0}
+.who{font:600 12.5px/1.35 var(--ui);color:var(--ink);padding-top:3px;display:flex;flex-direction:column;gap:2px}
+.who small{font:400 11px/1.2 var(--mono);color:var(--faint)}
+.who small.muon{color:var(--lend)}
+.t{cursor:text;border-radius:4px;padding:1px 4px;margin:0 -4px;min-width:0;overflow-wrap:anywhere}
+.t:hover{background:var(--sunk)}
+.ln.stage-l .t,.ln.narr .t{font-style:italic;color:var(--muted)}
+.ln.think .t{color:var(--muted)}
+.ln.cardl{display:block;background:var(--card);color:var(--card-ink);text-align:center;border-radius:4px;padding:8px;margin:4px 0;border:0}
+.ln.cardl .t:hover{background:transparent}
+.ln.cmd .who{font:500 11px/1.35 var(--mono);color:var(--accent)}
+.opts{margin:4px 0 0;padding-left:16px;font:400 13.5px/1.45 var(--ui);color:var(--muted)}
+pre.code{margin:4px 0;white-space:pre-wrap;word-break:break-word;font:12.5px/1.5 var(--mono);background:var(--sunk);border:1px solid var(--rule);border-radius:6px;padding:8px 10px;grid-column:1/-1}
+.ln.khung .who{font:500 11px/1.35 var(--mono);color:var(--accent)}
+.ln.khung .t{font:400 13px/1.5 var(--mono);color:var(--muted);cursor:default}
+.ln.khung .t:hover{background:transparent}
+.ln.missing .t{color:var(--miss);font-style:italic}
+.tam{display:inline-block;font:600 10.5px/1 var(--ui);letter-spacing:.04em;text-transform:uppercase;color:var(--lend);background:var(--lend-bg);border-radius:3px;padding:3px 5px;margin-right:6px;vertical-align:2px;font-style:normal}
+.chip.tamc{border-color:var(--lend);color:var(--lend)}
+.tt{margin:6px 18px 0;padding:8px 12px;border:1px dashed var(--rule);border-radius:6px;background:var(--sunk)}
+.edited{box-shadow:inset 3px 0 0 var(--edit);background:var(--edit-bg)}
+.review{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-start;padding:12px 18px 14px;background:var(--sunk);border-top:1px solid var(--rule);margin-top:10px}
+.review .btns{display:flex;gap:6px}
+.review textarea{flex:1 1 300px;width:auto;min-height:42px}
+.saved{font-size:12px;color:var(--faint);align-self:center;min-width:6ch}
+button{font:500 13px/1 var(--ui);padding:8px 11px;border-radius:6px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer}
+button.small{padding:6px 9px;font-size:12.5px}
+button:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button[aria-pressed="true"].ok{background:var(--ok);color:var(--accent-ink);border-color:var(--ok)}
+button[aria-pressed="true"].fix{background:var(--fix);color:#fff;border-color:var(--fix)}
+textarea{font:14px/1.45 var(--ui);color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:8px 10px;resize:vertical;width:100%}
+.t textarea,.plan textarea{font:inherit}
+section.scene.s-ok{border-color:color-mix(in srgb,var(--ok) 55%,var(--rule))}
+section.scene.s-fix{border-color:color-mix(in srgb,var(--fix) 55%,var(--rule))}
+@media (max-width:760px){
+  .top2{grid-template-columns:1fr}
+  .script.two{grid-template-columns:1fr}
+  .ln{grid-template-columns:1fr;gap:0}
+  .who{flex-direction:row;gap:6px;align-items:baseline}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow">CLB Thám Tử Dữ Liệu · MVP · mở đầu + Vụ 1 "Chữ ký H"</div>
+  <h1>Duyệt kịch bản chương 1</h1>
+  <p class="lede">Mỗi thẻ là một chuỗi hội thoại theo thứ tự chơi, kèm nền và người lên hình để đọc lời đúng cảnh. Khung (chữ đơn cách, xanh) là của phiên logic, không sửa ở đây. Lời ghép từ <code>loi/</code> theo mã: cột <b>Hiện tại</b> là lời trên main, cột <b>Đề xuất</b> là lời mới của phiên truyện. <b>Bấm vào câu lời để sửa</b>, bấm Duyệt / Cần sửa và ghi chú từng chuỗi. Claude đọc lại rồi đưa vào <code>loi/</code>.</p>
+  <p class="localnote" id="localnote" hidden></p>
+  <div class="facts" id="facts"></div>
+  <div class="legend"><span class="tam">tạm</span> lời giữ chỗ của phiên logic <span class="chip" style="border-color:var(--edit);color:var(--edit)">nền tím = bạn đã sửa</span></div>
+</header>
+<div class="progress" id="progress"></div>
+<nav class="jump" id="jump" aria-label="Nhảy tới phần"></nav>
+<main id="main"><p class="lede" style="padding-block:40px">Đang nạp kịch bản…</p></main>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const ST = {co:"Có", muon:"Mượn ảnh neo", art:"Có ở art/", thieu:"Chưa có"};
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const $ = id => document.getElementById(id);
+const review = {}, edits = {}; let db = null, canWrite = false, filter = "all";
+try { filter = localStorage.getItem("duyet-c1-filter") || "all"; } catch {}
+
+let C = [];   // nạp từ du-lieu/<n>.json (xem sinh-trang.py)
+const needs = c => c.cast.some(p => p.state !== "co") || c.assets.some(a => a.state !== "co") || c.bg.state !== "co";
+
+function facts(){
+  const bgs = new Map(C.map(c => [c.bg.id, c.bg.state]));
+  const miss = new Set(), lend = new Set(), art = new Set();
+  C.forEach(c => { c.cast.forEach(p => { if (p.state === "muon") lend.add(p.id); if (p.state === "thieu") miss.add(p.id); });
+    c.assets.forEach(a => { if (a.state === "thieu") miss.add(a.id); if (a.state === "art") art.add(a.id); }); });
+  const items = [[C.length, "chuỗi hội thoại"], [C.filter(c => c.dx).length, "chuỗi có lời mới"],
+    [C.reduce((a, c) => a + c.tam, 0), "dòng lời tạm còn lại"], [C.filter(c => (review[c.id] || {}).status === "ok").length, "chuỗi đã duyệt"]];
+  $("facts").innerHTML = items.map(([v, k]) => `<div class="fact"><span class="v">${esc(v)}</span><span class="k">${esc(k)}</span></div>`).join("");
+  $("jump").innerHTML = DATA.groups.map((g, i) => `<a href="#g${i}">${esc(g.split("—")[0].trim())}</a>`).join("");
+}
+
+function lineHtml(d, cast){
+  const key = d.key, ed = key ? edits[key] : null, text = ed ? ed.text : (d.t || "");
+  const loi = d.src === "loi";
+  const tam = d.tam ? `<span class="tam">tạm</span>` : "";
+  const tcls = `t ${ed ? "edited" : ""} ${loi ? "" : "ro"}`;
+  const edit = loi ? ` data-edit="${esc(key)}"` : "";
+  const opts = d.opts ? `<ul class="opts">${d.opts.map(o => `<li>${esc(o.replace(/\*\*/g, ""))}</li>`).join("")}</ul>` : "";
+  if (d.k === "code") return `<pre class="code">${esc(d.t)}</pre>`;
+  if (d.k === "card") return `<div class="ln cardl"><div class="${tcls}"${edit}>${tam}${esc(text)}</div></div>`;
+  let who = "", cls = d.k;
+  if (d.k === "stage") { who = `<span>Dàn dựng</span>`; cls = "stage-l"; }
+  else if (d.k === "narr") who = `<span>Dẫn truyện</span>`;
+  else if (d.k === "khi") who = `<span>Khi ${esc(d.when)}</span>`;
+  else if (d.k === "missing") { who = `<span>Thiếu lời</span>`; cls = "missing"; }
+  else if (d.k === "meta") { who = `<span>Khung</span>`; cls = "cmd"; }
+  else if (d.k === "cmd") who = `<span>[${esc(d.tag)}]</span>` + (d.who ? `<span style="font:600 12.5px/1.35 var(--ui);color:var(--ink)">${esc(DATA.names[d.who] || d.who)}</span>` : "");
+  else {
+    const p = cast.find(x => x.who === d.who && x.bc === (d.bc || "neutral"));
+    const bc = d.bc ? `<small class="${p && p.state === "muon" ? "muon" : ""}">${esc(d.bc)}${p && p.state === "muon" ? " · mượn neo" : ""}</small>` : "";
+    who = `<span>${esc(DATA.names[d.who] || d.who)}${d.k === "think" ? " · nghĩ" : ""}</span>${bc}`;
+  }
+  return `<div class="ln ${cls}${loi ? "" : " khung"}"><div class="who">${who}</div><div><div class="${tcls}"${edit}>${tam}${esc(text)}</div>${opts}</div></div>`;
+}
+
+function stageHtml(c){
+  if (!c.bg.img) return `<div class="stage"><div class="empty">Chưa có nền ${esc(c.bg.id)}</div></div>`;
+  const seen = new Set(), people = [];
+  for (const p of c.cast){ if (seen.has(p.who)) continue; seen.add(p.who); people.push(c.cast.filter(x => x.who === p.who).find(x => x.state === "co") || p); }
+  const figs = people.slice(0, 4).map(p => p.img
+    ? `<figure class="${p.state}"><img src="${p.img}" alt="${esc(p.name)}"><figcaption>${esc(p.name)}${p.state === "muon" ? " · mượn neo" : ""}</figcaption></figure>`
+    : `<figure><div class="ph">${esc(p.name)}<br>chưa có ảnh</div></figure>`).join("");
+  return `<div class="stage"><img class="bg" src="${c.bg.img}" alt="${esc(c.bg.id)}" loading="lazy"><span class="tag">${esc(c.bg.id)}</span><div class="cast">${figs}</div></div>`
+    + (c.bg.alt ? `<div class="alt"><img src="${c.bg.alt}" alt="${esc(c.bg.altId)}" loading="lazy"><span>Có sẵn ảnh tối <code>${esc(c.bg.altId)}</code>, nhưng runtime chưa dùng cho chuỗi này.</span></div>` : "");
+}
+
+function assetsHtml(c){
+  const rows = [];
+  const lendCast = c.cast.filter(p => p.state !== "co");
+  lendCast.forEach(p => rows.push({kind: "Biểu cảm", id: p.id, state: p.state, img: p.img, plan: p.state === "muon" ? `Đang dùng ${p.file}.` : ""}));
+  c.assets.forEach(a => { if (!rows.some(r => r.id === a.id)) rows.push(a); else Object.assign(rows.find(r => r.id === a.id), {plan: a.plan}); });
+  if (!rows.length) return `<div class="sub">Ảnh</div><div class="asset"><div class="th"><img src="${c.bg.img || ""}" alt=""></div><div class="ab"><div class="al"><span class="st co">Có</span>Đủ ảnh: nền và mọi người lên hình.</div></div></div>`;
+  return `<div class="sub">Ảnh trong cảnh</div>` + rows.map(a => {
+    const key = `anh~${c.id}~${a.id}`, ed = edits[key], plan = ed ? ed.text : a.plan;
+    const editable = a.state !== "co";
+    return `<div class="asset"><div class="th ${a.img ? "" : "none"}">${a.img ? `<img src="${a.img}" alt="${esc(a.id)}" loading="lazy">` : ""}</div>
+      <div class="ab"><div class="al"><span class="st ${a.state}">${ST[a.state]}</span><span>${esc(a.kind)}</span><span class="sid">${esc(a.id)}</span></div>
+      ${editable ? `<div class="plan ${plan ? "" : "none"} ${ed ? "edited" : ""}" data-edit="${esc(key)}" title="Bấm để sửa kế hoạch ảnh">${esc(plan || "Bấm để ghi kế hoạch ảnh")}</div>` : ""}</div></div>`;
+  }).join("");
+}
+
+function sceneHtml(c, n){
+  const s = (review[c.id] || {}).status || "";
+  const cur = `<div class="col">${c.dx ? `<div class="sub">Hiện tại (main)</div>` : ""}${c.lines.map(d => lineHtml(d, c.cast)).join("")}</div>`;
+  const dx = c.dx ? `<div class="col dx"><div class="sub" style="color:var(--note-ink)">Đề xuất (lời mới)</div>${c.dx.map(d => lineHtml(d, c.cast)).join("")}</div>` : "";
+  return `<section class="scene ${s ? "s-" + s : ""}" id="c-${c.id}">
+    <div class="shead"><span class="snum">${String(n).padStart(2, "0")}</span><span class="stitle">${esc(c.title)}</span>
+      <div class="smeta"><span class="chip">${esc(c.canhTen)}</span>${c.quest ? `<span class="chip quest">Nhiệm vụ: ${esc(c.quest)}</span>` : ""}${c.tam ? `<span class="chip tamc">${c.tam} dòng lời tạm</span>` : ""}${c.spots.length ? `<span class="chip">${c.spots.length} chỗ bấm</span>` : ""}<span class="sid">${esc(c.id)} · ${esc(c.file.split("/").pop())}</span></div></div>
+    <div class="top2"><div>${stageHtml(c)}</div><div class="assets">${c.why ? `<div class="lech"><b>Vì sao sửa</b><p style="margin:6px 0 0;font-size:13.5px">${esc(c.why)}</p></div>` : ""}</div></div>
+    <div class="script ${c.dx ? "two" : ""}">${cur}${dx}</div>
+    ${c.tts.map(t => `<div class="tt"><div class="sub">Thẻ thử thách · ${esc(t.id)} · ${esc(t.title)}</div>${t.lines.map(d => lineHtml(d, c.cast)).join("")}</div>`).join("")}
+    <div class="review"><div class="btns"><button class="ok" data-status="${c.id}:ok" aria-pressed="${s === "ok"}">Duyệt</button><button class="fix" data-status="${c.id}:fix" aria-pressed="${s === "fix"}">Cần sửa</button></div>
+      <textarea id="note-${c.id}" data-note="${c.id}" placeholder="Ghi chú cho cảnh này: nhịp, thoại, ảnh…" aria-label="Ghi chú ${esc(c.id)}"></textarea><span class="saved" id="saved-${c.id}"></span></div>
+  </section>`;
+}
+
+function render(){
+  let html = "", grp = null, n = 0;
+  C.forEach(c => {
+    n++;
+    const show = filter === "all" || (filter === "need" && needs(c)) || (filter === "dx" && c.dx) || (filter === "todo" && !(review[c.id] || {}).status) || (filter === "tam" && c.tam);
+    if (c.group !== grp){ grp = c.group; const gi = DATA.groups.indexOf(grp);
+      const [a, b] = grp.split("—").map(x => x.trim());
+      html += `<div class="band" id="g${gi}"><span class="bk">${esc(a)}</span>${b ? `<span class="bt">${esc(b)}</span>` : ""}</div>`; }
+    if (show) html += sceneHtml(c, n);
+  });
+  $("main").innerHTML = html;
+  paint();
+}
+
+function paint(){
+  let ok = 0, fix = 0; const total = C.length;
+  C.forEach(c => { const s = (review[c.id] || {}).status; if (s === "ok") ok++; if (s === "fix") fix++;
+    const ta = $("note-" + c.id); if (ta && document.activeElement !== ta && ta.dataset.dirty !== "1") ta.value = (review[c.id] || {}).note || "";
+    const sec = $("c-" + c.id); if (sec){ sec.classList.toggle("s-ok", s === "ok"); sec.classList.toggle("s-fix", s === "fix");
+      sec.querySelector(`[data-status="${c.id}:ok"]`).setAttribute("aria-pressed", s === "ok");
+      sec.querySelector(`[data-status="${c.id}:fix"]`).setAttribute("aria-pressed", s === "fix"); } });
+  const F = [["all","Tất cả"],["dx","Có lời mới"],["tam","Còn lời tạm"],["todo","Chưa duyệt"]];
+  $("progress").innerHTML = `<span class="cnt">Duyệt <b>${ok}</b> · cần sửa <b>${fix}</b> · còn <b>${total - ok - fix}</b> / ${total}</span>
+    <span class="bar"><i style="width:${ok / total * 100}%;background:var(--ok)"></i><i style="width:${fix / total * 100}%;background:var(--fix)"></i></span>
+    <span class="filters">${F.map(([k, v]) => `<button class="small" data-filter="${k}" aria-pressed="${filter === k}">${v}</button>`).join("")}</span>
+    <span class="store">${db ? (canWrite ? "Lưu chung · Claude đọc được" : "Chỉ xem") : "Chế độ xem này không lưu được"}</span>`;
+}
+
+async function put(path, body, savedEl){
+  if (!db || !canWrite) return;
+  if (savedEl) savedEl.textContent = "Đang lưu…";
+  try { await db.doc(path).set({...body, at: new Date().toISOString()}); if (savedEl) savedEl.textContent = "Đã lưu"; }
+  catch (e){ if (savedEl) savedEl.textContent = "Chưa lưu được"; }
+}
+function setStatus(id, st){
+  const cur = review[id] || {}; const next = {status: cur.status === st ? "" : st, note: cur.note || ""};
+  review[id] = next; paint(); put("review/" + id, next, $("saved-" + id));
+}
+function startEdit(el){
+  if (!db || !canWrite || el.querySelector("textarea")) return;
+  const key = el.dataset.edit, orig = edits[key] ? edits[key].text : (el.classList.contains("none") ? "" : el.textContent);
+  const ta = document.createElement("textarea"); ta.value = orig; ta.rows = Math.max(2, Math.ceil(orig.length / 60));
+  el.textContent = ""; el.appendChild(ta); ta.focus();
+  ta.addEventListener("blur", async () => { const v = ta.value.trim();
+    if (v && v !== orig){ edits[key] = {text: v}; await put("edits/" + key, {text: v}); } render(); }, {once: true});
+  ta.addEventListener("keydown", e => { if (e.key === "Escape"){ ta.value = orig; ta.blur(); } });
+}
+document.addEventListener("click", e => {
+  const t = e.target.closest("button,[data-edit]"); if (!t) return;
+  if (t.dataset.status){ const [id, st] = t.dataset.status.split(":"); setStatus(id, st); return; }
+  if (t.dataset.filter){ filter = t.dataset.filter; try { localStorage.setItem("duyet-c1-filter", filter); } catch {} render(); return; }
+  if (t.dataset.edit && !e.target.closest("textarea")) startEdit(t);
+});
+document.addEventListener("input", e => {
+  const ta = e.target; if (!ta.dataset || !ta.dataset.note) return;
+  ta.dataset.dirty = "1"; clearTimeout(ta._t);
+  ta._t = setTimeout(() => { ta.dataset.dirty = ""; const id = ta.dataset.note;
+    review[id] = {status: (review[id] || {}).status || "", note: ta.value}; put("review/" + id, review[id], $("saved-" + id)); }, 900);
+});
+
+async function load(){
+  try {
+    const parts = await Promise.all([...Array(DATA.parts).keys()].map(i => fetch(`du-lieu/${i}.json`).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })));
+    C = parts.flat();
+  } catch (e){ $("main").innerHTML = `<p class="localnote">Không nạp được dữ liệu kịch bản (du-lieu/*.json): ${esc(e.message)}. Mở lại trang thử.</p>`; return; }
+  facts(); render();
+}
+load();
+(async () => {
+  const c = window.claude;
+  db = c && c.use ? await c.use("db") : null;
+  if (!db){ paint(); const n = $("localnote"); n.hidden = false;
+    n.textContent = "Chế độ xem này không lưu được: duyệt, sửa thoại và ghi chú chỉ lưu trên bản Artifact."; return; }
+  canWrite = true;
+  db.collection("review").onSnapshot(snap => { for (const d of snap.docs){ const v = d.data(); if (v) review[d.id] = {status: v.status || "", note: v.note || ""}; } paint(); }, () => {});
+  db.collection("edits").onSnapshot(snap => { let ch = false;
+    for (const d of snap.docs){ const v = d.data(); if (v && v.text && (!edits[d.id] || edits[d.id].text !== v.text)){ edits[d.id] = {text: v.text}; ch = true; } }
+    if (ch && !document.querySelector("[data-edit] textarea")) render(); }, () => {});
+  paint();
+})();
+</script>

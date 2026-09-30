@@ -1,10 +1,11 @@
 # Lời · kich-ban/05-ngay-5.md
 
-<!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/05-ngay-5.md. Dòng "(tạm)" là lời giữ chỗ của phiên logic (30/09, khung chương 1). Câu hỏi [RẼ NHÁNH] nằm ở khung. -->
+<!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/05-ngay-5.md. [DÀN DỰNG] không hiện cho người chơi. Câu hỏi [RẼ NHÁNH] nằm ở khung. Lời tối không phụ thuộc người chơi đã có nhật ký in / lời chú Cường hay chưa. -->
 
 ## n5-mo.1
 - [THẺ CHỮ] **narrator**: Ngày 5 — Thứ Bảy
-- [DÀN DỰNG] (tạm) Sáng sớm ở cổng KTX. {{nv.chu-cuong}} đang quét sân.
+- [DÀN DỰNG] Sáng sớm ở cổng KTX. {{nv.chu-cuong}} đang quét sân.
+- **narrator**: Sáng sớm ở cổng ký túc xá. {{nv.chu-cuong}} đang quét sân trước phòng trực.
 
 ## n5-chu-cuong.1
 - **tung** (neutral): Chú ơi, sáng thứ Hai chú có để ý ai ra cổng sớm không ạ? Bọn cháu đang tìm người bỏ thư vào hộp tòa B.
@@ -14,6 +15,10 @@
 - **chu-cuong** (neutral): Không. Anh ấy đứng xa, sáng sớm, chú chỉ để ý cái huy hiệu với dáng người thôi.
 
 ## n5-toi.1
+> NHIỆM VỤ: Soát lại hồ sơ trước buổi họp
 - [THẺ CHỮ] **narrator**: Tối thứ Bảy
-- **ha-vy** (neutral): (tạm) Soát lại nhé. Hai lớp, hai người tên H, sổ chỉ có mã của Hoài.
-- **ha-vy** (thinking): (tạm) Nhưng có mã trên phiếu chưa chắc đã là người viết thư. Thứ Hai họp, mình chỉ nói đúng những gì có chứng.
+- **narrator**: Tối, phòng CLB. Hà Vy trải hết giấy tờ ra bàn.
+- **ha-vy** (neutral): Soát lại nhé. Hộp ở tòa B, thẻ lịch khoa Báo chí: ra hai lớp. Chữ H trong hai lớp: Hiếu với Hoài. Sổ niêm phong: chỉ có mã của Hoài.
+- **ha-vy** (thinking): Có mã trên phiếu chưa chắc đã là người viết thư. Thứ Hai họp, mình chỉ nói đúng những gì có chứng.
+- **tung** (worried): Thế nhỡ người ta hỏi ai viết thư thì sao?
+- **ha-vy** (neutral): Có chứng thì trình chứng. Không có thì nói là chưa biết.

@@ -15,6 +15,7 @@ import {
   KHOI_TU_KHOA,
   TEN_CACH_NHAP,
   TEN_PHEP,
+  cauTuSql,
   dieuKienThanhSql,
   khungTuSqlChuan,
   noiKhoi,
@@ -24,6 +25,9 @@ import {
   type DieuKienDung,
   type KieuCot,
 } from '../engine/trinh-dung';
+
+/** Chữ trên nút nối (chương 1 — người chơi lớp 5 đọc tiếng Việt; câu SQL bên dưới vẫn là AND / OR). */
+const TEN_NOI: Record<'AND' | 'OR', string> = { AND: 'VÀ', OR: 'HOẶC' };
 
 /** Một giá trị dùng được: từ giấy nhớ / bằng chứng trong hồ sơ ("Giá trị cho trình dựng"). */
 export interface GiayNhoDung {
@@ -43,17 +47,24 @@ export interface NhapCauMvpProps {
   onSql: (sql: string) => void;
   onChay: () => void;
   khoa: boolean;
+  /** Câu có sẵn nạp vào kéo thả (buổi họp: câu của Quân) — người chơi chỉ sửa chỗ cần sửa. */
+  cauDau?: string;
+  /** Chỉ kéo thả, không hiện các tab cách nhập (màn sửa truy vấn ở buổi họp). */
+  chiKeo?: boolean;
 }
 
 const TOI_DA_DIEU_KIEN = 3;
 
-export function NhapCauMvp({ duLieu, sqlChuan, giayNho, cachNhap, onDoiCach, onSql, onChay, khoa }: NhapCauMvpProps) {
+export function NhapCauMvp({ duLieu, sqlChuan, giayNho, cachNhap: cachChon, onDoiCach, onSql, onChay, khoa, cauDau, chiKeo = false }: NhapCauMvpProps) {
+  const cachNhap: CachNhap = chiKeo ? 'keo' : cachChon;
   const khung = useMemo(() => khungTuSqlChuan(sqlChuan), [sqlChuan]);
   const bang = duLieu.bang.find((b) => b.ten === khung?.bang);
   const cot = bang?.cot.map((c) => c.ten) ?? [];
   const kieuCot = (ten: string): KieuCot => bang?.cot.find((c) => c.ten === ten)?.kieu ?? 'TEXT';
 
-  const [cau, setCau] = useState<CauDung>(() => ({ khung: khung?.khung ?? '', dieuKien: [{ cot: cot[0] ?? '', phep: 'bang', giaTri: null }], noi: [] }));
+  const [cau, setCau] = useState<CauDung>(
+    () => (cauDau ? cauTuSql(cauDau) : null) ?? { khung: khung?.khung ?? '', dieuKien: [{ cot: cot[0] ?? '', phep: 'bang', giaTri: null }], noi: [] },
+  );
   const [khoi, setKhoi] = useState<string[]>(() => (khung ? khungThanhKhoi(khung.khung) : []));
   const [go, setGo] = useState<string>(() => (khung ? `${khung.khung} WHERE ` : ''));
 
@@ -66,13 +77,15 @@ export function NhapCauMvp({ duLieu, sqlChuan, giayNho, cachNhap, onDoiCach, onS
 
   return (
     <div className="mvp-nhap" data-cach={cachNhap}>
-      <div className="mvp-nhap__cach" role="tablist" aria-label="Cách nhập câu">
-        {CACH_NHAP.map((c) => (
-          <button key={c} type="button" role="tab" aria-selected={cachNhap === c} className={`mvp-nhap__tab${cachNhap === c ? ' is-active' : ''}`} onClick={() => onDoiCach(c)}>
-            {TEN_CACH_NHAP[c]}
-          </button>
-        ))}
-      </div>
+      {chiKeo ? null : (
+        <div className="mvp-nhap__cach" role="tablist" aria-label="Cách nhập câu">
+          {CACH_NHAP.map((c) => (
+            <button key={c} type="button" role="tab" aria-selected={cachNhap === c} className={`mvp-nhap__tab${cachNhap === c ? ' is-active' : ''}`} onClick={() => onDoiCach(c)}>
+              {TEN_CACH_NHAP[c]}
+            </button>
+          ))}
+        </div>
+      )}
       {cachNhap === 'keo' ? (
         <KeoTha cau={cau} setCau={setCau} cot={cot} kieuCot={kieuCot} giayNho={giayNho} khoa={khoa} />
       ) : cachNhap === 'khoi' ? (
@@ -187,10 +200,11 @@ function KeoTha({
                 type="button"
                 className="mvp-keo__noi"
                 disabled={khoa}
-                aria-label={`Nối điều kiện ${i + 1}: ${cau.noi[i - 1] ?? 'AND'} — bấm để đổi`}
+                aria-label={`Nối điều kiện ${i + 1}: ${TEN_NOI[cau.noi[i - 1] ?? 'AND']} (${cau.noi[i - 1] ?? 'AND'}) — bấm để đổi`}
+                title={`${TEN_NOI[cau.noi[i - 1] ?? 'AND']} — trong câu SQL là ${cau.noi[i - 1] ?? 'AND'}`}
                 onClick={() => setCau((c) => ({ ...c, noi: c.noi.map((x, k) => (k === i - 1 ? (x === 'AND' ? 'OR' : 'AND') : x)) }))}
               >
-                {cau.noi[i - 1] ?? 'AND'}
+                {TEN_NOI[cau.noi[i - 1] ?? 'AND']} <small className="mvp-keo__noi-sql">{cau.noi[i - 1] ?? 'AND'}</small>
               </button>
             ) : (
               <span className="mvp-keo__where">WHERE</span>

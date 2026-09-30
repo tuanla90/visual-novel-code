@@ -9,7 +9,8 @@ import { TEN_CACH_NHAP } from '../engine/trinh-dung';
 export interface KetMvpProps {
   ketQua: 'that' | 'thuong';
   onChoiLai: () => void;
-  onVeTieuDe: () => void;
+  /** Bỏ trống = không có màn tiêu đề (bản chơi thử chỉ MVP). */
+  onVeTieuDe?: () => void;
 }
 
 const LUA_CHON = [
@@ -23,7 +24,7 @@ export function KetMvp({ ketQua, onChoiLai, onVeTieuDe }: KetMvpProps) {
   const [daChon, setDaChon] = useState<string | null>(null);
   return (
     <section className="endscreen mvp-ket" aria-labelledby="mvp-ket-tieude">
-      <p className="mvp-chal__kicker">Hết Vụ 1 — Chữ ký H.</p>
+      <p className="mvp-chal__kicker">Hết Vụ 1 — Chữ ký H</p>
       <h2 id="mvp-ket-tieude" className="endscreen__title">
         {ketQua === 'that' ? 'Kết thật: người nộp không phải người viết' : 'Kết thường: chỉ là một ý kiến sinh viên'}
       </h2>
@@ -57,9 +58,11 @@ export function KetMvp({ ketQua, onChoiLai, onVeTieuDe }: KetMvpProps) {
         <button type="button" className="btn btn--primary" onClick={onChoiLai} autoFocus>
           Chơi lại từ đầu
         </button>
-        <button type="button" className="btn" onClick={onVeTieuDe}>
-          Về màn tiêu đề
-        </button>
+        {onVeTieuDe ? (
+          <button type="button" className="btn" onClick={onVeTieuDe}>
+            Về màn tiêu đề
+          </button>
+        ) : null}
       </div>
     </section>
   );

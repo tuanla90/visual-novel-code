@@ -7,6 +7,7 @@
 
 ## hop-00.2
 - [DÀN DỰNG] {{nv.thay-quang}} ngồi giữa; {{nv.co-lan}} và {{nv.quan}} một bên, CLB một bên. {{nv.hoai}} ngồi chờ ngoài hành lang theo quy chế, chưa được mời vào.
+- **narrator**: Thứ Hai, bốn giờ chiều. Phòng họp tầng ba. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ.
 - **thay-quang** (neutral): Sáng nay thầy duyệt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử. Mời các em trình bày căn cứ.
 - **minh-anh** (neutral): Dạ, bọn em xin trình bày cách bọn em lọc ra danh sách ạ.
 - **quan** (smug): Phản ánh này đến từ sinh viên nói chung, nên phải lọc diện rộng. Tên bắt đầu bằng H hoặc học lớp BC24A: mười bốn dòng. Trong hồ sơ các bạn nộp lên chỉ liệt kê hai người.
@@ -16,11 +17,12 @@
 - [DÀN DỰNG] Nhịp 1: người chơi chạm vào chữ HOẶC, đổi thành VÀ → 2 dòng. Nhịp 2: "Số liệu đây!". Chạm sai, chạy thử đều không phạt.
 
 ## hop-00.4
-- **ha-vy** (neutral): Anh đang gộp hai nhóm vào làm một rồi ạ. Bọn em cần người vừa có tên bắt đầu bằng H, vừa học lớp BC24A ạ.
+- **ha-vy** (neutral): Anh đang lấy cả người tên H lẫn cả lớp BC24A, gộp làm một ạ. Bọn em chỉ cần người vừa tên H, vừa học lớp BC24A.
 - **quan** (neutral): …Hai dòng. Vâng. Mời các bạn nói tiếp.
 
 ## hop-02.1
 - [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa.
+- **narrator**: Hoài được mời vào. Bạn ấy đứng nép cạnh cửa, hai tay nắm chặt quai túi.
 - **thay-quang** (neutral): Em Hoài, em kể lại giúp thầy hôm em nộp thư.
 - **hoai** (nervous): Dạ… sáng thứ Hai em mang phong bì bỏ vào hộp ở tòa B ạ.
 - **thay-quang** (neutral): Chỉ có vậy thôi à em?
@@ -29,11 +31,13 @@
 
 ## hop-doi-chat.1
 - [DÀN DỰNG] {{nv.hoai}} được gọi vào, đứng nép cạnh cửa, nhìn lên màn chiếu có tên mình.
+- **narrator**: Hoài bước vào đúng lúc màn chiếu còn hiện hai dòng. Một dòng có tên bạn ấy.
 - **ha-vy** (neutral): Khoan… chiếu tên bạn ấy lên rồi gọi vào thế này, khác gì hỏi cung.
 - **thay-quang** (neutral): Ở đây không ai đối chất với một bạn năm nhất. Thầy hỏi, các em nghe.
 - **thay-quang** (neutral): Em Hoài, lá thư có chữ ký này là em bỏ vào hộp đúng không?
 - **hoai** (nervous): Dạ… vâng ạ. Em mang nộp ạ.
 - [DÀN DỰNG] {{nv.hoai}} cúi gằm, không nói thêm.
+- **narrator**: Hoài cúi gằm, không nói thêm câu nào.
 - **quan** (smug): Vậy là chính bạn ấy mang thư tới hộp.
 - **ha-vy** (neutral): Mang tới hộp thôi anh. Chưa biết bạn ấy viết hay chỉ mang hộ.
 - **thay-quang** (neutral): Em Hoài đang rất căng. Hôm nay thầy không hỏi thêm em ở đây.
@@ -55,6 +59,9 @@
 - [DÀN DỰNG] {{nv.tung}} thì thầm với {{nv.ha-vy}}.
 - **tung** (happy): Giữ được phòng rồi! Tối nay tớ khao trà đá.
 - **ha-vy** (smile): Được. Tớ nhớ đấy nhé.
+- **narrator**: Lúc cả nhóm ra về, ngoài sân có một anh sinh viên năm cuối đi ngang. Trên quai balo đeo một cái huy hiệu hình bánh răng.
+- **tung** (worried): Này… tớ cá là…
+- **ha-vy** (thinking): Đừng cá. Chưa có gì để tính cả.
 - [THẺ CHỮ] **narrator**: SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.
 
 ## ket-thuong.1
