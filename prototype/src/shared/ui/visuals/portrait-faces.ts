@@ -117,6 +117,7 @@ export const FACES: FaceTable = {
     neutral: { brows: 'flat', eyes: 'open', mouth: 'small-smile' },
     worried: { brows: 'worried', eyes: 'open', mouth: 'wavy', extras: ['sweat'] },
     happy: { brows: 'raised', eyes: 'happy', mouth: 'grin', extras: ['blush', 'sparkle'] },
+    serious: { brows: 'stern', eyes: 'half', mouth: 'flat' },
   },
   'ha-vy': {
     neutral: { brows: 'flat', eyes: 'open', mouth: 'flat' },
@@ -135,9 +136,14 @@ export const FACES: FaceTable = {
   },
   'bac-tu': {
     neutral: { brows: 'soft', eyes: 'soft', mouth: 'smile' },
+    smile: { brows: 'soft', eyes: 'happy', mouth: 'grin', extras: ['blush'] },
   },
   tung: {
     neutral: { brows: 'raised', eyes: 'happy', mouth: 'grin' },
+    happy: { brows: 'raised', eyes: 'happy', mouth: 'grin', extras: ['sparkle'] },
+    worried: { brows: 'worried', eyes: 'open', mouth: 'wavy', extras: ['sweat'] },
+    surprised: { brows: 'raised', eyes: 'wide', mouth: 'o' },
+    thinking: { brows: 'one-up', eyes: 'side', mouth: 'flat', extras: ['hand-chin'] },
   },
 };
 

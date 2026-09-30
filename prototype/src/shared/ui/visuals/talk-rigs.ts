@@ -6,6 +6,8 @@
  * Nguồn (Topview 28/09, GPT Image 2.5, image-edit từ chính ảnh chân dung): ảnh biểu cảm sửa từ ảnh
  * neo rồi căn về đúng khung ảnh neo (đổi biểu cảm thân người không xê dịch); ảnh "miệng mở"/"mắt
  * nhắm" sửa từ ảnh biểu cảm, căn khớp + khớp màu, miếng = vùng khác biệt làm mềm mép.
+ * 30/09: miếng Minh Anh thường cắt lại (ảnh neo đã bị thay sau lần cắt đầu → miếng cũ lệch, thành hai cái miệng);
+ * thêm Tùng thường / vui / lo. Công cụ: art/nguon/cat-mieng-nhep-moi.py (khung elip chỉ định tay, không dò tự động).
  * Hà Vy "đang nghĩ" (sinh lại mặt 28/09, ghép vào ảnh neo) chưa có bộ miếng → không nhép môi.
  * Quân sững sờ: ảnh gốc miệng đang há, miếng miệng là miệng KHÉP (nhép vẫn là đổi qua lại).
  * Tệp được sinh bằng công cụ cắt miếng — sửa tay thì giữ đúng tọa độ.
@@ -34,6 +36,12 @@ import hoaiDowncastMouth from './talk/hoai-downcast/mouth.webp';
 import hoaiDowncastEyes from './talk/hoai-downcast/eyes.webp';
 import hoaiRelievedMouth from './talk/hoai-relieved/mouth.webp';
 import hoaiRelievedEyes from './talk/hoai-relieved/eyes.webp';
+import tungNeutralMouth from './talk/tung-neutral/mouth.webp';
+import tungNeutralEyes from './talk/tung-neutral/eyes.webp';
+import tungHappyMouth from './talk/tung-happy/mouth.webp';
+import tungHappyEyes from './talk/tung-happy/eyes.webp';
+import tungWorriedMouth from './talk/tung-worried/mouth.webp';
+import tungWorriedEyes from './talk/tung-worried/eyes.webp';
 
 export interface TalkPatch {
   src: string;
@@ -59,8 +67,8 @@ const RIGS: readonly TalkRig[] = [
     sourceFile: '/src/assets/characters/char-minh-anh-anchor.png',
     width: 1536,
     height: 2736,
-    mouth: { src: minhAnhNeutralMouth, x: 666, y: 690, w: 290, h: 244 },
-    eyes: { src: minhAnhNeutralEyes, x: 559, y: 462, w: 533, h: 266 },
+    mouth: { src: minhAnhNeutralMouth, x: 670, y: 680, w: 292, h: 180 },
+    eyes: { src: minhAnhNeutralEyes, x: 576, y: 502, w: 492, h: 204 },
   },
   {
     sourceFile: '/src/assets/characters/char-minh-anh-worried.png',
@@ -132,13 +140,36 @@ const RIGS: readonly TalkRig[] = [
     mouth: { src: hoaiRelievedMouth, x: 341, y: 354, w: 144, h: 112 },
     eyes: { src: hoaiRelievedEyes, x: 295, y: 263, w: 248, h: 121 },
   },
+  // Tùng (30/09, art/nguon/cat-mieng-nhep-moi.py): ảnh neo cười hé miệng → miếng là miệng KHÉP; vui cười to → miệng khép cười.
+  {
+    sourceFile: '/src/assets/characters/char-tung-anchor.png',
+    width: 768,
+    height: 1360,
+    mouth: { src: tungNeutralMouth, x: 339, y: 292, w: 152, h: 86 },
+    eyes: { src: tungNeutralEyes, x: 304, y: 203, w: 228, h: 109 },
+  },
+  {
+    sourceFile: '/src/assets/mvp/nhan-vat/char-tung-happy.png',
+    width: 768,
+    height: 1360,
+    mouth: { src: tungHappyMouth, x: 338, y: 286, w: 164, h: 98 },
+    eyes: { src: tungHappyEyes, x: 283, y: 206, w: 246, h: 93 },
+  },
+  {
+    sourceFile: '/src/assets/mvp/nhan-vat/char-tung-worried.png',
+    width: 768,
+    height: 1360,
+    mouth: { src: tungWorriedMouth, x: 352, y: 293, w: 146, h: 84 },
+    eyes: { src: tungWorriedEyes, x: 306, y: 197, w: 227, h: 109 },
+  },
 ];
 
 /** Bộ nhép môi của ảnh đang hiện (so URL tệp nguồn); ảnh khác / chưa có bộ → `undefined`. */
 export function talkRigFor(character: CharacterId, shownUrl: string | undefined): TalkRig | undefined {
   if (!shownUrl) return undefined;
-  const prefix = `/src/assets/characters/char-${character}-`;
-  return RIGS.find((rig) => rig.sourceFile.startsWith(prefix) && artUrlOfFile(rig.sourceFile) === shownUrl);
+  // Ảnh chân dung nằm ở src/assets/characters/ hoặc src/assets/mvp/nhan-vat/ (biểu cảm làm cho bản MVP).
+  const ten = `/char-${character}-`;
+  return RIGS.find((rig) => rig.sourceFile.includes(ten) && artUrlOfFile(rig.sourceFile) === shownUrl);
 }
 
 /** Mọi tệp nguồn có bộ nhép môi (cho test). */
