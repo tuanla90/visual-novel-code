@@ -1,0 +1,114 @@
+{
+  "_": "Ghi chú duyệt kịch bản chương 1 MVP: lệch ảnh/thoại, ảnh cần thêm, thoại đề xuất. sinh-trang.py đọc tệp này.",
+  "tai_lieu": {
+    "doc-the-lich-cua-toi": {"ke_hoach": "Giấy thẻ lịch Tuần sinh hoạt công dân NGUYÊN VẸN của khoa người chơi: dải in logo khoa, ô viết tay 'Họ tên / Lớp' còn trống. Cùng khổ, cùng nét với doc-the-lich-rach để người chơi nhận ra ở ngày 1."},
+    "doc-so-chi-linh": {"ke_hoach": "Trang sổ tay giấy ô ly ngả vàng, chữ viết tay chị Linh; game đè chữ 'Kiểm hai lần, kết luận một lần.'"},
+    "doc-bao-cao-yeu": {"ke_hoach": "Trang báo cáo A4 đánh máy có dấu đỏ trừu tượng; game đè dòng kết luận 'hoạt động yếu'."},
+    "doc-thu-che": {"file": "art/mvp-vu1/giay/doc-la-thu-nac-danh.webp", "ke_hoach": "Giấy thư đã có ở art/ nhưng chưa chép vào game. Còn thiếu nét chữ ký tay doc-chu-ky-h (QĐ-091): chữ H rõ, phần sau lượn không đọc được."},
+    "doc-thong-bao-hop": {"ke_hoach": "Tờ A4 thông báo dán băng dính; có thể dùng lại giấy trắng chung."},
+    "doc-van-ban-thay-quang": {"ke_hoach": "Văn bản hành chính có quốc hiệu mờ, dấu đỏ và chữ ký trừu tượng; game đè nội dung."},
+    "doc-don-robotics": {"ke_hoach": "Tờ đơn có logo bánh răng nhỏ ở góc, chữ ký lượn không đọc được (không có chữ H)."},
+    "ev-the-lich": {"file": "art/mvp-vu1/giay/doc-the-lich-rach.webp", "ke_hoach": "Có ở art/, chưa chép vào game."},
+    "ev-nhat-ky-in": {"file": "art/mvp-vu1/giay/doc-nhat-ky-in.webp", "ke_hoach": "Có ở art/, chưa chép vào game."},
+    "so-niem-phong": {"file": "art/mvp-vu1/giay/doc-so-niem-phong-trang.webp", "ke_hoach": "Có ở art/, chưa chép vào game."}
+  },
+  "canh": {
+    "md-00-xe-buyt": {
+      "lech": ["Thoại cũ 'Cổng trường ngoài đời trông to hơn trên ảnh' không khớp: ảnh chỉ có cổng hai trụ và thanh chắn. Những thứ nổi bật là tòa mái ngói đỏ, tòa cầu thang kính và đường rợp cây.", "Ảnh không có xe buýt, chỉ có trạm chờ. Vẫn ổn nếu coi như xe vừa chạy đi."],
+      "anh_them": []
+    },
+    "md-00-cong-ktx": {
+      "lech": ["Thoại ghi 'bảy tầng', nhưng nhà trong ảnh chỉ khoảng 5 tầng.", "Thoại ghi 'cổng sắt nhỏ, trên biển đề Ký túc xá', nhưng ảnh là cổng sắt xanh kéo ngang có ray và không có biển (ảnh cố ý không có chữ)."],
+      "anh_them": []
+    },
+    "md-01-ktx": {
+      "lech": ["Nền đã có sẵn một vali xanh cạnh giường phải. Tùng lên từ hôm qua nên vali đó dễ bị hiểu là của người chơi, trong khi Tùng vừa mới xách vali vào. Hai cách: bỏ vali khỏi nền, hoặc cứ để vì trông khớp với lúc đã xách vào.", "Tùng (happy) chưa có ảnh, đang mượn ảnh neo."],
+      "anh_them": [{"id": "char-tung-happy", "ke_hoach": "Biểu cảm Tùng cười, chỉ thay đầu trên thân char-tung-anchor (nền hồng tím, không viền sáng)."}]
+    },
+    "md-02-ban-do": {
+      "lech": ["Tùng nói 'mười phút là tới nhà văn hóa', nhưng hướng dẫn chỉ sáng điểm 'Sảnh tòa B'. Chọn một: sửa thoại, hoặc sáng điểm nhà văn hóa làm đích cuối của chuyến đi."],
+      "anh_them": []
+    },
+    "md-03-toa-b": {
+      "lech": ["Nền sảnh không vẽ hộp. Hộp là vật riêng obj-hop-kien-nghi, mà vật đó có thẻ lịch rách mắc ở khe. Lúc này mới Chủ nhật tuần 1, thư chưa được bỏ vào, nên thẻ lịch chưa thể ở đó.", "Dàn dựng ghi 'Bác Thịnh ngồi bàn trực gần cầu thang', nhưng nền không có bàn trực."],
+      "anh_them": [{"id": "obj-hop-kien-nghi-trong", "ke_hoach": "Bản hộp KHÔNG có thẻ lịch ở khe (sửa từ obj-hop-kien-nghi) cho cảnh Chủ nhật tuần 1; từ ngày 1 dùng bản có thẻ."}, {"id": "obj-ban-truc", "ke_hoach": "(Tùy chọn) bàn trực bảo vệ nhỏ đặt cạnh chân cầu thang, hoặc bỏ chi tiết 'ngồi bàn trực' khỏi dàn dựng."}]
+    },
+    "md-04-cang-tin": {
+      "lech": ["Cảnh là buổi chiều, quầy bún cá đã dọn, nhưng quầy trong ảnh vẫn bày đầy khay đồ ăn và ánh nắng như buổi trưa."],
+      "anh_them": [{"id": "bg-mvp-cang-tin-chieu", "ke_hoach": "Bản chiều: quầy trống khay, vài khay úp, nắng xiên cam. Hoặc giữ ảnh cũ và sửa thoại, không nhắc quầy đã dọn."}]
+    },
+    "md-05-phong-may": {
+      "lech": ["Dàn dựng ghi 'cửa kính, bên trong tối', nhưng ô kính trên cửa lại thấy phòng sáng đèn, màn hình đang bật. Lệch nhỏ, có thể phủ lớp tối lên ô kính hoặc sửa dàn dựng."],
+      "anh_them": []
+    },
+    "md-06-bang-tin": {
+      "lech": ["Nền nhà văn hóa đã bày sẵn bàn gian hàng, dù hôm nay mới Chủ nhật tuần 1 (Ngày hội là thứ Bảy). Có thể thêm một câu kiểu 'đang dựng gian cho Ngày hội' để hợp lý hóa.", "Bảng tin trong ảnh để trống. Poster 'Đăng ký CLB: QR / form online' và poster CLB Thám Tử chưa có ảnh."],
+      "anh_them": [{"id": "obj-poster-clb-tham-tu", "ke_hoach": "Poster CLB Thám Tử cũ, bạc màu, nằm lẫn giữa các poster CLB màu tươi; không có chữ đọc được, chỉ biểu tượng kính lúp."}, {"id": "obj-poster-dang-ky-qr", "ke_hoach": "Poster có ô mã QR trừu tượng (tùy chọn)."}]
+    },
+    "md-07-cong-ktx-toi": {
+      "lech": ["Đã có ảnh tối bg-mvp-cong-ktx-dem, nhưng runtime chỉ bật ảnh tối cho 'Cuối ngày'. Chuỗi mở đầu này vì thế sẽ hiện ảnh ban ngày, cần thêm cờ tối cho cảnh này."],
+      "anh_them": [],
+      "nen_dem": true
+    },
+    "md-08-tuan-cong-dan": {
+      "lech": ["Cảnh chuyển tuần đang dùng nền nhà văn hóa (có bàn gian hàng). Tuần sinh hoạt công dân diễn ra trong hội trường nên nên dùng nền hội trường, hoặc chỉ hiện thẻ chữ và tài liệu trên nền tối.", "Cảnh chưa có câu thoại nào."],
+      "anh_them": [{"id": "bg-mvp-hoi-truong", "ke_hoach": "(Tùy chọn) hội trường lớn: dãy ghế, sân khấu có phông trống. Hoặc bỏ nền, chỉ để thẻ chữ và tấm thẻ lịch."}]
+    },
+    "md-09-ngay-hoi": {
+      "lech": ["Nền nhà văn hóa chỉ có bàn trống, không người. Thoại cần 'bàn Robotics đông, dán Đang xin mở rộng xưởng' và 'bàn Thám Tử chỉ có Minh Anh'.", "Tùng (worried) chưa có ảnh, đang mượn ảnh neo."],
+      "anh_them": [{"id": "obj-gian-robotics", "ke_hoach": "Gian Robotics: bàn phủ khăn, mô hình robot bánh răng, đám đông sinh viên nhìn từ sau lưng, không lộ mặt. Đặt ở bàn xanh bên trái."}, {"id": "obj-ban-tham-tu", "ke_hoach": "Bàn Thám Tử vắng: khăn trắng, chồng phiếu đăng ký, một kính lúp. Đặt ở bàn trắng bên phải, Minh Anh đứng cạnh."}, {"id": "char-tung-worried", "ke_hoach": "Biểu cảm Tùng lo/ngượng, chỉ thay đầu."}]
+    },
+    "md-10-phong-clb": {
+      "lech": ["Nền khớp: có máy tính cũ (của Duy), tủ hồ sơ bên phải, nắng chiều (đúng 16h).", "Tùng (happy) chưa có ảnh."],
+      "anh_them": []
+    },
+    "md-11-la-thu": {
+      "lech": ["Cô Lan chỉ xuất hiện trong dàn dựng, không nói câu nào, nên sẽ không lên hình. Có ảnh char-co-lan nếu muốn cho cô vào đưa thư.", "Thư có giấy ở art/ nhưng chưa vào game. Chữ ký H (QĐ-091) chưa sinh."],
+      "anh_them": [{"id": "doc-chu-ky-h", "ke_hoach": "Nét chữ ký bút bi đen, chữ H rõ, phần sau lượn thấp rồi kéo đuôi dài; tách nền, game đặt lên giấy thư. Câu lệnh ở art/prompts/prompts-mvp-vu1-v0.1.md mục 7."}]
+    },
+    "n1-bac-thinh": {"lech": ["Lúc này hộp có thẻ lịch ở khe là đúng. Giấy thẻ lịch rách có ở art/ nhưng chưa vào game."], "anh_them": []},
+    "toi-3": {"lech": ["Thẻ chữ ghi 16:45, lúc trời còn sáng, nhưng Cuối ngày lại dùng ảnh ĐÊM bg-mvp-phong-ctsv-dem. Nên dùng ảnh ngày phủ lớp màu chiều."], "anh_them": []},
+    "toi-5": {"lech": ["Giống cuối ngày 3: 16:45 nhưng lại dùng ảnh đêm."], "anh_them": []},
+    "hop-02": {"lech": ["Hoài (nervous) chưa có ảnh, đang mượn ảnh neo."], "anh_them": [{"id": "char-hoai-nervous", "ke_hoach": "Biểu cảm Hoài lo lắng, chỉ thay đầu."}]},
+    "ket-that": {"lech": ["Thiếu phần kết mà khung có: câu của Quân 'Dữ liệu không nói dối…', cảnh Hiếu ghé phòng CLB gật đầu, trang cuối sổ chị Linh, bóng người đeo huy hiệu bánh răng đi ngang sân."], "anh_them": [{"id": "cg-bong-huy-hieu", "ke_hoach": "(Nếu thêm móc sang mùa) bóng người năm cuối đeo huy hiệu bánh răng đi ngang sân, nhìn từ xa, không lộ mặt."}]}
+  },
+  "de_xuat": {
+    "md-00-xe-buyt": [
+      "- [THẺ CHỮ] **narrator**: Chủ nhật, ngày nhận phòng",
+      "- [DÀN DỰNG] Xe buýt dừng ở trạm trước cổng, cửa mở, hơi nóng đầu giờ chiều hắt vào. Người chơi kéo vali xuống vỉa hè, bánh xe va mặt đường đánh cạch một cái.",
+      "- **player**: (Tòa mái ngói đỏ y như trên ảnh tuyển sinh. Còn tòa kính bên phải chắc mới xây.)",
+      "- **player**: (Phòng 408. Cơ mà ký túc xá nằm đâu thì thông báo không ghi…)",
+      "- [DÀN DỰNG] Thanh chắn nâng lên cho một xe máy chạy vào. Mấy bạn kéo vali đi thẳng theo con đường rợp bóng cây.",
+      "- **player**: (Chắc cùng về ký túc xá. Cứ bám theo đã.)",
+      "- [ĐI TỚI md-00-cong-ktx]"
+    ],
+    "md-00-cong-ktx": [
+      "- **narrator**: Qua dãy giảng đường sơn vàng, qua nhà để xe, cuối đường là một cổng sắt xanh kéo ngang. Bên trong là mấy dãy nhà năm tầng.",
+      "- [DÀN DỰNG] Bánh vali kẹt vào ray cổng, người chơi phải nhấc bổng lên bằng cả hai tay.",
+      "- **player**: (Biết thế đừng nhét cả cái nồi cơm điện vào.)",
+      "- **narrator**: Bảng tin cạnh cổng dán sơ đồ khu nhà, kèm một tờ giấy: \"Thang máy bảo trì đến hết tuần\".",
+      "- **player**: (Tầng bốn… Leo bộ vậy.)",
+      "- [ĐI TỚI md-01-ktx]"
+    ],
+    "md-01-ktx": [
+      "- [DÀN DỰNG] Leo hết bốn tầng, người chơi dừng trước cửa 408, thở dốc. Cửa mở. Một cậu đội mũ lưỡi trai bước ra, đỡ lấy quai vali.",
+      "- **tung** (happy): Phòng 408 hả? Đưa đây, tớ xách vào cho. Thang máy hỏng, leo đứt hơi nhỉ.",
+      "- **player**: Đứt hơi thật… Cảm ơn cậu. Cậu cũng ở phòng này à?",
+      "- **tung** (neutral): Ừ, giường dưới cạnh cửa sổ là của tớ, tớ lên từ hôm qua. Tớ {{nv.tung}}, học Du lịch.",
+      "- [TẠO NHÂN VẬT ten] tung (neutral): \"Thế cậu tên gì?\"",
+      "  - xúc xắc: Ngại nghĩ thì bấm xúc xắc, tớ đặt hộ cho. Đảm bảo không xui.",
+      "- **tung** (happy): {{nv.nguoi-choi}} à. Dễ gọi đấy.",
+      "- [TẠO NHÂN VẬT nganh] tung (neutral): \"Cậu học ngành gì?\"",
+      "  - lựa chọn: Kế toán · Quản trị kinh doanh · Tài chính – Ngân hàng · Marketing · Thương mại điện tử",
+      "- **tung** (neutral): Lại dân kinh tế. Phòng bốn đứa chẳng ai học Toán, sau này thi biết mượn vở ai đây.",
+      "- **player**: Toán thì chịu, chứ Excel thì được. File xếp phòng mấy nghìn dòng, tớ lọc cái là ra tên mình.",
+      "- **tung** (happy): Thế là chia việc được rồi. Cậu lo lọc, tớ lo đường. Cất đồ đi, tớ dẫn đi một vòng trường.",
+      "- [ĐI TỚI md-02-ban-do]"
+    ]
+  },
+  "ly_do": {
+    "md-00-xe-buyt": "Rút từ 8 dòng xuống 5; bỏ chi tiết pin 12% và nhắn cho mẹ vì về sau không dùng lại; thoại bám theo những gì có trong ảnh (mái ngói đỏ, tòa kính, thanh chắn).",
+    "md-00-cong-ktx": "Khớp ảnh: nhà năm tầng, cổng kéo ngang có ray, không có biển tên.",
+    "md-01-ktx": "Gieo tài dùng Excel cho màn lọc thử ở Ngày hội; chia vai 'cậu lo lọc, tớ lo đường'; có câu rủ đi dạo trường để nối sang bản đồ; 'phòng bốn đứa' khớp với hai giường tầng trong ảnh."
+  }
+}
