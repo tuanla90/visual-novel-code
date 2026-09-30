@@ -52,3 +52,30 @@ describe('SanKhauMvp — biểu cảm riêng của MVP', () => {
     expect(container.querySelector('.cast-member .portrait')).not.toBeNull();
   });
 });
+
+describe('SanKhauMvp — tối đa 3 người trên dàn', () => {
+  const dan = (container: HTMLElement): string[] => [...container.querySelectorAll('.cast-member')].map((e) => e.getAttribute('data-nhan-vat') ?? '');
+
+  it('người thứ tư nói → người nói lâu nhất trước đó rời dàn, người đang nói ở lại, người mới đứng vào chỗ trống', () => {
+    const { container, rerender } = render(<SanKhauMvp kb={kb} canh="cong-truong" speaker="tung" />);
+    rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker="minh-anh" />);
+    rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker="ha-vy" />);
+    // Tùng nói lại → người nói lâu nhất trước đó giờ là Minh Anh.
+    rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker="tung" />);
+    rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker="narrator" />);
+    expect(dan(container)).toEqual(['tung', 'minh-anh', 'ha-vy']);
+    rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker="quan" />);
+    expect(dan(container)).toEqual(['tung', 'quan', 'ha-vy']);
+    expect(container.querySelector('.stage__portraits')?.getAttribute('data-so-nguoi')).toBe('3');
+    expect(container.querySelector('[data-nhan-vat="quan"]')?.getAttribute('data-speaking')).toBe('true');
+    // Người chơi nói → Hà Vy (nói lâu nhất trước đó: Hà Vy < Tùng < Quân) rời dàn.
+    rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker="player" />);
+    expect(dan(container)).toEqual(['tung', 'quan', 'player']);
+  });
+
+  it('đổi cảnh → dàn trống lại', () => {
+    const { container, rerender } = render(<SanKhauMvp kb={kb} canh="cong-truong" speaker="tung" />);
+    rerender(<SanKhauMvp kb={kb} canh="phong-clb" speaker="minh-anh" />);
+    expect(dan(container)).toEqual(['minh-anh']);
+  });
+});
