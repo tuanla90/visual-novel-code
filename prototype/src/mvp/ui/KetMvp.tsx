@@ -24,7 +24,7 @@ export function KetMvp({ ketQua, onChoiLai, onVeTieuDe }: KetMvpProps) {
   const [daChon, setDaChon] = useState<string | null>(null);
   return (
     <section className="endscreen mvp-ket" aria-labelledby="mvp-ket-tieude">
-      <p className="mvp-chal__kicker">Hết Vụ 1 — Chữ ký H.</p>
+      <p className="mvp-chal__kicker">Hết Vụ 1 — Chữ ký H</p>
       <h2 id="mvp-ket-tieude" className="endscreen__title">
         {ketQua === 'that' ? 'Kết thật: người nộp không phải người viết' : 'Kết thường: chỉ là một ý kiến sinh viên'}
       </h2>

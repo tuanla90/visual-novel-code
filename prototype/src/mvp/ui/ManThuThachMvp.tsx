@@ -14,7 +14,7 @@
  * thẻ (chữ cho tác giả, có khi lộ cách giải), không câu giảng / câu dặn thao tác; chỉ hiện bảng mà câu chuẩn dùng
  * (tài khoản CLB chỉ thấy bảng đó); nhãn máy theo cảnh đang đứng (`noi`).
  */
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { BoDuLieuMvp, KichBanMvp, TheThuThachMvp } from '../../content/mvp/types';
 import { ResultTable } from '../../sql-challenge/ui/ResultTable';
 import { SqlCode } from '../../sql-challenge/ui/SqlCode';
@@ -27,6 +27,7 @@ import { docCachNhap, ghiCachNhap } from './cach-nhap';
 import { NhapCauMvp, type GiayNhoDung } from './NhapCauMvp';
 import { SoiDieuKienMvp } from './SoiDieuKienMvp';
 import { TheHoSo } from './TheHoSo';
+import { anhTheoTen } from './anh-mvp';
 import { TrangChiLinh } from './TrangSoMvp';
 
 export interface ManThuThachMvpProps {
@@ -41,11 +42,13 @@ export interface ManThuThachMvpProps {
   giayNho?: GiayNhoDung[];
   /** Tên cảnh đang đứng (vd "Phòng CLB", "Trong phòng máy") cho nhãn máy; bỏ trống = phòng máy. */
   noi?: string;
+  /** Ảnh nền của cảnh đang đứng — dùng làm nền bàn khi chưa có ảnh bàn riêng (buổi họp). */
+  nenCanh?: string;
 }
 
 type XemBang = { bang: string; kq: KetQuaChay | null };
 
-export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong, giayNho = [], noi }: ManThuThachMvpProps) {
+export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong, giayNho = [], noi, nenCanh }: ManThuThachMvpProps) {
   const [sql, setSql] = useState<string>(mode === 'fix-query' ? (the.truyVanNapSan ?? '') : '');
   const [cachNhap, setCachNhap] = useState<CachNhap>(() => docCachNhap());
   const doiCach = useCallback(
@@ -122,9 +125,25 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong, giayNho
   const bangAoHien = (duLieu?.bangAo ?? []).filter((v) => bangDung === null || v.ten === bangDung);
   const laPhongMay = noi === undefined || /phòng máy/i.test(noi);
   const tenMay = laPhongMay ? 'Máy tính phòng máy' : 'Laptop CLB';
+  /**
+   * Giao diện "bàn làm việc" (chương 1): nền bàn thật, ô tra là màn hình laptop, cột phải là bảng bần, giấy nhớ là giấy
+   * dán. Ảnh ở src/assets/mvp/giao-dien/ (Topview); thiếu ảnh nào thì CSS dùng màu thay cho ảnh đó.
+   */
+  const nenBan = mode === 'fix-query' ? nenCanh : anhTheoTen(laPhongMay ? 'ui-ban-phong-may' : 'ui-ban-clb') ?? nenCanh;
+  const anhGiaoDien = {
+    '--anh-ban': nenBan ? `url("${nenBan}")` : undefined,
+    '--anh-giay-nho': cssUrl(anhTheoTen('ui-giay-nho')),
+    '--anh-bang-ban': cssUrl(anhTheoTen('ui-bang-ban')),
+    '--anh-the-giay': cssUrl(anhTheoTen('ui-the-giay')),
+  } as CSSProperties;
 
   return (
-    <div className={`chal mvp-chal${dung ? ' chal--solved' : ''}`} role="region" aria-label={mode === 'fix-query' ? 'Sửa truy vấn' : 'Thử thách phòng máy'}>
+    <div
+      className={`chal mvp-chal mvp-chal--ban${nenBan ? ' co-anh-ban' : ''}${dung ? ' chal--solved' : ''}`}
+      style={anhGiaoDien}
+      role="region"
+      aria-label={mode === 'fix-query' ? 'Sửa truy vấn' : 'Thử thách phòng máy'}
+    >
       {/* Thanh đầu "máy tính CLB": terminal.css dành hàng lưới đầu (32px) cho thanh này, thiếu nó hai cột co lại. */}
       <div className="terminal-bar">
         <span className="terminal-bar__brand">
@@ -354,4 +373,8 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong, giayNho
       </aside>
     </div>
   );
+}
+
+function cssUrl(url: string | undefined): string | undefined {
+  return url ? `url("${url}")` : undefined;
 }

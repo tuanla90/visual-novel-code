@@ -27,6 +27,7 @@ import { giaTriTuHoSo } from '../engine/giay-nho';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import { nhayToi, type MaDiemNhayMvp } from '../engine/tu-choi';
 import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
+import { anhNen } from './anh-mvp';
 import { BAN_DO_MVP } from './ban-do-mvp';
 import { BangQuanSatMvp } from './BangQuanSatMvp';
 import { BanDoMvp } from './BanDoMvp';
@@ -294,6 +295,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             onXong={() => hanhDong({ type: 'xong-thu-thach', thuThach: kn.thuThach.id })}
             giayNho={giaTriTuHoSo(kb, s.hoSo)}
             noi={kb.canh.find((c) => c.id === s.canh)?.ten}
+            nenCanh={anhNen(s.canh)}
           />
         );
       case 'effect':
