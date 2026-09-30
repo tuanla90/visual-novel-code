@@ -35,10 +35,4 @@
 - Tiêu đề: Văn bản của {{nv.thay-quang}}
 - Nguồn: Phòng Đào tạo
 - Nội dung hiển thị:
-> CLB chỉ lập danh sách mã ứng viên kèm căn cứ; cô phụ trách tự tra sổ; quyền dữ liệu tạm thu hồi sau buổi họp.
-
-### doc-don-robotics — Đơn xin phòng của Robotics
-- Tiêu đề: Đơn xin phòng làm xưởng
-- Nguồn: Phòng CTSV
-- Nội dung hiển thị:
-> Ký: Chủ nhiệm CLB Robotics (không đọc được tên).
+> CLB chỉ lập danh sách mã ứng viên kèm căn cứ; cô phụ trách tự tra sổ. Tài khoản CLB chỉ xem bảng lớp; bảng khác cần phiếu yêu cầu tra cứu của Phòng CTSV.

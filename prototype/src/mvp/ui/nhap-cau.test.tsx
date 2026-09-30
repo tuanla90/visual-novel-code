@@ -6,7 +6,9 @@ import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
+// Cơ chế trình dựng (nháy, K24 vào cột số, AND/OR, soi điều kiện) test trên các bài luyện 2.1–2.3 của fixture đóng băng
+// Vụ 1 bản cũ — chương 1 thật (30/09/2026) gộp còn c-lop, không còn bài 2.1/2.2 riêng. Máy chấm không phụ thuộc vụ.
+import { KICH_BAN_DIA_DIEM as KICH_BAN_MVP } from '../engine/testing/kich-ban-dia-diem.fixture';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { clearTelemetry, getTelemetryEvents } from '../../shared/telemetry/track';
 import type { CachNhap } from '../engine/trinh-dung';

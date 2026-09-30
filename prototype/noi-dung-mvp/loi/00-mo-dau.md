@@ -63,7 +63,7 @@
 > NHIỆM VỤ: Đi dạo trường cùng {{nv.tung}}
 
 ## md-02-ban-do.2
-- [DÀN DỰNG] Mở bản đồ lần đầu: hướng dẫn chọn điểm, di chuyển. Chỉ sáng điểm "Sảnh tòa B".
+- [DÀN DỰNG] (tạm) Bản đồ trường. Tùng chỉ đường tới sảnh tòa B.
 - **tung** (happy): Tớ cá là mười phút là tới nhà văn hóa.
 - **player**: Cậu thuộc đường thật à?
 - **tung** (neutral): Biết sơ sơ thôi. Lạc thì coi như biết thêm đường.
@@ -77,7 +77,7 @@
 - **bac-tu** (neutral): Xem thì xem. Mép hộp sắc đấy, đừng thò tay vào.
 
 ## md-04-cang-tin.1
-- [DÀN DỰNG] Dạy cơ chế khung giờ. Quầy bún cá đã đóng.
+- [DÀN DỰNG] (tạm) Quầy bún cá đã đóng.
 - **tung** (worried): Bún cá dọn mất rồi. Quầy này chỉ bán sáng với trưa, giờ còn mỗi bánh mì.
 - **tung** (neutral): Ở đây mà lệch giờ một cái là mất phần ngay.
 

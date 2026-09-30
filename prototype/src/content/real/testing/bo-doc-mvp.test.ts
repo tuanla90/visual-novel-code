@@ -124,6 +124,59 @@ describe('bộ MVP: bộ tối thiểu hợp lệ', () => {
   });
 });
 
+/** Biến thể chương 1 (ĐÃ CHỐT C, 30/09/2026): ngày 1 theo truyện — một chuỗi, không địa điểm, lựa chọn bằng [RẼ NHÁNH]. */
+const THEO_TRUYEN: Record<string, string | ((s: string) => string)> = {
+  'dia-diem.md': '',
+  'lich.md': (s) => s.replace('## Ngày 1 — Thử {ngày: 1}\n- Dữ kiện chính: dk-chinh\n- Buổi tối: toi-1', '## Ngày 1 — Thử {ngày: 1 · theo truyện}\n- Chuỗi: n1'),
+  'kich-ban/01.md': (s) =>
+    s.slice(0, s.indexOf('### s-chinh')) +
+    [
+      '### n1 — Ngày 1 {cảnh: c1}',
+      '- [HẬU QUẢ] mở manh mối clue-x',
+      '- [RẼ NHÁNH r1] tung: "Đi đâu?"',
+      '  - {id: a} Xem thêm. → hậu quả: đi tới s-phu',
+      '  - {id: b} Về. → hậu quả: đi tới s-ve',
+      '### s-phu — Phụ {cảnh: c1}',
+      '- [LƯU BẰNG CHỨNG ev-y]',
+      '### s-ve — Về {cảnh: c1}',
+      '- **tung** (neutral): Về thôi.',
+      '',
+    ].join('\n') +
+    s.slice(s.indexOf('### hop')),
+};
+/** Đọc biến thể theo truyện, rồi áp thêm `them` lên kết quả của biến thể. */
+const docTheoTruyen = (them: Record<string, (s: string) => string> = {}): string[] =>
+  doc(
+    Object.fromEntries(
+      Object.keys({ ...THEO_TRUYEN, ...them }).map((p) => [
+        p,
+        (s: string): string => {
+          const g = THEO_TRUYEN[p];
+          const s1 = g === undefined ? s : typeof g === 'string' ? g : g(s);
+          return them[p]?.(s1) ?? s1;
+        },
+      ]),
+    ),
+  );
+
+describe('bộ MVP: ngày theo truyện', () => {
+  it('đọc sạch: ngày một chuỗi, dia-diem.md rỗng; vật phẩm của một lựa chọn [RẼ NHÁNH] đủ làm điều kiện true end', () => {
+    expect(docTheoTruyen()).toEqual([]);
+  });
+
+  it('true end chỉ cần vật phẩm trên đường bắt buộc (không qua lựa chọn) → lỗi', () => {
+    const loi = docTheoTruyen({ 'kich-ban/01.md': (s) => s.replace('- [ĐIỀU KIỆN] có ev-y', '- [ĐIỀU KIỆN] có clue-x') });
+    expect(loi).toEqual([expect.stringMatching(/kich-ban\/01\.md:\d+: điều kiện true end thỏa chỉ với dữ kiện chính \/ đường chạy bắt buộc/)]);
+  });
+
+  it('thiếu "Chuỗi", có dòng của ngày địa điểm, chuỗi không có → lỗi ở lich.md', () => {
+    expect(docTheoTruyen({ 'lich.md': (s) => s.replace('- Chuỗi: n1', '- Dữ kiện chính: dk-chinh') })).toEqual(
+      expect.arrayContaining([expect.stringMatching(/lich\.md:\d+: ngày 1 \(theo truyện\) có dòng lạ: Dữ kiện chính/), expect.stringMatching(/lich\.md:\d+: ngày 1 \(theo truyện\) thiếu dòng "- Chuỗi: …"/)]),
+    );
+    expect(docTheoTruyen({ 'lich.md': (s) => s.replace('- Chuỗi: n1', '- Chuỗi: khong-co') })).toEqual(expect.arrayContaining([expect.stringMatching(/lich\.md:\d+: ngày 1, "Chuỗi": không có chuỗi "khong-co"/)]));
+  });
+});
+
 describe('bộ MVP: lỗi báo đúng <tệp>:<dòng>', () => {
   it('dữ kiện chính tốn hơn N khung → lỗi ở dòng "Dữ kiện chính" của ngày', () => {
     // Dữ kiện chính chuyển sang phòng máy tốn 3 khung khi vào.
@@ -145,7 +198,9 @@ describe('bộ MVP: lỗi báo đúng <tệp>:<dòng>', () => {
 
   it('true end chỉ cần dữ kiện chính → lỗi (QĐ-086: cần dữ kiện phụ)', () => {
     const loi = doc({ 'kich-ban/01.md': (s) => s.replace('- [ĐIỀU KIỆN] có ev-y', '- [ĐIỀU KIỆN] có clue-x') });
-    expect(loi).toEqual(['noi-dung-mvp/kich-ban/01.md:23: điều kiện true end thỏa chỉ với dữ kiện chính — true end phải cần ít nhất một dữ kiện phụ (QĐ-086)']);
+    expect(loi).toEqual([
+      'noi-dung-mvp/kich-ban/01.md:23: điều kiện true end thỏa chỉ với dữ kiện chính / đường chạy bắt buộc — true end phải cần ít nhất một dữ kiện phụ hay một lựa chọn [RẼ NHÁNH] (QĐ-086)',
+    ]);
   });
 
   it('chuỗi lẻ, buổi tối không dẫn tới dữ kiện chính', () => {

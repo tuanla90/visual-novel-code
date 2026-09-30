@@ -12,8 +12,8 @@ import type { TrangThaiMvp } from './trang-thai';
 
 /** Chiến thuật chơi tự động: chọn gì ở danh sách địa điểm / rẽ nhánh / câu hỏi. */
 export interface ChienThuat {
-  /** Trả dữ kiện muốn xem (theo ngày), hay `null` để kết thúc ngày sớm. */
-  chonDuKien: (s: TrangThaiMvp, kn: Extract<KhungNhinMvp, { kind: 'chon-dia-diem' }>) => { diaDiem: string; duKien: string } | null;
+  /** Ngày chọn địa điểm: trả dữ kiện muốn xem, hay `null` để kết thúc ngày sớm. Bỏ trống = luôn `null` (ngày theo truyện không dùng). */
+  chonDuKien?: (s: TrangThaiMvp, kn: Extract<KhungNhinMvp, { kind: 'chon-dia-diem' }>) => { diaDiem: string; duKien: string } | null;
   reNhanh?: (id: string) => string;
   /** Mặc định chọn đáp án đúng. */
   traLoi?: (id: string, lan: number) => 'dung' | 'sai';
@@ -45,12 +45,12 @@ function hanhDongTuDong(s: TrangThaiMvp, kn: Exclude<KhungNhinMvp, { kind: 'end'
       return { type: 'chon-dong', index: d.index };
     }
     case 'branch':
-      return { type: 'chon', luaChon: ct.reNhanh?.(kn.nut.id) ?? kn.luaChon[0]?.id ?? '' };
+      return { type: 'chon', luaChon: ct.reNhanh?.(kn.nut.id) || kn.luaChon[0]?.id || '' };
     case 'challenge':
     case 'fix-query':
       return { type: 'xong-thu-thach', thuThach: kn.thuThach.id };
     case 'chon-dia-diem': {
-      const chon = ct.chonDuKien(s, kn);
+      const chon = ct.chonDuKien?.(s, kn) ?? null;
       return chon ? { type: 'chon-du-kien', ...chon } : { type: 'ket-thuc-ngay' };
     }
     case 'create-character':
@@ -100,32 +100,24 @@ export function chonTheoUuTien(uuTien: readonly string[], vetCan: boolean): Chie
   };
 }
 
-/** Đường "tập trung": mỗi ngày làm dữ kiện chính (và dữ kiện nó cần) trước, rồi lấy đủ dữ kiện phụ cho kết thật. */
-export const DUONG_DU_BANG_CHUNG: readonly string[] = [
-  'dk-bac-thinh-the-lich',
-  'dk-co-hanh-cap-quyen',
-  'dk-loc-lop',
-  'dk-quy-che-so-niem-phong',
-  'dk-loi-chu-cuong',
-  'dk-ten-h',
-  'dk-nhat-ky-in',
-  'dk-nop-hai-ma',
-  'dk-loi-dat',
-];
+/**
+ * Chương 1 (ngày theo truyện, ĐÃ CHỐT C 30/09/2026): lựa chọn ở mỗi [RẼ NHÁNH] để tới KẾT THẬT — ghé phòng máy (nhật ký
+ * in), hỏi chú Cường, mời Hoài vào tự kể. Rẽ nhánh không có trong bảng thì chọn lựa chọn đầu.
+ */
+export const RE_NHANH_KET_THAT: Readonly<Record<string, string>> = {
+  'r-phong-may': 'ghe',
+  'r-chu-cuong': 'hoi',
+  'r-moi-hoai': 'tu-ke',
+};
 
-/** Chỉ dữ kiện chính (và thứ nó cần): thiếu `ev-nhat-ky-in`, `clue-loi-chu-cuong`, `clue-loi-dat`. */
-export const DUONG_CHI_CHINH: readonly string[] = [
-  'dk-bac-thinh-the-lich',
-  'dk-co-hanh-cap-quyen',
-  'dk-loc-lop',
-  'dk-quy-che-so-niem-phong',
-  'dk-ten-h',
-  'dk-nop-hai-ma',
-];
+export const reNhanhTheo =
+  (bang: Readonly<Record<string, string>>): NonNullable<ChienThuat['reNhanh']> =>
+  (id) =>
+    bang[id] ?? '';
 
 // ---------- Nhảy tới (người quan sát) ----------
 
-export type MaDiemNhayMvp = 'loc-lop' | 'ten-h' | 'hop-sua-or';
+export type MaDiemNhayMvp = 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or';
 
 export interface DiemNhayMvp {
   id: MaDiemNhayMvp;
@@ -143,24 +135,24 @@ const dangOThuThach =
     kn.kind === kind && kn.thuThach.id === id;
 
 /**
- * Ba điểm nhảy tới phần SQL. Đường đi cố định `DUONG_DU_BANG_CHUNG`: mỗi ngày làm dữ kiện chính trước rồi các dữ kiện
- * phụ của kết thật (nhật ký in, lời chú Cường, lời Đạt), trả lời đúng mọi câu → tới buổi họp còn đủ vạch và kết thật
- * vẫn đạt được nếu chơi tiếp đúng.
+ * Bốn điểm nhảy tới phần SQL của chương 1. Đường đi cố định: chọn theo `RE_NHANH_KET_THAT`, trả lời đúng mọi câu → hồ sơ
+ * có đủ thứ của kết thật, chơi tiếp đúng vẫn tới kết thật.
  */
 export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
-  { id: 'loc-lop', nhan: 'Ngày 2 · Lọc lớp', moTa: 'Chuỗi bốn bài phòng máy: khóa K24 → tòa B → AND/OR → ba điều kiện.', toi: dangOThuThach('challenge', 'c-loc-khoa') },
-  { id: 'ten-h', nhan: 'Ngày 4 · Tên bắt đầu bằng H', moTa: 'Chuỗi hai bài phòng máy: lọc lớp BC24A → tên bắt đầu bằng H.', toi: dangOThuThach('challenge', 'c-ten-lop') },
-  { id: 'hop-sua-or', nhan: 'Buổi họp · Sửa câu OR của Quân', moTa: 'Buổi họp rà soát, màn sửa truy vấn OR → AND.', toi: dangOThuThach('fix-query', 'c-sua-or-quan') },
+  { id: 'lop', nhan: 'Ngày 2 · Lớp ở tòa B và học Báo chí', moTa: 'Lần tra đầu, laptop phòng CLB: hai điều kiện, VÀ / HOẶC.', toi: dangOThuThach('challenge', 'c-lop') },
+  { id: 'ten-h', nhan: 'Ngày 3 · Tên bắt đầu bằng H', moTa: 'Laptop phòng CLB: phiếu hai lớp + [H]; "bằng" ra 0 dòng → "bắt đầu bằng".', toi: dangOThuThach('challenge', 'c-ten-h') },
+  { id: 'nhat-ky-in', nhan: 'Ngày 4 · Nhật ký in', moTa: 'Phòng máy (đã chọn ghé): mã + tên tệp ra 0 dòng → bỏ điều kiện mã.', toi: dangOThuThach('challenge', 'c-in') },
+  { id: 'hop-sua-or', nhan: 'Buổi họp · Sửa câu HOẶC của Quân', moTa: 'Buổi họp rà soát, màn sửa truy vấn HOẶC → VÀ.', toi: dangOThuThach('fix-query', 'c-sua-or-quan') },
 ];
 
 /**
  * Trạng thái "như đã chơi tới" điểm nhảy: ván mới (tên `TEN_MAC_DINH`, ngành đầu danh sách), máy tự chơi theo
- * `DUONG_DU_BANG_CHUNG` tới màn đích. Ném lỗi nếu nội dung đổi làm đường đi không còn tới được đích.
+ * `RE_NHANH_KET_THAT` tới màn đích. Ném lỗi nếu nội dung đổi làm đường đi không còn tới được đích.
  */
 export function nhayToi(kb: KichBanMvp, id: MaDiemNhayMvp, batDauLuc: number = Date.now()): TrangThaiMvp {
   const diem = DIEM_NHAY_MVP.find((d) => d.id === id);
   if (!diem) throw new Error(`Không có điểm nhảy ${id}`);
-  const ct: ChienThuat = { chonDuKien: chonTheoUuTien(DUONG_DU_BANG_CHUNG, false), ten: TEN_MAC_DINH };
+  const ct: ChienThuat = { reNhanh: reNhanhTheo(RE_NHANH_KET_THAT), ten: TEN_MAC_DINH };
   const s = choiTuDong(kb, taoTrangThai(kb, batDauLuc), ct, diem.toi);
   if (!diem.toi(s, khungNhin(kb, s))) throw new Error(`Tự chơi không tới được điểm nhảy ${id}`);
   return s;

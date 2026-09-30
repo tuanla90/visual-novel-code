@@ -206,7 +206,7 @@ export function chuyenMvp(mvp: RawMvp, luat: KetQuaLuat): DuLieuMvp {
       buoiToi: lich.buoiToi,
       luat: lich.luat,
       chuoiDau: lich.chuoiDau,
-      ngay: lich.ngay.map((n) => ({ so: n.so, ten: n.ten, duKienChinh: n.duKienChinh, moNgay: n.moNgay, buoiToi: n.buoiToi })),
+      ngay: lich.ngay.map((n) => ({ so: n.so, ten: n.ten, kieu: n.kieu, chuoi: n.chuoi, duKienChinh: n.duKienChinh, moNgay: n.moNgay, buoiToi: n.buoiToi })),
       ngayHop: lich.ngayHop ? { chuoi: lich.ngayHop.chuoi } : null,
       ket: lich.ket ? { that: lich.ket.that, thuong: lich.ket.thuong } : null,
     },

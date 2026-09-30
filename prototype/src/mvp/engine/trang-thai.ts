@@ -19,6 +19,8 @@ export type BoiCanhChuoi =
   | 'du-kien'
   /** Chuỗi "Cuối ngày" (buổi tối): hết → ghi nhận dữ kiện chính, hết ngày. */
   | 'toi'
+  /** Chuỗi của một ngày theo truyện (chương 1): hết → hết ngày. */
+  | 'truyen'
   /** Chuỗi ngày họp: phải tự `[ĐI TỚI]`/`[RẼ KẾT]`; hết nút mà không rẽ là lỗi nội dung. */
   | 'hop'
   /** Chuỗi kết: kết thúc bằng `[KẾT THÚC]`. */

@@ -182,11 +182,19 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   const reKet: ViTri[] = [];
   const taoNhanVat: { truong: 'ten' | 'nganh'; chuoi: string; idx: number; vt: ViTri }[] = [];
   const truUyTin: { chuoi: string; vt: ViTri }[] = [];
+  /** Cạnh BẮT BUỘC (người chơi không tránh được): [ĐI TỚI], [HẬU QUẢ] đi tới, mọi chỗ bấm của [KHÁM PHÁ]. Không gồm lựa chọn [RẼ NHÁNH]. */
+  const canhBatBuoc = new Map<string, Set<string>>();
+  /** Vật phẩm một chuỗi tự tạo khi chạy qua (không tính vật phẩm của một lựa chọn [RẼ NHÁNH]). */
+  const taoTrongChuoi = new Map<string, Set<string>>();
   for (const c of mvp.chuoi) {
     const dt = new Set<string>();
     const tt = new Set<string>();
+    const bb = new Set<string>();
+    const tao = new Set<string>();
     canhChuoi.set(c.id, dt);
     chuaThuThach.set(c.id, tt);
+    canhBatBuoc.set(c.id, bb);
+    taoTrongChuoi.set(c.id, tao);
     if (!canh.has(c.canh)) err(c.viTri, `chuỗi ${c.id}: không có cảnh "${c.canh}" trong canh.md`);
     c.items.forEach((it, k) => {
       const vt: ViTri = { tep: c.viTri.tep, dong: c.itemDong[k] ?? c.viTri.dong };
@@ -197,14 +205,17 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
       switch (it.kind) {
         case 'goto':
           canChuoi(it.to, '[ĐI TỚI]');
+          bb.add(it.to);
           break;
         case 'show-document':
           canVatPham(it.id, vt, 'doc-', '[HIỆN TÀI LIỆU]');
           them(it.id, { kind: 'chuoi', id: c.id });
+          tao.add(it.id);
           break;
         case 'save-evidence':
           canVatPham(it.id, vt, 'ev-', '[LƯU BẰNG CHỨNG]');
           them(it.id, { kind: 'chuoi', id: c.id });
+          tao.add(it.id);
           break;
         case 'challenge':
         case 'fix-query': {
@@ -212,7 +223,10 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           if (!t) err(vt, `[${it.kind === 'challenge' ? 'THỬ THÁCH' : 'SỬA TRUY VẤN'} ${it.id}]: không có thẻ thử thách "${it.id}"`);
           else {
             tt.add(it.id);
-            if (t.evidence) them(t.evidence.id, { kind: 'chuoi', id: c.id });
+            if (t.evidence) {
+              them(t.evidence.id, { kind: 'chuoi', id: c.id });
+              tao.add(t.evidence.id);
+            }
             if (it.kind === 'fix-query' && t.sql['Truy vấn nạp sẵn'] === undefined) err(vt, `[SỬA TRUY VẤN ${it.id}]: thẻ phải có "- Truy vấn nạp sẵn:" + khối sql`);
           }
           break;
@@ -245,7 +259,11 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           }
           break;
         case 'consequence':
-          for (const h of it.hauQua) kiemHauQua(h, vt, '[HẬU QUẢ]', c.id, canChuoi);
+          for (const h of it.hauQua) {
+            kiemHauQua(h, vt, '[HẬU QUẢ]', c.id, canChuoi);
+            if (h.kind === 'di-toi') bb.add(h.chuoi);
+            else if (h.kind === 'mo-manh-moi' || h.kind === 'hien-tai-lieu' || h.kind === 'luu-bang-chung') tao.add(h.id);
+          }
           break;
         case 'condition':
           for (const id of maTrongDieuKien(it.dieuKien)) canVatPham(id, vt, null, '[ĐIỀU KIỆN]');
@@ -284,6 +302,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           for (const d of it.diem) {
             if (d.chuoi === c.id) err(vt, `${noi}: chỗ bấm không được trỏ về chính chuỗi chứa nó`);
             canChuoi(d.chuoi, noi);
+            bb.add(d.chuoi);
             for (const s of d.sau) if (!cacChuoi.has(s) || s === d.chuoi) err(vt, `${noi}: "sau: ${s}" phải là chuỗi của một chỗ bấm khác trong cùng [KHÁM PHÁ]`);
             if (d.sprite.startsWith('nv:')) {
               if (!nhanVat.has(d.sprite.slice(3))) err(vt, `${noi}: không có nhân vật "${d.sprite.slice(3)}" trong nhan-vat.md`);
@@ -336,6 +355,10 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     if (s !== i + 1) err(lich.ngay.find((n) => n.so === s)?.viTri ?? lich.viTri, `ngày phải đánh số liên tục từ 1 (gặp ngày ${s})`);
   });
   for (const n of lich.ngay) {
+    if (n.kieu === 'theo-truyen') {
+      if (n.chuoi) canChuoiLich(n.chuoi, n.viTri, `ngày ${n.so}, "Chuỗi"`);
+      continue;
+    }
     if (n.moNgay !== null) canChuoiLich(n.moNgay, n.viTri, `ngày ${n.so}, "Mở ngày"`);
     if (n.buoiToi !== '') canChuoiLich(n.buoiToi, n.viTri, `ngày ${n.so}, "Buổi tối"`);
     const dk = duKien.get(n.duKienChinh);
@@ -351,6 +374,10 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   // ---------- Đồ thị chuỗi: mốc sớm nhất, chuỗi lẻ ----------
   const goc: { id: string; t: number }[] = [{ id: lich.chuoiDau, t: 0 }];
   for (const n of lich.ngay) {
+    if (n.kieu === 'theo-truyen') {
+      if (n.chuoi) goc.push({ id: n.chuoi, t: n.so * 10 + 1 });
+      continue;
+    }
     if (n.moNgay) goc.push({ id: n.moNgay, t: n.so * 10 + 1 });
     goc.push({ id: n.buoiToi, t: THU_TU_BUOI_TOI(n.so) });
   }
@@ -484,6 +511,19 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
       if (!toi) err(n.viTri, `ngày ${n.so}: chuỗi buổi tối "${n.buoiToi}" không dẫn tới dữ kiện chính "${dk.id}" (cần [ĐI TỚI ${dk.chuoi ?? '…'}]${dk.thuThach ? ` hoặc [THỬ THÁCH ${dk.thuThach}]` : ''})`);
     }
   }
+  // Vật phẩm trên đường chạy bắt buộc (mở đầu, ngày theo truyện, ngày họp): cũng coi như "chính" khi xét true end.
+  {
+    const goc = [lich.chuoiDau, ...lich.ngay.flatMap((n) => (n.kieu === 'theo-truyen' && n.chuoi ? [n.chuoi] : [])), ...(lich.ngayHop ? [lich.ngayHop.chuoi] : [])];
+    const da = new Set<string>();
+    const stack = [...goc];
+    while (stack.length) {
+      const x = stack.pop() ?? '';
+      if (da.has(x) || !chuoi.has(x)) continue;
+      da.add(x);
+      for (const v of taoTrongChuoi.get(x) ?? []) vatPhamChinh.add(v);
+      for (const y of canhBatBuoc.get(x) ?? []) stack.push(y);
+    }
+  }
   for (const k of duKien.values()) {
     if (k.nhan === 'chinh' && !daGan.has(k.id)) err(k.viTri, `dữ kiện chính "${k.id}" không thuộc ngày nào (không là "Dữ kiện chính" của ngày nào, cũng không được dữ kiện chính nào "Cần")`);
   }
@@ -503,7 +543,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
       for (const id of ma) if (vatPham.has(id) && !producers.has(id)) err(vt, `true end cần "${id}" nhưng không dữ kiện, thẻ hay chuỗi nào tạo ra nó`);
       if (!danhGiaDieuKien(dkThat.dieuKien, datDuoc)) err(vt, 'điều kiện true end không thể thỏa dù có đủ mọi thứ đạt được');
       else if (danhGiaDieuKien(dkThat.dieuKien, new Set([...vatPhamChinh].filter((v) => datDuoc.has(v))))) {
-        err(vt, 'điều kiện true end thỏa chỉ với dữ kiện chính — true end phải cần ít nhất một dữ kiện phụ (QĐ-086)');
+        err(vt, 'điều kiện true end thỏa chỉ với dữ kiện chính / đường chạy bắt buộc — true end phải cần ít nhất một dữ kiện phụ hay một lựa chọn [RẼ NHÁNH] (QĐ-086)');
       }
     }
     if (reKet.length !== 1) err(reKet[1] ?? lich.ket.viTri, `[RẼ KẾT] phải xuất hiện đúng một lần trong game (hiện ${reKet.length})`);

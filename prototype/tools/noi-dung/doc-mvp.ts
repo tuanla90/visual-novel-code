@@ -117,6 +117,9 @@ export interface RawDiaDiem {
 export interface RawNgay {
   so: number;
   ten: string;
+  /** `{ngày: n · theo truyện}` → `theo-truyen` (một chuỗi, không địa điểm). */
+  kieu: 'dia-diem' | 'theo-truyen';
+  chuoi: string | null;
   duKienChinh: string;
   moNgay: string | null;
   buoiToi: string;
@@ -729,6 +732,13 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           break;
         case 'ngay': {
           if (!ngay) break;
+          if (ngay.kieu === 'theo-truyen') {
+            laNgoai(['Chuỗi'], `ngày ${ngay.so} (theo truyện)`);
+            ngay.chuoi = canCo(f, 'Chuỗi', vt, `ngày ${ngay.so} (theo truyện)`) ?? '';
+            lich.ngay.push(ngay);
+            ngay = null;
+            break;
+          }
           laNgoai(['Dữ kiện chính', 'Mở ngày', 'Buổi tối'], `ngày ${ngay.so}`);
           ngay.duKienChinh = canCo(f, 'Dữ kiện chính', vt, `ngày ${ngay.so}`) ?? '';
           ngay.buoiToi = canCo(f, 'Buổi tối', vt, `ngày ${ngay.so}`) ?? '';
@@ -771,13 +781,14 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         else if (line === '## Mở đầu') muc = 'mo-dau';
         else if (line === '## Kết') muc = 'ket';
         else {
-          const n = /^## (.+) \{ngày: (\d+)\}$/.exec(line);
+          const n = /^## (.+) \{ngày: (\d+)( · theo truyện)?\}$/.exec(line);
           const h = /^## (.+) \{ngày họp\}$/.exec(line);
           if (n) {
             muc = 'ngay';
-            ngay = { so: Number(n[2]), ten: n[1] ?? '', duKienChinh: '', moNgay: null, buoiToi: '', viTri: viTri(), dongChinh: viTri().dong };
+            const kieu = n[3] ? 'theo-truyen' : 'dia-diem';
+            ngay = { so: Number(n[2]), ten: n[1] ?? '', kieu, chuoi: null, duKienChinh: '', moNgay: null, buoiToi: '', viTri: viTri(), dongChinh: viTri().dong };
           } else if (h) muc = 'ngay-hop';
-          else throw new Error(`tiêu đề lạ trong lich.md "${line}" — dùng "## Luật", "## Mở đầu", "## <Tên> {ngày: n}", "## <Tên> {ngày họp}", "## Kết"`);
+          else throw new Error(`tiêu đề lạ trong lich.md "${line}" — dùng "## Luật", "## Mở đầu", "## <Tên> {ngày: n}", "## <Tên> {ngày: n · theo truyện}", "## <Tên> {ngày họp}", "## Kết"`);
         }
         return i;
       }
@@ -958,7 +969,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         tao = { truong: m[1] === 'ten' ? 'ten' : 'nganh', asker: { speaker: m[2] ?? '', expression: m[3] ?? null, text: m[4] ?? '' }, xucXac: null, luaChon: [] };
         return add({ kind: 'create-character', tao });
       }
-      if ((m = new RegExp(`^- \\[LỌC THỬ (${MA}) · (\\d+) dòng · chọn ([a-z_][a-z0-9_]*) = (\\S+)\\]$`).exec(line))) {
+      if ((m = new RegExp(`^- \\[LỌC THỬ (${MA}) · (\\d+) dòng · chọn ([a-z_][a-z0-9_]*) = (.+)\\]$`).exec(line))) {
         const item: MucMvp & { kind: 'trial-filter' } = { kind: 'trial-filter', id: m[1] ?? '', sql: '', soDong: Number(m[2]), chon: { cot: m[3] ?? '', giaTri: m[4] ?? '' } };
         choSql = item;
         return add(item);

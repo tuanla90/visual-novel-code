@@ -1,16 +1,41 @@
 // @vitest-environment node
 /**
- * Máy chạy MVP — test thuần (không React) trên dữ liệu sinh thật `KICH_BAN_MVP` (brief gói kien-truc-mvp, mục KIỂM TRA):
- * đi hết mở đầu → 5 ngày → họp → hai kết; hết khung → cuối ngày; đi lại không tốn khung; Lưu/Nạp giữa ngày 3.
+ * Máy chạy MVP ở CHẾ ĐỘ ĐỊA ĐIỂM (ngày × khung giờ, dữ kiện chính/phụ, buổi tối, uy tín) — test thuần trên fixture đóng
+ * băng `KICH_BAN_DIA_DIEM` (Vụ 1 bản cũ, trước khi chương 1 chuyển sang ngày theo truyện 30/09/2026; chế độ này dùng lại
+ * từ Vụ 2): đi hết mở đầu → 5 ngày → họp → hai kết; hết khung → cuối ngày; đi lại không tốn khung; Lưu/Nạp giữa ngày 3.
+ * Chương 1 thật (ngày theo truyện): `chuong-1.test.ts`.
  */
 import { describe, expect, it } from 'vitest';
-import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
+import { KICH_BAN_DIA_DIEM } from './testing/kich-ban-dia-diem.fixture';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { danhSachDiaDiem, khungNhin, taoTrangThai, xuLy, type KhungNhinMvp } from './may';
 import type { TrangThaiMvp } from './trang-thai';
-import { choiTuDong, chonTheoUuTien, DUONG_CHI_CHINH, DUONG_DU_BANG_CHUNG, type ChienThuat } from './tu-choi';
+import { choiTuDong, chonTheoUuTien, type ChienThuat } from './tu-choi';
 
-const KB = KICH_BAN_MVP as unknown as KichBanMvp;
+const KB = KICH_BAN_DIA_DIEM as unknown as KichBanMvp;
+
+/** Đường "tập trung" của fixture: mỗi ngày làm dữ kiện chính (và dữ kiện nó cần) trước, rồi đủ dữ kiện phụ cho kết thật. */
+const DUONG_DU_BANG_CHUNG: readonly string[] = [
+  'dk-bac-thinh-the-lich',
+  'dk-co-hanh-cap-quyen',
+  'dk-loc-lop',
+  'dk-quy-che-so-niem-phong',
+  'dk-loi-chu-cuong',
+  'dk-ten-h',
+  'dk-nhat-ky-in',
+  'dk-nop-hai-ma',
+  'dk-loi-dat',
+];
+
+/** Chỉ dữ kiện chính (và thứ nó cần): thiếu `ev-nhat-ky-in`, `clue-loi-chu-cuong`, `clue-loi-dat`. */
+const DUONG_CHI_CHINH: readonly string[] = [
+  'dk-bac-thinh-the-lich',
+  'dk-co-hanh-cap-quyen',
+  'dk-loc-lop',
+  'dk-quy-che-so-niem-phong',
+  'dk-ten-h',
+  'dk-nop-hai-ma',
+];
 
 /** Chơi tự động (bộ chơi dùng chung `tu-choi.ts`) tới khi gặp `dung(s, kn)` hoặc hết game; tên gõ mặc định "Nam". */
 function choi(s: TrangThaiMvp, ct: ChienThuat, dung: (s: TrangThaiMvp, kn: KhungNhinMvp) => boolean): TrangThaiMvp {

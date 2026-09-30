@@ -60,6 +60,32 @@ Các thay đổi so với kịch bản khung cũ: bỏ luật 3 khung giờ và 
 
 Quyền dữ liệu: tài khoản `clb_tham_tu` (cô Hạnh, ngày 2, chỉ bảng lớp) + phiếu yêu cầu tra cứu (CTSV ký, Quân giám sát, ngày 3) mở bảng sinh viên 4 cột; phòng máy dùng phiếu thứ hai cho nhật ký in. Tài khoản giữ lại cho các vụ sau.
 
+### D. Trạng thái khung chương 1 — phiên logic xong 30/09, chờ user duyệt rồi phiên truyện viết lời
+
+Đây là **trạng thái**, không phải quyết định mới: khung dựng đúng theo mục C.
+
+**Đã có (máy kiểm sạch: `npm run kiem-noi-dung:mvp`, test MVP xanh, tsc/eslint sạch):**
+- Engine có **ngày theo truyện**: `## <Tên> {ngày: n · theo truyện}` + `- Chuỗi: <mã>` trong `lich.md` (đặc tả §18.5). Mỗi ngày chạy một chuỗi, không bản đồ, không khung giờ; hết chuỗi là hết ngày. Không còn uy tín, không còn "Cuối ngày"; `dia-diem.md` để trống.
+- Khung: `kich-ban/01-ngay-1.md` … `05-ngay-5.md` và `06-hop-va-ket.md` viết lại. Ngày 1 là một `[KHÁM PHÁ]` ba chỗ bấm; ngày 4 (ghé phòng máy?) và ngày 5 (hỏi chú Cường?) là `[RẼ NHÁNH]`; buổi họp bỏ câu "hai dòng cho biết gì", giữ câu "hai bạn này là người viết thư?", bỏ `trừ uy tín`.
+- Thẻ thử thách: `c-lop` (tòa B VÀ Báo chí → 2; HOẶC → 5), `c-ten-h` (hai lớp + tên bắt đầu bằng H → Hiếu, Hoài), `c-in` (mới: mã + tên tệp → 0; tên tệp → SV210745), `c-sua-or-quan`. Bỏ `c-loc-khoa`, `c-loc-toa`, `c-loc-and`, `c-loc-lop`, `c-ten-lop`.
+- `du-lieu.md` thêm bảng `nhat_ky_in` (9 dòng, chép từ `docs/mvp/kiem-bang-vu1.py`).
+- Kết thật: `có ev-nhat-ky-in và có clue-loi-chu-cuong`. Bộ kiểm mới biết "đường bắt buộc": điều kiện kết thật mà thỏa chỉ bằng thứ người chơi không tránh được là lỗi.
+- Ngày hội: màn lọc thử **không hiện SQL**, bỏ câu "Bấm vào dòng có …"; người chơi chọn dòng ngành Du lịch (lời Tùng dẫn).
+- Nhảy tới (bảng người quan sát `?facilitator=1`): Ngày 2 · c-lop, Ngày 3 · c-ten-h, Ngày 4 · c-in, Buổi họp.
+- Test chế độ địa điểm (dùng lại từ Vụ 2) chạy trên bản đóng băng `src/mvp/engine/testing/kich-ban-dia-diem.fixture.ts`.
+
+**Việc cho phiên truyện (sau khi user duyệt):**
+- `loi/` còn **35 dòng `(tạm)`** (máy đếm, in cảnh báo). Tệp mới: `loi/01-ngay-1.md` … `05-ngay-5.md`, `tt-c-lop.md`, `tt-c-in.md`. Lời cũ còn dùng được đã chuyển sang mã mới (bác Thịnh, cô Lan, Quân, Hiếu, chú Cường, nhật ký in).
+- Chữ tạm ngoài `loi/`: thẻ `clue-quyen-du-lieu`, `clue-phieu-tra-cuu`, `clue-ten-tep` (ho-so/01), `doc-van-ban-thay-quang` (ho-so/02). Giữ mã và dòng "Giá trị cho trình dựng".
+- Câu hỏi và chữ lựa chọn của `[RẼ NHÁNH]` / `[HỎI]` (ngày 4, ngày 5, buổi họp) đang nằm **trong khung** vì cú pháp đặt chúng cùng dòng cấu trúc. Phiên truyện sửa chữ trong đó được, không đổi `{id: …}` và `→ hậu quả: …`.
+- `nhan-vat.md`: Đạt không còn xuất hiện ở chương 1 — giữ hay bỏ thẻ là việc của phiên truyện.
+- Không cần ảnh mới. Tọa độ ba chỗ bấm ngày 1 là tạm (`kich-ban/01-ngay-1.md`).
+
+**Chưa làm (việc giao diện / engine, sau khi gộp):**
+- Ngày hội: kéo thẻ [Tùng] vào cột tên (hiện vẫn là bấm chọn dòng).
+- Kéo **phiếu kết quả** vào ô điều kiện thành `IN (…)`: hiện phiếu hai lớp cho hai giấy nhớ rời `BC24A`, `BC23A`; chấm theo tập kết quả nên `ma_lop = 'BC24A'` vẫn đúng.
+- Bảng điều tra (ghim, sợi chỉ). Trang sổ `where-so`, `where-chu`, `and-or`, `like` và lời chung "mất uy tín" không còn được dùng ở chương 1.
+
 
 ---
 
@@ -155,5 +181,6 @@ Làm theo bản chơi thử:
 
 ## 7. Bảng Vụ 1 theo lõi mới (30/09)
 
+- (Cũ so với mục C/D: trang này còn ngày 3–6 có hạn và Đạt. Chương 1 đi theo truyện; phần lịch có hạn giữ làm mẫu cho Vụ 2.)
 - Trang: https://claude.ai/artifact/ANwr56VHVhTP69UvgDUAv8 — thẻ và sợi chỉ của cả vụ lá thư, lịch ngày (ngày 1–2 theo truyện, ngày 3–6 có hạn 4 ngày), luật từng nơi đến, ấn tượng cô Lan, việc nhờ, ba kết, câu hỏi của Tùng và thang gợi ý.
 - Bộ kiểm bằng máy: `docs/mvp/kiem-bang-vu1.py` (số dòng từng truy vấn, đáp án duy nhất, duyệt 625 lịch). Thêm bảng mới `nhat_ky_in` (9 dòng) cho phòng máy.

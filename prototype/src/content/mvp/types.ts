@@ -107,6 +107,13 @@ export interface DiaDiemMvp {
 export interface NgayMvp {
   so: number;
   ten: string;
+  /**
+   * `dia-diem`: ngày chọn địa điểm × khung giờ (dữ kiện chính, buổi tối — QĐ-086).
+   * `theo-truyen` (chương 1, ĐÃ CHỐT C 30/09/2026): chạy MỘT chuỗi `chuoi` từ đầu tới cuối, không bản đồ, không khung giờ;
+   * chuỗi hết nút → hết ngày. `duKienChinh`, `buoiToi` rỗng.
+   */
+  kieu: 'dia-diem' | 'theo-truyen';
+  chuoi: string | null;
   duKienChinh: string;
   moNgay: string | null;
   buoiToi: string;

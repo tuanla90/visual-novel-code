@@ -93,7 +93,7 @@
 - [LỜI md-09-ngay-hoi.1]
 
 - [LỜI md-09-ngay-hoi.2]
-- [LỌC THỬ lt-ngay-hoi · 3 dòng · chọn ma_sv = SV240251]
+- [LỌC THỬ lt-ngay-hoi · 3 dòng · chọn nganh = Du lịch]
 
 ```sql
 SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';

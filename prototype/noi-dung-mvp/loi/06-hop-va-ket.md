@@ -13,7 +13,7 @@
 
 ## hop-00.3
 - **tung** (worried): Ơ… mười bốn dòng thật.
-- [DÀN DỰNG] Nhịp 1: người chơi chạm vào OR (chạm sai mất 1 vạch). Nhịp 2: sửa thành AND → 2 dòng → "Số liệu đây!". Chạy thử không phạt.
+- [DÀN DỰNG] Nhịp 1: người chơi chạm vào chữ HOẶC, đổi thành VÀ → 2 dòng. Nhịp 2: "Số liệu đây!". Chạm sai, chạy thử đều không phạt.
 
 ## hop-00.4
 - **ha-vy** (neutral): Anh đang gộp hai nhóm vào làm một rồi ạ. Bọn em cần người vừa có tên bắt đầu bằng H, vừa học lớp BC24A ạ.

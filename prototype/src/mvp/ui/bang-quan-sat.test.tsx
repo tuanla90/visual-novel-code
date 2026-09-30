@@ -49,12 +49,12 @@ describe('bảng người quan sát MVP', () => {
     expect(document.documentElement).not.toHaveClass('facilitator-on');
   });
 
-  it('?facilitator=1 → có bảng thu gọn, chừa dải đáy; mở ra có ba nút nhảy tới phần SQL', async () => {
+  it('?facilitator=1 → có bảng thu gọn, chừa dải đáy; mở ra có bốn nút nhảy tới phần SQL', async () => {
     veManChoi('/?facilitator=1');
     const bang = screen.getByRole('complementary', { name: 'Bảng người quan sát (MVP)' });
     expect(document.documentElement).toHaveClass('facilitator-on');
     await userEvent.click(within(bang).getByRole('button', { name: 'Mở bảng' }));
-    for (const nhan of ['Ngày 2 · Lọc lớp', 'Ngày 4 · Tên bắt đầu bằng H', 'Buổi họp · Sửa câu OR của Quân']) {
+    for (const nhan of ['Ngày 2 · Lớp ở tòa B và học Báo chí', 'Ngày 3 · Tên bắt đầu bằng H', 'Ngày 4 · Nhật ký in', 'Buổi họp · Sửa câu HOẶC của Quân']) {
       expect(within(bang).getByRole('button', { name: nhan })).toHaveAttribute('title');
     }
   });
@@ -64,28 +64,27 @@ describe('bảng người quan sát MVP', () => {
     veManChoi('/?facilitator=1', dau);
     const bang = screen.getByRole('complementary', { name: 'Bảng người quan sát (MVP)' });
     await userEvent.click(within(bang).getByRole('button', { name: 'Mở bảng' }));
-    await userEvent.click(within(bang).getByRole('button', { name: 'Ngày 2 · Lọc lớp' }));
+    await userEvent.click(within(bang).getByRole('button', { name: 'Ngày 2 · Lớp ở tòa B và học Báo chí' }));
     await userEvent.click(within(screen.getByRole('alertdialog')).getByRole('button', { name: 'Hủy' }));
     expect(trangThai()).toEqual(dau);
   });
 
-  it('nhảy "Ngày 2 · Lọc lớp" → ngày 2, bài đầu chuỗi c-loc-khoa hiện, thanh trên "2/5", tên mặc định', async () => {
+  it('nhảy "Ngày 2 · Lớp …" → ngày 2, màn c-lop hiện, thanh trên "2/5", tên mặc định', async () => {
     veManChoi('/?facilitator=1');
-    await nhayToiQuaBang('Ngày 2 · Lọc lớp');
+    await nhayToiQuaBang('Ngày 2 · Lớp ở tòa B và học Báo chí');
     const s = trangThai();
-    expect(khungNhin(kb, s)).toMatchObject({ kind: 'challenge', thuThach: { id: 'c-loc-khoa' } });
+    expect(khungNhin(kb, s)).toMatchObject({ kind: 'challenge', thuThach: { id: 'c-lop' } });
     expect(s.ngay).toBe(2);
     expect(s.tenNguoiChoi).toBe(TEN_MAC_DINH);
     expect(screen.getByRole('banner', { name: 'Thanh trạng thái' }).querySelector('.topbar__chapter-number')).toHaveTextContent(`2/${kb.lich.ngay.length}`);
     expect(document.querySelector('.mvp-chal')).not.toBeNull();
   });
 
-  it('nhảy "Buổi họp" → màn sửa truy vấn, đủ vạch uy tín; Lưu rồi Nạp giữ nguyên chỗ', async () => {
+  it('nhảy "Buổi họp" → màn sửa truy vấn; Lưu rồi Nạp giữ nguyên chỗ', async () => {
     veManChoi('/?facilitator=1');
-    await nhayToiQuaBang('Buổi họp · Sửa câu OR của Quân');
+    await nhayToiQuaBang('Buổi họp · Sửa câu HOẶC của Quân');
     const s = trangThai();
     expect(khungNhin(kb, s)).toMatchObject({ kind: 'fix-query', thuThach: { id: 'c-sua-or-quan' } });
-    expect(s.uyTin).toBe(kb.lich.luat.uyTin);
     act(() => {
       useKhoMvp.getState().luuVaoO(0, 'Buổi họp');
       useKhoMvp.getState().batDau();

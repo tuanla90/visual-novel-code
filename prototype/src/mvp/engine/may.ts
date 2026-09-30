@@ -12,6 +12,8 @@
  *     tốn thêm `tonKhung.vao`; đi lại giữa địa điểm KHÔNG tốn khung.
  *   - Hết khung mà chưa có dữ kiện chính → chuỗi "Cuối ngày" (`buoiToi`) dẫn tới dữ kiện chính; xong → hết ngày.
  *     Có dữ kiện chính rồi mà hết khung → hết ngày. Người chơi cũng được kết thúc ngày sớm.
+ *   - Ngày theo truyện (`{ngày: n · theo truyện}`, chương 1): chạy một chuỗi, không bản đồ, không khung giờ; chuỗi hết
+ *     nút (ngữ cảnh `truyen`) → hết ngày. Chỗ bấm là `[KHÁM PHÁ]`, lựa chọn là `[RẼ NHÁNH]` trong chuỗi.
  *   - Ngày họp: `[HỎI … · trừ uy tín]` sai → mất 1 vạch, lời `[KHI MẤT UY TÍN]`, chọn lại; hết vạch → lời `[HẾT VẠCH]`
  *     rồi hoãn: quay lại đầu chuỗi ngày họp với đủ vạch (cách đơn giản nhất — xem báo cáo gói).
  *   - `[RẼ KẾT]`: kết thật nếu `[ĐIỀU KIỆN]` đầu chuỗi kết thật thỏa, không thì kết thường.
@@ -355,6 +357,7 @@ function batDauNgay(kb: KichBanMvp, s: TrangThaiMvp, so: number): TrangThaiMvp {
     conTro: ngay.moNgay ? { chuoi: ngay.moNgay, nut: 0, boiCanh: 'mo-ngay' } : null,
     nhiemVu: null,
   };
+  if (ngay.kieu === 'theo-truyen') return { ...s, conTro: ngay.chuoi ? { chuoi: ngay.chuoi, nut: 0, boiCanh: 'truyen' } : null };
   return s;
 }
 
@@ -438,6 +441,8 @@ function hetChuoi(kb: KichBanMvp, s: TrangThaiMvp, boiCanh: BoiCanhChuoi): Trang
       return s.duKienDangLam ? hoanTatDuKien(kb, s, s.duKienDangLam, 'sau-du-kien') : kiemHetKhung(kb, s);
     case 'toi':
       return s.duKienDangLam ? hoanTatDuKien(kb, s, s.duKienDangLam, 'sau-toi') : ketThucNgay(kb, s);
+    case 'truyen':
+      return ketThucNgay(kb, s);
     case 'hop':
       return loi(s, `Chuỗi "${s.conTro?.chuoi ?? '?'}" của ngày họp hết nút mà không [ĐI TỚI] hay [RẼ KẾT].`);
     case 'ket':
@@ -833,8 +838,10 @@ export function sqlCuaManChieu(kb: KichBanMvp, nut: Extract<NutMvp, { type: 'pro
   return the?.sqlChuan ?? null;
 }
 
-/** Nhãn khung giờ hiện tại cho HUD ("Sáng" … / "Cuối ngày"). */
+/** Nhãn khung giờ hiện tại cho HUD ("Sáng" … / "Cuối ngày"); ngày theo truyện không có khung → tên ngày. */
 export function tenKhungHienTai(kb: KichBanMvp, s: TrangThaiMvp): string {
   if (s.giaiDoan !== 'ngay') return '';
+  const ngay = kb.lich.ngay.find((n) => n.so === s.ngay);
+  if (ngay?.kieu === 'theo-truyen') return ngay.ten;
   return kb.lich.khung[s.khung]?.ten ?? kb.lich.buoiToi.ten;
 }

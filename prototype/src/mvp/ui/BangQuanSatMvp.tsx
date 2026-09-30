@@ -3,7 +3,7 @@
  * Dùng lại lớp CSS `.facilitator*` của `styles/app.css` (dải thu gọn ở đáy, phần mở rộng neo mép phải) nhưng là
  * component riêng: `FacilitatorPanel` gắn chặt store/telemetry/`PART_IDS` của prototype.
  *
- * "Nhảy tới" ba điểm SQL (`DIEM_NHAY_MVP`): máy TỰ CHƠI từ ván mới theo một đường đi cố định (`nhayToi`) → trạng thái
+ * "Nhảy tới" các điểm SQL (`DIEM_NHAY_MVP`): máy TỰ CHƠI từ ván mới theo một đường đi cố định (`nhayToi`) → trạng thái
  * giống hệt người đã chơi tới đó (ngày/khung/hồ sơ/cờ), nên Lưu/Nạp và chơi tiếp không có gì đặc biệt. Có hỏi xác nhận
  * vì ván MVP đang chơi bị thay (ô lưu giữ nguyên). Bản MVP chưa ghi telemetry riêng nên không có sự kiện nhảy để ghi.
  */
@@ -116,7 +116,7 @@ export function BangQuanSatMvp({
                 <dd>
                   {s.conTro ? `${s.conTro.chuoi} · ${s.conTro.nut}` : "—"}
                 </dd>
-                {s.giaiDoan === "hop" ? (
+                {s.giaiDoan === "hop" && tongVach > 0 ? (
                   <>
                     <dt>Uy tín</dt>
                     <dd>
