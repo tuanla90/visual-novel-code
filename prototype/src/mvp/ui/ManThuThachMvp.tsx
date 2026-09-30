@@ -117,6 +117,11 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong, giayNho
   );
 
   const dung = cham?.trangThai === 'dung';
+  /** Chibi cạnh hộp nhận xét: "Số liệu đây!" khi đúng, "0 dòng" khi trống, "ra kết quả" khi có dòng mà chưa khớp. */
+  const chibiNhanXet =
+    cham && cham.trangThai !== 'loi'
+      ? anhTheoTen(dung ? 'chibi-so-lieu-day' : cham.so.soDongNguoiChoi === 0 ? 'chibi-0-dong' : 'chibi-ra-ket-qua')
+      : undefined;
   const manhMoi = the.manhMoiLienQuan.map((id) => kb.hoSo[id]).filter((x) => x !== undefined);
   const trangSo = Object.values(kb.soTay);
   /** Chỉ bảng mà câu chuẩn dùng: tài khoản / phiếu tra cứu của CLB chỉ mở đúng bảng đó (ĐÃ CHỐT C). */
@@ -233,11 +238,17 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong, giayNho
           <section ref={ketQuaRef} className="result mvp-chal__ketqua" aria-live="polite" aria-label="Kết quả">
             {!duLieu ? <p className="game__error">Vụ này chưa có bộ dữ liệu (du-lieu.md) nên không chạy được.</p> : null}
             {cham
-              ? phanUngSauKhiChay(the, cham).map((l, i) => (
-                  <p key={i} className="mvp-chal__phanung" data-speaker={l.speaker}>
-                    <strong>{tenNguoiNoi(kb, l.speaker) || 'Người kể'}:</strong> <CodeText text={dienTen(l.text)} />
-                  </p>
-                ))
+              ? phanUngSauKhiChay(the, cham).map((l, i) => {
+                  const chibi = anhTheoTen(`chibi-${l.speaker}`);
+                  return (
+                    <p key={i} className={`mvp-chal__phanung${chibi ? ' co-chibi' : ''}`} data-speaker={l.speaker}>
+                      {chibi ? <img className="mvp-chal__chibi" src={chibi} alt="" draggable={false} /> : null}
+                      <span>
+                        <strong>{tenNguoiNoi(kb, l.speaker) || 'Người kể'}:</strong> <CodeText text={dienTen(l.text)} />
+                      </span>
+                    </p>
+                  );
+                })
               : null}
             {cham?.trangThai === 'loi' ? (
               <p className="mvp-chal__loi">
@@ -248,21 +259,24 @@ export function ManThuThachMvp({ kb, duLieu, the, mode, dienTen, onXong, giayNho
             ) : null}
             {cham && cham.trangThai !== 'loi' ? (
               <>
-                <p className={`mvp-chal__nhanxet${dung ? ' is-dung' : ''}`}>
-                  {dung ? (
-                    <>
-                      <strong>Số liệu đây!</strong> {cham.so.soDongNguoiChoi} dòng — khớp kết quả cần tìm.
-                    </>
-                  ) : (
-                    <>
-                      Ra <strong>{cham.so.soDongNguoiChoi} dòng</strong>.
-                      {cham.so.cotThieu.length > 0 ? (
-                        <>
-                          {' '}Kết quả chưa có cột: {cham.so.cotThieu.map((c) => <code key={c}>{c}</code>)}.
-                        </>
-                      ) : null}
-                    </>
-                  )}
+                <p className={`mvp-chal__nhanxet${dung ? ' is-dung' : ''}${chibiNhanXet ? ' co-chibi' : ''}`}>
+                  {chibiNhanXet ? <img className="mvp-chal__chibi-kq" src={chibiNhanXet} alt="" draggable={false} /> : null}
+                  <span>
+                    {dung ? (
+                      <>
+                        <strong>Số liệu đây!</strong> {cham.so.soDongNguoiChoi} dòng — khớp kết quả cần tìm.
+                      </>
+                    ) : (
+                      <>
+                        Ra <strong>{cham.so.soDongNguoiChoi} dòng</strong>.
+                        {cham.so.cotThieu.length > 0 ? (
+                          <>
+                            {' '}Kết quả chưa có cột: {cham.so.cotThieu.map((c) => <code key={c}>{c}</code>)}.
+                          </>
+                        ) : null}
+                      </>
+                    )}
+                  </span>
                 </p>
                 <ResultTable columns={cham.chay.cot} rows={cham.chay.dong} caption="Kết quả truy vấn của bạn" reveal />
                 {daChay && duLieu ? (

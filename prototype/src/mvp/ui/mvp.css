@@ -1862,20 +1862,27 @@
   }
 }
 
-/* ---------- Ảnh chèn giữa hội thoại ([ẢNH …]: chibi, CG) ---------- */
+/* ---------- Ảnh chèn giữa hội thoại ([ẢNH …]: chibi, CG) ----------
+   .stage__content neo ở vùng thoại đáy màn; như .mvp-canh, thả nó ra (static) để ảnh phủ cả sân khấu. */
+.stage__content:has(> .mvp-anhchen) {
+  position: static;
+  z-index: auto;
+}
 .mvp-anhchen {
   position: absolute;
   inset: 0;
   z-index: 45;
   display: grid;
+  grid-template-rows: minmax(0, 1fr);
   place-items: center;
-  padding: var(--sp-4);
+  padding: var(--sp-4) var(--sp-4) 76px;
   background: rgba(8, 12, 18, 0.72);
   cursor: pointer;
 }
 .mvp-anhchen__anh {
-  max-width: min(92%, 960px);
-  max-height: calc(100% - 72px);
+  min-height: 0;
+  max-width: min(100%, 960px);
+  max-height: 100%;
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
@@ -1940,4 +1947,51 @@
   .game:not(.game--portrait) .mvp-khampha .mvp-canh__nen {
     visibility: hidden;
   }
+}
+
+/* ---------- Chibi ở màn tra, CG ở màn kết (ảnh phiên ảnh, 30/09) ---------- */
+.mvp-chal__phanung.co-chibi {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.mvp-chal__chibi {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 0;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+}
+.mvp-chal__nhanxet.co-chibi {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mvp-chal__chibi-kq {
+  flex: none;
+  width: 72px;
+  height: 64px;
+  object-fit: contain;
+}
+.mvp-ket {
+  position: relative;
+  overflow: hidden;
+}
+.mvp-ket__cg {
+  display: block;
+  width: calc(100% + 2 * var(--sp-5));
+  max-width: none;
+  margin: calc(-1 * var(--sp-4)) calc(-1 * var(--sp-5)) 0;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+}
+/* Màn tra: các phần trong khung laptop giữ đúng chiều cao, khung tự cuộn — không để vùng kết quả bị bóp còn một dòng. */
+.mvp-chal__khung > * {
+  flex-shrink: 0;
+}
+.mvp-chal__ketqua {
+  overflow: visible;
 }

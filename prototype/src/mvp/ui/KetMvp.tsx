@@ -5,6 +5,7 @@
 import { useState } from 'react';
 import { track } from '../../shared/telemetry/track';
 import { TEN_CACH_NHAP } from '../engine/trinh-dung';
+import { anhTheoTen } from './anh-mvp';
 
 export interface KetMvpProps {
   ketQua: 'that' | 'thuong';
@@ -22,8 +23,10 @@ const LUA_CHON = [
 
 export function KetMvp({ ketQua, onChoiLai, onVeTieuDe }: KetMvpProps) {
   const [daChon, setDaChon] = useState<string | null>(null);
+  const cg = anhTheoTen(ketQua === 'that' ? 'cg-ket-that' : 'cg-ket-thuong');
   return (
     <section className="endscreen mvp-ket" aria-labelledby="mvp-ket-tieude">
+      {cg ? <img className="mvp-ket__cg" src={cg} alt="" draggable={false} /> : null}
       <p className="mvp-chal__kicker">Hết Vụ 1 — Chữ ký H</p>
       <h2 id="mvp-ket-tieude" className="endscreen__title">
         {ketQua === 'that' ? 'Kết thật: người nộp không phải người viết' : 'Kết thường: chỉ là một ý kiến sinh viên'}
@@ -31,7 +34,7 @@ export function KetMvp({ ketQua, onChoiLai, onVeTieuDe }: KetMvpProps) {
       <p className="endscreen__lead">
         {ketQua === 'that'
           ? 'Nhật ký in và lời kể sáng thứ Hai là hai nguồn riêng, cùng khớp với lời Hoài. CLB giữ được phòng.'
-          : 'Dữ liệu chỉ ra ai cần hỏi, không chỉ ra ai đã làm. Lần sau, ghé thêm vài nơi để có bằng chứng thứ hai.'}
+          : 'Dữ liệu chỉ ra ai cần hỏi, không chỉ ra ai đã làm. Muốn biết ai viết thư, cần thêm bằng chứng từ nơi khác.'}
       </p>
       <div className="mvp-ket__hoi" role="group" aria-labelledby="mvp-ket-hoi">
         <p id="mvp-ket-hoi" className="mvp-ket__cau">Ở phòng máy, bạn thấy cách nhập câu nào dễ chơi nhất?</p>
