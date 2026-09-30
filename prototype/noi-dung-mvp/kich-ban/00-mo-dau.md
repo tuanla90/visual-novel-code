@@ -47,6 +47,7 @@
 
 - [LỜI md-01-ktx.1]
 
+- [ẢNH chibi-408-vali]
 - [LỜI md-01-ktx.2]
 - [ĐI TỚI md-02-ban-do]
 
@@ -107,6 +108,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';
 - [LỜI md-10-phong-clb.1]
 
 - [LỜI md-10-phong-clb.2]
+- [ẢNH chibi-clb-nhom]
 - [HIỆN TÀI LIỆU doc-so-chi-linh]
 - [TRA SỔ kiem-hai-lan · tâm đắc]
 - [LỜI md-10-phong-clb.3]
@@ -117,6 +119,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';
 ### md-11-la-thu — Phòng CLB, 16h40: lá thư {cảnh: phong-clb}
 
 - [LỜI md-11-la-thu.1]
+- [ẢNH chibi-la-thu]
 - [HIỆN TÀI LIỆU doc-thu-che]
 - [LỜI md-11-la-thu.2]
 - [HẬU QUẢ] mở manh mối clue-chu-ky-h

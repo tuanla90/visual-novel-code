@@ -785,6 +785,10 @@ export const KICH_BAN_MVP = {
           "text": "Nhận phòng KTX"
         },
         {
+          "type": "image",
+          "imageId": "chibi-408-vali"
+        },
+        {
           "type": "note",
           "text": "Hai người khiêng vali lên tới tầng bốn, cùng thở dốc. Tùng đẩy cửa phòng 408."
         },
@@ -1271,6 +1275,10 @@ export const KICH_BAN_MVP = {
           "text": "Ngăn dưới tớ chưa kiểm kê tới. Cậu mở xem có gì trong đấy."
         },
         {
+          "type": "image",
+          "imageId": "chibi-clb-nhom"
+        },
+        {
           "type": "show-document",
           "documentId": "doc-so-chi-linh"
         },
@@ -1327,6 +1335,10 @@ export const KICH_BAN_MVP = {
           "speaker": "minh-anh",
           "expression": "neutral",
           "text": "Có người bỏ thư vào hộp kiến nghị ở tòa B, đề nghị thu hồi phòng. Tên người gửi bị che, CLB chỉ được xem nội dung."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-la-thu"
         },
         {
           "type": "show-document",
@@ -2412,6 +2424,10 @@ export const KICH_BAN_MVP = {
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Có chứng thì trình chứng. Không có thì nói là chưa biết."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-bang-ghim"
         }
       ]
     },
@@ -2479,6 +2495,10 @@ export const KICH_BAN_MVP = {
         {
           "type": "effect",
           "effectId": "co-so-lieu-day"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-so-lieu-day"
         },
         {
           "type": "line",
@@ -2856,6 +2876,14 @@ export const KICH_BAN_MVP = {
           "text": "SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu."
         },
         {
+          "type": "image",
+          "imageId": "cg-ket-that"
+        },
+        {
+          "type": "image",
+          "imageId": "cg-bong-huy-hieu"
+        },
+        {
           "type": "end"
         }
       ]
@@ -2895,6 +2923,10 @@ export const KICH_BAN_MVP = {
           "speaker": "narrator",
           "display": "card",
           "text": "Hai dòng chỉ cho ta chỗ cần đến. Phần còn lại cần thêm bằng chứng, và biết hỏi đúng lúc, đúng cách."
+        },
+        {
+          "type": "image",
+          "imageId": "cg-ket-thuong"
         },
         {
           "type": "end"
@@ -3411,7 +3443,7 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';",
       "soDong": 3,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:154 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:155 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",
