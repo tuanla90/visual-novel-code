@@ -17,6 +17,7 @@ Ra: <out>/index.html, <out>/anh/*.webp (ảnh thu nhỏ), <out>/du-lieu/<n>.json
 """
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -104,20 +105,33 @@ def portrait(ma, bieu):
     return {"state": "thieu", "file": None, "id": f"char-{ma}-{bieu or 'neutral'}"}
 
 
-# ---------- lời: mã → các dòng
-LOI = {}
-for f in sorted((ND / "loi").glob("*.md")):
+# ---------- lời: mã → các dòng. LOI_GOC = lời trên nhánh gốc (--goc, mặc định main) = "Hiện tại";
+# LOI = lời trong cây làm việc = "Đề xuất" (hiện cột đề xuất ở đoạn nào khác gốc).
+GOC = arg("--goc", "main")
+
+
+def parse_loi(text, fname, into):
     ma = None
-    for ln in read(f).splitlines():
+    for ln in text.splitlines():
         t = ln.rstrip()
         m = re.match(r"^## (.+)$", t)
         if m:
-            ma = m.group(1).strip(); LOI[ma] = {"file": f"prototype/noi-dung-mvp/loi/{f.name}", "lines": []}
+            ma = m.group(1).strip(); into[ma] = {"file": f"prototype/noi-dung-mvp/loi/{fname}", "lines": []}
         elif ma and t and not t.startswith("<!--"):
-            LOI[ma]["lines"].append(t)
+            into[ma]["lines"].append(t)
+
+
+LOI, LOI_GOC = {}, {}
+for f in sorted((ND / "loi").glob("*.md")):
+    parse_loi(read(f), f.name, LOI)
+    try:
+        goc = subprocess.run(["git", "show", f"{GOC}:prototype/noi-dung-mvp/loi/{f.name}"], cwd=ROOT, capture_output=True, check=True).stdout.decode("utf-8")
+        parse_loi(goc, f.name, LOI_GOC)
+    except subprocess.CalledProcessError:
+        pass
 
 NOTES = json.loads(read(HERE / "ghi-chu.json"))
-DX = NOTES.get("de_xuat", {})
+DX = {ma: v["lines"] for ma, v in LOI.items() if LOI_GOC.get(ma, {}).get("lines") != v["lines"]}
 
 # ---------- một dòng lời → dòng có kiểu
 SPEECH = re.compile(r"^\*\*([a-z-]+)\*\*\s*(?:\(([^)]+)\))?:\s*(.*)$")
@@ -179,7 +193,7 @@ def khung_lines(raw, dx=False):
             if dx and ma in DX:
                 out += expand_loi(ma, DX[ma], "dx~")
             else:
-                out += expand_loi(ma, LOI.get(ma, {"lines": []})["lines"])
+                out += expand_loi(ma, LOI_GOC.get(ma, LOI.get(ma, {"lines": []}))["lines"])
             continue
         if ln.startswith("  - "):
             if out:
@@ -299,7 +313,7 @@ for c in chains:
         kind = "Biểu cảm" if a["id"].startswith("char-") else ("Nền" if a["id"].startswith("bg-") else "Ảnh thêm")
         assets.append({"kind": kind, "id": a["id"], "state": "thieu", "img": None, "plan": a["ke_hoach"]})
 
-    tam = sum(1 for d in allines if d.get("tam")) - sum(1 for d in (dx or []) if d.get("tam"))
+    tam = sum(1 for d in (dx or lines) + [l for t in tts for l in t["lines"]] if d.get("tam"))
     out_chains.append({"id": c["id"], "title": c["title"], "canh": c["canh"], "canhTen": canh["ten"], "group": c["group"],
                        "quest": quest, "file": c["file"], "bg": bg, "cast": cast, "assets": assets, "spots": spots,
                        "lines": lines, "dx": dx, "tts": tts, "why": NOTES.get("ly_do", {}).get(c["id"], ""),
