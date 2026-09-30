@@ -1861,3 +1861,38 @@
     border-radius: 12px;
   }
 }
+
+/* ---------- Ảnh chèn giữa hội thoại ([ẢNH …]: chibi, CG) ---------- */
+.mvp-anhchen {
+  position: absolute;
+  inset: 0;
+  z-index: 45;
+  display: grid;
+  place-items: center;
+  padding: var(--sp-4);
+  background: rgba(8, 12, 18, 0.72);
+  cursor: pointer;
+}
+.mvp-anhchen__anh {
+  max-width: min(92%, 960px);
+  max-height: calc(100% - 72px);
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+.mvp-anhchen__nut {
+  position: absolute;
+  right: var(--sp-4);
+  bottom: var(--sp-4);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mvp-anhchen__anh {
+    animation: mvp-anhchen-vao 0.35s ease-out;
+  }
+  @keyframes mvp-anhchen-vao {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+}

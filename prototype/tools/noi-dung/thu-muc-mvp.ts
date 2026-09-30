@@ -71,6 +71,20 @@ export function docThuMucMvp(goc: string, hienThi = 'noi-dung-mvp'): KetQuaDocMv
   return { mvp: kq.mvp, loi: [...g.loi, ...ghep.loi, ...kq.loi.map((l) => traViTri(l, ghep.banDo))], tep, soLoiTam: ghep.soTam, banDo: ghep.banDo };
 }
 
+/** Thư mục gốc mọi ảnh của game (`[ẢNH …]` tra theo tên tệp ở bất kỳ thư mục con nào, như `anh-mvp.ts`). */
+export const THU_MUC_ANH = fileURLToPath(new URL('../../src/assets/', import.meta.url));
+
+/** Tên mọi ảnh (không đuôi, viết thường) trong `src/assets/**`. */
+export function docTenAnh(thuMuc: string = THU_MUC_ANH): Set<string> {
+  const ra = new Set<string>();
+  if (!existsSync(thuMuc)) return ra;
+  for (const ten of readdirSync(thuMuc, { recursive: true }) as string[]) {
+    const m = /([^\\/]+)\.(webp|png|jpe?g)$/i.exec(ten);
+    if (m) ra.add((m[1] ?? '').toLowerCase());
+  }
+  return ra;
+}
+
 /** Thư mục ảnh vật tương tác (sprite `obj-…` của dòng "- Ảnh:" trong dia-diem.md). Chỉ đọc tên tệp. */
 export const THU_MUC_VAT_MVP = fileURLToPath(new URL('../../src/assets/mvp/vat/', import.meta.url));
 

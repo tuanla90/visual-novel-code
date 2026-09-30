@@ -154,6 +154,7 @@ export type KhungNhinMvp =
   | { kind: 'line-pick'; nut: Extract<NutMvp, { type: 'line-pick' }>; lanThu: number }
   | { kind: 'branch'; nut: Extract<NutMvp, { type: 'branch' }>; luaChon: Extract<NutMvp, { type: 'branch' }>['choices'] }
   | { kind: 'show-document'; documentId: string }
+  | { kind: 'image'; imageId: string }
   | { kind: 'challenge' | 'fix-query'; thuThach: TheThuThachMvp }
   | { kind: 'effect'; effectId: string }
   | { kind: 'projector'; nut: Extract<NutMvp, { type: 'projector' }> }
@@ -460,6 +461,7 @@ function canNguoiChoi(nut: NutMvp): boolean {
     case 'line-pick':
     case 'branch':
     case 'show-document':
+    case 'image':
     case 'challenge':
     case 'fix-query':
     case 'effect':
@@ -603,6 +605,8 @@ export function khungNhin(kb: KichBanMvp, s: TrangThaiMvp): KhungNhinMvp {
       return { kind: 'branch', nut, luaChon: nut.choices.filter((c) => thoaDieuKien(s, c.khi)) };
     case 'show-document':
       return { kind: 'show-document', documentId: nut.documentId };
+    case 'image':
+      return { kind: 'image', imageId: nut.imageId };
     case 'challenge':
     case 'fix-query': {
       const the = kb.thuThach[nut.challengeId];
@@ -692,7 +696,7 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
         if (conLai.length === 0) moi = sauHien(kb, moi, s.sauKhiHien);
       } else if (kn.kind === 'show-document') {
         moi = tienNut(hienTaiLieu(s, kn.documentId));
-      } else if (kn.kind === 'line' || kn.kind === 'effect' || kn.kind === 'projector' || kn.kind === 'notebook-lookup') {
+      } else if (kn.kind === 'line' || kn.kind === 'image' || kn.kind === 'effect' || kn.kind === 'projector' || kn.kind === 'notebook-lookup') {
         moi = tienNut(s);
       } else {
         return s;

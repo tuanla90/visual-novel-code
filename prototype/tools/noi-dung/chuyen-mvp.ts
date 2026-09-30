@@ -47,6 +47,8 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
       return { type: 'goto', to: it.to };
     case 'show-document':
       return { type: 'show-document', documentId: it.id };
+    case 'image':
+      return { type: 'image', imageId: it.id };
     case 'question':
       return { type: 'question', id: it.id, asker: it.asker, choices: it.choices.map(luaChon), truUyTin: it.truUyTin };
     case 'challenge':
