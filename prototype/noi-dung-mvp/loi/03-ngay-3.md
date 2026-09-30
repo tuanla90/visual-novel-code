@@ -27,8 +27,8 @@
 ## n3-cang-tin.1
 - [DÀN DỰNG] Căng tin buổi trưa. Hiếu ngồi bàn bên, nói to.
 - **narrator**: Trưa, căng tin. Bàn bên có một cậu đang nói to về tờ thông báo họp rà soát.
-- **hieu** (neutral): Tôi đọc thông báo rà soát rồi. Nói thẳng nhé, CLB các cậu giữ cái phòng cả năm chả để làm gì.
-- **hieu** (neutral): Nhóm tôi xin phòng làm bài nhóm mấy lần, lần nào cũng bảo hết phòng. Toàn phải ngồi ké thư viện.
+- **hieu** (annoyed): Tôi đọc thông báo rà soát rồi. Nói thẳng nhé, CLB các cậu giữ cái phòng cả năm chả để làm gì.
+- **hieu** (annoyed): Nhóm tôi xin phòng làm bài nhóm mấy lần, lần nào cũng bảo hết phòng. Toàn phải ngồi ké thư viện.
 - **tung** (worried): Nghe gắt thế, chắc cậu này gửi thư đấy.
 - **ha-vy** (thinking): Ghét CLB với gửi thư là hai chuyện khác nhau.
 - **hieu** (neutral): Tôi nói thẳng vậy thôi. Còn thư ai viết thì tôi không biết.

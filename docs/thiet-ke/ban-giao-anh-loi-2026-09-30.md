@@ -3,14 +3,11 @@
 Gửi phiên logic / giao diện. Viết bởi phiên ảnh và lời (nhánh `claude/topview-images-dialogue-4dee2c`).
 Không đổi khung, SQL, mã thẻ, luật ngày. Bộ kiểm `npm run kiem-noi-dung:mvp` sạch, **0 dòng `(tạm)`**.
 
-## 1. Lời (`noi-dung-mvp/loi/`, `nhan-vat.md`, `ho-so/`)
+## 1. Lời
 
-- Viết lời thật cho toàn bộ 35 dòng `(tạm)`: ngày 1–5, `tt-c-lop`, `tt-c-ten-h`, `tt-c-in`. Giữ giọng sinh viên miền Bắc (tớ/cậu), không câu hướng dẫn thao tác; lời "Khi chạy ra 0 / 5 dòng" chỉ gợi bằng câu hỏi của nhân vật, không nói đáp án.
-- Mở đầu: sửa các chỗ lời lệch ảnh mà trang duyệt kịch bản (`tools/duyet-kich-ban/ghi-chu.json`, phiên "Sửa kịch bản chương 1") đã chỉ ra — cổng trường (mái ngói đỏ, tòa kính, thanh chắn), cổng KTX (nhà năm tầng, cổng kéo ngang có ray), Tùng **áo sơ mi cam** chứ không đội mũ, bác Thịnh đứng cạnh cầu thang (nền không có bàn trực), căng tin bày kín khay, phòng máy nhìn qua ô kính. Thêm câu "Cậu lo lọc, tớ lo đường" (gieo tài lọc của người chơi).
-- **Khung:** chỉ đổi đúng một chữ hiển thị — nhãn chỗ bấm Tùng ở `kich-ban/00-mo-dau.md`: "Hỏi đường cậu bạn **áo cam**" (trước là "đội mũ"); test `kham-pha-gioi-thieu.test.tsx` sửa theo. Kiểm: `kiem-noi-dung:mvp` sạch, vitest `src/content src/mvp` 29/29 tệp · 325 test, tsc/eslint sạch.
-- `nhan-vat.md`: thêm biểu cảm có ảnh (xem mục 2); cô Hạnh theo mục ĐÃ CHỐT C: tài khoản **giữ lại cho CLB**, bỏ "thu hồi sau buổi họp".
-- `ho-so/`: viết lại chữ tạm của `clue-quyen-du-lieu`, `clue-ten-tep`, `doc-van-ban-thay-quang` (giữ mã, giữ "Giá trị cho trình dựng").
-- **Cần phiên logic chạy:** `npm run noi-dung:sinh:mvp` sau khi gộp (nhánh này đã sinh lại `kich-ban.gen.ts`).
+- **User chốt 30/09 tối: lời chương 1 lấy bản trên main** (phiên "Sửa kịch bản chương 1", 9b3d57a). Bản lời phiên này viết song song (từ lời tạm cũ) bỏ, không gộp.
+- Phiên này chỉ thêm lên bản đó: biểu cảm có ảnh mới trong `nhan-vat.md` (Tùng surprised/thinking, Minh Anh serious, Duy smile/serious, Hiếu annoyed/surprised, chú Cường / bác Thịnh / cô Hạnh / cô Lan smile, thầy Quang stern/smile) và gắn vào vài dòng (Hiếu gắt ở căng tin, thầy Quang ở buổi họp, Tùng "Ơ…"); Tùng tả là **áo sơ mi cam, đeo thẻ** (ảnh không đội mũ) ở lời sảnh KTX, tiêu đề chuỗi và nhãn chỗ bấm.
+- Khung `kich-ban/00-mo-dau.md`: tọa độ 2 chỗ bấm theo nền sảnh KTX mới (tờ giấy trên cửa thang máy x 12%, sơ đồ trên bảng tin x 44%), nhãn "Hỏi đường cậu bạn áo cam"; test `kham-pha-gioi-thieu.test.tsx` sửa theo nhãn.
 
 ## 2. Ảnh mới (Topview GPT Image 2.5, 1K, Unlimited; nguồn `art/nguon/topview-2026-09-30/`)
 

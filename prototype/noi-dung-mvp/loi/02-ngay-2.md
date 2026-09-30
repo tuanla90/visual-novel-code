@@ -19,7 +19,7 @@
 
 ## n2-co-hanh.2
 - **player**: Bảng lớp thôi cũng đủ khoanh vùng rồi ạ. Em cảm ơn cô.
-- **co-hanh** (neutral): Khoanh vùng thôi đấy nhé. Lớp thì không bỏ thư được.
+- **co-hanh** (smile): Khoanh vùng thôi đấy nhé. Lớp thì không bỏ thư được.
 
 ## n2-laptop.1
 > NHIỆM VỤ: Lớp nào vừa ở tòa B vừa học Báo chí?

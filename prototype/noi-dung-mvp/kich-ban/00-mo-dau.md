@@ -32,7 +32,7 @@
 
 - [LỜI md-00-so-do.1]
 
-### md-00-gap-tung — Hỏi đường cậu bạn đội mũ: tạo nhân vật {cảnh: sanh-ktx}
+### md-00-gap-tung — Hỏi đường cậu bạn áo cam: tạo nhân vật {cảnh: sanh-ktx}
 
 - [LỜI md-00-gap-tung.1]
 - [TẠO NHÂN VẬT ten] tung (neutral): "Thế cậu tên gì?"

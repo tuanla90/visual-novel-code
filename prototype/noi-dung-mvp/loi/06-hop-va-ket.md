@@ -13,7 +13,7 @@
 - **quan** (smug): Phản ánh này đến từ sinh viên nói chung, nên phải lọc diện rộng. Tên bắt đầu bằng H hoặc học lớp BC24A: mười bốn dòng. Trong hồ sơ các bạn nộp lên chỉ liệt kê hai người.
 
 ## hop-00.3
-- **tung** (worried): Ơ… mười bốn dòng thật.
+- **tung** (surprised): Ơ… mười bốn dòng thật.
 - [DÀN DỰNG] Nhịp 1: người chơi chạm vào chữ HOẶC, đổi thành VÀ → 2 dòng. Nhịp 2: "Số liệu đây!". Chạm sai, chạy thử đều không phạt.
 
 ## hop-00.4
@@ -33,7 +33,7 @@
 - [DÀN DỰNG] {{nv.hoai}} được gọi vào, đứng nép cạnh cửa, nhìn lên màn chiếu có tên mình.
 - **narrator**: Hoài bước vào đúng lúc màn chiếu còn hiện hai dòng. Một dòng có tên bạn ấy.
 - **ha-vy** (neutral): Khoan… chiếu tên bạn ấy lên rồi gọi vào thế này, khác gì hỏi cung.
-- **thay-quang** (neutral): Ở đây không ai đối chất với một bạn năm nhất. Thầy hỏi, các em nghe.
+- **thay-quang** (stern): Ở đây không ai đối chất với một bạn năm nhất. Thầy hỏi, các em nghe.
 - **thay-quang** (neutral): Em Hoài, lá thư có chữ ký này là em bỏ vào hộp đúng không?
 - **hoai** (nervous): Dạ… vâng ạ. Em mang nộp ạ.
 - [DÀN DỰNG] {{nv.hoai}} cúi gằm, không nói thêm.
@@ -51,7 +51,7 @@
 - **thay-quang** (neutral): Nhật ký in và lời kể sáng thứ Hai là hai nguồn riêng, cả hai đều khớp với lời em. Vậy em không phải người soạn thư.
 - **thay-quang** (neutral): Mã trên phiếu là để thầy cô tra cứu và phản hồi người gửi. Ở đây người viết giấu tên, mượn chữ ký và mã của một bạn năm nhất. Thư như vậy thầy không nhận vào hồ sơ rà soát.
 - **thay-quang** (neutral): Em làm theo lời nhờ nên không bị xử lý gì cả.
-- **thay-quang** (neutral): CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện.
+- **thay-quang** (smile): CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện.
 - **thay-quang** (neutral): Còn người soạn thư, thầy sẽ gặp riêng. Không cần nêu tên ở đây.
 - **hoai** (relieved): Em xin lỗi vì làm mọi người mất công ạ.
 - **minh-anh** (happy): Không sao đâu em. Cảm ơn thầy ạ.
