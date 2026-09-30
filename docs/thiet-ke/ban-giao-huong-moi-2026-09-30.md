@@ -84,6 +84,8 @@ Quyền dữ liệu: tài khoản `clb_tham_tu` (cô Hạnh, ngày 2, chỉ bả
 **Chưa làm (việc giao diện / engine, sau khi gộp):**
 - Ngày hội: kéo thẻ [Tùng] vào cột tên (hiện vẫn là bấm chọn dòng).
 - Kéo **phiếu kết quả** vào ô điều kiện thành `IN (…)`: hiện phiếu hai lớp cho hai giấy nhớ rời `BC24A`, `BC23A`; chấm theo tập kết quả nên `ma_lop = 'BC24A'` vẫn đúng.
+- Hộp gợi ý chung khi chạy ra 0 dòng ở phòng máy vẫn ghi "Bí thì tra sổ chị Linh (bên phải)" — là câu hướng dẫn, trái nguyên tắc chương 1; sổ chương 1 cũng gần như trống.
+- Ô lưu / ván đang chơi từ trước 30/09 bị bỏ khi mở game (kho MVP lên phiên bản 2).
 - Bảng điều tra (ghim, sợi chỉ). Trang sổ `where-so`, `where-chu`, `and-or`, `like` và lời chung "mất uy tín" không còn được dùng ở chương 1.
 
 

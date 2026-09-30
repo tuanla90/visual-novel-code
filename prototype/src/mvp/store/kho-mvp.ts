@@ -17,6 +17,8 @@ export const KICH_BAN: KichBanMvp = KICH_BAN_MVP as unknown as KichBanMvp;
 
 export const KHOA_KHO_MVP = 'clb_mvp_tien_do_v1';
 export const SO_O_LUU_MVP = 6;
+/** Phiên bản dữ liệu lưu; tăng khi nội dung đổi làm ván cũ không chơi tiếp được (xem `migrate`). */
+export const PHIEN_BAN_KHO_MVP = 2;
 
 export interface OLuuMvp {
   trangThai: TrangThaiMvp;
@@ -100,7 +102,10 @@ export function taoKhoMvp(options: { persist?: boolean; storageKey?: string } = 
   return create<KhoMvp>()(
     persist(khoiTao, {
       name: options.storageKey ?? KHOA_KHO_MVP,
-      version: 1,
+      // v2 (30/09/2026): chương 1 chuyển sang ngày theo truyện — ván và ô lưu v1 trỏ tới ngày / chuỗi / dữ kiện không
+      // còn, nên bỏ hẳn (ván mới từ đầu) thay vì nạp một trạng thái hỏng.
+      version: PHIEN_BAN_KHO_MVP,
+      migrate: (_cu, phienBan) => (phienBan < PHIEN_BAN_KHO_MVP ? { trangThai: null, oLuu: Array.from({ length: SO_O_LUU_MVP }, () => null) } : _cu) as KhoMvp,
       storage: createJSONStorage(boNhoPhien),
       partialize: (k) => ({ trangThai: k.trangThai, oLuu: k.oLuu }) as unknown as KhoMvp,
     }),
