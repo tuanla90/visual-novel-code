@@ -2030,3 +2030,35 @@
 .mvp-chal__ketqua {
   overflow: visible;
 }
+
+/* ---------- Nút lựa chọn (.mc__choice: câu hỏi, rẽ nhánh, chọn dòng, chọn ngành) ----------
+   Nút kính mờ của app.css (nền ~40% trong) nằm đè áo/mặt nhân vật → chữ trắng khó đọc. Bản MVP: nền đặc
+   tối (độ mờ 0,96), viền vàng rõ, hover/focus đổi nền + viền + chữ vàng. Tương phản: #f8fafc trên #0f172a
+   ≈ 17:1; #fde68a trên #1e293b ≈ 11:1 (≥ 4,5:1). Chỉ trong .mvp-game — màn prototype cũ giữ nguyên. */
+.mvp-game .mc__choice {
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 2px solid rgba(253, 230, 138, 0.9);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+.mvp-game .mc__choice:hover,
+.mvp-game .mc__choice:focus-visible {
+  color: #fde68a;
+  background: rgba(30, 41, 59, 0.98);
+  border-color: #fbbf24;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.55),
+    0 0 0 1px #fbbf24,
+    0 0 18px rgba(251, 191, 36, 0.45);
+}
+.mvp-game .mc__choice:focus-visible {
+  outline: 3px solid #fef3c7;
+  outline-offset: 3px;
+}
+.mvp-game .mc__choice:active {
+  background: #0b1220;
+}
