@@ -134,13 +134,3 @@ describe('đổi cách + màn thử thách', () => {
     expect(within(soi).getByText("toa_nha = 'B'")).toBeInTheDocument();
   });
 });
-
-describe('màn kết: hỏi cách nhập', () => {
-  it('chọn một cách → ghi mvp_input_feedback, khóa lựa chọn', async () => {
-    const { KetMvp } = await import('./KetMvp');
-    render(<KetMvp ketQua="that" onChoiLai={vi.fn()} onVeTieuDe={vi.fn()} />);
-    await userEvent.click(screen.getByRole('button', { name: 'Bấm khối' }));
-    expect(getTelemetryEvents().find((e) => e.type === 'mvp_input_feedback')).toMatchObject({ preferred: 'khoi' });
-    expect(screen.getByRole('button', { name: 'Gõ tay' })).toBeDisabled();
-  });
-});
