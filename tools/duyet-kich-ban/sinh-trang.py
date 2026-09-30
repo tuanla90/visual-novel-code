@@ -1,14 +1,19 @@
-"""Trang duyệt kịch bản chương 1 MVP: mỗi chuỗi hội thoại một thẻ — nền, người lên hình, vật, giấy tài liệu
-(có / mượn ảnh neo / chưa có + kế hoạch ảnh), thoại hiện tại cạnh thoại đề xuất, ô Duyệt / Cần sửa.
+"""Trang duyệt kịch bản chương 1 MVP: mỗi chuỗi một thẻ — nền, người lên hình, chỗ bấm, giấy tài liệu (có / mượn ảnh neo /
+chưa có + kế hoạch ảnh), khung ghép lời (lời tạm đánh dấu), lời hiện tại cạnh lời đề xuất, ô Duyệt / Cần sửa.
 
-    PYTHONUTF8=1 python tools/duyet-kich-ban/sinh-trang.py [--out <file.html>]
+    PYTHONUTF8=1 python tools/duyet-kich-ban/sinh-trang.py [--out <thư mục>/index.html]
 
-Đọc prototype/noi-dung-mvp/ (kich-ban, nhan-vat, dia-diem), dò ảnh trong prototype/src/assets/ theo đúng luật
-`src/mvp/ui/anh-mvp.ts` (nền bg-mvp-<cảnh>, chân dung char-<mã>-<biểu cảm> → anchor → char-<mã>), ảnh chưa vào game
-trong art/mvp-vu1/. Ghi chú lệch, kế hoạch ảnh, thoại đề xuất: tools/duyet-kich-ban/ghi-chu.json.
-Ảnh thu nhỏ ghi vào <out>/anh/, thoại vào <out>/du-lieu/<n>.json; đăng kèm trang qua `files`. Đăng thành Artifact với capabilities {db: {}}:
-  review/<chuỗi>  {status: ok|fix|"", note}
-  edits/<khóa>    {text}   — cur-<chuỗi>-<i> (thoại hiện tại) · dx-<chuỗi>-<i> (đề xuất) · anh-<chuỗi>-<id ảnh>
+Đọc prototype/noi-dung-mvp/: khung `kich-ban/*.md` + `thu-thach/*.md` (phiên logic), lời `loi/*.md` (phiên truyện) ghép theo mã như
+`prototype/tools/noi-dung/ghep-loi.ts` (dòng `- [LỜI mã]` ↔ đoạn `## mã`). Chỗ bấm lấy từ `[KHÁM PHÁ]` của khung. Ảnh dò trong
+prototype/src/assets/ theo luật `src/mvp/ui/anh-mvp.ts`; ảnh chưa vào game trong art/mvp-vu1/. Ghi chú lệch, kế hoạch ảnh, lời đề xuất
+(theo mã lời): tools/duyet-kich-ban/ghi-chu.json.
+
+Ra: <out>/index.html, <out>/anh/*.webp (ảnh thu nhỏ), <out>/du-lieu/<n>.json (< 45KB mỗi tệp: công cụ đăng Artifact đọc lỗi tệp chữ
+~80KB trở lên). Đăng thành Artifact với capabilities {db: {}}, các tệp kia qua `files` + `root`. Trang ghi vào db:
+  review/<chuỗi>        {status: ok|fix|"", note}
+  edits/<mã lời>~<i>    {text}   — sửa dòng lời hiện tại (i: thứ tự dòng trong đoạn lời)
+  edits/dx~<mã lời>~<i> {text}   — sửa dòng lời đề xuất
+  edits/anh~<chuỗi>~<id> {text}  — kế hoạch ảnh
 """
 import json
 import re
@@ -31,6 +36,10 @@ def arg(flag, default=None):
     return a[a.index(flag) + 1] if flag in a and a.index(flag) + 1 < len(a) else default
 
 
+OUT = Path(arg("--out", str(ROOT / "out" / "duyet-chuong-1" / "index.html")))
+ANH = OUT.parent / "anh"
+
+
 def index(root):
     """tên tệp (không đuôi, viết thường) → đường dẫn; trùng tên thì đuôi ưu tiên trước (như lapChiMuc)."""
     out = {}
@@ -42,17 +51,12 @@ def index(root):
     return out
 
 
-GAME, ARTIDX = index(ASSETS), index(ART)
+GAME = index(ASSETS)
 _thumbs = {}
 
 
-OUT = Path(arg("--out", str(ROOT / "out" / "duyet-chuong-1" / "index.html")))
-ANH = OUT.parent / "anh"
-
-
 def thumb(path, box):
-    """Ảnh thu nhỏ ghi ra <thư mục out>/anh/<tên>.webp, trang trỏ tương đối (đăng kèm qua `files` của Artifact).
-    Không nhúng data URI: trang vài MB thì công cụ đăng Artifact đọc tệp lỗi."""
+    """Ảnh thu nhỏ ra <out>/anh/, trang trỏ tương đối."""
     key = (str(path), box)
     if key not in _thumbs:
         im = Image.open(path)
@@ -64,12 +68,21 @@ def thumb(path, box):
     return _thumbs[key]
 
 
-# ---------- nhân vật
-NV = {}
-for m in re.finditer(r"^### ([a-z-]+) — (.+)$", (ND / "nhan-vat.md").read_text(encoding="utf-8"), re.M):
-    NV[m.group(1)] = m.group(2).strip()
+def read(p):
+    return p.read_text(encoding="utf-8")
+
+
+# ---------- nhân vật, cảnh
+NV = {m.group(1): m.group(2).strip() for m in re.finditer(r"^### ([a-z-]+) — (.+)$", read(ND / "nhan-vat.md"), re.M)}
 NV["nguoi-choi"] = "‹tên người chơi›"
 TEN = {**NV, "player": "Người chơi", "narrator": "Dẫn truyện"}
+CANH, cur = {}, None
+for ln in read(ND / "canh.md").splitlines():
+    m = re.match(r"^### ([a-z-]+) — (.+)$", ln)
+    if m:
+        cur = m.group(1); CANH[cur] = {"ten": m.group(2).strip(), "anh": None}
+    elif cur and ln.startswith("- Ảnh nền:"):
+        CANH[cur]["anh"] = ln.split(":", 1)[1].strip()
 
 
 def nv_text(s):
@@ -91,80 +104,129 @@ def portrait(ma, bieu):
     return {"state": "thieu", "file": None, "id": f"char-{ma}-{bieu or 'neutral'}"}
 
 
-# ---------- địa điểm: chuỗi → vật, tài liệu, bằng chứng
-DK = {}   # chuỗi → [{sprite, docs, ev}]
-cur_loc = None
-for line in (ND / "dia-diem.md").read_text(encoding="utf-8").splitlines():
-    if line.startswith("### "):
-        cur = {"sprite": None, "doc": None, "ev": None, "chuoi": None}
-        cur_loc = cur
-    elif cur_loc is not None and line.startswith("- "):
-        k, _, v = line[2:].partition(":")
-        v = v.strip()
-        if k == "Chuỗi":
-            cur_loc["chuoi"] = v
-            DK.setdefault(v, []).append(cur_loc)
-        elif k == "Ảnh":
-            cur_loc["sprite"] = v.split("·")[0].strip()
-        elif k == "Hiện tài liệu":
-            cur_loc["doc"] = v
-        elif k == "Lưu bằng chứng":
-            cur_loc["ev"] = v
+# ---------- lời: mã → các dòng
+LOI = {}
+for f in sorted((ND / "loi").glob("*.md")):
+    ma = None
+    for ln in read(f).splitlines():
+        t = ln.rstrip()
+        m = re.match(r"^## (.+)$", t)
+        if m:
+            ma = m.group(1).strip(); LOI[ma] = {"file": f"prototype/noi-dung-mvp/loi/{f.name}", "lines": []}
+        elif ma and t and not t.startswith("<!--"):
+            LOI[ma]["lines"].append(t)
 
-NOTES = json.loads((HERE / "ghi-chu.json").read_text(encoding="utf-8"))
+NOTES = json.loads(read(HERE / "ghi-chu.json"))
+DX = NOTES.get("de_xuat", {})
 
-
-# ---------- phân tích một dòng kịch bản
+# ---------- một dòng lời → dòng có kiểu
 SPEECH = re.compile(r"^\*\*([a-z-]+)\*\*\s*(?:\(([^)]+)\))?:\s*(.*)$")
 CMDWHO = re.compile(r'^([a-z-]+)\s*(?:\(([^)]+)\))?:\s*"?(.*?)"?$')
 
 
-def parse_lines(raw):
-    """raw: các dòng Markdown của một chuỗi → danh sách dòng có kiểu."""
+def loi_line(s):
+    """Dòng lời (không có '- ' đầu, trừ '> NHIỆM VỤ')."""
+    tam = "(tạm)" in s
+    s = nv_text(s.replace("(tạm) ", "").replace("(tạm)", ""))
+    m = re.match(r"^> NHIỆM VỤ:\s*(.*)$", s)
+    if m:
+        return {"k": "quest", "t": m.group(1), "tam": tam}
+    s = s[2:] if s.startswith("- ") else s
+    m = re.match(r"^\[THẺ CHỮ\]\s*\*\*narrator\*\*:\s*(.*)$", s)
+    if m:
+        return {"k": "card", "t": m.group(1), "tam": tam}
+    if s.startswith("[DÀN DỰNG]"):
+        return {"k": "stage", "t": s[len("[DÀN DỰNG]"):].strip(), "tam": tam}
+    m = re.match(r"^Khi ([^:]+):\s*(.*)$", s)
+    if m:
+        return {"k": "khi", "when": m.group(1), "t": re.sub(r"\*\*([a-z-]+)\*\*", lambda x: TEN.get(x.group(1), x.group(1)), m.group(2)), "tam": tam}
+    m = SPEECH.match(s)
+    if m:
+        who, bc, t = m.group(1), m.group(2), m.group(3)
+        k = "narr" if who == "narrator" else ("think" if who == "player" and t.startswith("(") else "say")
+        return {"k": k, "who": who, "bc": bc, "t": t, "tam": tam}
+    return {"k": "stage", "t": s, "tam": tam}
+
+
+def expand_loi(ma, lines, prefix=""):
+    out = []
+    for i, s in enumerate(lines):
+        d = loi_line(s)
+        d.update(src="loi", ma=ma, key=f"{prefix}{ma}~{i}")
+        out.append(d)
+    if not lines:
+        out.append({"k": "missing", "t": f"Chưa có lời cho {ma}", "src": "loi", "ma": ma, "key": f"{prefix}{ma}~0"})
+    return out
+
+
+def khung_lines(raw, dx=False):
+    """Dòng khung → dòng hiển thị; `- [LỜI mã]` thay bằng lời (hoặc lời đề xuất nếu dx và có)."""
     out, code = [], None
     for ln in raw:
         if code is not None:
             if ln.strip().startswith("```"):
-                out.append({"k": "code", "t": "\n".join(code)})
-                code = None
+                out.append({"k": "code", "t": "\n".join(code), "src": "khung"}); code = None
             else:
                 code.append(ln)
             continue
         if ln.strip().startswith("```"):
-            code = []
-            continue
+            code = []; continue
         if not ln.strip() or ln.strip().startswith("<!--"):
             continue
+        m = re.match(r"^- \[LỜI ([^\]]+)\]\s*$", ln)
+        if m:
+            ma = m.group(1)
+            if dx and ma in DX:
+                out += expand_loi(ma, DX[ma], "dx~")
+            else:
+                out += expand_loi(ma, LOI.get(ma, {"lines": []})["lines"])
+            continue
         if ln.startswith("  - "):
-            s = nv_text(ln[4:].strip())
             if out:
-                out[-1].setdefault("opts", []).append(s)
+                out[-1].setdefault("opts", []).append(nv_text(ln[4:].strip()))
             continue
         if not ln.startswith("- "):
             continue
         s = ln[2:].strip()
-        m = re.match(r"^\[THẺ CHỮ\]\s*\*\*narrator\*\*:\s*(.*)$", s)
-        if m:
-            out.append({"k": "card", "t": nv_text(m.group(1))}); continue
-        if s.startswith("[DÀN DỰNG]"):
-            out.append({"k": "stage", "t": nv_text(s[len("[DÀN DỰNG]"):].strip())}); continue
-        m = SPEECH.match(s)
-        if m:
-            who, bc, t = m.group(1), m.group(2), nv_text(m.group(3))
-            k = "narr" if who == "narrator" else ("think" if who == "player" and t.startswith("(") else "say")
-            out.append({"k": k, "who": who, "bc": bc, "t": t}); continue
         m = re.match(r"^\[([^\]]+)\]\s*(.*)$", s)
         if m:
-            tag, rest = m.group(1), m.group(2)
-            d = {"k": "cmd", "tag": nv_text(tag)}
-            mw = CMDWHO.match(rest) if rest else None
+            d = {"k": "cmd", "tag": nv_text(m.group(1)), "src": "khung"}
+            mw = CMDWHO.match(m.group(2)) if m.group(2) else None
             if mw:
                 d.update(who=mw.group(1), bc=mw.group(2), t=nv_text(mw.group(3)))
-            elif rest:
-                d["t"] = nv_text(rest)
-            out.append(d); continue
-        out.append({"k": "stage", "t": nv_text(s)})
+            elif m.group(2):
+                d["t"] = nv_text(m.group(2))
+            out.append(d)
+        else:
+            out.append({"k": "meta", "t": nv_text(s), "src": "khung"})
     return out
+
+
+# ---------- thẻ thử thách
+TT = {}
+for f in sorted((ND / "thu-thach").glob("*.md")):
+    cid, raw = None, []
+    for ln in read(f).splitlines():
+        m = re.match(r"^### ([a-z0-9-]+) — (.+?)\s*\{challenge: ([a-z0-9-]+)\}", ln)
+        if m:
+            cid = m.group(3); TT[cid] = {"title": m.group(2), "raw": [], "file": f.name}
+        elif cid:
+            TT[cid]["raw"].append(ln)
+
+# ---------- khung
+chains = []
+for f in sorted((ND / "kich-ban").glob("*.md")):
+    grp, c = None, None
+    for ln in read(f).splitlines():
+        if ln.startswith("## "):
+            grp = ln[3:].strip()
+        elif ln.startswith("### "):
+            m = re.match(r"^### ([a-z0-9-]+) — (.+?)\s*\{cảnh: ([a-z-]+)\}\s*$", ln)
+            c = {"id": m.group(1), "title": nv_text(m.group(2)), "canh": m.group(3), "group": grp, "raw": [],
+                 "file": f"prototype/noi-dung-mvp/kich-ban/{f.name}"}
+            chains.append(c)
+        elif c is not None:
+            c["raw"].append(ln)
 
 
 def cast_of(lines):
@@ -172,75 +234,61 @@ def cast_of(lines):
     for d in lines:
         if d.get("who") and d["who"] != "narrator":
             seen.setdefault((d["who"], d.get("bc") or "neutral"), None)
-        for o in d.get("opts", []):
+        for o in [d.get("t", "")] if d["k"] == "khi" else d.get("opts", []):
             for w, b in re.findall(r"\*\*([a-z-]+)\*\*\s*\(([^)]+)\)", o):
                 seen.setdefault((w, b), None)
     return list(seen)
 
 
-# ---------- đọc kịch bản
-FILES = sorted((ND / "kich-ban").glob("*.md"))
-groups, chains = [], []
-for f in FILES:
-    text = f.read_text(encoding="utf-8").splitlines()
-    grp, cur = None, None
-    for ln in text:
-        if ln.startswith("## "):
-            grp = ln[3:].strip()
-            groups.append(grp)
-        elif ln.startswith("### "):
-            m = re.match(r"^### ([a-z0-9-]+) — (.+?)\s*\{cảnh: ([a-z-]+)\}\s*$", ln)
-            cur = {"id": m.group(1), "title": nv_text(m.group(2)), "canh": m.group(3), "group": grp, "raw": [], "quest": None,
-                   "file": f"prototype/noi-dung-mvp/kich-ban/{f.name}"}
-            chains.append(cur)
-        elif cur is not None:
-            mq = re.match(r"^> NHIỆM VỤ:\s*(.*)$", ln)
-            if mq:
-                cur["quest"] = nv_text(mq.group(1))
-            else:
-                cur["raw"].append(ln)
-
-CANH = {m.group(1): m.group(2) for m in re.finditer(r"^### ([a-z-]+) — (.+)$", (ND / "canh.md").read_text(encoding="utf-8"), re.M)}
-
 out_chains = []
 for c in chains:
     note = NOTES["canh"].get(c["id"], {})
-    lines = parse_lines(c["raw"])
-    dx_raw = NOTES["de_xuat"].get(c["id"])
-    dx = parse_lines(dx_raw) if dx_raw else None
-    assets = []
+    lines = khung_lines(c["raw"])
+    has_dx = any(re.match(r"^- \[LỜI ([^\]]+)\]", l) and re.match(r"^- \[LỜI ([^\]]+)\]", l).group(1) in DX for l in c["raw"])
+    dx = khung_lines(c["raw"], dx=True) if has_dx else None
+
+    # thẻ thử thách trong chuỗi: gắn đề bài + lời "Khi …"
+    tts = []
+    for d in lines:
+        if d["k"] == "cmd" and d["tag"].startswith("THỬ THÁCH"):
+            cid = d["tag"].split()[-1]
+            if cid in TT:
+                tts.append({"id": cid, "title": TT[cid]["title"], "lines": khung_lines(TT[cid]["raw"])})
+
+    quest = next((d["t"] for d in lines if d["k"] == "quest"), None)
+    lines = [d for d in lines if d["k"] != "quest"]
+    if dx:
+        dx = [d for d in dx if d["k"] != "quest"]
 
     # nền
-    dem = c["id"].startswith("toi-") or note.get("nen_dem")
-    runtime_dem = c["id"].startswith("toi-")
+    canh = CANH.get(c["canh"], {"ten": c["canh"], "anh": None})
     bgkey = "ban-do-truong" if c["canh"] == "ban-do" else f"bg-mvp-{c['canh']}"
-    bgfile = GAME.get(f"{bgkey}-dem") if runtime_dem and f"{bgkey}-dem" in GAME else GAME.get(bgkey)
-    bg_dem_alt = GAME.get(f"{bgkey}-dem") if dem and not runtime_dem else None
+    bgfile = GAME.get(bgkey)
+    dem = GAME.get(f"{bgkey}-dem") if note.get("nen_dem") else None
     bg = {"id": bgfile.stem if bgfile else bgkey, "state": "co" if bgfile else "thieu",
           "img": thumb(bgfile, (720, 405)) if bgfile else None,
-          "alt": thumb(bg_dem_alt, (720, 405)) if bg_dem_alt else None, "altId": bg_dem_alt.stem if bg_dem_alt else None}
+          "alt": thumb(dem, (720, 405)) if dem else None, "altId": dem.stem if dem else None}
 
-    # người lên hình
+    allines = lines + (dx or []) + [l for t in tts for l in t["lines"]]
     cast = []
-    for who, bc in cast_of(lines + (dx or [])):
+    for who, bc in cast_of(allines):
         p = portrait(who, bc)
         cast.append({"who": who, "name": TEN.get(who, who), "bc": bc, "state": p["state"], "id": p["id"],
                      "file": p["file"].stem if p["file"] else None,
                      "img": thumb(p["file"], (200, 300)) if p["file"] else None})
 
-    # vật, tài liệu, bằng chứng
-    docs = [d["tag"].split()[-1] for d in lines if d["k"] == "cmd" and d["tag"].startswith("HIỆN TÀI LIỆU")]
-    for dk in DK.get(c["id"], []):
-        if dk["sprite"] and not dk["sprite"].startswith("nv:"):
-            sp = dk["sprite"]
-            assets.append({"kind": "Vật bấm được", "id": sp, "state": "co" if sp in GAME else "thieu",
-                           "img": thumb(GAME[sp], (220, 220)) if sp in GAME else None, "plan": ""})
-        if dk["doc"]:
-            docs.append(dk["doc"])
-        if dk["ev"]:
-            docs.append(dk["ev"])
-    if c["id"] == "n5-nop-hai-ma":
-        docs.append("so-niem-phong")
+    assets, spots = [], []
+    for d in lines:
+        if d["k"] == "cmd" and d["tag"].startswith("KHÁM PHÁ"):
+            for o in d.get("opts", []):
+                sp = o.split("·")[0].strip()
+                nhan = o.split("nhãn:")[-1].strip() if "nhãn:" in o else ""
+                spots.append({"sprite": sp, "nhan": nhan})
+                if not sp.startswith("nv:"):
+                    assets.append({"kind": "Chỗ bấm", "id": sp, "state": "co" if sp in GAME else "thieu",
+                                   "img": thumb(GAME[sp], (220, 220)) if sp in GAME else None, "plan": nhan})
+    docs = [d["tag"].split()[-1] for d in lines if d["k"] == "cmd" and re.match(r"^(HIỆN TÀI LIỆU|LƯU BẰNG CHỨNG)", d["tag"])]
+    docs += note.get("giay", [])
     for d in dict.fromkeys(docs):
         tl = NOTES["tai_lieu"].get(d, {})
         f = ROOT / tl["file"] if tl.get("file") else None
@@ -248,18 +296,18 @@ for c in chains:
         assets.append({"kind": "Giấy tài liệu", "id": d, "state": state,
                        "img": thumb(f, (360, 360)) if state == "art" else None, "plan": tl.get("ke_hoach", "")})
     for a in note.get("anh_them", []):
-        kind = "Biểu cảm" if a["id"].startswith("char-") else "Ảnh thêm"
+        kind = "Biểu cảm" if a["id"].startswith("char-") else ("Nền" if a["id"].startswith("bg-") else "Ảnh thêm")
         assets.append({"kind": kind, "id": a["id"], "state": "thieu", "img": None, "plan": a["ke_hoach"]})
 
-    out_chains.append({"id": c["id"], "title": c["title"], "canh": c["canh"], "canhTen": CANH.get(c["canh"], c["canh"]),
-                       "group": c["group"], "quest": c["quest"], "file": c["file"], "bg": bg, "cast": cast,
-                       "assets": assets, "lines": lines, "dx": dx, "why": NOTES.get("ly_do", {}).get(c["id"], ""),
-                       "lech": note.get("lech", []), "dem": bool(dem), "runtimeDem": runtime_dem})
+    tam = sum(1 for d in allines if d.get("tam")) - sum(1 for d in (dx or []) if d.get("tam"))
+    out_chains.append({"id": c["id"], "title": c["title"], "canh": c["canh"], "canhTen": canh["ten"], "group": c["group"],
+                       "quest": quest, "file": c["file"], "bg": bg, "cast": cast, "assets": assets, "spots": spots,
+                       "lines": lines, "dx": dx, "tts": tts, "why": NOTES.get("ly_do", {}).get(c["id"], ""),
+                       "lech": note.get("lech", []), "tam": tam})
 
-# Thoại tách thành du-lieu/<n>.json, mỗi tệp < 45KB: công cụ đăng Artifact đọc lỗi (EBADF) tệp chữ ~80KB trở lên.
-out = OUT
-out.parent.mkdir(parents=True, exist_ok=True)
-DL = out.parent / "du-lieu"
+# ---------- ghi ra
+OUT.parent.mkdir(parents=True, exist_ok=True)
+DL = OUT.parent / "du-lieu"
 DL.mkdir(exist_ok=True)
 for old in DL.glob("*.json"):
     old.unlink()
@@ -271,8 +319,12 @@ for c in out_chains:
 parts.append(buf)
 for i, p in enumerate(parts):
     (DL / f"{i}.json").write_bytes(json.dumps(p, ensure_ascii=False).encode("utf-8"))
-DATA = {"groups": list(dict.fromkeys(groups)), "names": TEN, "parts": len(parts)}
-tpl = (HERE / "mau-trang.html").read_text(encoding="utf-8")
-out.write_bytes(tpl.replace("/*__DATA__*/null", json.dumps(DATA, ensure_ascii=False)).encode("utf-8"))
+groups = list(dict.fromkeys(c["group"] for c in out_chains))
+DATA = {"groups": groups, "names": TEN, "parts": len(parts)}
+tpl = read(HERE / "mau-trang.html")
+OUT.write_bytes(tpl.replace("/*__DATA__*/null", json.dumps(DATA, ensure_ascii=False)).encode("utf-8"))
 miss = sum(1 for c in out_chains for a in c["assets"] + c["cast"] if a["state"] in ("thieu", "muon"))
-print(f"{out} · {len(out_chains)} chuỗi · {len(_thumbs)} ảnh thu nhỏ · {miss} ảnh thiếu/mượn · {out.stat().st_size // 1024} KB")
+tam = sum(c["tam"] for c in out_chains)
+unused = [m for m in LOI if not any(f"[LỜI {m}]" in l for c in chains for l in c["raw"]) and not any(f"[LỜI {m}]" in l for t in TT.values() for l in t["raw"])]
+print(f"{OUT} · {len(out_chains)} chuỗi · {len(parts)} tệp dữ liệu · {len(_thumbs)} ảnh · {miss} ảnh thiếu/mượn · {tam} dòng lời tạm"
+      + (f" · lời không gắn khung: {', '.join(unused)}" if unused else ""))

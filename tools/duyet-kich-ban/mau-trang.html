@@ -116,6 +116,13 @@ section.scene{background:var(--surface);border:1px solid var(--rule);border-radi
 .ln.cmd .who{font:500 11px/1.35 var(--mono);color:var(--accent)}
 .opts{margin:4px 0 0;padding-left:16px;font:400 13.5px/1.45 var(--ui);color:var(--muted)}
 pre.code{margin:4px 0;white-space:pre-wrap;word-break:break-word;font:12.5px/1.5 var(--mono);background:var(--sunk);border:1px solid var(--rule);border-radius:6px;padding:8px 10px;grid-column:1/-1}
+.ln.khung .who{font:500 11px/1.35 var(--mono);color:var(--accent)}
+.ln.khung .t{font:400 13px/1.5 var(--mono);color:var(--muted);cursor:default}
+.ln.khung .t:hover{background:transparent}
+.ln.missing .t{color:var(--miss);font-style:italic}
+.tam{display:inline-block;font:600 10.5px/1 var(--ui);letter-spacing:.04em;text-transform:uppercase;color:var(--lend);background:var(--lend-bg);border-radius:3px;padding:3px 5px;margin-right:6px;vertical-align:2px;font-style:normal}
+.chip.tamc{border-color:var(--lend);color:var(--lend)}
+.tt{margin:6px 18px 0;padding:8px 12px;border:1px dashed var(--rule);border-radius:6px;background:var(--sunk)}
 .edited{box-shadow:inset 3px 0 0 var(--edit);background:var(--edit-bg)}
 .review{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-start;padding:12px 18px 14px;background:var(--sunk);border-top:1px solid var(--rule);margin-top:10px}
 .review .btns{display:flex;gap:6px}
@@ -143,7 +150,7 @@ section.scene.s-fix{border-color:color-mix(in srgb,var(--fix) 55%,var(--rule))}
 <header class="top">
   <div class="eyebrow">CLB Thám Tử Dữ Liệu · MVP · mở đầu + Vụ 1 "Chữ ký H"</div>
   <h1>Duyệt kịch bản chương 1</h1>
-  <p class="lede">Mỗi thẻ là một chuỗi hội thoại, xếp theo thứ tự chơi. Bên trái là cảnh game sẽ dựng (nền và người lên hình). Bên phải là danh mục ảnh: <b>có</b>, <b>mượn ảnh neo</b> (thiếu biểu cảm), <b>có ở art/</b> (chưa chép vào game), <b>chưa có</b> kèm kế hoạch ảnh. Giấy vàng là chỗ ảnh lệch thoại và thoại đề xuất. <b>Bấm vào câu thoại hay kế hoạch ảnh để sửa</b>; bấm Duyệt / Cần sửa và ghi chú từng cảnh. Claude đọc lại và đưa vào tệp <code>.md</code>.</p>
+  <p class="lede">Mỗi thẻ là một chuỗi hội thoại, xếp theo thứ tự chơi. Bên trái là cảnh game sẽ dựng (nền và người lên hình). Bên phải là danh mục ảnh: <b>có</b>, <b>mượn ảnh neo</b> (thiếu biểu cảm), <b>có ở art/</b> (chưa chép vào game), <b>chưa có</b> kèm kế hoạch ảnh. Khung (chữ đơn cách, xanh) là của phiên logic; lời (chữ có chân) ghép từ <code>loi/</code> theo mã, nhãn <span class="tam">tạm</span> là lời giữ chỗ. Giấy vàng là ghi chú lệch và lời đề xuất. <b>Bấm vào câu lời hay kế hoạch ảnh để sửa</b>; bấm Duyệt / Cần sửa và ghi chú từng cảnh. Claude đọc lại và đưa vào tệp <code>.md</code>.</p>
   <p class="localnote" id="localnote" hidden></p>
   <div class="facts" id="facts"></div>
   <div class="legend">Ảnh: <span class="st co">Có</span><span class="st muon">Mượn ảnh neo</span><span class="st art">Có ở art/, chưa vào game</span><span class="st thieu">Chưa có</span>
@@ -172,27 +179,33 @@ function facts(){
     c.assets.forEach(a => { if (a.state === "thieu") miss.add(a.id); if (a.state === "art") art.add(a.id); }); });
   const items = [[C.length, "chuỗi hội thoại"], [[...bgs.values()].filter(s => s === "co").length + "/" + bgs.size, "nền có ảnh"],
     [lend.size, "biểu cảm đang mượn ảnh neo"], [art.size, "giấy có ở art/, chưa vào game"], [miss.size, "ảnh chưa có (có kế hoạch)"],
-    [C.filter(c => c.lech.length).length, "cảnh ảnh lệch thoại"], [C.filter(c => c.dx).length, "cảnh có thoại đề xuất"]];
+    [C.filter(c => c.lech.length).length, "cảnh có ghi chú lệch"], [C.filter(c => c.dx).length, "cảnh có lời đề xuất"], [C.reduce((a, c) => a + c.tam, 0), "dòng lời tạm còn lại"]];
   $("facts").innerHTML = items.map(([v, k]) => `<div class="fact"><span class="v">${esc(v)}</span><span class="k">${esc(k)}</span></div>`).join("");
   $("jump").innerHTML = DATA.groups.map((g, i) => `<a href="#g${i}">${esc(g.split("—")[0].trim())}</a>`).join("");
 }
 
-function lineHtml(d, key, cast){
-  const ed = edits[key], text = ed ? ed.text : (d.t || "");
-  const tcls = `t ${ed ? "edited" : ""}`;
+function lineHtml(d, cast){
+  const key = d.key, ed = key ? edits[key] : null, text = ed ? ed.text : (d.t || "");
+  const loi = d.src === "loi";
+  const tam = d.tam ? `<span class="tam">tạm</span>` : "";
+  const tcls = `t ${ed ? "edited" : ""} ${loi ? "" : "ro"}`;
+  const edit = loi ? ` data-edit="${esc(key)}"` : "";
   const opts = d.opts ? `<ul class="opts">${d.opts.map(o => `<li>${esc(o.replace(/\*\*/g, ""))}</li>`).join("")}</ul>` : "";
   if (d.k === "code") return `<pre class="code">${esc(d.t)}</pre>`;
-  if (d.k === "card") return `<div class="ln cardl"><div class="${tcls}" data-edit="${key}">${esc(text)}</div></div>`;
+  if (d.k === "card") return `<div class="ln cardl"><div class="${tcls}"${edit}>${tam}${esc(text)}</div></div>`;
   let who = "", cls = d.k;
   if (d.k === "stage") { who = `<span>Dàn dựng</span>`; cls = "stage-l"; }
   else if (d.k === "narr") who = `<span>Dẫn truyện</span>`;
+  else if (d.k === "khi") who = `<span>Khi ${esc(d.when)}</span>`;
+  else if (d.k === "missing") { who = `<span>Thiếu lời</span>`; cls = "missing"; }
+  else if (d.k === "meta") { who = `<span>Khung</span>`; cls = "cmd"; }
   else if (d.k === "cmd") who = `<span>[${esc(d.tag)}]</span>` + (d.who ? `<span style="font:600 12.5px/1.35 var(--ui);color:var(--ink)">${esc(DATA.names[d.who] || d.who)}</span>` : "");
   else {
     const p = cast.find(x => x.who === d.who && x.bc === (d.bc || "neutral"));
     const bc = d.bc ? `<small class="${p && p.state === "muon" ? "muon" : ""}">${esc(d.bc)}${p && p.state === "muon" ? " · mượn neo" : ""}</small>` : "";
     who = `<span>${esc(DATA.names[d.who] || d.who)}${d.k === "think" ? " · nghĩ" : ""}</span>${bc}`;
   }
-  return `<div class="ln ${cls}"><div class="who">${who}</div><div><div class="${tcls}" data-edit="${key}">${esc(text)}</div>${opts}</div></div>`;
+  return `<div class="ln ${cls}${loi ? "" : " khung"}"><div class="who">${who}</div><div><div class="${tcls}"${edit}>${tam}${esc(text)}</div>${opts}</div></div>`;
 }
 
 function stageHtml(c){
@@ -213,24 +226,25 @@ function assetsHtml(c){
   c.assets.forEach(a => { if (!rows.some(r => r.id === a.id)) rows.push(a); else Object.assign(rows.find(r => r.id === a.id), {plan: a.plan}); });
   if (!rows.length) return `<div class="sub">Ảnh</div><div class="asset"><div class="th"><img src="${c.bg.img || ""}" alt=""></div><div class="ab"><div class="al"><span class="st co">Có</span>Đủ ảnh: nền và mọi người lên hình.</div></div></div>`;
   return `<div class="sub">Ảnh trong cảnh</div>` + rows.map(a => {
-    const key = `anh-${c.id}-${a.id}`, ed = edits[key], plan = ed ? ed.text : a.plan;
+    const key = `anh~${c.id}~${a.id}`, ed = edits[key], plan = ed ? ed.text : a.plan;
     const editable = a.state !== "co";
     return `<div class="asset"><div class="th ${a.img ? "" : "none"}">${a.img ? `<img src="${a.img}" alt="${esc(a.id)}" loading="lazy">` : ""}</div>
       <div class="ab"><div class="al"><span class="st ${a.state}">${ST[a.state]}</span><span>${esc(a.kind)}</span><span class="sid">${esc(a.id)}</span></div>
-      ${editable ? `<div class="plan ${plan ? "" : "none"} ${ed ? "edited" : ""}" data-edit="${key}" title="Bấm để sửa kế hoạch ảnh">${esc(plan || "Bấm để ghi kế hoạch ảnh")}</div>` : ""}</div></div>`;
+      ${editable ? `<div class="plan ${plan ? "" : "none"} ${ed ? "edited" : ""}" data-edit="${esc(key)}" title="Bấm để sửa kế hoạch ảnh">${esc(plan || "Bấm để ghi kế hoạch ảnh")}</div>` : ""}</div></div>`;
   }).join("");
 }
 
 function sceneHtml(c, n){
   const s = (review[c.id] || {}).status || "";
-  const cur = `<div class="col">${c.dx ? `<div class="sub">Hiện tại</div>` : ""}${c.lines.map((d, i) => lineHtml(d, `cur-${c.id}-${i}`, c.cast)).join("")}</div>`;
-  const dx = c.dx ? `<div class="col dx"><div class="sub" style="color:var(--note-ink)">Đề xuất</div>${c.why ? `<p class="why">${esc(c.why)}</p>` : ""}${c.dx.map((d, i) => lineHtml(d, `dx-${c.id}-${i}`, c.cast)).join("")}</div>` : "";
+  const cur = `<div class="col">${c.dx ? `<div class="sub">Hiện tại</div>` : ""}${c.lines.map(d => lineHtml(d, c.cast)).join("")}</div>`;
+  const dx = c.dx ? `<div class="col dx"><div class="sub" style="color:var(--note-ink)">Đề xuất</div>${c.why ? `<p class="why">${esc(c.why)}</p>` : ""}${c.dx.map(d => lineHtml(d, c.cast)).join("")}</div>` : "";
   return `<section class="scene ${s ? "s-" + s : ""}" id="c-${c.id}">
     <div class="shead"><span class="snum">${String(n).padStart(2, "0")}</span><span class="stitle">${esc(c.title)}</span>
-      <div class="smeta"><span class="chip">${esc(c.canhTen)}</span>${c.quest ? `<span class="chip quest">Nhiệm vụ: ${esc(c.quest)}</span>` : ""}${c.runtimeDem ? `<span class="chip">Cuối ngày · ảnh tối</span>` : ""}<span class="sid">${esc(c.id)} · ${esc(c.file.split("/").pop())}</span></div></div>
+      <div class="smeta"><span class="chip">${esc(c.canhTen)}</span>${c.quest ? `<span class="chip quest">Nhiệm vụ: ${esc(c.quest)}</span>` : ""}${c.tam ? `<span class="chip tamc">${c.tam} dòng lời tạm</span>` : ""}${c.spots.length ? `<span class="chip">${c.spots.length} chỗ bấm</span>` : ""}<span class="sid">${esc(c.id)} · ${esc(c.file.split("/").pop())}</span></div></div>
     <div class="top2"><div>${stageHtml(c)}</div><div class="assets">${assetsHtml(c)}</div></div>
     ${c.lech.length ? `<div class="lech"><b>Ảnh lệch thoại / cần xem</b><ul>${c.lech.map(l => `<li>${esc(l)}</li>`).join("")}</ul></div>` : ""}
     <div class="script ${c.dx ? "two" : ""}">${cur}${dx}</div>
+    ${c.tts.map(t => `<div class="tt"><div class="sub">Thẻ thử thách · ${esc(t.id)} · ${esc(t.title)}</div>${t.lines.map(d => lineHtml(d, c.cast)).join("")}</div>`).join("")}
     <div class="review"><div class="btns"><button class="ok" data-status="${c.id}:ok" aria-pressed="${s === "ok"}">Duyệt</button><button class="fix" data-status="${c.id}:fix" aria-pressed="${s === "fix"}">Cần sửa</button></div>
       <textarea id="note-${c.id}" data-note="${c.id}" placeholder="Ghi chú cho cảnh này: nhịp, thoại, ảnh…" aria-label="Ghi chú ${esc(c.id)}"></textarea><span class="saved" id="saved-${c.id}"></span></div>
   </section>`;
@@ -240,7 +254,7 @@ function render(){
   let html = "", grp = null, n = 0;
   C.forEach(c => {
     n++;
-    const show = filter === "all" || (filter === "need" && needs(c)) || (filter === "dx" && (c.dx || c.lech.length)) || (filter === "todo" && !(review[c.id] || {}).status);
+    const show = filter === "all" || (filter === "need" && needs(c)) || (filter === "dx" && (c.dx || c.lech.length)) || (filter === "todo" && !(review[c.id] || {}).status) || (filter === "tam" && c.tam);
     if (c.group !== grp){ grp = c.group; const gi = DATA.groups.indexOf(grp);
       const [a, b] = grp.split("—").map(x => x.trim());
       html += `<div class="band" id="g${gi}"><span class="bk">${esc(a)}</span>${b ? `<span class="bt">${esc(b)}</span>` : ""}</div>`; }
@@ -257,7 +271,7 @@ function paint(){
     const sec = $("c-" + c.id); if (sec){ sec.classList.toggle("s-ok", s === "ok"); sec.classList.toggle("s-fix", s === "fix");
       sec.querySelector(`[data-status="${c.id}:ok"]`).setAttribute("aria-pressed", s === "ok");
       sec.querySelector(`[data-status="${c.id}:fix"]`).setAttribute("aria-pressed", s === "fix"); } });
-  const F = [["all","Tất cả"],["need","Thiếu ảnh"],["dx","Lệch / đề xuất"],["todo","Chưa duyệt"]];
+  const F = [["all","Tất cả"],["need","Thiếu ảnh"],["dx","Lệch / đề xuất"],["tam","Còn lời tạm"],["todo","Chưa duyệt"]];
   $("progress").innerHTML = `<span class="cnt">Duyệt <b>${ok}</b> · cần sửa <b>${fix}</b> · còn <b>${total - ok - fix}</b> / ${total}</span>
     <span class="bar"><i style="width:${ok / total * 100}%;background:var(--ok)"></i><i style="width:${fix / total * 100}%;background:var(--fix)"></i></span>
     <span class="filters">${F.map(([k, v]) => `<button class="small" data-filter="${k}" aria-pressed="${filter === k}">${v}</button>`).join("")}</span>
