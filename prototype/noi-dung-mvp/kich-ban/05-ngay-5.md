@@ -18,3 +18,4 @@
 ### n5-toi — Tối: Hà Vy tóm tắt trước buổi họp {cảnh: phong-clb}
 
 - [LỜI n5-toi.1]
+- [ẢNH chibi-bang-ghim]
