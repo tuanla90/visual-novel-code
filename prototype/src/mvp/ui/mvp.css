@@ -1838,3 +1838,26 @@
   font-family: 'Patrick Hand', var(--font-ui, system-ui), cursive;
   font-size: 1.35rem;
 }
+/* Điện thoại dọc: laptop được ưu tiên chỗ, bảng bần thấp lại. */
+.game--portrait .mvp-chal--ban .mvp-chal__phai {
+  max-height: 28vh;
+  padding: 8px;
+  border-width: 5px;
+}
+.game--portrait .mvp-chal--ban .mvp-chal__khung {
+  border-width: 8px;
+  border-top-width: 14px;
+  border-radius: 12px;
+}
+@media (max-width: 768px) and (orientation: portrait) {
+  .mvp-chal--ban .mvp-chal__phai {
+    max-height: 28vh;
+    padding: 8px;
+    border-width: 5px;
+  }
+  .mvp-chal--ban .mvp-chal__khung {
+    border-width: 8px;
+    border-top-width: 14px;
+    border-radius: 12px;
+  }
+}
