@@ -333,7 +333,7 @@ button.v7-o:active:not(:disabled) {
 .v7-kq table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.86em;
+  font-size: 0.98em;
 }
 .v7-kq th {
   position: sticky;
@@ -533,6 +533,13 @@ button.v7-o:active:not(:disabled) {
 .v7-giay.is-nhieu .v7-giay__chu,
 .v7-giay__chu:only-child {
   font-size: 21px;
+}
+.v7-giay.is-dai .v7-giay__chu {
+  font-size: 17px;
+}
+.v7-giay.is-nhieu.is-dai .v7-giay__chu {
+  font-size: 15px;
+  font-family: var(--font-mono);
 }
 .v7-giay__nguon {
   display: block;
@@ -1032,4 +1039,41 @@ button.v7-o:active:not(:disabled) {
   position: relative;
   flex: 1;
   min-height: 0;
+}
+
+/* ---------- Lọc thử ở Ngày hội: máy của chị Minh Anh, chưa hiện SQL ---------- */
+.v7[data-canh='loc-thu'] {
+  background: rgba(8, 12, 20, 0.6);
+}
+.v7[data-canh='loc-thu'] .v7-o-kinh {
+  border: 14px solid #23272c;
+  border-radius: 18px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+}
+.v7-kq--chon tbody tr {
+  cursor: pointer;
+}
+.v7-kq--chon tbody tr:hover td,
+.v7-kq--chon tbody tr:focus-visible td {
+  background: rgba(251, 191, 36, 0.18);
+  outline: none;
+}
+.v7-kq--chon tbody tr.is-sai td {
+  color: #8fa3b1;
+  text-decoration: line-through;
+  text-decoration-color: #ff8a80;
+}
+.v7-kq--chon tbody tr.is-rung {
+  animation: v7-rung 0.3s;
+}
+@keyframes v7-rung {
+  25% {
+    transform: translateX(6px);
+  }
+  50% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
 }

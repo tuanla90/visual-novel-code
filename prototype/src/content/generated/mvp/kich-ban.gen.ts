@@ -3088,7 +3088,7 @@ export const KICH_BAN_MVP = {
     "c-sua-or-quan": {
       "id": "c-sua-or-quan",
       "tieuDe": "Câu truy vấn trên màn chiếu",
-      "deBai": "Câu của Quân lấy \"tên H hoặc lớp BC24A\". Sửa để chỉ còn những người khớp cả hai.",
+      "deBai": "Câu của Quân đang chiếu trên màn: \"tên bắt đầu bằng H hoặc lớp BC24A\", ra 14 dòng. Hồ sơ CLB nộp chỉ có 2.",
       "manhMoiLienQuan": [
         "clue-chu-ky-h"
       ],

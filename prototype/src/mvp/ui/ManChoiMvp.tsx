@@ -36,7 +36,7 @@ import { HoSoMvp, type TabHoSoMvp } from './HoSoMvp';
 import { HudMvp } from './HudMvp';
 import { KetMvp } from './KetMvp';
 import { KhamPhaMvp } from './KhamPhaMvp';
-import { LocThuMvp } from './LocThuMvp';
+import { LocThuV7 } from './v7/LocThuV7';
 import { LuuNapMvp } from './LuuNapMvp';
 import { ManChieuMvp } from './ManChieuMvp';
 import { PhongTraMvp } from './v7/PhongTraMvp';
@@ -308,7 +308,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       case 'notebook-lookup':
         return <TraSoMvp kb={kb} trang={kn.trang} dienTen={dienTen} onTiep={tiep} />;
       case 'trial-filter':
-        return <LocThuMvp duLieu={kb.duLieu} nut={kn.nut} lanThu={kn.lanThu} onChon={(giaTri) => hanhDong({ type: 'chon-o', giaTri })} />;
+        return <LocThuV7 key={kn.nut.id} duLieu={kb.duLieu} nut={kn.nut} onChon={(giaTri) => hanhDong({ type: 'chon-o', giaTri })} />;
       case 'create-character':
         return (
           <TaoNhanVatMvp

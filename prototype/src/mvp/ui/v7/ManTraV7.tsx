@@ -31,6 +31,7 @@ import {
 import { anhTheoTen } from '../anh-mvp';
 import { SoiDieuKienMvp } from '../SoiDieuKienMvp';
 import { DongPhieu, type DongPhieuRef } from './DongPhieu';
+import { NHIP, ngu } from './nhip';
 import './v7.css';
 
 export type CanhTra = 'phong-clb' | 'phong-may' | 'man-chieu';
@@ -44,10 +45,6 @@ const CANH: Record<CanhTra, { anh: string | null; kinh: { x: number; y: number; 
 
 const TOI_DA_DIEU_KIEN = 3;
 const TEN_NOI: Record<'AND' | 'OR', string> = { AND: 'VÀ', OR: 'HOẶC' };
-/** Khi test (jsdom) không chờ hoạt ảnh. */
-const NHIP = import.meta.env.MODE === 'test' ? 0 : 1;
-const ngu = (ms: number): Promise<void> => (ms * NHIP <= 0 ? Promise.resolve() : new Promise((r) => setTimeout(r, ms * NHIP)));
-
 export interface ManTraV7Props {
   kb: KichBanMvp;
   duLieu: BoDuLieuMvp | null;
@@ -248,7 +245,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
     <button
       key={g.khoa}
       type="button"
-      className={`v7-giay${i >= nua ? ' is-phai' : ''}${dangChon?.khoa === g.khoa ? ' is-chon' : ''}${g.nhieu ? ' is-nhieu' : ''}`}
+      className={`v7-giay${i >= nua ? ' is-phai' : ''}${dangChon?.khoa === g.khoa ? ' is-chon' : ''}${g.nhieu ? ' is-nhieu' : ''}${(g.nhieu ?? [g.giaTri]).some((v) => v.length > 6) ? ' is-dai' : ''}`}
       style={viTriGiay(i)}
       draggable={!khoa}
       disabled={khoa}
@@ -502,7 +499,7 @@ function toMauDieuKien(chu: string) {
  * Khung cảnh: màn ngang thì vẽ cảnh 1600×900 co vừa vùng chứa, mặt kính nằm đúng chỗ màn hình trong ảnh, giấy nhớ dán quanh
  * viền; màn dọc (điện thoại) thì bỏ cảnh, giấy nhớ thành một dải phía trên, màn hình chiếm phần còn lại.
  */
-function VungV7({
+export function VungV7({
   canh,
   anhCanh,
   kinhO,
@@ -510,7 +507,7 @@ function VungV7({
   nhan,
   children,
 }: {
-  canh: CanhTra;
+  canh: CanhTra | 'loc-thu';
   anhCanh: string | undefined;
   kinhO: { x: number; y: number; w: number; h: number };
   giay: React.ReactNode;

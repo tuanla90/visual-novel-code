@@ -14,7 +14,7 @@ export interface DongPhieuRef {
   tha: (dong: readonly number[], treToiDa?: number) => void;
 }
 
-export const MAU_PHIEU = ['#9fb3c2', '#ff8a65', '#64b5f6', '#c4a5f5', '#ffffff'] as const;
+const MAU_PHIEU = ['#9fb3c2', '#ff8a65', '#64b5f6', '#c4a5f5', '#ffffff'] as const;
 
 const ROI_MS = 700;
 const de = (t: number): number => t * t * (1.6 - 0.6 * t);
@@ -132,10 +132,11 @@ export const DongPhieu = forwardRef<DongPhieuRef, { tong: number }>(function Don
     if (!khung || typeof ResizeObserver === 'undefined') return;
     const ro = new ResizeObserver(() => kich());
     ro.observe(khung);
+    const s = tt.current;
     return () => {
       ro.disconnect();
-      if (tt.current.raf) cancelAnimationFrame(tt.current.raf);
-      tt.current.raf = 0;
+      if (s.raf) cancelAnimationFrame(s.raf);
+      s.raf = 0;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

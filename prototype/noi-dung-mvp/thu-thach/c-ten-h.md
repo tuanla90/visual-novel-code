@@ -22,7 +22,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop IN ('BC24A', 'BC23
 ### c-sua-or-quan — Sửa câu OR của Quân ở buổi họp {challenge: c-sua-or-quan}
 
 - Tiêu đề: Câu truy vấn trên màn chiếu
-- Đề bài hiển thị: Câu của Quân lấy "tên H hoặc lớp BC24A". Sửa để chỉ còn những người khớp cả hai.
+- Đề bài hiển thị: Câu của Quân đang chiếu trên màn: "tên bắt đầu bằng H hoặc lớp BC24A", ra 14 dòng. Hồ sơ CLB nộp chỉ có 2.
 - Manh mối liên quan: clue-chu-ky-h
 - Mục tiêu học: Phần hợp (OR) và phần giao (AND).
 - Số dòng kỳ vọng: 2
