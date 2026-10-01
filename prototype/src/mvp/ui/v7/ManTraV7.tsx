@@ -41,16 +41,10 @@ import { anhTheoTen } from '../anh-mvp';
 import { SoiDieuKienMvp } from '../SoiDieuKienMvp';
 import { DongPhieu, type DongPhieuRef } from './DongPhieu';
 import { NHIP, ngu } from './nhip';
+import { CANH_TRA, type CanhTra } from './canh-tra';
 import './v7.css';
 
-export type CanhTra = 'phong-clb' | 'phong-may' | 'man-chieu';
-
-/** Ảnh cảnh và tọa độ mặt kính trên khung 1600×900 (đo từ ảnh: art/nguon/phong-*-core). */
-const CANH: Record<CanhTra, { anh: string | null; kinh: { x: number; y: number; w: number; h: number }; may: string }> = {
-  'phong-clb': { anh: 'canh-tra-phong-clb', kinh: { x: 253, y: 60, w: 1094, h: 588 }, may: 'laptop CLB · tài khoản clb_tham_tu' },
-  'phong-may': { anh: 'canh-tra-phong-may', kinh: { x: 196, y: 84, w: 1232, h: 628 }, may: 'máy phòng máy · xem theo phiếu tra cứu' },
-  'man-chieu': { anh: null, kinh: { x: 190, y: 60, w: 1220, h: 640 }, may: 'màn chiếu phòng họp' },
-};
+export type { CanhTra } from './canh-tra';
 
 const TOI_DA_DIEU_KIEN = 3;
 const TEN_NOI: Record<'AND' | 'OR', string> = { AND: 'VÀ', OR: 'HOẶC' };
@@ -80,7 +74,7 @@ export interface NguonPhieuV7 {
 }
 
 export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonPhieu, onXong }: ManTraV7Props) {
-  const cauHinh = CANH[canh];
+  const cauHinh = CANH_TRA[canh];
   // Nguồn là phiếu: `FROM @<mã phiếu>` của SQL chuẩn thành `FROM <tên tạm>`, mọi câu chạy có tiền tố `WITH <tên tạm> AS (…)`.
   const tenNguon = nguonPhieu ? tenCte(nguonPhieu.id) : null;
   const tienTo = nguonPhieu && tenNguon ? `WITH ${tenNguon} AS (${nguonPhieu.sql.trim().replace(/;\s*$/, '')}) ` : '';

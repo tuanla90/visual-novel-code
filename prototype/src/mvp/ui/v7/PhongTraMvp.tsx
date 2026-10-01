@@ -133,7 +133,7 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
   }
   return (
     <div className="phong-tra" data-pha="may">
-      {the.kieuTrinhDung === 'tong-hop' && duLieu ? <ManTongHopMvp duLieu={duLieu} the={the} nguon={nguonDuocChon} giayNho={giayNho} dienTen={dienTen} nhanNguon={(id) => s.bang?.phieuTruyVan?.[id]?.nhan ?? Object.values(kb.thuThach).find((t) => t.vatChung?.id === id)?.vatChung?.title} onXong={hoanTatTongHop} /> : <ManTraV7
+      {the.kieuTrinhDung === 'tong-hop' && duLieu ? <ManTongHopMvp kb={kb} canh={canh} duLieu={duLieu} the={the} nguon={nguonDuocChon} giayNho={giayNho} dienTen={dienTen} nhanNguon={(id) => s.bang?.phieuTruyVan?.[id]?.nhan ?? Object.values(kb.thuThach).find((t) => t.vatChung?.id === id)?.vatChung?.title} onXong={hoanTatTongHop} /> : <ManTraV7
         kb={kb}
         duLieu={duLieu}
         the={the}
