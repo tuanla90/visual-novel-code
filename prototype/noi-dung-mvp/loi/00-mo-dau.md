@@ -38,17 +38,17 @@
 
 ## md-00-gap-tung.1
 - **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế? Thang máy đang bảo trì.
-- **tung** (happy): Khuất sau hành lang kia. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
+- **tung** (ao-xanh-happy): Khuất sau hành lang kia. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
 - **player**: Tầng bốn, phòng 408.
-- **tung** (happy): Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ {{nv.tung}}, học Du lịch.
+- **tung** (ao-xanh-happy): Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ {{nv.tung}}, học Du lịch.
 
 ## md-00-gap-tung.2
-- **tung** (happy): {{nv.nguoi-choi}} à. Dễ gọi đấy.
+- **tung** (ao-xanh-happy): {{nv.nguoi-choi}} à. Dễ gọi đấy.
 
 ## md-00-gap-tung.3
-- **tung** (neutral): Lại dân kinh tế. Cả phòng chẳng ai học Toán, sau này thi biết mượn vở ai đây.
+- **tung** (ao-xanh): Lại dân kinh tế. Cả phòng chẳng ai học Toán, sau này thi biết mượn vở ai đây.
 - **player**: Toán thì chịu, chứ Excel thì được. File xếp phòng mấy nghìn dòng, tớ lọc cái là ra tên mình.
-- **tung** (chi-tay): Thế là chia việc được rồi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali. Tớ cá là ba phút là tới tầng bốn.
+- **tung** (ao-xanh-chi-tay): Thế là chia việc được rồi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali. Tớ cá là ba phút là tới tầng bốn.
 
 ## md-01-ktx.1
 > NHIỆM VỤ: Nhận phòng KTX
@@ -56,26 +56,26 @@
 
 ## md-01-ktx.2
 - [DÀN DỰNG] Hai người khiêng vali lên tới tầng bốn, cùng thở dốc. {{nv.tung}} đẩy cửa phòng 408.
-- **tung** (happy): Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường, tuần sau vào học đỡ lạc.
+- **tung** (ao-xanh-happy): Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường, tuần sau vào học đỡ lạc.
 
 ## md-03-toa-b.1
 - [DÀN DỰNG] Hộp tôn xanh treo trên mảng tường gần cửa ra vào (bản CHƯA có thẻ lịch ở khe — DX-03 chưa làm: [KHÁM PHÁ] không có vật tĩnh). Bác Thịnh đứng ở chân cầu thang.
 - **narrator**: Sảnh tòa B vắng tanh. Trên mảng tường gần cửa ra vào treo một cái hộp tôn xanh, biển ghi "Hộp tiếp nhận kiến nghị".
-- **tung** (neutral): Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
+- **tung** (ao-xanh): Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
 - **bac-tu** (neutral): Hai cháu tìm phòng nào? Chiều Chủ nhật tòa này khóa hết lớp rồi.
-- **tung** (neutral): Dạ không ạ, cháu dẫn bạn đi xem trường thôi.
+- **tung** (ao-xanh): Dạ không ạ, cháu dẫn bạn đi xem trường thôi.
 - **bac-tu** (neutral): Xem thì xem. Mép hộp sắc đấy, đừng thò tay vào.
 
 ## md-07-cong-ktx-toi.1
 - [DÀN DỰNG] Tối. Hai người quẹt thẻ ở phòng trực cổng KTX. Nền tối bg-mvp-cong-ktx-dem (DX-02).
 - **narrator**: Lúc về tới cổng ký túc xá thì trời đã tối. Đèn phòng trực vẫn sáng.
 - **chu-cuong** (neutral): Giờ này mới về à? {{nv.tung}} dẫn bạn đi đâu cả buổi thế?
-- **tung** (happy): Bọn cháu đi xem trường ạ.
-- **tung** (happy): Chú tớ đấy, {{nv.nguoi-choi}}. Chú trực cổng này lâu lắm rồi.
-- **tung** (neutral): Chú ơi, qua nhà văn hóa cháu thấy dán poster CLB Thám Tử. Chú biết CLB đấy không?
+- **tung** (ao-xanh-happy): Bọn cháu đi xem trường ạ.
+- **tung** (ao-xanh-happy): Chú tớ đấy, {{nv.nguoi-choi}}. Chú trực cổng này lâu lắm rồi.
+- **tung** (ao-xanh): Chú ơi, qua nhà văn hóa cháu thấy dán poster CLB Thám Tử. Chú biết CLB đấy không?
 - **chu-cuong** (smile): À, CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó đều moi ra được bằng chứng. Chẳng thần thánh gì, chịu khó hỏi từng người rồi đối chiếu giấy tờ thôi.
 - **chu-cuong** (neutral): Giờ cái gì cũng lên hệ thống, ai còn nhờ sinh viên đi hỏi từng người nữa. Thứ Bảy có Ngày hội CLB đấy, thích thì ra xem.
-- **tung** (happy): Thứ Bảy đi với tớ nhé?
+- **tung** (ao-xanh-happy): Thứ Bảy đi với tớ nhé?
 
 ## md-08-tuan-cong-dan.1
 - [THẺ CHỮ] **narrator**: Thứ Hai → thứ Sáu — Tuần sinh hoạt công dân

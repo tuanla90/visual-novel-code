@@ -4,6 +4,7 @@
 
 ### doc-tin-don — Ảnh chụp tin đồn
 - Tiêu đề: Tin đang lan trên kênh sinh viên
+- Ảnh: doc-tin-don
 - Nguồn: {{nv.co-lan}} chuyển cho {{nv.minh-anh}}
 - Nội dung hiển thị:
 > "CLB Thám Tử soi dữ liệu sinh viên"
@@ -29,6 +30,7 @@
 
 ### doc-lich-xuong — Bảng đăng ký dùng xưởng
 - Tiêu đề: Bảng đăng ký dùng xưởng, tuần 07/10
+- Ảnh: doc-lich-xuong
 - Nguồn: Dán cạnh cửa xưởng CLB Robotics
 - Nội dung hiển thị:
 > Bảng viết tay dán cạnh cửa xưởng, góc ghi "bản sao từ lịch đặt xưởng trên máy". Tuần 07/10 kín chữ: đội thi đấu tập ba tối, sinh hoạt thành viên chiều thứ Ba, dọn xưởng sáng thứ Bảy.

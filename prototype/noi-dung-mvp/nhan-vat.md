@@ -6,8 +6,8 @@
 
 ### tung — Tùng
 - Họ tên: Trần Tùng
-- Vai: Năm 1 Du lịch, bạn cùng phòng KTX 408 của người chơi, cháu chú Cường, tình nguyện viên đón tân sinh viên tuần đầu (áo xanh tình nguyện: mặc lại ở Vụ 5 khi đón Hoài tới buổi họp; CHƯA CÓ ẢNH áo xanh). Dẫn đường, nhắc lịch. "Tớ cá là…"
-- Biểu cảm: neutral, happy, worried, surprised, thinking, gai-dau, chi-tay
+- Vai: Năm 1 Du lịch, bạn cùng phòng KTX 408 của người chơi, cháu chú Cường, tình nguyện viên đón tân sinh viên tuần đầu (áo xanh tình nguyện: mặc hôm nhập học và mặc lại ở Vụ 5 khi đón Hoài tới buổi họp; ảnh là các biểu cảm `ao-xanh…`, ngày thường mặc áo thể thao lam). Dẫn đường, nhắc lịch. "Tớ cá là…"
+- Biểu cảm: neutral, happy, worried, surprised, thinking, gai-dau, chi-tay, ao-xanh, ao-xanh-happy, ao-xanh-worried, ao-xanh-gai-dau, ao-xanh-chi-tay
 - Danh xưng: Bạn cùng phòng 408
 - Năm: Năm nhất
 - Ngành: Du lịch
@@ -116,7 +116,7 @@
 - Giới thiệu: Sinh viên lớp BC24A, nói gì cũng thẳng. Nhóm của Hiếu vừa xin phòng làm bài nhóm mà không được.
 
 ### nam — Nam
-- Vai: Thành viên CLB Robotics, trực kênh và giữ sổ sách của xưởng. Xuất hiện từ Vụ 2 (tin đồn): trông đáng ngờ vì là người trực kênh, tới Vụ 3 mới được gỡ nghi. Không nói học năm mấy (dàn ý mùa 1). Chưa có ảnh: chỉ dùng biểu cảm neutral.
+- Vai: Thành viên CLB Robotics, trực kênh và giữ sổ sách của xưởng. Xuất hiện từ Vụ 2 (tin đồn): trông đáng ngờ vì là người trực kênh, tới Vụ 3 mới được gỡ nghi. Không nói học năm mấy (dàn ý mùa 1).
 - Biểu cảm: neutral
 - Xuất hiện từ: ngày họp
 - Danh xưng: Thành viên CLB Robotics
@@ -124,7 +124,7 @@
 - Giới thiệu: Trực kênh và giữ sổ sách cho xưởng của CLB Robotics. Ít nói, hỏi gì đáp nấy, việc gì cũng có ghi chép.
 
 ### khanh — Khánh
-- Vai: Chủ tịch Hội sinh viên, kiêm trưởng CLB Robotics (năm 4). Người đứng sau lá thư, tin đồn và ba đơn mượn tên Nam: lấy tiền quỹ CLB Thám Tử cho việc riêng, ghi thành linh kiện. Lên hình thoáng qua ở Vụ 2 (xưởng) và cuối Vụ 4 (phòng CLB), đối chất ở Vụ 5 (phòng họp); nhận theo từng nhịp chứng cứ, không bị bêu, không nêu việc riêng. Không gọi họ tên đầy đủ. Chưa có ảnh: chỉ dùng biểu cảm neutral.
+- Vai: Chủ tịch Hội sinh viên, kiêm trưởng CLB Robotics (năm 4). Người đứng sau lá thư, tin đồn và ba đơn mượn tên Nam: lấy tiền quỹ CLB Thám Tử cho việc riêng, ghi thành linh kiện. Lên hình thoáng qua ở Vụ 2 (xưởng) và cuối Vụ 4 (phòng CLB), đối chất ở Vụ 5 (phòng họp); nhận theo từng nhịp chứng cứ, không bị bêu, không nêu việc riêng. Không gọi họ tên đầy đủ.
 - Biểu cảm: neutral
 - Xuất hiện từ: ngày họp
 - Danh xưng: Chủ tịch Hội sinh viên, trưởng CLB Robotics
@@ -132,7 +132,7 @@
 - Giới thiệu: Chủ tịch Hội sinh viên, trưởng CLB Robotics. Nói chắc, bám thẩm quyền, ít khi phải giải thích với ai.
 
 ### bach — Bách
-- Vai: Phó CLB Robotics (năm 3). Một trong ba người giữ chìa phòng văn phòng xưởng. Lên hình ở cuối Vụ 3. Chưa có ảnh: chỉ dùng biểu cảm neutral.
+- Vai: Phó CLB Robotics (năm 3). Một trong ba người giữ chìa phòng văn phòng xưởng. Lên hình ở cuối Vụ 3.
 - Biểu cảm: neutral
 - Xuất hiện từ: ngày họp
 - Danh xưng: Phó CLB Robotics
@@ -140,7 +140,7 @@
 - Giới thiệu: Phó CLB Robotics. Nói ít, giữ giấy tờ kỹ.
 
 ### thao — Thảo
-- Vai: Phụ trách kỹ thuật CLB Robotics (năm 3). Một trong ba người giữ chìa phòng văn phòng xưởng; tối Chủ nhật hay ra phòng máy in sơ đồ mạch. Lên hình ở cuối Vụ 3 và sau buổi họp Vụ 5. Chưa có ảnh: chỉ dùng biểu cảm neutral.
+- Vai: Phụ trách kỹ thuật CLB Robotics (năm 3). Một trong ba người giữ chìa phòng văn phòng xưởng; tối Chủ nhật hay ra phòng máy in sơ đồ mạch. Lên hình ở cuối Vụ 3 và sau buổi họp Vụ 5.
 - Biểu cảm: neutral
 - Xuất hiện từ: ngày họp
 - Danh xưng: Kỹ thuật CLB Robotics

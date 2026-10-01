@@ -80,9 +80,9 @@
 - **narrator**: Thứ Hai tuần sau. Thầy Quang mời cả Hoài lên dự buổi họp. Hoài nhắn cho Duy đúng một dòng: "Nhờ bạn áo xanh hôm nhập học ra đón tớ được không? Tớ chỉ nhớ mỗi cái áo."
 - [DÀN DỰNG] Cổng tòa nhà hành chính. {{nv.tung}} mặc chiếc áo xanh tình nguyện, đứng chờ. {{nv.hoai}} đi tới, tay ôm cặp.
 - **hoai** (nervous): Tớ vẫn không nhớ mặt người đưa thư. Vào đấy tớ có phải chỉ ai không?
-- **tung** (neutral): Không. Cậu nhớ gì thì nói chừng ấy. Hôm nay tớ xem biển rồi, không dẫn nhầm tòa nữa đâu.
+- **tung** (ao-xanh): Không. Cậu nhớ gì thì nói chừng ấy. Hôm nay tớ xem biển rồi, không dẫn nhầm tòa nữa đâu.
 - **ha-vy** (neutral): Mặc áo ấy thì cậu ngồi cạnh Hoài, không ngồi với bọn tớ. Và không được chỉ cho bạn ấy nhìn cái gì.
-- **tung** (gai-dau): Tớ biết. Bạn ấy thấy gì thì bạn ấy tự thưa.
+- **tung** (ao-xanh-gai-dau): Tớ biết. Bạn ấy thấy gì thì bạn ấy tự thưa.
 - **narrator**: Phòng họp. Thầy Quang chủ trì, cô Lan ngồi bên. Khánh ngồi một phía, mặt không đổi, balo dựng cạnh chân ghế. Nam ngồi cạnh nhóm CLB Thám Tử. Quân ngồi cuối bàn ghi biên bản. Tùng áo xanh ngồi hàng ghế cạnh cửa với Hoài và chú Cường.
 - **thay-quang** (neutral): Trước khi bắt đầu. Giấy giải trình của Ban kiểm tra vẫn đứng tên em Nam, giải ngân của xưởng vẫn dừng.
 - **quan** (neutral): Hạn lệ phí giải là hết tháng 10 ạ. Còn mười ngày.
@@ -104,7 +104,7 @@
 - **thay-quang** (neutral): Quân ghi biên bản: tên em Nam được gỡ khỏi giấy giải trình, giải ngân của xưởng mở lại từ hôm nay.
 - **thay-quang** (neutral): CLB Thám Tử còn đề nghị hỏi lại chuyện lá thư hồi tháng 9. Em Hoài, chú Cường, mời hai người lên gần đây.
 - [DÀN DỰNG] {{nv.hoai}} đứng dậy, đi ngang qua chân ghế của {{nv.khanh}} thì khựng lại. Tay cô níu lấy tay áo xanh của {{nv.tung}}.
-- **tung** (neutral): Tớ không nói hộ được. Cậu thấy gì thì thưa với thầy.
+- **tung** (ao-xanh): Tớ không nói hộ được. Cậu thấy gì thì thưa với thầy.
 - **hoai** (nervous): Thưa thầy, cái huy hiệu sứt một răng trên balo kia. Đúng cái em thấy sáng hôm ấy. Mặt người thì em vẫn không dám chắc ạ.
 - **thay-quang** (neutral): Thầy ghi đúng như em nói: một cái balo, chưa phải một người.
 > NHIỆM VỤ: Trình một nguồn nối lá thư với một người, không dính tới cái huy hiệu
@@ -169,15 +169,15 @@
 - **nam** (neutral): Có những việc anh giúp đội thật. Cái hạn lệ phí anh xin lùi cũng là thật. Nhưng chuyện anh lấy tên em thì em vẫn phải ghi đúng vào biên bản.
 - **khanh** (neutral): Ừ. Em giữ sổ tốt hơn anh.
 - [DÀN DỰNG] {{nv.khanh}} đặt chiếc chìa lên bậu cửa sổ. Rồi anh gỡ cái huy hiệu sứt khỏi quai balo, đặt xuống cạnh chiếc chìa, và đi.
-- **tung** (worried): Tớ chắc là anh ấy từ hôm thấy cái huy hiệu. Thế mà trúng rồi tớ chả thấy vui gì cả.
-- **tung** (neutral): Nam này. Hôm trước tớ xin lỗi rồi, nhưng tớ muốn nói lại: tớ đã coi tên trên tài khoản là tên cậu.
+- **tung** (ao-xanh-worried): Tớ chắc là anh ấy từ hôm thấy cái huy hiệu. Thế mà trúng rồi tớ chả thấy vui gì cả.
+- **tung** (ao-xanh): Nam này. Hôm trước tớ xin lỗi rồi, nhưng tớ muốn nói lại: tớ đã coi tên trên tài khoản là tên cậu.
 - **nam** (neutral): Tớ nghe. Tớ cũng mất mấy hôm mới dám bước vào phòng các cậu. Lần sau đọc phiếu trước.
 - **nam** (neutral): Lệ phí giải hạn cuối tháng này. Kinh phí năm nay toàn anh ấy chạy. Giờ tớ phải tự đi xin lại từ đầu.
 - **thao** (neutral): Chìa của chị treo lên móc cạnh cửa rồi. Ai lấy cũng phải ký tên. Tiền giải thì chị với Bách đi xin cùng em.
 - **minh-anh** (serious): Chị cũng có phần. Làm chủ quỹ mà sao kê kỳ trước chị còn chưa mở. Từ tháng này chị xin hằng tháng, dán cạnh bảng nguyên tắc.
 - **chu-cuong** (smile): Chú về trực đây. Lần sau chú cố nhìn mặt cho kỹ.
 - **hoai** (neutral): Tùng ơi, cái áo xanh ấy… CLB các cậu còn nhận người không?
-- **tung** (happy): Đơn ở chỗ Duy. Chiều thứ Tư, phòng CLB. Lần này tớ dẫn đúng tòa.
+- **tung** (ao-xanh-happy): Đơn ở chỗ Duy. Chiều thứ Tư, phòng CLB. Lần này tớ dẫn đúng tòa.
 
 ## v5-ket-luan.1
 - **narrator**: Chiều thứ Tư, phòng CLB. Hoài tới sớm, mang theo một xấp giấy nháp còn trắng một mặt.
