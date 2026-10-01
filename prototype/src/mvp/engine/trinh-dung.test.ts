@@ -1,13 +1,14 @@
 // @vitest-environment node
 /**
- * Trình dựng câu phòng máy (QĐ-092): khung khóa từ SQL chuẩn; giấy nhớ tự bọc nháy khi là chữ; ✎ giữ nguyên chữ gõ;
- * bấm khối nối liền trong nháy. Chạy thật trên bộ dữ liệu của vụ để chắc các bài "sai có ích" cho đúng hậu quả.
+ * Trình dựng câu phòng máy (QĐ-092, màn tra v7 một cách nhập): khung khóa từ SQL chuẩn; giấy nhớ tự bọc nháy khi là chữ;
+ * giấy nhiều giá trị → IN (…); giá trị giữ nguyên chữ (câu nạp sẵn có điều kiện lạ). Chạy thật trên bộ dữ liệu của vụ để
+ * chắc các bài "sai có ích" cho đúng hậu quả.
  */
 import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { chaySql } from './sql-mvp';
-import { cauSoiDieuKien, cauTuSql, dieuKienThanhSql, giaTriTuGiayNho, khungTuSqlChuan, noiKhoi, tachWhere, thanhSql, type CauDung, type KieuCot } from './trinh-dung';
+import { cauSoiDieuKien, cauTuSql, dieuKienThanhSql, giaTriTuGiayNho, khungTuSqlChuan, tachWhere, thanhSql, type CauDung, type KieuCot } from './trinh-dung';
 
 const KB = KICH_BAN_MVP as unknown as KichBanMvp;
 const duLieu = KB.duLieu;
@@ -52,14 +53,6 @@ describe('khung khóa và giá trị', () => {
     expect(dieuKienThanhSql({ cot: 'ma_lop', phep: 'bat-dau-bang', giaTri: phieu }, 'TEXT')).toBe("(ma_lop LIKE 'BC24A%' OR ma_lop LIKE 'BC23A%')");
     expect(dieuKienThanhSql({ cot: 'khoa_hoc', phep: 'bang', giaTri: { nguon: 'giay-nho', tho: '1, 2', nhieu: ['1', '2'] } }, 'INTEGER')).toBe('khoa_hoc IN (1, 2)');
     expect(dieuKienThanhSql({ cot: 'ma_sv', phep: 'bang', giaTri: { nguon: 'giay-nho', tho: 'SV210745', nhieu: ['SV210745'] } }, 'TEXT')).toBe("ma_sv = 'SV210745'");
-  });
-});
-
-describe('bấm khối', () => {
-  it('nối liền trong nháy, cách một dấu cách ngoài nháy', () => {
-    expect(noiKhoi(['SELECT', '*', 'FROM', 'sinh_vien', 'WHERE', 'ten', 'LIKE', "'", 'H', '%', "'"])).toBe("SELECT * FROM sinh_vien WHERE ten LIKE 'H%'");
-    expect(noiKhoi(['WHERE', 'nganh', '=', "'", 'Báo chí', "'", 'AND', 'toa_nha', '=', "'", 'B', "'"])).toBe("WHERE nganh = 'Báo chí' AND toa_nha = 'B'");
-    expect(noiKhoi(['WHERE', 'toa_nha', '=', 'B'])).toBe('WHERE toa_nha = B');
   });
 });
 
