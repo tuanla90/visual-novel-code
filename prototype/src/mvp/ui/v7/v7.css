@@ -1077,3 +1077,59 @@ button.v7-o:active:not(:disabled) {
     transform: translateX(3px);
   }
 }
+
+/* ======================= Gọt theo ảnh GUI tham chiếu (Topview 01/10: art/nguon/topview-2026-10-01/gui-*.png) =======================
+   Bảng: khung gỗ, giấy nhớ cong góc, phiếu có dòng kẻ và con dấu xanh; màn tra: ô dạng viên thuốc, con số trong thẻ riêng. */
+.bang__khung {
+  box-shadow: 0 0 0 10px #3b2412, 0 0 0 26px #6b4423, 0 0 0 30px #2b1c0e, 0 24px 60px rgba(0, 0, 0, 0.55);
+  border-radius: 4px;
+}
+.bang__mat {
+  box-shadow: inset 0 0 0 6px rgba(0, 0, 0, 0.25), inset 0 0 90px rgba(0, 0, 0, 0.3);
+}
+.the--tin::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 26px;
+  height: 26px;
+  background: linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.16) 50%, rgba(255, 255, 255, 0.35) 55%, #e6c96a 100%);
+  border-radius: 0 0 2px 0;
+}
+.the--phieu {
+  background: repeating-linear-gradient(transparent 0 25px, rgba(31, 95, 139, 0.12) 25px 26px), #fffdf6;
+  background-position: 0 44px;
+}
+.the__dau {
+  border: 3px double #1f5f8b;
+  border-radius: 6px;
+  padding: 1px 9px;
+  letter-spacing: 0.06em;
+  opacity: 0.9;
+}
+.the--vat,
+.the--tai-lieu {
+  background: linear-gradient(#ffffff, #f4efe6);
+}
+.v7-o {
+  border-radius: 1.4em;
+}
+.v7-o--bang {
+  border-radius: 0.6em;
+}
+.v7-khe {
+  border-radius: 1.4em;
+}
+.v7-so {
+  right: 0.8em;
+  bottom: 0.6em;
+  padding: 0.5em 0.9em 0.45em;
+  border: 1px solid rgba(100, 181, 246, 0.35);
+  border-radius: 0.7em;
+  background: rgba(10, 20, 28, 0.72);
+  box-shadow: 0 0 1.2em rgba(100, 181, 246, 0.18);
+}
+.v7-kq tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.025);
+}
