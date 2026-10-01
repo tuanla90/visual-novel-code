@@ -27,7 +27,11 @@ sạch, nền có Bác Tư ghép sẵn, lớp lá thư, hộp góp ý, Bác Tư 
 
 ## Thêm ảnh mới
 
-1. Viết prompt vào bộ prompt đang dùng (hoặc tạo bộ mới `prompts-<loại>-<phạm vi>-vX.Y.md` rồi thêm một dòng
-   vào bảng trên).
-2. Ảnh gốc giữ lại thì đặt vào `nguon/<công cụ>-<ngày YYYY-MM-DD>/`.
-3. Ảnh đưa vào game thì chuyển sang `.webp` hoặc `.png` và thả vào `prototype/src/assets/` đúng tên ô.
+Trước khi sinh, đọc `quy-trinh-dong-nhat-va-duyet-anh.md`: cách viết prompt "khối gốc + một mệnh đề đổi" để giữ
+nhân vật và phong cách đồng nhất, và vòng duyệt ảnh (tiêu chí viết trước, chấm từng ảnh, tối đa ba vòng sửa).
+
+1. Viết bảng tiêu chí đạt / không đạt cho đợt ảnh, rồi viết prompt vào bộ prompt đang dùng (hoặc tạo bộ mới
+   `prompts-<loại>-<phạm vi>-vX.Y.md` rồi thêm một dòng vào bảng trên).
+2. Sinh lô nhỏ, chấm theo tiêu chí, sửa ảnh trượt theo quy trình; đạt rồi mới chạy cả lô.
+3. Ảnh gốc giữ lại thì đặt vào `nguon/<công cụ>-<ngày YYYY-MM-DD>/`.
+4. Ảnh đưa vào game thì chuyển sang `.webp` hoặc `.png` và thả vào `prototype/src/assets/` đúng tên ô.
