@@ -200,6 +200,16 @@ export interface WhereTach {
   /** Từng điều kiện (chữ SQL) theo thứ tự. */
   dieuKien: string[];
   noi: ('AND' | 'OR')[];
+  /** Nguồn là phiếu đã ghim: phần `WITH <tên> AS (…) ` phải đứng trước mọi câu chạy trên `bang`. */
+  tienTo?: string;
+}
+
+/**
+ * Tên tạm (CTE) của một phiếu kết quả khi lấy làm nguồn: `ev-tin-don` → `tin_don`. Thẻ `Kiểu: lọc tiếp` viết SQL chuẩn với
+ * `FROM @<mã phiếu>`; màn tra đổi thành `WITH <tên> AS (<câu của phiếu>) SELECT … FROM <tên> …`.
+ */
+export function tenCte(maPhieu: string): string {
+  return maPhieu.replace(/^ev-/, '').replace(/[^a-z0-9]+/gi, '_').replace(/^(\d)/, 'p_$1');
 }
 
 /**
@@ -246,5 +256,5 @@ export function cauSoiDieuKien(t: WhereTach, toiDa = 40): string {
   const cot = t.dieuKien.map((d, i) => `CASE WHEN ${d} THEN 1 ELSE 0 END AS dk${i + 1}`);
   const giu = t.dieuKien.reduce((acc, d, i) => (i === 0 ? `(${d})` : `${acc} ${t.noi[i - 1] ?? 'AND'} (${d})`), '');
   const hoac = t.dieuKien.map((d) => `(${d})`).join(' OR ');
-  return `SELECT *, ${cot.join(', ')}, CASE WHEN ${giu} THEN 1 ELSE 0 END AS giu FROM ${t.bang} WHERE ${hoac} LIMIT ${toiDa}`;
+  return `${t.tienTo ?? ''}SELECT *, ${cot.join(', ')}, CASE WHEN ${giu} THEN 1 ELSE 0 END AS giu FROM ${t.bang} WHERE ${hoac} LIMIT ${toiDa}`;
 }

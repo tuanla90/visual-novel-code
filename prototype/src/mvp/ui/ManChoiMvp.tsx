@@ -368,6 +368,16 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
               clearBacklog();
               hanhDong({ type: 'sang-vu-sau' });
             }}
+            phu={kn.phu.map((p) => ({ id: p.id, ten: p.ten, nguoiGiao: tenNguoiNoi(kb, p.nguoiGiao) }))}
+            onLamPhu={(id) => {
+              clearBacklog();
+              hanhDong({ type: 'lam-nhiem-vu-phu', id });
+            }}
+            phuXong={kn.phuXong ? { ten: kn.phuXong.ten, tieuDeKet: dienTen(kn.phuXong.tieuDeKet), loiKet: dienTen(kn.phuXong.loiKet) } : null}
+            onXongPhu={() => {
+              clearBacklog();
+              hanhDong({ type: 'xong-nhiem-vu-phu' });
+            }}
             onChoiLai={choiLai}
             onVeTieuDe={onVeTieuDe}
           />

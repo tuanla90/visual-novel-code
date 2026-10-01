@@ -138,6 +138,18 @@ export interface LichMvp {
    * (chuỗi tự `[ĐI TỚI]` các chuỗi khác) và kết bằng `[KẾT THÚC]`. Không có = game chỉ có vụ gốc.
    */
   vuSau?: VuSauMvp[];
+  /**
+   * Nhiệm vụ phụ (`## <Tên> {nhiệm vụ phụ: <mã>}`): việc một NPC giao, không dính truyện chính, để rèn kỹ năng. Làm được từ
+   * màn kết của một vụ chính khi vụ `moSau` đã xong; kết bằng `[KẾT THÚC]` rồi quay lại màn kết đó.
+   */
+  nhiemVuPhu?: NhiemVuPhuMvp[];
+}
+
+export interface NhiemVuPhuMvp extends VuSauMvp {
+  /** Mã nhân vật giao việc. */
+  nguoiGiao: string;
+  /** Mã vụ chính phải xong trước (vụ gốc hay một vụ sau). */
+  moSau: string;
 }
 
 export interface VuSauMvp {
@@ -234,7 +246,7 @@ export interface TheThuThachMvp {
   vatChung: { id: string; title: string; description: string; giaTri: string[] } | null;
   ghiChu: string[];
   /** Trình dựng tổng hợp chỉ bật rõ ràng trên nội dung Vụ 2; thiếu = trình dựng WHERE chương 1. */
-  kieuTrinhDung?: 'tong-hop';
+  kieuTrinhDung?: 'tong-hop' | 'loc-tiep';
   /** ID thẻ kết quả có thể dùng làm nguồn ban đầu cho bài tổng hợp. */
   nguon?: string | null;
   /** Cột nhóm được gợi ý/giới hạn bởi nội dung; null cho phép người chơi chọn. */

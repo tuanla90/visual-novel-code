@@ -115,6 +115,14 @@
 - Câu nói: Tôi nói thẳng vậy thôi.
 - Giới thiệu: Sinh viên lớp BC24A, nói gì cũng thẳng. Nhóm của Hiếu vừa xin phòng làm bài nhóm mà không được.
 
+### nam — Nam
+- Vai: Thành viên CLB Robotics, trực kênh và giữ sổ sách của xưởng. Xuất hiện từ Vụ 2 (tin đồn): trông đáng ngờ vì là người trực kênh, tới Vụ 3 mới được gỡ nghi. Không nói học năm mấy (dàn ý mùa 1). Chưa có ảnh: chỉ dùng biểu cảm neutral.
+- Biểu cảm: neutral
+- Xuất hiện từ: ngày họp
+- Danh xưng: Thành viên CLB Robotics
+- Câu nói: Tớ không bắt các cậu tin. Tớ chỉ chỗ để các cậu tự kiểm.
+- Giới thiệu: Trực kênh và giữ sổ sách cho xưởng của CLB Robotics. Ít nói, hỏi gì đáp nấy, việc gì cũng có ghi chép.
+
 ### co-phu-trach — Cô phụ trách hộp kiến nghị
 - Vai: Giữ sổ niêm phong. Chỉ xuất hiện qua lời kể và tài liệu.
 - Chỉ qua lời kể: có

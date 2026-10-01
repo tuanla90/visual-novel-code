@@ -53,7 +53,9 @@ export function LichMvp({ kb, s, hanPhu, onDong }: LichMvpProps) {
   const cacVuSau = kb.lich.vuSau ?? [];
   const viTriVu = cacVuSau.findIndex((v) => v.id === s.vu);
   const vuNay = viTriVu >= 0 ? cacVuSau[viTriVu] : undefined;
-  const tienDo = { giaiDoan: s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vuNay?.ngay ?? null };
+  const phuNay = (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id);
+  // Đang làm việc phụ: hôm nay là ngày của việc đó (lịch tính như một vụ sau).
+  const tienDo = { giaiDoan: s.giaiDoan === 'phu' ? ('vu-sau' as const) : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: (phuNay ?? vuNay)?.ngay ?? null };
   const hn = homNay(tienDo, ngayMoDau);
   const tenNgay = (so: number): string => kb.lich.ngay.find((n) => n.so === so)?.ten ?? '';
   const vuSau = cacVuSau.slice(0, viTriVu + 1).flatMap((v, i) => (v.ngay ? [{ ngay: v.ngay, ten: `Vụ ${i + 2} · ${v.ten}`, ngan: `Vụ ${i + 2}` }] : []));
@@ -64,6 +66,7 @@ export function LichMvp({ kb, s, hanPhu, onDong }: LichMvpProps) {
   const tenHomNay = (() => {
     if (hn.moDau) return 'Tuần đầu ở trường';
     if (s.giaiDoan === 'ngay') return [`Ngày ${s.ngay}`, tenNgay(s.ngay)].filter(Boolean).join(' · ');
+    if (s.giaiDoan === 'phu' && phuNay) return `Việc phụ · ${phuNay.ten}`;
     if (s.giaiDoan === 'vu-sau' && vuNay) return `Vụ ${viTriVu + 2} · ${vuNay.ten}`;
     return s.giaiDoan === 'hop' ? 'Buổi họp rà soát' : 'Sau buổi họp';
   })();

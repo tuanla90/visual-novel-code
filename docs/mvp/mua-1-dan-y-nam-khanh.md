@@ -219,4 +219,8 @@ Phương án đã loại: chị Linh rời CLB vì bị Khánh ép. Nó buộc l
 - Gộp nhánh chính (màn tổng hợp: phiếu làm nguồn, nhóm và đếm) vào nhánh này.
 - Sửa Vụ 1 theo mục 2: lời chú Cường thành cảnh bắt buộc của ngày 5, không nói năm; nhật ký in đổi sang tài khoản dùng chung `clb_robotics`; kết thật thưởng lời nhắn đầu của chị Linh (`clue-loi-nhan-linh-1`); bỏ câu "thầy sẽ gặp riêng người soạn" và cảnh ở cổng trường.
 
-Chưa làm: chuyển vụ sổ phòng thành nhiệm vụ phụ; dựng Vụ 2 đến Vụ 5 theo dàn ý; "ngày 6" thử màn tổng hợp vẫn nằm trong Vụ 1.
+- Vụ 2 "Tin đồn" (mục 3): ba lần tra (`c-tin-don`, `c-tin-goc` lấy phiếu làm nguồn, `c-tin-may`), gặp Nam, song tuyến (nhật ký đăng nhập / bảng đăng ký xưởng; đi một hay hai hướng đều kết được), đi đủ hai hướng thì nhận lời nhắn thứ hai của chị Linh. Khác mục 3 một điểm: bảng đăng ký xưởng ghi "đội thi đấu tập" chứ không phải "ban chủ nhiệm họp", để hết vụ Nam vẫn chưa được gỡ nghi.
+- Cơ chế nhiệm vụ phụ: nhận ở màn kết của vụ chính, xong thì quay lại. Vụ sổ phòng đã chuyển thành nhiệm vụ phụ do Duy giao, mở sau Vụ 2.
+- Màn tra nhận phiếu đã ghim làm nguồn (`Kiểu: lọc tiếp`), câu hiện thành `WITH … AS`.
+
+Chưa làm: dựng Vụ 3 đến Vụ 5; hai nhiệm vụ phụ còn lại (micro, hoàn tiền); ảnh của Nam và nền xưởng Robotics (đang mượn nền nhà văn hóa); "ngày 6" thử màn tổng hợp vẫn nằm trong Vụ 1.

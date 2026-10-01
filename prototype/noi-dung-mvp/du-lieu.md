@@ -1,4 +1,4 @@
-# Dữ liệu mùa 1 — bộ cố định (Vụ 1, Vụ 2) {dữ liệu: vu1}
+# Dữ liệu mùa 1 — bộ cố định (Vụ 1, Vụ 2, nhiệm vụ phụ) {dữ liệu: vu1}
 
 <!-- Bộ dữ liệu SQL CỐ ĐỊNH của Vụ 1 (QĐ-087, QĐ-089: chưa làm dữ liệu ngẫu nhiên). Chép nguyên từ
      docs/mvp/kiem-du-lieu-vu1.py (11 lớp, 26 sinh viên). QĐ-092 thêm 3 lớp khác khóa (BC23A, KT22A, QT23A — KHÔNG có sinh viên)
@@ -104,3 +104,35 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 | BUOI-02 | CLB-THAM-TU | 2024-10-02 | Họp thành viên | DA_XAC_NHAN |
 | BUOI-04 | clb-tham-tu␣␣ | 2024-10-09 | Ôn SQL | DA_XAC_NHAN |
 | BUOI-03 | P-KHO-CHUNG | 2024-10-06 | Nhận vật tư | DA_XAC_NHAN |
+
+## tin_nhan {bảng}
+- Cột: ma_tin TEXT, thoi_diem TEXT, tai_khoan TEXT, loai TEXT, noi_dung TEXT
+
+<!-- Vụ 2 "Tin đồn" (docs/mvp/mua-1-dan-y-nam-khanh.md mục 3). Bản xuất các tin công khai của kênh sinh viên, tối thứ Hai 07/10 tới
+     trưa thứ Ba 08/10/2024. Năm tin mang câu tin đồn: T-01 là tin GỐC (22:40 tối 07/10, tài khoản kênh clb_robotics), bốn tin
+     còn lại là chuyển tiếp. T-08 nhắc chuyện tương tự nhưng viết khác nên không khớp "bắt đầu bằng". -->
+
+| ma_tin | thoi_diem | tai_khoan | loai | noi_dung |
+|---|---|---|---|---|
+| T-01 | 2024-10-07 22:40 | clb_robotics | GOC | CLB Thám Tử soi dữ liệu sinh viên |
+| T-02 | 2024-10-07 22:55 | SV240254 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên |
+| T-03 | 2024-10-08 07:10 | SV230311 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên |
+| T-04 | 2024-10-08 07:30 | SV240213 | GOC | Ai nhặt được thẻ xe ở căng tin |
+| T-05 | 2024-10-08 08:02 | SV220118 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên |
+| T-06 | 2024-10-08 09:15 | clb_robotics | GOC | Tuyển thành viên đội robot |
+| T-07 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên |
+| T-08 | 2024-10-08 12:05 | SV240412 | GOC | Nghe nói CLB Thám Tử soi điểm |
+
+## dang_nhap_kenh {bảng}
+- Cột: tai_khoan TEXT, may TEXT, ngay TEXT, gio TEXT
+
+<!-- Vụ 2, tuyến dữ liệu: nhật ký đăng nhập kênh (Nam là quản trị kênh của Robotics nên mở được). Tài khoản clb_robotics ngày 07/10:
+     15:10 từ máy xưởng số 2 (Nam), 22:31 từ máy văn phòng xưởng (9 phút trước tin gốc). -->
+
+| tai_khoan | may | ngay | gio |
+|---|---|---|---|
+| clb_robotics | MAY-XUONG-02 | 2024-10-07 | 15:10 |
+| clb_robotics | MAY-VP-XUONG | 2024-10-07 | 22:31 |
+| clb_robotics | MAY-XUONG-02 | 2024-10-08 | 09:05 |
+| SV240254 | DIEN-THOAI | 2024-10-07 | 22:50 |
+| SV240213 | DIEN-THOAI | 2024-10-08 | 07:25 |

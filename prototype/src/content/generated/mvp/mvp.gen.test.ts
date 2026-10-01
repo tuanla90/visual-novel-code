@@ -49,6 +49,8 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
       ['sinh_vien', 25],
       ['nhat_ky_in', 9],
       ['nhat_ky_su_dung', 7],
+      ['tin_nhan', 8],
+      ['dang_nhap_kenh', 5],
     ]);
     // Vụ 2: `␣` trong du-lieu.md là dấu cách thật ở đuôi mã phòng (bảng Markdown tự cắt dấu cách nên phải viết lộ).
     const maPhong = d?.duLieu?.bang.find((b) => b.ten === 'nhat_ky_su_dung')?.dong.map((h) => h[1]);
@@ -68,6 +70,9 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
       ['noi-dung-mvp/thu-thach/c-lop.md', 2, 2],
       ['noi-dung-mvp/thu-thach/c-ten-h.md', 2, 2],
       ['noi-dung-mvp/thu-thach/c-ten-h.md', 2, 2],
+      ['noi-dung-mvp/thu-thach/tin-don.md', 5, 5],
+      ['noi-dung-mvp/thu-thach/tin-don.md', 1, 1],
+      ['noi-dung-mvp/thu-thach/tin-don.md', 2, 2],
       ['noi-dung-mvp/thu-thach/v2-loc-buoi.md', 4, 4],
       ['noi-dung-mvp/thu-thach/v2-tong-hop.md', 14, 14],
       ['noi-dung-mvp/thu-thach/v2-tong-hop.md', 3, 3],

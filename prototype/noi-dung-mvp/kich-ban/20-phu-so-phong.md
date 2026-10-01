@@ -1,6 +1,6 @@
-## Vụ 2 — Bốn mục trong sổ đã ký (thứ Sáu 25/10/2024, phòng CLB)
+## Nhiệm vụ phụ — Bốn mục trong sổ đã ký (thứ Sáu 25/10/2024, phòng CLB; Duy giao)
 
-<!-- Khung Vụ 2 (docs/mvp/mua-1-kich-ban-ready-dev.md mục 5; rà soát và chỗ lệch: docs/mvp/mua-1-ra-soat-va-vu-2.md). Vụ sau của lich.md: chạy từ v2-mo sau màn kết Vụ 1, kết bằng [KẾT THÚC]. Một cảnh (phòng CLB), không bản đồ, không hạn, không uy tín, không kết xấu. Điều mới: gọt cột trước khi so (TRIM, LOWER) và xếp theo (ORDER BY). Câu mở rẽ theo kết Vụ 1 bằng cờ máy đặt (vu1-ket-that). Lời ở loi/10-vu-2.md. -->
+<!-- Nhiệm vụ phụ của lich.md (`{nhiệm vụ phụ: so-phong}`, mở sau Vụ 2 "Tin đồn"): nhận ở màn kết, chạy từ v2-mo, kết bằng [KẾT THÚC] rồi quay lại màn kết. Trước 01/10 tối đây là "Vụ 2" của gói ready-for-dev (docs/mvp/mua-1-kich-ban-ready-dev.md mục 5), nên mã chuỗi / thẻ vẫn mang tiền tố v2-. Một cảnh (phòng CLB), không bản đồ, không hạn, không uy tín, không kết xấu. Điều mới: gọt cột trước khi so (TRIM, LOWER) và xếp theo (ORDER BY). Câu mở rẽ theo kết Vụ 1 bằng cờ máy đặt (vu1-ket-that). Lời ở loi/20-phu-so-phong.md. -->
 
 ### v2-mo — Mở Vụ 2: hồ sơ cuối kỳ {cảnh: phong-clb}
 

@@ -20,3 +20,5 @@
 ### phong-dao-tao — Phòng Đào tạo
 ### phong-hop — Phòng họp rà soát
 ### ban-do — Bản đồ trường
+### xuong-robot — Xưởng CLB Robotics
+- Ảnh nền: bg-mvp-nha-van-hoa

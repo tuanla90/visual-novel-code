@@ -93,12 +93,15 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     const kind = c.fields['Kiểu'];
     const sourceId = c.fields['Nguồn'];
     const groupBy = c.fields['Nhóm theo'];
-    if (kind && kind !== 'tổng hợp') err(c.viTri, `thẻ ${c.id}: "Kiểu" chỉ hỗ trợ "tổng hợp"`);
-    if (kind !== 'tổng hợp') {
-      if (sourceId !== undefined || groupBy !== undefined) err(c.viTri, `thẻ ${c.id}: "Nguồn" và "Nhóm theo" chỉ dùng với "Kiểu: tổng hợp"`);
+    const tongHop = kind === 'tổng hợp';
+    const locTiep = kind === 'lọc tiếp';
+    if (kind && !tongHop && !locTiep) err(c.viTri, `thẻ ${c.id}: "Kiểu" chỉ hỗ trợ "tổng hợp" (nhóm và đếm trên phiếu) hoặc "lọc tiếp" (lọc tiếp trên phiếu)`);
+    if (!tongHop && !locTiep) {
+      if (sourceId !== undefined || groupBy !== undefined) err(c.viTri, `thẻ ${c.id}: "Nguồn" và "Nhóm theo" chỉ dùng với "Kiểu: tổng hợp" hoặc "Kiểu: lọc tiếp"`);
       continue;
     }
-    if (!sourceId) { err(c.viTri, `thẻ ${c.id}: "Kiểu: tổng hợp" cần "Nguồn: <mã-vật-chứng-của-phiếu-trước>"`); continue; }
+    if (locTiep && groupBy !== undefined) err(c.viTri, `thẻ ${c.id}: "Kiểu: lọc tiếp" không có "Nhóm theo"`);
+    if (!sourceId) { err(c.viTri, `thẻ ${c.id}: "Kiểu: ${kind}" cần "Nguồn: <mã-vật-chứng-của-phiếu-trước>"`); continue; }
     const owner = evidenceOwner.get(sourceId);
     if (!owner) err(c.viTri, `thẻ ${c.id}: nguồn "${sourceId}" không phải vật chứng của thẻ thử thách`);
     else if (owner.i >= i) err(c.viTri, `thẻ ${c.id}: nguồn "${sourceId}" phải thuộc thẻ thử thách đứng trước`);
@@ -109,7 +112,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     const sql = c.sql['SQL chuẩn'] ?? '';
     const placeholders = [...sql.matchAll(/\bFROM\s+@([a-z0-9-]+)/gi)].map((m) => m[1]);
     if (placeholders.length !== 1 || placeholders[0] !== sourceId) err(c.viTri, `thẻ ${c.id}: "SQL chuẩn" phải có đúng một FROM @${sourceId}`);
-    if (!/\bCOUNT\s*\(\s*\*\s*\)/i.test(sql)) err(c.viTri, `thẻ ${c.id}: SQL tổng hợp phải dùng COUNT(*)`);
+    if (tongHop && !/\bCOUNT\s*\(\s*\*\s*\)/i.test(sql)) err(c.viTri, `thẻ ${c.id}: SQL tổng hợp phải dùng COUNT(*)`);
     if (groupBy && !new RegExp(`\\bGROUP\\s+BY\\s+${groupBy}\\s*;?\\s*$`, 'i').test(sql.trim())) err(c.viTri, `thẻ ${c.id}: SQL tổng hợp phải GROUP BY đúng một cột "${groupBy}"`);
   }
   // Mức đạt của mỗi [ĐỐI CHẤT] là hai mã cờ dùng được trong [ĐIỀU KIỆN] / [KHI]: <mã>-du, <mã>-ho-tro.
@@ -431,6 +434,12 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     canChuoiLich(lich.ket.thuong, lich.ket.viTri, '"Kết thường"');
   }
   for (const v of lich.vuSau) canChuoiLich(v.chuoi, v.viTri, `vụ sau ${v.id}, "Chuỗi"`);
+  // Nhiệm vụ phụ: người giao là nhân vật có thật; "Mở sau" là mã vụ gốc hay một vụ sau (không phải nhiệm vụ phụ khác).
+  for (const v of lich.vuSau.filter((x) => x.phu)) {
+    if (v.nguoiGiao !== null && !nhanVat.has(v.nguoiGiao)) err(v.viTri, `nhiệm vụ phụ ${v.id}, "Người giao": không có nhân vật "${v.nguoiGiao}" trong nhan-vat.md`);
+    const vuChinh = [lich.vu.id, ...lich.vuSau.filter((x) => !x.phu).map((x) => x.id)];
+    if (v.moSau !== null && !vuChinh.includes(v.moSau)) err(v.viTri, `nhiệm vụ phụ ${v.id}, "Mở sau": "${v.moSau}" không phải mã một vụ chính (có: ${vuChinh.join(', ')})`);
+  }
   if (lich.vuSau.length > 0 && !lich.ket) err(lich.viTri, 'lịch có "{vụ sau: …}" nhưng vụ gốc không có mục "## Kết" để chơi tiếp từ đó');
 
   // ---------- Đồ thị chuỗi: mốc sớm nhất, chuỗi lẻ ----------

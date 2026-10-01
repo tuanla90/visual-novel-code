@@ -14,7 +14,8 @@ import type { GiaTriHoSo } from '../../engine/giay-nho';
 import type { TrangThaiMvp, GhiChuTruyVanMvp, PhieuTruyVanMvp } from '../../engine/trang-thai';
 import { nguonBangTongHop, type NguonTongHop } from '../../engine/trinh-dung-tong-hop';
 import { BangGhimMvp } from './BangGhimMvp';
-import { ManTraV7, type CanhTra } from './ManTraV7';
+import { khungTuSqlChuan } from '../../engine/trinh-dung';
+import { ManTraV7, type CanhTra, type NguonPhieuV7 } from './ManTraV7';
 import { ManTongHopMvp, type KetQuaTraTongHop } from './ManTongHopMvp';
 
 export interface PhongTraMvpProps {
@@ -43,6 +44,24 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
     ...Object.values(s.bang?.phieuTruyVan ?? {}).map((p) => ({ id: p.id, sql: p.sql, cot: p.cot })),
   ];
   const nguonDuocChon = the.nguon ? nguonTongHop.filter((nguon) => nguon.id === the.nguon) : nguonTongHop;
+  // Thẻ "lọc tiếp": phiếu nguồn là câu người chơi đã ghim; chưa có (ô lưu cũ, nhảy tới) thì dựng từ SQL chuẩn của thẻ ra phiếu đó.
+  const nguonPhieu = ((): NguonPhieuV7 | null => {
+    if (the.kieuTrinhDung !== 'loc-tiep' || !the.nguon) return null;
+    const daGhim = s.bang?.phieuTruyVan?.[the.nguon];
+    if (daGhim) return { id: daGhim.id, nhan: daGhim.nhan, sql: daGhim.sql, cot: daGhim.cot, soDong: daGhim.soDong };
+    const theNguon = Object.values(kb.thuThach).find((t) => t.vatChung?.id === the.nguon);
+    const k = theNguon ? khungTuSqlChuan(theNguon.sqlChuan) : null;
+    const bangGoc = duLieu?.bang.find((b) => b.ten === k?.bang);
+    if (!theNguon?.vatChung || !k || !bangGoc) return null;
+    const tenCot = (/^SELECT\s+(.+?)\s+FROM\s/i.exec(k.khung)?.[1] ?? '').split(',').map((c) => c.trim());
+    return {
+      id: the.nguon,
+      nhan: theNguon.vatChung.title,
+      sql: theNguon.sqlChuan,
+      cot: tenCot.map((ten) => ({ ten, kieu: bangGoc.cot.find((c) => c.ten === ten)?.kieu ?? 'TEXT' })),
+      soDong: theNguon.soDongKyVong ?? 0,
+    };
+  })();
 
   const hoanTatTongHop = (ketQua: KetQuaTraTongHop): void => {
     const id = the.vatChung?.id ?? `query-${the.id}`;
@@ -118,8 +137,9 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
         canh={canh}
         giayNho={giayNho}
         dienTen={dienTen}
+        nguonPhieu={nguonPhieu}
         onXong={(dung, result) => {
-          const isNguonDuocKhaiBao = !!the.vatChung && Object.values(kb.thuThach).some((challenge) => challenge.kieuTrinhDung === 'tong-hop' && challenge.nguon === the.vatChung?.id);
+          const isNguonDuocKhaiBao = !!the.vatChung && Object.values(kb.thuThach).some((challenge) => challenge.nguon === the.vatChung?.id);
           const phieu = result && the.vatChung && isNguonDuocKhaiBao
             ? { id: the.vatChung.id, nhan: the.vatChung.title, sql: result.sql, cot: result.cot, nguonId: '', tongHop: false, soDong: result.soDong }
             : undefined;

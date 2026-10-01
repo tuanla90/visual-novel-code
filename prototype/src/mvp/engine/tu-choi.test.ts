@@ -14,8 +14,8 @@ const KB = KICH_BAN_MVP as unknown as KichBanMvp;
 const DUNG_KET_THAT = { reNhanh: reNhanhTheo(RE_NHANH_KET_THAT) };
 
 describe('nhảy tới (MVP)', () => {
-  it('có đúng năm điểm nhảy (bốn của chương 1, một của Vụ 2), mỗi điểm có nhãn và mô tả', () => {
-    expect(DIEM_NHAY_MVP.map((d) => d.id)).toEqual(['lop', 'ten-h', 'nhat-ky-in', 'hop-sua-or', 'vu2-buoi']);
+  it('có đúng bảy điểm nhảy (bốn của chương 1, hai của Vụ 2, một của việc phụ), mỗi điểm có nhãn và mô tả', () => {
+    expect(DIEM_NHAY_MVP.map((d) => d.id)).toEqual(['lop', 'ten-h', 'nhat-ky-in', 'hop-sua-or', 'vu2-tin-don', 'vu2-tin-goc', 'vu2-buoi']);
     for (const d of DIEM_NHAY_MVP) {
       expect(d.nhan.length).toBeGreaterThan(0);
       expect(d.moTa.length).toBeGreaterThan(0);

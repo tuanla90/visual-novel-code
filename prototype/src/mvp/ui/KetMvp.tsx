@@ -11,12 +11,34 @@ export interface KetMvpProps {
   /** Còn vụ chơi tiếp: hiện nút sang vụ đó (nút chính). */
   vuKe?: { so: number; ten: string } | null;
   onSangVuSau?: () => void;
+  /** Nhiệm vụ phụ nhận được ở màn kết này: mỗi việc một nút "<người giao> nhờ: <tên việc>". */
+  phu?: { id: string; ten: string; nguoiGiao: string }[];
+  onLamPhu?: (id: string) => void;
+  /** Màn kết của một nhiệm vụ phụ: chữ lấy từ lich.md, chỉ có nút quay lại. */
+  phuXong?: { ten: string; tieuDeKet: string; loiKet: string } | null;
+  onXongPhu?: () => void;
   onChoiLai: () => void;
   /** Bỏ trống = không có màn tiêu đề (bản chơi thử chỉ MVP). */
   onVeTieuDe?: () => void;
 }
 
-export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, onChoiLai, onVeTieuDe }: KetMvpProps) {
+export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, onLamPhu, phuXong, onXongPhu, onChoiLai, onVeTieuDe }: KetMvpProps) {
+  if (phuXong) {
+    return (
+      <section className="endscreen mvp-ket" aria-labelledby="mvp-ket-tieude">
+        <p className="mvp-chal__kicker">Xong việc — {phuXong.ten}</p>
+        <h2 id="mvp-ket-tieude" className="endscreen__title">
+          {phuXong.tieuDeKet}
+        </h2>
+        <p className="endscreen__lead">{phuXong.loiKet}</p>
+        <div className="endscreen__actions">
+          <button type="button" className="btn btn--primary" onClick={onXongPhu} autoFocus>
+            Quay lại
+          </button>
+        </div>
+      </section>
+    );
+  }
   const cg = vu ? undefined : anhTheoTen(ketQua === 'that' ? 'cg-ket-that' : 'cg-ket-thuong');
   const coVuKe = !!vuKe && !!onSangVuSau;
   return (
@@ -39,6 +61,11 @@ export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, onChoiLai, onVeTieuDe }:
             Sang Vụ {vuKe.so} — {vuKe.ten}
           </button>
         ) : null}
+        {(phu ?? []).map((p) => (
+          <button key={p.id} type="button" className="btn" onClick={() => onLamPhu?.(p.id)}>
+            {p.nguoiGiao} nhờ: {p.ten}
+          </button>
+        ))}
         <button type="button" className={coVuKe ? 'btn' : 'btn btn--primary'} onClick={onChoiLai} autoFocus={!coVuKe}>
           Chơi lại từ đầu
         </button>

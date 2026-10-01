@@ -143,7 +143,7 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
   if (soDongChu !== undefined) {
     if (!/^\d+$/.test(soDongChu)) throw new Error(`${noi}: thẻ ${t.id}, "Số dòng kỳ vọng" phải là số nguyên: "${soDongChu}"`);
     soDongKyVong = Number(soDongChu);
-    soDongKhai.push({ sql: sqlChuan, soDong: soDongKyVong, noi: `${noi} thẻ ${t.id}, SQL chuẩn`, ...(t.evidence ? { resultId: t.evidence.id } : {}), ...(t.fields['Kiểu'] === 'tổng hợp' && t.fields['Nguồn'] ? { sourceResultId: t.fields['Nguồn'] } : {}), ...(t.fields['Kiểu'] === 'tổng hợp' && t.fields['Nhóm theo'] ? { sourceGroupColumn: t.fields['Nhóm theo'] } : {}) });
+    soDongKhai.push({ sql: sqlChuan, soDong: soDongKyVong, noi: `${noi} thẻ ${t.id}, SQL chuẩn`, ...(t.evidence ? { resultId: t.evidence.id } : {}), ...((t.fields['Kiểu'] === 'tổng hợp' || t.fields['Kiểu'] === 'lọc tiếp') && t.fields['Nguồn'] ? { sourceResultId: t.fields['Nguồn'] } : {}), ...(t.fields['Kiểu'] === 'tổng hợp' && t.fields['Nhóm theo'] ? { sourceGroupColumn: t.fields['Nhóm theo'] } : {}) });
   }
   return {
     id: t.id,
@@ -154,6 +154,8 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     soDongKyVong,
     sqlChuan,
     ...(t.fields['Kiểu'] === 'tổng hợp' ? { kieuTrinhDung: 'tong-hop', nguon: t.fields['Nguồn'] ?? null, nhomTheo: t.fields['Nhóm theo'] || null } : {}),
+    // "Kiểu: lọc tiếp": màn tra v7 lấy phiếu đã ghim làm nguồn (câu hiện thành WITH … AS).
+    ...(t.fields['Kiểu'] === 'lọc tiếp' ? { kieuTrinhDung: 'loc-tiep', nguon: t.fields['Nguồn'] ?? null } : {}),
     truyVanNapSan: t.sql['Truy vấn nạp sẵn'] ?? null,
     phanUng: docPhanUng(t.fields).phanUng.map((p) => ({ khi: p.khi, loi: p.loi.map(loi) })),
     vatChung: t.evidence
@@ -232,7 +234,10 @@ export function chuyenMvp(mvp: RawMvp, luat: KetQuaLuat): DuLieuMvp {
       ngayHop: lich.ngayHop ? { chuoi: lich.ngayHop.chuoi } : null,
       ket: lich.ket ? { that: lich.ket.that, thuong: lich.ket.thuong } : null,
       // Chỉ ghi khi có vụ sau: bộ một vụ sinh ra y như trước.
-      ...(lich.vuSau.length > 0 ? { vuSau: lich.vuSau.map((v) => ({ id: v.id, ten: v.ten, chuoi: v.chuoi, ngay: v.ngay, tieuDeKet: v.tieuDeKet, loiKet: v.loiKet })) } : {}),
+      ...(lich.vuSau.some((v) => !v.phu) ? { vuSau: lich.vuSau.filter((v) => !v.phu).map((v) => ({ id: v.id, ten: v.ten, chuoi: v.chuoi, ngay: v.ngay, tieuDeKet: v.tieuDeKet, loiKet: v.loiKet })) } : {}),
+      ...(lich.vuSau.some((v) => v.phu)
+        ? { nhiemVuPhu: lich.vuSau.filter((v) => v.phu).map((v) => ({ id: v.id, ten: v.ten, chuoi: v.chuoi, nguoiGiao: v.nguoiGiao ?? '', moSau: v.moSau ?? '', ngay: v.ngay, tieuDeKet: v.tieuDeKet, loiKet: v.loiKet })) }
+        : {}),
     },
     chuoi: chuoiDs,
     thuThach,

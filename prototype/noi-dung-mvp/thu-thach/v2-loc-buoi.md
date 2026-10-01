@@ -1,4 +1,4 @@
-<!-- Thẻ thử thách Vụ 2 — laptop phòng CLB (kich-ban/10-vu-2.md, v2-tra). Bảng nhat_ky_su_dung: mã phòng gõ tay, lệch hoa/thường và dính dấu cách ở đuôi. Các lần chạy "sai có ích": so y nguyên + đã ký → 1 dòng; chỉ gọt dấu cách hoặc chỉ chữ thường → 2 dòng; gọt cả hai mà quên trạng thái → 5 dòng (lẫn buổi dự kiến); đủ 4 dòng mà chưa xếp theo ngày → "sai thứ tự". SQL chuẩn có LOWER/TRIM và ORDER BY nên màn tra hiện khối gọt cột và hàng "xếp theo"; máy chấm cả thứ tự dòng. Lời "Khi …": loi/tt-v2-loc-buoi.md. -->
+<!-- Thẻ thử thách của nhiệm vụ phụ "sổ sử dụng phòng" — laptop phòng CLB (kich-ban/20-phu-so-phong.md, v2-tra). Bảng nhat_ky_su_dung: mã phòng gõ tay, lệch hoa/thường và dính dấu cách ở đuôi. Các lần chạy "sai có ích": so y nguyên + đã ký → 1 dòng; chỉ gọt dấu cách hoặc chỉ chữ thường → 2 dòng; gọt cả hai mà quên trạng thái → 5 dòng (lẫn buổi dự kiến); đủ 4 dòng mà chưa xếp theo ngày → "sai thứ tự". SQL chuẩn có LOWER/TRIM và ORDER BY nên màn tra hiện khối gọt cột và hàng "xếp theo"; máy chấm cả thứ tự dòng. Lời "Khi …": loi/tt-v2-loc-buoi.md. -->
 
 ### v2-loc-buoi — Những buổi nào của phòng CLB đã ký? {challenge: v2-loc-buoi}
 

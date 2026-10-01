@@ -1,15 +1,15 @@
-# Lời · kich-ban/10-vu-2.md
+# Lời · kich-ban/20-phu-so-phong.md
 
-<!-- Lời Vụ 2 — bản đầu viết theo "Lời thoại chính" của docs/mvp/mua-1-kich-ban-ready-dev.md mục 5, giọng sinh viên miền Bắc như chương 1 (Duy, Tùng, Hà Vy: tớ/cậu; Minh Anh: chị/em; Quân: tôi/các bạn). Chờ phiên truyện rà. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/10-vu-2.md. Không nhắc Hoài / Hiếu như nghi phạm; không nêu tên người soạn thư. Nhân vật tả kết quả, không nói cách bấm. -->
+<!-- Lời nhiệm vụ phụ "sổ sử dụng phòng" (trước 01/10 tối là "Vụ 2") — bản đầu viết theo "Lời thoại chính" của docs/mvp/mua-1-kich-ban-ready-dev.md mục 5, giọng sinh viên miền Bắc như chương 1 (Duy, Tùng, Hà Vy: tớ/cậu; Minh Anh: chị/em; Quân: tôi/các bạn). Chờ phiên truyện rà. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/20-phu-so-phong.md. Không nhắc Hoài / Hiếu như nghi phạm; không nêu tên người soạn thư. Nhân vật tả kết quả, không nói cách bấm. -->
 
 ## v2-mo.1
-- [THẺ CHỮ] **narrator**: Vụ 2 — Thứ Sáu, 25 tháng 10
+- [THẺ CHỮ] **narrator**: Việc ở CLB — Thứ Sáu, 25 tháng 10
 - **narrator**: Hơn một tháng sau buổi họp rà soát. Phòng CLB vẫn sáng đèn mỗi chiều thứ Tư.
 - **minh-anh** (neutral): Thầy Quang dặn rồi: muốn giữ phòng thì tháng nào cũng nộp báo cáo hoạt động. Tháng 10 là kỳ đầu tiên.
 - **minh-anh** (serious): Mà chị không muốn chỉ nộp cho xong. Cuối kỳ trường rà soát lại, chị muốn mình có một bộ hồ sơ ai mở ra cũng tự kiểm được.
 
 ## v2-mo-that.1
-- [THẺ CHỮ] **narrator**: Vụ 2 — Thứ Sáu, 25 tháng 10
+- [THẺ CHỮ] **narrator**: Việc ở CLB — Thứ Sáu, 25 tháng 10
 - **narrator**: Hơn một tháng sau buổi họp rà soát. Phòng CLB vẫn sáng đèn mỗi chiều thứ Tư.
 - **minh-anh** (neutral): Chuyện lá thư thì thầy Quang vẫn đang cho hỏi lại. Chưa có gì mới.
 - **minh-anh** (happy): Thầy không bắt CLB nộp báo cáo tháng. Nhưng cuối kỳ trường vẫn rà soát phòng, và chị muốn lúc ấy mình có một bộ hồ sơ ai mở ra cũng tự kiểm được.

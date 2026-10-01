@@ -1536,3 +1536,21 @@ button.v7-o:active:not(:disabled) {
   opacity: 0.85;
   letter-spacing: 0.08em;
 }
+
+/* ---------- Nguồn là phiếu đã ghim (thẻ "Kiểu: lọc tiếp"): ô nguồn màu phiếu, tên tạm trong câu SQL ---------- */
+.v7-o--phieu {
+  background: #fdfaf2;
+  color: #2a2320;
+  font-family: var(--font-ui);
+  max-width: 13em;
+  height: auto;
+  min-height: 2.7em;
+  padding-block: 0.3em;
+  text-align: left;
+  line-height: 1.15;
+  box-shadow: 0 0.2em 0 rgba(0, 0, 0, 0.45);
+}
+.v7-sql__phieu {
+  color: #f6d98a;
+  font-style: italic;
+}

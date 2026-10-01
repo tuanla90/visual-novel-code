@@ -1,4 +1,4 @@
-## Thẻ hồ sơ Vụ 2 — Bốn mục trong sổ đã ký
+## Thẻ hồ sơ nhiệm vụ phụ — Bốn mục trong sổ đã ký
 
 <!-- Bản đầu theo docs/mvp/mua-1-kich-ban-ready-dev.md mục 5. Phiếu kết quả ev-v2-activities khai ở thu-thach/v2-loc-buoi.md. Hai giấy nhớ có "Giá trị cho trình dựng" là giá trị kéo vào màn tra. Sang Vụ 2, thẻ Vụ 1 được gỡ khỏi bảng (vẫn trong hồ sơ) nên bảng chỉ còn thẻ của vụ này. -->
 

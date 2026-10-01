@@ -41,6 +41,7 @@ function viTri(kb: KichBanMvp, s: TrangThaiMvp): string {
     return `Ngày ${s.ngay} · ${tenKhungHienTai(kb, s)}`;
   if (s.giaiDoan === "hop") return "Buổi họp rà soát";
   if (s.giaiDoan === "vu-sau") return `Vụ sau · ${tenKhungHienTai(kb, s)}`;
+  if (s.giaiDoan === "phu") return `Việc phụ · ${tenKhungHienTai(kb, s)}`;
   return "Kết thúc";
 }
 

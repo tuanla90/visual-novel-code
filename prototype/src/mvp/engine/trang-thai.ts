@@ -41,7 +41,7 @@ export interface KhamPhaMvp {
   daXem: string[];
 }
 
-export type GiaiDoanMvp = 'mo-dau' | 'ngay' | 'hop' | 'het' | 'vu-sau';
+export type GiaiDoanMvp = 'mo-dau' | 'ngay' | 'hop' | 'het' | 'vu-sau' | 'phu';
 
 /** Câu hỏi / chọn dòng / chép sổ đang trong pha phản hồi. */
 export interface HoiDapMvp {
@@ -128,6 +128,11 @@ export interface TrangThaiMvp {
   giaiDoan: GiaiDoanMvp;
   /** Vụ sau đang chơi (`lich.vuSau[].id`, giai đoạn `vu-sau`). Không có / `null` = vụ gốc. Ô lưu cũ: không có trường. */
   vu?: string | null;
+  /**
+   * Nhiệm vụ phụ đang làm (giai đoạn `phu`): mã, và chỗ quay về khi xong — con trỏ nút `[KẾT THÚC]` của vụ chính cùng giai
+   * đoạn lúc đó. Không có / `null` = không làm nhiệm vụ phụ.
+   */
+  phu?: { id: string; veLai: ConTroMvp; giaiDoan: GiaiDoanMvp } | null;
   /** Ngày điều tra hiện tại (1–5); 0 khi chưa vào ngày. */
   ngay: number;
   /** Chỉ số khung giờ đang đứng (0 = Sáng … 2 = Chiều); bằng số khung của lịch (3) = đã hết khung → buổi tối. */
