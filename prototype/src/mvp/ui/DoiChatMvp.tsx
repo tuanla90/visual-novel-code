@@ -32,11 +32,11 @@ export interface DoiChatMvpProps {
 }
 
 const TEN_MUC: Record<Muc, string> = { khong: 'Chưa có', 'goi-y': 'Gợi ý', 'ho-tro': 'Hỗ trợ', du: 'Đủ căn cứ' };
-const NHAN_LOAI: Record<TheBang['loai'], string> = { tin: 'Giấy nhớ', phieu: 'Phiếu kết quả', vat: 'Vật chứng', 'tai-lieu': 'Tài liệu', hoi: 'Câu hỏi' };
+const NHAN_LOAI: Record<TheBang['loai'], string> = { note: 'Query note', tin: 'Giấy nhớ', phieu: 'Phiếu kết quả', vat: 'Vật chứng', 'tai-lieu': 'Tài liệu', hoi: 'Câu hỏi' };
 
 const boNgoac = (t: string): string => t.replace(/^\[|\]$/g, '');
 /** Thứ tự trên khay: phiếu kết quả và vật chứng (hay là thứ đáp được) lên đầu, rồi giấy nhớ, giấy tờ cuối. */
-const THU_TU: Record<TheBang['loai'], number> = { phieu: 0, vat: 1, tin: 2, 'tai-lieu': 3, hoi: 9 };
+const THU_TU: Record<TheBang['loai'], number> = { note: 9, phieu: 0, vat: 1, tin: 2, 'tai-lieu': 3, hoi: 9 };
 
 /** Mức thẻ đã trình (theo kịch bản); thẻ không khai = không liên quan. */
 function mucCuaThe(nut: NutDoiChat, id: string): Muc | 'khac' {
@@ -48,7 +48,7 @@ export function DoiChatMvp({ kb, s, nut, daTrinh, muc, dienTen, tenNguoiNoi, onT
   const the = useMemo(
     () =>
       dungBang(kb, s)
-        .the.filter((t) => t.loai !== 'hoi')
+        .the.filter((t) => t.loai !== 'hoi' && t.loai !== 'note')
         .sort((a, b) => THU_TU[a.loai] - THU_TU[b.loai]),
     [kb, s],
   );

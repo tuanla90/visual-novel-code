@@ -87,6 +87,31 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     if (truoc) err(c.viTri, `bằng chứng "${ev}" khai ở cả thẻ ${c.id} lẫn hồ sơ ${truoc.tep}:${truoc.dong} — chỉ một chỗ`);
     else vatPham.set(ev, c.viTri);
   }
+  // V2 aggregate cards may use only a result card from an earlier challenge.
+  const evidenceOwner = new Map(mvp.challenges.flatMap((c, i) => c.evidence ? [[c.evidence.id, { c, i }] as const] : []));
+  for (const [i, c] of mvp.challenges.entries()) {
+    const kind = c.fields['Kiểu'];
+    const sourceId = c.fields['Nguồn'];
+    const groupBy = c.fields['Nhóm theo'];
+    if (kind && kind !== 'tổng hợp') err(c.viTri, `thẻ ${c.id}: "Kiểu" chỉ hỗ trợ "tổng hợp"`);
+    if (kind !== 'tổng hợp') {
+      if (sourceId !== undefined || groupBy !== undefined) err(c.viTri, `thẻ ${c.id}: "Nguồn" và "Nhóm theo" chỉ dùng với "Kiểu: tổng hợp"`);
+      continue;
+    }
+    if (!sourceId) { err(c.viTri, `thẻ ${c.id}: "Kiểu: tổng hợp" cần "Nguồn: <mã-vật-chứng-của-phiếu-trước>"`); continue; }
+    const owner = evidenceOwner.get(sourceId);
+    if (!owner) err(c.viTri, `thẻ ${c.id}: nguồn "${sourceId}" không phải vật chứng của thẻ thử thách`);
+    else if (owner.i >= i) err(c.viTri, `thẻ ${c.id}: nguồn "${sourceId}" phải thuộc thẻ thử thách đứng trước`);
+    else if (!owner.c.sql['SQL chuẩn']) err(c.viTri, `thẻ ${c.id}: thẻ nguồn "${owner.c.id}" thiếu "SQL chuẩn"`);
+    else if (!/^\d+$/.test(owner.c.fields['Số dòng kỳ vọng'] ?? '')) err(c.viTri, `thẻ ${c.id}: thẻ nguồn "${owner.c.id}" cần "Số dòng kỳ vọng" để máy kiểm chạy phiếu trước`);
+    if (groupBy !== undefined && !/^[a-z_][a-z0-9_]*$/.test(groupBy)) err(c.viTri, `thẻ ${c.id}: "Nhóm theo" phải là một tên cột SQL đơn giản`);
+    if (!c.sql['SQL chuẩn']) err(c.viTri, `thẻ ${c.id}: kiểu tổng hợp cần "SQL chuẩn"`);
+    const sql = c.sql['SQL chuẩn'] ?? '';
+    const placeholders = [...sql.matchAll(/\bFROM\s+@([a-z0-9-]+)/gi)].map((m) => m[1]);
+    if (placeholders.length !== 1 || placeholders[0] !== sourceId) err(c.viTri, `thẻ ${c.id}: "SQL chuẩn" phải có đúng một FROM @${sourceId}`);
+    if (!/\bCOUNT\s*\(\s*\*\s*\)/i.test(sql)) err(c.viTri, `thẻ ${c.id}: SQL tổng hợp phải dùng COUNT(*)`);
+    if (groupBy && !new RegExp(`\\bGROUP\\s+BY\\s+${groupBy}\\s*;?\\s*$`, 'i').test(sql.trim())) err(c.viTri, `thẻ ${c.id}: SQL tổng hợp phải GROUP BY đúng một cột "${groupBy}"`);
+  }
   // Mức đạt của mỗi [ĐỐI CHẤT] là hai mã cờ dùng được trong [ĐIỀU KIỆN] / [KHI]: <mã>-du, <mã>-ho-tro.
   for (const c of mvp.chuoi) {
     for (const it of c.items) {

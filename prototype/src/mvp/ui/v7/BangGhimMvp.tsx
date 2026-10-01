@@ -22,7 +22,7 @@ export interface BangGhimMvpProps {
   s: TrangThaiMvp;
   dienTen: (t: string) => string;
   /** Phiếu kết quả vừa tra xong, chưa vào hồ sơ: vẽ thêm lên bảng kèm sợi chỉ từ các thẻ đã dùng. */
-  them?: { id: string; dung: string[] };
+  them?: { id: string; dung: string[]; phieu?: import('../../engine/trang-thai').PhieuTruyVanMvp; ghiChu?: import('../../engine/trang-thai').GhiChuTruyVanMvp[] };
   /** Thẻ vừa ghim: rơi xuống, sợi chỉ tới nó tự vẽ. */
   moi?: string | null;
   /** Người chơi kéo một thẻ tới chỗ khác. */
@@ -162,7 +162,7 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
               return (
                 <article
                   key={t.id}
-                  className={`the the--${t.loai} the--ghim-${t.mau}${t.khongDuLieu && t.loai === 'tin' ? ' is-khong-du-lieu' : ''}${moi === t.id ? ' is-moi' : ''}${keo?.id === t.id ? ' is-keo' : ''}`}
+                  className={`the the--${t.loai} the--ghim-${t.mau}${t.phu === 'TỔNG HỢP' ? ' the--tong-hop' : ''}${t.khongDuLieu && t.loai === 'tin' ? ' is-khong-du-lieu' : ''}${moi === t.id ? ' is-moi' : ''}${keo?.id === t.id ? ' is-keo' : ''}`}
                   style={style}
                   tabIndex={0}
                   aria-label={`${NHAN_LOAI[t.loai]}: ${dienTen(boNgoac(t.nhan))}${chuaXemThe ? ' (mới)' : ''}`}
@@ -197,6 +197,13 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                           ))}
                         </span>
                       ) : null}
+                    </>
+                  ) : t.loai === 'note' ? (
+                    <>
+                      <span className="the__loai">Giấy nhớ truy vấn</span>
+                      <h3 className="the__nhan">{dienTen(t.nhan)}</h3>
+                      {t.phu ? <span className="the__nguon">{dienTen(t.phu)}</span> : null}
+                      <span className="the__gia">{t.giaTri.map((g) => <span key={g}>{g}</span>)}</span>
                     </>
                   ) : t.loai === 'vat' || t.loai === 'tai-lieu' ? (
                     <>
@@ -289,6 +296,7 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
 const NHAN_LOAI: Record<TheBang['loai'], string> = {
   tin: 'Mẩu tin',
   phieu: 'Phiếu kết quả',
+  note: 'Giấy nhớ truy vấn',
   vat: 'Vật chứng',
   'tai-lieu': 'Tài liệu',
   hoi: 'Câu hỏi đang mở',

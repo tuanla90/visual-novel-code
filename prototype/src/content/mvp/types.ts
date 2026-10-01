@@ -215,6 +215,12 @@ export interface TheThuThachMvp {
   /** Bằng chứng lưu vào hồ sơ khi xong; `null` = bài giữa chuỗi phòng máy, không lưu gì (QĐ-092). */
   vatChung: { id: string; title: string; description: string; giaTri: string[] } | null;
   ghiChu: string[];
+  /** Trình dựng tổng hợp chỉ bật rõ ràng trên nội dung Vụ 2; thiếu = trình dựng WHERE chương 1. */
+  kieuTrinhDung?: 'tong-hop';
+  /** ID thẻ kết quả có thể dùng làm nguồn ban đầu cho bài tổng hợp. */
+  nguon?: string | null;
+  /** Cột nhóm được gợi ý/giới hạn bởi nội dung; null cho phép người chơi chọn. */
+  nhomTheo?: string | null;
 }
 
 /** `cot`: chỉ khớp khi các điều kiện người chơi đã điền dùng đúng tập cột này ("Khi chạy ra 0 dòng với a, b"). */
@@ -248,6 +254,12 @@ export interface SoDongKhaiMvp {
   sql: string;
   soDong: number;
   noi: string;
+  /** Checker-only ID of the evidence card produced by this challenge. */
+  resultId?: string;
+  /** Checker-only prior result card consumed as FROM source. */
+  sourceResultId?: string;
+  /** Checker-only GROUP BY key expected from that source. */
+  sourceGroupColumn?: string;
 }
 
 export interface KichBanMvp {

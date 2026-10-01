@@ -117,7 +117,7 @@ export type HanhDongMvp =
   /** Chọn một ô ở `[LỌC THỬ]` (giá trị cột phải chọn). */
   | { type: 'chon-o'; giaTri: string }
   /** Màn thử thách / sửa truy vấn báo đã xong (vật chứng của thẻ vào hồ sơ). */
-  | { type: 'xong-thu-thach'; thuThach: string; /** Mã các thẻ đã kéo vào câu đúng — sợi chỉ trên bảng điều tra. */ dung?: string[] }
+  | { type: 'xong-thu-thach'; thuThach: string; /** Mã các thẻ đã kéo vào câu đúng — sợi chỉ trên bảng điều tra. */ dung?: string[]; phieu?: import('./trang-thai').PhieuTruyVanMvp; ghiChu?: import('./trang-thai').GhiChuTruyVanMvp[] }
   /** Người chơi kéo một thẻ trên bảng điều tra tới chỗ khác (không đổi con trỏ). */
   | { type: 'doi-cho-the'; the: string; x: number; y: number }
   /** Đổi màu đầu ghim của một thẻ trên bảng (không đổi con trỏ). */
@@ -817,6 +817,12 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
     case 'xong-thu-thach': {
       if ((kn.kind !== 'challenge' && kn.kind !== 'fix-query') || kn.thuThach.id !== hd.thuThach) return s;
       moi = kn.thuThach.vatChung ? luuBangChung(s, kn.thuThach.vatChung.id) : s;
+      if (hd.phieu || (hd.ghiChu?.length ?? 0) > 0) {
+        const bang = moi.bang ?? { day: {}, viTri: {} };
+        const phieuTruyVan = hd.phieu ? { ...(bang.phieuTruyVan ?? {}), [hd.phieu.id]: hd.phieu } : bang.phieuTruyVan;
+        const ghiChuTruyVan = [...(bang.ghiChuTruyVan ?? []), ...(hd.ghiChu ?? [])];
+        moi = { ...moi, bang: { ...bang, ...(phieuTruyVan ? { phieuTruyVan } : {}), ghiChuTruyVan } };
+      }
       moi = { ...moi, thuThachXong: them(moi.thuThachXong, kn.thuThach.id) };
       if (kn.thuThach.vatChung && hd.dung && hd.dung.length > 0) {
         const bang = moi.bang ?? { day: {}, viTri: {} };

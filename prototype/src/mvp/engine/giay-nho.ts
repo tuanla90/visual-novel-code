@@ -3,7 +3,7 @@
  * (thẻ hồ sơ) hoặc dòng con cùng tên của vật chứng thẻ thử thách. "Báo chí · K24" → hai giá trị.
  */
 import type { KichBanMvp } from '../../content/mvp/types';
-import type { HoSoMvp } from './trang-thai';
+import type { GhiChuTruyVanMvp, HoSoMvp } from './trang-thai';
 
 export interface GiaTriHoSo {
   khoa: string;
@@ -16,7 +16,7 @@ export interface GiaTriHoSo {
   nhieu?: string[];
 }
 
-export function giaTriTuHoSo(kb: KichBanMvp, hoSo: HoSoMvp): GiaTriHoSo[] {
+export function giaTriTuHoSo(kb: KichBanMvp, hoSo: HoSoMvp, ghiChu: readonly GhiChuTruyVanMvp[] = []): GiaTriHoSo[] {
   const ra: GiaTriHoSo[] = [];
   for (const id of [...hoSo.manhMoi, ...hoSo.bangChung]) {
     const the = kb.hoSo[id];
@@ -30,6 +30,12 @@ export function giaTriTuHoSo(kb: KichBanMvp, hoSo: HoSoMvp): GiaTriHoSo[] {
     // Phiếu kết quả của một lần tra (vật chứng thẻ thử thách) là MỘT giấy: các giá trị cùng loại, đi cùng nhau.
     if (tuThe.length === 0 && ds.length > 1) ra.push({ khoa: `${id}#0`, giaTri: ds.join(', '), nguon, the: id, nhieu: ds });
     else ds.forEach((g, i) => ra.push({ khoa: `${id}#${i}`, giaTri: g, nguon, the: id }));
+  }
+  // Notes tự trích từ kết quả nhỏ dùng lại đúng khay giấy nhớ, nhưng không nhập vào hồ sơ/bằng chứng.
+  for (const note of ghiChu) {
+    if (note.giaTri.length === 0) continue;
+    const value = { khoa: `${note.id}#0`, giaTri: note.giaTri.join(', '), nguon: `${note.nhan} · ${note.cot}`, the: note.id };
+    ra.push(note.giaTri.length > 1 ? { ...value, nhieu: note.giaTri } : value);
   }
   return ra;
 }

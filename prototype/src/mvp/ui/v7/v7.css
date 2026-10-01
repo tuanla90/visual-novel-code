@@ -749,6 +749,10 @@ button.v7-o:active:not(:disabled) {
   stroke: #e08a00;
   stroke-dasharray: 0.012 0.022;
 }
+.bang__chi--nguon {
+  stroke: #246b91;
+  stroke-dasharray: 0.04 0.025;
+}
 .bang__chi--truy-van.is-moi {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
@@ -871,6 +875,21 @@ button.v7-o:active:not(:disabled) {
   color: #8a1c1c;
   text-decoration: line-through;
   text-decoration-thickness: 2px;
+}
+.the--phieu.the--tong-hop {
+  border-top-color: #7546a8;
+}
+.the--note {
+  width: 176px;
+  min-height: 90px;
+  padding: 14px 12px 10px;
+  background: #fbe38e;
+  color: #2a2320;
+  box-shadow: 2px 5px 9px rgba(0, 0, 0, 0.35);
+}
+.the--note .the__nhan {
+  margin: 2px 0;
+  font: 700 14px/1.2 var(--font-ui);
 }
 /* Vật chứng: ảnh chụp kiểu polaroid. Tài liệu: tờ giấy nhỏ. */
 .the--vat,

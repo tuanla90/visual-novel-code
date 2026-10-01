@@ -98,6 +98,7 @@ export type RawDiagnosticResponse = { line: RawLine } | { useStandardHint: strin
 
 export interface RawChallengeCard {
   id: string;
+  /** V2 opt-in authoring grammar: Kiểu=tổng hợp, Nguồn=<prior evidence ID>, optional Nhóm theo=<column>. */
   /** Dòng cấp 1 dạng `- Nhãn: giá trị` (Tiêu đề, Đề bài hiển thị, Cột bắt buộc, …). */
   fields: Record<string, string>;
   /** Khối ```sql, theo nhãn của dòng `- Nhãn:` bỏ trống ngay trên (`SQL chuẩn`, `Truy vấn nạp sẵn`). */
@@ -371,12 +372,12 @@ export function docNoiDung(tepList: readonly TepNoiDung[], tuyChon: TuyChonDoc =
           seq = { id: m[1] ?? '', part, scene: m[3] ?? '', title: m[2] ?? '', items: [], itemDong: [], viTri: viTri() };
           out.sequences.push(seq);
         } else if (tep.loai === 'thu-thach') {
-          const cm = /^### (\S+) — .+ \{challenge: ([a-z0-9-]+)\}$/.exec(line);
+          const cm = /^### ([a-z0-9-]+) [-\u2014] (.+) \{challenge: ([a-z0-9-]+)\}$/.exec(line);
           if (!cm) throw new Error(`tiêu đề thẻ thử thách sai quy ước "${line}"`);
-          if (cm[1] !== cm[2]) throw new Error(`mã đầu tiêu đề "${cm[1] ?? ''}" khác {challenge: ${cm[2] ?? ''}}`);
+          if (cm[1] !== cm[3]) throw new Error(`mã đầu tiêu đề "${cm[1] ?? ''}" khác {challenge: ${cm[3] ?? ''}}`);
           sub = 'card';
           card = {
-            id: cm[2] ?? '',
+            id: cm[3] ?? '',
             fields: {},
             sql: {},
             napSan: null,
