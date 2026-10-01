@@ -4928,7 +4928,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Năm. Mà tớ đặt hai. Bách là phó CLB, Thảo lo kỹ thuật, Khánh là trưởng CLB."
+          "text": "Năm. Mà tớ chỉ đặt hai: cảm biến dò line với bánh xe. Động cơ servo, mạch điều khiển, khung nhôm thì tớ không đặt. Bách là phó CLB, Thảo lo kỹ thuật, Khánh là trưởng CLB."
         },
         {
           "type": "line",
@@ -4959,6 +4959,12 @@ export const KICH_BAN_MVP = {
           "speaker": "ha-vy",
           "expression": "thinking",
           "text": "Vậy là hai bảng. Đơn thì ở sổ đặt hàng, máy thì ở bảng phiên. Chung nhau cái mã phiên."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Đơn cảm biến ghi PH-11. Bên bảng phiên mà cũng có một dòng PH-11 thì đấy là cái máy tạo ra đơn ấy, đúng không?"
         },
         {
           "type": "consequence",
@@ -5142,11 +5148,27 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Ba người có chìa phòng đó. Đừng vội."
+          "text": "Mà bảng phiên ghi máy văn phòng có năm phiên, nối xong chỉ ra bốn đơn. Một phiên sáng 02/10 không tạo đơn nào: có người mở phần mềm rồi thôi. Nối kiểu này thì phiên không có đơn không hiện ra."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Tờ giao chìa dán ngay cửa phòng ấy, ba tên: Khánh, Bách, Thảo. Tớ chụp lại rồi."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Ba người có chìa. Đừng vội."
         },
         {
           "type": "consequence",
           "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-giao-chia"
+            },
             {
               "kind": "mo-manh-moi",
               "id": "clue-loi-nhan-linh-4"
@@ -5421,12 +5443,12 @@ export const KICH_BAN_MVP = {
                 {
                   "speaker": "minh-anh",
                   "expression": "neutral",
-                  "text": "Thưa thầy, ba đơn linh kiện ghi đã duyệt, trên đơn tổng hai triệu tư, nhưng kiểm kê xưởng không có một cái nào. Đơn ghi đã chi mà hàng không về, nên bọn em cần xem tiền ấy có thật sự xuất khỏi quỹ nào không, ai duyệt."
+                  "text": "Thưa thầy, ba đơn linh kiện ghi đã duyệt, trên đơn tổng hai triệu tư, nhưng kiểm kê xưởng không có một cái nào. Đơn đã duyệt mà hàng không có, nên bọn em cần xác minh tiền ấy có xuất khỏi quỹ nào không, ai duyệt."
                 },
                 {
                   "speaker": "thay-quang",
                   "expression": "neutral",
-                  "text": "Đơn ghi chi mà không có hàng. Căn cứ ấy đủ để mở sổ quỹ. Thầy cho xuất, các em chỉ được xem các khoản liên quan ba đơn này và quỹ CLB Thám Tử."
+                  "text": "Đơn đã duyệt mà không có hàng. Căn cứ ấy đủ để mở sổ quỹ. Thầy cho xuất, các em chỉ được xem các khoản liên quan ba đơn này và quỹ CLB Thám Tử."
                 }
               ]
             },
@@ -5698,17 +5720,17 @@ export const KICH_BAN_MVP = {
                 {
                   "speaker": "minh-anh",
                   "expression": "neutral",
-                  "text": "Ba khoản ấy không ghi vào quỹ Robotics. Chúng ghi vào quỹ CLB Thám Tử, mỗi khoản dưới một triệu nên không cần em ký, cộng lại hai triệu tư. Và ba đơn linh kiện ấy chưa có cái nào về xưởng."
+                  "text": "Sổ chi ghi ba khoản ấy vào quỹ CLB Thám Tử, không phải quỹ Robotics. Mỗi khoản dưới một triệu nên không cần em ký, cộng lại hai triệu tư, người duyệt là Khánh. Và ba đơn gắn với ba khoản ấy không có hàng trong kho."
                 },
                 {
                   "speaker": "thay-quang",
                   "expression": "neutral",
-                  "text": "Chi quỹ của CLB khác, cho hàng không về. Em Khánh, ba khoản đó có chi cho đội robot không?"
+                  "text": "Sổ ghi ba khoản vào quỹ CLB Thám Tử, em duyệt. Ba đơn liên quan không có hàng. Em Khánh, em giải thích mối liên hệ này thế nào?"
                 },
                 {
                   "speaker": "khanh",
                   "expression": "neutral",
-                  "text": "…Không ạ. Em dùng vào việc riêng. Em sẽ trả lại."
+                  "text": "…Ba khoản đó không chi cho đội ạ. Em dùng vào việc riêng. Em sẽ trả lại."
                 },
                 {
                   "speaker": "thay-quang",
@@ -5936,6 +5958,30 @@ export const KICH_BAN_MVP = {
           "truUyTin": false
         },
         {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Hồ sơ cuối kỳ xong. Mục nào cũng có phiếu, ai mở ra cũng tự kiểm được."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Từ một chữ H tới một sổ quỹ. Mỗi bước là một phiếu."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Và chị Linh để lại nhiều mẩu giấy hơn mình tưởng."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Dữ liệu chỉ ra ai cần hỏi. Người trả lời mới là người nói \"vì sao\". Mùa 1 khép lại ở chỗ chứng cứ dừng."
+        },
+        {
           "type": "jump-if",
           "dieuKien": {
             "kind": "va",
@@ -5961,40 +6007,27 @@ export const KICH_BAN_MVP = {
           "to": "v5-ngan-tu"
         },
         {
-          "type": "line",
-          "speaker": "minh-anh",
-          "expression": "neutral",
-          "text": "Hồ sơ cuối kỳ xong. Mục nào cũng có phiếu, ai mở ra cũng tự kiểm được."
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "smile",
-          "text": "Từ một chữ H tới một sổ quỹ. Mỗi bước là một phiếu."
-        },
-        {
-          "type": "line",
-          "speaker": "duy",
-          "expression": "neutral",
-          "text": "Và chị Linh để lại nhiều mẩu giấy hơn mình tưởng."
-        },
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "display": "card",
-          "text": "Dữ liệu chỉ ra ai cần hỏi. Người trả lời mới là người nói \"vì sao\". Mùa 1 khép lại ở chỗ chứng cứ dừng."
-        },
-        {
           "type": "end"
         }
       ]
     },
     {
       "id": "v5-ngan-tu",
-      "title": "Đủ bốn mẩu giấy: ngăn tủ khóa trong phòng CLB",
+      "title": "Cảnh sau kết (chỉ khi đủ bốn mẩu giấy): ngăn tủ khóa trong phòng CLB",
       "canh": "phong-clb",
       "mocSomNhat": 1000,
       "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Sau kết — tối hôm ấy, phòng CLB"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hồ sơ đã nộp. Mọi người sắp về thì Duy bày bốn mẩu giấy của chị Linh lên bàn."
+        },
         {
           "type": "line",
           "speaker": "duy",
@@ -7367,9 +7400,14 @@ export const KICH_BAN_MVP = {
           },
           "loi": [
             {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Tám dòng cho năm đơn? Đơn bánh xe ngày 02/10 hiện hai lần, một lần ở máy xưởng số 2, một lần ở máy văn phòng. Một đơn sao tạo ở hai máy được."
+            },
+            {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Tám dòng cho năm đơn. Có đơn kéo theo hai phiên: nối theo cột này thì mỗi đơn khớp mọi phiên cùng ngày, kể cả phiên của máy khác."
+              "text": "Nối theo cột này thì đơn nào cũng dính mọi phiên cùng ngày, kể cả phiên của máy khác."
             }
           ]
         },
@@ -9128,6 +9166,17 @@ export const KICH_BAN_MVP = {
         "Giá trị cho trình dựng": "MAY-VP-XUONG",
         "Nguồn": "Bảng phiên đăng nhập",
         "Nội dung": "Máy trong phòng văn phòng nhỏ của xưởng mang mã MAY-VP-XUONG. Phòng thường khóa, chìa ban chủ nhiệm giữ."
+      },
+      "quotes": {}
+    },
+    "clue-giao-chia": {
+      "id": "clue-giao-chia",
+      "loai": "clue",
+      "heading": "[Tờ giao chìa: Khánh, Bách, Thảo]",
+      "fields": {
+        "Tiêu đề": "Tờ giao chìa dán ở cửa phòng văn phòng xưởng",
+        "Nguồn": "Nam chụp lại tờ giấy dán ở cửa",
+        "Nội dung": "Tờ giao chìa phòng văn phòng xưởng Robotics ghi ba người giữ chìa: Khánh (trưởng CLB), Bách (phó CLB), Thảo (kỹ thuật). Tờ giấy nói ai có chìa, không nói ai mở cửa tối nào."
       },
       "quotes": {}
     },

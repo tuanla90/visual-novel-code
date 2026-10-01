@@ -31,7 +31,7 @@
 - [LỜI v4-may-vp.1]
 - [THỬ THÁCH c-may-vp]
 - [LỜI v4-may-vp.2]
-- [HẬU QUẢ] mở manh mối clue-loi-nhan-linh-4
+- [HẬU QUẢ] mở manh mối clue-giao-chia, mở manh mối clue-loi-nhan-linh-4
 - [LỜI v4-may-vp.3]
 - [ĐI TỚI v4-ket]
 

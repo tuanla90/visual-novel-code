@@ -39,6 +39,11 @@
 - Nguồn: Bảng phiên đăng nhập
 - Nội dung: Máy trong phòng văn phòng nhỏ của xưởng mang mã MAY-VP-XUONG. Phòng thường khóa, chìa ban chủ nhiệm giữ.
 
+### clue-giao-chia — [Tờ giao chìa: Khánh, Bách, Thảo]
+- Tiêu đề: Tờ giao chìa dán ở cửa phòng văn phòng xưởng
+- Nguồn: {{nv.nam}} chụp lại tờ giấy dán ở cửa
+- Nội dung: Tờ giao chìa phòng văn phòng xưởng Robotics ghi ba người giữ chìa: Khánh (trưởng CLB), Bách (phó CLB), Thảo (kỹ thuật). Tờ giấy nói ai có chìa, không nói ai mở cửa tối nào.
+
 ### clue-loi-nhan-linh-4 — [Lời nhắn chị Linh, mẩu thứ tư]
 - Tiêu đề: Mẩu giấy ở trang cuối sổ
 - Nguồn: Sổ tự học của chị Linh, phòng CLB

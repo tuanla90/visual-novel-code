@@ -82,12 +82,13 @@ Kết quả: 4 dòng
 > 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Nam đứng tên 5 trong 8 đơn** — Kết quả gom theo người đặt: Nam 5 đơn, Bách 1, Thảo 1, Khánh 1. Nam nói mình chỉ đặt hai.
 
 - **Bạn (người chơi)**: Nam năm đơn. Bách, Thảo, Khánh mỗi người một.
-- **Nam** (neutral): Năm. Mà tớ đặt hai. Bách là phó CLB, Thảo lo kỹ thuật, Khánh là trưởng CLB.
+- **Nam** (neutral): Năm. Mà tớ chỉ đặt hai: cảm biến dò line với bánh xe. Động cơ servo, mạch điều khiển, khung nhôm thì tớ không đặt. Bách là phó CLB, Thảo lo kỹ thuật, Khánh là trưởng CLB.
 - **Tùng** (chi-tay): Thế ba đơn kia ai gõ tên cậu vào?
 - **Duy** (neutral): Sổ không ghi ai gõ. Nhưng mỗi đơn có một cột mã phiên: phiên đăng nhập của máy lúc tạo đơn. Máy xưởng có bảng phiên đăng nhập không?
 - **Nam** (neutral): Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong.
 - **Minh Anh** (neutral): Khóa là phải. Bảng ấy mà do Nam xuất thì ai cũng bảo Nam sửa được. Chị nhờ thầy Quang xin Phòng Quản trị mạng xuất thẳng cho CLB mình.
 - **Hà Vy** (thinking): Vậy là hai bảng. Đơn thì ở sổ đặt hàng, máy thì ở bảng phiên. Chung nhau cái mã phiên.
+- **Tùng** (chi-tay): Đơn cảm biến ghi PH-11. Bên bảng phiên mà cũng có một dòng PH-11 thì đấy là cái máy tạo ra đơn ấy, đúng không?
 > 🗂️ Giấy nhớ mới: **[Mã phiên]** — nguồn: Duy nhìn thấy trong sổ đặt hàng
 > Cột ma_phien của sổ đặt hàng ghi phiên đăng nhập của máy lúc tạo đơn. Bảng phiên đăng nhập của phần mềm ghi mỗi phiên là máy nào, ngày nào, giờ nào. Hai bảng chung nhau cột ma_phien.
 > 🗂️ Giấy nhớ mới: **[Nam]** — nguồn: Sổ đặt hàng của xưởng
@@ -151,7 +152,7 @@ Kết quả: 5 dòng
 Lời nhân vật sau mỗi lần chạy:
 - Khi lỗi không có cột: **Duy** (neutral): Máy báo không có cột đó. Sổ đặt hàng không ghi máy; máy nằm ở bảng phiên đăng nhập. Phải nối hai bảng trước đã.
 - Khi ra 0 dòng: **Hà Vy** (thinking): Không dòng nào. Tên người đặt viết đúng như giấy nhớ: Nam.
-- Khi ra 8 dòng: **Hà Vy** (thinking): Tám dòng cho năm đơn. Có đơn kéo theo hai phiên: nối theo cột này thì mỗi đơn khớp mọi phiên cùng ngày, kể cả phiên của máy khác.
+- Khi ra 8 dòng: **Tùng** (gai-dau): Tám dòng cho năm đơn? Đơn bánh xe ngày 02/10 hiện hai lần, một lần ở máy xưởng số 2, một lần ở máy văn phòng. Một đơn sao tạo ở hai máy được. / **Hà Vy** (thinking): Nối theo cột này thì đơn nào cũng dính mọi phiên cùng ngày, kể cả phiên của máy khác.
 - Khi ra 13 dòng: **Tùng** (gai-dau): Mười ba dòng. Nối theo cột này thì ngày nào trùng là dính nhau hết.
 - Khi ra 10 dòng: **Tùng** (gai-dau): Mười dòng. Cả sổ. Mình chỉ cần đơn của Nam.
 - Khi đúng: **Nam** (neutral): Năm đơn, mỗi đơn đúng một máy, một giờ. Hai cái buổi chiều là tớ.
@@ -248,7 +249,11 @@ Lời nhân vật sau mỗi lần chạy:
 - **Bạn (người chơi)**: Bốn đơn. Ba đơn đứng tên Nam, ban đêm. Một đơn ốc vít đứng tên Khánh, 10 giờ 15 sáng.
 - **Nam** (neutral): Ốc vít thì đúng là Khánh đặt, hôm đó tớ thấy. Trưởng CLB ngồi máy văn phòng ban ngày là chuyện thường.
 - **Hà Vy** (thinking): Vậy máy đó ban ngày có người dùng hợp lệ. Ban đêm có ba đơn đứng tên Nam, mà một trong ba tạo lúc Nam ở thư viện. Mình mới biết máy, chưa biết tay.
-- **Duy** (neutral): Ba người có chìa phòng đó. Đừng vội.
+- **Duy** (neutral): Mà bảng phiên ghi máy văn phòng có năm phiên, nối xong chỉ ra bốn đơn. Một phiên sáng 02/10 không tạo đơn nào: có người mở phần mềm rồi thôi. Nối kiểu này thì phiên không có đơn không hiện ra.
+- **Nam** (neutral): Tờ giao chìa dán ngay cửa phòng ấy, ba tên: Khánh, Bách, Thảo. Tớ chụp lại rồi.
+- **Duy** (neutral): Ba người có chìa. Đừng vội.
+> 🗂️ Giấy nhớ mới: **[Tờ giao chìa: Khánh, Bách, Thảo]** — nguồn: Nam chụp lại tờ giấy dán ở cửa
+> Tờ giao chìa phòng văn phòng xưởng Robotics ghi ba người giữ chìa: Khánh (trưởng CLB), Bách (phó CLB), Thảo (kỹ thuật). Tờ giấy nói ai có chìa, không nói ai mở cửa tối nào.
 > 🗂️ Giấy nhớ mới: **[Lời nhắn chị Linh, mẩu thứ tư]** — nguồn: Sổ tự học của chị Linh, phòng CLB
 > Chữ chị Linh: "Vụ đầu tiên, họ kết tội đúng cái tên trên bản ghi. Người mang tên đó không ở đấy."
 - **Duy** (neutral): Tên một người, tay một người khác… chị Linh có ghi một câu. Để tớ xem.

@@ -154,9 +154,9 @@ Trung bình trong SQLite ra số thập phân (800000.0). Dữ liệu đã chọ
 
 | Nhiệm vụ | NPC giao | Rèn | Trạng thái |
 |---|---|---|---|
-| Sổ sử dụng phòng | Duy | Gọt chữ, xếp theo | Đã dựng (đang là "Vụ 2"), cần chuyển thành nhiệm vụ phụ |
-| Chiếc micro | Duy | Nối bảng | Có đặc tả ở gói cũ |
-| Khoản hoàn tiền | Minh Anh hoặc Quân | Nhóm, đếm, tổng | Có đặc tả ở gói cũ |
+| Sổ sử dụng phòng | Duy | Gọt chữ, xếp theo | Đã dựng, mở sau Vụ 2 |
+| Chiếc micro | Duy | Nối bảng | Đã dựng, mở sau Vụ 4 |
+| Khoản hoàn tiền | Minh Anh | Nhóm, đếm, tổng, lọc nhóm | Đã dựng, mở sau Vụ 5 |
 | Sáu bài luyện nhỏ | Tùng, Hà Vy, Duy | Mỗi bài một phép | Có đặc tả ở gói cũ |
 
 Luật: vụ chính không được đòi kỹ năng chỉ dạy ở nhiệm vụ phụ.
@@ -223,4 +223,12 @@ Phương án đã loại: chị Linh rời CLB vì bị Khánh ép. Nó buộc l
 - Cơ chế nhiệm vụ phụ: nhận ở màn kết của vụ chính, xong thì quay lại. Vụ sổ phòng đã chuyển thành nhiệm vụ phụ do Duy giao, mở sau Vụ 2.
 - Màn tra nhận phiếu đã ghim làm nguồn (`Kiểu: lọc tiếp`), câu hiện thành `WITH … AS`.
 
-Chưa làm: dựng Vụ 3 đến Vụ 5; hai nhiệm vụ phụ còn lại (micro, hoàn tiền); ảnh của Nam và nền xưởng Robotics (đang mượn nền nhà văn hóa); "ngày 6" thử màn tổng hợp vẫn nằm trong Vụ 1.
+- Vụ 3 "Tranh cãi trong nhóm": nhóm và đếm trên phiếu (bài đăng theo thiết bị, thẻ thư viện theo thứ), đối chất trong nhóm, lời nhắn thứ ba.
+- Vụ 4 "Giúp Nam": thống kê trước (Nam đứng tên 5 trong 8 đơn), nối sổ đặt hàng với bảng phiên đăng nhập theo mã phiên (nối theo ngày ra kết quả sai), gom theo máy, tra mọi đơn từ máy văn phòng (bắt buộc), lời nhắn thứ tư. Bảng phiên do Phòng Quản trị mạng xuất, không do Nam.
+- Vụ 5 "Sổ quỹ": nối sổ đặt hàng với kiểm kê, xin thầy Quang mở sổ quỹ (đối chất), nối sổ chi với bảng quỹ, gom theo người duyệt tính tổng, thêm trung bình và lọc nhóm vượt ngưỡng giải trình một triệu; đối chất với Khánh (nhận theo hai nhịp); nhánh chưa đủ căn cứ kết chưa ngã ngũ; cảnh sau kết mở ngăn tủ khi đủ bốn mẩu giấy.
+- Hai nhiệm vụ phụ còn lại: "Chiếc micro ở tủ chung" (nối bảng, mở sau Vụ 4) và "Một lần hoàn tiền, hai dòng ghi" (lọc nhóm theo số dòng, mở sau Vụ 5).
+- Máy: khối "nối với … theo …" ở màn tra; tổng, trung bình, "chỉ giữ nhóm" ở màn tổng hợp; bản chơi thử dạng chữ ở `docs/mvp/ban-choi-thu/` (sinh bằng `prototype/tools/ban-choi-thu.ts`).
+
+Điểm chơi thử của GPT và Gemini (thang 100) ghi ở mục 11.
+
+Chưa làm: sáu bài luyện nhỏ; ảnh của Nam, Khánh và nền xưởng Robotics, thư viện (đang mượn nền tạm); "ngày 6" thử màn tổng hợp vẫn nằm trong Vụ 1; gộp hai màn gom của Vụ 5 thành một màn chỉnh tiếp (Gemini đề nghị, cần đổi máy).

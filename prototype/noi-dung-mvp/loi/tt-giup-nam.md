@@ -11,7 +11,7 @@
 ## c-don-nam-may.1
 - Khi lỗi không có cột: **duy** (neutral): Máy báo không có cột đó. Sổ đặt hàng không ghi máy; máy nằm ở bảng phiên đăng nhập. Phải nối hai bảng trước đã.
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Tên người đặt viết đúng như giấy nhớ: Nam.
-- Khi chạy ra 8 dòng: **ha-vy** (thinking): Tám dòng cho năm đơn. Có đơn kéo theo hai phiên: nối theo cột này thì mỗi đơn khớp mọi phiên cùng ngày, kể cả phiên của máy khác.
+- Khi chạy ra 8 dòng: **tung** (gai-dau): Tám dòng cho năm đơn? Đơn bánh xe ngày 02/10 hiện hai lần, một lần ở máy xưởng số 2, một lần ở máy văn phòng. Một đơn sao tạo ở hai máy được.<br>**ha-vy** (thinking): Nối theo cột này thì đơn nào cũng dính mọi phiên cùng ngày, kể cả phiên của máy khác.
 - Khi chạy ra 13 dòng: **tung** (gai-dau): Mười ba dòng. Nối theo cột này thì ngày nào trùng là dính nhau hết.
 - Khi chạy ra 10 dòng: **tung** (gai-dau): Mười dòng. Cả sổ. Mình chỉ cần đơn của Nam.
 - Khi đúng: **nam** (neutral): Năm đơn, mỗi đơn đúng một máy, một giờ. Hai cái buổi chiều là tớ.
