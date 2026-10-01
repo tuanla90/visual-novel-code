@@ -9,7 +9,6 @@
 - [THẺ CHỮ] **narrator**: Chủ nhật, ngày nhận phòng
 - [DÀN DỰNG] Xe buýt vừa chạy khỏi trạm; người chơi đứng trên vỉa hè cạnh vali. Nền: cổng hai trụ, thanh chắn, tòa mái ngói đỏ bên trái, tòa kính bên phải.
 - **narrator**: Xe buýt dừng trước cổng trường. Cửa vừa mở, hơi nóng đầu giờ chiều hắt thẳng vào mặt.
-- **player**: (Tòa mái ngói đỏ y như trên ảnh tuyển sinh. Còn tòa kính bên phải chắc mới xây.)
 - **player**: (Phòng 408. Cơ mà ký túc xá nằm đâu thì thông báo không ghi…)
 - **narrator**: Mấy bạn kéo vali vòng qua thanh chắn, đi thẳng theo con đường rợp bóng cây.
 - **player**: (Chắc cùng về ký túc xá. Cứ bám theo đã.)
@@ -17,7 +16,6 @@
 ## md-00-cong-ktx.1
 - **narrator**: Qua dãy giảng đường sơn vàng, qua nhà để xe, cuối đường là một cổng sắt xanh kéo ngang. Bên trong là mấy dãy nhà bốn tầng.
 - **narrator**: Bánh vali kẹt vào ray cổng. Phải nhấc bổng cả cái vali lên mới qua được.
-- **player**: (Biết thế đừng nhét cả cái nồi cơm điện vào.)
 - **player**: (Phòng 408, tầng bốn. Mong là có thang máy.)
 
 ## md-00-sanh-ktx.1
@@ -38,7 +36,7 @@
 
 ## md-00-gap-tung.1
 - **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế? Thang máy đang bảo trì.
-- **tung** (happy): Khuất sau hành lang kia, cạnh phòng giặt. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
+- **tung** (happy): Khuất sau hành lang kia. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
 - **player**: Tầng bốn, phòng 408.
 - **tung** (happy): Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ {{nv.tung}}, học Du lịch.
 
@@ -48,16 +46,14 @@
 ## md-00-gap-tung.3
 - **tung** (neutral): Lại dân kinh tế. Cả phòng chẳng ai học Toán, sau này thi biết mượn vở ai đây.
 - **player**: Toán thì chịu, chứ Excel thì được. File xếp phòng mấy nghìn dòng, tớ lọc cái là ra tên mình.
-- **tung** (happy): Thế là chia việc được rồi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali, hai đứa khiêng, bốn tầng thôi mà.
+- **tung** (happy): Thế là chia việc được rồi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali. Tớ cá là ba phút là tới tầng bốn.
 
 ## md-01-ktx.1
 > NHIỆM VỤ: Nhận phòng KTX
 
 ## md-01-ktx.2
 - [DÀN DỰNG] Hai người khiêng vali lên tới tầng bốn, cùng thở dốc. {{nv.tung}} đẩy cửa phòng 408.
-- **tung** (happy): Tới nơi rồi. Giường trong sát cửa sổ là của tớ, cậu chọn giường nào thì chọn.
-- **player**: (Nhắn mẹ cái đã: "Con đến phòng rồi, mẹ ạ.")
-- **tung** (neutral): Cất đồ xong tớ dẫn đi một vòng trường. Đi sớm cho biết đường, tuần sau vào học đỡ lạc.
+- **tung** (happy): Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường, tuần sau vào học đỡ lạc.
 
 ## md-03-toa-b.1
 - [DÀN DỰNG] Hộp tôn xanh treo trên mảng tường gần cửa ra vào (bản CHƯA có thẻ lịch ở khe — DX-03 chưa làm: [KHÁM PHÁ] không có vật tĩnh). Bác Thịnh đứng ở chân cầu thang.
@@ -74,8 +70,7 @@
 - **chu-cuong** (neutral): Giờ này mới về à? {{nv.tung}} dẫn bạn đi đâu cả buổi thế?
 - **tung** (happy): Bọn cháu đi xem trường ạ. Chú tớ đấy, chú trực cổng này.
 - **tung** (neutral): Chú ơi, qua nhà văn hóa cháu thấy dán poster CLB Thám Tử. Chú biết CLB đấy không?
-- **chu-cuong** (smile): À, CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó đều moi ra được bằng chứng.
-- **chu-cuong** (neutral): Chẳng thần thánh gì đâu. Chịu khó hỏi từng người rồi đối chiếu giấy tờ thôi.
+- **chu-cuong** (smile): À, CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó đều moi ra được bằng chứng. Chẳng thần thánh gì, chịu khó hỏi từng người rồi đối chiếu giấy tờ thôi.
 - **chu-cuong** (neutral): Giờ cái gì cũng lên hệ thống, ai còn nhờ sinh viên đi hỏi từng người nữa. Thứ Bảy có Ngày hội CLB đấy, thích thì ra xem.
 - **tung** (happy): Thứ Bảy đi với tớ nhé?
 
@@ -106,7 +101,7 @@
 
 ## md-09-ngay-hoi.3
 - **player**: Ba người tên {{nv.tung}}. Ngành Du lịch chỉ có một người: mã SV240251.
-- **minh-anh** (neutral): …Nhanh thật. Chị đang cần người làm sổ hoạt động. Bốn giờ chiều thứ Hai tuần sau CLB họp đầu năm, hai em ghi tên đi.
+- **minh-anh** (neutral): …Nhanh thật. Bốn giờ chiều thứ Hai tuần sau CLB họp đầu năm, hai em ghi tên đi.
 - **tung** (neutral): Dạ em thì… tìm đường với nhắc lịch là giỏi nhất ạ.
 - **minh-anh** (neutral): Em biết xin lỗi là được rồi. Bắt đầu từ việc đến đúng giờ nhé.
 
@@ -117,7 +112,7 @@
 - [DÀN DỰNG] Có mặt: {{nv.minh-anh}}, {{nv.duy}}, {{nv.ha-vy}}, {{nv.tung}}, người chơi. Bộ máy bàn cũ ở góc (nền vẽ sẵn); laptop CLB Duy cất trong tủ.
 - **narrator**: Bốn giờ chiều thứ Hai. Phòng CLB nhỏ, một bàn dài, một tủ hồ sơ, một bộ máy bàn phủ bụi ở góc.
 - **tung** (happy): Ơ, hôm Ngày hội tớ không thấy cậu nhỉ?
-- **ha-vy** (neutral): Tớ đăng ký qua form. Tớ học Toán ứng dụng, mê Sherlock Holmes từ cấp hai, nghe tên CLB thám tử là đăng ký luôn.
+- **ha-vy** (neutral): Tớ đăng ký qua form. {{nv.ha-vy}}, Toán ứng dụng.
 - **tung** (happy): Toán! Thế là tớ có chỗ mượn vở rồi.
 - **ha-vy** (neutral): Mượn thì được, chép thì không.
 - **tung** (happy): Thế cậu đoán được tớ học gì không?

@@ -5,7 +5,7 @@
 ## n2-mo.1
 - [THẺ CHỮ] **narrator**: Ngày 2 — Thứ Tư
 - **minh-anh** (neutral): Đơn xin quyền tra cứu, {{nv.thay-quang.trong-cau}} duyệt rồi. Lát nữa sang Phòng Đào tạo, {{nv.co-hanh.trong-cau}} cài tài khoản cho CLB.
-- **duy** (neutral): Tớ mang laptop theo. Máy của CLB thì tớ ký sổ.
+- **duy** (neutral): Laptop của CLB tớ mang theo.
 - **tung** (happy): Có tài khoản là tra được hết hả chị?
 - **minh-anh** (neutral): Được đúng những gì người ta cho phép. Hỏi cô là biết.
 
@@ -15,7 +15,6 @@
 - **co-hanh** (neutral): Tài khoản này chỉ xem được bảng lớp sinh hoạt: mã lớp, ngành, khóa, tòa nhà. Trong đấy không có tên ai cả.
 - **co-hanh** (neutral): Bảng sinh viên có thông tin cá nhân. Muốn xem thì mang phiếu yêu cầu tra cứu, có chữ ký của đơn vị lo vụ việc. Vụ hộp kiến nghị là của Phòng Công tác sinh viên.
 - **co-hanh** (neutral): Tra gì máy cũng ghi lại. Cuối vụ cô xem nhật ký.
-- **duy** (neutral): Dạ, máy em giữ, sổ mượn máy em ký ạ.
 
 ## n2-co-hanh.2
 - **player**: Bảng lớp thôi cũng đủ khoanh vùng rồi ạ. Em cảm ơn cô.

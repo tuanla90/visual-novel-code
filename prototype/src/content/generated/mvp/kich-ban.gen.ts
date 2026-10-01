@@ -551,11 +551,6 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Tòa mái ngói đỏ y như trên ảnh tuyển sinh. Còn tòa kính bên phải chắc mới xây.)"
-        },
-        {
-          "type": "line",
-          "speaker": "player",
           "text": "(Phòng 408. Cơ mà ký túc xá nằm đâu thì thông báo không ghi…)"
         },
         {
@@ -589,11 +584,6 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "narrator",
           "text": "Bánh vali kẹt vào ray cổng. Phải nhấc bổng cả cái vali lên mới qua được."
-        },
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Biết thế đừng nhét cả cái nồi cơm điện vào.)"
         },
         {
           "type": "line",
@@ -719,7 +709,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Khuất sau hành lang kia, cạnh phòng giặt. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?"
+          "text": "Khuất sau hành lang kia. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?"
         },
         {
           "type": "line",
@@ -781,7 +771,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Thế là chia việc được rồi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali, hai đứa khiêng, bốn tầng thôi mà."
+          "text": "Thế là chia việc được rồi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali. Tớ cá là ba phút là tới tầng bốn."
         },
         {
           "type": "goto",
@@ -811,18 +801,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Tới nơi rồi. Giường trong sát cửa sổ là của tớ, cậu chọn giường nào thì chọn."
-        },
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Nhắn mẹ cái đã: \"Con đến phòng rồi, mẹ ạ.\")"
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "neutral",
-          "text": "Cất đồ xong tớ dẫn đi một vòng trường. Đi sớm cho biết đường, tuần sau vào học đỡ lạc."
+          "text": "Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường, tuần sau vào học đỡ lạc."
         },
         {
           "type": "goto",
@@ -917,13 +896,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "chu-cuong",
           "expression": "smile",
-          "text": "À, CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó đều moi ra được bằng chứng."
-        },
-        {
-          "type": "line",
-          "speaker": "chu-cuong",
-          "expression": "neutral",
-          "text": "Chẳng thần thánh gì đâu. Chịu khó hỏi từng người rồi đối chiếu giấy tờ thôi."
+          "text": "À, CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó đều moi ra được bằng chứng. Chẳng thần thánh gì, chịu khó hỏi từng người rồi đối chiếu giấy tờ thôi."
         },
         {
           "type": "line",
@@ -1089,7 +1062,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "…Nhanh thật. Chị đang cần người làm sổ hoạt động. Bốn giờ chiều thứ Hai tuần sau CLB họp đầu năm, hai em ghi tên đi."
+          "text": "…Nhanh thật. Bốn giờ chiều thứ Hai tuần sau CLB họp đầu năm, hai em ghi tên đi."
         },
         {
           "type": "line",
@@ -1138,7 +1111,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Tớ đăng ký qua form. Tớ học Toán ứng dụng, mê Sherlock Holmes từ cấp hai, nghe tên CLB thám tử là đăng ký luôn."
+          "text": "Tớ đăng ký qua form. Hà Vy, Toán ứng dụng."
         },
         {
           "type": "line",
@@ -1544,7 +1517,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Tớ mang laptop theo. Máy của CLB thì tớ ký sổ."
+          "text": "Laptop của CLB tớ mang theo."
         },
         {
           "type": "line",
@@ -1597,12 +1570,6 @@ export const KICH_BAN_MVP = {
           "speaker": "co-hanh",
           "expression": "neutral",
           "text": "Tra gì máy cũng ghi lại. Cuối vụ cô xem nhật ký."
-        },
-        {
-          "type": "line",
-          "speaker": "duy",
-          "expression": "neutral",
-          "text": "Dạ, máy em giữ, sổ mượn máy em ký ạ."
         },
         {
           "type": "show-document",
@@ -3423,7 +3390,7 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';",
       "soDong": 3,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:126 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:121 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",
