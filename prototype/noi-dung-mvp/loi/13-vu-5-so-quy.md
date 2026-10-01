@@ -31,7 +31,7 @@
 
 ## v5-nhan-so.1
 - **co-hanh** (smile): Thầy Quang ký rồi. Bản xuất sổ quỹ cô gửi về laptop CLB. Các em chỉ xem đúng dòng liên quan thôi nhé.
-- **co-lan** (neutral): Cô bên Công tác sinh viên in kèm quy chế quỹ khối CLB. Khoản dưới một triệu thì chủ tịch Hội duyệt thẳng. Tổng một người duyệt vượt một triệu thì người đó phải giải trình. Và CLB nào không còn phòng sinh hoạt hết một học kỳ thì làm thủ tục giải thể: quỹ đóng sổ, số dư chuyển về Hội sinh viên.
+- **co-lan** (neutral): Cô bên Công tác sinh viên in kèm quy chế quỹ khối CLB. Khoản dưới một triệu thì chủ tịch Hội duyệt thẳng. Tổng một người duyệt vượt một triệu thì người đó phải giải trình. Phần về CLB chờ giải thể ở trang sau, các em tự đọc.
 - **co-hanh** (neutral): Trang sổ ký phòng máy tối 15/9 thầy Quang cũng ký cho mở. Thầy Khải chụp đúng một trang ấy, cô gửi kèm.
 - **minh-anh** (neutral): Em cảm ơn hai cô ạ.
 
@@ -42,7 +42,7 @@
 > NHẮC VIỆC ha-vy (thinking): Nối sổ chi với bảng quỹ theo mã quỹ, rồi lọc quỹ của CLB mình.
 
 ## v5-so-quy.2
-- **player**: Sáu khoản ghi vào quỹ CLB Thám Tử. Ba khoản nhỏ chị Minh Anh duyệt. Ba khoản lớn người duyệt ghi là Khánh, xuất ngày 10, 11 và 12 tháng 9.
+- **player**: Sáu khoản ghi vào quỹ CLB Thám Tử. Ba khoản nhỏ chị Minh Anh duyệt. Ba khoản lớn người duyệt ghi là Khánh, xuất ngày 10, 11 và 12 tháng 9. Cột mã đơn của ba khoản ấy ghi đúng mã ba đơn linh kiện kho không có hàng.
 - **minh-anh** (khoanh-tay): Ba khoản chị duyệt là văn phòng phẩm, chị nhớ. Ba khoản kia chị chưa từng thấy.
 - **nam** (neutral): Đơn sớm nhất trong ba đơn ấy tạo ngày 27 tháng 9. Tiền đi trước, đơn viết sau.
 - **ha-vy** (thinking): Gom theo người duyệt rồi đếm. Nhưng lần này đếm số dòng chưa đủ: ba khoản nhỏ với ba khoản lớn đếm ra bằng nhau. Phải cộng tiền.
@@ -89,7 +89,7 @@
 > NHIỆM VỤ: Trình phiếu cho thấy ba đơn không phải do Nam lập
 
 ## v5-nhan-tien.1
-- **thay-quang** (neutral): Em Khánh. Em có chìa phòng ấy. Ba khoản em duyệt gắn với ba đơn lập sau cửa khóa, cho hàng mà kho không có. Em giải thích mối liên hệ này thế nào?
+- **thay-quang** (neutral): Em Khánh. Hàng gia công ngoài thì phải có giấy giao việc, em chưa đưa ra được. Nhầm mã quỹ thì nhầm ba lần liền, cả ba cùng rơi vào một quỹ. Ba khoản em duyệt gắn với ba đơn lập sau cửa khóa mà em có chìa. Em giải thích mối liên hệ này thế nào?
 - [DÀN DỰNG] {{nv.khanh}} nhìn tờ phiếu một dòng trên bàn một lúc lâu.
 - **khanh** (neutral): …Ba khoản đó không chi cho đội ạ. Đơn là em lập. Tiền em dùng vào việc riêng. Em sẽ trả lại.
 - **nam** (neutral): Anh lấy tên em.
@@ -103,6 +103,7 @@
 
 ## v5-nhan-thu.1
 - [DÀN DỰNG] {{nv.khanh}} nhìn trang sổ chụp, rồi nhìn {{nv.hoai}}.
+- **narrator**: Khánh có thể nói "em chỉ in sơ đồ". Không phiếu nào bác được câu ấy.
 - **khanh** (neutral): …Em in. Sáng hôm sau em nhờ em ấy nộp hộ. Anh xin lỗi em, Hoài.
 - **hoai** (nervous): Vâng ạ.
 > NHIỆM VỤ: Trình thứ cho thấy lá thư liên quan gì tới ba khoản chi
@@ -126,10 +127,11 @@
 - **hoai** (relieved): Em cảm ơn thầy ạ.
 
 ## v5-ket-du.1
-- **khanh** (neutral): Quỹ ấy nằm im từ hồi chị Linh nghỉ, không ai đọc sao kê. Đợt rà soát phòng chỉ nhận kiến nghị tới 20 tháng 9, nên em gửi thư ngay. Em không chờ xem mình có lấp kịp không. Em chọn đường dễ trước.
+- **khanh** (neutral): Đúng. Quỹ ấy nằm im từ hồi chị Linh nghỉ, không ai đọc sao kê. Em biết sổ thì vẫn còn đó. Nhưng CLB giải thể thì không còn chủ quỹ nào đòi đối chiếu, số dư về Hội, người ký nhận là em. Em chỉ cần thêm thời gian để bù.
+- **khanh** (neutral): Đợt rà soát phòng chỉ nhận kiến nghị tới 20 tháng 9, nên em gửi thư ngay. Em không chờ xem mình có lấp kịp không. Em chọn đường dễ trước.
 - **khanh** (neutral): Em là người đứng tên duyệt chi. Tự em đề nghị rà soát CLB ấy thì chính em phải giải thích sổ quỹ trước. Thư sinh viên thì chỉ là một ý kiến.
 - **nam** (neutral): Rồi CLB Thám Tử giữ được phòng. Cái tin trong kênh, ba cái đơn, cái danh sách chuyển xuống Quân…
-- **khanh** (neutral): Cái tin là để tới cuối kỳ, các em có hỏi tới sổ thì lời các em khó được tin. Đơn là để khớp sổ. Danh sách là để kết quả kiểm kê của em bị nghi trước khi nộp. Anh không tính xa thế đâu. Anh chỉ tìm cách qua lần hỏi kế tiếp.
+- **khanh** (neutral): Cái tin là để tới cuối kỳ, các em có hỏi tới sổ thì lời các em khó được tin. Đơn là để khớp sổ. Danh sách là để kết quả kiểm kê của em bị nghi trước khi nộp. Giờ nghĩ lại thì chính cái danh sách ấy dẫn các em tới ba cái đơn. Thư với tin anh đều dùng tài khoản của CLB, vì ngoài giờ chỉ tài khoản CLB mới in được, và anh không nghĩ có ai đi đọc nhật ký. Anh không tính xa thế đâu. Anh chỉ tìm cách qua lần hỏi kế tiếp.
 - **quan** (stunned): Em lại cầm một danh sách đi nghi người khác. Lần thứ hai.
 - **thay-quang** (stern): Em Khánh nhận rồi. Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên, không bàn ở đây. Việc riêng của em ấy, thầy không hỏi trước mọi người.
 - **thay-quang** (neutral): Phòng của CLB Thám Tử giữ nguyên. Hoàn quỹ đi theo thủ tục, mất vài tháng; từ giờ tới đó quỹ CLB tạm đóng. Biên bản cũng ghi một dòng: chủ quỹ chưa từng xin sao kê giữa kỳ.

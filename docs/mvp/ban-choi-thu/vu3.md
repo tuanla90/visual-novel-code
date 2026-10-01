@@ -266,7 +266,7 @@ Lời nhân vật sau mỗi lần chạy:
 
 - **Bạn (người chơi)**: Năm lần. Bốn tối thứ Hai, một tối thứ Tư.
 - **Tùng** (happy): Hai đứa như nhau. Đúng là hai cái máy.
-- **Hà Vy** (neutral): Thói quen đếm được thì lời chứng mới nặng. Về CLB.
+- **Hà Vy** (neutral): Thói quen không chứng minh được đúng tối ấy. Nó chỉ cho thấy tớ có lý do ngồi đó. Thứ ghi đúng tối ấy là cửa từ: Nam vào 21 giờ 50, ra 23 giờ 05. Về CLB.
 
 ###### 📍 Phòng CLB — Phòng CLB: Tùng nêu giả thuyết, người chơi trình thẻ
 

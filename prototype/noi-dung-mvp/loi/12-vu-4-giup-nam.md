@@ -82,7 +82,7 @@
 ## v4-ket.1
 - **duy** (neutral): Giấy giải trình đề ngày 11, một ngày sau hôm mình gỡ nghi cho Nam. Tớ ghi lại thôi, chưa nói gì.
 - [DÀN DỰNG] Có tiếng gõ cửa. {{nv.khanh}} đứng ở cửa phòng CLB, balo khoác một bên vai.
-- **khanh** (neutral): Nam ở đây à. Danh sách Ban kiểm tra cầm là anh chuyển. Đủ cả năm đơn, kể cả hai đơn em đặt thật, để họ khỏi bảo mình chọn lọc. Cứ giải trình đúng sự thật, anh sẽ nói đỡ một câu.
+- **khanh** (neutral): Nam ở đây à. Danh sách Ban kiểm tra cầm là anh chuyển. Đủ cả năm đơn, kể cả hai đơn em đặt thật, để họ khỏi bảo mình chọn lọc. Cứ giải trình đúng sự thật, anh sẽ nói đỡ một câu. Còn bên Thám Tử, cần giấy tờ gì qua Hội thì cứ gửi anh, anh ký chuyển cho.
 - **nam** (neutral): Vâng anh.
 - [DÀN DỰNG] {{nv.khanh}} quay đi. Cái huy hiệu bánh răng trên balo lắc lư, sứt mất một răng.
 - **tung** (worried): Tớ thấy rồi. Cái huy hiệu. Nãy giờ tớ nín thở.
@@ -93,7 +93,7 @@
 ## v4-ket.2
 - **tung** (gai-dau): Lần này tớ biết mà vẫn không cá.
 - **minh-anh** (serious): Chắc trong lòng là lúc phải cẩn thận nhất. Muốn nói với thầy Quang thì cần một nguồn thứ hai, không dính gì tới cái huy hiệu. Và phải biết ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt.
-- **minh-anh** (khoanh-tay): Sao kê thì cuối kỳ mới tự về. Chủ quỹ xin giữa kỳ cũng được, nhưng giấy phải qua chủ tịch Hội ký chuyển. Chị chưa xin lần nào, nên giờ chị mới biết điều đó.
+- **minh-anh** (khoanh-tay): Sao kê thì cuối kỳ mới tự về. Chủ quỹ xin giữa kỳ cũng được, nhưng giấy phải qua chủ tịch Hội ký chuyển. Chị chưa xin lần nào, nên giờ chị mới biết điều đó. Và người ký chuyển vừa đứng ở cửa, tự mời mình gửi giấy.
 - **duy** (neutral): Tức là muốn xem sổ thì phải hỏi đúng người mình chưa được nói tên. Còn một đường nữa: thầy Quang.
 - **nam** (neutral): Tớ không nghi ai cả. Nhưng tớ muốn biết là ai.
 - **ha-vy** (smile): Thì hỏi sổ.

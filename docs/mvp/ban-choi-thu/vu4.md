@@ -269,7 +269,7 @@ Lời nhân vật sau mỗi lần chạy:
 - **Minh Anh** (neutral): Phiếu bốn đơn từ máy văn phòng chị gửi kèm luôn: ba đơn đêm đứng tên Nam, một đơn ngày đứng tên trưởng CLB. Đủ để Ban kiểm tra thấy máy đó ban ngày ai dùng, ban đêm đứng tên ai.
 - **Duy** (neutral): Và ba người giữ chìa phòng đó. Mình ghi tên, không ghi tội.
 - **Duy** (neutral): Giấy giải trình đề ngày 11, một ngày sau hôm mình gỡ nghi cho Nam. Tớ ghi lại thôi, chưa nói gì.
-- **Khánh** (neutral): Nam ở đây à. Danh sách Ban kiểm tra cầm là anh chuyển. Đủ cả năm đơn, kể cả hai đơn em đặt thật, để họ khỏi bảo mình chọn lọc. Cứ giải trình đúng sự thật, anh sẽ nói đỡ một câu.
+- **Khánh** (neutral): Nam ở đây à. Danh sách Ban kiểm tra cầm là anh chuyển. Đủ cả năm đơn, kể cả hai đơn em đặt thật, để họ khỏi bảo mình chọn lọc. Cứ giải trình đúng sự thật, anh sẽ nói đỡ một câu. Còn bên Thám Tử, cần giấy tờ gì qua Hội thì cứ gửi anh, anh ký chuyển cho.
 - **Nam** (neutral): Vâng anh.
 - **Tùng** (worried): Tớ thấy rồi. Cái huy hiệu. Nãy giờ tớ nín thở.
 - **Hà Vy** (thinking): Nín là đúng. Nói ra lúc ấy là cá.
@@ -279,7 +279,7 @@ Lời nhân vật sau mỗi lần chạy:
 > Robotics làm ba chục huy hiệu hồi đầu năm; cái sứt một răng là lỗi khuôn, Khánh xin giữ và gắn trên balo. Balo hay để ở xưởng, ai cũng cầm được. Biết balo chưa phải biết người.
 - **Tùng** (gai-dau): Lần này tớ biết mà vẫn không cá.
 - **Minh Anh** (serious): Chắc trong lòng là lúc phải cẩn thận nhất. Muốn nói với thầy Quang thì cần một nguồn thứ hai, không dính gì tới cái huy hiệu. Và phải biết ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt.
-- **Minh Anh** (khoanh-tay): Sao kê thì cuối kỳ mới tự về. Chủ quỹ xin giữa kỳ cũng được, nhưng giấy phải qua chủ tịch Hội ký chuyển. Chị chưa xin lần nào, nên giờ chị mới biết điều đó.
+- **Minh Anh** (khoanh-tay): Sao kê thì cuối kỳ mới tự về. Chủ quỹ xin giữa kỳ cũng được, nhưng giấy phải qua chủ tịch Hội ký chuyển. Chị chưa xin lần nào, nên giờ chị mới biết điều đó. Và người ký chuyển vừa đứng ở cửa, tự mời mình gửi giấy.
 - **Duy** (neutral): Tức là muốn xem sổ thì phải hỏi đúng người mình chưa được nói tên. Còn một đường nữa: thầy Quang.
 - **Nam** (neutral): Tớ không nghi ai cả. Nhưng tớ muốn biết là ai.
 - **Hà Vy** (smile): Thì hỏi sổ.

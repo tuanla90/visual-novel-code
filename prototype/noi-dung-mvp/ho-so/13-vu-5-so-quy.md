@@ -16,7 +16,7 @@
 
 ### doc-so-quy — Bản xuất sổ quỹ khối CLB
 - Tiêu đề: Sổ chi và bảng quỹ, Phòng Kế hoạch gửi theo yêu cầu của thầy Quang
-- Nguồn: Phòng Kế hoạch, {{nv.co-hanh}} gửi theo chữ ký của {{nv.thay-quang}}; quy chế do {{nv.co-lan}} in kèm
+- Nguồn: Phòng Kế hoạch, {{nv.co-hanh}} gửi theo chữ ký của {{nv.thay-quang}}; quy chế do {{nv.co-lan}} in kèm (trang sau: CLB mất phòng thì vào diện chờ giải thể, sao kê quỹ gửi về Hội sinh viên thay vì chủ quỹ; giải thể thì chủ tịch Hội ký nhận bàn giao)
 - Nội dung hiển thị:
 > Sổ chi: mỗi khoản có mã chi, mã đơn, mã quỹ, số tiền, người duyệt. Bảng quỹ: mã quỹ nào thuộc CLB nào.
 > Chỉ gồm các khoản ghi vào quỹ CLB Thám Tử và các khoản liên quan ba đơn đang xét.

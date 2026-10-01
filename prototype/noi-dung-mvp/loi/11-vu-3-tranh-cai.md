@@ -86,7 +86,7 @@
 ## v3-the-vy.2
 - **player**: Năm lần. Bốn tối thứ Hai, một tối thứ Tư.
 - **tung** (happy): Hai đứa như nhau. Đúng là hai cái máy.
-- **ha-vy** (neutral): Thói quen đếm được thì lời chứng mới nặng. Về CLB.
+- **ha-vy** (neutral): Thói quen không chứng minh được đúng tối ấy. Nó chỉ cho thấy tớ có lý do ngồi đó. Thứ ghi đúng tối ấy là cửa từ: Nam vào 21 giờ 50, ra 23 giờ 05. Về CLB.
 
 ## v3-doi-chat.1
 - **narrator**: Phòng CLB. Mọi phiếu đã ghim lên bảng. Minh Anh chờ.
