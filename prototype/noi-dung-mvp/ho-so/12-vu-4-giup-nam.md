@@ -41,8 +41,13 @@
 
 ### clue-giao-chia — [Tờ giao chìa: Khánh, Bách, Thảo]
 - Tiêu đề: Tờ giao chìa dán ở cửa phòng văn phòng xưởng
-- Nguồn: {{nv.nam}} chụp lại tờ giấy dán ở cửa
+- Nguồn: Tờ giấy dán ở cửa phòng, xem cùng {{nv.nam}} cuối Vụ 3
 - Nội dung: Tờ giao chìa phòng văn phòng xưởng Robotics ghi ba người giữ chìa: Khánh (trưởng CLB), Bách (phó CLB), Thảo (kỹ thuật). Tờ giấy nói ai có chìa, không nói ai mở cửa tối nào. Bách nói tối 07/10 về quê; Thảo nói chìa của mình để ngăn bàn ngoài xưởng, ai cũng lấy được.
+
+### clue-huy-hieu-sut — [Huy hiệu sứt: lỗi khuôn, Khánh giữ]
+- Tiêu đề: Cái huy hiệu bánh răng sứt một răng
+- Nguồn: {{nv.nam}}, sau khi {{nv.khanh}} ghé phòng CLB
+- Nội dung: Robotics làm ba chục huy hiệu hồi đầu năm; cái sứt một răng là lỗi khuôn, Khánh xin giữ và gắn trên balo. Balo hay để ở xưởng, ai cũng cầm được. Biết balo chưa phải biết người.
 
 ### clue-loi-nhan-linh-4 — [Lời nhắn chị Linh, mẩu thứ tư]
 - Tiêu đề: Mẩu giấy ở trang cuối sổ

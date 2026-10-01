@@ -41,6 +41,8 @@
 - [LỜI v5-so-quy.3]
 - [THỬ THÁCH c-chi-vuot-muc]
 - [LỜI v5-so-quy.4]
+- [HẬU QUẢ] mở manh mối clue-so-phong-may
+- [LỜI v5-so-quy.5]
 - [ĐI TỚI v5-doi-chat]
 
 ### v5-doi-chat — Phòng họp, nhịp một: "đúng thẩm quyền" {cảnh: phong-hop}
@@ -77,33 +79,53 @@
 ### v5-nhan-tien — Khánh nhận phần tiền; nhịp ba: lá thư {cảnh: phong-hop}
 
 - [LỜI v5-nhan-tien.1]
-- [ĐỐI CHẤT dc-khanh-thu] khanh: "Tiền thì tôi nhận. Nhưng lá thư với cái tin thì đừng gán cho tôi. Tài khoản in, tài khoản kênh của Robotics cả ban chủ nhiệm dùng. Phiếu nào của các bạn có tên tôi?"
-  - {clue-loi-chu-cuong} [ĐỦ CĂN CỨ] → phản hồi: **ha-vy** (neutral): Không phiếu nào có tên anh. Nhưng sáng thứ Hai 16/9, người đưa phong bì ở cổng ký túc xá đeo balo có huy hiệu bánh răng sứt một răng.<br>**chu-cuong** (neutral): Đúng cái huy hiệu trên balo kia. Mặt thì chú không dám nói, hôm ấy trời mới sáng.<br>**hoai** (nervous): Em cũng không nhớ mặt ạ. Nhưng cái huy hiệu sứt ấy thì em nhớ. Và giọng nói.<br>**thay-quang** (neutral): Một cái huy hiệu chưa phải một cái tên. Nhưng đủ để thầy hỏi. Em Khánh?
-  - {clue-giao-chia} [HỖ TRỢ] → phản hồi: **duy** (neutral): Phòng có máy gửi tin và tạo đơn thì ba người có chìa, trong đó có anh.<br>**khanh** (neutral): Ba người. Thảo còn để chìa ngoài ngăn bàn. Thế thì là ai cũng được.
-  - {ev-nhat-ky-in} [HỖ TRỢ] → phản hồi: **ha-vy** (neutral): Lá thư in từ tài khoản dùng chung của Robotics, 23 giờ 10 tối Chủ nhật.<br>**khanh** (neutral): Dùng chung. Chính các bạn nói tài khoản chưa phải là người.<br>**duy** (neutral): Đúng. Bọn em học câu ấy từ chính chuyện này.
-  - {ev-tin-goc} [GỢI Ý] → phản hồi: **khanh** (neutral): Tài khoản kênh thì Nam trực.<br>**ha-vy** (neutral): Tối đó Nam ở thư viện, mình vừa nói xong. Nhưng phiếu này cũng chưa chỉ sang ai khác.
+- [ĐỐI CHẤT dc-khanh-thu] khanh: "Tiền thì tôi nhận. Nhưng lá thư với cái tin thì đừng gán cho tôi. Huy hiệu phát ba chục người, tài khoản in với tài khoản kênh cả ban chủ nhiệm dùng. Phiếu nào của các bạn có tên tôi?"
+  - {clue-so-phong-may} [ĐỦ CĂN CỨ] → phản hồi: **ha-vy** (neutral): Nhật ký in ghi lá thư in lúc 23 giờ 10 tối Chủ nhật 15/9, ở phòng máy. Sổ ký vào phòng tối đó có hai dòng. Chị Thảo ra lúc 21 giờ 30. Anh vào 22 giờ 40, ra 23 giờ 20.<br>**khanh** (neutral): Tôi vào in sơ đồ cho đội.<br>**thay-quang** (neutral): Có thể. Nhưng lúc lá thư được in, sổ ghi trong phòng có một mình em. Và sáng hôm sau có người thấy cái huy hiệu của em ở cổng ký túc xá. Hai nguồn riêng, cùng một hướng. Em Khánh?
+  - {clue-loi-chu-cuong} [HỖ TRỢ] → phản hồi: **ha-vy** (neutral): Sáng thứ Hai 16/9, người đưa phong bì ở cổng ký túc xá đeo balo có huy hiệu bánh răng sứt một răng.<br>**chu-cuong** (neutral): Đúng cái huy hiệu trên balo kia. Mặt thì chú không dám nói, hôm ấy trời mới sáng.<br>**khanh** (neutral): Balo tôi hay để ở xưởng, ai cầm chả được. Một cái huy hiệu thôi à?<br>**ha-vy** (thinking): Đúng, mới một nguồn. Cần một nguồn không dính gì tới cái huy hiệu.
+  - {clue-huy-hieu-sut} [HỖ TRỢ] → phản hồi: **nam** (neutral): Cái sứt là lỗi khuôn, chỉ có một cái, anh xin giữ.<br>**khanh** (neutral): Và balo anh để ở xưởng cả ngày, em cũng biết thế.
+  - {ev-nhat-ky-in} [HỖ TRỢ] → phản hồi: **ha-vy** (neutral): Lá thư in từ tài khoản dùng chung của Robotics, 23 giờ 10 tối Chủ nhật.<br>**khanh** (neutral): Dùng chung. Chính các bạn nói tài khoản chưa phải là người.<br>**duy** (neutral): Tài khoản thì chung. Nhưng phòng máy tối Chủ nhật thì phải ký sổ mới vào được.
+  - {clue-giao-chia} [GỢI Ý] → phản hồi: **khanh** (neutral): Ba người có chìa. Thảo còn để chìa ngoài ngăn bàn. Mà lá thư đâu có in ở xưởng.
   - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, phần lá thư bọn em không có căn cứ nào gắn với một người. Bọn em dừng ở phần tiền.<br>**thay-quang** (neutral): Dừng đúng chỗ. Phần ấy thầy sẽ hỏi riêng.
   - [KHÁC] → phản hồi: **khanh** (neutral): Cái này thì liên quan gì tới lá thư?<br>**minh-anh** (worried): Em xem lại hồ sơ ạ.
-- [NẾU có dc-khanh-thu-du] → đi tới v5-ket-du
+- [NẾU có dc-khanh-thu-du] → đi tới v5-vi-sao
 - [LỜI v5-ket-tien.1]
-- [ĐI TỚI v5-sau-hop]
+- [ĐI TỚI v5-ket-luan]
 
-### v5-ket-du — Khánh nhận cả lá thư: không phải cái phòng, là cái sổ {cảnh: phong-hop}
+### v5-vi-sao — Khánh nhận lá thư; nhịp bốn: lá thư để làm gì {cảnh: phong-hop}
+
+- [LỜI v5-nhan-thu.1]
+- [ĐỐI CHẤT dc-khanh-vi-sao] khanh: "Thì là tôi in, tôi nhờ nộp. Nhưng các bạn nói xem: cái phòng nhỏ ấy cho tôi được gì? Tiền đâu có nằm trong cái phòng."
+  - {clue-sao-ke-cuoi-ky} [ĐỦ CĂN CỨ] → phản hồi: **minh-anh** (neutral): Sao kê quỹ về các CLB vào cuối kỳ, đúng đợt rà soát phòng. Em là chủ quỹ mà cả năm chưa mở sao kê lần nào.<br>**thay-quang** (neutral): Quy chế ghi: CLB giải thể thì quỹ đóng sổ, số dư chuyển về Hội sinh viên, sao kê không gửi cho ai nữa.<br>**nam** (neutral): Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ.
+  - {ev-chi-tham-tu} [ĐỦ CĂN CỨ] → phản hồi: **ha-vy** (neutral): Ba khoản xuất ngày 10, 11, 12 tháng 9. Lá thư ngày 16. Đơn đầu tiên tạo ngày 27, sau buổi họp bọn em giữ được phòng. Tiền đi trước, thư đi sau, đơn viết sau cùng.<br>**thay-quang** (neutral): Quy chế ghi: CLB giải thể thì quỹ đóng sổ, số dư chuyển về Hội sinh viên, sao kê không gửi cho ai nữa.<br>**nam** (neutral): Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ.
+  - {ev-chi-vuot-muc} [HỖ TRỢ] → phản hồi: **khanh** (neutral): Số tiền bàn xong rồi. Tôi hỏi vì sao lại là cái phòng.<br>**duy** (neutral): Phiếu này nói bao nhiêu. Còn bao giờ, và ai được đọc, thì phiếu khác nói.
+  - {clue-loi-nhan-linh-1} [GỢI Ý] → phản hồi: **khanh** (neutral): Mẩu giấy của ai đây?<br>**duy** (neutral): Chuyện khác ạ. Em xin lỗi.
+  - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, lá thư để làm gì thì bọn em không có căn cứ ạ.<br>**thay-quang** (neutral): Vậy phần ấy thầy hỏi riêng.
+  - [KHÁC] → phản hồi: **khanh** (neutral): Cái này nói gì về cái phòng?<br>**minh-anh** (worried): Em xem lại hồ sơ ạ.
+- [NẾU có dc-khanh-vi-sao-du] → đi tới v5-ket-du
+- [LỜI v5-ket-thu.1]
+- [ĐI TỚI v5-ket-luan]
+
+### v5-ket-du — Không phải cái phòng, là cái sổ {cảnh: phong-hop}
 
 - [LỜI v5-ket-du.1]
-- [ĐI TỚI v5-sau-hop]
+- [ĐI TỚI v5-ket-luan]
+
+### v5-ket-luan — Biên bản buổi họp: nói chắc được gì {cảnh: phong-hop}
+
+- [HỎI q-v5-ket-luan] thay-quang: "Biên bản buổi họp. Phần của CLB Thám Tử, các em muốn thầy ghi câu nào?"
+  - (A) {id: dung} Ba khoản chi gắn với ba đơn kho không có hàng được ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Mỗi bước đều có phiếu để ai cũng tự kiểm được. [ĐÚNG] → phản hồi: **thay-quang** (neutral): Thầy ghi đúng chừng ấy. Phần "vì sao" là lời người nhận, không phải lời của bảng.
+  - (B) {id: moi-nguoi} Cả Hội sinh viên và CLB Robotics cùng bao che cho Khánh. → phản hồi: **ha-vy** (thinking): Bảng ghi một người duyệt. "Cả Hội" thì cột nào nói?
+  - (C) {id: tu-dau} Khánh viết lá thư ngay từ đầu để chiếm phòng CLB. → phản hồi: **duy** (neutral): Lá thư để làm gì thì chỉ người viết nói được. "Chiếm phòng" là mình đoán thêm.
+- [NẾU có dc-khanh-don-du] → đi tới v5-sau-hop
+- [ĐI TỚI v5-chot]
 
 ### v5-sau-hop — Hành lang sau buổi họp: chiếc chìa {cảnh: phong-hop}
 
 - [LỜI v5-sau-hop.1]
-- [ĐI TỚI v5-ket-luan]
+- [ĐI TỚI v5-chot]
 
-### v5-ket-luan — Chốt mùa: mình nói chắc được gì {cảnh: phong-clb}
+### v5-chot — Phòng CLB: đóng hồ sơ mùa {cảnh: phong-clb}
 
-- [HỎI q-v5-ket-luan] minh-anh: "Hồ sơ cuối kỳ, mục cuối cùng. Mình nói chắc được điều gì?"
-  - (A) {id: dung} Ba khoản chi không có hàng được ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Mỗi bước đều có phiếu để ai cũng tự kiểm được. [ĐÚNG] → phản hồi: **minh-anh** (neutral): Đúng chừng ấy. Phần "vì sao" là lời người nhận, không phải của bảng.
-  - (B) {id: moi-nguoi} Cả Hội sinh viên và CLB Robotics cùng bao che cho Khánh. → phản hồi: **ha-vy** (thinking): Bảng ghi một người duyệt. "Cả Hội" thì cột nào nói?
-  - (C) {id: tu-dau} Khánh viết lá thư ngay từ đầu để chiếm phòng CLB. → phản hồi: **duy** (neutral): Lá thư để làm gì thì chỉ người viết nói được. "Chiếm phòng" là mình đoán thêm.
 - [LỜI v5-ket-luan.1]
 - [NẾU có clue-loi-nhan-linh-1 và có clue-loi-nhan-linh-2 và có clue-loi-nhan-linh-3 và có clue-loi-nhan-linh-4] → đi tới v5-ngan-tu
 - [KẾT THÚC]

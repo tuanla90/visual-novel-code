@@ -316,7 +316,22 @@ Lời nhân vật sau mỗi lần chạy:
 - **Tùng** (worried): Không phải Nam. Thế thì ai ngồi máy văn phòng xưởng tối đó?
 - **Duy** (neutral): Máy trong phòng văn phòng, giờ xưởng mở. Ai vào được phòng đó thì mình chưa biết.
 - **Hà Vy** (thinking): Và tên Nam vẫn nằm trên tài khoản kênh. Ai muốn người ta nghĩ là Nam, thì đã được như ý.
-- **Minh Anh** (neutral): Mai chị nói chuyện với Nam. Chuyện này không chỉ là tin đồn về mình nữa.
+- **Minh Anh** (neutral): Chuyện này không chỉ là tin đồn về mình nữa. Các em sang xưởng lần nữa, hỏi xem ai vào được phòng ấy. Hỏi thôi, chưa nghi ai.
+
+###### 📍 Xưởng CLB Robotics — Xưởng, chiều muộn: tờ giao chìa, ba người cần hỏi
+
+- **Người kể**: Chiều muộn, xưởng Robotics. Nam dẫn cả nhóm tới cửa phòng văn phòng. Trên cửa dán một tờ giấy đã ngả màu.
+- **Bạn (người chơi)**: "Giao chìa phòng văn phòng." Ba tên: Khánh, Bách, Thảo.
+- **Nam** (neutral): Anh Khánh đang họp bên Hội. Anh Bách với chị Thảo thì ở kia.
+- **Thảo** (neutral): Phòng ấy chị mở nhiều nhất. Nhưng chìa của chị nằm ngăn bàn ngoài xưởng cả tháng nay, ai mở ngăn cũng lấy được. Chị không chối.
+- **Bách** (neutral): Tối mùng 7 anh về quê, vé xe còn giữ. Chìa anh không cho ai mượn.
+- **Thảo** (neutral): Còn hỏi chuyện in ấn thì tối Chủ nhật nào chị cũng ra phòng máy in sơ đồ mạch. Tuần nào cũng thế, chị không nhớ nổi từng tuần.
+- **Tùng** (gai-dau): Tối Chủ nhật, phòng máy… Tớ không cá. Tớ ghi.
+> 🗂️ Giấy nhớ mới: **[Tờ giao chìa: Khánh, Bách, Thảo]** — nguồn: Tờ giấy dán ở cửa phòng, xem cùng Nam cuối Vụ 3
+> Tờ giao chìa phòng văn phòng xưởng Robotics ghi ba người giữ chìa: Khánh (trưởng CLB), Bách (phó CLB), Thảo (kỹ thuật). Tờ giấy nói ai có chìa, không nói ai mở cửa tối nào. Bách nói tối 07/10 về quê; Thảo nói chìa của mình để ngăn bàn ngoài xưởng, ai cũng lấy được.
+- **Hà Vy** (thinking): Ghi ba tên. Người cần hỏi, chưa phải người bị nghi.
+- **Nam** (neutral): Thứ Ba tuần sau tớ kiểm kê kho, lịch anh Khánh ký duyệt hôm mùng 9 rồi. Xong việc tớ hỏi tiếp giúp các cậu.
+- **Tùng** (neutral): Lần này tớ ghi tên mà không khoanh ai cả.
 *[Thẻ chữ]* Nhóm theo cách khác thì thấy chuyện khác. Thói quen đếm được, và đôi khi thói quen của người này là lời chứng cho người kia.
 > 🏁 KẾT THÚC vụ → màn kết.
 

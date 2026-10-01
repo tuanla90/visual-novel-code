@@ -263,25 +263,26 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 | Q-RB | ROBOTICS | Quỹ CLB Robotics |
 
 ## khoan_chi {bảng}
-- Cột: ma_chi TEXT, ma_don TEXT, ma_quy TEXT, so_tien INTEGER, nguoi_duyet TEXT
+- Cột: ma_chi TEXT, ma_don TEXT, ma_quy TEXT, so_tien INTEGER, nguoi_duyet TEXT, ngay_chi TEXT
 
 <!-- Vụ 5: bản xuất sổ chi khối CLB (chỉ các khoản ghi vào quỹ CLB Thám Tử và khoản liên quan các đơn). Ba khoản lớn (KC-03, 06, 08)
      trả cho ba đơn không có hàng, ghi vào quỹ CLB Thám Tử, người duyệt Khánh; ba khoản văn phòng phẩm nhỏ Minh Anh duyệt. Trung bình:
-     Khánh 800000, Minh Anh 150000 (chia hết). -->
+     Khánh 800000, Minh Anh 150000 (chia hết). ngay_chi: ba khoản lớn xuất 10–12/09, TRƯỚC lá thư 16/09 và trước ngày tạo ba đơn (27/09, 04/10, 07/10):
+     tiền đi trước, thư đi sau, đơn viết sau cùng cho khớp sổ. -->
 
-| ma_chi | ma_don | ma_quy | so_tien | nguoi_duyet |
-|---|---|---|---|---|
-| KC-01 | DLK-01 | Q-RB | 120000 | Bách |
-| KC-02 | DLK-02 | Q-RB | 200000 | Bách |
-| KC-03 | DLK-03 | Q-TT | 800000 | Khánh |
-| KC-04 | DLK-04 | Q-RB | 60000 | Bách |
-| KC-05 | DLK-05 | Q-RB | 150000 | Bách |
-| KC-06 | DLK-06 | Q-TT | 900000 | Khánh |
-| KC-07 | DLK-07 | Q-RB | 40000 | Khánh |
-| KC-08 | DLK-08 | Q-TT | 700000 | Khánh |
-| KC-09 | VPP-01 | Q-TT | 150000 | Minh Anh |
-| KC-10 | VPP-02 | Q-TT | 120000 | Minh Anh |
-| KC-11 | VPP-03 | Q-TT | 180000 | Minh Anh |
+| ma_chi | ma_don | ma_quy | so_tien | nguoi_duyet | ngay_chi |
+|---|---|---|---|---|---|
+| KC-01 | DLK-01 | Q-RB | 120000 | Bách | 2024-09-20 |
+| KC-02 | DLK-02 | Q-RB | 200000 | Bách | 2024-09-24 |
+| KC-03 | DLK-03 | Q-TT | 800000 | Khánh | 2024-09-10 |
+| KC-04 | DLK-04 | Q-RB | 60000 | Bách | 2024-10-01 |
+| KC-05 | DLK-05 | Q-RB | 150000 | Bách | 2024-10-02 |
+| KC-06 | DLK-06 | Q-TT | 900000 | Khánh | 2024-09-11 |
+| KC-07 | DLK-07 | Q-RB | 40000 | Khánh | 2024-10-05 |
+| KC-08 | DLK-08 | Q-TT | 700000 | Khánh | 2024-09-12 |
+| KC-09 | VPP-01 | Q-TT | 150000 | Minh Anh | 2024-09-18 |
+| KC-10 | VPP-02 | Q-TT | 120000 | Minh Anh | 2024-10-03 |
+| KC-11 | VPP-03 | Q-TT | 180000 | Minh Anh | 2024-10-09 |
 
 ## tai_san {bảng}
 - Cột: ma_tai_san TEXT, ten_tai_san TEXT, vi_tri TEXT

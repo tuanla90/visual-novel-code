@@ -42,3 +42,8 @@
 - Tiêu đề: Mẩu giấy kẹp ở trang "Kiểm hai lần"
 - Nguồn: Sổ tự học của chị Linh, phòng CLB
 - Nội dung: Chữ chị Linh: "Sổ này chị chép lại từ một cuốn cũ hơn. Cuốn cũ không phải của chị."
+
+### clue-sao-ke-cuoi-ky — [Sao kê quỹ về cuối kỳ]
+- Tiêu đề: Sao kê quỹ CLB chỉ về vào cuối kỳ
+- Nguồn: {{nv.minh-anh}} nhắc
+- Nội dung: Phòng Kế hoạch gửi sao kê quỹ về các CLB một lần, vào cuối học kỳ, cùng đợt rà soát phòng. Trước lúc đó chủ quỹ không tự xin thì không ai đọc sổ.

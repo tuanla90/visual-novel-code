@@ -86,7 +86,7 @@ Kết quả: 4 dòng
 - **Nam** (neutral): Năm. Mà tớ chỉ đặt hai: cảm biến dò line với bánh xe. Động cơ servo, mạch điều khiển, khung nhôm thì tớ không đặt. Anh Bách là phó CLB, chị Thảo lo kỹ thuật, anh Khánh là trưởng CLB.
 - **Tùng** (chi-tay): Thế ba đơn kia ai gõ tên cậu vào?
 - **Duy** (neutral): Sổ không ghi ai gõ. Nhưng mỗi đơn có một cột mã phiên: phiên đăng nhập của máy lúc tạo đơn. Máy xưởng có bảng phiên đăng nhập không?
-- **Nam** (neutral): Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong.
+- **Nam** (neutral): Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong. Mai là hôm tớ kiểm kê kho, lịch với sổ đều nằm trong tài khoản ấy. Khóa rồi thì chỉ còn cách đếm tay.
 - **Minh Anh** (neutral): Khóa là phải. Bảng ấy mà do Nam xuất thì ai cũng bảo Nam sửa được. Chị nhờ thầy Quang xin thầy Khải bên phòng máy xuất thẳng cho CLB mình. Máy chủ phần mềm đặt hàng đặt ở đó.
 - **Hà Vy** (thinking): Vậy là hai bảng. Đơn thì ở sổ đặt hàng, máy thì ở bảng phiên. Chung nhau cái mã phiên.
 - **Tùng** (chi-tay): Đơn cảm biến ghi PH-11. Bên bảng phiên mà cũng có một dòng PH-11 thì đấy là cái máy tạo ra đơn ấy, đúng không?
@@ -252,10 +252,7 @@ Lời nhân vật sau mỗi lần chạy:
 - **Nam** (neutral): Ốc vít thì đúng là anh Khánh đặt, hôm đó tớ thấy. Trưởng CLB ngồi máy văn phòng ban ngày là chuyện thường.
 - **Hà Vy** (thinking): Vậy máy đó ban ngày có người dùng hợp lệ. Ban đêm có ba đơn đứng tên Nam, mà một trong ba tạo lúc Nam ở thư viện. Mình mới biết máy, chưa biết tay.
 - **Duy** (neutral): Mà bảng phiên ghi máy văn phòng có năm phiên, nối xong chỉ ra bốn đơn. Một phiên sáng 02/10 không tạo đơn nào: có người mở phần mềm rồi thôi. Nối kiểu này thì phiên không có đơn không hiện ra.
-- **Nam** (neutral): Tờ giao chìa dán ngay cửa phòng ấy, ba tên: Khánh, Bách, Thảo. Tớ chụp lại rồi.
-- **Duy** (neutral): Ba người có chìa. Đừng vội.
-> 🗂️ Giấy nhớ mới: **[Tờ giao chìa: Khánh, Bách, Thảo]** — nguồn: Nam chụp lại tờ giấy dán ở cửa
-> Tờ giao chìa phòng văn phòng xưởng Robotics ghi ba người giữ chìa: Khánh (trưởng CLB), Bách (phó CLB), Thảo (kỹ thuật). Tờ giấy nói ai có chìa, không nói ai mở cửa tối nào. Bách nói tối 07/10 về quê; Thảo nói chìa của mình để ngăn bàn ngoài xưởng, ai cũng lấy được.
+- **Duy** (neutral): Tờ giao chìa hôm trước: ba người có chìa. Đừng vội.
 > 🗂️ Giấy nhớ mới: **[Lời nhắn chị Linh, mẩu thứ tư]** — nguồn: Sổ tự học của chị Linh, phòng CLB
 > Chữ chị Linh: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy."
 - **Duy** (neutral): Tên một người, tay một người khác… chị Linh có ghi một câu. Để tớ xem.
@@ -271,16 +268,20 @@ Lời nhân vật sau mỗi lần chạy:
 >   - Ban chủ nhiệm Robotics cố tình đổ nợ cho Nam. → **Duy** (neutral): Máy văn phòng thì ban chủ nhiệm giữ chìa, nhưng "cố tình" và "cả ban" thì bảng nào nói? Mình mới có máy và giờ.
 - **Minh Anh** (neutral): Phiếu bốn đơn từ máy văn phòng chị gửi kèm luôn: ba đơn đêm đứng tên Nam, một đơn ngày đứng tên trưởng CLB. Đủ để Ban kiểm tra thấy máy đó ban ngày ai dùng, ban đêm đứng tên ai.
 - **Duy** (neutral): Và ba người giữ chìa phòng đó. Mình ghi tên, không ghi tội.
-- **Nam** (neutral): Ba người giữ chìa phòng văn phòng: anh Khánh, anh Bách, chị Thảo. Tớ nhắn hỏi luôn rồi. Anh Bách bảo tối 07/10 anh ấy về quê, vé xe còn giữ. Chị Thảo bảo chìa của chị ấy để ngăn bàn ngoài xưởng cả tháng nay, ai mở ngăn cũng lấy được.
-- **Tùng** (gai-dau): Thế thì thành ra ai cũng có chìa à?
-- **Duy** (neutral): Thành ra tờ giao chìa nói ít hơn mình tưởng. Còn giấy giải trình đề ngày 11, một ngày sau hôm mình gỡ nghi cho Nam. Tớ ghi lại thôi, chưa nói gì.
-- **Khánh** (neutral): Nam ở đây à. Anh nghe Ban kiểm tra gửi giấy cho em. Cứ giải trình đúng sự thật, anh sẽ nói đỡ một câu.
+- **Duy** (neutral): Giấy giải trình đề ngày 11, một ngày sau hôm mình gỡ nghi cho Nam. Tớ ghi lại thôi, chưa nói gì.
+- **Khánh** (neutral): Nam ở đây à. Danh sách Ban kiểm tra cầm là anh chuyển. Đủ cả năm đơn, kể cả hai đơn em đặt thật, để họ khỏi bảo mình chọn lọc. Cứ giải trình đúng sự thật, anh sẽ nói đỡ một câu.
 - **Nam** (neutral): Vâng anh.
+- **Tùng** (worried): Tớ thấy rồi. Cái huy hiệu. Nãy giờ tớ nín thở.
+- **Hà Vy** (thinking): Nín là đúng. Nói ra lúc ấy là cá.
+- **Nam** (neutral): Huy hiệu làm ba chục cái hồi đầu năm. Cái sứt là lỗi khuôn, anh Khánh xin giữ. Nhưng balo anh ấy hay để ở xưởng, ai cũng cầm ra cổng được. Tớ không nói là anh ấy.
+- **Hà Vy** (neutral): Biết balo chưa phải biết người. Ghi thẻ, không kết.
+> 🗂️ Giấy nhớ mới: **[Huy hiệu sứt: lỗi khuôn, Khánh giữ]** — nguồn: Nam, sau khi Khánh ghé phòng CLB
+> Robotics làm ba chục huy hiệu hồi đầu năm; cái sứt một răng là lỗi khuôn, Khánh xin giữ và gắn trên balo. Balo hay để ở xưởng, ai cũng cầm được. Biết balo chưa phải biết người.
+- **Tùng** (gai-dau): Lần này tớ biết mà vẫn không cá. Khó hơn tớ tưởng nhiều.
+- **Minh Anh** (serious): Chắc trong lòng là lúc phải cẩn thận nhất. Muốn nói với thầy Quang thì cần một nguồn thứ hai, không dính gì tới cái huy hiệu. Và phải biết ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt. Sổ quỹ là nguồn tiếp theo. Sao kê thì cuối kỳ mới về, mình không chờ được tới đó.
 - **Nam** (neutral): Tớ không nghi ai cả. Nhưng tớ muốn biết là ai.
-- **Minh Anh** (serious): Muốn biết thì tìm tiếp bằng bảng, không bằng đoán. Ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt. Sổ quỹ là nguồn tiếp theo. Sao kê thì cuối kỳ mới về, mình không chờ được tới đó.
-- **Tùng** (chi-tay): Tớ không cá nữa đâu. Hỏi sổ.
-- **Hà Vy** (smile): Đúng rồi. Hỏi sổ.
-*[Thẻ chữ]* Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nối sai cột thì ra một câu chuyện không có thật.
+- **Hà Vy** (smile): Thì hỏi sổ.
+*[Thẻ chữ]* Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nghi ngờ mạnh vẫn chưa phải bằng chứng: càng chắc trong lòng, càng phải tìm nguồn thứ hai.
 > 🏁 KẾT THÚC vụ → màn kết.
 
 ## 🏁 Màn kết

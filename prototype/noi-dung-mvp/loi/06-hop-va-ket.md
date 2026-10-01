@@ -49,7 +49,7 @@
 ## ket-that.1
 - [DÀN DỰNG] {{nv.thay-quang}} quay sang {{nv.hoai}}.
 - **thay-quang** (neutral): Em Hoài, nhật ký in nói lá thư in từ tài khoản của một CLB, không phải của em. Phong bì em bỏ vào hộp là từ đâu ra?
-- **hoai** (nervous): Dạ… có một anh em không quen nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký như bình thường vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ. Mặt anh ấy em không nhớ, chỉ nhớ cái huy hiệu bánh răng trên balo sứt một góc.
+- **hoai** (nervous): Dạ… có một anh em không quen nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký như bình thường vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ. Mặt anh ấy em không nhớ, chỉ nhớ cái huy hiệu bánh răng trên balo sứt mất một răng.
 - **ha-vy** (neutral): Vậy là cậu ghi mã của mình vì được dặn. Còn người soạn thư thì không đứng tên ở đâu trên phiếu.
 - **thay-quang** (neutral): Nhật ký in khớp với lời em. Vậy em không phải người soạn thư.
 - **thay-quang** (neutral): Mã trên phiếu là để thầy cô tra cứu và phản hồi người gửi. Ở đây người viết giấu tên, mượn chữ ký và mã của một bạn năm nhất. Thư như vậy thầy không nhận vào hồ sơ rà soát.

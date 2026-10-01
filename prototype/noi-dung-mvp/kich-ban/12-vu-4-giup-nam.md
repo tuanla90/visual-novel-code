@@ -31,7 +31,7 @@
 - [LỜI v4-may-vp.1]
 - [THỬ THÁCH c-may-vp]
 - [LỜI v4-may-vp.2]
-- [HẬU QUẢ] mở manh mối clue-giao-chia, mở manh mối clue-loi-nhan-linh-4
+- [HẬU QUẢ] mở manh mối clue-loi-nhan-linh-4
 - [LỜI v4-may-vp.3]
 - [ĐI TỚI v4-ket]
 
@@ -43,4 +43,6 @@
   - (C) {id: ban-chu-nhiem} Ban chủ nhiệm Robotics cố tình đổ nợ cho Nam. → phản hồi: **duy** (neutral): Máy văn phòng thì ban chủ nhiệm giữ chìa, nhưng "cố tình" và "cả ban" thì bảng nào nói? Mình mới có máy và giờ.
 - [LỜI v4-ket-du.1]
 - [LỜI v4-ket.1]
+- [HẬU QUẢ] mở manh mối clue-huy-hieu-sut
+- [LỜI v4-ket.2]
 - [KẾT THÚC]

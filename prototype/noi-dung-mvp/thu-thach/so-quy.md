@@ -30,13 +30,13 @@ SELECT ma_don, nguoi_dat, so_tien, so_luong_co FROM don_linh_kien JOIN kiem_ke O
 - SQL chuẩn:
 
 ```sql
-SELECT ma_chi, ma_don, so_tien, nguoi_duyet FROM khoan_chi JOIN quy ON khoan_chi.ma_quy = quy.ma_quy WHERE clb = 'THAM_TU';
+SELECT ma_chi, ma_don, so_tien, nguoi_duyet, ngay_chi FROM khoan_chi JOIN quy ON khoan_chi.ma_quy = quy.ma_quy WHERE clb = 'THAM_TU';
 ```
 
 - [LỜI c-chi-tham-tu.1]
 - Vật chứng lưu vào hồ sơ: ev-chi-tham-tu
   - Tiêu đề: Sáu khoản chi ghi vào quỹ CLB Thám Tử
-  - Mô tả: Kết quả nối sổ chi với bảng quỹ: sáu khoản ghi vào quỹ CLB Thám Tử. Ba khoản văn phòng phẩm nhỏ do Minh Anh duyệt; ba khoản lớn gắn với ba đơn linh kiện, người duyệt ghi là Khánh.
+  - Mô tả: Kết quả nối sổ chi với bảng quỹ: sáu khoản ghi vào quỹ CLB Thám Tử. Ba khoản văn phòng phẩm nhỏ do Minh Anh duyệt; ba khoản lớn gắn với ba đơn linh kiện, người duyệt ghi là Khánh, xuất ngày 10, 11 và 12 tháng 9.
 
 ### c-chi-theo-nguoi-duyet — Mỗi người duyệt bao nhiêu khoản, tổng bao nhiêu tiền? {challenge: c-chi-theo-nguoi-duyet}
 

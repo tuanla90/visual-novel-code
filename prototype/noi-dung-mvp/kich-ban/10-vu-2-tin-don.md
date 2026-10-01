@@ -6,7 +6,7 @@
 
 - [LỜI tin-mo.1]
 - [HIỆN TÀI LIỆU doc-tin-don]
-- [HẬU QUẢ] mở manh mối clue-noi-dung-tin
+- [HẬU QUẢ] mở manh mối clue-noi-dung-tin, mở manh mối clue-sao-ke-cuoi-ky
 - [LỜI tin-mo.2]
 - [THỬ THÁCH c-tin-don]
 - [LỜI tin-mo.3]

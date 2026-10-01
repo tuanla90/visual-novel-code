@@ -119,5 +119,20 @@
 - **tung** (worried): Không phải Nam. Thế thì ai ngồi máy văn phòng xưởng tối đó?
 - **duy** (neutral): Máy trong phòng văn phòng, giờ xưởng mở. Ai vào được phòng đó thì mình chưa biết.
 - **ha-vy** (thinking): Và tên Nam vẫn nằm trên tài khoản kênh. Ai muốn người ta nghĩ là Nam, thì đã được như ý.
-- **minh-anh** (neutral): Mai chị nói chuyện với Nam. Chuyện này không chỉ là tin đồn về mình nữa.
+- **minh-anh** (neutral): Chuyện này không chỉ là tin đồn về mình nữa. Các em sang xưởng lần nữa, hỏi xem ai vào được phòng ấy. Hỏi thôi, chưa nghi ai.
+
+## v3-chia.1
+- **narrator**: Chiều muộn, xưởng Robotics. Nam dẫn cả nhóm tới cửa phòng văn phòng. Trên cửa dán một tờ giấy đã ngả màu.
+- **player**: "Giao chìa phòng văn phòng." Ba tên: Khánh, Bách, Thảo.
+- **nam** (neutral): Anh Khánh đang họp bên Hội. Anh Bách với chị Thảo thì ở kia.
+- **thao** (neutral): Phòng ấy chị mở nhiều nhất. Nhưng chìa của chị nằm ngăn bàn ngoài xưởng cả tháng nay, ai mở ngăn cũng lấy được. Chị không chối.
+- **bach** (neutral): Tối mùng 7 anh về quê, vé xe còn giữ. Chìa anh không cho ai mượn.
+- **thao** (neutral): Còn hỏi chuyện in ấn thì tối Chủ nhật nào chị cũng ra phòng máy in sơ đồ mạch. Tuần nào cũng thế, chị không nhớ nổi từng tuần.
+- **tung** (gai-dau): Tối Chủ nhật, phòng máy… Tớ không cá. Tớ ghi.
+
+## v3-chia.2
+- **ha-vy** (thinking): Ghi ba tên. Người cần hỏi, chưa phải người bị nghi.
+- **nam** (neutral): Thứ Ba tuần sau tớ kiểm kê kho, lịch anh Khánh ký duyệt hôm mùng 9 rồi. Xong việc tớ hỏi tiếp giúp các cậu.
+- **tung** (neutral): Lần này tớ ghi tên mà không khoanh ai cả.
 - [THẺ CHỮ] **narrator**: Nhóm theo cách khác thì thấy chuyện khác. Thói quen đếm được, và đôi khi thói quen của người này là lời chứng cho người kia.
+

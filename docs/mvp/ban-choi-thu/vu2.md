@@ -17,6 +17,8 @@ Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từ
 > 🗂️ Giấy nhớ mới: **[Câu tin đồn]** — nguồn: Ảnh chụp tin, Phòng CTSV chuyển về
 > Tin nào cũng mở đầu bằng mấy chữ này. Bản xuất của kênh ghi nguyên văn từng tin, nên phần sau có thể dài hơn.
 > (giấy nhớ kéo được vào màn tra: CLB Thám Tử soi dữ liệu)
+> 🗂️ Giấy nhớ mới: **[Sao kê quỹ về cuối kỳ]** — nguồn: Minh Anh nhắc
+> Phòng Kế hoạch gửi sao kê quỹ về các CLB một lần, vào cuối học kỳ, cùng đợt rà soát phòng. Trước lúc đó chủ quỹ không tự xin thì không ai đọc sổ.
 - **Bạn (người chơi)**: "CLB Thám Tử soi dữ liệu sinh viên."
 - **Tùng** (worried): Ơ, mình có soi ai đâu. Tra gì cũng có phiếu, lại có anh Quân ngồi giám sát mà.
 - **Minh Anh** (serious): Cuối kỳ là đợt rà soát phòng, cũng là lúc Phòng Kế hoạch gửi sao kê quỹ về các CLB. Chị không muốn tin này treo tới lúc đó.
