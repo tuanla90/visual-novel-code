@@ -18,9 +18,9 @@
  * không vẽ, không có sợi, nằm ở `boGhim` để ghim lại; thẻ "?" và phiếu sắp ghim (`them`) không gỡ được.
  */
 import type { KichBanMvp, TheHoSoMvp } from '../../content/mvp/types';
-import type { MauGhimMvp, TrangThaiMvp } from './trang-thai';
+import type { MauGhimMvp, TrangThaiMvp, GhiChuTruyVanMvp, PhieuTruyVanMvp } from './trang-thai';
 
-export type LoaiTheBang = 'tin' | 'phieu' | 'vat' | 'tai-lieu' | 'hoi';
+export type LoaiTheBang = 'tin' | 'phieu' | 'note' | 'vat' | 'tai-lieu' | 'hoi';
 
 export interface TheBang {
   id: string;
@@ -45,7 +45,7 @@ export interface TheBang {
 export interface DayBang {
   tu: string;
   den: string;
-  kieu: 'truy-van' | 'loai-tru';
+  kieu: 'truy-van' | 'loai-tru' | 'nguon';
   /** Nhãn trên sợi chỉ (số dòng của phiếu). */
   nhan: string | null;
   /** Màu sợi = màu ghim của thẻ nguồn `tu`. */
@@ -72,13 +72,14 @@ const tach = (chu: string | undefined): string[] =>
  * Bảng của ván đang chơi. `them`: mã một phiếu kết quả SẮP vào hồ sơ (màn "ghim lên bảng" ngay sau khi tra đúng, trước khi
  * máy ghi nhận) kèm các thẻ đã dùng.
  */
-export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; dung: string[] }): BangDieuTra {
+export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; dung: string[]; phieu?: PhieuTruyVanMvp; ghiChu?: GhiChuTruyVanMvp[] }): BangDieuTra {
   const the: TheBang[] = [];
   const boGhim: TheBang[] = [];
   const day: DayBang[] = [];
   const coRoi = new Set<string>();
   const daGo = new Set(s.bang?.boGhim ?? []);
   const mauCua = (id: string): MauGhimMvp => s.bang?.mau?.[id] ?? 'do';
+  const phieuCua = (id: string) => (them?.id === id ? them.phieu : undefined) ?? s.bang?.phieuTruyVan?.[id];
   const thuThachCua = (id: string) => Object.values(kb.thuThach).find((t) => t.vatChung?.id === id);
   // Thẻ đã gỡ thì vào danh sách chờ ghim lại; phiếu sắp ghim (`them`) luôn lên bảng.
   const dat = (t: TheBang): void => {
@@ -93,6 +94,11 @@ export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; d
     if (coRoi.has(id) || boGhim.some((t) => t.id === id)) return;
     const hs = kb.hoSo[id];
     const tt = thuThachCua(id);
+    const truyVan = phieuCua(id);
+    if (truyVan) {
+      dat({ id, loai: 'phieu', nhan: truyVan.nhan, phu: truyVan.tongHop ? 'TỔNG HỢP' : `${truyVan.soDong} dòng`, giaTri: [], gach: [], anh: null, khongDuLieu: false, the: hs ?? null, mau: mauCua(id) });
+      return;
+    }
     if (tt?.vatChung) {
       const n = tt.soDongKyVong;
       dat({
@@ -129,9 +135,32 @@ export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; d
   for (const id of s.hoSo.taiLieu) themThe(id);
   for (const id of s.hoSo.manhMoi) themThe(id);
   for (const id of s.hoSo.bangChung) themThe(id);
+  // Phiếu tổng hợp là thẻ gợi ý động, không nhập vào hồ sơ bằng chứng.
+  for (const id of Object.keys(s.bang?.phieuTruyVan ?? {})) themThe(id);
   if (them) themThe(them.id);
 
+  // Phiếu truy vấn đã ghim sinh note kéo được; note không nhập vào hồ sơ/bằng chứng.
+  for (const note of [...(s.bang?.ghiChuTruyVan ?? []), ...(them?.ghiChu ?? [])]) {
+    if (!coRoi.has(note.nguonId)) continue;
+    const id = note.id;
+    if (coRoi.has(id)) continue;
+    dat({ id, loai: 'note', nhan: note.nhan, phu: `Trích cột ${note.cot}`, giaTri: note.giaTri, gach: [], anh: null, khongDuLieu: false, the: null, mau: mauCua(id) });
+  }
+
   // Sợi chỉ đỏ: thẻ đã kéo vào câu → phiếu kết quả.
+  for (const t of the) {
+    if (t.loai === 'phieu') {
+      const truyVan = phieuCua(t.id);
+      if (truyVan?.nguonId && coRoi.has(truyVan.nguonId)) day.push({ tu: truyVan.nguonId, den: t.id, kieu: 'nguon', nhan: null, mau: mauCua(truyVan.nguonId) });
+    }
+  }
+  for (const t of the) {
+    if (t.loai === 'note') {
+      const note = [...(s.bang?.ghiChuTruyVan ?? []), ...(them?.ghiChu ?? [])].find((x) => x.id === t.id);
+      if (note && coRoi.has(note.nguonId)) day.push({ tu: note.nguonId, den: t.id, kieu: 'nguon', nhan: null, mau: mauCua(note.nguonId) });
+    }
+  }
+  // Sợi truy vấn chuẩn: thẻ đã kéo vào câu → phiếu kết quả.
   for (const t of the) {
     if (t.loai !== 'phieu') continue;
     const tt = thuThachCua(t.id);
@@ -162,6 +191,7 @@ export const KHUNG_BANG = { rong: 1600, cao: 900 } as const;
 export const CO_THE: Record<LoaiTheBang, { rong: number; cao: number }> = {
   tin: { rong: 176, cao: 150 },
   phieu: { rong: 236, cao: 170 },
+  note: { rong: 176, cao: 100 },
   vat: { rong: 150, cao: 176 },
   'tai-lieu': { rong: 104, cao: 132 },
   hoi: { rong: 178, cao: 178 },

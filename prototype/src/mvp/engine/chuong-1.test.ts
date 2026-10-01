@@ -25,13 +25,14 @@ function choi(s: TrangThaiMvp, reNhanh: Record<string, string>, dung: (s: TrangT
 const toiKet = (_s: TrangThaiMvp, kn: KhungNhinMvp): boolean => kn.kind === 'end';
 
 describe('chương 1: ngày theo truyện', () => {
-  it('lịch: năm ngày theo truyện, không dữ kiện chính / buổi tối, không uy tín, không địa điểm', () => {
+  it('lịch: năm ngày theo truyện của vụ lá thư cộng ngày 6 thử màn tổng hợp, không dữ kiện chính / buổi tối, không uy tín, không địa điểm', () => {
     expect(KB.lich.ngay.map((n) => [n.so, n.kieu, n.chuoi])).toEqual([
       [1, 'theo-truyen', 'n1-mo'],
       [2, 'theo-truyen', 'n2-mo'],
       [3, 'theo-truyen', 'n3-mo'],
       [4, 'theo-truyen', 'n4-mo'],
       [5, 'theo-truyen', 'n5-mo'],
+      [6, 'theo-truyen', 'v2-tong-hop'],
     ]);
     expect(KB.lich.luat.uyTin).toBeNull();
     expect(KB.diaDiem).toEqual([]);

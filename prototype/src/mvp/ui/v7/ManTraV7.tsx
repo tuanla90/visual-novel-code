@@ -61,7 +61,7 @@ export interface ManTraV7Props {
   giayNho: GiaTriHoSo[];
   dienTen: (t: string) => string;
   /** Người chơi bấm ghim / đi tiếp sau khi tra đúng; `dung` = mã các thẻ đã kéo vào câu. */
-  onXong: (dung: string[]) => void;
+  onXong: (dung: string[], result?: { sql: string; cot: { ten: string; kieu: 'TEXT' | 'INTEGER' }[]; soDong: number }) => void;
 }
 
 export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong }: ManTraV7Props) {
@@ -239,7 +239,17 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
   const xong = (): void => {
     if (xongRoi) return;
     setXongRoi(true);
-    onXong(dungCacThe);
+    const duocDungLamNguon = !!the.vatChung && Object.values(kb.thuThach).some((challenge) => challenge.kieuTrinhDung === 'tong-hop' && challenge.nguon === the.vatChung?.id);
+    if (duocDungLamNguon && cham?.trangThai === 'dung' && cham.chay.ok) {
+      onXong(dungCacThe, {
+        sql,
+        cot: cham.chay.cot.map((ten, i) => ({
+          ten,
+          kieu: bang?.cot.find((c) => c.ten === ten)?.kieu ?? (typeof cham.chay.dong.find((row) => row[i] !== null)?.[i] === 'number' ? 'INTEGER' : 'TEXT'),
+        })),
+        soDong: cham.chay.dong.length,
+      });
+    } else onXong(dungCacThe);
   };
 
   // Giấy nhớ quanh viền: nửa trái, nửa phải; nhiều hơn 8 tờ thì xếp sát lại.

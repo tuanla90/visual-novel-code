@@ -46,7 +46,7 @@ describe('Vụ 2: sang vụ sau từ màn kết Vụ 1', () => {
     expect(tatCa.length).toBeGreaterThan(5);
     expect(s.bang?.boGhim).toEqual(expect.arrayContaining(tatCa));
     expect(giaTriTuHoSo(KB, truoc.hoSo).length).toBeGreaterThan(3);
-    expect(giaTriTuHoSo(KB, s.hoSo, s.bang?.boGhim)).toEqual([]);
+    expect(giaTriTuHoSo(KB, s.hoSo, [], s.bang?.boGhim)).toEqual([]);
   });
 
   it('câu mở rẽ theo kết Vụ 1: kết thật → v2-mo-that; kết thường → v2-mo', () => {
@@ -87,7 +87,7 @@ describe('Vụ 2: sang vụ sau từ màn kết Vụ 1', () => {
   it('màn tra Vụ 2 chỉ có hai giấy nhớ của vụ này; điểm nhảy vu2-buoi tới đúng thẻ', () => {
     const s = nhayToi(KB, 'vu2-buoi', 1);
     expect(khungNhin(KB, s)).toMatchObject({ kind: 'challenge', thuThach: { id: 'v2-loc-buoi' } });
-    expect(giaTriTuHoSo(KB, s.hoSo, s.bang?.boGhim).map((g) => g.giaTri)).toEqual(['clb-tham-tu', 'DA_XAC_NHAN']);
+    expect(giaTriTuHoSo(KB, s.hoSo, [], s.bang?.boGhim).map((g) => g.giaTri)).toEqual(['clb-tham-tu', 'DA_XAC_NHAN']);
   });
 
   it('lưu giữa Vụ 2 rồi nạp lại: chơi tiếp tới màn kết Vụ 2', () => {

@@ -24,7 +24,7 @@ export interface DuLieuMvp {
   hoSo: Record<string, Obj>;
   soTay: Record<string, Obj>;
   loiChung: Obj;
-  soDongKhai: { sql: string; soDong: number; noi: string }[];
+  soDongKhai: { sql: string; soDong: number; noi: string; resultId?: string; sourceResultId?: string; sourceGroupColumn?: string }[];
   duLieu: { bang: { ten: string; cot: { ten: string; kieu: string }[]; dong: (string | number | null)[][] }[]; bangAo: { ten: string; sql: string }[] } | null;
 }
 
@@ -143,7 +143,7 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
   if (soDongChu !== undefined) {
     if (!/^\d+$/.test(soDongChu)) throw new Error(`${noi}: thẻ ${t.id}, "Số dòng kỳ vọng" phải là số nguyên: "${soDongChu}"`);
     soDongKyVong = Number(soDongChu);
-    soDongKhai.push({ sql: sqlChuan, soDong: soDongKyVong, noi: `${noi} thẻ ${t.id}, SQL chuẩn` });
+    soDongKhai.push({ sql: sqlChuan, soDong: soDongKyVong, noi: `${noi} thẻ ${t.id}, SQL chuẩn`, ...(t.evidence ? { resultId: t.evidence.id } : {}), ...(t.fields['Kiểu'] === 'tổng hợp' && t.fields['Nguồn'] ? { sourceResultId: t.fields['Nguồn'] } : {}), ...(t.fields['Kiểu'] === 'tổng hợp' && t.fields['Nhóm theo'] ? { sourceGroupColumn: t.fields['Nhóm theo'] } : {}) });
   }
   return {
     id: t.id,
@@ -153,6 +153,7 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     mucTieuHoc: t.fields['Mục tiêu học'] ?? null,
     soDongKyVong,
     sqlChuan,
+    ...(t.fields['Kiểu'] === 'tổng hợp' ? { kieuTrinhDung: 'tong-hop', nguon: t.fields['Nguồn'] ?? null, nhomTheo: t.fields['Nhóm theo'] || null } : {}),
     truyVanNapSan: t.sql['Truy vấn nạp sẵn'] ?? null,
     phanUng: docPhanUng(t.fields).phanUng.map((p) => ({ khi: p.khi, loi: p.loi.map(loi) })),
     vatChung: t.evidence

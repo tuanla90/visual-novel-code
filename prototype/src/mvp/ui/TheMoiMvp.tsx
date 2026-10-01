@@ -23,7 +23,7 @@ export interface TheMoiMvpProps {
 
 const TOI_DA_HIEN = 3;
 
-const NHAN_LOAI: Record<LoaiTheBang, string> = {
+const NHAN_LOAI: Record<LoaiTheBang, string> = { note: 'Query note',
   tin: 'Giấy nhớ',
   phieu: 'Phiếu tra cứu',
   vat: 'Vật chứng',

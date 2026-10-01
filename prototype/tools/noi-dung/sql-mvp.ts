@@ -17,6 +17,9 @@ export interface KhaiSoDong {
   sql: string;
   soDong: number;
   noi: string;
+  resultId?: string;
+  sourceResultId?: string;
+  sourceGroupColumn?: string;
 }
 
 export interface KetQuaChayMvp {
@@ -91,6 +94,21 @@ export function demDong(db: Database, sql: string): number {
   }
 }
 
+/** Resolve opt-in `FROM @evidence-id` placeholders against earlier canonical card queries. */
+type NguonDaChay = Pick<KhaiSoDong, 'sql' | 'sourceResultId'> & { cot: string[] };
+function moRongNguon(k: Pick<KhaiSoDong, 'sql' | 'sourceResultId' | 'sourceGroupColumn'>, daChay: Map<string, NguonDaChay>, stack = new Set<string>()): string {
+  if (!k.sourceResultId) return k.sql;
+  const id = k.sourceResultId;
+  if (stack.has(id)) throw new Error(`phụ thuộc nguồn vòng lặp tại "${id}"`);
+  const source = daChay.get(id);
+  if (!source) throw new Error(`nguồn "${id}" chưa có SQL chuẩn đã kiểm ở phía trước`);
+  if (k.sourceGroupColumn && !source.cot.includes(k.sourceGroupColumn)) throw new Error(`cột nhóm "${k.sourceGroupColumn}" không có trong kết quả nguồn "${id}" (${source.cot.join(', ')})`);
+  const re = new RegExp(`\\bFROM\\s+@${id}\\b`, 'gi');
+  if ([...k.sql.matchAll(re)].length !== 1) throw new Error(`SQL chuẩn phải tham chiếu nguồn đúng một lần bằng "FROM @${id}"`);
+  const nested = moRongNguon(source, daChay, new Set([...stack, id]));
+  return k.sql.replace(re, `FROM (${nested.replace(/;\s*$/, '')}) AS "${id}"`);
+}
+
 /** Tách `noi` dạng "<tệp>:<dòng> <mô tả>" để lỗi mở đúng dòng trong trình soạn thảo. */
 function tachNoi(noi: string): { viTri: string; moTa: string } {
   const m = /^(\S+?:\d+)\s+(.*)$/.exec(noi);
@@ -120,12 +138,19 @@ export async function kiemSoDongMvp(duLieu: BoDuLieuMvp | null, khai: readonly K
     return { ketQua: khai.map((k) => ({ ...k, soDongThat: null })), loi: [(e as Error).message] };
   }
   try {
+    const daChay = new Map<string, NguonDaChay>();
     for (const k of khai) {
       const { viTri, moTa } = tachNoi(k.noi);
       const dau = `${viTri}: ${moTa === '' ? '' : `${moTa}: `}`;
       let that: number | null = null;
+      let sqlChay = k.sql;
       try {
-        that = demDong(db, k.sql);
+        sqlChay = moRongNguon(k, daChay);
+        that = demDong(db, sqlChay);
+        if (k.resultId) {
+          const st = db.prepare(sqlChay.trim().replace(/;\s*$/, ''));
+          try { daChay.set(k.resultId, { sql: k.sql, cot: st.getColumnNames() }); } finally { st.free(); }
+        }
       } catch (e) {
         loi.push(`${dau}câu SQL lỗi khi chạy trên ${duLieu.viTri.tep}: ${(e as Error).message} — ${k.sql.replace(/\s+/g, ' ').trim()}`);
       }

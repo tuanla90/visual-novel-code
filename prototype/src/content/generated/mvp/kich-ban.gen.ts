@@ -495,6 +495,15 @@ export const KICH_BAN_MVP = {
         "duKienChinh": "",
         "moNgay": null,
         "buoiToi": ""
+      },
+      {
+        "so": 6,
+        "ten": "Từ phiếu đến pattern",
+        "kieu": "theo-truyen",
+        "chuoi": "v2-tong-hop",
+        "duKienChinh": "",
+        "moNgay": null,
+        "buoiToi": ""
       }
     ],
     "ngayHop": {
@@ -3028,6 +3037,26 @@ export const KICH_BAN_MVP = {
       ]
     },
     {
+      "id": "v2-tong-hop",
+      "title": "Từ phiếu đến pattern",
+      "canh": "phong-may",
+      "mocSomNhat": 61,
+      "nodes": [
+        {
+          "type": "task",
+          "text": "Dùng kết quả đã lưu làm nguồn, rồi nhóm các lớp ở tòa B theo ngành."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-v2-nguon-lop"
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-v2-nhom-lop"
+        }
+      ]
+    },
+    {
       "id": "v2-mo",
       "title": "Mở Vụ 2: hồ sơ cuối kỳ",
       "canh": "phong-clb",
@@ -3893,6 +3922,40 @@ export const KICH_BAN_MVP = {
       "ghiChu": [
         "Đường \"sai có ích\": [clb-tham-tu] vào ma_phong, [DA_XAC_NHAN] vào trang_thai, so y nguyên → 1 dòng. Gọt dấu cách → 2. Thêm chữ thường → 4, chưa xếp → \"sai thứ tự\". Xếp theo ngay → đúng."
       ]
+    },
+    "c-v2-nguon-lop": {
+      "id": "c-v2-nguon-lop",
+      "tieuDe": "Danh sách lớp sinh hoạt",
+      "deBai": "Lọc tiếp trên danh sách lớp để xem ngành nào có lớp ở tòa B.",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": null,
+      "soDongKyVong": 14,
+      "sqlChuan": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat;",
+      "truyVanNapSan": null,
+      "phanUng": [],
+      "vatChung": {
+        "id": "ev-v2-danh-sach-lop",
+        "title": "Phiếu danh sách lớp",
+        "description": "Kết quả truy vấn danh sách lớp, gồm mã lớp, ngành, khóa học và tòa nhà.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-v2-nhom-lop": {
+      "id": "c-v2-nhom-lop",
+      "tieuDe": "Số lớp tại tòa B theo ngành",
+      "deBai": "Dùng phiếu danh sách lớp làm nguồn, lọc các lớp ở tòa B rồi đếm theo ngành.",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": null,
+      "soDongKyVong": 3,
+      "sqlChuan": "SELECT nganh, COUNT(*) AS so_lop FROM @ev-v2-danh-sach-lop WHERE toa_nha = 'B' GROUP BY nganh;",
+      "kieuTrinhDung": "tong-hop",
+      "nguon": "ev-v2-danh-sach-lop",
+      "nhomTheo": "nganh",
+      "truyVanNapSan": null,
+      "phanUng": [],
+      "vatChung": null,
+      "ghiChu": []
     }
   },
   "hoSo": {
@@ -4300,27 +4363,45 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep LIKE 'kien-nghi%';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/thu-thach/c-in.md:3 thẻ c-in, SQL chuẩn"
+      "noi": "noi-dung-mvp/thu-thach/c-in.md:3 thẻ c-in, SQL chuẩn",
+      "resultId": "ev-nhat-ky-in"
     },
     {
       "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí';",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/c-lop.md:3 thẻ c-lop, SQL chuẩn"
+      "noi": "noi-dung-mvp/thu-thach/c-lop.md:3 thẻ c-lop, SQL chuẩn",
+      "resultId": "ev-hai-lop"
     },
     {
       "sql": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop IN ('BC24A', 'BC23A') AND ten LIKE 'H%';",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:3 thẻ c-ten-h, SQL chuẩn"
+      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:3 thẻ c-ten-h, SQL chuẩn",
+      "resultId": "ev-hai-ma"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:26 thẻ c-sua-or-quan, SQL chuẩn"
+      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:26 thẻ c-sua-or-quan, SQL chuẩn",
+      "resultId": "ev-hai-dong-sua"
     },
     {
       "sql": "SELECT ma_buoi, ngay, hoat_dong FROM nhat_ky_su_dung WHERE LOWER(TRIM(ma_phong)) = 'clb-tham-tu' AND trang_thai = 'DA_XAC_NHAN' ORDER BY ngay;",
       "soDong": 4,
-      "noi": "noi-dung-mvp/thu-thach/v2-loc-buoi.md:3 thẻ v2-loc-buoi, SQL chuẩn"
+      "noi": "noi-dung-mvp/thu-thach/v2-loc-buoi.md:3 thẻ v2-loc-buoi, SQL chuẩn",
+      "resultId": "ev-v2-activities"
+    },
+    {
+      "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat;",
+      "soDong": 14,
+      "noi": "noi-dung-mvp/thu-thach/v2-tong-hop.md:3 thẻ c-v2-nguon-lop, SQL chuẩn",
+      "resultId": "ev-v2-danh-sach-lop"
+    },
+    {
+      "sql": "SELECT nganh, COUNT(*) AS so_lop FROM @ev-v2-danh-sach-lop WHERE toa_nha = 'B' GROUP BY nganh;",
+      "soDong": 3,
+      "noi": "noi-dung-mvp/thu-thach/v2-tong-hop.md:18 thẻ c-v2-nhom-lop, SQL chuẩn",
+      "sourceResultId": "ev-v2-danh-sach-lop",
+      "sourceGroupColumn": "nganh"
     },
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';",

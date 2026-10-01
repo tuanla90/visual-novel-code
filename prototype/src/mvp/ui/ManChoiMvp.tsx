@@ -331,10 +331,10 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             the={kn.thuThach}
             mode={kn.kind}
             dienTen={dienTen}
-            giayNho={giaTriTuHoSo(kb, s.hoSo, s.bang?.boGhim)}
+            giayNho={giaTriTuHoSo(kb, s.hoSo, s.bang?.ghiChuTruyVan ?? [], s.bang?.boGhim)}
             noi={kb.canh.find((c) => c.id === s.canh)?.ten}
             onDoiCho={(the, x, y) => hanhDong({ type: 'doi-cho-the', the, x, y })}
-            onXong={(dung) => hanhDong({ type: 'xong-thu-thach', thuThach: kn.thuThach.id, dung })}
+            onXong={(dung, phieu, ghiChu) => hanhDong({ type: 'xong-thu-thach', thuThach: kn.thuThach.id, dung, ...(phieu ? { phieu } : {}), ...(ghiChu?.length ? { ghiChu } : {}) })}
           />
         );
       case 'effect':

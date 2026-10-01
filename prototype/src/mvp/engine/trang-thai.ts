@@ -79,6 +79,28 @@ export interface BangGhimLuuMvp {
   mau?: Record<string, MauGhimMvp>;
   /** Thẻ người chơi đã gỡ khỏi bảng (vẫn trong hồ sơ, ghim lại được). Mặc định mọi thẻ đều ghim. */
   boGhim?: string[];
+  /** Query result cards do người chơi tạo: chỉ lưu SQL + schema, không lưu bản sao các dòng SQLite. */
+  phieuTruyVan?: Record<string, PhieuTruyVanMvp>;
+  /** Notes người chơi trích từ kết quả nhỏ; giữ ngoài hồ sơ/bằng chứng đối chất. */
+  ghiChuTruyVan?: GhiChuTruyVanMvp[];
+}
+
+export interface PhieuTruyVanMvp {
+  id: string;
+  nhan: string;
+  sql: string;
+  cot: { ten: string; kieu: 'TEXT' | 'INTEGER' }[];
+  nguonId: string;
+  tongHop: boolean;
+  soDong: number;
+}
+
+export interface GhiChuTruyVanMvp {
+  id: string;
+  nhan: string;
+  cot: string;
+  giaTri: string[];
+  nguonId: string;
 }
 
 /** Bốn màu đầu ghim: đỏ (mặc định), xanh dương, lục, tím. */
