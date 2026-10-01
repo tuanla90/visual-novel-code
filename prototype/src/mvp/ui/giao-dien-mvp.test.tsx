@@ -44,7 +44,8 @@ describe('thanh trên MVP (phong cách .topbar của prototype)', () => {
   it('mọi nút có aria-label + title', () => {
     veManChoi(taoTrangThai(kb, 1));
     const nut = within(thanhTren()).getAllByRole('button');
-    expect(nut.length).toBeGreaterThanOrEqual(4);
+    // Dọc/Ngang, Hồ sơ, menu — nút Sổ tay chỉ hiện khi đã có trang.
+    expect(nut.length).toBeGreaterThanOrEqual(3);
     for (const b of nut) {
       expect(b).toHaveAttribute('aria-label');
       expect(b).toHaveAttribute('title');
@@ -170,10 +171,9 @@ describe('bảng điều tra + sổ cá nhân MVP (khung hòm đồ prototype)',
     expect(screen.queryByRole('dialog')).toBeNull();
   });
 
-  it('sổ trống: báo sổ còn trống', async () => {
+  it('sổ trống: thanh trên không có nút Sổ tay (chương 1 chưa ghi trang nào)', () => {
     veManChoi(taoTrangThai(kb, 1));
-    await userEvent.click(within(thanhTren()).getByRole('button', { name: /^Mở sổ cá nhân/ }));
-    expect(screen.getByText(/Sổ còn trống/)).toBeInTheDocument();
+    expect(within(thanhTren()).queryByRole('button', { name: /^Mở sổ cá nhân/ })).toBeNull();
   });
 });
 
