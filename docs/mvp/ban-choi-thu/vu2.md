@@ -18,7 +18,7 @@ Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từ
 > Tin nào cũng mở đầu bằng mấy chữ này. Bản xuất của kênh ghi nguyên văn từng tin, nên phần sau có thể dài hơn.
 > (giấy nhớ kéo được vào màn tra: CLB Thám Tử soi dữ liệu)
 > 🗂️ Giấy nhớ mới: **[Sao kê quỹ về cuối kỳ]** — nguồn: Minh Anh nhắc
-> Phòng Kế hoạch gửi sao kê quỹ về các CLB một lần, vào cuối học kỳ, cùng đợt rà soát phòng. Trước lúc đó chủ quỹ không tự xin thì không ai đọc sổ.
+> Phòng Kế hoạch gửi sao kê quỹ về các CLB một lần, vào cuối học kỳ, cùng đợt rà soát phòng. Chủ quỹ muốn xem giữa kỳ thì phải làm giấy, qua chủ tịch Hội sinh viên ký chuyển. Trước lúc đó không ai đọc sổ.
 - **Bạn (người chơi)**: "CLB Thám Tử soi dữ liệu sinh viên."
 - **Tùng** (worried): Ơ, mình có soi ai đâu. Tra gì cũng có phiếu, lại có anh Quân ngồi giám sát mà.
 - **Minh Anh** (serious): Cuối kỳ là đợt rà soát phòng, cũng là lúc Phòng Kế hoạch gửi sao kê quỹ về các CLB. Chị không muốn tin này treo tới lúc đó.
@@ -108,7 +108,7 @@ Lời nhân vật sau mỗi lần chạy:
 - **Hà Vy** (thinking): Còn mật khẩu nhiều người biết thì kênh có ghi ai đăng nhập không? Không có thì bọn tớ nhờ bên quản trị trường mở.
 - **Nam** (neutral): …Khỏi nhờ. Tớ là quản trị kênh, tớ mở nhật ký đăng nhập được. Xem đi, xem cả bảng ngoài cửa luôn.
 - **Duy** (neutral): Vậy là hai chỗ kiểm được. Xem cả hai, hay xem một rồi về báo chị Minh Anh, tùy mình.
-- **Khánh** (neutral): Nam, anh lấy tập hồ sơ giải quốc gia rồi quay lại họp. Có khách à?
+- **Khánh** (neutral): Nam, ban tổ chức cho đội mình thêm một tuần đóng lệ phí rồi, anh vừa xin được. Cứ tập tiếp đi. Anh lấy tập hồ sơ giải rồi quay lại họp. Có khách à?
 - **Nam** (neutral): Các bạn bên CLB Thám Tử ạ. Hỏi chuyện cái tin trong kênh.
 - **Khánh** (neutral): Anh là Khánh, trưởng CLB. Tin ấy anh có nghe. Kênh thì Nam trực, các em cần xem gì cứ để Nam mở, bên anh không giấu. Hỏi nhẹ thôi nhé, em nó sắp thi đấu.
 - **Tùng** (surprised): Anh Khánh chủ tịch Hội sinh viên đấy.

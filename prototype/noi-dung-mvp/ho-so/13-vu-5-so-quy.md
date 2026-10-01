@@ -47,5 +47,5 @@
 
 ### clue-so-phong-may — [Sổ ký phòng máy tối 15/9]
 - Tiêu đề: Trang sổ ký vào phòng máy, tối Chủ nhật 15/9
-- Nguồn: {{nv.thay-khai}} giữ sổ; {{nv.duy}} chụp lại
+- Nguồn: {{nv.thay-khai}} giữ sổ; {{nv.thay-quang}} ký cho mở đúng một trang, {{nv.co-hanh}} gửi kèm bản xuất sổ quỹ
 - Nội dung: Tối Chủ nhật muốn vào phòng máy phải ký sổ. Tối 15/9 có hai dòng: Thảo vào 20:10, ra 21:30; Khánh vào 22:40, ra 23:20. Nhật ký in ghi lá thư in lúc 23:10. Sổ nói ai ở trong phòng, không nói ai bấm in.

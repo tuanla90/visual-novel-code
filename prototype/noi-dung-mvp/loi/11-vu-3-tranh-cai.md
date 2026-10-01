@@ -45,6 +45,8 @@
 - **hoai** (nervous): Tớ chào các cậu. Lá thư hôm ấy tớ chỉ nộp hộ. Tớ vẫn nghĩ mãi về cái anh đã nhờ tớ.
 - **ha-vy** (neutral): Nhớ thêm được gì thì bảo bọn tớ nhé.
 - **hoai** (neutral): Ừ. Tớ mà gặp lại cái balo ấy là tớ nhận ra.
+- **hoai** (neutral): Mà cậu là bạn áo xanh tình nguyện tuần đầu đúng không? Hôm ấy cậu dẫn tớ lạc sang tận nhà xe.
+- **tung** (gai-dau): Tớ dẫn đúng hướng, chỉ sai tòa thôi. Áo thì tớ vẫn cất trong tủ.
 - **narrator**: Nam mở cổng sinh viên trên điện thoại, tải bản ghi cửa từ của chính mình trong tháng 9 và tháng 10, gửi vào nhóm.
 - **ha-vy** (neutral): Tớ cũng tải bản của tớ, gộp chung vào một tệp cho dễ tra. Tên ai thì ghi tên người đó.
 - **nam** (neutral): Lọc ra của tớ rồi xem.
@@ -132,7 +134,7 @@
 
 ## v3-chia.2
 - **ha-vy** (thinking): Ghi ba tên. Người cần hỏi, chưa phải người bị nghi.
-- **nam** (neutral): Thứ Ba tuần sau tớ kiểm kê kho, lịch anh Khánh ký duyệt hôm mùng 9 rồi. Xong việc tớ hỏi tiếp giúp các cậu.
+- **nam** (neutral): Thứ Ba tuần sau tớ kiểm kê kho. Ban tổ chức giải bắt đội nào cũng nộp biên bản kiểm kê trước khi đóng lệ phí, nên lịch anh Khánh phải ký từ mùng 9. Xong việc tớ hỏi tiếp giúp các cậu.
 - **tung** (neutral): Lần này tớ ghi tên mà không khoanh ai cả.
 - [THẺ CHỮ] **narrator**: Nhóm theo cách khác thì thấy chuyện khác. Thói quen đếm được, và đôi khi thói quen của người này là lời chứng cho người kia.
 

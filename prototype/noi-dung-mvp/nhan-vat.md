@@ -6,7 +6,7 @@
 
 ### tung — Tùng
 - Họ tên: Trần Tùng
-- Vai: Năm 1 Du lịch, bạn cùng phòng KTX 408 của người chơi, cháu chú Cường. Dẫn đường, nhắc lịch. "Tớ cá là…"
+- Vai: Năm 1 Du lịch, bạn cùng phòng KTX 408 của người chơi, cháu chú Cường, tình nguyện viên đón tân sinh viên tuần đầu (áo xanh tình nguyện: mặc lại ở Vụ 5 khi đón Hoài tới buổi họp; CHƯA CÓ ẢNH áo xanh). Dẫn đường, nhắc lịch. "Tớ cá là…"
 - Biểu cảm: neutral, happy, worried, surprised, thinking, gai-dau, chi-tay
 - Danh xưng: Bạn cùng phòng 408
 - Năm: Năm nhất

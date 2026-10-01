@@ -9,7 +9,7 @@ Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từ
 - **Nam** (neutral): Các cậu nói đúng. Có người đang mượn tên tớ, mà không phải chỉ cái tin đồn.
 - **Minh Anh** (neutral): Ngồi xuống đã. Chuyện gì?
 - **Nam** (neutral): Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, cộng lại hơn hai triệu rưỡi, có đơn gần một triệu. Trong năm đơn ấy tớ chỉ đặt hai: cảm biến với bánh xe, mấy trăm nghìn. Ba đơn kia tớ không đặt.
-- **Quân** (neutral): Giấy ấy ban tôi lập. Hôm thứ Sáu chủ tịch Hội chuyển xuống danh sách năm đơn, bảo làm đúng quy trình. Lần trước tôi lọc rộng rồi nghi vội cả một lớp. Lần này tôi mang sổ tới để các bạn tự tra, tra ra gì tôi ghi đúng thế.
+- **Quân** (neutral): Giấy ấy ban tôi lập. Hôm thứ Sáu chủ tịch Hội chuyển xuống danh sách năm đơn, bảo làm đúng quy trình. Lần trước tôi lọc rộng rồi nghi vội cả một lớp. Lần này tôi mang sổ tới để các bạn tự tra, tra ra gì tôi ghi đúng thế. Theo quy chế, danh sách đơn vượt mức gửi lên thì ban tôi buộc tạm khóa tài khoản người đứng tên, để giữ nguyên sổ.
 > 🗂️ Tài liệu mới: **Giấy yêu cầu giải trình ngân sách** — nguồn: Nam mang tới phòng CLB
 > Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, năm đơn cộng lại 2.670.000 đồng. Giấy đề ngày 11/10, lập theo danh sách chủ tịch Hội sinh viên chuyển xuống; Quân ký. Kèm bản sổ đặt hàng của xưởng.
 > Nam nói mình chỉ đặt hai đơn: cảm biến dò line và bánh xe.
@@ -86,7 +86,7 @@ Kết quả: 4 dòng
 - **Nam** (neutral): Năm. Mà tớ chỉ đặt hai: cảm biến dò line với bánh xe. Động cơ servo, mạch điều khiển, khung nhôm thì tớ không đặt. Anh Bách là phó CLB, chị Thảo lo kỹ thuật, anh Khánh là trưởng CLB.
 - **Tùng** (chi-tay): Thế ba đơn kia ai gõ tên cậu vào?
 - **Duy** (neutral): Sổ không ghi ai gõ. Nhưng mỗi đơn có một cột mã phiên: phiên đăng nhập của máy lúc tạo đơn. Máy xưởng có bảng phiên đăng nhập không?
-- **Nam** (neutral): Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong. Mai là hôm tớ kiểm kê kho, lịch với sổ đều nằm trong tài khoản ấy. Khóa rồi thì chỉ còn cách đếm tay.
+- **Nam** (neutral): Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong. Mai là hôm tớ kiểm kê kho, lịch với sổ đều nằm trong tài khoản ấy. Lịch ấy ban tổ chức giải bắt nộp, muốn dời sát ngày phải ghi lý do. Khóa tài khoản rồi thì chỉ còn cách đếm tay.
 - **Minh Anh** (neutral): Khóa là phải. Bảng ấy mà do Nam xuất thì ai cũng bảo Nam sửa được. Chị nhờ thầy Quang xin thầy Khải bên phòng máy xuất thẳng cho CLB mình. Máy chủ phần mềm đặt hàng đặt ở đó.
 - **Hà Vy** (thinking): Vậy là hai bảng. Đơn thì ở sổ đặt hàng, máy thì ở bảng phiên. Chung nhau cái mã phiên.
 - **Tùng** (chi-tay): Đơn cảm biến ghi PH-11. Bên bảng phiên mà cũng có một dòng PH-11 thì đấy là cái máy tạo ra đơn ấy, đúng không?
@@ -277,8 +277,10 @@ Lời nhân vật sau mỗi lần chạy:
 - **Hà Vy** (neutral): Biết balo chưa phải biết người. Ghi thẻ, không kết.
 > 🗂️ Giấy nhớ mới: **[Huy hiệu sứt: lỗi khuôn, Khánh giữ]** — nguồn: Nam, sau khi Khánh ghé phòng CLB
 > Robotics làm ba chục huy hiệu hồi đầu năm; cái sứt một răng là lỗi khuôn, Khánh xin giữ và gắn trên balo. Balo hay để ở xưởng, ai cũng cầm được. Biết balo chưa phải biết người.
-- **Tùng** (gai-dau): Lần này tớ biết mà vẫn không cá. Khó hơn tớ tưởng nhiều.
-- **Minh Anh** (serious): Chắc trong lòng là lúc phải cẩn thận nhất. Muốn nói với thầy Quang thì cần một nguồn thứ hai, không dính gì tới cái huy hiệu. Và phải biết ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt. Sổ quỹ là nguồn tiếp theo. Sao kê thì cuối kỳ mới về, mình không chờ được tới đó.
+- **Tùng** (gai-dau): Lần này tớ biết mà vẫn không cá.
+- **Minh Anh** (serious): Chắc trong lòng là lúc phải cẩn thận nhất. Muốn nói với thầy Quang thì cần một nguồn thứ hai, không dính gì tới cái huy hiệu. Và phải biết ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt.
+- **Minh Anh** (khoanh-tay): Sao kê thì cuối kỳ mới tự về. Chủ quỹ xin giữa kỳ cũng được, nhưng giấy phải qua chủ tịch Hội ký chuyển. Chị chưa xin lần nào, nên giờ chị mới biết điều đó.
+- **Duy** (neutral): Tức là muốn xem sổ thì phải hỏi đúng người mình chưa được nói tên. Còn một đường nữa: thầy Quang.
 - **Nam** (neutral): Tớ không nghi ai cả. Nhưng tớ muốn biết là ai.
 - **Hà Vy** (smile): Thì hỏi sổ.
 *[Thẻ chữ]* Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nghi ngờ mạnh vẫn chưa phải bằng chứng: càng chắc trong lòng, càng phải tìm nguồn thứ hai.

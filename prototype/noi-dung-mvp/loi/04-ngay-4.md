@@ -35,6 +35,8 @@
 - **tung** (worried): Robotics á? Thế người in không phải Hoài.
 - **ha-vy** (thinking): Thư in từ tài khoản của CLB Robotics. Người mang đi nộp là Hoài. Hai việc, có khi là hai người.
 - **thay-khai** (neutral): Tài khoản ấy những ai dùng thì thầy không nói. Các em cũng chưa cần biết, đúng không?
+- **tung** (chi-tay): Tối Chủ nhật vào phòng máy phải ký sổ mà thầy. Mở sổ ra là biết ngay ai ngồi đây!
+- **thay-khai** (neutral): Sổ ấy ghi tên từng người. Viết thư kiến nghị không phải là lỗi, thầy không mở sổ để truy người viết. Bao giờ có chuyện đáng mở thì phải có người đủ thẩm quyền ký.
 > NHẮC VIỆC ha-vy (thinking): Thư in từ tài khoản CLB Robotics. Người nộp là Hoài. Hai việc, có khi là hai người.
 
 ## n4-ve.1

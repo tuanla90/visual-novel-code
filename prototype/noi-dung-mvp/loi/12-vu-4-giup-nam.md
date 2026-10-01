@@ -9,7 +9,7 @@
 - **minh-anh** (neutral): Ngồi xuống đã. Chuyện gì?
 - **nam** (neutral): Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, cộng lại hơn hai triệu rưỡi, có đơn gần một triệu. Trong năm đơn ấy tớ chỉ đặt hai: cảm biến với bánh xe, mấy trăm nghìn. Ba đơn kia tớ không đặt.
 - [DÀN DỰNG] {{nv.quan}} bước vào sau {{nv.nam}}, tay cầm cặp hồ sơ.
-- **quan** (neutral): Giấy ấy ban tôi lập. Hôm thứ Sáu chủ tịch Hội chuyển xuống danh sách năm đơn, bảo làm đúng quy trình. Lần trước tôi lọc rộng rồi nghi vội cả một lớp. Lần này tôi mang sổ tới để các bạn tự tra, tra ra gì tôi ghi đúng thế.
+- **quan** (neutral): Giấy ấy ban tôi lập. Hôm thứ Sáu chủ tịch Hội chuyển xuống danh sách năm đơn, bảo làm đúng quy trình. Lần trước tôi lọc rộng rồi nghi vội cả một lớp. Lần này tôi mang sổ tới để các bạn tự tra, tra ra gì tôi ghi đúng thế. Theo quy chế, danh sách đơn vượt mức gửi lên thì ban tôi buộc tạm khóa tài khoản người đứng tên, để giữ nguyên sổ.
 
 ## v4-mo.2
 - **tung** (worried): Ba đơn lạ. Ai đặt?
@@ -29,7 +29,7 @@
 - **nam** (neutral): Năm. Mà tớ chỉ đặt hai: cảm biến dò line với bánh xe. Động cơ servo, mạch điều khiển, khung nhôm thì tớ không đặt. Anh Bách là phó CLB, chị Thảo lo kỹ thuật, anh Khánh là trưởng CLB.
 - **tung** (chi-tay): Thế ba đơn kia ai gõ tên cậu vào?
 - **duy** (neutral): Sổ không ghi ai gõ. Nhưng mỗi đơn có một cột mã phiên: phiên đăng nhập của máy lúc tạo đơn. Máy xưởng có bảng phiên đăng nhập không?
-- **nam** (neutral): Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong. Mai là hôm tớ kiểm kê kho, lịch với sổ đều nằm trong tài khoản ấy. Khóa rồi thì chỉ còn cách đếm tay.
+- **nam** (neutral): Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong. Mai là hôm tớ kiểm kê kho, lịch với sổ đều nằm trong tài khoản ấy. Lịch ấy ban tổ chức giải bắt nộp, muốn dời sát ngày phải ghi lý do. Khóa tài khoản rồi thì chỉ còn cách đếm tay.
 - **minh-anh** (neutral): Khóa là phải. Bảng ấy mà do Nam xuất thì ai cũng bảo Nam sửa được. Chị nhờ thầy Quang xin thầy Khải bên phòng máy xuất thẳng cho CLB mình. Máy chủ phần mềm đặt hàng đặt ở đó.
 - **ha-vy** (thinking): Vậy là hai bảng. Đơn thì ở sổ đặt hàng, máy thì ở bảng phiên. Chung nhau cái mã phiên.
 - **tung** (chi-tay): Đơn cảm biến ghi PH-11. Bên bảng phiên mà cũng có một dòng PH-11 thì đấy là cái máy tạo ra đơn ấy, đúng không?
@@ -91,8 +91,10 @@
 - **ha-vy** (neutral): Biết balo chưa phải biết người. Ghi thẻ, không kết.
 
 ## v4-ket.2
-- **tung** (gai-dau): Lần này tớ biết mà vẫn không cá. Khó hơn tớ tưởng nhiều.
-- **minh-anh** (serious): Chắc trong lòng là lúc phải cẩn thận nhất. Muốn nói với thầy Quang thì cần một nguồn thứ hai, không dính gì tới cái huy hiệu. Và phải biết ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt. Sổ quỹ là nguồn tiếp theo. Sao kê thì cuối kỳ mới về, mình không chờ được tới đó.
+- **tung** (gai-dau): Lần này tớ biết mà vẫn không cá.
+- **minh-anh** (serious): Chắc trong lòng là lúc phải cẩn thận nhất. Muốn nói với thầy Quang thì cần một nguồn thứ hai, không dính gì tới cái huy hiệu. Và phải biết ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt.
+- **minh-anh** (khoanh-tay): Sao kê thì cuối kỳ mới tự về. Chủ quỹ xin giữa kỳ cũng được, nhưng giấy phải qua chủ tịch Hội ký chuyển. Chị chưa xin lần nào, nên giờ chị mới biết điều đó.
+- **duy** (neutral): Tức là muốn xem sổ thì phải hỏi đúng người mình chưa được nói tên. Còn một đường nữa: thầy Quang.
 - **nam** (neutral): Tớ không nghi ai cả. Nhưng tớ muốn biết là ai.
 - **ha-vy** (smile): Thì hỏi sổ.
 - [THẺ CHỮ] **narrator**: Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nghi ngờ mạnh vẫn chưa phải bằng chứng: càng chắc trong lòng, càng phải tìm nguồn thứ hai.

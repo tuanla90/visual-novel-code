@@ -16,7 +16,7 @@ export const KICH_BAN_MVP = {
       "ten": "Tùng",
       "hoTen": "Trần Tùng",
       "trongCau": "Tùng",
-      "vai": "Năm 1 Du lịch, bạn cùng phòng KTX 408 của người chơi, cháu chú Cường. Dẫn đường, nhắc lịch. \"Tớ cá là…\"",
+      "vai": "Năm 1 Du lịch, bạn cùng phòng KTX 408 của người chơi, cháu chú Cường, tình nguyện viên đón tân sinh viên tuần đầu (áo xanh tình nguyện: mặc lại ở Vụ 5 khi đón Hoài tới buổi họp; CHƯA CÓ ẢNH áo xanh). Dẫn đường, nhắc lịch. \"Tớ cá là…\"",
       "bieuCam": [
         "neutral",
         "happy",
@@ -2357,6 +2357,18 @@ export const KICH_BAN_MVP = {
           "text": "Tài khoản ấy những ai dùng thì thầy không nói. Các em cũng chưa cần biết, đúng không?"
         },
         {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Tối Chủ nhật vào phòng máy phải ký sổ mà thầy. Mở sổ ra là biết ngay ai ngồi đây!"
+        },
+        {
+          "type": "line",
+          "speaker": "thay-khai",
+          "expression": "neutral",
+          "text": "Sổ ấy ghi tên từng người. Viết thư kiến nghị không phải là lỗi, thầy không mở sổ để truy người viết. Bao giờ có chuyện đáng mở thì phải có người đủ thẩm quyền ký."
+        },
+        {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "thinking",
@@ -3514,7 +3526,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "khanh",
           "expression": "neutral",
-          "text": "Nam, anh lấy tập hồ sơ giải quốc gia rồi quay lại họp. Có khách à?"
+          "text": "Nam, ban tổ chức cho đội mình thêm một tuần đóng lệ phí rồi, anh vừa xin được. Cứ tập tiếp đi. Anh lấy tập hồ sơ giải rồi quay lại họp. Có khách à?"
         },
         {
           "type": "line",
@@ -4363,6 +4375,18 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "line",
+          "speaker": "hoai",
+          "expression": "neutral",
+          "text": "Mà cậu là bạn áo xanh tình nguyện tuần đầu đúng không? Hôm ấy cậu dẫn tớ lạc sang tận nhà xe."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Tớ dẫn đúng hướng, chỉ sai tòa thôi. Áo thì tớ vẫn cất trong tủ."
+        },
+        {
+          "type": "line",
           "speaker": "narrator",
           "text": "Nam mở cổng sinh viên trên điện thoại, tải bản ghi cửa từ của chính mình trong tháng 9 và tháng 10, gửi vào nhóm."
         },
@@ -5020,7 +5044,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Thứ Ba tuần sau tớ kiểm kê kho, lịch anh Khánh ký duyệt hôm mùng 9 rồi. Xong việc tớ hỏi tiếp giúp các cậu."
+          "text": "Thứ Ba tuần sau tớ kiểm kê kho. Ban tổ chức giải bắt đội nào cũng nộp biên bản kiểm kê trước khi đóng lệ phí, nên lịch anh Khánh phải ký từ mùng 9. Xong việc tớ hỏi tiếp giúp các cậu."
         },
         {
           "type": "line",
@@ -5082,7 +5106,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "quan",
           "expression": "neutral",
-          "text": "Giấy ấy ban tôi lập. Hôm thứ Sáu chủ tịch Hội chuyển xuống danh sách năm đơn, bảo làm đúng quy trình. Lần trước tôi lọc rộng rồi nghi vội cả một lớp. Lần này tôi mang sổ tới để các bạn tự tra, tra ra gì tôi ghi đúng thế."
+          "text": "Giấy ấy ban tôi lập. Hôm thứ Sáu chủ tịch Hội chuyển xuống danh sách năm đơn, bảo làm đúng quy trình. Lần trước tôi lọc rộng rồi nghi vội cả một lớp. Lần này tôi mang sổ tới để các bạn tự tra, tra ra gì tôi ghi đúng thế. Theo quy chế, danh sách đơn vượt mức gửi lên thì ban tôi buộc tạm khóa tài khoản người đứng tên, để giữ nguyên sổ."
         },
         {
           "type": "show-document",
@@ -5181,7 +5205,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong. Mai là hôm tớ kiểm kê kho, lịch với sổ đều nằm trong tài khoản ấy. Khóa rồi thì chỉ còn cách đếm tay."
+          "text": "Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong. Mai là hôm tớ kiểm kê kho, lịch với sổ đều nằm trong tài khoản ấy. Lịch ấy ban tổ chức giải bắt nộp, muốn dời sát ngày phải ghi lý do. Khóa tài khoản rồi thì chỉ còn cách đếm tay."
         },
         {
           "type": "line",
@@ -5567,13 +5591,25 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "tung",
           "expression": "gai-dau",
-          "text": "Lần này tớ biết mà vẫn không cá. Khó hơn tớ tưởng nhiều."
+          "text": "Lần này tớ biết mà vẫn không cá."
         },
         {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "serious",
-          "text": "Chắc trong lòng là lúc phải cẩn thận nhất. Muốn nói với thầy Quang thì cần một nguồn thứ hai, không dính gì tới cái huy hiệu. Và phải biết ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt. Sổ quỹ là nguồn tiếp theo. Sao kê thì cuối kỳ mới về, mình không chờ được tới đó."
+          "text": "Chắc trong lòng là lúc phải cẩn thận nhất. Muốn nói với thầy Quang thì cần một nguồn thứ hai, không dính gì tới cái huy hiệu. Và phải biết ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "khoanh-tay",
+          "text": "Sao kê thì cuối kỳ mới tự về. Chủ quỹ xin giữa kỳ cũng được, nhưng giấy phải qua chủ tịch Hội ký chuyển. Chị chưa xin lần nào, nên giờ chị mới biết điều đó."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tức là muốn xem sổ thì phải hỏi đúng người mình chưa được nói tên. Còn một đường nữa: thầy Quang."
         },
         {
           "type": "line",
@@ -5733,12 +5769,12 @@ export const KICH_BAN_MVP = {
                 {
                   "speaker": "minh-anh",
                   "expression": "neutral",
-                  "text": "Thưa thầy, ba đơn linh kiện ghi đã duyệt, trên đơn tổng hai triệu tư, nhưng kiểm kê xưởng không có một cái nào. Đơn đã duyệt mà hàng không có, nên bọn em cần xác minh tiền ấy có xuất khỏi quỹ nào không, ai duyệt."
+                  "text": "Thưa thầy, ba đơn linh kiện ghi đã duyệt, trên đơn tổng hai triệu tư, nhưng kiểm kê xưởng không có một cái nào. Đơn đã duyệt mà hàng không có, nên bọn em cần xác minh tiền ấy có xuất khỏi quỹ nào không, ai duyệt. Bọn em cũng xin thầy cho mở trang sổ ký phòng máy tối 15/9. Hồi tháng 9 thầy Khải chưa cho mở."
                 },
                 {
                   "speaker": "thay-quang",
                   "expression": "neutral",
-                  "text": "Đơn đã duyệt mà không có hàng. Căn cứ ấy đủ để mở sổ quỹ. Thầy cho xuất, các em chỉ được xem các khoản liên quan ba đơn này và quỹ CLB Thám Tử."
+                  "text": "Đơn đã duyệt mà không có hàng. Giờ là chuyện tiền quỹ và mượn tên người khác, không còn là chuyện một lá thư kiến nghị. Căn cứ ấy đủ để mở sổ quỹ, và mở trang sổ ký ấy. Thầy cho xuất, các em chỉ được xem các khoản liên quan ba đơn này và quỹ CLB Thám Tử."
                 }
               ]
             },
@@ -5837,7 +5873,13 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
-          "text": "Cô bên Công tác sinh viên in kèm quy chế quỹ khối CLB. Khoản dưới một triệu thì chủ tịch Hội duyệt thẳng. Tổng một người duyệt vượt một triệu thì người đó phải giải trình. Còn CLB nào giải thể thì quỹ đóng sổ, số dư chuyển về Hội sinh viên."
+          "text": "Cô bên Công tác sinh viên in kèm quy chế quỹ khối CLB. Khoản dưới một triệu thì chủ tịch Hội duyệt thẳng. Tổng một người duyệt vượt một triệu thì người đó phải giải trình. Và CLB nào không còn phòng sinh hoạt hết một học kỳ thì làm thủ tục giải thể: quỹ đóng sổ, số dư chuyển về Hội sinh viên."
+        },
+        {
+          "type": "line",
+          "speaker": "co-hanh",
+          "expression": "neutral",
+          "text": "Trang sổ ký phòng máy tối 15/9 thầy Quang cũng ký cho mở. Thầy Khải chụp đúng một trang ấy, cô gửi kèm."
         },
         {
           "type": "line",
@@ -6021,12 +6063,18 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Chị Minh Anh dặn tìm một nguồn không dính tới cái huy hiệu. Tớ vừa ở phòng máy về. Lá thư in ở đó, tối Chủ nhật 15/9. Tối Chủ nhật muốn vào phòng máy thì phải ký sổ, thầy Khải cho chụp trang ấy."
+          "text": "Chị Minh Anh dặn tìm một nguồn không dính tới cái huy hiệu. Trang sổ ký phòng máy thầy Quang cho mở đây. Hồi tháng 9 Tùng đòi xem, thầy Khải không cho."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Hồi ấy tớ đòi mở để truy người viết thư. Thầy không cho là phải."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Hai dòng. Thảo: vào 20 giờ 10, ra 21 giờ 30. Khánh: vào 22 giờ 40, ra 23 giờ 20."
+          "text": "Tối Chủ nhật 15/9, hai dòng. Thảo: vào 20 giờ 10, ra 21 giờ 30. Khánh: vào 22 giờ 40, ra 23 giờ 20."
         },
         {
           "type": "line",
@@ -6061,7 +6109,40 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Thứ Hai tuần sau, phòng họp. Thầy Quang chủ trì. Khánh ngồi một bên, mặt không đổi, balo dựng cạnh chân ghế. Nam ngồi cạnh nhóm CLB Thám Tử. Quân ngồi cuối bàn ghi biên bản."
+          "text": "Thứ Hai tuần sau. Thầy Quang mời cả Hoài lên dự buổi họp. Hoài nhắn cho Duy đúng một dòng: \"Nhờ bạn áo xanh hôm nhập học ra đón tớ được không? Tớ chỉ nhớ mỗi cái áo.\""
+        },
+        {
+          "type": "note",
+          "text": "Cổng tòa nhà hành chính. Tùng mặc chiếc áo xanh tình nguyện, đứng chờ. Hoài đi tới, tay ôm cặp."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "nervous",
+          "text": "Tớ vẫn không nhớ mặt người đưa thư. Vào đấy tớ có phải chỉ ai không?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "neutral",
+          "text": "Không. Cậu nhớ gì thì nói chừng ấy. Hôm nay tớ xem biển rồi, không dẫn nhầm tòa nữa đâu."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Mặc áo ấy thì cậu ngồi cạnh Hoài, không ngồi với bọn tớ. Và không được chỉ cho bạn ấy nhìn cái gì."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Tớ biết. Bạn ấy thấy gì thì bạn ấy tự thưa."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Phòng họp. Thầy Quang chủ trì, cô Lan ngồi bên. Khánh ngồi một phía, mặt không đổi, balo dựng cạnh chân ghế. Nam ngồi cạnh nhóm CLB Thám Tử. Quân ngồi cuối bàn ghi biên bản. Tùng áo xanh ngồi hàng ghế cạnh cửa với Hoài và chú Cường."
         },
         {
           "type": "line",
@@ -6399,11 +6480,29 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "CLB Thám Tử còn đề nghị hỏi lại chuyện lá thư hồi tháng 9. Thầy mời chú Cường bảo vệ và em Hoài cùng dự."
+          "text": "CLB Thám Tử còn đề nghị hỏi lại chuyện lá thư hồi tháng 9. Em Hoài, chú Cường, mời hai người lên gần đây."
         },
         {
           "type": "note",
-          "text": "Chú Cường và Hoài bước vào, ngồi xuống ghế cạnh cửa."
+          "text": "Hoài đứng dậy, đi ngang qua chân ghế của Khánh thì khựng lại. Tay cô níu lấy tay áo xanh của Tùng."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "neutral",
+          "text": "Tớ không nói hộ được. Cậu thấy gì thì thưa với thầy."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "nervous",
+          "text": "Thưa thầy, cái huy hiệu sứt một răng trên balo kia. Đúng cái em thấy sáng hôm ấy. Mặt người thì em vẫn không dám chắc ạ."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Thầy ghi đúng như em nói: một cái balo, chưa phải một người."
         },
         {
           "type": "task",
@@ -6579,7 +6678,7 @@ export const KICH_BAN_MVP = {
     },
     {
       "id": "v5-vi-sao",
-      "title": "Khánh nhận lá thư; nhịp bốn: lá thư để làm gì",
+      "title": "Khánh nhận lá thư; nhịp bốn: lá thư liên quan gì tới ba khoản chi",
       "canh": "phong-hop",
       "mocSomNhat": 1000,
       "nodes": [
@@ -6600,62 +6699,52 @@ export const KICH_BAN_MVP = {
           "text": "Vâng ạ."
         },
         {
-          "type": "line",
-          "speaker": "thay-quang",
-          "expression": "neutral",
-          "text": "Thầy ghi nhận. Nhưng có một điều thầy chưa hiểu."
-        },
-        {
           "type": "task",
-          "text": "Trình thứ cho thấy lá thư đòi thu phòng là để làm gì"
+          "text": "Trình thứ cho thấy lá thư liên quan gì tới ba khoản chi"
         },
         {
           "type": "doi-chat",
           "id": "dc-khanh-vi-sao",
           "asker": {
-            "speaker": "khanh",
-            "text": "Thì là tôi in, tôi nhờ nộp. Nhưng các bạn nói xem: cái phòng nhỏ ấy cho tôi được gì? Tiền đâu có nằm trong cái phòng."
+            "speaker": "thay-quang",
+            "text": "Thầy chưa hiểu một điều. Một lá thư đòi thu phòng thì liên quan gì tới ba khoản chi? Các em có gì cho thấy mối liên hệ ấy không?"
           },
           "bangChung": [
-            {
-              "id": "clue-sao-ke-cuoi-ky",
-              "muc": "du",
-              "feedback": [
-                {
-                  "speaker": "minh-anh",
-                  "expression": "neutral",
-                  "text": "Sao kê quỹ về các CLB vào cuối kỳ, đúng đợt rà soát phòng. Em là chủ quỹ mà cả năm chưa mở sao kê lần nào."
-                },
-                {
-                  "speaker": "thay-quang",
-                  "expression": "neutral",
-                  "text": "Quy chế ghi: CLB giải thể thì quỹ đóng sổ, số dư chuyển về Hội sinh viên, sao kê không gửi cho ai nữa."
-                },
-                {
-                  "speaker": "nam",
-                  "expression": "neutral",
-                  "text": "Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ."
-                }
-              ]
-            },
             {
               "id": "ev-chi-tham-tu",
               "muc": "du",
               "feedback": [
                 {
-                  "speaker": "ha-vy",
-                  "expression": "neutral",
-                  "text": "Ba khoản xuất ngày 10, 11, 12 tháng 9. Lá thư ngày 16. Đơn đầu tiên tạo ngày 27, sau buổi họp bọn em giữ được phòng. Tiền đi trước, thư đi sau, đơn viết sau cùng."
+                  "speaker": "player",
+                  "text": "Tiền rời quỹ ngày 10, 11 và 12 tháng 9. Lá thư đòi thu phòng tới ngày 16. Đơn linh kiện đầu tiên mãi ngày 27 mới có, sau buổi họp bọn em giữ được phòng."
+                },
+                {
+                  "speaker": "player",
+                  "text": "Em chưa biết anh ấy nghĩ gì. Nhưng thư xuất hiện sau khi tiền đã đi, còn đơn xuất hiện sau khi thư không thành."
                 },
                 {
                   "speaker": "thay-quang",
                   "expression": "neutral",
-                  "text": "Quy chế ghi: CLB giải thể thì quỹ đóng sổ, số dư chuyển về Hội sinh viên, sao kê không gửi cho ai nữa."
+                  "text": "Tiền trước, thư sau, đơn sau cùng. Thầy thấy rồi."
+                }
+              ]
+            },
+            {
+              "id": "clue-sao-ke-cuoi-ky",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "player",
+                  "text": "Sao kê quỹ chỉ tự về các CLB vào cuối kỳ, cùng đợt rà soát phòng. Muốn xem sớm hơn thì giấy phải qua chủ tịch Hội."
                 },
                 {
-                  "speaker": "nam",
+                  "speaker": "player",
+                  "text": "Tức là tới cuối kỳ mới có người đọc ba khoản ấy. Mà lá thư đòi thu phòng lại tới ngay tuần đầu."
+                },
+                {
+                  "speaker": "thay-quang",
                   "expression": "neutral",
-                  "text": "Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ."
+                  "text": "Thư đi trước ngày có người đọc sổ. Thầy thấy rồi."
                 }
               ]
             },
@@ -6664,14 +6753,9 @@ export const KICH_BAN_MVP = {
               "muc": "ho-tro",
               "feedback": [
                 {
-                  "speaker": "khanh",
-                  "expression": "neutral",
-                  "text": "Số tiền bàn xong rồi. Tôi hỏi vì sao lại là cái phòng."
-                },
-                {
                   "speaker": "duy",
                   "expression": "neutral",
-                  "text": "Phiếu này nói bao nhiêu. Còn bao giờ, và ai được đọc, thì phiếu khác nói."
+                  "text": "Phiếu này nói bao nhiêu và ai duyệt. Còn bao giờ, và bao giờ mới có người đọc, thì phiếu khác nói."
                 }
               ]
             },
@@ -6680,14 +6764,14 @@ export const KICH_BAN_MVP = {
               "muc": "goi-y",
               "feedback": [
                 {
-                  "speaker": "khanh",
+                  "speaker": "thay-quang",
                   "expression": "neutral",
-                  "text": "Mẩu giấy của ai đây?"
+                  "text": "Mẩu giấy này của ai?"
                 },
                 {
                   "speaker": "duy",
                   "expression": "neutral",
-                  "text": "Chuyện khác ạ. Em xin lỗi."
+                  "text": "Chuyện khác ạ. Em xin lỗi thầy."
                 }
               ]
             }
@@ -6706,9 +6790,9 @@ export const KICH_BAN_MVP = {
           ],
           "khac": [
             {
-              "speaker": "khanh",
+              "speaker": "thay-quang",
               "expression": "neutral",
-              "text": "Cái này nói gì về cái phòng?"
+              "text": "Cái này nói gì về lá thư và ba khoản chi?"
             },
             {
               "speaker": "minh-anh",
@@ -6724,7 +6808,7 @@ export const KICH_BAN_MVP = {
             "kind": "co",
             "id": "dc-khanh-vi-sao-du"
           },
-          "to": "v5-ket-du"
+          "to": "v5-vi-sao-hoi"
         },
         {
           "type": "line",
@@ -6751,6 +6835,70 @@ export const KICH_BAN_MVP = {
       ]
     },
     {
+      "id": "v5-vi-sao-hoi",
+      "title": "Người chơi tự nối: lá thư để làm gì",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "question",
+          "id": "q-v5-vi-sao",
+          "asker": {
+            "speaker": "thay-quang",
+            "text": "Vậy theo các em, lá thư đòi thu phòng là để làm gì?"
+          },
+          "choices": [
+            {
+              "id": "cai-so",
+              "text": "Để CLB mất phòng, hết kỳ thì phải giải thể, quỹ đóng sổ trước khi có ai đọc sao kê.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "co-lan",
+                  "expression": "neutral",
+                  "text": "Quy chế đúng là thế: CLB không còn phòng sinh hoạt hết một học kỳ thì làm thủ tục giải thể, quỹ đóng sổ, số dư chuyển về Hội sinh viên."
+                },
+                {
+                  "speaker": "nam",
+                  "expression": "neutral",
+                  "text": "Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ."
+                }
+              ]
+            },
+            {
+              "id": "lay-phong",
+              "text": "Để lấy căn phòng ấy cho CLB Robotics.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Xưởng bọn tôi rộng gấp ba cái phòng ấy."
+                }
+              ]
+            },
+            {
+              "id": "tra-dua",
+              "text": "Để trả đũa CLB Thám Tử.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Tháng 9 mình đã tra gì ai đâu mà trả đũa."
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "goto",
+          "to": "v5-ket-du"
+        }
+      ]
+    },
+    {
       "id": "v5-ket-du",
       "title": "Không phải cái phòng, là cái sổ",
       "canh": "phong-hop",
@@ -6760,29 +6908,25 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "khanh",
           "expression": "neutral",
-          "text": "Quỹ ấy nằm im từ hồi chị Linh nghỉ, không ai đọc sao kê. Em tạm ứng trước, tính lấp lại trước cuối kỳ. Không lấp kịp thì CLB giải thể, sổ đóng, số dư về Hội."
+          "text": "Quỹ ấy nằm im từ hồi chị Linh nghỉ, không ai đọc sao kê. Đợt rà soát phòng chỉ nhận kiến nghị tới 20 tháng 9, nên em gửi thư ngay. Em không chờ xem mình có lấp kịp không. Em chọn đường dễ trước."
         },
         {
           "type": "line",
           "speaker": "khanh",
           "expression": "neutral",
-          "text": "Rồi các em giữ được phòng. Em phải viết đơn cho khớp sổ, mà đơn thì cần tên một người giữ sổ xưởng."
+          "text": "Em là người đứng tên duyệt chi. Tự em đề nghị rà soát CLB ấy thì chính em phải giải thích sổ quỹ trước. Thư sinh viên thì chỉ là một ý kiến."
         },
         {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Cái tin trong kênh cũng thế, đúng không anh. Ai tra cũng tới em trước."
-        },
-        {
-          "type": "note",
-          "text": "Khánh gật đầu."
+          "text": "Rồi CLB Thám Tử giữ được phòng. Cái tin trong kênh, ba cái đơn, cái danh sách chuyển xuống Quân…"
         },
         {
           "type": "line",
           "speaker": "khanh",
           "expression": "neutral",
-          "text": "Em lên lịch kiểm kê kho. Anh chuyển danh sách xuống Quân để tài khoản của em khóa trước hôm ấy. Anh không ngờ em đếm tay."
+          "text": "Cái tin là để tới cuối kỳ, các em có hỏi tới sổ thì lời các em khó được tin. Đơn là để khớp sổ. Danh sách là để kết quả kiểm kê của em bị nghi trước khi nộp. Anh không tính xa thế đâu. Anh chỉ tìm cách qua lần hỏi kế tiếp."
         },
         {
           "type": "line",
@@ -6800,7 +6944,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Phòng của CLB Thám Tử giữ nguyên. Hoàn quỹ đi theo thủ tục, mất vài tháng; từ giờ tới đó quỹ CLB tạm đóng. Biên bản cũng ghi một dòng nhắc chủ quỹ cả năm chưa đối chiếu sao kê."
+          "text": "Phòng của CLB Thám Tử giữ nguyên. Hoàn quỹ đi theo thủ tục, mất vài tháng; từ giờ tới đó quỹ CLB tạm đóng. Biên bản cũng ghi một dòng: chủ quỹ chưa từng xin sao kê giữa kỳ."
         },
         {
           "type": "line",
@@ -6918,25 +7062,25 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "line",
-          "speaker": "khanh",
+          "speaker": "nam",
           "expression": "neutral",
-          "text": "Anh tưởng anh lấp kịp trước cuối kỳ. Em giữ sổ tốt hơn anh."
+          "text": "Có những việc anh giúp đội thật. Tuần lệ phí anh xin thêm cũng là thật. Nhưng chuyện anh lấy tên em thì em vẫn phải ghi đúng vào biên bản."
         },
         {
           "type": "line",
-          "speaker": "nam",
+          "speaker": "khanh",
           "expression": "neutral",
-          "text": "Hôm ở xưởng anh bảo mọi người hỏi em nhẹ thôi. Em đã tưởng anh lo cho em."
+          "text": "Ừ. Em giữ sổ tốt hơn anh."
         },
         {
           "type": "note",
-          "text": "Khánh không trả lời, đặt chiếc chìa lên bậu cửa sổ rồi đi."
+          "text": "Khánh đặt chiếc chìa lên bậu cửa sổ. Rồi anh gỡ cái huy hiệu sứt khỏi quai balo, đặt xuống cạnh chiếc chìa, và đi."
         },
         {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Lệ phí giải quốc gia hạn thứ Sáu tuần sau. Kinh phí năm nay toàn anh ấy chạy. Giờ tớ phải tự đi xin lại từ đầu."
+          "text": "Lệ phí giải hạn thứ Sáu tuần sau. Kinh phí năm nay toàn anh ấy chạy. Giờ tớ phải tự đi xin lại từ đầu."
         },
         {
           "type": "line",
@@ -6948,7 +7092,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "serious",
-          "text": "Chị cũng có phần. Chủ quỹ mà cả năm không mở sao kê. Từ tháng này chị xin sao kê hằng tháng, dán cạnh bảng nguyên tắc."
+          "text": "Chị cũng có phần. Làm chủ quỹ mà chưa từng xin sao kê giữa kỳ. Từ tháng này chị xin hằng tháng, dán cạnh bảng nguyên tắc."
         },
         {
           "type": "line",
@@ -6958,21 +7102,15 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "line",
-          "speaker": "tung",
-          "expression": "happy",
-          "text": "Chú nhớ cái huy hiệu là đủ rồi ạ."
-        },
-        {
-          "type": "line",
           "speaker": "hoai",
           "expression": "neutral",
-          "text": "Chị Minh Anh ơi, CLB mình còn nhận người không ạ? Em muốn biết lần sau nên hỏi gì trước khi cầm phong bì của người lạ."
+          "text": "Tùng ơi, cái áo xanh ấy… CLB các cậu còn nhận người không? Tớ muốn biết lần sau nên hỏi gì trước khi cầm phong bì của người lạ."
         },
         {
           "type": "line",
-          "speaker": "minh-anh",
+          "speaker": "tung",
           "expression": "happy",
-          "text": "Đơn ở chỗ Duy. Chiều thứ Tư, phòng CLB."
+          "text": "Đơn ở chỗ Duy. Chiều thứ Tư, phòng CLB. Lần này tớ dẫn đúng tòa."
         },
         {
           "type": "goto",
@@ -7015,10 +7153,14 @@ export const KICH_BAN_MVP = {
           "text": "Thế là sang chuyện khác rồi."
         },
         {
+          "type": "note",
+          "text": "Duy ghim cái huy hiệu sứt lên bảng điều tra, cạnh tờ giấy nhớ ghi lời chú Cường."
+        },
+        {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Và chị Linh để lại nhiều mẩu giấy hơn mình tưởng."
+          "text": "Nam bảo để lại đây. Và chị Linh để lại nhiều mẩu giấy hơn mình tưởng."
         },
         {
           "type": "line",
@@ -10099,7 +10241,7 @@ export const KICH_BAN_MVP = {
       "fields": {
         "Tiêu đề": "Sao kê quỹ CLB chỉ về vào cuối kỳ",
         "Nguồn": "Minh Anh nhắc",
-        "Nội dung": "Phòng Kế hoạch gửi sao kê quỹ về các CLB một lần, vào cuối học kỳ, cùng đợt rà soát phòng. Trước lúc đó chủ quỹ không tự xin thì không ai đọc sổ."
+        "Nội dung": "Phòng Kế hoạch gửi sao kê quỹ về các CLB một lần, vào cuối học kỳ, cùng đợt rà soát phòng. Chủ quỹ muốn xem giữa kỳ thì phải làm giấy, qua chủ tịch Hội sinh viên ký chuyển. Trước lúc đó không ai đọc sổ."
       },
       "quotes": {}
     },
@@ -10374,7 +10516,7 @@ export const KICH_BAN_MVP = {
       "heading": "[Sổ ký phòng máy tối 15/9]",
       "fields": {
         "Tiêu đề": "Trang sổ ký vào phòng máy, tối Chủ nhật 15/9",
-        "Nguồn": "Thầy Khải giữ sổ; Duy chụp lại",
+        "Nguồn": "Thầy Khải giữ sổ; Thầy Quang ký cho mở đúng một trang, Cô Hạnh gửi kèm bản xuất sổ quỹ",
         "Nội dung": "Tối Chủ nhật muốn vào phòng máy phải ký sổ. Tối 15/9 có hai dòng: Thảo vào 20:10, ra 21:30; Khánh vào 22:40, ra 23:20. Nhật ký in ghi lá thư in lúc 23:10. Sổ nói ai ở trong phòng, không nói ai bấm in."
       },
       "quotes": {}

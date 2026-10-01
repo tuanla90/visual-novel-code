@@ -110,6 +110,8 @@ Kết quả: 2 dòng
 - **Hoài** (nervous): Tớ chào các cậu. Lá thư hôm ấy tớ chỉ nộp hộ. Tớ vẫn nghĩ mãi về cái anh đã nhờ tớ.
 - **Hà Vy** (neutral): Nhớ thêm được gì thì bảo bọn tớ nhé.
 - **Hoài** (neutral): Ừ. Tớ mà gặp lại cái balo ấy là tớ nhận ra.
+- **Hoài** (neutral): Mà cậu là bạn áo xanh tình nguyện tuần đầu đúng không? Hôm ấy cậu dẫn tớ lạc sang tận nhà xe.
+- **Tùng** (gai-dau): Tớ dẫn đúng hướng, chỉ sai tòa thôi. Áo thì tớ vẫn cất trong tủ.
 - **Người kể**: Nam mở cổng sinh viên trên điện thoại, tải bản ghi cửa từ của chính mình trong tháng 9 và tháng 10, gửi vào nhóm.
 - **Hà Vy** (neutral): Tớ cũng tải bản của tớ, gộp chung vào một tệp cho dễ tra. Tên ai thì ghi tên người đó.
 - **Nam** (neutral): Lọc ra của tớ rồi xem.
@@ -330,7 +332,7 @@ Lời nhân vật sau mỗi lần chạy:
 > 🗂️ Giấy nhớ mới: **[Tờ giao chìa: Khánh, Bách, Thảo]** — nguồn: Tờ giấy dán ở cửa phòng, xem cùng Nam cuối Vụ 3
 > Tờ giao chìa phòng văn phòng xưởng Robotics ghi ba người giữ chìa: Khánh (trưởng CLB), Bách (phó CLB), Thảo (kỹ thuật). Tờ giấy nói ai có chìa, không nói ai mở cửa tối nào. Bách nói tối 07/10 về quê; Thảo nói chìa của mình để ngăn bàn ngoài xưởng, ai cũng lấy được.
 - **Hà Vy** (thinking): Ghi ba tên. Người cần hỏi, chưa phải người bị nghi.
-- **Nam** (neutral): Thứ Ba tuần sau tớ kiểm kê kho, lịch anh Khánh ký duyệt hôm mùng 9 rồi. Xong việc tớ hỏi tiếp giúp các cậu.
+- **Nam** (neutral): Thứ Ba tuần sau tớ kiểm kê kho. Ban tổ chức giải bắt đội nào cũng nộp biên bản kiểm kê trước khi đóng lệ phí, nên lịch anh Khánh phải ký từ mùng 9. Xong việc tớ hỏi tiếp giúp các cậu.
 - **Tùng** (neutral): Lần này tớ ghi tên mà không khoanh ai cả.
 *[Thẻ chữ]* Nhóm theo cách khác thì thấy chuyện khác. Thói quen đếm được, và đôi khi thói quen của người này là lời chứng cho người kia.
 > 🏁 KẾT THÚC vụ → màn kết.

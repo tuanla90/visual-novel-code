@@ -46,4 +46,4 @@
 ### clue-sao-ke-cuoi-ky — [Sao kê quỹ về cuối kỳ]
 - Tiêu đề: Sao kê quỹ CLB chỉ về vào cuối kỳ
 - Nguồn: {{nv.minh-anh}} nhắc
-- Nội dung: Phòng Kế hoạch gửi sao kê quỹ về các CLB một lần, vào cuối học kỳ, cùng đợt rà soát phòng. Trước lúc đó chủ quỹ không tự xin thì không ai đọc sổ.
+- Nội dung: Phòng Kế hoạch gửi sao kê quỹ về các CLB một lần, vào cuối học kỳ, cùng đợt rà soát phòng. Chủ quỹ muốn xem giữa kỳ thì phải làm giấy, qua chủ tịch Hội sinh viên ký chuyển. Trước lúc đó không ai đọc sổ.

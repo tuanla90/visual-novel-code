@@ -16,7 +16,7 @@
 
 - [LỜI v5-thay-quang.1]
 - [ĐỐI CHẤT dc-xin-so-quy] thay-quang: "Các em muốn thầy cho xuất sổ quỹ của khối CLB, một sổ không thuộc CLB các em. Căn cứ vào đâu?"
-  - {ev-dat-ma-khong-co} [ĐỦ CĂN CỨ] → phản hồi: **minh-anh** (neutral): Thưa thầy, ba đơn linh kiện ghi đã duyệt, trên đơn tổng hai triệu tư, nhưng kiểm kê xưởng không có một cái nào. Đơn đã duyệt mà hàng không có, nên bọn em cần xác minh tiền ấy có xuất khỏi quỹ nào không, ai duyệt.<br>**thay-quang** (neutral): Đơn đã duyệt mà không có hàng. Căn cứ ấy đủ để mở sổ quỹ. Thầy cho xuất, các em chỉ được xem các khoản liên quan ba đơn này và quỹ CLB Thám Tử.
+  - {ev-dat-ma-khong-co} [ĐỦ CĂN CỨ] → phản hồi: **minh-anh** (neutral): Thưa thầy, ba đơn linh kiện ghi đã duyệt, trên đơn tổng hai triệu tư, nhưng kiểm kê xưởng không có một cái nào. Đơn đã duyệt mà hàng không có, nên bọn em cần xác minh tiền ấy có xuất khỏi quỹ nào không, ai duyệt. Bọn em cũng xin thầy cho mở trang sổ ký phòng máy tối 15/9. Hồi tháng 9 thầy Khải chưa cho mở.<br>**thay-quang** (neutral): Đơn đã duyệt mà không có hàng. Giờ là chuyện tiền quỹ và mượn tên người khác, không còn là chuyện một lá thư kiến nghị. Căn cứ ấy đủ để mở sổ quỹ, và mở trang sổ ký ấy. Thầy cho xuất, các em chỉ được xem các khoản liên quan ba đơn này và quỹ CLB Thám Tử.
   - {ev-don-nam-may} [HỖ TRỢ] → phản hồi: **ha-vy** (neutral): Ba đơn ấy tạo ban đêm từ máy văn phòng xưởng, đứng tên Nam mà Nam không đặt ạ.<br>**thay-quang** (neutral): Đơn mượn tên là chuyện của xưởng Robotics. Chuyện tiền thì thầy cần căn cứ về tiền.
   - {ev-toi-07} [GỢI Ý] → phản hồi: **thay-quang** (neutral): Em Nam ở thư viện tối đó. Thầy ghi nhận, nhưng điều ấy liên quan gì tới sổ quỹ?
   - [CHƯA ĐỦ] → phản hồi: **thay-quang** (stern): Chưa đủ căn cứ thì thầy chưa mở sổ của người khác cho các em xem. Về làm rõ đã.<br>**minh-anh** (worried): Dạ. Bọn em về đếm lại kho ạ.
@@ -91,19 +91,27 @@
 - [LỜI v5-ket-tien.1]
 - [ĐI TỚI v5-ket-luan]
 
-### v5-vi-sao — Khánh nhận lá thư; nhịp bốn: lá thư để làm gì {cảnh: phong-hop}
+### v5-vi-sao — Khánh nhận lá thư; nhịp bốn: lá thư liên quan gì tới ba khoản chi {cảnh: phong-hop}
 
 - [LỜI v5-nhan-thu.1]
-- [ĐỐI CHẤT dc-khanh-vi-sao] khanh: "Thì là tôi in, tôi nhờ nộp. Nhưng các bạn nói xem: cái phòng nhỏ ấy cho tôi được gì? Tiền đâu có nằm trong cái phòng."
-  - {clue-sao-ke-cuoi-ky} [ĐỦ CĂN CỨ] → phản hồi: **minh-anh** (neutral): Sao kê quỹ về các CLB vào cuối kỳ, đúng đợt rà soát phòng. Em là chủ quỹ mà cả năm chưa mở sao kê lần nào.<br>**thay-quang** (neutral): Quy chế ghi: CLB giải thể thì quỹ đóng sổ, số dư chuyển về Hội sinh viên, sao kê không gửi cho ai nữa.<br>**nam** (neutral): Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ.
-  - {ev-chi-tham-tu} [ĐỦ CĂN CỨ] → phản hồi: **ha-vy** (neutral): Ba khoản xuất ngày 10, 11, 12 tháng 9. Lá thư ngày 16. Đơn đầu tiên tạo ngày 27, sau buổi họp bọn em giữ được phòng. Tiền đi trước, thư đi sau, đơn viết sau cùng.<br>**thay-quang** (neutral): Quy chế ghi: CLB giải thể thì quỹ đóng sổ, số dư chuyển về Hội sinh viên, sao kê không gửi cho ai nữa.<br>**nam** (neutral): Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ.
-  - {ev-chi-vuot-muc} [HỖ TRỢ] → phản hồi: **khanh** (neutral): Số tiền bàn xong rồi. Tôi hỏi vì sao lại là cái phòng.<br>**duy** (neutral): Phiếu này nói bao nhiêu. Còn bao giờ, và ai được đọc, thì phiếu khác nói.
-  - {clue-loi-nhan-linh-1} [GỢI Ý] → phản hồi: **khanh** (neutral): Mẩu giấy của ai đây?<br>**duy** (neutral): Chuyện khác ạ. Em xin lỗi.
+- [ĐỐI CHẤT dc-khanh-vi-sao] thay-quang: "Thầy chưa hiểu một điều. Một lá thư đòi thu phòng thì liên quan gì tới ba khoản chi? Các em có gì cho thấy mối liên hệ ấy không?"
+  - {ev-chi-tham-tu} [ĐỦ CĂN CỨ] → phản hồi: **player**: Tiền rời quỹ ngày 10, 11 và 12 tháng 9. Lá thư đòi thu phòng tới ngày 16. Đơn linh kiện đầu tiên mãi ngày 27 mới có, sau buổi họp bọn em giữ được phòng.<br>**player**: Em chưa biết anh ấy nghĩ gì. Nhưng thư xuất hiện sau khi tiền đã đi, còn đơn xuất hiện sau khi thư không thành.<br>**thay-quang** (neutral): Tiền trước, thư sau, đơn sau cùng. Thầy thấy rồi.
+  - {clue-sao-ke-cuoi-ky} [ĐỦ CĂN CỨ] → phản hồi: **player**: Sao kê quỹ chỉ tự về các CLB vào cuối kỳ, cùng đợt rà soát phòng. Muốn xem sớm hơn thì giấy phải qua chủ tịch Hội.<br>**player**: Tức là tới cuối kỳ mới có người đọc ba khoản ấy. Mà lá thư đòi thu phòng lại tới ngay tuần đầu.<br>**thay-quang** (neutral): Thư đi trước ngày có người đọc sổ. Thầy thấy rồi.
+  - {ev-chi-vuot-muc} [HỖ TRỢ] → phản hồi: **duy** (neutral): Phiếu này nói bao nhiêu và ai duyệt. Còn bao giờ, và bao giờ mới có người đọc, thì phiếu khác nói.
+  - {clue-loi-nhan-linh-1} [GỢI Ý] → phản hồi: **thay-quang** (neutral): Mẩu giấy này của ai?<br>**duy** (neutral): Chuyện khác ạ. Em xin lỗi thầy.
   - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, lá thư để làm gì thì bọn em không có căn cứ ạ.<br>**thay-quang** (neutral): Vậy phần ấy thầy hỏi riêng.
-  - [KHÁC] → phản hồi: **khanh** (neutral): Cái này nói gì về cái phòng?<br>**minh-anh** (worried): Em xem lại hồ sơ ạ.
-- [NẾU có dc-khanh-vi-sao-du] → đi tới v5-ket-du
+  - [KHÁC] → phản hồi: **thay-quang** (neutral): Cái này nói gì về lá thư và ba khoản chi?<br>**minh-anh** (worried): Em xem lại hồ sơ ạ.
+- [NẾU có dc-khanh-vi-sao-du] → đi tới v5-vi-sao-hoi
 - [LỜI v5-ket-thu.1]
 - [ĐI TỚI v5-ket-luan]
+
+### v5-vi-sao-hoi — Người chơi tự nối: lá thư để làm gì {cảnh: phong-hop}
+
+- [HỎI q-v5-vi-sao] thay-quang: "Vậy theo các em, lá thư đòi thu phòng là để làm gì?"
+  - (A) {id: cai-so} Để CLB mất phòng, hết kỳ thì phải giải thể, quỹ đóng sổ trước khi có ai đọc sao kê. [ĐÚNG] → phản hồi: **co-lan** (neutral): Quy chế đúng là thế: CLB không còn phòng sinh hoạt hết một học kỳ thì làm thủ tục giải thể, quỹ đóng sổ, số dư chuyển về Hội sinh viên.<br>**nam** (neutral): Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ.
+  - (B) {id: lay-phong} Để lấy căn phòng ấy cho CLB Robotics. → phản hồi: **khanh** (neutral): Xưởng bọn tôi rộng gấp ba cái phòng ấy.
+  - (C) {id: tra-dua} Để trả đũa CLB Thám Tử. → phản hồi: **ha-vy** (thinking): Tháng 9 mình đã tra gì ai đâu mà trả đũa.
+- [ĐI TỚI v5-ket-du]
 
 ### v5-ket-du — Không phải cái phòng, là cái sổ {cảnh: phong-hop}
 
