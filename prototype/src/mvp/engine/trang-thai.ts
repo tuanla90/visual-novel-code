@@ -70,7 +70,18 @@ export interface HoSoMvp {
 export interface BangGhimLuuMvp {
   day: Record<string, string[]>;
   viTri: Record<string, { x: number; y: number }>;
+  /**
+   * Màu đầu ghim người chơi chọn cho từng thẻ (đề xuất gameplay câu 5, 01/10/2026): hình dạng thẻ do hệ thống (loại),
+   * màu do người chơi — ý nghĩa tùy họ. Sợi chỉ nối theo màu ghim của thẻ nguồn. Không có = đỏ.
+   */
+  mau?: Record<string, MauGhimMvp>;
+  /** Thẻ người chơi đã gỡ khỏi bảng (vẫn trong hồ sơ, ghim lại được). Mặc định mọi thẻ đều ghim. */
+  boGhim?: string[];
 }
+
+/** Bốn màu đầu ghim: đỏ (mặc định), xanh dương, lục, tím. */
+export type MauGhimMvp = 'do' | 'xanh' | 'luc' | 'tim';
+export const MAU_GHIM: readonly MauGhimMvp[] = ['do', 'xanh', 'luc', 'tim'];
 
 export interface NhacViecMvp {
   nhanVat: string;

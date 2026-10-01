@@ -113,8 +113,8 @@ describe('chỗ ghim', () => {
     // Thẻ đã kéo không đẩy tài liệu khác ra khỏi cột.
     expect(viTriThe(b, { [s.hoSo.taiLieu[0] ?? '']: { x: 900, y: 10 } })[s.hoSo.taiLieu[1] ?? '']).toEqual({ x: 26, y: 34 });
 
-    const la = (id: string): TheBang => ({ id, loai: 'tin', nhan: id, phu: null, giaTri: [], gach: [], anh: null, khongDuLieu: true, the: null });
-    const tu = viTriThe({ the: [la('x1'), la('x2'), la('x3'), la('x4'), la('x5'), la('x6'), la('x7')], day: [] });
+    const la = (id: string): TheBang => ({ id, loai: 'tin', nhan: id, phu: null, giaTri: [], gach: [], anh: null, khongDuLieu: true, the: null, mau: 'do' });
+    const tu = viTriThe({ the: [la('x1'), la('x2'), la('x3'), la('x4'), la('x5'), la('x6'), la('x7')], day: [], boGhim: [] });
     expect(tu.x1).toEqual({ x: 190, y: 60 });
     expect(tu.x2).toEqual({ x: 422, y: 60 });
     expect(tu.x7).toEqual({ x: 190, y: 270 });
@@ -171,5 +171,53 @@ describe('máy ghi vào bảng', () => {
     const moi = xuLy(KB, s0, { type: 'doi-cho-the', the: 'ev-hai-lop', x: 10, y: 20 });
     expect(moi.bang).toEqual({ day: {}, viTri: { 'ev-hai-lop': { x: 10, y: 20 } } });
     expect(viTriThe(dungBang(KB, moi), moi.bang?.viTri)['ev-hai-lop']).toEqual({ x: 10, y: 20 });
+  });
+});
+
+describe('màu ghim và gỡ / ghim lại (câu 5 đề xuất gameplay, 01/10)', () => {
+  const toiHop = (): TrangThaiMvp => nhayToi(KB, 'hop-sua-or', 1);
+  it('mặc định mọi thẻ ghim đỏ, không thẻ nào bị gỡ; sợi mang màu ghim của thẻ nguồn', () => {
+    const s = toiHop();
+    const b = dungBang(KB, s);
+    expect(b.boGhim).toEqual([]);
+    expect(b.the.every((t) => t.mau === 'do')).toBe(true);
+    expect(b.day.every((d) => d.mau === 'do')).toBe(true);
+  });
+
+  it('doi-mau-ghim: ghi s.bang.mau, thẻ và sợi đi từ thẻ đó đổi màu; màu lạ / thẻ không có trong hồ sơ → không đổi', () => {
+    let s = toiHop();
+    s = xuLy(KB, s, { type: 'doi-mau-ghim', the: 'clue-toa-b', mau: 'xanh' });
+    expect(s.bang?.mau).toEqual({ 'clue-toa-b': 'xanh' });
+    const b = dungBang(KB, s);
+    expect(tim(b, 'clue-toa-b').mau).toBe('xanh');
+    expect(b.day.filter((d) => d.tu === 'clue-toa-b').every((d) => d.mau === 'xanh')).toBe(true);
+    expect(b.day.filter((d) => d.tu !== 'clue-toa-b').every((d) => d.mau === 'do')).toBe(true);
+    expect(xuLy(KB, s, { type: 'doi-mau-ghim', the: 'clue-toa-b', mau: 'hong' as never })).toBe(s);
+    expect(xuLy(KB, s, { type: 'doi-mau-ghim', the: 'clue-khong-co', mau: 'luc' })).toBe(s);
+  });
+
+  it('ghim-the false: thẻ rời bảng sang `boGhim`, sợi tới/từ nó biến mất; ghim lại thì về chỗ cũ; thẻ "?" không gỡ được', () => {
+    let s = toiHop();
+    const truoc = dungBang(KB, s);
+    expect(truoc.day.some((d) => d.tu === 'clue-toa-b')).toBe(true);
+    s = xuLy(KB, s, { type: 'ghim-the', the: 'clue-toa-b', ghim: false });
+    expect(s.bang?.boGhim).toEqual(['clue-toa-b']);
+    const b = dungBang(KB, s);
+    expect(b.the.some((t) => t.id === 'clue-toa-b')).toBe(false);
+    expect(b.boGhim.map((t) => t.id)).toEqual(['clue-toa-b']);
+    expect(b.day.some((d) => d.tu === 'clue-toa-b' || d.den === 'clue-toa-b')).toBe(false);
+    expect(xuLy(KB, s, { type: 'ghim-the', the: 'clue-toa-b', ghim: false })).toBe(s);
+    s = xuLy(KB, s, { type: 'ghim-the', the: 'clue-toa-b', ghim: true });
+    expect(s.bang?.boGhim).toEqual([]);
+    expect(dungBang(KB, s).the.map((t) => t.id)).toEqual(truoc.the.map((t) => t.id));
+    expect(xuLy(KB, s, { type: 'ghim-the', the: MA_THE_HOI, ghim: false })).toBe(s);
+  });
+
+  it('phiếu sắp ghim (`them`) luôn lên bảng dù đã bị gỡ trước đó', () => {
+    let s = toiHop();
+    s = xuLy(KB, s, { type: 'ghim-the', the: 'ev-hai-ma', ghim: false });
+    const b = dungBang(KB, s, { id: 'ev-hai-ma', dung: ['clue-chu-ky-h'] });
+    expect(b.the.some((t) => t.id === 'ev-hai-ma')).toBe(true);
+    expect(b.boGhim).toEqual([]);
   });
 });

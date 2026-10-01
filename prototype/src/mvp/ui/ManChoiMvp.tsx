@@ -409,6 +409,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           kb={kb}
           trangThai={s}
           onDoiCho={(the, x, y) => hanhDong({ type: 'doi-cho-the', the, x, y })}
+          onDoiMau={(the, mau) => hanhDong({ type: 'doi-mau-ghim', the, mau })}
+          onGhim={(the, ghim) => hanhDong({ type: 'ghim-the', the, ghim })}
           hoSo={s.hoSo}
           soTay={s.soTay}
           tenNguoiChoi={s.tenNguoiChoi}

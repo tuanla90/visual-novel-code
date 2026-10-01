@@ -1162,3 +1162,131 @@ button.v7-o:active:not(:disabled) {
     animation: none;
   }
 }
+
+/* ---------- Màu đầu ghim (câu 5 đề xuất gameplay, 01/10): hình dạng = loại thẻ, màu = người chơi tự nhóm ---------- */
+.the--ghim-xanh .the__ghim {
+  background: radial-gradient(circle at 35% 35%, #90caf9, #1e88e5 60%, #0d47a1);
+}
+.the--ghim-luc .the__ghim {
+  background: radial-gradient(circle at 35% 35%, #a5d6a7, #43a047 60%, #1b5e20);
+}
+.the--ghim-tim .the__ghim {
+  background: radial-gradient(circle at 35% 35%, #ce93d8, #8e24aa 60%, #4a148c);
+}
+.bang__chi--mau-do.bang__chi--truy-van {
+  stroke: #c62828;
+}
+.bang__chi--mau-xanh {
+  stroke: #1e88e5;
+}
+.bang__chi--mau-luc {
+  stroke: #43a047;
+}
+.bang__chi--mau-tim {
+  stroke: #8e24aa;
+}
+/* Sợi loại trừ vẫn là nét chấm; đỏ mặc định giữ màu cam cũ để phân biệt với sợi truy vấn đỏ. */
+.bang__chi--loai-tru.bang__chi--mau-do {
+  stroke: #e08a00;
+}
+.bang__xem-ghim {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 4px 0 10px;
+}
+.bang__mau {
+  display: inline-flex;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 9999px;
+  background: #efe7d6;
+}
+.bang__mau-nut {
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.35);
+  transition: transform 0.12s;
+}
+.bang__mau-nut:hover {
+  transform: scale(1.1);
+}
+.bang__mau-nut.is-chon {
+  outline: 3px solid #1e293b;
+  outline-offset: 2px;
+}
+.bang__mau-nut--do {
+  background: radial-gradient(circle at 35% 35%, #ff8a80, #c62828 60%, #7f0000);
+}
+.bang__mau-nut--xanh {
+  background: radial-gradient(circle at 35% 35%, #90caf9, #1e88e5 60%, #0d47a1);
+}
+.bang__mau-nut--luc {
+  background: radial-gradient(circle at 35% 35%, #a5d6a7, #43a047 60%, #1b5e20);
+}
+.bang__mau-nut--tim {
+  background: radial-gradient(circle at 35% 35%, #ce93d8, #8e24aa 60%, #4a148c);
+}
+.bang__go {
+  color: #8a1c1c;
+  border: 1.5px solid rgba(138, 28, 28, 0.4);
+}
+/* Khay "Chưa ghim" ở góc dưới trái bảng: thẻ đã gỡ, bấm để ghim lại. */
+.bang__chua-ghim {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  max-width: min(60%, 640px);
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(30, 20, 12, 0.72);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+.bang__chua-ghim-nhan {
+  color: #fde68a;
+  font: 800 11px var(--font-ui);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.bang__ghim-lai {
+  padding: 4px 10px 4px 20px;
+  border: 0;
+  border-radius: 4px;
+  background: #fbe38e;
+  color: #2a2320;
+  font: 700 12.5px var(--font-ui);
+  cursor: pointer;
+  position: relative;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.35);
+}
+.bang__ghim-lai::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  margin-top: -4.5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff8a80, #c62828 60%, #7f0000);
+}
+.bang__ghim-lai--phieu {
+  background: #fffdf6;
+  border-top: 3px solid #9fb3c2;
+}
+.bang__ghim-lai--vat,
+.bang__ghim-lai--tai-lieu {
+  background: #fff;
+}
+.bang__ghim-lai:hover {
+  transform: translateY(-2px);
+}

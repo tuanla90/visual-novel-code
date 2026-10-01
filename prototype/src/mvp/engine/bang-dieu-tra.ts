@@ -12,9 +12,13 @@
  * Sợi chỉ: `truy-van` (đỏ) từ các thẻ đã kéo vào câu sang phiếu kết quả — lấy từ `s.bang.day` (ghi lúc tra xong), không có
  * thì theo "Manh mối liên quan" của thẻ thử thách; `loai-tru` (cam, chấm) từ mẩu tin có dòng "Loại trừ: <mã phiếu>".
  * Dòng "Gạch: <giá trị>" của mẩu tin gạch giá trị đó trên phiếu bị loại trừ. Dòng "Ảnh: <tên tệp>" là ảnh của thẻ.
+ *
+ * 01/10/2026 (đề xuất gameplay câu 5): mỗi thẻ có MÀU ĐẦU GHIM do người chơi chọn (`s.bang.mau`, mặc định đỏ) — hình dạng
+ * vẫn là dấu hiệu loại, màu là cách người chơi tự nhóm; sợi chỉ mang màu ghim của thẻ nguồn. Thẻ gỡ khỏi bảng (`s.bang.boGhim`)
+ * không vẽ, không có sợi, nằm ở `boGhim` để ghim lại; thẻ "?" và phiếu sắp ghim (`them`) không gỡ được.
  */
 import type { KichBanMvp, TheHoSoMvp } from '../../content/mvp/types';
-import type { TrangThaiMvp } from './trang-thai';
+import type { MauGhimMvp, TrangThaiMvp } from './trang-thai';
 
 export type LoaiTheBang = 'tin' | 'phieu' | 'vat' | 'tai-lieu' | 'hoi';
 
@@ -34,6 +38,8 @@ export interface TheBang {
   khongDuLieu: boolean;
   /** Thẻ hồ sơ gốc (để mở xem chi tiết); `null` với thẻ câu hỏi. */
   the: TheHoSoMvp | null;
+  /** Màu đầu ghim người chơi chọn (mặc định đỏ). */
+  mau: MauGhimMvp;
 }
 
 export interface DayBang {
@@ -42,11 +48,16 @@ export interface DayBang {
   kieu: 'truy-van' | 'loai-tru';
   /** Nhãn trên sợi chỉ (số dòng của phiếu). */
   nhan: string | null;
+  /** Màu sợi = màu ghim của thẻ nguồn `tu`. */
+  mau: MauGhimMvp;
 }
 
 export interface BangDieuTra {
+  /** Thẻ đang ghim trên bảng. */
   the: TheBang[];
   day: DayBang[];
+  /** Thẻ trong hồ sơ nhưng người chơi đã gỡ khỏi bảng (ghim lại được). */
+  boGhim: TheBang[];
 }
 
 export const MA_THE_HOI = 'hoi-dang-mo';
@@ -63,18 +74,28 @@ const tach = (chu: string | undefined): string[] =>
  */
 export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; dung: string[] }): BangDieuTra {
   const the: TheBang[] = [];
+  const boGhim: TheBang[] = [];
   const day: DayBang[] = [];
   const coRoi = new Set<string>();
+  const daGo = new Set(s.bang?.boGhim ?? []);
+  const mauCua = (id: string): MauGhimMvp => s.bang?.mau?.[id] ?? 'do';
   const thuThachCua = (id: string) => Object.values(kb.thuThach).find((t) => t.vatChung?.id === id);
+  // Thẻ đã gỡ thì vào danh sách chờ ghim lại; phiếu sắp ghim (`them`) luôn lên bảng.
+  const dat = (t: TheBang): void => {
+    if (daGo.has(t.id) && them?.id !== t.id) boGhim.push(t);
+    else {
+      coRoi.add(t.id);
+      the.push(t);
+    }
+  };
 
   const themThe = (id: string): void => {
-    if (coRoi.has(id)) return;
+    if (coRoi.has(id) || boGhim.some((t) => t.id === id)) return;
     const hs = kb.hoSo[id];
     const tt = thuThachCua(id);
     if (tt?.vatChung) {
-      coRoi.add(id);
       const n = tt.soDongKyVong;
-      the.push({
+      dat({
         id,
         loai: 'phieu',
         nhan: tt.vatChung.title,
@@ -84,14 +105,14 @@ export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; d
         anh: hs?.fields['Ảnh'] ?? null,
         khongDuLieu: tt.vatChung.giaTri.length === 0,
         the: hs ?? { id, loai: 'ev', heading: tt.vatChung.title, fields: { 'Nội dung': tt.vatChung.description }, quotes: {} },
+        mau: mauCua(id),
       });
       return;
     }
     if (!hs) return;
-    coRoi.add(id);
     const giaTri = tach(hs.fields['Giá trị cho trình dựng']);
     const loai: LoaiTheBang = hs.loai === 'doc' ? 'tai-lieu' : hs.loai === 'ev' ? 'vat' : 'tin';
-    the.push({
+    dat({
       id,
       loai,
       nhan: hs.heading,
@@ -101,6 +122,7 @@ export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; d
       anh: hs.fields['Ảnh'] ?? null,
       khongDuLieu: loai === 'tin' && giaTri.length === 0,
       the: hs,
+      mau: mauCua(id),
     });
   };
 
@@ -115,21 +137,21 @@ export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; d
     const tt = thuThachCua(t.id);
     const ghi = them && them.id === t.id ? them.dung : s.bang?.day[t.id];
     const nguon = ghi && ghi.length > 0 ? ghi : (tt?.manhMoiLienQuan ?? []);
-    for (const tu of nguon) if (coRoi.has(tu) && tu !== t.id) day.push({ tu, den: t.id, kieu: 'truy-van', nhan: t.phu });
+    for (const tu of nguon) if (coRoi.has(tu) && tu !== t.id) day.push({ tu, den: t.id, kieu: 'truy-van', nhan: t.phu, mau: mauCua(tu) });
   }
-  // Sợi chỉ cam: mẩu tin loại trừ một phần của phiếu.
+  // Sợi chỉ chấm: mẩu tin loại trừ một phần của phiếu (màu theo ghim của mẩu tin).
   for (const t of the) {
     const dich = t.the?.fields['Loại trừ'];
     if (!dich || !coRoi.has(dich)) continue;
-    day.push({ tu: t.id, den: dich, kieu: 'loai-tru', nhan: null });
+    day.push({ tu: t.id, den: dich, kieu: 'loai-tru', nhan: null, mau: t.mau });
     const phieu = the.find((x) => x.id === dich);
     if (phieu) phieu.gach = [...phieu.gach, ...tach(t.the?.fields['Gạch'])];
   }
 
   if (s.nhiemVu && s.giaiDoan !== 'het') {
-    the.push({ id: MA_THE_HOI, loai: 'hoi', nhan: s.nhiemVu, phu: null, giaTri: [], gach: [], anh: null, khongDuLieu: true, the: null });
+    the.push({ id: MA_THE_HOI, loai: 'hoi', nhan: s.nhiemVu, phu: null, giaTri: [], gach: [], anh: null, khongDuLieu: true, the: null, mau: 'do' });
   }
-  return { the, day };
+  return { the, day, boGhim };
 }
 
 // ---------- Chỗ ghim ----------

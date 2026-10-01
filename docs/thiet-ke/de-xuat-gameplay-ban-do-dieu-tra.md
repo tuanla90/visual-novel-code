@@ -219,4 +219,7 @@ Trả lời các câu hỏi cuối tài liệu và phần đã làm:
 `{<mã thẻ>} [ĐỦ CĂN CỨ|HỖ TRỢ|GỢI Ý] → phản hồi: …`, `[CHƯA ĐỦ]`, `[KHÁC]` (cú pháp ở `prototype/noi-dung-mvp/README.md`); mức đạt thành cờ
 `<mã>-du` / `<mã>-ho-tro` dùng ở `[ĐIỀU KIỆN]`; màn `DoiChatMvp` (khay thẻ hồ sơ cùng hình dạng bảng điều tra, hộp giả thuyết, hai nút).
 Buổi họp chương 1: Quân nêu "Hoài viết"; nhật ký in = đủ căn cứ → kết thật; lời chú Cường = hỗ trợ; thẻ chỉ nói ai nộp = gợi ý; chưa đủ → kết thường.
-Chưa làm: màu ghim (câu 5), avatar bản đồ (câu 7), FROM/SELECT/GROUP BY (mục 3) — chờ Vụ 2.
+**Đợt 2 (01/10, cùng ngày):** câu 5 — màu đầu ghim 4 màu (đỏ mặc định, xanh dương, lục, tím) chọn trong hộp xem thẻ trên bảng; sợi chỉ
+mang màu ghim của thẻ nguồn; "Gỡ khỏi bảng" đưa thẻ vào khay "Chưa ghim" (góc dưới trái), bấm để ghim lại; mặc định mọi thẻ đều ghim.
+Lưu ở `s.bang.mau` / `s.bang.boGhim`; thẻ "?" và phiếu vừa tra không gỡ được.
+Chưa làm: avatar bản đồ (câu 7), FROM/SELECT/GROUP BY (mục 3) — chờ Vụ 2.

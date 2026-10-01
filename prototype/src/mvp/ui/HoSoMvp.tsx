@@ -17,7 +17,7 @@ import type { KichBanMvp, TheHoSoMvp } from '../../content/mvp/types';
 import { soundEngine } from '../../shared/audio/sound-engine';
 import { CodeText } from '../../shared/ui/CodeText';
 import { IconBriefcase, IconFileText, IconUsers, IconX, ItemVectorIcon } from '../../shared/ui/icons';
-import type { HoSoMvp as HoSo, TrangThaiMvp } from '../engine/trang-thai';
+import type { HoSoMvp as HoSo, TrangThaiMvp, MauGhimMvp } from '../engine/trang-thai';
 import { BangGhimMvp } from './v7/BangGhimMvp';
 import { anhChanDung } from './anh-mvp';
 import { NhanVatMvp } from './NhanVatMvp';
@@ -32,6 +32,9 @@ export interface HoSoMvpProps {
   /** Ván đang chơi — có thì tab "Bảng điều tra" vẽ bảng ghim (thẻ, sợi chỉ); không có thì vẽ lưới ô kiểu cũ. */
   trangThai?: TrangThaiMvp;
   onDoiCho?: (the: string, x: number, y: number) => void;
+  /** Đổi màu đầu ghim / gỡ–ghim lại thẻ trên bảng (câu 5 đề xuất gameplay, 01/10). */
+  onDoiMau?: (the: string, mau: MauGhimMvp) => void;
+  onGhim?: (the: string, ghim: boolean) => void;
   hoSo: HoSo;
   soTay: string[];
   tenNguoiChoi: string;
@@ -51,7 +54,7 @@ const SO_O_TOI_THIEU = 12;
 
 const TEN_TAB: Record<TabHoSoMvp, string> = { 'nhan-vat': 'Nhân vật', 'ho-so': 'Bảng điều tra', 'so-tay': 'Sổ cá nhân' };
 
-export function HoSoMvp({ kb, trangThai, onDoiCho, hoSo, soTay, tenNguoiChoi, nganh, daGap, tab, onDoiTab: doiTab, dienTen, onDong: dong }: HoSoMvpProps) {
+export function HoSoMvp({ kb, trangThai, onDoiCho, onDoiMau, onGhim, hoSo, soTay, tenNguoiChoi, nganh, daGap, tab, onDoiTab: doiTab, dienTen, onDong: dong }: HoSoMvpProps) {
   // Nhãn MỚI: chụp danh sách thẻ chưa xem lúc mở khung rồi coi như đã xem hết (mở khung là thấy cả bảng) — nhãn vẫn hiện
   // suốt lần mở này, bấm vào thẻ thì tắt nhãn thẻ đó. (Chụp ở `useState` để chế độ dev dựng hai lần không làm mất nhãn.)
   const [chuaXem, setChuaXem] = useState<readonly string[]>(() => useTheChuaXem.getState().chuaXem);
@@ -158,7 +161,7 @@ export function HoSoMvp({ kb, trangThai, onDoiCho, hoSo, soTay, tenNguoiChoi, ng
           </div>
         ) : tab === 'ho-so' && trangThai ? (
           <div className="mvp-kho__bang">
-            <BangGhimMvp kb={kb} s={trangThai} dienTen={dienTen} onDoiCho={onDoiCho} chuaXem={chuaXem} onXemThe={xemThe} />
+            <BangGhimMvp kb={kb} s={trangThai} dienTen={dienTen} onDoiCho={onDoiCho} onDoiMau={onDoiMau} onGhim={onGhim} chuaXem={chuaXem} onXemThe={xemThe} />
           </div>
         ) : tab === 'ho-so' ? (
           <NganHoSo

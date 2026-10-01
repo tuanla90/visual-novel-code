@@ -3,14 +3,16 @@
  * (mẩu tin), phiếu trắng có con dấu (kết quả tra), ảnh chụp (vật chứng), giấy tờ (tài liệu, xếp cột bên trái), thẻ tròn "?"
  * (câu hỏi đang mở). Sợi chỉ đỏ do truy vấn vẽ: từ các thẻ đã kéo vào câu sang phiếu kết quả; sợi cam chấm là loại trừ.
  * Người chơi kéo thẻ để sắp lại (vị trí lưu trong trạng thái), bấm thẻ để đọc kỹ.
+ * 01/10/2026 (câu 5 đề xuất gameplay): trong hộp xem kỹ có hàng 4 màu đầu ghim (người chơi tự nhóm, ý nghĩa tùy họ; sợi chỉ
+ * theo màu ghim của thẻ nguồn) và nút "Gỡ khỏi bảng"; thẻ đã gỡ nằm ở khay "Chưa ghim" góc dưới trái, bấm để ghim lại.
  *
  * Mặt bảng là khung 1600×900 co theo vùng chứa; màn dọc thì bảng cao vừa màn và cuộn ngang.
  * Dữ liệu dựng ở `engine/bang-dieu-tra.ts`.
  */
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react';
 import type { KichBanMvp } from '../../../content/mvp/types';
-import { CO_THE, KHUNG_BANG, dungBang, gocNghieng, viTriThe, type TheBang } from '../../engine/bang-dieu-tra';
-import type { TrangThaiMvp } from '../../engine/trang-thai';
+import { CO_THE, KHUNG_BANG, dungBang, gocNghieng, MA_THE_HOI, viTriThe, type TheBang } from '../../engine/bang-dieu-tra';
+import { MAU_GHIM, type MauGhimMvp, type TrangThaiMvp } from '../../engine/trang-thai';
 import { anhTheoTen } from '../anh-mvp';
 import { TheHoSo } from '../TheHoSo';
 import './v7.css';
@@ -31,11 +33,17 @@ export interface BangGhimMvpProps {
   chuaXem?: readonly string[];
   /** Người chơi mở xem kỹ một thẻ (để tắt nhãn MỚI). */
   onXemThe?: (id: string) => void;
+  /** Đổi màu đầu ghim của thẻ (có → hiện hàng màu trong hộp xem kỹ). */
+  onDoiMau?: (the: string, mau: MauGhimMvp) => void;
+  /** Gỡ thẻ khỏi bảng / ghim lại (có → nút "Gỡ khỏi bảng" và khay "Chưa ghim"). */
+  onGhim?: (the: string, ghim: boolean) => void;
 }
+
+const TEN_MAU: Record<MauGhimMvp, string> = { do: 'đỏ', xanh: 'xanh dương', luc: 'lục', tim: 'tím' };
 
 const boNgoac = (t: string): string => t.replace(/^\[|\]$/g, '');
 
-export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chuaXem, onXemThe }: BangGhimMvpProps) {
+export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chuaXem, onXemThe, onDoiMau, onGhim }: BangGhimMvpProps) {
   const bang = useMemo(() => dungBang(kb, s, them), [kb, s, them]);
   const [keo, setKeo] = useState<{ id: string; x: number; y: number } | null>(null);
   const viTri = useMemo(() => {
@@ -137,7 +145,7 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                 return (
                   <path
                     key={`${d.tu}>${d.den}`}
-                    className={`bang__chi bang__chi--${d.kieu}${moi && d.den === moi ? ' is-moi' : ''}`}
+                    className={`bang__chi bang__chi--${d.kieu} bang__chi--mau-${d.mau}${moi && d.den === moi ? ' is-moi' : ''}`}
                     d={`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`}
                     pathLength={1}
                   />
@@ -154,7 +162,7 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
               return (
                 <article
                   key={t.id}
-                  className={`the the--${t.loai}${t.khongDuLieu && t.loai === 'tin' ? ' is-khong-du-lieu' : ''}${moi === t.id ? ' is-moi' : ''}${keo?.id === t.id ? ' is-keo' : ''}`}
+                  className={`the the--${t.loai} the--ghim-${t.mau}${t.khongDuLieu && t.loai === 'tin' ? ' is-khong-du-lieu' : ''}${moi === t.id ? ' is-moi' : ''}${keo?.id === t.id ? ' is-keo' : ''}`}
                   style={style}
                   tabIndex={0}
                   aria-label={`${NHAN_LOAI[t.loai]}: ${dienTen(boNgoac(t.nhan))}${chuaXemThe ? ' (mới)' : ''}`}
@@ -210,6 +218,16 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
         </div>
       </div>
       {children ? <div className="bang__nut">{children}</div> : null}
+      {onGhim && bang.boGhim.length > 0 ? (
+        <div className="bang__chua-ghim" role="group" aria-label={`Chưa ghim (${bang.boGhim.length} thẻ)`}>
+          <span className="bang__chua-ghim-nhan">Chưa ghim</span>
+          {bang.boGhim.map((t) => (
+            <button key={t.id} type="button" className={`bang__ghim-lai bang__ghim-lai--${t.loai}`} title={`Ghim lại lên bảng: ${dienTen(boNgoac(t.nhan))}`} aria-label={`Ghim lại: ${dienTen(boNgoac(t.nhan))}`} onClick={() => onGhim(t.id, true)}>
+              {dienTen(boNgoac(t.nhan))}
+            </button>
+          ))}
+        </div>
+      ) : null}
       {theXem ? (
         <div
           className="bang__xem"
@@ -224,6 +242,39 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
             <div className="bang__xem-chu">
               {theXem.the ? <TheHoSo the={theXem.the} dienTen={dienTen} /> : <p className="bang__xem-hoi">{dienTen(theXem.nhan)}</p>}
               {theXem.gach.length > 0 ? <p className="bang__xem-ghi">Đã loại: {theXem.gach.join(', ')}</p> : null}
+              {theXem.id !== MA_THE_HOI && (onDoiMau || onGhim) ? (
+                <div className="bang__xem-ghim">
+                  {onDoiMau ? (
+                    <span className="bang__mau" role="radiogroup" aria-label="Màu đầu ghim">
+                      {MAU_GHIM.map((m) => (
+                        <button
+                          key={m}
+                          type="button"
+                          role="radio"
+                          aria-checked={theXem.mau === m}
+                          aria-label={`Ghim ${TEN_MAU[m]}`}
+                          title={`Ghim ${TEN_MAU[m]}`}
+                          className={`bang__mau-nut bang__mau-nut--${m}${theXem.mau === m ? ' is-chon' : ''}`}
+                          onClick={() => onDoiMau(theXem.id, m)}
+                        />
+                      ))}
+                    </span>
+                  ) : null}
+                  {onGhim ? (
+                    <button
+                      type="button"
+                      className="btn btn--ghost bang__go"
+                      title="Gỡ thẻ khỏi bảng (vẫn còn trong hồ sơ, ghim lại được ở khay Chưa ghim)"
+                      onClick={() => {
+                        onGhim(theXem.id, false);
+                        setXem(null);
+                      }}
+                    >
+                      Gỡ khỏi bảng
+                    </button>
+                  ) : null}
+                </div>
+              ) : null}
               <button type="button" className="btn btn--primary" onClick={() => setXem(null)} autoFocus>
                 Đóng
               </button>

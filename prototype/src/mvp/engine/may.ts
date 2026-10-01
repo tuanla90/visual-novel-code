@@ -34,7 +34,7 @@ import type {
   NutMvp,
   TheThuThachMvp,
 } from '../../content/mvp/types';
-import type { BoiCanhChuoi, KhamPhaMvp, TrangThaiMvp } from './trang-thai';
+import { MAU_GHIM, type BoiCanhChuoi, type KhamPhaMvp, type MauGhimMvp, type TrangThaiMvp } from './trang-thai';
 
 /**
  * Tên dự phòng khi trạng thái chưa có tên (chưa qua câu hỏi tên, hay ô lưu hỏng). Không dùng trên đường chạy thường:
@@ -120,6 +120,10 @@ export type HanhDongMvp =
   | { type: 'xong-thu-thach'; thuThach: string; /** Mã các thẻ đã kéo vào câu đúng — sợi chỉ trên bảng điều tra. */ dung?: string[] }
   /** Người chơi kéo một thẻ trên bảng điều tra tới chỗ khác (không đổi con trỏ). */
   | { type: 'doi-cho-the'; the: string; x: number; y: number }
+  /** Đổi màu đầu ghim của một thẻ trên bảng (không đổi con trỏ). */
+  | { type: 'doi-mau-ghim'; the: string; mau: MauGhimMvp }
+  /** Gỡ thẻ khỏi bảng (`ghim: false`, thẻ vẫn trong hồ sơ) hay ghim lại (`ghim: true`). Không đổi con trỏ. */
+  | { type: 'ghim-the'; the: string; ghim: boolean }
   /** `[TẠO NHÂN VẬT ten]`: tên người chơi gõ (hay xúc xắc điền); máy kiểm lại bằng `kiemTen`, sai thì đứng yên. */
   | { type: 'dat-ten'; ten: string }
   /** `[TẠO NHÂN VẬT nganh]`: một ngành trong `lựa chọn:` của nút. */
@@ -699,6 +703,18 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
   if (hd.type === 'doi-cho-the') {
     const bang = s.bang ?? { day: {}, viTri: {} };
     return { ...s, bang: { ...bang, viTri: { ...bang.viTri, [hd.the]: { x: Math.round(hd.x), y: Math.round(hd.y) } } } };
+  }
+  if (hd.type === 'doi-mau-ghim') {
+    if (!MAU_GHIM.includes(hd.mau) || !coTrongHoSo(s, hd.the)) return s;
+    const bang = s.bang ?? { day: {}, viTri: {} };
+    return { ...s, bang: { ...bang, mau: { ...(bang.mau ?? {}), [hd.the]: hd.mau } } };
+  }
+  if (hd.type === 'ghim-the') {
+    if (!coTrongHoSo(s, hd.the)) return s;
+    const bang = s.bang ?? { day: {}, viTri: {} };
+    const cu = bang.boGhim ?? [];
+    const moiBo = hd.ghim ? cu.filter((x) => x !== hd.the) : cu.includes(hd.the) ? cu : [...cu, hd.the];
+    return moiBo === cu ? s : { ...s, bang: { ...bang, boGhim: moiBo } };
   }
   const kn = khungNhin(kb, s);
   let moi: TrangThaiMvp | null = null;
