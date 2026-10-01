@@ -18,6 +18,7 @@
 - [HẬU QUẢ] mở manh mối clue-tin-goc
 - [THỬ THÁCH c-tin-goc]
 - [LỜI tin-gap-nam.2]
+- [LỜI tin-gap-nam.3]
 - [HẬU QUẢ] mở manh mối clue-ngay-gui
 - [RẼ NHÁNH r-tin-tuyen] ha-vy: "Hai chỗ Nam vừa buột miệng nói ra. Xem chỗ nào trước?"
   - {id: may} Nhật ký đăng nhập của kênh. → hậu quả: đi tới tin-tuyen-may

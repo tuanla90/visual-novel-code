@@ -39,7 +39,13 @@
 - **duy** (neutral): Đấy. Một nguồn ngoài kênh. Đi thư viện.
 
 ## v3-thu-vien.1
-- **narrator**: Thư viện trường, bàn cạnh cửa sổ. Nam mở cổng sinh viên trên điện thoại, tải bản ghi cửa từ của chính mình trong tháng 9 và tháng 10, gửi vào nhóm.
+- **narrator**: Thư viện trường nằm trên tầng ba giảng đường B. {{nv.bac-tu}} ngồi ở bàn trực dưới chân cầu thang.
+- **bac-tu** (smile): Lại mấy đứa CLB Thám Tử. Lên thư viện à? Tối thứ Hai trên ấy vắng lắm, chỉ có vài đứa quen mặt.
+- **narrator**: Bàn cạnh cửa sổ. Ở bàn bên, {{nv.hoai}} ngẩng lên khỏi chồng sách.
+- **hoai** (nervous): Tớ chào các cậu. Lá thư hôm ấy tớ chỉ nộp hộ. Tớ vẫn nghĩ mãi về cái anh đã nhờ tớ.
+- **ha-vy** (neutral): Nhớ thêm được gì thì bảo bọn tớ nhé.
+- **hoai** (neutral): Ừ. Tớ mà gặp lại cái balo ấy là tớ nhận ra.
+- **narrator**: Nam mở cổng sinh viên trên điện thoại, tải bản ghi cửa từ của chính mình trong tháng 9 và tháng 10, gửi vào nhóm.
 - **ha-vy** (neutral): Tớ cũng tải bản của tớ, gộp chung vào một tệp cho dễ tra. Tên ai thì ghi tên người đó.
 - **nam** (neutral): Lọc ra của tớ rồi xem.
 > NHIỆM VỤ: Nam vào thư viện những ngày nào?

@@ -16,7 +16,7 @@
 
 ### doc-so-quy — Bản xuất sổ quỹ khối CLB
 - Tiêu đề: Sổ chi và bảng quỹ, Phòng Kế hoạch gửi theo yêu cầu của thầy Quang
-- Nguồn: Phòng Kế hoạch, qua {{nv.thay-quang}}
+- Nguồn: Phòng Kế hoạch, {{nv.co-hanh}} gửi theo chữ ký của {{nv.thay-quang}}; quy chế do {{nv.co-lan}} in kèm
 - Nội dung hiển thị:
 > Sổ chi: mỗi khoản có mã chi, mã đơn, mã quỹ, số tiền, người duyệt. Bảng quỹ: mã quỹ nào thuộc CLB nào.
 > Chỉ gồm các khoản ghi vào quỹ CLB Thám Tử và các khoản liên quan ba đơn đang xét.
@@ -43,4 +43,4 @@
 - Nguồn: Ngăn dưới tủ hồ sơ phòng CLB, chìa dán sau bảng nguyên tắc
 - Nội dung hiển thị:
 > "Hồ sơ vụ thứ nhất — CLB Thám Tử Dữ Liệu", chữ viết tay, ký tên Trịnh Quang.
-> Chị Linh chép lại cuốn này vào sổ tự học. Vụ đầu tiên kết luận sai một người.
+> Chị Linh chép lại cuốn này vào sổ tự học. Ở trang kết luận, một cái tên bị gạch bằng mực tím của chị Linh; bên lề có hai chữ mực xanh đã ngả màu của thầy Quang: "Xem lại."

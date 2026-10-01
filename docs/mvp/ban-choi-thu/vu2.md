@@ -8,6 +8,9 @@ Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từ
 - **Người kể**: Hơn hai tuần sau buổi họp rà soát. Chiều thứ Tư, phòng CLB.
 - **Minh Anh** (serious): Từ tối thứ Hai, kênh sinh viên chuyền nhau một tin về CLB mình. Sáng nay cô Lan gọi chị lên hỏi.
 - **Tùng** (surprised): Tin gì thế ạ?
+- **Hiếu** (neutral): Tin này này. Tối thứ Hai tớ còn bấm chuyển tiếp. Hồi lá thư tớ cũng gật ầm ầm, giờ nghĩ lại thấy mình chưa kiểm gì cả. Tớ gỡ rồi, sang báo các cậu một tiếng.
+- **Hà Vy** (neutral): Cảm ơn cậu. Cậu thấy nó đầu tiên ở đâu?
+- **Hiếu** (neutral): Trong kênh sinh viên. Ai gửi đầu thì tớ không để ý.
 > 🗂️ Tài liệu mới: **Ảnh chụp tin đồn** — nguồn: Cô Lan chuyển cho Minh Anh
 > "CLB Thám Tử soi dữ liệu sinh viên"
 > Kênh sinh viên Chấn Hưng. Tin được chuyển tiếp nhiều lần từ tối thứ Hai 07/10.
@@ -16,6 +19,7 @@ Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từ
 > (giấy nhớ kéo được vào màn tra: CLB Thám Tử soi dữ liệu)
 - **Bạn (người chơi)**: "CLB Thám Tử soi dữ liệu sinh viên."
 - **Tùng** (worried): Ơ, mình có soi ai đâu. Tra gì cũng có phiếu, lại có anh Quân ngồi giám sát mà.
+- **Minh Anh** (serious): Cuối kỳ là đợt rà soát phòng, cũng là lúc Phòng Kế hoạch gửi sao kê quỹ về các CLB. Chị không muốn tin này treo tới lúc đó.
 - **Minh Anh** (khoanh-tay): Thế nên chị mới cần biết tin này bắt đầu từ đâu. Cô Lan cho mình bản xuất các tin công khai của kênh, từ tối thứ Hai tới trưa hôm qua.
 - **Duy** (neutral): Tin công khai, ai vào kênh cũng đọc được. Tớ nạp vào laptop rồi. Bản xuất ghi nguyên văn từng tin, kể cả tin bấm chuyển tiếp: bấm chuyển thì chữ giữ y nguyên.
 > 🎯 NHIỆM VỤ: Những tin nào trong kênh mang câu tin đồn?
@@ -35,7 +39,7 @@ Bảng `tin_nhan` (8 dòng):
 | T-07 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên |
 | T-08 | 2024-10-08 12:05 | SV240412 | GOC | Nghe nói CLB Thám Tử soi điểm |
 Giấy nhớ đang có quanh màn hình: [CLB Thám Tử soi dữ liệu]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
 SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB Thám Tử soi dữ liệu%';
 ```
@@ -77,9 +81,10 @@ Lời nhân vật sau mỗi lần chạy:
 Đề bài trên màn hình: *Năm tin trên phiếu lẫn cả tin chuyển tiếp. Tin nào là tin gốc?*
 Cách chơi: nguồn là PHIẾU đã ghim `ev-tin-don` (câu hiện thành WITH … AS). Kéo giấy nhớ vào ô giá trị, bấm cột / phép ("bằng", "bắt đầu bằng") / VÀ–HOẶC rồi CHẠY.
 Giấy nhớ đang có quanh màn hình: [CLB Thám Tử soi dữ liệu] [GOC]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
-SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';
+WITH tin_don AS (phiếu "Năm tin mang câu tin đồn")
+SELECT ma_tin, thoi_diem, tai_khoan FROM tin_don WHERE loai = 'GOC';
 ```
 Kết quả: 1 dòng
 | ma_tin | thoi_diem | tai_khoan |
@@ -101,6 +106,11 @@ Lời nhân vật sau mỗi lần chạy:
 - **Hà Vy** (thinking): Còn mật khẩu nhiều người biết thì kênh có ghi ai đăng nhập không? Không có thì bọn tớ nhờ bên quản trị trường mở.
 - **Nam** (neutral): …Khỏi nhờ. Tớ là quản trị kênh, tớ mở nhật ký đăng nhập được. Xem đi, xem cả bảng ngoài cửa luôn.
 - **Duy** (neutral): Vậy là hai chỗ kiểm được. Xem cả hai, hay xem một rồi về báo chị Minh Anh, tùy mình.
+- **Khánh** (neutral): Nam, anh lấy tập hồ sơ giải quốc gia rồi quay lại họp. Có khách à?
+- **Nam** (neutral): Các bạn bên CLB Thám Tử ạ. Hỏi chuyện cái tin trong kênh.
+- **Khánh** (neutral): Anh là Khánh, trưởng CLB. Tin ấy anh có nghe. Kênh thì Nam trực, các em cần xem gì cứ để Nam mở, bên anh không giấu. Hỏi nhẹ thôi nhé, em nó sắp thi đấu.
+- **Tùng** (surprised): Anh Khánh chủ tịch Hội sinh viên đấy.
+- **Nam** (neutral): Anh Khánh lo cho đội lắm. Kinh phí đi giải năm nay toàn anh ấy chạy.
 > 🗂️ Giấy nhớ mới: **[Ngày gửi tin gốc]** — nguồn: Phiếu tin gốc
 > Tin gốc gửi lúc 22:40 thứ Hai 07/10/2024. Nhật ký đăng nhập của kênh ghi ngày theo dạng năm-tháng-ngày.
 > (giấy nhớ kéo được vào màn tra: 2024-10-07)
@@ -128,7 +138,7 @@ Bảng `dang_nhap_kenh` (5 dòng):
 | SV240254 | DIEN-THOAI | 2024-10-07 | 22:50 |
 | SV240213 | DIEN-THOAI | 2024-10-08 | 07:25 |
 Giấy nhớ đang có quanh màn hình: [CLB Thám Tử soi dữ liệu] [GOC] [clb_robotics] [2024-10-07]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
 SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = '2024-10-07';
 ```
@@ -230,7 +240,7 @@ Bảng `dat_xuong` (6 dòng):
 | 2024-10-11 | THU_SAU | 19:00 | 21:30 | Đội thi đấu tập |
 | 2024-10-12 | THU_BAY | 08:00 | 11:00 | Dọn xưởng |
 Giấy nhớ đang có quanh màn hình: [CLB Thám Tử soi dữ liệu] [GOC] [clb_robotics] [2024-10-07]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
 SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 ```

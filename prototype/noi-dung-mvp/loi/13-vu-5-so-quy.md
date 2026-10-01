@@ -29,8 +29,13 @@
 - **narrator**: Cả nhóm ra khỏi phòng Đào tạo, chưa có sổ quỹ. Minh Anh dừng ở hành lang.
 - **minh-anh** (serious): Thầy nói đúng. Mình phải mang căn cứ về tiền và hàng, không phải về người. Xem lại hồ sơ rồi vào lại.
 
+## v5-nhan-so.1
+- **co-hanh** (smile): Thầy Quang ký rồi. Bản xuất sổ quỹ cô gửi về laptop CLB. Các em chỉ xem đúng dòng liên quan thôi nhé.
+- **co-lan** (neutral): Cô bên Công tác sinh viên in kèm quy chế quỹ khối CLB. Khoản dưới một triệu thì chủ tịch Hội duyệt thẳng. Tổng một người duyệt vượt một triệu thì người đó phải giải trình.
+- **minh-anh** (neutral): Em cảm ơn hai cô ạ.
+
 ## v5-so-quy.1
-- **narrator**: Chiều, phòng CLB. Phòng Kế hoạch gửi bản xuất sổ quỹ khối CLB, chỉ gồm các khoản chi ghi vào quỹ CLB Thám Tử và các khoản liên quan ba đơn.
+- **narrator**: Chiều, phòng CLB. Bản xuất cô Hạnh gửi đã nằm trong laptop: chỉ gồm các khoản chi ghi vào quỹ CLB Thám Tử và các khoản liên quan ba đơn.
 - **duy** (neutral): Mỗi khoản chi có mã quỹ. Bảng quỹ cho biết mã nào là quỹ của CLB nào. Lại hai bảng.
 > NHIỆM VỤ: Khoản chi nào ghi vào quỹ CLB Thám Tử?
 > NHẮC VIỆC ha-vy (thinking): Nối sổ chi với bảng quỹ theo mã quỹ, rồi lọc quỹ của CLB mình.
@@ -44,7 +49,7 @@
 
 ## v5-so-quy.3
 - **player**: Chị Minh Anh: ba khoản, tổng bốn trăm năm mươi nghìn. Khánh: ba khoản, tổng hai triệu tư.
-- **minh-anh** (khoanh-tay): Quy chế quỹ khối CLB: khoản dưới một triệu thì chủ tịch Hội duyệt thẳng, không cần trưởng CLB chủ quỹ ký. Chị là chủ quỹ mà không biết ba khoản này, là vì thế. Sao kê tổng thì Phòng Kế hoạch giữ, cuối kỳ mới gửi.
+- **minh-anh** (khoanh-tay): Tờ quy chế cô Lan in đây: khoản dưới một triệu thì chủ tịch Hội duyệt thẳng, không cần trưởng CLB chủ quỹ ký. Chị là chủ quỹ mà không biết ba khoản này, là vì thế. Sao kê tổng thì Phòng Kế hoạch giữ, cuối kỳ mới gửi.
 - **duy** (neutral): Nhưng tổng các khoản do cùng một người duyệt mà vượt một triệu thì Phòng Kế hoạch đòi người đó giải trình. Ngưỡng ấy để tìm nhóm cần hỏi, không phải để kết tội. Để bảng tự lọc ra, đừng chỉ tay.
 - **ha-vy** (thinking): Và tính thêm trung bình mỗi khoản. Xem từng khoản to cỡ nào so với mức duyệt thẳng.
 > NHIỆM VỤ: Người duyệt nào có tổng chi vượt ngưỡng giải trình một triệu? Mỗi khoản trung bình bao nhiêu?
@@ -54,13 +59,33 @@
 - **player**: Còn một dòng. Khánh: ba khoản, tổng hai triệu tư, trung bình tám trăm nghìn.
 - **ha-vy** (thinking): Trung bình tám trăm nghìn một khoản, dưới mức một triệu. Nhìn lại phiếu sáu khoản: tám trăm, chín trăm, bảy trăm. Từng khoản đều dưới mức duyệt thẳng, cộng lại thì vượt ngưỡng giải trình.
 - **tung** (worried): Ba khoản nhỏ vừa đủ lọt… ghi vào quỹ CLB mình, cho ba đơn kho không có hàng.
-- **nam** (neutral): Khánh. Trưởng CLB của tớ. Chủ tịch Hội sinh viên.
+- **nam** (neutral): Anh Khánh. Trưởng CLB của tớ. Hôm ở xưởng anh ấy còn bảo mọi người hỏi tớ nhẹ thôi.
 - **ha-vy** (thinking): Bảng nói được tới đó: ai duyệt, bao nhiêu, chia thế nào. Vì sao thì bảng không nói. Chỉ có người mới nói được.
 - **minh-anh** (serious): Chị gửi thầy Quang. Việc còn lại là của thầy.
 
 ## v5-doi-chat.1
-- **narrator**: Thứ Hai tuần sau, phòng họp. Thầy Quang chủ trì. Khánh ngồi một bên, mặt không đổi. Nam ngồi cạnh nhóm CLB Thám Tử.
-- **thay-quang** (neutral): Thầy mời em Khánh tới vì sổ quỹ. CLB Thám Tử trình bày trước. Em Khánh nghe, rồi trả lời.
+- **narrator**: Thứ Hai tuần sau, phòng họp. Thầy Quang chủ trì. Khánh ngồi một bên, mặt không đổi, balo dựng cạnh chân ghế. Nam ngồi cạnh nhóm CLB Thám Tử. Quân ngồi cuối bàn ghi biên bản.
+- **thay-quang** (neutral): Thầy mời em Khánh tới vì sổ quỹ. CLB Thám Tử trình bày, em Khánh trả lời. Ai nói gì thì kèm căn cứ.
+> NHIỆM VỤ: Trình phiếu cho thấy Khánh phải giải trình
+
+## v5-doi-chat-2.1
+- **khanh** (neutral): Em giải trình được ạ.
+> NHIỆM VỤ: Trình phiếu cho thấy ba đơn không phải do Nam lập
+
+## v5-nhan-tien.1
+- **thay-quang** (neutral): Em Khánh. Em có chìa phòng ấy. Ba khoản em duyệt gắn với ba đơn lập sau cửa khóa, cho hàng mà kho không có. Em giải thích mối liên hệ này thế nào?
+- [DÀN DỰNG] {{nv.khanh}} nhìn tờ phiếu một dòng trên bàn một lúc lâu.
+- **khanh** (neutral): …Ba khoản đó không chi cho đội ạ. Đơn là em lập. Tiền em dùng vào việc riêng. Em sẽ trả lại.
+- **nam** (neutral): Anh lấy tên em.
+- **khanh** (neutral): Anh xin lỗi em, Nam.
+- **quan** (neutral): Thưa thầy, em xin nói một việc. Giấy yêu cầu giải trình gửi Nam là ban em lập, theo danh sách năm đơn anh Khánh chuyển xuống hôm 11/10.
+- **duy** (neutral): Ngày 11. Một ngày sau hôm Nam được gỡ nghi chuyện tin đồn.
+- **ha-vy** (thinking): Thưa thầy, em hỏi một câu. Sao kê quỹ về các CLB vào cuối kỳ, đúng đợt rà soát phòng. Nếu CLB em bị thu phòng, giải thể trước đợt ấy, thì ai đọc sao kê quỹ CLB em ạ?
+- **thay-quang** (neutral): Không ai. Quỹ của CLB giải thể thì đóng sổ.
+- **ha-vy** (thinking): Từ đầu bọn em tưởng người viết thư muốn cái phòng. Có khi họ muốn cái sổ.
+- **thay-quang** (neutral): Vì thế thầy mời thêm chú Cường bảo vệ và em Hoài. Mời hai người vào.
+- [DÀN DỰNG] {{nv.chu-cuong}} và {{nv.hoai}} bước vào, ngồi xuống ghế cạnh cửa.
+> NHIỆM VỤ: Trình thứ nối người đưa phong bì với người đang ngồi đây
 
 ## v5-ket-thieu.1
 - **thay-quang** (neutral): Các em dừng đúng chỗ. Chuyện ba khoản chi, thầy chuyển Phòng Kế hoạch yêu cầu Hội sinh viên giải trình. Có kết luận thầy sẽ thông báo.
@@ -69,18 +94,43 @@
 - **nam** (neutral): Tớ không biết cậu ấy sẽ nói gì với Phòng Kế hoạch. Nhưng tớ biết các cậu đã dừng ở đúng chỗ. Sổ sách của xưởng, từ giờ tớ giữ cho rõ.
 - **minh-anh** (serious): Chưa ngã ngũ thì hồ sơ ghi "chưa ngã ngũ". Mình không viết thêm.
 
+## v5-ket-tien.1
+- **thay-quang** (neutral): Phần tiền em Khánh đã nhận. Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên. Phần lá thư thì chưa có căn cứ gắn với một người, thầy sẽ hỏi riêng. Cảm ơn chú Cường và em Hoài đã tới.
+- **hoai** (downcast): Em xin lỗi, em không giúp được gì ạ.
+- **minh-anh** (neutral): Em tới là giúp rồi. Chưa đủ thì ghi là chưa đủ.
+- **thay-quang** (neutral): Phòng của CLB Thám Tử giữ nguyên. Thầy nhận hồ sơ của các em vào đợt rà soát cuối kỳ.
+
 ## v5-ket-du.1
-- **thay-quang** (neutral): Em Khánh nhận rồi. Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên, không bàn ở đây. Việc riêng của em ấy, thầy không hỏi trước mọi người.
-- [DÀN DỰNG] {{nv.khanh}} nhìn tờ phiếu một dòng trên bàn một lúc lâu.
-- **khanh** (neutral): Robotics… tớ xin thôi. Tớ đề nghị CLB bầu Nam. Cậu giữ sổ sách của xưởng tốt hơn tớ.
-- **thay-quang** (neutral): Trưởng CLB thì Robotics tự họp bầu. Thầy ghi nhận đề nghị của em Khánh.
-- **nam** (neutral): Nếu CLB bầu thì tớ nhận. Nhưng sổ sách thì ai cũng xem được, kể cả cậu.
-- **thay-quang** (neutral): Hai CLB dùng chung phòng tới hết học kỳ. Thầy nhận hồ sơ của CLB Thám Tử vào đợt rà soát cuối kỳ.
+- [DÀN DỰNG] {{nv.khanh}} nhìn xuống cái huy hiệu trên balo, rồi nhìn {{nv.hoai}}.
+- **khanh** (neutral): …Là em. Em in ở phòng máy tối Chủ nhật, sáng thứ Hai nhờ em ấy nộp hộ. Anh xin lỗi em, Hoài.
+- **thay-quang** (neutral): Vì sao lại là phòng của CLB Thám Tử?
+- **khanh** (neutral): Quỹ ấy nằm im từ hồi chị Linh nghỉ, không ai đọc sao kê. CLB giải thể trước cuối kỳ thì sổ đóng, không ai mở ra nữa. Em tính thế.
+- **ha-vy** (thinking): Không phải cái phòng. Là cái sổ.
+- **khanh** (neutral): Rồi các em giữ được phòng. Em tung cái tin để các em bận lo chuyện khác. Các em lần tới Nam thì em để tên Nam trên đơn, rồi bảo Quân gửi giấy. Cứ thấy các em tới gần cái sổ là em đẩy sang chỗ khác.
+- **quan** (stunned): Em lại cầm một danh sách đi nghi người khác. Lần thứ hai.
+- **thay-quang** (stern): Em Khánh nhận rồi. Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên, không bàn ở đây. Việc riêng của em ấy, thầy không hỏi trước mọi người.
+- **thay-quang** (neutral): Phòng của CLB Thám Tử giữ nguyên. Thầy nhận hồ sơ của các em vào đợt rà soát cuối kỳ. Em Hoài, em Nam: tên hai em không dính gì tới việc này nữa.
+- **hoai** (relieved): Em cảm ơn thầy ạ.
 - **tung** (happy): Giữ được phòng. Lần này tớ không cá nữa, tớ chắc.
+
+## v5-sau-hop.1
+- **narrator**: Hành lang ngoài phòng họp. Khánh dừng trước Nam, lấy trong túi ra một chiếc chìa.
+- **khanh** (neutral): Chìa phòng văn phòng. Robotics anh xin thôi. Anh sẽ đề nghị CLB bầu em.
+- **nam** (neutral): Em không nhận vì anh đưa. CLB bầu thì em nhận. Và sổ của xưởng từ giờ dán ngoài cửa, ai cũng xem được, kể cả anh.
+- **khanh** (neutral): Anh tưởng anh lấp kịp trước cuối kỳ. Em giữ sổ tốt hơn anh.
+- **nam** (neutral): Hôm ở xưởng anh bảo mọi người hỏi em nhẹ thôi. Em đã tưởng anh lo cho em.
+- [DÀN DỰNG] {{nv.khanh}} không trả lời, đặt chiếc chìa lên bậu cửa sổ rồi đi.
+- **minh-anh** (serious): Chị cũng có phần. Chủ quỹ mà cả năm không mở sao kê. Từ tháng này chị xin sao kê hằng tháng, dán cạnh bảng nguyên tắc.
+- **chu-cuong** (smile): Chú về trực đây. Lần sau chú cố nhìn mặt cho kỹ.
+- **tung** (happy): Chú nhớ cái huy hiệu là đủ rồi ạ.
+- **hoai** (neutral): Chị Minh Anh ơi, CLB mình còn nhận người không ạ? Em muốn biết lần sau nên hỏi gì trước khi cầm phong bì của người lạ.
+- **minh-anh** (happy): Đơn ở chỗ Duy. Chiều thứ Tư, phòng CLB.
 
 ## v5-ket-luan.1
 - **minh-anh** (neutral): Hồ sơ cuối kỳ xong. Mục nào cũng có phiếu, ai mở ra cũng tự kiểm được.
 - **ha-vy** (smile): Từ một chữ H tới một sổ quỹ. Mỗi bước là một phiếu.
+- **nam** (neutral): Cảm biến của xưởng ghi mỗi giây một dòng. Kéo giấy nhớ thì không kịp. Tớ muốn tự viết chương trình đọc nó.
+- **tung** (gai-dau): Thế là sang chuyện khác rồi.
 - **duy** (neutral): Và chị Linh để lại nhiều mẩu giấy hơn mình tưởng.
 - [THẺ CHỮ] **narrator**: Dữ liệu chỉ ra ai cần hỏi. Người trả lời mới là người nói "vì sao". Mùa 1 khép lại ở chỗ chứng cứ dừng.
 
@@ -89,7 +139,7 @@
 - **narrator**: Hồ sơ đã nộp. Mọi người sắp về thì Duy bày bốn mẩu giấy của chị Linh lên bàn.
 - **duy** (neutral): Bốn mẩu giấy. Mẩu nào cũng nhắc "cuốn sổ cũ" với "vụ đầu tiên". Mà ngăn dưới tủ hồ sơ thì khóa, tớ chưa bao giờ có chìa.
 - **tung** (surprised): Thì cạy ra!
-- **ha-vy** (thinking): Khoan. Mẩu đầu: "Căn phòng này giữ nhiều hơn em nghĩ." Chị ấy không nói "tủ".
+- **ha-vy** (thinking): Khoan. Mẩu đầu: "Căn phòng này giữ nhiều hơn em nghĩ." Chị ấy không nói "tủ". Mẩu thứ hai kẹp ở trang "Kiểm hai lần". Chị ấy toàn giấu ở chỗ mình nhìn mỗi ngày.
 - [DÀN DỰNG] {{nv.ha-vy}} nhìn quanh phòng, dừng ở tấm bảng nguyên tắc. Sau bảng có một chìa khóa nhỏ dán băng dính.
 - **duy** (neutral): …Chìa ngăn dưới.
 
@@ -97,6 +147,8 @@
 - **narrator**: Trong ngăn tủ: một cuốn sổ bìa cứng, chữ viết tay đã ngả màu. Trang đầu ghi "Hồ sơ vụ thứ nhất — CLB Thám Tử Dữ Liệu", ký tên Trịnh Quang.
 - **tung** (surprised): Thầy Quang? Thầy Quang lập CLB này á?
 - **ha-vy** (thinking): Và vụ đầu tiên của CLB kết luận sai. Chị Linh tìm ra, chép lại, rồi để lại giấy cho mình.
+- **player**: Trang kết luận có một cái tên bị gạch đi bằng mực tím, còn mới. Bên lề, mực xanh đã ngả màu, chữ thầy Quang: "Xem lại."
+- **duy** (neutral): Mực tím là bút chị Linh. Còn hai chữ kia thì thầy viết từ bao giờ, không ghi ngày.
 - **player**: Trang cuối có thêm một dòng mới, chữ chị Linh: "Manh mối cũ, câu hỏi mới."
 - **minh-anh** (neutral): Mùa sau. Giờ thì cất đi, và đừng cá.
 - **tung** (gai-dau): Tớ có cá đâu.

@@ -6,12 +6,12 @@
 - Tiêu đề: Giấy của Ban kiểm tra Hội sinh viên gửi xưởng Robotics
 - Nguồn: {{nv.nam}} mang tới phòng CLB
 - Nội dung hiển thị:
-> Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, năm đơn cộng lại 2.670.000 đồng. Kèm bản sổ đặt hàng của xưởng.
+> Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, năm đơn cộng lại 2.670.000 đồng. Giấy đề ngày 11/10, lập theo danh sách chủ tịch Hội sinh viên chuyển xuống; {{nv.quan}} ký. Kèm bản sổ đặt hàng của xưởng.
 > Nam nói mình chỉ đặt hai đơn: cảm biến dò line và bánh xe.
 
-### doc-phien-dang-nhap — Bảng phiên đăng nhập do Phòng Quản trị mạng xuất
+### doc-phien-dang-nhap — Bảng phiên đăng nhập do thầy Khải xuất
 - Tiêu đề: Bản xuất nguyên bản, có dấu xác nhận
-- Nguồn: Phòng Quản trị mạng, theo đề nghị của {{nv.thay-quang}}
+- Nguồn: {{nv.thay-khai}} (phòng máy, nơi đặt máy chủ), theo đề nghị của {{nv.thay-quang}}
 - Nội dung hiển thị:
 > Mỗi phiên đăng nhập của phần mềm đặt hàng: mã phiên, máy, ngày, giờ. Có cả phiên không tạo đơn.
 > Tài khoản quản trị của Nam đang bị khóa; bảng này không qua tay Nam.
@@ -42,9 +42,9 @@
 ### clue-giao-chia — [Tờ giao chìa: Khánh, Bách, Thảo]
 - Tiêu đề: Tờ giao chìa dán ở cửa phòng văn phòng xưởng
 - Nguồn: {{nv.nam}} chụp lại tờ giấy dán ở cửa
-- Nội dung: Tờ giao chìa phòng văn phòng xưởng Robotics ghi ba người giữ chìa: Khánh (trưởng CLB), Bách (phó CLB), Thảo (kỹ thuật). Tờ giấy nói ai có chìa, không nói ai mở cửa tối nào.
+- Nội dung: Tờ giao chìa phòng văn phòng xưởng Robotics ghi ba người giữ chìa: Khánh (trưởng CLB), Bách (phó CLB), Thảo (kỹ thuật). Tờ giấy nói ai có chìa, không nói ai mở cửa tối nào. Bách nói tối 07/10 về quê; Thảo nói chìa của mình để ngăn bàn ngoài xưởng, ai cũng lấy được.
 
 ### clue-loi-nhan-linh-4 — [Lời nhắn chị Linh, mẩu thứ tư]
 - Tiêu đề: Mẩu giấy ở trang cuối sổ
 - Nguồn: Sổ tự học của chị Linh, phòng CLB
-- Nội dung: Chữ chị Linh: "Vụ đầu tiên, họ kết tội đúng cái tên trên bản ghi. Người mang tên đó không ở đấy."
+- Nội dung: Chữ chị Linh: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy."

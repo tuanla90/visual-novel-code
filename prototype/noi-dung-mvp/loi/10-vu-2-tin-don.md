@@ -7,10 +7,15 @@
 - **narrator**: Hơn hai tuần sau buổi họp rà soát. Chiều thứ Tư, phòng CLB.
 - **minh-anh** (serious): Từ tối thứ Hai, kênh sinh viên chuyền nhau một tin về CLB mình. Sáng nay cô Lan gọi chị lên hỏi.
 - **tung** (surprised): Tin gì thế ạ?
+- [DÀN DỰNG] {{nv.hieu}} lớp Báo chí ló đầu vào cửa, tay cầm điện thoại.
+- **hieu** (neutral): Tin này này. Tối thứ Hai tớ còn bấm chuyển tiếp. Hồi lá thư tớ cũng gật ầm ầm, giờ nghĩ lại thấy mình chưa kiểm gì cả. Tớ gỡ rồi, sang báo các cậu một tiếng.
+- **ha-vy** (neutral): Cảm ơn cậu. Cậu thấy nó đầu tiên ở đâu?
+- **hieu** (neutral): Trong kênh sinh viên. Ai gửi đầu thì tớ không để ý.
 
 ## tin-mo.2
 - **player**: "CLB Thám Tử soi dữ liệu sinh viên."
 - **tung** (worried): Ơ, mình có soi ai đâu. Tra gì cũng có phiếu, lại có anh Quân ngồi giám sát mà.
+- **minh-anh** (serious): Cuối kỳ là đợt rà soát phòng, cũng là lúc Phòng Kế hoạch gửi sao kê quỹ về các CLB. Chị không muốn tin này treo tới lúc đó.
 - **minh-anh** (khoanh-tay): Thế nên chị mới cần biết tin này bắt đầu từ đâu. Cô Lan cho mình bản xuất các tin công khai của kênh, từ tối thứ Hai tới trưa hôm qua.
 - **duy** (neutral): Tin công khai, ai vào kênh cũng đọc được. Tớ nạp vào laptop rồi. Bản xuất ghi nguyên văn từng tin, kể cả tin bấm chuyển tiếp: bấm chuyển thì chữ giữ y nguyên.
 > NHIỆM VỤ: Những tin nào trong kênh mang câu tin đồn?
@@ -46,6 +51,15 @@
 - **ha-vy** (thinking): Còn mật khẩu nhiều người biết thì kênh có ghi ai đăng nhập không? Không có thì bọn tớ nhờ bên quản trị trường mở.
 - **nam** (neutral): …Khỏi nhờ. Tớ là quản trị kênh, tớ mở nhật ký đăng nhập được. Xem đi, xem cả bảng ngoài cửa luôn.
 - **duy** (neutral): Vậy là hai chỗ kiểm được. Xem cả hai, hay xem một rồi về báo chị Minh Anh, tùy mình.
+
+## tin-gap-nam.3
+- [DÀN DỰNG] Cửa xưởng mở. Một anh áo sơ mi trắng bước vào, thẻ Hội sinh viên đeo ở cổ, đi thẳng tới kệ hồ sơ.
+- **khanh** (neutral): Nam, anh lấy tập hồ sơ giải quốc gia rồi quay lại họp. Có khách à?
+- **nam** (neutral): Các bạn bên CLB Thám Tử ạ. Hỏi chuyện cái tin trong kênh.
+- **khanh** (neutral): Anh là Khánh, trưởng CLB. Tin ấy anh có nghe. Kênh thì Nam trực, các em cần xem gì cứ để Nam mở, bên anh không giấu. Hỏi nhẹ thôi nhé, em nó sắp thi đấu.
+- **tung** (surprised): Anh Khánh chủ tịch Hội sinh viên đấy.
+- [DÀN DỰNG] {{nv.khanh}} kẹp tập hồ sơ, vỗ vai {{nv.nam}} rồi đi.
+- **nam** (neutral): Anh Khánh lo cho đội lắm. Kinh phí đi giải năm nay toàn anh ấy chạy.
 
 ## tin-tuyen-may.1
 > NHIỆM VỤ: Ngày 07/10, tài khoản kênh đăng nhập những lần nào, từ máy nào?

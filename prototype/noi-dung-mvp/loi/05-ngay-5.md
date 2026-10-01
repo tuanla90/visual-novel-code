@@ -14,7 +14,7 @@
 - **chu-cuong** (neutral): Sáng thứ Hai à… 6 giờ 45, chú thấy một cậu sinh viên, balo đeo huy hiệu bánh răng, đứng ngoài cổng đưa phong bì nâu cho một bạn nữ.
 - **chu-cuong** (neutral): Con bé cầm xong là đi thẳng về phía tòa B luôn.
 - **player**: Còn cậu kia, chú có nhìn rõ mặt không ạ?
-- **chu-cuong** (neutral): Không. Cậu ấy đứng xa, trời lại mới sáng, chú chỉ để ý cái huy hiệu thôi.
+- **chu-cuong** (neutral): Không. Cậu ấy đứng xa, trời lại mới sáng, chú chỉ để ý cái huy hiệu thôi. Cái bánh răng sứt mất một răng, trông lệch lệch nên chú nhớ.
 
 ## n5-chu-cuong.2
 - **tung** (surprised): Huy hiệu bánh răng… Hôm Ngày hội, gian Robotics treo cờ in đúng hình ấy.

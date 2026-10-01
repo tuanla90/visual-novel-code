@@ -40,7 +40,7 @@
 ### clue-loi-chu-cuong — [Lời chú Cường]
 - Tiêu đề: Phong bì nâu trao tay 6:45 sáng thứ Hai
 - Nguồn: {{nv.chu-cuong}}, cổng KTX
-- Nội dung: Một cậu sinh viên, balo đeo huy hiệu bánh răng của CLB Robotics, đưa phong bì nâu cho một bạn nữ; bạn nữ cầm rồi đi thẳng về phía tòa B. Chú không nhìn rõ mặt.
+- Nội dung: Một cậu sinh viên, balo đeo huy hiệu bánh răng của CLB Robotics, đưa phong bì nâu cho một bạn nữ; bạn nữ cầm rồi đi thẳng về phía tòa B. Chú không nhìn rõ mặt, chỉ nhớ cái huy hiệu sứt mất một răng.
 
 ### clue-hoai-nguoi-nop — [Hoài là người nộp]
 - Tiêu đề: Sổ niêm phong: SV240317 có, SV240228 không

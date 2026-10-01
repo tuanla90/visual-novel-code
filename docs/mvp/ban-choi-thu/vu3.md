@@ -48,7 +48,7 @@ Bảng `bai_dang_kenh` (14 dòng):
 | BD-13 | clb_robotics | 2024-10-09 | CHIEU | DIEN-THOAI-TRUC |
 | BD-14 | clb_van_nghe | 2024-10-09 | TOI | DIEN-THOAI |
 Giấy nhớ đang có quanh màn hình: [clb_robotics]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
 SELECT ma_bai, ngay, buoi, thiet_bi FROM bai_dang_kenh WHERE kenh = 'clb_robotics';
 ```
@@ -78,9 +78,10 @@ Lời nhân vật sau mỗi lần chạy:
 Đề bài trên màn hình: *Lấy phiếu chín bài làm nguồn. Gom theo thiết bị gửi, đếm mỗi nhóm bao nhiêu bài: kênh này hay đăng từ đâu?*
 Cách chơi: màn TỔNG HỢP — chọn nguồn (phiếu đã ghim `ev-bai-dang`), lọc tùy chọn bằng giấy nhớ, chọn cột để NHÓM; máy đếm số dòng mỗi nhóm (COUNT), có thể tính tổng / trung bình và chỉ giữ nhóm vượt ngưỡng nếu bài cần.
 Giấy nhớ đang có quanh màn hình: [clb_robotics]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
-SELECT thiet_bi, COUNT(*) AS so_dong FROM @ev-bai-dang GROUP BY thiet_bi;
+WITH bai_dang AS (phiếu "Chín bài của kênh Robotics")
+SELECT thiet_bi, COUNT(*) AS so_dong FROM bai_dang GROUP BY thiet_bi;
 ```
 Kết quả: 2 dòng
 | thiet_bi | so_dong |
@@ -103,7 +104,13 @@ Kết quả: 2 dòng
 
 #### 📍 Thư viện trường — Thư viện: bản ghi quẹt thẻ của chính Nam
 
-- **Người kể**: Thư viện trường, bàn cạnh cửa sổ. Nam mở cổng sinh viên trên điện thoại, tải bản ghi cửa từ của chính mình trong tháng 9 và tháng 10, gửi vào nhóm.
+- **Người kể**: Thư viện trường nằm trên tầng ba giảng đường B. Bác Thịnh ngồi ở bàn trực dưới chân cầu thang.
+- **Bác Thịnh** (smile): Lại mấy đứa CLB Thám Tử. Lên thư viện à? Tối thứ Hai trên ấy vắng lắm, chỉ có vài đứa quen mặt.
+- **Người kể**: Bàn cạnh cửa sổ. Ở bàn bên, Hoài ngẩng lên khỏi chồng sách.
+- **Hoài** (nervous): Tớ chào các cậu. Lá thư hôm ấy tớ chỉ nộp hộ. Tớ vẫn nghĩ mãi về cái anh đã nhờ tớ.
+- **Hà Vy** (neutral): Nhớ thêm được gì thì bảo bọn tớ nhé.
+- **Hoài** (neutral): Ừ. Tớ mà gặp lại cái balo ấy là tớ nhận ra.
+- **Người kể**: Nam mở cổng sinh viên trên điện thoại, tải bản ghi cửa từ của chính mình trong tháng 9 và tháng 10, gửi vào nhóm.
 - **Hà Vy** (neutral): Tớ cũng tải bản của tớ, gộp chung vào một tệp cho dễ tra. Tên ai thì ghi tên người đó.
 - **Nam** (neutral): Lọc ra của tớ rồi xem.
 > 🎯 NHIỆM VỤ: Nam vào thư viện những ngày nào?
@@ -125,7 +132,7 @@ Bảng `quet_the_thu_vien` (10 dòng):
 | Nam | 2024-10-07 | THU_HAI | 21:50 | 23:05 |
 | Hà Vy | 2024-10-07 | THU_HAI | 20:00 | 23:00 |
 Giấy nhớ đang có quanh màn hình: [clb_robotics] [Nam] [2024-10-07]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
 SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Nam';
 ```
@@ -151,9 +158,10 @@ Lời nhân vật sau mỗi lần chạy:
 Đề bài trên màn hình: *Lấy phiếu năm lần làm nguồn. Gom theo thứ trong tuần, đếm mỗi thứ mấy lần: Nam hay đi thư viện vào thứ mấy?*
 Cách chơi: màn TỔNG HỢP — chọn nguồn (phiếu đã ghim `ev-nam-thu-vien`), lọc tùy chọn bằng giấy nhớ, chọn cột để NHÓM; máy đếm số dòng mỗi nhóm (COUNT), có thể tính tổng / trung bình và chỉ giữ nhóm vượt ngưỡng nếu bài cần.
 Giấy nhớ đang có quanh màn hình: [clb_robotics] [Nam] [2024-10-07]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
-SELECT thu, COUNT(*) AS so_dong FROM @ev-nam-thu-vien GROUP BY thu;
+WITH nam_thu_vien AS (phiếu "Năm lần Nam quẹt thẻ thư viện")
+SELECT thu, COUNT(*) AS so_dong FROM nam_thu_vien GROUP BY thu;
 ```
 Kết quả: 2 dòng
 | thu | so_dong |
@@ -187,7 +195,7 @@ Bảng `quet_the_thu_vien` (10 dòng):
 | Nam | 2024-10-07 | THU_HAI | 21:50 | 23:05 |
 | Hà Vy | 2024-10-07 | THU_HAI | 20:00 | 23:00 |
 Giấy nhớ đang có quanh màn hình: [clb_robotics] [Nam] [2024-10-07]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
 SELECT ten, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ngay = '2024-10-07';
 ```
@@ -236,7 +244,7 @@ Bảng `quet_the_thu_vien` (10 dòng):
 | Nam | 2024-10-07 | THU_HAI | 21:50 | 23:05 |
 | Hà Vy | 2024-10-07 | THU_HAI | 20:00 | 23:00 |
 Giấy nhớ đang có quanh màn hình: [clb_robotics] [Nam] [2024-10-07] [Hà Vy]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
 SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 ```
