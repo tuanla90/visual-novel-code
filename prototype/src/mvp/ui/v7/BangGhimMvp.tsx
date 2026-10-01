@@ -97,6 +97,19 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children }: B
     return { x: p.x + CO_THE[t.loai].rong / 2, y: p.y + 4 };
   };
 
+  // Esc khi đang xem kỹ một thẻ: chỉ đóng thẻ (bắt ở pha capture để khung Hồ sơ bên ngoài không đóng theo).
+  useEffect(() => {
+    if (!xem) return;
+    const onKey = (e: KeyboardEvent): void => {
+      if (e.key !== 'Escape') return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      setXem(null);
+    };
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
+  }, [xem]);
+
   const theXem = xem ? bang.the.find((t) => t.id === xem) : undefined;
   const anhXem = theXem?.anh ? anhTheoTen(theXem.anh) : undefined;
 
