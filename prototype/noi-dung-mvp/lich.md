@@ -35,3 +35,55 @@
 ## Kết
 - Kết thật: ket-that
 - Kết thường: ket-thuong
+
+<!-- Vụ sau (từ Vụ 2): chơi tiếp từ màn kết của vụ trước. Mỗi vụ chạy MỘT chuỗi (tự [ĐI TỚI] các chuỗi khác), kết bằng [KẾT THÚC]. "Ngày" là ngày thật trên màn lịch (truyện năm 2024). Máy tự đặt cờ <mã vụ>-hoan-tat khi một vụ kết; Vụ 1 thêm vu1-ket-that / vu1-ket-thuong. Thẻ của vụ trước được gỡ khỏi bảng điều tra, vẫn nằm trong hồ sơ. Vụ chính nào cũng hé một phần bí ẩn của mùa (docs/mvp/mua-1-dan-y-nam-khanh.md). -->
+
+## Tin đồn {vụ sau: vu2}
+- Chuỗi: tin-mo
+- Ngày: 2024-10-09
+- Tiêu đề kết: Một tài khoản, chưa phải một người
+- Lời kết: Tin gốc đi từ tài khoản kênh của CLB Robotics, lúc 22:40 tối thứ Hai. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
+
+## Tranh cãi trong nhóm {vụ sau: vu3}
+- Chuỗi: v3-mo
+- Ngày: 2024-10-10
+- Tiêu đề kết: Nam ở thư viện lúc tin được gửi
+- Lời kết: Bản ghi quẹt thẻ của thư viện và trí nhớ của Hà Vy là hai nguồn riêng, cùng đặt Nam ở thư viện lúc 22:40. Người gửi tin ngồi máy văn phòng xưởng, là ai thì chưa biết.
+
+## Giúp Nam {vụ sau: vu4}
+- Chuỗi: v4-mo
+- Ngày: 2024-10-14
+- Tiêu đề kết: Có người mượn tên Nam
+- Lời kết: Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng, cùng cái máy đã gửi tin đồn, một đơn đúng tối Nam ở thư viện. Máy thì biết, tay thì chưa. Ba người có chìa phòng.
+
+## Sổ quỹ {vụ sau: vu5}
+- Chuỗi: v5-mo
+- Ngày: 2024-10-18
+- Tiêu đề kết: Mỗi bước là một phiếu
+- Lời kết: Ba khoản chi không có hàng được ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Người nhận là người nói "vì sao". Mùa 1 khép lại ở chỗ chứng cứ dừng.
+
+<!-- Nhiệm vụ phụ: việc một NPC giao, không dính truyện chính, để rèn kỹ năng. Nhận ở màn kết của một vụ chính, sau khi vụ "Mở sau" đã xong; kết bằng [KẾT THÚC] rồi quay lại màn kết đó. Máy đặt cờ <mã>-hoan-tat. Vụ chính không được đòi kỹ năng chỉ dạy ở nhiệm vụ phụ. -->
+
+## Bốn mục trong sổ đã ký {nhiệm vụ phụ: so-phong}
+- Chuỗi: v2-mo
+- Người giao: duy
+- Mở sau: vu2
+- Ngày: 2024-10-25
+- Tiêu đề kết: Bốn mục có trong sổ, không hơn
+- Lời kết: Bản xuất và sổ giấy là hai nguồn riêng, cùng ra bốn buổi đã ký. Hồ sơ ghi đúng điều đó: không nói ai tới dự, không nói buổi nào có ích.
+
+## Chiếc micro ở tủ chung {nhiệm vụ phụ: micro}
+- Chuỗi: p-mic-mo
+- Người giao: duy
+- Mở sau: vu4
+- Ngày: 2024-11-01
+- Tiêu đề kết: Micro không mất, chỉ đổi chỗ
+- Lời kết: Phiếu PX-17 đã có người nhận, chuyển micro không dây sang tủ thiết bị dùng chung; mã dán trên micro trong tủ khớp với mã trên phiếu. Bảng không nói ai quên báo, và hồ sơ cũng không nói thay.
+
+## Một lần hoàn tiền, hai dòng ghi {nhiệm vụ phụ: hoan-tien}
+- Chuỗi: p-hoan-mo
+- Người giao: minh-anh
+- Mở sau: vu5
+- Ngày: 2024-11-08
+- Tiêu đề kết: Một khoản hoàn, bản xuất ghi hai lần
+- Lời kết: Phiếu PH-04 có hai dòng hoàn tiền cùng mã tham chiếu; biên nhận ngân hàng xác nhận một lần hoàn 60.000 đồng. Báo cáo được sửa, bản cũ được giữ. Ai nhập trùng thì bảng không ghi.

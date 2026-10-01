@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import type { BoDuLieuMvp } from '../../content/mvp/types';
 import { chaySql, type KetQuaChay } from '../engine/sql-mvp';
 import { cauSoiDieuKien, type WhereTach } from '../engine/trinh-dung';
+import { ChuCoDauCach } from './v7/ManTraV7';
 
 export function SoiDieuKienMvp({ duLieu, where, onDong }: { duLieu: BoDuLieuMvp; where: WhereTach; onDong: () => void }) {
   const [kq, setKq] = useState<KetQuaChay | null>(null);
@@ -55,7 +56,7 @@ export function SoiDieuKienMvp({ duLieu, where, onDong }: { duLieu: BoDuLieuMvp;
                 return (
                   <tr key={r} className={giu ? 'is-giu' : 'is-loai'}>
                     {dong.slice(0, dong.length - soDk - 1).map((v, k) => (
-                      <td key={k}>{v === null ? 'NULL' : String(v)}</td>
+                      <td key={k}>{v === null ? 'NULL' : <ChuCoDauCach chu={String(v)} />}</td>
                     ))}
                     {dong.slice(dong.length - soDk - 1, dong.length - 1).map((v, k) => (
                       <td key={`d${k}`} className={v === 1 ? 'is-co' : 'is-khong'} aria-label={v === 1 ? 'thỏa' : 'không thỏa'}>

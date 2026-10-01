@@ -19,6 +19,10 @@ export interface ChienThuat {
   traLoi?: (id: string, lan: number) => 'dung' | 'sai';
   /** Tên gõ ở câu hỏi tên (mặc định `TEN_MAC_DINH`). */
   ten?: string;
+  /** Tới màn kết của một vụ mà còn vụ sau → chơi tiếp (mặc định dừng ở màn kết). */
+  sangVuSau?: boolean;
+  /** Ở màn kết có nhiệm vụ phụ đang mở → làm hết rồi mới sang vụ sau (mặc định bỏ qua nhiệm vụ phụ). */
+  lamPhu?: boolean;
 }
 
 /** Hành động tự chơi cho một khung nhìn (không tính `end` / `error`). */
@@ -81,7 +85,20 @@ export function choiTuDong(
     const kn = khungNhin(kb, s);
     if (kn.kind === 'error') throw new Error(`Máy báo lỗi: ${kn.message} (ngày ${s.ngay}, chuỗi ${s.conTro?.chuoi ?? '-'})`);
     if (dung(s, kn)) return s;
-    if (kn.kind === 'end') return s;
+    if (kn.kind === 'end') {
+      if (kn.phuXong) {
+        s = xuLy(kb, s, { type: 'xong-nhiem-vu-phu' });
+        continue;
+      }
+      const phu = ct.lamPhu ? kn.phu[0] : undefined;
+      if (phu) {
+        s = xuLy(kb, s, { type: 'lam-nhiem-vu-phu', id: phu.id });
+        continue;
+      }
+      if (!ct.sangVuSau || !kn.vuKe) return s;
+      s = xuLy(kb, s, { type: 'sang-vu-sau' });
+      continue;
+    }
     const hd = hanhDongTuDong(s, kn, ct);
     const sau = xuLy(kb, s, hd);
     if (sau === s) throw new Error(`Hành động ${hd.type} bị từ chối ở khung nhìn ${kn.kind} (ngày ${s.ngay}, khung ${s.khung})`);
@@ -108,11 +125,11 @@ export function chonTheoUuTien(uuTien: readonly string[], vetCan: boolean): Chie
 
 /**
  * Chương 1 (ngày theo truyện, ĐÃ CHỐT C 30/09/2026): lựa chọn ở mỗi [RẼ NHÁNH] để tới KẾT THẬT — ghé phòng máy (nhật ký
- * in), hỏi chú Cường, mời Hoài vào tự kể. Rẽ nhánh không có trong bảng thì chọn lựa chọn đầu.
+ * in), mời Hoài vào tự kể. Lời chú Cường từ 01/10/2026 là cảnh bắt buộc, không còn là rẽ nhánh. Rẽ nhánh không có trong
+ * bảng thì chọn lựa chọn đầu.
  */
 export const RE_NHANH_KET_THAT: Readonly<Record<string, string>> = {
   'r-phong-may': 'ghe',
-  'r-chu-cuong': 'hoi',
   'r-moi-hoai': 'tu-ke',
 };
 
@@ -123,7 +140,7 @@ export const reNhanhTheo =
 
 // ---------- Nhảy tới (người quan sát) ----------
 
-export type MaDiemNhayMvp = 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or';
+export type MaDiemNhayMvp = 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or' | 'vu2-tin-don' | 'vu2-tin-goc' | 'vu3-thiet-bi' | 'vu3-toi-07' | 'vu4-noi' | 'vu5-vuot-muc' | 'vu2-buoi' | 'phu-micro' | 'phu-hoan-nhom';
 
 export interface DiemNhayMvp {
   id: MaDiemNhayMvp;
@@ -141,7 +158,7 @@ const dangOThuThach =
     kn.kind === kind && kn.thuThach.id === id;
 
 /**
- * Bốn điểm nhảy tới phần SQL của chương 1. Đường đi cố định: chọn theo `RE_NHANH_KET_THAT`, trả lời đúng mọi câu → hồ sơ
+ * Các điểm nhảy tới phần SQL (chương 1 và Vụ 2). Đường đi cố định: chọn theo `RE_NHANH_KET_THAT`, trả lời đúng mọi câu → hồ sơ
  * có đủ thứ của kết thật, chơi tiếp đúng vẫn tới kết thật.
  */
 export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
@@ -149,6 +166,15 @@ export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
   { id: 'ten-h', nhan: 'Ngày 3 · Tên bắt đầu bằng H', moTa: 'Laptop phòng CLB: phiếu hai lớp + [H]; "bằng" ra 0 dòng → "bắt đầu bằng".', toi: dangOThuThach('challenge', 'c-ten-h') },
   { id: 'nhat-ky-in', nhan: 'Ngày 4 · Nhật ký in', moTa: 'Phòng máy (đã chọn ghé): mã + tên tệp ra 0 dòng → bỏ điều kiện mã.', toi: dangOThuThach('challenge', 'c-in') },
   { id: 'hop-sua-or', nhan: 'Buổi họp · Sửa câu HOẶC của Quân', moTa: 'Buổi họp rà soát, màn sửa truy vấn HOẶC → VÀ.', toi: dangOThuThach('fix-query', 'c-sua-or-quan') },
+  { id: 'vu2-tin-don', nhan: 'Vụ 2 · Tin đồn', moTa: 'Sau kết thật Vụ 1, laptop phòng CLB: lọc các tin mang nội dung tin đồn, ghim thành phiếu.', toi: dangOThuThach('challenge', 'c-tin-don') },
+  { id: 'vu2-tin-goc', nhan: 'Vụ 2 · Tin gốc (phiếu làm nguồn)', moTa: 'Sau khi gặp Nam: lấy phiếu tin đồn làm nguồn, lọc tiếp ra tin gốc.', toi: dangOThuThach('challenge', 'c-tin-goc') },
+  { id: 'vu3-thiet-bi', nhan: 'Vụ 3 · Nhóm bài đăng theo thiết bị', moTa: 'Xưởng Robotics: phiếu chín bài làm nguồn, màn tổng hợp nhóm theo thiết bị và đếm.', toi: dangOThuThach('challenge', 'c-bai-thiet-bi') },
+  { id: 'vu3-toi-07', nhan: 'Vụ 3 · Thư viện tối 07/10', moTa: 'Thư viện: lọc đúng ngày trên bản ghi quẹt thẻ, ra Hà Vy và Nam — thẻ đủ căn cứ cho đối chất.', toi: dangOThuThach('challenge', 'c-toi-07') },
+  { id: 'vu4-noi', nhan: 'Vụ 4 · Nối đơn với phiên đăng nhập', moTa: 'Phòng CLB: khối "nối với … theo …" — nối sổ đặt hàng với bảng phiên theo mã phiên, lọc đơn của Nam.', toi: dangOThuThach('challenge', 'c-don-nam-may') },
+  { id: 'vu5-vuot-muc', nhan: 'Vụ 5 · Lọc nhóm vượt hạn mức', moTa: 'Phòng CLB, màn tổng hợp: gom theo người duyệt, tính tổng, chỉ giữ nhóm vượt một triệu.', toi: dangOThuThach('challenge', 'c-chi-vuot-muc') },
+  { id: 'vu2-buoi', nhan: 'Việc phụ · Bốn buổi đã ký', moTa: 'Duy nhờ sau Vụ 2, laptop phòng CLB: gọt mã phòng (dấu cách, hoa/thường), xếp theo ngày.', toi: dangOThuThach('challenge', 'v2-loc-buoi') },
+  { id: 'phu-micro', nhan: 'Việc phụ · Chiếc micro (nối bảng)', moTa: 'Duy nhờ sau Vụ 4: nối phiếu luân chuyển với sổ tài sản theo mã tài sản; cột vi_tri trùng tên nhưng khác nghĩa.', toi: dangOThuThach('challenge', 'c-mic-phieu') },
+  { id: 'phu-hoan-nhom', nhan: 'Việc phụ · Hoàn tiền (lọc nhóm theo số dòng)', moTa: 'Minh Anh nhờ sau Vụ 5, màn tổng hợp: gom dòng hoàn theo mã phiếu, tính tổng, chỉ giữ nhóm có hơn một dòng.', toi: dangOThuThach('challenge', 'c-hoan-nhom') },
 ];
 
 /**
@@ -158,7 +184,7 @@ export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
 export function nhayToi(kb: KichBanMvp, id: MaDiemNhayMvp, batDauLuc: number = Date.now()): TrangThaiMvp {
   const diem = DIEM_NHAY_MVP.find((d) => d.id === id);
   if (!diem) throw new Error(`Không có điểm nhảy ${id}`);
-  const ct: ChienThuat = { reNhanh: reNhanhTheo(RE_NHANH_KET_THAT), ten: TEN_MAC_DINH };
+  const ct: ChienThuat = { reNhanh: reNhanhTheo(RE_NHANH_KET_THAT), ten: TEN_MAC_DINH, sangVuSau: true, lamPhu: true };
   const s = choiTuDong(kb, taoTrangThai(kb, batDauLuc), ct, diem.toi);
   if (!diem.toi(s, khungNhin(kb, s))) throw new Error(`Tự chơi không tới được điểm nhảy ${id}`);
   return s;

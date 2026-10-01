@@ -16,9 +16,14 @@ export interface GiaTriHoSo {
   nhieu?: string[];
 }
 
-export function giaTriTuHoSo(kb: KichBanMvp, hoSo: HoSoMvp, ghiChu: readonly GhiChuTruyVanMvp[] = []): GiaTriHoSo[] {
+/**
+ * `boGhim`: thẻ người chơi đã gỡ khỏi bảng điều tra (`s.bang.boGhim`) — không thành giấy nhớ quanh màn hình (chỉ thẻ đang
+ * ghim trên bảng mới kéo được vào truy vấn; sang vụ sau, thẻ vụ trước được gỡ sẵn nên màn tra không đầy giấy cũ).
+ */
+export function giaTriTuHoSo(kb: KichBanMvp, hoSo: HoSoMvp, ghiChu: readonly GhiChuTruyVanMvp[] = [], boGhim: readonly string[] = []): GiaTriHoSo[] {
   const ra: GiaTriHoSo[] = [];
   for (const id of [...hoSo.manhMoi, ...hoSo.bangChung]) {
+    if (boGhim.includes(id)) continue;
     const the = kb.hoSo[id];
     const tuThe = (the?.fields['Giá trị cho trình dựng'] ?? '')
       .split('·')

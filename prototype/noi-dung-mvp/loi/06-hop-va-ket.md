@@ -48,22 +48,26 @@
 
 ## ket-that.1
 - [DÀN DỰNG] {{nv.thay-quang}} quay sang {{nv.hoai}}.
-- **thay-quang** (neutral): Em Hoài, nhật ký in nói lá thư in từ máy của một anh chị năm tư. Phong bì em bỏ vào hộp là từ đâu ra?
-- **hoai** (nervous): Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký như bình thường vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ.
+- **thay-quang** (neutral): Em Hoài, nhật ký in nói lá thư in từ tài khoản của một CLB, không phải của em. Phong bì em bỏ vào hộp là từ đâu ra?
+- **hoai** (nervous): Dạ… có một anh em không quen nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký như bình thường vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ. Mặt anh ấy em không nhớ rõ ạ.
 - **ha-vy** (neutral): Vậy là cậu ghi mã của mình vì được dặn. Còn người soạn thư thì không đứng tên ở đâu trên phiếu.
-- **thay-quang** (neutral): Nhật ký in khớp với lời em. Vậy em không phải người soạn thư.
+- **thay-quang** (neutral): Nhật ký in không đặt em vào việc soạn thư, và lời em cho thầy một hướng để hỏi tiếp. Hiện chưa có căn cứ nào nói em là người viết. Thầy không nêu tên em trong hồ sơ.
 - **thay-quang** (neutral): Mã trên phiếu là để thầy cô tra cứu và phản hồi người gửi. Ở đây người viết giấu tên, mượn chữ ký và mã của một bạn năm nhất. Thư như vậy thầy không nhận vào hồ sơ rà soát.
 - **thay-quang** (neutral): Em làm theo lời nhờ nên không bị xử lý gì cả.
 - **thay-quang** (smile): CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện.
-- **thay-quang** (neutral): Còn người soạn thư, thầy sẽ gặp riêng. Không cần nêu tên ở đây.
+- **thay-quang** (neutral): Còn thư do ai soạn, thầy sẽ cho hỏi lại. Chưa có căn cứ thì chưa nêu tên ai ở đây.
 - **hoai** (relieved): Em xin lỗi vì làm mọi người mất công ạ.
 - **minh-anh** (happy): Không sao đâu em. Cảm ơn thầy ạ.
 - **quan** (stunned): …Hóa ra người nộp còn không biết trong thư viết gì. Em xin lỗi thầy, xin lỗi các bạn. Bên em lọc rộng rồi vội nghi cả một lớp ạ.
 - [DÀN DỰNG] {{nv.tung}} thì thầm với {{nv.ha-vy}}.
 - **tung** (happy): Giữ được phòng rồi! Tối nay tớ khao trà đá.
 - **ha-vy** (smile): Được. Tớ nhớ đấy nhé.
-- **narrator**: Lúc cả nhóm ra tới cổng trường, có một anh khóa trên đi lướt qua. Trên balo cài một cái huy hiệu hình bánh răng.
-- **tung** (worried): Này… tớ cá là…
+
+## ket-that.2
+- **narrator**: Chiều muộn, cả nhóm về phòng CLB dọn bảng. Từ cuốn sổ của chị Linh rơi ra một mẩu giấy gấp tư.
+- **duy** (neutral): Chữ chị Linh đây mà. Tớ giữ cuốn sổ này cả năm, chưa thấy tờ này bao giờ.
+- **player**: "Căn phòng này giữ nhiều hơn em nghĩ."
+- **tung** (surprised): Giữ gì cơ? Phòng có mỗi cái tủ với cái bảng.
 - **ha-vy** (thinking): Đừng cá. Chưa có gì để tính cả.
 - [THẺ CHỮ] **narrator**: SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.
 

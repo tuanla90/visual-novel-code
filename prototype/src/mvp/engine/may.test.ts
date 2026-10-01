@@ -162,7 +162,7 @@ describe('máy MVP: buổi họp và hai kết', () => {
     expect(s.hoSo.manhMoi).toEqual(expect.arrayContaining(['clue-loi-chu-cuong', 'clue-loi-dat', 'clue-hoai-nguoi-nop']));
     expect(s.uyTin).toBe(5);
     s = choi(s, { chonDuKien: () => null, reNhanh: () => 'tu-ke' }, toiKet);
-    expect(khungNhin(KB, s)).toEqual({ kind: 'end', ketQua: 'that' });
+    expect(khungNhin(KB, s)).toMatchObject({ kind: 'end', ketQua: 'that' });
     expect(s.conTro?.chuoi).toBe('ket-that');
     expect(s.uyTin).toBe(5);
     expect(s.hoSo.bangChung).toContain('ev-hai-dong-sua');
@@ -172,7 +172,7 @@ describe('máy MVP: buổi họp và hai kết', () => {
     let s = choi(taoTrangThai(KB, 1), { chonDuKien: chonTheoUuTien(DUONG_CHI_CHINH, false) }, toiHop);
     expect(s.hoSo.bangChung).not.toContain('ev-nhat-ky-in');
     s = choi(s, { chonDuKien: () => null, reNhanh: () => 'tu-ke' }, toiKet);
-    expect(khungNhin(KB, s)).toEqual({ kind: 'end', ketQua: 'thuong' });
+    expect(khungNhin(KB, s)).toMatchObject({ kind: 'end', ketQua: 'thuong' });
     expect(s.conTro?.chuoi).toBe('ket-thuong');
   });
 
@@ -180,14 +180,14 @@ describe('máy MVP: buổi họp và hai kết', () => {
     let s = choi(taoTrangThai(KB, 1), { chonDuKien: chonTheoUuTien(DUONG_DU_BANG_CHUNG, false) }, toiHop);
     s = choi(s, { chonDuKien: () => null, reNhanh: () => 'doi-chat' }, toiKet);
     expect(s.uyTin).toBe(4);
-    expect(khungNhin(KB, s)).toEqual({ kind: 'end', ketQua: 'thuong' });
+    expect(khungNhin(KB, s)).toMatchObject({ kind: 'end', ketQua: 'thuong' });
   });
 
   it('(4) chọn dừng → kết thường, không mất vạch', () => {
     let s = choi(taoTrangThai(KB, 1), { chonDuKien: chonTheoUuTien(DUONG_DU_BANG_CHUNG, false) }, toiHop);
     s = choi(s, { chonDuKien: () => null, reNhanh: () => 'dung' }, toiKet);
     expect(s.uyTin).toBe(5);
-    expect(khungNhin(KB, s)).toEqual({ kind: 'end', ketQua: 'thuong' });
+    expect(khungNhin(KB, s)).toMatchObject({ kind: 'end', ketQua: 'thuong' });
   });
 
   it('[HỎI · trừ uy tín] sai → mất 1 vạch, lời Minh Anh, hỏi lại; đúng mới đi tiếp', () => {
@@ -246,7 +246,7 @@ describe('máy MVP: Lưu / Nạp', () => {
     expect(sau.hoSo.manhMoi).toContain('clue-can-ma-va-can-cu');
     const ketA = choi(truoc, ct, toiKet);
     const ketB = choi(sau, ct, toiKet);
-    expect(khungNhin(KB, ketB)).toEqual({ kind: 'end', ketQua: 'that' });
+    expect(khungNhin(KB, ketB)).toMatchObject({ kind: 'end', ketQua: 'that' });
     expect(ketB).toEqual(ketA);
   });
 });

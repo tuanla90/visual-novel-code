@@ -136,6 +136,9 @@
 - **narrator**: Bốn rưỡi, cô Lan bên Phòng Công tác sinh viên gọi chị Minh Anh lên. Mười phút sau chị quay về, tay cầm hai tờ giấy.
 - **minh-anh** (worried): Thứ Hai tuần sau, phòng CLB mình bị đưa ra họp rà soát.
 - **minh-anh** (neutral): Có người bỏ thư vào hộp kiến nghị ở tòa B, đề nghị thu hồi phòng. Tên người gửi bị che, CLB chỉ được xem nội dung.
+- **duy** (serious): Mất phòng không chỉ là mất chỗ ngồi đâu. Quy chế ghi: CLB không còn phòng sinh hoạt thì vào diện chờ giải thể. Hết học kỳ vẫn chưa có phòng là giải thể, giấy tờ sổ sách chuyển hết về Hội sinh viên. Trường rà soát phòng hai đợt: đầu kỳ nhận kiến nghị tới 20 tháng 9, cuối kỳ rà lại lần nữa.
+- **duy** (neutral): Mà vào diện chờ giải thể là sao kê quỹ gửi về Hội luôn. Chị không nhận nữa đâu.
+- **minh-anh** (worried): Phòng chưa mất mà giấy tờ đã đi trước rồi à?
 
 ## md-11-la-thu.2
 - **player**: Chữ ký lượn thế này, đọc được mỗi chữ H… mà lại còn "đề nghị phản hồi chính thức".

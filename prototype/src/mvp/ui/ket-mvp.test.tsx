@@ -35,6 +35,23 @@ describe('màn kết MVP', () => {
     expect(veTieuDe).toHaveBeenCalledTimes(1);
   });
 
+  it('còn vụ sau: nút chính là "Sang Vụ 2 — …", bấm gọi onSangVuSau; Chơi lại vẫn có', async () => {
+    const sang = vi.fn();
+    render(<KetMvp ketQua="that" vuKe={{ so: 2, ten: 'Bốn mục trong sổ đã ký' }} onSangVuSau={sang} onChoiLai={vi.fn()} />);
+    expect(screen.getAllByRole('button').map((b) => b.textContent)).toEqual(['Sang Vụ 2 — Bốn mục trong sổ đã ký', 'Chơi lại từ đầu']);
+    await userEvent.click(screen.getByRole('button', { name: /Sang Vụ 2/ }));
+    expect(sang).toHaveBeenCalledTimes(1);
+  });
+
+  it('màn kết của một vụ sau: chữ lấy từ lich.md, không dùng chữ của Vụ 1', () => {
+    render(<KetMvp ketQua="that" vu={{ so: 2, ten: 'Bốn mục trong sổ đã ký', tieuDeKet: 'Bốn mục có trong sổ, không hơn', loiKet: 'Hai nguồn riêng cùng ra bốn buổi.' }} vuKe={null} onChoiLai={vi.fn()} />);
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Bốn mục có trong sổ, không hơn');
+    expect(screen.getByText('Hết Vụ 2 — Bốn mục trong sổ đã ký')).toBeInTheDocument();
+    expect(screen.getByText('Hai nguồn riêng cùng ra bốn buổi.')).toBeInTheDocument();
+    expect(screen.queryByText(/Người nộp không phải người viết/)).toBeNull();
+    expect(screen.getAllByRole('button').map((b) => b.textContent)).toEqual(['Chơi lại từ đầu']);
+  });
+
   it('không có màn tiêu đề (bản chơi thử chỉ MVP) → không có nút Về màn tiêu đề', () => {
     render(<KetMvp ketQua="that" onChoiLai={vi.fn()} />);
     expect(screen.queryByRole('button', { name: 'Về màn tiêu đề' })).toBeNull();

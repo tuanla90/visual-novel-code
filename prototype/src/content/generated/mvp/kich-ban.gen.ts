@@ -16,7 +16,7 @@ export const KICH_BAN_MVP = {
       "ten": "Tùng",
       "hoTen": "Trần Tùng",
       "trongCau": "Tùng",
-      "vai": "Năm 1 Du lịch, bạn cùng phòng KTX 408 của người chơi, cháu chú Cường. Dẫn đường, nhắc lịch. \"Tớ cá là…\"",
+      "vai": "Năm 1 Du lịch, bạn cùng phòng KTX 408 của người chơi, cháu chú Cường, tình nguyện viên đón tân sinh viên tuần đầu (áo xanh tình nguyện: mặc lại ở Vụ 5 khi đón Hoài tới buổi họp; CHƯA CÓ ẢNH áo xanh). Dẫn đường, nhắc lịch. \"Tớ cá là…\"",
       "bieuCam": [
         "neutral",
         "happy",
@@ -318,6 +318,90 @@ export const KICH_BAN_MVP = {
       }
     },
     {
+      "id": "nam",
+      "ten": "Nam",
+      "hoTen": null,
+      "trongCau": "Nam",
+      "vai": "Thành viên CLB Robotics, trực kênh và giữ sổ sách của xưởng. Xuất hiện từ Vụ 2 (tin đồn): trông đáng ngờ vì là người trực kênh, tới Vụ 3 mới được gỡ nghi. Không nói học năm mấy (dàn ý mùa 1). Chưa có ảnh: chỉ dùng biểu cảm neutral.",
+      "bieuCam": [
+        "neutral"
+      ],
+      "xuatHienTu": {
+        "kind": "ngay-hop"
+      },
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Thành viên CLB Robotics",
+        "nam": null,
+        "nganh": null,
+        "cauNoi": "Tớ không bắt các cậu tin. Tớ chỉ chỗ để các cậu tự kiểm.",
+        "loi": "Trực kênh và giữ sổ sách cho xưởng của CLB Robotics. Ít nói, hỏi gì đáp nấy, việc gì cũng có ghi chép."
+      }
+    },
+    {
+      "id": "khanh",
+      "ten": "Khánh",
+      "hoTen": null,
+      "trongCau": "Khánh",
+      "vai": "Chủ tịch Hội sinh viên, kiêm trưởng CLB Robotics (năm 4). Người đứng sau lá thư, tin đồn và ba đơn mượn tên Nam: lấy tiền quỹ CLB Thám Tử cho việc riêng, ghi thành linh kiện. Lên hình thoáng qua ở Vụ 2 (xưởng) và cuối Vụ 4 (phòng CLB), đối chất ở Vụ 5 (phòng họp); nhận theo từng nhịp chứng cứ, không bị bêu, không nêu việc riêng. Không gọi họ tên đầy đủ. Chưa có ảnh: chỉ dùng biểu cảm neutral.",
+      "bieuCam": [
+        "neutral"
+      ],
+      "xuatHienTu": {
+        "kind": "ngay-hop"
+      },
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Chủ tịch Hội sinh viên, trưởng CLB Robotics",
+        "nam": null,
+        "nganh": null,
+        "cauNoi": "Tôi duyệt là đúng thẩm quyền.",
+        "loi": "Chủ tịch Hội sinh viên, trưởng CLB Robotics. Nói chắc, bám thẩm quyền, ít khi phải giải thích với ai."
+      }
+    },
+    {
+      "id": "bach",
+      "ten": "Bách",
+      "hoTen": null,
+      "trongCau": "Bách",
+      "vai": "Phó CLB Robotics (năm 3). Một trong ba người giữ chìa phòng văn phòng xưởng. Lên hình ở cuối Vụ 3. Chưa có ảnh: chỉ dùng biểu cảm neutral.",
+      "bieuCam": [
+        "neutral"
+      ],
+      "xuatHienTu": {
+        "kind": "ngay-hop"
+      },
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Phó CLB Robotics",
+        "nam": null,
+        "nganh": null,
+        "cauNoi": "Vé xe anh còn giữ.",
+        "loi": "Phó CLB Robotics. Nói ít, giữ giấy tờ kỹ."
+      }
+    },
+    {
+      "id": "thao",
+      "ten": "Thảo",
+      "hoTen": null,
+      "trongCau": "Thảo",
+      "vai": "Phụ trách kỹ thuật CLB Robotics (năm 3). Một trong ba người giữ chìa phòng văn phòng xưởng; tối Chủ nhật hay ra phòng máy in sơ đồ mạch. Lên hình ở cuối Vụ 3 và sau buổi họp Vụ 5. Chưa có ảnh: chỉ dùng biểu cảm neutral.",
+      "bieuCam": [
+        "neutral"
+      ],
+      "xuatHienTu": {
+        "kind": "ngay-hop"
+      },
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "danhXung": "Kỹ thuật CLB Robotics",
+        "nam": null,
+        "nganh": null,
+        "cauNoi": "Chị không chối.",
+        "loi": "Lo kỹ thuật của xưởng. Thẳng, hơi cẩu thả với chìa khóa."
+      }
+    },
+    {
       "id": "co-phu-trach",
       "ten": "Cô phụ trách hộp kiến nghị",
       "hoTen": null,
@@ -416,6 +500,16 @@ export const KICH_BAN_MVP = {
       "id": "ban-do",
       "ten": "Bản đồ trường",
       "anhNen": null
+    },
+    {
+      "id": "xuong-robot",
+      "ten": "Xưởng CLB Robotics",
+      "anhNen": "bg-mvp-nha-van-hoa"
+    },
+    {
+      "id": "thu-vien",
+      "ten": "Thư viện trường",
+      "anhNen": null
     }
   ],
   "diaDiem": [],
@@ -512,7 +606,73 @@ export const KICH_BAN_MVP = {
     "ket": {
       "that": "ket-that",
       "thuong": "ket-thuong"
-    }
+    },
+    "vuSau": [
+      {
+        "id": "vu2",
+        "ten": "Tin đồn",
+        "chuoi": "tin-mo",
+        "ngay": "2024-10-09",
+        "tieuDeKet": "Một tài khoản, chưa phải một người",
+        "loiKet": "Tin gốc đi từ tài khoản kênh của CLB Robotics, lúc 22:40 tối thứ Hai. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi."
+      },
+      {
+        "id": "vu3",
+        "ten": "Tranh cãi trong nhóm",
+        "chuoi": "v3-mo",
+        "ngay": "2024-10-10",
+        "tieuDeKet": "Nam ở thư viện lúc tin được gửi",
+        "loiKet": "Bản ghi quẹt thẻ của thư viện và trí nhớ của Hà Vy là hai nguồn riêng, cùng đặt Nam ở thư viện lúc 22:40. Người gửi tin ngồi máy văn phòng xưởng, là ai thì chưa biết."
+      },
+      {
+        "id": "vu4",
+        "ten": "Giúp Nam",
+        "chuoi": "v4-mo",
+        "ngay": "2024-10-14",
+        "tieuDeKet": "Có người mượn tên Nam",
+        "loiKet": "Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng, cùng cái máy đã gửi tin đồn, một đơn đúng tối Nam ở thư viện. Máy thì biết, tay thì chưa. Ba người có chìa phòng."
+      },
+      {
+        "id": "vu5",
+        "ten": "Sổ quỹ",
+        "chuoi": "v5-mo",
+        "ngay": "2024-10-18",
+        "tieuDeKet": "Mỗi bước là một phiếu",
+        "loiKet": "Ba khoản chi không có hàng được ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Người nhận là người nói \"vì sao\". Mùa 1 khép lại ở chỗ chứng cứ dừng."
+      }
+    ],
+    "nhiemVuPhu": [
+      {
+        "id": "so-phong",
+        "ten": "Bốn mục trong sổ đã ký",
+        "chuoi": "v2-mo",
+        "nguoiGiao": "duy",
+        "moSau": "vu2",
+        "ngay": "2024-10-25",
+        "tieuDeKet": "Bốn mục có trong sổ, không hơn",
+        "loiKet": "Bản xuất và sổ giấy là hai nguồn riêng, cùng ra bốn buổi đã ký. Hồ sơ ghi đúng điều đó: không nói ai tới dự, không nói buổi nào có ích."
+      },
+      {
+        "id": "micro",
+        "ten": "Chiếc micro ở tủ chung",
+        "chuoi": "p-mic-mo",
+        "nguoiGiao": "duy",
+        "moSau": "vu4",
+        "ngay": "2024-11-01",
+        "tieuDeKet": "Micro không mất, chỉ đổi chỗ",
+        "loiKet": "Phiếu PX-17 đã có người nhận, chuyển micro không dây sang tủ thiết bị dùng chung; mã dán trên micro trong tủ khớp với mã trên phiếu. Bảng không nói ai quên báo, và hồ sơ cũng không nói thay."
+      },
+      {
+        "id": "hoan-tien",
+        "ten": "Một lần hoàn tiền, hai dòng ghi",
+        "chuoi": "p-hoan-mo",
+        "nguoiGiao": "minh-anh",
+        "moSau": "vu5",
+        "ngay": "2024-11-08",
+        "tieuDeKet": "Một khoản hoàn, bản xuất ghi hai lần",
+        "loiKet": "Phiếu PH-04 có hai dòng hoàn tiền cùng mã tham chiếu; biên nhận ngân hàng xác nhận một lần hoàn 60.000 đồng. Báo cáo được sửa, bản cũ được giữ. Ai nhập trùng thì bảng không ghi."
+      }
+    ]
   },
   "chuoi": [
     {
@@ -1231,6 +1391,24 @@ export const KICH_BAN_MVP = {
           "speaker": "minh-anh",
           "expression": "neutral",
           "text": "Có người bỏ thư vào hộp kiến nghị ở tòa B, đề nghị thu hồi phòng. Tên người gửi bị che, CLB chỉ được xem nội dung."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "serious",
+          "text": "Mất phòng không chỉ là mất chỗ ngồi đâu. Quy chế ghi: CLB không còn phòng sinh hoạt thì vào diện chờ giải thể. Hết học kỳ vẫn chưa có phòng là giải thể, giấy tờ sổ sách chuyển hết về Hội sinh viên. Trường rà soát phòng hai đợt: đầu kỳ nhận kiến nghị tới 20 tháng 9, cuối kỳ rà lại lần nữa."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Mà vào diện chờ giải thể là sao kê quỹ gửi về Hội luôn. Chị không nhận nữa đâu."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "worried",
+          "text": "Phòng chưa mất mà giấy tờ đã đi trước rồi à?"
         },
         {
           "type": "image",
@@ -2170,37 +2348,49 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "23 giờ 10 tối Chủ nhật. Một trang, tệp kien-nghi-phong-clb.docx, tài khoản SV210745."
+          "text": "23 giờ 10 tối Chủ nhật. Một trang, tệp kien-nghi-phong-clb.docx, tài khoản clb_robotics."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Mã bắt đầu bằng 21: khóa 2021. Năm tư rồi."
+          "text": "Không phải mã sinh viên. Đây là tài khoản dùng chung của một CLB."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Năm tư á? Thế người in không phải Hoài."
+          "text": "Robotics á? Thế người in không phải Hoài."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Người in là một anh chị năm tư. Người mang đi nộp là Hoài. Hai việc, có khi là hai người."
+          "text": "Thư in từ tài khoản của CLB Robotics. Người mang đi nộp là Hoài. Hai việc, có khi là hai người."
         },
         {
           "type": "line",
           "speaker": "thay-khai",
           "expression": "neutral",
-          "text": "Tài khoản ấy là của ai thì thầy không nói. Các em cũng chưa cần biết, đúng không?"
+          "text": "Tài khoản ấy những ai dùng thì thầy không nói. Các em cũng chưa cần biết, đúng không?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Tối Chủ nhật vào phòng máy phải ký sổ mà thầy. Mở sổ ra là biết ngay ai ngồi đây!"
+        },
+        {
+          "type": "line",
+          "speaker": "thay-khai",
+          "expression": "neutral",
+          "text": "Sổ ấy ghi tên từng người. Viết thư kiến nghị không phải là lỗi, thầy không mở sổ để truy người viết. Bao giờ có chuyện đáng mở thì phải có người đủ thẩm quyền ký."
         },
         {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Người in là khóa 2021. Người nộp là Hoài. Hai việc, có khi là hai người."
+          "text": "Thư in từ tài khoản CLB Robotics. Người nộp là Hoài. Hai việc, có khi là hai người."
         }
       ]
     },
@@ -2252,42 +2442,20 @@ export const KICH_BAN_MVP = {
           "text": "Sáng sớm ở cổng ký túc xá. Chú Cường vừa đi một vòng kiểm tra về, đèn pin còn cầm trên tay."
         },
         {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "neutral",
+          "text": "Tuần này chú tớ trực ca sáng đấy. Hỏi chú xem sáng thứ Hai có gì lạ không."
+        },
+        {
           "type": "reminder",
           "speaker": "tung",
           "expression": "neutral",
           "text": "Sáng thứ Hai ai ra cổng sớm, chú tớ hay để ý lắm."
         },
         {
-          "type": "branch",
-          "id": "r-chu-cuong",
-          "asker": {
-            "speaker": "tung",
-            "text": "Tuần này chú tớ trực ca sáng đấy. Hỏi chú xem sáng thứ Hai có gì lạ không?"
-          },
-          "choices": [
-            {
-              "id": "hoi",
-              "text": "Hỏi chú Cường.",
-              "khi": null,
-              "hauQua": [
-                {
-                  "kind": "di-toi",
-                  "chuoi": "n5-chu-cuong"
-                }
-              ]
-            },
-            {
-              "id": "di",
-              "text": "Thôi, chú đang bận. Đi thôi.",
-              "khi": null,
-              "hauQua": [
-                {
-                  "kind": "di-toi",
-                  "chuoi": "n5-toi"
-                }
-              ]
-            }
-          ]
+          "type": "goto",
+          "to": "n5-chu-cuong"
         }
       ]
     },
@@ -2307,7 +2475,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "chu-cuong",
           "expression": "neutral",
-          "text": "Sáng thứ Hai à… 6 giờ 45, chú thấy một cậu lớn, dáng sinh viên khóa trên, balo đeo huy hiệu bánh răng, đứng ngoài cổng đưa phong bì nâu cho một bạn nữ."
+          "text": "Sáng thứ Hai à… 6 giờ 45, chú thấy một cậu sinh viên, balo đeo huy hiệu bánh răng, đứng ngoài cổng đưa phong bì nâu cho một bạn nữ."
         },
         {
           "type": "line",
@@ -2318,13 +2486,17 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Còn anh kia, chú có nhìn rõ mặt không ạ?"
+          "text": "Còn cậu kia, chú có nhìn rõ mặt không ạ?"
         },
         {
           "type": "line",
           "speaker": "chu-cuong",
           "expression": "neutral",
-          "text": "Không. Cậu ấy đứng xa, trời lại mới sáng, chú chỉ để ý cái huy hiệu với dáng người thôi."
+          "text": "Không. Cậu ấy đứng xa, trời lại mới sáng, chú chỉ để ý cái huy hiệu thôi. Cái bánh răng sứt mất một răng, trông lệch lệch nên chú nhớ."
+        },
+        {
+          "type": "image",
+          "imageId": "cg-bong-huy-hieu"
         },
         {
           "type": "consequence",
@@ -2334,6 +2506,30 @@ export const KICH_BAN_MVP = {
               "id": "clue-loi-chu-cuong"
             }
           ]
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Huy hiệu bánh răng… Hôm Ngày hội, gian Robotics treo cờ in đúng hình ấy."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Huy hiệu thì cả CLB đeo. Mới biết là một người của Robotics, chưa biết là ai."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Thế Robotics thì dính gì tới phòng của mình?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Chưa biết. Ghi lại đã."
         },
         {
           "type": "goto",
@@ -2667,17 +2863,17 @@ export const KICH_BAN_MVP = {
                 {
                   "speaker": "minh-anh",
                   "expression": "neutral",
-                  "text": "Thưa thầy, bọn em có nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật — từ tài khoản một sinh viên năm tư, không phải của Hoài."
+                  "text": "Thưa thầy, bọn em có nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật — từ tài khoản dùng chung của một CLB, không phải của Hoài."
                 },
                 {
                   "speaker": "quan",
                   "expression": "stunned",
-                  "text": "…Năm tư?"
+                  "text": "…Tài khoản CLB?"
                 },
                 {
                   "speaker": "thay-quang",
                   "expression": "neutral",
-                  "text": "Người in thư không phải người nộp thư. Vậy câu \"Hoài viết\" chưa đứng được."
+                  "text": "Tài khoản in thư không phải của người nộp thư. Vậy câu \"Hoài viết\" chưa đứng được."
                 }
               ]
             },
@@ -2688,7 +2884,7 @@ export const KICH_BAN_MVP = {
                 {
                   "speaker": "ha-vy",
                   "expression": "neutral",
-                  "text": "Sáng thứ Hai, bác bảo vệ ký túc xá thấy một anh khóa trên đưa phong bì cho một bạn nữ, rồi bạn ấy đi thẳng về phía tòa B ạ."
+                  "text": "Sáng thứ Hai, bác bảo vệ ký túc xá thấy một cậu sinh viên đeo huy hiệu bánh răng đưa phong bì cho một bạn nữ, rồi bạn ấy đi thẳng về phía tòa B ạ."
                 },
                 {
                   "speaker": "quan",
@@ -2856,7 +3052,7 @@ export const KICH_BAN_MVP = {
     },
     {
       "id": "ket-that",
-      "title": "True end: Hoài kể chuyện được nhờ",
+      "title": "True end: Hoài kể chuyện được nhờ; lời nhắn của chị Linh",
       "canh": "phong-hop",
       "mocSomNhat": 1000,
       "nodes": [
@@ -2875,13 +3071,13 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Em Hoài, nhật ký in nói lá thư in từ máy của một anh chị năm tư. Phong bì em bỏ vào hộp là từ đâu ra?"
+          "text": "Em Hoài, nhật ký in nói lá thư in từ tài khoản của một CLB, không phải của em. Phong bì em bỏ vào hộp là từ đâu ra?"
         },
         {
           "type": "line",
           "speaker": "hoai",
           "expression": "nervous",
-          "text": "Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký như bình thường vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ."
+          "text": "Dạ… có một anh em không quen nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký như bình thường vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ. Mặt anh ấy em không nhớ rõ ạ."
         },
         {
           "type": "line",
@@ -2893,7 +3089,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Nhật ký in khớp với lời em. Vậy em không phải người soạn thư."
+          "text": "Nhật ký in không đặt em vào việc soạn thư, và lời em cho thầy một hướng để hỏi tiếp. Hiện chưa có căn cứ nào nói em là người viết. Thầy không nêu tên em trong hồ sơ."
         },
         {
           "type": "line",
@@ -2917,7 +3113,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Còn người soạn thư, thầy sẽ gặp riêng. Không cần nêu tên ở đây."
+          "text": "Còn thư do ai soạn, thầy sẽ cho hỏi lại. Chưa có căn cứ thì chưa nêu tên ai ở đây."
         },
         {
           "type": "line",
@@ -2954,15 +3150,35 @@ export const KICH_BAN_MVP = {
           "text": "Được. Tớ nhớ đấy nhé."
         },
         {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-loi-nhan-linh-1"
+            }
+          ]
+        },
+        {
           "type": "line",
           "speaker": "narrator",
-          "text": "Lúc cả nhóm ra tới cổng trường, có một anh khóa trên đi lướt qua. Trên balo cài một cái huy hiệu hình bánh răng."
+          "text": "Chiều muộn, cả nhóm về phòng CLB dọn bảng. Từ cuốn sổ của chị Linh rơi ra một mẩu giấy gấp tư."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Chữ chị Linh đây mà. Tớ giữ cuốn sổ này cả năm, chưa thấy tờ này bao giờ."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "\"Căn phòng này giữ nhiều hơn em nghĩ.\""
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "worried",
-          "text": "Này… tớ cá là…"
+          "expression": "surprised",
+          "text": "Giữ gì cơ? Phòng có mỗi cái tủ với cái bảng."
         },
         {
           "type": "line",
@@ -2975,10 +3191,6 @@ export const KICH_BAN_MVP = {
           "speaker": "narrator",
           "display": "card",
           "text": "SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu."
-        },
-        {
-          "type": "image",
-          "imageId": "cg-bong-huy-hieu"
         },
         {
           "type": "end"
@@ -3043,6 +3255,5306 @@ export const KICH_BAN_MVP = {
         {
           "type": "challenge",
           "challengeId": "c-v2-nhom-lop"
+        }
+      ]
+    },
+    {
+      "id": "tin-mo",
+      "title": "Tin đồn về CLB; lọc các tin mang câu đó",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Vụ 2 — Thứ Tư, 9 tháng 10"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hơn hai tuần sau buổi họp rà soát. Chiều thứ Tư, phòng CLB."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Từ tối thứ Hai, kênh sinh viên chuyền nhau một tin về CLB mình. Sáng nay cô Lan gọi chị lên hỏi."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Tin gì thế ạ?"
+        },
+        {
+          "type": "note",
+          "text": "Hiếu lớp Báo chí ló đầu vào cửa, tay cầm điện thoại."
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Tin này này. Tối thứ Hai tớ còn bấm chuyển tiếp. Hồi lá thư tớ cũng gật ầm ầm, giờ nghĩ lại thấy mình chưa kiểm gì cả. Tớ gỡ rồi, sang báo các cậu một tiếng."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Cảm ơn cậu. Cậu thấy nó đầu tiên ở đâu?"
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Trong kênh sinh viên. Ai gửi đầu thì tớ không để ý."
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-tin-don"
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-noi-dung-tin"
+            },
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-sao-ke-cuoi-ky"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "\"CLB Thám Tử soi dữ liệu sinh viên.\""
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Ơ, mình có soi ai đâu. Tra gì cũng có phiếu, lại có anh Quân ngồi giám sát mà."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Cuối kỳ là đợt rà soát phòng, cũng là lúc Phòng Kế hoạch gửi sao kê quỹ về các CLB. Chị không muốn tin này treo tới lúc đó."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "khoanh-tay",
+          "text": "Thế nên chị mới cần biết tin này bắt đầu từ đâu. Cô Lan cho mình bản xuất các tin công khai của kênh, từ tối thứ Hai tới trưa hôm qua."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tin công khai, ai vào kênh cũng đọc được. Tớ nạp vào laptop rồi. Bản xuất ghi nguyên văn từng tin, kể cả tin bấm chuyển tiếp: bấm chuyển thì chữ giữ y nguyên."
+        },
+        {
+          "type": "task",
+          "text": "Những tin nào trong kênh mang câu tin đồn?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Lọc ra các tin mang câu đó trước đã. Chưa vội đọc tên ai."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-tin-don"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Năm tin mang câu đó, từ năm tài khoản. Bốn cái là mã sinh viên. Một cái là clb_robotics."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Lại Robotics! Hôm trước là cái huy hiệu bánh răng, giờ là tài khoản. Tớ cá là…"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "day-kinh",
+          "text": "Đừng cá. Mới biết có năm tin mang câu đó. Tin nào có trước thì phiếu chưa nói."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem."
+        },
+        {
+          "type": "goto",
+          "to": "tin-gap-nam"
+        }
+      ]
+    },
+    {
+      "id": "tin-gap-nam",
+      "title": "Xưởng Robotics: gặp Nam; lấy phiếu làm nguồn, tìm tin gốc",
+      "canh": "xuong-robot",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Xưởng của CLB Robotics nằm cuối dãy nhà văn hóa. Một cậu đang ngồi dán nhãn hộp linh kiện, ngẩng lên khi thấy cả nhóm."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Các cậu tìm ai? Ban chủ nhiệm chiều nay đi họp cả rồi."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Bọn tớ bên CLB Thám Tử. Kênh của Robotics do ai trực thế?"
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Tớ. Tớ là Nam. Bài tuyển thành viên, lịch xưởng, đều tớ đăng."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Thế cái tin \"CLB Thám Tử soi dữ liệu sinh viên\" cũng là cậu đăng à?"
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Tin nào cơ? Cho tớ xem."
+        },
+        {
+          "type": "note",
+          "text": "Nam đọc phiếu năm tin."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Năm dòng này lẫn cả tin chuyển tiếp. Chuyển tiếp thì ai cũng bấm được. Muốn biết nó bắt đầu từ đâu thì tìm tin gốc ấy. Kênh có ghi loại của từng tin."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Phiếu này mình ghim rồi. Năm tin ấy là đống đã thu hẹp; lọc tiếp ngay trên nó thì chắc chắn chỉ tìm trong đúng năm tin, không lạc sang tin khác của kênh."
+        },
+        {
+          "type": "task",
+          "text": "Trong năm tin đó, tin nào là tin gốc?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Phiếu vừa ghim dùng làm nguồn được. Lọc tiếp ra tin gốc."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-tin-goc"
+            }
+          ]
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-tin-goc"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Một tin gốc. 22 giờ 40 tối thứ Hai, mùng 7. Tài khoản clb_robotics."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "…Từ kênh của bọn tớ thật à."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Kênh của cậu, tài khoản của cậu. Cậu đăng chứ còn ai!"
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Tớ chỉ đăng bài buổi chiều. 22 giờ 40 thì tớ không ngồi kênh."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Ai trực kênh mà chẳng nói thế."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Thế cậu tưởng mỗi mình tớ có mật khẩu à? Cả ban chủ nhiệm đều biết. Giờ đó xưởng còn mở, ai chả vào máy được, sao cứ đổ cho tớ."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Xưởng mở giờ đó? Ngoài cửa dán rành rành cái bảng đăng ký kia kìa. Nói điêu là lộ ngay."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Còn mật khẩu nhiều người biết thì kênh có ghi ai đăng nhập không? Không có thì bọn tớ nhờ bên quản trị trường mở."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "…Khỏi nhờ. Tớ là quản trị kênh, tớ mở nhật ký đăng nhập được. Xem đi, xem cả bảng ngoài cửa luôn."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Vậy là hai chỗ kiểm được. Xem cả hai, hay xem một rồi về báo chị Minh Anh, tùy mình."
+        },
+        {
+          "type": "note",
+          "text": "Cửa xưởng mở. Một anh áo sơ mi trắng bước vào, thẻ Hội sinh viên đeo ở cổ, đi thẳng tới kệ hồ sơ."
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Nam, ban tổ chức cho đội mình lùi hạn lệ phí tới hết tháng 10 rồi, anh vừa xin được. Cứ tập tiếp đi. Anh lấy tập hồ sơ giải rồi quay lại họp. Có khách à?"
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Các bạn bên CLB Thám Tử ạ. Hỏi chuyện cái tin trong kênh."
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Anh là Khánh, trưởng CLB. Tin ấy anh có nghe. Kênh thì Nam trực, các em cần xem gì cứ để Nam mở, bên anh không giấu. Hỏi nhẹ thôi nhé, em nó sắp thi đấu."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Anh Khánh chủ tịch Hội sinh viên đấy."
+        },
+        {
+          "type": "note",
+          "text": "Khánh kẹp tập hồ sơ, vỗ vai Nam rồi đi."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Anh Khánh lo cho đội lắm. Kinh phí đi giải năm nay toàn anh ấy chạy."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-ngay-gui"
+            }
+          ]
+        },
+        {
+          "type": "branch",
+          "id": "r-tin-tuyen",
+          "asker": {
+            "speaker": "ha-vy",
+            "text": "Hai chỗ Nam vừa buột miệng nói ra. Xem chỗ nào trước?"
+          },
+          "choices": [
+            {
+              "id": "may",
+              "text": "Nhật ký đăng nhập của kênh.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-tuyen-may"
+                }
+              ]
+            },
+            {
+              "id": "xuong",
+              "text": "Bảng đăng ký dùng xưởng ngoài cửa.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-tuyen-xuong"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-tuyen-may",
+      "title": "Tuyến dữ liệu: nhật ký đăng nhập của kênh",
+      "canh": "xuong-robot",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "task",
+          "text": "Ngày 07/10, tài khoản kênh đăng nhập những lần nào, từ máy nào?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tài khoản thì có trên phiếu tin gốc. Ngày là mùng 7. Lần nào khớp giờ tin gửi thì so sau."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Bảng này ghi tài khoản nào đăng nhập, từ máy nào, ngày nào, giờ nào. Tớ chỉ mở ra thôi, không lọc gì."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Mã máy thì thế này: MAY-XUONG-01 và 02 là hai máy bàn ngoài xưởng, ai tập cũng dùng. MAY-VP-XUONG là máy trong phòng văn phòng nhỏ của xưởng, chỗ ban chủ nhiệm ngồi. DIEN-THOAI là đăng nhập bằng điện thoại."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-tin-may"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Ngày mùng 7 có hai lần. 15 giờ 10 từ máy xưởng số 2. 22 giờ 31 từ máy văn phòng xưởng."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Lần buổi chiều là tớ, tớ hay ngồi máy số 2. Lần buổi tối thì không phải tớ. Phòng văn phòng là phòng riêng, thường khóa, chìa thì ban chủ nhiệm giữ. Tớ có vào đó bao giờ đâu."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Đăng nhập 22:31, tin gửi 22:40. Khớp giờ. Nhưng mới biết máy nào, chưa biết ai ngồi máy."
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "ev-tin-xuong"
+          },
+          "to": "tin-may-doi-chieu"
+        },
+        {
+          "type": "branch",
+          "id": "r-tin-sau-may",
+          "asker": {
+            "speaker": "ha-vy",
+            "text": "Còn chỗ thứ hai Nam chỉ: bảng đăng ký dùng xưởng. Xem nốt, hay về báo chị Minh Anh?"
+          },
+          "choices": [
+            {
+              "id": "di-not",
+              "text": "Ra cửa xem nốt bảng đăng ký.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-tuyen-xuong"
+                }
+              ]
+            },
+            {
+              "id": "ve",
+              "text": "Về báo chị Minh Anh.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-ket"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-may-doi-chieu",
+      "title": "Đã xem bảng xưởng rồi mới xem nhật ký: Tùng đối chiếu hai nguồn",
+      "canh": "xuong-robot",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Khoan! Bảng xưởng ghi tối đó đội thi đấu tập tới 23 giờ, cậu bảo cậu về sớm. Mà 22 giờ 31 tài khoản của cậu đăng nhập ngay trong phòng văn phòng xưởng. Giải thích đi!"
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "…Tài khoản của kênh, không phải của tớ. Tớ về trước 22 giờ. Phòng văn phòng thường khóa, chìa ban chủ nhiệm giữ, tớ không có."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Hai nguồn khớp nhau ở một chỗ: 22 giờ 31, máy văn phòng xưởng, trong khung giờ lịch ghi xưởng đăng ký tới 23 giờ. Lịch là đăng ký, không phải điểm danh. Tùng, cậu đang ghép hai bảng với một người, mà bảng nào cũng không có tên người."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "…Ừ thì chưa có tên."
+        },
+        {
+          "type": "goto",
+          "to": "tin-ket"
+        }
+      ]
+    },
+    {
+      "id": "tin-tuyen-xuong",
+      "title": "Tuyến hiện trường: bảng đăng ký dùng xưởng",
+      "canh": "xuong-robot",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cạnh cửa xưởng có tấm bảng đăng ký dùng xưởng, kín chữ viết tay. Góc bảng ghi \"bản sao từ lịch đặt xưởng trên máy\"."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Khoan, góc bảng ghi \"bản sao từ lịch đặt xưởng trên máy\". Cổng tra cứu lịch của nhà văn hóa mở cho sinh viên, để tớ tải bản gốc về laptop tra cho chắc. Chữ tay dễ chép nhầm."
+        },
+        {
+          "type": "task",
+          "text": "Tối 07/10, xưởng được đăng ký từ mấy giờ tới mấy giờ, cho hoạt động nào?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Ngày là mùng 7. Lịch đặt xưởng ghi theo ngày."
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-lich-xuong"
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-tin-xuong"
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-xuong-toi"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Thứ Hai mùng 7, từ 19 giờ tới 23 giờ: xưởng đăng ký cho đội thi đấu tập."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Tối đó đội ở lại tập. Tớ cũng trong đội, nhưng tớ về sớm."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Về sớm thì ai làm chứng cho cậu?"
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Bọn nó cắm mặt hàn mạch, có ai ngẩng lên xem tớ về lúc nào. Với lại máy văn phòng đặt trong phòng riêng, thường khóa. Chìa do ban chủ nhiệm giữ, thành viên như tớ không có quyền đụng vào. Tớ về rồi thì ai vào đó ngồi, tớ chịu."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tối đó xưởng có người tới 23 giờ, tin gửi 22:40. Nhưng đây là lịch đăng ký. Đăng ký chưa chắc là có mặt, có mặt cũng chưa chắc là ngồi máy, và ngồi máy trong phòng khóa thì phải có chìa."
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "ev-tin-may"
+          },
+          "to": "tin-xuong-doi-chieu"
+        },
+        {
+          "type": "branch",
+          "id": "r-tin-sau-xuong",
+          "asker": {
+            "speaker": "ha-vy",
+            "text": "Còn chỗ thứ nhất Nam chỉ: nhật ký đăng nhập của kênh. Xem nốt, hay về báo chị Minh Anh?"
+          },
+          "choices": [
+            {
+              "id": "di-not",
+              "text": "Xem nốt nhật ký đăng nhập.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-tuyen-may"
+                }
+              ]
+            },
+            {
+              "id": "ve",
+              "text": "Về báo chị Minh Anh.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-ket"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-xuong-doi-chieu",
+      "title": "Đã xem nhật ký rồi mới xem bảng xưởng: Tùng đối chiếu hai nguồn",
+      "canh": "xuong-robot",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Khoan! Nhật ký kênh ghi 22 giờ 31 tài khoản đăng nhập từ máy văn phòng xưởng. Giờ bảng này ghi tối đó xưởng mở tới 23 giờ cho đội tập. Cậu bảo cậu về sớm?"
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Về trước 22 giờ. Còn phòng văn phòng thì thường khóa, chìa ban chủ nhiệm giữ, tớ không có."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Hai nguồn khớp nhau ở một chỗ: 22 giờ 31, máy văn phòng xưởng, trong khung giờ lịch ghi xưởng đăng ký tới 23 giờ. Lịch là đăng ký, không phải điểm danh. Tùng, cậu đang ghép hai bảng với một người, mà bảng nào cũng không có tên người."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "…Ừ thì chưa có tên."
+        },
+        {
+          "type": "goto",
+          "to": "tin-ket"
+        }
+      ]
+    },
+    {
+      "id": "tin-ket",
+      "title": "Về phòng CLB báo lại",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "va",
+            "cac": [
+              {
+                "kind": "co",
+                "id": "ev-tin-may"
+              },
+              {
+                "kind": "co",
+                "id": "ev-tin-xuong"
+              }
+            ]
+          },
+          "to": "tin-ket-du"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Thế nào rồi?"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tin gốc gửi lúc 22:40 tối thứ Hai, từ tài khoản kênh của CLB Robotics ạ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Nam nói ra hai chỗ kiểm được. Bọn em mới xem một, chỗ kia chưa xem."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "khoanh-tay",
+          "text": "Một nguồn thì chị chưa nói với cô Lan được. Nói có sách, mách có chứng: chứng phải hai. Các em quay lại xưởng, xem nốt chỗ kia rồi về."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Biết thế xem luôn cho rồi."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "dat-co",
+              "co": "tin-ve-som"
+            }
+          ]
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "ev-tin-may"
+          },
+          "to": "tin-tuyen-xuong"
+        },
+        {
+          "type": "goto",
+          "to": "tin-tuyen-may"
+        }
+      ]
+    },
+    {
+      "id": "tin-ket-du",
+      "title": "Về phòng CLB báo lại, đủ hai hướng",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Thế nào rồi?"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tin gốc gửi lúc 22:40 tối thứ Hai, từ tài khoản kênh của CLB Robotics ạ. Tài khoản ấy đăng nhập lúc 22:31 từ máy văn phòng xưởng. Tối đó xưởng đăng ký mở tới 23 giờ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Nam nói ra hai chỗ kiểm được, bọn em xem cả hai. Giờ và chỗ khớp nhau, còn tên người thì không nguồn nào có."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Hai nguồn riêng cùng khớp. Đến đây dữ liệu dừng, không phải mình non. Muốn biết ai ngồi máy thì phải hỏi người, không hỏi bảng. Cái nguyên tắc \"kiểm hai lần\" ấy chị học từ sổ chị Linh để lại."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Nhắc mới nhớ. Trang \"Kiểm hai lần\" trong sổ… khoan đã."
+        },
+        {
+          "type": "note",
+          "text": "Duy lật sổ chị Linh. Nếu nhóm đi đủ hai hướng ngay từ đầu, một mẩu giấy rơi ra."
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "tin-ve-som"
+          },
+          "to": "tin-ket-luan"
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-loi-nhan-linh-2"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Kẹp ở trang \"Kiểm hai lần\". Một mẩu giấy, chữ chị Linh."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "\"Sổ này chị chép lại từ một cuốn cũ hơn. Cuốn cũ không phải của chị.\""
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Thế cuốn cũ là của ai?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chưa biết. Cất vào hồ sơ đã."
+        },
+        {
+          "type": "goto",
+          "to": "tin-ket-luan"
+        }
+      ]
+    },
+    {
+      "id": "tin-ket-luan",
+      "title": "Nói chắc được điều gì; cả nhóm bắt đầu chia ý về Nam",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "question",
+          "id": "q-tin-ket-luan",
+          "asker": {
+            "speaker": "minh-anh",
+            "text": "Vậy tới giờ, mình nói chắc được điều gì?"
+          },
+          "choices": [
+            {
+              "id": "tai-khoan",
+              "text": "Tin gốc gửi từ tài khoản kênh của CLB Robotics, 22:40 tối 07/10. Ai ngồi gửi thì chưa biết.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "minh-anh",
+                  "expression": "neutral",
+                  "text": "Đúng chừng ấy. Chị báo cô Lan cũng đúng chừng ấy."
+                }
+              ]
+            },
+            {
+              "id": "nam-gui",
+              "text": "Nam là người gửi, vì Nam trực kênh.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Trực kênh là việc được giao. Trên phiếu có dòng nào ghi ai ngồi gửi không?"
+                }
+              ]
+            },
+            {
+              "id": "robotics-hai",
+              "text": "CLB Robotics cố tình tung tin để hại CLB mình.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "day-kinh",
+                  "text": "Phiếu ghi một tài khoản với một giờ gửi. \"Cố tình\" với \"cả CLB\" thì cột nào nói?"
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Nhưng mà Nam trực kênh. Tớ vẫn cá là Nam."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Chị không nói là Nam. Nhưng Nam là đầu mối duy nhất mình đang có. Phải hỏi cho ra."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Còn một chuyện mới: phòng văn phòng xưởng thường khóa, chìa ban chủ nhiệm giữ. Người ngồi máy đó tối thứ Hai có chìa, hoặc được mở cửa cho."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Khoan. Mật khẩu thì cả ban chủ nhiệm đều biết mà."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tớ thì chờ thêm một nguồn nữa rồi mới nói."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Một tài khoản chưa phải là một con người. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi."
+        },
+        {
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "id": "v3-mo",
+      "title": "Phòng CLB: bốn người, bốn cách đọc một phiếu",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Vụ 3 — Thứ Năm, 10 tháng 10"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chiều hôm sau. Phiếu tin gốc vẫn ghim giữa bảng. Bốn người, bốn cách đọc."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Tài khoản kênh của Robotics. Nam trực kênh. Tối đó xưởng mở, Nam bảo về sớm mà chẳng ai làm chứng. Còn gì nữa?"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Chị không nói là Nam. Nhưng Nam là đầu mối duy nhất mình có, và cô Lan đang chờ. Chị cần biết đã đủ để mời Nam lên hỏi chưa."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Khoan. Mình mới đếm có một kiểu: tài khoản nào gửi. Đổi cách đếm xem có thấy gì khác không đã."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tớ thì chờ một nguồn nữa, ngoài kênh, rồi mới nói."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-kenh-robotics"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Đổi cách đếm là đếm cái gì ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Kênh của Robotics đăng bao nhiêu bài trong tháng, từ máy nào, buổi nào. Nếu bài tin đồn khác hẳn thói quen của kênh thì cũng là một điều đáng ghi."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Được. Sang xưởng. Nhưng lần này hỏi thẳng Nam: tối đó cậu ấy ở đâu, có gì chứng minh."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Bản xuất bài đăng thì gồm mọi kênh. Lấy riêng bài của kênh Robotics trước, rồi mới gom theo thiết bị mà đếm."
+        },
+        {
+          "type": "task",
+          "text": "Kênh Robotics tháng 10 hay đăng bài từ thiết bị nào?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chín bài nhìn hoa mắt. Giá mà gom những bài cùng một thiết bị vào một cục rồi đếm."
+        },
+        {
+          "type": "goto",
+          "to": "v3-xuong"
+        }
+      ]
+    },
+    {
+      "id": "v3-xuong",
+      "title": "Xưởng Robotics: Nam mở bản xuất bài đăng của kênh",
+      "canh": "xuong-robot",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Lại các cậu. Hôm nay định hỏi gì nữa?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Hỏi thẳng: tối thứ Hai cậu ở đâu?"
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Thư viện. Tối thứ Hai nào cũng thế, tới khi họ đóng cửa. Nhưng các cậu đâu có tin."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Chưa tin, chưa không tin. Cậu cho bọn tớ xem bản xuất bài đăng của kênh được không? Cả tháng, mọi kênh cũng được, bọn tớ tự lọc."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Bản xuất của mục kênh thì ai quản trị cũng tải được. Đây. Lọc đi."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-bai-dang"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Chín bài của kênh Robotics trong tháng 10."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chín bài, chín dòng. Đọc từng dòng thì được, nhưng mình muốn biết kênh này hay đăng từ máy nào. Nhóm theo thiết bị, đếm mỗi nhóm."
+        },
+        {
+          "type": "task",
+          "text": "Chín bài đó đăng từ những thiết bị nào, mỗi thiết bị mấy bài?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Lấy phiếu chín bài làm nguồn, nhóm theo thiết bị."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-bai-thiet-bi"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tám bài từ điện thoại trực kênh. Một bài từ máy văn phòng xưởng."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Điện thoại trực là cái tớ giữ. Tớ đăng toàn buổi chiều, bằng cái đó."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Điện thoại cậu giữ thì chứng minh được gì? Hôm đó cậu đổi sang máy bàn thì sao."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Thì tớ đã bảo tối đó tớ ở thư viện. Cửa từ thư viện ghi giờ vào giờ ra của từng thẻ. Trên cổng sinh viên, ai cũng tải được bản ghi của chính mình. Tớ tải rồi gửi vào nhóm cho các cậu."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Đấy. Một nguồn ngoài kênh. Đi thư viện."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-ten-nam"
+            },
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-toi-07"
+            }
+          ]
+        },
+        {
+          "type": "goto",
+          "to": "v3-thu-vien"
+        }
+      ]
+    },
+    {
+      "id": "v3-thu-vien",
+      "title": "Thư viện: bản ghi quẹt thẻ của chính Nam",
+      "canh": "thu-vien",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Thư viện trường nằm trên tầng ba giảng đường B. Bác Thịnh ngồi ở bàn trực dưới chân cầu thang."
+        },
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "smile",
+          "text": "Lại mấy đứa CLB Thám Tử. Lên thư viện à? Tối thứ Hai trên ấy vắng lắm, chỉ có vài đứa quen mặt. Thư viện có mỗi một cửa, ra vào đều phải quẹt thẻ."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bàn cạnh cửa sổ. Ở bàn bên, Hoài ngẩng lên khỏi chồng sách."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "nervous",
+          "text": "Tớ chào các cậu. Lá thư hôm ấy tớ chỉ nộp hộ. Tớ vẫn nghĩ mãi về cái anh đã nhờ tớ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Nhớ thêm được gì thì bảo bọn tớ nhé."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "neutral",
+          "text": "Ừ. Tớ mà gặp lại cái balo ấy là tớ nhận ra."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "neutral",
+          "text": "Mà cậu là bạn áo xanh tình nguyện tuần đầu đúng không? Hôm ấy cậu dẫn tớ lạc sang tận nhà xe."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Tớ dẫn đúng hướng, chỉ sai tòa thôi. Áo thì tớ vẫn cất trong tủ."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Nam mở cổng sinh viên trên điện thoại, tải bản ghi cửa từ của chính mình trong tháng 9 và tháng 10, gửi vào nhóm."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Tớ cũng tải bản của tớ, gộp chung vào một tệp cho dễ tra. Tên ai thì ghi tên người đó."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Lọc ra của tớ rồi xem."
+        },
+        {
+          "type": "task",
+          "text": "Nam vào thư viện những ngày nào?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tệp có cả hai tên. Lọc đúng tên Nam."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-nam-thu-vien"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Năm lần. Ngày với thứ ghi sẵn."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Năm dòng, nhìn là thấy thứ Hai nhiều. Nhưng \"nhiều\" là mấy? Thói quen thì phải đếm được."
+        },
+        {
+          "type": "task",
+          "text": "Nam quẹt thẻ thư viện vào thứ mấy nhiều nhất, mấy lần?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Cùng một cục phiếu, gom theo thứ rồi đếm."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-nam-thu"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Thứ Hai bốn lần, tối nào có trong tệp cũng thế. Thứ Năm một lần."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Tối thứ Hai thư viện vắng. Tớ ngồi bàn cạnh cửa sổ, làm bài tới khi họ đuổi."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "…Bàn cạnh cửa sổ. Tối thứ Hai."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Sao thế?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tối thứ Hai nào tớ cũng ở thư viện. Tớ nhớ có một cậu tuần nào cũng tới muộn, ngồi bàn cạnh cửa sổ. Tớ không để ý mặt."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Nhớ thì nhớ. Nhưng tối mùng 7 cụ thể thì bản ghi nói gì? Lọc đúng ngày đó, cả hai tên."
+        },
+        {
+          "type": "task",
+          "text": "Tối 07/10 ai quẹt thẻ, vào và ra lúc mấy giờ?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Ngày là mùng 7. Tệp có cả bản của tớ."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-toi-07"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tối mùng 7 có hai người. Hà Vy vào 20 giờ, ra 23 giờ. Nam vào 21 giờ 50, ra 23 giờ 05."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Quẹt vào rồi trèo cửa sổ ra thì sao? Cửa từ chỉ biết lúc vào với lúc ra."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Tớ ngồi cách Nam hai bàn. Chuông 22 giờ 30 nhắc sắp đóng cửa, cậu ấy còn đang xếp sách. Tớ nhớ vì tớ cũng đang xếp."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Cửa từ một nguồn, lời Vy một nguồn. Nhưng lời Vy thì ai làm chứng? Thẻ của Vy."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Cậu nhớ nhầm sang hôm khác thì sao? Tối thứ Hai nào chuông chả reo lúc 22 giờ 30."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Có thể tớ nhầm thật. Nên đừng tin mỗi lời tớ. Cửa từ ghi Nam vào 21 giờ 50, ra 23 giờ 05, mà thư viện chỉ có một cửa. Lời tớ chỉ thêm vào: lúc chuông reo cậu ấy còn ngồi trong."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Tớ đã bảo mà."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-ten-vy"
+            }
+          ]
+        },
+        {
+          "type": "goto",
+          "to": "v3-the-vy"
+        }
+      ]
+    },
+    {
+      "id": "v3-the-vy",
+      "title": "Lời chứng cũng phải đếm được: thói quen của Hà Vy",
+      "canh": "thu-vien",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Được. Lời chứng của tớ cũng phải đếm được như của Nam. Bản của tớ có sẵn trong tệp."
+        },
+        {
+          "type": "task",
+          "text": "Hà Vy vào thư viện những ngày nào?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Lọc đúng tên tớ."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-vy-thu-vien"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Năm lần. Bốn tối thứ Hai, một tối thứ Tư."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Hai đứa như nhau. Đúng là hai cái máy."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Thói quen không chứng minh được đúng tối ấy. Nó chỉ cho thấy tớ có lý do ngồi đó. Thứ ghi đúng tối ấy là cửa từ: Nam vào 21 giờ 50, ra 23 giờ 05. Về CLB."
+        },
+        {
+          "type": "goto",
+          "to": "v3-doi-chat"
+        }
+      ]
+    },
+    {
+      "id": "v3-doi-chat",
+      "title": "Phòng CLB: Tùng nêu giả thuyết, người chơi trình thẻ",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Phòng CLB. Mọi phiếu đã ghim lên bảng. Minh Anh chờ."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Tùng nói trước. Rồi các em trình cái gì có trong hồ sơ."
+        },
+        {
+          "type": "doi-chat",
+          "id": "dc-nam",
+          "asker": {
+            "speaker": "tung",
+            "text": "Tài khoản kênh của Robotics gửi tin lúc 22:40. Nam trực kênh. Tối đó xưởng mở, Nam bảo về sớm mà không ai làm chứng. Tớ cá là Nam gửi."
+          },
+          "bangChung": [
+            {
+              "id": "ev-toi-07",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Tối 07/10, cửa từ thư viện ghi Nam vào 21:50, ra 23:05. Tin gửi 22:40."
+                },
+                {
+                  "speaker": "tung",
+                  "expression": "surprised",
+                  "text": "Quẹt vào rồi trèo cửa sổ ra thì sao?"
+                },
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Tớ ngồi cách cậu ấy hai bàn, cùng tối đó. Tớ nhớ lúc chuông 22 giờ 30 nhắc sắp đóng cửa, cậu ấy còn đang xếp sách. Thẻ của tớ ghi tớ ở đó tới 23 giờ."
+                },
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Và máy gửi tin nằm trong phòng văn phòng xưởng, cách thư viện cả một sân trường."
+                },
+                {
+                  "speaker": "minh-anh",
+                  "expression": "neutral",
+                  "text": "Cửa từ là nguồn độc lập, có giờ vào giờ ra; lời Vy khớp đúng quãng giữa; chỗ gửi tin thì cách xa. Đủ để không mời Nam lên."
+                }
+              ]
+            },
+            {
+              "id": "ev-nam-thu",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Bốn tối thứ Hai có trong tệp, tối nào Nam cũng ở thư viện. Một thói quen. Thói quen thì chưa phải bằng chứng cho đúng tối đó."
+                },
+                {
+                  "speaker": "tung",
+                  "expression": "gai-dau",
+                  "text": "Thì có thể tối đó cậu ấy nghỉ một hôm."
+                }
+              ]
+            },
+            {
+              "id": "ev-vy-thu-vien",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Tối thứ Hai nào tớ cũng ở thư viện, thẻ của tớ ghi thế. Nên lời tớ kể về tối đó không phải nhớ bừa."
+                },
+                {
+                  "speaker": "duy",
+                  "expression": "neutral",
+                  "text": "Lời chứng mà đếm được thì nặng hơn lời chứng suông."
+                }
+              ]
+            },
+            {
+              "id": "ev-bai-thiet-bi",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Tám bài từ điện thoại trực, một bài từ máy văn phòng xưởng. Bài tin đồn khác hẳn thói quen đăng của kênh."
+                },
+                {
+                  "speaker": "tung",
+                  "expression": "worried",
+                  "text": "Khác thói quen thôi. Ai cấm Nam đổi máy một hôm."
+                }
+              ]
+            },
+            {
+              "id": "ev-tin-goc",
+              "muc": "goi-y",
+              "feedback": [
+                {
+                  "speaker": "tung",
+                  "expression": "chi-tay",
+                  "text": "Chính phiếu này nói tài khoản Robotics gửi. Cậu đang củng cố cho tớ đấy."
+                },
+                {
+                  "speaker": "duy",
+                  "expression": "neutral",
+                  "text": "Tài khoản. Chưa phải người."
+                }
+              ]
+            }
+          ],
+          "chuaDu": [
+            {
+              "speaker": "minh-anh",
+              "expression": "serious",
+              "text": "Chưa đủ để nói Nam không làm, cũng chưa đủ để nói Nam làm. Vậy chị mời Nam lên hỏi."
+            },
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Mời lên hỏi thì cũng là một nguồn. Nhưng mình đang thiếu nguồn, không phải thiếu người để hỏi."
+            }
+          ],
+          "khac": [
+            {
+              "speaker": "tung",
+              "expression": "worried",
+              "text": "Cái này thì liên quan gì tới tối thứ Hai?"
+            },
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Xem lại hồ sơ đã."
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "dc-nam-du"
+          },
+          "to": "v3-ket-du"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Vậy chị mời Nam lên."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chiều hôm đó, Nam lên phòng CLB. Không nói nhiều, Nam đặt lên bàn tờ bản ghi quẹt thẻ thư viện của mình."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Tối mùng 7, 21 giờ 50 vào, 23 giờ 05 ra. Các cậu có cả tờ này rồi mà vẫn gọi tớ lên."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "…Tối đó tớ cũng ở đấy. Tớ nhớ ra muộn quá."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Xin lỗi cậu."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Không sao. Lần sau các cậu đọc kỹ hồ sơ trước đã."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "dat-co",
+              "co": "v3-moi-nam-len"
+            }
+          ]
+        },
+        {
+          "type": "goto",
+          "to": "v3-ket-luan"
+        }
+      ]
+    },
+    {
+      "id": "v3-ket-du",
+      "title": "Không mời Nam lên; Tùng xin lỗi; lời nhắn thứ ba của chị Linh",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Không mời Nam lên. Chị báo cô Lan: tối đó Nam ở thư viện, có bản ghi và có người cùng ngồi."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Khỉ thật… tại cái tài khoản ghi lù lù tên kênh của cậu ấy. Tớ cá trượt, mà lần này trượt đau. Tớ xin lỗi Nam. Lần sau đợi đủ bài mới lật."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Cá thì không sao. Kết tội mới sao."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tớ cũng suýt nữa. Nhìn tài khoản thấy tên kênh, nhìn kênh thấy người trực. Mỗi bước nhảy một tí là tới một con người."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Hai nguồn riêng cùng khớp một quãng giờ. Lại là \"kiểm hai lần\" của chị Linh."
+        },
+        {
+          "type": "goto",
+          "to": "v3-ket-ky"
+        }
+      ]
+    },
+    {
+      "id": "v3-ket-ky",
+      "title": "Hai thói quen, hai người làm chứng cho nhau: mẩu giấy thứ ba",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Nhắc mới nhớ. Trang \"Kiểm hai lần\" ấy… hôm trước có một mẩu, để tớ xem lại."
+        },
+        {
+          "type": "note",
+          "text": "Duy lật trang, một mẩu giấy nữa."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-loi-nhan-linh-3"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Mẩu thứ ba. Chữ chị Linh."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "\"Vụ đầu tiên của CLB kết luận sai. Chị tìm ra cuốn sổ ghi lại nó.\""
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Vụ đầu tiên của CLB? Từ hồi nào?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chưa biết. Nhưng chị ấy ghi \"kết luận sai\". Giống chuyện hôm nay."
+        },
+        {
+          "type": "goto",
+          "to": "v3-ket-luan"
+        }
+      ]
+    },
+    {
+      "id": "v3-ket-luan",
+      "title": "Không phải Nam thì là ai?",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "question",
+          "id": "q-v3-ket-luan",
+          "asker": {
+            "speaker": "minh-anh",
+            "text": "Vậy giờ mình nói chắc được điều gì?"
+          },
+          "choices": [
+            {
+              "id": "khong-nam",
+              "text": "Tối 07/10 Nam ở thư viện lúc tin được gửi. Người gửi là ai thì chưa biết, chỉ biết người đó ngồi máy văn phòng xưởng.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "minh-anh",
+                  "expression": "neutral",
+                  "text": "Đúng chừng ấy. Nam không phải người gửi; còn lại vẫn là câu hỏi."
+                }
+              ]
+            },
+            {
+              "id": "ban-chu-nhiem",
+              "text": "Người gửi chắc chắn là một trong ban chủ nhiệm, vì chỉ họ biết mật khẩu.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "\"Chỉ họ biết\" là lời Nam nói, chưa có bảng nào ghi. Và mật khẩu thì truyền tai được."
+                }
+              ]
+            },
+            {
+              "id": "nam-noi-doi",
+              "text": "Nam vẫn đáng ngờ, vì Nam nói về sớm mà không ai làm chứng.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "duy",
+                  "expression": "neutral",
+                  "text": "Giờ đã có người làm chứng, và có cả thẻ. Cậu đang giữ nghi ngờ cũ sau khi bằng chứng đã đổi."
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Không phải Nam. Thế thì ai ngồi máy văn phòng xưởng tối đó?"
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Máy trong phòng văn phòng, giờ xưởng mở. Ai vào được phòng đó thì mình chưa biết."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Và tên Nam vẫn nằm trên tài khoản kênh. Ai muốn người ta nghĩ là Nam, thì đã được như ý."
+        },
+        {
+          "type": "note",
+          "text": "Duy ghim hai tờ giấy lên bảng: \"16/9: thư đòi thu phòng\" và \"07/10: tin 'soi dữ liệu'\"."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Lá thư không làm mình mất phòng. Ba tuần sau lại có cái tin bảo mình soi dữ liệu."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Cuối kỳ là lúc sao kê về. Nếu tới lúc ấy ai cũng ngại tin mình, thì mình có hỏi đúng cũng khó được nghe."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Có thể liên quan, cũng có thể không. Ghim hai mốc lên đã."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Chuyện này không chỉ là tin đồn về mình nữa. Các em sang xưởng lần nữa, hỏi xem ai vào được phòng ấy. Hỏi thôi, chưa nghi ai."
+        },
+        {
+          "type": "goto",
+          "to": "v3-chia"
+        }
+      ]
+    },
+    {
+      "id": "v3-chia",
+      "title": "Xưởng, chiều muộn: tờ giao chìa, ba người cần hỏi",
+      "canh": "xuong-robot",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chiều muộn, xưởng Robotics. Nam dẫn cả nhóm tới cửa phòng văn phòng. Trên cửa dán một tờ giấy đã ngả màu."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "\"Giao chìa phòng văn phòng.\" Ba tên: Khánh, Bách, Thảo."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Anh Khánh đang họp bên Hội. Anh Bách với chị Thảo thì ở kia."
+        },
+        {
+          "type": "line",
+          "speaker": "thao",
+          "expression": "neutral",
+          "text": "Phòng ấy chị mở nhiều nhất. Nhưng chìa của chị nằm ngăn bàn ngoài xưởng cả tháng nay, ai mở ngăn cũng lấy được. Chị không chối."
+        },
+        {
+          "type": "line",
+          "speaker": "bach",
+          "expression": "neutral",
+          "text": "Tối mùng 7 anh về quê, vé xe còn giữ. Chìa anh không cho ai mượn."
+        },
+        {
+          "type": "line",
+          "speaker": "thao",
+          "expression": "neutral",
+          "text": "Còn hỏi chuyện in ấn thì tối Chủ nhật nào chị cũng ra phòng máy in sơ đồ mạch. Tuần nào cũng thế, chị không nhớ nổi từng tuần."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Tối Chủ nhật, phòng máy… Tớ không cá. Tớ ghi."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-giao-chia"
+            },
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-thao-in-so-do"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Ghi ba tên. Người cần hỏi, chưa phải người bị nghi."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Thứ Ba tuần sau tớ kiểm kê kho. Ban tổ chức giải bắt đội nào cũng nộp biên bản kiểm kê trước khi đóng lệ phí, nên lịch anh Khánh phải ký từ mùng 9. Tớ cũng hỏi cả đội về tối mùng 7 rồi: cửa phòng văn phòng quay vào kho, đứa nào cũng cắm mặt hàn mạch, không ai để ý ai vào."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "neutral",
+          "text": "Lần này tớ ghi tên mà không khoanh ai cả."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Nhóm theo cách khác thì thấy chuyện khác. Thói quen đếm được, và đôi khi thói quen của người này là lời chứng cho người kia."
+        },
+        {
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "id": "v4-mo",
+      "title": "Nam tới phòng CLB với một rắc rối của chính mình",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Vụ 4 — Thứ Hai, 14 tháng 10"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Đầu tuần. Lần này không phải nhóm sang xưởng, mà Nam tự tới phòng CLB, tay cầm một tờ giấy."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Các cậu nói đúng. Có người đang mượn tên tớ, mà không phải chỉ cái tin đồn."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Ngồi xuống đã. Chuyện gì?"
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, cộng lại hơn hai triệu rưỡi, có đơn gần một triệu. Trong năm đơn ấy tớ chỉ đặt hai: cảm biến với bánh xe, mấy trăm nghìn. Ba đơn kia tớ không đặt."
+        },
+        {
+          "type": "note",
+          "text": "Quân bước vào sau Nam, tay cầm cặp hồ sơ."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Giấy ấy ban tôi lập. Hôm thứ Sáu chủ tịch Hội chuyển xuống danh sách năm đơn, bảo làm đúng quy trình. Lần trước tôi lọc rộng rồi nghi vội cả một lớp. Lần này tôi mang sổ tới để các bạn tự tra, tra ra gì tôi ghi đúng thế. Theo quy chế, danh sách đơn vượt mức gửi lên thì ban tôi buộc tạm khóa tài khoản người đứng tên, để giữ nguyên sổ."
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-thu-hoi-don"
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-da-duyet"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Ba đơn lạ. Ai đặt?"
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Đơn đặt trên máy xưởng, ai đăng nhập cũng điền tên người đặt được. Ban kiểm tra gửi kèm bản sổ đặt hàng của xưởng, có cả đơn còn chờ duyệt. Các cậu xem hộ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chưa đọc tên vội. Đếm trước: mỗi người đứng tên mấy đơn, rồi mới xem đơn của Nam."
+        },
+        {
+          "type": "task",
+          "text": "Sổ đặt hàng của xưởng có những đơn nào đã duyệt?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chỉ lấy đơn đã duyệt. Trạng thái ghi ở cột trang_thai."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-don-da-duyet"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tám đơn đã duyệt."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tám đơn, gom theo người đặt rồi đếm. Xem Nam đứng tên bao nhiêu so với người khác."
+        },
+        {
+          "type": "task",
+          "text": "Mỗi người đứng tên bao nhiêu đơn đã duyệt?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Phiếu tám đơn làm nguồn, gom theo người đặt."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-don-theo-nguoi"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Nam năm đơn. Bách, Thảo, Khánh mỗi người một."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Năm. Mà tớ chỉ đặt hai: cảm biến dò line với bánh xe. Động cơ servo, mạch điều khiển, khung nhôm thì tớ không đặt. Anh Bách là phó CLB, chị Thảo lo kỹ thuật, anh Khánh là trưởng CLB."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Thế ba đơn kia ai gõ tên cậu vào?"
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Sổ không ghi ai gõ. Nhưng mỗi đơn có một cột mã phiên: phiên đăng nhập của máy lúc tạo đơn. Máy xưởng có bảng phiên đăng nhập không?"
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong. Thứ Ba 15 là hôm tớ kiểm kê kho, lịch với sổ đều nằm trong tài khoản ấy. Lịch ấy ban tổ chức giải bắt nộp, muốn dời sát ngày phải ghi lý do. Khóa tài khoản rồi thì chỉ còn cách đếm tay."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Khóa là phải. Bảng ấy mà do Nam xuất thì ai cũng bảo Nam sửa được. Chị nhờ thầy Quang xin thầy Khải bên phòng máy xuất thẳng cho CLB mình. Máy chủ phần mềm đặt hàng đặt ở đó."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Vậy là hai bảng. Đơn thì ở sổ đặt hàng, máy thì ở bảng phiên. Chung nhau cái mã phiên."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Đơn cảm biến ghi PH-11. Bên bảng phiên mà cũng có một dòng PH-11 thì đấy là cái máy tạo ra đơn ấy, đúng không?"
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-ma-phien"
+            },
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-nguoi-dat-nam"
+            }
+          ]
+        },
+        {
+          "type": "goto",
+          "to": "v4-noi"
+        }
+      ]
+    },
+    {
+      "id": "v4-noi",
+      "title": "Mã phiên dẫn sang bảng phiên đăng nhập: phải nối hai bảng",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "show-document",
+          "documentId": "doc-phien-dang-nhap"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chiều. Thầy Khải tự mang bản xuất sang phòng CLB."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-khai",
+          "expression": "neutral",
+          "text": "Bảng phiên đăng nhập của phần mềm đặt hàng. Thầy xuất nguyên bản từ máy chủ theo đề nghị của thầy Quang, chưa lọc dòng nào. Lần trước các em tra nhật ký in cũng ở chỗ thầy, nhớ không?"
+        },
+        {
+          "type": "task",
+          "text": "Năm đơn đứng tên Nam được tạo từ máy nào, lúc mấy giờ?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Hai bảng chung nhau một cột. Nối đúng cột đó thì mỗi đơn kéo theo đúng máy của nó."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Nối hai bảng thì phải chọn cột chung. Chọn sai cột là đơn kéo theo máy của người khác."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-don-nam-may"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Năm đơn của Nam. Hai đơn buổi chiều từ máy xưởng số 2. Ba đơn còn lại từ máy văn phòng xưởng, 21 giờ 50, 22 giờ 10 và 22 giờ 05."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Máy xưởng số 2 buổi chiều là tớ. Máy văn phòng ban đêm thì tớ chưa bao giờ ngồi. Phòng đó khóa."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Năm dòng này gom theo máy rồi đếm, cho chắc."
+        },
+        {
+          "type": "task",
+          "text": "Năm đơn đứng tên Nam chia theo máy ra sao?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Phiếu năm đơn làm nguồn, gom theo máy."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-don-nam-theo-may"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Máy văn phòng xưởng ba đơn. Máy xưởng số 2 hai đơn."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Máy văn phòng xưởng. Lại nó. Tin đồn cũng gửi từ đó."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Và đơn ngày 07/10 tạo lúc 22 giờ 05. Tối đó Nam ở thư viện tới 23 giờ 05, mình đã có bản ghi."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Hai việc xảy ra trên cùng một máy, cùng một tối. Chưa biết có cùng một người làm không."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Nam, chuyện này không còn là chuyện riêng của CLB nào. Điều tra cùng bọn chị không?"
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Tớ xin. Tên tớ, tớ phải tự đi tìm xem ai đang dùng."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-may-vp"
+            }
+          ]
+        },
+        {
+          "type": "goto",
+          "to": "v4-may-vp"
+        }
+      ]
+    },
+    {
+      "id": "v4-may-vp",
+      "title": "Mọi đơn từ máy văn phòng xưởng",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Nếu máy văn phòng là chỗ người ta làm việc đó, thì xem mọi đơn từ máy ấy, không chỉ đơn mang tên Nam."
+        },
+        {
+          "type": "task",
+          "text": "Máy văn phòng xưởng đã tạo những đơn nào?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Vẫn nối hai bảng theo mã phiên, nhưng lần này lọc theo máy."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-may-vp"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Bốn đơn. Ba đơn đứng tên Nam, ban đêm. Một đơn ốc vít đứng tên Khánh, 10 giờ 15 sáng."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Ốc vít thì đúng là anh Khánh đặt, hôm đó tớ thấy. Trưởng CLB ngồi máy văn phòng ban ngày là chuyện thường."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Vậy máy đó ban ngày có người dùng hợp lệ. Ban đêm có ba đơn đứng tên Nam, mà một trong ba tạo lúc Nam ở thư viện. Mình mới biết máy, chưa biết tay."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Mà bảng phiên ghi máy văn phòng có năm phiên, nối xong chỉ ra bốn đơn. Một phiên sáng 02/10 không tạo đơn nào: có người mở phần mềm rồi thôi. Nối kiểu này thì phiên không có đơn không hiện ra."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tờ giao chìa hôm trước: ba người có chìa. Đừng vội."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-loi-nhan-linh-4"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tên một người, tay một người khác… chị Linh có ghi một câu. Để tớ xem."
+        },
+        {
+          "type": "note",
+          "text": "Duy lật sổ chị Linh tới trang cuối."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "\"Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi.\""
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Giống hệt chuyện Nam."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chị ấy ghi từ năm ngoái. Cuốn sổ cũ mà chị ấy nhắc, chắc kể đúng chuyện này."
+        },
+        {
+          "type": "goto",
+          "to": "v4-ket"
+        }
+      ]
+    },
+    {
+      "id": "v4-ket",
+      "title": "Nam điều tra cùng; ba người có chìa",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "question",
+          "id": "q-v4-ket-luan",
+          "asker": {
+            "speaker": "minh-anh",
+            "text": "Vậy mình nói chắc được điều gì với Ban kiểm tra của Hội?"
+          },
+          "choices": [
+            {
+              "id": "muon-ten",
+              "text": "Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng; đơn 07/10 tạo đúng lúc Nam ở thư viện. Ai ngồi máy thì bảng này chưa nói.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "minh-anh",
+                  "expression": "neutral",
+                  "text": "Đúng chừng ấy. Chị gửi kèm phiếu nối bảng để họ tự kiểm. Ai ngồi máy thì phải có nguồn khác."
+                }
+              ]
+            },
+            {
+              "id": "nam-tu-dat",
+              "text": "Nam tự đặt cả năm đơn rồi chối.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Một trong ba đơn đó tạo lúc 22:05 tối 07/10. Tối đó Nam ở thư viện, mình vừa chứng minh xong ở vụ trước."
+                }
+              ]
+            },
+            {
+              "id": "ban-chu-nhiem",
+              "text": "Ban chủ nhiệm Robotics cố tình đổ nợ cho Nam.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "duy",
+                  "expression": "neutral",
+                  "text": "Máy văn phòng thì ban chủ nhiệm giữ chìa, nhưng \"cố tình\" và \"cả ban\" thì bảng nào nói? Mình mới có máy và giờ."
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Phiếu bốn đơn từ máy văn phòng chị gửi kèm luôn: ba đơn đêm đứng tên Nam, một đơn ngày đứng tên trưởng CLB. Đủ để Ban kiểm tra thấy máy đó ban ngày ai dùng, ban đêm đứng tên ai."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Và ba người giữ chìa phòng đó. Mình ghi tên, không ghi tội."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Giấy giải trình đề ngày 11, một ngày sau hôm mình gỡ nghi cho Nam. Tớ ghi lại thôi, chưa nói gì."
+        },
+        {
+          "type": "note",
+          "text": "Có tiếng gõ cửa. Khánh đứng ở cửa phòng CLB, balo khoác một bên vai."
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Nam ở đây à. Danh sách Ban kiểm tra cầm là anh chuyển. Đủ cả năm đơn, kể cả hai đơn em đặt thật, để họ khỏi bảo mình chọn lọc. Cứ giải trình đúng sự thật, anh sẽ nói đỡ một câu. Còn bên Thám Tử, cần giấy tờ gì qua Hội thì cứ gửi anh, anh ký chuyển cho."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Vâng anh."
+        },
+        {
+          "type": "note",
+          "text": "Khánh quay đi. Cái huy hiệu bánh răng trên balo lắc lư, sứt mất một răng."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Tớ thấy rồi. Cái huy hiệu. Nãy giờ tớ nín thở."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Nín là đúng. Nói ra lúc ấy là cá."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Huy hiệu làm ba chục cái hồi đầu năm. Cái sứt là lỗi khuôn, anh Khánh xin giữ. Nhưng balo anh ấy hay để ở xưởng, ai cũng cầm ra cổng được. Tớ không nói là anh ấy."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Biết balo chưa phải biết người. Ghi thẻ, không kết."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-huy-hieu-sut"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Lần này tớ biết mà vẫn không cá."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Chắc trong lòng là lúc phải cẩn thận nhất. Muốn nói với thầy Quang thì cần một nguồn thứ hai, không dính gì tới cái huy hiệu. Và phải biết ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "khoanh-tay",
+          "text": "Sao kê thì cuối kỳ mới tự về. Chủ quỹ xin giữa kỳ cũng được, nhưng giấy phải qua chủ tịch Hội ký chuyển. Chị chưa xin lần nào, nên giờ chị mới biết điều đó. Và người ký chuyển vừa đứng ở cửa, tự mời mình gửi giấy."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tức là muốn xem sổ thì phải hỏi đúng người mình chưa được nói tên. Còn một đường nữa: thầy Quang."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Tớ không nghi ai cả. Nhưng tớ muốn biết là ai."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Thì hỏi sổ."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nghi ngờ mạnh vẫn chưa phải bằng chứng: càng chắc trong lòng, càng phải tìm nguồn thứ hai."
+        },
+        {
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "id": "v5-mo",
+      "title": "Nam đếm kho: ba linh kiện không có một cái",
+      "canh": "xuong-robot",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Vụ 5 — Thứ Sáu, 18 tháng 10"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Xưởng Robotics, cuối tuần. Nam đứng giữa các kệ linh kiện, tay cầm bảng kiểm kê, mặt khó coi."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Biên bản kiểm kê hôm thứ Ba 15 đây. Tài khoản khóa nên tớ đếm tay từng loại, hai lần."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Rồi sao?"
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Ba đơn mang tên tớ: động cơ servo, mạch điều khiển, khung nhôm. Trong kho không có lấy một cái. Sổ ghi đã duyệt, mà lúc tớ kiểm kê, kho không có."
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-kiem-ke"
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-so-luong-co-0"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Vậy phải so sổ đặt hàng với bảng kiểm kê. Hai bảng, chung nhau tên linh kiện."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Nối theo tên linh kiện rồi lọc thứ nào trong kho đang là số không."
+        },
+        {
+          "type": "task",
+          "text": "Đơn nào đặt mua thứ mà trong kho không có một cái?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Nối sổ đặt hàng với bảng kiểm kê theo tên linh kiện. Kho không có là số không."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-dat-ma-khong-co"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Ba đơn. Đúng ba đơn đứng tên Nam từ máy văn phòng xưởng."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Linh kiện chỉ là cái cớ để ghi vào sổ. Còn tiền có thật sự đi đâu không, sổ đặt hàng không nói."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Tiền thì nằm trong sổ quỹ. Sổ quỹ khối CLB không phải của mình, chị không tự mở được. Phải xin thầy Quang."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Thầy Quang thì lại \"căn cứ vào đâu\"."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Thì mang căn cứ đi."
+        },
+        {
+          "type": "goto",
+          "to": "v5-thay-quang"
+        }
+      ]
+    },
+    {
+      "id": "v5-thay-quang",
+      "title": "Phòng Đào tạo: \"Căn cứ vào đâu?\"",
+      "canh": "phong-dao-tao",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Phòng Đào tạo. Thầy Quang nghe Minh Anh trình bày, không ngắt lời, rồi hỏi đúng một câu."
+        },
+        {
+          "type": "doi-chat",
+          "id": "dc-xin-so-quy",
+          "asker": {
+            "speaker": "thay-quang",
+            "text": "Các em muốn thầy cho xuất sổ quỹ của khối CLB, một sổ không thuộc CLB các em. Căn cứ vào đâu?"
+          },
+          "bangChung": [
+            {
+              "id": "ev-dat-ma-khong-co",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "minh-anh",
+                  "expression": "neutral",
+                  "text": "Thưa thầy, ba đơn linh kiện ghi đã duyệt, trên đơn tổng hai triệu tư, nhưng kiểm kê xưởng không có một cái nào. Đơn đã duyệt mà hàng không có, nên bọn em cần xác minh tiền ấy có xuất khỏi quỹ nào không, ai duyệt."
+                },
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Đơn đã duyệt mà không có hàng. Căn cứ ấy đủ để thầy cho đối chiếu ba mã đơn này với sổ chi khối CLB. Chúng ghi vào quỹ nào thì chủ quỹ ấy được xem các dòng của quỹ mình. Thầy cho xuất, các em chỉ được xem các khoản liên quan ba đơn này và quỹ CLB Thám Tử."
+                }
+              ]
+            },
+            {
+              "id": "ev-don-nam-may",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Ba đơn ấy tạo ban đêm từ máy văn phòng xưởng, đứng tên Nam mà Nam không đặt ạ."
+                },
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Đơn mượn tên là chuyện của xưởng Robotics. Chuyện tiền thì thầy cần căn cứ về tiền."
+                }
+              ]
+            },
+            {
+              "id": "ev-toi-07",
+              "muc": "goi-y",
+              "feedback": [
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Em Nam ở thư viện tối đó. Thầy ghi nhận, nhưng điều ấy liên quan gì tới sổ quỹ?"
+                }
+              ]
+            }
+          ],
+          "chuaDu": [
+            {
+              "speaker": "thay-quang",
+              "expression": "stern",
+              "text": "Chưa đủ căn cứ thì thầy chưa mở sổ của người khác cho các em xem. Về làm rõ đã."
+            },
+            {
+              "speaker": "minh-anh",
+              "expression": "worried",
+              "text": "Dạ. Bọn em về đếm lại kho ạ."
+            }
+          ],
+          "khac": [
+            {
+              "speaker": "thay-quang",
+              "expression": "neutral",
+              "text": "Cái này nói gì về tiền?"
+            },
+            {
+              "speaker": "minh-anh",
+              "expression": "worried",
+              "text": "Em xem lại hồ sơ ạ."
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "dc-xin-so-quy-du"
+          },
+          "to": "v5-nhan-so"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cả nhóm ra khỏi phòng Đào tạo, chưa có sổ quỹ. Minh Anh dừng ở hành lang."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Thầy nói đúng. Mình phải mang căn cứ về tiền và hàng, không phải về người. Xem lại hồ sơ rồi vào lại."
+        },
+        {
+          "type": "goto",
+          "to": "v5-thay-quang"
+        }
+      ]
+    },
+    {
+      "id": "v5-nhan-so",
+      "title": "Cô Hạnh đưa bản xuất, cô Lan in quy chế",
+      "canh": "phong-dao-tao",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "co-hanh",
+          "expression": "smile",
+          "text": "Thầy Quang ký rồi. Cô đối chiếu ba mã đơn với sổ chi: cả ba ghi vào quỹ CLB Thám Tử. Em Minh Anh là chủ quỹ nên được xem các dòng của quỹ mình. Bản xuất cô gửi về laptop CLB, các em chỉ xem đúng dòng liên quan thôi nhé."
+        },
+        {
+          "type": "line",
+          "speaker": "co-hanh",
+          "expression": "neutral",
+          "text": "Ba khoản lớn là tạm ứng tiền mặt, người duyệt ký nhận. Quy chế cho bổ sung chứng từ trong ba mươi ngày, nên cột mã đơn là điền sau."
+        },
+        {
+          "type": "line",
+          "speaker": "co-lan",
+          "expression": "neutral",
+          "text": "Cô bên Công tác sinh viên in kèm quy chế quỹ khối CLB. Khoản dưới một triệu thì chủ tịch Hội duyệt thẳng. Tổng một người duyệt từ MỘT quỹ trong một học kỳ vượt một triệu thì người đó phải giải trình; Phòng Kế hoạch soát ngưỡng ấy lúc đối chiếu cuối kỳ, cùng lúc gửi sao kê. Phần về CLB chờ giải thể ở trang sau, các em tự đọc."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Em cảm ơn hai cô ạ."
+        },
+        {
+          "type": "goto",
+          "to": "v5-so-quy"
+        }
+      ]
+    },
+    {
+      "id": "v5-so-quy",
+      "title": "Sổ quỹ khối CLB: khoản nào ghi vào quỹ CLB Thám Tử",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chiều, phòng CLB. Bản xuất cô Hạnh gửi đã nằm trong laptop: chỉ gồm các khoản chi ghi vào quỹ CLB Thám Tử và các khoản liên quan ba đơn."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Mỗi khoản chi có mã quỹ. Bảng quỹ cho biết mã nào là quỹ của CLB nào. Lại hai bảng."
+        },
+        {
+          "type": "task",
+          "text": "Khoản chi nào ghi vào quỹ CLB Thám Tử?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Nối sổ chi với bảng quỹ theo mã quỹ, rồi lọc quỹ của CLB mình."
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-so-quy"
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-quy-tham-tu"
+            },
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-han-muc"
+            }
+          ]
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-chi-tham-tu"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Sáu khoản ghi vào quỹ CLB Thám Tử. Ba khoản nhỏ chị Minh Anh duyệt. Ba khoản lớn là tạm ứng, người duyệt và ký nhận ghi là Khánh, xuất ngày 10, 11 và 12 tháng 9. Cột mã đơn điền sau, ghi đúng mã ba đơn linh kiện kho không có hàng."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "khoanh-tay",
+          "text": "Ba khoản chị duyệt là văn phòng phẩm, chị nhớ. Ba khoản kia chị chưa từng thấy."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Đơn sớm nhất trong ba đơn ấy tạo ngày 27 tháng 9. Tiền tạm ứng trước, đơn viết sau, vừa kịp hạn ba mươi ngày bổ sung chứng từ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Gom theo người duyệt rồi đếm. Nhưng lần này đếm số dòng chưa đủ: ba khoản nhỏ với ba khoản lớn đếm ra bằng nhau. Phải cộng tiền."
+        },
+        {
+          "type": "task",
+          "text": "Mỗi người duyệt bao nhiêu khoản, tổng bao nhiêu tiền?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Gom theo người duyệt; ngoài đếm, tính thêm tổng của cột tiền."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-chi-theo-nguoi-duyet"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Chị Minh Anh: ba khoản, tổng bốn trăm năm mươi nghìn. Khánh: ba khoản, tổng hai triệu tư."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "khoanh-tay",
+          "text": "Tờ quy chế cô Lan in đây: khoản dưới một triệu thì chủ tịch Hội duyệt thẳng, không cần trưởng CLB chủ quỹ ký. Chị là chủ quỹ mà không biết ba khoản này, là vì thế. Sao kê tổng thì Phòng Kế hoạch giữ, cuối kỳ mới gửi."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Nhưng tổng các khoản một người duyệt từ một quỹ trong học kỳ mà vượt một triệu thì cuối kỳ Phòng Kế hoạch đòi người đó giải trình. Ngưỡng ấy để tìm nhóm cần hỏi, không phải để kết tội. Để bảng tự lọc ra, đừng chỉ tay."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Và tính thêm trung bình mỗi khoản. Xem từng khoản to cỡ nào so với mức duyệt thẳng."
+        },
+        {
+          "type": "task",
+          "text": "Người duyệt nào có tổng chi vượt ngưỡng giải trình một triệu? Mỗi khoản trung bình bao nhiêu?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Gom như vừa rồi, tính thêm trung bình, rồi chỉ giữ nhóm có tổng lớn hơn một triệu."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-chi-vuot-muc"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Còn một dòng. Khánh: ba khoản, tổng hai triệu tư, trung bình tám trăm nghìn."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Trung bình tám trăm nghìn một khoản, dưới mức một triệu. Nhìn lại phiếu sáu khoản: tám trăm, chín trăm, bảy trăm. Từng khoản đều dưới mức duyệt thẳng, cộng lại thì vượt ngưỡng giải trình."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Ba khoản nhỏ vừa đủ lọt… ghi vào quỹ CLB mình, cho ba đơn kho không có hàng."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Anh Khánh. Trưởng CLB của tớ. Hôm ở xưởng anh ấy còn bảo mọi người hỏi tớ nhẹ thôi."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Bảng nói được tới đó: ai duyệt, bao nhiêu, chia thế nào. Vì sao thì bảng không nói. Chỉ có người mới nói được."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Chị gửi thầy Quang. Việc còn lại là của thầy."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Tiền bị lấy từ đúng quỹ của CLB mà lá thư đòi thu phòng, bốn ngày trước lá thư. Với căn cứ ấy chị xin thầy Quang cho mở trang sổ ký phòng máy tối Chủ nhật 15/9. Hồi tháng 9 Tùng đòi xem, thầy Khải không cho."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Hồi ấy tớ đòi mở để truy người viết thư. Thầy không cho là phải."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Thầy Quang ký rồi. Thầy Khải chụp đúng một trang ấy."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-so-phong-may"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tối Chủ nhật 15/9, bảy dòng. Năm bạn vào in bài. Hai người của Robotics: Thảo vào 20 giờ 10, ra 21 giờ 30. Khánh vào 22 giờ 40, ra 23 giờ 20."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Nhật ký in ghi lá thư in lúc 23 giờ 10, bằng tài khoản của Robotics. Trong phòng lúc ấy, người biết mật khẩu tài khoản ấy chỉ có một."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Tớ không cá. Tớ ghi."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Sổ ký là giấy, nhật ký in là máy. Hai nguồn riêng. Mang cả hai lên."
+        },
+        {
+          "type": "goto",
+          "to": "v5-doi-chat"
+        }
+      ]
+    },
+    {
+      "id": "v5-doi-chat",
+      "title": "Phòng họp, nhịp một: \"đúng thẩm quyền\"",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Thứ Hai tuần sau. Thầy Quang mời cả Hoài lên dự buổi họp. Hoài nhắn cho Duy đúng một dòng: \"Nhờ bạn áo xanh hôm nhập học ra đón tớ được không? Tớ chỉ nhớ mỗi cái áo.\""
+        },
+        {
+          "type": "note",
+          "text": "Cổng tòa nhà hành chính. Tùng mặc chiếc áo xanh tình nguyện, đứng chờ. Hoài đi tới, tay ôm cặp."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "nervous",
+          "text": "Tớ vẫn không nhớ mặt người đưa thư. Vào đấy tớ có phải chỉ ai không?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "neutral",
+          "text": "Không. Cậu nhớ gì thì nói chừng ấy. Hôm nay tớ xem biển rồi, không dẫn nhầm tòa nữa đâu."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Mặc áo ấy thì cậu ngồi cạnh Hoài, không ngồi với bọn tớ. Và không được chỉ cho bạn ấy nhìn cái gì."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Tớ biết. Bạn ấy thấy gì thì bạn ấy tự thưa."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Phòng họp. Thầy Quang chủ trì, cô Lan ngồi bên. Khánh ngồi một phía, mặt không đổi, balo dựng cạnh chân ghế. Nam ngồi cạnh nhóm CLB Thám Tử. Quân ngồi cuối bàn ghi biên bản. Tùng áo xanh ngồi hàng ghế cạnh cửa với Hoài và chú Cường."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Trước khi bắt đầu. Giấy giải trình của Ban kiểm tra vẫn đứng tên em Nam, giải ngân của xưởng vẫn dừng."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Hạn lệ phí giải là hết tháng 10 ạ. Còn mười ngày."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Buổi này không rõ ai lập ba đơn thì thầy chưa có căn cứ gỡ tên em ấy."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Em hiểu ạ."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Thầy mời em Khánh tới vì sổ quỹ. CLB Thám Tử trình bày, em Khánh trả lời. Ai nói gì thì kèm căn cứ."
+        },
+        {
+          "type": "task",
+          "text": "Trình phiếu cho thấy Khánh phải giải trình"
+        },
+        {
+          "type": "doi-chat",
+          "id": "dc-khanh",
+          "asker": {
+            "speaker": "khanh",
+            "text": "Ba khoản đó là chi cho đội robot trước giải quốc gia. Khoản dưới một triệu, chủ tịch Hội duyệt là đúng thẩm quyền. Các bạn có gì mà nói tôi sai?"
+          },
+          "bangChung": [
+            {
+              "id": "ev-chi-vuot-muc",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "minh-anh",
+                  "expression": "neutral",
+                  "text": "Từng khoản thì đúng thẩm quyền ạ. Nhưng sổ chi ghi ba khoản ấy vào quỹ CLB Thám Tử, không phải quỹ Robotics. Cộng lại hai triệu tư, vượt ngưỡng phải giải trình, người duyệt là anh Khánh. Em là chủ quỹ mà chưa từng thấy."
+                },
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Vượt ngưỡng thì phải giải trình. Em Khánh, giải trình đi."
+                }
+              ]
+            },
+            {
+              "id": "ev-chi-theo-nguoi-duyet",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Sổ quỹ CLB Thám Tử có hai người duyệt: chị Minh Anh ba khoản nhỏ, và anh ba khoản lớn."
+                },
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Khoản dưới một triệu thì chủ tịch Hội duyệt được. Thế thì sai chỗ nào?"
+                }
+              ]
+            },
+            {
+              "id": "ev-dat-ma-khong-co",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "nam",
+                  "expression": "neutral",
+                  "text": "Ba đơn đó không có cái linh kiện nào trong kho. Em đếm hai lần."
+                },
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Chuyện hàng nói sau. Tôi đang hỏi về thẩm quyền."
+                }
+              ]
+            },
+            {
+              "id": "ev-don-nam-may",
+              "muc": "goi-y",
+              "feedback": [
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Đơn đứng tên Nam thì hỏi Nam. Tôi đang hỏi về thẩm quyền duyệt chi."
+                }
+              ]
+            }
+          ],
+          "chuaDu": [
+            {
+              "speaker": "minh-anh",
+              "expression": "neutral",
+              "text": "Thưa thầy, bọn em chỉ nói được tới đây: ba khoản chi gắn với ba đơn kho không có hàng, ghi vào quỹ CLB Thám Tử. Ai chi vào việc gì, bọn em không có căn cứ."
+            },
+            {
+              "speaker": "thay-quang",
+              "expression": "neutral",
+              "text": "Biết dừng ở chỗ chứng cứ dừng. Phần còn lại thầy làm việc với Hội sinh viên."
+            }
+          ],
+          "khac": [
+            {
+              "speaker": "khanh",
+              "expression": "neutral",
+              "text": "Cái này thì liên quan gì tới quỹ?"
+            },
+            {
+              "speaker": "minh-anh",
+              "expression": "worried",
+              "text": "Em xem lại hồ sơ ạ."
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "dc-khanh-du"
+          },
+          "to": "v5-doi-chat-2"
+        },
+        {
+          "type": "goto",
+          "to": "v5-ket-thieu"
+        }
+      ]
+    },
+    {
+      "id": "v5-doi-chat-2",
+      "title": "Nhịp hai: \"đơn do Nam lập, tôi chỉ duyệt\"",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Em giải trình được ạ."
+        },
+        {
+          "type": "task",
+          "text": "Trình phiếu cho thấy ba đơn không phải do Nam lập"
+        },
+        {
+          "type": "doi-chat",
+          "id": "dc-khanh-don",
+          "asker": {
+            "speaker": "khanh",
+            "text": "Giải trình thì đơn giản. Hàng đặt gia công bên ngoài, chưa về kho. Còn ba đơn ấy do Nam lập, tên Nam còn trên sổ. Tôi chỉ duyệt theo đề xuất của thành viên. Ghi nhầm mã quỹ là lỗi nhập liệu."
+          },
+          "bangChung": [
+            {
+              "id": "ev-don-nam-may",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "duy",
+                  "expression": "neutral",
+                  "text": "Ba đơn ấy tạo ban đêm từ cùng một máy trong phòng văn phòng xưởng. Chìa thì bọn em không dựa vào, chị Thảo để chìa ở ngăn bàn. Bọn em dựa vào giờ: đơn ngày 07/10 tạo lúc 22 giờ 05."
+                },
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Tối đó cửa từ thư viện ghi Nam ở trong tới 23 giờ 05. Em ngồi cách Nam hai bàn."
+                },
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Vậy ba đơn lập từ một máy, và ít nhất một đơn chắc chắn không phải em Nam lập."
+                }
+              ]
+            },
+            {
+              "id": "ev-may-vp",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "duy",
+                  "expression": "neutral",
+                  "text": "Máy văn phòng xưởng tạo bốn đơn. Một đơn ban ngày đứng tên anh. Ba đơn ban đêm đứng tên Nam. Chìa thì bọn em không dựa vào; bọn em dựa vào giờ."
+                },
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Đơn đêm 07/10 tạo lúc 22 giờ 05. Cửa từ thư viện ghi Nam ở trong tới 23 giờ 05."
+                },
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Vậy ba đơn lập từ một máy, và ít nhất một đơn chắc chắn không phải em Nam lập."
+                }
+              ]
+            },
+            {
+              "id": "ev-chi-tham-tu",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "player",
+                  "text": "Anh nói anh duyệt theo đề xuất của Nam. Sổ chi ghi ba khoản ấy là tạm ứng, xuất ngày 10, 11 và 12 tháng 9. Mã đơn điền bổ sung sau, đúng ngày ba đơn được tạo: 27/9, 4/10 và 7/10."
+                },
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Tiền tạm ứng trước, mã đơn điền sau. Lúc anh ký nhận tiền thì trên máy chưa có đơn nào của Nam để duyệt theo."
+                },
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Đơn lập sau chưa chứng minh là không có đề xuất trước. Em Khánh, hồi ấy em có đề xuất viết tay nào của em Nam không? Và giấy giao việc gia công?"
+                },
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "…Không ạ."
+                }
+              ]
+            },
+            {
+              "id": "ev-toi-07",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Tối 07/10 Nam ở thư viện từ 21 giờ 50 tới 23 giờ 05."
+                },
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Thư viện thì liên quan gì tới đơn đặt hàng? Đơn tạo lúc nào, ở đâu, các bạn có không?"
+                }
+              ]
+            },
+            {
+              "id": "ev-dat-ma-khong-co",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "nam",
+                  "expression": "neutral",
+                  "text": "Gia công ngoài thì phải có biên nhận giao việc. Anh có không ạ?"
+                },
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Sẽ bổ sung. Nhưng đơn vẫn là đơn của em."
+                }
+              ]
+            }
+          ],
+          "chuaDu": [
+            {
+              "speaker": "minh-anh",
+              "expression": "neutral",
+              "text": "Thưa thầy, ai lập ba đơn ấy thì bọn em chưa có căn cứ để nói. Bọn em dừng ở chỗ ba khoản vượt ngưỡng."
+            },
+            {
+              "speaker": "thay-quang",
+              "expression": "neutral",
+              "text": "Vậy dừng ở đó. Phần còn lại thầy làm việc với Hội sinh viên."
+            }
+          ],
+          "khac": [
+            {
+              "speaker": "khanh",
+              "expression": "neutral",
+              "text": "Cái này nói gì về người lập đơn?"
+            },
+            {
+              "speaker": "minh-anh",
+              "expression": "worried",
+              "text": "Em xem lại hồ sơ ạ."
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "dc-khanh-don-du"
+          },
+          "to": "v5-nhan-tien"
+        },
+        {
+          "type": "goto",
+          "to": "v5-ket-thieu"
+        }
+      ]
+    },
+    {
+      "id": "v5-ket-thieu",
+      "title": "Chưa đủ căn cứ: chưa ngã ngũ",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Các em dừng đúng chỗ. Chuyện ba khoản chi, thầy chuyển Phòng Kế hoạch yêu cầu Hội sinh viên giải trình. Có kết luận thầy sẽ thông báo."
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Em sẽ giải trình với Phòng Kế hoạch. Không phải ở đây."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Một tuần sau, chưa có kết luận. Khánh vẫn là chủ tịch Hội sinh viên. Phòng CLB vẫn giữ tới hết học kỳ như thầy Quang đã hứa; sau đó thế nào thì chờ đợt rà soát cuối kỳ."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Tớ không biết cậu ấy sẽ nói gì với Phòng Kế hoạch. Nhưng tớ biết các cậu đã dừng ở đúng chỗ. Sổ sách của xưởng, từ giờ tớ giữ cho rõ."
+        },
+        {
+          "type": "line",
+          "speaker": "thao",
+          "expression": "neutral",
+          "text": "Lệ phí giải thì chị với Bách góp tạm, đội vẫn đi. Tên em thì chờ Phòng Kế hoạch."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Chưa ngã ngũ thì hồ sơ ghi \"chưa ngã ngũ\". Mình không viết thêm."
+        },
+        {
+          "type": "goto",
+          "to": "v5-ket-luan"
+        }
+      ]
+    },
+    {
+      "id": "v5-nhan-tien",
+      "title": "Khánh nhận phần tiền; nhịp ba: lá thư",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Em Khánh. Hàng gia công ngoài thì phải có giấy giao việc, em chưa trình tờ nào. Nhầm mã quỹ thì nhầm ba lần liền, cả ba cùng rơi vào một quỹ. Ba đơn lập từ một máy, một đơn chắc chắn không phải em Nam lập, và tiền tạm ứng thì chính em ký nhận. Em giải thích mối liên hệ này thế nào?"
+        },
+        {
+          "type": "note",
+          "text": "Khánh nhìn tờ phiếu một dòng trên bàn một lúc lâu."
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "…Ba khoản đó không chi cho đội ạ. Đơn là em lập. Tiền em dùng vào việc riêng. Em sẽ trả lại."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Anh lấy tên em."
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Anh xin lỗi em, Nam."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Quân ghi biên bản: tên em Nam được gỡ khỏi giấy giải trình, giải ngân của xưởng mở lại từ hôm nay."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "CLB Thám Tử còn đề nghị hỏi lại chuyện lá thư hồi tháng 9. Em Hoài, chú Cường, mời hai người lên gần đây."
+        },
+        {
+          "type": "note",
+          "text": "Hoài đứng dậy, đi ngang qua chân ghế của Khánh thì khựng lại. Tay cô níu lấy tay áo xanh của Tùng."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "neutral",
+          "text": "Tớ không nói hộ được. Cậu thấy gì thì thưa với thầy."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "nervous",
+          "text": "Thưa thầy, cái huy hiệu sứt một răng trên balo kia. Đúng cái em thấy sáng hôm ấy. Mặt người thì em vẫn không dám chắc ạ."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Thầy ghi đúng như em nói: một cái balo, chưa phải một người."
+        },
+        {
+          "type": "task",
+          "text": "Trình một nguồn nối lá thư với một người, không dính tới cái huy hiệu"
+        },
+        {
+          "type": "doi-chat",
+          "id": "dc-khanh-thu",
+          "asker": {
+            "speaker": "khanh",
+            "text": "Tiền thì tôi nhận. Nhưng lá thư với cái tin thì đừng gán cho tôi. Huy hiệu phát ba chục người, tài khoản in với tài khoản kênh cả ban chủ nhiệm dùng. Phiếu nào của các bạn có tên tôi?"
+          },
+          "bangChung": [
+            {
+              "id": "clue-so-phong-may",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "player",
+                  "text": "Nhật ký in ghi lá thư in lúc 23 giờ 10 tối Chủ nhật 15/9, bằng tài khoản của Robotics. Sổ ký vào phòng tối đó có bảy dòng, chỉ hai người của Robotics. Chị Thảo ra lúc 21 giờ 30. Anh vào 22 giờ 40, ra 23 giờ 20."
+                },
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Em vào in sơ đồ cho đội ạ."
+                },
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Hợp lý."
+                }
+              ]
+            },
+            {
+              "id": "clue-loi-chu-cuong",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Sáng thứ Hai 16/9, người đưa phong bì ở cổng ký túc xá đeo balo có huy hiệu bánh răng sứt một răng."
+                },
+                {
+                  "speaker": "chu-cuong",
+                  "expression": "neutral",
+                  "text": "Đúng cái huy hiệu trên balo kia. Mặt thì chú không dám nói, hôm ấy trời mới sáng."
+                },
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Balo tôi hay để ở xưởng, ai cầm chả được. Một cái huy hiệu thôi à?"
+                },
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Đúng, mới một nguồn. Cần một nguồn không dính gì tới cái huy hiệu."
+                }
+              ]
+            },
+            {
+              "id": "clue-huy-hieu-sut",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "nam",
+                  "expression": "neutral",
+                  "text": "Cái sứt là lỗi khuôn, chỉ có một cái, anh xin giữ."
+                },
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Và balo anh để ở xưởng cả ngày, em cũng biết thế."
+                }
+              ]
+            },
+            {
+              "id": "ev-nhat-ky-in",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Lá thư in từ tài khoản dùng chung của Robotics, 23 giờ 10 tối Chủ nhật."
+                },
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Dùng chung. Chính các bạn nói tài khoản chưa phải là người."
+                },
+                {
+                  "speaker": "duy",
+                  "expression": "neutral",
+                  "text": "Tài khoản thì chung. Nhưng phòng máy tối Chủ nhật thì phải ký sổ mới vào được."
+                }
+              ]
+            },
+            {
+              "id": "clue-giao-chia",
+              "muc": "goi-y",
+              "feedback": [
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Ba người có chìa. Thảo còn để chìa ngoài ngăn bàn. Mà lá thư đâu có in ở xưởng."
+                }
+              ]
+            }
+          ],
+          "chuaDu": [
+            {
+              "speaker": "minh-anh",
+              "expression": "neutral",
+              "text": "Thưa thầy, phần lá thư bọn em không có căn cứ nào gắn với một người. Bọn em dừng ở phần tiền."
+            },
+            {
+              "speaker": "thay-quang",
+              "expression": "neutral",
+              "text": "Dừng đúng chỗ. Phần ấy thầy sẽ hỏi riêng."
+            }
+          ],
+          "khac": [
+            {
+              "speaker": "khanh",
+              "expression": "neutral",
+              "text": "Cái này thì liên quan gì tới lá thư?"
+            },
+            {
+              "speaker": "minh-anh",
+              "expression": "worried",
+              "text": "Em xem lại hồ sơ ạ."
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "dc-khanh-thu-du"
+          },
+          "to": "v5-so-do"
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Phần tiền em Khánh đã nhận. Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên. Phần lá thư thì chưa có căn cứ gắn với một người, thầy sẽ hỏi riêng. Cảm ơn chú Cường và em Hoài đã tới."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "downcast",
+          "text": "Em xin lỗi, em không giúp được gì ạ."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Em tới là giúp rồi. Chưa đủ thì ghi là chưa đủ."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Phòng của CLB Thám Tử giữ nguyên. Thầy nhận hồ sơ của các em vào đợt rà soát cuối kỳ."
+        },
+        {
+          "type": "goto",
+          "to": "v5-ket-luan"
+        }
+      ]
+    },
+    {
+      "id": "v5-so-do",
+      "title": "Khánh thắng một nhịp: \"em vào in sơ đồ\"",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "doi-chat",
+          "id": "dc-khanh-so-do",
+          "asker": {
+            "speaker": "thay-quang",
+            "text": "Em Khánh nói vào phòng máy để in sơ đồ cho đội. Nghe hợp lý. Các em còn gì về tối hôm ấy không? Không thì thầy dừng phần lá thư ở đây."
+          },
+          "bangChung": [
+            {
+              "id": "clue-thao-in-so-do",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "player",
+                  "text": "Sơ đồ của đội thì tối Chủ nhật nào chị Thảo cũng in. Tối 15/9 sổ ghi chị ấy ở phòng máy từ 20 giờ 10 tới 21 giờ 30, ra trước khi anh vào hơn một tiếng."
+                },
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Em Khánh, sơ đồ nào mà đội phải in hai lần trong một tối?"
+                },
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "…"
+                }
+              ]
+            },
+            {
+              "id": "clue-so-phong-may",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Trang này thầy xem rồi. Nó đặt em Khánh trong phòng, và em ấy đã nói vào làm gì. Còn gì khác không?"
+                }
+              ]
+            },
+            {
+              "id": "ev-nhat-ky-in",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Phiếu ấy chỉ có một dòng về lá thư. Sơ đồ tôi in thì các bạn đâu có tra."
+                },
+                {
+                  "speaker": "duy",
+                  "expression": "neutral",
+                  "text": "Đúng, phiếu này không nói về sơ đồ. Ai trong xưởng lo chuyện in sơ đồ nhỉ?"
+                }
+              ]
+            },
+            {
+              "id": "clue-loi-chu-cuong",
+              "muc": "goi-y",
+              "feedback": [
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Cái huy hiệu thầy ghi rồi. Thầy đang hỏi về tối Chủ nhật ở phòng máy."
+                }
+              ]
+            }
+          ],
+          "chuaDu": [
+            {
+              "speaker": "minh-anh",
+              "expression": "neutral",
+              "text": "Thưa thầy, bọn em không còn gì về tối hôm ấy ạ."
+            },
+            {
+              "speaker": "thay-quang",
+              "expression": "neutral",
+              "text": "Vậy phần lá thư dừng ở đây. Thầy sẽ hỏi riêng."
+            }
+          ],
+          "khac": [
+            {
+              "speaker": "thay-quang",
+              "expression": "neutral",
+              "text": "Cái này nói gì về tối 15/9?"
+            },
+            {
+              "speaker": "minh-anh",
+              "expression": "worried",
+              "text": "Em xem lại hồ sơ ạ."
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "dc-khanh-so-do-du"
+          },
+          "to": "v5-gioi-han"
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Phần tiền em Khánh đã nhận. Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên. Phần lá thư thầy dừng ở đây và sẽ hỏi riêng. Cảm ơn chú Cường và em Hoài đã tới."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Chưa đủ thì ghi là chưa đủ ạ."
+        },
+        {
+          "type": "goto",
+          "to": "v5-ket-luan"
+        }
+      ]
+    },
+    {
+      "id": "v5-gioi-han",
+      "title": "Người chơi tự nói giới hạn của chứng cứ",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "question",
+          "id": "q-v5-gioi-han",
+          "asker": {
+            "speaker": "thay-quang",
+            "text": "Em là người trình trang sổ ấy. Theo em, tới đây chứng cứ đủ nói đến đâu?"
+          },
+          "choices": [
+            {
+              "id": "chac-chan",
+              "text": "Anh Khánh chắc chắn là người in lá thư.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Sổ ghi ai ở trong phòng. Cột nào ghi ai bấm in?"
+                }
+              ]
+            },
+            {
+              "id": "co-mat",
+              "text": "Anh Khánh có mặt lúc lá thư được in, và lý do anh nêu không đứng được. Còn ai bấm in thì em chưa chứng minh được.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Tôi vừa nhận lấy tiền của CLB các bạn đấy. Thế mà vẫn \"chưa chứng minh được\" à?"
+                },
+                {
+                  "speaker": "player",
+                  "text": "Vâng. Phần nào chưa rõ thì em vẫn phải ghi là chưa rõ."
+                }
+              ]
+            },
+            {
+              "id": "vo-ich",
+              "text": "Trang sổ ấy không giúp được gì.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "duy",
+                  "expression": "neutral",
+                  "text": "Nó đặt một người vào phòng đúng giờ, và bác được một lý do. Thế là có giúp."
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "goto",
+          "to": "v5-vi-sao"
+        }
+      ]
+    },
+    {
+      "id": "v5-vi-sao",
+      "title": "Khánh nhận lá thư; nhịp bốn: lá thư liên quan gì tới ba khoản chi",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Thầy ghi đúng như em nói. Em Khánh, thầy chỉ hỏi: em có in lá thư ấy không? Em có thể trả lời, hoặc để thầy xác minh tiếp."
+        },
+        {
+          "type": "note",
+          "text": "Khánh im lặng một lúc lâu. Anh nhìn sang Hoài, cô vẫn đang níu tay áo xanh của Tùng."
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "…Em không muốn em Hoài phải ngồi đây thêm một buổi để nhớ mặt một người em ấy không nhớ. Lá thư là em in ạ. Sáng hôm sau em nhờ em ấy nộp hộ."
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Anh xin lỗi em, Hoài. Anh nhờ một bạn năm nhất vì nghĩ năm nhất thì không ai hỏi lại."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "nervous",
+          "text": "Vâng ạ."
+        },
+        {
+          "type": "task",
+          "text": "Trình thứ cho thấy lá thư liên quan gì tới ba khoản chi"
+        },
+        {
+          "type": "doi-chat",
+          "id": "dc-khanh-vi-sao",
+          "asker": {
+            "speaker": "thay-quang",
+            "text": "Thầy chưa hiểu một điều. Một lá thư đòi thu phòng thì liên quan gì tới ba khoản chi? Các em có gì cho thấy mối liên hệ ấy không?"
+          },
+          "bangChung": [
+            {
+              "id": "ev-chi-tham-tu",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "player",
+                  "text": "Tiền rời quỹ ngày 10, 11 và 12 tháng 9. Lá thư đòi thu phòng tới ngày 16. Đơn linh kiện đầu tiên mãi ngày 27 mới có, sau buổi họp bọn em giữ được phòng."
+                },
+                {
+                  "speaker": "player",
+                  "text": "Em chưa biết anh ấy nghĩ gì. Nhưng thư xuất hiện sau khi tiền đã đi, còn đơn xuất hiện sau khi thư không thành."
+                },
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Tiền trước, thư sau, đơn sau cùng. Thầy thấy rồi."
+                }
+              ]
+            },
+            {
+              "id": "clue-sao-ke-cuoi-ky",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "player",
+                  "text": "Sao kê quỹ chỉ tự về các CLB vào cuối kỳ, cùng đợt rà soát phòng; ngưỡng một triệu cũng tới lúc ấy mới được soát. Muốn xem sớm hơn thì giấy phải qua chủ tịch Hội."
+                },
+                {
+                  "speaker": "player",
+                  "text": "Tức là tới cuối kỳ mới có người đọc ba khoản ấy. Mà lá thư đòi thu phòng lại tới ngay tuần đầu."
+                },
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Thư đi trước ngày có người đọc sổ. Thầy thấy rồi."
+                }
+              ]
+            },
+            {
+              "id": "ev-chi-vuot-muc",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "duy",
+                  "expression": "neutral",
+                  "text": "Phiếu này nói bao nhiêu và ai duyệt. Còn bao giờ, và bao giờ mới có người đọc, thì phiếu khác nói."
+                }
+              ]
+            },
+            {
+              "id": "clue-loi-nhan-linh-1",
+              "muc": "goi-y",
+              "feedback": [
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Mẩu giấy này của ai?"
+                },
+                {
+                  "speaker": "duy",
+                  "expression": "neutral",
+                  "text": "Chuyện khác ạ. Em xin lỗi thầy."
+                }
+              ]
+            }
+          ],
+          "chuaDu": [
+            {
+              "speaker": "minh-anh",
+              "expression": "neutral",
+              "text": "Thưa thầy, lá thư để làm gì thì bọn em không có căn cứ ạ."
+            },
+            {
+              "speaker": "thay-quang",
+              "expression": "neutral",
+              "text": "Vậy phần ấy thầy hỏi riêng."
+            }
+          ],
+          "khac": [
+            {
+              "speaker": "thay-quang",
+              "expression": "neutral",
+              "text": "Cái này nói gì về lá thư và ba khoản chi?"
+            },
+            {
+              "speaker": "minh-anh",
+              "expression": "worried",
+              "text": "Em xem lại hồ sơ ạ."
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "dc-khanh-vi-sao-du"
+          },
+          "to": "v5-vi-sao-hoi"
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Phần tiền và phần lá thư em Khánh đã nhận. Vì sao thì thầy hỏi riêng. Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Phòng của CLB Thám Tử giữ nguyên. Em Hoài, em Nam: tên hai em không dính gì tới việc này nữa."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "relieved",
+          "text": "Em cảm ơn thầy ạ."
+        },
+        {
+          "type": "goto",
+          "to": "v5-ket-luan"
+        }
+      ]
+    },
+    {
+      "id": "v5-vi-sao-hoi",
+      "title": "Người chơi tự nối: lá thư để làm gì",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "question",
+          "id": "q-v5-vi-sao",
+          "asker": {
+            "speaker": "thay-quang",
+            "text": "Vậy theo các em, lá thư đòi thu phòng là để làm gì?"
+          },
+          "choices": [
+            {
+              "id": "cai-so",
+              "text": "Để CLB mất phòng, hết kỳ thì phải giải thể, và không còn chủ quỹ nào ngồi đọc sao kê của quỹ ấy.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "co-lan",
+                  "expression": "neutral",
+                  "text": "Quy chế đúng là thế. CLB mất phòng thì vào diện chờ giải thể; từ lúc ấy sao kê quỹ và yêu cầu giải trình đều gửi về Hội sinh viên chứ không về chủ quỹ nữa; bản giải trình lẽ ra chủ quỹ phải ký xác nhận thì chủ tịch Hội ký thay. Hết kỳ thì giải thể, sổ vẫn lưu, nhưng người ký nhận bàn giao cũng là chủ tịch Hội."
+                },
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Đấy là các em suy ra. Đúng hay không thì em Khánh nói."
+                },
+                {
+                  "speaker": "nam",
+                  "expression": "neutral",
+                  "text": "Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ."
+                }
+              ]
+            },
+            {
+              "id": "lay-phong",
+              "text": "Để lấy căn phòng ấy cho CLB Robotics.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Xưởng bọn tôi rộng gấp ba cái phòng ấy."
+                }
+              ]
+            },
+            {
+              "id": "tra-dua",
+              "text": "Để trả đũa CLB Thám Tử.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Tháng 9 mình đã tra gì ai đâu mà trả đũa."
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "goto",
+          "to": "v5-ket-du"
+        }
+      ]
+    },
+    {
+      "id": "v5-ket-du",
+      "title": "Không phải cái phòng, là cái sổ",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Đúng. Anh cần thêm thời gian để bù. Giấy về chỗ anh thì không ai hỏi sớm."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Sao lại là tên em?"
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Người duyệt không được tự đứng tên đề xuất. Em là đứa không ai nghi."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Còn cái tin trong kênh?"
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Kênh có người trực. Ai hỏi thì hỏi em."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Hôm ấy anh còn bảo mọi người hỏi em nhẹ thôi."
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Câu ấy anh nói thật. Sang năm anh ra trường. Anh tính bù xong trước ngày có người đọc sổ, rồi không ai phải biết, kể cả em."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Còn ba cái đơn, và danh sách chuyển xuống Ban kiểm tra?"
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Tạm ứng quá ba mươi ngày không chứng từ là bị hỏi, nên em viết đơn. Danh sách thì em tưởng tài khoản khóa là Nam không kịp nộp kiểm kê. Lần nào em cũng chỉ tìm cách lùi cái lúc bị hỏi."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "stunned",
+          "text": "Em lại cầm một danh sách đi nghi người khác. Lần thứ hai."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "stern",
+          "text": "Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên, không bàn ở đây. Việc riêng của em Khánh, thầy không hỏi trước mọi người."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Phòng của CLB Thám Tử giữ nguyên. Hoàn quỹ đi theo thủ tục, mất vài tháng; từ giờ tới đó quỹ CLB tạm đóng. Biên bản cũng ghi một dòng: sao kê kỳ trước chủ quỹ chưa đối chiếu."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Em nhận ạ."
+        },
+        {
+          "type": "goto",
+          "to": "v5-ket-luan"
+        }
+      ]
+    },
+    {
+      "id": "v5-ket-luan",
+      "title": "Biên bản buổi họp: nói chắc được tới đâu",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Phần của CLB Thám Tử, biên bản ghi thế này: ba khoản tạm ứng gắn với ba đơn kho không có hàng, ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Mỗi bước có phiếu kèm, ai cũng tự kiểm được."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Những gì người trong cuộc tự nói ra thì ghi là lời người ấy, không ghi là lời của bảng."
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "dc-khanh-don-du"
+          },
+          "to": "v5-sau-hop"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Em xin một bản sao biên bản để kẹp vào hồ sơ cuối kỳ ạ."
+        },
+        {
+          "type": "goto",
+          "to": "v5-chot"
+        }
+      ]
+    },
+    {
+      "id": "v5-sau-hop",
+      "title": "Hành lang sau buổi họp: chiếc chìa",
+      "canh": "phong-hop",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hành lang ngoài phòng họp. Khánh dừng trước Nam, lấy trong túi ra một chiếc chìa."
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Chìa phòng văn phòng. Robotics anh xin thôi. Anh sẽ đề nghị CLB bầu em."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Em không nhận vì anh đưa. CLB bầu thì em nhận. Và sổ của xưởng từ giờ dán ngoài cửa, ai cũng xem được, kể cả anh."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Có những việc anh giúp đội thật. Cái hạn lệ phí anh xin lùi cũng là thật. Nhưng chuyện anh lấy tên em thì em vẫn phải ghi đúng vào biên bản."
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Ừ. Em giữ sổ tốt hơn anh."
+        },
+        {
+          "type": "note",
+          "text": "Khánh đặt chiếc chìa lên bậu cửa sổ. Rồi anh gỡ cái huy hiệu sứt khỏi quai balo, đặt xuống cạnh chiếc chìa, và đi."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Tớ chắc là anh ấy từ hôm thấy cái huy hiệu. Thế mà trúng rồi tớ chả thấy vui gì cả."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "neutral",
+          "text": "Nam này. Hôm trước tớ xin lỗi rồi, nhưng tớ muốn nói lại: tớ đã coi tên trên tài khoản là tên cậu."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Tớ nghe. Tớ cũng mất mấy hôm mới dám bước vào phòng các cậu. Lần sau đọc phiếu trước."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Lệ phí giải hạn cuối tháng này. Kinh phí năm nay toàn anh ấy chạy. Giờ tớ phải tự đi xin lại từ đầu."
+        },
+        {
+          "type": "line",
+          "speaker": "thao",
+          "expression": "neutral",
+          "text": "Chìa của chị treo lên móc cạnh cửa rồi. Ai lấy cũng phải ký tên. Tiền giải thì chị với Bách đi xin cùng em."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Chị cũng có phần. Làm chủ quỹ mà sao kê kỳ trước chị còn chưa mở. Từ tháng này chị xin hằng tháng, dán cạnh bảng nguyên tắc."
+        },
+        {
+          "type": "line",
+          "speaker": "chu-cuong",
+          "expression": "smile",
+          "text": "Chú về trực đây. Lần sau chú cố nhìn mặt cho kỹ."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "neutral",
+          "text": "Tùng ơi, cái áo xanh ấy… CLB các cậu còn nhận người không?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Đơn ở chỗ Duy. Chiều thứ Tư, phòng CLB. Lần này tớ dẫn đúng tòa."
+        },
+        {
+          "type": "goto",
+          "to": "v5-chot"
+        }
+      ]
+    },
+    {
+      "id": "v5-chot",
+      "title": "Phòng CLB: đóng hồ sơ mùa",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chiều thứ Tư, phòng CLB. Hoài tới sớm, mang theo một xấp giấy nháp còn trắng một mặt."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Quỹ đóng thì vẫn họp. Giấy còn nửa tập, bút còn ba cái."
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Tớ qua được một lúc, xong phải về lo tiền giải với anh Bách, chị Thảo. Cảm biến của xưởng ghi mỗi giây một dòng, kéo giấy nhớ thì không kịp. Tớ muốn tự viết chương trình đọc nó."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Từ một chữ H tới một sổ quỹ. Mỗi bước là một phiếu."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Hồ sơ cuối kỳ xong. Em là người kéo phiếu đầu tiên của vụ này, em đóng dấu đi."
+        },
+        {
+          "type": "note",
+          "text": "Bạn đóng dấu lưu trữ lên bìa hồ sơ. Duy ghim cái huy hiệu sứt lên bảng điều tra, cạnh tờ giấy nhớ ghi lời chú Cường."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Nam bảo để lại đây. Và chị Linh để lại nhiều mẩu giấy hơn mình tưởng."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Dữ liệu chỉ ra ai cần hỏi. Người trả lời mới là người nói \"vì sao\". Mùa 1 khép lại ở chỗ chứng cứ dừng."
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "va",
+            "cac": [
+              {
+                "kind": "co",
+                "id": "clue-loi-nhan-linh-1"
+              },
+              {
+                "kind": "co",
+                "id": "clue-loi-nhan-linh-2"
+              },
+              {
+                "kind": "co",
+                "id": "clue-loi-nhan-linh-3"
+              },
+              {
+                "kind": "co",
+                "id": "clue-loi-nhan-linh-4"
+              }
+            ]
+          },
+          "to": "v5-ngan-tu"
+        },
+        {
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "id": "v5-ngan-tu",
+      "title": "Cảnh sau kết (chỉ khi đủ bốn mẩu giấy): ngăn tủ khóa trong phòng CLB",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Sau kết — tối hôm ấy, phòng CLB"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Mọi người sắp về thì Duy bày bốn mẩu giấy của chị Linh lên bàn."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Bốn mẩu giấy. Mà ngăn dưới tủ hồ sơ thì khóa, tớ chưa bao giờ có chìa."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Thì cạy ra!"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Khoan. Đọc lại bốn mẩu đã."
+        },
+        {
+          "type": "question",
+          "id": "q-v5-chia",
+          "asker": {
+            "speaker": "duy",
+            "text": "Bốn mẩu giấy, một ngăn tủ khóa. Chị Linh để chìa ở đâu trong phòng này?"
+          },
+          "choices": [
+            {
+              "id": "bang",
+              "text": "Sau tấm bảng nguyên tắc.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "player",
+                  "text": "Mẩu cuối bảo \"mặt trước thì các em đọc mỗi buổi họp rồi\". Thứ cả nhóm đọc mỗi buổi họp là bảng nguyên tắc. Mình chưa bao giờ nhìn mặt sau."
+                }
+              ]
+            },
+            {
+              "id": "gay-so",
+              "text": "Trong gáy cuốn sổ của chị Linh.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "duy",
+                  "expression": "neutral",
+                  "text": "Cuốn ấy tớ lật cả năm rồi. Có gì thì đã rơi ra hết."
+                }
+              ]
+            },
+            {
+              "id": "cay-tu",
+              "text": "Không có chìa đâu, cạy tủ thôi.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Chị ấy để giấy cho mình tìm, không phải để mình phá."
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-loi-nhan-linh-5"
+            },
+            {
+              "kind": "hien-tai-lieu",
+              "id": "doc-ho-so-vu-dau"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Bạn nhấc tấm bảng nguyên tắc. Một chiếc chìa nhỏ dán băng dính ở mặt sau, khẽ chạm vào tường."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Trong ngăn tủ: một cuốn sổ bìa cứng, chữ viết tay đã ngả màu. Trang đầu ghi \"Hồ sơ vụ thứ nhất — CLB Thám Tử Dữ Liệu\", ký tên Trịnh Quang."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Thầy Quang? Thầy Quang lập CLB này á?"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Trang kết luận có một cái tên, bị gạch bằng mực tím còn mới. Cả cuốn không ghim một phiếu nào."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Mực tím là bút chị Linh. Bên lề có hai chữ mực xanh đã ngả màu, chữ thầy Quang: \"Xem lại.\""
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Thầy hỏi \"căn cứ vào đâu\" từ bao giờ nhỉ?"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Trang cuối có thêm một dòng, chữ chị Linh: \"Manh mối cũ, câu hỏi mới.\""
+        },
+        {
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "id": "v2-mo",
+      "title": "Mở Vụ 2: hồ sơ cuối kỳ",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "vu1-ket-that"
+          },
+          "to": "v2-mo-that"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Việc ở CLB — Thứ Sáu, 25 tháng 10"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hơn một tháng sau buổi họp rà soát. Phòng CLB vẫn sáng đèn mỗi chiều thứ Tư."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Thầy Quang dặn rồi: muốn giữ phòng thì tháng nào cũng nộp báo cáo hoạt động. Tháng 10 là kỳ đầu tiên."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Mà chị không muốn chỉ nộp cho xong. Cuối kỳ trường rà soát lại, chị muốn mình có một bộ hồ sơ ai mở ra cũng tự kiểm được."
+        },
+        {
+          "type": "goto",
+          "to": "v2-giao-viec"
+        }
+      ]
+    },
+    {
+      "id": "v2-mo-that",
+      "title": "Mở Vụ 2 sau kết thật: không ai bắt nộp, vẫn làm",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Việc ở CLB — Thứ Sáu, 25 tháng 10"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hơn một tháng sau buổi họp rà soát. Phòng CLB vẫn sáng đèn mỗi chiều thứ Tư."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Chuyện lá thư thì thầy Quang vẫn đang cho hỏi lại. Chưa có gì mới."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "happy",
+          "text": "Thầy không bắt CLB nộp báo cáo tháng. Nhưng cuối kỳ trường vẫn rà soát phòng, và chị muốn lúc ấy mình có một bộ hồ sơ ai mở ra cũng tự kiểm được."
+        },
+        {
+          "type": "goto",
+          "to": "v2-giao-viec"
+        }
+      ]
+    },
+    {
+      "id": "v2-giao-viec",
+      "title": "Minh Anh giao việc, Duy đưa bản xuất sổ phòng",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Mục đầu tiên là sử dụng phòng. Chị cần ghi tháng 10 có bao nhiêu mục trong sổ, và mục nào có chữ ký xác nhận."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Không cần con số đẹp. Cần con số truy ngược được."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Sổ sử dụng phòng tớ giữ. Bản giấy đây, còn đây là bản xuất từ máy quản lý phòng của tòa nhà."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Mã phòng trong bản xuất là do từng người trực gõ tay. Tớ chưa lọc, chưa bỏ dòng nào."
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-v2-raw-logs"
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-ma-phong-clb"
+            },
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-da-xac-nhan"
+            },
+            {
+              "kind": "dat-co",
+              "co": "v2-log-mo"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Bảy dòng. Hai dòng là của kho chung. Còn lại là phòng mình, nhưng mỗi dòng viết mã phòng một kiểu."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Ừ. Có dòng viết hoa, có dòng viết thường, có dòng dính thêm dấu cách ở đuôi. Trong sổ giấy thì vẫn là một phòng thôi."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Ơ, tháng 10 mình sinh hoạt đều mà. Sao đếm theo mã phòng lại thấy thiếu buổi?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Khoan đã. Viết khác kiểu chưa có nghĩa là có người sửa."
+        },
+        {
+          "type": "branch",
+          "id": "r-v2-huong",
+          "asker": {
+            "speaker": "tung",
+            "text": "Tớ cá là có người sửa bản xuất để buổi sinh hoạt của mình biến mất. Đi hỏi xem ai đụng vào máy chứ?"
+          },
+          "choices": [
+            {
+              "id": "kiem-ma",
+              "text": "Xem cột mã phòng trước đã.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "v2-tra"
+                }
+              ]
+            },
+            {
+              "id": "tin-tung",
+              "text": "Ừ, nghe cũng có lý. Ai là người xuất bản này?",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "v2-tin-tung"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "v2-tin-tung",
+      "title": "Theo phỏng đoán của Tùng: Duy tự xuất, chưa đụng dòng nào",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tớ xuất. Sáng nay, từ máy quản lý phòng, trước mặt bác trực tòa nhà. Tớ chưa đụng vào dòng nào."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Ờ… thế thì không ai sửa cả."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Đoán người thì phải hỏi từng người. Xem cột mã phòng thì chỉ cần mở máy."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Rồi, tớ cá trượt. Mở máy đi."
+        },
+        {
+          "type": "goto",
+          "to": "v2-tra"
+        }
+      ]
+    },
+    {
+      "id": "v2-tra",
+      "title": "Laptop CLB: lọc các buổi đã ký của phòng CLB",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "task",
+          "text": "Tháng 10, phòng CLB có những buổi nào đã ký xác nhận?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Cùng một phòng mà mỗi dòng viết mã một kiểu. Máy so từng chữ một."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Với mình thì \"CLB-THAM-TU\" hay \"clb-tham-tu\" là một phòng. Với máy thì đấy là hai chuỗi khác nhau. Thêm một dấu cách ở đuôi cũng thành chuỗi khác."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Lọc xong thì xếp theo ngày giúp tớ. Sổ giấy ghi lần lượt từ đầu tháng, tớ dò từng dòng cho nhanh."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "v2-loc-buoi"
+        },
+        {
+          "type": "notebook-note",
+          "trang": "chuan-hoa"
+        },
+        {
+          "type": "notebook-note",
+          "trang": "sap-xep"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Bốn buổi: mùng 2, mùng 9, 16 và 23 tháng 10. Buổi 30 mới là dự kiến nên không vào."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Thế là không buổi nào biến mất cả. Chỉ là mỗi người gõ một kiểu."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Gọt cho các dòng về cùng một kiểu rồi mới so. Tớ ghi vào sổ rồi đấy."
+        },
+        {
+          "type": "goto",
+          "to": "v2-xac-nhan"
+        }
+      ]
+    },
+    {
+      "id": "v2-xac-nhan",
+      "title": "Duy dò sổ giấy; Quân hỏi hồ sơ ghi câu nào",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "task",
+          "text": "Bản xuất có khớp sổ giấy không?"
+        },
+        {
+          "type": "note",
+          "text": "Duy mở sổ giấy, dò từng dòng với phiếu kết quả."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Mùng 2, họp thành viên: có chữ ký. Mùng 9, ôn SQL: có. 16, kiểm kê hồ sơ: có. 23, hướng dẫn tân thành viên: có."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "smile",
+          "text": "Bốn mã buổi này đủ chữ ký trong sổ. Dòng 30/10 trong sổ còn để trống ô ký, đúng là lịch dự kiến."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-v2-so-giay"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Bản xuất một nguồn, sổ giấy một nguồn. Hai nguồn riêng cùng ra bốn buổi."
+        },
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "quan"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Hội sinh viên cử tôi đi xem các CLB chuẩn bị hồ sơ cuối kỳ. Các bạn cứ làm tiếp, tôi chỉ hỏi một câu."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "chi-man",
+          "text": "Bản ghi khớp bốn mục trong sổ có chữ ký, tôi thấy rồi. Nhưng nó chưa cho biết ai tới dự, cũng chưa cho biết buổi nào có ích."
+        },
+        {
+          "type": "reminder",
+          "speaker": "minh-anh",
+          "expression": "khoanh-tay",
+          "text": "Bốn dòng, năm cột: mã buổi, mã phòng, ngày, hoạt động, trạng thái."
+        },
+        {
+          "type": "question",
+          "id": "q-v2-ket-luan",
+          "asker": {
+            "speaker": "quan",
+            "text": "Vậy mục hoạt động trong hồ sơ, các bạn định ghi câu nào?"
+          },
+          "choices": [
+            {
+              "id": "bon-muc",
+              "text": "Tháng 10 có bốn mục sử dụng phòng CLB trong sổ, cả bốn có chữ ký xác nhận.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "quan",
+                  "expression": "neutral",
+                  "text": "Câu ấy thì bản ghi và sổ giấy cùng đỡ được. Tôi không có ý kiến."
+                }
+              ]
+            },
+            {
+              "id": "moi-nguoi",
+              "text": "Cả bốn buổi, mọi thành viên CLB đều có mặt.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Khoan. Bảng có những cột nào? Có cột nào ghi ai tới dự không?"
+                }
+              ]
+            },
+            {
+              "id": "hieu-qua",
+              "text": "Bốn buổi cho thấy CLB chắc chắn hoạt động hiệu quả.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "day-kinh",
+                  "text": "Bốn dòng nói được là có bốn buổi đã ký. Hiệu quả hay không thì cột nào đo?"
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "dat-co",
+              "co": "v2-ket-luan-dung"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Vậy mục này chị ghi: tháng 10 có bốn mục sử dụng phòng trong sổ, cả bốn có chữ ký xác nhận. Kèm phiếu tra và số trang sổ giấy."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Ai tham dự, buổi nào có ích thì bản ghi này không nói. Hồ sơ cũng không nói thay nó."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Ghi thế thì bên tôi kiểm lại được. Hẹn các bạn ở mục tài sản."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Lần này tớ cá trượt hẳn hai lần."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Đừng cá. Dò."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Xong mục phòng. Tuần sau tớ kiểm kê thiết bị cho buổi hướng dẫn cuối kỳ."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Dữ liệu nhập tay ít khi sạch. Gọt cho các dòng về cùng một kiểu rồi mới so. Kết quả nói được đến đâu thì ghi đến đó."
+        },
+        {
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "id": "p-mic-mo",
+      "title": "Duy kiểm kê thiết bị, thiếu chiếc micro không dây",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Việc ở CLB — Thứ Sáu, 1 tháng 11"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chiều thứ Sáu. Duy bày thiết bị ra bàn để kiểm kê cho buổi hướng dẫn cuối kỳ, đếm đi đếm lại."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Micro không dây không ở ngăn dưới. Sổ tài sản vẫn ghi nó thuộc CLB mình, để ở tủ CLB."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Tớ cá là ai đó cầm đi rồi quên trả."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Mình chưa có căn cứ để gọi là quên hay lấy. Tòa nhà có phiếu luân chuyển thiết bị, tìm trên phiếu trước."
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-mic-so-tai-san"
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-mic-ten"
+            },
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-mic-da-nhan"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Phiếu luân chuyển đây. Nhưng phiếu chỉ ghi mã tài sản với nơi chuyển tới, không ghi tên. Tên thì nằm ở sổ tài sản."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Vậy phải ghép phiếu với sổ. Hai bảng có hai cột trùng tên, xem cột nào mới là của chính từng thiết bị."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Mà phiếu có cái đã nhận, có cái mới đề xuất. Tớ cần phiếu đã có người nhận."
+        },
+        {
+          "type": "task",
+          "text": "Phiếu nào đã có người nhận ghi chuyển chiếc micro không dây, và chuyển tới đâu?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Phiếu chỉ ghi mã, tên nằm ở sổ tài sản. Cần đúng chiếc micro không dây và phiếu đã có người nhận."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-mic-phieu"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Một phiếu. PX-17, ngày 24 tháng 10, chuyển micro không dây sang tủ thiết bị dùng chung. Tổ thiết bị đã nhận."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tủ dùng chung ở cuối hành lang. Đi xem."
+        },
+        {
+          "type": "note",
+          "text": "Duy và Minh Anh mở tủ thiết bị dùng chung. Ngăn giữa có một chiếc micro không dây, đế sạc còn cắm điện, trên thân dán nhãn MIC-02."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-mic-ma-dan"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Mã trên micro là MIC-02, đúng mã trên phiếu. Tài sản không mất, chỗ để đã đổi. Tớ sửa lại sổ."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Tớ đoán sai rồi. May mà có mã, khỏi phải đoán người."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Phiếu còn lại của nó là chị đề xuất mượn sang phòng âm thanh cho buổi hướng dẫn. Chưa ai nhận nên micro vẫn nằm đây."
+        },
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "quan"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Tôi qua xem mục tài sản như đã hẹn. Tìm thấy rồi thì tốt. Tôi hỏi một câu thôi."
+        },
+        {
+          "type": "question",
+          "id": "q-mic-ket-luan",
+          "asker": {
+            "speaker": "quan",
+            "text": "Sổ có hai chiếc đều tên là micro. Sao các bạn biết phiếu PX-17 nói về đúng chiếc này?"
+          },
+          "choices": [
+            {
+              "id": "ma",
+              "text": "Phiếu ghi mã tài sản, bọn mình nối theo mã ấy; mã dán trên micro trong tủ cũng là MIC-02.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "quan",
+                  "expression": "neutral",
+                  "text": "Mã trên phiếu, mã trong sổ, mã trên vật. Ba chỗ khớp nhau thì tôi không hỏi nữa."
+                }
+              ]
+            },
+            {
+              "id": "ten",
+              "text": "Vì tên giống nhau: phiếu nào có micro thì là của chiếc này.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Phiếu không ghi tên, chỉ ghi mã. Mà MIC-01 cũng là micro, cũng có phiếu sang tủ chung."
+                }
+              ]
+            },
+            {
+              "id": "duy-biet",
+              "text": "Vì Duy giữ thiết bị, Duy nói thế thì đúng.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "duy",
+                  "expression": "neutral",
+                  "text": "Tớ là người vừa không tìm thấy nó đấy. Đừng lấy tớ làm căn cứ."
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Mục tài sản chị ghi: micro không dây đang ở tủ thiết bị dùng chung theo phiếu PX-17, đã đối chiếu mã trên vật. Kèm phiếu tra."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Ghi thế thì ai mở tủ ra cũng tự kiểm được."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Từ giờ tớ hỏi mã trước, cá sau."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Hỏi mã xong thì khỏi cá."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Tên có thể trùng, mã thì không. Nối hai bảng theo mã, rồi đi nhìn tận mắt cái mã trên vật."
+        },
+        {
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "id": "p-hoan-mo",
+      "title": "Tổng hoàn tiền trong bảng cao hơn biên nhận",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Việc ở CLB — Thứ Sáu, 8 tháng 11"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Phòng CLB, sau buổi hướng dẫn SQL cho tân thành viên. Minh Anh ngồi với bản xuất thu chi và một xấp biên nhận."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "khoanh-tay",
+          "text": "Bảng cộng tiền hoàn ra một trăm năm mươi lăm nghìn. Biên nhận chị cầm cộng lại chỉ có chín mươi lăm. Lệch sáu mươi."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Mình cần biết phiếu nào phải mở ra xem lại. Chưa phải tìm người chịu lỗi."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Tôi ngồi nghe được chứ? Mục thu chi là mục cuối tôi phải xem."
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-hoan-ban-xuat"
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-hoan-loai"
+            },
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-hoan-mot-dong"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Lệch thì chắc có khoản hoàn hai lần?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chưa biết. Bảng lẫn cả dòng chi lẫn dòng hoàn. Lấy riêng dòng hoàn ra đã, ghim lại."
+        },
+        {
+          "type": "task",
+          "text": "Bản xuất có những dòng hoàn tiền nào?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Loại giao dịch ghi ở cột loai. Chỉ lấy dòng hoàn."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-hoan-loc"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Bốn dòng hoàn tiền."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Theo cách ghi sổ thì mỗi lần hoàn một dòng. Phiếu có hơn một dòng hoàn chưa chắc sai, có khi hoàn hai lần thật. Nhưng đấy là chỗ cần mở chứng từ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Bốn dòng, ba phiếu. Hôm trước mình giữ nhóm theo tổng tiền. Lần này cái cần giữ là nhóm có nhiều dòng."
+        },
+        {
+          "type": "task",
+          "text": "Phiếu nào có hơn một dòng hoàn tiền, sổ ghi hoàn tổng cộng bao nhiêu?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Phiếu bốn dòng hoàn làm nguồn. Mỗi phiếu mấy dòng, cộng bao nhiêu tiền; chỉ giữ phiếu có hơn một dòng."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-hoan-nhom"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Một phiếu. PH-04: hai dòng, cột tiền cộng ra âm một trăm hai mươi nghìn. Khoản hoàn ghi số âm, tức sổ đang ghi hoàn một trăm hai mươi nghìn cho phiếu này."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Hai dòng cùng một phiếu là tín hiệu cần kiểm, chưa phải kết luận. Mở chứng từ gốc."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Biên nhận ngân hàng của PH-04 đây."
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-hoan-bien-nhan"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Biên nhận ghi một giao dịch hoàn sáu mươi nghìn, mã tham chiếu NH-771. Trong bản xuất, cả hai dòng của PH-04 đều mang mã NH-771."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Hoàn một lần sáu mươi nghìn mà sổ ghi hai dòng, thành một trăm hai mươi. Dư đúng sáu mươi nghìn đang lệch."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Đếm dòng là đếm bản ghi, không phải đếm lần chuyển tiền."
+        },
+        {
+          "type": "question",
+          "id": "q-hoan-ket-luan",
+          "asker": {
+            "speaker": "quan",
+            "text": "Vậy mục thu chi, các bạn ghi câu nào về phiếu PH-04?"
+          },
+          "choices": [
+            {
+              "id": "sua-bao-cao",
+              "text": "Bản xuất có hai dòng hoàn cùng mã tham chiếu; biên nhận ngân hàng xác nhận một lần hoàn 60.000 đồng. Sửa báo cáo, giữ bản cũ.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "quan",
+                  "expression": "neutral",
+                  "text": "Có phiếu, có biên nhận, có bản cũ. Câu ấy tôi kiểm lại được."
+                }
+              ]
+            },
+            {
+              "id": "bien-thu",
+              "text": "Có người cố tình nhập hai lần để rút sáu mươi nghìn.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "quan",
+                  "expression": "neutral",
+                  "text": "Bảng có cột nào ghi ai nhập không? Tôi đánh dấu phiếu này để kiểm, không phải để kết tội."
+                }
+              ]
+            },
+            {
+              "id": "hai-giao-dich",
+              "text": "Hai dòng thì chắc chắn là hoàn hai lần.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Hai dòng cùng một mã tham chiếu ngân hàng. Biên nhận ghi mấy lần hoàn?"
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Chị sửa báo cáo: PH-04 hoàn một lần, sáu mươi nghìn. Bản cũ chị giữ nguyên, ghi thêm ngày sửa và lý do."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Chưa có căn cứ nói ai cố ý. Hồ sơ của các bạn tôi xem xong rồi. Mục nào cũng tự kiểm được."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Lần này tớ đoán đúng một nửa."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Nửa còn lại là biên nhận nói."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Gom nhóm chỉ ra chỗ cần mở chứng từ. Chứng từ mới nói chuyện gì đã xảy ra."
+        },
+        {
+          "type": "end"
         }
       ]
     }
@@ -3115,13 +8627,13 @@ export const KICH_BAN_MVP = {
       "vatChung": {
         "id": "ev-nhat-ky-in",
         "title": "Nhật ký in 23:10 Chủ nhật",
-        "description": "1 trang, tệp kien-nghi-phong-clb.docx, tài khoản SV210745 (khóa 2021, năm 4). Người in thư không phải người nộp.",
+        "description": "1 trang, tệp kien-nghi-phong-clb.docx, tài khoản clb_robotics: tài khoản dùng chung của CLB Robotics, không phải mã của một sinh viên. Tài khoản in thư không phải của người nộp.",
         "giaTri": [
-          "SV210745"
+          "clb_robotics"
         ]
       },
       "ghiChu": [
-        "Lần chạy \"sai có ích\": mã Hoài/Hiếu + tên tệp → 0 dòng. Bỏ điều kiện mã → 1 dòng: SV210745, 23:10 Chủ nhật."
+        "Lần chạy \"sai có ích\": mã Hoài/Hiếu + tên tệp → 0 dòng. Bỏ điều kiện mã → 1 dòng: clb_robotics, 23:10 Chủ nhật."
       ]
     },
     "c-lop": {
@@ -3296,6 +8808,1431 @@ export const KICH_BAN_MVP = {
       },
       "ghiChu": []
     },
+    "c-don-da-duyet": {
+      "id": "c-don-da-duyet",
+      "tieuDe": "Sổ đặt linh kiện của xưởng",
+      "deBai": "Sổ đặt linh kiện của xưởng Robotics, tháng 9 và 10. Những đơn nào đã duyệt?",
+      "manhMoiLienQuan": [
+        "clue-da-duyet"
+      ],
+      "mucTieuHoc": "Lọc theo trạng thái để ghim thành phiếu, chuẩn bị gom và đếm.",
+      "soDongKyVong": 8,
+      "sqlChuan": "SELECT ma_don, ngay, nguoi_dat, linh_kien, so_tien, ma_phien FROM don_linh_kien WHERE trang_thai = 'DA_DUYET';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Giá trị trạng thái viết hoa, gạch dưới, đúng như giấy nhớ."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 2
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Hai dòng. Đây là hai đơn còn chờ, mình cần đơn đã duyệt."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 10
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả mười đơn, có cả hai đơn chờ duyệt."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Tám đơn đã duyệt. Ghim lại, rồi gom."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-don-da-duyet",
+        "title": "Tám đơn linh kiện đã duyệt",
+        "description": "Kết quả truy vấn: tám đơn đã duyệt, mỗi đơn ghi ngày, người đứng tên, linh kiện, số tiền và mã phiên đăng nhập lúc tạo đơn.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-don-theo-nguoi": {
+      "id": "c-don-theo-nguoi",
+      "tieuDe": "Đơn đã duyệt, gom theo người đặt",
+      "deBai": "Lấy phiếu tám đơn làm nguồn. Gom theo người đứng tên, đếm mỗi người mấy đơn.",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": "Thống kê trước khi đọc từng dòng: con số bất thường chỉ ra chỗ cần xem.",
+      "soDongKyVong": 4,
+      "sqlChuan": "SELECT nguoi_dat, COUNT(*) AS so_dong FROM @ev-don-da-duyet GROUP BY nguoi_dat;",
+      "kieuTrinhDung": "tong-hop",
+      "nguon": "ev-don-da-duyet",
+      "nhomTheo": "nguoi_dat",
+      "truyVanNapSan": null,
+      "phanUng": [],
+      "vatChung": {
+        "id": "ev-don-theo-nguoi",
+        "title": "Nam đứng tên 5 trong 8 đơn",
+        "description": "Kết quả gom theo người đặt: Nam 5 đơn, Bách 1, Thảo 1, Khánh 1. Nam nói mình chỉ đặt hai.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-don-nam-may": {
+      "id": "c-don-nam-may",
+      "tieuDe": "Đơn của Nam nối với phiên đăng nhập",
+      "deBai": "Sổ đặt hàng ghi mã phiên; bảng phiên đăng nhập ghi máy và giờ của mỗi phiên. Năm đơn đứng tên Nam được tạo từ máy nào, lúc mấy giờ?",
+      "manhMoiLienQuan": [
+        "clue-ma-phien",
+        "clue-nguoi-dat-nam"
+      ],
+      "mucTieuHoc": "Nối hai bảng theo cột chung đúng nghĩa (mã phiên); nối theo cột trùng tên khác (ngày) thì mỗi đơn kéo theo cả phiên của người khác.",
+      "soDongKyVong": 5,
+      "sqlChuan": "SELECT ma_don, linh_kien, may, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE nguoi_dat = 'Nam';",
+      "bangNoi": [
+        "phien_dang_nhap"
+      ],
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "loi-cot"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Máy báo không có cột đó. Sổ đặt hàng không ghi máy; máy nằm ở bảng phiên đăng nhập. Phải nối hai bảng trước đã."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Tên người đặt viết đúng như giấy nhớ: Nam."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 8
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Tám dòng cho năm đơn? Đơn bánh xe ngày 02/10 hiện hai lần, một lần ở máy xưởng số 2, một lần ở máy văn phòng. Một đơn sao tạo ở hai máy được."
+            },
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Nối theo cột này thì đơn nào cũng dính mọi phiên cùng ngày, kể cả phiên của máy khác."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 13
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Mười ba dòng. Nối theo cột này thì ngày nào trùng là dính nhau hết."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 10
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Mười dòng. Cả sổ. Mình chỉ cần đơn của Nam."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "nam",
+              "expression": "neutral",
+              "text": "Năm đơn, mỗi đơn đúng một máy, một giờ. Hai cái buổi chiều là tớ."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-don-nam-may",
+        "title": "Năm đơn của Nam: máy và giờ tạo",
+        "description": "Kết quả nối hai bảng: hai đơn tạo buổi chiều từ máy xưởng số 2, ba đơn tạo ban đêm từ máy văn phòng xưởng (21:50, 22:10, 22:05). Đơn 07/10 tạo lúc 22:05, khi Nam đang ở thư viện.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-don-nam-theo-may": {
+      "id": "c-don-nam-theo-may",
+      "tieuDe": "Đơn của Nam, gom theo máy",
+      "deBai": "Lấy phiếu năm đơn làm nguồn. Gom theo máy, đếm mỗi máy mấy đơn.",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": "Gom và đếm trên phiếu đã nối: cùng một thao tác, nguồn khác.",
+      "soDongKyVong": 2,
+      "sqlChuan": "SELECT may, COUNT(*) AS so_dong FROM @ev-don-nam-may GROUP BY may;",
+      "kieuTrinhDung": "tong-hop",
+      "nguon": "ev-don-nam-may",
+      "nhomTheo": "may",
+      "truyVanNapSan": null,
+      "phanUng": [],
+      "vatChung": {
+        "id": "ev-don-nam-theo-may",
+        "title": "3 đơn từ máy văn phòng xưởng, 2 từ máy xưởng số 2",
+        "description": "Kết quả gom theo máy: ba đơn mang tên Nam tạo từ máy văn phòng xưởng (phòng khóa, chìa ban chủ nhiệm giữ), hai đơn từ máy xưởng số 2 là của Nam.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-may-vp": {
+      "id": "c-may-vp",
+      "tieuDe": "Mọi đơn từ máy văn phòng xưởng",
+      "deBai": "Nối sổ đặt hàng với bảng phiên đăng nhập. Máy văn phòng xưởng đã tạo những đơn nào, đứng tên ai, lúc mấy giờ?",
+      "manhMoiLienQuan": [
+        "clue-may-vp",
+        "clue-ma-phien"
+      ],
+      "mucTieuHoc": "Ôn nối bảng; đổi điều kiện lọc sang cột của bảng thứ hai.",
+      "soDongKyVong": 4,
+      "sqlChuan": "SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE may = 'MAY-VP-XUONG';",
+      "bangNoi": [
+        "phien_dang_nhap"
+      ],
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "loi-cot"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Máy báo không có cột đó. Cột máy nằm ở bảng phiên đăng nhập, nối rồi mới lọc được."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Mã máy viết hoa, có gạch nối, đúng như giấy nhớ."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 5
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Năm dòng, mà máy văn phòng chỉ có bốn phiên tạo đơn. Có đơn tạo ở máy xưởng dính vào, vì cùng ngày có một phiên ở máy văn phòng. Cột nối chưa đúng nghĩa."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 10
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả sổ. Mình chỉ cần đơn từ máy văn phòng."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Bốn đơn. Ba đơn đêm mang tên Nam, một đơn sáng mang tên Khánh."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-may-vp",
+        "title": "Máy văn phòng xưởng: 3 đơn đêm mang tên Nam, 1 đơn ngày của Khánh",
+        "description": "Kết quả: bốn đơn tạo từ máy văn phòng xưởng. Ba đơn ban đêm đứng tên Nam; một đơn ốc vít 10:15 sáng đứng tên Khánh, trưởng CLB, là người dùng máy đó hợp lệ ban ngày. Ba người có chìa phòng: Khánh, Bách, Thảo.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-hoan-loc": {
+      "id": "c-hoan-loc",
+      "tieuDe": "Bản xuất thu chi buổi hướng dẫn",
+      "deBai": "Bản xuất lẫn cả khoản chi lẫn khoản hoàn. Những dòng nào là hoàn tiền?",
+      "manhMoiLienQuan": [
+        "clue-hoan-loai"
+      ],
+      "mucTieuHoc": "Lọc trước rồi mới gom: chỉ đưa vào phiếu nguồn những dòng đúng loại.",
+      "soDongKyVong": 4,
+      "sqlChuan": "SELECT ma_gd, ma_phieu, so_tien, ma_tham_chieu FROM giao_dich WHERE loai = 'HOAN';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Loại giao dịch viết hoa, đúng như giấy nhớ."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 8
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả bản xuất, lẫn cả khoản chi."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Bốn dòng hoàn. Ghim lại, rồi gom theo phiếu."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-hoan-loc",
+        "title": "Bốn dòng hoàn tiền",
+        "description": "Kết quả truy vấn: bốn dòng loại HOAN, thuộc ba phiếu PH-01, PH-04, PH-06. Cộng lại âm 155.000 đồng.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-hoan-nhom": {
+      "id": "c-hoan-nhom",
+      "tieuDe": "Dòng hoàn gom theo mã phiếu",
+      "deBai": "Lấy phiếu bốn dòng hoàn làm nguồn. Gom theo mã phiếu, tính tổng số tiền, chỉ giữ nhóm có hơn một dòng.",
+      "manhMoiLienQuan": [
+        "clue-hoan-mot-dong"
+      ],
+      "mucTieuHoc": "Rèn lọc nhóm (HAVING) theo số dòng của nhóm, kèm tổng trên nhóm.",
+      "soDongKyVong": 1,
+      "sqlChuan": "SELECT ma_phieu, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM @ev-hoan-loc GROUP BY ma_phieu HAVING COUNT(*) > 1;",
+      "kieuTrinhDung": "tong-hop",
+      "nguon": "ev-hoan-loc",
+      "nhomTheo": null,
+      "truyVanNapSan": null,
+      "phanUng": [],
+      "vatChung": {
+        "id": "ev-hoan-nhom",
+        "title": "PH-04: hai dòng hoàn, tổng âm 120.000",
+        "description": "Kết quả gom theo mã phiếu: chỉ PH-04 có hơn một dòng hoàn (hai dòng, tổng ghi âm 120.000 đồng). Đây là phiếu cần mở chứng từ gốc, chưa phải kết luận.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-mic-phieu": {
+      "id": "c-mic-phieu",
+      "tieuDe": "Phiếu luân chuyển nối với sổ tài sản",
+      "deBai": "Phiếu luân chuyển chỉ ghi mã tài sản; sổ tài sản mới ghi tên. Phiếu nào đã có người nhận ghi chuyển chiếc micro không dây, và chuyển tới đâu?",
+      "manhMoiLienQuan": [
+        "clue-mic-ten",
+        "clue-mic-da-nhan"
+      ],
+      "mucTieuHoc": "Rèn nối hai bảng theo mã; cột trùng tên (vi_tri) chưa chắc cùng nghĩa; lọc trên cột của cả hai bảng.",
+      "soDongKyVong": 1,
+      "sqlChuan": "SELECT ma_phieu, ten_tai_san, luan_chuyen.vi_tri, nguoi_nhan FROM luan_chuyen JOIN tai_san ON luan_chuyen.ma_tai_san = tai_san.ma_tai_san WHERE ten_tai_san = 'Micro không dây' AND trang_thai = 'DA_NHAN';",
+      "bangNoi": [
+        "tai_san"
+      ],
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "loi-cot"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Máy báo không có cột đó. Phiếu luân chuyển không ghi tên thiết bị; tên nằm ở sổ tài sản. Phải nối hai bảng trước đã."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Tên thiết bị và trạng thái viết đúng như trên giấy nhớ."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 2
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Hai phiếu của micro không dây. Một cái mới là đề xuất, chưa ai nhận."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 3
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Ba dòng, mà là phiếu của loa, của máy ảnh, của chân máy, lại mang tên micro."
+            },
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Cột vi_tri ở phiếu là nơi chuyển tới, ở sổ là chỗ để đầu kỳ. Nối theo nó thì phiếu nào chuyển tới tủ CLB cũng ghép với chiếc micro từng để ở tủ CLB. Trùng tên cột, khác nghĩa."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 12
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Mười hai dòng cho bảy phiếu. Một phiếu kéo theo mấy thiết bị liền: cột nối này không phải mã của thiết bị."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 5
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Năm phiếu đã nhận, của đủ mọi thiết bị. Mình chỉ tìm micro không dây."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 7
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả tập phiếu. Mình chỉ tìm một chiếc micro."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Một phiếu. PX-17, sang tủ thiết bị dùng chung."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-mic-phieu",
+        "title": "PX-17: micro không dây sang tủ thiết bị dùng chung",
+        "description": "Kết quả nối phiếu luân chuyển với sổ tài sản: phiếu PX-17 đã nhận, chuyển micro không dây (MIC-02) tới tủ thiết bị dùng chung, tổ thiết bị nhận.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-dat-ma-khong-co": {
+      "id": "c-dat-ma-khong-co",
+      "tieuDe": "Sổ đặt hàng so với kiểm kê",
+      "deBai": "Nối sổ đặt hàng với bảng kiểm kê của Nam. Đơn nào đặt mua thứ mà trong kho đang là số không?",
+      "manhMoiLienQuan": [
+        "clue-so-luong-co-0"
+      ],
+      "mucTieuHoc": "Ôn nối bảng với một bảng mới, khóa nối là tên linh kiện; lọc trên cột của bảng thứ hai.",
+      "soDongKyVong": 3,
+      "sqlChuan": "SELECT ma_don, nguoi_dat, so_tien, so_luong_co FROM don_linh_kien JOIN kiem_ke ON don_linh_kien.linh_kien = kiem_ke.linh_kien WHERE so_luong_co = 0;",
+      "bangNoi": [
+        "kiem_ke"
+      ],
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "loi-cot"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Máy báo không có cột đó. Số lượng trong kho nằm ở bảng kiểm kê, nối rồi mới lọc được."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Kho không có thì bảng kiểm kê ghi số 0, giấy nhớ cũng là số 0."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 10
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả sổ. Mình chỉ cần thứ trong kho đang là số không."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "nam",
+              "expression": "neutral",
+              "text": "Ba đơn. Đúng ba đơn mang tên tớ."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-dat-ma-khong-co",
+        "title": "Ba đơn đặt mua thứ không có trong kho",
+        "description": "Kết quả nối sổ đặt hàng với kiểm kê: động cơ servo, mạch điều khiển, khung nhôm — ba đơn đứng tên Nam từ máy văn phòng xưởng, ghi đã duyệt, mà kho không có một cái. Tiền có thật sự xuất khỏi quỹ nào thì phải xem sổ quỹ.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-chi-tham-tu": {
+      "id": "c-chi-tham-tu",
+      "tieuDe": "Sổ chi nối với bảng quỹ",
+      "deBai": "Sổ chi ghi mã quỹ; bảng quỹ cho biết mã nào là quỹ của CLB nào. Khoản chi nào ghi vào quỹ CLB Thám Tử?",
+      "manhMoiLienQuan": [
+        "clue-quy-tham-tu"
+      ],
+      "mucTieuHoc": "Nối theo mã quỹ rồi lọc theo cột của bảng quỹ; ghim thành phiếu để gom.",
+      "soDongKyVong": 6,
+      "sqlChuan": "SELECT ma_chi, ma_don, so_tien, nguoi_duyet, ngay_chi FROM khoan_chi JOIN quy ON khoan_chi.ma_quy = quy.ma_quy WHERE clb = 'THAM_TU';",
+      "bangNoi": [
+        "quy"
+      ],
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "loi-cot"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Máy báo không có cột đó. Tên CLB nằm ở bảng quỹ, nối rồi mới lọc được."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Mã CLB viết hoa, gạch dưới, đúng như giấy nhớ."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 11
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả sổ, có cả quỹ Robotics. Mình chỉ cần quỹ CLB mình."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "minh-anh",
+              "expression": "neutral",
+              "text": "Sáu khoản. Ba khoản chị duyệt, ba khoản chị chưa từng thấy."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-chi-tham-tu",
+        "title": "Sáu khoản chi ghi vào quỹ CLB Thám Tử",
+        "description": "Kết quả nối sổ chi với bảng quỹ: sáu khoản ghi vào quỹ CLB Thám Tử. Ba khoản văn phòng phẩm nhỏ do Minh Anh duyệt; ba khoản lớn gắn với ba đơn linh kiện, người duyệt ghi là Khánh, xuất ngày 10, 11 và 12 tháng 9.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-chi-theo-nguoi-duyet": {
+      "id": "c-chi-theo-nguoi-duyet",
+      "tieuDe": "Khoản chi gom theo người duyệt",
+      "deBai": "Lấy phiếu sáu khoản làm nguồn. Gom theo người duyệt: đếm số khoản, tính tổng số tiền.",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": "Tổng trên mỗi nhóm (SUM): đếm dòng chưa nói hết, phải cộng tiền.",
+      "soDongKyVong": 2,
+      "sqlChuan": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet;",
+      "kieuTrinhDung": "tong-hop",
+      "nguon": "ev-chi-tham-tu",
+      "nhomTheo": null,
+      "truyVanNapSan": null,
+      "phanUng": [],
+      "vatChung": {
+        "id": "ev-chi-theo-nguoi-duyet",
+        "title": "Minh Anh 3 khoản, 450.000; Khánh 3 khoản, 2.400.000",
+        "description": "Kết quả gom theo người duyệt: Minh Anh ba khoản, tổng 450.000; Khánh ba khoản, tổng 2.400.000. Cùng số khoản, tiền gấp hơn năm lần.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-chi-vuot-muc": {
+      "id": "c-chi-vuot-muc",
+      "tieuDe": "Chỉ giữ nhóm vượt ngưỡng giải trình",
+      "deBai": "Gom theo người duyệt như vừa rồi, tính thêm trung bình mỗi khoản, nhưng chỉ giữ nhóm có tổng lớn hơn một triệu.",
+      "manhMoiLienQuan": [
+        "clue-han-muc"
+      ],
+      "mucTieuHoc": "Trung bình trên nhóm (AVG) và lọc nhóm sau khi gom (HAVING): điều kiện đặt lên con số của cả nhóm, không lên từng dòng.",
+      "soDongKyVong": 1,
+      "sqlChuan": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_tien) AS tb_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet HAVING SUM(so_tien) > 1000000;",
+      "kieuTrinhDung": "tong-hop",
+      "nguon": "ev-chi-tham-tu",
+      "nhomTheo": null,
+      "truyVanNapSan": null,
+      "phanUng": [],
+      "vatChung": {
+        "id": "ev-chi-vuot-muc",
+        "title": "Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000",
+        "description": "Kết quả lọc nhóm: chỉ Khánh có tổng chi từ quỹ CLB Thám Tử vượt ngưỡng giải trình một triệu (2.400.000 cho ba khoản). Trung bình 800.000 một khoản; phiếu sáu khoản cho thấy từng khoản (800.000, 900.000, 700.000) đều dưới một triệu, mức chủ tịch Hội duyệt thẳng được. Ba khoản ấy là ba đơn linh kiện không có hàng.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-tin-don": {
+      "id": "c-tin-don",
+      "tieuDe": "Tin đồn trên kênh sinh viên",
+      "deBai": "Kênh sinh viên chuyền nhau một câu về CLB. Những tin nào mang câu đó?",
+      "manhMoiLienQuan": [
+        "clue-noi-dung-tin"
+      ],
+      "mucTieuHoc": "Ôn \"bắt đầu bằng\"; kết quả nhiều dòng được ghim thành phiếu để dùng tiếp.",
+      "soDongKyVong": 5,
+      "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB Thám Tử soi dữ liệu%';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Tin trong kênh dài hơn mấy chữ trên giấy nhớ, còn đoạn sau nữa. \"Bằng\" thì phải khớp cả câu; mình chỉ có mấy chữ đầu thôi."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 8
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả tám tin của kênh. Có cả tin tìm thẻ xe với tin tuyển thành viên."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Năm tin cùng một câu. Ghim lại đã."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-tin-don",
+        "title": "Năm tin mang câu tin đồn",
+        "description": "Kết quả truy vấn: năm tin cùng một câu, từ năm tài khoản. Bốn tài khoản là mã sinh viên, một là clb_robotics. Phiếu chưa nói tin nào có trước.",
+        "giaTri": []
+      },
+      "ghiChu": [
+        "Đường \"sai có ích\": [CLB Thám Tử soi dữ liệu] vào noi_dung với \"bằng\" → 0 dòng → đổi \"bắt đầu bằng\" → 5 dòng."
+      ]
+    },
+    "c-tin-goc": {
+      "id": "c-tin-goc",
+      "tieuDe": "Tin gốc của tin đồn",
+      "deBai": "Năm tin trên phiếu lẫn cả tin chuyển tiếp. Tin nào là tin gốc?",
+      "manhMoiLienQuan": [
+        "clue-tin-goc"
+      ],
+      "mucTieuHoc": "Lấy phiếu kết quả đã ghim làm nguồn cho lần tra kế tiếp (WITH … AS): lọc tiếp trên đống đã thu hẹp.",
+      "soDongKyVong": 1,
+      "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';",
+      "kieuTrinhDung": "loc-tiep",
+      "nguon": "ev-tin-don",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Giá trị này có đang nằm đúng cột của nó không nhỉ?"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 5
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Vẫn đủ năm tin. Chưa tách được tin gốc ra."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Còn đúng một tin. Phiếu năm tin vẫn nguyên trên bảng, mình chỉ lọc tiếp trên nó."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-tin-goc",
+        "title": "Tin gốc: 22:40 tối 07/10",
+        "description": "Kết quả lọc tiếp trên phiếu năm tin: một tin gốc, gửi 22:40 thứ Hai 07/10 từ tài khoản clb_robotics. Phiếu cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.",
+        "giaTri": [
+          "clb_robotics"
+        ]
+      },
+      "ghiChu": []
+    },
+    "c-tin-may": {
+      "id": "c-tin-may",
+      "tieuDe": "Nhật ký đăng nhập của kênh",
+      "deBai": "Trong ngày tin được gửi, tài khoản kênh của Robotics đăng nhập những lần nào, từ máy nào?",
+      "manhMoiLienQuan": [
+        "clue-ngay-gui"
+      ],
+      "mucTieuHoc": "Dùng giá trị trên phiếu trước làm điều kiện cho bảng khác.",
+      "soDongKyVong": 2,
+      "sqlChuan": "SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = '2024-10-07';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Giá trị này có đang nằm đúng cột của nó không nhỉ?"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 3
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Ba dòng. Bảng này ghi cả đăng nhập của tài khoản cá nhân khác, và cả ngày khác. Mình cần đúng tài khoản kênh, đúng ngày mùng 7."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 5
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả năm lần đăng nhập của mọi tài khoản."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Hai lần trong ngày mùng 7. 15 giờ 10 từ máy xưởng số 2, 22 giờ 31 từ máy văn phòng xưởng."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-tin-may",
+        "title": "Hai lần đăng nhập ngày 07/10",
+        "description": "Kết quả truy vấn: tài khoản clb_robotics đăng nhập 15:10 từ máy xưởng số 2 và 22:31 từ máy văn phòng xưởng. Tin gốc gửi lúc 22:40. Phiếu cho biết máy nào, chưa cho biết ai ngồi máy.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-tin-xuong": {
+      "id": "c-tin-xuong",
+      "tieuDe": "Lịch đặt xưởng, tuần 07/10",
+      "deBai": "Lịch đặt xưởng của nhà văn hóa. Tối 07/10 xưởng được đăng ký từ mấy giờ tới mấy giờ, cho hoạt động nào?",
+      "manhMoiLienQuan": [
+        "clue-ngay-gui"
+      ],
+      "mucTieuHoc": "Hai hướng điều tra, mỗi hướng một nguồn riêng; cùng một giá trị ngày dùng cho hai bảng.",
+      "soDongKyVong": 1,
+      "sqlChuan": "SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Lịch ghi ngày theo dạng năm-tháng-ngày, giấy nhớ cũng vậy. Giá trị có nằm đúng cột không?"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 6
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả tuần. Mình chỉ cần tối mùng 7."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Một dòng: tối mùng 7, 19 giờ tới 23 giờ, đội thi đấu tập."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-tin-xuong",
+        "title": "Tối 07/10 xưởng mở tới 23 giờ",
+        "description": "Kết quả truy vấn: thứ Hai 07/10, xưởng đăng ký từ 19:00 tới 23:00 cho đội thi đấu tập. Đây là lịch đăng ký, chưa cho biết ai thật sự có mặt.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-bai-dang": {
+      "id": "c-bai-dang",
+      "tieuDe": "Bài đăng của các kênh CLB",
+      "deBai": "Bản xuất bài đăng của mọi kênh CLB trong tháng 10. Kênh Robotics đăng những bài nào?",
+      "manhMoiLienQuan": [
+        "clue-kenh-robotics"
+      ],
+      "mucTieuHoc": "Lọc ra một tập để ghim thành phiếu, chuẩn bị nhóm và đếm.",
+      "soDongKyVong": 9,
+      "sqlChuan": "SELECT ma_bai, ngay, buoi, thiet_bi FROM bai_dang_kenh WHERE kenh = 'clb_robotics';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Giá trị này có đang nằm đúng cột của nó không nhỉ?"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 14
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả ba kênh. Mình chỉ cần kênh Robotics."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Chín bài. Ghim lại, rồi nhóm."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-bai-dang",
+        "title": "Chín bài của kênh Robotics",
+        "description": "Kết quả truy vấn: chín bài kênh Robotics đăng trong tháng 10, mỗi bài ghi ngày, buổi và thiết bị gửi.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-bai-thiet-bi": {
+      "id": "c-bai-thiet-bi",
+      "tieuDe": "Bài đăng nhóm theo thiết bị",
+      "deBai": "Lấy phiếu chín bài làm nguồn. Gom theo thiết bị gửi, đếm mỗi nhóm bao nhiêu bài: kênh này hay đăng từ đâu?",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": "Nhóm và đếm (GROUP BY, COUNT): cách nhóm quyết định mình thấy gì.",
+      "soDongKyVong": 2,
+      "sqlChuan": "SELECT thiet_bi, COUNT(*) AS so_dong FROM @ev-bai-dang GROUP BY thiet_bi;",
+      "kieuTrinhDung": "tong-hop",
+      "nguon": "ev-bai-dang",
+      "nhomTheo": "thiet_bi",
+      "truyVanNapSan": null,
+      "phanUng": [],
+      "vatChung": {
+        "id": "ev-bai-thiet-bi",
+        "title": "8 bài từ điện thoại trực, 1 bài từ máy văn phòng",
+        "description": "Kết quả nhóm theo thiết bị: 8 bài gửi từ điện thoại trực kênh (Nam giữ), 1 bài gửi từ máy văn phòng xưởng. Bài tin đồn là bài duy nhất khác thói quen đăng của kênh.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-nam-thu-vien": {
+      "id": "c-nam-thu-vien",
+      "tieuDe": "Bản ghi quẹt thẻ thư viện",
+      "deBai": "Bản ghi cửa từ thư viện do chính Nam và Hà Vy tải về từ cổng sinh viên, gộp chung một tệp. Nam vào thư viện những ngày nào?",
+      "manhMoiLienQuan": [
+        "clue-ten-nam"
+      ],
+      "mucTieuHoc": "Lọc theo tên để ghim thành phiếu riêng của một người.",
+      "soDongKyVong": 5,
+      "sqlChuan": "SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Nam';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Tên trên bản ghi viết đúng như giấy nhớ: Nam."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 10
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả tờ, của cả hai người. Mình cần riêng của Nam."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "nam",
+              "expression": "neutral",
+              "text": "Năm lần. Đúng là của tớ."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-nam-thu-vien",
+        "title": "Năm lần Nam quẹt thẻ thư viện",
+        "description": "Kết quả truy vấn: năm lần Nam vào thư viện trong tháng 9 và 10, có ngày, thứ, giờ vào, giờ ra.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-nam-thu": {
+      "id": "c-nam-thu",
+      "tieuDe": "Thói quen của Nam, nhóm theo thứ",
+      "deBai": "Lấy phiếu năm lần làm nguồn. Gom theo thứ trong tuần, đếm mỗi thứ mấy lần: Nam hay đi thư viện vào thứ mấy?",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": "Nhóm theo thứ trong tuần: thói quen là thứ đếm được.",
+      "soDongKyVong": 2,
+      "sqlChuan": "SELECT thu, COUNT(*) AS so_dong FROM @ev-nam-thu-vien GROUP BY thu;",
+      "kieuTrinhDung": "tong-hop",
+      "nguon": "ev-nam-thu-vien",
+      "nhomTheo": "thu",
+      "truyVanNapSan": null,
+      "phanUng": [],
+      "vatChung": {
+        "id": "ev-nam-thu",
+        "title": "Nam: tối thứ Hai 4 lần, thứ Năm 1 lần",
+        "description": "Kết quả nhóm theo thứ: bốn tối thứ Hai liền Nam đều ở thư viện. Một thói quen đếm được; chưa phải bằng chứng cho riêng tối 07/10.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-toi-07": {
+      "id": "c-toi-07",
+      "tieuDe": "Thư viện tối 07/10",
+      "deBai": "Trên bản ghi quẹt thẻ, tối 07/10 có ai, vào và ra lúc mấy giờ?",
+      "manhMoiLienQuan": [
+        "clue-toi-07"
+      ],
+      "mucTieuHoc": "Từ thói quen quay về một tối cụ thể: lọc đúng ngày.",
+      "soDongKyVong": 2,
+      "sqlChuan": "SELECT ten, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ngay = '2024-10-07';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Ngày trên bản ghi viết dạng năm-tháng-ngày."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 1
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Một dòng thôi à? Tối đó tớ cũng ở đấy mà."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 5
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Năm lần. Mình chỉ cần tối mùng 7."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "smile",
+              "text": "Hai dòng. Tối mùng 7, cả hai đứa."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-toi-07",
+        "title": "Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05",
+        "description": "Kết quả truy vấn: tối 07/10 Hà Vy quẹt thẻ vào 20:00, ra 23:00; Nam vào 21:50, ra 23:05. Tin gốc gửi lúc 22:40. Nguồn độc lập của thư viện, có giờ vào giờ ra.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-vy-thu-vien": {
+      "id": "c-vy-thu-vien",
+      "tieuDe": "Bản ghi quẹt thẻ của Hà Vy",
+      "deBai": "Hà Vy vào thư viện những ngày nào?",
+      "manhMoiLienQuan": [
+        "clue-ten-vy"
+      ],
+      "mucTieuHoc": "Ôn lọc theo tên; thói quen của người làm chứng cũng phải đếm được (thẻ hỗ trợ ở đối chất).",
+      "soDongKyVong": 5,
+      "sqlChuan": "SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Tên tớ trên bản ghi có dấu cách, viết đúng như giấy nhớ."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 10
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả tờ. Mình cần riêng của Hà Vy."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Năm lần. Bốn tối thứ Hai."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-vy-thu-vien",
+        "title": "Năm lần Hà Vy quẹt thẻ thư viện",
+        "description": "Kết quả truy vấn: bốn tối thứ Hai và một tối thứ Tư. Thói quen của Hà Vy trùng với thói quen của Nam.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "v2-loc-buoi": {
+      "id": "v2-loc-buoi",
+      "tieuDe": "Sổ sử dụng phòng tháng 10",
+      "deBai": "Tháng 10, phòng CLB có những buổi nào đã ký xác nhận? Xếp theo ngày để dò với sổ giấy.",
+      "manhMoiLienQuan": [
+        "clue-ma-phong-clb",
+        "clue-da-xac-nhan"
+      ],
+      "mucTieuHoc": "Gọt dữ liệu nhập tay về cùng một kiểu trước khi so (TRIM, LOWER); xếp kết quả theo một cột (ORDER BY).",
+      "soDongKyVong": 4,
+      "sqlChuan": "SELECT ma_buoi, ngay, hoat_dong FROM nhat_ky_su_dung WHERE LOWER(TRIM(ma_phong)) = 'clb-tham-tu' AND trang_thai = 'DA_XAC_NHAN' ORDER BY ngay;",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Giá trị này có đang nằm đúng cột của nó không nhỉ?"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 1
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "surprised",
+              "text": "Một buổi? Cả tháng 10 mình sinh hoạt có một buổi thôi á?"
+            },
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Dòng này mã phòng viết y hệt tờ giấy nhớ. Mấy dòng kia viết khác đi một tí."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 2,
+            "cot": [
+              "ma_phong"
+            ]
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Hai dòng viết đúng từng chữ như giấy nhớ. Mà một dòng trong đó mới là dự kiến."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 2
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Hai buổi thôi à? Sổ giấy tớ đếm được nhiều hơn."
+            },
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Mới bắt được một kiểu viết lệch. Vẫn còn kiểu khác."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 3
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Ba dòng. Vẫn còn kiểu viết lệch chưa bắt được. Mà trong này có dòng nào chưa ký không?"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 5
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "serious",
+              "text": "Buổi 30/10 chưa diễn ra. Dòng ấy mới là dự kiến, chưa ai ký."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 6
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Sáu dòng đã ký. Nhưng hai dòng là của kho chung, đâu phải phòng mình."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 7
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả bảy dòng. Có cả kho chung lẫn buổi chưa diễn ra."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "sai-thu-tu"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Đủ bốn buổi rồi. Nhưng sổ giấy ghi lần lượt từ đầu tháng, thứ tự này tớ dò từng dòng không kịp."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "smile",
+              "text": "Bốn buổi, từ mùng 2 tới 23, đúng thứ tự trong sổ. Để tớ dò."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-v2-activities",
+        "title": "Bốn buổi đã ký của phòng CLB",
+        "description": "Kết quả truy vấn: BUOI-02 (02/10, họp thành viên), BUOI-04 (09/10, ôn SQL), BUOI-06 (16/10, kiểm kê hồ sơ), BUOI-08 (23/10, hướng dẫn tân thành viên). Bản ghi chỉ nói có bốn mục đã ký; không nói ai tới dự.",
+        "giaTri": []
+      },
+      "ghiChu": [
+        "Đường \"sai có ích\": [clb-tham-tu] vào ma_phong, [DA_XAC_NHAN] vào trang_thai, so y nguyên → 1 dòng. Gọt dấu cách → 2. Thêm chữ thường → 4, chưa xếp → \"sai thứ tự\". Xếp theo ngay → đúng."
+      ]
+    },
     "c-v2-nguon-lop": {
       "id": "c-v2-nguon-lop",
       "tieuDe": "Danh sách lớp sinh hoạt",
@@ -3409,7 +10346,7 @@ export const KICH_BAN_MVP = {
       "fields": {
         "Tiêu đề": "Phong bì nâu trao tay 6:45 sáng thứ Hai",
         "Nguồn": "Chú Cường, cổng KTX",
-        "Nội dung": "Một cậu dáng sinh viên khóa trên, balo đeo huy hiệu bánh răng, đưa phong bì nâu cho một bạn nữ; bạn nữ cầm rồi đi thẳng về phía tòa B. Chú không nhìn rõ mặt."
+        "Nội dung": "Một cậu sinh viên, balo đeo huy hiệu bánh răng của CLB Robotics, đưa phong bì nâu cho một bạn nữ; bạn nữ cầm rồi đi thẳng về phía tòa B. Chú không nhìn rõ mặt, chỉ nhớ cái huy hiệu sứt mất một răng."
       },
       "quotes": {}
     },
@@ -3436,6 +10373,17 @@ export const KICH_BAN_MVP = {
         "Giá trị cho trình dựng": "kien-nghi",
         "Nguồn": "Thầy Khải, phòng máy",
         "Nội dung": "Bản in từ máy phòng máy có dòng chân trang ghi tên tệp. Chân trang bản chụp lá thư bị xén, chỉ đọc được đoạn đầu: \"kien-nghi-…\"."
+      },
+      "quotes": {}
+    },
+    "clue-loi-nhan-linh-1": {
+      "id": "clue-loi-nhan-linh-1",
+      "loai": "clue",
+      "heading": "[Lời nhắn chị Linh]",
+      "fields": {
+        "Tiêu đề": "Mẩu giấy trong sổ chị Linh",
+        "Nguồn": "Rơi ra từ sổ tự học của chị Linh, phòng CLB",
+        "Nội dung": "Chữ chị Linh, một dòng: \"Căn phòng này giữ nhiều hơn em nghĩ.\" Không ghi ngày, không ghi gửi cho ai."
       },
       "quotes": {}
     },
@@ -3547,6 +10495,555 @@ export const KICH_BAN_MVP = {
         "Nội dung": "Mắc ở mép tôn khe hộp. Chưa chứng minh chủ thẻ là người bỏ thư."
       },
       "quotes": {}
+    },
+    "doc-tin-don": {
+      "id": "doc-tin-don",
+      "loai": "doc",
+      "heading": "Ảnh chụp tin đồn",
+      "fields": {
+        "Tiêu đề": "Tin đang lan trên kênh sinh viên",
+        "Nguồn": "Cô Lan chuyển cho Minh Anh",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "\"CLB Thám Tử soi dữ liệu sinh viên\"",
+          "Kênh sinh viên Chấn Hưng. Tin được chuyển tiếp nhiều lần từ tối thứ Hai 07/10."
+        ]
+      }
+    },
+    "clue-noi-dung-tin": {
+      "id": "clue-noi-dung-tin",
+      "loai": "clue",
+      "heading": "[Câu tin đồn]",
+      "fields": {
+        "Tiêu đề": "Mấy chữ đầu của tin đồn",
+        "Giá trị cho trình dựng": "CLB Thám Tử soi dữ liệu",
+        "Nguồn": "Ảnh chụp tin, Phòng CTSV chuyển về",
+        "Nội dung": "Tin nào cũng mở đầu bằng mấy chữ này. Bản xuất của kênh ghi nguyên văn từng tin, nên phần sau có thể dài hơn."
+      },
+      "quotes": {}
+    },
+    "clue-tin-goc": {
+      "id": "clue-tin-goc",
+      "loai": "clue",
+      "heading": "[Tin gốc]",
+      "fields": {
+        "Tiêu đề": "Kênh ghi loại của từng tin",
+        "Giá trị cho trình dựng": "GOC",
+        "Nguồn": "Nam, người trực kênh của CLB Robotics",
+        "Nội dung": "Mỗi tin có một loại: GOC là tin người đó tự viết, CHUYEN_TIEP là tin bấm chuyển lại. Chuyển tiếp thì ai cũng bấm được."
+      },
+      "quotes": {}
+    },
+    "clue-ngay-gui": {
+      "id": "clue-ngay-gui",
+      "loai": "clue",
+      "heading": "[Ngày gửi tin gốc]",
+      "fields": {
+        "Tiêu đề": "Tin gốc gửi tối thứ Hai 07/10",
+        "Giá trị cho trình dựng": "2024-10-07",
+        "Nguồn": "Phiếu tin gốc",
+        "Nội dung": "Tin gốc gửi lúc 22:40 thứ Hai 07/10/2024. Nhật ký đăng nhập của kênh ghi ngày theo dạng năm-tháng-ngày."
+      },
+      "quotes": {}
+    },
+    "doc-lich-xuong": {
+      "id": "doc-lich-xuong",
+      "loai": "doc",
+      "heading": "Bảng đăng ký dùng xưởng",
+      "fields": {
+        "Tiêu đề": "Bảng đăng ký dùng xưởng, tuần 07/10",
+        "Nguồn": "Dán cạnh cửa xưởng CLB Robotics",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Bảng viết tay dán cạnh cửa xưởng, góc ghi \"bản sao từ lịch đặt xưởng trên máy\". Tuần 07/10 kín chữ: đội thi đấu tập ba tối, sinh hoạt thành viên chiều thứ Ba, dọn xưởng sáng thứ Bảy."
+        ]
+      }
+    },
+    "clue-xuong-toi": {
+      "id": "clue-xuong-toi",
+      "loai": "clue",
+      "heading": "[Xưởng mở tới 23 giờ]",
+      "fields": {
+        "Tiêu đề": "Tối 07/10 xưởng đăng ký mở tới 23 giờ",
+        "Nguồn": "Bảng đăng ký dùng xưởng",
+        "Nội dung": "Tối thứ Hai 07/10 xưởng đăng ký mở từ 19 giờ tới 23 giờ cho đội thi đấu tập. Tin gốc gửi lúc 22:40. Đây là lịch đăng ký, chưa cho biết ai thật sự có mặt, càng chưa cho biết ai ngồi máy."
+      },
+      "quotes": {}
+    },
+    "clue-loi-nhan-linh-2": {
+      "id": "clue-loi-nhan-linh-2",
+      "loai": "clue",
+      "heading": "[Lời nhắn chị Linh, mẩu thứ hai]",
+      "fields": {
+        "Tiêu đề": "Mẩu giấy kẹp ở trang \"Kiểm hai lần\"",
+        "Nguồn": "Sổ tự học của chị Linh, phòng CLB",
+        "Nội dung": "Chữ chị Linh: \"Sổ này chị chép lại từ một cuốn cũ hơn. Cuốn cũ không phải của chị.\""
+      },
+      "quotes": {}
+    },
+    "clue-sao-ke-cuoi-ky": {
+      "id": "clue-sao-ke-cuoi-ky",
+      "loai": "clue",
+      "heading": "[Sao kê quỹ về cuối kỳ]",
+      "fields": {
+        "Tiêu đề": "Sao kê quỹ CLB chỉ về vào cuối kỳ",
+        "Nguồn": "Minh Anh nhắc",
+        "Nội dung": "Phòng Kế hoạch gửi sao kê quỹ về các CLB một lần, vào cuối học kỳ, cùng đợt rà soát phòng. Chủ quỹ muốn xem giữa kỳ thì phải làm giấy, qua chủ tịch Hội sinh viên ký chuyển. Trước lúc đó không ai đọc sổ."
+      },
+      "quotes": {}
+    },
+    "clue-kenh-robotics": {
+      "id": "clue-kenh-robotics",
+      "loai": "clue",
+      "heading": "[Kênh Robotics]",
+      "fields": {
+        "Tiêu đề": "Mã kênh của CLB Robotics",
+        "Giá trị cho trình dựng": "clb_robotics",
+        "Nguồn": "Phiếu tin gốc của Vụ 2",
+        "Nội dung": "Kênh của CLB Robotics mang mã clb_robotics. Bản xuất bài đăng ghi mã kênh ở cột kenh."
+      },
+      "quotes": {}
+    },
+    "clue-ten-nam": {
+      "id": "clue-ten-nam",
+      "loai": "clue",
+      "heading": "[Nam]",
+      "fields": {
+        "Tiêu đề": "Tên Nam trên bản ghi thư viện",
+        "Giá trị cho trình dựng": "Nam",
+        "Nguồn": "Nam tải bản ghi cửa từ của chính mình từ cổng sinh viên",
+        "Nội dung": "Bản ghi cửa từ ghi tên chủ thẻ ở cột ten, giờ vào và giờ ra. Mỗi người chỉ tải được bản của chính mình; Nam và Hà Vy gộp hai bản vào một tệp."
+      },
+      "quotes": {}
+    },
+    "clue-toi-07": {
+      "id": "clue-toi-07",
+      "loai": "clue",
+      "heading": "[Tối 07/10]",
+      "fields": {
+        "Tiêu đề": "Tối tin gốc được gửi",
+        "Giá trị cho trình dựng": "2024-10-07",
+        "Nguồn": "Phiếu tin gốc của Vụ 2",
+        "Nội dung": "Tin gốc gửi lúc 22:40 thứ Hai 07/10/2024. Bản ghi thư viện ghi ngày theo dạng năm-tháng-ngày."
+      },
+      "quotes": {}
+    },
+    "clue-ten-vy": {
+      "id": "clue-ten-vy",
+      "loai": "clue",
+      "heading": "[Hà Vy]",
+      "fields": {
+        "Tiêu đề": "Tên Hà Vy trên bản ghi thư viện",
+        "Giá trị cho trình dựng": "Hà Vy",
+        "Nguồn": "Hà Vy tải bản ghi cửa từ của chính mình",
+        "Nội dung": "Hà Vy tải bản ghi cửa từ của mình, gộp chung tệp với Nam để lời chứng của mình cũng đếm được."
+      },
+      "quotes": {}
+    },
+    "clue-loi-nhan-linh-3": {
+      "id": "clue-loi-nhan-linh-3",
+      "loai": "clue",
+      "heading": "[Lời nhắn chị Linh, mẩu thứ ba]",
+      "fields": {
+        "Tiêu đề": "Mẩu giấy ở trang \"Kiểm hai lần\", lần hai",
+        "Nguồn": "Sổ tự học của chị Linh, phòng CLB",
+        "Nội dung": "Chữ chị Linh: \"Vụ đầu tiên của CLB kết luận sai. Chị tìm ra cuốn sổ ghi lại nó.\""
+      },
+      "quotes": {}
+    },
+    "clue-thao-in-so-do": {
+      "id": "clue-thao-in-so-do",
+      "loai": "clue",
+      "heading": "[Lời chị Thảo: sơ đồ in tối Chủ nhật]",
+      "fields": {
+        "Tiêu đề": "Sơ đồ mạch của đội do Thảo in",
+        "Nguồn": "Thảo, xưởng Robotics",
+        "Nội dung": "Tối Chủ nhật nào Thảo cũng ra phòng máy in sơ đồ mạch cho đội. Lời kể về một thói quen, chưa nói về một tối cụ thể."
+      },
+      "quotes": {}
+    },
+    "doc-thu-hoi-don": {
+      "id": "doc-thu-hoi-don",
+      "loai": "doc",
+      "heading": "Giấy yêu cầu giải trình ngân sách",
+      "fields": {
+        "Tiêu đề": "Giấy của Ban kiểm tra Hội sinh viên gửi xưởng Robotics",
+        "Nguồn": "Nam mang tới phòng CLB",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, năm đơn cộng lại 2.670.000 đồng. Giấy đề ngày 11/10, lập theo danh sách chủ tịch Hội sinh viên chuyển xuống; Quân ký. Kèm bản sổ đặt hàng của xưởng.",
+          "Nam nói mình chỉ đặt hai đơn: cảm biến dò line và bánh xe."
+        ]
+      }
+    },
+    "doc-phien-dang-nhap": {
+      "id": "doc-phien-dang-nhap",
+      "loai": "doc",
+      "heading": "Bảng phiên đăng nhập do thầy Khải xuất",
+      "fields": {
+        "Tiêu đề": "Bản xuất nguyên bản, có dấu xác nhận",
+        "Nguồn": "Thầy Khải (phòng máy, nơi đặt máy chủ), theo đề nghị của Thầy Quang",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Mỗi phiên đăng nhập của phần mềm đặt hàng: mã phiên, máy, ngày, giờ. Có cả phiên không tạo đơn.",
+          "Tài khoản quản trị của Nam đang bị khóa; bảng này không qua tay Nam."
+        ]
+      }
+    },
+    "clue-da-duyet": {
+      "id": "clue-da-duyet",
+      "loai": "clue",
+      "heading": "[Đã duyệt]",
+      "fields": {
+        "Tiêu đề": "Trạng thái đơn đã duyệt",
+        "Giá trị cho trình dựng": "DA_DUYET",
+        "Nguồn": "Sổ đặt hàng của xưởng",
+        "Nội dung": "Sổ đặt hàng ghi trạng thái từng đơn ở cột trang_thai: DA_DUYET là đơn đã được duyệt chi, CHO_DUYET là đơn còn chờ."
+      },
+      "quotes": {}
+    },
+    "clue-ma-phien": {
+      "id": "clue-ma-phien",
+      "loai": "clue",
+      "heading": "[Mã phiên]",
+      "fields": {
+        "Tiêu đề": "Mỗi đơn có mã phiên đăng nhập",
+        "Nguồn": "Duy nhìn thấy trong sổ đặt hàng",
+        "Nội dung": "Cột ma_phien của sổ đặt hàng ghi phiên đăng nhập của máy lúc tạo đơn. Bảng phiên đăng nhập của phần mềm ghi mỗi phiên là máy nào, ngày nào, giờ nào. Hai bảng chung nhau cột ma_phien."
+      },
+      "quotes": {}
+    },
+    "clue-nguoi-dat-nam": {
+      "id": "clue-nguoi-dat-nam",
+      "loai": "clue",
+      "heading": "[Nam]",
+      "fields": {
+        "Tiêu đề": "Tên Nam ở cột người đặt",
+        "Giá trị cho trình dựng": "Nam",
+        "Nguồn": "Sổ đặt hàng của xưởng",
+        "Nội dung": "Cột nguoi_dat ghi tên người đứng tên đơn. Ai đăng nhập máy xưởng cũng gõ được tên vào cột này."
+      },
+      "quotes": {}
+    },
+    "clue-may-vp": {
+      "id": "clue-may-vp",
+      "loai": "clue",
+      "heading": "[Máy văn phòng xưởng]",
+      "fields": {
+        "Tiêu đề": "Mã máy văn phòng xưởng",
+        "Giá trị cho trình dựng": "MAY-VP-XUONG",
+        "Nguồn": "Bảng phiên đăng nhập",
+        "Nội dung": "Máy trong phòng văn phòng nhỏ của xưởng mang mã MAY-VP-XUONG. Phòng thường khóa, chìa ban chủ nhiệm giữ."
+      },
+      "quotes": {}
+    },
+    "clue-giao-chia": {
+      "id": "clue-giao-chia",
+      "loai": "clue",
+      "heading": "[Tờ giao chìa: Khánh, Bách, Thảo]",
+      "fields": {
+        "Tiêu đề": "Tờ giao chìa dán ở cửa phòng văn phòng xưởng",
+        "Nguồn": "Tờ giấy dán ở cửa phòng, xem cùng Nam cuối Vụ 3",
+        "Nội dung": "Tờ giao chìa phòng văn phòng xưởng Robotics ghi ba người giữ chìa: Khánh (trưởng CLB), Bách (phó CLB), Thảo (kỹ thuật). Tờ giấy nói ai có chìa, không nói ai mở cửa tối nào. Bách nói tối 07/10 về quê; Thảo nói chìa của mình để ngăn bàn ngoài xưởng, ai cũng lấy được."
+      },
+      "quotes": {}
+    },
+    "clue-huy-hieu-sut": {
+      "id": "clue-huy-hieu-sut",
+      "loai": "clue",
+      "heading": "[Huy hiệu sứt: lỗi khuôn, Khánh giữ]",
+      "fields": {
+        "Tiêu đề": "Cái huy hiệu bánh răng sứt một răng",
+        "Nguồn": "Nam, sau khi Khánh ghé phòng CLB",
+        "Nội dung": "Robotics làm ba chục huy hiệu hồi đầu năm; cái sứt một răng là lỗi khuôn, Khánh xin giữ và gắn trên balo. Balo hay để ở xưởng, ai cũng cầm được. Biết balo chưa phải biết người."
+      },
+      "quotes": {}
+    },
+    "clue-loi-nhan-linh-4": {
+      "id": "clue-loi-nhan-linh-4",
+      "loai": "clue",
+      "heading": "[Lời nhắn chị Linh, mẩu thứ tư]",
+      "fields": {
+        "Tiêu đề": "Mẩu giấy ở trang cuối sổ",
+        "Nguồn": "Sổ tự học của chị Linh, phòng CLB",
+        "Nội dung": "Chữ chị Linh: \"Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi.\""
+      },
+      "quotes": {}
+    },
+    "doc-kiem-ke": {
+      "id": "doc-kiem-ke",
+      "loai": "doc",
+      "heading": "Bảng kiểm kê xưởng của Nam",
+      "fields": {
+        "Tiêu đề": "Kiểm kê linh kiện xưởng, 18/10",
+        "Nguồn": "Nam đếm tay từng loại, hai lần",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Mười loại linh kiện trong sổ đặt hàng, đếm thực tế trong kho. Ba loại đang là số không: động cơ servo, mạch điều khiển, bộ khung nhôm."
+        ]
+      }
+    },
+    "clue-so-luong-co-0": {
+      "id": "clue-so-luong-co-0",
+      "loai": "clue",
+      "heading": "[Kho: 0]",
+      "fields": {
+        "Tiêu đề": "Trong kho không có một cái",
+        "Giá trị cho trình dựng": "0",
+        "Nguồn": "Bảng kiểm kê của Nam",
+        "Nội dung": "Cột so_luong_co của bảng kiểm kê ghi số lượng đếm được trong kho. Không có một cái thì ghi 0."
+      },
+      "quotes": {}
+    },
+    "doc-so-quy": {
+      "id": "doc-so-quy",
+      "loai": "doc",
+      "heading": "Bản xuất sổ quỹ khối CLB",
+      "fields": {
+        "Tiêu đề": "Sổ chi và bảng quỹ, Phòng Kế hoạch gửi theo yêu cầu của thầy Quang",
+        "Nguồn": "Phòng Kế hoạch, Cô Hạnh gửi theo chữ ký của Thầy Quang; quy chế do Cô Lan in kèm (trang sau: CLB mất phòng thì vào diện chờ giải thể, sao kê quỹ gửi về Hội sinh viên thay vì chủ quỹ; giải thể thì chủ tịch Hội ký nhận bàn giao)",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Sổ chi: mỗi khoản có mã chi, mã đơn, mã quỹ, số tiền, người duyệt, ngày chi. Bảng quỹ: mã quỹ nào thuộc CLB nào.",
+          "Ba khoản lớn là tạm ứng tiền mặt, người duyệt ký nhận; quy chế cho bổ sung chứng từ trong ba mươi ngày, nên mã đơn của ba khoản ấy được điền sau ngày chi.",
+          "Chỉ gồm các khoản ghi vào quỹ CLB Thám Tử và các khoản liên quan ba đơn đang xét."
+        ]
+      }
+    },
+    "clue-quy-tham-tu": {
+      "id": "clue-quy-tham-tu",
+      "loai": "clue",
+      "heading": "[Quỹ CLB Thám Tử]",
+      "fields": {
+        "Tiêu đề": "Mã CLB trong bảng quỹ",
+        "Giá trị cho trình dựng": "THAM_TU",
+        "Nguồn": "Bảng quỹ",
+        "Nội dung": "Bảng quỹ ghi CLB chủ quỹ ở cột clb: THAM_TU là CLB Thám Tử, ROBOTICS là CLB Robotics."
+      },
+      "quotes": {}
+    },
+    "clue-han-muc": {
+      "id": "clue-han-muc",
+      "loai": "clue",
+      "heading": "[Ngưỡng giải trình 1.000.000]",
+      "fields": {
+        "Tiêu đề": "Ngưỡng rà soát tổng chi theo người duyệt",
+        "Giá trị cho trình dựng": "1000000",
+        "Nguồn": "Quy chế quỹ khối CLB, Minh Anh và Duy nhắc",
+        "Nội dung": "Khoản dưới một triệu thì chủ tịch Hội sinh viên duyệt thẳng được, không cần trưởng CLB chủ quỹ ký. Nhưng tổng các khoản một người duyệt từ một quỹ trong một học kỳ vượt một triệu thì Phòng Kế hoạch yêu cầu người đó giải trình; ngưỡng này chỉ được soát lúc đối chiếu cuối kỳ, cùng lúc gửi sao kê. Bản giải trình phải có chủ quỹ ký xác nhận; quỹ đang chờ giải thể thì chủ tịch Hội ký thay. Đây là ngưỡng để tìm nhóm cần hỏi tiếp, không phải mức cấm."
+      },
+      "quotes": {}
+    },
+    "clue-loi-nhan-linh-5": {
+      "id": "clue-loi-nhan-linh-5",
+      "loai": "clue",
+      "heading": "[Lời nhắn chị Linh, mẩu cuối]",
+      "fields": {
+        "Tiêu đề": "Dòng viết thêm ở trang cuối cuốn sổ cũ",
+        "Nguồn": "Ngăn dưới tủ hồ sơ phòng CLB",
+        "Nội dung": "Chữ chị Linh, dưới nét chữ ngả màu của thầy Quang: \"Manh mối cũ, câu hỏi mới.\""
+      },
+      "quotes": {}
+    },
+    "doc-ho-so-vu-dau": {
+      "id": "doc-ho-so-vu-dau",
+      "loai": "doc",
+      "heading": "Hồ sơ vụ thứ nhất của CLB",
+      "fields": {
+        "Tiêu đề": "Cuốn sổ bìa cứng trong ngăn tủ khóa",
+        "Nguồn": "Ngăn dưới tủ hồ sơ phòng CLB, chìa dán sau bảng nguyên tắc",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "\"Hồ sơ vụ thứ nhất — CLB Thám Tử Dữ Liệu\", chữ viết tay, ký tên Trịnh Quang.",
+          "Chị Linh chép lại cuốn này vào sổ tự học. Ở trang kết luận, một cái tên bị gạch bằng mực tím của chị Linh; bên lề có hai chữ mực xanh đã ngả màu của thầy Quang: \"Xem lại.\""
+        ]
+      }
+    },
+    "clue-so-phong-may": {
+      "id": "clue-so-phong-may",
+      "loai": "clue",
+      "heading": "[Sổ ký phòng máy tối 15/9]",
+      "fields": {
+        "Tiêu đề": "Trang sổ ký vào phòng máy, tối Chủ nhật 15/9",
+        "Nguồn": "Thầy Khải giữ sổ; Thầy Quang ký cho mở đúng một trang sau khi phiếu sáu khoản cho thấy tiền bị lấy từ đúng quỹ của CLB bị lá thư đòi thu phòng",
+        "Nội dung": "Tối Chủ nhật muốn vào phòng máy phải ký sổ. Tối 15/9 có bảy dòng: năm sinh viên vào in bài, và hai người của CLB Robotics: Thảo vào 20:10, ra 21:30; Khánh vào 22:40, ra 23:20. Nhật ký in ghi lá thư in lúc 23:10. Sổ nói ai ở trong phòng, không nói ai bấm in."
+      },
+      "quotes": {}
+    },
+    "doc-v2-raw-logs": {
+      "id": "doc-v2-raw-logs",
+      "loai": "doc",
+      "heading": "Bản xuất sổ sử dụng phòng",
+      "fields": {
+        "Tiêu đề": "Bản xuất sổ sử dụng phòng, tháng 10",
+        "Nguồn": "Duy xuất từ máy quản lý phòng của tòa nhà",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Bảy dòng, năm cột: mã buổi, mã phòng, ngày, hoạt động, trạng thái.",
+          "Mã phòng do người trực gõ tay: có dòng viết hoa, có dòng viết thường, có dòng dính dấu cách ở đuôi.",
+          "Trạng thái DA_XAC_NHAN: buổi đã có chữ ký trong sổ giấy. DU_KIEN: lịch đặt trước, chưa ký."
+        ]
+      }
+    },
+    "clue-ma-phong-clb": {
+      "id": "clue-ma-phong-clb",
+      "loai": "clue",
+      "heading": "[Mã phòng CLB]",
+      "fields": {
+        "Tiêu đề": "Mã phòng của CLB trong sổ",
+        "Giá trị cho trình dựng": "clb-tham-tu",
+        "Nguồn": "Sổ sử dụng phòng, Duy giữ",
+        "Nội dung": "Sổ giấy ghi phòng CLB bằng mã clb-tham-tu. Trong bản xuất, mã này do người trực gõ tay nên mỗi dòng một kiểu."
+      },
+      "quotes": {}
+    },
+    "clue-da-xac-nhan": {
+      "id": "clue-da-xac-nhan",
+      "loai": "clue",
+      "heading": "[Đã ký xác nhận]",
+      "fields": {
+        "Tiêu đề": "Trạng thái \"đã ký xác nhận\"",
+        "Giá trị cho trình dựng": "DA_XAC_NHAN",
+        "Nguồn": "Bản xuất sổ sử dụng phòng",
+        "Nội dung": "Chỉ dòng có trạng thái DA_XAC_NHAN mới có chữ ký trong sổ giấy. DU_KIEN là lịch đặt trước, chưa diễn ra."
+      },
+      "quotes": {}
+    },
+    "clue-v2-so-giay": {
+      "id": "clue-v2-so-giay",
+      "loai": "clue",
+      "heading": "[Sổ giấy khớp bốn buổi]",
+      "fields": {
+        "Tiêu đề": "Sổ giấy: bốn buổi đủ chữ ký",
+        "Nguồn": "Duy dò sổ giấy với phiếu tra",
+        "Nội dung": "Bốn mã buổi trên phiếu đều có chữ ký trong sổ giấy; dòng 30/10 còn để trống ô ký. Sổ giấy là nguồn riêng, khớp với bản xuất. Cả hai không ghi ai tới dự."
+      },
+      "quotes": {}
+    },
+    "doc-mic-so-tai-san": {
+      "id": "doc-mic-so-tai-san",
+      "loai": "doc",
+      "heading": "Sổ tài sản và phiếu luân chuyển",
+      "fields": {
+        "Tiêu đề": "Sổ tài sản CLB và phiếu luân chuyển của tòa nhà",
+        "Nguồn": "Duy giữ sổ tài sản; phiếu luân chuyển do tổ thiết bị tòa nhà lập",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Sổ tài sản: mã tài sản, tên, chỗ để ghi lúc kiểm kê đầu kỳ. Năm thiết bị, trong đó có hai chiếc micro.",
+          "Phiếu luân chuyển: mã phiếu, mã tài sản, nơi chuyển tới, người nhận, ngày, trạng thái. Phiếu không ghi tên thiết bị.",
+          "Cả hai bảng đều có cột vi_tri, nhưng ở sổ là chỗ để đầu kỳ, ở phiếu là nơi chuyển tới."
+        ]
+      }
+    },
+    "clue-mic-ten": {
+      "id": "clue-mic-ten",
+      "loai": "clue",
+      "heading": "[Micro không dây]",
+      "fields": {
+        "Tiêu đề": "Tên thiết bị trong sổ tài sản",
+        "Giá trị cho trình dựng": "Micro không dây",
+        "Nguồn": "Sổ tài sản CLB",
+        "Nội dung": "Sổ tài sản ghi tên thiết bị ở cột ten_tai_san. Chiếc cần kiểm kê là \"Micro không dây\"; sổ còn một chiếc \"Micro có dây\"."
+      },
+      "quotes": {}
+    },
+    "clue-mic-da-nhan": {
+      "id": "clue-mic-da-nhan",
+      "loai": "clue",
+      "heading": "[Đã nhận]",
+      "fields": {
+        "Tiêu đề": "Trạng thái phiếu đã có người nhận",
+        "Giá trị cho trình dựng": "DA_NHAN",
+        "Nguồn": "Phiếu luân chuyển",
+        "Nội dung": "Phiếu DA_NHAN là phiếu đã có chữ ký người nhận, thiết bị đã thật sự chuyển. DE_XUAT là phiếu mới đề xuất, chưa ai nhận."
+      },
+      "quotes": {}
+    },
+    "clue-mic-ma-dan": {
+      "id": "clue-mic-ma-dan",
+      "loai": "clue",
+      "heading": "[Mã dán trên micro: MIC-02]",
+      "fields": {
+        "Tiêu đề": "Nhãn dán trên chiếc micro trong tủ dùng chung",
+        "Nguồn": "Duy và Minh Anh mở tủ xem",
+        "Nội dung": "Chiếc micro không dây trong tủ thiết bị dùng chung mang nhãn MIC-02, đúng mã trên phiếu PX-17. Phiếu và vật khớp nhau; không ai ghi vì sao sổ CLB chưa được sửa."
+      },
+      "quotes": {}
+    },
+    "doc-hoan-ban-xuat": {
+      "id": "doc-hoan-ban-xuat",
+      "loai": "doc",
+      "heading": "Bản xuất thu chi buổi hướng dẫn SQL",
+      "fields": {
+        "Tiêu đề": "Bản xuất giao dịch, buổi hướng dẫn SQL cho tân thành viên",
+        "Nguồn": "Minh Anh xuất từ sổ thu chi CLB",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Tám dòng, năm cột: mã giao dịch, mã phiếu, loại, số tiền, mã tham chiếu.",
+          "Loại CHI là khoản đã chi; loại HOAN là khoản được hoàn lại, số tiền ghi âm.",
+          "Đây là nguồn cần kiểm, chưa phải bằng chứng ai làm sai."
+        ]
+      }
+    },
+    "clue-hoan-loai": {
+      "id": "clue-hoan-loai",
+      "loai": "clue",
+      "heading": "[Hoàn tiền]",
+      "fields": {
+        "Tiêu đề": "Loại giao dịch hoàn tiền",
+        "Giá trị cho trình dựng": "HOAN",
+        "Nguồn": "Bản xuất thu chi",
+        "Nội dung": "Cột loai ghi CHI cho khoản chi, HOAN cho khoản hoàn lại."
+      },
+      "quotes": {}
+    },
+    "clue-hoan-mot-dong": {
+      "id": "clue-hoan-mot-dong",
+      "loai": "clue",
+      "heading": "[Một dòng]",
+      "fields": {
+        "Tiêu đề": "Mỗi lần hoàn chỉ có một dòng",
+        "Giá trị cho trình dựng": "1",
+        "Nguồn": "Cách ghi sổ thu chi, Duy nhắc",
+        "Nội dung": "Một lần hoàn tiền chỉ ghi một dòng. Phiếu có số dòng hoàn lớn hơn 1 thì cần mở chứng từ gốc ra xem."
+      },
+      "quotes": {}
+    },
+    "doc-hoan-bien-nhan": {
+      "id": "doc-hoan-bien-nhan",
+      "loai": "doc",
+      "heading": "Biên nhận ngân hàng của phiếu PH-04",
+      "fields": {
+        "Tiêu đề": "Biên nhận hoàn tiền, phiếu PH-04",
+        "Nguồn": "Ngân hàng gửi, Minh Anh giữ",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Phiếu PH-04. Một giao dịch hoàn: 60.000 đồng. Mã tham chiếu NH-771.",
+          "Biên nhận không ghi ai nhập dòng nào vào sổ."
+        ]
+      }
     }
   },
   "soTay": {
@@ -3565,6 +11062,22 @@ export const KICH_BAN_MVP = {
         }
       ],
       "chuThich": "`AND`: phải thỏa cả hai điều kiện (phần giao). `OR`: thỏa một là đủ (phần hợp)."
+    },
+    "chuan-hoa": {
+      "id": "chuan-hoa",
+      "ten": "Gọt chữ trước khi so: TRIM và LOWER",
+      "loai": "cú pháp",
+      "trangChiLinh": [
+        "Dữ liệu người gõ tay ít khi sạch. Thừa một dấu cách, lệch một chữ hoa là máy coi như hai thứ khác nhau. Gọt cho về cùng một kiểu rồi mới so."
+      ],
+      "haVy": [
+        {
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Với mình thì viết hoa hay viết thường vẫn là một phòng. Với máy thì phải khớp từng ký tự, kể cả dấu cách ở đuôi."
+        }
+      ],
+      "chuThich": "`TRIM(cột)`: bỏ dấu cách ở đầu và cuối. `LOWER(cột)`: đổi về chữ thường. Gọt cột rồi mới so với giá trị."
     },
     "kiem-hai-lan": {
       "id": "kiem-hai-lan",
@@ -3591,6 +11104,22 @@ export const KICH_BAN_MVP = {
         }
       ],
       "chuThich": "`=` phải khớp nguyên chữ. Chỉ biết chữ đầu thì dùng \"bắt đầu bằng\": `ten LIKE 'H%'` (dấu % là phần chữ còn lại)."
+    },
+    "sap-xep": {
+      "id": "sap-xep",
+      "ten": "Xếp kết quả: ORDER BY",
+      "loai": "cú pháp",
+      "trangChiLinh": [
+        "Lọc xong mà để nguyên thì máy trả dòng theo thứ tự nó tìm thấy. Muốn dò với sổ giấy thì xếp theo đúng cột mà sổ giấy xếp."
+      ],
+      "haVy": [
+        {
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Xếp không thêm bớt dòng nào cả. Nó chỉ đổi chỗ các dòng để mình dò cho dễ."
+        }
+      ],
+      "chuThich": "`ORDER BY cột`: xếp kết quả tăng dần theo cột đó. Thêm `DESC` để xếp giảm dần."
     },
     "where-chu": {
       "id": "where-chu",
@@ -3672,6 +11201,156 @@ export const KICH_BAN_MVP = {
       "soDong": 2,
       "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:26 thẻ c-sua-or-quan, SQL chuẩn",
       "resultId": "ev-hai-dong-sua"
+    },
+    {
+      "sql": "SELECT ma_don, ngay, nguoi_dat, linh_kien, so_tien, ma_phien FROM don_linh_kien WHERE trang_thai = 'DA_DUYET';",
+      "soDong": 8,
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:3 thẻ c-don-da-duyet, SQL chuẩn",
+      "resultId": "ev-don-da-duyet"
+    },
+    {
+      "sql": "SELECT nguoi_dat, COUNT(*) AS so_dong FROM @ev-don-da-duyet GROUP BY nguoi_dat;",
+      "soDong": 4,
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:24 thẻ c-don-theo-nguoi, SQL chuẩn",
+      "resultId": "ev-don-theo-nguoi",
+      "sourceResultId": "ev-don-da-duyet",
+      "sourceGroupColumn": "nguoi_dat"
+    },
+    {
+      "sql": "SELECT ma_don, linh_kien, may, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE nguoi_dat = 'Nam';",
+      "soDong": 5,
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:43 thẻ c-don-nam-may, SQL chuẩn",
+      "resultId": "ev-don-nam-may"
+    },
+    {
+      "sql": "SELECT may, COUNT(*) AS so_dong FROM @ev-don-nam-may GROUP BY may;",
+      "soDong": 2,
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:67 thẻ c-don-nam-theo-may, SQL chuẩn",
+      "resultId": "ev-don-nam-theo-may",
+      "sourceResultId": "ev-don-nam-may",
+      "sourceGroupColumn": "may"
+    },
+    {
+      "sql": "SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE may = 'MAY-VP-XUONG';",
+      "soDong": 4,
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:86 thẻ c-may-vp, SQL chuẩn",
+      "resultId": "ev-may-vp"
+    },
+    {
+      "sql": "SELECT ma_gd, ma_phieu, so_tien, ma_tham_chieu FROM giao_dich WHERE loai = 'HOAN';",
+      "soDong": 4,
+      "noi": "noi-dung-mvp/thu-thach/phu-hoan-tien.md:3 thẻ c-hoan-loc, SQL chuẩn",
+      "resultId": "ev-hoan-loc"
+    },
+    {
+      "sql": "SELECT ma_phieu, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM @ev-hoan-loc GROUP BY ma_phieu HAVING COUNT(*) > 1;",
+      "soDong": 1,
+      "noi": "noi-dung-mvp/thu-thach/phu-hoan-tien.md:23 thẻ c-hoan-nhom, SQL chuẩn",
+      "resultId": "ev-hoan-nhom",
+      "sourceResultId": "ev-hoan-loc"
+    },
+    {
+      "sql": "SELECT ma_phieu, ten_tai_san, luan_chuyen.vi_tri, nguoi_nhan FROM luan_chuyen JOIN tai_san ON luan_chuyen.ma_tai_san = tai_san.ma_tai_san WHERE ten_tai_san = 'Micro không dây' AND trang_thai = 'DA_NHAN';",
+      "soDong": 1,
+      "noi": "noi-dung-mvp/thu-thach/phu-micro.md:3 thẻ c-mic-phieu, SQL chuẩn",
+      "resultId": "ev-mic-phieu"
+    },
+    {
+      "sql": "SELECT ma_don, nguoi_dat, so_tien, so_luong_co FROM don_linh_kien JOIN kiem_ke ON don_linh_kien.linh_kien = kiem_ke.linh_kien WHERE so_luong_co = 0;",
+      "soDong": 3,
+      "noi": "noi-dung-mvp/thu-thach/so-quy.md:3 thẻ c-dat-ma-khong-co, SQL chuẩn",
+      "resultId": "ev-dat-ma-khong-co"
+    },
+    {
+      "sql": "SELECT ma_chi, ma_don, so_tien, nguoi_duyet, ngay_chi FROM khoan_chi JOIN quy ON khoan_chi.ma_quy = quy.ma_quy WHERE clb = 'THAM_TU';",
+      "soDong": 6,
+      "noi": "noi-dung-mvp/thu-thach/so-quy.md:25 thẻ c-chi-tham-tu, SQL chuẩn",
+      "resultId": "ev-chi-tham-tu"
+    },
+    {
+      "sql": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet;",
+      "soDong": 2,
+      "noi": "noi-dung-mvp/thu-thach/so-quy.md:47 thẻ c-chi-theo-nguoi-duyet, SQL chuẩn",
+      "resultId": "ev-chi-theo-nguoi-duyet",
+      "sourceResultId": "ev-chi-tham-tu"
+    },
+    {
+      "sql": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_tien) AS tb_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet HAVING SUM(so_tien) > 1000000;",
+      "soDong": 1,
+      "noi": "noi-dung-mvp/thu-thach/so-quy.md:65 thẻ c-chi-vuot-muc, SQL chuẩn",
+      "resultId": "ev-chi-vuot-muc",
+      "sourceResultId": "ev-chi-tham-tu"
+    },
+    {
+      "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB Thám Tử soi dữ liệu%';",
+      "soDong": 5,
+      "noi": "noi-dung-mvp/thu-thach/tin-don.md:3 thẻ c-tin-don, SQL chuẩn",
+      "resultId": "ev-tin-don"
+    },
+    {
+      "sql": "SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';",
+      "soDong": 1,
+      "noi": "noi-dung-mvp/thu-thach/tin-don.md:24 thẻ c-tin-goc, SQL chuẩn",
+      "resultId": "ev-tin-goc",
+      "sourceResultId": "ev-tin-don"
+    },
+    {
+      "sql": "SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = '2024-10-07';",
+      "soDong": 2,
+      "noi": "noi-dung-mvp/thu-thach/tin-don.md:47 thẻ c-tin-may, SQL chuẩn",
+      "resultId": "ev-tin-may"
+    },
+    {
+      "sql": "SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';",
+      "soDong": 1,
+      "noi": "noi-dung-mvp/thu-thach/tin-don.md:68 thẻ c-tin-xuong, SQL chuẩn",
+      "resultId": "ev-tin-xuong"
+    },
+    {
+      "sql": "SELECT ma_bai, ngay, buoi, thiet_bi FROM bai_dang_kenh WHERE kenh = 'clb_robotics';",
+      "soDong": 9,
+      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:3 thẻ c-bai-dang, SQL chuẩn",
+      "resultId": "ev-bai-dang"
+    },
+    {
+      "sql": "SELECT thiet_bi, COUNT(*) AS so_dong FROM @ev-bai-dang GROUP BY thiet_bi;",
+      "soDong": 2,
+      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:23 thẻ c-bai-thiet-bi, SQL chuẩn",
+      "resultId": "ev-bai-thiet-bi",
+      "sourceResultId": "ev-bai-dang",
+      "sourceGroupColumn": "thiet_bi"
+    },
+    {
+      "sql": "SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Nam';",
+      "soDong": 5,
+      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:42 thẻ c-nam-thu-vien, SQL chuẩn",
+      "resultId": "ev-nam-thu-vien"
+    },
+    {
+      "sql": "SELECT thu, COUNT(*) AS so_dong FROM @ev-nam-thu-vien GROUP BY thu;",
+      "soDong": 2,
+      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:62 thẻ c-nam-thu, SQL chuẩn",
+      "resultId": "ev-nam-thu",
+      "sourceResultId": "ev-nam-thu-vien",
+      "sourceGroupColumn": "thu"
+    },
+    {
+      "sql": "SELECT ten, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ngay = '2024-10-07';",
+      "soDong": 2,
+      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:81 thẻ c-toi-07, SQL chuẩn",
+      "resultId": "ev-toi-07"
+    },
+    {
+      "sql": "SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';",
+      "soDong": 5,
+      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:102 thẻ c-vy-thu-vien, SQL chuẩn",
+      "resultId": "ev-vy-thu-vien"
+    },
+    {
+      "sql": "SELECT ma_buoi, ngay, hoat_dong FROM nhat_ky_su_dung WHERE LOWER(TRIM(ma_phong)) = 'clb-tham-tu' AND trang_thai = 'DA_XAC_NHAN' ORDER BY ngay;",
+      "soDong": 4,
+      "noi": "noi-dung-mvp/thu-thach/v2-loc-buoi.md:3 thẻ v2-loc-buoi, SQL chuẩn",
+      "resultId": "ev-v2-activities"
     },
     {
       "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat;",
@@ -4032,7 +11711,7 @@ export const KICH_BAN_MVP = {
           ],
           [
             "2024-09-15 23:10",
-            "SV210745",
+            "clb_robotics",
             "kien-nghi-phong-clb.docx",
             1
           ],
@@ -4050,9 +11729,1169 @@ export const KICH_BAN_MVP = {
           ],
           [
             "2024-09-16 08:05",
-            "SV210745",
+            "clb_robotics",
             "don-xin-xuong-thuc-hanh.docx",
             2
+          ]
+        ]
+      },
+      {
+        "ten": "nhat_ky_su_dung",
+        "cot": [
+          {
+            "ten": "ma_buoi",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ma_phong",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ngay",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "hoat_dong",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "trang_thai",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "BUOI-08",
+            "clb-tham-tu",
+            "2024-10-23",
+            "Hướng dẫn tân thành viên",
+            "DA_XAC_NHAN"
+          ],
+          [
+            "BUOI-01",
+            "P-KHO-CHUNG",
+            "2024-10-01",
+            "Nhận vật tư",
+            "DA_XAC_NHAN"
+          ],
+          [
+            "BUOI-06",
+            "CLB-THAM-TU  ",
+            "2024-10-16",
+            "Kiểm kê hồ sơ",
+            "DA_XAC_NHAN"
+          ],
+          [
+            "BUOI-05",
+            "clb-tham-tu",
+            "2024-10-30",
+            "Ôn SQL dự kiến",
+            "DU_KIEN"
+          ],
+          [
+            "BUOI-02",
+            "CLB-THAM-TU",
+            "2024-10-02",
+            "Họp thành viên",
+            "DA_XAC_NHAN"
+          ],
+          [
+            "BUOI-04",
+            "clb-tham-tu  ",
+            "2024-10-09",
+            "Ôn SQL",
+            "DA_XAC_NHAN"
+          ],
+          [
+            "BUOI-03",
+            "P-KHO-CHUNG",
+            "2024-10-06",
+            "Nhận vật tư",
+            "DA_XAC_NHAN"
+          ]
+        ]
+      },
+      {
+        "ten": "tin_nhan",
+        "cot": [
+          {
+            "ten": "ma_tin",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "thoi_diem",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "tai_khoan",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "loai",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "noi_dung",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "T-01",
+            "2024-10-07 22:40",
+            "clb_robotics",
+            "GOC",
+            "CLB Thám Tử soi dữ liệu sinh viên"
+          ],
+          [
+            "T-02",
+            "2024-10-07 22:55",
+            "SV240254",
+            "CHUYEN_TIEP",
+            "CLB Thám Tử soi dữ liệu sinh viên"
+          ],
+          [
+            "T-03",
+            "2024-10-08 07:10",
+            "SV230311",
+            "CHUYEN_TIEP",
+            "CLB Thám Tử soi dữ liệu sinh viên"
+          ],
+          [
+            "T-04",
+            "2024-10-08 07:30",
+            "SV240213",
+            "GOC",
+            "Ai nhặt được thẻ xe ở căng tin"
+          ],
+          [
+            "T-05",
+            "2024-10-08 08:02",
+            "SV220118",
+            "CHUYEN_TIEP",
+            "CLB Thám Tử soi dữ liệu sinh viên"
+          ],
+          [
+            "T-06",
+            "2024-10-08 09:15",
+            "clb_robotics",
+            "GOC",
+            "Tuyển thành viên đội robot"
+          ],
+          [
+            "T-07",
+            "2024-10-08 11:40",
+            "SV240131",
+            "CHUYEN_TIEP",
+            "CLB Thám Tử soi dữ liệu sinh viên"
+          ],
+          [
+            "T-08",
+            "2024-10-08 12:05",
+            "SV240412",
+            "GOC",
+            "Nghe nói CLB Thám Tử soi điểm"
+          ]
+        ]
+      },
+      {
+        "ten": "dang_nhap_kenh",
+        "cot": [
+          {
+            "ten": "tai_khoan",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "may",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ngay",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "gio",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "clb_robotics",
+            "MAY-XUONG-02",
+            "2024-10-07",
+            "15:10"
+          ],
+          [
+            "clb_robotics",
+            "MAY-VP-XUONG",
+            "2024-10-07",
+            "22:31"
+          ],
+          [
+            "clb_robotics",
+            "MAY-XUONG-02",
+            "2024-10-08",
+            "09:05"
+          ],
+          [
+            "SV240254",
+            "DIEN-THOAI",
+            "2024-10-07",
+            "22:50"
+          ],
+          [
+            "SV240213",
+            "DIEN-THOAI",
+            "2024-10-08",
+            "07:25"
+          ]
+        ]
+      },
+      {
+        "ten": "dat_xuong",
+        "cot": [
+          {
+            "ten": "ngay",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "thu",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "tu_gio",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "den_gio",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "muc_dich",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "2024-10-07",
+            "THU_HAI",
+            "19:00",
+            "23:00",
+            "Đội thi đấu tập"
+          ],
+          [
+            "2024-10-08",
+            "THU_BA",
+            "14:00",
+            "17:00",
+            "Sinh hoạt thành viên"
+          ],
+          [
+            "2024-10-09",
+            "THU_TU",
+            "19:00",
+            "21:00",
+            "Đội thi đấu tập"
+          ],
+          [
+            "2024-10-10",
+            "THU_NAM",
+            "14:00",
+            "16:00",
+            "Hướng dẫn thành viên mới"
+          ],
+          [
+            "2024-10-11",
+            "THU_SAU",
+            "19:00",
+            "21:30",
+            "Đội thi đấu tập"
+          ],
+          [
+            "2024-10-12",
+            "THU_BAY",
+            "08:00",
+            "11:00",
+            "Dọn xưởng"
+          ]
+        ]
+      },
+      {
+        "ten": "bai_dang_kenh",
+        "cot": [
+          {
+            "ten": "ma_bai",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "kenh",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ngay",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "buoi",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "thiet_bi",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "BD-01",
+            "clb_robotics",
+            "2024-10-01",
+            "CHIEU",
+            "DIEN-THOAI-TRUC"
+          ],
+          [
+            "BD-02",
+            "clb_van_nghe",
+            "2024-10-01",
+            "TOI",
+            "DIEN-THOAI"
+          ],
+          [
+            "BD-03",
+            "clb_robotics",
+            "2024-10-02",
+            "CHIEU",
+            "DIEN-THOAI-TRUC"
+          ],
+          [
+            "BD-04",
+            "clb_robotics",
+            "2024-10-03",
+            "CHIEU",
+            "DIEN-THOAI-TRUC"
+          ],
+          [
+            "BD-05",
+            "clb_tham_tu",
+            "2024-10-03",
+            "CHIEU",
+            "MAY-CLB"
+          ],
+          [
+            "BD-06",
+            "clb_robotics",
+            "2024-10-04",
+            "CHIEU",
+            "DIEN-THOAI-TRUC"
+          ],
+          [
+            "BD-07",
+            "clb_robotics",
+            "2024-10-05",
+            "CHIEU",
+            "DIEN-THOAI-TRUC"
+          ],
+          [
+            "BD-08",
+            "clb_van_nghe",
+            "2024-10-06",
+            "TOI",
+            "DIEN-THOAI"
+          ],
+          [
+            "BD-09",
+            "clb_robotics",
+            "2024-10-07",
+            "CHIEU",
+            "DIEN-THOAI-TRUC"
+          ],
+          [
+            "BD-10",
+            "clb_robotics",
+            "2024-10-07",
+            "TOI",
+            "MAY-VP-XUONG"
+          ],
+          [
+            "BD-11",
+            "clb_robotics",
+            "2024-10-08",
+            "CHIEU",
+            "DIEN-THOAI-TRUC"
+          ],
+          [
+            "BD-12",
+            "clb_tham_tu",
+            "2024-10-08",
+            "CHIEU",
+            "MAY-CLB"
+          ],
+          [
+            "BD-13",
+            "clb_robotics",
+            "2024-10-09",
+            "CHIEU",
+            "DIEN-THOAI-TRUC"
+          ],
+          [
+            "BD-14",
+            "clb_van_nghe",
+            "2024-10-09",
+            "TOI",
+            "DIEN-THOAI"
+          ]
+        ]
+      },
+      {
+        "ten": "quet_the_thu_vien",
+        "cot": [
+          {
+            "ten": "ten",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ngay",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "thu",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "gio_vao",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "gio_ra",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "Nam",
+            "2024-09-16",
+            "THU_HAI",
+            "21:45",
+            "23:00"
+          ],
+          [
+            "Hà Vy",
+            "2024-09-16",
+            "THU_HAI",
+            "20:00",
+            "22:50"
+          ],
+          [
+            "Nam",
+            "2024-09-23",
+            "THU_HAI",
+            "21:50",
+            "23:05"
+          ],
+          [
+            "Hà Vy",
+            "2024-09-23",
+            "THU_HAI",
+            "20:05",
+            "23:00"
+          ],
+          [
+            "Nam",
+            "2024-09-26",
+            "THU_NAM",
+            "19:30",
+            "21:00"
+          ],
+          [
+            "Nam",
+            "2024-09-30",
+            "THU_HAI",
+            "21:40",
+            "23:00"
+          ],
+          [
+            "Hà Vy",
+            "2024-09-30",
+            "THU_HAI",
+            "20:00",
+            "22:55"
+          ],
+          [
+            "Hà Vy",
+            "2024-10-02",
+            "THU_TU",
+            "19:00",
+            "20:30"
+          ],
+          [
+            "Nam",
+            "2024-10-07",
+            "THU_HAI",
+            "21:50",
+            "23:05"
+          ],
+          [
+            "Hà Vy",
+            "2024-10-07",
+            "THU_HAI",
+            "20:00",
+            "23:00"
+          ]
+        ]
+      },
+      {
+        "ten": "don_linh_kien",
+        "cot": [
+          {
+            "ten": "ma_don",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ngay",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "nguoi_dat",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "linh_kien",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "so_luong",
+            "kieu": "INTEGER"
+          },
+          {
+            "ten": "so_tien",
+            "kieu": "INTEGER"
+          },
+          {
+            "ten": "ma_phien",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "trang_thai",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "DLK-01",
+            "2024-09-20",
+            "Nam",
+            "Cảm biến dò line",
+            4,
+            120000,
+            "PH-11",
+            "DA_DUYET"
+          ],
+          [
+            "DLK-02",
+            "2024-09-24",
+            "Bách",
+            "Pin 18650",
+            10,
+            200000,
+            "PH-12",
+            "DA_DUYET"
+          ],
+          [
+            "DLK-03",
+            "2024-09-27",
+            "Nam",
+            "Động cơ servo",
+            8,
+            800000,
+            "PH-13",
+            "DA_DUYET"
+          ],
+          [
+            "DLK-04",
+            "2024-10-01",
+            "Thảo",
+            "Dây nối",
+            20,
+            60000,
+            "PH-14",
+            "DA_DUYET"
+          ],
+          [
+            "DLK-05",
+            "2024-10-02",
+            "Nam",
+            "Bánh xe",
+            6,
+            150000,
+            "PH-15",
+            "DA_DUYET"
+          ],
+          [
+            "DLK-06",
+            "2024-10-04",
+            "Nam",
+            "Mạch điều khiển",
+            3,
+            900000,
+            "PH-16",
+            "DA_DUYET"
+          ],
+          [
+            "DLK-07",
+            "2024-10-05",
+            "Khánh",
+            "Ốc vít",
+            100,
+            40000,
+            "PH-17",
+            "DA_DUYET"
+          ],
+          [
+            "DLK-08",
+            "2024-10-07",
+            "Nam",
+            "Bộ khung nhôm",
+            2,
+            700000,
+            "PH-18",
+            "DA_DUYET"
+          ],
+          [
+            "DLK-09",
+            "2024-10-08",
+            "Thảo",
+            "Keo dán",
+            5,
+            30000,
+            "PH-19",
+            "CHO_DUYET"
+          ],
+          [
+            "DLK-10",
+            "2024-10-08",
+            "Bách",
+            "Mỏ hàn",
+            2,
+            180000,
+            "PH-20",
+            "CHO_DUYET"
+          ]
+        ]
+      },
+      {
+        "ten": "phien_dang_nhap",
+        "cot": [
+          {
+            "ten": "ma_phien",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "may",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ngay",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "gio",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "PH-11",
+            "MAY-XUONG-02",
+            "2024-09-20",
+            "15:20"
+          ],
+          [
+            "PH-12",
+            "MAY-XUONG-01",
+            "2024-09-24",
+            "16:05"
+          ],
+          [
+            "PH-13",
+            "MAY-VP-XUONG",
+            "2024-09-27",
+            "21:50"
+          ],
+          [
+            "PH-14",
+            "MAY-XUONG-01",
+            "2024-10-01",
+            "14:40"
+          ],
+          [
+            "PH-15",
+            "MAY-XUONG-02",
+            "2024-10-02",
+            "15:45"
+          ],
+          [
+            "PH-16",
+            "MAY-VP-XUONG",
+            "2024-10-04",
+            "22:10"
+          ],
+          [
+            "PH-17",
+            "MAY-VP-XUONG",
+            "2024-10-05",
+            "10:15"
+          ],
+          [
+            "PH-18",
+            "MAY-VP-XUONG",
+            "2024-10-07",
+            "22:05"
+          ],
+          [
+            "PH-19",
+            "MAY-XUONG-01",
+            "2024-10-08",
+            "15:00"
+          ],
+          [
+            "PH-20",
+            "MAY-XUONG-01",
+            "2024-10-08",
+            "16:30"
+          ],
+          [
+            "PH-21",
+            "MAY-XUONG-01",
+            "2024-10-07",
+            "16:00"
+          ],
+          [
+            "PH-22",
+            "MAY-XUONG-02",
+            "2024-09-27",
+            "15:30"
+          ],
+          [
+            "PH-23",
+            "MAY-VP-XUONG",
+            "2024-10-02",
+            "10:40"
+          ]
+        ]
+      },
+      {
+        "ten": "kiem_ke",
+        "cot": [
+          {
+            "ten": "linh_kien",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "so_luong_co",
+            "kieu": "INTEGER"
+          }
+        ],
+        "dong": [
+          [
+            "Cảm biến dò line",
+            4
+          ],
+          [
+            "Pin 18650",
+            9
+          ],
+          [
+            "Động cơ servo",
+            0
+          ],
+          [
+            "Dây nối",
+            18
+          ],
+          [
+            "Bánh xe",
+            6
+          ],
+          [
+            "Mạch điều khiển",
+            0
+          ],
+          [
+            "Ốc vít",
+            85
+          ],
+          [
+            "Bộ khung nhôm",
+            0
+          ],
+          [
+            "Keo dán",
+            3
+          ],
+          [
+            "Mỏ hàn",
+            2
+          ]
+        ]
+      },
+      {
+        "ten": "quy",
+        "cot": [
+          {
+            "ten": "ma_quy",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "clb",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ten_quy",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "Q-TT",
+            "THAM_TU",
+            "Quỹ CLB Thám Tử Dữ Liệu"
+          ],
+          [
+            "Q-RB",
+            "ROBOTICS",
+            "Quỹ CLB Robotics"
+          ]
+        ]
+      },
+      {
+        "ten": "khoan_chi",
+        "cot": [
+          {
+            "ten": "ma_chi",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ma_don",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ma_quy",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "so_tien",
+            "kieu": "INTEGER"
+          },
+          {
+            "ten": "nguoi_duyet",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ngay_chi",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "KC-01",
+            "DLK-01",
+            "Q-RB",
+            120000,
+            "Bách",
+            "2024-09-20"
+          ],
+          [
+            "KC-02",
+            "DLK-02",
+            "Q-RB",
+            200000,
+            "Bách",
+            "2024-09-24"
+          ],
+          [
+            "KC-03",
+            "DLK-03",
+            "Q-TT",
+            800000,
+            "Khánh",
+            "2024-09-10"
+          ],
+          [
+            "KC-04",
+            "DLK-04",
+            "Q-RB",
+            60000,
+            "Bách",
+            "2024-10-01"
+          ],
+          [
+            "KC-05",
+            "DLK-05",
+            "Q-RB",
+            150000,
+            "Bách",
+            "2024-10-02"
+          ],
+          [
+            "KC-06",
+            "DLK-06",
+            "Q-TT",
+            900000,
+            "Khánh",
+            "2024-09-11"
+          ],
+          [
+            "KC-07",
+            "DLK-07",
+            "Q-RB",
+            40000,
+            "Khánh",
+            "2024-10-05"
+          ],
+          [
+            "KC-08",
+            "DLK-08",
+            "Q-TT",
+            700000,
+            "Khánh",
+            "2024-09-12"
+          ],
+          [
+            "KC-09",
+            "VPP-01",
+            "Q-TT",
+            150000,
+            "Minh Anh",
+            "2024-09-18"
+          ],
+          [
+            "KC-10",
+            "VPP-02",
+            "Q-TT",
+            120000,
+            "Minh Anh",
+            "2024-10-03"
+          ],
+          [
+            "KC-11",
+            "VPP-03",
+            "Q-TT",
+            180000,
+            "Minh Anh",
+            "2024-10-09"
+          ]
+        ]
+      },
+      {
+        "ten": "tai_san",
+        "cot": [
+          {
+            "ten": "ma_tai_san",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ten_tai_san",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "vi_tri",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "MIC-01",
+            "Micro có dây",
+            "TU_CLB"
+          ],
+          [
+            "MIC-02",
+            "Micro không dây",
+            "TU_CLB"
+          ],
+          [
+            "CAM-01",
+            "Máy ảnh CLB",
+            "TU_CLB"
+          ],
+          [
+            "LOA-01",
+            "Loa kéo",
+            "KHO_CHUNG"
+          ],
+          [
+            "CHAN-01",
+            "Chân máy ảnh",
+            "TU_CLB"
+          ]
+        ]
+      },
+      {
+        "ten": "luan_chuyen",
+        "cot": [
+          {
+            "ten": "ma_phieu",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ma_tai_san",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "vi_tri",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "nguoi_nhan",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ngay",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "trang_thai",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "PX-11",
+            "MIC-01",
+            "TU_THIET_BI_CHUNG",
+            "Tổ thiết bị",
+            "2024-10-22",
+            "DA_NHAN"
+          ],
+          [
+            "PX-14",
+            "LOA-01",
+            "TU_CLB",
+            "Tùng",
+            "2024-10-23",
+            "DA_NHAN"
+          ],
+          [
+            "PX-17",
+            "MIC-02",
+            "TU_THIET_BI_CHUNG",
+            "Tổ thiết bị",
+            "2024-10-24",
+            "DA_NHAN"
+          ],
+          [
+            "PX-19",
+            "MIC-02",
+            "PHONG_AM_THANH",
+            "Minh Anh",
+            "2024-10-31",
+            "DE_XUAT"
+          ],
+          [
+            "PX-20",
+            "CAM-01",
+            "TU_CLB",
+            "Minh Anh",
+            "2024-10-28",
+            "DA_NHAN"
+          ],
+          [
+            "PX-21",
+            "MIC-01",
+            "PHONG_AM_THANH",
+            "Tùng",
+            "2024-10-31",
+            "DE_XUAT"
+          ],
+          [
+            "PX-22",
+            "CHAN-01",
+            "TU_CLB",
+            "Duy",
+            "2024-10-28",
+            "DA_NHAN"
+          ]
+        ]
+      },
+      {
+        "ten": "giao_dich",
+        "cot": [
+          {
+            "ten": "ma_gd",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ma_phieu",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "loai",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "so_tien",
+            "kieu": "INTEGER"
+          },
+          {
+            "ten": "ma_tham_chieu",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "GD-01",
+            "PH-01",
+            "CHI",
+            250000,
+            "CT-101"
+          ],
+          [
+            "GD-02",
+            "PH-01",
+            "HOAN",
+            -20000,
+            "NH-770"
+          ],
+          [
+            "GD-03",
+            "PH-02",
+            "CHI",
+            180000,
+            "CT-102"
+          ],
+          [
+            "GD-04",
+            "PH-03",
+            "CHI",
+            90000,
+            "CT-103"
+          ],
+          [
+            "GD-05",
+            "PH-04",
+            "CHI",
+            350000,
+            "CT-104"
+          ],
+          [
+            "GD-06",
+            "PH-04",
+            "HOAN",
+            -60000,
+            "NH-771"
+          ],
+          [
+            "GD-07",
+            "PH-04",
+            "HOAN",
+            -60000,
+            "NH-771"
+          ],
+          [
+            "GD-08",
+            "PH-06",
+            "HOAN",
+            -15000,
+            "NH-776"
           ]
         ]
       }
