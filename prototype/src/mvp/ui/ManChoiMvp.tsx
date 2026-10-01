@@ -77,6 +77,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
 
   /** Hồ sơ và Sổ cá nhân là hai tab của cùng một khung (phong cách hòm đồ prototype); `null` = đóng. */
   const [kho, setKho] = useState<TabHoSoMvp | null>(null);
+  const [gioiThieuMo, setGioiThieuMo] = useState<string | null>(null);
   const [lichSuMo, setLichSuMo] = useState(false);
   const [luuNap, setLuuNap] = useState<'save' | 'load' | null>(null);
   const [caiDat, setCaiDat] = useState(false);
@@ -162,20 +163,30 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     if (bieuCamNoi === 'stunned') soundEngine.playSfx('shake');
   }, [bieuCamNoi]);
 
-  const tiep = useCallback(() => hanhDong({ type: 'tiep' }), [hanhDong]);
-  const dongGioiThieu = useCallback((nhanVat: string) => hanhDong({ type: 'da-gioi-thieu', nhanVat }), [hanhDong]);
   const dongKho = useCallback(() => setKho(null), []);
   const choiLai = useCallback(() => {
     clearBacklog();
+    setGioiThieuMo(null);
     xoa();
     batDau();
   }, [clearBacklog, xoa, batDau]);
 
   if (!s || !kn) return null;
   const dienTen = (t: string): string => dienTenMay(kb, s, t);
-  // Màn "Nhân vật mới" (như prototype): nhân vật có thẻ giới thiệu nói lần đầu → hiện trước lời thoại.
+  // Thẻ giới thiệu chỉ được mở sau câu tự giới thiệu và cú bấm tiếp của người chơi.
   const gioiThieu = canGioiThieu(kb, s, kn);
-  const modalMo = kho !== null || lichSuMo || luuNap !== null || caiDat || lichMo || gioiThieu !== null;
+  const tiep = (): void => {
+    if (gioiThieu) {
+      setGioiThieuMo(gioiThieu);
+      return;
+    }
+    hanhDong({ type: 'tiep' });
+  };
+  const dongGioiThieu = (nhanVat: string): void => {
+    hanhDong({ type: 'da-gioi-thieu', nhanVat });
+    setGioiThieuMo(null);
+  };
+  const modalMo = kho !== null || lichSuMo || luuNap !== null || caiDat || lichMo || gioiThieuMo !== null;
   const loiHienTai: { speaker: string; expression?: string } | null =
     kn.kind === 'line' || kn.kind === 'feedback'
       ? kn.loi
@@ -369,10 +380,10 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   })();
 
   const game = (
-    <div className={`game mvp-game${laDoc ? ' game--portrait' : ''}${gioiThieu ? ' game--debut' : ''}`}>
+    <div className={`game mvp-game${laDoc ? ' game--portrait' : ''}${gioiThieuMo ? ' game--debut' : ''}`}>
       {toast ? <div className="vn-toast" role="status">{toast}</div> : null}
       {dotTheMoi[0] ? <TheMoiMvp key={dotTheMoi[0].map((t) => t.id).join('|')} danhSach={dotTheMoi[0]} dienTen={dienTen} onXong={xongDotTheMoi} /> : null}
-      {gioiThieu ? <GioiThieuMvp key={gioiThieu} kb={kb} nhanVat={gioiThieu} onDong={dongGioiThieu} /> : null}
+      {gioiThieuMo ? <GioiThieuMvp key={gioiThieuMo} kb={kb} nhanVat={gioiThieuMo} onDong={dongGioiThieu} /> : null}
       <HudMvp
         kb={kb}
         s={s}

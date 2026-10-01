@@ -722,7 +722,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ Tùng, học Du lịch."
+          "text": "Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ là Tùng, học Du lịch."
         },
         {
           "type": "create-character",
@@ -1126,7 +1126,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Tớ đăng ký qua form. Hà Vy, Toán ứng dụng."
+          "text": "Tớ đăng ký qua form. Tớ là Hà Vy, học Toán ứng dụng."
         },
         {
           "type": "line",

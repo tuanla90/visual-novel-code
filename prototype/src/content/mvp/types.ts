@@ -49,7 +49,7 @@ export interface NhanVatMvp {
   bieuCam: string[];
   xuatHienTu: MocMvp;
   chiQuaLoiKe: boolean;
-  /** Thẻ giới thiệu (màn "Nhân vật mới" khi nói lần đầu, tab Nhân vật của hồ sơ); `null` = không có. */
+  /** Thẻ giới thiệu (mở sau câu tự giới thiệu trong thoại, tab Nhân vật của hồ sơ); `null` = không có. */
   gioiThieu: GioiThieuNhanVatMvp | null;
 }
 

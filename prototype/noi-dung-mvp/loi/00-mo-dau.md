@@ -40,7 +40,7 @@
 - **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế? Thang máy đang bảo trì.
 - **tung** (happy): Khuất sau hành lang kia. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
 - **player**: Tầng bốn, phòng 408.
-- **tung** (happy): Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ {{nv.tung}}, học Du lịch.
+- **tung** (happy): Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ là {{nv.tung}}, học Du lịch.
 
 ## md-00-gap-tung.2
 - **tung** (happy): {{nv.nguoi-choi}} à. Dễ gọi đấy.
@@ -116,7 +116,7 @@
 - [DÀN DỰNG] Có mặt: {{nv.minh-anh}}, {{nv.duy}}, {{nv.ha-vy}}, {{nv.tung}}, người chơi. Bộ máy bàn cũ ở góc (nền vẽ sẵn); laptop CLB Duy cất trong tủ.
 - **narrator**: Bốn giờ chiều thứ Hai. Phòng CLB nhỏ, một bàn dài, một tủ hồ sơ, một bộ máy bàn phủ bụi ở góc.
 - **tung** (happy): Ơ, hôm Ngày hội tớ không thấy cậu nhỉ?
-- **ha-vy** (neutral): Tớ đăng ký qua form. {{nv.ha-vy}}, Toán ứng dụng.
+- **ha-vy** (neutral): Tớ đăng ký qua form. Tớ là {{nv.ha-vy}}, học Toán ứng dụng.
 - **tung** (happy): Toán! Thế là tớ có chỗ mượn vở rồi.
 - **ha-vy** (neutral): Mượn thì được, chép thì không.
 - **tung** (happy): Thế cậu đoán được tớ học gì không?

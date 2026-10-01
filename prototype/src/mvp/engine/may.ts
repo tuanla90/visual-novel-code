@@ -876,19 +876,15 @@ export function dienTen(kb: KichBanMvp, s: TrangThaiMvp, text: string): string {
 }
 
 /**
- * Nhân vật cần hiện màn "Nhân vật mới" lúc này: người đang nói (lời, phản hồi, người hỏi) có thẻ giới thiệu trong
- * nhan-vat.md và chưa được giới thiệu. `null` = không có.
+ * Nhân vật có lời thoại tự giới thiệu ngay lúc này. Chỉ câu mở đầu một mệnh đề tự xưng kiểu "Tôi là…", "Còn tớ là…"
+ * mới mở thẻ; gặp người lần đầu trong một câu chuyện khác không tự bật giới thiệu. `null` = không có.
  */
 export function canGioiThieu(kb: KichBanMvp, s: TrangThaiMvp, kn: KhungNhinMvp): string | null {
-  const nguoi =
-    kn.kind === 'line' || kn.kind === 'feedback'
-      ? kn.loi.speaker
-      : kn.kind === 'question' || kn.kind === 'branch'
-        ? kn.nut.asker.speaker
-        : kn.kind === 'create-character'
-          ? kn.nut.asker.speaker
-          : null;
+  if (kn.kind !== 'line') return null;
+  const nguoi = kn.loi.speaker;
   if (!nguoi || (s.daGioiThieu ?? []).includes(nguoi)) return null;
+  const tuGioiThieu = /(?:^|[.!?…]\s+)(?:còn\s+)?(?:tôi|mình|tớ|tui|em|anh|chị|chú|cô|thầy)\s+là\s+/iu.test(kn.loi.text.normalize('NFC'));
+  if (!tuGioiThieu) return null;
   return kb.nhanVat.find((n) => n.id === nguoi)?.gioiThieu ? nguoi : null;
 }
 

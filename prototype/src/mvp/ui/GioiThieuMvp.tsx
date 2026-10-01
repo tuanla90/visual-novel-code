@@ -1,7 +1,7 @@
 /**
  * Màn "Nhân vật mới" của bản MVP — cùng giao diện prototype (`CharacterDebutCard`, `character-debut.css`), dữ liệu từ thẻ
  * giới thiệu trong nhan-vat.md (`NhanVatMvp.gioiThieu`). Ảnh: `intro-<mã>` (16:9) nếu có, không thì chân dung trong khung.
- * Hiện khi nhân vật nói lần đầu (`canGioiThieu` trong máy); đóng → `da-gioi-thieu`.
+ * Chỉ mở sau khi người chơi bấm tiếp ở câu tự giới thiệu; đóng → `da-gioi-thieu`.
  */
 import '../../story/ui/character-debut.css';
 import type { KichBanMvp } from '../../content/mvp/types';
