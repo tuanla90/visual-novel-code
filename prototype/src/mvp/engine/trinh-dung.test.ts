@@ -1,13 +1,14 @@
 // @vitest-environment node
 /**
- * Trình dựng câu phòng máy (QĐ-092): khung khóa từ SQL chuẩn; giấy nhớ tự bọc nháy khi là chữ; ✎ giữ nguyên chữ gõ;
- * bấm khối nối liền trong nháy. Chạy thật trên bộ dữ liệu của vụ để chắc các bài "sai có ích" cho đúng hậu quả.
+ * Trình dựng câu phòng máy (QĐ-092, màn tra v7 một cách nhập): khung khóa từ SQL chuẩn; giấy nhớ tự bọc nháy khi là chữ;
+ * giấy nhiều giá trị → IN (…); giá trị giữ nguyên chữ (câu nạp sẵn có điều kiện lạ). Chạy thật trên bộ dữ liệu của vụ để
+ * chắc các bài "sai có ích" cho đúng hậu quả.
  */
 import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { chaySql } from './sql-mvp';
-import { cauSoiDieuKien, cauTuSql, dieuKienThanhSql, giaTriTuGiayNho, khungTuSqlChuan, noiKhoi, tachWhere, thanhSql, type CauDung, type KieuCot } from './trinh-dung';
+import { cauSoiDieuKien, cauTuSql, dieuKienThanhSql, giaTriTuGiayNho, khungTuSqlChuan, tachWhere, thanhSql, type CauDung, type KieuCot } from './trinh-dung';
 
 const KB = KICH_BAN_MVP as unknown as KichBanMvp;
 const duLieu = KB.duLieu;
@@ -45,13 +46,13 @@ describe('khung khóa và giá trị', () => {
     expect(thanhSql(cau, kieuCot)).toBe("SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha = 'B' OR nganh = 'Báo chí'");
     expect(thanhSql({ ...cau, dieuKien: [] }, kieuCot)).toBe('SELECT ma_lop FROM lop_sinh_hoat');
   });
-});
 
-describe('bấm khối', () => {
-  it('nối liền trong nháy, cách một dấu cách ngoài nháy', () => {
-    expect(noiKhoi(['SELECT', '*', 'FROM', 'sinh_vien', 'WHERE', 'ten', 'LIKE', "'", 'H', '%', "'"])).toBe("SELECT * FROM sinh_vien WHERE ten LIKE 'H%'");
-    expect(noiKhoi(['WHERE', 'nganh', '=', "'", 'Báo chí', "'", 'AND', 'toa_nha', '=', "'", 'B', "'"])).toBe("WHERE nganh = 'Báo chí' AND toa_nha = 'B'");
-    expect(noiKhoi(['WHERE', 'toa_nha', '=', 'B'])).toBe('WHERE toa_nha = B');
+  it('giấy nhiều giá trị (phiếu hai lớp): "bằng" → IN (…); một giá trị thì như tờ thường; "bắt đầu bằng" → các LIKE nối OR trong ngoặc', () => {
+    const phieu = { nguon: 'giay-nho' as const, tho: 'BC24A, BC23A', nhieu: ['BC24A', 'BC23A'], the: 'ev-hai-lop' };
+    expect(dieuKienThanhSql({ cot: 'ma_lop', phep: 'bang', giaTri: phieu }, 'TEXT')).toBe("ma_lop IN ('BC24A', 'BC23A')");
+    expect(dieuKienThanhSql({ cot: 'ma_lop', phep: 'bat-dau-bang', giaTri: phieu }, 'TEXT')).toBe("(ma_lop LIKE 'BC24A%' OR ma_lop LIKE 'BC23A%')");
+    expect(dieuKienThanhSql({ cot: 'khoa_hoc', phep: 'bang', giaTri: { nguon: 'giay-nho', tho: '1, 2', nhieu: ['1', '2'] } }, 'INTEGER')).toBe('khoa_hoc IN (1, 2)');
+    expect(dieuKienThanhSql({ cot: 'ma_sv', phep: 'bang', giaTri: { nguon: 'giay-nho', tho: 'SV210745', nhieu: ['SV210745'] } }, 'TEXT')).toBe("ma_sv = 'SV210745'");
   });
 });
 
@@ -79,6 +80,31 @@ describe('xem từng điều kiện', () => {
     expect(tachWhere("SELECT * FROM t WHERE ten = 'AND OR' AND x = 1")?.dieuKien).toEqual(["ten = 'AND OR'", 'x = 1']);
     expect(tachWhere('SELECT * FROM t WHERE (a = 1 OR b = 2) AND c = 3')).toBeNull();
     expect(tachWhere('SELECT * FROM t')).toBeNull();
+  });
+
+  it('`cot IN (…)` (phiếu kéo vào ô) là một điều kiện phẳng; ngoặc khác, GROUP BY… vẫn null', () => {
+    expect(tachWhere("SELECT ma_sv FROM sinh_vien WHERE ma_lop IN ('BC24A', 'BC23A') AND ten LIKE 'H%';")).toEqual({
+      khung: 'SELECT ma_sv FROM sinh_vien',
+      bang: 'sinh_vien',
+      dieuKien: ["ma_lop IN ('BC24A', 'BC23A')", "ten LIKE 'H%'"],
+      noi: ['AND'],
+    });
+    // Ngoặc bên trong chữ nháy không tính.
+    expect(tachWhere("SELECT * FROM t WHERE ten IN ('a (b)', 'c') OR x = 1")?.dieuKien).toEqual(["ten IN ('a (b)', 'c')", 'x = 1']);
+    expect(tachWhere("SELECT * FROM t WHERE (ten LIKE 'a%' OR ten LIKE 'b%')")).toBeNull();
+    expect(tachWhere("SELECT * FROM t WHERE lower(ten) = 'a'")).toBeNull();
+    expect(tachWhere("SELECT * FROM t WHERE ten IN ('a') GROUP BY ten")).toBeNull();
+  });
+
+  it('câu soi chạy thật với IN: hai lớp × tên bắt đầu bằng H → giữ đúng 2 (Hiếu, Hoài)', async () => {
+    if (!duLieu) throw new Error('thiếu du-lieu.md');
+    const t = tachWhere("SELECT ma_sv, ten FROM sinh_vien WHERE ma_lop IN ('BC24A', 'BC23A') AND ten LIKE 'H%'");
+    if (!t) throw new Error('không tách được');
+    const kq = await chaySql(duLieu, cauSoiDieuKien(t));
+    if (!kq.ok) throw new Error(kq.thongDiep);
+    const iGiu = kq.cot.indexOf('giu');
+    const iTen = kq.cot.indexOf('ten');
+    expect(kq.dong.filter((d) => d[iGiu] === 1).map((d) => d[iTen]).sort()).toEqual(['Hiếu', 'Hoài']);
   });
 
   it('câu soi chạy thật: OR tòa B / Báo chí → 5 dòng giữ, mỗi dòng có dấu từng điều kiện; AND chỉ giữ 2', async () => {
@@ -114,6 +140,21 @@ describe('nạp câu có sẵn vào kéo thả (buổi họp, chương 1)', () =
     if (!cau) return;
     expect(thanhSql(cau, kieu)).toBe("SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A'");
     expect(thanhSql({ ...cau, noi: ['AND'] }, kieu)).toBe("SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A'");
+  });
+
+  it('SQL chuẩn c-ten-h có IN (…) → ô "là một trong" mang cả hai lớp; dựng lại ra đúng IN', () => {
+    const cau = cauTuSql("SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop IN ('BC24A', 'BC23A') AND ten LIKE 'H%';");
+    expect(cau?.dieuKien).toEqual([
+      { cot: 'ma_lop', phep: 'bang', giaTri: { nguon: 'giay-nho', tho: 'BC24A, BC23A', nhieu: ['BC24A', 'BC23A'] } },
+      { cot: 'ten', phep: 'bat-dau-bang', giaTri: { nguon: 'giay-nho', tho: 'H' } },
+    ]);
+    if (!cau) return;
+    expect(thanhSql(cau, kieu)).toBe("SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop IN ('BC24A', 'BC23A') AND ten LIKE 'H%'");
+    // IN có số, nháy trong chữ.
+    expect(cauTuSql("SELECT a FROM t WHERE k IN (1, 2) AND ten IN ('O''Neil')")?.dieuKien.map((d) => d.giaTri)).toEqual([
+      { nguon: 'giay-nho', tho: '1, 2', nhieu: ['1', '2'] },
+      { nguon: 'giay-nho', tho: "O'Neil", nhieu: ["O'Neil"] },
+    ]);
   });
 
   it('số để trần, điều kiện lạ giữ nguyên chữ, câu không tách được → null', () => {

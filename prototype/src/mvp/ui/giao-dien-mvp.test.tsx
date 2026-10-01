@@ -101,41 +101,55 @@ describe('thanh trên MVP (phong cách .topbar của prototype)', () => {
   });
 });
 
-describe('hồ sơ + sổ cá nhân MVP (phong cách hòm đồ prototype)', () => {
-  it('nút Hồ sơ → khung hòm đồ, tab Hồ sơ; có ô cho từng mục; bấm ô → thẻ chi tiết; Esc đóng', async () => {
+describe('bảng điều tra + sổ cá nhân MVP (khung hòm đồ prototype)', () => {
+  it('nút Hồ sơ → tab "Bảng điều tra" vẽ bảng ghim: mỗi mục trong hồ sơ một thẻ + thẻ câu hỏi; bấm thẻ → chi tiết; Esc đóng', async () => {
     const s = nhayToi(kb, 'ten-h', 1);
     const tatCa = [...s.hoSo.manhMoi, ...s.hoSo.taiLieu, ...s.hoSo.bangChung];
     expect(tatCa.length).toBeGreaterThan(1);
     veManChoi(s);
     await userEvent.click(within(thanhTren()).getByRole('button', { name: /^Mở hồ sơ/ }));
-    const hop = screen.getByRole('dialog', { name: 'Hồ sơ' });
+    const hop = screen.getByRole('dialog', { name: 'Bảng điều tra' });
     expect(hop).toHaveClass('inventory-frame');
-    expect(within(hop).getByRole('tab', { name: 'Hồ sơ' })).toHaveAttribute('aria-selected', 'true');
-    const o = within(within(hop).getByRole('group', { name: 'Các mục trong hồ sơ' })).getAllByRole('button');
-    expect(o).toHaveLength(tatCa.length);
-    for (const b of o) expect(b).toHaveAttribute('title');
-    // Mục thứ hai có thẻ (mục đầu đang được chọn sẵn).
-    const the = tatCa.map((id) => kb.hoSo[id]).filter((x) => x !== undefined)[1];
-    if (!the) throw new Error('thiếu thẻ');
-    const nut = within(hop).getByRole('button', { name: the.heading });
-    expect(nut).toHaveAttribute('aria-pressed', 'false');
-    await userEvent.click(nut);
-    expect(nut).toHaveAttribute('aria-pressed', 'true');
-    expect(within(hop.querySelector('.inv-details-content') as HTMLElement).getByRole('heading', { name: the.heading })).toBeInTheDocument();
+    expect(hop).toHaveClass('is-bang-mode');
+    expect(within(hop).getByRole('tab', { name: 'Bảng điều tra' })).toHaveAttribute('aria-selected', 'true');
+    // Lưới ô kiểu cũ không còn.
+    expect(within(hop).queryByRole('group', { name: 'Các mục trong hồ sơ' })).toBeNull();
+    const bang = within(hop).getByRole('region', { name: 'Bảng điều tra' });
+    const the = bang.querySelectorAll('article.the');
+    // Mọi mục trong hồ sơ ở ten-h đều có thẻ hồ sơ hoặc là vật chứng thẻ thử thách; cộng thẻ "?" của nhiệm vụ.
+    expect(the).toHaveLength(tatCa.length + 1);
+    expect(bang.querySelectorAll('.the--hoi')).toHaveLength(1);
+    // Mẩu tin [H] → bấm (nhấn Enter trên thẻ) → hộp chi tiết có tiêu đề thẻ hồ sơ.
+    const h = kb.hoSo['clue-chu-ky-h'];
+    if (!h) throw new Error('thiếu clue-chu-ky-h');
+    const theH = within(bang).getByRole('article', { name: /^Mẩu tin: H$/ });
+    theH.focus();
+    await userEvent.keyboard('{Enter}');
+    const xem = within(hop).getByRole('dialog', { name: 'Thẻ đang xem' });
+    expect(within(xem).getByRole('heading', { name: h.heading })).toBeInTheDocument();
+    await userEvent.click(within(xem).getByRole('button', { name: 'Đóng' }));
+    expect(within(hop).queryByRole('dialog', { name: 'Thẻ đang xem' })).toBeNull();
     await userEvent.keyboard('{Escape}');
-    expect(screen.queryByRole('dialog', { name: 'Hồ sơ' })).toBeNull();
+    expect(screen.queryByRole('dialog', { name: 'Bảng điều tra' })).toBeNull();
   });
 
-  it('lọc nhóm: Bằng chứng chỉ còn ô bằng chứng', async () => {
-    const s = nhayToi(kb, 'hop-sua-or', 1);
-    veManChoi(s);
+  it('kéo một thẻ trên bảng → chỗ mới lưu vào ván (hành động doi-cho-the)', async () => {
+    const { fireEvent } = await import('@testing-library/react');
+    veManChoi(nhayToi(kb, 'ten-h', 1));
     await userEvent.click(within(thanhTren()).getByRole('button', { name: /^Mở hồ sơ/ }));
-    await userEvent.click(screen.getByRole('button', { name: `Bằng chứng (${s.hoSo.bangChung.length})` }));
-    const o = within(screen.getByRole('group', { name: 'Các mục trong hồ sơ' })).getAllByRole('button');
-    expect(o).toHaveLength(s.hoSo.bangChung.length);
+    // (Phòng CLB ở ten-h cũng đang mở mặt bảng phía sau — lấy thẻ trong hộp Bảng điều tra.)
+    const theH = within(screen.getByRole('dialog', { name: 'Bảng điều tra' })).getByRole('article', { name: /^Mẩu tin: H$/ });
+    const x0 = parseFloat(theH.style.left);
+    const y0 = parseFloat(theH.style.top);
+    fireEvent.pointerDown(theH, { button: 0, pointerId: 1, clientX: 100, clientY: 100 });
+    fireEvent.pointerMove(theH, { pointerId: 1, clientX: 180, clientY: 140 });
+    fireEvent.pointerUp(theH, { pointerId: 1, clientX: 180, clientY: 140 });
+    expect(useKhoMvp.getState().trangThai?.bang?.viTri['clue-chu-ky-h']).toEqual({ x: x0 + 80, y: y0 + 40 });
+    // Kéo không mở hộp chi tiết.
+    expect(screen.queryByRole('dialog', { name: 'Thẻ đang xem' })).toBeNull();
   });
 
-  it('nút Sổ tay → cùng khung, tab Sổ cá nhân, mỗi dòng đã học một thẻ; đổi tab được; nút Đóng đóng', async () => {
+  it('nút Sổ tay → cùng khung, tab Sổ cá nhân, mỗi dòng đã học một thẻ; sang Bảng điều tra rồi quay lại được; nút Đóng đóng', async () => {
     // Dựng sổ có sẵn vài trang (như sau các [GHI SỔ] của phòng máy).
     const trang = Object.keys(kb.soTay).slice(0, 2);
     expect(trang.length).toBeGreaterThan(0);
@@ -145,9 +159,12 @@ describe('hồ sơ + sổ cá nhân MVP (phong cách hòm đồ prototype)', () 
     const hop = screen.getByRole('dialog', { name: 'Sổ cá nhân' });
     expect(hop).toHaveClass('is-journal-mode');
     expect(within(hop).getAllByRole('listitem')).toHaveLength(s.soTay.length);
-    await userEvent.click(within(hop).getByRole('tab', { name: 'Hồ sơ' }));
-    expect(screen.getByRole('dialog', { name: 'Hồ sơ' })).toBeInTheDocument();
-    const dong = screen.getByRole('button', { name: 'Đóng hồ sơ' });
+    await userEvent.click(within(hop).getByRole('tab', { name: 'Bảng điều tra' }));
+    expect(screen.getByRole('dialog', { name: 'Bảng điều tra' })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Bảng điều tra' })).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('tab', { name: 'Sổ cá nhân' }));
+    expect(screen.getByRole('dialog', { name: 'Sổ cá nhân' })).toHaveClass('is-journal-mode');
+    const dong = screen.getByRole('button', { name: 'Đóng sổ cá nhân' });
     expect(dong).toHaveAttribute('title');
     await userEvent.click(dong);
     expect(screen.queryByRole('dialog')).toBeNull();

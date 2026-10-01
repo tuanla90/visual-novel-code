@@ -69,7 +69,7 @@ describe('bảng người quan sát MVP', () => {
     expect(trangThai()).toEqual(dau);
   });
 
-  it('nhảy "Ngày 2 · Lớp …" → ngày 2, màn c-lop hiện, thanh trên "2/5", tên mặc định', async () => {
+  it('nhảy "Ngày 2 · Lớp …" → ngày 2, phòng tra c-lop mở ở mặt bảng điều tra (nút "Mở laptop"), thanh trên "2/5", tên mặc định', async () => {
     veManChoi('/?facilitator=1');
     await nhayToiQuaBang('Ngày 2 · Lớp ở tòa B và học Báo chí');
     const s = trangThai();
@@ -77,7 +77,9 @@ describe('bảng người quan sát MVP', () => {
     expect(s.ngay).toBe(2);
     expect(s.tenNguoiChoi).toBe(TEN_MAC_DINH);
     expect(screen.getByRole('banner', { name: 'Thanh trạng thái' }).querySelector('.topbar__chapter-number')).toHaveTextContent(`2/${kb.lich.ngay.length}`);
-    expect(document.querySelector('.mvp-chal')).not.toBeNull();
+    const phong = document.querySelector('.phong-tra');
+    expect(phong).toHaveAttribute('data-pha', 'bang');
+    expect(within(phong as HTMLElement).getByRole('button', { name: /Mở laptop/ })).toBeInTheDocument();
   });
 
   it('nhảy "Buổi họp" → màn sửa truy vấn; Lưu rồi Nạp giữ nguyên chỗ', async () => {
@@ -85,6 +87,9 @@ describe('bảng người quan sát MVP', () => {
     await nhayToiQuaBang('Buổi họp · Sửa câu HOẶC của Quân');
     const s = trangThai();
     expect(khungNhin(kb, s)).toMatchObject({ kind: 'fix-query', thuThach: { id: 'c-sua-or-quan' } });
+    // Buổi họp là màn chiếu: vào thẳng màn tra, không có bảng điều tra.
+    expect(document.querySelector('.phong-tra')).toHaveAttribute('data-pha', 'may');
+    expect(document.querySelector('.v7[data-canh="man-chieu"]')).not.toBeNull();
     act(() => {
       useKhoMvp.getState().luuVaoO(0, 'Buổi họp');
       useKhoMvp.getState().batDau();

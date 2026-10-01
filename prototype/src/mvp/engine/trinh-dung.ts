@@ -1,19 +1,12 @@
 /**
- * TRÌNH DỰNG CÂU PHÒNG MÁY (QĐ-092, mockup v7) — phần thuần, không React. Ba cách nhập cùng ra MỘT câu SQL chữ; máy
- * chấm câu đó như câu gõ tay (`sql-mvp.ts`), nên cách nhập không đổi luật chấm và đổi qua lại được bất cứ lúc nào.
+ * TRÌNH DỰNG CÂU PHÒNG MÁY (QĐ-092, mockup v7) — phần thuần, không React. Màn tra v7 (`ui/v7/ManTraV7.tsx`) chỉ có MỘT
+ * cách nhập (user chốt 30/09/2026): kéo giấy nhớ. Câu dựng ra là SQL chữ; máy chấm câu đó như câu gõ tay (`sql-mvp.ts`).
  *
- * - **Kéo thả** (`keo`): khung `SELECT … FROM …` khóa theo SQL chuẩn của thẻ; người chơi dựng các điều kiện WHERE:
- *   chọn cột, phép ("bằng" / "bắt đầu bằng"), kéo giấy nhớ vào ô giá trị, nối AND/OR. Giá trị từ giấy nhớ được máy tự
- *   bọc nháy đơn khi là chữ (hoặc khi cột là cột chữ) — nên kéo [K24] vào cột số `khoa_hoc` ra `'K24'` → 0 dòng.
- *   Nút ✎ cho gõ lại nguyên giá trị (máy không thêm gì): chỗ duy nhất quên nháy được → lỗi "no such column".
- * - **Bấm khối** (`khoi`, kiểu SQL Police): bấm các mảnh (từ khóa, bảng, cột, phép, giá trị giấy nhớ, dấu nháy `'`,
- *   dấu `%`) nối vào cuối câu; giá trị giấy nhớ vào NGUYÊN chữ (không tự thêm nháy) — quên khối `'` là lỗi thật.
- * - **Gõ tay** (`go`): ô chữ tự do.
+ * Khung `SELECT … FROM …` khóa theo SQL chuẩn của thẻ; người chơi dựng các điều kiện WHERE: chọn cột, phép ("bằng" /
+ * "bắt đầu bằng"), kéo giấy nhớ vào ô giá trị, nối AND/OR. Giá trị từ giấy nhớ được máy tự bọc nháy đơn khi là chữ
+ * (hoặc khi cột là cột chữ) — nên kéo [K24] vào cột số `khoa_hoc` ra `'K24'` → 0 dòng. Giấy nhiều giá trị (phiếu kết
+ * quả) với "bằng" thành `IN (…)`. Giá trị `nguon: 'go'` (giữ nguyên chữ) chỉ còn đến từ câu nạp sẵn có điều kiện lạ.
  */
-
-export type CachNhap = 'keo' | 'khoi' | 'go';
-export const CACH_NHAP: readonly CachNhap[] = ['keo', 'khoi', 'go'];
-export const TEN_CACH_NHAP: Record<CachNhap, string> = { keo: 'Kéo thả', khoi: 'Bấm khối', go: 'Gõ tay' };
 
 export type KieuCot = 'TEXT' | 'INTEGER';
 
@@ -107,31 +100,6 @@ export function cauTuSql(sql: string): CauDung | null {
   });
   return { khung: t.khung, dieuKien, noi: t.noi };
 }
-
-// ---------- Bấm khối ----------
-
-/**
- * Nối các khối thành câu: cách nhau một dấu cách, trừ bên trong cặp nháy đơn — ở đó khối dính liền nhau
- * (`'` + `B` + `'` → `'B'`, `'` + `H` + `%` + `'` → `'H%'`). Khối giá trị nhiều chữ ("Báo chí") là một khối.
- */
-export function noiKhoi(khoi: readonly string[]): string {
-  let ra = '';
-  let trongNhay = false;
-  for (const k of khoi) {
-    if (k === "'") {
-      if (trongNhay) ra += "'";
-      else ra += (ra === '' ? '' : ' ') + "'";
-      trongNhay = !trongNhay;
-      continue;
-    }
-    if (trongNhay) ra += k;
-    else ra += (ra === '' ? '' : ' ') + k;
-  }
-  return ra;
-}
-
-export const KHOI_TU_KHOA: readonly string[] = ['SELECT', '*', 'FROM', 'WHERE', 'AND', 'OR', '=', 'LIKE'];
-export const KHOI_DAU: readonly string[] = ["'", '%'];
 
 // ---------- Xem từng điều kiện (kế hoạch màn core v0.3 mục 2) ----------
 
