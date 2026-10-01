@@ -1,4 +1,9 @@
-# Rà soát lời chương 1 (30/09/2026) — ĐỀ XUẤT, chờ user duyệt
+# Rà soát lời chương 1 (30/09/2026) — ĐÃ ÁP DỤNG 01/10/2026
+
+> **Đã áp dụng** (user duyệt toàn bộ; nhánh `claude/loi-chuong-1-ra-soat`): A, B, C, D và DX-01 vào `prototype/noi-dung-mvp/`.
+> Không làm: B6 (bỏ điểm bấm bảng tin ở sảnh KTX — đổi khung đã được user yêu cầu 29/09 và làm đỏ hai test giao diện; đã sửa lời
+> theo A13 thay vào), A11 phần ảnh, DX-03 (`[KHÁM PHÁ]` không có vật tĩnh). C14: chỉ xóa thẻ Đạt, dữ liệu `du-lieu.md` chờ user.
+> Ảnh cần vẽ lại (A4 huy hiệu ở CG, A5/A4 cờ bánh răng gian Robotics, A11 chibi lá thư) chưa làm. Mở đầu: 63 → 50 bong bóng.
 
 Rà theo hai ví dụ user nêu: lời lệch với ảnh (Hà Vy đoán Tùng "áo đội tình nguyện" trong khi ảnh là sơ mi cam), và chi tiết không
 phục vụ cốt truyện (nồi cơm, nhắn mẹ). Chưa sửa tệp lời nào. "loi/…" = `prototype/noi-dung-mvp/loi/…`; ảnh ở `prototype/src/assets/…`.

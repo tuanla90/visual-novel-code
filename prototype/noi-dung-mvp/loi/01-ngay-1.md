@@ -4,7 +4,7 @@
 
 ## n1-mo.1
 - [THẺ CHỮ] **narrator**: Ngày 1 — Thứ Ba
-- **tung** (neutral): Hộp kiến nghị tòa B à? Hôm Chủ nhật tớ với {{nv.nguoi-choi}} đi qua rồi. Cái hộp tôn treo gần cửa ra vào ấy.
+- **tung** (neutral): Hộp kiến nghị tòa B thì hôm Chủ nhật tớ với {{nv.nguoi-choi}} đi qua rồi. Cái hộp tôn treo gần cửa ra vào ấy.
 - **ha-vy** (thinking): Thế thì ra tận nơi. Ai mở hộp, mở lúc nào, trong hộp còn sót lại gì.
 
 ## n1-toa-b.1
