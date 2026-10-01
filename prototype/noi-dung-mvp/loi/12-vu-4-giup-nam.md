@@ -7,11 +7,11 @@
 - **narrator**: Đầu tuần. Lần này không phải nhóm sang xưởng, mà Nam tự tới phòng CLB, tay cầm một tờ giấy.
 - **nam** (neutral): Các cậu nói đúng. Có người đang mượn tên tớ, mà không phải chỉ cái tin đồn.
 - **minh-anh** (neutral): Ngồi xuống đã. Chuyện gì?
-- **nam** (neutral): Hội sinh viên gửi giấy thu hồi đơn linh kiện. Họ nói tớ đứng tên năm đơn trong hai tháng, có đơn gần một triệu. Tớ đặt đúng hai: cảm biến với bánh xe, mấy trăm nghìn.
+- **nam** (neutral): Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, có đơn gần một triệu. Tớ đặt đúng hai: cảm biến với bánh xe, mấy trăm nghìn.
 
 ## v4-mo.2
 - **tung** (worried): Ba đơn lạ. Ai đặt?
-- **nam** (neutral): Đơn đặt trên máy xưởng, ai đăng nhập cũng điền tên người đặt được. Tớ tải sổ đặt hàng của xưởng về đây, chỉ còn các đơn đã duyệt, các cậu xem hộ.
+- **nam** (neutral): Đơn đặt trên máy xưởng, ai đăng nhập cũng điền tên người đặt được. Ban kiểm tra gửi kèm bản sổ đặt hàng của xưởng, có cả đơn còn chờ duyệt. Các cậu xem hộ.
 - **ha-vy** (thinking): Chưa đọc tên vội. Đếm trước: mỗi người đứng tên mấy đơn, rồi mới xem đơn của Nam.
 > NHIỆM VỤ: Sổ đặt hàng của xưởng có những đơn nào đã duyệt?
 > NHẮC VIỆC ha-vy (thinking): Chỉ lấy đơn đã duyệt. Trạng thái ghi ở cột trang_thai.
@@ -27,10 +27,12 @@
 - **nam** (neutral): Năm. Mà tớ đặt hai. Bách là phó CLB, Thảo lo kỹ thuật, Khánh là trưởng CLB.
 - **tung** (chi-tay): Thế ba đơn kia ai gõ tên cậu vào?
 - **duy** (neutral): Sổ không ghi ai gõ. Nhưng mỗi đơn có một cột mã phiên: phiên đăng nhập của máy lúc tạo đơn. Máy xưởng có bảng phiên đăng nhập không?
-- **nam** (neutral): Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Tớ là quản trị, tải được.
+- **nam** (neutral): Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong.
+- **minh-anh** (neutral): Khóa là phải. Bảng ấy mà do Nam xuất thì ai cũng bảo Nam sửa được. Chị nhờ thầy Quang xin Phòng Quản trị mạng xuất thẳng cho CLB mình.
 - **ha-vy** (thinking): Vậy là hai bảng. Đơn thì ở sổ đặt hàng, máy thì ở bảng phiên. Chung nhau cái mã phiên.
 
 ## v4-noi.1
+- **narrator**: Chiều. Phòng Quản trị mạng gửi bảng phiên đăng nhập của phần mềm đặt hàng, có dấu xác nhận, kèm một dòng: "Xuất nguyên bản theo đề nghị của thầy Trịnh Quang."
 > NHIỆM VỤ: Năm đơn đứng tên Nam được tạo từ máy nào, lúc mấy giờ?
 > NHẮC VIỆC ha-vy (thinking): Hai bảng chung nhau một cột. Nối đúng cột đó thì mỗi đơn kéo theo đúng máy của nó.
 - **duy** (neutral): Nối hai bảng thì phải chọn cột chung. Chọn sai cột là đơn kéo theo máy của người khác.
@@ -47,7 +49,8 @@
 - **tung** (surprised): Máy văn phòng xưởng. Lại nó. Tin đồn cũng gửi từ đó.
 - **ha-vy** (thinking): Và đơn ngày 07/10 tạo lúc 22 giờ 05. Tối đó Nam ở thư viện tới 23 giờ 05, mình đã có bản ghi.
 - **nam** (neutral): Vậy là cùng một chỗ, cùng một tối, có người vừa gửi tin đồn vừa đặt hàng bằng tên tớ.
-- **minh-anh** (neutral): Chị nói với Nam từ hôm qua rồi: từ giờ Nam điều tra cùng mình. Chuyện này không còn là chuyện riêng của CLB nào.
+- **minh-anh** (neutral): Nam, chuyện này không còn là chuyện riêng của CLB nào. Điều tra cùng bọn chị không?
+- **nam** (neutral): Tớ xin. Tên tớ, tớ phải tự đi tìm xem ai đang dùng.
 
 ## v4-may-vp.1
 - **duy** (neutral): Nếu máy văn phòng là chỗ người ta làm việc đó, thì xem mọi đơn từ máy ấy, không chỉ đơn mang tên Nam.
@@ -57,22 +60,18 @@
 ## v4-may-vp.2
 - **player**: Bốn đơn. Ba đơn đứng tên Nam, ban đêm. Một đơn ốc vít đứng tên Khánh, 10 giờ 15 sáng.
 - **nam** (neutral): Ốc vít thì đúng là Khánh đặt, hôm đó tớ thấy. Trưởng CLB ngồi máy văn phòng ban ngày là chuyện thường.
-- **ha-vy** (thinking): Vậy máy đó ban ngày có người dùng hợp lệ, ban đêm có ba đơn mượn tên. Mình mới biết máy, chưa biết tay.
+- **ha-vy** (thinking): Vậy máy đó ban ngày có người dùng hợp lệ. Ban đêm có ba đơn đứng tên Nam, mà một trong ba tạo lúc Nam ở thư viện. Mình mới biết máy, chưa biết tay.
 - **duy** (neutral): Ba người có chìa phòng đó. Đừng vội.
 
 ## v4-may-vp.3
-- **duy** (neutral): Mà nói chuyện "mượn tên"… chị Linh có ghi một câu. Để tớ xem.
+- **duy** (neutral): Tên một người, tay một người khác… chị Linh có ghi một câu. Để tớ xem.
 - [DÀN DỰNG] {{nv.duy}} lật sổ chị Linh tới trang cuối.
 - **player**: "Vụ đầu tiên, họ kết tội đúng cái tên trên bản ghi. Người mang tên đó không ở đấy."
 - **tung** (worried): Giống hệt chuyện Nam.
 - **ha-vy** (thinking): Chị ấy ghi từ năm ngoái. Cuốn sổ cũ mà chị ấy nhắc, chắc kể đúng chuyện này.
 
-## v4-ket-thieu.1
-- **minh-anh** (neutral): Mình mới xem đơn mang tên Nam. Máy văn phòng ấy còn tạo đơn nào khác không, ai hay ngồi đó ban ngày, mình chưa xem. Chị ghi vào mục "chưa kiểm".
-- **duy** (neutral): Chưa kiểm thì chưa nói. Nhưng có một việc chắc: ba người giữ chìa phòng đó.
-
 ## v4-ket-du.1
-- **minh-anh** (neutral): Phiếu bốn đơn từ máy văn phòng chị gửi kèm luôn: ba đơn đêm mang tên Nam, một đơn ngày mang tên trưởng CLB. Đủ để bên thu hồi thấy máy đó ai dùng hợp lệ, ai không.
+- **minh-anh** (neutral): Phiếu bốn đơn từ máy văn phòng chị gửi kèm luôn: ba đơn đêm đứng tên Nam, một đơn ngày đứng tên trưởng CLB. Đủ để Ban kiểm tra thấy máy đó ban ngày ai dùng, ban đêm đứng tên ai.
 - **duy** (neutral): Và ba người giữ chìa phòng đó. Mình ghi tên, không ghi tội.
 
 ## v4-ket.1

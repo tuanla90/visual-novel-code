@@ -27,11 +27,11 @@
 - Nguồn: Bảng quỹ
 - Nội dung: Bảng quỹ ghi CLB chủ quỹ ở cột clb: THAM_TU là CLB Thám Tử, ROBOTICS là CLB Robotics.
 
-### clue-han-muc — [Hạn mức 1.000.000]
-- Tiêu đề: Hạn mức chi của quỹ CLB
+### clue-han-muc — [Ngưỡng giải trình 1.000.000]
+- Tiêu đề: Ngưỡng rà soát tổng chi theo người duyệt
 - Giá trị cho trình dựng: 1000000
-- Nguồn: Quy chế quỹ CLB, {{nv.duy}} nhắc
-- Nội dung: Mỗi lần chi từ quỹ một CLB không quá một triệu đồng. Vượt thì phải có giải trình.
+- Nguồn: Quy chế quỹ khối CLB, {{nv.minh-anh}} và {{nv.duy}} nhắc
+- Nội dung: Khoản dưới một triệu thì chủ tịch Hội sinh viên duyệt thẳng được, không cần trưởng CLB chủ quỹ ký. Nhưng tổng các khoản do cùng một người duyệt vượt một triệu thì Phòng Kế hoạch yêu cầu người đó giải trình. Đây là ngưỡng để tìm nhóm cần hỏi tiếp, không phải mức cấm.
 
 ### clue-loi-nhan-linh-5 — [Lời nhắn chị Linh, mẩu cuối]
 - Tiêu đề: Dòng viết thêm ở trang cuối cuốn sổ cũ

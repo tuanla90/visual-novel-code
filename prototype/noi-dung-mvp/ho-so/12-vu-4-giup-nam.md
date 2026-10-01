@@ -2,12 +2,19 @@
 
 <!-- Bản đầu theo dàn ý mùa 1. Các phiếu kết quả khai ở thu-thach/giup-nam.md. -->
 
-### doc-thu-hoi-don — Giấy thu hồi đơn linh kiện
-- Tiêu đề: Giấy của Hội sinh viên gửi Nam
+### doc-thu-hoi-don — Giấy yêu cầu giải trình ngân sách
+- Tiêu đề: Giấy của Ban kiểm tra Hội sinh viên gửi xưởng Robotics
 - Nguồn: {{nv.nam}} mang tới phòng CLB
 - Nội dung hiển thị:
-> Hội sinh viên thông báo thu hồi năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, tổng hơn hai triệu đồng, chờ giải trình.
+> Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, tổng ghi trên đơn hơn hai triệu đồng. Kèm bản sổ đặt hàng của xưởng.
 > Nam nói mình chỉ đặt hai đơn: cảm biến dò line và bánh xe.
+
+### doc-phien-dang-nhap — Bảng phiên đăng nhập do Phòng Quản trị mạng xuất
+- Tiêu đề: Bản xuất nguyên bản, có dấu xác nhận
+- Nguồn: Phòng Quản trị mạng, theo đề nghị của {{nv.thay-quang}}
+- Nội dung hiển thị:
+> Mỗi phiên đăng nhập của phần mềm đặt hàng: mã phiên, máy, ngày, giờ. Có cả phiên không tạo đơn.
+> Tài khoản quản trị của Nam đang bị khóa; bảng này không qua tay Nam.
 
 ### clue-da-duyet — [Đã duyệt]
 - Tiêu đề: Trạng thái đơn đã duyệt

@@ -4827,7 +4827,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Hội sinh viên gửi giấy thu hồi đơn linh kiện. Họ nói tớ đứng tên năm đơn trong hai tháng, có đơn gần một triệu. Tớ đặt đúng hai: cảm biến với bánh xe, mấy trăm nghìn."
+          "text": "Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, có đơn gần một triệu. Tớ đặt đúng hai: cảm biến với bánh xe, mấy trăm nghìn."
         },
         {
           "type": "show-document",
@@ -4852,7 +4852,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Đơn đặt trên máy xưởng, ai đăng nhập cũng điền tên người đặt được. Tớ tải sổ đặt hàng của xưởng về đây, chỉ còn các đơn đã duyệt, các cậu xem hộ."
+          "text": "Đơn đặt trên máy xưởng, ai đăng nhập cũng điền tên người đặt được. Ban kiểm tra gửi kèm bản sổ đặt hàng của xưởng, có cả đơn còn chờ duyệt. Các cậu xem hộ."
         },
         {
           "type": "line",
@@ -4926,7 +4926,13 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Tớ là quản trị, tải được."
+          "text": "Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Khóa là phải. Bảng ấy mà do Nam xuất thì ai cũng bảo Nam sửa được. Chị nhờ thầy Quang xin Phòng Quản trị mạng xuất thẳng cho CLB mình."
         },
         {
           "type": "line",
@@ -4959,6 +4965,15 @@ export const KICH_BAN_MVP = {
       "canh": "phong-clb",
       "mocSomNhat": 1000,
       "nodes": [
+        {
+          "type": "show-document",
+          "documentId": "doc-phien-dang-nhap"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chiều. Phòng Quản trị mạng gửi bảng phiên đăng nhập của phần mềm đặt hàng, có dấu xác nhận, kèm một dòng: \"Xuất nguyên bản theo đề nghị của thầy Trịnh Quang.\""
+        },
         {
           "type": "task",
           "text": "Năm đơn đứng tên Nam được tạo từ máy nào, lúc mấy giờ?"
@@ -5037,43 +5052,26 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Chị nói với Nam từ hôm qua rồi: từ giờ Nam điều tra cùng mình. Chuyện này không còn là chuyện riêng của CLB nào."
+          "text": "Nam, chuyện này không còn là chuyện riêng của CLB nào. Điều tra cùng bọn chị không?"
         },
         {
-          "type": "branch",
-          "id": "r-v4-may-vp",
-          "asker": {
-            "speaker": "duy",
-            "text": "Máy văn phòng xưởng ấy, ngoài ba đơn đứng tên Nam, còn tạo đơn nào khác không? Tra nốt, hay thế là đủ?"
-          },
-          "choices": [
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Tớ xin. Tên tớ, tớ phải tự đi tìm xem ai đang dùng."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
             {
-              "id": "tra",
-              "text": "Tra nốt mọi đơn tạo từ máy văn phòng.",
-              "khi": null,
-              "hauQua": [
-                {
-                  "kind": "mo-manh-moi",
-                  "id": "clue-may-vp"
-                },
-                {
-                  "kind": "di-toi",
-                  "chuoi": "v4-may-vp"
-                }
-              ]
-            },
-            {
-              "id": "du",
-              "text": "Thế là đủ cho hôm nay.",
-              "khi": null,
-              "hauQua": [
-                {
-                  "kind": "di-toi",
-                  "chuoi": "v4-ket"
-                }
-              ]
+              "kind": "mo-manh-moi",
+              "id": "clue-may-vp"
             }
           ]
+        },
+        {
+          "type": "goto",
+          "to": "v4-may-vp"
         }
       ]
     },
@@ -5118,7 +5116,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Vậy máy đó ban ngày có người dùng hợp lệ, ban đêm có ba đơn mượn tên. Mình mới biết máy, chưa biết tay."
+          "text": "Vậy máy đó ban ngày có người dùng hợp lệ. Ban đêm có ba đơn đứng tên Nam, mà một trong ba tạo lúc Nam ở thư viện. Mình mới biết máy, chưa biết tay."
         },
         {
           "type": "line",
@@ -5139,7 +5137,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Mà nói chuyện \"mượn tên\"… chị Linh có ghi một câu. Để tớ xem."
+          "text": "Tên một người, tay một người khác… chị Linh có ghi một câu. Để tớ xem."
         },
         {
           "type": "note",
@@ -5179,7 +5177,7 @@ export const KICH_BAN_MVP = {
           "id": "q-v4-ket-luan",
           "asker": {
             "speaker": "minh-anh",
-            "text": "Vậy mình nói chắc được điều gì với bên thu hồi đơn?"
+            "text": "Vậy mình nói chắc được điều gì với Ban kiểm tra của Hội?"
           },
           "choices": [
             {
@@ -5222,42 +5220,10 @@ export const KICH_BAN_MVP = {
           "truUyTin": false
         },
         {
-          "type": "jump-if",
-          "dieuKien": {
-            "kind": "co",
-            "id": "ev-may-vp"
-          },
-          "to": "v4-ket-du"
-        },
-        {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Mình mới xem đơn mang tên Nam. Máy văn phòng ấy còn tạo đơn nào khác không, ai hay ngồi đó ban ngày, mình chưa xem. Chị ghi vào mục \"chưa kiểm\"."
-        },
-        {
-          "type": "line",
-          "speaker": "duy",
-          "expression": "neutral",
-          "text": "Chưa kiểm thì chưa nói. Nhưng có một việc chắc: ba người giữ chìa phòng đó."
-        },
-        {
-          "type": "goto",
-          "to": "v4-ket-chung"
-        }
-      ]
-    },
-    {
-      "id": "v4-ket-du",
-      "title": "Đã tra mọi đơn từ máy văn phòng",
-      "canh": "phong-clb",
-      "mocSomNhat": 1000,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "minh-anh",
-          "expression": "neutral",
-          "text": "Phiếu bốn đơn từ máy văn phòng chị gửi kèm luôn: ba đơn đêm mang tên Nam, một đơn ngày mang tên trưởng CLB. Đủ để bên thu hồi thấy máy đó ai dùng hợp lệ, ai không."
+          "text": "Phiếu bốn đơn từ máy văn phòng chị gửi kèm luôn: ba đơn đêm đứng tên Nam, một đơn ngày đứng tên trưởng CLB. Đủ để Ban kiểm tra thấy máy đó ban ngày ai dùng, ban đêm đứng tên ai."
         },
         {
           "type": "line",
@@ -5265,18 +5231,6 @@ export const KICH_BAN_MVP = {
           "expression": "neutral",
           "text": "Và ba người giữ chìa phòng đó. Mình ghi tên, không ghi tội."
         },
-        {
-          "type": "goto",
-          "to": "v4-ket-chung"
-        }
-      ]
-    },
-    {
-      "id": "v4-ket-chung",
-      "title": "Nam điều tra cùng; nguồn tiếp theo là sổ quỹ",
-      "canh": "phong-clb",
-      "mocSomNhat": 1000,
-      "nodes": [
         {
           "type": "line",
           "speaker": "nam",
@@ -5345,7 +5299,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Ba đơn mang tên tớ: động cơ servo, mạch điều khiển, khung nhôm. Trong kho không có lấy một cái. Đã duyệt chi, hai triệu tư, mà hàng chưa từng về."
+          "text": "Ba đơn mang tên tớ: động cơ servo, mạch điều khiển, khung nhôm. Trong kho không có lấy một cái. Sổ ghi đã duyệt, mà hàng chưa từng về."
         },
         {
           "type": "show-document",
@@ -5395,7 +5349,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Linh kiện chỉ là cái cớ để ghi vào sổ. Tiền đi đâu đó rồi."
+          "text": "Linh kiện chỉ là cái cớ để ghi vào sổ. Còn tiền có thật sự đi đâu không, sổ đặt hàng không nói."
         },
         {
           "type": "line",
@@ -5447,12 +5401,12 @@ export const KICH_BAN_MVP = {
                 {
                   "speaker": "minh-anh",
                   "expression": "neutral",
-                  "text": "Thưa thầy, ba đơn linh kiện đã duyệt chi, tổng hai triệu tư, nhưng kiểm kê xưởng không có một cái nào. Tiền đã chi mà hàng không về, nên bọn em cần xem khoản chi ấy trả từ quỹ nào, ai duyệt."
+                  "text": "Thưa thầy, ba đơn linh kiện ghi đã duyệt, trên đơn tổng hai triệu tư, nhưng kiểm kê xưởng không có một cái nào. Đơn ghi đã chi mà hàng không về, nên bọn em cần xem tiền ấy có thật sự xuất khỏi quỹ nào không, ai duyệt."
                 },
                 {
                   "speaker": "thay-quang",
                   "expression": "neutral",
-                  "text": "Chi mà không có hàng. Căn cứ ấy đủ để mở sổ quỹ. Thầy cho xuất, các em chỉ được xem các khoản liên quan ba đơn này và quỹ CLB Thám Tử."
+                  "text": "Đơn ghi chi mà không có hàng. Căn cứ ấy đủ để mở sổ quỹ. Thầy cho xuất, các em chỉ được xem các khoản liên quan ba đơn này và quỹ CLB Thám Tử."
                 }
               ]
             },
@@ -5598,17 +5552,17 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Gom theo người duyệt rồi đếm. Nhưng lần này đếm số dòng chưa đủ: phải tính cả tiền, tổng và trung bình mỗi khoản."
+          "text": "Gom theo người duyệt rồi đếm. Nhưng lần này đếm số dòng chưa đủ: ba khoản nhỏ với ba khoản lớn đếm ra bằng nhau. Phải cộng tiền."
         },
         {
           "type": "task",
-          "text": "Mỗi người duyệt bao nhiêu khoản, tổng bao nhiêu tiền, trung bình một khoản bao nhiêu?"
+          "text": "Mỗi người duyệt bao nhiêu khoản, tổng bao nhiêu tiền?"
         },
         {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Gom theo người duyệt; ngoài đếm, tính thêm tổng và trung bình của cột tiền."
+          "text": "Gom theo người duyệt; ngoài đếm, tính thêm tổng của cột tiền."
         },
         {
           "type": "challenge",
@@ -5617,23 +5571,35 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Chị Minh Anh: ba khoản, tổng bốn trăm năm mươi nghìn, trung bình một trăm năm mươi. Khánh: ba khoản, tổng hai triệu tư, trung bình tám trăm nghìn."
+          "text": "Chị Minh Anh: ba khoản, tổng bốn trăm năm mươi nghìn. Khánh: ba khoản, tổng hai triệu tư."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "khoanh-tay",
+          "text": "Quy chế quỹ khối CLB: khoản dưới một triệu thì chủ tịch Hội duyệt thẳng, không cần trưởng CLB chủ quỹ ký. Chị là chủ quỹ mà không biết ba khoản này, là vì thế."
         },
         {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Hạn mức mỗi lần chi của quỹ CLB là một triệu. Nhưng nói \"vượt\" thì phải để bảng tự lọc ra, đừng chỉ tay."
+          "text": "Nhưng tổng các khoản do cùng một người duyệt mà vượt một triệu thì Phòng Kế hoạch đòi người đó giải trình. Ngưỡng ấy để tìm nhóm cần hỏi, không phải để kết tội. Để bảng tự lọc ra, đừng chỉ tay."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Và tính thêm trung bình mỗi khoản. Xem từng khoản to cỡ nào so với mức duyệt thẳng."
         },
         {
           "type": "task",
-          "text": "Người duyệt nào có tổng chi vượt một triệu?"
+          "text": "Người duyệt nào có tổng chi vượt ngưỡng giải trình một triệu? Mỗi khoản trung bình bao nhiêu?"
         },
         {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Gom như vừa rồi, nhưng chỉ giữ nhóm có tổng lớn hơn một triệu."
+          "text": "Gom như vừa rồi, tính thêm trung bình, rồi chỉ giữ nhóm có tổng lớn hơn một triệu."
         },
         {
           "type": "challenge",
@@ -5642,7 +5608,19 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Còn một dòng. Khánh."
+          "text": "Còn một dòng. Khánh: ba khoản, tổng hai triệu tư, trung bình tám trăm nghìn."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tám trăm nghìn một khoản. Khoản nào cũng dưới một triệu, vừa đủ để không cần chị Minh Anh ký."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Xé nhỏ để lọt. Chủ tịch Hội duyệt chi quỹ CLB khác… cho hàng không về."
         },
         {
           "type": "line",
@@ -5652,15 +5630,9 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "line",
-          "speaker": "tung",
-          "expression": "worried",
-          "text": "Chủ tịch Hội duyệt chi quỹ CLB khác… cho hàng không về."
-        },
-        {
-          "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Bảng nói được tới đó. Vì sao thì bảng không nói. Chỉ có người mới nói được."
+          "text": "Bảng nói được tới đó: ai duyệt, bao nhiêu, chia thế nào. Vì sao thì bảng không nói. Chỉ có người mới nói được."
         },
         {
           "type": "line",
@@ -5706,17 +5678,27 @@ export const KICH_BAN_MVP = {
                 {
                   "speaker": "minh-anh",
                   "expression": "neutral",
-                  "text": "Ba khoản ấy không ghi vào quỹ Robotics. Chúng ghi vào quỹ CLB Thám Tử, tổng hai triệu tư, trung bình tám trăm nghìn một khoản, gấp năm lần mọi khoản khác của quỹ này. Và ba đơn linh kiện ấy chưa có cái nào về xưởng."
+                  "text": "Ba khoản ấy không ghi vào quỹ Robotics. Chúng ghi vào quỹ CLB Thám Tử, mỗi khoản dưới một triệu nên không cần em ký, cộng lại hai triệu tư. Và ba đơn linh kiện ấy chưa có cái nào về xưởng."
                 },
                 {
                   "speaker": "thay-quang",
                   "expression": "neutral",
-                  "text": "Chi quỹ của CLB khác, cho hàng không về. Em Khánh, thầy cần em nói."
+                  "text": "Chi quỹ của CLB khác, cho hàng không về. Em Khánh, ba khoản đó có chi cho đội robot không?"
                 },
                 {
                   "speaker": "khanh",
                   "expression": "neutral",
-                  "text": "…Em nhận. Tiền ấy em dùng vào việc riêng, không phải cho đội. Lá thư, cái tin, mấy cái đơn, là để không ai mở sổ quỹ ấy ra nữa. Em xin lỗi Nam. Em xin lỗi CLB Thám Tử."
+                  "text": "…Không ạ. Em dùng vào việc riêng. Em sẽ trả lại."
+                },
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Còn lá thư gửi CLB Thám Tử, cái tin trong kênh, ba đơn đứng tên Nam?"
+                },
+                {
+                  "speaker": "khanh",
+                  "expression": "neutral",
+                  "text": "Là để không ai mở sổ quỹ ấy ra. Em xin lỗi Nam. Em xin lỗi CLB Thám Tử."
                 }
               ]
             },
@@ -5732,7 +5714,7 @@ export const KICH_BAN_MVP = {
                 {
                   "speaker": "khanh",
                   "expression": "neutral",
-                  "text": "Chủ tịch Hội duyệt được mọi quỹ. Thế thì sai chỗ nào?"
+                  "text": "Khoản dưới một triệu thì chủ tịch Hội duyệt được. Thế thì sai chỗ nào?"
                 }
               ]
             },
@@ -5807,18 +5789,30 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Các em dừng đúng chỗ. Chuyện ba khoản chi, thầy làm việc riêng với Hội sinh viên và Phòng Kế hoạch. Có kết luận thầy sẽ thông báo."
+          "text": "Các em dừng đúng chỗ. Chuyện ba khoản chi, thầy chuyển Phòng Kế hoạch yêu cầu Hội sinh viên giải trình. Có kết luận thầy sẽ thông báo."
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Em sẽ giải trình với Phòng Kế hoạch. Không phải ở đây."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Một tuần sau, trường thông báo Khánh thôi chức chủ tịch Hội sinh viên và trưởng CLB Robotics. Lý do không được nêu. Nam được bầu làm trưởng CLB."
+          "text": "Một tuần sau, chưa có kết luận. Khánh vẫn là chủ tịch Hội sinh viên. Phòng CLB thì thầy Quang nói: chờ."
         },
         {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Tớ không biết cậu ấy nói gì với thầy. Nhưng tớ biết các cậu đã dừng ở đúng chỗ."
+          "text": "Tớ không biết cậu ấy sẽ nói gì với Phòng Kế hoạch. Nhưng tớ biết các cậu đã dừng ở đúng chỗ. Sổ sách của xưởng, từ giờ tớ giữ cho rõ."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Chưa ngã ngũ thì hồ sơ ghi \"chưa ngã ngũ\". Mình không viết thêm."
         },
         {
           "type": "goto",
@@ -5914,7 +5908,7 @@ export const KICH_BAN_MVP = {
                 {
                   "speaker": "duy",
                   "expression": "neutral",
-                  "text": "Khánh nhận lá thư là để không ai mở sổ quỹ. \"Chiếm phòng\" là mình đoán thêm."
+                  "text": "Lá thư để làm gì thì chỉ người viết nói được. \"Chiếm phòng\" là mình đoán thêm."
                 }
               ]
             }
@@ -6791,6 +6785,19 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
+            "n": 2
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Hai dòng. Đây là hai đơn còn chờ, mình cần đơn đã duyệt."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
             "n": 10
           },
           "loi": [
@@ -7015,7 +7022,7 @@ export const KICH_BAN_MVP = {
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Năm dòng. Có đơn tạo ở máy xưởng mà cũng dính vào, vì cùng ngày có một phiên ở máy văn phòng. Cột nối chưa đúng nghĩa."
+              "text": "Năm dòng, mà máy văn phòng chỉ có bốn phiên tạo đơn. Có đơn tạo ở máy xưởng dính vào, vì cùng ngày có một phiên ở máy văn phòng. Cột nối chưa đúng nghĩa."
             }
           ]
         },
@@ -7122,7 +7129,7 @@ export const KICH_BAN_MVP = {
       "vatChung": {
         "id": "ev-dat-ma-khong-co",
         "title": "Ba đơn đặt mua thứ không có trong kho",
-        "description": "Kết quả nối sổ đặt hàng với kiểm kê: động cơ servo, mạch điều khiển, khung nhôm — ba đơn đứng tên Nam từ máy văn phòng xưởng, tổng 2.400.000 đồng, đã duyệt chi mà kho không có một cái.",
+        "description": "Kết quả nối sổ đặt hàng với kiểm kê: động cơ servo, mạch điều khiển, khung nhôm — ba đơn đứng tên Nam từ máy văn phòng xưởng, ghi đã duyệt, mà kho không có một cái. Tiền có thật sự xuất khỏi quỹ nào thì phải xem sổ quỹ.",
         "giaTri": []
       },
       "ghiChu": []
@@ -7204,11 +7211,11 @@ export const KICH_BAN_MVP = {
     "c-chi-theo-nguoi-duyet": {
       "id": "c-chi-theo-nguoi-duyet",
       "tieuDe": "Khoản chi gom theo người duyệt",
-      "deBai": "Lấy phiếu sáu khoản làm nguồn. Gom theo người duyệt: đếm số khoản, tính tổng và trung bình số tiền.",
+      "deBai": "Lấy phiếu sáu khoản làm nguồn. Gom theo người duyệt: đếm số khoản, tính tổng số tiền.",
       "manhMoiLienQuan": [],
-      "mucTieuHoc": "Tổng và trung bình trên mỗi nhóm (SUM, AVG): đếm dòng chưa nói hết, phải tính tiền.",
+      "mucTieuHoc": "Tổng trên mỗi nhóm (SUM): đếm dòng chưa nói hết, phải cộng tiền.",
       "soDongKyVong": 2,
-      "sqlChuan": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_tien) AS tb_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet;",
+      "sqlChuan": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet;",
       "kieuTrinhDung": "tong-hop",
       "nguon": "ev-chi-tham-tu",
       "nhomTheo": null,
@@ -7217,21 +7224,21 @@ export const KICH_BAN_MVP = {
       "vatChung": {
         "id": "ev-chi-theo-nguoi-duyet",
         "title": "Minh Anh 3 khoản, 450.000; Khánh 3 khoản, 2.400.000",
-        "description": "Kết quả gom theo người duyệt: Minh Anh ba khoản, tổng 450.000, trung bình 150.000; Khánh ba khoản, tổng 2.400.000, trung bình 800.000 một khoản.",
+        "description": "Kết quả gom theo người duyệt: Minh Anh ba khoản, tổng 450.000; Khánh ba khoản, tổng 2.400.000. Cùng số khoản, tiền gấp hơn năm lần.",
         "giaTri": []
       },
       "ghiChu": []
     },
     "c-chi-vuot-muc": {
       "id": "c-chi-vuot-muc",
-      "tieuDe": "Chỉ giữ nhóm vượt hạn mức",
-      "deBai": "Gom theo người duyệt như vừa rồi, tính tổng, nhưng chỉ giữ nhóm có tổng lớn hơn một triệu.",
+      "tieuDe": "Chỉ giữ nhóm vượt ngưỡng giải trình",
+      "deBai": "Gom theo người duyệt như vừa rồi, tính thêm trung bình mỗi khoản, nhưng chỉ giữ nhóm có tổng lớn hơn một triệu.",
       "manhMoiLienQuan": [
         "clue-han-muc"
       ],
-      "mucTieuHoc": "Lọc nhóm sau khi gom (HAVING): điều kiện đặt lên con số của cả nhóm, không lên từng dòng.",
+      "mucTieuHoc": "Trung bình trên nhóm (AVG) và lọc nhóm sau khi gom (HAVING): điều kiện đặt lên con số của cả nhóm, không lên từng dòng.",
       "soDongKyVong": 1,
-      "sqlChuan": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet HAVING SUM(so_tien) > 1000000;",
+      "sqlChuan": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_tien) AS tb_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet HAVING SUM(so_tien) > 1000000;",
       "kieuTrinhDung": "tong-hop",
       "nguon": "ev-chi-tham-tu",
       "nhomTheo": null,
@@ -7239,8 +7246,8 @@ export const KICH_BAN_MVP = {
       "phanUng": [],
       "vatChung": {
         "id": "ev-chi-vuot-muc",
-        "title": "Khánh: 3 khoản, tổng 2.400.000, vượt hạn mức",
-        "description": "Kết quả lọc nhóm: chỉ Khánh có tổng chi từ quỹ CLB Thám Tử vượt một triệu (2.400.000 cho ba khoản). Ba khoản ấy là ba đơn linh kiện không có hàng.",
+        "title": "Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000",
+        "description": "Kết quả lọc nhóm: chỉ Khánh có tổng chi từ quỹ CLB Thám Tử vượt ngưỡng giải trình một triệu (2.400.000 cho ba khoản). Trung bình 800.000 một khoản: khoản nào cũng dưới một triệu, mức chủ tịch Hội duyệt thẳng được. Ba khoản ấy là ba đơn linh kiện không có hàng.",
         "giaTri": []
       },
       "ghiChu": []
@@ -8370,16 +8377,32 @@ export const KICH_BAN_MVP = {
     "doc-thu-hoi-don": {
       "id": "doc-thu-hoi-don",
       "loai": "doc",
-      "heading": "Giấy thu hồi đơn linh kiện",
+      "heading": "Giấy yêu cầu giải trình ngân sách",
       "fields": {
-        "Tiêu đề": "Giấy của Hội sinh viên gửi Nam",
+        "Tiêu đề": "Giấy của Ban kiểm tra Hội sinh viên gửi xưởng Robotics",
         "Nguồn": "Nam mang tới phòng CLB",
         "Nội dung hiển thị": ""
       },
       "quotes": {
         "Nội dung hiển thị": [
-          "Hội sinh viên thông báo thu hồi năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, tổng hơn hai triệu đồng, chờ giải trình.",
+          "Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, tổng ghi trên đơn hơn hai triệu đồng. Kèm bản sổ đặt hàng của xưởng.",
           "Nam nói mình chỉ đặt hai đơn: cảm biến dò line và bánh xe."
+        ]
+      }
+    },
+    "doc-phien-dang-nhap": {
+      "id": "doc-phien-dang-nhap",
+      "loai": "doc",
+      "heading": "Bảng phiên đăng nhập do Phòng Quản trị mạng xuất",
+      "fields": {
+        "Tiêu đề": "Bản xuất nguyên bản, có dấu xác nhận",
+        "Nguồn": "Phòng Quản trị mạng, theo đề nghị của Thầy Quang",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Mỗi phiên đăng nhập của phần mềm đặt hàng: mã phiên, máy, ngày, giờ. Có cả phiên không tạo đơn.",
+          "Tài khoản quản trị của Nam đang bị khóa; bảng này không qua tay Nam."
         ]
       }
     },
@@ -8499,12 +8522,12 @@ export const KICH_BAN_MVP = {
     "clue-han-muc": {
       "id": "clue-han-muc",
       "loai": "clue",
-      "heading": "[Hạn mức 1.000.000]",
+      "heading": "[Ngưỡng giải trình 1.000.000]",
       "fields": {
-        "Tiêu đề": "Hạn mức chi của quỹ CLB",
+        "Tiêu đề": "Ngưỡng rà soát tổng chi theo người duyệt",
         "Giá trị cho trình dựng": "1000000",
-        "Nguồn": "Quy chế quỹ CLB, Duy nhắc",
-        "Nội dung": "Mỗi lần chi từ quỹ một CLB không quá một triệu đồng. Vượt thì phải có giải trình."
+        "Nguồn": "Quy chế quỹ khối CLB, Minh Anh và Duy nhắc",
+        "Nội dung": "Khoản dưới một triệu thì chủ tịch Hội sinh viên duyệt thẳng được, không cần trưởng CLB chủ quỹ ký. Nhưng tổng các khoản do cùng một người duyệt vượt một triệu thì Phòng Kế hoạch yêu cầu người đó giải trình. Đây là ngưỡng để tìm nhóm cần hỏi tiếp, không phải mức cấm."
       },
       "quotes": {}
     },
@@ -8753,7 +8776,7 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT nguoi_dat, COUNT(*) AS so_dong FROM @ev-don-da-duyet GROUP BY nguoi_dat;",
       "soDong": 4,
-      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:23 thẻ c-don-theo-nguoi, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:24 thẻ c-don-theo-nguoi, SQL chuẩn",
       "resultId": "ev-don-theo-nguoi",
       "sourceResultId": "ev-don-da-duyet",
       "sourceGroupColumn": "nguoi_dat"
@@ -8761,13 +8784,13 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ma_don, linh_kien, may, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE nguoi_dat = 'Nam';",
       "soDong": 5,
-      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:42 thẻ c-don-nam-may, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:43 thẻ c-don-nam-may, SQL chuẩn",
       "resultId": "ev-don-nam-may"
     },
     {
       "sql": "SELECT may, COUNT(*) AS so_dong FROM @ev-don-nam-may GROUP BY may;",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:66 thẻ c-don-nam-theo-may, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:67 thẻ c-don-nam-theo-may, SQL chuẩn",
       "resultId": "ev-don-nam-theo-may",
       "sourceResultId": "ev-don-nam-may",
       "sourceGroupColumn": "may"
@@ -8775,7 +8798,7 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE may = 'MAY-VP-XUONG';",
       "soDong": 4,
-      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:85 thẻ c-may-vp, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:86 thẻ c-may-vp, SQL chuẩn",
       "resultId": "ev-may-vp"
     },
     {
@@ -8791,14 +8814,14 @@ export const KICH_BAN_MVP = {
       "resultId": "ev-chi-tham-tu"
     },
     {
-      "sql": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_tien) AS tb_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet;",
+      "sql": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet;",
       "soDong": 2,
       "noi": "noi-dung-mvp/thu-thach/so-quy.md:47 thẻ c-chi-theo-nguoi-duyet, SQL chuẩn",
       "resultId": "ev-chi-theo-nguoi-duyet",
       "sourceResultId": "ev-chi-tham-tu"
     },
     {
-      "sql": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet HAVING SUM(so_tien) > 1000000;",
+      "sql": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_tien) AS tb_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet HAVING SUM(so_tien) > 1000000;",
       "soDong": 1,
       "noi": "noi-dung-mvp/thu-thach/so-quy.md:65 thẻ c-chi-vuot-muc, SQL chuẩn",
       "resultId": "ev-chi-vuot-muc",

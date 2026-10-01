@@ -8,15 +8,15 @@ Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từ
 - **Người kể**: Đầu tuần. Lần này không phải nhóm sang xưởng, mà Nam tự tới phòng CLB, tay cầm một tờ giấy.
 - **Nam** (neutral): Các cậu nói đúng. Có người đang mượn tên tớ, mà không phải chỉ cái tin đồn.
 - **Minh Anh** (neutral): Ngồi xuống đã. Chuyện gì?
-- **Nam** (neutral): Hội sinh viên gửi giấy thu hồi đơn linh kiện. Họ nói tớ đứng tên năm đơn trong hai tháng, có đơn gần một triệu. Tớ đặt đúng hai: cảm biến với bánh xe, mấy trăm nghìn.
-> 🗂️ Tài liệu mới: **Giấy thu hồi đơn linh kiện** — nguồn: Nam mang tới phòng CLB
-> Hội sinh viên thông báo thu hồi năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, tổng hơn hai triệu đồng, chờ giải trình.
+- **Nam** (neutral): Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, có đơn gần một triệu. Tớ đặt đúng hai: cảm biến với bánh xe, mấy trăm nghìn.
+> 🗂️ Tài liệu mới: **Giấy yêu cầu giải trình ngân sách** — nguồn: Nam mang tới phòng CLB
+> Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, tổng ghi trên đơn hơn hai triệu đồng. Kèm bản sổ đặt hàng của xưởng.
 > Nam nói mình chỉ đặt hai đơn: cảm biến dò line và bánh xe.
 > 🗂️ Giấy nhớ mới: **[Đã duyệt]** — nguồn: Sổ đặt hàng của xưởng
 > Sổ đặt hàng ghi trạng thái từng đơn ở cột trang_thai: DA_DUYET là đơn đã được duyệt chi, CHO_DUYET là đơn còn chờ.
 > (giấy nhớ kéo được vào màn tra: DA_DUYET)
 - **Tùng** (worried): Ba đơn lạ. Ai đặt?
-- **Nam** (neutral): Đơn đặt trên máy xưởng, ai đăng nhập cũng điền tên người đặt được. Tớ tải sổ đặt hàng của xưởng về đây, chỉ còn các đơn đã duyệt, các cậu xem hộ.
+- **Nam** (neutral): Đơn đặt trên máy xưởng, ai đăng nhập cũng điền tên người đặt được. Ban kiểm tra gửi kèm bản sổ đặt hàng của xưởng, có cả đơn còn chờ duyệt. Các cậu xem hộ.
 - **Hà Vy** (thinking): Chưa đọc tên vội. Đếm trước: mỗi người đứng tên mấy đơn, rồi mới xem đơn của Nam.
 > 🎯 NHIỆM VỤ: Sổ đặt hàng của xưởng có những đơn nào đã duyệt?
 > 💭 Hà Vy nhắc: Chỉ lấy đơn đã duyệt. Trạng thái ghi ở cột trang_thai.
@@ -54,6 +54,7 @@ Kết quả: 8 dòng
 | DLK-08 | 2024-10-07 | Nam | Bộ khung nhôm | 700000 | PH-18 |
 Lời nhân vật sau mỗi lần chạy:
 - Khi ra 0 dòng: **Hà Vy** (thinking): Không dòng nào. Giá trị trạng thái viết hoa, gạch dưới, đúng như giấy nhớ.
+- Khi ra 2 dòng: **Hà Vy** (thinking): Hai dòng. Đây là hai đơn còn chờ, mình cần đơn đã duyệt.
 - Khi ra 10 dòng: **Tùng** (gai-dau): Cả mười đơn, có cả hai đơn chờ duyệt.
 - Khi đúng: **Hà Vy** (neutral): Tám đơn đã duyệt. Ghim lại, rồi gom.
 > 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Tám đơn linh kiện đã duyệt** — Kết quả truy vấn: tám đơn đã duyệt, mỗi đơn ghi ngày, người đứng tên, linh kiện, số tiền và mã phiên đăng nhập lúc tạo đơn.
@@ -84,7 +85,8 @@ Kết quả: 4 dòng
 - **Nam** (neutral): Năm. Mà tớ đặt hai. Bách là phó CLB, Thảo lo kỹ thuật, Khánh là trưởng CLB.
 - **Tùng** (chi-tay): Thế ba đơn kia ai gõ tên cậu vào?
 - **Duy** (neutral): Sổ không ghi ai gõ. Nhưng mỗi đơn có một cột mã phiên: phiên đăng nhập của máy lúc tạo đơn. Máy xưởng có bảng phiên đăng nhập không?
-- **Nam** (neutral): Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Tớ là quản trị, tải được.
+- **Nam** (neutral): Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong.
+- **Minh Anh** (neutral): Khóa là phải. Bảng ấy mà do Nam xuất thì ai cũng bảo Nam sửa được. Chị nhờ thầy Quang xin Phòng Quản trị mạng xuất thẳng cho CLB mình.
 - **Hà Vy** (thinking): Vậy là hai bảng. Đơn thì ở sổ đặt hàng, máy thì ở bảng phiên. Chung nhau cái mã phiên.
 > 🗂️ Giấy nhớ mới: **[Mã phiên]** — nguồn: Duy nhìn thấy trong sổ đặt hàng
 > Cột ma_phien của sổ đặt hàng ghi phiên đăng nhập của máy lúc tạo đơn. Bảng phiên đăng nhập của phần mềm ghi mỗi phiên là máy nào, ngày nào, giờ nào. Hai bảng chung nhau cột ma_phien.
@@ -94,6 +96,10 @@ Kết quả: 4 dòng
 
 ### 📍 Phòng CLB — Mã phiên dẫn sang bảng phiên đăng nhập: phải nối hai bảng
 
+> 🗂️ Tài liệu mới: **Bảng phiên đăng nhập do Phòng Quản trị mạng xuất** — nguồn: Phòng Quản trị mạng, theo đề nghị của Thầy Quang
+> Mỗi phiên đăng nhập của phần mềm đặt hàng: mã phiên, máy, ngày, giờ. Có cả phiên không tạo đơn.
+> Tài khoản quản trị của Nam đang bị khóa; bảng này không qua tay Nam.
+- **Người kể**: Chiều. Phòng Quản trị mạng gửi bảng phiên đăng nhập của phần mềm đặt hàng, có dấu xác nhận, kèm một dòng: "Xuất nguyên bản theo đề nghị của thầy Trịnh Quang."
 > 🎯 NHIỆM VỤ: Năm đơn đứng tên Nam được tạo từ máy nào, lúc mấy giờ?
 > 💭 Hà Vy nhắc: Hai bảng chung nhau một cột. Nối đúng cột đó thì mỗi đơn kéo theo đúng máy của nó.
 - **Duy** (neutral): Nối hai bảng thì phải chọn cột chung. Chọn sai cột là đơn kéo theo máy của người khác.
@@ -176,12 +182,11 @@ Kết quả: 2 dòng
 - **Tùng** (surprised): Máy văn phòng xưởng. Lại nó. Tin đồn cũng gửi từ đó.
 - **Hà Vy** (thinking): Và đơn ngày 07/10 tạo lúc 22 giờ 05. Tối đó Nam ở thư viện tới 23 giờ 05, mình đã có bản ghi.
 - **Nam** (neutral): Vậy là cùng một chỗ, cùng một tối, có người vừa gửi tin đồn vừa đặt hàng bằng tên tớ.
-- **Minh Anh** (neutral): Chị nói với Nam từ hôm qua rồi: từ giờ Nam điều tra cùng mình. Chuyện này không còn là chuyện riêng của CLB nào.
-> 🔀 Duy: "Máy văn phòng xưởng ấy, ngoài ba đơn đứng tên Nam, còn tạo đơn nào khác không? Tra nốt, hay thế là đủ?"
->   - Tra nốt mọi đơn tạo từ máy văn phòng.
->   - Thế là đủ cho hôm nay.
-
-*— Nếu chọn "Tra nốt mọi đơn tạo từ máy văn phòng." —*
+- **Minh Anh** (neutral): Nam, chuyện này không còn là chuyện riêng của CLB nào. Điều tra cùng bọn chị không?
+- **Nam** (neutral): Tớ xin. Tên tớ, tớ phải tự đi tìm xem ai đang dùng.
+> 🗂️ Giấy nhớ mới: **[Máy văn phòng xưởng]** — nguồn: Bảng phiên đăng nhập
+> Máy trong phòng văn phòng nhỏ của xưởng mang mã MAY-VP-XUONG. Phòng thường khóa, chìa ban chủ nhiệm giữ.
+> (giấy nhớ kéo được vào màn tra: MAY-VP-XUONG)
 
 #### 📍 Phòng CLB — Mọi đơn từ máy văn phòng xưởng
 
@@ -220,7 +225,7 @@ Bảng `phien_dang_nhap` (13 dòng):
 | PH-21 | MAY-XUONG-01 | 2024-10-07 | 16:00 |
 | PH-22 | MAY-XUONG-02 | 2024-09-27 | 15:30 |
 | PH-23 | MAY-VP-XUONG | 2024-10-02 | 10:40 |
-Giấy nhớ đang có quanh màn hình: [DA_DUYET] [Nam]
+Giấy nhớ đang có quanh màn hình: [DA_DUYET] [Nam] [MAY-VP-XUONG]
 Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
 SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE may = 'MAY-VP-XUONG';
@@ -235,53 +240,36 @@ Kết quả: 4 dòng
 Lời nhân vật sau mỗi lần chạy:
 - Khi lỗi không có cột: **Duy** (neutral): Máy báo không có cột đó. Cột máy nằm ở bảng phiên đăng nhập, nối rồi mới lọc được.
 - Khi ra 0 dòng: **Hà Vy** (thinking): Không dòng nào. Mã máy viết hoa, có gạch nối, đúng như giấy nhớ.
-- Khi ra 5 dòng: **Hà Vy** (thinking): Năm dòng. Có đơn tạo ở máy xưởng mà cũng dính vào, vì cùng ngày có một phiên ở máy văn phòng. Cột nối chưa đúng nghĩa.
+- Khi ra 5 dòng: **Hà Vy** (thinking): Năm dòng, mà máy văn phòng chỉ có bốn phiên tạo đơn. Có đơn tạo ở máy xưởng dính vào, vì cùng ngày có một phiên ở máy văn phòng. Cột nối chưa đúng nghĩa.
 - Khi ra 10 dòng: **Tùng** (gai-dau): Cả sổ. Mình chỉ cần đơn từ máy văn phòng.
 - Khi đúng: **Hà Vy** (neutral): Bốn đơn. Ba đơn đêm mang tên Nam, một đơn sáng mang tên Khánh.
 > 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Máy văn phòng xưởng: 3 đơn đêm mang tên Nam, 1 đơn ngày của Khánh** — Kết quả: bốn đơn tạo từ máy văn phòng xưởng. Ba đơn ban đêm đứng tên Nam; một đơn ốc vít 10:15 sáng đứng tên Khánh, trưởng CLB, là người dùng máy đó hợp lệ ban ngày. Ba người có chìa phòng: Khánh, Bách, Thảo.
 
 - **Bạn (người chơi)**: Bốn đơn. Ba đơn đứng tên Nam, ban đêm. Một đơn ốc vít đứng tên Khánh, 10 giờ 15 sáng.
 - **Nam** (neutral): Ốc vít thì đúng là Khánh đặt, hôm đó tớ thấy. Trưởng CLB ngồi máy văn phòng ban ngày là chuyện thường.
-- **Hà Vy** (thinking): Vậy máy đó ban ngày có người dùng hợp lệ, ban đêm có ba đơn mượn tên. Mình mới biết máy, chưa biết tay.
+- **Hà Vy** (thinking): Vậy máy đó ban ngày có người dùng hợp lệ. Ban đêm có ba đơn đứng tên Nam, mà một trong ba tạo lúc Nam ở thư viện. Mình mới biết máy, chưa biết tay.
 - **Duy** (neutral): Ba người có chìa phòng đó. Đừng vội.
 > 🗂️ Giấy nhớ mới: **[Lời nhắn chị Linh, mẩu thứ tư]** — nguồn: Sổ tự học của chị Linh, phòng CLB
 > Chữ chị Linh: "Vụ đầu tiên, họ kết tội đúng cái tên trên bản ghi. Người mang tên đó không ở đấy."
-- **Duy** (neutral): Mà nói chuyện "mượn tên"… chị Linh có ghi một câu. Để tớ xem.
+- **Duy** (neutral): Tên một người, tay một người khác… chị Linh có ghi một câu. Để tớ xem.
 - **Bạn (người chơi)**: "Vụ đầu tiên, họ kết tội đúng cái tên trên bản ghi. Người mang tên đó không ở đấy."
 - **Tùng** (worried): Giống hệt chuyện Nam.
 - **Hà Vy** (thinking): Chị ấy ghi từ năm ngoái. Cuốn sổ cũ mà chị ấy nhắc, chắc kể đúng chuyện này.
 
 ##### 📍 Phòng CLB — Nam điều tra cùng; ba người có chìa
 
-> ❓ Minh Anh hỏi: "Vậy mình nói chắc được điều gì với bên thu hồi đơn?" (chọn sai thì nghe phản hồi rồi chọn lại)
+> ❓ Minh Anh hỏi: "Vậy mình nói chắc được điều gì với Ban kiểm tra của Hội?" (chọn sai thì nghe phản hồi rồi chọn lại)
 >   - Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng; đơn 07/10 tạo đúng lúc Nam ở thư viện. Ai ngồi máy thì bảng này chưa nói. ✅ → **Minh Anh** (neutral): Đúng chừng ấy. Chị gửi kèm phiếu nối bảng để họ tự kiểm. Ai ngồi máy thì phải có nguồn khác.
 >   - Nam tự đặt cả năm đơn rồi chối. → **Hà Vy** (thinking): Một trong ba đơn đó tạo lúc 22:05 tối 07/10. Tối đó Nam ở thư viện, mình vừa chứng minh xong ở vụ trước.
 >   - Ban chủ nhiệm Robotics cố tình đổ nợ cho Nam. → **Duy** (neutral): Máy văn phòng thì ban chủ nhiệm giữ chìa, nhưng "cố tình" và "cả ban" thì bảng nào nói? Mình mới có máy và giờ.
-> ⤵ RẼ TỰ ĐỘNG: nếu có ev-may-vp thì sang "Đã tra mọi đơn từ máy văn phòng" (in ở dưới); nếu KHÔNG thì chạy tiếp các dòng ngay sau đây. Hai đường loại trừ nhau, người chơi chỉ thấy một.
-- **Minh Anh** (neutral): Mình mới xem đơn mang tên Nam. Máy văn phòng ấy còn tạo đơn nào khác không, ai hay ngồi đó ban ngày, mình chưa xem. Chị ghi vào mục "chưa kiểm".
-- **Duy** (neutral): Chưa kiểm thì chưa nói. Nhưng có một việc chắc: ba người giữ chìa phòng đó.
-
-*— Chỉ khi có ev-may-vp (đường rẽ tự động ở trên) —*
-
-###### 📍 Phòng CLB — Đã tra mọi đơn từ máy văn phòng
-
-- **Minh Anh** (neutral): Phiếu bốn đơn từ máy văn phòng chị gửi kèm luôn: ba đơn đêm mang tên Nam, một đơn ngày mang tên trưởng CLB. Đủ để bên thu hồi thấy máy đó ai dùng hợp lệ, ai không.
+- **Minh Anh** (neutral): Phiếu bốn đơn từ máy văn phòng chị gửi kèm luôn: ba đơn đêm đứng tên Nam, một đơn ngày đứng tên trưởng CLB. Đủ để Ban kiểm tra thấy máy đó ban ngày ai dùng, ban đêm đứng tên ai.
 - **Duy** (neutral): Và ba người giữ chìa phòng đó. Mình ghi tên, không ghi tội.
-
-###### 📍 Phòng CLB — Nam điều tra cùng; nguồn tiếp theo là sổ quỹ
-
 - **Nam** (neutral): Ba người giữ chìa phòng văn phòng: Khánh, Bách, Thảo. Tớ không nghi ai cả. Nhưng tớ muốn biết là ai.
 - **Minh Anh** (serious): Muốn biết thì tìm tiếp bằng bảng, không bằng đoán. Ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt. Sổ quỹ là nguồn tiếp theo.
 - **Tùng** (chi-tay): Tớ không cá nữa đâu. Hỏi sổ.
 - **Hà Vy** (smile): Đúng rồi. Hỏi sổ.
 *[Thẻ chữ]* Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nối sai cột thì ra một câu chuyện không có thật.
 > 🏁 KẾT THÚC vụ → màn kết.
-
-*(tiếp theo như chuỗi "Nam điều tra cùng; nguồn tiếp theo là sổ quỹ" đã in ở trên)*
-
-*— Nếu chọn "Thế là đủ cho hôm nay." —*
-
-*(tiếp theo như chuỗi "Nam điều tra cùng; ba người có chìa" đã in ở trên)*
 
 ## 🏁 Màn kết
 **Có người mượn tên Nam** — Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng, cùng cái máy đã gửi tin đồn, một đơn đúng tối Nam ở thư viện. Máy thì biết, tay thì chưa. Ba người có chìa phòng.

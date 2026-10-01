@@ -4,6 +4,7 @@
 
 ## c-don-da-duyet.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Giá trị trạng thái viết hoa, gạch dưới, đúng như giấy nhớ.
+- Khi chạy ra 2 dòng: **ha-vy** (thinking): Hai dòng. Đây là hai đơn còn chờ, mình cần đơn đã duyệt.
 - Khi chạy ra 10 dòng: **tung** (gai-dau): Cả mười đơn, có cả hai đơn chờ duyệt.
 - Khi đúng: **ha-vy** (neutral): Tám đơn đã duyệt. Ghim lại, rồi gom.
 
@@ -18,6 +19,6 @@
 ## c-may-vp.1
 - Khi lỗi không có cột: **duy** (neutral): Máy báo không có cột đó. Cột máy nằm ở bảng phiên đăng nhập, nối rồi mới lọc được.
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Mã máy viết hoa, có gạch nối, đúng như giấy nhớ.
-- Khi chạy ra 5 dòng: **ha-vy** (thinking): Năm dòng. Có đơn tạo ở máy xưởng mà cũng dính vào, vì cùng ngày có một phiên ở máy văn phòng. Cột nối chưa đúng nghĩa.
+- Khi chạy ra 5 dòng: **ha-vy** (thinking): Năm dòng, mà máy văn phòng chỉ có bốn phiên tạo đơn. Có đơn tạo ở máy xưởng dính vào, vì cùng ngày có một phiên ở máy văn phòng. Cột nối chưa đúng nghĩa.
 - Khi chạy ra 10 dòng: **tung** (gai-dau): Cả sổ. Mình chỉ cần đơn từ máy văn phòng.
 - Khi đúng: **ha-vy** (neutral): Bốn đơn. Ba đơn đêm mang tên Nam, một đơn sáng mang tên Khánh.

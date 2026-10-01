@@ -8,7 +8,7 @@ Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từ
 - **Người kể**: Xưởng Robotics, cuối tuần. Nam đứng giữa các kệ linh kiện, tay cầm bảng kiểm kê, mặt khó coi.
 - **Nam** (neutral): Tớ đếm kho. Đếm tay từng loại, hai lần.
 - **Tùng** (worried): Rồi sao?
-- **Nam** (neutral): Ba đơn mang tên tớ: động cơ servo, mạch điều khiển, khung nhôm. Trong kho không có lấy một cái. Đã duyệt chi, hai triệu tư, mà hàng chưa từng về.
+- **Nam** (neutral): Ba đơn mang tên tớ: động cơ servo, mạch điều khiển, khung nhôm. Trong kho không có lấy một cái. Sổ ghi đã duyệt, mà hàng chưa từng về.
 > 🗂️ Tài liệu mới: **Bảng kiểm kê xưởng của Nam** — nguồn: Nam đếm tay từng loại, hai lần
 > Mười loại linh kiện trong sổ đặt hàng, đếm thực tế trong kho. Ba loại đang là số không: động cơ servo, mạch điều khiển, bộ khung nhôm.
 > 🗂️ Giấy nhớ mới: **[Kho: 0]** — nguồn: Bảng kiểm kê của Nam
@@ -63,10 +63,10 @@ Lời nhân vật sau mỗi lần chạy:
 - Khi ra 0 dòng: **Hà Vy** (thinking): Không dòng nào. Kho không có thì bảng kiểm kê ghi số 0, giấy nhớ cũng là số 0.
 - Khi ra 10 dòng: **Tùng** (gai-dau): Cả sổ. Mình chỉ cần thứ trong kho đang là số không.
 - Khi đúng: **Nam** (neutral): Ba đơn. Đúng ba đơn mang tên tớ.
-> 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Ba đơn đặt mua thứ không có trong kho** — Kết quả nối sổ đặt hàng với kiểm kê: động cơ servo, mạch điều khiển, khung nhôm — ba đơn đứng tên Nam từ máy văn phòng xưởng, tổng 2.400.000 đồng, đã duyệt chi mà kho không có một cái.
+> 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Ba đơn đặt mua thứ không có trong kho** — Kết quả nối sổ đặt hàng với kiểm kê: động cơ servo, mạch điều khiển, khung nhôm — ba đơn đứng tên Nam từ máy văn phòng xưởng, ghi đã duyệt, mà kho không có một cái. Tiền có thật sự xuất khỏi quỹ nào thì phải xem sổ quỹ.
 
 - **Bạn (người chơi)**: Ba đơn. Đúng ba đơn đứng tên Nam từ máy văn phòng xưởng.
-- **Nam** (neutral): Linh kiện chỉ là cái cớ để ghi vào sổ. Tiền đi đâu đó rồi.
+- **Nam** (neutral): Linh kiện chỉ là cái cớ để ghi vào sổ. Còn tiền có thật sự đi đâu không, sổ đặt hàng không nói.
 - **Minh Anh** (serious): Tiền thì nằm trong sổ quỹ. Sổ quỹ khối CLB không phải của mình, chị không tự mở được. Phải xin thầy Quang.
 - **Tùng** (gai-dau): Thầy Quang thì lại "căn cứ vào đâu".
 - **Hà Vy** (neutral): Thì mang căn cứ đi.
@@ -75,7 +75,7 @@ Lời nhân vật sau mỗi lần chạy:
 
 - **Người kể**: Phòng Đào tạo. Thầy Quang nghe Minh Anh trình bày, không ngắt lời, rồi hỏi đúng một câu.
 > ⚖️ ĐỐI CHẤT — Thầy Quang nêu giả thuyết: "Các em muốn thầy cho xuất sổ quỹ của khối CLB, một sổ không thuộc CLB các em. Căn cứ vào đâu?". Người chơi trình thẻ trong hồ sơ, hoặc nói "chưa đủ căn cứ".
->   - Trình ev-dat-ma-khong-co [ĐỦ CĂN CỨ] → **Minh Anh** (neutral): Thưa thầy, ba đơn linh kiện đã duyệt chi, tổng hai triệu tư, nhưng kiểm kê xưởng không có một cái nào. Tiền đã chi mà hàng không về, nên bọn em cần xem khoản chi ấy trả từ quỹ nào, ai duyệt. / **Thầy Quang** (neutral): Chi mà không có hàng. Căn cứ ấy đủ để mở sổ quỹ. Thầy cho xuất, các em chỉ được xem các khoản liên quan ba đơn này và quỹ CLB Thám Tử.
+>   - Trình ev-dat-ma-khong-co [ĐỦ CĂN CỨ] → **Minh Anh** (neutral): Thưa thầy, ba đơn linh kiện ghi đã duyệt, trên đơn tổng hai triệu tư, nhưng kiểm kê xưởng không có một cái nào. Đơn ghi đã chi mà hàng không về, nên bọn em cần xem tiền ấy có thật sự xuất khỏi quỹ nào không, ai duyệt. / **Thầy Quang** (neutral): Đơn ghi chi mà không có hàng. Căn cứ ấy đủ để mở sổ quỹ. Thầy cho xuất, các em chỉ được xem các khoản liên quan ba đơn này và quỹ CLB Thám Tử.
 >   - Trình ev-don-nam-may [HỖ TRỢ] → **Hà Vy** (neutral): Ba đơn ấy tạo ban đêm từ máy văn phòng xưởng, đứng tên Nam mà Nam không đặt ạ. / **Thầy Quang** (neutral): Đơn mượn tên là chuyện của xưởng Robotics. Chuyện tiền thì thầy cần căn cứ về tiền.
 >   - Trình ev-toi-07 [GỢI Ý] → **Thầy Quang** (neutral): Em Nam ở thư viện tối đó. Thầy ghi nhận, nhưng điều ấy liên quan gì tới sổ quỹ?
 >   - Chưa đủ căn cứ → **Thầy Quang** (stern): Chưa đủ căn cứ thì thầy chưa mở sổ của người khác cho các em xem. Về làm rõ đã. / **Minh Anh** (worried): Dạ. Bọn em về đếm lại kho ạ.
@@ -98,8 +98,8 @@ Lời nhân vật sau mỗi lần chạy:
 > 🗂️ Giấy nhớ mới: **[Quỹ CLB Thám Tử]** — nguồn: Bảng quỹ
 > Bảng quỹ ghi CLB chủ quỹ ở cột clb: THAM_TU là CLB Thám Tử, ROBOTICS là CLB Robotics.
 > (giấy nhớ kéo được vào màn tra: THAM_TU)
-> 🗂️ Giấy nhớ mới: **[Hạn mức 1.000.000]** — nguồn: Quy chế quỹ CLB, Duy nhắc
-> Mỗi lần chi từ quỹ một CLB không quá một triệu đồng. Vượt thì phải có giải trình.
+> 🗂️ Giấy nhớ mới: **[Ngưỡng giải trình 1.000.000]** — nguồn: Quy chế quỹ khối CLB, Minh Anh và Duy nhắc
+> Khoản dưới một triệu thì chủ tịch Hội sinh viên duyệt thẳng được, không cần trưởng CLB chủ quỹ ký. Nhưng tổng các khoản do cùng một người duyệt vượt một triệu thì Phòng Kế hoạch yêu cầu người đó giải trình. Đây là ngưỡng để tìm nhóm cần hỏi tiếp, không phải mức cấm.
 > (giấy nhớ kéo được vào màn tra: 1000000)
 ### 💻 Màn tra: Sổ chi nối với bảng quỹ (thẻ `c-chi-tham-tu`)
 Đề bài trên màn hình: *Sổ chi ghi mã quỹ; bảng quỹ cho biết mã nào là quỹ của CLB nào. Khoản chi nào ghi vào quỹ CLB Thám Tử?*
@@ -146,48 +146,51 @@ Lời nhân vật sau mỗi lần chạy:
 
 - **Bạn (người chơi)**: Sáu khoản ghi vào quỹ CLB Thám Tử. Ba khoản nhỏ chị Minh Anh duyệt. Ba khoản lớn người duyệt ghi là Khánh.
 - **Minh Anh** (khoanh-tay): Ba khoản chị duyệt là văn phòng phẩm, chị nhớ. Ba khoản kia chị chưa từng thấy.
-- **Hà Vy** (thinking): Gom theo người duyệt rồi đếm. Nhưng lần này đếm số dòng chưa đủ: phải tính cả tiền, tổng và trung bình mỗi khoản.
-> 🎯 NHIỆM VỤ: Mỗi người duyệt bao nhiêu khoản, tổng bao nhiêu tiền, trung bình một khoản bao nhiêu?
-> 💭 Hà Vy nhắc: Gom theo người duyệt; ngoài đếm, tính thêm tổng và trung bình của cột tiền.
+- **Hà Vy** (thinking): Gom theo người duyệt rồi đếm. Nhưng lần này đếm số dòng chưa đủ: ba khoản nhỏ với ba khoản lớn đếm ra bằng nhau. Phải cộng tiền.
+> 🎯 NHIỆM VỤ: Mỗi người duyệt bao nhiêu khoản, tổng bao nhiêu tiền?
+> 💭 Hà Vy nhắc: Gom theo người duyệt; ngoài đếm, tính thêm tổng của cột tiền.
 ### 💻 Màn tra: Khoản chi gom theo người duyệt (thẻ `c-chi-theo-nguoi-duyet`)
-Đề bài trên màn hình: *Lấy phiếu sáu khoản làm nguồn. Gom theo người duyệt: đếm số khoản, tính tổng và trung bình số tiền.*
+Đề bài trên màn hình: *Lấy phiếu sáu khoản làm nguồn. Gom theo người duyệt: đếm số khoản, tính tổng số tiền.*
 Cách chơi: màn TỔNG HỢP — chọn nguồn (phiếu đã ghim `ev-chi-tham-tu`), lọc tùy chọn bằng giấy nhớ, chọn cột để NHÓM; máy đếm số dòng mỗi nhóm (COUNT), có thể tính tổng / trung bình và chỉ giữ nhóm vượt ngưỡng nếu bài cần.
 Giấy nhớ đang có quanh màn hình: [0] [THAM_TU] [1000000]
 Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
 WITH chi_tham_tu AS (phiếu "Sáu khoản chi ghi vào quỹ CLB Thám Tử")
-SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_tien) AS tb_so_tien FROM chi_tham_tu GROUP BY nguoi_duyet;
+SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM chi_tham_tu GROUP BY nguoi_duyet;
 ```
 Kết quả: 2 dòng
-| nguoi_duyet | so_dong | tong_so_tien | tb_so_tien |
-|---|---|---|---|
-| Khánh | 3 | 2400000 | 800000 |
-| Minh Anh | 3 | 450000 | 150000 |
-> 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Minh Anh 3 khoản, 450.000; Khánh 3 khoản, 2.400.000** — Kết quả gom theo người duyệt: Minh Anh ba khoản, tổng 450.000, trung bình 150.000; Khánh ba khoản, tổng 2.400.000, trung bình 800.000 một khoản.
-
-- **Bạn (người chơi)**: Chị Minh Anh: ba khoản, tổng bốn trăm năm mươi nghìn, trung bình một trăm năm mươi. Khánh: ba khoản, tổng hai triệu tư, trung bình tám trăm nghìn.
-- **Duy** (neutral): Hạn mức mỗi lần chi của quỹ CLB là một triệu. Nhưng nói "vượt" thì phải để bảng tự lọc ra, đừng chỉ tay.
-> 🎯 NHIỆM VỤ: Người duyệt nào có tổng chi vượt một triệu?
-> 💭 Hà Vy nhắc: Gom như vừa rồi, nhưng chỉ giữ nhóm có tổng lớn hơn một triệu.
-### 💻 Màn tra: Chỉ giữ nhóm vượt hạn mức (thẻ `c-chi-vuot-muc`)
-Đề bài trên màn hình: *Gom theo người duyệt như vừa rồi, tính tổng, nhưng chỉ giữ nhóm có tổng lớn hơn một triệu.*
-Cách chơi: màn TỔNG HỢP — chọn nguồn (phiếu đã ghim `ev-chi-tham-tu`), lọc tùy chọn bằng giấy nhớ, chọn cột để NHÓM; máy đếm số dòng mỗi nhóm (COUNT), có thể tính tổng / trung bình và chỉ giữ nhóm vượt ngưỡng nếu bài cần.
-Giấy nhớ đang có quanh màn hình: [0] [THAM_TU] [1000000]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
-```sql
-WITH chi_tham_tu AS (phiếu "Sáu khoản chi ghi vào quỹ CLB Thám Tử")
-SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM chi_tham_tu GROUP BY nguoi_duyet HAVING SUM(so_tien) > 1000000;
-```
-Kết quả: 1 dòng
 | nguoi_duyet | so_dong | tong_so_tien |
 |---|---|---|
 | Khánh | 3 | 2400000 |
-> 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Khánh: 3 khoản, tổng 2.400.000, vượt hạn mức** — Kết quả lọc nhóm: chỉ Khánh có tổng chi từ quỹ CLB Thám Tử vượt một triệu (2.400.000 cho ba khoản). Ba khoản ấy là ba đơn linh kiện không có hàng.
+| Minh Anh | 3 | 450000 |
+> 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Minh Anh 3 khoản, 450.000; Khánh 3 khoản, 2.400.000** — Kết quả gom theo người duyệt: Minh Anh ba khoản, tổng 450.000; Khánh ba khoản, tổng 2.400.000. Cùng số khoản, tiền gấp hơn năm lần.
 
-- **Bạn (người chơi)**: Còn một dòng. Khánh.
+- **Bạn (người chơi)**: Chị Minh Anh: ba khoản, tổng bốn trăm năm mươi nghìn. Khánh: ba khoản, tổng hai triệu tư.
+- **Minh Anh** (khoanh-tay): Quy chế quỹ khối CLB: khoản dưới một triệu thì chủ tịch Hội duyệt thẳng, không cần trưởng CLB chủ quỹ ký. Chị là chủ quỹ mà không biết ba khoản này, là vì thế.
+- **Duy** (neutral): Nhưng tổng các khoản do cùng một người duyệt mà vượt một triệu thì Phòng Kế hoạch đòi người đó giải trình. Ngưỡng ấy để tìm nhóm cần hỏi, không phải để kết tội. Để bảng tự lọc ra, đừng chỉ tay.
+- **Hà Vy** (thinking): Và tính thêm trung bình mỗi khoản. Xem từng khoản to cỡ nào so với mức duyệt thẳng.
+> 🎯 NHIỆM VỤ: Người duyệt nào có tổng chi vượt ngưỡng giải trình một triệu? Mỗi khoản trung bình bao nhiêu?
+> 💭 Hà Vy nhắc: Gom như vừa rồi, tính thêm trung bình, rồi chỉ giữ nhóm có tổng lớn hơn một triệu.
+### 💻 Màn tra: Chỉ giữ nhóm vượt ngưỡng giải trình (thẻ `c-chi-vuot-muc`)
+Đề bài trên màn hình: *Gom theo người duyệt như vừa rồi, tính thêm trung bình mỗi khoản, nhưng chỉ giữ nhóm có tổng lớn hơn một triệu.*
+Cách chơi: màn TỔNG HỢP — chọn nguồn (phiếu đã ghim `ev-chi-tham-tu`), lọc tùy chọn bằng giấy nhớ, chọn cột để NHÓM; máy đếm số dòng mỗi nhóm (COUNT), có thể tính tổng / trung bình và chỉ giữ nhóm vượt ngưỡng nếu bài cần.
+Giấy nhớ đang có quanh màn hình: [0] [THAM_TU] [1000000]
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
+```sql
+WITH chi_tham_tu AS (phiếu "Sáu khoản chi ghi vào quỹ CLB Thám Tử")
+SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_tien) AS tb_so_tien FROM chi_tham_tu GROUP BY nguoi_duyet HAVING SUM(so_tien) > 1000000;
+```
+Kết quả: 1 dòng
+| nguoi_duyet | so_dong | tong_so_tien | tb_so_tien |
+|---|---|---|---|
+| Khánh | 3 | 2400000 | 800000 |
+> 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000** — Kết quả lọc nhóm: chỉ Khánh có tổng chi từ quỹ CLB Thám Tử vượt ngưỡng giải trình một triệu (2.400.000 cho ba khoản). Trung bình 800.000 một khoản: khoản nào cũng dưới một triệu, mức chủ tịch Hội duyệt thẳng được. Ba khoản ấy là ba đơn linh kiện không có hàng.
+
+- **Bạn (người chơi)**: Còn một dòng. Khánh: ba khoản, tổng hai triệu tư, trung bình tám trăm nghìn.
+- **Hà Vy** (thinking): Tám trăm nghìn một khoản. Khoản nào cũng dưới một triệu, vừa đủ để không cần chị Minh Anh ký.
+- **Tùng** (worried): Xé nhỏ để lọt. Chủ tịch Hội duyệt chi quỹ CLB khác… cho hàng không về.
 - **Nam** (neutral): Khánh. Trưởng CLB của tớ. Chủ tịch Hội sinh viên.
-- **Tùng** (worried): Chủ tịch Hội duyệt chi quỹ CLB khác… cho hàng không về.
-- **Hà Vy** (thinking): Bảng nói được tới đó. Vì sao thì bảng không nói. Chỉ có người mới nói được.
+- **Hà Vy** (thinking): Bảng nói được tới đó: ai duyệt, bao nhiêu, chia thế nào. Vì sao thì bảng không nói. Chỉ có người mới nói được.
 - **Minh Anh** (serious): Chị gửi thầy Quang. Việc còn lại là của thầy.
 
 ##### 📍 Phòng họp rà soát — Phòng họp: Khánh trước thầy Quang
@@ -195,16 +198,18 @@ Kết quả: 1 dòng
 - **Người kể**: Thứ Hai tuần sau, phòng họp. Thầy Quang chủ trì. Khánh ngồi một bên, mặt không đổi. Nam ngồi cạnh nhóm CLB Thám Tử.
 - **Thầy Quang** (neutral): Thầy mời em Khánh tới vì sổ quỹ. CLB Thám Tử trình bày trước. Em Khánh nghe, rồi trả lời.
 > ⚖️ ĐỐI CHẤT — Khánh nêu giả thuyết: "Ba khoản đó là chi cho đội robot trước giải quốc gia. Quỹ khối CLB thì tôi là chủ tịch Hội, tôi duyệt là đúng thẩm quyền. Các bạn có gì mà nói tôi sai?". Người chơi trình thẻ trong hồ sơ, hoặc nói "chưa đủ căn cứ".
->   - Trình ev-chi-vuot-muc [ĐỦ CĂN CỨ] → **Minh Anh** (neutral): Ba khoản ấy không ghi vào quỹ Robotics. Chúng ghi vào quỹ CLB Thám Tử, tổng hai triệu tư, trung bình tám trăm nghìn một khoản, gấp năm lần mọi khoản khác của quỹ này. Và ba đơn linh kiện ấy chưa có cái nào về xưởng. / **Thầy Quang** (neutral): Chi quỹ của CLB khác, cho hàng không về. Em Khánh, thầy cần em nói. / **Khánh** (neutral): …Em nhận. Tiền ấy em dùng vào việc riêng, không phải cho đội. Lá thư, cái tin, mấy cái đơn, là để không ai mở sổ quỹ ấy ra nữa. Em xin lỗi Nam. Em xin lỗi CLB Thám Tử.
->   - Trình ev-chi-theo-nguoi-duyet [HỖ TRỢ] → **Hà Vy** (neutral): Sổ quỹ CLB Thám Tử có hai người duyệt: chị Minh Anh ba khoản nhỏ, và anh ba khoản lớn. / **Khánh** (neutral): Chủ tịch Hội duyệt được mọi quỹ. Thế thì sai chỗ nào?
+>   - Trình ev-chi-vuot-muc [ĐỦ CĂN CỨ] → **Minh Anh** (neutral): Ba khoản ấy không ghi vào quỹ Robotics. Chúng ghi vào quỹ CLB Thám Tử, mỗi khoản dưới một triệu nên không cần em ký, cộng lại hai triệu tư. Và ba đơn linh kiện ấy chưa có cái nào về xưởng. / **Thầy Quang** (neutral): Chi quỹ của CLB khác, cho hàng không về. Em Khánh, ba khoản đó có chi cho đội robot không? / **Khánh** (neutral): …Không ạ. Em dùng vào việc riêng. Em sẽ trả lại. / **Thầy Quang** (neutral): Còn lá thư gửi CLB Thám Tử, cái tin trong kênh, ba đơn đứng tên Nam? / **Khánh** (neutral): Là để không ai mở sổ quỹ ấy ra. Em xin lỗi Nam. Em xin lỗi CLB Thám Tử.
+>   - Trình ev-chi-theo-nguoi-duyet [HỖ TRỢ] → **Hà Vy** (neutral): Sổ quỹ CLB Thám Tử có hai người duyệt: chị Minh Anh ba khoản nhỏ, và anh ba khoản lớn. / **Khánh** (neutral): Khoản dưới một triệu thì chủ tịch Hội duyệt được. Thế thì sai chỗ nào?
 >   - Trình ev-dat-ma-khong-co [HỖ TRỢ] → **Nam** (neutral): Ba đơn đó không có cái linh kiện nào trong kho. Tớ đếm hai lần. / **Khánh** (neutral): Hàng về chậm thì đổ cho tôi à?
 >   - Trình ev-don-nam-may [GỢI Ý] → **Khánh** (neutral): Đơn đứng tên Nam thì hỏi Nam. / **Duy** (neutral): Đơn tạo từ máy trong phòng khóa, mà Nam không có chìa.
 >   - Chưa đủ căn cứ → **Minh Anh** (neutral): Thưa thầy, bọn em chỉ nói được tới đây: ba khoản chi không có hàng, ghi vào quỹ CLB Thám Tử. Ai chi vào việc gì, bọn em không có căn cứ. / **Thầy Quang** (neutral): Biết dừng ở chỗ chứng cứ dừng. Phần còn lại thầy làm việc với Hội sinh viên.
 >   - Thẻ khác → **Khánh** (neutral): Cái này thì liên quan gì tới quỹ? / **Minh Anh** (worried): Em xem lại hồ sơ ạ.
 > ⤵ RẼ TỰ ĐỘNG: nếu có dc-khanh-du thì sang "Khánh nhận; Nam nhận CLB Robotics" (in ở dưới); nếu KHÔNG thì chạy tiếp các dòng ngay sau đây. Hai đường loại trừ nhau, người chơi chỉ thấy một.
-- **Thầy Quang** (neutral): Các em dừng đúng chỗ. Chuyện ba khoản chi, thầy làm việc riêng với Hội sinh viên và Phòng Kế hoạch. Có kết luận thầy sẽ thông báo.
-- **Người kể**: Một tuần sau, trường thông báo Khánh thôi chức chủ tịch Hội sinh viên và trưởng CLB Robotics. Lý do không được nêu. Nam được bầu làm trưởng CLB.
-- **Nam** (neutral): Tớ không biết cậu ấy nói gì với thầy. Nhưng tớ biết các cậu đã dừng ở đúng chỗ.
+- **Thầy Quang** (neutral): Các em dừng đúng chỗ. Chuyện ba khoản chi, thầy chuyển Phòng Kế hoạch yêu cầu Hội sinh viên giải trình. Có kết luận thầy sẽ thông báo.
+- **Khánh** (neutral): Em sẽ giải trình với Phòng Kế hoạch. Không phải ở đây.
+- **Người kể**: Một tuần sau, chưa có kết luận. Khánh vẫn là chủ tịch Hội sinh viên. Phòng CLB thì thầy Quang nói: chờ.
+- **Nam** (neutral): Tớ không biết cậu ấy sẽ nói gì với Phòng Kế hoạch. Nhưng tớ biết các cậu đã dừng ở đúng chỗ. Sổ sách của xưởng, từ giờ tớ giữ cho rõ.
+- **Minh Anh** (serious): Chưa ngã ngũ thì hồ sơ ghi "chưa ngã ngũ". Mình không viết thêm.
 
 *— Chỉ khi có dc-khanh-du (đường rẽ tự động ở trên) —*
 
@@ -221,7 +226,7 @@ Kết quả: 1 dòng
 > ❓ Minh Anh hỏi: "Hồ sơ cuối kỳ, mục cuối cùng. Mình nói chắc được điều gì?" (chọn sai thì nghe phản hồi rồi chọn lại)
 >   - Ba khoản chi không có hàng được ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Mỗi bước đều có phiếu để ai cũng tự kiểm được. ✅ → **Minh Anh** (neutral): Đúng chừng ấy. Phần "vì sao" là lời người nhận, không phải của bảng.
 >   - Cả Hội sinh viên và CLB Robotics cùng bao che cho Khánh. → **Hà Vy** (thinking): Bảng ghi một người duyệt. "Cả Hội" thì cột nào nói?
->   - Khánh viết lá thư ngay từ đầu để chiếm phòng CLB. → **Duy** (neutral): Khánh nhận lá thư là để không ai mở sổ quỹ. "Chiếm phòng" là mình đoán thêm.
+>   - Khánh viết lá thư ngay từ đầu để chiếm phòng CLB. → **Duy** (neutral): Lá thư để làm gì thì chỉ người viết nói được. "Chiếm phòng" là mình đoán thêm.
 > ⤵ RẼ TỰ ĐỘNG: nếu (có clue-loi-nhan-linh-1 và có clue-loi-nhan-linh-2 và có clue-loi-nhan-linh-3 và có clue-loi-nhan-linh-4) thì sang "Đủ bốn mẩu giấy: ngăn tủ khóa trong phòng CLB" (in ở dưới); nếu KHÔNG thì chạy tiếp các dòng ngay sau đây. Hai đường loại trừ nhau, người chơi chỉ thấy một.
 - **Minh Anh** (neutral): Hồ sơ cuối kỳ xong. Mục nào cũng có phiếu, ai mở ra cũng tự kiểm được.
 - **Hà Vy** (smile): Từ một chữ H tới một sổ quỹ. Mỗi bước là một phiếu.
