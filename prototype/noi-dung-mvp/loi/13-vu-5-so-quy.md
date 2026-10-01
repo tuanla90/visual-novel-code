@@ -71,9 +71,8 @@
 - **duy** (neutral): Thầy Quang ký rồi. Thầy Khải chụp đúng một trang ấy.
 
 ## v5-so-quy.6
-- **player**: Tối Chủ nhật 15/9, bảy dòng. Năm bạn vào in bài. Hai người của Robotics: Thảo vào 20 giờ 10, ra 21 giờ 30. Khánh vào 22 giờ 40, ra 23 giờ 20.
-- **ha-vy** (thinking): Nhật ký in ghi lá thư in lúc 23 giờ 10, bằng tài khoản của Robotics. Trong phòng lúc ấy, người biết mật khẩu tài khoản ấy chỉ có một.
-- **tung** (gai-dau): Tớ không cá. Tớ ghi.
+- **player**: Tối Chủ nhật 15/9, bảy dòng. Năm bạn vào in bài. Hai người của Robotics: Thảo vào 20 giờ 10, ra 21 giờ 30. Khánh vào 22 giờ 40, ra 23 giờ 20. Thầy Khải gửi kèm các lệnh in của tài khoản Robotics tối ấy: hai lệnh, 20 giờ 40 và 23 giờ 10.
+- **ha-vy** (thinking): 23 giờ 10 là lá thư. Trong phòng lúc ấy, người của Robotics chỉ có một. Mới là cơ hội và thời gian, chưa phải ai bấm in.
 - **minh-anh** (serious): Sổ ký là giấy, nhật ký in là máy. Hai nguồn riêng. Mang cả hai lên.
 
 ## v5-doi-chat.1
@@ -100,7 +99,7 @@
 - [DÀN DỰNG] {{nv.khanh}} nhìn tờ phiếu một dòng trên bàn một lúc lâu.
 - **khanh** (neutral): …Ba khoản đó không chi cho đội ạ. Đơn là em lập. Tiền em dùng vào việc riêng. Em sẽ trả lại.
 - **nam** (neutral): Anh lấy tên em.
-- **khanh** (neutral): Anh xin lỗi em, Nam.
+- [DÀN DỰNG] {{nv.khanh}} không nhìn sang {{nv.nam}}.
 - **thay-quang** (neutral): Quân ghi biên bản: tên em Nam được gỡ khỏi giấy giải trình, giải ngân của xưởng mở lại từ hôm nay.
 - **thay-quang** (neutral): CLB Thám Tử còn đề nghị hỏi lại chuyện lá thư hồi tháng 9. Em Hoài, chú Cường, mời hai người lên gần đây.
 - [DÀN DỰNG] {{nv.hoai}} đứng dậy, đi ngang qua chân ghế của {{nv.khanh}} thì khựng lại. Tay cô níu lấy tay áo xanh của {{nv.tung}}.
@@ -112,7 +111,9 @@
 ## v5-nhan-thu.1
 - **thay-quang** (neutral): Thầy ghi đúng như em nói. Em Khánh, thầy chỉ hỏi: em có in lá thư ấy không? Em có thể trả lời, hoặc để thầy xác minh tiếp.
 - [DÀN DỰNG] {{nv.khanh}} im lặng một lúc lâu. Anh nhìn sang {{nv.hoai}}, cô vẫn đang níu tay áo xanh của {{nv.tung}}.
-- **khanh** (neutral): …Em không muốn em Hoài phải ngồi đây thêm một buổi để nhớ mặt một người em ấy không nhớ. Lá thư là em in ạ. Sáng hôm sau em nhờ em ấy nộp hộ.
+- **khanh** (neutral): Nếu em không trả lời thì thầy xác minh tiếp ạ?
+- **thay-quang** (neutral): Đúng.
+- **khanh** (neutral): …Thế là em lại lùi thêm một lần nữa, còn em Hoài thì lại phải ngồi đây nhớ một khuôn mặt em ấy không nhớ. Lá thư là em in ạ. Hoài chỉ nộp hộ.
 - **khanh** (neutral): Anh xin lỗi em, Hoài. Anh nhờ một bạn năm nhất vì nghĩ năm nhất thì không ai hỏi lại.
 - **hoai** (nervous): Vâng ạ.
 > NHIỆM VỤ: Trình thứ cho thấy lá thư liên quan gì tới ba khoản chi
@@ -145,9 +146,9 @@
 - **nam** (neutral): Sao lại là tên em?
 - **khanh** (neutral): Người duyệt không được tự đứng tên đề xuất. Em là đứa không ai nghi.
 - **nam** (neutral): Còn cái tin trong kênh?
-- **khanh** (neutral): Kênh có người trực. Ai hỏi thì hỏi em.
+- **khanh** (neutral): Thư không thành thì còn đợt rà cuối kỳ. Anh cần người ta ngại các em trước lúc ấy. Kênh có người trực, ai hỏi thì hỏi em.
 - **nam** (neutral): Hôm ấy anh còn bảo mọi người hỏi em nhẹ thôi.
-- **khanh** (neutral): Câu ấy anh nói thật. Sang năm anh ra trường. Anh tính bù xong trước ngày có người đọc sổ, rồi không ai phải biết, kể cả em.
+- **khanh** (neutral): Câu ấy anh nói thật. Bốn năm anh dựng cái xưởng ấy. Anh sợ nhất là ra trường mà người ta nhớ anh bằng đúng một dòng trong sổ chi. Anh tính bù xong trước ngày có người đọc sổ, rồi không ai phải biết, kể cả em.
 - **thay-quang** (neutral): Còn ba cái đơn, và danh sách chuyển xuống Ban kiểm tra?
 - **khanh** (neutral): Tạm ứng quá ba mươi ngày không chứng từ là bị hỏi, nên em viết đơn. Danh sách thì em tưởng tài khoản khóa là Nam không kịp nộp kiểm kê. Lần nào em cũng chỉ tìm cách lùi cái lúc bị hỏi.
 - **quan** (stunned): Em lại cầm một danh sách đi nghi người khác. Lần thứ hai.
@@ -170,19 +171,15 @@
 - **khanh** (neutral): Ừ. Em giữ sổ tốt hơn anh.
 - [DÀN DỰNG] {{nv.khanh}} đặt chiếc chìa lên bậu cửa sổ. Rồi anh gỡ cái huy hiệu sứt khỏi quai balo, đặt xuống cạnh chiếc chìa, và đi.
 - **tung** (worried): Tớ chắc là anh ấy từ hôm thấy cái huy hiệu. Thế mà trúng rồi tớ chả thấy vui gì cả.
-- **tung** (neutral): Nam này. Hôm trước tớ xin lỗi rồi, nhưng tớ muốn nói lại: tớ đã coi tên trên tài khoản là tên cậu.
-- **nam** (neutral): Tớ nghe. Tớ cũng mất mấy hôm mới dám bước vào phòng các cậu. Lần sau đọc phiếu trước.
 - **nam** (neutral): Lệ phí giải hạn cuối tháng này. Kinh phí năm nay toàn anh ấy chạy. Giờ tớ phải tự đi xin lại từ đầu.
 - **thao** (neutral): Chìa của chị treo lên móc cạnh cửa rồi. Ai lấy cũng phải ký tên. Tiền giải thì chị với Bách đi xin cùng em.
-- **minh-anh** (serious): Chị cũng có phần. Làm chủ quỹ mà sao kê kỳ trước chị còn chưa mở. Từ tháng này chị xin hằng tháng, dán cạnh bảng nguyên tắc.
-- **chu-cuong** (smile): Chú về trực đây. Lần sau chú cố nhìn mặt cho kỹ.
 - **hoai** (neutral): Tùng ơi, cái áo xanh ấy… CLB các cậu còn nhận người không?
 - **tung** (happy): Đơn ở chỗ Duy. Chiều thứ Tư, phòng CLB. Lần này tớ dẫn đúng tòa.
 
 ## v5-ket-luan.1
 - **narrator**: Chiều thứ Tư, phòng CLB. Hoài tới sớm, mang theo một xấp giấy nháp còn trắng một mặt.
 - **duy** (neutral): Quỹ đóng thì vẫn họp. Giấy còn nửa tập, bút còn ba cái.
-- **nam** (neutral): Tớ qua được một lúc, xong phải về lo tiền giải với anh Bách, chị Thảo. Cảm biến của xưởng ghi mỗi giây một dòng, kéo giấy nhớ thì không kịp. Tớ muốn tự viết chương trình đọc nó.
+- **nam** (neutral): Tớ qua được một lúc, xong phải về lo tiền giải với anh Bách, chị Thảo. Cảm biến của xưởng ghi mỗi giây một dòng. Tớ muốn tự viết chương trình đọc nó.
 - **ha-vy** (smile): Từ một chữ H tới một sổ quỹ. Mỗi bước là một phiếu.
 - **minh-anh** (neutral): Hồ sơ cuối kỳ xong. Em là người kéo phiếu đầu tiên của vụ này, em đóng dấu đi.
 - [DÀN DỰNG] Bạn đóng dấu lưu trữ lên bìa hồ sơ. {{nv.duy}} ghim cái huy hiệu sứt lên bảng điều tra, cạnh tờ giấy nhớ ghi lời chú Cường.

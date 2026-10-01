@@ -33,6 +33,7 @@
 
 ## v3-xuong.3
 - **player**: Tám bài từ điện thoại trực kênh. Một bài từ máy văn phòng xưởng.
+- **nam** (neutral): Bài thì tớ đăng bằng điện thoại trực. Máy xưởng số 2 tớ chỉ đăng nhập để xem thống kê kênh, không đăng gì từ đó.
 - **nam** (neutral): Điện thoại trực là cái tớ giữ. Tớ đăng toàn buổi chiều, bằng cái đó.
 - **tung** (worried): Điện thoại cậu giữ thì chứng minh được gì? Hôm đó cậu đổi sang máy bàn thì sao.
 - **nam** (neutral): Thì tớ đã bảo tối đó tớ ở thư viện. Cửa từ thư viện ghi giờ vào giờ ra của từng thẻ. Trên cổng sinh viên, ai cũng tải được bản ghi của chính mình. Tớ tải rồi gửi vào nhóm cho các cậu.
