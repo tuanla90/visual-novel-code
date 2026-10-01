@@ -449,6 +449,7 @@ export const KICH_BAN_MVP = {
       "uyTin": null
     },
     "chuoiDau": "md-00-xe-buyt",
+    "ngayMoDau": "2024-09-08",
     "ngay": [
       {
         "so": 1,
@@ -519,7 +520,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Chủ nhật, ngày nhận phòng"
+          "text": "Chủ nhật, 08/09/2024 · Đại học Chấn Hưng"
         },
         {
           "type": "note",
@@ -3460,9 +3461,9 @@ export const KICH_BAN_MVP = {
             "B"
           ],
           [
-            "KT25A",
+            "KT22A",
             "Kế toán",
-            2025,
+            2022,
             "A"
           ],
           [
@@ -3668,55 +3669,55 @@ export const KICH_BAN_MVP = {
         ],
         "dong": [
           [
-            "2026-09-12 09:40",
+            "2024-09-14 09:40",
             "SV240131",
             "lich-truc-nhat-lop.xlsx",
             1
           ],
           [
-            "2026-09-12 15:05",
+            "2024-09-14 15:05",
             "SV240317",
             "the-dang-ky-thu-vien.pdf",
             1
           ],
           [
-            "2026-09-13 20:15",
+            "2024-09-15 20:15",
             "SV240228",
             "bai-tap-kinh-te-vi-mo.pdf",
             6
           ],
           [
-            "2026-09-13 21:02",
+            "2024-09-15 21:02",
             "SV240201",
             "slide-nguyen-ly-ke-toan.pdf",
             12
           ],
           [
-            "2026-09-13 22:47",
+            "2024-09-15 22:47",
             "SV220118",
             "do-an-mon-hoc.pdf",
             30
           ],
           [
-            "2026-09-13 23:10",
+            "2024-09-15 23:10",
             "SV210745",
             "kien-nghi-phong-clb.docx",
             1
           ],
           [
-            "2026-09-13 23:18",
+            "2024-09-15 23:18",
             "SV240146",
             "bao-cao-nhom-kinh-te-vi-mo.pdf",
             4
           ],
           [
-            "2026-09-14 07:30",
+            "2024-09-16 07:30",
             "SV240122",
             "danh-sach-lop-BC24A.xlsx",
             1
           ],
           [
-            "2026-09-14 08:05",
+            "2024-09-16 08:05",
             "SV210745",
             "don-xin-xuong-thuc-hanh.docx",
             2

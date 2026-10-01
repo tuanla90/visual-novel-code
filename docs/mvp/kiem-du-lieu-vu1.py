@@ -11,7 +11,7 @@ lop = [('KT24A','Kế toán',2024,'B'),('KT24B','Kế toán',2024,'A'),('QT24A',
        ('QT24B','Quản trị kinh doanh',2024,'B'),('BC24A','Báo chí',2024,'B'),('BC24B','Báo chí',2024,'C'),
        ('TC24A','Tài chính – Ngân hàng',2024,'A'),('MK24A','Marketing',2024,'A'),('DL24A','Du lịch',2024,'C'),('CT24A','Công nghệ thông tin',2024,'A'),('TM24A','Thương mại điện tử',2024,'C'),
        # QĐ-092: 3 lớp khác khóa, không có sinh viên (bài lọc số / ghép 3 điều kiện ngày 2)
-       ('BC23A','Báo chí',2023,'B'),('KT25A','Kế toán',2025,'A'),('QT23A','Quản trị kinh doanh',2023,'C')]
+       ('BC23A','Báo chí',2023,'B'),('KT22A','Kế toán',2022,'A'),('QT23A','Quản trị kinh doanh',2023,'C')]
 db.executemany('INSERT INTO lop_sinh_hoat VALUES(?,?,?,?)', lop)
 sv = [
  # BC24A: 6 người
