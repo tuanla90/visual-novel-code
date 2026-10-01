@@ -274,7 +274,7 @@ StoryView ──► GameScreen → component theo view.kind (DialogBox, ExploreS
 | Hình + ô ảnh | `shared/ui/visuals/**`, `Portrait.tsx`, `Stage.tsx`, `styles/*.css` | `art-slots.test.ts` (bảng ô ↔ tệp), `bg-cutout.test.ts`, `portrait-cutout.test.tsx`, `portraits.test.tsx`, `SceneBackdrop.test.tsx`, `projector-fit.test.tsx`, `styles/contrast.test.ts` |
 | Store | `shared/store/store.ts` | `store.test.ts` |
 | Telemetry + người quan sát | `shared/telemetry/**`, `app/FacilitatorPanel.tsx`, `app/facilitator-mode.ts`, `app/PreSurvey.tsx`, `app/EndScreen.tsx` | `track/local-sink/export/summary/survey.test.ts`, `FacilitatorPanel.test.tsx`, `PreSurvey.test.tsx`, `EndScreen.test.tsx`, `facilitator-jump.test.ts`, `notebook-and-jump-ui.test.tsx` |
-| Runtime MVP (§4a) | `mvp/engine/{trang-thai,may,sql-mvp}.ts`, `mvp/store/kho-mvp.ts`, `mvp/ui/**`, `assets/mvp/**` | `mvp/engine/may.test.ts` (máy thuần: mở đầu → 5 ngày → họp → hai kết, hết khung → cuối ngày, đi lại không tốn khung, uy tín/hết vạch, Lưu/Nạp), `mvp/engine/sql-mvp.test.ts` (3 thẻ chạy thật trên du-lieu.md ra đúng số dòng, chấm, chặn câu ghi), `mvp/engine/diem-tuong-tac.test.ts` (vật chung hai dữ kiện mở đúng theo ngày, ghim chỉ nơi đã mở), `mvp/ui/ban-do-noi.test.tsx` (nhãn trung tính không lộ `moTa`, bấm điểm → đúng dữ kiện, tòa nhiều phòng, đi lại không tốn khung), `mvp/engine/tu-choi.test.ts` (3 điểm nhảy đúng trạng thái, họp → kết thật), `mvp/ui/giao-dien-mvp.test.tsx` (thanh trên / hồ sơ / sổ / lưu-nạp: nút có nhãn, mở-đóng, Esc), `mvp/ui/bang-quan-sat.test.tsx` (bảng chỉ với `?facilitator=1`, nhảy tới) |
+| Runtime MVP (§4a) | `mvp/engine/{trang-thai,may,sql-mvp}.ts`, `mvp/store/kho-mvp.ts`, `mvp/ui/**`, `assets/mvp/**` | `mvp/engine/may.test.ts` (máy thuần: mở đầu → 5 ngày → họp → hai kết, hết khung → cuối ngày, đi lại không tốn khung, uy tín/hết vạch, Lưu/Nạp), `mvp/engine/sql-mvp.test.ts` (3 thẻ chạy thật trên du-lieu.md ra đúng số dòng, chấm, chặn câu ghi), `mvp/engine/diem-tuong-tac.test.ts` (vật chung hai dữ kiện mở đúng theo ngày, ghim chỉ nơi đã mở), `mvp/ui/ban-do-noi.test.tsx` (nhãn trung tính không lộ `moTa`, bấm điểm → đúng dữ kiện, tòa nhiều phòng, đi lại không tốn khung), `mvp/engine/tu-choi.test.ts` (3 điểm nhảy đúng trạng thái, họp → kết thật), `mvp/ui/giao-dien-mvp.test.tsx` (thanh trên / bảng điều tra / sổ / lưu-nạp: nút có nhãn, mở-đóng, Esc), `mvp/ui/bang-quan-sat.test.tsx` (bảng chỉ với `?facilitator=1`, nhảy tới), `mvp/ui/v7/*.test.tsx` (màn tra v7, phòng tra ba pha, lọc thử, bảng ghim — sql.js chạy thật), `mvp/engine/{bang-dieu-tra,giay-nho,trinh-dung,phan-ung}.test.ts` |
 | Tích hợp | `app/GameScreen.tsx`, `app/App.tsx` | `app/full-playthrough.test.ts` (chơi trọn luồng intro-01 → [KẾT THÚC] bằng store/runtime/engine thật, kèm biến thể chọn sai trước) |
 
 **Tệp đóng băng** (muốn đổi kiểu/chữ ký phải báo người giao, kèm lý do): `src/shared/ids.ts`,
@@ -315,9 +315,15 @@ prototype: kho riêng (`mvp/store/kho-mvp.ts`, sessionStorage khóa `clb_mvp_*`,
   Không dùng `sql-challenge/engine/database.ts` (dataset và cột `clb` của prototype khác bộ dữ liệu vụ).
 - `mvp/ui/`: `SanKhauMvp` (nền + dàn chân dung theo tên tệp `anh-mvp.ts`, dùng lại CSS `.stage*`/`.cast-member*`;
   `Portrait` cho nhân vật có trong `shared/ids.ts`), `HudMvp`, `BanDoMvp` + `NoiMvp` (bản đồ và màn trong địa điểm,
-  xem dưới), `ManThuThachMvp` (ô SQL gõ tay + chạy + chấm; trình dựng kéo-thả để gói sau), `TaiLieuMvp`/`HoSoMvp`/
-  `TrangSoMvp`/`LocThuMvp`/`ManChieuMvp`/`LuuNapMvp`/`KetMvp`. Tái dùng `DialogBox` (prop mới `speakerName`),
-  `MultipleChoice` (prop mới `askerLabel`), `ObjectionEffect`, `BacklogModal`, `SqlCode`, `ResultTable`.
+  xem dưới), `TaiLieuMvp`/`HoSoMvp`/`TrangSoMvp`/`ManChieuMvp`/`LuuNapMvp`/`KetMvp`. Tái dùng `DialogBox` (prop mới
+  `speakerName`), `MultipleChoice` (prop mới `askerLabel`), `ObjectionEffect`, `BacklogModal`, `SqlCode`, `ResultTable`.
+- **Màn tra kiểu v7 + bảng điều tra (`mvp/ui/v7/`, ĐÃ CHỐT 30/09/2026).** `PhongTraMvp` = ba pha `bang` → `may` →
+  `ghim` (phòng máy và buổi họp `fix-query` vào thẳng `may`; `fix-query` xong là đi tiếp). `ManTraV7` = màn tra MỘT cách
+  nhập: giấy nhớ (`engine/giay-nho.ts`) kéo / bấm vào ô giá trị, bấm cột / phép / nối, ▶ CHẠY → đống phiếu rơi
+  (`DongPhieu`, canvas) + con dấu số dòng + lời "Khi …" của thẻ; đúng → ghim, `onXong(mã các thẻ đã dùng)` → máy ghi
+  `s.bang.day`. `BangGhimMvp` vẽ bảng từ `engine/bang-dieu-tra.ts` (`dungBang`, `viTriThe`); kéo thẻ → `doi-cho-the`
+  ghi `s.bang.viTri`; cũng là tab "Bảng điều tra" của `HoSoMvp`. `LocThuV7` = lọc thử Ngày hội. Test:
+  `mvp/ui/v7/*.test.tsx`, `mvp/engine/bang-dieu-tra.test.ts`.
 - **Bản đồ và địa điểm (gói ban-do-di-lai).** Lúc tự do trong ngày (`khungNhin` = `chon-dia-diem`), `ManChoiMvp` giữ
   "đang đứng ở đâu" là trạng thái GIAO DIỆN (`{ ngày, nơi }`, không lưu, sang ngày khác → về bản đồ): đi lại không đụng
   máy nên không tốn khung; khung chỉ tính khi chọn một dữ kiện (`chon-du-kien`). `BanDoMvp` vẽ ảnh bản đồ + ghim
@@ -336,9 +342,9 @@ prototype: kho riêng (`mvp/store/kho-mvp.ts`, sessionStorage khóa `clb_mvp_*`,
   chúng sẽ đụng hành vi prototype; prototype không đổi dòng nào): `HudMvp` = `.topbar*` của `TopBar` (vé "Ngày n/5" +
   vạch ngày, viên Nhiệm vụ, nút con nhộng Dọc/Ngang · Hồ sơ · Sổ tay, menu ≡ Lịch sử/Lưu/Nạp/Về tiêu đề/Bắt đầu lại —
   menu là state React, Esc/bấm ra ngoài đóng; uy tín ở buổi họp là viên tối; điện thoại: `.topbar__actions` thành
-  `display: contents`, uy tín xuống hàng nhiệm vụ). `HoSoMvp` = khung hòm đồ `evidence/ui/inventory-grid.css`, hai
-  tab: "Hồ sơ" (chân dung `char-nguoi-choi` + tên/ngành + số đếm, lưới ô lọc Giấy nhớ/Tài liệu/Bằng chứng theo ngăn
-  máy xếp, cột chi tiết = `TheHoSo`) và "Sổ cá nhân" (thẻ `.notebook__journal-*`, mỗi trang đã chép một thẻ); nút
+  `display: contents`, uy tín xuống hàng nhiệm vụ). `HoSoMvp` = khung hòm đồ `evidence/ui/inventory-grid.css`, ba
+  tab: "Nhân vật", "Bảng điều tra" (bảng ghim `v7/BangGhimMvp` khi có ván — `ManChoiMvp` luôn truyền; lưới ô kiểu
+  cũ chỉ còn làm dự phòng khi không có prop `trangThai`) và "Sổ cá nhân" (thẻ `.notebook__journal-*`, mỗi trang đã chép một thẻ); nút
   Hồ sơ / Sổ tay trên thanh trên mở đúng tab. `LuuNapMvp` = `shared/vn/saveload-modal.css` (ảnh ô = nền cảnh lúc lưu,
   ô trống = nền cảnh hiện tại đen trắng; hộp "Ghi đè?" nằm NGOÀI `.saveload-card` vì thẻ có transform). Điện thoại
   (≤ 768 px và `.game--portrait`): hòm đồ một cột, bỏ cột chân dung/ảnh xem trước, vùng chạm 44 px; lưu/nạp ẩn nút
