@@ -197,7 +197,9 @@ export function DialogBox({
   const label = speakerName ?? speakerLabel(line.speaker);
   const readKey = readLineKey(line.speaker, line.text);
   const markRead = useVnStore((s) => s.markRead);
-  const alreadyRead = useVnStore((s) => s.readLines[readKey] === true);
+  const skipUnread = useVnStore((s) => s.skipUnread);
+  // Tùy chọn "Skip cả lời chưa đọc" (Cài đặt): coi mọi lời như đã đọc để tua.
+  const alreadyRead = useVnStore((s) => s.readLines[readKey] === true) || skipUnread;
   /** Qua lời: ghi nhận đã đọc (để Skip lần sau tua được) rồi mới đi tiếp. */
   const advanceFromLine = useCallback(() => {
     markRead(readKey);

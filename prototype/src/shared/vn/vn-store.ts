@@ -63,6 +63,8 @@ interface VnState {
   /** Câu thoại hiện tại còn đang chạy chữ (chân dung người nói mấp máy môi). */
   lineTyping: boolean;
   textSpeed: TextSpeed;
+  /** Skip tua cả lời CHƯA đọc (tùy chọn cho người thử nghiệm; mặc định tắt — Skip chỉ tua lời đã đọc để không lỡ manh mối). */
+  skipUnread: boolean;
   dialogueFont: DialogueFont;
   backlog: BacklogEntry[];
   /** Khóa các lời thoại đã đọc hết (người nói + nội dung) — Skip chỉ tua qua những lời này. */
@@ -82,6 +84,7 @@ interface VnState {
   toggleViewportMode: () => void;
   setLineTyping: (v: boolean) => void;
   setTextSpeed: (speed: TextSpeed) => void;
+  setSkipUnread: (on: boolean) => void;
   cycleDialogueFont: () => void;
 
   pushBacklog: (entry: BacklogEntry) => void;
@@ -122,9 +125,19 @@ function loadTextSpeed(): TextSpeed {
   return 'normal';
 }
 
-function saveTextSpeed(textSpeed: TextSpeed): void {
+function loadSkipUnread(): boolean {
   try {
-    localStorage.setItem(PREFS_KEY, JSON.stringify({ textSpeed }));
+    const raw = typeof localStorage !== 'undefined' ? localStorage.getItem(PREFS_KEY) : null;
+    const parsed: unknown = raw ? JSON.parse(raw) : null;
+    return (parsed as { skipUnread?: unknown } | null)?.skipUnread === true;
+  } catch {
+    return false;
+  }
+}
+
+function savePrefs(prefs: { textSpeed: TextSpeed; skipUnread: boolean }): void {
+  try {
+    localStorage.setItem(PREFS_KEY, JSON.stringify(prefs));
   } catch {
     // bỏ qua
   }
@@ -253,6 +266,7 @@ export const useVnStore = create<VnState>((set, get) => ({
   viewportMode: loadViewportMode(),
   lineTyping: false,
   textSpeed: loadTextSpeed(),
+  skipUnread: loadSkipUnread(),
   dialogueFont: (typeof window !== 'undefined' && (localStorage.getItem('clb_vn_font') as DialogueFont)) || 'source-serif',
   backlog: [],
   readLines: initialSession.readLines,
@@ -287,9 +301,14 @@ export const useVnStore = create<VnState>((set, get) => ({
   setLineTyping: (lineTyping) => set({ lineTyping }),
   setTextSpeed: (textSpeed) => {
     if (textSpeed === get().textSpeed) return;
-    saveTextSpeed(textSpeed);
+    savePrefs({ textSpeed, skipUnread: get().skipUnread });
     track({ type: 'text_speed_changed', speed: textSpeed });
     set({ textSpeed });
+  },
+  setSkipUnread: (skipUnread) => {
+    if (skipUnread === get().skipUnread) return;
+    savePrefs({ textSpeed: get().textSpeed, skipUnread });
+    set({ skipUnread });
   },
   cycleDialogueFont: () => {
     const fonts: DialogueFont[] = ['source-serif', 'dancing-script', 'playwrite-vn', 'be-vietnam-pro'];

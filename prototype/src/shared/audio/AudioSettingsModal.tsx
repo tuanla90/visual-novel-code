@@ -45,6 +45,8 @@ export function AudioSettingsModal({ open, onClose }: AudioSettingsModalProps) {
 
   const textSpeed = useVnStore((s) => s.textSpeed);
   const setTextSpeed = useVnStore((s) => s.setTextSpeed);
+  const skipUnread = useVnStore((s) => s.skipUnread);
+  const setSkipUnread = useVnStore((s) => s.setSkipUnread);
 
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -99,6 +101,14 @@ export function AudioSettingsModal({ open, onClose }: AudioSettingsModalProps) {
             </div>
             <SpeedPreview key={textSpeed} speed={textSpeed} />
           </fieldset>
+
+          <label className="audio-row audio-row--check">
+            <input type="checkbox" checked={skipUnread} onChange={(e) => setSkipUnread(e.target.checked)} />
+            <span className="audio-row__label">
+              <span>Skip cả lời chưa đọc</span>
+              <span className="audio-row__val">dành cho người thử nghiệm</span>
+            </span>
+          </label>
 
           <label className="audio-row">
             <div className="audio-row__label">
