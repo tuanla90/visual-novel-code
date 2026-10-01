@@ -110,6 +110,10 @@ export type HanhDongMvp =
   | { type: 'chon'; luaChon: string }
   /** Chọn dòng SQL ở `[CHỌN DÒNG]`. */
   | { type: 'chon-dong'; index: number }
+  /** `[ĐỐI CHẤT]`: trình một thẻ trong hồ sơ để đáp giả thuyết. */
+  | { type: 'trinh-the'; the: string }
+  /** `[ĐỐI CHẤT]`: nước đi "chưa đủ căn cứ để nói" — kết thúc đối chất ở mức đang đạt. */
+  | { type: 'chua-du' }
   /** Chọn một ô ở `[LỌC THỬ]` (giá trị cột phải chọn). */
   | { type: 'chon-o'; giaTri: string }
   /** Màn thử thách / sửa truy vấn báo đã xong (vật chứng của thẻ vào hồ sơ). */
@@ -153,6 +157,8 @@ export type KhungNhinMvp =
   | { kind: 'feedback'; loi: LoiMvp; viTri: number; tong: number }
   | { kind: 'chon-dia-diem'; diaDiem: DiaDiemHienMvp[]; khungConLai: number }
   | { kind: 'question'; nut: Extract<NutMvp, { type: 'question' }>; lanThu: number }
+  /** `[ĐỐI CHẤT]`: thẻ đã trình (mờ, không trình lại), mức cao nhất đã đạt, số lần trình. */
+  | { kind: 'doi-chat'; nut: Extract<NutMvp, { type: 'doi-chat' }>; daTrinh: string[]; muc: 'khong' | 'goi-y' | 'ho-tro' | 'du'; lanThu: number }
   | { kind: 'line-pick'; nut: Extract<NutMvp, { type: 'line-pick' }>; lanThu: number }
   | { kind: 'branch'; nut: Extract<NutMvp, { type: 'branch' }>; luaChon: Extract<NutMvp, { type: 'branch' }>['choices'] }
   | { kind: 'show-document'; documentId: string }
@@ -460,6 +466,7 @@ function canNguoiChoi(nut: NutMvp): boolean {
   switch (nut.type) {
     case 'line':
     case 'question':
+    case 'doi-chat':
     case 'line-pick':
     case 'branch':
     case 'show-document':
@@ -488,7 +495,7 @@ function nutHienTai(kb: KichBanMvp, s: TrangThaiMvp): { chuoi: ChuoiMvp; nut: Nu
 
 function tienNut(s: TrangThaiMvp): TrangThaiMvp {
   if (!s.conTro) return s;
-  return { ...s, conTro: { ...s.conTro, nut: s.conTro.nut + 1 }, hoiDap: null };
+  return { ...s, conTro: { ...s.conTro, nut: s.conTro.nut + 1 }, hoiDap: null, doiChat: null };
 }
 
 /** Xử lý các nút tự động cho tới khi gặp nút cần người chơi, hoặc rời chuỗi (danh sách địa điểm, hết game, lỗi). */
@@ -604,6 +611,10 @@ export function khungNhin(kb: KichBanMvp, s: TrangThaiMvp): KhungNhinMvp {
         : { kind: 'line', loi: { speaker: nut.speaker, expression: nut.expression, text: nut.text } };
     case 'question':
       return { kind: 'question', nut, lanThu: lanThu(nut.id) };
+    case 'doi-chat': {
+      const dc = s.doiChat && s.doiChat.id === nut.id ? s.doiChat : null;
+      return { kind: 'doi-chat', nut, daTrinh: dc?.daTrinh ?? [], muc: dc?.muc ?? 'khong', lanThu: lanThu(nut.id) };
+    }
     case 'line-pick':
       return { kind: 'line-pick', nut, lanThu: lanThu(nut.id) };
     case 'branch':
@@ -643,7 +654,7 @@ function batDauPhanHoi(
   kb: KichBanMvp,
   s: TrangThaiMvp,
   id: string,
-  nguon: 'question' | 'line-pick',
+  nguon: 'question' | 'line-pick' | 'doi-chat',
   dung: boolean,
   phanHoi: LoiMvp[],
   truVach: boolean,
@@ -752,6 +763,25 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       } else {
         return s;
       }
+      break;
+    }
+    case 'trinh-the': {
+      if (kn.kind !== 'doi-chat' || kn.daTrinh.includes(hd.the) || !coTrongHoSo(s, hd.the)) return s;
+      const nut = kn.nut;
+      const b = nut.bangChung.find((x) => x.id === hd.the);
+      const muc = b?.muc ?? 'khac';
+      const THU_TU = ['khong', 'goi-y', 'ho-tro', 'du'] as const;
+      const mucMoi = muc === 'khac' ? kn.muc : (THU_TU[Math.max(THU_TU.indexOf(kn.muc), THU_TU.indexOf(muc))] ?? kn.muc);
+      let co = s.co;
+      if (muc === 'du') co = them(co, `${nut.id}-du`);
+      if (muc === 'ho-tro') co = them(co, `${nut.id}-ho-tro`);
+      const s2 = { ...s, co, doiChat: { id: nut.id, daTrinh: [...kn.daTrinh, hd.the], muc: mucMoi } };
+      moi = batDauPhanHoi(kb, s2, nut.id, 'doi-chat', muc === 'du', b ? b.feedback : nut.khac, nut.truUyTin && muc === 'khac');
+      break;
+    }
+    case 'chua-du': {
+      if (kn.kind !== 'doi-chat') return s;
+      moi = batDauPhanHoi(kb, s, kn.nut.id, 'doi-chat', true, kn.nut.chuaDu, false);
       break;
     }
     case 'chon-dong': {

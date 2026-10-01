@@ -1,6 +1,6 @@
 ## Buổi họp rà soát (thứ Hai tuần 3) và hai kết
 
-<!-- Khung chương 1 (ĐÃ CHỐT C): đối chất 3 nhịp, không thanh uy tín, sai thì chọn lại. Kết thật cần nhật ký in (ngày 4, ghé phòng máy) VÀ lời chú Cường (ngày 5, hỏi chú); thiếu một trong hai → kết thường. -->
+<!-- Khung chương 1 (ĐÃ CHỐT C): đối chất 3 nhịp, không thanh uy tín, sai thì chọn lại. 01/10 (đề xuất gameplay §4–5): sau khi Hoài kể, Quân nêu giả thuyết "Hoài viết" ở [ĐỐI CHẤT dc-ai-viet]; người chơi trình thẻ trong hồ sơ. Nhật ký in (ngày 4, phòng máy) = ĐỦ CĂN CỨ → kết thật; lời chú Cường (ngày 5) = HỖ TRỢ; thẻ chỉ nói ai nộp = GỢI Ý. Chưa đủ căn cứ → kết thường. -->
 
 ### hop-00 — Nhịp 1–2: câu HOẶC của Quân → VÀ → "Số liệu đây!" {cảnh: phong-hop}
 
@@ -29,6 +29,14 @@
 ### hop-02 — Mời Hoài vào hỏi chuyện nộp thư {cảnh: phong-hop}
 
 - [LỜI hop-02.1]
+- [ĐỐI CHẤT dc-ai-viet] quan: "Mã trong sổ là của Hoài. Thư do Hoài mang tới hộp. Chữ ký bắt đầu bằng H, Hoài cũng H. Bên tôi kết luận: Hoài là người viết lá thư này."
+  - {ev-nhat-ky-in} [ĐỦ CĂN CỨ] → phản hồi: **minh-anh** (neutral): Thưa thầy, bọn em có nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật — từ tài khoản một sinh viên năm tư, không phải của Hoài.<br>**quan** (stunned): …Năm tư?<br>**thay-quang** (neutral): Người in thư không phải người nộp thư. Vậy câu "Hoài viết" chưa đứng được.
+  - {clue-loi-chu-cuong} [HỖ TRỢ] → phản hồi: **ha-vy** (neutral): Sáng thứ Hai, bác bảo vệ ký túc xá thấy một anh khóa trên đưa phong bì cho một bạn nữ, rồi bạn ấy đi thẳng về phía tòa B ạ.<br>**quan** (neutral): Lời kể thôi. Bác ấy không nhìn rõ mặt, cũng không biết trong phong bì có gì.<br>**thay-quang** (neutral): Thầy ghi nhận. Nhưng mới là một lời kể, chưa đủ để nói ai viết.
+  - {clue-hoai-nguoi-nop} [GỢI Ý] → phản hồi: **quan** (smug): Chính thẻ này nói Hoài là người nộp. Các bạn đang củng cố cho bên tôi đấy.<br>**ha-vy** (thinking): Người nộp thôi. Thẻ này chưa nói ai viết.
+  - {ev-hai-ma} [GỢI Ý] → phản hồi: **quan** (neutral): Hai mã khớp chữ H và lớp — Hoài hoặc Hiếu, mà sổ chỉ có Hoài.<br>**tung** (worried): Ờ… phiếu này chỉ thu hẹp được thôi.
+  - {ev-hai-dong-sua} [GỢI Ý] → phản hồi: **quan** (neutral): Hai dòng, hai người. Vẫn không nói ai viết.<br>**ha-vy** (neutral): Đúng, phiếu này chỉ cho biết chỗ cần đến.
+  - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, đến đây bọn em chỉ nói được ai nộp. Ai viết thì bọn em chưa có căn cứ ạ.<br>**thay-quang** (neutral): Biết dừng ở chỗ chứng cứ dừng. Được.
+  - [KHÁC] → phản hồi: **quan** (neutral): Cái này thì liên quan gì tới việc ai viết thư?<br>**minh-anh** (worried): Em xem lại hồ sơ đã ạ.
 - [RẼ KẾT]
 
 ### hop-doi-chat — Hỏi thẳng: Hoài co người lại {cảnh: phong-hop}
@@ -38,7 +46,7 @@
 
 ### ket-that — True end: Hoài kể chuyện được nhờ {cảnh: phong-hop}
 
-- [ĐIỀU KIỆN] có ev-nhat-ky-in và có clue-loi-chu-cuong
+- [ĐIỀU KIỆN] có dc-ai-viet-du
 - [LỜI ket-that.1]
 - [ẢNH cg-bong-huy-hieu]
 - [KẾT THÚC]

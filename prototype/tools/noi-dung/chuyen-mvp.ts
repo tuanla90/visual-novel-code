@@ -57,6 +57,16 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
       return { type: 'image', imageId: it.id };
     case 'question':
       return { type: 'question', id: it.id, asker: it.asker, choices: it.choices.map(luaChon), truUyTin: it.truUyTin };
+    case 'doi-chat':
+      return {
+        type: 'doi-chat',
+        id: it.id,
+        asker: it.asker,
+        bangChung: it.bangChung.map((b) => ({ id: b.id, muc: b.muc, feedback: b.feedback.map(loi) })),
+        chuaDu: (it.chuaDu ?? []).map(loi),
+        khac: (it.khac ?? []).map(loi),
+        truUyTin: it.truUyTin,
+      };
     case 'challenge':
     case 'fix-query':
       return { type: it.kind, challengeId: it.id };

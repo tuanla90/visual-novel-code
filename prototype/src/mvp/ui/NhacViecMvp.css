@@ -120,6 +120,32 @@
   -webkit-box-orient: vertical;
 }
 
+/* Màn dọc đang có nhắc việc: nhãn địa điểm chỉ còn biểu tượng ghim (tên vẫn ở title/aria), để không đè lên bong bóng. */
+.game--portrait .mvp-stage.co-nhac .stage__scene-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.game--portrait .mvp-stage.co-nhac .stage__scene-label {
+  padding: 5px 8px !important;
+}
+@media (max-width: 768px) {
+  .mvp-stage.co-nhac .stage__scene-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .mvp-stage.co-nhac .stage__scene-label {
+    padding: 5px 8px !important;
+  }
+}
+
 /* Màn dọc / điện thoại: ô mặt nhỏ hơn, nhường chỗ cho nhãn địa điểm bên phải. */
 .game--portrait .nhac-viec {
   top: 8px;

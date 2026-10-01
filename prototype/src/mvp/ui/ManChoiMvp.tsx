@@ -48,6 +48,7 @@ import { TaoNhanVatMvp } from './TaoNhanVatMvp';
 import { maMoi, theMoiTuMa, useTheChuaXem, type TheMoi } from './the-moi';
 import { TheMoiMvp } from './TheMoiMvp';
 import { TraSoMvp } from './TrangSoMvp';
+import { DoiChatMvp } from './DoiChatMvp';
 
 export interface ManChoiMvpProps {
   /** Bỏ trống = bản chơi thử chỉ MVP, không có màn tiêu đề. */
@@ -254,6 +255,21 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         } as unknown as MultipleChoiceQuestion;
         return <MultipleChoice question={q} attempts={kn.lanThu} gameKey={s.batDauLuc} askerLabel={tenNguoiNoi(kb, kn.nut.asker.speaker)} onChoose={(id) => hanhDong({ type: 'chon', luaChon: id })} anNhacChon />;
       }
+      case 'doi-chat':
+        return (
+          <DoiChatMvp
+            key={kn.nut.id}
+            kb={kb}
+            s={s}
+            nut={kn.nut}
+            daTrinh={kn.daTrinh}
+            muc={kn.muc}
+            dienTen={dienTen}
+            tenNguoiNoi={(ma) => tenNguoiNoi(kb, ma)}
+            onTrinh={(the) => hanhDong({ type: 'trinh-the', the })}
+            onChuaDu={() => hanhDong({ type: 'chua-du' })}
+          />
+        );
       case 'branch':
         return (
           <div className="mc mvp-renhanh" role="group" aria-labelledby="mvp-renhanh-hoi">

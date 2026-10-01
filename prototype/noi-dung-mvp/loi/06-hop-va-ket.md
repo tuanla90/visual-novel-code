@@ -30,6 +30,8 @@
 - **thay-quang** (neutral): Chỉ có vậy thôi à em?
 - **hoai** (nervous): Dạ… vâng ạ.
 - **thay-quang** (neutral): Được, em ngồi xuống ghế đi. Các em còn gì trình thêm không?
+- **quan** (chi-man): Thưa thầy, bên em có kết luận.
+> NHẮC VIỆC minh-anh (serious): Anh Quân bảo Hoài viết. Trong hồ sơ, thẻ nào bác được câu ấy?
 
 ## hop-doi-chat.1
 - [DÀN DỰNG] {{nv.hoai}} được gọi vào, đứng nép cạnh cửa, nhìn lên màn chiếu có tên mình.
@@ -45,12 +47,11 @@
 - **thay-quang** (neutral): Em Hoài đang rất căng. Hôm nay thầy không hỏi thêm em ở đây.
 
 ## ket-that.1
-- [DÀN DỰNG] {{nv.minh-anh}} đặt tập hồ sơ xuống bàn.
-- **minh-anh** (neutral): Thưa thầy, bọn em có thêm nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật từ tài khoản một sinh viên năm 4.
-- **ha-vy** (neutral): Còn sáng thứ Hai, bọn tớ nghe kể có một anh khóa trên đưa phong bì cho một bạn nữ khóa mình. Hoài ơi, phong bì cậu bỏ vào hộp là có người nhờ à?
+- [DÀN DỰNG] {{nv.thay-quang}} quay sang {{nv.hoai}}.
+- **thay-quang** (neutral): Em Hoài, nhật ký in nói lá thư in từ máy của một anh chị năm tư. Phong bì em bỏ vào hộp là từ đâu ra?
 - **hoai** (nervous): Dạ… có một anh khóa trên nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký như bình thường vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ.
 - **ha-vy** (neutral): Vậy là cậu ghi mã của mình vì được dặn. Còn người soạn thư thì không đứng tên ở đâu trên phiếu.
-- **thay-quang** (neutral): Nhật ký in và lời kể sáng thứ Hai là hai nguồn riêng, cả hai đều khớp với lời em. Vậy em không phải người soạn thư.
+- **thay-quang** (neutral): Nhật ký in khớp với lời em. Vậy em không phải người soạn thư.
 - **thay-quang** (neutral): Mã trên phiếu là để thầy cô tra cứu và phản hồi người gửi. Ở đây người viết giấu tên, mượn chữ ký và mã của một bạn năm nhất. Thư như vậy thầy không nhận vào hồ sơ rà soát.
 - **thay-quang** (neutral): Em làm theo lời nhờ nên không bị xử lý gì cả.
 - **thay-quang** (smile): CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện.

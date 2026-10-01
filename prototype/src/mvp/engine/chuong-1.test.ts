@@ -1,8 +1,10 @@
 // @vitest-environment node
 /**
  * Chương 1 theo truyện (ĐÃ CHỐT C, 30/09/2026) trên nội dung sinh thật `KICH_BAN_MVP`: mỗi ngày một chuỗi, không bản đồ,
- * không khung giờ, không uy tín; hai lựa chọn nhìn thấy được (ghé phòng máy, hỏi chú Cường) quyết định kết thật / thường;
- * sai ở buổi họp thì chọn lại, không mất gì.
+ * không khung giờ, không uy tín; sai ở buổi họp thì chọn lại, không mất gì.
+ * Kết (01/10/2026, đề xuất gameplay §4–5): ở buổi họp Quân nêu giả thuyết "Hoài viết" ([ĐỐI CHẤT dc-ai-viet]); kết thật khi
+ * người chơi trình được nhật ký in (ĐỦ CĂN CỨ — cần đã ghé phòng máy ngày 4); lời chú Cường chỉ là HỖ TRỢ; không có nhật ký
+ * in thì "chưa đủ căn cứ" → kết thường.
  */
 import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
@@ -69,12 +71,74 @@ describe('chương 1: ngày theo truyện', () => {
 
   it.each([
     ['không ghé phòng máy', { 'r-phong-may': 've' }],
-    ['không hỏi chú Cường', { 'r-chu-cuong': 'di' }],
     ['dừng, không mời Hoài', { 'r-moi-hoai': 'dung' }],
     ['mời Hoài vào đối chất', { 'r-moi-hoai': 'doi-chat' }],
   ])('kết thường khi %s', (_ten, doi) => {
     const s = choi(taoTrangThai(KB, 1), { ...RE_NHANH_KET_THAT, ...doi }, toiKet);
     expect(khungNhin(KB, s)).toEqual({ kind: 'end', ketQua: 'thuong' });
+    expect(s.co).not.toContain('dc-ai-viet-du');
+  });
+
+  it('không hỏi chú Cường nhưng có nhật ký in: vẫn kết thật (đủ căn cứ), chỉ thiếu mức hỗ trợ', () => {
+    const s = choi(taoTrangThai(KB, 1), { ...RE_NHANH_KET_THAT, 'r-chu-cuong': 'di' }, toiKet);
+    expect(khungNhin(KB, s)).toEqual({ kind: 'end', ketQua: 'that' });
+    expect(s.co).toContain('dc-ai-viet-du');
+    expect(s.co).not.toContain('dc-ai-viet-ho-tro');
+  });
+
+  describe('[ĐỐI CHẤT dc-ai-viet] ở buổi họp', () => {
+    const toiDoiChat = (): TrangThaiMvp => choi(taoTrangThai(KB, 1), RE_NHANH_KET_THAT, (_st, kn) => kn.kind === 'doi-chat');
+    const quaPhanHoi = (s: TrangThaiMvp): TrangThaiMvp => {
+      while (khungNhin(KB, s).kind === 'feedback') s = xuLy(KB, s, { type: 'tiep' });
+      return s;
+    };
+
+    it('khung nhìn: giả thuyết của Quân, chưa trình gì, mức "khong"', () => {
+      const kn = khungNhin(KB, toiDoiChat());
+      expect(kn).toMatchObject({ kind: 'doi-chat', daTrinh: [], muc: 'khong', nut: { id: 'dc-ai-viet', asker: { speaker: 'quan' } } });
+    });
+
+    it('thẻ gợi ý → phản hồi, ở lại, mức gợi ý; thẻ không khai → phản hồi [KHÁC], ở lại; không trình lại thẻ đã trình', () => {
+      let s = toiDoiChat();
+      s = xuLy(KB, s, { type: 'trinh-the', the: 'clue-hoai-nguoi-nop' });
+      expect(s.hoiDap?.nguon).toBe('doi-chat');
+      s = quaPhanHoi(s);
+      expect(khungNhin(KB, s)).toMatchObject({ kind: 'doi-chat', daTrinh: ['clue-hoai-nguoi-nop'], muc: 'goi-y' });
+      const truoc = s;
+      s = xuLy(KB, s, { type: 'trinh-the', the: 'clue-hoai-nguoi-nop' });
+      expect(s).toBe(truoc);
+      s = xuLy(KB, s, { type: 'trinh-the', the: 'doc-bao-cao-yeu' });
+      const kn = khungNhin(KB, s);
+      if (kn.kind !== 'feedback') throw new Error('không có phản hồi');
+      expect(kn.loi.speaker).toBe('quan');
+      s = quaPhanHoi(s);
+      expect(khungNhin(KB, s)).toMatchObject({ kind: 'doi-chat', daTrinh: ['clue-hoai-nguoi-nop', 'doc-bao-cao-yeu'], muc: 'goi-y' });
+      expect(s.uyTin).toBe(0);
+      expect(s.giaiDoan).toBe('hop');
+    });
+
+    it('lời chú Cường (hỗ trợ) rồi "chưa đủ căn cứ" → kết thường, có cờ ho-tro, không có cờ du', () => {
+      let s = toiDoiChat();
+      s = quaPhanHoi(xuLy(KB, s, { type: 'trinh-the', the: 'clue-loi-chu-cuong' }));
+      expect(khungNhin(KB, s)).toMatchObject({ kind: 'doi-chat', muc: 'ho-tro' });
+      expect(s.co).toContain('dc-ai-viet-ho-tro');
+      s = quaPhanHoi(xuLy(KB, s, { type: 'chua-du' }));
+      s = choi(s, RE_NHANH_KET_THAT, toiKet);
+      expect(khungNhin(KB, s)).toEqual({ kind: 'end', ketQua: 'thuong' });
+      expect(s.co).not.toContain('dc-ai-viet-du');
+    });
+
+    it('nhật ký in (đủ căn cứ) → phản hồi rồi rời nút, cờ du, kết thật; thẻ không có trong hồ sơ thì không trình được', () => {
+      let s = toiDoiChat();
+      const truoc = s;
+      s = xuLy(KB, s, { type: 'trinh-the', the: 'clue-khong-ton-tai' });
+      expect(s).toBe(truoc);
+      s = quaPhanHoi(xuLy(KB, s, { type: 'trinh-the', the: 'ev-nhat-ky-in' }));
+      expect(s.doiChat ?? null).toBeNull();
+      expect(s.co).toContain('dc-ai-viet-du');
+      s = choi(s, RE_NHANH_KET_THAT, toiKet);
+      expect(khungNhin(KB, s)).toEqual({ kind: 'end', ketQua: 'that' });
+    });
   });
 
   it('không ghé phòng máy: không gặp c-in, không có nhật ký in; ngày 4 vẫn hết bình thường', () => {

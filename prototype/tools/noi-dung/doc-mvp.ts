@@ -171,6 +171,13 @@ export type MucMvp =
   /** `- [ẢNH <tên tệp>]`: ảnh chèn giữa hội thoại (chibi, CG) — tên tệp ảnh trong src/assets/**, không đuôi. */
   | { kind: 'image'; id: string }
   | { kind: 'question'; id: string; asker: { speaker: string; text: string }; choices: RawChoice[]; truUyTin: boolean }
+  /**
+   * `- [ĐỐI CHẤT <mã>( · trừ uy tín)?] <rival>: "<giả thuyết>"` + dòng con:
+   *   `  - {<mã thẻ>} [ĐỦ CĂN CỨ|HỖ TRỢ|GỢI Ý] → phản hồi: <lời>[<br><lời>]`
+   *   `  - [CHƯA ĐỦ] → phản hồi: <lời>` (nước đi "chưa đủ căn cứ", bắt buộc)
+   *   `  - [KHÁC] → phản hồi: <lời>` (thẻ không khai, bắt buộc)
+   */
+  | { kind: 'doi-chat'; id: string; asker: { speaker: string; text: string }; bangChung: RawBangChungDoiChat[]; chuaDu: RawLine[] | null; khac: RawLine[] | null; truUyTin: boolean }
   | { kind: 'challenge'; id: string }
   | { kind: 'fix-query'; id: string }
   | { kind: 'effect'; id: string }
@@ -189,6 +196,15 @@ export type MucMvp =
   | { kind: 'save-evidence'; id: string }
   | { kind: 'ending-branch' }
   | { kind: 'explore'; id: string; diem: RawDiemKhamPha[] };
+
+export interface RawBangChungDoiChat {
+  id: string;
+  muc: 'du' | 'ho-tro' | 'goi-y';
+  feedback: RawLine[];
+}
+
+const MUC_DOI_CHAT: Record<string, RawBangChungDoiChat['muc']> = { 'ĐỦ CĂN CỨ': 'du', 'HỖ TRỢ': 'ho-tro', 'GỢI Ý': 'goi-y' };
+const parseFeedbackDc = (s: string): RawLine[] => s.split('<br>').map((p) => parseSpoken(p.trim()));
 
 /** Dòng con của `[KHÁM PHÁ]`: `  - <sprite> · x … · y … · rộng … → <chuỗi>[ · sau: a, b][ · nhãn: …]`. */
 export interface RawDiemKhamPha extends RawAnhDuKien {
@@ -825,6 +841,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
   function docKichBan({ viTri, lines }: { viTri: () => ViTri; lines: string[] }) {
     let seq: RawChuoiMvp | null = null;
     let question: (MucMvp & { kind: 'question' }) | null = null;
+    let doiChat: (MucMvp & { kind: 'doi-chat' }) | null = null;
     let branch: RawReNhanh | null = null;
     let pick: (MucMvp & { kind: 'line-pick' }) | null = null;
     let tao: RawTaoNhanVat | null = null;
@@ -833,6 +850,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
 
     const dongCon = (): void => {
       question = null;
+      doiChat = null;
       branch = null;
       pick = null;
       tao = null;
@@ -899,6 +917,23 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           question.choices.push(c);
           return i;
         }
+        if (doiChat) {
+          const dc = doiChat;
+          let m2: RegExpExecArray | null;
+          if ((m2 = new RegExp(`^ {2}- \\{(${MA})\\} \\[(ĐỦ CĂN CỨ|HỖ TRỢ|GỢI Ý)\\] → phản hồi: (.+)$`).exec(line))) {
+            dc.bangChung.push({ id: m2[1] ?? '', muc: MUC_DOI_CHAT[m2[2] ?? ''] ?? 'goi-y', feedback: parseFeedbackDc(m2[3] ?? '') });
+            return i;
+          }
+          if ((m2 = /^ {2}- \[CHƯA ĐỦ\] → phản hồi: (.+)$/.exec(line))) {
+            dc.chuaDu = parseFeedbackDc(m2[1] ?? '');
+            return i;
+          }
+          if ((m2 = /^ {2}- \[KHÁC\] → phản hồi: (.+)$/.exec(line))) {
+            dc.khac = parseFeedbackDc(m2[1] ?? '');
+            return i;
+          }
+          throw new Error(`dòng con [ĐỐI CHẤT] sai quy ước "${line}" — viết "  - {<mã thẻ>} [ĐỦ CĂN CỨ|HỖ TRỢ|GỢI Ý] → phản hồi: …", "  - [CHƯA ĐỦ] → phản hồi: …", "  - [KHÁC] → phản hồi: …"`);
+        }
         if (branch) {
           const m = new RegExp(`^ {2}- \\{id: (${MA})\\}(?: \\[KHI (.+?)\\])? (.+?) → hậu quả: (.+)$`).exec(line);
           if (!m) throw new Error(`lựa chọn rẽ nhánh sai quy ước "${line}" — viết "  - {id: <id>} <lời> → hậu quả: <hậu quả>"`);
@@ -918,7 +953,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           kham.diem.push(docDiemKhamPha(line.slice(4)));
           return i;
         }
-        throw new Error(`dòng con không thuộc [HỎI], [RẼ NHÁNH], [TẠO NHÂN VẬT] hay [KHÁM PHÁ]: "${line}"`);
+        throw new Error(`dòng con không thuộc [HỎI], [ĐỐI CHẤT], [RẼ NHÁNH], [TẠO NHÂN VẬT] hay [KHÁM PHÁ]: "${line}"`);
       }
       if (line.startsWith('|')) {
         if (!pick) throw new Error('bảng nằm ngoài [CHỌN DÒNG]');
@@ -955,6 +990,10 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       if ((m = new RegExp(`^- \\[HỎI (${MA})( · trừ uy tín)?\\] ([a-z-]+): "(.*)"$`).exec(line))) {
         question = { kind: 'question', id: m[1] ?? '', asker: { speaker: m[3] ?? '', text: m[4] ?? '' }, choices: [], truUyTin: m[2] !== undefined };
         return add(question);
+      }
+      if ((m = new RegExp(`^- \\[ĐỐI CHẤT (${MA})( · trừ uy tín)?\\] ([a-z-]+): "(.*)"$`).exec(line))) {
+        doiChat = { kind: 'doi-chat', id: m[1] ?? '', asker: { speaker: m[3] ?? '', text: m[4] ?? '' }, bangChung: [], chuaDu: null, khac: null, truUyTin: m[2] !== undefined };
+        return add(doiChat);
       }
       if ((m = new RegExp(`^- \\[(THỬ THÁCH|SỬA TRUY VẤN) (${MA})\\]$`).exec(line))) return add({ kind: m[1] === 'THỬ THÁCH' ? 'challenge' : 'fix-query', id: m[2] ?? '' });
       if ((m = new RegExp(`^- \\[HIỆU ỨNG (${MA})\\]$`).exec(line))) return add({ kind: 'effect', id: m[1] ?? '' });
@@ -1121,6 +1160,10 @@ export function loiTrongChuoi(c: RawChuoiMvp): { line: RawLine; dong: number }[]
     else if (it.kind === 'question') {
       out.push({ line: { speaker: it.asker.speaker, expression: null, text: it.asker.text }, dong });
       for (const ch of it.choices) for (const f of ch.feedback) out.push({ line: f, dong });
+    } else if (it.kind === 'doi-chat') {
+      out.push({ line: { speaker: it.asker.speaker, expression: null, text: it.asker.text }, dong });
+      for (const b of it.bangChung) for (const f of b.feedback) out.push({ line: f, dong });
+      for (const f of [...(it.chuaDu ?? []), ...(it.khac ?? [])]) out.push({ line: f, dong });
     } else if (it.kind === 'branch') out.push({ line: { speaker: it.branch.asker.speaker, expression: null, text: it.branch.asker.text }, dong });
     else if (it.kind === 'create-character') out.push({ line: it.tao.asker, dong });
     else if (it.kind === 'line-pick') for (const r of it.rows) for (const f of r.feedback) out.push({ line: f, dong });

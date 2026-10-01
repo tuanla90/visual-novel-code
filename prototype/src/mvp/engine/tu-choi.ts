@@ -7,7 +7,7 @@
  * nên Lưu/Nạp và phần chơi tiếp không có gì đặc biệt.
  */
 import type { KichBanMvp } from '../../content/mvp/types';
-import { khungNhin, TEN_MAC_DINH, taoTrangThai, xuLy, type HanhDongMvp, type KhungNhinMvp } from './may';
+import { coTrongHoSo, khungNhin, TEN_MAC_DINH, taoTrangThai, xuLy, type HanhDongMvp, type KhungNhinMvp } from './may';
 import type { TrangThaiMvp } from './trang-thai';
 
 /** Chiến thuật chơi tự động: chọn gì ở danh sách địa điểm / rẽ nhánh / câu hỏi. */
@@ -39,6 +39,11 @@ function hanhDongTuDong(s: TrangThaiMvp, kn: Exclude<KhungNhinMvp, { kind: 'end'
       const c = kn.nut.choices.find((x) => x.correct === (muon === 'dung'));
       if (!c) throw new Error(`Câu hỏi ${kn.nut.id} không có lựa chọn ${muon}`);
       return { type: 'chon', luaChon: c.id };
+    }
+    case 'doi-chat': {
+      // Trình thẻ đủ căn cứ đang có trong hồ sơ; không có thì nhận "chưa đủ căn cứ".
+      const b = kn.nut.bangChung.find((x) => x.muc === 'du' && !kn.daTrinh.includes(x.id) && coTrongHoSo(s, x.id));
+      return b ? { type: 'trinh-the', the: b.id } : { type: 'chua-du' };
     }
     case 'line-pick': {
       const d = kn.nut.lines.find((x) => x.correct);

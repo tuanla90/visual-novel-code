@@ -1,0 +1,272 @@
+/*
+ * Màn đối chất (DoiChatMvp). Gốc mang lớp .mc để .stage__content:has(> .mc) (app.css) kéo khung phủ cả sân khấu và giới hạn
+ * bề rộng — không có nó, khay thẻ cuộn ngang làm lưới sân khấu phình theo tổng bề rộng thẻ.
+ * Khay thẻ hồ sơ cuộn ngang trên hộp thoại kính của rival. Thẻ dùng lại ngôn ngữ hình của bảng
+ * điều tra (giấy nhớ vàng, phiếu trắng viền xanh, ảnh polaroid, giấy tờ) nhưng nhỏ hơn và không xoay, để xếp hàng được.
+ */
+.doi-chat {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+}
+.doi-chat__khay {
+  width: 100%;
+  min-width: 0;
+  /* Khay cuộn ngang không được góp bề rộng nội dung lên lưới sân khấu (không có dòng này, sân khấu phình theo tổng bề rộng thẻ). */
+  contain: inline-size;
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+  padding: 18px 16px 14px;
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-width: thin;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.42) 100%);
+  border-radius: 14px;
+}
+.doi-chat__trong {
+  margin: 0 auto;
+  color: #fef3c7;
+  font-style: italic;
+}
+
+/* Thẻ: nút, không xoay, cỡ nhỏ. */
+.dc-the {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 132px;
+  min-height: 96px;
+  padding: 14px 10px 10px;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  color: #2a2320;
+  font-family: var(--font-ui);
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
+  box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.35);
+}
+.dc-the:hover,
+.dc-the:focus-visible {
+  transform: translateY(-4px);
+  outline: none;
+  box-shadow: 2px 8px 14px rgba(0, 0, 0, 0.4);
+}
+.dc-the.is-chon {
+  transform: translateY(-10px) scale(1.04);
+  box-shadow:
+    0 0 0 3px #fffdfa,
+    0 0 0 6px #d97706,
+    2px 10px 16px rgba(0, 0, 0, 0.45);
+}
+.dc-the.is-da-trinh {
+  opacity: 0.55;
+  cursor: default;
+}
+.dc-the.is-da-trinh:hover {
+  transform: none;
+}
+.dc-the__ghim {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff8a80, #c62828 60%, #7f0000);
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.45);
+}
+.dc-the--tin {
+  background: #fbe38e;
+}
+.dc-the--phieu {
+  width: 164px;
+  background: #fffdf6;
+  border-top: 6px solid #9fb3c2;
+  border-radius: 3px;
+}
+.dc-the--vat,
+.dc-the--tai-lieu {
+  background: #fff;
+  padding: 7px 7px 8px;
+}
+.dc-the--vat {
+  width: 120px;
+}
+.dc-the--tai-lieu {
+  width: 104px;
+}
+.dc-the__anh {
+  width: 100%;
+  aspect-ratio: 3 / 2.6;
+  object-fit: cover;
+  object-position: top;
+  background: linear-gradient(160deg, #cfd8dc, #90a4ae);
+}
+.dc-the__loai {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+}
+.dc-the__nhan {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+.dc-the--tin .dc-the__nhan {
+  font-size: 16px;
+}
+.dc-the__phu {
+  font-size: 10.5px;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.25;
+}
+/* Dấu mức sau khi trình: con dấu nghiêng. */
+.dc-the__dau {
+  position: absolute;
+  right: 6px;
+  bottom: 8px;
+  padding: 1px 6px;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  font: 800 10.5px var(--font-ui);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transform: rotate(-8deg);
+  background: rgba(255, 255, 255, 0.85);
+}
+.dc-the__dau--du {
+  color: #1b5e20;
+}
+.dc-the__dau--ho-tro {
+  color: #1f5f8b;
+}
+.dc-the__dau--goi-y {
+  color: #8d6e00;
+}
+.dc-the__dau--khac {
+  color: #8a1c1c;
+}
+
+/* Hộp thoại giả thuyết. */
+.doi-chat__hop {
+  width: 100%;
+}
+.doi-chat__nhan-gt {
+  margin-left: 10px;
+  padding: 1px 8px;
+  border: 1.5px solid rgba(220, 38, 38, 0.8);
+  border-radius: 4px;
+  color: #fecaca;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+  display: inline-block;
+}
+.doi-chat__gt {
+  font-style: italic;
+}
+.doi-chat__thanh {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.doi-chat__muc {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+.doi-chat__muc b {
+  color: #fde68a;
+}
+.doi-chat__muc--du b {
+  color: #86efac;
+}
+.doi-chat__nut {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+.doi-chat__chua-du {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Màn dọc: khay thấp hơn, thẻ nhỏ, chữ nhỏ, hai nút chia đôi một hàng; hộp thoại không được tràn khỏi màn. */
+.game--portrait .doi-chat__khay {
+  flex: 0 1 auto;
+  min-height: 0;
+  gap: 10px;
+  padding: 12px 10px 8px;
+}
+.game--portrait .doi-chat__hop {
+  flex: 0 0 auto;
+}
+.game--portrait .doi-chat__gt {
+  font-size: 0.9rem;
+}
+.game--portrait .doi-chat__thanh {
+  margin-top: 6px;
+}
+.game--portrait .doi-chat__nut button {
+  flex: 1 1 0;
+  padding: 7px 8px;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+.game--portrait .dc-the {
+  width: 112px;
+  min-height: 84px;
+}
+.game--portrait .dc-the--phieu {
+  width: 136px;
+}
+.game--portrait .doi-chat__nut {
+  width: 100%;
+  justify-content: flex-end;
+}
+@media (max-width: 768px) {
+  .doi-chat__khay {
+    flex: 0 1 auto;
+    min-height: 0;
+    gap: 10px;
+    padding: 12px 10px 8px;
+  }
+  .doi-chat__hop {
+    flex: 0 0 auto;
+  }
+  .doi-chat__gt {
+    font-size: 0.9rem;
+  }
+  .doi-chat__nut button {
+    flex: 1 1 0;
+    padding: 7px 8px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+  .dc-the {
+    width: 112px;
+    min-height: 84px;
+  }
+  .dc-the--phieu {
+    width: 136px;
+  }
+  .doi-chat__nut {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

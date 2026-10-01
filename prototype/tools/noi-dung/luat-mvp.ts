@@ -87,6 +87,16 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     if (truoc) err(c.viTri, `bằng chứng "${ev}" khai ở cả thẻ ${c.id} lẫn hồ sơ ${truoc.tep}:${truoc.dong} — chỉ một chỗ`);
     else vatPham.set(ev, c.viTri);
   }
+  // Mức đạt của mỗi [ĐỐI CHẤT] là hai mã cờ dùng được trong [ĐIỀU KIỆN] / [KHI]: <mã>-du, <mã>-ho-tro.
+  for (const c of mvp.chuoi) {
+    for (const it of c.items) {
+      if (it.kind !== 'doi-chat') continue;
+      for (const duoi of ['-du', '-ho-tro']) {
+        const ma = it.id + duoi;
+        if (!vatPham.has(ma)) vatPham.set(ma, c.viTri);
+      }
+    }
+  }
   const canVatPham = (id: string, vt: ViTri, tienTo: string | null, noi: string): void => {
     if (!vatPham.has(id)) err(vt, `${noi}: không có mã "${id}" (chưa khai ở ho-so/ hay thẻ thử thách)`);
     else if (tienTo && !id.startsWith(tienTo)) err(vt, `${noi}: "${id}" phải là mã ${tienTo}…`);
@@ -254,6 +264,17 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           if (it.truUyTin) truUyTin.push({ chuoi: c.id, vt });
           break;
         case 'line-pick':
+          if (it.truUyTin) truUyTin.push({ chuoi: c.id, vt });
+          break;
+        case 'doi-chat':
+          // Cờ mức đạt do chuỗi này tạo (xét true end); "chính" hay không tính sau, theo các thẻ đủ căn cứ.
+          them(`${it.id}-du`, { kind: 'chuoi', id: c.id });
+          them(`${it.id}-ho-tro`, { kind: 'chuoi', id: c.id });
+          if (!it.bangChung.some((b) => b.muc === 'du')) err(vt, `[ĐỐI CHẤT ${it.id}] cần ít nhất một thẻ [ĐỦ CĂN CỨ]`);
+          if (!it.chuaDu) err(vt, `[ĐỐI CHẤT ${it.id}] thiếu dòng con "[CHƯA ĐỦ] → phản hồi: …"`);
+          if (!it.khac) err(vt, `[ĐỐI CHẤT ${it.id}] thiếu dòng con "[KHÁC] → phản hồi: …"`);
+          for (const b of it.bangChung) canVatPham(b.id, vt, null, `[ĐỐI CHẤT ${it.id}]`);
+          if (new Set(it.bangChung.map((b) => b.id)).size !== it.bangChung.length) err(vt, `[ĐỐI CHẤT ${it.id}] có thẻ khai hai lần`);
           if (it.truUyTin) truUyTin.push({ chuoi: c.id, vt });
           break;
         case 'branch':
@@ -534,6 +555,16 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
       for (const v of taoTrongChuoi.get(x) ?? []) vatPhamChinh.add(v);
       for (const y of canhBatBuoc.get(x) ?? []) stack.push(y);
     }
+    // Cờ của [ĐỐI CHẤT] trên đường bắt buộc chỉ "chính" khi MỌI thẻ ở mức đó cũng chính (thẻ phụ → cờ cần dữ kiện phụ).
+    for (const x of da) {
+      for (const it of chuoi.get(x)?.items ?? []) {
+        if (it.kind !== 'doi-chat') continue;
+        for (const [muc, duoi] of [['du', '-du'], ['ho-tro', '-ho-tro']] as const) {
+          const the = it.bangChung.filter((b) => b.muc === muc);
+          if (the.length > 0 && the.every((b) => vatPhamChinh.has(b.id))) vatPhamChinh.add(it.id + duoi);
+        }
+      }
+    }
   }
   for (const k of duKien.values()) {
     if (k.nhan === 'chinh' && !daGan.has(k.id)) err(k.viTri, `dữ kiện chính "${k.id}" không thuộc ngày nào (không là "Dữ kiện chính" của ngày nào, cũng không được dữ kiện chính nào "Cần")`);
@@ -595,6 +626,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
         if (it.kind === 'task') bao(it.text, vt, 'nhiệm vụ');
         if (it.kind === 'reminder') bao(it.text, vt, 'nhắc việc');
         if (it.kind === 'question') for (const ch of it.choices) bao(ch.text, vt, 'lựa chọn');
+        if (it.kind === 'doi-chat') bao(it.asker.text, vt, 'giả thuyết đối chất');
         if (it.kind === 'branch') for (const ch of it.branch.choices) bao(ch.text, vt, 'lựa chọn');
       });
     }

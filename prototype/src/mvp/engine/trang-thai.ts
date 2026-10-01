@@ -45,7 +45,7 @@ export type GiaiDoanMvp ='mo-dau' | 'ngay' | 'hop' | 'het';
 export interface HoiDapMvp {
   /** Nút đang trả lời (id câu hỏi / chọn dòng / trang sổ). */
   id: string;
-  nguon: 'question' | 'line-pick';
+  nguon: 'question' | 'line-pick' | 'doi-chat';
   /** Các lời phản hồi đang hiện lần lượt (kể cả lời Minh Anh khi mất vạch). */
   phanHoi: LoiMvp[];
   viTri: number;
@@ -141,6 +141,11 @@ export interface TrangThaiMvp {
    * Ô lưu cũ không có trường này = không có.
    */
   nhacViec?: NhacViecMvp | null;
+  /**
+   * `[ĐỐI CHẤT]` đang mở: các thẻ đã trình (mờ đi, không trình lại) và mức cao nhất đã đạt. Mức đạt cũng được ghi thành
+   * cờ `<mã>-du` / `<mã>-ho-tro` trong `co` để `[ĐIỀU KIỆN]` dùng. Rời nút → `null`. Ô lưu cũ: không có.
+   */
+  doiChat?: { id: string; daTrinh: string[]; muc: 'khong' | 'goi-y' | 'ho-tro' | 'du' } | null;
   ketQua: 'that' | 'thuong' | null;
   /** Nội dung không nhất quán lúc chạy (chuỗi không tồn tại…); khung nhìn `error`. */
   loi: string | null;

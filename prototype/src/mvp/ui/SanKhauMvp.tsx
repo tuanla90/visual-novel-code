@@ -156,7 +156,7 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
   const tenCanh = kb.canh.find((c) => c.id === canh)?.ten ?? 'Cảnh';
 
   return (
-    <section className={`stage mvp-stage${shaking ? ' is-shaking' : ''}`} data-scene={canh} aria-label={`Cảnh: ${tenCanh}`}>
+    <section className={`stage mvp-stage${shaking ? ' is-shaking' : ''}${nhacViec ? ' co-nhac' : ''}`} data-scene={canh} aria-label={`Cảnh: ${tenCanh}`}>
       <div className="stage__backdrop mvp-stage__backdrop" aria-hidden="true" data-art-source={nen ? 'image' : 'placeholder'}>
         {nen ? <img className="stage__backdrop-img" src={nen} alt="" draggable={false} /> : <div className="mvp-stage__nen-tam" />}
       </div>

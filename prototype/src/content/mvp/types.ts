@@ -30,6 +30,9 @@ export interface LoiMvp {
   text: string;
 }
 
+/** Mức một thẻ bằng chứng đáp được giả thuyết của rival ở `[ĐỐI CHẤT]`. */
+export type MucDoiChatMvp = 'du' | 'ho-tro' | 'goi-y';
+
 export interface LuaChonMvp {
   id: string;
   text: string;
@@ -143,6 +146,21 @@ export type NutMvp =
   /** `[ẢNH …]`: ảnh chèn giữa hội thoại (chibi, CG), tra theo tên tệp trong src/assets/**. */
   | { type: 'image'; imageId: string }
   | { type: 'question'; id: string; asker: { speaker: string; text: string }; choices: LuaChonMvp[]; truUyTin: boolean }
+  /**
+   * `[ĐỐI CHẤT <mã>]` (01/10/2026, đề xuất gameplay §4–5): rival nêu giả thuyết, người chơi trình thẻ trong hồ sơ để đáp.
+   * Mỗi thẻ khai sẵn một mức: `du` (đủ căn cứ — kết thúc đối chất, đặt cờ `<mã>-du`), `ho-tro` (củng cố, đặt cờ `<mã>-ho-tro`,
+   * đối chất tiếp), `goi-y` (chỉ gợi hướng, tiếp). Thẻ không khai → `khac` (sai, trừ uy tín nếu `truUyTin`). Nước đi
+   * "Chưa đủ căn cứ để nói" (`chuaDu`) luôn có: kết thúc đối chất ở mức đang đạt.
+   */
+  | {
+      type: 'doi-chat';
+      id: string;
+      asker: { speaker: string; text: string };
+      bangChung: { id: string; muc: MucDoiChatMvp; feedback: LoiMvp[] }[];
+      chuaDu: LoiMvp[];
+      khac: LoiMvp[];
+      truUyTin: boolean;
+    }
   | { type: 'challenge'; challengeId: string }
   | { type: 'fix-query'; challengeId: string }
   | { type: 'effect'; effectId: string }

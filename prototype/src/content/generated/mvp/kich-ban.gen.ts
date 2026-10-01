@@ -2632,6 +2632,143 @@ export const KICH_BAN_MVP = {
           "text": "Được, em ngồi xuống ghế đi. Các em còn gì trình thêm không?"
         },
         {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "chi-man",
+          "text": "Thưa thầy, bên em có kết luận."
+        },
+        {
+          "type": "reminder",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Anh Quân bảo Hoài viết. Trong hồ sơ, thẻ nào bác được câu ấy?"
+        },
+        {
+          "type": "doi-chat",
+          "id": "dc-ai-viet",
+          "asker": {
+            "speaker": "quan",
+            "text": "Mã trong sổ là của Hoài. Thư do Hoài mang tới hộp. Chữ ký bắt đầu bằng H, Hoài cũng H. Bên tôi kết luận: Hoài là người viết lá thư này."
+          },
+          "bangChung": [
+            {
+              "id": "ev-nhat-ky-in",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "minh-anh",
+                  "expression": "neutral",
+                  "text": "Thưa thầy, bọn em có nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật — từ tài khoản một sinh viên năm tư, không phải của Hoài."
+                },
+                {
+                  "speaker": "quan",
+                  "expression": "stunned",
+                  "text": "…Năm tư?"
+                },
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Người in thư không phải người nộp thư. Vậy câu \"Hoài viết\" chưa đứng được."
+                }
+              ]
+            },
+            {
+              "id": "clue-loi-chu-cuong",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Sáng thứ Hai, bác bảo vệ ký túc xá thấy một anh khóa trên đưa phong bì cho một bạn nữ, rồi bạn ấy đi thẳng về phía tòa B ạ."
+                },
+                {
+                  "speaker": "quan",
+                  "expression": "neutral",
+                  "text": "Lời kể thôi. Bác ấy không nhìn rõ mặt, cũng không biết trong phong bì có gì."
+                },
+                {
+                  "speaker": "thay-quang",
+                  "expression": "neutral",
+                  "text": "Thầy ghi nhận. Nhưng mới là một lời kể, chưa đủ để nói ai viết."
+                }
+              ]
+            },
+            {
+              "id": "clue-hoai-nguoi-nop",
+              "muc": "goi-y",
+              "feedback": [
+                {
+                  "speaker": "quan",
+                  "expression": "smug",
+                  "text": "Chính thẻ này nói Hoài là người nộp. Các bạn đang củng cố cho bên tôi đấy."
+                },
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Người nộp thôi. Thẻ này chưa nói ai viết."
+                }
+              ]
+            },
+            {
+              "id": "ev-hai-ma",
+              "muc": "goi-y",
+              "feedback": [
+                {
+                  "speaker": "quan",
+                  "expression": "neutral",
+                  "text": "Hai mã khớp chữ H và lớp — Hoài hoặc Hiếu, mà sổ chỉ có Hoài."
+                },
+                {
+                  "speaker": "tung",
+                  "expression": "worried",
+                  "text": "Ờ… phiếu này chỉ thu hẹp được thôi."
+                }
+              ]
+            },
+            {
+              "id": "ev-hai-dong-sua",
+              "muc": "goi-y",
+              "feedback": [
+                {
+                  "speaker": "quan",
+                  "expression": "neutral",
+                  "text": "Hai dòng, hai người. Vẫn không nói ai viết."
+                },
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Đúng, phiếu này chỉ cho biết chỗ cần đến."
+                }
+              ]
+            }
+          ],
+          "chuaDu": [
+            {
+              "speaker": "minh-anh",
+              "expression": "neutral",
+              "text": "Thưa thầy, đến đây bọn em chỉ nói được ai nộp. Ai viết thì bọn em chưa có căn cứ ạ."
+            },
+            {
+              "speaker": "thay-quang",
+              "expression": "neutral",
+              "text": "Biết dừng ở chỗ chứng cứ dừng. Được."
+            }
+          ],
+          "khac": [
+            {
+              "speaker": "quan",
+              "expression": "neutral",
+              "text": "Cái này thì liên quan gì tới việc ai viết thư?"
+            },
+            {
+              "speaker": "minh-anh",
+              "expression": "worried",
+              "text": "Em xem lại hồ sơ đã ạ."
+            }
+          ],
+          "truUyTin": false
+        },
+        {
           "type": "ending-branch"
         }
       ]
@@ -2717,34 +2854,19 @@ export const KICH_BAN_MVP = {
         {
           "type": "condition",
           "dieuKien": {
-            "kind": "va",
-            "cac": [
-              {
-                "kind": "co",
-                "id": "ev-nhat-ky-in"
-              },
-              {
-                "kind": "co",
-                "id": "clue-loi-chu-cuong"
-              }
-            ]
+            "kind": "co",
+            "id": "dc-ai-viet-du"
           }
         },
         {
           "type": "note",
-          "text": "Minh Anh đặt tập hồ sơ xuống bàn."
+          "text": "Thầy Quang quay sang Hoài."
         },
         {
           "type": "line",
-          "speaker": "minh-anh",
+          "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Thưa thầy, bọn em có thêm nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật từ tài khoản một sinh viên năm 4."
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "neutral",
-          "text": "Còn sáng thứ Hai, bọn tớ nghe kể có một anh khóa trên đưa phong bì cho một bạn nữ khóa mình. Hoài ơi, phong bì cậu bỏ vào hộp là có người nhờ à?"
+          "text": "Em Hoài, nhật ký in nói lá thư in từ máy của một anh chị năm tư. Phong bì em bỏ vào hộp là từ đâu ra?"
         },
         {
           "type": "line",
@@ -2762,7 +2884,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Nhật ký in và lời kể sáng thứ Hai là hai nguồn riêng, cả hai đều khớp với lời em. Vậy em không phải người soạn thư."
+          "text": "Nhật ký in khớp với lời em. Vậy em không phải người soạn thư."
         },
         {
           "type": "line",
