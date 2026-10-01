@@ -56,6 +56,12 @@
 - Tiêu đề kết: Có người mượn tên Nam
 - Lời kết: Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng, cùng cái máy đã gửi tin đồn, một đơn đúng tối Nam ở thư viện. Máy thì biết, tay thì chưa. Ba người có chìa phòng.
 
+## Sổ quỹ {vụ sau: vu5}
+- Chuỗi: v5-mo
+- Ngày: 2024-10-18
+- Tiêu đề kết: Mỗi bước là một phiếu
+- Lời kết: Ba khoản chi không có hàng được ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Người nhận là người nói "vì sao". Mùa 1 khép lại ở chỗ chứng cứ dừng.
+
 <!-- Nhiệm vụ phụ: việc một NPC giao, không dính truyện chính, để rèn kỹ năng. Nhận ở màn kết của một vụ chính, sau khi vụ "Mở sau" đã xong; kết bằng [KẾT THÚC] rồi quay lại màn kết đó. Máy đặt cờ <mã>-hoan-tat. Vụ chính không được đòi kỹ năng chỉ dạy ở nhiệm vụ phụ. -->
 
 ## Bốn mục trong sổ đã ký {nhiệm vụ phụ: so-phong}

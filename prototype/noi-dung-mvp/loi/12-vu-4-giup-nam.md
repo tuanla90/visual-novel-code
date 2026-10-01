@@ -67,6 +67,14 @@
 - **tung** (worried): Giống hệt chuyện Nam.
 - **ha-vy** (thinking): Chị ấy ghi từ năm ngoái. Cuốn sổ cũ mà chị ấy nhắc, chắc kể đúng chuyện này.
 
+## v4-ket-thieu.1
+- **minh-anh** (neutral): Mình mới xem đơn mang tên Nam. Máy văn phòng ấy còn tạo đơn nào khác không, ai hay ngồi đó ban ngày, mình chưa xem. Chị ghi vào mục "chưa kiểm".
+- **duy** (neutral): Chưa kiểm thì chưa nói. Nhưng có một việc chắc: ba người giữ chìa phòng đó.
+
+## v4-ket-du.1
+- **minh-anh** (neutral): Phiếu bốn đơn từ máy văn phòng chị gửi kèm luôn: ba đơn đêm mang tên Nam, một đơn ngày mang tên trưởng CLB. Đủ để bên thu hồi thấy máy đó ai dùng hợp lệ, ai không.
+- **duy** (neutral): Và ba người giữ chìa phòng đó. Mình ghi tên, không ghi tội.
+
 ## v4-ket.1
 - **nam** (neutral): Ba người giữ chìa phòng văn phòng: Khánh, Bách, Thảo. Tớ không nghi ai cả. Nhưng tớ muốn biết là ai.
 - **minh-anh** (serious): Muốn biết thì tìm tiếp bằng bảng, không bằng đoán. Ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt. Sổ quỹ là nguồn tiếp theo.

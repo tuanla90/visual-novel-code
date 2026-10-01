@@ -80,9 +80,12 @@ function thuThach(t: TheThuThachMvp): void {
     return tt?.vatChung?.giaTri.length ? [`[${tt.vatChung.giaTri.join(' · ')}]`] : [];
   });
   out(`Giấy nhớ đang có quanh màn hình: ${giay.length ? giay.join(' ') : '(không có)'}`);
-  out('Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):');
+  out('Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):');
   out('```sql');
-  out(t.sqlChuan.trim());
+  out(t.sqlChuan.trim().replace(/\bFROM\s+@([a-z0-9-]+)/gi, (_m, id: string) => `FROM ${id.replace(/^ev-/, '').replace(/[^a-z0-9]+/gi, '_')}`).replace(/^(SELECT)/i, (m) => {
+    const nguon = /@([a-z0-9-]+)/i.exec(t.sqlChuan)?.[1];
+    return nguon ? `WITH ${nguon.replace(/^ev-/, '').replace(/[^a-z0-9]+/gi, '_')} AS (phiếu "${Object.values(kb.thuThach).find((x) => x.vatChung?.id === nguon)?.vatChung?.title ?? nguon}")\n${m}` : m;
+  }));
   out('```');
   if (db) {
     try {

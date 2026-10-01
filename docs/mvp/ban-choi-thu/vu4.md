@@ -37,7 +37,7 @@ Bảng `don_linh_kien` (10 dòng):
 | DLK-09 | 2024-10-08 | Thảo | Keo dán | 5 | 30000 | PH-19 | CHO_DUYET |
 | DLK-10 | 2024-10-08 | Bách | Mỏ hàn | 2 | 180000 | PH-20 | CHO_DUYET |
 Giấy nhớ đang có quanh màn hình: [DA_DUYET]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
 SELECT ma_don, ngay, nguoi_dat, linh_kien, so_tien, ma_phien FROM don_linh_kien WHERE trang_thai = 'DA_DUYET';
 ```
@@ -66,9 +66,10 @@ Lời nhân vật sau mỗi lần chạy:
 Đề bài trên màn hình: *Lấy phiếu tám đơn làm nguồn. Gom theo người đứng tên, đếm mỗi người mấy đơn.*
 Cách chơi: màn TỔNG HỢP — chọn nguồn (phiếu đã ghim `ev-don-da-duyet`), lọc tùy chọn bằng giấy nhớ, chọn cột để NHÓM; máy đếm số dòng mỗi nhóm (COUNT), có thể tính tổng / trung bình và chỉ giữ nhóm vượt ngưỡng nếu bài cần.
 Giấy nhớ đang có quanh màn hình: [DA_DUYET]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
-SELECT nguoi_dat, COUNT(*) AS so_dong FROM @ev-don-da-duyet GROUP BY nguoi_dat;
+WITH don_da_duyet AS (phiếu "Tám đơn linh kiện đã duyệt")
+SELECT nguoi_dat, COUNT(*) AS so_dong FROM don_da_duyet GROUP BY nguoi_dat;
 ```
 Kết quả: 4 dòng
 | nguoi_dat | so_dong |
@@ -129,7 +130,7 @@ Bảng `phien_dang_nhap` (13 dòng):
 | PH-22 | MAY-XUONG-02 | 2024-09-27 | 15:30 |
 | PH-23 | MAY-VP-XUONG | 2024-10-02 | 10:40 |
 Giấy nhớ đang có quanh màn hình: [DA_DUYET] [Nam]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
 SELECT ma_don, linh_kien, may, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE nguoi_dat = 'Nam';
 ```
@@ -159,9 +160,10 @@ Lời nhân vật sau mỗi lần chạy:
 Đề bài trên màn hình: *Lấy phiếu năm đơn làm nguồn. Gom theo máy, đếm mỗi máy mấy đơn.*
 Cách chơi: màn TỔNG HỢP — chọn nguồn (phiếu đã ghim `ev-don-nam-may`), lọc tùy chọn bằng giấy nhớ, chọn cột để NHÓM; máy đếm số dòng mỗi nhóm (COUNT), có thể tính tổng / trung bình và chỉ giữ nhóm vượt ngưỡng nếu bài cần.
 Giấy nhớ đang có quanh màn hình: [DA_DUYET] [Nam]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
-SELECT may, COUNT(*) AS so_dong FROM @ev-don-nam-may GROUP BY may;
+WITH don_nam_may AS (phiếu "Năm đơn của Nam: máy và giờ tạo")
+SELECT may, COUNT(*) AS so_dong FROM don_nam_may GROUP BY may;
 ```
 Kết quả: 2 dòng
 | may | so_dong |
@@ -219,7 +221,7 @@ Bảng `phien_dang_nhap` (13 dòng):
 | PH-22 | MAY-XUONG-02 | 2024-09-27 | 15:30 |
 | PH-23 | MAY-VP-XUONG | 2024-10-02 | 10:40 |
 Giấy nhớ đang có quanh màn hình: [DA_DUYET] [Nam]
-Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả; trên màn hình, phiếu làm nguồn hiện thành WITH <tên> AS (phiếu …)):
 ```sql
 SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE may = 'MAY-VP-XUONG';
 ```
@@ -252,15 +254,30 @@ Lời nhân vật sau mỗi lần chạy:
 ##### 📍 Phòng CLB — Nam điều tra cùng; ba người có chìa
 
 > ❓ Minh Anh hỏi: "Vậy mình nói chắc được điều gì với bên thu hồi đơn?" (chọn sai thì nghe phản hồi rồi chọn lại)
->   - Ba đơn đứng tên Nam được tạo từ máy văn phòng xưởng, ban đêm, bằng phiên đăng nhập không phải của Nam. Ai tạo thì chưa biết. ✅ → **Minh Anh** (neutral): Đúng chừng ấy. Chị gửi kèm phiếu nối bảng để họ tự kiểm.
+>   - Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng; đơn 07/10 tạo đúng lúc Nam ở thư viện. Ai ngồi máy thì bảng này chưa nói. ✅ → **Minh Anh** (neutral): Đúng chừng ấy. Chị gửi kèm phiếu nối bảng để họ tự kiểm. Ai ngồi máy thì phải có nguồn khác.
 >   - Nam tự đặt cả năm đơn rồi chối. → **Hà Vy** (thinking): Một trong ba đơn đó tạo lúc 22:05 tối 07/10. Tối đó Nam ở thư viện, mình vừa chứng minh xong ở vụ trước.
 >   - Ban chủ nhiệm Robotics cố tình đổ nợ cho Nam. → **Duy** (neutral): Máy văn phòng thì ban chủ nhiệm giữ chìa, nhưng "cố tình" và "cả ban" thì bảng nào nói? Mình mới có máy và giờ.
+> ⤵ RẼ TỰ ĐỘNG: nếu có ev-may-vp thì sang "Đã tra mọi đơn từ máy văn phòng" (in ở dưới); nếu KHÔNG thì chạy tiếp các dòng ngay sau đây. Hai đường loại trừ nhau, người chơi chỉ thấy một.
+- **Minh Anh** (neutral): Mình mới xem đơn mang tên Nam. Máy văn phòng ấy còn tạo đơn nào khác không, ai hay ngồi đó ban ngày, mình chưa xem. Chị ghi vào mục "chưa kiểm".
+- **Duy** (neutral): Chưa kiểm thì chưa nói. Nhưng có một việc chắc: ba người giữ chìa phòng đó.
+
+*— Chỉ khi có ev-may-vp (đường rẽ tự động ở trên) —*
+
+###### 📍 Phòng CLB — Đã tra mọi đơn từ máy văn phòng
+
+- **Minh Anh** (neutral): Phiếu bốn đơn từ máy văn phòng chị gửi kèm luôn: ba đơn đêm mang tên Nam, một đơn ngày mang tên trưởng CLB. Đủ để bên thu hồi thấy máy đó ai dùng hợp lệ, ai không.
+- **Duy** (neutral): Và ba người giữ chìa phòng đó. Mình ghi tên, không ghi tội.
+
+###### 📍 Phòng CLB — Nam điều tra cùng; nguồn tiếp theo là sổ quỹ
+
 - **Nam** (neutral): Ba người giữ chìa phòng văn phòng: Khánh, Bách, Thảo. Tớ không nghi ai cả. Nhưng tớ muốn biết là ai.
 - **Minh Anh** (serious): Muốn biết thì tìm tiếp bằng bảng, không bằng đoán. Ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt. Sổ quỹ là nguồn tiếp theo.
 - **Tùng** (chi-tay): Tớ không cá nữa đâu. Hỏi sổ.
 - **Hà Vy** (smile): Đúng rồi. Hỏi sổ.
 *[Thẻ chữ]* Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nối sai cột thì ra một câu chuyện không có thật.
 > 🏁 KẾT THÚC vụ → màn kết.
+
+*(tiếp theo như chuỗi "Nam điều tra cùng; nguồn tiếp theo là sổ quỹ" đã in ở trên)*
 
 *— Nếu chọn "Thế là đủ cho hôm nay." —*
 

@@ -235,3 +235,50 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 | PH-21 | MAY-XUONG-01 | 2024-10-07 | 16:00 |
 | PH-22 | MAY-XUONG-02 | 2024-09-27 | 15:30 |
 | PH-23 | MAY-VP-XUONG | 2024-10-02 | 10:40 |
+
+## kiem_ke {bảng}
+- Cột: linh_kien TEXT, so_luong_co INTEGER
+
+<!-- Vụ 5: Nam kiểm kê xưởng, đếm tay. Ba linh kiện của ba đơn mượn tên Nam là 0. -->
+
+| linh_kien | so_luong_co |
+|---|---|
+| Cảm biến dò line | 4 |
+| Pin 18650 | 9 |
+| Động cơ servo | 0 |
+| Dây nối | 18 |
+| Bánh xe | 6 |
+| Mạch điều khiển | 0 |
+| Ốc vít | 85 |
+| Bộ khung nhôm | 0 |
+| Keo dán | 3 |
+| Mỏ hàn | 2 |
+
+## quy {bảng}
+- Cột: ma_quy TEXT, clb TEXT, ten_quy TEXT
+
+| ma_quy | clb | ten_quy |
+|---|---|---|
+| Q-TT | THAM_TU | Quỹ CLB Thám Tử Dữ Liệu |
+| Q-RB | ROBOTICS | Quỹ CLB Robotics |
+
+## khoan_chi {bảng}
+- Cột: ma_chi TEXT, ma_don TEXT, ma_quy TEXT, so_tien INTEGER, nguoi_duyet TEXT
+
+<!-- Vụ 5: bản xuất sổ chi khối CLB (chỉ các khoản ghi vào quỹ CLB Thám Tử và khoản liên quan các đơn). Ba khoản lớn (KC-03, 06, 08)
+     trả cho ba đơn không có hàng, ghi vào quỹ CLB Thám Tử, người duyệt Khánh; ba khoản văn phòng phẩm nhỏ Minh Anh duyệt. Trung bình:
+     Khánh 800000, Minh Anh 150000 (chia hết). -->
+
+| ma_chi | ma_don | ma_quy | so_tien | nguoi_duyet |
+|---|---|---|---|---|
+| KC-01 | DLK-01 | Q-RB | 120000 | Bách |
+| KC-02 | DLK-02 | Q-RB | 200000 | Bách |
+| KC-03 | DLK-03 | Q-TT | 800000 | Khánh |
+| KC-04 | DLK-04 | Q-RB | 60000 | Bách |
+| KC-05 | DLK-05 | Q-RB | 150000 | Bách |
+| KC-06 | DLK-06 | Q-TT | 900000 | Khánh |
+| KC-07 | DLK-07 | Q-RB | 40000 | Khánh |
+| KC-08 | DLK-08 | Q-TT | 700000 | Khánh |
+| KC-09 | VPP-01 | Q-TT | 150000 | Minh Anh |
+| KC-10 | VPP-02 | Q-TT | 120000 | Minh Anh |
+| KC-11 | VPP-03 | Q-TT | 180000 | Minh Anh |

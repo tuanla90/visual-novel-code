@@ -123,6 +123,14 @@
 - Câu nói: Tớ không bắt các cậu tin. Tớ chỉ chỗ để các cậu tự kiểm.
 - Giới thiệu: Trực kênh và giữ sổ sách cho xưởng của CLB Robotics. Ít nói, hỏi gì đáp nấy, việc gì cũng có ghi chép.
 
+### khanh — Khánh
+- Vai: Chủ tịch Hội sinh viên, kiêm trưởng CLB Robotics (năm 4). Người đứng sau lá thư, tin đồn và ba đơn mượn tên Nam: lấy tiền quỹ CLB Thám Tử cho việc riêng, ghi thành linh kiện. Chỉ lên hình ở Vụ 5 (phòng họp); tự nhận, không bị bêu, không nêu việc riêng. Không gọi họ tên đầy đủ. Chưa có ảnh: chỉ dùng biểu cảm neutral.
+- Biểu cảm: neutral
+- Xuất hiện từ: ngày họp
+- Danh xưng: Chủ tịch Hội sinh viên, trưởng CLB Robotics
+- Câu nói: Tôi duyệt là đúng thẩm quyền.
+- Giới thiệu: Chủ tịch Hội sinh viên, trưởng CLB Robotics. Nói chắc, bám thẩm quyền, ít khi phải giải thích với ai.
+
 ### co-phu-trach — Cô phụ trách hộp kiến nghị
 - Vai: Giữ sổ niêm phong. Chỉ xuất hiện qua lời kể và tài liệu.
 - Chỉ qua lời kể: có

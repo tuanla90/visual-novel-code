@@ -38,8 +38,19 @@
 ### v4-ket — Nam điều tra cùng; ba người có chìa {cảnh: phong-clb}
 
 - [HỎI q-v4-ket-luan] minh-anh: "Vậy mình nói chắc được điều gì với bên thu hồi đơn?"
-  - (A) {id: muon-ten} Ba đơn đứng tên Nam được tạo từ máy văn phòng xưởng, ban đêm, bằng phiên đăng nhập không phải của Nam. Ai tạo thì chưa biết. [ĐÚNG] → phản hồi: **minh-anh** (neutral): Đúng chừng ấy. Chị gửi kèm phiếu nối bảng để họ tự kiểm.
+  - (A) {id: muon-ten} Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng; đơn 07/10 tạo đúng lúc Nam ở thư viện. Ai ngồi máy thì bảng này chưa nói. [ĐÚNG] → phản hồi: **minh-anh** (neutral): Đúng chừng ấy. Chị gửi kèm phiếu nối bảng để họ tự kiểm. Ai ngồi máy thì phải có nguồn khác.
   - (B) {id: nam-tu-dat} Nam tự đặt cả năm đơn rồi chối. → phản hồi: **ha-vy** (thinking): Một trong ba đơn đó tạo lúc 22:05 tối 07/10. Tối đó Nam ở thư viện, mình vừa chứng minh xong ở vụ trước.
   - (C) {id: ban-chu-nhiem} Ban chủ nhiệm Robotics cố tình đổ nợ cho Nam. → phản hồi: **duy** (neutral): Máy văn phòng thì ban chủ nhiệm giữ chìa, nhưng "cố tình" và "cả ban" thì bảng nào nói? Mình mới có máy và giờ.
+- [NẾU có ev-may-vp] → đi tới v4-ket-du
+- [LỜI v4-ket-thieu.1]
+- [ĐI TỚI v4-ket-chung]
+
+### v4-ket-du — Đã tra mọi đơn từ máy văn phòng {cảnh: phong-clb}
+
+- [LỜI v4-ket-du.1]
+- [ĐI TỚI v4-ket-chung]
+
+### v4-ket-chung — Nam điều tra cùng; nguồn tiếp theo là sổ quỹ {cảnh: phong-clb}
+
 - [LỜI v4-ket.1]
 - [KẾT THÚC]

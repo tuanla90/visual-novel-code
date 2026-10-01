@@ -1,6 +1,6 @@
 /** Trình dựng truy vấn tổng hợp Vụ 2. Tách khỏi `CauDung` để giữ nguyên grammar/chấm của chương 1. */
 import type { BoDuLieuMvp } from '../../content/mvp/types';
-import { dieuKienThanhSql, type DieuKienDung } from './trinh-dung';
+import { dieuKienThanhSql, tenCte, type DieuKienDung } from './trinh-dung';
 import type { GiaTriSql, KetQuaChay } from './sql-mvp';
 
 export type HamTongHop = 'COUNT' | 'SUM' | 'AVG';
@@ -64,7 +64,10 @@ export function taoSqlTongHop(cau: CauTongHop, nguon: NguonTongHop): string {
       return text?.replaceAll(d.cot, quote(d.cot)) ?? null;
     })
     .filter((x): x is string => x !== null);
-  const from = nguon.sql === null ? quote(nguon.id) : `(${nguon.sql}) AS ${quote(nguon.id)}`;
+  // Phiếu làm nguồn hiện thành WITH <tên tạm> AS (<câu của phiếu>) — cùng cách viết với màn tra (thẻ "lọc tiếp"), cho quen mắt CTE.
+  const ten = nguon.sql === null ? quote(nguon.id) : quote(tenCte(nguon.id));
+  const with_ = nguon.sql === null ? '' : `WITH ${ten} AS (${nguon.sql.trim().replace(/;\s*$/, '')}) `;
+  const from = ten;
   const laSo = (cot: string): boolean => nguon.cot.find((c) => c.ten === cot)?.kieu === 'INTEGER';
   const tinh = (cau.tinh ?? []).map((t) => {
     if (!cotHopLe.has(t.cot)) throw new Error(`Cột tính không thuộc nguồn: ${t.cot}`);
@@ -81,7 +84,7 @@ export function taoSqlTongHop(cau: CauTongHop, nguon: NguonTongHop): string {
       having = ` HAVING ${g.ham}(${quote(g.cot)}) > ${g.lonHon}`;
     }
   }
-  return `SELECT ${quote(cau.nhomTheo)}, COUNT(*) AS "so_dong"${tinh.join('')} FROM ${from}${where.length ? ` WHERE ${where.join(' AND ')}` : ''} GROUP BY ${quote(cau.nhomTheo)}${having}`;
+  return `${with_}SELECT ${quote(cau.nhomTheo)}, COUNT(*) AS "so_dong"${tinh.join('')} FROM ${from}${where.length ? ` WHERE ${where.join(' AND ')}` : ''} GROUP BY ${quote(cau.nhomTheo)}${having}`;
 }
 
 /** Khối cần cho một thẻ tổng hợp, suy từ SQL chuẩn: có SUM/AVG → chọn phép tính; có HAVING → chọn ngưỡng giữ nhóm. */

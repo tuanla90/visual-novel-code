@@ -106,6 +106,19 @@ export function ManTongHopMvp({ duLieu, the, nguon, giayNho, dienTen, nhanNguon,
   };
 
   const cotKetQua = ketQua?.cot ?? [];
+  // Câu SQL đang dựng, hiện bên dưới như màn tra (không bắt phải đọc); chưa đủ để dựng thì để trống.
+  const sqlXemTruoc = ((): string => {
+    if (!selectedNguon || !nhomTheo) return '';
+    try {
+      const card = giayNho.find((x) => x.the === whereThe);
+      const where: DieuKienDung[] = whereCot && card ? [{ cot: whereCot, phep: 'bang', giaTri: { nguon: 'giay-nho', tho: card.giaTri, ...(card.nhieu ? { nhieu: card.nhieu } : {}), the: card.the } }] : [];
+      const nguongThe = giayNho.find((x) => x.khoa === giuThe);
+      const lonHon = nguongThe ? Number(nguongThe.giaTri.replace(/[^\d.-]/g, '')) : NaN;
+      return taoSqlTongHop({ nguonId, select: [nhomTheo], where, nhomTheo, ...(tinh.length ? { tinh } : {}), ...(giuHam ? { giuNhom: { ham: giuHam, cot: giuHam === 'COUNT' ? null : giuCot || null, lonHon } } : {}) }, selectedNguon);
+    } catch {
+      return '';
+    }
+  })();
   const duocTaoGhiChu = !!ketQua && ketQua.dong.length <= 3 && cotGhiChu !== '';
   const ketQuaDung = ketQua?.dung === true;
   const taoNote = (): void => {
@@ -215,6 +228,11 @@ export function ManTongHopMvp({ duLieu, the, nguon, giayNho, dienTen, nhanNguon,
       <button type="button" onClick={() => void chay()} disabled={dangChay || !selectedNguon || !nhomTheo}>
         {dangChay ? 'Đang chạy…' : 'Chạy truy vấn'}
       </button>
+      {sqlXemTruoc ? (
+        <p className="v7-sql man-tong-hop__sql" aria-label="Câu SQL đang dựng">
+          <code>{sqlXemTruoc.replace(/\) SELECT /, ')\nSELECT ')}</code>
+        </p>
+      ) : null}
       {thongBao ? <p role="status">{thongBao}</p> : null}
       {ketQua ? (
         <div>
