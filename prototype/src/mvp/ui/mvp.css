@@ -92,33 +92,23 @@
 .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member {
   width: min(580px, 28%);
 }
-/* Khung dọc (portrait.css ép mọi người vào 42% / 58%, rộng 94vw): 3 người chia ba bề ngang, mỗi người một
-   phần ba → không cắt mép, không chồng. Viết riêng cho @media và .game--portrait (không gộp selector). */
+/* Khung dọc (user chốt 01/10/2026): chỉ hiện NGƯỜI ĐANG NÓI, đứng giữa, to — như visual novel trên điện thoại; người đã
+   nói nhưng đang im thì ẩn (họ vẫn "có mặt" trong dàn, quay lại khi nói). Viết riêng cho @media và .game--portrait. */
 @media (max-width: 768px) {
-  .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member {
-    width: 33.333% !important;
+  .mvp-stage .stage__portraits .cast-member--idle {
+    display: none;
   }
-  .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member[data-vi-tri='0'] {
-    left: 16.667% !important;
-  }
-  .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member[data-vi-tri='1'] {
+  .mvp-stage .stage__portraits .cast-member--speaking {
     left: 50% !important;
-  }
-  .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member[data-vi-tri='2'] {
-    left: 83.333% !important;
+    width: min(94vw, 78%) !important;
   }
 }
-.game--portrait .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member {
-  width: 33.333% !important;
+.game--portrait .mvp-stage .stage__portraits .cast-member--idle {
+  display: none;
 }
-.game--portrait .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member[data-vi-tri='0'] {
-  left: 16.667% !important;
-}
-.game--portrait .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member[data-vi-tri='1'] {
+.game--portrait .mvp-stage .stage__portraits .cast-member--speaking {
   left: 50% !important;
-}
-.game--portrait .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member[data-vi-tri='2'] {
-  left: 83.333% !important;
+  width: min(94vw, 78%) !important;
 }
 
 /* Lớp nội dung giữa sân khấu (tài liệu, sổ, lọc thử, màn chiếu, kết): chiếm hàng 2–3 của lưới
