@@ -1,0 +1,383 @@
+/* Màn lịch MVP (LichMvp.tsx) — "tờ lịch bàn". Tệp riêng: không đụng mvp.css / app.css. */
+
+.mvp-lich {
+  --lich-giay: #fbf7ee;
+  --lich-giay-dam: #f1e9d6;
+  --lich-muc: #2a2320;
+  --lich-muc-nhat: #6f655b;
+  --lich-do: #b83a2e;
+  --lich-han: #d64545;
+  --lich-han-phu: #c27a12;
+  --lich-truyen: #3b6ea8;
+  --lich-hom-nay: #f59e0b;
+  --lich-qua: #a59c90;
+
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(10, 15, 26, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: mvpLichVao 0.18s ease-out;
+}
+
+@keyframes mvpLichVao {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.mvp-lich__to {
+  position: relative;
+  width: min(880px, 100%);
+  max-height: calc(100% - 8px);
+  overflow: auto;
+  padding: 26px 22px 20px;
+  border-radius: 10px;
+  background: var(--lich-giay);
+  color: var(--lich-muc);
+  font-family: var(--font-ui, system-ui, sans-serif);
+  box-shadow:
+    0 2px 0 var(--lich-giay-dam),
+    0 4px 0 #e2d8c2,
+    0 24px 48px rgba(0, 0, 0, 0.45);
+}
+
+/* Gáy lò xo: dải đỏ trên cùng + các lỗ khoen. */
+.mvp-lich__gay {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 14px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+  background: var(--lich-do);
+}
+.mvp-lich__gay i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3a2a24;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.mvp-lich__dau {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.mvp-lich__thang {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: var(--lich-do);
+}
+.mvp-lich__nam {
+  font-weight: 600;
+  color: var(--lich-muc-nhat);
+}
+.mvp-lich__dong {
+  min-height: 40px;
+  padding: 6px 16px;
+  border: 1.5px solid var(--lich-muc);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--lich-muc);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.mvp-lich__dong:hover {
+  background: var(--lich-muc);
+  color: var(--lich-giay);
+}
+.mvp-lich__dong:focus-visible {
+  outline: 3px solid var(--lich-hom-nay);
+  outline-offset: 2px;
+}
+
+.mvp-lich__than {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* Lưới tháng */
+.mvp-lich__luoi {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 4px;
+  table-layout: fixed;
+}
+.mvp-lich__luoi th {
+  padding: 2px 0 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--lich-muc-nhat);
+  text-align: center;
+}
+.mvp-lich__luoi th.is-cn,
+.mvp-lich__o.is-cn .mvp-lich__so {
+  color: var(--lich-do);
+}
+.mvp-lich__o {
+  position: relative;
+  height: 64px;
+  padding: 4px 5px;
+  vertical-align: top;
+  border-radius: 6px;
+  background: #fffdf7;
+  box-shadow: inset 0 0 0 1px #e6dcc6;
+}
+.mvp-lich__o.is-trong {
+  background: transparent;
+  box-shadow: none;
+}
+.mvp-lich__o.is-qua {
+  opacity: 0.45;
+}
+.mvp-lich__o.is-hom-nay {
+  background: #fff4d6;
+  box-shadow:
+    inset 0 0 0 2.5px var(--lich-hom-nay),
+    0 3px 10px rgba(245, 158, 11, 0.35);
+}
+.mvp-lich__o.is-co-han:not(.is-qua) {
+  box-shadow: inset 0 0 0 2px var(--lich-han);
+}
+.mvp-lich__o.is-hom-nay.is-co-han {
+  box-shadow:
+    inset 0 0 0 2.5px var(--lich-han),
+    0 3px 10px rgba(214, 69, 69, 0.35);
+}
+.mvp-lich__so {
+  display: block;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.mvp-lich__cham {
+  position: absolute;
+  top: 6px;
+  right: 5px;
+  display: flex;
+  gap: 3px;
+}
+.mvp-lich__cham i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.mvp-lich__cham .is-truyen {
+  background: var(--lich-truyen);
+}
+.mvp-lich__cham .is-han {
+  background: var(--lich-han);
+}
+.mvp-lich__cham .is-han-phu {
+  background: var(--lich-han-phu);
+}
+.mvp-lich__cham .is-hom-nay {
+  background: var(--lich-hom-nay);
+}
+.mvp-lich__cham .is-qua {
+  background: var(--lich-qua);
+}
+.mvp-lich__nhan {
+  position: absolute;
+  left: 5px;
+  right: 4px;
+  bottom: 4px;
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.15;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--lich-muc-nhat);
+}
+.mvp-lich__o.is-co-han .mvp-lich__nhan {
+  color: var(--lich-han);
+}
+
+/* Danh sách mốc */
+.mvp-lich__ds {
+  display: grid;
+  gap: 10px;
+}
+.mvp-lich__muc {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border-left: 4px solid var(--lich-truyen);
+  border-radius: 4px;
+  background: #fffdf7;
+  box-shadow: inset 0 0 0 1px #e6dcc6;
+}
+.mvp-lich__muc--hom-nay {
+  border-left-color: var(--lich-hom-nay);
+  background: #fff4d6;
+}
+.mvp-lich__muc--han {
+  border-left-color: var(--lich-han);
+}
+.mvp-lich__muc--han.is-phu {
+  border-left-color: var(--lich-han-phu);
+}
+.mvp-lich__muc-nhan {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lich-muc-nhat);
+}
+.mvp-lich__muc--han .mvp-lich__muc-nhan {
+  color: var(--lich-han);
+}
+.mvp-lich__muc-ngay {
+  font-size: 16px;
+  font-weight: 700;
+}
+.mvp-lich__muc-ten {
+  font-size: 15px;
+}
+.mvp-lich__gio,
+.mvp-lich__con {
+  color: var(--lich-muc-nhat);
+  font-weight: 600;
+}
+.mvp-lich__ds-tieude {
+  margin: 6px 0 0;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lich-muc-nhat);
+}
+.mvp-lich__qua {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  color: var(--lich-muc-nhat);
+}
+.mvp-lich__qua li {
+  display: flex;
+  gap: 8px;
+}
+.mvp-lich__qua-ngay {
+  flex: none;
+  min-width: 5.2em;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+/* Màn dọc (390×844): lưới co lại, danh sách xuống dưới. */
+.game--portrait .mvp-lich {
+  padding: 10px;
+}
+.game--portrait .mvp-lich__to {
+  padding: 22px 12px 14px;
+}
+.game--portrait .mvp-lich__than {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+}
+.game--portrait .mvp-lich__thang {
+  font-size: 22px;
+}
+.game--portrait .mvp-lich__luoi {
+  border-spacing: 2px;
+}
+.game--portrait .mvp-lich__o {
+  height: 48px;
+  padding: 3px;
+}
+.game--portrait .mvp-lich__so {
+  font-size: 14px;
+}
+.game--portrait .mvp-lich__nhan {
+  left: 3px;
+  right: 2px;
+  bottom: 3px;
+  font-size: 9px;
+}
+.game--portrait .mvp-lich__cham {
+  top: 4px;
+  right: 3px;
+}
+.game--portrait .mvp-lich__cham i {
+  width: 6px;
+  height: 6px;
+}
+
+@media (max-width: 640px) {
+  .mvp-lich {
+    padding: 10px;
+  }
+  .mvp-lich__to {
+    padding: 22px 12px 14px;
+  }
+  .mvp-lich__than {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .mvp-lich__luoi {
+    border-spacing: 2px;
+  }
+  .mvp-lich__o {
+    height: 48px;
+    padding: 3px;
+  }
+  .mvp-lich__so {
+    font-size: 14px;
+  }
+  .mvp-lich__nhan {
+    left: 3px;
+    right: 2px;
+    bottom: 3px;
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mvp-lich {
+    animation: none;
+  }
+}
+
+/* Vé "NGÀY n/5" trên thanh trên thành nút mở lịch: bỏ kiểu mặc định của <button>, giữ dáng vé. */
+.mvp-topbar button.topbar__chapter {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.15s ease;
+}
+.mvp-topbar button.topbar__chapter:hover {
+  transform: translateY(-1px);
+}
+.mvp-topbar button.topbar__chapter:focus-visible {
+  outline: 2px solid var(--c-topbar-accent, #fbbf24);
+  outline-offset: 3px;
+}

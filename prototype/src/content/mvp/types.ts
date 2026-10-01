@@ -125,6 +125,8 @@ export interface LichMvp {
   buoiToi: { id: string; ten: string };
   luat: { chinhToiDaKhung: number; phuNhieuMin: number; phuNhieuMax: number; uyTin: number | null };
   chuoiDau: string;
+  /** Ngày thật của mở đầu (`- Ngày mở đầu:` ở lich.md, dạng YYYY-MM-DD); thiếu → null / không có. Lịch trong game tính từ đây. */
+  ngayMoDau?: string | null;
   ngay: NgayMvp[];
   ngayHop: { chuoi: string } | null;
   ket: { that: string; thuong: string } | null;

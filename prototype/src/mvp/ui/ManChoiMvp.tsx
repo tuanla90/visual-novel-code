@@ -37,6 +37,7 @@ import { HudMvp } from './HudMvp';
 import { KetMvp } from './KetMvp';
 import { KhamPhaMvp } from './KhamPhaMvp';
 import { LocThuV7 } from './v7/LocThuV7';
+import { LichMvp } from './LichMvp';
 import { LuuNapMvp } from './LuuNapMvp';
 import { ManChieuMvp } from './ManChieuMvp';
 import { PhongTraMvp } from './v7/PhongTraMvp';
@@ -76,6 +77,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const [lichSuMo, setLichSuMo] = useState(false);
   const [luuNap, setLuuNap] = useState<'save' | 'load' | null>(null);
   const [caiDat, setCaiDat] = useState(false);
+  const [lichMo, setLichMo] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   /** Nơi đang đứng trong ngày (`null` = bản đồ). Gắn với ngày: sang ngày khác coi như về bản đồ. */
   const [dangO, setDangO] = useState<{ ngay: number; noi: string } | null>(null);
@@ -156,7 +158,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const dienTen = (t: string): string => dienTenMay(kb, s, t);
   // Màn "Nhân vật mới" (như prototype): nhân vật có thẻ giới thiệu nói lần đầu → hiện trước lời thoại.
   const gioiThieu = canGioiThieu(kb, s, kn);
-  const modalMo = kho !== null || lichSuMo || luuNap !== null || caiDat || gioiThieu !== null;
+  const modalMo = kho !== null || lichSuMo || luuNap !== null || caiDat || lichMo || gioiThieu !== null;
   const loiHienTai: { speaker: string; expression?: string } | null =
     kn.kind === 'line' || kn.kind === 'feedback'
       ? kn.loi
@@ -351,6 +353,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         onMoCaiDat={() => setCaiDat(true)}
         onBatDauLai={choiLai}
         onVeTieuDe={onVeTieuDe}
+        onMoLich={() => setLichMo(true)}
       />
       <SanKhauMvp
         kb={kb}
@@ -381,6 +384,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           onDong={dongKho}
         />
       ) : null}
+      {lichMo ? <LichMvp kb={kb} s={s} onDong={() => setLichMo(false)} /> : null}
       <BacklogModal open={lichSuMo} onClose={() => setLichSuMo(false)} />
       <AudioSettingsModal open={caiDat} onClose={() => setCaiDat(false)} />
       {luuNap ? (

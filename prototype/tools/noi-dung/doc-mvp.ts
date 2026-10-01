@@ -134,6 +134,8 @@ export interface RawLich {
   buoiToi: { id: string; ten: string };
   luat: { chinhToiDaKhung: number; phuNhieuMin: number; phuNhieuMax: number; uyTin: number | null };
   chuoiDau: string;
+  /** `- Ngày mở đầu: YYYY-MM-DD` ở "## Mở đầu": ngày thật của mở đầu (lịch trong game). Thiếu → null. */
+  ngayMoDau: string | null;
   ngay: RawNgay[];
   ngayHop: { chuoi: string; viTri: ViTri } | null;
   ket: { that: string; thuong: string; viTri: ViTri } | null;
@@ -657,6 +659,14 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
   }
 
   // ---------- lich.md ----------
+  /** `YYYY-MM-DD` và là ngày có thật (2024-02-30 sai). */
+  function ngayHopLe(s: string): boolean {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+    if (!m) return false;
+    const d = new Date(Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3])));
+    return d.toISOString().slice(0, 10) === s;
+  }
+
   function docLich({ viTri, tep }: { viTri: () => ViTri; tep: TepMvp }) {
     type Muc = 'luat' | 'mo-dau' | 'ngay' | 'ngay-hop' | 'ket' | null;
     let muc: Muc = null;
@@ -669,6 +679,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       buoiToi: { id: 'toi', ten: 'Buổi tối' },
       luat: { chinhToiDaKhung: 2, phuNhieuMin: 1, phuNhieuMax: 3, uyTin: null },
       chuoiDau: '',
+      ngayMoDau: null,
       ngay: [],
       ngayHop: null,
       ket: null,
@@ -728,10 +739,16 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           }
           break;
         }
-        case 'mo-dau':
-          laNgoai(['Chuỗi đầu'], 'mục "## Mở đầu"');
+        case 'mo-dau': {
+          laNgoai(['Chuỗi đầu', 'Ngày mở đầu'], 'mục "## Mở đầu"');
           lich.chuoiDau = canCo(f, 'Chuỗi đầu', vt, 'mục "## Mở đầu"') ?? '';
+          const nmd = f['Ngày mở đầu'];
+          if (nmd !== undefined) {
+            if (ngayHopLe(nmd)) lich.ngayMoDau = nmd;
+            else loi.push({ ...vt, thongBao: `"Ngày mở đầu" phải là ngày có thật dạng YYYY-MM-DD (ví dụ 2024-09-08): "${nmd}"` });
+          }
           break;
+        }
         case 'ngay': {
           if (!ngay) break;
           if (ngay.kieu === 'theo-truyen') {

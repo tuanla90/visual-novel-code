@@ -15,15 +15,15 @@ db = ns['db']
 # --- bảng mới: nhật ký máy in phòng máy (thầy Khải cho xem khi đã có mã cần kiểm) ---
 db.executescript("CREATE TABLE nhat_ky_in(thoi_diem TEXT, tai_khoan TEXT, ten_tep TEXT, so_trang INT);")
 IN = [
-    ('2026-09-12 09:40', 'SV240131', 'lich-truc-nhat-lop.xlsx', 1),
-    ('2026-09-12 15:05', 'SV240317', 'the-dang-ky-thu-vien.pdf', 1),     # Hoài có in, nhưng không phải thư
-    ('2026-09-13 20:15', 'SV240228', 'bai-tap-kinh-te-vi-mo.pdf', 6),    # Hiếu in bài tập tối CN
-    ('2026-09-13 21:02', 'SV240201', 'slide-nguyen-ly-ke-toan.pdf', 12),
-    ('2026-09-13 22:47', 'SV220118', 'do-an-mon-hoc.pdf', 30),
-    ('2026-09-13 23:10', 'SV210745', 'kien-nghi-phong-clb.docx', 1),     # THƯ: tài khoản khóa 2021 = năm 4
-    ('2026-09-13 23:18', 'SV240146', 'bao-cao-nhom-kinh-te-vi-mo.pdf', 4),  # nhiễu: cùng đêm, là bài tập
-    ('2026-09-14 07:30', 'SV240122', 'danh-sach-lop-BC24A.xlsx', 1),
-    ('2026-09-14 08:05', 'SV210745', 'don-xin-xuong-thuc-hanh.docx', 2),  # đơn Robotics, cùng tài khoản
+    ('2024-09-14 09:40', 'SV240131', 'lich-truc-nhat-lop.xlsx', 1),
+    ('2024-09-14 15:05', 'SV240317', 'the-dang-ky-thu-vien.pdf', 1),     # Hoài có in, nhưng không phải thư
+    ('2024-09-15 20:15', 'SV240228', 'bai-tap-kinh-te-vi-mo.pdf', 6),    # Hiếu in bài tập tối CN
+    ('2024-09-15 21:02', 'SV240201', 'slide-nguyen-ly-ke-toan.pdf', 12),
+    ('2024-09-15 22:47', 'SV220118', 'do-an-mon-hoc.pdf', 30),
+    ('2024-09-15 23:10', 'SV210745', 'kien-nghi-phong-clb.docx', 1),     # THƯ: tài khoản khóa 2021 = năm 4
+    ('2024-09-15 23:18', 'SV240146', 'bao-cao-nhom-kinh-te-vi-mo.pdf', 4),  # nhiễu: cùng đêm, là bài tập
+    ('2024-09-16 07:30', 'SV240122', 'danh-sach-lop-BC24A.xlsx', 1),
+    ('2024-09-16 08:05', 'SV210745', 'don-xin-xuong-thuc-hanh.docx', 2),  # đơn Robotics, cùng tài khoản
 ]
 db.executemany('INSERT INTO nhat_ky_in VALUES(?,?,?,?)', IN)
 
@@ -45,10 +45,10 @@ TRUY_VAN = [
     ('ten bắt đầu H', "SELECT ma_sv, ten FROM sinh_vien WHERE ma_lop='BC24A' AND ten LIKE 'H%'"),
     ('bẫy cột ho_dem', "SELECT ho_dem, ten FROM sinh_vien WHERE ma_lop='BC24A' AND ho_dem LIKE 'H%'"),
     # phòng máy: nhật ký in
-    ('in: hai mã đêm CN', "SELECT * FROM nhat_ky_in WHERE tai_khoan IN ('SV240228','SV240317') AND thoi_diem LIKE '2026-09-13%'"),
+    ('in: hai mã đêm CN', "SELECT * FROM nhat_ky_in WHERE tai_khoan IN ('SV240228','SV240317') AND thoi_diem LIKE '2024-09-15%'"),
     ('in: hai mã + tệp kiến nghị', "SELECT * FROM nhat_ky_in WHERE tai_khoan IN ('SV240228','SV240317') AND ten_tep LIKE '%kien-nghi%'"),
     ('in: tệp kiến nghị', "SELECT * FROM nhat_ky_in WHERE ten_tep LIKE '%kien-nghi%'"),
-    ('in: nhiễu đêm CN sau 23h', "SELECT * FROM nhat_ky_in WHERE thoi_diem >= '2026-09-13 23:00' AND thoi_diem < '2026-09-14'"),
+    ('in: nhiễu đêm CN sau 23h', "SELECT * FROM nhat_ky_in WHERE thoi_diem >= '2024-09-15 23:00' AND thoi_diem < '2024-09-16'"),
     ('in: tài khoản khóa 2021', "SELECT * FROM nhat_ky_in WHERE tai_khoan LIKE 'SV21%'"),
     # buổi họp: câu của Quân
     ('Quân OR', "SELECT ma_sv FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop='BC24A'"),

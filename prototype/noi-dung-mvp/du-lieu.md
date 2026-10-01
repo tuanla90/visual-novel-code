@@ -1,7 +1,7 @@
 # Dữ liệu Vụ 1 — bộ cố định {dữ liệu: vu1}
 
 <!-- Bộ dữ liệu SQL CỐ ĐỊNH của Vụ 1 (QĐ-087, QĐ-089: chưa làm dữ liệu ngẫu nhiên). Chép nguyên từ
-     docs/mvp/kiem-du-lieu-vu1.py (11 lớp, 26 sinh viên). QĐ-092 thêm 3 lớp khác khóa (BC23A, KT25A, QT23A — KHÔNG có sinh viên)
+     docs/mvp/kiem-du-lieu-vu1.py (11 lớp, 26 sinh viên). QĐ-092 thêm 3 lớp khác khóa (BC23A, KT22A, QT23A — KHÔNG có sinh viên)
      cho bài lọc số / ghép 3 điều kiện ngày 2; không đổi bảng ảo tra_cuu_k24, câu 14 dòng của Quân, bẫy ngày 4. `npm run kiem-noi-dung:mvp` nạp bảng này vào SQLite
      (sql.js) rồi chạy từng câu SQL có khai số dòng trong kịch bản ([LỌC THỬ], [MÀN CHIẾU … · n dòng],
      "Số dòng kỳ vọng" của thẻ thử thách): số dòng khai lệch kết quả thật là lỗi. Cú pháp: đặc tả §18.10. -->
@@ -23,7 +23,7 @@
 | CT24A | Công nghệ thông tin | 2024 | A |
 | TM24A | Thương mại điện tử | 2024 | C |
 | BC23A | Báo chí | 2023 | B |
-| KT25A | Kế toán | 2025 | A |
+| KT22A | Kế toán | 2022 | A |
 | QT23A | Quản trị kinh doanh | 2023 | C |
 
 ## sinh_vien {bảng}
@@ -65,19 +65,20 @@
 
 <!-- Chương 1, ngày 4 (ĐÃ CHỐT C, 30/09/2026): nhật ký máy in phòng máy, mở bằng phiếu tra cứu thứ hai. Chép từ
      docs/mvp/kiem-bang-vu1.py. Thư: SV210745 (khóa 2021 = năm 4) in kien-nghi-phong-clb.docx lúc 23:10 Chủ nhật;
-     Hoài và Hiếu đều có in nhưng không phải thư; SV240146 in bài tập 23:18 là nhiễu. -->
+     Hoài và Hiếu đều có in nhưng không phải thư; SV240146 in bài tập 23:18 là nhiễu. Ngày theo lịch thật năm 2024
+     (lich.md "Ngày mở đầu"): 14/09 thứ Bảy (Ngày hội), 15/09 Chủ nhật, 16/09 thứ Hai (sáng nộp thư, 16h phòng CLB). -->
 
 | thoi_diem | tai_khoan | ten_tep | so_trang |
 |---|---|---|---|
-| 2026-09-12 09:40 | SV240131 | lich-truc-nhat-lop.xlsx | 1 |
-| 2026-09-12 15:05 | SV240317 | the-dang-ky-thu-vien.pdf | 1 |
-| 2026-09-13 20:15 | SV240228 | bai-tap-kinh-te-vi-mo.pdf | 6 |
-| 2026-09-13 21:02 | SV240201 | slide-nguyen-ly-ke-toan.pdf | 12 |
-| 2026-09-13 22:47 | SV220118 | do-an-mon-hoc.pdf | 30 |
-| 2026-09-13 23:10 | SV210745 | kien-nghi-phong-clb.docx | 1 |
-| 2026-09-13 23:18 | SV240146 | bao-cao-nhom-kinh-te-vi-mo.pdf | 4 |
-| 2026-09-14 07:30 | SV240122 | danh-sach-lop-BC24A.xlsx | 1 |
-| 2026-09-14 08:05 | SV210745 | don-xin-xuong-thuc-hanh.docx | 2 |
+| 2024-09-14 09:40 | SV240131 | lich-truc-nhat-lop.xlsx | 1 |
+| 2024-09-14 15:05 | SV240317 | the-dang-ky-thu-vien.pdf | 1 |
+| 2024-09-15 20:15 | SV240228 | bai-tap-kinh-te-vi-mo.pdf | 6 |
+| 2024-09-15 21:02 | SV240201 | slide-nguyen-ly-ke-toan.pdf | 12 |
+| 2024-09-15 22:47 | SV220118 | do-an-mon-hoc.pdf | 30 |
+| 2024-09-15 23:10 | SV210745 | kien-nghi-phong-clb.docx | 1 |
+| 2024-09-15 23:18 | SV240146 | bao-cao-nhom-kinh-te-vi-mo.pdf | 4 |
+| 2024-09-16 07:30 | SV240122 | danh-sach-lop-BC24A.xlsx | 1 |
+| 2024-09-16 08:05 | SV210745 | don-xin-xuong-thuc-hanh.docx | 2 |
 
 ## tra_cuu_k24 {bảng ảo}
 - Ghi chú: Danh sách tra cứu tân sinh viên K24 phát ở Ngày hội (mã, họ tên, ngành), lấy từ cùng dữ liệu.

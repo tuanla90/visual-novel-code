@@ -97,6 +97,6 @@ describe('phản ứng sau khi chạy (dòng "Khi …" của thẻ)', () => {
     const inAn = KB.thuThach['c-in'];
     if (!inAn) throw new Error('thiếu thẻ c-in');
     const kq = await chaySql(DU_LIEU, inAn.sqlChuan);
-    expect(kq.ok && kq.dong).toEqual([['2026-09-13 23:10', 'SV210745', 'kien-nghi-phong-clb.docx', 1]]);
+    expect(kq.ok && kq.dong).toEqual([['2024-09-15 23:10', 'SV210745', 'kien-nghi-phong-clb.docx', 1]]);
   });
 });

@@ -6,7 +6,7 @@
 > NHIỆM VỤ: Tìm đường vào ký túc xá
 
 ## md-00-xe-buyt.2
-- [THẺ CHỮ] **narrator**: Chủ nhật, ngày nhận phòng
+- [THẺ CHỮ] **narrator**: Chủ nhật, 08/09/2024 · Đại học Chấn Hưng
 - [DÀN DỰNG] Xe buýt vừa chạy khỏi trạm; người chơi đứng trên vỉa hè cạnh vali. Nền: cổng hai trụ, thanh chắn, tòa mái ngói đỏ bên trái, tòa kính bên phải.
 - **narrator**: Xe buýt dừng trước cổng trường. Cửa vừa mở, hơi nóng đầu giờ chiều hắt thẳng vào mặt.
 - **player**: (Phòng 408. Cơ mà ký túc xá nằm đâu thì thông báo không ghi…)
