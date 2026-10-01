@@ -31,7 +31,7 @@ export interface PhongTraMvpProps {
   onXong: (dung: string[], phieu?: import('../../engine/trang-thai').PhieuTruyVanMvp, ghiChu?: import('../../engine/trang-thai').GhiChuTruyVanMvp[]) => void;
 }
 
-type Pha = { ten: 'bang' } | { ten: 'may' } | { ten: 'ghim'; dung: string[]; phieu?: import('../../engine/trang-thai').PhieuTruyVanMvp; ghiChu?: import('../../engine/trang-thai').GhiChuTruyVanMvp[] };
+type Pha = { ten: 'bang' } | { ten: 'may' } | { ten: 'ghim'; id: string; dung: string[]; phieu?: import('../../engine/trang-thai').PhieuTruyVanMvp; ghiChu?: import('../../engine/trang-thai').GhiChuTruyVanMvp[] };
 
 export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, onDoiCho, onXong }: PhongTraMvpProps) {
   const laPhongMay = noi !== undefined && /phòng máy/i.test(noi);
@@ -45,10 +45,10 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
   const nguonDuocChon = the.nguon ? nguonTongHop.filter((nguon) => nguon.id === the.nguon) : nguonTongHop;
 
   const hoanTatTongHop = (ketQua: KetQuaTraTongHop): void => {
-    if (!the.vatChung) return;
+    const id = the.vatChung?.id ?? `query-${the.id}`;
     const phieu = {
-      id: the.vatChung.id,
-      nhan: the.vatChung.title,
+      id,
+      nhan: the.vatChung?.title ?? the.tieuDe,
       sql: ketQua.sql,
       cot: ketQua.cot.map((ten, i) => ({
         ten,
@@ -61,9 +61,9 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
     const ghiChu = ketQua.selectedNoteColumn && ketQua.noteValues
       ? [{ id: `${phieu.id}-note-${ketQua.selectedNoteColumn}`, nhan: `${phieu.nhan} · ${ketQua.selectedNoteColumn}`, cot: ketQua.selectedNoteColumn, giaTri: ketQua.noteValues.map((v) => String(v ?? '')), nguonId: phieu.id }]
       : [];
-    if (mode === 'challenge' && the.vatChung) {
+    if (mode === 'challenge') {
       soundEngine.playSfx('clue_unlock');
-      setPha({ ten: 'ghim', dung: [], phieu, ghiChu });
+      setPha({ ten: 'ghim', id, dung: [], phieu, ghiChu });
     } else onXong([], phieu, ghiChu);
   };
 
@@ -86,10 +86,10 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
       </div>
     );
   }
-  if (pha.ten === 'ghim' && the.vatChung) {
+  if (pha.ten === 'ghim') {
     return (
       <div className="phong-tra" data-pha="ghim">
-        <BangGhimMvp kb={kb} s={s} dienTen={dienTen} them={{ id: the.vatChung.id, dung: pha.dung, ...(pha.phieu ? { phieu: pha.phieu } : {}), ...(pha.ghiChu ? { ghiChu: pha.ghiChu } : {}) }} moi={the.vatChung.id} onDoiCho={onDoiCho}>
+        <BangGhimMvp kb={kb} s={s} dienTen={dienTen} them={{ id: pha.id, dung: pha.dung, ...(pha.phieu ? { phieu: pha.phieu } : {}), ...(pha.ghiChu ? { ghiChu: pha.ghiChu } : {}) }} moi={pha.id} onDoiCho={onDoiCho}>
           <button
             type="button"
             className="bang__mo-may bang__mo-may--tiep"
@@ -125,7 +125,7 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
             : undefined;
           if (the.vatChung && mode !== 'fix-query') {
             soundEngine.playSfx('clue_unlock');
-            setPha({ ten: 'ghim', dung, ...(phieu ? { phieu } : {}) });
+            setPha({ ten: 'ghim', id: the.vatChung.id, dung, ...(phieu ? { phieu } : {}) });
           } else if (phieu) onXong(dung, phieu);
           else onXong(dung);
         }}

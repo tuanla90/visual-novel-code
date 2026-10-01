@@ -135,6 +135,8 @@ export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; d
   for (const id of s.hoSo.taiLieu) themThe(id);
   for (const id of s.hoSo.manhMoi) themThe(id);
   for (const id of s.hoSo.bangChung) themThe(id);
+  // Phiếu tổng hợp là thẻ gợi ý động, không nhập vào hồ sơ bằng chứng.
+  for (const id of Object.keys(s.bang?.phieuTruyVan ?? {})) themThe(id);
   if (them) themThe(them.id);
 
   // Phiếu truy vấn đã ghim sinh note kéo được; note không nhập vào hồ sơ/bằng chứng.
