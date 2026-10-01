@@ -24,7 +24,7 @@ SELECT ma_bai, ngay, buoi, thiet_bi FROM bai_dang_kenh WHERE kenh = 'clb_robotic
 - Nguồn: ev-bai-dang
 - Nhóm theo: thiet_bi
 - Tiêu đề: Bài đăng nhóm theo thiết bị
-- Đề bài hiển thị: Lấy phiếu chín bài làm nguồn. Nhóm theo thiết bị gửi, đếm mỗi nhóm bao nhiêu bài.
+- Đề bài hiển thị: Lấy phiếu chín bài làm nguồn. Gom theo thiết bị gửi, đếm mỗi nhóm bao nhiêu bài: kênh này hay đăng từ đâu?
 - Mục tiêu học: Nhóm và đếm (GROUP BY, COUNT): cách nhóm quyết định mình thấy gì.
 - Số dòng kỳ vọng: 2
 - SQL chuẩn:
@@ -40,7 +40,7 @@ SELECT thiet_bi, COUNT(*) AS so_dong FROM @ev-bai-dang GROUP BY thiet_bi;
 ### c-nam-thu-vien — Nam vào thư viện những ngày nào? {challenge: c-nam-thu-vien}
 
 - Tiêu đề: Bản ghi quẹt thẻ thư viện
-- Đề bài hiển thị: Bản ghi quẹt thẻ do chính Nam và Hà Vy xin thư viện in ra. Nam vào thư viện những ngày nào?
+- Đề bài hiển thị: Bản ghi cửa từ thư viện do chính Nam và Hà Vy tải về từ cổng sinh viên, gộp chung một tệp. Nam vào thư viện những ngày nào?
 - Manh mối liên quan: clue-ten-nam
 - Mục tiêu học: Lọc theo tên để ghim thành phiếu riêng của một người.
 - Số dòng kỳ vọng: 5
@@ -55,13 +55,13 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Nam';
   - Tiêu đề: Năm lần Nam quẹt thẻ thư viện
   - Mô tả: Kết quả truy vấn: năm lần Nam vào thư viện trong tháng 9 và 10, có ngày, thứ, giờ vào, giờ ra.
 
-### c-nam-thu — Nam hay vào thư viện vào thứ mấy? {challenge: c-nam-thu}
+### c-nam-thu — Nam quẹt thẻ thư viện vào thứ mấy nhiều nhất, mấy lần? {challenge: c-nam-thu}
 
 - Kiểu: tổng hợp
 - Nguồn: ev-nam-thu-vien
 - Nhóm theo: thu
 - Tiêu đề: Thói quen của Nam, nhóm theo thứ
-- Đề bài hiển thị: Lấy phiếu năm lần làm nguồn. Nhóm theo thứ, đếm mỗi thứ mấy lần.
+- Đề bài hiển thị: Lấy phiếu năm lần làm nguồn. Gom theo thứ trong tuần, đếm mỗi thứ mấy lần: Nam hay đi thư viện vào thứ mấy?
 - Mục tiêu học: Nhóm theo thứ trong tuần: thói quen là thứ đếm được.
 - Số dòng kỳ vọng: 2
 - SQL chuẩn:
@@ -97,7 +97,7 @@ SELECT ten, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ngay = '2024-10-07';
 - Tiêu đề: Bản ghi quẹt thẻ của Hà Vy
 - Đề bài hiển thị: Hà Vy vào thư viện những ngày nào?
 - Manh mối liên quan: clue-ten-vy
-- Mục tiêu học: Ôn lọc theo tên; thói quen của người làm chứng cũng phải đếm được.
+- Mục tiêu học: Ôn lọc theo tên; thói quen của người làm chứng cũng phải đếm được (thẻ hỗ trợ ở đối chất).
 - Số dòng kỳ vọng: 5
 - SQL chuẩn:
 

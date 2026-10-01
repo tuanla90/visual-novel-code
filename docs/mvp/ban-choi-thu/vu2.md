@@ -1,6 +1,6 @@
 # Vụ: Tin đồn
 
-Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từng câu; "🗂️" là thẻ vào hồ sơ (cũng ghim lên bảng điều tra); "💻" là màn tra dữ liệu trên laptop; "❓" là câu hỏi nhiều lựa chọn; "🔀" là rẽ nhánh do người chơi chọn.
+Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từng câu; "🗂️" là thẻ vào hồ sơ (cũng ghim lên bảng điều tra); "💻" là màn tra dữ liệu trên laptop; "❓" là câu hỏi nhiều lựa chọn; "🔀" là rẽ nhánh do người chơi chọn; "⤵" là rẽ tự động theo cờ (hai đường loại trừ nhau — bản này in CẢ HAI để bạn đọc, người chơi chỉ đi một). Mỗi chuỗi chỉ in một lần; gặp "*(tiếp theo như chuỗi … đã in ở trên)*" thì quay lên đọc.
 
 ## 📍 Phòng CLB — Tin đồn về CLB; lọc các tin mang câu đó
 
@@ -139,7 +139,7 @@ Kết quả: 2 dòng
 | MAY-VP-XUONG | 22:31 |
 Lời nhân vật sau mỗi lần chạy:
 - Khi ra 0 dòng: **Hà Vy** (thinking): Không dòng nào. Giá trị này có đang nằm đúng cột của nó không nhỉ?
-- Khi ra 3 dòng: **Hà Vy** (thinking): Ba dòng. Vẫn còn dòng không thuộc đúng tài khoản ấy, hoặc không đúng ngày ấy.
+- Khi ra 3 dòng: **Hà Vy** (thinking): Ba dòng. Bảng này ghi cả đăng nhập của tài khoản cá nhân khác, và cả ngày khác. Mình cần đúng tài khoản kênh, đúng ngày mùng 7.
 - Khi ra 5 dòng: **Tùng** (gai-dau): Cả năm lần đăng nhập của mọi tài khoản.
 - Khi đúng: **Hà Vy** (neutral): Hai lần trong ngày mùng 7. 15 giờ 10 từ máy xưởng số 2, 22 giờ 31 từ máy văn phòng xưởng.
 > 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Hai lần đăng nhập ngày 07/10** — Kết quả truy vấn: tài khoản clb_robotics đăng nhập 15:10 từ máy xưởng số 2 và 22:31 từ máy văn phòng xưởng. Tin gốc gửi lúc 22:40. Phiếu cho biết máy nào, chưa cho biết ai ngồi máy.
@@ -147,32 +147,32 @@ Lời nhân vật sau mỗi lần chạy:
 - **Bạn (người chơi)**: Ngày mùng 7 có hai lần. 15 giờ 10 từ máy xưởng số 2. 22 giờ 31 từ máy văn phòng xưởng.
 - **Nam** (neutral): Lần buổi chiều là tớ, tớ hay ngồi máy số 2. Lần buổi tối thì không phải tớ. Phòng văn phòng là phòng riêng, thường khóa, chìa thì ban chủ nhiệm giữ. Tớ có vào đó bao giờ đâu.
 - **Hà Vy** (thinking): Đăng nhập 22:31, tin gửi 22:40. Khớp giờ. Nhưng mới biết máy nào, chưa biết ai ngồi máy.
-> (nếu có ev-tin-xuong → sang "Đã xem bảng xưởng rồi mới xem nhật ký: Tùng đối chiếu hai nguồn")
+> ⤵ RẼ TỰ ĐỘNG: nếu có ev-tin-xuong thì sang "Đã xem bảng xưởng rồi mới xem nhật ký: Tùng đối chiếu hai nguồn" (in ở dưới); nếu KHÔNG thì chạy tiếp các dòng ngay sau đây. Hai đường loại trừ nhau, người chơi chỉ thấy một.
 > 🔀 Hà Vy: "Còn chỗ thứ hai Nam chỉ: bảng đăng ký dùng xưởng. Xem nốt, hay về báo chị Minh Anh?"
 >   - Ra cửa xem nốt bảng đăng ký.
 >   - Về báo chị Minh Anh.
 
-*— Nếu có ev-tin-xuong —*
+*— Chỉ khi có ev-tin-xuong (đường rẽ tự động ở trên) —*
 
 ##### 📍 Xưởng CLB Robotics — Đã xem bảng xưởng rồi mới xem nhật ký: Tùng đối chiếu hai nguồn
 
 - **Tùng** (chi-tay): Khoan! Bảng xưởng ghi tối đó đội thi đấu tập tới 23 giờ, cậu bảo cậu về sớm. Mà 22 giờ 31 tài khoản của cậu đăng nhập ngay trong phòng văn phòng xưởng. Giải thích đi!
 - **Nam** (neutral): …Tài khoản của kênh, không phải của tớ. Tớ về trước 22 giờ. Phòng văn phòng thường khóa, chìa ban chủ nhiệm giữ, tớ không có.
-- **Hà Vy** (thinking): Hai nguồn khớp nhau ở một chỗ: 22 giờ 31, máy văn phòng xưởng, lúc xưởng đang mở. Chúng không nói ai ngồi đó. Tùng, cậu đang ghép hai bảng với một người, mà bảng nào cũng không có tên người.
+- **Hà Vy** (thinking): Hai nguồn khớp nhau ở một chỗ: 22 giờ 31, máy văn phòng xưởng, trong khung giờ lịch ghi xưởng đăng ký tới 23 giờ. Lịch là đăng ký, không phải điểm danh. Tùng, cậu đang ghép hai bảng với một người, mà bảng nào cũng không có tên người.
 - **Tùng** (gai-dau): …Ừ thì chưa có tên.
 
 ###### 📍 Phòng CLB — Về phòng CLB báo lại
 
-> (nếu (có ev-tin-may và có ev-tin-xuong) → sang "Về phòng CLB báo lại, đủ hai hướng")
+> ⤵ RẼ TỰ ĐỘNG: nếu (có ev-tin-may và có ev-tin-xuong) thì sang "Về phòng CLB báo lại, đủ hai hướng" (in ở dưới); nếu KHÔNG thì chạy tiếp các dòng ngay sau đây. Hai đường loại trừ nhau, người chơi chỉ thấy một.
 - **Minh Anh** (neutral): Thế nào rồi?
 - **Bạn (người chơi)**: Tin gốc gửi lúc 22:40 tối thứ Hai, từ tài khoản kênh của CLB Robotics ạ.
 - **Hà Vy** (neutral): Nam nói ra hai chỗ kiểm được. Bọn em mới xem một, chỗ kia chưa xem.
 - **Minh Anh** (khoanh-tay): Một nguồn thì chị chưa nói với cô Lan được. Nói có sách, mách có chứng: chứng phải hai. Các em quay lại xưởng, xem nốt chỗ kia rồi về.
 - **Tùng** (gai-dau): Biết thế xem luôn cho rồi.
 > (máy đặt cờ tin-ve-som)
-> (nếu có ev-tin-may → sang "Tuyến hiện trường: bảng đăng ký dùng xưởng")
+> ⤵ RẼ TỰ ĐỘNG: nếu có ev-tin-may thì sang "Tuyến hiện trường: bảng đăng ký dùng xưởng" (in ở dưới); nếu KHÔNG thì chạy tiếp các dòng ngay sau đây. Hai đường loại trừ nhau, người chơi chỉ thấy một.
 
-*— Nếu (có ev-tin-may và có ev-tin-xuong) —*
+*— Chỉ khi (có ev-tin-may và có ev-tin-xuong) (đường rẽ tự động ở trên) —*
 
 ###### 📍 Phòng CLB — Về phòng CLB báo lại, đủ hai hướng
 
@@ -181,7 +181,7 @@ Lời nhân vật sau mỗi lần chạy:
 - **Hà Vy** (smile): Nam nói ra hai chỗ kiểm được, bọn em xem cả hai. Giờ và chỗ khớp nhau, còn tên người thì không nguồn nào có.
 - **Minh Anh** (neutral): Hai nguồn riêng cùng khớp. Đến đây dữ liệu dừng, không phải mình non. Muốn biết ai ngồi máy thì phải hỏi người, không hỏi bảng. Cái nguyên tắc "kiểm hai lần" ấy chị học từ sổ chị Linh để lại.
 - **Duy** (neutral): Nhắc mới nhớ. Trang "Kiểm hai lần" trong sổ… khoan đã.
-> (nếu có tin-ve-som → sang "Nói chắc được điều gì; cả nhóm bắt đầu chia ý về Nam")
+> ⤵ RẼ TỰ ĐỘNG: nếu có tin-ve-som thì sang "Nói chắc được điều gì; cả nhóm bắt đầu chia ý về Nam" (in ở dưới); nếu KHÔNG thì chạy tiếp các dòng ngay sau đây. Hai đường loại trừ nhau, người chơi chỉ thấy một.
 > 🗂️ Giấy nhớ mới: **[Lời nhắn chị Linh, mẩu thứ hai]** — nguồn: Sổ tự học của chị Linh, phòng CLB
 > Chữ chị Linh: "Sổ này chị chép lại từ một cuốn cũ hơn. Cuốn cũ không phải của chị."
 - **Duy** (neutral): Kẹp ở trang "Kiểm hai lần". Một mẩu giấy, chữ chị Linh.
@@ -189,7 +189,7 @@ Lời nhân vật sau mỗi lần chạy:
 - **Tùng** (surprised): Thế cuốn cũ là của ai?
 - **Hà Vy** (thinking): Chưa biết. Cất vào hồ sơ đã.
 
-*— Nếu có tin-ve-som —*
+*— Chỉ khi có tin-ve-som (đường rẽ tự động ở trên) —*
 
 ###### 📍 Phòng CLB — Nói chắc được điều gì; cả nhóm bắt đầu chia ý về Nam
 
@@ -207,7 +207,7 @@ Lời nhân vật sau mỗi lần chạy:
 
 *(tiếp theo như chuỗi "Nói chắc được điều gì; cả nhóm bắt đầu chia ý về Nam" đã in ở trên)*
 
-*— Nếu có ev-tin-may —*
+*— Chỉ khi có ev-tin-may (đường rẽ tự động ở trên) —*
 
 ###### 📍 Xưởng CLB Robotics — Tuyến hiện trường: bảng đăng ký dùng xưởng
 
@@ -251,18 +251,18 @@ Lời nhân vật sau mỗi lần chạy:
 - **Tùng** (gai-dau): Về sớm thì ai làm chứng cho cậu?
 - **Nam** (neutral): Bọn nó cắm mặt hàn mạch, có ai ngẩng lên xem tớ về lúc nào. Với lại máy văn phòng đặt trong phòng riêng, thường khóa. Chìa do ban chủ nhiệm giữ, thành viên như tớ không có quyền đụng vào. Tớ về rồi thì ai vào đó ngồi, tớ chịu.
 - **Hà Vy** (thinking): Tối đó xưởng có người tới 23 giờ, tin gửi 22:40. Nhưng đây là lịch đăng ký. Đăng ký chưa chắc là có mặt, có mặt cũng chưa chắc là ngồi máy, và ngồi máy trong phòng khóa thì phải có chìa.
-> (nếu có ev-tin-may → sang "Đã xem nhật ký rồi mới xem bảng xưởng: Tùng đối chiếu hai nguồn")
+> ⤵ RẼ TỰ ĐỘNG: nếu có ev-tin-may thì sang "Đã xem nhật ký rồi mới xem bảng xưởng: Tùng đối chiếu hai nguồn" (in ở dưới); nếu KHÔNG thì chạy tiếp các dòng ngay sau đây. Hai đường loại trừ nhau, người chơi chỉ thấy một.
 > 🔀 Hà Vy: "Còn chỗ thứ nhất Nam chỉ: nhật ký đăng nhập của kênh. Xem nốt, hay về báo chị Minh Anh?"
 >   - Xem nốt nhật ký đăng nhập.
 >   - Về báo chị Minh Anh.
 
-*— Nếu có ev-tin-may —*
+*— Chỉ khi có ev-tin-may (đường rẽ tự động ở trên) —*
 
 ###### 📍 Xưởng CLB Robotics — Đã xem nhật ký rồi mới xem bảng xưởng: Tùng đối chiếu hai nguồn
 
 - **Tùng** (chi-tay): Khoan! Nhật ký kênh ghi 22 giờ 31 tài khoản đăng nhập từ máy văn phòng xưởng. Giờ bảng này ghi tối đó xưởng mở tới 23 giờ cho đội tập. Cậu bảo cậu về sớm?
 - **Nam** (neutral): Về trước 22 giờ. Còn phòng văn phòng thì thường khóa, chìa ban chủ nhiệm giữ, tớ không có.
-- **Hà Vy** (thinking): Hai nguồn khớp nhau ở một chỗ: 22 giờ 31, máy văn phòng xưởng, lúc xưởng đang mở. Chúng không nói ai ngồi đó. Tùng, cậu đang ghép hai bảng với một người, mà bảng nào cũng không có tên người.
+- **Hà Vy** (thinking): Hai nguồn khớp nhau ở một chỗ: 22 giờ 31, máy văn phòng xưởng, trong khung giờ lịch ghi xưởng đăng ký tới 23 giờ. Lịch là đăng ký, không phải điểm danh. Tùng, cậu đang ghép hai bảng với một người, mà bảng nào cũng không có tên người.
 - **Tùng** (gai-dau): …Ừ thì chưa có tên.
 
 *(tiếp theo như chuỗi "Về phòng CLB báo lại" đã in ở trên)*

@@ -61,7 +61,7 @@
 ## tin-may-doi-chieu.1
 - **tung** (chi-tay): Khoan! Bảng xưởng ghi tối đó đội thi đấu tập tới 23 giờ, cậu bảo cậu về sớm. Mà 22 giờ 31 tài khoản của cậu đăng nhập ngay trong phòng văn phòng xưởng. Giải thích đi!
 - **nam** (neutral): …Tài khoản của kênh, không phải của tớ. Tớ về trước 22 giờ. Phòng văn phòng thường khóa, chìa ban chủ nhiệm giữ, tớ không có.
-- **ha-vy** (thinking): Hai nguồn khớp nhau ở một chỗ: 22 giờ 31, máy văn phòng xưởng, lúc xưởng đang mở. Chúng không nói ai ngồi đó. Tùng, cậu đang ghép hai bảng với một người, mà bảng nào cũng không có tên người.
+- **ha-vy** (thinking): Hai nguồn khớp nhau ở một chỗ: 22 giờ 31, máy văn phòng xưởng, trong khung giờ lịch ghi xưởng đăng ký tới 23 giờ. Lịch là đăng ký, không phải điểm danh. Tùng, cậu đang ghép hai bảng với một người, mà bảng nào cũng không có tên người.
 - **tung** (gai-dau): …Ừ thì chưa có tên.
 
 ## tin-tuyen-xuong.1
@@ -80,7 +80,7 @@
 ## tin-xuong-doi-chieu.1
 - **tung** (chi-tay): Khoan! Nhật ký kênh ghi 22 giờ 31 tài khoản đăng nhập từ máy văn phòng xưởng. Giờ bảng này ghi tối đó xưởng mở tới 23 giờ cho đội tập. Cậu bảo cậu về sớm?
 - **nam** (neutral): Về trước 22 giờ. Còn phòng văn phòng thì thường khóa, chìa ban chủ nhiệm giữ, tớ không có.
-- **ha-vy** (thinking): Hai nguồn khớp nhau ở một chỗ: 22 giờ 31, máy văn phòng xưởng, lúc xưởng đang mở. Chúng không nói ai ngồi đó. Tùng, cậu đang ghép hai bảng với một người, mà bảng nào cũng không có tên người.
+- **ha-vy** (thinking): Hai nguồn khớp nhau ở một chỗ: 22 giờ 31, máy văn phòng xưởng, trong khung giờ lịch ghi xưởng đăng ký tới 23 giờ. Lịch là đăng ký, không phải điểm danh. Tùng, cậu đang ghép hai bảng với một người, mà bảng nào cũng không có tên người.
 - **tung** (gai-dau): …Ừ thì chưa có tên.
 
 ## tin-ket.1

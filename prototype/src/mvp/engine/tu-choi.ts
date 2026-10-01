@@ -140,7 +140,7 @@ export const reNhanhTheo =
 
 // ---------- Nhảy tới (người quan sát) ----------
 
-export type MaDiemNhayMvp = 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or' | 'vu2-tin-don' | 'vu2-tin-goc' | 'vu3-thiet-bi' | 'vu3-toi-07' | 'vu2-buoi';
+export type MaDiemNhayMvp = 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or' | 'vu2-tin-don' | 'vu2-tin-goc' | 'vu3-thiet-bi' | 'vu3-toi-07' | 'vu4-noi' | 'vu2-buoi';
 
 export interface DiemNhayMvp {
   id: MaDiemNhayMvp;
@@ -170,6 +170,7 @@ export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
   { id: 'vu2-tin-goc', nhan: 'Vụ 2 · Tin gốc (phiếu làm nguồn)', moTa: 'Sau khi gặp Nam: lấy phiếu tin đồn làm nguồn, lọc tiếp ra tin gốc.', toi: dangOThuThach('challenge', 'c-tin-goc') },
   { id: 'vu3-thiet-bi', nhan: 'Vụ 3 · Nhóm bài đăng theo thiết bị', moTa: 'Xưởng Robotics: phiếu chín bài làm nguồn, màn tổng hợp nhóm theo thiết bị và đếm.', toi: dangOThuThach('challenge', 'c-bai-thiet-bi') },
   { id: 'vu3-toi-07', nhan: 'Vụ 3 · Thư viện tối 07/10', moTa: 'Thư viện: lọc đúng ngày trên bản ghi quẹt thẻ, ra Hà Vy và Nam — thẻ đủ căn cứ cho đối chất.', toi: dangOThuThach('challenge', 'c-toi-07') },
+  { id: 'vu4-noi', nhan: 'Vụ 4 · Nối đơn với phiên đăng nhập', moTa: 'Phòng CLB: khối "nối với … theo …" — nối sổ đặt hàng với bảng phiên theo mã phiên, lọc đơn của Nam.', toi: dangOThuThach('challenge', 'c-don-nam-may') },
   { id: 'vu2-buoi', nhan: 'Việc phụ · Bốn buổi đã ký', moTa: 'Duy nhờ sau Vụ 2, laptop phòng CLB: gọt mã phòng (dấu cách, hoa/thường), xếp theo ngày.', toi: dangOThuThach('challenge', 'v2-loc-buoi') },
 ];
 

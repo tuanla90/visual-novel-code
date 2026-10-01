@@ -171,8 +171,8 @@ function chuoi(id: string, sau: number): void {
         }
         break;
       case 'jump-if':
-        out(`> (nếu ${dk(n.dieuKien)} → sang "${kb.chuoi.find((x) => x.id === n.to)?.title ?? n.to}")`);
-        hoan.push({ id: n.to, ghi: `Nếu ${dk(n.dieuKien)}` });
+        out(`> ⤵ RẼ TỰ ĐỘNG: nếu ${dk(n.dieuKien)} thì sang "${kb.chuoi.find((x) => x.id === n.to)?.title ?? n.to}" (in ở dưới); nếu KHÔNG thì chạy tiếp các dòng ngay sau đây. Hai đường loại trừ nhau, người chơi chỉ thấy một.`);
+        hoan.push({ id: n.to, ghi: `Chỉ khi ${dk(n.dieuKien)} (đường rẽ tự động ở trên)` });
         break;
       case 'goto':
         hoan.push({ id: n.to, ghi: '' });
@@ -210,7 +210,7 @@ async function main(): Promise<void> {
   const tieuDe = vu ? `Vụ: ${vu.ten}` : phu ? `Nhiệm vụ phụ: ${phu.ten} (${ten(phu.nguoiGiao)} giao)` : `Chuỗi: ${ma}`;
   out(`# ${tieuDe}`);
   out();
-  out('Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từng câu; "🗂️" là thẻ vào hồ sơ (cũng ghim lên bảng điều tra); "💻" là màn tra dữ liệu trên laptop; "❓" là câu hỏi nhiều lựa chọn; "🔀" là rẽ nhánh do người chơi chọn.');
+  out('Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từng câu; "🗂️" là thẻ vào hồ sơ (cũng ghim lên bảng điều tra); "💻" là màn tra dữ liệu trên laptop; "❓" là câu hỏi nhiều lựa chọn; "🔀" là rẽ nhánh do người chơi chọn; "⤵" là rẽ tự động theo cờ (hai đường loại trừ nhau — bản này in CẢ HAI để bạn đọc, người chơi chỉ đi một). Mỗi chuỗi chỉ in một lần; gặp "*(tiếp theo như chuỗi … đã in ở trên)*" thì quay lên đọc.');
   out();
   chuoi(dau, 0);
   const ket = vu ?? phu;

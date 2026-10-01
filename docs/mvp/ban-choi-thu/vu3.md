@@ -1,6 +1,6 @@
 # Vụ: Tranh cãi trong nhóm
 
-Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từng câu; "🗂️" là thẻ vào hồ sơ (cũng ghim lên bảng điều tra); "💻" là màn tra dữ liệu trên laptop; "❓" là câu hỏi nhiều lựa chọn; "🔀" là rẽ nhánh do người chơi chọn.
+Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từng câu; "🗂️" là thẻ vào hồ sơ (cũng ghim lên bảng điều tra); "💻" là màn tra dữ liệu trên laptop; "❓" là câu hỏi nhiều lựa chọn; "🔀" là rẽ nhánh do người chơi chọn; "⤵" là rẽ tự động theo cờ (hai đường loại trừ nhau — bản này in CẢ HAI để bạn đọc, người chơi chỉ đi một). Mỗi chuỗi chỉ in một lần; gặp "*(tiếp theo như chuỗi … đã in ở trên)*" thì quay lên đọc.
 
 ## 📍 Phòng CLB — Phòng CLB: bốn người, bốn cách đọc một phiếu
 
@@ -16,8 +16,9 @@ Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từ
 - **Bạn (người chơi)**: Đổi cách đếm là đếm cái gì ạ?
 - **Hà Vy** (thinking): Kênh của Robotics đăng bao nhiêu bài trong tháng, từ máy nào, buổi nào. Nếu bài tin đồn khác hẳn thói quen của kênh thì cũng là một điều đáng ghi.
 - **Minh Anh** (neutral): Được. Sang xưởng. Nhưng lần này hỏi thẳng Nam: tối đó cậu ấy ở đâu, có gì chứng minh.
-> 🎯 NHIỆM VỤ: Kênh Robotics tháng 10 đăng bài từ máy nào, buổi nào?
-> 💭 Hà Vy nhắc: Nhóm các bài theo thiết bị gửi. Đếm mỗi nhóm bao nhiêu bài.
+- **Duy** (neutral): Bản xuất bài đăng thì gồm mọi kênh. Lấy riêng bài của kênh Robotics trước, rồi mới gom theo thiết bị mà đếm.
+> 🎯 NHIỆM VỤ: Kênh Robotics tháng 10 hay đăng bài từ thiết bị nào?
+> 💭 Hà Vy nhắc: Chín bài nhìn hoa mắt. Giá mà gom những bài cùng một thiết bị vào một cục rồi đếm.
 
 ### 📍 Xưởng CLB Robotics — Xưởng Robotics: Nam mở bản xuất bài đăng của kênh
 
@@ -74,7 +75,7 @@ Lời nhân vật sau mỗi lần chạy:
 > 🎯 NHIỆM VỤ: Chín bài đó đăng từ những thiết bị nào, mỗi thiết bị mấy bài?
 > 💭 Hà Vy nhắc: Lấy phiếu chín bài làm nguồn, nhóm theo thiết bị.
 ### 💻 Màn tra: Bài đăng nhóm theo thiết bị (thẻ `c-bai-thiet-bi`)
-Đề bài trên màn hình: *Lấy phiếu chín bài làm nguồn. Nhóm theo thiết bị gửi, đếm mỗi nhóm bao nhiêu bài.*
+Đề bài trên màn hình: *Lấy phiếu chín bài làm nguồn. Gom theo thiết bị gửi, đếm mỗi nhóm bao nhiêu bài: kênh này hay đăng từ đâu?*
 Cách chơi: màn TỔNG HỢP — chọn nguồn (phiếu đã ghim `ev-bai-dang`), lọc tùy chọn bằng giấy nhớ, chọn cột để NHÓM; máy đếm số dòng mỗi nhóm (COUNT), có thể tính tổng / trung bình và chỉ giữ nhóm vượt ngưỡng nếu bài cần.
 Giấy nhớ đang có quanh màn hình: [clb_robotics]
 Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
@@ -91,10 +92,10 @@ Kết quả: 2 dòng
 - **Bạn (người chơi)**: Tám bài từ điện thoại trực kênh. Một bài từ máy văn phòng xưởng.
 - **Nam** (neutral): Điện thoại trực là cái tớ giữ. Tớ đăng toàn buổi chiều, bằng cái đó.
 - **Tùng** (worried): Điện thoại cậu giữ thì chứng minh được gì? Hôm đó cậu đổi sang máy bàn thì sao.
-- **Nam** (neutral): Thì tớ đã bảo tối đó tớ ở thư viện. Thẻ thư viện có ghi giờ vào giờ ra. Tớ xin bản ghi của chính tớ được, thư viện cho mỗi người tự xem của mình.
+- **Nam** (neutral): Thì tớ đã bảo tối đó tớ ở thư viện. Cửa từ thư viện ghi giờ vào giờ ra của từng thẻ. Trên cổng sinh viên, ai cũng tải được bản ghi của chính mình. Tớ tải rồi gửi vào nhóm cho các cậu.
 - **Duy** (neutral): Đấy. Một nguồn ngoài kênh. Đi thư viện.
-> 🗂️ Giấy nhớ mới: **[Nam]** — nguồn: Nam xin thư viện in bản ghi quẹt thẻ của chính mình
-> Bản ghi quẹt thẻ ghi tên người quẹt ở cột ten. Thư viện chỉ in cho mỗi người bản ghi của chính họ.
+> 🗂️ Giấy nhớ mới: **[Nam]** — nguồn: Nam tải bản ghi cửa từ của chính mình từ cổng sinh viên
+> Bản ghi cửa từ ghi tên chủ thẻ ở cột ten, giờ vào và giờ ra. Mỗi người chỉ tải được bản của chính mình; Nam và Hà Vy gộp hai bản vào một tệp.
 > (giấy nhớ kéo được vào màn tra: Nam)
 > 🗂️ Giấy nhớ mới: **[Tối 07/10]** — nguồn: Phiếu tin gốc của Vụ 2
 > Tin gốc gửi lúc 22:40 thứ Hai 07/10/2024. Bản ghi thư viện ghi ngày theo dạng năm-tháng-ngày.
@@ -102,12 +103,13 @@ Kết quả: 2 dòng
 
 #### 📍 Thư viện trường — Thư viện: bản ghi quẹt thẻ của chính Nam
 
-- **Người kể**: Thư viện trường, quầy mượn trả. Nam điền phiếu xin bản ghi quẹt thẻ của chính mình trong tháng 9 và tháng 10, cô thủ thư in ra một tờ.
-- **Nam** (neutral): Của tớ đấy. Tên tớ, từng ngày, giờ vào, giờ ra. Lọc ra của tớ rồi xem.
+- **Người kể**: Thư viện trường, bàn cạnh cửa sổ. Nam mở cổng sinh viên trên điện thoại, tải bản ghi cửa từ của chính mình trong tháng 9 và tháng 10, gửi vào nhóm.
+- **Hà Vy** (neutral): Tớ cũng tải bản của tớ, gộp chung vào một tệp cho dễ tra. Tên ai thì ghi tên người đó.
+- **Nam** (neutral): Lọc ra của tớ rồi xem.
 > 🎯 NHIỆM VỤ: Nam vào thư viện những ngày nào?
-> 💭 Hà Vy nhắc: Bản ghi có tên. Lọc đúng tên Nam.
+> 💭 Hà Vy nhắc: Tệp có cả hai tên. Lọc đúng tên Nam.
 ### 💻 Màn tra: Bản ghi quẹt thẻ thư viện (thẻ `c-nam-thu-vien`)
-Đề bài trên màn hình: *Bản ghi quẹt thẻ do chính Nam và Hà Vy xin thư viện in ra. Nam vào thư viện những ngày nào?*
+Đề bài trên màn hình: *Bản ghi cửa từ thư viện do chính Nam và Hà Vy tải về từ cổng sinh viên, gộp chung một tệp. Nam vào thư viện những ngày nào?*
 Cách chơi: kéo giấy nhớ vào ô giá trị, bấm cột / phép ("bằng", "bắt đầu bằng") / VÀ–HOẶC rồi CHẠY. Chạy sai không bị phạt.
 Bảng `quet_the_thu_vien` (10 dòng):
 | ten | ngay | thu | gio_vao | gio_ra |
@@ -142,11 +144,11 @@ Lời nhân vật sau mỗi lần chạy:
 > 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Năm lần Nam quẹt thẻ thư viện** — Kết quả truy vấn: năm lần Nam vào thư viện trong tháng 9 và 10, có ngày, thứ, giờ vào, giờ ra.
 
 - **Bạn (người chơi)**: Năm lần. Ngày với thứ ghi sẵn.
-- **Hà Vy** (thinking): Năm dòng, nhìn là thấy thứ Hai nhiều. Nhưng nhóm theo thứ rồi đếm cho chắc: thói quen là thứ đếm được.
-> 🎯 NHIỆM VỤ: Nam hay vào thư viện vào thứ mấy?
-> 💭 Hà Vy nhắc: Lấy phiếu năm lần làm nguồn, nhóm theo thứ.
+- **Hà Vy** (thinking): Năm dòng, nhìn là thấy thứ Hai nhiều. Nhưng "nhiều" là mấy? Thói quen thì phải đếm được.
+> 🎯 NHIỆM VỤ: Nam quẹt thẻ thư viện vào thứ mấy nhiều nhất, mấy lần?
+> 💭 Hà Vy nhắc: Cùng một cục phiếu, gom theo thứ rồi đếm.
 ### 💻 Màn tra: Thói quen của Nam, nhóm theo thứ (thẻ `c-nam-thu`)
-Đề bài trên màn hình: *Lấy phiếu năm lần làm nguồn. Nhóm theo thứ, đếm mỗi thứ mấy lần.*
+Đề bài trên màn hình: *Lấy phiếu năm lần làm nguồn. Gom theo thứ trong tuần, đếm mỗi thứ mấy lần: Nam hay đi thư viện vào thứ mấy?*
 Cách chơi: màn TỔNG HỢP — chọn nguồn (phiếu đã ghim `ev-nam-thu-vien`), lọc tùy chọn bằng giấy nhớ, chọn cột để NHÓM; máy đếm số dòng mỗi nhóm (COUNT), có thể tính tổng / trung bình và chỉ giữ nhóm vượt ngưỡng nếu bài cần.
 Giấy nhớ đang có quanh màn hình: [clb_robotics] [Nam] [2024-10-07]
 Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
@@ -160,14 +162,14 @@ Kết quả: 2 dòng
 | THU_NAM | 1 |
 > 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Nam: tối thứ Hai 4 lần, thứ Năm 1 lần** — Kết quả nhóm theo thứ: bốn tối thứ Hai liền Nam đều ở thư viện. Một thói quen đếm được; chưa phải bằng chứng cho riêng tối 07/10.
 
-- **Bạn (người chơi)**: Thứ Hai bốn lần. Thứ Năm một lần.
+- **Bạn (người chơi)**: Thứ Hai bốn lần, tối nào có trong tệp cũng thế. Thứ Năm một lần.
 - **Nam** (neutral): Tối thứ Hai thư viện vắng. Tớ ngồi bàn cạnh cửa sổ, làm bài tới khi họ đuổi.
 - **Hà Vy** (thinking): …Bàn cạnh cửa sổ. Tối thứ Hai.
 - **Tùng** (surprised): Sao thế?
 - **Hà Vy** (thinking): Tối thứ Hai nào tớ cũng ở thư viện. Tớ nhớ có một cậu tuần nào cũng tới muộn, ngồi bàn cạnh cửa sổ. Tớ không để ý mặt.
-- **Duy** (neutral): Nhớ thì nhớ. Nhưng tối mùng 7 cụ thể thì bản ghi nói gì? Lọc đúng ngày đó.
+- **Duy** (neutral): Nhớ thì nhớ. Nhưng tối mùng 7 cụ thể thì bản ghi nói gì? Lọc đúng ngày đó, cả hai tên.
 > 🎯 NHIỆM VỤ: Tối 07/10 ai quẹt thẻ, vào và ra lúc mấy giờ?
-> 💭 Hà Vy nhắc: Ngày là mùng 7. Bản ghi của tớ cũng in chung tờ này, cô thủ thư in cả hai vì tớ cũng xin.
+> 💭 Hà Vy nhắc: Ngày là mùng 7. Tệp có cả bản của tớ.
 ### 💻 Màn tra: Thư viện tối 07/10 (thẻ `c-toi-07`)
 Đề bài trên màn hình: *Trên bản ghi quẹt thẻ, tối 07/10 có ai, vào và ra lúc mấy giờ?*
 Cách chơi: kéo giấy nhớ vào ô giá trị, bấm cột / phép ("bằng", "bắt đầu bằng") / VÀ–HOẶC rồi CHẠY. Chạy sai không bị phạt.
@@ -202,19 +204,19 @@ Lời nhân vật sau mỗi lần chạy:
 > 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05** — Kết quả truy vấn: tối 07/10 Hà Vy quẹt thẻ vào 20:00, ra 23:00; Nam vào 21:50, ra 23:05. Tin gốc gửi lúc 22:40. Nguồn độc lập của thư viện, có giờ vào giờ ra.
 
 - **Bạn (người chơi)**: Tối mùng 7 có hai người. Hà Vy vào 20 giờ, ra 23 giờ. Nam vào 21 giờ 50, ra 23 giờ 05.
-- **Hà Vy** (smile): 22 giờ 40 thì cả hai đứa ở thư viện. Tớ ngồi cách Nam hai bàn mà không biết.
-- **Tùng** (gai-dau): Thế là… thói quen của cậu làm chứng cho thói quen của Nam.
-- **Duy** (neutral): Hai thói quen, một tối cụ thể, một bản ghi của thư viện. Đủ ba thứ.
+- **Tùng** (gai-dau): Quẹt vào rồi trèo cửa sổ ra thì sao? Cửa từ chỉ biết lúc vào với lúc ra.
+- **Hà Vy** (smile): Tớ ngồi cách Nam hai bàn. Chuông 22 giờ 30 nhắc sắp đóng cửa, cậu ấy còn đang xếp sách. Tớ nhớ vì tớ cũng đang xếp.
+- **Duy** (neutral): Cửa từ một nguồn, lời Vy một nguồn. Nhưng lời Vy thì ai làm chứng? Thẻ của Vy.
+- **Tùng** (chi-tay): Cậu nhớ nhầm sang hôm khác thì sao? Tối thứ Hai nào chuông chả reo lúc 22 giờ 30.
+- **Hà Vy** (neutral): Tớ không nhầm, vì tối thứ Hai nào tớ cũng ngồi đó, quen tới mức biết hôm nào khác hôm nào. Không tin thì xem bản ghi của tớ.
 - **Nam** (neutral): Tớ đã bảo mà.
-> 🔀 Tùng: "Hà Vy, thế thẻ của cậu đâu? Hay là tớ cũng xin bản của cậu xem tối thứ Hai nào cậu cũng ngồi đấy thật không?"
->   - Xin luôn bản ghi của Hà Vy.
->   - Thôi, về CLB.
+> 🗂️ Giấy nhớ mới: **[Hà Vy]** — nguồn: Hà Vy tải bản ghi cửa từ của chính mình
+> Hà Vy tải bản ghi cửa từ của mình, gộp chung tệp với Nam để lời chứng của mình cũng đếm được.
+> (giấy nhớ kéo được vào màn tra: Hà Vy)
 
-*— Nếu chọn "Xin luôn bản ghi của Hà Vy." —*
+##### 📍 Thư viện trường — Lời chứng cũng phải đếm được: thói quen của Hà Vy
 
-##### 📍 Thư viện trường — Thói quen của Hà Vy, tra cho chắc
-
-- **Hà Vy** (neutral): Xin thì xin. Thói quen của tớ cũng phải đếm được như của Nam.
+- **Hà Vy** (neutral): Được. Lời chứng của tớ cũng phải đếm được như của Nam. Bản của tớ có sẵn trong tệp.
 > 🎯 NHIỆM VỤ: Hà Vy vào thư viện những ngày nào?
 > 💭 Hà Vy nhắc: Lọc đúng tên tớ.
 ### 💻 Màn tra: Bản ghi quẹt thẻ của Hà Vy (thẻ `c-vy-thu-vien`)
@@ -233,7 +235,7 @@ Bảng `quet_the_thu_vien` (10 dòng):
 | Hà Vy | 2024-10-02 | THU_TU | 19:00 | 20:30 |
 | Nam | 2024-10-07 | THU_HAI | 21:50 | 23:05 |
 | Hà Vy | 2024-10-07 | THU_HAI | 20:00 | 23:00 |
-Giấy nhớ đang có quanh màn hình: [clb_robotics] [Nam] [2024-10-07]
+Giấy nhớ đang có quanh màn hình: [clb_robotics] [Nam] [2024-10-07] [Hà Vy]
 Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
 ```sql
 SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
@@ -254,20 +256,21 @@ Lời nhân vật sau mỗi lần chạy:
 
 - **Bạn (người chơi)**: Năm lần. Bốn tối thứ Hai, một tối thứ Tư.
 - **Tùng** (happy): Hai đứa như nhau. Đúng là hai cái máy.
-- **Hà Vy** (neutral): Thói quen đếm được thì mới nói được. Về CLB.
+- **Hà Vy** (neutral): Thói quen đếm được thì lời chứng mới nặng. Về CLB.
 
 ###### 📍 Phòng CLB — Phòng CLB: Tùng nêu giả thuyết, người chơi trình thẻ
 
 - **Người kể**: Phòng CLB. Mọi phiếu đã ghim lên bảng. Minh Anh chờ.
 - **Minh Anh** (serious): Tùng nói trước. Rồi các em trình cái gì có trong hồ sơ.
 > ⚖️ ĐỐI CHẤT — Tùng nêu giả thuyết: "Tài khoản kênh của Robotics gửi tin lúc 22:40. Nam trực kênh. Tối đó xưởng mở, Nam bảo về sớm mà không ai làm chứng. Tớ cá là Nam gửi.". Người chơi trình thẻ trong hồ sơ, hoặc nói "chưa đủ căn cứ".
->   - Trình ev-toi-07 [ĐỦ CĂN CỨ] → **Hà Vy** (neutral): Tối 07/10, thẻ thư viện ghi Nam vào 21:50, ra 23:05. Tin gửi 22:40. Lúc đó Nam ở thư viện. / **Tùng** (surprised): Thẻ thư viện á? / **Hà Vy** (neutral): Và tớ ngồi cách cậu ấy hai bàn. Tối thứ Hai nào tớ cũng ở đó. Tớ nhớ ra rồi. / **Minh Anh** (neutral): Nguồn độc lập, có giờ vào giờ ra. Đủ để không mời Nam lên.
->   - Trình ev-nam-thu [HỖ TRỢ] → **Hà Vy** (thinking): Bốn tối thứ Hai liền Nam đều ở thư viện. Một thói quen. Thói quen thì chưa phải bằng chứng cho đúng tối đó. / **Tùng** (gai-dau): Thì có thể tối đó cậu ấy nghỉ một hôm.
+>   - Trình ev-toi-07 [ĐỦ CĂN CỨ] → **Hà Vy** (neutral): Tối 07/10, cửa từ thư viện ghi Nam vào 21:50, ra 23:05. Tin gửi 22:40. / **Tùng** (surprised): Quẹt vào rồi trèo cửa sổ ra thì sao? / **Hà Vy** (neutral): Tớ ngồi cách cậu ấy hai bàn, cùng tối đó. Tớ nhớ lúc chuông 22 giờ 30 nhắc sắp đóng cửa, cậu ấy còn đang xếp sách. Thẻ của tớ ghi tớ ở đó tới 23 giờ. / **Hà Vy** (neutral): Và máy gửi tin nằm trong phòng văn phòng xưởng, cách thư viện cả một sân trường. / **Minh Anh** (neutral): Cửa từ là nguồn độc lập, có giờ vào giờ ra; lời Vy khớp đúng quãng giữa; chỗ gửi tin thì cách xa. Đủ để không mời Nam lên.
+>   - Trình ev-nam-thu [HỖ TRỢ] → **Hà Vy** (thinking): Bốn tối thứ Hai có trong tệp, tối nào Nam cũng ở thư viện. Một thói quen. Thói quen thì chưa phải bằng chứng cho đúng tối đó. / **Tùng** (gai-dau): Thì có thể tối đó cậu ấy nghỉ một hôm.
+>   - Trình ev-vy-thu-vien [HỖ TRỢ] → **Hà Vy** (neutral): Tối thứ Hai nào tớ cũng ở thư viện, thẻ của tớ ghi thế. Nên lời tớ kể về tối đó không phải nhớ bừa. / **Duy** (neutral): Lời chứng mà đếm được thì nặng hơn lời chứng suông.
 >   - Trình ev-bai-thiet-bi [HỖ TRỢ] → **Hà Vy** (thinking): Tám bài từ điện thoại trực, một bài từ máy văn phòng xưởng. Bài tin đồn khác hẳn thói quen đăng của kênh. / **Tùng** (worried): Khác thói quen thôi. Ai cấm Nam đổi máy một hôm.
 >   - Trình ev-tin-goc [GỢI Ý] → **Tùng** (chi-tay): Chính phiếu này nói tài khoản Robotics gửi. Cậu đang củng cố cho tớ đấy. / **Duy** (neutral): Tài khoản. Chưa phải người.
 >   - Chưa đủ căn cứ → **Minh Anh** (serious): Chưa đủ để nói Nam không làm, cũng chưa đủ để nói Nam làm. Vậy chị mời Nam lên hỏi. / **Duy** (neutral): Mời lên hỏi thì cũng là một nguồn. Nhưng mình đang thiếu nguồn, không phải thiếu người để hỏi.
 >   - Thẻ khác → **Tùng** (worried): Cái này thì liên quan gì tới tối thứ Hai? / **Hà Vy** (thinking): Xem lại hồ sơ đã.
-> (nếu có dc-nam-du → sang "Không mời Nam lên; Tùng xin lỗi; lời nhắn thứ ba của chị Linh")
+> ⤵ RẼ TỰ ĐỘNG: nếu có dc-nam-du thì sang "Không mời Nam lên; Tùng xin lỗi; lời nhắn thứ ba của chị Linh" (in ở dưới); nếu KHÔNG thì chạy tiếp các dòng ngay sau đây. Hai đường loại trừ nhau, người chơi chỉ thấy một.
 - **Minh Anh** (serious): Vậy chị mời Nam lên.
 - **Người kể**: Chiều hôm đó, Nam lên phòng CLB. Không nói nhiều, Nam đặt lên bàn tờ bản ghi quẹt thẻ thư viện của mình.
 - **Nam** (neutral): Tối mùng 7, 21 giờ 50 vào, 23 giờ 05 ra. Các cậu có cả tờ này rồi mà vẫn gọi tớ lên.
@@ -276,21 +279,19 @@ Lời nhân vật sau mỗi lần chạy:
 - **Nam** (neutral): Không sao. Lần sau các cậu đọc kỹ hồ sơ trước đã.
 > (máy đặt cờ v3-moi-nam-len)
 
-*— Nếu có dc-nam-du —*
+*— Chỉ khi có dc-nam-du (đường rẽ tự động ở trên) —*
 
 ###### 📍 Phòng CLB — Không mời Nam lên; Tùng xin lỗi; lời nhắn thứ ba của chị Linh
 
 - **Minh Anh** (neutral): Không mời Nam lên. Chị báo cô Lan: tối đó Nam ở thư viện, có bản ghi và có người cùng ngồi.
-- **Tùng** (gai-dau): Tớ… cá trượt. Mà lần này trượt đau. Tớ xin lỗi Nam vậy.
+- **Tùng** (gai-dau): Khỉ thật… tại cái tài khoản ghi lù lù tên kênh của cậu ấy. Tớ cá trượt, mà lần này trượt đau. Tớ xin lỗi Nam. Lần sau đợi đủ bài mới lật.
 - **Duy** (neutral): Cá thì không sao. Kết tội mới sao.
 - **Hà Vy** (thinking): Tớ cũng suýt nữa. Nhìn tài khoản thấy tên kênh, nhìn kênh thấy người trực. Mỗi bước nhảy một tí là tới một con người.
-> (nếu có ev-vy-thu-vien → sang "Hai thói quen, hai người làm chứng cho nhau: mẩu giấy thứ ba")
-
-*— Nếu có ev-vy-thu-vien —*
+- **Minh Anh** (neutral): Hai nguồn riêng cùng khớp một quãng giờ. Lại là "kiểm hai lần" của chị Linh.
 
 ###### 📍 Phòng CLB — Hai thói quen, hai người làm chứng cho nhau: mẩu giấy thứ ba
 
-- **Duy** (neutral): Hai thói quen làm chứng cho nhau. Chị Linh có ghi chuyện này… trang "Kiểm hai lần". Để tớ xem.
+- **Duy** (neutral): Nhắc mới nhớ. Trang "Kiểm hai lần" ấy… hôm trước có một mẩu, để tớ xem lại.
 > 🗂️ Giấy nhớ mới: **[Lời nhắn chị Linh, mẩu thứ ba]** — nguồn: Sổ tự học của chị Linh, phòng CLB
 > Chữ chị Linh: "Vụ đầu tiên của CLB kết luận sai. Chị tìm ra cuốn sổ ghi lại nó."
 - **Duy** (neutral): Mẩu thứ ba. Chữ chị Linh.
@@ -312,12 +313,6 @@ Lời nhân vật sau mỗi lần chạy:
 > 🏁 KẾT THÚC vụ → màn kết.
 
 *(tiếp theo như chuỗi "Không phải Nam thì là ai?" đã in ở trên)*
-
-*(tiếp theo như chuỗi "Không phải Nam thì là ai?" đã in ở trên)*
-
-*— Nếu chọn "Thôi, về CLB." —*
-
-*(tiếp theo như chuỗi "Phòng CLB: Tùng nêu giả thuyết, người chơi trình thẻ" đã in ở trên)*
 
 ## 🏁 Màn kết
 **Nam ở thư viện lúc tin được gửi** — Bản ghi quẹt thẻ của thư viện và trí nhớ của Hà Vy là hai nguồn riêng, cùng đặt Nam ở thư viện lúc 22:40. Người gửi tin ngồi máy văn phòng xưởng, là ai thì chưa biết.

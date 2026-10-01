@@ -1,0 +1,270 @@
+# Vụ: Giúp Nam
+
+Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từng câu; "🗂️" là thẻ vào hồ sơ (cũng ghim lên bảng điều tra); "💻" là màn tra dữ liệu trên laptop; "❓" là câu hỏi nhiều lựa chọn; "🔀" là rẽ nhánh do người chơi chọn; "⤵" là rẽ tự động theo cờ (hai đường loại trừ nhau — bản này in CẢ HAI để bạn đọc, người chơi chỉ đi một). Mỗi chuỗi chỉ in một lần; gặp "*(tiếp theo như chuỗi … đã in ở trên)*" thì quay lên đọc.
+
+## 📍 Phòng CLB — Nam tới phòng CLB với một rắc rối của chính mình
+
+*[Thẻ chữ]* Vụ 4 — Thứ Hai, 14 tháng 10
+- **Người kể**: Đầu tuần. Lần này không phải nhóm sang xưởng, mà Nam tự tới phòng CLB, tay cầm một tờ giấy.
+- **Nam** (neutral): Các cậu nói đúng. Có người đang mượn tên tớ, mà không phải chỉ cái tin đồn.
+- **Minh Anh** (neutral): Ngồi xuống đã. Chuyện gì?
+- **Nam** (neutral): Hội sinh viên gửi giấy thu hồi đơn linh kiện. Họ nói tớ đứng tên năm đơn trong hai tháng, có đơn gần một triệu. Tớ đặt đúng hai: cảm biến với bánh xe, mấy trăm nghìn.
+> 🗂️ Tài liệu mới: **Giấy thu hồi đơn linh kiện** — nguồn: Nam mang tới phòng CLB
+> Hội sinh viên thông báo thu hồi năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, tổng hơn hai triệu đồng, chờ giải trình.
+> Nam nói mình chỉ đặt hai đơn: cảm biến dò line và bánh xe.
+> 🗂️ Giấy nhớ mới: **[Đã duyệt]** — nguồn: Sổ đặt hàng của xưởng
+> Sổ đặt hàng ghi trạng thái từng đơn ở cột trang_thai: DA_DUYET là đơn đã được duyệt chi, CHO_DUYET là đơn còn chờ.
+> (giấy nhớ kéo được vào màn tra: DA_DUYET)
+- **Tùng** (worried): Ba đơn lạ. Ai đặt?
+- **Nam** (neutral): Đơn đặt trên máy xưởng, ai đăng nhập cũng điền tên người đặt được. Tớ tải sổ đặt hàng của xưởng về đây, chỉ còn các đơn đã duyệt, các cậu xem hộ.
+- **Hà Vy** (thinking): Chưa đọc tên vội. Đếm trước: mỗi người đứng tên mấy đơn, rồi mới xem đơn của Nam.
+> 🎯 NHIỆM VỤ: Sổ đặt hàng của xưởng có những đơn nào đã duyệt?
+> 💭 Hà Vy nhắc: Chỉ lấy đơn đã duyệt. Trạng thái ghi ở cột trang_thai.
+### 💻 Màn tra: Sổ đặt linh kiện của xưởng (thẻ `c-don-da-duyet`)
+Đề bài trên màn hình: *Sổ đặt linh kiện của xưởng Robotics, tháng 9 và 10. Những đơn nào đã duyệt?*
+Cách chơi: kéo giấy nhớ vào ô giá trị, bấm cột / phép ("bằng", "bắt đầu bằng") / VÀ–HOẶC rồi CHẠY. Chạy sai không bị phạt.
+Bảng `don_linh_kien` (10 dòng):
+| ma_don | ngay | nguoi_dat | linh_kien | so_luong | so_tien | ma_phien | trang_thai |
+|---|---|---|---|---|---|---|---|
+| DLK-01 | 2024-09-20 | Nam | Cảm biến dò line | 4 | 120000 | PH-11 | DA_DUYET |
+| DLK-02 | 2024-09-24 | Bách | Pin 18650 | 10 | 200000 | PH-12 | DA_DUYET |
+| DLK-03 | 2024-09-27 | Nam | Động cơ servo | 8 | 800000 | PH-13 | DA_DUYET |
+| DLK-04 | 2024-10-01 | Thảo | Dây nối | 20 | 60000 | PH-14 | DA_DUYET |
+| DLK-05 | 2024-10-02 | Nam | Bánh xe | 6 | 150000 | PH-15 | DA_DUYET |
+| DLK-06 | 2024-10-04 | Nam | Mạch điều khiển | 3 | 900000 | PH-16 | DA_DUYET |
+| DLK-07 | 2024-10-05 | Khánh | Ốc vít | 100 | 40000 | PH-17 | DA_DUYET |
+| DLK-08 | 2024-10-07 | Nam | Bộ khung nhôm | 2 | 700000 | PH-18 | DA_DUYET |
+| DLK-09 | 2024-10-08 | Thảo | Keo dán | 5 | 30000 | PH-19 | CHO_DUYET |
+| DLK-10 | 2024-10-08 | Bách | Mỏ hàn | 2 | 180000 | PH-20 | CHO_DUYET |
+Giấy nhớ đang có quanh màn hình: [DA_DUYET]
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+```sql
+SELECT ma_don, ngay, nguoi_dat, linh_kien, so_tien, ma_phien FROM don_linh_kien WHERE trang_thai = 'DA_DUYET';
+```
+Kết quả: 8 dòng
+| ma_don | ngay | nguoi_dat | linh_kien | so_tien | ma_phien |
+|---|---|---|---|---|---|
+| DLK-01 | 2024-09-20 | Nam | Cảm biến dò line | 120000 | PH-11 |
+| DLK-02 | 2024-09-24 | Bách | Pin 18650 | 200000 | PH-12 |
+| DLK-03 | 2024-09-27 | Nam | Động cơ servo | 800000 | PH-13 |
+| DLK-04 | 2024-10-01 | Thảo | Dây nối | 60000 | PH-14 |
+| DLK-05 | 2024-10-02 | Nam | Bánh xe | 150000 | PH-15 |
+| DLK-06 | 2024-10-04 | Nam | Mạch điều khiển | 900000 | PH-16 |
+| DLK-07 | 2024-10-05 | Khánh | Ốc vít | 40000 | PH-17 |
+| DLK-08 | 2024-10-07 | Nam | Bộ khung nhôm | 700000 | PH-18 |
+Lời nhân vật sau mỗi lần chạy:
+- Khi ra 0 dòng: **Hà Vy** (thinking): Không dòng nào. Giá trị trạng thái viết hoa, gạch dưới, đúng như giấy nhớ.
+- Khi ra 10 dòng: **Tùng** (gai-dau): Cả mười đơn, có cả hai đơn chờ duyệt.
+- Khi đúng: **Hà Vy** (neutral): Tám đơn đã duyệt. Ghim lại, rồi gom.
+> 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Tám đơn linh kiện đã duyệt** — Kết quả truy vấn: tám đơn đã duyệt, mỗi đơn ghi ngày, người đứng tên, linh kiện, số tiền và mã phiên đăng nhập lúc tạo đơn.
+
+- **Bạn (người chơi)**: Tám đơn đã duyệt.
+- **Hà Vy** (thinking): Tám đơn, gom theo người đặt rồi đếm. Xem Nam đứng tên bao nhiêu so với người khác.
+> 🎯 NHIỆM VỤ: Mỗi người đứng tên bao nhiêu đơn đã duyệt?
+> 💭 Hà Vy nhắc: Phiếu tám đơn làm nguồn, gom theo người đặt.
+### 💻 Màn tra: Đơn đã duyệt, gom theo người đặt (thẻ `c-don-theo-nguoi`)
+Đề bài trên màn hình: *Lấy phiếu tám đơn làm nguồn. Gom theo người đứng tên, đếm mỗi người mấy đơn.*
+Cách chơi: màn TỔNG HỢP — chọn nguồn (phiếu đã ghim `ev-don-da-duyet`), lọc tùy chọn bằng giấy nhớ, chọn cột để NHÓM; máy đếm số dòng mỗi nhóm (COUNT), có thể tính tổng / trung bình và chỉ giữ nhóm vượt ngưỡng nếu bài cần.
+Giấy nhớ đang có quanh màn hình: [DA_DUYET]
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+```sql
+SELECT nguoi_dat, COUNT(*) AS so_dong FROM @ev-don-da-duyet GROUP BY nguoi_dat;
+```
+Kết quả: 4 dòng
+| nguoi_dat | so_dong |
+|---|---|
+| Bách | 1 |
+| Khánh | 1 |
+| Nam | 5 |
+| Thảo | 1 |
+> 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Nam đứng tên 5 trong 8 đơn** — Kết quả gom theo người đặt: Nam 5 đơn, Bách 1, Thảo 1, Khánh 1. Nam nói mình chỉ đặt hai.
+
+- **Bạn (người chơi)**: Nam năm đơn. Bách, Thảo, Khánh mỗi người một.
+- **Nam** (neutral): Năm. Mà tớ đặt hai. Bách là phó CLB, Thảo lo kỹ thuật, Khánh là trưởng CLB.
+- **Tùng** (chi-tay): Thế ba đơn kia ai gõ tên cậu vào?
+- **Duy** (neutral): Sổ không ghi ai gõ. Nhưng mỗi đơn có một cột mã phiên: phiên đăng nhập của máy lúc tạo đơn. Máy xưởng có bảng phiên đăng nhập không?
+- **Nam** (neutral): Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Tớ là quản trị, tải được.
+- **Hà Vy** (thinking): Vậy là hai bảng. Đơn thì ở sổ đặt hàng, máy thì ở bảng phiên. Chung nhau cái mã phiên.
+> 🗂️ Giấy nhớ mới: **[Mã phiên]** — nguồn: Duy nhìn thấy trong sổ đặt hàng
+> Cột ma_phien của sổ đặt hàng ghi phiên đăng nhập của máy lúc tạo đơn. Bảng phiên đăng nhập của phần mềm ghi mỗi phiên là máy nào, ngày nào, giờ nào. Hai bảng chung nhau cột ma_phien.
+> 🗂️ Giấy nhớ mới: **[Nam]** — nguồn: Sổ đặt hàng của xưởng
+> Cột nguoi_dat ghi tên người đứng tên đơn. Ai đăng nhập máy xưởng cũng gõ được tên vào cột này.
+> (giấy nhớ kéo được vào màn tra: Nam)
+
+### 📍 Phòng CLB — Mã phiên dẫn sang bảng phiên đăng nhập: phải nối hai bảng
+
+> 🎯 NHIỆM VỤ: Năm đơn đứng tên Nam được tạo từ máy nào, lúc mấy giờ?
+> 💭 Hà Vy nhắc: Hai bảng chung nhau một cột. Nối đúng cột đó thì mỗi đơn kéo theo đúng máy của nó.
+- **Duy** (neutral): Nối hai bảng thì phải chọn cột chung. Chọn sai cột là đơn kéo theo máy của người khác.
+### 💻 Màn tra: Đơn của Nam nối với phiên đăng nhập (thẻ `c-don-nam-may`)
+Đề bài trên màn hình: *Sổ đặt hàng ghi mã phiên; bảng phiên đăng nhập ghi máy và giờ của mỗi phiên. Năm đơn đứng tên Nam được tạo từ máy nào, lúc mấy giờ?*
+Cách chơi: kéo giấy nhớ vào ô giá trị, bấm cột / phép ("bằng", "bắt đầu bằng") / VÀ–HOẶC, hàng "nối với bảng … theo cột …" rồi CHẠY. Chạy sai không bị phạt.
+Bảng `don_linh_kien` (10 dòng):
+| ma_don | ngay | nguoi_dat | linh_kien | so_luong | so_tien | ma_phien | trang_thai |
+|---|---|---|---|---|---|---|---|
+| DLK-01 | 2024-09-20 | Nam | Cảm biến dò line | 4 | 120000 | PH-11 | DA_DUYET |
+| DLK-02 | 2024-09-24 | Bách | Pin 18650 | 10 | 200000 | PH-12 | DA_DUYET |
+| DLK-03 | 2024-09-27 | Nam | Động cơ servo | 8 | 800000 | PH-13 | DA_DUYET |
+| DLK-04 | 2024-10-01 | Thảo | Dây nối | 20 | 60000 | PH-14 | DA_DUYET |
+| DLK-05 | 2024-10-02 | Nam | Bánh xe | 6 | 150000 | PH-15 | DA_DUYET |
+| DLK-06 | 2024-10-04 | Nam | Mạch điều khiển | 3 | 900000 | PH-16 | DA_DUYET |
+| DLK-07 | 2024-10-05 | Khánh | Ốc vít | 100 | 40000 | PH-17 | DA_DUYET |
+| DLK-08 | 2024-10-07 | Nam | Bộ khung nhôm | 2 | 700000 | PH-18 | DA_DUYET |
+| DLK-09 | 2024-10-08 | Thảo | Keo dán | 5 | 30000 | PH-19 | CHO_DUYET |
+| DLK-10 | 2024-10-08 | Bách | Mỏ hàn | 2 | 180000 | PH-20 | CHO_DUYET |
+Bảng `phien_dang_nhap` (13 dòng):
+| ma_phien | may | ngay | gio |
+|---|---|---|---|
+| PH-11 | MAY-XUONG-02 | 2024-09-20 | 15:20 |
+| PH-12 | MAY-XUONG-01 | 2024-09-24 | 16:05 |
+| PH-13 | MAY-VP-XUONG | 2024-09-27 | 21:50 |
+| PH-14 | MAY-XUONG-01 | 2024-10-01 | 14:40 |
+| PH-15 | MAY-XUONG-02 | 2024-10-02 | 15:45 |
+| PH-16 | MAY-VP-XUONG | 2024-10-04 | 22:10 |
+| PH-17 | MAY-VP-XUONG | 2024-10-05 | 10:15 |
+| PH-18 | MAY-VP-XUONG | 2024-10-07 | 22:05 |
+| PH-19 | MAY-XUONG-01 | 2024-10-08 | 15:00 |
+| PH-20 | MAY-XUONG-01 | 2024-10-08 | 16:30 |
+| PH-21 | MAY-XUONG-01 | 2024-10-07 | 16:00 |
+| PH-22 | MAY-XUONG-02 | 2024-09-27 | 15:30 |
+| PH-23 | MAY-VP-XUONG | 2024-10-02 | 10:40 |
+Giấy nhớ đang có quanh màn hình: [DA_DUYET] [Nam]
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+```sql
+SELECT ma_don, linh_kien, may, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE nguoi_dat = 'Nam';
+```
+Kết quả: 5 dòng
+| ma_don | linh_kien | may | gio |
+|---|---|---|---|
+| DLK-01 | Cảm biến dò line | MAY-XUONG-02 | 15:20 |
+| DLK-03 | Động cơ servo | MAY-VP-XUONG | 21:50 |
+| DLK-05 | Bánh xe | MAY-XUONG-02 | 15:45 |
+| DLK-06 | Mạch điều khiển | MAY-VP-XUONG | 22:10 |
+| DLK-08 | Bộ khung nhôm | MAY-VP-XUONG | 22:05 |
+Lời nhân vật sau mỗi lần chạy:
+- Khi lỗi không có cột: **Duy** (neutral): Máy báo không có cột đó. Sổ đặt hàng không ghi máy; máy nằm ở bảng phiên đăng nhập. Phải nối hai bảng trước đã.
+- Khi ra 0 dòng: **Hà Vy** (thinking): Không dòng nào. Tên người đặt viết đúng như giấy nhớ: Nam.
+- Khi ra 8 dòng: **Hà Vy** (thinking): Tám dòng cho năm đơn. Có đơn kéo theo hai phiên: nối theo cột này thì mỗi đơn khớp mọi phiên cùng ngày, kể cả phiên của máy khác.
+- Khi ra 13 dòng: **Tùng** (gai-dau): Mười ba dòng. Nối theo cột này thì ngày nào trùng là dính nhau hết.
+- Khi ra 10 dòng: **Tùng** (gai-dau): Mười dòng. Cả sổ. Mình chỉ cần đơn của Nam.
+- Khi đúng: **Nam** (neutral): Năm đơn, mỗi đơn đúng một máy, một giờ. Hai cái buổi chiều là tớ.
+> 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Năm đơn của Nam: máy và giờ tạo** — Kết quả nối hai bảng: hai đơn tạo buổi chiều từ máy xưởng số 2, ba đơn tạo ban đêm từ máy văn phòng xưởng (21:50, 22:10, 22:05). Đơn 07/10 tạo lúc 22:05, khi Nam đang ở thư viện.
+
+- **Bạn (người chơi)**: Năm đơn của Nam. Hai đơn buổi chiều từ máy xưởng số 2. Ba đơn còn lại từ máy văn phòng xưởng, 21 giờ 50, 22 giờ 10 và 22 giờ 05.
+- **Nam** (neutral): Máy xưởng số 2 buổi chiều là tớ. Máy văn phòng ban đêm thì tớ chưa bao giờ ngồi. Phòng đó khóa.
+- **Hà Vy** (thinking): Năm dòng này gom theo máy rồi đếm, cho chắc.
+> 🎯 NHIỆM VỤ: Năm đơn đứng tên Nam chia theo máy ra sao?
+> 💭 Hà Vy nhắc: Phiếu năm đơn làm nguồn, gom theo máy.
+### 💻 Màn tra: Đơn của Nam, gom theo máy (thẻ `c-don-nam-theo-may`)
+Đề bài trên màn hình: *Lấy phiếu năm đơn làm nguồn. Gom theo máy, đếm mỗi máy mấy đơn.*
+Cách chơi: màn TỔNG HỢP — chọn nguồn (phiếu đã ghim `ev-don-nam-may`), lọc tùy chọn bằng giấy nhớ, chọn cột để NHÓM; máy đếm số dòng mỗi nhóm (COUNT), có thể tính tổng / trung bình và chỉ giữ nhóm vượt ngưỡng nếu bài cần.
+Giấy nhớ đang có quanh màn hình: [DA_DUYET] [Nam]
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+```sql
+SELECT may, COUNT(*) AS so_dong FROM @ev-don-nam-may GROUP BY may;
+```
+Kết quả: 2 dòng
+| may | so_dong |
+|---|---|
+| MAY-VP-XUONG | 3 |
+| MAY-XUONG-02 | 2 |
+> 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **3 đơn từ máy văn phòng xưởng, 2 từ máy xưởng số 2** — Kết quả gom theo máy: ba đơn mang tên Nam tạo từ máy văn phòng xưởng (phòng khóa, chìa ban chủ nhiệm giữ), hai đơn từ máy xưởng số 2 là của Nam.
+
+- **Bạn (người chơi)**: Máy văn phòng xưởng ba đơn. Máy xưởng số 2 hai đơn.
+- **Tùng** (surprised): Máy văn phòng xưởng. Lại nó. Tin đồn cũng gửi từ đó.
+- **Hà Vy** (thinking): Và đơn ngày 07/10 tạo lúc 22 giờ 05. Tối đó Nam ở thư viện tới 23 giờ 05, mình đã có bản ghi.
+- **Nam** (neutral): Vậy là cùng một chỗ, cùng một tối, có người vừa gửi tin đồn vừa đặt hàng bằng tên tớ.
+- **Minh Anh** (neutral): Chị nói với Nam từ hôm qua rồi: từ giờ Nam điều tra cùng mình. Chuyện này không còn là chuyện riêng của CLB nào.
+> 🔀 Duy: "Máy văn phòng xưởng ấy, ngoài ba đơn đứng tên Nam, còn tạo đơn nào khác không? Tra nốt, hay thế là đủ?"
+>   - Tra nốt mọi đơn tạo từ máy văn phòng.
+>   - Thế là đủ cho hôm nay.
+
+*— Nếu chọn "Tra nốt mọi đơn tạo từ máy văn phòng." —*
+
+#### 📍 Phòng CLB — Mọi đơn từ máy văn phòng xưởng
+
+- **Duy** (neutral): Nếu máy văn phòng là chỗ người ta làm việc đó, thì xem mọi đơn từ máy ấy, không chỉ đơn mang tên Nam.
+> 🎯 NHIỆM VỤ: Máy văn phòng xưởng đã tạo những đơn nào?
+> 💭 Hà Vy nhắc: Vẫn nối hai bảng theo mã phiên, nhưng lần này lọc theo máy.
+### 💻 Màn tra: Mọi đơn từ máy văn phòng xưởng (thẻ `c-may-vp`)
+Đề bài trên màn hình: *Nối sổ đặt hàng với bảng phiên đăng nhập. Máy văn phòng xưởng đã tạo những đơn nào, đứng tên ai, lúc mấy giờ?*
+Cách chơi: kéo giấy nhớ vào ô giá trị, bấm cột / phép ("bằng", "bắt đầu bằng") / VÀ–HOẶC, hàng "nối với bảng … theo cột …" rồi CHẠY. Chạy sai không bị phạt.
+Bảng `don_linh_kien` (10 dòng):
+| ma_don | ngay | nguoi_dat | linh_kien | so_luong | so_tien | ma_phien | trang_thai |
+|---|---|---|---|---|---|---|---|
+| DLK-01 | 2024-09-20 | Nam | Cảm biến dò line | 4 | 120000 | PH-11 | DA_DUYET |
+| DLK-02 | 2024-09-24 | Bách | Pin 18650 | 10 | 200000 | PH-12 | DA_DUYET |
+| DLK-03 | 2024-09-27 | Nam | Động cơ servo | 8 | 800000 | PH-13 | DA_DUYET |
+| DLK-04 | 2024-10-01 | Thảo | Dây nối | 20 | 60000 | PH-14 | DA_DUYET |
+| DLK-05 | 2024-10-02 | Nam | Bánh xe | 6 | 150000 | PH-15 | DA_DUYET |
+| DLK-06 | 2024-10-04 | Nam | Mạch điều khiển | 3 | 900000 | PH-16 | DA_DUYET |
+| DLK-07 | 2024-10-05 | Khánh | Ốc vít | 100 | 40000 | PH-17 | DA_DUYET |
+| DLK-08 | 2024-10-07 | Nam | Bộ khung nhôm | 2 | 700000 | PH-18 | DA_DUYET |
+| DLK-09 | 2024-10-08 | Thảo | Keo dán | 5 | 30000 | PH-19 | CHO_DUYET |
+| DLK-10 | 2024-10-08 | Bách | Mỏ hàn | 2 | 180000 | PH-20 | CHO_DUYET |
+Bảng `phien_dang_nhap` (13 dòng):
+| ma_phien | may | ngay | gio |
+|---|---|---|---|
+| PH-11 | MAY-XUONG-02 | 2024-09-20 | 15:20 |
+| PH-12 | MAY-XUONG-01 | 2024-09-24 | 16:05 |
+| PH-13 | MAY-VP-XUONG | 2024-09-27 | 21:50 |
+| PH-14 | MAY-XUONG-01 | 2024-10-01 | 14:40 |
+| PH-15 | MAY-XUONG-02 | 2024-10-02 | 15:45 |
+| PH-16 | MAY-VP-XUONG | 2024-10-04 | 22:10 |
+| PH-17 | MAY-VP-XUONG | 2024-10-05 | 10:15 |
+| PH-18 | MAY-VP-XUONG | 2024-10-07 | 22:05 |
+| PH-19 | MAY-XUONG-01 | 2024-10-08 | 15:00 |
+| PH-20 | MAY-XUONG-01 | 2024-10-08 | 16:30 |
+| PH-21 | MAY-XUONG-01 | 2024-10-07 | 16:00 |
+| PH-22 | MAY-XUONG-02 | 2024-09-27 | 15:30 |
+| PH-23 | MAY-VP-XUONG | 2024-10-02 | 10:40 |
+Giấy nhớ đang có quanh màn hình: [DA_DUYET] [Nam]
+Câu đúng (một trong các câu đúng; máy chấm theo tập kết quả):
+```sql
+SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE may = 'MAY-VP-XUONG';
+```
+Kết quả: 4 dòng
+| ma_don | nguoi_dat | linh_kien | gio |
+|---|---|---|---|
+| DLK-03 | Nam | Động cơ servo | 21:50 |
+| DLK-06 | Nam | Mạch điều khiển | 22:10 |
+| DLK-07 | Khánh | Ốc vít | 10:15 |
+| DLK-08 | Nam | Bộ khung nhôm | 22:05 |
+Lời nhân vật sau mỗi lần chạy:
+- Khi lỗi không có cột: **Duy** (neutral): Máy báo không có cột đó. Cột máy nằm ở bảng phiên đăng nhập, nối rồi mới lọc được.
+- Khi ra 0 dòng: **Hà Vy** (thinking): Không dòng nào. Mã máy viết hoa, có gạch nối, đúng như giấy nhớ.
+- Khi ra 5 dòng: **Hà Vy** (thinking): Năm dòng. Có đơn tạo ở máy xưởng mà cũng dính vào, vì cùng ngày có một phiên ở máy văn phòng. Cột nối chưa đúng nghĩa.
+- Khi ra 10 dòng: **Tùng** (gai-dau): Cả sổ. Mình chỉ cần đơn từ máy văn phòng.
+- Khi đúng: **Hà Vy** (neutral): Bốn đơn. Ba đơn đêm mang tên Nam, một đơn sáng mang tên Khánh.
+> 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Máy văn phòng xưởng: 3 đơn đêm mang tên Nam, 1 đơn ngày của Khánh** — Kết quả: bốn đơn tạo từ máy văn phòng xưởng. Ba đơn ban đêm đứng tên Nam; một đơn ốc vít 10:15 sáng đứng tên Khánh, trưởng CLB, là người dùng máy đó hợp lệ ban ngày. Ba người có chìa phòng: Khánh, Bách, Thảo.
+
+- **Bạn (người chơi)**: Bốn đơn. Ba đơn đứng tên Nam, ban đêm. Một đơn ốc vít đứng tên Khánh, 10 giờ 15 sáng.
+- **Nam** (neutral): Ốc vít thì đúng là Khánh đặt, hôm đó tớ thấy. Trưởng CLB ngồi máy văn phòng ban ngày là chuyện thường.
+- **Hà Vy** (thinking): Vậy máy đó ban ngày có người dùng hợp lệ, ban đêm có ba đơn mượn tên. Mình mới biết máy, chưa biết tay.
+- **Duy** (neutral): Ba người có chìa phòng đó. Đừng vội.
+> 🗂️ Giấy nhớ mới: **[Lời nhắn chị Linh, mẩu thứ tư]** — nguồn: Sổ tự học của chị Linh, phòng CLB
+> Chữ chị Linh: "Vụ đầu tiên, họ kết tội đúng cái tên trên bản ghi. Người mang tên đó không ở đấy."
+- **Duy** (neutral): Mà nói chuyện "mượn tên"… chị Linh có ghi một câu. Để tớ xem.
+- **Bạn (người chơi)**: "Vụ đầu tiên, họ kết tội đúng cái tên trên bản ghi. Người mang tên đó không ở đấy."
+- **Tùng** (worried): Giống hệt chuyện Nam.
+- **Hà Vy** (thinking): Chị ấy ghi từ năm ngoái. Cuốn sổ cũ mà chị ấy nhắc, chắc kể đúng chuyện này.
+
+##### 📍 Phòng CLB — Nam điều tra cùng; ba người có chìa
+
+> ❓ Minh Anh hỏi: "Vậy mình nói chắc được điều gì với bên thu hồi đơn?" (chọn sai thì nghe phản hồi rồi chọn lại)
+>   - Ba đơn đứng tên Nam được tạo từ máy văn phòng xưởng, ban đêm, bằng phiên đăng nhập không phải của Nam. Ai tạo thì chưa biết. ✅ → **Minh Anh** (neutral): Đúng chừng ấy. Chị gửi kèm phiếu nối bảng để họ tự kiểm.
+>   - Nam tự đặt cả năm đơn rồi chối. → **Hà Vy** (thinking): Một trong ba đơn đó tạo lúc 22:05 tối 07/10. Tối đó Nam ở thư viện, mình vừa chứng minh xong ở vụ trước.
+>   - Ban chủ nhiệm Robotics cố tình đổ nợ cho Nam. → **Duy** (neutral): Máy văn phòng thì ban chủ nhiệm giữ chìa, nhưng "cố tình" và "cả ban" thì bảng nào nói? Mình mới có máy và giờ.
+- **Nam** (neutral): Ba người giữ chìa phòng văn phòng: Khánh, Bách, Thảo. Tớ không nghi ai cả. Nhưng tớ muốn biết là ai.
+- **Minh Anh** (serious): Muốn biết thì tìm tiếp bằng bảng, không bằng đoán. Ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt. Sổ quỹ là nguồn tiếp theo.
+- **Tùng** (chi-tay): Tớ không cá nữa đâu. Hỏi sổ.
+- **Hà Vy** (smile): Đúng rồi. Hỏi sổ.
+*[Thẻ chữ]* Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nối sai cột thì ra một câu chuyện không có thật.
+> 🏁 KẾT THÚC vụ → màn kết.
+
+*— Nếu chọn "Thế là đủ cho hôm nay." —*
+
+*(tiếp theo như chuỗi "Nam điều tra cùng; ba người có chìa" đã in ở trên)*
+
+## 🏁 Màn kết
+**Có người mượn tên Nam** — Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng, cùng cái máy đã gửi tin đồn, một đơn đúng tối Nam ở thư viện. Máy thì biết, tay thì chưa. Ba người có chìa phòng.

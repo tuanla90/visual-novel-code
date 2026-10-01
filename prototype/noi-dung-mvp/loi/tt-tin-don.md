@@ -15,7 +15,7 @@
 
 ## c-tin-may.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Giá trị này có đang nằm đúng cột của nó không nhỉ?
-- Khi chạy ra 3 dòng: **ha-vy** (thinking): Ba dòng. Vẫn còn dòng không thuộc đúng tài khoản ấy, hoặc không đúng ngày ấy.
+- Khi chạy ra 3 dòng: **ha-vy** (thinking): Ba dòng. Bảng này ghi cả đăng nhập của tài khoản cá nhân khác, và cả ngày khác. Mình cần đúng tài khoản kênh, đúng ngày mùng 7.
 - Khi chạy ra 5 dòng: **tung** (gai-dau): Cả năm lần đăng nhập của mọi tài khoản.
 - Khi đúng: **ha-vy** (neutral): Hai lần trong ngày mùng 7. 15 giờ 10 từ máy xưởng số 2, 22 giờ 31 từ máy văn phòng xưởng.
 

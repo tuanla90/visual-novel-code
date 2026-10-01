@@ -11,8 +11,8 @@
 ### clue-ten-nam — [Nam]
 - Tiêu đề: Tên Nam trên bản ghi thư viện
 - Giá trị cho trình dựng: Nam
-- Nguồn: {{nv.nam}} xin thư viện in bản ghi quẹt thẻ của chính mình
-- Nội dung: Bản ghi quẹt thẻ ghi tên người quẹt ở cột ten. Thư viện chỉ in cho mỗi người bản ghi của chính họ.
+- Nguồn: {{nv.nam}} tải bản ghi cửa từ của chính mình từ cổng sinh viên
+- Nội dung: Bản ghi cửa từ ghi tên chủ thẻ ở cột ten, giờ vào và giờ ra. Mỗi người chỉ tải được bản của chính mình; Nam và Hà Vy gộp hai bản vào một tệp.
 
 ### clue-toi-07 — [Tối 07/10]
 - Tiêu đề: Tối tin gốc được gửi
@@ -23,8 +23,8 @@
 ### clue-ten-vy — [Hà Vy]
 - Tiêu đề: Tên Hà Vy trên bản ghi thư viện
 - Giá trị cho trình dựng: Hà Vy
-- Nguồn: {{nv.ha-vy}} xin thư viện in bản ghi của chính mình
-- Nội dung: Hà Vy cũng xin bản ghi quẹt thẻ của mình, in chung tờ với Nam.
+- Nguồn: {{nv.ha-vy}} tải bản ghi cửa từ của chính mình
+- Nội dung: Hà Vy tải bản ghi cửa từ của mình, gộp chung tệp với Nam để lời chứng của mình cũng đếm được.
 
 ### clue-loi-nhan-linh-3 — [Lời nhắn chị Linh, mẩu thứ ba]
 - Tiêu đề: Mẩu giấy ở trang "Kiểm hai lần", lần hai

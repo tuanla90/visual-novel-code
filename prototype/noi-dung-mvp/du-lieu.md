@@ -193,3 +193,45 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 | Hà Vy | 2024-10-02 | THU_TU | 19:00 | 20:30 |
 | Nam | 2024-10-07 | THU_HAI | 21:50 | 23:05 |
 | Hà Vy | 2024-10-07 | THU_HAI | 20:00 | 23:00 |
+
+## don_linh_kien {bảng}
+- Cột: ma_don TEXT, ngay TEXT, nguoi_dat TEXT, linh_kien TEXT, so_luong INTEGER, so_tien INTEGER, ma_phien TEXT, trang_thai TEXT
+
+<!-- Vụ 4 (và Vụ 5): sổ đặt linh kiện của xưởng Robotics, tháng 9–10. Nam đứng tên 5 đơn nhưng chỉ đặt 2 (DLK-01, DLK-05, từ máy
+     xưởng số 2 buổi chiều); ba đơn kia (DLK-03, 06, 08) tạo ban đêm từ máy văn phòng xưởng, trong đó DLK-08 lúc 22:05 tối 07/10 khi Nam
+     ở thư viện. Hai đơn CHO_DUYET là nhiễu cho bài lọc. Vụ 5: ba đơn đêm là ba linh kiện không có trong kho. -->
+
+| ma_don | ngay | nguoi_dat | linh_kien | so_luong | so_tien | ma_phien | trang_thai |
+|---|---|---|---|---|---|---|---|
+| DLK-01 | 2024-09-20 | Nam | Cảm biến dò line | 4 | 120000 | PH-11 | DA_DUYET |
+| DLK-02 | 2024-09-24 | Bách | Pin 18650 | 10 | 200000 | PH-12 | DA_DUYET |
+| DLK-03 | 2024-09-27 | Nam | Động cơ servo | 8 | 800000 | PH-13 | DA_DUYET |
+| DLK-04 | 2024-10-01 | Thảo | Dây nối | 20 | 60000 | PH-14 | DA_DUYET |
+| DLK-05 | 2024-10-02 | Nam | Bánh xe | 6 | 150000 | PH-15 | DA_DUYET |
+| DLK-06 | 2024-10-04 | Nam | Mạch điều khiển | 3 | 900000 | PH-16 | DA_DUYET |
+| DLK-07 | 2024-10-05 | Khánh | Ốc vít | 100 | 40000 | PH-17 | DA_DUYET |
+| DLK-08 | 2024-10-07 | Nam | Bộ khung nhôm | 2 | 700000 | PH-18 | DA_DUYET |
+| DLK-09 | 2024-10-08 | Thảo | Keo dán | 5 | 30000 | PH-19 | CHO_DUYET |
+| DLK-10 | 2024-10-08 | Bách | Mỏ hàn | 2 | 180000 | PH-20 | CHO_DUYET |
+
+## phien_dang_nhap {bảng}
+- Cột: ma_phien TEXT, may TEXT, ngay TEXT, gio TEXT
+
+<!-- Vụ 4: phiên đăng nhập của phần mềm đặt hàng trên máy xưởng (có cả phiên không tạo đơn: PH-21, 22, 23). Cột ngay trùng tên với sổ đặt
+     hàng: nối theo ngay (sai) thì đơn kéo theo mọi phiên cùng ngày (đơn của Nam ra 8 dòng thay vì 5); nối theo ma_phien (đúng) thì mỗi đơn một phiên. -->
+
+| ma_phien | may | ngay | gio |
+|---|---|---|---|
+| PH-11 | MAY-XUONG-02 | 2024-09-20 | 15:20 |
+| PH-12 | MAY-XUONG-01 | 2024-09-24 | 16:05 |
+| PH-13 | MAY-VP-XUONG | 2024-09-27 | 21:50 |
+| PH-14 | MAY-XUONG-01 | 2024-10-01 | 14:40 |
+| PH-15 | MAY-XUONG-02 | 2024-10-02 | 15:45 |
+| PH-16 | MAY-VP-XUONG | 2024-10-04 | 22:10 |
+| PH-17 | MAY-VP-XUONG | 2024-10-05 | 10:15 |
+| PH-18 | MAY-VP-XUONG | 2024-10-07 | 22:05 |
+| PH-19 | MAY-XUONG-01 | 2024-10-08 | 15:00 |
+| PH-20 | MAY-XUONG-01 | 2024-10-08 | 16:30 |
+| PH-21 | MAY-XUONG-01 | 2024-10-07 | 16:00 |
+| PH-22 | MAY-XUONG-02 | 2024-09-27 | 15:30 |
+| PH-23 | MAY-VP-XUONG | 2024-10-02 | 10:40 |
