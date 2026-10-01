@@ -4,8 +4,8 @@
 
 ## n5-mo.1
 - [THẺ CHỮ] **narrator**: Ngày 5 — Thứ Bảy
-- [DÀN DỰNG] Sáng sớm ở cổng KTX. {{nv.chu-cuong}} đang quét sân.
-- **narrator**: Sáng sớm ở cổng ký túc xá. {{nv.chu-cuong}} đang quét sân trước phòng trực.
+- [DÀN DỰNG] Sáng sớm ở cổng KTX. {{nv.chu-cuong}} vừa đi tuần về, tay cầm đèn pin.
+- **narrator**: Sáng sớm ở cổng ký túc xá. {{nv.chu-cuong}} vừa đi một vòng kiểm tra về, đèn pin còn cầm trên tay.
 
 ## n5-chu-cuong.1
 - **tung** (neutral): Chú ơi, sáng thứ Hai chú có để ý ai ra cổng sớm không ạ? Bọn cháu đang tìm người bỏ thư vào hộp tòa B.
@@ -17,7 +17,7 @@
 ## n5-toi.1
 > NHIỆM VỤ: Soát lại hồ sơ trước buổi họp
 - [THẺ CHỮ] **narrator**: Tối thứ Bảy
-- **narrator**: Tối, phòng CLB. Hà Vy trải hết giấy tờ ra bàn.
+- **narrator**: Tối, phòng CLB. Hà Vy ghim hết giấy tờ lên bảng, Tùng căng chỉ nối từng tờ.
 - **ha-vy** (neutral): Soát lại nhé. Hộp ở tòa B, thẻ lịch khoa Báo chí: ra hai lớp. Chữ H trong hai lớp: Hiếu với Hoài. Sổ niêm phong: chỉ có mã của Hoài.
 - **ha-vy** (thinking): Có mã trên phiếu chưa chắc đã là người viết thư. Thứ Hai họp, mình chỉ nói đúng những gì có chứng.
 - **tung** (worried): Thế nhỡ người ta hỏi ai viết thư thì sao?

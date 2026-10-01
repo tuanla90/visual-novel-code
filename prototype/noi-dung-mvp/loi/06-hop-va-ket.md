@@ -21,13 +21,13 @@
 - **quan** (neutral): …Hai dòng. Vâng. Mời các bạn nói tiếp.
 
 ## hop-02.1
-- [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa.
+- [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa, rồi ngồi xuống ghế khi thầy bảo.
 - **narrator**: Hoài được mời vào. Bạn ấy đứng nép cạnh cửa, hai tay nắm chặt quai túi.
 - **thay-quang** (neutral): Em Hoài, em kể lại giúp thầy hôm em nộp thư.
 - **hoai** (nervous): Dạ… sáng thứ Hai em mang phong bì bỏ vào hộp ở tòa B ạ.
 - **thay-quang** (neutral): Chỉ có vậy thôi à em?
 - **hoai** (nervous): Dạ… vâng ạ.
-- **thay-quang** (neutral): Được, em cứ ngồi đó. Các em còn gì trình thêm không?
+- **thay-quang** (neutral): Được, em ngồi xuống ghế đi. Các em còn gì trình thêm không?
 
 ## hop-doi-chat.1
 - [DÀN DỰNG] {{nv.hoai}} được gọi vào, đứng nép cạnh cửa, nhìn lên màn chiếu có tên mình.
@@ -59,7 +59,7 @@
 - [DÀN DỰNG] {{nv.tung}} thì thầm với {{nv.ha-vy}}.
 - **tung** (happy): Giữ được phòng rồi! Tối nay tớ khao trà đá.
 - **ha-vy** (smile): Được. Tớ nhớ đấy nhé.
-- **narrator**: Lúc cả nhóm ra về, ngoài sân có một anh sinh viên năm cuối đi ngang. Trên quai balo đeo một cái huy hiệu hình bánh răng.
+- **narrator**: Lúc cả nhóm ra tới cổng trường, có một anh khóa trên đi lướt qua. Trên balo cài một cái huy hiệu hình bánh răng.
 - **tung** (worried): Này… tớ cá là…
 - **ha-vy** (thinking): Đừng cá. Chưa có gì để tính cả.
 - [THẺ CHỮ] **narrator**: SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.

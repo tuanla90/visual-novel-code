@@ -4,7 +4,7 @@
 
 ## n2-mo.1
 - [THẺ CHỮ] **narrator**: Ngày 2 — Thứ Tư
-- **minh-anh** (neutral): Đơn xin quyền tra cứu, {{nv.thay-quang.trong-cau}} duyệt rồi. Sáng nay sang Phòng Đào tạo, {{nv.co-hanh.trong-cau}} cài tài khoản cho CLB.
+- **minh-anh** (neutral): Đơn xin quyền tra cứu, {{nv.thay-quang.trong-cau}} duyệt rồi. Lát nữa sang Phòng Đào tạo, {{nv.co-hanh.trong-cau}} cài tài khoản cho CLB.
 - **duy** (neutral): Tớ mang laptop theo. Máy của CLB thì tớ ký sổ.
 - **tung** (happy): Có tài khoản là tra được hết hả chị?
 - **minh-anh** (neutral): Được đúng những gì người ta cho phép. Hỏi cô là biết.
@@ -24,7 +24,7 @@
 ## n2-laptop.1
 > NHIỆM VỤ: Lớp nào vừa ở tòa B vừa học Báo chí?
 - [DÀN DỰNG] Phòng CLB buổi chiều. Laptop CLB đã đăng nhập tài khoản mới. Giấy nhớ [Tòa B], [Báo chí K24] trên bàn.
-- **narrator**: Chiều, phòng CLB. Cái laptop cũ khởi động mất gần hai phút.
+- **narrator**: Về tới phòng CLB. Cái laptop cũ khởi động mất gần hai phút.
 - **tung** (happy): Tòa B với Báo chí à? Tớ cá là cứ nối HOẶC vào cho rộng, kiểu gì chẳng trúng!
 - **ha-vy** (neutral): Đừng cá. Tính.
 

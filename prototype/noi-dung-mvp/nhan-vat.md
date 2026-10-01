@@ -62,7 +62,7 @@
 - Biểu cảm: neutral, smile
 - Danh xưng: Bảo vệ giảng đường B
 - Câu nói: Mép hộp sắc đấy, đừng thò tay vào.
-- Giới thiệu: Ngồi bàn trực cạnh cầu thang tòa B. Ít lời, giờ giấc đâu ra đấy, việc gì không tận mắt thấy thì không nói.
+- Giới thiệu: Trực ở chân cầu thang tòa B. Ít lời, giờ giấc đâu ra đấy, việc gì không tận mắt thấy thì không nói.
 
 ### co-hanh — Cô Hạnh
 - Vai: Phòng Đào tạo. Tạo tài khoản tra cứu của CLB trên laptop (ngày 2): chỉ xem bảng lớp; bảng có thông tin cá nhân phải có phiếu yêu cầu tra cứu.

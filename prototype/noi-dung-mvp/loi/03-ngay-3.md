@@ -14,8 +14,8 @@
 - **co-lan** (neutral): Sổ đó niêm phong. Cô cũng không được tự mở.
 - **player**: Vậy làm sao biết được ai gửi ạ?
 - **co-lan** (neutral): Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô phụ trách hộp mới tra và trả lời có hoặc không.
-- [DÀN DỰNG] Một anh sinh viên áo sơ mi, kẹp tập hồ sơ, đứng ở cửa từ lúc nào.
-- **narrator**: Ở cửa có một anh sinh viên áo sơ mi, kẹp tập hồ sơ, đứng từ lúc nào không ai để ý.
+- [DÀN DỰNG] Một anh sinh viên khoác vest xanh đen, kẹp cái bìa da, đứng ở cửa từ lúc nào.
+- **narrator**: Ở cửa có một anh sinh viên khoác vest xanh đen, kẹp cái bìa da, đứng từ lúc nào không ai để ý.
 - **quan** (neutral): Tôi là Quân, bên Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi được cử xuống giám sát việc này.
 - **co-lan** (neutral): Hai lớp các em lọc ra hôm qua là căn cứ được. Cô ký phiếu tra cứu: bảng sinh viên, bốn cột, mã, họ đệm, tên, mã lớp. Không hơn.
 - **quan** (neutral): Tôi ký giám sát. Các bạn tra gì máy cũng ghi lại, bên tôi xem hết.
@@ -25,8 +25,8 @@
 - **ha-vy** (thinking): Tức là mình cần mã, và cần căn cứ cho từng mã một.
 
 ## n3-cang-tin.1
-- [DÀN DỰNG] Căng tin buổi trưa. Hiếu ngồi bàn bên, nói to.
-- **narrator**: Trưa, căng tin. Bàn bên có một cậu đang nói to về tờ thông báo họp rà soát.
+- [DÀN DỰNG] Căng tin, ngay sau khi rời Phòng CTSV. Hiếu ngồi bàn bên, nói to.
+- **narrator**: Ra khỏi Phòng Công tác sinh viên, cả nhóm tạt vào căng tin. Bàn bên có một cậu đang nói to về tờ thông báo họp rà soát.
 - **hieu** (annoyed): Tôi đọc thông báo rà soát rồi. Nói thẳng nhé, CLB các cậu giữ cái phòng cả năm chả để làm gì.
 - **hieu** (annoyed): Nhóm tôi xin phòng làm bài nhóm mấy lần, lần nào cũng bảo hết phòng. Toàn phải ngồi ké thư viện.
 - **tung** (worried): Nghe gắt thế, chắc cậu này gửi thư đấy.
@@ -37,7 +37,7 @@
 ## n3-laptop.1
 > NHIỆM VỤ: Trong hai lớp ấy, ai có thể là người ký chữ H?
 - [DÀN DỰNG] Phòng CLB. Phiếu tra cứu đã mở bảng sinh viên. Trên bàn: [H], phiếu hai lớp.
-- **narrator**: Chiều, phòng CLB. Phiếu tra cứu được duyệt, laptop hiện thêm bảng sinh viên.
+- **narrator**: Về phòng CLB. Có phiếu tra cứu, laptop hiện thêm bảng sinh viên.
 - **tung** (happy): Cậu gắt ở căng tin tên Hiếu. Chữ H đấy! Tớ cá là Hiếu!
 - **ha-vy** (thinking): Cá thì để sau. Xem dữ liệu nói gì đã.
 

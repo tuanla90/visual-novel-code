@@ -11,11 +11,11 @@
 - **narrator**: Xe buýt dừng trước cổng trường. Cửa vừa mở, hơi nóng đầu giờ chiều hắt thẳng vào mặt.
 - **player**: (Tòa mái ngói đỏ y như trên ảnh tuyển sinh. Còn tòa kính bên phải chắc mới xây.)
 - **player**: (Phòng 408. Cơ mà ký túc xá nằm đâu thì thông báo không ghi…)
-- **narrator**: Thanh chắn nâng lên cho một chiếc xe máy chạy vào. Mấy bạn kéo vali đi thẳng theo con đường rợp bóng cây.
+- **narrator**: Mấy bạn kéo vali vòng qua thanh chắn, đi thẳng theo con đường rợp bóng cây.
 - **player**: (Chắc cùng về ký túc xá. Cứ bám theo đã.)
 
 ## md-00-cong-ktx.1
-- **narrator**: Qua dãy giảng đường sơn vàng, qua nhà để xe, cuối đường là một cổng sắt xanh kéo ngang. Bên trong là mấy dãy nhà năm tầng.
+- **narrator**: Qua dãy giảng đường sơn vàng, qua nhà để xe, cuối đường là một cổng sắt xanh kéo ngang. Bên trong là mấy dãy nhà bốn tầng.
 - **narrator**: Bánh vali kẹt vào ray cổng. Phải nhấc bổng cả cái vali lên mới qua được.
 - **player**: (Biết thế đừng nhét cả cái nồi cơm điện vào.)
 - **player**: (Phòng 408, tầng bốn. Mong là có thang máy.)
@@ -34,7 +34,7 @@
 ## md-00-so-do.1
 - **narrator**: Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ, có chấm "Bạn đang ở đây".
 - **player**: (Phòng 408 ở dãy giữa, tầng bốn. Đúng nhà này rồi.)
-- **player**: (Sơ đồ vẽ mỗi thang máy, chẳng thấy thang bộ đâu cả.)
+- **player**: (Sơ đồ chỉ vẽ ba dãy nhà nhìn từ trên xuống. Thang bộ ở đâu thì chịu.)
 
 ## md-00-gap-tung.1
 - **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế? Thang máy đang bảo trì.
@@ -60,8 +60,8 @@
 - **tung** (neutral): Cất đồ xong tớ dẫn đi một vòng trường. Đi sớm cho biết đường, tuần sau vào học đỡ lạc.
 
 ## md-03-toa-b.1
-- [DÀN DỰNG] Hộp tôn xanh treo trên tường cạnh cầu thang (bản CHƯA có thẻ lịch ở khe — DX-03). Bác Thịnh đứng ở chân cầu thang.
-- **narrator**: Sảnh tòa B vắng tanh. Trên tường cạnh cầu thang treo một cái hộp tôn xanh, biển ghi "Hộp tiếp nhận kiến nghị".
+- [DÀN DỰNG] Hộp tôn xanh treo trên mảng tường gần cửa ra vào (bản CHƯA có thẻ lịch ở khe — DX-03 chưa làm: [KHÁM PHÁ] không có vật tĩnh). Bác Thịnh đứng ở chân cầu thang.
+- **narrator**: Sảnh tòa B vắng tanh. Trên mảng tường gần cửa ra vào treo một cái hộp tôn xanh, biển ghi "Hộp tiếp nhận kiến nghị".
 - **tung** (neutral): Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
 - **player**: Mép khe sắc phết. Nhét phong bì dày vào chắc rách mất.
 - **bac-tu** (neutral): Hai cháu tìm phòng nào? Chiều Chủ nhật tòa này khóa hết lớp rồi.
@@ -88,15 +88,15 @@
 > NHIỆM VỤ: Ghé bàn CLB Thám Tử
 
 ## md-09-ngay-hoi.2
-- [DÀN DỰNG] Nền nhà văn hóa ngày hội; bàn Robotics đông bên trái, bàn Thám Tử vắng bên phải.
-- **narrator**: Sân nhà văn hóa chật người. Bàn Robotics đông nhất, dán tấm bảng "Đang xin mở rộng xưởng thực hành". Bàn CLB Thám Tử ở góc, chỉ có một chị ngồi.
+- [DÀN DỰNG] Nền nhà văn hóa ngày hội (nền chưa vẽ người); gian Robotics bên trái, cờ in hình bánh răng (ảnh cần vẽ thêm — xem báo cáo rà soát A4/A5); bàn Thám Tử bên phải.
+- **narrator**: Sân nhà văn hóa giăng cờ, bàn CLB kê kín lối đi. Gian Robotics rộng nhất, cờ in hình bánh răng, dán tấm bảng "Đang xin mở rộng xưởng thực hành". Bàn CLB Thám Tử ở góc, chỉ có một chị ngồi.
 - **tung** (neutral): Chị ơi, CLB mình đang điều tra vụ nào không ạ?
 - **minh-anh** (neutral): Không có em ạ. Hồ sơ, đăng ký giờ tra trên hệ thống là ra hết. Mấy kiểu điều tra ngày xưa hết đất diễn rồi.
 - **tung** (happy): Thế giờ CLB chuyên điều tra… mật khẩu Wi-Fi ạ?
 - **minh-anh** (worried): Em ra đây để đùa thì bàn bên kia vui hơn đấy.
 - **tung** (worried): Dạ em đùa hơi quá. Em xin lỗi chị.
 - **minh-anh** (neutral): Muốn vào thì điền phiếu này. Nhớ ghi mã sinh viên.
-- **tung** (worried): Bọn em chưa có thẻ sinh viên chị ạ.
+- **tung** (worried): Thẻ bọn em đang đeo là thẻ tạm của ký túc xá, chưa in mã chị ạ.
 - **minh-anh** (neutral): Đoàn trường có gửi danh sách tân sinh viên khóa này, mã nằm trong đấy. Tra xong là chị xóa khỏi máy.
 - **narrator**: {{nv.tung}} cúi xuống màn hình vài giây rồi điền một mạch.
 - **minh-anh** (worried): Mã này của một bạn Tùng học Kế toán. Em học Du lịch cơ mà?
@@ -114,16 +114,16 @@
 > NHIỆM VỤ: Dọn tủ hồ sơ cùng CLB
 
 ## md-10-phong-clb.2
-- [DÀN DỰNG] Có mặt: {{nv.minh-anh}}, {{nv.duy}}, {{nv.ha-vy}}, {{nv.tung}}, người chơi. Laptop CLB trên bàn góc trái.
-- **narrator**: Bốn giờ chiều thứ Hai. Phòng CLB nhỏ, một bàn dài, một tủ hồ sơ, một cái laptop cũ ở góc.
+- [DÀN DỰNG] Có mặt: {{nv.minh-anh}}, {{nv.duy}}, {{nv.ha-vy}}, {{nv.tung}}, người chơi. Bộ máy bàn cũ ở góc (nền vẽ sẵn); laptop CLB Duy cất trong tủ.
+- **narrator**: Bốn giờ chiều thứ Hai. Phòng CLB nhỏ, một bàn dài, một tủ hồ sơ, một bộ máy bàn phủ bụi ở góc.
 - **tung** (happy): Ơ, hôm Ngày hội tớ không thấy cậu nhỉ?
 - **ha-vy** (neutral): Tớ đăng ký qua form. Tớ học Toán ứng dụng, mê Sherlock Holmes từ cấp hai, nghe tên CLB thám tử là đăng ký luôn.
-- **tung** (happy): Toán! Thế là phòng mình có chỗ mượn vở rồi.
+- **tung** (happy): Toán! Thế là tớ có chỗ mượn vở rồi.
 - **ha-vy** (neutral): Mượn thì được, chép thì không.
 - **tung** (happy): Thế cậu đoán được tớ học gì không?
-- **ha-vy** (neutral): Khỏi đoán. Áo đội tình nguyện, balo cài huy hiệu khoa thế kia. Du lịch chứ gì.
+- **ha-vy** (neutral): Khỏi đoán. Cổ đeo thẻ, tay lúc nào cũng cầm bản đồ trường. Du lịch chứ gì.
 - **player**: Thế ai giữ chìa khóa phòng này ạ?
-- **duy** (smile): Tớ. {{nv.duy}}, năm hai Hành chính học. Chìa khóa, tủ hồ sơ với cái laptop của CLB đều tớ giữ.
+- **duy** (smile): Tớ. {{nv.duy}}, năm hai Hành chính học. Chìa khóa phòng, tủ hồ sơ, cả cái laptop cũ cất trong tủ, đều tớ giữ.
 - **duy** (neutral): Ngăn dưới tớ chưa kiểm kê tới. Cậu mở xem có gì trong đấy.
 
 ## md-10-phong-clb.3
@@ -147,4 +147,4 @@
 - **minh-anh** (neutral): {{nv.thay-quang}} cho CLB tự lập căn cứ. Cô phụ trách tự tra sổ, Hội sinh viên giám sát. Quyền tra cứu thì chị làm đơn xin.
 - **tung** (neutral): Thế giờ bắt đầu từ đâu ạ?
 - **ha-vy** (thinking): Khoan, tính lại đã. Mình mới có một chữ H với một cái hộp.
-- **minh-anh** (serious): Thì bắt đầu từ cái hộp. Nói có sách, mách có chứng. Sáng mai ra tòa B.
+- **minh-anh** (serious): Thì bắt đầu từ cái hộp. Nói có sách, mách có chứng. Mai ra tòa B.

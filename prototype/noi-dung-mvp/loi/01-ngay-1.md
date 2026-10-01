@@ -4,12 +4,12 @@
 
 ## n1-mo.1
 - [THẺ CHỮ] **narrator**: Ngày 1 — Thứ Ba
-- **tung** (neutral): Hôm Chủ nhật đi qua tòa B, tớ nhớ có cái hộp tôn treo cạnh cầu thang. Thư chắc bỏ vào đấy.
+- **tung** (neutral): Hôm Chủ nhật đi qua tòa B, tớ nhớ có cái hộp tôn treo gần cửa ra vào. Thư chắc bỏ vào đấy.
 - **ha-vy** (thinking): Thế thì ra tận nơi. Ai mở hộp, mở lúc nào, trong hộp còn sót lại gì.
 
 ## n1-toa-b.1
 > NHIỆM VỤ: Ai đã bỏ lá thư vào cái hộp này?
-- **narrator**: Sáng thứ Ba, sảnh tòa B đông hơn hôm Chủ nhật. Bác bảo vệ ngồi cạnh cầu thang. Cạnh cái hộp vừa có thêm một tờ giấy mới dán.
+- **narrator**: Chiều thứ Ba, sảnh tòa B lại vắng như hôm Chủ nhật. Bác bảo vệ đứng ở chân cầu thang. Cạnh cái hộp vừa có thêm một tờ giấy mới dán.
 - **player**: (Cái hộp, bác bảo vệ, tờ giấy mới dán… Bắt đầu từ đâu nhỉ.)
 
 ## n1-toa-b.2
