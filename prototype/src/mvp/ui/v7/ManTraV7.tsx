@@ -7,6 +7,10 @@
  * Máy chỉ MÔ TẢ kết quả (số dòng, bảng); lời Tùng / Hà Vy là lời "Khi …" của thẻ thử thách, hiện thành hộp thoại rồi ẩn.
  * Chạy sai không bị phạt. Đúng (tập kết quả khớp SQL chuẩn, `sql-mvp.ts`) thì hiện nút ghim phiếu lên bảng điều tra.
  * Buổi họp (`fix-query`): cùng màn này nhưng là màn chiếu, câu của Quân nạp sẵn.
+ *
+ * Từ Vụ 2, thẻ có LOWER/TRIM hay ORDER BY ở SQL chuẩn thì màn có thêm khối tương ứng (`khoiCuaThe`): nút gọt cột trước phép
+ * so (y nguyên → bỏ dấu cách thừa → coi như chữ thường → cả hai) và hàng "XẾP THEO" (cột, tăng / giảm). Dấu cách đầu / cuối
+ * của ô chữ trong bảng kết quả hiện thành dấu chấm mờ để người chơi nhìn thấy dữ liệu bẩn.
  */
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type DragEvent } from 'react';
 import type { BoDuLieuMvp, KichBanMvp, LoiMvp, TheThuThachMvp } from '../../../content/mvp/types';
@@ -17,11 +21,16 @@ import type { GiaTriHoSo } from '../../engine/giay-nho';
 import { tenNguoiNoi } from '../../engine/may';
 import { chamThuThach, chaySql, phanUngSauKhiChay, type KetQuaCham } from '../../engine/sql-mvp';
 import {
+  TEN_CHUAN_HOA,
   TEN_PHEP,
+  VONG_CHUAN_HOA,
+  bangNoiTrongSql,
   cauTuSql,
   dieuKienThanhSql,
+  khoiCuaThe,
   khungTuSqlChuan,
   tachWhere,
+  tenCte,
   thanhSql,
   type CauDung,
   type DieuKienDung,
@@ -53,28 +62,60 @@ export interface ManTraV7Props {
   canh: CanhTra;
   giayNho: GiaTriHoSo[];
   dienTen: (t: string) => string;
+  /**
+   * Thẻ `Kiểu: lọc tiếp`: phiếu kết quả đã ghim dùng làm nguồn thay cho bảng. Câu chạy thành
+   * `WITH <tên> AS (<câu của phiếu>) SELECT … FROM <tên> WHERE …` — người chơi thấy phiếu trở thành một "bảng tạm" có tên.
+   */
+  nguonPhieu?: NguonPhieuV7 | null;
   /** Người chơi bấm ghim / đi tiếp sau khi tra đúng; `dung` = mã các thẻ đã kéo vào câu. */
   onXong: (dung: string[], result?: { sql: string; cot: { ten: string; kieu: 'TEXT' | 'INTEGER' }[]; soDong: number }) => void;
 }
 
-export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong }: ManTraV7Props) {
+export interface NguonPhieuV7 {
+  id: string;
+  nhan: string;
+  sql: string;
+  cot: { ten: string; kieu: 'TEXT' | 'INTEGER' }[];
+  soDong: number;
+}
+
+export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonPhieu, onXong }: ManTraV7Props) {
   const cauHinh = CANH[canh];
-  const khung = useMemo(() => khungTuSqlChuan(the.sqlChuan), [the.sqlChuan]);
-  const bang = duLieu?.bang.find((b) => b.ten === khung?.bang);
-  const cot = useMemo(() => bang?.cot.map((c) => c.ten) ?? [], [bang]);
-  const kieuCot = useCallback((ten: string): KieuCot => bang?.cot.find((c) => c.ten === ten)?.kieu ?? 'TEXT', [bang]);
-  const tongDong = bang?.dong.length ?? 0;
+  // Nguồn là phiếu: `FROM @<mã phiếu>` của SQL chuẩn thành `FROM <tên tạm>`, mọi câu chạy có tiền tố `WITH <tên tạm> AS (…)`.
+  const tenNguon = nguonPhieu ? tenCte(nguonPhieu.id) : null;
+  const tienTo = nguonPhieu && tenNguon ? `WITH ${tenNguon} AS (${nguonPhieu.sql.trim().replace(/;\s*$/, '')}) ` : '';
+  const sqlChuan = useMemo(
+    () => (nguonPhieu && tenNguon ? the.sqlChuan.replace(new RegExp(`@${nguonPhieu.id}(?![a-z0-9-])`, 'i'), tenNguon) : the.sqlChuan),
+    [the.sqlChuan, nguonPhieu, tenNguon],
+  );
+  const khung = useMemo(() => khungTuSqlChuan(sqlChuan), [sqlChuan]);
+  const bang = useMemo(() => {
+    if (nguonPhieu && tenNguon) return { ten: tenNguon, cot: nguonPhieu.cot, soDong: nguonPhieu.soDong };
+    const b = duLieu?.bang.find((x) => x.ten === khung?.bang);
+    return b ? { ten: b.ten, cot: b.cot, soDong: b.dong.length } : undefined;
+  }, [duLieu, khung, nguonPhieu, tenNguon]);
+  const khoi = useMemo(() => khoiCuaThe(sqlChuan), [sqlChuan]);
+  // Khối "nối với" (thẻ có JOIN): các bảng được chọn khai ở thẻ, thiếu thì lấy bảng JOIN của SQL chuẩn.
+  const bangNoiDuoc = useMemo(() => (khoi.noi ? (the.bangNoi?.length ? the.bangNoi : bangNoiTrongSql(sqlChuan)) : []), [khoi.noi, the.bangNoi, sqlChuan]);
 
   const [cau, setCau] = useState<CauDung>(() => {
     const napSan = mode === 'fix-query' && the.truyVanNapSan ? cauTuSql(the.truyVanNapSan) : null;
     if (napSan) return napSan;
+    const cotGoc = bang?.cot.map((c) => c.ten) ?? [];
     return {
       khung: khung?.khung ?? '',
-      dieuKien: [0, 1].map((i) => ({ cot: cot[i % Math.max(1, cot.length)] ?? '', phep: 'bang', giaTri: null })),
+      dieuKien: [0, 1].map((i) => ({ cot: cotGoc[i % Math.max(1, cotGoc.length)] ?? '', phep: 'bang', giaTri: null })),
       noi: ['AND'],
     };
   });
-  const sql = thanhSql(cau, kieuCot);
+  const bangNoi = useMemo(() => (cau.noiBang?.bang ? duLieu?.bang.find((b) => b.ten === cau.noiBang?.bang) : undefined), [duLieu, cau.noiBang?.bang]);
+  /** Cột chung của bảng gốc và bảng nối (ứng viên khóa nối; trong điều kiện được viết `<bảng gốc>.<cột>`). */
+  const cotChung = useMemo(() => (bang && bangNoi ? bang.cot.map((c) => c.ten).filter((t) => bangNoi.cot.some((c) => c.ten === t)) : []), [bang, bangNoi]);
+  const cot = useMemo(() => [...(bang?.cot.map((c) => c.ten) ?? []), ...(bangNoi?.cot.map((c) => c.ten).filter((t) => !cotChung.includes(t)) ?? [])], [bang, bangNoi, cotChung]);
+  const kieuCot = useCallback((ten: string): KieuCot => bang?.cot.find((c) => c.ten === ten)?.kieu ?? bangNoi?.cot.find((c) => c.ten === ten)?.kieu ?? 'TEXT', [bang, bangNoi]);
+  const tongDong = bang?.soDong ?? 0;
+  const sqlNgoai = thanhSql(cau, kieuCot, cotChung);
+  const sql = tienTo + sqlNgoai;
   const [dangChon, setDangChon] = useState<GiaTriHoSo | null>(null);
   const [cham, setCham] = useState<KetQuaCham | null>(null);
   const [daChay, setDaChay] = useState<WhereTach | null>(null);
@@ -154,8 +195,9 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
     setSo({ n: tongDong, nhan: 'DÒNG' });
     soundEngine.playSfx('click');
     try {
-      const kq = await chamThuThach(duLieu, sql, the.sqlChuan);
-      const t = kq.trangThai === 'loi' ? null : tachWhere(sql);
+      const kq = await chamThuThach(duLieu, sql, tienTo + sqlChuan);
+      const tach = kq.trangThai === 'loi' ? null : tachWhere(sqlNgoai);
+      const t = tach && tienTo ? { ...tach, tienTo } : tach;
       track({
         type: 'mvp_query_run',
         challengeId: the.id,
@@ -169,7 +211,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
         if (t) {
           // Mỗi dòng của bảng qua / không qua từng điều kiện, và có được giữ theo cách nối không.
           const giu = t.dieuKien.reduce((acc, d, i) => (i === 0 ? `(${d})` : `${acc} ${t.noi[i - 1] ?? 'AND'} (${d})`), '');
-          const co = await chaySql(duLieu, `SELECT ${t.dieuKien.map((d) => `CASE WHEN ${d} THEN 1 ELSE 0 END`).join(', ')}, CASE WHEN ${giu} THEN 1 ELSE 0 END FROM ${t.bang}`);
+          const co = await chaySql(duLieu, `${tienTo}SELECT ${t.dieuKien.map((d) => `CASE WHEN ${d} THEN 1 ELSE 0 END`).join(', ')}, CASE WHEN ${giu} THEN 1 ELSE 0 END FROM ${t.bang}`);
           if (co.ok && song.current) {
             const soDk = t.dieuKien.length;
             const hang = co.dong;
@@ -218,7 +260,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
       banRon.current = false;
       if (song.current) setDangChay(false);
     }
-  }, [duLieu, khung, dung, sql, the, tongDong, demToi, cau]);
+  }, [duLieu, khung, dung, sql, sqlNgoai, sqlChuan, tienTo, the, tongDong, demToi, cau]);
 
   if (!duLieu) return <p className="game__error">Vụ này chưa có bộ dữ liệu (du-lieu.md) nên không chạy được.</p>;
   if (!khung || !bang) return <p className="game__error">Thẻ thử thách này thiếu khung SELECT … FROM … hợp lệ.</p>;
@@ -231,7 +273,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
   const xong = (): void => {
     if (xongRoi) return;
     setXongRoi(true);
-    const duocDungLamNguon = !!the.vatChung && Object.values(kb.thuThach).some((challenge) => challenge.kieuTrinhDung === 'tong-hop' && challenge.nguon === the.vatChung?.id);
+    const duocDungLamNguon = !!the.vatChung && Object.values(kb.thuThach).some((challenge) => challenge.nguon === the.vatChung?.id);
     if (duocDungLamNguon && cham?.trangThai === 'dung' && cham.chay.ok) {
       onXong(dungCacThe, {
         sql,
@@ -287,12 +329,64 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
       <p className="v7-de">{dienTen(the.deBai)}</p>
       <div className="v7-cau">
         <div className="v7-cau__bang">
-          <span className="v7-o v7-o--bang" title={`Bảng ${bang.ten}`}>
-            <span aria-hidden="true">🔒</span> {bang.ten}
-          </span>
+          {nguonPhieu ? (
+            <span className="v7-o v7-o--bang v7-o--phieu" title={`Phiếu đã ghim "${dienTen(nguonPhieu.nhan)}" dùng làm nguồn, tên tạm ${bang.ten}`}>
+              <span aria-hidden="true">📌</span> {dienTen(nguonPhieu.nhan)}
+            </span>
+          ) : (
+            <span className="v7-o v7-o--bang" title={`Bảng ${bang.ten}`}>
+              <span aria-hidden="true">🔒</span> {bang.ten}
+            </span>
+          )}
           <small>{tongDong} dòng</small>
         </div>
         <ol className="v7-cau__dk" aria-label="Các điều kiện">
+          {khoi.noi ? (
+            <li className="v7-dk v7-noi" aria-label="Nối với bảng khác">
+              <span className="v7-o v7-o--dau" aria-hidden="true">
+                NỐI VỚI
+              </span>
+              <button
+                type="button"
+                className={`v7-o v7-o--bang v7-o--noi-bang${cau.noiBang?.bang ? '' : ' is-trong'}`}
+                disabled={khoa}
+                aria-label={`Nối với bảng: ${cau.noiBang?.bang || 'chưa nối'} — bấm để đổi`}
+                onClick={() =>
+                  doiCau((c) => {
+                    // Vòng: chưa nối → từng bảng → chưa nối. Đổi bảng thì chọn lại khóa; cột điều kiện thuộc bảng cũ về cột đầu.
+                    const k = c.noiBang?.bang ? bangNoiDuoc.indexOf(c.noiBang.bang) + 1 : 0;
+                    const ke = bangNoiDuoc[k];
+                    const cotGoc = bang?.cot.map((x) => x.ten) ?? [];
+                    return { ...c, noiBang: ke === undefined ? null : { bang: ke, cot: '' }, dieuKien: c.dieuKien.map((d) => (cotGoc.includes(d.cot) ? d : { ...d, cot: cotGoc[0] ?? d.cot })) };
+                  })
+                }
+              >
+                {cau.noiBang?.bang ? `${cau.noiBang.bang}` : 'chưa nối'}
+              </button>
+              {cau.noiBang?.bang ? (
+                <>
+                  <span className="v7-o v7-o--dau" aria-hidden="true">
+                    THEO
+                  </span>
+                  <button
+                    type="button"
+                    className={`v7-o v7-o--cot${cau.noiBang.cot ? '' : ' is-trong'}`}
+                    disabled={khoa}
+                    aria-label={`Cột nối: ${cau.noiBang.cot || 'chưa chọn'} — bấm để đổi`}
+                    onClick={() =>
+                      doiCau((c) => {
+                        if (!c.noiBang) return c;
+                        const ke = cotChung[(cotChung.indexOf(c.noiBang.cot) + 1) % Math.max(1, cotChung.length)];
+                        return { ...c, noiBang: { ...c.noiBang, cot: ke ?? '' } };
+                      })
+                    }
+                  >
+                    {cau.noiBang.cot || 'chưa chọn cột'}
+                  </button>
+                </>
+              ) : null}
+            </li>
+          ) : null}
           {cau.dieuKien.map((d, i) => {
             const noi = cau.noi[i - 1] ?? 'AND';
             const nhieu = d.giaTri?.nguon === 'giay-nho' && (d.giaTri.nhieu?.length ?? 0) > 1;
@@ -322,6 +416,17 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
                 >
                   {d.cot}
                 </button>
+                {khoi.chuanHoa && kieuCot(d.cot) === 'TEXT' ? (
+                  <button
+                    type="button"
+                    className={`v7-o v7-o--got${d.chuanHoa && d.chuanHoa !== 'khong' ? ' is-bat' : ''}`}
+                    disabled={khoa}
+                    aria-label={`Gọt cột ${d.cot} trước khi so: ${TEN_CHUAN_HOA[d.chuanHoa ?? 'khong']} — bấm để đổi`}
+                    onClick={() => doiDk(i, (x) => ({ ...x, chuanHoa: VONG_CHUAN_HOA[(VONG_CHUAN_HOA.indexOf(x.chuanHoa ?? 'khong') + 1) % VONG_CHUAN_HOA.length] ?? 'khong' }))}
+                  >
+                    {TEN_CHUAN_HOA[d.chuanHoa ?? 'khong']}
+                  </button>
+                ) : null}
                 <button
                   type="button"
                   className="v7-o v7-o--phep"
@@ -372,6 +477,40 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
               </button>
             </li>
           ) : null}
+          {khoi.sapXep ? (
+            <li className="v7-dk v7-xep" aria-label="Xếp kết quả">
+              <span className="v7-o v7-o--dau" aria-hidden="true">
+                XẾP THEO
+              </span>
+              <button
+                type="button"
+                className={`v7-o v7-o--cot${cau.xep ? '' : ' is-trong'}`}
+                disabled={khoa}
+                aria-label={`Xếp theo: ${cau.xep ? cau.xep.cot : 'chưa xếp'} — bấm để đổi`}
+                onClick={() =>
+                  doiCau((c) => {
+                    // Vòng: chưa xếp → từng cột → chưa xếp.
+                    const k = c.xep ? cot.indexOf(c.xep.cot) + 1 : 0;
+                    const ke = cot[k];
+                    return { ...c, xep: ke === undefined ? null : { cot: ke, giam: c.xep?.giam ?? false } };
+                  })
+                }
+              >
+                {cau.xep ? cau.xep.cot : 'chưa xếp'}
+              </button>
+              {cau.xep ? (
+                <button
+                  type="button"
+                  className="v7-o v7-o--phep"
+                  disabled={khoa}
+                  aria-label={`Chiều xếp: ${cau.xep.giam ? 'giảm dần' : 'tăng dần'} — bấm để đổi`}
+                  onClick={() => doiCau((c) => (c.xep ? { ...c, xep: { ...c.xep, giam: !c.xep.giam } } : c))}
+                >
+                  {cau.xep.giam ? '↓ giảm dần' : '↑ tăng dần'}
+                </button>
+              ) : null}
+            </li>
+          ) : null}
         </ol>
       </div>
 
@@ -397,7 +536,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
                   {cham.chay.dong.map((h, r) => (
                     <tr key={r} style={{ ['--i' as string]: Math.min(r, 12) }}>
                       {h.map((v, k) => (
-                        <td key={k}>{v === null ? '(trống)' : String(v)}</td>
+                        <td key={k}>{v === null ? '(trống)' : <ChuCoDauCach chu={String(v)} />}</td>
                       ))}
                     </tr>
                   ))}
@@ -424,7 +563,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
       </div>
 
       <p className="v7-sql" aria-label="Câu SQL đang dựng">
-        <CauSql cau={cau} kieuCot={kieuCot} />
+        <CauSql cau={cau} kieuCot={kieuCot} cotChung={cotChung} cte={nguonPhieu && tenNguon ? { ten: tenNguon, nhan: dienTen(nguonPhieu.nhan) } : null} />
       </p>
       <div className="v7-day">
         {daChay && cham && cham.trangThai !== 'loi' ? (
@@ -472,14 +611,27 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
 }
 
 /** Câu SQL tô màu: từ khóa xanh, giá trị vàng, mỗi điều kiện gạch chân cùng màu với phiếu của nó. */
-function CauSql({ cau, kieuCot }: { cau: CauDung; kieuCot: (c: string) => KieuCot }) {
-  const phan = cau.dieuKien
-    .map((d, i) => ({ chu: dieuKienThanhSql(d, kieuCot(d.cot)), i }))
-    .filter((x): x is { chu: string; i: number } => x.chu !== null);
+function CauSql({ cau, kieuCot, cotChung = [], cte }: { cau: CauDung; kieuCot: (c: string) => KieuCot; cotChung?: readonly string[]; cte?: { ten: string; nhan: string } | null }) {
   const m = /^SELECT\s+(.+?)\s+FROM\s+(\S+)$/i.exec(cau.khung);
+  const nb = cau.noiBang && cau.noiBang.bang && cau.noiBang.cot ? cau.noiBang : null;
+  const q = (c: string): string => (nb && cotChung.includes(c) ? `${m?.[2] ?? ''}.${c}` : c);
+  const phan = cau.dieuKien
+    .map((d, i) => ({ chu: dieuKienThanhSql({ ...d, cot: q(d.cot) }, kieuCot(d.cot)), i }))
+    .filter((x): x is { chu: string; i: number } => x.chu !== null);
   return (
     <code>
+      {cte ? (
+        <>
+          <span className="k">WITH</span> {cte.ten} <span className="k">AS</span> (<span className="v7-sql__phieu">phiếu “{cte.nhan}”</span>){' '}
+        </>
+      ) : null}
       <span className="k">SELECT</span> {m?.[1] ?? '*'} <span className="k">FROM</span> {m?.[2] ?? ''}
+      {nb ? (
+        <>
+          {' '}
+          <span className="k">JOIN</span> {nb.bang} <span className="k">ON</span> {m?.[2] ?? ''}.{nb.cot} = {nb.bang}.{nb.cot}
+        </>
+      ) : null}
       {phan.length > 0 ? (
         <>
           {' '}
@@ -492,17 +644,45 @@ function CauSql({ cau, kieuCot }: { cau: CauDung; kieuCot: (c: string) => KieuCo
           ))}
         </>
       ) : null}
+      {cau.xep && cau.xep.cot !== '' ? (
+        <>
+          {' '}
+          <span className="k">ORDER BY</span> {q(cau.xep.cot)}
+          {cau.xep.giam ? <span className="k"> DESC</span> : null}
+        </>
+      ) : null}
     </code>
   );
 }
 
+/** Ô chữ có dấu cách đầu / cuối: mỗi dấu cách hiện thành một chấm mờ (dữ liệu nhập tay hay dính dấu cách thừa). */
+export function ChuCoDauCach({ chu }: { chu: string }) {
+  const m = /^(\s*)([\s\S]*?)(\s*)$/.exec(chu);
+  const dau = m?.[1] ?? '';
+  const cuoi = m?.[3] ?? '';
+  if (dau === '' && cuoi === '') return <>{chu}</>;
+  const cham = (s: string) =>
+    s === '' ? null : (
+      <span className="v7-dau-cach" aria-label={`${s.length} dấu cách`} title={`${s.length} dấu cách`}>
+        {'·'.repeat(s.length)}
+      </span>
+    );
+  return (
+    <>
+      {cham(dau)}
+      {m?.[2] ?? ''}
+      {cham(cuoi)}
+    </>
+  );
+}
+
 function toMauDieuKien(chu: string) {
-  return chu.split(/('(?:[^']|'')*'|\b(?:LIKE|IN|OR)\b)/g).map((x, i) =>
+  return chu.split(/('(?:[^']|'')*'|\b(?:LIKE|IN|OR|LOWER|TRIM)\b)/g).map((x, i) =>
     /^'/.test(x) ? (
       <span key={i} className="s">
         {x}
       </span>
-    ) : /^(LIKE|IN|OR)$/.test(x) ? (
+    ) : /^(LIKE|IN|OR|LOWER|TRIM)$/.test(x) ? (
       <span key={i} className="k">
         {x}
       </span>

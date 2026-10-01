@@ -15,8 +15,10 @@ if (!DU_LIEU) throw new Error('KICH_BAN_MVP.duLieu rỗng');
 describe('SQL MVP trên du-lieu.md', () => {
   it('mọi thẻ thử thách: SQL chuẩn ra đúng "Số dòng kỳ vọng" (c-lop 2, c-ten-h 2, c-in 1, c-sua-or-quan 2)', async () => {
     const the = Object.values(KB.thuThach);
-    expect(the.map((t) => t.id).sort()).toEqual(['c-in', 'c-lop', 'c-sua-or-quan', 'c-ten-h']);
+    expect(the.map((t) => t.id)).toEqual(expect.arrayContaining(['c-in', 'c-lop', 'c-sua-or-quan', 'c-ten-h', 'c-tin-don', 'c-tin-goc', 'c-tin-may', 'c-tin-xuong', 'v2-loc-buoi']));
     for (const t of the) {
+      // Thẻ tổng hợp lấy phiếu làm nguồn (`FROM @<mã phiếu>`): bộ kiểm nội dung chạy sau khi thay nguồn, không chạy thẳng được ở đây.
+      if (t.sqlChuan.includes('@')) continue;
       const kq = await chaySql(DU_LIEU, t.sqlChuan);
       expect(kq.ok, t.id).toBe(true);
       if (kq.ok) expect(kq.dong.length, t.id).toBe(t.soDongKyVong);
@@ -93,10 +95,10 @@ describe('phản ứng sau khi chạy (dòng "Khi …" của thẻ)', () => {
     expect(phanUngSauKhiChay(lop, await chamThuThach(DU_LIEU, `${khungLop} WHERE nganh = 'Du lịch'`, lop.sqlChuan))).toEqual([]);
   });
 
-  it('c-in: bỏ điều kiện mã → đúng một dòng SV210745, 23:10 Chủ nhật', async () => {
+  it('c-in: bỏ điều kiện mã → đúng một dòng clb_robotics, 23:10 Chủ nhật', async () => {
     const inAn = KB.thuThach['c-in'];
     if (!inAn) throw new Error('thiếu thẻ c-in');
     const kq = await chaySql(DU_LIEU, inAn.sqlChuan);
-    expect(kq.ok && kq.dong).toEqual([['2024-09-15 23:10', 'SV210745', 'kien-nghi-phong-clb.docx', 1]]);
+    expect(kq.ok && kq.dong).toEqual([['2024-09-15 23:10', 'clb_robotics', 'kien-nghi-phong-clb.docx', 1]]);
   });
 });

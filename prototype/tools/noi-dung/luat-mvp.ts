@@ -87,18 +87,30 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     if (truoc) err(c.viTri, `bằng chứng "${ev}" khai ở cả thẻ ${c.id} lẫn hồ sơ ${truoc.tep}:${truoc.dong} — chỉ một chỗ`);
     else vatPham.set(ev, c.viTri);
   }
+  // Thẻ có JOIN: "Nối được với" chỉ gồm bảng có thật, và phải chứa bảng JOIN của SQL chuẩn.
+  for (const c of mvp.challenges) {
+    const ds = (c.fields['Nối được với'] ?? '').split('·').map((x) => x.trim()).filter(Boolean);
+    if (ds.length === 0) continue;
+    const bang = new Set((mvp.duLieu?.bang ?? []).map((b) => b.ten));
+    for (const b of ds) if (!bang.has(b)) err(c.viTri, `thẻ ${c.id}, "Nối được với": không có bảng "${b}" trong du-lieu.md`);
+    const sql = c.sql['SQL chuẩn'] ?? '';
+    for (const m of sql.matchAll(/\bJOIN\s+([A-Za-z_][A-Za-z0-9_]*)/gi)) if (m[1] && !ds.includes(m[1])) err(c.viTri, `thẻ ${c.id}, "Nối được với": thiếu bảng "${m[1]}" mà SQL chuẩn nối tới`);
+  }
   // V2 aggregate cards may use only a result card from an earlier challenge.
   const evidenceOwner = new Map(mvp.challenges.flatMap((c, i) => c.evidence ? [[c.evidence.id, { c, i }] as const] : []));
   for (const [i, c] of mvp.challenges.entries()) {
     const kind = c.fields['Kiểu'];
     const sourceId = c.fields['Nguồn'];
     const groupBy = c.fields['Nhóm theo'];
-    if (kind && kind !== 'tổng hợp') err(c.viTri, `thẻ ${c.id}: "Kiểu" chỉ hỗ trợ "tổng hợp"`);
-    if (kind !== 'tổng hợp') {
-      if (sourceId !== undefined || groupBy !== undefined) err(c.viTri, `thẻ ${c.id}: "Nguồn" và "Nhóm theo" chỉ dùng với "Kiểu: tổng hợp"`);
+    const tongHop = kind === 'tổng hợp';
+    const locTiep = kind === 'lọc tiếp';
+    if (kind && !tongHop && !locTiep) err(c.viTri, `thẻ ${c.id}: "Kiểu" chỉ hỗ trợ "tổng hợp" (nhóm và đếm trên phiếu) hoặc "lọc tiếp" (lọc tiếp trên phiếu)`);
+    if (!tongHop && !locTiep) {
+      if (sourceId !== undefined || groupBy !== undefined) err(c.viTri, `thẻ ${c.id}: "Nguồn" và "Nhóm theo" chỉ dùng với "Kiểu: tổng hợp" hoặc "Kiểu: lọc tiếp"`);
       continue;
     }
-    if (!sourceId) { err(c.viTri, `thẻ ${c.id}: "Kiểu: tổng hợp" cần "Nguồn: <mã-vật-chứng-của-phiếu-trước>"`); continue; }
+    if (locTiep && groupBy !== undefined) err(c.viTri, `thẻ ${c.id}: "Kiểu: lọc tiếp" không có "Nhóm theo"`);
+    if (!sourceId) { err(c.viTri, `thẻ ${c.id}: "Kiểu: ${kind}" cần "Nguồn: <mã-vật-chứng-của-phiếu-trước>"`); continue; }
     const owner = evidenceOwner.get(sourceId);
     if (!owner) err(c.viTri, `thẻ ${c.id}: nguồn "${sourceId}" không phải vật chứng của thẻ thử thách`);
     else if (owner.i >= i) err(c.viTri, `thẻ ${c.id}: nguồn "${sourceId}" phải thuộc thẻ thử thách đứng trước`);
@@ -109,8 +121,15 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     const sql = c.sql['SQL chuẩn'] ?? '';
     const placeholders = [...sql.matchAll(/\bFROM\s+@([a-z0-9-]+)/gi)].map((m) => m[1]);
     if (placeholders.length !== 1 || placeholders[0] !== sourceId) err(c.viTri, `thẻ ${c.id}: "SQL chuẩn" phải có đúng một FROM @${sourceId}`);
-    if (!/\bCOUNT\s*\(\s*\*\s*\)/i.test(sql)) err(c.viTri, `thẻ ${c.id}: SQL tổng hợp phải dùng COUNT(*)`);
+    if (tongHop && !/\bCOUNT\s*\(\s*\*\s*\)/i.test(sql)) err(c.viTri, `thẻ ${c.id}: SQL tổng hợp phải dùng COUNT(*)`);
     if (groupBy && !new RegExp(`\\bGROUP\\s+BY\\s+${groupBy}\\s*;?\\s*$`, 'i').test(sql.trim())) err(c.viTri, `thẻ ${c.id}: SQL tổng hợp phải GROUP BY đúng một cột "${groupBy}"`);
+  }
+  // Cờ đặt bằng "[HẬU QUẢ] đặt co.<x>" (hay hậu quả của một lựa chọn [RẼ NHÁNH]) dùng được trong [NẾU] / [KHI] / [ĐIỀU KIỆN].
+  for (const c of mvp.chuoi) {
+    for (const it of c.items) {
+      const cac = it.kind === 'consequence' ? it.hauQua : it.kind === 'branch' ? it.branch.choices.flatMap((ch) => ch.hauQua) : [];
+      for (const h of cac) if (h.kind === 'dat-co' && !vatPham.has(h.co)) vatPham.set(h.co, c.viTri);
+    }
   }
   // Mức đạt của mỗi [ĐỐI CHẤT] là hai mã cờ dùng được trong [ĐIỀU KIỆN] / [KHI]: <mã>-du, <mã>-ho-tro.
   for (const c of mvp.chuoi) {
@@ -122,6 +141,10 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
       }
     }
   }
+  // Cờ máy tự đặt khi một vụ tới [KẾT THÚC] (engine/may.ts `coKhiKet`): <mã vụ>-hoan-tat; vụ gốc thêm -ket-that / -ket-thuong.
+  // Chỉ khai khi lịch có vụ sau (bộ một vụ không có ai đọc các cờ này).
+  const coVu: string[] = lich.vuSau.length > 0 ? [`${lich.vu.id}-hoan-tat`, `${lich.vu.id}-ket-that`, `${lich.vu.id}-ket-thuong`, ...lich.vuSau.map((v) => `${v.id}-hoan-tat`)] : [];
+  for (const ma of coVu) if (!vatPham.has(ma)) vatPham.set(ma, lich.viTri);
   const canVatPham = (id: string, vt: ViTri, tienTo: string | null, noi: string): void => {
     if (!vatPham.has(id)) err(vt, `${noi}: không có mã "${id}" (chưa khai ở ho-so/ hay thẻ thử thách)`);
     else if (tienTo && !id.startsWith(tienTo)) err(vt, `${noi}: "${id}" phải là mã ${tienTo}…`);
@@ -319,6 +342,11 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
         case 'condition':
           for (const id of maTrongDieuKien(it.dieuKien)) canVatPham(id, vt, null, '[ĐIỀU KIỆN]');
           break;
+        case 'jump-if':
+          // Không phải cạnh bắt buộc: chuỗi đích chỉ chạy khi điều kiện thỏa.
+          for (const id of maTrongDieuKien(it.dieuKien)) canVatPham(id, vt, null, '[NẾU]');
+          canChuoi(it.chuoi, '[NẾU]');
+          break;
         case 'notebook-lookup': {
           const tr = soTay.get(it.trang);
           if (!tr) err(vt, `[TRA SỔ ${it.trang}]: không có trang sổ "${it.trang}" trong so-tay/`);
@@ -421,6 +449,14 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     canChuoiLich(lich.ket.that, lich.ket.viTri, '"Kết thật"');
     canChuoiLich(lich.ket.thuong, lich.ket.viTri, '"Kết thường"');
   }
+  for (const v of lich.vuSau) canChuoiLich(v.chuoi, v.viTri, `vụ sau ${v.id}, "Chuỗi"`);
+  // Nhiệm vụ phụ: người giao là nhân vật có thật; "Mở sau" là mã vụ gốc hay một vụ sau (không phải nhiệm vụ phụ khác).
+  for (const v of lich.vuSau.filter((x) => x.phu)) {
+    if (v.nguoiGiao !== null && !nhanVat.has(v.nguoiGiao)) err(v.viTri, `nhiệm vụ phụ ${v.id}, "Người giao": không có nhân vật "${v.nguoiGiao}" trong nhan-vat.md`);
+    const vuChinh = [lich.vu.id, ...lich.vuSau.filter((x) => !x.phu).map((x) => x.id)];
+    if (v.moSau !== null && !vuChinh.includes(v.moSau)) err(v.viTri, `nhiệm vụ phụ ${v.id}, "Mở sau": "${v.moSau}" không phải mã một vụ chính (có: ${vuChinh.join(', ')})`);
+  }
+  if (lich.vuSau.length > 0 && !lich.ket) err(lich.viTri, 'lịch có "{vụ sau: …}" nhưng vụ gốc không có mục "## Kết" để chơi tiếp từ đó');
 
   // ---------- Đồ thị chuỗi: mốc sớm nhất, chuỗi lẻ ----------
   const goc: { id: string; t: number }[] = [{ id: lich.chuoiDau, t: 0 }];
@@ -435,6 +471,8 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   for (const k of duKien.values()) if (k.chuoi) goc.push({ id: k.chuoi, t: thuTuDK(k.id) });
   if (lich.ngayHop) goc.push({ id: lich.ngayHop.chuoi, t: 1000 });
   if (lich.ket) goc.push({ id: lich.ket.that, t: 1000 }, { id: lich.ket.thuong, t: 1000 });
+  // Vụ sau chạy sau khi vụ gốc kết: cùng mốc "ngày họp" (mọi nhân vật đã xuất hiện).
+  for (const v of lich.vuSau) goc.push({ id: v.chuoi, t: 1000 });
   for (const g of goc) if (chuoi.has(g.id)) mocChuoi.set(g.id, Math.min(mocChuoi.get(g.id) ?? Infinity, g.t));
   let doi = true;
   while (doi) {
@@ -464,6 +502,20 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     return s;
   };
   const tuHop = lich.ngayHop ? toiDuoc(lich.ngayHop.chuoi) : new Set<string>();
+  // Mỗi vụ sau phải tới được ít nhất một [KẾT THÚC]; chuỗi của vụ sau không được hết nút mà không [ĐI TỚI] / [KẾT THÚC].
+  for (const v of lich.vuSau) {
+    if (!chuoi.has(v.chuoi)) continue;
+    const den = [...toiDuoc(v.chuoi)].map((id) => chuoi.get(id)).filter((c): c is RawChuoiMvp => !!c);
+    if (!den.some((c) => c.items.some((it) => it.kind === 'end'))) err(v.viTri, `vụ sau ${v.id}: từ chuỗi "${v.chuoi}" không tới được [KẾT THÚC] nào`);
+    for (const c of den) {
+      const cuoi = c.items[c.items.length - 1];
+      const tuDi = cuoi && (cuoi.kind === 'end' || cuoi.kind === 'goto' || (cuoi.kind === 'consequence' && cuoi.hauQua.some((h) => h.kind === 'di-toi')) || (cuoi.kind === 'branch' && cuoi.branch.choices.every((ch) => ch.hauQua.some((h) => h.kind === 'di-toi'))));
+      // Chuỗi của một chỗ bấm [KHÁM PHÁ] được hết nút (máy quay về cảnh khám phá).
+      const laDiemKhamPha = den.some((x) => x.items.some((it) => it.kind === 'explore' && it.diem.some((d) => d.chuoi === c.id)));
+      if (!tuDi && !laDiemKhamPha) err(c.viTri, `chuỗi "${c.id}" (vụ sau ${v.id}) phải kết bằng [ĐI TỚI …], [RẼ NHÁNH] có "đi tới" ở mọi lựa chọn, hoặc [KẾT THÚC]`);
+    }
+  }
+  if (lich.vuSau.some((v) => tuHop.has(v.chuoi))) err(lich.viTri, 'chuỗi của vụ sau không được nối từ chuỗi ngày họp (vụ sau bắt đầu từ màn kết của vụ trước)');
 
   // ---------- Người nói: tồn tại, biểu cảm, Xuất hiện từ, chỉ qua lời kể ----------
   const kiemNguoiNoi = (speaker: string, expression: string | null, vt: ViTri, t: number | null): void => {

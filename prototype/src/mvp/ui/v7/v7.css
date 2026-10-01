@@ -1595,3 +1595,68 @@ button.v7-o:active:not(:disabled) {
 .bang__ghim-lai:hover {
   transform: translateY(-2px);
 }
+
+/* ---------- Vụ 2: khối gọt cột (TRIM / LOWER) và hàng "xếp theo" (ORDER BY) ---------- */
+.v7-o--got {
+  font-size: 0.82em;
+  padding-inline: 0.55em;
+  border-style: dashed;
+  opacity: 0.8;
+}
+.v7-o--got.is-bat {
+  border-style: solid;
+  opacity: 1;
+  background: rgba(255, 196, 87, 0.18);
+  border-color: #ffc457;
+  color: #ffe2a6;
+}
+.v7-xep {
+  padding-top: 0.4em;
+  border-top: 1px dashed rgba(255, 255, 255, 0.16);
+}
+.v7-xep .v7-o--cot.is-trong {
+  opacity: 0.65;
+  font-style: italic;
+}
+.v7-dau-cach {
+  color: #ff9f6b;
+  opacity: 0.85;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- Nguồn là phiếu đã ghim (thẻ "Kiểu: lọc tiếp"): ô nguồn màu phiếu, tên tạm trong câu SQL ---------- */
+.v7-o--phieu {
+  background: #fdfaf2;
+  color: #2a2320;
+  font-family: var(--font-ui);
+  max-width: 13em;
+  height: auto;
+  min-height: 2.7em;
+  padding-block: 0.3em;
+  text-align: left;
+  line-height: 1.15;
+  box-shadow: 0 0.2em 0 rgba(0, 0, 0, 0.45);
+}
+.v7-sql__phieu {
+  color: #f6d98a;
+  font-style: italic;
+}
+
+/* ---------- Vụ 4: hàng "nối với bảng … theo cột …" (JOIN) ---------- */
+.v7-noi {
+  padding-bottom: 0.4em;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.16);
+}
+.v7-o--noi-bang {
+  cursor: pointer;
+}
+.v7-o--noi-bang.is-trong,
+.v7-noi .v7-o--cot.is-trong {
+  opacity: 0.65;
+  font-style: italic;
+}
+
+.man-tong-hop__sql code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}

@@ -7,7 +7,7 @@
  * Cú pháp:
  *   ## <tên_bảng> {bảng}          + `- Cột: <cột> TEXT|INTEGER, …` + bảng Markdown (hàng tiêu đề = tên cột, đúng thứ tự)
  *   ## <tên_bảng_ảo> {bảng ảo}    + (tùy chọn) `- Ghi chú: …` + khối ```sql là một câu SELECT (thành CREATE VIEW)
- * Ô `NULL` là giá trị rỗng; ô trống là lỗi. Chú thích `<!-- … -->` (một hay nhiều dòng) bỏ qua.
+ * Ô `NULL` là giá trị rỗng; ô trống là lỗi. Trong ô chữ, `␣` là một dấu cách thật (để viết được dấu cách đầu/cuối ô). Chú thích `<!-- … -->` (một hay nhiều dòng) bỏ qua.
  * Không ném lỗi: lỗi nằm trong `loi`, mỗi lỗi có `<tệp>:<dòng>`. Không import gì từ `src/`.
  */
 import type { LoiNoiDung, ViTri } from './doc.ts';
@@ -165,11 +165,12 @@ export function docDuLieuMvp(tep: { duongDan: string; noiDung: string }): { duLi
           cur.cot.forEach((c, k) => {
             const v = o[k] ?? '';
             if (v === '') err(so, `bảng ${cur.ten}, cột ${c.ten}: ô trống — ghi NULL nếu cố ý để rỗng`);
+            // `␣` trong ô chữ = một dấu cách thật (bảng Markdown tự cắt dấu cách đầu/cuối ô, nên dữ liệu "bẩn" phải viết lộ ra).
             if (v === 'NULL') hang.push(null);
             else if (c.kieu === 'INTEGER') {
               if (!/^-?\d+$/.test(v)) err(so, `bảng ${cur.ten}, cột ${c.ten} (INTEGER): "${v}" không phải số nguyên`);
               hang.push(Number(v));
-            } else hang.push(v);
+            } else hang.push(v.replace(/␣/g, ' '));
           });
           cur.dong.push(hang);
         }

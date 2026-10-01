@@ -63,7 +63,7 @@ describe('sảnh KTX: [KHÁM PHÁ]', () => {
     expect(screen.queryByRole('dialog', { name: /Giới thiệu nhân vật/ })).toBeNull();
     act(() => useKhoMvp.getState().hanhDong({ type: 'tiep' }));
     act(() => useKhoMvp.getState().hanhDong({ type: 'tiep' }));
-    expect(document.body.textContent).toContain('Tớ là Trần Tùng, học Du lịch.');
+    expect(document.body.textContent).toContain('Tớ là Tùng, học Du lịch.');
     expect(screen.queryByRole('dialog', { name: /Giới thiệu nhân vật/ })).toBeNull();
     await userEvent.click(screen.getByRole('button', { name: 'Tiếp tục' }));
     const the = screen.getByRole('dialog', { name: 'Giới thiệu nhân vật: Trần Tùng' });

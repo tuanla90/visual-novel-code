@@ -87,6 +87,8 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
       return { type: 'wait', giay: it.giay };
     case 'condition':
       return { type: 'condition', dieuKien: it.dieuKien };
+    case 'jump-if':
+      return { type: 'jump-if', dieuKien: it.dieuKien, to: it.chuoi };
     case 'consequence':
       return { type: 'consequence', hauQua: it.hauQua };
     case 'branch':
@@ -141,7 +143,7 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
   if (soDongChu !== undefined) {
     if (!/^\d+$/.test(soDongChu)) throw new Error(`${noi}: thẻ ${t.id}, "Số dòng kỳ vọng" phải là số nguyên: "${soDongChu}"`);
     soDongKyVong = Number(soDongChu);
-    soDongKhai.push({ sql: sqlChuan, soDong: soDongKyVong, noi: `${noi} thẻ ${t.id}, SQL chuẩn`, ...(t.evidence ? { resultId: t.evidence.id } : {}), ...(t.fields['Kiểu'] === 'tổng hợp' && t.fields['Nguồn'] ? { sourceResultId: t.fields['Nguồn'] } : {}), ...(t.fields['Kiểu'] === 'tổng hợp' && t.fields['Nhóm theo'] ? { sourceGroupColumn: t.fields['Nhóm theo'] } : {}) });
+    soDongKhai.push({ sql: sqlChuan, soDong: soDongKyVong, noi: `${noi} thẻ ${t.id}, SQL chuẩn`, ...(t.evidence ? { resultId: t.evidence.id } : {}), ...((t.fields['Kiểu'] === 'tổng hợp' || t.fields['Kiểu'] === 'lọc tiếp') && t.fields['Nguồn'] ? { sourceResultId: t.fields['Nguồn'] } : {}), ...(t.fields['Kiểu'] === 'tổng hợp' && t.fields['Nhóm theo'] ? { sourceGroupColumn: t.fields['Nhóm theo'] } : {}) });
   }
   return {
     id: t.id,
@@ -152,6 +154,10 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     soDongKyVong,
     sqlChuan,
     ...(t.fields['Kiểu'] === 'tổng hợp' ? { kieuTrinhDung: 'tong-hop', nguon: t.fields['Nguồn'] ?? null, nhomTheo: t.fields['Nhóm theo'] || null } : {}),
+    // "Kiểu: lọc tiếp": màn tra v7 lấy phiếu đã ghim làm nguồn (câu hiện thành WITH … AS).
+    ...(t.fields['Kiểu'] === 'lọc tiếp' ? { kieuTrinhDung: 'loc-tiep', nguon: t.fields['Nguồn'] ?? null } : {}),
+    // "Nối được với: a · b": các bảng hiện ở khối "nối với" của màn tra (thẻ có JOIN).
+    ...(t.fields['Nối được với'] ? { bangNoi: chiaGiaTri(t.fields['Nối được với']) } : {}),
     truyVanNapSan: t.sql['Truy vấn nạp sẵn'] ?? null,
     phanUng: docPhanUng(t.fields).phanUng.map((p) => ({ khi: p.khi, loi: p.loi.map(loi) })),
     vatChung: t.evidence
@@ -229,6 +235,11 @@ export function chuyenMvp(mvp: RawMvp, luat: KetQuaLuat): DuLieuMvp {
       ngay: lich.ngay.map((n) => ({ so: n.so, ten: n.ten, kieu: n.kieu, chuoi: n.chuoi, duKienChinh: n.duKienChinh, moNgay: n.moNgay, buoiToi: n.buoiToi })),
       ngayHop: lich.ngayHop ? { chuoi: lich.ngayHop.chuoi } : null,
       ket: lich.ket ? { that: lich.ket.that, thuong: lich.ket.thuong } : null,
+      // Chỉ ghi khi có vụ sau: bộ một vụ sinh ra y như trước.
+      ...(lich.vuSau.some((v) => !v.phu) ? { vuSau: lich.vuSau.filter((v) => !v.phu).map((v) => ({ id: v.id, ten: v.ten, chuoi: v.chuoi, ngay: v.ngay, tieuDeKet: v.tieuDeKet, loiKet: v.loiKet })) } : {}),
+      ...(lich.vuSau.some((v) => v.phu)
+        ? { nhiemVuPhu: lich.vuSau.filter((v) => v.phu).map((v) => ({ id: v.id, ten: v.ten, chuoi: v.chuoi, nguoiGiao: v.nguoiGiao ?? '', moSau: v.moSau ?? '', ngay: v.ngay, tieuDeKet: v.tieuDeKet, loiKet: v.loiKet })) }
+        : {}),
     },
     chuoi: chuoiDs,
     thuThach,

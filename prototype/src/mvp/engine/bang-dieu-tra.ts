@@ -18,7 +18,7 @@
  * không vẽ, không có sợi, nằm ở `boGhim` để ghim lại; thẻ "?" và phiếu sắp ghim (`them`) không gỡ được.
  */
 import type { KichBanMvp, TheHoSoMvp } from '../../content/mvp/types';
-import type { MauGhimMvp, TrangThaiMvp } from './trang-thai';
+import type { MauGhimMvp, TrangThaiMvp, GhiChuTruyVanMvp, PhieuTruyVanMvp } from './trang-thai';
 
 export type LoaiTheBang = 'tin' | 'phieu' | 'note' | 'vat' | 'tai-lieu' | 'hoi';
 
@@ -72,7 +72,7 @@ const tach = (chu: string | undefined): string[] =>
  * Bảng của ván đang chơi. `them`: mã một phiếu kết quả SẮP vào hồ sơ (màn "ghim lên bảng" ngay sau khi tra đúng, trước khi
  * máy ghi nhận) kèm các thẻ đã dùng.
  */
-export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; dung: string[]; phieu?: import('./trang-thai').PhieuTruyVanMvp; ghiChu?: import('./trang-thai').GhiChuTruyVanMvp[] }): BangDieuTra {
+export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; dung: string[]; phieu?: PhieuTruyVanMvp; ghiChu?: GhiChuTruyVanMvp[] }): BangDieuTra {
   const the: TheBang[] = [];
   const boGhim: TheBang[] = [];
   const day: DayBang[] = [];

@@ -12,7 +12,7 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react';
 import type { KichBanMvp } from '../../../content/mvp/types';
 import { CO_THE, KHUNG_BANG, dungBang, gocNghieng, MA_THE_HOI, viTriThe, type TheBang } from '../../engine/bang-dieu-tra';
-import { MAU_GHIM, type MauGhimMvp, type TrangThaiMvp } from '../../engine/trang-thai';
+import { MAU_GHIM, type MauGhimMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp } from '../../engine/trang-thai';
 import { anhTheoTen } from '../anh-mvp';
 import { TheHoSo } from '../TheHoSo';
 import './v7.css';
@@ -22,7 +22,7 @@ export interface BangGhimMvpProps {
   s: TrangThaiMvp;
   dienTen: (t: string) => string;
   /** Phiếu kết quả vừa tra xong, chưa vào hồ sơ: vẽ thêm lên bảng kèm sợi chỉ từ các thẻ đã dùng. */
-  them?: { id: string; dung: string[]; phieu?: import('../../engine/trang-thai').PhieuTruyVanMvp; ghiChu?: import('../../engine/trang-thai').GhiChuTruyVanMvp[] };
+  them?: { id: string; dung: string[]; phieu?: PhieuTruyVanMvp; ghiChu?: GhiChuTruyVanMvp[] };
   /** Thẻ vừa ghim: rơi xuống, sợi chỉ tới nó tự vẽ. */
   moi?: string | null;
   /** Người chơi kéo một thẻ tới chỗ khác. */

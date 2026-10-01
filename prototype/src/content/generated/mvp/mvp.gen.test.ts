@@ -32,10 +32,11 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
     const d = kq.duLieu as unknown as KichBanMvp | null;
     expect(d).not.toBeNull();
     if (!d) return;
-    expect(d.lich.ngay.map((n) => n.so)).toEqual([1, 2, 3, 4, 5]);
+    expect(d.lich.ngay.map((n) => n.so)).toEqual([1, 2, 3, 4, 5, 6]);
     expect(d.lich.ngayHop).not.toBeNull();
     expect(d.lich.ket).toEqual({ that: 'ket-that', thuong: 'ket-thuong' });
-    for (const n of d.lich.ngay) expect([n.kieu, n.chuoi]).toEqual(['theo-truyen', `n${n.so}-mo`]);
+    // Ngày 6 là ngày thử màn tổng hợp (phiếu làm nguồn, nhóm và đếm), chuỗi v2-tong-hop.
+    for (const n of d.lich.ngay) expect([n.kieu, n.chuoi]).toEqual(['theo-truyen', n.so === 6 ? 'v2-tong-hop' : `n${n.so}-mo`]);
     expect(d.soDongKhai.length).toBeGreaterThan(0);
     expect(d.chuoi.find((c) => c.id === 'md-01-ktx')?.mocSomNhat).toBe(0);
     expect(d.nhanVat.find((n) => n.id === 'quan')?.xuatHienTu).toEqual({ kind: 'ngay', ngay: 3, khung: 'sang' });
@@ -43,11 +44,19 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
 
   it('bộ dữ liệu cố định Vụ 1 (du-lieu.md): 14 lớp (3 lớp khác khóa, QĐ-092), 25 sinh viên, 9 dòng nhật ký in, bảng ảo tra_cuu_k24', () => {
     const d = kq.duLieu as unknown as KichBanMvp | null;
-    expect(d?.duLieu?.bang.map((b) => [b.ten, b.dong.length])).toEqual([
+    expect(d?.duLieu?.bang.map((b) => [b.ten, b.dong.length])).toEqual(expect.arrayContaining([
       ['lop_sinh_hoat', 14],
       ['sinh_vien', 25],
-      ['nhat_ky_in', 9],
-    ]);
+      ['nhat_ky_in', 10],
+      ['nhat_ky_su_dung', 7],
+      ['tin_nhan', 8],
+      ['dang_nhap_kenh', 5],
+      ['dat_xuong', 6],
+    ]));
+    // Vụ 2: `␣` trong du-lieu.md là dấu cách thật ở đuôi mã phòng (bảng Markdown tự cắt dấu cách nên phải viết lộ).
+    const maPhong = d?.duLieu?.bang.find((b) => b.ten === 'nhat_ky_su_dung')?.dong.map((h) => h[1]);
+    expect(maPhong).toContain('CLB-THAM-TU  ');
+    expect(maPhong).toContain('clb-tham-tu  ');
     expect(d?.duLieu?.bangAo.map((v) => v.ten)).toEqual(['tra_cuu_k24']);
   });
 
@@ -57,13 +66,22 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
     const chay = await kiemSoDongMvp(raw, d?.soDongKhai ?? []);
     expect(chay.loi).toEqual([]);
     // So theo tệp (bỏ số dòng): viết lại lời thoại phía trên chỉ dẫn không được làm test đỏ oan.
-    expect(chay.ketQua.map((k) => [(k.noi.split(' ')[0] ?? '').replace(/:\d+$/, ''), k.soDong, k.soDongThat])).toEqual([
+    expect(chay.ketQua.map((k) => [(k.noi.split(' ')[0] ?? '').replace(/:\d+$/, ''), k.soDong, k.soDongThat])).toEqual(expect.arrayContaining([
       ['noi-dung-mvp/thu-thach/c-in.md', 1, 1],
       ['noi-dung-mvp/thu-thach/c-lop.md', 2, 2],
       ['noi-dung-mvp/thu-thach/c-ten-h.md', 2, 2],
       ['noi-dung-mvp/thu-thach/c-ten-h.md', 2, 2],
+      ['noi-dung-mvp/thu-thach/tin-don.md', 5, 5],
+      ['noi-dung-mvp/thu-thach/tin-don.md', 1, 1],
+      ['noi-dung-mvp/thu-thach/tin-don.md', 2, 2],
+      ['noi-dung-mvp/thu-thach/tin-don.md', 1, 1],
+      ['noi-dung-mvp/thu-thach/v2-loc-buoi.md', 4, 4],
+      ['noi-dung-mvp/thu-thach/v2-tong-hop.md', 14, 14],
+      ['noi-dung-mvp/thu-thach/v2-tong-hop.md', 3, 3],
       ['noi-dung-mvp/kich-ban/00-mo-dau.md', 3, 3],
       ['noi-dung-mvp/kich-ban/06-hop-va-ket.md', 14, 14],
-    ]);
+    ]));
+    // Mọi câu khai đều chạy đúng số dòng (bộ kiểm nội dung đã so; ở đây chốt lại).
+    for (const k of chay.ketQua) expect(k.soDongThat, k.noi).toBe(k.soDong);
   });
 });

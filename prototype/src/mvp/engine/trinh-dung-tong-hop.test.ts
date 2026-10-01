@@ -50,7 +50,7 @@ describe('trình dựng truy vấn tổng hợp', () => {
     };
 
     expect(taoSqlTongHop(tuPhieu, phieu)).toBe(
-      'SELECT "ma_lop", COUNT(*) AS "so_dong" FROM (SELECT ma_lop, ma_sv FROM sinh_vien WHERE ma_lop IN (\'BC24A\', \'BC23A\')) AS "ev-hai-lop" GROUP BY "ma_lop"',
+      'WITH "hai_lop" AS (SELECT ma_lop, ma_sv FROM sinh_vien WHERE ma_lop IN (\'BC24A\', \'BC23A\')) SELECT "ma_lop", COUNT(*) AS "so_dong" FROM "hai_lop" GROUP BY "ma_lop"',
     );
   });
 

@@ -20,6 +20,9 @@
  *   - `[TẠO NHÂN VẬT]` (gói tao-nhan-vat-mvp, QĐ-084): máy DỪNG chờ người chơi (khung nhìn `create-character`);
  *     `dat-ten` nhận tên qua `kiemTen`, `chon-nganh` nhận một ngành trong danh sách. Người chơi là nam, không hỏi giới tính.
  *     Tên KHÔNG đi vào telemetry (QĐ-077) — máy không ghi sự kiện nào; tên chỉ nằm trong trạng thái (Lưu/Nạp).
+ *   - Vụ sau (`lich.vuSau`, từ Vụ 2): một vụ tới `[KẾT THÚC]` thì máy đặt cờ `<mã vụ>-hoan-tat` (vụ gốc thêm
+ *     `<mã vụ>-ket-that` / `-ket-thuong`); màn kết có nút sang vụ kế (`sang-vu-sau`): giai đoạn `vu-sau`, chạy chuỗi của vụ,
+ *     thẻ của vụ trước được gỡ khỏi bảng (vẫn trong hồ sơ, ghim lại được). `[NẾU <điều kiện>] → đi tới <chuỗi>` rẽ theo cờ.
  */
 import type {
   ChuoiMvp,
@@ -32,9 +35,11 @@ import type {
   LoiMvp,
   MocMvp,
   NutMvp,
+  NhiemVuPhuMvp,
   TheThuThachMvp,
+  VuSauMvp,
 } from '../../content/mvp/types';
-import { MAU_GHIM, type BoiCanhChuoi, type KhamPhaMvp, type MauGhimMvp, type TrangThaiMvp } from './trang-thai';
+import { MAU_GHIM, type BoiCanhChuoi, type KhamPhaMvp, type MauGhimMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp } from './trang-thai';
 
 /**
  * Tên dự phòng khi trạng thái chưa có tên (chưa qua câu hỏi tên, hay ô lưu hỏng). Không dùng trên đường chạy thường:
@@ -48,12 +53,12 @@ export const TEN_TOI_DA = 20;
 
 /**
  * Tên gọi nam Việt Nam phổ biến cho nút xúc xắc. Đã bỏ: tên nhân vật trong truyện (Tùng, Quân, Duy, Hiếu, Đạt,
- * Cường, Thịnh, Quang, Khải, Đức…) và mọi tên bắt đầu bằng H (vụ án xoay quanh chữ ký "[H.]" — người chơi tên H
+ * Cường, Thịnh, Quang, Khải, Đức, Nam…) và mọi tên bắt đầu bằng H (vụ án xoay quanh chữ ký "[H.]" — người chơi tên H
  * sẽ tự thành nghi phạm). `tenNgauNhien` lọc thêm theo `nhan-vat.md` / tên cấm lúc chạy, phòng khi nội dung đổi.
  */
 export const TEN_XUC_XAC: readonly string[] = [
   'An', 'Bảo', 'Bình', 'Chiến', 'Công', 'Dũng', 'Giang', 'Khang', 'Khôi', 'Kiên',
-  'Kiệt', 'Lâm', 'Long', 'Nam', 'Nghĩa', 'Nguyên', 'Nhật', 'Phong', 'Phúc', 'Quốc',
+  'Kiệt', 'Lâm', 'Long', 'Đăng', 'Nghĩa', 'Nguyên', 'Nhật', 'Phong', 'Phúc', 'Quốc',
   'Sơn', 'Tâm', 'Thành', 'Thắng', 'Thiện', 'Toàn', 'Trung', 'Tuấn', 'Việt', 'Vinh',
 ];
 
@@ -117,7 +122,7 @@ export type HanhDongMvp =
   /** Chọn một ô ở `[LỌC THỬ]` (giá trị cột phải chọn). */
   | { type: 'chon-o'; giaTri: string }
   /** Màn thử thách / sửa truy vấn báo đã xong (vật chứng của thẻ vào hồ sơ). */
-  | { type: 'xong-thu-thach'; thuThach: string; /** Mã các thẻ đã kéo vào câu đúng — sợi chỉ trên bảng điều tra. */ dung?: string[]; phieu?: import('./trang-thai').PhieuTruyVanMvp; ghiChu?: import('./trang-thai').GhiChuTruyVanMvp[] }
+  | { type: 'xong-thu-thach'; thuThach: string; /** Mã các thẻ đã kéo vào câu đúng — sợi chỉ trên bảng điều tra. */ dung?: string[]; phieu?: PhieuTruyVanMvp; ghiChu?: GhiChuTruyVanMvp[] }
   /** Người chơi kéo một thẻ trên bảng điều tra tới chỗ khác (không đổi con trỏ). */
   | { type: 'doi-cho-the'; the: string; x: number; y: number }
   /** Đổi màu đầu ghim của một thẻ trên bảng (không đổi con trỏ). */
@@ -131,7 +136,13 @@ export type HanhDongMvp =
   /** `[KHÁM PHÁ]`: bấm một chỗ đang hiện, chưa xem (khóa = chuỗi của chỗ đó). */
   | { type: 'xem-diem'; chuoi: string }
   /** Đóng màn "Nhân vật mới" của một nhân vật (không đổi con trỏ). */
-  | { type: 'da-gioi-thieu'; nhanVat: string };
+  | { type: 'da-gioi-thieu'; nhanVat: string }
+  /** Màn kết của một vụ: chơi tiếp vụ kế trong `lich.vuSau` (không còn vụ nào thì máy đứng yên). */
+  | { type: 'sang-vu-sau' }
+  /** Màn kết của một vụ chính: nhận một nhiệm vụ phụ đang mở. */
+  | { type: 'lam-nhiem-vu-phu'; id: string }
+  /** Màn kết của nhiệm vụ phụ: quay lại màn kết của vụ chính. */
+  | { type: 'xong-nhiem-vu-phu' };
 
 // ---------- Khung nhìn ----------
 
@@ -174,7 +185,17 @@ export type KhungNhinMvp =
   | { kind: 'trial-filter'; nut: Extract<NutMvp, { type: 'trial-filter' }>; lanThu: number }
   | { kind: 'create-character'; nut: Extract<NutMvp, { type: 'create-character' }> }
   | { kind: 'explore'; nut: Extract<NutMvp, { type: 'explore' }>; diem: DiemKhamPhaHienMvp[] }
-  | { kind: 'end'; ketQua: 'that' | 'thuong' }
+  /** `vu`: vụ sau vừa kết (`null` = vụ gốc, dùng `ketQua`); `vuKe`: vụ chơi tiếp được, nếu còn. */
+  | {
+      kind: 'end';
+      ketQua: 'that' | 'thuong';
+      vu: VuSauMvp | null;
+      vuKe: VuSauMvp | null;
+      /** Nhiệm vụ phụ nhận được ở màn kết này (rỗng khi đang ở màn kết của một nhiệm vụ phụ). */
+      phu: NhiemVuPhuMvp[];
+      /** Nhiệm vụ phụ vừa xong (màn kết của nó); `null` = màn kết của vụ chính. */
+      phuXong: NhiemVuPhuMvp | null;
+    }
   | { kind: 'error'; message: string };
 
 // ---------- Tra cứu kịch bản ----------
@@ -202,7 +223,7 @@ export function soMoc(kb: KichBanMvp, moc: MocMvp): number {
 /** Mốc hiện tại của trạng thái trên cùng thang. */
 export function mocHienTai(kb: KichBanMvp, s: TrangThaiMvp): number {
   if (s.giaiDoan === 'mo-dau') return 0;
-  if (s.giaiDoan === 'hop' || s.giaiDoan === 'het') return MOC_NGAY_HOP;
+  if (s.giaiDoan === 'hop' || s.giaiDoan === 'het' || s.giaiDoan === 'vu-sau' || s.giaiDoan === 'phu') return MOC_NGAY_HOP;
   const soKhung = kb.lich.khung.length;
   return s.ngay * 10 + (s.khung >= soKhung ? KHUNG_TOI : s.khung + 1);
 }
@@ -327,6 +348,70 @@ export function taoTrangThai(kb: KichBanMvp, batDauLuc: number = Date.now()): Tr
 /** Sang chuỗi khác (`[ĐI TỚI]`, "đi tới", rẽ kết): rời cảnh `[KHÁM PHÁ]` đang mở, nếu có. */
 function nhayToi(s: TrangThaiMvp, chuoi: string, boiCanh: BoiCanhChuoi): TrangThaiMvp {
   return { ...s, conTro: { chuoi, nut: 0, boiCanh }, hoiDap: null, khamPha: null };
+}
+
+// ---------- Vụ sau ----------
+
+/** Vụ sau đang chơi (`null` = đang ở vụ gốc). */
+export function vuDangChoi(kb: KichBanMvp, s: TrangThaiMvp): VuSauMvp | null {
+  return s.vu ? ((kb.lich.vuSau ?? []).find((v) => v.id === s.vu) ?? null) : null;
+}
+
+/** Vụ chơi tiếp sau vụ đang đứng: vụ gốc → vụ sau đầu tiên; vụ sau thứ i → thứ i+1. `null` = hết. */
+export function vuKeTiep(kb: KichBanMvp, s: TrangThaiMvp): VuSauMvp | null {
+  const ds = kb.lich.vuSau ?? [];
+  if (!s.vu) return ds[0] ?? null;
+  const i = ds.findIndex((v) => v.id === s.vu);
+  return i < 0 ? null : (ds[i + 1] ?? null);
+}
+
+/** Kết của vụ gốc tại nút `[KẾT THÚC]` đang đứng. */
+function ketQuaVuGoc(kb: KichBanMvp, s: TrangThaiMvp): 'that' | 'thuong' {
+  return s.ketQua ?? (s.conTro?.chuoi === kb.lich.ket?.that ? 'that' : 'thuong');
+}
+
+/**
+ * Cờ máy đặt khi một vụ tới `[KẾT THÚC]`: `<mã vụ>-hoan-tat`; vụ gốc thêm `<mã vụ>-ket-that` hay `-ket-thuong` (vụ sau đọc
+ * bằng `[NẾU]` / `[KHI]`). Chỉ đặt khi lịch có vụ sau — bộ một vụ giữ nguyên trạng thái như trước.
+ */
+function coKhiKet(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
+  if ((kb.lich.vuSau ?? []).length === 0 && (kb.lich.nhiemVuPhu ?? []).length === 0) return s;
+  const vu = vuDangChoi(kb, s);
+  const moi = s.phu ? [`${s.phu.id}-hoan-tat`] : vu ? [`${vu.id}-hoan-tat`] : [`${kb.lich.vu.id}-hoan-tat`, `${kb.lich.vu.id}-ket-${ketQuaVuGoc(kb, s)}`];
+  const thieu = moi.filter((c) => !s.co.includes(c));
+  return thieu.length === 0 ? s : { ...s, co: [...s.co, ...thieu] };
+}
+
+/** Nhiệm vụ phụ đang làm (`null` = không). */
+export function phuDangLam(kb: KichBanMvp, s: TrangThaiMvp): NhiemVuPhuMvp | null {
+  return s.phu ? ((kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id) ?? null) : null;
+}
+
+/** Nhiệm vụ phụ nhận được lúc này: vụ `moSau` đã xong, bản thân nó chưa xong, và không đang làm nhiệm vụ phụ nào. */
+export function phuMoDuoc(kb: KichBanMvp, s: TrangThaiMvp): NhiemVuPhuMvp[] {
+  if (s.phu) return [];
+  return (kb.lich.nhiemVuPhu ?? []).filter((p) => s.co.includes(`${p.moSau}-hoan-tat`) && !s.co.includes(`${p.id}-hoan-tat`));
+}
+
+/** Bắt đầu một vụ sau: gỡ mọi thẻ đang có khỏi bảng điều tra (mang theo trong hồ sơ, ghim lại được), chạy chuỗi của vụ. */
+function batDauVuSau(s: TrangThaiMvp, vu: Pick<VuSauMvp, 'id' | 'chuoi'>, phu: TrangThaiMvp['phu'] = null): TrangThaiMvp {
+  const bang = s.bang ?? { day: {}, viTri: {} };
+  const tatCa = [...s.hoSo.taiLieu, ...s.hoSo.manhMoi, ...s.hoSo.bangChung];
+  return {
+    ...s,
+    giaiDoan: phu ? 'phu' : 'vu-sau',
+    vu: phu ? (s.vu ?? null) : vu.id,
+    phu,
+    conTro: { chuoi: vu.chuoi, nut: 0, boiCanh: 'vu' },
+    khamPha: null,
+    hoiDap: null,
+    doiChat: null,
+    duKienDangLam: null,
+    thuThachDangLam: null,
+    nhiemVu: null,
+    nhacViec: null,
+    bang: { ...bang, boGhim: [...new Set([...(bang.boGhim ?? []), ...tatCa])] },
+  };
 }
 
 // ---------- Khám phá ----------
@@ -460,6 +545,8 @@ function hetChuoi(kb: KichBanMvp, s: TrangThaiMvp, boiCanh: BoiCanhChuoi): Trang
       return loi(s, `Chuỗi "${s.conTro?.chuoi ?? '?'}" của ngày họp hết nút mà không [ĐI TỚI] hay [RẼ KẾT].`);
     case 'ket':
       return loi(s, `Chuỗi kết "${s.conTro?.chuoi ?? '?'}" hết nút mà không [KẾT THÚC].`);
+    case 'vu':
+      return loi(s, `Chuỗi "${s.conTro?.chuoi ?? '?'}" của vụ sau hết nút mà không [ĐI TỚI] hay [KẾT THÚC].`);
   }
 }
 
@@ -517,6 +604,7 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
       continue;
     }
     if (canNguoiChoi(nut)) {
+      if (nut.type === 'end') return coKhiKet(kb, s);
       if (nut.type !== 'explore') return s;
       // Tới nút [KHÁM PHÁ] lần đầu → mở cảnh (chưa xem chỗ nào); quay về từ chuỗi của một chỗ bấm → giữ danh sách đã xem.
       const kp = s.khamPha;
@@ -532,6 +620,9 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
         break;
       case 'goto':
         s = nhayToi(s, nut.to, boiCanh);
+        break;
+      case 'jump-if':
+        s = thoaDieuKien(s, nut.dieuKien) ? nhayToi(s, nut.to, boiCanh) : tienNut(s);
         break;
       case 'consequence': {
         const kq = apHauQua(s, nut.hauQua);
@@ -645,7 +736,14 @@ export function khungNhin(kb: KichBanMvp, s: TrangThaiMvp): KhungNhinMvp {
     case 'explore':
       return { kind: 'explore', nut, diem: diemDangHien(nut, s.khamPha?.daXem ?? []) };
     case 'end':
-      return { kind: 'end', ketQua: s.ketQua ?? (s.conTro.chuoi === kb.lich.ket?.that ? 'that' : 'thuong') };
+      return {
+        kind: 'end',
+        ketQua: s.ketQua ?? ketQuaVuGoc(kb, s),
+        vu: s.phu ? null : vuDangChoi(kb, s),
+        vuKe: s.phu ? null : vuKeTiep(kb, s),
+        phu: phuMoDuoc(kb, s),
+        phuXong: phuDangLam(kb, s),
+      };
     default:
       return { kind: 'error', message: `Nút "${nut.type}" không phải nút cần người chơi.` };
   }
@@ -720,6 +818,26 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
   let moi: TrangThaiMvp | null = null;
 
   switch (hd.type) {
+    case 'lam-nhiem-vu-phu': {
+      if (kn.kind !== 'end' || !s.conTro) return s;
+      const p = kn.phu.find((x) => x.id === hd.id);
+      if (!p) return s;
+      const truoc = { ...coKhiKet(kb, s), ketQua: kn.ketQua };
+      moi = batDauVuSau(truoc, p, { id: p.id, veLai: { ...s.conTro }, giaiDoan: s.giaiDoan });
+      break;
+    }
+    case 'xong-nhiem-vu-phu': {
+      if (kn.kind !== 'end' || !s.phu) return s;
+      // Về lại nút [KẾT THÚC] của vụ chính: màn kết đó hiện lại, nhiệm vụ này không còn trong danh sách.
+      moi = { ...coKhiKet(kb, s), conTro: { ...s.phu.veLai }, giaiDoan: s.phu.giaiDoan, phu: null, nhiemVu: null, nhacViec: null };
+      break;
+    }
+    case 'sang-vu-sau': {
+      if (kn.kind !== 'end' || !kn.vuKe) return s;
+      // Giữ kết của vụ gốc trong trạng thái: sau này con trỏ không còn đứng ở chuỗi kết để suy ra.
+      moi = batDauVuSau({ ...coKhiKet(kb, s), ketQua: kn.ketQua }, kn.vuKe);
+      break;
+    }
     case 'tiep': {
       if (kn.kind === 'feedback') {
         const hoiDap = s.hoiDap;
@@ -905,6 +1023,8 @@ export function sqlCuaManChieu(kb: KichBanMvp, nut: Extract<NutMvp, { type: 'pro
 
 /** Nhãn khung giờ hiện tại cho HUD ("Sáng" … / "Cuối ngày"); ngày theo truyện không có khung → tên ngày. */
 export function tenKhungHienTai(kb: KichBanMvp, s: TrangThaiMvp): string {
+  if (s.giaiDoan === 'phu') return phuDangLam(kb, s)?.ten ?? '';
+  if (s.giaiDoan === 'vu-sau') return vuDangChoi(kb, s)?.ten ?? '';
   if (s.giaiDoan !== 'ngay') return '';
   const ngay = kb.lich.ngay.find((n) => n.so === s.ngay);
   if (ngay?.kieu === 'theo-truyen') return ngay.ten;

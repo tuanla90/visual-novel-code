@@ -139,6 +139,23 @@ export interface RawLich {
   ngay: RawNgay[];
   ngayHop: { chuoi: string; viTri: ViTri } | null;
   ket: { that: string; thuong: string; viTri: ViTri } | null;
+  /** `## <Tên> {vụ sau: <mã>}`: vụ chơi tiếp sau vụ gốc — một chuỗi, ngày thật (tùy chọn), chữ màn kết. */
+  vuSau: RawVuSau[];
+  viTri: ViTri;
+}
+
+export interface RawVuSau {
+  id: string;
+  ten: string;
+  chuoi: string;
+  ngay: string | null;
+  tieuDeKet: string;
+  loiKet: string;
+  /** `{nhiệm vụ phụ: <mã>}`: việc NPC giao, làm từ màn kết của một vụ chính rồi quay lại; không thuộc chuỗi vụ chính. */
+  phu: boolean;
+  /** Nhiệm vụ phụ: nhân vật giao việc (`- Người giao:`) và vụ phải xong trước (`- Mở sau:`). */
+  nguoiGiao: string | null;
+  moSau: string | null;
   viTri: ViTri;
 }
 
@@ -187,6 +204,8 @@ export type MucMvp =
   | { kind: 'stage'; action: 'vao' | 'ra'; nhanVat: string }
   | { kind: 'wait'; giay: number }
   | { kind: 'condition'; dieuKien: DieuKien; chu: string }
+  /** `- [NẾU <điều kiện>] → đi tới <chuỗi>`: thỏa thì sang chuỗi đó, không thì chạy tiếp dòng dưới. */
+  | { kind: 'jump-if'; dieuKien: DieuKien; chuoi: string }
   | { kind: 'consequence'; hauQua: HauQua[] }
   | { kind: 'branch'; branch: RawReNhanh }
   | { kind: 'notebook-lookup'; trang: string; phan: string }
@@ -686,9 +705,10 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
   }
 
   function docLich({ viTri, tep }: { viTri: () => ViTri; tep: TepMvp }) {
-    type Muc = 'luat' | 'mo-dau' | 'ngay' | 'ngay-hop' | 'ket' | null;
+    type Muc = 'luat' | 'mo-dau' | 'ngay' | 'ngay-hop' | 'ket' | 'vu-sau' | null;
     let muc: Muc = null;
     let ngay: RawNgay | null = null;
+    let vuSau: { id: string; ten: string; phu: boolean } | null = null;
     let fields: Record<string, string> = {};
     let chuMuc: ViTri | null = null;
     const lich: RawLich = {
@@ -701,6 +721,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       ngay: [],
       ngayHop: null,
       ket: null,
+      vuSau: [],
       viTri: { tep: tep.duongDan, dong: 1 },
     };
     if (mvp.lich) loi.push({ ...viTri(), tep: tep.duongDan, dong: 1, thongBao: 'chỉ được có một tệp lịch (lich.md)' });
@@ -796,6 +817,28 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           lich.ket = { that: canCo(f, 'Kết thật', vt, 'mục "## Kết"') ?? '', thuong: canCo(f, 'Kết thường', vt, 'mục "## Kết"') ?? '', viTri: vt };
           break;
         }
+        case 'vu-sau': {
+          if (!vuSau) break;
+          const ten = `${vuSau.phu ? 'nhiệm vụ phụ' : 'vụ sau'} ${vuSau.id}`;
+          laNgoai(['Chuỗi', 'Ngày', 'Tiêu đề kết', 'Lời kết', ...(vuSau.phu ? ['Người giao', 'Mở sau'] : [])], ten);
+          const ng = f['Ngày'];
+          if (ng !== undefined && !ngayHopLe(ng)) loi.push({ ...vt, thongBao: `${ten}: "Ngày" phải là ngày có thật dạng YYYY-MM-DD: "${ng}"` });
+          if (lich.vuSau.some((v) => v.id === vuSau?.id) || vuSau.id === lich.vu.id) loi.push({ ...vt, thongBao: `mã vụ "${vuSau.id}" khai hai lần trong lich.md` });
+          lich.vuSau.push({
+            id: vuSau.id,
+            ten: vuSau.ten,
+            chuoi: canCo(f, 'Chuỗi', vt, ten) ?? '',
+            ngay: ng !== undefined && ngayHopLe(ng) ? ng : null,
+            tieuDeKet: canCo(f, 'Tiêu đề kết', vt, ten) ?? '',
+            loiKet: canCo(f, 'Lời kết', vt, ten) ?? '',
+            phu: vuSau.phu,
+            nguoiGiao: vuSau.phu ? canCo(f, 'Người giao', vt, ten) : null,
+            moSau: vuSau.phu ? canCo(f, 'Mở sau', vt, ten) : null,
+            viTri: vt,
+          });
+          vuSau = null;
+          break;
+        }
         default:
           break;
       }
@@ -820,12 +863,16 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         else {
           const n = /^## (.+) \{ngày: (\d+)( · theo truyện)?\}$/.exec(line);
           const h = /^## (.+) \{ngày họp\}$/.exec(line);
-          if (n) {
+          const v = new RegExp(`^## (.+) \\{(vụ sau|nhiệm vụ phụ): (${MA})\\}$`).exec(line);
+          if (v) {
+            muc = 'vu-sau';
+            vuSau = { id: v[3] ?? '', ten: v[1] ?? '', phu: v[2] === 'nhiệm vụ phụ' };
+          } else if (n) {
             muc = 'ngay';
             const kieu = n[3] ? 'theo-truyen' : 'dia-diem';
             ngay = { so: Number(n[2]), ten: n[1] ?? '', kieu, chuoi: null, duKienChinh: '', moNgay: null, buoiToi: '', viTri: viTri(), dongChinh: viTri().dong };
           } else if (h) muc = 'ngay-hop';
-          else throw new Error(`tiêu đề lạ trong lich.md "${line}" — dùng "## Luật", "## Mở đầu", "## <Tên> {ngày: n}", "## <Tên> {ngày: n · theo truyện}", "## <Tên> {ngày họp}", "## Kết"`);
+          else throw new Error(`tiêu đề lạ trong lich.md "${line}" — dùng "## Luật", "## Mở đầu", "## <Tên> {ngày: n}", "## <Tên> {ngày: n · theo truyện}", "## <Tên> {ngày họp}", "## Kết", "## <Tên> {vụ sau: <mã>}", "## <Tên> {nhiệm vụ phụ: <mã>}"`);
         }
         return i;
       }
@@ -1021,6 +1068,8 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         if (seq.items.length > 0) throw new Error('[ĐIỀU KIỆN] phải là dòng đầu của chuỗi');
         return add({ kind: 'condition', dieuKien: docDieuKien(m[1] ?? ''), chu: m[1] ?? '' });
       }
+      if ((m = new RegExp(`^- \\[NẾU (.+)\\] → đi tới (${MA})$`).exec(line))) return add({ kind: 'jump-if', dieuKien: docDieuKien(m[1] ?? ''), chuoi: m[2] ?? '' });
+      if (line.startsWith('- [NẾU ')) throw new Error(`[NẾU] sai quy ước "${line}" — viết "- [NẾU <điều kiện>] → đi tới <chuỗi>"`);
       if ((m = /^- \[HẬU QUẢ\] (.+)$/.exec(line))) return add({ kind: 'consequence', hauQua: docHauQua(m[1] ?? '') });
       if ((m = new RegExp(`^- \\[RẼ NHÁNH (${MA})\\] ([a-z-]+): "(.*)"$`).exec(line))) {
         branch = { id: m[1] ?? '', asker: { speaker: m[2] ?? '', text: m[3] ?? '' }, choices: [] };
