@@ -49,15 +49,22 @@ function lopCham(m: MocLich): string {
 export function LichMvp({ kb, s, hanPhu, onDong }: LichMvpProps) {
   const nutDongRef = useRef<HTMLButtonElement>(null);
   const ngayMoDau = kb.lich.ngayMoDau ?? null;
-  const hn = homNay(s, ngayMoDau);
+  // Vụ sau (từ Vụ 2): hôm nay là ngày của vụ đang chơi; các vụ sau đã tới thành mốc trên lịch.
+  const cacVuSau = kb.lich.vuSau ?? [];
+  const viTriVu = cacVuSau.findIndex((v) => v.id === s.vu);
+  const vuNay = viTriVu >= 0 ? cacVuSau[viTriVu] : undefined;
+  const tienDo = { giaiDoan: s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vuNay?.ngay ?? null };
+  const hn = homNay(tienDo, ngayMoDau);
   const tenNgay = (so: number): string => kb.lich.ngay.find((n) => n.so === so)?.ten ?? '';
-  const ds = mocLich(s, { ngayMoDau, tenNgay, hanPhu });
+  const vuSau = cacVuSau.slice(0, viTriVu + 1).flatMap((v, i) => (v.ngay ? [{ ngay: v.ngay, ten: `Vụ ${i + 2} · ${v.ten}`, ngan: `Vụ ${i + 2}` }] : []));
+  const ds = mocLich(tienDo, { ngayMoDau, tenNgay, hanPhu, vuSau });
   const [nam, thang] = hn.ngay.split('-').map(Number) as [number, number];
   const luoi = luoiThang(nam, thang);
 
   const tenHomNay = (() => {
     if (hn.moDau) return 'Tuần đầu ở trường';
     if (s.giaiDoan === 'ngay') return [`Ngày ${s.ngay}`, tenNgay(s.ngay)].filter(Boolean).join(' · ');
+    if (s.giaiDoan === 'vu-sau' && vuNay) return `Vụ ${viTriVu + 2} · ${vuNay.ten}`;
     return s.giaiDoan === 'hop' ? 'Buổi họp rà soát' : 'Sau buổi họp';
   })();
   const cacHan = ds.filter((m) => m.han && m.loai !== 'qua');

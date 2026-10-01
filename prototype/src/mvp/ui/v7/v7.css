@@ -1290,3 +1290,31 @@ button.v7-o:active:not(:disabled) {
 .bang__ghim-lai:hover {
   transform: translateY(-2px);
 }
+
+/* ---------- Vụ 2: khối gọt cột (TRIM / LOWER) và hàng "xếp theo" (ORDER BY) ---------- */
+.v7-o--got {
+  font-size: 0.82em;
+  padding-inline: 0.55em;
+  border-style: dashed;
+  opacity: 0.8;
+}
+.v7-o--got.is-bat {
+  border-style: solid;
+  opacity: 1;
+  background: rgba(255, 196, 87, 0.18);
+  border-color: #ffc457;
+  color: #ffe2a6;
+}
+.v7-xep {
+  padding-top: 0.4em;
+  border-top: 1px dashed rgba(255, 255, 255, 0.16);
+}
+.v7-xep .v7-o--cot.is-trong {
+  opacity: 0.65;
+  font-style: italic;
+}
+.v7-dau-cach {
+  color: #ff9f6b;
+  opacity: 0.85;
+  letter-spacing: 0.08em;
+}

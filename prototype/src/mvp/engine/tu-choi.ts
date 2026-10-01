@@ -19,6 +19,8 @@ export interface ChienThuat {
   traLoi?: (id: string, lan: number) => 'dung' | 'sai';
   /** Tên gõ ở câu hỏi tên (mặc định `TEN_MAC_DINH`). */
   ten?: string;
+  /** Tới màn kết của một vụ mà còn vụ sau → chơi tiếp (mặc định dừng ở màn kết). */
+  sangVuSau?: boolean;
 }
 
 /** Hành động tự chơi cho một khung nhìn (không tính `end` / `error`). */
@@ -81,7 +83,11 @@ export function choiTuDong(
     const kn = khungNhin(kb, s);
     if (kn.kind === 'error') throw new Error(`Máy báo lỗi: ${kn.message} (ngày ${s.ngay}, chuỗi ${s.conTro?.chuoi ?? '-'})`);
     if (dung(s, kn)) return s;
-    if (kn.kind === 'end') return s;
+    if (kn.kind === 'end') {
+      if (!ct.sangVuSau || !kn.vuKe) return s;
+      s = xuLy(kb, s, { type: 'sang-vu-sau' });
+      continue;
+    }
     const hd = hanhDongTuDong(s, kn, ct);
     const sau = xuLy(kb, s, hd);
     if (sau === s) throw new Error(`Hành động ${hd.type} bị từ chối ở khung nhìn ${kn.kind} (ngày ${s.ngay}, khung ${s.khung})`);
@@ -123,7 +129,7 @@ export const reNhanhTheo =
 
 // ---------- Nhảy tới (người quan sát) ----------
 
-export type MaDiemNhayMvp = 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or';
+export type MaDiemNhayMvp = 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or' | 'vu2-buoi';
 
 export interface DiemNhayMvp {
   id: MaDiemNhayMvp;
@@ -141,7 +147,7 @@ const dangOThuThach =
     kn.kind === kind && kn.thuThach.id === id;
 
 /**
- * Bốn điểm nhảy tới phần SQL của chương 1. Đường đi cố định: chọn theo `RE_NHANH_KET_THAT`, trả lời đúng mọi câu → hồ sơ
+ * Các điểm nhảy tới phần SQL (chương 1 và Vụ 2). Đường đi cố định: chọn theo `RE_NHANH_KET_THAT`, trả lời đúng mọi câu → hồ sơ
  * có đủ thứ của kết thật, chơi tiếp đúng vẫn tới kết thật.
  */
 export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
@@ -149,6 +155,7 @@ export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
   { id: 'ten-h', nhan: 'Ngày 3 · Tên bắt đầu bằng H', moTa: 'Laptop phòng CLB: phiếu hai lớp + [H]; "bằng" ra 0 dòng → "bắt đầu bằng".', toi: dangOThuThach('challenge', 'c-ten-h') },
   { id: 'nhat-ky-in', nhan: 'Ngày 4 · Nhật ký in', moTa: 'Phòng máy (đã chọn ghé): mã + tên tệp ra 0 dòng → bỏ điều kiện mã.', toi: dangOThuThach('challenge', 'c-in') },
   { id: 'hop-sua-or', nhan: 'Buổi họp · Sửa câu HOẶC của Quân', moTa: 'Buổi họp rà soát, màn sửa truy vấn HOẶC → VÀ.', toi: dangOThuThach('fix-query', 'c-sua-or-quan') },
+  { id: 'vu2-buoi', nhan: 'Vụ 2 · Bốn buổi đã ký', moTa: 'Sau kết thật Vụ 1, laptop phòng CLB: gọt mã phòng (dấu cách, hoa/thường), xếp theo ngày.', toi: dangOThuThach('challenge', 'v2-loc-buoi') },
 ];
 
 /**
@@ -158,7 +165,7 @@ export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
 export function nhayToi(kb: KichBanMvp, id: MaDiemNhayMvp, batDauLuc: number = Date.now()): TrangThaiMvp {
   const diem = DIEM_NHAY_MVP.find((d) => d.id === id);
   if (!diem) throw new Error(`Không có điểm nhảy ${id}`);
-  const ct: ChienThuat = { reNhanh: reNhanhTheo(RE_NHANH_KET_THAT), ten: TEN_MAC_DINH };
+  const ct: ChienThuat = { reNhanh: reNhanhTheo(RE_NHANH_KET_THAT), ten: TEN_MAC_DINH, sangVuSau: true };
   const s = choiTuDong(kb, taoTrangThai(kb, batDauLuc), ct, diem.toi);
   if (!diem.toi(s, khungNhin(kb, s))) throw new Error(`Tự chơi không tới được điểm nhảy ${id}`);
   return s;

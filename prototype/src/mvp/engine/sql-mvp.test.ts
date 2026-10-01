@@ -15,7 +15,7 @@ if (!DU_LIEU) throw new Error('KICH_BAN_MVP.duLieu rỗng');
 describe('SQL MVP trên du-lieu.md', () => {
   it('mọi thẻ thử thách: SQL chuẩn ra đúng "Số dòng kỳ vọng" (c-lop 2, c-ten-h 2, c-in 1, c-sua-or-quan 2)', async () => {
     const the = Object.values(KB.thuThach);
-    expect(the.map((t) => t.id).sort()).toEqual(['c-in', 'c-lop', 'c-sua-or-quan', 'c-ten-h']);
+    expect(the.map((t) => t.id).sort()).toEqual(['c-in', 'c-lop', 'c-sua-or-quan', 'c-ten-h', 'v2-loc-buoi']);
     for (const t of the) {
       const kq = await chaySql(DU_LIEU, t.sqlChuan);
       expect(kq.ok, t.id).toBe(true);

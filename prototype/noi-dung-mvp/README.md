@@ -61,3 +61,11 @@ Nhãn `chính` / `phụ` / `nhiễu` và dòng `Phân biệt:` chỉ để ngư�
 nền; `rộng` là % bề rộng nền. Hai dữ kiện chung một vật ghi y hệt nhau (game gộp thành một điểm). Thiếu dòng này chỉ bị
 cảnh báo — dữ kiện vẫn chọn được qua nút "Danh sách" trong nơi đó. Mô tả dữ kiện không bao giờ hiện cho người chơi.
 Chi tiết: đặc tả §18.4a.
+
+## Từ Vụ 2: vụ sau, rẽ theo cờ, khối mới ở màn tra
+
+- **Vụ sau** — cuối `lich.md`: `## <Tên vụ> {vụ sau: <mã>}` với `- Chuỗi:` (chuỗi đầu của vụ), `- Ngày: YYYY-MM-DD` (ngày thật trên màn lịch, tùy chọn), `- Tiêu đề kết:`, `- Lời kết:` (chữ màn kết của vụ). Vụ sau chơi tiếp từ màn kết của vụ trước (nút "Sang Vụ n"); mọi chuỗi của nó phải kết bằng `[ĐI TỚI …]`, `[RẼ NHÁNH]` có "đi tới" ở mọi lựa chọn, hoặc `[KẾT THÚC]`. Sang vụ mới, thẻ vụ trước được gỡ khỏi bảng điều tra (vẫn trong hồ sơ, ghim lại được); chỉ thẻ đang ghim mới thành giấy nhớ ở màn tra.
+- **Cờ máy tự đặt** khi một vụ tới `[KẾT THÚC]`: `<mã vụ>-hoan-tat`; Vụ 1 thêm `vu1-ket-that` hoặc `vu1-ket-thuong`. Dùng được trong `[NẾU]`, `[KHI]`, `[ĐIỀU KIỆN]`.
+- **`- [NẾU <điều kiện>] → đi tới <chuỗi>`** (trong `kich-ban/`): điều kiện thỏa thì sang chuỗi đó, không thì chạy tiếp dòng dưới. Ví dụ `- [NẾU có vu1-ket-that] → đi tới v2-mo-that`.
+- **Khối mới ở màn tra** hiện theo SQL chuẩn của thẻ, không cần khai gì thêm: có `LOWER(…)` / `TRIM(…)` → nút gọt cột trước phép so (y nguyên → bỏ dấu cách thừa → đổi chữ thường → cả hai); có `ORDER BY <cột>` → hàng "XẾP THEO" (cột, tăng / giảm). Thẻ có `ORDER BY` thì máy chấm cả **thứ tự dòng**; lời riêng cho trường hợp đủ dòng mà sai thứ tự: `- Khi sai thứ tự: **ai** (cảm xúc): …`.
+- **Dấu cách thật trong `du-lieu.md`**: bảng Markdown tự cắt dấu cách đầu / cuối ô, nên viết `␣` cho mỗi dấu cách cần giữ (`CLB-THAM-TU␣␣`). Màn tra hiện các dấu cách này thành chấm.

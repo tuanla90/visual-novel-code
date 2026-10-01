@@ -8,7 +8,8 @@
  *
  * Chấm (đơn giản hơn compare.ts của prototype, đủ cho 3 thẻ MVP): đúng khi số dòng bằng nhau và mọi cột của kết
  * quả chuẩn ánh xạ được (theo giá trị, không cần đúng tên/thứ tự) vào một cột của người chơi sao cho đa tập các
- * bộ giá trị trùng nhau. Cột thừa không làm sai.
+ * bộ giá trị trùng nhau. Cột thừa không làm sai. Thẻ có `ORDER BY` ở SQL chuẩn (từ Vụ 2) thì chấm cả THỨ TỰ dòng: đủ đúng
+ * các dòng mà khác thứ tự là "sai thứ tự" (`KetQuaSo.saiThuTu`, lời "Khi sai thứ tự" của thẻ).
  */
 import type { BoDuLieuMvp, KhiChayMvp, LoiMvp, TheThuThachMvp } from '../../content/mvp/types';
 import { checkSingleSelect } from '../../sql-challenge/engine/sql-text';
@@ -120,6 +121,8 @@ export interface KetQuaSo {
   soDongChuan: number;
   /** Cột chuẩn không tìm được cột người chơi khớp giá trị (theo tên cột chuẩn). */
   cotThieu: string[];
+  /** Chấm có thứ tự: tập dòng khớp nhưng thứ tự khác câu chuẩn. */
+  saiThuTu?: boolean;
 }
 
 function daTap(dong: GiaTriSql[][], chiSo: number[]): Map<string, number> {
@@ -138,12 +141,13 @@ function cungDaTap(a: Map<string, number>, b: Map<string, number>): boolean {
 }
 
 /** Tìm ánh xạ đơn ánh cột chuẩn → cột người chơi sao cho đa tập bộ giá trị trùng nhau (quay lui; kết quả nhỏ). */
-function timAnhXa(chuan: Extract<KetQuaChay, { ok: true }>, nguoiChoi: Extract<KetQuaChay, { ok: true }>): number[] | null {
+function timAnhXa(chuan: Extract<KetQuaChay, { ok: true }>, nguoiChoi: Extract<KetQuaChay, { ok: true }>, thuTu = false): number[] | null {
   const n = chuan.cot.length;
   const daDung = new Set<number>();
   const anhXa: number[] = [];
+  const cungThuTu = (): boolean => chuan.dong.every((d, r) => JSON.stringify(d.map((v) => v ?? null)) === JSON.stringify(anhXa.map((j) => nguoiChoi.dong[r]?.[j] ?? null)));
   const thu = (i: number): boolean => {
-    if (i === n) return cungDaTap(daTap(chuan.dong, chuan.cot.map((_c, k) => k)), daTap(nguoiChoi.dong, anhXa));
+    if (i === n) return thuTu ? cungThuTu() : cungDaTap(daTap(chuan.dong, chuan.cot.map((_c, k) => k)), daTap(nguoiChoi.dong, anhXa));
     for (let j = 0; j < nguoiChoi.cot.length; j++) {
       if (daDung.has(j)) continue;
       // Cắt tỉa: từng cột phải khớp đa tập giá trị riêng.
@@ -159,7 +163,12 @@ function timAnhXa(chuan: Extract<KetQuaChay, { ok: true }>, nguoiChoi: Extract<K
   return thu(0) ? anhXa : null;
 }
 
-export function soVoiChuan(chuan: Extract<KetQuaChay, { ok: true }>, nguoiChoi: Extract<KetQuaChay, { ok: true }>): KetQuaSo {
+/** Câu có `ORDER BY` (ngoài nháy đơn) → kết quả có thứ tự, chấm cả thứ tự dòng. */
+export function coThuTu(sql: string): boolean {
+  return /\bORDER\s+BY\b/i.test(sql.replace(/'(?:[^']|'')*'/g, "''"));
+}
+
+export function soVoiChuan(chuan: Extract<KetQuaChay, { ok: true }>, nguoiChoi: Extract<KetQuaChay, { ok: true }>, thuTu = false): KetQuaSo {
   const soDongNguoiChoi = nguoiChoi.dong.length;
   const soDongChuan = chuan.dong.length;
   if (soDongNguoiChoi !== soDongChuan) {
@@ -167,8 +176,9 @@ export function soVoiChuan(chuan: Extract<KetQuaChay, { ok: true }>, nguoiChoi: 
     const cotThieu = chuan.cot.filter((c) => !nguoiChoi.cot.map((x) => x.toLowerCase()).includes(c.toLowerCase()));
     return { dung: false, soDongNguoiChoi, soDongChuan, cotThieu };
   }
-  const anhXa = timAnhXa(chuan, nguoiChoi);
+  const anhXa = timAnhXa(chuan, nguoiChoi, thuTu);
   if (anhXa) return { dung: true, soDongNguoiChoi, soDongChuan, cotThieu: [] };
+  if (thuTu && timAnhXa(chuan, nguoiChoi)) return { dung: false, soDongNguoiChoi, soDongChuan, cotThieu: [], saiThuTu: true };
   const cotThieu = chuan.cot.filter((_c, i) => !nguoiChoi.cot.some((_x, j) => cungDaTap(daTap(chuan.dong, [i]), daTap(nguoiChoi.dong, [j]))));
   return { dung: false, soDongNguoiChoi, soDongChuan, cotThieu };
 }
@@ -183,7 +193,7 @@ export async function chamThuThach(duLieu: BoDuLieuMvp, sqlNguoiChoi: string, sq
   if (!chay.ok) return { trangThai: 'loi', chay };
   const chuan = await chaySql(duLieu, sqlChuan);
   if (!chuan.ok) return { trangThai: 'loi', chay: { ok: false, loai: 'khac', thongDiep: `SQL chuẩn của thẻ lỗi: ${chuan.thongDiep}` } };
-  const so = soVoiChuan(chuan, chay);
+  const so = soVoiChuan(chuan, chay, coThuTu(sqlChuan));
   return { trangThai: so.dung ? 'dung' : 'sai', chay, so };
 }
 
@@ -194,7 +204,8 @@ export function xemDongDau(duLieu: BoDuLieuMvp, bang: string, soDong = 5): Promi
 
 /**
  * Lời nhân vật sau một lần chạy (dòng "Khi …" của thẻ, QĐ-092): đúng → "Khi đúng"; lỗi thiếu cột → "Khi lỗi không có cột"
- * (không có thì "Khi lỗi"); lỗi khác → "Khi lỗi"; chạy được → "Khi chạy ra <n> dòng" đúng số dòng. Không khớp → [].
+ * (không có thì "Khi lỗi"); lỗi khác → "Khi lỗi"; đủ dòng nhưng sai thứ tự → "Khi sai thứ tự" (không có thì theo số dòng);
+ * chạy được → "Khi chạy ra <n> dòng" đúng số dòng. Không khớp → [].
  */
 export function phanUngSauKhiChay(the: Pick<TheThuThachMvp, 'phanUng'>, kq: KetQuaCham, cotDung?: readonly string[]): LoiMvp[] {
   const tim = (f: (k: KhiChayMvp) => boolean): LoiMvp[] => the.phanUng.find((p) => f(p.khi))?.loi ?? [];
@@ -202,6 +213,10 @@ export function phanUngSauKhiChay(the: Pick<TheThuThachMvp, 'phanUng'>, kq: KetQ
   if (kq.trangThai === 'loi') {
     const cot = kq.chay.loai === 'khong-co-cot' ? tim((k) => k.kind === 'loi-cot') : [];
     return cot.length > 0 ? cot : tim((k) => k.kind === 'loi');
+  }
+  if (kq.so.saiThuTu) {
+    const thuTu = tim((k) => k.kind === 'sai-thu-tu');
+    if (thuTu.length > 0) return thuTu;
   }
   const n = kq.so.soDongNguoiChoi;
   // Lời gắn với tập cột ("… với a, b") chỉ nói khi câu dùng đúng các cột đó — để lời tả đúng lý do; không có thì lời chung.

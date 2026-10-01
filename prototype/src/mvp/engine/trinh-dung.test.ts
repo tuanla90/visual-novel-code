@@ -92,7 +92,9 @@ describe('xem từng điều kiện', () => {
     // Ngoặc bên trong chữ nháy không tính.
     expect(tachWhere("SELECT * FROM t WHERE ten IN ('a (b)', 'c') OR x = 1")?.dieuKien).toEqual(["ten IN ('a (b)', 'c')", 'x = 1']);
     expect(tachWhere("SELECT * FROM t WHERE (ten LIKE 'a%' OR ten LIKE 'b%')")).toBeNull();
-    expect(tachWhere("SELECT * FROM t WHERE lower(ten) = 'a'")).toBeNull();
+    // Từ Vụ 2: cột bọc LOWER / TRIM vẫn là điều kiện phẳng; hàm khác thì không.
+    expect(tachWhere("SELECT * FROM t WHERE lower(ten) = 'a'")?.dieuKien).toEqual(["lower(ten) = 'a'"]);
+    expect(tachWhere("SELECT * FROM t WHERE upper(ten) = 'A'")).toBeNull();
     expect(tachWhere("SELECT * FROM t WHERE ten IN ('a') GROUP BY ten")).toBeNull();
   });
 

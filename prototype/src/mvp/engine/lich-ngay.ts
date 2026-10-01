@@ -112,6 +112,8 @@ export interface TienDoNgay {
   giaiDoan: GiaiDoanMvp;
   ngay: number;
   conTro?: { chuoi: string } | null;
+  /** Giai đoạn `vu-sau`: ngày thật của vụ đang chơi (`lich.vuSau[].ngay`); thiếu → coi như còn ở ngày họp. */
+  ngayVu?: string | null;
 }
 
 /**
@@ -127,6 +129,7 @@ export function homNay(s: TienDoNgay, ngayMoDau?: string | null): HomNay {
     return { ngay, moDau: true };
   }
   if (s.giaiDoan === 'ngay') return { ngay: l.ngayDieuTra(Math.max(1, s.ngay)), moDau: false };
+  if (s.giaiDoan === 'vu-sau' && s.ngayVu) return { ngay: s.ngayVu, moDau: false };
   return { ngay: l.hop, moDau: false };
 }
 
@@ -160,6 +163,8 @@ export interface TuyChonMocLich {
   /** Tên ngày điều tra (lich.md "## <Tên> {ngày: n …}"); thiếu → "Ngày n". */
   tenNgay?: (so: number) => string;
   hanPhu?: HanPhu[];
+  /** Các vụ sau người chơi đã tới (đã xong và đang chơi), có ngày: mỗi vụ một mốc truyện. */
+  vuSau?: { ngay: string; ten: string; ngan: string }[];
 }
 
 function xepLoai(ngay: string, den: string | undefined, hom: string, goc: 'truyen' | 'han'): LoaiMoc {
@@ -192,6 +197,7 @@ export function mocLich(s: TienDoNgay, tuy: TuyChonMocLich = {}): MocLich[] {
     }
     them({ ngay: l.hop, ten: 'Buổi họp rà soát', ngan: 'Họp', chiTiet: '16:00', han: 'vu' }, 'han');
   }
+  for (const v of tuy.vuSau ?? []) them({ ngay: v.ngay, ten: v.ten, ngan: v.ngan });
   for (const h of tuy.hanPhu ?? []) them({ ngay: h.ngay, ten: h.ten, ngan: h.ngan ?? h.ten, han: 'phu', ...(h.chiTiet ? { chiTiet: h.chiTiet } : {}) }, 'han');
   return ds.sort((a, b) => soNgayGiua(b.ngay, a.ngay));
 }

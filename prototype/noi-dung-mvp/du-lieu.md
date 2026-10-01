@@ -1,4 +1,4 @@
-# Dữ liệu Vụ 1 — bộ cố định {dữ liệu: vu1}
+# Dữ liệu mùa 1 — bộ cố định (Vụ 1, Vụ 2) {dữ liệu: vu1}
 
 <!-- Bộ dữ liệu SQL CỐ ĐỊNH của Vụ 1 (QĐ-087, QĐ-089: chưa làm dữ liệu ngẫu nhiên). Chép nguyên từ
      docs/mvp/kiem-du-lieu-vu1.py (11 lớp, 26 sinh viên). QĐ-092 thêm 3 lớp khác khóa (BC23A, KT22A, QT23A — KHÔNG có sinh viên)
@@ -86,3 +86,21 @@
 ```sql
 SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l ON s.ma_lop = l.ma_lop
 ```
+
+## nhat_ky_su_dung {bảng}
+- Cột: ma_buoi TEXT, ma_phong TEXT, ngay TEXT, hoat_dong TEXT, trang_thai TEXT
+
+<!-- Vụ 2 (docs/mvp/mua-1-du-lieu-va-kiem-chung.md mục 2; ngày đổi sang năm 2024 cho khớp lịch truyện). Bản xuất sổ sử dụng
+     phòng tháng 10: mã phòng gõ tay nên lệch hoa/thường và dính dấu cách ở đuôi. `␣` = một dấu cách THẬT trong ô (bảng
+     Markdown tự cắt dấu cách đầu/cuối ô nên phải viết lộ ra). Sau LOWER(TRIM(ma_phong)) có 5 dòng phòng CLB; 4 dòng
+     DA_XAC_NHAN (BUOI-02/04/06/08, các thứ Tư 02–23/10/2024), 1 dòng DU_KIEN (30/10). Hai dòng P-KHO-CHUNG là nhiễu. -->
+
+| ma_buoi | ma_phong | ngay | hoat_dong | trang_thai |
+|---|---|---|---|---|
+| BUOI-08 | clb-tham-tu | 2024-10-23 | Hướng dẫn tân thành viên | DA_XAC_NHAN |
+| BUOI-01 | P-KHO-CHUNG | 2024-10-01 | Nhận vật tư | DA_XAC_NHAN |
+| BUOI-06 | CLB-THAM-TU␣␣ | 2024-10-16 | Kiểm kê hồ sơ | DA_XAC_NHAN |
+| BUOI-05 | clb-tham-tu | 2024-10-30 | Ôn SQL dự kiến | DU_KIEN |
+| BUOI-02 | CLB-THAM-TU | 2024-10-02 | Họp thành viên | DA_XAC_NHAN |
+| BUOI-04 | clb-tham-tu␣␣ | 2024-10-09 | Ôn SQL | DA_XAC_NHAN |
+| BUOI-03 | P-KHO-CHUNG | 2024-10-06 | Nhận vật tư | DA_XAC_NHAN |

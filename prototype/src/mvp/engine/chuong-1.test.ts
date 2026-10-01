@@ -65,7 +65,7 @@ describe('chương 1: ngày theo truyện', () => {
     expect(s.hoSo.bangChung).toEqual(expect.arrayContaining(['ev-the-lich', 'ev-hai-lop', 'ev-hai-ma', 'ev-nhat-ky-in']));
     expect(s.hoSo.manhMoi).toEqual(expect.arrayContaining(['clue-hoai-nguoi-nop', 'clue-loi-chu-cuong', 'clue-ten-tep']));
     s = choi(s, RE_NHANH_KET_THAT, toiKet);
-    expect(khungNhin(KB, s)).toEqual({ kind: 'end', ketQua: 'that' });
+    expect(khungNhin(KB, s)).toMatchObject({ kind: 'end', ketQua: 'that' });
     expect(s.hoSo.bangChung).toContain('ev-hai-dong-sua');
   });
 
@@ -75,13 +75,13 @@ describe('chương 1: ngày theo truyện', () => {
     ['mời Hoài vào đối chất', { 'r-moi-hoai': 'doi-chat' }],
   ])('kết thường khi %s', (_ten, doi) => {
     const s = choi(taoTrangThai(KB, 1), { ...RE_NHANH_KET_THAT, ...doi }, toiKet);
-    expect(khungNhin(KB, s)).toEqual({ kind: 'end', ketQua: 'thuong' });
+    expect(khungNhin(KB, s)).toMatchObject({ kind: 'end', ketQua: 'thuong' });
     expect(s.co).not.toContain('dc-ai-viet-du');
   });
 
   it('không hỏi chú Cường nhưng có nhật ký in: vẫn kết thật (đủ căn cứ), chỉ thiếu mức hỗ trợ', () => {
     const s = choi(taoTrangThai(KB, 1), { ...RE_NHANH_KET_THAT, 'r-chu-cuong': 'di' }, toiKet);
-    expect(khungNhin(KB, s)).toEqual({ kind: 'end', ketQua: 'that' });
+    expect(khungNhin(KB, s)).toMatchObject({ kind: 'end', ketQua: 'that' });
     expect(s.co).toContain('dc-ai-viet-du');
     expect(s.co).not.toContain('dc-ai-viet-ho-tro');
   });
@@ -124,7 +124,7 @@ describe('chương 1: ngày theo truyện', () => {
       expect(s.co).toContain('dc-ai-viet-ho-tro');
       s = quaPhanHoi(xuLy(KB, s, { type: 'chua-du' }));
       s = choi(s, RE_NHANH_KET_THAT, toiKet);
-      expect(khungNhin(KB, s)).toEqual({ kind: 'end', ketQua: 'thuong' });
+      expect(khungNhin(KB, s)).toMatchObject({ kind: 'end', ketQua: 'thuong' });
       expect(s.co).not.toContain('dc-ai-viet-du');
     });
 
@@ -137,7 +137,7 @@ describe('chương 1: ngày theo truyện', () => {
       expect(s.doiChat ?? null).toBeNull();
       expect(s.co).toContain('dc-ai-viet-du');
       s = choi(s, RE_NHANH_KET_THAT, toiKet);
-      expect(khungNhin(KB, s)).toEqual({ kind: 'end', ketQua: 'that' });
+      expect(khungNhin(KB, s)).toMatchObject({ kind: 'end', ketQua: 'that' });
     });
   });
 
@@ -169,7 +169,7 @@ describe('chương 1: ngày theo truyện', () => {
     expect(sau).toEqual(truoc);
     const ketA = choi(truoc, RE_NHANH_KET_THAT, toiKet);
     const ketB = choi(sau, RE_NHANH_KET_THAT, toiKet);
-    expect(khungNhin(KB, ketB)).toEqual({ kind: 'end', ketQua: 'that' });
+    expect(khungNhin(KB, ketB)).toMatchObject({ kind: 'end', ketQua: 'that' });
     expect(ketB).toEqual(ketA);
   });
 });

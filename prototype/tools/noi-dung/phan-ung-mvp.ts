@@ -8,11 +8,12 @@
  *   - Khi lỗi không có cột: **ha-vy** (thinking): Máy đang đi tìm một cột tên B.
  *   - Khi lỗi: …            (mọi lỗi khác)
  *   - Khi đúng: …           (kết quả khớp, trước nút lưu / đi tiếp)
+ *   - Khi sai thứ tự: …     (thẻ có ORDER BY: đủ đúng các dòng nhưng thứ tự khác câu chuẩn)
  * Nhiều lời một lúc: nối bằng `<br>`. Không import gì từ `src/`.
  */
 import { parseSpoken, type RawLine } from './doc.ts';
 
-export type KhiChay = { kind: 'so-dong'; n: number; cot?: string[] } | { kind: 'loi-cot' } | { kind: 'loi' } | { kind: 'dung' };
+export type KhiChay = { kind: 'so-dong'; n: number; cot?: string[] } | { kind: 'loi-cot' } | { kind: 'loi' } | { kind: 'dung' } | { kind: 'sai-thu-tu' };
 
 export interface RawPhanUng {
   khi: KhiChay;
@@ -34,8 +35,9 @@ export function docPhanUng(fields: Readonly<Record<string, string>>): { phanUng:
     else if (nhan === 'Khi lỗi không có cột') khi = { kind: 'loi-cot' };
     else if (nhan === 'Khi lỗi') khi = { kind: 'loi' };
     else if (nhan === 'Khi đúng') khi = { kind: 'dung' };
+    else if (nhan === 'Khi sai thứ tự') khi = { kind: 'sai-thu-tu' };
     if (!khi) {
-      loi.push(`dòng "${nhan}" lạ — dùng "Khi chạy ra <n> dòng", "Khi chạy ra <n> dòng với <cột>, <cột>", "Khi lỗi không có cột", "Khi lỗi", "Khi đúng"`);
+      loi.push(`dòng "${nhan}" lạ — dùng "Khi chạy ra <n> dòng", "Khi chạy ra <n> dòng với <cột>, <cột>", "Khi lỗi không có cột", "Khi lỗi", "Khi đúng", "Khi sai thứ tự"`);
       continue;
     }
     try {

@@ -119,5 +119,9 @@ export function nhanTienDo(s: TrangThaiMvp): string {
   if (s.giaiDoan === 'mo-dau') return 'Mở đầu';
   if (s.giaiDoan === 'ngay') return `Ngày ${s.ngay} · ${tenKhungHienTai(KICH_BAN, s)}`;
   if (s.giaiDoan === 'hop') return 'Buổi họp rà soát';
+  if (s.giaiDoan === 'vu-sau') {
+    const i = (KICH_BAN.lich.vuSau ?? []).findIndex((v) => v.id === s.vu);
+    return `Vụ ${i + 2} · ${tenKhungHienTai(KICH_BAN, s)}`;
+  }
   return 'Kết';
 }

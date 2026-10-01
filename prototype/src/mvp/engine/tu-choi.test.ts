@@ -14,8 +14,8 @@ const KB = KICH_BAN_MVP as unknown as KichBanMvp;
 const DUNG_KET_THAT = { reNhanh: reNhanhTheo(RE_NHANH_KET_THAT) };
 
 describe('nhảy tới (MVP)', () => {
-  it('có đúng bốn điểm nhảy, mỗi điểm có nhãn và mô tả', () => {
-    expect(DIEM_NHAY_MVP.map((d) => d.id)).toEqual(['lop', 'ten-h', 'nhat-ky-in', 'hop-sua-or']);
+  it('có đúng năm điểm nhảy (bốn của chương 1, một của Vụ 2), mỗi điểm có nhãn và mô tả', () => {
+    expect(DIEM_NHAY_MVP.map((d) => d.id)).toEqual(['lop', 'ten-h', 'nhat-ky-in', 'hop-sua-or', 'vu2-buoi']);
     for (const d of DIEM_NHAY_MVP) {
       expect(d.nhan.length).toBeGreaterThan(0);
       expect(d.moTa.length).toBeGreaterThan(0);
@@ -61,7 +61,7 @@ describe('nhảy tới (MVP)', () => {
     expect(s.hoSo.bangChung).toEqual(expect.arrayContaining(['ev-the-lich', 'ev-hai-lop', 'ev-hai-ma', 'ev-nhat-ky-in']));
     expect(s.hoSo.manhMoi).toContain('clue-loi-chu-cuong');
     const ket = choiTuDong(KB, s, DUNG_KET_THAT, (_st, kn) => kn.kind === 'end');
-    expect(khungNhin(KB, ket)).toEqual({ kind: 'end', ketQua: 'that' });
+    expect(khungNhin(KB, ket)).toMatchObject({ kind: 'end', ketQua: 'that' });
   });
 
   it('trạng thái nhảy tới giống hệt tự chơi đường thường (không có "cửa sau"), và lưu/nạp JSON được', () => {

@@ -97,6 +97,10 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
       }
     }
   }
+  // Cờ máy tự đặt khi một vụ tới [KẾT THÚC] (engine/may.ts `coKhiKet`): <mã vụ>-hoan-tat; vụ gốc thêm -ket-that / -ket-thuong.
+  // Chỉ khai khi lịch có vụ sau (bộ một vụ không có ai đọc các cờ này).
+  const coVu: string[] = lich.vuSau.length > 0 ? [`${lich.vu.id}-hoan-tat`, `${lich.vu.id}-ket-that`, `${lich.vu.id}-ket-thuong`, ...lich.vuSau.map((v) => `${v.id}-hoan-tat`)] : [];
+  for (const ma of coVu) if (!vatPham.has(ma)) vatPham.set(ma, lich.viTri);
   const canVatPham = (id: string, vt: ViTri, tienTo: string | null, noi: string): void => {
     if (!vatPham.has(id)) err(vt, `${noi}: không có mã "${id}" (chưa khai ở ho-so/ hay thẻ thử thách)`);
     else if (tienTo && !id.startsWith(tienTo)) err(vt, `${noi}: "${id}" phải là mã ${tienTo}…`);
@@ -294,6 +298,11 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
         case 'condition':
           for (const id of maTrongDieuKien(it.dieuKien)) canVatPham(id, vt, null, '[ĐIỀU KIỆN]');
           break;
+        case 'jump-if':
+          // Không phải cạnh bắt buộc: chuỗi đích chỉ chạy khi điều kiện thỏa.
+          for (const id of maTrongDieuKien(it.dieuKien)) canVatPham(id, vt, null, '[NẾU]');
+          canChuoi(it.chuoi, '[NẾU]');
+          break;
         case 'notebook-lookup': {
           const tr = soTay.get(it.trang);
           if (!tr) err(vt, `[TRA SỔ ${it.trang}]: không có trang sổ "${it.trang}" trong so-tay/`);
@@ -396,6 +405,8 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     canChuoiLich(lich.ket.that, lich.ket.viTri, '"Kết thật"');
     canChuoiLich(lich.ket.thuong, lich.ket.viTri, '"Kết thường"');
   }
+  for (const v of lich.vuSau) canChuoiLich(v.chuoi, v.viTri, `vụ sau ${v.id}, "Chuỗi"`);
+  if (lich.vuSau.length > 0 && !lich.ket) err(lich.viTri, 'lịch có "{vụ sau: …}" nhưng vụ gốc không có mục "## Kết" để chơi tiếp từ đó');
 
   // ---------- Đồ thị chuỗi: mốc sớm nhất, chuỗi lẻ ----------
   const goc: { id: string; t: number }[] = [{ id: lich.chuoiDau, t: 0 }];
@@ -410,6 +421,8 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   for (const k of duKien.values()) if (k.chuoi) goc.push({ id: k.chuoi, t: thuTuDK(k.id) });
   if (lich.ngayHop) goc.push({ id: lich.ngayHop.chuoi, t: 1000 });
   if (lich.ket) goc.push({ id: lich.ket.that, t: 1000 }, { id: lich.ket.thuong, t: 1000 });
+  // Vụ sau chạy sau khi vụ gốc kết: cùng mốc "ngày họp" (mọi nhân vật đã xuất hiện).
+  for (const v of lich.vuSau) goc.push({ id: v.chuoi, t: 1000 });
   for (const g of goc) if (chuoi.has(g.id)) mocChuoi.set(g.id, Math.min(mocChuoi.get(g.id) ?? Infinity, g.t));
   let doi = true;
   while (doi) {
@@ -439,6 +452,20 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     return s;
   };
   const tuHop = lich.ngayHop ? toiDuoc(lich.ngayHop.chuoi) : new Set<string>();
+  // Mỗi vụ sau phải tới được ít nhất một [KẾT THÚC]; chuỗi của vụ sau không được hết nút mà không [ĐI TỚI] / [KẾT THÚC].
+  for (const v of lich.vuSau) {
+    if (!chuoi.has(v.chuoi)) continue;
+    const den = [...toiDuoc(v.chuoi)].map((id) => chuoi.get(id)).filter((c): c is RawChuoiMvp => !!c);
+    if (!den.some((c) => c.items.some((it) => it.kind === 'end'))) err(v.viTri, `vụ sau ${v.id}: từ chuỗi "${v.chuoi}" không tới được [KẾT THÚC] nào`);
+    for (const c of den) {
+      const cuoi = c.items[c.items.length - 1];
+      const tuDi = cuoi && (cuoi.kind === 'end' || cuoi.kind === 'goto' || (cuoi.kind === 'consequence' && cuoi.hauQua.some((h) => h.kind === 'di-toi')) || (cuoi.kind === 'branch' && cuoi.branch.choices.every((ch) => ch.hauQua.some((h) => h.kind === 'di-toi'))));
+      // Chuỗi của một chỗ bấm [KHÁM PHÁ] được hết nút (máy quay về cảnh khám phá).
+      const laDiemKhamPha = den.some((x) => x.items.some((it) => it.kind === 'explore' && it.diem.some((d) => d.chuoi === c.id)));
+      if (!tuDi && !laDiemKhamPha) err(c.viTri, `chuỗi "${c.id}" (vụ sau ${v.id}) phải kết bằng [ĐI TỚI …], [RẼ NHÁNH] có "đi tới" ở mọi lựa chọn, hoặc [KẾT THÚC]`);
+    }
+  }
+  if (lich.vuSau.some((v) => tuHop.has(v.chuoi))) err(lich.viTri, 'chuỗi của vụ sau không được nối từ chuỗi ngày họp (vụ sau bắt đầu từ màn kết của vụ trước)');
 
   // ---------- Người nói: tồn tại, biểu cảm, Xuất hiện từ, chỉ qua lời kể ----------
   const kiemNguoiNoi = (speaker: string, expression: string | null, vt: ViTri, t: number | null): void => {

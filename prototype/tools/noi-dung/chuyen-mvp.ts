@@ -87,6 +87,8 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
       return { type: 'wait', giay: it.giay };
     case 'condition':
       return { type: 'condition', dieuKien: it.dieuKien };
+    case 'jump-if':
+      return { type: 'jump-if', dieuKien: it.dieuKien, to: it.chuoi };
     case 'consequence':
       return { type: 'consequence', hauQua: it.hauQua };
     case 'branch':
@@ -228,6 +230,8 @@ export function chuyenMvp(mvp: RawMvp, luat: KetQuaLuat): DuLieuMvp {
       ngay: lich.ngay.map((n) => ({ so: n.so, ten: n.ten, kieu: n.kieu, chuoi: n.chuoi, duKienChinh: n.duKienChinh, moNgay: n.moNgay, buoiToi: n.buoiToi })),
       ngayHop: lich.ngayHop ? { chuoi: lich.ngayHop.chuoi } : null,
       ket: lich.ket ? { that: lich.ket.that, thuong: lich.ket.thuong } : null,
+      // Chỉ ghi khi có vụ sau: bộ một vụ sinh ra y như trước.
+      ...(lich.vuSau.length > 0 ? { vuSau: lich.vuSau.map((v) => ({ id: v.id, ten: v.ten, chuoi: v.chuoi, ngay: v.ngay, tieuDeKet: v.tieuDeKet, loiKet: v.loiKet })) } : {}),
     },
     chuoi: chuoiDs,
     thuThach,

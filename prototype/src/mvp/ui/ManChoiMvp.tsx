@@ -173,6 +173,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
 
   if (!s || !kn) return null;
   const dienTen = (t: string): string => dienTenMay(kb, s, t);
+  /** Số thứ tự của một vụ sau (vụ gốc là 1). */
+  const soVu = (id: string): number => (kb.lich.vuSau ?? []).findIndex((v) => v.id === id) + 2;
   // Màn "Nhân vật mới" (như prototype): nhân vật có thẻ giới thiệu nói lần đầu → hiện trước lời thoại.
   const gioiThieu = canGioiThieu(kb, s, kn);
   const modalMo = kho !== null || lichSuMo || luuNap !== null || caiDat || lichMo || gioiThieu !== null;
@@ -329,7 +331,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             the={kn.thuThach}
             mode={kn.kind}
             dienTen={dienTen}
-            giayNho={giaTriTuHoSo(kb, s.hoSo)}
+            giayNho={giaTriTuHoSo(kb, s.hoSo, s.bang?.boGhim)}
             noi={kb.canh.find((c) => c.id === s.canh)?.ten}
             onDoiCho={(the, x, y) => hanhDong({ type: 'doi-cho-the', the, x, y })}
             onXong={(dung) => hanhDong({ type: 'xong-thu-thach', thuThach: kn.thuThach.id, dung })}
@@ -357,7 +359,19 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       case 'explore':
         return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} />;
       case 'end':
-        return <KetMvp ketQua={kn.ketQua} onChoiLai={choiLai} onVeTieuDe={onVeTieuDe} />;
+        return (
+          <KetMvp
+            ketQua={kn.ketQua}
+            vu={kn.vu ? { so: soVu(kn.vu.id), ten: kn.vu.ten, tieuDeKet: dienTen(kn.vu.tieuDeKet), loiKet: dienTen(kn.vu.loiKet) } : null}
+            vuKe={kn.vuKe ? { so: soVu(kn.vuKe.id), ten: kn.vuKe.ten } : null}
+            onSangVuSau={() => {
+              clearBacklog();
+              hanhDong({ type: 'sang-vu-sau' });
+            }}
+            onChoiLai={choiLai}
+            onVeTieuDe={onVeTieuDe}
+          />
+        );
       case 'error':
         return (
           <div className="game__error" role="alert">

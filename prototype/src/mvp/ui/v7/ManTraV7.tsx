@@ -7,6 +7,10 @@
  * Máy chỉ MÔ TẢ kết quả (số dòng, bảng); lời Tùng / Hà Vy là lời "Khi …" của thẻ thử thách, hiện thành hộp thoại rồi ẩn.
  * Chạy sai không bị phạt. Đúng (tập kết quả khớp SQL chuẩn, `sql-mvp.ts`) thì hiện nút ghim phiếu lên bảng điều tra.
  * Buổi họp (`fix-query`): cùng màn này nhưng là màn chiếu, câu của Quân nạp sẵn.
+ *
+ * Từ Vụ 2, thẻ có LOWER/TRIM hay ORDER BY ở SQL chuẩn thì màn có thêm khối tương ứng (`khoiCuaThe`): nút gọt cột trước phép
+ * so (y nguyên → bỏ dấu cách thừa → coi như chữ thường → cả hai) và hàng "XẾP THEO" (cột, tăng / giảm). Dấu cách đầu / cuối
+ * của ô chữ trong bảng kết quả hiện thành dấu chấm mờ để người chơi nhìn thấy dữ liệu bẩn.
  */
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type DragEvent } from 'react';
 import type { BoDuLieuMvp, KichBanMvp, LoiMvp, TheThuThachMvp } from '../../../content/mvp/types';
@@ -17,9 +21,12 @@ import type { GiaTriHoSo } from '../../engine/giay-nho';
 import { tenNguoiNoi } from '../../engine/may';
 import { chamThuThach, chaySql, phanUngSauKhiChay, type KetQuaCham } from '../../engine/sql-mvp';
 import {
+  TEN_CHUAN_HOA,
   TEN_PHEP,
+  VONG_CHUAN_HOA,
   cauTuSql,
   dieuKienThanhSql,
+  khoiCuaThe,
   khungTuSqlChuan,
   tachWhere,
   thanhSql,
@@ -64,6 +71,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
   const cot = useMemo(() => bang?.cot.map((c) => c.ten) ?? [], [bang]);
   const kieuCot = useCallback((ten: string): KieuCot => bang?.cot.find((c) => c.ten === ten)?.kieu ?? 'TEXT', [bang]);
   const tongDong = bang?.dong.length ?? 0;
+  const khoi = useMemo(() => khoiCuaThe(the.sqlChuan), [the.sqlChuan]);
 
   const [cau, setCau] = useState<CauDung>(() => {
     const napSan = mode === 'fix-query' && the.truyVanNapSan ? cauTuSql(the.truyVanNapSan) : null;
@@ -312,6 +320,17 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
                 >
                   {d.cot}
                 </button>
+                {khoi.chuanHoa && kieuCot(d.cot) === 'TEXT' ? (
+                  <button
+                    type="button"
+                    className={`v7-o v7-o--got${d.chuanHoa && d.chuanHoa !== 'khong' ? ' is-bat' : ''}`}
+                    disabled={khoa}
+                    aria-label={`Gọt cột ${d.cot} trước khi so: ${TEN_CHUAN_HOA[d.chuanHoa ?? 'khong']} — bấm để đổi`}
+                    onClick={() => doiDk(i, (x) => ({ ...x, chuanHoa: VONG_CHUAN_HOA[(VONG_CHUAN_HOA.indexOf(x.chuanHoa ?? 'khong') + 1) % VONG_CHUAN_HOA.length] ?? 'khong' }))}
+                  >
+                    {TEN_CHUAN_HOA[d.chuanHoa ?? 'khong']}
+                  </button>
+                ) : null}
                 <button
                   type="button"
                   className="v7-o v7-o--phep"
@@ -362,6 +381,40 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
               </button>
             </li>
           ) : null}
+          {khoi.sapXep ? (
+            <li className="v7-dk v7-xep" aria-label="Xếp kết quả">
+              <span className="v7-o v7-o--dau" aria-hidden="true">
+                XẾP THEO
+              </span>
+              <button
+                type="button"
+                className={`v7-o v7-o--cot${cau.xep ? '' : ' is-trong'}`}
+                disabled={khoa}
+                aria-label={`Xếp theo: ${cau.xep ? cau.xep.cot : 'chưa xếp'} — bấm để đổi`}
+                onClick={() =>
+                  doiCau((c) => {
+                    // Vòng: chưa xếp → từng cột → chưa xếp.
+                    const k = c.xep ? cot.indexOf(c.xep.cot) + 1 : 0;
+                    const ke = cot[k];
+                    return { ...c, xep: ke === undefined ? null : { cot: ke, giam: c.xep?.giam ?? false } };
+                  })
+                }
+              >
+                {cau.xep ? cau.xep.cot : 'chưa xếp'}
+              </button>
+              {cau.xep ? (
+                <button
+                  type="button"
+                  className="v7-o v7-o--phep"
+                  disabled={khoa}
+                  aria-label={`Chiều xếp: ${cau.xep.giam ? 'giảm dần' : 'tăng dần'} — bấm để đổi`}
+                  onClick={() => doiCau((c) => (c.xep ? { ...c, xep: { ...c.xep, giam: !c.xep.giam } } : c))}
+                >
+                  {cau.xep.giam ? '↓ giảm dần' : '↑ tăng dần'}
+                </button>
+              ) : null}
+            </li>
+          ) : null}
         </ol>
       </div>
 
@@ -387,7 +440,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, onXong
                   {cham.chay.dong.map((h, r) => (
                     <tr key={r} style={{ ['--i' as string]: Math.min(r, 12) }}>
                       {h.map((v, k) => (
-                        <td key={k}>{v === null ? '(trống)' : String(v)}</td>
+                        <td key={k}>{v === null ? '(trống)' : <ChuCoDauCach chu={String(v)} />}</td>
                       ))}
                     </tr>
                   ))}
@@ -482,17 +535,45 @@ function CauSql({ cau, kieuCot }: { cau: CauDung; kieuCot: (c: string) => KieuCo
           ))}
         </>
       ) : null}
+      {cau.xep && cau.xep.cot !== '' ? (
+        <>
+          {' '}
+          <span className="k">ORDER BY</span> {cau.xep.cot}
+          {cau.xep.giam ? <span className="k"> DESC</span> : null}
+        </>
+      ) : null}
     </code>
   );
 }
 
+/** Ô chữ có dấu cách đầu / cuối: mỗi dấu cách hiện thành một chấm mờ (dữ liệu nhập tay hay dính dấu cách thừa). */
+export function ChuCoDauCach({ chu }: { chu: string }) {
+  const m = /^(\s*)([\s\S]*?)(\s*)$/.exec(chu);
+  const dau = m?.[1] ?? '';
+  const cuoi = m?.[3] ?? '';
+  if (dau === '' && cuoi === '') return <>{chu}</>;
+  const cham = (s: string) =>
+    s === '' ? null : (
+      <span className="v7-dau-cach" aria-label={`${s.length} dấu cách`} title={`${s.length} dấu cách`}>
+        {'·'.repeat(s.length)}
+      </span>
+    );
+  return (
+    <>
+      {cham(dau)}
+      {m?.[2] ?? ''}
+      {cham(cuoi)}
+    </>
+  );
+}
+
 function toMauDieuKien(chu: string) {
-  return chu.split(/('(?:[^']|'')*'|\b(?:LIKE|IN|OR)\b)/g).map((x, i) =>
+  return chu.split(/('(?:[^']|'')*'|\b(?:LIKE|IN|OR|LOWER|TRIM)\b)/g).map((x, i) =>
     /^'/.test(x) ? (
       <span key={i} className="s">
         {x}
       </span>
-    ) : /^(LIKE|IN|OR)$/.test(x) ? (
+    ) : /^(LIKE|IN|OR|LOWER|TRIM)$/.test(x) ? (
       <span key={i} className="k">
         {x}
       </span>

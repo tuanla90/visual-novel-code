@@ -59,6 +59,11 @@ function mocHud(kb: KichBanMvp, s: TrangThaiMvp): { kicker: string; so: string; 
     return { kicker: 'Ngày', so: `${s.ngay}/${tongNgay}`, ten: khung, nhanDai: `Ngày ${s.ngay} · ${khung}` };
   }
   if (s.giaiDoan === 'hop') return { kicker: 'Buổi', so: 'Họp', ten: 'Buổi họp rà soát', nhanDai: 'Buổi họp rà soát' };
+  if (s.giaiDoan === 'vu-sau') {
+    const i = (kb.lich.vuSau ?? []).findIndex((v) => v.id === s.vu);
+    const ten = kb.lich.vuSau?.[i]?.ten ?? '';
+    return { kicker: 'Vụ', so: String(i + 2), ten, nhanDai: `Vụ ${i + 2} · ${ten}` };
+  }
   return { kicker: 'Vụ 1', so: 'Kết', ten: 'Kết thúc', nhanDai: 'Kết thúc' };
 }
 
@@ -72,7 +77,7 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
   const tenNgay = kb.lich.ngay.find((n) => n.so === s.ngay)?.ten ?? '';
   const tong = kb.lich.luat.uyTin ?? 0;
   const coUyTin = s.giaiDoan === 'hop' && tong > 0;
-  const daXongNgay = (so: number): boolean => s.giaiDoan === 'hop' || s.giaiDoan === 'het' || (s.giaiDoan === 'ngay' && so < s.ngay);
+  const daXongNgay = (so: number): boolean => s.giaiDoan === 'hop' || s.giaiDoan === 'het' || s.giaiDoan === 'vu-sau' || (s.giaiDoan === 'ngay' && so < s.ngay);
   const nhanDocNgang = viewportMode === 'mobile' ? 'Chuyển sang màn hình ngang PC' : 'Chuyển sang màn hình dọc Mobile 9:16';
 
   // Menu: Esc hay bấm ra ngoài thì đóng (không dùng <details> như prototype để bắt được Esc).

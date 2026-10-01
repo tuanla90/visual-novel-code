@@ -133,6 +133,22 @@ export interface LichMvp {
   ngay: NgayMvp[];
   ngayHop: { chuoi: string } | null;
   ket: { that: string; thuong: string } | null;
+  /**
+   * Các vụ chơi tiếp sau vụ gốc (`## <Tên> {vụ sau: <mã>}` ở lich.md, từ Vụ 2), theo thứ tự. Mỗi vụ chạy MỘT chuỗi
+   * (chuỗi tự `[ĐI TỚI]` các chuỗi khác) và kết bằng `[KẾT THÚC]`. Không có = game chỉ có vụ gốc.
+   */
+  vuSau?: VuSauMvp[];
+}
+
+export interface VuSauMvp {
+  id: string;
+  ten: string;
+  chuoi: string;
+  /** Ngày thật của vụ (YYYY-MM-DD) cho màn lịch; thiếu → null. */
+  ngay: string | null;
+  /** Chữ màn kết của vụ (tiêu đề lớn và một câu dưới). */
+  tieuDeKet: string;
+  loiKet: string;
 }
 
 export type NutMvp =
@@ -170,6 +186,8 @@ export type NutMvp =
   | { type: 'stage'; action: 'vao' | 'ra'; nhanVat: string }
   | { type: 'wait'; giay: number }
   | { type: 'condition'; dieuKien: DieuKienMvp }
+  /** `[NẾU <điều kiện>] → đi tới <chuỗi>`: điều kiện thỏa thì sang chuỗi `to`, không thì chạy tiếp. Máy tự xử lý. */
+  | { type: 'jump-if'; dieuKien: DieuKienMvp; to: string }
   | { type: 'consequence'; hauQua: HauQuaMvp[] }
   | { type: 'branch'; id: string; asker: { speaker: string; text: string }; choices: { id: string; text: string; khi: DieuKienMvp | null; hauQua: HauQuaMvp[] }[] }
   | { type: 'notebook-lookup'; trang: string; phan: string }
@@ -218,7 +236,13 @@ export interface TheThuThachMvp {
 }
 
 /** `cot`: chỉ khớp khi các điều kiện người chơi đã điền dùng đúng tập cột này ("Khi chạy ra 0 dòng với a, b"). */
-export type KhiChayMvp = { kind: 'so-dong'; n: number; cot?: string[] } | { kind: 'loi-cot' } | { kind: 'loi' } | { kind: 'dung' };
+export type KhiChayMvp =
+  | { kind: 'so-dong'; n: number; cot?: string[] }
+  | { kind: 'loi-cot' }
+  | { kind: 'loi' }
+  | { kind: 'dung' }
+  /** "Khi sai thứ tự": đủ đúng các dòng nhưng thứ tự khác câu chuẩn (thẻ có ORDER BY). */
+  | { kind: 'sai-thu-tu' };
 
 export interface PhanUngMvp {
   khi: KhiChayMvp;

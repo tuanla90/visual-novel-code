@@ -24,7 +24,9 @@ export type BoiCanhChuoi =
   /** Chuỗi ngày họp: phải tự `[ĐI TỚI]`/`[RẼ KẾT]`; hết nút mà không rẽ là lỗi nội dung. */
   | 'hop'
   /** Chuỗi kết: kết thúc bằng `[KẾT THÚC]`. */
-  | 'ket';
+  | 'ket'
+  /** Chuỗi của một vụ sau (`lich.vuSau`): phải tự `[ĐI TỚI]` / `[KẾT THÚC]`; hết nút mà không kết là lỗi nội dung. */
+  | 'vu';
 
 export interface ConTroMvp {
   chuoi: string;
@@ -39,7 +41,7 @@ export interface KhamPhaMvp {
   daXem: string[];
 }
 
-export type GiaiDoanMvp ='mo-dau' | 'ngay' | 'hop' | 'het';
+export type GiaiDoanMvp = 'mo-dau' | 'ngay' | 'hop' | 'het' | 'vu-sau';
 
 /** Câu hỏi / chọn dòng / chép sổ đang trong pha phản hồi. */
 export interface HoiDapMvp {
@@ -102,6 +104,8 @@ export interface TrangThaiMvp {
   nganh: string;
 
   giaiDoan: GiaiDoanMvp;
+  /** Vụ sau đang chơi (`lich.vuSau[].id`, giai đoạn `vu-sau`). Không có / `null` = vụ gốc. Ô lưu cũ: không có trường. */
+  vu?: string | null;
   /** Ngày điều tra hiện tại (1–5); 0 khi chưa vào ngày. */
   ngay: number;
   /** Chỉ số khung giờ đang đứng (0 = Sáng … 2 = Chiều); bằng số khung của lịch (3) = đã hết khung → buổi tối. */

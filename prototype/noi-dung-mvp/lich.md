@@ -32,3 +32,11 @@
 ## Kết
 - Kết thật: ket-that
 - Kết thường: ket-thuong
+
+<!-- Vụ sau (từ Vụ 2): chơi tiếp từ màn kết của vụ trước. Mỗi vụ chạy MỘT chuỗi (tự [ĐI TỚI] các chuỗi khác), kết bằng [KẾT THÚC]. "Ngày" là ngày thật trên màn lịch (truyện năm 2024). Máy tự đặt cờ <mã vụ>-hoan-tat khi một vụ kết; Vụ 1 thêm vu1-ket-that / vu1-ket-thuong. Thẻ của vụ trước được gỡ khỏi bảng điều tra, vẫn nằm trong hồ sơ. -->
+
+## Bốn mục trong sổ đã ký {vụ sau: vu2}
+- Chuỗi: v2-mo
+- Ngày: 2024-10-25
+- Tiêu đề kết: Bốn mục có trong sổ, không hơn
+- Lời kết: Bản xuất và sổ giấy là hai nguồn riêng, cùng ra bốn buổi đã ký. Hồ sơ ghi đúng điều đó: không nói ai tới dự, không nói buổi nào có ích.
