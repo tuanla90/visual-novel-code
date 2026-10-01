@@ -29,7 +29,7 @@ export interface NguonDong {
 const MA = /^[a-z0-9][a-z0-9.\-_]*$/;
 const DONG_DANH_DAU = /^- \[LỜI ([^\]]+)\]\s*$/;
 /** Dòng lời hợp lệ: thoại, người chơi, thẻ chữ, dàn dựng, nhiệm vụ, phản ứng "Khi …". */
-const DONG_LOI = [/^- \*\*[a-z0-9-]+\*\*/, /^- \[THẺ CHỮ\] /, /^- \[DÀN DỰNG\] /, /^> NHIỆM VỤ: /, /^- Khi [^:]+: /];
+const DONG_LOI = [/^- \*\*[a-z0-9-]+\*\*/, /^- \[THẺ CHỮ\] /, /^- \[DÀN DỰNG\] /, /^> NHIỆM VỤ: /, /^> NHẮC VIỆC /, /^- Khi [^:]+: /];
 
 export function docTepLoi(tep: string, noiDung: string): { doan: DoanLoi[]; loi: LoiNoiDung[] } {
   const doan: DoanLoi[] = [];
@@ -54,7 +54,7 @@ export function docTepLoi(tep: string, noiDung: string): { doan: DoanLoi[]; loi:
     }
     const d: DoanLoi = hienTai;
     if (!DONG_LOI.some((r) => r.test(t))) {
-      loi.push({ tep, dong: so, thongBao: 'tệp lời chỉ chứa dòng chữ (thoại "- **ai** (cảm xúc): …", "- [THẺ CHỮ]", "- [DÀN DỰNG]", "> NHIỆM VỤ:", "- Khi …: …"); dòng cấu trúc thuộc về khung' });
+      loi.push({ tep, dong: so, thongBao: 'tệp lời chỉ chứa dòng chữ (thoại "- **ai** (cảm xúc): …", "- [THẺ CHỮ]", "- [DÀN DỰNG]", "> NHIỆM VỤ:", "> NHẮC VIỆC <ai>:", "- Khi …: …"); dòng cấu trúc thuộc về khung' });
       return;
     }
     d.dong.push({ chu: t, so });

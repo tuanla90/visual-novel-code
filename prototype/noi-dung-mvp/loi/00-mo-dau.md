@@ -4,6 +4,7 @@
 
 ## md-00-xe-buyt.1
 > NHIỆM VỤ: Tìm đường vào ký túc xá
+> NHẮC VIỆC player: Phòng 408… mà ký túc xá nằm đâu thì thông báo không ghi.
 
 ## md-00-xe-buyt.2
 - [THẺ CHỮ] **narrator**: Chủ nhật, 08/09/2024 · Đại học Chấn Hưng
@@ -20,6 +21,7 @@
 
 ## md-00-sanh-ktx.1
 > NHIỆM VỤ: Tìm đường lên phòng 408
+> NHẮC VIỆC player: Tầng bốn. Thang máy hay thang bộ đây?
 
 ## md-00-sanh-ktx.2
 - [DÀN DỰNG] Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Xem xong cả hai thì một cậu sinh viên áo sơ mi cam, cổ đeo thẻ, từ hành lang bên phải đi ra.
@@ -50,6 +52,7 @@
 
 ## md-01-ktx.1
 > NHIỆM VỤ: Nhận phòng KTX
+> NHẮC VIỆC tung (happy): Cất đồ xong tớ dẫn đi một vòng trường.
 
 ## md-01-ktx.2
 - [DÀN DỰNG] Hai người khiêng vali lên tới tầng bốn, cùng thở dốc. {{nv.tung}} đẩy cửa phòng 408.
@@ -81,6 +84,7 @@
 
 ## md-09-ngay-hoi.1
 > NHIỆM VỤ: Ghé bàn CLB Thám Tử
+> NHẮC VIỆC tung (chi-tay): Bàn Thám Tử ở góc kia. Tớ cá là vắng nhất sân.
 
 ## md-09-ngay-hoi.2
 - [DÀN DỰNG] Nền nhà văn hóa ngày hội (nền chưa vẽ người); gian Robotics bên trái, cờ in hình bánh răng (ảnh cần vẽ thêm — xem báo cáo rà soát A4/A5); bàn Thám Tử bên phải.
@@ -106,6 +110,7 @@
 
 ## md-10-phong-clb.1
 > NHIỆM VỤ: Dọn tủ hồ sơ cùng CLB
+> NHẮC VIỆC minh-anh (neutral): Bốn giờ chiều, họp đầu năm. Đến đúng giờ nhé.
 
 ## md-10-phong-clb.2
 - [DÀN DỰNG] Có mặt: {{nv.minh-anh}}, {{nv.duy}}, {{nv.ha-vy}}, {{nv.tung}}, người chơi. Bộ máy bàn cũ ở góc (nền vẽ sẵn); laptop CLB Duy cất trong tủ.
@@ -118,6 +123,7 @@
 - **ha-vy** (neutral): Khỏi đoán. Cổ đeo thẻ, tay lúc nào cũng cầm bản đồ trường. Du lịch chứ gì.
 - **duy** (smile): Còn tớ là {{nv.duy}}, năm hai Hành chính học. Chìa khóa phòng, tủ hồ sơ, cả cái laptop cũ cất trong tủ, đều tớ giữ.
 - **duy** (neutral): Ngăn dưới tớ chưa kiểm kê tới. Cậu mở xem có gì trong đấy.
+> NHẮC VIỆC duy (neutral): Ngăn dưới tủ tớ chưa kiểm kê tới.
 
 ## md-10-phong-clb.3
 - **minh-anh** (neutral): Sổ tự học của chị Linh khóa trước đấy. Em cứ giữ mà dùng.
@@ -141,3 +147,4 @@
 - **tung** (neutral): Thế giờ bắt đầu từ đâu ạ?
 - **ha-vy** (day-kinh): Khoan, tính lại đã. Mình mới có một chữ H với một cái hộp.
 - **minh-anh** (serious): Thì bắt đầu từ cái hộp. Nói có sách, mách có chứng. Mai ra tòa B.
+> NHẮC VIỆC minh-anh (serious): Một tuần tìm căn cứ. Mai bắt đầu từ cái hộp ở tòa B.

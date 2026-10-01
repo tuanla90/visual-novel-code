@@ -1,0 +1,213 @@
+{
+ "_ghi_chu": "Hàng đợi Topview (Image Edit, 9:16, 1K, Unlimited free) cho bộ nhép môi + chớp mắt của ảnh chân dung MVP (01/10/2026).\n\nMỗi ảnh chân dung cần 2 ảnh sửa: `mieng` (miệng mở đang nói) và `mat` (mắt nhắm). Ảnh ra → art/nguon/nhep-moi-2026-10-01/<id>.png,\nrồi `python art/nguon/cat-mieng-mat.py` so với ảnh gốc để cắt miếng → prototype/src/mvp/ui/nhep/<ảnh>/{mouth,eyes}.webp\nvà sinh bảng tọa độ cho prototype/src/mvp/ui/nhep-moi-mvp.ts.\n\nChạy: python art/prompts/sinh-hang-doi-nhep-moi-2026-10-01.py → ghi nhep-moi-hang-doi-2026-10-01.json cạnh tệp này.\nMỗi mục: id, khung, ref (\"path|#màu\" = làm phẳng lên nền màu; tải từ GitHub nhánh main), prompt (mở đầu \"[id: …]\").",
+ "hang_doi": [
+  {
+   "id": "char-tung-anchor--mieng",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/characters/char-tung-anchor.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-tung-anchor--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word — lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-tung-anchor--mat",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/characters/char-tung-anchor.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-tung-anchor--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink — upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-tung-happy--mieng",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-tung-happy.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-tung-happy--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word — lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-tung-happy--mat",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-tung-happy.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-tung-happy--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink — upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-tung-worried--mieng",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-tung-worried.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-tung-worried--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word — lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-tung-worried--mat",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-tung-worried.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-tung-worried--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink — upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-tung-surprised--mieng",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-tung-surprised.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-tung-surprised--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word — lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-tung-surprised--mat",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-tung-surprised.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-tung-surprised--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink — upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-tung-thinking--mieng",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-tung-thinking.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-tung-thinking--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word — lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-tung-thinking--mat",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-tung-thinking.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-tung-thinking--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink — upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-tung-gai-dau--mieng",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-tung-gai-dau.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-tung-gai-dau--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word — lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-tung-gai-dau--mat",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-tung-gai-dau.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-tung-gai-dau--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink — upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-tung-chi-tay--mieng",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-tung-chi-tay.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-tung-chi-tay--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word — lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-tung-chi-tay--mat",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-tung-chi-tay.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-tung-chi-tay--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink — upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-ha-vy-day-kinh--mieng",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-ha-vy-day-kinh.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-ha-vy-day-kinh--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word — lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-ha-vy-day-kinh--mat",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-ha-vy-day-kinh.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-ha-vy-day-kinh--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink — upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-ha-vy-thinking--mieng",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/characters/char-ha-vy-thinking.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-ha-vy-thinking--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word — lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-ha-vy-thinking--mat",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/characters/char-ha-vy-thinking.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-ha-vy-thinking--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink — upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-minh-anh-khoanh-tay--mieng",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-minh-anh-khoanh-tay.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-minh-anh-khoanh-tay--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word — lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-minh-anh-khoanh-tay--mat",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-minh-anh-khoanh-tay.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-minh-anh-khoanh-tay--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink — upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-minh-anh-serious--mieng",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-minh-anh-serious.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-minh-anh-serious--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word — lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-minh-anh-serious--mat",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-minh-anh-serious.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-minh-anh-serious--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink — upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-quan-chi-man--mieng",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-quan-chi-man.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-quan-chi-man--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word — lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-quan-chi-man--mat",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-quan-chi-man.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-quan-chi-man--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink — upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-nguoi-choi--mieng",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-nguoi-choi.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-nguoi-choi--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word — lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "char-nguoi-choi--mat",
+   "khung": "9:16",
+   "ref": [
+    "prototype/src/assets/mvp/nhan-vat/char-nguoi-choi.png|#D9DCE0"
+   ],
+   "prompt": "[id: char-nguoi-choi--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink — upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat light-gray background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  }
+ ]
+}

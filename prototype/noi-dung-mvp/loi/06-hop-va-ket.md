@@ -4,6 +4,7 @@
 
 ## hop-00.1
 > NHIỆM VỤ: Buổi họp rà soát
+> NHẮC VIỆC minh-anh (serious): Nói có sách, mách có chứng. Trình đúng những gì đã tra.
 
 ## hop-00.2
 - [DÀN DỰNG] {{nv.thay-quang}} ngồi giữa; {{nv.co-lan}} và {{nv.quan}} một bên, CLB một bên. {{nv.hoai}} ngồi chờ ngoài hành lang theo quy chế, chưa được mời vào.
@@ -14,6 +15,7 @@
 
 ## hop-00.3
 - **tung** (surprised): Ơ… mười bốn dòng thật.
+> NHẮC VIỆC ha-vy (day-kinh): Mười bốn dòng… câu của anh Quân lấy rộng ở chỗ nào?
 - [DÀN DỰNG] Nhịp 1: người chơi chạm vào chữ HOẶC, đổi thành VÀ → 2 dòng. Nhịp 2: "Số liệu đây!". Chạm sai, chạy thử đều không phạt.
 
 ## hop-00.4

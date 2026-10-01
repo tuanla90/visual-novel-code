@@ -517,6 +517,11 @@ export const KICH_BAN_MVP = {
           "text": "Tìm đường vào ký túc xá"
         },
         {
+          "type": "reminder",
+          "speaker": "player",
+          "text": "Phòng 408… mà ký túc xá nằm đâu thì thông báo không ghi."
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
@@ -588,6 +593,11 @@ export const KICH_BAN_MVP = {
         {
           "type": "task",
           "text": "Tìm đường lên phòng 408"
+        },
+        {
+          "type": "reminder",
+          "speaker": "player",
+          "text": "Tầng bốn. Thang máy hay thang bộ đây?"
         },
         {
           "type": "note",
@@ -773,6 +783,12 @@ export const KICH_BAN_MVP = {
           "text": "Nhận phòng KTX"
         },
         {
+          "type": "reminder",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Cất đồ xong tớ dẫn đi một vòng trường."
+        },
+        {
           "type": "image",
           "imageId": "chibi-408-vali"
         },
@@ -943,6 +959,12 @@ export const KICH_BAN_MVP = {
           "text": "Ghé bàn CLB Thám Tử"
         },
         {
+          "type": "reminder",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Bàn Thám Tử ở góc kia. Tớ cá là vắng nhất sân."
+        },
+        {
           "type": "note",
           "text": "Nền nhà văn hóa ngày hội (nền chưa vẽ người); gian Robotics bên trái, cờ in hình bánh răng (ảnh cần vẽ thêm — xem báo cáo rà soát A4/A5); bàn Thám Tử bên phải."
         },
@@ -1071,6 +1093,12 @@ export const KICH_BAN_MVP = {
           "text": "Dọn tủ hồ sơ cùng CLB"
         },
         {
+          "type": "reminder",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Bốn giờ chiều, họp đầu năm. Đến đúng giờ nhé."
+        },
+        {
           "type": "note",
           "text": "Có mặt: Minh Anh, Duy, Hà Vy, Tùng, người chơi. Bộ máy bàn cũ ở góc (nền vẽ sẵn); laptop CLB Duy cất trong tủ."
         },
@@ -1126,6 +1154,12 @@ export const KICH_BAN_MVP = {
           "speaker": "duy",
           "expression": "neutral",
           "text": "Ngăn dưới tớ chưa kiểm kê tới. Cậu mở xem có gì trong đấy."
+        },
+        {
+          "type": "reminder",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Ngăn dưới tủ tớ chưa kiểm kê tới."
         },
         {
           "type": "image",
@@ -1245,6 +1279,12 @@ export const KICH_BAN_MVP = {
           "speaker": "minh-anh",
           "expression": "serious",
           "text": "Thì bắt đầu từ cái hộp. Nói có sách, mách có chứng. Mai ra tòa B."
+        },
+        {
+          "type": "reminder",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Một tuần tìm căn cứ. Mai bắt đầu từ cái hộp ở tòa B."
         }
       ]
     },
@@ -1287,6 +1327,12 @@ export const KICH_BAN_MVP = {
         {
           "type": "task",
           "text": "Ai đã bỏ lá thư vào cái hộp này?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Chưa biết là ai, lớp nào. Quanh cái hộp này có gì không?"
         },
         {
           "type": "line",
@@ -1354,6 +1400,12 @@ export const KICH_BAN_MVP = {
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Chị Minh Anh làm đơn rồi. Mai có tài khoản."
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Lớp nào vừa ở tòa B, vừa học Báo chí? Mai có tài khoản mới tính được."
         }
       ]
     },
@@ -1526,6 +1578,12 @@ export const KICH_BAN_MVP = {
           "text": "Tài khoản của CLB được xem những gì?"
         },
         {
+          "type": "reminder",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Được xem đúng những gì người ta cho phép. Nghe cô nói hết đã."
+        },
+        {
           "type": "line",
           "speaker": "co-hanh",
           "expression": "neutral",
@@ -1590,6 +1648,12 @@ export const KICH_BAN_MVP = {
           "text": "Lớp nào vừa ở tòa B vừa học Báo chí?"
         },
         {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "day-kinh",
+          "text": "Hai tờ giấy nhớ trên bàn: Tòa B, Báo chí K24. Lớp nào khớp?"
+        },
+        {
           "type": "note",
           "text": "Phòng CLB buổi chiều. Laptop CLB đã đăng nhập tài khoản mới. Giấy nhớ [Tòa B], [Báo chí K24] trên bàn."
         },
@@ -1642,6 +1706,12 @@ export const KICH_BAN_MVP = {
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Cô Hạnh bảo rồi đấy: phải có phiếu của Phòng Công tác sinh viên."
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Hai lớp: BC24A, BC23A. Muốn xem người thì cần phiếu của Phòng Công tác sinh viên."
         }
       ]
     },
@@ -1678,6 +1748,12 @@ export const KICH_BAN_MVP = {
         {
           "type": "task",
           "text": "Làm sao để được xem bảng sinh viên?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Kết quả hai lớp hôm qua là căn cứ để xin phiếu tra cứu."
         },
         {
           "type": "line",
@@ -1827,6 +1903,12 @@ export const KICH_BAN_MVP = {
           "text": "Trong hai lớp ấy, ai có thể là người ký chữ H?"
         },
         {
+          "type": "reminder",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Tớ cá là Hiếu! Xem trong hai lớp có ai tên H."
+        },
+        {
           "type": "note",
           "text": "Phòng CLB. Phiếu tra cứu đã mở bảng sinh viên. Trên bàn: [H], phiếu hai lớp."
         },
@@ -1879,6 +1961,12 @@ export const KICH_BAN_MVP = {
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Mai mang hai mã sang Phòng Công tác sinh viên. Cô phụ trách tra sổ, có hay không là biết."
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Hiếu và Hoài, cùng BC24A. Mai mang hai mã sang Phòng Công tác sinh viên."
         }
       ]
     },
@@ -1915,6 +2003,12 @@ export const KICH_BAN_MVP = {
         {
           "type": "task",
           "text": "Mã nào có trong sổ niêm phong?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Hai mã. Sổ niêm phong có mã nào đây…"
         },
         {
           "type": "line",
@@ -2011,6 +2105,12 @@ export const KICH_BAN_MVP = {
           "text": "Lá thư được in từ tài khoản nào?"
         },
         {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chân trang thư là tên tệp. Nhật ký in sẽ ghi ai in nó."
+        },
+        {
           "type": "line",
           "speaker": "thay-khai",
           "expression": "neutral",
@@ -2086,6 +2186,12 @@ export const KICH_BAN_MVP = {
           "speaker": "thay-khai",
           "expression": "neutral",
           "text": "Tài khoản ấy là của ai thì thầy không nói. Các em cũng chưa cần biết, đúng không?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Người in là khóa 2021. Người nộp là Hoài. Hai việc, có khi là hai người."
         }
       ]
     },
@@ -2135,6 +2241,12 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "narrator",
           "text": "Sáng sớm ở cổng ký túc xá. Chú Cường vừa đi một vòng kiểm tra về, đèn pin còn cầm trên tay."
+        },
+        {
+          "type": "reminder",
+          "speaker": "tung",
+          "expression": "neutral",
+          "text": "Sáng thứ Hai ai ra cổng sớm, chú tớ hay để ý lắm."
         },
         {
           "type": "branch",
@@ -2231,6 +2343,12 @@ export const KICH_BAN_MVP = {
           "text": "Soát lại hồ sơ trước buổi họp"
         },
         {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Thứ Hai họp. Chỉ nói đúng những gì có chứng."
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
@@ -2282,6 +2400,12 @@ export const KICH_BAN_MVP = {
           "text": "Buổi họp rà soát"
         },
         {
+          "type": "reminder",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Nói có sách, mách có chứng. Trình đúng những gì đã tra."
+        },
+        {
           "type": "note",
           "text": "Thầy Quang ngồi giữa; Cô Lan và Quân một bên, CLB một bên. Hoài ngồi chờ ngoài hành lang theo quy chế, chưa được mời vào."
         },
@@ -2323,6 +2447,12 @@ export const KICH_BAN_MVP = {
           "speaker": "tung",
           "expression": "surprised",
           "text": "Ơ… mười bốn dòng thật."
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "day-kinh",
+          "text": "Mười bốn dòng… câu của anh Quân lấy rộng ở chỗ nào?"
         },
         {
           "type": "note",
@@ -3357,12 +3487,12 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';",
       "soDong": 3,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:120 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:124 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",
       "soDong": 14,
-      "noi": "noi-dung-mvp/kich-ban/06-hop-va-ket.md:14 [MÀN CHIẾU hop-chieu-or]"
+      "noi": "noi-dung-mvp/kich-ban/06-hop-va-ket.md:15 [MÀN CHIẾU hop-chieu-or]"
     }
   ],
   "duLieu": {

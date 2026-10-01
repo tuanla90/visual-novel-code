@@ -162,6 +162,8 @@ export type NguonChieuMvp = RawProjectorSource | { kind: 'preload'; challengeId:
 
 export type MucMvp =
   | { kind: 'task'; text: string }
+  /** `> NHẮC VIỆC <ai>( (<biểu cảm>))?: …` — việc đang làm do một nhân vật nhắc, hiện kèm ảnh mặt ở góc sân khấu (01/10/2026). */
+  | { kind: 'reminder'; speaker: string; expression: string | null; text: string }
   | { kind: 'line'; line: RawLine; card: boolean }
   | { kind: 'note'; text: string }
   | { kind: 'goto'; to: string }
@@ -940,6 +942,9 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
 
       const task = /^> NHIỆM VỤ: (.+)$/.exec(line);
       if (task) return add({ kind: 'task', text: task[1] ?? '' });
+      const nhac = /^> NHẮC VIỆC ([a-z][a-z0-9-]*)(?: \(([a-z][a-z-]*)\))?: (.+)$/.exec(line);
+      if (nhac) return add({ kind: 'reminder', speaker: nhac[1] ?? '', expression: nhac[2] ?? null, text: nhac[3] ?? '' });
+      if (line.startsWith('> NHẮC VIỆC')) throw new Error(`"${line}" sai quy ước — viết "> NHẮC VIỆC <mã nhân vật> (<biểu cảm>): <câu>"`);
       if (line.startsWith('- **')) return add({ kind: 'line', line: parseSpoken(line.slice(2)), card: false });
       if (line.startsWith('- [THẺ CHỮ] **')) return add({ kind: 'line', line: parseSpoken(line.slice('- [THẺ CHỮ] '.length)), card: true });
       if (line.startsWith('- [DÀN DỰNG] ')) return add({ kind: 'note', text: line.slice('- [DÀN DỰNG] '.length) });

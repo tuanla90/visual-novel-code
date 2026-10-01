@@ -439,7 +439,13 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     const t = mocChuoi.get(c.id) ?? null;
     for (const { line, dong } of loiTrongChuoi(c)) kiemNguoiNoi(line.speaker, line.expression, { tep: c.viTri.tep, dong }, t);
     c.items.forEach((it, k) => {
-      if (it.kind === 'stage' && it.action === 'vao') kiemNguoiNoi(it.nhanVat, null, { tep: c.viTri.tep, dong: c.itemDong[k] ?? c.viTri.dong }, t);
+      const vt: ViTri = { tep: c.viTri.tep, dong: c.itemDong[k] ?? c.viTri.dong };
+      if (it.kind === 'stage' && it.action === 'vao') kiemNguoiNoi(it.nhanVat, null, vt, t);
+      // Người nhắc việc phải là nhân vật có hình (người kể / nhân vật chỉ qua lời kể không có mặt để hiện).
+      if (it.kind === 'reminder') {
+        if (it.speaker === 'narrator') err(vt, '[NHẮC VIỆC] phải do một nhân vật có hình nhắc, không phải người kể');
+        else kiemNguoiNoi(it.speaker, it.expression, vt, t);
+      }
     });
   }
   for (const s of mvp.soTay) for (const l of s.haVy) kiemNguoiNoi(l.speaker, l.expression, s.viTri, null);
@@ -587,6 +593,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
       c.items.forEach((it: MucMvp, k) => {
         const vt: ViTri = { tep: c.viTri.tep, dong: c.itemDong[k] ?? c.viTri.dong };
         if (it.kind === 'task') bao(it.text, vt, 'nhiệm vụ');
+        if (it.kind === 'reminder') bao(it.text, vt, 'nhắc việc');
         if (it.kind === 'question') for (const ch of it.choices) bao(ch.text, vt, 'lựa chọn');
         if (it.kind === 'branch') for (const ch of it.branch.choices) bao(ch.text, vt, 'lựa chọn');
       });

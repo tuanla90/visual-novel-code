@@ -1,0 +1,147 @@
+/*
+ * Việc đang làm do nhân vật nhắc (NhacViecMvp) ở góc trên TRÁI sân khấu MVP; nhãn địa điểm (.stage__scene-label của
+ * app.css) dời sang góc PHẢI. Cùng chất liệu với nhãn địa điểm (giấy kem, viền hổ phách) để hai góc là một bộ.
+ * portrait.css đặt nhãn địa điểm bằng !important → ở đây cũng phải !important để dời được.
+ */
+.mvp-stage .stage__scene-label {
+  left: auto;
+  right: 16px;
+}
+.game--portrait .mvp-stage .stage__scene-label {
+  left: auto !important;
+  right: 8px !important;
+  transform-origin: top right !important;
+}
+@media (max-width: 768px) {
+  .mvp-stage .stage__scene-label {
+    left: auto !important;
+    right: 8px !important;
+    transform-origin: top right !important;
+  }
+}
+
+.nhac-viec {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  z-index: 35;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: min(48%, 540px);
+  padding: 5px 16px 5px 5px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #fffdfa 0%, #fef3c7 100%);
+  border: 1.5px solid rgba(217, 119, 6, 0.4);
+  box-shadow:
+    0 4px 14px rgba(15, 23, 42, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  user-select: none;
+  animation: nhac-viec-vao 0.42s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+@keyframes nhac-viec-vao {
+  from {
+    opacity: 0;
+    transform: translateX(-14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nhac-viec {
+    animation: none;
+  }
+}
+
+/* Ô mặt tròn: ảnh chân dung cắt quanh đầu (điểm 50%,20% của ảnh vào giữa ô). */
+.nhac-viec__mat {
+  position: relative;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 35%, #fde68a, #d97706);
+  box-shadow:
+    0 0 0 2px #fffdfa,
+    0 0 0 3.5px rgba(217, 119, 6, 0.55);
+}
+.nhac-viec__mat img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 220%;
+  height: auto;
+  transform: translate(-50%, -20%);
+  pointer-events: none;
+}
+.nhac-viec__chu-tat {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #fffdfa;
+}
+
+.nhac-viec__noi {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.2;
+}
+.nhac-viec__ten {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #b45309;
+}
+.nhac-viec__cau {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: #1e293b;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Màn dọc / điện thoại: ô mặt nhỏ hơn, nhường chỗ cho nhãn địa điểm bên phải. */
+.game--portrait .nhac-viec {
+  top: 8px;
+  left: 8px;
+  max-width: calc(100% - 150px);
+  gap: 8px;
+  padding: 4px 12px 4px 4px;
+}
+.game--portrait .nhac-viec__mat {
+  width: 38px;
+  height: 38px;
+}
+.game--portrait .nhac-viec__cau {
+  font-size: 0.86rem;
+}
+@media (max-width: 768px) {
+  .nhac-viec {
+    top: 8px;
+    left: 8px;
+    max-width: calc(100% - 150px);
+    gap: 8px;
+    padding: 4px 12px 4px 4px;
+  }
+  .nhac-viec__mat {
+    width: 38px;
+    height: 38px;
+  }
+  .nhac-viec__cau {
+    font-size: 0.86rem;
+  }
+}

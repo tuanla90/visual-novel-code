@@ -9,6 +9,7 @@
 
 ## n1-toa-b.1
 > NHIỆM VỤ: Ai đã bỏ lá thư vào cái hộp này?
+> NHẮC VIỆC tung (gai-dau): Chưa biết là ai, lớp nào. Quanh cái hộp này có gì không?
 - **narrator**: Chiều thứ Ba, sảnh tòa B lại vắng như hôm Chủ nhật. Bác bảo vệ đứng ở chân cầu thang. Cạnh cái hộp vừa có thêm một tờ giấy mới dán.
 - **player**: (Cái hộp, bác bảo vệ, tờ giấy mới dán… Bắt đầu từ đâu nhỉ.)
 
@@ -17,6 +18,7 @@
 - **ha-vy** (neutral): Lớp nào vừa sinh hoạt ở tòa B, vừa học Báo chí? Tính ra được lớp là bớt được cả trường.
 - **tung** (worried): Tính bằng gì? CLB mình có được xem dữ liệu đâu.
 - **ha-vy** (neutral): Chị Minh Anh làm đơn rồi. Mai có tài khoản.
+> NHẮC VIỆC ha-vy (thinking): Lớp nào vừa ở tòa B, vừa học Báo chí? Mai có tài khoản mới tính được.
 
 ## n1-hop.1
 - [DÀN DỰNG] Mắc ở mép tôn khe hộp là một tấm thẻ lịch, phần in còn nguyên "Khoa Báo chí – Truyền thông · K24", dòng viết tay "Họ tên / Lớp" bị xé mất.

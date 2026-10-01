@@ -514,7 +514,10 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
     }
     switch (nut.type) {
       case 'task':
-        s = tienNut({ ...s, nhiemVu: nut.text });
+        s = tienNut({ ...s, nhiemVu: nut.text, nhacViec: null });
+        break;
+      case 'reminder':
+        s = tienNut({ ...s, nhacViec: nut.expression ? { nhanVat: nut.speaker, bieuCam: nut.expression, text: nut.text } : { nhanVat: nut.speaker, text: nut.text } });
         break;
       case 'goto':
         s = nhayToi(s, nut.to, boiCanh);

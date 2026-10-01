@@ -134,6 +134,8 @@ export interface LichMvp {
 
 export type NutMvp =
   | { type: 'task'; text: string }
+  /** `> NHẮC VIỆC <ai>: …`: việc đang làm, do một nhân vật nhắc — hiện kèm ảnh mặt ở góc sân khấu; `[NHIỆM VỤ]` mới thì xóa. */
+  | { type: 'reminder'; speaker: string; expression?: string; text: string }
   | { type: 'line'; speaker: string; expression?: string; display?: 'card'; text: string }
   | { type: 'note'; text: string }
   | { type: 'goto'; to: string }

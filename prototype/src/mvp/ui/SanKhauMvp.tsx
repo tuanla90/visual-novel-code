@@ -13,7 +13,9 @@ import type { KichBanMvp } from '../../content/mvp/types';
 import { isCharacterId, isExpressionOf } from '../../shared/ids';
 import { Portrait } from '../../shared/ui/Portrait';
 import { useVnStore } from '../../shared/vn/vn-store';
+import type { NhacViecMvp as NhacViec } from '../engine/trang-thai';
 import { anhChanDung, anhNen, anhTheoTen } from './anh-mvp';
+import { NhacViecMvp } from './NhacViecMvp';
 
 export interface SanKhauMvpProps {
   kb: KichBanMvp;
@@ -27,6 +29,10 @@ export interface SanKhauMvpProps {
   coDan?: boolean;
   /** Tên người chơi (nhãn chân dung của `player`); rỗng → "Bạn". */
   tenNguoiChoi?: string;
+  /** Việc đang làm do nhân vật nhắc — góc trên trái (nhãn địa điểm dời sang phải). Bỏ trống = không hiện. */
+  nhacViec?: NhacViec | null;
+  /** Điền `{{nv.…}}` cho câu nhắc việc. */
+  dienTen?: (t: string) => string;
   children?: ReactNode;
 }
 
@@ -134,7 +140,7 @@ function ChanDungMvp({
   );
 }
 
-export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, coDan = true, tenNguoiChoi, children }: SanKhauMvpProps) {
+export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, coDan = true, tenNguoiChoi, nhacViec, dienTen, children }: SanKhauMvpProps) {
   const [dan, setDan] = useState<DanDien>(() => danKe(kb, null, canh, speaker, expression));
   const moi = danKe(kb, dan, canh, speaker, expression);
   if (moi !== dan) setDan(moi);
@@ -154,6 +160,7 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
         </svg>
         <span className="stage__scene-text">{tenCanh}</span>
       </div>
+      {nhacViec ? <NhacViecMvp kb={kb} nhac={nhacViec} dienTen={dienTen ?? ((t) => t)} tenNguoiChoi={tenNguoiChoi} /> : null}
       <div className="stage__portraits" data-so-nguoi={coDan ? moi.thanhVien.length : 0}>
         {(coDan ? moi.thanhVien : []).map((t, i) => {
           const dangNoi = t.nhanVat === speaker;

@@ -8,6 +8,7 @@
 
 ## n3-ctsv.1
 > NHIỆM VỤ: Làm sao để được xem bảng sinh viên?
+> NHẮC VIỆC minh-anh (neutral): Kết quả hai lớp hôm qua là căn cứ để xin phiếu tra cứu.
 - **co-lan** (neutral): Người gửi muốn được trả lời thì phải ghi mã sinh viên của mình vào phiếu gửi. Mã đó được chép vào sổ niêm phong.
 - **co-lan** (neutral): Sổ đó niêm phong. Cô cũng không được tự mở.
 - **player**: Vậy làm sao biết được ai gửi ạ?
@@ -34,6 +35,7 @@
 
 ## n3-laptop.1
 > NHIỆM VỤ: Trong hai lớp ấy, ai có thể là người ký chữ H?
+> NHẮC VIỆC tung (chi-tay): Tớ cá là Hiếu! Xem trong hai lớp có ai tên H.
 - [DÀN DỰNG] Phòng CLB. Phiếu tra cứu đã mở bảng sinh viên. Trên bàn: [H], phiếu hai lớp.
 - **narrator**: Về phòng CLB. Có phiếu tra cứu, laptop hiện thêm bảng sinh viên.
 - **tung** (chi-tay): Cậu gắt ở căng tin tên Hiếu. Chữ H đấy! Tớ cá là Hiếu!
@@ -45,3 +47,4 @@
 - **ha-vy** (neutral): Có cả Hoài nữa. Hai người này mới chỉ khớp chữ H với lớp thôi.
 - **tung** (neutral): Thế giờ làm gì?
 - **ha-vy** (neutral): Mai mang hai mã sang Phòng Công tác sinh viên. Cô phụ trách tra sổ, có hay không là biết.
+> NHẮC VIỆC ha-vy (neutral): Hiếu và Hoài, cùng BC24A. Mai mang hai mã sang Phòng Công tác sinh viên.

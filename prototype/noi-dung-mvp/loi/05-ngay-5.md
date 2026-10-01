@@ -6,6 +6,7 @@
 - [THẺ CHỮ] **narrator**: Ngày 5 — Thứ Bảy
 - [DÀN DỰNG] Sáng sớm ở cổng KTX. {{nv.chu-cuong}} vừa đi tuần về, tay cầm đèn pin.
 - **narrator**: Sáng sớm ở cổng ký túc xá. {{nv.chu-cuong}} vừa đi một vòng kiểm tra về, đèn pin còn cầm trên tay.
+> NHẮC VIỆC tung (neutral): Sáng thứ Hai ai ra cổng sớm, chú tớ hay để ý lắm.
 
 ## n5-chu-cuong.1
 - **tung** (neutral): Chú ơi, sáng thứ Hai chú có để ý ai ra cổng sớm không ạ? Bọn cháu đang lần xem lá thư ở hộp tòa B từ đâu mà ra.
@@ -16,6 +17,7 @@
 
 ## n5-toi.1
 > NHIỆM VỤ: Soát lại hồ sơ trước buổi họp
+> NHẮC VIỆC ha-vy (neutral): Thứ Hai họp. Chỉ nói đúng những gì có chứng.
 - [THẺ CHỮ] **narrator**: Tối thứ Bảy
 - **narrator**: Tối, phòng CLB. Hà Vy ghim hết giấy tờ lên bảng, Tùng căng chỉ nối từng tờ.
 - **ha-vy** (neutral): Soát lại nhé. Hộp ở tòa B, thẻ lịch khoa Báo chí: ra hai lớp. Chữ H trong hai lớp: Hiếu với Hoài. Sổ niêm phong: chỉ có mã của Hoài.

@@ -72,6 +72,12 @@ export interface BangGhimLuuMvp {
   viTri: Record<string, { x: number; y: number }>;
 }
 
+export interface NhacViecMvp {
+  nhanVat: string;
+  bieuCam?: string;
+  text: string;
+}
+
 export interface TrangThaiMvp {
   phienBan: 1;
   /** Mốc bắt đầu ván (ms) — khóa phiên, dùng làm khóa xáo lựa chọn. */
@@ -130,6 +136,11 @@ export interface TrangThaiMvp {
   sauKhiHien: 'sau-du-kien' | 'sau-toi' | null;
 
   nhiemVu: string | null;
+  /**
+   * Việc đang làm do một nhân vật nhắc (`> NHẮC VIỆC <ai>: …`), hiện kèm ảnh mặt ở góc sân khấu. `[NHIỆM VỤ]` mới → xóa.
+   * Ô lưu cũ không có trường này = không có.
+   */
+  nhacViec?: NhacViecMvp | null;
   ketQua: 'that' | 'thuong' | null;
   /** Nội dung không nhất quán lúc chạy (chuỗi không tồn tại…); khung nhìn `error`. */
   loi: string | null;

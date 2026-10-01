@@ -43,6 +43,12 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
     case 'task':
     case 'note':
       return { type: it.kind, text: it.text };
+    case 'reminder': {
+      const n: Obj = { type: 'reminder', speaker: it.speaker };
+      if (it.expression !== null) n.expression = it.expression;
+      n.text = it.text;
+      return n;
+    }
     case 'goto':
       return { type: 'goto', to: it.to };
     case 'show-document':

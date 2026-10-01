@@ -8,6 +8,7 @@
 
 ## n4-ctsv.1
 > NHIỆM VỤ: Mã nào có trong sổ niêm phong?
+> NHẮC VIỆC tung (worried): Hai mã. Sổ niêm phong có mã nào đây…
 - **co-lan** (neutral): Cô phụ trách tra rồi. SV240317: có trong sổ. SV240228: không có.
 - **player**: Vậy SV240317 là người nộp thư ạ?
 - **co-lan** (neutral): Cô chỉ nói được là mã đó có trong sổ niêm phong. Thế thôi.
@@ -20,6 +21,7 @@
 
 ## n4-phong-may.1
 > NHIỆM VỤ: Lá thư được in từ tài khoản nào?
+> NHẮC VIỆC ha-vy (thinking): Chân trang thư là tên tệp. Nhật ký in sẽ ghi ai in nó.
 - **thay-khai** (neutral): Máy in ở đây nhớ hết: tài khoản nào in, lúc nào, tệp gì, mấy trang.
 - **thay-khai** (neutral): Máy in là của phòng thầy, nên phiếu thì thầy ký. Thầy mở cho các em đúng bảng nhật ký in, chỉ để lập căn cứ.
 - **thay-khai** (neutral): Bản in từ máy ở đây có dòng chân trang ghi tên tệp. Thư của các em có không?
@@ -33,6 +35,7 @@
 - **tung** (worried): Năm tư á? Thế người in không phải Hoài.
 - **ha-vy** (thinking): Người in là một anh chị năm tư. Người mang đi nộp là Hoài. Hai việc, có khi là hai người.
 - **thay-khai** (neutral): Tài khoản ấy là của ai thì thầy không nói. Các em cũng chưa cần biết, đúng không?
+> NHẮC VIỆC ha-vy (thinking): Người in là khóa 2021. Người nộp là Hoài. Hai việc, có khi là hai người.
 
 ## n4-ve.1
 - **ha-vy** (neutral): Chị ơi, sổ niêm phong có mã của Hoài. Mã của Hiếu thì không.

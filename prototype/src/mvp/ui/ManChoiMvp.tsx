@@ -364,6 +364,9 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         shaking={rung}
         coDan={!['chon-dia-diem', 'explore', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick'].includes(kn.kind)}
         tenNguoiChoi={s.tenNguoiChoi}
+        // Việc nhắc chỉ hiện khi sân khấu còn là cảnh (màn tra, tài liệu, ảnh chèn, màn chiếu… phủ kín thì ẩn).
+        nhacViec={['chon-dia-diem', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick', 'challenge', 'fix-query'].includes(kn.kind) ? null : s.nhacViec}
+        dienTen={dienTen}
       >
         {noiDung}
       </SanKhauMvp>
