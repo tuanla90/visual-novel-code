@@ -40,7 +40,7 @@
 
 ## v3-thu-vien.1
 - **narrator**: Thư viện trường nằm trên tầng ba giảng đường B. {{nv.bac-tu}} ngồi ở bàn trực dưới chân cầu thang.
-- **bac-tu** (smile): Lại mấy đứa CLB Thám Tử. Lên thư viện à? Tối thứ Hai trên ấy vắng lắm, chỉ có vài đứa quen mặt.
+- **bac-tu** (smile): Lại mấy đứa CLB Thám Tử. Lên thư viện à? Tối thứ Hai trên ấy vắng lắm, chỉ có vài đứa quen mặt. Thư viện có mỗi một cửa, ra vào đều phải quẹt thẻ.
 - **narrator**: Bàn cạnh cửa sổ. Ở bàn bên, {{nv.hoai}} ngẩng lên khỏi chồng sách.
 - **hoai** (nervous): Tớ chào các cậu. Lá thư hôm ấy tớ chỉ nộp hộ. Tớ vẫn nghĩ mãi về cái anh đã nhờ tớ.
 - **ha-vy** (neutral): Nhớ thêm được gì thì bảo bọn tớ nhé.
@@ -75,7 +75,7 @@
 - **ha-vy** (smile): Tớ ngồi cách Nam hai bàn. Chuông 22 giờ 30 nhắc sắp đóng cửa, cậu ấy còn đang xếp sách. Tớ nhớ vì tớ cũng đang xếp.
 - **duy** (neutral): Cửa từ một nguồn, lời Vy một nguồn. Nhưng lời Vy thì ai làm chứng? Thẻ của Vy.
 - **tung** (chi-tay): Cậu nhớ nhầm sang hôm khác thì sao? Tối thứ Hai nào chuông chả reo lúc 22 giờ 30.
-- **ha-vy** (neutral): Tớ không nhầm, vì tối thứ Hai nào tớ cũng ngồi đó, quen tới mức biết hôm nào khác hôm nào. Không tin thì xem bản ghi của tớ.
+- **ha-vy** (neutral): Có thể tớ nhầm thật. Nên đừng tin mỗi lời tớ. Cửa từ ghi Nam vào 21 giờ 50, ra 23 giờ 05, mà thư viện chỉ có một cửa. Lời tớ chỉ thêm vào: lúc chuông reo cậu ấy còn ngồi trong.
 - **nam** (neutral): Tớ đã bảo mà.
 
 ## v3-the-vy.1
@@ -134,7 +134,7 @@
 
 ## v3-chia.2
 - **ha-vy** (thinking): Ghi ba tên. Người cần hỏi, chưa phải người bị nghi.
-- **nam** (neutral): Thứ Ba tuần sau tớ kiểm kê kho. Ban tổ chức giải bắt đội nào cũng nộp biên bản kiểm kê trước khi đóng lệ phí, nên lịch anh Khánh phải ký từ mùng 9. Xong việc tớ hỏi tiếp giúp các cậu.
+- **nam** (neutral): Thứ Ba tuần sau tớ kiểm kê kho. Ban tổ chức giải bắt đội nào cũng nộp biên bản kiểm kê trước khi đóng lệ phí, nên lịch anh Khánh phải ký từ mùng 9. Tớ cũng hỏi cả đội về tối mùng 7 rồi: cửa phòng văn phòng quay vào kho, đứa nào cũng cắm mặt hàn mạch, không ai để ý ai vào.
 - **tung** (neutral): Lần này tớ ghi tên mà không khoanh ai cả.
 - [THẺ CHỮ] **narrator**: Nhóm theo cách khác thì thấy chuyện khác. Thói quen đếm được, và đôi khi thói quen của người này là lời chứng cho người kia.
 

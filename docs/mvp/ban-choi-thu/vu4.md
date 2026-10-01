@@ -86,7 +86,7 @@ Kết quả: 4 dòng
 - **Nam** (neutral): Năm. Mà tớ chỉ đặt hai: cảm biến dò line với bánh xe. Động cơ servo, mạch điều khiển, khung nhôm thì tớ không đặt. Anh Bách là phó CLB, chị Thảo lo kỹ thuật, anh Khánh là trưởng CLB.
 - **Tùng** (chi-tay): Thế ba đơn kia ai gõ tên cậu vào?
 - **Duy** (neutral): Sổ không ghi ai gõ. Nhưng mỗi đơn có một cột mã phiên: phiên đăng nhập của máy lúc tạo đơn. Máy xưởng có bảng phiên đăng nhập không?
-- **Nam** (neutral): Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong. Mai là hôm tớ kiểm kê kho, lịch với sổ đều nằm trong tài khoản ấy. Lịch ấy ban tổ chức giải bắt nộp, muốn dời sát ngày phải ghi lý do. Khóa tài khoản rồi thì chỉ còn cách đếm tay.
+- **Nam** (neutral): Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong. Thứ Ba 15 là hôm tớ kiểm kê kho, lịch với sổ đều nằm trong tài khoản ấy. Lịch ấy ban tổ chức giải bắt nộp, muốn dời sát ngày phải ghi lý do. Khóa tài khoản rồi thì chỉ còn cách đếm tay.
 - **Minh Anh** (neutral): Khóa là phải. Bảng ấy mà do Nam xuất thì ai cũng bảo Nam sửa được. Chị nhờ thầy Quang xin thầy Khải bên phòng máy xuất thẳng cho CLB mình. Máy chủ phần mềm đặt hàng đặt ở đó.
 - **Hà Vy** (thinking): Vậy là hai bảng. Đơn thì ở sổ đặt hàng, máy thì ở bảng phiên. Chung nhau cái mã phiên.
 - **Tùng** (chi-tay): Đơn cảm biến ghi PH-11. Bên bảng phiên mà cũng có một dòng PH-11 thì đấy là cái máy tạo ra đơn ấy, đúng không?
@@ -184,7 +184,7 @@ Kết quả: 2 dòng
 - **Bạn (người chơi)**: Máy văn phòng xưởng ba đơn. Máy xưởng số 2 hai đơn.
 - **Tùng** (surprised): Máy văn phòng xưởng. Lại nó. Tin đồn cũng gửi từ đó.
 - **Hà Vy** (thinking): Và đơn ngày 07/10 tạo lúc 22 giờ 05. Tối đó Nam ở thư viện tới 23 giờ 05, mình đã có bản ghi.
-- **Nam** (neutral): Vậy là cùng một chỗ, cùng một tối, có người vừa gửi tin đồn vừa đặt hàng bằng tên tớ.
+- **Nam** (neutral): Hai việc xảy ra trên cùng một máy, cùng một tối. Chưa biết có cùng một người làm không.
 - **Minh Anh** (neutral): Nam, chuyện này không còn là chuyện riêng của CLB nào. Điều tra cùng bọn chị không?
 - **Nam** (neutral): Tớ xin. Tên tớ, tớ phải tự đi tìm xem ai đang dùng.
 > 🗂️ Giấy nhớ mới: **[Máy văn phòng xưởng]** — nguồn: Bảng phiên đăng nhập

@@ -108,7 +108,7 @@ Lời nhân vật sau mỗi lần chạy:
 - **Hà Vy** (thinking): Còn mật khẩu nhiều người biết thì kênh có ghi ai đăng nhập không? Không có thì bọn tớ nhờ bên quản trị trường mở.
 - **Nam** (neutral): …Khỏi nhờ. Tớ là quản trị kênh, tớ mở nhật ký đăng nhập được. Xem đi, xem cả bảng ngoài cửa luôn.
 - **Duy** (neutral): Vậy là hai chỗ kiểm được. Xem cả hai, hay xem một rồi về báo chị Minh Anh, tùy mình.
-- **Khánh** (neutral): Nam, ban tổ chức cho đội mình thêm một tuần đóng lệ phí rồi, anh vừa xin được. Cứ tập tiếp đi. Anh lấy tập hồ sơ giải rồi quay lại họp. Có khách à?
+- **Khánh** (neutral): Nam, ban tổ chức cho đội mình lùi hạn lệ phí tới hết tháng 10 rồi, anh vừa xin được. Cứ tập tiếp đi. Anh lấy tập hồ sơ giải rồi quay lại họp. Có khách à?
 - **Nam** (neutral): Các bạn bên CLB Thám Tử ạ. Hỏi chuyện cái tin trong kênh.
 - **Khánh** (neutral): Anh là Khánh, trưởng CLB. Tin ấy anh có nghe. Kênh thì Nam trực, các em cần xem gì cứ để Nam mở, bên anh không giấu. Hỏi nhẹ thôi nhé, em nó sắp thi đấu.
 - **Tùng** (surprised): Anh Khánh chủ tịch Hội sinh viên đấy.

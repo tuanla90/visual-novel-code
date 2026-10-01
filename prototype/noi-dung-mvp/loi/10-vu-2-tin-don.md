@@ -54,7 +54,7 @@
 
 ## tin-gap-nam.3
 - [DÀN DỰNG] Cửa xưởng mở. Một anh áo sơ mi trắng bước vào, thẻ Hội sinh viên đeo ở cổ, đi thẳng tới kệ hồ sơ.
-- **khanh** (neutral): Nam, ban tổ chức cho đội mình thêm một tuần đóng lệ phí rồi, anh vừa xin được. Cứ tập tiếp đi. Anh lấy tập hồ sơ giải rồi quay lại họp. Có khách à?
+- **khanh** (neutral): Nam, ban tổ chức cho đội mình lùi hạn lệ phí tới hết tháng 10 rồi, anh vừa xin được. Cứ tập tiếp đi. Anh lấy tập hồ sơ giải rồi quay lại họp. Có khách à?
 - **nam** (neutral): Các bạn bên CLB Thám Tử ạ. Hỏi chuyện cái tin trong kênh.
 - **khanh** (neutral): Anh là Khánh, trưởng CLB. Tin ấy anh có nghe. Kênh thì Nam trực, các em cần xem gì cứ để Nam mở, bên anh không giấu. Hỏi nhẹ thôi nhé, em nó sắp thi đấu.
 - **tung** (surprised): Anh Khánh chủ tịch Hội sinh viên đấy.

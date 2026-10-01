@@ -16,7 +16,7 @@
 
 - [LỜI v5-thay-quang.1]
 - [ĐỐI CHẤT dc-xin-so-quy] thay-quang: "Các em muốn thầy cho xuất sổ quỹ của khối CLB, một sổ không thuộc CLB các em. Căn cứ vào đâu?"
-  - {ev-dat-ma-khong-co} [ĐỦ CĂN CỨ] → phản hồi: **minh-anh** (neutral): Thưa thầy, ba đơn linh kiện ghi đã duyệt, trên đơn tổng hai triệu tư, nhưng kiểm kê xưởng không có một cái nào. Đơn đã duyệt mà hàng không có, nên bọn em cần xác minh tiền ấy có xuất khỏi quỹ nào không, ai duyệt. Bọn em cũng xin thầy cho mở trang sổ ký phòng máy tối 15/9. Hồi tháng 9 thầy Khải chưa cho mở.<br>**thay-quang** (neutral): Đơn đã duyệt mà không có hàng. Giờ là chuyện tiền quỹ và mượn tên người khác, không còn là chuyện một lá thư kiến nghị. Căn cứ ấy đủ để mở sổ quỹ, và mở trang sổ ký ấy. Thầy cho xuất, các em chỉ được xem các khoản liên quan ba đơn này và quỹ CLB Thám Tử.
+  - {ev-dat-ma-khong-co} [ĐỦ CĂN CỨ] → phản hồi: **minh-anh** (neutral): Thưa thầy, ba đơn linh kiện ghi đã duyệt, trên đơn tổng hai triệu tư, nhưng kiểm kê xưởng không có một cái nào. Đơn đã duyệt mà hàng không có, nên bọn em cần xác minh tiền ấy có xuất khỏi quỹ nào không, ai duyệt.<br>**thay-quang** (neutral): Đơn đã duyệt mà không có hàng. Căn cứ ấy đủ để thầy cho đối chiếu ba mã đơn này với sổ chi khối CLB. Chúng ghi vào quỹ nào thì chủ quỹ ấy được xem các dòng của quỹ mình. Thầy cho xuất, các em chỉ được xem các khoản liên quan ba đơn này và quỹ CLB Thám Tử.
   - {ev-don-nam-may} [HỖ TRỢ] → phản hồi: **ha-vy** (neutral): Ba đơn ấy tạo ban đêm từ máy văn phòng xưởng, đứng tên Nam mà Nam không đặt ạ.<br>**thay-quang** (neutral): Đơn mượn tên là chuyện của xưởng Robotics. Chuyện tiền thì thầy cần căn cứ về tiền.
   - {ev-toi-07} [GỢI Ý] → phản hồi: **thay-quang** (neutral): Em Nam ở thư viện tối đó. Thầy ghi nhận, nhưng điều ấy liên quan gì tới sổ quỹ?
   - [CHƯA ĐỦ] → phản hồi: **thay-quang** (stern): Chưa đủ căn cứ thì thầy chưa mở sổ của người khác cho các em xem. Về làm rõ đã.<br>**minh-anh** (worried): Dạ. Bọn em về đếm lại kho ạ.
@@ -41,8 +41,9 @@
 - [LỜI v5-so-quy.3]
 - [THỬ THÁCH c-chi-vuot-muc]
 - [LỜI v5-so-quy.4]
-- [HẬU QUẢ] mở manh mối clue-so-phong-may
 - [LỜI v5-so-quy.5]
+- [HẬU QUẢ] mở manh mối clue-so-phong-may
+- [LỜI v5-so-quy.6]
 - [ĐI TỚI v5-doi-chat]
 
 ### v5-doi-chat — Phòng họp, nhịp một: "đúng thẩm quyền" {cảnh: phong-hop}
@@ -62,9 +63,9 @@
 
 - [LỜI v5-doi-chat-2.1]
 - [ĐỐI CHẤT dc-khanh-don] khanh: "Giải trình thì đơn giản. Hàng đặt gia công bên ngoài, chưa về kho. Còn ba đơn ấy do Nam lập, tên Nam còn trên sổ. Tôi chỉ duyệt theo đề xuất của thành viên. Ghi nhầm mã quỹ là lỗi nhập liệu."
-  - {ev-don-nam-may} [ĐỦ CĂN CỨ] → phản hồi: **duy** (neutral): Ba đơn ấy tạo ban đêm từ máy trong phòng văn phòng xưởng. Phòng khóa, Nam không có chìa. Đơn ngày 07/10 tạo lúc 22 giờ 05.<br>**ha-vy** (neutral): Tối đó cửa từ thư viện ghi Nam ở trong tới 23 giờ 05. Em ngồi cách Nam hai bàn.<br>**thay-quang** (neutral): Vậy ít nhất một đơn không thể do em Nam lập. Người lập ngồi ở máy văn phòng, sau cửa khóa.
-  - {ev-may-vp} [ĐỦ CĂN CỨ] → phản hồi: **duy** (neutral): Máy văn phòng xưởng tạo bốn đơn. Một đơn ban ngày đứng tên anh. Ba đơn ban đêm đứng tên Nam, mà phòng ấy khóa, Nam không có chìa.<br>**ha-vy** (neutral): Đơn đêm 07/10 tạo lúc 22 giờ 05. Cửa từ thư viện ghi Nam ở trong tới 23 giờ 05.<br>**thay-quang** (neutral): Vậy ít nhất một đơn không thể do em Nam lập. Người lập ngồi ở máy văn phòng, sau cửa khóa.
-  - {ev-chi-tham-tu} [ĐỦ CĂN CỨ] → phản hồi: **player**: Anh nói anh duyệt theo đề xuất của Nam. Sổ chi ghi ba khoản ấy kèm mã ba đơn, xuất ngày 10, 11 và 12 tháng 9. Ba đơn thì tạo ngày 27/9, 4/10 và 7/10.<br>**ha-vy** (neutral): Tiền đi trước, đơn viết sau. Lúc anh duyệt chi thì chưa có đề xuất nào để duyệt theo.<br>**thay-quang** (neutral): Vậy không phải duyệt theo đề xuất. Còn hàng gia công ngoài thì phải có giấy giao việc trước ngày chi. Em có không?<br>**khanh** (neutral): …Không ạ.
+  - {ev-don-nam-may} [ĐỦ CĂN CỨ] → phản hồi: **duy** (neutral): Ba đơn ấy tạo ban đêm từ cùng một máy trong phòng văn phòng xưởng. Chìa thì bọn em không dựa vào, chị Thảo để chìa ở ngăn bàn. Bọn em dựa vào giờ: đơn ngày 07/10 tạo lúc 22 giờ 05.<br>**ha-vy** (neutral): Tối đó cửa từ thư viện ghi Nam ở trong tới 23 giờ 05. Em ngồi cách Nam hai bàn.<br>**thay-quang** (neutral): Vậy ba đơn lập từ một máy, và ít nhất một đơn chắc chắn không phải em Nam lập.
+  - {ev-may-vp} [ĐỦ CĂN CỨ] → phản hồi: **duy** (neutral): Máy văn phòng xưởng tạo bốn đơn. Một đơn ban ngày đứng tên anh. Ba đơn ban đêm đứng tên Nam. Chìa thì bọn em không dựa vào; bọn em dựa vào giờ.<br>**ha-vy** (neutral): Đơn đêm 07/10 tạo lúc 22 giờ 05. Cửa từ thư viện ghi Nam ở trong tới 23 giờ 05.<br>**thay-quang** (neutral): Vậy ba đơn lập từ một máy, và ít nhất một đơn chắc chắn không phải em Nam lập.
+  - {ev-chi-tham-tu} [ĐỦ CĂN CỨ] → phản hồi: **player**: Anh nói anh duyệt theo đề xuất của Nam. Sổ chi ghi ba khoản ấy là tạm ứng, xuất ngày 10, 11 và 12 tháng 9. Mã đơn điền bổ sung sau, đúng ngày ba đơn được tạo: 27/9, 4/10 và 7/10.<br>**ha-vy** (neutral): Tiền tạm ứng trước, mã đơn điền sau. Lúc anh ký nhận tiền thì trên máy chưa có đơn nào của Nam để duyệt theo.<br>**thay-quang** (neutral): Đơn lập sau chưa chứng minh là không có đề xuất trước. Em Khánh, hồi ấy em có đề xuất viết tay nào của em Nam không? Và giấy giao việc gia công?<br>**khanh** (neutral): …Không ạ.
   - {ev-toi-07} [HỖ TRỢ] → phản hồi: **ha-vy** (neutral): Tối 07/10 Nam ở thư viện từ 21 giờ 50 tới 23 giờ 05.<br>**khanh** (neutral): Thư viện thì liên quan gì tới đơn đặt hàng? Đơn tạo lúc nào, ở đâu, các bạn có không?
   - {ev-dat-ma-khong-co} [HỖ TRỢ] → phản hồi: **nam** (neutral): Gia công ngoài thì phải có biên nhận giao việc. Anh có không ạ?<br>**khanh** (neutral): Sẽ bổ sung. Nhưng đơn vẫn là đơn của em.
   - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, ai lập ba đơn ấy thì bọn em chưa có căn cứ để nói. Bọn em dừng ở chỗ ba khoản vượt ngưỡng.<br>**thay-quang** (neutral): Vậy dừng ở đó. Phần còn lại thầy làm việc với Hội sinh viên.
@@ -97,7 +98,7 @@
 - [LỜI v5-nhan-thu.1]
 - [ĐỐI CHẤT dc-khanh-vi-sao] thay-quang: "Thầy chưa hiểu một điều. Một lá thư đòi thu phòng thì liên quan gì tới ba khoản chi? Các em có gì cho thấy mối liên hệ ấy không?"
   - {ev-chi-tham-tu} [ĐỦ CĂN CỨ] → phản hồi: **player**: Tiền rời quỹ ngày 10, 11 và 12 tháng 9. Lá thư đòi thu phòng tới ngày 16. Đơn linh kiện đầu tiên mãi ngày 27 mới có, sau buổi họp bọn em giữ được phòng.<br>**player**: Em chưa biết anh ấy nghĩ gì. Nhưng thư xuất hiện sau khi tiền đã đi, còn đơn xuất hiện sau khi thư không thành.<br>**thay-quang** (neutral): Tiền trước, thư sau, đơn sau cùng. Thầy thấy rồi.
-  - {clue-sao-ke-cuoi-ky} [ĐỦ CĂN CỨ] → phản hồi: **player**: Sao kê quỹ chỉ tự về các CLB vào cuối kỳ, cùng đợt rà soát phòng. Muốn xem sớm hơn thì giấy phải qua chủ tịch Hội.<br>**player**: Tức là tới cuối kỳ mới có người đọc ba khoản ấy. Mà lá thư đòi thu phòng lại tới ngay tuần đầu.<br>**thay-quang** (neutral): Thư đi trước ngày có người đọc sổ. Thầy thấy rồi.
+  - {clue-sao-ke-cuoi-ky} [ĐỦ CĂN CỨ] → phản hồi: **player**: Sao kê quỹ chỉ tự về các CLB vào cuối kỳ, cùng đợt rà soát phòng; ngưỡng một triệu cũng tới lúc ấy mới được soát. Muốn xem sớm hơn thì giấy phải qua chủ tịch Hội.<br>**player**: Tức là tới cuối kỳ mới có người đọc ba khoản ấy. Mà lá thư đòi thu phòng lại tới ngay tuần đầu.<br>**thay-quang** (neutral): Thư đi trước ngày có người đọc sổ. Thầy thấy rồi.
   - {ev-chi-vuot-muc} [HỖ TRỢ] → phản hồi: **duy** (neutral): Phiếu này nói bao nhiêu và ai duyệt. Còn bao giờ, và bao giờ mới có người đọc, thì phiếu khác nói.
   - {clue-loi-nhan-linh-1} [GỢI Ý] → phản hồi: **thay-quang** (neutral): Mẩu giấy này của ai?<br>**duy** (neutral): Chuyện khác ạ. Em xin lỗi thầy.
   - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, lá thư để làm gì thì bọn em không có căn cứ ạ.<br>**thay-quang** (neutral): Vậy phần ấy thầy hỏi riêng.
@@ -109,7 +110,7 @@
 ### v5-vi-sao-hoi — Người chơi tự nối: lá thư để làm gì {cảnh: phong-hop}
 
 - [HỎI q-v5-vi-sao] thay-quang: "Vậy theo các em, lá thư đòi thu phòng là để làm gì?"
-  - (A) {id: cai-so} Để CLB mất phòng, hết kỳ thì phải giải thể, và không còn chủ quỹ nào ngồi đọc sao kê của quỹ ấy. [ĐÚNG] → phản hồi: **co-lan** (neutral): Quy chế đúng là thế. CLB mất phòng thì vào diện chờ giải thể; từ lúc ấy sao kê quỹ gửi về Hội sinh viên chứ không về chủ quỹ nữa. Hết kỳ thì giải thể, sổ vẫn lưu, nhưng người ký nhận bàn giao là chủ tịch Hội.<br>**thay-quang** (neutral): Đấy là các em suy ra. Đúng hay không thì em Khánh nói.<br>**nam** (neutral): Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ.
+  - (A) {id: cai-so} Để CLB mất phòng, hết kỳ thì phải giải thể, và không còn chủ quỹ nào ngồi đọc sao kê của quỹ ấy. [ĐÚNG] → phản hồi: **co-lan** (neutral): Quy chế đúng là thế. CLB mất phòng thì vào diện chờ giải thể; từ lúc ấy sao kê quỹ và yêu cầu giải trình đều gửi về Hội sinh viên chứ không về chủ quỹ nữa. Hết kỳ thì giải thể, sổ vẫn lưu, nhưng người ký nhận bàn giao là chủ tịch Hội.<br>**thay-quang** (neutral): Đấy là các em suy ra. Đúng hay không thì em Khánh nói.<br>**nam** (neutral): Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ.
   - (B) {id: lay-phong} Để lấy căn phòng ấy cho CLB Robotics. → phản hồi: **khanh** (neutral): Xưởng bọn tôi rộng gấp ba cái phòng ấy.
   - (C) {id: tra-dua} Để trả đũa CLB Thám Tử. → phản hồi: **ha-vy** (thinking): Tháng 9 mình đã tra gì ai đâu mà trả đũa.
 - [ĐI TỚI v5-ket-du]

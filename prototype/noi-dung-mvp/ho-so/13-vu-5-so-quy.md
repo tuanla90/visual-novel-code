@@ -18,7 +18,8 @@
 - Tiêu đề: Sổ chi và bảng quỹ, Phòng Kế hoạch gửi theo yêu cầu của thầy Quang
 - Nguồn: Phòng Kế hoạch, {{nv.co-hanh}} gửi theo chữ ký của {{nv.thay-quang}}; quy chế do {{nv.co-lan}} in kèm (trang sau: CLB mất phòng thì vào diện chờ giải thể, sao kê quỹ gửi về Hội sinh viên thay vì chủ quỹ; giải thể thì chủ tịch Hội ký nhận bàn giao)
 - Nội dung hiển thị:
-> Sổ chi: mỗi khoản có mã chi, mã đơn, mã quỹ, số tiền, người duyệt. Bảng quỹ: mã quỹ nào thuộc CLB nào.
+> Sổ chi: mỗi khoản có mã chi, mã đơn, mã quỹ, số tiền, người duyệt, ngày chi. Bảng quỹ: mã quỹ nào thuộc CLB nào.
+> Ba khoản lớn là tạm ứng tiền mặt, người duyệt ký nhận; quy chế cho bổ sung chứng từ trong ba mươi ngày, nên mã đơn của ba khoản ấy được điền sau ngày chi.
 > Chỉ gồm các khoản ghi vào quỹ CLB Thám Tử và các khoản liên quan ba đơn đang xét.
 
 ### clue-quy-tham-tu — [Quỹ CLB Thám Tử]
@@ -31,7 +32,7 @@
 - Tiêu đề: Ngưỡng rà soát tổng chi theo người duyệt
 - Giá trị cho trình dựng: 1000000
 - Nguồn: Quy chế quỹ khối CLB, {{nv.minh-anh}} và {{nv.duy}} nhắc
-- Nội dung: Khoản dưới một triệu thì chủ tịch Hội sinh viên duyệt thẳng được, không cần trưởng CLB chủ quỹ ký. Nhưng tổng các khoản do cùng một người duyệt vượt một triệu thì Phòng Kế hoạch yêu cầu người đó giải trình. Đây là ngưỡng để tìm nhóm cần hỏi tiếp, không phải mức cấm.
+- Nội dung: Khoản dưới một triệu thì chủ tịch Hội sinh viên duyệt thẳng được, không cần trưởng CLB chủ quỹ ký. Nhưng tổng các khoản một người duyệt từ một quỹ trong một học kỳ vượt một triệu thì Phòng Kế hoạch yêu cầu người đó giải trình; ngưỡng này chỉ được soát lúc đối chiếu cuối kỳ, cùng lúc gửi sao kê. Đây là ngưỡng để tìm nhóm cần hỏi tiếp, không phải mức cấm.
 
 ### clue-loi-nhan-linh-5 — [Lời nhắn chị Linh, mẩu cuối]
 - Tiêu đề: Dòng viết thêm ở trang cuối cuốn sổ cũ
@@ -47,5 +48,5 @@
 
 ### clue-so-phong-may — [Sổ ký phòng máy tối 15/9]
 - Tiêu đề: Trang sổ ký vào phòng máy, tối Chủ nhật 15/9
-- Nguồn: {{nv.thay-khai}} giữ sổ; {{nv.thay-quang}} ký cho mở đúng một trang, {{nv.co-hanh}} gửi kèm bản xuất sổ quỹ
+- Nguồn: {{nv.thay-khai}} giữ sổ; {{nv.thay-quang}} ký cho mở đúng một trang sau khi phiếu sáu khoản cho thấy tiền bị lấy từ đúng quỹ của CLB bị lá thư đòi thu phòng
 - Nội dung: Tối Chủ nhật muốn vào phòng máy phải ký sổ. Tối 15/9 có hai dòng: Thảo vào 20:10, ra 21:30; Khánh vào 22:40, ra 23:20. Nhật ký in ghi lá thư in lúc 23:10. Sổ nói ai ở trong phòng, không nói ai bấm in.

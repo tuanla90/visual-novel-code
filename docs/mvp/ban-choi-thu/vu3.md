@@ -105,7 +105,7 @@ Kết quả: 2 dòng
 #### 📍 Thư viện trường — Thư viện: bản ghi quẹt thẻ của chính Nam
 
 - **Người kể**: Thư viện trường nằm trên tầng ba giảng đường B. Bác Thịnh ngồi ở bàn trực dưới chân cầu thang.
-- **Bác Thịnh** (smile): Lại mấy đứa CLB Thám Tử. Lên thư viện à? Tối thứ Hai trên ấy vắng lắm, chỉ có vài đứa quen mặt.
+- **Bác Thịnh** (smile): Lại mấy đứa CLB Thám Tử. Lên thư viện à? Tối thứ Hai trên ấy vắng lắm, chỉ có vài đứa quen mặt. Thư viện có mỗi một cửa, ra vào đều phải quẹt thẻ.
 - **Người kể**: Bàn cạnh cửa sổ. Ở bàn bên, Hoài ngẩng lên khỏi chồng sách.
 - **Hoài** (nervous): Tớ chào các cậu. Lá thư hôm ấy tớ chỉ nộp hộ. Tớ vẫn nghĩ mãi về cái anh đã nhờ tớ.
 - **Hà Vy** (neutral): Nhớ thêm được gì thì bảo bọn tớ nhé.
@@ -218,7 +218,7 @@ Lời nhân vật sau mỗi lần chạy:
 - **Hà Vy** (smile): Tớ ngồi cách Nam hai bàn. Chuông 22 giờ 30 nhắc sắp đóng cửa, cậu ấy còn đang xếp sách. Tớ nhớ vì tớ cũng đang xếp.
 - **Duy** (neutral): Cửa từ một nguồn, lời Vy một nguồn. Nhưng lời Vy thì ai làm chứng? Thẻ của Vy.
 - **Tùng** (chi-tay): Cậu nhớ nhầm sang hôm khác thì sao? Tối thứ Hai nào chuông chả reo lúc 22 giờ 30.
-- **Hà Vy** (neutral): Tớ không nhầm, vì tối thứ Hai nào tớ cũng ngồi đó, quen tới mức biết hôm nào khác hôm nào. Không tin thì xem bản ghi của tớ.
+- **Hà Vy** (neutral): Có thể tớ nhầm thật. Nên đừng tin mỗi lời tớ. Cửa từ ghi Nam vào 21 giờ 50, ra 23 giờ 05, mà thư viện chỉ có một cửa. Lời tớ chỉ thêm vào: lúc chuông reo cậu ấy còn ngồi trong.
 - **Nam** (neutral): Tớ đã bảo mà.
 > 🗂️ Giấy nhớ mới: **[Hà Vy]** — nguồn: Hà Vy tải bản ghi cửa từ của chính mình
 > Hà Vy tải bản ghi cửa từ của mình, gộp chung tệp với Nam để lời chứng của mình cũng đếm được.
@@ -332,7 +332,7 @@ Lời nhân vật sau mỗi lần chạy:
 > 🗂️ Giấy nhớ mới: **[Tờ giao chìa: Khánh, Bách, Thảo]** — nguồn: Tờ giấy dán ở cửa phòng, xem cùng Nam cuối Vụ 3
 > Tờ giao chìa phòng văn phòng xưởng Robotics ghi ba người giữ chìa: Khánh (trưởng CLB), Bách (phó CLB), Thảo (kỹ thuật). Tờ giấy nói ai có chìa, không nói ai mở cửa tối nào. Bách nói tối 07/10 về quê; Thảo nói chìa của mình để ngăn bàn ngoài xưởng, ai cũng lấy được.
 - **Hà Vy** (thinking): Ghi ba tên. Người cần hỏi, chưa phải người bị nghi.
-- **Nam** (neutral): Thứ Ba tuần sau tớ kiểm kê kho. Ban tổ chức giải bắt đội nào cũng nộp biên bản kiểm kê trước khi đóng lệ phí, nên lịch anh Khánh phải ký từ mùng 9. Xong việc tớ hỏi tiếp giúp các cậu.
+- **Nam** (neutral): Thứ Ba tuần sau tớ kiểm kê kho. Ban tổ chức giải bắt đội nào cũng nộp biên bản kiểm kê trước khi đóng lệ phí, nên lịch anh Khánh phải ký từ mùng 9. Tớ cũng hỏi cả đội về tối mùng 7 rồi: cửa phòng văn phòng quay vào kho, đứa nào cũng cắm mặt hàn mạch, không ai để ý ai vào.
 - **Tùng** (neutral): Lần này tớ ghi tên mà không khoanh ai cả.
 *[Thẻ chữ]* Nhóm theo cách khác thì thấy chuyện khác. Thói quen đếm được, và đôi khi thói quen của người này là lời chứng cho người kia.
 > 🏁 KẾT THÚC vụ → màn kết.
