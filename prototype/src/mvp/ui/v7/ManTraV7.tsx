@@ -24,6 +24,7 @@ import {
   TEN_CHUAN_HOA,
   TEN_PHEP,
   VONG_CHUAN_HOA,
+  bangNoiTrongSql,
   cauTuSql,
   dieuKienThanhSql,
   khoiCuaThe,
@@ -93,21 +94,27 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     const b = duLieu?.bang.find((x) => x.ten === khung?.bang);
     return b ? { ten: b.ten, cot: b.cot, soDong: b.dong.length } : undefined;
   }, [duLieu, khung, nguonPhieu, tenNguon]);
-  const cot = useMemo(() => bang?.cot.map((c) => c.ten) ?? [], [bang]);
-  const kieuCot = useCallback((ten: string): KieuCot => bang?.cot.find((c) => c.ten === ten)?.kieu ?? 'TEXT', [bang]);
-  const tongDong = bang?.soDong ?? 0;
   const khoi = useMemo(() => khoiCuaThe(sqlChuan), [sqlChuan]);
+  // Khối "nối với" (thẻ có JOIN): các bảng được chọn khai ở thẻ, thiếu thì lấy bảng JOIN của SQL chuẩn.
+  const bangNoiDuoc = useMemo(() => (khoi.noi ? (the.bangNoi?.length ? the.bangNoi : bangNoiTrongSql(sqlChuan)) : []), [khoi.noi, the.bangNoi, sqlChuan]);
 
   const [cau, setCau] = useState<CauDung>(() => {
     const napSan = mode === 'fix-query' && the.truyVanNapSan ? cauTuSql(the.truyVanNapSan) : null;
     if (napSan) return napSan;
+    const cotGoc = bang?.cot.map((c) => c.ten) ?? [];
     return {
       khung: khung?.khung ?? '',
-      dieuKien: [0, 1].map((i) => ({ cot: cot[i % Math.max(1, cot.length)] ?? '', phep: 'bang', giaTri: null })),
+      dieuKien: [0, 1].map((i) => ({ cot: cotGoc[i % Math.max(1, cotGoc.length)] ?? '', phep: 'bang', giaTri: null })),
       noi: ['AND'],
     };
   });
-  const sqlNgoai = thanhSql(cau, kieuCot);
+  const bangNoi = useMemo(() => (cau.noiBang?.bang ? duLieu?.bang.find((b) => b.ten === cau.noiBang?.bang) : undefined), [duLieu, cau.noiBang?.bang]);
+  /** Cột chung của bảng gốc và bảng nối (ứng viên khóa nối; trong điều kiện được viết `<bảng gốc>.<cột>`). */
+  const cotChung = useMemo(() => (bang && bangNoi ? bang.cot.map((c) => c.ten).filter((t) => bangNoi.cot.some((c) => c.ten === t)) : []), [bang, bangNoi]);
+  const cot = useMemo(() => [...(bang?.cot.map((c) => c.ten) ?? []), ...(bangNoi?.cot.map((c) => c.ten).filter((t) => !cotChung.includes(t)) ?? [])], [bang, bangNoi, cotChung]);
+  const kieuCot = useCallback((ten: string): KieuCot => bang?.cot.find((c) => c.ten === ten)?.kieu ?? bangNoi?.cot.find((c) => c.ten === ten)?.kieu ?? 'TEXT', [bang, bangNoi]);
+  const tongDong = bang?.soDong ?? 0;
+  const sqlNgoai = thanhSql(cau, kieuCot, cotChung);
   const sql = tienTo + sqlNgoai;
   const [dangChon, setDangChon] = useState<GiaTriHoSo | null>(null);
   const [cham, setCham] = useState<KetQuaCham | null>(null);
@@ -334,6 +341,52 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
           <small>{tongDong} dòng</small>
         </div>
         <ol className="v7-cau__dk" aria-label="Các điều kiện">
+          {khoi.noi ? (
+            <li className="v7-dk v7-noi" aria-label="Nối với bảng khác">
+              <span className="v7-o v7-o--dau" aria-hidden="true">
+                NỐI VỚI
+              </span>
+              <button
+                type="button"
+                className={`v7-o v7-o--bang v7-o--noi-bang${cau.noiBang?.bang ? '' : ' is-trong'}`}
+                disabled={khoa}
+                aria-label={`Nối với bảng: ${cau.noiBang?.bang || 'chưa nối'} — bấm để đổi`}
+                onClick={() =>
+                  doiCau((c) => {
+                    // Vòng: chưa nối → từng bảng → chưa nối. Đổi bảng thì chọn lại khóa; cột điều kiện thuộc bảng cũ về cột đầu.
+                    const k = c.noiBang?.bang ? bangNoiDuoc.indexOf(c.noiBang.bang) + 1 : 0;
+                    const ke = bangNoiDuoc[k];
+                    const cotGoc = bang?.cot.map((x) => x.ten) ?? [];
+                    return { ...c, noiBang: ke === undefined ? null : { bang: ke, cot: '' }, dieuKien: c.dieuKien.map((d) => (cotGoc.includes(d.cot) ? d : { ...d, cot: cotGoc[0] ?? d.cot })) };
+                  })
+                }
+              >
+                {cau.noiBang?.bang ? `${cau.noiBang.bang}` : 'chưa nối'}
+              </button>
+              {cau.noiBang?.bang ? (
+                <>
+                  <span className="v7-o v7-o--dau" aria-hidden="true">
+                    THEO
+                  </span>
+                  <button
+                    type="button"
+                    className={`v7-o v7-o--cot${cau.noiBang.cot ? '' : ' is-trong'}`}
+                    disabled={khoa}
+                    aria-label={`Cột nối: ${cau.noiBang.cot || 'chưa chọn'} — bấm để đổi`}
+                    onClick={() =>
+                      doiCau((c) => {
+                        if (!c.noiBang) return c;
+                        const ke = cotChung[(cotChung.indexOf(c.noiBang.cot) + 1) % Math.max(1, cotChung.length)];
+                        return { ...c, noiBang: { ...c.noiBang, cot: ke ?? '' } };
+                      })
+                    }
+                  >
+                    {cau.noiBang.cot || 'chưa chọn cột'}
+                  </button>
+                </>
+              ) : null}
+            </li>
+          ) : null}
           {cau.dieuKien.map((d, i) => {
             const noi = cau.noi[i - 1] ?? 'AND';
             const nhieu = d.giaTri?.nguon === 'giay-nho' && (d.giaTri.nhieu?.length ?? 0) > 1;
@@ -510,7 +563,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
       </div>
 
       <p className="v7-sql" aria-label="Câu SQL đang dựng">
-        <CauSql cau={cau} kieuCot={kieuCot} cte={nguonPhieu && tenNguon ? { ten: tenNguon, nhan: dienTen(nguonPhieu.nhan) } : null} />
+        <CauSql cau={cau} kieuCot={kieuCot} cotChung={cotChung} cte={nguonPhieu && tenNguon ? { ten: tenNguon, nhan: dienTen(nguonPhieu.nhan) } : null} />
       </p>
       <div className="v7-day">
         {daChay && cham && cham.trangThai !== 'loi' ? (
@@ -558,11 +611,13 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
 }
 
 /** Câu SQL tô màu: từ khóa xanh, giá trị vàng, mỗi điều kiện gạch chân cùng màu với phiếu của nó. */
-function CauSql({ cau, kieuCot, cte }: { cau: CauDung; kieuCot: (c: string) => KieuCot; cte?: { ten: string; nhan: string } | null }) {
-  const phan = cau.dieuKien
-    .map((d, i) => ({ chu: dieuKienThanhSql(d, kieuCot(d.cot)), i }))
-    .filter((x): x is { chu: string; i: number } => x.chu !== null);
+function CauSql({ cau, kieuCot, cotChung = [], cte }: { cau: CauDung; kieuCot: (c: string) => KieuCot; cotChung?: readonly string[]; cte?: { ten: string; nhan: string } | null }) {
   const m = /^SELECT\s+(.+?)\s+FROM\s+(\S+)$/i.exec(cau.khung);
+  const nb = cau.noiBang && cau.noiBang.bang && cau.noiBang.cot ? cau.noiBang : null;
+  const q = (c: string): string => (nb && cotChung.includes(c) ? `${m?.[2] ?? ''}.${c}` : c);
+  const phan = cau.dieuKien
+    .map((d, i) => ({ chu: dieuKienThanhSql({ ...d, cot: q(d.cot) }, kieuCot(d.cot)), i }))
+    .filter((x): x is { chu: string; i: number } => x.chu !== null);
   return (
     <code>
       {cte ? (
@@ -571,6 +626,12 @@ function CauSql({ cau, kieuCot, cte }: { cau: CauDung; kieuCot: (c: string) => K
         </>
       ) : null}
       <span className="k">SELECT</span> {m?.[1] ?? '*'} <span className="k">FROM</span> {m?.[2] ?? ''}
+      {nb ? (
+        <>
+          {' '}
+          <span className="k">JOIN</span> {nb.bang} <span className="k">ON</span> {m?.[2] ?? ''}.{nb.cot} = {nb.bang}.{nb.cot}
+        </>
+      ) : null}
       {phan.length > 0 ? (
         <>
           {' '}
@@ -586,7 +647,7 @@ function CauSql({ cau, kieuCot, cte }: { cau: CauDung; kieuCot: (c: string) => K
       {cau.xep && cau.xep.cot !== '' ? (
         <>
           {' '}
-          <span className="k">ORDER BY</span> {cau.xep.cot}
+          <span className="k">ORDER BY</span> {q(cau.xep.cot)}
           {cau.xep.giam ? <span className="k"> DESC</span> : null}
         </>
       ) : null}

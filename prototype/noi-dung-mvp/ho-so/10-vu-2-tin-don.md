@@ -31,13 +31,12 @@
 - Tiêu đề: Bảng đăng ký dùng xưởng, tuần 07/10
 - Nguồn: Dán cạnh cửa xưởng CLB Robotics
 - Nội dung hiển thị:
-> Thứ Hai 07/10 · 19:00 đến 23:00 · Đội thi đấu tập.
-> Thứ Ba 08/10 · 14:00 đến 17:00 · Sinh hoạt thành viên.
+> Bảng viết tay dán cạnh cửa xưởng, góc ghi "bản sao từ lịch đặt xưởng trên máy". Tuần 07/10 kín chữ: đội thi đấu tập ba tối, sinh hoạt thành viên chiều thứ Ba, dọn xưởng sáng thứ Bảy.
 
 ### clue-xuong-toi — [Xưởng mở tới 23 giờ]
 - Tiêu đề: Tối 07/10 xưởng đăng ký mở tới 23 giờ
 - Nguồn: Bảng đăng ký dùng xưởng
-- Nội dung: Tối thứ Hai 07/10 xưởng đăng ký mở từ 19 giờ tới 23 giờ cho đội thi đấu tập. Tin gốc gửi lúc 22:40. Đây là lịch đăng ký, chưa cho biết ai thật sự có mặt.
+- Nội dung: Tối thứ Hai 07/10 xưởng đăng ký mở từ 19 giờ tới 23 giờ cho đội thi đấu tập. Tin gốc gửi lúc 22:40. Đây là lịch đăng ký, chưa cho biết ai thật sự có mặt, càng chưa cho biết ai ngồi máy.
 
 ### clue-loi-nhan-linh-2 — [Lời nhắn chị Linh, mẩu thứ hai]
 - Tiêu đề: Mẩu giấy kẹp ở trang "Kiểm hai lần"

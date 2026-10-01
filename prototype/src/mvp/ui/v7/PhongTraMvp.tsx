@@ -43,24 +43,28 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
     ...(duLieu ? nguonBangTongHop(duLieu) : []),
     ...Object.values(s.bang?.phieuTruyVan ?? {}).map((p) => ({ id: p.id, sql: p.sql, cot: p.cot })),
   ];
-  const nguonDuocChon = the.nguon ? nguonTongHop.filter((nguon) => nguon.id === the.nguon) : nguonTongHop;
-  // Thẻ "lọc tiếp": phiếu nguồn là câu người chơi đã ghim; chưa có (ô lưu cũ, nhảy tới) thì dựng từ SQL chuẩn của thẻ ra phiếu đó.
+  // Phiếu nguồn chưa được ghim trong ván (ô lưu cũ, "nhảy tới" của người quan sát): dựng từ SQL chuẩn của thẻ nguồn.
+  const phieuTuThe = (id: string): NguonPhieuV7 | null => {
+    const theNguon = Object.values(kb.thuThach).find((t) => t.vatChung?.id === id);
+    const k = theNguon ? khungTuSqlChuan(theNguon.sqlChuan) : null;
+    if (!theNguon?.vatChung || !k || !duLieu) return null;
+    const tenCot = (/^SELECT\s+(.+?)\s+FROM\s/i.exec(k.khung)?.[1] ?? '').split(',').map((c) => c.trim().replace(/^[a-z_][a-z0-9_]*\./i, ''));
+    const kieu = (ten: string): 'TEXT' | 'INTEGER' => duLieu.bang.flatMap((b) => b.cot).find((c) => c.ten === ten)?.kieu ?? 'TEXT';
+    return { id, nhan: theNguon.vatChung.title, sql: theNguon.sqlChuan.trim().replace(/;\s*$/, ''), cot: tenCot.map((ten) => ({ ten, kieu: kieu(ten) })), soDong: theNguon.soDongKyVong ?? 0 };
+  };
+  const nguonDuocChon = ((): NguonTongHop[] => {
+    if (!the.nguon) return nguonTongHop;
+    const co = nguonTongHop.filter((nguon) => nguon.id === the.nguon);
+    if (co.length > 0) return co;
+    const p = phieuTuThe(the.nguon);
+    return p ? [{ id: p.id, sql: p.sql, cot: p.cot }] : [];
+  })();
+  // Thẻ "lọc tiếp": phiếu nguồn là câu người chơi đã ghim ở lần tra trước.
   const nguonPhieu = ((): NguonPhieuV7 | null => {
     if (the.kieuTrinhDung !== 'loc-tiep' || !the.nguon) return null;
     const daGhim = s.bang?.phieuTruyVan?.[the.nguon];
     if (daGhim) return { id: daGhim.id, nhan: daGhim.nhan, sql: daGhim.sql, cot: daGhim.cot, soDong: daGhim.soDong };
-    const theNguon = Object.values(kb.thuThach).find((t) => t.vatChung?.id === the.nguon);
-    const k = theNguon ? khungTuSqlChuan(theNguon.sqlChuan) : null;
-    const bangGoc = duLieu?.bang.find((b) => b.ten === k?.bang);
-    if (!theNguon?.vatChung || !k || !bangGoc) return null;
-    const tenCot = (/^SELECT\s+(.+?)\s+FROM\s/i.exec(k.khung)?.[1] ?? '').split(',').map((c) => c.trim());
-    return {
-      id: the.nguon,
-      nhan: theNguon.vatChung.title,
-      sql: theNguon.sqlChuan,
-      cot: tenCot.map((ten) => ({ ten, kieu: bangGoc.cot.find((c) => c.ten === ten)?.kieu ?? 'TEXT' })),
-      soDong: theNguon.soDongKyVong ?? 0,
-    };
+    return phieuTuThe(the.nguon);
   })();
 
   const hoanTatTongHop = (ketQua: KetQuaTraTongHop): void => {
@@ -129,7 +133,7 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
   }
   return (
     <div className="phong-tra" data-pha="may">
-      {the.kieuTrinhDung === 'tong-hop' && duLieu ? <ManTongHopMvp duLieu={duLieu} the={the} nguon={nguonDuocChon} giayNho={giayNho} dienTen={dienTen} onXong={hoanTatTongHop} /> : <ManTraV7
+      {the.kieuTrinhDung === 'tong-hop' && duLieu ? <ManTongHopMvp duLieu={duLieu} the={the} nguon={nguonDuocChon} giayNho={giayNho} dienTen={dienTen} nhanNguon={(id) => s.bang?.phieuTruyVan?.[id]?.nhan ?? Object.values(kb.thuThach).find((t) => t.vatChung?.id === id)?.vatChung?.title} onXong={hoanTatTongHop} /> : <ManTraV7
         kb={kb}
         duLieu={duLieu}
         the={the}

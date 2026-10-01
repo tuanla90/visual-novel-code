@@ -22,3 +22,4 @@
 ### ban-do — Bản đồ trường
 ### xuong-robot — Xưởng CLB Robotics
 - Ảnh nền: bg-mvp-nha-van-hoa
+### thu-vien — Thư viện trường

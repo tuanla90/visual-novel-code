@@ -48,7 +48,7 @@ const ketVu2 = (re: Record<string, string>, traLoi?: ChienThuat['traLoi']): { s:
 
 describe('Vụ 2 "Tin đồn": sang vụ sau từ màn kết Vụ 1', () => {
   it('lịch: vụ sau vu2 (Tin đồn) và nhiệm vụ phụ so-phong do Duy giao, mở sau vu2', () => {
-    expect(KB.lich.vuSau?.map((v) => [v.id, v.chuoi, v.ngay])).toEqual([['vu2', 'tin-mo', '2024-10-09']]);
+    expect(KB.lich.vuSau?.map((v) => [v.id, v.chuoi, v.ngay]).slice(0, 2)).toEqual([['vu2', 'tin-mo', '2024-10-09'], ['vu3', 'v3-mo', '2024-10-10']]);
     expect(KB.lich.nhiemVuPhu?.map((p) => [p.id, p.chuoi, p.nguoiGiao, p.moSau])).toEqual([['so-phong', 'v2-mo', 'duy', 'vu2']]);
   });
 
@@ -90,28 +90,30 @@ describe('Vụ 2 "Tin đồn": song tuyến', () => {
   ])('bắt đầu từ hướng %s rồi đi nốt hướng kia: đủ thẻ hai hướng, có lời nhắn thứ hai của chị Linh', (dau, thuTu) => {
     const { s, daQua } = ketVu2({ 'r-tin-tuyen': dau, 'r-tin-sau-may': 'di-not', 'r-tin-sau-xuong': 'di-not' }, (id, lan) => (id === 'q-tin-ket-luan' && lan === 0 ? 'sai' : 'dung'));
     expect(daQua.filter((c) => c.startsWith('tin-tuyen-'))).toEqual(thuTu);
-    expect(daQua).toContain('tin-ket-ky');
+    expect(daQua).toContain('tin-ket-du');
     expect(daQua).not.toContain('tin-ket');
-    expect(s.hoSo.bangChung).toEqual(expect.arrayContaining(['ev-tin-don', 'ev-tin-goc', 'ev-tin-may']));
+    expect(s.co).not.toContain('tin-ve-som');
+    expect(s.hoSo.bangChung).toEqual(expect.arrayContaining(['ev-tin-don', 'ev-tin-goc', 'ev-tin-may', 'ev-tin-xuong']));
+    expect(daQua).toContain(dau === 'may' ? 'tin-xuong-doi-chieu' : 'tin-may-doi-chieu');
     expect(s.hoSo.manhMoi).toEqual(expect.arrayContaining(['clue-noi-dung-tin', 'clue-tin-goc', 'clue-ngay-gui', 'clue-xuong-toi', 'clue-loi-nhan-linh-2']));
     expect(s.hoSo.taiLieu).toEqual(expect.arrayContaining(['doc-tin-don', 'doc-lich-xuong']));
     // Chọn sai kết luận một lần: chỉ có phản hồi và hỏi lại.
     expect(s.lanThu['q-tin-ket-luan']).toBe(2);
     expect(s.co).toContain('vu2-hoan-tat');
-    expect(ketCua(s)).toMatchObject({ vu: { id: 'vu2' }, vuKe: null });
+    expect(ketCua(s)).toMatchObject({ vu: { id: 'vu2' }, vuKe: { id: 'vu3' } });
   });
 
   it.each([
-    ['may', 'r-tin-sau-may', 'ev-tin-may', 'clue-xuong-toi'],
-    ['xuong', 'r-tin-sau-xuong', 'clue-xuong-toi', 'ev-tin-may'],
-  ])('chỉ đi hướng %s rồi về: vẫn kết được vụ, thiếu thẻ hướng kia, không có lời nhắn chị Linh', (dau, reSau, co, khong) => {
+    ['may', 'r-tin-sau-may', 'tin-tuyen-xuong'],
+    ['xuong', 'r-tin-sau-xuong', 'tin-tuyen-may'],
+  ])('chỉ đi hướng %s rồi về sớm: Minh Anh bắt quay lại xem nốt; vẫn kết được vụ nhưng không có lời nhắn chị Linh', (dau, reSau, kia) => {
     const { s, daQua } = ketVu2({ 'r-tin-tuyen': dau, [reSau]: 've' });
-    expect(daQua.filter((c) => c.startsWith('tin-tuyen-'))).toEqual([`tin-tuyen-${dau}`]);
+    expect(daQua.filter((c) => c.startsWith('tin-tuyen-'))).toEqual([`tin-tuyen-${dau}`, kia]);
     expect(daQua).toContain('tin-ket');
-    expect(daQua).not.toContain('tin-ket-ky');
+    expect(daQua).toContain('tin-ket-du');
+    expect(s.co).toContain('tin-ve-som');
     const tatCa = [...s.hoSo.manhMoi, ...s.hoSo.bangChung];
-    expect(tatCa).toContain(co);
-    expect(tatCa).not.toContain(khong);
+    expect(tatCa).toEqual(expect.arrayContaining(['ev-tin-may', 'ev-tin-xuong']));
     expect(tatCa).not.toContain('clue-loi-nhan-linh-2');
     expect(s.co).toContain('vu2-hoan-tat');
   });
@@ -252,8 +254,8 @@ describe('thẻ v2-loc-buoi chấm SQL thật (gọt cột, xếp theo)', () => 
   const cham = (c: CauDung) => chamThuThach(DU_LIEU, thanhSql(c, kieu), THE.sqlChuan);
 
   it('thẻ bật cả hai khối mới; thẻ chương 1 và Vụ 2 không bật khối nào', () => {
-    expect(khoiCuaThe(THE.sqlChuan)).toEqual({ chuanHoa: true, sapXep: true });
-    for (const id of ['c-lop', 'c-ten-h', 'c-in', 'c-sua-or-quan', 'c-tin-don', 'c-tin-goc', 'c-tin-may']) expect(khoiCuaThe(the(id).sqlChuan), id).toEqual({ chuanHoa: false, sapXep: false });
+    expect(khoiCuaThe(THE.sqlChuan)).toEqual({ chuanHoa: true, sapXep: true, noi: false });
+    for (const id of ['c-lop', 'c-ten-h', 'c-in', 'c-sua-or-quan', 'c-tin-don', 'c-tin-goc', 'c-tin-may', 'c-tin-xuong']) expect(khoiCuaThe(the(id).sqlChuan), id).toEqual({ chuanHoa: false, sapXep: false, noi: false });
   });
 
   it('câu dựng đủ khối ra đúng chữ SQL và được chấm đúng', async () => {

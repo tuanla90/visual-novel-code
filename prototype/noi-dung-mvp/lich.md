@@ -44,6 +44,12 @@
 - Tiêu đề kết: Một tài khoản, chưa phải một người
 - Lời kết: Tin gốc đi từ tài khoản kênh của CLB Robotics, lúc 22:40 tối thứ Hai. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
 
+## Tranh cãi trong nhóm {vụ sau: vu3}
+- Chuỗi: v3-mo
+- Ngày: 2024-10-10
+- Tiêu đề kết: Nam ở thư viện lúc tin được gửi
+- Lời kết: Bản ghi quẹt thẻ của thư viện và trí nhớ của Hà Vy là hai nguồn riêng, cùng đặt Nam ở thư viện lúc 22:40. Người gửi tin ngồi máy văn phòng xưởng, là ai thì chưa biết.
+
 <!-- Nhiệm vụ phụ: việc một NPC giao, không dính truyện chính, để rèn kỹ năng. Nhận ở màn kết của một vụ chính, sau khi vụ "Mở sau" đã xong; kết bằng [KẾT THÚC] rồi quay lại màn kết đó. Máy đặt cờ <mã>-hoan-tat. Vụ chính không được đòi kỹ năng chỉ dạy ở nhiệm vụ phụ. -->
 
 ## Bốn mục trong sổ đã ký {nhiệm vụ phụ: so-phong}

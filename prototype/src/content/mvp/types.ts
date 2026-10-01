@@ -249,6 +249,8 @@ export interface TheThuThachMvp {
   kieuTrinhDung?: 'tong-hop' | 'loc-tiep';
   /** ID thẻ kết quả có thể dùng làm nguồn ban đầu cho bài tổng hợp. */
   nguon?: string | null;
+  /** Thẻ có JOIN: các bảng người chơi được chọn ở khối "nối với" (`- Nối được với: a · b`); thiếu → bảng JOIN trong SQL chuẩn. */
+  bangNoi?: string[];
   /** Cột nhóm được gợi ý/giới hạn bởi nội dung; null cho phép người chơi chọn. */
   nhomTheo?: string | null;
 }

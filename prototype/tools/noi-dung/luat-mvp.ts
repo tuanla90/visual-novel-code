@@ -87,6 +87,15 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     if (truoc) err(c.viTri, `bằng chứng "${ev}" khai ở cả thẻ ${c.id} lẫn hồ sơ ${truoc.tep}:${truoc.dong} — chỉ một chỗ`);
     else vatPham.set(ev, c.viTri);
   }
+  // Thẻ có JOIN: "Nối được với" chỉ gồm bảng có thật, và phải chứa bảng JOIN của SQL chuẩn.
+  for (const c of mvp.challenges) {
+    const ds = (c.fields['Nối được với'] ?? '').split('·').map((x) => x.trim()).filter(Boolean);
+    if (ds.length === 0) continue;
+    const bang = new Set((mvp.duLieu?.bang ?? []).map((b) => b.ten));
+    for (const b of ds) if (!bang.has(b)) err(c.viTri, `thẻ ${c.id}, "Nối được với": không có bảng "${b}" trong du-lieu.md`);
+    const sql = c.sql['SQL chuẩn'] ?? '';
+    for (const m of sql.matchAll(/\bJOIN\s+([A-Za-z_][A-Za-z0-9_]*)/gi)) if (m[1] && !ds.includes(m[1])) err(c.viTri, `thẻ ${c.id}, "Nối được với": thiếu bảng "${m[1]}" mà SQL chuẩn nối tới`);
+  }
   // V2 aggregate cards may use only a result card from an earlier challenge.
   const evidenceOwner = new Map(mvp.challenges.flatMap((c, i) => c.evidence ? [[c.evidence.id, { c, i }] as const] : []));
   for (const [i, c] of mvp.challenges.entries()) {
@@ -114,6 +123,13 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     if (placeholders.length !== 1 || placeholders[0] !== sourceId) err(c.viTri, `thẻ ${c.id}: "SQL chuẩn" phải có đúng một FROM @${sourceId}`);
     if (tongHop && !/\bCOUNT\s*\(\s*\*\s*\)/i.test(sql)) err(c.viTri, `thẻ ${c.id}: SQL tổng hợp phải dùng COUNT(*)`);
     if (groupBy && !new RegExp(`\\bGROUP\\s+BY\\s+${groupBy}\\s*;?\\s*$`, 'i').test(sql.trim())) err(c.viTri, `thẻ ${c.id}: SQL tổng hợp phải GROUP BY đúng một cột "${groupBy}"`);
+  }
+  // Cờ đặt bằng "[HẬU QUẢ] đặt co.<x>" (hay hậu quả của một lựa chọn [RẼ NHÁNH]) dùng được trong [NẾU] / [KHI] / [ĐIỀU KIỆN].
+  for (const c of mvp.chuoi) {
+    for (const it of c.items) {
+      const cac = it.kind === 'consequence' ? it.hauQua : it.kind === 'branch' ? it.branch.choices.flatMap((ch) => ch.hauQua) : [];
+      for (const h of cac) if (h.kind === 'dat-co' && !vatPham.has(h.co)) vatPham.set(h.co, c.viTri);
+    }
   }
   // Mức đạt của mỗi [ĐỐI CHẤT] là hai mã cờ dùng được trong [ĐIỀU KIỆN] / [KHI]: <mã>-du, <mã>-ho-tro.
   for (const c of mvp.chuoi) {

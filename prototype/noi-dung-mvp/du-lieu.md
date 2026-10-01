@@ -136,3 +136,60 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 | clb_robotics | MAY-XUONG-02 | 2024-10-08 | 09:05 |
 | SV240254 | DIEN-THOAI | 2024-10-07 | 22:50 |
 | SV240213 | DIEN-THOAI | 2024-10-08 | 07:25 |
+
+## dat_xuong {bảng}
+- Cột: ngay TEXT, thu TEXT, tu_gio TEXT, den_gio TEXT, muc_dich TEXT
+
+<!-- Vụ 2, tuyến hiện trường: lịch đặt xưởng tuần 07/10 (bản xuất từ phần mềm đặt phòng của nhà văn hóa; bảng dán ở cửa là bản sao). -->
+
+| ngay | thu | tu_gio | den_gio | muc_dich |
+|---|---|---|---|---|
+| 2024-10-07 | THU_HAI | 19:00 | 23:00 | Đội thi đấu tập |
+| 2024-10-08 | THU_BA | 14:00 | 17:00 | Sinh hoạt thành viên |
+| 2024-10-09 | THU_TU | 19:00 | 21:00 | Đội thi đấu tập |
+| 2024-10-10 | THU_NAM | 14:00 | 16:00 | Hướng dẫn thành viên mới |
+| 2024-10-11 | THU_SAU | 19:00 | 21:30 | Đội thi đấu tập |
+| 2024-10-12 | THU_BAY | 08:00 | 11:00 | Dọn xưởng |
+
+## bai_dang_kenh {bảng}
+- Cột: ma_bai TEXT, kenh TEXT, ngay TEXT, buoi TEXT, thiet_bi TEXT
+
+<!-- Vụ 3: bản xuất bài đăng của các kênh CLB trong tháng 10 (mục kênh, ai quản trị cũng tải được). Kênh Robotics 9 bài: 8 bài buổi chiều
+     từ điện thoại trực kênh (Nam giữ), 1 bài buổi tối 07/10 từ máy văn phòng xưởng (tin đồn). Hai kênh khác là nhiễu. -->
+
+| ma_bai | kenh | ngay | buoi | thiet_bi |
+|---|---|---|---|---|
+| BD-01 | clb_robotics | 2024-10-01 | CHIEU | DIEN-THOAI-TRUC |
+| BD-02 | clb_van_nghe | 2024-10-01 | TOI | DIEN-THOAI |
+| BD-03 | clb_robotics | 2024-10-02 | CHIEU | DIEN-THOAI-TRUC |
+| BD-04 | clb_robotics | 2024-10-03 | CHIEU | DIEN-THOAI-TRUC |
+| BD-05 | clb_tham_tu | 2024-10-03 | CHIEU | MAY-CLB |
+| BD-06 | clb_robotics | 2024-10-04 | CHIEU | DIEN-THOAI-TRUC |
+| BD-07 | clb_robotics | 2024-10-05 | CHIEU | DIEN-THOAI-TRUC |
+| BD-08 | clb_van_nghe | 2024-10-06 | TOI | DIEN-THOAI |
+| BD-09 | clb_robotics | 2024-10-07 | CHIEU | DIEN-THOAI-TRUC |
+| BD-10 | clb_robotics | 2024-10-07 | TOI | MAY-VP-XUONG |
+| BD-11 | clb_robotics | 2024-10-08 | CHIEU | DIEN-THOAI-TRUC |
+| BD-12 | clb_tham_tu | 2024-10-08 | CHIEU | MAY-CLB |
+| BD-13 | clb_robotics | 2024-10-09 | CHIEU | DIEN-THOAI-TRUC |
+| BD-14 | clb_van_nghe | 2024-10-09 | TOI | DIEN-THOAI |
+
+## quet_the_thu_vien {bảng}
+- Cột: ten TEXT, ngay TEXT, thu TEXT, gio_vao TEXT, gio_ra TEXT
+
+<!-- Vụ 3: bản ghi quẹt thẻ thư viện do CHÍNH Nam và Hà Vy xin in (thư viện chỉ in cho mỗi người bản của họ). Cột thứ có sẵn vì hàm
+     ngày giờ nằm ngoài phạm vi mùa 1. Thói quen: tối thứ Hai nào cả hai cũng ở thư viện; tối 07/10 (thứ Hai) Hà Vy 20:00–23:00,
+     Nam 21:50–23:05, tin gửi 22:40. -->
+
+| ten | ngay | thu | gio_vao | gio_ra |
+|---|---|---|---|---|
+| Nam | 2024-09-16 | THU_HAI | 21:45 | 23:00 |
+| Hà Vy | 2024-09-16 | THU_HAI | 20:00 | 22:50 |
+| Nam | 2024-09-23 | THU_HAI | 21:50 | 23:05 |
+| Hà Vy | 2024-09-23 | THU_HAI | 20:05 | 23:00 |
+| Nam | 2024-09-26 | THU_NAM | 19:30 | 21:00 |
+| Nam | 2024-09-30 | THU_HAI | 21:40 | 23:00 |
+| Hà Vy | 2024-09-30 | THU_HAI | 20:00 | 22:55 |
+| Hà Vy | 2024-10-02 | THU_TU | 19:00 | 20:30 |
+| Nam | 2024-10-07 | THU_HAI | 21:50 | 23:05 |
+| Hà Vy | 2024-10-07 | THU_HAI | 20:00 | 23:00 |

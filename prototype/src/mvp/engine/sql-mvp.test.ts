@@ -15,7 +15,7 @@ if (!DU_LIEU) throw new Error('KICH_BAN_MVP.duLieu rỗng');
 describe('SQL MVP trên du-lieu.md', () => {
   it('mọi thẻ thử thách: SQL chuẩn ra đúng "Số dòng kỳ vọng" (c-lop 2, c-ten-h 2, c-in 1, c-sua-or-quan 2)', async () => {
     const the = Object.values(KB.thuThach);
-    expect(the.map((t) => t.id).sort()).toEqual(['c-in', 'c-lop', 'c-sua-or-quan', 'c-ten-h', 'c-tin-don', 'c-tin-goc', 'c-tin-may', 'c-v2-nguon-lop', 'c-v2-nhom-lop', 'v2-loc-buoi']);
+    expect(the.map((t) => t.id)).toEqual(expect.arrayContaining(['c-in', 'c-lop', 'c-sua-or-quan', 'c-ten-h', 'c-tin-don', 'c-tin-goc', 'c-tin-may', 'c-tin-xuong', 'v2-loc-buoi']));
     for (const t of the) {
       // Thẻ tổng hợp lấy phiếu làm nguồn (`FROM @<mã phiếu>`): bộ kiểm nội dung chạy sau khi thay nguồn, không chạy thẳng được ở đây.
       if (t.sqlChuan.includes('@')) continue;

@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import type { BoDuLieuMvp, TheThuThachMvp } from '../../../content/mvp/types';
 import type { GiaTriHoSo } from '../../engine/giay-nho';
 import type { DieuKienDung } from '../../engine/trinh-dung';
-import { taoSqlTongHop, type CauTongHop, type NguonTongHop } from '../../engine/trinh-dung-tong-hop';
+import { TEN_HAM, khoiTongHopCuaThe, taoSqlTongHop, type CauTongHop, type HamTongHop, type NguonTongHop } from '../../engine/trinh-dung-tong-hop';
 import { chaySql, soVoiChuan, type GiaTriSql } from '../../engine/sql-mvp';
 
 export interface KetQuaTraTongHop {
@@ -20,6 +20,8 @@ export interface ManTongHopMvpProps {
   nguon: NguonTongHop[];
   giayNho: GiaTriHoSo[];
   dienTen: (t: string) => string;
+  /** Tên hiển thị của một phiếu nguồn (nhãn phiếu thay cho mã). */
+  nhanNguon?: (id: string) => string | undefined;
   onXong: (payload: KetQuaTraTongHop) => void;
 }
 
@@ -34,12 +36,18 @@ function sqlChuanCoNguon(sql: string, nguon: NguonTongHop[]): string {
   });
 }
 
-export function ManTongHopMvp({ duLieu, the, nguon, giayNho, dienTen, onXong }: ManTongHopMvpProps) {
+export function ManTongHopMvp({ duLieu, the, nguon, giayNho, dienTen, nhanNguon, onXong }: ManTongHopMvpProps) {
   const [nguonId, setNguonId] = useState(nguon[0]?.id ?? '');
   const [nhomTheo, setNhomTheo] = useState('');
   const [cotGhiChu, setCotGhiChu] = useState('');
   const [whereCot, setWhereCot] = useState('');
   const [whereThe, setWhereThe] = useState('');
+  // Vụ 5: phép tính thêm trên mỗi nhóm và ngưỡng giữ nhóm — chỉ hiện khi SQL chuẩn của thẻ dùng tới.
+  const khoi = useMemo(() => khoiTongHopCuaThe(the.sqlChuan), [the.sqlChuan]);
+  const [tinh, setTinh] = useState<{ ham: 'SUM' | 'AVG'; cot: string }[]>([]);
+  const [giuHam, setGiuHam] = useState<HamTongHop | ''>('');
+  const [giuCot, setGiuCot] = useState('');
+  const [giuThe, setGiuThe] = useState('');
   const [ketQua, setKetQua] = useState<{ sql: string; cot: string[]; dong: GiaTriSql[][]; dung: boolean } | null>(null);
   const [thongBao, setThongBao] = useState('');
   const [dangChay, setDangChay] = useState(false);
@@ -61,7 +69,16 @@ export function ManTongHopMvp({ duLieu, the, nguon, giayNho, dienTen, onXong }: 
         phep: 'bang',
         giaTri: { nguon: 'giay-nho', tho: card.giaTri, ...(card.nhieu ? { nhieu: card.nhieu } : {}), the: card.the },
       }] : [];
-      const cau: CauTongHop = { nguonId, select: [nhomTheo], where, nhomTheo };
+      const nguongThe = giayNho.find((x) => x.khoa === giuThe);
+      const lonHon = nguongThe ? Number(nguongThe.giaTri.replace(/[^\d.-]/g, '')) : NaN;
+      const cau: CauTongHop = {
+        nguonId,
+        select: [nhomTheo],
+        where,
+        nhomTheo,
+        ...(tinh.length ? { tinh } : {}),
+        ...(giuHam ? { giuNhom: { ham: giuHam, cot: giuHam === 'COUNT' ? null : giuCot || null, lonHon } } : {}),
+      };
       const sql = taoSqlTongHop(cau, selectedNguon);
       const kq = await chaySql(duLieu, sql);
       if (!kq.ok) {
@@ -112,7 +129,7 @@ export function ManTongHopMvp({ duLieu, the, nguon, giayNho, dienTen, onXong }: 
   return (
     <section className="man-tong-hop" aria-label="Trình dựng truy vấn tổng hợp">
       <header>
-        <p>VỤ 2 · TRUY VẤN TỔNG HỢP</p>
+        <p>MÀN TỔNG HỢP · nhóm và đếm trên phiếu đã ghim</p>
         <h2>{dienTen(the.tieuDe)}</h2>
         <p>{dienTen(the.deBai)}</p>
       </header>
@@ -120,7 +137,7 @@ export function ManTongHopMvp({ duLieu, the, nguon, giayNho, dienTen, onXong }: 
         Nguồn FROM
         <select value={nguonId} onChange={(e) => { setNguonId(e.target.value); setNhomTheo(''); setKetQua(null); }}>
           <option value="">Chọn phiếu hoặc bảng</option>
-          {nguon.map((n) => <option key={n.id} value={n.id}>{dienTen(n.id)}</option>)}
+          {nguon.map((n) => <option key={n.id} value={n.id}>{dienTen(nhanNguon?.(n.id) ?? n.id)}</option>)}
         </select>
       </label>
       <fieldset disabled={!selectedNguon}>
@@ -148,6 +165,53 @@ export function ManTongHopMvp({ duLieu, the, nguon, giayNho, dienTen, onXong }: 
         </select>
         <small>Truy vấn đầu tiên chọn cột nhóm cùng với COUNT(*) (số dòng).</small>
       </label>
+      {khoi.tinh ? (
+        <fieldset disabled={!selectedNguon}>
+          <legend>TÍNH THÊM trên mỗi nhóm (ngoài số dòng)</legend>
+          {(['SUM', 'AVG'] as const).map((ham) => {
+            const dang = tinh.find((t) => t.ham === ham);
+            return (
+              <label key={ham}>
+                <input type="checkbox" checked={!!dang} onChange={(e) => { setKetQua(null); setTinh((ds) => (e.target.checked ? [...ds.filter((t) => t.ham !== ham), { ham, cot: selectedNguon?.cot.find((c) => c.kieu === 'INTEGER')?.ten ?? '' }] : ds.filter((t) => t.ham !== ham))); }} />
+                {TEN_HAM[ham]} của cột
+                <select value={dang?.cot ?? ''} disabled={!dang} onChange={(e) => { setKetQua(null); setTinh((ds) => ds.map((t) => (t.ham === ham ? { ...t, cot: e.target.value } : t))); }}>
+                  {selectedNguon?.cot.filter((c) => c.kieu === 'INTEGER').map((c) => <option key={c.ten} value={c.ten}>{dienTen(c.ten)}</option>)}
+                </select>
+              </label>
+            );
+          })}
+        </fieldset>
+      ) : null}
+      {khoi.giuNhom ? (
+        <fieldset disabled={!selectedNguon}>
+          <legend>CHỈ GIỮ NHÓM có … lớn hơn một ngưỡng (giấy nhớ số)</legend>
+          <label>
+            Phép
+            <select value={giuHam} onChange={(e) => { setKetQua(null); setGiuHam(e.target.value as HamTongHop | ''); }}>
+              <option value="">Giữ mọi nhóm</option>
+              {(['COUNT', 'SUM', 'AVG'] as const).map((h) => <option key={h} value={h}>{TEN_HAM[h]}</option>)}
+            </select>
+          </label>
+          {giuHam && giuHam !== 'COUNT' ? (
+            <label>
+              của cột
+              <select value={giuCot} onChange={(e) => { setKetQua(null); setGiuCot(e.target.value); }}>
+                <option value="">Chọn cột số</option>
+                {selectedNguon?.cot.filter((c) => c.kieu === 'INTEGER').map((c) => <option key={c.ten} value={c.ten}>{dienTen(c.ten)}</option>)}
+              </select>
+            </label>
+          ) : null}
+          {giuHam ? (
+            <label>
+              lớn hơn
+              <select value={giuThe} onChange={(e) => { setKetQua(null); setGiuThe(e.target.value); }}>
+                <option value="">Chọn giấy nhớ số</option>
+                {giayNho.filter((g) => /^-?[\d.]+$/.test(g.giaTri.trim())).map((g) => <option key={g.khoa} value={g.khoa}>{dienTen(g.nguon)} · {g.giaTri}</option>)}
+              </select>
+            </label>
+          ) : null}
+        </fieldset>
+      ) : null}
       <button type="button" onClick={() => void chay()} disabled={dangChay || !selectedNguon || !nhomTheo}>
         {dangChay ? 'Đang chạy…' : 'Chạy truy vấn'}
       </button>

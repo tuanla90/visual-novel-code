@@ -39,10 +39,10 @@ SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';
   - Mô tả: Kết quả lọc tiếp trên phiếu năm tin: một tin gốc, gửi 22:40 thứ Hai 07/10 từ tài khoản clb_robotics. Phiếu cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
   - Giá trị cho trình dựng: clb_robotics
 
-### c-tin-may — Tối 07/10, tài khoản kênh đăng nhập từ máy nào? {challenge: c-tin-may}
+### c-tin-may — Ngày 07/10, tài khoản kênh đăng nhập những lần nào, từ máy nào? {challenge: c-tin-may}
 
 - Tiêu đề: Nhật ký đăng nhập của kênh
-- Đề bài hiển thị: Tài khoản kênh của Robotics đăng nhập từ máy nào trong ngày tin được gửi?
+- Đề bài hiển thị: Trong ngày tin được gửi, tài khoản kênh của Robotics đăng nhập những lần nào, từ máy nào?
 - Manh mối liên quan: clue-ngay-gui
 - Mục tiêu học: Dùng giá trị trên phiếu trước làm điều kiện cho bảng khác.
 - Số dòng kỳ vọng: 2
@@ -56,3 +56,21 @@ SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = 
 - Vật chứng lưu vào hồ sơ: ev-tin-may
   - Tiêu đề: Hai lần đăng nhập ngày 07/10
   - Mô tả: Kết quả truy vấn: tài khoản clb_robotics đăng nhập 15:10 từ máy xưởng số 2 và 22:31 từ máy văn phòng xưởng. Tin gốc gửi lúc 22:40. Phiếu cho biết máy nào, chưa cho biết ai ngồi máy.
+
+### c-tin-xuong — Tối 07/10, xưởng được đăng ký từ mấy giờ tới mấy giờ, cho hoạt động nào? {challenge: c-tin-xuong}
+
+- Tiêu đề: Lịch đặt xưởng, tuần 07/10
+- Đề bài hiển thị: Lịch đặt xưởng của nhà văn hóa. Tối 07/10 xưởng được đăng ký từ mấy giờ tới mấy giờ, cho hoạt động nào?
+- Manh mối liên quan: clue-ngay-gui
+- Mục tiêu học: Hai hướng điều tra, mỗi hướng một nguồn riêng; cùng một giá trị ngày dùng cho hai bảng.
+- Số dòng kỳ vọng: 1
+- SQL chuẩn:
+
+```sql
+SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
+```
+
+- [LỜI c-tin-xuong.1]
+- Vật chứng lưu vào hồ sơ: ev-tin-xuong
+  - Tiêu đề: Tối 07/10 xưởng mở tới 23 giờ
+  - Mô tả: Kết quả truy vấn: thứ Hai 07/10, xưởng đăng ký từ 19:00 tới 23:00 cho đội thi đấu tập. Đây là lịch đăng ký, chưa cho biết ai thật sự có mặt.

@@ -1554,3 +1554,17 @@ button.v7-o:active:not(:disabled) {
   color: #f6d98a;
   font-style: italic;
 }
+
+/* ---------- Vụ 4: hàng "nối với bảng … theo cột …" (JOIN) ---------- */
+.v7-noi {
+  padding-bottom: 0.4em;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.16);
+}
+.v7-o--noi-bang {
+  cursor: pointer;
+}
+.v7-o--noi-bang.is-trong,
+.v7-noi .v7-o--cot.is-trong {
+  opacity: 0.65;
+  font-style: italic;
+}

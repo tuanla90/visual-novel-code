@@ -11,6 +11,8 @@
  *   - CHUẨN HÓA cột của một điều kiện trước khi so (`chuanHoa`): bỏ dấu cách thừa → `TRIM(cột)`, coi như chữ thường →
  *     `LOWER(cột)`, cả hai → `LOWER(TRIM(cột))`;
  *   - XẾP THEO một cột (`xep`) → `ORDER BY cột [DESC]`.
+ * Từ Vụ 4 có khối NỐI VỚI bảng khác theo một cột chung (`noiBang`) → `FROM a JOIN b ON a.cot = b.cot`; cột trùng tên ở hai
+ * bảng được viết `a.cot` (bảng gốc) trong điều kiện / xếp.
  */
 
 export type KieuCot = 'TEXT' | 'INTEGER';
@@ -60,15 +62,31 @@ export function cotThanhSql(cot: string, chuanHoa: ChuanHoa | undefined): string
 const cheNhay = (sql: string): string => sql.replace(/'(?:[^']|'')*'/g, (m) => 'x'.repeat(m.length));
 
 /** Khối trình dựng cần cho một thẻ, suy từ SQL chuẩn: có LOWER/TRIM → khối chuẩn hóa; có ORDER BY → khối xếp theo. */
-export function khoiCuaThe(sqlChuan: string): { chuanHoa: boolean; sapXep: boolean } {
+export function khoiCuaThe(sqlChuan: string): { chuanHoa: boolean; sapXep: boolean; noi: boolean } {
   const che = cheNhay(sqlChuan);
-  return { chuanHoa: /\b(?:LOWER|TRIM)\s*\(/i.test(che), sapXep: /\bORDER\s+BY\b/i.test(che) };
+  return { chuanHoa: /\b(?:LOWER|TRIM)\s*\(/i.test(che), sapXep: /\bORDER\s+BY\b/i.test(che), noi: /\bJOIN\b/i.test(che) };
 }
 
 export interface XepTheo {
   cot: string;
   /** `true` = giảm dần (`DESC`). */
   giam: boolean;
+}
+
+/** Khối nối bảng: bảng thứ hai và cột chung dùng làm khóa nối. */
+export interface NoiBang {
+  bang: string;
+  cot: string;
+}
+
+/** Bảng gốc của khung `SELECT … FROM <bảng>`. */
+export function bangGocCuaKhung(khung: string): string {
+  return /\bFROM\s+([A-Za-z_][A-Za-z0-9_]*)\s*$/i.exec(khung.trim())?.[1] ?? '';
+}
+
+/** Các bảng được nối trong SQL chuẩn (`JOIN <bảng>`), theo thứ tự xuất hiện. */
+export function bangNoiTrongSql(sql: string): string[] {
+  return [...cheNhay(sql).matchAll(/\bJOIN\s+([A-Za-z_][A-Za-z0-9_]*)/gi)].map((m) => m[1] ?? '').filter(Boolean);
 }
 
 export interface CauDung {
@@ -79,6 +97,8 @@ export interface CauDung {
   noi: ('AND' | 'OR')[];
   /** Khối "xếp theo"; không có / `null` = không xếp. */
   xep?: XepTheo | null;
+  /** Khối "nối với"; không có / `null` = không nối. */
+  noiBang?: NoiBang | null;
 }
 
 /** Tách `SELECT … FROM <bảng>` của SQL chuẩn làm khung khóa; `null` khi câu không có dạng đó. */
@@ -138,16 +158,24 @@ export function xepThanhSql(xep: XepTheo | null | undefined): string {
   return xep && xep.cot !== '' ? ` ORDER BY ${xep.cot}${xep.giam ? ' DESC' : ''}` : '';
 }
 
-/** Cả câu: khung + các điều kiện đã có giá trị (bỏ qua ô trống), nối theo `noi`. */
-export function thanhSql(cau: CauDung, kieuCot: (cot: string) => KieuCot): string {
+/**
+ * Cả câu: khung + các điều kiện đã có giá trị (bỏ qua ô trống), nối theo `noi`. `cotChung`: cột có ở cả hai bảng khi đã nối —
+ * được viết `<bảng gốc>.<cột>` để SQLite không báo mơ hồ.
+ */
+export function thanhSql(cau: CauDung, kieuCot: (cot: string) => KieuCot, cotChung: readonly string[] = []): string {
+  const nb = cau.noiBang && cau.noiBang.bang !== '' && cau.noiBang.cot !== '' ? cau.noiBang : null;
+  const goc = bangGocCuaKhung(cau.khung);
+  const q = (cot: string): string => (nb && cotChung.includes(cot) ? `${goc}.${cot}` : cot);
   const phan: string[] = [];
   cau.dieuKien.forEach((dk, i) => {
-    const chu = dieuKienThanhSql(dk, kieuCot(dk.cot));
+    const chu = dieuKienThanhSql({ ...dk, cot: q(dk.cot) }, kieuCot(dk.cot));
     if (chu === null) return;
     if (phan.length > 0) phan.push(cau.noi[i - 1] ?? 'AND');
     phan.push(chu);
   });
-  return `${phan.length === 0 ? cau.khung : `${cau.khung} WHERE ${phan.join(' ')}`}${xepThanhSql(cau.xep)}`;
+  const khung = nb ? `${cau.khung} JOIN ${nb.bang} ON ${goc}.${nb.cot} = ${nb.bang}.${nb.cot}` : cau.khung;
+  const xep = cau.xep && cau.xep.cot !== '' ? { ...cau.xep, cot: q(cau.xep.cot) } : cau.xep;
+  return `${phan.length === 0 ? khung : `${khung} WHERE ${phan.join(' ')}`}${xepThanhSql(xep)}`;
 }
 
 /**

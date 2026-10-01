@@ -156,6 +156,8 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     ...(t.fields['Kiểu'] === 'tổng hợp' ? { kieuTrinhDung: 'tong-hop', nguon: t.fields['Nguồn'] ?? null, nhomTheo: t.fields['Nhóm theo'] || null } : {}),
     // "Kiểu: lọc tiếp": màn tra v7 lấy phiếu đã ghim làm nguồn (câu hiện thành WITH … AS).
     ...(t.fields['Kiểu'] === 'lọc tiếp' ? { kieuTrinhDung: 'loc-tiep', nguon: t.fields['Nguồn'] ?? null } : {}),
+    // "Nối được với: a · b": các bảng hiện ở khối "nối với" của màn tra (thẻ có JOIN).
+    ...(t.fields['Nối được với'] ? { bangNoi: chiaGiaTri(t.fields['Nối được với']) } : {}),
     truyVanNapSan: t.sql['Truy vấn nạp sẵn'] ?? null,
     phanUng: docPhanUng(t.fields).phanUng.map((p) => ({ khi: p.khi, loi: p.loi.map(loi) })),
     vatChung: t.evidence
