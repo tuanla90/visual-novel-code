@@ -10,7 +10,7 @@
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { KICH_BAN_MVP } from '../src/content/generated/mvp/kich-ban.gen.ts';
-import type { ChuoiMvp, DieuKienMvp, KichBanMvp, LoiMvp, NutMvp, TheThuThachMvp } from '../src/content/mvp/types.ts';
+import type { DieuKienMvp, KichBanMvp, LoiMvp, TheThuThachMvp } from '../src/content/mvp/types.ts';
 import { demDong, moCsdlMvp } from './noi-dung/sql-mvp.ts';
 import type { BoDuLieuMvp } from './noi-dung/du-lieu-mvp.ts';
 

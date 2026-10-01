@@ -71,3 +71,19 @@
 - Ngày: 2024-10-25
 - Tiêu đề kết: Bốn mục có trong sổ, không hơn
 - Lời kết: Bản xuất và sổ giấy là hai nguồn riêng, cùng ra bốn buổi đã ký. Hồ sơ ghi đúng điều đó: không nói ai tới dự, không nói buổi nào có ích.
+
+## Chiếc micro ở tủ chung {nhiệm vụ phụ: micro}
+- Chuỗi: p-mic-mo
+- Người giao: duy
+- Mở sau: vu4
+- Ngày: 2024-11-01
+- Tiêu đề kết: Micro không mất, chỉ đổi chỗ
+- Lời kết: Phiếu PX-17 đã có người nhận, chuyển micro không dây sang tủ thiết bị dùng chung; mã dán trên micro trong tủ khớp với mã trên phiếu. Bảng không nói ai quên báo, và hồ sơ cũng không nói thay.
+
+## Một lần hoàn tiền, hai dòng ghi {nhiệm vụ phụ: hoan-tien}
+- Chuỗi: p-hoan-mo
+- Người giao: minh-anh
+- Mở sau: vu5
+- Ngày: 2024-11-08
+- Tiêu đề kết: Một khoản hoàn, bản xuất ghi hai lần
+- Lời kết: Phiếu PH-04 có hai dòng hoàn tiền cùng mã tham chiếu; biên nhận ngân hàng xác nhận một lần hoàn 60.000 đồng. Báo cáo được sửa, bản cũ được giữ. Ai nhập trùng thì bảng không ghi.

@@ -609,6 +609,26 @@ export const KICH_BAN_MVP = {
         "ngay": "2024-10-25",
         "tieuDeKet": "Bốn mục có trong sổ, không hơn",
         "loiKet": "Bản xuất và sổ giấy là hai nguồn riêng, cùng ra bốn buổi đã ký. Hồ sơ ghi đúng điều đó: không nói ai tới dự, không nói buổi nào có ích."
+      },
+      {
+        "id": "micro",
+        "ten": "Chiếc micro ở tủ chung",
+        "chuoi": "p-mic-mo",
+        "nguoiGiao": "duy",
+        "moSau": "vu4",
+        "ngay": "2024-11-01",
+        "tieuDeKet": "Micro không mất, chỉ đổi chỗ",
+        "loiKet": "Phiếu PX-17 đã có người nhận, chuyển micro không dây sang tủ thiết bị dùng chung; mã dán trên micro trong tủ khớp với mã trên phiếu. Bảng không nói ai quên báo, và hồ sơ cũng không nói thay."
+      },
+      {
+        "id": "hoan-tien",
+        "ten": "Một lần hoàn tiền, hai dòng ghi",
+        "chuoi": "p-hoan-mo",
+        "nguoiGiao": "minh-anh",
+        "moSau": "vu5",
+        "ngay": "2024-11-08",
+        "tieuDeKet": "Một khoản hoàn, bản xuất ghi hai lần",
+        "loiKet": "Phiếu PH-04 có hai dòng hoàn tiền cùng mã tham chiếu; biên nhận ngân hàng xác nhận một lần hoàn 60.000 đồng. Báo cáo được sửa, bản cũ được giữ. Ai nhập trùng thì bảng không ghi."
       }
     ]
   },
@@ -6506,6 +6526,455 @@ export const KICH_BAN_MVP = {
           "type": "end"
         }
       ]
+    },
+    {
+      "id": "p-mic-mo",
+      "title": "Duy kiểm kê thiết bị, thiếu chiếc micro không dây",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Việc ở CLB — Thứ Sáu, 1 tháng 11"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chiều thứ Sáu. Duy bày thiết bị ra bàn để kiểm kê cho buổi hướng dẫn cuối kỳ, đếm đi đếm lại."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Micro không dây không ở ngăn dưới. Sổ tài sản vẫn ghi nó thuộc CLB mình, để ở tủ CLB."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Tớ cá là ai đó cầm đi rồi quên trả."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Mình chưa có căn cứ để gọi là quên hay lấy. Tòa nhà có phiếu luân chuyển thiết bị, tìm trên phiếu trước."
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-mic-so-tai-san"
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-mic-ten"
+            },
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-mic-da-nhan"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Phiếu luân chuyển đây. Nhưng phiếu chỉ ghi mã tài sản với nơi chuyển tới, không ghi tên. Tên thì nằm ở sổ tài sản."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Hai bảng cùng có mã tài sản. Nối theo mã đó thì mỗi phiếu kéo theo đúng tên thiết bị của nó."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Mà phiếu có cái đã nhận, có cái mới đề xuất. Tớ cần phiếu đã có người nhận."
+        },
+        {
+          "type": "task",
+          "text": "Phiếu nào đã nhận, chuyển chiếc micro không dây đi đâu?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Nối phiếu luân chuyển với sổ tài sản theo mã tài sản. Lọc đúng tên thiết bị và phiếu đã nhận."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-mic-phieu"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Một phiếu. PX-17, ngày 24 tháng 10, chuyển micro không dây sang tủ thiết bị dùng chung. Tổ thiết bị đã nhận."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tủ dùng chung ở cuối hành lang. Đi xem."
+        },
+        {
+          "type": "note",
+          "text": "Duy và Minh Anh mở tủ thiết bị dùng chung. Ngăn giữa có một chiếc micro không dây, đế sạc còn cắm điện, trên thân dán nhãn MIC-02."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-mic-ma-dan"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Mã trên micro là MIC-02, đúng mã trên phiếu. Tài sản không mất, chỗ để đã đổi. Tớ sửa lại sổ."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Tớ đoán sai rồi. May mà có mã, khỏi phải đoán người."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Phiếu còn lại của nó là chị đề xuất mượn sang phòng âm thanh cho buổi hướng dẫn. Chưa ai nhận nên micro vẫn nằm đây."
+        },
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "quan"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Tôi qua xem mục tài sản như đã hẹn. Tìm thấy rồi thì tốt. Tôi hỏi một câu thôi."
+        },
+        {
+          "type": "question",
+          "id": "q-mic-ket-luan",
+          "asker": {
+            "speaker": "quan",
+            "text": "Sổ có hai chiếc đều tên là micro. Sao các bạn biết phiếu PX-17 nói về đúng chiếc này?"
+          },
+          "choices": [
+            {
+              "id": "ma",
+              "text": "Phiếu ghi mã tài sản, bọn mình nối theo mã ấy; mã dán trên micro trong tủ cũng là MIC-02.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "quan",
+                  "expression": "neutral",
+                  "text": "Mã trên phiếu, mã trong sổ, mã trên vật. Ba chỗ khớp nhau thì tôi không hỏi nữa."
+                }
+              ]
+            },
+            {
+              "id": "ten",
+              "text": "Vì tên giống nhau: phiếu nào có micro thì là của chiếc này.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Phiếu không ghi tên, chỉ ghi mã. Mà MIC-01 cũng là micro, cũng có phiếu sang tủ chung."
+                }
+              ]
+            },
+            {
+              "id": "duy-biet",
+              "text": "Vì Duy giữ thiết bị, Duy nói thế thì đúng.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "duy",
+                  "expression": "neutral",
+                  "text": "Tớ là người vừa không tìm thấy nó đấy. Đừng lấy tớ làm căn cứ."
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Mục tài sản chị ghi: micro không dây đang ở tủ thiết bị dùng chung theo phiếu PX-17, đã đối chiếu mã trên vật. Kèm phiếu tra."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Ghi thế thì ai mở tủ ra cũng tự kiểm được."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Từ giờ tớ hỏi mã trước, cá sau."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Hỏi mã xong thì khỏi cá."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Tên có thể trùng, mã thì không. Nối hai bảng theo mã, rồi đi nhìn tận mắt cái mã trên vật."
+        },
+        {
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "id": "p-hoan-mo",
+      "title": "Tổng hoàn tiền trong bảng cao hơn biên nhận",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Việc ở CLB — Thứ Sáu, 8 tháng 11"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Phòng CLB, sau buổi hướng dẫn SQL cho tân thành viên. Minh Anh ngồi với bản xuất thu chi và một xấp biên nhận."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "khoanh-tay",
+          "text": "Bảng cộng tiền hoàn ra một trăm năm mươi lăm nghìn. Biên nhận chị cầm cộng lại chỉ có chín mươi lăm. Lệch sáu mươi."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Mình cần biết phiếu nào phải mở ra xem lại. Chưa phải tìm người chịu lỗi."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Tôi ngồi nghe được chứ? Mục thu chi là mục cuối tôi phải xem."
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-hoan-ban-xuat"
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-hoan-loai"
+            },
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-hoan-mot-dong"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Lệch thì chắc có khoản hoàn hai lần?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chưa biết. Bảng lẫn cả dòng chi lẫn dòng hoàn. Lấy riêng dòng hoàn ra đã, ghim lại."
+        },
+        {
+          "type": "task",
+          "text": "Bản xuất có những dòng hoàn tiền nào?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Loại giao dịch ghi ở cột loai. Chỉ lấy dòng hoàn."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-hoan-loc"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Bốn dòng hoàn tiền."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Mỗi lần hoàn chỉ được có một dòng. Phiếu nào có hơn một dòng hoàn thì cần mở ra xem."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Gom theo mã phiếu, đếm dòng, cộng tiền. Rồi chỉ giữ nhóm có hơn một dòng. Lần này lọc nhóm theo số dòng, không theo tổng."
+        },
+        {
+          "type": "task",
+          "text": "Phiếu nào có hơn một dòng hoàn tiền, tổng ghi hoàn bao nhiêu?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Phiếu bốn dòng hoàn làm nguồn. Gom theo mã phiếu, tính tổng, chỉ giữ nhóm có số dòng lớn hơn một."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-hoan-nhom"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Một phiếu. PH-04: hai dòng, tổng ghi hoàn là âm một trăm hai mươi nghìn."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Hai dòng cùng một phiếu là tín hiệu cần kiểm, chưa phải kết luận. Mở chứng từ gốc."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Biên nhận ngân hàng của PH-04 đây."
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-hoan-bien-nhan"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Biên nhận ghi một giao dịch hoàn sáu mươi nghìn, mã tham chiếu NH-771. Trong bản xuất, cả hai dòng của PH-04 đều mang mã NH-771."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Một lần hoàn mà ghi hai dòng. Đúng sáu mươi nghìn bị lệch."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Đếm dòng là đếm bản ghi, không phải đếm lần chuyển tiền."
+        },
+        {
+          "type": "question",
+          "id": "q-hoan-ket-luan",
+          "asker": {
+            "speaker": "quan",
+            "text": "Vậy mục thu chi, các bạn ghi câu nào về phiếu PH-04?"
+          },
+          "choices": [
+            {
+              "id": "sua-bao-cao",
+              "text": "Bản xuất có hai dòng hoàn cùng mã tham chiếu; biên nhận ngân hàng xác nhận một lần hoàn 60.000 đồng. Sửa báo cáo, giữ bản cũ.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "quan",
+                  "expression": "neutral",
+                  "text": "Có phiếu, có biên nhận, có bản cũ. Câu ấy tôi kiểm lại được."
+                }
+              ]
+            },
+            {
+              "id": "bien-thu",
+              "text": "Có người cố tình nhập hai lần để rút sáu mươi nghìn.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "quan",
+                  "expression": "neutral",
+                  "text": "Bảng có cột nào ghi ai nhập không? Tôi đánh dấu phiếu này để kiểm, không phải để kết tội."
+                }
+              ]
+            },
+            {
+              "id": "hai-giao-dich",
+              "text": "Hai dòng thì chắc chắn là hoàn hai lần.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Hai dòng cùng một mã tham chiếu ngân hàng. Biên nhận ghi mấy lần hoàn?"
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Chị sửa báo cáo: PH-04 hoàn một lần, sáu mươi nghìn. Bản cũ chị giữ nguyên, ghi thêm ngày sửa và lý do."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Chưa có căn cứ nói ai cố ý. Hồ sơ của các bạn tôi xem xong rồi. Mục nào cũng tự kiểm được."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Lần này tớ đoán đúng một nửa."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Nửa còn lại là biên nhận nói."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Gom nhóm chỉ ra chỗ cần mở chứng từ. Chứng từ mới nói chuyện gì đã xảy ra."
+        },
+        {
+          "type": "end"
+        }
+      ]
     }
   ],
   "thuThach": {
@@ -7056,6 +7525,215 @@ export const KICH_BAN_MVP = {
         "id": "ev-may-vp",
         "title": "Máy văn phòng xưởng: 3 đơn đêm mang tên Nam, 1 đơn ngày của Khánh",
         "description": "Kết quả: bốn đơn tạo từ máy văn phòng xưởng. Ba đơn ban đêm đứng tên Nam; một đơn ốc vít 10:15 sáng đứng tên Khánh, trưởng CLB, là người dùng máy đó hợp lệ ban ngày. Ba người có chìa phòng: Khánh, Bách, Thảo.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-hoan-loc": {
+      "id": "c-hoan-loc",
+      "tieuDe": "Bản xuất thu chi buổi hướng dẫn",
+      "deBai": "Bản xuất lẫn cả khoản chi lẫn khoản hoàn. Những dòng nào là hoàn tiền?",
+      "manhMoiLienQuan": [
+        "clue-hoan-loai"
+      ],
+      "mucTieuHoc": "Lọc trước rồi mới gom: chỉ đưa vào phiếu nguồn những dòng đúng loại.",
+      "soDongKyVong": 4,
+      "sqlChuan": "SELECT ma_gd, ma_phieu, so_tien, ma_tham_chieu FROM giao_dich WHERE loai = 'HOAN';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Loại giao dịch viết hoa, đúng như giấy nhớ."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 8
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả bản xuất, lẫn cả khoản chi."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Bốn dòng hoàn. Ghim lại, rồi gom theo phiếu."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-hoan-loc",
+        "title": "Bốn dòng hoàn tiền",
+        "description": "Kết quả truy vấn: bốn dòng loại HOAN, thuộc ba phiếu PH-01, PH-04, PH-06. Cộng lại âm 155.000 đồng.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-hoan-nhom": {
+      "id": "c-hoan-nhom",
+      "tieuDe": "Dòng hoàn gom theo mã phiếu",
+      "deBai": "Lấy phiếu bốn dòng hoàn làm nguồn. Gom theo mã phiếu, tính tổng số tiền, chỉ giữ nhóm có hơn một dòng.",
+      "manhMoiLienQuan": [
+        "clue-hoan-mot-dong"
+      ],
+      "mucTieuHoc": "Rèn lọc nhóm (HAVING) theo số dòng của nhóm, kèm tổng trên nhóm.",
+      "soDongKyVong": 1,
+      "sqlChuan": "SELECT ma_phieu, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM @ev-hoan-loc GROUP BY ma_phieu HAVING COUNT(*) > 1;",
+      "kieuTrinhDung": "tong-hop",
+      "nguon": "ev-hoan-loc",
+      "nhomTheo": null,
+      "truyVanNapSan": null,
+      "phanUng": [],
+      "vatChung": {
+        "id": "ev-hoan-nhom",
+        "title": "PH-04: hai dòng hoàn, tổng âm 120.000",
+        "description": "Kết quả gom theo mã phiếu: chỉ PH-04 có hơn một dòng hoàn (hai dòng, tổng ghi âm 120.000 đồng). Đây là phiếu cần mở chứng từ gốc, chưa phải kết luận.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-mic-phieu": {
+      "id": "c-mic-phieu",
+      "tieuDe": "Phiếu luân chuyển nối với sổ tài sản",
+      "deBai": "Phiếu luân chuyển chỉ ghi mã tài sản; sổ tài sản mới ghi tên. Phiếu nào đã nhận, chuyển chiếc micro không dây đi đâu?",
+      "manhMoiLienQuan": [
+        "clue-mic-ten",
+        "clue-mic-da-nhan"
+      ],
+      "mucTieuHoc": "Rèn nối hai bảng theo mã; cột trùng tên (vi_tri) chưa chắc cùng nghĩa; lọc trên cột của cả hai bảng.",
+      "soDongKyVong": 1,
+      "sqlChuan": "SELECT ma_phieu, ten_tai_san, luan_chuyen.vi_tri, nguoi_nhan FROM luan_chuyen JOIN tai_san ON luan_chuyen.ma_tai_san = tai_san.ma_tai_san WHERE ten_tai_san = 'Micro không dây' AND trang_thai = 'DA_NHAN';",
+      "bangNoi": [
+        "tai_san"
+      ],
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "loi-cot"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Máy báo không có cột đó. Phiếu luân chuyển không ghi tên thiết bị; tên nằm ở sổ tài sản. Phải nối hai bảng trước đã."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Tên thiết bị và trạng thái viết đúng như trên giấy nhớ."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 2
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Hai phiếu của micro không dây. Một cái mới là đề xuất, chưa ai nhận."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 3
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Ba dòng, mà phiếu của loa, của máy ảnh, của chân máy đều mang tên micro. Nối theo cột này thì thứ gì từng để ở tủ CLB cũng dính vào phiếu chuyển tới tủ CLB."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 12
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Mười hai dòng cho bảy phiếu. Một phiếu kéo theo mấy thiết bị liền: cột nối này không phải mã của thiết bị."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 5
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Năm phiếu đã nhận, của đủ mọi thiết bị. Mình chỉ tìm micro không dây."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 7
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả tập phiếu. Mình chỉ tìm một chiếc micro."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Một phiếu. PX-17, sang tủ thiết bị dùng chung."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-mic-phieu",
+        "title": "PX-17: micro không dây sang tủ thiết bị dùng chung",
+        "description": "Kết quả nối phiếu luân chuyển với sổ tài sản: phiếu PX-17 đã nhận, chuyển micro không dây (MIC-02) tới tủ thiết bị dùng chung, tổ thiết bị nhận.",
         "giaTri": []
       },
       "ghiChu": []
@@ -8609,6 +9287,115 @@ export const KICH_BAN_MVP = {
         "Nội dung": "Bốn mã buổi trên phiếu đều có chữ ký trong sổ giấy; dòng 30/10 còn để trống ô ký. Sổ giấy là nguồn riêng, khớp với bản xuất. Cả hai không ghi ai tới dự."
       },
       "quotes": {}
+    },
+    "doc-mic-so-tai-san": {
+      "id": "doc-mic-so-tai-san",
+      "loai": "doc",
+      "heading": "Sổ tài sản và phiếu luân chuyển",
+      "fields": {
+        "Tiêu đề": "Sổ tài sản CLB và phiếu luân chuyển của tòa nhà",
+        "Nguồn": "Duy giữ sổ tài sản; phiếu luân chuyển do tổ thiết bị tòa nhà lập",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Sổ tài sản: mã tài sản, tên, chỗ để ghi lúc kiểm kê đầu kỳ. Năm thiết bị, trong đó có hai chiếc micro.",
+          "Phiếu luân chuyển: mã phiếu, mã tài sản, nơi chuyển tới, người nhận, ngày, trạng thái. Phiếu không ghi tên thiết bị.",
+          "Cả hai bảng đều có cột vi_tri, nhưng ở sổ là chỗ để đầu kỳ, ở phiếu là nơi chuyển tới."
+        ]
+      }
+    },
+    "clue-mic-ten": {
+      "id": "clue-mic-ten",
+      "loai": "clue",
+      "heading": "[Micro không dây]",
+      "fields": {
+        "Tiêu đề": "Tên thiết bị trong sổ tài sản",
+        "Giá trị cho trình dựng": "Micro không dây",
+        "Nguồn": "Sổ tài sản CLB",
+        "Nội dung": "Sổ tài sản ghi tên thiết bị ở cột ten_tai_san. Chiếc đang tìm là \"Micro không dây\"; sổ còn một chiếc \"Micro có dây\"."
+      },
+      "quotes": {}
+    },
+    "clue-mic-da-nhan": {
+      "id": "clue-mic-da-nhan",
+      "loai": "clue",
+      "heading": "[Đã nhận]",
+      "fields": {
+        "Tiêu đề": "Trạng thái phiếu đã có người nhận",
+        "Giá trị cho trình dựng": "DA_NHAN",
+        "Nguồn": "Phiếu luân chuyển",
+        "Nội dung": "Phiếu DA_NHAN là phiếu đã có chữ ký người nhận, thiết bị đã thật sự chuyển. DE_XUAT là phiếu mới đề xuất, chưa ai nhận."
+      },
+      "quotes": {}
+    },
+    "clue-mic-ma-dan": {
+      "id": "clue-mic-ma-dan",
+      "loai": "clue",
+      "heading": "[Mã dán trên micro: MIC-02]",
+      "fields": {
+        "Tiêu đề": "Nhãn dán trên chiếc micro trong tủ dùng chung",
+        "Nguồn": "Duy và Minh Anh mở tủ xem",
+        "Nội dung": "Chiếc micro không dây trong tủ thiết bị dùng chung mang nhãn MIC-02, đúng mã trên phiếu PX-17. Phiếu và vật khớp nhau; không ai ghi vì sao sổ CLB chưa được sửa."
+      },
+      "quotes": {}
+    },
+    "doc-hoan-ban-xuat": {
+      "id": "doc-hoan-ban-xuat",
+      "loai": "doc",
+      "heading": "Bản xuất thu chi buổi hướng dẫn SQL",
+      "fields": {
+        "Tiêu đề": "Bản xuất giao dịch, buổi hướng dẫn SQL cho tân thành viên",
+        "Nguồn": "Minh Anh xuất từ sổ thu chi CLB",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Tám dòng, năm cột: mã giao dịch, mã phiếu, loại, số tiền, mã tham chiếu.",
+          "Loại CHI là khoản đã chi; loại HOAN là khoản được hoàn lại, số tiền ghi âm.",
+          "Đây là nguồn cần kiểm, chưa phải bằng chứng ai làm sai."
+        ]
+      }
+    },
+    "clue-hoan-loai": {
+      "id": "clue-hoan-loai",
+      "loai": "clue",
+      "heading": "[Hoàn tiền]",
+      "fields": {
+        "Tiêu đề": "Loại giao dịch hoàn tiền",
+        "Giá trị cho trình dựng": "HOAN",
+        "Nguồn": "Bản xuất thu chi",
+        "Nội dung": "Cột loai ghi CHI cho khoản chi, HOAN cho khoản hoàn lại."
+      },
+      "quotes": {}
+    },
+    "clue-hoan-mot-dong": {
+      "id": "clue-hoan-mot-dong",
+      "loai": "clue",
+      "heading": "[Một dòng]",
+      "fields": {
+        "Tiêu đề": "Mỗi lần hoàn chỉ có một dòng",
+        "Giá trị cho trình dựng": "1",
+        "Nguồn": "Cách ghi sổ thu chi, Duy nhắc",
+        "Nội dung": "Một lần hoàn tiền chỉ ghi một dòng. Phiếu có số dòng hoàn lớn hơn 1 thì cần mở chứng từ gốc ra xem."
+      },
+      "quotes": {}
+    },
+    "doc-hoan-bien-nhan": {
+      "id": "doc-hoan-bien-nhan",
+      "loai": "doc",
+      "heading": "Biên nhận ngân hàng của phiếu PH-04",
+      "fields": {
+        "Tiêu đề": "Biên nhận hoàn tiền, phiếu PH-04",
+        "Nguồn": "Ngân hàng gửi, Minh Anh giữ",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Phiếu PH-04. Một giao dịch hoàn: 60.000 đồng. Mã tham chiếu NH-771.",
+          "Biên nhận không ghi ai nhập dòng nào vào sổ."
+        ]
+      }
     }
   },
   "soTay": {
@@ -8800,6 +9587,25 @@ export const KICH_BAN_MVP = {
       "soDong": 4,
       "noi": "noi-dung-mvp/thu-thach/giup-nam.md:86 thẻ c-may-vp, SQL chuẩn",
       "resultId": "ev-may-vp"
+    },
+    {
+      "sql": "SELECT ma_gd, ma_phieu, so_tien, ma_tham_chieu FROM giao_dich WHERE loai = 'HOAN';",
+      "soDong": 4,
+      "noi": "noi-dung-mvp/thu-thach/phu-hoan-tien.md:3 thẻ c-hoan-loc, SQL chuẩn",
+      "resultId": "ev-hoan-loc"
+    },
+    {
+      "sql": "SELECT ma_phieu, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM @ev-hoan-loc GROUP BY ma_phieu HAVING COUNT(*) > 1;",
+      "soDong": 1,
+      "noi": "noi-dung-mvp/thu-thach/phu-hoan-tien.md:23 thẻ c-hoan-nhom, SQL chuẩn",
+      "resultId": "ev-hoan-nhom",
+      "sourceResultId": "ev-hoan-loc"
+    },
+    {
+      "sql": "SELECT ma_phieu, ten_tai_san, luan_chuyen.vi_tri, nguoi_nhan FROM luan_chuyen JOIN tai_san ON luan_chuyen.ma_tai_san = tai_san.ma_tai_san WHERE ten_tai_san = 'Micro không dây' AND trang_thai = 'DA_NHAN';",
+      "soDong": 1,
+      "noi": "noi-dung-mvp/thu-thach/phu-micro.md:3 thẻ c-mic-phieu, SQL chuẩn",
+      "resultId": "ev-mic-phieu"
     },
     {
       "sql": "SELECT ma_don, nguoi_dat, so_tien, so_luong_co FROM don_linh_kien JOIN kiem_ke ON don_linh_kien.linh_kien = kiem_ke.linh_kien WHERE so_luong_co = 0;",
@@ -10209,6 +11015,220 @@ export const KICH_BAN_MVP = {
             "Q-TT",
             180000,
             "Minh Anh"
+          ]
+        ]
+      },
+      {
+        "ten": "tai_san",
+        "cot": [
+          {
+            "ten": "ma_tai_san",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ten_tai_san",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "vi_tri",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "MIC-01",
+            "Micro có dây",
+            "TU_CLB"
+          ],
+          [
+            "MIC-02",
+            "Micro không dây",
+            "TU_CLB"
+          ],
+          [
+            "CAM-01",
+            "Máy ảnh CLB",
+            "TU_CLB"
+          ],
+          [
+            "LOA-01",
+            "Loa kéo",
+            "KHO_CHUNG"
+          ],
+          [
+            "CHAN-01",
+            "Chân máy ảnh",
+            "TU_CLB"
+          ]
+        ]
+      },
+      {
+        "ten": "luan_chuyen",
+        "cot": [
+          {
+            "ten": "ma_phieu",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ma_tai_san",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "vi_tri",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "nguoi_nhan",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ngay",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "trang_thai",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "PX-11",
+            "MIC-01",
+            "TU_THIET_BI_CHUNG",
+            "Tổ thiết bị",
+            "2024-10-22",
+            "DA_NHAN"
+          ],
+          [
+            "PX-14",
+            "LOA-01",
+            "TU_CLB",
+            "Tùng",
+            "2024-10-23",
+            "DA_NHAN"
+          ],
+          [
+            "PX-17",
+            "MIC-02",
+            "TU_THIET_BI_CHUNG",
+            "Tổ thiết bị",
+            "2024-10-24",
+            "DA_NHAN"
+          ],
+          [
+            "PX-19",
+            "MIC-02",
+            "PHONG_AM_THANH",
+            "Minh Anh",
+            "2024-10-31",
+            "DE_XUAT"
+          ],
+          [
+            "PX-20",
+            "CAM-01",
+            "TU_CLB",
+            "Minh Anh",
+            "2024-10-28",
+            "DA_NHAN"
+          ],
+          [
+            "PX-21",
+            "MIC-01",
+            "PHONG_AM_THANH",
+            "Tùng",
+            "2024-10-31",
+            "DE_XUAT"
+          ],
+          [
+            "PX-22",
+            "CHAN-01",
+            "TU_CLB",
+            "Duy",
+            "2024-10-28",
+            "DA_NHAN"
+          ]
+        ]
+      },
+      {
+        "ten": "giao_dich",
+        "cot": [
+          {
+            "ten": "ma_gd",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ma_phieu",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "loai",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "so_tien",
+            "kieu": "INTEGER"
+          },
+          {
+            "ten": "ma_tham_chieu",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "GD-01",
+            "PH-01",
+            "CHI",
+            250000,
+            "CT-101"
+          ],
+          [
+            "GD-02",
+            "PH-01",
+            "HOAN",
+            -20000,
+            "NH-770"
+          ],
+          [
+            "GD-03",
+            "PH-02",
+            "CHI",
+            180000,
+            "CT-102"
+          ],
+          [
+            "GD-04",
+            "PH-03",
+            "CHI",
+            90000,
+            "CT-103"
+          ],
+          [
+            "GD-05",
+            "PH-04",
+            "CHI",
+            350000,
+            "CT-104"
+          ],
+          [
+            "GD-06",
+            "PH-04",
+            "HOAN",
+            -60000,
+            "NH-771"
+          ],
+          [
+            "GD-07",
+            "PH-04",
+            "HOAN",
+            -60000,
+            "NH-771"
+          ],
+          [
+            "GD-08",
+            "PH-06",
+            "HOAN",
+            -15000,
+            "NH-776"
           ]
         ]
       }

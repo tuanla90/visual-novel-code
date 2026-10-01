@@ -282,3 +282,50 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 | KC-09 | VPP-01 | Q-TT | 150000 | Minh Anh |
 | KC-10 | VPP-02 | Q-TT | 120000 | Minh Anh |
 | KC-11 | VPP-03 | Q-TT | 180000 | Minh Anh |
+
+## tai_san {bảng}
+- Cột: ma_tai_san TEXT, ten_tai_san TEXT, vi_tri TEXT
+
+<!-- Nhiệm vụ phụ "micro": sổ tài sản CLB. vi_tri = chỗ để ghi trong sổ lúc kiểm kê đầu kỳ. Cột vi_tri trùng tên với bảng luan_chuyen
+     nhưng khác nghĩa (ở đó là nơi chuyển tới): nối theo vi_tri thì thứ gì từng ở tủ CLB cũng dính vào mọi phiếu chuyển tới tủ CLB. -->
+
+| ma_tai_san | ten_tai_san | vi_tri |
+|---|---|---|
+| MIC-01 | Micro có dây | TU_CLB |
+| MIC-02 | Micro không dây | TU_CLB |
+| CAM-01 | Máy ảnh CLB | TU_CLB |
+| LOA-01 | Loa kéo | KHO_CHUNG |
+| CHAN-01 | Chân máy ảnh | TU_CLB |
+
+## luan_chuyen {bảng}
+- Cột: ma_phieu TEXT, ma_tai_san TEXT, vi_tri TEXT, nguoi_nhan TEXT, ngay TEXT, trang_thai TEXT
+
+<!-- Nhiệm vụ phụ "micro": phiếu luân chuyển thiết bị của tòa nhà. vi_tri = nơi chuyển tới. Phiếu chỉ ghi mã tài sản, không ghi tên.
+     MIC-02 có hai phiếu: PX-17 (đã nhận, sang tủ thiết bị dùng chung) và PX-19 (mới đề xuất, chưa ai nhận). -->
+
+| ma_phieu | ma_tai_san | vi_tri | nguoi_nhan | ngay | trang_thai |
+|---|---|---|---|---|---|
+| PX-11 | MIC-01 | TU_THIET_BI_CHUNG | Tổ thiết bị | 2024-10-22 | DA_NHAN |
+| PX-14 | LOA-01 | TU_CLB | Tùng | 2024-10-23 | DA_NHAN |
+| PX-17 | MIC-02 | TU_THIET_BI_CHUNG | Tổ thiết bị | 2024-10-24 | DA_NHAN |
+| PX-19 | MIC-02 | PHONG_AM_THANH | Minh Anh | 2024-10-31 | DE_XUAT |
+| PX-20 | CAM-01 | TU_CLB | Minh Anh | 2024-10-28 | DA_NHAN |
+| PX-21 | MIC-01 | PHONG_AM_THANH | Tùng | 2024-10-31 | DE_XUAT |
+| PX-22 | CHAN-01 | TU_CLB | Duy | 2024-10-28 | DA_NHAN |
+
+## giao_dich {bảng}
+- Cột: ma_gd TEXT, ma_phieu TEXT, loai TEXT, so_tien INTEGER, ma_tham_chieu TEXT
+
+<!-- Nhiệm vụ phụ "hoàn tiền": bản xuất thu chi buổi hướng dẫn SQL cho tân thành viên. GD-06 và GD-07 là cùng một lần hoàn (cùng mã
+     tham chiếu NH-771) bị ghi hai dòng. Bảng không ghi ai nhập. -->
+
+| ma_gd | ma_phieu | loai | so_tien | ma_tham_chieu |
+|---|---|---|---|---|
+| GD-01 | PH-01 | CHI | 250000 | CT-101 |
+| GD-02 | PH-01 | HOAN | -20000 | NH-770 |
+| GD-03 | PH-02 | CHI | 180000 | CT-102 |
+| GD-04 | PH-03 | CHI | 90000 | CT-103 |
+| GD-05 | PH-04 | CHI | 350000 | CT-104 |
+| GD-06 | PH-04 | HOAN | -60000 | NH-771 |
+| GD-07 | PH-04 | HOAN | -60000 | NH-771 |
+| GD-08 | PH-06 | HOAN | -15000 | NH-776 |

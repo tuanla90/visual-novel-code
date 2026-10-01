@@ -140,7 +140,7 @@ export const reNhanhTheo =
 
 // ---------- Nhảy tới (người quan sát) ----------
 
-export type MaDiemNhayMvp = 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or' | 'vu2-tin-don' | 'vu2-tin-goc' | 'vu3-thiet-bi' | 'vu3-toi-07' | 'vu4-noi' | 'vu5-vuot-muc' | 'vu2-buoi';
+export type MaDiemNhayMvp = 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or' | 'vu2-tin-don' | 'vu2-tin-goc' | 'vu3-thiet-bi' | 'vu3-toi-07' | 'vu4-noi' | 'vu5-vuot-muc' | 'vu2-buoi' | 'phu-micro' | 'phu-hoan-nhom';
 
 export interface DiemNhayMvp {
   id: MaDiemNhayMvp;
@@ -173,6 +173,8 @@ export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
   { id: 'vu4-noi', nhan: 'Vụ 4 · Nối đơn với phiên đăng nhập', moTa: 'Phòng CLB: khối "nối với … theo …" — nối sổ đặt hàng với bảng phiên theo mã phiên, lọc đơn của Nam.', toi: dangOThuThach('challenge', 'c-don-nam-may') },
   { id: 'vu5-vuot-muc', nhan: 'Vụ 5 · Lọc nhóm vượt hạn mức', moTa: 'Phòng CLB, màn tổng hợp: gom theo người duyệt, tính tổng, chỉ giữ nhóm vượt một triệu.', toi: dangOThuThach('challenge', 'c-chi-vuot-muc') },
   { id: 'vu2-buoi', nhan: 'Việc phụ · Bốn buổi đã ký', moTa: 'Duy nhờ sau Vụ 2, laptop phòng CLB: gọt mã phòng (dấu cách, hoa/thường), xếp theo ngày.', toi: dangOThuThach('challenge', 'v2-loc-buoi') },
+  { id: 'phu-micro', nhan: 'Việc phụ · Chiếc micro (nối bảng)', moTa: 'Duy nhờ sau Vụ 4: nối phiếu luân chuyển với sổ tài sản theo mã tài sản; cột vi_tri trùng tên nhưng khác nghĩa.', toi: dangOThuThach('challenge', 'c-mic-phieu') },
+  { id: 'phu-hoan-nhom', nhan: 'Việc phụ · Hoàn tiền (lọc nhóm theo số dòng)', moTa: 'Minh Anh nhờ sau Vụ 5, màn tổng hợp: gom dòng hoàn theo mã phiếu, tính tổng, chỉ giữ nhóm có hơn một dòng.', toi: dangOThuThach('challenge', 'c-hoan-nhom') },
 ];
 
 /**
