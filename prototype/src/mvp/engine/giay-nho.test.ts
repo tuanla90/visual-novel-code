@@ -39,7 +39,7 @@ describe('giaTriTuHoSo', () => {
     const s = nhayToi(KB, 'hop-sua-or', 1);
     expect(giaTriTuHoSo(KB, s.hoSo).find((g) => g.the === 'ev-nhat-ky-in')).toEqual({
       khoa: 'ev-nhat-ky-in#0',
-      giaTri: 'SV210745',
+      giaTri: 'clb_robotics',
       nguon: 'Nhật ký in 23:10 Chủ nhật',
       the: 'ev-nhat-ky-in',
     });

@@ -80,11 +80,31 @@ describe('chương 1: ngày theo truyện', () => {
     expect(s.co).not.toContain('dc-ai-viet-du');
   });
 
-  it('không hỏi chú Cường nhưng có nhật ký in: vẫn kết thật (đủ căn cứ), chỉ thiếu mức hỗ trợ', () => {
-    const s = choi(taoTrangThai(KB, 1), { ...RE_NHANH_KET_THAT, 'r-chu-cuong': 'di' }, toiKet);
-    expect(khungNhin(KB, s)).toMatchObject({ kind: 'end', ketQua: 'that' });
-    expect(s.co).toContain('dc-ai-viet-du');
-    expect(s.co).not.toContain('dc-ai-viet-ho-tro');
+  it('lời chú Cường là cảnh bắt buộc (01/10): kết nào cũng có thẻ bóng người đeo huy hiệu Robotics, không nói năm', () => {
+    for (const re of [RE_NHANH_KET_THAT, { 'r-phong-may': 've', 'r-moi-hoai': 'dung' }]) {
+      const s = choi(taoTrangThai(KB, 1), re, toiKet);
+      expect(s.hoSo.manhMoi).toContain('clue-loi-chu-cuong');
+    }
+    expect(KB.chuoi.flatMap((c) => c.nodes).some((n) => n.type === 'branch' && n.id === 'r-chu-cuong')).toBe(false);
+    const the = KB.hoSo['clue-loi-chu-cuong'];
+    expect(the?.fields['Nội dung']).toMatch(/huy hiệu bánh răng của CLB Robotics/);
+    expect(JSON.stringify(the)).not.toMatch(/khóa trên|năm tư|năm cuối/);
+  });
+
+  it('nhật ký in không lộ khóa học: tài khoản dùng chung clb_robotics; lời chương 1 không còn "năm tư" / "khóa trên"', () => {
+    expect(KB.thuThach['c-in']?.vatChung?.giaTri).toEqual(['clb_robotics']);
+    const chu = JSON.stringify(KB.chuoi) + JSON.stringify(KB.thuThach) + JSON.stringify(KB.hoSo);
+    expect(chu).not.toMatch(/SV210745|năm tư|khóa trên|khóa 2021/);
+  });
+
+  it('phần thưởng kết thật là lời nhắn chị Linh; kết thường không có', () => {
+    const that = choi(taoTrangThai(KB, 1), RE_NHANH_KET_THAT, toiKet);
+    expect(khungNhin(KB, that)).toMatchObject({ kind: 'end', ketQua: 'that' });
+    expect(that.co).toContain('dc-ai-viet-du');
+    expect(that.hoSo.manhMoi).toContain('clue-loi-nhan-linh-1');
+    const thuong = choi(taoTrangThai(KB, 1), { 'r-phong-may': 've', 'r-moi-hoai': 'tu-ke' }, toiKet);
+    expect(khungNhin(KB, thuong)).toMatchObject({ kind: 'end', ketQua: 'thuong' });
+    expect(thuong.hoSo.manhMoi).not.toContain('clue-loi-nhan-linh-1');
   });
 
   describe('[ĐỐI CHẤT dc-ai-viet] ở buổi họp', () => {

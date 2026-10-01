@@ -64,7 +64,7 @@
 - Cột: thoi_diem TEXT, tai_khoan TEXT, ten_tep TEXT, so_trang INTEGER
 
 <!-- Chương 1, ngày 4 (ĐÃ CHỐT C, 30/09/2026): nhật ký máy in phòng máy, mở bằng phiếu tra cứu thứ hai. Chép từ
-     docs/mvp/kiem-bang-vu1.py. Thư: SV210745 (khóa 2021 = năm 4) in kien-nghi-phong-clb.docx lúc 23:10 Chủ nhật;
+     docs/mvp/kiem-bang-vu1.py. Thư: tài khoản dùng chung clb_robotics in kien-nghi-phong-clb.docx lúc 23:10 Chủ nhật (01/10/2026: đổi từ mã SV21… để không lộ khóa học của người in — dàn ý mùa 1);
      Hoài và Hiếu đều có in nhưng không phải thư; SV240146 in bài tập 23:18 là nhiễu. Ngày theo lịch thật năm 2024
      (lich.md "Ngày mở đầu"): 14/09 thứ Bảy (Ngày hội), 15/09 Chủ nhật, 16/09 thứ Hai (sáng nộp thư, 16h phòng CLB). -->
 
@@ -75,10 +75,10 @@
 | 2024-09-15 20:15 | SV240228 | bai-tap-kinh-te-vi-mo.pdf | 6 |
 | 2024-09-15 21:02 | SV240201 | slide-nguyen-ly-ke-toan.pdf | 12 |
 | 2024-09-15 22:47 | SV220118 | do-an-mon-hoc.pdf | 30 |
-| 2024-09-15 23:10 | SV210745 | kien-nghi-phong-clb.docx | 1 |
+| 2024-09-15 23:10 | clb_robotics | kien-nghi-phong-clb.docx | 1 |
 | 2024-09-15 23:18 | SV240146 | bao-cao-nhom-kinh-te-vi-mo.pdf | 4 |
 | 2024-09-16 07:30 | SV240122 | danh-sach-lop-BC24A.xlsx | 1 |
-| 2024-09-16 08:05 | SV210745 | don-xin-xuong-thuc-hanh.docx | 2 |
+| 2024-09-16 08:05 | clb_robotics | don-xin-xuong-thuc-hanh.docx | 2 |
 
 ## tra_cuu_k24 {bảng ảo}
 - Ghi chú: Danh sách tra cứu tân sinh viên K24 phát ở Ngày hội (mã, họ tên, ngành), lấy từ cùng dữ liệu.

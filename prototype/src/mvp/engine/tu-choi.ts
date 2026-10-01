@@ -114,11 +114,11 @@ export function chonTheoUuTien(uuTien: readonly string[], vetCan: boolean): Chie
 
 /**
  * Chương 1 (ngày theo truyện, ĐÃ CHỐT C 30/09/2026): lựa chọn ở mỗi [RẼ NHÁNH] để tới KẾT THẬT — ghé phòng máy (nhật ký
- * in), hỏi chú Cường, mời Hoài vào tự kể. Rẽ nhánh không có trong bảng thì chọn lựa chọn đầu.
+ * in), mời Hoài vào tự kể. Lời chú Cường từ 01/10/2026 là cảnh bắt buộc, không còn là rẽ nhánh. Rẽ nhánh không có trong
+ * bảng thì chọn lựa chọn đầu.
  */
 export const RE_NHANH_KET_THAT: Readonly<Record<string, string>> = {
   'r-phong-may': 'ghe',
-  'r-chu-cuong': 'hoi',
   'r-moi-hoai': 'tu-ke',
 };
 

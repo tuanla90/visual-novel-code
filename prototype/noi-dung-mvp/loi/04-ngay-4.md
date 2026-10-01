@@ -30,12 +30,12 @@
 - **ha-vy** (neutral): Thử thì biết.
 
 ## n4-phong-may.2
-- **player**: 23 giờ 10 tối Chủ nhật. Một trang, tệp kien-nghi-phong-clb.docx, tài khoản SV210745.
-- **ha-vy** (thinking): Mã bắt đầu bằng 21: khóa 2021. Năm tư rồi.
-- **tung** (worried): Năm tư á? Thế người in không phải Hoài.
-- **ha-vy** (thinking): Người in là một anh chị năm tư. Người mang đi nộp là Hoài. Hai việc, có khi là hai người.
-- **thay-khai** (neutral): Tài khoản ấy là của ai thì thầy không nói. Các em cũng chưa cần biết, đúng không?
-> NHẮC VIỆC ha-vy (thinking): Người in là khóa 2021. Người nộp là Hoài. Hai việc, có khi là hai người.
+- **player**: 23 giờ 10 tối Chủ nhật. Một trang, tệp kien-nghi-phong-clb.docx, tài khoản clb_robotics.
+- **ha-vy** (thinking): Không phải mã sinh viên. Đây là tài khoản dùng chung của một CLB.
+- **tung** (worried): Robotics á? Thế người in không phải Hoài.
+- **ha-vy** (thinking): Thư in từ tài khoản của CLB Robotics. Người mang đi nộp là Hoài. Hai việc, có khi là hai người.
+- **thay-khai** (neutral): Tài khoản ấy những ai dùng thì thầy không nói. Các em cũng chưa cần biết, đúng không?
+> NHẮC VIỆC ha-vy (thinking): Thư in từ tài khoản CLB Robotics. Người nộp là Hoài. Hai việc, có khi là hai người.
 
 ## n4-ve.1
 - **ha-vy** (neutral): Chị ơi, sổ niêm phong có mã của Hoài. Mã của Hiếu thì không.

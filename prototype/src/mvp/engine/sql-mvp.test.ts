@@ -95,10 +95,10 @@ describe('phản ứng sau khi chạy (dòng "Khi …" của thẻ)', () => {
     expect(phanUngSauKhiChay(lop, await chamThuThach(DU_LIEU, `${khungLop} WHERE nganh = 'Du lịch'`, lop.sqlChuan))).toEqual([]);
   });
 
-  it('c-in: bỏ điều kiện mã → đúng một dòng SV210745, 23:10 Chủ nhật', async () => {
+  it('c-in: bỏ điều kiện mã → đúng một dòng clb_robotics, 23:10 Chủ nhật', async () => {
     const inAn = KB.thuThach['c-in'];
     if (!inAn) throw new Error('thiếu thẻ c-in');
     const kq = await chaySql(DU_LIEU, inAn.sqlChuan);
-    expect(kq.ok && kq.dong).toEqual([['2024-09-15 23:10', 'SV210745', 'kien-nghi-phong-clb.docx', 1]]);
+    expect(kq.ok && kq.dong).toEqual([['2024-09-15 23:10', 'clb_robotics', 'kien-nghi-phong-clb.docx', 1]]);
   });
 });

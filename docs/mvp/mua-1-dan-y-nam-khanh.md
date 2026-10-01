@@ -210,12 +210,13 @@ Lớp này không dính tới Robotics, và soi lại đúng bài học của V�
 
 Phương án đã loại: chị Linh rời CLB vì bị Khánh ép. Nó buộc lớp bí mật vào Robotics, trái ý user.
 
-## 10. Đã chốt và còn chờ
+## 10. Đã chốt và đã làm
 
-Đã chốt 01/10: cách sửa Vụ 1; động cơ của Khánh (lấy tiền quỹ cho việc riêng, linh kiện là cớ); Minh Anh đẩy việc điều tra chứ không kết tội.
+Đã chốt 01/10: cách sửa Vụ 1; động cơ của Khánh (lấy tiền quỹ cho việc riêng, linh kiện là cớ); Minh Anh đẩy việc điều tra chứ không kết tội; Vụ 3 theo mục 4 cộng mục 9.1; Khánh là chủ tịch Hội sinh viên kiêm trưởng CLB Robotics (mục 9.2); bí mật của CLB và vai chị Linh (mục 9.3).
 
-Còn chờ:
+Đã làm trong game (nhánh `claude/season-1-setup-review-edf633`):
 
-1. Vụ 3 theo mục 4 cộng mục 9.1.
-2. Khánh là chủ tịch Hội sinh viên kiêm trưởng CLB Robotics (mục 9.2).
-3. Bí mật của CLB và vai chị Linh (mục 9.3).
+- Gộp nhánh chính (màn tổng hợp: phiếu làm nguồn, nhóm và đếm) vào nhánh này.
+- Sửa Vụ 1 theo mục 2: lời chú Cường thành cảnh bắt buộc của ngày 5, không nói năm; nhật ký in đổi sang tài khoản dùng chung `clb_robotics`; kết thật thưởng lời nhắn đầu của chị Linh (`clue-loi-nhan-linh-1`); bỏ câu "thầy sẽ gặp riêng người soạn" và cảnh ở cổng trường.
+
+Chưa làm: chuyển vụ sổ phòng thành nhiệm vụ phụ; dựng Vụ 2 đến Vụ 5 theo dàn ý; "ngày 6" thử màn tổng hợp vẫn nằm trong Vụ 1.
