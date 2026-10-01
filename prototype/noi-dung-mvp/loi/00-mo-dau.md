@@ -1,6 +1,6 @@
 # Lời · kich-ban/00-mo-dau.md
 
-<!--Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/00-mo-dau.md. [DÀN DỰNG] không hiện cho người chơi (đặc tả: ghi chú cho người dựng) — thứ người chơi cần biết phải nằm trong lời dẫn / thoại. Không câu hướng dẫn thao tác (ĐÃ CHỐT C). md-02, md-04, md-05, md-06 giữ nguyên chờ DX-01 (docs/thiet-ke/de-xuat.md). -->
+<!--Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/00-mo-dau.md. [DÀN DỰNG] không hiện cho người chơi (đặc tả: ghi chú cho người dựng) — thứ người chơi cần biết phải nằm trong lời dẫn / thoại. Không câu hướng dẫn thao tác (ĐÃ CHỐT C). Đã áp DX-01 (01/10): lời md-02, md-04, md-05, md-06 đã xóa. Đã áp bản rà docs/thiet-ke/ra-soat-loi-chuong-1-2026-09-30.md. -->
 
 ## md-00-xe-buyt.1
 > NHIỆM VỤ: Tìm đường vào ký túc xá
@@ -59,15 +59,6 @@
 - **player**: (Nhắn mẹ cái đã: "Con đến phòng rồi, mẹ ạ.")
 - **tung** (neutral): Cất đồ xong tớ dẫn đi một vòng trường. Đi sớm cho biết đường, tuần sau vào học đỡ lạc.
 
-## md-02-ban-do.1
-> NHIỆM VỤ: Đi dạo trường cùng {{nv.tung}}
-
-## md-02-ban-do.2
-- [DÀN DỰNG] Bản đồ trường. Tùng chỉ đường tới sảnh tòa B.
-- **tung** (happy): Tớ cá là mười phút là đi hết một vòng.
-- **player**: Cậu thuộc đường thật à?
-- **tung** (neutral): Biết sơ sơ thôi. Lạc thì coi như biết thêm đường.
-
 ## md-03-toa-b.1
 - [DÀN DỰNG] Hộp tôn xanh treo trên tường cạnh cầu thang (bản CHƯA có thẻ lịch ở khe — DX-03). Bác Thịnh đứng ở chân cầu thang.
 - **narrator**: Sảnh tòa B vắng tanh. Trên tường cạnh cầu thang treo một cái hộp tôn xanh, biển ghi "Hộp tiếp nhận kiến nghị".
@@ -76,19 +67,6 @@
 - **bac-tu** (neutral): Hai cháu tìm phòng nào? Chiều Chủ nhật tòa này khóa hết lớp rồi.
 - **tung** (neutral): Dạ không ạ, cháu dẫn bạn đi xem trường thôi.
 - **bac-tu** (neutral): Xem thì xem. Mép hộp sắc đấy, đừng thò tay vào.
-
-## md-04-cang-tin.1
-- [DÀN DỰNG] Căng tin chiều Chủ nhật, quầy đã dọn.
-- **tung** (worried): Căng tin đây. Bún cá dọn mất rồi, giờ còn mỗi bánh mì.
-- **player**: (Nhớ rồi. Muốn ăn bún cá thì phải đi sớm.)
-
-## md-05-phong-may.1
-- [DÀN DỰNG] Địa điểm khóa: cửa kính, bên trong tối.
-- **tung** (neutral): Phòng máy của {{nv.thay-khai.trong-cau}} đấy. Chưa có việc thì đứng ngoài ngó thôi.
-
-## md-06-bang-tin.1
-- [DÀN DỰNG] Đọc bảng tin: hàng chục CLB; poster "Đăng ký CLB năm nay: quét QR hoặc form online".
-- **tung** (surprised): Ơ, có cả CLB Thám Tử này. Lạ nhỉ, chưa nghe bao giờ.
 
 ## md-07-cong-ktx-toi.1
 - [DÀN DỰNG] Tối. Hai người quẹt thẻ ở phòng trực cổng KTX. Nền tối bg-mvp-cong-ktx-dem (DX-02).

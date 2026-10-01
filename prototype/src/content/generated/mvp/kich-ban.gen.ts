@@ -826,43 +826,6 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "goto",
-          "to": "md-02-ban-do"
-        }
-      ]
-    },
-    {
-      "id": "md-02-ban-do",
-      "title": "Ra bản đồ trường",
-      "canh": "ban-do",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "task",
-          "text": "Đi dạo trường cùng Tùng"
-        },
-        {
-          "type": "note",
-          "text": "Bản đồ trường. Tùng chỉ đường tới sảnh tòa B."
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "happy",
-          "text": "Tớ cá là mười phút là đi hết một vòng."
-        },
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "Cậu thuộc đường thật à?"
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "neutral",
-          "text": "Biết sơ sơ thôi. Lạc thì coi như biết thêm đường."
-        },
-        {
-          "type": "goto",
           "to": "md-03-toa-b"
         }
       ]
@@ -910,77 +873,6 @@ export const KICH_BAN_MVP = {
           "speaker": "bac-tu",
           "expression": "neutral",
           "text": "Xem thì xem. Mép hộp sắc đấy, đừng thò tay vào."
-        },
-        {
-          "type": "goto",
-          "to": "md-04-cang-tin"
-        }
-      ]
-    },
-    {
-      "id": "md-04-cang-tin",
-      "title": "Căng tin: khung giờ",
-      "canh": "cang-tin",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "note",
-          "text": "Căng tin chiều Chủ nhật, quầy đã dọn."
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "worried",
-          "text": "Căng tin đây. Bún cá dọn mất rồi, giờ còn mỗi bánh mì."
-        },
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Nhớ rồi. Muốn ăn bún cá thì phải đi sớm.)"
-        },
-        {
-          "type": "goto",
-          "to": "md-05-phong-may"
-        }
-      ]
-    },
-    {
-      "id": "md-05-phong-may",
-      "title": "Ngoài phòng máy",
-      "canh": "ngoai-phong-may",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "note",
-          "text": "Địa điểm khóa: cửa kính, bên trong tối."
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "neutral",
-          "text": "Phòng máy của thầy Khải đấy. Chưa có việc thì đứng ngoài ngó thôi."
-        },
-        {
-          "type": "goto",
-          "to": "md-06-bang-tin"
-        }
-      ]
-    },
-    {
-      "id": "md-06-bang-tin",
-      "title": "Nhà văn hóa, bảng tin",
-      "canh": "nha-van-hoa",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "note",
-          "text": "Đọc bảng tin: hàng chục CLB; poster \"Đăng ký CLB năm nay: quét QR hoặc form online\"."
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "surprised",
-          "text": "Ơ, có cả CLB Thám Tử này. Lạ nhỉ, chưa nghe bao giờ."
         },
         {
           "type": "goto",
@@ -3531,7 +3423,7 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';",
       "soDong": 3,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:155 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:126 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

@@ -3,7 +3,7 @@
 Nơi các phiên ghi đề xuất đổi khung, luật hay quyết định (xem `ban-giao-huong-moi-2026-09-30.md`, mục ĐÃ CHỐT). Chưa ai áp dụng cho tới khi
 user duyệt; duyệt xong thì chép quyết định vào mục ĐÃ CHỐT và ghi "đã chốt" ở đây.
 
-## DX-01 · Mở đầu chương 1: cắt chuyến dạo trường (phiên truyện, 30/09) — chờ duyệt
+## DX-01 · Mở đầu chương 1: cắt chuyến dạo trường (phiên truyện, 30/09) — ĐÃ ÁP DỤNG 01/10/2026 (user duyệt cùng bản rà lời chương 1; nhánh `claude/loi-chuong-1-ra-soat`)
 
 **Vấn đề.** Khung `kich-ban/00-mo-dau.md` còn nguyên chuyến dạo trường của bản cũ: 7 chuỗi từ lúc vào phòng 408 tới Ngày hội
 (`md-02` bản đồ → `md-03` tòa B → `md-04` căng tin → `md-05` ngoài phòng máy → `md-06` bảng tin → `md-07` chú Cường tối → `md-08` tuần
@@ -36,7 +36,7 @@ Lời `loi/00-mo-dau.md` của các chuỗi bỏ đi sẽ do phiên truyện xó
 `md-07` đổi `{cảnh: cong-ktx-toi}`. Cùng cách dùng được cho cảnh "tối Hà Vy tóm tắt" ở ngày 5 nếu diễn ra ở phòng CLB buổi tối (chưa có
 ảnh tối phòng CLB; cần thì phiên truyện sinh `bg-mvp-phong-clb-dem`).
 
-## DX-03 · Hộp kiến nghị ở mở đầu chưa có thẻ lịch (phiên truyện, 30/09) — chờ duyệt, phụ thuộc DX-01
+## DX-03 · Hộp kiến nghị ở mở đầu chưa có thẻ lịch (phiên truyện, 30/09) — chờ duyệt, phụ thuộc DX-01 (đã áp). 01/10: CHƯA LÀM — `[KHÁM PHÁ]` không có vật tĩnh (mọi chỗ đều bấm được, đặc tả §18), và ảnh `obj-hop-kien-nghi-trong` chưa có
 
 Nếu giữ `md-03-toa-b`: nền `bg-mvp-sanh-toa-b` không vẽ hộp (hộp là vật riêng `obj-hop-kien-nghi`), mà vật đó có sẵn thẻ lịch rách mắc ở khe —
 Chủ nhật tuần 1 thì thư chưa có. Đề xuất: phiên truyện làm thêm `obj-hop-kien-nghi-trong` (sửa ảnh cũ, bỏ thẻ lịch); phiên logic cho chuỗi
