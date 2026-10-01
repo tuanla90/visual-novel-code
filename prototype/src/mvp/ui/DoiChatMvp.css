@@ -295,3 +295,21 @@
     justify-content: flex-end;
   }
 }
+
+/* Gợi ý thao tác khi chưa chọn thẻ nào. */
+.doi-chat__goi-y {
+  font-size: 0.85rem;
+  color: #fde68a;
+  margin-inline: 0.75rem;
+}
+
+/* Khung `.stage__content:has(> .mc)` tắt nhận chuột cho cả vùng; hàng thẻ phải bật lại, nếu không chuột thật không bấm được thẻ. */
+.doi-chat__khay,
+.doi-chat__khay .dc-the {
+  pointer-events: auto;
+}
+.doi-chat .doi-chat__hop,
+.doi-chat .doi-chat__hop .dialog,
+.doi-chat .doi-chat__hop button {
+  pointer-events: auto;
+}

@@ -118,12 +118,13 @@ export function DoiChatMvp({ kb, s, nut, daTrinh, muc, dienTen, tenNguoiNoi, onT
             <span className={`doi-chat__muc doi-chat__muc--${muc}`} aria-live="polite">
               Mức đã đạt: <b>{TEN_MUC[muc]}</b>
             </span>
+            {theChon ? null : <span className="doi-chat__goi-y">Bấm một thẻ trong hàng thẻ để chọn, rồi trình thẻ ấy để bác giả thuyết.</span>}
             <span className="doi-chat__nut">
               <button type="button" className="btn btn--ghost doi-chat__chua-du" onClick={onChuaDu} title="Kết thúc phần trình bày ở mức đang đạt">
                 Chưa đủ căn cứ để nói
               </button>
               <button type="button" className="btn btn--primary doi-chat__trinh" disabled={!chonDuoc} onClick={() => theChon && onTrinh(theChon.id)} title={chonDuoc ? `Trình: ${dienTen(boNgoac(theChon.nhan))}` : 'Chọn một thẻ trong hồ sơ trước'}>
-                Trình thẻ này
+                {theChon ? 'Trình thẻ này' : 'Chọn một thẻ'}
               </button>
             </span>
           </div>
