@@ -5,8 +5,6 @@
 ## n3-mo.1
 - [THẺ CHỮ] **narrator**: Ngày 3 — Thứ Năm
 - **minh-anh** (neutral): Chị gọi cho cô Lan rồi. Các em mang kết quả hai lớp hôm qua sang, đấy là căn cứ để xin phiếu tra cứu.
-- **tung** (happy): Có phiếu là xem được danh sách sinh viên hả chị?
-- **minh-anh** (neutral): Xem được đúng những gì ghi trên phiếu.
 
 ## n3-ctsv.1
 > NHIỆM VỤ: Làm sao để được xem bảng sinh viên?
@@ -14,30 +12,30 @@
 - **co-lan** (neutral): Sổ đó niêm phong. Cô cũng không được tự mở.
 - **player**: Vậy làm sao biết được ai gửi ạ?
 - **co-lan** (neutral): Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô phụ trách hộp mới tra và trả lời có hoặc không.
-- [DÀN DỰNG] Một anh sinh viên áo sơ mi, kẹp tập hồ sơ, đứng ở cửa từ lúc nào.
-- **narrator**: Ở cửa có một anh sinh viên áo sơ mi, kẹp tập hồ sơ, đứng từ lúc nào không ai để ý.
+- [DÀN DỰNG] Một anh sinh viên khoác vest xanh đen, kẹp cái bìa da, đứng ở cửa từ lúc nào.
+- **narrator**: Ở cửa có một anh sinh viên khoác vest xanh đen, kẹp cái bìa da, đứng từ lúc nào không ai để ý.
 - **quan** (neutral): Tôi là Quân, bên Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi được cử xuống giám sát việc này.
 - **co-lan** (neutral): Hai lớp các em lọc ra hôm qua là căn cứ được. Cô ký phiếu tra cứu: bảng sinh viên, bốn cột, mã, họ đệm, tên, mã lớp. Không hơn.
-- **quan** (neutral): Tôi ký giám sát. Các bạn tra gì máy cũng ghi lại, bên tôi xem hết.
+- **quan** (neutral): Tôi ký giám sát. Các bạn tra những gì, bên tôi xem hết.
 
 ## n3-ctsv.2
 - **quan** (neutral): Các bạn chỉ được lập căn cứ. Tra sổ là việc của cô phụ trách, không phải của CLB.
 - **ha-vy** (thinking): Tức là mình cần mã, và cần căn cứ cho từng mã một.
 
 ## n3-cang-tin.1
-- [DÀN DỰNG] Căng tin buổi trưa. Hiếu ngồi bàn bên, nói to.
-- **narrator**: Trưa, căng tin. Bàn bên có một cậu đang nói to về tờ thông báo họp rà soát.
-- **hieu** (annoyed): Tôi đọc thông báo rà soát rồi. Nói thẳng nhé, CLB các cậu giữ cái phòng cả năm chả để làm gì.
-- **hieu** (annoyed): Nhóm tôi xin phòng làm bài nhóm mấy lần, lần nào cũng bảo hết phòng. Toàn phải ngồi ké thư viện.
-- **tung** (worried): Nghe gắt thế, chắc cậu này gửi thư đấy.
+- [DÀN DỰNG] Căng tin, ngay sau khi rời Phòng CTSV. Hiếu ngồi bàn bên, nói to.
+- **narrator**: Ra khỏi Phòng Công tác sinh viên, cả nhóm tạt vào căng tin. Bàn bên có một cậu đang nói to về tờ thông báo họp rà soát.
+- **hieu** (annoyed): Đọc thông báo rà soát chưa? Cái CLB Thám Tử ấy giữ nguyên một phòng chả để làm gì.
+- **hieu** (annoyed): Nhóm tôi vừa xin phòng làm bài nhóm, người ta bảo hết phòng. Phải ngồi ké thư viện.
+- **tung** (worried): Nghe gắt thế… hay thư là cậu này gửi?
 - **ha-vy** (thinking): Ghét CLB với gửi thư là hai chuyện khác nhau.
-- **hieu** (neutral): Tôi nói thẳng vậy thôi. Còn thư ai viết thì tôi không biết.
+- **hieu** (annoyed): Nhìn gì? Tôi nói thẳng vậy thôi, có gì tôi nói trước mặt.
 - **narrator**: Có tiếng gọi từ quầy: "Hiếu ơi, lấy cơm này!" Cậu ta đứng dậy, bỏ đi.
 
 ## n3-laptop.1
 > NHIỆM VỤ: Trong hai lớp ấy, ai có thể là người ký chữ H?
 - [DÀN DỰNG] Phòng CLB. Phiếu tra cứu đã mở bảng sinh viên. Trên bàn: [H], phiếu hai lớp.
-- **narrator**: Chiều, phòng CLB. Phiếu tra cứu được duyệt, laptop hiện thêm bảng sinh viên.
+- **narrator**: Về phòng CLB. Có phiếu tra cứu, laptop hiện thêm bảng sinh viên.
 - **tung** (happy): Cậu gắt ở căng tin tên Hiếu. Chữ H đấy! Tớ cá là Hiếu!
 - **ha-vy** (thinking): Cá thì để sau. Xem dữ liệu nói gì đã.
 

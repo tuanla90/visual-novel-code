@@ -40,7 +40,7 @@
 ### clue-loi-chu-cuong — [Lời chú Cường]
 - Tiêu đề: Phong bì nâu trao tay 6:45 sáng thứ Hai
 - Nguồn: {{nv.chu-cuong}}, cổng KTX
-- Nội dung: Một anh năm cuối đeo huy hiệu bánh răng đưa phong bì nâu cho một bạn nữ; bạn nữ cầm rồi đi thẳng về phía tòa B. Chú không nhận diện mặt.
+- Nội dung: Một cậu dáng sinh viên khóa trên, balo đeo huy hiệu bánh răng, đưa phong bì nâu cho một bạn nữ; bạn nữ cầm rồi đi thẳng về phía tòa B. Chú không nhìn rõ mặt.
 
 ### clue-hoai-nguoi-nop — [Hoài là người nộp]
 - Tiêu đề: Sổ niêm phong: SV240317 có, SV240228 không
@@ -54,4 +54,4 @@
 - Tiêu đề: Chân trang lá thư: tên tệp
 - Giá trị cho trình dựng: kien-nghi
 - Nguồn: {{nv.thay-khai}}, phòng máy
-- Nội dung: Bản in từ máy phòng máy có dòng chân trang ghi tên tệp. Chân trang lá thư: "kien-nghi-phong-clb.docx".
+- Nội dung: Bản in từ máy phòng máy có dòng chân trang ghi tên tệp. Chân trang bản chụp lá thư bị xén, chỉ đọc được đoạn đầu: "kien-nghi-…".

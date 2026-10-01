@@ -23,7 +23,7 @@
 - **thay-khai** (neutral): Máy in ở đây nhớ hết: tài khoản nào in, lúc nào, tệp gì, mấy trang.
 - **thay-khai** (neutral): Máy in là của phòng thầy, nên phiếu thì thầy ký. Thầy mở cho các em đúng bảng nhật ký in, chỉ để lập căn cứ.
 - **thay-khai** (neutral): Bản in từ máy ở đây có dòng chân trang ghi tên tệp. Thư của các em có không?
-- **player**: Có ạ. Chân trang ghi: kien-nghi-phong-clb.docx.
+- **player**: Có ạ. Nhưng bản chụp bị xén mép, chỉ đọc được đoạn đầu: kien-nghi…
 - **tung** (happy): Hoài nộp thư thì chắc Hoài in chứ gì!
 - **ha-vy** (neutral): Thử thì biết.
 
@@ -35,6 +35,6 @@
 - **thay-khai** (neutral): Tài khoản ấy là của ai thì thầy không nói. Các em cũng chưa cần biết, đúng không?
 
 ## n4-ve.1
-- **minh-anh** (neutral): Hoài có mã trong sổ. Nói có sách, mách có chứng: đến đây đủ để nói ai nộp, chưa đủ để nói ai viết.
-- **ha-vy** (neutral): Bọn em mới biết ai nộp thôi ạ.
+- **ha-vy** (neutral): Chị ơi, sổ niêm phong có mã của Hoài. Mã của Hiếu thì không.
+- **minh-anh** (neutral): Nói có sách, mách có chứng: đến đây đủ để nói ai nộp, chưa đủ để nói ai viết.
 - **tung** (worried): Còn thư ấy in ở đâu thì vẫn chưa ai biết…

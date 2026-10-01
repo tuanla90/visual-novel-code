@@ -4,12 +4,12 @@
 
 ## n1-mo.1
 - [THẺ CHỮ] **narrator**: Ngày 1 — Thứ Ba
-- **tung** (neutral): Hôm Chủ nhật đi qua tòa B, tớ nhớ có cái hộp tôn treo cạnh cầu thang. Thư chắc bỏ vào đấy.
+- **tung** (neutral): Hộp kiến nghị tòa B thì hôm Chủ nhật tớ với {{nv.nguoi-choi}} đi qua rồi. Cái hộp tôn treo gần cửa ra vào ấy.
 - **ha-vy** (thinking): Thế thì ra tận nơi. Ai mở hộp, mở lúc nào, trong hộp còn sót lại gì.
 
 ## n1-toa-b.1
 > NHIỆM VỤ: Ai đã bỏ lá thư vào cái hộp này?
-- **narrator**: Sáng thứ Ba, sảnh tòa B đông hơn hôm Chủ nhật. Bác bảo vệ ngồi cạnh cầu thang. Cạnh cái hộp vừa có thêm một tờ giấy mới dán.
+- **narrator**: Chiều thứ Ba, sảnh tòa B lại vắng như hôm Chủ nhật. Bác bảo vệ đứng ở chân cầu thang. Cạnh cái hộp vừa có thêm một tờ giấy mới dán.
 - **player**: (Cái hộp, bác bảo vệ, tờ giấy mới dán… Bắt đầu từ đâu nhỉ.)
 
 ## n1-toa-b.2
@@ -28,7 +28,8 @@
 ## n1-bac-thinh.1
 - **bac-tu** (neutral): Cháu hỏi cái hộp à? Sáng thứ Hai 9 giờ, bác với cô phụ trách mở. Lá thư ấy nằm trên cùng.
 - **player**: Nằm trên cùng… tức là được bỏ vào sau cùng ạ?
-- **bac-tu** (neutral): Chắc thế. Bảy giờ bác mở cửa tòa. Sáng thứ Hai từ bảy giờ tới lúc mở hộp, ra vào tòa này toàn sinh viên mấy lớp sinh hoạt đầu tuần ở đây thôi.
+- **bac-tu** (neutral): Chắc thế. Tối Chủ nhật bác đi khóa cửa, ngó qua khe thì hộp còn trống. Bảy giờ sáng thứ Hai bác mới mở cửa tòa.
+- **bac-tu** (neutral): Từ bảy giờ tới lúc mở hộp, ra vào tòa này toàn sinh viên mấy lớp sinh hoạt đầu tuần ở đây thôi.
 - **bac-tu** (neutral): Còn ai bỏ thì bác chịu. Ngần ấy đứa, bác nhớ sao hết mặt.
 
 ## n1-thong-bao-hop.1

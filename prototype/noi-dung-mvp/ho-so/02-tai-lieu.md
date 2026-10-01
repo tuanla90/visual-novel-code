@@ -28,13 +28,14 @@
 - Nội dung hiển thị:
 > Đề nghị thu hồi phòng sinh hoạt của CLB Thám Tử, vì CLB không còn giải quyết được việc gì. Đề nghị Phòng phản hồi chính thức.
 > Ký: (chữ ký tay — chữ H viết hoa rõ, phần sau là một nét lượn dài, không đọc được)
+> Chân trang (chữ in nhỏ, bản chụp bị xén mất nửa): kien-nghi-…
 
 ### doc-thong-bao-hop — Thông báo lịch họp rà soát
 - Tiêu đề: Thông báo họp rà soát phòng CLB
 - Ảnh: doc-thong-bao-hop
 - Nguồn: Dán cạnh hộp kiến nghị, sảnh tòa B
 - Nội dung hiển thị:
-> Họp rà soát phòng sinh hoạt CLB: thứ Hai tuần 3.
+> Họp rà soát phòng sinh hoạt CLB: bốn giờ chiều thứ Hai tuần sau.
 
 ### doc-van-ban-thay-quang — Văn bản cho phép lập căn cứ
 - Tiêu đề: Văn bản của {{nv.thay-quang}}

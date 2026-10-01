@@ -18,11 +18,11 @@
 ### hop-01 — Nhịp 3: hai dòng này là người viết thư? {cảnh: phong-hop}
 
 - [HỎI q-thu-pham] thay-quang: "Vậy hai bạn này là người viết thư?"
-  - (A) {id: khong-so-niem-phong} Dạ, chưa nói được ạ. Người có mã trên phiếu chưa chắc đã là người soạn thư. [ĐÚNG] → phản hồi: **thay-quang** (neutral): Tách được mã trên phiếu với người viết thư. Được, thầy ghi nhận.
+  - (A) {id: khong-so-niem-phong} Dạ, chưa nói được ạ. Người có mã trong sổ chưa chắc đã là người soạn thư. [ĐÚNG] → phản hồi: **thay-quang** (neutral): Tách được người có mã trong sổ với người viết thư. Được, thầy ghi nhận.
   - (B) {id: co} Có ạ. Hai bạn ấy khớp cả tên lẫn lớp của người ký. → phản hồi: **minh-anh** (worried): Thầy cho em nói lại ạ: dữ liệu chỉ giúp thu hẹp thôi.
   - (C) {id: khong-lien-quan} Không ạ. Hai bạn ấy chỉ trùng tên với lớp thôi. → phản hồi: **ha-vy** (thinking): Chưa loại được đâu. Mã của Hoài có trong sổ mà.
 - [RẼ NHÁNH r-moi-hoai] thay-quang: "Trong hai bạn, sổ chỉ có mã của em Hoài. Em ấy đang ngồi chờ ngoài hành lang. Các em đề nghị bước tiếp theo thế nào?"
-  - {id: dung} Mã trên phiếu mới cho biết mã của bạn ấy được ghi lên phiếu, chưa đủ để gọi bạn ấy vào. Xin dừng ở đây. → hậu quả: đi tới ket-thuong
+  - {id: dung} Mã trong sổ mới cho biết bạn ấy có nộp, chưa đủ để gọi bạn ấy vào. Xin dừng ở đây. → hậu quả: đi tới ket-thuong
   - {id: tu-ke} Mời bạn ấy vào, để bạn ấy tự kể chuyện nộp thư. → hậu quả: đi tới hop-02
   - {id: doi-chat} Mời bạn ấy vào, chiếu hai dòng lên để bạn ấy xác nhận luôn cho nhanh. → hậu quả: đi tới hop-doi-chat
 

@@ -1,6 +1,6 @@
 ## Mở đầu — tuần 1 → chiều thứ Hai tuần 2
 
-<!-- 11 cảnh theo kịch bản khung mục 3. Thoại bản hội đồng v1 (29/09): giọng sinh viên miền Bắc, tớ/cậu. -->
+<!-- Theo kịch bản khung mục 3, đã áp DX-01 (01/10/2026): bỏ md-02 bản đồ, md-04 căng tin, md-05 phòng máy; md-06 bảng tin gộp vào md-07. Nối: md-01 → md-03 → md-07 → md-08 → md-09. Thoại bản hội đồng v1 (29/09): giọng sinh viên miền Bắc, tớ/cậu. -->
 
 ### md-00-xe-buyt — Chủ nhật tuần 1: xuống xe buýt trước cổng trường {cảnh: cong-truong}
 
@@ -36,7 +36,7 @@
 
 - [LỜI md-00-gap-tung.1]
 - [TẠO NHÂN VẬT ten] tung (neutral): "Thế cậu tên gì?"
-  - xúc xắc: Ngại nghĩ thì bấm xúc xắc, tớ đặt hộ cho. Đảm bảo không xui.
+  - xúc xắc: Ngại nghĩ thì để tớ gieo xúc xắc đặt hộ cho. Đảm bảo không xui.
 - [LỜI md-00-gap-tung.2]
 - [TẠO NHÂN VẬT nganh] tung (neutral): "Cậu học ngành gì?"
   - lựa chọn: Kế toán · Quản trị kinh doanh · Tài chính – Ngân hàng · Marketing · Thương mại điện tử
@@ -49,33 +49,11 @@
 
 - [ẢNH chibi-408-vali]
 - [LỜI md-01-ktx.2]
-- [ĐI TỚI md-02-ban-do]
-
-### md-02-ban-do — Ra bản đồ trường {cảnh: ban-do}
-
-- [LỜI md-02-ban-do.1]
-
-- [LỜI md-02-ban-do.2]
 - [ĐI TỚI md-03-toa-b]
 
 ### md-03-toa-b — Sảnh tòa B: cái hộp tôn cũ {cảnh: sanh-toa-b}
 
 - [LỜI md-03-toa-b.1]
-- [ĐI TỚI md-04-cang-tin]
-
-### md-04-cang-tin — Căng tin: khung giờ {cảnh: cang-tin}
-
-- [LỜI md-04-cang-tin.1]
-- [ĐI TỚI md-05-phong-may]
-
-### md-05-phong-may — Ngoài phòng máy {cảnh: ngoai-phong-may}
-
-- [LỜI md-05-phong-may.1]
-- [ĐI TỚI md-06-bang-tin]
-
-### md-06-bang-tin — Nhà văn hóa, bảng tin {cảnh: nha-van-hoa}
-
-- [LỜI md-06-bang-tin.1]
 - [ĐI TỚI md-07-cong-ktx-toi]
 
 ### md-07-cong-ktx-toi — Cổng KTX, tối: chú Cường {cảnh: cong-ktx-dem}
