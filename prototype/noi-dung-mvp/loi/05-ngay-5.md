@@ -8,11 +8,11 @@
 - **narrator**: Sáng sớm ở cổng ký túc xá. {{nv.chu-cuong}} vừa đi một vòng kiểm tra về, đèn pin còn cầm trên tay.
 
 ## n5-chu-cuong.1
-- **tung** (neutral): Chú ơi, sáng thứ Hai chú có để ý ai ra cổng sớm không ạ? Bọn cháu đang tìm người bỏ thư vào hộp tòa B.
-- **chu-cuong** (neutral): Sáng thứ Hai à… 6 giờ 45, chú thấy một anh năm cuối đeo huy hiệu bánh răng, đứng ngoài cổng đưa phong bì nâu cho một bạn nữ.
+- **tung** (neutral): Chú ơi, sáng thứ Hai chú có để ý ai ra cổng sớm không ạ? Bọn cháu đang lần xem lá thư ở hộp tòa B từ đâu mà ra.
+- **chu-cuong** (neutral): Sáng thứ Hai à… 6 giờ 45, chú thấy một cậu lớn, dáng sinh viên khóa trên, balo đeo huy hiệu bánh răng, đứng ngoài cổng đưa phong bì nâu cho một bạn nữ.
 - **chu-cuong** (neutral): Con bé cầm xong là đi thẳng về phía tòa B luôn.
 - **player**: Còn anh kia, chú có nhìn rõ mặt không ạ?
-- **chu-cuong** (neutral): Không. Anh ấy đứng xa, sáng sớm, chú chỉ để ý cái huy hiệu với dáng người thôi.
+- **chu-cuong** (neutral): Không. Cậu ấy đứng xa, trời lại mới sáng, chú chỉ để ý cái huy hiệu với dáng người thôi.
 
 ## n5-toi.1
 > NHIỆM VỤ: Soát lại hồ sơ trước buổi họp

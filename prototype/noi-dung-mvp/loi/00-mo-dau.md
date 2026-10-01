@@ -68,7 +68,8 @@
 - [DÀN DỰNG] Tối. Hai người quẹt thẻ ở phòng trực cổng KTX. Nền tối bg-mvp-cong-ktx-dem (DX-02).
 - **narrator**: Lúc về tới cổng ký túc xá thì trời đã tối. Đèn phòng trực vẫn sáng.
 - **chu-cuong** (neutral): Giờ này mới về à? {{nv.tung}} dẫn bạn đi đâu cả buổi thế?
-- **tung** (happy): Bọn cháu đi xem trường ạ. Chú tớ đấy, chú trực cổng này.
+- **tung** (happy): Bọn cháu đi xem trường ạ.
+- **tung** (happy): Chú tớ đấy, {{nv.nguoi-choi}}. Chú trực cổng này lâu lắm rồi.
 - **tung** (neutral): Chú ơi, qua nhà văn hóa cháu thấy dán poster CLB Thám Tử. Chú biết CLB đấy không?
 - **chu-cuong** (smile): À, CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó đều moi ra được bằng chứng. Chẳng thần thánh gì, chịu khó hỏi từng người rồi đối chiếu giấy tờ thôi.
 - **chu-cuong** (neutral): Giờ cái gì cũng lên hệ thống, ai còn nhờ sinh viên đi hỏi từng người nữa. Thứ Bảy có Ngày hội CLB đấy, thích thì ra xem.
@@ -94,7 +95,7 @@
 - **tung** (worried): Thẻ bọn em đang đeo là thẻ tạm của ký túc xá, chưa in mã chị ạ.
 - **minh-anh** (neutral): Đoàn trường có gửi danh sách tân sinh viên khóa này, mã nằm trong đấy. Tra xong là chị xóa khỏi máy.
 - **narrator**: {{nv.tung}} cúi xuống màn hình vài giây rồi điền một mạch.
-- **minh-anh** (worried): Mã này của một bạn Tùng học Kế toán. Em học Du lịch cơ mà?
+- **minh-anh** (worried): Mã này của một bạn Tùng học Kế toán. Phiếu em lại ghi ngành Du lịch?
 - **tung** (worried): Dạ vâng, em Tùng Du lịch ạ… Tên trong này na ná nhau quá, em nhìn nhầm dòng.
 - **minh-anh** (neutral): Để chị dò lại từng dòng vậy.
 - **player**: Chị cho em thử lọc một cái được không ạ?
@@ -129,12 +130,13 @@
 
 ## md-11-la-thu.1
 - [DÀN DỰNG] {{nv.minh-anh}} ra ngoài rồi quay lại với hai tờ giấy: thông báo lịch họp rà soát và bản chụp thư đã che thông tin.
-- **narrator**: Bốn rưỡi, cô Lan bên Phòng Công tác sinh viên gọi chị Minh Anh lên. Hai mươi phút sau chị quay về, tay cầm hai tờ giấy.
+- **narrator**: Bốn rưỡi, cô Lan bên Phòng Công tác sinh viên gọi chị Minh Anh lên. Mười phút sau chị quay về, tay cầm hai tờ giấy.
 - **minh-anh** (worried): Thứ Hai tuần sau, phòng CLB mình bị đưa ra họp rà soát.
 - **minh-anh** (neutral): Có người bỏ thư vào hộp kiến nghị ở tòa B, đề nghị thu hồi phòng. Tên người gửi bị che, CLB chỉ được xem nội dung.
 
 ## md-11-la-thu.2
 - **player**: Chữ ký lượn thế này, đọc được mỗi chữ H… mà lại còn "đề nghị phản hồi chính thức".
+- **player**: (Cuối trang còn sót một dòng chữ bé tí, bị xén mất nửa. Trông như tên tệp.)
 
 ## md-11-la-thu.3
 - **duy** (neutral): Đủ 5 người mới chỉ giữ được tư cách CLB thôi. Phòng vẫn bị xét vì báo cáo yếu, đơn của Robotics, giờ thêm lá thư này.

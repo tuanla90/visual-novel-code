@@ -36,7 +36,7 @@
 
 - [LỜI md-00-gap-tung.1]
 - [TẠO NHÂN VẬT ten] tung (neutral): "Thế cậu tên gì?"
-  - xúc xắc: Ngại nghĩ thì bấm xúc xắc, tớ đặt hộ cho. Đảm bảo không xui.
+  - xúc xắc: Ngại nghĩ thì để tớ gieo xúc xắc đặt hộ cho. Đảm bảo không xui.
 - [LỜI md-00-gap-tung.2]
 - [TẠO NHÂN VẬT nganh] tung (neutral): "Cậu học ngành gì?"
   - lựa chọn: Kế toán · Quản trị kinh doanh · Tài chính – Ngân hàng · Marketing · Thương mại điện tử

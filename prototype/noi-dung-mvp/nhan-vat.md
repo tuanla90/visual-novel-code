@@ -111,17 +111,7 @@
 - Danh xưng: Sinh viên lớp BC24A
 - Năm: Năm nhất
 - Câu nói: Tôi nói thẳng vậy thôi.
-- Giới thiệu: Sinh viên lớp BC24A, nói gì cũng thẳng. Nhóm của Hiếu từng xin phòng làm bài nhóm nhiều lần mà không được.
-
-### dat — Đạt
-- Họ tên: Phạm Tiến Đạt
-- Vai: Lớp trưởng BC24A. Kể lại lời Hoài sáng thứ Hai (chỉ ngày 5, giờ ra chơi).
-- Biểu cảm: neutral
-- Xuất hiện từ: ngày 5
-- Danh xưng: Lớp trưởng BC24A
-- Năm: Năm nhất
-- Câu nói: Có thế thôi.
-- Giới thiệu: Lớp trưởng lớp BC24A. Để ý chuyện trong lớp, nhưng chỉ kể đúng những gì mình nghe thấy.
+- Giới thiệu: Sinh viên lớp BC24A, nói gì cũng thẳng. Nhóm của Hiếu vừa xin phòng làm bài nhóm mà không được.
 
 ### co-phu-trach — Cô phụ trách hộp kiến nghị
 - Vai: Giữ sổ niêm phong. Chỉ xuất hiện qua lời kể và tài liệu.

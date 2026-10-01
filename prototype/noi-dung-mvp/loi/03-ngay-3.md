@@ -27,11 +27,11 @@
 ## n3-cang-tin.1
 - [DÀN DỰNG] Căng tin, ngay sau khi rời Phòng CTSV. Hiếu ngồi bàn bên, nói to.
 - **narrator**: Ra khỏi Phòng Công tác sinh viên, cả nhóm tạt vào căng tin. Bàn bên có một cậu đang nói to về tờ thông báo họp rà soát.
-- **hieu** (annoyed): Tôi đọc thông báo rà soát rồi. Nói thẳng nhé, CLB các cậu giữ cái phòng cả năm chả để làm gì.
-- **hieu** (annoyed): Nhóm tôi xin phòng làm bài nhóm mấy lần, lần nào cũng bảo hết phòng. Toàn phải ngồi ké thư viện.
-- **tung** (worried): Nghe gắt thế, chắc cậu này gửi thư đấy.
+- **hieu** (annoyed): Đọc thông báo rà soát chưa? Cái CLB Thám Tử ấy giữ nguyên một phòng chả để làm gì.
+- **hieu** (annoyed): Nhóm tôi vừa xin phòng làm bài nhóm, người ta bảo hết phòng. Phải ngồi ké thư viện.
+- **tung** (worried): Nghe gắt thế… hay thư là cậu này gửi?
 - **ha-vy** (thinking): Ghét CLB với gửi thư là hai chuyện khác nhau.
-- **hieu** (neutral): Tôi nói thẳng vậy thôi. Còn thư ai viết thì tôi không biết.
+- **hieu** (annoyed): Nhìn gì? Tôi nói thẳng vậy thôi, có gì tôi nói trước mặt.
 - **narrator**: Có tiếng gọi từ quầy: "Hiếu ơi, lấy cơm này!" Cậu ta đứng dậy, bỏ đi.
 
 ## n3-laptop.1

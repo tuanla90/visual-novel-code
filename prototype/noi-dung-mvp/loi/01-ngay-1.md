@@ -4,7 +4,7 @@
 
 ## n1-mo.1
 - [THẺ CHỮ] **narrator**: Ngày 1 — Thứ Ba
-- **tung** (neutral): Hôm Chủ nhật đi qua tòa B, tớ nhớ có cái hộp tôn treo gần cửa ra vào. Thư chắc bỏ vào đấy.
+- **tung** (neutral): Hộp kiến nghị tòa B à? Hôm Chủ nhật tớ với {{nv.nguoi-choi}} đi qua rồi. Cái hộp tôn treo gần cửa ra vào ấy.
 - **ha-vy** (thinking): Thế thì ra tận nơi. Ai mở hộp, mở lúc nào, trong hộp còn sót lại gì.
 
 ## n1-toa-b.1
@@ -28,7 +28,8 @@
 ## n1-bac-thinh.1
 - **bac-tu** (neutral): Cháu hỏi cái hộp à? Sáng thứ Hai 9 giờ, bác với cô phụ trách mở. Lá thư ấy nằm trên cùng.
 - **player**: Nằm trên cùng… tức là được bỏ vào sau cùng ạ?
-- **bac-tu** (neutral): Chắc thế. Bảy giờ bác mở cửa tòa. Sáng thứ Hai từ bảy giờ tới lúc mở hộp, ra vào tòa này toàn sinh viên mấy lớp sinh hoạt đầu tuần ở đây thôi.
+- **bac-tu** (neutral): Chắc thế. Tối Chủ nhật bác đi khóa cửa, ngó qua khe thì hộp còn trống. Bảy giờ sáng thứ Hai bác mới mở cửa tòa.
+- **bac-tu** (neutral): Từ bảy giờ tới lúc mở hộp, ra vào tòa này toàn sinh viên mấy lớp sinh hoạt đầu tuần ở đây thôi.
 - **bac-tu** (neutral): Còn ai bỏ thì bác chịu. Ngần ấy đứa, bác nhớ sao hết mặt.
 
 ## n1-thong-bao-hop.1
