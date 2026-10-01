@@ -8,7 +8,7 @@ Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từ
 - **Người kể**: Xưởng Robotics, cuối tuần. Nam đứng giữa các kệ linh kiện, tay cầm bảng kiểm kê, mặt khó coi.
 - **Nam** (neutral): Tớ đếm kho. Đếm tay từng loại, hai lần.
 - **Tùng** (worried): Rồi sao?
-- **Nam** (neutral): Ba đơn mang tên tớ: động cơ servo, mạch điều khiển, khung nhôm. Trong kho không có lấy một cái. Sổ ghi đã duyệt, mà hàng chưa từng về.
+- **Nam** (neutral): Ba đơn mang tên tớ: động cơ servo, mạch điều khiển, khung nhôm. Trong kho không có lấy một cái. Sổ ghi đã duyệt, mà lúc tớ kiểm kê, kho không có.
 > 🗂️ Tài liệu mới: **Bảng kiểm kê xưởng của Nam** — nguồn: Nam đếm tay từng loại, hai lần
 > Mười loại linh kiện trong sổ đặt hàng, đếm thực tế trong kho. Ba loại đang là số không: động cơ servo, mạch điều khiển, bộ khung nhôm.
 > 🗂️ Giấy nhớ mới: **[Kho: 0]** — nguồn: Bảng kiểm kê của Nam
@@ -166,7 +166,7 @@ Kết quả: 2 dòng
 > 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Minh Anh 3 khoản, 450.000; Khánh 3 khoản, 2.400.000** — Kết quả gom theo người duyệt: Minh Anh ba khoản, tổng 450.000; Khánh ba khoản, tổng 2.400.000. Cùng số khoản, tiền gấp hơn năm lần.
 
 - **Bạn (người chơi)**: Chị Minh Anh: ba khoản, tổng bốn trăm năm mươi nghìn. Khánh: ba khoản, tổng hai triệu tư.
-- **Minh Anh** (khoanh-tay): Quy chế quỹ khối CLB: khoản dưới một triệu thì chủ tịch Hội duyệt thẳng, không cần trưởng CLB chủ quỹ ký. Chị là chủ quỹ mà không biết ba khoản này, là vì thế.
+- **Minh Anh** (khoanh-tay): Quy chế quỹ khối CLB: khoản dưới một triệu thì chủ tịch Hội duyệt thẳng, không cần trưởng CLB chủ quỹ ký. Chị là chủ quỹ mà không biết ba khoản này, là vì thế. Sao kê tổng thì Phòng Kế hoạch giữ, cuối kỳ mới gửi.
 - **Duy** (neutral): Nhưng tổng các khoản do cùng một người duyệt mà vượt một triệu thì Phòng Kế hoạch đòi người đó giải trình. Ngưỡng ấy để tìm nhóm cần hỏi, không phải để kết tội. Để bảng tự lọc ra, đừng chỉ tay.
 - **Hà Vy** (thinking): Và tính thêm trung bình mỗi khoản. Xem từng khoản to cỡ nào so với mức duyệt thẳng.
 > 🎯 NHIỆM VỤ: Người duyệt nào có tổng chi vượt ngưỡng giải trình một triệu? Mỗi khoản trung bình bao nhiêu?
@@ -184,11 +184,11 @@ Kết quả: 1 dòng
 | nguoi_duyet | so_dong | tong_so_tien | tb_so_tien |
 |---|---|---|---|
 | Khánh | 3 | 2400000 | 800000 |
-> 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000** — Kết quả lọc nhóm: chỉ Khánh có tổng chi từ quỹ CLB Thám Tử vượt ngưỡng giải trình một triệu (2.400.000 cho ba khoản). Trung bình 800.000 một khoản: khoản nào cũng dưới một triệu, mức chủ tịch Hội duyệt thẳng được. Ba khoản ấy là ba đơn linh kiện không có hàng.
+> 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000** — Kết quả lọc nhóm: chỉ Khánh có tổng chi từ quỹ CLB Thám Tử vượt ngưỡng giải trình một triệu (2.400.000 cho ba khoản). Trung bình 800.000 một khoản; phiếu sáu khoản cho thấy từng khoản (800.000, 900.000, 700.000) đều dưới một triệu, mức chủ tịch Hội duyệt thẳng được. Ba khoản ấy là ba đơn linh kiện không có hàng.
 
 - **Bạn (người chơi)**: Còn một dòng. Khánh: ba khoản, tổng hai triệu tư, trung bình tám trăm nghìn.
-- **Hà Vy** (thinking): Tám trăm nghìn một khoản. Khoản nào cũng dưới một triệu, vừa đủ để không cần chị Minh Anh ký.
-- **Tùng** (worried): Xé nhỏ để lọt. Chủ tịch Hội duyệt chi quỹ CLB khác… cho hàng không về.
+- **Hà Vy** (thinking): Trung bình tám trăm nghìn một khoản, dưới mức một triệu. Nhìn lại phiếu sáu khoản: tám trăm, chín trăm, bảy trăm. Từng khoản đều dưới mức duyệt thẳng, cộng lại thì vượt ngưỡng giải trình.
+- **Tùng** (worried): Ba khoản nhỏ vừa đủ lọt… ghi vào quỹ CLB mình, cho ba đơn kho không có hàng.
 - **Nam** (neutral): Khánh. Trưởng CLB của tớ. Chủ tịch Hội sinh viên.
 - **Hà Vy** (thinking): Bảng nói được tới đó: ai duyệt, bao nhiêu, chia thế nào. Vì sao thì bảng không nói. Chỉ có người mới nói được.
 - **Minh Anh** (serious): Chị gửi thầy Quang. Việc còn lại là của thầy.
@@ -216,8 +216,9 @@ Kết quả: 1 dòng
 ###### 📍 Phòng họp rà soát — Khánh nhận; Nam nhận CLB Robotics
 
 - **Thầy Quang** (neutral): Em Khánh nhận rồi. Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên, không bàn ở đây. Việc riêng của em ấy, thầy không hỏi trước mọi người.
-- **Khánh** (neutral): Robotics… tớ giao lại cho Nam. Cậu giữ sổ sách của xưởng tốt hơn tớ.
-- **Nam** (neutral): Tớ nhận. Nhưng sổ sách thì ai cũng xem được, kể cả cậu.
+- **Khánh** (neutral): Robotics… tớ xin thôi. Tớ đề nghị CLB bầu Nam. Cậu giữ sổ sách của xưởng tốt hơn tớ.
+- **Thầy Quang** (neutral): Trưởng CLB thì Robotics tự họp bầu. Thầy ghi nhận đề nghị của em Khánh.
+- **Nam** (neutral): Nếu CLB bầu thì tớ nhận. Nhưng sổ sách thì ai cũng xem được, kể cả cậu.
 - **Thầy Quang** (neutral): Hai CLB dùng chung phòng tới hết học kỳ. Thầy nhận hồ sơ của CLB Thám Tử vào đợt rà soát cuối kỳ.
 - **Tùng** (happy): Giữ được phòng. Lần này tớ không cá nữa, tớ chắc.
 

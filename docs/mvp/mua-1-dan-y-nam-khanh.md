@@ -232,3 +232,18 @@ Phương án đã loại: chị Linh rời CLB vì bị Khánh ép. Nó buộc l
 Điểm chơi thử của GPT và Gemini (thang 100) ghi ở mục 11.
 
 Chưa làm: sáu bài luyện nhỏ; ảnh của Nam, Khánh và nền xưởng Robotics, thư viện (đang mượn nền tạm); "ngày 6" thử màn tổng hợp vẫn nằm trong Vụ 1; gộp hai màn gom của Vụ 5 thành một màn chỉnh tiếp (Gemini đề nghị, cần đổi máy).
+
+## 11. Điểm chơi thử của hội đồng (GPT-6 Luna, Gemini 3.1 Pro), 01/10
+
+Mỗi vụ được đưa bản chơi thử dạng chữ (`docs/mvp/ban-choi-thu/`), chấm thang 100, sửa rồi chấm lại. Điểm vòng cuối:
+
+| Phần | GPT | Gemini | Số vòng | Ghi chú |
+|---|---|---|---|---|
+| Vụ 2 Tin đồn | 86 | 94 | 4 | GPT còn chê tuyến xưởng vòng vèo, lời suy luận |
+| Vụ 3 Tranh cãi | 87 | 92 | 2 | Đã sửa tiếp sau vòng 2, chưa chấm lại |
+| Vụ 4 Giúp Nam | 88 (vòng 4: 89) | 93 | 5 | GPT muốn bỏ màn gom theo máy, bớt gợi ý cột nối |
+| Vụ 5 Sổ quỹ | 87 | 95 | 4 | GPT muốn bớt gợi ý ở màn tổng hợp, lời phản hồi khi tra sai ở màn tổng hợp |
+| Việc phụ Chiếc micro | 91 | 97 | 2 | |
+| Việc phụ Hoàn tiền | 88 | 93 | 2 | |
+
+Gemini qua 90 ở mọi phần. GPT dừng quanh 86–89 ở các vụ chính: mỗi vòng nêu một nhóm ý mới, chủ yếu là "lời nhắc việc nói gần hết cách làm" và "màn tổng hợp chưa có lời phản hồi khi tra sai" (việc sau cần đổi máy). Hai ý ấy là việc nên làm tiếp nếu muốn GPT qua 90.

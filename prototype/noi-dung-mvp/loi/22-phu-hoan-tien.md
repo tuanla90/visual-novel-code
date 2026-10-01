@@ -17,19 +17,19 @@
 
 ## p-hoan-mo.3
 - **player**: Bốn dòng hoàn tiền.
-- **duy** (neutral): Mỗi lần hoàn chỉ được có một dòng. Phiếu nào có hơn một dòng hoàn thì cần mở ra xem.
-- **ha-vy** (thinking): Gom theo mã phiếu, đếm dòng, cộng tiền. Rồi chỉ giữ nhóm có hơn một dòng. Lần này lọc nhóm theo số dòng, không theo tổng.
-> NHIỆM VỤ: Phiếu nào có hơn một dòng hoàn tiền, tổng ghi hoàn bao nhiêu?
-> NHẮC VIỆC ha-vy (thinking): Phiếu bốn dòng hoàn làm nguồn. Gom theo mã phiếu, tính tổng, chỉ giữ nhóm có số dòng lớn hơn một.
+- **duy** (neutral): Theo cách ghi sổ thì mỗi lần hoàn một dòng. Phiếu có hơn một dòng hoàn chưa chắc sai, có khi hoàn hai lần thật. Nhưng đấy là chỗ cần mở chứng từ.
+- **ha-vy** (thinking): Bốn dòng, ba phiếu. Hôm trước mình giữ nhóm theo tổng tiền. Lần này cái cần giữ là nhóm có nhiều dòng.
+> NHIỆM VỤ: Phiếu nào có hơn một dòng hoàn tiền, sổ ghi hoàn tổng cộng bao nhiêu?
+> NHẮC VIỆC ha-vy (thinking): Phiếu bốn dòng hoàn làm nguồn. Mỗi phiếu mấy dòng, cộng bao nhiêu tiền; chỉ giữ phiếu có hơn một dòng.
 
 ## p-hoan-mo.4
-- **player**: Một phiếu. PH-04: hai dòng, tổng ghi hoàn là âm một trăm hai mươi nghìn.
+- **player**: Một phiếu. PH-04: hai dòng, cột tiền cộng ra âm một trăm hai mươi nghìn. Khoản hoàn ghi số âm, tức sổ đang ghi hoàn một trăm hai mươi nghìn cho phiếu này.
 - **quan** (neutral): Hai dòng cùng một phiếu là tín hiệu cần kiểm, chưa phải kết luận. Mở chứng từ gốc.
 - **minh-anh** (neutral): Biên nhận ngân hàng của PH-04 đây.
 
 ## p-hoan-mo.5
 - **minh-anh** (neutral): Biên nhận ghi một giao dịch hoàn sáu mươi nghìn, mã tham chiếu NH-771. Trong bản xuất, cả hai dòng của PH-04 đều mang mã NH-771.
-- **tung** (surprised): Một lần hoàn mà ghi hai dòng. Đúng sáu mươi nghìn bị lệch.
+- **tung** (surprised): Hoàn một lần sáu mươi nghìn mà sổ ghi hai dòng, thành một trăm hai mươi. Dư đúng sáu mươi nghìn đang lệch.
 - **ha-vy** (thinking): Đếm dòng là đếm bản ghi, không phải đếm lần chuyển tiền.
 
 ## p-hoan-ket.1

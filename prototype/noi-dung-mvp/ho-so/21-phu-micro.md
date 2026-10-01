@@ -14,7 +14,7 @@
 - Tiêu đề: Tên thiết bị trong sổ tài sản
 - Giá trị cho trình dựng: Micro không dây
 - Nguồn: Sổ tài sản CLB
-- Nội dung: Sổ tài sản ghi tên thiết bị ở cột ten_tai_san. Chiếc đang tìm là "Micro không dây"; sổ còn một chiếc "Micro có dây".
+- Nội dung: Sổ tài sản ghi tên thiết bị ở cột ten_tai_san. Chiếc cần kiểm kê là "Micro không dây"; sổ còn một chiếc "Micro có dây".
 
 ### clue-mic-da-nhan — [Đã nhận]
 - Tiêu đề: Trạng thái phiếu đã có người nhận

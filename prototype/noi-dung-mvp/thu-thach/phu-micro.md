@@ -3,7 +3,7 @@
 ### c-mic-phieu — Phiếu nào đã nhận, chuyển chiếc micro không dây đi đâu? {challenge: c-mic-phieu}
 
 - Tiêu đề: Phiếu luân chuyển nối với sổ tài sản
-- Đề bài hiển thị: Phiếu luân chuyển chỉ ghi mã tài sản; sổ tài sản mới ghi tên. Phiếu nào đã nhận, chuyển chiếc micro không dây đi đâu?
+- Đề bài hiển thị: Phiếu luân chuyển chỉ ghi mã tài sản; sổ tài sản mới ghi tên. Phiếu nào đã có người nhận ghi chuyển chiếc micro không dây, và chuyển tới đâu?
 - Manh mối liên quan: clue-mic-ten, clue-mic-da-nhan
 - Nối được với: tai_san
 - Mục tiêu học: Rèn nối hai bảng theo mã; cột trùng tên (vi_tri) chưa chắc cùng nghĩa; lọc trên cột của cả hai bảng.

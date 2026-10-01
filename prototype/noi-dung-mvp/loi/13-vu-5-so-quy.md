@@ -7,7 +7,7 @@
 - **narrator**: Xưởng Robotics, cuối tuần. Nam đứng giữa các kệ linh kiện, tay cầm bảng kiểm kê, mặt khó coi.
 - **nam** (neutral): Tớ đếm kho. Đếm tay từng loại, hai lần.
 - **tung** (worried): Rồi sao?
-- **nam** (neutral): Ba đơn mang tên tớ: động cơ servo, mạch điều khiển, khung nhôm. Trong kho không có lấy một cái. Sổ ghi đã duyệt, mà hàng chưa từng về.
+- **nam** (neutral): Ba đơn mang tên tớ: động cơ servo, mạch điều khiển, khung nhôm. Trong kho không có lấy một cái. Sổ ghi đã duyệt, mà lúc tớ kiểm kê, kho không có.
 
 ## v5-mo.2
 - **ha-vy** (thinking): Vậy phải so sổ đặt hàng với bảng kiểm kê. Hai bảng, chung nhau tên linh kiện.
@@ -44,7 +44,7 @@
 
 ## v5-so-quy.3
 - **player**: Chị Minh Anh: ba khoản, tổng bốn trăm năm mươi nghìn. Khánh: ba khoản, tổng hai triệu tư.
-- **minh-anh** (khoanh-tay): Quy chế quỹ khối CLB: khoản dưới một triệu thì chủ tịch Hội duyệt thẳng, không cần trưởng CLB chủ quỹ ký. Chị là chủ quỹ mà không biết ba khoản này, là vì thế.
+- **minh-anh** (khoanh-tay): Quy chế quỹ khối CLB: khoản dưới một triệu thì chủ tịch Hội duyệt thẳng, không cần trưởng CLB chủ quỹ ký. Chị là chủ quỹ mà không biết ba khoản này, là vì thế. Sao kê tổng thì Phòng Kế hoạch giữ, cuối kỳ mới gửi.
 - **duy** (neutral): Nhưng tổng các khoản do cùng một người duyệt mà vượt một triệu thì Phòng Kế hoạch đòi người đó giải trình. Ngưỡng ấy để tìm nhóm cần hỏi, không phải để kết tội. Để bảng tự lọc ra, đừng chỉ tay.
 - **ha-vy** (thinking): Và tính thêm trung bình mỗi khoản. Xem từng khoản to cỡ nào so với mức duyệt thẳng.
 > NHIỆM VỤ: Người duyệt nào có tổng chi vượt ngưỡng giải trình một triệu? Mỗi khoản trung bình bao nhiêu?
@@ -52,8 +52,8 @@
 
 ## v5-so-quy.4
 - **player**: Còn một dòng. Khánh: ba khoản, tổng hai triệu tư, trung bình tám trăm nghìn.
-- **ha-vy** (thinking): Tám trăm nghìn một khoản. Khoản nào cũng dưới một triệu, vừa đủ để không cần chị Minh Anh ký.
-- **tung** (worried): Xé nhỏ để lọt. Chủ tịch Hội duyệt chi quỹ CLB khác… cho hàng không về.
+- **ha-vy** (thinking): Trung bình tám trăm nghìn một khoản, dưới mức một triệu. Nhìn lại phiếu sáu khoản: tám trăm, chín trăm, bảy trăm. Từng khoản đều dưới mức duyệt thẳng, cộng lại thì vượt ngưỡng giải trình.
+- **tung** (worried): Ba khoản nhỏ vừa đủ lọt… ghi vào quỹ CLB mình, cho ba đơn kho không có hàng.
 - **nam** (neutral): Khánh. Trưởng CLB của tớ. Chủ tịch Hội sinh viên.
 - **ha-vy** (thinking): Bảng nói được tới đó: ai duyệt, bao nhiêu, chia thế nào. Vì sao thì bảng không nói. Chỉ có người mới nói được.
 - **minh-anh** (serious): Chị gửi thầy Quang. Việc còn lại là của thầy.
@@ -71,8 +71,10 @@
 
 ## v5-ket-du.1
 - **thay-quang** (neutral): Em Khánh nhận rồi. Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên, không bàn ở đây. Việc riêng của em ấy, thầy không hỏi trước mọi người.
-- **khanh** (neutral): Robotics… tớ giao lại cho Nam. Cậu giữ sổ sách của xưởng tốt hơn tớ.
-- **nam** (neutral): Tớ nhận. Nhưng sổ sách thì ai cũng xem được, kể cả cậu.
+- [DÀN DỰNG] {{nv.khanh}} nhìn tờ phiếu một dòng trên bàn một lúc lâu.
+- **khanh** (neutral): Robotics… tớ xin thôi. Tớ đề nghị CLB bầu Nam. Cậu giữ sổ sách của xưởng tốt hơn tớ.
+- **thay-quang** (neutral): Trưởng CLB thì Robotics tự họp bầu. Thầy ghi nhận đề nghị của em Khánh.
+- **nam** (neutral): Nếu CLB bầu thì tớ nhận. Nhưng sổ sách thì ai cũng xem được, kể cả cậu.
 - **thay-quang** (neutral): Hai CLB dùng chung phòng tới hết học kỳ. Thầy nhận hồ sơ của CLB Thám Tử vào đợt rà soát cuối kỳ.
 - **tung** (happy): Giữ được phòng. Lần này tớ không cá nữa, tớ chắc.
 

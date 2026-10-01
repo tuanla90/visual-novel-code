@@ -6,7 +6,7 @@
 - Tiêu đề: Giấy của Ban kiểm tra Hội sinh viên gửi xưởng Robotics
 - Nguồn: {{nv.nam}} mang tới phòng CLB
 - Nội dung hiển thị:
-> Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, tổng ghi trên đơn hơn hai triệu đồng. Kèm bản sổ đặt hàng của xưởng.
+> Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, năm đơn cộng lại 2.670.000 đồng. Kèm bản sổ đặt hàng của xưởng.
 > Nam nói mình chỉ đặt hai đơn: cảm biến dò line và bánh xe.
 
 ### doc-phien-dang-nhap — Bảng phiên đăng nhập do Phòng Quản trị mạng xuất

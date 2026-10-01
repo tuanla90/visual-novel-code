@@ -7,7 +7,7 @@
 - **narrator**: Đầu tuần. Lần này không phải nhóm sang xưởng, mà Nam tự tới phòng CLB, tay cầm một tờ giấy.
 - **nam** (neutral): Các cậu nói đúng. Có người đang mượn tên tớ, mà không phải chỉ cái tin đồn.
 - **minh-anh** (neutral): Ngồi xuống đã. Chuyện gì?
-- **nam** (neutral): Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, có đơn gần một triệu. Tớ đặt đúng hai: cảm biến với bánh xe, mấy trăm nghìn.
+- **nam** (neutral): Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, cộng lại hơn hai triệu rưỡi, có đơn gần một triệu. Trong năm đơn ấy tớ chỉ đặt hai: cảm biến với bánh xe, mấy trăm nghìn. Ba đơn kia tớ không đặt.
 
 ## v4-mo.2
 - **tung** (worried): Ba đơn lạ. Ai đặt?

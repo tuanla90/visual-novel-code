@@ -14,18 +14,18 @@ Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từ
 > Phiếu luân chuyển: mã phiếu, mã tài sản, nơi chuyển tới, người nhận, ngày, trạng thái. Phiếu không ghi tên thiết bị.
 > Cả hai bảng đều có cột vi_tri, nhưng ở sổ là chỗ để đầu kỳ, ở phiếu là nơi chuyển tới.
 > 🗂️ Giấy nhớ mới: **[Micro không dây]** — nguồn: Sổ tài sản CLB
-> Sổ tài sản ghi tên thiết bị ở cột ten_tai_san. Chiếc đang tìm là "Micro không dây"; sổ còn một chiếc "Micro có dây".
+> Sổ tài sản ghi tên thiết bị ở cột ten_tai_san. Chiếc cần kiểm kê là "Micro không dây"; sổ còn một chiếc "Micro có dây".
 > (giấy nhớ kéo được vào màn tra: Micro không dây)
 > 🗂️ Giấy nhớ mới: **[Đã nhận]** — nguồn: Phiếu luân chuyển
 > Phiếu DA_NHAN là phiếu đã có chữ ký người nhận, thiết bị đã thật sự chuyển. DE_XUAT là phiếu mới đề xuất, chưa ai nhận.
 > (giấy nhớ kéo được vào màn tra: DA_NHAN)
 - **Duy** (neutral): Phiếu luân chuyển đây. Nhưng phiếu chỉ ghi mã tài sản với nơi chuyển tới, không ghi tên. Tên thì nằm ở sổ tài sản.
-- **Hà Vy** (thinking): Hai bảng cùng có mã tài sản. Nối theo mã đó thì mỗi phiếu kéo theo đúng tên thiết bị của nó.
+- **Hà Vy** (thinking): Vậy phải ghép phiếu với sổ. Hai bảng có hai cột trùng tên, xem cột nào mới là của chính từng thiết bị.
 - **Duy** (neutral): Mà phiếu có cái đã nhận, có cái mới đề xuất. Tớ cần phiếu đã có người nhận.
-> 🎯 NHIỆM VỤ: Phiếu nào đã nhận, chuyển chiếc micro không dây đi đâu?
-> 💭 Hà Vy nhắc: Nối phiếu luân chuyển với sổ tài sản theo mã tài sản. Lọc đúng tên thiết bị và phiếu đã nhận.
+> 🎯 NHIỆM VỤ: Phiếu nào đã có người nhận ghi chuyển chiếc micro không dây, và chuyển tới đâu?
+> 💭 Hà Vy nhắc: Phiếu chỉ ghi mã, tên nằm ở sổ tài sản. Cần đúng chiếc micro không dây và phiếu đã có người nhận.
 ### 💻 Màn tra: Phiếu luân chuyển nối với sổ tài sản (thẻ `c-mic-phieu`)
-Đề bài trên màn hình: *Phiếu luân chuyển chỉ ghi mã tài sản; sổ tài sản mới ghi tên. Phiếu nào đã nhận, chuyển chiếc micro không dây đi đâu?*
+Đề bài trên màn hình: *Phiếu luân chuyển chỉ ghi mã tài sản; sổ tài sản mới ghi tên. Phiếu nào đã có người nhận ghi chuyển chiếc micro không dây, và chuyển tới đâu?*
 Cách chơi: kéo giấy nhớ vào ô giá trị, bấm cột / phép ("bằng", "bắt đầu bằng") / VÀ–HOẶC, hàng "nối với bảng … theo cột …" rồi CHẠY. Chạy sai không bị phạt.
 Bảng `luan_chuyen` (7 dòng):
 | ma_phieu | ma_tai_san | vi_tri | nguoi_nhan | ngay | trang_thai |
@@ -58,7 +58,7 @@ Lời nhân vật sau mỗi lần chạy:
 - Khi lỗi không có cột: **Duy** (neutral): Máy báo không có cột đó. Phiếu luân chuyển không ghi tên thiết bị; tên nằm ở sổ tài sản. Phải nối hai bảng trước đã.
 - Khi ra 0 dòng: **Hà Vy** (thinking): Không dòng nào. Tên thiết bị và trạng thái viết đúng như trên giấy nhớ.
 - Khi ra 2 dòng: **Hà Vy** (thinking): Hai phiếu của micro không dây. Một cái mới là đề xuất, chưa ai nhận.
-- Khi ra 3 dòng: **Tùng** (gai-dau): Ba dòng, mà phiếu của loa, của máy ảnh, của chân máy đều mang tên micro. Nối theo cột này thì thứ gì từng để ở tủ CLB cũng dính vào phiếu chuyển tới tủ CLB.
+- Khi ra 3 dòng: **Tùng** (gai-dau): Ba dòng, mà là phiếu của loa, của máy ảnh, của chân máy, lại mang tên micro. / **Hà Vy** (thinking): Cột vi_tri ở phiếu là nơi chuyển tới, ở sổ là chỗ để đầu kỳ. Nối theo nó thì phiếu nào chuyển tới tủ CLB cũng ghép với chiếc micro từng để ở tủ CLB. Trùng tên cột, khác nghĩa.
 - Khi ra 12 dòng: **Hà Vy** (thinking): Mười hai dòng cho bảy phiếu. Một phiếu kéo theo mấy thiết bị liền: cột nối này không phải mã của thiết bị.
 - Khi ra 5 dòng: **Tùng** (gai-dau): Năm phiếu đã nhận, của đủ mọi thiết bị. Mình chỉ tìm micro không dây.
 - Khi ra 7 dòng: **Tùng** (gai-dau): Cả tập phiếu. Mình chỉ tìm một chiếc micro.

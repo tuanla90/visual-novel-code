@@ -11,10 +11,10 @@
 
 ## p-mic-mo.2
 - **duy** (neutral): Phiếu luân chuyển đây. Nhưng phiếu chỉ ghi mã tài sản với nơi chuyển tới, không ghi tên. Tên thì nằm ở sổ tài sản.
-- **ha-vy** (thinking): Hai bảng cùng có mã tài sản. Nối theo mã đó thì mỗi phiếu kéo theo đúng tên thiết bị của nó.
+- **ha-vy** (thinking): Vậy phải ghép phiếu với sổ. Hai bảng có hai cột trùng tên, xem cột nào mới là của chính từng thiết bị.
 - **duy** (neutral): Mà phiếu có cái đã nhận, có cái mới đề xuất. Tớ cần phiếu đã có người nhận.
-> NHIỆM VỤ: Phiếu nào đã nhận, chuyển chiếc micro không dây đi đâu?
-> NHẮC VIỆC ha-vy (thinking): Nối phiếu luân chuyển với sổ tài sản theo mã tài sản. Lọc đúng tên thiết bị và phiếu đã nhận.
+> NHIỆM VỤ: Phiếu nào đã có người nhận ghi chuyển chiếc micro không dây, và chuyển tới đâu?
+> NHẮC VIỆC ha-vy (thinking): Phiếu chỉ ghi mã, tên nằm ở sổ tài sản. Cần đúng chiếc micro không dây và phiếu đã có người nhận.
 
 ## p-mic-mo.3
 - **player**: Một phiếu. PX-17, ngày 24 tháng 10, chuyển micro không dây sang tủ thiết bị dùng chung. Tổ thiết bị đã nhận.

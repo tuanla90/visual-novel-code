@@ -8,9 +8,9 @@ Quy ước: dòng "- **Tên** (biểu cảm): …" là lời thoại hiện từ
 - **Người kể**: Đầu tuần. Lần này không phải nhóm sang xưởng, mà Nam tự tới phòng CLB, tay cầm một tờ giấy.
 - **Nam** (neutral): Các cậu nói đúng. Có người đang mượn tên tớ, mà không phải chỉ cái tin đồn.
 - **Minh Anh** (neutral): Ngồi xuống đã. Chuyện gì?
-- **Nam** (neutral): Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, có đơn gần một triệu. Tớ đặt đúng hai: cảm biến với bánh xe, mấy trăm nghìn.
+- **Nam** (neutral): Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, cộng lại hơn hai triệu rưỡi, có đơn gần một triệu. Trong năm đơn ấy tớ chỉ đặt hai: cảm biến với bánh xe, mấy trăm nghìn. Ba đơn kia tớ không đặt.
 > 🗂️ Tài liệu mới: **Giấy yêu cầu giải trình ngân sách** — nguồn: Nam mang tới phòng CLB
-> Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, tổng ghi trên đơn hơn hai triệu đồng. Kèm bản sổ đặt hàng của xưởng.
+> Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, năm đơn cộng lại 2.670.000 đồng. Kèm bản sổ đặt hàng của xưởng.
 > Nam nói mình chỉ đặt hai đơn: cảm biến dò line và bánh xe.
 > 🗂️ Giấy nhớ mới: **[Đã duyệt]** — nguồn: Sổ đặt hàng của xưởng
 > Sổ đặt hàng ghi trạng thái từng đơn ở cột trang_thai: DA_DUYET là đơn đã được duyệt chi, CHO_DUYET là đơn còn chờ.

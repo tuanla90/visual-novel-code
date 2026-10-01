@@ -4847,7 +4847,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, có đơn gần một triệu. Tớ đặt đúng hai: cảm biến với bánh xe, mấy trăm nghìn."
+          "text": "Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, cộng lại hơn hai triệu rưỡi, có đơn gần một triệu. Trong năm đơn ấy tớ chỉ đặt hai: cảm biến với bánh xe, mấy trăm nghìn. Ba đơn kia tớ không đặt."
         },
         {
           "type": "show-document",
@@ -5341,7 +5341,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Ba đơn mang tên tớ: động cơ servo, mạch điều khiển, khung nhôm. Trong kho không có lấy một cái. Sổ ghi đã duyệt, mà hàng chưa từng về."
+          "text": "Ba đơn mang tên tớ: động cơ servo, mạch điều khiển, khung nhôm. Trong kho không có lấy một cái. Sổ ghi đã duyệt, mà lúc tớ kiểm kê, kho không có."
         },
         {
           "type": "show-document",
@@ -5619,7 +5619,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "khoanh-tay",
-          "text": "Quy chế quỹ khối CLB: khoản dưới một triệu thì chủ tịch Hội duyệt thẳng, không cần trưởng CLB chủ quỹ ký. Chị là chủ quỹ mà không biết ba khoản này, là vì thế."
+          "text": "Quy chế quỹ khối CLB: khoản dưới một triệu thì chủ tịch Hội duyệt thẳng, không cần trưởng CLB chủ quỹ ký. Chị là chủ quỹ mà không biết ba khoản này, là vì thế. Sao kê tổng thì Phòng Kế hoạch giữ, cuối kỳ mới gửi."
         },
         {
           "type": "line",
@@ -5656,13 +5656,13 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Tám trăm nghìn một khoản. Khoản nào cũng dưới một triệu, vừa đủ để không cần chị Minh Anh ký."
+          "text": "Trung bình tám trăm nghìn một khoản, dưới mức một triệu. Nhìn lại phiếu sáu khoản: tám trăm, chín trăm, bảy trăm. Từng khoản đều dưới mức duyệt thẳng, cộng lại thì vượt ngưỡng giải trình."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Xé nhỏ để lọt. Chủ tịch Hội duyệt chi quỹ CLB khác… cho hàng không về."
+          "text": "Ba khoản nhỏ vừa đủ lọt… ghi vào quỹ CLB mình, cho ba đơn kho không có hàng."
         },
         {
           "type": "line",
@@ -5875,16 +5875,26 @@ export const KICH_BAN_MVP = {
           "text": "Em Khánh nhận rồi. Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên, không bàn ở đây. Việc riêng của em ấy, thầy không hỏi trước mọi người."
         },
         {
+          "type": "note",
+          "text": "Khánh nhìn tờ phiếu một dòng trên bàn một lúc lâu."
+        },
+        {
           "type": "line",
           "speaker": "khanh",
           "expression": "neutral",
-          "text": "Robotics… tớ giao lại cho Nam. Cậu giữ sổ sách của xưởng tốt hơn tớ."
+          "text": "Robotics… tớ xin thôi. Tớ đề nghị CLB bầu Nam. Cậu giữ sổ sách của xưởng tốt hơn tớ."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Trưởng CLB thì Robotics tự họp bầu. Thầy ghi nhận đề nghị của em Khánh."
         },
         {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Tớ nhận. Nhưng sổ sách thì ai cũng xem được, kể cả cậu."
+          "text": "Nếu CLB bầu thì tớ nhận. Nhưng sổ sách thì ai cũng xem được, kể cả cậu."
         },
         {
           "type": "line",
@@ -6622,7 +6632,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Hai bảng cùng có mã tài sản. Nối theo mã đó thì mỗi phiếu kéo theo đúng tên thiết bị của nó."
+          "text": "Vậy phải ghép phiếu với sổ. Hai bảng có hai cột trùng tên, xem cột nào mới là của chính từng thiết bị."
         },
         {
           "type": "line",
@@ -6632,13 +6642,13 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "task",
-          "text": "Phiếu nào đã nhận, chuyển chiếc micro không dây đi đâu?"
+          "text": "Phiếu nào đã có người nhận ghi chuyển chiếc micro không dây, và chuyển tới đâu?"
         },
         {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Nối phiếu luân chuyển với sổ tài sản theo mã tài sản. Lọc đúng tên thiết bị và phiếu đã nhận."
+          "text": "Phiếu chỉ ghi mã, tên nằm ở sổ tài sản. Cần đúng chiếc micro không dây và phiếu đã có người nhận."
         },
         {
           "type": "challenge",
@@ -6866,23 +6876,23 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Mỗi lần hoàn chỉ được có một dòng. Phiếu nào có hơn một dòng hoàn thì cần mở ra xem."
+          "text": "Theo cách ghi sổ thì mỗi lần hoàn một dòng. Phiếu có hơn một dòng hoàn chưa chắc sai, có khi hoàn hai lần thật. Nhưng đấy là chỗ cần mở chứng từ."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Gom theo mã phiếu, đếm dòng, cộng tiền. Rồi chỉ giữ nhóm có hơn một dòng. Lần này lọc nhóm theo số dòng, không theo tổng."
+          "text": "Bốn dòng, ba phiếu. Hôm trước mình giữ nhóm theo tổng tiền. Lần này cái cần giữ là nhóm có nhiều dòng."
         },
         {
           "type": "task",
-          "text": "Phiếu nào có hơn một dòng hoàn tiền, tổng ghi hoàn bao nhiêu?"
+          "text": "Phiếu nào có hơn một dòng hoàn tiền, sổ ghi hoàn tổng cộng bao nhiêu?"
         },
         {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Phiếu bốn dòng hoàn làm nguồn. Gom theo mã phiếu, tính tổng, chỉ giữ nhóm có số dòng lớn hơn một."
+          "text": "Phiếu bốn dòng hoàn làm nguồn. Mỗi phiếu mấy dòng, cộng bao nhiêu tiền; chỉ giữ phiếu có hơn một dòng."
         },
         {
           "type": "challenge",
@@ -6891,7 +6901,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Một phiếu. PH-04: hai dòng, tổng ghi hoàn là âm một trăm hai mươi nghìn."
+          "text": "Một phiếu. PH-04: hai dòng, cột tiền cộng ra âm một trăm hai mươi nghìn. Khoản hoàn ghi số âm, tức sổ đang ghi hoàn một trăm hai mươi nghìn cho phiếu này."
         },
         {
           "type": "line",
@@ -6919,7 +6929,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "tung",
           "expression": "surprised",
-          "text": "Một lần hoàn mà ghi hai dòng. Đúng sáu mươi nghìn bị lệch."
+          "text": "Hoàn một lần sáu mươi nghìn mà sổ ghi hai dòng, thành một trăm hai mươi. Dư đúng sáu mươi nghìn đang lệch."
         },
         {
           "type": "line",
@@ -7652,7 +7662,7 @@ export const KICH_BAN_MVP = {
     "c-mic-phieu": {
       "id": "c-mic-phieu",
       "tieuDe": "Phiếu luân chuyển nối với sổ tài sản",
-      "deBai": "Phiếu luân chuyển chỉ ghi mã tài sản; sổ tài sản mới ghi tên. Phiếu nào đã nhận, chuyển chiếc micro không dây đi đâu?",
+      "deBai": "Phiếu luân chuyển chỉ ghi mã tài sản; sổ tài sản mới ghi tên. Phiếu nào đã có người nhận ghi chuyển chiếc micro không dây, và chuyển tới đâu?",
       "manhMoiLienQuan": [
         "clue-mic-ten",
         "clue-mic-da-nhan"
@@ -7712,7 +7722,12 @@ export const KICH_BAN_MVP = {
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Ba dòng, mà phiếu của loa, của máy ảnh, của chân máy đều mang tên micro. Nối theo cột này thì thứ gì từng để ở tủ CLB cũng dính vào phiếu chuyển tới tủ CLB."
+              "text": "Ba dòng, mà là phiếu của loa, của máy ảnh, của chân máy, lại mang tên micro."
+            },
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Cột vi_tri ở phiếu là nơi chuyển tới, ở sổ là chỗ để đầu kỳ. Nối theo nó thì phiếu nào chuyển tới tủ CLB cũng ghép với chiếc micro từng để ở tủ CLB. Trùng tên cột, khác nghĩa."
             }
           ]
         },
@@ -7963,7 +7978,7 @@ export const KICH_BAN_MVP = {
       "vatChung": {
         "id": "ev-chi-vuot-muc",
         "title": "Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000",
-        "description": "Kết quả lọc nhóm: chỉ Khánh có tổng chi từ quỹ CLB Thám Tử vượt ngưỡng giải trình một triệu (2.400.000 cho ba khoản). Trung bình 800.000 một khoản: khoản nào cũng dưới một triệu, mức chủ tịch Hội duyệt thẳng được. Ba khoản ấy là ba đơn linh kiện không có hàng.",
+        "description": "Kết quả lọc nhóm: chỉ Khánh có tổng chi từ quỹ CLB Thám Tử vượt ngưỡng giải trình một triệu (2.400.000 cho ba khoản). Trung bình 800.000 một khoản; phiếu sáu khoản cho thấy từng khoản (800.000, 900.000, 700.000) đều dưới một triệu, mức chủ tịch Hội duyệt thẳng được. Ba khoản ấy là ba đơn linh kiện không có hàng.",
         "giaTri": []
       },
       "ghiChu": []
@@ -9101,7 +9116,7 @@ export const KICH_BAN_MVP = {
       },
       "quotes": {
         "Nội dung hiển thị": [
-          "Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, tổng ghi trên đơn hơn hai triệu đồng. Kèm bản sổ đặt hàng của xưởng.",
+          "Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, năm đơn cộng lại 2.670.000 đồng. Kèm bản sổ đặt hàng của xưởng.",
           "Nam nói mình chỉ đặt hai đơn: cảm biến dò line và bánh xe."
         ]
       }
@@ -9362,7 +9377,7 @@ export const KICH_BAN_MVP = {
         "Tiêu đề": "Tên thiết bị trong sổ tài sản",
         "Giá trị cho trình dựng": "Micro không dây",
         "Nguồn": "Sổ tài sản CLB",
-        "Nội dung": "Sổ tài sản ghi tên thiết bị ở cột ten_tai_san. Chiếc đang tìm là \"Micro không dây\"; sổ còn một chiếc \"Micro có dây\"."
+        "Nội dung": "Sổ tài sản ghi tên thiết bị ở cột ten_tai_san. Chiếc cần kiểm kê là \"Micro không dây\"; sổ còn một chiếc \"Micro có dây\"."
       },
       "quotes": {}
     },
