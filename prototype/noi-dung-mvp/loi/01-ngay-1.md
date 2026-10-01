@@ -22,7 +22,7 @@
 - [DÀN DỰNG] Mắc ở mép tôn khe hộp là một tấm thẻ lịch, phần in còn nguyên "Khoa Báo chí – Truyền thông · K24", dòng viết tay "Họ tên / Lớp" bị xé mất.
 - **narrator**: Mắc ở mép tôn khe hộp là một góc thẻ lịch. Phần in còn nguyên: "Khoa Báo chí – Truyền thông · K24". Dòng viết tay "Họ tên / Lớp" bị xé mất.
 - **player**: Thẻ lịch Tuần sinh hoạt công dân… giống hệt thẻ của tớ, chỉ khác là in cho khoa Báo chí.
-- **tung** (happy): Tớ cá tên chủ thẻ nằm đúng ở mẩu bị rách!
+- **tung** (chi-tay): Tớ cá tên chủ thẻ nằm đúng ở mẩu bị rách!
 - **ha-vy** (thinking): Mẩu đó giờ ai biết ở đâu. Mà thẻ mắc ở khe chưa chắc đã là của người bỏ thư.
 
 ## n1-bac-thinh.1

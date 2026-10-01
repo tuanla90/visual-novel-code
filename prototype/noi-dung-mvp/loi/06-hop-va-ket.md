@@ -10,7 +10,7 @@
 - **narrator**: Thứ Hai, bốn giờ chiều. Phòng họp tầng ba. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ.
 - **thay-quang** (neutral): Hôm nay thầy phải chốt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử. Mời các em trình bày căn cứ.
 - **minh-anh** (neutral): Dạ, bọn em xin trình bày cách bọn em lọc ra danh sách ạ.
-- **quan** (smug): Bên tôi lọc lại cho chắc: tên bắt đầu bằng H hoặc học lớp BC24A, ra mười bốn dòng. Hồ sơ các bạn nộp chỉ có hai người.
+- **quan** (chi-man): Bên tôi lọc lại cho chắc: tên bắt đầu bằng H hoặc học lớp BC24A, ra mười bốn dòng. Hồ sơ các bạn nộp chỉ có hai người.
 
 ## hop-00.3
 - **tung** (surprised): Ơ… mười bốn dòng thật.
@@ -65,7 +65,7 @@
 - [THẺ CHỮ] **narrator**: SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.
 
 ## ket-thuong.1
-- **minh-anh** (worried): Dạ… bọn em chỉ xác minh được đến đó ạ.
+- **minh-anh** (khoanh-tay): Dạ… bọn em chỉ xác minh được đến đó ạ.
 - **thay-quang** (neutral): Được. Với những gì trình bày ở buổi họp này, thầy chưa đủ căn cứ để biết ai viết thư. Còn em Hoài, em ấy không bị xử lý gì cả.
 - **thay-quang** (neutral): Thư vẫn được tính là một ý kiến sinh viên trong hồ sơ. Chưa thu phòng ngay. CLB được sinh hoạt đến hết học kỳ, nộp báo cáo hoạt động hằng tháng.
 - **minh-anh** (worried): Dạ, tháng nào bọn em cũng sẽ nộp đủ ạ.

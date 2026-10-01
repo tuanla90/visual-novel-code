@@ -163,6 +163,8 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
               {soHoSo}
             </span>
           </button>
+          {/* Sổ cá nhân chỉ hiện khi đã có trang (chương 1 chưa ghi trang nào — nút trống chỉ gây tò mò vô ích). */}
+          {soTrangSo > 0 ? (
           <button
             type="button"
             className="topbar__capsule-btn mvp-topbar__sotay"
@@ -177,6 +179,7 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
             </svg>
             <span className="topbar__capsule-text-responsive">Sổ tay</span>
           </button>
+          ) : null}
           <div ref={menuRef} className={`topbar__menu topbar__capsule-menu${menuMo ? ' is-open' : ''}`}>
             <button
               type="button"

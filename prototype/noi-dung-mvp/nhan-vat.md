@@ -1,11 +1,13 @@
 ## Nhân vật của MVP
 
+<!-- Dáng đứng (user chốt 01/10): mỗi nhân vật chính 2–3 dáng, mỗi dáng chỉ đổi mặt; dáng đặt tên như biểu cảm để lời dùng ngay: Tùng `gai-dau` (bí / lo), `chi-tay` ("tớ cá là"); Hà Vy `day-kinh` (đang tính); Minh Anh `khoanh-tay` (nghiêm); Quân `chi-man` (chỉ lên màn chiếu). Ảnh: src/assets/mvp/nhan-vat/char-<mã>-<dáng>.png. -->
+
 <!-- Mã là khóa, không đổi khi đổi tên (QĐ-079 câu 4): bảo vệ giảng đường B giữ mã `bac-tu` dù tên là Bác Thịnh. -->
 
 ### tung — Tùng
 - Họ tên: Trần Tùng
 - Vai: Năm 1 Du lịch, bạn cùng phòng KTX 408 của người chơi, cháu chú Cường. Dẫn đường, nhắc lịch. "Tớ cá là…"
-- Biểu cảm: neutral, happy, worried, surprised, thinking
+- Biểu cảm: neutral, happy, worried, surprised, thinking, gai-dau, chi-tay
 - Danh xưng: Bạn cùng phòng 408
 - Năm: Năm nhất
 - Ngành: Du lịch
@@ -15,7 +17,7 @@
 ### ha-vy — Hà Vy
 - Họ tên: Trần Hà Vy
 - Vai: Năm 1 Toán ứng dụng. Đăng ký CLB qua form online nên không có mặt ở Ngày hội. Thích logic, thần tượng Sherlock Holmes. "Khoan, tính lại đã." / "Đừng cá. Tính."
-- Biểu cảm: neutral, thinking, smile
+- Biểu cảm: neutral, thinking, smile, day-kinh
 - Danh xưng: Thành viên mới của CLB Thám Tử
 - Năm: Năm nhất
 - Ngành: Toán ứng dụng
@@ -25,7 +27,7 @@
 ### minh-anh — Minh Anh
 - Họ tên: Lê Minh Anh
 - Vai: Năm 3 Luật kinh tế, chủ nhiệm CLB. "Nói có sách, mách có chứng." Ở buổi họp: đổi sắc mặt và giải cứu khi người chơi mất vạch, không nói thay đáp án.
-- Biểu cảm: neutral, worried, happy, serious
+- Biểu cảm: neutral, worried, happy, serious, khoanh-tay
 - Danh xưng: Chủ nhiệm CLB Thám Tử
 - Năm: Năm ba
 - Ngành: Luật kinh tế
@@ -44,7 +46,7 @@
 
 ### quan — Quân
 - Vai: Trưởng ban Pháp chế – Kiểm tra Hội sinh viên. Gặp CLB lần đầu ở CTSV ngày 3 (giám sát), chất vấn ở buổi họp ngày 6.
-- Biểu cảm: neutral, smug, stunned
+- Biểu cảm: neutral, smug, stunned, chi-man
 - Xuất hiện từ: ngày 3
 - Danh xưng: Ban Pháp chế – Kiểm tra, Hội sinh viên
 - Câu nói: Biết ai nộp chưa có nghĩa là biết ai viết.

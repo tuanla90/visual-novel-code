@@ -46,7 +46,7 @@
 ## md-00-gap-tung.3
 - **tung** (neutral): Lại dân kinh tế. Cả phòng chẳng ai học Toán, sau này thi biết mượn vở ai đây.
 - **player**: Toán thì chịu, chứ Excel thì được. File xếp phòng mấy nghìn dòng, tớ lọc cái là ra tên mình.
-- **tung** (happy): Thế là chia việc được rồi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali. Tớ cá là ba phút là tới tầng bốn.
+- **tung** (chi-tay): Thế là chia việc được rồi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali. Tớ cá là ba phút là tới tầng bốn.
 
 ## md-01-ktx.1
 > NHIỆM VỤ: Nhận phòng KTX
@@ -139,5 +139,5 @@
 - **duy** (neutral): Giờ đủ năm người thì CLB chưa bị giải thể. Nhưng phòng vẫn bị xét: báo cáo năm ngoái đã yếu, giờ thêm lá thư này.
 - **minh-anh** (neutral): {{nv.thay-quang}}, phó hiệu trưởng, cho CLB một tuần tự tìm căn cứ, mang ra buổi họp.
 - **tung** (neutral): Thế giờ bắt đầu từ đâu ạ?
-- **ha-vy** (thinking): Khoan, tính lại đã. Mình mới có một chữ H với một cái hộp.
+- **ha-vy** (day-kinh): Khoan, tính lại đã. Mình mới có một chữ H với một cái hộp.
 - **minh-anh** (serious): Thì bắt đầu từ cái hộp. Nói có sách, mách có chứng. Mai ra tòa B.

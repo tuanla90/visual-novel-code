@@ -22,7 +22,9 @@ export const KICH_BAN_MVP = {
         "happy",
         "worried",
         "surprised",
-        "thinking"
+        "thinking",
+        "gai-dau",
+        "chi-tay"
       ],
       "xuatHienTu": {
         "kind": "mo-dau"
@@ -45,7 +47,8 @@ export const KICH_BAN_MVP = {
       "bieuCam": [
         "neutral",
         "thinking",
-        "smile"
+        "smile",
+        "day-kinh"
       ],
       "xuatHienTu": {
         "kind": "mo-dau"
@@ -69,7 +72,8 @@ export const KICH_BAN_MVP = {
         "neutral",
         "worried",
         "happy",
-        "serious"
+        "serious",
+        "khoanh-tay"
       ],
       "xuatHienTu": {
         "kind": "mo-dau"
@@ -115,7 +119,8 @@ export const KICH_BAN_MVP = {
       "bieuCam": [
         "neutral",
         "smug",
-        "stunned"
+        "stunned",
+        "chi-man"
       ],
       "xuatHienTu": {
         "kind": "ngay",
@@ -747,7 +752,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
+          "expression": "chi-tay",
           "text": "Thế là chia việc được rồi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali. Tớ cá là ba phút là tới tầng bốn."
         },
         {
@@ -1231,7 +1236,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "ha-vy",
-          "expression": "thinking",
+          "expression": "day-kinh",
           "text": "Khoan, tính lại đã. Mình mới có một chữ H với một cái hộp."
         },
         {
@@ -1374,7 +1379,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
+          "expression": "chi-tay",
           "text": "Tớ cá tên chủ thẻ nằm đúng ở mẩu bị rách!"
         },
         {
@@ -1595,7 +1600,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
+          "expression": "chi-tay",
           "text": "Tòa B hoặc Báo chí, cứ dính một cái là lấy hết cho chắc. Tớ cá kiểu gì chẳng trúng!"
         },
         {
@@ -1832,7 +1837,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
+          "expression": "chi-tay",
           "text": "Cậu gắt ở căng tin tên Hiếu. Chữ H đấy! Tớ cá là Hiếu!"
         },
         {
@@ -2299,7 +2304,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "quan",
-          "expression": "smug",
+          "expression": "chi-man",
           "text": "Bên tôi lọc lại cho chắc: tên bắt đầu bằng H hoặc học lớp BC24A, ra mười bốn dòng. Hồ sơ các bạn nộp chỉ có hai người."
         },
         {
@@ -2727,7 +2732,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "minh-anh",
-          "expression": "worried",
+          "expression": "khoanh-tay",
           "text": "Dạ… bọn em chỉ xác minh được đến đó ạ."
         },
         {
@@ -2790,7 +2795,7 @@ export const KICH_BAN_MVP = {
             },
             {
               "speaker": "tung",
-              "expression": "worried",
+              "expression": "gai-dau",
               "text": "Thế thì ai in?"
             }
           ]
@@ -2924,7 +2929,7 @@ export const KICH_BAN_MVP = {
             },
             {
               "speaker": "tung",
-              "expression": "surprised",
+              "expression": "gai-dau",
               "text": "Ơ, không ai à? Rõ ràng chữ ký có chữ H mà."
             }
           ]

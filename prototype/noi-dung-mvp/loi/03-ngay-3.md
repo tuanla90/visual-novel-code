@@ -36,7 +36,7 @@
 > NHIỆM VỤ: Trong hai lớp ấy, ai có thể là người ký chữ H?
 - [DÀN DỰNG] Phòng CLB. Phiếu tra cứu đã mở bảng sinh viên. Trên bàn: [H], phiếu hai lớp.
 - **narrator**: Về phòng CLB. Có phiếu tra cứu, laptop hiện thêm bảng sinh viên.
-- **tung** (happy): Cậu gắt ở căng tin tên Hiếu. Chữ H đấy! Tớ cá là Hiếu!
+- **tung** (chi-tay): Cậu gắt ở căng tin tên Hiếu. Chữ H đấy! Tớ cá là Hiếu!
 - **ha-vy** (thinking): Cá thì để sau. Xem dữ liệu nói gì đã.
 
 ## n3-laptop.2

@@ -172,7 +172,8 @@ export interface KetQuaDoc {
 
 // ---------- Mẩu đọc dùng chung ----------
 
-const SPOKEN_RE = /^\*\*([a-z-]+)\*\*(?: \(([a-z]+)\))?: (.*)$/;
+/** Biểu cảm hoặc dáng đứng (`(gai-dau)`, `(chi-tay)` — dáng đặt tên như biểu cảm, user chốt 01/10/2026). */
+const SPOKEN_RE = /^\*\*([a-z-]+)\*\*(?: \(([a-z][a-z-]*)\))?: (.*)$/;
 const CHOICE_RE = /^ {2}- \(([A-Z])\) \{id: ([a-z0-9-]+)\} (.+?)( \[ĐÚNG\])? → phản hồi: (.+)$/;
 /** `- [HỎI <mã>] <người hỏi>: "<lời>"` (bộ MVP dùng lại, thêm ` · trừ uy tín` trước `]`). */
 export const QUESTION_RE = /^- \[HỎI ([a-z0-9-]+)\] ([a-z-]+): "(.*)"$/;

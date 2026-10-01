@@ -24,7 +24,7 @@
 > NHIỆM VỤ: Lớp nào vừa ở tòa B vừa học Báo chí?
 - [DÀN DỰNG] Phòng CLB buổi chiều. Laptop CLB đã đăng nhập tài khoản mới. Giấy nhớ [Tòa B], [Báo chí K24] trên bàn.
 - **narrator**: Về tới phòng CLB. Cái laptop cũ khởi động mất gần hai phút.
-- **tung** (happy): Tòa B hoặc Báo chí, cứ dính một cái là lấy hết cho chắc. Tớ cá kiểu gì chẳng trúng!
+- **tung** (chi-tay): Tòa B hoặc Báo chí, cứ dính một cái là lấy hết cho chắc. Tớ cá kiểu gì chẳng trúng!
 - **ha-vy** (neutral): Đừng cá. Tính.
 
 ## n2-laptop.2

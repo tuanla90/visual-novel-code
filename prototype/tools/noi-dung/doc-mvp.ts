@@ -968,7 +968,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       if ((m = new RegExp(`^- \\[TRA SỔ (${MA}) · (cú pháp|tâm đắc|lỗi thường gặp)\\]$`).exec(line))) return add({ kind: 'notebook-lookup', trang: m[1] ?? '', phan: m[2] ?? '' });
       if ((m = new RegExp(`^- \\[GHI SỔ (${MA})\\]$`).exec(line))) return add({ kind: 'notebook-note', trang: m[1] ?? '' });
       if (line.startsWith('- [CHÉP SỔ ')) throw new Error('[CHÉP SỔ] đã bỏ (QĐ-092): dùng [GHI SỔ <trang>] — dòng "Vào sổ cá nhân" của trang tự vào sổ cá nhân');
-      if ((m = /^- \[TẠO NHÂN VẬT (ten|nganh)\] ([a-z-]+)(?: \(([a-z]+)\))?: "(.*)"$/.exec(line))) {
+      if ((m = /^- \[TẠO NHÂN VẬT (ten|nganh)\] ([a-z-]+)(?: \(([a-z][a-z-]*)\))?: "(.*)"$/.exec(line))) {
         tao = { truong: m[1] === 'ten' ? 'ten' : 'nganh', asker: { speaker: m[2] ?? '', expression: m[3] ?? null, text: m[4] ?? '' }, xucXac: null, luaChon: [] };
         return add({ kind: 'create-character', tao });
       }
