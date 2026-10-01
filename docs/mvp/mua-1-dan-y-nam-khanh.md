@@ -247,3 +247,23 @@ Mỗi vụ được đưa bản chơi thử dạng chữ (`docs/mvp/ban-choi-thu
 | Việc phụ Hoàn tiền | 88 | 93 | 2 | |
 
 Gemini qua 90 ở mọi phần. GPT dừng quanh 86–89 ở các vụ chính: mỗi vòng nêu một nhóm ý mới, chủ yếu là "lời nhắc việc nói gần hết cách làm" và "màn tổng hợp chưa có lời phản hồi khi tra sai" (việc sau cần đổi máy). Hai ý ấy là việc nên làm tiếp nếu muốn GPT qua 90.
+
+## 12. Cốt truyện cả mùa: các vòng hội đồng 01/10 (đêm)
+
+Sau khi dựng đủ năm vụ, cốt truyện cả mùa và kết thật được đưa hội đồng chấm nhiều vòng (bản chơi thử dạng chữ, thang 100).
+
+| Vòng | Hội đồng | Điểm |
+|---|---|---|
+| 1 | Luna, Gemini Flash, Sonnet | 74, 75, 62 |
+| 2 | Luna, Sonnet | 80, 75 |
+| 3 (sau vòng tự đề xuất và chấm chéo) | Luna, Gemini Flash, Gemini Pro, Sonnet | 82, 84, 85, 78 |
+| 4 (model mạnh, có mũ) | Sol, Astra, Gemini Pro, Fable | 80, 82, 80, 67 |
+| 5 (sau gói áo tình nguyện và vá logic đợt đầu) | như trên | 80, 80, 85, 79 |
+| Soát logic (cả bốn mũ đen) | như trên | kín 68, 72, 88, 78 |
+| 6 (sau vá logic, trước gói nâng kết, có mũ) | như trên | 73, 72, 83, 65; kín 84, 88, 95, 84 |
+| 7 (sau gói nâng kết, không mũ) | như trên | 79, 81, 85, 80 |
+| 8 (xác nhận cuối) | Gemini Pro, Fable (Codex hết hạn mức) | 88, 82; kín 95, 88 |
+
+Thay đổi lớn so với mục 9–10: Khánh lộ mặt từ Vụ 2 và cuối Vụ 4 (người chơi "biết mà chưa được nói"); huy hiệu bánh răng sứt một răng; cuối Vụ 3 có tờ giao chìa, Bách và Thảo; sổ chi có ngày chi (tạm ứng 10–12/9, thư 16/9, đơn "làm cớ" từ 27/9, bổ sung chứng từ trong ba mươi ngày); quy chế "mất phòng → chờ giải thể → sao kê và giải trình về Hội" gieo từ Vụ 1; sổ ký phòng máy (Vụ 1 bị từ chối, Vụ 5 mới mở) và nhật ký in tối 15/9; đối chất Vụ 5 năm nhịp (thẩm quyền, ai lập đơn, lá thư, "in sơ đồ", lá thư để làm gì) cộng hai câu hỏi người chơi tự trả lời; áo xanh tình nguyện của Tùng (đón Hoài tới buổi họp, ngồi cạnh và không nói hộ; CHƯA CÓ ẢNH); cameo Hiếu, bác Thịnh, Hoài, Quân, thầy Khải, cô Hạnh, cô Lan, chú Cường.
+
+Cả hội đồng khuyên DỪNG sửa cấu trúc sau vòng 8. Còn treo, chờ người thiết kế quyết: mẩu giấy chị Linh ở Vụ 2 có nên cho khi về sớm rồi quay lại xem đủ hai tuyến; câu Nam hé sang lập trình ở cuối mùa bị hai thành viên cho là lộ ý quảng cáo; Vụ 5 dài, cần chơi thử thật để đo.

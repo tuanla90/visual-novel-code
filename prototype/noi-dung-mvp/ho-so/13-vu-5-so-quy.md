@@ -51,7 +51,7 @@
 - Nguồn: {{nv.thay-khai}} giữ sổ; {{nv.thay-quang}} ký cho mở đúng một trang sau khi phiếu sáu khoản cho thấy tiền bị lấy từ đúng quỹ của CLB bị lá thư đòi thu phòng
 - Nội dung: Tối Chủ nhật muốn vào phòng máy phải ký sổ. Tối 15/9 có bảy dòng: năm sinh viên vào in bài, và hai người của CLB Robotics: Thảo vào 20:10, ra 21:30; Khánh vào 22:40, ra 23:20. Nhật ký in ghi lá thư in lúc 23:10. Sổ nói ai ở trong phòng, không nói ai bấm in.
 
-### clue-in-toi-15-9 — [Nhật ký in tối 15/9: tài khoản Robotics in hai lệnh]
+### clue-in-toi-15-9 — [Nhật ký in tối 15/9: không có sơ đồ thứ hai]
 - Tiêu đề: Các lệnh in của tài khoản clb_robotics tối Chủ nhật 15/9
 - Nguồn: {{nv.thay-khai}} gửi kèm trang sổ ký, trích từ nhật ký in của phòng máy
-- Nội dung: Tối 15/9 tài khoản clb_robotics in đúng hai lệnh. 20:40: so-do-mach-xe-do-line.pdf, 3 trang. 23:10: kien-nghi-phong-clb.docx, 1 trang. Không có lệnh thứ ba.
+- Nội dung: Tối 15/9 tài khoản clb_robotics in đúng hai lệnh. 20:40: so-do-mach-xe-do-line.pdf, 3 trang. 23:10: kien-nghi-phong-clb.docx, 1 trang. Không có lệnh thứ ba. Cả phòng máy, từ 22:40 tới 23:20, có ba lệnh in: một đồ án và một báo cáo nhóm bằng tài khoản của hai sinh viên khác, và lá thư. Không có sơ đồ mạch nào.

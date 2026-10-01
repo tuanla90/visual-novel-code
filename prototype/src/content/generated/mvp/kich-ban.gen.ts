@@ -6818,12 +6818,12 @@ export const KICH_BAN_MVP = {
                 {
                   "speaker": "ha-vy",
                   "expression": "neutral",
-                  "text": "20 giờ 40 là sơ đồ mạch, lúc ấy chị Thảo còn trong phòng. 23 giờ 10 là lá thư. Không có lệnh thứ ba."
+                  "text": "20 giờ 40 là sơ đồ mạch, lúc ấy chị Thảo còn trong phòng. 23 giờ 10 là lá thư. Còn cả phòng máy, từ 22 giờ 40 tới 23 giờ 20, chỉ có ba lệnh in: một đồ án, một báo cáo nhóm của hai bạn khác, và lá thư. Không có sơ đồ nào, bằng tài khoản nào cũng không."
                 },
                 {
                   "speaker": "thay-quang",
                   "expression": "neutral",
-                  "text": "Em Khánh, vậy sơ đồ em in bằng tài khoản nào?"
+                  "text": "Em Khánh, vậy sơ đồ của em đâu?"
                 },
                 {
                   "speaker": "khanh",
@@ -7020,7 +7020,7 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "note",
-          "text": "Khánh im lặng một lúc lâu. Anh nhìn sang Hoài, cô vẫn đang níu tay áo xanh của Tùng."
+          "text": "Khánh im lặng một lúc lâu. Anh nhìn sang Hoài."
         },
         {
           "type": "line",
@@ -7303,6 +7303,24 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Xưởng mình cũng có quỹ. Sao anh không lấy ở đó?"
+        },
+        {
+          "type": "line",
+          "speaker": "khanh",
+          "expression": "neutral",
+          "text": "Quỹ đội thì ban tổ chức giải soát từng khoản trước ngày đóng lệ phí. Quỹ bên ấy cả năm chi mỗi giấy với bút, anh nghĩ không ai mở ra đọc."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "…Anh nghĩ đúng. Em đã không mở."
+        },
+        {
+          "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
           "text": "Còn ba cái đơn, và danh sách chuyển xuống Ban kiểm tra?"
@@ -7311,7 +7329,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "khanh",
           "expression": "neutral",
-          "text": "Tạm ứng quá ba mươi ngày không chứng từ là bị hỏi, nên em viết đơn. Danh sách thì em tưởng tài khoản khóa là Nam không kịp nộp kiểm kê. Lần nào em cũng chỉ tìm cách lùi cái lúc bị hỏi."
+          "text": "Tạm ứng quá ba mươi ngày không chứng từ là bị hỏi, nên em viết đơn. Danh sách thì em tưởng tài khoản khóa là Nam không kịp nộp kiểm kê."
         },
         {
           "type": "line",
@@ -7329,13 +7347,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Phòng của CLB Thám Tử giữ nguyên. Hoàn quỹ đi theo thủ tục, mất vài tháng; từ giờ tới đó quỹ CLB tạm đóng. Biên bản cũng ghi một dòng: sao kê kỳ trước chủ quỹ chưa đối chiếu."
-        },
-        {
-          "type": "line",
-          "speaker": "minh-anh",
-          "expression": "serious",
-          "text": "Em nhận ạ."
+          "text": "Phòng của CLB Thám Tử giữ nguyên. Hoàn quỹ đi theo thủ tục, mất vài tháng; từ giờ tới đó quỹ CLB tạm đóng."
         },
         {
           "type": "goto",
@@ -7357,9 +7369,15 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Thưa thầy, lời anh Khánh tự nhận thì em xin ghi riêng vào mục lời khai, không ghi lẫn với phiếu ạ."
+        },
+        {
+          "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Những gì người trong cuộc tự nói ra thì ghi là lời người ấy, không ghi là lời của bảng."
+          "text": "Đúng thế."
         },
         {
           "type": "jump-if",
@@ -7436,7 +7454,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "thao",
           "expression": "neutral",
-          "text": "Chìa của chị treo lên móc cạnh cửa rồi. Ai lấy cũng phải ký tên. Tiền giải thì chị với Bách đi xin cùng em."
+          "text": "Tiền giải thì chị với Bách đi xin cùng em. Chìa của chị cũng treo lên móc rồi."
         },
         {
           "type": "line",
@@ -10903,11 +10921,11 @@ export const KICH_BAN_MVP = {
     "clue-in-toi-15-9": {
       "id": "clue-in-toi-15-9",
       "loai": "clue",
-      "heading": "[Nhật ký in tối 15/9: tài khoản Robotics in hai lệnh]",
+      "heading": "[Nhật ký in tối 15/9: không có sơ đồ thứ hai]",
       "fields": {
         "Tiêu đề": "Các lệnh in của tài khoản clb_robotics tối Chủ nhật 15/9",
         "Nguồn": "Thầy Khải gửi kèm trang sổ ký, trích từ nhật ký in của phòng máy",
-        "Nội dung": "Tối 15/9 tài khoản clb_robotics in đúng hai lệnh. 20:40: so-do-mach-xe-do-line.pdf, 3 trang. 23:10: kien-nghi-phong-clb.docx, 1 trang. Không có lệnh thứ ba."
+        "Nội dung": "Tối 15/9 tài khoản clb_robotics in đúng hai lệnh. 20:40: so-do-mach-xe-do-line.pdf, 3 trang. 23:10: kien-nghi-phong-clb.docx, 1 trang. Không có lệnh thứ ba. Cả phòng máy, từ 22:40 tới 23:20, có ba lệnh in: một đồ án và một báo cáo nhóm bằng tài khoản của hai sinh viên khác, và lá thư. Không có sơ đồ mạch nào."
       },
       "quotes": {}
     },
