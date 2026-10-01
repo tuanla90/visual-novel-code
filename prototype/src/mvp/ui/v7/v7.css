@@ -1133,3 +1133,32 @@ button.v7-o:active:not(:disabled) {
 .v7-kq tbody tr:nth-child(even) td {
   background: rgba(255, 255, 255, 0.025);
 }
+
+/* Thẻ người chơi chưa xem (TheMoiMvp → khung Hồ sơ): con dấu đỏ "MỚI" đóng chéo ở góc trên trái; bấm xem thẻ thì mất. */
+.the__moi {
+  position: absolute;
+  top: -10px;
+  left: -12px;
+  z-index: 5;
+  padding: 2px 8px;
+  border: 3px double #b71c1c;
+  border-radius: 6px;
+  background: rgba(255, 253, 246, 0.95);
+  color: #b71c1c;
+  font: 800 15px var(--font-ui);
+  letter-spacing: 0.08em;
+  transform: rotate(-12deg);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  animation: the-moi-nhan 1.4s ease-in-out infinite alternate;
+}
+@keyframes the-moi-nhan {
+  to {
+    transform: rotate(-12deg) scale(1.08);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .the__moi {
+    animation: none;
+  }
+}

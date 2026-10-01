@@ -2052,3 +2052,259 @@
 .mvp-game .mc__choice:active {
   background: #0b1220;
 }
+
+/* ======================= Thẻ mới vào hồ sơ (TheMoiMvp) =======================
+   Thay toast chữ: thẻ thu nhỏ cùng hình dạng với bảng điều tra (giấy nhớ vàng, phiếu kẻ dòng, ảnh chụp, giấy tờ) rơi xuống
+   góc trên phải dưới nút Hồ sơ, ghim nghiêng, giữ ~1,6 s rồi thu nhỏ bay vào nút (số đếm nháy). Không chặn bấm. */
+.the-moi {
+  position: absolute;
+  top: 66px;
+  right: 18px;
+  z-index: 40;
+  pointer-events: none;
+  max-width: calc(100% - 32px);
+}
+.the-moi__doc {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+.the-moi__chong {
+  position: relative;
+  display: grid;
+  width: 172px;
+  max-width: 100%;
+  padding: 14px 18px 18px 6px;
+  transform-origin: 50% 30%;
+}
+.the-moi__the {
+  grid-area: 1 / 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  min-height: 92px;
+  padding: 16px 11px 11px;
+  color: #2a2320;
+  box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.42);
+  /* Tờ sau lệch xuống phải, nghiêng khác nhau như giấy ghim vội. */
+  transform: translate(calc(var(--i, 0) * 9px), calc(var(--i, 0) * 7px)) rotate(var(--r, 0deg));
+  animation: the-moi-roi 0.45s cubic-bezier(0.2, 1.35, 0.4, 1) both;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+@keyframes the-moi-roi {
+  from {
+    opacity: 0;
+    transform: translate(calc(var(--i, 0) * 9px), calc(var(--i, 0) * 7px - 70px)) rotate(calc(var(--r, 0deg) - 9deg)) scale(1.25);
+  }
+}
+.the-moi__ghim {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  margin-left: -7.5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff8a80, #c62828 60%, #7f0000);
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.45);
+}
+.the-moi__loai {
+  font: 700 10px var(--font-ui);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+}
+.the-moi__ten {
+  font: 700 15px/1.2 var(--font-ui);
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* Giấy nhớ vàng cong góc. */
+.the-moi__the--tin {
+  background: #fbe38e;
+}
+.the-moi__the--tin::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.16) 50%, rgba(255, 255, 255, 0.35) 55%, #e6c96a 100%);
+}
+/* Phiếu tra cứu: giấy trắng kẻ dòng, mép trên xanh xám. */
+.the-moi__the--phieu {
+  background: repeating-linear-gradient(transparent 0 19px, rgba(31, 95, 139, 0.13) 19px 20px), #fffdf6;
+  background-position: 0 34px;
+  border-top: 6px solid #9fb3c2;
+  border-radius: 3px;
+}
+/* Vật chứng (ảnh chụp) và tài liệu (giấy tờ): khung trắng, có ảnh thì ảnh nằm trên. */
+.the-moi__the--vat,
+.the-moi__the--tai-lieu {
+  background: linear-gradient(#ffffff, #f4efe6);
+  padding: 7px 7px 8px;
+}
+.the-moi__the--vat .the-moi__ten,
+.the-moi__the--tai-lieu .the-moi__ten {
+  font-size: 13px;
+  text-align: center;
+}
+.the-moi__the--vat .the-moi__loai,
+.the-moi__the--tai-lieu .the-moi__loai {
+  text-align: center;
+}
+.the-moi__anh {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top;
+  background: linear-gradient(160deg, #cfd8dc, #90a4ae);
+}
+/* Nhãn "Thẻ mới": con dấu đỏ đóng chéo ở góc. */
+.the-moi__dau {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  z-index: 2;
+  padding: 1px 7px;
+  border: 2.5px double #b71c1c;
+  border-radius: 5px;
+  background: rgba(255, 253, 246, 0.92);
+  color: #b71c1c;
+  font: 800 11px var(--font-ui);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: rotate(8deg);
+  animation: the-moi-dong-dau 0.3s 0.4s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+}
+@keyframes the-moi-dong-dau {
+  from {
+    opacity: 0;
+    transform: rotate(8deg) scale(1.8);
+  }
+}
+.the-moi__thua {
+  position: absolute;
+  bottom: 0;
+  right: 4px;
+  z-index: 2;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(18, 24, 42, 0.9);
+  color: #fde68a;
+  font: 700 11px var(--font-ui);
+}
+/* Bay về nút Hồ sơ: thu nhỏ, mờ dần ở cuối. Không đo được nút → bay chéo lên phải. */
+.the-moi.is-bay .the-moi__chong {
+  animation: the-moi-bay 0.56s cubic-bezier(0.55, 0, 0.75, 0.2) forwards;
+}
+.the-moi.is-bay-mac-dinh .the-moi__chong {
+  --bay-x: 40px;
+  --bay-y: -70px;
+}
+@keyframes the-moi-bay {
+  to {
+    transform: translate(var(--bay-x, 40px), var(--bay-y, -70px)) scale(0.1) rotate(-10deg);
+    opacity: 0.2;
+  }
+}
+/* Số đếm trên nút Hồ sơ nháy khi thẻ bay tới. */
+.mvp-game:has(.the-moi.is-bay) .topbar__capsule-btn--dossier .topbar__dossier-count {
+  animation: the-moi-dem 0.5s 0.38s ease-out both;
+}
+.mvp-game:has(.the-moi.is-bay) .topbar__capsule-btn--dossier {
+  animation: the-moi-nut 0.6s 0.38s ease-out;
+}
+@keyframes the-moi-dem {
+  40% {
+    transform: scale(1.6);
+    box-shadow:
+      0 0 0 3px #fff,
+      0 0 16px 4px rgba(251, 191, 36, 0.95);
+  }
+}
+@keyframes the-moi-nut {
+  40% {
+    box-shadow:
+      0 0 0 2px rgba(251, 191, 36, 0.9),
+      0 0 22px rgba(251, 191, 36, 0.7);
+  }
+}
+/* Màn dọc (~390px): thẻ nhỏ hơn, sát mép phải. */
+.game--portrait .the-moi {
+  top: 58px;
+  right: 10px;
+  max-width: calc(100% - 20px);
+}
+.game--portrait .the-moi__chong {
+  width: 128px;
+  padding: 12px 14px 14px 4px;
+}
+.game--portrait .the-moi__the {
+  min-height: 70px;
+  padding: 13px 8px 8px;
+}
+.game--portrait .the-moi__the--vat,
+.game--portrait .the-moi__the--tai-lieu {
+  padding: 5px 5px 6px;
+}
+.game--portrait .the-moi__ten {
+  font-size: 12.5px;
+}
+.game--portrait .the-moi__the--vat .the-moi__ten,
+.game--portrait .the-moi__the--tai-lieu .the-moi__ten {
+  font-size: 11.5px;
+}
+.game--portrait .the-moi__loai {
+  font-size: 9px;
+}
+.game--portrait .the-moi__dau {
+  font-size: 9.5px;
+}
+/* Giảm chuyển động: chỉ hiện rồi ẩn. */
+@media (prefers-reduced-motion: reduce) {
+  .the-moi__the,
+  .the-moi__dau,
+  .mvp-game:has(.the-moi.is-bay) .topbar__capsule-btn--dossier,
+  .mvp-game:has(.the-moi.is-bay) .topbar__capsule-btn--dossier .topbar__dossier-count {
+    animation: none;
+  }
+  .the-moi.is-bay .the-moi__chong {
+    animation: none;
+    visibility: hidden;
+  }
+}
+/* Nhãn "MỚI" trong khung Hồ sơ: ô lưới (góc trên trái) và tab Bảng điều tra (số thẻ mới). */
+.mvp-nhan-moi {
+  display: inline-block;
+  padding: 1px 6px;
+  border: 2px double #b71c1c;
+  border-radius: 5px;
+  background: #fffdf6;
+  color: #b71c1c;
+  font: 800 10px/1.3 var(--font-ui);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.mvp-nhan-moi--o {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  z-index: 2;
+  transform: rotate(-10deg);
+}
+.mvp-nhan-moi--tab {
+  margin-left: 6px;
+}

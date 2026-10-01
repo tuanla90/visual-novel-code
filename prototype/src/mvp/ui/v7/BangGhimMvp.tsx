@@ -27,18 +27,26 @@ export interface BangGhimMvpProps {
   onDoiCho?: (the: string, x: number, y: number) => void;
   /** Nút / ghi chú đặt ở góc dưới phải (mở laptop, tiếp tục…). */
   children?: ReactNode;
+  /** Thẻ người chơi chưa xem — gắn nhãn "MỚI" (khung Hồ sơ truyền vào). */
+  chuaXem?: readonly string[];
+  /** Người chơi mở xem kỹ một thẻ (để tắt nhãn MỚI). */
+  onXemThe?: (id: string) => void;
 }
 
 const boNgoac = (t: string): string => t.replace(/^\[|\]$/g, '');
 
-export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children }: BangGhimMvpProps) {
+export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chuaXem, onXemThe }: BangGhimMvpProps) {
   const bang = useMemo(() => dungBang(kb, s, them), [kb, s, them]);
   const [keo, setKeo] = useState<{ id: string; x: number; y: number } | null>(null);
   const viTri = useMemo(() => {
     const vt = viTriThe(bang, s.bang?.viTri);
     return keo ? { ...vt, [keo.id]: { x: keo.x, y: keo.y } } : vt;
   }, [bang, s.bang, keo]);
-  const [xem, setXem] = useState<string | null>(null);
+  const [xem, datXem] = useState<string | null>(null);
+  const setXem = (id: string | null): void => {
+    datXem(id);
+    if (id) onXemThe?.(id);
+  };
 
   const goc = useRef<HTMLDivElement>(null);
   const [co, setCo] = useState<{ w: number; h: number }>({ w: KHUNG_BANG.rong, h: KHUNG_BANG.cao });
@@ -104,7 +112,7 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children }: B
       if (e.key !== 'Escape') return;
       e.preventDefault();
       e.stopImmediatePropagation();
-      setXem(null);
+      datXem(null);
     };
     window.addEventListener('keydown', onKey, true);
     return () => window.removeEventListener('keydown', onKey, true);
@@ -142,13 +150,14 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children }: B
               if (!p) return null;
               const style = { left: p.x, top: p.y, ['--r' as string]: `${gocNghieng(t.id)}deg` } as CSSProperties;
               const anh = t.anh ? anhTheoTen(t.anh) : undefined;
+              const chuaXemThe = chuaXem?.includes(t.id) ?? false;
               return (
                 <article
                   key={t.id}
                   className={`the the--${t.loai}${t.khongDuLieu && t.loai === 'tin' ? ' is-khong-du-lieu' : ''}${moi === t.id ? ' is-moi' : ''}${keo?.id === t.id ? ' is-keo' : ''}`}
                   style={style}
                   tabIndex={0}
-                  aria-label={`${NHAN_LOAI[t.loai]}: ${dienTen(boNgoac(t.nhan))}`}
+                  aria-label={`${NHAN_LOAI[t.loai]}: ${dienTen(boNgoac(t.nhan))}${chuaXemThe ? ' (mới)' : ''}`}
                   onPointerDown={batDauKeo(t)}
                   onPointerMove={dangDi}
                   onPointerUp={thaRa}
@@ -161,6 +170,11 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children }: B
                   }}
                 >
                   <span className="the__ghim" aria-hidden="true" />
+                  {chuaXemThe ? (
+                    <span className="the__moi" aria-hidden="true">
+                      MỚI
+                    </span>
+                  ) : null}
                   {t.loai === 'phieu' ? (
                     <>
                       <span className="the__loai">Phiếu tra cứu</span>
