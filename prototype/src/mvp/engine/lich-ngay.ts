@@ -107,10 +107,25 @@ export interface HomNay {
   moDau: boolean;
 }
 
-/** Hôm nay theo tiến độ: mở đầu → ngày nhận phòng (cờ `moDau`); ngày n → ngày điều tra n; họp / hết → ngày họp. */
-export function homNay(s: { giaiDoan: GiaiDoanMvp; ngay: number }, ngayMoDau?: string | null): HomNay {
+/** Trạng thái đủ để biết hôm nay: giai đoạn, ngày điều tra, và chuỗi đang chạy (mở đầu kéo dài cả tuần đầu). */
+export interface TienDoNgay {
+  giaiDoan: GiaiDoanMvp;
+  ngay: number;
+  conTro?: { chuoi: string } | null;
+}
+
+/**
+ * Hôm nay theo tiến độ: ngày n → ngày điều tra n; họp / hết → ngày họp. Mở đầu (cờ `moDau`) suy từ mã chuỗi đang chạy
+ * (khung chương 1, kich-ban/00-mo-dau.md): `md-08` tuần công dân, `md-09` Ngày hội (T7), `md-10`/`md-11` phòng CLB (T2 tuần 2),
+ * còn lại là Chủ nhật nhận phòng. Vụ 2 trở đi nên khai ngày ngay trong khung thay cho bảng tra này.
+ */
+export function homNay(s: TienDoNgay, ngayMoDau?: string | null): HomNay {
   const l = lichNgay(ngayMoDau);
-  if (s.giaiDoan === 'mo-dau') return { ngay: l.nhanPhong, moDau: true };
+  if (s.giaiDoan === 'mo-dau') {
+    const chuoi = s.conTro?.chuoi ?? '';
+    const ngay = /^md-08/.test(chuoi) ? l.tuanCongDan.tu : /^md-09/.test(chuoi) ? l.ngayHoi : /^md-1\d/.test(chuoi) ? l.phongClb : l.nhanPhong;
+    return { ngay, moDau: true };
+  }
   if (s.giaiDoan === 'ngay') return { ngay: l.ngayDieuTra(Math.max(1, s.ngay)), moDau: false };
   return { ngay: l.hop, moDau: false };
 }
@@ -154,7 +169,7 @@ function xepLoai(ngay: string, den: string | undefined, hom: string, goc: 'truye
 }
 
 /** Mốc người chơi đã biết, xếp theo ngày (xem đầu tệp: không lộ ngày chưa tới). */
-export function mocLich(s: { giaiDoan: GiaiDoanMvp; ngay: number }, tuy: TuyChonMocLich = {}): MocLich[] {
+export function mocLich(s: TienDoNgay, tuy: TuyChonMocLich = {}): MocLich[] {
   const l = lichNgay(tuy.ngayMoDau);
   const hn = homNay(s, tuy.ngayMoDau);
   const hom = hn.ngay;
@@ -164,10 +179,12 @@ export function mocLich(s: { giaiDoan: GiaiDoanMvp; ngay: number }, tuy: TuyChon
   };
 
   them({ ngay: l.nhanPhong, ten: 'Nhận phòng KTX', ngan: 'Nhận phòng', chiTiet: 'Phòng 408' });
+  // Mốc của tuần đầu chỉ hiện khi đã tới (không lộ Ngày hội, lá thư trước lúc truyện kể).
+  const daToi = (ngay: string): boolean => soNgayGiua(ngay, hom) >= 0;
+  if (daToi(l.tuanCongDan.tu)) them({ ngay: l.tuanCongDan.tu, den: l.tuanCongDan.den, ten: 'Tuần sinh hoạt công dân', ngan: 'Công dân' });
+  if (daToi(l.ngayHoi)) them({ ngay: l.ngayHoi, ten: 'Ngày hội CLB', ngan: 'Ngày hội' });
+  if (!hn.moDau || daToi(l.phongClb)) them({ ngay: l.phongClb, ten: hn.moDau ? 'Phòng CLB · họp đầu năm' : 'Phòng CLB · lá thư', ngan: hn.moDau ? 'CLB' : 'Lá thư', chiTiet: '16:00' });
   if (!hn.moDau) {
-    them({ ngay: l.tuanCongDan.tu, den: l.tuanCongDan.den, ten: 'Tuần sinh hoạt công dân', ngan: 'Công dân' });
-    them({ ngay: l.ngayHoi, ten: 'Ngày hội CLB', ngan: 'Ngày hội' });
-    them({ ngay: l.phongClb, ten: 'Phòng CLB · lá thư', ngan: 'Lá thư', chiTiet: '16:00' });
     const toi = s.giaiDoan === 'ngay' ? Math.max(1, s.ngay) : 5;
     for (let n = 1; n <= toi; n++) {
       const ten = tuy.tenNgay?.(n);
