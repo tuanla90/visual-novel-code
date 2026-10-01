@@ -30,3 +30,8 @@
 - Tiêu đề: Mẩu giấy ở trang "Kiểm hai lần", lần hai
 - Nguồn: Sổ tự học của chị Linh, phòng CLB
 - Nội dung: Chữ chị Linh: "Vụ đầu tiên của CLB kết luận sai. Chị tìm ra cuốn sổ ghi lại nó."
+
+### clue-thao-in-so-do — [Lời chị Thảo: sơ đồ in tối Chủ nhật]
+- Tiêu đề: Sơ đồ mạch của đội do Thảo in
+- Nguồn: {{nv.thao}}, xưởng Robotics
+- Nội dung: Tối Chủ nhật nào Thảo cũng ra phòng máy in sơ đồ mạch cho đội. Lời kể về một thói quen, chưa nói về một tối cụ thể.

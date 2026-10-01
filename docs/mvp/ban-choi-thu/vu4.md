@@ -254,9 +254,9 @@ Lời nhân vật sau mỗi lần chạy:
 - **Duy** (neutral): Mà bảng phiên ghi máy văn phòng có năm phiên, nối xong chỉ ra bốn đơn. Một phiên sáng 02/10 không tạo đơn nào: có người mở phần mềm rồi thôi. Nối kiểu này thì phiên không có đơn không hiện ra.
 - **Duy** (neutral): Tờ giao chìa hôm trước: ba người có chìa. Đừng vội.
 > 🗂️ Giấy nhớ mới: **[Lời nhắn chị Linh, mẩu thứ tư]** — nguồn: Sổ tự học của chị Linh, phòng CLB
-> Chữ chị Linh: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy."
+> Chữ chị Linh: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi."
 - **Duy** (neutral): Tên một người, tay một người khác… chị Linh có ghi một câu. Để tớ xem.
-- **Bạn (người chơi)**: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy."
+- **Bạn (người chơi)**: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi."
 - **Tùng** (worried): Giống hệt chuyện Nam.
 - **Hà Vy** (thinking): Chị ấy ghi từ năm ngoái. Cuốn sổ cũ mà chị ấy nhắc, chắc kể đúng chuyện này.
 

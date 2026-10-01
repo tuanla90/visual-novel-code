@@ -121,6 +121,10 @@
 - **tung** (worried): Không phải Nam. Thế thì ai ngồi máy văn phòng xưởng tối đó?
 - **duy** (neutral): Máy trong phòng văn phòng, giờ xưởng mở. Ai vào được phòng đó thì mình chưa biết.
 - **ha-vy** (thinking): Và tên Nam vẫn nằm trên tài khoản kênh. Ai muốn người ta nghĩ là Nam, thì đã được như ý.
+- [DÀN DỰNG] {{nv.duy}} ghim hai tờ giấy lên bảng: "16/9: thư đòi thu phòng" và "07/10: tin 'soi dữ liệu'".
+- **duy** (neutral): Lá thư không làm mình mất phòng. Ba tuần sau lại có cái tin bảo mình soi dữ liệu.
+- **minh-anh** (serious): Cuối kỳ là lúc sao kê về. Nếu tới lúc ấy ai cũng ngại tin mình, thì mình có hỏi đúng cũng khó được nghe.
+- **ha-vy** (thinking): Có thể liên quan, cũng có thể không. Ghim hai mốc lên đã.
 - **minh-anh** (neutral): Chuyện này không chỉ là tin đồn về mình nữa. Các em sang xưởng lần nữa, hỏi xem ai vào được phòng ấy. Hỏi thôi, chưa nghi ai.
 
 ## v3-chia.1

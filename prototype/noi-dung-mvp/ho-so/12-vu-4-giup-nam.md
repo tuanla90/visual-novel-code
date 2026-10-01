@@ -52,4 +52,4 @@
 ### clue-loi-nhan-linh-4 — [Lời nhắn chị Linh, mẩu thứ tư]
 - Tiêu đề: Mẩu giấy ở trang cuối sổ
 - Nguồn: Sổ tự học của chị Linh, phòng CLB
-- Nội dung: Chữ chị Linh: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy."
+- Nội dung: Chữ chị Linh: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi."

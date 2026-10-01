@@ -71,7 +71,7 @@
 ## v4-may-vp.3
 - **duy** (neutral): Tên một người, tay một người khác… chị Linh có ghi một câu. Để tớ xem.
 - [DÀN DỰNG] {{nv.duy}} lật sổ chị Linh tới trang cuối.
-- **player**: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy."
+- **player**: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi."
 - **tung** (worried): Giống hệt chuyện Nam.
 - **ha-vy** (thinking): Chị ấy ghi từ năm ngoái. Cuốn sổ cũ mà chị ấy nhắc, chắc kể đúng chuyện này.
 

@@ -78,6 +78,6 @@
 ### v3-chia — Xưởng, chiều muộn: tờ giao chìa, ba người cần hỏi {cảnh: xuong-robot}
 
 - [LỜI v3-chia.1]
-- [HẬU QUẢ] mở manh mối clue-giao-chia
+- [HẬU QUẢ] mở manh mối clue-giao-chia, mở manh mối clue-thao-in-so-do
 - [LỜI v3-chia.2]
 - [KẾT THÚC]

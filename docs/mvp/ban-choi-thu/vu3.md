@@ -318,6 +318,9 @@ Lời nhân vật sau mỗi lần chạy:
 - **Tùng** (worried): Không phải Nam. Thế thì ai ngồi máy văn phòng xưởng tối đó?
 - **Duy** (neutral): Máy trong phòng văn phòng, giờ xưởng mở. Ai vào được phòng đó thì mình chưa biết.
 - **Hà Vy** (thinking): Và tên Nam vẫn nằm trên tài khoản kênh. Ai muốn người ta nghĩ là Nam, thì đã được như ý.
+- **Duy** (neutral): Lá thư không làm mình mất phòng. Ba tuần sau lại có cái tin bảo mình soi dữ liệu.
+- **Minh Anh** (serious): Cuối kỳ là lúc sao kê về. Nếu tới lúc ấy ai cũng ngại tin mình, thì mình có hỏi đúng cũng khó được nghe.
+- **Hà Vy** (thinking): Có thể liên quan, cũng có thể không. Ghim hai mốc lên đã.
 - **Minh Anh** (neutral): Chuyện này không chỉ là tin đồn về mình nữa. Các em sang xưởng lần nữa, hỏi xem ai vào được phòng ấy. Hỏi thôi, chưa nghi ai.
 
 ###### 📍 Xưởng CLB Robotics — Xưởng, chiều muộn: tờ giao chìa, ba người cần hỏi
@@ -331,6 +334,8 @@ Lời nhân vật sau mỗi lần chạy:
 - **Tùng** (gai-dau): Tối Chủ nhật, phòng máy… Tớ không cá. Tớ ghi.
 > 🗂️ Giấy nhớ mới: **[Tờ giao chìa: Khánh, Bách, Thảo]** — nguồn: Tờ giấy dán ở cửa phòng, xem cùng Nam cuối Vụ 3
 > Tờ giao chìa phòng văn phòng xưởng Robotics ghi ba người giữ chìa: Khánh (trưởng CLB), Bách (phó CLB), Thảo (kỹ thuật). Tờ giấy nói ai có chìa, không nói ai mở cửa tối nào. Bách nói tối 07/10 về quê; Thảo nói chìa của mình để ngăn bàn ngoài xưởng, ai cũng lấy được.
+> 🗂️ Giấy nhớ mới: **[Lời chị Thảo: sơ đồ in tối Chủ nhật]** — nguồn: Thảo, xưởng Robotics
+> Tối Chủ nhật nào Thảo cũng ra phòng máy in sơ đồ mạch cho đội. Lời kể về một thói quen, chưa nói về một tối cụ thể.
 - **Hà Vy** (thinking): Ghi ba tên. Người cần hỏi, chưa phải người bị nghi.
 - **Nam** (neutral): Thứ Ba tuần sau tớ kiểm kê kho. Ban tổ chức giải bắt đội nào cũng nộp biên bản kiểm kê trước khi đóng lệ phí, nên lịch anh Khánh phải ký từ mùng 9. Tớ cũng hỏi cả đội về tối mùng 7 rồi: cửa phòng văn phòng quay vào kho, đứa nào cũng cắm mặt hàn mạch, không ai để ý ai vào.
 - **Tùng** (neutral): Lần này tớ ghi tên mà không khoanh ai cả.
