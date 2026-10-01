@@ -7262,6 +7262,10 @@ export const KICH_BAN_MVP = {
       "mocSomNhat": 1000,
       "nodes": [
         {
+          "type": "task",
+          "text": "Nghe Khánh trả lời"
+        },
+        {
           "type": "line",
           "speaker": "khanh",
           "expression": "neutral",
@@ -7363,6 +7367,10 @@ export const KICH_BAN_MVP = {
       "canh": "phong-hop",
       "mocSomNhat": 1000,
       "nodes": [
+        {
+          "type": "task",
+          "text": "Chốt biên bản buổi họp"
+        },
         {
           "type": "line",
           "speaker": "thay-quang",
@@ -7483,6 +7491,10 @@ export const KICH_BAN_MVP = {
       "mocSomNhat": 1000,
       "nodes": [
         {
+          "type": "task",
+          "text": "Đóng hồ sơ mùa"
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "text": "Chiều thứ Tư, phòng CLB. Hoài tới sớm, mang theo một xấp giấy nháp còn trắng một mặt."
@@ -7563,6 +7575,10 @@ export const KICH_BAN_MVP = {
       "canh": "phong-clb",
       "mocSomNhat": 1000,
       "nodes": [
+        {
+          "type": "task",
+          "text": "Tìm chìa ngăn tủ khóa"
+        },
         {
           "type": "line",
           "speaker": "narrator",

@@ -45,13 +45,14 @@ function mucCuaThe(nut: NutDoiChat, id: string): Muc | 'khac' {
 
 export function DoiChatMvp({ kb, s, nut, daTrinh, muc, dienTen, tenNguoiNoi, onTrinh, onChuaDu }: DoiChatMvpProps) {
   // Thẻ trong hồ sơ, bỏ thẻ "câu hỏi đang mở" (không phải bằng chứng).
-  const the = useMemo(
-    () =>
-      dungBang(kb, s)
-        .the.filter((t) => t.loai !== 'hoi' && t.loai !== 'note')
-        .sort((a, b) => THU_TU[a.loai] - THU_TU[b.loai]),
-    [kb, s],
-  );
+  // Thêm thẻ của các vụ trước (đã gỡ khỏi bảng) mà một màn đối chất nào đó của kịch bản có nhắc tới: người chơi phải trình
+  // được bằng chứng cũ, nhưng khay không phình thành cả hồ sơ. Lấy theo MỌI màn đối chất nên không lộ riêng đáp án màn này.
+  const the = useMemo(() => {
+    const bang = dungBang(kb, s);
+    const duocNhac = new Set(kb.chuoi.flatMap((c) => c.nodes.flatMap((n) => (n.type === 'doi-chat' ? n.bangChung.map((x) => x.id) : []))));
+    const cu = bang.boGhim.filter((t) => duocNhac.has(t.id));
+    return [...bang.the, ...cu].filter((t) => t.loai !== 'hoi' && t.loai !== 'note').sort((a, b) => THU_TU[a.loai] - THU_TU[b.loai]);
+  }, [kb, s]);
   const [chon, setChon] = useState<string | null>(null);
   const theChon = chon ? the.find((t) => t.id === chon) : undefined;
   const chonDuoc = !!theChon && !daTrinh.includes(theChon.id);

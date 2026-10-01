@@ -142,6 +142,7 @@
 - **hoai** (relieved): Em cảm ơn thầy ạ.
 
 ## v5-ket-du.1
+> NHIỆM VỤ: Nghe Khánh trả lời
 - **khanh** (neutral): Đúng. Anh cần thêm thời gian để bù. Giấy về chỗ anh thì không ai hỏi sớm.
 - **nam** (neutral): Sao lại là tên em?
 - **khanh** (neutral): Người duyệt không được tự đứng tên đề xuất. Em là đứa không ai nghi.
@@ -159,6 +160,7 @@
 - **thay-quang** (neutral): Phòng của CLB Thám Tử giữ nguyên. Hoàn quỹ đi theo thủ tục, mất vài tháng; từ giờ tới đó quỹ CLB tạm đóng.
 
 ## v5-bien-ban.1
+> NHIỆM VỤ: Chốt biên bản buổi họp
 - **thay-quang** (neutral): Phần của CLB Thám Tử, biên bản ghi thế này: ba khoản tạm ứng gắn với ba đơn kho không có hàng, ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Mỗi bước có phiếu kèm, ai cũng tự kiểm được.
 - **minh-anh** (neutral): Thưa thầy, lời anh Khánh tự nhận thì em xin ghi riêng vào mục lời khai, không ghi lẫn với phiếu ạ.
 - **thay-quang** (neutral): Đúng thế.
@@ -180,6 +182,7 @@
 - **tung** (happy): Đơn ở chỗ Duy. Chiều thứ Tư, phòng CLB. Lần này tớ dẫn đúng tòa.
 
 ## v5-ket-luan.1
+> NHIỆM VỤ: Đóng hồ sơ mùa
 - **narrator**: Chiều thứ Tư, phòng CLB. Hoài tới sớm, mang theo một xấp giấy nháp còn trắng một mặt.
 - **duy** (neutral): Quỹ đóng thì vẫn họp. Giấy còn nửa tập, bút còn ba cái.
 - **nam** (neutral): Tớ qua được một lúc, xong phải về lo tiền giải với anh Bách, chị Thảo. Cảm biến của xưởng ghi mỗi giây một dòng. Tớ muốn tự viết chương trình đọc nó.
@@ -190,6 +193,7 @@
 - [THẺ CHỮ] **narrator**: Dữ liệu chỉ ra ai cần hỏi. Người trả lời mới là người nói "vì sao". Mùa 1 khép lại ở chỗ chứng cứ dừng.
 
 ## v5-ngan-tu.1
+> NHIỆM VỤ: Tìm chìa ngăn tủ khóa
 - [THẺ CHỮ] **narrator**: Sau kết — tối hôm ấy, phòng CLB
 - **narrator**: Mọi người sắp về thì Duy bày bốn mẩu giấy của chị Linh lên bàn.
 - **duy** (neutral): Bốn mẩu giấy. Mà ngăn dưới tủ hồ sơ thì khóa, tớ chưa bao giờ có chìa.
