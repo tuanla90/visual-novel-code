@@ -1,6 +1,9 @@
 /*
  * Việc đang làm do nhân vật nhắc (NhacViecMvp) ở góc trên TRÁI sân khấu MVP; nhãn địa điểm (.stage__scene-label của
  * app.css) dời sang góc PHẢI. Cùng chất liệu với nhãn địa điểm (giấy kem, viền hổ phách) để hai góc là một bộ.
+ * Gọt theo ảnh GUI tham chiếu Topview 01/10 (art/nguon/topview-2026-10-01/gui-nhac-viec-tham-chieu-*.png): ô mặt to,
+ * viền hổ phách dày, lấn ra ngoài mép trái của bong bóng; bong bóng bo góc (không phải viên thuốc), tên nhỏ in hoa màu
+ * hổ phách, câu chữ serif nghiêng to hơn, xuống tối đa 2 dòng.
  * portrait.css đặt nhãn địa điểm bằng !important → ở đây cũng phải !important để dời được.
  */
 .mvp-stage .stage__scene-label {
@@ -23,14 +26,14 @@
 .nhac-viec {
   position: absolute;
   top: 12px;
-  left: 16px;
+  left: 30px; /* ô mặt lấn ra 22px về bên trái → mép ô cách mép sân khấu ~8px */
   z-index: 35;
   display: flex;
   align-items: center;
-  gap: 10px;
-  max-width: min(48%, 540px);
-  padding: 5px 16px 5px 5px;
-  border-radius: 9999px;
+  gap: 12px;
+  max-width: min(44%, 560px);
+  padding: 8px 20px 8px 8px;
+  border-radius: 22px;
   background: linear-gradient(135deg, #fffdfa 0%, #fef3c7 100%);
   border: 1.5px solid rgba(217, 119, 6, 0.4);
   box-shadow:
@@ -56,18 +59,20 @@
   }
 }
 
-/* Ô mặt tròn: ảnh chân dung cắt quanh đầu (điểm 50%,20% của ảnh vào giữa ô). */
+/* Ô mặt tròn, lấn ra ngoài mép trái bong bóng: ảnh chân dung cắt quanh đầu (điểm 50%,20% của ảnh vào giữa ô). */
 .nhac-viec__mat {
   position: relative;
   flex: 0 0 auto;
-  width: 46px;
-  height: 46px;
+  width: 60px;
+  height: 60px;
+  margin: -14px 0 -14px -22px;
   border-radius: 50%;
   overflow: hidden;
   background: radial-gradient(circle at 50% 35%, #fde68a, #d97706);
   box-shadow:
-    0 0 0 2px #fffdfa,
-    0 0 0 3.5px rgba(217, 119, 6, 0.55);
+    0 0 0 3px #fffdfa,
+    0 0 0 6px #d97706,
+    0 3px 8px rgba(15, 23, 42, 0.35);
 }
 .nhac-viec__mat img {
   position: absolute;
@@ -85,20 +90,21 @@
   place-items: center;
   font-family: 'Source Serif 4', Georgia, serif;
   font-weight: 800;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #fffdfa;
 }
 
 .nhac-viec__noi {
   display: flex;
   flex-direction: column;
+  gap: 2px;
   min-width: 0;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 .nhac-viec__ten {
-  font-size: 0.62rem;
+  font-size: 0.64rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #b45309;
 }
@@ -106,7 +112,7 @@
   font-family: 'Source Serif 4', Georgia, serif;
   font-style: italic;
   font-weight: 600;
-  font-size: 0.98rem;
+  font-size: 1.04rem;
   color: #1e293b;
   overflow: hidden;
   display: -webkit-box;
@@ -117,14 +123,16 @@
 /* Màn dọc / điện thoại: ô mặt nhỏ hơn, nhường chỗ cho nhãn địa điểm bên phải. */
 .game--portrait .nhac-viec {
   top: 8px;
-  left: 8px;
-  max-width: calc(100% - 150px);
-  gap: 8px;
-  padding: 4px 12px 4px 4px;
+  left: 22px;
+  max-width: calc(100% - 158px);
+  gap: 9px;
+  padding: 6px 12px 6px 6px;
+  border-radius: 16px;
 }
 .game--portrait .nhac-viec__mat {
-  width: 38px;
-  height: 38px;
+  width: 46px;
+  height: 46px;
+  margin: -10px 0 -10px -16px;
 }
 .game--portrait .nhac-viec__cau {
   font-size: 0.86rem;
@@ -132,14 +140,16 @@
 @media (max-width: 768px) {
   .nhac-viec {
     top: 8px;
-    left: 8px;
-    max-width: calc(100% - 150px);
-    gap: 8px;
-    padding: 4px 12px 4px 4px;
+    left: 22px;
+    max-width: calc(100% - 158px);
+    gap: 9px;
+    padding: 6px 12px 6px 6px;
+    border-radius: 16px;
   }
   .nhac-viec__mat {
-    width: 38px;
-    height: 38px;
+    width: 46px;
+    height: 46px;
+    margin: -10px 0 -10px -16px;
   }
   .nhac-viec__cau {
     font-size: 0.86rem;
