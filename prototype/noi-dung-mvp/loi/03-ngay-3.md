@@ -5,8 +5,6 @@
 ## n3-mo.1
 - [THẺ CHỮ] **narrator**: Ngày 3 — Thứ Năm
 - **minh-anh** (neutral): Chị gọi cho cô Lan rồi. Các em mang kết quả hai lớp hôm qua sang, đấy là căn cứ để xin phiếu tra cứu.
-- **tung** (happy): Có phiếu là xem được danh sách sinh viên hả chị?
-- **minh-anh** (neutral): Xem được đúng những gì ghi trên phiếu.
 
 ## n3-ctsv.1
 > NHIỆM VỤ: Làm sao để được xem bảng sinh viên?
@@ -18,7 +16,7 @@
 - **narrator**: Ở cửa có một anh sinh viên khoác vest xanh đen, kẹp cái bìa da, đứng từ lúc nào không ai để ý.
 - **quan** (neutral): Tôi là Quân, bên Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi được cử xuống giám sát việc này.
 - **co-lan** (neutral): Hai lớp các em lọc ra hôm qua là căn cứ được. Cô ký phiếu tra cứu: bảng sinh viên, bốn cột, mã, họ đệm, tên, mã lớp. Không hơn.
-- **quan** (neutral): Tôi ký giám sát. Các bạn tra gì máy cũng ghi lại, bên tôi xem hết.
+- **quan** (neutral): Tôi ký giám sát. Các bạn tra những gì, bên tôi xem hết.
 
 ## n3-ctsv.2
 - **quan** (neutral): Các bạn chỉ được lập căn cứ. Tra sổ là việc của cô phụ trách, không phải của CLB.

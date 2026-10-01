@@ -59,7 +59,6 @@
 - [DÀN DỰNG] Hộp tôn xanh treo trên mảng tường gần cửa ra vào (bản CHƯA có thẻ lịch ở khe — DX-03 chưa làm: [KHÁM PHÁ] không có vật tĩnh). Bác Thịnh đứng ở chân cầu thang.
 - **narrator**: Sảnh tòa B vắng tanh. Trên mảng tường gần cửa ra vào treo một cái hộp tôn xanh, biển ghi "Hộp tiếp nhận kiến nghị".
 - **tung** (neutral): Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
-- **player**: Mép khe sắc phết. Nhét phong bì dày vào chắc rách mất.
 - **bac-tu** (neutral): Hai cháu tìm phòng nào? Chiều Chủ nhật tòa này khóa hết lớp rồi.
 - **tung** (neutral): Dạ không ạ, cháu dẫn bạn đi xem trường thôi.
 - **bac-tu** (neutral): Xem thì xem. Mép hộp sắc đấy, đừng thò tay vào.
@@ -90,7 +89,6 @@
 - **minh-anh** (neutral): Không có em ạ. Hồ sơ, đăng ký giờ tra trên hệ thống là ra hết. Mấy kiểu điều tra ngày xưa hết đất diễn rồi.
 - **tung** (happy): Thế giờ CLB chuyên điều tra… mật khẩu Wi-Fi ạ?
 - **minh-anh** (worried): Em ra đây để đùa thì bàn bên kia vui hơn đấy.
-- **tung** (worried): Dạ em đùa hơi quá. Em xin lỗi chị.
 - **minh-anh** (neutral): Muốn vào thì điền phiếu này. Nhớ ghi mã sinh viên.
 - **tung** (worried): Thẻ bọn em đang đeo là thẻ tạm của ký túc xá, chưa in mã chị ạ.
 - **minh-anh** (neutral): Đoàn trường có gửi danh sách tân sinh viên khóa này, mã nằm trong đấy. Tra xong là chị xóa khỏi máy.
@@ -103,8 +101,8 @@
 ## md-09-ngay-hoi.3
 - **player**: Ba người tên {{nv.tung}}. Ngành Du lịch chỉ có một người: mã SV240251.
 - **minh-anh** (neutral): …Nhanh thật. Bốn giờ chiều thứ Hai tuần sau CLB họp đầu năm, hai em ghi tên đi.
-- **tung** (neutral): Dạ em thì… tìm đường với nhắc lịch là giỏi nhất ạ.
-- **minh-anh** (neutral): Em biết xin lỗi là được rồi. Bắt đầu từ việc đến đúng giờ nhé.
+- **tung** (neutral): Dạ em thì lọc kém, chứ tìm đường với nhắc lịch là giỏi nhất ạ.
+- **minh-anh** (neutral): Biết nhận là mình nhầm thì được rồi. Bắt đầu từ việc đến đúng giờ nhé.
 
 ## md-10-phong-clb.1
 > NHIỆM VỤ: Dọn tủ hồ sơ cùng CLB
@@ -118,8 +116,7 @@
 - **ha-vy** (neutral): Mượn thì được, chép thì không.
 - **tung** (happy): Thế cậu đoán được tớ học gì không?
 - **ha-vy** (neutral): Khỏi đoán. Cổ đeo thẻ, tay lúc nào cũng cầm bản đồ trường. Du lịch chứ gì.
-- **player**: Thế ai giữ chìa khóa phòng này ạ?
-- **duy** (smile): Tớ. {{nv.duy}}, năm hai Hành chính học. Chìa khóa phòng, tủ hồ sơ, cả cái laptop cũ cất trong tủ, đều tớ giữ.
+- **duy** (smile): Còn tớ là {{nv.duy}}, năm hai Hành chính học. Chìa khóa phòng, tủ hồ sơ, cả cái laptop cũ cất trong tủ, đều tớ giữ.
 - **duy** (neutral): Ngăn dưới tớ chưa kiểm kê tới. Cậu mở xem có gì trong đấy.
 
 ## md-10-phong-clb.3
@@ -139,9 +136,8 @@
 - **player**: (Cuối trang còn sót một dòng chữ bé tí, bị xén mất nửa. Trông như tên tệp.)
 
 ## md-11-la-thu.3
-- **duy** (neutral): Đủ 5 người mới chỉ giữ được tư cách CLB thôi. Phòng vẫn bị xét vì báo cáo yếu, đơn của Robotics, giờ thêm lá thư này.
-- **minh-anh** (neutral): Người gửi muốn được trả lời thì phải ghi mã sinh viên, mã đó nằm trong sổ niêm phong. Mà sổ đó không ai được mở.
-- **minh-anh** (neutral): {{nv.thay-quang}} cho CLB tự lập căn cứ. Cô phụ trách tự tra sổ, Hội sinh viên giám sát. Quyền tra cứu thì chị làm đơn xin.
+- **duy** (neutral): Giờ đủ năm người thì CLB chưa bị giải thể. Nhưng phòng vẫn bị xét: báo cáo năm ngoái đã yếu, giờ thêm lá thư này.
+- **minh-anh** (neutral): {{nv.thay-quang}}, phó hiệu trưởng, cho CLB một tuần tự tìm căn cứ, mang ra buổi họp.
 - **tung** (neutral): Thế giờ bắt đầu từ đâu ạ?
 - **ha-vy** (thinking): Khoan, tính lại đã. Mình mới có một chữ H với một cái hộp.
 - **minh-anh** (serious): Thì bắt đầu từ cái hộp. Nói có sách, mách có chứng. Mai ra tòa B.

@@ -11,7 +11,7 @@
 
 ## n2-co-hanh.1
 > NHIỆM VỤ: Tài khoản của CLB được xem những gì?
-- **co-hanh** (neutral): Đơn của em Minh Anh, thầy Quang duyệt rồi. Cô tạo cho CLB một tài khoản, tên là clb_tham_tu.
+- **co-hanh** (neutral): Cô tạo cho CLB một tài khoản, tên là clb_tham_tu.
 - **co-hanh** (neutral): Tài khoản này chỉ xem được bảng lớp sinh hoạt: mã lớp, ngành, khóa, tòa nhà. Trong đấy không có tên ai cả.
 - **co-hanh** (neutral): Bảng sinh viên có thông tin cá nhân. Muốn xem thì mang phiếu yêu cầu tra cứu, có chữ ký của đơn vị lo vụ việc. Vụ hộp kiến nghị là của Phòng Công tác sinh viên.
 - **co-hanh** (neutral): Tra gì máy cũng ghi lại. Cuối vụ cô xem nhật ký.
@@ -24,12 +24,12 @@
 > NHIỆM VỤ: Lớp nào vừa ở tòa B vừa học Báo chí?
 - [DÀN DỰNG] Phòng CLB buổi chiều. Laptop CLB đã đăng nhập tài khoản mới. Giấy nhớ [Tòa B], [Báo chí K24] trên bàn.
 - **narrator**: Về tới phòng CLB. Cái laptop cũ khởi động mất gần hai phút.
-- **tung** (happy): Tòa B với Báo chí à? Tớ cá là cứ nối HOẶC vào cho rộng, kiểu gì chẳng trúng!
+- **tung** (happy): Tòa B hoặc Báo chí, cứ dính một cái là lấy hết cho chắc. Tớ cá kiểu gì chẳng trúng!
 - **ha-vy** (neutral): Đừng cá. Tính.
 
 ## n2-laptop.2
 - **ha-vy** (neutral): Hai lớp: BC24A với BC23A.
 - **player**: BC23A là khóa trước mà? Thẻ lịch ghi K24.
-- **ha-vy** (thinking): Ừ, thẻ lịch nghiêng về BC24A. Nhưng thẻ mắc ở khe chưa chắc là của người bỏ thư. Cứ giữ cả hai lớp, loại sau cũng chưa muộn.
+- **ha-vy** (thinking): Ừ, thẻ lịch nghiêng về BC24A. Nhưng cứ giữ cả hai lớp, loại sau cũng chưa muộn.
 - **tung** (worried): Hai lớp vẫn đông lắm. Mà mình đâu có xem được danh sách sinh viên.
 - **ha-vy** (neutral): Cô Hạnh bảo rồi đấy: phải có phiếu của Phòng Công tác sinh viên.

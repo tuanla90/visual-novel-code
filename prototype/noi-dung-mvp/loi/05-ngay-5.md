@@ -19,6 +19,6 @@
 - [THẺ CHỮ] **narrator**: Tối thứ Bảy
 - **narrator**: Tối, phòng CLB. Hà Vy ghim hết giấy tờ lên bảng, Tùng căng chỉ nối từng tờ.
 - **ha-vy** (neutral): Soát lại nhé. Hộp ở tòa B, thẻ lịch khoa Báo chí: ra hai lớp. Chữ H trong hai lớp: Hiếu với Hoài. Sổ niêm phong: chỉ có mã của Hoài.
-- **ha-vy** (thinking): Có mã trên phiếu chưa chắc đã là người viết thư. Thứ Hai họp, mình chỉ nói đúng những gì có chứng.
+- **ha-vy** (thinking): Thứ Hai họp, mình chỉ nói đúng những gì có chứng.
 - **tung** (worried): Thế nhỡ người ta hỏi ai viết thư thì sao?
 - **ha-vy** (neutral): Có chứng thì trình chứng. Không có thì nói là chưa biết.
