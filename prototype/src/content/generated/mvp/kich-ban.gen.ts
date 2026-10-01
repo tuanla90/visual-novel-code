@@ -519,7 +519,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "reminder",
           "speaker": "player",
-          "text": "Phòng 408… mà ký túc xá nằm đâu thì thông báo không ghi."
+          "text": "Tìm ký túc xá đã. Thông báo chỉ ghi: phòng 408."
         },
         {
           "type": "line",

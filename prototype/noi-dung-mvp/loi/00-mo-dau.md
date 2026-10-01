@@ -4,7 +4,7 @@
 
 ## md-00-xe-buyt.1
 > NHIỆM VỤ: Tìm đường vào ký túc xá
-> NHẮC VIỆC player: Phòng 408… mà ký túc xá nằm đâu thì thông báo không ghi.
+> NHẮC VIỆC player: Tìm ký túc xá đã. Thông báo chỉ ghi: phòng 408.
 
 ## md-00-xe-buyt.2
 - [THẺ CHỮ] **narrator**: Chủ nhật, 08/09/2024 · Đại học Chấn Hưng
