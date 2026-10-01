@@ -6,9 +6,13 @@
  * Nguồn (Topview 28/09, GPT Image 2.5, image-edit từ chính ảnh chân dung): ảnh biểu cảm sửa từ ảnh
  * neo rồi căn về đúng khung ảnh neo (đổi biểu cảm thân người không xê dịch); ảnh "miệng mở"/"mắt
  * nhắm" sửa từ ảnh biểu cảm, căn khớp + khớp màu, miếng = vùng khác biệt làm mềm mép.
- * Hà Vy "đang nghĩ" (sinh lại mặt 28/09, ghép vào ảnh neo) chưa có bộ miếng → không nhép môi.
  * Quân sững sờ: ảnh gốc miệng đang há, miếng miệng là miệng KHÉP (nhép vẫn là đổi qua lại).
  * Tệp được sinh bằng công cụ cắt miếng — sửa tay thì giữ đúng tọa độ.
+ *
+ * 01/10/2026: thêm Tùng neo và Hà Vy "đang nghĩ" — ảnh sửa Topview (GPT Image 2.5, image-edit "chỉ đổi miệng / chỉ nhắm mắt"),
+ * miếng cắt bằng art/nguon/cat-mieng-mat.py (so chênh lệch làm mờ, vệt lớn nhất quanh mắt; miệng tìm trong cửa sổ dưới hộp mắt).
+ * Tùng neo miệng gốc đã hé cười nên nhép môi chỉ hơi mở thêm. Ảnh biểu cảm/dáng riêng của MVP (Tùng vui, gãi đầu…, Quân chỉ
+ * màn…) có bộ riêng ở src/mvp/ui/nhep-moi-mvp.ts.
  */
 import type { CharacterId } from '../../ids';
 import { artUrlOfFile } from './art-slots';
@@ -34,6 +38,10 @@ import hoaiDowncastMouth from './talk/hoai-downcast/mouth.webp';
 import hoaiDowncastEyes from './talk/hoai-downcast/eyes.webp';
 import hoaiRelievedMouth from './talk/hoai-relieved/mouth.webp';
 import hoaiRelievedEyes from './talk/hoai-relieved/eyes.webp';
+import tungNeutralMouth from './talk/tung-neutral/mouth.webp';
+import tungNeutralEyes from './talk/tung-neutral/eyes.webp';
+import haVyThinkingMouth from './talk/ha-vy-thinking/mouth.webp';
+import haVyThinkingEyes from './talk/ha-vy-thinking/eyes.webp';
 
 export interface TalkPatch {
   src: string;
@@ -110,6 +118,20 @@ const RIGS: readonly TalkRig[] = [
     height: 1360,
     mouth: { src: quanStunnedMouth, x: 351, y: 315, w: 128, h: 104 },
     eyes: { src: quanStunnedEyes, x: 294, y: 207, w: 241, h: 108 },
+  },
+  {
+    sourceFile: '/src/assets/characters/char-tung-anchor.png',
+    width: 768,
+    height: 1360,
+    mouth: { src: tungNeutralMouth, x: 273, y: 343, w: 220, h: 190 },
+    eyes: { src: tungNeutralEyes, x: 212, y: 154, w: 343, h: 189 },
+  },
+  {
+    sourceFile: '/src/assets/characters/char-ha-vy-thinking.png',
+    width: 768,
+    height: 1360,
+    mouth: { src: haVyThinkingMouth, x: 284, y: 384, w: 246, h: 211 },
+    eyes: { src: haVyThinkingEyes, x: 215, y: 206, w: 385, h: 173 },
   },
   {
     sourceFile: '/src/assets/characters/char-hoai-anchor.png',

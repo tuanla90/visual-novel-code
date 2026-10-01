@@ -14,7 +14,9 @@ import { isCharacterId, isExpressionOf } from '../../shared/ids';
 import { Portrait } from '../../shared/ui/Portrait';
 import { useVnStore } from '../../shared/vn/vn-store';
 import type { NhacViecMvp as NhacViec } from '../engine/trang-thai';
+import { TalkOverlay } from '../../shared/ui/visuals/TalkOverlay';
 import { anhChanDung, anhNen, anhTheoTen } from './anh-mvp';
+import { boNhepMoiTheoUrl } from './nhep-moi-mvp';
 import { NhacViecMvp } from './NhacViecMvp';
 
 export interface SanKhauMvpProps {
@@ -127,10 +129,15 @@ function ChanDungMvp({
   } else {
     url = anhChanDung(laNguoiChoi ? 'nguoi-choi' : nhanVat, bieuCam);
   }
+  // Ảnh riêng của MVP có bộ miếng (nhep-moi-mvp.ts) → nhép môi + chớp mắt như Portrait; mặt nạ alpha là chính ảnh PNG đã tách nền.
+  const rig = boNhepMoiTheoUrl(url);
   return (
     <figure className="portrait portrait--normal mvp-portrait" role="img" aria-label={ten} data-art-source={url ? 'image' : 'placeholder'}>
       {url ? (
-        <img className="portrait__img" src={url} alt="" draggable={false} />
+        <>
+          <img className="portrait__img" src={url} alt="" draggable={false} />
+          {rig ? <TalkOverlay rig={rig} talking={talking} cutoutSrc={url} /> : null}
+        </>
       ) : (
         <div className="mvp-portrait__tam" aria-hidden="true">
           <span>{ten}</span>
