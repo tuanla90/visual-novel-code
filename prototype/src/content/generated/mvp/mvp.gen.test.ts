@@ -32,7 +32,7 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
     const d = kq.duLieu as unknown as KichBanMvp | null;
     expect(d).not.toBeNull();
     if (!d) return;
-    expect(d.lich.ngay.map((n) => n.so)).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(d.lich.ngay.map((n) => n.so)).toEqual([1, 2, 3, 4, 5]);
     expect(d.lich.ngayHop).not.toBeNull();
     expect(d.lich.ket).toEqual({ that: 'ket-that', thuong: 'ket-thuong' });
     // Ngày 6 là ngày thử màn tổng hợp (phiếu làm nguồn, nhóm và đếm), chuỗi v2-tong-hop.
@@ -76,8 +76,7 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
       ['noi-dung-mvp/thu-thach/tin-don.md', 2, 2],
       ['noi-dung-mvp/thu-thach/tin-don.md', 1, 1],
       ['noi-dung-mvp/thu-thach/v2-loc-buoi.md', 4, 4],
-      ['noi-dung-mvp/thu-thach/v2-tong-hop.md', 14, 14],
-      ['noi-dung-mvp/thu-thach/v2-tong-hop.md', 3, 3],
+      ['noi-dung-mvp/thu-thach/c-lop.md', 14, 14],
       ['noi-dung-mvp/kich-ban/00-mo-dau.md', 3, 3],
       ['noi-dung-mvp/kich-ban/06-hop-va-ket.md', 14, 14],
     ]));

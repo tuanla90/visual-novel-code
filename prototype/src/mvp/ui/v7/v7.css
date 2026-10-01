@@ -1660,3 +1660,14 @@ button.v7-o:active:not(:disabled) {
   white-space: pre-wrap;
   word-break: break-word;
 }
+
+/* Ô chọn bảng (thẻ nhập môn "chọn bảng rồi chạy"): cùng dáng ô bảng, bấm để mở danh sách. */
+.v7-o--chon-bang {
+  appearance: auto;
+  cursor: pointer;
+  font: inherit;
+}
+.v7-o--chon-bang.is-trong {
+  border-style: dashed;
+  opacity: 0.85;
+}

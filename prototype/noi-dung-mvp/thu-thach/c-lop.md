@@ -1,5 +1,22 @@
 <!-- Thẻ thử thách chương 1 — ngày 2, laptop phòng CLB (ĐÃ CHỐT C, 30/09/2026). Chuỗi chạy ở kich-ban/02-ngay-2.md (n2-laptop). Tài khoản CLB chỉ xem được bảng lớp. SQL chuẩn, số dòng: phiên logic giữ (bộ kiểm chạy thật). Lời "Khi …": loi/tt-c-lop.md. -->
 
+### c-bang-lop — Tài khoản CLB xem được bảng nào? {challenge: c-bang-lop}
+
+- Tiêu đề: Bảng lớp sinh hoạt
+- Đề bài hiển thị: Tài khoản CLB chỉ xem được một bảng. Chọn bảng ấy rồi chạy, xem nó ghi những gì.
+- Mục tiêu học: Mỗi lần tra bắt đầu bằng việc chọn bảng. Chạy mà chưa lọc thì ra mọi dòng của bảng.
+- Số dòng kỳ vọng: 14
+- SQL chuẩn:
+
+```sql
+SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat;
+```
+
+- [LỜI c-bang-lop.1]
+- Vật chứng lưu vào hồ sơ: ev-bang-lop
+  - Tiêu đề: Bảng lớp: 14 lớp, 4 cột
+  - Mô tả: Cả bảng lớp sinh hoạt: mười bốn lớp. Mỗi dòng ghi mã lớp, ngành, khóa học và tòa nhà.
+
 ### c-lop — Lớp nào vừa ở tòa B vừa học Báo chí? {challenge: c-lop}
 
 - Tiêu đề: Lớp ở tòa B và học Báo chí

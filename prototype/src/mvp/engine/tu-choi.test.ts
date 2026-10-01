@@ -28,7 +28,7 @@ describe('nhảy tới (MVP)', () => {
     expect(s.giaiDoan).toBe('ngay');
     expect(s.ngay).toBe(2);
     expect(s.hoSo.manhMoi).toEqual(expect.arrayContaining(['clue-chu-ky-h', 'clue-toa-b', 'clue-bao-chi-k24', 'clue-quyen-du-lieu']));
-    expect(s.hoSo.bangChung).toEqual(['ev-the-lich']);
+    expect(s.hoSo.bangChung).toEqual(['ev-the-lich', 'ev-bang-lop']);
     expect(s.tenNguoiChoi).toBe(TEN_MAC_DINH);
     expect(s.nganh.length).toBeGreaterThan(0);
     // Làm xong như người chơi → phiếu hai lớp vào hồ sơ, hết ngày 2.

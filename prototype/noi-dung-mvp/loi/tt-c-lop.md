@@ -6,3 +6,6 @@
 - Khi chạy ra 5 dòng: **tung** (worried): Ơ, năm lớp? Tớ tưởng thêm điều kiện thì phải ít đi chứ. <br> **ha-vy** (thinking): Lớp nào ở tòa B cũng được lấy, lớp nào học Báo chí cũng được lấy. Rộng thật.
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không lớp nào à? Lạ nhỉ, trường mình có lớp Báo chí mà.
 - [DÀN DỰNG] Tùng rủ nối HOẶC → 5 lớp. Đổi VÀ → 2 lớp (BC24A, BC23A) → phiếu kết quả vào hồ sơ.
+
+## c-bang-lop.1
+- Khi đúng: **ha-vy** (neutral): Mười bốn lớp, bốn cột. Ghim lại. Giờ mới biết mình có gì để lọc.

@@ -26,9 +26,6 @@
 ## Cổng KTX {ngày: 5 · theo truyện}
 - Chuỗi: n5-mo
 
-## Từ phiếu đến pattern {ngày: 6 · theo truyện}
-- Chuỗi: v2-tong-hop
-
 ## Buổi họp rà soát {ngày họp}
 - Chuỗi: hop-00
 

@@ -17,6 +17,8 @@
 
 ### n2-laptop — Laptop phòng CLB: lớp nào vừa ở tòa B vừa học Báo chí? {cảnh: phong-clb}
 
+- [LỜI n2-laptop.0]
+- [THỬ THÁCH c-bang-lop]
 - [LỜI n2-laptop.1]
 - [THỬ THÁCH c-lop]
 - [LỜI n2-laptop.2]

@@ -589,15 +589,6 @@ export const KICH_BAN_MVP = {
         "duKienChinh": "",
         "moNgay": null,
         "buoiToi": ""
-      },
-      {
-        "so": 6,
-        "ten": "Từ phiếu đến pattern",
-        "kieu": "theo-truyen",
-        "chuoi": "v2-tong-hop",
-        "duKienChinh": "",
-        "moNgay": null,
-        "buoiToi": ""
       }
     ],
     "ngayHop": {
@@ -1832,13 +1823,13 @@ export const KICH_BAN_MVP = {
       "nodes": [
         {
           "type": "task",
-          "text": "Lớp nào vừa ở tòa B vừa học Báo chí?"
+          "text": "Xem tài khoản CLB tra được bảng nào"
         },
         {
           "type": "reminder",
           "speaker": "ha-vy",
-          "expression": "day-kinh",
-          "text": "Hai tờ giấy nhớ trên bàn: Tòa B, Báo chí K24. Lớp nào khớp?"
+          "expression": "neutral",
+          "text": "Chưa lọc gì vội. Chọn bảng rồi chạy, xem nó có những cột nào."
         },
         {
           "type": "note",
@@ -1848,6 +1839,37 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "narrator",
           "text": "Về tới phòng CLB. Cái laptop cũ khởi động mất gần hai phút."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tài khoản cô Hạnh tạo chỉ mở được đúng một bảng."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Thì mở nó ra xem đã. Chưa biết bảng ghi gì thì biết lọc cái gì."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-bang-lop"
+        },
+        {
+          "type": "task",
+          "text": "Lớp nào vừa ở tòa B vừa học Báo chí?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "day-kinh",
+          "text": "Hai tờ giấy nhớ trên bàn: Tòa B, Báo chí K24. Lớp nào khớp?"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Mười bốn lớp. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà."
         },
         {
           "type": "line",
@@ -3235,26 +3257,6 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "end"
-        }
-      ]
-    },
-    {
-      "id": "v2-tong-hop",
-      "title": "Từ phiếu đến pattern",
-      "canh": "phong-may",
-      "mocSomNhat": 61,
-      "nodes": [
-        {
-          "type": "task",
-          "text": "Dùng kết quả đã lưu làm nguồn, rồi nhóm các lớp ở tòa B theo ngành."
-        },
-        {
-          "type": "challenge",
-          "challengeId": "c-v2-nguon-lop"
-        },
-        {
-          "type": "challenge",
-          "challengeId": "c-v2-nhom-lop"
         }
       ]
     },
@@ -8670,6 +8672,37 @@ export const KICH_BAN_MVP = {
         "Lần chạy \"sai có ích\": mã Hoài/Hiếu + tên tệp → 0 dòng. Bỏ điều kiện mã → 1 dòng: clb_robotics, 23:10 Chủ nhật."
       ]
     },
+    "c-bang-lop": {
+      "id": "c-bang-lop",
+      "tieuDe": "Bảng lớp sinh hoạt",
+      "deBai": "Tài khoản CLB chỉ xem được một bảng. Chọn bảng ấy rồi chạy, xem nó ghi những gì.",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": "Mỗi lần tra bắt đầu bằng việc chọn bảng. Chạy mà chưa lọc thì ra mọi dòng của bảng.",
+      "soDongKyVong": 14,
+      "sqlChuan": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat;",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Mười bốn lớp, bốn cột. Ghim lại. Giờ mới biết mình có gì để lọc."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-bang-lop",
+        "title": "Bảng lớp: 14 lớp, 4 cột",
+        "description": "Cả bảng lớp sinh hoạt: mười bốn lớp. Mỗi dòng ghi mã lớp, ngành, khóa học và tòa nhà.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
     "c-lop": {
       "id": "c-lop",
       "tieuDe": "Lớp ở tòa B và học Báo chí",
@@ -10266,40 +10299,6 @@ export const KICH_BAN_MVP = {
       "ghiChu": [
         "Đường \"sai có ích\": [clb-tham-tu] vào ma_phong, [DA_XAC_NHAN] vào trang_thai, so y nguyên → 1 dòng. Gọt dấu cách → 2. Thêm chữ thường → 4, chưa xếp → \"sai thứ tự\". Xếp theo ngay → đúng."
       ]
-    },
-    "c-v2-nguon-lop": {
-      "id": "c-v2-nguon-lop",
-      "tieuDe": "Danh sách lớp sinh hoạt",
-      "deBai": "Lọc tiếp trên danh sách lớp để xem ngành nào có lớp ở tòa B.",
-      "manhMoiLienQuan": [],
-      "mucTieuHoc": null,
-      "soDongKyVong": 14,
-      "sqlChuan": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat;",
-      "truyVanNapSan": null,
-      "phanUng": [],
-      "vatChung": {
-        "id": "ev-v2-danh-sach-lop",
-        "title": "Phiếu danh sách lớp",
-        "description": "Kết quả truy vấn danh sách lớp, gồm mã lớp, ngành, khóa học và tòa nhà.",
-        "giaTri": []
-      },
-      "ghiChu": []
-    },
-    "c-v2-nhom-lop": {
-      "id": "c-v2-nhom-lop",
-      "tieuDe": "Số lớp tại tòa B theo ngành",
-      "deBai": "Dùng phiếu danh sách lớp làm nguồn, lọc các lớp ở tòa B rồi đếm theo ngành.",
-      "manhMoiLienQuan": [],
-      "mucTieuHoc": null,
-      "soDongKyVong": 3,
-      "sqlChuan": "SELECT nganh, COUNT(*) AS so_lop FROM @ev-v2-danh-sach-lop WHERE toa_nha = 'B' GROUP BY nganh;",
-      "kieuTrinhDung": "tong-hop",
-      "nguon": "ev-v2-danh-sach-lop",
-      "nhomTheo": "nganh",
-      "truyVanNapSan": null,
-      "phanUng": [],
-      "vatChung": null,
-      "ghiChu": []
     }
   },
   "hoSo": {
@@ -11230,9 +11229,15 @@ export const KICH_BAN_MVP = {
       "resultId": "ev-nhat-ky-in"
     },
     {
+      "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat;",
+      "soDong": 14,
+      "noi": "noi-dung-mvp/thu-thach/c-lop.md:3 thẻ c-bang-lop, SQL chuẩn",
+      "resultId": "ev-bang-lop"
+    },
+    {
       "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí';",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/c-lop.md:3 thẻ c-lop, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/c-lop.md:20 thẻ c-lop, SQL chuẩn",
       "resultId": "ev-hai-lop"
     },
     {
@@ -11396,19 +11401,6 @@ export const KICH_BAN_MVP = {
       "soDong": 4,
       "noi": "noi-dung-mvp/thu-thach/v2-loc-buoi.md:3 thẻ v2-loc-buoi, SQL chuẩn",
       "resultId": "ev-v2-activities"
-    },
-    {
-      "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat;",
-      "soDong": 14,
-      "noi": "noi-dung-mvp/thu-thach/v2-tong-hop.md:3 thẻ c-v2-nguon-lop, SQL chuẩn",
-      "resultId": "ev-v2-danh-sach-lop"
-    },
-    {
-      "sql": "SELECT nganh, COUNT(*) AS so_lop FROM @ev-v2-danh-sach-lop WHERE toa_nha = 'B' GROUP BY nganh;",
-      "soDong": 3,
-      "noi": "noi-dung-mvp/thu-thach/v2-tong-hop.md:18 thẻ c-v2-nhom-lop, SQL chuẩn",
-      "sourceResultId": "ev-v2-danh-sach-lop",
-      "sourceGroupColumn": "nganh"
     },
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';",

@@ -21,11 +21,18 @@
 - **player**: Bảng lớp thôi cũng đủ khoanh vùng rồi ạ. Em cảm ơn cô.
 - **co-hanh** (smile): Khoanh vùng thôi đấy nhé. Lớp thì không bỏ thư được.
 
+## n2-laptop.0
+> NHIỆM VỤ: Xem tài khoản CLB tra được bảng nào
+> NHẮC VIỆC ha-vy (neutral): Chưa lọc gì vội. Chọn bảng rồi chạy, xem nó có những cột nào.
+- [DÀN DỰNG] Phòng CLB buổi chiều. Laptop CLB đã đăng nhập tài khoản mới. Giấy nhớ [Tòa B], [Báo chí K24] trên bàn.
+- **narrator**: Về tới phòng CLB. Cái laptop cũ khởi động mất gần hai phút.
+- **duy** (neutral): Tài khoản cô Hạnh tạo chỉ mở được đúng một bảng.
+- **ha-vy** (neutral): Thì mở nó ra xem đã. Chưa biết bảng ghi gì thì biết lọc cái gì.
+
 ## n2-laptop.1
 > NHIỆM VỤ: Lớp nào vừa ở tòa B vừa học Báo chí?
 > NHẮC VIỆC ha-vy (day-kinh): Hai tờ giấy nhớ trên bàn: Tòa B, Báo chí K24. Lớp nào khớp?
-- [DÀN DỰNG] Phòng CLB buổi chiều. Laptop CLB đã đăng nhập tài khoản mới. Giấy nhớ [Tòa B], [Báo chí K24] trên bàn.
-- **narrator**: Về tới phòng CLB. Cái laptop cũ khởi động mất gần hai phút.
+- **player**: Mười bốn lớp. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà.
 - **tung** (chi-tay): Tòa B hoặc Báo chí, cứ dính một cái là lấy hết cho chắc. Tớ cá kiểu gì chẳng trúng!
 - **ha-vy** (neutral): Đừng cá. Tính.
 
