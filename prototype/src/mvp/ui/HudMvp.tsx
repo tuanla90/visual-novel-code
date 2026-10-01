@@ -15,6 +15,7 @@ import { IconFolderOpen, IconHistory, IconRotateCcw, IconSave, IconSliders } fro
 import { useVnStore } from '../../shared/vn/vn-store';
 import { tenKhungHienTai } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
+import './LichMvp.css';
 
 export interface HudMvpProps {
   kb: KichBanMvp;
@@ -31,6 +32,8 @@ export interface HudMvpProps {
   onBatDauLai: () => void;
   /** Bỏ trống = không có màn tiêu đề (bản chơi thử chỉ MVP) → ẩn mục "Về màn tiêu đề". */
   onVeTieuDe?: () => void;
+  /** Vé "NGÀY n/5" thành nút mở lịch (LichMvp). Bỏ trống → vé chỉ để xem như trước. */
+  onMoLich?: () => void;
 }
 
 /** Thanh uy tín: `con` vạch đầy trên `tong`. */
@@ -59,7 +62,7 @@ function mocHud(kb: KichBanMvp, s: TrangThaiMvp): { kicker: string; so: string; 
   return { kicker: 'Vụ 1', so: 'Kết', ten: 'Kết thúc', nhanDai: 'Kết thúc' };
 }
 
-export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onBatDauLai, onVeTieuDe }: HudMvpProps) {
+export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onBatDauLai, onVeTieuDe, onMoLich }: HudMvpProps) {
   const [menuMo, setMenuMo] = useState(false);
   const [xacNhan, setXacNhan] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -97,28 +100,40 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
     viec();
   };
 
+  const veNgay = (
+    <>
+      <span className="topbar__chapter-count">
+        <span className="topbar__chapter-kicker" aria-hidden="true">
+          {moc.kicker}
+        </span>
+        <span className="topbar__chapter-number">{moc.so}</span>
+      </span>
+      <span className="topbar__chapter-info">
+        <span className="topbar__chapter-name">{moc.ten}</span>
+        <span className="topbar__pips" aria-hidden="true">
+          {kb.lich.ngay.map((n) => (
+            <span
+              key={n.so}
+              className={`topbar__pip${daXongNgay(n.so) ? ' is-done' : ''}${s.giaiDoan === 'ngay' && n.so === s.ngay ? ' is-current' : ''}`}
+              title={`Ngày ${n.so}${n.ten ? ` · ${n.ten}` : ''}`}
+            />
+          ))}
+        </span>
+      </span>
+    </>
+  );
+
   return (
     <header className={`topbar mvp-topbar${coUyTin ? ' mvp-topbar--uytin' : ''}`} aria-label="Thanh trạng thái">
-      <div className="topbar__chapter" role="group" aria-label={`Tiến trình: ${moc.nhanDai}`} title={tenNgay || moc.nhanDai}>
-        <span className="topbar__chapter-count">
-          <span className="topbar__chapter-kicker" aria-hidden="true">
-            {moc.kicker}
-          </span>
-          <span className="topbar__chapter-number">{moc.so}</span>
-        </span>
-        <span className="topbar__chapter-info">
-          <span className="topbar__chapter-name">{moc.ten}</span>
-          <span className="topbar__pips" aria-hidden="true">
-            {kb.lich.ngay.map((n) => (
-              <span
-                key={n.so}
-                className={`topbar__pip${daXongNgay(n.so) ? ' is-done' : ''}${s.giaiDoan === 'ngay' && n.so === s.ngay ? ' is-current' : ''}`}
-                title={`Ngày ${n.so}${n.ten ? ` · ${n.ten}` : ''}`}
-              />
-            ))}
-          </span>
-        </span>
-      </div>
+      {onMoLich ? (
+        <button type="button" className="topbar__chapter" aria-label={`Mở lịch — ${moc.nhanDai}`} title="Mở lịch" onClick={onMoLich}>
+          {veNgay}
+        </button>
+      ) : (
+        <div className="topbar__chapter" role="group" aria-label={`Tiến trình: ${moc.nhanDai}`} title={tenNgay || moc.nhanDai}>
+          {veNgay}
+        </div>
+      )}
       <div className="topbar__task" aria-live="polite">
         <svg className="topbar__task-icon" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="12" r="7" stroke="currentColor" strokeWidth="1.8" fill="none" />

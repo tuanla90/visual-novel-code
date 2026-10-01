@@ -120,6 +120,8 @@ export type LoaiMoc = 'truyen' | 'han' | 'hom-nay' | 'qua';
 export interface MocLich {
   ngay: string;
   ten: string;
+  /** Nhãn ngắn cho ô lịch ("Họp", "Ngày 1"). */
+  ngan: string;
   /** So với hôm nay: đã qua / hôm nay; còn lại là mốc truyện hay hạn. */
   loai: LoaiMoc;
   chiTiet?: string;
@@ -133,6 +135,8 @@ export interface MocLich {
 export interface HanPhu {
   ngay: string;
   ten: string;
+  /** Nhãn ngắn cho ô lịch; thiếu → `ten`. */
+  ngan?: string;
   chiTiet?: string;
 }
 
@@ -159,19 +163,19 @@ export function mocLich(s: { giaiDoan: GiaiDoanMvp; ngay: number }, tuy: TuyChon
     ds.push({ ...m, loai: xepLoai(m.ngay, m.den, hom, goc) });
   };
 
-  them({ ngay: l.nhanPhong, ten: 'Nhận phòng KTX', chiTiet: 'Phòng 408' });
+  them({ ngay: l.nhanPhong, ten: 'Nhận phòng KTX', ngan: 'Nhận phòng', chiTiet: 'Phòng 408' });
   if (!hn.moDau) {
-    them({ ngay: l.tuanCongDan.tu, den: l.tuanCongDan.den, ten: 'Tuần sinh hoạt công dân' });
-    them({ ngay: l.ngayHoi, ten: 'Ngày hội CLB' });
-    them({ ngay: l.phongClb, ten: 'Phòng CLB · lá thư', chiTiet: '16:00' });
+    them({ ngay: l.tuanCongDan.tu, den: l.tuanCongDan.den, ten: 'Tuần sinh hoạt công dân', ngan: 'Công dân' });
+    them({ ngay: l.ngayHoi, ten: 'Ngày hội CLB', ngan: 'Ngày hội' });
+    them({ ngay: l.phongClb, ten: 'Phòng CLB · lá thư', ngan: 'Lá thư', chiTiet: '16:00' });
     const toi = s.giaiDoan === 'ngay' ? Math.max(1, s.ngay) : 5;
     for (let n = 1; n <= toi; n++) {
       const ten = tuy.tenNgay?.(n);
-      them({ ngay: l.ngayDieuTra(n), ten: `Ngày ${n}`, ...(ten ? { chiTiet: ten } : {}) });
+      them({ ngay: l.ngayDieuTra(n), ten: `Ngày ${n}`, ngan: `Ngày ${n}`, ...(ten ? { chiTiet: ten } : {}) });
     }
-    them({ ngay: l.hop, ten: 'Buổi họp rà soát', chiTiet: '16:00', han: 'vu' }, 'han');
+    them({ ngay: l.hop, ten: 'Buổi họp rà soát', ngan: 'Họp', chiTiet: '16:00', han: 'vu' }, 'han');
   }
-  for (const h of tuy.hanPhu ?? []) them({ ngay: h.ngay, ten: h.ten, han: 'phu', ...(h.chiTiet ? { chiTiet: h.chiTiet } : {}) }, 'han');
+  for (const h of tuy.hanPhu ?? []) them({ ngay: h.ngay, ten: h.ten, ngan: h.ngan ?? h.ten, han: 'phu', ...(h.chiTiet ? { chiTiet: h.chiTiet } : {}) }, 'han');
   return ds.sort((a, b) => soNgayGiua(b.ngay, a.ngay));
 }
 

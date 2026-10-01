@@ -89,7 +89,7 @@ describe('mocLich', () => {
 
   it('mở đầu: chỉ ngày nhận phòng, không lộ lá thư hay buổi họp', () => {
     const ds = mocLich({ giaiDoan: 'mo-dau', ngay: 0 });
-    expect(ds).toEqual([{ ngay: '2024-09-08', ten: 'Nhận phòng KTX', chiTiet: 'Phòng 408', loai: 'hom-nay' }]);
+    expect(ds).toEqual([{ ngay: '2024-09-08', ten: 'Nhận phòng KTX', ngan: 'Nhận phòng', chiTiet: 'Phòng 408', loai: 'hom-nay' }]);
   });
 
   it('buổi họp: năm ngày đã qua, hạn thành hôm nay mà vẫn đánh dấu hạn', () => {
