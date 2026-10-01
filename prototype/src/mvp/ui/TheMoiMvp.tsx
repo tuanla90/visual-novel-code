@@ -10,7 +10,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { gocNghieng, type LoaiTheBang } from '../engine/bang-dieu-tra';
 import { anhTheoTen } from './anh-mvp';
-import type { TheMoi } from './the-moi';
+import { THOI_GIAN_THE_MOI, type TheMoi } from './the-moi';
 import { NHIP } from './v7/nhip';
 
 export interface TheMoiMvpProps {
@@ -21,8 +21,6 @@ export interface TheMoiMvpProps {
   onXong: () => void;
 }
 
-/** Thời gian (ms): rơi xuống · giữ để đọc · bay về nút Hồ sơ. */
-export const THOI_GIAN_THE_MOI = { vao: 450, giu: 1600, bay: 560 } as const;
 const TOI_DA_HIEN = 3;
 
 const NHAN_LOAI: Record<LoaiTheBang, string> = {

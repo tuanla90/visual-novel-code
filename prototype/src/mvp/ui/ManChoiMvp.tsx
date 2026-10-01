@@ -45,6 +45,8 @@ import { NoiMvp } from './NoiMvp';
 import { SanKhauMvp } from './SanKhauMvp';
 import { TaiLieuMvp } from './TaiLieuMvp';
 import { TaoNhanVatMvp } from './TaoNhanVatMvp';
+import { maMoi, theMoiTuMa, useTheChuaXem, type TheMoi } from './the-moi';
+import { TheMoiMvp } from './TheMoiMvp';
 import { TraSoMvp } from './TrangSoMvp';
 
 export interface ManChoiMvpProps {
@@ -112,16 +114,30 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   }, [bgmEnabled]);
   useEffect(() => () => soundEngine.stopBgm(), []);
 
-  // Báo khi hồ sơ có thêm mục (kèm tiếng chuông như prototype).
-  const demTruoc = useRef(s ? soHoSo(s) : 0);
+  // Hồ sơ có thêm thẻ → thẻ thu nhỏ rơi xuống dưới nút Hồ sơ rồi bay vào nút (`TheMoiMvp`), kèm tiếng chuông như
+  // prototype; thẻ ghi vào danh sách "chưa xem" (nhãn MỚI trong khung Hồ sơ). Thẻ đến khi đợt trước còn bay → xếp hàng.
+  // Hồ sơ mất thẻ (nạp ván khác, chơi lại) → không báo, đặt lại mốc và bỏ danh sách chưa xem.
+  const [dotTheMoi, setDotTheMoi] = useState<TheMoi[][]>([]);
+  const xongDotTheMoi = useCallback(() => setDotTheMoi((d) => d.slice(1)), []);
+  const hoSoTruoc = useRef(s ? s.hoSo : null);
+  const themChuaXem = useTheChuaXem((k) => k.them);
+  const boChuaXem = useTheChuaXem((k) => k.daXemHet);
   useEffect(() => {
-    const dem = s ? soHoSo(s) : 0;
-    if (dem > demTruoc.current) {
-      soundEngine.playSfx('clue_unlock');
-      baoToast('Bảng điều tra có thêm thẻ mới.');
+    const hoSo = s ? s.hoSo : null;
+    if (hoSo === hoSoTruoc.current) return;
+    const ids = maMoi(hoSoTruoc.current, hoSo);
+    hoSoTruoc.current = hoSo;
+    if (ids === null) {
+      boChuaXem();
+      setDotTheMoi([]);
+      return;
     }
-    demTruoc.current = dem;
-  }, [s, baoToast]);
+    if (!s || ids.length === 0) return;
+    soundEngine.playSfx('clue_unlock');
+    themChuaXem(ids);
+    const dot = theMoiTuMa(kb, s, ids);
+    if (dot.length > 0) setDotTheMoi((d) => [...d, dot]);
+  }, [s, kb, themChuaXem, boChuaXem]);
   // Sổ cá nhân tự có dòng mới ([GHI SỔ], QĐ-092) → báo, để người chơi biết mà mở xem.
   const soTrangTruoc = useRef(s ? s.soTay.length : 0);
   useEffect(() => {
@@ -339,6 +355,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const game = (
     <div className={`game mvp-game${laDoc ? ' game--portrait' : ''}${gioiThieu ? ' game--debut' : ''}`}>
       {toast ? <div className="vn-toast" role="status">{toast}</div> : null}
+      {dotTheMoi[0] ? <TheMoiMvp key={dotTheMoi[0].map((t) => t.id).join('|')} danhSach={dotTheMoi[0]} dienTen={dienTen} onXong={xongDotTheMoi} /> : null}
       {gioiThieu ? <GioiThieuMvp key={gioiThieu} kb={kb} nhanVat={gioiThieu} onDong={dongGioiThieu} /> : null}
       <HudMvp
         kb={kb}

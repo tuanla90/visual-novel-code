@@ -21,6 +21,7 @@ import type { HoSoMvp as HoSo, TrangThaiMvp } from '../engine/trang-thai';
 import { BangGhimMvp } from './v7/BangGhimMvp';
 import { anhChanDung } from './anh-mvp';
 import { NhanVatMvp } from './NhanVatMvp';
+import { useTheChuaXem } from './the-moi';
 import { TheHoSo } from './TheHoSo';
 
 export type TabHoSoMvp = 'nhan-vat' | 'ho-so' | 'so-tay';
@@ -51,6 +52,23 @@ const SO_O_TOI_THIEU = 12;
 const TEN_TAB: Record<TabHoSoMvp, string> = { 'nhan-vat': 'Nhân vật', 'ho-so': 'Bảng điều tra', 'so-tay': 'Sổ cá nhân' };
 
 export function HoSoMvp({ kb, trangThai, onDoiCho, hoSo, soTay, tenNguoiChoi, nganh, daGap, tab, onDoiTab: doiTab, dienTen, onDong: dong }: HoSoMvpProps) {
+  // Nhãn MỚI: chụp danh sách thẻ chưa xem lúc mở khung rồi coi như đã xem hết (mở khung là thấy cả bảng) — nhãn vẫn hiện
+  // suốt lần mở này, bấm vào thẻ thì tắt nhãn thẻ đó. (Chụp ở `useState` để chế độ dev dựng hai lần không làm mất nhãn.)
+  const [chuaXem, setChuaXem] = useState<readonly string[]>(() => useTheChuaXem.getState().chuaXem);
+  const daXemHet = useTheChuaXem((k) => k.daXemHet);
+  const daXemThe = useTheChuaXem((k) => k.daXem);
+  useEffect(() => {
+    daXemHet();
+  }, [daXemHet]);
+  const xemThe = useCallback(
+    (id: string): void => {
+      daXemThe(id);
+      setChuaXem((c) => (c.includes(id) ? c.filter((x) => x !== id) : c));
+    },
+    [daXemThe],
+  );
+  const soMoi = chuaXem.filter((id) => hoSo.manhMoi.includes(id) || hoSo.taiLieu.includes(id) || hoSo.bangChung.includes(id)).length;
+
   // Tiếng chuyển tab / đóng như hòm đồ prototype.
   const onDoiTab = (t: TabHoSoMvp): void => {
     soundEngine.playSfx('tab');
@@ -107,6 +125,7 @@ export function HoSoMvp({ kb, trangThai, onDoiCho, hoSo, soTay, tenNguoiChoi, ng
             >
               <IconBriefcase width={15} height={15} aria-hidden="true" />
               <span>Bảng điều tra</span>
+              {soMoi > 0 && tab !== 'ho-so' ? <span className="mvp-nhan-moi mvp-nhan-moi--tab">{soMoi} mới</span> : null}
             </button>
             <button
               type="button"
@@ -139,10 +158,19 @@ export function HoSoMvp({ kb, trangThai, onDoiCho, hoSo, soTay, tenNguoiChoi, ng
           </div>
         ) : tab === 'ho-so' && trangThai ? (
           <div className="mvp-kho__bang">
-            <BangGhimMvp kb={kb} s={trangThai} dienTen={dienTen} onDoiCho={onDoiCho} />
+            <BangGhimMvp kb={kb} s={trangThai} dienTen={dienTen} onDoiCho={onDoiCho} chuaXem={chuaXem} onXemThe={xemThe} />
           </div>
         ) : tab === 'ho-so' ? (
-          <NganHoSo kb={kb} hoSo={hoSo} soTrangSo={soTay.length} tenNguoiChoi={tenNguoiChoi} nganh={nganh} dienTen={dienTen} />
+          <NganHoSo
+            kb={kb}
+            hoSo={hoSo}
+            soTrangSo={soTay.length}
+            tenNguoiChoi={tenNguoiChoi}
+            nganh={nganh}
+            dienTen={dienTen}
+            chuaXem={chuaXem}
+            onXemThe={xemThe}
+          />
         ) : (
           <NganSoTay kb={kb} soTay={soTay} dienTen={dienTen} />
         )}
@@ -158,6 +186,8 @@ function NganHoSo({
   tenNguoiChoi,
   nganh,
   dienTen,
+  chuaXem,
+  onXemThe,
 }: {
   kb: KichBanMvp;
   hoSo: HoSo;
@@ -165,6 +195,8 @@ function NganHoSo({
   tenNguoiChoi: string;
   nganh: string;
   dienTen: (t: string) => string;
+  chuaXem: readonly string[];
+  onXemThe: (id: string) => void;
 }) {
   const [nhom, setNhom] = useState<Nhom>('tat-ca');
   // Theo thứ tự nhận trong từng nhóm: giấy nhớ → tài liệu → bằng chứng.
@@ -232,16 +264,25 @@ function NganHoSo({
             const the = kb.hoSo[id];
             const ten = the ? dienTen(the.heading) : 'Mục chưa có thẻ hồ sơ';
             const la = id === dangChon;
+            const moi = chuaXem.includes(id);
             return (
               <button
                 key={id}
                 type="button"
                 className={`inv-slot${la ? ' is-selected' : ''}`}
                 aria-pressed={la}
-                aria-label={ten}
+                aria-label={moi ? `${ten} (mới)` : ten}
                 title={ten}
-                onClick={() => setChon(id)}
+                onClick={() => {
+                  setChon(id);
+                  onXemThe(id);
+                }}
               >
+                {moi ? (
+                  <span className="mvp-nhan-moi mvp-nhan-moi--o" aria-hidden="true">
+                    MỚI
+                  </span>
+                ) : null}
                 <span className="inv-slot__icon" aria-hidden="true">
                   <ItemVectorIcon id={id} size={34} />
                 </span>

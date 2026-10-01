@@ -20,7 +20,10 @@ export interface TheMoi {
   anh: string | null;
 }
 
-const tatCaMa = (h: HoSoMvp): string[] => [...h.manhMoi, ...h.taiLieu, ...h.bangChung];
+/** Thời gian (ms) của hoạt ảnh: rơi xuống · giữ để đọc · bay về nút Hồ sơ (khớp CSS `.the-moi*` trong mvp.css). */
+export const THOI_GIAN_THE_MOI = { vao: 450, giu: 1600, bay: 560 } as const;
+
+const tatCaMa =(h: HoSoMvp): string[] => [...h.manhMoi, ...h.taiLieu, ...h.bangChung];
 
 /**
  * Mã các thẻ có ở `sau` mà chưa có ở `truoc`. `null` khi `truoc` có thẻ mà `sau` không có (nạp ván khác, chơi lại):
