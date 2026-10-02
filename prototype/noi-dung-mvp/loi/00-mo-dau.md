@@ -106,6 +106,8 @@
 ## md-08-tuan-cong-dan.1
 - [THẺ CHỮ] **narrator**: Thứ Hai → thứ Sáu — Tuần sinh hoạt công dân
 - **tung** (happy): Tuần này tớ ngồi bàn đầu, chép đủ từng chữ. Tớ cá luôn.
+
+## md-08-tuan-cong-dan.1b
 - **narrator**: Thứ Tư. Bàn cuối. Tùng ngủ gục trên cuốn sổ mới chép được đúng dòng tiêu đề, bút vẫn kẹp trong tay.
 - **narrator**: Thứ Sáu, cả hội trường xếp hàng chụp ảnh thẻ. Ai cũng bảo ảnh mình xấu, rồi lén xem ảnh người đứng sau.
 - **narrator**: Cả tuần ngồi hội trường nghe nội quy. Buổi cuối, mỗi người được phát một tấm thẻ lịch in theo khoa, dưới cùng có dòng "Họ tên / Lớp" để tự viết.
@@ -119,6 +121,8 @@
 - [DÀN DỰNG] Nền nhà văn hóa ngày hội (nền chưa vẽ người); gian Robotics bên trái, cờ in hình bánh răng (ảnh cần vẽ thêm — xem báo cáo rà soát A4/A5); bàn Thám Tử bên phải.
 - **narrator**: Sân nhà văn hóa giăng cờ, bàn CLB kê kín lối đi. Gian Robotics rộng nhất, cờ in hình bánh răng, dán tấm bảng "Đang xin mở rộng xưởng thực hành". Bàn CLB Thám Tử ở góc, chỉ có một chị ngồi.
 - **tung** (happy): Tớ chỉ đi xem thôi nhé. Không đăng ký CLB nào đâu, năm nhất phải lo học.
+
+## md-09-ngay-hoi.2b
 - **narrator**: Mười phút sau, trên tay Tùng có bốn tờ đăng ký, một cái quạt giấy của CLB Guitar và nửa cái bánh rán của CLB Nấu ăn.
 - **tung** (neutral): Chị ơi, đây là bàn CLB Thám Tử ạ? Chị là thành viên CLB ạ?
 - **minh-anh** (neutral): Ừ, đúng rồi. Chị là {{nv.minh-anh}}, chủ nhiệm CLB.

@@ -93,4 +93,6 @@
 - **hoai** (neutral): Lạc một lần thì nhớ lâu.
 - **tung** (chi-tay): Cổng phụ chứ gì. Tớ đi một lần là thuộc.
 - **narrator**: Chiều hôm ấy, nhóm chat CLB có tin nhắn mới của Tùng: "Cho tớ hỏi, từ cổng phụ về ký túc thì rẽ bên nào? Tớ đang đứng ở nhà xe."
+
+## p-lac-ket.2
 - [THẺ CHỮ] **narrator**: Đếm cho biết mình sai mấy lần. Lọc cho biết sai ở lượt nào. Còn vì sao sai thì phải tự nhớ, và tự nói ra.

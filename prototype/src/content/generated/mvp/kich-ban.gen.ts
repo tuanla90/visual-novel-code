@@ -1372,6 +1372,10 @@ const GOC = {
           "imageId": "chibi-408-vali"
         },
         {
+          "type": "image",
+          "imageId": "chibi-vali-tho"
+        },
+        {
           "type": "note",
           "text": "Hai người khiêng vali lên tới tầng bốn, cùng thở dốc. Tùng đẩy cửa phòng 408."
         },
@@ -1536,6 +1540,10 @@ const GOC = {
           "text": "Tuần này tớ ngồi bàn đầu, chép đủ từng chữ. Tớ cá luôn."
         },
         {
+          "type": "image",
+          "imageId": "chibi-ngu-gat"
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "text": "Thứ Tư. Bàn cuối. Tùng ngủ gục trên cuốn sổ mới chép được đúng dòng tiêu đề, bút vẫn kẹp trong tay."
@@ -1595,6 +1603,10 @@ const GOC = {
           "speaker": "tung",
           "expression": "happy",
           "text": "Tớ chỉ đi xem thôi nhé. Không đăng ký CLB nào đâu, năm nhất phải lo học."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-ngay-hoi"
         },
         {
           "type": "line",
@@ -3939,6 +3951,10 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Chín giờ thì hộp bánh hết. Người ăn cái cuối là Duy. Duy mở sổ, ghi một dòng: \"Nợ CLB một hộp bánh.\""
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-banh-quy"
         }
       ]
     },
@@ -12234,6 +12250,10 @@ const GOC = {
           "text": "Chiều hôm ấy, nhóm chat CLB có tin nhắn mới của Tùng: \"Cho tớ hỏi, từ cổng phụ về ký túc thì rẽ bên nào? Tớ đang đứng ở nhà xe.\""
         },
         {
+          "type": "image",
+          "imageId": "chibi-lac-nha-xe"
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
@@ -15500,7 +15520,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:168 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:171 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",
