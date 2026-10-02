@@ -161,7 +161,7 @@ export function AudioSettingsModal({ open, onClose }: AudioSettingsModalProps) {
           </label>
 
           <label className="audio-toggle">
-            <span>Phát nhạc nền học đường (Ambient BGM)</span>
+            <span>Phát nhạc nền (đổi bài theo cảnh)</span>
             <input
               type="checkbox"
               checked={bgmEnabled}

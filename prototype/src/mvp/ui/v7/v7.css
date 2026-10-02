@@ -845,6 +845,21 @@ button.v7-o:active:not(:disabled) {
   height: 68px;
   object-fit: contain;
   object-position: center top;
+  /* Chibi nhún theo lời nói: số nhịp `--nhip` tính theo độ dài câu (ManTraV7 `soNhipNhun`); chờ hộp thoại trượt lên xong. */
+  transform-origin: 50% 100%;
+  animation: v7-chibi-nhun 0.32s ease-in-out 0.25s var(--nhip, 3);
+}
+@keyframes v7-chibi-nhun {
+  0%,
+  100% {
+    transform: none;
+  }
+  30% {
+    transform: translateY(1px) scale(1.02, 0.97);
+  }
+  65% {
+    transform: translateY(-3px) scale(0.99, 1.02);
+  }
 }
 .v7-thoai__than {
   display: flex;
@@ -868,7 +883,8 @@ button.v7-o:active:not(:disabled) {
   .v7-dau,
   .v7-kq tbody tr,
   .v7-nut--ghim,
-  .v7-thoai {
+  .v7-thoai,
+  .v7-thoai__mat {
     animation: none;
   }
 }
