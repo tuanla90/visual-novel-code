@@ -7562,6 +7562,10 @@ export const KICH_BAN_MVP = {
           "imageId": "cg-v5-chia-va-huy-hieu"
         },
         {
+          "type": "image",
+          "imageId": "cg-v5-hoai-hoi-tung"
+        },
+        {
           "type": "goto",
           "to": "v5-chot"
         }
@@ -7617,6 +7621,10 @@ export const KICH_BAN_MVP = {
           "speaker": "narrator",
           "display": "card",
           "text": "Dữ liệu chỉ ra ai cần hỏi. Người trả lời mới là người nói \"vì sao\". Mùa 1 khép lại ở chỗ chứng cứ dừng."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-v5-hoai-vao-clb"
         },
         {
           "type": "image",
