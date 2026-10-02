@@ -82,6 +82,7 @@
 - Vai: Bảo vệ giảng đường B. Cùng cô phụ trách mở hộp kiến nghị lúc 9h sáng thứ Hai.
 - Biểu cảm: neutral, smile
 - Danh xưng: Bảo vệ giảng đường B
+- Không xưng tên: có
 - Khi chưa quen: Bác bảo vệ
 - Lịch: Trực sảnh tòa B từ thứ Hai tới thứ Bảy, mở cửa 7 giờ sáng, khóa các phòng học 9 giờ tối; lối lên thư viện tầng ba để tới 11 giờ đêm rồi mới khóa sảnh. Chủ nhật chỉ ghé buổi tối để khóa cửa.
 - Thường ở: T2–T7 07:00–23:00 → toa-b; CN 20:00–23:00 → toa-b
@@ -92,6 +93,7 @@
 - Vai: Phòng Đào tạo. Tạo tài khoản tra cứu của CLB trên laptop (ngày 2): chỉ xem bảng lớp; bảng có thông tin cá nhân phải có phiếu yêu cầu tra cứu.
 - Biểu cảm: neutral, smile
 - Danh xưng: Phòng Đào tạo
+- Không xưng tên: có
 - Khi chưa quen: Cô cán bộ
 - Lịch: Giờ hành chính ở Phòng Đào tạo, tòa hành chính.
 - Thường ở: T2–T6 08:00–17:00 → toa-hanh-chinh
@@ -102,6 +104,7 @@
 - Vai: Phòng Công tác sinh viên (CTSV). Gọi Minh Anh lên nhận thông báo; giải thích quy chế phiếu gửi.
 - Biểu cảm: neutral, smile
 - Danh xưng: Phòng Công tác sinh viên
+- Không xưng tên: có
 - Khi chưa quen: Cô cán bộ
 - Lịch: Giờ hành chính ở Phòng Công tác sinh viên, tòa hành chính.
 - Thường ở: T2–T6 08:00–17:00 → toa-hanh-chinh
@@ -121,6 +124,7 @@
 - Vai: Quản lý phòng máy.
 - Biểu cảm: neutral
 - Danh xưng: Quản lý phòng máy
+- Không xưng tên: có
 - Khi chưa quen: Thầy phòng máy
 - Lịch: Ở phòng máy từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật trực cho sinh viên in bài.
 - Thường ở: T2–T7 07:30–21:00 → phong-may; CN 18:00–23:30 → phong-may

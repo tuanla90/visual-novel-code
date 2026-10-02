@@ -86,7 +86,7 @@
 - **tung** (ao-xanh): Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
 - **bac-tu** (neutral): Hai cháu tìm phòng nào? Chiều Chủ nhật tòa này khóa hết lớp rồi.
 - **tung** (ao-xanh): Dạ không ạ, cháu dẫn bạn đi xem trường thôi.
-- **bac-tu** (neutral): Bác là Thịnh, bảo vệ tòa này. Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào.
+- **bac-tu** (neutral): Bác trông tòa này. Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào.
 
 ## md-07-cong-ktx-toi.1
 - [DÀN DỰNG] Tối. Hai người quẹt thẻ ở phòng trực cổng KTX. Nền tối bg-mvp-cong-ktx-dem (DX-02).

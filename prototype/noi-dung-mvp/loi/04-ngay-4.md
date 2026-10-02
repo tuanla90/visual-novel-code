@@ -28,7 +28,7 @@
 ## n4-phong-may.1
 > NHIỆM VỤ: Lá thư được in từ tài khoản nào?
 > NHẮC VIỆC ha-vy (thinking): Chân trang thư là tên tệp. Nhật ký in sẽ ghi ai in nó.
-- **thay-khai** (neutral): Thầy là Khải, quản lý phòng máy. Máy in ở đây nhớ hết: tài khoản nào in, lúc nào, tệp gì, mấy trang.
+- **thay-khai** (neutral): Máy in ở đây nhớ hết: tài khoản nào in, lúc nào, tệp gì, mấy trang.
 - **thay-khai** (neutral): Máy in là của phòng thầy, nên phiếu thì thầy ký. Thầy mở cho các em đúng bảng nhật ký in, chỉ để lập căn cứ.
 - **thay-khai** (neutral): Bản in từ máy ở đây có dòng chân trang ghi tên tệp. Thư của các em có không?
 - **player**: Có ạ. Nhưng bản chụp bị xén mép, chỉ đọc được đoạn đầu: kien-nghi…
@@ -54,3 +54,16 @@
 - **bac-tu** (neutral): Sáng nay có cậu đeo kính bên Hội xuống đứng nhìn cái hộp một lúc rồi đi. Không hỏi bác câu nào.
 - **tung** (thinking): Anh Quân đấy bác ạ.
 - **ha-vy** (neutral): Anh ấy kiểm bọn mình, và kiểm cả cái hộp. Cẩn thận như thế thì mình càng phải có căn cứ.
+
+## n4-toi.1
+- **narrator**: Tối thứ Sáu. Không ai muốn về trước. Duy cắm ấm đun nước, Minh Anh lôi từ ngăn kéo ra một hộp bánh quy mở từ kỳ trước.
+- **minh-anh** (happy): Luật CLB: ai ăn cái cuối cùng thì mua hộp mới.
+- **tung** (happy): Chơi gì đi chứ. Trò "ba dữ kiện": tớ tả một người bằng ba điều, mọi người đoán.
+- **tung** (chi-tay): Một: đeo kính. Hai: đi đâu cũng ôm vở. Ba: từ thứ Hai tới giờ chưa cười lần nào.
+- **ha-vy** (neutral): Ba điều ấy khớp với ít nhất bốn mươi người trên thư viện. Dữ kiện chưa đủ hẹp.
+- **duy** (smile): Đấy, vừa cười xong. Điều thứ ba sai rồi.
+- **ha-vy** (smile): Tớ không cười. Tớ đang chỉnh kính.
+- **player**: Tới lượt tớ. Một: thuộc đường. Hai: hay cá. Ba: cá mười thua chín.
+- **tung** (surprised): Ơ! Đấy là vu khống có dữ liệu!
+- **minh-anh** (happy): Có dữ liệu thì không gọi là vu khống nữa đâu em.
+- **narrator**: Chín giờ thì hộp bánh hết. Người ăn cái cuối là Duy. Duy mở sổ, ghi một dòng: "Nợ CLB một hộp bánh."

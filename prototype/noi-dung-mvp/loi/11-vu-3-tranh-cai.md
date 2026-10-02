@@ -174,3 +174,12 @@
 - **tung** (thinking): Mời trà, xin lỗi trước mặt người khác. Nghe thì dễ.
 - **ha-vy** (neutral): Cậu đang nghĩ tới Hoài à?
 - **tung** (gai-dau): Tớ có nói gì đâu. …Ừ.
+
+## v3-bd-cang-tin.1
+- **narrator**: Căng tin giữa buổi chiều, chỉ còn quầy nước với nồi chè.
+- **tung** (happy): Chè đậu đen, ba cốc! Hôm nay tớ…
+- **ha-vy** (neutral): Khao à? Hôm qua cậu vừa than cuối tháng nhà mới gửi tiền.
+- **tung** (gai-dau): …định nói là hôm nay tớ quên ví.
+- **player**: Tớ trả. Ghi sổ nợ: Tùng, một cốc chè, lãi là một lần dẫn đường không lạc.
+- **ha-vy** (smile): Lãi suất hợp lý đấy.
+- **narrator**: Bàn trong góc, mấy bạn năm nhất chụm đầu chép bài tập Triết của nhau. Chuông báo tiết reo, cả căng tin đứng dậy cùng một lúc.

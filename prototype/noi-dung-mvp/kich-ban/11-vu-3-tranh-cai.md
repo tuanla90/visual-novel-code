@@ -11,6 +11,7 @@
   - ghim:xuong · x 21% · y 24% · rộng 5% → v3-xuong · dấu: ! · có: nam · nhãn: Xưởng Robotics
   - ghim:thu-vien · x 62% · y 40% · rộng 5% → v3-bd-thu-vien · dấu: ? · nhãn: Thư viện
   - ghim:tra-da · x 41% · y 86% · rộng 5% → v3-bd-tra-da · dấu: ? · có: ba-lua · nhãn: Quán trà đá
+  - ghim:cang-tin · x 88% · y 41% · rộng 5% → v3-bd-cang-tin · dấu: ? · nhãn: Căng tin
 - [ĐI TỚI v3-xuong]
 
 ### v3-xuong — Xưởng Robotics: Nam mở bản xuất bài đăng của kênh {cảnh: xuong-robot}
@@ -104,3 +105,7 @@
 - [LỜI v3-bd-tra-da.1]
 - [HẬU QUẢ] mở manh mối clue-tra-da-3
 - [LỜI v3-bd-tra-da.2]
+
+### v3-bd-cang-tin — Bản đồ Vụ 3 (tùy chọn): chè đậu đen ở căng tin, sổ nợ của Tùng {cảnh: cang-tin}
+
+- [LỜI v3-bd-cang-tin.1]

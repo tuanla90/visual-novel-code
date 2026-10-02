@@ -18,7 +18,7 @@
 - **ha-vy** (smile): Cậu đo cả thời gian đi bộ à?
 - **tung** (chi-tay): Hướng dẫn viên thì phải biết chứ. Còn cậu thì đếm bậc cầu thang, tớ thấy rồi.
 - **ha-vy** (neutral): Hai mươi hai bậc. Đếm cho quen tay thôi.
-- **co-hanh** (neutral): Cô là Hạnh, bên Phòng Đào tạo. Cô tạo cho CLB một tài khoản, tên là clb_tham_tu.
+- **co-hanh** (neutral): Cô tạo cho CLB một tài khoản, tên là clb_tham_tu.
 - **co-hanh** (neutral): Tài khoản này chỉ xem được bảng lớp sinh hoạt: mã lớp, ngành, khóa, tòa nhà. Trong đấy không có tên ai cả.
 - **co-hanh** (neutral): Bảng sinh viên có thông tin cá nhân. Muốn xem thì mang phiếu yêu cầu tra cứu, có chữ ký của đơn vị lo vụ việc. Vụ hộp kiến nghị là của Phòng Công tác sinh viên.
 - **co-hanh** (neutral): Tra gì máy cũng ghi lại. Cuối vụ cô xem nhật ký.
@@ -89,3 +89,16 @@
 - **tung** (worried): Hai lớp vẫn đông lắm. Mà mình đâu có xem được danh sách sinh viên.
 - **ha-vy** (neutral): Cô Hạnh bảo rồi đấy: phải có phiếu của Phòng Công tác sinh viên.
 > NHẮC VIỆC ha-vy (neutral): Hai lớp: BC24A, BC23A. Muốn xem người thì cần phiếu của Phòng Công tác sinh viên.
+
+## n2-toi.1
+- **narrator**: Tối, phòng 408. Ấm siêu tốc réo. Tùng bóc hai gói mì, gói nào cũng bẻ đôi cho vừa cái bát inox.
+- **tung** (happy): Bí kíp ký túc: nước sôi đổ ngập, úp cái đĩa lên, đếm tới một trăm tám mươi.
+- **player**: Cậu đếm thật à?
+- **tung** (chi-tay): Tớ cá là cậu chưa đếm tới năm mươi đã mở ra ăn.
+- **narrator**: Điện thoại rung liên tục. Chị Minh Anh vừa lập nhóm chat "CLB Thám Tử (5)".
+- **narrator**: Duy gửi ảnh cái tủ hồ sơ đã khóa, kèm đúng một dòng: "Đã kiểm. Ngủ sớm."
+- **narrator**: Hà Vy gửi ảnh một trang vở kín chữ số, rồi một nhãn dán con mèo đeo kính.
+- **tung** (surprised): Hà Vy mà cũng biết gửi nhãn dán á?
+- **player**: Cậu trả lời đi. Mà mì nở hết rồi kìa.
+- **tung** (gai-dau): Chết. Một trăm tám mươi của tớ!
+- **narrator**: Mì nhão. Hai đứa vẫn ăn hết, húp cả nước.

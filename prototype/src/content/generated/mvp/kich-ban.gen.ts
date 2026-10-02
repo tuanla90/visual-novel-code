@@ -247,6 +247,7 @@ const GOC = {
         ],
         "danhXung": "Bảo vệ giảng đường B",
         "chuaQuen": "Bác bảo vệ",
+        "khongXungTen": true,
         "nam": null,
         "nganh": null,
         "cauNoi": "Mép hộp sắc đấy, đừng thò tay vào.",
@@ -285,6 +286,7 @@ const GOC = {
         ],
         "danhXung": "Phòng Đào tạo",
         "chuaQuen": "Cô cán bộ",
+        "khongXungTen": true,
         "nam": null,
         "nganh": null,
         "cauNoi": "Tài khoản này chỉ xem được bảng lớp. Muốn xem gì thêm thì mang phiếu sang.",
@@ -323,6 +325,7 @@ const GOC = {
         ],
         "danhXung": "Phòng Công tác sinh viên",
         "chuaQuen": "Cô cán bộ",
+        "khongXungTen": true,
         "nam": null,
         "nganh": null,
         "cauNoi": "Sổ đó niêm phong. Cô cũng không được tự mở.",
@@ -394,6 +397,7 @@ const GOC = {
         ],
         "danhXung": "Quản lý phòng máy",
         "chuaQuen": "Thầy phòng máy",
+        "khongXungTen": true,
         "nam": null,
         "nganh": null,
         "cauNoi": "Các em chỉ xem đúng dòng liên quan thôi nhé.",
@@ -1420,7 +1424,7 @@ const GOC = {
           "type": "line",
           "speaker": "bac-tu",
           "expression": "neutral",
-          "text": "Bác là Thịnh, bảo vệ tòa này. Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào."
+          "text": "Bác trông tòa này. Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào."
         },
         {
           "type": "goto",
@@ -2387,7 +2391,7 @@ const GOC = {
           "type": "line",
           "speaker": "co-hanh",
           "expression": "neutral",
-          "text": "Cô là Hạnh, bên Phòng Đào tạo. Cô tạo cho CLB một tài khoản, tên là clb_tham_tu."
+          "text": "Cô tạo cho CLB một tài khoản, tên là clb_tham_tu."
         },
         {
           "type": "line",
@@ -2790,6 +2794,77 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Hai lớp: BC24A, BC23A. Muốn xem người thì cần phiếu của Phòng Công tác sinh viên."
+        },
+        {
+          "type": "goto",
+          "to": "n2-toi"
+        }
+      ]
+    },
+    {
+      "id": "n2-toi",
+      "title": "Tối ngày 2, phòng 408: mì tôm và nhóm chat của CLB (không khí ký túc xá, không có manh mối)",
+      "canh": "phong-ktx-dem",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tối, phòng 408. Ấm siêu tốc réo. Tùng bóc hai gói mì, gói nào cũng bẻ đôi cho vừa cái bát inox."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Bí kíp ký túc: nước sôi đổ ngập, úp cái đĩa lên, đếm tới một trăm tám mươi."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Cậu đếm thật à?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Tớ cá là cậu chưa đếm tới năm mươi đã mở ra ăn."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Điện thoại rung liên tục. Chị Minh Anh vừa lập nhóm chat \"CLB Thám Tử (5)\"."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Duy gửi ảnh cái tủ hồ sơ đã khóa, kèm đúng một dòng: \"Đã kiểm. Ngủ sớm.\""
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hà Vy gửi ảnh một trang vở kín chữ số, rồi một nhãn dán con mèo đeo kính."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Hà Vy mà cũng biết gửi nhãn dán á?"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Cậu trả lời đi. Mà mì nở hết rồi kìa."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Chết. Một trăm tám mươi của tớ!"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Mì nhão. Hai đứa vẫn ăn hết, húp cả nước."
         }
       ]
     },
@@ -2910,7 +2985,7 @@ const GOC = {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
-          "text": "Cô là Lan, Phòng Công tác sinh viên, hộp kiến nghị là bên cô quản. Người gửi muốn được trả lời thì phải ghi mã sinh viên của mình vào phiếu gửi. Mã đó được chép vào sổ niêm phong."
+          "text": "Hộp kiến nghị là bên cô quản. Người gửi muốn được trả lời thì phải ghi mã sinh viên của mình vào phiếu gửi. Mã đó được chép vào sổ niêm phong."
         },
         {
           "type": "line",
@@ -3580,7 +3655,7 @@ const GOC = {
           "type": "line",
           "speaker": "thay-khai",
           "expression": "neutral",
-          "text": "Thầy là Khải, quản lý phòng máy. Máy in ở đây nhớ hết: tài khoản nào in, lúc nào, tệp gì, mấy trang."
+          "text": "Máy in ở đây nhớ hết: tài khoản nào in, lúc nào, tệp gì, mấy trang."
         },
         {
           "type": "line",
@@ -3696,6 +3771,10 @@ const GOC = {
           "speaker": "tung",
           "expression": "worried",
           "text": "Còn thư ấy in ở đâu thì vẫn chưa ai biết…"
+        },
+        {
+          "type": "goto",
+          "to": "n4-toi"
         }
       ]
     },
@@ -3722,6 +3801,77 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Anh ấy kiểm bọn mình, và kiểm cả cái hộp. Cẩn thận như thế thì mình càng phải có căn cứ."
+        }
+      ]
+    },
+    {
+      "id": "n4-toi",
+      "title": "Tối thứ Sáu, phòng CLB: hộp bánh quy và trò \"ba dữ kiện\" (không khí nhóm bạn, không có manh mối)",
+      "canh": "phong-clb-dem",
+      "mocSomNhat": 41,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tối thứ Sáu. Không ai muốn về trước. Duy cắm ấm đun nước, Minh Anh lôi từ ngăn kéo ra một hộp bánh quy mở từ kỳ trước."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "happy",
+          "text": "Luật CLB: ai ăn cái cuối cùng thì mua hộp mới."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Chơi gì đi chứ. Trò \"ba dữ kiện\": tớ tả một người bằng ba điều, mọi người đoán."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Một: đeo kính. Hai: đi đâu cũng ôm vở. Ba: từ thứ Hai tới giờ chưa cười lần nào."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Ba điều ấy khớp với ít nhất bốn mươi người trên thư viện. Dữ kiện chưa đủ hẹp."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "smile",
+          "text": "Đấy, vừa cười xong. Điều thứ ba sai rồi."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Tớ không cười. Tớ đang chỉnh kính."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tới lượt tớ. Một: thuộc đường. Hai: hay cá. Ba: cá mười thua chín."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Ơ! Đấy là vu khống có dữ liệu!"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "happy",
+          "text": "Có dữ liệu thì không gọi là vu khống nữa đâu em."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chín giờ thì hộp bánh hết. Người ăn cái cuối là Duy. Duy mở sổ, ghi một dòng: \"Nợ CLB một hộp bánh.\""
         }
       ]
     },
@@ -6152,6 +6302,16 @@ const GOC = {
               "co": [
                 "ba-lua"
               ]
+            },
+            {
+              "sprite": "ghim:cang-tin",
+              "x": 88,
+              "y": 41,
+              "rong": 5,
+              "chuoi": "v3-bd-cang-tin",
+              "sau": [],
+              "nhan": "Căng tin",
+              "dau": "phu"
             }
           ]
         },
@@ -7214,6 +7374,53 @@ const GOC = {
           "speaker": "tung",
           "expression": "gai-dau",
           "text": "Tớ có nói gì đâu. …Ừ."
+        }
+      ]
+    },
+    {
+      "id": "v3-bd-cang-tin",
+      "title": "Bản đồ Vụ 3 (tùy chọn): chè đậu đen ở căng tin, sổ nợ của Tùng",
+      "canh": "cang-tin",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Căng tin giữa buổi chiều, chỉ còn quầy nước với nồi chè."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Chè đậu đen, ba cốc! Hôm nay tớ…"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Khao à? Hôm qua cậu vừa than cuối tháng nhà mới gửi tiền."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "…định nói là hôm nay tớ quên ví."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tớ trả. Ghi sổ nợ: Tùng, một cốc chè, lãi là một lần dẫn đường không lạc."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Lãi suất hợp lý đấy."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bàn trong góc, mấy bạn năm nhất chụm đầu chép bài tập Triết của nhau. Chuông báo tiết reo, cả căng tin đứng dậy cùng một lúc."
         }
       ]
     },

@@ -15,7 +15,7 @@
 - **ha-vy** (neutral): Đừng cá. Bấm giờ.
 - **player**: Hai phút bốn mươi. Coi như Tùng thua mười giây.
 - **tung** (gai-dau): Tại cậu ấy dừng lại đọc bảng tin!
-- **co-lan** (neutral): Cô là Lan, Phòng Công tác sinh viên, hộp kiến nghị là bên cô quản. Người gửi muốn được trả lời thì phải ghi mã sinh viên của mình vào phiếu gửi. Mã đó được chép vào sổ niêm phong.
+- **co-lan** (neutral): Hộp kiến nghị là bên cô quản. Người gửi muốn được trả lời thì phải ghi mã sinh viên của mình vào phiếu gửi. Mã đó được chép vào sổ niêm phong.
 - **co-lan** (neutral): Sổ đó niêm phong. Cô cũng không được tự mở.
 - **player**: Vậy làm sao biết được ai gửi ạ?
 - **co-lan** (neutral): Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô phụ trách hộp mới tra và trả lời có hoặc không.

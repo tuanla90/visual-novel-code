@@ -29,7 +29,12 @@
 ### n4-ve — Về phòng CLB {cảnh: phong-clb}
 
 - [LỜI n4-ve.1]
+- [ĐI TỚI n4-toi]
 
 ### n4-bd-toa-b — Bản đồ ngày 4 (tùy chọn): bác Thịnh kể có người xuống xem hộp {cảnh: sanh-toa-b}
 
 - [LỜI n4-bd-toa-b.1]
+
+### n4-toi — Tối thứ Sáu, phòng CLB: hộp bánh quy và trò "ba dữ kiện" (không khí nhóm bạn, không có manh mối) {cảnh: phong-clb-dem}
+
+- [LỜI n4-toi.1]
