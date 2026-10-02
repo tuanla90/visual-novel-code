@@ -160,7 +160,7 @@
 - [NẾU có clue-loi-nhan-linh-1 và có clue-loi-nhan-linh-2 và có clue-loi-nhan-linh-3 và có clue-loi-nhan-linh-4] → đi tới v5-ngan-tu
 - [KẾT THÚC]
 
-### v5-ngan-tu — Cảnh sau kết (chỉ khi đủ bốn mẩu giấy): ngăn tủ khóa trong phòng CLB {cảnh: phong-clb}
+### v5-ngan-tu — Cảnh sau kết (chỉ khi đủ bốn mẩu giấy): ngăn tủ khóa trong phòng CLB {cảnh: phong-clb-dem}
 
 - [LỜI v5-ngan-tu.1]
 - [HỎI q-v5-chia] duy: "Bốn mẩu giấy, một ngăn tủ khóa. Người viết để chìa ở đâu trong phòng này?"

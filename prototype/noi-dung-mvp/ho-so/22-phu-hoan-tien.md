@@ -4,6 +4,7 @@
 
 ### doc-hoan-ban-xuat — Bản xuất thu chi của CLB
 - Tiêu đề: Bản xuất giao dịch của CLB kỳ này, có buổi hướng dẫn SQL cho tân thành viên
+- Ảnh: doc-hoan-ban-xuat
 - Nguồn: {{nv.minh-anh}} xuất từ sổ thu chi CLB
 - Nội dung hiển thị:
 > Sáu mươi tám dòng, năm cột: mã giao dịch, mã phiếu, loại, số tiền, mã tham chiếu.
@@ -24,6 +25,7 @@
 
 ### doc-hoan-bien-nhan — Biên nhận ngân hàng của phiếu PH-04
 - Tiêu đề: Biên nhận hoàn tiền, phiếu PH-04
+- Ảnh: doc-hoan-bien-nhan
 - Nguồn: Ngân hàng gửi, {{nv.minh-anh}} giữ
 - Nội dung hiển thị:
 > Phiếu PH-04. Một giao dịch hoàn: 60.000 đồng. Mã tham chiếu NH-771.

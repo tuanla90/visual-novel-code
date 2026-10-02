@@ -22,7 +22,7 @@
 - [KHÁM PHÁ kp-sanh-ktx]
   - obj-thong-bao-thang-may · x 12% · y 44% · rộng 4% → md-00-thang-may · nhãn: Xem tờ giấy trên cửa thang máy
   - obj-so-do-ktx · x 44% · y 40% · rộng 11% → md-00-so-do · nhãn: Xem bảng tin
-  - nv:tung · x 80% · y 100% · rộng 17% → md-00-gap-tung · sau: md-00-thang-may, md-00-so-do · nhãn: Hỏi đường cậu bạn áo cam
+  - nv:tung · x 80% · y 100% · rộng 17% → md-00-gap-tung · sau: md-00-thang-may, md-00-so-do · nhãn: Hỏi đường cậu bạn áo xanh
 
 ### md-00-thang-may — Tờ giấy dán trên cửa thang máy {cảnh: sanh-ktx}
 
@@ -32,7 +32,7 @@
 
 - [LỜI md-00-so-do.1]
 
-### md-00-gap-tung — Hỏi đường cậu bạn áo cam: tạo nhân vật {cảnh: sanh-ktx}
+### md-00-gap-tung — Hỏi đường cậu bạn áo xanh: tạo nhân vật {cảnh: sanh-ktx}
 
 - [LỜI md-00-gap-tung.1]
 - [TẠO NHÂN VẬT ten] tung (neutral): "Thế cậu tên gì?"

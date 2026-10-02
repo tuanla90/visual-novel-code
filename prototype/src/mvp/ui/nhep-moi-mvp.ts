@@ -21,12 +21,28 @@ import tungGaiDauMouth from './nhep/char-tung-gai-dau/mouth.webp';
 import tungGaiDauEyes from './nhep/char-tung-gai-dau/eyes.webp';
 import tungChiTayMouth from './nhep/char-tung-chi-tay/mouth.webp';
 import tungChiTayEyes from './nhep/char-tung-chi-tay/eyes.webp';
+import tungAoXanhMouth from './nhep/char-tung-ao-xanh/mouth.webp';
+import tungAoXanhEyes from './nhep/char-tung-ao-xanh/eyes.webp';
+import tungAoXanhHappyMouth from './nhep/char-tung-ao-xanh-happy/mouth.webp';
+import tungAoXanhHappyEyes from './nhep/char-tung-ao-xanh-happy/eyes.webp';
+import tungAoXanhWorriedMouth from './nhep/char-tung-ao-xanh-worried/mouth.webp';
+import tungAoXanhWorriedEyes from './nhep/char-tung-ao-xanh-worried/eyes.webp';
+import tungAoXanhGaiDauMouth from './nhep/char-tung-ao-xanh-gai-dau/mouth.webp';
+import tungAoXanhGaiDauEyes from './nhep/char-tung-ao-xanh-gai-dau/eyes.webp';
+import tungAoXanhChiTayMouth from './nhep/char-tung-ao-xanh-chi-tay/mouth.webp';
+import tungAoXanhChiTayEyes from './nhep/char-tung-ao-xanh-chi-tay/eyes.webp';
+import tungAoXanhSurprisedMouth from './nhep/char-tung-ao-xanh-surprised/mouth.webp';
+import tungAoXanhSurprisedEyes from './nhep/char-tung-ao-xanh-surprised/eyes.webp';
+import tungAoXanhThinkingMouth from './nhep/char-tung-ao-xanh-thinking/mouth.webp';
+import tungAoXanhThinkingEyes from './nhep/char-tung-ao-xanh-thinking/eyes.webp';
+import tungAoXanhDoiMuMouth from './nhep/char-tung-ao-xanh-doi-mu/mouth.webp';
+import tungAoXanhDoiMuEyes from './nhep/char-tung-ao-xanh-doi-mu/eyes.webp';
 import haVyDayKinhMouth from './nhep/char-ha-vy-day-kinh/mouth.webp';
 import haVyDayKinhEyes from './nhep/char-ha-vy-day-kinh/eyes.webp';
-import minhAnhKhoanhTayMouth from './nhep/char-minh-anh-khoanh-tay/mouth.webp';
-import minhAnhKhoanhTayEyes from './nhep/char-minh-anh-khoanh-tay/eyes.webp';
 import minhAnhSeriousMouth from './nhep/char-minh-anh-serious/mouth.webp';
 import minhAnhSeriousEyes from './nhep/char-minh-anh-serious/eyes.webp';
+import minhAnhKhoanhTayMouth from './nhep/char-minh-anh-khoanh-tay/mouth.webp';
+import minhAnhKhoanhTayEyes from './nhep/char-minh-anh-khoanh-tay/eyes.webp';
 import quanChiManMouth from './nhep/char-quan-chi-man/mouth.webp';
 import quanChiManEyes from './nhep/char-quan-chi-man/eyes.webp';
 import nguoiChoiMouth from './nhep/char-nguoi-choi/mouth.webp';
@@ -49,17 +65,25 @@ function bo(ten: string, mouth: string, hopMieng: Hop, eyes: string, hopMat: Hop
 
 /** Tên tệp ảnh (không đuôi, như `anhTheoTen`) → bộ miếng. */
 export const BO_NHEP_MOI_MVP: ReadonlyMap<string, TalkRig> = new Map<string, TalkRig>([
-  bo('char-tung-happy', tungHappyMouth, [273, 336, 221, 190], tungHappyEyes, [212, 146, 344, 190]),
-  bo('char-tung-worried', tungWorriedMouth, [299, 339, 229, 197], tungWorriedEyes, [235, 147, 358, 190]),
-  bo('char-tung-surprised', tungSurprisedMouth, [269, 334, 203, 180], tungSurprisedEyes, [212, 146, 324, 190]),
-  bo('char-tung-thinking', tungThinkingMouth, [355, 329, 182, 157], tungThinkingEyes, [307, 146, 279, 190]),
-  bo('char-tung-gai-dau', tungGaiDauMouth, [277, 345, 246, 211], tungGaiDauEyes, [207, 150, 387, 189]),
-  bo('char-tung-chi-tay', tungChiTayMouth, [268, 337, 207, 179], tungChiTayEyes, [211, 150, 322, 189]),
-  bo('char-ha-vy-day-kinh', haVyDayKinhMouth, [275, 375, 229, 197], haVyDayKinhEyes, [211, 189, 358, 184]),
-  bo('char-minh-anh-khoanh-tay', minhAnhKhoanhTayMouth, [215, 336, 246, 211], minhAnhKhoanhTayEyes, [146, 140, 385, 191]),
-  bo('char-minh-anh-serious', minhAnhSeriousMouth, [332, 329, 162, 128], minhAnhSeriousEyes, [290, 135, 246, 192]),
-  bo('char-quan-chi-man', quanChiManMouth, [262, 340, 219, 188], quanChiManEyes, [202, 185, 340, 155]),
-  bo('char-nguoi-choi', nguoiChoiMouth, [253, 337, 228, 197], nguoiChoiEyes, [189, 145, 357, 190]),
+  bo('char-tung-happy', tungHappyMouth, [396, 227, 51, 75], tungHappyEyes, [343, 163, 122, 90]),
+  bo('char-tung-worried', tungWorriedMouth, [361, 320, 132, 121], tungWorriedEyes, [327, 146, 206, 190]),
+  bo('char-tung-surprised', tungSurprisedMouth, [296, 330, 192, 166], tungSurprisedEyes, [244, 145, 297, 190]),
+  bo('char-tung-thinking', tungThinkingMouth, [289, 329, 192, 165], tungThinkingEyes, [238, 144, 295, 190]),
+  bo('char-tung-gai-dau', tungGaiDauMouth, [254, 338, 232, 199], tungGaiDauEyes, [189, 145, 363, 190]),
+  bo('char-tung-chi-tay', tungChiTayMouth, [299, 334, 219, 188], tungChiTayEyes, [239, 144, 340, 190]),
+  bo('char-tung-ao-xanh', tungAoXanhMouth, [355, 320, 144, 127], tungAoXanhEyes, [319, 145, 217, 190]),
+  bo('char-tung-ao-xanh-happy', tungAoXanhHappyMouth, [296, 325, 197, 170], tungAoXanhHappyEyes, [243, 138, 304, 191]),
+  bo('char-tung-ao-xanh-worried', tungAoXanhWorriedMouth, [298, 328, 192, 166], tungAoXanhWorriedEyes, [246, 142, 297, 191]),
+  bo('char-tung-ao-xanh-gai-dau', tungAoXanhGaiDauMouth, [254, 334, 223, 192], tungAoXanhGaiDauEyes, [192, 142, 348, 191]),
+  bo('char-tung-ao-xanh-chi-tay', tungAoXanhChiTayMouth, [300, 324, 184, 160], tungAoXanhChiTayEyes, [251, 140, 283, 191]),
+  bo('char-tung-ao-xanh-surprised', tungAoXanhSurprisedMouth, [299, 329, 213, 183], tungAoXanhSurprisedEyes, [240, 139, 331, 191]),
+  bo('char-tung-ao-xanh-thinking', tungAoXanhThinkingMouth, [297, 325, 195, 169], tungAoXanhThinkingEyes, [244, 139, 302, 191]),
+  bo('char-tung-ao-xanh-doi-mu', tungAoXanhDoiMuMouth, [236, 360, 238, 204], tungAoXanhDoiMuEyes, [169, 168, 373, 188]),
+  bo('char-ha-vy-day-kinh', haVyDayKinhMouth, [279, 361, 213, 183], haVyDayKinhEyes, [220, 178, 331, 184]),
+  bo('char-minh-anh-serious', minhAnhSeriousMouth, [226, 327, 251, 215], minhAnhSeriousEyes, [155, 128, 394, 193]),
+  bo('char-minh-anh-khoanh-tay', minhAnhKhoanhTayMouth, [336, 311, 168, 147], minhAnhKhoanhTayEyes, [292, 128, 257, 193]),
+  bo('char-quan-chi-man', quanChiManMouth, [247, 334, 188, 174], quanChiManEyes, [192, 156, 312, 181]),
+  bo('char-nguoi-choi', nguoiChoiMouth, [265, 323, 222, 191], nguoiChoiEyes, [203, 130, 347, 192]),
 ]);
 
 let theoUrl: Map<string, TalkRig> | null = null;

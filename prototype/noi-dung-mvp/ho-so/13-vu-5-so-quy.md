@@ -4,6 +4,7 @@
 
 ### doc-kiem-ke — Bảng kiểm kê xưởng của Nam
 - Tiêu đề: Kiểm kê linh kiện xưởng, 18/10
+- Ảnh: doc-kiem-ke
 - Nguồn: {{nv.nam}} đếm tay từng loại, hai lần
 - Nội dung hiển thị:
 > Ba mươi loại linh kiện từng có trong sổ đặt hàng, đếm thực tế trong kho. Ba loại đang là số không: động cơ servo, mạch điều khiển, bộ khung nhôm.
@@ -16,6 +17,7 @@
 
 ### doc-so-quy — Bản xuất sổ quỹ khối CLB
 - Tiêu đề: Sổ chi và bảng quỹ, Phòng Kế hoạch gửi theo yêu cầu của thầy Quang
+- Ảnh: doc-so-quy
 - Nguồn: Phòng Kế hoạch, {{nv.co-hanh}} gửi theo chữ ký của {{nv.thay-quang}}; quy chế do {{nv.co-lan}} in kèm (trang sau: CLB mất phòng thì vào diện chờ giải thể, sao kê quỹ gửi về Hội sinh viên thay vì chủ quỹ; giải thể thì chủ tịch Hội ký nhận bàn giao)
 - Nội dung hiển thị:
 > Sổ chi: mỗi khoản có mã chi, mã đơn, mã quỹ, số tiền, người duyệt, ngày chi. Bảng quỹ: mã quỹ nào thuộc CLB nào.
@@ -41,6 +43,7 @@
 
 ### doc-ho-so-vu-dau — Hồ sơ vụ thứ nhất của CLB
 - Tiêu đề: Cuốn sổ bìa cứng trong ngăn tủ khóa
+- Ảnh: doc-ho-so-vu-dau
 - Nguồn: Ngăn dưới tủ hồ sơ phòng CLB, chìa dán sau bảng nguyên tắc
 - Nội dung hiển thị:
 > "Hồ sơ vụ thứ nhất — CLB Thám Tử Dữ Liệu", chữ viết tay, ký tên Trịnh Quang.

@@ -4,6 +4,7 @@
 
 ### doc-v2-raw-logs — Bản xuất sổ sử dụng phòng
 - Tiêu đề: Bản xuất sổ sử dụng phòng, tháng 10
+- Ảnh: doc-v2-raw-logs
 - Nguồn: {{nv.duy}} xuất từ máy quản lý phòng của tòa nhà
 - Nội dung hiển thị:
 > Hai trăm sáu mươi bảy dòng của mọi phòng trong tòa nhà, năm cột: mã buổi, mã phòng, ngày, hoạt động, trạng thái.
