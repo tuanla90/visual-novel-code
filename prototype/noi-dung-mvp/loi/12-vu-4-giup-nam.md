@@ -69,6 +69,7 @@
 - **duy** (neutral): Tờ giao chìa hôm trước: ba người có chìa. Đừng vội.
 
 ## v4-may-vp.3
+> NHIỆM VỤ: Chốt điều nói được với Ban kiểm tra
 - **duy** (neutral): Tên một người, tay một người khác… chị Linh có ghi một câu. Để tớ xem.
 - [DÀN DỰNG] {{nv.duy}} lật sổ chị Linh tới trang cuối.
 - **player**: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi."
@@ -80,6 +81,7 @@
 - **duy** (neutral): Và ba người giữ chìa phòng đó. Mình ghi tên, không ghi tội.
 
 ## v4-ket.1
+> NHIỆM VỤ: Chốt điều nói được với Ban kiểm tra
 - **duy** (neutral): Giấy giải trình đề ngày 11, một ngày sau hôm mình gỡ nghi cho Nam. Tớ ghi lại thôi, chưa nói gì.
 - [DÀN DỰNG] Có tiếng gõ cửa. {{nv.khanh}} đứng ở cửa phòng CLB, balo khoác một bên vai.
 - **khanh** (neutral): Nam ở đây à. Danh sách Ban kiểm tra cầm là anh chuyển. Đủ cả năm đơn, kể cả hai đơn em đặt thật, để họ khỏi bảo mình chọn lọc. Cứ giải trình đúng sự thật, anh sẽ nói đỡ một câu. Còn bên Thám Tử, cần giấy tờ gì qua Hội thì cứ gửi anh, anh ký chuyển cho.

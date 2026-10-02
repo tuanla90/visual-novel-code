@@ -90,10 +90,12 @@
 - **ha-vy** (neutral): Thói quen không chứng minh được đúng tối ấy. Nó chỉ cho thấy tớ có lý do ngồi đó. Thứ ghi đúng tối ấy là cửa từ: Nam vào 21 giờ 50, ra 23 giờ 05. Về CLB.
 
 ## v3-doi-chat.1
+> NHIỆM VỤ: Tùng cá là Nam gửi tin. Thẻ nào bác được?
 - **narrator**: Phòng CLB. Mọi phiếu đã ghim lên bảng. Minh Anh chờ.
 - **minh-anh** (serious): Tùng nói trước. Rồi các em trình cái gì có trong hồ sơ.
 
 ## v3-ket-thieu.1
+> NHIỆM VỤ: Nói lại cho cả nhóm: mình chắc được điều gì?
 - **minh-anh** (serious): Vậy chị mời Nam lên.
 - **narrator**: Chiều hôm đó, Nam lên phòng CLB. Không nói nhiều, Nam đặt lên bàn tờ bản ghi quẹt thẻ thư viện của mình.
 - **nam** (neutral): Tối mùng 7, 21 giờ 50 vào, 23 giờ 05 ra. Các cậu có cả tờ này rồi mà vẫn gọi tớ lên.
@@ -102,6 +104,7 @@
 - **nam** (neutral): Không sao. Lần sau các cậu đọc kỹ hồ sơ trước đã.
 
 ## v3-ket-du.1
+> NHIỆM VỤ: Nói lại cho cả nhóm: mình chắc được điều gì?
 - **minh-anh** (neutral): Không mời Nam lên. Chị báo cô Lan: tối đó Nam ở thư viện, có bản ghi và có người cùng ngồi.
 - **tung** (gai-dau): Khỉ thật… tại cái tài khoản ghi lù lù tên kênh của cậu ấy. Tớ cá trượt, mà lần này trượt đau. Tớ xin lỗi Nam. Lần sau đợi đủ bài mới lật.
 - **duy** (neutral): Cá thì không sao. Kết tội mới sao.
@@ -119,6 +122,7 @@
 - **ha-vy** (thinking): Chưa biết. Nhưng chị ấy ghi "kết luận sai". Giống chuyện hôm nay.
 
 ## v3-ket-luan.1
+> NHIỆM VỤ: Không phải Nam thì nói chắc được điều gì?
 - **tung** (worried): Không phải Nam. Thế thì ai ngồi máy văn phòng xưởng tối đó?
 - **duy** (neutral): Máy trong phòng văn phòng, giờ xưởng mở. Ai vào được phòng đó thì mình chưa biết.
 - **ha-vy** (thinking): Và tên Nam vẫn nằm trên tài khoản kênh. Ai muốn người ta nghĩ là Nam, thì đã được như ý.
@@ -129,6 +133,7 @@
 - **minh-anh** (neutral): Chuyện này không chỉ là tin đồn về mình nữa. Các em sang xưởng lần nữa, hỏi xem ai vào được phòng ấy. Hỏi thôi, chưa nghi ai.
 
 ## v3-chia.1
+> NHIỆM VỤ: Ai có chìa khóa văn phòng xưởng?
 - **narrator**: Chiều muộn, xưởng Robotics. Nam dẫn cả nhóm tới cửa phòng văn phòng. Trên cửa dán một tờ giấy đã ngả màu.
 - **player**: "Giao chìa phòng văn phòng." Ba tên: Khánh, Bách, Thảo.
 - **nam** (neutral): Anh Khánh đang họp bên Hội. Anh Bách với chị Thảo thì ở kia.

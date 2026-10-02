@@ -4660,6 +4660,10 @@ const GOC = {
       "mocSomNhat": 1000,
       "nodes": [
         {
+          "type": "task",
+          "text": "Tùng cá là Nam gửi tin. Thẻ nào bác được?"
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "text": "Phòng CLB. Mọi phiếu đã ghim lên bảng. Minh Anh chờ."
@@ -4809,6 +4813,10 @@ const GOC = {
           "to": "v3-ket-du"
         },
         {
+          "type": "task",
+          "text": "Nói lại cho cả nhóm: mình chắc được điều gì?"
+        },
+        {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "serious",
@@ -4864,6 +4872,10 @@ const GOC = {
       "canh": "phong-clb",
       "mocSomNhat": 1000,
       "nodes": [
+        {
+          "type": "task",
+          "text": "Nói lại cho cả nhóm: mình chắc được điều gì?"
+        },
         {
           "type": "line",
           "speaker": "minh-anh",
@@ -5008,6 +5020,10 @@ const GOC = {
           "truUyTin": false
         },
         {
+          "type": "task",
+          "text": "Không phải Nam thì nói chắc được điều gì?"
+        },
+        {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
@@ -5065,6 +5081,10 @@ const GOC = {
       "canh": "xuong-robot",
       "mocSomNhat": 1000,
       "nodes": [
+        {
+          "type": "task",
+          "text": "Ai có chìa khóa văn phòng xưởng?"
+        },
         {
           "type": "line",
           "speaker": "narrator",
@@ -5515,6 +5535,10 @@ const GOC = {
           ]
         },
         {
+          "type": "task",
+          "text": "Chốt điều nói được với Ban kiểm tra"
+        },
+        {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
@@ -5611,6 +5635,10 @@ const GOC = {
           "speaker": "duy",
           "expression": "neutral",
           "text": "Và ba người giữ chìa phòng đó. Mình ghi tên, không ghi tội."
+        },
+        {
+          "type": "task",
+          "text": "Chốt điều nói được với Ban kiểm tra"
         },
         {
           "type": "line",
@@ -9378,7 +9406,7 @@ const GOC = {
     },
     "c-hoan-loc": {
       "id": "c-hoan-loc",
-      "tieuDe": "Bản xuất thu chi buổi hướng dẫn",
+      "tieuDe": "Bản xuất thu chi của CLB",
       "deBai": "Bản xuất lẫn cả khoản thu, khoản chi lẫn khoản hoàn. Những dòng nào là hoàn tiền?",
       "manhMoiLienQuan": [
         "clue-hoan-loai"
@@ -9720,13 +9748,13 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 165
+            "n": 11
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả sổ chi của mười chín CLB. Mình chỉ cần quỹ CLB mình."
+              "text": "Cả bản xuất, có cả quỹ Robotics. Mình chỉ cần quỹ CLB mình."
             }
           ]
         },
@@ -11041,7 +11069,7 @@ const GOC = {
       },
       "quotes": {
         "Nội dung hiển thị": [
-          "Mười loại linh kiện trong sổ đặt hàng, đếm thực tế trong kho. Ba loại đang là số không: động cơ servo, mạch điều khiển, bộ khung nhôm."
+          "Ba mươi loại linh kiện từng có trong sổ đặt hàng, đếm thực tế trong kho. Ba loại đang là số không: động cơ servo, mạch điều khiển, bộ khung nhôm."
         ]
       }
     },
@@ -11158,7 +11186,7 @@ const GOC = {
       },
       "quotes": {
         "Nội dung hiển thị": [
-          "Bảy dòng, năm cột: mã buổi, mã phòng, ngày, hoạt động, trạng thái.",
+          "Hai trăm sáu mươi bảy dòng của mọi phòng trong tòa nhà, năm cột: mã buổi, mã phòng, ngày, hoạt động, trạng thái.",
           "Mã phòng do người trực gõ tay: có dòng viết hoa, có dòng viết thường, có dòng dính dấu cách ở đuôi.",
           "Trạng thái DA_XAC_NHAN: buổi đã có chữ ký trong sổ giấy. DU_KIEN: lịch đặt trước, chưa ký."
         ]
@@ -11210,8 +11238,8 @@ const GOC = {
       },
       "quotes": {
         "Nội dung hiển thị": [
-          "Sổ tài sản: mã tài sản, tên, chỗ để ghi lúc kiểm kê đầu kỳ. Năm thiết bị, trong đó có hai chiếc micro.",
-          "Phiếu luân chuyển: mã phiếu, mã tài sản, nơi chuyển tới, người nhận, ngày, trạng thái. Phiếu không ghi tên thiết bị.",
+          "Sổ tài sản: mã tài sản, tên, chỗ để ghi lúc kiểm kê đầu kỳ. Mười ba thiết bị, trong đó có hai chiếc micro.",
+          "Phiếu luân chuyển: mã phiếu, mã tài sản, nơi chuyển tới, người nhận, ngày, trạng thái. Tập phiếu là của cả tòa nhà, hơn trăm rưỡi phiếu của mọi CLB. Phiếu không ghi tên thiết bị.",
           "Cả hai bảng đều có cột vi_tri, nhưng ở sổ là chỗ để đầu kỳ, ở phiếu là nơi chuyển tới."
         ]
       }
@@ -11254,16 +11282,16 @@ const GOC = {
     "doc-hoan-ban-xuat": {
       "id": "doc-hoan-ban-xuat",
       "loai": "doc",
-      "heading": "Bản xuất thu chi buổi hướng dẫn SQL",
+      "heading": "Bản xuất thu chi của CLB",
       "fields": {
-        "Tiêu đề": "Bản xuất giao dịch, buổi hướng dẫn SQL cho tân thành viên",
+        "Tiêu đề": "Bản xuất giao dịch của CLB kỳ này, có buổi hướng dẫn SQL cho tân thành viên",
         "Nguồn": "Minh Anh xuất từ sổ thu chi CLB",
         "Nội dung hiển thị": ""
       },
       "quotes": {
         "Nội dung hiển thị": [
-          "Tám dòng, năm cột: mã giao dịch, mã phiếu, loại, số tiền, mã tham chiếu.",
-          "Loại CHI là khoản đã chi; loại HOAN là khoản được hoàn lại, số tiền ghi âm.",
+          "Sáu mươi tám dòng, năm cột: mã giao dịch, mã phiếu, loại, số tiền, mã tham chiếu.",
+          "Loại THU là khoản thu vào, CHI là khoản đã chi; loại HOAN là khoản được hoàn lại, số tiền ghi âm.",
           "Đây là nguồn cần kiểm, chưa phải bằng chứng ai làm sai."
         ]
       }

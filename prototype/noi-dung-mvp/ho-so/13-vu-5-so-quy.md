@@ -6,7 +6,7 @@
 - Tiêu đề: Kiểm kê linh kiện xưởng, 18/10
 - Nguồn: {{nv.nam}} đếm tay từng loại, hai lần
 - Nội dung hiển thị:
-> Mười loại linh kiện trong sổ đặt hàng, đếm thực tế trong kho. Ba loại đang là số không: động cơ servo, mạch điều khiển, bộ khung nhôm.
+> Ba mươi loại linh kiện từng có trong sổ đặt hàng, đếm thực tế trong kho. Ba loại đang là số không: động cơ servo, mạch điều khiển, bộ khung nhôm.
 
 ### clue-so-luong-co-0 — [Kho: 0]
 - Tiêu đề: Trong kho không có một cái

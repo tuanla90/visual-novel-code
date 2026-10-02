@@ -190,6 +190,7 @@ export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
                   ))}
                 </tbody>
               </table>
+              <p className="v7-kq__nhac">👆 Còn {kq.dong.length} người trùng tên. Bấm vào dòng đúng người cần tìm.</p>
             </div>
           ) : null}
           <div className="v7-so">

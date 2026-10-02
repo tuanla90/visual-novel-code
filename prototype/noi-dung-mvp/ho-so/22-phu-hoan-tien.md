@@ -2,12 +2,12 @@
 
 <!-- Bản đầu theo gói cũ mục 7. Phiếu kết quả ev-hoan-loc, ev-hoan-nhom khai ở thu-thach/phu-hoan-tien.md. -->
 
-### doc-hoan-ban-xuat — Bản xuất thu chi buổi hướng dẫn SQL
-- Tiêu đề: Bản xuất giao dịch, buổi hướng dẫn SQL cho tân thành viên
+### doc-hoan-ban-xuat — Bản xuất thu chi của CLB
+- Tiêu đề: Bản xuất giao dịch của CLB kỳ này, có buổi hướng dẫn SQL cho tân thành viên
 - Nguồn: {{nv.minh-anh}} xuất từ sổ thu chi CLB
 - Nội dung hiển thị:
-> Tám dòng, năm cột: mã giao dịch, mã phiếu, loại, số tiền, mã tham chiếu.
-> Loại CHI là khoản đã chi; loại HOAN là khoản được hoàn lại, số tiền ghi âm.
+> Sáu mươi tám dòng, năm cột: mã giao dịch, mã phiếu, loại, số tiền, mã tham chiếu.
+> Loại THU là khoản thu vào, CHI là khoản đã chi; loại HOAN là khoản được hoàn lại, số tiền ghi âm.
 > Đây là nguồn cần kiểm, chưa phải bằng chứng ai làm sai.
 
 ### clue-hoan-loai — [Hoàn tiền]

@@ -14,7 +14,7 @@
  *  - tin_nhan: không tin nào bắt đầu bằng câu tin đồn. dang_nhap_kenh: clb_robotics ngày 07/10 chỉ có 2 dòng truyện.
  *  - bai_dang_kenh: không thêm bài của clb_robotics. nhat_ky_su_dung: không phòng nào chuẩn hóa ra "clb-tham-tu".
  *  - don_linh_kien: đơn cũ đã quyết toán (không DA_DUYET / CHO_DUYET), không đứng tên Nam hay Khánh, không phải ba linh kiện
- *    kho đang 0; phiên cũ không ở máy văn phòng xưởng. khoan_chi: không thêm khoản của quỹ Thám Tử hay Robotics.
+ *    kho đang 0; phiên cũ không ở máy văn phòng xưởng. khoan_chi: KHÔNG thêm (bản xuất giới hạn theo truyện Vụ 5).
  *  - luan_chuyen: phiếu thêm vào chỉ mang mã tài sản của CLB khác (không nối được với sổ tài sản CLB mình).
  *  - giao_dich: không thêm dòng HOAN. quet_the_thu_vien: KHÔNG thêm (thư viện chỉ in cho mỗi người bản của chính họ).
  * Không import gì (chạy được cả trong công cụ lẫn trong trình duyệt): kich-ban.gen.ts chỉ chứa dòng của truyện, dữ liệu nền
@@ -440,28 +440,11 @@ function themDonVaPhien(d: BoDuLieuMvp): void {
 
 function themQuyVaChi(d: BoDuLieuMvp): void {
   const quy = bangTheo(d, 'quy');
-  const chi = bangTheo(d, 'khoan_chi');
-  if (!quy || !chi) return;
-  const r = xn(2110);
+  if (!quy) return;
   const coQuy = new Set(quy.dong.map((h) => chu(h[0])));
   for (const c of CLB) if (!coQuy.has(c.quy)) quy.dong.push([c.quy, c.ma.toUpperCase(), `Quỹ CLB ${c.ten}`]);
-  let stt = chi.dong.length;
-  const them: GiaTriO[][] = [];
-  for (const c of CLB) {
-    if (c.quy === 'Q-TT' || c.quy === 'Q-RB') continue;
-    const duyet = [`${r.chon(TEN)}`, `${r.chon(TEN)}`];
-    const n = r.so(6, 12);
-    for (let i = 1; i <= n; i++) {
-      const ng = tuNgay('2024-08-15') + r.so(0, 56) * NGAY_MS;
-      them.push(['', `${c.quy.slice(2)}-${hai(i)}`, c.quy, r.so(3, 90) * 10000, r.chon(duyet), raNgay(ng)]);
-    }
-  }
-  them.sort((x, y) => (chu(x[5]) < chu(y[5]) ? -1 : 1));
-  for (const h of them) {
-    stt += 1;
-    h[0] = `KC-${hai(stt)}`;
-    chi.dong.push(h);
-  }
+  // Sổ chi KHÔNG thêm dòng nền: theo truyện, thầy Quang chỉ cho xuất các khoản ghi vào quỹ CLB Thám Tử và khoản liên quan ba đơn
+  // đang xét (sổ không thuộc CLB). Bảng quỹ thì đủ 19 CLB (bảng tra mã quỹ).
 }
 
 const TAI_SAN_CLB: readonly [string, string, string][] = [

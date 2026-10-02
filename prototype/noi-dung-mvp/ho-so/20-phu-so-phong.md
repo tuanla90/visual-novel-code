@@ -6,7 +6,7 @@
 - Tiêu đề: Bản xuất sổ sử dụng phòng, tháng 10
 - Nguồn: {{nv.duy}} xuất từ máy quản lý phòng của tòa nhà
 - Nội dung hiển thị:
-> Bảy dòng, năm cột: mã buổi, mã phòng, ngày, hoạt động, trạng thái.
+> Hai trăm sáu mươi bảy dòng của mọi phòng trong tòa nhà, năm cột: mã buổi, mã phòng, ngày, hoạt động, trạng thái.
 > Mã phòng do người trực gõ tay: có dòng viết hoa, có dòng viết thường, có dòng dính dấu cách ở đuôi.
 > Trạng thái DA_XAC_NHAN: buổi đã có chữ ký trong sổ giấy. DU_KIEN: lịch đặt trước, chưa ký.
 
