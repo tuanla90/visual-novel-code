@@ -17,6 +17,11 @@
 - [THỬ THÁCH c-bai-thiet-bi]
 - [LỜI v3-xuong.3]
 - [HẬU QUẢ] mở manh mối clue-ten-nam, mở manh mối clue-toi-07
+- [ĐI TỚI v3-len-thu-vien]
+
+### v3-len-thu-vien — Sảnh tòa B: bác Tư ở chân cầu thang {cảnh: sanh-toa-b}
+
+- [LỜI v3-len-thu-vien.1]
 - [ĐI TỚI v3-thu-vien]
 
 ### v3-thu-vien — Thư viện: bản ghi quẹt thẻ của chính Nam {cảnh: thu-vien}

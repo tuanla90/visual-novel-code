@@ -376,7 +376,7 @@ DOT_J = {
     'cg-bia': 'đủ năm người quanh bảng ghim (thêm Duy); sửa tại chỗ vệt đen ở mặt Tùng (lượt 4)',
     'cg-ket-thuong': 'đủ năm người ra khỏi phòng họp, Minh Anh ở giữa, Duy đi sau (lượt 3)',
     'cg-ket-that': 'Vụ 1: Minh Anh bắt tay nhân vật chính, Tùng giơ cốc trà đá, Duy treo chìa, Hà Vy ghim thẻ (lượt 3, đúng vai)',
-    'cg-ket-mua': 'kết cuối mùa: cả năm người ăn mừng, cụng cốc trà đá/trà sữa trong phòng CLB lúc hoàng hôn',
+    'cg-ket-vu5': 'kết cuối mùa (tên cũ cg-ket-mua; cũng là CG màn kết Vụ 5): cả năm người ăn mừng, cụng cốc trà đá/trà sữa trong phòng CLB lúc hoàng hôn',
     'chibi-la-thu': 'thêm Duy đứng sau Minh Anh',
     'chibi-408-vali': 'bỏ nồi cơm; Tùng (áo tình nguyện) ở dưới nâng đáy vali, nhân vật chính ở trên kéo tay cầm',
     # Áo dài cho cán bộ nữ (sửa từ chân dung cũ, giữ mặt/tóc/đạo cụ)
@@ -398,6 +398,10 @@ DOT_J = {
         '(lượt 2: Khánh sơ mi trắng, không vest); chìa khóa và huy hiệu trên bậu cửa sổ; cuốn hồ sơ vụ đầu (kết ẩn)',
     'chibi-v5-dong-dau': 'Vụ 5: đóng dấu lưu hồ sơ, Duy ghim huy hiệu, Hoài ngồi cạnh',
     'chibi-phu-got-ma-phong, chibi-phu-tu-micro, chibi-phu-mot-bien-nhan': 'ba nhiệm vụ phụ',
+    # CG màn kết từng vụ (KetMvp hiện ảnh cg-ket-<mã vụ>); khuôn 'cg', ảnh neo nhân vật + nền phòng CLB / xưởng robot
+    'cg-ket-vu2': 'Minh Anh ghim thẻ bóng người vô danh lên bảng, nhân vật chính cầm sổ; Tùng khoanh tay, Hà Vy ôm bìa hồ sơ, hai người không đồng ý nhau',
+    'cg-ket-vu3': 'xưởng robot: Tùng gãi gáy chìa tay xin lỗi Nam; Hà Vy và nhân vật chính đứng sau mỉm cười',
+    'cg-ket-vu4': 'phòng CLB buổi tối: Nam ngồi cùng bàn chỉ vào ba chiếc chìa, Minh Anh chống tay nhìn, Duy ghim ba thẻ trống, nhân vật chính ghi sổ',
 }
 
 day_du = [{'id': h['id'], 'khung': h['khung'], 'ref': h['ref'], 'prompt': f"[id: {h['id']}] " + MAU[h['mau']].replace('{}', h['rieng'])} for h in hang]

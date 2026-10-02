@@ -6,8 +6,9 @@ import { anhTheoTen } from './anh-mvp';
 
 export interface KetMvpProps {
   ketQua: 'that' | 'thuong';
-  /** Vụ sau vừa kết (từ Vụ 2): chữ màn kết lấy từ lich.md; bỏ trống = màn kết Vụ 1. `so` = số thứ tự vụ (2, 3…). */
-  vu?: { so: number; ten: string; tieuDeKet: string; loiKet: string } | null;
+  /** Vụ sau vừa kết (từ Vụ 2): chữ màn kết lấy từ lich.md; bỏ trống = màn kết Vụ 1. `so` = số thứ tự vụ (2, 3…);
+   * `id` = mã vụ, có ảnh `cg-ket-<mã vụ>` thì hiện làm CG kết. */
+  vu?: { id?: string; so: number; ten: string; tieuDeKet: string; loiKet: string } | null;
   /** Còn vụ chơi tiếp: hiện nút sang vụ đó (nút chính). */
   vuKe?: { so: number; ten: string } | null;
   onSangVuSau?: () => void;
@@ -39,7 +40,7 @@ export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, onLamPhu, phuXong, 
       </section>
     );
   }
-  const cg = vu ? undefined : anhTheoTen(ketQua === 'that' ? 'cg-ket-that' : 'cg-ket-thuong');
+  const cg = vu ? (vu.id ? anhTheoTen(`cg-ket-${vu.id}`) : undefined) : anhTheoTen(ketQua === 'that' ? 'cg-ket-that' : 'cg-ket-thuong');
   const coVuKe = !!vuKe && !!onSangVuSau;
   return (
     <section className="endscreen mvp-ket" aria-labelledby="mvp-ket-tieude">

@@ -3163,6 +3163,18 @@ export const KICH_BAN_MVP = {
           "text": "Được. Tớ nhớ đấy nhé."
         },
         {
+          "type": "goto",
+          "to": "ket-that-clb"
+        }
+      ]
+    },
+    {
+      "id": "ket-that-clb",
+      "title": "Chiều muộn ở phòng CLB: mẩu giấy trong sổ chị Linh",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
           "type": "consequence",
           "hauQua": [
             {
@@ -4382,14 +4394,14 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "goto",
-          "to": "v3-thu-vien"
+          "to": "v3-len-thu-vien"
         }
       ]
     },
     {
-      "id": "v3-thu-vien",
-      "title": "Thư viện: bản ghi quẹt thẻ của chính Nam",
-      "canh": "thu-vien",
+      "id": "v3-len-thu-vien",
+      "title": "Sảnh tòa B: bác Tư ở chân cầu thang",
+      "canh": "sanh-toa-b",
       "mocSomNhat": 1000,
       "nodes": [
         {
@@ -4403,6 +4415,18 @@ export const KICH_BAN_MVP = {
           "expression": "smile",
           "text": "Lại mấy đứa CLB Thám Tử. Lên thư viện à? Tối thứ Hai trên ấy vắng lắm, chỉ có vài đứa quen mặt. Thư viện có mỗi một cửa, ra vào đều phải quẹt thẻ."
         },
+        {
+          "type": "goto",
+          "to": "v3-thu-vien"
+        }
+      ]
+    },
+    {
+      "id": "v3-thu-vien",
+      "title": "Thư viện: bản ghi quẹt thẻ của chính Nam",
+      "canh": "thu-vien",
+      "mocSomNhat": 1000,
+      "nodes": [
         {
           "type": "line",
           "speaker": "narrator",
@@ -7600,7 +7624,7 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "image",
-          "imageId": "cg-ket-mua"
+          "imageId": "cg-ket-vu5"
         },
         {
           "type": "jump-if",

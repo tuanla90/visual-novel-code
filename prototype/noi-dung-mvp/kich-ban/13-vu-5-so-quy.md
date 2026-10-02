@@ -161,7 +161,7 @@
 
 - [LỜI v5-ket-luan.1]
 - [ẢNH chibi-v5-dong-dau]
-- [ẢNH cg-ket-mua]
+- [ẢNH cg-ket-vu5]
 - [NẾU có clue-loi-nhan-linh-1 và có clue-loi-nhan-linh-2 và có clue-loi-nhan-linh-3 và có clue-loi-nhan-linh-4] → đi tới v5-ngan-tu
 - [KẾT THÚC]
 

@@ -373,7 +373,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         return (
           <KetMvp
             ketQua={kn.ketQua}
-            vu={kn.vu ? { so: soVu(kn.vu.id), ten: kn.vu.ten, tieuDeKet: dienTen(kn.vu.tieuDeKet), loiKet: dienTen(kn.vu.loiKet) } : null}
+            vu={kn.vu ? { id: kn.vu.id, so: soVu(kn.vu.id), ten: kn.vu.ten, tieuDeKet: dienTen(kn.vu.tieuDeKet), loiKet: dienTen(kn.vu.loiKet) } : null}
             vuKe={kn.vuKe ? { so: soVu(kn.vuKe.id), ten: kn.vuKe.ten } : null}
             onSangVuSau={() => {
               clearBacklog();
