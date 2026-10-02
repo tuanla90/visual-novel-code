@@ -17,6 +17,8 @@ import type { NhacViecMvp as NhacViec } from '../engine/trang-thai';
 import { TalkOverlay } from '../../shared/ui/visuals/TalkOverlay';
 import { anhChanDung, anhNen, anhTheoTen } from './anh-mvp';
 import { boNhepMoiTheoUrl } from './nhep-moi-mvp';
+import { HoatCanhMvp } from './HoatCanhMvp';
+import { coHoatCanh } from './hoat-canh-mvp';
 import { NhacViecMvp } from './NhacViecMvp';
 
 export interface SanKhauMvpProps {
@@ -158,7 +160,7 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
   return (
     <section className={`stage mvp-stage${shaking ? ' is-shaking' : ''}${nhacViec ? ' co-nhac' : ''}`} data-scene={canh} aria-label={`Cảnh: ${tenCanh}`}>
       <div className="stage__backdrop mvp-stage__backdrop" aria-hidden="true" data-art-source={nen ? 'image' : 'placeholder'}>
-        {nen ? <img className="stage__backdrop-img" src={nen} alt="" draggable={false} /> : <div className="mvp-stage__nen-tam" />}
+        {coHoatCanh(canh) ? <HoatCanhMvp key={canh} canh={canh} /> : nen ? <img className="stage__backdrop-img" src={nen} alt="" draggable={false} /> : <div className="mvp-stage__nen-tam" />}
       </div>
       <div className="stage__scene-label">
         <svg className="stage__scene-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
