@@ -47,7 +47,7 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
     expect(d?.duLieu?.bang.map((b) => [b.ten, b.dong.length])).toEqual(expect.arrayContaining([
       ['lop_sinh_hoat', 14],
       ['sinh_vien', 25],
-      ['nhat_ky_in', 9],
+      ['nhat_ky_in', 10],
       ['nhat_ky_su_dung', 7],
       ['tin_nhan', 8],
       ['dang_nhap_kenh', 5],

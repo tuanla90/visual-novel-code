@@ -91,6 +91,7 @@ Kết quả: 2 dòng
 > 🗂️ Tra đúng → ghim phiếu lên bảng điều tra: **8 bài từ điện thoại trực, 1 bài từ máy văn phòng** — Kết quả nhóm theo thiết bị: 8 bài gửi từ điện thoại trực kênh (Nam giữ), 1 bài gửi từ máy văn phòng xưởng. Bài tin đồn là bài duy nhất khác thói quen đăng của kênh.
 
 - **Bạn (người chơi)**: Tám bài từ điện thoại trực kênh. Một bài từ máy văn phòng xưởng.
+- **Nam** (neutral): Bài thì tớ đăng bằng điện thoại trực. Máy xưởng số 2 tớ chỉ đăng nhập để xem thống kê kênh, không đăng gì từ đó.
 - **Nam** (neutral): Điện thoại trực là cái tớ giữ. Tớ đăng toàn buổi chiều, bằng cái đó.
 - **Tùng** (worried): Điện thoại cậu giữ thì chứng minh được gì? Hôm đó cậu đổi sang máy bàn thì sao.
 - **Nam** (neutral): Thì tớ đã bảo tối đó tớ ở thư viện. Cửa từ thư viện ghi giờ vào giờ ra của từng thẻ. Trên cổng sinh viên, ai cũng tải được bản ghi của chính mình. Tớ tải rồi gửi vào nhóm cho các cậu.

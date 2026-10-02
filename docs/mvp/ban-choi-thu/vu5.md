@@ -206,9 +206,10 @@ Kết quả: 1 dòng
 - **Duy** (neutral): Thầy Quang ký rồi. Thầy Khải chụp đúng một trang ấy.
 > 🗂️ Giấy nhớ mới: **[Sổ ký phòng máy tối 15/9]** — nguồn: Thầy Khải giữ sổ; Thầy Quang ký cho mở đúng một trang sau khi phiếu sáu khoản cho thấy tiền bị lấy từ đúng quỹ của CLB bị lá thư đòi thu phòng
 > Tối Chủ nhật muốn vào phòng máy phải ký sổ. Tối 15/9 có bảy dòng: năm sinh viên vào in bài, và hai người của CLB Robotics: Thảo vào 20:10, ra 21:30; Khánh vào 22:40, ra 23:20. Nhật ký in ghi lá thư in lúc 23:10. Sổ nói ai ở trong phòng, không nói ai bấm in.
-- **Bạn (người chơi)**: Tối Chủ nhật 15/9, bảy dòng. Năm bạn vào in bài. Hai người của Robotics: Thảo vào 20 giờ 10, ra 21 giờ 30. Khánh vào 22 giờ 40, ra 23 giờ 20.
-- **Hà Vy** (thinking): Nhật ký in ghi lá thư in lúc 23 giờ 10, bằng tài khoản của Robotics. Trong phòng lúc ấy, người biết mật khẩu tài khoản ấy chỉ có một.
-- **Tùng** (gai-dau): Tớ không cá. Tớ ghi.
+> 🗂️ Giấy nhớ mới: **[Nhật ký in tối 15/9: không có sơ đồ thứ hai]** — nguồn: Thầy Khải gửi kèm trang sổ ký, trích từ nhật ký in của phòng máy
+> Tối 15/9 tài khoản clb_robotics in đúng hai lệnh. 20:40: so-do-mach-xe-do-line.pdf, 3 trang. 23:10: kien-nghi-phong-clb.docx, 1 trang. Không có lệnh thứ ba. Cả phòng máy, từ 22:40 tới 23:20, có ba lệnh in: một đồ án và một báo cáo nhóm bằng tài khoản của hai sinh viên khác, và lá thư. Không có sơ đồ mạch nào.
+- **Bạn (người chơi)**: Tối Chủ nhật 15/9, bảy dòng. Năm bạn vào in bài. Hai người của Robotics: Thảo vào 20 giờ 10, ra 21 giờ 30. Khánh vào 22 giờ 40, ra 23 giờ 20. Thầy Khải gửi kèm các lệnh in của tài khoản Robotics tối ấy: hai lệnh, 20 giờ 40 và 23 giờ 10.
+- **Hà Vy** (thinking): 23 giờ 10 là lá thư. Trong phòng lúc ấy, người của Robotics chỉ có một. Mới là cơ hội và thời gian, chưa phải ai bấm in.
 - **Minh Anh** (serious): Sổ ký là giấy, nhật ký in là máy. Hai nguồn riêng. Mang cả hai lên.
 
 ###### 📍 Phòng họp rà soát — Phòng họp, nhịp một: "đúng thẩm quyền"
@@ -257,7 +258,6 @@ Kết quả: 1 dòng
 - **Thầy Quang** (neutral): Em Khánh. Hàng gia công ngoài thì phải có giấy giao việc, em chưa trình tờ nào. Nhầm mã quỹ thì nhầm ba lần liền, cả ba cùng rơi vào một quỹ. Ba đơn lập từ một máy, một đơn chắc chắn không phải em Nam lập, và tiền tạm ứng thì chính em ký nhận. Em giải thích mối liên hệ này thế nào?
 - **Khánh** (neutral): …Ba khoản đó không chi cho đội ạ. Đơn là em lập. Tiền em dùng vào việc riêng. Em sẽ trả lại.
 - **Nam** (neutral): Anh lấy tên em.
-- **Khánh** (neutral): Anh xin lỗi em, Nam.
 - **Thầy Quang** (neutral): Quân ghi biên bản: tên em Nam được gỡ khỏi giấy giải trình, giải ngân của xưởng mở lại từ hôm nay.
 - **Thầy Quang** (neutral): CLB Thám Tử còn đề nghị hỏi lại chuyện lá thư hồi tháng 9. Em Hoài, chú Cường, mời hai người lên gần đây.
 - **Tùng** (neutral): Tớ không nói hộ được. Cậu thấy gì thì thưa với thầy.
@@ -283,9 +283,10 @@ Kết quả: 1 dòng
 ###### 📍 Phòng họp rà soát — Khánh thắng một nhịp: "em vào in sơ đồ"
 
 > ⚖️ ĐỐI CHẤT — Thầy Quang nêu giả thuyết: "Em Khánh nói vào phòng máy để in sơ đồ cho đội. Nghe hợp lý. Các em còn gì về tối hôm ấy không? Không thì thầy dừng phần lá thư ở đây.". Người chơi trình thẻ trong hồ sơ, hoặc nói "chưa đủ căn cứ".
->   - Trình clue-thao-in-so-do [ĐỦ CĂN CỨ] → **Bạn (người chơi)**: Sơ đồ của đội thì tối Chủ nhật nào chị Thảo cũng in. Tối 15/9 sổ ghi chị ấy ở phòng máy từ 20 giờ 10 tới 21 giờ 30, ra trước khi anh vào hơn một tiếng. / **Thầy Quang** (neutral): Em Khánh, sơ đồ nào mà đội phải in hai lần trong một tối? / **Khánh** (neutral): …
+>   - Trình clue-in-toi-15-9 [ĐỦ CĂN CỨ] → **Khánh** (neutral): Sơ đồ tôi in thì các bạn đâu có tra. / **Bạn (người chơi)**: Em tra rồi ạ. Tối 15/9 tài khoản Robotics in đúng hai lệnh: 20 giờ 40 và 23 giờ 10. / **Hà Vy** (neutral): 20 giờ 40 là sơ đồ mạch, lúc ấy chị Thảo còn trong phòng. 23 giờ 10 là lá thư. Còn cả phòng máy, từ 22 giờ 40 tới 23 giờ 20, chỉ có ba lệnh in: một đồ án, một báo cáo nhóm của hai bạn khác, và lá thư. Không có sơ đồ nào, bằng tài khoản nào cũng không. / **Thầy Quang** (neutral): Em Khánh, vậy sơ đồ của em đâu? / **Khánh** (neutral): …
+>   - Trình clue-thao-in-so-do [HỖ TRỢ] → **Bạn (người chơi)**: Sơ đồ của đội thì tối Chủ nhật nào chị Thảo cũng in. Tối ấy chị ấy ra trước khi anh vào hơn một tiếng. / **Khánh** (neutral): Thảo in bộ của Thảo. Tôi in thêm một bộ. / **Thầy Quang** (neutral): Thói quen của người khác chưa bác được lời em Khánh. Có gì ghi lại các lệnh in tối ấy không?
 >   - Trình clue-so-phong-may [HỖ TRỢ] → **Thầy Quang** (neutral): Trang này thầy xem rồi. Nó đặt em Khánh trong phòng, và em ấy đã nói vào làm gì. Còn gì khác không?
->   - Trình ev-nhat-ky-in [HỖ TRỢ] → **Khánh** (neutral): Phiếu ấy chỉ có một dòng về lá thư. Sơ đồ tôi in thì các bạn đâu có tra. / **Duy** (neutral): Đúng, phiếu này không nói về sơ đồ. Ai trong xưởng lo chuyện in sơ đồ nhỉ?
+>   - Trình ev-nhat-ky-in [HỖ TRỢ] → **Khánh** (neutral): Phiếu ấy chỉ có một dòng về lá thư. / **Duy** (neutral): Đúng, phiếu này chỉ lọc tên tệp lá thư. Thầy Khải còn gửi kèm một trang khác về cả tối hôm ấy.
 >   - Trình clue-loi-chu-cuong [GỢI Ý] → **Thầy Quang** (neutral): Cái huy hiệu thầy ghi rồi. Thầy đang hỏi về tối Chủ nhật ở phòng máy.
 >   - Chưa đủ căn cứ → **Minh Anh** (neutral): Thưa thầy, bọn em không còn gì về tối hôm ấy ạ. / **Thầy Quang** (neutral): Vậy phần lá thư dừng ở đây. Thầy sẽ hỏi riêng.
 >   - Thẻ khác → **Thầy Quang** (neutral): Cái này nói gì về tối 15/9? / **Minh Anh** (worried): Em xem lại hồ sơ ạ.
@@ -299,18 +300,20 @@ Kết quả: 1 dòng
 
 > ❓ Thầy Quang hỏi: "Em là người trình trang sổ ấy. Theo em, tới đây chứng cứ đủ nói đến đâu?" (chọn sai thì nghe phản hồi rồi chọn lại)
 >   - Anh Khánh chắc chắn là người in lá thư. → **Hà Vy** (thinking): Sổ ghi ai ở trong phòng. Cột nào ghi ai bấm in?
->   - Anh Khánh có mặt lúc lá thư được in, và lý do anh nêu không đứng được. Còn ai bấm in thì em chưa chứng minh được. ✅ → **Khánh** (neutral): Tôi vừa nhận lấy tiền của CLB các bạn đấy. Thế mà vẫn "chưa chứng minh được" à? / **Bạn (người chơi)**: Vâng. Phần nào chưa rõ thì em vẫn phải ghi là chưa rõ.
+>   - Anh Khánh có mặt lúc lá thư được in, và lý do anh nêu không khớp nhật ký in. Còn ai bấm in thì em chưa chứng minh được. ✅ → **Khánh** (neutral): Tôi vừa nhận lấy tiền của CLB các bạn đấy. Thế mà vẫn "chưa chứng minh được" à? / **Bạn (người chơi)**: Vâng. Phần nào chưa rõ thì em vẫn phải ghi là chưa rõ.
 >   - Trang sổ ấy không giúp được gì. → **Duy** (neutral): Nó đặt một người vào phòng đúng giờ, và bác được một lý do. Thế là có giúp.
 
 ###### 📍 Phòng họp rà soát — Khánh nhận lá thư; nhịp bốn: lá thư liên quan gì tới ba khoản chi
 
 - **Thầy Quang** (neutral): Thầy ghi đúng như em nói. Em Khánh, thầy chỉ hỏi: em có in lá thư ấy không? Em có thể trả lời, hoặc để thầy xác minh tiếp.
-- **Khánh** (neutral): …Em không muốn em Hoài phải ngồi đây thêm một buổi để nhớ mặt một người em ấy không nhớ. Lá thư là em in ạ. Sáng hôm sau em nhờ em ấy nộp hộ.
+- **Khánh** (neutral): Nếu em không trả lời thì thầy xác minh tiếp ạ?
+- **Thầy Quang** (neutral): Đúng.
+- **Khánh** (neutral): …Thế là em lại lùi thêm một lần nữa, còn em Hoài thì lại phải ngồi đây nhớ một khuôn mặt em ấy không nhớ. Lá thư là em in ạ. Hoài chỉ nộp hộ.
 - **Khánh** (neutral): Anh xin lỗi em, Hoài. Anh nhờ một bạn năm nhất vì nghĩ năm nhất thì không ai hỏi lại.
 - **Hoài** (nervous): Vâng ạ.
 > 🎯 NHIỆM VỤ: Trình thứ cho thấy lá thư liên quan gì tới ba khoản chi
 > ⚖️ ĐỐI CHẤT — Thầy Quang nêu giả thuyết: "Thầy chưa hiểu một điều. Một lá thư đòi thu phòng thì liên quan gì tới ba khoản chi? Các em có gì cho thấy mối liên hệ ấy không?". Người chơi trình thẻ trong hồ sơ, hoặc nói "chưa đủ căn cứ".
->   - Trình ev-chi-tham-tu [ĐỦ CĂN CỨ] → **Bạn (người chơi)**: Tiền rời quỹ ngày 10, 11 và 12 tháng 9. Lá thư đòi thu phòng tới ngày 16. Đơn linh kiện đầu tiên mãi ngày 27 mới có, sau buổi họp bọn em giữ được phòng. / **Bạn (người chơi)**: Em chưa biết anh ấy nghĩ gì. Nhưng thư xuất hiện sau khi tiền đã đi, còn đơn xuất hiện sau khi thư không thành. / **Thầy Quang** (neutral): Tiền trước, thư sau, đơn sau cùng. Thầy thấy rồi.
+>   - Trình ev-chi-tham-tu [HỖ TRỢ] → **Bạn (người chơi)**: Tiền rời quỹ ngày 10, 11 và 12 tháng 9. Lá thư đòi thu phòng tới ngày 16. Đơn đầu tiên mãi ngày 27 mới có, sau buổi họp bọn em giữ được phòng. / **Thầy Quang** (neutral): Tiền trước, thư sau, đơn sau cùng. Nhưng thư thì giúp gì được cho tiền? Có gì nói về chuyện ai được đọc sổ, và bao giờ, không?
 >   - Trình clue-sao-ke-cuoi-ky [ĐỦ CĂN CỨ] → **Bạn (người chơi)**: Sao kê quỹ chỉ tự về các CLB vào cuối kỳ, cùng đợt rà soát phòng; ngưỡng một triệu cũng tới lúc ấy mới được soát. Muốn xem sớm hơn thì giấy phải qua chủ tịch Hội. / **Bạn (người chơi)**: Tức là tới cuối kỳ mới có người đọc ba khoản ấy. Mà lá thư đòi thu phòng lại tới ngay tuần đầu. / **Thầy Quang** (neutral): Thư đi trước ngày có người đọc sổ. Thầy thấy rồi.
 >   - Trình ev-chi-vuot-muc [HỖ TRỢ] → **Duy** (neutral): Phiếu này nói bao nhiêu và ai duyệt. Còn bao giờ, và bao giờ mới có người đọc, thì phiếu khác nói.
 >   - Trình clue-loi-nhan-linh-1 [GỢI Ý] → **Thầy Quang** (neutral): Mẩu giấy này của ai? / **Duy** (neutral): Chuyện khác ạ. Em xin lỗi thầy.
@@ -326,7 +329,7 @@ Kết quả: 1 dòng
 ###### 📍 Phòng họp rà soát — Người chơi tự nối: lá thư để làm gì
 
 > ❓ Thầy Quang hỏi: "Vậy theo các em, lá thư đòi thu phòng là để làm gì?" (chọn sai thì nghe phản hồi rồi chọn lại)
->   - Để CLB mất phòng, hết kỳ thì phải giải thể, và không còn chủ quỹ nào ngồi đọc sao kê của quỹ ấy. ✅ → **Cô Lan** (neutral): Quy chế đúng là thế. CLB mất phòng thì vào diện chờ giải thể; từ lúc ấy sao kê quỹ và yêu cầu giải trình đều gửi về Hội sinh viên chứ không về chủ quỹ nữa; bản giải trình lẽ ra chủ quỹ phải ký xác nhận thì chủ tịch Hội ký thay. Hết kỳ thì giải thể, sổ vẫn lưu, nhưng người ký nhận bàn giao cũng là chủ tịch Hội. / **Thầy Quang** (neutral): Đấy là các em suy ra. Đúng hay không thì em Khánh nói. / **Nam** (neutral): Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ.
+>   - Để CLB mất phòng, hết kỳ thì phải giải thể, và không còn chủ quỹ nào ngồi đọc sao kê của quỹ ấy. ✅ → **Cô Lan** (neutral): Quy chế đúng thế. Mất phòng thì sao kê với yêu cầu giải trình đều về Hội, chủ tịch Hội ký thay chủ quỹ. / **Thầy Quang** (neutral): Đấy là các em suy ra. Đúng hay không thì em Khánh nói. / **Nam** (neutral): Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ.
 >   - Để lấy căn phòng ấy cho CLB Robotics. → **Khánh** (neutral): Xưởng bọn tôi rộng gấp ba cái phòng ấy.
 >   - Để trả đũa CLB Thám Tử. → **Hà Vy** (thinking): Tháng 9 mình đã tra gì ai đâu mà trả đũa.
 
@@ -336,20 +339,23 @@ Kết quả: 1 dòng
 - **Nam** (neutral): Sao lại là tên em?
 - **Khánh** (neutral): Người duyệt không được tự đứng tên đề xuất. Em là đứa không ai nghi.
 - **Nam** (neutral): Còn cái tin trong kênh?
-- **Khánh** (neutral): Kênh có người trực. Ai hỏi thì hỏi em.
+- **Khánh** (neutral): Thư không thành thì còn đợt rà cuối kỳ. Anh cần người ta ngại các em trước lúc ấy. Kênh có người trực, ai hỏi thì hỏi em.
 - **Nam** (neutral): Hôm ấy anh còn bảo mọi người hỏi em nhẹ thôi.
-- **Khánh** (neutral): Câu ấy anh nói thật. Sang năm anh ra trường. Anh tính bù xong trước ngày có người đọc sổ, rồi không ai phải biết, kể cả em.
+- **Khánh** (neutral): Câu ấy anh nói thật. Bốn năm anh dựng cái xưởng ấy. Anh sợ nhất là ra trường mà người ta nhớ anh bằng đúng một dòng trong sổ chi. Anh tính bù xong trước ngày có người đọc sổ, rồi không ai phải biết, kể cả em.
+- **Nam** (neutral): Xưởng mình cũng có quỹ. Sao anh không lấy ở đó?
+- **Khánh** (neutral): Quỹ đội thì ban tổ chức giải soát từng khoản trước ngày đóng lệ phí. Quỹ bên ấy cả năm chi mỗi giấy với bút, anh nghĩ không ai mở ra đọc.
+- **Minh Anh** (serious): …Anh nghĩ đúng. Em đã không mở.
 - **Thầy Quang** (neutral): Còn ba cái đơn, và danh sách chuyển xuống Ban kiểm tra?
-- **Khánh** (neutral): Tạm ứng quá ba mươi ngày không chứng từ là bị hỏi, nên em viết đơn. Danh sách thì em tưởng tài khoản khóa là Nam không kịp nộp kiểm kê. Lần nào em cũng chỉ tìm cách lùi cái lúc bị hỏi.
+- **Khánh** (neutral): Tạm ứng quá ba mươi ngày không chứng từ là bị hỏi, nên em viết đơn. Danh sách thì em tưởng tài khoản khóa là Nam không kịp nộp kiểm kê.
 - **Quân** (stunned): Em lại cầm một danh sách đi nghi người khác. Lần thứ hai.
 - **Thầy Quang** (stern): Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên, không bàn ở đây. Việc riêng của em Khánh, thầy không hỏi trước mọi người.
-- **Thầy Quang** (neutral): Phòng của CLB Thám Tử giữ nguyên. Hoàn quỹ đi theo thủ tục, mất vài tháng; từ giờ tới đó quỹ CLB tạm đóng. Biên bản cũng ghi một dòng: sao kê kỳ trước chủ quỹ chưa đối chiếu.
-- **Minh Anh** (serious): Em nhận ạ.
+- **Thầy Quang** (neutral): Phòng của CLB Thám Tử giữ nguyên. Hoàn quỹ đi theo thủ tục, mất vài tháng; từ giờ tới đó quỹ CLB tạm đóng.
 
 ###### 📍 Phòng họp rà soát — Biên bản buổi họp: nói chắc được tới đâu
 
 - **Thầy Quang** (neutral): Phần của CLB Thám Tử, biên bản ghi thế này: ba khoản tạm ứng gắn với ba đơn kho không có hàng, ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Mỗi bước có phiếu kèm, ai cũng tự kiểm được.
-- **Thầy Quang** (neutral): Những gì người trong cuộc tự nói ra thì ghi là lời người ấy, không ghi là lời của bảng.
+- **Minh Anh** (neutral): Thưa thầy, lời anh Khánh tự nhận thì em xin ghi riêng vào mục lời khai, không ghi lẫn với phiếu ạ.
+- **Thầy Quang** (neutral): Đúng thế.
 > ⤵ RẼ TỰ ĐỘNG: nếu có dc-khanh-don-du thì sang "Hành lang sau buổi họp: chiếc chìa" (in ở dưới); nếu KHÔNG thì chạy tiếp các dòng ngay sau đây. Hai đường loại trừ nhau, người chơi chỉ thấy một.
 - **Minh Anh** (neutral): Em xin một bản sao biên bản để kẹp vào hồ sơ cuối kỳ ạ.
 
@@ -363,12 +369,8 @@ Kết quả: 1 dòng
 - **Nam** (neutral): Có những việc anh giúp đội thật. Cái hạn lệ phí anh xin lùi cũng là thật. Nhưng chuyện anh lấy tên em thì em vẫn phải ghi đúng vào biên bản.
 - **Khánh** (neutral): Ừ. Em giữ sổ tốt hơn anh.
 - **Tùng** (worried): Tớ chắc là anh ấy từ hôm thấy cái huy hiệu. Thế mà trúng rồi tớ chả thấy vui gì cả.
-- **Tùng** (neutral): Nam này. Hôm trước tớ xin lỗi rồi, nhưng tớ muốn nói lại: tớ đã coi tên trên tài khoản là tên cậu.
-- **Nam** (neutral): Tớ nghe. Tớ cũng mất mấy hôm mới dám bước vào phòng các cậu. Lần sau đọc phiếu trước.
 - **Nam** (neutral): Lệ phí giải hạn cuối tháng này. Kinh phí năm nay toàn anh ấy chạy. Giờ tớ phải tự đi xin lại từ đầu.
-- **Thảo** (neutral): Chìa của chị treo lên móc cạnh cửa rồi. Ai lấy cũng phải ký tên. Tiền giải thì chị với Bách đi xin cùng em.
-- **Minh Anh** (serious): Chị cũng có phần. Làm chủ quỹ mà sao kê kỳ trước chị còn chưa mở. Từ tháng này chị xin hằng tháng, dán cạnh bảng nguyên tắc.
-- **Chú Cường** (smile): Chú về trực đây. Lần sau chú cố nhìn mặt cho kỹ.
+- **Thảo** (neutral): Tiền giải thì chị với Bách đi xin cùng em. Chìa của chị cũng treo lên móc rồi.
 - **Hoài** (neutral): Tùng ơi, cái áo xanh ấy… CLB các cậu còn nhận người không?
 - **Tùng** (happy): Đơn ở chỗ Duy. Chiều thứ Tư, phòng CLB. Lần này tớ dẫn đúng tòa.
 
@@ -376,7 +378,7 @@ Kết quả: 1 dòng
 
 - **Người kể**: Chiều thứ Tư, phòng CLB. Hoài tới sớm, mang theo một xấp giấy nháp còn trắng một mặt.
 - **Duy** (neutral): Quỹ đóng thì vẫn họp. Giấy còn nửa tập, bút còn ba cái.
-- **Nam** (neutral): Tớ qua được một lúc, xong phải về lo tiền giải với anh Bách, chị Thảo. Cảm biến của xưởng ghi mỗi giây một dòng, kéo giấy nhớ thì không kịp. Tớ muốn tự viết chương trình đọc nó.
+- **Nam** (neutral): Tớ qua được một lúc, xong phải về lo tiền giải với anh Bách, chị Thảo. Cảm biến của xưởng ghi mỗi giây một dòng. Tớ muốn tự viết chương trình đọc nó.
 - **Hà Vy** (smile): Từ một chữ H tới một sổ quỹ. Mỗi bước là một phiếu.
 - **Minh Anh** (neutral): Hồ sơ cuối kỳ xong. Em là người kéo phiếu đầu tiên của vụ này, em đóng dấu đi.
 - **Duy** (neutral): Nam bảo để lại đây. Và chị Linh để lại nhiều mẩu giấy hơn mình tưởng.

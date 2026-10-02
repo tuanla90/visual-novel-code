@@ -42,7 +42,7 @@
 - [THỬ THÁCH c-chi-vuot-muc]
 - [LỜI v5-so-quy.4]
 - [LỜI v5-so-quy.5]
-- [HẬU QUẢ] mở manh mối clue-so-phong-may
+- [HẬU QUẢ] mở manh mối clue-so-phong-may, mở manh mối clue-in-toi-15-9
 - [LỜI v5-so-quy.6]
 - [ĐI TỚI v5-doi-chat]
 
@@ -96,9 +96,10 @@
 ### v5-so-do — Khánh thắng một nhịp: "em vào in sơ đồ" {cảnh: phong-hop}
 
 - [ĐỐI CHẤT dc-khanh-so-do] thay-quang: "Em Khánh nói vào phòng máy để in sơ đồ cho đội. Nghe hợp lý. Các em còn gì về tối hôm ấy không? Không thì thầy dừng phần lá thư ở đây."
-  - {clue-thao-in-so-do} [ĐỦ CĂN CỨ] → phản hồi: **player**: Sơ đồ của đội thì tối Chủ nhật nào chị Thảo cũng in. Tối 15/9 sổ ghi chị ấy ở phòng máy từ 20 giờ 10 tới 21 giờ 30, ra trước khi anh vào hơn một tiếng.<br>**thay-quang** (neutral): Em Khánh, sơ đồ nào mà đội phải in hai lần trong một tối?<br>**khanh** (neutral): …
+  - {clue-in-toi-15-9} [ĐỦ CĂN CỨ] → phản hồi: **khanh** (neutral): Sơ đồ tôi in thì các bạn đâu có tra.<br>**player**: Em tra rồi ạ. Tối 15/9 tài khoản Robotics in đúng hai lệnh: 20 giờ 40 và 23 giờ 10.<br>**ha-vy** (neutral): 20 giờ 40 là sơ đồ mạch, lúc ấy chị Thảo còn trong phòng. 23 giờ 10 là lá thư. Còn cả phòng máy, từ 22 giờ 40 tới 23 giờ 20, chỉ có ba lệnh in: một đồ án, một báo cáo nhóm của hai bạn khác, và lá thư. Không có sơ đồ nào, bằng tài khoản nào cũng không.<br>**thay-quang** (neutral): Em Khánh, vậy sơ đồ của em đâu?<br>**khanh** (neutral): …
+  - {clue-thao-in-so-do} [HỖ TRỢ] → phản hồi: **player**: Sơ đồ của đội thì tối Chủ nhật nào chị Thảo cũng in. Tối ấy chị ấy ra trước khi anh vào hơn một tiếng.<br>**khanh** (neutral): Thảo in bộ của Thảo. Tôi in thêm một bộ.<br>**thay-quang** (neutral): Thói quen của người khác chưa bác được lời em Khánh. Có gì ghi lại các lệnh in tối ấy không?
   - {clue-so-phong-may} [HỖ TRỢ] → phản hồi: **thay-quang** (neutral): Trang này thầy xem rồi. Nó đặt em Khánh trong phòng, và em ấy đã nói vào làm gì. Còn gì khác không?
-  - {ev-nhat-ky-in} [HỖ TRỢ] → phản hồi: **khanh** (neutral): Phiếu ấy chỉ có một dòng về lá thư. Sơ đồ tôi in thì các bạn đâu có tra.<br>**duy** (neutral): Đúng, phiếu này không nói về sơ đồ. Ai trong xưởng lo chuyện in sơ đồ nhỉ?
+  - {ev-nhat-ky-in} [HỖ TRỢ] → phản hồi: **khanh** (neutral): Phiếu ấy chỉ có một dòng về lá thư.<br>**duy** (neutral): Đúng, phiếu này chỉ lọc tên tệp lá thư. Thầy Khải còn gửi kèm một trang khác về cả tối hôm ấy.
   - {clue-loi-chu-cuong} [GỢI Ý] → phản hồi: **thay-quang** (neutral): Cái huy hiệu thầy ghi rồi. Thầy đang hỏi về tối Chủ nhật ở phòng máy.
   - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, bọn em không còn gì về tối hôm ấy ạ.<br>**thay-quang** (neutral): Vậy phần lá thư dừng ở đây. Thầy sẽ hỏi riêng.
   - [KHÁC] → phản hồi: **thay-quang** (neutral): Cái này nói gì về tối 15/9?<br>**minh-anh** (worried): Em xem lại hồ sơ ạ.
@@ -110,7 +111,7 @@
 
 - [HỎI q-v5-gioi-han] thay-quang: "Em là người trình trang sổ ấy. Theo em, tới đây chứng cứ đủ nói đến đâu?"
   - (A) {id: chac-chan} Anh Khánh chắc chắn là người in lá thư. → phản hồi: **ha-vy** (thinking): Sổ ghi ai ở trong phòng. Cột nào ghi ai bấm in?
-  - (B) {id: co-mat} Anh Khánh có mặt lúc lá thư được in, và lý do anh nêu không đứng được. Còn ai bấm in thì em chưa chứng minh được. [ĐÚNG] → phản hồi: **khanh** (neutral): Tôi vừa nhận lấy tiền của CLB các bạn đấy. Thế mà vẫn "chưa chứng minh được" à?<br>**player**: Vâng. Phần nào chưa rõ thì em vẫn phải ghi là chưa rõ.
+  - (B) {id: co-mat} Anh Khánh có mặt lúc lá thư được in, và lý do anh nêu không khớp nhật ký in. Còn ai bấm in thì em chưa chứng minh được. [ĐÚNG] → phản hồi: **khanh** (neutral): Tôi vừa nhận lấy tiền của CLB các bạn đấy. Thế mà vẫn "chưa chứng minh được" à?<br>**player**: Vâng. Phần nào chưa rõ thì em vẫn phải ghi là chưa rõ.
   - (C) {id: vo-ich} Trang sổ ấy không giúp được gì. → phản hồi: **duy** (neutral): Nó đặt một người vào phòng đúng giờ, và bác được một lý do. Thế là có giúp.
 - [ĐI TỚI v5-vi-sao]
 
@@ -118,7 +119,7 @@
 
 - [LỜI v5-nhan-thu.1]
 - [ĐỐI CHẤT dc-khanh-vi-sao] thay-quang: "Thầy chưa hiểu một điều. Một lá thư đòi thu phòng thì liên quan gì tới ba khoản chi? Các em có gì cho thấy mối liên hệ ấy không?"
-  - {ev-chi-tham-tu} [ĐỦ CĂN CỨ] → phản hồi: **player**: Tiền rời quỹ ngày 10, 11 và 12 tháng 9. Lá thư đòi thu phòng tới ngày 16. Đơn linh kiện đầu tiên mãi ngày 27 mới có, sau buổi họp bọn em giữ được phòng.<br>**player**: Em chưa biết anh ấy nghĩ gì. Nhưng thư xuất hiện sau khi tiền đã đi, còn đơn xuất hiện sau khi thư không thành.<br>**thay-quang** (neutral): Tiền trước, thư sau, đơn sau cùng. Thầy thấy rồi.
+  - {ev-chi-tham-tu} [HỖ TRỢ] → phản hồi: **player**: Tiền rời quỹ ngày 10, 11 và 12 tháng 9. Lá thư đòi thu phòng tới ngày 16. Đơn đầu tiên mãi ngày 27 mới có, sau buổi họp bọn em giữ được phòng.<br>**thay-quang** (neutral): Tiền trước, thư sau, đơn sau cùng. Nhưng thư thì giúp gì được cho tiền? Có gì nói về chuyện ai được đọc sổ, và bao giờ, không?
   - {clue-sao-ke-cuoi-ky} [ĐỦ CĂN CỨ] → phản hồi: **player**: Sao kê quỹ chỉ tự về các CLB vào cuối kỳ, cùng đợt rà soát phòng; ngưỡng một triệu cũng tới lúc ấy mới được soát. Muốn xem sớm hơn thì giấy phải qua chủ tịch Hội.<br>**player**: Tức là tới cuối kỳ mới có người đọc ba khoản ấy. Mà lá thư đòi thu phòng lại tới ngay tuần đầu.<br>**thay-quang** (neutral): Thư đi trước ngày có người đọc sổ. Thầy thấy rồi.
   - {ev-chi-vuot-muc} [HỖ TRỢ] → phản hồi: **duy** (neutral): Phiếu này nói bao nhiêu và ai duyệt. Còn bao giờ, và bao giờ mới có người đọc, thì phiếu khác nói.
   - {clue-loi-nhan-linh-1} [GỢI Ý] → phản hồi: **thay-quang** (neutral): Mẩu giấy này của ai?<br>**duy** (neutral): Chuyện khác ạ. Em xin lỗi thầy.
@@ -131,7 +132,7 @@
 ### v5-vi-sao-hoi — Người chơi tự nối: lá thư để làm gì {cảnh: phong-hop}
 
 - [HỎI q-v5-vi-sao] thay-quang: "Vậy theo các em, lá thư đòi thu phòng là để làm gì?"
-  - (A) {id: cai-so} Để CLB mất phòng, hết kỳ thì phải giải thể, và không còn chủ quỹ nào ngồi đọc sao kê của quỹ ấy. [ĐÚNG] → phản hồi: **co-lan** (neutral): Quy chế đúng là thế. CLB mất phòng thì vào diện chờ giải thể; từ lúc ấy sao kê quỹ và yêu cầu giải trình đều gửi về Hội sinh viên chứ không về chủ quỹ nữa; bản giải trình lẽ ra chủ quỹ phải ký xác nhận thì chủ tịch Hội ký thay. Hết kỳ thì giải thể, sổ vẫn lưu, nhưng người ký nhận bàn giao cũng là chủ tịch Hội.<br>**thay-quang** (neutral): Đấy là các em suy ra. Đúng hay không thì em Khánh nói.<br>**nam** (neutral): Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ.
+  - (A) {id: cai-so} Để CLB mất phòng, hết kỳ thì phải giải thể, và không còn chủ quỹ nào ngồi đọc sao kê của quỹ ấy. [ĐÚNG] → phản hồi: **co-lan** (neutral): Quy chế đúng thế. Mất phòng thì sao kê với yêu cầu giải trình đều về Hội, chủ tịch Hội ký thay chủ quỹ.<br>**thay-quang** (neutral): Đấy là các em suy ra. Đúng hay không thì em Khánh nói.<br>**nam** (neutral): Em cứ tưởng anh muốn cái phòng. Anh muốn cái sổ.
   - (B) {id: lay-phong} Để lấy căn phòng ấy cho CLB Robotics. → phản hồi: **khanh** (neutral): Xưởng bọn tôi rộng gấp ba cái phòng ấy.
   - (C) {id: tra-dua} Để trả đũa CLB Thám Tử. → phản hồi: **ha-vy** (thinking): Tháng 9 mình đã tra gì ai đâu mà trả đũa.
 - [ĐI TỚI v5-ket-du]

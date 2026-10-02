@@ -47,7 +47,7 @@ describe('sảnh KTX: [KHÁM PHÁ]', () => {
     expect(screen.getByRole('button', { name: 'Xem tờ giấy trên cửa thang máy' })).toBeDisabled();
   });
 
-  it('xem cả hai → Tùng hiện; bấm Tùng → câu hỏi đường của người chơi, rồi màn "Nhân vật mới" của Tùng', async () => {
+  it('màn giới thiệu của Tùng chờ đúng câu tự giới thiệu và cú bấm tiếp sau câu đó', async () => {
     let s = toiSanh();
     for (const c of ['md-00-thang-may', 'md-00-so-do']) {
       s = xuLy(kb, s, { type: 'xem-diem', chuoi: c });
@@ -59,6 +59,13 @@ describe('sảnh KTX: [KHÁM PHÁ]', () => {
     expect(screen.queryByRole('dialog', { name: /Giới thiệu nhân vật/ })).toBeNull();
 
     act(() => useKhoMvp.getState().hanhDong({ type: 'tiep' }));
+    expect(document.body.textContent).toContain('Khuất sau hành lang kia');
+    expect(screen.queryByRole('dialog', { name: /Giới thiệu nhân vật/ })).toBeNull();
+    act(() => useKhoMvp.getState().hanhDong({ type: 'tiep' }));
+    act(() => useKhoMvp.getState().hanhDong({ type: 'tiep' }));
+    expect(document.body.textContent).toContain('Tớ là Tùng, học Du lịch.');
+    expect(screen.queryByRole('dialog', { name: /Giới thiệu nhân vật/ })).toBeNull();
+    await userEvent.click(screen.getByRole('button', { name: 'Tiếp tục' }));
     const the = screen.getByRole('dialog', { name: 'Giới thiệu nhân vật: Trần Tùng' });
     expect(the.textContent).toContain('Bạn cùng phòng 408');
     await userEvent.click(within(the).getByRole('button', { name: /Tiếp tục/ }));
