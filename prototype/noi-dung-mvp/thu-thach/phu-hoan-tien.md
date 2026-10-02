@@ -3,7 +3,7 @@
 ### c-hoan-loc — Bản xuất có những dòng hoàn tiền nào? {challenge: c-hoan-loc}
 
 - Tiêu đề: Bản xuất thu chi buổi hướng dẫn
-- Đề bài hiển thị: Bản xuất lẫn cả khoản chi lẫn khoản hoàn. Những dòng nào là hoàn tiền?
+- Đề bài hiển thị: Bản xuất lẫn cả khoản thu, khoản chi lẫn khoản hoàn. Những dòng nào là hoàn tiền?
 - Manh mối liên quan: clue-hoan-loai
 - Mục tiêu học: Lọc trước rồi mới gom: chỉ đưa vào phiếu nguồn những dòng đúng loại.
 - Số dòng kỳ vọng: 4

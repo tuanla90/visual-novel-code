@@ -25,20 +25,20 @@ describe('SQL MVP trên du-lieu.md', () => {
     }
   });
 
-  it('truy vấn OR của Quân (nạp sẵn c-sua-or-quan) ra 14 dòng như [MÀN CHIẾU] khai, và bị chấm sai', async () => {
+  it('truy vấn OR của Quân (nạp sẵn c-sua-or-quan) ra 595 dòng như [MÀN CHIẾU] khai, và bị chấm sai', async () => {
     const the = KB.thuThach['c-sua-or-quan'];
     if (!the?.truyVanNapSan) throw new Error('thiếu truy vấn nạp sẵn');
     const kq = await chaySql(DU_LIEU, the.truyVanNapSan);
-    expect(kq.ok && kq.dong.length).toBe(14);
+    expect(kq.ok && kq.dong.length).toBe(595);
     const cham = await chamThuThach(DU_LIEU, the.truyVanNapSan, the.sqlChuan);
     expect(cham.trangThai).toBe('sai');
-    if (cham.trangThai === 'sai') expect(cham.so).toMatchObject({ soDongNguoiChoi: 14, soDongChuan: 2 });
+    if (cham.trangThai === 'sai') expect(cham.so).toMatchObject({ soDongNguoiChoi: 595, soDongChuan: 2 });
   });
 
   it('chấm đúng khi đổi thứ tự cột, đặt bí danh, thêm cột thừa; sai khi thiếu cột bắt buộc', async () => {
     const the = KB.thuThach['c-ten-h'];
     if (!the) throw new Error('thiếu thẻ c-ten-h');
-    // Chấm theo tập kết quả: chỉ lọc lớp BC24A (không có BC23A) vẫn đúng — BC23A không có sinh viên.
+    // Chấm theo tập kết quả: chỉ lọc lớp BC24A (không có BC23A) vẫn đúng — BC23A không có ai tên bắt đầu bằng H.
     const dung = await chamThuThach(DU_LIEU, "SELECT ten AS ten_goi, ma_lop, ho_dem, ma_sv FROM sinh_vien WHERE ma_lop = 'BC24A' AND ten LIKE 'H%'", the.sqlChuan);
     expect(dung.trangThai).toBe('dung');
     const thieu = await chamThuThach(DU_LIEU, "SELECT ten, ho_dem, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A' AND ten LIKE 'H%'", the.sqlChuan);
@@ -66,7 +66,7 @@ describe('SQL MVP trên du-lieu.md', () => {
     expect(bang.ok === false && bang.loai).toBe('khong-co-bang');
     // Sau câu ghi bị chặn, dữ liệu còn nguyên.
     const dem = await chaySql(DU_LIEU, 'SELECT COUNT(*) FROM sinh_vien');
-    expect(dem.ok && dem.dong[0]?.[0]).toBe(25);
+    expect(dem.ok && dem.dong[0]?.[0]).toBe(3879);
   });
 
   it('soVoiChuan: dòng trùng phải trùng đủ số lần', () => {
@@ -77,7 +77,7 @@ describe('SQL MVP trên du-lieu.md', () => {
 });
 
 describe('phản ứng sau khi chạy (dòng "Khi …" của thẻ)', () => {
-  it('c-lop nối HOẶC ra 5 lớp → Tùng rồi Hà Vy; c-ten-h "bằng" H ra 0 → Hà Vy; c-in mã + tên tệp ra 0 → Hà Vy; số dòng không có lời → []', async () => {
+  it('c-lop nối HOẶC ra 33 lớp → Tùng rồi Hà Vy; c-ten-h "bằng" H ra 0 → Hà Vy; c-in mã + tên tệp ra 0 → Hà Vy; số dòng không có lời → []', async () => {
     const lop = KB.thuThach['c-lop'];
     const tenH = KB.thuThach['c-ten-h'];
     const inAn = KB.thuThach['c-in'];
@@ -92,7 +92,7 @@ describe('phản ứng sau khi chạy (dòng "Khi …" của thẻ)', () => {
     expect(phanUngSauKhiChay(inAn, kqIn, ['tai_khoan', 'ten_tep']).map((l) => l.speaker)).toEqual(['ha-vy', 'tung']);
     // Không báo cột → lời chung "Khi chạy ra 0 dòng" (một lời Hà Vy).
     expect(phanUngSauKhiChay(inAn, kqIn).map((l) => l.speaker)).toEqual(['ha-vy']);
-    expect(phanUngSauKhiChay(lop, await chamThuThach(DU_LIEU, `${khungLop} WHERE nganh = 'Du lịch'`, lop.sqlChuan))).toEqual([]);
+    expect(phanUngSauKhiChay(lop, await chamThuThach(DU_LIEU, `${khungLop} WHERE khoa_hoc = 2024`, lop.sqlChuan))).toEqual([]);
   });
 
   it('c-in: bỏ điều kiện mã → đúng một dòng clb_robotics, 23:10 Chủ nhật', async () => {

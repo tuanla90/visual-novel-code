@@ -162,7 +162,7 @@ describe('màn tra v7 · luật chương 1', () => {
     expect(screen.getByText(/máy phòng máy/)).toBeInTheDocument();
   });
 
-  it('c-lop: tòa B + Báo chí nối HOẶC rồi chạy ngay → 5 dòng, không bị chấm đúng; VÀ → 2 dòng, ghim với hai mẩu tin', async () => {
+  it('c-lop: tòa B + Báo chí nối HOẶC rồi chạy ngay → 33 dòng, không bị chấm đúng; VÀ → 2 dòng, ghim với hai mẩu tin', async () => {
     const { onXong, u } = ve('c-lop', { giayNho: giaTriTuHoSo(kb, nhayToi(kb, 'lop', 1).hoSo) });
     await chonCot(u, 1, 'toa_nha');
     await datGiay(u, 'B', 1);
@@ -170,7 +170,7 @@ describe('màn tra v7 · luật chương 1', () => {
     await datGiay(u, 'Báo chí', 2);
     await u.click(screen.getByRole('button', { name: /^Nối điều kiện 2: VÀ/ }));
     await u.click(nutChay());
-    await waitFor(() => expect(dau()).toBe('5 DÒNG'));
+    await waitFor(() => expect(dau()).toBe('33 DÒNG'));
     expect(screen.queryByRole('button', { name: /Ghim lên bảng/ })).toBeNull();
     expect(nutChay()).toBeEnabled();
     // Lời "Khi chạy ra 5 dòng" (không ghi cột): Tùng trước.
@@ -184,7 +184,7 @@ describe('màn tra v7 · luật chương 1', () => {
 });
 
 describe('màn tra v7 · buổi họp (fix-query c-sua-or-quan, màn chiếu)', () => {
-  it('câu HOẶC của Quân nạp sẵn; không giấy nhớ, không thêm / bỏ điều kiện; chạy → 14 dòng; HOẶC → VÀ → 2 dòng → "Tiếp tục"', async () => {
+  it('câu HOẶC của Quân nạp sẵn; không giấy nhớ, không thêm / bỏ điều kiện; chạy → 595 dòng; HOẶC → VÀ → 2 dòng → "Tiếp tục"', async () => {
     const { onXong, u } = ve('c-sua-or-quan', { mode: 'fix-query', canh: 'man-chieu', giayNho: giaTriTuHoSo(kb, nhayToi(kb, 'hop-sua-or', 1).hoSo) });
     expect(screen.getByRole('region', { name: 'Sửa truy vấn' })).toHaveAttribute('data-canh', 'man-chieu');
     expect(cauSql()).toBe("SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A'");
@@ -193,7 +193,7 @@ describe('màn tra v7 · buổi họp (fix-query c-sua-or-quan, màn chiếu)', 
     expect(screen.queryByRole('button', { name: /^Bỏ điều kiện/ })).toBeNull();
 
     await u.click(nutChay());
-    await waitFor(() => expect(dau()).toBe('14 DÒNG'));
+    await waitFor(() => expect(dau()).toBe('595 DÒNG'));
     expect(screen.queryByRole('button', { name: 'Tiếp tục' })).toBeNull();
 
     await u.click(screen.getByRole('button', { name: /^Nối điều kiện 2: HOẶC \(OR\)/ }));

@@ -32,7 +32,7 @@
 ## n2-laptop.1
 > NHIỆM VỤ: Lớp nào vừa ở tòa B vừa học Báo chí?
 > NHẮC VIỆC ha-vy (day-kinh): Hai tờ giấy nhớ trên bàn: Tòa B, Báo chí K24. Lớp nào khớp?
-- **player**: Mười bốn lớp. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà.
+- **player**: Một trăm mười hai lớp. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà.
 - **tung** (chi-tay): Tòa B hoặc Báo chí, cứ dính một cái là lấy hết cho chắc. Tớ cá kiểu gì chẳng trúng!
 - **ha-vy** (neutral): Đừng cá. Tính.
 

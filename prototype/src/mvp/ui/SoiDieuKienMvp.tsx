@@ -51,7 +51,7 @@ export function SoiDieuKienMvp({ duLieu, where, onDong }: { duLieu: BoDuLieuMvp;
               </tr>
             </thead>
             <tbody>
-              {kq.dong.map((dong, r) => {
+              {kq.dong.slice(0, 60).map((dong, r) => {
                 const giu = dong[dong.length - 1] === 1;
                 return (
                   <tr key={r} className={giu ? 'is-giu' : 'is-loai'}>
@@ -69,6 +69,11 @@ export function SoiDieuKienMvp({ duLieu, where, onDong }: { duLieu: BoDuLieuMvp;
                   </tr>
                 );
               })}
+              {kq.dong.length > 60 ? (
+                <tr className="is-loai">
+                  <td colSpan={kq.cot.length}>… còn {(kq.dong.length - 60).toLocaleString('vi-VN')} dòng nữa</td>
+                </tr>
+              ) : null}
             </tbody>
           </table>
         </div>

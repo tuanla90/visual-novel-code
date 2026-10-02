@@ -1750,3 +1750,11 @@ button.v7-o:active:not(:disabled) {
 .bang__xem-noi-nut--tim { border-left-color: #7b1fa2; }
 .bang__xem-ghim { justify-content: flex-start; }
 .bang__xem-ghim .bang__go { margin-left: auto; }
+
+/* Bảng kết quả dài: dòng báo còn bao nhiêu dòng chưa vẽ. */
+.v7-kq__con td {
+  padding: 10px 12px;
+  color: #6b7a86;
+  font-style: italic;
+  text-align: center;
+}

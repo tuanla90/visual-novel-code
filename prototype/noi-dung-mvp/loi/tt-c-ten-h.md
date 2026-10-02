@@ -6,5 +6,7 @@
 - Khi chạy ra 0 dòng với ma_lop, ten: **ha-vy** (thinking): Không ai tên đúng một chữ H cả. <br> **tung** (gai-dau): Ơ, không ai à? Rõ ràng chữ ký có chữ H mà.
 - Khi chạy ra 0 dòng với ten: **ha-vy** (thinking): Không ai tên đúng một chữ H cả.
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Chẳng ra ai cả. Trong hai lớp ấy không ai khớp như thế.
+- Khi chạy ra 565 dòng với ten: **tung** (gai-dau): Năm trăm sáu mươi lăm người tên bắt đầu bằng H, của cả trường. Mình mới cần hai lớp thôi mà.
+- Khi chạy ra 62 dòng với ma_lop: **ha-vy** (thinking): Sáu mươi hai người, đủ cả hai lớp. Còn chữ H trên chữ ký nữa.
 - Khi chạy ra 1 dòng với ma_lop, ho_dem: **ha-vy** (thinking): Mai? Họ Hồ bắt đầu bằng H, nhưng tên thì không.
 - [DÀN DỰNG] Lần chạy "sai có ích": kéo [H] với phép "bằng" → 0 dòng (không ai tên đúng một chữ "H"). Đổi "bắt đầu bằng" → 2 dòng (Hiếu, Hoài). Bẫy: lọc nhầm cột ho_dem → 1 dòng.

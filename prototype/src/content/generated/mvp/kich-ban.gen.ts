@@ -2,9 +2,10 @@
 // (tools/noi-dung/sinh-mvp.ts). Muốn đổi chữ: sửa tệp .md, chạy `npm run kiem-noi-dung:mvp` rồi
 // `npm run noi-dung:sinh:mvp`, commit cả .md lẫn .gen.ts. Sửa tay ở đây → test "file sinh khớp nội dung" đỏ.
 import type { KichBanMvp } from '../../mvp/types';
+import { themNhieuMvp } from '../../../../tools/noi-dung/nhieu-mvp';
 
 /** Kịch bản MVP (mở đầu + Vụ 1): noi-dung-mvp/. Chưa có runtime đọc (gói kiến trúc MVP, QĐ-077). */
-export const KICH_BAN_MVP = {
+const GOC = {
   "tenGame": "CLB Thám Tử Dữ Liệu",
   "tenTruong": "Trường Đại học Chấn Hưng",
   "tenCam": [
@@ -1869,7 +1870,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Mười bốn lớp. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà."
+          "text": "Một trăm mười hai lớp. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà."
         },
         {
           "type": "line",
@@ -2657,7 +2658,7 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "quan",
           "expression": "chi-man",
-          "text": "Bên tôi lọc lại cho chắc: tên bắt đầu bằng H hoặc học lớp BC24A, ra mười bốn dòng. Hồ sơ các bạn nộp chỉ có hai người."
+          "text": "Bên tôi lọc lại cho chắc: tên bắt đầu bằng H hoặc học lớp BC24A, ra năm trăm chín mươi lăm dòng. Hồ sơ các bạn nộp chỉ có hai người."
         },
         {
           "type": "projector",
@@ -2667,19 +2668,19 @@ export const KICH_BAN_MVP = {
             "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';"
           },
           "run": true,
-          "expectedRowCount": 14
+          "expectedRowCount": 595
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "surprised",
-          "text": "Ơ… mười bốn dòng thật."
+          "text": "Ơ… năm trăm chín mươi lăm dòng thật."
         },
         {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "day-kinh",
-          "text": "Mười bốn dòng… câu của anh Quân lấy rộng ở chỗ nào?"
+          "text": "Gần sáu trăm dòng… câu của anh Quân lấy rộng ở chỗ nào?"
         },
         {
           "type": "note",
@@ -8694,7 +8695,7 @@ export const KICH_BAN_MVP = {
       "deBai": "Tài khoản CLB chỉ xem được một bảng. Chọn bảng ấy rồi chạy, xem nó ghi những gì.",
       "manhMoiLienQuan": [],
       "mucTieuHoc": "Mỗi lần tra bắt đầu bằng việc chọn bảng. Chạy mà chưa lọc thì ra mọi dòng của bảng.",
-      "soDongKyVong": 14,
+      "soDongKyVong": 112,
       "sqlChuan": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat;",
       "truyVanNapSan": null,
       "phanUng": [
@@ -8706,15 +8707,15 @@ export const KICH_BAN_MVP = {
             {
               "speaker": "ha-vy",
               "expression": "neutral",
-              "text": "Mười bốn lớp, bốn cột. Ghim lại. Giờ mới biết mình có gì để lọc."
+              "text": "Một trăm mười hai lớp của bốn khóa, bốn cột. Ghim lại. Giờ mới biết mình có gì để lọc."
             }
           ]
         }
       ],
       "vatChung": {
         "id": "ev-bang-lop",
-        "title": "Bảng lớp: 14 lớp, 4 cột",
-        "description": "Cả bảng lớp sinh hoạt: mười bốn lớp. Mỗi dòng ghi mã lớp, ngành, khóa học và tòa nhà.",
+        "title": "Bảng lớp: 112 lớp, 4 cột",
+        "description": "Cả bảng lớp sinh hoạt: một trăm mười hai lớp của bốn khóa. Mỗi dòng ghi mã lớp, ngành, khóa học và tòa nhà.",
         "giaTri": []
       },
       "ghiChu": []
@@ -8727,7 +8728,7 @@ export const KICH_BAN_MVP = {
         "clue-toa-b",
         "clue-bao-chi-k24"
       ],
-      "mucTieuHoc": "Hai điều kiện. VÀ giữ lớp khớp cả hai (2 lớp); HOẶC giữ lớp khớp một trong hai (5 lớp).",
+      "mucTieuHoc": "Hai điều kiện. VÀ giữ lớp khớp cả hai (2 lớp); HOẶC giữ lớp khớp một trong hai (33 lớp).",
       "soDongKyVong": 2,
       "sqlChuan": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí';",
       "truyVanNapSan": null,
@@ -8735,13 +8736,13 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 5
+            "n": 33
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "worried",
-              "text": "Ơ, năm lớp? Tớ tưởng thêm điều kiện thì phải ít đi chứ."
+              "text": "Ơ, ba mươi ba lớp? Tớ tưởng thêm điều kiện thì phải ít đi chứ."
             },
             {
               "speaker": "ha-vy",
@@ -8762,6 +8763,51 @@ export const KICH_BAN_MVP = {
               "text": "Không lớp nào à? Lạ nhỉ, trường mình có lớp Báo chí mà."
             }
           ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 27,
+            "cot": [
+              "toa_nha"
+            ]
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Hai mươi bảy lớp ở tòa B, đủ mọi ngành. Còn tấm thẻ lịch của khoa Báo chí nữa."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 8,
+            "cot": [
+              "nganh"
+            ]
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Tám lớp Báo chí, nằm ở cả ba tòa. Mà cái hộp thì ở tòa B."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 112
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Vẫn cả trăm mười hai lớp. Chưa lọc được gì."
+            }
+          ]
         }
       ],
       "vatChung": {
@@ -8774,7 +8820,7 @@ export const KICH_BAN_MVP = {
         ]
       },
       "ghiChu": [
-        "Tùng rủ nối HOẶC → 5 lớp. Đổi VÀ → 2 lớp (BC24A, BC23A) → phiếu kết quả vào hồ sơ."
+        "Tùng rủ nối HOẶC → 33 lớp. Đổi VÀ → 2 lớp (BC24A, BC23A) → phiếu kết quả vào hồ sơ."
       ]
     },
     "c-ten-h": {
@@ -8843,6 +8889,38 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
+            "n": 565,
+            "cot": [
+              "ten"
+            ]
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Năm trăm sáu mươi lăm người tên bắt đầu bằng H, của cả trường. Mình mới cần hai lớp thôi mà."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 62,
+            "cot": [
+              "ma_lop"
+            ]
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Sáu mươi hai người, đủ cả hai lớp. Còn chữ H trên chữ ký nữa."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
             "n": 1,
             "cot": [
               "ma_lop",
@@ -8874,7 +8952,7 @@ export const KICH_BAN_MVP = {
     "c-sua-or-quan": {
       "id": "c-sua-or-quan",
       "tieuDe": "Câu truy vấn trên màn chiếu",
-      "deBai": "Câu của Quân đang chiếu trên màn: \"tên bắt đầu bằng H hoặc lớp BC24A\", ra 14 dòng. Hồ sơ CLB nộp chỉ có 2.",
+      "deBai": "Câu của Quân đang chiếu trên màn: \"tên bắt đầu bằng H hoặc lớp BC24A\", ra 595 dòng. Hồ sơ CLB nộp chỉ có 2.",
       "manhMoiLienQuan": [
         "clue-chu-ky-h"
       ],
@@ -8894,7 +8972,7 @@ export const KICH_BAN_MVP = {
     "c-don-da-duyet": {
       "id": "c-don-da-duyet",
       "tieuDe": "Sổ đặt linh kiện của xưởng",
-      "deBai": "Sổ đặt linh kiện của xưởng Robotics, tháng 9 và 10. Những đơn nào đã duyệt?",
+      "deBai": "Sổ đặt linh kiện của xưởng Robotics ghi từ năm 2022, đơn các kỳ trước đã quyết toán. Những đơn nào đang ở trạng thái đã duyệt?",
       "manhMoiLienQuan": [
         "clue-da-duyet"
       ],
@@ -8932,13 +9010,13 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 10
+            "n": 156
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả mười đơn, có cả hai đơn chờ duyệt."
+              "text": "Cả sổ, từ năm 2022 tới giờ. Đơn các năm trước quyết toán xong hết rồi, còn hai đơn kỳ này thì đang chờ duyệt."
             }
           ]
         },
@@ -9046,26 +9124,26 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 13
+            "n": 180
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Mười ba dòng. Nối theo cột này thì ngày nào trùng là dính nhau hết."
+              "text": "Một trăm tám mươi dòng, nhiều hơn cả số đơn trong sổ. Nối theo cột này thì ngày nào trùng là dính nhau hết."
             }
           ]
         },
         {
           "khi": {
             "kind": "so-dong",
-            "n": 10
+            "n": 156
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Mười dòng. Cả sổ. Mình chỉ cần đơn của Nam."
+              "text": "Một trăm năm mươi sáu dòng. Cả sổ. Mình chỉ cần đơn của Nam."
             }
           ]
         },
@@ -9168,7 +9246,7 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 10
+            "n": 156
           },
           "loi": [
             {
@@ -9202,7 +9280,7 @@ export const KICH_BAN_MVP = {
     "c-hoan-loc": {
       "id": "c-hoan-loc",
       "tieuDe": "Bản xuất thu chi buổi hướng dẫn",
-      "deBai": "Bản xuất lẫn cả khoản chi lẫn khoản hoàn. Những dòng nào là hoàn tiền?",
+      "deBai": "Bản xuất lẫn cả khoản thu, khoản chi lẫn khoản hoàn. Những dòng nào là hoàn tiền?",
       "manhMoiLienQuan": [
         "clue-hoan-loai"
       ],
@@ -9227,13 +9305,13 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 8
+            "n": 68
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả bản xuất, lẫn cả khoản chi."
+              "text": "Cả bản xuất, sáu mươi tám dòng, lẫn cả khoản thu khoản chi."
             }
           ]
         },
@@ -9356,13 +9434,26 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 12
+            "n": 45
           },
           "loi": [
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Mười hai dòng cho bảy phiếu. Một phiếu kéo theo mấy thiết bị liền: cột nối này không phải mã của thiết bị."
+              "text": "Bốn mươi lăm dòng. Phiếu của CLB khác cũng dính vào đồ của mình, chỉ vì chuyển tới cùng một chỗ."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 51
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Năm mươi mốt dòng, trong khi đồ của CLB mình chỉ có bảy phiếu. Một phiếu kéo theo mấy thiết bị liền: cột nối này không phải mã của thiết bị."
             }
           ]
         },
@@ -9388,7 +9479,7 @@ export const KICH_BAN_MVP = {
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả tập phiếu. Mình chỉ tìm một chiếc micro."
+              "text": "Bảy phiếu có đồ của CLB mình. Mình chỉ tìm một chiếc micro."
             }
           ]
         },
@@ -9456,13 +9547,13 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 10
+            "n": 156
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả sổ. Mình chỉ cần thứ trong kho đang là số không."
+              "text": "Cả sổ, một trăm năm mươi sáu đơn. Mình chỉ cần thứ trong kho đang là số không."
             }
           ]
         },
@@ -9530,13 +9621,13 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 11
+            "n": 165
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả sổ, có cả quỹ Robotics. Mình chỉ cần quỹ CLB mình."
+              "text": "Cả sổ chi của mười chín CLB. Mình chỉ cần quỹ CLB mình."
             }
           ]
         },
@@ -9633,13 +9724,13 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 8
+            "n": 338
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả tám tin của kênh. Có cả tin tìm thẻ xe với tin tuyển thành viên."
+              "text": "Cả ba trăm ba mươi tám tin của kênh từ tối qua. Có cả tin tìm ví với tin pass giáo trình."
             }
           ]
         },
@@ -9757,26 +9848,39 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 3
+            "n": 21
           },
           "loi": [
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Ba dòng. Bảng này ghi cả đăng nhập của tài khoản cá nhân khác, và cả ngày khác. Mình cần đúng tài khoản kênh, đúng ngày mùng 7."
+              "text": "Hai mươi mốt lần, của kênh Robotics suốt ba tuần. Mình cần đúng ngày mùng 7."
             }
           ]
         },
         {
           "khi": {
             "kind": "so-dong",
-            "n": 5
+            "n": 42
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Bốn mươi hai lần trong ngày mùng 7, của đủ mọi tài khoản. Mình cần đúng tài khoản kênh Robotics."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 1007
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả năm lần đăng nhập của mọi tài khoản."
+              "text": "Hơn một nghìn lần đăng nhập, của mọi tài khoản trong ba tuần."
             }
           ]
         },
@@ -9803,7 +9907,7 @@ export const KICH_BAN_MVP = {
     },
     "c-tin-xuong": {
       "id": "c-tin-xuong",
-      "tieuDe": "Lịch đặt xưởng, tuần 07/10",
+      "tieuDe": "Lịch đặt xưởng",
       "deBai": "Lịch đặt xưởng của nhà văn hóa. Tối 07/10 xưởng được đăng ký từ mấy giờ tới mấy giờ, cho hoạt động nào?",
       "manhMoiLienQuan": [
         "clue-ngay-gui"
@@ -9829,13 +9933,13 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 6
+            "n": 266
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả tuần. Mình chỉ cần tối mùng 7."
+              "text": "Cả sổ đặt xưởng từ năm 2022. Mình chỉ cần tối mùng 7."
             }
           ]
         },
@@ -9863,7 +9967,7 @@ export const KICH_BAN_MVP = {
     "c-bai-dang": {
       "id": "c-bai-dang",
       "tieuDe": "Bài đăng của các kênh CLB",
-      "deBai": "Bản xuất bài đăng của mọi kênh CLB trong tháng 10. Kênh Robotics đăng những bài nào?",
+      "deBai": "Bản xuất bài đăng của mọi kênh trong trường, chín ngày đầu tháng 10. Kênh Robotics đăng những bài nào?",
       "manhMoiLienQuan": [
         "clue-kenh-robotics"
       ],
@@ -9888,13 +9992,13 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 14
+            "n": 301
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả ba kênh. Mình chỉ cần kênh Robotics."
+              "text": "Bài của mọi kênh trong trường, ba trăm lẻ một bài. Mình chỉ cần kênh Robotics."
             }
           ]
         },
@@ -10258,26 +10362,26 @@ export const KICH_BAN_MVP = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 6
+            "n": 182
           },
           "loi": [
             {
               "speaker": "ha-vy",
               "expression": "neutral",
-              "text": "Sáu dòng đã ký. Nhưng hai dòng là của kho chung, đâu phải phòng mình."
+              "text": "Một trăm tám mươi hai dòng đã ký, của đủ mọi phòng trong nhà văn hóa. Mình cần riêng phòng mình."
             }
           ]
         },
         {
           "khi": {
             "kind": "so-dong",
-            "n": 7
+            "n": 267
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả bảy dòng. Có cả kho chung lẫn buổi chưa diễn ra."
+              "text": "Cả sổ, hai trăm sáu mươi bảy dòng. Đủ mọi phòng, có cả buổi chưa diễn ra."
             }
           ]
         },
@@ -10755,7 +10859,7 @@ export const KICH_BAN_MVP = {
         "Tiêu đề": "Trạng thái đơn đã duyệt",
         "Giá trị cho trình dựng": "DA_DUYET",
         "Nguồn": "Sổ đặt hàng của xưởng",
-        "Nội dung": "Sổ đặt hàng ghi trạng thái từng đơn ở cột trang_thai: DA_DUYET là đơn đã được duyệt chi, CHO_DUYET là đơn còn chờ."
+        "Nội dung": "Sổ đặt hàng ghi trạng thái từng đơn ở cột trang_thai: DA_DUYET là đơn đã được duyệt chi, CHO_DUYET là đơn còn chờ. Đơn các kỳ trước ghi DA_QUYET_TOAN."
       },
       "quotes": {}
     },
@@ -11246,7 +11350,7 @@ export const KICH_BAN_MVP = {
     },
     {
       "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat;",
-      "soDong": 14,
+      "soDong": 112,
       "noi": "noi-dung-mvp/thu-thach/c-lop.md:3 thẻ c-bang-lop, SQL chuẩn",
       "resultId": "ev-bang-lop"
     },
@@ -11265,7 +11369,7 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:26 thẻ c-sua-or-quan, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:28 thẻ c-sua-or-quan, SQL chuẩn",
       "resultId": "ev-hai-dong-sua"
     },
     {
@@ -11369,7 +11473,7 @@ export const KICH_BAN_MVP = {
     {
       "sql": "SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/thu-thach/tin-don.md:68 thẻ c-tin-xuong, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/tin-don.md:69 thẻ c-tin-xuong, SQL chuẩn",
       "resultId": "ev-tin-xuong"
     },
     {
@@ -11425,7 +11529,7 @@ export const KICH_BAN_MVP = {
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",
-      "soDong": 14,
+      "soDong": 595,
       "noi": "noi-dung-mvp/kich-ban/06-hop-va-ket.md:15 [MÀN CHIẾU hop-chieu-or]"
     }
   ],
@@ -12958,8 +13062,11 @@ export const KICH_BAN_MVP = {
     "bangAo": [
       {
         "ten": "tra_cuu_k24",
-        "sql": "SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l ON s.ma_lop = l.ma_lop"
+        "sql": "SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l ON s.ma_lop = l.ma_lop WHERE l.khoa_hoc = 2024"
       }
     ]
   }
 } satisfies KichBanMvp;
+
+/** Bảng dữ liệu = dòng của truyện (ở trên) + dữ liệu nền sinh lại lúc nạp (tools/noi-dung/nhieu-mvp.ts, hạt cố định). */
+export const KICH_BAN_MVP = { ...GOC, duLieu: GOC.duLieu ? themNhieuMvp(GOC.duLieu) : GOC.duLieu } satisfies KichBanMvp;

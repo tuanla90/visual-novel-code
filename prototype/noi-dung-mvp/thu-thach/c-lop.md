@@ -5,7 +5,7 @@
 - Tiêu đề: Bảng lớp sinh hoạt
 - Đề bài hiển thị: Tài khoản CLB chỉ xem được một bảng. Chọn bảng ấy rồi chạy, xem nó ghi những gì.
 - Mục tiêu học: Mỗi lần tra bắt đầu bằng việc chọn bảng. Chạy mà chưa lọc thì ra mọi dòng của bảng.
-- Số dòng kỳ vọng: 14
+- Số dòng kỳ vọng: 112
 - SQL chuẩn:
 
 ```sql
@@ -14,15 +14,15 @@ SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat;
 
 - [LỜI c-bang-lop.1]
 - Vật chứng lưu vào hồ sơ: ev-bang-lop
-  - Tiêu đề: Bảng lớp: 14 lớp, 4 cột
-  - Mô tả: Cả bảng lớp sinh hoạt: mười bốn lớp. Mỗi dòng ghi mã lớp, ngành, khóa học và tòa nhà.
+  - Tiêu đề: Bảng lớp: 112 lớp, 4 cột
+  - Mô tả: Cả bảng lớp sinh hoạt: một trăm mười hai lớp của bốn khóa. Mỗi dòng ghi mã lớp, ngành, khóa học và tòa nhà.
 
 ### c-lop — Lớp nào vừa ở tòa B vừa học Báo chí? {challenge: c-lop}
 
 - Tiêu đề: Lớp ở tòa B và học Báo chí
 - Đề bài hiển thị: Hộp ở tòa B. Thẻ lịch của khoa Báo chí. Lớp nào khớp cả hai?
 - Manh mối liên quan: clue-toa-b, clue-bao-chi-k24
-- Mục tiêu học: Hai điều kiện. VÀ giữ lớp khớp cả hai (2 lớp); HOẶC giữ lớp khớp một trong hai (5 lớp).
+- Mục tiêu học: Hai điều kiện. VÀ giữ lớp khớp cả hai (2 lớp); HOẶC giữ lớp khớp một trong hai (33 lớp).
 - Số dòng kỳ vọng: 2
 - SQL chuẩn:
 

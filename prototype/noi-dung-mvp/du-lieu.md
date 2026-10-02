@@ -85,7 +85,7 @@
 - Ghi chú: Danh sách tra cứu tân sinh viên K24 phát ở Ngày hội (mã, họ tên, ngành), lấy từ cùng dữ liệu.
 
 ```sql
-SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l ON s.ma_lop = l.ma_lop
+SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l ON s.ma_lop = l.ma_lop WHERE l.khoa_hoc = 2024
 ```
 
 ## nhat_ky_su_dung {bảng}

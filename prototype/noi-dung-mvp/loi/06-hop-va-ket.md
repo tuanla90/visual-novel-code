@@ -11,11 +11,11 @@
 - **narrator**: Thứ Hai, bốn giờ chiều. Phòng họp tầng ba. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ.
 - **thay-quang** (neutral): Hôm nay thầy phải chốt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử. Mời các em trình bày căn cứ.
 - **minh-anh** (neutral): Dạ, bọn em xin trình bày cách bọn em lọc ra danh sách ạ.
-- **quan** (chi-man): Bên tôi lọc lại cho chắc: tên bắt đầu bằng H hoặc học lớp BC24A, ra mười bốn dòng. Hồ sơ các bạn nộp chỉ có hai người.
+- **quan** (chi-man): Bên tôi lọc lại cho chắc: tên bắt đầu bằng H hoặc học lớp BC24A, ra năm trăm chín mươi lăm dòng. Hồ sơ các bạn nộp chỉ có hai người.
 
 ## hop-00.3
-- **tung** (surprised): Ơ… mười bốn dòng thật.
-> NHẮC VIỆC ha-vy (day-kinh): Mười bốn dòng… câu của anh Quân lấy rộng ở chỗ nào?
+- **tung** (surprised): Ơ… năm trăm chín mươi lăm dòng thật.
+> NHẮC VIỆC ha-vy (day-kinh): Gần sáu trăm dòng… câu của anh Quân lấy rộng ở chỗ nào?
 - [DÀN DỰNG] Nhịp 1: người chơi chạm vào chữ HOẶC, đổi thành VÀ → 2 dòng. Nhịp 2: "Số liệu đây!". Chạm sai, chạy thử đều không phạt.
 
 ## hop-00.4

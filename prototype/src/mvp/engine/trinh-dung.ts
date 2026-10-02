@@ -284,5 +284,5 @@ export function cauSoiDieuKien(t: WhereTach, toiDa = 40): string {
   const cot = t.dieuKien.map((d, i) => `CASE WHEN ${d} THEN 1 ELSE 0 END AS dk${i + 1}`);
   const giu = t.dieuKien.reduce((acc, d, i) => (i === 0 ? `(${d})` : `${acc} ${t.noi[i - 1] ?? 'AND'} (${d})`), '');
   const hoac = t.dieuKien.map((d) => `(${d})`).join(' OR ');
-  return `${t.tienTo ?? ''}SELECT *, ${cot.join(', ')}, CASE WHEN ${giu} THEN 1 ELSE 0 END AS giu FROM ${t.bang} WHERE ${hoac} LIMIT ${toiDa}`;
+  return `${t.tienTo ?? ''}SELECT *, ${cot.join(', ')}, CASE WHEN ${giu} THEN 1 ELSE 0 END AS giu FROM ${t.bang} WHERE ${hoac} ORDER BY giu DESC LIMIT ${toiDa}`;
 }

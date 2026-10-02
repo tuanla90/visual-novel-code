@@ -73,6 +73,9 @@ export interface NguonPhieuV7 {
   soDong: number;
 }
 
+/** Bảng kết quả chỉ vẽ ngần này dòng đầu (bảng thật có tới vài nghìn dòng); con số lớn bên cạnh vẫn là tổng thật. */
+export const TOI_DA_DONG_HIEN = 40;
+
 export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonPhieu, onXong }: ManTraV7Props) {
   const cauHinh = CANH_TRA[canh];
   // Nguồn là phiếu: `FROM @<mã phiếu>` của SQL chuẩn thành `FROM <tên tạm>`, mọi câu chạy có tiền tố `WITH <tên tạm> AS (…)`.
@@ -541,13 +544,18 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                   </tr>
                 </thead>
                 <tbody>
-                  {cham.chay.dong.map((h, r) => (
+                  {cham.chay.dong.slice(0, TOI_DA_DONG_HIEN).map((h, r) => (
                     <tr key={r} style={{ ['--i' as string]: Math.min(r, 12) }}>
                       {h.map((v, k) => (
                         <td key={k}>{v === null ? '(trống)' : <ChuCoDauCach chu={String(v)} />}</td>
                       ))}
                     </tr>
                   ))}
+                  {cham.chay.dong.length > TOI_DA_DONG_HIEN ? (
+                    <tr className="v7-kq__con">
+                      <td colSpan={cham.chay.cot.length}>… còn {(cham.chay.dong.length - TOI_DA_DONG_HIEN).toLocaleString('vi-VN')} dòng nữa (đang hiện {TOI_DA_DONG_HIEN} dòng đầu)</td>
+                    </tr>
+                  ) : null}
                 </tbody>
               </table>
             )}

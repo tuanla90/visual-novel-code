@@ -20,7 +20,7 @@
 - Tiêu đề: Trạng thái đơn đã duyệt
 - Giá trị cho trình dựng: DA_DUYET
 - Nguồn: Sổ đặt hàng của xưởng
-- Nội dung: Sổ đặt hàng ghi trạng thái từng đơn ở cột trang_thai: DA_DUYET là đơn đã được duyệt chi, CHO_DUYET là đơn còn chờ.
+- Nội dung: Sổ đặt hàng ghi trạng thái từng đơn ở cột trang_thai: DA_DUYET là đơn đã được duyệt chi, CHO_DUYET là đơn còn chờ. Đơn các kỳ trước ghi DA_QUYET_TOAN.
 
 ### clue-ma-phien — [Mã phiên]
 - Tiêu đề: Mỗi đơn có mã phiên đăng nhập
