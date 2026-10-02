@@ -4227,6 +4227,10 @@ const GOC = {
           "text": "Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem."
         },
         {
+          "type": "task",
+          "text": "Sang xưởng Robotics hỏi người trực kênh"
+        },
+        {
           "type": "explore",
           "id": "kp-bd-v2",
           "kieu": "ban-do",
@@ -4234,7 +4238,7 @@ const GOC = {
             {
               "sprite": "ghim:xuong",
               "x": 21,
-              "y": 16,
+              "y": 24,
               "rong": 5,
               "chuoi": "tin-gap-nam",
               "sau": [],
@@ -5298,7 +5302,7 @@ const GOC = {
             {
               "sprite": "ghim:xuong",
               "x": 21,
-              "y": 16,
+              "y": 24,
               "rong": 5,
               "chuoi": "v3-xuong",
               "sau": [],

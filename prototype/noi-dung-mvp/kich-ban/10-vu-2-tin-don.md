@@ -16,7 +16,7 @@
 - [THỬ THÁCH c-tin-don]
 - [LỜI tin-mo.3]
 - [KHÁM PHÁ kp-bd-v2 · bản đồ]
-  - ghim:xuong · x 21% · y 16% · rộng 5% → tin-gap-nam · dấu: ! · nhãn: Xưởng Robotics
+  - ghim:xuong · x 21% · y 24% · rộng 5% → tin-gap-nam · dấu: ! · nhãn: Xưởng Robotics
   - ghim:cang-tin · x 88% · y 41% · rộng 5% → tin-bd-cang-tin · dấu: ? · nhãn: Căng tin
 - [ĐI TỚI tin-gap-nam]
 

@@ -159,6 +159,11 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   useEffect(() => {
     if (loaiKn !== 'line' && loaiKn !== 'feedback') setSkipMode(false);
   }, [loaiKn, setSkipMode]);
+  // Ô lưu cũ trỏ vào một nút máy tự chạy qua (nội dung đổi làm lệch số thứ tự nút): tự chạy tiếp thay vì báo lỗi.
+  const lechConTro = kn?.kind === 'error' && /không phải nút cần người chơi/.test(kn.message);
+  useEffect(() => {
+    if (lechConTro) hanhDong({ type: 'sua-con-tro' });
+  }, [lechConTro, hanhDong]);
   // Tiếng "rung" khi nhân vật sững sờ (như prototype).
   const bieuCamNoi = kn?.kind === 'line' || kn?.kind === 'feedback' ? kn.loi.expression : undefined;
   useEffect(() => {
@@ -427,7 +432,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         onVeTieuDe={onVeTieuDe}
         onMoLich={() => setLichMo(true)}
       />
-      {['line', 'feedback', 'question', 'branch', 'explore', 'doi-chat'].includes(kn.kind) && !(kn.kind === 'explore' && kn.nut.kieu) && !gioiThieuMo ? <DongHanhMvp kb={kb} s={s} dienTen={dienTen} /> : null}
+      {['line', 'feedback', 'question', 'branch', 'doi-chat'].includes(kn.kind) && !gioiThieuMo ? <DongHanhMvp kb={kb} s={s} dienTen={dienTen} /> : null}
       <SanKhauMvp
         kb={kb}
         canh={noiDangO ? noiDangO.diaDiem.canh : s.canh}

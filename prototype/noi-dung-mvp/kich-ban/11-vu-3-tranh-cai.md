@@ -8,7 +8,7 @@
 - [HẬU QUẢ] mở manh mối clue-kenh-robotics
 - [LỜI v3-mo.2]
 - [KHÁM PHÁ kp-bd-v3 · bản đồ]
-  - ghim:xuong · x 21% · y 16% · rộng 5% → v3-xuong · dấu: ! · có: nam · nhãn: Xưởng Robotics
+  - ghim:xuong · x 21% · y 24% · rộng 5% → v3-xuong · dấu: ! · có: nam · nhãn: Xưởng Robotics
   - ghim:thu-vien · x 62% · y 40% · rộng 5% → v3-bd-thu-vien · dấu: ? · nhãn: Thư viện
 - [ĐI TỚI v3-xuong]
 

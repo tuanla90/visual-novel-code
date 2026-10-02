@@ -135,6 +135,8 @@ export type HanhDongMvp =
   | { type: 'chon-nganh'; nganh: string }
   /** `[KHÁM PHÁ]`: bấm một chỗ đang hiện, chưa xem (khóa = chuỗi của chỗ đó). */
   | { type: 'xem-diem'; chuoi: string }
+  /** Ô lưu cũ trỏ vào một nút máy tự chạy qua (nội dung đổi làm lệch số thứ tự nút): chạy tiếp tới nút cần người chơi. */
+  | { type: 'sua-con-tro' }
   /** Đóng màn "Nhân vật mới" của một nhân vật (không đổi con trỏ). */
   | { type: 'da-gioi-thieu'; nhanVat: string }
   /** Màn kết của một vụ: chơi tiếp vụ kế trong `lich.vuSau` (không còn vụ nào thì máy đứng yên). */
@@ -796,6 +798,7 @@ function ketThucPhanHoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
 
 export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangThaiMvp {
   if (s.loi) return s;
+  if (hd.type === 'sua-con-tro') return chayToiNutCanNguoiChoi(kb, s);
   if (hd.type === 'da-gioi-thieu') {
     const da = s.daGioiThieu ?? [];
     return da.includes(hd.nhanVat) ? s : { ...s, daGioiThieu: [...da, hd.nhanVat] };

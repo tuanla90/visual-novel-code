@@ -73,3 +73,13 @@ Chi tiết: đặc tả §18.4a.
 - **Phiếu làm nguồn (`Kiểu: lọc tiếp`)** — trong thẻ thử thách: `- Kiểu: lọc tiếp` + `- Nguồn: <mã vật chứng của thẻ đứng trước>`, SQL chuẩn viết `FROM @<mã vật chứng>`. Màn tra lấy phiếu người chơi đã ghim làm nguồn thay cho bảng, và hiện câu thành `WITH <tên> AS (phiếu …) SELECT … FROM <tên> WHERE …` (tên tạm suy từ mã: `ev-tin-don` → `tin_don`). `Kiểu: tổng hợp` (nhóm và đếm trên phiếu) vẫn dùng màn tổng hợp riêng.
 - **Nối hai bảng (`Nối được với`)** — trong thẻ thử thách thường: `- Nối được với: <bảng> · <bảng>`; SQL chuẩn viết `FROM a JOIN b ON a.k = b.k`. Màn tra hiện hàng "NỐI VỚI [bảng] THEO [cột]", cột nối chọn trong các cột trùng tên của hai bảng. Cột trùng tên dùng ở điều kiện được máy viết thành `<bảng gốc>.<cột>`; trong SELECT của SQL chuẩn thì tự viết rõ (`luan_chuyen.vi_tri`). Muốn có bẫy nối sai thì để hai bảng có thêm một cột trùng tên khác nghĩa (như `ngay`, `vi_tri`) và viết lời "Khi chạy ra N dòng" cho số dòng của lần nối sai.
 - **Tổng, trung bình, lọc nhóm ở `Kiểu: tổng hợp`** — SQL chuẩn có `SUM(cot) AS tong_<cot>` / `AVG(cot) AS tb_<cot>` thì màn tổng hợp hiện mục "TÍNH THÊM"; có `HAVING COUNT(*) | SUM(cot) | AVG(cot) > <số>` thì hiện mục "CHỈ GIỮ NHÓM", ngưỡng lấy từ giấy nhớ có giá trị là số. Câu xem trước luôn ở dạng `WITH <tên> AS (…) SELECT … GROUP BY … HAVING …`.
+
+## Khám phá ba kiểu, dấu ! / ?, lịch nhân vật (02/10/2026)
+
+- `[KHÁM PHÁ <mã>]` — cảnh thường: vật / người trên nền cảnh. Dùng cho **phòng CLB có người để bấm**: mỗi người một dòng `nv:<mã> · x … · y 100% · rộng 15% → <chuỗi> · dấu: ! · nhãn: Duy: mở laptop`.
+- `[KHÁM PHÁ <mã> · bản đồ]` — nền là bản đồ trường; mỗi nơi đến một dòng `ghim:<mã> · x … · y … · rộng 5% → <chuỗi> · dấu: ! · có: co-lan, co-hanh · nhãn: Phòng Công tác sinh viên`. `có:` là người đang ở đó; ảnh mặt chỉ hiện khi người chơi đã nói chuyện với họ và thẻ nhân vật có dòng `- Lịch:`.
+- `[KHÁM PHÁ <mã> · quan sát <nhân vật>]` — soi chi tiết trên chân dung; mỗi chi tiết một dòng `vung:<mã> · x … · y … · rộng … → <chuỗi> · nhãn: Cái balo` (x, y là TÂM vòng soi theo % ảnh chân dung 768×1360; rộng là đường kính). Chi tiết nào cần thành manh mối thì đặt `[HẬU QUẢ] mở manh mối …` trong chuỗi của nó.
+- `· dấu: !` = việc chính, `· dấu: ?` = tùy chọn. Có điểm `!` thì xem hết các điểm `!` là cảnh đi tiếp (điểm `?` không bắt buộc); không có dấu nào thì phải xem hết mọi điểm. `ghim:` và `vung:` bắt buộc có `nhãn:`.
+- Chuỗi của vụ sau vẫn phải kết bằng `[ĐI TỚI …]`: đặt một dòng `[ĐI TỚI <chuỗi của điểm !>]` ngay sau `[KHÁM PHÁ … · bản đồ]`.
+- `nhan-vat.md`: dòng `- Lịch: …` (thói quen đi lại) hiện ở thẻ nhân vật, mục "Thường gặp ở đâu".
+- Thêm / bớt nút trong một chuỗi làm lệch ô lưu cũ; màn chơi tự chạy tiếp tới nút cần người chơi thay vì báo lỗi.

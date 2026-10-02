@@ -26,6 +26,7 @@
 - **tung** (chi-tay): Lại Robotics! Hôm trước là cái huy hiệu bánh răng, giờ là tài khoản. Tớ cá là…
 - **ha-vy** (day-kinh): Đừng cá. Mới biết có năm tin mang câu đó. Tin nào có trước thì phiếu chưa nói.
 - **minh-anh** (neutral): Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem.
+> NHIỆM VỤ: Sang xưởng Robotics hỏi người trực kênh
 
 ## tin-gap-nam.1
 - **narrator**: Xưởng của CLB Robotics nằm cuối dãy nhà văn hóa. Một cậu đang dán nhãn hộp linh kiện, ngẩng lên khi thấy cả nhóm.
