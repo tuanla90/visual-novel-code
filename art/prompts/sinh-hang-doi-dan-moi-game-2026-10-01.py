@@ -328,6 +328,46 @@ them('intro-bach', '16:9', ['T:g2-char-bach', KIEU_INTRO, XB], 'intro',
      'a character introduction splash of Bach, 21, the quiet orderly vice-head of the robotics club, in the robotics workshop. '
      'Pose/action: standing square with both hands in his jacket pockets, reserved steady look. Lighting/mood: daylight from high windows, gentle rim light.')
 
+# ---------- I. Sửa sáng 02/10 theo user: bộ áo tình nguyện của Tùng làm lại theo ảnh sinh viên Mùa hè xanh ----------
+# Bỏ bộ polo xanh ở mục E. Bộ mới: sơ mi xanh dương trơn dài tay (cổ bẻ, hai túi ngực có nắp, cầu vai), miếng cờ đỏ sao vàng ở ngực trái,
+# mũ tai bèo xanh lá ĐEO SAU LƯNG bằng dây quai; riêng `ao-xanh-doi-mu` đội mũ. Thêm hai biểu cảm surprised, thinking cho đủ bảy như bộ áo thể thao.
+# Ảnh huy hiệu sứt lượt 1 không thấy răng sứt → lượt 2 sửa từ chính ảnh đó (ảnh lượt 1: art/nguon/topview-2026-10-01/doc-huy-hieu-sut-luot-1.png).
+hang[:] = [h for h in hang if 'ao-xanh' not in h['id']]
+them('char-tung-ao-xanh', '9:16', [AN['tung']], 'neo', '')
+hang[-1]['mau'] = 'ao2'
+MAU['ao2'] = ('Edit Image1. Keep the same character with exactly the same face, expression, hair, nose bandage, pose, hands, folded map, body, framing, figure scale and canvas. '
+              'Change ONLY the clothing above the waist and add a hat on his back: (1) replace the sports jersey with the classic Vietnamese student-volunteer shirt: '
+              'a plain solid medium-blue long-sleeve button-up shirt with a pointed collar, buttoned cuffs at the wrists, two chest pockets with buttoned flaps and small shoulder epaulettes, '
+              'worn untucked; plain fabric with no stripes, no print, no text; (2) on the left chest, above the pocket, one small rectangular red flag patch with a single yellow five-pointed star '
+              'in its center (the Vietnamese flag), neat and flat; (3) a soft green boonie bucket hat (the Vietnamese "tai beo" volunteer hat, leaf-green cotton with a floppy brim) hanging on his '
+              'upper back behind his neck, held by its thin chin cord around the front of his neck; the hat is NOT on his head, his undercut hair is fully visible, and part of the green brim shows '
+              'behind his shoulders. {}' + NEN)
+MAU['mat2'] = MAU['mat'].replace('hair, outfit', 'hair, hat hanging on his back, outfit')
+MAU['dang2'] = MAU['dang'].replace('same hair, outfit', 'same hair, hat hanging on his back, outfit')
+for bc, mau, rieng in [
+    ('happy', 'mat2', 'a big bright open-mouthed laugh, eyes squinted shut with joy, eyebrows raised'),
+    ('worried', 'mat2', 'worried and sheepish: eyebrows drawn together and up, an awkward crooked closed smile, a small sweat drop at the temple'),
+    ('surprised', 'mat2', 'surprised: eyes wide open, eyebrows high, mouth in a small open "o"'),
+    ('thinking', 'mat2', 'thinking hard: eyes looking up to one side, lips pressed together, one eyebrow lowered'),
+    ('gai-dau', 'dang2', 'Pose: one hand scratching the back of his neck with the elbow raised; the other hand lowers the folded map to his side. '
+                         'Expression: embarrassed sheepish smile, eyebrows tilted up, a small sweat drop at the temple.'),
+    ('chi-tay', 'dang2', 'Pose: one hand pointing its index finger forward toward the viewer at chest height, confident; the other hand holds the folded map down at his side. '
+                         'Expression: cocky playful grin, one eyebrow raised, as if making a bet.'),
+]:
+    them('char-tung-ao-xanh-' + bc, '9:16', [AX], mau, rieng)
+MAU['doimu'] = ('Edit Image1. Keep the same character with exactly the same face, expression, pose, hands, shirt, flag patch, colors, line art, framing, figure scale and canvas. '
+                'Change ONLY the hat: he now WEARS the green boonie bucket hat on his head, floppy brim all around, the thin chin cord hanging loose under his chin; '
+                'nothing hangs on his back anymore; his face stays fully visible under the brim. {}' + NEN)
+them('char-tung-ao-xanh-doi-mu', '9:16', [AX], 'doimu', '')
+for t in ['char-tung-ao-xanh', 'char-tung-ao-xanh-happy', 'char-tung-ao-xanh-worried', 'char-tung-ao-xanh-surprised', 'char-tung-ao-xanh-thinking',
+          'char-tung-ao-xanh-gai-dau', 'char-tung-ao-xanh-chi-tay', 'char-tung-ao-xanh-doi-mu']:
+    them(t + '--mieng', '9:16', ['T:g2-' + t], 'mieng', '')
+    them(t + '--mat', '9:16', ['T:g2-' + t], 'matn', '')
+MAU['suahh'] = ('Edit Image1. Keep the same gear-shaped metal pin badge on the same dark backpack strap, same style, colors, lighting and framing. Change ONLY the gear outline: '
+                'one tooth at the upper right is clearly broken off, leaving a visible gap with a small jagged stump where the tooth used to be; all the other teeth stay intact. '
+                'No text, no watermark.{}')
+them('doc-huy-hieu-sut-l2', '3:4', ['T:g2-doc-huy-hieu-sut'], 'suahh', '')
+
 day_du = [{'id': h['id'], 'khung': h['khung'], 'ref': h['ref'], 'prompt': f"[id: {h['id']}] " + MAU[h['mau']].replace('{}', h['rieng'])} for h in hang]
 out = Path(__file__).with_name('dan-moi-game-hang-doi-2026-10-01.json')
 out.write_text(json.dumps({'_ghi_chu': __doc__.strip(), 'hang_doi': day_du}, ensure_ascii=False, indent=1), encoding='utf-8')

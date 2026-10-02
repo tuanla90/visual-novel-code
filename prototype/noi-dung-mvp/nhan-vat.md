@@ -6,8 +6,8 @@
 
 ### tung — Tùng
 - Họ tên: Trần Tùng
-- Vai: Năm 1 Du lịch, bạn cùng phòng KTX 408 của người chơi, cháu chú Cường, tình nguyện viên đón tân sinh viên tuần đầu (áo xanh tình nguyện: mặc hôm nhập học và mặc lại ở Vụ 5 khi đón Hoài tới buổi họp; ảnh là các biểu cảm `ao-xanh…`, ngày thường mặc áo thể thao lam). Dẫn đường, nhắc lịch. "Tớ cá là…"
-- Biểu cảm: neutral, happy, worried, surprised, thinking, gai-dau, chi-tay, ao-xanh, ao-xanh-happy, ao-xanh-worried, ao-xanh-gai-dau, ao-xanh-chi-tay
+- Vai: Năm 1 Du lịch, bạn cùng phòng KTX 408 của người chơi, cháu chú Cường, tình nguyện viên đón tân sinh viên tuần đầu (áo xanh tình nguyện: mặc hôm nhập học và mặc lại ở Vụ 5 khi đón Hoài tới buổi họp; ảnh là các biểu cảm `ao-xanh…`: sơ mi xanh dài tay, cờ đỏ sao vàng ở ngực, mũ tai bèo xanh lá đeo sau lưng, riêng `ao-xanh-doi-mu` đội mũ; ngày thường mặc áo thể thao lam). Dẫn đường, nhắc lịch. "Tớ cá là…"
+- Biểu cảm: neutral, happy, worried, surprised, thinking, gai-dau, chi-tay, ao-xanh, ao-xanh-happy, ao-xanh-worried, ao-xanh-gai-dau, ao-xanh-chi-tay, ao-xanh-surprised, ao-xanh-thinking, ao-xanh-doi-mu
 - Danh xưng: Bạn cùng phòng 408
 - Năm: Năm nhất
 - Ngành: Du lịch

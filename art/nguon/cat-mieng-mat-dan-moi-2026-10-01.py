@@ -14,6 +14,8 @@ import shutil
 import sys
 from pathlib import Path
 
+from PIL import Image
+
 GOC = Path(__file__).resolve().parents[2]
 G2 = GOC / 'art/nguon/topview-2026-10-01/g2'
 VAO = GOC / 'art/nguon/topview-2026-10-01/nhep'
@@ -31,12 +33,17 @@ BO_CU = {  # bộ của talk-rigs.ts: tên thư mục khác tên ảnh
 }
 BO_MVP = ['char-tung-happy', 'char-tung-worried', 'char-tung-surprised', 'char-tung-thinking', 'char-tung-gai-dau', 'char-tung-chi-tay',
           'char-tung-ao-xanh', 'char-tung-ao-xanh-happy', 'char-tung-ao-xanh-worried', 'char-tung-ao-xanh-gai-dau', 'char-tung-ao-xanh-chi-tay',
+          'char-tung-ao-xanh-surprised', 'char-tung-ao-xanh-thinking', 'char-tung-ao-xanh-doi-mu',
           'char-ha-vy-day-kinh', 'char-minh-anh-serious', 'char-minh-anh-khoanh-tay', 'char-quan-chi-man', 'char-nguoi-choi']
 
 
 def tep_chan_dung(ten: str) -> str:
     return (C if (GOC / C / f'{ten}.png').exists() else M) + f'{ten}.png'
 
+
+_sx = importlib.util.spec_from_file_location('xu_ly_cu', Path(__file__).with_name('xu-ly-anh-2026-09-30.py'))
+xl = importlib.util.module_from_spec(_sx)
+_sx.loader.exec_module(xl)
 
 _spec = importlib.util.spec_from_file_location('cat_cu', Path(__file__).with_name('cat-mieng-mat.py'))
 cu = importlib.util.module_from_spec(_spec)
@@ -49,7 +56,8 @@ def main(ten_anh):
     chon = [t for t in (ten_anh or tat_ca) if (G2 / f'g2-{t}--mieng.png').exists() and (G2 / f'g2-{t}--mat.png').exists()]
     for t in chon:  # công cụ cũ đọc <VAO>/<ảnh>--mieng.png
         for loai in ('mieng', 'mat'):
-            shutil.copyfile(G2 / f'g2-{t}--{loai}.png', VAO / f'{t}--{loai}.png')
+            # khử nền và ánh hồng tím trước khi so, kẻo mép miếng dính viền tím
+            xl.tach_hong_tim(Image.open(G2 / f'g2-{t}--{loai}.png')).save(VAO / f'{t}--{loai}.png')
     tam = VAO / '_mieng'
     cu.VAO, cu.RA, cu.ANH = VAO, tam, {t: tep_chan_dung(t) for t in chon}
     cu.main(chon)

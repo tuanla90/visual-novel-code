@@ -62,6 +62,8 @@ def dich_chan_dung(ten: str) -> Path:
 
 def xu_ly(f: Path) -> str:
     ten = f.stem.removeprefix('g2-')
+    if '--' in ten:  # khung nhép môi / chớp mắt: để cat-mieng-mat-dan-moi-2026-10-01.py xử lý
+        return f'bỏ qua {ten}'
     im = Image.open(f)
     if ten.startswith('char-'):
         ra = cu.tach_hong_tim(im).resize((768, 1360), Image.LANCZOS)

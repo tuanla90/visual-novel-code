@@ -531,46 +531,6 @@
    "prompt": "[id: g2-char-hoai-neutral] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: calm and neutral: relaxed eyebrows, eyes looking at the viewer, mouth closed and relaxed, no blush. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
   },
   {
-   "id": "g2-char-tung-ao-xanh",
-   "khung": "9:16",
-   "ref": [
-    "T:char-tung-v2-anchor-l5"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh] Edit Image1. Keep the same character with exactly the same face, expression, hair, nose bandage, pose, hands, folded map, body, framing, figure scale and canvas. Change ONLY the shirt: replace the sports jersey with a Vietnamese youth-volunteer shirt: a bright blue short-sleeve polo shirt with a white collar and white button placket, one thin white horizontal stripe across the chest, and a small plain round white emblem on the left chest (no text, no letters); add a plain volunteer lanyard with a blank ID card around his neck. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
-  },
-  {
-   "id": "g2-char-tung-ao-xanh-happy",
-   "khung": "9:16",
-   "ref": [
-    "T:g2-char-tung-ao-xanh"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh-happy] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: a big bright open-mouthed laugh, eyes squinted shut with joy, eyebrows raised. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
-  },
-  {
-   "id": "g2-char-tung-ao-xanh-worried",
-   "khung": "9:16",
-   "ref": [
-    "T:g2-char-tung-ao-xanh"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh-worried] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: worried and sheepish: eyebrows drawn together and up, an awkward crooked closed smile, a small sweat drop at the temple. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
-  },
-  {
-   "id": "g2-char-tung-ao-xanh-gai-dau",
-   "khung": "9:16",
-   "ref": [
-    "T:g2-char-tung-ao-xanh"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh-gai-dau] Edit Image1. Keep the same character: same face shape, same head angle, head size and head position, same hair, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the arms and hands and the facial expression as described. Pose: one hand scratching the back of his head with the elbow raised; the other hand lowers the folded map to his side. Expression: embarrassed sheepish smile, eyebrows tilted up, a small sweat drop at the temple. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
-  },
-  {
-   "id": "g2-char-tung-ao-xanh-chi-tay",
-   "khung": "9:16",
-   "ref": [
-    "T:g2-char-tung-ao-xanh"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh-chi-tay] Edit Image1. Keep the same character: same face shape, same head angle, head size and head position, same hair, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the arms and hands and the facial expression as described. Pose: one hand pointing its index finger forward toward the viewer at chest height, confident; the other hand holds the folded map down at his side. Expression: cocky playful grin, one eyebrow raised, as if making a bet. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
-  },
-  {
    "id": "g2-doc-tin-don",
    "khung": "3:4",
    "ref": [
@@ -785,86 +745,6 @@
     "T:g2-char-tung-chi-tay"
    ],
    "prompt": "[id: g2-char-tung-chi-tay--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
-  },
-  {
-   "id": "g2-char-tung-ao-xanh--mieng",
-   "khung": "9:16",
-   "ref": [
-    "T:g2-char-tung-ao-xanh"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
-  },
-  {
-   "id": "g2-char-tung-ao-xanh--mat",
-   "khung": "9:16",
-   "ref": [
-    "T:g2-char-tung-ao-xanh"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
-  },
-  {
-   "id": "g2-char-tung-ao-xanh-happy--mieng",
-   "khung": "9:16",
-   "ref": [
-    "T:g2-char-tung-ao-xanh-happy"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh-happy--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
-  },
-  {
-   "id": "g2-char-tung-ao-xanh-happy--mat",
-   "khung": "9:16",
-   "ref": [
-    "T:g2-char-tung-ao-xanh-happy"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh-happy--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
-  },
-  {
-   "id": "g2-char-tung-ao-xanh-worried--mieng",
-   "khung": "9:16",
-   "ref": [
-    "T:g2-char-tung-ao-xanh-worried"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh-worried--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
-  },
-  {
-   "id": "g2-char-tung-ao-xanh-worried--mat",
-   "khung": "9:16",
-   "ref": [
-    "T:g2-char-tung-ao-xanh-worried"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh-worried--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
-  },
-  {
-   "id": "g2-char-tung-ao-xanh-gai-dau--mieng",
-   "khung": "9:16",
-   "ref": [
-    "T:g2-char-tung-ao-xanh-gai-dau"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh-gai-dau--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
-  },
-  {
-   "id": "g2-char-tung-ao-xanh-gai-dau--mat",
-   "khung": "9:16",
-   "ref": [
-    "T:g2-char-tung-ao-xanh-gai-dau"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh-gai-dau--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
-  },
-  {
-   "id": "g2-char-tung-ao-xanh-chi-tay--mieng",
-   "khung": "9:16",
-   "ref": [
-    "T:g2-char-tung-ao-xanh-chi-tay"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh-chi-tay--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
-  },
-  {
-   "id": "g2-char-tung-ao-xanh-chi-tay--mat",
-   "khung": "9:16",
-   "ref": [
-    "T:g2-char-tung-ao-xanh-chi-tay"
-   ],
-   "prompt": "[id: g2-char-tung-ao-xanh-chi-tay--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
   },
   {
    "id": "g2-char-ha-vy-anchor--mieng",
@@ -1138,6 +1018,206 @@
     "T:g2-bg-mvp-xuong-robot"
    ],
    "prompt": "[id: g2-intro-bach] Primary request: a character introduction splash of Bach, 21, the quiet orderly vice-head of the robotics club, in the robotics workshop. Pose/action: standing square with both hands in his jacket pockets, reserved steady look. Lighting/mood: daylight from high windows, gentle rim light. Asset type: full-frame 2D visual-novel character introduction illustration (key visual). Identity: Image1 is the exact character. Preserve the same face, hairstyle, outfit, colors and proportions exactly. Image2 is a finished introduction splash from the same game: match its art style, rendering quality, lighting softness, depth of field and camera scale exactly, but do not copy its character or its room. Image3 is this game's background of the location: use it as the setting, simplified and slightly desaturated so the character stands out. Composition/framing: 16:9 landscape, character shown from head to knees, placed on the LEFT third of the frame, body turned slightly toward the right; the right 40 percent of the frame is calm, low-detail background with soft depth of field, reserved for a name card added later by the UI; the whole figure including both hands is inside the frame; horizon at eye level. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Constraints: no readable text, no numbers, no name, no logo, no UI, no watermark, no speech bubbles, no other people. Avoid: photorealism, 3D, chibi, dramatic fisheye, cluttered background, changed outfit, different face."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh",
+   "khung": "9:16",
+   "ref": [
+    "T:char-tung-v2-anchor-l5"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh] Edit Image1. Keep the same character with exactly the same face, expression, hair, nose bandage, pose, hands, folded map, body, framing, figure scale and canvas. Change ONLY the clothing above the waist and add a hat on his back: (1) replace the sports jersey with the classic Vietnamese student-volunteer shirt: a plain solid medium-blue long-sleeve button-up shirt with a pointed collar, buttoned cuffs at the wrists, two chest pockets with buttoned flaps and small shoulder epaulettes, worn untucked; plain fabric with no stripes, no print, no text; (2) on the left chest, above the pocket, one small rectangular red flag patch with a single yellow five-pointed star in its center (the Vietnamese flag), neat and flat; (3) a soft green boonie bucket hat (the Vietnamese \"tai beo\" volunteer hat, leaf-green cotton with a floppy brim) hanging on his upper back behind his neck, held by its thin chin cord around the front of his neck; the hat is NOT on his head, his undercut hair is fully visible, and part of the green brim shows behind his shoulders. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-happy",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-happy] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, hat hanging on his back, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: a big bright open-mouthed laugh, eyes squinted shut with joy, eyebrows raised. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-worried",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-worried] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, hat hanging on his back, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: worried and sheepish: eyebrows drawn together and up, an awkward crooked closed smile, a small sweat drop at the temple. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-surprised",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-surprised] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, hat hanging on his back, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: surprised: eyes wide open, eyebrows high, mouth in a small open \"o\". Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-thinking",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-thinking] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, hat hanging on his back, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: thinking hard: eyes looking up to one side, lips pressed together, one eyebrow lowered. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-gai-dau",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-gai-dau] Edit Image1. Keep the same character: same face shape, same head angle, head size and head position, same hair, hat hanging on his back, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the arms and hands and the facial expression as described. Pose: one hand scratching the back of his neck with the elbow raised; the other hand lowers the folded map to his side. Expression: embarrassed sheepish smile, eyebrows tilted up, a small sweat drop at the temple. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-chi-tay",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-chi-tay] Edit Image1. Keep the same character: same face shape, same head angle, head size and head position, same hair, hat hanging on his back, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the arms and hands and the facial expression as described. Pose: one hand pointing its index finger forward toward the viewer at chest height, confident; the other hand holds the folded map down at his side. Expression: cocky playful grin, one eyebrow raised, as if making a bet. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-doi-mu",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-doi-mu] Edit Image1. Keep the same character with exactly the same face, expression, pose, hands, shirt, flag patch, colors, line art, framing, figure scale and canvas. Change ONLY the hat: he now WEARS the green boonie bucket hat on his head, floppy brim all around, the thin chin cord hanging loose under his chin; nothing hangs on his back anymore; his face stays fully visible under the brim. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-happy--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-happy"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-happy--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-happy--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-happy"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-happy--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-worried--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-worried"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-worried--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-worried--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-worried"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-worried--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-surprised--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-surprised"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-surprised--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-surprised--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-surprised"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-surprised--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-thinking--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-thinking"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-thinking--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-thinking--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-thinking"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-thinking--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-gai-dau--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-gai-dau"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-gai-dau--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-gai-dau--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-gai-dau"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-gai-dau--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-chi-tay--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-chi-tay"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-chi-tay--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-chi-tay--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-chi-tay"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-chi-tay--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-doi-mu--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-doi-mu"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-doi-mu--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-doi-mu--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-doi-mu"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-doi-mu--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-doc-huy-hieu-sut-l2",
+   "khung": "3:4",
+   "ref": [
+    "T:g2-doc-huy-hieu-sut"
+   ],
+   "prompt": "[id: g2-doc-huy-hieu-sut-l2] Edit Image1. Keep the same gear-shaped metal pin badge on the same dark backpack strap, same style, colors, lighting and framing. Change ONLY the gear outline: one tooth at the upper right is clearly broken off, leaving a visible gap with a small jagged stump where the tooth used to be; all the other teeth stay intact. No text, no watermark."
   }
  ]
 }
