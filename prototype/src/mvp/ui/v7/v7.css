@@ -1820,3 +1820,28 @@ button.v7-o:active:not(:disabled) {
 .v7-o-bam.is-moi:not(.is-chep) { border-color: rgba(255, 217, 138, 0.8); }
 .v7-kq__nhac--tra { position: relative; z-index: 2; }
 .v7-nut--ghim:disabled { opacity: 0.5; cursor: default; }
+
+/* Hai người kiểm phiếu: Duy (hình thức), Hà Vy (ý nghĩa). */
+.v7-kiem {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 0 0 10px;
+  font: 500 0.82rem/1.3 var(--font-ui);
+  color: #b9cbd8;
+}
+.v7-kiem__nguoi {
+  padding: 4px 10px;
+  border: 1px solid rgba(190, 215, 235, 0.3);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.v7-kiem__nguoi b { color: #ffd98a; font-weight: 700; }
+.v7-kiem__nguoi.is-dat { border-color: #7fd6a4; color: #c9f5da; }
+.v7-kiem__nguoi.is-chua { border-color: #ff8a65; color: #ffd0c2; }
+/* Ngăn "Còn trên bảng": giấy nhớ cũ hơn 10 tờ mới nhất. */
+.v7-con { margin: 8px 0 0; color: #b9cbd8; font: 600 0.85rem/1.3 var(--font-ui); }
+.v7-con summary { cursor: pointer; }
+.v7-con__ds { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.v7-con__to { padding: 4px 9px; border: 0; border-radius: 3px; background: #ffe873; color: #3a2f12; font: 700 0.85rem/1.2 var(--font-mono, monospace); cursor: pointer; }
+.v7-con__to.is-chon { outline: 2px solid #fff; }

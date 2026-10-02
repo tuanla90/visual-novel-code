@@ -75,6 +75,8 @@ export interface NguonPhieuV7 {
 
 /** Bảng kết quả chỉ vẽ ngần này dòng đầu (bảng thật có tới vài nghìn dòng); con số lớn bên cạnh vẫn là tổng thật. */
 export const TOI_DA_DONG_HIEN = 40;
+/** Số giấy nhớ tối đa dán quanh laptop; tờ cũ hơn vào ngăn "Còn trên bảng". */
+export const TOI_DA_GIAY = 10;
 
 export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonPhieu, onXong }: ManTraV7Props) {
   const cauHinh = CANH_TRA[canh];
@@ -100,6 +102,16 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   const cotChuan = useMemo(() => (/^SELECT\s+(.+?)\s+FROM\s/i.exec(khung?.khung ?? '')?.[1] ?? '').split(',').map((c) => c.trim()).filter((c) => c !== ''), [khung]);
   const khungCua = (ds: readonly string[]): string => `SELECT ${ds.length > 0 ? ds.join(', ') : '…'} FROM ${khung?.bang ?? ''}`;
   const [cotLay, setCotLay] = useState<string[]>(() => chonCot ?? []);
+  /**
+   * HAI NGƯỜI KIỂM PHIẾU (user chốt 02/10/2026): Duy kiểm hình thức — phiếu phải đủ gọn để dò tay (tối đa 3 / 5 / 10 dòng, làm tròn lên
+   * từ số dòng của đáp án) và có cột mã nếu thẻ cần; Hà Vy kiểm ý nghĩa — phiếu có trả lời đúng câu hỏi ghim trên bảng không.
+   * Bài nhập môn (không lọc) và màn chiếu ở buổi họp không có Duy kiểm.
+   */
+  const nguongDuy = useMemo(() => {
+    const n = the.soDongKyVong;
+    if (khongLoc || mode === 'fix-query' || n === null) return null;
+    return n <= 3 ? 3 : n <= 5 ? 5 : n <= 10 ? 10 : null;
+  }, [the.soDongKyVong, khongLoc, mode]);
   // Khối "nối với" (thẻ có JOIN): các bảng được chọn khai ở thẻ, thiếu thì lấy bảng JOIN của SQL chuẩn.
   const bangNoiDuoc = useMemo(() => (khoi.noi ? (the.bangNoi?.length ? the.bangNoi : bangNoiTrongSql(sqlChuan)) : []), [khoi.noi, the.bangNoi, sqlChuan]);
 
@@ -131,6 +143,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   const [dau, setDau] = useState<number | null>(null);
   const [loiNoi, setLoiNoi] = useState<LoiMvp[]>([]);
   const [xongRoi, setXongRoi] = useState(false);
+  const [moCon, setMoCon] = useState(false);
   /** Bài "bấm ô lấy giấy nhớ": các dòng kết quả đã được chép ô. */
   const [daChep, setDaChep] = useState<number[]>([]);
   const phieu = useRef<DongPhieuRef>(null);
@@ -268,24 +281,39 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
       if (!song.current) return;
       setCham(kq);
       setDaChay(t);
-      setLoiNoi(
-        phanUngSauKhiChay(
-          the,
-          kq,
-          cau.dieuKien.filter((d) => d.giaTri !== null).map((d) => d.cot),
-          thuaCot,
-        ),
+      const loiThe = phanUngSauKhiChay(
+        the,
+        kq,
+        cau.dieuKien.filter((d) => d.giaTri !== null).map((d) => d.cot),
+        thuaCot,
       );
+      // Thẻ không có lời riêng cho kết quả này: Duy nói khi phiếu còn quá dài, Hà Vy nói khi phiếu gọn mà chưa đúng câu hỏi.
+      const soDongKq = kq.trangThai === 'loi' ? 0 : kq.so.soDongNguoiChoi;
+      const macDinh: LoiMvp[] =
+        loiThe.length > 0 || kq.trangThai !== 'sai' || nguongDuy === null
+          ? []
+          : soDongKq > nguongDuy
+            ? [{ speaker: 'duy', expression: 'neutral', text: `Còn ${soDongKq.toLocaleString('vi-VN')} dòng. Phiếu dài thế tớ không dò nổi, tớ chỉ nhận tối đa ${nguongDuy} dòng.` }]
+            : soDongKq > 0
+              ? [{ speaker: 'ha-vy', expression: 'thinking', text: 'Phiếu gọn rồi, nhưng chưa trả lời đúng câu hỏi trên bảng. Xem lại điều kiện xem.' }]
+              : [];
+      setLoiNoi(loiThe.length > 0 ? loiThe : macDinh);
     } finally {
       banRon.current = false;
       if (song.current) setDangChay(false);
     }
-  }, [duLieu, khung, dung, sql, sqlNgoai, sqlChuan, tienTo, the, tongDong, demToi, cau, chonCot, cotLay, cotChuan]);
+  }, [duLieu, khung, dung, sql, sqlNgoai, sqlChuan, tienTo, the, tongDong, demToi, cau, chonCot, cotLay, cotChuan, nguongDuy]);
 
   if (!duLieu) return <p className="game__error">Vụ này chưa có bộ dữ liệu (du-lieu.md) nên không chạy được.</p>;
   if (!khung || !bang) return <p className="game__error">Thẻ thử thách này thiếu khung SELECT … FROM … hợp lệ.</p>;
 
   const laChieu = canh === 'man-chieu';
+  // Dấu ✓ / ✗ của hai người kiểm sau mỗi lần chạy (chưa chạy: chưa có dấu).
+  const soDongChay = cham && cham.trangThai !== 'loi' ? cham.chay.dong.length : null;
+  const duyDat = nguongDuy === null || soDongChay === null ? null : soDongChay > 0 && soDongChay <= nguongDuy && (!the.bamO || cham?.trangThai === 'loi' || (cham?.chay.cot ?? []).some((c) => c.toLowerCase() === the.bamO?.toLowerCase()));
+  // Đủ đúng dòng, chỉ thiếu cột (vd chưa lấy cột mã): Hà Vy coi là đã trả lời đúng câu hỏi, phần thiếu là việc của Duy.
+  const chiThieuCot = cham?.trangThai === 'sai' && cham.so.soDongNguoiChoi === cham.so.soDongChuan && cham.so.cotThieu.length > 0 && !cham.so.saiThuTu;
+  const vyDat = soDongChay === null ? null : dung || chiThieuCot;
   // Tra đúng rồi mới bấm ô: cột `the.bamO` của bảng kết quả thành các ô bấm được.
   const iBamO = dung && the.bamO && cham?.trangThai === 'dung' ? cham.chay.cot.findIndex((c) => c.toLowerCase() === the.bamO?.toLowerCase()) : -1;
   const conChep = iBamO >= 0 && cham?.trangThai === 'dung' ? cham.chay.dong.length - daChep.length : 0;
@@ -309,8 +337,11 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     } else onXong(dungCacThe);
   };
 
-  // Giấy nhớ quanh viền: nửa trái, nửa phải; nhiều hơn 8 tờ thì xếp sát lại.
-  const nua = Math.ceil(giayNho.length / 2);
+  // Giấy nhớ quanh viền: nửa trái, nửa phải. Tối đa TOI_DA_GIAY tờ (user chốt 02/10/2026: 8–10 tờ, không thì dàn khắp màn hình):
+  // lấy các tờ mới nhất; tờ cũ hơn nằm ở ngăn "Còn trên bảng", bấm để cầm lên như một tờ giấy nhớ thường.
+  const giayCu = giayNho.slice(0, Math.max(0, giayNho.length - TOI_DA_GIAY));
+  const giayHien = giayNho.slice(giayCu.length);
+  const nua = Math.ceil(giayHien.length / 2);
   const buocGiay = Math.min(146, (cauHinh.kinh.h - 8) / Math.max(1, nua));
   const viTriGiay = (i: number): CSSProperties => {
     const phai = i >= nua;
@@ -323,7 +354,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     };
   };
 
-  const giay = giayNho.map((g, i) => (
+  const giay = giayHien.map((g, i) => (
     <button
       key={g.khoa}
       type="button"
@@ -350,6 +381,17 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
         <span>▣ tra-cuu — {cauHinh.may}</span>
       </div>
       <p className="v7-de">{dienTen(the.deBai)}</p>
+      {nguongDuy !== null ? (
+        <p className="v7-kiem" aria-label="Hai người kiểm phiếu">
+          <span className={`v7-kiem__nguoi${duyDat === true ? ' is-dat' : duyDat === false ? ' is-chua' : ''}`}>
+            <b>Duy kiểm</b> phiếu tối đa {nguongDuy} dòng{the.bamO ? `, có cột ${the.bamO}` : ''}
+            {duyDat === null ? '' : duyDat ? ' ✓' : ' ✗'}
+          </span>
+          <span className={`v7-kiem__nguoi${vyDat === true ? ' is-dat' : vyDat === false ? ' is-chua' : ''}`}>
+            <b>Hà Vy kiểm</b> đúng câu hỏi trên bảng{vyDat === null ? '' : vyDat ? ' ✓' : ' ✗'}
+          </span>
+        </p>
+      ) : null}
       <div className="v7-cau">
         <div className="v7-cau__bang">
           {nguonPhieu ? (
@@ -635,6 +677,18 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
           </code>
         )}
       </p>
+      {giayCu.length > 0 && !laChieu ? (
+        <details className="v7-con" open={moCon} onToggle={(e) => setMoCon((e.target as HTMLDetailsElement).open)}>
+          <summary>Còn trên bảng ({giayCu.length})</summary>
+          <div className="v7-con__ds">
+            {giayCu.map((g) => (
+              <button key={g.khoa} type="button" className={`v7-con__to${dangChon?.khoa === g.khoa ? ' is-chon' : ''}`} disabled={khoa} aria-pressed={dangChon?.khoa === g.khoa} aria-label={`${g.giaTri} (giấy nhớ ${dienTen(g.nguon)})`} onClick={() => setDangChon(dangChon?.khoa === g.khoa ? null : g)}>
+                {g.giaTri}
+              </button>
+            ))}
+          </div>
+        </details>
+      ) : null}
       <div className="v7-day">
         {daChay && cham && cham.trangThai !== 'loi' ? (
           <button type="button" className={`v7-nut v7-nut--soi${soi ? ' is-mo' : ''}`} onClick={() => setSoi(!soi)}>
