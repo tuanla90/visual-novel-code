@@ -26,7 +26,7 @@ import { canGioiThieu, dienTen as dienTenMay, khungNhin, tenNguoiNoi, type Khung
 import { giaTriTuHoSo } from '../engine/giay-nho';
 import { chonNhacNen, type NhacTruoc } from '../engine/nhac';
 import type { TrangThaiMvp } from '../engine/trang-thai';
-import { nhayToi, type MaDiemNhayMvp } from '../engine/tu-choi';
+import { DIEM_NHAY_MVP, nhayToi, nhayToiDauChuong, type MaDiemNhayMvp } from '../engine/tu-choi';
 import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
 import { AnhChenMvp } from './AnhChenMvp';
 import { BAN_DO_MVP } from './ban-do-mvp';
@@ -75,6 +75,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const luuVaoO = useKhoMvp((k) => k.luuVaoO);
   const napTuO = useKhoMvp((k) => k.napTuO);
   const datTrangThai = useKhoMvp((k) => k.datTrangThai);
+  const luiKho = useKhoMvp((k) => k.lui);
+  const coTheLui = useKhoMvp((k) => k.lichSuLui.length > 0);
 
   /** Hồ sơ và Sổ cá nhân là hai tab của cùng một khung (phong cách hòm đồ prototype); `null` = đóng. */
   const [kho, setKho] = useState<TabHoSoMvp | null>(null);
@@ -90,6 +92,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const viewportMode = useVnStore((k) => k.viewportMode);
   const setSkipMode = useVnStore((k) => k.setSkipMode);
   const clearBacklog = useVnStore((k) => k.clearBacklog);
+  const popBacklog = useVnStore((k) => k.popBacklog);
   const bgmEnabled = useAudioStore((k) => k.bgmEnabled);
 
   useEffect(() => {
@@ -218,10 +221,10 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
 
   // Bảng người quan sát (`?facilitator=1`): nhảy tới phần SQL = máy tự chơi ván mới tới đó (engine/tu-choi.ts).
   const quanSat = typeof window !== 'undefined' && isFacilitatorMode(window.location.search);
-  const nhay = (id: MaDiemNhayMvp): string | null => {
+  const nhay = (id: string): string | null => {
     let moi: TrangThaiMvp;
     try {
-      moi = nhayToi(kb, id);
+      moi = DIEM_NHAY_MVP.some((d) => d.id === id) ? nhayToi(kb, id as MaDiemNhayMvp) : nhayToiDauChuong(kb, id);
     } catch (e) {
       return e instanceof Error ? e.message : String(e);
     }
@@ -230,8 +233,17 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     setLichSuMo(false);
     setLuuNap(null);
     setDangO(null);
+    setGioiThieuMo(null);
     datTrangThai(moi);
     return null;
+  };
+  // Lùi lại một bước (nút Lùi ở hộp thoại, phím ←): về đúng trạng thái trước cú bấm gần nhất, bỏ câu đang hiện khỏi lịch sử.
+  const lui = (): void => {
+    const dangLaLoi = kn.kind === 'line' || kn.kind === 'feedback';
+    if (useVnStore.getState().autoMode) useVnStore.getState().toggleAutoMode();
+    setSkipMode(false);
+    setGioiThieuMo(null);
+    if (luiKho() && dangLaLoi) popBacklog();
   };
   const bangQuanSat = quanSat ? <BangQuanSatMvp kb={kb} s={s} loaiManHinh={kn.kind} onNhay={nhay} /> : null;
 
@@ -243,6 +255,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     onOpenSave: () => setLuuNap('save'),
     onOpenLoad: () => setLuuNap('load'),
     onOpenAudio: () => setCaiDat(true),
+    onBack: coTheLui ? lui : undefined,
   };
 
   const noiDung = (() => {

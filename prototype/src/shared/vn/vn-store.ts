@@ -89,6 +89,8 @@ interface VnState {
 
   pushBacklog: (entry: BacklogEntry) => void;
   clearBacklog: () => void;
+  /** Bỏ câu cuối khỏi lịch sử (người chơi lùi lại một câu). */
+  popBacklog: () => void;
   markRead: (key: string) => void;
   markDebutSeen: (character: string) => void;
 
@@ -334,6 +336,7 @@ export const useVnStore = create<VnState>((set, get) => ({
   },
 
   clearBacklog: () => set({ backlog: [] }),
+  popBacklog: () => set((s) => ({ backlog: s.backlog.slice(0, -1) })),
 
   markRead: (key) => {
     if (get().readLines[key]) return;

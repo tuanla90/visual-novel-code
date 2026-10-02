@@ -177,6 +177,34 @@ export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
   { id: 'phu-hoan-nhom', nhan: 'Việc phụ · Hoàn tiền (lọc nhóm theo số dòng)', moTa: 'Minh Anh nhờ sau Vụ 5, màn tổng hợp: gom dòng hoàn theo mã phiếu, tính tổng, chỉ giữ nhóm có hơn một dòng.', toi: dangOThuThach('challenge', 'c-hoan-nhom') },
 ];
 
+/** Một đầu chương nhảy tới được: mở đầu, từng ngày, buổi họp, từng vụ sau, từng nhiệm vụ phụ. */
+export interface DauChuongMvp {
+  /** `mo-dau` · `ngay-<số>` · `hop` · `vu-<mã>` · `phu-<mã>`. */
+  id: string;
+  nhan: string;
+  toi: (s: TrangThaiMvp) => boolean;
+}
+
+/** Danh sách đầu chương, đọc từ lịch của kịch bản (thêm ngày / vụ / việc phụ là tự có nút). */
+export function dauChuongMvp(kb: KichBanMvp): DauChuongMvp[] {
+  const ds: DauChuongMvp[] = [{ id: 'mo-dau', nhan: 'Mở đầu', toi: (s) => s.giaiDoan === 'mo-dau' }];
+  for (const n of kb.lich.ngay) ds.push({ id: `ngay-${n.so}`, nhan: `Ngày ${n.so} · ${n.ten}`, toi: (s) => s.giaiDoan === 'ngay' && s.ngay === n.so });
+  if (kb.lich.ngayHop) ds.push({ id: 'hop', nhan: 'Buổi họp rà soát', toi: (s) => s.giaiDoan === 'hop' });
+  (kb.lich.vuSau ?? []).forEach((v, i) => ds.push({ id: `vu-${v.id}`, nhan: `Vụ ${i + 2} · ${v.ten}`, toi: (s) => s.giaiDoan === 'vu-sau' && s.vu === v.id }));
+  for (const p of kb.lich.nhiemVuPhu ?? []) ds.push({ id: `phu-${p.id}`, nhan: `Việc phụ · ${p.ten}`, toi: (s) => s.giaiDoan === 'phu' && s.phu?.id === p.id });
+  return ds;
+}
+
+/** Trạng thái "như đã chơi tới" đầu một chương: ván mới, máy tự chơi theo đường kết thật, dừng ở bước đầu của chương. */
+export function nhayToiDauChuong(kb: KichBanMvp, id: string, batDauLuc: number = Date.now()): TrangThaiMvp {
+  const chuong = dauChuongMvp(kb).find((c) => c.id === id);
+  if (!chuong) throw new Error(`Không có đầu chương ${id}`);
+  const ct: ChienThuat = { reNhanh: reNhanhTheo(RE_NHANH_KET_THAT), ten: TEN_MAC_DINH, sangVuSau: true, lamPhu: true };
+  const s = choiTuDong(kb, taoTrangThai(kb, batDauLuc), ct, (x) => chuong.toi(x));
+  if (!chuong.toi(s)) throw new Error(`Tự chơi không tới được đầu chương ${id}`);
+  return s;
+}
+
 /**
  * Trạng thái "như đã chơi tới" điểm nhảy: ván mới (tên `TEN_MAC_DINH`, ngành đầu danh sách), máy tự chơi theo
  * `RE_NHANH_KET_THAT` tới màn đích. Ném lỗi nếu nội dung đổi làm đường đi không còn tới được đích.
