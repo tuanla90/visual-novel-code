@@ -10,6 +10,7 @@
 ### p-lac-sanh — Sảnh giảng đường B đã tắt đèn: bác Thịnh soi đèn pin {cảnh: sanh-toa-b-dem}
 
 - [LỜI p-lac-sanh.1]
+- [ẢNH chibi-chay]
 - [ĐI TỚI p-lac-chay]
 
 ### p-lac-chay — Ra tới sân: tám phút nữa đóng cổng (nền là ảnh cảnh chạy, không hiện nhân vật đứng) {cảnh: san-dem}

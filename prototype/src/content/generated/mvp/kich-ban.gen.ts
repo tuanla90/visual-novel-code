@@ -11090,6 +11090,10 @@ const GOC = {
           "text": "Cháu chào bác ạ! Mai cháu lên trình thẻ!"
         },
         {
+          "type": "image",
+          "imageId": "chibi-chay"
+        },
+        {
           "type": "goto",
           "to": "p-lac-chay"
         }

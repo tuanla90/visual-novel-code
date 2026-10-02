@@ -1,0 +1,5 @@
+"""Tải ảnh chibi "CHẠY!" (Topview Image Edit, miễn phí; việc aa7b844a55d14466978d7aefc7229a9d). Link ký sẵn, hết hạn sau vài ngày."""
+import urllib.request
+U = 'https://du9d8548ooqnc.cloudfront.net/analyzed_video%2Ftask%2Fobject_replace_llm%2F2dbaed2c4689441283aa072474e7d4b6%2F0.png?Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vKi9hbmFseXplZF92aWRlbyUyRnRhc2slMkZvYmplY3RfcmVwbGFjZV9sbG0lMkYyZGJhZWQyYzQ2ODk0NDEyODNhYTA3MjQ3NGU3ZDRiNiUyRjAucG5nIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkxNzYzMTk5fX19XX0_&Signature=Q5WN9D6-KSDwNE0M4Z5ELuEdgH3Dc3hCAqbzO8ha5WKS5BEd1DO17X4ubkVH8vcESATYfCjYp1S2TWtwCTCwl0R1~WCMGS7q-v--jUzb5HB5jDx8sZlonuhQZwoInsH9k0Bhc1DVBPWGI8RlkYRUl5wsIzYgi1onnusUNG-Qi7nF-Mki9zCUxqiQi0LiJzQgEl1MJA0ryQGKOMgH0FlXUaswvRRXI1YU4tln6Yaj6h7Df21OlIfHW73V1LSq3LA3wP75ptHAbgrsu5wvYLGJZaWkdVIFZvIKdiKi54k9JzO-RXKY9mYvPuEQ~~-XuocJRyWwYLkPFr6iyrfkaQXedw__&Key-Pair-Id=K1PJBMEIA4Y1WS'
+urllib.request.urlretrieve(U, 'chibi-chay.png')
+print('da tai')
