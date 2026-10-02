@@ -17,7 +17,7 @@ import type { DiemKhamPhaMvp, KichBanMvp } from '../../content/mvp/types';
 import { soundEngine } from '../../shared/audio/sound-engine';
 import type { DiemKhamPhaHienMvp } from '../engine/may';
 import { danhSoTrung, nhanDiemKhamPha } from '../engine/nhan-cho-xem';
-import { anhChanDung, anhNen, anhSprite } from './anh-mvp';
+import { anhChanDung, anhNen, anhSprite, anhTheoTen } from './anh-mvp';
 import { BAN_DO_MVP, TI_LE_NEN } from './ban-do-mvp';
 
 export interface KhamPhaMvpProps {
@@ -32,6 +32,8 @@ export interface KhamPhaMvpProps {
   nhanVat?: string;
   /** Nhân vật đã gặp (đã hiện thẻ giới thiệu) — bản đồ chỉ hiện ảnh mặt của người đã gặp và có "Lịch". */
   daGap?: readonly string[];
+  /** Bản đồ: ngày trong truyện (vd "Thứ Tư, 11/09") hiện trên đầu — lịch của nhân vật tính theo thứ. */
+  homNay?: string;
 }
 
 const DAU: Record<NonNullable<DiemKhamPhaMvp['dau']>, { chu: string; doc: string }> = {
@@ -48,7 +50,7 @@ function HuyHieu({ d }: { d: DiemKhamPhaHienMvp }) {
   );
 }
 
-export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [] }: KhamPhaMvpProps) {
+export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay }: KhamPhaMvpProps) {
   const onXem = (chuoi: string): void => {
     soundEngine.playSfx('select');
     xem(chuoi);
@@ -70,7 +72,9 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
   const nv = nhanVat ? kb.nhanVat.find((n) => n.id === nhanVat) : undefined;
   const laBanDo = kieu === 'ban-do';
   const laQuanSat = kieu === 'quan-sat';
-  const nen = laBanDo ? BAN_DO_MVP.anh : anhNen(canh);
+  // Màn quan sát: mặt bàn thám tử (ảnh ui-nen-quan-sat), chân dung nằm trong khung ảnh ghim; vòng soi là chiếc kính lúp.
+  const nen = laBanDo ? BAN_DO_MVP.anh : laQuanSat ? (anhTheoTen('ui-nen-quan-sat') ?? anhNen(canh)) : anhNen(canh);
+  const kinhLup = anhTheoTen('ui-kinh-lup');
   const tiLe = laBanDo ? { rong: BAN_DO_MVP.rong, cao: BAN_DO_MVP.cao } : TI_LE_NEN;
   const soDe = { '--ti-le': `${tiLe.rong} / ${tiLe.cao}`, '--ti-le-so': tiLe.rong / tiLe.cao } as CSSProperties;
   const nhan = danhSoTrung(diem.map((d) => nhanDiemKhamPha(kb, d.diem)));
@@ -78,7 +82,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
   const conMoi = diem.filter((d) => !d.daXem).length;
   const tieuDe = laBanDo ? 'Đi đâu bây giờ?' : laQuanSat ? `Quan sát ${nv?.trongCau ?? ''}` : tenCanh;
   const phu = laBanDo
-    ? 'Dấu ! là việc chính. Dấu ? là chỗ còn điều chưa xem.'
+    ? `${homNay ? `${homNay}. ` : ''}Dấu ! là việc chính. Dấu ? là chỗ còn điều chưa xem.`
     : laQuanSat
       ? conMoi > 0
         ? `Bấm vào chi tiết đáng chú ý. Còn ${conMoi} chi tiết.`
@@ -95,7 +99,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
 
   return (
     <div className={`mvp-canh mvp-khampha${laBanDo ? ' mvp-bando' : ''}${laQuanSat ? ' mvp-soinv' : ''}`} role="region" aria-label={laBanDo ? 'Bản đồ trường' : laQuanSat ? tieuDe : `Khám phá: ${tenCanh}`}>
-      {nen ? <div className={`mvp-canh__mo${laBanDo ? ' mvp-bando__mo' : ''}`} style={{ backgroundImage: `url("${nen}")` }} aria-hidden="true" /> : null}
+      {nen ? <div className={`mvp-canh__mo${laBanDo ? ' mvp-bando__mo' : ''}${laQuanSat ? ' mvp-soinv__ban' : ''}`} style={{ backgroundImage: `url("${nen}")` }} aria-hidden="true" /> : null}
       <div className="mvp-canh__dau">
         <div className="mvp-canh__tieude">
           <h2>{tieuDe}</h2>
@@ -134,7 +138,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                 data-diem={d.diem.chuoi}
                 onClick={() => onXem(d.diem.chuoi)}
               >
-                <span className="mvp-soi__vong" aria-hidden="true" />
+                {kinhLup ? <img className="mvp-soi__kinh" src={kinhLup} alt="" draggable={false} /> : <span className="mvp-soi__vong" aria-hidden="true" />}
                 {d.daXem ? <span className="mvp-soi__nhan">{nhan[i]}</span> : null}
               </button>
             ))}

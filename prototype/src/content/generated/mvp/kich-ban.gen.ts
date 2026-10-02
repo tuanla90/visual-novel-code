@@ -1947,6 +1947,35 @@ const GOC = {
         },
         {
           "type": "line",
+          "speaker": "narrator",
+          "text": "Trên đường sang tòa hành chính."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Đường tắt qua sân bóng rổ, nhanh hơn ba phút. Tớ dẫn."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Cậu đo cả thời gian đi bộ à?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Hướng dẫn viên thì phải biết chứ. Còn cậu thì đếm bậc cầu thang, tớ thấy rồi."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Hai mươi hai bậc. Đếm cho quen tay thôi."
+        },
+        {
+          "type": "line",
           "speaker": "co-hanh",
           "expression": "neutral",
           "text": "Cô tạo cho CLB một tài khoản, tên là clb_tham_tu."
@@ -2438,6 +2467,34 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "neutral",
           "text": "Kết quả hai lớp hôm qua là căn cứ để xin phiếu tra cứu."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Lại con đường tắt qua sân bóng rổ."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Hôm qua ba phút, hôm nay tớ cá là hai phút rưỡi."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Đừng cá. Bấm giờ."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Hai phút bốn mươi. Coi như Tùng thua mười giây."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Tại cậu ấy dừng lại đọc bảng tin!"
         },
         {
           "type": "line",
@@ -2978,6 +3035,34 @@ const GOC = {
           "speaker": "tung",
           "expression": "worried",
           "text": "Hai mã. Sổ niêm phong có mã nào đây…"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Trên đường, không ai nói gì một lúc lâu."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Nếu cả hai mã đều không có trong sổ thì sao?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Thì mình biết thêm một điều là mình sai ở đâu đó. Cũng là biết thêm."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Cậu lúc nào cũng bình tĩnh thế à?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Không. Tớ chỉ đếm bậc cầu thang cho đỡ run thôi."
         },
         {
           "type": "line",
@@ -5336,6 +5421,28 @@ const GOC = {
       "canh": "xuong-robot",
       "mocSomNhat": 1000,
       "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Trên đường sang xưởng, Tùng đi trước một quãng."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Cậu ấy giận tớ vì hôm qua tớ bảo cậu ấy đừng cá."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tùng không giận lâu đâu. Tới cổng xưởng là quên."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Tớ nghe thấy đấy nhé! Mà đúng, tớ quên rồi."
+        },
         {
           "type": "line",
           "speaker": "nam",

@@ -1,0 +1,13 @@
+"""Tải ba ảnh giao diện đợt 02/10/2026 từ Topview (link ký sẵn, hết hạn sau vài ngày). Chạy: python tai.py"""
+import urllib.request
+
+G = 'https://du9d8548ooqnc.cloudfront.net/analyzed_video%2Ftask%2Fobject_replace_llm%2F'
+ANH = {
+    'ui-kinh-lup': ('17e8a5e960c14bf0a2b852b5eba5236f', 'eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vKi9hbmFseXplZF92aWRlbyUyRnRhc2slMkZvYmplY3RfcmVwbGFjZV9sbG0lMkYxN2U4YTVlOTYwYzE0YmYwYTJiODUyYjVlYmE1MjM2ZiUyRjAucG5nIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkxNzYzMTk5fX19XX0_', 'R7lw4sZVzs11zqK1dnKs8dLUHjEkUkJt5ap9mIxxXBTgWipWgXfz3SNwgtMnMH65luq~iA~GPMOM8QYXmZ4qDnH9RW9C6BhzeX~mx4a0lzpSj0JjhpYEjHtM1wdv5J~NFmoro30qiIt~-IzuM973zkLlkS6JowD8w3b8ni3Cfb1TSO7G5pvJenTBi31dKlR9rcEtmpAQKd1l5F1Mq2Z4J4nfzPEFQmEp43SGSLMM6xfRtnJesl~2IHvXpji59Gazg148ytvow4PZzt9gRHo3XUNIYpWmYnyCBQ-GHFjUdLETbHqTdIXFJnA4E~~O~huBpdkSqSY89s9yLVUZPRAOZg__'),
+    'ui-bien-ban': ('9d3d635a41ef444090ca036d17b06b58', 'eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vKi9hbmFseXplZF92aWRlbyUyRnRhc2slMkZvYmplY3RfcmVwbGFjZV9sbG0lMkY5ZDNkNjM1YTQxZWY0NDQwOTBjYTAzNmQxN2IwNmI1OCUyRjAucG5nIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkxNzYzMTk5fX19XX0_', 'OgMOhx39wCGtPFx04ZOv0JTkLzOv9rg0v18Y0OVmdIswbRS5v0Rp~IIh4gFMYX7guMuteLhubLVyhtOy4BgArrJLY4MrYDl81y0zsnRBATi-4H-yJE12EiQsrA5ei541Moh7MwOAUOJDhf1leqVrXwjUTCyzHq7ohpoY4K~l0sfqRdVdw5eX-Tcp7JrmkQwY2Stv4QPiSslnNeTeDLuG2oy4vUyFSD~qa6NtnEvZUrOaRi3s~-EHCNmDZE5aKmK0oJYXrBw3Iq4C7MYJXRw1L0vYLpKKX6gIageDX0hhr6OH3Pprz8Ttt~NisXkTkLv1ZqruGsLUYXgPArb~V119JA__'),
+    'ui-nen-quan-sat': ('efd1afd572604d60a875fa88301f7a58', 'eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vKi9hbmFseXplZF92aWRlbyUyRnRhc2slMkZvYmplY3RfcmVwbGFjZV9sbG0lMkZlZmQxYWZkNTcyNjA0ZDYwYTg3NWZhODgzMDFmN2E1OCUyRjAucG5nIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkxNzYzMTk5fX19XX0_', 'ldyIBC1PYE-xxuRH6zVagD4H8B7ZnBOCeHBViWdcpCnwqBZ2nQW2~Z9U9prxR99xFF~~c4pQcnHIfD2xTeMzsAD6hdj3qaRB2UR~hlTEdP7HYrr9oLell5wA7-HF8IDC1IaetwznUKDopVaU2B0kEvcOmZpykFpRcEsvUPJyUPVBobaXJOiiY51iWveojor00nz7TfKr6RO1Yk63vUKTXpDXnlOs1kimFuw1OYO6g-N9NRo5IWyjTKfvdnrKRtkPkB~ZugO7pAcHiJf-zAm52Sdn5QCiEgdKZfPOP9Hp20C~Bnm8ZuFkWuOhgi6ZjIjlE1zxTisU-giS~Lyp2dOy1w__'),
+}
+for ten, (thu_muc, policy, chu_ky) in ANH.items():
+    url = f'{G}{thu_muc}%2F0.png?Policy={policy}&Signature={chu_ky}&Key-Pair-Id=K1PJBMEIA4Y1WS'
+    urllib.request.urlretrieve(url, ten + '.png')
+    print('da tai', ten)

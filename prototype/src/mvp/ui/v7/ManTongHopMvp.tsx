@@ -15,6 +15,7 @@ import { tenNguoiNoi } from '../../engine/may';
 import { anhTheoTen } from '../anh-mvp';
 import { CANH_TRA, type CanhTra } from './canh-tra';
 import { VungV7 } from './ManTraV7';
+import { KiemPhieu } from './KiemPhieu';
 import './v7.css';
 
 export interface KetQuaTraTongHop {
@@ -67,7 +68,7 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
   const [giuCot, setGiuCot] = useState('');
   const [giuGiay, setGiuGiay] = useState<GiaTriHoSo | null>(null);
   const [dangChon, setDangChon] = useState<GiaTriHoSo | null>(null);
-  const [ketQua, setKetQua] = useState<{ sql: string; cot: string[]; dong: GiaTriSql[][]; dung: boolean } | null>(null);
+  const [ketQua, setKetQua] = useState<{ sql: string; cot: string[]; dong: GiaTriSql[][]; dung: boolean; duSo: boolean } | null>(null);
   const [loiNoi, setLoiNoi] = useState<{ speaker: string; text: string } | null>(null);
   const [dangChay, setDangChay] = useState(false);
   const [xongRoi, setXongRoi] = useState(false);
@@ -130,7 +131,7 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
         return;
       }
       const so = soVoiChuan(chuan, kq);
-      setKetQua({ sql, cot: kq.cot, dong: kq.dong, dung: so.dung });
+      setKetQua({ sql, cot: kq.cot, dong: kq.dong, dung: so.dung, duSo: so.cotThieu.filter((c) => !kq.cot.includes(c)).length === 0 });
       if (!so.dung) {
         // Lời tả kết quả, không nói cách sửa: thiếu cột → nêu cột thiếu; lệch số nhóm → nêu số nhóm.
         const thieu = so.cotThieu.filter((c) => !kq.cot.includes(c));
@@ -247,6 +248,7 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
         <span>▣ tong-hop — {cauHinh.may} · nhóm và đếm trên phiếu đã ghim</span>
       </div>
       <p className="v7-de">{dienTen(the.deBai)}</p>
+      <KiemPhieu duy="mỗi nhóm một dòng, đủ con số đề hỏi" duyDat={ketQua ? ketQua.duSo : null} vy="đúng câu hỏi trên bảng" vyDat={ketQua ? ketQua.dung : null} />
       <div className="v7-cau">
         <div className="v7-cau__bang">
           <button

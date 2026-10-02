@@ -10,6 +10,11 @@
 ## n3-ctsv.1
 > NHIỆM VỤ: Làm sao để được xem bảng sinh viên?
 > NHẮC VIỆC minh-anh (neutral): Kết quả hai lớp hôm qua là căn cứ để xin phiếu tra cứu.
+- **narrator**: Lại con đường tắt qua sân bóng rổ.
+- **tung** (happy): Hôm qua ba phút, hôm nay tớ cá là hai phút rưỡi.
+- **ha-vy** (neutral): Đừng cá. Bấm giờ.
+- **player**: Hai phút bốn mươi. Coi như Tùng thua mười giây.
+- **tung** (gai-dau): Tại cậu ấy dừng lại đọc bảng tin!
 - **co-lan** (neutral): Người gửi muốn được trả lời thì phải ghi mã sinh viên của mình vào phiếu gửi. Mã đó được chép vào sổ niêm phong.
 - **co-lan** (neutral): Sổ đó niêm phong. Cô cũng không được tự mở.
 - **player**: Vậy làm sao biết được ai gửi ạ?

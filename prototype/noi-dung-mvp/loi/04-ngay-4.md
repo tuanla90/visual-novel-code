@@ -10,6 +10,11 @@
 ## n4-ctsv.1
 > NHIỆM VỤ: Mã nào có trong sổ niêm phong?
 > NHẮC VIỆC tung (worried): Hai mã. Sổ niêm phong có mã nào đây…
+- **narrator**: Trên đường, không ai nói gì một lúc lâu.
+- **tung** (worried): Nếu cả hai mã đều không có trong sổ thì sao?
+- **ha-vy** (thinking): Thì mình biết thêm một điều là mình sai ở đâu đó. Cũng là biết thêm.
+- **player**: Cậu lúc nào cũng bình tĩnh thế à?
+- **ha-vy** (smile): Không. Tớ chỉ đếm bậc cầu thang cho đỡ run thôi.
 - **co-lan** (neutral): Cô phụ trách tra rồi. SV240317: có trong sổ. SV240228: không có.
 - **player**: Vậy SV240317 là người nộp thư ạ?
 - **co-lan** (neutral): Cô chỉ nói được là mã đó có trong sổ niêm phong. Thế thôi.

@@ -40,6 +40,7 @@ import {
 import { anhTheoTen } from '../anh-mvp';
 import { SoiDieuKienMvp } from '../SoiDieuKienMvp';
 import { DongPhieu, type DongPhieuRef } from './DongPhieu';
+import { KiemPhieu } from './KiemPhieu';
 import { NHIP, ngu } from './nhip';
 import { CANH_TRA, type CanhTra } from './canh-tra';
 import './v7.css';
@@ -382,15 +383,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
       </div>
       <p className="v7-de">{dienTen(the.deBai)}</p>
       {nguongDuy !== null ? (
-        <p className="v7-kiem" aria-label="Hai người kiểm phiếu">
-          <span className={`v7-kiem__nguoi${duyDat === true ? ' is-dat' : duyDat === false ? ' is-chua' : ''}`}>
-            <b>Duy kiểm</b> phiếu tối đa {nguongDuy} dòng{the.bamO ? `, có cột ${the.bamO}` : ''}
-            {duyDat === null ? '' : duyDat ? ' ✓' : ' ✗'}
-          </span>
-          <span className={`v7-kiem__nguoi${vyDat === true ? ' is-dat' : vyDat === false ? ' is-chua' : ''}`}>
-            <b>Hà Vy kiểm</b> đúng câu hỏi trên bảng{vyDat === null ? '' : vyDat ? ' ✓' : ' ✗'}
-          </span>
-        </p>
+        <KiemPhieu duy={`phiếu tối đa ${nguongDuy} dòng${the.bamO ? `, có cột ${the.bamO}` : ''}`} duyDat={duyDat} vy="đúng câu hỏi trên bảng" vyDat={vyDat} />
       ) : null}
       <div className="v7-cau">
         <div className="v7-cau__bang">

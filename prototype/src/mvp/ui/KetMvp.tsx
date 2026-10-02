@@ -59,7 +59,7 @@ export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, onLamPhu, phuXong, 
             : 'Dữ liệu chỉ ra ai cần hỏi, không chỉ ra ai đã làm. Muốn biết ai viết thư, cần thêm bằng chứng từ nơi khác.'}
       </p>
       {tongKet ? (
-        <aside className={`mvp-chot mvp-chot--${tongKet.muc}`} aria-label="Chị Minh Anh chốt hồ sơ">
+        <aside className={`mvp-chot mvp-chot--${tongKet.muc}`} aria-label="Chị Minh Anh chốt hồ sơ" style={anhTheoTen('ui-bien-ban') ? { backgroundImage: `url("${anhTheoTen('ui-bien-ban')}")` } : undefined}>
           <h3 className="mvp-chot__dau">Minh Anh chốt hồ sơ</h3>
           <ul className="mvp-chot__ds">
             <li>
@@ -92,6 +92,9 @@ export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, onLamPhu, phuXong, 
             ) : null}
           </ul>
           <p className="mvp-chot__loi">“{LOI_CHOT[tongKet.muc]}”</p>
+          <span className="mvp-chot__moc" aria-hidden="true">
+            {tongKet.muc === 'kin' ? '✓' : tongKet.muc === 'du' ? '~' : '!'}
+          </span>
         </aside>
       ) : null}
       <div className="endscreen__actions">

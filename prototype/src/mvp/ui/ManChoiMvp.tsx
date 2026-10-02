@@ -9,7 +9,7 @@
  */
 import './mvp.css';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { LoiMvp } from '../../content/mvp/types';
+import type { KichBanMvp, LoiMvp } from '../../content/mvp/types';
 import { isFacilitatorMode } from '../../app/facilitator-mode';
 import { isEffectId } from '../../shared/ids';
 import { AudioSettingsModal } from '../../shared/audio/AudioSettingsModal';
@@ -40,6 +40,7 @@ import { LocThuV7 } from './v7/LocThuV7';
 import { LichMvp } from './LichMvp';
 import { LuuNapMvp } from './LuuNapMvp';
 import { ManChieuMvp } from './ManChieuMvp';
+import { dinhDangNgay, homNay, hoaDau, tenThu } from '../engine/lich-ngay';
 import { tongKetVu } from '../engine/tong-ket';
 import { DongHanhMvp } from './DongHanhMvp';
 import { PhongTraMvp } from './v7/PhongTraMvp';
@@ -64,6 +65,13 @@ function soHoSo(s: TrangThaiMvp): number {
 /** Lời MVP → kiểu `DialogueLine` của hộp thoại prototype (chỉ khác ở tập người nói; nhãn truyền riêng). */
 function thanhLine(kb: typeof KICH_BAN, s: TrangThaiMvp, loi: LoiMvp): DialogueLine {
   return { speaker: loi.speaker, expression: loi.expression, text: dienTenMay(kb, s, loi.text) } as unknown as DialogueLine;
+}
+
+/** Ngày trong truyện dạng "Thứ Tư, 11/09/2024" (cho đầu bản đồ). */
+function homNayChu(kb: KichBanMvp, s: TrangThaiMvp): string {
+  const vu = (kb.lich.vuSau ?? []).find((v) => v.id === s.vu) ?? (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id);
+  const hn = homNay({ giaiDoan: s.giaiDoan === 'phu' ? 'vu-sau' : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vu?.ngay ?? null }, kb.lich.ngayMoDau ?? null);
+  return `${hoaDau(tenThu(hn.ngay))}, ${dinhDangNgay(hn.ngay)}`;
 }
 
 export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
@@ -376,7 +384,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           />
         );
       case 'explore':
-        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} />;
+        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} />;
       case 'end':
         return (
           <KetMvp

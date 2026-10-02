@@ -13,6 +13,11 @@
 ## n2-co-hanh.1
 > NHIỆM VỤ: Tài khoản của CLB được xem những gì?
 > NHẮC VIỆC minh-anh (neutral): Được xem đúng những gì người ta cho phép. Nghe cô nói hết đã.
+- **narrator**: Trên đường sang tòa hành chính.
+- **tung** (happy): Đường tắt qua sân bóng rổ, nhanh hơn ba phút. Tớ dẫn.
+- **ha-vy** (smile): Cậu đo cả thời gian đi bộ à?
+- **tung** (chi-tay): Hướng dẫn viên thì phải biết chứ. Còn cậu thì đếm bậc cầu thang, tớ thấy rồi.
+- **ha-vy** (neutral): Hai mươi hai bậc. Đếm cho quen tay thôi.
 - **co-hanh** (neutral): Cô tạo cho CLB một tài khoản, tên là clb_tham_tu.
 - **co-hanh** (neutral): Tài khoản này chỉ xem được bảng lớp sinh hoạt: mã lớp, ngành, khóa, tòa nhà. Trong đấy không có tên ai cả.
 - **co-hanh** (neutral): Bảng sinh viên có thông tin cá nhân. Muốn xem thì mang phiếu yêu cầu tra cứu, có chữ ký của đơn vị lo vụ việc. Vụ hộp kiến nghị là của Phòng Công tác sinh viên.

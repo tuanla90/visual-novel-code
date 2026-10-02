@@ -19,6 +19,10 @@
 > NHẮC VIỆC ha-vy (thinking): Chín bài nhìn hoa mắt. Giá mà gom những bài cùng một thiết bị vào một cục rồi đếm.
 
 ## v3-xuong.1
+- **narrator**: Trên đường sang xưởng, Tùng đi trước một quãng.
+- **ha-vy** (neutral): Cậu ấy giận tớ vì hôm qua tớ bảo cậu ấy đừng cá.
+- **player**: Tùng không giận lâu đâu. Tới cổng xưởng là quên.
+- **tung** (chi-tay): Tớ nghe thấy đấy nhé! Mà đúng, tớ quên rồi.
 - **nam** (neutral): Lại các cậu. Hôm nay định hỏi gì nữa?
 - **tung** (chi-tay): Hỏi thẳng: tối thứ Hai cậu ở đâu?
 - **nam** (neutral): Thư viện. Tối thứ Hai nào cũng thế, tới khi họ đóng cửa. Nhưng các cậu đâu có tin.

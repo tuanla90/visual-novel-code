@@ -2483,3 +2483,53 @@
 }
 @media (prefers-reduced-motion: reduce) { .mvp-soi__vong { animation: none; } }
 .mvp-nhanvat__lich { margin-top: 8px; }
+
+/* Ảnh giao diện 02/10/2026 (art/nguon/topview-2026-10-02): mặt bàn thám tử cho màn quan sát, kính lúp làm vòng soi, tờ biên bản cho phần chốt hồ sơ. */
+.mvp-canh__mo.mvp-soinv__ban { filter: none; opacity: 1; transform: none; inset: 0; background-size: cover; background-position: center; }
+.mvp-soinv__khung {
+  background: linear-gradient(180deg, #dfe8ee, #c9d6de);
+  outline: 10px solid #fdfaf2;
+  outline-offset: 0;
+  box-shadow: 0 0 0 11px rgba(60, 40, 20, 0.25), 0 18px 40px rgba(0, 0, 0, 0.55);
+  transform: rotate(-1.2deg) scale(0.9);
+}
+.mvp-soinv__anh { filter: none; }
+.mvp-soi__kinh {
+  position: absolute;
+  left: -29.8%;
+  top: -13.3%;
+  width: 181.6%;
+  max-width: none;
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.45));
+  transform-origin: 44% 35%;
+  animation: mvp-soi-nhip 1.8s ease-in-out infinite;
+}
+.mvp-soi.is-da-xem .mvp-soi__kinh { animation: none; opacity: 0.45; filter: grayscale(0.6); }
+@media (prefers-reduced-motion: reduce) { .mvp-soi__kinh { animation: none; } }
+.mvp-chot {
+  position: relative;
+  background-size: 100% 100%;
+  background-color: #f3e6c8;
+  border: 0;
+  border-radius: 6px;
+  padding: 44px 34px 26px;
+  color: #3a2f20;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+}
+.mvp-chot__dau { color: #8a4b12; }
+.mvp-chot__ds li { border-bottom: 1px dotted rgba(90, 70, 40, 0.35); padding: 2px 0; }
+.mvp-chot__loi { padding-right: 56px; }
+.mvp-chot__moc {
+  position: absolute;
+  right: 3.4%;
+  bottom: 5.6%;
+  width: 9.8%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  color: #c0392b;
+  font: 800 1.3rem/1 var(--font-ui);
+  transform: rotate(-12deg);
+}

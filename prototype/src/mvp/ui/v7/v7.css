@@ -1845,3 +1845,7 @@ button.v7-o:active:not(:disabled) {
 .v7-con__ds { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .v7-con__to { padding: 4px 9px; border: 0; border-radius: 3px; background: #ffe873; color: #3a2f12; font: 700 0.85rem/1.2 var(--font-mono, monospace); cursor: pointer; }
 .v7-con__to.is-chon { outline: 2px solid #fff; }
+
+/* Ảnh chibi của người kiểm phiếu. */
+.v7-kiem__nguoi { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 4px; }
+.v7-kiem__mat { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; object-position: 50% 12%; background: #fde68a; flex: none; }
