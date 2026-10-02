@@ -45,7 +45,7 @@
 - **ha-vy** (thinking): Tới để xem, không phải để giúp.
 
 ## n3-bd-phong-may.1
-- **narrator**: Cửa phòng máy khóa. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ ở bàn trực.
+- **narrator**: Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ ở bàn trực.
 - **tung** (thinking): Tối Chủ nhật vẫn mở à. Lá thư kia được in vào tối nào nhỉ?
 - **ha-vy** (neutral): Chưa biết. Nhưng nhớ lấy chỗ này: vào phải ký sổ.
 

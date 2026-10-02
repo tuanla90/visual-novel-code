@@ -224,7 +224,7 @@
 - **minh-anh** (worried): Nếu sổ ghi nhiều hơn thế thì có khoản chị chưa từng nhìn thấy.
 
 ## v5-bd-tra-da.1
-- **narrator**: Quán trà đá, buổi trưa. Bà Lụa đang tráng cốc.
+- **narrator**: Quán trà đá, đầu giờ chiều. Bà Lụa đang tráng cốc.
 - **ba-lua** (smile): Hôm nay mặt đứa nào cũng căng thế. Uống đi rồi hẵng tính.
 - **player**: Bà ơi, ngày xưa có một anh sinh viên trông cái phòng tủ sắt của bọn cháu, hay ra đây gọi trà nóng. Sau này bà có gặp lại anh ấy không ạ?
 - **ba-lua** (smile): Cậu trà nóng ấy hả? Gặp suốt. Giờ đi làm ngay trong trường, sơ mi cài kín cổ, tóc muối tiêu rồi. Sáng nào đi ngang cũng gật đầu chào bà, thỉnh thoảng vẫn ngồi xuống gọi cốc trà nóng.
@@ -236,6 +236,6 @@
 - **player**: Tớ ghi lại. Lời kể, chưa đối chiếu với gì cả.
 
 ## v5-bd-tra-da.2
-- **tung** (happy): Bà cho cháu một cốc ít đá mang đi ạ.
-- **ba-lua** (smile): Cho con bé hay ôm cặp chứ gì. Lần này có câu mở đầu chưa?
+- **tung** (thinking): Bà ơi, hôm nào xong việc, bà để dành cho cháu thêm một cái ghế nhé.
+- **ba-lua** (smile): Cho con bé hay ôm cặp chứ gì. Mời được nó ra đây ngồi thì bà khao. Có câu mở đầu chưa?
 - **tung** (gai-dau): Cháu có rồi ạ. Hai chữ.

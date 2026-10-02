@@ -5,7 +5,7 @@
 ### n2-mo — Sáng ngày 2: lên phòng Đào tạo {cảnh: phong-clb}
 
 - [LỜI n2-mo.1]
-- [KHÁM PHÁ kp-bd-n2 · bản đồ]
+- [KHÁM PHÁ kp-bd-n2 · bản đồ · giờ 09:30]
   - ghim:toa-hanh-chinh · x 21% · y 54% · rộng 5% → n2-co-hanh · dấu: ! · có: co-hanh · nhãn: Phòng Đào tạo
   - ghim:toa-b · x 48% · y 29% · rộng 5% → n2-bd-toa-b · dấu: ? · có: bac-tu · nhãn: Sảnh tòa B
   - ghim:cang-tin · x 88% · y 41% · rộng 5% → n2-bd-cang-tin · dấu: ? · nhãn: Căng tin

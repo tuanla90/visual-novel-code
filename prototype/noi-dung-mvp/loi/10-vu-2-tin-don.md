@@ -173,7 +173,7 @@
 - **ha-vy** (thinking): Chép lại mà bỏ đi một chỗ. Tớ muốn biết chỗ bị bỏ.
 
 ## tin-bd-tra-da.2
-- **tung** (thinking): Bà ơi, cho cháu thêm một cốc mang đi. Ít đá ạ.
-- **ha-vy** (smile): Mang cho ai?
-- **tung** (gai-dau): Thì… thư viện giờ này có người hay ngồi học. Thôi, để hôm khác. Tớ chưa nghĩ ra câu mở đầu.
+- [DÀN DỰNG] Trong cổng, {{nv.hoai}} ôm cặp đi về phía giảng đường B. {{nv.tung}} nhổm dậy nửa chừng rồi lại ngồi xuống.
+- **ha-vy** (smile): Cậu định gọi à?
+- **tung** (gai-dau): Lần trước tớ gọi giật, bạn ấy đi nhanh gấp đôi. Để hôm khác. Tớ chưa nghĩ ra câu mở đầu.
 - **ha-vy** (smile): Câu mở đầu là "xin lỗi". Có hai chữ.

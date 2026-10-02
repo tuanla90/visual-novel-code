@@ -28,7 +28,7 @@
 ### v5-nhan-so — Cô Hạnh đưa bản xuất, cô Lan in quy chế {cảnh: phong-dao-tao}
 
 - [LỜI v5-nhan-so.1]
-- [KHÁM PHÁ kp-bd-v5 · bản đồ]
+- [KHÁM PHÁ kp-bd-v5 · bản đồ · giờ 15:00]
   - ghim:nha-clb · x 45% · y 17% · rộng 5% → v5-so-quy · dấu: ! · có: duy, minh-anh · nhãn: Phòng CLB
   - ghim:tra-da · x 41% · y 86% · rộng 5% → v5-bd-tra-da · dấu: ? · có: ba-lua · nhãn: Quán trà đá
 - [ĐI TỚI v5-so-quy]

@@ -53,10 +53,20 @@ export interface NhanVatMvp {
   gioiThieu: GioiThieuNhanVatMvp | null;
 }
 
+/** Một quãng lịch: các thứ (0 = Chủ nhật … 6 = thứ Bảy), từ giờ tới giờ ("HH:MM", tính tới trước giờ kết), ở ghim `noi` của bản đồ. */
+export interface QuangLichMvp {
+  thu: number[];
+  tu: string;
+  den: string;
+  noi: string;
+}
+
 /** Chữ người chơi thấy về một nhân vật — viết sao cho không lộ tình tiết (nhan-vat.md, đặc tả §18.3). */
 export interface GioiThieuNhanVatMvp {
   /** Thói quen đi lại ("Lịch" của nhan-vat.md); có thì ảnh mặt nhân vật hiện trên bản đồ sau khi đã gặp. */
   lich?: string | null;
+  /** Lịch theo thứ và giờ ("Thường ở" của nhan-vat.md): bản đồ tính ai đang ở ghim nào (`src/mvp/engine/lich-nhan-vat.ts`). */
+  thuongO?: QuangLichMvp[];
   danhXung: string;
   nam: string | null;
   nganh: string | null;
@@ -215,7 +225,7 @@ export type NutMvp =
    * `kieu` (02/10/2026): thiếu = cảnh thường (vật / người trên nền cảnh); `ban-do` = bản đồ trường, mỗi điểm một ghim nơi đến;
    * `quan-sat` = soi chi tiết trên chân dung nhân vật `nhanVat` (kiểu Sherlock Holmes: mỗi vùng một chi tiết).
    */
-  | { type: 'explore'; id: string; diem: DiemKhamPhaMvp[]; kieu?: 'ban-do' | 'quan-sat'; nhanVat?: string };
+  | { type: 'explore'; id: string; diem: DiemKhamPhaMvp[]; kieu?: 'ban-do' | 'quan-sat'; nhanVat?: string; /** Bản đồ: giờ trong truyện ("HH:MM"). */ gio?: string };
 
 /**
  * Một chỗ bấm được của `[KHÁM PHÁ]` (đặc tả §18.6): vật/người đặt trên nền cảnh của chuỗi, bấm → chạy `chuoi`; chuỗi hết

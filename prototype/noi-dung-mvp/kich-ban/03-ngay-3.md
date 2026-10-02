@@ -5,7 +5,7 @@
 ### n3-mo — Sáng ngày 3: sang Phòng CTSV {cảnh: phong-clb}
 
 - [LỜI n3-mo.1]
-- [KHÁM PHÁ kp-bd-n3 · bản đồ]
+- [KHÁM PHÁ kp-bd-n3 · bản đồ · giờ 09:30]
   - ghim:toa-hanh-chinh · x 21% · y 54% · rộng 5% → n3-ctsv · dấu: ! · có: co-lan, co-hanh · nhãn: Phòng Công tác sinh viên
   - ghim:phong-may · x 73% · y 45% · rộng 5% → n3-bd-phong-may · dấu: ? · nhãn: Phòng máy
   - ghim:toa-b · x 48% · y 29% · rộng 5% → n3-bd-toa-b · dấu: ? · có: bac-tu · nhãn: Sảnh tòa B

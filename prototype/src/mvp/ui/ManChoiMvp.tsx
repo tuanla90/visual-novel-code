@@ -41,7 +41,7 @@ import { LocThuV7 } from './v7/LocThuV7';
 import { LichMvp } from './LichMvp';
 import { LuuNapMvp } from './LuuNapMvp';
 import { ManChieuMvp } from './ManChieuMvp';
-import { dinhDangNgay, homNay, hoaDau } from '../engine/lich-ngay';
+import { dinhDangNgay, homNay, hoaDau, thuCua } from '../engine/lich-ngay';
 import { tongKetVu } from '../engine/tong-ket';
 import { DongHanhMvp } from './DongHanhMvp';
 import { PhongTraMvp } from './v7/PhongTraMvp';
@@ -73,6 +73,12 @@ function homNayChu(kb: KichBanMvp, s: TrangThaiMvp): string {
   const vu = (kb.lich.vuSau ?? []).find((v) => v.id === s.vu) ?? (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id);
   const hn = homNay({ giaiDoan: s.giaiDoan === 'phu' ? 'vu-sau' : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vu?.ngay ?? null }, kb.lich.ngayMoDau ?? null);
   return hoaDau(dinhDangNgay(hn.ngay));
+}
+
+/** Thứ trong truyện (0 = Chủ nhật) — lịch nhân vật trên bản đồ tính theo thứ này. */
+function thuHomNay(kb: KichBanMvp, s: TrangThaiMvp): number {
+  const vu = (kb.lich.vuSau ?? []).find((v) => v.id === s.vu) ?? (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id);
+  return thuCua(homNay({ giaiDoan: s.giaiDoan === 'phu' ? 'vu-sau' : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vu?.ngay ?? null }, kb.lich.ngayMoDau ?? null).ngay);
 }
 
 export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
@@ -400,7 +406,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           />
         );
       case 'explore':
-        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} />;
+        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} thu={thuHomNay(kb, s)} gio={kn.nut.gio} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} />;
       case 'end':
         return (
           <KetMvp

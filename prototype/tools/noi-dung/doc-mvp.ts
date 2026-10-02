@@ -50,11 +50,50 @@ export interface RawNhanVat {
 export interface RawGioiThieu {
   /** "Lịch": thói quen đi lại (thường ở đâu, lúc nào) — hiện ở thẻ nhân vật; có thì ảnh mặt mới hiện trên bản đồ. */
   lich: string | null;
+  /** "Thường ở": lịch theo thứ và giờ (`T2–T7 07:00–23:00 → toa-b; CN 20:00–23:00 → toa-b`); bản đồ tính ai đang ở ghim nào từ đây. */
+  thuongO?: RawThuongO[];
   danhXung: string;
   nam: string | null;
   nganh: string | null;
   cauNoi: string;
   loi: string;
+}
+
+/** Một quãng trong lịch của nhân vật: các thứ (0 = Chủ nhật … 6 = thứ Bảy), từ giờ, tới giờ ("HH:MM"), ở ghim nào của bản đồ. */
+export interface RawThuongO {
+  thu: number[];
+  tu: string;
+  den: string;
+  noi: string;
+}
+
+const MA_THU: Record<string, number> = { CN: 0, T2: 1, T3: 2, T4: 3, T5: 4, T6: 5, T7: 6 };
+
+/** Đọc dòng "Thường ở". Trả về danh sách quãng, hoặc một chuỗi báo lỗi. */
+export function docThuongO(s: string): RawThuongO[] | string {
+  const ra: RawThuongO[] = [];
+  for (const phan of s.split(';').map((x) => x.trim()).filter((x) => x.length > 0)) {
+    const m = /^(.+?) (\d\d:\d\d)[–-](\d\d:\d\d) → ([a-z0-9-]+)$/.exec(phan);
+    if (!m) return `"${phan}" không có dạng "<thứ> HH:MM–HH:MM → <mã ghim>"`;
+    const [, cacThu = '', tu = '', den = '', noi = ''] = m;
+    if (tu >= den) return `"${phan}": giờ bắt đầu phải trước giờ kết thúc`;
+    const thu = new Set<number>();
+    if (cacThu === 'mọi ngày') for (let i = 0; i < 7; i++) thu.add(i);
+    else
+      for (const t of cacThu.split(',').map((x) => x.trim())) {
+        const kh = /^(CN|T[2-7])(?:[–-](CN|T[2-7]))?$/.exec(t);
+        if (!kh) return `"${phan}": thứ "${t}" phải là T2…T7, CN, một khoảng như T2–T6, hoặc "mọi ngày"`;
+        const a = MA_THU[kh[1] ?? ''] ?? 0;
+        const b = kh[2] ? (MA_THU[kh[2]] ?? 0) : a;
+        // Khoảng tính theo tuần bắt đầu từ thứ Hai: T2–CN là cả tuần.
+        const vt = (x: number): number => (x + 6) % 7;
+        if (vt(a) > vt(b)) return `"${phan}": khoảng thứ "${t}" bị ngược`;
+        for (let i = vt(a); i <= vt(b); i++) thu.add((i + 1) % 7);
+      }
+    ra.push({ thu: [...thu].sort((x, y) => x - y), tu, den, noi });
+  }
+  if (ra.length === 0) return 'dòng "Thường ở" trống';
+  return ra;
 }
 
 export interface RawCanh {
@@ -216,7 +255,7 @@ export type MucMvp =
   | { kind: 'trial-filter'; id: string; sql: string; soDong: number; chon: { cot: string; giaTri: string } }
   | { kind: 'save-evidence'; id: string }
   | { kind: 'ending-branch' }
-  | { kind: 'explore'; id: string; diem: RawDiemKhamPha[]; kieu: 'canh' | 'ban-do' | 'quan-sat'; nhanVat: string | null };
+  | { kind: 'explore'; id: string; diem: RawDiemKhamPha[]; kieu: 'canh' | 'ban-do' | 'quan-sat'; nhanVat: string | null; gio: string | null };
 
 export interface RawBangChungDoiChat {
   id: string;
@@ -324,7 +363,7 @@ export interface KetQuaDocMvp {
 const DANH_XUNG = ['Bác', 'Chú', 'Cô', 'Thầy', 'Anh', 'Chị', 'Em'];
 /** Dòng của thẻ nhân vật: phần cho người viết / bộ kiểm, và phần giới thiệu người chơi thấy. */
 const TRUONG_NHAN_VAT = ['Họ tên', 'Vai', 'Biểu cảm', 'Xuất hiện từ', 'Chỉ qua lời kể', 'Trong câu'];
-const TRUONG_GIOI_THIEU = ['Danh xưng', 'Năm', 'Ngành', 'Câu nói', 'Giới thiệu', 'Lịch'];
+const TRUONG_GIOI_THIEU = ['Danh xưng', 'Năm', 'Ngành', 'Câu nói', 'Giới thiệu', 'Lịch', 'Thường ở'];
 
 export function tenTrongCau(ten: string): string {
   const [dau = '', ...con] = ten.split(' ');
@@ -541,8 +580,12 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         const thieu = ['Danh xưng', 'Câu nói', 'Giới thiệu'].filter((k) => fields[k] === undefined);
         if (thieu.length > 0) loi.push({ ...vt, thongBao: `nhân vật ${nv.id} có thẻ giới thiệu nhưng thiếu dòng: ${thieu.join(', ')}` });
         if (chiQuaLoiKe) loi.push({ ...vt, thongBao: `nhân vật ${nv.id} "Chỉ qua lời kể: có" nên không có thẻ giới thiệu` });
+        const thuongO = fields['Thường ở'] === undefined ? undefined : docThuongO(fields['Thường ở']);
+        if (typeof thuongO === 'string') loi.push({ ...vt, thongBao: `nhân vật ${nv.id}, "Thường ở": ${thuongO}` });
+        if (thuongO !== undefined && fields['Lịch'] === undefined) loi.push({ ...vt, thongBao: `nhân vật ${nv.id} có "Thường ở" thì phải có dòng "Lịch" (chữ người chơi đọc)` });
         nv.gioiThieu = {
           lich: fields['Lịch'] ?? null,
+          ...(Array.isArray(thuongO) ? { thuongO } : {}),
           danhXung: fields['Danh xưng'] ?? '',
           nam: fields['Năm'] ?? null,
           nganh: fields['Ngành'] ?? null,
@@ -1102,8 +1145,8 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       }
       if ((m = new RegExp(`^- \\[LƯU BẰNG CHỨNG (${MA})\\]$`).exec(line))) return add({ kind: 'save-evidence', id: m[1] ?? '' });
       if (line === '- [RẼ KẾT]') return add({ kind: 'ending-branch' });
-      if ((m = new RegExp(`^- \\[KHÁM PHÁ (${MA})(?: · (bản đồ|quan sát (${MA})))?\\]$`).exec(line))) {
-        kham = { kind: 'explore', id: m[1] ?? '', diem: [], kieu: m[2] === 'bản đồ' ? 'ban-do' : m[2] ? 'quan-sat' : 'canh', nhanVat: m[3] ?? null };
+      if ((m = new RegExp(`^- \\[KHÁM PHÁ (${MA})(?: · (bản đồ(?: · giờ (\\d\\d:\\d\\d))?|quan sát (${MA})))?\\]$`).exec(line))) {
+        kham = { kind: 'explore', id: m[1] ?? '', diem: [], kieu: m[2]?.startsWith('bản đồ') ? 'ban-do' : m[2] ? 'quan-sat' : 'canh', nhanVat: m[4] ?? null, gio: m[3] ?? null };
         return add(kham);
       }
       if (line.startsWith('- [') && /^- \[[A-ZÀ-Ỹ]/.test(line)) {

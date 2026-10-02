@@ -16,7 +16,7 @@
   - nv:minh-anh · x 83% · y 100% · rộng 15% → tin-phong-minh-anh · dấu: ? · nhãn: Minh Anh: xin dữ liệu
 - [THỬ THÁCH c-tin-don]
 - [LỜI tin-mo.3]
-- [KHÁM PHÁ kp-bd-v2 · bản đồ]
+- [KHÁM PHÁ kp-bd-v2 · bản đồ · giờ 16:30]
   - ghim:xuong · x 21% · y 24% · rộng 5% → tin-gap-nam · dấu: ! · nhãn: Xưởng Robotics
   - ghim:cang-tin · x 88% · y 41% · rộng 5% → tin-bd-cang-tin · dấu: ? · nhãn: Căng tin
   - ghim:tra-da · x 41% · y 86% · rộng 5% → tin-bd-tra-da · dấu: ? · có: ba-lua · nhãn: Quán trà đá

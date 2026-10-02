@@ -18,6 +18,7 @@ import { soundEngine } from '../../shared/audio/sound-engine';
 import type { DiemKhamPhaHienMvp } from '../engine/may';
 import { danhSoTrung, nhanDiemKhamPha } from '../engine/nhan-cho-xem';
 import { anhChanDung, anhNen, anhSprite, anhTheoTen } from './anh-mvp';
+import { dangO } from '../engine/lich-nhan-vat';
 import { BAN_DO_MVP, TI_LE_NEN } from './ban-do-mvp';
 
 export interface KhamPhaMvpProps {
@@ -34,6 +35,9 @@ export interface KhamPhaMvpProps {
   daGap?: readonly string[];
   /** Bản đồ: ngày trong truyện (vd "Thứ Tư, 11/09") hiện trên đầu — lịch của nhân vật tính theo thứ. */
   homNay?: string;
+  /** Bản đồ: thứ trong truyện (0 = Chủ nhật) và giờ ("HH:MM") — ai đang ở ghim nào tính theo lịch "Thường ở". */
+  thu?: number;
+  gio?: string;
 }
 
 const DAU: Record<NonNullable<DiemKhamPhaMvp['dau']>, { chu: string; doc: string }> = {
@@ -50,7 +54,7 @@ function HuyHieu({ d }: { d: DiemKhamPhaHienMvp }) {
   );
 }
 
-export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay }: KhamPhaMvpProps) {
+export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay, thu, gio }: KhamPhaMvpProps) {
   const onXem = (chuoi: string): void => {
     soundEngine.playSfx('select');
     xem(chuoi);
@@ -82,7 +86,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
   const conMoi = diem.filter((d) => !d.daXem).length;
   const tieuDe = laBanDo ? 'Đi đâu bây giờ?' : laQuanSat ? `Quan sát ${nv?.trongCau ?? ''}` : tenCanh;
   const phu = laBanDo
-    ? `${homNay ? `${homNay}. ` : ''}Dấu ! là việc chính. Dấu ? là chỗ còn điều chưa xem.`
+    ? `${homNay ? `${homNay}${gio ? `, ${gio}` : ''}. ` : ''}Dấu ! là việc chính. Dấu ? là chỗ còn điều chưa xem.`
     : laQuanSat
       ? conMoi > 0
         ? `Bấm vào chi tiết đáng chú ý. Còn ${conMoi} chi tiết.`
@@ -93,7 +97,11 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
           ? `Còn ${conMoi} chỗ chưa xem`
           : 'Đã xem hết chỗ ở đây.';
   /** Người đang ở một nơi mà người chơi ĐÃ BIẾT: đã gặp và thẻ nhân vật có dòng "Lịch". */
-  const nguoiBiet = (d: DiemKhamPhaMvp): string[] => (d.co ?? []).filter((n) => daGap.includes(n) && !!kb.nhanVat.find((x) => x.id === n)?.gioiThieu?.lich);
+  const nguoiBiet = (d: DiemKhamPhaMvp): string[] => {
+    // Người kịch bản đặt ở đây (`có:`) cộng người lịch "Thường ở" đặt ở ghim này vào thứ, giờ của bản đồ.
+    const theoLich = thu !== undefined && gio && d.sprite.startsWith('ghim:') ? dangO(kb.nhanVat, thu, gio, d.sprite.slice(5)) : [];
+    return [...new Set([...(d.co ?? []), ...theoLich])].filter((n) => daGap.includes(n) && !!kb.nhanVat.find((x) => x.id === n)?.gioiThieu?.lich);
+  };
 
   const anhQuanSat = laQuanSat && nhanVat ? anhChanDung(nhanVat, nv?.bieuCam[0]) : undefined;
 

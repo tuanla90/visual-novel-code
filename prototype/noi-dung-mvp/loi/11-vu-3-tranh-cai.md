@@ -158,6 +158,8 @@
 - **narrator**: Thư viện buổi chiều. Cửa từ kêu tít mỗi lần có người quẹt thẻ đi qua.
 - **ha-vy** (smile): Tối thứ Hai nào tớ cũng ngồi bàn cạnh cửa sổ kia.
 - **tung** (thinking): Vào ra đều phải quẹt thẻ nhỉ. Thế là cái cửa này nhớ giờ của từng người.
+- **narrator**: Ở bàn cạnh cửa sổ, Hoài đang cúi xuống chồng sách, chưa thấy ba đứa.
+- **tung** (gai-dau): …Để lát nữa tớ chào.
 
 ## v3-bd-tra-da.1
 - **narrator**: Quán trà đá, đầu giờ chiều. Nắng xiên qua tán cây, ghế còn trống nhiều.

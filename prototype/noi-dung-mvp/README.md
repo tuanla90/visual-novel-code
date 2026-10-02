@@ -89,3 +89,9 @@ Chi tiết: đặc tả §18.4a.
 - Chuỗi kết thật / kết thường được kết bằng `[ĐI TỚI <chuỗi>]` thay cho `[KẾT THÚC]`, miễn chuỗi đích kết bằng `[KẾT THÚC]` (Vụ 1: `ket-that` → `ket-tra-da`). Máy ghi loại kết ngay lúc rẽ nên màn kết vẫn đúng.
 - Muốn một ảnh hoạt cảnh làm nền cho cả đoạn (không hiện nhân vật đứng): khai một cảnh riêng trong `canh.md` và đặt ảnh tên `bg-mvp-<mã cảnh>.webp`; câu `[RẼ NHÁNH]` để `narrator` hỏi thì không có nhãn tên (cảnh `san-dem` của nhiệm vụ phụ "Một lần dẫn lạc").
 - Bốn mẩu chuyện ở quán trà đá (`ho-so/04-tra-da.md`) là lời kể tùy chọn, không mẩu nào là điều kiện của kết.
+
+### Lịch nhân vật theo thứ và giờ (02/10/2026)
+
+- `nhan-vat.md`: `- Lịch: …` là chữ người chơi đọc ở thẻ nhân vật. `- Thường ở: T2–T7 07:00–23:00 → toa-b; CN 20:00–23:00 → toa-b` là bản máy đọc của chính lịch ấy. Thứ viết `T2`…`T7`, `CN`, khoảng `T2–T6`, danh sách `T2, T4, T6`, hoặc `mọi ngày`. Nơi là mã ghim của bản đồ (`ghim:<mã>`). Hai dòng phải nói cùng một điều.
+- Bản đồ khai giờ trong truyện: `- [KHÁM PHÁ <mã> · bản đồ · giờ 15:00]`. Thứ lấy từ ngày trong truyện. Thiếu giờ là lỗi.
+- Ảnh mặt cạnh ghim = người lịch đặt ở đó vào thứ, giờ ấy, cộng người kịch bản đặt bằng `có:`; vẫn chỉ hiện người đã gặp. Bài kiểm `src/mvp/engine/lich-nhan-vat.test.ts` bắt trường hợp `có:` đặt một người ở ghim này trong khi lịch ghi họ đang ở ghim khác. Thêm bản đồ mới thì thêm ngày của nó vào bảng trong bài kiểm đó.

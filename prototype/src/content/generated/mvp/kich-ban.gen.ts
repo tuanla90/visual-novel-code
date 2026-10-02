@@ -92,6 +92,18 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": "Chiều thứ Hai, thứ Tư, thứ Sáu ở phòng CLB. Buổi sáng có tiết ở tòa A.",
+        "thuongO": [
+          {
+            "thu": [
+              1,
+              3,
+              5
+            ],
+            "tu": "13:30",
+            "den": "18:00",
+            "noi": "nha-clb"
+          }
+        ],
         "danhXung": "Chủ nhiệm CLB Thám Tử",
         "nam": "Năm ba",
         "nganh": "Luật kinh tế",
@@ -116,6 +128,21 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": "Giữ chìa khóa nên chiều nào cũng ở phòng CLB. Sáng thứ Ba, thứ Năm có tiết.",
+        "thuongO": [
+          {
+            "thu": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "tu": "13:30",
+            "den": "18:00",
+            "noi": "nha-clb"
+          }
+        ],
         "danhXung": "Thành viên CLB, giữ tài sản",
         "nam": "Năm hai",
         "nganh": "Hành chính học",
@@ -189,6 +216,29 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": "Trực sảnh tòa B từ thứ Hai tới thứ Bảy, mở cửa 7 giờ sáng, khóa các phòng học 9 giờ tối; lối lên thư viện tầng ba để tới 11 giờ đêm rồi mới khóa sảnh. Chủ nhật chỉ ghé buổi tối để khóa cửa.",
+        "thuongO": [
+          {
+            "thu": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "tu": "07:00",
+            "den": "23:00",
+            "noi": "toa-b"
+          },
+          {
+            "thu": [
+              0
+            ],
+            "tu": "20:00",
+            "den": "23:00",
+            "noi": "toa-b"
+          }
+        ],
         "danhXung": "Bảo vệ giảng đường B",
         "nam": null,
         "nganh": null,
@@ -212,6 +262,20 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": "Giờ hành chính ở Phòng Đào tạo, tòa hành chính.",
+        "thuongO": [
+          {
+            "thu": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "tu": "08:00",
+            "den": "17:00",
+            "noi": "toa-hanh-chinh"
+          }
+        ],
         "danhXung": "Phòng Đào tạo",
         "nam": null,
         "nganh": null,
@@ -235,6 +299,20 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": "Giờ hành chính ở Phòng Công tác sinh viên, tòa hành chính.",
+        "thuongO": [
+          {
+            "thu": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "tu": "08:00",
+            "den": "17:00",
+            "noi": "toa-hanh-chinh"
+          }
+        ],
         "danhXung": "Phòng Công tác sinh viên",
         "nam": null,
         "nganh": null,
@@ -281,6 +359,29 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": "Ở phòng máy từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật trực cho sinh viên in bài.",
+        "thuongO": [
+          {
+            "thu": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "tu": "07:30",
+            "den": "21:00",
+            "noi": "phong-may"
+          },
+          {
+            "thu": [
+              0
+            ],
+            "tu": "18:00",
+            "den": "23:30",
+            "noi": "phong-may"
+          }
+        ],
         "danhXung": "Quản lý phòng máy",
         "nam": null,
         "nganh": null,
@@ -305,7 +406,21 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
-        "lich": null,
+        "lich": "Tan học là lên thư viện, ngồi bàn cạnh cửa sổ tới chiều muộn.",
+        "thuongO": [
+          {
+            "thu": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "tu": "14:00",
+            "den": "17:30",
+            "noi": "thu-vien"
+          }
+        ],
         "danhXung": "Sinh viên lớp BC24A",
         "nam": "Năm nhất",
         "nganh": null,
@@ -353,7 +468,30 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
-        "lich": null,
+        "lich": "Chiều nào cũng ở xưởng Robotics. Tối thứ Hai học ở thư viện tới lúc đóng cửa.",
+        "thuongO": [
+          {
+            "thu": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "tu": "14:00",
+            "den": "18:00",
+            "noi": "xuong"
+          },
+          {
+            "thu": [
+              1
+            ],
+            "tu": "21:30",
+            "den": "23:15",
+            "noi": "thu-vien"
+          }
+        ],
         "danhXung": "Thành viên CLB Robotics",
         "nam": null,
         "nganh": null,
@@ -443,6 +581,29 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": "Chiều nào cũng dọn hàng ở gốc cây ngoài cổng chính, ngồi tới chín giờ tối. Sáng thứ Bảy, Chủ nhật bán từ sớm.",
+        "thuongO": [
+          {
+            "thu": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "tu": "13:00",
+            "den": "21:00",
+            "noi": "tra-da"
+          },
+          {
+            "thu": [
+              0,
+              6
+            ],
+            "tu": "06:30",
+            "den": "21:00",
+            "noi": "tra-da"
+          }
+        ],
         "danhXung": "Bán trà đá cổng trường",
         "nam": null,
         "nganh": null,
@@ -1946,6 +2107,7 @@ const GOC = {
           "type": "explore",
           "id": "kp-bd-n2",
           "kieu": "ban-do",
+          "gio": "09:30",
           "diem": [
             {
               "sprite": "ghim:toa-hanh-chinh",
@@ -2468,6 +2630,7 @@ const GOC = {
           "type": "explore",
           "id": "kp-bd-n3",
           "kieu": "ban-do",
+          "gio": "09:30",
           "diem": [
             {
               "sprite": "ghim:toa-hanh-chinh",
@@ -2685,7 +2848,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Cửa phòng máy khóa. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ ở bàn trực."
+          "text": "Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ ở bàn trực."
         },
         {
           "type": "line",
@@ -3046,6 +3209,7 @@ const GOC = {
           "type": "explore",
           "id": "kp-bd-n4",
           "kieu": "ban-do",
+          "gio": "09:30",
           "diem": [
             {
               "sprite": "ghim:toa-hanh-chinh",
@@ -4551,6 +4715,7 @@ const GOC = {
           "type": "explore",
           "id": "kp-bd-v2",
           "kieu": "ban-do",
+          "gio": "16:30",
           "diem": [
             {
               "sprite": "ghim:xuong",
@@ -5558,22 +5723,20 @@ const GOC = {
           ]
         },
         {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "thinking",
-          "text": "Bà ơi, cho cháu thêm một cốc mang đi. Ít đá ạ."
+          "type": "note",
+          "text": "Trong cổng, Hoài ôm cặp đi về phía giảng đường B. Tùng nhổm dậy nửa chừng rồi lại ngồi xuống."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "smile",
-          "text": "Mang cho ai?"
+          "text": "Cậu định gọi à?"
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "gai-dau",
-          "text": "Thì… thư viện giờ này có người hay ngồi học. Thôi, để hôm khác. Tớ chưa nghĩ ra câu mở đầu."
+          "text": "Lần trước tớ gọi giật, bạn ấy đi nhanh gấp đôi. Để hôm khác. Tớ chưa nghĩ ra câu mở đầu."
         },
         {
           "type": "line",
@@ -5727,6 +5890,7 @@ const GOC = {
           "type": "explore",
           "id": "kp-bd-v3",
           "kieu": "ban-do",
+          "gio": "15:00",
           "diem": [
             {
               "sprite": "ghim:xuong",
@@ -6739,6 +6903,17 @@ const GOC = {
           "speaker": "tung",
           "expression": "thinking",
           "text": "Vào ra đều phải quẹt thẻ nhỉ. Thế là cái cửa này nhớ giờ của từng người."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Ở bàn cạnh cửa sổ, Hoài đang cúi xuống chồng sách, chưa thấy ba đứa."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "…Để lát nữa tớ chào."
         }
       ]
     },
@@ -7857,6 +8032,7 @@ const GOC = {
           "type": "explore",
           "id": "kp-bd-v5",
           "kieu": "ban-do",
+          "gio": "15:00",
           "diem": [
             {
               "sprite": "ghim:nha-clb",
@@ -9792,7 +9968,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Quán trà đá, buổi trưa. Bà Lụa đang tráng cốc."
+          "text": "Quán trà đá, đầu giờ chiều. Bà Lụa đang tráng cốc."
         },
         {
           "type": "line",
@@ -9858,14 +10034,14 @@ const GOC = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
-          "text": "Bà cho cháu một cốc ít đá mang đi ạ."
+          "expression": "thinking",
+          "text": "Bà ơi, hôm nào xong việc, bà để dành cho cháu thêm một cái ghế nhé."
         },
         {
           "type": "line",
           "speaker": "ba-lua",
           "expression": "smile",
-          "text": "Cho con bé hay ôm cặp chứ gì. Lần này có câu mở đầu chưa?"
+          "text": "Cho con bé hay ôm cặp chứ gì. Mời được nó ra đây ngồi thì bà khao. Có câu mở đầu chưa?"
         },
         {
           "type": "line",

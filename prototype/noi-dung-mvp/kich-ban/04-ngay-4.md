@@ -5,7 +5,7 @@
 ### n4-mo — Sáng ngày 4: nộp hai mã {cảnh: phong-clb}
 
 - [LỜI n4-mo.1]
-- [KHÁM PHÁ kp-bd-n4 · bản đồ]
+- [KHÁM PHÁ kp-bd-n4 · bản đồ · giờ 09:30]
   - ghim:toa-hanh-chinh · x 21% · y 54% · rộng 5% → n4-ctsv · dấu: ! · có: co-lan, co-hanh · nhãn: Phòng Công tác sinh viên
   - ghim:toa-b · x 48% · y 29% · rộng 5% → n4-bd-toa-b · dấu: ? · có: bac-tu · nhãn: Sảnh tòa B
 
