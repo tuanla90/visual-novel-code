@@ -25,7 +25,6 @@ export function GioiThieuMvp({ kb, nhanVat, onDong }: { kb: KichBanMvp; nhanVat:
       title={gt.danhXung}
       year={gt.nam}
       major={gt.nganh}
-      quote={gt.cauNoi}
       accentColor={mauNhanVat(nv.id)}
       intro={intro ? { url: intro } : null}
       textSide={CHU_BEN_TRAI.has(nv.id) ? 'left' : 'right'}

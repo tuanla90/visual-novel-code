@@ -162,11 +162,13 @@
 
 - [LỜI v5-sau-hop.1]
 - [ẢNH cg-v5-chia-va-huy-hieu]
+- [ẢNH cg-v5-hoai-hoi-tung]
 - [ĐI TỚI v5-chot]
 
 ### v5-chot — Phòng CLB: đóng hồ sơ mùa {cảnh: phong-clb}
 
 - [LỜI v5-ket-luan.1]
+- [ẢNH chibi-v5-hoai-vao-clb]
 - [ẢNH chibi-v5-dong-dau]
 - [ẢNH cg-ket-vu5]
 - [NẾU có clue-loi-nhan-linh-1 và có clue-loi-nhan-linh-2 và có clue-loi-nhan-linh-3 và có clue-loi-nhan-linh-4] → đi tới v5-ngan-tu

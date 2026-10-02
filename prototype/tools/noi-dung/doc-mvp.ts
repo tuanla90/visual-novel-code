@@ -46,13 +46,15 @@ export interface RawNhanVat {
   viTri: ViTri;
 }
 
-/** Dòng "Danh xưng" / "Năm" / "Ngành" / "Câu nói" / "Giới thiệu" của nhan-vat.md — chữ NGƯỜI CHƠI thấy, không lộ tình tiết. */
+/** Dòng "Danh xưng" / "Khi chưa quen" / "Năm" / "Ngành" / "Câu nói" / "Giới thiệu" của nhan-vat.md — chữ NGƯỜI CHƠI thấy, không lộ tình tiết. */
 export interface RawGioiThieu {
   /** "Lịch": thói quen đi lại (thường ở đâu, lúc nào) — hiện ở thẻ nhân vật; có thì ảnh mặt mới hiện trên bản đồ. */
   lich: string | null;
   /** "Thường ở": lịch theo thứ và giờ (`T2–T7 07:00–23:00 → toa-b; CN 20:00–23:00 → toa-b`); bản đồ tính ai đang ở ghim nào từ đây. */
   thuongO?: RawThuongO[];
   danhXung: string;
+  /** "Khi chưa quen": chữ trên thẻ tên trước khi nhân vật được giới thiệu (vd "Chị khóa trên"); bỏ trống → "???". */
+  chuaQuen: string | null;
   nam: string | null;
   nganh: string | null;
   cauNoi: string;
@@ -125,7 +127,7 @@ export interface RawDuKien {
 }
 
 /**
- * `- Ảnh: <sprite> · x <n>% · y <n>% · rộng <n>%` — sprite là `obj-…` (tệp src/assets/mvp/vat/) hoặc `nv:<mã nhân vật>`.
+ * `- Ảnh: <sprite> · x <n>% · y <n>% · rộng <n>%` — sprite là `obj-…` (tệp src/assets/mvp/vat/) hoặc `nv:<mã nhân vật>` (thêm `/<biểu cảm>` để chọn ảnh, vd `nv:tung/ao-xanh`).
  * (x, y) là CHÂN ẢNH (điểm giữa cạnh dưới) tính theo % bề rộng / bề cao nền; rộng = % bề rộng nền.
  */
 export interface RawAnhDuKien {
@@ -137,7 +139,7 @@ export interface RawAnhDuKien {
 
 /** Đọc giá trị dòng "Ảnh"; sai cú pháp → ném lỗi (thông báo đầy đủ). Không kiểm miền 0–100 (luật làm). */
 export function docAnhDuKien(v: string): RawAnhDuKien {
-  const m = /^(obj-[a-z0-9-]+|nv:[a-z0-9-]+|ghim:[a-z0-9-]+|vung:[a-z0-9-]+)\s*·\s*x\s+(-?\d+(?:[.,]\d+)?)%\s*·\s*y\s+(-?\d+(?:[.,]\d+)?)%\s*·\s*rộng\s+(-?\d+(?:[.,]\d+)?)%$/.exec(v.trim());
+  const m = /^(obj-[a-z0-9-]+|nv:[a-z0-9-]+(?:\/[a-z0-9-]+)?|ghim:[a-z0-9-]+|vung:[a-z0-9-]+)\s*·\s*x\s+(-?\d+(?:[.,]\d+)?)%\s*·\s*y\s+(-?\d+(?:[.,]\d+)?)%\s*·\s*rộng\s+(-?\d+(?:[.,]\d+)?)%$/.exec(v.trim());
   if (!m) throw new Error(`"Ảnh" phải là "<obj-… hoặc nv:<mã>> · x <n>% · y <n>% · rộng <n>%": "${v}"`);
   const so = (t: string | undefined): number => Number((t ?? '').replace(',', '.'));
   return { sprite: m[1] ?? '', x: so(m[2]), y: so(m[3]), rong: so(m[4]) };
@@ -363,7 +365,7 @@ export interface KetQuaDocMvp {
 const DANH_XUNG = ['Bác', 'Chú', 'Cô', 'Thầy', 'Anh', 'Chị', 'Em'];
 /** Dòng của thẻ nhân vật: phần cho người viết / bộ kiểm, và phần giới thiệu người chơi thấy. */
 const TRUONG_NHAN_VAT = ['Họ tên', 'Vai', 'Biểu cảm', 'Xuất hiện từ', 'Chỉ qua lời kể', 'Trong câu'];
-const TRUONG_GIOI_THIEU = ['Danh xưng', 'Năm', 'Ngành', 'Câu nói', 'Giới thiệu', 'Lịch', 'Thường ở'];
+const TRUONG_GIOI_THIEU = ['Danh xưng', 'Khi chưa quen', 'Năm', 'Ngành', 'Câu nói', 'Giới thiệu', 'Lịch', 'Thường ở'];
 
 export function tenTrongCau(ten: string): string {
   const [dau = '', ...con] = ten.split(' ');
@@ -587,6 +589,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           lich: fields['Lịch'] ?? null,
           ...(Array.isArray(thuongO) ? { thuongO } : {}),
           danhXung: fields['Danh xưng'] ?? '',
+          chuaQuen: fields['Khi chưa quen'] ?? null,
           nam: fields['Năm'] ?? null,
           nganh: fields['Ngành'] ?? null,
           cauNoi: fields['Câu nói'] ?? '',

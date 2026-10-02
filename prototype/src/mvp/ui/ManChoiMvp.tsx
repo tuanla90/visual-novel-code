@@ -269,9 +269,9 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const noiDung = (() => {
     switch (kn.kind) {
       case 'line':
-        return <DialogBox line={thanhLine(kb, s, kn.loi)} display={kn.display === 'card' ? 'card' : 'dialog'} speakerName={tenNguoiNoi(kb, kn.loi.speaker)} onAdvance={tiep} {...nutVn} />;
+        return <DialogBox line={thanhLine(kb, s, kn.loi)} display={kn.display === 'card' ? 'card' : 'dialog'} speakerName={tenNguoiNoi(kb, kn.loi.speaker, s)} onAdvance={tiep} {...nutVn} />;
       case 'feedback':
-        return <DialogBox line={thanhLine(kb, s, kn.loi)} hint={`Phản hồi ${kn.viTri + 1}/${kn.tong}`} speakerName={tenNguoiNoi(kb, kn.loi.speaker)} onAdvance={tiep} {...nutVn} />;
+        return <DialogBox line={thanhLine(kb, s, kn.loi)} hint={`Phản hồi ${kn.viTri + 1}/${kn.tong}`} speakerName={tenNguoiNoi(kb, kn.loi.speaker, s)} onAdvance={tiep} {...nutVn} />;
       case 'chon-dia-diem':
         return noiDangO ? (
           <NoiMvp
@@ -300,7 +300,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           asker: { speaker: kn.nut.asker.speaker, text: dienTen(kn.nut.asker.text) },
           choices: kn.nut.choices.map((c) => ({ id: c.id, text: dienTen(c.text), correct: c.correct, feedback: [] })),
         } as unknown as MultipleChoiceQuestion;
-        return <MultipleChoice question={q} attempts={kn.lanThu} gameKey={s.batDauLuc} askerLabel={tenNguoiNoi(kb, kn.nut.asker.speaker)} onChoose={(id) => hanhDong({ type: 'chon', luaChon: id })} anNhacChon />;
+        return <MultipleChoice question={q} attempts={kn.lanThu} gameKey={s.batDauLuc} askerLabel={tenNguoiNoi(kb, kn.nut.asker.speaker, s)} onChoose={(id) => hanhDong({ type: 'chon', luaChon: id })} anNhacChon />;
       }
       case 'doi-chat':
         return (
@@ -312,7 +312,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             daTrinh={kn.daTrinh}
             muc={kn.muc}
             dienTen={dienTen}
-            tenNguoiNoi={(ma) => tenNguoiNoi(kb, ma)}
+            tenNguoiNoi={(ma) => tenNguoiNoi(kb, ma, s)}
             onTrinh={(the) => hanhDong({ type: 'trinh-the', the })}
             onChuaDu={() => hanhDong({ type: 'chua-du' })}
           />
@@ -334,9 +334,9 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             <div className="dialog-container mc__dialog-container">
               <div className="dialog dialog--glass" data-speaker={kn.nut.asker.speaker}>
                 {/* Câu rẽ nhánh do người dẫn truyện hỏi (cảnh chạy đêm): không có nhãn tên. */}
-                {tenNguoiNoi(kb, kn.nut.asker.speaker) ? (
+                {tenNguoiNoi(kb, kn.nut.asker.speaker, s) ? (
                   <div className="dialog__speaker">
-                    <span>{tenNguoiNoi(kb, kn.nut.asker.speaker)}</span>
+                    <span>{tenNguoiNoi(kb, kn.nut.asker.speaker, s)}</span>
                   </div>
                 ) : null}
                 <p id="mvp-renhanh-hoi" className="dialog__text mc__prompt">

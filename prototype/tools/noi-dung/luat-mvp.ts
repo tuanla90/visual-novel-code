@@ -219,7 +219,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
       }
       const noi = `dữ kiện ${k.id}, "Ảnh"`;
       if (a.sprite.startsWith('nv:')) {
-        const nv = a.sprite.slice(3);
+        const nv = a.sprite.slice(3).split('/')[0] ?? '';
         if (!nhanVat.has(nv)) err(k.viTri, `${noi}: không có nhân vật "${nv}" trong nhan-vat.md`);
       } else if (tuyChon.spriteVat && !tuyChon.spriteVat.has(a.sprite)) {
         err(k.viTri, `${noi}: không có ảnh vật "${a.sprite}" trong src/assets/mvp/vat/`);
@@ -390,7 +390,8 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
             if (d.sprite.startsWith('ghim:') || d.sprite.startsWith('vung:')) {
               if (!d.nhan) err(vt, `${noi}: điểm "${d.sprite}" cần "nhãn:" (tên nơi đến / chi tiết để người chơi đọc)`);
             } else if (d.sprite.startsWith('nv:')) {
-              if (!nhanVat.has(d.sprite.slice(3))) err(vt, `${noi}: không có nhân vật "${d.sprite.slice(3)}" trong nhan-vat.md`);
+              const nv = d.sprite.slice(3).split('/')[0] ?? '';
+              if (!nhanVat.has(nv)) err(vt, `${noi}: không có nhân vật "${nv}" trong nhan-vat.md`);
             } else if (tuyChon.spriteVat && !tuyChon.spriteVat.has(d.sprite)) {
               err(vt, `${noi}: không có ảnh vật "${d.sprite}" trong src/assets/mvp/vat/`);
             }

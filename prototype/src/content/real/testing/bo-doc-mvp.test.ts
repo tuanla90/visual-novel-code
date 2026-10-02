@@ -465,7 +465,7 @@ describe('thẻ giới thiệu nhân vật (nhan-vat.md: Danh xưng, Năm, Ngàn
   it('đủ dòng → đọc ra thẻ; không có dòng nào → null', () => {
     const kq = docNv('- Danh xưng: Bạn cùng phòng\n- Năm: Năm nhất\n- Câu nói: Tớ cá.\n- Giới thiệu: Hay đùa.\n');
     expect(kq.loi).toEqual([]);
-    expect(kq.mvp.nhanVat.find((n) => n.id === 'tung')?.gioiThieu).toEqual({ lich: null, danhXung: 'Bạn cùng phòng', nam: 'Năm nhất', nganh: null, cauNoi: 'Tớ cá.', loi: 'Hay đùa.' });
+    expect(kq.mvp.nhanVat.find((n) => n.id === 'tung')?.gioiThieu).toEqual({ lich: null, danhXung: 'Bạn cùng phòng', chuaQuen: null, nam: 'Năm nhất', nganh: null, cauNoi: 'Tớ cá.', loi: 'Hay đùa.' });
     expect(kq.mvp.nhanVat.find((n) => n.id === 'quan')?.gioiThieu).toBeNull();
   });
 

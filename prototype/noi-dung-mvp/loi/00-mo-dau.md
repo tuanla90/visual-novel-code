@@ -64,7 +64,7 @@
 - **tung** (ao-xanh): Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
 - **bac-tu** (neutral): Hai cháu tìm phòng nào? Chiều Chủ nhật tòa này khóa hết lớp rồi.
 - **tung** (ao-xanh): Dạ không ạ, cháu dẫn bạn đi xem trường thôi.
-- **bac-tu** (neutral): Xem thì xem. Mép hộp sắc đấy, đừng thò tay vào.
+- **bac-tu** (neutral): Bác là Thịnh, bảo vệ tòa này. Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào.
 
 ## md-07-cong-ktx-toi.1
 - [DÀN DỰNG] Tối. Hai người quẹt thẻ ở phòng trực cổng KTX. Nền tối bg-mvp-cong-ktx-dem (DX-02).
@@ -72,6 +72,7 @@
 - **chu-cuong** (neutral): Giờ này mới về à? {{nv.tung}} dẫn bạn đi đâu cả buổi thế?
 - **tung** (ao-xanh-happy): Bọn cháu đi xem trường ạ.
 - **tung** (ao-xanh-happy): Chú tớ đấy, {{nv.nguoi-choi}}. Chú trực cổng này lâu lắm rồi.
+- **chu-cuong** (smile): Chú là Cường. Cần gì thì cứ ra phòng trực gọi chú.
 - **tung** (ao-xanh): Chú ơi, qua nhà văn hóa cháu thấy dán poster CLB Thám Tử. Chú biết CLB đấy không?
 - **chu-cuong** (smile): À, CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó đều moi ra được bằng chứng. Chẳng thần thánh gì, chịu khó hỏi từng người rồi đối chiếu giấy tờ thôi.
 - **chu-cuong** (neutral): Giờ cái gì cũng lên hệ thống, ai còn nhờ sinh viên đi hỏi từng người nữa. Thứ Bảy có Ngày hội CLB đấy, thích thì ra xem.
@@ -89,7 +90,9 @@
 ## md-09-ngay-hoi.2
 - [DÀN DỰNG] Nền nhà văn hóa ngày hội (nền chưa vẽ người); gian Robotics bên trái, cờ in hình bánh răng (ảnh cần vẽ thêm — xem báo cáo rà soát A4/A5); bàn Thám Tử bên phải.
 - **narrator**: Sân nhà văn hóa giăng cờ, bàn CLB kê kín lối đi. Gian Robotics rộng nhất, cờ in hình bánh răng, dán tấm bảng "Đang xin mở rộng xưởng thực hành". Bàn CLB Thám Tử ở góc, chỉ có một chị ngồi.
-- **tung** (neutral): Chị ơi, CLB mình đang điều tra vụ nào không ạ?
+- **tung** (neutral): Chị ơi, đây là bàn CLB Thám Tử ạ? Chị là thành viên CLB ạ?
+- **minh-anh** (neutral): Ừ, đúng rồi. Chị là {{nv.minh-anh}}, chủ nhiệm CLB.
+- **tung** (neutral): Thế CLB mình đang điều tra vụ nào không ạ?
 - **minh-anh** (neutral): Không có em ạ. Hồ sơ, đăng ký giờ tra trên hệ thống là ra hết. Mấy kiểu điều tra ngày xưa hết đất diễn rồi.
 - **tung** (happy): Thế giờ CLB chuyên điều tra… mật khẩu Wi-Fi ạ?
 - **minh-anh** (worried): Em ra đây để đùa thì bàn bên kia vui hơn đấy.

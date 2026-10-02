@@ -68,6 +68,8 @@ export interface GioiThieuNhanVatMvp {
   /** Lịch theo thứ và giờ ("Thường ở" của nhan-vat.md): bản đồ tính ai đang ở ghim nào (`src/mvp/engine/lich-nhan-vat.ts`). */
   thuongO?: QuangLichMvp[];
   danhXung: string;
+  /** Chữ trên thẻ tên trước khi nhân vật được giới thiệu ("Chị khóa trên"); `null` → "???". */
+  chuaQuen?: string | null;
   nam: string | null;
   nganh: string | null;
   cauNoi: string;

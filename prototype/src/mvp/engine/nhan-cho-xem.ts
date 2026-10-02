@@ -23,7 +23,7 @@ export function nhanChoXem(kb: KichBanMvp, dk: DuKienMvp): string {
   const taiLieu = dk.hienTaiLieu[0];
   const tieuDe = taiLieu ? kb.hoSo[taiLieu]?.fields['Tiêu đề'] : undefined;
   const sprite = dk.anh?.sprite;
-  if (sprite?.startsWith('nv:')) return `Nói chuyện với ${tenNv(sprite.slice(3))}`;
+  if (sprite?.startsWith('nv:')) return `Nói chuyện với ${tenNv(sprite.slice(3).split('/')[0] ?? '')}`;
   if (sprite?.startsWith('obj-')) return tieuDe ? `Xem: ${tieuDe}` : 'Xem xét chỗ này';
 
   const tenChuoi = dk.hanhDong.chuoi;
@@ -45,7 +45,7 @@ export function nhanChoXem(kb: KichBanMvp, dk: DuKienMvp): string {
  */
 export function nhanDiemKhamPha(kb: KichBanMvp, d: DiemKhamPhaMvp): string {
   if (d.nhan) return d.nhan;
-  if (d.sprite.startsWith('nv:')) return `Nói chuyện với ${kb.nhanVat.find((n) => n.id === d.sprite.slice(3))?.trongCau ?? 'người ở đây'}`;
+  if (d.sprite.startsWith('nv:')) return `Nói chuyện với ${kb.nhanVat.find((n) => n.id === d.sprite.slice(3).split('/')[0])?.trongCau ?? 'người ở đây'}`;
   const hien = kb.chuoi.find((c) => c.id === d.chuoi)?.nodes.find((n) => n.type === 'show-document');
   const tieuDe = hien?.type === 'show-document' ? kb.hoSo[hien.documentId]?.fields['Tiêu đề'] : undefined;
   return tieuDe ? `Xem: ${tieuDe}` : 'Xem xét chỗ này';
