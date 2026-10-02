@@ -994,7 +994,7 @@ export function dienTen(kb: KichBanMvp, s: TrangThaiMvp, text: string): string {
   });
 }
 
-const TU_GIOI_THIEU = /(?:^|[.!?…]\s+)(?:còn\s+)?(?:tôi|mình|tớ|tui|em|anh|chị|chú|cô|thầy)\s+là\s+/iu;
+const TU_GIOI_THIEU = /(?:^|[.!?…]\s+)(?:còn\s+)?(?:tôi|mình|tớ|tui|em|anh|chị|chú|bác|cô|thầy)\s+là\s+/iu;
 
 /**
  * Nhân vật cần mở thẻ "Nhân vật mới" ở câu thoại đang hiện (`null` = không). Mỗi nhân vật có thẻ giới thiệu mở đúng một lần:
@@ -1013,11 +1013,16 @@ export function canGioiThieu(kb: KichBanMvp, s: TrangThaiMvp, kn: KhungNhinMvp):
   return sapTuXung ? null : nguoi;
 }
 
-/** Tên hiển thị của người nói (`player` → "Bạn", `narrator` → ""). */
-export function tenNguoiNoi(kb: KichBanMvp, speaker: string): string {
+/**
+ * Tên hiển thị của người nói (`player` → "Bạn", `narrator` → ""). Truyền `s` (thẻ tên trong hội thoại): nhân vật có thẻ
+ * giới thiệu mà chưa được giới thiệu thì hiện cách gọi tạm ("Chị khóa trên", không có thì "???") thay cho tên.
+ */
+export function tenNguoiNoi(kb: KichBanMvp, speaker: string, s?: TrangThaiMvp): string {
   if (speaker === 'player') return 'Bạn';
   if (speaker === 'narrator') return '';
-  return kb.nhanVat.find((n) => n.id === speaker)?.ten ?? 'Nhân vật';
+  const nv = kb.nhanVat.find((n) => n.id === speaker);
+  if (s && nv?.gioiThieu && !(s.daGioiThieu ?? []).includes(speaker)) return nv.gioiThieu.chuaQuen ?? '???';
+  return nv?.ten ?? 'Nhân vật';
 }
 
 /** Câu SQL của một `[MÀN CHIẾU]`: viết thẳng, hoặc SQL chuẩn của thẻ có vật chứng được trỏ tới. */

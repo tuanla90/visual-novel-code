@@ -5,7 +5,7 @@
 import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
-import { canGioiThieu, taoTrangThai, type KhungNhinMvp } from './may';
+import { canGioiThieu, taoTrangThai, tenNguoiNoi, type KhungNhinMvp } from './may';
 
 const kb = KICH_BAN_MVP as unknown as KichBanMvp;
 
@@ -30,13 +30,19 @@ describe('thẻ giới thiệu nhân vật', () => {
     expect(thieu).toEqual([]);
   });
 
-  it('có câu tự xưng trong chuỗi thì chờ tới câu đó; không có thì mở ở câu đầu', () => {
-    expect(choMoThe('tung')?.text).toContain('Tớ là');
-    expect(choMoThe('duy')?.text).toContain('Còn tớ là');
-    // Minh Anh không tự xưng ở Ngày hội: thẻ mở ngay câu đầu của chị, không đợi tới Vụ 5.
+  it('thẻ của mọi nhân vật mở ở chính câu tự xưng tên ("Chị là…", "Bác là…"), không mở trống không', () => {
+    const tuXung = /(?:^|[.!?…]\s+)(?:còn\s+)?(?:tôi|mình|tớ|tui|em|anh|chị|chú|bác|cô|thầy)\s+là\s+/iu;
+    const khongTuXung = kb.nhanVat.filter((n) => n.gioiThieu && !tuXung.test(choMoThe(n.id)?.text.normalize('NFC') ?? '')).map((n) => n.id);
+    expect(khongTuXung).toEqual([]);
     expect(choMoThe('minh-anh')?.chuoi.startsWith('md-')).toBe(true);
-    expect(choMoThe('bac-tu')).not.toBeNull();
-    expect(choMoThe('hoai')).not.toBeNull();
+  });
+
+  it('thẻ tên trước khi được giới thiệu là cách gọi tạm, sau đó mới là tên', () => {
+    const s0 = taoTrangThai(kb);
+    expect(tenNguoiNoi(kb, 'minh-anh', s0)).toBe('Chị khóa trên');
+    expect(tenNguoiNoi(kb, 'minh-anh', { ...s0, daGioiThieu: ['minh-anh'] })).toBe('Minh Anh');
+    expect(tenNguoiNoi(kb, 'minh-anh')).toBe('Minh Anh');
+    expect(tenNguoiNoi(kb, 'player', s0)).toBe('Bạn');
   });
 
   it('đã giới thiệu rồi thì không mở lại', () => {

@@ -22,7 +22,7 @@
 ## n4-phong-may.1
 > NHIỆM VỤ: Lá thư được in từ tài khoản nào?
 > NHẮC VIỆC ha-vy (thinking): Chân trang thư là tên tệp. Nhật ký in sẽ ghi ai in nó.
-- **thay-khai** (neutral): Máy in ở đây nhớ hết: tài khoản nào in, lúc nào, tệp gì, mấy trang.
+- **thay-khai** (neutral): Thầy là Khải, quản lý phòng máy. Máy in ở đây nhớ hết: tài khoản nào in, lúc nào, tệp gì, mấy trang.
 - **thay-khai** (neutral): Máy in là của phòng thầy, nên phiếu thì thầy ký. Thầy mở cho các em đúng bảng nhật ký in, chỉ để lập căn cứ.
 - **thay-khai** (neutral): Bản in từ máy ở đây có dòng chân trang ghi tên tệp. Thư của các em có không?
 - **player**: Có ạ. Nhưng bản chụp bị xén mép, chỉ đọc được đoạn đầu: kien-nghi…

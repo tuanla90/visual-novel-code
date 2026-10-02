@@ -134,8 +134,8 @@
 - **narrator**: Chiều muộn, xưởng Robotics. Nam dẫn cả nhóm tới cửa phòng văn phòng. Trên cửa dán một tờ giấy đã ngả màu.
 - **player**: "Giao chìa phòng văn phòng." Ba tên: Khánh, Bách, Thảo.
 - **nam** (neutral): Anh Khánh đang họp bên Hội. Anh Bách với chị Thảo thì ở kia.
-- **thao** (neutral): Phòng ấy chị mở nhiều nhất. Nhưng chìa của chị nằm ngăn bàn ngoài xưởng cả tháng nay, ai mở ngăn cũng lấy được. Chị không chối.
-- **bach** (neutral): Tối mùng 7 anh về quê, vé xe còn giữ. Chìa anh không cho ai mượn.
+- **thao** (neutral): Chị là Thảo, lo kỹ thuật của xưởng. Phòng ấy chị mở nhiều nhất. Nhưng chìa của chị nằm ngăn bàn ngoài xưởng cả tháng nay, ai mở ngăn cũng lấy được. Chị không chối.
+- **bach** (neutral): Anh là Bách, phó CLB. Tối mùng 7 anh về quê, vé xe còn giữ. Chìa anh không cho ai mượn.
 - **thao** (neutral): Còn hỏi chuyện in ấn thì tối Chủ nhật nào chị cũng ra phòng máy in sơ đồ mạch. Tuần nào cũng thế, chị không nhớ nổi từng tuần.
 - **tung** (gai-dau): Tối Chủ nhật, phòng máy… Tớ không cá. Tớ ghi.
 

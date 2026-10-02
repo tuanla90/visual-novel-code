@@ -9,12 +9,12 @@
 ## n3-ctsv.1
 > NHIỆM VỤ: Làm sao để được xem bảng sinh viên?
 > NHẮC VIỆC minh-anh (neutral): Kết quả hai lớp hôm qua là căn cứ để xin phiếu tra cứu.
-- **co-lan** (neutral): Người gửi muốn được trả lời thì phải ghi mã sinh viên của mình vào phiếu gửi. Mã đó được chép vào sổ niêm phong.
+- **co-lan** (neutral): Cô là Lan, Phòng Công tác sinh viên, hộp kiến nghị là bên cô quản. Người gửi muốn được trả lời thì phải ghi mã sinh viên của mình vào phiếu gửi. Mã đó được chép vào sổ niêm phong.
 - **co-lan** (neutral): Sổ đó niêm phong. Cô cũng không được tự mở.
 - **player**: Vậy làm sao biết được ai gửi ạ?
 - **co-lan** (neutral): Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô phụ trách hộp mới tra và trả lời có hoặc không.
-- [DÀN DỰNG] Một anh sinh viên khoác vest xanh đen, kẹp cái bìa da, đứng ở cửa từ lúc nào.
-- **narrator**: Ở cửa có một anh sinh viên khoác vest xanh đen, kẹp cái bìa da, đứng từ lúc nào không ai để ý.
+- [DÀN DỰNG] Một anh sinh viên đeo kính, mặc gi lê len xanh than, kẹp cái bìa da, đứng ở cửa từ lúc nào.
+- **narrator**: Ở cửa có một anh sinh viên đeo kính, mặc gi lê len xanh than, kẹp cái bìa da, đứng từ lúc nào không ai để ý.
 - **quan** (neutral): Tôi là Quân, bên Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi được cử xuống giám sát việc này.
 - **co-lan** (neutral): Hai lớp các em lọc ra hôm qua là căn cứ được. Cô ký phiếu tra cứu: bảng sinh viên, bốn cột, mã, họ đệm, tên, mã lớp. Không hơn.
 - **quan** (neutral): Tôi ký giám sát. Các bạn tra những gì, bên tôi xem hết.
@@ -30,7 +30,7 @@
 - **hieu** (annoyed): Nhóm tôi vừa xin phòng làm bài nhóm, người ta bảo hết phòng. Phải ngồi ké thư viện.
 - **tung** (worried): Nghe gắt thế… hay thư là cậu này gửi?
 - **ha-vy** (thinking): Ghét CLB với gửi thư là hai chuyện khác nhau.
-- **hieu** (annoyed): Nhìn gì? Tôi nói thẳng vậy thôi, có gì tôi nói trước mặt.
+- **hieu** (annoyed): Nhìn gì? Tôi là Hiếu, lớp BC24A. Tôi nói thẳng vậy thôi, có gì tôi nói trước mặt.
 - **narrator**: Có tiếng gọi từ quầy: "Hiếu ơi, lấy cơm này!" Cậu ta đứng dậy, bỏ đi.
 
 ## n3-laptop.1

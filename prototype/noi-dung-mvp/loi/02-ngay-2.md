@@ -12,7 +12,7 @@
 ## n2-co-hanh.1
 > NHIỆM VỤ: Tài khoản của CLB được xem những gì?
 > NHẮC VIỆC minh-anh (neutral): Được xem đúng những gì người ta cho phép. Nghe cô nói hết đã.
-- **co-hanh** (neutral): Cô tạo cho CLB một tài khoản, tên là clb_tham_tu.
+- **co-hanh** (neutral): Cô là Hạnh, bên Phòng Đào tạo. Cô tạo cho CLB một tài khoản, tên là clb_tham_tu.
 - **co-hanh** (neutral): Tài khoản này chỉ xem được bảng lớp sinh hoạt: mã lớp, ngành, khóa, tòa nhà. Trong đấy không có tên ai cả.
 - **co-hanh** (neutral): Bảng sinh viên có thông tin cá nhân. Muốn xem thì mang phiếu yêu cầu tra cứu, có chữ ký của đơn vị lo vụ việc. Vụ hộp kiến nghị là của Phòng Công tác sinh viên.
 - **co-hanh** (neutral): Tra gì máy cũng ghi lại. Cuối vụ cô xem nhật ký.

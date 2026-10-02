@@ -9,7 +9,7 @@
 ## hop-00.2
 - [DÀN DỰNG] {{nv.thay-quang}} ngồi giữa; {{nv.co-lan}} và {{nv.quan}} một bên, CLB một bên. {{nv.hoai}} ngồi chờ ngoài hành lang theo quy chế, chưa được mời vào.
 - **narrator**: Thứ Hai, bốn giờ chiều. Phòng họp tầng ba. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ.
-- **thay-quang** (neutral): Hôm nay thầy phải chốt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử. Mời các em trình bày căn cứ.
+- **thay-quang** (neutral): Thầy là Quang, phó hiệu trưởng phụ trách sinh viên, chủ trì buổi rà soát này. Hôm nay thầy phải chốt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử. Mời các em trình bày căn cứ.
 - **minh-anh** (neutral): Dạ, bọn em xin trình bày cách bọn em lọc ra danh sách ạ.
 - **quan** (chi-man): Bên tôi lọc lại cho chắc: tên bắt đầu bằng H hoặc học lớp BC24A, ra mười bốn dòng. Hồ sơ các bạn nộp chỉ có hai người.
 
@@ -26,7 +26,7 @@
 - [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa, rồi ngồi xuống ghế khi thầy bảo.
 - **narrator**: Hoài được mời vào. Bạn ấy đứng nép cạnh cửa, hai tay nắm chặt quai túi.
 - **thay-quang** (neutral): Em Hoài, em kể lại giúp thầy hôm em nộp thư.
-- **hoai** (nervous): Dạ… sáng thứ Hai em mang phong bì bỏ vào hộp ở tòa B ạ.
+- **hoai** (nervous): Dạ… em là Hoài, lớp BC24A ạ. Sáng thứ Hai em mang phong bì bỏ vào hộp ở tòa B ạ.
 - **thay-quang** (neutral): Chỉ có vậy thôi à em?
 - **hoai** (nervous): Dạ… vâng ạ.
 - **thay-quang** (neutral): Được, em ngồi xuống ghế đi. Các em còn gì trình thêm không?
