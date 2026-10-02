@@ -86,7 +86,10 @@
 - [DÀN DỰNG] Có tiếng gõ cửa. {{nv.khanh}} đứng ở cửa phòng CLB, balo khoác một bên vai.
 - **khanh** (neutral): Nam ở đây à. Danh sách Ban kiểm tra cầm là anh chuyển. Đủ cả năm đơn, kể cả hai đơn em đặt thật, để họ khỏi bảo mình chọn lọc. Cứ giải trình đúng sự thật, anh sẽ nói đỡ một câu. Còn bên Thám Tử, cần giấy tờ gì qua Hội thì cứ gửi anh, anh ký chuyển cho.
 - **nam** (neutral): Vâng anh.
-- [DÀN DỰNG] {{nv.khanh}} quay đi. Cái huy hiệu bánh răng trên balo lắc lư, sứt mất một răng.
+- **ha-vy** (thinking): Anh ấy chưa đi ngay. Nhìn cho kỹ.
+
+## v4-ket.1b
+- [DÀN DỰNG] {{nv.khanh}} quay đi. Cái huy hiệu bánh răng trên quai balo lắc lư.
 - **tung** (worried): Tớ thấy rồi. Cái huy hiệu. Nãy giờ tớ nín thở.
 - **ha-vy** (thinking): Nín là đúng. Nói ra lúc ấy là cá.
 - **nam** (neutral): Huy hiệu làm ba chục cái hồi đầu năm. Cái sứt là lỗi khuôn, anh Khánh xin giữ. Nhưng balo anh ấy hay để ở xưởng, ai cũng cầm ra cổng được. Tớ không nói là anh ấy.
@@ -101,3 +104,25 @@
 - **ha-vy** (smile): Thì hỏi sổ.
 - [THẺ CHỮ] **narrator**: Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nghi ngờ mạnh vẫn chưa phải bằng chứng: càng chắc trong lòng, càng phải tìm nguồn thứ hai.
 
+## v4-phong-duy.1
+- **duy** (neutral): Bản sổ đặt hàng Ban kiểm tra gửi kèm, tớ nạp vào máy rồi. Cả sổ, từ hồi xưởng mới số hóa.
+
+## v4-phong-nam.1
+- **nam** (neutral): Hai đơn tớ đặt thật là cảm biến dò line với bánh xe. Tớ đặt buổi chiều, ở máy xưởng số 2, lúc đang trực.
+- **nam** (neutral): Ba đơn còn lại tớ chưa từng thấy cho tới khi cầm tờ giấy này.
+
+## v4-phong-quan.1
+- **quan** (neutral): Lần này tôi không lọc thay các bạn. Tôi ký giám sát, và tôi đọc từng phiếu.
+- **quan** (neutral): Phiếu nào các bạn ghim mà thiếu căn cứ, tôi sẽ hỏi lại đúng câu thầy Quang hỏi tôi hôm họp.
+
+## v4-soi-the.1
+- **player**: Thẻ đeo cổ dây xanh, loại thẻ của cán bộ Hội.
+- **ha-vy** (neutral): Chủ tịch Hội. Giấy nào qua Hội cũng qua tay anh ấy.
+
+## v4-soi-balo.1
+- **player**: Balo khoác một bên vai, to, cũ.
+- **nam** (neutral): Balo ấy anh Khánh hay để ở xưởng cả ngày.
+
+## v4-soi-huy-hieu.1
+- **player**: Trên quai balo gài một cái huy hiệu bánh răng. Sứt mất một răng.
+- **tung** (worried): Bánh răng sứt một răng… Chú Cường tả đúng cái này.

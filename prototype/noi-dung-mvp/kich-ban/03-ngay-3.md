@@ -45,7 +45,28 @@
 ### n3-cang-tin — Căng tin: Hiếu nói xấu CLB {cảnh: cang-tin}
 
 - [LỜI n3-cang-tin.1]
+- [ĐI TỚI n3-phong]
+
+### n3-phong — Phòng CLB buổi chiều ngày 3: ai có việc nấy {cảnh: phong-clb}
+
+- [LỜI n3-phong.1]
+- [KHÁM PHÁ kp-phong-n3]
+  - nv:duy · x 20% · y 100% · rộng 15% → n3-phong-duy · dấu: ! · nhãn: Duy: mở laptop
+  - nv:ha-vy · x 45% · y 100% · rộng 15% → n3-phong-vy · dấu: ? · nhãn: Hà Vy: câu hỏi trên bảng
+  - nv:minh-anh · x 72% · y 100% · rộng 15% → n3-phong-minh-anh · dấu: ? · nhãn: Minh Anh: chuyện anh Quân
+
+### n3-phong-duy — Duy mở laptop (việc chính) {cảnh: phong-clb}
+
+- [LỜI n3-phong-duy.1]
 - [ĐI TỚI n3-laptop]
+
+### n3-phong-vy — Hà Vy đọc câu hỏi mới trên bảng {cảnh: phong-clb}
+
+- [LỜI n3-phong-vy.1]
+
+### n3-phong-minh-anh — Minh Anh nói về việc bị giám sát {cảnh: phong-clb}
+
+- [LỜI n3-phong-minh-anh.1]
 
 ### n3-laptop — Laptop phòng CLB: ai trong hai lớp có tên bắt đầu bằng H? {cảnh: phong-clb}
 

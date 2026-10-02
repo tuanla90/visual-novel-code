@@ -148,3 +148,7 @@
 - **tung** (neutral): Lần này tớ ghi tên mà không khoanh ai cả.
 - [THẺ CHỮ] **narrator**: Nhóm theo cách khác thì thấy chuyện khác. Thói quen đếm được, và đôi khi thói quen của người này là lời chứng cho người kia.
 
+## v3-bd-thu-vien.1
+- **narrator**: Thư viện buổi chiều. Cửa từ kêu tít mỗi lần có người quẹt thẻ đi qua.
+- **ha-vy** (smile): Tối thứ Hai nào tớ cũng ngồi bàn cạnh cửa sổ kia.
+- **tung** (thinking): Vào ra đều phải quẹt thẻ nhỉ. Thế là cái cửa này nhớ giờ của từng người.

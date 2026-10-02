@@ -59,11 +59,24 @@
 - **hieu** (annoyed): Nhìn gì? Tôi nói thẳng vậy thôi, có gì tôi nói trước mặt.
 - **narrator**: Có tiếng gọi từ quầy: "Hiếu ơi, lấy cơm này!" Cậu ta đứng dậy, bỏ đi.
 
+## n3-phong.1
+- **narrator**: Về phòng CLB. Phiếu tra cứu của cô Lan nằm trên bàn, cạnh cái laptop.
+
+## n3-phong-duy.1
+- **duy** (neutral): Có phiếu của cô Lan rồi, máy mở thêm được bảng sinh viên. Bốn cột, không hơn.
+
+## n3-phong-vy.1
+- **ha-vy** (thinking): Câu hỏi mới trên bảng: trong hai lớp ấy, ai có tên bắt đầu bằng H?
+- **ha-vy** (neutral): Tùng cá là Hiếu. Tớ thì chưa cá gì. Một người gắt ở căng tin chưa phải là một dòng dữ liệu.
+
+## n3-phong-minh-anh.1
+- **minh-anh** (neutral): Anh Quân ký giám sát, nghĩa là mình tra gì bên Hội cũng xem được.
+- **minh-anh** (khoanh-tay): Cứ làm cho đúng. Mình không có gì phải giấu thì người ta soi cũng không sao.
+
 ## n3-laptop.1
 > NHIỆM VỤ: Trong hai lớp ấy, ai có thể là người ký chữ H?
 > NHẮC VIỆC tung (chi-tay): Tớ cá là Hiếu! Xem trong hai lớp có ai tên H.
 - [DÀN DỰNG] Phòng CLB. Phiếu tra cứu đã mở bảng sinh viên. Trên bàn: [H], phiếu hai lớp.
-- **narrator**: Về phòng CLB. Có phiếu tra cứu, laptop hiện thêm bảng sinh viên.
 - **tung** (chi-tay): Cậu gắt ở căng tin tên Hiếu. Chữ H đấy! Tớ cá là Hiếu!
 - **ha-vy** (thinking): Cá thì để sau. Xem dữ liệu nói gì đã.
 

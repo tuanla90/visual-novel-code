@@ -35,6 +35,10 @@
 - [LỜI v5-so-quy.1]
 - [HIỆN TÀI LIỆU doc-so-quy]
 - [HẬU QUẢ] mở manh mối clue-quy-tham-tu, mở manh mối clue-han-muc
+- [KHÁM PHÁ kp-phong-v5]
+  - nv:duy · x 20% · y 100% · rộng 15% → v5-phong-duy · dấu: ! · nhãn: Duy: mở laptop
+  - nv:ha-vy · x 48% · y 100% · rộng 15% → v5-phong-vy · dấu: ? · nhãn: Hà Vy: câu hỏi trên bảng
+  - nv:minh-anh · x 76% · y 100% · rộng 15% → v5-phong-minh-anh · dấu: ? · nhãn: Minh Anh: ba khoản chị duyệt
 - [THỬ THÁCH c-chi-tham-tu]
 - [LỜI v5-so-quy.2]
 - [THỬ THÁCH c-chi-theo-nguoi-duyet]
@@ -170,3 +174,15 @@
 - [HẬU QUẢ] mở manh mối clue-loi-nhan-linh-5, hiện tài liệu doc-ho-so-vu-dau
 - [LỜI v5-ngan-tu.2]
 - [KẾT THÚC]
+
+### v5-phong-duy — Vụ 5: Duy mở laptop (việc chính) {cảnh: phong-clb}
+
+- [LỜI v5-phong-duy.1]
+
+### v5-phong-vy — Vụ 5: Hà Vy và câu hỏi trên bảng {cảnh: phong-clb}
+
+- [LỜI v5-phong-vy.1]
+
+### v5-phong-minh-anh — Vụ 5: Minh Anh nhớ lại ba khoản chị duyệt {cảnh: phong-clb}
+
+- [LỜI v5-phong-minh-anh.1]

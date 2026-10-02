@@ -5,7 +5,10 @@
 ### n4-mo — Sáng ngày 4: nộp hai mã {cảnh: phong-clb}
 
 - [LỜI n4-mo.1]
-- [ĐI TỚI n4-ctsv]
+- [KHÁM PHÁ kp-bd-n4 · bản đồ]
+  - ghim:toa-hanh-chinh · x 21% · y 54% · rộng 5% → n4-ctsv · dấu: ! · có: co-lan, co-hanh · nhãn: Phòng Công tác sinh viên
+  - ghim:toa-b · x 48% · y 29% · rộng 5% → n4-bd-toa-b · dấu: ? · có: bac-tu · nhãn: Sảnh tòa B
+
 
 ### n4-ctsv — CTSV tra sổ niêm phong {cảnh: phong-ctsv}
 
@@ -26,3 +29,7 @@
 ### n4-ve — Về phòng CLB {cảnh: phong-clb}
 
 - [LỜI n4-ve.1]
+
+### n4-bd-toa-b — Bản đồ ngày 4 (tùy chọn): bác Thịnh kể có người xuống xem hộp {cảnh: sanh-toa-b}
+
+- [LỜI n4-bd-toa-b.1]

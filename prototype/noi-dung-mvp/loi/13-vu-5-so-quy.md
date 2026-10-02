@@ -211,3 +211,13 @@
 - **ha-vy** (thinking): Thầy hỏi "căn cứ vào đâu" từ bao giờ nhỉ?
 - **player**: Trang cuối có thêm một dòng, vẫn chữ thầy: "Manh mối cũ, câu hỏi mới."
 
+## v5-phong-duy.1
+- **duy** (serious): Sổ này không phải của CLB mình. Thầy Quang cho xem tới đâu, tớ mở tới đó.
+
+## v5-phong-vy.1
+- **ha-vy** (thinking): Câu hỏi trên bảng: khoản chi nào ghi vào quỹ của mình?
+- **ha-vy** (neutral): Tiền thì không nói dối, nhưng sổ ghi tiền là do người viết. Xem ai ký từng dòng.
+
+## v5-phong-minh-anh.1
+- **minh-anh** (neutral): Từ đầu kỳ chị duyệt đúng ba khoản: giấy in, mực, bìa hồ sơ. Khoản nào cũng dưới hai trăm nghìn.
+- **minh-anh** (worried): Nếu sổ ghi nhiều hơn thế thì có khoản chị chưa từng nhìn thấy.

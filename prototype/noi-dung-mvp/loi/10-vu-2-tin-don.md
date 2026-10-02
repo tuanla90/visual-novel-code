@@ -28,7 +28,10 @@
 - **minh-anh** (neutral): Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem.
 
 ## tin-gap-nam.1
-- **narrator**: Xưởng của CLB Robotics nằm cuối dãy nhà văn hóa. Một cậu đang ngồi dán nhãn hộp linh kiện, ngẩng lên khi thấy cả nhóm.
+- **narrator**: Xưởng của CLB Robotics nằm cuối dãy nhà văn hóa. Một cậu đang dán nhãn hộp linh kiện, ngẩng lên khi thấy cả nhóm.
+- **ha-vy** (thinking): Người lạ. Nhìn trước đã, hỏi sau.
+
+## tin-gap-nam.1b
 - **nam** (neutral): Các cậu tìm ai? Ban chủ nhiệm chiều nay đi họp cả rồi.
 - **player**: Bọn tớ bên CLB Thám Tử. Kênh của Robotics do ai trực thế?
 - **nam** (neutral): Tớ. Tớ là Nam. Bài tuyển thành viên, lịch xưởng, đều tớ đăng.
@@ -125,3 +128,35 @@
 - **ha-vy** (thinking): Khoan. Mật khẩu thì cả ban chủ nhiệm đều biết mà.
 - **duy** (neutral): Tớ thì chờ thêm một nguồn nữa rồi mới nói.
 - [THẺ CHỮ] **narrator**: Một tài khoản chưa phải là một con người. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
+
+## tin-phong-duy.1
+- **duy** (neutral): Bản xuất của cô Lan tớ nạp vào máy rồi. Ngồi vào đi.
+
+## tin-phong-vy.1
+- **ha-vy** (thinking): Câu hỏi tớ ghim rồi: những tin nào mang đúng câu ấy?
+- **ha-vy** (neutral): Tin đồn cũng để lại dấu chân: giờ gửi, tài khoản gửi. Đếm dấu chân trước, chưa đọc tên ai vội.
+
+## tin-phong-tung.1
+- **tung** (worried): Trưa nay ở căng tin, hai bàn liền nhắc chuyện này. Mà chẳng ai nói được bọn mình soi cái gì.
+- **tung** (chi-tay): Tớ cá là đa số chỉ bấm chuyển tiếp chứ có đọc đâu.
+
+## tin-phong-minh-anh.1
+- **minh-anh** (neutral): Cô Lan cho bản xuất này vì toàn tin công khai. Thứ gì không công khai thì chị phải đứng ra xin, và phải có căn cứ.
+- **minh-anh** (serious): Mình bị đồn là soi dữ liệu. Vậy càng phải tra đúng thứ mình được phép tra.
+
+## tin-bd-cang-tin.1
+- **narrator**: Căng tin giờ tan học. Bàn nào cũng có người cúi vào điện thoại.
+- **tung** (worried): Kia, lại có người vừa bấm chuyển tiếp cái tin ấy.
+- **ha-vy** (neutral): Chuyển tiếp thì dễ. Mình đi tìm người gửi đầu tiên.
+
+## tin-soi-hop.1
+- **player**: Hộp các tông đựng linh kiện, túi nào cũng dán nhãn.
+- **ha-vy** (thinking): Người giữ sổ sách của xưởng. Chuyện giấy tờ, giờ giấc thì hỏi cậu này.
+
+## tin-soi-but.1
+- **player**: Bút dạ còn mở nắp.
+- **tung** (neutral): Đang dán nhãn dở. Mình tới bất ngờ, cậu ấy không chuẩn bị gì trước.
+
+## tin-soi-tay-ao.1
+- **player**: Tay áo khoác xắn tới khuỷu.
+- **ha-vy** (neutral): Người làm việc ở xưởng, không phải người ngồi họp.

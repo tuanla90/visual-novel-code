@@ -7,6 +7,9 @@
 - [LỜI v3-mo.1]
 - [HẬU QUẢ] mở manh mối clue-kenh-robotics
 - [LỜI v3-mo.2]
+- [KHÁM PHÁ kp-bd-v3 · bản đồ]
+  - ghim:xuong · x 21% · y 16% · rộng 5% → v3-xuong · dấu: ! · có: nam · nhãn: Xưởng Robotics
+  - ghim:thu-vien · x 62% · y 40% · rộng 5% → v3-bd-thu-vien · dấu: ? · nhãn: Thư viện
 - [ĐI TỚI v3-xuong]
 
 ### v3-xuong — Xưởng Robotics: Nam mở bản xuất bài đăng của kênh {cảnh: xuong-robot}
@@ -81,3 +84,7 @@
 - [HẬU QUẢ] mở manh mối clue-giao-chia, mở manh mối clue-thao-in-so-do
 - [LỜI v3-chia.2]
 - [KẾT THÚC]
+
+### v3-bd-thu-vien — Bản đồ Vụ 3 (tùy chọn): ghé thư viện {cảnh: thu-vien}
+
+- [LỜI v3-bd-thu-vien.1]

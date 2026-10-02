@@ -3,6 +3,7 @@
 <!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/04-ngay-4.md. [DÀN DỰNG] không hiện cho người chơi. Câu hỏi [RẼ NHÁNH] nằm ở khung. Thầy Khải không nói tài khoản là của ai (tên chỉ đến từ dữ liệu). -->
 
 ## n4-mo.1
+> NHIỆM VỤ: Mang hai mã sang Phòng Công tác sinh viên
 - [THẺ CHỮ] **narrator**: Ngày 4 — Thứ Sáu
 - **minh-anh** (neutral): Hai mã, kèm căn cứ: hai lớp, chữ H, cách lọc ra. Chị ghi cả vào đơn rồi. Các em mang sang Phòng Công tác sinh viên nhé.
 
@@ -43,3 +44,8 @@
 - **ha-vy** (neutral): Chị ơi, sổ niêm phong có mã của Hoài. Mã của Hiếu thì không.
 - **minh-anh** (neutral): Nói có sách, mách có chứng: đến đây đủ để nói ai nộp, chưa đủ để nói ai viết.
 - **tung** (worried): Còn thư ấy in ở đâu thì vẫn chưa ai biết…
+
+## n4-bd-toa-b.1
+- **bac-tu** (neutral): Sáng nay có cậu đeo kính bên Hội xuống đứng nhìn cái hộp một lúc rồi đi. Không hỏi bác câu nào.
+- **tung** (thinking): Anh Quân đấy bác ạ.
+- **ha-vy** (neutral): Anh ấy kiểm bọn mình, và kiểm cả cái hộp. Cẩn thận như thế thì mình càng phải có căn cứ.
