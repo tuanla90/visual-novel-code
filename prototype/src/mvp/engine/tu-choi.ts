@@ -7,7 +7,7 @@
  * nên Lưu/Nạp và phần chơi tiếp không có gì đặc biệt.
  */
 import type { KichBanMvp } from '../../content/mvp/types';
-import { coTrongHoSo, khungNhin, TEN_MAC_DINH, taoTrangThai, xuLy, type HanhDongMvp, type KhungNhinMvp } from './may';
+import { canGioiThieu, coTrongHoSo, khungNhin, TEN_MAC_DINH, taoTrangThai, xuLy, type HanhDongMvp, type KhungNhinMvp } from './may';
 import type { TrangThaiMvp } from './trang-thai';
 
 /** Chiến thuật chơi tự động: chọn gì ở danh sách địa điểm / rẽ nhánh / câu hỏi. */
@@ -99,6 +99,9 @@ export function choiTuDong(
       s = xuLy(kb, s, { type: 'sang-vu-sau' });
       continue;
     }
+    // Người chơi thật đóng thẻ "Nhân vật mới" ở câu tự xưng; máy tự chơi cũng ghi nhận, kẻo sau khi nhảy thẻ tên còn là cách gọi tạm.
+    const gioiThieu = canGioiThieu(kb, s, kn);
+    if (gioiThieu) s = xuLy(kb, s, { type: 'da-gioi-thieu', nhanVat: gioiThieu });
     const hd = hanhDongTuDong(s, kn, ct);
     const sau = xuLy(kb, s, hd);
     if (sau === s) throw new Error(`Hành động ${hd.type} bị từ chối ở khung nhìn ${kn.kind} (ngày ${s.ngay}, khung ${s.khung})`);

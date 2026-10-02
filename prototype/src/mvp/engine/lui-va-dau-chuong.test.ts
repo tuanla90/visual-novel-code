@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { taoKhoMvp } from '../store/kho-mvp';
-import { khungNhin } from './may';
+import { khungNhin, tenNguoiNoi } from './may';
 import { dauChuongMvp, nhayToiDauChuong } from './tu-choi';
 
 const kb = KICH_BAN_MVP as unknown as KichBanMvp;
@@ -57,6 +57,12 @@ describe('nhảy tới đầu chương', () => {
     const chuong = ds.find((c) => c.id === id);
     expect(chuong?.toi(s)).toBe(true);
     expect(khungNhin(kb, s).kind).not.toBe('error');
+  });
+
+  it('nhân vật đã gặp trên đường tới chương được ghi là đã giới thiệu (thẻ tên là tên thật)', () => {
+    const s = nhayToiDauChuong(kb, 'hop', 1);
+    for (const ma of ['tung', 'minh-anh', 'ha-vy', 'duy', 'bac-tu', 'chu-cuong', 'co-hanh', 'co-lan', 'quan']) expect(s.daGioiThieu ?? []).toContain(ma);
+    expect(tenNguoiNoi(kb, 'tung', s)).toBe('Tùng');
   });
 
   it('mã lạ → ném lỗi', () => {
