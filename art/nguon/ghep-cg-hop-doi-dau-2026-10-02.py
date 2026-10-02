@@ -50,16 +50,24 @@ def hao_quang(lop: Image.Image, cao: int, x_giua: float, y_dinh: float) -> Image
 
 
 def main(ten_nvc: str) -> None:
+    """Bản user chốt 02/10 tối: nền + Quân + hào quang lấy nguyên từ ảnh user tự sửa trên Topview (đã xóa nhân vật chính cũ,
+    lớp g2-jj-nen-quan), chỉ dán nhân vật chính mới (dáng Jotaro) vào, chân chạm mép sàn."""
+    nen = Image.open(J / 'g2-jj-nen-quan.png').convert('RGBA').resize((W, H), Image.LANCZOS)
+    dat(nen, nguoi(ten_nvc), cao=round(H * 0.62), x_giua=0.795, y_dinh=0.25)
+    ra = GOC / 'art/nguon/topview-2026-10-01/g2/g2-cg-hop-doi-dau.png'
+    nen.convert('RGB').save(ra, optimize=True)
+    print(ra)
+
+
+def main_ba_lop(ten_nvc: str) -> None:
+    """Bản trước đó (không dùng): ghép Quân lớp riêng + hào quang tự vẽ + nền trống."""
     nen = Image.open(J / 'g2-jj-nen.png').convert('RGBA').resize((W, H), Image.LANCZOS)
     quan, nvc = nguoi('g2-jj-quan-l2'), nguoi(ten_nvc)
-    # Bố cục khung gốc: người tiền cảnh chiếm nửa trái, đầu sát mép trên, chân tràn mép dưới; người kia ở 1/3 phải.
     q = dict(cao=round(H * 1.0), x_giua=0.335, y_dinh=0.0)
     nen.alpha_composite(hao_quang(quan, **q))
     dat(nen, nvc, cao=round(H * 0.68), x_giua=0.82, y_dinh=0.16)
     dat(nen, quan, **q)
-    ra = GOC / 'art/nguon/topview-2026-10-01/g2/g2-cg-hop-doi-dau.png'
-    nen.convert('RGB').save(ra, optimize=True)
-    print(ra)
+    nen.convert('RGB').save(GOC / 'art/nguon/topview-2026-10-01/luot-2/g2-cg-hop-doi-dau-ba-lop.png', optimize=True)
 
 
 if __name__ == '__main__':
