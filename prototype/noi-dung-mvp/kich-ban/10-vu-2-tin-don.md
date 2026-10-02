@@ -18,6 +18,7 @@
 - [KHÁM PHÁ kp-bd-v2 · bản đồ]
   - ghim:xuong · x 21% · y 24% · rộng 5% → tin-gap-nam · dấu: ! · nhãn: Xưởng Robotics
   - ghim:cang-tin · x 88% · y 41% · rộng 5% → tin-bd-cang-tin · dấu: ? · nhãn: Căng tin
+  - ghim:tra-da · x 41% · y 86% · rộng 5% → tin-bd-tra-da · dấu: ? · có: ba-lua · nhãn: Quán trà đá
 - [ĐI TỚI tin-gap-nam]
 
 ### tin-gap-nam — Xưởng Robotics: gặp Nam; lấy phiếu làm nguồn, tìm tin gốc {cảnh: xuong-robot}
@@ -113,6 +114,12 @@
 ### tin-bd-cang-tin — Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học {cảnh: cang-tin}
 
 - [LỜI tin-bd-cang-tin.1]
+
+### tin-bd-tra-da — Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ {cảnh: tra-da}
+
+- [LỜI tin-bd-tra-da.1]
+- [HẬU QUẢ] mở manh mối clue-tra-da-2
+- [LỜI tin-bd-tra-da.2]
 
 ### tin-soi-hop — Quan sát Nam: cái hộp linh kiện {cảnh: xuong-robot}
 

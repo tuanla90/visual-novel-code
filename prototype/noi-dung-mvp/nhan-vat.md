@@ -68,7 +68,7 @@
 - Vai: Bảo vệ giảng đường B. Cùng cô phụ trách mở hộp kiến nghị lúc 9h sáng thứ Hai.
 - Biểu cảm: neutral, smile
 - Danh xưng: Bảo vệ giảng đường B
-- Lịch: Trực sảnh tòa B từ thứ Hai tới thứ Bảy, mở cửa 7 giờ sáng, khóa cửa 9 giờ tối. Chủ nhật chỉ ghé buổi tối để khóa cửa.
+- Lịch: Trực sảnh tòa B từ thứ Hai tới thứ Bảy, mở cửa 7 giờ sáng, khóa các phòng học 9 giờ tối; lối lên thư viện tầng ba để tới 11 giờ đêm rồi mới khóa sảnh. Chủ nhật chỉ ghé buổi tối để khóa cửa.
 - Câu nói: Mép hộp sắc đấy, đừng thò tay vào.
 - Giới thiệu: Trực ở chân cầu thang tòa B. Ít lời, giờ giấc đâu ra đấy, việc gì không tận mắt thấy thì không nói.
 
@@ -155,6 +155,15 @@
 - Danh xưng: Kỹ thuật CLB Robotics
 - Câu nói: Chị không chối.
 - Giới thiệu: Lo kỹ thuật của xưởng. Thẳng, hơi cẩu thả với chìa khóa.
+
+### ba-lua — Bà Lụa
+- Vai: Bán trà đá ở gốc cây ngoài cổng chính từ hồi phòng CLB còn là kho. Kể bốn mẩu chuyện về "cậu trà nóng" (thầy Quang thời sinh viên, bà không nhớ tên), song song với bốn mẩu giấy trong sổ CLB. Xuất hiện ở cảnh sau kết thật Vụ 1 và ở ghim "Quán trà đá" trên bản đồ Vụ 2, 3, 5.
+- Biểu cảm: neutral, smile
+- Xuất hiện từ: ngày họp
+- Danh xưng: Bán trà đá cổng trường
+- Lịch: Chiều nào cũng dọn hàng ở gốc cây ngoài cổng chính, ngồi tới chín giờ tối. Sáng thứ Bảy, Chủ nhật bán từ sớm.
+- Câu nói: Khách của bà, bà nhớ cốc chứ nhớ gì tên.
+- Giới thiệu: Bán trà đá ngoài cổng chính đã hai chục năm. Sinh viên khóa nào ngồi ghế nào, gọi cốc gì, bà nhớ hết; chỉ tên là không nhớ.
 
 ### co-phu-trach — Cô phụ trách hộp kiến nghị
 - Vai: Giữ sổ niêm phong. Chỉ xuất hiện qua lời kể và tài liệu.

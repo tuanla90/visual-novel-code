@@ -10,6 +10,7 @@
 - [KHÁM PHÁ kp-bd-v3 · bản đồ]
   - ghim:xuong · x 21% · y 24% · rộng 5% → v3-xuong · dấu: ! · có: nam · nhãn: Xưởng Robotics
   - ghim:thu-vien · x 62% · y 40% · rộng 5% → v3-bd-thu-vien · dấu: ? · nhãn: Thư viện
+  - ghim:tra-da · x 41% · y 86% · rộng 5% → v3-bd-tra-da · dấu: ? · có: ba-lua · nhãn: Quán trà đá
 - [ĐI TỚI v3-xuong]
 
 ### v3-xuong — Xưởng Robotics: Nam mở bản xuất bài đăng của kênh {cảnh: xuong-robot}
@@ -88,3 +89,9 @@
 ### v3-bd-thu-vien — Bản đồ Vụ 3 (tùy chọn): ghé thư viện {cảnh: thu-vien}
 
 - [LỜI v3-bd-thu-vien.1]
+
+### v3-bd-tra-da — Bản đồ Vụ 3 (tùy chọn): quán trà đá, chuyện một kết luận sai {cảnh: tra-da}
+
+- [LỜI v3-bd-tra-da.1]
+- [HẬU QUẢ] mở manh mối clue-tra-da-3
+- [LỜI v3-bd-tra-da.2]

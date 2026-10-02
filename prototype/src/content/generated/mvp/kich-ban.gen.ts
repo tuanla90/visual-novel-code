@@ -188,7 +188,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
-        "lich": "Trực sảnh tòa B từ thứ Hai tới thứ Bảy, mở cửa 7 giờ sáng, khóa cửa 9 giờ tối. Chủ nhật chỉ ghé buổi tối để khóa cửa.",
+        "lich": "Trực sảnh tòa B từ thứ Hai tới thứ Bảy, mở cửa 7 giờ sáng, khóa các phòng học 9 giờ tối; lối lên thư viện tầng ba để tới 11 giờ đêm rồi mới khóa sảnh. Chủ nhật chỉ ghé buổi tối để khóa cửa.",
         "danhXung": "Bảo vệ giảng đường B",
         "nam": null,
         "nganh": null,
@@ -428,6 +428,29 @@ const GOC = {
       }
     },
     {
+      "id": "ba-lua",
+      "ten": "Bà Lụa",
+      "hoTen": null,
+      "trongCau": "Bà Lụa",
+      "vai": "Bán trà đá ở gốc cây ngoài cổng chính từ hồi phòng CLB còn là kho. Kể bốn mẩu chuyện về \"cậu trà nóng\" (thầy Quang thời sinh viên, bà không nhớ tên), song song với bốn mẩu giấy trong sổ CLB. Xuất hiện ở cảnh sau kết thật Vụ 1 và ở ghim \"Quán trà đá\" trên bản đồ Vụ 2, 3, 5.",
+      "bieuCam": [
+        "neutral",
+        "smile"
+      ],
+      "xuatHienTu": {
+        "kind": "ngay-hop"
+      },
+      "chiQuaLoiKe": false,
+      "gioiThieu": {
+        "lich": "Chiều nào cũng dọn hàng ở gốc cây ngoài cổng chính, ngồi tới chín giờ tối. Sáng thứ Bảy, Chủ nhật bán từ sớm.",
+        "danhXung": "Bán trà đá cổng trường",
+        "nam": null,
+        "nganh": null,
+        "cauNoi": "Khách của bà, bà nhớ cốc chứ nhớ gì tên.",
+        "loi": "Bán trà đá ngoài cổng chính đã hai chục năm. Sinh viên khóa nào ngồi ghế nào, gọi cốc gì, bà nhớ hết; chỉ tên là không nhớ."
+      }
+    },
+    {
       "id": "co-phu-trach",
       "ten": "Cô phụ trách hộp kiến nghị",
       "hoTen": null,
@@ -535,6 +558,26 @@ const GOC = {
     {
       "id": "thu-vien",
       "ten": "Thư viện trường",
+      "anhNen": null
+    },
+    {
+      "id": "tra-da",
+      "ten": "Quán trà đá cổng trường",
+      "anhNen": null
+    },
+    {
+      "id": "sanh-toa-b-dem",
+      "ten": "Sảnh tòa B",
+      "anhNen": null
+    },
+    {
+      "id": "phong-ktx-dem",
+      "ten": "Phòng KTX 408",
+      "anhNen": null
+    },
+    {
+      "id": "san-dem",
+      "ten": "Sân trường",
       "anhNen": null
     }
   ],
@@ -688,6 +731,16 @@ const GOC = {
         "ngay": "2024-11-08",
         "tieuDeKet": "Một khoản hoàn, bản xuất ghi hai lần",
         "loiKet": "Phiếu PH-04 có hai dòng hoàn tiền cùng mã tham chiếu; biên nhận ngân hàng xác nhận một lần hoàn 60.000 đồng. Báo cáo được sửa, bản cũ được giữ. Ai nhập trùng thì bảng không ghi."
+      },
+      {
+        "id": "dan-lac",
+        "ten": "Một lần dẫn lạc",
+        "chuoi": "p-lac-mo",
+        "nguoiGiao": "tung",
+        "moSau": "vu3",
+        "ngay": "2024-10-11",
+        "tieuDeKet": "Chín lượt, một lượt nhầm",
+        "loiKet": "Sổ đón ghi chín lượt Tùng dẫn: tám lượt tới ký túc xá, một lượt tới nhà xe, là lượt của Hoài. Sổ chỉ ghi nơi tới; vì sao nhầm là điều Tùng tự nhớ lại và tự nói ra."
       }
     ]
   },
@@ -4081,6 +4134,164 @@ const GOC = {
         },
         {
           "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Thế thì đi. Trà đá. Tớ hứa rồi."
+        },
+        {
+          "type": "goto",
+          "to": "ket-tra-da"
+        }
+      ]
+    },
+    {
+      "id": "ket-tra-da",
+      "title": "Sau kết thật: Tùng khao trà đá; bà Lụa kể về cái tủ sắt",
+      "canh": "tra-da",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Gốc cây ngoài cổng chính. Một cái ô bạc màu, mấy cái ghế nhựa xanh đỏ, cái ấm nhôm to bằng cái xô."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Bà ơi, cho cháu ba trà đá! Hôm nay cháu khao."
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "smile",
+          "text": "Ba cốc chín nghìn. Khao thế thì bà cũng khao được."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Cậu cá thua tớ bao nhiêu lần rồi, trả bằng trà đá thì còn lâu mới hết."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Lần này tớ không cá. Hôm ở phòng máy tớ nói bừa một câu về Hoài. Suýt nữa bạn ấy mang tiếng vì cái mồm tớ."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Cậu nói \"chắc Hoài in\". Nhật ký in thì nói khác."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Ừ. Giờ gặp bạn ấy tớ chẳng biết mở mồm thế nào."
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "neutral",
+          "text": "Mấy đứa ở cái phòng tầng hai nhà câu lạc bộ đấy hả? Phòng có cái tủ sắt."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Vâng ạ. Sao bà biết ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "smile",
+          "text": "Hồi bà mới dọn hàng ra đây, phòng ấy còn là kho chổi. Có một cậu sinh viên xin được chìa, tự tay khuân cái tủ sắt lên. Chiều nào xong việc cũng ra đây ngồi ghi ghi chép chép."
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "smile",
+          "text": "Hè cũng như đông, cậu ấy chỉ gọi trà nóng. Ngồi quán trà đá mà gọi trà nóng thì bà nhớ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Bà có nhớ tên anh ấy không ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "smile",
+          "text": "Khách của bà, bà nhớ cốc chứ nhớ gì tên. Bà gọi là \"cậu trà nóng\"."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-tra-da-1"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Cái tủ ấy! \"Căn phòng này giữ nhiều hơn em nghĩ.\""
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Một người kể, chưa có giấy tờ gì. Cứ ghi lại đã, ghi rõ là lời kể."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tớ ghi vào sổ. Nguồn: bà Lụa, quán trà đá."
+        },
+        {
+          "type": "note",
+          "text": "Bên kia đường, Hoài ôm cặp đi ngang qua cổng. Tùng đứng bật dậy, suýt đổ cốc."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Hoài ơi! Tớ… hôm trước tớ…"
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "nervous",
+          "text": "Tớ chào các cậu. Tớ phải về kẻo muộn."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hoài gật đầu một cái rồi đi nhanh hơn."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Cậu vừa xin lỗi hay vừa dọa bạn ấy thế?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Tớ còn chưa nói xong chữ \"xin\"."
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "smile",
+          "text": "Xin lỗi thì đừng gọi giật qua đường. Mai kia mời con bé cốc trà."
+        },
+        {
+          "type": "line",
           "speaker": "narrator",
           "display": "card",
           "text": "SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu."
@@ -4339,6 +4550,19 @@ const GOC = {
               "sau": [],
               "nhan": "Căng tin",
               "dau": "phu"
+            },
+            {
+              "sprite": "ghim:tra-da",
+              "x": 41,
+              "y": 86,
+              "rong": 5,
+              "chuoi": "tin-bd-tra-da",
+              "sau": [],
+              "nhan": "Quán trà đá",
+              "dau": "phu",
+              "co": [
+                "ba-lua"
+              ]
             }
           ]
         },
@@ -5240,6 +5464,93 @@ const GOC = {
       ]
     },
     {
+      "id": "tin-bd-tra-da",
+      "title": "Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ",
+      "canh": "tra-da",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Quán trà đá cổng trường, giờ tan học. Khách vừa vãn, ghế nhựa còn trống mấy cái."
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "smile",
+          "text": "Mấy đứa ở phòng tầng hai nhà câu lạc bộ, cái phòng có tủ sắt, phải không? Ngồi đi, ba trà đá."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Bà nhớ bọn cháu này!"
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "neutral",
+          "text": "Bà nhớ cái phòng. Hồi xưa có một cậu sinh viên trông phòng ấy, chiều nào cũng ra đây. Hè cũng gọi trà nóng nên bà gọi là \"cậu trà nóng\"."
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "neutral",
+          "text": "Cậu ấy có hai cuốn sổ. Một cuốn bìa cứng đã sờn, một cuốn mới tinh. Ngồi đúng cái ghế cháu đang ngồi, chép từ cuốn cũ sang cuốn mới, chép cả tháng trời."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Chép lại cả cuốn ạ? Sao anh ấy không dùng luôn cuốn cũ?"
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "smile",
+          "text": "Bà cũng hỏi thế. Cậu ấy bảo: \"Cuốn cũ có chỗ cháu không muốn người sau chép theo.\""
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chép lại mà bỏ đi một chỗ. Tớ muốn biết chỗ bị bỏ."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-tra-da-2"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "Bà ơi, cho cháu thêm một cốc mang đi. Ít đá ạ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Mang cho ai?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Thì… thư viện giờ này có người hay ngồi học. Thôi, để hôm khác. Tớ chưa nghĩ ra câu mở đầu."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Câu mở đầu là \"xin lỗi\". Có hai chữ."
+        }
+      ]
+    },
+    {
       "id": "tin-soi-hop",
       "title": "Quan sát Nam: cái hộp linh kiện",
       "canh": "xuong-robot",
@@ -5406,6 +5717,19 @@ const GOC = {
               "sau": [],
               "nhan": "Thư viện",
               "dau": "phu"
+            },
+            {
+              "sprite": "ghim:tra-da",
+              "x": 41,
+              "y": 86,
+              "rong": 5,
+              "chuoi": "v3-bd-tra-da",
+              "sau": [],
+              "nhan": "Quán trà đá",
+              "dau": "phu",
+              "co": [
+                "ba-lua"
+              ]
             }
           ]
         },
@@ -6354,6 +6678,81 @@ const GOC = {
           "speaker": "tung",
           "expression": "thinking",
           "text": "Vào ra đều phải quẹt thẻ nhỉ. Thế là cái cửa này nhớ giờ của từng người."
+        }
+      ]
+    },
+    {
+      "id": "v3-bd-tra-da",
+      "title": "Bản đồ Vụ 3 (tùy chọn): quán trà đá, chuyện một kết luận sai",
+      "canh": "tra-da",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Quán trà đá, đầu giờ chiều. Nắng xiên qua tán cây, ghế còn trống nhiều."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Bà ơi, lỡ nói sai cho một người rồi thì làm thế nào ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "neutral",
+          "text": "Hỏi đúng người rồi đấy. Ngày xưa có cậu sinh viên trông cái phòng tủ sắt của các cháu, bà gọi là \"cậu trà nóng\". Có một dạo cậu ấy ngồi đây cả buổi chiều, sổ mở mà không viết chữ nào."
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "neutral",
+          "text": "Bà hỏi thì bảo: \"Cháu kết luận sai cho một người, bà ạ. Cả câu lạc bộ tin cháu.\""
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Rồi anh ấy làm gì ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "smile",
+          "text": "Hôm sau dẫn một cậu khác ra đây, mời cốc trà, xin lỗi ngay trước mặt bà. Xong ngồi gạch cái gì đó trong sổ, gạch mạnh tới rách cả giấy."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Kết luận sai, rồi tự tay gạch. Ghi lại. Vẫn là lời kể."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-tra-da-3"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "Mời trà, xin lỗi trước mặt người khác. Nghe thì dễ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Cậu đang nghĩ tới Hoài à?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Tớ có nói gì đâu. …Ừ."
         }
       ]
     },
@@ -7376,6 +7775,44 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "neutral",
           "text": "Em cảm ơn hai cô ạ."
+        },
+        {
+          "type": "task",
+          "text": "Mang bản xuất sổ quỹ về phòng CLB"
+        },
+        {
+          "type": "explore",
+          "id": "kp-bd-v5",
+          "kieu": "ban-do",
+          "diem": [
+            {
+              "sprite": "ghim:nha-clb",
+              "x": 45,
+              "y": 17,
+              "rong": 5,
+              "chuoi": "v5-so-quy",
+              "sau": [],
+              "nhan": "Phòng CLB",
+              "dau": "chinh",
+              "co": [
+                "duy",
+                "minh-anh"
+              ]
+            },
+            {
+              "sprite": "ghim:tra-da",
+              "x": 41,
+              "y": 86,
+              "rong": 5,
+              "chuoi": "v5-bd-tra-da",
+              "sau": [],
+              "nhan": "Quán trà đá",
+              "dau": "phu",
+              "co": [
+                "ba-lua"
+              ]
+            }
+          ]
         },
         {
           "type": "goto",
@@ -9250,6 +9687,98 @@ const GOC = {
       ]
     },
     {
+      "id": "v5-bd-tra-da",
+      "title": "Bản đồ Vụ 5 (tùy chọn): quán trà đá, \"cậu trà nóng\" giờ ở đâu",
+      "canh": "tra-da",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Quán trà đá, buổi trưa. Bà Lụa đang tráng cốc."
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "smile",
+          "text": "Hôm nay mặt đứa nào cũng căng thế. Uống đi rồi hẵng tính."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Bà ơi, ngày xưa có một anh sinh viên trông cái phòng tủ sắt của bọn cháu, hay ra đây gọi trà nóng. Sau này bà có gặp lại anh ấy không ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "smile",
+          "text": "Cậu trà nóng ấy hả? Gặp suốt. Giờ đi làm ngay trong trường, sơ mi cài kín cổ, tóc muối tiêu rồi. Sáng nào đi ngang cũng gật đầu chào bà, thỉnh thoảng vẫn ngồi xuống gọi cốc trà nóng."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Người ấy vẫn ở trong trường ạ? Là ai hả bà?"
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "neutral",
+          "text": "Bà nhớ cốc, không nhớ tên. Mà cậu ấy có một câu cửa miệng, sinh viên ra đây toàn nhại lại: \"Căn cứ vào đâu?\""
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Mình vừa nghe đúng câu ấy xong."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Tớ cá là…"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Đừng cá. Một lời kể với một câu cửa miệng thì chưa đủ để ghim tên ai lên bảng."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tớ ghi lại. Lời kể, chưa đối chiếu với gì cả."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-tra-da-4"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Bà cho cháu một cốc ít đá mang đi ạ."
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "smile",
+          "text": "Cho con bé hay ôm cặp chứ gì. Lần này có câu mở đầu chưa?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Cháu có rồi ạ. Hai chữ."
+        }
+      ]
+    },
+    {
       "id": "v2-mo",
       "title": "Mở Vụ 2: hồ sơ cuối kỳ",
       "canh": "phong-clb",
@@ -10149,6 +10678,550 @@ const GOC = {
           "type": "end"
         }
       ]
+    },
+    {
+      "id": "p-lac-mo",
+      "title": "Thư viện tối thứ Sáu: Tùng không học nổi",
+      "canh": "thu-vien",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Việc của Tùng — Thứ Sáu, 11 tháng 10"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Gần mười một giờ đêm. Thư viện tầng ba giảng đường B còn lác đác vài bàn sáng đèn. Hà Vy đã về từ chín giờ."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng ngồi đối diện bạn, giở tập bản đồ trường ra rồi lại gập vào. Trang vở trước mặt cậu ấy vẫn trắng."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Cậu nhìn mỗi trang ấy nửa tiếng rồi đấy."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Tớ có đọc đâu. Hôm qua Hoài bảo tuần đầu tớ dẫn bạn ấy lạc sang tận nhà xe. Tớ còn cãi là \"chỉ sai tòa\". Về nghĩ lại thấy cãi thế kỳ quá."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Tớ nói bừa về bạn ấy một lần rồi. Lần này tớ muốn xin lỗi cho tử tế. Mà xin lỗi thì phải biết mình sai cái gì đã chứ."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Cậu không nhớ hôm ấy à?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "Tuần đầu tớ dẫn bao nhiêu lượt, nhớ sao nổi. Nhưng đội tình nguyện có sổ đón, lượt nào cũng ghi. Bản xuất nằm trong laptop tớ, ở phòng."
+        },
+        {
+          "type": "note",
+          "text": "Chuông báo thư viện đóng cửa. Đèn các dãy bàn tắt dần từ cuối phòng lên."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Mười một giờ rồi á? Cổng ký túc đóng mười một giờ mười lăm!"
+        },
+        {
+          "type": "task",
+          "text": "Về kịp ký túc xá trước giờ đóng cổng"
+        },
+        {
+          "type": "goto",
+          "to": "p-lac-sanh"
+        }
+      ]
+    },
+    {
+      "id": "p-lac-sanh",
+      "title": "Sảnh giảng đường B đã tắt đèn: bác Thịnh soi đèn pin",
+      "canh": "sanh-toa-b-dem",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hai đứa lao xuống cầu thang. Sảnh tầng một đã tắt đèn, chỉ còn ánh sáng hắt vào từ sân."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Chết, tập bản đồ! Tớ để trên bàn!"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Mai lấy."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Trong ấy có cả sơ đồ tớ vẽ tay. Mười giây thôi!"
+        },
+        {
+          "type": "note",
+          "text": "Tùng quay ngược lên cầu thang. Một vệt đèn pin quét ngang sảnh."
+        },
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "neutral",
+          "text": "Ai còn ở trên đấy? Thư viện đóng rồi, bác khóa sảnh bây giờ!"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tiếng chân Tùng rầm rập ba tầng lầu, đi lên rồi đi xuống. Vệt đèn pin đuổi theo sau lưng."
+        },
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "neutral",
+          "text": "Đứng lại bác xem thẻ! Mép bậc thang trơn đấy, đừng có chạy!"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Cháu chào bác ạ! Mai cháu lên trình thẻ!"
+        },
+        {
+          "type": "goto",
+          "to": "p-lac-chay"
+        }
+      ]
+    },
+    {
+      "id": "p-lac-chay",
+      "title": "Ra tới sân: tám phút nữa đóng cổng (nền là ảnh cảnh chạy, không hiện nhân vật đứng)",
+      "canh": "san-dem",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hai đứa lách qua cánh cửa sảnh còn hé, lao ra sân. Tùng giơ tập bản đồ lên như giơ cúp, chân vẫn không dừng."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cuối đường, chốt bảo vệ ký túc xá đã bật đèn pin. Chú Cường sắp kéo cổng."
+        },
+        {
+          "type": "branch",
+          "id": "r-chay",
+          "asker": {
+            "speaker": "narrator",
+            "text": "Mười một giờ bảy phút. Cổng ký túc đóng mười một giờ mười lăm. Chạy đường nào?"
+          },
+          "choices": [
+            {
+              "id": "tat",
+              "text": "Cắt qua sân bóng: tối nhưng gần.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "p-lac-tat"
+                }
+              ]
+            },
+            {
+              "id": "chinh",
+              "text": "Chạy đường chính: có đèn nhưng vòng.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "p-lac-chinh"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-lac-tat",
+      "title": "Cổng KTX: kịp giờ, giày đầy bùn",
+      "canh": "cong-ktx-dem",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Sân bóng tối om, cỏ ướt sương. Tùng chạy trước, tay cầm tập bản đồ mà không cần mở."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Bên trái có vũng nước, tránh ra! Qua cột gôn là rẽ phải!"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Mười một giờ mười hai. Cổng ký túc còn mở một cánh. Chú Cường đứng cạnh chốt, soi đèn pin xuống hai đôi giày bê bết bùn."
+        },
+        {
+          "type": "line",
+          "speaker": "chu-cuong",
+          "expression": "neutral",
+          "text": "Kịp giờ. Nhưng bùn thế kia thì đứng ngoài này chùi giày đã, rồi hẵng lên phòng."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Chú ơi, cháu là cháu chú mà."
+        },
+        {
+          "type": "line",
+          "speaker": "chu-cuong",
+          "expression": "smile",
+          "text": "Cháu chú thì chùi cả phần bậc thềm."
+        },
+        {
+          "type": "goto",
+          "to": "p-lac-phong"
+        }
+      ]
+    },
+    {
+      "id": "p-lac-chinh",
+      "title": "Cổng KTX: muộn một phút",
+      "canh": "cong-ktx-dem",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Đường chính sáng đèn nhưng vòng qua cả dãy nhà hành chính. Tùng vừa chạy vừa đếm giờ thành tiếng."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Mười một giờ mười sáu. Chú Cường đang kéo cánh cổng thứ hai, dừng tay khi thấy hai cái bóng lao tới."
+        },
+        {
+          "type": "line",
+          "speaker": "chu-cuong",
+          "expression": "neutral",
+          "text": "Muộn một phút. Vào đi, rồi ghi tên vào sổ về muộn."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Chú ơi, cháu là cháu chú mà."
+        },
+        {
+          "type": "line",
+          "speaker": "chu-cuong",
+          "expression": "smile",
+          "text": "Cháu chú thì ghi hai lần. Một lần cho chú, một lần cho mẹ cháu."
+        },
+        {
+          "type": "goto",
+          "to": "p-lac-phong"
+        }
+      ]
+    },
+    {
+      "id": "p-lac-phong",
+      "title": "Phòng 408: sổ đón của đội tình nguyện",
+      "canh": "phong-ktx-dem",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Phòng 408. Tùng bật laptop, ngồi khoanh chân trên giường, tóc còn bết mồ hôi."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "neutral",
+          "text": "Đây. Sổ đón tân sinh viên của đội tình nguyện. Mỗi lượt đón một dòng: ai đón, đón ai, đưa tới đâu."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Mà nó dài lắm, của cả đội, mấy năm liền. Tớ thì chỉ biết kéo chuột từ trên xuống."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Để tớ. Cho tớ mã sinh viên của cậu."
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-so-don"
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-ma-tung"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "neutral",
+          "text": "SV240251. Trong sổ, tình nguyện viên ghi bằng mã, tân sinh viên cũng ghi bằng mã."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Điện thoại rung. Tin nhắn của Hà Vy trong nhóm: \"Hai ông tướng về tới phòng chưa? Tra gì thì gửi phiếu lên đây, tớ với Duy xem.\""
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Sao Vy biết bọn mình định tra?"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Cậu kể với cả nhóm từ chiều rồi."
+        },
+        {
+          "type": "task",
+          "text": "Tìm các lượt đón do Tùng dẫn"
+        },
+        {
+          "type": "reminder",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "Sổ ghi tình nguyện viên bằng mã. Mã của tớ là SV240251."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-don-tung"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Chín lượt, trong hai ngày 7 và 8 tháng 9."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "Chín lượt. Thế trong chín lượt ấy tớ đưa người ta tới những đâu?"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Gom theo điểm đến rồi đếm là thấy."
+        },
+        {
+          "type": "task",
+          "text": "Gom chín lượt của Tùng theo điểm đến"
+        },
+        {
+          "type": "reminder",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "Chín lượt của tớ nằm trên phiếu rồi. Gom theo điểm đến, đếm mỗi nơi mấy lượt."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-don-noi-den"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Ký túc xá tám lượt. Nhà xe một lượt."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Một! Đúng một lượt nhà xe. Tớ có nhớ là mình đưa ai ra nhà xe đâu."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Lọc tiếp trên chín lượt, lấy đúng lượt ấy, xem mã tân sinh viên."
+        },
+        {
+          "type": "task",
+          "text": "Lượt nào Tùng đưa tới nhà xe, và đón ai?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "Trong chín lượt của tớ, lượt nào ghi điểm đến là nhà xe? Tớ cần mã của người tớ đón."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-nha-xe"
+            }
+          ]
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-don-lac"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Lượt LD-0247, Chủ nhật 8 tháng 9. Mã tân sinh viên SV240317."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "Mã này tớ thấy ở đâu rồi."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Trên phiếu hai mã hồi tháng Chín. Lê Thu Hoài, lớp BC24A."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Sáng Chủ nhật… Tớ nhớ rồi. Bạn ấy kéo cái vali to hơn người, hỏi đường nhỏ lắm. Tớ nghe ra \"nhà xe\", tưởng bạn ấy đi gửi xe, thế là dẫn thẳng ra đó. Tớ không hỏi lại."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Tám lượt kia tớ dẫn đúng, nên tớ cứ nghĩ mình không bao giờ sai."
+        },
+        {
+          "type": "question",
+          "id": "q-lac-ket-luan",
+          "asker": {
+            "speaker": "tung",
+            "text": "Thế trong lời xin lỗi, tớ được viết gì cho chắc?"
+          },
+          "choices": [
+            {
+              "id": "mot-luot",
+              "text": "Chín lượt cậu dẫn có đúng một lượt tới nhà xe, là lượt của Hoài. Sổ ghi nơi tới; vì sao tới đó là cậu tự nhớ ra.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "tung",
+                  "expression": "thinking",
+                  "text": "Sổ nói tớ sai ở lượt nào, tớ nói tớ sai vì sao. Hai phần ấy tớ viết riêng ra."
+                }
+              ]
+            },
+            {
+              "id": "kem",
+              "text": "Cậu dẫn đường kém, sổ ghi rõ rồi.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "tung",
+                  "expression": "gai-dau",
+                  "text": "Tám trên chín lượt tới đúng ký túc mà. Sai một lượt thì viết một lượt thôi."
+                }
+              ]
+            },
+            {
+              "id": "noi-nho",
+              "text": "Tại Hoài nói nhỏ quá, sổ cũng cho thấy thế.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "tung",
+                  "expression": "worried",
+                  "text": "Sổ có ghi ai nói to nói nhỏ đâu. Với lại người dẫn đường là tớ, hỏi lại là việc của tớ."
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng xé một trang vở, kê lên tập bản đồ, vẽ. Cổng chính, hàng cây, ký túc xá, một mũi tên to. Góc dưới ghi: \"Lần này không qua nhà xe. Tớ xin lỗi vì hôm ấy không hỏi lại. — Tùng, áo xanh.\""
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Có sến quá không?"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Thiếu một thứ. Vẽ thêm đường ra quán trà đá."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Trưa hôm sau, ở thư viện. Hoài mở tờ giấy, nhìn rất lâu, rồi gập lại kẹp vào vở."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "relieved",
+          "text": "Tớ cảm ơn cậu. Hôm ấy tớ nói bé quá, mà tớ cũng không dám hỏi lại."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "neutral",
+          "text": "Nhưng cậu vẽ thiếu cổng phụ. Đi cổng phụ gần hơn."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Cậu thuộc đường hơn cả tớ rồi à?"
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "neutral",
+          "text": "Lạc một lần thì nhớ lâu."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Đếm cho biết mình sai mấy lần. Lọc cho biết sai ở lượt nào. Còn vì sao sai thì phải tự nhớ, và tự nói ra."
+        },
+        {
+          "type": "end"
+        }
+      ]
     }
   ],
   "thuThach": {
@@ -10887,6 +11960,150 @@ const GOC = {
         "title": "Máy văn phòng xưởng: 3 đơn đêm mang tên Nam, 1 đơn ngày của Khánh",
         "description": "Kết quả: bốn đơn tạo từ máy văn phòng xưởng. Ba đơn ban đêm đứng tên Nam; một đơn ốc vít 10:15 sáng đứng tên Khánh, trưởng CLB, là người dùng máy đó hợp lệ ban ngày. Ba người có chìa phòng: Khánh, Bách, Thảo.",
         "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-don-tung": {
+      "id": "c-don-tung",
+      "tieuDe": "Sổ đón của đội tình nguyện",
+      "deBai": "Sổ đón ghi tình nguyện viên bằng mã sinh viên. Tùng đã dẫn những lượt nào?",
+      "manhMoiLienQuan": [
+        "clue-ma-tung"
+      ],
+      "mucTieuHoc": "Ôn lọc theo mã để ghim thành phiếu riêng của một người.",
+      "soDongKyVong": 9,
+      "sqlChuan": "SELECT ma_luot, ngay, ma_sv, diem_den FROM luot_don WHERE tinh_nguyen_vien = 'SV240251';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Không lượt nào. Mã của tớ viết đúng như trên giấy nhớ: SV240251."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 290
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả sổ, của cả đội mấy năm liền. Tớ chỉ cần các lượt tớ dẫn."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "thinking",
+              "text": "Chín lượt. Đúng hai ngày tớ mặc áo xanh."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-don-tung",
+        "title": "Chín lượt đón do Tùng dẫn",
+        "description": "Kết quả truy vấn: chín lượt Tùng dẫn trong hai ngày 07 và 08/09/2024, có mã tân sinh viên và điểm đến.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-don-noi-den": {
+      "id": "c-don-noi-den",
+      "tieuDe": "Lượt đón của Tùng, gom theo điểm đến",
+      "deBai": "Lấy phiếu chín lượt làm nguồn. Gom theo điểm đến, đếm mỗi nơi mấy lượt.",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": "Ôn gom và đếm: cái lạ hiện ra thành nhóm chỉ có một dòng.",
+      "soDongKyVong": 2,
+      "sqlChuan": "SELECT diem_den, COUNT(*) AS so_dong FROM @ev-don-tung GROUP BY diem_den;",
+      "kieuTrinhDung": "tong-hop",
+      "nguon": "ev-don-tung",
+      "nhomTheo": "diem_den",
+      "truyVanNapSan": null,
+      "phanUng": [],
+      "vatChung": {
+        "id": "ev-don-noi-den",
+        "title": "Ký túc xá 8 lượt, nhà xe 1 lượt",
+        "description": "Kết quả gom theo điểm đến: tám lượt tới ký túc xá, một lượt tới nhà xe. Phiếu đếm được số lượt, chưa nói lượt nhà xe là của ai.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-don-lac": {
+      "id": "c-don-lac",
+      "tieuDe": "Lượt tới nhà xe",
+      "deBai": "Trong chín lượt trên phiếu, lượt nào ghi điểm đến là nhà xe? Chép mã tân sinh viên ra giấy nhớ.",
+      "manhMoiLienQuan": [
+        "clue-nha-xe"
+      ],
+      "mucTieuHoc": "Ôn lọc tiếp trên phiếu đã ghim; bấm ô mã để mang sang lần đối chiếu sau.",
+      "soDongKyVong": 1,
+      "sqlChuan": "SELECT ma_luot, ngay, ma_sv FROM @ev-don-tung WHERE diem_den = 'NHA_XE';",
+      "kieuTrinhDung": "loc-tiep",
+      "nguon": "ev-don-tung",
+      "bamO": "ma_sv",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Không dòng nào. Trong sổ, nhà xe viết hoa, có gạch dưới, như trên giấy nhớ."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 9
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Vẫn đủ chín lượt. Chưa tách được lượt nhà xe ra."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "surprised",
+              "text": "Còn đúng một lượt. Ngày Chủ nhật."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-don-lac",
+        "title": "LD-0247: Tùng đưa SV240317 tới nhà xe",
+        "description": "Kết quả lọc tiếp trên phiếu chín lượt: lượt LD-0247 ngày 08/09/2024, tân sinh viên SV240317, điểm đến nhà xe. Sổ ghi nơi tới, không ghi vì sao.",
+        "giaTri": [
+          "SV240317"
+        ]
       },
       "ghiChu": []
     },
@@ -12262,6 +13479,50 @@ const GOC = {
       },
       "quotes": {}
     },
+    "clue-tra-da-1": {
+      "id": "clue-tra-da-1",
+      "loai": "clue",
+      "heading": "[Cậu trà nóng và cái tủ sắt]",
+      "fields": {
+        "Tiêu đề": "Chuyện bà Lụa kể, lần một",
+        "Nguồn": "Lời kể của Bà Lụa, quán trà đá cổng trường",
+        "Nội dung": "Phòng CLB từng là kho chổi. Một sinh viên xin được chìa, tự khuân cái tủ sắt lên, chiều nào cũng ra quán ngồi ghi chép, hè cũng gọi trà nóng. Bà không nhớ tên. Lời kể, chưa đối chiếu."
+      },
+      "quotes": {}
+    },
+    "clue-tra-da-2": {
+      "id": "clue-tra-da-2",
+      "loai": "clue",
+      "heading": "[Hai cuốn sổ]",
+      "fields": {
+        "Tiêu đề": "Chuyện bà Lụa kể, lần hai",
+        "Nguồn": "Lời kể của Bà Lụa, quán trà đá cổng trường",
+        "Nội dung": "\"Cậu trà nóng\" có hai cuốn sổ, ngồi chép từ cuốn bìa cứng đã sờn sang cuốn mới suốt một tháng. Lý do cậu ấy nói: cuốn cũ có chỗ không muốn người sau chép theo. Lời kể, chưa đối chiếu."
+      },
+      "quotes": {}
+    },
+    "clue-tra-da-3": {
+      "id": "clue-tra-da-3",
+      "loai": "clue",
+      "heading": "[Một kết luận sai, một cốc trà xin lỗi]",
+      "fields": {
+        "Tiêu đề": "Chuyện bà Lụa kể, lần ba",
+        "Nguồn": "Lời kể của Bà Lụa, quán trà đá cổng trường",
+        "Nội dung": "\"Cậu trà nóng\" từng kết luận sai cho một người, cả câu lạc bộ tin theo. Hôm sau cậu ấy dẫn người đó ra quán, mời trà, xin lỗi, rồi gạch một chỗ trong sổ mạnh tới rách giấy. Lời kể, chưa đối chiếu."
+      },
+      "quotes": {}
+    },
+    "clue-tra-da-4": {
+      "id": "clue-tra-da-4",
+      "loai": "clue",
+      "heading": "[\"Căn cứ vào đâu?\"]",
+      "fields": {
+        "Tiêu đề": "Chuyện bà Lụa kể, lần bốn",
+        "Nguồn": "Lời kể của Bà Lụa, quán trà đá cổng trường",
+        "Nội dung": "\"Cậu trà nóng\" giờ làm việc ngay trong trường, sơ mi cài kín cổ, tóc muối tiêu, vẫn gọi trà nóng. Câu cửa miệng: \"Căn cứ vào đâu?\" Bà không nhớ tên. Một lời kể và một câu cửa miệng chưa đủ để ghim tên ai."
+      },
+      "quotes": {}
+    },
     "doc-tin-don": {
       "id": "doc-tin-don",
       "loai": "doc",
@@ -12834,6 +14095,47 @@ const GOC = {
           "Biên nhận không ghi ai nhập dòng nào vào sổ."
         ]
       }
+    },
+    "doc-so-don": {
+      "id": "doc-so-don",
+      "loai": "doc",
+      "heading": "Sổ đón tân sinh viên",
+      "fields": {
+        "Tiêu đề": "Sổ đón tân sinh viên của đội tình nguyện",
+        "Nguồn": "Tùng giữ bản xuất của đội tình nguyện trên laptop",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Mỗi lượt đón một dòng, năm cột: mã lượt, ngày, mã tình nguyện viên, mã tân sinh viên, điểm đến.",
+          "Điểm đến ghi lúc bàn giao, là nơi tân sinh viên thật sự được đưa tới: KTX, NHA_XE hoặc HOI_TRUONG.",
+          "Sổ của cả đội, ba đợt nhập học liền, gần ba trăm lượt. Sổ không ghi tân sinh viên muốn tới đâu."
+        ]
+      }
+    },
+    "clue-ma-tung": {
+      "id": "clue-ma-tung",
+      "loai": "clue",
+      "heading": "[SV240251]",
+      "fields": {
+        "Tiêu đề": "Mã sinh viên của Tùng",
+        "Giá trị cho trình dựng": "SV240251",
+        "Nguồn": "Tùng đọc",
+        "Nội dung": "Sổ đón ghi tình nguyện viên bằng mã sinh viên. Mã của Tùng là SV240251."
+      },
+      "quotes": {}
+    },
+    "clue-nha-xe": {
+      "id": "clue-nha-xe",
+      "loai": "clue",
+      "heading": "[Nhà xe]",
+      "fields": {
+        "Tiêu đề": "Điểm đến ghi là nhà xe",
+        "Giá trị cho trình dựng": "NHA_XE",
+        "Nguồn": "Phiếu gom theo điểm đến",
+        "Nội dung": "Trong chín lượt Tùng dẫn có một lượt ghi điểm đến NHA_XE. Tám lượt còn lại đều là KTX."
+      },
+      "quotes": {}
     }
   },
   "soTay": {
@@ -13036,6 +14338,27 @@ const GOC = {
       "soDong": 4,
       "noi": "noi-dung-mvp/thu-thach/giup-nam.md:86 thẻ c-may-vp, SQL chuẩn",
       "resultId": "ev-may-vp"
+    },
+    {
+      "sql": "SELECT ma_luot, ngay, ma_sv, diem_den FROM luot_don WHERE tinh_nguyen_vien = 'SV240251';",
+      "soDong": 9,
+      "noi": "noi-dung-mvp/thu-thach/phu-dan-lac.md:3 thẻ c-don-tung, SQL chuẩn",
+      "resultId": "ev-don-tung"
+    },
+    {
+      "sql": "SELECT diem_den, COUNT(*) AS so_dong FROM @ev-don-tung GROUP BY diem_den;",
+      "soDong": 2,
+      "noi": "noi-dung-mvp/thu-thach/phu-dan-lac.md:23 thẻ c-don-noi-den, SQL chuẩn",
+      "resultId": "ev-don-noi-den",
+      "sourceResultId": "ev-don-tung",
+      "sourceGroupColumn": "diem_den"
+    },
+    {
+      "sql": "SELECT ma_luot, ngay, ma_sv FROM @ev-don-tung WHERE diem_den = 'NHA_XE';",
+      "soDong": 1,
+      "noi": "noi-dung-mvp/thu-thach/phu-dan-lac.md:42 thẻ c-don-lac, SQL chuẩn",
+      "resultId": "ev-don-lac",
+      "sourceResultId": "ev-don-tung"
     },
     {
       "sql": "SELECT ma_gd, ma_phieu, so_tien, ma_tham_chieu FROM giao_dich WHERE loai = 'HOAN';",
@@ -14686,6 +16009,96 @@ const GOC = {
             "HOAN",
             -15000,
             "NH-776"
+          ]
+        ]
+      },
+      {
+        "ten": "luot_don",
+        "cot": [
+          {
+            "ten": "ma_luot",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ngay",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "tinh_nguyen_vien",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ma_sv",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "diem_den",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "LD-0231",
+            "2024-09-07",
+            "SV240251",
+            "SV240118",
+            "KTX"
+          ],
+          [
+            "LD-0234",
+            "2024-09-07",
+            "SV240251",
+            "SV240164",
+            "KTX"
+          ],
+          [
+            "LD-0238",
+            "2024-09-07",
+            "SV240251",
+            "SV240203",
+            "KTX"
+          ],
+          [
+            "LD-0241",
+            "2024-09-07",
+            "SV240251",
+            "SV240289",
+            "KTX"
+          ],
+          [
+            "LD-0244",
+            "2024-09-08",
+            "SV240251",
+            "SV240342",
+            "KTX"
+          ],
+          [
+            "LD-0247",
+            "2024-09-08",
+            "SV240251",
+            "SV240317",
+            "NHA_XE"
+          ],
+          [
+            "LD-0252",
+            "2024-09-08",
+            "SV240251",
+            "SV240377",
+            "KTX"
+          ],
+          [
+            "LD-0256",
+            "2024-09-08",
+            "SV240251",
+            "SV240415",
+            "KTX"
+          ],
+          [
+            "LD-0259",
+            "2024-09-08",
+            "SV240251",
+            "SV240466",
+            "KTX"
           ]
         ]
       }

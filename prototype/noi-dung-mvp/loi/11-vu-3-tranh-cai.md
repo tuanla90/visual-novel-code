@@ -156,3 +156,17 @@
 - **narrator**: Thư viện buổi chiều. Cửa từ kêu tít mỗi lần có người quẹt thẻ đi qua.
 - **ha-vy** (smile): Tối thứ Hai nào tớ cũng ngồi bàn cạnh cửa sổ kia.
 - **tung** (thinking): Vào ra đều phải quẹt thẻ nhỉ. Thế là cái cửa này nhớ giờ của từng người.
+
+## v3-bd-tra-da.1
+- **narrator**: Quán trà đá, đầu giờ chiều. Nắng xiên qua tán cây, ghế còn trống nhiều.
+- **tung** (worried): Bà ơi, lỡ nói sai cho một người rồi thì làm thế nào ạ?
+- **ba-lua** (neutral): Hỏi đúng người rồi đấy. Ngày xưa có cậu sinh viên trông cái phòng tủ sắt của các cháu, bà gọi là "cậu trà nóng". Có một dạo cậu ấy ngồi đây cả buổi chiều, sổ mở mà không viết chữ nào.
+- **ba-lua** (neutral): Bà hỏi thì bảo: "Cháu kết luận sai cho một người, bà ạ. Cả câu lạc bộ tin cháu."
+- **player**: Rồi anh ấy làm gì ạ?
+- **ba-lua** (smile): Hôm sau dẫn một cậu khác ra đây, mời cốc trà, xin lỗi ngay trước mặt bà. Xong ngồi gạch cái gì đó trong sổ, gạch mạnh tới rách cả giấy.
+- **ha-vy** (thinking): Kết luận sai, rồi tự tay gạch. Ghi lại. Vẫn là lời kể.
+
+## v3-bd-tra-da.2
+- **tung** (thinking): Mời trà, xin lỗi trước mặt người khác. Nghe thì dễ.
+- **ha-vy** (neutral): Cậu đang nghĩ tới Hoài à?
+- **tung** (gai-dau): Tớ có nói gì đâu. …Ừ.

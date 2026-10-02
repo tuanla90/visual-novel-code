@@ -34,6 +34,7 @@
 - **co-hanh** (neutral): Ba khoản lớn là tạm ứng tiền mặt, người duyệt ký nhận. Quy chế cho bổ sung chứng từ trong ba mươi ngày, nên cột mã đơn là điền sau.
 - **co-lan** (neutral): Cô bên Công tác sinh viên in kèm quy chế quỹ khối CLB. Khoản dưới một triệu thì chủ tịch Hội duyệt thẳng. Tổng một người duyệt từ MỘT quỹ trong một học kỳ vượt một triệu thì người đó phải giải trình; Phòng Kế hoạch soát ngưỡng ấy lúc đối chiếu cuối kỳ, cùng lúc gửi sao kê. Phần về CLB chờ giải thể ở trang sau, các em tự đọc.
 - **minh-anh** (neutral): Em cảm ơn hai cô ạ.
+> NHIỆM VỤ: Mang bản xuất sổ quỹ về phòng CLB
 
 ## v5-so-quy.1
 - **narrator**: Chiều, phòng CLB. Bản xuất cô Hạnh gửi đã nằm trong laptop: chỉ gồm các khoản chi ghi vào quỹ CLB Thám Tử và các khoản liên quan ba đơn.
@@ -221,3 +222,20 @@
 ## v5-phong-minh-anh.1
 - **minh-anh** (neutral): Từ đầu kỳ chị duyệt đúng ba khoản: giấy in, mực, bìa hồ sơ. Khoản nào cũng dưới hai trăm nghìn.
 - **minh-anh** (worried): Nếu sổ ghi nhiều hơn thế thì có khoản chị chưa từng nhìn thấy.
+
+## v5-bd-tra-da.1
+- **narrator**: Quán trà đá, buổi trưa. Bà Lụa đang tráng cốc.
+- **ba-lua** (smile): Hôm nay mặt đứa nào cũng căng thế. Uống đi rồi hẵng tính.
+- **player**: Bà ơi, ngày xưa có một anh sinh viên trông cái phòng tủ sắt của bọn cháu, hay ra đây gọi trà nóng. Sau này bà có gặp lại anh ấy không ạ?
+- **ba-lua** (smile): Cậu trà nóng ấy hả? Gặp suốt. Giờ đi làm ngay trong trường, sơ mi cài kín cổ, tóc muối tiêu rồi. Sáng nào đi ngang cũng gật đầu chào bà, thỉnh thoảng vẫn ngồi xuống gọi cốc trà nóng.
+- **tung** (surprised): Người ấy vẫn ở trong trường ạ? Là ai hả bà?
+- **ba-lua** (neutral): Bà nhớ cốc, không nhớ tên. Mà cậu ấy có một câu cửa miệng, sinh viên ra đây toàn nhại lại: "Căn cứ vào đâu?"
+- **ha-vy** (thinking): Mình vừa nghe đúng câu ấy xong.
+- **tung** (chi-tay): Tớ cá là…
+- **ha-vy** (neutral): Đừng cá. Một lời kể với một câu cửa miệng thì chưa đủ để ghim tên ai lên bảng.
+- **player**: Tớ ghi lại. Lời kể, chưa đối chiếu với gì cả.
+
+## v5-bd-tra-da.2
+- **tung** (happy): Bà cho cháu một cốc ít đá mang đi ạ.
+- **ba-lua** (smile): Cho con bé hay ôm cặp chứ gì. Lần này có câu mở đầu chưa?
+- **tung** (gai-dau): Cháu có rồi ạ. Hai chữ.

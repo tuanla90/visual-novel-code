@@ -2533,3 +2533,17 @@
   font: 800 1.3rem/1 var(--font-ui);
   transform: rotate(-12deg);
 }
+
+/* Bản đồ trường ở màn ngang: nền sân khấu là cảnh đang đứng (phòng CLB…), không phải bản đồ, nên bản đồ phải tự hiện ảnh của nó;
+   co cho vừa cả chiều ngang lẫn chiều cao để ghim sát mép không bị cắt, hai bên lấp bằng nền mờ. */
+@media (min-width: 769px), (orientation: landscape) {
+  .game:not(.game--portrait) .mvp-khampha.mvp-bando .mvp-canh__nen {
+    visibility: visible;
+  }
+  .game:not(.game--portrait) .mvp-khampha.mvp-bando .mvp-canh__mo {
+    display: block;
+  }
+  .game:not(.game--portrait) .mvp-khampha.mvp-bando .mvp-canh__khung {
+    width: min(100cqw, calc(100cqh * var(--ti-le-so)));
+  }
+}

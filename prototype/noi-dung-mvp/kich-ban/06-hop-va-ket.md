@@ -52,6 +52,13 @@
 - [LỜI ket-that.1]
 - [HẬU QUẢ] mở manh mối clue-loi-nhan-linh-1
 - [LỜI ket-that.2]
+- [ĐI TỚI ket-tra-da]
+
+### ket-tra-da — Sau kết thật: Tùng khao trà đá; bà Lụa kể về cái tủ sắt {cảnh: tra-da}
+
+- [LỜI ket-tra-da.1]
+- [HẬU QUẢ] mở manh mối clue-tra-da-1
+- [LỜI ket-tra-da.2]
 - [KẾT THÚC]
 
 ### ket-thuong — Kết thường: chỉ là một ý kiến sinh viên {cảnh: phong-hop}

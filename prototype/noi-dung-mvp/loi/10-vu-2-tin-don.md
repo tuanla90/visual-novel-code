@@ -161,3 +161,19 @@
 ## tin-soi-tay-ao.1
 - **player**: Tay áo khoác xắn tới khuỷu.
 - **ha-vy** (neutral): Người làm việc ở xưởng, không phải người ngồi họp.
+
+## tin-bd-tra-da.1
+- **narrator**: Quán trà đá cổng trường, giờ tan học. Khách vừa vãn, ghế nhựa còn trống mấy cái.
+- **ba-lua** (smile): Mấy đứa ở phòng tầng hai nhà câu lạc bộ, cái phòng có tủ sắt, phải không? Ngồi đi, ba trà đá.
+- **tung** (happy): Bà nhớ bọn cháu này!
+- **ba-lua** (neutral): Bà nhớ cái phòng. Hồi xưa có một cậu sinh viên trông phòng ấy, chiều nào cũng ra đây. Hè cũng gọi trà nóng nên bà gọi là "cậu trà nóng".
+- **ba-lua** (neutral): Cậu ấy có hai cuốn sổ. Một cuốn bìa cứng đã sờn, một cuốn mới tinh. Ngồi đúng cái ghế cháu đang ngồi, chép từ cuốn cũ sang cuốn mới, chép cả tháng trời.
+- **player**: Chép lại cả cuốn ạ? Sao anh ấy không dùng luôn cuốn cũ?
+- **ba-lua** (smile): Bà cũng hỏi thế. Cậu ấy bảo: "Cuốn cũ có chỗ cháu không muốn người sau chép theo."
+- **ha-vy** (thinking): Chép lại mà bỏ đi một chỗ. Tớ muốn biết chỗ bị bỏ.
+
+## tin-bd-tra-da.2
+- **tung** (thinking): Bà ơi, cho cháu thêm một cốc mang đi. Ít đá ạ.
+- **ha-vy** (smile): Mang cho ai?
+- **tung** (gai-dau): Thì… thư viện giờ này có người hay ngồi học. Thôi, để hôm khác. Tớ chưa nghĩ ra câu mở đầu.
+- **ha-vy** (smile): Câu mở đầu là "xin lỗi". Có hai chữ.

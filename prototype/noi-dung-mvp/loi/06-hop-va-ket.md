@@ -69,6 +69,34 @@
 - **player**: "Căn phòng này giữ nhiều hơn em nghĩ."
 - **tung** (surprised): Giữ gì cơ? Phòng có mỗi cái tủ với cái bảng.
 - **ha-vy** (thinking): Đừng cá. Chưa có gì để tính cả.
+- **tung** (happy): Thế thì đi. Trà đá. Tớ hứa rồi.
+
+## ket-tra-da.1
+- **narrator**: Gốc cây ngoài cổng chính. Một cái ô bạc màu, mấy cái ghế nhựa xanh đỏ, cái ấm nhôm to bằng cái xô.
+- **tung** (happy): Bà ơi, cho cháu ba trà đá! Hôm nay cháu khao.
+- **ba-lua** (smile): Ba cốc chín nghìn. Khao thế thì bà cũng khao được.
+- **ha-vy** (smile): Cậu cá thua tớ bao nhiêu lần rồi, trả bằng trà đá thì còn lâu mới hết.
+- **tung** (gai-dau): Lần này tớ không cá. Hôm ở phòng máy tớ nói bừa một câu về Hoài. Suýt nữa bạn ấy mang tiếng vì cái mồm tớ.
+- **player**: Cậu nói "chắc Hoài in". Nhật ký in thì nói khác.
+- **tung** (worried): Ừ. Giờ gặp bạn ấy tớ chẳng biết mở mồm thế nào.
+- **ba-lua** (neutral): Mấy đứa ở cái phòng tầng hai nhà câu lạc bộ đấy hả? Phòng có cái tủ sắt.
+- **player**: Vâng ạ. Sao bà biết ạ?
+- **ba-lua** (smile): Hồi bà mới dọn hàng ra đây, phòng ấy còn là kho chổi. Có một cậu sinh viên xin được chìa, tự tay khuân cái tủ sắt lên. Chiều nào xong việc cũng ra đây ngồi ghi ghi chép chép.
+- **ba-lua** (smile): Hè cũng như đông, cậu ấy chỉ gọi trà nóng. Ngồi quán trà đá mà gọi trà nóng thì bà nhớ.
+- **ha-vy** (thinking): Bà có nhớ tên anh ấy không ạ?
+- **ba-lua** (smile): Khách của bà, bà nhớ cốc chứ nhớ gì tên. Bà gọi là "cậu trà nóng".
+
+## ket-tra-da.2
+- **tung** (surprised): Cái tủ ấy! "Căn phòng này giữ nhiều hơn em nghĩ."
+- **ha-vy** (thinking): Một người kể, chưa có giấy tờ gì. Cứ ghi lại đã, ghi rõ là lời kể.
+- **player**: Tớ ghi vào sổ. Nguồn: bà Lụa, quán trà đá.
+- [DÀN DỰNG] Bên kia đường, {{nv.hoai}} ôm cặp đi ngang qua cổng. {{nv.tung}} đứng bật dậy, suýt đổ cốc.
+- **tung** (worried): Hoài ơi! Tớ… hôm trước tớ…
+- **hoai** (nervous): Tớ chào các cậu. Tớ phải về kẻo muộn.
+- **narrator**: Hoài gật đầu một cái rồi đi nhanh hơn.
+- **ha-vy** (smile): Cậu vừa xin lỗi hay vừa dọa bạn ấy thế?
+- **tung** (gai-dau): Tớ còn chưa nói xong chữ "xin".
+- **ba-lua** (smile): Xin lỗi thì đừng gọi giật qua đường. Mai kia mời con bé cốc trà.
 - [THẺ CHỮ] **narrator**: SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.
 
 ## ket-thuong.1

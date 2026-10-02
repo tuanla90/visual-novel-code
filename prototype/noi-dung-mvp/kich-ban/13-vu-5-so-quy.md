@@ -28,6 +28,9 @@
 ### v5-nhan-so — Cô Hạnh đưa bản xuất, cô Lan in quy chế {cảnh: phong-dao-tao}
 
 - [LỜI v5-nhan-so.1]
+- [KHÁM PHÁ kp-bd-v5 · bản đồ]
+  - ghim:nha-clb · x 45% · y 17% · rộng 5% → v5-so-quy · dấu: ! · có: duy, minh-anh · nhãn: Phòng CLB
+  - ghim:tra-da · x 41% · y 86% · rộng 5% → v5-bd-tra-da · dấu: ? · có: ba-lua · nhãn: Quán trà đá
 - [ĐI TỚI v5-so-quy]
 
 ### v5-so-quy — Sổ quỹ khối CLB: khoản nào ghi vào quỹ CLB Thám Tử {cảnh: phong-clb}
@@ -186,3 +189,9 @@
 ### v5-phong-minh-anh — Vụ 5: Minh Anh nhớ lại ba khoản chị duyệt {cảnh: phong-clb}
 
 - [LỜI v5-phong-minh-anh.1]
+
+### v5-bd-tra-da — Bản đồ Vụ 5 (tùy chọn): quán trà đá, "cậu trà nóng" giờ ở đâu {cảnh: tra-da}
+
+- [LỜI v5-bd-tra-da.1]
+- [HẬU QUẢ] mở manh mối clue-tra-da-4
+- [LỜI v5-bd-tra-da.2]

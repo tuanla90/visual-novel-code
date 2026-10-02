@@ -23,3 +23,7 @@
 ### xuong-robot — Xưởng CLB Robotics
 - Ảnh nền: bg-mvp-nha-van-hoa
 ### thu-vien — Thư viện trường
+### tra-da — Quán trà đá cổng trường
+### sanh-toa-b-dem — Sảnh tòa B
+### phong-ktx-dem — Phòng KTX 408
+### san-dem — Sân trường

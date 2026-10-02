@@ -331,3 +331,23 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 | GD-06 | PH-04 | HOAN | -60000 | NH-771 |
 | GD-07 | PH-04 | HOAN | -60000 | NH-771 |
 | GD-08 | PH-06 | HOAN | -15000 | NH-776 |
+
+## luot_don {bảng}
+- Cột: ma_luot TEXT, ngay TEXT, tinh_nguyen_vien TEXT, ma_sv TEXT, diem_den TEXT
+
+<!-- Nhiệm vụ phụ "Một lần dẫn lạc": sổ đón tân sinh viên của đội tình nguyện. Chín lượt của Tùng (SV240251) trong hai ngày
+     07–08/09/2024: tám lượt tới KTX, MỘT lượt tới NHA_XE (LD-0247, sáng Chủ nhật 08/09, tân sinh viên SV240317 = Hoài).
+     diem_den là nơi tân sinh viên THẬT SỰ được đưa tới, ghi lúc bàn giao. Dòng nền (các đội 2022–2024) do
+     tools/noi-dung/nhieu-mvp.ts thêm: không thêm lượt nào của SV240251, không lượt nào đón SV240317. -->
+
+| ma_luot | ngay | tinh_nguyen_vien | ma_sv | diem_den |
+|---|---|---|---|---|
+| LD-0231 | 2024-09-07 | SV240251 | SV240118 | KTX |
+| LD-0234 | 2024-09-07 | SV240251 | SV240164 | KTX |
+| LD-0238 | 2024-09-07 | SV240251 | SV240203 | KTX |
+| LD-0241 | 2024-09-07 | SV240251 | SV240289 | KTX |
+| LD-0244 | 2024-09-08 | SV240251 | SV240342 | KTX |
+| LD-0247 | 2024-09-08 | SV240251 | SV240317 | NHA_XE |
+| LD-0252 | 2024-09-08 | SV240251 | SV240377 | KTX |
+| LD-0256 | 2024-09-08 | SV240251 | SV240415 | KTX |
+| LD-0259 | 2024-09-08 | SV240251 | SV240466 | KTX |

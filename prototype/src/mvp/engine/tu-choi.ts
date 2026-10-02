@@ -131,6 +131,7 @@ export function chonTheoUuTien(uuTien: readonly string[], vetCan: boolean): Chie
 export const RE_NHANH_KET_THAT: Readonly<Record<string, string>> = {
   'r-phong-may': 'ghe',
   'r-moi-hoai': 'tu-ke',
+  'r-chay': 'tat',
 };
 
 export const reNhanhTheo =
@@ -140,7 +141,7 @@ export const reNhanhTheo =
 
 // ---------- Nhảy tới (người quan sát) ----------
 
-export type MaDiemNhayMvp = 'bang-lop' | 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or' | 'vu2-tin-don' | 'vu2-tin-goc' | 'vu3-thiet-bi' | 'vu3-toi-07' | 'vu4-noi' | 'vu5-vuot-muc' | 'vu2-buoi' | 'phu-micro' | 'phu-hoan-nhom' | 'vu3-bai-dang' | 'vu4-da-duyet' | 'vu4-may-vp' | 'vu5-kho' | 'vu5-chi' | 'phu-hoan-loc';
+export type MaDiemNhayMvp = 'bang-lop' | 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or' | 'vu2-tin-don' | 'vu2-tin-goc' | 'vu3-thiet-bi' | 'vu3-toi-07' | 'vu4-noi' | 'vu5-vuot-muc' | 'vu2-buoi' | 'phu-micro' | 'phu-hoan-nhom' | 'vu3-bai-dang' | 'vu4-da-duyet' | 'vu4-may-vp' | 'vu5-kho' | 'vu5-chi' | 'phu-hoan-loc' | 'phu-dan-lac';
 
 export interface DiemNhayMvp {
   id: MaDiemNhayMvp;
@@ -182,6 +183,7 @@ export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
   { id: 'vu5-kho', nhan: 'Vụ 5 · Đơn mua thứ kho không có', moTa: 'Màn tra đầu Vụ 5: nối sổ đặt hàng với bảng kiểm kê, lọc kho bằng 0.', toi: dangOThuThach('challenge', 'c-dat-ma-khong-co') },
   { id: 'vu5-chi', nhan: 'Vụ 5 · Khoản chi vào quỹ CLB', moTa: 'Nối sổ chi với bảng quỹ, lọc quỹ CLB Thám Tử.', toi: dangOThuThach('challenge', 'c-chi-tham-tu') },
   { id: 'phu-hoan-loc', nhan: 'Việc phụ · Hoàn tiền (lọc dòng hoàn)', moTa: 'Minh Anh nhờ sau Vụ 5: lọc các dòng hoàn trong bản xuất thu chi.', toi: dangOThuThach('challenge', 'c-hoan-loc') },
+  { id: 'phu-dan-lac', nhan: 'Việc phụ · Một lần dẫn lạc (sổ đón)', moTa: 'Tùng nhờ sau Vụ 3: lọc các lượt đón Tùng dẫn trong sổ của đội tình nguyện.', toi: dangOThuThach('challenge', 'c-don-tung') },
 ];
 
 /**

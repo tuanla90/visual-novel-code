@@ -16,6 +16,7 @@
  *  - don_linh_kien: đơn cũ đã quyết toán (không DA_DUYET / CHO_DUYET), không đứng tên Nam hay Khánh, không phải ba linh kiện
  *    kho đang 0; phiên cũ không ở máy văn phòng xưởng. khoan_chi: KHÔNG thêm (bản xuất giới hạn theo truyện Vụ 5).
  *  - luan_chuyen: phiếu thêm vào chỉ mang mã tài sản của CLB khác (không nối được với sổ tài sản CLB mình).
+ *  - luot_don: không thêm lượt nào do SV240251 (Tùng) dẫn, không lượt nào đón SV240317 (Hoài): chín lượt của Tùng, một lượt nhà xe.
  *  - giao_dich: không thêm dòng HOAN. quet_the_thu_vien: KHÔNG thêm (thư viện chỉ in cho mỗi người bản của chính họ).
  * Không import gì (chạy được cả trong công cụ lẫn trong trình duyệt): kich-ban.gen.ts chỉ chứa dòng của truyện, dữ liệu nền
  * được sinh lại lúc nạp trò chơi; bộ kiểm cũng thêm nền trước khi chạy SQL.
@@ -503,6 +504,37 @@ function themGiaoDich(d: BoDuLieuMvp): void {
   }
 }
 
+const DIEM_DEN = ['KTX', 'KTX', 'KTX', 'KTX', 'KTX', 'KTX', 'HOI_TRUONG', 'HOI_TRUONG', 'NHA_XE'] as const;
+/** Sổ đón tân sinh viên của đội tình nguyện, ba đợt nhập học 2022–2024: mỗi đợt 12 tình nguyện viên khóa trên, mỗi người 5–12 lượt. */
+function themLuotDon(d: BoDuLieuMvp): void {
+  const b = bangTheo(d, 'luot_don');
+  const sv = bangTheo(d, 'sinh_vien');
+  if (!b || !sv) return;
+  const r = xn(2113);
+  const daCo = new Set(b.dong.map((h) => chu(h[0])));
+  const theoKhoa = (nam: number): string[] => sv.dong.map((h) => chu(h[0])).filter((m) => m.startsWith(`SV${String(nam).slice(2)}`) && m !== 'SV240251' && m !== 'SV240317');
+  const NGAY_DAU: Record<number, string> = { 2022: '2022-09-10', 2023: '2023-09-09', 2024: '2024-09-07' };
+  let stt = 0;
+  for (const nam of [2022, 2023, 2024]) {
+    const tan = theoKhoa(nam);
+    const tnv = r.tron(theoKhoa(nam - 1)).slice(0, 12);
+    if (tan.length === 0) continue;
+    for (const t of tnv) {
+      const n = r.so(5, 12);
+      for (let i = 0; i < n; i++) {
+        let ma: string;
+        do {
+          stt += 1;
+          ma = `LD-${String(stt).padStart(4, '0')}`;
+        } while (daCo.has(ma));
+        daCo.add(ma);
+        b.dong.push([ma, raNgay(tuNgay(NGAY_DAU[nam] ?? '2024-09-07') + r.so(0, 1) * NGAY_MS), t, r.chon(tan), r.chon(DIEM_DEN)]);
+      }
+    }
+  }
+  sap(b, 1, 0);
+}
+
 /** Thêm dữ liệu nền vào bộ dữ liệu đã đọc từ du-lieu.md (sửa tại chỗ, trả lại chính nó). */
 export function themNhieuMvp<T extends BoDuLieuMvp>(d: T): T {
   themLop(d);
@@ -517,5 +549,6 @@ export function themNhieuMvp<T extends BoDuLieuMvp>(d: T): T {
   themQuyVaChi(d);
   themTaiSan(d);
   themGiaoDich(d);
+  themLuotDon(d);
   return d;
 }

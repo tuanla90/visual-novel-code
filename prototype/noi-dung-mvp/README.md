@@ -83,3 +83,9 @@ Chi tiết: đặc tả §18.4a.
 - Chuỗi của vụ sau vẫn phải kết bằng `[ĐI TỚI …]`: đặt một dòng `[ĐI TỚI <chuỗi của điểm !>]` ngay sau `[KHÁM PHÁ … · bản đồ]`.
 - `nhan-vat.md`: dòng `- Lịch: …` (thói quen đi lại) hiện ở thẻ nhân vật, mục "Thường gặp ở đâu".
 - Thêm / bớt nút trong một chuỗi làm lệch ô lưu cũ; màn chơi tự chạy tiếp tới nút cần người chơi thay vì báo lỗi.
+
+### Cảnh sau kết và nền là ảnh hoạt cảnh (02/10/2026)
+
+- Chuỗi kết thật / kết thường được kết bằng `[ĐI TỚI <chuỗi>]` thay cho `[KẾT THÚC]`, miễn chuỗi đích kết bằng `[KẾT THÚC]` (Vụ 1: `ket-that` → `ket-tra-da`). Máy ghi loại kết ngay lúc rẽ nên màn kết vẫn đúng.
+- Muốn một ảnh hoạt cảnh làm nền cho cả đoạn (không hiện nhân vật đứng): khai một cảnh riêng trong `canh.md` và đặt ảnh tên `bg-mvp-<mã cảnh>.webp`; câu `[RẼ NHÁNH]` để `narrator` hỏi thì không có nhãn tên (cảnh `san-dem` của nhiệm vụ phụ "Một lần dẫn lạc").
+- Bốn mẩu chuyện ở quán trà đá (`ho-so/04-tra-da.md`) là lời kể tùy chọn, không mẩu nào là điều kiện của kết.

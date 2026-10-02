@@ -40,7 +40,7 @@ import { LocThuV7 } from './v7/LocThuV7';
 import { LichMvp } from './LichMvp';
 import { LuuNapMvp } from './LuuNapMvp';
 import { ManChieuMvp } from './ManChieuMvp';
-import { dinhDangNgay, homNay, hoaDau, tenThu } from '../engine/lich-ngay';
+import { dinhDangNgay, homNay, hoaDau } from '../engine/lich-ngay';
 import { tongKetVu } from '../engine/tong-ket';
 import { DongHanhMvp } from './DongHanhMvp';
 import { PhongTraMvp } from './v7/PhongTraMvp';
@@ -71,7 +71,7 @@ function thanhLine(kb: typeof KICH_BAN, s: TrangThaiMvp, loi: LoiMvp): DialogueL
 function homNayChu(kb: KichBanMvp, s: TrangThaiMvp): string {
   const vu = (kb.lich.vuSau ?? []).find((v) => v.id === s.vu) ?? (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id);
   const hn = homNay({ giaiDoan: s.giaiDoan === 'phu' ? 'vu-sau' : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vu?.ngay ?? null }, kb.lich.ngayMoDau ?? null);
-  return `${hoaDau(tenThu(hn.ngay))}, ${dinhDangNgay(hn.ngay)}`;
+  return hoaDau(dinhDangNgay(hn.ngay));
 }
 
 export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
@@ -314,9 +314,12 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             </div>
             <div className="dialog-container mc__dialog-container">
               <div className="dialog dialog--glass" data-speaker={kn.nut.asker.speaker}>
-                <div className="dialog__speaker">
-                  <span>{tenNguoiNoi(kb, kn.nut.asker.speaker)}</span>
-                </div>
+                {/* Câu rẽ nhánh do người dẫn truyện hỏi (cảnh chạy đêm): không có nhãn tên. */}
+                {tenNguoiNoi(kb, kn.nut.asker.speaker) ? (
+                  <div className="dialog__speaker">
+                    <span>{tenNguoiNoi(kb, kn.nut.asker.speaker)}</span>
+                  </div>
+                ) : null}
                 <p id="mvp-renhanh-hoi" className="dialog__text mc__prompt">
                   <CodeText text={dienTen(kn.nut.asker.text)} />
                 </p>
