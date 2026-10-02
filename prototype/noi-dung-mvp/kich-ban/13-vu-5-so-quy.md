@@ -157,6 +157,7 @@
 ### v5-chot — Phòng CLB: đóng hồ sơ mùa {cảnh: phong-clb}
 
 - [LỜI v5-ket-luan.1]
+- [ẢNH cg-ket-mua]
 - [NẾU có clue-loi-nhan-linh-1 và có clue-loi-nhan-linh-2 và có clue-loi-nhan-linh-3 và có clue-loi-nhan-linh-4] → đi tới v5-ngan-tu
 - [KẾT THÚC]
 

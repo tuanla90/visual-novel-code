@@ -7534,6 +7534,10 @@ export const KICH_BAN_MVP = {
           "text": "Dữ liệu chỉ ra ai cần hỏi. Người trả lời mới là người nói \"vì sao\". Mùa 1 khép lại ở chỗ chứng cứ dừng."
         },
         {
+          "type": "image",
+          "imageId": "cg-ket-mua"
+        },
+        {
           "type": "jump-if",
           "dieuKien": {
             "kind": "va",
