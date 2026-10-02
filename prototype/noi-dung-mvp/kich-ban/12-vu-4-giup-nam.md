@@ -48,7 +48,7 @@
   - (C) {id: ban-chu-nhiem} Ban chủ nhiệm Robotics cố tình đổ nợ cho Nam. → phản hồi: **duy** (neutral): Máy văn phòng thì ban chủ nhiệm giữ chìa, nhưng "cố tình" và "cả ban" thì bảng nào nói? Mình mới có máy và giờ.
 - [LỜI v4-ket-du.1]
 - [LỜI v4-ket.1]
-- [KHÁM PHÁ kp-soi-khanh · quan sát khanh]
+- [KHÁM PHÁ kp-soi-khanh · quan sát khanh · Hà Vy soi]
   - vung:the · x 58% · y 60% · rộng 16% → v4-soi-the · nhãn: Tấm thẻ đeo cổ
   - vung:balo · x 10% · y 80% · rộng 20% → v4-soi-balo · nhãn: Cái balo
   - vung:quai · x 31% · y 38% · rộng 14% → v4-soi-huy-hieu · nhãn: Thứ gài trên quai balo

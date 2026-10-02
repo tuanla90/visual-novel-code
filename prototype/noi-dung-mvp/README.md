@@ -95,3 +95,10 @@ Chi tiết: đặc tả §18.4a.
 - `nhan-vat.md`: `- Lịch: …` là chữ người chơi đọc ở thẻ nhân vật. `- Thường ở: T2–T7 07:00–23:00 → toa-b; CN 20:00–23:00 → toa-b` là bản máy đọc của chính lịch ấy. Thứ viết `T2`…`T7`, `CN`, khoảng `T2–T6`, danh sách `T2, T4, T6`, hoặc `mọi ngày`. Nơi là mã ghim của bản đồ (`ghim:<mã>`). Hai dòng phải nói cùng một điều.
 - Bản đồ khai giờ trong truyện: `- [KHÁM PHÁ <mã> · bản đồ · giờ 15:00]`. Thứ lấy từ ngày trong truyện. Thiếu giờ là lỗi.
 - Ảnh mặt cạnh ghim = người lịch đặt ở đó vào thứ, giờ ấy, cộng người kịch bản đặt bằng `có:`; vẫn chỉ hiện người đã gặp. Bài kiểm `src/mvp/engine/lich-nhan-vat.test.ts` bắt trường hợp `có:` đặt một người ở ghim này trong khi lịch ghi họ đang ở ghim khác. Thêm bản đồ mới thì thêm ngày của nó vào bảng trong bài kiểm đó.
+
+### Chi tiết ẩn, soi theo bộ đồ, cảnh cắt Hà Vy (02/10/2026)
+
+- **Chi tiết ẩn trên cảnh:** trong `[KHÁM PHÁ]` thường, điểm `vung:<mã> · x … · y … · rộng … → <chuỗi> · nhãn: …` là một chỗ bấm KHÔNG có dấu (tấm lưng áo xanh giữa đám đông ở sảnh ký túc xá). Người chơi tự tìm; sau mười giây mới nháy rất nhẹ. Dòng "Còn n chỗ chưa xem" vẫn đếm nó.
+- **Soi theo bộ đồ:** `[KHÁM PHÁ <mã> · quan sát tung/ao-xanh]` soi nhân vật ở đúng dáng / bộ đồ ấy (thiếu thì lấy dáng đầu).
+- **Cảnh cắt Hà Vy:** thêm `· Hà Vy soi` vào dòng quan sát thì màn soi mở bằng một dải ảnh đôi mắt Hà Vy, kính lóe sáng (`giao-dien/cat-canh-ha-vy-mat.webp`), xong các điểm soi mới hiện. Chỉ dùng khi Hà Vy có mặt; ở sảnh ký túc xá hôm nhập học người chơi tự soi nên không có.
+- Muốn bấm vào một người rồi mới soi: cho điểm của người đó trỏ tới một chuỗi kết bằng `[ĐI TỚI <chuỗi soi>]`, chuỗi soi chứa `[KHÁM PHÁ … · quan sát …]` (máy chỉ giữ một màn khám phá một lúc, không lồng).

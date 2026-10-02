@@ -377,6 +377,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           // Bản đồ phải có giờ khi có nhân vật khai "Thường ở": ảnh mặt trên ghim tính theo thứ (ngày trong truyện) và giờ này.
           if (it.kieu === 'ban-do' && !it.gio && mvp.nhanVat.some((n) => n.gioiThieu?.thuongO)) err(vt, `${noi}: bản đồ cần giờ trong truyện, vd "[KHÁM PHÁ ${it.id} · bản đồ · giờ 15:00]" (lịch nhân vật tính theo thứ và giờ)`);
           if (it.kieu === 'quan-sat' && !nhanVat.has(it.nhanVat ?? '')) err(vt, `${noi}: "quan sát ${it.nhanVat}" không phải nhân vật trong nhan-vat.md`);
+          if (it.kieu === 'quan-sat' && it.dang && !(nhanVat.get(it.nhanVat ?? '')?.bieuCam ?? []).includes(it.dang)) err(vt, `${noi}: nhân vật ${it.nhanVat} không có dáng / biểu cảm "${it.dang}"`);
           if (it.diem.length === 0) err(vt, `${noi}: cần ít nhất một dòng con "  - <sprite> · x … · y … · rộng … → <chuỗi>"`);
           const cacChuoi = new Set(it.diem.map((d) => d.chuoi));
           if (cacChuoi.size !== it.diem.length) err(vt, `${noi}: hai chỗ bấm trỏ cùng một chuỗi`);

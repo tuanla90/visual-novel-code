@@ -38,6 +38,10 @@ export interface KhamPhaMvpProps {
   /** Bản đồ: thứ trong truyện (0 = Chủ nhật) và giờ ("HH:MM") — ai đang ở ghim nào tính theo lịch "Thường ở". */
   thu?: number;
   gio?: string;
+  /** Quan sát: dáng / bộ đồ của nhân vật được soi (thiếu = dáng đầu tiên). */
+  dang?: string;
+  /** Quan sát: mở bằng cảnh cắt đôi mắt Hà Vy, kính lóe sáng, rồi các điểm soi mới hiện (user chốt 02/10/2026). */
+  haVySoi?: boolean;
 }
 
 const DAU: Record<NonNullable<DiemKhamPhaMvp['dau']>, { chu: string; doc: string }> = {
@@ -54,7 +58,20 @@ function HuyHieu({ d }: { d: DiemKhamPhaHienMvp }) {
   );
 }
 
-export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay, thu, gio }: KhamPhaMvpProps) {
+/** Cảnh cắt "Hà Vy quan sát": hiện khoảng 1,7 giây lúc vừa vào màn soi (chưa soi điểm nào), bấm để bỏ qua. */
+function useCatCanhHaVy(bat: boolean): { dang: boolean; boQua: () => void } {
+  const [dang, setDang] = useState(bat);
+  useEffect(() => {
+    if (!dang) return;
+    soundEngine.playSfx('chime');
+    const id = window.setTimeout(() => setDang(false), 1700);
+    return () => window.clearTimeout(id);
+  }, [dang]);
+  return { dang, boQua: () => setDang(false) };
+}
+
+export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay, thu, gio, dang, haVySoi }: KhamPhaMvpProps) {
+  const catCanh = useCatCanhHaVy(!!haVySoi && kieu === 'quan-sat' && diem.every((d) => !d.daXem));
   const onXem = (chuoi: string): void => {
     soundEngine.playSfx('select');
     xem(chuoi);
@@ -103,7 +120,8 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
     return [...new Set([...(d.co ?? []), ...theoLich])].filter((n) => daGap.includes(n) && !!kb.nhanVat.find((x) => x.id === n)?.gioiThieu?.lich);
   };
 
-  const anhQuanSat = laQuanSat && nhanVat ? anhChanDung(nhanVat, nv?.bieuCam[0]) : undefined;
+  const anhQuanSat = laQuanSat && nhanVat ? anhChanDung(nhanVat, dang ?? nv?.bieuCam[0]) : undefined;
+  const anhMatVy = anhTheoTen('cat-canh-ha-vy-mat');
 
   return (
     <div className={`mvp-canh mvp-khampha${laBanDo ? ' mvp-bando' : ''}${laQuanSat ? ' mvp-soinv' : ''}`} role="region" aria-label={laBanDo ? 'Bản đồ trường' : laQuanSat ? tieuDe : `Khám phá: ${tenCanh}`}>
@@ -131,7 +149,16 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
       </div>
 
       {laQuanSat ? (
-        <div className="mvp-soinv__vung">
+        <div className={`mvp-soinv__vung${catCanh.dang ? ' dang-cat-canh' : ''}${haVySoi ? ' co-ha-vy' : ''}`}>
+          {catCanh.dang ? (
+            <button type="button" className="mvp-catcanh" onClick={catCanh.boQua} aria-label="Hà Vy quan sát — bấm để bỏ qua">
+              <span className="mvp-catcanh__dai">
+                {anhMatVy ? <img className="mvp-catcanh__anh" src={anhMatVy} alt="" draggable={false} /> : null}
+                <span className="mvp-catcanh__loe" aria-hidden="true" />
+                <span className="mvp-catcanh__chu">Hà Vy quan sát</span>
+              </span>
+            </button>
+          ) : null}
           <div className="mvp-soinv__khung">
             {anhQuanSat ? <img className="mvp-soinv__anh" src={anhQuanSat} alt={`Chân dung ${nv?.ten ?? ''}`} draggable={false} /> : <div className="mvp-soinv__anh mvp-stage__nen-tam" />}
             {diem.map((d, i) => (
@@ -192,6 +219,23 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                         </span>
                       ) : null}
                     </span>
+                  </button>
+                );
+              }
+              if (d.diem.sprite.startsWith('vung:')) {
+                // Chi tiết ẨN trên cảnh (tấm lưng áo xanh giữa đám đông): không có dấu, người chơi tự tìm; để lâu mới nháy gợi ý.
+                return (
+                  <button
+                    key={d.diem.chuoi}
+                    type="button"
+                    className={`mvp-an${d.daXem ? ' is-da-xem' : ''}`}
+                    style={{ left: `${d.diem.x}%`, top: `${d.diem.y}%`, width: `${d.diem.rong}%` }}
+                    aria-label={nhanDoc(i, d)}
+                    disabled={d.daXem}
+                    data-diem={d.diem.chuoi}
+                    onClick={() => onXem(d.diem.chuoi)}
+                  >
+                    <span className="mvp-an__goi-y" aria-hidden="true" />
                   </button>
                 );
               }

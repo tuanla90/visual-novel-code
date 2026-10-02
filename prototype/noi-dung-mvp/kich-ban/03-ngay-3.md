@@ -13,7 +13,7 @@
 ### n3-ctsv — CTSV: sổ niêm phong, phiếu yêu cầu tra cứu; Quân giám sát {cảnh: phong-ctsv}
 
 - [LỜI n3-ctsv.1]
-- [KHÁM PHÁ kp-soi-quan · quan sát quan]
+- [KHÁM PHÁ kp-soi-quan · quan sát quan · Hà Vy soi]
   - vung:kinh · x 55% · y 19% · rộng 26% → n3-soi-kinh · nhãn: Cặp kính
   - vung:gi-le · x 50% · y 46% · rộng 24% → n3-soi-gi-le · nhãn: Áo gi lê len
   - vung:tay · x 14% · y 80% · rộng 20% → n3-soi-tay · nhãn: Hai tay chắp sau lưng

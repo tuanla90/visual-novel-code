@@ -257,7 +257,7 @@ export type MucMvp =
   | { kind: 'trial-filter'; id: string; sql: string; soDong: number; chon: { cot: string; giaTri: string } }
   | { kind: 'save-evidence'; id: string }
   | { kind: 'ending-branch' }
-  | { kind: 'explore'; id: string; diem: RawDiemKhamPha[]; kieu: 'canh' | 'ban-do' | 'quan-sat'; nhanVat: string | null; gio: string | null };
+  | { kind: 'explore'; id: string; diem: RawDiemKhamPha[]; kieu: 'canh' | 'ban-do' | 'quan-sat'; nhanVat: string | null; gio: string | null; dang: string | null; haVySoi: boolean };
 
 export interface RawBangChungDoiChat {
   id: string;
@@ -1148,8 +1148,9 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       }
       if ((m = new RegExp(`^- \\[LƯU BẰNG CHỨNG (${MA})\\]$`).exec(line))) return add({ kind: 'save-evidence', id: m[1] ?? '' });
       if (line === '- [RẼ KẾT]') return add({ kind: 'ending-branch' });
-      if ((m = new RegExp(`^- \\[KHÁM PHÁ (${MA})(?: · (bản đồ(?: · giờ (\\d\\d:\\d\\d))?|quan sát (${MA})))?\\]$`).exec(line))) {
-        kham = { kind: 'explore', id: m[1] ?? '', diem: [], kieu: m[2]?.startsWith('bản đồ') ? 'ban-do' : m[2] ? 'quan-sat' : 'canh', nhanVat: m[4] ?? null, gio: m[3] ?? null };
+      // `quan sát <nv>/<dáng>`: soi nhân vật trong một dáng / bộ đồ cụ thể; `· Hà Vy soi`: mở bằng cảnh cắt đôi mắt Hà Vy (kính lóe sáng).
+      if ((m = new RegExp(`^- \\[KHÁM PHÁ (${MA})(?: · (bản đồ(?: · giờ (\\d\\d:\\d\\d))?|quan sát (${MA})(?:/(${MA}))?( · Hà Vy soi)?))?\\]$`).exec(line))) {
+        kham = { kind: 'explore', id: m[1] ?? '', diem: [], kieu: m[2]?.startsWith('bản đồ') ? 'ban-do' : m[2] ? 'quan-sat' : 'canh', nhanVat: m[4] ?? null, gio: m[3] ?? null, dang: m[5] ?? null, haVySoi: m[6] !== undefined };
         return add(kham);
       }
       if (line.startsWith('- [') && /^- \[[A-ZÀ-Ỹ]/.test(line)) {

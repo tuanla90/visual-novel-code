@@ -1029,12 +1029,12 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Xem xong cả hai thì một cậu sinh viên áo xanh tình nguyện, mũ tai bèo đeo sau lưng, từ hành lang bên phải đi ra."
+          "text": "Sảnh tầng một đông người ngày nhập học: tân sinh viên kéo vali, phụ huynh bê thùng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Lẫn trong đám đông bên phải có một tấm lưng áo xanh tình nguyện, mũ tai bèo đeo sau lưng: chi tiết ẩn, không có dấu, xem xong thang máy và bảng tin thì mới bấm được."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Mát hẳn. Giờ lên tầng bốn kiểu gì đây…)"
+          "text": "(Mát hẳn. Mà đông thế này… Giờ lên tầng bốn kiểu gì đây?)"
         },
         {
           "type": "explore",
@@ -1059,16 +1059,16 @@ const GOC = {
               "nhan": "Xem bảng tin"
             },
             {
-              "sprite": "nv:tung/ao-xanh",
-              "x": 80,
-              "y": 100,
-              "rong": 17,
-              "chuoi": "md-00-gap-tung",
+              "sprite": "vung:lung-ao-xanh",
+              "x": 87.5,
+              "y": 44,
+              "rong": 9,
+              "chuoi": "md-00-thay-tung",
               "sau": [
                 "md-00-thang-may",
                 "md-00-so-do"
               ],
-              "nhan": "Hỏi đường cậu bạn áo xanh"
+              "nhan": "Tấm lưng áo xanh giữa đám đông"
             }
           ]
         }
@@ -1116,6 +1116,135 @@ const GOC = {
       ]
     },
     {
+      "id": "md-00-thay-tung",
+      "title": "Chi tiết ẩn đầu tiên: một tấm lưng áo xanh giữa đám đông",
+      "canh": "sanh-ktx",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "reminder",
+          "speaker": "player",
+          "text": "Thang máy hỏng, sơ đồ không vẽ thang bộ. Trong sảnh này ai là người hỏi được?"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Ai cũng kéo vali, ai cũng mới tới như mình. Hỏi họ thì chắc cũng chịu.)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Khoan. Giữa đám đông có một cái lưng áo xanh, không vali, không balo.)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Nhìn kỹ đã rồi hẵng hỏi.)"
+        },
+        {
+          "type": "goto",
+          "to": "md-00-soi-tung"
+        }
+      ]
+    },
+    {
+      "id": "md-00-soi-tung",
+      "title": "Soi cậu bạn áo xanh trước khi hỏi: bấm vào người rồi bấm vào áo",
+      "canh": "sanh-ktx",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "explore",
+          "id": "kp-soi-tung-sanh",
+          "kieu": "quan-sat",
+          "nhanVat": "tung",
+          "dang": "ao-xanh",
+          "diem": [
+            {
+              "sprite": "vung:ao",
+              "x": 66,
+              "y": 45,
+              "rong": 22,
+              "chuoi": "md-00-soi-ao",
+              "sau": [],
+              "nhan": "Cái áo xanh"
+            },
+            {
+              "sprite": "vung:mu",
+              "x": 22,
+              "y": 30,
+              "rong": 20,
+              "chuoi": "md-00-soi-mu",
+              "sau": [],
+              "nhan": "Cái mũ sau lưng"
+            },
+            {
+              "sprite": "vung:to-giay",
+              "x": 84,
+              "y": 57,
+              "rong": 22,
+              "chuoi": "md-00-soi-to-giay",
+              "sau": [],
+              "nhan": "Tờ giấy trên tay"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Áo tình nguyện, mũ đi nắng, sơ đồ trên tay. Người này biết đường. Hỏi cậu ấy.)"
+        },
+        {
+          "type": "goto",
+          "to": "md-00-gap-tung"
+        }
+      ]
+    },
+    {
+      "id": "md-00-soi-ao",
+      "title": "Soi cậu bạn áo xanh: cái áo",
+      "canh": "sanh-ktx",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Sơ mi xanh dài tay, trên ngực gắn lá cờ nhỏ. Áo của đội tình nguyện.)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Ngày nhập học mà mặc áo này thì là người ra đón tân sinh viên.)"
+        }
+      ]
+    },
+    {
+      "id": "md-00-soi-mu",
+      "title": "Soi cậu bạn áo xanh: cái mũ tai bèo",
+      "canh": "sanh-ktx",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Mũ tai bèo đeo sau lưng, dây còn hằn trên cổ áo. Đứng ngoài nắng cả buổi rồi mới vào đây.)"
+        }
+      ]
+    },
+    {
+      "id": "md-00-soi-to-giay",
+      "title": "Soi cậu bạn áo xanh: tờ giấy trên tay",
+      "canh": "sanh-ktx",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Một tờ sơ đồ gấp đôi, mép đã quăn. Cậu ấy cầm để chỉ đường cho người khác, không phải để tự tìm đường.)"
+        }
+      ]
+    },
+    {
       "id": "md-00-gap-tung",
       "title": "Hỏi đường cậu bạn áo xanh: tạo nhân vật",
       "canh": "sanh-ktx",
@@ -1142,6 +1271,23 @@ const GOC = {
           "speaker": "tung",
           "expression": "ao-xanh-happy",
           "text": "Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ là Tùng, học Du lịch."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Cùng phòng? Tớ tưởng cậu là anh năm hai, năm ba gì đấy, mặc áo tình nguyện thế kia."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "ao-xanh",
+          "text": "Năm nhất như cậu thôi. Tớ trúng tuyển đợt một, nhập học từ cuối tháng Tám nên lên trước hai tuần, đường nào cũng đi mòn rồi."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "ao-xanh-happy",
+          "text": "Đội tình nguyện thiếu người dẫn đường khu ký túc, chú tớ làm ở đây giới thiệu, thế là họ cho tớ mượn cái áo làm cộng tác viên hai hôm."
         },
         {
           "type": "create-character",
@@ -1599,6 +1745,7 @@ const GOC = {
           "id": "kp-soi-tung",
           "kieu": "quan-sat",
           "nhanVat": "tung",
+          "haVySoi": true,
           "diem": [
             {
               "sprite": "vung:ban-do",
@@ -2801,6 +2948,7 @@ const GOC = {
           "id": "kp-soi-quan",
           "kieu": "quan-sat",
           "nhanVat": "quan",
+          "haVySoi": true,
           "diem": [
             {
               "sprite": "vung:kinh",
@@ -4821,6 +4969,7 @@ const GOC = {
           "id": "kp-soi-nam",
           "kieu": "quan-sat",
           "nhanVat": "nam",
+          "haVySoi": true,
           "diem": [
             {
               "sprite": "vung:hop",
@@ -7579,6 +7728,7 @@ const GOC = {
           "id": "kp-soi-khanh",
           "kieu": "quan-sat",
           "nhanVat": "khanh",
+          "haVySoi": true,
           "diem": [
             {
               "sprite": "vung:the",
@@ -11469,7 +11619,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Tám lượt kia tớ dẫn đúng, nên tớ cứ nghĩ mình không bao giờ sai."
+          "text": "Tớ là cộng tác viên mượn áo, có ai tập huấn cho đâu. Tám lượt kia tớ dẫn đúng, nên tớ cứ nghĩ mình không bao giờ sai."
         },
         {
           "type": "question",
@@ -14830,7 +14980,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:127 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:160 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

@@ -113,6 +113,8 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
         ...(it.kieu !== 'canh' ? { kieu: it.kieu } : {}),
         ...(it.nhanVat ? { nhanVat: it.nhanVat } : {}),
         ...(it.gio ? { gio: it.gio } : {}),
+        ...(it.dang ? { dang: it.dang } : {}),
+        ...(it.haVySoi ? { haVySoi: true } : {}),
         diem: it.diem.map((d) => ({ sprite: d.sprite, x: d.x, y: d.y, rong: d.rong, chuoi: d.chuoi, sau: d.sau, nhan: d.nhan, ...(d.dau ? { dau: d.dau } : {}), ...(d.co.length > 0 ? { co: d.co } : {}) })),
       };
   }

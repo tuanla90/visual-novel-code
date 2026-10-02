@@ -425,6 +425,8 @@ describe('[KHÁM PHÁ] trong chuỗi (cảnh bấm vật, sảnh KTX của mở 
       kieu: 'canh',
       nhanVat: null,
       gio: null,
+      dang: null,
+      haVySoi: false,
       diem: [
         { sprite: 'obj-a', x: 10, y: 50, rong: 5, chuoi: 'x-a', sau: [], nhan: 'Xem tờ giấy', dau: null, co: [] },
         { sprite: 'nv:tung', x: 80, y: 100, rong: 15, chuoi: 'x-b', sau: ['x-a'], nhan: null, dau: null, co: [] },

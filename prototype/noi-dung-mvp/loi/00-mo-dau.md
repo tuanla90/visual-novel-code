@@ -24,8 +24,8 @@
 > NHẮC VIỆC player: Tầng bốn. Thang máy hay thang bộ đây?
 
 ## md-00-sanh-ktx.2
-- [DÀN DỰNG] Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Xem xong cả hai thì một cậu sinh viên áo xanh tình nguyện, mũ tai bèo đeo sau lưng, từ hành lang bên phải đi ra.
-- **player**: (Mát hẳn. Giờ lên tầng bốn kiểu gì đây…)
+- [DÀN DỰNG] Sảnh tầng một đông người ngày nhập học: tân sinh viên kéo vali, phụ huynh bê thùng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Lẫn trong đám đông bên phải có một tấm lưng áo xanh tình nguyện, mũ tai bèo đeo sau lưng: chi tiết ẩn, không có dấu, xem xong thang máy và bảng tin thì mới bấm được.
+- **player**: (Mát hẳn. Mà đông thế này… Giờ lên tầng bốn kiểu gì đây?)
 
 ## md-00-thang-may.1
 - **narrator**: Tờ giấy dán ngay giữa cửa thang máy: "Thang máy bảo trì đến hết tuần. Sinh viên vui lòng đi thang bộ."
@@ -36,11 +36,33 @@
 - **player**: (Phòng 408 ở dãy giữa, tầng bốn. Đúng nhà này rồi.)
 - **player**: (Sơ đồ chỉ vẽ ba dãy nhà nhìn từ trên xuống. Thang bộ ở đâu thì chịu.)
 
+## md-00-thay-tung.1
+> NHẮC VIỆC player: Thang máy hỏng, sơ đồ không vẽ thang bộ. Trong sảnh này ai là người hỏi được?
+- **player**: (Ai cũng kéo vali, ai cũng mới tới như mình. Hỏi họ thì chắc cũng chịu.)
+- **player**: (Khoan. Giữa đám đông có một cái lưng áo xanh, không vali, không balo.)
+- **player**: (Nhìn kỹ đã rồi hẵng hỏi.)
+
+## md-00-soi-ao.1
+- **player**: (Sơ mi xanh dài tay, trên ngực gắn lá cờ nhỏ. Áo của đội tình nguyện.)
+- **player**: (Ngày nhập học mà mặc áo này thì là người ra đón tân sinh viên.)
+
+## md-00-soi-mu.1
+- **player**: (Mũ tai bèo đeo sau lưng, dây còn hằn trên cổ áo. Đứng ngoài nắng cả buổi rồi mới vào đây.)
+
+## md-00-soi-to-giay.1
+- **player**: (Một tờ sơ đồ gấp đôi, mép đã quăn. Cậu ấy cầm để chỉ đường cho người khác, không phải để tự tìm đường.)
+
+## md-00-soi-tung.1
+- **player**: (Áo tình nguyện, mũ đi nắng, sơ đồ trên tay. Người này biết đường. Hỏi cậu ấy.)
+
 ## md-00-gap-tung.1
 - **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế? Thang máy đang bảo trì.
 - **tung** (ao-xanh-happy): Khuất sau hành lang kia. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
 - **player**: Tầng bốn, phòng 408.
 - **tung** (ao-xanh-happy): Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ là {{nv.tung}}, học Du lịch.
+- **player**: Cùng phòng? Tớ tưởng cậu là anh năm hai, năm ba gì đấy, mặc áo tình nguyện thế kia.
+- **tung** (ao-xanh): Năm nhất như cậu thôi. Tớ trúng tuyển đợt một, nhập học từ cuối tháng Tám nên lên trước hai tuần, đường nào cũng đi mòn rồi.
+- **tung** (ao-xanh-happy): Đội tình nguyện thiếu người dẫn đường khu ký túc, chú tớ làm ở đây giới thiệu, thế là họ cho tớ mượn cái áo làm cộng tác viên hai hôm.
 
 ## md-00-gap-tung.2
 - **tung** (ao-xanh-happy): {{nv.nguoi-choi}} à. Dễ gọi đấy.

@@ -25,7 +25,7 @@
 ### tin-gap-nam — Xưởng Robotics: gặp Nam; lấy phiếu làm nguồn, tìm tin gốc {cảnh: xuong-robot}
 
 - [LỜI tin-gap-nam.1]
-- [KHÁM PHÁ kp-soi-nam · quan sát nam]
+- [KHÁM PHÁ kp-soi-nam · quan sát nam · Hà Vy soi]
   - vung:hop · x 76% · y 66% · rộng 26% → tin-soi-hop · nhãn: Cái hộp trên tay
   - vung:but · x 42% · y 52% · rộng 13% → tin-soi-but · nhãn: Cây bút dạ
   - vung:tay-ao · x 10% · y 62% · rộng 18% → tin-soi-tay-ao · nhãn: Tay áo

@@ -80,7 +80,7 @@
 - **tung** (thinking): Mã này tớ thấy ở đâu rồi.
 - **player**: Trên phiếu hai mã hồi tháng Chín. Lê Thu Hoài, lớp BC24A.
 - **tung** (gai-dau): Sáng Chủ nhật… Tớ nhớ rồi. Bạn ấy kéo cái vali to hơn người, hỏi đường nhỏ lắm. Tớ nghe ra "nhà xe", tưởng bạn ấy đi gửi xe, thế là dẫn thẳng ra đó. Tớ không hỏi lại.
-- **tung** (worried): Tám lượt kia tớ dẫn đúng, nên tớ cứ nghĩ mình không bao giờ sai.
+- **tung** (worried): Tớ là cộng tác viên mượn áo, có ai tập huấn cho đâu. Tám lượt kia tớ dẫn đúng, nên tớ cứ nghĩ mình không bao giờ sai.
 
 ## p-lac-ket.1
 - **narrator**: Tùng xé một trang vở, kê lên tập bản đồ, vẽ. Cổng chính, hàng cây, ký túc xá, một mũi tên to. Góc dưới ghi: "Lần này không qua nhà xe. Tớ xin lỗi vì hôm ấy không hỏi lại. — Tùng, áo xanh."

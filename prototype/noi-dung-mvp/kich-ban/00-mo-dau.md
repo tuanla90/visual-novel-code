@@ -22,7 +22,7 @@
 - [KHÁM PHÁ kp-sanh-ktx]
   - obj-thong-bao-thang-may · x 12% · y 44% · rộng 4% → md-00-thang-may · nhãn: Xem tờ giấy trên cửa thang máy
   - obj-so-do-ktx · x 44% · y 40% · rộng 11% → md-00-so-do · nhãn: Xem bảng tin
-  - nv:tung/ao-xanh · x 80% · y 100% · rộng 17% → md-00-gap-tung · sau: md-00-thang-may, md-00-so-do · nhãn: Hỏi đường cậu bạn áo xanh
+  - vung:lung-ao-xanh · x 87.5% · y 44% · rộng 9% → md-00-thay-tung · sau: md-00-thang-may, md-00-so-do · nhãn: Tấm lưng áo xanh giữa đám đông
 
 ### md-00-thang-may — Tờ giấy dán trên cửa thang máy {cảnh: sanh-ktx}
 
@@ -31,6 +31,32 @@
 ### md-00-so-do — Sơ đồ khu nhà trên bảng tin {cảnh: sanh-ktx}
 
 - [LỜI md-00-so-do.1]
+
+### md-00-thay-tung — Chi tiết ẩn đầu tiên: một tấm lưng áo xanh giữa đám đông {cảnh: sanh-ktx}
+
+- [LỜI md-00-thay-tung.1]
+- [ĐI TỚI md-00-soi-tung]
+
+### md-00-soi-tung — Soi cậu bạn áo xanh trước khi hỏi: bấm vào người rồi bấm vào áo {cảnh: sanh-ktx}
+
+- [KHÁM PHÁ kp-soi-tung-sanh · quan sát tung/ao-xanh]
+  - vung:ao · x 66% · y 45% · rộng 22% → md-00-soi-ao · nhãn: Cái áo xanh
+  - vung:mu · x 22% · y 30% · rộng 20% → md-00-soi-mu · nhãn: Cái mũ sau lưng
+  - vung:to-giay · x 84% · y 57% · rộng 22% → md-00-soi-to-giay · nhãn: Tờ giấy trên tay
+- [LỜI md-00-soi-tung.1]
+- [ĐI TỚI md-00-gap-tung]
+
+### md-00-soi-ao — Soi cậu bạn áo xanh: cái áo {cảnh: sanh-ktx}
+
+- [LỜI md-00-soi-ao.1]
+
+### md-00-soi-mu — Soi cậu bạn áo xanh: cái mũ tai bèo {cảnh: sanh-ktx}
+
+- [LỜI md-00-soi-mu.1]
+
+### md-00-soi-to-giay — Soi cậu bạn áo xanh: tờ giấy trên tay {cảnh: sanh-ktx}
+
+- [LỜI md-00-soi-to-giay.1]
 
 ### md-00-gap-tung — Hỏi đường cậu bạn áo xanh: tạo nhân vật {cảnh: sanh-ktx}
 
@@ -86,7 +112,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
 - [LỜI md-10-phong-clb.1]
 
 - [LỜI md-10-phong-clb.2]
-- [KHÁM PHÁ kp-soi-tung · quan sát tung]
+- [KHÁM PHÁ kp-soi-tung · quan sát tung · Hà Vy soi]
   - vung:ban-do · x 82% · y 56% · rộng 24% → md-10-soi-ban-do · nhãn: Tờ giấy trên tay
   - vung:ao · x 50% · y 44% · rộng 22% → md-10-soi-ao · nhãn: Cái áo
   - vung:mui · x 57% · y 21% · rộng 14% → md-10-soi-mui · nhãn: Miếng băng trên mũi
