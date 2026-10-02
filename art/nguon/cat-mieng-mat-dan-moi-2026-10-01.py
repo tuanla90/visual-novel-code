@@ -34,7 +34,10 @@ BO_CU = {  # bộ của talk-rigs.ts: tên thư mục khác tên ảnh
 BO_MVP = ['char-tung-happy', 'char-tung-worried', 'char-tung-surprised', 'char-tung-thinking', 'char-tung-gai-dau', 'char-tung-chi-tay',
           'char-tung-ao-xanh', 'char-tung-ao-xanh-happy', 'char-tung-ao-xanh-worried', 'char-tung-ao-xanh-gai-dau', 'char-tung-ao-xanh-chi-tay',
           'char-tung-ao-xanh-surprised', 'char-tung-ao-xanh-thinking', 'char-tung-ao-xanh-doi-mu',
-          'char-ha-vy-day-kinh', 'char-minh-anh-serious', 'char-minh-anh-khoanh-tay', 'char-quan-chi-man', 'char-nguoi-choi']
+          'char-ha-vy-day-kinh', 'char-minh-anh-serious', 'char-minh-anh-khoanh-tay', 'char-quan-chi-man', 'char-nguoi-choi',
+          # 02/10: Duy, nhóm Robotics, hai cô (áo dài)
+          'char-duy', 'char-duy-smile', 'char-duy-serious', 'char-nam', 'char-khanh', 'char-thao', 'char-bach',
+          'char-co-hanh', 'char-co-hanh-smile', 'char-co-lan', 'char-co-lan-smile']
 
 
 def tep_chan_dung(ten: str) -> str:
@@ -44,6 +47,10 @@ def tep_chan_dung(ten: str) -> str:
 _sx = importlib.util.spec_from_file_location('xu_ly_cu', Path(__file__).with_name('xu-ly-anh-2026-09-30.py'))
 xl = importlib.util.module_from_spec(_sx)
 _sx.loader.exec_module(xl)
+
+_sm = importlib.util.spec_from_file_location('xu_ly_moi', Path(__file__).with_name('xu-ly-anh-dan-moi-2026-10-01.py'))
+xm = importlib.util.module_from_spec(_sm)
+_sm.loader.exec_module(xm)
 
 _spec = importlib.util.spec_from_file_location('cat_cu', Path(__file__).with_name('cat-mieng-mat.py'))
 cu = importlib.util.module_from_spec(_spec)
@@ -57,7 +64,10 @@ def main(ten_anh):
     for t in chon:  # công cụ cũ đọc <VAO>/<ảnh>--mieng.png
         for loai in ('mieng', 'mat'):
             # khử nền và ánh hồng tím trước khi so, kẻo mép miếng dính viền tím
-            xl.tach_hong_tim(Image.open(G2 / f'g2-{t}--{loai}.png')).save(VAO / f'{t}--{loai}.png')
+            khung = xl.tach_hong_tim(Image.open(G2 / f'g2-{t}--{loai}.png'))
+            if t.startswith('char-duy'):  # chân dung Duy đã phóng 1,10 lần khi xử lý: khung nhép phải phóng y hệt
+                khung = xm.can_duy(khung.resize((768, 1360), Image.LANCZOS))
+            khung.save(VAO / f'{t}--{loai}.png')
     tam = VAO / '_mieng'
     cu.VAO, cu.RA, cu.ANH = VAO, tam, {t: tep_chan_dung(t) for t in chon}
     cu.main(chon)

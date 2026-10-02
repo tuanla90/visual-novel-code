@@ -47,6 +47,28 @@ import quanChiManMouth from './nhep/char-quan-chi-man/mouth.webp';
 import quanChiManEyes from './nhep/char-quan-chi-man/eyes.webp';
 import nguoiChoiMouth from './nhep/char-nguoi-choi/mouth.webp';
 import nguoiChoiEyes from './nhep/char-nguoi-choi/eyes.webp';
+import duyMouth from './nhep/char-duy/mouth.webp';
+import duyEyes from './nhep/char-duy/eyes.webp';
+import duySmileMouth from './nhep/char-duy-smile/mouth.webp';
+import duySmileEyes from './nhep/char-duy-smile/eyes.webp';
+import duySeriousMouth from './nhep/char-duy-serious/mouth.webp';
+import duySeriousEyes from './nhep/char-duy-serious/eyes.webp';
+import namMouth from './nhep/char-nam/mouth.webp';
+import namEyes from './nhep/char-nam/eyes.webp';
+import khanhMouth from './nhep/char-khanh/mouth.webp';
+import khanhEyes from './nhep/char-khanh/eyes.webp';
+import thaoMouth from './nhep/char-thao/mouth.webp';
+import thaoEyes from './nhep/char-thao/eyes.webp';
+import bachMouth from './nhep/char-bach/mouth.webp';
+import bachEyes from './nhep/char-bach/eyes.webp';
+import coHanhMouth from './nhep/char-co-hanh/mouth.webp';
+import coHanhEyes from './nhep/char-co-hanh/eyes.webp';
+import coHanhSmileMouth from './nhep/char-co-hanh-smile/mouth.webp';
+import coHanhSmileEyes from './nhep/char-co-hanh-smile/eyes.webp';
+import coLanMouth from './nhep/char-co-lan/mouth.webp';
+import coLanEyes from './nhep/char-co-lan/eyes.webp';
+import coLanSmileMouth from './nhep/char-co-lan-smile/mouth.webp';
+import coLanSmileEyes from './nhep/char-co-lan-smile/eyes.webp';
 
 type Hop = [x: number, y: number, w: number, h: number];
 
@@ -84,6 +106,17 @@ export const BO_NHEP_MOI_MVP: ReadonlyMap<string, TalkRig> = new Map<string, Tal
   bo('char-minh-anh-khoanh-tay', minhAnhKhoanhTayMouth, [336, 311, 168, 147], minhAnhKhoanhTayEyes, [292, 128, 257, 193]),
   bo('char-quan-chi-man', quanChiManMouth, [247, 334, 188, 174], quanChiManEyes, [192, 156, 312, 181]),
   bo('char-nguoi-choi', nguoiChoiMouth, [265, 323, 222, 191], nguoiChoiEyes, [203, 130, 347, 192]),
+  bo('char-duy', duyMouth, [275, 353, 198, 170], duyEyes, [222, 170, 305, 187]),
+  bo('char-duy-smile', duySmileMouth, [274, 353, 199, 172], duySmileEyes, [220, 170, 308, 187]),
+  bo('char-duy-serious', duySeriousMouth, [273, 353, 200, 173], duySeriousEyes, [219, 170, 309, 187]),
+  bo('char-nam', namMouth, [279, 284, 177, 148], namEyes, [233, 166, 270, 121]),
+  bo('char-khanh', khanhMouth, [288, 333, 183, 158], khanhEyes, [240, 151, 280, 189]),
+  bo('char-thao', thaoMouth, [266, 328, 189, 163], thaoEyes, [216, 144, 290, 190]),
+  bo('char-bach', bachMouth, [292, 352, 177, 153], bachEyes, [245, 174, 271, 186]),
+  bo('char-co-hanh', coHanhMouth, [278, 346, 186, 161], coHanhEyes, [228, 165, 286, 187]),
+  bo('char-co-hanh-smile', coHanhSmileMouth, [249, 345, 207, 178], coHanhSmileEyes, [193, 159, 320, 188]),
+  bo('char-co-lan', coLanMouth, [278, 338, 192, 166], coLanEyes, [226, 154, 297, 189]),
+  bo('char-co-lan-smile', coLanSmileMouth, [280, 331, 192, 165], coLanSmileEyes, [229, 146, 295, 190]),
 ]);
 
 let theoUrl: Map<string, TalkRig> | null = null;
