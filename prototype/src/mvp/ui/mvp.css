@@ -2647,9 +2647,6 @@
   .mvp-hc__lop {
     animation: mvp-hc-truot var(--hc-giay) cubic-bezier(0.3, 0.55, 0.35, 1) var(--hc-tre) both;
   }
-  .mvp-hc__nv {
-    animation: mvp-hc-nhip 0.54s ease-in-out var(--hc-tre) infinite;
-  }
   .mvp-hc__den {
     animation: mvp-hc-den 1.7s ease-in-out infinite;
   }
@@ -2665,11 +2662,6 @@
 @keyframes mvp-hc-truot {
   from { transform: translate(0, 0) scale(1); }
   to { transform: translate(var(--hc-dx), var(--hc-dy)) scale(var(--hc-co)); }
-}
-/* Nhịp chạy: cả hình nhún rất nhẹ, không đổi dáng. */
-@keyframes mvp-hc-nhip {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-1.1%) rotate(-0.5deg); }
 }
 @keyframes mvp-hc-den {
   0%, 100% { opacity: 0.4; }

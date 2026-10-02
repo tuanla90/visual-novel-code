@@ -23,7 +23,7 @@ export interface HoatCanh {
   tam: [number, number];
   /** Nền phóng to tới bao nhiêu. */
   phong: number;
-  /** Cả hoạt cảnh kéo dài mấy giây (sau đó giữ nguyên khung cuối, chỉ còn nhịp chạy). */
+  /** Cả hoạt cảnh kéo dài mấy giây (sau đó giữ nguyên khung cuối; nhân vật KHÔNG nhún nhảy — user chốt 02/10/2026). */
   giay: number;
   lop: LopHoatCanh[];
   /** Vệt tốc độ tỏa từ tâm. */
