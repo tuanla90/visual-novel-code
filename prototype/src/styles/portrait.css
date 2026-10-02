@@ -128,7 +128,13 @@
     height: 18px !important;
   }
   .topbar__task-label {
-    font-size: 0.55rem !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.1em !important;
+  }
+  /* Vé "NGÀY / VỤ" bị thu 0,82 lần: chữ nhãn 0,68rem để còn ~9 px khi hiện (trước 6,8 px), chưa đè kẹp giấy. */
+  .topbar__chapter-kicker {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.06em !important;
   }
   .topbar__task-text {
     font-size: 0.78rem !important;
@@ -176,7 +182,12 @@
   height: 18px !important;
 }
 .game--portrait .topbar__task-label {
-  font-size: 0.55rem !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.1em !important;
+}
+.game--portrait .topbar__chapter-kicker {
+  font-size: 0.68rem !important;
+  letter-spacing: 0.06em !important;
 }
 .game--portrait .topbar__task-text {
   font-size: 0.78rem !important;
@@ -667,4 +678,31 @@
 .game--portrait .vn-quick-bar--mobile .vn-btn {
   flex: 0 0 auto !important;
   white-space: nowrap !important;
+}
+/* Năm nút (Lùi, Auto, Skip, Log, Ẩn UI — Lưu/Nạp/Cài đặt nằm ở menu ≡) chia đều cả hàng, nút cao 36 px dễ bấm. */
+@media (max-width: 768px) {
+  .vn-quick-bar--mobile {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .vn-quick-bar--mobile .vn-btn {
+    flex: 1 1 0 !important;
+    min-width: 0;
+    min-height: 36px !important;
+    justify-content: center;
+    padding: 3px 4px !important;
+    font-size: 0.74rem !important;
+  }
+}
+.game--portrait .vn-quick-bar--mobile {
+  width: 100%;
+  justify-content: space-between;
+}
+.game--portrait .vn-quick-bar--mobile .vn-btn {
+  flex: 1 1 0 !important;
+  min-width: 0;
+  min-height: 36px !important;
+  justify-content: center;
+  padding: 3px 4px !important;
+  font-size: 0.74rem !important;
 }

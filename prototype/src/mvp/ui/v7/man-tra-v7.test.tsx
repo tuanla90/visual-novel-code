@@ -110,9 +110,9 @@ describe('màn tra v7 · c-ten-h (ngày 3, laptop phòng CLB)', () => {
     expect(cauSql()).toMatch(/^SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE/);
 
     await u.click(nutChay());
-    await waitFor(() => expect(screen.getByRole('button', { name: '📌 Ghim lên bảng' })).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Ghim lên bảng' })).toBeInTheDocument());
     // Bấm từng ô mã để chép ra giấy nhớ rồi mới ghim được.
-    expect(screen.getByRole('button', { name: '📌 Ghim lên bảng' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Ghim lên bảng' })).toBeDisabled();
     await u.click(screen.getByRole('button', { name: 'Ô ma_sv: SV240228' }));
     await u.click(screen.getByRole('button', { name: 'Ô ma_sv: SV240317' }));
     const ketQua = screen.getByLabelText('Kết quả');
@@ -121,7 +121,7 @@ describe('màn tra v7 · c-ten-h (ngày 3, laptop phòng CLB)', () => {
     expect(within(ketQua).getByText('Hoài')).toBeInTheDocument();
     // Đúng rồi thì khóa câu: không đổi được cột / bỏ giấy nữa.
     expect(screen.getByRole('button', { name: /^Cột của điều kiện 1/ })).toBeDisabled();
-    const ghim = screen.getByRole('button', { name: '📌 Ghim lên bảng' });
+    const ghim = screen.getByRole('button', { name: 'Ghim lên bảng' });
     await u.click(ghim);
     expect(onXong).toHaveBeenCalledTimes(1);
     expect(onXong).toHaveBeenCalledWith(['ev-hai-lop', 'clue-chu-ky-h']);
@@ -212,7 +212,7 @@ describe('màn tra v7 · luật chương 1', () => {
     await u.click(screen.getByRole('button', { name: /^Nối điều kiện 2: HOẶC/ }));
     await u.click(nutChay());
     await waitFor(() => expect(dau()).toBe('2 DÒNG'));
-    await u.click(screen.getByRole('button', { name: '📌 Ghim lên bảng' }));
+    await u.click(screen.getByRole('button', { name: 'Ghim lên bảng' }));
     expect(onXong).toHaveBeenCalledWith(['clue-toa-b', 'clue-bao-chi-k24']);
   });
 });

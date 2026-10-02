@@ -7,6 +7,7 @@
  */
 import { useMemo, useState, type CSSProperties } from 'react';
 import type { BoDuLieuMvp, KichBanMvp, TheThuThachMvp } from '../../../content/mvp/types';
+import { IconPin, IconPlay } from '../../../shared/ui/icons';
 import type { GiaTriHoSo } from '../../engine/giay-nho';
 import type { DieuKienDung } from '../../engine/trinh-dung';
 import { TEN_HAM, khoiTongHopCuaThe, taoSqlTongHop, type CauTongHop, type HamTongHop, type NguonTongHop } from '../../engine/trinh-dung-tong-hop';
@@ -267,7 +268,7 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
               })
             }
           >
-            <span aria-hidden="true">📌</span> {selectedNguon ? tenNguon(selectedNguon.id) : 'chọn phiếu nguồn'}
+            <IconPin className="v7-bt" /> {selectedNguon ? tenNguon(selectedNguon.id) : 'chọn phiếu nguồn'}
           </button>
           <small>{selectedNguon ? 'phiếu làm nguồn' : 'bấm để chọn'}</small>
         </div>
@@ -405,11 +406,11 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
       <div className="v7-day">
         {dung ? (
           <button type="button" className="v7-nut v7-nut--ghim" disabled={xongRoi} onClick={xong} autoFocus>
-            📌 Ghim lên bảng
+            <IconPin className="v7-bt" /> Ghim lên bảng
           </button>
         ) : (
           <button type="button" className="v7-nut v7-nut--chay" disabled={dangChay || !selectedNguon || !nhomTheo} onClick={() => void chay()}>
-            ▶ {dangChay ? 'ĐANG CHẠY' : 'CHẠY'}
+            <IconPlay className="v7-bt" /> {dangChay ? 'ĐANG CHẠY' : 'CHẠY'}
           </button>
         )}
       </div>

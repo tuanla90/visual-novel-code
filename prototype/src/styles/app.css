@@ -1242,8 +1242,10 @@
 }
 
 .docview__extra-note-icon {
-  font-size: 1rem;
-  line-height: 1;
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+  margin-top: 0.15em;
 }
 
 /* Hiện vật lá thư & phong bì chữ ký H trong bệ trưng bày */

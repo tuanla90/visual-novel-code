@@ -735,6 +735,12 @@ Lý do: đo trực tiếp hai chỉ số §10 ("màn phản bác là một trong
 - **Lý do:** hạt bần (cork) rối mắt, và bảng bần ít gặp ở Việt Nam; bảng tin bọc nỉ khung nhôm có ở sảnh trường, KTX, văn phòng khoa, vẫn hợp đinh ghim và sợi chỉ đỏ (B.1–B.2 giữ nguyên cách chơi).
 - **Thực hiện:** ảnh nỉ 512 px tự lát liền mạch `src/assets/mvp/giao-dien/ui-bang-ni.webp` (thay `ui-bang-ban.webp`, đã xóa), khung nhôm trong `v7.css` `.bang__mat`, khay "chưa ghim" nền xám xanh. Không đổi ghim, sợi chỉ, thẻ.
 - **Cùng đợt:** nút "Mở laptop" bỏ emoji 💻, dùng biểu tượng laptop nét mảnh và kiểu thẻ giấy giống nút "Tiếp tục" của hộp thoại. Các emoji còn trong màn tra (📌 phiếu nguồn / "Ghim lên bảng", 🔒 tên bảng, 🔍 "Xem từng điều kiện") chưa đổi.
+- **Cập nhật 02/10 khuya:** đã thay nốt emoji ở màn tra, màn tổng hợp, lọc thử và ghi chú tài liệu (📌 🔒 🔍 👆, cả ▶ ◀ vì điện thoại hay vẽ thành emoji màu) bằng icon nét mảnh trong `shared/ui/icons.tsx` (IconPin, IconLock, IconSearch, IconPointer, IconPlay, IconChevronLeft).
+
+**QĐ-093 bổ sung (02/10 khuya) — thanh nút dưới hội thoại và chữ nhãn trên điện thoại.** · Nguồn: USER ("1-2-3 đi" — mục còn treo sau đợt màn dọc) · 02/10
+- Thanh nút nhanh trên điện thoại bỏ Lưu / Nạp / Cài đặt (đã có trong menu ≡ của thanh trên, cả MVP lẫn prototype); năm nút còn lại (Lùi, Auto, Skip, Log, Ẩn UI) chia đều một hàng, cao 36 px, không phải vuốt ngang nữa (trước: 551 px nội dung trong 350 px). Màn ngang / laptop giữ đủ tám nút.
+- Chữ nhãn thanh trên ở màn hẹp: "NHIỆM VỤ" 8,8 → 10,9 px; "NGÀY / VỤ" trên vé 8,3 → 10,9 px (vé thu 0,82 nên hiện ~9 px).
+- Màn tổng hợp v7 (main dựng lại) đã thử ở 375 px: chạy đúng hay sai đều tự cuộn tới bảng kết quả, không cần thêm phần tự cuộn.
 
 **QĐ-095 — Miếng nhép môi / chớp mắt cắt khít: chỉ thay môi và mí mắt.** · Nguồn: USER ("ghép miệng nói đang hơi fail… có đoạn nào bị lệch nét như cổ áo, thân người… cắt khít khí chút") · 02/10
 - **Lý do:** ảnh "miệng mở / mắt nhắm" do AI vẽ lại cả khuôn mặt, lệch vài điểm ảnh so với ảnh gốc; miếng cũ là hộp to (~200×170, miệng Tùng MVP còn đặt thấp tới cằm) nên khi nhép thì cằm, cổ áo, viền má, tóc, gọng kính giật theo.

@@ -10,6 +10,7 @@
 import { useEffect, useMemo, useRef, useState, type DragEvent } from 'react';
 import type { BoDuLieuMvp, NutMvp } from '../../../content/mvp/types';
 import { soundEngine } from '../../../shared/audio/sound-engine';
+import { IconPointer } from '../../../shared/ui/icons';
 import { chaySql, type KetQuaChay } from '../../engine/sql-mvp';
 import { cauTuSql } from '../../engine/trinh-dung';
 import { anhTheoTen } from '../anh-mvp';
@@ -246,7 +247,7 @@ export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
               ) : null}
               {locXong && !chep ? (
                 <p className="v7-kq__nhac">
-                  👆 {nhac ? `Cái cần lấy nằm ở cột ${nut.chon.cot}. Bấm vào ô ấy.` : `Còn ${kq.dong.length} người. Bấm vào ô ${nut.chon.cot} để chép ra giấy nhớ.`}
+                  <IconPointer className="v7-bt" /> {nhac ? `Cái cần lấy nằm ở cột ${nut.chon.cot}. Bấm vào ô ấy.` : `Còn ${kq.dong.length} người. Bấm vào ô ${nut.chon.cot} để chép ra giấy nhớ.`}
                 </p>
               ) : null}
               {chep ? <p className="v7-kq__nhac">Đã chép {chep} ra giấy nhớ.</p> : null}

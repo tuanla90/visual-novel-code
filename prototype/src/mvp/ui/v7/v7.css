@@ -628,6 +628,13 @@ button.v7-o:active:not(:disabled) {
   gap: 0.7em;
   padding: 0.5em 1.05em 0.6em;
 }
+/* Biểu tượng nét mảnh đứng cùng dòng chữ (thay emoji 📌 🔒 🔍 👆): theo màu chữ, cỡ theo chữ. */
+.v7-bt {
+  width: 1.05em;
+  height: 1.05em;
+  flex: none;
+  vertical-align: -0.17em;
+}
 .v7-nut {
   height: 2.9em;
   padding: 0 1em;

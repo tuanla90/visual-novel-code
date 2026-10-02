@@ -17,6 +17,7 @@ import type { BoDuLieuMvp, KichBanMvp, LoiMvp, TheThuThachMvp } from '../../../c
 import { soundEngine } from '../../../shared/audio/sound-engine';
 import { track } from '../../../shared/telemetry/track';
 import { CodeText } from '../../../shared/ui/CodeText';
+import { IconLock, IconPin, IconPlay, IconPointer, IconSearch } from '../../../shared/ui/icons';
 import type { GiaTriHoSo } from '../../engine/giay-nho';
 import { tenNguoiNoi } from '../../engine/may';
 import { chamThuThach, chaySql, phanUngSauKhiChay, type KetQuaCham } from '../../engine/sql-mvp';
@@ -397,7 +398,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
         <div className="v7-cau__bang">
           {nguonPhieu ? (
             <span className="v7-o v7-o--bang v7-o--phieu" title={`Phiếu đã ghim "${dienTen(nguonPhieu.nhan)}" dùng làm nguồn, tên tạm ${bang.ten}`}>
-              <span aria-hidden="true">📌</span> {dienTen(nguonPhieu.nhan)}
+              <IconPin className="v7-bt" /> {dienTen(nguonPhieu.nhan)}
             </span>
           ) : chonBang ? (
             <select
@@ -412,7 +413,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
             </select>
           ) : (
             <span className="v7-o v7-o--bang" title={`Bảng ${bang.ten}`}>
-              <span aria-hidden="true">🔒</span> {bang.ten}
+              <IconLock className="v7-bt" /> {bang.ten}
             </span>
           )}
           <small>{daChonBang ? `${tongDong} dòng` : 'chưa chọn bảng'}</small>
@@ -651,7 +652,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
             )}
           </div>
         ) : null}
-        {conChep > 0 ? <p className="v7-kq__nhac v7-kq__nhac--tra">👆 Bấm từng ô {the.bamO} để chép ra giấy nhớ (còn {conChep}).</p> : null}
+        {conChep > 0 ? <p className="v7-kq__nhac v7-kq__nhac--tra"><IconPointer className="v7-bt" /> Bấm từng ô {the.bamO} để chép ra giấy nhớ (còn {conChep}).</p> : null}
         {cham?.trangThai === 'loi' ? <p className="v7-loi">Chưa chạy được: {cham.chay.thongDiep}</p> : null}
         {soi && daChay ? (
           <div className="v7-soi">
@@ -693,16 +694,20 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
       <div className="v7-day">
         {daChay && cham && cham.trangThai !== 'loi' ? (
           <button type="button" className={`v7-nut v7-nut--soi${soi ? ' is-mo' : ''}`} onClick={() => setSoi(!soi)}>
-            🔍 Xem từng điều kiện
+            <IconSearch className="v7-bt" /> Xem từng điều kiện
           </button>
         ) : null}
         {dung ? (
           <button type="button" className="v7-nut v7-nut--ghim" disabled={xongRoi || conChep > 0} title={conChep > 0 ? `Bấm ${conChep} ô ${the.bamO ?? ''} còn lại để chép ra giấy nhớ` : undefined} onClick={xong} autoFocus>
-            {the.vatChung && !laChieu ? '📌 Ghim lên bảng' : 'Tiếp tục'}
+            {the.vatChung && !laChieu ? (
+              <>
+                <IconPin className="v7-bt" /> Ghim lên bảng
+              </>
+            ) : 'Tiếp tục'}
           </button>
         ) : (
           <button type="button" className="v7-nut v7-nut--chay" disabled={dangChay || !daChonBang || (!!chonCot && cotLay.length === 0)} onClick={() => void chay()}>
-            ▶ {dangChay ? 'ĐANG CHẠY' : 'CHẠY'}
+            <IconPlay className="v7-bt" /> {dangChay ? 'ĐANG CHẠY' : 'CHẠY'}
           </button>
         )}
       </div>
