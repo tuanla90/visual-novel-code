@@ -20,12 +20,21 @@ describe('bộ nhép môi MVP', () => {
     }
   });
 
+  it('miếng cắt khít: chỉ môi và mí mắt, không phủ cằm / cổ áo / tóc', () => {
+    for (const [ten, rig] of BO_NHEP_MOI_MVP) {
+      expect(rig.mouth.w, ten).toBeLessThanOrEqual(120);
+      expect(rig.mouth.h, ten).toBeLessThanOrEqual(100);
+      expect(rig.eyes.w, ten).toBeLessThanOrEqual(240);
+      expect(rig.eyes.h, ten).toBeLessThanOrEqual(110);
+    }
+  });
+
   it('tra theo URL ảnh đang hiện; ảnh không có bộ → undefined', () => {
     const url = anhTheoTen('char-tung-gai-dau');
-    expect(boNhepMoiTheoUrl(url)?.mouth.w).toBe(232);
+    expect(boNhepMoiTheoUrl(url)?.mouth.w).toBe(80);
     expect(boNhepMoiTheoUrl(anhTheoTen('char-duy'))).toBeUndefined();
     expect(boNhepMoiTheoUrl(undefined)).toBeUndefined();
     // Chỉ mục tùy ý (test không phụ thuộc import.meta.glob).
-    expect(boNhepMoiTheoUrl('x', (t) => (t === 'char-quan-chi-man' ? 'x' : undefined))?.eyes.h).toBe(181);
+    expect(boNhepMoiTheoUrl('x', (t) => (t === 'char-quan-chi-man' ? 'x' : undefined))?.eyes.h).toBe(49);
   });
 });

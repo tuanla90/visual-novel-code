@@ -4,8 +4,11 @@
  * chính tệp 768×1360), nhưng tra theo TÊN TỆP ảnh của `anh-mvp.ts` thay vì ô ảnh đóng băng của prototype.
  *
  * Nguồn (01/10/2026): Topview GPT Image 2.5 image-edit từ chính ảnh ("chỉ đổi miệng" / "chỉ nhắm mắt", nền xám), miếng cắt
- * bằng art/nguon/cat-mieng-mat.py — tọa độ dưới đây chép từ art/nguon/nhep-moi-2026-10-01/toa-do.json. Ảnh Tùng vui /
- * gãi đầu / chỉ tay miệng gốc đã mở nên nhép môi chỉ đổi độ mở; ảnh mới thêm thì chạy lại công cụ và dán thêm một dòng.
+ * bằng art/nguon/cat-mieng-mat.py. Ảnh Tùng vui / gãi đầu / chỉ tay miệng gốc đã mở nên nhép môi chỉ đổi độ mở.
+ *
+ * 02/10/2026 cắt khít lại (art/nguon/nhep-khit-2026-10-02/): miếng cũ là hộp to nên cằm, cổ áo, viền má, tóc, gọng kính giật
+ * theo khi nhép; miếng mới chỉ còn môi và mí mắt (căn khớp cục bộ, bỏ vệt mảnh), ngoài đó là ảnh gốc. Tùng vui / Tùng áo xanh
+ * vui mắt đã híp sẵn nên miếng mắt là 1×1 trong suốt (không chớp). Ảnh mới thêm thì chạy lại công cụ và dán thêm một dòng.
  */
 import type { TalkRig } from '../../shared/ui/visuals/talk-rigs';
 import { anhTheoTen } from './anh-mvp';
@@ -65,25 +68,25 @@ function bo(ten: string, mouth: string, hopMieng: Hop, eyes: string, hopMat: Hop
 
 /** Tên tệp ảnh (không đuôi, như `anhTheoTen`) → bộ miếng. */
 export const BO_NHEP_MOI_MVP: ReadonlyMap<string, TalkRig> = new Map<string, TalkRig>([
-  bo('char-tung-happy', tungHappyMouth, [396, 227, 51, 75], tungHappyEyes, [343, 163, 122, 90]),
-  bo('char-tung-worried', tungWorriedMouth, [361, 320, 132, 121], tungWorriedEyes, [327, 146, 206, 190]),
-  bo('char-tung-surprised', tungSurprisedMouth, [296, 330, 192, 166], tungSurprisedEyes, [244, 145, 297, 190]),
-  bo('char-tung-thinking', tungThinkingMouth, [289, 329, 192, 165], tungThinkingEyes, [238, 144, 295, 190]),
-  bo('char-tung-gai-dau', tungGaiDauMouth, [254, 338, 232, 199], tungGaiDauEyes, [189, 145, 363, 190]),
-  bo('char-tung-chi-tay', tungChiTayMouth, [299, 334, 219, 188], tungChiTayEyes, [239, 144, 340, 190]),
-  bo('char-tung-ao-xanh', tungAoXanhMouth, [355, 320, 144, 127], tungAoXanhEyes, [319, 145, 217, 190]),
-  bo('char-tung-ao-xanh-happy', tungAoXanhHappyMouth, [296, 325, 197, 170], tungAoXanhHappyEyes, [243, 138, 304, 191]),
-  bo('char-tung-ao-xanh-worried', tungAoXanhWorriedMouth, [298, 328, 192, 166], tungAoXanhWorriedEyes, [246, 142, 297, 191]),
-  bo('char-tung-ao-xanh-gai-dau', tungAoXanhGaiDauMouth, [254, 334, 223, 192], tungAoXanhGaiDauEyes, [192, 142, 348, 191]),
-  bo('char-tung-ao-xanh-chi-tay', tungAoXanhChiTayMouth, [300, 324, 184, 160], tungAoXanhChiTayEyes, [251, 140, 283, 191]),
-  bo('char-tung-ao-xanh-surprised', tungAoXanhSurprisedMouth, [299, 329, 213, 183], tungAoXanhSurprisedEyes, [240, 139, 331, 191]),
-  bo('char-tung-ao-xanh-thinking', tungAoXanhThinkingMouth, [297, 325, 195, 169], tungAoXanhThinkingEyes, [244, 139, 302, 191]),
-  bo('char-tung-ao-xanh-doi-mu', tungAoXanhDoiMuMouth, [236, 360, 238, 204], tungAoXanhDoiMuEyes, [169, 168, 373, 188]),
-  bo('char-ha-vy-day-kinh', haVyDayKinhMouth, [279, 361, 213, 183], haVyDayKinhEyes, [220, 178, 331, 184]),
-  bo('char-minh-anh-serious', minhAnhSeriousMouth, [226, 327, 251, 215], minhAnhSeriousEyes, [155, 128, 394, 193]),
-  bo('char-minh-anh-khoanh-tay', minhAnhKhoanhTayMouth, [336, 311, 168, 147], minhAnhKhoanhTayEyes, [292, 128, 257, 193]),
-  bo('char-quan-chi-man', quanChiManMouth, [247, 334, 188, 174], quanChiManEyes, [192, 156, 312, 181]),
-  bo('char-nguoi-choi', nguoiChoiMouth, [265, 323, 222, 191], nguoiChoiEyes, [203, 130, 347, 192]),
+  bo('char-tung-happy', tungHappyMouth, [365, 292, 92, 76], tungHappyEyes, [348, 179, 1, 1]),
+  bo('char-tung-worried', tungWorriedMouth, [366, 302, 85, 55], tungWorriedEyes, [345, 213, 163, 72]),
+  bo('char-tung-surprised', tungSurprisedMouth, [382, 305, 61, 54], tungSurprisedEyes, [337, 199, 176, 83]),
+  bo('char-tung-thinking', tungThinkingMouth, [377, 297, 65, 43], tungThinkingEyes, [335, 202, 171, 71]),
+  bo('char-tung-gai-dau', tungGaiDauMouth, [370, 306, 80, 45], tungGaiDauEyes, [348, 211, 164, 75]),
+  bo('char-tung-chi-tay', tungChiTayMouth, [360, 298, 90, 61], tungChiTayEyes, [341, 212, 170, 74]),
+  bo('char-tung-ao-xanh', tungAoXanhMouth, [366, 306, 86, 53], tungAoXanhEyes, [338, 213, 174, 72]),
+  bo('char-tung-ao-xanh-happy', tungAoXanhHappyMouth, [361, 275, 96, 82], tungAoXanhHappyEyes, [338, 193, 1, 1]),
+  bo('char-tung-ao-xanh-worried', tungAoXanhWorriedMouth, [362, 299, 93, 44], tungAoXanhWorriedEyes, [341, 210, 169, 68]),
+  bo('char-tung-ao-xanh-gai-dau', tungAoXanhGaiDauMouth, [365, 295, 85, 61], tungAoXanhGaiDauEyes, [348, 205, 163, 72]),
+  bo('char-tung-ao-xanh-chi-tay', tungAoXanhChiTayMouth, [364, 290, 93, 62], tungAoXanhChiTayEyes, [349, 207, 166, 71]),
+  bo('char-tung-ao-xanh-surprised', tungAoXanhSurprisedMouth, [376, 305, 63, 48], tungAoXanhSurprisedEyes, [337, 197, 171, 82]),
+  bo('char-tung-ao-xanh-thinking', tungAoXanhThinkingMouth, [391, 288, 59, 48], tungAoXanhThinkingEyes, [340, 191, 169, 76]),
+  bo('char-tung-ao-xanh-doi-mu', tungAoXanhDoiMuMouth, [367, 302, 84, 52], tungAoXanhDoiMuEyes, [341, 211, 169, 68]),
+  bo('char-ha-vy-day-kinh', haVyDayKinhMouth, [378, 382, 61, 47], haVyDayKinhEyes, [329, 287, 179, 60]),
+  bo('char-minh-anh-serious', minhAnhSeriousMouth, [376, 362, 67, 48], minhAnhSeriousEyes, [314, 257, 200, 66]),
+  bo('char-minh-anh-khoanh-tay', minhAnhKhoanhTayMouth, [377, 365, 63, 42], minhAnhKhoanhTayEyes, [309, 256, 204, 65]),
+  bo('char-quan-chi-man', quanChiManMouth, [341, 313, 72, 36], quanChiManEyes, [311, 220, 151, 49]),
+  bo('char-nguoi-choi', nguoiChoiMouth, [358, 342, 77, 39], nguoiChoiEyes, [312, 232, 186, 74]),
 ]);
 
 let theoUrl: Map<string, TalkRig> | null = null;
