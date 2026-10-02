@@ -86,6 +86,9 @@ def xu_ly(f: Path) -> str:
     elif ten.startswith('doc-'):
         dich = A / 'mvp/giay' / f'{ten}.webp'
         im.convert('RGB').resize((880, 1184), Image.LANCZOS).save(dich, quality=88)
+    elif ten.startswith('bgvn-'):  # nền cũ thêm chi tiết Việt Nam (02/10): ghi đè bg-mvp-<cảnh>
+        dich = A / 'mvp/nen' / f"bg-mvp-{ten.removeprefix('bgvn-')}.webp"
+        im.convert('RGB').resize((1360, 768), Image.LANCZOS).save(dich, quality=88)
     elif ten.startswith('bg-'):
         dich = A / 'mvp/nen' / f'{ten}.webp'
         im.convert('RGB').resize((1360, 768), Image.LANCZOS).save(dich, quality=88)

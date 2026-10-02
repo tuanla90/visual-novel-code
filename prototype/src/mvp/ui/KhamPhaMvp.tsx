@@ -194,7 +194,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                 <button
                   key={d.diem.chuoi}
                   type="button"
-                  className={`mvp-diem mvp-diem--khampha is-${d.daXem ? 'da-xem' : 'mo'}${url ? '' : ' is-tam'}`}
+                  className={`mvp-diem mvp-diem--khampha is-${d.daXem ? 'da-xem' : 'mo'}${url ? '' : ' is-tam'}${d.diem.sprite.startsWith('nv:') ? ' is-nguoi' : ''}`}
                   style={style}
                   aria-label={nhanDoc(i, d)}
                   title={`${nhan[i] ?? ''}${d.daXem ? ' — đã xem' : ''}`}

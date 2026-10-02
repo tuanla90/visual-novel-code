@@ -21,6 +21,11 @@
 - [THỬ THÁCH c-bai-thiet-bi]
 - [LỜI v3-xuong.3]
 - [HẬU QUẢ] mở manh mối clue-ten-nam, mở manh mối clue-toi-07
+- [ĐI TỚI v3-len-thu-vien]
+
+### v3-len-thu-vien — Sảnh tòa B: bác Tư ở chân cầu thang {cảnh: sanh-toa-b}
+
+- [LỜI v3-len-thu-vien.1]
 - [ĐI TỚI v3-thu-vien]
 
 ### v3-thu-vien — Thư viện: bản ghi quẹt thẻ của chính Nam {cảnh: thu-vien}
@@ -32,6 +37,7 @@
 - [LỜI v3-thu-vien.3]
 - [THỬ THÁCH c-toi-07]
 - [LỜI v3-thu-vien.4]
+- [ẢNH cg-v3-thu-vien-dem]
 - [HẬU QUẢ] mở manh mối clue-ten-vy
 - [ĐI TỚI v3-the-vy]
 
@@ -40,6 +46,7 @@
 - [LỜI v3-the-vy.1]
 - [THỬ THÁCH c-vy-thu-vien]
 - [LỜI v3-the-vy.2]
+- [ẢNH chibi-v3-hai-cai-may]
 - [ĐI TỚI v3-doi-chat]
 
 ### v3-doi-chat — Phòng CLB: Tùng nêu giả thuyết, người chơi trình thẻ {cảnh: phong-clb}
@@ -77,11 +84,13 @@
   - (B) {id: ban-chu-nhiem} Người gửi chắc chắn là một trong ban chủ nhiệm, vì chỉ họ biết mật khẩu. → phản hồi: **ha-vy** (thinking): "Chỉ họ biết" là lời Nam nói, chưa có bảng nào ghi. Và mật khẩu thì truyền tai được.
   - (C) {id: nam-noi-doi} Nam vẫn đáng ngờ, vì Nam nói về sớm mà không ai làm chứng. → phản hồi: **duy** (neutral): Giờ đã có người làm chứng, và có cả thẻ. Cậu đang giữ nghi ngờ cũ sau khi bằng chứng đã đổi.
 - [LỜI v3-ket-luan.1]
+- [ẢNH chibi-v3-ghim-hai-moc]
 - [ĐI TỚI v3-chia]
 
 ### v3-chia — Xưởng, chiều muộn: tờ giao chìa, ba người cần hỏi {cảnh: xuong-robot}
 
 - [LỜI v3-chia.1]
+- [ẢNH cg-v3-to-giao-chia]
 - [HẬU QUẢ] mở manh mối clue-giao-chia, mở manh mối clue-thao-in-so-do
 - [LỜI v3-chia.2]
 - [KẾT THÚC]

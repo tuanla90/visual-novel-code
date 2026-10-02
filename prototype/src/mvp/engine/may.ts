@@ -645,7 +645,7 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
         const chuoiThat = timChuoi(kb, ket.that);
         const dieuKien = chuoiThat?.nodes.find((n) => n.type === 'condition');
         const that = dieuKien?.type === 'condition' ? thoaDieuKien(s, dieuKien.dieuKien) : false;
-        // Ghi kết ngay lúc rẽ: chuỗi kết thật có thể [ĐI TỚI] cảnh khác (quán trà đá) trước [KẾT THÚC], không còn suy được từ con trỏ.
+        // Ghi kết ngay lúc rẽ: chuỗi kết thật được phép [ĐI TỚI] chuỗi khác (đổi cảnh) trước [KẾT THÚC].
         s = { ...nhayToi(s, that ? ket.that : ket.thuong, 'ket'), ketQua: that ? 'that' : 'thuong' };
         break;
       }

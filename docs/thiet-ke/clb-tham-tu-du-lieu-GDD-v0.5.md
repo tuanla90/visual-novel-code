@@ -617,14 +617,16 @@ WHERE ten LIKE 'H%'
 - Màu phẳng hai tầng (sáng, tối), gần như không dùng chuyển màu.
 - Tỉ lệ khoảng 7 đầu, không kéo chân quá dài.
 - Biểu cảm mạnh, rõ: ngạc nhiên thì mắt mở hẳn, bị bác thì đổ mồ hôi.
-- **Mỗi nhân vật một màu chủ đạo**, nhận ra được ngay cả khi chỉ thấy bóng:
+- **Mỗi nhân vật một màu chủ đạo**, nhận ra được ngay cả khi chỉ thấy bóng (bảng cập nhật 02/10/2026 theo dàn năm màu, xem `art/README.md`):
 
 | Nhân vật | Màu chủ đạo |
 |---|---|
-| Tùng | Cam |
-| Minh Anh | Đỏ phượng |
-| Hà Vy | Xanh ngọc |
-| Quân | Xanh than, xám |
+| Minh Anh | Đỏ phượng (sơ mi xắn tay, ruy băng đỏ) |
+| Tùng | Xanh lam (áo thể thao; bộ áo tình nguyện xanh, mũ tai bèo) |
+| Hà Vy | Xanh lục (cardigan ca rô, váy) |
+| Nhân vật chính | Vàng (hoodie, tai nghe) |
+| Duy | Xám than |
+| Quân | Xám, xanh than (gi lê len, không mặc vest) |
 | Thầy Khải | Nâu cà phê |
 | Thầy Quang | Xám đậm |
 

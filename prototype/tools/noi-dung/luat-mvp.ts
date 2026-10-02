@@ -658,13 +658,19 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     const dkThat = that.items[0];
     if (!dkThat || dkThat.kind !== 'condition') err(that.viTri, `chuỗi kết thật "${that.id}" phải mở đầu bằng "- [ĐIỀU KIỆN] …" (điều kiện true end)`);
     if (thuong.items.some((it) => it.kind === 'condition')) err(thuong.viTri, `chuỗi kết thường "${thuong.id}" không có [ĐIỀU KIỆN]`);
-    // Chuỗi kết được [ĐI TỚI] một cảnh sau kết (quán trà đá sau kết thật), miễn cảnh ấy kết bằng [KẾT THÚC]: máy đã ghi loại kết lúc rẽ.
-    for (const c of [that, thuong]) {
-      const cuoiKet = c.items[c.items.length - 1];
-      const sau = cuoiKet?.kind === 'goto' ? chuoi.get(cuoiKet.to) : undefined;
-      const ketDung = cuoiKet?.kind === 'end' || sau?.items[sau.items.length - 1]?.kind === 'end';
-      if (!ketDung) err(c.viTri, `chuỗi kết "${c.id}" phải kết thúc bằng [KẾT THÚC] (hoặc [ĐI TỚI] một chuỗi kết thúc bằng [KẾT THÚC])`);
-    }
+    // Chuỗi kết được [ĐI TỚI] chuỗi khác để đổi cảnh, miễn là cuối đường vẫn tới [KẾT THÚC] (máy ghi kết ngay lúc rẽ).
+    const toiKet = (c: RawChuoiMvp): boolean => {
+      const daQua = new Set<string>();
+      let d: RawChuoiMvp | undefined = c;
+      while (d && !daQua.has(d.id)) {
+        daQua.add(d.id);
+        const cuoi: RawChuoiMvp['items'][number] | undefined = d.items[d.items.length - 1];
+        if (cuoi?.kind === 'end') return true;
+        d = cuoi?.kind === 'goto' ? chuoi.get(cuoi.to) : undefined;
+      }
+      return false;
+    };
+    for (const c of [that, thuong]) if (!toiKet(c)) err(c.viTri, `chuỗi kết "${c.id}" phải kết thúc bằng [KẾT THÚC]`);
     if (dkThat && dkThat.kind === 'condition') {
       const vt: ViTri = { tep: that.viTri.tep, dong: that.itemDong[0] ?? that.viTri.dong };
       const ma = maTrongDieuKien(dkThat.dieuKien);

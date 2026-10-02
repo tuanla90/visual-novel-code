@@ -100,7 +100,7 @@ export function NoiMvp({ kb, noi, khung, khungConLai, onChon, onVeBanDo }: NoiMv
               <button
                 key={d.khoa}
                 type="button"
-                className={`mvp-diem is-${d.trangThai}${url ? '' : ' is-tam'}`}
+                className={`mvp-diem is-${d.trangThai}${url ? '' : ' is-tam'}${d.anh.sprite.startsWith('nv:') ? ' is-nguoi' : ''}`}
                 style={style}
                 aria-label={d.nhan}
                 title={`${d.nhan} — ${tinhTrang}`}

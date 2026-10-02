@@ -546,6 +546,11 @@ const GOC = {
       "anhNen": null
     },
     {
+      "id": "hanh-lang-phong-hop",
+      "ten": "Hành lang ngoài phòng họp",
+      "anhNen": null
+    },
+    {
       "id": "ban-do",
       "ten": "Bản đồ trường",
       "anhNen": null
@@ -553,7 +558,7 @@ const GOC = {
     {
       "id": "xuong-robot",
       "ten": "Xưởng CLB Robotics",
-      "anhNen": "bg-mvp-nha-van-hoa"
+      "anhNen": null
     },
     {
       "id": "thu-vien",
@@ -840,7 +845,7 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Xem xong cả hai thì một cậu sinh viên áo sơ mi cam, cổ đeo thẻ, từ hành lang bên phải đi ra."
+          "text": "Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Xem xong cả hai thì một cậu sinh viên áo xanh tình nguyện, mũ tai bèo đeo sau lưng, từ hành lang bên phải đi ra."
         },
         {
           "type": "line",
@@ -4096,6 +4101,18 @@ const GOC = {
           "text": "Được. Tớ nhớ đấy nhé."
         },
         {
+          "type": "goto",
+          "to": "ket-that-clb"
+        }
+      ]
+    },
+    {
+      "id": "ket-that-clb",
+      "title": "Chiều muộn ở phòng CLB: mẩu giấy trong sổ CLB",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
           "type": "consequence",
           "hauQua": [
             {
@@ -4392,6 +4409,10 @@ const GOC = {
           "speaker": "hieu",
           "expression": "neutral",
           "text": "Trong kênh sinh viên. Ai gửi đầu thì tớ không để ý."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-v2-hieu-cua"
         },
         {
           "type": "show-document",
@@ -4752,6 +4773,10 @@ const GOC = {
           "text": "Vậy là hai chỗ kiểm được. Xem cả hai, hay xem một rồi về báo chị Minh Anh, tùy mình."
         },
         {
+          "type": "image",
+          "imageId": "chibi-v2-tung-chi-nam"
+        },
+        {
           "type": "note",
           "text": "Cửa xưởng mở. Một anh áo sơ mi trắng bước vào, thẻ Hội sinh viên đeo ở cổ, đi thẳng tới kệ hồ sơ."
         },
@@ -4788,6 +4813,10 @@ const GOC = {
           "speaker": "nam",
           "expression": "neutral",
           "text": "Anh Khánh lo cho đội lắm. Kinh phí đi giải năm nay toàn anh ấy chạy."
+        },
+        {
+          "type": "image",
+          "imageId": "cg-v2-khanh-xuong"
         },
         {
           "type": "consequence",
@@ -5263,6 +5292,10 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "thinking",
           "text": "Chưa biết. Cất vào hồ sơ đã."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-v2-manh-giay-linh"
         },
         {
           "type": "goto",
@@ -5876,14 +5909,14 @@ const GOC = {
         },
         {
           "type": "goto",
-          "to": "v3-thu-vien"
+          "to": "v3-len-thu-vien"
         }
       ]
     },
     {
-      "id": "v3-thu-vien",
-      "title": "Thư viện: bản ghi quẹt thẻ của chính Nam",
-      "canh": "thu-vien",
+      "id": "v3-len-thu-vien",
+      "title": "Sảnh tòa B: bác Tư ở chân cầu thang",
+      "canh": "sanh-toa-b",
       "mocSomNhat": 1000,
       "nodes": [
         {
@@ -5897,6 +5930,18 @@ const GOC = {
           "expression": "smile",
           "text": "Lại mấy đứa CLB Thám Tử. Lên thư viện à? Tối thứ Hai trên ấy vắng lắm, chỉ có vài đứa quen mặt. Thư viện có mỗi một cửa, ra vào đều phải quẹt thẻ."
         },
+        {
+          "type": "goto",
+          "to": "v3-thu-vien"
+        }
+      ]
+    },
+    {
+      "id": "v3-thu-vien",
+      "title": "Thư viện: bản ghi quẹt thẻ của chính Nam",
+      "canh": "thu-vien",
+      "mocSomNhat": 1000,
+      "nodes": [
         {
           "type": "line",
           "speaker": "narrator",
@@ -6079,6 +6124,10 @@ const GOC = {
           "text": "Tớ đã bảo mà."
         },
         {
+          "type": "image",
+          "imageId": "cg-v3-thu-vien-dem"
+        },
+        {
           "type": "consequence",
           "hauQua": [
             {
@@ -6135,6 +6184,10 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Thói quen không chứng minh được đúng tối ấy. Nó chỉ cho thấy tớ có lý do ngồi đó. Thứ ghi đúng tối ấy là cửa từ: Nam vào 21 giờ 50, ra 23 giờ 05. Về CLB."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-v3-hai-cai-may"
         },
         {
           "type": "goto",
@@ -6559,6 +6612,10 @@ const GOC = {
           "text": "Chuyện này không chỉ là tin đồn về mình nữa. Các em sang xưởng lần nữa, hỏi xem ai vào được phòng ấy. Hỏi thôi, chưa nghi ai."
         },
         {
+          "type": "image",
+          "imageId": "chibi-v3-ghim-hai-moc"
+        },
+        {
           "type": "goto",
           "to": "v3-chia"
         }
@@ -6613,6 +6670,10 @@ const GOC = {
           "speaker": "tung",
           "expression": "gai-dau",
           "text": "Tối Chủ nhật, phòng máy… Tớ không cá. Tớ ghi."
+        },
+        {
+          "type": "image",
+          "imageId": "cg-v3-to-giao-chia"
         },
         {
           "type": "consequence",
@@ -7081,6 +7142,10 @@ const GOC = {
           "text": "Tớ xin. Tên tớ, tớ phải tự đi tìm xem ai đang dùng."
         },
         {
+          "type": "image",
+          "imageId": "chibi-v4-cung-mot-may"
+        },
+        {
           "type": "consequence",
           "hauQua": [
             {
@@ -7329,6 +7394,10 @@ const GOC = {
           ]
         },
         {
+          "type": "image",
+          "imageId": "cg-v4-huy-hieu-sut"
+        },
+        {
           "type": "note",
           "text": "Khánh quay đi. Cái huy hiệu bánh răng trên quai balo lắc lư."
         },
@@ -7397,6 +7466,10 @@ const GOC = {
           "speaker": "narrator",
           "display": "card",
           "text": "Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nghi ngờ mạnh vẫn chưa phải bằng chứng: càng chắc trong lòng, càng phải tìm nguồn thứ hai."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-v4-khong-ca"
         },
         {
           "type": "end"
@@ -8074,6 +8147,10 @@ const GOC = {
       "mocSomNhat": 1000,
       "nodes": [
         {
+          "type": "image",
+          "imageId": "cg-v5-ao-xanh-don-hoai"
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "text": "Thứ Hai tuần sau. Thầy Quang mời cả Hoài lên dự buổi họp. Hoài nhắn cho Duy đúng một dòng: \"Nhờ bạn áo xanh hôm nhập học ra đón tớ được không? Tớ chỉ nhớ mỗi cái áo.\""
@@ -8533,6 +8610,10 @@ const GOC = {
         {
           "type": "task",
           "text": "Trình một nguồn nối lá thư với một người, không dính tới cái huy hiệu"
+        },
+        {
+          "type": "image",
+          "imageId": "cg-v5-huy-hieu-hoai"
         },
         {
           "type": "doi-chat",
@@ -9323,7 +9404,7 @@ const GOC = {
     {
       "id": "v5-sau-hop",
       "title": "Hành lang sau buổi họp: chiếc chìa",
-      "canh": "phong-hop",
+      "canh": "hanh-lang-phong-hop",
       "mocSomNhat": 1000,
       "nodes": [
         {
@@ -9390,6 +9471,10 @@ const GOC = {
           "text": "Đơn ở chỗ Duy. Chiều thứ Tư, phòng CLB. Lần này tớ dẫn đúng tòa."
         },
         {
+          "type": "image",
+          "imageId": "cg-v5-chia-va-huy-hieu"
+        },
+        {
           "type": "goto",
           "to": "v5-chot"
         }
@@ -9449,6 +9534,14 @@ const GOC = {
           "speaker": "narrator",
           "display": "card",
           "text": "Dữ liệu chỉ ra ai cần hỏi. Người trả lời mới là người nói \"vì sao\". Mùa 1 khép lại ở chỗ chứng cứ dừng."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-v5-dong-dau"
+        },
+        {
+          "type": "image",
+          "imageId": "cg-ket-vu5"
         },
         {
           "type": "jump-if",
@@ -9626,6 +9719,10 @@ const GOC = {
           "type": "line",
           "speaker": "player",
           "text": "Trang cuối có thêm một dòng, vẫn chữ thầy: \"Manh mối cũ, câu hỏi mới.\""
+        },
+        {
+          "type": "image",
+          "imageId": "cg-v5-ho-so-vu-dau"
         },
         {
           "type": "end"
@@ -10058,6 +10155,10 @@ const GOC = {
           "text": "Gọt cho các dòng về cùng một kiểu rồi mới so. Tớ ghi vào sổ rồi đấy."
         },
         {
+          "type": "image",
+          "imageId": "chibi-phu-got-ma-phong"
+        },
+        {
           "type": "goto",
           "to": "v2-xac-nhan"
         }
@@ -10330,6 +10431,10 @@ const GOC = {
           "text": "Duy và Minh Anh mở tủ thiết bị dùng chung. Ngăn giữa có một chiếc micro không dây, đế sạc còn cắm điện, trên thân dán nhãn MIC-02."
         },
         {
+          "type": "image",
+          "imageId": "chibi-phu-tu-micro"
+        },
+        {
           "type": "consequence",
           "hauQua": [
             {
@@ -10596,6 +10701,10 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "thinking",
           "text": "Đếm dòng là đếm bản ghi, không phải đếm lần chuyển tiền."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-phu-mot-bien-nhan"
         },
         {
           "type": "question",

@@ -52,6 +52,13 @@ describe('màn kết MVP', () => {
     expect(screen.getAllByRole('button').map((b) => b.textContent)).toEqual(['Chơi lại từ đầu']);
   });
 
+  it('vụ sau có ảnh cg-ket-<mã vụ> thì màn kết hiện CG đó; vụ không có ảnh thì không hiện', () => {
+    const { container, rerender } = render(<KetMvp ketQua="that" vu={{ id: 'vu2', so: 2, ten: 'Tin đồn', tieuDeKet: 'A', loiKet: 'B' }} vuKe={null} onChoiLai={vi.fn()} />);
+    expect(container.querySelector('img.mvp-ket__cg')?.getAttribute('src')).toContain('cg-ket-vu2');
+    rerender(<KetMvp ketQua="that" vu={{ id: 'vu-khong-co-anh', so: 9, ten: 'X', tieuDeKet: 'A', loiKet: 'B' }} vuKe={null} onChoiLai={vi.fn()} />);
+    expect(container.querySelector('img.mvp-ket__cg')).toBeNull();
+  });
+
   it('không có màn tiêu đề (bản chơi thử chỉ MVP) → không có nút Về màn tiêu đề', () => {
     render(<KetMvp ketQua="that" onChoiLai={vi.fn()} />);
     expect(screen.queryByRole('button', { name: 'Về màn tiêu đề' })).toBeNull();

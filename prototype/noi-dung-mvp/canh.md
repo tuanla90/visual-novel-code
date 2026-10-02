@@ -19,9 +19,9 @@
 ### phong-ctsv — Phòng Công tác sinh viên
 ### phong-dao-tao — Phòng Đào tạo
 ### phong-hop — Phòng họp rà soát
+### hanh-lang-phong-hop — Hành lang ngoài phòng họp
 ### ban-do — Bản đồ trường
 ### xuong-robot — Xưởng CLB Robotics
-- Ảnh nền: bg-mvp-nha-van-hoa
 ### thu-vien — Thư viện trường
 ### tra-da — Quán trà đá cổng trường
 ### sanh-toa-b-dem — Sảnh tòa B

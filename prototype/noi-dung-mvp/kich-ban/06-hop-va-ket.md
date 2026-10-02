@@ -50,6 +50,10 @@
 
 - [ĐIỀU KIỆN] có dc-ai-viet-du
 - [LỜI ket-that.1]
+- [ĐI TỚI ket-that-clb]
+
+### ket-that-clb — Chiều muộn ở phòng CLB: mẩu giấy trong sổ CLB {cảnh: phong-clb}
+
 - [HẬU QUẢ] mở manh mối clue-loi-nhan-linh-1
 - [LỜI ket-that.2]
 - [ĐI TỚI ket-tra-da]

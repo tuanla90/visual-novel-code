@@ -301,6 +301,18 @@
 .mvp-diem:focus-visible {
   outline: none;
 }
+/* Vật bấm được: con trỏ kính lúp ("xem xét"); người (ảnh `nv:`) giữ bàn tay. Bấm xuống thì vật lún về phía chân
+   (`scale` riêng, không đè `transform` căn chỗ; gốc 0 0 = chân giữa của ảnh sau translate(-50%, -100%)). */
+.mvp-diem:not(:disabled) {
+  cursor: zoom-in;
+}
+.mvp-diem.is-nguoi:not(:disabled) {
+  cursor: pointer;
+}
+.mvp-diem:active:not(:disabled) {
+  transform-origin: 0 0;
+  scale: 0.96;
+}
 .mvp-diem:disabled {
   cursor: default;
 }
@@ -336,6 +348,9 @@
   .mvp-diem--khampha,
   .mvp-diem--khampha.is-mo .mvp-diem__anh {
     animation: none;
+  }
+  .mvp-diem:active:not(:disabled) {
+    scale: none;
   }
 }
 /* Chấm nhỏ trên đầu vật còn mới: để thấy được trên cảm ứng (viền trắng khi rê chỉ là trang trí). */
@@ -2051,6 +2066,23 @@
 }
 .mvp-game .mc__choice:active {
   background: #0b1220;
+}
+
+/* ---------- Nút lún khi bấm ----------
+   Nút chung (.btn: Trình thẻ, Chưa đủ căn cứ, Danh sách, Cất vào hồ sơ, Sang vụ sau…), thẻ ở màn đối chất, dòng trong danh
+   sách chỗ xem. Dùng thuộc tính `scale` riêng nên không đè `transform` sẵn có (căn giữa, nghiêng). Nút đã có kiểu lún
+   riêng (Tiếp tục, CHẠY, Ghim, Mở laptop, ô lựa chọn) giữ nguyên. */
+.mvp-game .btn:active:not(:disabled),
+.mvp-game .dc-the:active,
+.mvp-game .mvp-dd__nut:active:not(:disabled) {
+  scale: 0.97;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mvp-game .btn:active:not(:disabled),
+  .mvp-game .dc-the:active,
+  .mvp-game .mvp-dd__nut:active:not(:disabled) {
+    scale: none;
+  }
 }
 
 /* ======================= Thẻ mới vào hồ sơ (TheMoiMvp) =======================

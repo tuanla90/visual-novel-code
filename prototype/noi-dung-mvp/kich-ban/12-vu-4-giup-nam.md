@@ -27,6 +27,7 @@
 - [LỜI v4-noi.2]
 - [THỬ THÁCH c-don-nam-theo-may]
 - [LỜI v4-noi.3]
+- [ẢNH chibi-v4-cung-mot-may]
 - [HẬU QUẢ] mở manh mối clue-may-vp
 - [ĐI TỚI v4-may-vp]
 
@@ -51,8 +52,10 @@
   - vung:the · x 58% · y 60% · rộng 16% → v4-soi-the · nhãn: Tấm thẻ đeo cổ
   - vung:balo · x 10% · y 80% · rộng 20% → v4-soi-balo · nhãn: Cái balo
   - vung:quai · x 31% · y 38% · rộng 14% → v4-soi-huy-hieu · nhãn: Thứ gài trên quai balo
+- [ẢNH cg-v4-huy-hieu-sut]
 - [LỜI v4-ket.1b]
 - [LỜI v4-ket.2]
+- [ẢNH chibi-v4-khong-ca]
 - [KẾT THÚC]
 
 ### v4-phong-duy — Vụ 4: Duy mở laptop (việc chính) {cảnh: phong-clb}

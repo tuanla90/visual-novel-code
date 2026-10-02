@@ -117,7 +117,7 @@ export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
     if (!kq || !locXong || chep) return;
     const v = String(kq.dong[r]?.[k] ?? '');
     if (k !== iCot || v !== nut.chon.giaTri) {
-      soundEngine.playSfx('shake');
+      soundEngine.playSfx('sai');
       const khoa = `${r}:${k}`;
       setSai((ds) => (ds.includes(khoa) ? ds : [...ds, khoa]));
       setRung(khoa);
