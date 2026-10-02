@@ -190,6 +190,34 @@ class SoundEngine {
     this.phatTongHop(ctx, type);
   }
 
+  /**
+   * Một tiếng bước chân chạy trên nền ướt (hoạt cảnh chạy đêm): tiếng ồn ngắn qua bộ lọc thông thấp, chân trái / phải lệch tông nhẹ.
+   * Âm tổng hợp, đi qua âm lượng hiệu ứng như mọi SFX.
+   */
+  public playBuocChan(chanPhai = false): void {
+    const ctx = this.initContext();
+    if (!ctx || !this.sfxGain) return;
+    this.syncVolumes();
+    const t = ctx.currentTime;
+    const dai = 0.09;
+    const buf = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * dai), ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length) ** 2;
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    const loc = ctx.createBiquadFilter();
+    loc.type = 'lowpass';
+    loc.frequency.value = (chanPhai ? 620 : 520) * (0.92 + Math.random() * 0.16);
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(0.5, t);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + dai);
+    src.connect(loc);
+    loc.connect(gain);
+    gain.connect(this.sfxGain);
+    src.start(t);
+    src.stop(t + dai + 0.01);
+  }
+
   private phatTep(ctx: AudioContext, type: SfxType, buf: AudioBuffer): void {
     if (!this.sfxGain) return;
     const chinh = CHINH_SFX[type] ?? { amLuong: 1, batDau: 0 };

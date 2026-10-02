@@ -53,11 +53,25 @@ export interface NhanVatMvp {
   gioiThieu: GioiThieuNhanVatMvp | null;
 }
 
+/** Một quãng lịch: các thứ (0 = Chủ nhật … 6 = thứ Bảy), từ giờ tới giờ ("HH:MM", tính tới trước giờ kết), ở ghim `noi` của bản đồ. */
+export interface QuangLichMvp {
+  thu: number[];
+  tu: string;
+  den: string;
+  noi: string;
+}
+
 /** Chữ người chơi thấy về một nhân vật — viết sao cho không lộ tình tiết (nhan-vat.md, đặc tả §18.3). */
 export interface GioiThieuNhanVatMvp {
+  /** Thói quen đi lại ("Lịch" của nhan-vat.md); có thì ảnh mặt nhân vật hiện trên bản đồ sau khi đã gặp. */
+  lich?: string | null;
+  /** Lịch theo thứ và giờ ("Thường ở" của nhan-vat.md): bản đồ tính ai đang ở ghim nào (`src/mvp/engine/lich-nhan-vat.ts`). */
+  thuongO?: QuangLichMvp[];
   danhXung: string;
   /** Chữ trên thẻ tên trước khi nhân vật được giới thiệu ("Chị khóa trên"); `null` → "???". */
   chuaQuen?: string | null;
+  /** Nhân vật không tự xưng tên; thẻ mở ở câu đầu họ nói. */
+  khongXungTen?: boolean;
   nam: string | null;
   nganh: string | null;
   cauNoi: string;
@@ -211,7 +225,11 @@ export type NutMvp =
   | { type: 'trial-filter'; id: string; sql: string; soDong: number; chon: { cot: string; giaTri: string } }
   | { type: 'save-evidence'; evidenceId: string }
   | { type: 'ending-branch' }
-  | { type: 'explore'; id: string; diem: DiemKhamPhaMvp[] };
+  /**
+   * `kieu` (02/10/2026): thiếu = cảnh thường (vật / người trên nền cảnh); `ban-do` = bản đồ trường, mỗi điểm một ghim nơi đến;
+   * `quan-sat` = soi chi tiết trên chân dung nhân vật `nhanVat` (kiểu Sherlock Holmes: mỗi vùng một chi tiết).
+   */
+  | { type: 'explore'; id: string; diem: DiemKhamPhaMvp[]; kieu?: 'ban-do' | 'quan-sat'; nhanVat?: string; /** Bản đồ: giờ trong truyện ("HH:MM"). */ gio?: string; /** Quan sát: dáng / bộ đồ của nhân vật được soi. */ dang?: string; /** Quan sát: mở bằng cảnh cắt đôi mắt Hà Vy. */ haVySoi?: boolean };
 
 /**
  * Một chỗ bấm được của `[KHÁM PHÁ]` (đặc tả §18.6): vật/người đặt trên nền cảnh của chuỗi, bấm → chạy `chuoi`; chuỗi hết
@@ -222,6 +240,10 @@ export interface DiemKhamPhaMvp extends AnhDuKienMvp {
   chuoi: string;
   sau: string[];
   nhan: string | null;
+  /** `chinh` = dấu ! (việc chính: xem hết các điểm ! là đi tiếp được), `phu` = dấu ? (tùy chọn). Thiếu = điểm thường (phải xem hết). */
+  dau?: 'chinh' | 'phu';
+  /** Nhân vật có mặt ở điểm này (bản đồ hiện ảnh mặt khi người chơi đã biết lịch của họ). */
+  co?: string[];
 }
 
 export interface ChuoiMvp {
@@ -255,6 +277,13 @@ export interface TheThuThachMvp {
   bangNoi?: string[];
   /** Cột nhóm được gợi ý/giới hạn bởi nội dung; null cho phép người chơi chọn. */
   nhomTheo?: string | null;
+  /**
+   * Bài CHỌN CỘT (`- Chọn cột: a, b` | `- Chọn cột: không`): màn tra hiện hàng "LẤY CỘT", người chơi tự bật / tắt cột của SELECT;
+   * giá trị là các cột BẬT SẴN. Thiếu cột của SQL chuẩn → lời "Khi thiếu cột"; thừa cột → lời "Khi thừa cột" (chưa tính là đúng).
+   */
+  chonCot?: string[];
+  /** `- Bấm ô lấy giấy nhớ: <cột>`: tra đúng rồi, người chơi bấm từng ô của cột này để chép ra giấy nhớ, xong mới ghim được (thao tác học ở Ngày hội). */
+  bamO?: string;
 }
 
 /** `cot`: chỉ khớp khi các điều kiện người chơi đã điền dùng đúng tập cột này ("Khi chạy ra 0 dòng với a, b"). */
@@ -264,7 +293,10 @@ export type KhiChayMvp =
   | { kind: 'loi' }
   | { kind: 'dung' }
   /** "Khi sai thứ tự": đủ đúng các dòng nhưng thứ tự khác câu chuẩn (thẻ có ORDER BY). */
-  | { kind: 'sai-thu-tu' };
+  | { kind: 'sai-thu-tu' }
+  /** Bài chọn cột: đủ đúng dòng nhưng thiếu cột của câu chuẩn / lấy thừa cột. */
+  | { kind: 'thieu-cot' }
+  | { kind: 'thua-cot' };
 
 export interface PhanUngMvp {
   khi: KhiChayMvp;

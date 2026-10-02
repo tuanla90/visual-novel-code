@@ -422,9 +422,14 @@ describe('[KHÁM PHÁ] trong chuỗi (cảnh bấm vật, sảnh KTX của mở 
     expect(kham).toEqual({
       kind: 'explore',
       id: 'kp1',
+      kieu: 'canh',
+      nhanVat: null,
+      gio: null,
+      dang: null,
+      haVySoi: false,
       diem: [
-        { sprite: 'obj-a', x: 10, y: 50, rong: 5, chuoi: 'x-a', sau: [], nhan: 'Xem tờ giấy' },
-        { sprite: 'nv:tung', x: 80, y: 100, rong: 15, chuoi: 'x-b', sau: ['x-a'], nhan: null },
+        { sprite: 'obj-a', x: 10, y: 50, rong: 5, chuoi: 'x-a', sau: [], nhan: 'Xem tờ giấy', dau: null, co: [] },
+        { sprite: 'nv:tung', x: 80, y: 100, rong: 15, chuoi: 'x-b', sau: ['x-a'], nhan: null, dau: null, co: [] },
       ],
     });
     expect(kq.mocChuoi.get('x-a')).toBe(0);
@@ -462,7 +467,7 @@ describe('thẻ giới thiệu nhân vật (nhan-vat.md: Danh xưng, Năm, Ngàn
   it('đủ dòng → đọc ra thẻ; không có dòng nào → null', () => {
     const kq = docNv('- Danh xưng: Bạn cùng phòng\n- Năm: Năm nhất\n- Câu nói: Tớ cá.\n- Giới thiệu: Hay đùa.\n');
     expect(kq.loi).toEqual([]);
-    expect(kq.mvp.nhanVat.find((n) => n.id === 'tung')?.gioiThieu).toEqual({ danhXung: 'Bạn cùng phòng', chuaQuen: null, nam: 'Năm nhất', nganh: null, cauNoi: 'Tớ cá.', loi: 'Hay đùa.' });
+    expect(kq.mvp.nhanVat.find((n) => n.id === 'tung')?.gioiThieu).toEqual({ lich: null, danhXung: 'Bạn cùng phòng', chuaQuen: null, nam: 'Năm nhất', nganh: null, cauNoi: 'Tớ cá.', loi: 'Hay đùa.' });
     expect(kq.mvp.nhanVat.find((n) => n.id === 'quan')?.gioiThieu).toBeNull();
   });
 

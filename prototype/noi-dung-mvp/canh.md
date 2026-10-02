@@ -23,3 +23,8 @@
 ### ban-do — Bản đồ trường
 ### xuong-robot — Xưởng CLB Robotics
 ### thu-vien — Thư viện trường
+### tra-da — Quán trà đá cổng trường
+### sanh-toa-b-dem — Sảnh tòa B
+### phong-ktx-dem — Phòng KTX 408
+### san-dem — Sân trường
+### sanh-den-pin — Sảnh tòa B

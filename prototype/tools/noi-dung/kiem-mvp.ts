@@ -11,6 +11,7 @@ import { dinhDangLoi, type RawMvp } from './doc-mvp.ts';
 import { kiemLuatMvp } from './luat-mvp.ts';
 import { tepLechTrenDia } from './sinh.ts';
 import { THU_MUC_SINH_MVP, vanBanMvp } from './sinh-mvp.ts';
+import { themNhieuMvp } from './nhieu-mvp.ts';
 import { kiemSoDongMvp, type KetQuaChayMvp } from './sql-mvp.ts';
 import { docSpriteVat, docTenAnh, docThuMucMvp, traViTri } from './thu-muc-mvp.ts';
 
@@ -50,7 +51,7 @@ export async function kiemNoiDungMvp(thuMuc: string = THU_MUC_NOI_DUNG_MVP): Pro
   }
   let sql: KetQuaChayMvp['ketQua'] | null = null;
   if (duLieu) {
-    const chay = await kiemSoDongMvp(kq.mvp.duLieu, duLieu.soDongKhai);
+    const chay = await kiemSoDongMvp(kq.mvp.duLieu ? themNhieuMvp(structuredClone(kq.mvp.duLieu)) : null, duLieu.soDongKhai);
     loi.push(...chay.loi);
     sql = chay.ketQua;
   }

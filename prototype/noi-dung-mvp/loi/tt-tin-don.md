@@ -4,7 +4,7 @@
 
 ## c-tin-don.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Tin trong kênh dài hơn mấy chữ trên giấy nhớ, còn đoạn sau nữa. "Bằng" thì phải khớp cả câu; mình chỉ có mấy chữ đầu thôi.
-- Khi chạy ra 8 dòng: **tung** (gai-dau): Cả tám tin của kênh. Có cả tin tìm thẻ xe với tin tuyển thành viên.
+- Khi chạy ra 338 dòng: **tung** (gai-dau): Cả ba trăm ba mươi tám tin của kênh từ tối qua. Có cả tin tìm ví với tin pass giáo trình.
 - Khi đúng: **ha-vy** (neutral): Năm tin cùng một câu. Ghim lại đã.
 - [DÀN DỰNG] Đường "sai có ích": [CLB Thám Tử soi dữ liệu] vào noi_dung với "bằng" → 0 dòng → đổi "bắt đầu bằng" → 5 dòng.
 
@@ -15,11 +15,12 @@
 
 ## c-tin-may.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Giá trị này có đang nằm đúng cột của nó không nhỉ?
-- Khi chạy ra 3 dòng: **ha-vy** (thinking): Ba dòng. Bảng này ghi cả đăng nhập của tài khoản cá nhân khác, và cả ngày khác. Mình cần đúng tài khoản kênh, đúng ngày mùng 7.
-- Khi chạy ra 5 dòng: **tung** (gai-dau): Cả năm lần đăng nhập của mọi tài khoản.
+- Khi chạy ra 21 dòng: **ha-vy** (thinking): Hai mươi mốt lần, của kênh Robotics suốt ba tuần. Mình cần đúng ngày mùng 7.
+- Khi chạy ra 42 dòng: **ha-vy** (thinking): Bốn mươi hai lần trong ngày mùng 7, của đủ mọi tài khoản. Mình cần đúng tài khoản kênh Robotics.
+- Khi chạy ra 1007 dòng: **tung** (gai-dau): Hơn một nghìn lần đăng nhập, của mọi tài khoản trong ba tuần.
 - Khi đúng: **ha-vy** (neutral): Hai lần trong ngày mùng 7. 15 giờ 10 từ máy xưởng số 2, 22 giờ 31 từ máy văn phòng xưởng.
 
 ## c-tin-xuong.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Lịch ghi ngày theo dạng năm-tháng-ngày, giấy nhớ cũng vậy. Giá trị có nằm đúng cột không?
-- Khi chạy ra 6 dòng: **tung** (gai-dau): Cả tuần. Mình chỉ cần tối mùng 7.
+- Khi chạy ra 266 dòng: **tung** (gai-dau): Cả sổ đặt xưởng từ năm 2022. Mình chỉ cần tối mùng 7.
 - Khi đúng: **duy** (neutral): Một dòng: tối mùng 7, 19 giờ tới 23 giờ, đội thi đấu tập.

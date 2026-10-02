@@ -8,6 +8,7 @@ import { describe, expect, it } from 'vitest';
 import { tepLechTrenDia } from '../../../../tools/noi-dung/sinh.ts';
 import { sinhVanBanMvp, THU_MUC_NOI_DUNG_MVP, THU_MUC_SINH_MVP } from '../../../../tools/noi-dung/sinh-mvp.ts';
 import { kiemSoDongMvp } from '../../../../tools/noi-dung/sql-mvp.ts';
+import { themNhieuMvp } from '../../../../tools/noi-dung/nhieu-mvp.ts';
 import { docThuMucMvp } from '../../../../tools/noi-dung/thu-muc-mvp.ts';
 import type { KichBanMvp } from '../../mvp/types';
 
@@ -32,7 +33,7 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
     const d = kq.duLieu as unknown as KichBanMvp | null;
     expect(d).not.toBeNull();
     if (!d) return;
-    expect(d.lich.ngay.map((n) => n.so)).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(d.lich.ngay.map((n) => n.so)).toEqual([1, 2, 3, 4, 5]);
     expect(d.lich.ngayHop).not.toBeNull();
     expect(d.lich.ket).toEqual({ that: 'ket-that', thuong: 'ket-thuong' });
     // Ngày 6 là ngày thử màn tổng hợp (phiếu làm nguồn, nhóm và đếm), chuỗi v2-tong-hop.
@@ -60,10 +61,10 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
     expect(d?.duLieu?.bangAo.map((v) => v.ten)).toEqual(['tra_cuu_k24']);
   });
 
-  it('QĐ-089: mọi câu SQL khai số dòng chạy thật trên du-lieu.md ra đúng số khai (số đối chiếu: docs/mvp/kiem-bang-vu1.py)', async () => {
+  it('QĐ-089: mọi câu SQL khai số dòng chạy thật trên du-lieu.md + dữ liệu nền ra đúng số khai (số đối chiếu: docs/mvp/kiem-bang-vu1.py)', async () => {
     const d = kq.duLieu as unknown as KichBanMvp | null;
     const raw = docThuMucMvp(THU_MUC_NOI_DUNG_MVP).mvp.duLieu;
-    const chay = await kiemSoDongMvp(raw, d?.soDongKhai ?? []);
+    const chay = await kiemSoDongMvp(raw ? themNhieuMvp(structuredClone(raw)) : null, d?.soDongKhai ?? []);
     expect(chay.loi).toEqual([]);
     // So theo tệp (bỏ số dòng): viết lại lời thoại phía trên chỉ dẫn không được làm test đỏ oan.
     expect(chay.ketQua.map((k) => [(k.noi.split(' ')[0] ?? '').replace(/:\d+$/, ''), k.soDong, k.soDongThat])).toEqual(expect.arrayContaining([
@@ -76,10 +77,9 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
       ['noi-dung-mvp/thu-thach/tin-don.md', 2, 2],
       ['noi-dung-mvp/thu-thach/tin-don.md', 1, 1],
       ['noi-dung-mvp/thu-thach/v2-loc-buoi.md', 4, 4],
-      ['noi-dung-mvp/thu-thach/v2-tong-hop.md', 14, 14],
-      ['noi-dung-mvp/thu-thach/v2-tong-hop.md', 3, 3],
-      ['noi-dung-mvp/kich-ban/00-mo-dau.md', 3, 3],
-      ['noi-dung-mvp/kich-ban/06-hop-va-ket.md', 14, 14],
+      ['noi-dung-mvp/thu-thach/c-lop.md', 112, 112],
+      ['noi-dung-mvp/kich-ban/00-mo-dau.md', 1, 1],
+      ['noi-dung-mvp/kich-ban/06-hop-va-ket.md', 595, 595],
     ]));
     // Mọi câu khai đều chạy đúng số dòng (bộ kiểm nội dung đã so; ở đây chốt lại).
     for (const k of chay.ketQua) expect(k.soDongThat, k.noi).toBe(k.soDong);

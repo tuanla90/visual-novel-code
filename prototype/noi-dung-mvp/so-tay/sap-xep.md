@@ -2,7 +2,7 @@
 
 - Loại: cú pháp
 
-## Trang chị Linh
+## Trang sổ CLB
 Lọc xong mà để nguyên thì máy trả dòng theo thứ tự nó tìm thấy. Muốn dò với sổ giấy thì xếp theo đúng cột mà sổ giấy xếp.
 
 ## Hà Vy

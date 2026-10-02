@@ -35,7 +35,7 @@ describe('phòng tra: bảng → máy → ghim', () => {
     expect(pha()).toBe('bang');
     expect(screen.getByRole('region', { name: 'Bảng điều tra' })).toBeInTheDocument();
     // Phiếu hai lớp chưa có trên bảng.
-    expect(screen.queryByRole('article', { name: /^Phiếu kết quả/ })).toBeNull();
+    expect(screen.queryByRole('article', { name: /^Phiếu kết quả: Hai lớp/ })).toBeNull();
 
     await u.click(screen.getByRole('button', { name: /Mở laptop/ }));
     expect(pha()).toBe('may');
@@ -49,7 +49,7 @@ describe('phòng tra: bảng → máy → ghim', () => {
     await u.click(screen.getByRole('button', { name: /^Báo chí \(giấy nhớ/ }));
     await u.click(screen.getByRole('button', { name: /^Ô giá trị điều kiện 2/ }));
     await u.click(screen.getByRole('button', { name: /CHẠY$/ }));
-    await u.click(await screen.findByRole('button', { name: '📌 Ghim lên bảng' }));
+    await u.click(await screen.findByRole('button', { name: 'Ghim lên bảng' }));
 
     expect(pha()).toBe('ghim');
     expect(onXong).not.toHaveBeenCalled();

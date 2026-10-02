@@ -2,7 +2,7 @@
 
 - Loại: cú pháp
 
-## Trang chị Linh
+## Trang sổ CLB
 Dữ liệu người gõ tay ít khi sạch. Thừa một dấu cách, lệch một chữ hoa là máy coi như hai thứ khác nhau. Gọt cho về cùng một kiểu rồi mới so.
 
 ## Hà Vy

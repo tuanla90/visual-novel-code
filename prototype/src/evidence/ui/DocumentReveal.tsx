@@ -9,6 +9,7 @@
  */
 import { useEffect, useId, useRef, type CSSProperties, type ReactNode } from 'react';
 import { CodeText } from '../../shared/ui/CodeText';
+import { IconSearch } from '../../shared/ui/icons';
 import { usePressGuard } from '../../shared/ui/use-press-guard';
 import { artDataAttributes, resolveDocument } from '../../shared/ui/visuals/art-slots';
 import { BookmarkArt, EnvelopeArt, LedgerPaperArt, LetterPaperArt, SealArt } from '../../shared/ui/visuals/DocumentArt';
@@ -241,7 +242,7 @@ function DocumentStandardBody({ doc }: { doc: DocumentCard }) {
         {/* Khung phụ chú thám tử */}
         {doc.extra ? (
           <div className="docview__extra-note">
-            <span className="docview__extra-note-icon" aria-hidden="true">🔍</span>
+            <IconSearch className="docview__extra-note-icon" />
             <div className="docview__extra-note-content">
               <strong>Ghi chú bổ sung: </strong>
               <CodeText text={doc.extra} />

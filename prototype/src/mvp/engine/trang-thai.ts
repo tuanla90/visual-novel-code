@@ -161,6 +161,8 @@ export interface TrangThaiMvp {
   bang?: BangGhimLuuMvp;
   /** Nhân vật đã hiện màn "Nhân vật mới" (theo thứ tự gặp) — cũng là danh sách tab Nhân vật. Ô lưu cũ: không có = []. */
   daGioiThieu?: string[];
+  /** Nhân vật đã nói chuyện với người chơi ít nhất một câu (thứ tự gặp) — bản đồ dùng để hiện ảnh mặt người đã biết lịch. Ô lưu cũ: không có = []. */
+  daNoi?: string[];
   co: string[];
   /** Trang sổ đã vào sổ cá nhân (`[GHI SỔ]`, tự ghi — QĐ-092), theo thứ tự học. */
   soTay: string[];

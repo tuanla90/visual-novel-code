@@ -26,10 +26,10 @@
 - Nguồn: {{nv.ha-vy}} tải bản ghi cửa từ của chính mình
 - Nội dung: Hà Vy tải bản ghi cửa từ của mình, gộp chung tệp với Nam để lời chứng của mình cũng đếm được.
 
-### clue-loi-nhan-linh-3 — [Lời nhắn chị Linh, mẩu thứ ba]
+### clue-loi-nhan-linh-3 — [Mẩu giấy trong sổ, mẩu thứ ba]
 - Tiêu đề: Mẩu giấy ở trang "Kiểm hai lần", lần hai
-- Nguồn: Sổ tự học của chị Linh, phòng CLB
-- Nội dung: Chữ chị Linh: "Vụ đầu tiên của CLB kết luận sai. Chị tìm ra cuốn sổ ghi lại nó."
+- Nguồn: Cuốn sổ của CLB, phòng CLB
+- Nội dung: Vẫn nét chữ ấy: "Vụ đầu tiên của CLB kết luận sai. Cuốn cũ ghi lại nó."
 
 ### clue-thao-in-so-do — [Lời chị Thảo: sơ đồ in tối Chủ nhật]
 - Tiêu đề: Sơ đồ mạch của đội do Thảo in

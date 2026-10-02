@@ -23,6 +23,7 @@ import {
   IconFolderOpen,
   IconEyeOff,
   IconSliders,
+  IconChevronLeft,
 } from './icons';
 
 export interface DialogBoxProps {
@@ -94,7 +95,7 @@ function VnQuickButtons({
           }}
           title="Lùi lại câu trước (Phím tắt: ←)"
         >
-          <span aria-hidden="true">◀</span>
+          <IconChevronLeft width={14} height={14} />
           <span>Lùi</span>
         </button>
       ) : null}
@@ -384,7 +385,8 @@ export function DialogBox({
             </button>
           ) : null}
 
-          {/* Trên màn hình dọc: hiển thị thanh quick bar ở góc dưới bên trái */}
+          {/* Trên màn hình dọc: thanh quick bar dưới hộp thoại. Lưu / Nạp / Cài đặt đã có trong menu ≡ của thanh trên nên
+              bỏ ở đây — năm nút còn lại vừa một hàng 360 px, khỏi phải vuốt ngang. */}
           {display !== 'card' ? (
             <VnQuickButtons
               className="vn-quick-bar--mobile"
@@ -395,10 +397,7 @@ export function DialogBox({
               alreadyRead={alreadyRead}
               onBack={onBack}
               onOpenBacklog={onOpenBacklog}
-              onOpenSave={onOpenSave}
-              onOpenLoad={onOpenLoad}
               toggleHideUi={toggleHideUi}
-              onOpenAudio={onOpenAudio}
             />
           ) : null}
         </div>

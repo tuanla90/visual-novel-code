@@ -980,6 +980,36 @@
     min-width: 44px;
     justify-content: center;
   }
+  /* Màn hẹp: ba thẻ chung một hàng (giãn theo độ dài chữ), chữ không gãy dòng (bỏ biểu tượng nhỏ); "Đóng" chỉ còn dấu × tròn. */
+  .mvp-kho .inventory-nav__tabs {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 4px;
+  }
+  .mvp-kho .inventory-nav .inventory-nav__tab {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: center;
+    padding: 0 6px;
+    font-size: 12.5px;
+    white-space: nowrap;
+  }
+  .mvp-kho .inventory-nav__tab > svg,
+  .mvp-kho .inventory-nav__close > span {
+    display: none;
+  }
+  .mvp-kho .inventory-nav__tab > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mvp-kho .inventory-nav .inventory-nav__close {
+    padding: 0;
+    border-radius: 50%;
+  }
+  .mvp-kho .inventory-nav__close > svg {
+    width: 16px;
+    height: 16px;
+  }
   .mvp-kho .inventory-body {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr) minmax(0, 1.25fr);
@@ -1349,6 +1379,35 @@
   min-height: 44px;
   min-width: 44px;
   justify-content: center;
+}
+.game--portrait .mvp-kho .inventory-nav__tabs {
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: 4px;
+}
+.game--portrait .mvp-kho .inventory-nav .inventory-nav__tab {
+  flex: 1 1 auto;
+  min-width: 0;
+  justify-content: center;
+  padding: 0 6px;
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+.game--portrait .mvp-kho .inventory-nav__tab > svg,
+.game--portrait .mvp-kho .inventory-nav__close > span {
+  display: none;
+}
+.game--portrait .mvp-kho .inventory-nav__tab > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.game--portrait .mvp-kho .inventory-nav .inventory-nav__close {
+  padding: 0;
+  border-radius: 50%;
+}
+.game--portrait .mvp-kho .inventory-nav__close > svg {
+  width: 16px;
+  height: 16px;
 }
 .game--portrait .mvp-kho .inventory-body {
   grid-template-columns: minmax(0, 1fr);
@@ -2339,4 +2398,550 @@
 }
 .mvp-nhan-moi--tab {
   margin-left: 6px;
+}
+
+/* ======================= Nhắc xoay dọc (điện thoại nằm ngang) =======================
+   Màn ngang trên điện thoại chỉ cao ~360–430 px: mặt laptop màn tra co còn nút 11 px, khay thẻ đối chất bị thanh trên che.
+   Chỉ bật khi màn cảm ứng (pointer: coarse) — laptop có cửa sổ thấp không bị nhắc nhầm. Xoay lại là chơi tiếp. */
+.mvp-xoay {
+  display: none;
+}
+@media (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
+  .mvp-xoay {
+    position: fixed;
+    inset: 0;
+    z-index: 10050;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px;
+    background: rgba(8, 12, 20, 0.97);
+    color: #f8fafc;
+    text-align: center;
+  }
+}
+.mvp-xoay__may {
+  width: 34px;
+  height: 58px;
+  margin-bottom: 8px;
+  border: 3px solid #fbbf24;
+  border-radius: 8px;
+  animation: mvp-xoay 2.4s ease-in-out infinite;
+}
+@keyframes mvp-xoay {
+  0%,
+  20% {
+    transform: rotate(-90deg);
+  }
+  55%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.mvp-xoay__chu {
+  margin: 0;
+  font: 800 1.25rem var(--font-ui);
+  color: #fde68a;
+}
+.mvp-xoay__phu {
+  max-width: 34em;
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(248, 250, 252, 0.8);
+}
+@media (prefers-reduced-motion: reduce) {
+  .mvp-xoay__may {
+    animation: none;
+  }
+}
+
+/* Màn kết: chị Minh Anh chốt hồ sơ (độ hoàn thành của vụ). */
+.mvp-chot {
+  width: min(520px, 100%);
+  margin: 4px auto 14px;
+  padding: 14px 18px;
+  border: 1px solid rgba(255, 217, 138, 0.45);
+  border-left: 5px solid #ffd98a;
+  border-radius: 10px;
+  background: rgba(20, 28, 40, 0.72);
+  color: #f3ead8;
+  text-align: left;
+}
+.mvp-chot--kin { border-left-color: #7fd6a4; }
+.mvp-chot--thieu { border-left-color: #ff8a65; }
+.mvp-chot__dau { margin: 0 0 8px; font: 750 0.8rem/1.2 var(--font-ui); letter-spacing: 0.1em; text-transform: uppercase; color: #ffd98a; }
+.mvp-chot__ds { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.mvp-chot__ds li { display: flex; justify-content: space-between; gap: 12px; font-size: 0.98rem; }
+.mvp-chot__ds b { font-variant-numeric: tabular-nums; }
+.mvp-chot__loi { margin: 10px 0 0; font-style: italic; }
+
+/* Bạn đồng hành: dải ảnh mặt tròn "Đi cùng" ở góc trên phải sân khấu. */
+.dong-hanh {
+  position: absolute;
+  top: 222px;
+  right: 12px;
+  z-index: 6;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  max-width: min(320px, 70%);
+}
+.dong-hanh__nhan {
+  padding: 3px 8px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.7);
+  color: #ffe9b8;
+  font: 700 0.68rem/1.2 var(--font-ui);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.dong-hanh__nguoi {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 35%, #fde68a, #d97706);
+  box-shadow: 0 0 0 2px #fffdfa, 0 0 0 4px #d97706, 0 3px 8px rgba(15, 23, 42, 0.35);
+  cursor: pointer;
+}
+.dong-hanh__nguoi img { position: absolute; left: 50%; top: 50%; width: 220%; height: auto; transform: translate(-50%, -20%); pointer-events: none; }
+.dong-hanh__nguoi.is-noi { box-shadow: 0 0 0 2px #fffdfa, 0 0 0 4px #1f5f8b, 0 3px 8px rgba(15, 23, 42, 0.35); }
+.dong-hanh__cau {
+  flex-basis: 100%;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 12px 2px 12px 12px;
+  background: #fffdfa;
+  color: #2a2320;
+  font: 500 0.92rem/1.35 var(--font-ui);
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+  cursor: pointer;
+}
+.dong-hanh__cau b { color: #b45309; margin-right: 4px; }
+
+/* Sổ: danh sách bảng đã mở (Hà Vy ghi). */
+.mvp-kho__bang-ds { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.mvp-kho__bang-ds p { display: grid; gap: 2px; margin: 0; }
+.mvp-kho__bang-ds code { font-weight: 700; }
+.mvp-kho__bang-ds span { font-size: 0.86rem; opacity: 0.8; }
+
+/* Dấu ! (việc chính) / ? (tùy chọn) trên điểm khám phá và ghim bản đồ. */
+.mvp-dau {
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  transform: translate(-50%, -100%);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  font: 800 16px/1 var(--font-ui);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.45);
+  animation: mvp-dau-nhun 1.4s ease-in-out infinite;
+}
+.mvp-dau--chinh { background: #dc2626; }
+.mvp-dau--phu { background: #2563eb; }
+.mvp-ghim .mvp-dau { top: -2px; }
+@keyframes mvp-dau-nhun {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -5px; }
+}
+@media (prefers-reduced-motion: reduce) { .mvp-dau { animation: none; } }
+/* Tên người dưới chân (phòng có người để bấm). */
+.mvp-diem__ten {
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  transform: translateX(-50%);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.78);
+  color: #fff;
+  font: 700 13px/1.2 var(--font-ui);
+  white-space: nowrap;
+}
+/* Ảnh mặt người đang ở một nơi trên bản đồ (chỉ người đã gặp và đã biết lịch). */
+.mvp-ghim__nguoi { display: inline-flex; align-items: center; margin-left: 6px; vertical-align: middle; }
+.mvp-ghim__mat {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  margin-left: -6px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 35%, #fde68a, #d97706);
+}
+.mvp-ghim__mat:first-child { margin-left: 0; }
+.mvp-ghim__mat img { position: absolute; left: 50%; top: 50%; width: 220%; height: auto; transform: translate(-50%, -20%); }
+/* Bà bán trà đá thấp, lưng còng: mặt nằm thấp hơn trong ảnh nên dời khung cắt xuống. */
+.mvp-ghim__mat[data-nv='ba-lua'] img { transform: translate(-48%, -38%); }
+.mvp-ghim__them { margin-left: 3px; font: 700 12px/1 var(--font-ui); }
+.mvp-ghim:disabled { cursor: default; }
+/* Màn quan sát chân dung: ảnh nhân vật phóng to, mỗi vùng soi một vòng tròn nhịp. */
+.mvp-soinv__vung { position: relative; flex: 1 1 auto; min-height: 0; display: grid; place-items: center; container-type: size; }
+.mvp-soinv__khung { position: relative; aspect-ratio: 768 / 1360; width: min(100cqw, calc(100cqh * 768 / 1360)); }
+.mvp-soinv__anh { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.5)); }
+.mvp-soi {
+  position: absolute;
+  z-index: 2;
+  aspect-ratio: 1;
+  min-width: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.mvp-soi__vong {
+  position: absolute;
+  inset: 0;
+  border: 3px solid #ffe873;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.5), 0 0 14px rgba(255, 232, 115, 0.8);
+  animation: mvp-soi-nhip 1.6s ease-in-out infinite;
+}
+.mvp-soi.is-da-xem { cursor: default; }
+.mvp-soi.is-da-xem .mvp-soi__vong { border-color: #7fd6a4; animation: none; opacity: 0.8; }
+.mvp-soi__nhan {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, 4px);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.8);
+  color: #d1fae5;
+  font: 600 12px/1.25 var(--font-ui);
+  white-space: nowrap;
+}
+@keyframes mvp-soi-nhip {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+@media (prefers-reduced-motion: reduce) { .mvp-soi__vong { animation: none; } }
+.mvp-nhanvat__lich { margin-top: 8px; }
+
+/* Ảnh giao diện 02/10/2026 (art/nguon/topview-2026-10-02): mặt bàn thám tử cho màn quan sát, kính lúp làm vòng soi, tờ biên bản cho phần chốt hồ sơ. */
+.mvp-canh__mo.mvp-soinv__ban { filter: none; opacity: 1; transform: none; inset: 0; background-size: cover; background-position: center; }
+.mvp-soinv__khung {
+  background: linear-gradient(180deg, #dfe8ee, #c9d6de);
+  outline: 10px solid #fdfaf2;
+  outline-offset: 0;
+  box-shadow: 0 0 0 11px rgba(60, 40, 20, 0.25), 0 18px 40px rgba(0, 0, 0, 0.55);
+  transform: rotate(-1.2deg) scale(0.9);
+}
+.mvp-soinv__anh { filter: none; }
+.mvp-soi__kinh {
+  position: absolute;
+  left: -29.8%;
+  top: -13.3%;
+  width: 181.6%;
+  max-width: none;
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.45));
+  transform-origin: 44% 35%;
+  animation: mvp-soi-nhip 1.8s ease-in-out infinite;
+}
+.mvp-soi.is-da-xem .mvp-soi__kinh { animation: none; opacity: 0.45; filter: grayscale(0.6); }
+@media (prefers-reduced-motion: reduce) { .mvp-soi__kinh { animation: none; } }
+.mvp-chot {
+  position: relative;
+  background-size: 100% 100%;
+  background-color: #f3e6c8;
+  border: 0;
+  border-radius: 6px;
+  padding: 44px 34px 26px;
+  color: #3a2f20;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+}
+.mvp-chot__dau { color: #8a4b12; }
+.mvp-chot__ds li { border-bottom: 1px dotted rgba(90, 70, 40, 0.35); padding: 2px 0; }
+.mvp-chot__loi { padding-right: 56px; }
+.mvp-chot__moc {
+  position: absolute;
+  right: 3.4%;
+  bottom: 5.6%;
+  width: 9.8%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  color: #c0392b;
+  font: 800 1.3rem/1 var(--font-ui);
+  transform: rotate(-12deg);
+}
+
+/* Bản đồ trường ở màn ngang: nền sân khấu là cảnh đang đứng (phòng CLB…), không phải bản đồ, nên bản đồ phải tự hiện ảnh của nó;
+   co cho vừa cả chiều ngang lẫn chiều cao để ghim sát mép không bị cắt, hai bên lấp bằng nền mờ. */
+@media (min-width: 769px), (orientation: landscape) {
+  .game:not(.game--portrait) .mvp-khampha.mvp-bando .mvp-canh__nen {
+    visibility: visible;
+  }
+  .game:not(.game--portrait) .mvp-khampha.mvp-bando .mvp-canh__mo {
+    display: block;
+  }
+  .game:not(.game--portrait) .mvp-khampha.mvp-bando .mvp-canh__khung {
+    width: min(100cqw, calc(100cqh * var(--ti-le-so)));
+  }
+}
+
+/* ---------- Hoạt cảnh kiểu truyện tranh động (HoatCanhMvp): ảnh tĩnh tách lớp, nhân vật giữ nguyên dáng và trượt trên nền ---------- */
+.mvp-hc {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  container-type: size;
+  background: #05070d;
+}
+/* Khung giữ đúng tỉ lệ ảnh nền và phủ kín sân khấu (như object-fit: cover), để các lớp đặt theo % luôn trùng chỗ trên nền. */
+.mvp-hc__khung {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(100cqw, calc(100cqh * var(--hc-ti-le)));
+  aspect-ratio: var(--hc-ti-le);
+  transform: translate(-50%, -50%);
+  container-type: size;
+}
+.mvp-hc__nen {
+  position: absolute;
+  inset: 0;
+  transform-origin: var(--hc-tam-x) var(--hc-tam-y);
+}
+.mvp-hc__lop {
+  position: absolute;
+  transform-origin: 50% 100%;
+}
+.mvp-hc__nv {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Ảnh cắt được vẽ sáng đều; độ sáng từng lớp khai ở hoat-canh-mvp.ts (cảnh đêm hạ xuống, đèn rọi tới thì sáng lên). */
+  filter: brightness(var(--hc-sang-sau, 1)) saturate(0.9) contrast(1.05) drop-shadow(0 0.6cqh 1.2cqh rgba(0, 0, 0, 0.55));
+  user-select: none;
+}
+.mvp-hc__den {
+  position: absolute;
+  width: 46%;
+  aspect-ratio: 2.4;
+  transform: translate(-72%, -30%) rotate(-14deg);
+  background: radial-gradient(closest-side, rgba(255, 226, 150, 0.5), rgba(255, 226, 150, 0) 100%);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  pointer-events: none;
+}
+/* Chùm đèn pin: hình nón mờ từ đầu đèn, quét tới chỗ nhân vật. */
+.mvp-hc__chum {
+  position: absolute;
+  width: 78cqw;
+  height: 34cqh;
+  margin-top: -17cqh;
+  transform-origin: 0 50%;
+  transform: rotate(var(--hc-chum-den));
+  clip-path: polygon(0 47.5%, 100% 0, 100% 100%, 0 52.5%);
+  background: linear-gradient(90deg, rgba(255, 233, 170, 0.85), rgba(255, 233, 170, 0.34) 45%, rgba(255, 233, 170, 0) 96%);
+  mix-blend-mode: screen;
+  filter: blur(1.1cqh);
+  pointer-events: none;
+}
+.mvp-hc__vet {
+  position: absolute;
+  inset: -20%;
+  background: repeating-conic-gradient(from 0deg at calc(20% / 1.4 + var(--hc-tam-x) / 1.4) calc(20% / 1.4 + var(--hc-tam-y) / 1.4), rgba(255, 255, 255, 0) 0deg 5deg, rgba(210, 225, 255, 0.5) 5.4deg 5.9deg, rgba(255, 255, 255, 0) 6.3deg 11deg);
+  -webkit-mask-image: radial-gradient(circle at calc(20% / 1.4 + var(--hc-tam-x) / 1.4) calc(20% / 1.4 + var(--hc-tam-y) / 1.4), transparent 0 26%, #000 70%);
+  mask-image: radial-gradient(circle at calc(20% / 1.4 + var(--hc-tam-x) / 1.4) calc(20% / 1.4 + var(--hc-tam-y) / 1.4), transparent 0 26%, #000 70%);
+  opacity: 0;
+  pointer-events: none;
+}
+.mvp-hc__vien {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 45%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55) 100%);
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mvp-hc__nen {
+    animation: mvp-hc-nen var(--hc-giay) cubic-bezier(0.25, 0.6, 0.3, 1) both;
+  }
+  .mvp-hc__lop {
+    animation: mvp-hc-truot var(--hc-giay) cubic-bezier(0.3, 0.55, 0.35, 1) var(--hc-tre) both;
+  }
+  .mvp-hc__den {
+    animation: mvp-hc-den 1.7s ease-in-out infinite;
+  }
+  .mvp-hc__nv {
+    animation: mvp-hc-sang 0.45s ease-out var(--hc-sang-luc, 0s) both;
+  }
+  .mvp-hc__chum {
+    animation: mvp-hc-chum var(--hc-chum-giay) cubic-bezier(0.3, 0.6, 0.3, 1) both;
+  }
+  .mvp-hc__vet {
+    animation: mvp-hc-vet 0.42s steps(3) infinite, mvp-hc-vet-tan var(--hc-giay) ease-out both;
+  }
+}
+@keyframes mvp-hc-nen {
+  from { transform: scale(1); }
+  to { transform: scale(var(--hc-phong)); }
+}
+/* Nhân vật giữ nguyên dáng, trượt về phía cổng và nhỏ dần. */
+@keyframes mvp-hc-truot {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(var(--hc-dx), var(--hc-dy)) scale(var(--hc-co)); }
+}
+@keyframes mvp-hc-sang {
+  from { filter: brightness(var(--hc-sang-dau, 1)) saturate(0.9) contrast(1.05) drop-shadow(0 0.6cqh 1.2cqh rgba(0, 0, 0, 0.55)); }
+  to { filter: brightness(var(--hc-sang-sau, 1)) saturate(0.9) contrast(1.05) drop-shadow(0 0.6cqh 1.2cqh rgba(0, 0, 0, 0.55)); }
+}
+@keyframes mvp-hc-chum {
+  from { transform: rotate(var(--hc-chum-tu)); opacity: 0.55; }
+  to { transform: rotate(var(--hc-chum-den)); opacity: 1; }
+}
+@keyframes mvp-hc-den {
+  0%, 100% { opacity: 0.4; }
+  45% { opacity: 0.75; }
+  60% { opacity: 0.5; }
+}
+@keyframes mvp-hc-vet {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(4deg); }
+}
+@keyframes mvp-hc-vet-tan {
+  0% { opacity: 0; }
+  8% { opacity: 0.5; }
+  70% { opacity: 0.28; }
+  100% { opacity: 0.1; }
+}
+
+/* ---------- Chi tiết ẩn trên cảnh (.mvp-an) và cảnh cắt "Hà Vy quan sát" (.mvp-catcanh) ---------- */
+.mvp-an {
+  position: absolute;
+  aspect-ratio: 0.8;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  border: 0;
+  border-radius: 40%;
+  background: transparent;
+  cursor: pointer;
+  z-index: 3;
+}
+.mvp-an.is-da-xem { cursor: default; }
+.mvp-an__goi-y {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 244, 200, 0.95);
+  box-shadow: 0 0 14px rgba(255, 236, 160, 0.8);
+  opacity: 0;
+  pointer-events: none;
+}
+.mvp-an:focus-visible .mvp-an__goi-y { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  /* Mười giây đầu không có gì; sau đó nháy rất nhẹ để người chơi không bị kẹt. */
+  .mvp-an:not(.is-da-xem) .mvp-an__goi-y { animation: mvp-an-nhay 2.4s ease-in-out 10s infinite; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mvp-an:not(.is-da-xem) .mvp-an__goi-y { opacity: 0.6; }
+}
+@keyframes mvp-an-nhay {
+  0%, 100% { opacity: 0; transform: scale(0.9); }
+  50% { opacity: 0.75; transform: scale(1.04); }
+}
+
+.mvp-soinv__vung { position: relative; }
+/* Trong lúc cảnh cắt đang chạy, các điểm soi chưa hiện: kính Hà Vy lóe xong mới "thấy". */
+.mvp-soinv__vung.dang-cat-canh .mvp-soi { opacity: 0; pointer-events: none; }
+.mvp-soinv__vung.co-ha-vy .mvp-soi { transition: opacity 0.35s ease-out; }
+.mvp-catcanh {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: rgba(6, 10, 20, 0.55);
+  cursor: pointer;
+}
+.mvp-catcanh__dai {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: min(34%, 230px);
+  overflow: hidden;
+  background: #0b1020;
+  border-top: 3px solid #f8d477;
+  border-bottom: 3px solid #f8d477;
+  transform: skewY(-3deg);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+.mvp-catcanh__anh {
+  position: absolute;
+  inset: -12% 0;
+  width: 100%;
+  height: 124%;
+  object-fit: cover;
+  object-position: 50% 42%;
+  transform: skewY(3deg);
+}
+.mvp-catcanh__loe {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 62%);
+  mix-blend-mode: screen;
+  transform: translateX(-120%);
+}
+.mvp-catcanh__chu {
+  position: absolute;
+  right: 4%;
+  bottom: 10%;
+  transform: skewY(3deg);
+  font-family: var(--font-display, inherit);
+  font-size: clamp(16px, 2.6vw, 26px);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff7d6;
+  text-shadow: 0 2px 0 #1a2140, 0 0 12px rgba(248, 212, 119, 0.8);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mvp-catcanh { animation: mvp-catcanh-nen 1.7s ease-out both; }
+  .mvp-catcanh__dai { animation: mvp-catcanh-vao 1.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  .mvp-catcanh__loe { animation: mvp-catcanh-loe 0.6s ease-out 0.55s both; }
+}
+@keyframes mvp-catcanh-nen {
+  0% { background: rgba(6, 10, 20, 0); }
+  15%, 80% { background: rgba(6, 10, 20, 0.55); }
+  100% { background: rgba(6, 10, 20, 0); }
+}
+@keyframes mvp-catcanh-vao {
+  0% { transform: skewY(-3deg) translateX(-105%); }
+  16%, 82% { transform: skewY(-3deg) translateX(0); }
+  100% { transform: skewY(-3deg) translateX(105%); }
+}
+@keyframes mvp-catcanh-loe {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(120%); }
+}
+
+/* Hoạt cảnh ở màn dọc: không cắt hai bên (nhân vật nằm ở hai mép ảnh ngang) mà hiện trọn cảnh thành một ô truyện tranh ngang,
+   phía trên hộp thoại; phần còn lại là nền tối. */
+.game--portrait .mvp-hc__khung {
+  width: 100cqw;
+  top: 36%;
+  box-shadow: 0 0 0 2px rgba(248, 212, 119, 0.55), 0 12px 40px rgba(0, 0, 0, 0.7);
+}
+.game--portrait .mvp-hc__vien {
+  display: none;
 }

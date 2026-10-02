@@ -134,6 +134,7 @@ export function chonTheoUuTien(uuTien: readonly string[], vetCan: boolean): Chie
 export const RE_NHANH_KET_THAT: Readonly<Record<string, string>> = {
   'r-phong-may': 'ghe',
   'r-moi-hoai': 'tu-ke',
+  'r-chay': 'tat',
 };
 
 export const reNhanhTheo =
@@ -143,7 +144,7 @@ export const reNhanhTheo =
 
 // ---------- Nhảy tới (người quan sát) ----------
 
-export type MaDiemNhayMvp = 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or' | 'vu2-tin-don' | 'vu2-tin-goc' | 'vu3-thiet-bi' | 'vu3-toi-07' | 'vu4-noi' | 'vu5-vuot-muc' | 'vu2-buoi' | 'phu-micro' | 'phu-hoan-nhom';
+export type MaDiemNhayMvp = 'bang-lop' | 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or' | 'vu2-tin-don' | 'vu2-tin-goc' | 'vu3-thiet-bi' | 'vu3-toi-07' | 'vu4-noi' | 'vu5-vuot-muc' | 'vu2-buoi' | 'phu-micro' | 'phu-hoan-nhom' | 'vu3-bai-dang' | 'vu4-da-duyet' | 'vu4-may-vp' | 'vu5-kho' | 'vu5-chi' | 'phu-hoan-loc' | 'phu-dan-lac';
 
 export interface DiemNhayMvp {
   id: MaDiemNhayMvp;
@@ -165,6 +166,7 @@ const dangOThuThach =
  * có đủ thứ của kết thật, chơi tiếp đúng vẫn tới kết thật.
  */
 export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
+  { id: 'bang-lop', nhan: 'Ngày 2 · Chọn bảng, rồi chọn cột', moTa: 'Hai bài nhập môn ở laptop phòng CLB: chọn bảng rồi chạy (FROM), bấm cột muốn xem (SELECT).', toi: dangOThuThach('challenge', 'c-bang-lop') },
   { id: 'lop', nhan: 'Ngày 2 · Lớp ở tòa B và học Báo chí', moTa: 'Lần tra đầu, laptop phòng CLB: hai điều kiện, VÀ / HOẶC.', toi: dangOThuThach('challenge', 'c-lop') },
   { id: 'ten-h', nhan: 'Ngày 3 · Tên bắt đầu bằng H', moTa: 'Laptop phòng CLB: phiếu hai lớp + [H]; "bằng" ra 0 dòng → "bắt đầu bằng".', toi: dangOThuThach('challenge', 'c-ten-h') },
   { id: 'nhat-ky-in', nhan: 'Ngày 4 · Nhật ký in', moTa: 'Phòng máy (đã chọn ghé): mã + tên tệp ra 0 dòng → bỏ điều kiện mã.', toi: dangOThuThach('challenge', 'c-in') },
@@ -178,6 +180,13 @@ export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
   { id: 'vu2-buoi', nhan: 'Việc phụ · Bốn buổi đã ký', moTa: 'Duy nhờ sau Vụ 2, laptop phòng CLB: gọt mã phòng (dấu cách, hoa/thường), xếp theo ngày.', toi: dangOThuThach('challenge', 'v2-loc-buoi') },
   { id: 'phu-micro', nhan: 'Việc phụ · Chiếc micro (nối bảng)', moTa: 'Duy nhờ sau Vụ 4: nối phiếu luân chuyển với sổ tài sản theo mã tài sản; cột vi_tri trùng tên nhưng khác nghĩa.', toi: dangOThuThach('challenge', 'c-mic-phieu') },
   { id: 'phu-hoan-nhom', nhan: 'Việc phụ · Hoàn tiền (lọc nhóm theo số dòng)', moTa: 'Minh Anh nhờ sau Vụ 5, màn tổng hợp: gom dòng hoàn theo mã phiếu, tính tổng, chỉ giữ nhóm có hơn một dòng.', toi: dangOThuThach('challenge', 'c-hoan-nhom') },
+  { id: 'vu3-bai-dang', nhan: 'Vụ 3 · Bài đăng của kênh Robotics', moTa: 'Màn tra đầu Vụ 3: lọc bài của kênh Robotics trong bản xuất mọi kênh.', toi: dangOThuThach('challenge', 'c-bai-dang') },
+  { id: 'vu4-da-duyet', nhan: 'Vụ 4 · Đơn đã duyệt', moTa: 'Màn tra đầu Vụ 4: sổ đặt linh kiện từ 2022, lọc đơn đang ở trạng thái đã duyệt.', toi: dangOThuThach('challenge', 'c-don-da-duyet') },
+  { id: 'vu4-may-vp', nhan: 'Vụ 4 · Đơn tạo từ máy văn phòng', moTa: 'Nối sổ đặt hàng với bảng phiên, lọc theo máy văn phòng xưởng.', toi: dangOThuThach('challenge', 'c-may-vp') },
+  { id: 'vu5-kho', nhan: 'Vụ 5 · Đơn mua thứ kho không có', moTa: 'Màn tra đầu Vụ 5: nối sổ đặt hàng với bảng kiểm kê, lọc kho bằng 0.', toi: dangOThuThach('challenge', 'c-dat-ma-khong-co') },
+  { id: 'vu5-chi', nhan: 'Vụ 5 · Khoản chi vào quỹ CLB', moTa: 'Nối sổ chi với bảng quỹ, lọc quỹ CLB Thám Tử.', toi: dangOThuThach('challenge', 'c-chi-tham-tu') },
+  { id: 'phu-hoan-loc', nhan: 'Việc phụ · Hoàn tiền (lọc dòng hoàn)', moTa: 'Minh Anh nhờ sau Vụ 5: lọc các dòng hoàn trong bản xuất thu chi.', toi: dangOThuThach('challenge', 'c-hoan-loc') },
+  { id: 'phu-dan-lac', nhan: 'Việc phụ · Một lần dẫn lạc (sổ đón)', moTa: 'Tùng nhờ sau Vụ 3: lọc các lượt đón Tùng dẫn trong sổ của đội tình nguyện.', toi: dangOThuThach('challenge', 'c-don-tung') },
 ];
 
 /** Một đầu chương nhảy tới được: mở đầu, từng ngày, buổi họp, từng vụ sau, từng nhiệm vụ phụ. */

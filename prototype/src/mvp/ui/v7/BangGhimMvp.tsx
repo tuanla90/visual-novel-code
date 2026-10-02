@@ -1,5 +1,6 @@
 /**
- * BẢNG ĐIỀU TRA (ĐÃ CHỐT B.1–B.2, 30/09/2026): bảng bần ghim tự do. Loại thẻ phân biệt bằng hình dạng — giấy nhớ vàng
+ * BẢNG ĐIỀU TRA (ĐÃ CHỐT B.1–B.2, 30/09/2026): bảng ghim tự do — từ 02/10 là bảng tin bọc nỉ xanh khung nhôm (quen ở
+ * trường Việt Nam, thay tấm bần; QĐ-094). Loại thẻ phân biệt bằng hình dạng — giấy nhớ vàng
  * (mẩu tin), phiếu trắng có con dấu (kết quả tra), ảnh chụp (vật chứng), giấy tờ (tài liệu, xếp cột bên trái), thẻ tròn "?"
  * (câu hỏi đang mở). Sợi chỉ đỏ do truy vấn vẽ: từ các thẻ đã kéo vào câu sang phiếu kết quả; sợi cam chấm là loại trừ.
  * Người chơi kéo thẻ để sắp lại (vị trí lưu trong trạng thái), bấm thẻ để đọc kỹ.
@@ -128,12 +129,20 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
 
   const theXem = xem ? bang.the.find((t) => t.id === xem) : undefined;
   const anhXem = theXem?.anh ? anhTheoTen(theXem.anh) : undefined;
+  const KIEU_DAY: Record<string, string> = { 'truy-van': 'dùng để tra', 'loai-tru': 'loại trừ', nguon: 'nguồn' };
+  const noiXem = theXem
+    ? bang.day.flatMap((d) => {
+        const kia = d.tu === theXem.id ? d.den : d.den === theXem.id ? d.tu : null;
+        const t = kia ? bang.the.find((x) => x.id === kia) : undefined;
+        return t ? [{ id: t.id, nhan: t.nhan, mau: d.mau, chieu: d.tu === theXem.id ? '→' : '←', kieu: KIEU_DAY[d.kieu] ?? '' }] : [];
+      })
+    : [];
 
   return (
     <div className="bang" role="region" aria-label="Bảng điều tra">
       <div ref={goc} className={`bang__cuon${ngang ? '' : ' is-doc'}`}>
         <div className="bang__khung" style={{ width: KHUNG_BANG.rong * tiLe, height: KHUNG_BANG.cao * tiLe }}>
-          <div className="bang__mat" style={{ transform: `scale(${tiLe})`, ['--anh-ban' as string]: `url("${anhTheoTen('ui-bang-ban') ?? ''}")` }}>
+          <div className="bang__mat" style={{ transform: `scale(${tiLe})`, ['--anh-ban' as string]: `url("${anhTheoTen('ui-bang-ni') ?? ''}")` }}>
             <svg className="bang__day" viewBox={`0 0 ${KHUNG_BANG.rong} ${KHUNG_BANG.cao}`} aria-hidden="true">
               {bang.day.map((d) => {
                 const a = ghim(d.tu);
@@ -248,9 +257,39 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
             {anhXem ? <img className="bang__xem-anh" src={anhXem} alt="" draggable={false} /> : null}
             <div className="bang__xem-chu">
               {theXem.the ? <TheHoSo the={theXem.the} dienTen={dienTen} /> : <p className="bang__xem-hoi">{dienTen(theXem.nhan)}</p>}
+              {theXem.giaTri.length > 0 ? (
+                <div className="bang__xem-muc">
+                  <span className="bang__xem-muc-nhan">Giấy nhớ mang sang laptop</span>
+                  <span className="bang__xem-the-nho">
+                    {theXem.giaTri.map((g) => (
+                      <span key={g} className={`bang__xem-nho${theXem.gach.includes(g) ? ' is-gach' : ''}`}>
+                        {g}
+                      </span>
+                    ))}
+                  </span>
+                </div>
+              ) : null}
               {theXem.gach.length > 0 ? <p className="bang__xem-ghi">Đã loại: {theXem.gach.join(', ')}</p> : null}
+              {noiXem.length > 0 ? (
+                <div className="bang__xem-muc">
+                  <span className="bang__xem-muc-nhan">Nối dây với</span>
+                  <ul className="bang__xem-noi">
+                    {noiXem.map((n) => (
+                      <li key={n.id}>
+                        <button type="button" className={`bang__xem-noi-nut bang__xem-noi-nut--${n.mau}`} onClick={() => setXem(n.id)}>
+                          <span aria-hidden="true">{n.chieu}</span> {dienTen(boNgoac(n.nhan))}
+                          <small>{n.kieu}</small>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
               {theXem.id !== MA_THE_HOI && (onDoiMau || onGhim) ? (
                 <div className="bang__xem-ghim">
+                  {onDoiMau ? (
+                    <span className="bang__mau-nhan">Màu ghim và dây</span>
+                  ) : null}
                   {onDoiMau ? (
                     <span className="bang__mau" role="radiogroup" aria-label="Màu đầu ghim">
                       {MAU_GHIM.map((m) => (

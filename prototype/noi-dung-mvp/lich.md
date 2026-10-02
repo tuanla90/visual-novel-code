@@ -26,9 +26,6 @@
 ## Cổng KTX {ngày: 5 · theo truyện}
 - Chuỗi: n5-mo
 
-## Từ phiếu đến pattern {ngày: 6 · theo truyện}
-- Chuỗi: v2-tong-hop
-
 ## Buổi họp rà soát {ngày họp}
 - Chuỗi: hop-00
 
@@ -87,3 +84,11 @@
 - Ngày: 2024-11-08
 - Tiêu đề kết: Một khoản hoàn, bản xuất ghi hai lần
 - Lời kết: Phiếu PH-04 có hai dòng hoàn tiền cùng mã tham chiếu; biên nhận ngân hàng xác nhận một lần hoàn 60.000 đồng. Báo cáo được sửa, bản cũ được giữ. Ai nhập trùng thì bảng không ghi.
+
+## Một lần dẫn lạc {nhiệm vụ phụ: dan-lac}
+- Chuỗi: p-lac-mo
+- Người giao: tung
+- Mở sau: vu3
+- Ngày: 2024-10-11
+- Tiêu đề kết: Chín lượt, một lượt nhầm
+- Lời kết: Sổ đón ghi chín lượt Tùng dẫn: tám lượt tới ký túc xá, một lượt tới nhà xe, là lượt của Hoài. Sổ chỉ ghi nơi tới; vì sao nhầm là điều Tùng tự nhớ lại và tự nói ra.

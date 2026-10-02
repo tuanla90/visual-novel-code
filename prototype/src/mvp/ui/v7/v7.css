@@ -268,7 +268,10 @@
   min-height: 0;
   border: 6px solid #2e3237;
   border-radius: 10px;
-  overflow: hidden;
+  /* Điện thoại hẹp: câu dài / ba điều kiện thì cuộn dọc trong mặt kính, không cắt mất nút CHẠY. */
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 /* ---------- Mặt kính: phần mềm tra cứu ---------- */
@@ -282,7 +285,9 @@
   line-height: 1.35;
 }
 .v7--doc .v7-kinh {
-  font-size: 14px;
+  height: auto;
+  min-height: 100%;
+  font-size: 15px;
 }
 .v7-thanh {
   flex: none;
@@ -623,6 +628,13 @@ button.v7-o:active:not(:disabled) {
   gap: 0.7em;
   padding: 0.5em 1.05em 0.6em;
 }
+/* Biểu tượng nét mảnh đứng cùng dòng chữ (thay emoji 📌 🔒 🔍 👆): theo màu chữ, cỡ theo chữ. */
+.v7-bt {
+  width: 1.05em;
+  height: 1.05em;
+  flex: none;
+  vertical-align: -0.17em;
+}
 .v7-nut {
   height: 2.9em;
   padding: 0 1em;
@@ -811,6 +823,45 @@ button.v7-o:active:not(:disabled) {
 .v7--doc .v7-vung {
   min-height: 170px;
 }
+/* Hàng nút CHẠY / Ghim / Xem từng điều kiện dính đáy mặt kính: nội dung dài phải cuộn thì nút vẫn luôn thấy. */
+.v7--doc .v7-day {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  background: linear-gradient(rgba(14, 26, 35, 0), #0e1a23 30%);
+}
+/* Chữ nhỏ nhất trên điện thoại: thanh tiêu đề 12 px, câu SQL 13 px (mặc định tính theo em ra ~11 px). */
+.v7--doc .v7-thanh {
+  font-size: 12px;
+}
+.v7--doc .v7-sql {
+  font-size: 13px;
+}
+/* Màn hẹp không đủ một hàng cho cả điều kiện: ô thả giấy nhớ luôn xuống dòng thứ hai và chiếm trọn dòng, chừa đúng
+   chỗ cho nút × — thành [LỌC][cột][phép] / [giấy nhớ……][×], × không đứng lẻ một dòng. Chừa 50 px = × 40,5 px + khoảng
+   cách 7,5 px (mặt kính dọc cố định 15 px); không dùng em vì ô này có cỡ chữ riêng 0,82em. */
+.v7--doc .v7-khe {
+  box-sizing: border-box;
+  flex: 1 1 calc(100% - 50px);
+  min-width: 0;
+}
+.v7--doc .v7-khe.is-co {
+  text-align: left;
+}
+/* Nút × (bỏ điều kiện) và + (thêm điều kiện): cao bằng các ô (2,7em ≈ 40 px) + viền chạm vô hình 3 px → ≥ 44 px. */
+.v7--doc .v7-o--bo,
+.v7--doc .v7-o--them {
+  position: relative;
+  width: 2.7em;
+  height: 2.7em;
+  flex: none;
+}
+.v7--doc .v7-o--bo::after,
+.v7--doc .v7-o--them::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+}
 
 /* ---------- Hộp thoại: nhân vật lên tiếng rồi ẩn ---------- */
 .v7-thoai {
@@ -922,16 +973,22 @@ button.v7-o:active:not(:disabled) {
   width: 1600px;
   height: 900px;
   transform-origin: 0 0;
-  background-color: #b98a57;
+  /* Bảng tin bọc nỉ xanh, khung nhôm (QĐ-094, 02/10/2026) — kiểu bảng thông báo ở sảnh trường, KTX, văn phòng khoa;
+     thay tấm bần (ít gặp ở Việt Nam, hạt bần làm rối mắt). Ảnh nỉ 512 px tự lát liền mạch, gợn rất nhẹ; trên cùng là
+     lớp sáng mờ từ góc trên trái cho mặt bảng có khối. Thiếu ảnh thì còn màu nỉ. */
+  background-color: #36588a;
   background-image:
-    var(--anh-ban),
-    radial-gradient(#8f6236 1px, transparent 1.6px),
-    radial-gradient(#a87745 1.4px, transparent 2px);
+    linear-gradient(155deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 45%, rgba(0, 10, 30, 0.12)),
+    var(--anh-ban);
   background-size:
-    cover,
-    13px 13px,
-    29px 29px;
-  box-shadow: inset 0 0 0 14px #5a3b1e, inset 0 0 60px rgba(0, 0, 0, 0.35);
+    auto,
+    512px 512px;
+  /* Khung nhôm: thân bạc + mép trong tối + chỉ sáng, bóng đổ vào mặt nỉ. */
+  box-shadow:
+    inset 0 0 0 10px #c3c8ce,
+    inset 0 0 0 12px #8e949b,
+    inset 0 0 0 13px rgba(255, 255, 255, 0.55),
+    inset 0 0 40px rgba(0, 0, 0, 0.18);
 }
 .bang__trong {
   position: absolute;
@@ -1182,29 +1239,62 @@ button.v7-o:active:not(:disabled) {
   gap: 10px;
   align-items: center;
 }
+/* Cùng họ với nút "Tiếp tục" của hộp thoại (vn-controls.css `.dialog__next`): thẻ giấy kem ngả vàng, góc bo lệch,
+   hơi nghiêng, chữ viết tay; biểu tượng laptop nét mảnh thay emoji. Chỉ một vầng sáng nhẹ nhịp chậm để người mới thấy chỗ bấm. */
 .bang__mo-may {
-  height: 58px;
-  padding: 0 28px;
-  border: 0;
-  border-radius: 14px;
-  background: linear-gradient(#fcd34d, #f59e0b);
-  color: #241a00;
-  font: 800 20px var(--font-ui);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 56px;
+  padding: 0 24px 0 18px;
+  border: 1.5px solid #d97706;
+  border-radius: 8px 22px 8px 22px;
+  background: linear-gradient(135deg, #fffdfa 0%, #fef3c7 35%, #fde68a 70%, #f59e0b 100%);
+  color: #3b1d06;
   box-shadow:
-    0 5px 0 #92400e,
-    0 0 26px rgba(245, 158, 11, 0.55);
+    0 6px 18px rgba(15, 23, 42, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -2px 4px rgba(180, 83, 9, 0.25),
+    0 0 12px rgba(245, 158, 11, 0.25);
+  transform: rotate(-1.2deg);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
-  animation: bang-nhap 1.1s infinite alternate;
+  animation: bang-nhap 2.4s ease-in-out infinite alternate;
+}
+.bang__mo-may:hover {
+  transform: rotate(-1.2deg) translateY(-2px) scale(1.03);
 }
 .bang__mo-may:active:not(:disabled) {
-  transform: translateY(4px);
-  box-shadow: 0 1px 0 #92400e;
+  transform: rotate(-1.2deg) translateY(1px) scale(0.97);
+}
+.bang__mo-may:focus-visible {
+  outline: none;
+  filter: drop-shadow(0 0 8px #fbbf24);
+}
+.bang__mo-may-hinh {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.bang__mo-may-chu {
+  font: italic 700 1.25rem/1 'Playwrite IS', 'Playwrite VN', 'Source Serif 4', Georgia, cursive, serif;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 @keyframes bang-nhap {
   to {
     box-shadow:
-      0 5px 0 #92400e,
-      0 0 40px rgba(245, 158, 11, 0.95);
+      0 6px 18px rgba(15, 23, 42, 0.4),
+      0 2px 6px rgba(0, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -2px 4px rgba(180, 83, 9, 0.25),
+      0 0 24px rgba(245, 158, 11, 0.6);
   }
 }
 /* Thẻ đang xem kỹ. */
@@ -1315,8 +1405,10 @@ button.v7-o:active:not(:disabled) {
   .bang__xem .mvp-the__tieude { font-size: 1.1rem; }
   .bang__mo-may {
     height: 50px;
-    font-size: 17px;
-    padding: 0 20px;
+    padding: 0 20px 0 16px;
+  }
+  .bang__mo-may-chu {
+    font-size: 1.1rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1567,10 +1659,21 @@ button.v7-o:active:not(:disabled) {
   gap: 8px;
   flex-wrap: wrap;
   max-width: min(60%, 640px);
+  /* Từ Vụ 2 thẻ các vụ trước tự xuống khay này (22 thẻ đầu Vụ 2, ~70 ở Vụ 5): giới hạn chiều cao, cuộn bên trong,
+     không để khay vọt khỏi khung bảng (bị cắt, không với tới) hay che kín bảng. */
+  max-height: 34%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 8px 12px;
   border-radius: 12px;
-  background: rgba(30, 20, 12, 0.72);
+  background: rgba(15, 23, 42, 0.72);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+@media (max-width: 768px) {
+  .bang__chua-ghim {
+    right: 16px;
+    max-width: none;
+  }
 }
 .bang__chua-ghim-nhan {
   color: #fde68a;
@@ -1676,3 +1779,192 @@ button.v7-o:active:not(:disabled) {
   white-space: pre-wrap;
   word-break: break-word;
 }
+
+/* Ô chọn bảng (thẻ nhập môn "chọn bảng rồi chạy"): cùng dáng ô bảng, bấm để mở danh sách. */
+.v7-o--chon-bang {
+  appearance: auto;
+  cursor: pointer;
+  font: inherit;
+}
+.v7-o--chon-bang.is-trong {
+  border-style: dashed;
+  opacity: 0.85;
+}
+
+/* Hộp xem kỹ thẻ: nền giấy sáng (trước đó thẻ mẩu tin lấy nền tối của giao diện chung nên chữ chìm). */
+.bang__xem .mvp-the {
+  background: #fffdf6;
+  color: #2a2320;
+  border-color: rgba(100, 74, 43, 0.22);
+  border-left-color: #c0392b;
+}
+.bang__xem .mvp-the--clue {
+  background: linear-gradient(160deg, #fff6c9, #fbe9a2);
+}
+.bang__xem .mvp-the--ev {
+  border-left-color: #2e7d32;
+}
+.bang__xem .mvp-the__noidung {
+  margin: 0;
+  color: #2a2320;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+.bang__xem-muc {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+}
+.bang__xem-muc-nhan,
+.bang__mau-nhan {
+  color: #6b5d49;
+  font: 750 0.72rem/1.2 var(--font-ui);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.bang__xem-the-nho {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bang__xem-nho {
+  padding: 5px 10px;
+  border-radius: 3px;
+  background: #ffe873;
+  color: #3a2f12;
+  font: 700 0.92rem/1.2 var(--font-mono, monospace);
+  box-shadow: 1px 2px 3px rgba(60, 45, 10, 0.25);
+  transform: rotate(-1deg);
+}
+.bang__xem-nho.is-gach {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+.bang__xem-noi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bang__xem-noi-nut {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgba(102, 81, 51, 0.25);
+  border-left: 4px solid #c62828;
+  border-radius: 6px;
+  background: #fffaf0;
+  color: #2a2320;
+  font: 600 0.9rem/1.25 var(--font-ui);
+  cursor: pointer;
+  text-align: left;
+}
+.bang__xem-noi-nut:hover { background: #fff1d2; }
+.bang__xem-noi-nut small { color: #7a6c57; font-weight: 500; }
+.bang__xem-noi-nut--xanh { border-left-color: #1e88e5; }
+.bang__xem-noi-nut--luc { border-left-color: #2e7d32; }
+.bang__xem-noi-nut--tim { border-left-color: #7b1fa2; }
+.bang__xem-ghim { justify-content: flex-start; }
+.bang__xem-ghim .bang__go { margin-left: auto; }
+
+/* Bảng kết quả dài: dòng báo còn bao nhiêu dòng chưa vẽ. */
+.v7-kq__con td {
+  padding: 10px 12px;
+  color: #6b7a86;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Hàng "LẤY CỘT" (bài chọn cột của SELECT): mỗi cột một nút bật / tắt. */
+.v7-lay {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 0 10px;
+}
+.v7-o--lay {
+  border: 1.5px dashed rgba(190, 215, 235, 0.55);
+  background: rgba(255, 255, 255, 0.05);
+  color: #b9cbd8;
+  font-family: var(--font-mono, monospace);
+  cursor: pointer;
+}
+.v7-o--lay.is-bat {
+  border: 1.5px solid #7fd6a4;
+  background: #dff5e7;
+  color: #14532d;
+  font-weight: 700;
+}
+.v7-o--lay:disabled { cursor: default; opacity: 0.85; }
+.v7-lay__nhac {
+  color: #ffd98a;
+  font-style: italic;
+}
+
+/* Lọc thử: lời nhắc bấm một dòng kết quả. */
+.v7-kq__nhac {
+  margin: 10px 4px 0;
+  color: #ffd98a;
+  font: 600 0.95rem/1.35 var(--font-ui);
+}
+
+/* Lọc thử: hàng điều kiện chưa tới lượt mờ đi; ô kết quả bấm được; ô đúng được chép ra giấy nhớ. */
+.v7-dk.is-cho { opacity: 0.45; }
+.v7-kq__o { padding: 2px 4px; }
+.v7-o-bam {
+  width: 100%;
+  padding: 7px 8px;
+  border: 1px dashed transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.v7-o-bam:hover:not(:disabled) { border-color: rgba(255, 217, 138, 0.7); background: rgba(255, 217, 138, 0.1); }
+.v7-o-bam.is-sai { color: #8fa3b3; }
+.v7-o-bam.is-rung { animation: v7-rung 0.3s; }
+.v7-o-bam.is-chep { background: #ffe873; color: #3a2f12; font-weight: 700; box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4); }
+.v7-kq th.is-can { color: #ffd98a; text-decoration: underline; }
+.v7-khe.is-rung { animation: v7-rung 0.3s; }
+.v7-giay--chep { animation: v7-chep 0.6s ease-out; pointer-events: none; }
+@keyframes v7-rung { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+@keyframes v7-chep { from { transform: translate(220px, 160px) scale(0.6) rotate(8deg); opacity: 0; } to { opacity: 1; } }
+
+.v7-o-bam.is-moi:not(.is-chep) { border-color: rgba(255, 217, 138, 0.8); }
+.v7-kq__nhac--tra { position: relative; z-index: 2; }
+.v7-nut--ghim:disabled { opacity: 0.5; cursor: default; }
+
+/* Hai người kiểm phiếu: Duy (hình thức), Hà Vy (ý nghĩa). */
+.v7-kiem {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 0 0 10px;
+  font: 500 0.82rem/1.3 var(--font-ui);
+  color: #b9cbd8;
+}
+.v7-kiem__nguoi {
+  padding: 4px 10px;
+  border: 1px solid rgba(190, 215, 235, 0.3);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.v7-kiem__nguoi b { color: #ffd98a; font-weight: 700; }
+.v7-kiem__nguoi.is-dat { border-color: #7fd6a4; color: #c9f5da; }
+.v7-kiem__nguoi.is-chua { border-color: #ff8a65; color: #ffd0c2; }
+/* Ngăn "Còn trên bảng": giấy nhớ cũ hơn 10 tờ mới nhất. */
+.v7-con { margin: 8px 0 0; color: #b9cbd8; font: 600 0.85rem/1.3 var(--font-ui); }
+.v7-con summary { cursor: pointer; }
+.v7-con__ds { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.v7-con__to { padding: 4px 9px; border: 0; border-radius: 3px; background: #ffe873; color: #3a2f12; font: 700 0.85rem/1.2 var(--font-mono, monospace); cursor: pointer; }
+.v7-con__to.is-chon { outline: 2px solid #fff; }
+
+/* Ảnh chibi của người kiểm phiếu. */
+.v7-kiem__nguoi { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 4px; }
+.v7-kiem__mat { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; object-position: 50% 12%; background: #fde68a; flex: none; }

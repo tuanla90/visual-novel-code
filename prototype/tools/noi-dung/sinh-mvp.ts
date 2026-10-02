@@ -29,9 +29,13 @@ export function vanBanMvp(d: DuLieuMvp): Record<string, string> {
     'kich-ban.gen.ts': [
       DAU_TEP,
       "import type { KichBanMvp } from '../../mvp/types';",
+      "import { themNhieuMvp } from '../../../../tools/noi-dung/nhieu-mvp';",
       '',
       '/** Kịch bản MVP (mở đầu + Vụ 1): noi-dung-mvp/. Chưa có runtime đọc (gói kiến trúc MVP, QĐ-077). */',
-      `export const KICH_BAN_MVP = ${js(d)} satisfies KichBanMvp;`,
+      `const GOC = ${js(d)} satisfies KichBanMvp;`,
+      '',
+      '/** Bảng dữ liệu = dòng của truyện (ở trên) + dữ liệu nền sinh lại lúc nạp (tools/noi-dung/nhieu-mvp.ts, hạt cố định). */',
+      'export const KICH_BAN_MVP = { ...GOC, duLieu: GOC.duLieu ? themNhieuMvp(GOC.duLieu) : GOC.duLieu } satisfies KichBanMvp;',
       '',
     ].join('\n'),
   };

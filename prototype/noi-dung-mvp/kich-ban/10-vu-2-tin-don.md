@@ -9,13 +9,27 @@
 - [HIỆN TÀI LIỆU doc-tin-don]
 - [HẬU QUẢ] mở manh mối clue-noi-dung-tin, mở manh mối clue-sao-ke-cuoi-ky
 - [LỜI tin-mo.2]
+- [KHÁM PHÁ kp-phong-v2]
+  - nv:duy · x 20% · y 100% · rộng 15% → tin-phong-duy · dấu: ! · nhãn: Duy: mở laptop
+  - nv:ha-vy · x 41% · y 100% · rộng 15% → tin-phong-vy · dấu: ? · nhãn: Hà Vy: câu hỏi trên bảng
+  - nv:tung · x 62% · y 100% · rộng 15% → tin-phong-tung · dấu: ? · nhãn: Tùng: chuyện ở căng tin
+  - nv:minh-anh · x 83% · y 100% · rộng 15% → tin-phong-minh-anh · dấu: ? · nhãn: Minh Anh: xin dữ liệu
 - [THỬ THÁCH c-tin-don]
 - [LỜI tin-mo.3]
+- [KHÁM PHÁ kp-bd-v2 · bản đồ · giờ 16:30]
+  - ghim:xuong · x 21% · y 24% · rộng 5% → tin-gap-nam · dấu: ! · nhãn: Xưởng Robotics
+  - ghim:cang-tin · x 88% · y 41% · rộng 5% → tin-bd-cang-tin · dấu: ? · nhãn: Căng tin
+  - ghim:tra-da · x 41% · y 86% · rộng 5% → tin-bd-tra-da · dấu: ? · có: ba-lua · nhãn: Quán trà đá
 - [ĐI TỚI tin-gap-nam]
 
 ### tin-gap-nam — Xưởng Robotics: gặp Nam; lấy phiếu làm nguồn, tìm tin gốc {cảnh: xuong-robot}
 
 - [LỜI tin-gap-nam.1]
+- [KHÁM PHÁ kp-soi-nam · quan sát nam · Hà Vy soi]
+  - vung:hop · x 76% · y 66% · rộng 26% → tin-soi-hop · nhãn: Cái hộp trên tay
+  - vung:but · x 42% · y 52% · rộng 13% → tin-soi-but · nhãn: Cây bút dạ
+  - vung:tay-ao · x 10% · y 62% · rộng 18% → tin-soi-tay-ao · nhãn: Tay áo
+- [LỜI tin-gap-nam.1b]
 - [HẬU QUẢ] mở manh mối clue-tin-goc
 - [THỬ THÁCH c-tin-goc]
 - [LỜI tin-gap-nam.2]
@@ -84,3 +98,41 @@
   - (C) {id: robotics-hai} CLB Robotics cố tình tung tin để hại CLB mình. → phản hồi: **ha-vy** (day-kinh): Phiếu ghi một tài khoản với một giờ gửi. "Cố tình" với "cả CLB" thì cột nào nói?
 - [LỜI tin-ket-luan.1]
 - [KẾT THÚC]
+
+### tin-phong-duy — Vụ 2: Duy mở laptop (việc chính) {cảnh: phong-clb}
+
+- [LỜI tin-phong-duy.1]
+
+### tin-phong-vy — Vụ 2: Hà Vy và câu hỏi trên bảng {cảnh: phong-clb}
+
+- [LỜI tin-phong-vy.1]
+
+### tin-phong-tung — Vụ 2: Tùng kể chuyện nghe ở căng tin {cảnh: phong-clb}
+
+- [LỜI tin-phong-tung.1]
+
+### tin-phong-minh-anh — Vụ 2: Minh Anh nói về việc xin dữ liệu {cảnh: phong-clb}
+
+- [LỜI tin-phong-minh-anh.1]
+
+### tin-bd-cang-tin — Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học {cảnh: cang-tin}
+
+- [LỜI tin-bd-cang-tin.1]
+
+### tin-bd-tra-da — Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ {cảnh: tra-da}
+
+- [LỜI tin-bd-tra-da.1]
+- [HẬU QUẢ] mở manh mối clue-tra-da-2
+- [LỜI tin-bd-tra-da.2]
+
+### tin-soi-hop — Quan sát Nam: cái hộp linh kiện {cảnh: xuong-robot}
+
+- [LỜI tin-soi-hop.1]
+
+### tin-soi-but — Quan sát Nam: cây bút dạ {cảnh: xuong-robot}
+
+- [LỜI tin-soi-but.1]
+
+### tin-soi-tay-ao — Quan sát Nam: tay áo xắn {cảnh: xuong-robot}
+
+- [LỜI tin-soi-tay-ao.1]

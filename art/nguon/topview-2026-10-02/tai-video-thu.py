@@ -1,0 +1,5 @@
+"""Tải video thử cảnh chạy đêm (Seedance 2.5, 5 giây, 720p, 6 credit; việc e101bc1c2bcf483da75da9b0b9531a71). Link ký sẵn, hết hạn sau vài ngày."""
+import urllib.request
+U = 'https://du9d8548ooqnc.cloudfront.net/analyzed_video%2Ftask%2Fobject_replace_llm%2F374e20245f6847658ae389391ea76e11%2F374e20245f6847658ae389391ea76e11_faststart.mp4?Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vKi9hbmFseXplZF92aWRlbyUyRnRhc2slMkZvYmplY3RfcmVwbGFjZV9sbG0lMkYzNzRlMjAyNDVmNjg0NzY1OGFlMzg5MzkxZWE3NmUxMSUyRjM3NGUyMDI0NWY2ODQ3NjU4YWUzODkzOTFlYTc2ZTExX2Zhc3RzdGFydC5tcDQiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTE3NjMxOTl9fX1dfQ__&Signature=RvJ213T4lSCJh9-JYucUUqjMPpSyYMz-MbwAOIROdE6ZM4zc4An8FmIlW204kfO-we2FHzScQAliVmvPFI7qGpOU7Msw1QzBcvHV7h43QGwcjHKLEU80FkdhkEAkg0vyHZlH2s7RJDBXqxwJpOx9u-BGT8bRIusaM4ixlGDXXmB-L01rYawzfi13zaiaFQydJFwgb0mHJ9VqEZ~yQBFJ-WhfOVMRx2akq4XB~Rx8O9WcsgUDnPubbplMpRxrBVToKasGyK9HFmEott5TVfWJMVd~6vhRnlrIj-pm1w59kC7Z2VJyjjOrZa6RV61TBIcuJhF2i7cMljt-kM0m8AOJiQ__&Key-Pair-Id=K1PJBMEIA4Y1WS'
+urllib.request.urlretrieve(U, 'video-thu-chay-dem.mp4')
+print('da tai')

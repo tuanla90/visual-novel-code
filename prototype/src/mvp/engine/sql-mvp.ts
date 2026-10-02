@@ -207,8 +207,10 @@ export function xemDongDau(duLieu: BoDuLieuMvp, bang: string, soDong = 5): Promi
  * (không có thì "Khi lỗi"); lỗi khác → "Khi lỗi"; đủ dòng nhưng sai thứ tự → "Khi sai thứ tự" (không có thì theo số dòng);
  * chạy được → "Khi chạy ra <n> dòng" đúng số dòng. Không khớp → [].
  */
-export function phanUngSauKhiChay(the: Pick<TheThuThachMvp, 'phanUng'>, kq: KetQuaCham, cotDung?: readonly string[]): LoiMvp[] {
+export function phanUngSauKhiChay(the: Pick<TheThuThachMvp, 'phanUng'>, kq: KetQuaCham, cotDung?: readonly string[], thuaCot = false): LoiMvp[] {
   const tim = (f: (k: KhiChayMvp) => boolean): LoiMvp[] => the.phanUng.find((p) => f(p.khi))?.loi ?? [];
+  // Bài chọn cột: đủ dòng, đủ cột cần nhưng lấy thừa cột (màn tra báo qua `thuaCot`).
+  if (thuaCot) return tim((k) => k.kind === 'thua-cot');
   if (kq.trangThai === 'dung') return tim((k) => k.kind === 'dung');
   if (kq.trangThai === 'loi') {
     const cot = kq.chay.loai === 'khong-co-cot' ? tim((k) => k.kind === 'loi-cot') : [];
@@ -219,6 +221,11 @@ export function phanUngSauKhiChay(the: Pick<TheThuThachMvp, 'phanUng'>, kq: KetQ
     if (thuTu.length > 0) return thuTu;
   }
   const n = kq.so.soDongNguoiChoi;
+  // Đủ đúng số dòng mà thiếu cột của câu chuẩn → lời "Khi thiếu cột" (nếu thẻ có).
+  if (n === kq.so.soDongChuan && kq.so.cotThieu.length > 0) {
+    const thieu = tim((k) => k.kind === 'thieu-cot');
+    if (thieu.length > 0) return thieu;
+  }
   // Lời gắn với tập cột ("… với a, b") chỉ nói khi câu dùng đúng các cột đó — để lời tả đúng lý do; không có thì lời chung.
   const tap = cotDung ? [...new Set(cotDung)].sort().join(',') : null;
   const rieng = tap === null ? [] : tim((k) => k.kind === 'so-dong' && k.n === n && !!k.cot && [...k.cot].sort().join(',') === tap);

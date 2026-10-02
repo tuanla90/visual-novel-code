@@ -56,7 +56,7 @@
 - Nguồn: {{nv.thay-khai}}, phòng máy
 - Nội dung: Bản in từ máy phòng máy có dòng chân trang ghi tên tệp. Chân trang bản chụp lá thư bị xén, chỉ đọc được đoạn đầu: "kien-nghi-…".
 
-### clue-loi-nhan-linh-1 — [Lời nhắn chị Linh]
-- Tiêu đề: Mẩu giấy trong sổ chị Linh
-- Nguồn: Rơi ra từ sổ tự học của chị Linh, phòng CLB
-- Nội dung: Chữ chị Linh, một dòng: "Căn phòng này giữ nhiều hơn em nghĩ." Không ghi ngày, không ghi gửi cho ai.
+### clue-loi-nhan-linh-1 — [Mẩu giấy trong sổ]
+- Tiêu đề: Mẩu giấy rơi ra từ sổ CLB
+- Nguồn: Rơi ra từ cuốn sổ của CLB, phòng CLB
+- Nội dung: Mực xanh đã ngả màu, không rõ chữ ai, một dòng: "Căn phòng này giữ nhiều hơn em nghĩ." Không ghi ngày, không ghi gửi cho ai.

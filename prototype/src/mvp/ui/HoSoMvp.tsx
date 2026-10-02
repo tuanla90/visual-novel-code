@@ -175,7 +175,7 @@ export function HoSoMvp({ kb, trangThai, onDoiCho, onDoiMau, onGhim, hoSo, soTay
             onXemThe={xemThe}
           />
         ) : (
-          <NganSoTay kb={kb} soTay={soTay} dienTen={dienTen} />
+          <NganSoTay kb={kb} soTay={soTay} dienTen={dienTen} thuThachXong={trangThai?.thuThachXong ?? []} />
         )}
       </div>
     </aside>
@@ -325,9 +325,44 @@ function NganHoSo({
   );
 }
 
-function NganSoTay({ kb, soTay, dienTen }: { kb: KichBanMvp; soTay: string[]; dienTen: (t: string) => string }) {
+/**
+ * Các bảng dữ liệu đã mở (bảng của mọi thẻ thử thách đã xong), kèm tên cột: phần HÀ VY GHI trong sổ (user chốt 02/10/2026 —
+ * cấu trúc bảng mới thì Hà Vy ghi; chi tiết lụm lặt là giấy nhớ của người chơi ở tab Hồ sơ).
+ */
+function bangDaMo(kb: KichBanMvp, thuThachXong: readonly string[]): { ten: string; cot: string[] }[] {
+  const ten: string[] = [];
+  for (const id of thuThachXong) {
+    const sql = kb.thuThach[id]?.sqlChuan ?? '';
+    for (const m of sql.matchAll(/\b(?:FROM|JOIN)\s+([a-z_][a-z0-9_]*)/gi)) if (m[1] && !ten.includes(m[1])) ten.push(m[1]);
+  }
+  return ten.flatMap((t) => {
+    const b = kb.duLieu?.bang.find((x) => x.ten === t);
+    return b ? [{ ten: t, cot: b.cot.map((c) => c.ten) }] : [];
+  });
+}
+
+function NganSoTay({ kb, soTay, dienTen, thuThachXong }: { kb: KichBanMvp; soTay: string[]; dienTen: (t: string) => string; thuThachXong: readonly string[] }) {
+  const bang = bangDaMo(kb, thuThachXong);
   return (
     <div className="notebook__journal-container mvp-kho__so">
+      {bang.length > 0 ? (
+        <div className="notebook__journal-card mvp-kho__bang-da-mo">
+          <div className="notebook__journal-header">
+            <span className="notebook__journal-pill">
+              <IconFileText width={16} height={16} aria-hidden="true" /> BẢNG ĐÃ MỞ
+            </span>
+            <span className="notebook__journal-time">Hà Vy ghi</span>
+          </div>
+          <div className="mvp-kho__bang-ds" role="group" aria-label="Các bảng đã mở">
+            {bang.map((b) => (
+              <p key={b.ten}>
+                <code>{b.ten}</code>
+                <span>{b.cot.join(' · ')}</span>
+              </p>
+            ))}
+          </div>
+        </div>
+      ) : null}
       {soTay.length === 0 ? (
         <div className="notebook__journal-card">
           <div className="notebook__journal-header">
@@ -348,7 +383,9 @@ function NganSoTay({ kb, soTay, dienTen }: { kb: KichBanMvp; soTay: string[]; di
                   <span className="notebook__journal-pill">
                     <IconFileText width={16} height={16} aria-hidden="true" /> {NHAN_LOAI_SO[t.loai] ?? t.loai}
                   </span>
-                  <span className="notebook__journal-time">Trang {i + 1}</span>
+                  <span className="notebook__journal-time">
+                    Trang {i + 1} · {t.loai === 'tâm đắc' ? 'Bạn ghi' : 'Hà Vy ghi'}
+                  </span>
                 </div>
                 <h3 className="notebook__journal-title">{dienTen(t.ten)}</h3>
                 <div className="notebook__journal-body">
@@ -362,7 +399,7 @@ function NganSoTay({ kb, soTay, dienTen }: { kb: KichBanMvp; soTay: string[]; di
                   ) : null}
                   {t.trangChiLinh.length > 0 ? (
                     <div className="notebook__journal-entry">
-                      <h4>SỔ CHỊ LINH</h4>
+                      <h4>SỔ CLB</h4>
                       {t.trangChiLinh.map((d, k) => (
                         <p key={k}>
                           <CodeText text={dienTen(d)} />
