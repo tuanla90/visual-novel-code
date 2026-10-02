@@ -103,7 +103,11 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
             }}
             autoFocus
           >
-            <span aria-hidden="true">💻</span> Mở laptop
+            <svg className="bang__mo-may-hinh" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4.5" y="5" width="15" height="10.5" rx="1.5" />
+              <path d="M2.5 18.5h19l-1.3-3H3.8z" />
+            </svg>
+            <span className="bang__mo-may-chu">Mở laptop</span>
           </button>
         </BangGhimMvp>
       </div>

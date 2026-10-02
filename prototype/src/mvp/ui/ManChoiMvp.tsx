@@ -498,6 +498,16 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     </div>
   );
 
+  // Điện thoại nằm ngang (cao ≤ 500 px, màn cảm ứng): màn tra và khay hồ sơ không đủ chỗ → phủ lời nhắc xoay dọc.
+  // Ẩn/hiện hoàn toàn bằng CSS (mvp.css `.mvp-xoay`), xoay lại là chơi tiếp, không mất gì.
+  const nhacXoay = (
+    <div className="mvp-xoay" role="status">
+      <span className="mvp-xoay__may" aria-hidden="true" />
+      <p className="mvp-xoay__chu">Xoay dọc điện thoại để chơi</p>
+      <p className="mvp-xoay__phu">Màn tra cứu và khay hồ sơ cần chiều cao — để ngang sẽ bị che mất.</p>
+    </div>
+  );
+
   if (laGiaLap) {
     return (
       <div className="game-simulator-backdrop">
@@ -509,6 +519,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           <div className="game-simulator-home-bar" />
         </div>
         {bangQuanSat}
+        {nhacXoay}
       </div>
     );
   }
@@ -516,6 +527,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     <>
       {game}
       {bangQuanSat}
+      {nhacXoay}
     </>
   );
 }

@@ -244,14 +244,23 @@
 .game--portrait .doi-chat__gt {
   font-size: 0.9rem;
 }
+/* Nhãn tên + dấu GIẢ THUYẾT không đè dòng đầu (cần `.doi-chat__hop` để thắng `.dialog__text { margin: 0 }` nạp sau). */
+.game--portrait .doi-chat__hop .doi-chat__gt {
+  margin-top: 14px;
+}
 .game--portrait .doi-chat__thanh {
   margin-top: 6px;
 }
-.game--portrait .doi-chat__nut button {
+/* Hai nút chia đôi hàng; chữ được xuống dòng và nút được co (min-width 0) — để chữ dài "Chưa đủ căn cứ để nói" không
+   đẩy cả hộp giả thuyết tràn khỏi màn hẹp. Bộ chọn có `.btn` để thắng `.doi-chat__nut .btn` (đệm 20 px). */
+.game--portrait .doi-chat__nut .btn {
   flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px;
   padding: 7px 8px;
   font-size: 0.82rem;
-  white-space: nowrap;
+  line-height: 1.2;
+  white-space: normal;
 }
 .game--portrait .dc-the {
   width: 112px;
@@ -277,11 +286,17 @@
   .doi-chat__gt {
     font-size: 0.9rem;
   }
-  .doi-chat__nut button {
+  .doi-chat__hop .doi-chat__gt {
+    margin-top: 14px;
+  }
+  .doi-chat__nut .btn {
     flex: 1 1 0;
+    min-width: 0;
+    min-height: 44px;
     padding: 7px 8px;
     font-size: 0.82rem;
-    white-space: nowrap;
+    line-height: 1.2;
+    white-space: normal;
   }
   .dc-the {
     width: 112px;

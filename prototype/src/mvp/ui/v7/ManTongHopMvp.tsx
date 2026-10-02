@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { BoDuLieuMvp, TheThuThachMvp } from '../../../content/mvp/types';
 import type { GiaTriHoSo } from '../../engine/giay-nho';
 import type { DieuKienDung } from '../../engine/trinh-dung';
@@ -51,6 +51,16 @@ export function ManTongHopMvp({ duLieu, the, nguon, giayNho, dienTen, nhanNguon,
   const [ketQua, setKetQua] = useState<{ sql: string; cot: string[]; dong: GiaTriSql[][]; dung: boolean } | null>(null);
   const [thongBao, setThongBao] = useState('');
   const [dangChay, setDangChay] = useState(false);
+  // Điện thoại: bảng kết quả / lời báo hiện dưới nút "Chạy truy vấn", ngoài tầm nhìn → chạy xong thì cuộn tới.
+  // `nearest`: trên laptop kết quả đã nằm trong khung thì không nhảy.
+  const vungKetQua = useRef<HTMLDivElement>(null);
+  const vungBao = useRef<HTMLParagraphElement>(null);
+  useEffect(() => {
+    const el = vungKetQua.current ?? vungBao.current;
+    if (!el) return;
+    const em = typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView?.({ block: 'nearest', behavior: em ? 'auto' : 'smooth' });
+  }, [ketQua, thongBao]);
   const selectedNguon = useMemo(() => nguon.find((n) => n.id === nguonId) ?? null, [nguon, nguonId]);
 
   const chay = async (): Promise<void> => {
@@ -233,9 +243,9 @@ export function ManTongHopMvp({ duLieu, the, nguon, giayNho, dienTen, nhanNguon,
           <code>{sqlXemTruoc.replace(/\) SELECT /, ')\nSELECT ')}</code>
         </p>
       ) : null}
-      {thongBao ? <p role="status">{thongBao}</p> : null}
+      {thongBao ? <p role="status" ref={vungBao}>{thongBao}</p> : null}
       {ketQua ? (
-        <div>
+        <div ref={vungKetQua}>
           <table>
             <thead><tr>{ketQua.cot.map((c) => <th key={c}>{dienTen(c)}</th>)}</tr></thead>
             <tbody>{ketQua.dong.map((row, ri) => <tr key={ri}>{row.map((v, ci) => <td key={ci}>{String(v ?? 'NULL')}</td>)}</tr>)}</tbody>

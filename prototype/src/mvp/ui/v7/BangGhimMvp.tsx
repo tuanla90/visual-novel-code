@@ -1,5 +1,6 @@
 /**
- * BẢNG ĐIỀU TRA (ĐÃ CHỐT B.1–B.2, 30/09/2026): bảng bần ghim tự do. Loại thẻ phân biệt bằng hình dạng — giấy nhớ vàng
+ * BẢNG ĐIỀU TRA (ĐÃ CHỐT B.1–B.2, 30/09/2026): bảng ghim tự do — từ 02/10 là bảng tin bọc nỉ xanh khung nhôm (quen ở
+ * trường Việt Nam, thay tấm bần; QĐ-094). Loại thẻ phân biệt bằng hình dạng — giấy nhớ vàng
  * (mẩu tin), phiếu trắng có con dấu (kết quả tra), ảnh chụp (vật chứng), giấy tờ (tài liệu, xếp cột bên trái), thẻ tròn "?"
  * (câu hỏi đang mở). Sợi chỉ đỏ do truy vấn vẽ: từ các thẻ đã kéo vào câu sang phiếu kết quả; sợi cam chấm là loại trừ.
  * Người chơi kéo thẻ để sắp lại (vị trí lưu trong trạng thái), bấm thẻ để đọc kỹ.
@@ -133,7 +134,7 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
     <div className="bang" role="region" aria-label="Bảng điều tra">
       <div ref={goc} className={`bang__cuon${ngang ? '' : ' is-doc'}`}>
         <div className="bang__khung" style={{ width: KHUNG_BANG.rong * tiLe, height: KHUNG_BANG.cao * tiLe }}>
-          <div className="bang__mat" style={{ transform: `scale(${tiLe})`, ['--anh-ban' as string]: `url("${anhTheoTen('ui-bang-ban') ?? ''}")` }}>
+          <div className="bang__mat" style={{ transform: `scale(${tiLe})`, ['--anh-ban' as string]: `url("${anhTheoTen('ui-bang-ni') ?? ''}")` }}>
             <svg className="bang__day" viewBox={`0 0 ${KHUNG_BANG.rong} ${KHUNG_BANG.cao}`} aria-hidden="true">
               {bang.day.map((d) => {
                 const a = ghim(d.tu);

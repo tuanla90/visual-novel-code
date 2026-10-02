@@ -980,6 +980,36 @@
     min-width: 44px;
     justify-content: center;
   }
+  /* Màn hẹp: ba thẻ chung một hàng (giãn theo độ dài chữ), chữ không gãy dòng (bỏ biểu tượng nhỏ); "Đóng" chỉ còn dấu × tròn. */
+  .mvp-kho .inventory-nav__tabs {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 4px;
+  }
+  .mvp-kho .inventory-nav .inventory-nav__tab {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: center;
+    padding: 0 6px;
+    font-size: 12.5px;
+    white-space: nowrap;
+  }
+  .mvp-kho .inventory-nav__tab > svg,
+  .mvp-kho .inventory-nav__close > span {
+    display: none;
+  }
+  .mvp-kho .inventory-nav__tab > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mvp-kho .inventory-nav .inventory-nav__close {
+    padding: 0;
+    border-radius: 50%;
+  }
+  .mvp-kho .inventory-nav__close > svg {
+    width: 16px;
+    height: 16px;
+  }
   .mvp-kho .inventory-body {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr) minmax(0, 1.25fr);
@@ -1349,6 +1379,35 @@
   min-height: 44px;
   min-width: 44px;
   justify-content: center;
+}
+.game--portrait .mvp-kho .inventory-nav__tabs {
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: 4px;
+}
+.game--portrait .mvp-kho .inventory-nav .inventory-nav__tab {
+  flex: 1 1 auto;
+  min-width: 0;
+  justify-content: center;
+  padding: 0 6px;
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+.game--portrait .mvp-kho .inventory-nav__tab > svg,
+.game--portrait .mvp-kho .inventory-nav__close > span {
+  display: none;
+}
+.game--portrait .mvp-kho .inventory-nav__tab > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.game--portrait .mvp-kho .inventory-nav .inventory-nav__close {
+  padding: 0;
+  border-radius: 50%;
+}
+.game--portrait .mvp-kho .inventory-nav__close > svg {
+  width: 16px;
+  height: 16px;
 }
 .game--portrait .mvp-kho .inventory-body {
   grid-template-columns: minmax(0, 1fr);
@@ -2339,4 +2398,61 @@
 }
 .mvp-nhan-moi--tab {
   margin-left: 6px;
+}
+
+/* ======================= Nhắc xoay dọc (điện thoại nằm ngang) =======================
+   Màn ngang trên điện thoại chỉ cao ~360–430 px: mặt laptop màn tra co còn nút 11 px, khay thẻ đối chất bị thanh trên che.
+   Chỉ bật khi màn cảm ứng (pointer: coarse) — laptop có cửa sổ thấp không bị nhắc nhầm. Xoay lại là chơi tiếp. */
+.mvp-xoay {
+  display: none;
+}
+@media (orientation: landscape) and (max-height: 500px) and (pointer: coarse) {
+  .mvp-xoay {
+    position: fixed;
+    inset: 0;
+    z-index: 10050;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px;
+    background: rgba(8, 12, 20, 0.97);
+    color: #f8fafc;
+    text-align: center;
+  }
+}
+.mvp-xoay__may {
+  width: 34px;
+  height: 58px;
+  margin-bottom: 8px;
+  border: 3px solid #fbbf24;
+  border-radius: 8px;
+  animation: mvp-xoay 2.4s ease-in-out infinite;
+}
+@keyframes mvp-xoay {
+  0%,
+  20% {
+    transform: rotate(-90deg);
+  }
+  55%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.mvp-xoay__chu {
+  margin: 0;
+  font: 800 1.25rem var(--font-ui);
+  color: #fde68a;
+}
+.mvp-xoay__phu {
+  max-width: 34em;
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(248, 250, 252, 0.8);
+}
+@media (prefers-reduced-motion: reduce) {
+  .mvp-xoay__may {
+    animation: none;
+  }
 }
