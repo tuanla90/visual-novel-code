@@ -1918,7 +1918,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Đừng cá. Tính."
+          "text": "Đừng cá. Holmes dặn rồi: chưa có dữ liệu mà đã đoán là sai từ gốc. Tính đã."
         },
         {
           "type": "challenge",
@@ -8720,6 +8720,11 @@ const GOC = {
               "speaker": "tung",
               "expression": "gai-dau",
               "text": "Thế thì ai in?"
+            },
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Con chó không sủa cũng là manh mối. Không dòng nào tức là có một điều mình đang tin mà sai."
             }
           ]
         },

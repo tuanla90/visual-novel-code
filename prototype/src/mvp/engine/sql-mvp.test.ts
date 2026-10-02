@@ -89,7 +89,7 @@ describe('phản ứng sau khi chạy (dòng "Khi …" của thẻ)', () => {
     expect(khongH[0]?.speaker).toBe('ha-vy');
     // Lời "… với tai_khoan, ten_tep" (Hà Vy rồi Tùng) chỉ nói khi màn tra báo đúng tập cột đã điền.
     const kqIn = await chamThuThach(DU_LIEU, "SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE tai_khoan = 'SV240317' AND ten_tep LIKE 'kien-nghi%'", inAn.sqlChuan);
-    expect(phanUngSauKhiChay(inAn, kqIn, ['tai_khoan', 'ten_tep']).map((l) => l.speaker)).toEqual(['ha-vy', 'tung']);
+    expect(phanUngSauKhiChay(inAn, kqIn, ['tai_khoan', 'ten_tep']).map((l) => l.speaker)).toEqual(['ha-vy', 'tung', 'ha-vy']);
     // Không báo cột → lời chung "Khi chạy ra 0 dòng" (một lời Hà Vy).
     expect(phanUngSauKhiChay(inAn, kqIn).map((l) => l.speaker)).toEqual(['ha-vy']);
     expect(phanUngSauKhiChay(lop, await chamThuThach(DU_LIEU, `${khungLop} WHERE khoa_hoc = 2024`, lop.sqlChuan))).toEqual([]);

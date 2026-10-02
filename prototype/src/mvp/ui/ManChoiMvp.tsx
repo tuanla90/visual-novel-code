@@ -41,6 +41,7 @@ import { LichMvp } from './LichMvp';
 import { LuuNapMvp } from './LuuNapMvp';
 import { ManChieuMvp } from './ManChieuMvp';
 import { tongKetVu } from '../engine/tong-ket';
+import { DongHanhMvp } from './DongHanhMvp';
 import { PhongTraMvp } from './v7/PhongTraMvp';
 import { NoiMvp } from './NoiMvp';
 import { SanKhauMvp } from './SanKhauMvp';
@@ -426,6 +427,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         onVeTieuDe={onVeTieuDe}
         onMoLich={() => setLichMo(true)}
       />
+      {['line', 'feedback', 'question', 'branch', 'explore', 'doi-chat'].includes(kn.kind) && !gioiThieuMo ? <DongHanhMvp kb={kb} s={s} dienTen={dienTen} /> : null}
       <SanKhauMvp
         kb={kb}
         canh={noiDangO ? noiDangO.diaDiem.canh : s.canh}

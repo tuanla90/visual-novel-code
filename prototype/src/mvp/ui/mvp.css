@@ -2328,3 +2328,59 @@
 .mvp-chot__ds li { display: flex; justify-content: space-between; gap: 12px; font-size: 0.98rem; }
 .mvp-chot__ds b { font-variant-numeric: tabular-nums; }
 .mvp-chot__loi { margin: 10px 0 0; font-style: italic; }
+
+/* Bạn đồng hành: dải ảnh mặt tròn "Đi cùng" ở góc trên phải sân khấu. */
+.dong-hanh {
+  position: absolute;
+  top: 222px;
+  right: 12px;
+  z-index: 6;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  max-width: min(320px, 70%);
+}
+.dong-hanh__nhan {
+  padding: 3px 8px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.7);
+  color: #ffe9b8;
+  font: 700 0.68rem/1.2 var(--font-ui);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.dong-hanh__nguoi {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 35%, #fde68a, #d97706);
+  box-shadow: 0 0 0 2px #fffdfa, 0 0 0 4px #d97706, 0 3px 8px rgba(15, 23, 42, 0.35);
+  cursor: pointer;
+}
+.dong-hanh__nguoi img { position: absolute; left: 50%; top: 50%; width: 220%; height: auto; transform: translate(-50%, -20%); pointer-events: none; }
+.dong-hanh__nguoi.is-noi { box-shadow: 0 0 0 2px #fffdfa, 0 0 0 4px #1f5f8b, 0 3px 8px rgba(15, 23, 42, 0.35); }
+.dong-hanh__cau {
+  flex-basis: 100%;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 12px 2px 12px 12px;
+  background: #fffdfa;
+  color: #2a2320;
+  font: 500 0.92rem/1.35 var(--font-ui);
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+  cursor: pointer;
+}
+.dong-hanh__cau b { color: #b45309; margin-right: 4px; }
+
+/* Sổ: danh sách bảng đã mở (Hà Vy ghi). */
+.mvp-kho__bang-ds { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.mvp-kho__bang-ds p { display: grid; gap: 2px; margin: 0; }
+.mvp-kho__bang-ds code { font-weight: 700; }
+.mvp-kho__bang-ds span { font-size: 0.86rem; opacity: 0.8; }

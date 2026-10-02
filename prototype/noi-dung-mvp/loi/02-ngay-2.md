@@ -41,7 +41,7 @@
 > NHẮC VIỆC ha-vy (day-kinh): Hai tờ giấy nhớ trên bàn: Tòa B, Báo chí K24. Lớp nào khớp?
 - **player**: Giờ lọc. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà.
 - **tung** (chi-tay): Tòa B hoặc Báo chí, cứ dính một cái là lấy hết cho chắc. Tớ cá kiểu gì chẳng trúng!
-- **ha-vy** (neutral): Đừng cá. Tính.
+- **ha-vy** (neutral): Đừng cá. Holmes dặn rồi: chưa có dữ liệu mà đã đoán là sai từ gốc. Tính đã.
 
 ## n2-laptop.2
 - **ha-vy** (neutral): Hai lớp: BC24A với BC23A.
