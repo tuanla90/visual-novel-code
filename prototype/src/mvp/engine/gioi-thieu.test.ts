@@ -1,0 +1,50 @@
+/**
+ * Thẻ "Nhân vật mới": mỗi nhân vật có thẻ giới thiệu phải có đúng một chỗ mở thẻ khi đi qua kịch bản thật — câu tự xưng
+ * nếu chuỗi đó có, không thì câu đầu tiên người đó nói.
+ */
+import { describe, expect, it } from 'vitest';
+import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
+import type { KichBanMvp } from '../../content/mvp/types';
+import { canGioiThieu, taoTrangThai, type KhungNhinMvp } from './may';
+
+const kb = KICH_BAN_MVP as unknown as KichBanMvp;
+
+/** Chỗ đầu tiên (chuỗi, nút) mà thẻ của `nguoi` mở, quét các chuỗi theo thứ tự trong kịch bản. */
+function choMoThe(nguoi: string): { chuoi: string; text: string } | null {
+  for (const c of kb.chuoi) {
+    for (let i = 0; i < c.nodes.length; i++) {
+      const n = c.nodes[i];
+      if (!n || n.type !== 'line' || n.speaker !== nguoi) continue;
+      const s = { ...taoTrangThai(kb), conTro: { chuoi: c.id, nut: i, boiCanh: 'mo-dau' as const } };
+      const kn: KhungNhinMvp = { kind: 'line', loi: { speaker: n.speaker, expression: n.expression, text: n.text } };
+      if (canGioiThieu(kb, s, kn) === nguoi) return { chuoi: c.id, text: n.text };
+    }
+  }
+  return null;
+}
+
+describe('thẻ giới thiệu nhân vật', () => {
+  it('nhân vật nào có thẻ giới thiệu và có lời thoại cũng có chỗ mở thẻ', () => {
+    const coLoi = new Set(kb.chuoi.flatMap((c) => c.nodes.flatMap((n) => (n.type === 'line' ? [n.speaker] : []))));
+    const thieu = kb.nhanVat.filter((n) => n.gioiThieu && coLoi.has(n.id) && !choMoThe(n.id)).map((n) => n.id);
+    expect(thieu).toEqual([]);
+  });
+
+  it('có câu tự xưng trong chuỗi thì chờ tới câu đó; không có thì mở ở câu đầu', () => {
+    expect(choMoThe('tung')?.text).toContain('Tớ là');
+    expect(choMoThe('duy')?.text).toContain('Còn tớ là');
+    // Minh Anh không tự xưng ở Ngày hội: thẻ mở ngay câu đầu của chị, không đợi tới Vụ 5.
+    expect(choMoThe('minh-anh')?.chuoi.startsWith('md-')).toBe(true);
+    expect(choMoThe('bac-tu')).not.toBeNull();
+    expect(choMoThe('hoai')).not.toBeNull();
+  });
+
+  it('đã giới thiệu rồi thì không mở lại', () => {
+    const c = kb.chuoi.find((x) => x.nodes.some((n) => n.type === 'line' && n.speaker === 'tung'));
+    const i = c?.nodes.findIndex((n) => n.type === 'line' && n.speaker === 'tung') ?? -1;
+    const n = c?.nodes[i];
+    if (!c || !n || n.type !== 'line') throw new Error('không thấy lời của Tùng');
+    const s = { ...taoTrangThai(kb), conTro: { chuoi: c.id, nut: i, boiCanh: 'mo-dau' as const }, daGioiThieu: ['tung'] };
+    expect(canGioiThieu(kb, s, { kind: 'line', loi: { speaker: 'tung', text: n.text } })).toBeNull();
+  });
+});
