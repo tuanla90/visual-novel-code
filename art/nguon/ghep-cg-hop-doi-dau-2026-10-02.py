@@ -49,11 +49,29 @@ def hao_quang(lop: Image.Image, cao: int, x_giua: float, y_dinh: float) -> Image
     return ra
 
 
+def quang_trang(lop: Image.Image, cao: int, x_giua: float, y_dinh: float) -> Image.Image:
+    """Quầng sáng trắng quanh người: bóng của người nở rộng, làm nhòe mạnh, tô trắng ngà."""
+    k = cao / lop.height
+    nho = lop.resize((round(lop.width * k), cao), Image.LANCZOS)
+    khung = Image.new('L', (W, H), 0)
+    khung.paste(nho.getchannel('A'), (round(W * x_giua - nho.width / 2), round(H * y_dinh)))
+    ra = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    for ban_kinh, do in ((95, 150), (55, 215), (22, 245)):
+        m = khung.filter(ImageFilter.MaxFilter(ban_kinh | 1)).filter(ImageFilter.GaussianBlur(ban_kinh * 0.6))
+        ra.alpha_composite(Image.merge('RGBA', (*[Image.new('L', (W, H), c) for c in (255, 253, 244)], m.point(lambda x: x * do // 255))))
+    return ra
+
+
 def main(ten_nvc: str) -> None:
     """Bản user chốt 02/10 tối: nền + Quân + hào quang lấy nguyên từ ảnh user tự sửa trên Topview (đã xóa nhân vật chính cũ,
     lớp g2-jj-nen-quan), chỉ dán nhân vật chính mới (dáng Jotaro) vào, chân chạm mép sàn."""
     nen = Image.open(J / 'g2-jj-nen-quan.png').convert('RGBA').resize((W, H), Image.LANCZOS)
-    dat(nen, nguoi(ten_nvc), cao=round(H * 0.62), x_giua=0.795, y_dinh=0.25)
+    nvc = nguoi(ten_nvc)
+    # User 02/10: nhân vật chính to hơn ~30% (0,62 → 0,81 chiều cao khung), chân trụ vẫn chạm mép sàn; quanh người xóa bớt
+    # vạch tốc độ thành quầng sáng trắng như khung truyện gốc.
+    v = dict(cao=round(H * 0.81), x_giua=0.79, y_dinh=0.065)
+    nen.alpha_composite(quang_trang(nvc, **v))
+    dat(nen, nvc, **v)
     ra = GOC / 'art/nguon/topview-2026-10-01/g2/g2-cg-hop-doi-dau.png'
     nen.convert('RGB').save(ra, optimize=True)
     print(ra)
