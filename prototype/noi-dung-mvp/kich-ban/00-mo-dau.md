@@ -86,6 +86,11 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
 - [LỜI md-10-phong-clb.1]
 
 - [LỜI md-10-phong-clb.2]
+- [KHÁM PHÁ kp-soi-tung · quan sát tung]
+  - vung:ban-do · x 82% · y 56% · rộng 24% → md-10-soi-ban-do · nhãn: Tờ giấy trên tay
+  - vung:ao · x 50% · y 44% · rộng 22% → md-10-soi-ao · nhãn: Cái áo
+  - vung:mui · x 57% · y 21% · rộng 14% → md-10-soi-mui · nhãn: Miếng băng trên mũi
+- [LỜI md-10-phong-clb.2b]
 - [ẢNH chibi-clb-nhom]
 - [HIỆN TÀI LIỆU doc-so-chi-linh]
 - [TRA SỔ kiem-hai-lan · tâm đắc]
@@ -102,3 +107,15 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
 - [LỜI md-11-la-thu.2]
 - [HẬU QUẢ] mở manh mối clue-chu-ky-h
 - [LỜI md-11-la-thu.3]
+
+### md-10-soi-ban-do — Quan sát Tùng: tờ bản đồ trên tay {cảnh: phong-clb}
+
+- [LỜI md-10-soi-ban-do.1]
+
+### md-10-soi-ao — Quan sát Tùng: cái áo {cảnh: phong-clb}
+
+- [LỜI md-10-soi-ao.1]
+
+### md-10-soi-mui — Quan sát Tùng: miếng băng trên mũi {cảnh: phong-clb}
+
+- [LỜI md-10-soi-mui.1]

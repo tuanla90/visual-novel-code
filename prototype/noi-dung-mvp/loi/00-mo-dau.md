@@ -121,7 +121,12 @@
 - **tung** (happy): Toán! Thế là tớ có chỗ mượn vở rồi.
 - **ha-vy** (neutral): Mượn thì được, chép thì không.
 - **tung** (happy): Thế cậu đoán được tớ học gì không?
-- **ha-vy** (neutral): Khỏi đoán. Cổ đeo thẻ, tay lúc nào cũng cầm bản đồ trường. Du lịch chứ gì.
+- **ha-vy** (neutral): Khỏi đoán. Nhìn là ra. Cậu thử nhìn xem, đừng nhìn mặt, nhìn những thứ cậu ấy mang theo.
+
+## md-10-phong-clb.2b
+- **ha-vy** (smile): Cầm bản đồ đã nhàu, thuộc đường, thích dẫn người khác đi. Du lịch chứ gì.
+- **tung** (surprised): Ơ đúng! Sao cậu biết?
+- **ha-vy** (neutral): Holmes gọi thế là nhìn mà có quan sát. Cái áo thì không nói được gì, nên tớ bỏ.
 - **duy** (smile): Còn tớ là {{nv.duy}}, năm hai Hành chính học. Chìa khóa phòng, tủ hồ sơ, cả cái laptop cũ cất trong tủ, đều tớ giữ.
 - **duy** (neutral): Ngăn dưới tớ chưa kiểm kê tới. Cậu mở xem có gì trong đấy.
 > NHẮC VIỆC duy (neutral): Ngăn dưới tủ tớ chưa kiểm kê tới.
@@ -152,3 +157,15 @@
 - **ha-vy** (day-kinh): Khoan, tính lại đã. Mình mới có một chữ H với một cái hộp.
 - **minh-anh** (serious): Thì bắt đầu từ cái hộp. Nói có sách, mách có chứng. Mai ra tòa B.
 > NHẮC VIỆC minh-anh (serious): Một tuần tìm căn cứ. Mai bắt đầu từ cái hộp ở tòa B.
+
+## md-10-soi-ban-do.1
+- **player**: Bản đồ trường, gấp nhiều nếp, mấy chỗ khoanh bút đỏ.
+- **ha-vy** (thinking): Mới nhập học một tuần mà bản đồ đã nhàu thế kia. Cậu ấy dùng nó hằng ngày, và dùng cho cả người khác.
+
+## md-10-soi-ao.1
+- **player**: Áo thể thao màu lam, không in tên khoa nào.
+- **ha-vy** (neutral): Vậy không đoán khoa từ áo được. Chi tiết không nói gì thì bỏ, đừng ép nó nói.
+
+## md-10-soi-mui.1
+- **player**: Miếng băng cá nhân trên sống mũi.
+- **tung** (happy): Hôm khuân đồ cho tân sinh viên, tớ va phải cửa thang máy. Đội tình nguyện đón tân sinh viên mà!

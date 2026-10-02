@@ -151,6 +151,11 @@ export function NhanVatMvp({ kb, daGap }: { kb: KichBanMvp; daGap: readonly stri
             <div className="chara-profile__pill-header">GIỚI THIỆU</div>
             <div className="chara-profile__section-content">
               <p>{gt.loi}</p>
+              {gt.lich ? (
+                <p className="mvp-nhanvat__lich">
+                  <b>Thường gặp ở đâu:</b> {gt.lich}
+                </p>
+              ) : null}
             </div>
           </section>
         </div>

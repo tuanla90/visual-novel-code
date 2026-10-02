@@ -48,6 +48,8 @@ export interface RawNhanVat {
 
 /** Dòng "Danh xưng" / "Năm" / "Ngành" / "Câu nói" / "Giới thiệu" của nhan-vat.md — chữ NGƯỜI CHƠI thấy, không lộ tình tiết. */
 export interface RawGioiThieu {
+  /** "Lịch": thói quen đi lại (thường ở đâu, lúc nào) — hiện ở thẻ nhân vật; có thì ảnh mặt mới hiện trên bản đồ. */
+  lich: string | null;
   danhXung: string;
   nam: string | null;
   nganh: string | null;
@@ -96,7 +98,7 @@ export interface RawAnhDuKien {
 
 /** Đọc giá trị dòng "Ảnh"; sai cú pháp → ném lỗi (thông báo đầy đủ). Không kiểm miền 0–100 (luật làm). */
 export function docAnhDuKien(v: string): RawAnhDuKien {
-  const m = /^(obj-[a-z0-9-]+|nv:[a-z0-9-]+)\s*·\s*x\s+(-?\d+(?:[.,]\d+)?)%\s*·\s*y\s+(-?\d+(?:[.,]\d+)?)%\s*·\s*rộng\s+(-?\d+(?:[.,]\d+)?)%$/.exec(v.trim());
+  const m = /^(obj-[a-z0-9-]+|nv:[a-z0-9-]+|ghim:[a-z0-9-]+|vung:[a-z0-9-]+)\s*·\s*x\s+(-?\d+(?:[.,]\d+)?)%\s*·\s*y\s+(-?\d+(?:[.,]\d+)?)%\s*·\s*rộng\s+(-?\d+(?:[.,]\d+)?)%$/.exec(v.trim());
   if (!m) throw new Error(`"Ảnh" phải là "<obj-… hoặc nv:<mã>> · x <n>% · y <n>% · rộng <n>%": "${v}"`);
   const so = (t: string | undefined): number => Number((t ?? '').replace(',', '.'));
   return { sprite: m[1] ?? '', x: so(m[2]), y: so(m[3]), rong: so(m[4]) };
@@ -214,7 +216,7 @@ export type MucMvp =
   | { kind: 'trial-filter'; id: string; sql: string; soDong: number; chon: { cot: string; giaTri: string } }
   | { kind: 'save-evidence'; id: string }
   | { kind: 'ending-branch' }
-  | { kind: 'explore'; id: string; diem: RawDiemKhamPha[] };
+  | { kind: 'explore'; id: string; diem: RawDiemKhamPha[]; kieu: 'canh' | 'ban-do' | 'quan-sat'; nhanVat: string | null };
 
 export interface RawBangChungDoiChat {
   id: string;
@@ -230,11 +232,15 @@ export interface RawDiemKhamPha extends RawAnhDuKien {
   chuoi: string;
   sau: string[];
   nhan: string | null;
+  /** `· dấu: !` (việc chính) / `· dấu: ?` (tùy chọn, còn mới). */
+  dau: 'chinh' | 'phu' | null;
+  /** `· có: a, b`: nhân vật có mặt ở điểm này (bản đồ: ảnh mặt cạnh ghim khi người chơi đã biết lịch của họ). */
+  co: string[];
 }
 
 /** Đọc một dòng con của `[KHÁM PHÁ]` (đã bỏ `  - `); sai cú pháp → ném lỗi. */
 export function docDiemKhamPha(v: string): RawDiemKhamPha {
-  const m = new RegExp(`^(.+?) → (${MA})((?: · (?:sau|nhãn): [^·]+)*)$`).exec(v.trim());
+  const m = new RegExp(`^(.+?) → (${MA})((?: · (?:sau|nhãn|dấu|có): [^·]+)*)$`).exec(v.trim());
   if (!m) throw new Error(`[KHÁM PHÁ]: dòng con phải là "<obj-… hoặc nv:<mã>> · x <n>% · y <n>% · rộng <n>% → <chuỗi>[ · sau: <chuỗi>, …][ · nhãn: <chữ>]": "${v}"`);
   let anh: RawAnhDuKien;
   try {
@@ -244,13 +250,19 @@ export function docDiemKhamPha(v: string): RawDiemKhamPha {
   }
   let sau: string[] = [];
   let nhan: string | null = null;
+  let dau: 'chinh' | 'phu' | null = null;
+  let co: string[] = [];
   for (const phan of (m[3] ?? '').split(' · ').slice(1)) {
     const [khoa, ...con] = phan.split(': ');
     const gt = con.join(': ').trim();
     if (khoa === 'sau') sau = chiaDanhSach(gt);
-    else nhan = gt;
+    else if (khoa === 'có') co = chiaDanhSach(gt);
+    else if (khoa === 'dấu') {
+      if (gt !== '!' && gt !== '?') throw new Error(`[KHÁM PHÁ]: "dấu:" chỉ nhận ! hoặc ?: "${gt}"`);
+      dau = gt === '!' ? 'chinh' : 'phu';
+    } else nhan = gt;
   }
-  return { ...anh, chuoi: m[2] ?? '', sau, nhan };
+  return { ...anh, chuoi: m[2] ?? '', sau, nhan, dau, co };
 }
 
 export interface RawChuoiMvp {
@@ -312,7 +324,7 @@ export interface KetQuaDocMvp {
 const DANH_XUNG = ['Bác', 'Chú', 'Cô', 'Thầy', 'Anh', 'Chị', 'Em'];
 /** Dòng của thẻ nhân vật: phần cho người viết / bộ kiểm, và phần giới thiệu người chơi thấy. */
 const TRUONG_NHAN_VAT = ['Họ tên', 'Vai', 'Biểu cảm', 'Xuất hiện từ', 'Chỉ qua lời kể', 'Trong câu'];
-const TRUONG_GIOI_THIEU = ['Danh xưng', 'Năm', 'Ngành', 'Câu nói', 'Giới thiệu'];
+const TRUONG_GIOI_THIEU = ['Danh xưng', 'Năm', 'Ngành', 'Câu nói', 'Giới thiệu', 'Lịch'];
 
 export function tenTrongCau(ten: string): string {
   const [dau = '', ...con] = ten.split(' ');
@@ -530,6 +542,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         if (thieu.length > 0) loi.push({ ...vt, thongBao: `nhân vật ${nv.id} có thẻ giới thiệu nhưng thiếu dòng: ${thieu.join(', ')}` });
         if (chiQuaLoiKe) loi.push({ ...vt, thongBao: `nhân vật ${nv.id} "Chỉ qua lời kể: có" nên không có thẻ giới thiệu` });
         nv.gioiThieu = {
+          lich: fields['Lịch'] ?? null,
           danhXung: fields['Danh xưng'] ?? '',
           nam: fields['Năm'] ?? null,
           nganh: fields['Ngành'] ?? null,
@@ -1089,8 +1102,8 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       }
       if ((m = new RegExp(`^- \\[LƯU BẰNG CHỨNG (${MA})\\]$`).exec(line))) return add({ kind: 'save-evidence', id: m[1] ?? '' });
       if (line === '- [RẼ KẾT]') return add({ kind: 'ending-branch' });
-      if ((m = new RegExp(`^- \\[KHÁM PHÁ (${MA})\\]$`).exec(line))) {
-        kham = { kind: 'explore', id: m[1] ?? '', diem: [] };
+      if ((m = new RegExp(`^- \\[KHÁM PHÁ (${MA})(?: · (bản đồ|quan sát (${MA})))?\\]$`).exec(line))) {
+        kham = { kind: 'explore', id: m[1] ?? '', diem: [], kieu: m[2] === 'bản đồ' ? 'ban-do' : m[2] ? 'quan-sat' : 'canh', nhanVat: m[3] ?? null };
         return add(kham);
       }
       if (line.startsWith('- [') && /^- \[[A-ZÀ-Ỹ]/.test(line)) {

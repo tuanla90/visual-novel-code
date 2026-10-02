@@ -430,7 +430,9 @@ export function diemDangHien(nut: Extract<NutMvp, { type: 'explore' }>, daXem: r
 function veKhamPha(kb: KichBanMvp, s: TrangThaiMvp, kp: KhamPhaMvp): TrangThaiMvp {
   const nut = nutKhamPha(kb, kp);
   if (!nut) return loi({ ...s, khamPha: null }, `Không tìm thấy [KHÁM PHÁ] ở "${kp.veLai.chuoi}" #${kp.veLai.nut}.`);
-  if (nut.diem.every((d) => kp.daXem.includes(d.chuoi))) {
+  // Có điểm đánh dấu ! thì xem hết các điểm ! là đi tiếp (điểm ? là tùy chọn); không có dấu nào thì phải xem hết.
+  const chinh = nut.diem.filter((d) => d.dau === 'chinh');
+  if ((chinh.length > 0 ? chinh : nut.diem).every((d) => kp.daXem.includes(d.chuoi))) {
     return { ...s, conTro: { ...kp.veLai, nut: kp.veLai.nut + 1 }, hoiDap: null, khamPha: null };
   }
   return { ...s, conTro: { ...kp.veLai }, hoiDap: null };
@@ -852,6 +854,9 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
         moi = tienNut(hienTaiLieu(s, kn.documentId));
       } else if (kn.kind === 'line' || kn.kind === 'image' || kn.kind === 'effect' || kn.kind === 'projector' || kn.kind === 'notebook-lookup') {
         moi = tienNut(s);
+        // Ghi nhận người vừa nói (để bản đồ biết người chơi đã gặp ai).
+        const nguoi = kn.kind === 'line' ? kn.loi.speaker : null;
+        if (nguoi && nguoi !== 'player' && nguoi !== 'narrator' && !(s.daNoi ?? []).includes(nguoi)) moi = { ...moi, daNoi: [...(s.daNoi ?? []), nguoi] };
       } else {
         return s;
       }

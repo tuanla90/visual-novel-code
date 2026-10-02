@@ -55,6 +55,8 @@ export interface NhanVatMvp {
 
 /** Chữ người chơi thấy về một nhân vật — viết sao cho không lộ tình tiết (nhan-vat.md, đặc tả §18.3). */
 export interface GioiThieuNhanVatMvp {
+  /** Thói quen đi lại ("Lịch" của nhan-vat.md); có thì ảnh mặt nhân vật hiện trên bản đồ sau khi đã gặp. */
+  lich?: string | null;
   danhXung: string;
   nam: string | null;
   nganh: string | null;
@@ -209,7 +211,11 @@ export type NutMvp =
   | { type: 'trial-filter'; id: string; sql: string; soDong: number; chon: { cot: string; giaTri: string } }
   | { type: 'save-evidence'; evidenceId: string }
   | { type: 'ending-branch' }
-  | { type: 'explore'; id: string; diem: DiemKhamPhaMvp[] };
+  /**
+   * `kieu` (02/10/2026): thiếu = cảnh thường (vật / người trên nền cảnh); `ban-do` = bản đồ trường, mỗi điểm một ghim nơi đến;
+   * `quan-sat` = soi chi tiết trên chân dung nhân vật `nhanVat` (kiểu Sherlock Holmes: mỗi vùng một chi tiết).
+   */
+  | { type: 'explore'; id: string; diem: DiemKhamPhaMvp[]; kieu?: 'ban-do' | 'quan-sat'; nhanVat?: string };
 
 /**
  * Một chỗ bấm được của `[KHÁM PHÁ]` (đặc tả §18.6): vật/người đặt trên nền cảnh của chuỗi, bấm → chạy `chuoi`; chuỗi hết
@@ -220,6 +226,10 @@ export interface DiemKhamPhaMvp extends AnhDuKienMvp {
   chuoi: string;
   sau: string[];
   nhan: string | null;
+  /** `chinh` = dấu ! (việc chính: xem hết các điểm ! là đi tiếp được), `phu` = dấu ? (tùy chọn). Thiếu = điểm thường (phải xem hết). */
+  dau?: 'chinh' | 'phu';
+  /** Nhân vật có mặt ở điểm này (bản đồ hiện ảnh mặt khi người chơi đã biết lịch của họ). */
+  co?: string[];
 }
 
 export interface ChuoiMvp {

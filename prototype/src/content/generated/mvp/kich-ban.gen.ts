@@ -40,6 +40,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": "Đi đâu cũng cầm bản đồ trường. Chiều hay ở phòng CLB, tối đá bóng ở sân cạnh nhà CLB.",
         "danhXung": "Bạn cùng phòng 408",
         "nam": "Năm nhất",
         "nganh": "Du lịch",
@@ -64,6 +65,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": "Chiều ở phòng CLB. Tối thứ Hai nào cũng ngồi học ở thư viện tới khuya.",
         "danhXung": "Thành viên mới của CLB Thám Tử",
         "nam": "Năm nhất",
         "nganh": "Toán ứng dụng",
@@ -89,6 +91,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": "Chiều thứ Hai, thứ Tư, thứ Sáu ở phòng CLB. Buổi sáng có tiết ở tòa A.",
         "danhXung": "Chủ nhiệm CLB Thám Tử",
         "nam": "Năm ba",
         "nganh": "Luật kinh tế",
@@ -112,6 +115,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": "Giữ chìa khóa nên chiều nào cũng ở phòng CLB. Sáng thứ Ba, thứ Năm có tiết.",
         "danhXung": "Thành viên CLB, giữ tài sản",
         "nam": "Năm hai",
         "nganh": "Hành chính học",
@@ -138,6 +142,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": null,
         "danhXung": "Ban Pháp chế – Kiểm tra, Hội sinh viên",
         "nam": null,
         "nganh": null,
@@ -160,6 +165,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": "Trực cổng ký túc xá ca tối.",
         "danhXung": "Bảo vệ ký túc xá",
         "nam": null,
         "nganh": null,
@@ -182,6 +188,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": "Trực sảnh tòa B từ thứ Hai tới thứ Bảy, mở cửa 7 giờ sáng, khóa cửa 9 giờ tối. Chủ nhật chỉ ghé buổi tối để khóa cửa.",
         "danhXung": "Bảo vệ giảng đường B",
         "nam": null,
         "nganh": null,
@@ -204,6 +211,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": "Giờ hành chính ở Phòng Đào tạo, tòa hành chính.",
         "danhXung": "Phòng Đào tạo",
         "nam": null,
         "nganh": null,
@@ -226,6 +234,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": "Giờ hành chính ở Phòng Công tác sinh viên, tòa hành chính.",
         "danhXung": "Phòng Công tác sinh viên",
         "nam": null,
         "nganh": null,
@@ -249,6 +258,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": null,
         "danhXung": "Phó hiệu trưởng phụ trách sinh viên",
         "nam": null,
         "nganh": null,
@@ -270,6 +280,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": "Ở phòng máy từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật trực cho sinh viên in bài.",
         "danhXung": "Quản lý phòng máy",
         "nam": null,
         "nganh": null,
@@ -294,6 +305,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": null,
         "danhXung": "Sinh viên lớp BC24A",
         "nam": "Năm nhất",
         "nganh": null,
@@ -319,6 +331,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": null,
         "danhXung": "Sinh viên lớp BC24A",
         "nam": "Năm nhất",
         "nganh": null,
@@ -340,6 +353,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": null,
         "danhXung": "Thành viên CLB Robotics",
         "nam": null,
         "nganh": null,
@@ -361,6 +375,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": null,
         "danhXung": "Chủ tịch Hội sinh viên, trưởng CLB Robotics",
         "nam": null,
         "nganh": null,
@@ -382,6 +397,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": null,
         "danhXung": "Phó CLB Robotics",
         "nam": null,
         "nganh": null,
@@ -403,6 +419,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
+        "lich": null,
         "danhXung": "Kỹ thuật CLB Robotics",
         "nam": null,
         "nganh": null,
@@ -1315,7 +1332,60 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Khỏi đoán. Cổ đeo thẻ, tay lúc nào cũng cầm bản đồ trường. Du lịch chứ gì."
+          "text": "Khỏi đoán. Nhìn là ra. Cậu thử nhìn xem, đừng nhìn mặt, nhìn những thứ cậu ấy mang theo."
+        },
+        {
+          "type": "explore",
+          "id": "kp-soi-tung",
+          "kieu": "quan-sat",
+          "nhanVat": "tung",
+          "diem": [
+            {
+              "sprite": "vung:ban-do",
+              "x": 82,
+              "y": 56,
+              "rong": 24,
+              "chuoi": "md-10-soi-ban-do",
+              "sau": [],
+              "nhan": "Tờ giấy trên tay"
+            },
+            {
+              "sprite": "vung:ao",
+              "x": 50,
+              "y": 44,
+              "rong": 22,
+              "chuoi": "md-10-soi-ao",
+              "sau": [],
+              "nhan": "Cái áo"
+            },
+            {
+              "sprite": "vung:mui",
+              "x": 57,
+              "y": 21,
+              "rong": 14,
+              "chuoi": "md-10-soi-mui",
+              "sau": [],
+              "nhan": "Miếng băng trên mũi"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Cầm bản đồ đã nhàu, thuộc đường, thích dẫn người khác đi. Du lịch chứ gì."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Ơ đúng! Sao cậu biết?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Holmes gọi thế là nhìn mà có quan sát. Cái áo thì không nói được gì, nên tớ bỏ."
         },
         {
           "type": "line",
@@ -1477,6 +1547,63 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "serious",
           "text": "Một tuần tìm căn cứ. Mai bắt đầu từ cái hộp ở tòa B."
+        }
+      ]
+    },
+    {
+      "id": "md-10-soi-ban-do",
+      "title": "Quan sát Tùng: tờ bản đồ trên tay",
+      "canh": "phong-clb",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Bản đồ trường, gấp nhiều nếp, mấy chỗ khoanh bút đỏ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Mới nhập học một tuần mà bản đồ đã nhàu thế kia. Cậu ấy dùng nó hằng ngày, và dùng cho cả người khác."
+        }
+      ]
+    },
+    {
+      "id": "md-10-soi-ao",
+      "title": "Quan sát Tùng: cái áo",
+      "canh": "phong-clb",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Áo thể thao màu lam, không in tên khoa nào."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Vậy không đoán khoa từ áo được. Chi tiết không nói gì thì bỏ, đừng ép nó nói."
+        }
+      ]
+    },
+    {
+      "id": "md-10-soi-mui",
+      "title": "Quan sát Tùng: miếng băng trên mũi",
+      "canh": "phong-clb",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Miếng băng cá nhân trên sống mũi."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Hôm khuân đồ cho tân sinh viên, tớ va phải cửa thang máy. Đội tình nguyện đón tân sinh viên mà!"
         }
       ]
     },
@@ -1724,6 +1851,10 @@ const GOC = {
       "mocSomNhat": 21,
       "nodes": [
         {
+          "type": "task",
+          "text": "Sang Phòng Đào tạo nhận tài khoản tra cứu"
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
@@ -1754,8 +1885,47 @@ const GOC = {
           "text": "Được đúng những gì người ta cho phép. Hỏi cô là biết."
         },
         {
-          "type": "goto",
-          "to": "n2-co-hanh"
+          "type": "explore",
+          "id": "kp-bd-n2",
+          "kieu": "ban-do",
+          "diem": [
+            {
+              "sprite": "ghim:toa-hanh-chinh",
+              "x": 21,
+              "y": 54,
+              "rong": 5,
+              "chuoi": "n2-co-hanh",
+              "sau": [],
+              "nhan": "Phòng Đào tạo",
+              "dau": "chinh",
+              "co": [
+                "co-hanh"
+              ]
+            },
+            {
+              "sprite": "ghim:toa-b",
+              "x": 48,
+              "y": 29,
+              "rong": 5,
+              "chuoi": "n2-bd-toa-b",
+              "sau": [],
+              "nhan": "Sảnh tòa B",
+              "dau": "phu",
+              "co": [
+                "bac-tu"
+              ]
+            },
+            {
+              "sprite": "ghim:cang-tin",
+              "x": 88,
+              "y": 41,
+              "rong": 5,
+              "chuoi": "n2-bd-cang-tin",
+              "sau": [],
+              "nhan": "Căng tin",
+              "dau": "phu"
+            }
+          ]
         }
       ]
     },
@@ -1825,7 +1995,223 @@ const GOC = {
         },
         {
           "type": "goto",
+          "to": "n2-phong"
+        }
+      ]
+    },
+    {
+      "id": "n2-bd-toa-b",
+      "title": "Bản đồ ngày 2 (tùy chọn): ghé sảnh tòa B hỏi bác Thịnh",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "smile",
+          "text": "Lại mấy cháu CLB Thám Tử à? Cái hộp cô phụ trách niêm phong lại rồi, không soi được nữa đâu."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Bọn cháu qua chào bác thôi ạ. Bác trực ở đây cả tuần hả bác?"
+        },
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "neutral",
+          "text": "Thứ Hai tới thứ Bảy. Bảy giờ sáng bác mở cửa, chín giờ tối bác khóa. Chủ nhật bác chỉ ghé buổi tối để khóa cửa, có việc thì sang cổng ký túc tìm chú Cường."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tức là cả ngày Chủ nhật sảnh này không có ai trông."
+        }
+      ]
+    },
+    {
+      "id": "n2-bd-cang-tin",
+      "title": "Bản đồ ngày 2 (tùy chọn): tạt qua căng tin",
+      "canh": "cang-tin",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Giữa buổi sáng, căng tin mới có lác đác vài bàn."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Giờ này vắng, trưa mới chen nhau. Muốn nghe chuyện trong trường thì cứ ra đây giờ ăn trưa."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "À, tối thứ Hai nào đi đá bóng về tớ cũng thấy cậu ngồi ở thư viện tới lúc đóng cửa đấy, Hà Vy."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Cậu để ý người khác kỹ thật. Ừ, tối thứ Hai tớ không có tiết sáng hôm sau."
+        }
+      ]
+    },
+    {
+      "id": "n2-phong",
+      "title": "Phòng CLB buổi chiều: bốn người, mỗi người một việc",
+      "canh": "phong-clb",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
+          "type": "task",
+          "text": "Về phòng CLB, mở laptop"
+        },
+        {
+          "type": "reminder",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Laptop tớ để trên bàn. Muốn tra thì tìm tớ."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Về tới phòng CLB. Mỗi người một góc: Duy bên cái laptop, Hà Vy trước tấm bảng, chị Minh Anh xếp lại giấy tờ, Tùng ngồi vắt vẻo trên bàn."
+        },
+        {
+          "type": "explore",
+          "id": "kp-phong-n2",
+          "diem": [
+            {
+              "sprite": "nv:duy",
+              "x": 20,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "n2-phong-duy",
+              "sau": [],
+              "nhan": "Duy: mở laptop",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "nv:ha-vy",
+              "x": 41,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "n2-phong-vy",
+              "sau": [],
+              "nhan": "Hà Vy: câu hỏi trên bảng",
+              "dau": "phu"
+            },
+            {
+              "sprite": "nv:tung",
+              "x": 62,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "n2-phong-tung",
+              "sau": [],
+              "nhan": "Tùng: chuyện ngoài lề",
+              "dau": "phu"
+            },
+            {
+              "sprite": "nv:minh-anh",
+              "x": 83,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "n2-phong-minh-anh",
+              "sau": [],
+              "nhan": "Minh Anh: xin dữ liệu",
+              "dau": "phu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n2-phong-duy",
+      "title": "Duy mở laptop (việc chính)",
+      "canh": "phong-clb",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Máy đây. Tớ đăng nhập tài khoản cô Hạnh vừa tạo rồi."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "serious",
+          "text": "Phiếu nào tra ra cũng phải gọn và có căn cứ thì tớ mới nhận vào hồ sơ. Ngồi vào đi."
+        },
+        {
+          "type": "goto",
           "to": "n2-laptop"
+        }
+      ]
+    },
+    {
+      "id": "n2-phong-vy",
+      "title": "Hà Vy đọc lại câu hỏi ghim trên bảng",
+      "canh": "phong-clb",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tớ ghim câu hỏi lên bảng rồi: lớp nào vừa ở tòa B vừa học Báo chí?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Hai tờ giấy nhớ là hai điều mình biết chắc. Còn lại để dữ liệu trả lời, đừng đoán."
+        }
+      ]
+    },
+    {
+      "id": "n2-phong-tung",
+      "title": "Tùng kể chuyện ngoài lề",
+      "canh": "phong-clb",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Cậu biết không, cô Hạnh ở Phòng Đào tạo chỉ làm giờ hành chính thôi. Muốn gặp cô thì đừng đi buổi tối."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Tớ cá là cả trường này tớ thuộc lịch gần hết. Cần tìm ai cứ hỏi tớ."
+        }
+      ]
+    },
+    {
+      "id": "n2-phong-minh-anh",
+      "title": "Minh Anh: muốn xin dữ liệu thì qua chị",
+      "canh": "phong-clb",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Tài khoản hôm nay chỉ mở một bảng. Muốn xem thêm bảng nào thì phải có căn cứ, rồi chị đứng ra xin."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "khoanh-tay",
+          "text": "Chiều thứ Hai, thứ Tư, thứ Sáu chị ở phòng này. Khi nào em thấy đủ căn cứ để kết luận thì tìm chị."
         }
       ]
     },
@@ -1852,7 +2238,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Về tới phòng CLB. Cái laptop cũ khởi động mất gần hai phút."
+          "text": "Cái laptop cũ khởi động mất gần hai phút."
         },
         {
           "type": "line",
@@ -1976,6 +2362,10 @@ const GOC = {
       "mocSomNhat": 31,
       "nodes": [
         {
+          "type": "task",
+          "text": "Sang Phòng Công tác sinh viên xin phiếu tra cứu"
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
@@ -1988,8 +2378,48 @@ const GOC = {
           "text": "Chị gọi cho cô Lan rồi. Các em mang kết quả hai lớp hôm qua sang, đấy là căn cứ để xin phiếu tra cứu."
         },
         {
-          "type": "goto",
-          "to": "n3-ctsv"
+          "type": "explore",
+          "id": "kp-bd-n3",
+          "kieu": "ban-do",
+          "diem": [
+            {
+              "sprite": "ghim:toa-hanh-chinh",
+              "x": 21,
+              "y": 54,
+              "rong": 5,
+              "chuoi": "n3-ctsv",
+              "sau": [],
+              "nhan": "Phòng Công tác sinh viên",
+              "dau": "chinh",
+              "co": [
+                "co-lan",
+                "co-hanh"
+              ]
+            },
+            {
+              "sprite": "ghim:phong-may",
+              "x": 73,
+              "y": 45,
+              "rong": 5,
+              "chuoi": "n3-bd-phong-may",
+              "sau": [],
+              "nhan": "Phòng máy",
+              "dau": "phu"
+            },
+            {
+              "sprite": "ghim:toa-b",
+              "x": 48,
+              "y": 29,
+              "rong": 5,
+              "chuoi": "n3-bd-toa-b",
+              "sau": [],
+              "nhan": "Sảnh tòa B",
+              "dau": "phu",
+              "co": [
+                "bac-tu"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -2034,12 +2464,53 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Một anh sinh viên khoác vest xanh đen, kẹp cái bìa da, đứng ở cửa từ lúc nào."
+          "text": "Một anh sinh viên đeo kính, mặc gi lê len, tay chắp sau lưng, đứng ở cửa từ lúc nào."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Ở cửa có một anh sinh viên khoác vest xanh đen, kẹp cái bìa da, đứng từ lúc nào không ai để ý."
+          "text": "Ở cửa có một anh sinh viên đeo kính, mặc gi lê len, đứng từ lúc nào không ai để ý."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Người lạ. Nhìn kỹ trước khi anh ấy mở lời đã."
+        },
+        {
+          "type": "explore",
+          "id": "kp-soi-quan",
+          "kieu": "quan-sat",
+          "nhanVat": "quan",
+          "diem": [
+            {
+              "sprite": "vung:kinh",
+              "x": 55,
+              "y": 19,
+              "rong": 26,
+              "chuoi": "n3-soi-kinh",
+              "sau": [],
+              "nhan": "Cặp kính"
+            },
+            {
+              "sprite": "vung:gi-le",
+              "x": 50,
+              "y": 46,
+              "rong": 24,
+              "chuoi": "n3-soi-gi-le",
+              "sau": [],
+              "nhan": "Áo gi lê len"
+            },
+            {
+              "sprite": "vung:tay",
+              "x": 14,
+              "y": 80,
+              "rong": 20,
+              "chuoi": "n3-soi-tay",
+              "sau": [],
+              "nhan": "Hai tay chắp sau lưng"
+            }
+          ]
         },
         {
           "type": "line",
@@ -2087,6 +2558,114 @@ const GOC = {
         {
           "type": "goto",
           "to": "n3-cang-tin"
+        }
+      ]
+    },
+    {
+      "id": "n3-bd-phong-may",
+      "title": "Bản đồ ngày 3 (tùy chọn): phòng máy khóa cửa, tờ giấy giờ mở cửa",
+      "canh": "ngoai-phong-may",
+      "mocSomNhat": 31,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cửa phòng máy khóa. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ ở bàn trực."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "Tối Chủ nhật vẫn mở à. Lá thư kia được in vào tối nào nhỉ?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Chưa biết. Nhưng nhớ lấy chỗ này: vào phải ký sổ."
+        }
+      ]
+    },
+    {
+      "id": "n3-bd-toa-b",
+      "title": "Bản đồ ngày 3 (tùy chọn): bác Thịnh ở sảnh tòa B",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 31,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "smile",
+          "text": "Hộp vẫn niêm phong nguyên đấy. Hôm nay các cháu đi đâu mà đông thế?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Bọn cháu sang Phòng Công tác sinh viên ạ. Cô Lan với cô Hạnh cùng ở tòa hành chính đúng không bác?"
+        },
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "neutral",
+          "text": "Ừ, cùng tầng. Giờ hành chính lúc nào cũng có người."
+        }
+      ]
+    },
+    {
+      "id": "n3-soi-kinh",
+      "title": "Quan sát Quân: cặp kính",
+      "canh": "phong-ctsv",
+      "mocSomNhat": 31,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Kính gọng mảnh, lau sạch bóng."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Người kỹ tính. Mình viết gì anh ấy cũng sẽ soi từng chữ."
+        }
+      ]
+    },
+    {
+      "id": "n3-soi-gi-le",
+      "title": "Quan sát Quân: áo gi lê len",
+      "canh": "phong-ctsv",
+      "mocSomNhat": 31,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Gi lê len, sơ mi cài kín cổ. Thầy cô thì mặc vest, đây không phải thầy cô."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Sinh viên, mà ăn mặc như đi họp. Người của một ban nào đó trong Hội."
+        }
+      ]
+    },
+    {
+      "id": "n3-soi-tay",
+      "title": "Quan sát Quân: hai tay chắp sau lưng",
+      "canh": "phong-ctsv",
+      "mocSomNhat": 31,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Đứng thẳng, hai tay chắp sau lưng, không cầm bút, không cầm sổ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tới để xem, không phải để giúp."
         }
       ]
     },

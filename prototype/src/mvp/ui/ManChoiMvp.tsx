@@ -371,7 +371,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           />
         );
       case 'explore':
-        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} />;
+        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} />;
       case 'end':
         return (
           <KetMvp
@@ -427,7 +427,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         onVeTieuDe={onVeTieuDe}
         onMoLich={() => setLichMo(true)}
       />
-      {['line', 'feedback', 'question', 'branch', 'explore', 'doi-chat'].includes(kn.kind) && !gioiThieuMo ? <DongHanhMvp kb={kb} s={s} dienTen={dienTen} /> : null}
+      {['line', 'feedback', 'question', 'branch', 'explore', 'doi-chat'].includes(kn.kind) && !(kn.kind === 'explore' && kn.nut.kieu) && !gioiThieuMo ? <DongHanhMvp kb={kb} s={s} dienTen={dienTen} /> : null}
       <SanKhauMvp
         kb={kb}
         canh={noiDangO ? noiDangO.diaDiem.canh : s.canh}

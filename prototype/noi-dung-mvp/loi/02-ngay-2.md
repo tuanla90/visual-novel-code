@@ -3,6 +3,7 @@
 <!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/02-ngay-2.md. [DÀN DỰNG] không hiện cho người chơi. Lần tra đầu có SQL: lời không giảng SQL, không nói cách bấm. -->
 
 ## n2-mo.1
+> NHIỆM VỤ: Sang Phòng Đào tạo nhận tài khoản tra cứu
 - [THẺ CHỮ] **narrator**: Ngày 2 — Thứ Tư
 - **minh-anh** (neutral): Đơn xin quyền tra cứu, {{nv.thay-quang.trong-cau}} duyệt rồi. Lát nữa sang Phòng Đào tạo, {{nv.co-hanh.trong-cau}} cài tài khoản cho CLB.
 - **duy** (neutral): Laptop của CLB tớ mang theo.
@@ -21,11 +22,44 @@
 - **player**: Bảng lớp thôi cũng đủ khoanh vùng rồi ạ. Em cảm ơn cô.
 - **co-hanh** (smile): Khoanh vùng thôi đấy nhé. Lớp thì không bỏ thư được.
 
+## n2-bd-toa-b.1
+- **bac-tu** (smile): Lại mấy cháu CLB Thám Tử à? Cái hộp cô phụ trách niêm phong lại rồi, không soi được nữa đâu.
+- **tung** (happy): Bọn cháu qua chào bác thôi ạ. Bác trực ở đây cả tuần hả bác?
+- **bac-tu** (neutral): Thứ Hai tới thứ Bảy. Bảy giờ sáng bác mở cửa, chín giờ tối bác khóa. Chủ nhật bác chỉ ghé buổi tối để khóa cửa, có việc thì sang cổng ký túc tìm chú Cường.
+- **ha-vy** (thinking): Tức là cả ngày Chủ nhật sảnh này không có ai trông.
+
+## n2-bd-cang-tin.1
+- **narrator**: Giữa buổi sáng, căng tin mới có lác đác vài bàn.
+- **tung** (happy): Giờ này vắng, trưa mới chen nhau. Muốn nghe chuyện trong trường thì cứ ra đây giờ ăn trưa.
+- **tung** (chi-tay): À, tối thứ Hai nào đi đá bóng về tớ cũng thấy cậu ngồi ở thư viện tới lúc đóng cửa đấy, Hà Vy.
+- **ha-vy** (neutral): Cậu để ý người khác kỹ thật. Ừ, tối thứ Hai tớ không có tiết sáng hôm sau.
+
+## n2-phong.1
+> NHIỆM VỤ: Về phòng CLB, mở laptop
+> NHẮC VIỆC duy (neutral): Laptop tớ để trên bàn. Muốn tra thì tìm tớ.
+- **narrator**: Về tới phòng CLB. Mỗi người một góc: Duy bên cái laptop, Hà Vy trước tấm bảng, chị Minh Anh xếp lại giấy tờ, Tùng ngồi vắt vẻo trên bàn.
+
+## n2-phong-duy.1
+- **duy** (neutral): Máy đây. Tớ đăng nhập tài khoản cô Hạnh vừa tạo rồi.
+- **duy** (serious): Phiếu nào tra ra cũng phải gọn và có căn cứ thì tớ mới nhận vào hồ sơ. Ngồi vào đi.
+
+## n2-phong-vy.1
+- **ha-vy** (thinking): Tớ ghim câu hỏi lên bảng rồi: lớp nào vừa ở tòa B vừa học Báo chí?
+- **ha-vy** (neutral): Hai tờ giấy nhớ là hai điều mình biết chắc. Còn lại để dữ liệu trả lời, đừng đoán.
+
+## n2-phong-tung.1
+- **tung** (happy): Cậu biết không, cô Hạnh ở Phòng Đào tạo chỉ làm giờ hành chính thôi. Muốn gặp cô thì đừng đi buổi tối.
+- **tung** (chi-tay): Tớ cá là cả trường này tớ thuộc lịch gần hết. Cần tìm ai cứ hỏi tớ.
+
+## n2-phong-minh-anh.1
+- **minh-anh** (neutral): Tài khoản hôm nay chỉ mở một bảng. Muốn xem thêm bảng nào thì phải có căn cứ, rồi chị đứng ra xin.
+- **minh-anh** (khoanh-tay): Chiều thứ Hai, thứ Tư, thứ Sáu chị ở phòng này. Khi nào em thấy đủ căn cứ để kết luận thì tìm chị.
+
 ## n2-laptop.0
 > NHIỆM VỤ: Xem tài khoản CLB tra được bảng nào
 > NHẮC VIỆC ha-vy (neutral): Chưa lọc gì vội. Chọn bảng rồi chạy, xem nó có những cột nào.
 - [DÀN DỰNG] Phòng CLB buổi chiều. Laptop CLB đã đăng nhập tài khoản mới. Giấy nhớ [Tòa B], [Báo chí K24] trên bàn.
-- **narrator**: Về tới phòng CLB. Cái laptop cũ khởi động mất gần hai phút.
+- **narrator**: Cái laptop cũ khởi động mất gần hai phút.
 - **duy** (neutral): Tài khoản cô Hạnh tạo chỉ mở được đúng một bảng.
 - **ha-vy** (neutral): Thì mở nó ra xem đã. Chưa biết bảng ghi gì thì biết lọc cái gì.
 
