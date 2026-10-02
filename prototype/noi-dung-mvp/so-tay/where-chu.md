@@ -4,7 +4,7 @@
 
 - Loại: cú pháp
 
-## Trang chị Linh
+## Trang sổ CLB
 Chữ phải đặt trong nháy đơn: `toa_nha = 'B'`, `nganh = 'Báo chí'`.
 Thiếu nháy, máy tưởng B là tên một cột, nên báo "no such column: B".
 

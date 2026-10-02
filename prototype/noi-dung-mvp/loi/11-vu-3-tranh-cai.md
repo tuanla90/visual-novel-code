@@ -109,15 +109,15 @@
 - **tung** (gai-dau): Khỉ thật… tại cái tài khoản ghi lù lù tên kênh của cậu ấy. Tớ cá trượt, mà lần này trượt đau. Tớ xin lỗi Nam. Lần sau đợi đủ bài mới lật.
 - **duy** (neutral): Cá thì không sao. Kết tội mới sao.
 - **ha-vy** (thinking): Tớ cũng suýt nữa. Nhìn tài khoản thấy tên kênh, nhìn kênh thấy người trực. Mỗi bước nhảy một tí là tới một con người.
-- **minh-anh** (neutral): Hai nguồn riêng cùng khớp một quãng giờ. Lại là "kiểm hai lần" của chị Linh.
+- **minh-anh** (neutral): Hai nguồn riêng cùng khớp một quãng giờ. Lại là "kiểm hai lần" trong sổ CLB.
 
 ## v3-ket-ky.1
 - **duy** (neutral): Nhắc mới nhớ. Trang "Kiểm hai lần" ấy… hôm trước có một mẩu, để tớ xem lại.
 - [DÀN DỰNG] {{nv.duy}} lật trang, một mẩu giấy nữa.
 
 ## v3-ket-ky.2
-- **duy** (neutral): Mẩu thứ ba. Chữ chị Linh.
-- **player**: "Vụ đầu tiên của CLB kết luận sai. Chị tìm ra cuốn sổ ghi lại nó."
+- **duy** (neutral): Mẩu thứ ba. Vẫn nét chữ ấy.
+- **player**: "Vụ đầu tiên của CLB kết luận sai. Cuốn cũ ghi lại nó."
 - **tung** (surprised): Vụ đầu tiên của CLB? Từ hồi nào?
 - **ha-vy** (thinking): Chưa biết. Nhưng chị ấy ghi "kết luận sai". Giống chuyện hôm nay.
 

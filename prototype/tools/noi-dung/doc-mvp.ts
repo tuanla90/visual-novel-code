@@ -1125,11 +1125,11 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       }
       if (!trang) throw new Error(`dòng nằm trước tiêu đề trang sổ: "${line}"`);
       if (line.startsWith('## ')) {
-        if (line === '## Trang chị Linh') muc = 'linh';
+        if (line === '## Trang sổ CLB' || line === '## Trang chị Linh') muc = 'linh';
         else if (line === '## Hà Vy') muc = 'ha-vy';
         else if (line === '## Vào sổ cá nhân') muc = 'so-ca-nhan';
         else if (line === '## Chọn đoạn code') throw new Error('mục "## Chọn đoạn code" đã bỏ (QĐ-092): dòng "Vào sổ cá nhân" tự vào sổ khi kịch bản [GHI SỔ]');
-        else throw new Error(`mục lạ trong trang sổ "${line}" — dùng "## Trang chị Linh", "## Hà Vy", "## Vào sổ cá nhân"`);
+        else throw new Error(`mục lạ trong trang sổ "${line}" — dùng "## Trang sổ CLB", "## Hà Vy", "## Vào sổ cá nhân"`);
         return i;
       }
       if (muc === null) {

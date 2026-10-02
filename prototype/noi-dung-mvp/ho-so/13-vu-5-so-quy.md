@@ -34,17 +34,17 @@
 - Nguồn: Quy chế quỹ khối CLB, {{nv.minh-anh}} và {{nv.duy}} nhắc
 - Nội dung: Khoản dưới một triệu thì chủ tịch Hội sinh viên duyệt thẳng được, không cần trưởng CLB chủ quỹ ký. Nhưng tổng các khoản một người duyệt từ một quỹ trong một học kỳ vượt một triệu thì Phòng Kế hoạch yêu cầu người đó giải trình; ngưỡng này chỉ được soát lúc đối chiếu cuối kỳ, cùng lúc gửi sao kê. Bản giải trình phải có chủ quỹ ký xác nhận; quỹ đang chờ giải thể thì chủ tịch Hội ký thay. Đây là ngưỡng để tìm nhóm cần hỏi tiếp, không phải mức cấm.
 
-### clue-loi-nhan-linh-5 — [Lời nhắn chị Linh, mẩu cuối]
+### clue-loi-nhan-linh-5 — [Dòng cuối trong cuốn sổ cũ]
 - Tiêu đề: Dòng viết thêm ở trang cuối cuốn sổ cũ
 - Nguồn: Ngăn dưới tủ hồ sơ phòng CLB
-- Nội dung: Chữ chị Linh, dưới nét chữ ngả màu của thầy Quang: "Manh mối cũ, câu hỏi mới."
+- Nội dung: Cùng nét chữ với bốn mẩu giấy và với chữ ký trang đầu, chữ thầy Quang: "Manh mối cũ, câu hỏi mới."
 
 ### doc-ho-so-vu-dau — Hồ sơ vụ thứ nhất của CLB
 - Tiêu đề: Cuốn sổ bìa cứng trong ngăn tủ khóa
 - Nguồn: Ngăn dưới tủ hồ sơ phòng CLB, chìa dán sau bảng nguyên tắc
 - Nội dung hiển thị:
 > "Hồ sơ vụ thứ nhất — CLB Thám Tử Dữ Liệu", chữ viết tay, ký tên Trịnh Quang.
-> Chị Linh chép lại cuốn này vào sổ tự học. Ở trang kết luận, một cái tên bị gạch bằng mực tím của chị Linh; bên lề có hai chữ mực xanh đã ngả màu của thầy Quang: "Xem lại."
+> Cuốn sổ CLB đang dùng được chép lại từ cuốn này. Ở trang kết luận, một cái tên bị gạch; bên lề có hai chữ cùng thứ mực xanh đã ngả màu, cùng nét chữ với bốn mẩu giấy: "Xem lại."
 
 ### clue-so-phong-may — [Sổ ký phòng máy tối 15/9]
 - Tiêu đề: Trang sổ ký vào phòng máy, tối Chủ nhật 15/9

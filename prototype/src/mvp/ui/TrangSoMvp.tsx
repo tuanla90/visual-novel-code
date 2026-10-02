@@ -15,7 +15,7 @@ export function TrangChiLinh({ trang, dienTen }: { trang: TrangSo; dienTen: (t: 
       <header className="mvp-so__dau">
         <span className="mvp-so__loai">{NHAN_LOAI[trang.loai]}</span>
         <h3 className="mvp-so__tieude">{dienTen(trang.ten)}</h3>
-        <p className="mvp-so__chu-thich">Sổ chị Linh</p>
+        <p className="mvp-so__chu-thich">Sổ CLB</p>
       </header>
       <div className="mvp-so__tay">
         {trang.trangChiLinh.map((d, i) => (
@@ -38,7 +38,7 @@ export interface TraSoMvpProps {
 export function TraSoMvp({ kb, trang, dienTen, onTiep }: TraSoMvpProps) {
   const t = kb.soTay[trang];
   return (
-    <div className="mvp-lop mvp-lop--so" role="dialog" aria-label="Tra sổ chị Linh">
+    <div className="mvp-lop mvp-lop--so" role="dialog" aria-label="Tra sổ CLB">
       {t ? <TrangChiLinh trang={t} dienTen={dienTen} /> : <p className="game__error">Không có trang sổ này.</p>}
       <div className="mvp-lop__nut">
         <button type="button" className="btn btn--primary" onClick={onTiep} autoFocus>

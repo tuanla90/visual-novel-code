@@ -7,6 +7,7 @@
 - Manh mối liên quan: clue-chu-ky-h, ev-hai-lop
 - Mục tiêu học: "=" so khớp chính xác, ra 0 dòng thì xem lại dữ liệu; "bắt đầu bằng" (LIKE 'H%') mới khớp một chữ cái. Phiếu muốn dùng tiếp phải có cột mã.
 - Chọn cột: ho_dem, ten, ma_lop
+- Bấm ô lấy giấy nhớ: ma_sv
 - Số dòng kỳ vọng: 2
 - SQL chuẩn:
 

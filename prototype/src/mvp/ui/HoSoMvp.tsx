@@ -362,7 +362,7 @@ function NganSoTay({ kb, soTay, dienTen }: { kb: KichBanMvp; soTay: string[]; di
                   ) : null}
                   {t.trangChiLinh.length > 0 ? (
                     <div className="notebook__journal-entry">
-                      <h4>SỔ CHỊ LINH</h4>
+                      <h4>SỔ CLB</h4>
                       {t.trangChiLinh.map((d, k) => (
                         <p key={k}>
                           <CodeText text={dienTen(d)} />

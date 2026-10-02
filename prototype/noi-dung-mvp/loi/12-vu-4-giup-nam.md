@@ -70,11 +70,11 @@
 
 ## v4-may-vp.3
 > NHIỆM VỤ: Chốt điều nói được với Ban kiểm tra
-- **duy** (neutral): Tên một người, tay một người khác… chị Linh có ghi một câu. Để tớ xem.
-- [DÀN DỰNG] {{nv.duy}} lật sổ chị Linh tới trang cuối.
+- **duy** (neutral): Tên một người, tay một người khác… trong sổ có kẹp một câu. Để tớ xem.
+- [DÀN DỰNG] {{nv.duy}} lật sổ CLB tới trang cuối.
 - **player**: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi."
 - **tung** (worried): Giống hệt chuyện Nam.
-- **ha-vy** (thinking): Chị ấy ghi từ năm ngoái. Cuốn sổ cũ mà chị ấy nhắc, chắc kể đúng chuyện này.
+- **ha-vy** (thinking): Mực này cũ hơn bọn mình nhiều. Cuốn sổ cũ mà mấy mẩu giấy nhắc, chắc kể đúng chuyện này.
 
 ## v4-ket-du.1
 - **minh-anh** (neutral): Phiếu bốn đơn từ máy văn phòng chị gửi kèm luôn: ba đơn đêm đứng tên Nam, một đơn ngày đứng tên trưởng CLB. Đủ để Ban kiểm tra thấy máy đó ban ngày ai dùng, ban đêm đứng tên ai.

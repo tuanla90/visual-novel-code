@@ -1207,17 +1207,22 @@ const GOC = {
         {
           "type": "trial-filter",
           "id": "lt-ngay-hoi",
-          "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';",
-          "soDong": 3,
+          "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';",
+          "soDong": 1,
           "chon": {
-            "cot": "nganh",
-            "giaTri": "Du lịch"
+            "cot": "ma_sv",
+            "giaTri": "SV240251"
           }
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Ba người tên Tùng. Ngành Du lịch chỉ có một người: mã SV240251."
+          "text": "Ba người tên Tùng. Thêm ngành Du lịch thì còn đúng một dòng. Mã nằm ở ô đầu: SV240251."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng dán tờ giấy nhớ ghi mã lên phiếu đăng ký, chép lại từng số."
         },
         {
           "type": "line",
@@ -1339,7 +1344,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Sổ tự học của chị Linh khóa trước đấy. Em cứ giữ mà dùng."
+          "text": "Sổ của CLB đấy, khóa nào cũng chép thêm vài trang. Mấy trang đầu mực xanh là từ hồi mới lập. Năm nay em giữ."
         },
         {
           "type": "show-document",
@@ -3106,7 +3111,7 @@ const GOC = {
     },
     {
       "id": "ket-that",
-      "title": "True end: Hoài kể chuyện được nhờ; lời nhắn của chị Linh",
+      "title": "True end: Hoài kể chuyện được nhờ; mẩu giấy trong sổ CLB",
       "canh": "phong-hop",
       "mocSomNhat": 1000,
       "nodes": [
@@ -3215,13 +3220,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Chiều muộn, cả nhóm về phòng CLB dọn bảng. Từ cuốn sổ của chị Linh rơi ra một mẩu giấy gấp tư."
+          "text": "Chiều muộn, cả nhóm về phòng CLB dọn bảng. Từ cuốn sổ CLB rơi ra một mẩu giấy gấp tư."
         },
         {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Chữ chị Linh đây mà. Tớ giữ cuốn sổ này cả năm, chưa thấy tờ này bao giờ."
+          "text": "Mực xanh, ngả màu cả rồi. Tớ kiểm kê cái tủ này cả năm, chưa thấy tờ này bao giờ."
         },
         {
           "type": "line",
@@ -4031,7 +4036,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Hai nguồn riêng cùng khớp. Đến đây dữ liệu dừng, không phải mình non. Muốn biết ai ngồi máy thì phải hỏi người, không hỏi bảng. Cái nguyên tắc \"kiểm hai lần\" ấy chị học từ sổ chị Linh để lại."
+          "text": "Hai nguồn riêng cùng khớp. Đến đây dữ liệu dừng, không phải mình non. Muốn biết ai ngồi máy thì phải hỏi người, không hỏi bảng. Cái nguyên tắc \"kiểm hai lần\" ấy nằm ngay trang đầu sổ CLB."
         },
         {
           "type": "line",
@@ -4041,7 +4046,7 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Duy lật sổ chị Linh. Nếu nhóm đi đủ hai hướng ngay từ đầu, một mẩu giấy rơi ra."
+          "text": "Duy lật sổ CLB. Nếu nhóm đi đủ hai hướng ngay từ đầu, một mẩu giấy rơi ra."
         },
         {
           "type": "jump-if",
@@ -4064,18 +4069,18 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Kẹp ở trang \"Kiểm hai lần\". Một mẩu giấy, chữ chị Linh."
+          "text": "Kẹp ở trang \"Kiểm hai lần\". Một mẩu giấy, vẫn thứ mực xanh cũ ấy."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "\"Sổ này chị chép lại từ một cuốn cũ hơn. Cuốn cũ không phải của chị.\""
+          "text": "\"Sổ này chép lại từ một cuốn cũ hơn. Cuốn cũ vẫn nằm trong phòng này.\""
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "surprised",
-          "text": "Thế cuốn cũ là của ai?"
+          "text": "Thế cuốn cũ nằm đâu?"
         },
         {
           "type": "line",
@@ -4868,7 +4873,7 @@ const GOC = {
     },
     {
       "id": "v3-ket-du",
-      "title": "Không mời Nam lên; Tùng xin lỗi; lời nhắn thứ ba của chị Linh",
+      "title": "Không mời Nam lên; Tùng xin lỗi; mẩu giấy thứ ba trong sổ CLB",
       "canh": "phong-clb",
       "mocSomNhat": 1000,
       "nodes": [
@@ -4904,7 +4909,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Hai nguồn riêng cùng khớp một quãng giờ. Lại là \"kiểm hai lần\" của chị Linh."
+          "text": "Hai nguồn riêng cùng khớp một quãng giờ. Lại là \"kiểm hai lần\" trong sổ CLB."
         },
         {
           "type": "goto",
@@ -4941,12 +4946,12 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Mẩu thứ ba. Chữ chị Linh."
+          "text": "Mẩu thứ ba. Vẫn nét chữ ấy."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "\"Vụ đầu tiên của CLB kết luận sai. Chị tìm ra cuốn sổ ghi lại nó.\""
+          "text": "\"Vụ đầu tiên của CLB kết luận sai. Cuốn cũ ghi lại nó.\""
         },
         {
           "type": "line",
@@ -5542,11 +5547,11 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Tên một người, tay một người khác… chị Linh có ghi một câu. Để tớ xem."
+          "text": "Tên một người, tay một người khác… trong sổ có kẹp một câu. Để tớ xem."
         },
         {
           "type": "note",
-          "text": "Duy lật sổ chị Linh tới trang cuối."
+          "text": "Duy lật sổ CLB tới trang cuối."
         },
         {
           "type": "line",
@@ -5563,7 +5568,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Chị ấy ghi từ năm ngoái. Cuốn sổ cũ mà chị ấy nhắc, chắc kể đúng chuyện này."
+          "text": "Mực này cũ hơn bọn mình nhiều. Cuốn sổ cũ mà mấy mẩu giấy nhắc, chắc kể đúng chuyện này."
         },
         {
           "type": "goto",
@@ -7178,12 +7183,12 @@ const GOC = {
                 {
                   "speaker": "thay-quang",
                   "expression": "neutral",
-                  "text": "Mẩu giấy này của ai?"
+                  "text": "…Mẩu giấy này để sau buổi họp."
                 },
                 {
                   "speaker": "duy",
                   "expression": "neutral",
-                  "text": "Chuyện khác ạ. Em xin lỗi thầy."
+                  "text": "Dạ. Em xin lỗi thầy."
                 }
               ]
             }
@@ -7591,7 +7596,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Nam bảo để lại đây. Và chị Linh để lại nhiều mẩu giấy hơn mình tưởng."
+          "text": "Nam bảo để lại đây. Và cuốn sổ này giữ nhiều mẩu giấy hơn mình tưởng."
         },
         {
           "type": "line",
@@ -7648,7 +7653,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Mọi người sắp về thì Duy bày bốn mẩu giấy của chị Linh lên bàn."
+          "text": "Mọi người sắp về thì Duy bày bốn mẩu giấy rơi ra từ cuốn sổ CLB lên bàn."
         },
         {
           "type": "line",
@@ -7673,7 +7678,7 @@ const GOC = {
           "id": "q-v5-chia",
           "asker": {
             "speaker": "duy",
-            "text": "Bốn mẩu giấy, một ngăn tủ khóa. Chị Linh để chìa ở đâu trong phòng này?"
+            "text": "Bốn mẩu giấy, một ngăn tủ khóa. Người viết để chìa ở đâu trong phòng này?"
           },
           "choices": [
             {
@@ -7689,13 +7694,13 @@ const GOC = {
             },
             {
               "id": "gay-so",
-              "text": "Trong gáy cuốn sổ của chị Linh.",
+              "text": "Trong gáy cuốn sổ CLB.",
               "correct": false,
               "feedback": [
                 {
                   "speaker": "duy",
                   "expression": "neutral",
-                  "text": "Cuốn ấy tớ lật cả năm rồi. Có gì thì đã rơi ra hết."
+                  "text": "Cuốn ấy cả nhóm lật suốt mùa rồi. Có gì thì đã rơi ra hết."
                 }
               ]
             },
@@ -7707,7 +7712,7 @@ const GOC = {
                 {
                   "speaker": "ha-vy",
                   "expression": "thinking",
-                  "text": "Chị ấy để giấy cho mình tìm, không phải để mình phá."
+                  "text": "Người ta để giấy cho mình tìm, không phải để mình phá."
                 }
               ]
             }
@@ -7745,13 +7750,25 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Trang kết luận có một cái tên, bị gạch bằng mực tím còn mới. Cả cuốn không ghim một phiếu nào."
+          "text": "Trang kết luận có một cái tên, bị gạch đi. Cả cuốn không ghim một phiếu nào."
         },
         {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Mực tím là bút chị Linh. Bên lề có hai chữ mực xanh đã ngả màu, chữ thầy Quang: \"Xem lại.\""
+          "text": "Bên lề có hai chữ, mực xanh đã ngả màu: \"Xem lại.\""
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Nét chữ này giống hệt bốn mẩu giấy. Giống cả chữ ký ở trang đầu."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Thế bốn mẩu giấy là thầy viết? Thầy tự gạch kết luận của chính mình à?"
         },
         {
           "type": "line",
@@ -7762,7 +7779,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Trang cuối có thêm một dòng, chữ chị Linh: \"Manh mối cũ, câu hỏi mới.\""
+          "text": "Trang cuối có thêm một dòng, vẫn chữ thầy: \"Manh mối cũ, câu hỏi mới.\""
         },
         {
           "type": "end"
@@ -8948,6 +8965,7 @@ const GOC = {
         "ten",
         "ma_lop"
       ],
+      "bamO": "ma_sv",
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -10659,11 +10677,11 @@ const GOC = {
     "clue-loi-nhan-linh-1": {
       "id": "clue-loi-nhan-linh-1",
       "loai": "clue",
-      "heading": "[Lời nhắn chị Linh]",
+      "heading": "[Mẩu giấy trong sổ]",
       "fields": {
-        "Tiêu đề": "Mẩu giấy trong sổ chị Linh",
-        "Nguồn": "Rơi ra từ sổ tự học của chị Linh, phòng CLB",
-        "Nội dung": "Chữ chị Linh, một dòng: \"Căn phòng này giữ nhiều hơn em nghĩ.\" Không ghi ngày, không ghi gửi cho ai."
+        "Tiêu đề": "Mẩu giấy rơi ra từ sổ CLB",
+        "Nguồn": "Rơi ra từ cuốn sổ của CLB, phòng CLB",
+        "Nội dung": "Mực xanh đã ngả màu, không rõ chữ ai, một dòng: \"Căn phòng này giữ nhiều hơn em nghĩ.\" Không ghi ngày, không ghi gửi cho ai."
       },
       "quotes": {}
     },
@@ -10686,9 +10704,9 @@ const GOC = {
     "doc-so-chi-linh": {
       "id": "doc-so-chi-linh",
       "loai": "doc",
-      "heading": "Sổ chị Linh",
+      "heading": "Sổ CLB",
       "fields": {
-        "Tiêu đề": "Sổ tự học của chị Linh",
+        "Tiêu đề": "Cuốn sổ của CLB, truyền từ khóa trước",
         "Ảnh": "doc-so-chi-linh",
         "Nguồn": "Ngăn dưới tủ hồ sơ phòng CLB",
         "Nội dung hiển thị": ""
@@ -10857,11 +10875,11 @@ const GOC = {
     "clue-loi-nhan-linh-2": {
       "id": "clue-loi-nhan-linh-2",
       "loai": "clue",
-      "heading": "[Lời nhắn chị Linh, mẩu thứ hai]",
+      "heading": "[Mẩu giấy trong sổ, mẩu thứ hai]",
       "fields": {
         "Tiêu đề": "Mẩu giấy kẹp ở trang \"Kiểm hai lần\"",
-        "Nguồn": "Sổ tự học của chị Linh, phòng CLB",
-        "Nội dung": "Chữ chị Linh: \"Sổ này chị chép lại từ một cuốn cũ hơn. Cuốn cũ không phải của chị.\""
+        "Nguồn": "Cuốn sổ của CLB, phòng CLB",
+        "Nội dung": "Cùng nét chữ, cùng thứ mực xanh cũ: \"Sổ này chép lại từ một cuốn cũ hơn. Cuốn cũ vẫn nằm trong phòng này.\""
       },
       "quotes": {}
     },
@@ -10927,11 +10945,11 @@ const GOC = {
     "clue-loi-nhan-linh-3": {
       "id": "clue-loi-nhan-linh-3",
       "loai": "clue",
-      "heading": "[Lời nhắn chị Linh, mẩu thứ ba]",
+      "heading": "[Mẩu giấy trong sổ, mẩu thứ ba]",
       "fields": {
         "Tiêu đề": "Mẩu giấy ở trang \"Kiểm hai lần\", lần hai",
-        "Nguồn": "Sổ tự học của chị Linh, phòng CLB",
-        "Nội dung": "Chữ chị Linh: \"Vụ đầu tiên của CLB kết luận sai. Chị tìm ra cuốn sổ ghi lại nó.\""
+        "Nguồn": "Cuốn sổ của CLB, phòng CLB",
+        "Nội dung": "Vẫn nét chữ ấy: \"Vụ đầu tiên của CLB kết luận sai. Cuốn cũ ghi lại nó.\""
       },
       "quotes": {}
     },
@@ -11050,11 +11068,11 @@ const GOC = {
     "clue-loi-nhan-linh-4": {
       "id": "clue-loi-nhan-linh-4",
       "loai": "clue",
-      "heading": "[Lời nhắn chị Linh, mẩu thứ tư]",
+      "heading": "[Mẩu giấy trong sổ, mẩu thứ tư]",
       "fields": {
         "Tiêu đề": "Mẩu giấy ở trang cuối sổ",
-        "Nguồn": "Sổ tự học của chị Linh, phòng CLB",
-        "Nội dung": "Chữ chị Linh: \"Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi.\""
+        "Nguồn": "Cuốn sổ của CLB, phòng CLB",
+        "Nội dung": "Vẫn nét chữ mực xanh: \"Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi.\""
       },
       "quotes": {}
     },
@@ -11129,11 +11147,11 @@ const GOC = {
     "clue-loi-nhan-linh-5": {
       "id": "clue-loi-nhan-linh-5",
       "loai": "clue",
-      "heading": "[Lời nhắn chị Linh, mẩu cuối]",
+      "heading": "[Dòng cuối trong cuốn sổ cũ]",
       "fields": {
         "Tiêu đề": "Dòng viết thêm ở trang cuối cuốn sổ cũ",
         "Nguồn": "Ngăn dưới tủ hồ sơ phòng CLB",
-        "Nội dung": "Chữ chị Linh, dưới nét chữ ngả màu của thầy Quang: \"Manh mối cũ, câu hỏi mới.\""
+        "Nội dung": "Cùng nét chữ với bốn mẩu giấy và với chữ ký trang đầu, chữ thầy Quang: \"Manh mối cũ, câu hỏi mới.\""
       },
       "quotes": {}
     },
@@ -11149,7 +11167,7 @@ const GOC = {
       "quotes": {
         "Nội dung hiển thị": [
           "\"Hồ sơ vụ thứ nhất — CLB Thám Tử Dữ Liệu\", chữ viết tay, ký tên Trịnh Quang.",
-          "Chị Linh chép lại cuốn này vào sổ tự học. Ở trang kết luận, một cái tên bị gạch bằng mực tím của chị Linh; bên lề có hai chữ mực xanh đã ngả màu của thầy Quang: \"Xem lại.\""
+          "Cuốn sổ CLB đang dùng được chép lại từ cuốn này. Ở trang kết luận, một cái tên bị gạch; bên lề có hai chữ cùng thứ mực xanh đã ngả màu, cùng nét chữ với bốn mẩu giấy: \"Xem lại.\""
         ]
       }
     },
@@ -11501,7 +11519,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:30 thẻ c-sua-or-quan, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:31 thẻ c-sua-or-quan, SQL chuẩn",
       "resultId": "ev-hai-dong-sua"
     },
     {
@@ -11655,8 +11673,8 @@ const GOC = {
       "resultId": "ev-v2-activities"
     },
     {
-      "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng';",
-      "soDong": 3,
+      "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';",
+      "soDong": 1,
       "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:124 [LỌC THỬ lt-ngay-hoi]"
     },
     {

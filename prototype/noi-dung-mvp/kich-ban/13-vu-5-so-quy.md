@@ -122,7 +122,7 @@
   - {ev-chi-tham-tu} [HỖ TRỢ] → phản hồi: **player**: Tiền rời quỹ ngày 10, 11 và 12 tháng 9. Lá thư đòi thu phòng tới ngày 16. Đơn đầu tiên mãi ngày 27 mới có, sau buổi họp bọn em giữ được phòng.<br>**thay-quang** (neutral): Tiền trước, thư sau, đơn sau cùng. Nhưng thư thì giúp gì được cho tiền? Có gì nói về chuyện ai được đọc sổ, và bao giờ, không?
   - {clue-sao-ke-cuoi-ky} [ĐỦ CĂN CỨ] → phản hồi: **player**: Sao kê quỹ chỉ tự về các CLB vào cuối kỳ, cùng đợt rà soát phòng; ngưỡng một triệu cũng tới lúc ấy mới được soát. Muốn xem sớm hơn thì giấy phải qua chủ tịch Hội.<br>**player**: Tức là tới cuối kỳ mới có người đọc ba khoản ấy. Mà lá thư đòi thu phòng lại tới ngay tuần đầu.<br>**thay-quang** (neutral): Thư đi trước ngày có người đọc sổ. Thầy thấy rồi.
   - {ev-chi-vuot-muc} [HỖ TRỢ] → phản hồi: **duy** (neutral): Phiếu này nói bao nhiêu và ai duyệt. Còn bao giờ, và bao giờ mới có người đọc, thì phiếu khác nói.
-  - {clue-loi-nhan-linh-1} [GỢI Ý] → phản hồi: **thay-quang** (neutral): Mẩu giấy này của ai?<br>**duy** (neutral): Chuyện khác ạ. Em xin lỗi thầy.
+  - {clue-loi-nhan-linh-1} [GỢI Ý] → phản hồi: **thay-quang** (neutral): …Mẩu giấy này để sau buổi họp.<br>**duy** (neutral): Dạ. Em xin lỗi thầy.
   - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, lá thư để làm gì thì bọn em không có căn cứ ạ.<br>**thay-quang** (neutral): Vậy phần ấy thầy hỏi riêng.
   - [KHÁC] → phản hồi: **thay-quang** (neutral): Cái này nói gì về lá thư và ba khoản chi?<br>**minh-anh** (worried): Em xem lại hồ sơ ạ.
 - [NẾU có dc-khanh-vi-sao-du] → đi tới v5-vi-sao-hoi
@@ -163,10 +163,10 @@
 ### v5-ngan-tu — Cảnh sau kết (chỉ khi đủ bốn mẩu giấy): ngăn tủ khóa trong phòng CLB {cảnh: phong-clb}
 
 - [LỜI v5-ngan-tu.1]
-- [HỎI q-v5-chia] duy: "Bốn mẩu giấy, một ngăn tủ khóa. Chị Linh để chìa ở đâu trong phòng này?"
+- [HỎI q-v5-chia] duy: "Bốn mẩu giấy, một ngăn tủ khóa. Người viết để chìa ở đâu trong phòng này?"
   - (A) {id: bang} Sau tấm bảng nguyên tắc. [ĐÚNG] → phản hồi: **player**: Mẩu cuối bảo "mặt trước thì các em đọc mỗi buổi họp rồi". Thứ cả nhóm đọc mỗi buổi họp là bảng nguyên tắc. Mình chưa bao giờ nhìn mặt sau.
-  - (B) {id: gay-so} Trong gáy cuốn sổ của chị Linh. → phản hồi: **duy** (neutral): Cuốn ấy tớ lật cả năm rồi. Có gì thì đã rơi ra hết.
-  - (C) {id: cay-tu} Không có chìa đâu, cạy tủ thôi. → phản hồi: **ha-vy** (thinking): Chị ấy để giấy cho mình tìm, không phải để mình phá.
+  - (B) {id: gay-so} Trong gáy cuốn sổ CLB. → phản hồi: **duy** (neutral): Cuốn ấy cả nhóm lật suốt mùa rồi. Có gì thì đã rơi ra hết.
+  - (C) {id: cay-tu} Không có chìa đâu, cạy tủ thôi. → phản hồi: **ha-vy** (thinking): Người ta để giấy cho mình tìm, không phải để mình phá.
 - [HẬU QUẢ] mở manh mối clue-loi-nhan-linh-5, hiện tài liệu doc-ho-so-vu-dau
 - [LỜI v5-ngan-tu.2]
 - [KẾT THÚC]

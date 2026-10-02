@@ -160,6 +160,7 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     ...(t.fields['Nối được với'] ? { bangNoi: chiaGiaTri(t.fields['Nối được với']) } : {}),
     // "Chọn cột: a, b" (hoặc "không"): bài chọn cột của SELECT; giá trị là các cột bật sẵn.
     ...(t.fields['Chọn cột'] !== undefined ? { chonCot: t.fields['Chọn cột'].trim() === 'không' ? [] : t.fields['Chọn cột'].split(',').map((c) => c.trim()).filter((c) => c !== '') } : {}),
+    ...(t.fields['Bấm ô lấy giấy nhớ'] ? { bamO: t.fields['Bấm ô lấy giấy nhớ'].trim() } : {}),
     truyVanNapSan: t.sql['Truy vấn nạp sẵn'] ?? null,
     phanUng: docPhanUng(t.fields).phanUng.map((p) => ({ khi: p.khi, loi: p.loi.map(loi) })),
     vatChung: t.evidence

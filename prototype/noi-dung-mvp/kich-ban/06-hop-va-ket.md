@@ -46,7 +46,7 @@
 
 <!-- 01/10/2026 (dàn ý mùa 1): phần thưởng kết thật là lời nhắn đầu tiên của chị Linh (lớp bí mật của CLB), không còn là manh mối Robotics — manh mối đó giờ ai cũng có từ ngày 5. -->
 
-### ket-that — True end: Hoài kể chuyện được nhờ; lời nhắn của chị Linh {cảnh: phong-hop}
+### ket-that — True end: Hoài kể chuyện được nhờ; mẩu giấy trong sổ CLB {cảnh: phong-hop}
 
 - [ĐIỀU KIỆN] có dc-ai-viet-du
 - [LỜI ket-that.1]

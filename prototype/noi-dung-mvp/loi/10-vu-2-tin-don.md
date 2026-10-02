@@ -108,14 +108,14 @@
 - **minh-anh** (neutral): Thế nào rồi?
 - **player**: Tin gốc gửi lúc 22:40 tối thứ Hai, từ tài khoản kênh của CLB Robotics ạ. Tài khoản ấy đăng nhập lúc 22:31 từ máy văn phòng xưởng. Tối đó xưởng đăng ký mở tới 23 giờ.
 - **ha-vy** (smile): Nam nói ra hai chỗ kiểm được, bọn em xem cả hai. Giờ và chỗ khớp nhau, còn tên người thì không nguồn nào có.
-- **minh-anh** (neutral): Hai nguồn riêng cùng khớp. Đến đây dữ liệu dừng, không phải mình non. Muốn biết ai ngồi máy thì phải hỏi người, không hỏi bảng. Cái nguyên tắc "kiểm hai lần" ấy chị học từ sổ chị Linh để lại.
+- **minh-anh** (neutral): Hai nguồn riêng cùng khớp. Đến đây dữ liệu dừng, không phải mình non. Muốn biết ai ngồi máy thì phải hỏi người, không hỏi bảng. Cái nguyên tắc "kiểm hai lần" ấy nằm ngay trang đầu sổ CLB.
 - **duy** (neutral): Nhắc mới nhớ. Trang "Kiểm hai lần" trong sổ… khoan đã.
-- [DÀN DỰNG] {{nv.duy}} lật sổ chị Linh. Nếu nhóm đi đủ hai hướng ngay từ đầu, một mẩu giấy rơi ra.
+- [DÀN DỰNG] {{nv.duy}} lật sổ CLB. Nếu nhóm đi đủ hai hướng ngay từ đầu, một mẩu giấy rơi ra.
 
 ## tin-ket-ky.2
-- **duy** (neutral): Kẹp ở trang "Kiểm hai lần". Một mẩu giấy, chữ chị Linh.
-- **player**: "Sổ này chị chép lại từ một cuốn cũ hơn. Cuốn cũ không phải của chị."
-- **tung** (surprised): Thế cuốn cũ là của ai?
+- **duy** (neutral): Kẹp ở trang "Kiểm hai lần". Một mẩu giấy, vẫn thứ mực xanh cũ ấy.
+- **player**: "Sổ này chép lại từ một cuốn cũ hơn. Cuốn cũ vẫn nằm trong phòng này."
+- **tung** (surprised): Thế cuốn cũ nằm đâu?
 - **ha-vy** (thinking): Chưa biết. Cất vào hồ sơ đã.
 
 ## tin-ket-luan.1

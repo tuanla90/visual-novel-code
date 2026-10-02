@@ -2,5 +2,5 @@
 
 - Loại: tâm đắc
 
-## Trang chị Linh
+## Trang sổ CLB
 Kiểm hai lần, kết luận một lần. Dữ liệu chỉ ra ai cần hỏi, không chỉ ra ai đã làm.

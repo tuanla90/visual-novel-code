@@ -131,6 +131,8 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   const [dau, setDau] = useState<number | null>(null);
   const [loiNoi, setLoiNoi] = useState<LoiMvp[]>([]);
   const [xongRoi, setXongRoi] = useState(false);
+  /** Bài "bấm ô lấy giấy nhớ": các dòng kết quả đã được chép ô. */
+  const [daChep, setDaChep] = useState<number[]>([]);
   const phieu = useRef<DongPhieuRef>(null);
   const banRon = useRef(false);
   const song = useRef(true);
@@ -153,6 +155,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
       setSoi(false);
       setDau(null);
       setLoiNoi([]);
+      setDaChep([]);
       setSo({ n: tongDong, nhan: 'DÒNG' });
       phieu.current?.datLai();
     },
@@ -283,6 +286,9 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   if (!khung || !bang) return <p className="game__error">Thẻ thử thách này thiếu khung SELECT … FROM … hợp lệ.</p>;
 
   const laChieu = canh === 'man-chieu';
+  // Tra đúng rồi mới bấm ô: cột `the.bamO` của bảng kết quả thành các ô bấm được.
+  const iBamO = dung && the.bamO && cham?.trangThai === 'dung' ? cham.chay.cot.findIndex((c) => c.toLowerCase() === the.bamO?.toLowerCase()) : -1;
+  const conChep = iBamO >= 0 && cham?.trangThai === 'dung' ? cham.chay.dong.length - daChep.length : 0;
   const anhCanh = cauHinh.anh ? anhTheoTen(cauHinh.anh) : undefined;
   const loi = loiNoi[0];
   const chibiNoi = loi ? anhTheoTen(`chibi-${loi.speaker}`) : undefined;
@@ -579,9 +585,17 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                 <tbody>
                   {cham.chay.dong.slice(0, TOI_DA_DONG_HIEN).map((h, r) => (
                     <tr key={r} style={{ ['--i' as string]: Math.min(r, 12) }}>
-                      {h.map((v, k) => (
-                        <td key={k}>{v === null ? '(trống)' : <ChuCoDauCach chu={String(v)} />}</td>
-                      ))}
+                      {h.map((v, k) =>
+                        iBamO === k && v !== null ? (
+                          <td key={k} className="v7-kq__o">
+                            <button type="button" className={`v7-o-bam is-moi${daChep.includes(r) ? ' is-chep' : ''}`} aria-label={`Ô ${the.bamO ?? ''}: ${String(v)}${daChep.includes(r) ? ' (đã chép)' : ''}`} disabled={daChep.includes(r)} onClick={() => { soundEngine.playSfx('select'); setDaChep((ds) => [...ds, r]); }}>
+                              {String(v)}
+                            </button>
+                          </td>
+                        ) : (
+                          <td key={k}>{v === null ? '(trống)' : <ChuCoDauCach chu={String(v)} />}</td>
+                        ),
+                      )}
                     </tr>
                   ))}
                   {cham.chay.dong.length > TOI_DA_DONG_HIEN ? (
@@ -594,6 +608,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
             )}
           </div>
         ) : null}
+        {conChep > 0 ? <p className="v7-kq__nhac v7-kq__nhac--tra">👆 Bấm từng ô {the.bamO} để chép ra giấy nhớ (còn {conChep}).</p> : null}
         {cham?.trangThai === 'loi' ? <p className="v7-loi">Chưa chạy được: {cham.chay.thongDiep}</p> : null}
         {soi && daChay ? (
           <div className="v7-soi">
@@ -627,7 +642,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
           </button>
         ) : null}
         {dung ? (
-          <button type="button" className="v7-nut v7-nut--ghim" disabled={xongRoi} onClick={xong} autoFocus>
+          <button type="button" className="v7-nut v7-nut--ghim" disabled={xongRoi || conChep > 0} title={conChep > 0 ? `Bấm ${conChep} ô ${the.bamO ?? ''} còn lại để chép ra giấy nhớ` : undefined} onClick={xong} autoFocus>
             {the.vatChung && !laChieu ? '📌 Ghim lên bảng' : 'Tiếp tục'}
           </button>
         ) : (

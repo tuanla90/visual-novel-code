@@ -111,6 +111,10 @@ describe('màn tra v7 · c-ten-h (ngày 3, laptop phòng CLB)', () => {
 
     await u.click(nutChay());
     await waitFor(() => expect(screen.getByRole('button', { name: '📌 Ghim lên bảng' })).toBeInTheDocument());
+    // Bấm từng ô mã để chép ra giấy nhớ rồi mới ghim được.
+    expect(screen.getByRole('button', { name: '📌 Ghim lên bảng' })).toBeDisabled();
+    await u.click(screen.getByRole('button', { name: 'Ô ma_sv: SV240228' }));
+    await u.click(screen.getByRole('button', { name: 'Ô ma_sv: SV240317' }));
     const ketQua = screen.getByLabelText('Kết quả');
     expect(within(ketQua).getAllByRole('row')).toHaveLength(1 + 2);
     expect(within(ketQua).getByText('Hiếu')).toBeInTheDocument();

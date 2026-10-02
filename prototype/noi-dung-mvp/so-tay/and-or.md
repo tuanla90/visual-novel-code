@@ -2,7 +2,7 @@
 
 - Loại: cú pháp
 
-## Trang chị Linh
+## Trang sổ CLB
 Hai vòng tròn. AND là phần giao — phải nằm trong cả hai. OR là phần hợp — nằm trong một cái là được.
 
 ## Hà Vy

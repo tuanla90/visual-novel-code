@@ -54,7 +54,7 @@
 - [HẬU QUẢ] đặt co.v3-moi-nam-len
 - [ĐI TỚI v3-ket-luan]
 
-### v3-ket-du — Không mời Nam lên; Tùng xin lỗi; lời nhắn thứ ba của chị Linh {cảnh: phong-clb}
+### v3-ket-du — Không mời Nam lên; Tùng xin lỗi; mẩu giấy thứ ba trong sổ CLB {cảnh: phong-clb}
 
 - [LỜI v3-ket-du.1]
 - [ĐI TỚI v3-ket-ky]

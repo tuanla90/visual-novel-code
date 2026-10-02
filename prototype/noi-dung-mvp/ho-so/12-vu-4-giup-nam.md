@@ -49,7 +49,7 @@
 - Nguồn: {{nv.nam}}, sau khi {{nv.khanh}} ghé phòng CLB
 - Nội dung: Robotics làm ba chục huy hiệu hồi đầu năm; cái sứt một răng là lỗi khuôn, Khánh xin giữ và gắn trên balo. Balo hay để ở xưởng, ai cũng cầm được. Biết balo chưa phải biết người.
 
-### clue-loi-nhan-linh-4 — [Lời nhắn chị Linh, mẩu thứ tư]
+### clue-loi-nhan-linh-4 — [Mẩu giấy trong sổ, mẩu thứ tư]
 - Tiêu đề: Mẩu giấy ở trang cuối sổ
-- Nguồn: Sổ tự học của chị Linh, phòng CLB
-- Nội dung: Chữ chị Linh: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi."
+- Nguồn: Cuốn sổ của CLB, phòng CLB
+- Nội dung: Vẫn nét chữ mực xanh: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi."

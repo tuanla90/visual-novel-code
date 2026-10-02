@@ -78,7 +78,7 @@ describe('bộ MVP: file sinh khớp nội dung', () => {
       ['noi-dung-mvp/thu-thach/tin-don.md', 1, 1],
       ['noi-dung-mvp/thu-thach/v2-loc-buoi.md', 4, 4],
       ['noi-dung-mvp/thu-thach/c-lop.md', 112, 112],
-      ['noi-dung-mvp/kich-ban/00-mo-dau.md', 3, 3],
+      ['noi-dung-mvp/kich-ban/00-mo-dau.md', 1, 1],
       ['noi-dung-mvp/kich-ban/06-hop-va-ket.md', 595, 595],
     ]));
     // Mọi câu khai đều chạy đúng số dòng (bộ kiểm nội dung đã so; ở đây chốt lại).

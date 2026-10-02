@@ -103,7 +103,8 @@
 - **player**: Chị cho em thử lọc một cái được không ạ?
 
 ## md-09-ngay-hoi.3
-- **player**: Ba người tên {{nv.tung}}. Ngành Du lịch chỉ có một người: mã SV240251.
+- **player**: Ba người tên {{nv.tung}}. Thêm ngành Du lịch thì còn đúng một dòng. Mã nằm ở ô đầu: SV240251.
+- **narrator**: {{nv.tung}} dán tờ giấy nhớ ghi mã lên phiếu đăng ký, chép lại từng số.
 - **minh-anh** (neutral): …Nhanh thật. Bốn giờ chiều thứ Hai tuần sau CLB họp đầu năm, hai em ghi tên đi.
 - **tung** (neutral): Dạ em thì lọc kém, chứ tìm đường với nhắc lịch là giỏi nhất ạ.
 - **minh-anh** (neutral): Biết nhận là mình nhầm thì được rồi. Bắt đầu từ việc đến đúng giờ nhé.
@@ -126,7 +127,7 @@
 > NHẮC VIỆC duy (neutral): Ngăn dưới tủ tớ chưa kiểm kê tới.
 
 ## md-10-phong-clb.3
-- **minh-anh** (neutral): Sổ tự học của chị Linh khóa trước đấy. Em cứ giữ mà dùng.
+- **minh-anh** (neutral): Sổ của CLB đấy, khóa nào cũng chép thêm vài trang. Mấy trang đầu mực xanh là từ hồi mới lập. Năm nay em giữ.
 
 ## md-10-phong-clb.4
 - **duy** (neutral): Báo cáo năm ngoái đây. Kết luận đúng hai chữ: "hoạt động yếu".

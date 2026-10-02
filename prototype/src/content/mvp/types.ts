@@ -258,6 +258,8 @@ export interface TheThuThachMvp {
    * giá trị là các cột BẬT SẴN. Thiếu cột của SQL chuẩn → lời "Khi thiếu cột"; thừa cột → lời "Khi thừa cột" (chưa tính là đúng).
    */
   chonCot?: string[];
+  /** `- Bấm ô lấy giấy nhớ: <cột>`: tra đúng rồi, người chơi bấm từng ô của cột này để chép ra giấy nhớ, xong mới ghim được (thao tác học ở Ngày hội). */
+  bamO?: string;
 }
 
 /** `cot`: chỉ khớp khi các điều kiện người chơi đã điền dùng đúng tập cột này ("Khi chạy ra 0 dòng với a, b"). */

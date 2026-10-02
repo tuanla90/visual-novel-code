@@ -189,13 +189,13 @@
 - **ha-vy** (smile): Từ một chữ H tới một sổ quỹ. Mỗi bước là một phiếu.
 - **minh-anh** (neutral): Hồ sơ cuối kỳ xong. Em là người kéo phiếu đầu tiên của vụ này, em đóng dấu đi.
 - [DÀN DỰNG] Bạn đóng dấu lưu trữ lên bìa hồ sơ. {{nv.duy}} ghim cái huy hiệu sứt lên bảng điều tra, cạnh tờ giấy nhớ ghi lời chú Cường.
-- **duy** (neutral): Nam bảo để lại đây. Và chị Linh để lại nhiều mẩu giấy hơn mình tưởng.
+- **duy** (neutral): Nam bảo để lại đây. Và cuốn sổ này giữ nhiều mẩu giấy hơn mình tưởng.
 - [THẺ CHỮ] **narrator**: Dữ liệu chỉ ra ai cần hỏi. Người trả lời mới là người nói "vì sao". Mùa 1 khép lại ở chỗ chứng cứ dừng.
 
 ## v5-ngan-tu.1
 > NHIỆM VỤ: Tìm chìa ngăn tủ khóa
 - [THẺ CHỮ] **narrator**: Sau kết — tối hôm ấy, phòng CLB
-- **narrator**: Mọi người sắp về thì Duy bày bốn mẩu giấy của chị Linh lên bàn.
+- **narrator**: Mọi người sắp về thì Duy bày bốn mẩu giấy rơi ra từ cuốn sổ CLB lên bàn.
 - **duy** (neutral): Bốn mẩu giấy. Mà ngăn dưới tủ hồ sơ thì khóa, tớ chưa bao giờ có chìa.
 - **tung** (surprised): Thì cạy ra!
 - **ha-vy** (thinking): Khoan. Đọc lại bốn mẩu đã.
@@ -204,8 +204,10 @@
 - [DÀN DỰNG] Bạn nhấc tấm bảng nguyên tắc. Một chiếc chìa nhỏ dán băng dính ở mặt sau, khẽ chạm vào tường.
 - **narrator**: Trong ngăn tủ: một cuốn sổ bìa cứng, chữ viết tay đã ngả màu. Trang đầu ghi "Hồ sơ vụ thứ nhất — CLB Thám Tử Dữ Liệu", ký tên Trịnh Quang.
 - **tung** (surprised): Thầy Quang? Thầy Quang lập CLB này á?
-- **player**: Trang kết luận có một cái tên, bị gạch bằng mực tím còn mới. Cả cuốn không ghim một phiếu nào.
-- **duy** (neutral): Mực tím là bút chị Linh. Bên lề có hai chữ mực xanh đã ngả màu, chữ thầy Quang: "Xem lại."
+- **player**: Trang kết luận có một cái tên, bị gạch đi. Cả cuốn không ghim một phiếu nào.
+- **duy** (neutral): Bên lề có hai chữ, mực xanh đã ngả màu: "Xem lại."
+- **ha-vy** (thinking): Nét chữ này giống hệt bốn mẩu giấy. Giống cả chữ ký ở trang đầu.
+- **tung** (surprised): Thế bốn mẩu giấy là thầy viết? Thầy tự gạch kết luận của chính mình à?
 - **ha-vy** (thinking): Thầy hỏi "căn cứ vào đâu" từ bao giờ nhỉ?
-- **player**: Trang cuối có thêm một dòng, chữ chị Linh: "Manh mối cũ, câu hỏi mới."
+- **player**: Trang cuối có thêm một dòng, vẫn chữ thầy: "Manh mối cũ, câu hỏi mới."
 
