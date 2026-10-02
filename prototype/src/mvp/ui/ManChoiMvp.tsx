@@ -345,6 +345,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             giayNho={giaTriTuHoSo(kb, s.hoSo, s.bang?.ghiChuTruyVan ?? [], s.bang?.boGhim)}
             noi={kb.canh.find((c) => c.id === s.canh)?.ten}
             onDoiCho={(the, x, y) => hanhDong({ type: 'doi-cho-the', the, x, y })}
+            onDoiMau={(the, mau) => hanhDong({ type: 'doi-mau-ghim', the, mau })}
             onXong={(dung, phieu, ghiChu) => hanhDong({ type: 'xong-thu-thach', thuThach: kn.thuThach.id, dung, ...(phieu ? { phieu } : {}), ...(ghiChu?.length ? { ghiChu } : {}) })}
           />
         );

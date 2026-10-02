@@ -1671,3 +1671,82 @@ button.v7-o:active:not(:disabled) {
   border-style: dashed;
   opacity: 0.85;
 }
+
+/* Hộp xem kỹ thẻ: nền giấy sáng (trước đó thẻ mẩu tin lấy nền tối của giao diện chung nên chữ chìm). */
+.bang__xem .mvp-the {
+  background: #fffdf6;
+  color: #2a2320;
+  border-color: rgba(100, 74, 43, 0.22);
+  border-left-color: #c0392b;
+}
+.bang__xem .mvp-the--clue {
+  background: linear-gradient(160deg, #fff6c9, #fbe9a2);
+}
+.bang__xem .mvp-the--ev {
+  border-left-color: #2e7d32;
+}
+.bang__xem .mvp-the__noidung {
+  margin: 0;
+  color: #2a2320;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+.bang__xem-muc {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+}
+.bang__xem-muc-nhan,
+.bang__mau-nhan {
+  color: #6b5d49;
+  font: 750 0.72rem/1.2 var(--font-ui);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.bang__xem-the-nho {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bang__xem-nho {
+  padding: 5px 10px;
+  border-radius: 3px;
+  background: #ffe873;
+  color: #3a2f12;
+  font: 700 0.92rem/1.2 var(--font-mono, monospace);
+  box-shadow: 1px 2px 3px rgba(60, 45, 10, 0.25);
+  transform: rotate(-1deg);
+}
+.bang__xem-nho.is-gach {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+.bang__xem-noi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bang__xem-noi-nut {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgba(102, 81, 51, 0.25);
+  border-left: 4px solid #c62828;
+  border-radius: 6px;
+  background: #fffaf0;
+  color: #2a2320;
+  font: 600 0.9rem/1.25 var(--font-ui);
+  cursor: pointer;
+  text-align: left;
+}
+.bang__xem-noi-nut:hover { background: #fff1d2; }
+.bang__xem-noi-nut small { color: #7a6c57; font-weight: 500; }
+.bang__xem-noi-nut--xanh { border-left-color: #1e88e5; }
+.bang__xem-noi-nut--luc { border-left-color: #2e7d32; }
+.bang__xem-noi-nut--tim { border-left-color: #7b1fa2; }
+.bang__xem-ghim { justify-content: flex-start; }
+.bang__xem-ghim .bang__go { margin-left: auto; }
