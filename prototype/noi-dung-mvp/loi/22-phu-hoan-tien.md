@@ -7,6 +7,8 @@
 - **narrator**: Phòng CLB, sau buổi hướng dẫn SQL cho tân thành viên. Minh Anh ngồi với bản xuất thu chi và một xấp biên nhận.
 - **minh-anh** (khoanh-tay): Bảng cộng tiền hoàn ra một trăm năm mươi lăm nghìn. Biên nhận chị cầm cộng lại chỉ có chín mươi lăm. Lệch sáu mươi.
 - **minh-anh** (neutral): Mình cần biết phiếu nào phải mở ra xem lại. Chưa phải tìm người chịu lỗi.
+- **tung** (chi-tay): Tớ cá là có ai cộng nhầm.
+- **ha-vy** (neutral): Lần thứ ba mươi tám. Tớ ghi rồi, cậu cứ nói tiếp.
 - **quan** (neutral): Tôi ngồi nghe được chứ? Mục thu chi là mục cuối tôi phải xem.
 
 ## p-hoan-mo.2

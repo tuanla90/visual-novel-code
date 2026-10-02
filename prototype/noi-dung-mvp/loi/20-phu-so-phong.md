@@ -5,6 +5,9 @@
 ## v2-mo.1
 - [THẺ CHỮ] **narrator**: Việc ở CLB — Thứ Sáu, 25 tháng 10
 - **narrator**: Hơn một tháng sau buổi họp rà soát. Phòng CLB vẫn sáng đèn mỗi chiều thứ Tư.
+- **narrator**: Trên bảng ghim có thêm một tờ giấy kẻ ô, tiêu đề "Sổ nợ của Tùng", đã sang dòng thứ mười hai. Dòng mới nhất: "Hai cốc trà đá. Chủ nợ: Hà Vy."
+- **tung** (gai-dau): Dòng ấy không tính. Hôm đó cậu ấy tự mời.
+- **ha-vy** (neutral): Ghi là ghi.
 - **minh-anh** (neutral): Thầy Quang dặn rồi: muốn giữ phòng thì tháng nào cũng nộp báo cáo hoạt động. Tháng 10 là kỳ đầu tiên.
 - **minh-anh** (serious): Mà chị không muốn chỉ nộp cho xong. Cuối kỳ trường rà soát lại, chị muốn mình có một bộ hồ sơ ai mở ra cũng tự kiểm được.
 

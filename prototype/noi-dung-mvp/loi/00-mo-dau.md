@@ -78,6 +78,9 @@
 
 ## md-01-ktx.2
 - [DÀN DỰNG] Hai người khiêng vali lên tới tầng bốn, cùng thở dốc. {{nv.tung}} đẩy cửa phòng 408.
+- **narrator**: Mười một phút sau. Tầng ba rưỡi. Cái vali nằm ngang cầu thang, hai đứa ngồi hai bên thở.
+- **player**: Ba phút của cậu dài nhỉ.
+- **tung** (ao-xanh-gai-dau): Ba phút là tính lúc chưa có cái nồi cơm điện trong vali.
 - **tung** (ao-xanh-happy): Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường, tuần sau vào học đỡ lạc.
 
 ## md-03-toa-b.1
@@ -102,6 +105,9 @@
 
 ## md-08-tuan-cong-dan.1
 - [THẺ CHỮ] **narrator**: Thứ Hai → thứ Sáu — Tuần sinh hoạt công dân
+- **tung** (happy): Tuần này tớ ngồi bàn đầu, chép đủ từng chữ. Tớ cá luôn.
+- **narrator**: Thứ Tư. Bàn cuối. Tùng ngủ gục trên cuốn sổ mới chép được đúng dòng tiêu đề, bút vẫn kẹp trong tay.
+- **narrator**: Thứ Sáu, cả hội trường xếp hàng chụp ảnh thẻ. Ai cũng bảo ảnh mình xấu, rồi lén xem ảnh người đứng sau.
 - **narrator**: Cả tuần ngồi hội trường nghe nội quy. Buổi cuối, mỗi người được phát một tấm thẻ lịch in theo khoa, dưới cùng có dòng "Họ tên / Lớp" để tự viết.
 - **player**: (Viết tên vào luôn, kẻo lẫn với thẻ của ai.)
 
@@ -112,6 +118,8 @@
 ## md-09-ngay-hoi.2
 - [DÀN DỰNG] Nền nhà văn hóa ngày hội (nền chưa vẽ người); gian Robotics bên trái, cờ in hình bánh răng (ảnh cần vẽ thêm — xem báo cáo rà soát A4/A5); bàn Thám Tử bên phải.
 - **narrator**: Sân nhà văn hóa giăng cờ, bàn CLB kê kín lối đi. Gian Robotics rộng nhất, cờ in hình bánh răng, dán tấm bảng "Đang xin mở rộng xưởng thực hành". Bàn CLB Thám Tử ở góc, chỉ có một chị ngồi.
+- **tung** (happy): Tớ chỉ đi xem thôi nhé. Không đăng ký CLB nào đâu, năm nhất phải lo học.
+- **narrator**: Mười phút sau, trên tay Tùng có bốn tờ đăng ký, một cái quạt giấy của CLB Guitar và nửa cái bánh rán của CLB Nấu ăn.
 - **tung** (neutral): Chị ơi, đây là bàn CLB Thám Tử ạ? Chị là thành viên CLB ạ?
 - **minh-anh** (neutral): Ừ, đúng rồi. Chị là {{nv.minh-anh}}, chủ nhiệm CLB.
 - **tung** (neutral): Thế CLB mình đang điều tra vụ nào không ạ?

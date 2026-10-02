@@ -5,6 +5,10 @@
 ## n3-mo.1
 > NHIỆM VỤ: Sang Phòng Công tác sinh viên xin phiếu tra cứu
 - [THẺ CHỮ] **narrator**: Ngày 3 — Thứ Năm
+- **tung** (happy): Sáng nay tớ có tiết Triết, nhờ thằng cùng lớp điểm danh hộ rồi.
+- **ha-vy** (neutral): Điểm danh hộ là sửa dữ liệu đầu vào đấy.
+- **tung** (gai-dau): Cậu nói thế tớ thấy mình như tội phạm.
+- **minh-anh** (khoanh-tay): Chị coi như chưa nghe thấy. Lần sau đi học đi em.
 - **minh-anh** (neutral): Chị gọi cho cô Lan rồi. Các em mang kết quả hai lớp hôm qua sang, đấy là căn cứ để xin phiếu tra cứu.
 
 ## n3-ctsv.1
