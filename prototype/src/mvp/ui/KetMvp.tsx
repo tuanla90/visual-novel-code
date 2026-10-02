@@ -2,6 +2,7 @@
  * Màn kết bản MVP: kết thật / kết thường (QĐ-086/090). Màn tra giờ chỉ còn một cách nhập (kéo giấy nhớ, mockup v7) nên
  * bỏ câu hỏi so ba cách nhập của QĐ-092. Tiêu đề không ghi "kết thật / kết thường" — đó là chữ của người làm game.
  */
+import { LOI_CHOT, type TongKetVu } from '../engine/tong-ket';
 import { anhTheoTen } from './anh-mvp';
 
 export interface KetMvpProps {
@@ -17,12 +18,14 @@ export interface KetMvpProps {
   /** Màn kết của một nhiệm vụ phụ: chữ lấy từ lich.md, chỉ có nút quay lại. */
   phuXong?: { ten: string; tieuDeKet: string; loiKet: string } | null;
   onXongPhu?: () => void;
+  /** Tổng kết vụ do chị Minh Anh chốt (bốn dòng đếm + một câu); bỏ trống = không hiện. */
+  tongKet?: TongKetVu | null;
   onChoiLai: () => void;
   /** Bỏ trống = không có màn tiêu đề (bản chơi thử chỉ MVP). */
   onVeTieuDe?: () => void;
 }
 
-export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, onLamPhu, phuXong, onXongPhu, onChoiLai, onVeTieuDe }: KetMvpProps) {
+export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, onLamPhu, phuXong, onXongPhu, tongKet, onChoiLai, onVeTieuDe }: KetMvpProps) {
   if (phuXong) {
     return (
       <section className="endscreen mvp-ket" aria-labelledby="mvp-ket-tieude">
@@ -55,6 +58,42 @@ export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, onLamPhu, phuXong, 
             ? 'Nhật ký in và lời kể sáng thứ Hai là hai nguồn riêng, cùng khớp với lời Hoài. CLB giữ được phòng.'
             : 'Dữ liệu chỉ ra ai cần hỏi, không chỉ ra ai đã làm. Muốn biết ai viết thư, cần thêm bằng chứng từ nơi khác.'}
       </p>
+      {tongKet ? (
+        <aside className={`mvp-chot mvp-chot--${tongKet.muc}`} aria-label="Chị Minh Anh chốt hồ sơ">
+          <h3 className="mvp-chot__dau">Minh Anh chốt hồ sơ</h3>
+          <ul className="mvp-chot__ds">
+            <li>
+              <span>Phiếu tra cứu đã ghim</span>
+              <b>
+                {tongKet.phieu.co}/{tongKet.phieu.tong}
+              </b>
+            </li>
+            {tongKet.doiChat.tong > 0 ? (
+              <li>
+                <span>Giả thuyết bác đủ căn cứ</span>
+                <b>
+                  {tongKet.doiChat.du}/{tongKet.doiChat.tong}
+                </b>
+              </li>
+            ) : null}
+            {tongKet.cauHoi.tong > 0 ? (
+              <li>
+                <span>Câu hỏi đáp đúng ngay lần đầu</span>
+                <b>
+                  {tongKet.cauHoi.ngay}/{tongKet.cauHoi.tong}
+                </b>
+              </li>
+            ) : null}
+            {tongKet.mauGiay !== null ? (
+              <li>
+                <span>Mẩu giấy trong sổ CLB</span>
+                <b>{tongKet.mauGiay ? 'đã tìm thấy' : 'chưa thấy'}</b>
+              </li>
+            ) : null}
+          </ul>
+          <p className="mvp-chot__loi">“{LOI_CHOT[tongKet.muc]}”</p>
+        </aside>
+      ) : null}
       <div className="endscreen__actions">
         {coVuKe ? (
           <button type="button" className="btn btn--primary" onClick={onSangVuSau} autoFocus>

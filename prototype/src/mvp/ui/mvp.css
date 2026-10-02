@@ -2308,3 +2308,23 @@
 .mvp-nhan-moi--tab {
   margin-left: 6px;
 }
+
+/* Màn kết: chị Minh Anh chốt hồ sơ (độ hoàn thành của vụ). */
+.mvp-chot {
+  width: min(520px, 100%);
+  margin: 4px auto 14px;
+  padding: 14px 18px;
+  border: 1px solid rgba(255, 217, 138, 0.45);
+  border-left: 5px solid #ffd98a;
+  border-radius: 10px;
+  background: rgba(20, 28, 40, 0.72);
+  color: #f3ead8;
+  text-align: left;
+}
+.mvp-chot--kin { border-left-color: #7fd6a4; }
+.mvp-chot--thieu { border-left-color: #ff8a65; }
+.mvp-chot__dau { margin: 0 0 8px; font: 750 0.8rem/1.2 var(--font-ui); letter-spacing: 0.1em; text-transform: uppercase; color: #ffd98a; }
+.mvp-chot__ds { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.mvp-chot__ds li { display: flex; justify-content: space-between; gap: 12px; font-size: 0.98rem; }
+.mvp-chot__ds b { font-variant-numeric: tabular-nums; }
+.mvp-chot__loi { margin: 10px 0 0; font-style: italic; }

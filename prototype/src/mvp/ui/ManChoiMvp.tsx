@@ -40,6 +40,7 @@ import { LocThuV7 } from './v7/LocThuV7';
 import { LichMvp } from './LichMvp';
 import { LuuNapMvp } from './LuuNapMvp';
 import { ManChieuMvp } from './ManChieuMvp';
+import { tongKetVu } from '../engine/tong-ket';
 import { PhongTraMvp } from './v7/PhongTraMvp';
 import { NoiMvp } from './NoiMvp';
 import { SanKhauMvp } from './SanKhauMvp';
@@ -390,6 +391,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
               clearBacklog();
               hanhDong({ type: 'xong-nhiem-vu-phu' });
             }}
+            tongKet={kn.phuXong ? null : tongKetVu(kb, s, kn.vu ? kn.vu.chuoi : null)}
             onChoiLai={choiLai}
             onVeTieuDe={onVeTieuDe}
           />
