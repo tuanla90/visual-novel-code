@@ -40,17 +40,12 @@ import {
 import { anhTheoTen } from '../anh-mvp';
 import { SoiDieuKienMvp } from '../SoiDieuKienMvp';
 import { DongPhieu, type DongPhieuRef } from './DongPhieu';
+import { KiemPhieu } from './KiemPhieu';
 import { NHIP, ngu } from './nhip';
+import { CANH_TRA, type CanhTra } from './canh-tra';
 import './v7.css';
 
-export type CanhTra = 'phong-clb' | 'phong-may' | 'man-chieu';
-
-/** Ảnh cảnh và tọa độ mặt kính trên khung 1600×900 (đo từ ảnh: art/nguon/phong-*-core). */
-const CANH: Record<CanhTra, { anh: string | null; kinh: { x: number; y: number; w: number; h: number }; may: string }> = {
-  'phong-clb': { anh: 'canh-tra-phong-clb', kinh: { x: 253, y: 60, w: 1094, h: 588 }, may: 'laptop CLB · tài khoản clb_tham_tu' },
-  'phong-may': { anh: 'canh-tra-phong-may', kinh: { x: 196, y: 84, w: 1232, h: 628 }, may: 'máy phòng máy · xem theo phiếu tra cứu' },
-  'man-chieu': { anh: null, kinh: { x: 190, y: 60, w: 1220, h: 640 }, may: 'màn chiếu phòng họp' },
-};
+export type { CanhTra } from './canh-tra';
 
 const TOI_DA_DIEU_KIEN = 3;
 const TEN_NOI: Record<'AND' | 'OR', string> = { AND: 'VÀ', OR: 'HOẶC' };
@@ -87,8 +82,13 @@ export interface NguonPhieuV7 {
   soDong: number;
 }
 
+/** Bảng kết quả chỉ vẽ ngần này dòng đầu (bảng thật có tới vài nghìn dòng); con số lớn bên cạnh vẫn là tổng thật. */
+export const TOI_DA_DONG_HIEN = 40;
+/** Số giấy nhớ tối đa dán quanh laptop; tờ cũ hơn vào ngăn "Còn trên bảng". */
+export const TOI_DA_GIAY = 10;
+
 export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonPhieu, onXong }: ManTraV7Props) {
-  const cauHinh = CANH[canh];
+  const cauHinh = CANH_TRA[canh];
   // Nguồn là phiếu: `FROM @<mã phiếu>` của SQL chuẩn thành `FROM <tên tạm>`, mọi câu chạy có tiền tố `WITH <tên tạm> AS (…)`.
   const tenNguon = nguonPhieu ? tenCte(nguonPhieu.id) : null;
   const tienTo = nguonPhieu && tenNguon ? `WITH ${tenNguon} AS (${nguonPhieu.sql.trim().replace(/;\s*$/, '')}) ` : '';
@@ -103,6 +103,24 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     return b ? { ten: b.ten, cot: b.cot, soDong: b.dong.length } : undefined;
   }, [duLieu, khung, nguonPhieu, tenNguon]);
   const khoi = useMemo(() => khoiCuaThe(sqlChuan), [sqlChuan]);
+  // Thẻ "chọn bảng" (bài nhập môn): SQL chuẩn chỉ là SELECT … FROM <bảng>, không lọc / nối / xếp → người chơi chọn bảng rồi CHẠY.
+  const khongLoc = mode !== 'fix-query' && !nguonPhieu && !/\b(?:WHERE|JOIN|ORDER\s+BY|GROUP\s+BY)\b/i.test(sqlChuan);
+  // Bài chọn cột (`- Chọn cột:` của thẻ; chưa dùng cho thẻ có nối bảng / phiếu làm nguồn): người chơi tự bật tắt cột của SELECT.
+  const chonCot = the.chonCot && mode !== 'fix-query' && !nguonPhieu && !khoi.noi ? the.chonCot : null;
+  const chonBang = khongLoc && !chonCot;
+  const cotChuan = useMemo(() => (/^SELECT\s+(.+?)\s+FROM\s/i.exec(khung?.khung ?? '')?.[1] ?? '').split(',').map((c) => c.trim()).filter((c) => c !== ''), [khung]);
+  const khungCua = (ds: readonly string[]): string => `SELECT ${ds.length > 0 ? ds.join(', ') : '…'} FROM ${khung?.bang ?? ''}`;
+  const [cotLay, setCotLay] = useState<string[]>(() => chonCot ?? []);
+  /**
+   * HAI NGƯỜI KIỂM PHIẾU (user chốt 02/10/2026): Duy kiểm hình thức — phiếu phải đủ gọn để dò tay (tối đa 3 / 5 / 10 dòng, làm tròn lên
+   * từ số dòng của đáp án) và có cột mã nếu thẻ cần; Hà Vy kiểm ý nghĩa — phiếu có trả lời đúng câu hỏi ghim trên bảng không.
+   * Bài nhập môn (không lọc) và màn chiếu ở buổi họp không có Duy kiểm.
+   */
+  const nguongDuy = useMemo(() => {
+    const n = the.soDongKyVong;
+    if (khongLoc || mode === 'fix-query' || n === null) return null;
+    return n <= 3 ? 3 : n <= 5 ? 5 : n <= 10 ? 10 : null;
+  }, [the.soDongKyVong, khongLoc, mode]);
   // Khối "nối với" (thẻ có JOIN): các bảng được chọn khai ở thẻ, thiếu thì lấy bảng JOIN của SQL chuẩn.
   const bangNoiDuoc = useMemo(() => (khoi.noi ? (the.bangNoi?.length ? the.bangNoi : bangNoiTrongSql(sqlChuan)) : []), [khoi.noi, the.bangNoi, sqlChuan]);
 
@@ -111,9 +129,9 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     if (napSan) return napSan;
     const cotGoc = bang?.cot.map((c) => c.ten) ?? [];
     return {
-      khung: khung?.khung ?? '',
-      dieuKien: [0, 1].map((i) => ({ cot: cotGoc[i % Math.max(1, cotGoc.length)] ?? '', phep: 'bang', giaTri: null })),
-      noi: ['AND'],
+      khung: chonCot ? khungCua(chonCot) : (khung?.khung ?? ''),
+      dieuKien: khongLoc ? [] : [0, 1].map((i) => ({ cot: cotGoc[i % Math.max(1, cotGoc.length)] ?? '', phep: 'bang', giaTri: null })),
+      noi: khongLoc ? [] : ['AND'],
     };
   });
   const bangNoi = useMemo(() => (cau.noiBang?.bang ? duLieu?.bang.find((b) => b.ten === cau.noiBang?.bang) : undefined), [duLieu, cau.noiBang?.bang]);
@@ -125,6 +143,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   const sqlNgoai = thanhSql(cau, kieuCot, cotChung);
   const sql = tienTo + sqlNgoai;
   const [dangChon, setDangChon] = useState<GiaTriHoSo | null>(null);
+  const [daChonBang, setDaChonBang] = useState(!chonBang);
   const [cham, setCham] = useState<KetQuaCham | null>(null);
   const [daChay, setDaChay] = useState<WhereTach | null>(null);
   const [dangChay, setDangChay] = useState(false);
@@ -133,6 +152,9 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   const [dau, setDau] = useState<number | null>(null);
   const [loiNoi, setLoiNoi] = useState<LoiMvp[]>([]);
   const [xongRoi, setXongRoi] = useState(false);
+  const [moCon, setMoCon] = useState(false);
+  /** Bài "bấm ô lấy giấy nhớ": các dòng kết quả đã được chép ô. */
+  const [daChep, setDaChep] = useState<number[]>([]);
   const phieu = useRef<DongPhieuRef>(null);
   const banRon = useRef(false);
   const song = useRef(true);
@@ -155,11 +177,19 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
       setSoi(false);
       setDau(null);
       setLoiNoi([]);
+      setDaChep([]);
       setSo({ n: tongDong, nhan: 'DÒNG' });
       phieu.current?.datLai();
     },
     [tongDong],
   );
+  /** Bật / tắt một cột của SELECT (giữ thứ tự cột của bảng). */
+  const doiCot = (ten: string): void => {
+    const moi = (bang?.cot.map((c) => c.ten) ?? []).filter((c) => (c === ten ? !cotLay.includes(c) : cotLay.includes(c)));
+    soundEngine.playSfx('tab');
+    setCotLay(moi);
+    doiCau((c) => ({ ...c, khung: khungCua(moi) }));
+  };
   const doiDk = (i: number, f: (d: DieuKienDung) => DieuKienDung): void => doiCau((c) => ({ ...c, dieuKien: c.dieuKien.map((d, k) => (k === i ? f(d) : d)) }));
   const dat = (i: number, g: GiaTriHoSo): void => {
     soundEngine.playSfx('select');
@@ -203,7 +233,10 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     setSo({ n: tongDong, nhan: 'DÒNG' });
     soundEngine.playSfx('click');
     try {
-      const kq = await chamThuThach(duLieu, sql, tienTo + sqlChuan);
+      const tho = await chamThuThach(duLieu, sql, tienTo + sqlChuan);
+      // Bài chọn cột: đủ dòng, đủ cột cần mà lấy thừa cột thì chưa tính là đúng (có lời "Khi thừa cột").
+      const thuaCot = !!chonCot && tho.trangThai === 'dung' && cotLay.length > cotChuan.length;
+      const kq: KetQuaCham = thuaCot && tho.trangThai === 'dung' ? { ...tho, trangThai: 'sai' } : tho;
       const tach = kq.trangThai === 'loi' ? null : tachWhere(sqlNgoai);
       const t = tach && tienTo ? { ...tach, tienTo } : tach;
       track({
@@ -257,23 +290,42 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
       if (!song.current) return;
       setCham(kq);
       setDaChay(t);
-      setLoiNoi(
-        phanUngSauKhiChay(
-          the,
-          kq,
-          cau.dieuKien.filter((d) => d.giaTri !== null).map((d) => d.cot),
-        ),
+      const loiThe = phanUngSauKhiChay(
+        the,
+        kq,
+        cau.dieuKien.filter((d) => d.giaTri !== null).map((d) => d.cot),
+        thuaCot,
       );
+      // Thẻ không có lời riêng cho kết quả này: Duy nói khi phiếu còn quá dài, Hà Vy nói khi phiếu gọn mà chưa đúng câu hỏi.
+      const soDongKq = kq.trangThai === 'loi' ? 0 : kq.so.soDongNguoiChoi;
+      const macDinh: LoiMvp[] =
+        loiThe.length > 0 || kq.trangThai !== 'sai' || nguongDuy === null
+          ? []
+          : soDongKq > nguongDuy
+            ? [{ speaker: 'duy', expression: 'neutral', text: `Còn ${soDongKq.toLocaleString('vi-VN')} dòng. Phiếu dài thế tớ không dò nổi, tớ chỉ nhận tối đa ${nguongDuy} dòng.` }]
+            : soDongKq > 0
+              ? [{ speaker: 'ha-vy', expression: 'thinking', text: 'Phiếu gọn rồi, nhưng chưa trả lời đúng câu hỏi trên bảng. Xem lại điều kiện xem.' }]
+              : [];
+      setLoiNoi(loiThe.length > 0 ? loiThe : macDinh);
     } finally {
       banRon.current = false;
       if (song.current) setDangChay(false);
     }
-  }, [duLieu, khung, dung, sql, sqlNgoai, sqlChuan, tienTo, the, tongDong, demToi, cau]);
+  }, [duLieu, khung, dung, sql, sqlNgoai, sqlChuan, tienTo, the, tongDong, demToi, cau, chonCot, cotLay, cotChuan, nguongDuy]);
 
   if (!duLieu) return <p className="game__error">Vụ này chưa có bộ dữ liệu (du-lieu.md) nên không chạy được.</p>;
   if (!khung || !bang) return <p className="game__error">Thẻ thử thách này thiếu khung SELECT … FROM … hợp lệ.</p>;
 
   const laChieu = canh === 'man-chieu';
+  // Dấu ✓ / ✗ của hai người kiểm sau mỗi lần chạy (chưa chạy: chưa có dấu).
+  const soDongChay = cham && cham.trangThai !== 'loi' ? cham.chay.dong.length : null;
+  const duyDat = nguongDuy === null || soDongChay === null ? null : soDongChay > 0 && soDongChay <= nguongDuy && (!the.bamO || cham?.trangThai === 'loi' || (cham?.chay.cot ?? []).some((c) => c.toLowerCase() === the.bamO?.toLowerCase()));
+  // Đủ đúng dòng, chỉ thiếu cột (vd chưa lấy cột mã): Hà Vy coi là đã trả lời đúng câu hỏi, phần thiếu là việc của Duy.
+  const chiThieuCot = cham?.trangThai === 'sai' && cham.so.soDongNguoiChoi === cham.so.soDongChuan && cham.so.cotThieu.length > 0 && !cham.so.saiThuTu;
+  const vyDat = soDongChay === null ? null : dung || chiThieuCot;
+  // Tra đúng rồi mới bấm ô: cột `the.bamO` của bảng kết quả thành các ô bấm được.
+  const iBamO = dung && the.bamO && cham?.trangThai === 'dung' ? cham.chay.cot.findIndex((c) => c.toLowerCase() === the.bamO?.toLowerCase()) : -1;
+  const conChep = iBamO >= 0 && cham?.trangThai === 'dung' ? cham.chay.dong.length - daChep.length : 0;
   const anhCanh = cauHinh.anh ? anhTheoTen(cauHinh.anh) : undefined;
   const loi = loiNoi[0];
   const chibiNoi = loi ? anhTheoTen(`chibi-${loi.speaker}`) : undefined;
@@ -294,8 +346,11 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     } else onXong(dungCacThe);
   };
 
-  // Giấy nhớ quanh viền: nửa trái, nửa phải; nhiều hơn 8 tờ thì xếp sát lại.
-  const nua = Math.ceil(giayNho.length / 2);
+  // Giấy nhớ quanh viền: nửa trái, nửa phải. Tối đa TOI_DA_GIAY tờ (user chốt 02/10/2026: 8–10 tờ, không thì dàn khắp màn hình):
+  // lấy các tờ mới nhất; tờ cũ hơn nằm ở ngăn "Còn trên bảng", bấm để cầm lên như một tờ giấy nhớ thường.
+  const giayCu = giayNho.slice(0, Math.max(0, giayNho.length - TOI_DA_GIAY));
+  const giayHien = giayNho.slice(giayCu.length);
+  const nua = Math.ceil(giayHien.length / 2);
   const buocGiay = Math.min(146, (cauHinh.kinh.h - 8) / Math.max(1, nua));
   const viTriGiay = (i: number): CSSProperties => {
     const phai = i >= nua;
@@ -308,7 +363,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     };
   };
 
-  const giay = giayNho.map((g, i) => (
+  const giay = giayHien.map((g, i) => (
     <button
       key={g.khoa}
       type="button"
@@ -335,19 +390,49 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
         <span>▣ tra-cuu — {cauHinh.may}</span>
       </div>
       <p className="v7-de">{dienTen(the.deBai)}</p>
+      {nguongDuy !== null ? (
+        <KiemPhieu duy={`phiếu tối đa ${nguongDuy} dòng${the.bamO ? `, có cột ${the.bamO}` : ''}`} duyDat={duyDat} vy="đúng câu hỏi trên bảng" vyDat={vyDat} />
+      ) : null}
       <div className="v7-cau">
         <div className="v7-cau__bang">
           {nguonPhieu ? (
             <span className="v7-o v7-o--bang v7-o--phieu" title={`Phiếu đã ghim "${dienTen(nguonPhieu.nhan)}" dùng làm nguồn, tên tạm ${bang.ten}`}>
               <span aria-hidden="true">📌</span> {dienTen(nguonPhieu.nhan)}
             </span>
+          ) : chonBang ? (
+            <select
+              className={`v7-o v7-o--bang v7-o--chon-bang${daChonBang ? '' : ' is-trong'}`}
+              aria-label="Chọn bảng để tra"
+              disabled={khoa}
+              value={daChonBang ? bang.ten : ''}
+              onChange={(e) => setDaChonBang(e.target.value !== '')}
+            >
+              <option value="">chọn bảng…</option>
+              <option value={bang.ten}>{bang.ten}</option>
+            </select>
           ) : (
             <span className="v7-o v7-o--bang" title={`Bảng ${bang.ten}`}>
               <span aria-hidden="true">🔒</span> {bang.ten}
             </span>
           )}
-          <small>{tongDong} dòng</small>
+          <small>{daChonBang ? `${tongDong} dòng` : 'chưa chọn bảng'}</small>
         </div>
+        {chonCot ? (
+          <div className="v7-lay" role="group" aria-label="Các cột lấy ra">
+            <span className="v7-o v7-o--dau" aria-hidden="true">
+              LẤY CỘT
+            </span>
+            {bang.cot.map((c) => {
+              const bat = cotLay.includes(c.ten);
+              return (
+                <button key={c.ten} type="button" className={`v7-o v7-o--lay${bat ? ' is-bat' : ''}`} disabled={khoa} aria-pressed={bat} aria-label={`Cột ${c.ten}: ${bat ? 'đang lấy — bấm để bỏ' : 'chưa lấy — bấm để lấy'}`} onClick={() => doiCot(c.ten)}>
+                  <span aria-hidden="true">{bat ? '✓' : '+'}</span> {c.ten}
+                </button>
+              );
+            })}
+            {cotLay.length === 0 ? <small className="v7-lay__nhac">bấm cột muốn xem</small> : null}
+          </div>
+        ) : null}
         <ol className="v7-cau__dk" aria-label="Các điều kiện">
           {khoi.noi ? (
             <li className="v7-dk v7-noi" aria-label="Nối với bảng khác">
@@ -472,7 +557,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
               </li>
             );
           })}
-          {cau.dieuKien.length < TOI_DA_DIEU_KIEN && !laChieu ? (
+          {cau.dieuKien.length < TOI_DA_DIEU_KIEN && !laChieu && !khongLoc ? (
             <li>
               <button
                 type="button"
@@ -523,7 +608,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
       </div>
 
       <div className={`v7-vung${cham && cham.trangThai !== 'loi' ? ' co-ket-qua' : ''}`} aria-live="polite" aria-label="Kết quả">
-        <DongPhieu ref={phieu} tong={tongDong} />
+        <DongPhieu ref={phieu} tong={daChonBang ? tongDong : 0} />
         {cham && cham.trangThai !== 'loi' && !soi ? (
           <div className="v7-kq">
             {cham.chay.dong.length === 0 ? (
@@ -541,18 +626,32 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                   </tr>
                 </thead>
                 <tbody>
-                  {cham.chay.dong.map((h, r) => (
+                  {cham.chay.dong.slice(0, TOI_DA_DONG_HIEN).map((h, r) => (
                     <tr key={r} style={{ ['--i' as string]: Math.min(r, 12) }}>
-                      {h.map((v, k) => (
-                        <td key={k}>{v === null ? '(trống)' : <ChuCoDauCach chu={String(v)} />}</td>
-                      ))}
+                      {h.map((v, k) =>
+                        iBamO === k && v !== null ? (
+                          <td key={k} className="v7-kq__o">
+                            <button type="button" className={`v7-o-bam is-moi${daChep.includes(r) ? ' is-chep' : ''}`} aria-label={`Ô ${the.bamO ?? ''}: ${String(v)}${daChep.includes(r) ? ' (đã chép)' : ''}`} disabled={daChep.includes(r)} onClick={() => { soundEngine.playSfx('select'); setDaChep((ds) => [...ds, r]); }}>
+                              {String(v)}
+                            </button>
+                          </td>
+                        ) : (
+                          <td key={k}>{v === null ? '(trống)' : <ChuCoDauCach chu={String(v)} />}</td>
+                        ),
+                      )}
                     </tr>
                   ))}
+                  {cham.chay.dong.length > TOI_DA_DONG_HIEN ? (
+                    <tr className="v7-kq__con">
+                      <td colSpan={cham.chay.cot.length}>… còn {(cham.chay.dong.length - TOI_DA_DONG_HIEN).toLocaleString('vi-VN')} dòng nữa (đang hiện {TOI_DA_DONG_HIEN} dòng đầu)</td>
+                    </tr>
+                  ) : null}
                 </tbody>
               </table>
             )}
           </div>
         ) : null}
+        {conChep > 0 ? <p className="v7-kq__nhac v7-kq__nhac--tra">👆 Bấm từng ô {the.bamO} để chép ra giấy nhớ (còn {conChep}).</p> : null}
         {cham?.trangThai === 'loi' ? <p className="v7-loi">Chưa chạy được: {cham.chay.thongDiep}</p> : null}
         {soi && daChay ? (
           <div className="v7-soi">
@@ -565,14 +664,32 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
           </div>
         ) : null}
         <div className="v7-so" aria-hidden={dau !== null}>
-          <div className="v7-so__n">{so.n}</div>
+          <div className="v7-so__n">{daChonBang ? so.n : '–'}</div>
           <div className="v7-so__l">{so.nhan}</div>
         </div>
       </div>
 
       <p className="v7-sql" aria-label="Câu SQL đang dựng">
-        <CauSql cau={cau} kieuCot={kieuCot} cotChung={cotChung} cte={nguonPhieu && tenNguon ? { ten: tenNguon, nhan: dienTen(nguonPhieu.nhan) } : null} />
+        {daChonBang ? (
+          <CauSql cau={cau} kieuCot={kieuCot} cotChung={cotChung} cte={nguonPhieu && tenNguon ? { ten: tenNguon, nhan: dienTen(nguonPhieu.nhan) } : null} />
+        ) : (
+          <code>
+            <span className="k">SELECT</span> … <span className="k">FROM</span> <em>chưa chọn bảng</em>
+          </code>
+        )}
       </p>
+      {giayCu.length > 0 && !laChieu ? (
+        <details className="v7-con" open={moCon} onToggle={(e) => setMoCon((e.target as HTMLDetailsElement).open)}>
+          <summary>Còn trên bảng ({giayCu.length})</summary>
+          <div className="v7-con__ds">
+            {giayCu.map((g) => (
+              <button key={g.khoa} type="button" className={`v7-con__to${dangChon?.khoa === g.khoa ? ' is-chon' : ''}`} disabled={khoa} aria-pressed={dangChon?.khoa === g.khoa} aria-label={`${g.giaTri} (giấy nhớ ${dienTen(g.nguon)})`} onClick={() => setDangChon(dangChon?.khoa === g.khoa ? null : g)}>
+                {g.giaTri}
+              </button>
+            ))}
+          </div>
+        </details>
+      ) : null}
       <div className="v7-day">
         {daChay && cham && cham.trangThai !== 'loi' ? (
           <button type="button" className={`v7-nut v7-nut--soi${soi ? ' is-mo' : ''}`} onClick={() => setSoi(!soi)}>
@@ -580,11 +697,11 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
           </button>
         ) : null}
         {dung ? (
-          <button type="button" className="v7-nut v7-nut--ghim" disabled={xongRoi} onClick={xong} autoFocus>
+          <button type="button" className="v7-nut v7-nut--ghim" disabled={xongRoi || conChep > 0} title={conChep > 0 ? `Bấm ${conChep} ô ${the.bamO ?? ''} còn lại để chép ra giấy nhớ` : undefined} onClick={xong} autoFocus>
             {the.vatChung && !laChieu ? '📌 Ghim lên bảng' : 'Tiếp tục'}
           </button>
         ) : (
-          <button type="button" className="v7-nut v7-nut--chay" disabled={dangChay} onClick={() => void chay()}>
+          <button type="button" className="v7-nut v7-nut--chay" disabled={dangChay || !daChonBang || (!!chonCot && cotLay.length === 0)} onClick={() => void chay()}>
             ▶ {dangChay ? 'ĐANG CHẠY' : 'CHẠY'}
           </button>
         )}

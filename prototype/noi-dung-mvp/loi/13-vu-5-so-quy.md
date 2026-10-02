@@ -34,8 +34,14 @@
 - **co-hanh** (neutral): Ba khoản lớn là tạm ứng tiền mặt, người duyệt ký nhận. Quy chế cho bổ sung chứng từ trong ba mươi ngày, nên cột mã đơn là điền sau.
 - **co-lan** (neutral): Cô bên Công tác sinh viên in kèm quy chế quỹ khối CLB. Khoản dưới một triệu thì chủ tịch Hội duyệt thẳng. Tổng một người duyệt từ MỘT quỹ trong một học kỳ vượt một triệu thì người đó phải giải trình; Phòng Kế hoạch soát ngưỡng ấy lúc đối chiếu cuối kỳ, cùng lúc gửi sao kê. Phần về CLB chờ giải thể ở trang sau, các em tự đọc.
 - **minh-anh** (neutral): Em cảm ơn hai cô ạ.
+> NHIỆM VỤ: Mang bản xuất sổ quỹ về phòng CLB
 
 ## v5-so-quy.1
+- **narrator**: Đường từ tòa hành chính về nhà câu lạc bộ. Minh Anh ôm tập giấy đi trước, không nói gì.
+- **tung** (worried): Chị ấy im thế là giận hay là sợ?
+- **ha-vy** (neutral): Là đang tính. Quỹ mang tên CLB mình, mà chữ ký duyệt thì chị ấy chưa thấy bao giờ.
+- **player**: Thầy Quang hỏi "căn cứ vào đâu". Giờ căn cứ nằm trong tập giấy kia.
+- **tung** (thinking): Lần đầu tớ thấy một tập giấy nặng thế.
 - **narrator**: Chiều, phòng CLB. Bản xuất cô Hạnh gửi đã nằm trong laptop: chỉ gồm các khoản chi ghi vào quỹ CLB Thám Tử và các khoản liên quan ba đơn.
 - **duy** (neutral): Mỗi khoản chi có mã quỹ. Bảng quỹ cho biết mã nào là quỹ của CLB nào. Lại hai bảng.
 > NHIỆM VỤ: Khoản chi nào ghi vào quỹ CLB Thám Tử?
@@ -142,6 +148,7 @@
 - **hoai** (relieved): Em cảm ơn thầy ạ.
 
 ## v5-ket-du.1
+> NHIỆM VỤ: Nghe Khánh trả lời
 - **khanh** (neutral): Đúng. Anh cần thêm thời gian để bù. Giấy về chỗ anh thì không ai hỏi sớm.
 - **nam** (neutral): Sao lại là tên em?
 - **khanh** (neutral): Người duyệt không được tự đứng tên đề xuất. Em là đứa không ai nghi.
@@ -159,6 +166,7 @@
 - **thay-quang** (neutral): Phòng của CLB Thám Tử giữ nguyên. Hoàn quỹ đi theo thủ tục, mất vài tháng; từ giờ tới đó quỹ CLB tạm đóng.
 
 ## v5-bien-ban.1
+> NHIỆM VỤ: Chốt biên bản buổi họp
 - **thay-quang** (neutral): Phần của CLB Thám Tử, biên bản ghi thế này: ba khoản tạm ứng gắn với ba đơn kho không có hàng, ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Mỗi bước có phiếu kèm, ai cũng tự kiểm được.
 - **minh-anh** (neutral): Thưa thầy, lời anh Khánh tự nhận thì em xin ghi riêng vào mục lời khai, không ghi lẫn với phiếu ạ.
 - **thay-quang** (neutral): Đúng thế.
@@ -180,18 +188,20 @@
 - **tung** (ao-xanh-happy): Đơn ở chỗ Duy. Chiều thứ Tư, phòng CLB. Lần này tớ dẫn đúng tòa.
 
 ## v5-ket-luan.1
+> NHIỆM VỤ: Đóng hồ sơ mùa
 - **narrator**: Chiều thứ Tư, phòng CLB. Hoài tới sớm, mang theo một xấp giấy nháp còn trắng một mặt.
 - **duy** (neutral): Quỹ đóng thì vẫn họp. Giấy còn nửa tập, bút còn ba cái.
 - **nam** (neutral): Tớ qua được một lúc, xong phải về lo tiền giải với anh Bách, chị Thảo. Cảm biến của xưởng ghi mỗi giây một dòng. Tớ muốn tự viết chương trình đọc nó.
 - **ha-vy** (smile): Từ một chữ H tới một sổ quỹ. Mỗi bước là một phiếu.
 - **minh-anh** (neutral): Hồ sơ cuối kỳ xong. Em là người kéo phiếu đầu tiên của vụ này, em đóng dấu đi.
 - [DÀN DỰNG] Bạn đóng dấu lưu trữ lên bìa hồ sơ. {{nv.duy}} ghim cái huy hiệu sứt lên bảng điều tra, cạnh tờ giấy nhớ ghi lời chú Cường.
-- **duy** (neutral): Nam bảo để lại đây. Và chị Linh để lại nhiều mẩu giấy hơn mình tưởng.
+- **duy** (neutral): Nam bảo để lại đây. Và cuốn sổ này giữ nhiều mẩu giấy hơn mình tưởng.
 - [THẺ CHỮ] **narrator**: Dữ liệu chỉ ra ai cần hỏi. Người trả lời mới là người nói "vì sao". Mùa 1 khép lại ở chỗ chứng cứ dừng.
 
 ## v5-ngan-tu.1
+> NHIỆM VỤ: Tìm chìa ngăn tủ khóa
 - [THẺ CHỮ] **narrator**: Sau kết — tối hôm ấy, phòng CLB
-- **narrator**: Mọi người sắp về thì Duy bày bốn mẩu giấy của chị Linh lên bàn.
+- **narrator**: Mọi người sắp về thì Duy bày bốn mẩu giấy rơi ra từ cuốn sổ CLB lên bàn.
 - **duy** (neutral): Bốn mẩu giấy. Mà ngăn dưới tủ hồ sơ thì khóa, tớ chưa bao giờ có chìa.
 - **tung** (surprised): Thì cạy ra!
 - **ha-vy** (thinking): Khoan. Đọc lại bốn mẩu đã.
@@ -200,8 +210,37 @@
 - [DÀN DỰNG] Bạn nhấc tấm bảng nguyên tắc. Một chiếc chìa nhỏ dán băng dính ở mặt sau, khẽ chạm vào tường.
 - **narrator**: Trong ngăn tủ: một cuốn sổ bìa cứng, chữ viết tay đã ngả màu. Trang đầu ghi "Hồ sơ vụ thứ nhất — CLB Thám Tử Dữ Liệu", ký tên Trịnh Quang.
 - **tung** (surprised): Thầy Quang? Thầy Quang lập CLB này á?
-- **player**: Trang kết luận có một cái tên, bị gạch bằng mực tím còn mới. Cả cuốn không ghim một phiếu nào.
-- **duy** (neutral): Mực tím là bút chị Linh. Bên lề có hai chữ mực xanh đã ngả màu, chữ thầy Quang: "Xem lại."
+- **player**: Trang kết luận có một cái tên, bị gạch đi. Cả cuốn không ghim một phiếu nào.
+- **duy** (neutral): Bên lề có hai chữ, mực xanh đã ngả màu: "Xem lại."
+- **ha-vy** (thinking): Nét chữ này giống hệt bốn mẩu giấy. Giống cả chữ ký ở trang đầu.
+- **tung** (surprised): Thế bốn mẩu giấy là thầy viết? Thầy tự gạch kết luận của chính mình à?
 - **ha-vy** (thinking): Thầy hỏi "căn cứ vào đâu" từ bao giờ nhỉ?
-- **player**: Trang cuối có thêm một dòng, chữ chị Linh: "Manh mối cũ, câu hỏi mới."
+- **player**: Trang cuối có thêm một dòng, vẫn chữ thầy: "Manh mối cũ, câu hỏi mới."
 
+## v5-phong-duy.1
+- **duy** (serious): Sổ này không phải của CLB mình. Thầy Quang cho xem tới đâu, tớ mở tới đó.
+
+## v5-phong-vy.1
+- **ha-vy** (thinking): Câu hỏi trên bảng: khoản chi nào ghi vào quỹ của mình?
+- **ha-vy** (neutral): Tiền thì không nói dối, nhưng sổ ghi tiền là do người viết. Xem ai ký từng dòng.
+
+## v5-phong-minh-anh.1
+- **minh-anh** (neutral): Từ đầu kỳ chị duyệt đúng ba khoản: giấy in, mực, bìa hồ sơ. Khoản nào cũng dưới hai trăm nghìn.
+- **minh-anh** (worried): Nếu sổ ghi nhiều hơn thế thì có khoản chị chưa từng nhìn thấy.
+
+## v5-bd-tra-da.1
+- **narrator**: Quán trà đá, đầu giờ chiều. Bà chủ quán đang tráng cốc.
+- **ba-lua** (smile): Hôm nay mặt đứa nào cũng căng thế. Uống đi rồi hẵng tính.
+- **player**: Bà ơi, ngày xưa có một anh sinh viên trông cái phòng tủ sắt của bọn cháu, hay ra đây gọi trà nóng. Sau này bà có gặp lại anh ấy không ạ?
+- **ba-lua** (smile): Cậu trà nóng ấy hả? Gặp suốt. Giờ đi làm ngay trong trường, sơ mi cài kín cổ, tóc muối tiêu rồi. Sáng nào đi ngang cũng gật đầu chào bà, thỉnh thoảng vẫn ngồi xuống gọi cốc trà nóng.
+- **tung** (surprised): Người ấy vẫn ở trong trường ạ? Là ai hả bà?
+- **ba-lua** (neutral): Bà nhớ cốc, không nhớ tên. Mà cậu ấy có một câu cửa miệng, sinh viên ra đây toàn nhại lại: "Căn cứ vào đâu?"
+- **ha-vy** (thinking): Mình vừa nghe đúng câu ấy xong.
+- **tung** (chi-tay): Tớ cá là…
+- **ha-vy** (neutral): Đừng cá. Một lời kể với một câu cửa miệng thì chưa đủ để ghim tên ai lên bảng.
+- **player**: Tớ ghi lại. Lời kể, chưa đối chiếu với gì cả.
+
+## v5-bd-tra-da.2
+- **tung** (thinking): Bà ơi, hôm nào xong việc, bà để dành cho cháu thêm một cái ghế nhé.
+- **ba-lua** (smile): Cho con bé hay ôm cặp chứ gì. Mời được nó ra đây ngồi thì bà khao. Có câu mở đầu chưa?
+- **tung** (gai-dau): Cháu có rồi ạ. Hai chữ.

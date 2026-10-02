@@ -59,7 +59,7 @@ SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = 
 
 ### c-tin-xuong — Tối 07/10, xưởng được đăng ký từ mấy giờ tới mấy giờ, cho hoạt động nào? {challenge: c-tin-xuong}
 
-- Tiêu đề: Lịch đặt xưởng, tuần 07/10
+- Tiêu đề: Lịch đặt xưởng
 - Đề bài hiển thị: Lịch đặt xưởng của nhà văn hóa. Tối 07/10 xưởng được đăng ký từ mấy giờ tới mấy giờ, cho hoạt động nào?
 - Manh mối liên quan: clue-ngay-gui
 - Mục tiêu học: Hai hướng điều tra, mỗi hướng một nguồn riêng; cùng một giá trị ngày dùng cho hai bảng.

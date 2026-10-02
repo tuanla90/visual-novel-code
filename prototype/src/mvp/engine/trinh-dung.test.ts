@@ -109,7 +109,7 @@ describe('xem từng điều kiện', () => {
     expect(kq.dong.filter((d) => d[iGiu] === 1).map((d) => d[iTen]).sort()).toEqual(['Hiếu', 'Hoài']);
   });
 
-  it('câu soi chạy thật: OR tòa B / Báo chí → 5 dòng giữ, mỗi dòng có dấu từng điều kiện; AND chỉ giữ 2', async () => {
+  it('câu soi chạy thật: OR tòa B / Báo chí → 33 dòng giữ, mỗi dòng có dấu từng điều kiện; AND chỉ giữ 2', async () => {
     if (!duLieu) throw new Error('thiếu du-lieu.md');
     const soi = async (sql: string) => {
       const t = tachWhere(sql);
@@ -120,10 +120,10 @@ describe('xem từng điều kiện', () => {
       return { tong: kq.dong.length, giu: kq.dong.filter((d) => d[iGiu] === 1).length, cot: kq.cot };
     };
     const hoac = await soi("SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha = 'B' OR nganh = 'Báo chí'");
-    expect(hoac).toMatchObject({ tong: 5, giu: 5 });
+    expect(hoac).toMatchObject({ tong: 33, giu: 33 });
     expect(hoac.cot).toEqual(expect.arrayContaining(['dk1', 'dk2', 'giu']));
     const va = await soi("SELECT ma_lop FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí'");
-    expect(va).toMatchObject({ tong: 5, giu: 2 });
+    expect(va).toMatchObject({ tong: 33, giu: 2 });
   });
 });
 

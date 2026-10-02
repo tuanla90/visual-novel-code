@@ -1772,3 +1772,192 @@ button.v7-o:active:not(:disabled) {
   white-space: pre-wrap;
   word-break: break-word;
 }
+
+/* Ô chọn bảng (thẻ nhập môn "chọn bảng rồi chạy"): cùng dáng ô bảng, bấm để mở danh sách. */
+.v7-o--chon-bang {
+  appearance: auto;
+  cursor: pointer;
+  font: inherit;
+}
+.v7-o--chon-bang.is-trong {
+  border-style: dashed;
+  opacity: 0.85;
+}
+
+/* Hộp xem kỹ thẻ: nền giấy sáng (trước đó thẻ mẩu tin lấy nền tối của giao diện chung nên chữ chìm). */
+.bang__xem .mvp-the {
+  background: #fffdf6;
+  color: #2a2320;
+  border-color: rgba(100, 74, 43, 0.22);
+  border-left-color: #c0392b;
+}
+.bang__xem .mvp-the--clue {
+  background: linear-gradient(160deg, #fff6c9, #fbe9a2);
+}
+.bang__xem .mvp-the--ev {
+  border-left-color: #2e7d32;
+}
+.bang__xem .mvp-the__noidung {
+  margin: 0;
+  color: #2a2320;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+.bang__xem-muc {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+}
+.bang__xem-muc-nhan,
+.bang__mau-nhan {
+  color: #6b5d49;
+  font: 750 0.72rem/1.2 var(--font-ui);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.bang__xem-the-nho {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bang__xem-nho {
+  padding: 5px 10px;
+  border-radius: 3px;
+  background: #ffe873;
+  color: #3a2f12;
+  font: 700 0.92rem/1.2 var(--font-mono, monospace);
+  box-shadow: 1px 2px 3px rgba(60, 45, 10, 0.25);
+  transform: rotate(-1deg);
+}
+.bang__xem-nho.is-gach {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+.bang__xem-noi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bang__xem-noi-nut {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgba(102, 81, 51, 0.25);
+  border-left: 4px solid #c62828;
+  border-radius: 6px;
+  background: #fffaf0;
+  color: #2a2320;
+  font: 600 0.9rem/1.25 var(--font-ui);
+  cursor: pointer;
+  text-align: left;
+}
+.bang__xem-noi-nut:hover { background: #fff1d2; }
+.bang__xem-noi-nut small { color: #7a6c57; font-weight: 500; }
+.bang__xem-noi-nut--xanh { border-left-color: #1e88e5; }
+.bang__xem-noi-nut--luc { border-left-color: #2e7d32; }
+.bang__xem-noi-nut--tim { border-left-color: #7b1fa2; }
+.bang__xem-ghim { justify-content: flex-start; }
+.bang__xem-ghim .bang__go { margin-left: auto; }
+
+/* Bảng kết quả dài: dòng báo còn bao nhiêu dòng chưa vẽ. */
+.v7-kq__con td {
+  padding: 10px 12px;
+  color: #6b7a86;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Hàng "LẤY CỘT" (bài chọn cột của SELECT): mỗi cột một nút bật / tắt. */
+.v7-lay {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 0 10px;
+}
+.v7-o--lay {
+  border: 1.5px dashed rgba(190, 215, 235, 0.55);
+  background: rgba(255, 255, 255, 0.05);
+  color: #b9cbd8;
+  font-family: var(--font-mono, monospace);
+  cursor: pointer;
+}
+.v7-o--lay.is-bat {
+  border: 1.5px solid #7fd6a4;
+  background: #dff5e7;
+  color: #14532d;
+  font-weight: 700;
+}
+.v7-o--lay:disabled { cursor: default; opacity: 0.85; }
+.v7-lay__nhac {
+  color: #ffd98a;
+  font-style: italic;
+}
+
+/* Lọc thử: lời nhắc bấm một dòng kết quả. */
+.v7-kq__nhac {
+  margin: 10px 4px 0;
+  color: #ffd98a;
+  font: 600 0.95rem/1.35 var(--font-ui);
+}
+
+/* Lọc thử: hàng điều kiện chưa tới lượt mờ đi; ô kết quả bấm được; ô đúng được chép ra giấy nhớ. */
+.v7-dk.is-cho { opacity: 0.45; }
+.v7-kq__o { padding: 2px 4px; }
+.v7-o-bam {
+  width: 100%;
+  padding: 7px 8px;
+  border: 1px dashed transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.v7-o-bam:hover:not(:disabled) { border-color: rgba(255, 217, 138, 0.7); background: rgba(255, 217, 138, 0.1); }
+.v7-o-bam.is-sai { color: #8fa3b3; }
+.v7-o-bam.is-rung { animation: v7-rung 0.3s; }
+.v7-o-bam.is-chep { background: #ffe873; color: #3a2f12; font-weight: 700; box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4); }
+.v7-kq th.is-can { color: #ffd98a; text-decoration: underline; }
+.v7-khe.is-rung { animation: v7-rung 0.3s; }
+.v7-giay--chep { animation: v7-chep 0.6s ease-out; pointer-events: none; }
+@keyframes v7-rung { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+@keyframes v7-chep { from { transform: translate(220px, 160px) scale(0.6) rotate(8deg); opacity: 0; } to { opacity: 1; } }
+
+.v7-o-bam.is-moi:not(.is-chep) { border-color: rgba(255, 217, 138, 0.8); }
+.v7-kq__nhac--tra { position: relative; z-index: 2; }
+.v7-nut--ghim:disabled { opacity: 0.5; cursor: default; }
+
+/* Hai người kiểm phiếu: Duy (hình thức), Hà Vy (ý nghĩa). */
+.v7-kiem {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 0 0 10px;
+  font: 500 0.82rem/1.3 var(--font-ui);
+  color: #b9cbd8;
+}
+.v7-kiem__nguoi {
+  padding: 4px 10px;
+  border: 1px solid rgba(190, 215, 235, 0.3);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.v7-kiem__nguoi b { color: #ffd98a; font-weight: 700; }
+.v7-kiem__nguoi.is-dat { border-color: #7fd6a4; color: #c9f5da; }
+.v7-kiem__nguoi.is-chua { border-color: #ff8a65; color: #ffd0c2; }
+/* Ngăn "Còn trên bảng": giấy nhớ cũ hơn 10 tờ mới nhất. */
+.v7-con { margin: 8px 0 0; color: #b9cbd8; font: 600 0.85rem/1.3 var(--font-ui); }
+.v7-con summary { cursor: pointer; }
+.v7-con__ds { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.v7-con__to { padding: 4px 9px; border: 0; border-radius: 3px; background: #ffe873; color: #3a2f12; font: 700 0.85rem/1.2 var(--font-mono, monospace); cursor: pointer; }
+.v7-con__to.is-chon { outline: 2px solid #fff; }
+
+/* Ảnh chibi của người kiểm phiếu. */
+.v7-kiem__nguoi { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 4px; }
+.v7-kiem__mat { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; object-position: 50% 12%; background: #fde68a; flex: none; }

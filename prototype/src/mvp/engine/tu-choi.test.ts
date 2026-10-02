@@ -15,7 +15,7 @@ const DUNG_KET_THAT = { reNhanh: reNhanhTheo(RE_NHANH_KET_THAT) };
 
 describe('nhảy tới (MVP)', () => {
   it('có đúng mười một điểm nhảy (bốn của chương 1, hai của Vụ 2, hai của Vụ 3, một của Vụ 4, một của Vụ 5, một của việc phụ), mỗi điểm có nhãn và mô tả', () => {
-    expect(DIEM_NHAY_MVP.map((d) => d.id)).toEqual(['lop', 'ten-h', 'nhat-ky-in', 'hop-sua-or', 'vu2-tin-don', 'vu2-tin-goc', 'vu3-thiet-bi', 'vu3-toi-07', 'vu4-noi', 'vu5-vuot-muc', 'vu2-buoi', 'phu-micro', 'phu-hoan-nhom']);
+    expect(DIEM_NHAY_MVP.map((d) => d.id)).toEqual(['bang-lop', 'lop', 'ten-h', 'nhat-ky-in', 'hop-sua-or', 'vu2-tin-don', 'vu2-tin-goc', 'vu3-thiet-bi', 'vu3-toi-07', 'vu4-noi', 'vu5-vuot-muc', 'vu2-buoi', 'phu-micro', 'phu-hoan-nhom', 'vu3-bai-dang', 'vu4-da-duyet', 'vu4-may-vp', 'vu5-kho', 'vu5-chi', 'phu-hoan-loc', 'phu-dan-lac']);
     for (const d of DIEM_NHAY_MVP) {
       expect(d.nhan.length).toBeGreaterThan(0);
       expect(d.moTa.length).toBeGreaterThan(0);
@@ -28,7 +28,7 @@ describe('nhảy tới (MVP)', () => {
     expect(s.giaiDoan).toBe('ngay');
     expect(s.ngay).toBe(2);
     expect(s.hoSo.manhMoi).toEqual(expect.arrayContaining(['clue-chu-ky-h', 'clue-toa-b', 'clue-bao-chi-k24', 'clue-quyen-du-lieu']));
-    expect(s.hoSo.bangChung).toEqual(['ev-the-lich']);
+    expect(s.hoSo.bangChung).toEqual(['ev-the-lich', 'ev-bang-lop']);
     expect(s.tenNguoiChoi).toBe(TEN_MAC_DINH);
     expect(s.nganh.length).toBeGreaterThan(0);
     // Làm xong như người chơi → phiếu hai lớp vào hồ sơ, hết ngày 2.

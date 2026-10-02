@@ -3,7 +3,7 @@
 ### c-don-da-duyet — Sổ đặt hàng của xưởng có những đơn nào đã duyệt? {challenge: c-don-da-duyet}
 
 - Tiêu đề: Sổ đặt linh kiện của xưởng
-- Đề bài hiển thị: Sổ đặt linh kiện của xưởng Robotics, tháng 9 và 10. Những đơn nào đã duyệt?
+- Đề bài hiển thị: Sổ đặt linh kiện của xưởng Robotics ghi từ năm 2022, đơn các kỳ trước đã quyết toán. Những đơn nào đang ở trạng thái đã duyệt?
 - Manh mối liên quan: clue-da-duyet
 - Mục tiêu học: Lọc theo trạng thái để ghim thành phiếu, chuẩn bị gom và đếm.
 - Số dòng kỳ vọng: 8

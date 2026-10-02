@@ -35,7 +35,7 @@ noi-dung-mvp/kich-ban/06-hop-va-ket.md:8: [MÀN CHIẾU hop-chieu-or]: khai 13 d
 | `du-lieu.md` | Bộ dữ liệu SQL **cố định** của vụ: `## <bảng> {bảng}` + `- Cột: <tên> TEXT\|INTEGER, …` + bảng Markdown; `## <tên> {bảng ảo}` + khối ` ```sql ` một câu SELECT | Máy nạp vào SQLite và **chạy thật** mọi câu SQL có khai số dòng; lệch là lỗi (QĐ-089). Sửa dữ liệu thì chạy lại lệnh kiểm |
 | `kich-ban/*.md` | Chuỗi hội thoại `### <mã> — <mô tả> {cảnh: <mã cảnh>}` | Lời thoại và chỉ dẫn như bộ prototype; thêm `[TẠO NHÂN VẬT]`, `[LỌC THỬ]`, `[RẼ KẾT]`, `[LƯU BẰNG CHỨNG]`, `[ĐIỀU KIỆN]`, `[HẬU QUẢ]`, `[RẼ NHÁNH]`, `[TRA SỔ]`, `[CHÉP SỔ]`, `· trừ uy tín`; **`[ĐỐI CHẤT <mã>] <rival>: "<giả thuyết>"`** (01/10) với dòng con `  - {<mã thẻ>} [ĐỦ CĂN CỨ\|HỖ TRỢ\|GỢI Ý] → phản hồi: …`, bắt buộc một `  - [CHƯA ĐỦ] → phản hồi: …` và một `  - [KHÁC] → phản hồi: …`; người chơi trình thẻ trong hồ sơ; ĐỦ CĂN CỨ kết thúc đối chất và đặt cờ `<mã>-du` (HỖ TRỢ đặt `<mã>-ho-tro`) dùng được ở `[ĐIỀU KIỆN]` |
 | `thu-thach/*.md` | Thẻ thử thách phòng máy (khuôn cũ `### <mã> — … {challenge: <mã>}`) + `- Số dòng kỳ vọng:` | Bằng chứng (key item) của phòng máy khai ở `Vật chứng lưu vào hồ sơ` của thẻ |
-| `so-tay/*.md` | Trang sổ chị Linh `# <mã> — <Tên> {trang sổ: <mã>}` với `- Loại:` và các mục `## Trang chị Linh`, `## Hà Vy`, `## Chọn đoạn code`, `## Vào sổ cá nhân` | `[CHÉP SỔ]` cần trang có "Chọn đoạn code" |
+| `so-tay/*.md` | Trang sổ CLB `# <mã> — <Tên> {trang sổ: <mã>}` với `- Loại:` và các mục `## Trang sổ CLB`, `## Hà Vy`, `## Chọn đoạn code`, `## Vào sổ cá nhân` | `[CHÉP SỔ]` cần trang có "Chọn đoạn code" |
 | `chung/loi-chung.md` | `### Khi mất uy tín {lời chung: mat-uy-tin}`: lời Minh Anh từng lần mất vạch, dòng cuối `[HẾT VẠCH]` | Không nói đáp án |
 | `ho-so/*.md` | `clue-…` giấy nhớ, `doc-…` tài liệu, `ev-…` bằng chứng thực địa — mỗi thẻ là một thẻ trên **bảng điều tra** | Thẻ không ai tạo (không dữ kiện / hậu quả nào mở) là lỗi. `- Giá trị cho trình dựng: a · b` = các tờ giấy nhớ kéo được vào màn tra; `- Loại trừ: <mã phiếu>` + `- Gạch: <giá trị>` = sợi chỉ cam tới phiếu đó và gạch giá trị trên phiếu; `- Ảnh:` = ảnh của thẻ |
 | `loi/*.md` | **Lời** (phiên truyện sở hữu): đoạn `## <mã>` rồi các dòng thoại `- **ai** (cảm xúc): …`, `- [THẺ CHỮ]`, `- [DÀN DỰNG]`, `> NHIỆM VỤ:`, `- Khi …: …` | Gắn vào dòng `- [LỜI <mã>]` của `kich-ban/` hoặc `thu-thach/` (khung, phiên logic sở hữu). Máy báo lỗi khi khung cần lời mà thiếu, lời không ai dùng, hoặc lời chứa dòng cấu trúc. Dòng có `(tạm)` là lời tạm, được đếm để nhắc. `- Khi chạy ra <n> dòng với <cột>, <cột>:` chỉ nói khi các ô đã điền trên màn tra dùng đúng tập cột đó, và thắng dòng `Khi chạy ra <n> dòng:` không ghi cột |
@@ -73,3 +73,32 @@ Chi tiết: đặc tả §18.4a.
 - **Phiếu làm nguồn (`Kiểu: lọc tiếp`)** — trong thẻ thử thách: `- Kiểu: lọc tiếp` + `- Nguồn: <mã vật chứng của thẻ đứng trước>`, SQL chuẩn viết `FROM @<mã vật chứng>`. Màn tra lấy phiếu người chơi đã ghim làm nguồn thay cho bảng, và hiện câu thành `WITH <tên> AS (phiếu …) SELECT … FROM <tên> WHERE …` (tên tạm suy từ mã: `ev-tin-don` → `tin_don`). `Kiểu: tổng hợp` (nhóm và đếm trên phiếu) vẫn dùng màn tổng hợp riêng.
 - **Nối hai bảng (`Nối được với`)** — trong thẻ thử thách thường: `- Nối được với: <bảng> · <bảng>`; SQL chuẩn viết `FROM a JOIN b ON a.k = b.k`. Màn tra hiện hàng "NỐI VỚI [bảng] THEO [cột]", cột nối chọn trong các cột trùng tên của hai bảng. Cột trùng tên dùng ở điều kiện được máy viết thành `<bảng gốc>.<cột>`; trong SELECT của SQL chuẩn thì tự viết rõ (`luan_chuyen.vi_tri`). Muốn có bẫy nối sai thì để hai bảng có thêm một cột trùng tên khác nghĩa (như `ngay`, `vi_tri`) và viết lời "Khi chạy ra N dòng" cho số dòng của lần nối sai.
 - **Tổng, trung bình, lọc nhóm ở `Kiểu: tổng hợp`** — SQL chuẩn có `SUM(cot) AS tong_<cot>` / `AVG(cot) AS tb_<cot>` thì màn tổng hợp hiện mục "TÍNH THÊM"; có `HAVING COUNT(*) | SUM(cot) | AVG(cot) > <số>` thì hiện mục "CHỈ GIỮ NHÓM", ngưỡng lấy từ giấy nhớ có giá trị là số. Câu xem trước luôn ở dạng `WITH <tên> AS (…) SELECT … GROUP BY … HAVING …`.
+
+## Khám phá ba kiểu, dấu ! / ?, lịch nhân vật (02/10/2026)
+
+- `[KHÁM PHÁ <mã>]` — cảnh thường: vật / người trên nền cảnh. Dùng cho **phòng CLB có người để bấm**: mỗi người một dòng `nv:<mã> · x … · y 100% · rộng 15% → <chuỗi> · dấu: ! · nhãn: Duy: mở laptop`.
+- `[KHÁM PHÁ <mã> · bản đồ]` — nền là bản đồ trường; mỗi nơi đến một dòng `ghim:<mã> · x … · y … · rộng 5% → <chuỗi> · dấu: ! · có: co-lan, co-hanh · nhãn: Phòng Công tác sinh viên`. `có:` là người đang ở đó; ảnh mặt chỉ hiện khi người chơi đã nói chuyện với họ và thẻ nhân vật có dòng `- Lịch:`.
+- `[KHÁM PHÁ <mã> · quan sát <nhân vật>]` — soi chi tiết trên chân dung; mỗi chi tiết một dòng `vung:<mã> · x … · y … · rộng … → <chuỗi> · nhãn: Cái balo` (x, y là TÂM vòng soi theo % ảnh chân dung 768×1360; rộng là đường kính). Chi tiết nào cần thành manh mối thì đặt `[HẬU QUẢ] mở manh mối …` trong chuỗi của nó.
+- `· dấu: !` = việc chính, `· dấu: ?` = tùy chọn. Có điểm `!` thì xem hết các điểm `!` là cảnh đi tiếp (điểm `?` không bắt buộc); không có dấu nào thì phải xem hết mọi điểm. `ghim:` và `vung:` bắt buộc có `nhãn:`.
+- Chuỗi của vụ sau vẫn phải kết bằng `[ĐI TỚI …]`: đặt một dòng `[ĐI TỚI <chuỗi của điểm !>]` ngay sau `[KHÁM PHÁ … · bản đồ]`.
+- `nhan-vat.md`: dòng `- Lịch: …` (thói quen đi lại) hiện ở thẻ nhân vật, mục "Thường gặp ở đâu".
+- Thêm / bớt nút trong một chuỗi làm lệch ô lưu cũ; màn chơi tự chạy tiếp tới nút cần người chơi thay vì báo lỗi.
+
+### Cảnh sau kết và nền là ảnh hoạt cảnh (02/10/2026)
+
+- Chuỗi kết thật / kết thường được kết bằng `[ĐI TỚI <chuỗi>]` thay cho `[KẾT THÚC]`, miễn chuỗi đích kết bằng `[KẾT THÚC]` (Vụ 1: `ket-that` → `ket-tra-da`). Máy ghi loại kết ngay lúc rẽ nên màn kết vẫn đúng.
+- Muốn một ảnh hoạt cảnh làm nền cho cả đoạn (không hiện nhân vật đứng): khai một cảnh riêng trong `canh.md` và đặt ảnh tên `bg-mvp-<mã cảnh>.webp`; câu `[RẼ NHÁNH]` để `narrator` hỏi thì không có nhãn tên (cảnh `san-dem` của nhiệm vụ phụ "Một lần dẫn lạc").
+- Bốn mẩu chuyện ở quán trà đá (`ho-so/04-tra-da.md`) là lời kể tùy chọn, không mẩu nào là điều kiện của kết.
+
+### Lịch nhân vật theo thứ và giờ (02/10/2026)
+
+- `nhan-vat.md`: `- Lịch: …` là chữ người chơi đọc ở thẻ nhân vật. `- Thường ở: T2–T7 07:00–23:00 → toa-b; CN 20:00–23:00 → toa-b` là bản máy đọc của chính lịch ấy. Thứ viết `T2`…`T7`, `CN`, khoảng `T2–T6`, danh sách `T2, T4, T6`, hoặc `mọi ngày`. Nơi là mã ghim của bản đồ (`ghim:<mã>`). Hai dòng phải nói cùng một điều.
+- Bản đồ khai giờ trong truyện: `- [KHÁM PHÁ <mã> · bản đồ · giờ 15:00]`. Thứ lấy từ ngày trong truyện. Thiếu giờ là lỗi.
+- Ảnh mặt cạnh ghim = người lịch đặt ở đó vào thứ, giờ ấy, cộng người kịch bản đặt bằng `có:`; vẫn chỉ hiện người đã gặp. Bài kiểm `src/mvp/engine/lich-nhan-vat.test.ts` bắt trường hợp `có:` đặt một người ở ghim này trong khi lịch ghi họ đang ở ghim khác. Thêm bản đồ mới thì thêm ngày của nó vào bảng trong bài kiểm đó.
+
+### Chi tiết ẩn, soi theo bộ đồ, cảnh cắt Hà Vy (02/10/2026)
+
+- **Chi tiết ẩn trên cảnh:** trong `[KHÁM PHÁ]` thường, điểm `vung:<mã> · x … · y … · rộng … → <chuỗi> · nhãn: …` là một chỗ bấm KHÔNG có dấu (tấm lưng áo xanh giữa đám đông ở sảnh ký túc xá). Người chơi tự tìm; sau mười giây mới nháy rất nhẹ. Dòng "Còn n chỗ chưa xem" vẫn đếm nó.
+- **Soi theo bộ đồ:** `[KHÁM PHÁ <mã> · quan sát tung/ao-xanh]` soi nhân vật ở đúng dáng / bộ đồ ấy (thiếu thì lấy dáng đầu).
+- **Cảnh cắt Hà Vy:** thêm `· Hà Vy soi` vào dòng quan sát thì màn soi mở bằng một dải ảnh đôi mắt Hà Vy, kính lóe sáng (`giao-dien/cat-canh-ha-vy-mat.webp`), xong các điểm soi mới hiện. Chỉ dùng khi Hà Vy có mặt; ở sảnh ký túc xá hôm nhập học người chơi tự soi nên không có.
+- Muốn bấm vào một người rồi mới soi: cho điểm của người đó trỏ tới một chuỗi kết bằng `[ĐI TỚI <chuỗi soi>]`, chuỗi soi chứa `[KHÁM PHÁ … · quan sát …]` (máy chỉ giữ một màn khám phá một lúc, không lồng).

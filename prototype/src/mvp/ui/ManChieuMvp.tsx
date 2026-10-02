@@ -44,7 +44,8 @@ export function ManChieuMvp({ kb, duLieu, nut, onTiep }: ManChieuMvpProps) {
             {nut.expectedRowCount !== undefined && nut.expectedRowCount !== kq.dong.length ? ` (kịch bản khai ${nut.expectedRowCount})` : ''}.
           </p>
           <div className="mvp-chieu__bang">
-            <ResultTable columns={kq.cot} rows={kq.dong} caption="Kết quả trên màn chiếu" />
+            <ResultTable columns={kq.cot} rows={kq.dong.slice(0, 40)} caption="Kết quả trên màn chiếu" />
+            {kq.dong.length > 40 ? <p className="mvp-chieu__con">… còn {(kq.dong.length - 40).toLocaleString('vi-VN')} dòng nữa</p> : null}
           </div>
         </>
       ) : null}

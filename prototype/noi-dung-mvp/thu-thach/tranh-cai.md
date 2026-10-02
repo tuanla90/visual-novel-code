@@ -3,7 +3,7 @@
 ### c-bai-dang — Kênh Robotics đăng những bài nào trong tháng 10? {challenge: c-bai-dang}
 
 - Tiêu đề: Bài đăng của các kênh CLB
-- Đề bài hiển thị: Bản xuất bài đăng của mọi kênh CLB trong tháng 10. Kênh Robotics đăng những bài nào?
+- Đề bài hiển thị: Bản xuất bài đăng của mọi kênh trong trường, chín ngày đầu tháng 10. Kênh Robotics đăng những bài nào?
 - Manh mối liên quan: clue-kenh-robotics
 - Mục tiêu học: Lọc ra một tập để ghim thành phiếu, chuẩn bị nhóm và đếm.
 - Số dòng kỳ vọng: 9

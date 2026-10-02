@@ -40,10 +40,10 @@
 - Nguồn: Bảng đăng ký dùng xưởng
 - Nội dung: Tối thứ Hai 07/10 xưởng đăng ký mở từ 19 giờ tới 23 giờ cho đội thi đấu tập. Tin gốc gửi lúc 22:40. Đây là lịch đăng ký, chưa cho biết ai thật sự có mặt, càng chưa cho biết ai ngồi máy.
 
-### clue-loi-nhan-linh-2 — [Lời nhắn chị Linh, mẩu thứ hai]
+### clue-loi-nhan-linh-2 — [Mẩu giấy trong sổ, mẩu thứ hai]
 - Tiêu đề: Mẩu giấy kẹp ở trang "Kiểm hai lần"
-- Nguồn: Sổ tự học của chị Linh, phòng CLB
-- Nội dung: Chữ chị Linh: "Sổ này chị chép lại từ một cuốn cũ hơn. Cuốn cũ không phải của chị."
+- Nguồn: Cuốn sổ của CLB, phòng CLB
+- Nội dung: Cùng nét chữ, cùng thứ mực xanh cũ: "Sổ này chép lại từ một cuốn cũ hơn. Cuốn cũ vẫn nằm trong phòng này."
 
 ### clue-sao-ke-cuoi-ky — [Sao kê quỹ về cuối kỳ]
 - Tiêu đề: Sao kê quỹ CLB chỉ về vào cuối kỳ

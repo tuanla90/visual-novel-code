@@ -54,7 +54,20 @@ describe('sảnh KTX: [KHÁM PHÁ]', () => {
       for (let i = 0; i < 5 && khungNhin(kb, s).kind === 'line'; i++) s = xuLy(kb, s, { type: 'tiep' });
     }
     veManChoi(s);
-    await userEvent.click(screen.getByRole('button', { name: 'Hỏi đường cậu bạn áo xanh' }));
+    // Tùng giờ là chi tiết ẩn giữa đám đông: bấm tấm lưng áo xanh, soi đủ ba chi tiết trên người cậu ấy rồi mới tới câu hỏi đường.
+    await userEvent.click(screen.getByRole('button', { name: /Tấm lưng áo xanh giữa đám đông/ }));
+    const kho = () => useKhoMvp.getState();
+    for (let i = 0; i < 40; i++) {
+      const st = kho().trangThai;
+      if (!st) break;
+      const kn = khungNhin(kb, st);
+      if (kn.kind === 'line' && kn.loi.text.includes('thang bộ ở đâu')) break;
+      if (kn.kind === 'explore') {
+        const d = kn.diem.find((x) => !x.daXem);
+        if (!d) break;
+        act(() => kho().hanhDong({ type: 'xem-diem', chuoi: d.diem.chuoi }));
+      } else act(() => kho().hanhDong({ type: 'tiep' }));
+    }
     expect(document.body.textContent).toContain('thang bộ ở đâu');
     expect(screen.queryByRole('dialog', { name: /Giới thiệu nhân vật/ })).toBeNull();
 

@@ -18,7 +18,7 @@ export const KICH_BAN: KichBanMvp = KICH_BAN_MVP as unknown as KichBanMvp;
 export const KHOA_KHO_MVP = 'clb_mvp_tien_do_v1';
 export const SO_O_LUU_MVP = 6;
 /** Phiên bản dữ liệu lưu; tăng khi nội dung đổi làm ván cũ không chơi tiếp được (xem `migrate`). */
-export const PHIEN_BAN_KHO_MVP = 2;
+export const PHIEN_BAN_KHO_MVP = 5;
 /** Số bước lùi lại được (mỗi hành động của người chơi là một bước). */
 export const SO_BUOC_LUI_MVP = 200;
 

@@ -7,8 +7,8 @@
 - Ảnh: doc-mic-so-tai-san
 - Nguồn: {{nv.duy}} giữ sổ tài sản; phiếu luân chuyển do tổ thiết bị tòa nhà lập
 - Nội dung hiển thị:
-> Sổ tài sản: mã tài sản, tên, chỗ để ghi lúc kiểm kê đầu kỳ. Năm thiết bị, trong đó có hai chiếc micro.
-> Phiếu luân chuyển: mã phiếu, mã tài sản, nơi chuyển tới, người nhận, ngày, trạng thái. Phiếu không ghi tên thiết bị.
+> Sổ tài sản: mã tài sản, tên, chỗ để ghi lúc kiểm kê đầu kỳ. Mười ba thiết bị, trong đó có hai chiếc micro.
+> Phiếu luân chuyển: mã phiếu, mã tài sản, nơi chuyển tới, người nhận, ngày, trạng thái. Tập phiếu là của cả tòa nhà, hơn trăm rưỡi phiếu của mọi CLB. Phiếu không ghi tên thiết bị.
 > Cả hai bảng đều có cột vi_tri, nhưng ở sổ là chỗ để đầu kỳ, ở phiếu là nơi chuyển tới.
 
 ### clue-mic-ten — [Micro không dây]

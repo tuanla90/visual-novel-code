@@ -135,6 +135,8 @@ export type HanhDongMvp =
   | { type: 'chon-nganh'; nganh: string }
   /** `[KHÁM PHÁ]`: bấm một chỗ đang hiện, chưa xem (khóa = chuỗi của chỗ đó). */
   | { type: 'xem-diem'; chuoi: string }
+  /** Ô lưu cũ trỏ vào một nút máy tự chạy qua (nội dung đổi làm lệch số thứ tự nút): chạy tiếp tới nút cần người chơi. */
+  | { type: 'sua-con-tro' }
   /** Đóng màn "Nhân vật mới" của một nhân vật (không đổi con trỏ). */
   | { type: 'da-gioi-thieu'; nhanVat: string }
   /** Màn kết của một vụ: chơi tiếp vụ kế trong `lich.vuSau` (không còn vụ nào thì máy đứng yên). */
@@ -430,7 +432,9 @@ export function diemDangHien(nut: Extract<NutMvp, { type: 'explore' }>, daXem: r
 function veKhamPha(kb: KichBanMvp, s: TrangThaiMvp, kp: KhamPhaMvp): TrangThaiMvp {
   const nut = nutKhamPha(kb, kp);
   if (!nut) return loi({ ...s, khamPha: null }, `Không tìm thấy [KHÁM PHÁ] ở "${kp.veLai.chuoi}" #${kp.veLai.nut}.`);
-  if (nut.diem.every((d) => kp.daXem.includes(d.chuoi))) {
+  // Có điểm đánh dấu ! thì xem hết các điểm ! là đi tiếp (điểm ? là tùy chọn); không có dấu nào thì phải xem hết.
+  const chinh = nut.diem.filter((d) => d.dau === 'chinh');
+  if ((chinh.length > 0 ? chinh : nut.diem).every((d) => kp.daXem.includes(d.chuoi))) {
     return { ...s, conTro: { ...kp.veLai, nut: kp.veLai.nut + 1 }, hoiDap: null, khamPha: null };
   }
   return { ...s, conTro: { ...kp.veLai }, hoiDap: null };
@@ -795,6 +799,7 @@ function ketThucPhanHoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
 
 export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangThaiMvp {
   if (s.loi) return s;
+  if (hd.type === 'sua-con-tro') return chayToiNutCanNguoiChoi(kb, s);
   if (hd.type === 'da-gioi-thieu') {
     const da = s.daGioiThieu ?? [];
     return da.includes(hd.nhanVat) ? s : { ...s, daGioiThieu: [...da, hd.nhanVat] };
@@ -853,6 +858,9 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
         moi = tienNut(hienTaiLieu(s, kn.documentId));
       } else if (kn.kind === 'line' || kn.kind === 'image' || kn.kind === 'effect' || kn.kind === 'projector' || kn.kind === 'notebook-lookup') {
         moi = tienNut(s);
+        // Ghi nhận người vừa nói (để bản đồ biết người chơi đã gặp ai).
+        const nguoi = kn.kind === 'line' ? kn.loi.speaker : null;
+        if (nguoi && nguoi !== 'player' && nguoi !== 'narrator' && !(s.daNoi ?? []).includes(nguoi)) moi = { ...moi, daNoi: [...(s.daNoi ?? []), nguoi] };
       } else {
         return s;
       }
@@ -994,7 +1002,7 @@ export function dienTen(kb: KichBanMvp, s: TrangThaiMvp, text: string): string {
   });
 }
 
-const TU_GIOI_THIEU = /(?:^|[.!?…]\s+)(?:còn\s+)?(?:tôi|mình|tớ|tui|em|anh|chị|chú|bác|cô|thầy)\s+là\s+/iu;
+const TU_GIOI_THIEU = /(?:^|[.!?…]\s+)(?:còn\s+)?(?:tôi|mình|tớ|tui|em|anh|chị|chú|bác|bà|ông|cô|thầy)\s+là\s+/iu;
 
 /**
  * Nhân vật cần mở thẻ "Nhân vật mới" ở câu thoại đang hiện (`null` = không). Mỗi nhân vật có thẻ giới thiệu mở đúng một lần:
@@ -1021,7 +1029,7 @@ export function tenNguoiNoi(kb: KichBanMvp, speaker: string, s?: TrangThaiMvp): 
   if (speaker === 'player') return 'Bạn';
   if (speaker === 'narrator') return '';
   const nv = kb.nhanVat.find((n) => n.id === speaker);
-  if (s && nv?.gioiThieu && !(s.daGioiThieu ?? []).includes(speaker)) return nv.gioiThieu.chuaQuen ?? '???';
+  if (s && nv?.gioiThieu && !(s.daGioiThieu ?? []).includes(speaker)) return nv.gioiThieu.khongXungTen ? nv.ten : (nv.gioiThieu.chuaQuen ?? '???');
   return nv?.ten ?? 'Nhân vật';
 }
 

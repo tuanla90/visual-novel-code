@@ -2,7 +2,11 @@
 
 <!-- Dáng đứng (user chốt 01/10): mỗi nhân vật chính 2–3 dáng, mỗi dáng chỉ đổi mặt; dáng đặt tên như biểu cảm để lời dùng ngay: Tùng `gai-dau` (bí / lo), `chi-tay` ("tớ cá là"); Hà Vy `day-kinh` (đang tính); Minh Anh `khoanh-tay` (nghiêm); Quân `chi-man` (chỉ lên màn chiếu). Ảnh: src/assets/mvp/nhan-vat/char-<mã>-<dáng>.png. -->
 
+<!-- Lịch theo thứ và giờ (user chốt 02/10/2026): "- Lịch:" là chữ người chơi đọc ở thẻ nhân vật; "- Thường ở: <thứ> HH:MM–HH:MM → <mã ghim>; …" là bản máy đọc của chính lịch ấy (thứ: T2…T7, CN, khoảng T2–T6, danh sách T2, T4, T6, hoặc "mọi ngày"). Bản đồ có giờ ([KHÁM PHÁ … · bản đồ · giờ 15:00]); ảnh mặt trên ghim = người lịch đặt ở đó lúc ấy + người kịch bản đặt bằng "có:". Tùng và Hà Vy đi cùng người chơi nên không khai "Thường ở". Hai dòng phải nói cùng một điều. -->
+
 <!-- "Khi chưa quen" (02/10): chữ trên thẻ tên TRƯỚC khi nhân vật tự xưng tên; sau câu tự xưng ("Chị là …") mới mở thẻ giới thiệu và thẻ tên đổi sang tên thật. Thẻ giới thiệu không hiện "Câu nói" (lúc mới gặp chưa có căn cứ để biết). -->
+
+<!-- "Không xưng tên: có" (user chốt 02/10/2026): nhân vật không có lý do gì để xưng tên thì không xưng (ngồi trà đá bốn năm cũng chẳng biết tên người bán). Tên sau dấu "—" là cách gọi theo việc họ làm ("Bà bán trà đá"); thẻ nhân vật mở ở câu đầu họ nói, không cần câu "Bà là …". Mã `ba-lua` giữ nguyên, tên Lụa chỉ còn trong ghi chú tác giả. -->
 
 <!-- Mã là khóa, không đổi khi đổi tên (QĐ-079 câu 4): bảo vệ giảng đường B giữ mã `bac-tu` dù tên là Bác Thịnh. -->
 
@@ -12,6 +16,7 @@
 - Biểu cảm: neutral, happy, worried, surprised, thinking, gai-dau, chi-tay, ao-xanh, ao-xanh-happy, ao-xanh-worried, ao-xanh-gai-dau, ao-xanh-chi-tay, ao-xanh-surprised, ao-xanh-thinking, ao-xanh-doi-mu
 - Danh xưng: Bạn cùng phòng 408
 - Khi chưa quen: Cậu bạn áo xanh
+- Lịch: Đi đâu cũng cầm bản đồ trường. Chiều hay ở phòng CLB, tối đá bóng ở sân cạnh nhà CLB.
 - Năm: Năm nhất
 - Ngành: Du lịch
 - Câu nói: Tớ cá là mười phút là tới nơi.
@@ -23,6 +28,7 @@
 - Biểu cảm: neutral, thinking, smile, day-kinh
 - Danh xưng: Thành viên mới của CLB Thám Tử
 - Khi chưa quen: Bạn nữ đeo kính
+- Lịch: Chiều ở phòng CLB. Tối thứ Hai nào cũng ngồi học ở thư viện tới khuya.
 - Năm: Năm nhất
 - Ngành: Toán ứng dụng
 - Câu nói: Khoan, tính lại đã.
@@ -34,6 +40,8 @@
 - Biểu cảm: neutral, worried, happy, serious, khoanh-tay
 - Danh xưng: Chủ nhiệm CLB Thám Tử
 - Khi chưa quen: Chị khóa trên
+- Lịch: Chiều thứ Hai, thứ Tư, thứ Sáu ở phòng CLB. Buổi sáng có tiết ở tòa A.
+- Thường ở: T2, T4, T6 13:30–18:00 → nha-clb
 - Năm: Năm ba
 - Ngành: Luật kinh tế
 - Câu nói: Nói có sách, mách có chứng.
@@ -45,6 +53,8 @@
 - Biểu cảm: neutral, smile, serious
 - Danh xưng: Thành viên CLB, giữ tài sản
 - Khi chưa quen: Anh khóa trên
+- Lịch: Giữ chìa khóa nên chiều nào cũng ở phòng CLB. Sáng thứ Ba, thứ Năm có tiết.
+- Thường ở: T2–T7 13:30–18:00 → nha-clb
 - Năm: Năm hai
 - Ngành: Hành chính học
 - Câu nói: Chìa khóa, tủ hồ sơ với cái máy tính cũ đều tớ giữ.
@@ -64,6 +74,7 @@
 - Biểu cảm: neutral, smile
 - Danh xưng: Bảo vệ ký túc xá
 - Khi chưa quen: Chú bảo vệ
+- Lịch: Trực cổng ký túc xá ca tối.
 - Câu nói: Chịu khó hỏi từng người rồi đối chiếu giấy tờ thôi.
 - Giới thiệu: Trực cổng ký túc xá, biết mặt gần hết sinh viên trong khu. Nhớ nhiều chuyện cũ của trường, kể cả thời CLB Thám Tử còn nổi tiếng.
 
@@ -71,7 +82,10 @@
 - Vai: Bảo vệ giảng đường B. Cùng cô phụ trách mở hộp kiến nghị lúc 9h sáng thứ Hai.
 - Biểu cảm: neutral, smile
 - Danh xưng: Bảo vệ giảng đường B
+- Không xưng tên: có
 - Khi chưa quen: Bác bảo vệ
+- Lịch: Trực sảnh tòa B từ thứ Hai tới thứ Bảy, mở cửa 7 giờ sáng, khóa các phòng học 9 giờ tối; lối lên thư viện tầng ba để tới 11 giờ đêm rồi mới khóa sảnh. Chủ nhật chỉ ghé buổi tối để khóa cửa.
+- Thường ở: T2–T7 07:00–23:00 → toa-b; CN 20:00–23:00 → toa-b
 - Câu nói: Mép hộp sắc đấy, đừng thò tay vào.
 - Giới thiệu: Trực ở chân cầu thang tòa B. Ít lời, giờ giấc đâu ra đấy, việc gì không tận mắt thấy thì không nói.
 
@@ -79,7 +93,10 @@
 - Vai: Phòng Đào tạo. Tạo tài khoản tra cứu của CLB trên laptop (ngày 2): chỉ xem bảng lớp; bảng có thông tin cá nhân phải có phiếu yêu cầu tra cứu.
 - Biểu cảm: neutral, smile
 - Danh xưng: Phòng Đào tạo
+- Không xưng tên: có
 - Khi chưa quen: Cô cán bộ
+- Lịch: Giờ hành chính ở Phòng Đào tạo, tòa hành chính.
+- Thường ở: T2–T6 08:00–17:00 → toa-hanh-chinh
 - Câu nói: Tài khoản này chỉ xem được bảng lớp. Muốn xem gì thêm thì mang phiếu sang.
 - Giới thiệu: Cán bộ Phòng Đào tạo, phụ trách dữ liệu sinh viên. Cấp quyền rất chặt: xin gì cho nấy, dùng xong là khóa lại.
 
@@ -87,7 +104,10 @@
 - Vai: Phòng Công tác sinh viên (CTSV). Gọi Minh Anh lên nhận thông báo; giải thích quy chế phiếu gửi.
 - Biểu cảm: neutral, smile
 - Danh xưng: Phòng Công tác sinh viên
+- Không xưng tên: có
 - Khi chưa quen: Cô cán bộ
+- Lịch: Giờ hành chính ở Phòng Công tác sinh viên, tòa hành chính.
+- Thường ở: T2–T6 08:00–17:00 → toa-hanh-chinh
 - Câu nói: Sổ đó niêm phong. Cô cũng không được tự mở.
 - Giới thiệu: Cán bộ Phòng Công tác sinh viên, người giải thích cho CLB các quy chế về phiếu gửi và hộp kiến nghị.
 
@@ -104,7 +124,10 @@
 - Vai: Quản lý phòng máy.
 - Biểu cảm: neutral
 - Danh xưng: Quản lý phòng máy
+- Không xưng tên: có
 - Khi chưa quen: Thầy phòng máy
+- Lịch: Ở phòng máy từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật trực cho sinh viên in bài.
+- Thường ở: T2–T7 07:30–21:00 → phong-may; CN 18:00–23:30 → phong-may
 - Câu nói: Các em chỉ xem đúng dòng liên quan thôi nhé.
 - Giới thiệu: Thầy quản lý phòng máy của trường. Máy nào ai ngồi, lệnh in nào của ai, thầy đều có nhật ký.
 
@@ -115,6 +138,8 @@
 - Xuất hiện từ: ngày họp
 - Danh xưng: Sinh viên lớp BC24A
 - Khi chưa quen: Bạn nữ lớp BC24A
+- Lịch: Tan học là lên thư viện, ngồi bàn cạnh cửa sổ tới chiều muộn.
+- Thường ở: T2–T6 14:00–17:30 → thu-vien
 - Năm: Năm nhất
 - Câu nói: Dạ… vâng ạ.
 - Giới thiệu: Tân sinh viên lớp BC24A. Rụt rè, nói nhỏ, trả lời câu nào cũng ngập ngừng.
@@ -136,6 +161,8 @@
 - Xuất hiện từ: ngày họp
 - Danh xưng: Thành viên CLB Robotics
 - Khi chưa quen: Cậu trực kênh
+- Lịch: Chiều nào cũng ở xưởng Robotics. Tối thứ Hai học ở thư viện tới lúc đóng cửa.
+- Thường ở: T2–T7 14:00–18:00 → xuong; T2 21:30–23:15 → thu-vien
 - Câu nói: Tớ không bắt các cậu tin. Tớ chỉ chỗ để các cậu tự kiểm.
 - Giới thiệu: Trực kênh và giữ sổ sách cho xưởng của CLB Robotics. Ít nói, hỏi gì đáp nấy, việc gì cũng có ghi chép.
 
@@ -165,6 +192,17 @@
 - Khi chưa quen: Chị khóa trên
 - Câu nói: Chị không chối.
 - Giới thiệu: Lo kỹ thuật của xưởng. Thẳng, hơi cẩu thả với chìa khóa.
+
+### ba-lua — Bà bán trà đá
+- Vai: Bán trà đá ở gốc cây ngoài cổng chính từ hồi phòng CLB còn là kho. Kể bốn mẩu chuyện về "cậu trà nóng" (thầy Quang thời sinh viên, bà không nhớ tên), song song với bốn mẩu giấy trong sổ CLB. Xuất hiện ở cảnh sau kết thật Vụ 1 và ở ghim "Quán trà đá" trên bản đồ Vụ 2, 3, 5.
+- Biểu cảm: neutral, smile
+- Xuất hiện từ: ngày họp
+- Danh xưng: Quán trà đá cổng trường
+- Không xưng tên: có
+- Lịch: Chiều nào cũng dọn hàng ở gốc cây ngoài cổng chính, ngồi tới chín giờ tối. Sáng thứ Bảy, Chủ nhật bán từ sớm.
+- Thường ở: T2–T6 13:00–21:00 → tra-da; T7–CN 06:30–21:00 → tra-da
+- Câu nói: Khách của bà, bà nhớ cốc chứ nhớ gì tên.
+- Giới thiệu: Bán trà đá ngoài cổng chính đã hai chục năm. Sinh viên khóa nào ngồi ghế nào, gọi cốc gì, bà nhớ hết; chỉ tên là không nhớ.
 
 ### co-phu-trach — Cô phụ trách hộp kiến nghị
 - Vai: Giữ sổ niêm phong. Chỉ xuất hiện qua lời kể và tài liệu.

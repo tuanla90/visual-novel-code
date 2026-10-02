@@ -49,7 +49,7 @@ const ketVu2 = (re: Record<string, string>, traLoi?: ChienThuat['traLoi']): { s:
 describe('Vụ 2 "Tin đồn": sang vụ sau từ màn kết Vụ 1', () => {
   it('lịch: vụ sau vu2 (Tin đồn) và nhiệm vụ phụ so-phong do Duy giao, mở sau vu2', () => {
     expect(KB.lich.vuSau?.map((v) => [v.id, v.chuoi, v.ngay]).slice(0, 2)).toEqual([['vu2', 'tin-mo', '2024-10-09'], ['vu3', 'v3-mo', '2024-10-10']]);
-    expect(KB.lich.nhiemVuPhu?.map((p) => [p.id, p.chuoi, p.nguoiGiao, p.moSau])).toEqual([['so-phong', 'v2-mo', 'duy', 'vu2'], ['micro', 'p-mic-mo', 'duy', 'vu4'], ['hoan-tien', 'p-hoan-mo', 'minh-anh', 'vu5']]);
+    expect(KB.lich.nhiemVuPhu?.map((p) => [p.id, p.chuoi, p.nguoiGiao, p.moSau])).toEqual([['so-phong', 'v2-mo', 'duy', 'vu2'], ['micro', 'p-mic-mo', 'duy', 'vu4'], ['hoan-tien', 'p-hoan-mo', 'minh-anh', 'vu5'], ['dan-lac', 'p-lac-mo', 'tung', 'vu3']]);
   });
 
   it('màn kết Vụ 1: còn vụ kế, máy đã đặt cờ kết, chưa có nhiệm vụ phụ nào mở', () => {
@@ -149,7 +149,7 @@ describe('Vụ 2: chấm SQL thật — phiếu làm nguồn', () => {
     }
     const like = await chamThuThach(DU_LIEU, thanhSql(cau('bat-dau-bang'), kieu), tinDon.sqlChuan);
     expect(like.trangThai).toBe('dung');
-    if (like.trangThai !== 'loi') expect(like.chay.dong.map((d) => d[0])).toEqual(['T-01', 'T-02', 'T-03', 'T-05', 'T-07']);
+    if (like.trangThai !== 'loi') expect(like.chay.dong.map((d) => d[0])).toEqual(['T-097', 'T-102', 'T-160', 'T-193', 'T-317']);
   });
 
   it('c-tin-goc: SQL chuẩn viết FROM @ev-tin-don; màn tra đổi thành WITH tin_don AS (<câu của phiếu>) … và chấm đúng', async () => {
@@ -164,7 +164,7 @@ describe('Vụ 2: chấm SQL thật — phiếu làm nguồn', () => {
     const ngoai = thanhSql(cau, kieu);
     const kq = await chamThuThach(DU_LIEU, tienTo + ngoai, sqlChuan);
     expect(kq.trangThai).toBe('dung');
-    if (kq.trangThai !== 'loi') expect(kq.chay.dong).toEqual([['T-01', '2024-10-07 22:40', 'clb_robotics']]);
+    if (kq.trangThai !== 'loi') expect(kq.chay.dong).toEqual([['T-097', '2024-10-07 22:40', 'clb_robotics']]);
     // Chưa lọc gì: vẫn đủ năm tin của phiếu (không phải tám tin của cả kênh), có lời nhân vật.
     const chuaLoc = await chamThuThach(DU_LIEU, tienTo + (khung?.khung ?? ''), sqlChuan);
     expect(chuaLoc.trangThai).toBe('sai');
@@ -179,17 +179,17 @@ describe('Vụ 2: chấm SQL thật — phiếu làm nguồn', () => {
     expect(soi.ok && soi.dong.length).toBe(1);
   });
 
-  it('c-tin-may: tài khoản + ngày → hai lần đăng nhập ngày 07/10; chỉ một điều kiện → 3 dòng', async () => {
+  it('c-tin-may: tài khoản + ngày → hai lần đăng nhập ngày 07/10; chỉ một điều kiện → 21 hoặc 42 dòng', async () => {
     const may = the('c-tin-may');
     const khung = khungTuSqlChuan(may.sqlChuan)?.khung ?? '';
     const dk = (cot: string, tho: string) => ({ cot, phep: 'bang' as const, giaTri: { nguon: 'giay-nho' as const, tho } });
     const du = await chamThuThach(DU_LIEU, thanhSql({ khung, dieuKien: [dk('tai_khoan', 'clb_robotics'), dk('ngay', '2024-10-07')], noi: ['AND'] }, kieu), may.sqlChuan);
     expect(du.trangThai).toBe('dung');
     if (du.trangThai !== 'loi') expect(du.chay.dong).toEqual([['MAY-XUONG-02', '15:10'], ['MAY-VP-XUONG', '22:31']]);
-    for (const mot of [dk('tai_khoan', 'clb_robotics'), dk('ngay', '2024-10-07')]) {
+    for (const [mot, n] of [[dk('tai_khoan', 'clb_robotics'), 21], [dk('ngay', '2024-10-07'), 42]] as const) {
       const kq = await chamThuThach(DU_LIEU, thanhSql({ khung, dieuKien: [mot], noi: [] }, kieu), may.sqlChuan);
       expect(kq.trangThai).toBe('sai');
-      if (kq.trangThai !== 'loi') expect(kq.so.soDongNguoiChoi).toBe(3);
+      if (kq.trangThai !== 'loi') expect(kq.so.soDongNguoiChoi).toBe(n);
     }
   });
 });

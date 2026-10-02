@@ -22,7 +22,7 @@
 - Tiêu đề: Trạng thái đơn đã duyệt
 - Giá trị cho trình dựng: DA_DUYET
 - Nguồn: Sổ đặt hàng của xưởng
-- Nội dung: Sổ đặt hàng ghi trạng thái từng đơn ở cột trang_thai: DA_DUYET là đơn đã được duyệt chi, CHO_DUYET là đơn còn chờ.
+- Nội dung: Sổ đặt hàng ghi trạng thái từng đơn ở cột trang_thai: DA_DUYET là đơn đã được duyệt chi, CHO_DUYET là đơn còn chờ. Đơn các kỳ trước ghi DA_QUYET_TOAN.
 
 ### clue-ma-phien — [Mã phiên]
 - Tiêu đề: Mỗi đơn có mã phiên đăng nhập
@@ -53,7 +53,7 @@
 - Nguồn: {{nv.nam}}, sau khi {{nv.khanh}} ghé phòng CLB
 - Nội dung: Robotics làm ba chục huy hiệu hồi đầu năm; cái sứt một răng là lỗi khuôn, Khánh xin giữ và gắn trên balo. Balo hay để ở xưởng, ai cũng cầm được. Biết balo chưa phải biết người.
 
-### clue-loi-nhan-linh-4 — [Lời nhắn chị Linh, mẩu thứ tư]
+### clue-loi-nhan-linh-4 — [Mẩu giấy trong sổ, mẩu thứ tư]
 - Tiêu đề: Mẩu giấy ở trang cuối sổ
-- Nguồn: Sổ tự học của chị Linh, phòng CLB
-- Nội dung: Chữ chị Linh: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi."
+- Nguồn: Cuốn sổ của CLB, phòng CLB
+- Nội dung: Vẫn nét chữ mực xanh: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi."

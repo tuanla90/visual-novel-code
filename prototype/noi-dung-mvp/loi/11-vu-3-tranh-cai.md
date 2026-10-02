@@ -19,6 +19,10 @@
 > NHẮC VIỆC ha-vy (thinking): Chín bài nhìn hoa mắt. Giá mà gom những bài cùng một thiết bị vào một cục rồi đếm.
 
 ## v3-xuong.1
+- **narrator**: Trên đường sang xưởng, Tùng đi trước một quãng.
+- **ha-vy** (neutral): Cậu ấy giận tớ vì hôm qua tớ bảo cậu ấy đừng cá.
+- **player**: Tùng không giận lâu đâu. Tới cổng xưởng là quên.
+- **tung** (chi-tay): Tớ nghe thấy đấy nhé! Mà đúng, tớ quên rồi.
 - **nam** (neutral): Lại các cậu. Hôm nay định hỏi gì nữa?
 - **tung** (chi-tay): Hỏi thẳng: tối thứ Hai cậu ở đâu?
 - **nam** (neutral): Thư viện. Tối thứ Hai nào cũng thế, tới khi họ đóng cửa. Nhưng các cậu đâu có tin.
@@ -92,10 +96,12 @@
 - **ha-vy** (neutral): Thói quen không chứng minh được đúng tối ấy. Nó chỉ cho thấy tớ có lý do ngồi đó. Thứ ghi đúng tối ấy là cửa từ: Nam vào 21 giờ 50, ra 23 giờ 05. Về CLB.
 
 ## v3-doi-chat.1
+> NHIỆM VỤ: Tùng cá là Nam gửi tin. Thẻ nào bác được?
 - **narrator**: Phòng CLB. Mọi phiếu đã ghim lên bảng. Minh Anh chờ.
 - **minh-anh** (serious): Tùng nói trước. Rồi các em trình cái gì có trong hồ sơ.
 
 ## v3-ket-thieu.1
+> NHIỆM VỤ: Nói lại cho cả nhóm: mình chắc được điều gì?
 - **minh-anh** (serious): Vậy chị mời Nam lên.
 - **narrator**: Chiều hôm đó, Nam lên phòng CLB. Không nói nhiều, Nam đặt lên bàn tờ bản ghi quẹt thẻ thư viện của mình.
 - **nam** (neutral): Tối mùng 7, 21 giờ 50 vào, 23 giờ 05 ra. Các cậu có cả tờ này rồi mà vẫn gọi tớ lên.
@@ -104,23 +110,25 @@
 - **nam** (neutral): Không sao. Lần sau các cậu đọc kỹ hồ sơ trước đã.
 
 ## v3-ket-du.1
+> NHIỆM VỤ: Nói lại cho cả nhóm: mình chắc được điều gì?
 - **minh-anh** (neutral): Không mời Nam lên. Chị báo cô Lan: tối đó Nam ở thư viện, có bản ghi và có người cùng ngồi.
 - **tung** (gai-dau): Khỉ thật… tại cái tài khoản ghi lù lù tên kênh của cậu ấy. Tớ cá trượt, mà lần này trượt đau. Tớ xin lỗi Nam. Lần sau đợi đủ bài mới lật.
 - **duy** (neutral): Cá thì không sao. Kết tội mới sao.
 - **ha-vy** (thinking): Tớ cũng suýt nữa. Nhìn tài khoản thấy tên kênh, nhìn kênh thấy người trực. Mỗi bước nhảy một tí là tới một con người.
-- **minh-anh** (neutral): Hai nguồn riêng cùng khớp một quãng giờ. Lại là "kiểm hai lần" của chị Linh.
+- **minh-anh** (neutral): Hai nguồn riêng cùng khớp một quãng giờ. Lại là "kiểm hai lần" trong sổ CLB.
 
 ## v3-ket-ky.1
 - **duy** (neutral): Nhắc mới nhớ. Trang "Kiểm hai lần" ấy… hôm trước có một mẩu, để tớ xem lại.
 - [DÀN DỰNG] {{nv.duy}} lật trang, một mẩu giấy nữa.
 
 ## v3-ket-ky.2
-- **duy** (neutral): Mẩu thứ ba. Chữ chị Linh.
-- **player**: "Vụ đầu tiên của CLB kết luận sai. Chị tìm ra cuốn sổ ghi lại nó."
+- **duy** (neutral): Mẩu thứ ba. Vẫn nét chữ ấy.
+- **player**: "Vụ đầu tiên của CLB kết luận sai. Cuốn cũ ghi lại nó."
 - **tung** (surprised): Vụ đầu tiên của CLB? Từ hồi nào?
 - **ha-vy** (thinking): Chưa biết. Nhưng chị ấy ghi "kết luận sai". Giống chuyện hôm nay.
 
 ## v3-ket-luan.1
+> NHIỆM VỤ: Không phải Nam thì nói chắc được điều gì?
 - **tung** (worried): Không phải Nam. Thế thì ai ngồi máy văn phòng xưởng tối đó?
 - **duy** (neutral): Máy trong phòng văn phòng, giờ xưởng mở. Ai vào được phòng đó thì mình chưa biết.
 - **ha-vy** (thinking): Và tên Nam vẫn nằm trên tài khoản kênh. Ai muốn người ta nghĩ là Nam, thì đã được như ý.
@@ -131,6 +139,7 @@
 - **minh-anh** (neutral): Chuyện này không chỉ là tin đồn về mình nữa. Các em sang xưởng lần nữa, hỏi xem ai vào được phòng ấy. Hỏi thôi, chưa nghi ai.
 
 ## v3-chia.1
+> NHIỆM VỤ: Ai có chìa khóa văn phòng xưởng?
 - **narrator**: Chiều muộn, xưởng Robotics. Nam dẫn cả nhóm tới cửa phòng văn phòng. Trên cửa dán một tờ giấy đã ngả màu.
 - **player**: "Giao chìa phòng văn phòng." Ba tên: Khánh, Bách, Thảo.
 - **nam** (neutral): Anh Khánh đang họp bên Hội. Anh Bách với chị Thảo thì ở kia.
@@ -145,3 +154,32 @@
 - **tung** (neutral): Lần này tớ ghi tên mà không khoanh ai cả.
 - [THẺ CHỮ] **narrator**: Nhóm theo cách khác thì thấy chuyện khác. Thói quen đếm được, và đôi khi thói quen của người này là lời chứng cho người kia.
 
+## v3-bd-thu-vien.1
+- **narrator**: Thư viện buổi chiều. Cửa từ kêu tít mỗi lần có người quẹt thẻ đi qua.
+- **ha-vy** (smile): Tối thứ Hai nào tớ cũng ngồi bàn cạnh cửa sổ kia.
+- **tung** (thinking): Vào ra đều phải quẹt thẻ nhỉ. Thế là cái cửa này nhớ giờ của từng người.
+- **narrator**: Ở bàn cạnh cửa sổ, Hoài đang cúi xuống chồng sách, chưa thấy ba đứa.
+- **tung** (gai-dau): …Để lát nữa tớ chào.
+
+## v3-bd-tra-da.1
+- **narrator**: Quán trà đá, đầu giờ chiều. Nắng xiên qua tán cây, ghế còn trống nhiều.
+- **tung** (worried): Bà ơi, lỡ nói sai cho một người rồi thì làm thế nào ạ?
+- **ba-lua** (neutral): Hỏi đúng người rồi đấy. Ngày xưa có cậu sinh viên trông cái phòng tủ sắt của các cháu, bà gọi là "cậu trà nóng". Có một dạo cậu ấy ngồi đây cả buổi chiều, sổ mở mà không viết chữ nào.
+- **ba-lua** (neutral): Bà hỏi thì bảo: "Cháu kết luận sai cho một người, bà ạ. Cả câu lạc bộ tin cháu."
+- **player**: Rồi anh ấy làm gì ạ?
+- **ba-lua** (smile): Hôm sau dẫn một cậu khác ra đây, mời cốc trà, xin lỗi ngay trước mặt bà. Xong ngồi gạch cái gì đó trong sổ, gạch mạnh tới rách cả giấy.
+- **ha-vy** (thinking): Kết luận sai, rồi tự tay gạch. Ghi lại. Vẫn là lời kể.
+
+## v3-bd-tra-da.2
+- **tung** (thinking): Mời trà, xin lỗi trước mặt người khác. Nghe thì dễ.
+- **ha-vy** (neutral): Cậu đang nghĩ tới Hoài à?
+- **tung** (gai-dau): Tớ có nói gì đâu. …Ừ.
+
+## v3-bd-cang-tin.1
+- **narrator**: Căng tin giữa buổi chiều, chỉ còn quầy nước với nồi chè.
+- **tung** (happy): Chè đậu đen, ba cốc! Hôm nay tớ…
+- **ha-vy** (neutral): Khao à? Hôm qua cậu vừa than cuối tháng nhà mới gửi tiền.
+- **tung** (gai-dau): …định nói là hôm nay tớ quên ví.
+- **player**: Tớ trả. Ghi sổ nợ: Tùng, một cốc chè, lãi là một lần dẫn đường không lạc.
+- **ha-vy** (smile): Lãi suất hợp lý đấy.
+- **narrator**: Bàn trong góc, mấy bạn năm nhất chụm đầu chép bài tập Triết của nhau. Chuông báo tiết reo, cả căng tin đứng dậy cùng một lúc.

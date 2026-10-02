@@ -24,8 +24,8 @@
 > NHẮC VIỆC player: Tầng bốn. Thang máy hay thang bộ đây?
 
 ## md-00-sanh-ktx.2
-- [DÀN DỰNG] Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Xem xong cả hai thì một cậu sinh viên áo xanh tình nguyện, mũ tai bèo đeo sau lưng, từ hành lang bên phải đi ra.
-- **player**: (Mát hẳn. Giờ lên tầng bốn kiểu gì đây…)
+- [DÀN DỰNG] Sảnh tầng một đông người ngày nhập học: tân sinh viên kéo vali, phụ huynh bê thùng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Lẫn trong đám đông bên phải có một tấm lưng áo xanh tình nguyện, mũ tai bèo đeo sau lưng: chi tiết ẩn, không có dấu, xem xong thang máy và bảng tin thì mới bấm được.
+- **player**: (Mát hẳn. Mà đông thế này… Giờ lên tầng bốn kiểu gì đây?)
 
 ## md-00-thang-may.1
 - **narrator**: Tờ giấy dán ngay giữa cửa thang máy: "Thang máy bảo trì đến hết tuần. Sinh viên vui lòng đi thang bộ."
@@ -36,11 +36,33 @@
 - **player**: (Phòng 408 ở dãy giữa, tầng bốn. Đúng nhà này rồi.)
 - **player**: (Sơ đồ chỉ vẽ ba dãy nhà nhìn từ trên xuống. Thang bộ ở đâu thì chịu.)
 
+## md-00-thay-tung.1
+> NHẮC VIỆC player: Thang máy hỏng, sơ đồ không vẽ thang bộ. Trong sảnh này ai là người hỏi được?
+- **player**: (Ai cũng kéo vali, ai cũng mới tới như mình. Hỏi họ thì chắc cũng chịu.)
+- **player**: (Khoan. Giữa đám đông có một cái lưng áo xanh, không vali, không balo.)
+- **player**: (Nhìn kỹ đã rồi hẵng hỏi.)
+
+## md-00-soi-ao.1
+- **player**: (Sơ mi xanh dài tay, trên ngực gắn lá cờ nhỏ. Áo của đội tình nguyện.)
+- **player**: (Ngày nhập học mà mặc áo này thì là người ra đón tân sinh viên.)
+
+## md-00-soi-mu.1
+- **player**: (Mũ tai bèo đeo sau lưng, dây còn hằn trên cổ áo. Đứng ngoài nắng cả buổi rồi mới vào đây.)
+
+## md-00-soi-to-giay.1
+- **player**: (Một tờ sơ đồ gấp đôi, mép đã quăn. Cậu ấy cầm để chỉ đường cho người khác, không phải để tự tìm đường.)
+
+## md-00-soi-tung.1
+- **player**: (Áo tình nguyện, mũ đi nắng, sơ đồ trên tay. Người này biết đường. Hỏi cậu ấy.)
+
 ## md-00-gap-tung.1
 - **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế? Thang máy đang bảo trì.
 - **tung** (ao-xanh-happy): Khuất sau hành lang kia. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
 - **player**: Tầng bốn, phòng 408.
 - **tung** (ao-xanh-happy): Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ là {{nv.tung}}, học Du lịch.
+- **player**: Cùng phòng? Tớ tưởng cậu là anh năm hai, năm ba gì đấy, mặc áo tình nguyện thế kia.
+- **tung** (ao-xanh): Năm nhất như cậu thôi. Tớ trúng tuyển đợt một, nhập học từ cuối tháng Tám nên lên trước hai tuần, đường nào cũng đi mòn rồi.
+- **tung** (ao-xanh-happy): Đội tình nguyện thiếu người dẫn đường khu ký túc, chú tớ làm ở đây giới thiệu, thế là họ cho tớ mượn cái áo làm cộng tác viên hai hôm.
 
 ## md-00-gap-tung.2
 - **tung** (ao-xanh-happy): {{nv.nguoi-choi}} à. Dễ gọi đấy.
@@ -64,7 +86,7 @@
 - **tung** (ao-xanh): Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
 - **bac-tu** (neutral): Hai cháu tìm phòng nào? Chiều Chủ nhật tòa này khóa hết lớp rồi.
 - **tung** (ao-xanh): Dạ không ạ, cháu dẫn bạn đi xem trường thôi.
-- **bac-tu** (neutral): Bác là Thịnh, bảo vệ tòa này. Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào.
+- **bac-tu** (neutral): Bác trông tòa này. Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào.
 
 ## md-07-cong-ktx-toi.1
 - [DÀN DỰNG] Tối. Hai người quẹt thẻ ở phòng trực cổng KTX. Nền tối bg-mvp-cong-ktx-dem (DX-02).
@@ -106,7 +128,8 @@
 - **player**: Chị cho em thử lọc một cái được không ạ?
 
 ## md-09-ngay-hoi.3
-- **player**: Ba người tên {{nv.tung}}. Ngành Du lịch chỉ có một người: mã SV240251.
+- **player**: Ba người tên {{nv.tung}}. Thêm ngành Du lịch thì còn đúng một dòng. Mã nằm ở ô đầu: SV240251.
+- **narrator**: {{nv.tung}} dán tờ giấy nhớ ghi mã lên phiếu đăng ký, chép lại từng số.
 - **minh-anh** (neutral): …Nhanh thật. Bốn giờ chiều thứ Hai tuần sau CLB họp đầu năm, hai em ghi tên đi.
 - **tung** (neutral): Dạ em thì lọc kém, chứ tìm đường với nhắc lịch là giỏi nhất ạ.
 - **minh-anh** (neutral): Biết nhận là mình nhầm thì được rồi. Bắt đầu từ việc đến đúng giờ nhé.
@@ -123,13 +146,18 @@
 - **tung** (happy): Toán! Thế là tớ có chỗ mượn vở rồi.
 - **ha-vy** (neutral): Mượn thì được, chép thì không.
 - **tung** (happy): Thế cậu đoán được tớ học gì không?
-- **ha-vy** (neutral): Khỏi đoán. Cổ đeo thẻ, tay lúc nào cũng cầm bản đồ trường. Du lịch chứ gì.
+- **ha-vy** (neutral): Khỏi đoán. Nhìn là ra. Cậu thử nhìn xem, đừng nhìn mặt, nhìn những thứ cậu ấy mang theo.
+
+## md-10-phong-clb.2b
+- **ha-vy** (smile): Cầm bản đồ đã nhàu, thuộc đường, thích dẫn người khác đi. Du lịch chứ gì.
+- **tung** (surprised): Ơ đúng! Sao cậu biết?
+- **ha-vy** (neutral): Holmes gọi thế là nhìn mà có quan sát. Cái áo thì không nói được gì, nên tớ bỏ.
 - **duy** (smile): Còn tớ là {{nv.duy}}, năm hai Hành chính học. Chìa khóa phòng, tủ hồ sơ, cả cái laptop cũ cất trong tủ, đều tớ giữ.
 - **duy** (neutral): Ngăn dưới tớ chưa kiểm kê tới. Cậu mở xem có gì trong đấy.
 > NHẮC VIỆC duy (neutral): Ngăn dưới tủ tớ chưa kiểm kê tới.
 
 ## md-10-phong-clb.3
-- **minh-anh** (neutral): Sổ tự học của chị Linh khóa trước đấy. Em cứ giữ mà dùng.
+- **minh-anh** (neutral): Sổ của CLB đấy, khóa nào cũng chép thêm vài trang. Mấy trang đầu mực xanh là từ hồi mới lập. Năm nay em giữ.
 
 ## md-10-phong-clb.4
 - **duy** (neutral): Báo cáo năm ngoái đây. Kết luận đúng hai chữ: "hoạt động yếu".
@@ -154,3 +182,15 @@
 - **ha-vy** (day-kinh): Khoan, tính lại đã. Mình mới có một chữ H với một cái hộp.
 - **minh-anh** (serious): Thì bắt đầu từ cái hộp. Nói có sách, mách có chứng. Mai ra tòa B.
 > NHẮC VIỆC minh-anh (serious): Một tuần tìm căn cứ. Mai bắt đầu từ cái hộp ở tòa B.
+
+## md-10-soi-ban-do.1
+- **player**: Bản đồ trường, gấp nhiều nếp, mấy chỗ khoanh bút đỏ.
+- **ha-vy** (thinking): Mới nhập học một tuần mà bản đồ đã nhàu thế kia. Cậu ấy dùng nó hằng ngày, và dùng cho cả người khác.
+
+## md-10-soi-ao.1
+- **player**: Áo thể thao màu lam, không in tên khoa nào.
+- **ha-vy** (neutral): Vậy không đoán khoa từ áo được. Chi tiết không nói gì thì bỏ, đừng ép nó nói.
+
+## md-10-soi-mui.1
+- **player**: Miếng băng cá nhân trên sống mũi.
+- **tung** (happy): Hôm khuân đồ cho tân sinh viên, tớ va phải cửa thang máy. Đội tình nguyện đón tân sinh viên mà!

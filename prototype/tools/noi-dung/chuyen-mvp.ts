@@ -107,7 +107,16 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
     case 'ending-branch':
       return { type: 'ending-branch' };
     case 'explore':
-      return { type: 'explore', id: it.id, diem: it.diem.map((d) => ({ sprite: d.sprite, x: d.x, y: d.y, rong: d.rong, chuoi: d.chuoi, sau: d.sau, nhan: d.nhan })) };
+      return {
+        type: 'explore',
+        id: it.id,
+        ...(it.kieu !== 'canh' ? { kieu: it.kieu } : {}),
+        ...(it.nhanVat ? { nhanVat: it.nhanVat } : {}),
+        ...(it.gio ? { gio: it.gio } : {}),
+        ...(it.dang ? { dang: it.dang } : {}),
+        ...(it.haVySoi ? { haVySoi: true } : {}),
+        diem: it.diem.map((d) => ({ sprite: d.sprite, x: d.x, y: d.y, rong: d.rong, chuoi: d.chuoi, sau: d.sau, nhan: d.nhan, ...(d.dau ? { dau: d.dau } : {}), ...(d.co.length > 0 ? { co: d.co } : {}) })),
+      };
   }
 }
 
@@ -158,6 +167,9 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     ...(t.fields['Kiểu'] === 'lọc tiếp' ? { kieuTrinhDung: 'loc-tiep', nguon: t.fields['Nguồn'] ?? null } : {}),
     // "Nối được với: a · b": các bảng hiện ở khối "nối với" của màn tra (thẻ có JOIN).
     ...(t.fields['Nối được với'] ? { bangNoi: chiaGiaTri(t.fields['Nối được với']) } : {}),
+    // "Chọn cột: a, b" (hoặc "không"): bài chọn cột của SELECT; giá trị là các cột bật sẵn.
+    ...(t.fields['Chọn cột'] !== undefined ? { chonCot: t.fields['Chọn cột'].trim() === 'không' ? [] : t.fields['Chọn cột'].split(',').map((c) => c.trim()).filter((c) => c !== '') } : {}),
+    ...(t.fields['Bấm ô lấy giấy nhớ'] ? { bamO: t.fields['Bấm ô lấy giấy nhớ'].trim() } : {}),
     truyVanNapSan: t.sql['Truy vấn nạp sẵn'] ?? null,
     phanUng: docPhanUng(t.fields).phanUng.map((p) => ({ khi: p.khi, loi: p.loi.map(loi) })),
     vatChung: t.evidence

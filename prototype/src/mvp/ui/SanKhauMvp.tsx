@@ -17,6 +17,8 @@ import type { NhacViecMvp as NhacViec } from '../engine/trang-thai';
 import { TalkOverlay } from '../../shared/ui/visuals/TalkOverlay';
 import { anhChanDung, anhNen, anhTheoTen } from './anh-mvp';
 import { boNhepMoiTheoUrl } from './nhep-moi-mvp';
+import { HoatCanhMvp } from './HoatCanhMvp';
+import { coHoatCanh } from './hoat-canh-mvp';
 import { NhacViecMvp } from './NhacViecMvp';
 
 export interface SanKhauMvpProps {
@@ -158,7 +160,7 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
   return (
     <section className={`stage mvp-stage${shaking ? ' is-shaking' : ''}${nhacViec ? ' co-nhac' : ''}`} data-scene={canh} aria-label={`Cảnh: ${tenCanh}`}>
       <div className="stage__backdrop mvp-stage__backdrop" aria-hidden="true" data-art-source={nen ? 'image' : 'placeholder'}>
-        {nen ? <img className="stage__backdrop-img" src={nen} alt="" draggable={false} /> : <div className="mvp-stage__nen-tam" />}
+        {coHoatCanh(canh) ? <HoatCanhMvp key={canh} canh={canh} /> : nen ? <img className="stage__backdrop-img" src={nen} alt="" draggable={false} /> : <div className="mvp-stage__nen-tam" />}
       </div>
       <div className="stage__scene-label">
         <svg className="stage__scene-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
@@ -168,8 +170,9 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
         <span className="stage__scene-text">{tenCanh}</span>
       </div>
       {nhacViec ? <NhacViecMvp kb={kb} nhac={nhacViec} dienTen={dienTen ?? ((t) => t)} tenNguoiChoi={tenNguoiChoi} /> : null}
-      <div className="stage__portraits" data-so-nguoi={coDan ? moi.thanhVien.length : 0}>
-        {(coDan ? moi.thanhVien : []).map((t, i) => {
+      {/* Cảnh có hoạt cảnh: nhân vật đã nằm trong ảnh tách lớp, không vẽ thêm nhân vật đứng (hộp thoại vẫn ghi tên người nói). */}
+      <div className="stage__portraits" data-so-nguoi={coDan && !coHoatCanh(canh) ? moi.thanhVien.length : 0}>
+        {(coDan && !coHoatCanh(canh) ? moi.thanhVien : []).map((t, i) => {
           const dangNoi = t.nhanVat === speaker;
           const pos = viTri(moi.thanhVien.length, i);
           const phai = pos > 0.5;

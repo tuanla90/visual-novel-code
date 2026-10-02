@@ -4,7 +4,7 @@
 
 ## c-bai-dang.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Giá trị này có đang nằm đúng cột của nó không nhỉ?
-- Khi chạy ra 14 dòng: **tung** (gai-dau): Cả ba kênh. Mình chỉ cần kênh Robotics.
+- Khi chạy ra 301 dòng: **tung** (gai-dau): Bài của mọi kênh trong trường, ba trăm lẻ một bài. Mình chỉ cần kênh Robotics.
 - Khi đúng: **ha-vy** (neutral): Chín bài. Ghim lại, rồi nhóm.
 
 ## c-nam-thu-vien.1

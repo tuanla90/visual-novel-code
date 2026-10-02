@@ -32,7 +32,6 @@ describe('chương 1: ngày theo truyện', () => {
       [3, 'theo-truyen', 'n3-mo'],
       [4, 'theo-truyen', 'n4-mo'],
       [5, 'theo-truyen', 'n5-mo'],
-      [6, 'theo-truyen', 'v2-tong-hop'],
     ]);
     expect(KB.lich.luat.uyTin).toBeNull();
     expect(KB.diaDiem).toEqual([]);

@@ -23,7 +23,7 @@ describe('bảng ghim', () => {
     const soMuc = s.hoSo.taiLieu.length + s.hoSo.manhMoi.length + s.hoSo.bangChung.length;
     expect(bang.querySelectorAll('article.the')).toHaveLength(soMuc + 1);
     expect(bang.querySelectorAll('.the--tai-lieu')).toHaveLength(s.hoSo.taiLieu.length);
-    expect(bang.querySelectorAll('.the--phieu')).toHaveLength(2);
+    expect(bang.querySelectorAll('.the--phieu')).toHaveLength(3);
     expect(bang.querySelectorAll('.the--vat')).toHaveLength(1);
     expect(bang.querySelectorAll('.the--hoi')).toHaveLength(1);
     expect(bang.querySelectorAll('.the--tin')).toHaveLength(s.hoSo.manhMoi.length);

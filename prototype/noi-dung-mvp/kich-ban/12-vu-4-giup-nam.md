@@ -8,6 +8,10 @@
 - [HIỆN TÀI LIỆU doc-thu-hoi-don]
 - [HẬU QUẢ] mở manh mối clue-da-duyet
 - [LỜI v4-mo.2]
+- [KHÁM PHÁ kp-phong-v4]
+  - nv:duy · x 20% · y 100% · rộng 15% → v4-phong-duy · dấu: ! · nhãn: Duy: mở laptop
+  - nv:nam · x 48% · y 100% · rộng 15% → v4-phong-nam · dấu: ? · nhãn: Nam: hai đơn đặt thật
+  - nv:quan · x 76% · y 100% · rộng 15% → v4-phong-quan · dấu: ? · nhãn: Quân: việc giám sát
 - [THỬ THÁCH c-don-da-duyet]
 - [LỜI v4-mo.3]
 - [THỬ THÁCH c-don-theo-nguoi]
@@ -44,8 +48,37 @@
   - (C) {id: ban-chu-nhiem} Ban chủ nhiệm Robotics cố tình đổ nợ cho Nam. → phản hồi: **duy** (neutral): Máy văn phòng thì ban chủ nhiệm giữ chìa, nhưng "cố tình" và "cả ban" thì bảng nào nói? Mình mới có máy và giờ.
 - [LỜI v4-ket-du.1]
 - [LỜI v4-ket.1]
+- [KHÁM PHÁ kp-soi-khanh · quan sát khanh · Hà Vy soi]
+  - vung:the · x 58% · y 60% · rộng 16% → v4-soi-the · nhãn: Tấm thẻ đeo cổ
+  - vung:balo · x 10% · y 80% · rộng 20% → v4-soi-balo · nhãn: Cái balo
+  - vung:quai · x 31% · y 38% · rộng 14% → v4-soi-huy-hieu · nhãn: Thứ gài trên quai balo
 - [ẢNH cg-v4-huy-hieu-sut]
-- [HẬU QUẢ] mở manh mối clue-huy-hieu-sut
+- [LỜI v4-ket.1b]
 - [LỜI v4-ket.2]
 - [ẢNH chibi-v4-khong-ca]
 - [KẾT THÚC]
+
+### v4-phong-duy — Vụ 4: Duy mở laptop (việc chính) {cảnh: phong-clb}
+
+- [LỜI v4-phong-duy.1]
+
+### v4-phong-nam — Vụ 4: Nam kể hai đơn mình đặt thật {cảnh: phong-clb}
+
+- [LỜI v4-phong-nam.1]
+
+### v4-phong-quan — Vụ 4: Quân nói về việc giám sát {cảnh: phong-clb}
+
+- [LỜI v4-phong-quan.1]
+
+### v4-soi-the — Quan sát Khánh: tấm thẻ đeo cổ {cảnh: phong-clb}
+
+- [LỜI v4-soi-the.1]
+
+### v4-soi-balo — Quan sát Khánh: cái balo {cảnh: phong-clb}
+
+- [LỜI v4-soi-balo.1]
+
+### v4-soi-huy-hieu — Quan sát Khánh: huy hiệu bánh răng sứt {cảnh: phong-clb}
+
+- [LỜI v4-soi-huy-hieu.1]
+- [HẬU QUẢ] mở manh mối clue-huy-hieu-sut

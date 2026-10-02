@@ -55,7 +55,7 @@ describe('máy MVP: mở đầu', () => {
     expect(s.nganh).toBe('');
   });
 
-  it('đi hết mở đầu (lọc thử ở Ngày hội, sổ chị Linh, lá thư) → ngày 1 sáng, có manh mối [H.]', () => {
+  it('đi hết mở đầu (lọc thử ở Ngày hội, sổ CLB, lá thư) → ngày 1 sáng, có manh mối [H.]', () => {
     const s = choi(taoTrangThai(KB, 1), { chonDuKien: () => null }, (st) => st.giaiDoan === 'ngay');
     expect(s.ngay).toBe(1);
     expect(s.khung).toBe(0);

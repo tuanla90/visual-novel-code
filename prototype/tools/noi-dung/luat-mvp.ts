@@ -374,6 +374,10 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           break;
         case 'explore': {
           const noi = `[KHÁM PHÁ ${it.id}]`;
+          // Bản đồ phải có giờ khi có nhân vật khai "Thường ở": ảnh mặt trên ghim tính theo thứ (ngày trong truyện) và giờ này.
+          if (it.kieu === 'ban-do' && !it.gio && mvp.nhanVat.some((n) => n.gioiThieu?.thuongO)) err(vt, `${noi}: bản đồ cần giờ trong truyện, vd "[KHÁM PHÁ ${it.id} · bản đồ · giờ 15:00]" (lịch nhân vật tính theo thứ và giờ)`);
+          if (it.kieu === 'quan-sat' && !nhanVat.has(it.nhanVat ?? '')) err(vt, `${noi}: "quan sát ${it.nhanVat}" không phải nhân vật trong nhan-vat.md`);
+          if (it.kieu === 'quan-sat' && it.dang && !(nhanVat.get(it.nhanVat ?? '')?.bieuCam ?? []).includes(it.dang)) err(vt, `${noi}: nhân vật ${it.nhanVat} không có dáng / biểu cảm "${it.dang}"`);
           if (it.diem.length === 0) err(vt, `${noi}: cần ít nhất một dòng con "  - <sprite> · x … · y … · rộng … → <chuỗi>"`);
           const cacChuoi = new Set(it.diem.map((d) => d.chuoi));
           if (cacChuoi.size !== it.diem.length) err(vt, `${noi}: hai chỗ bấm trỏ cùng một chuỗi`);
@@ -383,7 +387,10 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
             canChuoi(d.chuoi, noi);
             bb.add(d.chuoi);
             for (const s of d.sau) if (!cacChuoi.has(s) || s === d.chuoi) err(vt, `${noi}: "sau: ${s}" phải là chuỗi của một chỗ bấm khác trong cùng [KHÁM PHÁ]`);
-            if (d.sprite.startsWith('nv:')) {
+            for (const n of d.co) if (!nhanVat.has(n)) err(vt, `${noi}: "có: ${n}" không phải nhân vật trong nhan-vat.md`);
+            if (d.sprite.startsWith('ghim:') || d.sprite.startsWith('vung:')) {
+              if (!d.nhan) err(vt, `${noi}: điểm "${d.sprite}" cần "nhãn:" (tên nơi đến / chi tiết để người chơi đọc)`);
+            } else if (d.sprite.startsWith('nv:')) {
               const nv = d.sprite.slice(3).split('/')[0] ?? '';
               if (!nhanVat.has(nv)) err(vt, `${noi}: không có nhân vật "${nv}" trong nhan-vat.md`);
             } else if (tuyChon.spriteVat && !tuyChon.spriteVat.has(d.sprite)) {
@@ -646,6 +653,13 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   }
   for (const k of duKien.values()) {
     if (k.nhan === 'chinh' && !daGan.has(k.id)) err(k.viTri, `dữ kiện chính "${k.id}" không thuộc ngày nào (không là "Dữ kiện chính" của ngày nào, cũng không được dữ kiện chính nào "Cần")`);
+  }
+
+  // ---------- Lịch nhân vật: nơi "Thường ở" phải là một ghim có trên bản đồ ----------
+  {
+    const ghim = new Set<string>();
+    for (const c of mvp.chuoi) for (const it of c.items) if (it.kind === 'explore') for (const d of it.diem) if (d.sprite.startsWith('ghim:')) ghim.add(d.sprite.slice(5));
+    for (const n of mvp.nhanVat) for (const q of n.gioiThieu?.thuongO ?? []) if (!ghim.has(q.noi)) err(n.viTri, `nhân vật ${n.id}, "Thường ở": không bản đồ nào có ghim "${q.noi}" (có: ${[...ghim].sort().join(', ')})`);
   }
 
   // ---------- Kết, true end ----------

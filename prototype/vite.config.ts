@@ -28,5 +28,7 @@ export default defineConfig({
     setupFiles: ['./src/test/setup.ts'],
     include: ['src/**/*.test.{ts,tsx}'],
     css: false,
+    // Màn tra dựng CSDL thật (bảng sinh viên gần bốn nghìn dòng): chạy cả bộ song song thì 5 giây mặc định không đủ.
+    testTimeout: 20000,
   },
 });

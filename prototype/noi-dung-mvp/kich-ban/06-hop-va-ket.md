@@ -7,7 +7,7 @@
 - [LỜI hop-00.1]
 
 - [LỜI hop-00.2]
-- [MÀN CHIẾU hop-chieu-or · truy vấn nạp sẵn c-sua-or-quan · chạy · 14 dòng]
+- [MÀN CHIẾU hop-chieu-or · truy vấn nạp sẵn c-sua-or-quan · chạy · 595 dòng]
 - [LỜI hop-00.3]
 - [SỬA TRUY VẤN c-sua-or-quan]
 - [HIỆU ỨNG co-so-lieu-day]
@@ -46,16 +46,23 @@
 
 <!-- 01/10/2026 (dàn ý mùa 1): phần thưởng kết thật là lời nhắn đầu tiên của chị Linh (lớp bí mật của CLB), không còn là manh mối Robotics — manh mối đó giờ ai cũng có từ ngày 5. -->
 
-### ket-that — True end: Hoài kể chuyện được nhờ; lời nhắn của chị Linh {cảnh: phong-hop}
+### ket-that — True end: Hoài kể chuyện được nhờ; mẩu giấy trong sổ CLB {cảnh: phong-hop}
 
 - [ĐIỀU KIỆN] có dc-ai-viet-du
 - [LỜI ket-that.1]
 - [ĐI TỚI ket-that-clb]
 
-### ket-that-clb — Chiều muộn ở phòng CLB: mẩu giấy trong sổ chị Linh {cảnh: phong-clb}
+### ket-that-clb — Chiều muộn ở phòng CLB: mẩu giấy trong sổ CLB {cảnh: phong-clb}
 
 - [HẬU QUẢ] mở manh mối clue-loi-nhan-linh-1
 - [LỜI ket-that.2]
+- [ĐI TỚI ket-tra-da]
+
+### ket-tra-da — Sau kết thật: Tùng khao trà đá; bà Lụa kể về cái tủ sắt {cảnh: tra-da}
+
+- [LỜI ket-tra-da.1]
+- [HẬU QUẢ] mở manh mối clue-tra-da-1
+- [LỜI ket-tra-da.2]
 - [KẾT THÚC]
 
 ### ket-thuong — Kết thường: chỉ là một ý kiến sinh viên {cảnh: phong-hop}

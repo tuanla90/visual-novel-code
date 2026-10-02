@@ -35,7 +35,7 @@ describe('phòng tra: bảng → máy → ghim', () => {
     expect(pha()).toBe('bang');
     expect(screen.getByRole('region', { name: 'Bảng điều tra' })).toBeInTheDocument();
     // Phiếu hai lớp chưa có trên bảng.
-    expect(screen.queryByRole('article', { name: /^Phiếu kết quả/ })).toBeNull();
+    expect(screen.queryByRole('article', { name: /^Phiếu kết quả: Hai lớp/ })).toBeNull();
 
     await u.click(screen.getByRole('button', { name: /Mở laptop/ }));
     expect(pha()).toBe('may');

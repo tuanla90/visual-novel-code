@@ -11,7 +11,7 @@ import { useState } from 'react';
 import type { BoDuLieuMvp, KichBanMvp, TheThuThachMvp } from '../../../content/mvp/types';
 import { soundEngine } from '../../../shared/audio/sound-engine';
 import type { GiaTriHoSo } from '../../engine/giay-nho';
-import type { TrangThaiMvp, GhiChuTruyVanMvp, PhieuTruyVanMvp } from '../../engine/trang-thai';
+import type { TrangThaiMvp, GhiChuTruyVanMvp, PhieuTruyVanMvp, MauGhimMvp } from '../../engine/trang-thai';
 import { nguonBangTongHop, type NguonTongHop } from '../../engine/trinh-dung-tong-hop';
 import { BangGhimMvp } from './BangGhimMvp';
 import { khungTuSqlChuan } from '../../engine/trinh-dung';
@@ -29,12 +29,14 @@ export interface PhongTraMvpProps {
   /** Tên cảnh đang đứng (vd "Phòng CLB", "Trong phòng máy"). */
   noi?: string;
   onDoiCho: (the: string, x: number, y: number) => void;
+  /** Đổi màu ghim / gỡ, ghim lại thẻ ngay trên bảng của phòng tra (như bảng trong hồ sơ). */
+  onDoiMau?: (the: string, mau: MauGhimMvp) => void;
   onXong: (dung: string[], phieu?: PhieuTruyVanMvp, ghiChu?: GhiChuTruyVanMvp[]) => void;
 }
 
 type Pha = { ten: 'bang' } | { ten: 'may' } | { ten: 'ghim'; id: string; dung: string[]; phieu?: PhieuTruyVanMvp; ghiChu?: GhiChuTruyVanMvp[] };
 
-export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, onDoiCho, onXong }: PhongTraMvpProps) {
+export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, onDoiCho, onDoiMau, onXong }: PhongTraMvpProps) {
   const laPhongMay = noi !== undefined && /phòng máy/i.test(noi);
   const canh: CanhTra = mode === 'fix-query' ? 'man-chieu' : laPhongMay ? 'phong-may' : 'phong-clb';
   const [pha, setPha] = useState<Pha>(() => (mode === 'fix-query' || laPhongMay ? { ten: 'may' } : { ten: 'bang' }));
@@ -93,7 +95,7 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
   if (pha.ten === 'bang') {
     return (
       <div className="phong-tra" data-pha="bang">
-        <BangGhimMvp kb={kb} s={s} dienTen={dienTen} onDoiCho={onDoiCho}>
+        <BangGhimMvp kb={kb} s={s} dienTen={dienTen} onDoiCho={onDoiCho} {...(onDoiMau ? { onDoiMau } : {})}>
           <button
             type="button"
             className="bang__mo-may"
@@ -116,7 +118,7 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
   if (pha.ten === 'ghim') {
     return (
       <div className="phong-tra" data-pha="ghim">
-        <BangGhimMvp kb={kb} s={s} dienTen={dienTen} them={{ id: pha.id, dung: pha.dung, ...(pha.phieu ? { phieu: pha.phieu } : {}), ...(pha.ghiChu ? { ghiChu: pha.ghiChu } : {}) }} moi={pha.id} onDoiCho={onDoiCho}>
+        <BangGhimMvp kb={kb} s={s} dienTen={dienTen} them={{ id: pha.id, dung: pha.dung, ...(pha.phieu ? { phieu: pha.phieu } : {}), ...(pha.ghiChu ? { ghiChu: pha.ghiChu } : {}) }} moi={pha.id} onDoiCho={onDoiCho} {...(onDoiMau ? { onDoiMau } : {})}>
           <button
             type="button"
             className="bang__mo-may bang__mo-may--tiep"
@@ -137,7 +139,7 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
   }
   return (
     <div className="phong-tra" data-pha="may">
-      {the.kieuTrinhDung === 'tong-hop' && duLieu ? <ManTongHopMvp duLieu={duLieu} the={the} nguon={nguonDuocChon} giayNho={giayNho} dienTen={dienTen} nhanNguon={(id) => s.bang?.phieuTruyVan?.[id]?.nhan ?? Object.values(kb.thuThach).find((t) => t.vatChung?.id === id)?.vatChung?.title} onXong={hoanTatTongHop} /> : <ManTraV7
+      {the.kieuTrinhDung === 'tong-hop' && duLieu ? <ManTongHopMvp kb={kb} canh={canh} duLieu={duLieu} the={the} nguon={nguonDuocChon} giayNho={giayNho} dienTen={dienTen} nhanNguon={(id) => s.bang?.phieuTruyVan?.[id]?.nhan ?? Object.values(kb.thuThach).find((t) => t.vatChung?.id === id)?.vatChung?.title} onXong={hoanTatTongHop} /> : <ManTraV7
         kb={kb}
         duLieu={duLieu}
         the={the}

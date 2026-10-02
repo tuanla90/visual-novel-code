@@ -7,8 +7,8 @@
 - Nội dung hiển thị:
 > Phần in theo khoa; dòng viết tay "Họ tên / Lớp".
 
-### doc-so-chi-linh — Sổ chị Linh
-- Tiêu đề: Sổ tự học của chị Linh
+### doc-so-chi-linh — Sổ CLB
+- Tiêu đề: Cuốn sổ của CLB, truyền từ khóa trước
 - Ảnh: doc-so-chi-linh
 - Nguồn: Ngăn dưới tủ hồ sơ phòng CLB
 - Nội dung hiển thị:

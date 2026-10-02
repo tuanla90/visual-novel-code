@@ -2,7 +2,7 @@
 
 - Loại: lỗi thường gặp
 
-## Trang chị Linh
+## Trang sổ CLB
 "=" so khớp chính xác cả chữ. Ra 0 dòng thì xem lại dữ liệu trước khi xem lại câu hỏi. Chỉ biết chữ đầu thì dùng LIKE 'H%'.
 
 ## Hà Vy

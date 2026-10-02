@@ -4,7 +4,13 @@
 
 ## v4-mo.1
 - [THẺ CHỮ] **narrator**: Vụ 4 — Thứ Hai, 14 tháng 10
-- **narrator**: Đầu tuần. Lần này không phải nhóm sang xưởng, mà Nam tự tới phòng CLB, tay cầm một tờ giấy.
+- **narrator**: Đầu tuần. Ba đứa leo cầu thang lên phòng CLB, Tùng đi trước, hai bậc một.
+- **tung** (chi-tay): Tớ cá là hôm nay chị Minh Anh tới trước bọn mình.
+- **ha-vy** (neutral): Từ đầu năm cậu cá trật bốn lần. Tớ có đếm.
+- **tung** (surprised): Cậu đếm cả cái đấy à?
+- **ha-vy** (smile): Cái gì đếm được thì tớ đếm.
+- **player**: Lần này Tùng thắng. Cửa mở sẵn rồi kìa.
+- **narrator**: Trong phòng không chỉ có chị Minh Anh. Lần này không phải nhóm sang xưởng, mà Nam tự tới phòng CLB, tay cầm một tờ giấy.
 - **nam** (neutral): Các cậu nói đúng. Có người đang mượn tên tớ, mà không phải chỉ cái tin đồn.
 - **minh-anh** (neutral): Ngồi xuống đã. Chuyện gì?
 - **nam** (neutral): Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, cộng lại hơn hai triệu rưỡi, có đơn gần một triệu. Trong năm đơn ấy tớ chỉ đặt hai: cảm biến với bánh xe, mấy trăm nghìn. Ba đơn kia tớ không đặt.
@@ -69,22 +75,27 @@
 - **duy** (neutral): Tờ giao chìa hôm trước: ba người có chìa. Đừng vội.
 
 ## v4-may-vp.3
-- **duy** (neutral): Tên một người, tay một người khác… chị Linh có ghi một câu. Để tớ xem.
-- [DÀN DỰNG] {{nv.duy}} lật sổ chị Linh tới trang cuối.
+> NHIỆM VỤ: Chốt điều nói được với Ban kiểm tra
+- **duy** (neutral): Tên một người, tay một người khác… trong sổ có kẹp một câu. Để tớ xem.
+- [DÀN DỰNG] {{nv.duy}} lật sổ CLB tới trang cuối.
 - **player**: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi."
 - **tung** (worried): Giống hệt chuyện Nam.
-- **ha-vy** (thinking): Chị ấy ghi từ năm ngoái. Cuốn sổ cũ mà chị ấy nhắc, chắc kể đúng chuyện này.
+- **ha-vy** (thinking): Mực này cũ hơn bọn mình nhiều. Cuốn sổ cũ mà mấy mẩu giấy nhắc, chắc kể đúng chuyện này.
 
 ## v4-ket-du.1
 - **minh-anh** (neutral): Phiếu bốn đơn từ máy văn phòng chị gửi kèm luôn: ba đơn đêm đứng tên Nam, một đơn ngày đứng tên trưởng CLB. Đủ để Ban kiểm tra thấy máy đó ban ngày ai dùng, ban đêm đứng tên ai.
 - **duy** (neutral): Và ba người giữ chìa phòng đó. Mình ghi tên, không ghi tội.
 
 ## v4-ket.1
+> NHIỆM VỤ: Chốt điều nói được với Ban kiểm tra
 - **duy** (neutral): Giấy giải trình đề ngày 11, một ngày sau hôm mình gỡ nghi cho Nam. Tớ ghi lại thôi, chưa nói gì.
 - [DÀN DỰNG] Có tiếng gõ cửa. {{nv.khanh}} đứng ở cửa phòng CLB, balo khoác một bên vai.
 - **khanh** (neutral): Nam ở đây à. Danh sách Ban kiểm tra cầm là anh chuyển. Đủ cả năm đơn, kể cả hai đơn em đặt thật, để họ khỏi bảo mình chọn lọc. Cứ giải trình đúng sự thật, anh sẽ nói đỡ một câu. Còn bên Thám Tử, cần giấy tờ gì qua Hội thì cứ gửi anh, anh ký chuyển cho.
 - **nam** (neutral): Vâng anh.
-- [DÀN DỰNG] {{nv.khanh}} quay đi. Cái huy hiệu bánh răng trên balo lắc lư, sứt mất một răng.
+- **ha-vy** (thinking): Anh ấy chưa đi ngay. Nhìn cho kỹ.
+
+## v4-ket.1b
+- [DÀN DỰNG] {{nv.khanh}} quay đi. Cái huy hiệu bánh răng trên quai balo lắc lư.
 - **tung** (worried): Tớ thấy rồi. Cái huy hiệu. Nãy giờ tớ nín thở.
 - **ha-vy** (thinking): Nín là đúng. Nói ra lúc ấy là cá.
 - **nam** (neutral): Huy hiệu làm ba chục cái hồi đầu năm. Cái sứt là lỗi khuôn, anh Khánh xin giữ. Nhưng balo anh ấy hay để ở xưởng, ai cũng cầm ra cổng được. Tớ không nói là anh ấy.
@@ -99,3 +110,25 @@
 - **ha-vy** (smile): Thì hỏi sổ.
 - [THẺ CHỮ] **narrator**: Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nghi ngờ mạnh vẫn chưa phải bằng chứng: càng chắc trong lòng, càng phải tìm nguồn thứ hai.
 
+## v4-phong-duy.1
+- **duy** (neutral): Bản sổ đặt hàng Ban kiểm tra gửi kèm, tớ nạp vào máy rồi. Cả sổ, từ hồi xưởng mới số hóa.
+
+## v4-phong-nam.1
+- **nam** (neutral): Hai đơn tớ đặt thật là cảm biến dò line với bánh xe. Tớ đặt buổi chiều, ở máy xưởng số 2, lúc đang trực.
+- **nam** (neutral): Ba đơn còn lại tớ chưa từng thấy cho tới khi cầm tờ giấy này.
+
+## v4-phong-quan.1
+- **quan** (neutral): Lần này tôi không lọc thay các bạn. Tôi ký giám sát, và tôi đọc từng phiếu.
+- **quan** (neutral): Phiếu nào các bạn ghim mà thiếu căn cứ, tôi sẽ hỏi lại đúng câu thầy Quang hỏi tôi hôm họp.
+
+## v4-soi-the.1
+- **player**: Thẻ đeo cổ dây xanh, loại thẻ của cán bộ Hội.
+- **ha-vy** (neutral): Chủ tịch Hội. Giấy nào qua Hội cũng qua tay anh ấy.
+
+## v4-soi-balo.1
+- **player**: Balo khoác một bên vai, to, cũ.
+- **nam** (neutral): Balo ấy anh Khánh hay để ở xưởng cả ngày.
+
+## v4-soi-huy-hieu.1
+- **player**: Trên quai balo gài một cái huy hiệu bánh răng. Sứt mất một răng.
+- **tung** (worried): Bánh răng sứt một răng… Chú Cường tả đúng cái này.
