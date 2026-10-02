@@ -813,7 +813,7 @@ export const KICH_BAN_MVP = {
               "nhan": "Xem bảng tin"
             },
             {
-              "sprite": "nv:tung",
+              "sprite": "nv:tung/ao-xanh",
               "x": 80,
               "y": 100,
               "rong": 17,
@@ -902,7 +902,7 @@ export const KICH_BAN_MVP = {
           "truong": "ten",
           "asker": {
             "speaker": "tung",
-            "expression": "neutral",
+            "expression": "ao-xanh",
             "text": "Thế cậu tên gì?"
           },
           "xucXac": "Ngại nghĩ thì để tớ gieo xúc xắc đặt hộ cho. Đảm bảo không xui.",
@@ -919,7 +919,7 @@ export const KICH_BAN_MVP = {
           "truong": "nganh",
           "asker": {
             "speaker": "tung",
-            "expression": "neutral",
+            "expression": "ao-xanh",
             "text": "Cậu học ngành gì?"
           },
           "xucXac": null,

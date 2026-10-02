@@ -84,7 +84,7 @@ export interface RawDuKien {
 }
 
 /**
- * `- Ảnh: <sprite> · x <n>% · y <n>% · rộng <n>%` — sprite là `obj-…` (tệp src/assets/mvp/vat/) hoặc `nv:<mã nhân vật>`.
+ * `- Ảnh: <sprite> · x <n>% · y <n>% · rộng <n>%` — sprite là `obj-…` (tệp src/assets/mvp/vat/) hoặc `nv:<mã nhân vật>` (thêm `/<biểu cảm>` để chọn ảnh, vd `nv:tung/ao-xanh`).
  * (x, y) là CHÂN ẢNH (điểm giữa cạnh dưới) tính theo % bề rộng / bề cao nền; rộng = % bề rộng nền.
  */
 export interface RawAnhDuKien {
@@ -96,7 +96,7 @@ export interface RawAnhDuKien {
 
 /** Đọc giá trị dòng "Ảnh"; sai cú pháp → ném lỗi (thông báo đầy đủ). Không kiểm miền 0–100 (luật làm). */
 export function docAnhDuKien(v: string): RawAnhDuKien {
-  const m = /^(obj-[a-z0-9-]+|nv:[a-z0-9-]+)\s*·\s*x\s+(-?\d+(?:[.,]\d+)?)%\s*·\s*y\s+(-?\d+(?:[.,]\d+)?)%\s*·\s*rộng\s+(-?\d+(?:[.,]\d+)?)%$/.exec(v.trim());
+  const m = /^(obj-[a-z0-9-]+|nv:[a-z0-9-]+(?:\/[a-z0-9-]+)?)\s*·\s*x\s+(-?\d+(?:[.,]\d+)?)%\s*·\s*y\s+(-?\d+(?:[.,]\d+)?)%\s*·\s*rộng\s+(-?\d+(?:[.,]\d+)?)%$/.exec(v.trim());
   if (!m) throw new Error(`"Ảnh" phải là "<obj-… hoặc nv:<mã>> · x <n>% · y <n>% · rộng <n>%": "${v}"`);
   const so = (t: string | undefined): number => Number((t ?? '').replace(',', '.'));
   return { sprite: m[1] ?? '', x: so(m[2]), y: so(m[3]), rong: so(m[4]) };

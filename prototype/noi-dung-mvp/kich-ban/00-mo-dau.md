@@ -22,7 +22,7 @@
 - [KHÁM PHÁ kp-sanh-ktx]
   - obj-thong-bao-thang-may · x 12% · y 44% · rộng 4% → md-00-thang-may · nhãn: Xem tờ giấy trên cửa thang máy
   - obj-so-do-ktx · x 44% · y 40% · rộng 11% → md-00-so-do · nhãn: Xem bảng tin
-  - nv:tung · x 80% · y 100% · rộng 17% → md-00-gap-tung · sau: md-00-thang-may, md-00-so-do · nhãn: Hỏi đường cậu bạn áo xanh
+  - nv:tung/ao-xanh · x 80% · y 100% · rộng 17% → md-00-gap-tung · sau: md-00-thang-may, md-00-so-do · nhãn: Hỏi đường cậu bạn áo xanh
 
 ### md-00-thang-may — Tờ giấy dán trên cửa thang máy {cảnh: sanh-ktx}
 
@@ -35,10 +35,10 @@
 ### md-00-gap-tung — Hỏi đường cậu bạn áo xanh: tạo nhân vật {cảnh: sanh-ktx}
 
 - [LỜI md-00-gap-tung.1]
-- [TẠO NHÂN VẬT ten] tung (neutral): "Thế cậu tên gì?"
+- [TẠO NHÂN VẬT ten] tung (ao-xanh): "Thế cậu tên gì?"
   - xúc xắc: Ngại nghĩ thì để tớ gieo xúc xắc đặt hộ cho. Đảm bảo không xui.
 - [LỜI md-00-gap-tung.2]
-- [TẠO NHÂN VẬT nganh] tung (neutral): "Cậu học ngành gì?"
+- [TẠO NHÂN VẬT nganh] tung (ao-xanh): "Cậu học ngành gì?"
   - lựa chọn: Kế toán · Quản trị kinh doanh · Tài chính – Ngân hàng · Marketing · Thương mại điện tử
 - [LỜI md-00-gap-tung.3]
 - [ĐI TỚI md-01-ktx]
