@@ -16,7 +16,7 @@ export const KICH_BAN_MVP = {
       "ten": "Tùng",
       "hoTen": "Trần Tùng",
       "trongCau": "Tùng",
-      "vai": "Năm 1 Du lịch, bạn cùng phòng KTX 408 của người chơi, cháu chú Cường, tình nguyện viên đón tân sinh viên tuần đầu (áo xanh tình nguyện: mặc lại ở Vụ 5 khi đón Hoài tới buổi họp; CHƯA CÓ ẢNH áo xanh). Dẫn đường, nhắc lịch. \"Tớ cá là…\"",
+      "vai": "Năm 1 Du lịch, bạn cùng phòng KTX 408 của người chơi, cháu chú Cường, tình nguyện viên đón tân sinh viên tuần đầu (áo xanh tình nguyện: mặc hôm nhập học và mặc lại ở Vụ 5 khi đón Hoài tới buổi họp; ảnh là các biểu cảm `ao-xanh…`: sơ mi xanh dài tay, cờ đỏ sao vàng ở ngực, mũ tai bèo xanh lá đeo sau lưng, riêng `ao-xanh-doi-mu` đội mũ; ngày thường mặc áo thể thao lam). Dẫn đường, nhắc lịch. \"Tớ cá là…\"",
       "bieuCam": [
         "neutral",
         "happy",
@@ -24,7 +24,15 @@ export const KICH_BAN_MVP = {
         "surprised",
         "thinking",
         "gai-dau",
-        "chi-tay"
+        "chi-tay",
+        "ao-xanh",
+        "ao-xanh-happy",
+        "ao-xanh-worried",
+        "ao-xanh-gai-dau",
+        "ao-xanh-chi-tay",
+        "ao-xanh-surprised",
+        "ao-xanh-thinking",
+        "ao-xanh-doi-mu"
       ],
       "xuatHienTu": {
         "kind": "mo-dau"
@@ -322,7 +330,7 @@ export const KICH_BAN_MVP = {
       "ten": "Nam",
       "hoTen": null,
       "trongCau": "Nam",
-      "vai": "Thành viên CLB Robotics, trực kênh và giữ sổ sách của xưởng. Xuất hiện từ Vụ 2 (tin đồn): trông đáng ngờ vì là người trực kênh, tới Vụ 3 mới được gỡ nghi. Không nói học năm mấy (dàn ý mùa 1). Chưa có ảnh: chỉ dùng biểu cảm neutral.",
+      "vai": "Thành viên CLB Robotics, trực kênh và giữ sổ sách của xưởng. Xuất hiện từ Vụ 2 (tin đồn): trông đáng ngờ vì là người trực kênh, tới Vụ 3 mới được gỡ nghi. Không nói học năm mấy (dàn ý mùa 1).",
       "bieuCam": [
         "neutral"
       ],
@@ -343,7 +351,7 @@ export const KICH_BAN_MVP = {
       "ten": "Khánh",
       "hoTen": null,
       "trongCau": "Khánh",
-      "vai": "Chủ tịch Hội sinh viên, kiêm trưởng CLB Robotics (năm 4). Người đứng sau lá thư, tin đồn và ba đơn mượn tên Nam: lấy tiền quỹ CLB Thám Tử cho việc riêng, ghi thành linh kiện. Lên hình thoáng qua ở Vụ 2 (xưởng) và cuối Vụ 4 (phòng CLB), đối chất ở Vụ 5 (phòng họp); nhận theo từng nhịp chứng cứ, không bị bêu, không nêu việc riêng. Không gọi họ tên đầy đủ. Chưa có ảnh: chỉ dùng biểu cảm neutral.",
+      "vai": "Chủ tịch Hội sinh viên, kiêm trưởng CLB Robotics (năm 4). Người đứng sau lá thư, tin đồn và ba đơn mượn tên Nam: lấy tiền quỹ CLB Thám Tử cho việc riêng, ghi thành linh kiện. Lên hình thoáng qua ở Vụ 2 (xưởng) và cuối Vụ 4 (phòng CLB), đối chất ở Vụ 5 (phòng họp); nhận theo từng nhịp chứng cứ, không bị bêu, không nêu việc riêng. Không gọi họ tên đầy đủ.",
       "bieuCam": [
         "neutral"
       ],
@@ -364,7 +372,7 @@ export const KICH_BAN_MVP = {
       "ten": "Bách",
       "hoTen": null,
       "trongCau": "Bách",
-      "vai": "Phó CLB Robotics (năm 3). Một trong ba người giữ chìa phòng văn phòng xưởng. Lên hình ở cuối Vụ 3. Chưa có ảnh: chỉ dùng biểu cảm neutral.",
+      "vai": "Phó CLB Robotics (năm 3). Một trong ba người giữ chìa phòng văn phòng xưởng. Lên hình ở cuối Vụ 3.",
       "bieuCam": [
         "neutral"
       ],
@@ -385,7 +393,7 @@ export const KICH_BAN_MVP = {
       "ten": "Thảo",
       "hoTen": null,
       "trongCau": "Thảo",
-      "vai": "Phụ trách kỹ thuật CLB Robotics (năm 3). Một trong ba người giữ chìa phòng văn phòng xưởng; tối Chủ nhật hay ra phòng máy in sơ đồ mạch. Lên hình ở cuối Vụ 3 và sau buổi họp Vụ 5. Chưa có ảnh: chỉ dùng biểu cảm neutral.",
+      "vai": "Phụ trách kỹ thuật CLB Robotics (năm 3). Một trong ba người giữ chìa phòng văn phòng xưởng; tối Chủ nhật hay ra phòng máy in sơ đồ mạch. Lên hình ở cuối Vụ 3 và sau buổi họp Vụ 5.",
       "bieuCam": [
         "neutral"
       ],
@@ -497,6 +505,11 @@ export const KICH_BAN_MVP = {
       "anhNen": null
     },
     {
+      "id": "hanh-lang-phong-hop",
+      "ten": "Hành lang ngoài phòng họp",
+      "anhNen": null
+    },
+    {
       "id": "ban-do",
       "ten": "Bản đồ trường",
       "anhNen": null
@@ -504,7 +517,7 @@ export const KICH_BAN_MVP = {
     {
       "id": "xuong-robot",
       "ten": "Xưởng CLB Robotics",
-      "anhNen": "bg-mvp-nha-van-hoa"
+      "anhNen": null
     },
     {
       "id": "thu-vien",
@@ -770,7 +783,7 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "note",
-          "text": "Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Xem xong cả hai thì một cậu sinh viên áo sơ mi cam, cổ đeo thẻ, từ hành lang bên phải đi ra."
+          "text": "Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Xem xong cả hai thì một cậu sinh viên áo xanh tình nguyện, mũ tai bèo đeo sau lưng, từ hành lang bên phải đi ra."
         },
         {
           "type": "line",
@@ -809,7 +822,7 @@ export const KICH_BAN_MVP = {
                 "md-00-thang-may",
                 "md-00-so-do"
               ],
-              "nhan": "Hỏi đường cậu bạn áo cam"
+              "nhan": "Hỏi đường cậu bạn áo xanh"
             }
           ]
         }
@@ -858,7 +871,7 @@ export const KICH_BAN_MVP = {
     },
     {
       "id": "md-00-gap-tung",
-      "title": "Hỏi đường cậu bạn áo cam: tạo nhân vật",
+      "title": "Hỏi đường cậu bạn áo xanh: tạo nhân vật",
       "canh": "sanh-ktx",
       "mocSomNhat": 0,
       "nodes": [
@@ -870,7 +883,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
+          "expression": "ao-xanh-happy",
           "text": "Khuất sau hành lang kia. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?"
         },
         {
@@ -881,7 +894,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
+          "expression": "ao-xanh-happy",
           "text": "Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ là Tùng, học Du lịch."
         },
         {
@@ -898,7 +911,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
+          "expression": "ao-xanh-happy",
           "text": "{{nv.nguoi-choi}} à. Dễ gọi đấy."
         },
         {
@@ -921,7 +934,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "neutral",
+          "expression": "ao-xanh",
           "text": "Lại dân kinh tế. Cả phòng chẳng ai học Toán, sau này thi biết mượn vở ai đây."
         },
         {
@@ -932,7 +945,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "chi-tay",
+          "expression": "ao-xanh-chi-tay",
           "text": "Thế là chia việc được rồi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali. Tớ cá là ba phút là tới tầng bốn."
         },
         {
@@ -968,7 +981,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
+          "expression": "ao-xanh-happy",
           "text": "Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường, tuần sau vào học đỡ lạc."
         },
         {
@@ -995,7 +1008,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "neutral",
+          "expression": "ao-xanh",
           "text": "Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ."
         },
         {
@@ -1007,7 +1020,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "neutral",
+          "expression": "ao-xanh",
           "text": "Dạ không ạ, cháu dẫn bạn đi xem trường thôi."
         },
         {
@@ -1046,19 +1059,19 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
+          "expression": "ao-xanh-happy",
           "text": "Bọn cháu đi xem trường ạ."
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
+          "expression": "ao-xanh-happy",
           "text": "Chú tớ đấy, {{nv.nguoi-choi}}. Chú trực cổng này lâu lắm rồi."
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "neutral",
+          "expression": "ao-xanh",
           "text": "Chú ơi, qua nhà văn hóa cháu thấy dán poster CLB Thám Tử. Chú biết CLB đấy không?"
         },
         {
@@ -1076,7 +1089,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
+          "expression": "ao-xanh-happy",
           "text": "Thứ Bảy đi với tớ nhé?"
         },
         {
@@ -3150,6 +3163,18 @@ export const KICH_BAN_MVP = {
           "text": "Được. Tớ nhớ đấy nhé."
         },
         {
+          "type": "goto",
+          "to": "ket-that-clb"
+        }
+      ]
+    },
+    {
+      "id": "ket-that-clb",
+      "title": "Chiều muộn ở phòng CLB: mẩu giấy trong sổ chị Linh",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
           "type": "consequence",
           "hauQua": [
             {
@@ -3308,6 +3333,10 @@ export const KICH_BAN_MVP = {
           "speaker": "hieu",
           "expression": "neutral",
           "text": "Trong kênh sinh viên. Ai gửi đầu thì tớ không để ý."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-v2-hieu-cua"
         },
         {
           "type": "show-document",
@@ -3537,6 +3566,10 @@ export const KICH_BAN_MVP = {
           "text": "Vậy là hai chỗ kiểm được. Xem cả hai, hay xem một rồi về báo chị Minh Anh, tùy mình."
         },
         {
+          "type": "image",
+          "imageId": "chibi-v2-tung-chi-nam"
+        },
+        {
           "type": "note",
           "text": "Cửa xưởng mở. Một anh áo sơ mi trắng bước vào, thẻ Hội sinh viên đeo ở cổ, đi thẳng tới kệ hồ sơ."
         },
@@ -3573,6 +3606,10 @@ export const KICH_BAN_MVP = {
           "speaker": "nam",
           "expression": "neutral",
           "text": "Anh Khánh lo cho đội lắm. Kinh phí đi giải năm nay toàn anh ấy chạy."
+        },
+        {
+          "type": "image",
+          "imageId": "cg-v2-khanh-xuong"
         },
         {
           "type": "consequence",
@@ -4050,6 +4087,10 @@ export const KICH_BAN_MVP = {
           "text": "Chưa biết. Cất vào hồ sơ đã."
         },
         {
+          "type": "image",
+          "imageId": "chibi-v2-manh-giay-linh"
+        },
+        {
           "type": "goto",
           "to": "tin-ket-luan"
         }
@@ -4353,14 +4394,14 @@ export const KICH_BAN_MVP = {
         },
         {
           "type": "goto",
-          "to": "v3-thu-vien"
+          "to": "v3-len-thu-vien"
         }
       ]
     },
     {
-      "id": "v3-thu-vien",
-      "title": "Thư viện: bản ghi quẹt thẻ của chính Nam",
-      "canh": "thu-vien",
+      "id": "v3-len-thu-vien",
+      "title": "Sảnh tòa B: bác Tư ở chân cầu thang",
+      "canh": "sanh-toa-b",
       "mocSomNhat": 1000,
       "nodes": [
         {
@@ -4374,6 +4415,18 @@ export const KICH_BAN_MVP = {
           "expression": "smile",
           "text": "Lại mấy đứa CLB Thám Tử. Lên thư viện à? Tối thứ Hai trên ấy vắng lắm, chỉ có vài đứa quen mặt. Thư viện có mỗi một cửa, ra vào đều phải quẹt thẻ."
         },
+        {
+          "type": "goto",
+          "to": "v3-thu-vien"
+        }
+      ]
+    },
+    {
+      "id": "v3-thu-vien",
+      "title": "Thư viện: bản ghi quẹt thẻ của chính Nam",
+      "canh": "thu-vien",
+      "mocSomNhat": 1000,
+      "nodes": [
         {
           "type": "line",
           "speaker": "narrator",
@@ -4556,6 +4609,10 @@ export const KICH_BAN_MVP = {
           "text": "Tớ đã bảo mà."
         },
         {
+          "type": "image",
+          "imageId": "cg-v3-thu-vien-dem"
+        },
+        {
           "type": "consequence",
           "hauQua": [
             {
@@ -4612,6 +4669,10 @@ export const KICH_BAN_MVP = {
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Thói quen không chứng minh được đúng tối ấy. Nó chỉ cho thấy tớ có lý do ngồi đó. Thứ ghi đúng tối ấy là cửa từ: Nam vào 21 giờ 50, ra 23 giờ 05. Về CLB."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-v3-hai-cai-may"
         },
         {
           "type": "goto",
@@ -5020,6 +5081,10 @@ export const KICH_BAN_MVP = {
           "text": "Chuyện này không chỉ là tin đồn về mình nữa. Các em sang xưởng lần nữa, hỏi xem ai vào được phòng ấy. Hỏi thôi, chưa nghi ai."
         },
         {
+          "type": "image",
+          "imageId": "chibi-v3-ghim-hai-moc"
+        },
+        {
           "type": "goto",
           "to": "v3-chia"
         }
@@ -5070,6 +5135,10 @@ export const KICH_BAN_MVP = {
           "speaker": "tung",
           "expression": "gai-dau",
           "text": "Tối Chủ nhật, phòng máy… Tớ không cá. Tớ ghi."
+        },
+        {
+          "type": "image",
+          "imageId": "cg-v3-to-giao-chia"
         },
         {
           "type": "consequence",
@@ -5402,6 +5471,10 @@ export const KICH_BAN_MVP = {
           "text": "Tớ xin. Tên tớ, tớ phải tự đi tìm xem ai đang dùng."
         },
         {
+          "type": "image",
+          "imageId": "chibi-v4-cung-mot-may"
+        },
+        {
           "type": "consequence",
           "hauQua": [
             {
@@ -5629,6 +5702,10 @@ export const KICH_BAN_MVP = {
           "text": "Biết balo chưa phải biết người. Ghi thẻ, không kết."
         },
         {
+          "type": "image",
+          "imageId": "cg-v4-huy-hieu-sut"
+        },
+        {
           "type": "consequence",
           "hauQua": [
             {
@@ -5678,6 +5755,10 @@ export const KICH_BAN_MVP = {
           "speaker": "narrator",
           "display": "card",
           "text": "Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nghi ngờ mạnh vẫn chưa phải bằng chứng: càng chắc trong lòng, càng phải tìm nguồn thứ hai."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-v4-khong-ca"
         },
         {
           "type": "end"
@@ -6161,6 +6242,10 @@ export const KICH_BAN_MVP = {
       "mocSomNhat": 1000,
       "nodes": [
         {
+          "type": "image",
+          "imageId": "cg-v5-ao-xanh-don-hoai"
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "text": "Thứ Hai tuần sau. Thầy Quang mời cả Hoài lên dự buổi họp. Hoài nhắn cho Duy đúng một dòng: \"Nhờ bạn áo xanh hôm nhập học ra đón tớ được không? Tớ chỉ nhớ mỗi cái áo.\""
@@ -6178,7 +6263,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "neutral",
+          "expression": "ao-xanh-doi-mu",
           "text": "Không. Cậu nhớ gì thì nói chừng ấy. Hôm nay tớ xem biển rồi, không dẫn nhầm tòa nữa đâu."
         },
         {
@@ -6190,7 +6275,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "gai-dau",
+          "expression": "ao-xanh-gai-dau",
           "text": "Tớ biết. Bạn ấy thấy gì thì bạn ấy tự thưa."
         },
         {
@@ -6602,7 +6687,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "neutral",
+          "expression": "ao-xanh",
           "text": "Tớ không nói hộ được. Cậu thấy gì thì thưa với thầy."
         },
         {
@@ -6620,6 +6705,10 @@ export const KICH_BAN_MVP = {
         {
           "type": "task",
           "text": "Trình một nguồn nối lá thư với một người, không dính tới cái huy hiệu"
+        },
+        {
+          "type": "image",
+          "imageId": "cg-v5-huy-hieu-hoai"
         },
         {
           "type": "doi-chat",
@@ -7402,7 +7491,7 @@ export const KICH_BAN_MVP = {
     {
       "id": "v5-sau-hop",
       "title": "Hành lang sau buổi họp: chiếc chìa",
-      "canh": "phong-hop",
+      "canh": "hanh-lang-phong-hop",
       "mocSomNhat": 1000,
       "nodes": [
         {
@@ -7441,7 +7530,7 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "worried",
+          "expression": "ao-xanh-worried",
           "text": "Tớ chắc là anh ấy từ hôm thấy cái huy hiệu. Thế mà trúng rồi tớ chả thấy vui gì cả."
         },
         {
@@ -7465,8 +7554,12 @@ export const KICH_BAN_MVP = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
+          "expression": "ao-xanh-happy",
           "text": "Đơn ở chỗ Duy. Chiều thứ Tư, phòng CLB. Lần này tớ dẫn đúng tòa."
+        },
+        {
+          "type": "image",
+          "imageId": "cg-v5-chia-va-huy-hieu"
         },
         {
           "type": "goto",
@@ -7526,6 +7619,14 @@ export const KICH_BAN_MVP = {
           "text": "Dữ liệu chỉ ra ai cần hỏi. Người trả lời mới là người nói \"vì sao\". Mùa 1 khép lại ở chỗ chứng cứ dừng."
         },
         {
+          "type": "image",
+          "imageId": "chibi-v5-dong-dau"
+        },
+        {
+          "type": "image",
+          "imageId": "cg-ket-vu5"
+        },
+        {
           "type": "jump-if",
           "dieuKien": {
             "kind": "va",
@@ -7558,7 +7659,7 @@ export const KICH_BAN_MVP = {
     {
       "id": "v5-ngan-tu",
       "title": "Cảnh sau kết (chỉ khi đủ bốn mẩu giấy): ngăn tủ khóa trong phòng CLB",
-      "canh": "phong-clb",
+      "canh": "phong-clb-dem",
       "mocSomNhat": 1000,
       "nodes": [
         {
@@ -7685,6 +7786,10 @@ export const KICH_BAN_MVP = {
           "type": "line",
           "speaker": "player",
           "text": "Trang cuối có thêm một dòng, chữ chị Linh: \"Manh mối cũ, câu hỏi mới.\""
+        },
+        {
+          "type": "image",
+          "imageId": "cg-v5-ho-so-vu-dau"
         },
         {
           "type": "end"
@@ -7971,6 +8076,10 @@ export const KICH_BAN_MVP = {
           "text": "Gọt cho các dòng về cùng một kiểu rồi mới so. Tớ ghi vào sổ rồi đấy."
         },
         {
+          "type": "image",
+          "imageId": "chibi-phu-got-ma-phong"
+        },
+        {
           "type": "goto",
           "to": "v2-xac-nhan"
         }
@@ -8243,6 +8352,10 @@ export const KICH_BAN_MVP = {
           "text": "Duy và Minh Anh mở tủ thiết bị dùng chung. Ngăn giữa có một chiếc micro không dây, đế sạc còn cắm điện, trên thân dán nhãn MIC-02."
         },
         {
+          "type": "image",
+          "imageId": "chibi-phu-tu-micro"
+        },
+        {
           "type": "consequence",
           "hauQua": [
             {
@@ -8509,6 +8622,10 @@ export const KICH_BAN_MVP = {
           "speaker": "ha-vy",
           "expression": "thinking",
           "text": "Đếm dòng là đếm bản ghi, không phải đếm lần chuyển tiền."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-phu-mot-bien-nhan"
         },
         {
           "type": "question",
@@ -10536,6 +10653,7 @@ export const KICH_BAN_MVP = {
       "heading": "Ảnh chụp tin đồn",
       "fields": {
         "Tiêu đề": "Tin đang lan trên kênh sinh viên",
+        "Ảnh": "doc-tin-don",
         "Nguồn": "Cô Lan chuyển cho Minh Anh",
         "Nội dung hiển thị": ""
       },
@@ -10588,6 +10706,7 @@ export const KICH_BAN_MVP = {
       "heading": "Bảng đăng ký dùng xưởng",
       "fields": {
         "Tiêu đề": "Bảng đăng ký dùng xưởng, tuần 07/10",
+        "Ảnh": "doc-lich-xuong",
         "Nguồn": "Dán cạnh cửa xưởng CLB Robotics",
         "Nội dung hiển thị": ""
       },
@@ -10706,6 +10825,7 @@ export const KICH_BAN_MVP = {
       "heading": "Giấy yêu cầu giải trình ngân sách",
       "fields": {
         "Tiêu đề": "Giấy của Ban kiểm tra Hội sinh viên gửi xưởng Robotics",
+        "Ảnh": "doc-thu-hoi-don",
         "Nguồn": "Nam mang tới phòng CLB",
         "Nội dung hiển thị": ""
       },
@@ -10722,6 +10842,7 @@ export const KICH_BAN_MVP = {
       "heading": "Bảng phiên đăng nhập do thầy Khải xuất",
       "fields": {
         "Tiêu đề": "Bản xuất nguyên bản, có dấu xác nhận",
+        "Ảnh": "doc-phien-dang-nhap",
         "Nguồn": "Thầy Khải (phòng máy, nơi đặt máy chủ), theo đề nghị của Thầy Quang",
         "Nội dung hiển thị": ""
       },
@@ -10785,6 +10906,7 @@ export const KICH_BAN_MVP = {
       "heading": "[Tờ giao chìa: Khánh, Bách, Thảo]",
       "fields": {
         "Tiêu đề": "Tờ giao chìa dán ở cửa phòng văn phòng xưởng",
+        "Ảnh": "doc-giao-chia",
         "Nguồn": "Tờ giấy dán ở cửa phòng, xem cùng Nam cuối Vụ 3",
         "Nội dung": "Tờ giao chìa phòng văn phòng xưởng Robotics ghi ba người giữ chìa: Khánh (trưởng CLB), Bách (phó CLB), Thảo (kỹ thuật). Tờ giấy nói ai có chìa, không nói ai mở cửa tối nào. Bách nói tối 07/10 về quê; Thảo nói chìa của mình để ngăn bàn ngoài xưởng, ai cũng lấy được."
       },
@@ -10796,6 +10918,7 @@ export const KICH_BAN_MVP = {
       "heading": "[Huy hiệu sứt: lỗi khuôn, Khánh giữ]",
       "fields": {
         "Tiêu đề": "Cái huy hiệu bánh răng sứt một răng",
+        "Ảnh": "doc-huy-hieu-sut",
         "Nguồn": "Nam, sau khi Khánh ghé phòng CLB",
         "Nội dung": "Robotics làm ba chục huy hiệu hồi đầu năm; cái sứt một răng là lỗi khuôn, Khánh xin giữ và gắn trên balo. Balo hay để ở xưởng, ai cũng cầm được. Biết balo chưa phải biết người."
       },
@@ -10818,6 +10941,7 @@ export const KICH_BAN_MVP = {
       "heading": "Bảng kiểm kê xưởng của Nam",
       "fields": {
         "Tiêu đề": "Kiểm kê linh kiện xưởng, 18/10",
+        "Ảnh": "doc-kiem-ke",
         "Nguồn": "Nam đếm tay từng loại, hai lần",
         "Nội dung hiển thị": ""
       },
@@ -10845,6 +10969,7 @@ export const KICH_BAN_MVP = {
       "heading": "Bản xuất sổ quỹ khối CLB",
       "fields": {
         "Tiêu đề": "Sổ chi và bảng quỹ, Phòng Kế hoạch gửi theo yêu cầu của thầy Quang",
+        "Ảnh": "doc-so-quy",
         "Nguồn": "Phòng Kế hoạch, Cô Hạnh gửi theo chữ ký của Thầy Quang; quy chế do Cô Lan in kèm (trang sau: CLB mất phòng thì vào diện chờ giải thể, sao kê quỹ gửi về Hội sinh viên thay vì chủ quỹ; giải thể thì chủ tịch Hội ký nhận bàn giao)",
         "Nội dung hiển thị": ""
       },
@@ -10897,6 +11022,7 @@ export const KICH_BAN_MVP = {
       "heading": "Hồ sơ vụ thứ nhất của CLB",
       "fields": {
         "Tiêu đề": "Cuốn sổ bìa cứng trong ngăn tủ khóa",
+        "Ảnh": "doc-ho-so-vu-dau",
         "Nguồn": "Ngăn dưới tủ hồ sơ phòng CLB, chìa dán sau bảng nguyên tắc",
         "Nội dung hiển thị": ""
       },
@@ -10935,6 +11061,7 @@ export const KICH_BAN_MVP = {
       "heading": "Bản xuất sổ sử dụng phòng",
       "fields": {
         "Tiêu đề": "Bản xuất sổ sử dụng phòng, tháng 10",
+        "Ảnh": "doc-v2-raw-logs",
         "Nguồn": "Duy xuất từ máy quản lý phòng của tòa nhà",
         "Nội dung hiển thị": ""
       },
@@ -10987,6 +11114,7 @@ export const KICH_BAN_MVP = {
       "heading": "Sổ tài sản và phiếu luân chuyển",
       "fields": {
         "Tiêu đề": "Sổ tài sản CLB và phiếu luân chuyển của tòa nhà",
+        "Ảnh": "doc-mic-so-tai-san",
         "Nguồn": "Duy giữ sổ tài sản; phiếu luân chuyển do tổ thiết bị tòa nhà lập",
         "Nội dung hiển thị": ""
       },
@@ -11039,6 +11167,7 @@ export const KICH_BAN_MVP = {
       "heading": "Bản xuất thu chi buổi hướng dẫn SQL",
       "fields": {
         "Tiêu đề": "Bản xuất giao dịch, buổi hướng dẫn SQL cho tân thành viên",
+        "Ảnh": "doc-hoan-ban-xuat",
         "Nguồn": "Minh Anh xuất từ sổ thu chi CLB",
         "Nội dung hiển thị": ""
       },
@@ -11080,6 +11209,7 @@ export const KICH_BAN_MVP = {
       "heading": "Biên nhận ngân hàng của phiếu PH-04",
       "fields": {
         "Tiêu đề": "Biên nhận hoàn tiền, phiếu PH-04",
+        "Ảnh": "doc-hoan-bien-nhan",
         "Nguồn": "Ngân hàng gửi, Minh Anh giữ",
         "Nội dung hiển thị": ""
       },

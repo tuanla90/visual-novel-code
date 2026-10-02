@@ -48,6 +48,7 @@
 
 ### v5-doi-chat — Phòng họp, nhịp một: "đúng thẩm quyền" {cảnh: phong-hop}
 
+- [ẢNH cg-v5-ao-xanh-don-hoai]
 - [LỜI v5-doi-chat.1]
 - [ĐỐI CHẤT dc-khanh] khanh: "Ba khoản đó là chi cho đội robot trước giải quốc gia. Khoản dưới một triệu, chủ tịch Hội duyệt là đúng thẩm quyền. Các bạn có gì mà nói tôi sai?"
   - {ev-chi-vuot-muc} [ĐỦ CĂN CỨ] → phản hồi: **minh-anh** (neutral): Từng khoản thì đúng thẩm quyền ạ. Nhưng sổ chi ghi ba khoản ấy vào quỹ CLB Thám Tử, không phải quỹ Robotics. Cộng lại hai triệu tư, vượt ngưỡng phải giải trình, người duyệt là anh Khánh. Em là chủ quỹ mà chưa từng thấy.<br>**thay-quang** (neutral): Vượt ngưỡng thì phải giải trình. Em Khánh, giải trình đi.
@@ -81,6 +82,7 @@
 ### v5-nhan-tien — Khánh nhận phần tiền; nhịp ba: lá thư {cảnh: phong-hop}
 
 - [LỜI v5-nhan-tien.1]
+- [ẢNH cg-v5-huy-hieu-hoai]
 - [ĐỐI CHẤT dc-khanh-thu] khanh: "Tiền thì tôi nhận. Nhưng lá thư với cái tin thì đừng gán cho tôi. Huy hiệu phát ba chục người, tài khoản in với tài khoản kênh cả ban chủ nhiệm dùng. Phiếu nào của các bạn có tên tôi?"
   - {clue-so-phong-may} [ĐỦ CĂN CỨ] → phản hồi: **player**: Nhật ký in ghi lá thư in lúc 23 giờ 10 tối Chủ nhật 15/9, bằng tài khoản của Robotics. Sổ ký vào phòng tối đó có bảy dòng, chỉ hai người của Robotics. Chị Thảo ra lúc 21 giờ 30. Anh vào 22 giờ 40, ra 23 giờ 20.<br>**khanh** (neutral): Em vào in sơ đồ cho đội ạ.<br>**thay-quang** (neutral): Hợp lý.
   - {clue-loi-chu-cuong} [HỖ TRỢ] → phản hồi: **ha-vy** (neutral): Sáng thứ Hai 16/9, người đưa phong bì ở cổng ký túc xá đeo balo có huy hiệu bánh răng sứt một răng.<br>**chu-cuong** (neutral): Đúng cái huy hiệu trên balo kia. Mặt thì chú không dám nói, hôm ấy trời mới sáng.<br>**khanh** (neutral): Balo tôi hay để ở xưởng, ai cầm chả được. Một cái huy hiệu thôi à?<br>**ha-vy** (thinking): Đúng, mới một nguồn. Cần một nguồn không dính gì tới cái huy hiệu.
@@ -149,18 +151,21 @@
 - [LỜI v5-bien-ban.2]
 - [ĐI TỚI v5-chot]
 
-### v5-sau-hop — Hành lang sau buổi họp: chiếc chìa {cảnh: phong-hop}
+### v5-sau-hop — Hành lang sau buổi họp: chiếc chìa {cảnh: hanh-lang-phong-hop}
 
 - [LỜI v5-sau-hop.1]
+- [ẢNH cg-v5-chia-va-huy-hieu]
 - [ĐI TỚI v5-chot]
 
 ### v5-chot — Phòng CLB: đóng hồ sơ mùa {cảnh: phong-clb}
 
 - [LỜI v5-ket-luan.1]
+- [ẢNH chibi-v5-dong-dau]
+- [ẢNH cg-ket-vu5]
 - [NẾU có clue-loi-nhan-linh-1 và có clue-loi-nhan-linh-2 và có clue-loi-nhan-linh-3 và có clue-loi-nhan-linh-4] → đi tới v5-ngan-tu
 - [KẾT THÚC]
 
-### v5-ngan-tu — Cảnh sau kết (chỉ khi đủ bốn mẩu giấy): ngăn tủ khóa trong phòng CLB {cảnh: phong-clb}
+### v5-ngan-tu — Cảnh sau kết (chỉ khi đủ bốn mẩu giấy): ngăn tủ khóa trong phòng CLB {cảnh: phong-clb-dem}
 
 - [LỜI v5-ngan-tu.1]
 - [HỎI q-v5-chia] duy: "Bốn mẩu giấy, một ngăn tủ khóa. Chị Linh để chìa ở đâu trong phòng này?"
@@ -169,4 +174,5 @@
   - (C) {id: cay-tu} Không có chìa đâu, cạy tủ thôi. → phản hồi: **ha-vy** (thinking): Chị ấy để giấy cho mình tìm, không phải để mình phá.
 - [HẬU QUẢ] mở manh mối clue-loi-nhan-linh-5, hiện tài liệu doc-ho-so-vu-dau
 - [LỜI v5-ngan-tu.2]
+- [ẢNH cg-v5-ho-so-vu-dau]
 - [KẾT THÚC]

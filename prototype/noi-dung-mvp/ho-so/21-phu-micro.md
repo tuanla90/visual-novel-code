@@ -4,6 +4,7 @@
 
 ### doc-mic-so-tai-san — Sổ tài sản và phiếu luân chuyển
 - Tiêu đề: Sổ tài sản CLB và phiếu luân chuyển của tòa nhà
+- Ảnh: doc-mic-so-tai-san
 - Nguồn: {{nv.duy}} giữ sổ tài sản; phiếu luân chuyển do tổ thiết bị tòa nhà lập
 - Nội dung hiển thị:
 > Sổ tài sản: mã tài sản, tên, chỗ để ghi lúc kiểm kê đầu kỳ. Năm thiết bị, trong đó có hai chiếc micro.

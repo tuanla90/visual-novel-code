@@ -10,6 +10,7 @@
 - [LỜI p-mic-mo.2]
 - [THỬ THÁCH c-mic-phieu]
 - [LỜI p-mic-mo.3]
+- [ẢNH chibi-phu-tu-micro]
 - [HẬU QUẢ] mở manh mối clue-mic-ma-dan
 - [LỜI p-mic-mo.4]
 - [VÀO quan]

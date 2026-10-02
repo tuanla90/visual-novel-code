@@ -35,6 +35,7 @@
 - [GHI SỔ chuan-hoa]
 - [GHI SỔ sap-xep]
 - [LỜI v2-tra.2]
+- [ẢNH chibi-phu-got-ma-phong]
 - [ĐI TỚI v2-xac-nhan]
 
 ### v2-xac-nhan — Duy dò sổ giấy; Quân hỏi hồ sơ ghi câu nào {cảnh: phong-clb}

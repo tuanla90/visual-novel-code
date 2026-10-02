@@ -1,0 +1,1223 @@
+{
+ "_ghi_chu": "Hàng đợi Topview (GPT Image 2.5 Flare, 1K, medium, Unlimited free) thay TOÀN BỘ ảnh trong game của dàn nhân vật mới (01/10/2026).\n\nẢnh neo đã chốt: xem `sinh-hang-doi-dan-moi-2026-10-01.py` và art/README.md. Từ sáu ảnh neo đó sinh lại mọi ảnh đang có trong game:\n  A. chân dung: bản thường + biểu cảm (\"chỉ đổi mặt\") + dáng (\"chỉ đổi tay\"), nền hồng tím để tách nền;\n  B. chibi từng người, chibi gợi ý, chibi nhóm;\n  C. ảnh giới thiệu 16:9;\n  D. CG bìa và kết.\nẢnh tham chiếu: \"T:<id>\" = ảnh ra của task Topview mang [id: <id>] (mã task trong topview-task-2026-10-01.json, hoặc ảnh sinh ngay trong\nhàng đợi này); \"G:<đường dẫn>|#màu\" = tệp trên GitHub nhánh main, làm phẳng lên nền màu.\nMỗi mục: id (= \"g2-\" + tên tệp đích), khung, ref, mau (khuôn câu lệnh), rieng (phần riêng). Câu lệnh = MAU[mau] với \"{}\" thay bằng rieng.\n\nChạy: python art/prompts/sinh-hang-doi-dan-moi-game-2026-10-01.py [thư mục ghi tệp .js rút gọn]\n→ ghi dan-moi-game-hang-doi-2026-10-01.json cạnh tệp này (câu lệnh đầy đủ).",
+ "hang_doi": [
+  {
+   "id": "g2-char-tung-anchor",
+   "khung": "9:16",
+   "ref": [
+    "T:char-tung-v2-anchor-l5"
+   ],
+   "prompt": "[id: g2-char-tung-anchor] Edit Image1. Keep the character completely identical: same face, expression, pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the background. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-happy",
+   "khung": "9:16",
+   "ref": [
+    "T:char-tung-v2-anchor-l5"
+   ],
+   "prompt": "[id: g2-char-tung-happy] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: a big bright open-mouthed laugh, eyes squinted shut with joy, eyebrows raised. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-worried",
+   "khung": "9:16",
+   "ref": [
+    "T:char-tung-v2-anchor-l5"
+   ],
+   "prompt": "[id: g2-char-tung-worried] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: worried and sheepish: eyebrows drawn together and up, an awkward crooked closed smile, a small sweat drop at the temple. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-surprised",
+   "khung": "9:16",
+   "ref": [
+    "T:char-tung-v2-anchor-l5"
+   ],
+   "prompt": "[id: g2-char-tung-surprised] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: surprised: eyes wide open, eyebrows high, mouth in a small open \"o\". Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-thinking",
+   "khung": "9:16",
+   "ref": [
+    "T:char-tung-v2-anchor-l5"
+   ],
+   "prompt": "[id: g2-char-tung-thinking] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: thinking hard: eyes looking up to one side, lips pressed together, one eyebrow lowered. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-gai-dau",
+   "khung": "9:16",
+   "ref": [
+    "T:char-tung-v2-anchor-l5"
+   ],
+   "prompt": "[id: g2-char-tung-gai-dau] Edit Image1. Keep the same character: same face shape, same head angle, head size and head position, same hair, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the arms and hands and the facial expression as described. Pose: one hand scratching the back of his head with the elbow raised; the other hand lowers the folded map to his side. Expression: embarrassed sheepish smile, eyebrows tilted up, a small sweat drop at the temple. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-chi-tay",
+   "khung": "9:16",
+   "ref": [
+    "T:char-tung-v2-anchor-l5"
+   ],
+   "prompt": "[id: g2-char-tung-chi-tay] Edit Image1. Keep the same character: same face shape, same head angle, head size and head position, same hair, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the arms and hands and the facial expression as described. Pose: one hand pointing its index finger forward toward the viewer at chest height, confident; the other hand holds the folded map down at his side. Expression: cocky playful grin, one eyebrow raised, as if making a bet. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-ha-vy-anchor",
+   "khung": "9:16",
+   "ref": [
+    "T:char-ha-vy-v2-anchor-l3"
+   ],
+   "prompt": "[id: g2-char-ha-vy-anchor] Edit Image1. Keep the character completely identical: same face, expression, pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the background. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-ha-vy-thinking",
+   "khung": "9:16",
+   "ref": [
+    "T:char-ha-vy-v2-anchor-l3"
+   ],
+   "prompt": "[id: g2-char-ha-vy-thinking] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: thinking: eyes looking down to one side, lips slightly pursed, focused. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-ha-vy-smile",
+   "khung": "9:16",
+   "ref": [
+    "T:char-ha-vy-v2-anchor-l3"
+   ],
+   "prompt": "[id: g2-char-ha-vy-smile] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: a small warm closed-mouth smile, eyes softened. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-ha-vy-day-kinh",
+   "khung": "9:16",
+   "ref": [
+    "T:char-ha-vy-v2-anchor-l3"
+   ],
+   "prompt": "[id: g2-char-ha-vy-day-kinh] Edit Image1. Keep the same character: same face shape, same head angle, head size and head position, same hair, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the arms and hands and the facial expression as described. Pose: one hand pushes her glasses up at the bridge with her fingertips while the other arm keeps hugging the cream notebook against her chest. Expression: sharp and calculating, a faint confident smile. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-anchor",
+   "khung": "9:16",
+   "ref": [
+    "T:char-minh-anh-v2-anchor"
+   ],
+   "prompt": "[id: g2-char-minh-anh-anchor] Edit Image1. Keep the character completely identical: same face, expression, pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the background. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-worried",
+   "khung": "9:16",
+   "ref": [
+    "T:char-minh-anh-v2-anchor"
+   ],
+   "prompt": "[id: g2-char-minh-anh-worried] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: worried: eyebrows drawn together and tilted up, lips pressed, eyes slightly lowered. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-happy",
+   "khung": "9:16",
+   "ref": [
+    "T:char-minh-anh-v2-anchor"
+   ],
+   "prompt": "[id: g2-char-minh-anh-happy] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: a bright genuine smile showing a little teeth, eyes slightly squinted. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-serious",
+   "khung": "9:16",
+   "ref": [
+    "T:char-minh-anh-v2-anchor"
+   ],
+   "prompt": "[id: g2-char-minh-anh-serious] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: serious and determined: level eyebrows, firm closed mouth, confident steady gaze. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-khoanh-tay",
+   "khung": "9:16",
+   "ref": [
+    "T:char-minh-anh-v2-anchor"
+   ],
+   "prompt": "[id: g2-char-minh-anh-khoanh-tay] Edit Image1. Keep the same character: same face shape, same head angle, head size and head position, same hair, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the arms and hands and the facial expression as described. Pose: both arms crossed firmly over her chest, the small wristwatch still visible on her wrist. Expression: stern, eyebrows lowered, mouth firm. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-duy",
+   "khung": "9:16",
+   "ref": [
+    "T:char-duy-v2-anchor-l3"
+   ],
+   "prompt": "[id: g2-char-duy] Edit Image1. Keep the character completely identical: same face, expression, pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the background. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-duy-smile",
+   "khung": "9:16",
+   "ref": [
+    "T:char-duy-v2-anchor-l3"
+   ],
+   "prompt": "[id: g2-char-duy-smile] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: a wide warm friendly smile showing a little teeth, relaxed happy eyes. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-duy-serious",
+   "khung": "9:16",
+   "ref": [
+    "T:char-duy-v2-anchor-l3"
+   ],
+   "prompt": "[id: g2-char-duy-serious] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: serious and focused: level eyebrows, steady gaze, mouth in a straight line. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-quan-anchor",
+   "khung": "9:16",
+   "ref": [
+    "T:char-quan-v2-anchor-l2"
+   ],
+   "prompt": "[id: g2-char-quan-anchor] Edit Image1. Keep the character completely identical: same face, expression, pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the background. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-quan-smug",
+   "khung": "9:16",
+   "ref": [
+    "T:char-quan-v2-anchor-l2"
+   ],
+   "prompt": "[id: g2-char-quan-smug] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: smug: a one-sided smirk, chin slightly raised, eyes half-lidded and confident. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-quan-stunned",
+   "khung": "9:16",
+   "ref": [
+    "T:char-quan-v2-anchor-l2"
+   ],
+   "prompt": "[id: g2-char-quan-stunned] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: stunned: eyes wide behind the glasses, eyebrows raised, mouth slightly open, a small sweat drop at the temple. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-quan-chi-man",
+   "khung": "9:16",
+   "ref": [
+    "T:char-quan-v2-anchor-l2"
+   ],
+   "prompt": "[id: g2-char-quan-chi-man] Edit Image1. Keep the same character: same face shape, same head angle, head size and head position, same hair, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the arms and hands and the facial expression as described. Pose: one arm raised, pointing with an open hand up and to the side toward a projector screen outside the frame; the other hand stays behind his back. Expression: cool and assured, a slight smirk. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-nguoi-choi",
+   "khung": "9:16",
+   "ref": [
+    "T:char-nguoi-choi-v2-anchor"
+   ],
+   "prompt": "[id: g2-char-nguoi-choi] Edit Image1. Keep the character completely identical: same face, expression, pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the background. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-chibi-tung",
+   "khung": "1:1",
+   "ref": [
+    "T:char-tung-v2-anchor-l5",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-tung] Primary request: a chibi sticker of the character in Image1, full body, alone. Pose: standing, one thumbs-up, a folded campus map in the other hand, big friendly grin, both feet on the ground. He has a black undercut, a small bandage on his nose, a blue-and-white sports jersey. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-ha-vy",
+   "khung": "1:1",
+   "ref": [
+    "T:char-ha-vy-v2-anchor-l3",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-ha-vy] Primary request: a chibi sticker of the character in Image1, full body, alone. Pose: pushing up her glasses with one finger, hugging a small cream notebook, confident little smile. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-minh-anh",
+   "khung": "1:1",
+   "ref": [
+    "T:char-minh-anh-v2-anchor",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-minh-anh] Primary request: a chibi sticker of the character in Image1, full body, alone. Pose: both hands on her hips, determined proud smile, red ribbon on her high ponytail, small wristwatch. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-duy",
+   "khung": "1:1",
+   "ref": [
+    "T:char-duy-v2-anchor-l3",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-duy] Primary request: a chibi sticker of the character in Image1, full body, alone. Pose: holding up a ring of keys with one hand, a stack of manila folders under the other arm, calm friendly smile. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-quan",
+   "khung": "1:1",
+   "ref": [
+    "T:char-quan-v2-anchor-l2",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-quan] Primary request: a chibi sticker of the character in Image1, full body, alone. Pose: arms crossed, cool composed face behind his glasses, slight smug smile. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-nguoi-choi-nam",
+   "khung": "1:1",
+   "ref": [
+    "T:char-nguoi-choi-v2-anchor",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-nguoi-choi-nam] Primary request: a chibi sticker of the character in Image1, full body, alone. Pose: both hands in his yellow hoodie pocket, headphones around his neck, curious determined smile. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-goi-y-ha-vy-kinh-lup",
+   "khung": "1:1",
+   "ref": [
+    "T:char-ha-vy-v2-anchor-l3",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-goi-y-ha-vy-kinh-lup] Primary request: Image1 is Ha Vy. Chibi Ha Vy leaning forward peering through a big magnifying glass, one eye enlarged through the lens, a small glowing light bulb above her head. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-goi-y-ha-vy-tinh",
+   "khung": "1:1",
+   "ref": [
+    "T:char-ha-vy-v2-anchor-l3",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-goi-y-ha-vy-tinh] Primary request: Image1 is Ha Vy. Chibi Ha Vy writing in a small cream notebook with a pencil, tapping the pencil on her chin, thoughtful, a few abstract doodle marks floating around (no numbers, no letters). Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-goi-y-tung-ca",
+   "khung": "1:1",
+   "ref": [
+    "T:char-tung-v2-anchor-l5",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-goi-y-tung-ca] Primary request: Image1 is Tung. Chibi Tung grinning confidently, index finger raised as if saying \"I bet...\", other hand on his hip, a sparkle next to his head. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-goi-y-tung-bi",
+   "khung": "1:1",
+   "ref": [
+    "T:char-tung-v2-anchor-l5",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-goi-y-tung-bi] Primary request: Image1 is Tung. Chibi Tung scratching the back of his head, sheepish crooked smile, a big sweat drop and a swirl above his head. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-goi-y-minh-anh-chi",
+   "khung": "1:1",
+   "ref": [
+    "T:char-minh-anh-v2-anchor",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-goi-y-minh-anh-chi] Primary request: Image1 is Minh Anh. Chibi Minh Anh pointing at an open case folder she holds, serious encouraging face, like a teacher giving a hint. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-goi-y-duy-chia-khoa",
+   "khung": "1:1",
+   "ref": [
+    "T:char-duy-v2-anchor-l3",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-goi-y-duy-chia-khoa] Primary request: Image1 is Duy. Chibi Duy holding up a key toward the viewer with a helpful smile, a manila folder under his arm. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-0-dong",
+   "khung": "1:1",
+   "ref": [
+    "T:char-tung-v2-anchor-l5",
+    "T:char-nguoi-choi-v2-anchor",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-0-dong] Primary request: Image1 is Tung, Image2 is the player. Both chibi sitting side by side staring at an open laptop whose screen is completely blank, both with dot eyes, sweat drops and question marks above their heads, comedic. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-ra-ket-qua",
+   "khung": "1:1",
+   "ref": [
+    "T:char-ha-vy-v2-anchor-l3",
+    "T:char-nguoi-choi-v2-anchor",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-ra-ket-qua] Primary request: Image1 is Ha Vy, Image2 is the player. Both chibi giving a joyful high-five next to an open laptop showing an abstract table of light rows (no text), sparkles and small stars around. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-bang-ghim",
+   "khung": "1:1",
+   "ref": [
+    "T:char-ha-vy-v2-anchor-l3",
+    "T:char-tung-v2-anchor-l5",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-bang-ghim] Primary request: Image1 is Ha Vy, Image2 is Tung. Chibi Ha Vy pinning a yellow sticky note on a small cork board connected by red string to other blank cards, chibi Tung holding the ball of red string and a push pin, both focused. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-so-lieu-day",
+   "khung": "1:1",
+   "ref": [
+    "T:char-nguoi-choi-v2-anchor",
+    "T:char-quan-v2-anchor-l2",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-so-lieu-day] Primary request: Image1 is the player, Image2 is Quan. Chibi player pointing forward dramatically with a sheet of paper in the other hand, speed lines, blank papers flying; chibi Quan on the other side leaning back stunned with a sweat drop. Courtroom-game energy but no courtroom. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-clb-nhom",
+   "khung": "1:1",
+   "ref": [
+    "T:char-minh-anh-v2-anchor",
+    "T:char-duy-v2-anchor-l3",
+    "T:char-ha-vy-v2-anchor-l3",
+    "T:char-tung-v2-anchor-l5",
+    "T:char-nguoi-choi-v2-anchor",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-clb-nhom] Primary request: Image1 is Minh Anh, Image2 is Duy, Image3 is Ha Vy, Image4 is Tung, Image5 is the player. A cheerful chibi group photo of the five members of the student detective club standing together like a team: Minh Anh (red shirt) in the center holding a magnifying glass, Duy (gray hoodie) with keys, Ha Vy (green check cardigan) with a notebook, Tung (blue jersey) with a thumbs-up, the player (yellow hoodie) with headphones. Arranged in two loose rows, all fully visible. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-408-vali",
+   "khung": "1:1",
+   "ref": [
+    "T:char-tung-v2-anchor-l5",
+    "T:char-nguoi-choi-v2-anchor",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-408-vali] Primary request: Image1 is Tung, Image2 is the player. Chibi Tung and the player carrying one heavy blue suitcase together up a few stairs, Tung in front grinning, the player puffing, a rice cooker peeking out of the suitcase. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-chibi-la-thu",
+   "khung": "1:1",
+   "ref": [
+    "T:char-minh-anh-v2-anchor",
+    "T:char-ha-vy-v2-anchor-l3",
+    "T:char-tung-v2-anchor-l5",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-la-thu] Primary request: Image1 is Minh Anh, Image2 is Ha Vy, Image3 is Tung. Chibi Minh Anh holding up an unfolded letter (blank paper, only one big handwritten-looking abstract flourish), chibi Ha Vy and Tung leaning in from both sides with wide curious eyes. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-intro-tung",
+   "khung": "16:9",
+   "ref": [
+    "T:char-tung-v2-anchor-l5",
+    "G:prototype/src/assets/art/intro-thay-quang.webp",
+    "G:prototype/src/assets/mvp/nen/bg-mvp-phong-ktx.webp"
+   ],
+   "prompt": "[id: g2-intro-tung] Primary request: a character introduction splash of Tran Tung, 18, cheerful sporty first-year tourism student and campus volunteer, in his dormitory room. Pose/action: giving a thumbs-up with one hand, a folded campus map in the other, big welcoming grin. Lighting/mood: warm morning window light, gentle rim light. Asset type: full-frame 2D visual-novel character introduction illustration (key visual). Identity: Image1 is the exact character. Preserve the same face, hairstyle, outfit, colors and proportions exactly. Image2 is a finished introduction splash from the same game: match its art style, rendering quality, lighting softness, depth of field and camera scale exactly, but do not copy its character or its room. Image3 is this game's background of the location: use it as the setting, simplified and slightly desaturated so the character stands out. Composition/framing: 16:9 landscape, character shown from head to knees, placed on the LEFT third of the frame, body turned slightly toward the right; the right 40 percent of the frame is calm, low-detail background with soft depth of field, reserved for a name card added later by the UI; the whole figure including both hands is inside the frame; horizon at eye level. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Constraints: no readable text, no numbers, no name, no logo, no UI, no watermark, no speech bubbles, no other people. Avoid: photorealism, 3D, chibi, dramatic fisheye, cluttered background, changed outfit, different face."
+  },
+  {
+   "id": "g2-intro-ha-vy",
+   "khung": "16:9",
+   "ref": [
+    "T:char-ha-vy-v2-anchor-l3",
+    "G:prototype/src/assets/art/intro-thay-quang.webp",
+    "G:prototype/src/assets/mvp/nen/bg-mvp-phong-clb.webp"
+   ],
+   "prompt": "[id: g2-intro-ha-vy] Primary request: a character introduction splash of Tran Ha Vy, 18, quiet analytical first-year applied mathematics student, in the detective club room. Pose/action: hugging her cream notebook with one arm, pushing up her glasses with one finger, calm analytical look. Lighting/mood: warm late-afternoon window light, gentle rim light. Asset type: full-frame 2D visual-novel character introduction illustration (key visual). Identity: Image1 is the exact character. Preserve the same face, hairstyle, outfit, colors and proportions exactly. Image2 is a finished introduction splash from the same game: match its art style, rendering quality, lighting softness, depth of field and camera scale exactly, but do not copy its character or its room. Image3 is this game's background of the location: use it as the setting, simplified and slightly desaturated so the character stands out. Composition/framing: 16:9 landscape, character shown from head to knees, placed on the LEFT third of the frame, body turned slightly toward the right; the right 40 percent of the frame is calm, low-detail background with soft depth of field, reserved for a name card added later by the UI; the whole figure including both hands is inside the frame; horizon at eye level. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Constraints: no readable text, no numbers, no name, no logo, no UI, no watermark, no speech bubbles, no other people. Avoid: photorealism, 3D, chibi, dramatic fisheye, cluttered background, changed outfit, different face."
+  },
+  {
+   "id": "g2-intro-minh-anh",
+   "khung": "16:9",
+   "ref": [
+    "T:char-minh-anh-v2-anchor",
+    "G:prototype/src/assets/art/intro-thay-quang.webp",
+    "G:prototype/src/assets/mvp/nen/bg-mvp-nha-van-hoa.webp"
+   ],
+   "prompt": "[id: g2-intro-minh-anh] Primary request: a character introduction splash of Le Minh Anh, 21, third-year law student and president of the detective club, at the club fair in the culture house. Pose/action: one hand on her hip, the other arm relaxed, composed determined half-smile. Lighting/mood: bright morning light, gentle rim light. Asset type: full-frame 2D visual-novel character introduction illustration (key visual). Identity: Image1 is the exact character. Preserve the same face, hairstyle, outfit, colors and proportions exactly. Image2 is a finished introduction splash from the same game: match its art style, rendering quality, lighting softness, depth of field and camera scale exactly, but do not copy its character or its room. Image3 is this game's background of the location: use it as the setting, simplified and slightly desaturated so the character stands out. Composition/framing: 16:9 landscape, character shown from head to knees, placed on the LEFT third of the frame, body turned slightly toward the right; the right 40 percent of the frame is calm, low-detail background with soft depth of field, reserved for a name card added later by the UI; the whole figure including both hands is inside the frame; horizon at eye level. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Constraints: no readable text, no numbers, no name, no logo, no UI, no watermark, no speech bubbles, no other people. Avoid: photorealism, 3D, chibi, dramatic fisheye, cluttered background, changed outfit, different face."
+  },
+  {
+   "id": "g2-intro-quan",
+   "khung": "16:9",
+   "ref": [
+    "T:char-quan-v2-anchor-l2",
+    "G:prototype/src/assets/art/intro-thay-quang.webp",
+    "G:prototype/src/assets/mvp/nen/bg-mvp-phong-ctsv.webp"
+   ],
+   "prompt": "[id: g2-intro-quan] Primary request: a character introduction splash of Dang Hoang Quan, 21, head of the student union inspection board, in the student affairs office. Pose/action: standing very straight with both hands clasped behind his back, cool confident half-smile. Lighting/mood: bright neutral office light, gentle rim light. Asset type: full-frame 2D visual-novel character introduction illustration (key visual). Identity: Image1 is the exact character. Preserve the same face, hairstyle, outfit, colors and proportions exactly. Image2 is a finished introduction splash from the same game: match its art style, rendering quality, lighting softness, depth of field and camera scale exactly, but do not copy its character or its room. Image3 is this game's background of the location: use it as the setting, simplified and slightly desaturated so the character stands out. Composition/framing: 16:9 landscape, character shown from head to knees, placed on the LEFT third of the frame, body turned slightly toward the right; the right 40 percent of the frame is calm, low-detail background with soft depth of field, reserved for a name card added later by the UI; the whole figure including both hands is inside the frame; horizon at eye level. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Constraints: no readable text, no numbers, no name, no logo, no UI, no watermark, no speech bubbles, no other people. Avoid: photorealism, 3D, chibi, dramatic fisheye, cluttered background, changed outfit, different face."
+  },
+  {
+   "id": "g2-intro-duy",
+   "khung": "16:9",
+   "ref": [
+    "T:char-duy-v2-anchor-l3",
+    "G:prototype/src/assets/art/intro-thay-quang.webp",
+    "G:prototype/src/assets/mvp/nen/bg-mvp-phong-clb.webp"
+   ],
+   "prompt": "[id: g2-intro-duy] Primary request: a character introduction splash of Nguyen Duc Duy, 19, second-year public administration student who keeps the detective club's keys and files, in the club room. Pose/action: holding up a ring of keys in one hand, a stack of manila folders under the other arm, calm reliable half-smile. Lighting/mood: warm late-afternoon window light, gentle rim light. Asset type: full-frame 2D visual-novel character introduction illustration (key visual). Identity: Image1 is the exact character. Preserve the same face, hairstyle, outfit, colors and proportions exactly. Image2 is a finished introduction splash from the same game: match its art style, rendering quality, lighting softness, depth of field and camera scale exactly, but do not copy its character or its room. Image3 is this game's background of the location: use it as the setting, simplified and slightly desaturated so the character stands out. Composition/framing: 16:9 landscape, character shown from head to knees, placed on the LEFT third of the frame, body turned slightly toward the right; the right 40 percent of the frame is calm, low-detail background with soft depth of field, reserved for a name card added later by the UI; the whole figure including both hands is inside the frame; horizon at eye level. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Constraints: no readable text, no numbers, no name, no logo, no UI, no watermark, no speech bubbles, no other people. Avoid: photorealism, 3D, chibi, dramatic fisheye, cluttered background, changed outfit, different face."
+  },
+  {
+   "id": "g2-intro-nguoi-choi-nam",
+   "khung": "16:9",
+   "ref": [
+    "T:char-nguoi-choi-v2-anchor",
+    "G:prototype/src/assets/art/intro-thay-quang.webp",
+    "G:prototype/src/assets/mvp/nen/bg-mvp-phong-clb.webp"
+   ],
+   "prompt": "[id: g2-intro-nguoi-choi-nam] Primary request: a character introduction splash of the player character, 18, a first-year business student good with computers who just joined the detective club, in the club room. Pose/action: both hands in his yellow hoodie pocket, headphones around his neck, curious determined half-smile. Lighting/mood: warm late-afternoon window light, gentle rim light. Asset type: full-frame 2D visual-novel character introduction illustration (key visual). Identity: Image1 is the exact character. Preserve the same face, hairstyle, outfit, colors and proportions exactly. Image2 is a finished introduction splash from the same game: match its art style, rendering quality, lighting softness, depth of field and camera scale exactly, but do not copy its character or its room. Image3 is this game's background of the location: use it as the setting, simplified and slightly desaturated so the character stands out. Composition/framing: 16:9 landscape, character shown from head to knees, placed on the LEFT third of the frame, body turned slightly toward the right; the right 40 percent of the frame is calm, low-detail background with soft depth of field, reserved for a name card added later by the UI; the whole figure including both hands is inside the frame; horizon at eye level. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Constraints: no readable text, no numbers, no name, no logo, no UI, no watermark, no speech bubbles, no other people. Avoid: photorealism, 3D, chibi, dramatic fisheye, cluttered background, changed outfit, different face."
+  },
+  {
+   "id": "g2-cg-bia",
+   "khung": "16:9",
+   "ref": [
+    "T:char-minh-anh-v2-anchor",
+    "T:char-ha-vy-v2-anchor-l3",
+    "T:char-tung-v2-anchor-l5",
+    "T:char-nguoi-choi-v2-anchor",
+    "G:prototype/src/assets/mvp/nen/bg-mvp-phong-clb.webp"
+   ],
+   "prompt": "[id: g2-cg-bia] Asset type: full-frame 2D visual-novel event CG, 16:9 landscape. Identity: each attached character reference is the exact character; preserve faces, hairstyles, outfits and colors exactly. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering, cinematic but calm composition, soft depth of field. Image1 is Minh Anh, Image2 is Ha Vy, Image3 is Tung, Image4 is the player, Image5 is the club room background. Title key art: the four of them in the club room at golden hour around a cork board of pinned blank cards connected by red string, Minh Anh holding an unfolded letter, Ha Vy pointing at a card, Tung leaning in, the player in front center looking at the viewer with quiet determination. Leave the top 25 percent calm for a title added later by the UI. Constraints: no readable text, no numbers, no logo, no UI, no watermark, no speech bubbles. Avoid: photorealism, 3D, chibi, fisheye, changed outfits."
+  },
+  {
+   "id": "g2-cg-ket-that",
+   "khung": "16:9",
+   "ref": [
+    "T:char-minh-anh-v2-anchor",
+    "T:char-duy-v2-anchor-l3",
+    "T:char-ha-vy-v2-anchor-l3",
+    "T:char-tung-v2-anchor-l5",
+    "T:char-nguoi-choi-v2-anchor",
+    "G:prototype/src/assets/mvp/nen/bg-mvp-phong-clb.webp"
+   ],
+   "prompt": "[id: g2-cg-ket-that] Asset type: full-frame 2D visual-novel event CG, 16:9 landscape. Identity: each attached character reference is the exact character; preserve faces, hairstyles, outfits and colors exactly. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering, cinematic but calm composition, soft depth of field. Image1 Minh Anh, Image2 Duy, Image3 Ha Vy, Image4 Tung, Image5 the player, Image6 the club room. True ending: sunset in the club room, the five members relaxed and smiling, Duy hanging the room key back on its hook, Tung raising a cup of iced tea, Ha Vy pinning one last card on the board, Minh Anh and the player shaking hands. Warm, relieved mood. Constraints: no readable text, no numbers, no logo, no UI, no watermark, no speech bubbles. Avoid: photorealism, 3D, chibi, fisheye, changed outfits."
+  },
+  {
+   "id": "g2-cg-ket-thuong",
+   "khung": "16:9",
+   "ref": [
+    "T:char-minh-anh-v2-anchor",
+    "T:char-ha-vy-v2-anchor-l3",
+    "T:char-tung-v2-anchor-l5",
+    "T:char-nguoi-choi-v2-anchor",
+    "G:prototype/src/assets/mvp/nen/bg-mvp-phong-hop.webp"
+   ],
+   "prompt": "[id: g2-cg-ket-thuong] Asset type: full-frame 2D visual-novel event CG, 16:9 landscape. Identity: each attached character reference is the exact character; preserve faces, hairstyles, outfits and colors exactly. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering, cinematic but calm composition, soft depth of field. Image1 Minh Anh, Image2 Ha Vy, Image3 Tung, Image4 the player, Image5 the meeting room. Normal ending: the four walking out of the formal meeting room into the corridor, relieved but thoughtful; Minh Anh looks back over her shoulder at the closing door, the player holds a folder. Cool light, bittersweet mood. Constraints: no readable text, no numbers, no logo, no UI, no watermark, no speech bubbles. Avoid: photorealism, 3D, chibi, fisheye, changed outfits."
+  },
+  {
+   "id": "g2-bg-mvp-xuong-robot",
+   "khung": "16:9",
+   "ref": [
+    "G:prototype/src/assets/mvp/nen/bg-mvp-nha-van-hoa.webp",
+    "G:prototype/src/assets/mvp/nen/bg-mvp-phong-clb.webp"
+   ],
+   "prompt": "[id: g2-bg-mvp-xuong-robot] Image1 and Image2 are backgrounds from the same game: match their art style, palette and rendering exactly. Original clean 2D visual-novel environment illustration of a contemporary Vietnamese university built or renovated between 2015 and 2025; adult scale; bright practical architecture; restrained cel shading; crisp shapes; subtle painted detail; thin or nearly invisible outlines; slightly desaturated background colors; no imitation of a named artist, studio, anime or game. Production-ready 2D visual-novel game background, 16:9 landscape, eye-level camera at 1.65 meters, three-quarter view, clean center and lower foreground left free for two or three character sprites and a dialogue box. Constraints: no people or silhouettes; no readable text or numbers; blank paper shapes only; no logos; no UI; no watermark. Avoid: secondary-school classroom, Japanese school interiors, lockers, cherry blossoms, photorealism, fisheye distortion, excessive clutter, deep black shadows. Scene: the workshop room of a student robotics club at the end of the culture-house row: along the left wall tall metal shelving full of plastic parts boxes with blank labels; a long workbench with a small wheeled robot, a soldering station and neatly laid tools; a shelf of binders and files; next to the entrance door on the right a whiteboard sign-up sheet with an empty hand-drawn grid; at the back a closed door with a small glass panel leading to an inner office. Teal accents, gray floor, cream walls. Lighting: daylight from high windows plus white ceiling lights."
+  },
+  {
+   "id": "g2-bg-mvp-thu-vien",
+   "khung": "16:9",
+   "ref": [
+    "G:prototype/src/assets/mvp/nen/bg-mvp-sanh-toa-b.webp",
+    "G:prototype/src/assets/mvp/nen/bg-mvp-phong-may.webp"
+   ],
+   "prompt": "[id: g2-bg-mvp-thu-vien] Image1 and Image2 are backgrounds from the same game: match their art style, palette and rendering exactly. Original clean 2D visual-novel environment illustration of a contemporary Vietnamese university built or renovated between 2015 and 2025; adult scale; bright practical architecture; restrained cel shading; crisp shapes; subtle painted detail; thin or nearly invisible outlines; slightly desaturated background colors; no imitation of a named artist, studio, anime or game. Production-ready 2D visual-novel game background, 16:9 landscape, eye-level camera at 1.65 meters, three-quarter view, clean center and lower foreground left free for two or three character sprites and a dialogue box. Constraints: no people or silhouettes; no readable text or numbers; blank paper shapes only; no logos; no UI; no watermark. Avoid: secondary-school classroom, Japanese school interiors, lockers, cherry blossoms, photorealism, fisheye distortion, excessive clutter, deep black shadows. Scene: the university library reading room on the third floor of lecture building B: rows of tall bookshelves on the left, wooden reading desks with small desk lamps along tall windows on the right overlooking treetops, and near the single entrance at the back a card-swipe turnstile gate beside a small librarian counter; ceiling fans, quiet and tidy. Lighting: soft warm late-afternoon light through the windows."
+  },
+  {
+   "id": "g2-char-nam",
+   "khung": "9:16",
+   "ref": [
+    "T:char-quan-v2-anchor-l2"
+   ],
+   "prompt": "[id: g2-char-nam] Image1 is another character from the same game: it defines the ART STYLE, the BODY SIZE and the FRAMING (use the same head size, head position, figure scale and crop point as Image1). Do NOT copy its face, hair, pose or clothes. Create a NEW character with a clearly different face: Nam, about 19, a member of the robotics club who runs its chat channel and keeps the workshop's books; quiet, careful, a little guarded, trustworthy. Build: slim, slightly narrow shoulders. Face: gentle oval face, soft thoughtful eyes, straight eyebrows, calm neutral expression, mouth closed. No glasses. Hair: black soft wavy hair, slightly long, with a loose fringe swept to one side. Outfit: a muted teal-gray zip workshop jacket with a stand collar and sleeves pushed up, over a plain light-gray T-shirt; dark trousers; a plain lanyard with a blank ID card. Pose: holding a small open cardboard parts box against his hip with one hand, a marker pen in the other hand. This character is NOT a member of the detective club: use muted, slightly desaturated clothing colors; no bright red, bright yellow, bright blue or bright green. Asset type: production-ready 2D visual-novel character sprite, 9:16 portrait, slight three-quarter body turn facing the viewer, character centered. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow; no magenta or pink anywhere on the character. Constraints: Vietnamese university student with adult proportions; correct hands with five fingers; no text, no letters, no logo, no watermark. Avoid: photorealism, 3D, chibi, school uniform, oversized anime eyes, villainous look."
+  },
+  {
+   "id": "g2-char-khanh",
+   "khung": "9:16",
+   "ref": [
+    "T:char-quan-v2-anchor-l2"
+   ],
+   "prompt": "[id: g2-char-khanh] Image1 is another character from the same game: it defines the ART STYLE, the BODY SIZE and the FRAMING (use the same head size, head position, figure scale and crop point as Image1). Do NOT copy its face, hair, pose or clothes. Create a NEW character with a clearly different face: Khanh, 22, fourth-year student, president of the student union and head of the robotics club; polished, confident, persuasive and mature; he must look respectable and composed. Build: tall and upright. Face: mature handsome face, defined jaw, calm steady eyes, polite neutral expression with a faint practiced smile. No glasses. Hair: black, neat short side-part with some volume, forehead partly visible. Outfit: a crisp white long-sleeve shirt with the sleeves rolled once, a navy student-union lanyard with a blank ID card around his neck, dark trousers; a dark backpack carried on one shoulder, and on its strap a small metal gear-shaped pin badge with one tooth broken off. Pose: one hand holding the backpack strap at his shoulder, the other hand relaxed at his side. This character is NOT a member of the detective club: use muted, slightly desaturated clothing colors; no bright red, bright yellow, bright blue or bright green. Asset type: production-ready 2D visual-novel character sprite, 9:16 portrait, slight three-quarter body turn facing the viewer, character centered. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow; no magenta or pink anywhere on the character. Constraints: Vietnamese university student with adult proportions; correct hands with five fingers; no text, no letters, no logo, no watermark. Avoid: photorealism, 3D, chibi, school uniform, oversized anime eyes, villainous look."
+  },
+  {
+   "id": "g2-char-thao",
+   "khung": "9:16",
+   "ref": [
+    "T:char-minh-anh-v2-anchor"
+   ],
+   "prompt": "[id: g2-char-thao] Image1 is another character from the same game: it defines the ART STYLE, the BODY SIZE and the FRAMING (use the same head size, head position, figure scale and crop point as Image1). Do NOT copy its face, hair, pose or clothes. Create a NEW character with a clearly different face: Thao, 21, a third-year female student, technical lead of the robotics club; blunt, practical, hands-on, a little careless. Build: average, relaxed posture. Face: sharp lively eyes, one eyebrow slightly raised, frank neutral expression, mouth closed. Hair: black short bob cut at jaw length, tucked behind one ear, a few loose strands; clear safety glasses pushed up on top of her head. Outfit: a muted olive-green work overshirt with rolled sleeves over a plain cream T-shirt, dark work trousers, a small screwdriver in the chest pocket, a single key on a short cord at her belt. Pose: one hand in her trouser pocket, the other hand holding a small multimeter at her side. This character is NOT a member of the detective club: use muted, slightly desaturated clothing colors; no bright red, bright yellow, bright blue or bright green. Asset type: production-ready 2D visual-novel character sprite, 9:16 portrait, slight three-quarter body turn facing the viewer, character centered. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow; no magenta or pink anywhere on the character. Constraints: Vietnamese university student with adult proportions; correct hands with five fingers; no text, no letters, no logo, no watermark. Avoid: photorealism, 3D, chibi, school uniform, oversized anime eyes, villainous look."
+  },
+  {
+   "id": "g2-char-bach",
+   "khung": "9:16",
+   "ref": [
+    "T:char-quan-v2-anchor-l2"
+   ],
+   "prompt": "[id: g2-char-bach] Image1 is another character from the same game: it defines the ART STYLE, the BODY SIZE and the FRAMING (use the same head size, head position, figure scale and crop point as Image1). Do NOT copy its face, hair, pose or clothes. Create a NEW character with a clearly different face: Bach, 21, a third-year male student, vice-head of the robotics club; quiet, orderly, the kind who keeps every receipt. Build: sturdy, medium height, broad shoulders. Face: broad calm face, thick eyebrows, small serious eyes, reserved neutral expression, mouth closed. No glasses. Hair: black buzz cut, a very short crew cut. Outfit: a muted brown-gray bomber jacket zipped halfway over a plain white T-shirt, dark trousers. Pose: both hands in his jacket pockets, standing square. This character is NOT a member of the detective club: use muted, slightly desaturated clothing colors; no bright red, bright yellow, bright blue or bright green. Asset type: production-ready 2D visual-novel character sprite, 9:16 portrait, slight three-quarter body turn facing the viewer, character centered. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow; no magenta or pink anywhere on the character. Constraints: Vietnamese university student with adult proportions; correct hands with five fingers; no text, no letters, no logo, no watermark. Avoid: photorealism, 3D, chibi, school uniform, oversized anime eyes, villainous look."
+  },
+  {
+   "id": "g2-char-hoai-neutral",
+   "khung": "9:16",
+   "ref": [
+    "G:prototype/src/assets/characters/char-hoai-anchor.png|#D9DCE0"
+   ],
+   "prompt": "[id: g2-char-hoai-neutral] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: calm and neutral: relaxed eyebrows, eyes looking at the viewer, mouth closed and relaxed, no blush. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-doc-tin-don",
+   "khung": "3:4",
+   "ref": [
+    "G:art/mvp-vu1/giay/doc-bao-cao-yeu.webp"
+   ],
+   "prompt": "[id: g2-doc-tin-don] Image1 is a document image from the same game: match its flat top-down 2D illustration style, paper rendering, soft even light and plain dark neutral gray (#2B2F36) background; do NOT copy its content. Create a new image for a visual-novel evidence viewer, 3:4 portrait, the subject filling most of the frame: a smartphone lying flat, its screen showing a group chat channel: a column of message bubbles made of abstract gray lines, one bubble highlighted in pale yellow with a small \"forwarded\" arrow icon beside it, several identical forwarded bubbles below it. All writing is abstract: blank areas or light gray scribble lines only, no readable text, no readable numbers, no logos; no hands, no people, no watermark."
+  },
+  {
+   "id": "g2-doc-lich-xuong",
+   "khung": "3:4",
+   "ref": [
+    "G:art/mvp-vu1/giay/doc-bao-cao-yeu.webp"
+   ],
+   "prompt": "[id: g2-doc-lich-xuong] Image1 is a document image from the same game: match its flat top-down 2D illustration style, paper rendering, soft even light and plain dark neutral gray (#2B2F36) background; do NOT copy its content. Create a new image for a visual-novel evidence viewer, 3:4 portrait, the subject filling most of the frame: a hand-drawn weekly sign-up sheet on white paper, taped at the corners: a grid of seven columns with rows filled by abstract handwritten scribbles in blue and black pen, the first evening cell circled. All writing is abstract: blank areas or light gray scribble lines only, no readable text, no readable numbers, no logos; no hands, no people, no watermark."
+  },
+  {
+   "id": "g2-doc-thu-hoi-don",
+   "khung": "3:4",
+   "ref": [
+    "G:art/mvp-vu1/giay/doc-bao-cao-yeu.webp"
+   ],
+   "prompt": "[id: g2-doc-thu-hoi-don] Image1 is a document image from the same game: match its flat top-down 2D illustration style, paper rendering, soft even light and plain dark neutral gray (#2B2F36) background; do NOT copy its content. Create a new image for a visual-novel evidence viewer, 3:4 portrait, the subject filling most of the frame: a formal A4 letter from a student union: a blank two-column header area, a centered blank title area, faint gray body lines, an abstract round red seal overlapping an ink signature at the bottom right. All writing is abstract: blank areas or light gray scribble lines only, no readable text, no readable numbers, no logos; no hands, no people, no watermark."
+  },
+  {
+   "id": "g2-doc-phien-dang-nhap",
+   "khung": "3:4",
+   "ref": [
+    "G:art/mvp-vu1/giay/doc-bao-cao-yeu.webp"
+   ],
+   "prompt": "[id: g2-doc-phien-dang-nhap] Image1 is a document image from the same game: match its flat top-down 2D illustration style, paper rendering, soft even light and plain dark neutral gray (#2B2F36) background; do NOT copy its content. Create a new image for a visual-novel evidence viewer, 3:4 portrait, the subject filling most of the frame: a printed A4 system log sheet: a dense table of thin gray rows and columns like a login-session printout, two rows highlighted in pale yellow, an abstract round blue stamp in the top right corner. All writing is abstract: blank areas or light gray scribble lines only, no readable text, no readable numbers, no logos; no hands, no people, no watermark."
+  },
+  {
+   "id": "g2-doc-giao-chia",
+   "khung": "3:4",
+   "ref": [
+    "G:art/mvp-vu1/giay/doc-bao-cao-yeu.webp"
+   ],
+   "prompt": "[id: g2-doc-giao-chia] Image1 is a document image from the same game: match its flat top-down 2D illustration style, paper rendering, soft even light and plain dark neutral gray (#2B2F36) background; do NOT copy its content. Create a new image for a visual-novel evidence viewer, 3:4 portrait, the subject filling most of the frame: an old yellowed sheet of paper taped to a door panel: a short handwritten list of three rows, each row an abstract scribbled name followed by a small scribbled signature, with a simple key drawn in pen beside each row. All writing is abstract: blank areas or light gray scribble lines only, no readable text, no readable numbers, no logos; no hands, no people, no watermark."
+  },
+  {
+   "id": "g2-doc-huy-hieu-sut",
+   "khung": "3:4",
+   "ref": [
+    "G:art/mvp-vu1/giay/doc-bao-cao-yeu.webp"
+   ],
+   "prompt": "[id: g2-doc-huy-hieu-sut] Image1 is a document image from the same game: match its flat top-down 2D illustration style, paper rendering, soft even light and plain dark neutral gray (#2B2F36) background; do NOT copy its content. Create a new image for a visual-novel evidence viewer, 3:4 portrait, the subject filling most of the frame: a close-up of a small round metal gear-shaped pin badge fastened on a dark backpack strap; the gear has one tooth clearly broken off; brushed steel with a teal enamel center, slightly worn. All writing is abstract: blank areas or light gray scribble lines only, no readable text, no readable numbers, no logos; no hands, no people, no watermark."
+  },
+  {
+   "id": "g2-doc-kiem-ke",
+   "khung": "3:4",
+   "ref": [
+    "G:art/mvp-vu1/giay/doc-bao-cao-yeu.webp"
+   ],
+   "prompt": "[id: g2-doc-kiem-ke] Image1 is a document image from the same game: match its flat top-down 2D illustration style, paper rendering, soft even light and plain dark neutral gray (#2B2F36) background; do NOT copy its content. Create a new image for a visual-novel evidence viewer, 3:4 portrait, the subject filling most of the frame: a hand-counted inventory sheet on a clipboard: a table with abstract item rows and tally marks in pencil, three cells in the last column circled in red pen. All writing is abstract: blank areas or light gray scribble lines only, no readable text, no readable numbers, no logos; no hands, no people, no watermark."
+  },
+  {
+   "id": "g2-doc-so-quy",
+   "khung": "3:4",
+   "ref": [
+    "G:art/mvp-vu1/giay/doc-bao-cao-yeu.webp"
+   ],
+   "prompt": "[id: g2-doc-so-quy] Image1 is a document image from the same game: match its flat top-down 2D illustration style, paper rendering, soft even light and plain dark neutral gray (#2B2F36) background; do NOT copy its content. Create a new image for a visual-novel evidence viewer, 3:4 portrait, the subject filling most of the frame: a printed club fund ledger sheet: a table of thin gray rows with date, description and amount columns as abstract lines, three rows highlighted in pale yellow, a paper clip at the top. All writing is abstract: blank areas or light gray scribble lines only, no readable text, no readable numbers, no logos; no hands, no people, no watermark."
+  },
+  {
+   "id": "g2-doc-ho-so-vu-dau",
+   "khung": "3:4",
+   "ref": [
+    "G:art/mvp-vu1/giay/doc-bao-cao-yeu.webp"
+   ],
+   "prompt": "[id: g2-doc-ho-so-vu-dau] Image1 is a document image from the same game: match its flat top-down 2D illustration style, paper rendering, soft even light and plain dark neutral gray (#2B2F36) background; do NOT copy its content. Create a new image for a visual-novel evidence viewer, 3:4 portrait, the subject filling most of the frame: an old hard-cover case notebook lying open: yellowed lined pages with abstract handwriting, one paragraph crossed out with a purple line, a short faded blue pen note in the margin, a scribbled signature at the bottom. All writing is abstract: blank areas or light gray scribble lines only, no readable text, no readable numbers, no logos; no hands, no people, no watermark."
+  },
+  {
+   "id": "g2-doc-v2-raw-logs",
+   "khung": "3:4",
+   "ref": [
+    "G:art/mvp-vu1/giay/doc-bao-cao-yeu.webp"
+   ],
+   "prompt": "[id: g2-doc-v2-raw-logs] Image1 is a document image from the same game: match its flat top-down 2D illustration style, paper rendering, soft even light and plain dark neutral gray (#2B2F36) background; do NOT copy its content. Create a new image for a visual-novel evidence viewer, 3:4 portrait, the subject filling most of the frame: a printed room-usage log on continuous paper: a long table of monospaced-looking abstract gray rows, a few rows marked with a pencil tick in the margin. All writing is abstract: blank areas or light gray scribble lines only, no readable text, no readable numbers, no logos; no hands, no people, no watermark."
+  },
+  {
+   "id": "g2-doc-mic-so-tai-san",
+   "khung": "3:4",
+   "ref": [
+    "G:art/mvp-vu1/giay/doc-bao-cao-yeu.webp"
+   ],
+   "prompt": "[id: g2-doc-mic-so-tai-san] Image1 is a document image from the same game: match its flat top-down 2D illustration style, paper rendering, soft even light and plain dark neutral gray (#2B2F36) background; do NOT copy its content. Create a new image for a visual-novel evidence viewer, 3:4 portrait, the subject filling most of the frame: an open asset ledger book with a table of abstract rows, a small transfer slip clipped to the page, and a black wireless microphone with a blank white label sticker lying across the corner. All writing is abstract: blank areas or light gray scribble lines only, no readable text, no readable numbers, no logos; no hands, no people, no watermark."
+  },
+  {
+   "id": "g2-doc-hoan-ban-xuat",
+   "khung": "3:4",
+   "ref": [
+    "G:art/mvp-vu1/giay/doc-bao-cao-yeu.webp"
+   ],
+   "prompt": "[id: g2-doc-hoan-ban-xuat] Image1 is a document image from the same game: match its flat top-down 2D illustration style, paper rendering, soft even light and plain dark neutral gray (#2B2F36) background; do NOT copy its content. Create a new image for a visual-novel evidence viewer, 3:4 portrait, the subject filling most of the frame: a printed transaction export sheet: a table of thin gray rows with amount columns as abstract lines, one row highlighted in pale green, the corner slightly folded. All writing is abstract: blank areas or light gray scribble lines only, no readable text, no readable numbers, no logos; no hands, no people, no watermark."
+  },
+  {
+   "id": "g2-doc-hoan-bien-nhan",
+   "khung": "3:4",
+   "ref": [
+    "G:art/mvp-vu1/giay/doc-bao-cao-yeu.webp"
+   ],
+   "prompt": "[id: g2-doc-hoan-bien-nhan] Image1 is a document image from the same game: match its flat top-down 2D illustration style, paper rendering, soft even light and plain dark neutral gray (#2B2F36) background; do NOT copy its content. Create a new image for a visual-novel evidence viewer, 3:4 portrait, the subject filling most of the frame: a small narrow bank refund receipt slip on thermal paper, slightly curled: abstract gray printed lines, a dashed separator, one bold abstract total line, a tiny round stamp. All writing is abstract: blank areas or light gray scribble lines only, no readable text, no readable numbers, no logos; no hands, no people, no watermark."
+  },
+  {
+   "id": "g2-char-tung-anchor--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-anchor"
+   ],
+   "prompt": "[id: g2-char-tung-anchor--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-anchor--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-anchor"
+   ],
+   "prompt": "[id: g2-char-tung-anchor--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-happy--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-happy"
+   ],
+   "prompt": "[id: g2-char-tung-happy--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-happy--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-happy"
+   ],
+   "prompt": "[id: g2-char-tung-happy--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-worried--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-worried"
+   ],
+   "prompt": "[id: g2-char-tung-worried--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-worried--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-worried"
+   ],
+   "prompt": "[id: g2-char-tung-worried--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-surprised--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-surprised"
+   ],
+   "prompt": "[id: g2-char-tung-surprised--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-surprised--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-surprised"
+   ],
+   "prompt": "[id: g2-char-tung-surprised--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-thinking--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-thinking"
+   ],
+   "prompt": "[id: g2-char-tung-thinking--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-thinking--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-thinking"
+   ],
+   "prompt": "[id: g2-char-tung-thinking--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-gai-dau--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-gai-dau"
+   ],
+   "prompt": "[id: g2-char-tung-gai-dau--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-gai-dau--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-gai-dau"
+   ],
+   "prompt": "[id: g2-char-tung-gai-dau--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-chi-tay--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-chi-tay"
+   ],
+   "prompt": "[id: g2-char-tung-chi-tay--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-chi-tay--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-chi-tay"
+   ],
+   "prompt": "[id: g2-char-tung-chi-tay--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-ha-vy-anchor--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-ha-vy-anchor"
+   ],
+   "prompt": "[id: g2-char-ha-vy-anchor--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-ha-vy-anchor--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-ha-vy-anchor"
+   ],
+   "prompt": "[id: g2-char-ha-vy-anchor--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-ha-vy-thinking--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-ha-vy-thinking"
+   ],
+   "prompt": "[id: g2-char-ha-vy-thinking--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-ha-vy-thinking--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-ha-vy-thinking"
+   ],
+   "prompt": "[id: g2-char-ha-vy-thinking--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-ha-vy-smile--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-ha-vy-smile"
+   ],
+   "prompt": "[id: g2-char-ha-vy-smile--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-ha-vy-smile--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-ha-vy-smile"
+   ],
+   "prompt": "[id: g2-char-ha-vy-smile--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-ha-vy-day-kinh--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-ha-vy-day-kinh"
+   ],
+   "prompt": "[id: g2-char-ha-vy-day-kinh--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-ha-vy-day-kinh--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-ha-vy-day-kinh"
+   ],
+   "prompt": "[id: g2-char-ha-vy-day-kinh--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-anchor--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-minh-anh-anchor"
+   ],
+   "prompt": "[id: g2-char-minh-anh-anchor--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-anchor--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-minh-anh-anchor"
+   ],
+   "prompt": "[id: g2-char-minh-anh-anchor--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-worried--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-minh-anh-worried"
+   ],
+   "prompt": "[id: g2-char-minh-anh-worried--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-worried--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-minh-anh-worried"
+   ],
+   "prompt": "[id: g2-char-minh-anh-worried--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-happy--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-minh-anh-happy"
+   ],
+   "prompt": "[id: g2-char-minh-anh-happy--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-happy--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-minh-anh-happy"
+   ],
+   "prompt": "[id: g2-char-minh-anh-happy--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-serious--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-minh-anh-serious"
+   ],
+   "prompt": "[id: g2-char-minh-anh-serious--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-serious--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-minh-anh-serious"
+   ],
+   "prompt": "[id: g2-char-minh-anh-serious--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-khoanh-tay--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-minh-anh-khoanh-tay"
+   ],
+   "prompt": "[id: g2-char-minh-anh-khoanh-tay--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-minh-anh-khoanh-tay--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-minh-anh-khoanh-tay"
+   ],
+   "prompt": "[id: g2-char-minh-anh-khoanh-tay--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-quan-anchor--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-quan-anchor"
+   ],
+   "prompt": "[id: g2-char-quan-anchor--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-quan-anchor--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-quan-anchor"
+   ],
+   "prompt": "[id: g2-char-quan-anchor--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-quan-smug--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-quan-smug"
+   ],
+   "prompt": "[id: g2-char-quan-smug--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-quan-smug--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-quan-smug"
+   ],
+   "prompt": "[id: g2-char-quan-smug--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-quan-stunned--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-quan-stunned"
+   ],
+   "prompt": "[id: g2-char-quan-stunned--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-quan-stunned--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-quan-stunned"
+   ],
+   "prompt": "[id: g2-char-quan-stunned--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-quan-chi-man--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-quan-chi-man"
+   ],
+   "prompt": "[id: g2-char-quan-chi-man--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-quan-chi-man--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-quan-chi-man"
+   ],
+   "prompt": "[id: g2-char-quan-chi-man--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-nguoi-choi--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-nguoi-choi"
+   ],
+   "prompt": "[id: g2-char-nguoi-choi--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-nguoi-choi--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-nguoi-choi"
+   ],
+   "prompt": "[id: g2-char-nguoi-choi--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-chibi-nam",
+   "khung": "1:1",
+   "ref": [
+    "T:g2-char-nam",
+    "G:prototype/src/assets/mvp/chibi/chibi-thay-quang.webp|#FF00FF"
+   ],
+   "prompt": "[id: g2-chibi-nam] Primary request: a chibi sticker of the character in Image1, full body, alone. Pose: holding a small cardboard parts box with both hands, a marker pen tucked behind his ear, calm careful little smile. Image references: the character images are the exact characters (keep each one's face features, hairstyle, glasses, outfit and colors, only simplified); the LAST image is a finished sticker from the same set: match its chibi style, outline and shading exactly, but do not copy its character. Style: cute chibi (super-deformed) 2D game sticker, about 2.5 heads tall, big head and small body, large expressive eyes, clean even dark-brown outline, flat soft cel shading with one soft highlight, bright but controlled colors. Framing: 1:1 square, everything fully inside the canvas, centered, generous margin. Background: one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no cast shadow; no magenta or pink on the characters or props. Constraints: no text, no letters, no numbers, no logo, no watermark, no speech bubbles, no frame."
+  },
+  {
+   "id": "g2-intro-nam",
+   "khung": "16:9",
+   "ref": [
+    "T:g2-char-nam",
+    "G:prototype/src/assets/art/intro-thay-quang.webp",
+    "T:g2-bg-mvp-xuong-robot"
+   ],
+   "prompt": "[id: g2-intro-nam] Primary request: a character introduction splash of Nam, about 19, the quiet careful member of the robotics club who keeps the workshop's books, in the robotics workshop. Pose/action: writing a label on a small cardboard parts box with a marker pen, looking up calmly. Lighting/mood: daylight from high windows, gentle rim light. Asset type: full-frame 2D visual-novel character introduction illustration (key visual). Identity: Image1 is the exact character. Preserve the same face, hairstyle, outfit, colors and proportions exactly. Image2 is a finished introduction splash from the same game: match its art style, rendering quality, lighting softness, depth of field and camera scale exactly, but do not copy its character or its room. Image3 is this game's background of the location: use it as the setting, simplified and slightly desaturated so the character stands out. Composition/framing: 16:9 landscape, character shown from head to knees, placed on the LEFT third of the frame, body turned slightly toward the right; the right 40 percent of the frame is calm, low-detail background with soft depth of field, reserved for a name card added later by the UI; the whole figure including both hands is inside the frame; horizon at eye level. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Constraints: no readable text, no numbers, no name, no logo, no UI, no watermark, no speech bubbles, no other people. Avoid: photorealism, 3D, chibi, dramatic fisheye, cluttered background, changed outfit, different face."
+  },
+  {
+   "id": "g2-intro-khanh",
+   "khung": "16:9",
+   "ref": [
+    "T:g2-char-khanh",
+    "G:prototype/src/assets/art/intro-thay-quang.webp",
+    "T:g2-bg-mvp-xuong-robot"
+   ],
+   "prompt": "[id: g2-intro-khanh] Primary request: a character introduction splash of Khanh, 22, president of the student union and head of the robotics club, in the robotics workshop. Pose/action: standing upright with one hand on his backpack strap, where a small gear-shaped pin badge with one broken tooth is visible, polite confident half-smile. Lighting/mood: daylight from high windows, gentle rim light. Asset type: full-frame 2D visual-novel character introduction illustration (key visual). Identity: Image1 is the exact character. Preserve the same face, hairstyle, outfit, colors and proportions exactly. Image2 is a finished introduction splash from the same game: match its art style, rendering quality, lighting softness, depth of field and camera scale exactly, but do not copy its character or its room. Image3 is this game's background of the location: use it as the setting, simplified and slightly desaturated so the character stands out. Composition/framing: 16:9 landscape, character shown from head to knees, placed on the LEFT third of the frame, body turned slightly toward the right; the right 40 percent of the frame is calm, low-detail background with soft depth of field, reserved for a name card added later by the UI; the whole figure including both hands is inside the frame; horizon at eye level. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Constraints: no readable text, no numbers, no name, no logo, no UI, no watermark, no speech bubbles, no other people. Avoid: photorealism, 3D, chibi, dramatic fisheye, cluttered background, changed outfit, different face."
+  },
+  {
+   "id": "g2-intro-thao",
+   "khung": "16:9",
+   "ref": [
+    "T:g2-char-thao",
+    "G:prototype/src/assets/art/intro-thay-quang.webp",
+    "T:g2-bg-mvp-xuong-robot"
+   ],
+   "prompt": "[id: g2-intro-thao] Primary request: a character introduction splash of Thao, 21, the blunt hands-on technical lead of the robotics club, in the robotics workshop. Pose/action: one hand in her trouser pocket, the other holding a small multimeter, frank look with one eyebrow raised. Lighting/mood: daylight from high windows, gentle rim light. Asset type: full-frame 2D visual-novel character introduction illustration (key visual). Identity: Image1 is the exact character. Preserve the same face, hairstyle, outfit, colors and proportions exactly. Image2 is a finished introduction splash from the same game: match its art style, rendering quality, lighting softness, depth of field and camera scale exactly, but do not copy its character or its room. Image3 is this game's background of the location: use it as the setting, simplified and slightly desaturated so the character stands out. Composition/framing: 16:9 landscape, character shown from head to knees, placed on the LEFT third of the frame, body turned slightly toward the right; the right 40 percent of the frame is calm, low-detail background with soft depth of field, reserved for a name card added later by the UI; the whole figure including both hands is inside the frame; horizon at eye level. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Constraints: no readable text, no numbers, no name, no logo, no UI, no watermark, no speech bubbles, no other people. Avoid: photorealism, 3D, chibi, dramatic fisheye, cluttered background, changed outfit, different face."
+  },
+  {
+   "id": "g2-intro-bach",
+   "khung": "16:9",
+   "ref": [
+    "T:g2-char-bach",
+    "G:prototype/src/assets/art/intro-thay-quang.webp",
+    "T:g2-bg-mvp-xuong-robot"
+   ],
+   "prompt": "[id: g2-intro-bach] Primary request: a character introduction splash of Bach, 21, the quiet orderly vice-head of the robotics club, in the robotics workshop. Pose/action: standing square with both hands in his jacket pockets, reserved steady look. Lighting/mood: daylight from high windows, gentle rim light. Asset type: full-frame 2D visual-novel character introduction illustration (key visual). Identity: Image1 is the exact character. Preserve the same face, hairstyle, outfit, colors and proportions exactly. Image2 is a finished introduction splash from the same game: match its art style, rendering quality, lighting softness, depth of field and camera scale exactly, but do not copy its character or its room. Image3 is this game's background of the location: use it as the setting, simplified and slightly desaturated so the character stands out. Composition/framing: 16:9 landscape, character shown from head to knees, placed on the LEFT third of the frame, body turned slightly toward the right; the right 40 percent of the frame is calm, low-detail background with soft depth of field, reserved for a name card added later by the UI; the whole figure including both hands is inside the frame; horizon at eye level. Style: clean modern 2D visual novel illustration: crisp delicate line art, smooth soft cel shading, controlled colors, polished facial rendering. Constraints: no readable text, no numbers, no name, no logo, no UI, no watermark, no speech bubbles, no other people. Avoid: photorealism, 3D, chibi, dramatic fisheye, cluttered background, changed outfit, different face."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh",
+   "khung": "9:16",
+   "ref": [
+    "T:char-tung-v2-anchor-l5"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh] Edit Image1. Keep the same character with exactly the same face, expression, hair, nose bandage, pose, hands, folded map, body, framing, figure scale and canvas. Change ONLY the clothing above the waist and add a hat on his back: (1) replace the sports jersey with the classic Vietnamese student-volunteer shirt: a plain solid medium-blue long-sleeve button-up shirt with a pointed collar, buttoned cuffs at the wrists, two chest pockets with buttoned flaps and small shoulder epaulettes, worn untucked; plain fabric with no stripes, no print, no text; (2) on the left chest, above the pocket, one small rectangular red flag patch with a single yellow five-pointed star in its center (the Vietnamese flag), neat and flat; (3) a soft green boonie bucket hat (the Vietnamese \"tai beo\" volunteer hat, leaf-green cotton with a floppy brim) hanging on his upper back behind his neck, held by its thin chin cord around the front of his neck; the hat is NOT on his head, his undercut hair is fully visible, and part of the green brim shows behind his shoulders. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-happy",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-happy] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, hat hanging on his back, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: a big bright open-mouthed laugh, eyes squinted shut with joy, eyebrows raised. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-worried",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-worried] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, hat hanging on his back, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: worried and sheepish: eyebrows drawn together and up, an awkward crooked closed smile, a small sweat drop at the temple. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-surprised",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-surprised] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, hat hanging on his back, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: surprised: eyes wide open, eyebrows high, mouth in a small open \"o\". Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-thinking",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-thinking] Edit Image1. Keep the same character with exactly the same pose, body, hands, hair, hat hanging on his back, outfit, colors, line art, framing, figure scale and canvas; change ONLY the face to the expression described. Expression: thinking hard: eyes looking up to one side, lips pressed together, one eyebrow lowered. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-gai-dau",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-gai-dau] Edit Image1. Keep the same character: same face shape, same head angle, head size and head position, same hair, hat hanging on his back, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the arms and hands and the facial expression as described. Pose: one hand scratching the back of his neck with the elbow raised; the other hand lowers the folded map to his side. Expression: embarrassed sheepish smile, eyebrows tilted up, a small sweat drop at the temple. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-chi-tay",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-chi-tay] Edit Image1. Keep the same character: same face shape, same head angle, head size and head position, same hair, hat hanging on his back, outfit, colors, line art, framing, figure scale and canvas. Change ONLY the arms and hands and the facial expression as described. Pose: one hand pointing its index finger forward toward the viewer at chest height, confident; the other hand holds the folded map down at his side. Expression: cocky playful grin, one eyebrow raised, as if making a bet. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-doi-mu",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-doi-mu] Edit Image1. Keep the same character with exactly the same face, expression, pose, hands, shirt, flag patch, colors, line art, framing, figure scale and canvas. Change ONLY the hat: he now WEARS the green boonie bucket hat on his head, floppy brim all around, the thin chin cord hanging loose under his chin; nothing hangs on his back anymore; his face stays fully visible under the brim. Background: replace the gray background with one perfectly flat solid magenta (#FF00FF) filling the whole canvas, no gradient, no floor, no shadow; soft even studio front light, no rim light, no glow, no halo around the hair; no magenta or pink anywhere on the character. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-happy--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-happy"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-happy--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-happy--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-happy"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-happy--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-worried--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-worried"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-worried--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-worried--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-worried"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-worried--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-surprised--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-surprised"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-surprised--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-surprised--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-surprised"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-surprised--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-thinking--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-thinking"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-thinking--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-thinking--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-thinking"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-thinking--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-gai-dau--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-gai-dau"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-gai-dau--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-gai-dau--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-gai-dau"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-gai-dau--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-chi-tay--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-chi-tay"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-chi-tay--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-chi-tay--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-chi-tay"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-chi-tay--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-doi-mu--mieng",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-doi-mu"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-doi-mu--mieng] Change ONLY the mouth: open it naturally as if speaking in the middle of a word: lips parted about one finger wide, a hint of upper teeth, the jaw lowered only very slightly; same lip color and line style. If the mouth is already open, close it halfway instead. Eyes, eyebrows, nose, cheeks and chin outline stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-char-tung-ao-xanh-doi-mu--mat",
+   "khung": "9:16",
+   "ref": [
+    "T:g2-char-tung-ao-xanh-doi-mu"
+   ],
+   "prompt": "[id: g2-char-tung-ao-xanh-doi-mu--mat] Change ONLY the eyes: both eyes fully closed in a soft relaxed blink: upper eyelids down drawn as a gentle curved line with lashes, no pupils visible; eyebrows, mouth, nose, glasses and everything else stay identical. Edit Image1 only. This is a frame for a 2D talking animation: keep the exact same character, pose, body, hands, hair, eyebrows, outfit, colors, line art, shading, framing, canvas size and the flat magenta background. Nothing may move or be redrawn except the part described. No text, no watermark."
+  },
+  {
+   "id": "g2-doc-huy-hieu-sut-l2",
+   "khung": "3:4",
+   "ref": [
+    "T:g2-doc-huy-hieu-sut"
+   ],
+   "prompt": "[id: g2-doc-huy-hieu-sut-l2] Edit Image1. Keep the same gear-shaped metal pin badge on the same dark backpack strap, same style, colors, lighting and framing. Change ONLY the gear outline: one tooth at the upper right is clearly broken off, leaving a visible gap with a small jagged stump where the tooth used to be; all the other teeth stay intact. No text, no watermark."
+  }
+ ]
+}
