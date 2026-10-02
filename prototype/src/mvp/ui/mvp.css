@@ -2470,6 +2470,8 @@
 }
 .mvp-ghim__mat:first-child { margin-left: 0; }
 .mvp-ghim__mat img { position: absolute; left: 50%; top: 50%; width: 220%; height: auto; transform: translate(-50%, -20%); }
+/* Bà bán trà đá thấp, lưng còng: mặt nằm thấp hơn trong ảnh nên dời khung cắt xuống. */
+.mvp-ghim__mat[data-nv='ba-lua'] img { transform: translate(-48%, -38%); }
 .mvp-ghim__them { margin-left: 3px; font: 700 12px/1 var(--font-ui); }
 .mvp-ghim:disabled { cursor: default; }
 /* Màn quan sát chân dung: ảnh nhân vật phóng to, mỗi vùng soi một vòng tròn nhịp. */
@@ -2815,4 +2817,15 @@
 @keyframes mvp-catcanh-loe {
   from { transform: translateX(-120%); }
   to { transform: translateX(120%); }
+}
+
+/* Hoạt cảnh ở màn dọc: không cắt hai bên (nhân vật nằm ở hai mép ảnh ngang) mà hiện trọn cảnh thành một ô truyện tranh ngang,
+   phía trên hộp thoại; phần còn lại là nền tối. */
+.game--portrait .mvp-hc__khung {
+  width: 100cqw;
+  top: 36%;
+  box-shadow: 0 0 0 2px rgba(248, 212, 119, 0.55), 0 12px 40px rgba(0, 0, 0, 0.7);
+}
+.game--portrait .mvp-hc__vien {
+  display: none;
 }

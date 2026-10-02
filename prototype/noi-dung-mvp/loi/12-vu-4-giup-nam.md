@@ -4,7 +4,13 @@
 
 ## v4-mo.1
 - [THẺ CHỮ] **narrator**: Vụ 4 — Thứ Hai, 14 tháng 10
-- **narrator**: Đầu tuần. Lần này không phải nhóm sang xưởng, mà Nam tự tới phòng CLB, tay cầm một tờ giấy.
+- **narrator**: Đầu tuần. Ba đứa leo cầu thang lên phòng CLB, Tùng đi trước, hai bậc một.
+- **tung** (chi-tay): Tớ cá là hôm nay chị Minh Anh tới trước bọn mình.
+- **ha-vy** (neutral): Từ đầu năm cậu cá trật bốn lần. Tớ có đếm.
+- **tung** (surprised): Cậu đếm cả cái đấy à?
+- **ha-vy** (smile): Cái gì đếm được thì tớ đếm.
+- **player**: Lần này Tùng thắng. Cửa mở sẵn rồi kìa.
+- **narrator**: Trong phòng không chỉ có chị Minh Anh. Lần này không phải nhóm sang xưởng, mà Nam tự tới phòng CLB, tay cầm một tờ giấy.
 - **nam** (neutral): Các cậu nói đúng. Có người đang mượn tên tớ, mà không phải chỉ cái tin đồn.
 - **minh-anh** (neutral): Ngồi xuống đã. Chuyện gì?
 - **nam** (neutral): Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, cộng lại hơn hai triệu rưỡi, có đơn gần một triệu. Trong năm đơn ấy tớ chỉ đặt hai: cảm biến với bánh xe, mấy trăm nghìn. Ba đơn kia tớ không đặt.

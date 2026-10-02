@@ -37,6 +37,11 @@
 > NHIỆM VỤ: Mang bản xuất sổ quỹ về phòng CLB
 
 ## v5-so-quy.1
+- **narrator**: Đường từ tòa hành chính về nhà câu lạc bộ. Minh Anh ôm tập giấy đi trước, không nói gì.
+- **tung** (worried): Chị ấy im thế là giận hay là sợ?
+- **ha-vy** (neutral): Là đang tính. Quỹ mang tên CLB mình, mà chữ ký duyệt thì chị ấy chưa thấy bao giờ.
+- **player**: Thầy Quang hỏi "căn cứ vào đâu". Giờ căn cứ nằm trong tập giấy kia.
+- **tung** (thinking): Lần đầu tớ thấy một tập giấy nặng thế.
 - **narrator**: Chiều, phòng CLB. Bản xuất cô Hạnh gửi đã nằm trong laptop: chỉ gồm các khoản chi ghi vào quỹ CLB Thám Tử và các khoản liên quan ba đơn.
 - **duy** (neutral): Mỗi khoản chi có mã quỹ. Bảng quỹ cho biết mã nào là quỹ của CLB nào. Lại hai bảng.
 > NHIỆM VỤ: Khoản chi nào ghi vào quỹ CLB Thám Tử?
@@ -224,7 +229,7 @@
 - **minh-anh** (worried): Nếu sổ ghi nhiều hơn thế thì có khoản chị chưa từng nhìn thấy.
 
 ## v5-bd-tra-da.1
-- **narrator**: Quán trà đá, đầu giờ chiều. Bà Lụa đang tráng cốc.
+- **narrator**: Quán trà đá, đầu giờ chiều. Bà chủ quán đang tráng cốc.
 - **ba-lua** (smile): Hôm nay mặt đứa nào cũng căng thế. Uống đi rồi hẵng tính.
 - **player**: Bà ơi, ngày xưa có một anh sinh viên trông cái phòng tủ sắt của bọn cháu, hay ra đây gọi trà nóng. Sau này bà có gặp lại anh ấy không ạ?
 - **ba-lua** (smile): Cậu trà nóng ấy hả? Gặp suốt. Giờ đi làm ngay trong trường, sơ mi cài kín cổ, tóc muối tiêu rồi. Sáng nào đi ngang cũng gật đầu chào bà, thỉnh thoảng vẫn ngồi xuống gọi cốc trà nóng.

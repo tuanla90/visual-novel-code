@@ -32,7 +32,7 @@ describe('thẻ giới thiệu nhân vật', () => {
 
   it('thẻ của mọi nhân vật mở ở chính câu tự xưng tên ("Chị là…", "Bác là…"), không mở trống không', () => {
     const tuXung = /(?:^|[.!?…]\s+)(?:còn\s+)?(?:tôi|mình|tớ|tui|em|anh|chị|chú|bác|bà|ông|cô|thầy)\s+là\s+/iu;
-    const khongTuXung = kb.nhanVat.filter((n) => n.gioiThieu && !tuXung.test(choMoThe(n.id)?.text.normalize('NFC') ?? '')).map((n) => n.id);
+    const khongTuXung = kb.nhanVat.filter((n) => n.gioiThieu && !n.gioiThieu.khongXungTen && !tuXung.test(choMoThe(n.id)?.text.normalize('NFC') ?? '')).map((n) => n.id);
     expect(khongTuXung).toEqual([]);
     expect(choMoThe('minh-anh')?.chuoi.startsWith('md-')).toBe(true);
   });

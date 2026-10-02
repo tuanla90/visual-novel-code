@@ -81,7 +81,7 @@
 - **tung** (worried): Ừ. Giờ gặp bạn ấy tớ chẳng biết mở mồm thế nào.
 - **ba-lua** (neutral): Mấy đứa ở cái phòng tầng hai nhà câu lạc bộ đấy hả? Phòng có cái tủ sắt.
 - **player**: Vâng ạ. Sao bà biết ạ?
-- **ba-lua** (smile): Bà là Lụa, bán trà đá ở gốc cây này hai chục năm rồi. Hồi bà mới dọn hàng ra đây, phòng ấy còn là kho chổi. Có một cậu sinh viên xin được chìa, tự tay khuân cái tủ sắt lên. Chiều nào xong việc cũng ra đây ngồi ghi ghi chép chép.
+- **ba-lua** (smile): Hồi bà mới dọn hàng ra đây, phòng ấy còn là kho chổi. Có một cậu sinh viên xin được chìa, tự tay khuân cái tủ sắt lên. Chiều nào xong việc cũng ra đây ngồi ghi ghi chép chép.
 - **ba-lua** (smile): Hè cũng như đông, cậu ấy chỉ gọi trà nóng. Ngồi quán trà đá mà gọi trà nóng thì bà nhớ.
 - **ha-vy** (thinking): Bà có nhớ tên anh ấy không ạ?
 - **ba-lua** (smile): Khách của bà, bà nhớ cốc chứ nhớ gì tên. Bà gọi là "cậu trà nóng".
@@ -89,7 +89,7 @@
 ## ket-tra-da.2
 - **tung** (surprised): Cái tủ ấy! "Căn phòng này giữ nhiều hơn em nghĩ."
 - **ha-vy** (thinking): Một người kể, chưa có giấy tờ gì. Cứ ghi lại đã, ghi rõ là lời kể.
-- **player**: Tớ ghi vào sổ. Nguồn: bà Lụa, quán trà đá.
+- **player**: Tớ ghi vào sổ. Nguồn: bà bán trà đá ngoài cổng.
 - [DÀN DỰNG] Bên kia đường, {{nv.hoai}} ôm cặp đi ngang qua cổng. {{nv.tung}} đứng bật dậy, suýt đổ cốc.
 - **tung** (worried): Hoài ơi! Tớ… hôm trước tớ…
 - **hoai** (nervous): Tớ chào các cậu. Tớ phải về kẻo muộn.

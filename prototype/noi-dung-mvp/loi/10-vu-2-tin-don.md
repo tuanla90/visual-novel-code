@@ -29,6 +29,12 @@
 > NHIỆM VỤ: Sang xưởng Robotics hỏi người trực kênh
 
 ## tin-gap-nam.1
+- **narrator**: Đường sang nhà văn hóa, ngang qua sân bóng.
+- **tung** (chi-tay): Tớ cá là tới nơi sẽ có một ông mặt gian gian ngồi sẵn cạnh máy tính.
+- **ha-vy** (neutral): Cậu vừa kết án một người chưa gặp, bằng một cái máy chưa thấy.
+- **tung** (gai-dau): Thì tớ đoán cho vui.
+- **player**: Đoán cho vui thì được. Đừng ghi vào hồ sơ là được.
+- **ha-vy** (smile): Câu ấy thì tớ cho ghi.
 - **narrator**: Xưởng của CLB Robotics nằm cuối dãy nhà văn hóa. Một cậu đang dán nhãn hộp linh kiện, ngẩng lên khi thấy cả nhóm.
 - **ha-vy** (thinking): Người lạ. Nhìn trước đã, hỏi sau.
 

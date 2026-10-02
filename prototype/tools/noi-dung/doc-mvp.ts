@@ -55,6 +55,8 @@ export interface RawGioiThieu {
   danhXung: string;
   /** "Khi chưa quen": chữ trên thẻ tên trước khi nhân vật được giới thiệu (vd "Chị khóa trên"); bỏ trống → "???". */
   chuaQuen: string | null;
+  /** "Không xưng tên: có": nhân vật không tự xưng tên (bà bán trà đá); tên hiện là cách gọi theo việc họ làm. */
+  khongXungTen?: boolean;
   nam: string | null;
   nganh: string | null;
   cauNoi: string;
@@ -365,7 +367,7 @@ export interface KetQuaDocMvp {
 const DANH_XUNG = ['Bác', 'Chú', 'Cô', 'Thầy', 'Anh', 'Chị', 'Em'];
 /** Dòng của thẻ nhân vật: phần cho người viết / bộ kiểm, và phần giới thiệu người chơi thấy. */
 const TRUONG_NHAN_VAT = ['Họ tên', 'Vai', 'Biểu cảm', 'Xuất hiện từ', 'Chỉ qua lời kể', 'Trong câu'];
-const TRUONG_GIOI_THIEU = ['Danh xưng', 'Khi chưa quen', 'Năm', 'Ngành', 'Câu nói', 'Giới thiệu', 'Lịch', 'Thường ở'];
+const TRUONG_GIOI_THIEU = ['Danh xưng', 'Khi chưa quen', 'Không xưng tên', 'Năm', 'Ngành', 'Câu nói', 'Giới thiệu', 'Lịch', 'Thường ở'];
 
 export function tenTrongCau(ten: string): string {
   const [dau = '', ...con] = ten.split(' ');
@@ -590,6 +592,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           ...(Array.isArray(thuongO) ? { thuongO } : {}),
           danhXung: fields['Danh xưng'] ?? '',
           chuaQuen: fields['Khi chưa quen'] ?? null,
+          ...(fields['Không xưng tên'] === 'có' ? { khongXungTen: true } : {}),
           nam: fields['Năm'] ?? null,
           nganh: fields['Ngành'] ?? null,
           cauNoi: fields['Câu nói'] ?? '',

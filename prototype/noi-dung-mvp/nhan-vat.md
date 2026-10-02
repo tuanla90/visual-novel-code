@@ -6,6 +6,8 @@
 
 <!-- "Khi chưa quen" (02/10): chữ trên thẻ tên TRƯỚC khi nhân vật tự xưng tên; sau câu tự xưng ("Chị là …") mới mở thẻ giới thiệu và thẻ tên đổi sang tên thật. Thẻ giới thiệu không hiện "Câu nói" (lúc mới gặp chưa có căn cứ để biết). -->
 
+<!-- "Không xưng tên: có" (user chốt 02/10/2026): nhân vật không có lý do gì để xưng tên thì không xưng (ngồi trà đá bốn năm cũng chẳng biết tên người bán). Tên sau dấu "—" là cách gọi theo việc họ làm ("Bà bán trà đá"); thẻ nhân vật mở ở câu đầu họ nói, không cần câu "Bà là …". Mã `ba-lua` giữ nguyên, tên Lụa chỉ còn trong ghi chú tác giả. -->
+
 <!-- Mã là khóa, không đổi khi đổi tên (QĐ-079 câu 4): bảo vệ giảng đường B giữ mã `bac-tu` dù tên là Bác Thịnh. -->
 
 ### tung — Tùng
@@ -187,12 +189,12 @@
 - Câu nói: Chị không chối.
 - Giới thiệu: Lo kỹ thuật của xưởng. Thẳng, hơi cẩu thả với chìa khóa.
 
-### ba-lua — Bà Lụa
+### ba-lua — Bà bán trà đá
 - Vai: Bán trà đá ở gốc cây ngoài cổng chính từ hồi phòng CLB còn là kho. Kể bốn mẩu chuyện về "cậu trà nóng" (thầy Quang thời sinh viên, bà không nhớ tên), song song với bốn mẩu giấy trong sổ CLB. Xuất hiện ở cảnh sau kết thật Vụ 1 và ở ghim "Quán trà đá" trên bản đồ Vụ 2, 3, 5.
 - Biểu cảm: neutral, smile
 - Xuất hiện từ: ngày họp
-- Danh xưng: Bán trà đá cổng trường
-- Khi chưa quen: Bà bán trà đá
+- Danh xưng: Quán trà đá cổng trường
+- Không xưng tên: có
 - Lịch: Chiều nào cũng dọn hàng ở gốc cây ngoài cổng chính, ngồi tới chín giờ tối. Sáng thứ Bảy, Chủ nhật bán từ sớm.
 - Thường ở: T2–T6 13:00–21:00 → tra-da; T7–CN 06:30–21:00 → tra-da
 - Câu nói: Khách của bà, bà nhớ cốc chứ nhớ gì tên.

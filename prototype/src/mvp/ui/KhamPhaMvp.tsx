@@ -76,7 +76,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
     soundEngine.playSfx('select');
     xem(chuoi);
   };
-  const [xemDs, setXemDs] = useState(false);
+  // Không còn nút "Danh sách" (user chốt 02/10/2026): danh sách chữ làm lộ chi tiết ẩn; mỗi chỗ bấm vẫn có nhãn đọc cho trình đọc màn hình.
   const vungRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const v = vungRef.current;
@@ -131,20 +131,6 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
           <h2>{tieuDe}</h2>
           {/* Chương 1 (ĐÃ CHỐT C): không câu dặn thao tác ở cảnh thường — chỉ báo còn bao nhiêu chỗ. */}
           <p>{phu}</p>
-        </div>
-        <div className="mvp-canh__nhom">
-          <button
-            type="button"
-            className="btn mvp-canh__nut"
-            aria-pressed={xemDs}
-            onClick={() => setXemDs((v) => !v)}
-            title={xemDs ? 'Ẩn danh sách chữ' : 'Xem các chỗ xem xét dạng danh sách chữ'}
-          >
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              <path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01" />
-            </svg>
-            <span>Danh sách</span>
-          </button>
         </div>
       </div>
 
@@ -210,7 +196,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                           {nguoi.slice(0, 3).map((n) => {
                             const url = anhChanDung(n, kb.nhanVat.find((x) => x.id === n)?.bieuCam[0]);
                             return (
-                              <span key={n} className="mvp-ghim__mat" title={kb.nhanVat.find((x) => x.id === n)?.ten}>
+                              <span key={n} className="mvp-ghim__mat" data-nv={n} title={kb.nhanVat.find((x) => x.id === n)?.ten}>
                                 {url ? <img src={url} alt="" draggable={false} /> : null}
                               </span>
                             );
@@ -266,31 +252,6 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
       )}
       {laQuanSat ? null : <p className="mvp-canh__vuot">Vuốt ngang để xem cả cảnh</p>}
 
-      {xemDs ? (
-        <div className="mvp-canh__bang mvp-canh__bang--ds" role="dialog" aria-label={`Các chỗ xem xét ở ${tenCanh}`}>
-          <ul className="mvp-dd__ds">
-            {diem.map((d, i) => (
-              <li key={d.diem.chuoi}>
-                <button
-                  type="button"
-                  className={`mvp-dd__nut${d.daXem ? ' is-xong' : ''}`}
-                  disabled={d.daXem}
-                  onClick={() => {
-                    setXemDs(false);
-                    onXem(d.diem.chuoi);
-                  }}
-                >
-                  <span className="mvp-dd__mota">{nhanDoc(i, d)}</span>
-                  <span className="mvp-dd__phu">{d.daXem ? 'Đã xem' : 'Chưa xem'}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
-          <button type="button" className="btn" onClick={() => setXemDs(false)}>
-            Đóng danh sách
-          </button>
-        </div>
-      ) : null}
     </div>
   );
 }

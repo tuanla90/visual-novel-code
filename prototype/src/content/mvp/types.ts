@@ -70,6 +70,8 @@ export interface GioiThieuNhanVatMvp {
   danhXung: string;
   /** Chữ trên thẻ tên trước khi nhân vật được giới thiệu ("Chị khóa trên"); `null` → "???". */
   chuaQuen?: string | null;
+  /** Nhân vật không tự xưng tên; thẻ mở ở câu đầu họ nói. */
+  khongXungTen?: boolean;
   nam: string | null;
   nganh: string | null;
   cauNoi: string;

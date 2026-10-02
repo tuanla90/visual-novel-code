@@ -1029,7 +1029,7 @@ export function tenNguoiNoi(kb: KichBanMvp, speaker: string, s?: TrangThaiMvp): 
   if (speaker === 'player') return 'Bạn';
   if (speaker === 'narrator') return '';
   const nv = kb.nhanVat.find((n) => n.id === speaker);
-  if (s && nv?.gioiThieu && !(s.daGioiThieu ?? []).includes(speaker)) return nv.gioiThieu.chuaQuen ?? '???';
+  if (s && nv?.gioiThieu && !(s.daGioiThieu ?? []).includes(speaker)) return nv.gioiThieu.khongXungTen ? nv.ten : (nv.gioiThieu.chuaQuen ?? '???');
   return nv?.ten ?? 'Nhân vật';
 }
 

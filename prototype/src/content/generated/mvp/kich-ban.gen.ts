@@ -584,9 +584,9 @@ const GOC = {
     },
     {
       "id": "ba-lua",
-      "ten": "Bà Lụa",
+      "ten": "Bà bán trà đá",
       "hoTen": null,
-      "trongCau": "Bà Lụa",
+      "trongCau": "Bà bán trà đá",
       "vai": "Bán trà đá ở gốc cây ngoài cổng chính từ hồi phòng CLB còn là kho. Kể bốn mẩu chuyện về \"cậu trà nóng\" (thầy Quang thời sinh viên, bà không nhớ tên), song song với bốn mẩu giấy trong sổ CLB. Xuất hiện ở cảnh sau kết thật Vụ 1 và ở ghim \"Quán trà đá\" trên bản đồ Vụ 2, 3, 5.",
       "bieuCam": [
         "neutral",
@@ -621,8 +621,9 @@ const GOC = {
             "noi": "tra-da"
           }
         ],
-        "danhXung": "Bán trà đá cổng trường",
-        "chuaQuen": "Bà bán trà đá",
+        "danhXung": "Quán trà đá cổng trường",
+        "chuaQuen": null,
+        "khongXungTen": true,
         "nam": null,
         "nganh": null,
         "cauNoi": "Khách của bà, bà nhớ cốc chứ nhớ gì tên.",
@@ -4575,7 +4576,7 @@ const GOC = {
           "type": "line",
           "speaker": "ba-lua",
           "expression": "smile",
-          "text": "Bà là Lụa, bán trà đá ở gốc cây này hai chục năm rồi. Hồi bà mới dọn hàng ra đây, phòng ấy còn là kho chổi. Có một cậu sinh viên xin được chìa, tự tay khuân cái tủ sắt lên. Chiều nào xong việc cũng ra đây ngồi ghi ghi chép chép."
+          "text": "Hồi bà mới dọn hàng ra đây, phòng ấy còn là kho chổi. Có một cậu sinh viên xin được chìa, tự tay khuân cái tủ sắt lên. Chiều nào xong việc cũng ra đây ngồi ghi ghi chép chép."
         },
         {
           "type": "line",
@@ -4619,7 +4620,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Tớ ghi vào sổ. Nguồn: bà Lụa, quán trà đá."
+          "text": "Tớ ghi vào sổ. Nguồn: bà bán trà đá ngoài cổng."
         },
         {
           "type": "note",
@@ -4953,6 +4954,40 @@ const GOC = {
       "canh": "xuong-robot",
       "mocSomNhat": 1000,
       "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Đường sang nhà văn hóa, ngang qua sân bóng."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Tớ cá là tới nơi sẽ có một ông mặt gian gian ngồi sẵn cạnh máy tính."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Cậu vừa kết án một người chưa gặp, bằng một cái máy chưa thấy."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Thì tớ đoán cho vui."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Đoán cho vui thì được. Đừng ghi vào hồ sơ là được."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Câu ấy thì tớ cho ghi."
+        },
         {
           "type": "line",
           "speaker": "narrator",
@@ -7197,7 +7232,41 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Đầu tuần. Lần này không phải nhóm sang xưởng, mà Nam tự tới phòng CLB, tay cầm một tờ giấy."
+          "text": "Đầu tuần. Ba đứa leo cầu thang lên phòng CLB, Tùng đi trước, hai bậc một."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Tớ cá là hôm nay chị Minh Anh tới trước bọn mình."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Từ đầu năm cậu cá trật bốn lần. Tớ có đếm."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Cậu đếm cả cái đấy à?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Cái gì đếm được thì tớ đếm."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Lần này Tùng thắng. Cửa mở sẵn rồi kìa."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Trong phòng không chỉ có chị Minh Anh. Lần này không phải nhóm sang xưởng, mà Nam tự tới phòng CLB, tay cầm một tờ giấy."
         },
         {
           "type": "line",
@@ -8266,6 +8335,34 @@ const GOC = {
       "canh": "phong-clb",
       "mocSomNhat": 1000,
       "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Đường từ tòa hành chính về nhà câu lạc bộ. Minh Anh ôm tập giấy đi trước, không nói gì."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Chị ấy im thế là giận hay là sợ?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Là đang tính. Quỹ mang tên CLB mình, mà chữ ký duyệt thì chị ấy chưa thấy bao giờ."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Thầy Quang hỏi \"căn cứ vào đâu\". Giờ căn cứ nằm trong tập giấy kia."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "Lần đầu tớ thấy một tập giấy nặng thế."
+        },
         {
           "type": "line",
           "speaker": "narrator",
@@ -10167,7 +10264,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Quán trà đá, đầu giờ chiều. Bà Lụa đang tráng cốc."
+          "text": "Quán trà đá, đầu giờ chiều. Bà chủ quán đang tráng cốc."
         },
         {
           "type": "line",
@@ -13985,8 +14082,8 @@ const GOC = {
       "loai": "clue",
       "heading": "[Cậu trà nóng và cái tủ sắt]",
       "fields": {
-        "Tiêu đề": "Chuyện bà Lụa kể, lần một",
-        "Nguồn": "Lời kể của Bà Lụa, quán trà đá cổng trường",
+        "Tiêu đề": "Chuyện bà bán trà đá kể, lần một",
+        "Nguồn": "Lời kể của Bà bán trà đá, quán trà đá cổng trường",
         "Nội dung": "Phòng CLB từng là kho chổi. Một sinh viên xin được chìa, tự khuân cái tủ sắt lên, chiều nào cũng ra quán ngồi ghi chép, hè cũng gọi trà nóng. Bà không nhớ tên. Lời kể, chưa đối chiếu."
       },
       "quotes": {}
@@ -13996,8 +14093,8 @@ const GOC = {
       "loai": "clue",
       "heading": "[Hai cuốn sổ]",
       "fields": {
-        "Tiêu đề": "Chuyện bà Lụa kể, lần hai",
-        "Nguồn": "Lời kể của Bà Lụa, quán trà đá cổng trường",
+        "Tiêu đề": "Chuyện bà bán trà đá kể, lần hai",
+        "Nguồn": "Lời kể của Bà bán trà đá, quán trà đá cổng trường",
         "Nội dung": "\"Cậu trà nóng\" có hai cuốn sổ, ngồi chép từ cuốn bìa cứng đã sờn sang cuốn mới suốt một tháng. Lý do cậu ấy nói: cuốn cũ có chỗ không muốn người sau chép theo. Lời kể, chưa đối chiếu."
       },
       "quotes": {}
@@ -14007,8 +14104,8 @@ const GOC = {
       "loai": "clue",
       "heading": "[Một kết luận sai, một cốc trà xin lỗi]",
       "fields": {
-        "Tiêu đề": "Chuyện bà Lụa kể, lần ba",
-        "Nguồn": "Lời kể của Bà Lụa, quán trà đá cổng trường",
+        "Tiêu đề": "Chuyện bà bán trà đá kể, lần ba",
+        "Nguồn": "Lời kể của Bà bán trà đá, quán trà đá cổng trường",
         "Nội dung": "\"Cậu trà nóng\" từng kết luận sai cho một người, cả câu lạc bộ tin theo. Hôm sau cậu ấy dẫn người đó ra quán, mời trà, xin lỗi, rồi gạch một chỗ trong sổ mạnh tới rách giấy. Lời kể, chưa đối chiếu."
       },
       "quotes": {}
@@ -14018,8 +14115,8 @@ const GOC = {
       "loai": "clue",
       "heading": "[\"Căn cứ vào đâu?\"]",
       "fields": {
-        "Tiêu đề": "Chuyện bà Lụa kể, lần bốn",
-        "Nguồn": "Lời kể của Bà Lụa, quán trà đá cổng trường",
+        "Tiêu đề": "Chuyện bà bán trà đá kể, lần bốn",
+        "Nguồn": "Lời kể của Bà bán trà đá, quán trà đá cổng trường",
         "Nội dung": "\"Cậu trà nóng\" giờ làm việc ngay trong trường, sơ mi cài kín cổ, tóc muối tiêu, vẫn gọi trà nóng. Câu cửa miệng: \"Căn cứ vào đâu?\" Bà không nhớ tên. Một lời kể và một câu cửa miệng chưa đủ để ghim tên ai."
       },
       "quotes": {}
