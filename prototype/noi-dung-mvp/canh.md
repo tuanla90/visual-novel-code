@@ -27,3 +27,4 @@
 ### sanh-toa-b-dem — Sảnh tòa B
 ### phong-ktx-dem — Phòng KTX 408
 ### san-dem — Sân trường
+### sanh-den-pin — Sảnh tòa B

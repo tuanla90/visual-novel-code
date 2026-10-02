@@ -170,8 +170,9 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
         <span className="stage__scene-text">{tenCanh}</span>
       </div>
       {nhacViec ? <NhacViecMvp kb={kb} nhac={nhacViec} dienTen={dienTen ?? ((t) => t)} tenNguoiChoi={tenNguoiChoi} /> : null}
-      <div className="stage__portraits" data-so-nguoi={coDan ? moi.thanhVien.length : 0}>
-        {(coDan ? moi.thanhVien : []).map((t, i) => {
+      {/* Cảnh có hoạt cảnh: nhân vật đã nằm trong ảnh tách lớp, không vẽ thêm nhân vật đứng (hộp thoại vẫn ghi tên người nói). */}
+      <div className="stage__portraits" data-so-nguoi={coDan && !coHoatCanh(canh) ? moi.thanhVien.length : 0}>
+        {(coDan && !coHoatCanh(canh) ? moi.thanhVien : []).map((t, i) => {
           const dangNoi = t.nhanVat === speaker;
           const pos = viTri(moi.thanhVien.length, i);
           const phai = pos > 0.5;

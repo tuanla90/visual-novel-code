@@ -20,9 +20,11 @@
 - **tung** (surprised): Chết, tập bản đồ! Tớ để trên bàn!
 - **player**: Mai lấy.
 - **tung** (worried): Trong ấy có cả sơ đồ tớ vẽ tay. Mười giây thôi!
-- [DÀN DỰNG] {{nv.tung}} quay ngược lên cầu thang. Một vệt đèn pin quét ngang sảnh.
+- **narrator**: Tùng quay ngược lên cầu thang. Tiếng chân rầm rập ba tầng lầu, đi lên rồi đi xuống.
+
+## p-lac-den.1
+- **narrator**: Một vệt đèn pin quét ngang sảnh, dừng lại đúng chỗ Tùng đang nhảy hai bậc một.
 - **bac-tu** (neutral): Ai còn ở trên đấy? Thư viện đóng rồi, bác khóa sảnh bây giờ!
-- **narrator**: Tiếng chân Tùng rầm rập ba tầng lầu, đi lên rồi đi xuống. Vệt đèn pin đuổi theo sau lưng.
 - **bac-tu** (neutral): Đứng lại bác xem thẻ! Mép bậc thang trơn đấy, đừng có chạy!
 - **tung** (happy): Cháu chào bác ạ! Mai cháu lên trình thẻ!
 

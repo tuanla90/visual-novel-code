@@ -2611,8 +2611,8 @@
   display: block;
   width: 100%;
   height: auto;
-  /* Ảnh cắt được vẽ sáng đều; hạ sáng và ngả lam cho ăn với nền đêm. */
-  filter: brightness(0.62) saturate(0.9) contrast(1.05) drop-shadow(0 0.6cqh 1.2cqh rgba(0, 0, 0, 0.55));
+  /* Ảnh cắt được vẽ sáng đều; độ sáng từng lớp khai ở hoat-canh-mvp.ts (cảnh đêm hạ xuống, đèn rọi tới thì sáng lên). */
+  filter: brightness(var(--hc-sang-sau, 1)) saturate(0.9) contrast(1.05) drop-shadow(0 0.6cqh 1.2cqh rgba(0, 0, 0, 0.55));
   user-select: none;
 }
 .mvp-hc__den {
@@ -2623,6 +2623,20 @@
   background: radial-gradient(closest-side, rgba(255, 226, 150, 0.5), rgba(255, 226, 150, 0) 100%);
   mix-blend-mode: screen;
   opacity: 0.55;
+  pointer-events: none;
+}
+/* Chùm đèn pin: hình nón mờ từ đầu đèn, quét tới chỗ nhân vật. */
+.mvp-hc__chum {
+  position: absolute;
+  width: 78cqw;
+  height: 34cqh;
+  margin-top: -17cqh;
+  transform-origin: 0 50%;
+  transform: rotate(var(--hc-chum-den));
+  clip-path: polygon(0 47.5%, 100% 0, 100% 100%, 0 52.5%);
+  background: linear-gradient(90deg, rgba(255, 233, 170, 0.85), rgba(255, 233, 170, 0.34) 45%, rgba(255, 233, 170, 0) 96%);
+  mix-blend-mode: screen;
+  filter: blur(1.1cqh);
   pointer-events: none;
 }
 .mvp-hc__vet {
@@ -2650,6 +2664,12 @@
   .mvp-hc__den {
     animation: mvp-hc-den 1.7s ease-in-out infinite;
   }
+  .mvp-hc__nv {
+    animation: mvp-hc-sang 0.45s ease-out var(--hc-sang-luc, 0s) both;
+  }
+  .mvp-hc__chum {
+    animation: mvp-hc-chum var(--hc-chum-giay) cubic-bezier(0.3, 0.6, 0.3, 1) both;
+  }
   .mvp-hc__vet {
     animation: mvp-hc-vet 0.42s steps(3) infinite, mvp-hc-vet-tan var(--hc-giay) ease-out both;
   }
@@ -2662,6 +2682,14 @@
 @keyframes mvp-hc-truot {
   from { transform: translate(0, 0) scale(1); }
   to { transform: translate(var(--hc-dx), var(--hc-dy)) scale(var(--hc-co)); }
+}
+@keyframes mvp-hc-sang {
+  from { filter: brightness(var(--hc-sang-dau, 1)) saturate(0.9) contrast(1.05) drop-shadow(0 0.6cqh 1.2cqh rgba(0, 0, 0, 0.55)); }
+  to { filter: brightness(var(--hc-sang-sau, 1)) saturate(0.9) contrast(1.05) drop-shadow(0 0.6cqh 1.2cqh rgba(0, 0, 0, 0.55)); }
+}
+@keyframes mvp-hc-chum {
+  from { transform: rotate(var(--hc-chum-tu)); opacity: 0.55; }
+  to { transform: rotate(var(--hc-chum-den)); opacity: 1; }
 }
 @keyframes mvp-hc-den {
   0%, 100% { opacity: 0.4; }

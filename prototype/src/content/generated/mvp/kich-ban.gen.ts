@@ -745,6 +745,11 @@ const GOC = {
       "id": "san-dem",
       "ten": "Sân trường",
       "anhNen": null
+    },
+    {
+      "id": "sanh-den-pin",
+      "ten": "Sảnh tòa B",
+      "anhNen": null
     }
   ],
   "diaDiem": [],
@@ -11063,19 +11068,32 @@ const GOC = {
           "text": "Trong ấy có cả sơ đồ tớ vẽ tay. Mười giây thôi!"
         },
         {
-          "type": "note",
-          "text": "Tùng quay ngược lên cầu thang. Một vệt đèn pin quét ngang sảnh."
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng quay ngược lên cầu thang. Tiếng chân rầm rập ba tầng lầu, đi lên rồi đi xuống."
+        },
+        {
+          "type": "goto",
+          "to": "p-lac-den"
+        }
+      ]
+    },
+    {
+      "id": "p-lac-den",
+      "title": "Hoạt cảnh: vệt đèn pin bắt gặp Tùng trên cầu thang (nền là ảnh tách lớp, không hiện nhân vật đứng)",
+      "canh": "sanh-den-pin",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Một vệt đèn pin quét ngang sảnh, dừng lại đúng chỗ Tùng đang nhảy hai bậc một."
         },
         {
           "type": "line",
           "speaker": "bac-tu",
           "expression": "neutral",
           "text": "Ai còn ở trên đấy? Thư viện đóng rồi, bác khóa sảnh bây giờ!"
-        },
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Tiếng chân Tùng rầm rập ba tầng lầu, đi lên rồi đi xuống. Vệt đèn pin đuổi theo sau lưng."
         },
         {
           "type": "line",

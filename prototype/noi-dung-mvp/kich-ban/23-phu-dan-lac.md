@@ -10,6 +10,11 @@
 ### p-lac-sanh — Sảnh giảng đường B đã tắt đèn: bác Thịnh soi đèn pin {cảnh: sanh-toa-b-dem}
 
 - [LỜI p-lac-sanh.1]
+- [ĐI TỚI p-lac-den]
+
+### p-lac-den — Hoạt cảnh: vệt đèn pin bắt gặp Tùng trên cầu thang (nền là ảnh tách lớp, không hiện nhân vật đứng) {cảnh: sanh-den-pin}
+
+- [LỜI p-lac-den.1]
 - [ẢNH chibi-chay]
 - [ĐI TỚI p-lac-chay]
 
