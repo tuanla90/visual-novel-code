@@ -10,6 +10,7 @@ Ra:  miếng mouth.webp / eyes.webp ghi vào đúng thư mục bộ nhép đang 
 Chạy: python art/nguon/cat-mieng-mat-dan-moi-2026-10-01.py [tên ảnh …]   (không tham số = tất cả ảnh có đủ tệp vào).
 """
 import importlib.util
+import json
 import shutil
 import sys
 from pathlib import Path
@@ -34,7 +35,14 @@ BO_CU = {  # bộ của talk-rigs.ts: tên thư mục khác tên ảnh
 BO_MVP = ['char-tung-happy', 'char-tung-worried', 'char-tung-surprised', 'char-tung-thinking', 'char-tung-gai-dau', 'char-tung-chi-tay',
           'char-tung-ao-xanh', 'char-tung-ao-xanh-happy', 'char-tung-ao-xanh-worried', 'char-tung-ao-xanh-gai-dau', 'char-tung-ao-xanh-chi-tay',
           'char-tung-ao-xanh-surprised', 'char-tung-ao-xanh-thinking', 'char-tung-ao-xanh-doi-mu',
-          'char-ha-vy-day-kinh', 'char-minh-anh-serious', 'char-minh-anh-khoanh-tay', 'char-quan-chi-man', 'char-nguoi-choi']
+          'char-ha-vy-day-kinh', 'char-minh-anh-serious', 'char-minh-anh-khoanh-tay', 'char-quan-chi-man', 'char-nguoi-choi',
+          # 02/10: Duy, nhóm Robotics, hai cô (áo dài)
+          'char-duy', 'char-duy-smile', 'char-duy-serious', 'char-nam', 'char-khanh', 'char-thao', 'char-bach',
+          'char-co-hanh', 'char-co-hanh-smile', 'char-co-lan', 'char-co-lan-smile',
+          # 02/10 chiều: nhân vật phụ giữ ảnh cũ (khung nhép sửa từ chính chân dung trong game, lót nền hồng tím)
+          'char-bac-tu-neutral', 'char-bac-tu-smile', 'char-hoai-anchor', 'char-hoai-downcast', 'char-hoai-relieved', 'char-hoai-nervous', 'char-hoai-neutral',
+          'char-thay-khai-anchor', 'char-thay-quang-anchor', 'char-thay-quang-smile', 'char-thay-quang-stern',
+          'char-chu-cuong', 'char-chu-cuong-smile', 'char-dat', 'char-hieu', 'char-hieu-annoyed', 'char-hieu-surprised']
 
 
 def tep_chan_dung(ten: str) -> str:
@@ -44,6 +52,10 @@ def tep_chan_dung(ten: str) -> str:
 _sx = importlib.util.spec_from_file_location('xu_ly_cu', Path(__file__).with_name('xu-ly-anh-2026-09-30.py'))
 xl = importlib.util.module_from_spec(_sx)
 _sx.loader.exec_module(xl)
+
+_sm = importlib.util.spec_from_file_location('xu_ly_moi', Path(__file__).with_name('xu-ly-anh-dan-moi-2026-10-01.py'))
+xm = importlib.util.module_from_spec(_sm)
+_sm.loader.exec_module(xm)
 
 _spec = importlib.util.spec_from_file_location('cat_cu', Path(__file__).with_name('cat-mieng-mat.py'))
 cu = importlib.util.module_from_spec(_spec)
@@ -57,10 +69,16 @@ def main(ten_anh):
     for t in chon:  # công cụ cũ đọc <VAO>/<ảnh>--mieng.png
         for loai in ('mieng', 'mat'):
             # khử nền và ánh hồng tím trước khi so, kẻo mép miếng dính viền tím
-            xl.tach_hong_tim(Image.open(G2 / f'g2-{t}--{loai}.png')).save(VAO / f'{t}--{loai}.png')
+            khung = xl.tach_hong_tim(Image.open(G2 / f'g2-{t}--{loai}.png'))
+            if t.startswith('char-duy'):  # chân dung Duy đã phóng 1,10 lần khi xử lý: khung nhép phải phóng y hệt
+                khung = xm.can_duy(khung.resize((768, 1360), Image.LANCZOS))
+            khung.save(VAO / f'{t}--{loai}.png')
     tam = VAO / '_mieng'
     cu.VAO, cu.RA, cu.ANH = VAO, tam, {t: tep_chan_dung(t) for t in chon}
+    td = VAO / 'toa-do.json'  # công cụ cũ ghi đè cả tệp: giữ tọa độ của các bộ không cắt lại lần này
+    cu_td = json.loads(td.read_text(encoding='utf-8')) if td.exists() else {}
     cu.main(chon)
+    td.write_text(json.dumps({**cu_td, **json.loads(td.read_text(encoding='utf-8'))}, ensure_ascii=False, indent=1), encoding='utf-8')
     for t in chon:  # chuyển miếng về đúng thư mục bộ nhép
         dich = TALK / BO_CU[t] if t in BO_CU else NHEP / t
         dich.mkdir(parents=True, exist_ok=True)

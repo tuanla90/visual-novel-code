@@ -13,4 +13,10 @@ Chạy từ `prototype/` (cần numpy, scipy, Pillow), theo thứ tự:
    cụm rời. Tùng vui / Tùng áo xanh vui mắt đã híp sẵn nên không chớp.
 5. `ghi-toa-do.py` — ghi tọa độ mới vào `src/mvp/ui/nhep-moi-mvp.ts` và `src/shared/ui/visuals/talk-rigs.ts`.
 
+**Bộ mới thêm sau này** (đã có hộp tạm trong `nhep-moi-mvp.ts` và ảnh `g2-<ảnh>--mieng/--mat.png`): chạy
+`cat-bo-moi.py <tên ảnh…>` (cắt mắt trước, miệng tìm 35–175 px dưới tâm mắt; ảnh Duy phóng nguồn bằng `can_duy` trước khi cắt),
+rồi `loc-net-le.py --tep=mvp <tên ảnh…> --ghi` và `ghi-toa-do.py`. `--tep` cần vì ba ảnh Hoài có bộ ở cả MVP lẫn prototype.
+28 bộ dàn nhân vật phụ (Duy, Nam, Khánh, Thảo, Bách, cô Hạnh, cô Lan, bác Tư, Hoài, thầy Khải, thầy Quang, chú Cường, Đạt,
+Hiếu) đã cắt theo cách này.
+
 `kiem-nhep.py` ghép miếng lên ảnh hiện tại và đo độ lệch để soi lại.

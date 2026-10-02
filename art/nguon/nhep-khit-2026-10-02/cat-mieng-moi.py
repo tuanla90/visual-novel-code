@@ -12,6 +12,7 @@ def cat(r):
     B=np.asarray(Image.open(r['base']).convert('RGBA')).astype(float); E=np.asarray(Image.open(src).convert('RGB').resize((768,1360),Image.LANCZOS)).astype(float)
     ex,ey,ew,eh=r['eb']
     X0,X1=max(0,ex-10),min(768,ex+ew+10); Y0,Y1=int(ey+eh*0.7),min(1360,ey+eh+200)
+    if 'cua_so' in r: X0,Y0,X1,Y1=r['cua_so']  # cửa sổ tìm miệng cho sẵn (x0, y0, x1, y1)
     a=B[...,3]/255; g=lambda im: im[...,:3].mean(-1)
     # căn khớp: dịch E trong ±10px cho khớp B ở cửa sổ (chỉ chỗ có người)
     best=None; wB=g(B)[Y0:Y1,X0:X1]; m=a[Y0:Y1,X0:X1]>0.95

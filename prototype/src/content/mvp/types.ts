@@ -56,6 +56,8 @@ export interface NhanVatMvp {
 /** Chữ người chơi thấy về một nhân vật — viết sao cho không lộ tình tiết (nhan-vat.md, đặc tả §18.3). */
 export interface GioiThieuNhanVatMvp {
   danhXung: string;
+  /** Chữ trên thẻ tên trước khi nhân vật được giới thiệu ("Chị khóa trên"); `null` → "???". */
+  chuaQuen?: string | null;
   nam: string | null;
   nganh: string | null;
   cauNoi: string;

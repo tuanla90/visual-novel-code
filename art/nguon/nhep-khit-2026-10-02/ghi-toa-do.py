@@ -5,7 +5,7 @@ from rigs_lib import doc_rigs
 from PIL import Image
 SC=os.path.dirname(os.path.abspath(__file__))
 kq=json.load(open(os.path.join(SC,'moi','loc-net.json')))
-rigs={r['ten']:r for r in doc_rigs()}
+rigs={r['tep']+':'+r['ten']:r for r in doc_rigs()}
 moi={}
 for ten,v in kq.items():
     r=rigs[ten]; moi[ten]={}
@@ -19,7 +19,7 @@ p='src/mvp/ui/nhep-moi-mvp.ts'; t=io.open(p,encoding='utf-8').read()
 for ten,v in moi.items():
     if rigs[ten]['tep']!='mvp': continue
     m,e=v['mouth'],v['eyes']
-    t,n=re.subn(r"(bo\('"+re.escape(ten)+r"', \w+, )\[\d+, \d+, \d+, \d+\](, \w+, )\[\d+, \d+, \d+, \d+\]", lambda mm: f"{mm.group(1)}[{m[0]}, {m[1]}, {m[2]}, {m[3]}]{mm.group(2)}[{e[0]}, {e[1]}, {e[2]}, {e[3]}]", t)
+    t,n=re.subn(r"(bo\('"+re.escape(ten.split(':',1)[1])+r"', \w+, )\[\d+, \d+, \d+, \d+\](, \w+, )\[\d+, \d+, \d+, \d+\]", lambda mm: f"{mm.group(1)}[{m[0]}, {m[1]}, {m[2]}, {m[3]}]{mm.group(2)}[{e[0]}, {e[1]}, {e[2]}, {e[3]}]", t)
     assert n==1, ten
 io.open(p,'w',encoding='utf-8',newline='\n').write(t)
 p='src/shared/ui/visuals/talk-rigs.ts'; t=io.open(p,encoding='utf-8').read()
@@ -35,4 +35,4 @@ for r in doc_rigs():
     for k in ('mouth','eyes'):
         b=r['mb'] if k=='mouth' else r['eb']; im=Image.open(r[k])
         assert im.size==(b[2],b[3]), (r['ten'],k,im.size,b)
-print('ok', len(moi)); print('gai-dau', moi['char-tung-gai-dau']['mouth'], 'quan-chi-man', moi['char-quan-chi-man']['eyes'])
+print('ok', len(moi))

@@ -57,10 +57,13 @@ export function coNenDem(canh: string, chiMuc: ReadonlyMap<string, string> = CHI
 
 /**
  * URL ảnh của vật tương tác (dòng `- Ảnh:` trong dia-diem.md): `obj-…` → `src/assets/mvp/vat/obj-….webp`;
- * `nv:<mã>` → chân dung nhân vật (xem `anhChanDung`). Không có tệp → `undefined` (điểm vẽ tạm).
+ * `nv:<mã>` hoặc `nv:<mã>/<biểu cảm>` → chân dung nhân vật (xem `anhChanDung`). Không có tệp → `undefined` (điểm vẽ tạm).
  */
 export function anhSprite(sprite: string, chiMuc: ReadonlyMap<string, string> = CHI_MUC): string | undefined {
-  if (sprite.startsWith('nv:')) return anhChanDung(sprite.slice(3), undefined, chiMuc);
+  if (sprite.startsWith('nv:')) {
+    const [ma = '', bieuCam] = sprite.slice(3).split('/');
+    return anhChanDung(ma, bieuCam, chiMuc);
+  }
   return anhTheoTen(sprite, chiMuc);
 }
 

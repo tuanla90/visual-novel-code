@@ -70,7 +70,8 @@ export interface CharacterDebutCardProps {
   /** Hai "chip" dưới chức danh; `null` = bỏ chip đó (nhân vật không phải sinh viên). */
   year: string | null;
   major: string | null;
-  quote: string;
+  /** Câu nói đặc trưng; bỏ trống → không vẽ khung trích (MVP: lúc mới gặp chưa có căn cứ để biết câu ấy). */
+  quote?: string;
   accentColor: string;
   /** Ảnh giới thiệu 16:9 (prompt E); có thì thay khung chân dung. */
   intro: { url: string; slot?: string } | null;
@@ -165,10 +166,12 @@ export function CharacterDebutCard({ id, fullName, title, year, major, quote, ac
           </div>
 
           {/* KHỐI 2: Khung quote vát chéo có icon ngoặc kép */}
-          <blockquote className="chara-debut__panel chara-debut__panel--quote">
-            <span className="chara-debut__quote-icon" aria-hidden="true">“</span>
-            <p className="chara-debut__quote-text">“{quote}”</p>
-          </blockquote>
+          {quote ? (
+            <blockquote className="chara-debut__panel chara-debut__panel--quote">
+              <span className="chara-debut__quote-icon" aria-hidden="true">“</span>
+              <p className="chara-debut__quote-text">“{quote}”</p>
+            </blockquote>
+          ) : null}
 
           {/* KHỐI 3: Button Tiếp tục dạng gradient theo từng nhân vật */}
           <button

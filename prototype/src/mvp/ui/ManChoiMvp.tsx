@@ -26,7 +26,7 @@ import { canGioiThieu, dienTen as dienTenMay, khungNhin, tenNguoiNoi, type Khung
 import { giaTriTuHoSo } from '../engine/giay-nho';
 import { chonNhacNen, type NhacTruoc } from '../engine/nhac';
 import type { TrangThaiMvp } from '../engine/trang-thai';
-import { nhayToi, type MaDiemNhayMvp } from '../engine/tu-choi';
+import { DIEM_NHAY_MVP, nhayToi, nhayToiDauChuong, type MaDiemNhayMvp } from '../engine/tu-choi';
 import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
 import { AnhChenMvp } from './AnhChenMvp';
 import { BAN_DO_MVP } from './ban-do-mvp';
@@ -75,6 +75,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const luuVaoO = useKhoMvp((k) => k.luuVaoO);
   const napTuO = useKhoMvp((k) => k.napTuO);
   const datTrangThai = useKhoMvp((k) => k.datTrangThai);
+  const luiKho = useKhoMvp((k) => k.lui);
+  const coTheLui = useKhoMvp((k) => k.lichSuLui.length > 0);
 
   /** Hồ sơ và Sổ cá nhân là hai tab của cùng một khung (phong cách hòm đồ prototype); `null` = đóng. */
   const [kho, setKho] = useState<TabHoSoMvp | null>(null);
@@ -90,6 +92,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const viewportMode = useVnStore((k) => k.viewportMode);
   const setSkipMode = useVnStore((k) => k.setSkipMode);
   const clearBacklog = useVnStore((k) => k.clearBacklog);
+  const popBacklog = useVnStore((k) => k.popBacklog);
   const bgmEnabled = useAudioStore((k) => k.bgmEnabled);
 
   useEffect(() => {
@@ -218,10 +221,10 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
 
   // Bảng người quan sát (`?facilitator=1`): nhảy tới phần SQL = máy tự chơi ván mới tới đó (engine/tu-choi.ts).
   const quanSat = typeof window !== 'undefined' && isFacilitatorMode(window.location.search);
-  const nhay = (id: MaDiemNhayMvp): string | null => {
+  const nhay = (id: string): string | null => {
     let moi: TrangThaiMvp;
     try {
-      moi = nhayToi(kb, id);
+      moi = DIEM_NHAY_MVP.some((d) => d.id === id) ? nhayToi(kb, id as MaDiemNhayMvp) : nhayToiDauChuong(kb, id);
     } catch (e) {
       return e instanceof Error ? e.message : String(e);
     }
@@ -230,8 +233,17 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     setLichSuMo(false);
     setLuuNap(null);
     setDangO(null);
+    setGioiThieuMo(null);
     datTrangThai(moi);
     return null;
+  };
+  // Lùi lại một bước (nút Lùi ở hộp thoại, phím ←): về đúng trạng thái trước cú bấm gần nhất, bỏ câu đang hiện khỏi lịch sử.
+  const lui = (): void => {
+    const dangLaLoi = kn.kind === 'line' || kn.kind === 'feedback';
+    if (useVnStore.getState().autoMode) useVnStore.getState().toggleAutoMode();
+    setSkipMode(false);
+    setGioiThieuMo(null);
+    if (luiKho() && dangLaLoi) popBacklog();
   };
   const bangQuanSat = quanSat ? <BangQuanSatMvp kb={kb} s={s} loaiManHinh={kn.kind} onNhay={nhay} /> : null;
 
@@ -243,14 +255,15 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     onOpenSave: () => setLuuNap('save'),
     onOpenLoad: () => setLuuNap('load'),
     onOpenAudio: () => setCaiDat(true),
+    onBack: coTheLui ? lui : undefined,
   };
 
   const noiDung = (() => {
     switch (kn.kind) {
       case 'line':
-        return <DialogBox line={thanhLine(kb, s, kn.loi)} display={kn.display === 'card' ? 'card' : 'dialog'} speakerName={tenNguoiNoi(kb, kn.loi.speaker)} onAdvance={tiep} {...nutVn} />;
+        return <DialogBox line={thanhLine(kb, s, kn.loi)} display={kn.display === 'card' ? 'card' : 'dialog'} speakerName={tenNguoiNoi(kb, kn.loi.speaker, s)} onAdvance={tiep} {...nutVn} />;
       case 'feedback':
-        return <DialogBox line={thanhLine(kb, s, kn.loi)} hint={`Phản hồi ${kn.viTri + 1}/${kn.tong}`} speakerName={tenNguoiNoi(kb, kn.loi.speaker)} onAdvance={tiep} {...nutVn} />;
+        return <DialogBox line={thanhLine(kb, s, kn.loi)} hint={`Phản hồi ${kn.viTri + 1}/${kn.tong}`} speakerName={tenNguoiNoi(kb, kn.loi.speaker, s)} onAdvance={tiep} {...nutVn} />;
       case 'chon-dia-diem':
         return noiDangO ? (
           <NoiMvp
@@ -279,7 +292,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           asker: { speaker: kn.nut.asker.speaker, text: dienTen(kn.nut.asker.text) },
           choices: kn.nut.choices.map((c) => ({ id: c.id, text: dienTen(c.text), correct: c.correct, feedback: [] })),
         } as unknown as MultipleChoiceQuestion;
-        return <MultipleChoice question={q} attempts={kn.lanThu} gameKey={s.batDauLuc} askerLabel={tenNguoiNoi(kb, kn.nut.asker.speaker)} onChoose={(id) => hanhDong({ type: 'chon', luaChon: id })} anNhacChon />;
+        return <MultipleChoice question={q} attempts={kn.lanThu} gameKey={s.batDauLuc} askerLabel={tenNguoiNoi(kb, kn.nut.asker.speaker, s)} onChoose={(id) => hanhDong({ type: 'chon', luaChon: id })} anNhacChon />;
       }
       case 'doi-chat':
         return (
@@ -291,7 +304,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             daTrinh={kn.daTrinh}
             muc={kn.muc}
             dienTen={dienTen}
-            tenNguoiNoi={(ma) => tenNguoiNoi(kb, ma)}
+            tenNguoiNoi={(ma) => tenNguoiNoi(kb, ma, s)}
             onTrinh={(the) => hanhDong({ type: 'trinh-the', the })}
             onChuaDu={() => hanhDong({ type: 'chua-du' })}
           />
@@ -313,7 +326,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             <div className="dialog-container mc__dialog-container">
               <div className="dialog dialog--glass" data-speaker={kn.nut.asker.speaker}>
                 <div className="dialog__speaker">
-                  <span>{tenNguoiNoi(kb, kn.nut.asker.speaker)}</span>
+                  <span>{tenNguoiNoi(kb, kn.nut.asker.speaker, s)}</span>
                 </div>
                 <p id="mvp-renhanh-hoi" className="dialog__text mc__prompt">
                   <CodeText text={dienTen(kn.nut.asker.text)} />
