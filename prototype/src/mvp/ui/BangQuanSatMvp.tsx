@@ -12,7 +12,7 @@ import type { KichBanMvp } from "../../content/mvp/types";
 import { ConfirmDialog } from "../../shared/ui/ConfirmDialog";
 import { tenKhungHienTai } from "../engine/may";
 import type { TrangThaiMvp } from "../engine/trang-thai";
-import { DIEM_NHAY_MVP, type MaDiemNhayMvp } from "../engine/tu-choi";
+import { dauChuongMvp, DIEM_NHAY_MVP } from "../engine/tu-choi";
 
 export interface BangQuanSatMvpProps {
   kb: KichBanMvp;
@@ -20,7 +20,8 @@ export interface BangQuanSatMvpProps {
   /** Loại khung nhìn hiện tại (`challenge`, `line`…). */
   loaiManHinh: string;
   /** Nhảy: trả `null` khi xong, hoặc lý do không nhảy được. */
-  onNhay: (id: MaDiemNhayMvp) => string | null;
+  /** `id`: mã điểm SQL (`DIEM_NHAY_MVP`) hoặc mã đầu chương (`dauChuongMvp`). */
+  onNhay: (id: string) => string | null;
 }
 
 /** Gắn lớp `facilitator-on` lên <html> để #root chừa dải đáy (CSS của prototype). */
@@ -53,17 +54,21 @@ export function BangQuanSatMvp({
 }: BangQuanSatMvpProps) {
   useChuaDaiDay();
   const [mo, setMo] = useState(false);
-  const [hoi, setHoi] = useState<MaDiemNhayMvp | null>(null);
+  const [hoi, setHoi] = useState<string | null>(null);
   const [dangNhay, setDangNhay] = useState(false);
   const [bao, setBao] = useState<string | null>(null);
-  const diemHoi = DIEM_NHAY_MVP.find((d) => d.id === hoi);
+  const chuong = dauChuongMvp(kb);
+  const nhanCua = (id: string | null): string =>
+    DIEM_NHAY_MVP.find((d) => d.id === id)?.nhan ??
+    chuong.find((c) => c.id === id)?.nhan ??
+    "";
   const tongVach = kb.lich.luat.uyTin ?? 0;
 
-  const nhay = (id: MaDiemNhayMvp): void => {
-    const diem = DIEM_NHAY_MVP.find((d) => d.id === id);
+  const nhay = (id: string): void => {
+    const nhan = nhanCua(id) || id;
     setHoi(null);
     setDangNhay(true);
-    setBao(`Đang tự chơi tới "${diem?.nhan ?? id}"…`);
+    setBao(`Đang tự chơi tới "${nhan}"…`);
     // Nhường một nhịp cho dòng "Đang tự chơi…" hiện ra trước khi máy chạy (đồng bộ, vài trăm bước).
     setTimeout(() => {
       const loi = onNhay(id);
@@ -71,7 +76,7 @@ export function BangQuanSatMvp({
       setBao(
         loi
           ? `Không nhảy tới được: ${loi}`
-          : `Đã tới "${diem?.nhan ?? id}". Ván này do máy tự chơi tới đây (tên mặc định, ngành đầu danh sách).`,
+          : `Đã tới "${nhan}". Ván này do máy tự chơi tới đây (tên mặc định, ngành đầu danh sách).`,
       );
     }, 0);
   };
@@ -95,7 +100,7 @@ export function BangQuanSatMvp({
             title={
               mo
                 ? "Thu gọn bảng người quan sát"
-                : "Mở bảng người quan sát: vị trí, nhảy tới phần SQL"
+                : "Mở bảng người quan sát: vị trí, nhảy tới đầu chương hoặc phần SQL"
             }
             onClick={() => setMo((m) => !m)}
           >
@@ -132,6 +137,30 @@ export function BangQuanSatMvp({
                   liệu · {s.hoSo.bangChung.length} bằng chứng
                 </dd>
               </dl>
+            </section>
+
+            <section aria-labelledby="mvp-qs-chuong">
+              <h2 id="mvp-qs-chuong" className="facilitator__h">
+                Nhảy tới đầu chương
+              </h2>
+              <p className="facilitator__muted">
+                Máy tự chơi từ đầu theo đường kết thật, dừng ở câu đầu tiên của
+                chương. Ván MVP đang chơi bị thay; ô lưu giữ nguyên.
+              </p>
+              <ul className="mvp-quansat__ds mvp-quansat__ds--chuong">
+                {chuong.map((c) => (
+                  <li key={c.id} className="mvp-quansat__muc">
+                    <button
+                      type="button"
+                      className="btn"
+                      disabled={dangNhay}
+                      onClick={() => setHoi(c.id)}
+                    >
+                      {c.nhan}
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </section>
 
             <section aria-labelledby="mvp-qs-nhay">
@@ -171,7 +200,7 @@ export function BangQuanSatMvp({
       {/* Ngoài <aside> (z-index 15 của dải người quan sát) để hộp hỏi nổi trên thanh trên của game. */}
       <ConfirmDialog
         open={hoi !== null}
-        title={`Nhảy tới "${diemHoi?.nhan ?? ""}"?`}
+        title={`Nhảy tới "${nhanCua(hoi)}"?`}
         message="Máy sẽ tự chơi ván MVP mới tới màn này. Tiến độ ván đang chơi bị thay (ô lưu giữ nguyên)."
         confirmLabel="Nhảy tới"
         onConfirm={() => {

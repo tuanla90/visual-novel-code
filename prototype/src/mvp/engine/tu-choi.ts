@@ -7,7 +7,7 @@
  * nên Lưu/Nạp và phần chơi tiếp không có gì đặc biệt.
  */
 import type { KichBanMvp } from '../../content/mvp/types';
-import { coTrongHoSo, khungNhin, TEN_MAC_DINH, taoTrangThai, xuLy, type HanhDongMvp, type KhungNhinMvp } from './may';
+import { canGioiThieu, coTrongHoSo, khungNhin, TEN_MAC_DINH, taoTrangThai, xuLy, type HanhDongMvp, type KhungNhinMvp } from './may';
 import type { TrangThaiMvp } from './trang-thai';
 
 /** Chiến thuật chơi tự động: chọn gì ở danh sách địa điểm / rẽ nhánh / câu hỏi. */
@@ -99,6 +99,9 @@ export function choiTuDong(
       s = xuLy(kb, s, { type: 'sang-vu-sau' });
       continue;
     }
+    // Người chơi thật đóng thẻ "Nhân vật mới" ở câu tự xưng; máy tự chơi cũng ghi nhận, kẻo sau khi nhảy thẻ tên còn là cách gọi tạm.
+    const gioiThieu = canGioiThieu(kb, s, kn);
+    if (gioiThieu) s = xuLy(kb, s, { type: 'da-gioi-thieu', nhanVat: gioiThieu });
     const hd = hanhDongTuDong(s, kn, ct);
     const sau = xuLy(kb, s, hd);
     if (sau === s) throw new Error(`Hành động ${hd.type} bị từ chối ở khung nhìn ${kn.kind} (ngày ${s.ngay}, khung ${s.khung})`);
@@ -185,6 +188,34 @@ export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
   { id: 'phu-hoan-loc', nhan: 'Việc phụ · Hoàn tiền (lọc dòng hoàn)', moTa: 'Minh Anh nhờ sau Vụ 5: lọc các dòng hoàn trong bản xuất thu chi.', toi: dangOThuThach('challenge', 'c-hoan-loc') },
   { id: 'phu-dan-lac', nhan: 'Việc phụ · Một lần dẫn lạc (sổ đón)', moTa: 'Tùng nhờ sau Vụ 3: lọc các lượt đón Tùng dẫn trong sổ của đội tình nguyện.', toi: dangOThuThach('challenge', 'c-don-tung') },
 ];
+
+/** Một đầu chương nhảy tới được: mở đầu, từng ngày, buổi họp, từng vụ sau, từng nhiệm vụ phụ. */
+export interface DauChuongMvp {
+  /** `mo-dau` · `ngay-<số>` · `hop` · `vu-<mã>` · `phu-<mã>`. */
+  id: string;
+  nhan: string;
+  toi: (s: TrangThaiMvp) => boolean;
+}
+
+/** Danh sách đầu chương, đọc từ lịch của kịch bản (thêm ngày / vụ / việc phụ là tự có nút). */
+export function dauChuongMvp(kb: KichBanMvp): DauChuongMvp[] {
+  const ds: DauChuongMvp[] = [{ id: 'mo-dau', nhan: 'Mở đầu', toi: (s) => s.giaiDoan === 'mo-dau' }];
+  for (const n of kb.lich.ngay) ds.push({ id: `ngay-${n.so}`, nhan: `Ngày ${n.so} · ${n.ten}`, toi: (s) => s.giaiDoan === 'ngay' && s.ngay === n.so });
+  if (kb.lich.ngayHop) ds.push({ id: 'hop', nhan: 'Buổi họp rà soát', toi: (s) => s.giaiDoan === 'hop' });
+  (kb.lich.vuSau ?? []).forEach((v, i) => ds.push({ id: `vu-${v.id}`, nhan: `Vụ ${i + 2} · ${v.ten}`, toi: (s) => s.giaiDoan === 'vu-sau' && s.vu === v.id }));
+  for (const p of kb.lich.nhiemVuPhu ?? []) ds.push({ id: `phu-${p.id}`, nhan: `Việc phụ · ${p.ten}`, toi: (s) => s.giaiDoan === 'phu' && s.phu?.id === p.id });
+  return ds;
+}
+
+/** Trạng thái "như đã chơi tới" đầu một chương: ván mới, máy tự chơi theo đường kết thật, dừng ở bước đầu của chương. */
+export function nhayToiDauChuong(kb: KichBanMvp, id: string, batDauLuc: number = Date.now()): TrangThaiMvp {
+  const chuong = dauChuongMvp(kb).find((c) => c.id === id);
+  if (!chuong) throw new Error(`Không có đầu chương ${id}`);
+  const ct: ChienThuat = { reNhanh: reNhanhTheo(RE_NHANH_KET_THAT), ten: TEN_MAC_DINH, sangVuSau: true, lamPhu: true };
+  const s = choiTuDong(kb, taoTrangThai(kb, batDauLuc), ct, (x) => chuong.toi(x));
+  if (!chuong.toi(s)) throw new Error(`Tự chơi không tới được đầu chương ${id}`);
+  return s;
+}
 
 /**
  * Trạng thái "như đã chơi tới" điểm nhảy: ván mới (tên `TEN_MAC_DINH`, ngành đầu danh sách), máy tự chơi theo

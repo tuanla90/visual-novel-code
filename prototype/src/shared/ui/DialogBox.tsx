@@ -39,6 +39,8 @@ export interface DialogBoxProps {
   onOpenSave?: () => void;
   onOpenLoad?: () => void;
   onOpenAudio?: () => void;
+  /** Lùi lại bước trước (bản MVP). Không truyền → không có nút Lùi; phím tắt: ← hoặc PageUp. */
+  onBack?: () => void;
   /**
    * Nhãn người nói thay cho tra cứu `speakerLabel` (bản MVP: nhân vật lấy từ nhan-vat.md, không nằm trong
    * `shared/ids.ts`). Không truyền → hành vi cũ của prototype.
@@ -58,6 +60,7 @@ function VnQuickButtons({
   skipMode,
   toggleSkipMode,
   alreadyRead,
+  onBack,
   onOpenBacklog,
   onOpenSave,
   onOpenLoad,
@@ -65,6 +68,7 @@ function VnQuickButtons({
   onOpenAudio,
   className,
 }: {
+  onBack?: () => void;
   autoMode: boolean;
   toggleAutoMode: () => void;
   skipMode: boolean;
@@ -79,6 +83,21 @@ function VnQuickButtons({
 }) {
   return (
     <div className={`vn-quick-bar ${className ?? ''}`} role="toolbar" aria-label="Điều khiển hội thoại">
+      {onBack ? (
+        <button
+          type="button"
+          className="vn-btn"
+          onClick={(e) => {
+            e.stopPropagation();
+            soundEngine.playSfx('click');
+            onBack();
+          }}
+          title="Lùi lại câu trước (Phím tắt: ←)"
+        >
+          <span aria-hidden="true">◀</span>
+          <span>Lùi</span>
+        </button>
+      ) : null}
       <button
         type="button"
         className={`vn-btn${autoMode ? ' vn-btn--active' : ''}`}
@@ -191,6 +210,7 @@ export function DialogBox({
   onOpenSave,
   onOpenLoad,
   onOpenAudio,
+  onBack,
   speakerName,
 }: DialogBoxProps) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -288,6 +308,19 @@ export function DialogBox({
     return () => window.removeEventListener('keydown', onKey);
   }, [guard, advanceFromLine, keyboardEnabled, isDone, completeImmediately]);
 
+  // Lùi lại câu trước: ← hoặc PageUp.
+  useEffect(() => {
+    if (!keyboardEnabled || !onBack) return;
+    const onKey = (e: KeyboardEvent): void => {
+      if (e.key !== 'ArrowLeft' && e.key !== 'PageUp') return;
+      if (isTypingTarget(e.target)) return;
+      e.preventDefault();
+      onBack();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [keyboardEnabled, onBack]);
+
   return (
     <div className="dialog-container">
       {/* Thanh điều khiển nhanh trên desktop */}
@@ -299,6 +332,7 @@ export function DialogBox({
           skipMode={skipMode}
           toggleSkipMode={toggleSkipMode}
           alreadyRead={alreadyRead}
+          onBack={onBack}
           onOpenBacklog={onOpenBacklog}
           onOpenSave={onOpenSave}
           onOpenLoad={onOpenLoad}
@@ -359,6 +393,7 @@ export function DialogBox({
               skipMode={skipMode}
               toggleSkipMode={toggleSkipMode}
               alreadyRead={alreadyRead}
+              onBack={onBack}
               onOpenBacklog={onOpenBacklog}
               onOpenSave={onOpenSave}
               onOpenLoad={onOpenLoad}

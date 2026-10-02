@@ -18,7 +18,9 @@ export const KICH_BAN: KichBanMvp = KICH_BAN_MVP as unknown as KichBanMvp;
 export const KHOA_KHO_MVP = 'clb_mvp_tien_do_v1';
 export const SO_O_LUU_MVP = 6;
 /** Phiên bản dữ liệu lưu; tăng khi nội dung đổi làm ván cũ không chơi tiếp được (xem `migrate`). */
-export const PHIEN_BAN_KHO_MVP = 4;
+export const PHIEN_BAN_KHO_MVP = 5;
+/** Số bước lùi lại được (mỗi hành động của người chơi là một bước). */
+export const SO_BUOC_LUI_MVP = 200;
 
 export interface OLuuMvp {
   trangThai: TrangThaiMvp;
@@ -32,9 +34,13 @@ export interface OLuuMvp {
 export interface KhoMvp {
   trangThai: TrangThaiMvp | null;
   oLuu: (OLuuMvp | null)[];
+  /** Các trạng thái trước đó của ván đang chơi (mới nhất ở cuối) để lùi lại từng bước; chỉ giữ trong bộ nhớ, không lưu. */
+  lichSuLui: TrangThaiMvp[];
 
   batDau: () => void;
   hanhDong: (hd: HanhDongMvp) => void;
+  /** Lùi một bước (về trạng thái trước hành động gần nhất). Trả `false` khi không còn gì để lùi. */
+  lui: () => boolean;
   /** Đổi thẳng trạng thái (Nạp ô lưu). */
   datTrangThai: (s: TrangThaiMvp) => void;
   xoa: () => void;
@@ -70,16 +76,24 @@ export function taoKhoMvp(options: { persist?: boolean; storageKey?: string } = 
   ): KhoMvp => ({
     trangThai: null,
     oLuu: oLuuRong(),
+    lichSuLui: [],
 
-    batDau: () => set({ trangThai: taoTrangThai(KICH_BAN) }),
+    batDau: () => set({ trangThai: taoTrangThai(KICH_BAN), lichSuLui: [] }),
     hanhDong: (hd) => {
       const s = get().trangThai;
       if (!s) return;
       const sau = xuLy(KICH_BAN, s, hd);
-      if (sau !== s) set({ trangThai: sau });
+      if (sau !== s) set((k) => ({ trangThai: sau, lichSuLui: [...k.lichSuLui, s].slice(-SO_BUOC_LUI_MVP) }));
     },
-    datTrangThai: (s) => set({ trangThai: s }),
-    xoa: () => set({ trangThai: null }),
+    lui: () => {
+      const ds = get().lichSuLui;
+      const truoc = ds[ds.length - 1];
+      if (!truoc) return false;
+      set({ trangThai: truoc, lichSuLui: ds.slice(0, -1) });
+      return true;
+    },
+    datTrangThai: (s) => set({ trangThai: s, lichSuLui: [] }),
+    xoa: () => set({ trangThai: null, lichSuLui: [] }),
     luuVaoO: (o, nhan) => {
       const s = get().trangThai;
       if (!s || o < 0 || o >= SO_O_LUU_MVP) return;
@@ -93,7 +107,7 @@ export function taoKhoMvp(options: { persist?: boolean; storageKey?: string } = 
       const daLuu = get().oLuu[o];
       if (!daLuu) return null;
       const s = structuredClone(daLuu.trangThai);
-      set({ trangThai: s });
+      set({ trangThai: s, lichSuLui: [] });
       return s;
     },
   });
