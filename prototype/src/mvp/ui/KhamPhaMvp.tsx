@@ -74,7 +74,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem }: KhamPhaMvpProps) 
               <button
                 key={d.diem.chuoi}
                 type="button"
-                className={`mvp-diem mvp-diem--khampha is-${d.daXem ? 'da-xem' : 'mo'}${url ? '' : ' is-tam'}`}
+                className={`mvp-diem mvp-diem--khampha is-${d.daXem ? 'da-xem' : 'mo'}${url ? '' : ' is-tam'}${d.diem.sprite.startsWith('nv:') ? ' is-nguoi' : ''}`}
                 style={style}
                 aria-label={nhan[i]}
                 title={`${nhan[i] ?? ''}${d.daXem ? ' — đã xem' : ''}`}

@@ -94,7 +94,7 @@ export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
     if (!kq) return;
     const v = iCot >= 0 ? String(kq.dong[r]?.[iCot] ?? '') : '';
     if (v !== nut.chon.giaTri) {
-      soundEngine.playSfx('shake');
+      soundEngine.playSfx('sai');
       setSai((ds) => (ds.includes(r) ? ds : [...ds, r]));
       setRung(r);
       setTimeout(() => song.current && setRung(null), 320);

@@ -24,6 +24,7 @@ import { ObjectionEffect } from '../../story/ui/ObjectionEffect';
 import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
 import { canGioiThieu, dienTen as dienTenMay, khungNhin, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
 import { giaTriTuHoSo } from '../engine/giay-nho';
+import { chonNhacNen, type NhacTruoc } from '../engine/nhac';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import { nhayToi, type MaDiemNhayMvp } from '../engine/tu-choi';
 import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
@@ -100,7 +101,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     setTimeout(() => setToast((cur) => (cur === msg ? null : cur)), 2800);
   }, []);
 
-  // Nhạc nền như prototype: trình duyệt chỉ cho phát âm thanh sau thao tác đầu tiên của người chơi.
+  // Bật nhạc nền: trình duyệt chỉ cho phát âm thanh sau thao tác đầu tiên của người chơi. Bài nào do `chonNhac` bên dưới.
   useEffect(() => {
     if (!bgmEnabled) {
       soundEngine.stopBgm();
@@ -162,6 +163,18 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   useEffect(() => {
     if (bieuCamNoi === 'stunned') soundEngine.playSfx('shake');
   }, [bieuCamNoi]);
+  // Khoảnh khắc phản bác (`[HIỆU ỨNG]`, màn rung) → tiếng búa.
+  useEffect(() => {
+    if (loaiKn === 'effect') soundEngine.playSfx('objection');
+  }, [loaiKn]);
+
+  // Nhạc nền theo cảnh (engine/nhac.ts). Bài bước trước giữ trong ref để màn ngắn chen giữa thoại không đổi bài.
+  const nhacTruoc = useRef<NhacTruoc | null>(null);
+  useEffect(() => {
+    const nhac = chonNhacNen(s ? khungNhin(kb, s) : null, s, nhacTruoc.current);
+    nhacTruoc.current = { nhac, chuoi: s?.conTro?.chuoi ?? null };
+    soundEngine.chonNhac(nhac);
+  }, [kb, s]);
 
   const dongKho = useCallback(() => setKho(null), []);
   const choiLai = useCallback(() => {

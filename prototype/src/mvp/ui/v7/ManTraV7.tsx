@@ -54,6 +54,14 @@ const CANH: Record<CanhTra, { anh: string | null; kinh: { x: number; y: number; 
 
 const TOI_DA_DIEU_KIEN = 3;
 const TEN_NOI: Record<'AND' | 'OR', string> = { AND: 'VÀ', OR: 'HOẶC' };
+
+/**
+ * Số nhịp nhún của mặt chibi khi nhân vật lên tiếng (CSS `v7-chibi-nhun`, 0,32 s/nhịp): câu hiện ra một lần, nên
+ * "nói" chừng 45 ms mỗi ký tự rồi đứng yên — từ 2 tới 10 nhịp.
+ */
+function soNhipNhun(cau: string): number {
+  return Math.min(10, Math.max(2, Math.round((cau.length * 0.045) / 0.32)));
+}
 export interface ManTraV7Props {
   kb: KichBanMvp;
   duLieu: BoDuLieuMvp | null;
@@ -243,7 +251,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
         if (!song.current) return;
         setSo({ n, nhan: 'DÒNG' });
         setDau(n);
-        soundEngine.playSfx(kq.trangThai === 'dung' ? 'chime' : 'shake');
+        soundEngine.playSfx(kq.trangThai === 'dung' ? 'chime' : 'sai');
         await ngu(380);
       }
       if (!song.current) return;
@@ -594,7 +602,16 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
           onClick={() => setLoiNoi((ds) => ds.slice(1))}
           aria-label={`${tenNguoiNoi(kb, loi.speaker)}: ${dienTen(loi.text)} — bấm để đóng`}
         >
-          {chibiNoi ? <img className="v7-thoai__mat" src={chibiNoi} alt="" draggable={false} /> : null}
+          {chibiNoi ? (
+            <img
+              key={`${loiNoi.length}-${loi.text}`}
+              className="v7-thoai__mat"
+              src={chibiNoi}
+              alt=""
+              draggable={false}
+              style={{ ['--nhip' as string]: soNhipNhun(loi.text) }}
+            />
+          ) : null}
           <span className="v7-thoai__than">
             <b>{tenNguoiNoi(kb, loi.speaker)}</b>
             <span>
