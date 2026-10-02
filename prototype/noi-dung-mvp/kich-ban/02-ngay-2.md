@@ -19,6 +19,8 @@
 
 - [LỜI n2-laptop.0]
 - [THỬ THÁCH c-bang-lop]
+- [LỜI n2-laptop.05]
+- [THỬ THÁCH c-cot-lop]
 - [LỜI n2-laptop.1]
 - [THỬ THÁCH c-lop]
 - [LỜI n2-laptop.2]

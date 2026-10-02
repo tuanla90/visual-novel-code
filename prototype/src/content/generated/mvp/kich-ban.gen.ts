@@ -1859,6 +1859,37 @@ const GOC = {
         },
         {
           "type": "task",
+          "text": "Chỉ lấy cột cần xem"
+        },
+        {
+          "type": "reminder",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Hàng LẤY CỘT: bấm cột nào thì cột ấy hiện ra. Lấy mã lớp với tòa nhà."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Một trăm mười hai lớp, bốn cột. Nhìn hơi rối."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Không cần xem hết đâu. Hàng LẤY CỘT ở trên: muốn xem cột nào thì bấm cột ấy."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Cái hộp nằm ở tòa B. Vậy trước hết xem lớp nào ở tòa nào đã."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-cot-lop"
+        },
+        {
+          "type": "task",
           "text": "Lớp nào vừa ở tòa B vừa học Báo chí?"
         },
         {
@@ -1870,7 +1901,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Một trăm mười hai lớp. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà."
+          "text": "Giờ lọc. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà."
         },
         {
           "type": "line",
@@ -8720,6 +8751,57 @@ const GOC = {
       },
       "ghiChu": []
     },
+    "c-cot-lop": {
+      "id": "c-cot-lop",
+      "tieuDe": "Lớp nào ở tòa nào",
+      "deBai": "Bảng lớp có bốn cột. Lần này chỉ cần biết lớp nào ở tòa nào: bấm lấy hai cột ấy rồi chạy.",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": "SELECT chọn CỘT muốn xem; số dòng không đổi, bảng gọn lại.",
+      "soDongKyVong": 112,
+      "sqlChuan": "SELECT ma_lop, toa_nha FROM lop_sinh_hoat;",
+      "chonCot": [],
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "thieu-cot"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Vẫn đủ một trăm mười hai dòng, nhưng chưa thấy đủ cả lớp lẫn tòa. Cần cột mã lớp và cột tòa nhà."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "thua-cot"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Có đủ rồi, mà thừa. Mình chỉ hỏi lớp nào ở tòa nào, bỏ bớt cột kia cho bảng dễ đọc."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Vẫn một trăm mười hai dòng, chỉ còn hai cột. Chọn cột thì bảng gọn lại chứ không mất dòng nào."
+            }
+          ]
+        }
+      ],
+      "vatChung": null,
+      "ghiChu": []
+    },
     "c-lop": {
       "id": "c-lop",
       "tieuDe": "Lớp ở tòa B và học Báo chí",
@@ -8830,9 +8912,14 @@ const GOC = {
       "manhMoiLienQuan": [
         "clue-chu-ky-h"
       ],
-      "mucTieuHoc": "\"=\" so khớp chính xác, ra 0 dòng thì xem lại dữ liệu; \"bắt đầu bằng\" (LIKE 'H%') mới khớp một chữ cái.",
+      "mucTieuHoc": "\"=\" so khớp chính xác, ra 0 dòng thì xem lại dữ liệu; \"bắt đầu bằng\" (LIKE 'H%') mới khớp một chữ cái. Phiếu muốn dùng tiếp phải có cột mã.",
       "soDongKyVong": 2,
       "sqlChuan": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop IN ('BC24A', 'BC23A') AND ten LIKE 'H%';",
+      "chonCot": [
+        "ho_dem",
+        "ten",
+        "ma_lop"
+      ],
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -8883,6 +8970,18 @@ const GOC = {
               "speaker": "ha-vy",
               "expression": "thinking",
               "text": "Chẳng ra ai cả. Trong hai lớp ấy không ai khớp như thế."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "thieu-cot"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Ra hai cái tên rồi. Nhưng trường gần bốn nghìn người, trùng tên là chuyện thường, nên sổ nào cũng ghi theo mã sinh viên. Lên hàng LẤY CỘT bấm thêm ma_sv, phiếu này mới chỉ đúng người."
             }
           ]
         },
@@ -11355,9 +11454,14 @@ const GOC = {
       "resultId": "ev-bang-lop"
     },
     {
+      "sql": "SELECT ma_lop, toa_nha FROM lop_sinh_hoat;",
+      "soDong": 112,
+      "noi": "noi-dung-mvp/thu-thach/c-lop.md:20 thẻ c-cot-lop, SQL chuẩn"
+    },
+    {
       "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí';",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/c-lop.md:20 thẻ c-lop, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/c-lop.md:37 thẻ c-lop, SQL chuẩn",
       "resultId": "ev-hai-lop"
     },
     {
@@ -11369,7 +11473,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:28 thẻ c-sua-or-quan, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/c-ten-h.md:30 thẻ c-sua-or-quan, SQL chuẩn",
       "resultId": "ev-hai-dong-sua"
     },
     {

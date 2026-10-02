@@ -253,6 +253,11 @@ export interface TheThuThachMvp {
   bangNoi?: string[];
   /** Cột nhóm được gợi ý/giới hạn bởi nội dung; null cho phép người chơi chọn. */
   nhomTheo?: string | null;
+  /**
+   * Bài CHỌN CỘT (`- Chọn cột: a, b` | `- Chọn cột: không`): màn tra hiện hàng "LẤY CỘT", người chơi tự bật / tắt cột của SELECT;
+   * giá trị là các cột BẬT SẴN. Thiếu cột của SQL chuẩn → lời "Khi thiếu cột"; thừa cột → lời "Khi thừa cột" (chưa tính là đúng).
+   */
+  chonCot?: string[];
 }
 
 /** `cot`: chỉ khớp khi các điều kiện người chơi đã điền dùng đúng tập cột này ("Khi chạy ra 0 dòng với a, b"). */
@@ -262,7 +267,10 @@ export type KhiChayMvp =
   | { kind: 'loi' }
   | { kind: 'dung' }
   /** "Khi sai thứ tự": đủ đúng các dòng nhưng thứ tự khác câu chuẩn (thẻ có ORDER BY). */
-  | { kind: 'sai-thu-tu' };
+  | { kind: 'sai-thu-tu' }
+  /** Bài chọn cột: đủ đúng dòng nhưng thiếu cột của câu chuẩn / lấy thừa cột. */
+  | { kind: 'thieu-cot' }
+  | { kind: 'thua-cot' };
 
 export interface PhanUngMvp {
   khi: KhiChayMvp;

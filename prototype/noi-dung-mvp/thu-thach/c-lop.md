@@ -17,6 +17,21 @@ SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat;
   - Tiêu đề: Bảng lớp: 112 lớp, 4 cột
   - Mô tả: Cả bảng lớp sinh hoạt: một trăm mười hai lớp của bốn khóa. Mỗi dòng ghi mã lớp, ngành, khóa học và tòa nhà.
 
+### c-cot-lop — Chỉ lấy cột cần xem {challenge: c-cot-lop}
+
+- Tiêu đề: Lớp nào ở tòa nào
+- Đề bài hiển thị: Bảng lớp có bốn cột. Lần này chỉ cần biết lớp nào ở tòa nào: bấm lấy hai cột ấy rồi chạy.
+- Mục tiêu học: SELECT chọn CỘT muốn xem; số dòng không đổi, bảng gọn lại.
+- Chọn cột: không
+- Số dòng kỳ vọng: 112
+- SQL chuẩn:
+
+```sql
+SELECT ma_lop, toa_nha FROM lop_sinh_hoat;
+```
+
+- [LỜI c-cot-lop.1]
+
 ### c-lop — Lớp nào vừa ở tòa B vừa học Báo chí? {challenge: c-lop}
 
 - Tiêu đề: Lớp ở tòa B và học Báo chí

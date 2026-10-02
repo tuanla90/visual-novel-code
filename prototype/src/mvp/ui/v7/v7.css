@@ -1758,3 +1758,30 @@ button.v7-o:active:not(:disabled) {
   font-style: italic;
   text-align: center;
 }
+
+/* Hàng "LẤY CỘT" (bài chọn cột của SELECT): mỗi cột một nút bật / tắt. */
+.v7-lay {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 0 10px;
+}
+.v7-o--lay {
+  border: 1.5px dashed rgba(190, 215, 235, 0.55);
+  background: rgba(255, 255, 255, 0.05);
+  color: #b9cbd8;
+  font-family: var(--font-mono, monospace);
+  cursor: pointer;
+}
+.v7-o--lay.is-bat {
+  border: 1.5px solid #7fd6a4;
+  background: #dff5e7;
+  color: #14532d;
+  font-weight: 700;
+}
+.v7-o--lay:disabled { cursor: default; opacity: 0.85; }
+.v7-lay__nhac {
+  color: #ffd98a;
+  font-style: italic;
+}

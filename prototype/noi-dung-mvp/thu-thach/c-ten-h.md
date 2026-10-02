@@ -5,7 +5,8 @@
 - Tiêu đề: Tên bắt đầu bằng H trong hai lớp
 - Đề bài hiển thị: Chữ ký chỉ đọc được chữ H. Người ký học một trong hai lớp. Là ai?
 - Manh mối liên quan: clue-chu-ky-h, ev-hai-lop
-- Mục tiêu học: "=" so khớp chính xác, ra 0 dòng thì xem lại dữ liệu; "bắt đầu bằng" (LIKE 'H%') mới khớp một chữ cái.
+- Mục tiêu học: "=" so khớp chính xác, ra 0 dòng thì xem lại dữ liệu; "bắt đầu bằng" (LIKE 'H%') mới khớp một chữ cái. Phiếu muốn dùng tiếp phải có cột mã.
+- Chọn cột: ho_dem, ten, ma_lop
 - Số dòng kỳ vọng: 2
 - SQL chuẩn:
 

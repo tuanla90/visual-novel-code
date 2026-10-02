@@ -140,7 +140,7 @@ export const reNhanhTheo =
 
 // ---------- Nhảy tới (người quan sát) ----------
 
-export type MaDiemNhayMvp = 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or' | 'vu2-tin-don' | 'vu2-tin-goc' | 'vu3-thiet-bi' | 'vu3-toi-07' | 'vu4-noi' | 'vu5-vuot-muc' | 'vu2-buoi' | 'phu-micro' | 'phu-hoan-nhom';
+export type MaDiemNhayMvp = 'bang-lop' | 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or' | 'vu2-tin-don' | 'vu2-tin-goc' | 'vu3-thiet-bi' | 'vu3-toi-07' | 'vu4-noi' | 'vu5-vuot-muc' | 'vu2-buoi' | 'phu-micro' | 'phu-hoan-nhom';
 
 export interface DiemNhayMvp {
   id: MaDiemNhayMvp;
@@ -162,6 +162,7 @@ const dangOThuThach =
  * có đủ thứ của kết thật, chơi tiếp đúng vẫn tới kết thật.
  */
 export const DIEM_NHAY_MVP: readonly DiemNhayMvp[] = [
+  { id: 'bang-lop', nhan: 'Ngày 2 · Chọn bảng, rồi chọn cột', moTa: 'Hai bài nhập môn ở laptop phòng CLB: chọn bảng rồi chạy (FROM), bấm cột muốn xem (SELECT).', toi: dangOThuThach('challenge', 'c-bang-lop') },
   { id: 'lop', nhan: 'Ngày 2 · Lớp ở tòa B và học Báo chí', moTa: 'Lần tra đầu, laptop phòng CLB: hai điều kiện, VÀ / HOẶC.', toi: dangOThuThach('challenge', 'c-lop') },
   { id: 'ten-h', nhan: 'Ngày 3 · Tên bắt đầu bằng H', moTa: 'Laptop phòng CLB: phiếu hai lớp + [H]; "bằng" ra 0 dòng → "bắt đầu bằng".', toi: dangOThuThach('challenge', 'c-ten-h') },
   { id: 'nhat-ky-in', nhan: 'Ngày 4 · Nhật ký in', moTa: 'Phòng máy (đã chọn ghé): mã + tên tệp ra 0 dòng → bỏ điều kiện mã.', toi: dangOThuThach('challenge', 'c-in') },

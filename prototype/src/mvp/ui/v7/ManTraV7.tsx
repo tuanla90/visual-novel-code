@@ -93,7 +93,13 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   }, [duLieu, khung, nguonPhieu, tenNguon]);
   const khoi = useMemo(() => khoiCuaThe(sqlChuan), [sqlChuan]);
   // Thẻ "chọn bảng" (bài nhập môn): SQL chuẩn chỉ là SELECT … FROM <bảng>, không lọc / nối / xếp → người chơi chọn bảng rồi CHẠY.
-  const chonBang = mode !== 'fix-query' && !nguonPhieu && !/\b(?:WHERE|JOIN|ORDER\s+BY|GROUP\s+BY)\b/i.test(sqlChuan);
+  const khongLoc = mode !== 'fix-query' && !nguonPhieu && !/\b(?:WHERE|JOIN|ORDER\s+BY|GROUP\s+BY)\b/i.test(sqlChuan);
+  // Bài chọn cột (`- Chọn cột:` của thẻ; chưa dùng cho thẻ có nối bảng / phiếu làm nguồn): người chơi tự bật tắt cột của SELECT.
+  const chonCot = the.chonCot && mode !== 'fix-query' && !nguonPhieu && !khoi.noi ? the.chonCot : null;
+  const chonBang = khongLoc && !chonCot;
+  const cotChuan = useMemo(() => (/^SELECT\s+(.+?)\s+FROM\s/i.exec(khung?.khung ?? '')?.[1] ?? '').split(',').map((c) => c.trim()).filter((c) => c !== ''), [khung]);
+  const khungCua = (ds: readonly string[]): string => `SELECT ${ds.length > 0 ? ds.join(', ') : '…'} FROM ${khung?.bang ?? ''}`;
+  const [cotLay, setCotLay] = useState<string[]>(() => chonCot ?? []);
   // Khối "nối với" (thẻ có JOIN): các bảng được chọn khai ở thẻ, thiếu thì lấy bảng JOIN của SQL chuẩn.
   const bangNoiDuoc = useMemo(() => (khoi.noi ? (the.bangNoi?.length ? the.bangNoi : bangNoiTrongSql(sqlChuan)) : []), [khoi.noi, the.bangNoi, sqlChuan]);
 
@@ -102,9 +108,9 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     if (napSan) return napSan;
     const cotGoc = bang?.cot.map((c) => c.ten) ?? [];
     return {
-      khung: khung?.khung ?? '',
-      dieuKien: chonBang ? [] : [0, 1].map((i) => ({ cot: cotGoc[i % Math.max(1, cotGoc.length)] ?? '', phep: 'bang', giaTri: null })),
-      noi: chonBang ? [] : ['AND'],
+      khung: chonCot ? khungCua(chonCot) : (khung?.khung ?? ''),
+      dieuKien: khongLoc ? [] : [0, 1].map((i) => ({ cot: cotGoc[i % Math.max(1, cotGoc.length)] ?? '', phep: 'bang', giaTri: null })),
+      noi: khongLoc ? [] : ['AND'],
     };
   });
   const bangNoi = useMemo(() => (cau.noiBang?.bang ? duLieu?.bang.find((b) => b.ten === cau.noiBang?.bang) : undefined), [duLieu, cau.noiBang?.bang]);
@@ -152,6 +158,13 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     },
     [tongDong],
   );
+  /** Bật / tắt một cột của SELECT (giữ thứ tự cột của bảng). */
+  const doiCot = (ten: string): void => {
+    const moi = (bang?.cot.map((c) => c.ten) ?? []).filter((c) => (c === ten ? !cotLay.includes(c) : cotLay.includes(c)));
+    soundEngine.playSfx('tab');
+    setCotLay(moi);
+    doiCau((c) => ({ ...c, khung: khungCua(moi) }));
+  };
   const doiDk = (i: number, f: (d: DieuKienDung) => DieuKienDung): void => doiCau((c) => ({ ...c, dieuKien: c.dieuKien.map((d, k) => (k === i ? f(d) : d)) }));
   const dat = (i: number, g: GiaTriHoSo): void => {
     soundEngine.playSfx('select');
@@ -195,7 +208,10 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     setSo({ n: tongDong, nhan: 'DÒNG' });
     soundEngine.playSfx('click');
     try {
-      const kq = await chamThuThach(duLieu, sql, tienTo + sqlChuan);
+      const tho = await chamThuThach(duLieu, sql, tienTo + sqlChuan);
+      // Bài chọn cột: đủ dòng, đủ cột cần mà lấy thừa cột thì chưa tính là đúng (có lời "Khi thừa cột").
+      const thuaCot = !!chonCot && tho.trangThai === 'dung' && cotLay.length > cotChuan.length;
+      const kq: KetQuaCham = thuaCot && tho.trangThai === 'dung' ? { ...tho, trangThai: 'sai' } : tho;
       const tach = kq.trangThai === 'loi' ? null : tachWhere(sqlNgoai);
       const t = tach && tienTo ? { ...tach, tienTo } : tach;
       track({
@@ -254,13 +270,14 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
           the,
           kq,
           cau.dieuKien.filter((d) => d.giaTri !== null).map((d) => d.cot),
+          thuaCot,
         ),
       );
     } finally {
       banRon.current = false;
       if (song.current) setDangChay(false);
     }
-  }, [duLieu, khung, dung, sql, sqlNgoai, sqlChuan, tienTo, the, tongDong, demToi, cau]);
+  }, [duLieu, khung, dung, sql, sqlNgoai, sqlChuan, tienTo, the, tongDong, demToi, cau, chonCot, cotLay, cotChuan]);
 
   if (!duLieu) return <p className="game__error">Vụ này chưa có bộ dữ liệu (du-lieu.md) nên không chạy được.</p>;
   if (!khung || !bang) return <p className="game__error">Thẻ thử thách này thiếu khung SELECT … FROM … hợp lệ.</p>;
@@ -351,6 +368,22 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
           )}
           <small>{daChonBang ? `${tongDong} dòng` : 'chưa chọn bảng'}</small>
         </div>
+        {chonCot ? (
+          <div className="v7-lay" role="group" aria-label="Các cột lấy ra">
+            <span className="v7-o v7-o--dau" aria-hidden="true">
+              LẤY CỘT
+            </span>
+            {bang.cot.map((c) => {
+              const bat = cotLay.includes(c.ten);
+              return (
+                <button key={c.ten} type="button" className={`v7-o v7-o--lay${bat ? ' is-bat' : ''}`} disabled={khoa} aria-pressed={bat} aria-label={`Cột ${c.ten}: ${bat ? 'đang lấy — bấm để bỏ' : 'chưa lấy — bấm để lấy'}`} onClick={() => doiCot(c.ten)}>
+                  <span aria-hidden="true">{bat ? '✓' : '+'}</span> {c.ten}
+                </button>
+              );
+            })}
+            {cotLay.length === 0 ? <small className="v7-lay__nhac">bấm cột muốn xem</small> : null}
+          </div>
+        ) : null}
         <ol className="v7-cau__dk" aria-label="Các điều kiện">
           {khoi.noi ? (
             <li className="v7-dk v7-noi" aria-label="Nối với bảng khác">
@@ -475,7 +508,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
               </li>
             );
           })}
-          {cau.dieuKien.length < TOI_DA_DIEU_KIEN && !laChieu && !chonBang ? (
+          {cau.dieuKien.length < TOI_DA_DIEU_KIEN && !laChieu && !khongLoc ? (
             <li>
               <button
                 type="button"
@@ -573,7 +606,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
           </div>
         ) : null}
         <div className="v7-so" aria-hidden={dau !== null}>
-          <div className="v7-so__n">{so.n}</div>
+          <div className="v7-so__n">{daChonBang ? so.n : '–'}</div>
           <div className="v7-so__l">{so.nhan}</div>
         </div>
       </div>
@@ -598,7 +631,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
             {the.vatChung && !laChieu ? '📌 Ghim lên bảng' : 'Tiếp tục'}
           </button>
         ) : (
-          <button type="button" className="v7-nut v7-nut--chay" disabled={dangChay || !daChonBang} onClick={() => void chay()}>
+          <button type="button" className="v7-nut v7-nut--chay" disabled={dangChay || !daChonBang || (!!chonCot && cotLay.length === 0)} onClick={() => void chay()}>
             ▶ {dangChay ? 'ĐANG CHẠY' : 'CHẠY'}
           </button>
         )}

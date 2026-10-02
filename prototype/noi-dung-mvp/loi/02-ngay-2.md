@@ -29,10 +29,17 @@
 - **duy** (neutral): Tài khoản cô Hạnh tạo chỉ mở được đúng một bảng.
 - **ha-vy** (neutral): Thì mở nó ra xem đã. Chưa biết bảng ghi gì thì biết lọc cái gì.
 
+## n2-laptop.05
+> NHIỆM VỤ: Chỉ lấy cột cần xem
+> NHẮC VIỆC duy (neutral): Hàng LẤY CỘT: bấm cột nào thì cột ấy hiện ra. Lấy mã lớp với tòa nhà.
+- **player**: Một trăm mười hai lớp, bốn cột. Nhìn hơi rối.
+- **duy** (neutral): Không cần xem hết đâu. Hàng LẤY CỘT ở trên: muốn xem cột nào thì bấm cột ấy.
+- **ha-vy** (neutral): Cái hộp nằm ở tòa B. Vậy trước hết xem lớp nào ở tòa nào đã.
+
 ## n2-laptop.1
 > NHIỆM VỤ: Lớp nào vừa ở tòa B vừa học Báo chí?
 > NHẮC VIỆC ha-vy (day-kinh): Hai tờ giấy nhớ trên bàn: Tòa B, Báo chí K24. Lớp nào khớp?
-- **player**: Một trăm mười hai lớp. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà.
+- **player**: Giờ lọc. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà.
 - **tung** (chi-tay): Tòa B hoặc Báo chí, cứ dính một cái là lấy hết cho chắc. Tớ cá kiểu gì chẳng trúng!
 - **ha-vy** (neutral): Đừng cá. Tính.
 
