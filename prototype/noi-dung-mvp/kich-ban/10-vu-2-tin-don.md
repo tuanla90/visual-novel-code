@@ -5,6 +5,7 @@
 ### tin-mo — Tin đồn về CLB; lọc các tin mang câu đó {cảnh: phong-clb}
 
 - [LỜI tin-mo.1]
+- [ẢNH chibi-v2-hieu-cua]
 - [HIỆN TÀI LIỆU doc-tin-don]
 - [HẬU QUẢ] mở manh mối clue-noi-dung-tin, mở manh mối clue-sao-ke-cuoi-ky
 - [LỜI tin-mo.2]
@@ -18,7 +19,9 @@
 - [HẬU QUẢ] mở manh mối clue-tin-goc
 - [THỬ THÁCH c-tin-goc]
 - [LỜI tin-gap-nam.2]
+- [ẢNH chibi-v2-tung-chi-nam]
 - [LỜI tin-gap-nam.3]
+- [ẢNH cg-v2-khanh-xuong]
 - [HẬU QUẢ] mở manh mối clue-ngay-gui
 - [RẼ NHÁNH r-tin-tuyen] ha-vy: "Hai chỗ Nam vừa buột miệng nói ra. Xem chỗ nào trước?"
   - {id: may} Nhật ký đăng nhập của kênh. → hậu quả: đi tới tin-tuyen-may
@@ -70,6 +73,7 @@
 - [NẾU có tin-ve-som] → đi tới tin-ket-luan
 - [HẬU QUẢ] mở manh mối clue-loi-nhan-linh-2
 - [LỜI tin-ket-ky.2]
+- [ẢNH chibi-v2-manh-giay-linh]
 - [ĐI TỚI tin-ket-luan]
 
 ### tin-ket-luan — Nói chắc được điều gì; cả nhóm bắt đầu chia ý về Nam {cảnh: phong-clb}

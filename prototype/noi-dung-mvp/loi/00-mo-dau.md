@@ -24,7 +24,7 @@
 > NHẮC VIỆC player: Tầng bốn. Thang máy hay thang bộ đây?
 
 ## md-00-sanh-ktx.2
-- [DÀN DỰNG] Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Xem xong cả hai thì một cậu sinh viên áo sơ mi cam, cổ đeo thẻ, từ hành lang bên phải đi ra.
+- [DÀN DỰNG] Sảnh tầng một mát, vắng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Xem xong cả hai thì một cậu sinh viên áo xanh tình nguyện, mũ tai bèo đeo sau lưng, từ hành lang bên phải đi ra.
 - **player**: (Mát hẳn. Giờ lên tầng bốn kiểu gì đây…)
 
 ## md-00-thang-may.1

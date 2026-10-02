@@ -14,6 +14,7 @@
 - [LỜI p-hoan-mo.4]
 - [HIỆN TÀI LIỆU doc-hoan-bien-nhan]
 - [LỜI p-hoan-mo.5]
+- [ẢNH chibi-phu-mot-bien-nhan]
 - [HỎI q-hoan-ket-luan] quan: "Vậy mục thu chi, các bạn ghi câu nào về phiếu PH-04?"
   - (A) {id: sua-bao-cao} Bản xuất có hai dòng hoàn cùng mã tham chiếu; biên nhận ngân hàng xác nhận một lần hoàn 60.000 đồng. Sửa báo cáo, giữ bản cũ. [ĐÚNG] → phản hồi: **quan** (neutral): Có phiếu, có biên nhận, có bản cũ. Câu ấy tôi kiểm lại được.
   - (B) {id: bien-thu} Có người cố tình nhập hai lần để rút sáu mươi nghìn. → phản hồi: **quan** (neutral): Bảng có cột nào ghi ai nhập không? Tôi đánh dấu phiếu này để kiểm, không phải để kết tội.

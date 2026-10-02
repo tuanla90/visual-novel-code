@@ -23,6 +23,7 @@
 - [LỜI v4-noi.2]
 - [THỬ THÁCH c-don-nam-theo-may]
 - [LỜI v4-noi.3]
+- [ẢNH chibi-v4-cung-mot-may]
 - [HẬU QUẢ] mở manh mối clue-may-vp
 - [ĐI TỚI v4-may-vp]
 
@@ -43,6 +44,8 @@
   - (C) {id: ban-chu-nhiem} Ban chủ nhiệm Robotics cố tình đổ nợ cho Nam. → phản hồi: **duy** (neutral): Máy văn phòng thì ban chủ nhiệm giữ chìa, nhưng "cố tình" và "cả ban" thì bảng nào nói? Mình mới có máy và giờ.
 - [LỜI v4-ket-du.1]
 - [LỜI v4-ket.1]
+- [ẢNH cg-v4-huy-hieu-sut]
 - [HẬU QUẢ] mở manh mối clue-huy-hieu-sut
 - [LỜI v4-ket.2]
+- [ẢNH chibi-v4-khong-ca]
 - [KẾT THÚC]

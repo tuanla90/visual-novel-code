@@ -368,6 +368,38 @@ MAU['suahh'] = ('Edit Image1. Keep the same gear-shaped metal pin badge on the s
                 'No text, no watermark.{}')
 them('doc-huy-hieu-sut-l2', '3:4', ['T:g2-doc-huy-hieu-sut'], 'suahh', '')
 
+# ---------- J. Đợt 02/10 trưa (user: thiếu Duy ở CG, sửa cảnh bê vali, áo dài cho các cô, nền thêm chi tiết Việt Nam, ảnh minh họa Vụ 2–5) ----------
+# Mục này CHỈ GHI DANH SÁCH (id → nội dung, ảnh tham chiếu); câu lệnh đầy đủ được ghép ngay trong phiên từ các khuôn 'cg', 'chibi', 'intro', 'bg'
+# ở trên cộng mô tả từng ảnh, không lưu nguyên văn ở đây. Ảnh gốc: art/nguon/topview-2026-10-01/g2/ (bản bị thay: …/luot-2/).
+DOT_J = {
+    # Làm lại theo góp ý
+    'cg-bia': 'đủ năm người quanh bảng ghim (thêm Duy); sửa tại chỗ vệt đen ở mặt Tùng (lượt 4)',
+    'cg-ket-thuong': 'đủ năm người ra khỏi phòng họp, Minh Anh ở giữa, Duy đi sau (lượt 3)',
+    'cg-ket-that': 'Vụ 1: Minh Anh bắt tay nhân vật chính, Tùng giơ cốc trà đá, Duy treo chìa, Hà Vy ghim thẻ (lượt 3, đúng vai)',
+    'cg-ket-mua': 'kết cuối mùa: cả năm người ăn mừng, cụng cốc trà đá/trà sữa trong phòng CLB lúc hoàng hôn',
+    'chibi-la-thu': 'thêm Duy đứng sau Minh Anh',
+    'chibi-408-vali': 'bỏ nồi cơm; Tùng (áo tình nguyện) ở dưới nâng đáy vali, nhân vật chính ở trên kéo tay cầm',
+    # Áo dài cho cán bộ nữ (sửa từ chân dung cũ, giữ mặt/tóc/đạo cụ)
+    'char-co-hanh, char-co-hanh-smile, chibi-co-hanh, intro-co-hanh': 'cô Hạnh áo dài xanh thiên thanh nhạt, quần lụa trắng',
+    'char-co-lan, char-co-lan-smile, chibi-co-lan, intro-co-lan': 'cô Lan áo dài tím hoa cà nhạt, quần lụa trắng',
+    # Nền thêm chi tiết Việt Nam (sửa từ nền cũ, giữ bố cục; id gốc "bgvn-<cảnh>" → ghi đè bg-mvp-<cảnh>)
+    'bgvn-*': '16 nền ngày (cang-tin, cong-ktx, cong-truong, hoi-truong, ngoai-phong-may, nha-van-hoa, phong-clb, phong-ctsv, phong-dao-tao, phong-hop, '
+              'phong-ktx, phong-may, sanh-ktx, sanh-toa-b, xuong-robot, thu-vien) + 6 nền tối sửa từ nền ngày mới (cong-ktx, phong-clb, phong-ctsv, phong-ktx, '
+              'phong-may, sanh-toa-b): cờ đỏ sao vàng, băng rôn đỏ trống, xe máy, phượng, quạt trần, phích nước và ấm chén, lịch bloc trống, ghế nhựa, dép, màn…',
+    'bg-mvp-hanh-lang-phong-hop': 'nền mới: hành lang tầng ba ngoài phòng họp, bậu cửa sổ rộng, ghế băng (cảnh v5-sau-hop)',
+    # Ảnh minh họa chèn vào kịch bản bằng [ẢNH …]
+    'cg-v2-khanh-xuong': 'Vụ 2: Khánh (sơ mi trắng, thẻ Hội) vỗ vai Nam trong xưởng',
+    'chibi-v2-hieu-cua, chibi-v2-tung-chi-nam, chibi-v2-manh-giay-linh': 'Vụ 2: Hiếu ló cửa giơ điện thoại; Tùng chỉ tay vào Nam; mảnh giấy chị Linh rơi khỏi sổ',
+    'cg-v3-thu-vien-dem, cg-v3-to-giao-chia': 'Vụ 3: hồi tưởng thư viện 22:30 (Nam, Hà Vy); tờ giao chìa trên cửa văn phòng xưởng (Nam, Thảo, Bách, Tùng)',
+    'chibi-v3-hai-cai-may, chibi-v3-ghim-hai-moc': 'Vụ 3: Hà Vy và Nam "hai cái máy"; Duy ghim hai mốc ngày',
+    'cg-v4-huy-hieu-sut': 'Vụ 4: Khánh quay đi ở cửa phòng CLB, huy hiệu sứt trên quai ba lô, Tùng nín thở',
+    'chibi-v4-cung-mot-may, chibi-v4-khong-ca': 'Vụ 4: các sợi chỉ chụm về một máy; Tùng "không cá"',
+    'cg-v5-ao-xanh-don-hoai, cg-v5-huy-hieu-hoai, cg-v5-chia-va-huy-hieu, cg-v5-ho-so-vu-dau': 'Vụ 5: Tùng áo tình nguyện đội mũ đón Hoài; Hoài níu tay áo Tùng cạnh ghế Khánh '
+        '(lượt 2: Khánh sơ mi trắng, không vest); chìa khóa và huy hiệu trên bậu cửa sổ; cuốn hồ sơ vụ đầu (kết ẩn)',
+    'chibi-v5-dong-dau': 'Vụ 5: đóng dấu lưu hồ sơ, Duy ghim huy hiệu, Hoài ngồi cạnh',
+    'chibi-phu-got-ma-phong, chibi-phu-tu-micro, chibi-phu-mot-bien-nhan': 'ba nhiệm vụ phụ',
+}
+
 day_du = [{'id': h['id'], 'khung': h['khung'], 'ref': h['ref'], 'prompt': f"[id: {h['id']}] " + MAU[h['mau']].replace('{}', h['rieng'])} for h in hang]
 out = Path(__file__).with_name('dan-moi-game-hang-doi-2026-10-01.json')
 out.write_text(json.dumps({'_ghi_chu': __doc__.strip(), 'hang_doi': day_du}, ensure_ascii=False, indent=1), encoding='utf-8')
