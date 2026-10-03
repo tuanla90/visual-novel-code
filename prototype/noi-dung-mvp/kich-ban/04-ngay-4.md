@@ -13,11 +13,22 @@
 ### n4-ctsv — CTSV tra sổ niêm phong {cảnh: phong-ctsv}
 
 - [LỜI n4-ctsv.1]
+- [KHÁM PHÁ kp-toi-n4-ctsv]
+  - nv:co-lan · x 35% · y 100% · rộng 15% → n4-ctsv-vao · dấu: ! · nhãn: Cô Lan
+  - vung:khay-giay · x 89% · y 60% · rộng 8% → n4-ctsv-an · nhãn: Khay giấy trên quầy
+
+### n4-ctsv-vao — Tới nơi: CTSV tra sổ niêm phong {cảnh: phong-ctsv}
+
+- [LỜI n4-ctsv.1v]
 - [HẬU QUẢ] mở manh mối clue-hoai-nguoi-nop
 - [LỜI n4-ctsv.2]
 - [RẼ NHÁNH r-phong-may] tung: "Mà thư đánh máy thì phải in ở đâu chứ nhỉ? Tiện đường, ghé phòng máy không?"
   - {id: ghe} Ghé phòng máy hỏi thầy Khải. → hậu quả: đi tới n4-phong-may
   - {id: ve} Thôi, về CLB báo chị Minh Anh đã. → hậu quả: đi tới n4-ve
+
+### n4-ctsv-an — Chi tiết ẩn: Khay giấy trên quầy {cảnh: phong-ctsv}
+
+- [LỜI n4-ctsv-an.1]
 
 ### n4-phong-may — Phòng máy: nhật ký in {cảnh: phong-may}
 
@@ -33,7 +44,17 @@
 
 ### n4-bd-toa-b — Bản đồ ngày 4 (tùy chọn): bác Thịnh kể có người xuống xem hộp {cảnh: sanh-toa-b}
 
+- [KHÁM PHÁ kp-toi-n4-bd-toa-b]
+  - nv:bac-tu · x 30% · y 100% · rộng 15% → n4-bd-toa-b-vao · dấu: ! · nhãn: Bác bảo vệ
+  - vung:ghe-da · x 26% · y 63% · rộng 10% → n4-bd-toa-b-an · nhãn: Ghế đá
+
+### n4-bd-toa-b-vao — Tới nơi: Bản đồ ngày 4 (tùy chọn): bác Thịnh kể có người xuống xem hộp {cảnh: sanh-toa-b}
+
 - [LỜI n4-bd-toa-b.1]
+
+### n4-bd-toa-b-an — Chi tiết ẩn: Ghế đá {cảnh: sanh-toa-b}
+
+- [LỜI n4-bd-toa-b-an.1]
 
 ### n4-toi — Tối thứ Sáu, phòng CLB: hộp bánh quy và trò "ba dữ kiện" (không khí nhóm bạn, không có manh mối) {cảnh: phong-clb-dem}
 

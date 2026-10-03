@@ -95,3 +95,11 @@
 - **tung** (neutral): Thế giờ làm gì?
 - **ha-vy** (neutral): Mai mang hai mã sang Phòng Công tác sinh viên. Cô phụ trách tra sổ, có hay không là biết.
 > NHẮC VIỆC ha-vy (neutral): Hiếu và Hoài, cùng BC24A. Mai mang hai mã sang Phòng Công tác sinh viên.
+
+## n3-bd-phong-may-an.1
+- **narrator**: Hai đôi dép lê xếp ngay ngắn trước cửa phòng máy. Phòng trải thảm, vào là phải bỏ giày.
+- **tung** (happy): Thế ai trốn tiết vào đây là để lại dấu dép ngay cửa. Phòng máy tự điểm danh hộ thầy.
+
+## n3-bd-toa-b-an.1
+- **narrator**: Tem kiểm định trên bình cứu hỏa ghi tháng 9 năm nay, bên cạnh có chữ ký tắt: "T."
+- **player**: (Bác Thịnh kiểm cả cái bình này. Ở sảnh này cái gì cũng có người ghi lại.)

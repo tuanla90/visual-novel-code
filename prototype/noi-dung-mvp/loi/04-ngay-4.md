@@ -15,6 +15,8 @@
 - **ha-vy** (thinking): Thì mình biết thêm một điều là mình sai ở đâu đó. Cũng là biết thêm.
 - **player**: Cậu lúc nào cũng bình tĩnh thế à?
 - **ha-vy** (smile): Không. Tớ chỉ đếm bậc cầu thang cho đỡ run thôi.
+
+## n4-ctsv.1v
 - **co-lan** (neutral): Cô phụ trách tra rồi. SV240317: có trong sổ. SV240228: không có.
 - **player**: Vậy SV240317 là người nộp thư ạ?
 - **co-lan** (neutral): Cô chỉ nói được là mã đó có trong sổ niêm phong. Thế thôi.
@@ -78,3 +80,11 @@
 - **tung** (happy): Chốt. Tớ ghi vào biên bản luôn!
 - **narrator**: Tùng vừa ghi xong thì Duy đặt ấm siêu tốc cạnh bồn rửa. Cả phòng bỗng im thin thít.
 - **tung** (worried): Chuyển thật luôn á? Tớ tưởng biên bản để tham khảo thôi!
+
+## n4-ctsv-an.1
+- **narrator**: Trên cùng khay giấy là phiếu yêu cầu tra cứu của CLB, chữ ký cô Lan còn tươi mực.
+- **ha-vy** (neutral): Phiếu mình đây rồi. Có chữ ký thì cô phụ trách mới mở sổ.
+
+## n4-bd-toa-b-an.1
+- **narrator**: Trên ghế đá có cái ca nhựa và ấm trà của bác Thịnh, nắp còn ấm.
+- **tung** (happy): Bác trực từ sáng tới tối, chắc một ngày uống hết hai ấm.

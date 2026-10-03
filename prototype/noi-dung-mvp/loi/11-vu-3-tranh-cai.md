@@ -23,6 +23,8 @@
 - **ha-vy** (neutral): Cậu ấy giận tớ vì hôm qua tớ bảo cậu ấy đừng cá.
 - **player**: Tùng không giận lâu đâu. Tới cổng xưởng là quên.
 - **tung** (chi-tay): Tớ nghe thấy đấy nhé! Mà đúng, tớ quên rồi.
+
+## v3-xuong.1v
 - **nam** (neutral): Lại các cậu. Hôm nay định hỏi gì nữa?
 - **tung** (chi-tay): Hỏi thẳng: tối thứ Hai cậu ở đâu?
 - **nam** (neutral): Thư viện. Tối thứ Hai nào cũng thế, tới khi họ đóng cửa. Nhưng các cậu đâu có tin.
@@ -185,3 +187,19 @@
 
 ## v3-bd-cang-tin.1b
 - **narrator**: Bàn trong góc, mấy bạn năm nhất chụm đầu chép bài tập Triết của nhau. Chuông báo tiết reo, cả căng tin đứng dậy cùng một lúc.
+
+## v3-xuong-an.1
+- **narrator**: Bảng trắng kẻ lịch trực kênh của xưởng. Ô nào cũng ghi "Nam", riêng tối thứ Hai để trống.
+- **ha-vy** (thinking): Tối thứ Hai trống. Nhớ lấy đã.
+
+## v3-bd-thu-vien-an.1
+- **narrator**: Sổ mượn sách mở trên quầy thủ thư. Dòng cuối có tên Hoài: "Nhập môn báo chí", hạn trả thứ Sáu.
+- **tung** (thinking): …Bạn ấy học chăm thật.
+
+## v3-bd-tra-da-an.1
+- **narrator**: Giỏ xe đạp hôm nay có thêm túi đá viên, bà vừa đạp đi mua về, đá còn bốc hơi lạnh.
+- **player**: (Quán trà đá mà đá phải đạp xe đi mua. Thảo nào bà dậy sớm thế.)
+
+## v3-bd-cang-tin-an.1
+- **narrator**: Dòng phấn ghi nợ trên bảng đen giờ chỉ còn một tên, gạch hẳn, bên cạnh ghi: "đã trả".
+- **player**: (Có người trả nợ rồi. Chắc chắn không phải Tùng.)

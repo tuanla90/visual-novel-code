@@ -14,17 +14,48 @@
 ### n2-co-hanh — Cô Hạnh tạo tài khoản CLB (chỉ bảng lớp) {cảnh: phong-dao-tao}
 
 - [LỜI n2-co-hanh.1]
+- [KHÁM PHÁ kp-toi-n2-co-hanh]
+  - nv:co-hanh · x 40% · y 100% · rộng 15% → n2-co-hanh-vao · dấu: ! · nhãn: Cô ở quầy
+  - vung:lich · x 69% · y 25% · rộng 5% → n2-co-hanh-an · nhãn: Tờ lịch treo tường
+
+### n2-co-hanh-vao — Tới nơi: Cô Hạnh tạo tài khoản CLB (chỉ bảng lớp) {cảnh: phong-dao-tao}
+
+- [LỜI n2-co-hanh.1v]
 - [HIỆN TÀI LIỆU doc-van-ban-thay-quang]
 - [HẬU QUẢ] mở manh mối clue-quyen-du-lieu
 - [LỜI n2-co-hanh.2]
 
+### n2-co-hanh-an — Chi tiết ẩn: Tờ lịch treo tường {cảnh: phong-dao-tao}
+
+- [LỜI n2-co-hanh-an.1]
+
 ### n2-bd-toa-b — Bản đồ ngày 2 (tùy chọn): ghé sảnh tòa B hỏi bác Thịnh {cảnh: sanh-toa-b}
+
+- [KHÁM PHÁ kp-toi-n2-bd-toa-b]
+  - nv:bac-tu · x 30% · y 100% · rộng 15% → n2-bd-toa-b-vao · dấu: ! · nhãn: Bác bảo vệ
+  - vung:bang-tin · x 40% · y 38% · rộng 4% → n2-bd-toa-b-an · nhãn: Bảng tin cạnh cột
+
+### n2-bd-toa-b-vao — Tới nơi: Bản đồ ngày 2 (tùy chọn): ghé sảnh tòa B hỏi bác Thịnh {cảnh: sanh-toa-b}
 
 - [LỜI n2-bd-toa-b.1]
 
+### n2-bd-toa-b-an — Chi tiết ẩn: Bảng tin cạnh cột {cảnh: sanh-toa-b}
+
+- [LỜI n2-bd-toa-b-an.1]
+
 ### n2-bd-cang-tin — Bản đồ ngày 2 (tùy chọn): tạt qua căng tin {cảnh: cang-tin}
 
+- [KHÁM PHÁ kp-toi-n2-bd-cang-tin]
+  - nv:tung · x 62% · y 100% · rộng 15% → n2-bd-cang-tin-vao · dấu: ! · nhãn: Tùng
+  - vung:bang-den · x 48% · y 20% · rộng 9% → n2-bd-cang-tin-an · nhãn: Tấm bảng đen trên quầy
+
+### n2-bd-cang-tin-vao — Tới nơi: Bản đồ ngày 2 (tùy chọn): tạt qua căng tin {cảnh: cang-tin}
+
 - [LỜI n2-bd-cang-tin.1]
+
+### n2-bd-cang-tin-an — Chi tiết ẩn: Tấm bảng đen trên quầy {cảnh: cang-tin}
+
+- [LỜI n2-bd-cang-tin-an.1]
 
 ### n2-phong — Phòng CLB buổi chiều: bốn người, mỗi người một việc {cảnh: phong-clb}
 

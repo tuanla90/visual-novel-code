@@ -8,3 +8,7 @@ Tạo qua MCP Topview (GPT Image 2, image_edit, 1K, medium; mỗi ảnh 0,2 cred
   bên phải; mọi người tách nhau để bấm được; một ghế trống quay ra người xem cho người chơi.
 - `…-duy-ha-vy-minh-anh.png`, `…-duy.png`: sửa từ ảnh trên, chỉ xóa người (giữ ghế trống) — vị trí người còn lại không đổi nên
   vùng bấm `CHO_NGOI` trong `src/mvp/ui/KhamPhaMvp.tsx` dùng chung.
+- `cg-nghi-di-tung.png` (vẽ lại): bản cũ ở sân thượng hoàng hôn, lệch cảnh phòng CLB 16h40 (`md-11-la-thu`). Image1 = bản cũ
+  (giữ dáng hai người), Image2 = nền phòng CLB; Tùng ngả trên ghế cạnh bàn.
+- `cg-bong-huy-hieu.png` (vẽ lại): bản cũ là cổng chính của trường, một người đi bộ. Chú Cường kể ở CỔNG KÝ TÚC XÁ, 6h45 sáng:
+  Image1 = nền `bg-mvp-cong-ktx`, Image2 = chân dung Hoài; cậu sinh viên quay lưng, balo, đưa phong bì nâu.

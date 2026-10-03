@@ -18,6 +18,8 @@
 - **ha-vy** (smile): Cậu đo cả thời gian đi bộ à?
 - **tung** (chi-tay): Hướng dẫn viên thì phải biết chứ. Còn cậu thì đếm bậc cầu thang, tớ thấy rồi.
 - **ha-vy** (neutral): Hai mươi hai bậc. Đếm cho quen tay thôi.
+
+## n2-co-hanh.1v
 - **co-hanh** (neutral): Cô tạo cho CLB một tài khoản, tên là clb_tham_tu.
 - **co-hanh** (neutral): Tài khoản này chỉ xem được bảng lớp sinh hoạt: mã lớp, ngành, khóa, tòa nhà. Trong đấy không có tên ai cả.
 - **player**: Bảng lớp sinh hoạt là một tệp Excel to hả cô?
@@ -110,3 +112,15 @@
 - **player**: Tối mai đổi sang bánh mì nhé. Kinh phí thí nghiệm hôm nay bằng đúng hai gói mì.
 - **tung** (worried): Mai ăn ở căng tin đi. Chờ đã, cuối tuần còn phải nạp tiền vào ví sinh viên nữa!
 - **player**: Mới đầu tuần mà đã tính tới cuối tuần rồi à?
+
+## n2-co-hanh-an.1
+- **player**: (Tờ lịch tháng 9 treo cạnh bảng. Ô thứ Hai 23 khoanh đỏ, ghi tay: "Họp rà soát phòng CLB".)
+- **ha-vy** (thinking): Phòng Đào tạo cũng ghi ngày họp của mình rồi. Hạn là thật đấy.
+
+## n2-bd-toa-b-an.1
+- **narrator**: Góc bảng tin còn sót tờ danh sách phòng CLB năm ngoái: "Phòng 204 nhà CLB: CLB Thám Tử". Có người vẽ thêm cái kính lúp bằng bút bi.
+- **player**: (Năm ngoái đã có người nghịch thế rồi. Hay là chính người trong CLB vẽ?)
+
+## n2-bd-cang-tin-an.1
+- **narrator**: Bảng đen trên quầy ghi giá bằng phấn: trà đá 3 nghìn, chè đậu đen 10 nghìn. Góc dưới có ai viết thêm: "Nợ quá ba cốc thì ghi tên vào đây".
+- **tung** (gai-dau): Tớ chưa bao giờ nợ quá ba cốc. …Ở căng tin này.

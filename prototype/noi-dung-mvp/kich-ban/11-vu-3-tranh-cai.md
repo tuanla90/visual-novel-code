@@ -17,12 +17,23 @@
 ### v3-xuong — Xưởng Robotics: Nam mở bản xuất bài đăng của kênh {cảnh: xuong-robot}
 
 - [LỜI v3-xuong.1]
+- [KHÁM PHÁ kp-toi-v3-xuong]
+  - nv:nam · x 60% · y 100% · rộng 15% → v3-xuong-vao · dấu: ! · nhãn: Nam
+  - vung:bang-trang · x 73% · y 30% · rộng 12% → v3-xuong-an · nhãn: Bảng trắng trên tường
+
+### v3-xuong-vao — Tới nơi: Xưởng Robotics: Nam mở bản xuất bài đăng của kênh {cảnh: xuong-robot}
+
+- [LỜI v3-xuong.1v]
 - [THỬ THÁCH c-bai-dang]
 - [LỜI v3-xuong.2]
 - [THỬ THÁCH c-bai-thiet-bi]
 - [LỜI v3-xuong.3]
 - [HẬU QUẢ] mở manh mối clue-ten-nam, mở manh mối clue-toi-07
 - [ĐI TỚI v3-len-thu-vien]
+
+### v3-xuong-an — Chi tiết ẩn: Bảng trắng trên tường {cảnh: xuong-robot}
+
+- [LỜI v3-xuong-an.1]
 
 ### v3-len-thu-vien — Sảnh tòa B: bác Tư ở chân cầu thang {cảnh: sanh-toa-b}
 
@@ -100,16 +111,47 @@
 
 ### v3-bd-thu-vien — Bản đồ Vụ 3 (tùy chọn): ghé thư viện {cảnh: thu-vien}
 
+- [KHÁM PHÁ kp-toi-v3-bd-thu-vien]
+  - nv:ha-vy · x 72% · y 100% · rộng 15% → v3-bd-thu-vien-vao · dấu: ! · nhãn: Hà Vy
+  - vung:quay · x 58% · y 40% · rộng 8% → v3-bd-thu-vien-an · nhãn: Quầy thủ thư
+
+### v3-bd-thu-vien-vao — Tới nơi: Bản đồ Vụ 3 (tùy chọn): ghé thư viện {cảnh: thu-vien}
+
 - [LỜI v3-bd-thu-vien.1]
 
+### v3-bd-thu-vien-an — Chi tiết ẩn: Quầy thủ thư {cảnh: thu-vien}
+
+- [LỜI v3-bd-thu-vien-an.1]
+
 ### v3-bd-tra-da — Bản đồ Vụ 3 (tùy chọn): quán trà đá, chuyện một kết luận sai {cảnh: tra-da}
+
+- [KHÁM PHÁ kp-toi-v3-bd-tra-da]
+  - nv:ba-lua · x 30% · y 100% · rộng 15% → v3-bd-tra-da-vao · dấu: ! · nhãn: Bà bán trà đá
+  - vung:xe-dap · x 62% · y 55% · rộng 10% → v3-bd-tra-da-an · nhãn: Chiếc xe đạp cũ
+
+### v3-bd-tra-da-vao — Tới nơi: Bản đồ Vụ 3 (tùy chọn): quán trà đá, chuyện một kết luận sai {cảnh: tra-da}
 
 - [LỜI v3-bd-tra-da.1]
 - [HẬU QUẢ] mở manh mối clue-tra-da-3
 - [LỜI v3-bd-tra-da.2]
 
+### v3-bd-tra-da-an — Chi tiết ẩn: Chiếc xe đạp cũ {cảnh: tra-da}
+
+- [LỜI v3-bd-tra-da-an.1]
+
 ### v3-bd-cang-tin — Bản đồ Vụ 3 (tùy chọn): chè đậu đen ở căng tin, sổ nợ của Tùng {cảnh: cang-tin}
+
+- [KHÁM PHÁ kp-toi-v3-bd-cang-tin]
+  - nv:tung · x 62% · y 100% · rộng 15% → v3-bd-cang-tin-vao · dấu: ! · nhãn: Tùng
+  - vung:bang-den · x 48% · y 20% · rộng 9% → v3-bd-cang-tin-an · nhãn: Tấm bảng đen trên quầy
+
+### v3-bd-cang-tin-vao — Tới nơi: Bản đồ Vụ 3 (tùy chọn): chè đậu đen ở căng tin, sổ nợ của Tùng {cảnh: cang-tin}
 
 - [LỜI v3-bd-cang-tin.1]
 - [ẢNH chibi-lai-suat]
 - [LỜI v3-bd-cang-tin.1b]
+
+### v3-bd-cang-tin-an — Chi tiết ẩn: Tấm bảng đen trên quầy {cảnh: cang-tin}
+
+- [LỜI v3-bd-cang-tin-an.1]
+

@@ -39,6 +39,11 @@ export interface KhamPhaMvp {
   veLai: ConTroMvp;
   /** Chuỗi của các chỗ đã bấm, theo thứ tự. */
   daXem: string[];
+  /**
+   * Cảnh khám phá bên ngoài (03/10/2026): bấm ghim bản đồ → tới nơi lại có cảnh khám phá của nơi đó. Xong cảnh trong thì về
+   * lại cảnh ngoài (bản đồ) thay vì mất luôn. `[ĐI TỚI]` vẫn bỏ cả chồng.
+   */
+  cha?: KhamPhaMvp | null;
 }
 
 export type GiaiDoanMvp = 'mo-dau' | 'ngay' | 'hop' | 'het' | 'vu-sau' | 'phu';

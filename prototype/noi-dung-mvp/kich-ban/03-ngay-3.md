@@ -24,11 +24,31 @@
 
 ### n3-bd-phong-may — Bản đồ ngày 3 (tùy chọn): phòng máy khóa cửa, tờ giấy giờ mở cửa {cảnh: ngoai-phong-may}
 
+- [KHÁM PHÁ kp-toi-n3-bd-phong-may]
+  - nv:ha-vy · x 45% · y 100% · rộng 15% → n3-bd-phong-may-vao · dấu: ! · nhãn: Hà Vy
+  - vung:dep · x 14% · y 81% · rộng 8% → n3-bd-phong-may-an · nhãn: Hai đôi dép trước cửa
+
+### n3-bd-phong-may-vao — Tới nơi: Bản đồ ngày 3 (tùy chọn): phòng máy khóa cửa, tờ giấy giờ mở cửa {cảnh: ngoai-phong-may}
+
 - [LỜI n3-bd-phong-may.1]
+
+### n3-bd-phong-may-an — Chi tiết ẩn: Hai đôi dép trước cửa {cảnh: ngoai-phong-may}
+
+- [LỜI n3-bd-phong-may-an.1]
 
 ### n3-bd-toa-b — Bản đồ ngày 3 (tùy chọn): bác Thịnh ở sảnh tòa B {cảnh: sanh-toa-b}
 
+- [KHÁM PHÁ kp-toi-n3-bd-toa-b]
+  - nv:bac-tu · x 30% · y 100% · rộng 15% → n3-bd-toa-b-vao · dấu: ! · nhãn: Bác bảo vệ
+  - vung:binh-cuu-hoa · x 38.5% · y 57% · rộng 3% → n3-bd-toa-b-an · nhãn: Bình cứu hỏa
+
+### n3-bd-toa-b-vao — Tới nơi: Bản đồ ngày 3 (tùy chọn): bác Thịnh ở sảnh tòa B {cảnh: sanh-toa-b}
+
 - [LỜI n3-bd-toa-b.1]
+
+### n3-bd-toa-b-an — Chi tiết ẩn: Bình cứu hỏa {cảnh: sanh-toa-b}
+
+- [LỜI n3-bd-toa-b-an.1]
 
 ### n3-soi-kinh — Quan sát Quân: cặp kính {cảnh: phong-ctsv}
 

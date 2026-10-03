@@ -3438,3 +3438,21 @@
 .mvp-topbar button.topbar__chapter:hover .topbar__chapter-count { filter: brightness(1.1); box-shadow: 0 0 0 2px #fbbf24; }
 /* Phòng CLB có người ngồi: ảnh ngồi phải hiện ngay trong khung (màn ngang mặc định ẩn ảnh khung vì sân khấu đã vẽ nền trống). */
 .game .mvp-khampha .mvp-canh__khung.is-ngoi .mvp-canh__nen { visibility: visible; }
+
+/* Chibi nền trong suốt (03/10/2026, user: "lạc quẻ trên nền đen 2 lần"): không hộp bóng chữ nhật, không phủ tối đậm —
+   bóng bám theo viền nhân vật, cảnh phía sau chỉ mờ nhẹ, ảnh bật lên như miếng dán. */
+.mvp-anhchen--chibi { background: rgba(8, 12, 18, 0.28); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); }
+.mvp-anhchen--chibi .mvp-anhchen__anh {
+  max-width: min(78%, 640px);
+  max-height: 88%;
+  border-radius: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 0 0 #fff) drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mvp-anhchen--chibi .mvp-anhchen__anh { animation: mvp-anhchen-dan 0.42s cubic-bezier(0.2, 1.5, 0.4, 1) both; }
+}
+@keyframes mvp-anhchen-dan {
+  from { opacity: 0; transform: scale(0.7) rotate(-6deg); }
+  to { opacity: 1; transform: scale(1) rotate(0deg); }
+}

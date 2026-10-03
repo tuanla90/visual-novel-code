@@ -117,13 +117,33 @@
 
 ### tin-bd-cang-tin — Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học {cảnh: cang-tin}
 
+- [KHÁM PHÁ kp-toi-tin-bd-cang-tin]
+  - nv:tung · x 62% · y 100% · rộng 15% → tin-bd-cang-tin-vao · dấu: ! · nhãn: Tùng
+  - vung:bang-den · x 48% · y 20% · rộng 9% → tin-bd-cang-tin-an · nhãn: Tấm bảng đen trên quầy
+
+### tin-bd-cang-tin-vao — Tới nơi: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học {cảnh: cang-tin}
+
 - [LỜI tin-bd-cang-tin.1]
 
+### tin-bd-cang-tin-an — Chi tiết ẩn: Tấm bảng đen trên quầy {cảnh: cang-tin}
+
+- [LỜI tin-bd-cang-tin-an.1]
+
 ### tin-bd-tra-da — Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ {cảnh: tra-da}
+
+- [KHÁM PHÁ kp-toi-tin-bd-tra-da]
+  - nv:ba-lua · x 30% · y 100% · rộng 15% → tin-bd-tra-da-vao · dấu: ! · nhãn: Bà bán trà đá
+  - vung:xe-dap · x 62% · y 55% · rộng 10% → tin-bd-tra-da-an · nhãn: Chiếc xe đạp cũ
+
+### tin-bd-tra-da-vao — Tới nơi: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ {cảnh: tra-da}
 
 - [LỜI tin-bd-tra-da.1]
 - [HẬU QUẢ] mở manh mối clue-tra-da-2
 - [LỜI tin-bd-tra-da.2]
+
+### tin-bd-tra-da-an — Chi tiết ẩn: Chiếc xe đạp cũ {cảnh: tra-da}
+
+- [LỜI tin-bd-tra-da-an.1]
 
 ### tin-soi-hop — Quan sát Nam: cái hộp linh kiện {cảnh: xuong-robot}
 

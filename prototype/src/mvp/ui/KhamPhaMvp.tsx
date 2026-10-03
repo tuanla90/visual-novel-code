@@ -285,7 +285,10 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                 >
                   {url ? <img className="mvp-diem__anh" src={url} alt="" draggable={false} /> : <span className="mvp-diem__tam" aria-hidden="true" />}
                   {d.diem.dau ? <HuyHieu d={d} /> : d.daXem ? null : <span className="mvp-diem__cham" aria-hidden="true" />}
-                  {laNguoi && d.diem.dau ? <span className="mvp-diem__ten">{kb.nhanVat.find((n) => n.id === d.diem.sprite.slice(3))?.ten}</span> : null}
+                  {laNguoi && d.diem.dau ? (
+                    // Nhãn của điểm (phần trước dấu ":") thay cho tên thật: người chưa tự giới thiệu chỉ hiện cách gọi tạm ("Cô ở quầy").
+                    <span className="mvp-diem__ten">{d.diem.nhan ? d.diem.nhan.split(':')[0] : kb.nhanVat.find((n) => n.id === d.diem.sprite.slice(3))?.ten}</span>
+                  ) : null}
                 </button>
               );
             })}

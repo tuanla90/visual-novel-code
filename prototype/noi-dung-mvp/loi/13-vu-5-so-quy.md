@@ -244,3 +244,7 @@
 - **tung** (thinking): Bà ơi, hôm nào xong việc, bà để dành cho cháu thêm một cái ghế nhé.
 - **ba-lua** (smile): Cho con bé hay ôm cặp chứ gì. Mời được nó ra đây ngồi thì bà khao. Có câu mở đầu chưa?
 - **tung** (gai-dau): Cháu có rồi ạ. Hai chữ.
+
+## v5-bd-tra-da-an.1
+- **narrator**: Giỏ xe đạp có một cuốn sổ mới tinh. Cuốn bìa xanh quăn mép không thấy đâu nữa.
+- **ba-lua** (smile): Sổ cũ hết trang rồi. Nợ ai chưa trả thì bà chép sang cả, đừng mừng.

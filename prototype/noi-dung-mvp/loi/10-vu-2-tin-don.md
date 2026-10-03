@@ -183,3 +183,11 @@
 - **ha-vy** (smile): Cậu định gọi à?
 - **tung** (gai-dau): Lần trước tớ gọi giật, bạn ấy đi nhanh gấp đôi. Để hôm khác. Tớ chưa nghĩ ra câu mở đầu.
 - **ha-vy** (smile): Câu mở đầu là "xin lỗi". Có hai chữ.
+
+## tin-bd-cang-tin-an.1
+- **narrator**: Dòng phấn "Nợ quá ba cốc thì ghi tên vào đây" giờ có thêm hai cái tên. Một cái viết nét to, gạch đi rồi viết lại.
+- **tung** (gai-dau): Không phải tớ. Tớ chỉ… ghé xem thôi.
+
+## tin-bd-tra-da-an.1
+- **narrator**: Chiếc xe đạp cũ dựng cạnh tường, giỏ xe đựng một cuốn sổ bìa xanh quăn mép.
+- **ha-vy** (smile): Sổ ghi nợ của quán. Thời nào cũng có một cuốn sổ như thế.

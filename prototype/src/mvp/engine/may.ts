@@ -471,7 +471,7 @@ function veKhamPha(kb: KichBanMvp, s: TrangThaiMvp, kp: KhamPhaMvp): TrangThaiMv
   // Có điểm đánh dấu ! thì xem hết các điểm ! là đi tiếp (điểm ? là tùy chọn); không có dấu nào thì phải xem hết.
   const chinh = nut.diem.filter((d) => d.dau === 'chinh');
   if ((chinh.length > 0 ? chinh : nut.diem).every((d) => kp.daXem.includes(d.chuoi))) {
-    return { ...s, conTro: { ...kp.veLai, nut: kp.veLai.nut + 1 }, hoiDap: null, khamPha: null };
+    return { ...s, conTro: { ...kp.veLai, nut: kp.veLai.nut + 1 }, hoiDap: null, khamPha: kp.cha ?? null };
   }
   return { ...s, conTro: { ...kp.veLai }, hoiDap: null };
 }
@@ -649,7 +649,10 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
       // Tới nút [KHÁM PHÁ] lần đầu → mở cảnh (chưa xem chỗ nào); quay về từ chuỗi của một chỗ bấm → giữ danh sách đã xem.
       const kp = s.khamPha;
       const cungNut = kp && kp.veLai.chuoi === conTro.chuoi && kp.veLai.nut === conTro.nut;
-      return cungNut ? s : { ...s, khamPha: { veLai: { ...conTro }, daXem: [] } };
+      if (cungNut) return s;
+      // Đang trong chuỗi của một chỗ bấm (cảnh ngoài vẫn mở) → cảnh mới lồng vào, xong thì về cảnh ngoài.
+      const cha = kp && kp.veLai.chuoi !== conTro.chuoi ? kp : null;
+      return { ...s, khamPha: { veLai: { ...conTro }, daXem: [], ...(cha ? { cha } : {}) } };
     }
     switch (nut.type) {
       case 'task':

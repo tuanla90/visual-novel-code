@@ -2474,6 +2474,39 @@ const GOC = {
           "text": "Hai mươi hai bậc. Đếm cho quen tay thôi."
         },
         {
+          "type": "explore",
+          "id": "kp-toi-n2-co-hanh",
+          "diem": [
+            {
+              "sprite": "nv:co-hanh",
+              "x": 40,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "n2-co-hanh-vao",
+              "sau": [],
+              "nhan": "Cô ở quầy",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:lich",
+              "x": 69,
+              "y": 25,
+              "rong": 5,
+              "chuoi": "n2-co-hanh-an",
+              "sau": [],
+              "nhan": "Tờ lịch treo tường"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n2-co-hanh-vao",
+      "title": "Tới nơi: Cô Hạnh tạo tài khoản CLB (chỉ bảng lớp)",
+      "canh": "phong-dao-tao",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
           "type": "line",
           "speaker": "co-hanh",
           "expression": "neutral",
@@ -2553,8 +2586,60 @@ const GOC = {
       ]
     },
     {
+      "id": "n2-co-hanh-an",
+      "title": "Chi tiết ẩn: Tờ lịch treo tường",
+      "canh": "phong-dao-tao",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Tờ lịch tháng 9 treo cạnh bảng. Ô thứ Hai 23 khoanh đỏ, ghi tay: \"Họp rà soát phòng CLB\".)"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Phòng Đào tạo cũng ghi ngày họp của mình rồi. Hạn là thật đấy."
+        }
+      ]
+    },
+    {
       "id": "n2-bd-toa-b",
       "title": "Bản đồ ngày 2 (tùy chọn): ghé sảnh tòa B hỏi bác Thịnh",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
+          "type": "explore",
+          "id": "kp-toi-n2-bd-toa-b",
+          "diem": [
+            {
+              "sprite": "nv:bac-tu",
+              "x": 30,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "n2-bd-toa-b-vao",
+              "sau": [],
+              "nhan": "Bác bảo vệ",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:bang-tin",
+              "x": 40,
+              "y": 38,
+              "rong": 4,
+              "chuoi": "n2-bd-toa-b-an",
+              "sau": [],
+              "nhan": "Bảng tin cạnh cột"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n2-bd-toa-b-vao",
+      "title": "Tới nơi: Bản đồ ngày 2 (tùy chọn): ghé sảnh tòa B hỏi bác Thịnh",
       "canh": "sanh-toa-b",
       "mocSomNhat": 21,
       "nodes": [
@@ -2585,8 +2670,59 @@ const GOC = {
       ]
     },
     {
+      "id": "n2-bd-toa-b-an",
+      "title": "Chi tiết ẩn: Bảng tin cạnh cột",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Góc bảng tin còn sót tờ danh sách phòng CLB năm ngoái: \"Phòng 204 nhà CLB: CLB Thám Tử\". Có người vẽ thêm cái kính lúp bằng bút bi."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Năm ngoái đã có người nghịch thế rồi. Hay là chính người trong CLB vẽ?)"
+        }
+      ]
+    },
+    {
       "id": "n2-bd-cang-tin",
       "title": "Bản đồ ngày 2 (tùy chọn): tạt qua căng tin",
+      "canh": "cang-tin",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
+          "type": "explore",
+          "id": "kp-toi-n2-bd-cang-tin",
+          "diem": [
+            {
+              "sprite": "nv:tung",
+              "x": 62,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "n2-bd-cang-tin-vao",
+              "sau": [],
+              "nhan": "Tùng",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:bang-den",
+              "x": 48,
+              "y": 20,
+              "rong": 9,
+              "chuoi": "n2-bd-cang-tin-an",
+              "sau": [],
+              "nhan": "Tấm bảng đen trên quầy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n2-bd-cang-tin-vao",
+      "title": "Tới nơi: Bản đồ ngày 2 (tùy chọn): tạt qua căng tin",
       "canh": "cang-tin",
       "mocSomNhat": 21,
       "nodes": [
@@ -2612,6 +2748,25 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Cậu để ý người khác kỹ thật. Ừ, tối thứ Hai tớ không có tiết sáng hôm sau."
+        }
+      ]
+    },
+    {
+      "id": "n2-bd-cang-tin-an",
+      "title": "Chi tiết ẩn: Tấm bảng đen trên quầy",
+      "canh": "cang-tin",
+      "mocSomNhat": 21,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bảng đen trên quầy ghi giá bằng phấn: trà đá 3 nghìn, chè đậu đen 10 nghìn. Góc dưới có ai viết thêm: \"Nợ quá ba cốc thì ghi tên vào đây\"."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Tớ chưa bao giờ nợ quá ba cốc. …Ở căng tin này."
         }
       ]
     },
@@ -3242,6 +3397,39 @@ const GOC = {
       "mocSomNhat": 31,
       "nodes": [
         {
+          "type": "explore",
+          "id": "kp-toi-n3-bd-phong-may",
+          "diem": [
+            {
+              "sprite": "nv:ha-vy",
+              "x": 45,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "n3-bd-phong-may-vao",
+              "sau": [],
+              "nhan": "Hà Vy",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:dep",
+              "x": 14,
+              "y": 81,
+              "rong": 8,
+              "chuoi": "n3-bd-phong-may-an",
+              "sau": [],
+              "nhan": "Hai đôi dép trước cửa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n3-bd-phong-may-vao",
+      "title": "Tới nơi: Bản đồ ngày 3 (tùy chọn): phòng máy khóa cửa, tờ giấy giờ mở cửa",
+      "canh": "ngoai-phong-may",
+      "mocSomNhat": 31,
+      "nodes": [
+        {
           "type": "line",
           "speaker": "narrator",
           "text": "Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ ở bàn trực."
@@ -3261,8 +3449,60 @@ const GOC = {
       ]
     },
     {
+      "id": "n3-bd-phong-may-an",
+      "title": "Chi tiết ẩn: Hai đôi dép trước cửa",
+      "canh": "ngoai-phong-may",
+      "mocSomNhat": 31,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hai đôi dép lê xếp ngay ngắn trước cửa phòng máy. Phòng trải thảm, vào là phải bỏ giày."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Thế ai trốn tiết vào đây là để lại dấu dép ngay cửa. Phòng máy tự điểm danh hộ thầy."
+        }
+      ]
+    },
+    {
       "id": "n3-bd-toa-b",
       "title": "Bản đồ ngày 3 (tùy chọn): bác Thịnh ở sảnh tòa B",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 31,
+      "nodes": [
+        {
+          "type": "explore",
+          "id": "kp-toi-n3-bd-toa-b",
+          "diem": [
+            {
+              "sprite": "nv:bac-tu",
+              "x": 30,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "n3-bd-toa-b-vao",
+              "sau": [],
+              "nhan": "Bác bảo vệ",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:binh-cuu-hoa",
+              "x": 38.5,
+              "y": 57,
+              "rong": 3,
+              "chuoi": "n3-bd-toa-b-an",
+              "sau": [],
+              "nhan": "Bình cứu hỏa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n3-bd-toa-b-vao",
+      "title": "Tới nơi: Bản đồ ngày 3 (tùy chọn): bác Thịnh ở sảnh tòa B",
       "canh": "sanh-toa-b",
       "mocSomNhat": 31,
       "nodes": [
@@ -3283,6 +3523,24 @@ const GOC = {
           "speaker": "bac-tu",
           "expression": "neutral",
           "text": "Ừ, cùng tầng. Giờ hành chính lúc nào cũng có người."
+        }
+      ]
+    },
+    {
+      "id": "n3-bd-toa-b-an",
+      "title": "Chi tiết ẩn: Bình cứu hỏa",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 31,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tem kiểm định trên bình cứu hỏa ghi tháng 9 năm nay, bên cạnh có chữ ký tắt: \"T.\""
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Bác Thịnh kiểm cả cái bình này. Ở sảnh này cái gì cũng có người ghi lại.)"
         }
       ]
     },
@@ -3704,6 +3962,39 @@ const GOC = {
           "text": "Không. Tớ chỉ đếm bậc cầu thang cho đỡ run thôi."
         },
         {
+          "type": "explore",
+          "id": "kp-toi-n4-ctsv",
+          "diem": [
+            {
+              "sprite": "nv:co-lan",
+              "x": 35,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "n4-ctsv-vao",
+              "sau": [],
+              "nhan": "Cô Lan",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:khay-giay",
+              "x": 89,
+              "y": 60,
+              "rong": 8,
+              "chuoi": "n4-ctsv-an",
+              "sau": [],
+              "nhan": "Khay giấy trên quầy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n4-ctsv-vao",
+      "title": "Tới nơi: CTSV tra sổ niêm phong",
+      "canh": "phong-ctsv",
+      "mocSomNhat": 41,
+      "nodes": [
+        {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
@@ -3784,6 +4075,25 @@ const GOC = {
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "n4-ctsv-an",
+      "title": "Chi tiết ẩn: Khay giấy trên quầy",
+      "canh": "phong-ctsv",
+      "mocSomNhat": 41,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Trên cùng khay giấy là phiếu yêu cầu tra cứu của CLB, chữ ký cô Lan còn tươi mực."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Phiếu mình đây rồi. Có chữ ký thì cô phụ trách mới mở sổ."
         }
       ]
     },
@@ -3937,6 +4247,39 @@ const GOC = {
       "mocSomNhat": 41,
       "nodes": [
         {
+          "type": "explore",
+          "id": "kp-toi-n4-bd-toa-b",
+          "diem": [
+            {
+              "sprite": "nv:bac-tu",
+              "x": 30,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "n4-bd-toa-b-vao",
+              "sau": [],
+              "nhan": "Bác bảo vệ",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:ghe-da",
+              "x": 26,
+              "y": 63,
+              "rong": 10,
+              "chuoi": "n4-bd-toa-b-an",
+              "sau": [],
+              "nhan": "Ghế đá"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n4-bd-toa-b-vao",
+      "title": "Tới nơi: Bản đồ ngày 4 (tùy chọn): bác Thịnh kể có người xuống xem hộp",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 41,
+      "nodes": [
+        {
           "type": "line",
           "speaker": "bac-tu",
           "expression": "neutral",
@@ -3953,6 +4296,25 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Anh ấy kiểm bọn mình, và kiểm cả cái hộp. Cẩn thận như thế thì mình càng phải có căn cứ."
+        }
+      ]
+    },
+    {
+      "id": "n4-bd-toa-b-an",
+      "title": "Chi tiết ẩn: Ghế đá",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 41,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Trên ghế đá có cái ca nhựa và ấm trà của bác Thịnh, nắp còn ấm."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Bác trực từ sáng tới tối, chắc một ngày uống hết hai ấm."
         }
       ]
     },
@@ -6249,6 +6611,39 @@ const GOC = {
       "mocSomNhat": 1000,
       "nodes": [
         {
+          "type": "explore",
+          "id": "kp-toi-tin-bd-cang-tin",
+          "diem": [
+            {
+              "sprite": "nv:tung",
+              "x": 62,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "tin-bd-cang-tin-vao",
+              "sau": [],
+              "nhan": "Tùng",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:bang-den",
+              "x": 48,
+              "y": 20,
+              "rong": 9,
+              "chuoi": "tin-bd-cang-tin-an",
+              "sau": [],
+              "nhan": "Tấm bảng đen trên quầy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-bd-cang-tin-vao",
+      "title": "Tới nơi: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học",
+      "canh": "cang-tin",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
           "type": "line",
           "speaker": "narrator",
           "text": "Căng tin giờ tan học. Bàn nào cũng có người cúi vào điện thoại."
@@ -6268,8 +6663,60 @@ const GOC = {
       ]
     },
     {
+      "id": "tin-bd-cang-tin-an",
+      "title": "Chi tiết ẩn: Tấm bảng đen trên quầy",
+      "canh": "cang-tin",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Dòng phấn \"Nợ quá ba cốc thì ghi tên vào đây\" giờ có thêm hai cái tên. Một cái viết nét to, gạch đi rồi viết lại."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Không phải tớ. Tớ chỉ… ghé xem thôi."
+        }
+      ]
+    },
+    {
       "id": "tin-bd-tra-da",
       "title": "Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ",
+      "canh": "tra-da",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "explore",
+          "id": "kp-toi-tin-bd-tra-da",
+          "diem": [
+            {
+              "sprite": "nv:ba-lua",
+              "x": 30,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "tin-bd-tra-da-vao",
+              "sau": [],
+              "nhan": "Bà bán trà đá",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:xe-dap",
+              "x": 62,
+              "y": 55,
+              "rong": 10,
+              "chuoi": "tin-bd-tra-da-an",
+              "sau": [],
+              "nhan": "Chiếc xe đạp cũ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-bd-tra-da-vao",
+      "title": "Tới nơi: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ",
       "canh": "tra-da",
       "mocSomNhat": 1000,
       "nodes": [
@@ -6349,6 +6796,25 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "smile",
           "text": "Câu mở đầu là \"xin lỗi\". Có hai chữ."
+        }
+      ]
+    },
+    {
+      "id": "tin-bd-tra-da-an",
+      "title": "Chi tiết ẩn: Chiếc xe đạp cũ",
+      "canh": "tra-da",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chiếc xe đạp cũ dựng cạnh tường, giỏ xe đựng một cuốn sổ bìa xanh quăn mép."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Sổ ghi nợ của quán. Thời nào cũng có một cuốn sổ như thế."
         }
       ]
     },
@@ -6581,6 +7047,39 @@ const GOC = {
           "text": "Tớ nghe thấy đấy nhé! Mà đúng, tớ quên rồi."
         },
         {
+          "type": "explore",
+          "id": "kp-toi-v3-xuong",
+          "diem": [
+            {
+              "sprite": "nv:nam",
+              "x": 60,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "v3-xuong-vao",
+              "sau": [],
+              "nhan": "Nam",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:bang-trang",
+              "x": 73,
+              "y": 30,
+              "rong": 12,
+              "chuoi": "v3-xuong-an",
+              "sau": [],
+              "nhan": "Bảng trắng trên tường"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "v3-xuong-vao",
+      "title": "Tới nơi: Xưởng Robotics: Nam mở bản xuất bài đăng của kênh",
+      "canh": "xuong-robot",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
@@ -6690,6 +7189,25 @@ const GOC = {
         {
           "type": "goto",
           "to": "v3-len-thu-vien"
+        }
+      ]
+    },
+    {
+      "id": "v3-xuong-an",
+      "title": "Chi tiết ẩn: Bảng trắng trên tường",
+      "canh": "xuong-robot",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bảng trắng kẻ lịch trực kênh của xưởng. Ô nào cũng ghi \"Nam\", riêng tối thứ Hai để trống."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tối thứ Hai trống. Nhớ lấy đã."
         }
       ]
     },
@@ -7517,6 +8035,39 @@ const GOC = {
       "mocSomNhat": 1000,
       "nodes": [
         {
+          "type": "explore",
+          "id": "kp-toi-v3-bd-thu-vien",
+          "diem": [
+            {
+              "sprite": "nv:ha-vy",
+              "x": 72,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "v3-bd-thu-vien-vao",
+              "sau": [],
+              "nhan": "Hà Vy",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:quay",
+              "x": 58,
+              "y": 40,
+              "rong": 8,
+              "chuoi": "v3-bd-thu-vien-an",
+              "sau": [],
+              "nhan": "Quầy thủ thư"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "v3-bd-thu-vien-vao",
+      "title": "Tới nơi: Bản đồ Vụ 3 (tùy chọn): ghé thư viện",
+      "canh": "thu-vien",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
           "type": "line",
           "speaker": "narrator",
           "text": "Thư viện buổi chiều. Cửa từ kêu tít mỗi lần có người quẹt thẻ đi qua."
@@ -7547,8 +8098,60 @@ const GOC = {
       ]
     },
     {
+      "id": "v3-bd-thu-vien-an",
+      "title": "Chi tiết ẩn: Quầy thủ thư",
+      "canh": "thu-vien",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Sổ mượn sách mở trên quầy thủ thư. Dòng cuối có tên Hoài: \"Nhập môn báo chí\", hạn trả thứ Sáu."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "…Bạn ấy học chăm thật."
+        }
+      ]
+    },
+    {
       "id": "v3-bd-tra-da",
       "title": "Bản đồ Vụ 3 (tùy chọn): quán trà đá, chuyện một kết luận sai",
+      "canh": "tra-da",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "explore",
+          "id": "kp-toi-v3-bd-tra-da",
+          "diem": [
+            {
+              "sprite": "nv:ba-lua",
+              "x": 30,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "v3-bd-tra-da-vao",
+              "sau": [],
+              "nhan": "Bà bán trà đá",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:xe-dap",
+              "x": 62,
+              "y": 55,
+              "rong": 10,
+              "chuoi": "v3-bd-tra-da-an",
+              "sau": [],
+              "nhan": "Chiếc xe đạp cũ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "v3-bd-tra-da-vao",
+      "title": "Tới nơi: Bản đồ Vụ 3 (tùy chọn): quán trà đá, chuyện một kết luận sai",
       "canh": "tra-da",
       "mocSomNhat": 1000,
       "nodes": [
@@ -7622,8 +8225,59 @@ const GOC = {
       ]
     },
     {
+      "id": "v3-bd-tra-da-an",
+      "title": "Chi tiết ẩn: Chiếc xe đạp cũ",
+      "canh": "tra-da",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Giỏ xe đạp hôm nay có thêm túi đá viên, bà vừa đạp đi mua về, đá còn bốc hơi lạnh."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Quán trà đá mà đá phải đạp xe đi mua. Thảo nào bà dậy sớm thế.)"
+        }
+      ]
+    },
+    {
       "id": "v3-bd-cang-tin",
       "title": "Bản đồ Vụ 3 (tùy chọn): chè đậu đen ở căng tin, sổ nợ của Tùng",
+      "canh": "cang-tin",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "explore",
+          "id": "kp-toi-v3-bd-cang-tin",
+          "diem": [
+            {
+              "sprite": "nv:tung",
+              "x": 62,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "v3-bd-cang-tin-vao",
+              "sau": [],
+              "nhan": "Tùng",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:bang-den",
+              "x": 48,
+              "y": 20,
+              "rong": 9,
+              "chuoi": "v3-bd-cang-tin-an",
+              "sau": [],
+              "nhan": "Tấm bảng đen trên quầy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "v3-bd-cang-tin-vao",
+      "title": "Tới nơi: Bản đồ Vụ 3 (tùy chọn): chè đậu đen ở căng tin, sổ nợ của Tùng",
       "canh": "cang-tin",
       "mocSomNhat": 1000,
       "nodes": [
@@ -7669,6 +8323,24 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Bàn trong góc, mấy bạn năm nhất chụm đầu chép bài tập Triết của nhau. Chuông báo tiết reo, cả căng tin đứng dậy cùng một lúc."
+        }
+      ]
+    },
+    {
+      "id": "v3-bd-cang-tin-an",
+      "title": "Chi tiết ẩn: Tấm bảng đen trên quầy",
+      "canh": "cang-tin",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Dòng phấn ghi nợ trên bảng đen giờ chỉ còn một tên, gạch hẳn, bên cạnh ghi: \"đã trả\"."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Có người trả nợ rồi. Chắc chắn không phải Tùng.)"
         }
       ]
     },
@@ -10785,6 +11457,39 @@ const GOC = {
       "mocSomNhat": 1000,
       "nodes": [
         {
+          "type": "explore",
+          "id": "kp-toi-v5-bd-tra-da",
+          "diem": [
+            {
+              "sprite": "nv:ba-lua",
+              "x": 30,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "v5-bd-tra-da-vao",
+              "sau": [],
+              "nhan": "Bà bán trà đá",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:xe-dap",
+              "x": 62,
+              "y": 55,
+              "rong": 10,
+              "chuoi": "v5-bd-tra-da-an",
+              "sau": [],
+              "nhan": "Chiếc xe đạp cũ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "v5-bd-tra-da-vao",
+      "title": "Tới nơi: Bản đồ Vụ 5 (tùy chọn): quán trà đá, \"cậu trà nóng\" giờ ở đâu",
+      "canh": "tra-da",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
           "type": "line",
           "speaker": "narrator",
           "text": "Quán trà đá, đầu giờ chiều. Bà chủ quán đang tráng cốc."
@@ -10867,6 +11572,25 @@ const GOC = {
           "speaker": "tung",
           "expression": "gai-dau",
           "text": "Cháu có rồi ạ. Hai chữ."
+        }
+      ]
+    },
+    {
+      "id": "v5-bd-tra-da-an",
+      "title": "Chi tiết ẩn: Chiếc xe đạp cũ",
+      "canh": "tra-da",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Giỏ xe đạp có một cuốn sổ mới tinh. Cuốn bìa xanh quăn mép không thấy đâu nữa."
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "smile",
+          "text": "Sổ cũ hết trang rồi. Nợ ai chưa trả thì bà chép sang cả, đừng mừng."
         }
       ]
     },
