@@ -2,7 +2,7 @@
  * Gom tệp của `prototype/noi-dung-mvp/` (đặc tả §18.1), ĐÚNG THỨ TỰ đọc:
  * quy-uoc.md → nhan-vat.md → canh.md → dia-diem.md → lich.md → du-lieu.md → kich-ban/ → thu-thach/ → so-tay/ → chung/ → ho-so/.
  * `loi/` (lời, phiên truyện sở hữu) KHÔNG đưa thẳng vào bộ đọc: được ghép vào các dòng `- [LỜI mã]` của kich-ban/ và
- * thu-thach/ trước khi đọc (ghep-loi.ts). README.md bỏ qua; tệp .md chỗ khác là lỗi. Không import gì từ `src/`.
+ * thu-thach/ trước khi đọc (ghep-loi.ts). README.md và giong/ bỏ qua; tệp .md chỗ khác là lỗi. Không import gì từ `src/`.
  */
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
@@ -42,7 +42,8 @@ export function gomTepMvp(goc: string, hienThi = 'noi-dung-mvp'): { tep: TepMvp[
   const tep: TepMvp[] = [];
   const loi: LoiNoiDung[] = [];
   const doanLoi: DoanLoi[] = [];
-  const conLai = new Set(tatCaMd(goc).filter((p) => !/(^|\/)README\.md$/.test(p)));
+  // giong/ là luật giọng cho máy kiểm giọng (kiem-giong.ts) và người viết, không phải nội dung game.
+  const conLai = new Set(tatCaMd(goc).filter((p) => !/(^|\/)README\.md$/.test(p) && !p.startsWith('giong/')));
   for (const p of [...conLai].filter((x) => x.startsWith('loi/')).sort()) {
     conLai.delete(p);
     const d = docTepLoi(`${hienThi}/${p}`, readFileSync(join(goc, p), 'utf8'));
