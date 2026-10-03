@@ -20,11 +20,15 @@ describe('DialogBox', () => {
     expect(document.body.textContent).not.toContain('ha-vy');
   });
 
-  it('bấm vào hộp, Space hoặc Enter đều qua lời; thẻ chữ lớn có lớp dialog--card', async () => {
+  it('bấm vào hộp, Space hoặc Enter đều qua lời; thẻ chữ lớn có lớp dialog--card, ẩn nút hồ sơ', async () => {
     const user = userEvent.setup();
     const onAdvance = vi.fn();
-    render(<DialogBox line={{ speaker: 'narrator', text: 'Thông điệp' }} display="card" onAdvance={onAdvance} />);
+    const onOpenNotebook = vi.fn();
+    render(<DialogBox line={{ speaker: 'narrator', text: 'Thông điệp' }} display="card" onAdvance={onAdvance} onOpenNotebook={onOpenNotebook} />);
     expect(document.querySelector('.dialog--card')).not.toBeNull();
+    expect(document.querySelector('.dialog__card-decor')).not.toBeNull();
+    expect(document.querySelector('.dialog__card-hint')).not.toBeNull();
+    expect(document.querySelector('.dialog__btn-notebook')).toBeNull();
     await passPressGuard();
     await user.click(screen.getByText('Thông điệp'));
     await passPressGuard();
