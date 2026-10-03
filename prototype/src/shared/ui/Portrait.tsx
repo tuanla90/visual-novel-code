@@ -28,7 +28,9 @@ export function Portrait({ character, expression, size = 'normal', talking = fal
   const art = resolvePortrait(character, expression);
   const cutout = usePortraitCutout(art.url);
   // data-art-source phản ánh cái ĐANG hiện: đang tách nền → hình vẽ tạm.
-  const shown = cutout?.src ? art : { slot: art.slot };
+  // Ảnh trong repo đều đã tách nền sẵn: lúc chờ thì hiện luôn ảnh gốc thay vì hình vẽ tạm (đỡ nháy SVG rồi mới ra ảnh).
+  const src = cutout?.src ?? (cutout?.status === 'pending' ? art.url : undefined);
+  const shown = src ? art : { slot: art.slot };
   const rig = cutout?.src ? talkRigFor(character, art.url) : undefined;
   return (
     <figure
@@ -38,7 +40,7 @@ export function Portrait({ character, expression, size = 'normal', talking = fal
       {...artDataAttributes(shown)}
       {...(cutout ? { 'data-art-cutout': cutout.status } : {})}
     >
-      {cutout?.src ? <img className="portrait__img" src={cutout.src} alt="" draggable={false} /> : <PortraitArt character={character} expression={expression} />}
+      {src ? <img className="portrait__img" src={src} alt="" draggable={false} /> : <PortraitArt character={character} expression={expression} />}
       {rig ? <TalkOverlay rig={rig} talking={talking} cutoutSrc={cutout?.src} /> : null}
     </figure>
   );

@@ -2,6 +2,7 @@
 
 <!-- Tên sau dấu "—" HIỆN cho người chơi (nhãn cảnh): chỉ ghi tên nơi, không ghi chú tác giả. 7 cảnh nền mới của MVP + các cảnh Vụ 1 đã có/đã liệt kê (kịch bản khung mục 11). "Ảnh nền" không bắt buộc: chưa có ảnh thì bỏ. Cảnh buổi tối là cảnh riêng có đuôi `-dem` (ảnh `bg-mvp-<mã>`): chương 1 không còn "Cuối ngày" nên máy không tự đổi sang ảnh tối. -->
 
+### xe-buyt — Trên xe buýt
 ### cong-truong — Cổng trường
 ### phong-ktx — Phòng KTX 408
 ### cong-ktx — Cổng KTX

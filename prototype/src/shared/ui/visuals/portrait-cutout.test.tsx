@@ -83,14 +83,14 @@ describe('tách nền chân dung trên canvas', () => {
     expect(renderHook(() => usePortraitCutout(undefined)).result.current).toBeUndefined();
   });
 
-  it('đang xử lý → hình vẽ tạm; xong → ảnh đã tách nền (góc trong suốt), nhãn tiếng Việt giữ nguyên', async () => {
+  it('đang xử lý → hiện ngay ảnh gốc (không nháy hình vẽ tạm); xong → ảnh đã tách nền (góc trong suốt), nhãn tiếng Việt giữ nguyên', async () => {
     stubCanvas(okFetch);
     const { container } = render(<Portrait character="minh-anh" expression="neutral" />);
     const figure = () => container.querySelector('figure');
     expect(figure()?.getAttribute('data-art-cutout')).toBe('pending');
-    expect(figure()?.getAttribute('data-art-source')).toBe('placeholder');
-    expect(container.querySelector('img')).toBeNull();
-    expect(container.querySelector('svg')).not.toBeNull();
+    expect(figure()?.getAttribute('data-art-source')).toBe('image');
+    expect(container.querySelector('img')?.getAttribute('src')).toBe(IMAGE_URL);
+    expect(container.querySelector('svg')).toBeNull();
 
     await waitFor(() => expect(figure()?.getAttribute('data-art-cutout')).toBe('cut'));
     expect(figure()?.getAttribute('data-art-source')).toBe('image');

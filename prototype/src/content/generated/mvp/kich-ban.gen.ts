@@ -590,6 +590,11 @@ const GOC = {
   ],
   "canh": [
     {
+      "id": "xe-buyt",
+      "ten": "Trên xe buýt",
+      "anhNen": null
+    },
+    {
       "id": "cong-truong",
       "ten": "Cổng trường",
       "anhNen": null
@@ -755,7 +760,7 @@ const GOC = {
       "phuNhieuMax": 3,
       "uyTin": null
     },
-    "chuoiDau": "md-00-xe-buyt",
+    "chuoiDau": "md-00-tren-xe",
     "ngayMoDau": "2024-09-08",
     "ngay": [
       {
@@ -910,6 +915,74 @@ const GOC = {
   },
   "chuoi": [
     {
+      "id": "md-00-tren-xe",
+      "title": "Chủ nhật tuần 1: trên chuyến xe buýt lên Hà Nội",
+      "canh": "xe-buyt",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Chủ nhật, 08/09/2024 · Chuyến xe buýt lên Hà Nội"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tay vịn rung theo từng ổ gà. Cửa kính kéo hé, gió lùa vào mang theo mùi bụi đường và mùi nắng đầu thu."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Vậy là lên Hà Nội thật rồi.)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Sáng nay mẹ còn nhét thêm hộp ruốc vào vali, dặn đi dặn lại: ăn đúng bữa, đừng thức khuya, có chuyện gì thì gọi về ngay.)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Đỗ Đại học Chấn Hưng. Đọc giấy báo trúng tuyển đến lần thứ ba mình mới dám tin.)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Ngoài cửa sổ, ruộng lúa thưa dần, nhà cao tầng dày lên, biển quảng cáo chen nhau sát mép đường."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Một mình giữa thành phố to thế này, nghĩ cũng hơi run. Nhưng mà háo hức nhiều hơn.)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Ở ký túc xá, gặp người mới, học những thứ chưa từng học. Không biết bốn năm tới sẽ thế nào.)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Mong là mình không phí nó. Biết đâu sau này ra trường, nhà mình đỡ vất vả hơn.)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Xe chậm dần. Giọng phụ xe vọng xuống dọc lối đi: \"Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!\""
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Tới rồi. Phòng 408… Đi thôi.)"
+        },
+        {
+          "type": "goto",
+          "to": "md-00-xe-buyt"
+        }
+      ]
+    },
+    {
       "id": "md-00-xe-buyt",
       "title": "Chủ nhật tuần 1: xuống xe buýt trước cổng trường",
       "canh": "cong-truong",
@@ -928,7 +1001,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Chủ nhật, 08/09/2024 · Đại học Chấn Hưng"
+          "text": "Đại học Chấn Hưng · Cổng trường"
         },
         {
           "type": "note",
@@ -1625,12 +1698,6 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Mười phút sau, trên tay Tùng có bốn tờ đăng ký, một cái quạt giấy của CLB Guitar và nửa cái bánh rán của CLB Nấu ăn."
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "neutral",
-          "text": "Chị ơi, đây là bàn CLB Thám Tử ạ? Chị là thành viên CLB ạ?"
         },
         {
           "type": "line",
@@ -19736,7 +19803,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:182 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:196 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

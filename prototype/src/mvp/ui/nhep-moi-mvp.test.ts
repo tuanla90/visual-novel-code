@@ -32,7 +32,7 @@ describe('bộ nhép môi MVP', () => {
   it('tra theo URL ảnh đang hiện; ảnh không có bộ → undefined', () => {
     const url = anhTheoTen('char-tung-gai-dau');
     expect(boNhepMoiTheoUrl(url)?.mouth.w).toBe(80);
-    expect(boNhepMoiTheoUrl(anhTheoTen('char-duy'))?.sourceFile).toBe('char-duy.png');
+    expect(boNhepMoiTheoUrl(anhTheoTen('char-duy'))?.sourceFile).toBe('char-duy.webp');
     expect(boNhepMoiTheoUrl('/assets/char-khong-co-bo.png')).toBeUndefined();
     expect(boNhepMoiTheoUrl(undefined)).toBeUndefined();
     // Chỉ mục tùy ý (test không phụ thuộc import.meta.glob).

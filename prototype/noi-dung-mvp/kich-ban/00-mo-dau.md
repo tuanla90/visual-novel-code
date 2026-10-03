@@ -2,6 +2,11 @@
 
 <!-- Theo kịch bản khung mục 3, đã áp DX-01 (01/10/2026): bỏ md-02 bản đồ, md-04 căng tin, md-05 phòng máy; md-06 bảng tin gộp vào md-07. Nối: md-01 → md-03 → md-07 → md-08 → md-09. Thoại bản hội đồng v1 (29/09): giọng sinh viên miền Bắc, tớ/cậu. -->
 
+### md-00-tren-xe — Chủ nhật tuần 1: trên chuyến xe buýt lên Hà Nội {cảnh: xe-buyt}
+
+- [LỜI md-00-tren-xe.1]
+- [ĐI TỚI md-00-xe-buyt]
+
 ### md-00-xe-buyt — Chủ nhật tuần 1: xuống xe buýt trước cổng trường {cảnh: cong-truong}
 
 - [LỜI md-00-xe-buyt.1]

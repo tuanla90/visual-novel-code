@@ -51,6 +51,7 @@ import { NoiMvp } from './NoiMvp';
 import { SanKhauMvp } from './SanKhauMvp';
 import { TaiLieuMvp } from './TaiLieuMvp';
 import { TaoNhanVatMvp } from './TaoNhanVatMvp';
+import { taiTruocTheoVan } from './tai-truoc-mvp';
 import { maMoi, theMoiTuMa, useTheChuaXem, type TheMoi } from './the-moi';
 import { TheMoiMvp } from './TheMoiMvp';
 import { TraSoMvp } from './TrangSoMvp';
@@ -231,6 +232,15 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     nhacTruoc.current = { nhac, chuoi: s?.conTro?.chuoi ?? null };
     soundEngine.chonNhac(nhac);
   }, [kb, s]);
+
+  // Nhìn trước kịch bản: tải sẵn nền / chân dung / ảnh chèn của vài chuỗi sắp tới (tai-truoc-mvp.ts) để cảnh mới không hiện trễ.
+  const chuoiHienTai = s?.conTro?.chuoi;
+  const nutHienTai = s?.conTro?.nut;
+  const ngayHienTai = s?.ngay;
+  useEffect(() => {
+    const st = useKhoMvp.getState().trangThai;
+    if (st) taiTruocTheoVan(kb, st);
+  }, [kb, chuoiHienTai, nutHienTai, ngayHienTai]);
 
   const dongKho = useCallback(() => setKho(null), []);
   const choiLai = useCallback(() => {
