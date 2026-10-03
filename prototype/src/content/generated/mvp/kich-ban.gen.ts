@@ -1311,30 +1311,18 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh-happy",
-          "text": "{{nv.nguoi-choi}} à. Dễ gọi đấy."
+          "text": "{{nv.nguoi-choi}} à. Dễ gọi đấy. Cậu học ngành gì?"
         },
         {
-          "type": "create-character",
-          "truong": "nganh",
-          "asker": {
-            "speaker": "tung",
-            "expression": "ao-xanh",
-            "text": "Cậu học ngành gì?"
-          },
-          "xucXac": null,
-          "luaChon": [
-            "Kế toán",
-            "Quản trị kinh doanh",
-            "Tài chính – Ngân hàng",
-            "Marketing",
-            "Thương mại điện tử"
-          ]
+          "type": "line",
+          "speaker": "player",
+          "text": "{{nv.nguoi-choi.nganh}}."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh",
-          "text": "{{nv.nguoi-choi.nganh}} à? Lại dân kinh tế. Cả phòng không ai học Toán, sau này tớ mượn vở ai đây."
+          "text": "Lại dân kinh tế. Cả phòng không ai học Toán, sau này tớ mượn vở ai đây."
         },
         {
           "type": "line",
@@ -19261,7 +19249,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:173 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:172 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

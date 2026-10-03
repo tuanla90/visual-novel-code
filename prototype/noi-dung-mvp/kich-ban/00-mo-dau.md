@@ -64,8 +64,6 @@
 - [TẠO NHÂN VẬT ten] tung (ao-xanh): "Thế cậu tên gì?"
   - xúc xắc: Ngại nghĩ thì để tớ gieo xúc xắc đặt hộ cho. Đảm bảo không xui.
 - [LỜI md-00-gap-tung.2]
-- [TẠO NHÂN VẬT nganh] tung (ao-xanh): "Cậu học ngành gì?"
-  - lựa chọn: Kế toán · Quản trị kinh doanh · Tài chính – Ngân hàng · Marketing · Thương mại điện tử
 - [LỜI md-00-gap-tung.3]
 - [ĐI TỚI md-01-ktx]
 

@@ -71,10 +71,11 @@
 - **tung** (ao-xanh-happy): Đội thiếu người dẫn đường khu ký túc, chú tớ làm bảo vệ nên giới thiệu tớ mượn áo ra phụ hai hôm.
 
 ## md-00-gap-tung.2
-- **tung** (ao-xanh-happy): {{nv.nguoi-choi}} à. Dễ gọi đấy.
+- **tung** (ao-xanh-happy): {{nv.nguoi-choi}} à. Dễ gọi đấy. Cậu học ngành gì?
+- **player**: {{nv.nguoi-choi.nganh}}.
 
 ## md-00-gap-tung.3
-- **tung** (ao-xanh): {{nv.nguoi-choi.nganh}} à? Lại dân kinh tế. Cả phòng không ai học Toán, sau này tớ mượn vở ai đây.
+- **tung** (ao-xanh): Lại dân kinh tế. Cả phòng không ai học Toán, sau này tớ mượn vở ai đây.
 - **player**: Du lịch mà cũng cần vở Toán à?
 - **tung** (ao-xanh-gai-dau): Xác suất thống kê, kỳ hai. Nghe tên đã thấy trượt. Thôi, đưa tớ một đầu vali.
 
