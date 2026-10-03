@@ -1,0 +1,12 @@
+{
+  "name": "clb-tham-tu-du-lieu",
+  "private": true,
+  "description": "Gốc repo cho Railway: game nằm ở prototype/. Build cài gói và dựng prototype/dist, start chạy prototype/server.mjs.",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "npm ci --include=dev --prefix prototype && npm run build --prefix prototype",
+    "start": "node prototype/server.mjs"
+  }
+}
