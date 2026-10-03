@@ -2,7 +2,8 @@
  * `npm run kiem-giong` — máy kiểm GIỌNG của lời thoại (`noi-dung-mvp/loi/`), theo luật trong `noi-dung-mvp/giong/luat-giong.md`.
  * Bắt những lỗi lặp đi lặp lại khi sửa lời (rà lời chương 1 ngày 30/09, duyệt bản v2 do Gemini viết ngày 03/10): sai xưng hô
  * theo khóa, gọi trống tên khóa trên, nét riêng của nhân vật này bị đặt vào miệng nhân vật khác, mất câu gài, nhân vật đã bỏ
- * vẫn xuất hiện, lời nhắc lộ đáp án, bong bóng quá dài, câu lặp nguyên văn.
+ * vẫn xuất hiện, lời nhắc lộ đáp án, bong bóng quá dài, câu lặp nguyên văn; và GIỌNG AI (đảo ngược danh mục "Signs of AI
+ * writing" của Wikipedia: mẫu sáo, dấu vết công cụ, tệp thiếu tiểu từ).
  *
  *   npm run kiem-giong                      kiểm loi/
  *   npm run kiem-giong -- --so <thư mục>    kiểm bản v2 (cùng tên tệp với loi/) và so với bản gốc: mã đoạn, điều kiện "Khi …",
@@ -38,6 +39,10 @@ export interface LuatGiong {
   tenBo: { cum: string; vi: string }[];
   nhac: { mau: RegExp; vi: string }[];
   doDai: Map<string, number>;
+  /** "## Chống giọng AI": mẫu sáo của văn AI, áp cho lời nhân vật ("thoại"), lời dẫn ("dẫn") hay cả hai. */
+  chongAi: { mau: RegExp; loi: boolean; ap: 'thoại' | 'dẫn' | 'tất cả'; vi: string }[];
+  /** "## Tiểu từ": tỉ lệ tối thiểu câu thoại có tiểu từ trong một tệp đủ cỡ. */
+  tieuTu: { mau: RegExp; toiThieu: number; co: number; boQua: string[] } | null;
 }
 
 /** Tách `a · khóa: b · khóa2: c` thành phần đầu và các cặp khóa. */
@@ -55,7 +60,7 @@ const dsach = (s: string | undefined): string[] => (s ?? '').split(',').map((x) 
 const boNgoac = (s: string): string => s.replace(/^"(.*)"$/, '$1');
 
 export function docLuatGiong(noiDung: string): LuatGiong {
-  const luat: LuatGiong = { thuTu: [], xungHo: [], cachGoi: [], cumRieng: [], cauKhoa: [], tenBo: [], nhac: [], doDai: new Map() };
+  const luat: LuatGiong = { thuTu: [], xungHo: [], cachGoi: [], cumRieng: [], cauKhoa: [], tenBo: [], nhac: [], doDai: new Map(), chongAi: [], tieuTu: null };
   let phan = '';
   for (const dong of noiDung.replace(/<!--[\s\S]*?-->/g, '').split(/\r?\n/)) {
     const td = /^## (.+)$/.exec(dong);
@@ -77,6 +82,12 @@ export function docLuatGiong(noiDung: string): LuatGiong {
     else if (phan === 'Tên đã bỏ') luat.tenBo.push({ cum: dau, vi });
     else if (phan === 'Lời nhắc không lộ đáp án') luat.nhac.push({ mau: new RegExp(dau, 'u'), vi });
     else if (phan === 'Độ dài') luat.doDai.set(dau, Number((m[1] ?? '').split(' · ')[1]));
+    else if (phan === 'Chống giọng AI') {
+      const ap = khoa.get('áp');
+      luat.chongAi.push({ mau: new RegExp(dau, 'iu'), loi: khoa.get('mức') === 'lỗi', ap: ap === 'thoại' || ap === 'dẫn' ? ap : 'tất cả', vi });
+    } else if (phan === 'Tiểu từ') {
+      luat.tieuTu = { mau: new RegExp(dau.replace(/^mẫu:\s*/, ''), 'iu'), toiThieu: Number(khoa.get('tối thiểu')), co: Number(khoa.get('cỡ')), boQua: dsach(khoa.get('bỏ qua')) };
+    }
   }
   return luat;
 }
@@ -93,6 +104,8 @@ interface Bong {
   loai: 'thoai' | 'nhac';
   /** Phản ứng "- Khi …": các nhánh thay thế nhau nên được lặp câu. */
   khi: boolean;
+  /** Thẻ chữ (ngày tháng, tiêu đề cảnh): không phải lời nói. */
+  theChu: boolean;
   chu: string;
 }
 
@@ -106,7 +119,7 @@ function moBien(chu: string, ten: Map<string, string>): string {
 function tachBong(d: DoanLoi, tep: string, duongDan: string, ten: Map<string, string>): Bong[] {
   const out: Bong[] = [];
   for (const { chu, so } of d.dong) {
-    const base = { tep, duongDan, dong: so, doan: d.ma, khi: chu.startsWith('- Khi ') };
+    const base = { tep, duongDan, dong: so, doan: d.ma, khi: chu.startsWith('- Khi '), theChu: chu.startsWith('- [THẺ CHỮ]') };
     const nv = /^> NHIỆM VỤ:\s*(.*)$/.exec(chu);
     if (nv) {
       out.push({ ...base, nguoi: null, loai: 'nhac', chu: moBien(nv[1] ?? '', ten) });
@@ -201,6 +214,34 @@ export function kiemGiong(luat: LuatGiong, tepLoi: { ten: string; duongDan: stri
     const gioiHan = luat.doDai.get(b.nguoi ?? '') ?? luat.doDai.get('mặc định') ?? Infinity;
     const n = soChu(b.chu);
     if (n > gioiHan) canhBao.push(`${vt(b)}: [độ dài] ${b.nguoi ?? 'nhắc'} ${n} chữ (tối đa ${gioiHan})`);
+    // Chống giọng AI
+    if (!b.theChu) {
+      const laDan = b.nguoi === 'narrator';
+      for (const r of luat.chongAi) {
+        if ((r.ap === 'thoại' && laDan) || (r.ap === 'dẫn' && !laDan)) continue;
+        const m = r.mau.exec(b.chu);
+        if (m) (r.loi ? loi : canhBao).push(`${vt(b)}: [giọng AI] ${b.nguoi ?? 'nhắc'} "${m[0]}" — ${r.vi}`);
+      }
+    }
+  }
+
+  // Tiểu từ: tệp đủ cỡ mà lời nhân vật ít tiểu từ quá thì nghe như văn viết.
+  if (luat.tieuTu) {
+    const { mau, toiThieu, co, boQua } = luat.tieuTu;
+    const theoTep = new Map<string, { ten: string; duongDan: string; cau: number; co: number }>();
+    for (const b of bong) {
+      if (b.loai !== 'thoai' || b.theChu || b.nguoi === 'narrator') continue;
+      const dem = theoTep.get(b.tep) ?? { ten: b.tep, duongDan: b.duongDan, cau: 0, co: 0 };
+      for (const cau of b.chu.split(/(?<=[.!?…])\s+/)) {
+        if (soChu(cau) < 3) continue;
+        dem.cau += 1;
+        if (mau.test(cau.trim())) dem.co += 1;
+      }
+      theoTep.set(b.tep, dem);
+    }
+    for (const d of theoTep.values()) {
+      if (d.cau >= co && d.co / d.cau < toiThieu && !boQua.some((p) => d.ten.startsWith(p))) canhBao.push(`${d.duongDan}:1: [tiểu từ] ${d.co}/${d.cau} câu thoại có tiểu từ (${(d.co / d.cau).toFixed(2)} < ${toiThieu}) — nghe như văn viết`);
+    }
   }
 
   // Câu khóa

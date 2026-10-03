@@ -6,7 +6,7 @@ Học từ cách OOC xếp tầng prompt: **luật văn phong → thẻ nhân v�
 
 | Tệp | Chứa gì |
 |---|---|
-| `luat-giong.md` | Thứ tự truyện, xưng hô theo nhân vật (có mốc "từ / trước" tệp nào), cách gọi khóa trên, cụm dành riêng, câu khóa (câu gài không được mất), tên đã bỏ, mẫu cấm trong lời nhắc, độ dài bong bóng |
+| `luat-giong.md` | Thứ tự truyện, xưng hô theo nhân vật (có mốc "từ / trước" tệp nào), cách gọi khóa trên, cụm dành riêng, câu khóa (câu gài không được mất), tên đã bỏ, mẫu cấm trong lời nhắc, độ dài bong bóng, **chống giọng AI**, **tiểu từ** |
 
 Bộ đọc nội dung game bỏ qua thư mục này.
 
@@ -24,6 +24,8 @@ npm run kiem-giong -- --so <thư mục v2>  # kiểm bản v2 do AI viết và s
   đổi, điều kiện `- Khi …` đổi.
 - **nhắc**: cụm dành riêng bị người khác dùng, bong bóng quá dài, câu lặp nguyên văn ở hai đoạn; ở chế độ `--so`: **mất dữ kiện**
   (số, giờ, ngày, mã, nguyên văn trong ngoặc kép, biến `{{…}}` có ở bản gốc mà bản v2 không còn), **người nói mới** chen vào đoạn.
+- **giọng AI**: dấu vết công cụ, ngoặc cong, chữ đậm, emoji, giọng trợ lý ảo, "đóng vai trò then chốt" là LỖI; các mẫu sáo khác là nhắc.
+- **tiểu từ**: tệp từ 30 câu thoại trở lên mà dưới 20% câu có tiểu từ (à, ừ, nhỉ, chứ, đấy, thế, mà, ạ…) là nhắc.
 - Lời trong ngoặc kép (nhại lời người khác) và ngôi thứ ba ("cậu ấy", "anh ấy") không tính là xưng hô.
 - Biểu cảm sai, người nói chưa tới lượt xuất hiện: đã có ở `npm run kiem-noi-dung:mvp`.
 
@@ -37,6 +39,30 @@ npm run kiem-giong -- --so <thư mục v2>  # kiểm bản v2 do AI viết và s
 
 AI hợp **gọt câu** hơn **viết cảnh mới** (cảnh mới do Gemini viết lệch tính cách nặng). Cảnh mới: người viết dựng khung nhịp
 và câu mang manh mối trước, AI chỉ gọt.
+
+## Chống giọng AI — viết thế này thay vì thế kia
+
+Đảo ngược danh mục "Signs of AI writing" của Wikipedia (bài "AI slop" / "Rác AI") sang lời thoại tiếng Việt. Dán nguyên mục này
+vào brief khi giao AI viết lời. Máy kiểm bắt được phần có mẫu chữ; phần nhịp và gu vẫn phải duyệt bằng tai.
+
+| Dấu hiệu văn AI | Viết thay bằng |
+|---|---|
+| Thổi phồng ý nghĩa: "đóng vai trò then chốt", "minh chứng cho", "đánh dấu bước ngoặt" | Nói việc cụ thể: "Không có tờ này thì cô Lan không mở sổ." |
+| Ẩn dụ sáo: "hành trình", "bức tranh toàn cảnh" | Gọi đúng tên đồ vật, nơi chốn: "cái sổ", "phòng 204" |
+| Giọng quảng cáo: "sôi động", "rực rỡ", "tuyệt vời", "vô cùng" | Một chi tiết thấy được: "cờ bánh răng treo kín gian" |
+| Từ vựng AI: "khám phá", "trải nghiệm", "kết nối", "thấu hiểu", "trân trọng", "sâu sắc" | Từ sinh viên nói thật: "đi xem", "ngồi với nhau", "hiểu rồi" |
+| Đuôi phân tích hời hợt: ", qua đó cho thấy…", ", góp phần…" | Dừng câu ở việc. Ý nghĩa để người chơi tự rút |
+| "Không chỉ… mà còn", "Không phải X, mà là Y" | Nói thẳng Y. Hoặc hai câu ngắn |
+| Ba vế đều tăm tắp ("nhanh, gọn và chính xác") | Một hoặc hai vế; câu dài ngắn so le |
+| Tự hỏi tự đáp: "Vì sao ư? Vì…" | Để người khác hỏi, hoặc bỏ câu hỏi |
+| Quy kết mơ hồ: "nhiều người cho rằng" | Nói ai nói: "Hiếu bảo…", "bác Thịnh kể…" |
+| Kết luận, giảng đạo lý: "tóm lại", "điều quan trọng là", "có lẽ… mới là…" | Cảnh cho thấy hậu quả (luật show, don't tell); nhân vật nói việc tiếp theo |
+| Gọi tên cảm xúc: "tớ cảm thấy rất vui" | Hành động hoặc câu nói lộ cảm xúc: "Thế mai tớ khao trà đá." |
+| Cử chỉ sáo: "hít một hơi thật sâu", "khẽ mỉm cười", "ánh mắt kiên định" | Biểu cảm đã có ở ảnh `(happy)`, `(worried)`; lời dẫn chỉ tả cái khác thường |
+| Xu nịnh: "cậu nói đúng", "ý hay" | Đồng ý bằng việc làm: "Ừ, lọc lại đi." |
+| Giọng trợ lý ảo: "Tất nhiên rồi!", "Hy vọng điều này giúp…" | Nhân vật có việc riêng, không phục vụ người chơi |
+| Câu đủ chủ vị, không tiểu từ, ai cũng nói trơn tru như nhau | Tiểu từ (à, ừ, nhỉ, chứ, đấy, thế, mà, ạ), câu cụt, nói dở, ngắt lời; mỗi người một nhịp (Tùng cảm thán, Hà Vy cộc, bác Thịnh rất ngắn) |
+| Gạch dài "—", ngoặc cong “ ”, chữ **đậm**, emoji | Dấu chấm, phẩy, "…"; ngoặc thẳng "…" |
 
 ## Quyết định 03/10/2026
 

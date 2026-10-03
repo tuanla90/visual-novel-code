@@ -111,3 +111,38 @@ AI gọt lời hay xóa mất những câu này (duyệt v2 Vụ 1, 03/10). -->
 
 - mặc định · 40
 - narrator · 55
+
+## Chống giọng AI
+
+<!-- Đảo ngược danh mục "Signs of AI writing" của Wikipedia (WP:AISIGNS, bài "AI slop" / "Rác AI") sang lời thoại tiếng Việt.
+`- <mẫu> · mức: lỗi|nhắc · áp: thoại|dẫn|tất cả · vì: …` — mẫu là biểu thức chính quy (cờ iu: không phân biệt hoa thường).
+"thoại" = lời nhân vật (kể cả người chơi), "dẫn" = narrator; [THẺ CHỮ] (thẻ ngày tháng) không bị kiểm.
+Đo trên lời hiện tại 03/10: gần như không mẫu nào khớp, nên khớp là dấu hiệu thật. Cách viết thay thế: giong/README.md. -->
+
+- oaicite|contentReference|turn0search|\[cite[:_ ]|\[span_\d|:::|grok_card|attached_file · mức: lỗi · vì: dấu vết công cụ AI dán sót
+- [“”‘’] · mức: lỗi · vì: ngoặc cong; game dùng ngoặc thẳng "…"
+- \*\*[^*]+\*\* · mức: lỗi · vì: chữ đậm trong lời (định dạng kiểu AI)
+- [\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}] · mức: lỗi · vì: emoji trong lời
+- dưới đây là|hy vọng (điều này|cậu|em|bạn) |nếu (cậu|em|bạn) cần thêm|mình có thể giúp|rất vui được (giúp|hỗ trợ)|tất nhiên rồi!|chắc chắn rồi!|câu hỏi (rất )?hay · mức: lỗi · vì: giọng trợ lý ảo, không phải sinh viên
+- (đóng|giữ) vai trò (quan trọng|then chốt|cốt lõi|chủ chốt)|minh chứng (cho|rằng|sống)|là một (lời )?nhắc nhở|đánh dấu (một )?bước ngoặt|dấu ấn (khó phai|sâu đậm)|in đậm dấu ấn · mức: lỗi · vì: thổi phồng ý nghĩa (WP: "testament", "pivotal role", "indelible mark")
+- hành trình|bức tranh (toàn cảnh|tổng thể)|tấm thảm|bối cảnh (rộng lớn|đang thay đổi) · mức: nhắc · áp: thoại · vì: ẩn dụ sáo của AI (WP: "tapestry", "landscape", "journey")
+- sôi động|rực rỡ|nhộn nhịp|đầy màu sắc|nép mình|tọa lạc|nổi tiếng với|tuyệt vời|đáng kinh ngạc|vô cùng|tuyệt đẹp · mức: nhắc · vì: giọng quảng cáo (WP: "vibrant", "nestled", "renowned")
+- khám phá (những|ra những|thế giới)|trải nghiệm (đáng nhớ|tuyệt vời|quý giá)|kết nối (với nhau|mọi người)|đồng hành cùng|thấu hiểu|trân trọng|lan tỏa|giá trị (cốt lõi|to lớn)|sâu sắc · mức: nhắc · vì: từ vựng AI tiếng Việt (tương đương "delve", "foster", "valuable insights")
+- , (qua đó|từ đó cho thấy|góp phần|nhấn mạnh|thể hiện|phản ánh|cho thấy rõ) · mức: nhắc · vì: đuôi phân tích hời hợt (WP: "-ing" highlighting/underscoring/reflecting)
+- không (chỉ|những) [^.!?]{1,60}mà còn · mức: nhắc · vì: song song phủ định "không chỉ… mà còn" (WP: negative parallelism)
+- không phải (là )?[^.!?]{1,40}[,.] ?(mà|Mà) (là|chính là) · mức: nhắc · vì: "không phải X, mà là Y" (WP: negative parallelism)
+- \? ?(Vì sao ư|Tại sao ư|Câu trả lời|Đơn giản thôi|Lý do rất đơn giản) · mức: nhắc · vì: tự hỏi tự đáp kiểu bài viết
+- nhiều người cho rằng|người ta (vẫn )?nói rằng|các chuyên gia|theo một số (nguồn|người) · mức: nhắc · vì: quy kết mơ hồ (WP: vague attribution) — nhân vật phải nói ai nói
+- tóm lại|nhìn chung|suy cho cùng|nói cách khác|điều quan trọng (nhất )?là|có lẽ[^.!?]{0,60}mới (là|chính là)|bài học (ở đây|rút ra) · mức: nhắc · vì: kết luận, giảng đạo lý (WP: outline-like conclusion) — trái luật show, don't tell
+- (tớ|em|mình|anh|chị|cháu) (cảm thấy|thấy) (rất |thật |vô cùng )?(vui|buồn|lo lắng|hạnh phúc|xúc động|tự hào|biết ơn|hồi hộp|bất an) · mức: nhắc · áp: thoại · vì: gọi tên cảm xúc thay vì cho thấy
+- hít một hơi( thật)? sâu|khẽ mỉm cười|nở một nụ cười|mỉm cười (nhẹ|dịu dàng)|ánh mắt (kiên định|lấp lánh|ánh lên)|trái tim|tâm hồn|ngưng đọng|ngừng trôi|dâng trào|siết chặt tay · mức: nhắc · vì: cử chỉ, cảm giác sáo của truyện AI
+- (cậu|em|bạn|các cậu) nói (rất )?đúng|hoàn toàn (đúng|chính xác)|ý (kiến|tưởng) (rất )?hay · mức: nhắc · áp: thoại · vì: xu nịnh (sycophancy); nhân vật đồng ý thì nói việc tiếp theo
+- — · mức: nhắc · vì: gạch dài trong lời là dấu câu của AI; dùng dấu chấm, phẩy hoặc "…"
+
+## Tiểu từ
+
+<!-- Lời nói tiếng Việt có tiểu từ (à, ừ, nhỉ, chứ, đấy, thế, mà, ạ…); AI viết mới từ đầu hay ra câu đủ chủ vị, cứng như văn viết.
+`- mẫu: <regex> · tối thiểu: <tỉ lệ> · cỡ: <số câu> · bỏ qua: <tiền tố tên tệp>` — mỗi tệp có ít nhất <cỡ> câu thoại (≥ 3 chữ, trừ narrator) thì tỉ lệ câu có
+tiểu từ phải ≥ <tối thiểu>; dưới là nhắc. Đo 03/10: lời Vụ 1 đã chuốt 0,30–0,47; việc phụ viết sau cùng thấp nhất (túi đồ 0,14, hoàn tiền 0,18); tt-* là phản hồi màn tra, khô tự nhiên nên bỏ qua. -->
+
+- mẫu: (?<!\p{L})(à|ừ|ờ|ơ|nhỉ|nhé|nhá|chứ|đấy|đây|đâu|thế|mà|đi|ạ|hả|cơ|kìa|á|ấy|vậy|ôi|ơi|hở|thôi|chắc)(?!\p{L})|(không|chưa)\?$ · tối thiểu: 0.2 · cỡ: 30 · bỏ qua: tt-
