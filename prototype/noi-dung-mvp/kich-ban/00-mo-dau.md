@@ -1,4 +1,4 @@
-## Mở đầu — tuần 1 → chiều thứ Hai tuần 2
+## Mở đầu — tuần nhập học → Trung thu → chiều thứ Hai 23/09
 
 <!-- Theo kịch bản khung mục 3, đã áp DX-01 (01/10/2026): bỏ md-02 bản đồ, md-04 căng tin, md-05 phòng máy; md-06 bảng tin gộp vào md-07. Nối: md-01 → md-03 → md-07 → md-08 → md-09. Thoại bản hội đồng v1 (29/09): giọng sinh viên miền Bắc, tớ/cậu. -->
 
@@ -107,27 +107,69 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
 ```
 
 - [LỜI md-09-ngay-hoi.3]
-- [ĐI TỚI md-10-phong-clb]
+- [ĐI TỚI md-10-trung-thu]
 
-### md-10-phong-clb — Phòng CLB, thứ Hai 16h: làm quen và dọn phòng {cảnh: phong-clb}
+### md-10-trung-thu — Sân KTX, thứ Ba 17/09 19h: CLB gặp mặt lần đầu {cảnh: san-ktx-trung-thu}
 
-- [LỜI md-10-phong-clb.1]
-
-- [LỜI md-10-phong-clb.2]
+- [LỜI md-10-trung-thu.1]
+- [LỜI md-10-trung-thu.2]
 - [KHÁM PHÁ kp-soi-tung · quan sát tung · Hà Vy soi]
   - vung:ban-do · x 82% · y 56% · rộng 24% → md-10-soi-ban-do · nhãn: Tờ giấy trên tay
   - vung:ao · x 50% · y 44% · rộng 22% → md-10-soi-ao · nhãn: Cái áo
   - vung:mui · x 57% · y 21% · rộng 14% → md-10-soi-mui · nhãn: Miếng băng trên mũi
-- [LỜI md-10-phong-clb.2b]
+- [LỜI md-10-trung-thu.3]
 - [ẢNH chibi-clb-nhom]
+- [ĐI TỚI md-10-mat-banh]
+
+### md-10-mat-banh — Một chiếc bánh nướng biến mất khỏi đĩa của CLB {cảnh: san-ktx-trung-thu}
+
+- [LỜI md-10-mat-banh.1]
+- [KHÁM PHÁ kp-banh-trung-thu]
+  - vung:dia-banh · x 11% · y 70% · rộng 15% → md-10-dia-banh · dấu: ! · nhãn: Đĩa bánh trên bàn gấp
+  - vung:vun-banh · x 36% · y 81% · rộng 10% → md-10-vun-banh · dấu: ! · nhãn: Nền sân gần bàn
+  - vung:den-ca-chep · x 42% · y 68% · rộng 15% → md-10-den-ca-chep · dấu: ! · nhãn: Đèn cá chép đỏ
+  - vung:doi-dep · x 46% · y 80% · rộng 8% → md-10-doi-dep · dấu: ! · nhãn: Đôi dép bên chiếc đèn
+  - vung:dau-lan · x 42% · y 44% · rộng 9% → md-10-dau-lan · nhãn: Đầu lân trên sân khấu
+  - vung:gian-robotics · x 74% · y 50% · rộng 17% → md-10-gian-robotics · dấu: ? · nhãn: Gian đèn ông sao
+  - vung:balo-banh-rang · x 77% · y 70% · rộng 8% → md-10-balo-banh-rang · nhãn: Balo trên ghế xanh
+  - vung:ap-phich · x 89% · y 38% · rộng 9% → md-10-ap-phich · nhãn: Áp phích trên bảng tin
+  - nv:ha-vy · x 62% · y 100% · rộng 14% → md-10-ha-vy-goi · dấu: ? · nhãn: Hà Vy
+- [LỜI md-10-mat-banh.2]
+- [ĐI TỚI md-10-hoi-banh]
+
+### md-10-hoi-banh — Đoán ai lấy bánh từ những gì vừa thấy {cảnh: san-ktx-trung-thu}
+
+- [RẼ NHÁNH r-ai-lay-banh] ha-vy: "Theo cậu, ai lấy chiếc bánh nướng?"
+  - {id: tre-con} Một đứa trẻ lấy. → hậu quả: đi tới md-10-doan-dung
+  - {id: tung} Tùng lấy. → hậu quả: đi tới md-10-doan-tung
+  - {id: robotics} Người ở gian Robotics lấy. → hậu quả: đi tới md-10-doan-robotics
+
+### md-10-doan-tung — Tùng bị nghi oan {cảnh: san-ktx-trung-thu}
+
+- [LỜI md-10-doan-tung.1]
+- [ĐI TỚI md-10-hoi-banh]
+
+### md-10-doan-robotics — Chủ gian Robotics bị nghi oan {cảnh: san-ktx-trung-thu}
+
+- [LỜI md-10-doan-robotics.1]
+- [ĐI TỚI md-10-hoi-banh]
+
+### md-10-doan-dung — Chiếc bánh và chiếc đèn cá chép {cảnh: san-ktx-trung-thu}
+
+- [LỜI md-10-doan-dung.1]
+- [ĐI TỚI md-11-phong-clb]
+
+### md-11-phong-clb — Thứ Hai 23/09, 16h: dọn phòng CLB {cảnh: phong-clb}
+
+- [LỜI md-11-phong-clb.1]
 - [HIỆN TÀI LIỆU doc-so-chi-linh]
 - [TRA SỔ kiem-hai-lan · tâm đắc]
-- [LỜI md-10-phong-clb.3]
+- [LỜI md-11-phong-clb.2]
 - [HIỆN TÀI LIỆU doc-bao-cao-yeu]
-- [LỜI md-10-phong-clb.4]
+- [LỜI md-11-phong-clb.3]
 - [ĐI TỚI md-11-la-thu]
 
-### md-11-la-thu — Phòng CLB, 16h40: lá thư {cảnh: phong-clb}
+### md-11-la-thu — Phòng CLB, 16h40: bản sao lá thư và giấy mời {cảnh: phong-clb}
 
 - [LỜI md-11-la-thu.1a]
 - [ẢNH cg-minh-anh-dan-tay]
@@ -140,14 +182,41 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
 - [ẢNH cg-nghi-di-tung-ha-vy]
 - [LỜI md-11-la-thu.3b]
 
-### md-10-soi-ban-do — Quan sát Tùng: tờ bản đồ trên tay {cảnh: phong-clb}
+### md-10-soi-ban-do — Quan sát Tùng: tờ bản đồ trên tay {cảnh: san-ktx-trung-thu}
 
 - [LỜI md-10-soi-ban-do.1]
 
-### md-10-soi-ao — Quan sát Tùng: cái áo {cảnh: phong-clb}
+### md-10-soi-ao — Quan sát Tùng: cái áo {cảnh: san-ktx-trung-thu}
 
 - [LỜI md-10-soi-ao.1]
 
-### md-10-soi-mui — Quan sát Tùng: miếng băng trên mũi {cảnh: phong-clb}
+### md-10-soi-mui — Quan sát Tùng: miếng băng trên mũi {cảnh: san-ktx-trung-thu}
 
 - [LỜI md-10-soi-mui.1]
+
+### md-10-dia-banh — Đĩa bánh hụt một chiếc {cảnh: san-ktx-trung-thu}
+- [LỜI md-10-dia-banh.1]
+
+### md-10-vun-banh — Vệt vụn trên sân {cảnh: san-ktx-trung-thu}
+- [LỜI md-10-vun-banh.1]
+
+### md-10-den-ca-chep — Đèn cá chép nằm lệch {cảnh: san-ktx-trung-thu}
+- [LỜI md-10-den-ca-chep.1]
+
+### md-10-doi-dep — Đôi dép nhựa nhỏ {cảnh: san-ktx-trung-thu}
+- [LỜI md-10-doi-dep.1]
+
+### md-10-dau-lan — Đầu lân chờ biểu diễn {cảnh: san-ktx-trung-thu}
+- [LỜI md-10-dau-lan.1]
+
+### md-10-gian-robotics — Gian Robotics bán đèn LED {cảnh: san-ktx-trung-thu}
+- [LỜI md-10-gian-robotics.1]
+
+### md-10-balo-banh-rang — Balo đen trên ghế nhựa xanh {cảnh: san-ktx-trung-thu}
+- [LỜI md-10-balo-banh-rang.1]
+
+### md-10-ap-phich — Áp phích trên bảng tin {cảnh: san-ktx-trung-thu}
+- [LỜI md-10-ap-phich.1]
+
+### md-10-ha-vy-goi — Hà Vy đứng bên mép sân {cảnh: san-ktx-trung-thu}
+- [LỜI md-10-ha-vy-goi.1]

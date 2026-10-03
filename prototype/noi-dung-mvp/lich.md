@@ -7,7 +7,7 @@
 - Khung giờ: sang "Sáng", trua "Trưa", chieu "Chiều"
 
 ## Mở đầu
-<!-- Lịch thật (user chốt 01/10/2026: truyện năm 2024 — K24 là tân sinh viên, mã SV24…, SV21… khóa 2021 là năm tư). "Ngày mở đầu" là Chủ nhật nhận phòng KTX; mọi mốc khác tính từ đây (src/mvp/engine/lich-ngay.ts): CN 08/09/2024 nhận phòng → T2–T6 09–13/09 tuần sinh hoạt công dân → T7 14/09 Ngày hội CLB → CN 15/09 23:10 thư in ở phòng máy (du-lieu.md, nhat_ky_in) → T2 16/09 16h phòng CLB, lá thư → ngày 1–5 = T3 17/09 … T7 21/09 → T2 23/09/2024 16h buổi họp rà soát (hạn của vụ). Bộ đọc không nhận mục "## Lịch thật" (tiêu đề lạ) nên ngày ghi ở dòng "- Ngày mở đầu"; thiếu dòng thì lịch dùng 2024-09-08. -->
+<!-- Lịch thật: truyện năm 2024 — K24 là tân sinh viên. "Ngày mở đầu" là Chủ nhật nhận phòng KTX; mọi mốc khác tính từ đây (src/mvp/engine/lich-ngay.ts): CN 08/09 nhận phòng → T2–T6 09–13/09 tuần sinh hoạt công dân → T7 14/09 Ngày hội CLB → CN 15/09 23:10 thư in ở phòng máy (du-lieu.md, nhat_ky_in) → sáng T2 16/09 thư được nộp vào hộp kiến nghị → T3 17/09 19h Trung thu ở sân KTX, buổi gặp đầu CLB → T2 23/09 16h phòng CLB, nhận bản sao thư và giấy mời → ngày 1–5 = T3 24/09 … T7 28/09 → T2 30/09 16h họp rà soát. Bộ đọc không nhận mục "## Lịch thật" (tiêu đề lạ) nên ngày ghi ở dòng "- Ngày mở đầu"; thiếu dòng thì lịch dùng 2024-09-08. -->
 - Chuỗi đầu: md-00-xe-buyt
 - Ngày mở đầu: 2024-09-08
 

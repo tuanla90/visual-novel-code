@@ -35,7 +35,7 @@
 - Ảnh: doc-thong-bao-hop
 - Nguồn: Dán cạnh hộp kiến nghị, sảnh tòa B
 - Nội dung hiển thị:
-> Họp rà soát phòng sinh hoạt CLB: bốn giờ chiều thứ Hai tuần sau.
+> Họp rà soát phòng sinh hoạt CLB: 16:00 thứ Hai 30/09/2024.
 
 ### doc-van-ban-thay-quang — Văn bản cho phép lập căn cứ
 - Tiêu đề: Văn bản của {{nv.thay-quang}}

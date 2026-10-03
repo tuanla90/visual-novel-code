@@ -76,7 +76,7 @@ describe('bảng người quan sát MVP', () => {
     expect(khungNhin(kb, s)).toMatchObject({ kind: 'challenge', thuThach: { id: 'c-lop' } });
     expect(s.ngay).toBe(2);
     expect(s.tenNguoiChoi).toBe(TEN_MAC_DINH);
-    expect(screen.getByRole('banner', { name: 'Thanh trạng thái' }).querySelector('.topbar__chapter-number')).toHaveTextContent('18/9');
+    expect(screen.getByRole('banner', { name: 'Thanh trạng thái' }).querySelector('.topbar__chapter-number')).toHaveTextContent('25/9');
     const phong = document.querySelector('.phong-tra');
     expect(phong).toHaveAttribute('data-pha', 'bang');
     expect(within(phong as HTMLElement).getByRole('button', { name: /Mở laptop/ })).toBeInTheDocument();

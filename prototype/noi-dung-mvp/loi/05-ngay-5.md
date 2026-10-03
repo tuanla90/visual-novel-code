@@ -6,7 +6,7 @@
 - [THẺ CHỮ] **narrator**: Ngày 5 — Thứ Bảy
 - [DÀN DỰNG] Sáng sớm ở cổng KTX. {{nv.chu-cuong}} vừa đi tuần về, tay cầm đèn pin.
 - **narrator**: Sáng sớm ở cổng ký túc xá. {{nv.chu-cuong}} vừa đi một vòng kiểm tra về, đèn pin còn cầm trên tay.
-- **tung** (neutral): Tuần này chú tớ trực ca sáng đấy. Hỏi chú xem sáng thứ Hai có gì lạ không.
+- **tung** (neutral): Sáng thứ Hai 16/09 chú tớ trực cổng. Hỏi chú xem hôm nộp thư có gì lạ không.
 > NHẮC VIỆC tung (neutral): Sáng thứ Hai ai ra cổng sớm, chú tớ hay để ý lắm.
 
 ## n5-chu-cuong.1

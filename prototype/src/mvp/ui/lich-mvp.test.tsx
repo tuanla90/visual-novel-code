@@ -38,33 +38,34 @@ describe('màn lịch', () => {
     veManChoi(s);
     const ve = within(thanhTren()).getByRole('button', { name: /^Mở lịch/ });
     expect(ve).toHaveAttribute('title', 'Mở lịch');
-    expect(ve.querySelector('.topbar__chapter-number')).toHaveTextContent('19/9');
+    expect(ve.querySelector('.topbar__chapter-number')).toHaveTextContent('26/9');
 
     await userEvent.click(ve);
     const lich = screen.getByRole('dialog', { name: /Tháng 9 2024/ });
     const homNay = within(lich).getByRole('cell', { current: 'date' });
-    expect(homNay).toHaveAccessibleName(/^thứ Năm, 19\/09\/2024 — hôm nay/);
-    expect(lich).toHaveTextContent('Thứ Năm, 19/09/2024');
-    expect(lich).toHaveTextContent(/Buổi họp rà soát.*Thứ Hai, 23\/09\/2024 \(còn 4 ngày\)/);
+    expect(homNay).toHaveAccessibleName(/^thứ Năm, 26\/09\/2024 — hôm nay/);
+    expect(lich).toHaveTextContent('Thứ Năm, 26/09/2024');
+    expect(lich).toHaveTextContent(/Buổi họp rà soát.*Thứ Hai, 30\/09\/2024 \(còn 4 ngày\)/);
 
     await userEvent.keyboard('{Escape}');
     expect(screen.queryByRole('dialog', { name: /Tháng 9 2024/ })).toBeNull();
   });
 
-  it('ngày 1: hôm nay thứ Ba 17/09/2024 · Sảnh tòa B; hạn họp còn 6 ngày; mốc tuần đầu đã qua; ngày chưa tới không có mốc', () => {
+  it('ngày 1: hôm nay thứ Ba 24/09/2024 · Sảnh tòa B; hạn họp còn 6 ngày; ngày chưa tới không có mốc', () => {
     render(<LichMvp kb={kb} s={ngay1()} onDong={vi.fn()} />);
     const lich = screen.getByRole('dialog');
-    expect(lich).toHaveTextContent(/Hôm nay\s*Thứ Ba, 17\/09\/2024\s*Ngày 1 · Sảnh tòa B/);
-    expect(lich).toHaveTextContent(/HạnBuổi họp rà soát · 16:00Thứ Hai, 23\/09\/2024 \(còn 6 ngày\)/);
+    expect(lich).toHaveTextContent(/Hôm nay\s*Thứ Ba, 24\/09\/2024\s*Ngày 1 · Sảnh tòa B/);
+    expect(lich).toHaveTextContent(/HạnBuổi họp rà soát · 16:00Thứ Hai, 30\/09\/2024 \(còn 6 ngày\)/);
     const daQua = within(lich).getByRole('heading', { name: 'Đã qua' }).nextElementSibling as HTMLElement;
     expect(within(daQua).getAllByRole('listitem').map((li) => li.textContent)).toEqual([
-      '16/09Phòng CLB · lá thư · 16:00',
+      '23/09Phòng CLB · lá thư · 16:00',
+      '17/09Trung thu · CLB gặp mặt · 19:00',
       '14/09Ngày hội CLB',
       '09/09–13/09Tuần sinh hoạt công dân',
       '08/09Nhận phòng KTX · Phòng 408',
     ]);
-    expect(within(lich).getByRole('cell', { name: /^thứ Hai, 23\/09\/2024 — Buổi họp rà soát$/ })).toHaveClass('is-co-han');
-    expect(within(lich).getByRole('cell', { name: /^thứ Tư, 18\/09\/2024$/ })).not.toHaveClass('is-qua');
+    expect(within(lich).getByRole('cell', { name: /^thứ Hai, 30\/09\/2024 — Buổi họp rà soát$/ })).toHaveClass('is-co-han');
+    expect(within(lich).getByRole('cell', { name: /^thứ Tư, 25\/09\/2024$/ })).not.toHaveClass('is-qua');
     expect(within(lich).getByRole('cell', { name: /^thứ Bảy, 14\/09\/2024 — Ngày hội CLB$/ })).toHaveClass('is-qua');
   });
 

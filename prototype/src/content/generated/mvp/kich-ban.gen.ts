@@ -635,6 +635,11 @@ const GOC = {
       "anhNen": null
     },
     {
+      "id": "san-ktx-trung-thu",
+      "ten": "Sân ký túc xá, đêm Trung thu",
+      "anhNen": "bg-mvp-san-ktx-trung-thu"
+    },
+    {
       "id": "hoi-truong",
       "ten": "Hội trường",
       "anhNen": null
@@ -1554,7 +1559,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Ừ, đúng rồi. Chị là Minh Anh, chủ nhiệm CLB."
+          "text": "Ừ. Chị trực bàn hôm nay."
         },
         {
           "type": "line",
@@ -1650,7 +1655,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "…Nhanh thật. Bốn giờ chiều thứ Hai tuần sau CLB họp đầu năm, hai em ghi tên đi."
+          "text": "…Nhanh thật. Tối thứ Ba Trung thu, CLB liên hoan ở sân ký túc xá. Hai em tới nhé."
         },
         {
           "type": "line",
@@ -1662,38 +1667,56 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Biết nhận là mình nhầm thì được rồi. Bắt đầu từ việc đến đúng giờ nhé."
+          "text": "Bảy giờ tối nhé. Tới muộn thì hết bánh đấy."
         },
         {
           "type": "goto",
-          "to": "md-10-phong-clb"
+          "to": "md-10-trung-thu"
         }
       ]
     },
     {
-      "id": "md-10-phong-clb",
-      "title": "Phòng CLB, thứ Hai 16h: làm quen và dọn phòng",
-      "canh": "phong-clb",
+      "id": "md-10-trung-thu",
+      "title": "Sân KTX, thứ Ba 17/09 19h: CLB gặp mặt lần đầu",
+      "canh": "san-ktx-trung-thu",
       "mocSomNhat": 0,
       "nodes": [
         {
           "type": "task",
-          "text": "Dọn tủ hồ sơ cùng CLB"
+          "text": "Tới sân ký túc xá gặp CLB tối Trung thu"
         },
         {
           "type": "reminder",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Bốn giờ chiều, họp đầu năm. Đến đúng giờ nhé."
-        },
-        {
-          "type": "note",
-          "text": "Có mặt: Minh Anh, Duy, Hà Vy, Tùng, người chơi. Bộ máy bàn cũ ở góc (nền vẽ sẵn); laptop CLB Duy cất trong tủ."
+          "text": "Bảy giờ tối thứ Ba, sân ký túc xá. Nhớ tới ăn bánh."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Bốn giờ chiều thứ Hai. Phòng CLB nhỏ, một bàn dài, một tủ hồ sơ, một bộ máy bàn phủ bụi ở góc."
+          "display": "card",
+          "text": "Thứ Ba, 17/09/2024 · 19:00 · Sân ký túc xá"
+        },
+        {
+          "type": "note",
+          "text": "Hà Vy đứng ở mép phải sân, không che bàn bánh, đèn cá chép hay gian Robotics. Những người khác chỉ hiện trong thoại."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Dây đèn lồng vắt qua sân. Bên trái, bàn CLB Thám Tử kê cạnh khay bánh nướng. Trẻ con chạy giữa mấy gian hàng, tiếng trống lân tập dồn từng nhịp."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "happy",
+          "text": "Hai em tới đúng giờ. Chị là Minh Anh, chủ nhiệm CLB. Hôm nay làm quen đã."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "smile",
+          "text": "Tớ là Duy, năm hai Hành chính học. Tớ dựng bàn với giữ đồ cho CLB. Ai muốn trà thì rót nhé."
         },
         {
           "type": "line",
@@ -1729,13 +1752,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Khỏi đoán. Nhìn là ra. Cậu thử nhìn xem, đừng nhìn mặt, nhìn những thứ cậu ấy mang theo."
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "day-kinh",
-          "text": "Mà nhớ này: người thường chỉ nhìn chỗ sáng nhất. Thám tử lia mắt qua cả những góc chẳng ai để ý, mép giấy, vết dán, cái gài trên quai túi. Thứ đáng chú ý ít khi tự sáng lên chờ mình."
+          "text": "Để xem. Cậu nhìn đồ Tùng mang theo đi."
         },
         {
           "type": "explore",
@@ -1789,25 +1806,354 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Holmes gọi thế là nhìn mà có quan sát. Cái áo thì không nói được gì, nên tớ bỏ."
+          "text": "Bản đồ thì có ích. Cái áo không in khoa, tớ chịu."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "smile",
-          "text": "Còn cậu thì khỏi đoán, Tùng khoe với cả tầng rồi: {{nv.nguoi-choi.nganh}}. Dân sổ sách, đọc bảng nhanh hơn đọc mặt người. CLB đang thiếu đúng kiểu đấy."
+          "text": "Còn cậu… {{nv.nguoi-choi.nganh}} đúng không?"
         },
         {
           "type": "line",
-          "speaker": "duy",
-          "expression": "smile",
-          "text": "Còn tớ là Duy, năm hai Hành chính học. Chìa khóa phòng, tủ hồ sơ, cả cái laptop cũ cất trong tủ, đều tớ giữ."
+          "speaker": "player",
+          "text": "Ơ, Tùng mách cậu à?"
         },
         {
           "type": "line",
-          "speaker": "duy",
+          "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Ngăn dưới tớ chưa kiểm kê tới. Cậu mở xem có gì trong đấy."
+          "text": "Tùng còn đang nhìn cái bánh. Phiếu đăng ký CLB cậu gấp trong túi áo, ô ngành học vẫn lộ ra một góc."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Cậu liếc một cái đã thấy à? Tớ đứng cạnh cả tuần chẳng để ý."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-clb-nhom"
+        },
+        {
+          "type": "goto",
+          "to": "md-10-mat-banh"
+        }
+      ]
+    },
+    {
+      "id": "md-10-mat-banh",
+      "title": "Một chiếc bánh nướng biến mất khỏi đĩa của CLB",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "task",
+          "text": "Tìm chiếc bánh nướng của CLB"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Nhìn chỗ người lớn không để ý ấy."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "worried",
+          "text": "Khoan, đĩa bánh vừa đủ năm người mà hụt một chiếc. Ai cầm nhỉ?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Tớ mới rót trà thôi nhé."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Đừng đoán vội. Nhìn chỗ người lớn không để ý ấy."
+        },
+        {
+          "type": "explore",
+          "id": "kp-banh-trung-thu",
+          "diem": [
+            {
+              "sprite": "vung:dia-banh",
+              "x": 11,
+              "y": 70,
+              "rong": 15,
+              "chuoi": "md-10-dia-banh",
+              "sau": [],
+              "nhan": "Đĩa bánh trên bàn gấp",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:vun-banh",
+              "x": 36,
+              "y": 81,
+              "rong": 10,
+              "chuoi": "md-10-vun-banh",
+              "sau": [],
+              "nhan": "Nền sân gần bàn",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:den-ca-chep",
+              "x": 42,
+              "y": 68,
+              "rong": 15,
+              "chuoi": "md-10-den-ca-chep",
+              "sau": [],
+              "nhan": "Đèn cá chép đỏ",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:doi-dep",
+              "x": 46,
+              "y": 80,
+              "rong": 8,
+              "chuoi": "md-10-doi-dep",
+              "sau": [],
+              "nhan": "Đôi dép bên chiếc đèn",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:dau-lan",
+              "x": 42,
+              "y": 44,
+              "rong": 9,
+              "chuoi": "md-10-dau-lan",
+              "sau": [],
+              "nhan": "Đầu lân trên sân khấu"
+            },
+            {
+              "sprite": "vung:gian-robotics",
+              "x": 74,
+              "y": 50,
+              "rong": 17,
+              "chuoi": "md-10-gian-robotics",
+              "sau": [],
+              "nhan": "Gian đèn ông sao",
+              "dau": "phu"
+            },
+            {
+              "sprite": "vung:balo-banh-rang",
+              "x": 77,
+              "y": 70,
+              "rong": 8,
+              "chuoi": "md-10-balo-banh-rang",
+              "sau": [],
+              "nhan": "Balo trên ghế xanh"
+            },
+            {
+              "sprite": "vung:ap-phich",
+              "x": 89,
+              "y": 38,
+              "rong": 9,
+              "chuoi": "md-10-ap-phich",
+              "sau": [],
+              "nhan": "Áp phích trên bảng tin"
+            },
+            {
+              "sprite": "nv:ha-vy",
+              "x": 62,
+              "y": 100,
+              "rong": 14,
+              "chuoi": "md-10-ha-vy-goi",
+              "sau": [],
+              "nhan": "Hà Vy",
+              "dau": "phu"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Giờ thử nối mấy chuyện mình vừa thấy đi."
+        },
+        {
+          "type": "goto",
+          "to": "md-10-hoi-banh"
+        }
+      ]
+    },
+    {
+      "id": "md-10-hoi-banh",
+      "title": "Đoán ai lấy bánh từ những gì vừa thấy",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "branch",
+          "id": "r-ai-lay-banh",
+          "asker": {
+            "speaker": "ha-vy",
+            "text": "Theo cậu, ai lấy chiếc bánh nướng?"
+          },
+          "choices": [
+            {
+              "id": "tre-con",
+              "text": "Một đứa trẻ lấy.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-10-doan-dung"
+                }
+              ]
+            },
+            {
+              "id": "tung",
+              "text": "Tùng lấy.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-10-doan-tung"
+                }
+              ]
+            },
+            {
+              "id": "robotics",
+              "text": "Người ở gian Robotics lấy.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-10-doan-robotics"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "md-10-doan-tung",
+      "title": "Tùng bị nghi oan",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tùng lấy chăng? Cậu ấy đứng cạnh bàn."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Ơ kìa. Tớ chia trà còn chưa uống ngụm nào."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng đặt cốc xuống, quay mặt đi. Cả nhóm nhìn nhau, chẳng ai ăn tiếp."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Căn cứ vào đâu? Đứng gần bàn chưa đủ đâu."
+        },
+        {
+          "type": "goto",
+          "to": "md-10-hoi-banh"
+        }
+      ]
+    },
+    {
+      "id": "md-10-doan-robotics",
+      "title": "Chủ gian Robotics bị nghi oan",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Hay người ở gian Robotics? Gian đấy sát sân."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Một bạn ở gian Robotics khựng tay giữa chừng khi đang mắc đèn ông sao. Khách trước gian cũng ngoái nhìn."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Cậu ấy đang bán đèn. Mình thấy cậu ấy sang bàn bánh lúc nào?"
+        },
+        {
+          "type": "goto",
+          "to": "md-10-hoi-banh"
+        }
+      ]
+    },
+    {
+      "id": "md-10-doan-dung",
+      "title": "Chiếc bánh và chiếc đèn cá chép",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Đôi dép bé tí cạnh đèn cá chép. Vụn bánh kéo từ bàn ra đấy. Một đứa trẻ lấy bánh."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Đúng lúc ấy, một bé gái kéo chiếc đèn cá chép đỏ chạy từ sau sân khấu ra. Má dính vụn bánh. Tay vẫn cầm nửa chiếc bánh nướng."
+        },
+        {
+          "type": "line",
+          "speaker": "chu-cuong",
+          "expression": "smile",
+          "text": "Na! Bố dặn muốn ăn thì xin các anh chị cơ mà."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "happy",
+          "text": "Con cứ ăn đi. Chị tưởng bánh tự mọc chân."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "May quá, tớ hết bị nghi rồi. Cậu nợ tớ một miếng đấy nhé."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Giỏi. Dép với vụn bánh nói hộ rồi."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Thứ Hai tới, bốn giờ qua phòng CLB dọn tủ nhé. Buổi sinh hoạt thứ hai của mình."
+        },
+        {
+          "type": "goto",
+          "to": "md-11-phong-clb"
+        }
+      ]
+    },
+    {
+      "id": "md-11-phong-clb",
+      "title": "Thứ Hai 23/09, 16h: dọn phòng CLB",
+      "canh": "phong-clb",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "task",
+          "text": "Dọn tủ hồ sơ cùng CLB"
         },
         {
           "type": "reminder",
@@ -1816,8 +2162,27 @@ const GOC = {
           "text": "Ngăn dưới tủ tớ chưa kiểm kê tới."
         },
         {
-          "type": "image",
-          "imageId": "chibi-clb-nhom"
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Thứ Hai, 23/09/2024 · 16:00 · Phòng CLB"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Phòng nhỏ, một bàn dài, một tủ hồ sơ. Bộ máy bàn phủ bụi ở góc. Duy mở ngăn tủ dưới cùng; một đám bụi bay lên làm Tùng ho sặc."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tớ giữ chìa khóa phòng, tủ và laptop cũ. Ngăn dưới chưa kiểm kê. Mở xem nào."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "day-kinh",
+          "text": "Hôm Trung thu mình thấy đôi dép bé tí dưới chiếc đèn. Ở đây cũng vậy thôi: nhìn chỗ người ta không để ý."
         },
         {
           "type": "show-document",
@@ -1852,18 +2217,18 @@ const GOC = {
     },
     {
       "id": "md-11-la-thu",
-      "title": "Phòng CLB, 16h40: lá thư",
+      "title": "Phòng CLB, 16h40: bản sao lá thư và giấy mời",
       "canh": "phong-clb",
       "mocSomNhat": 0,
       "nodes": [
         {
           "type": "note",
-          "text": "Minh Anh ra ngoài rồi quay lại với hai tờ giấy: thông báo lịch họp rà soát và bản chụp thư đã che thông tin."
+          "text": "Minh Anh ra ngoài rồi quay lại với hai tờ giấy: thông báo lịch họp rà soát và bản chụp thư đã che thông tin. Nhà trường đã tiếp nhận thư sáng 16/09 và xử lý trước khi chuyển bản sao cho CLB."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Bốn rưỡi, cô Lan bên Phòng Công tác sinh viên gọi chị Minh Anh lên. Mười phút sau chị quay về, tay cầm hai tờ giấy."
+          "text": "Bốn rưỡi, cô Lan bên Phòng Công tác sinh viên gọi chị Minh Anh lên. Mười phút sau chị quay về, tay cầm hai tờ giấy có dấu tiếp nhận."
         },
         {
           "type": "note",
@@ -1877,31 +2242,36 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "worried",
-          "text": "Thứ Hai tuần sau, phòng CLB mình bị đưa ra họp rà soát."
+          "text": "Thứ Hai 30/09, phòng mình bị đưa ra họp rà soát."
         },
         {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Có người bỏ thư vào hộp kiến nghị ở tòa B, đề nghị thu hồi phòng. Tên người gửi bị che, CLB chỉ được xem nội dung."
+          "text": "Trường nhận thư ở hộp kiến nghị sáng 16/09. Giờ mới chuyển bản sao cho CLB, kèm giấy mời họp. Tên người gửi bị che."
         },
         {
           "type": "line",
           "speaker": "duy",
           "expression": "serious",
-          "text": "Mất phòng không chỉ là mất chỗ ngồi đâu. Quy chế ghi: CLB không còn phòng sinh hoạt thì vào diện chờ giải thể. Hết học kỳ vẫn chưa có phòng là giải thể, giấy tờ sổ sách chuyển hết về Hội sinh viên. Trường rà soát phòng hai đợt: đầu kỳ nhận kiến nghị tới 20 tháng 9, cuối kỳ rà lại lần nữa."
+          "text": "Nếu mất phòng, CLB vào diện chờ giải thể. Hết học kỳ chưa có phòng thì giải thể, sổ sách chuyển về Hội sinh viên."
         },
         {
           "type": "line",
-          "speaker": "duy",
-          "expression": "neutral",
-          "text": "Mà vào diện chờ giải thể là sao kê quỹ gửi về Hội luôn. Chị không nhận nữa đâu."
+          "speaker": "narrator",
+          "text": "Duy xoay laptop. Mục đặt phòng tháng tới của CLB bị phủ xám, bên dưới hiện dòng \"Chờ kết quả rà soát\". Tờ lịch sinh hoạt chị Minh Anh vừa viết còn nằm cạnh bàn phím."
         },
         {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "worried",
-          "text": "Phòng chưa mất mà giấy tờ đã đi trước rồi à?"
+          "text": "Chưa họp mà tháng tới đã không đặt được phòng à?"
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Cả sao kê quỹ cũng phải gửi Hội trước. Tớ vừa nhận thông báo."
         },
         {
           "type": "image",
@@ -1940,7 +2310,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Thầy Quang, phó hiệu trưởng, cho CLB một tuần tự tìm căn cứ, mang ra buổi họp."
+          "text": "Thầy Quang, phó hiệu trưởng, cho CLB tới buổi họp tuần sau để tự tìm căn cứ."
         },
         {
           "type": "line",
@@ -1979,7 +2349,7 @@ const GOC = {
     {
       "id": "md-10-soi-ban-do",
       "title": "Quan sát Tùng: tờ bản đồ trên tay",
-      "canh": "phong-clb",
+      "canh": "san-ktx-trung-thu",
       "mocSomNhat": 0,
       "nodes": [
         {
@@ -1998,7 +2368,7 @@ const GOC = {
     {
       "id": "md-10-soi-ao",
       "title": "Quan sát Tùng: cái áo",
-      "canh": "phong-clb",
+      "canh": "san-ktx-trung-thu",
       "mocSomNhat": 0,
       "nodes": [
         {
@@ -2017,7 +2387,7 @@ const GOC = {
     {
       "id": "md-10-soi-mui",
       "title": "Quan sát Tùng: miếng băng trên mũi",
-      "canh": "phong-clb",
+      "canh": "san-ktx-trung-thu",
       "mocSomNhat": 0,
       "nodes": [
         {
@@ -2030,6 +2400,127 @@ const GOC = {
           "speaker": "tung",
           "expression": "happy",
           "text": "Hôm khuân đồ cho tân sinh viên, tớ va phải cửa thang máy. Đội tình nguyện đón tân sinh viên mà!"
+        }
+      ]
+    },
+    {
+      "id": "md-10-dia-banh",
+      "title": "Đĩa bánh hụt một chiếc",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Đĩa trên bàn gấp có năm tờ giấy lót, mà chỉ còn bốn chiếc bánh. Một tờ giấy vừa bị kéo lệch.)"
+        }
+      ]
+    },
+    {
+      "id": "md-10-vun-banh",
+      "title": "Vệt vụn trên sân",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Vụn bánh rơi thành vệt mảnh từ chân bàn tới chỗ đèn cá chép.)"
+        }
+      ]
+    },
+    {
+      "id": "md-10-den-ca-chep",
+      "title": "Đèn cá chép nằm lệch",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Đèn cá chép đỏ nằm lệch trên sân. Dây kéo căng về phía sau sân khấu.)"
+        }
+      ]
+    },
+    {
+      "id": "md-10-doi-dep",
+      "title": "Đôi dép nhựa nhỏ",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Đôi dép nhựa nhỏ xíu ngay cạnh đèn. Chẳng ai trong CLB đi vừa.)"
+        }
+      ]
+    },
+    {
+      "id": "md-10-dau-lan",
+      "title": "Đầu lân chờ biểu diễn",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Đầu lân nằm chờ mà mắt cứ nhìn vào đĩa bánh. Tớ hiểu nó."
+        }
+      ]
+    },
+    {
+      "id": "md-10-gian-robotics",
+      "title": "Gian Robotics bán đèn LED",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "smile",
+          "text": "Robotics bán đèn ông sao gắn LED kìa. Sao năm cánh mà chớp tám màu."
+        }
+      ]
+    },
+    {
+      "id": "md-10-balo-banh-rang",
+      "title": "Balo đen trên ghế nhựa xanh",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Balo đen đặt trên ghế nhựa xanh. Trên quai có huy hiệu kim loại hình bánh răng, sứt mất một răng.)"
+        }
+      ]
+    },
+    {
+      "id": "md-10-ap-phich",
+      "title": "Áp phích trên bảng tin",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "happy",
+          "text": "Áp phích Trung thu dán lệch thế kia. Trăng tròn mà nhìn cứ như sắp lăn khỏi bảng."
+        }
+      ]
+    },
+    {
+      "id": "md-10-ha-vy-goi",
+      "title": "Hà Vy đứng bên mép sân",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Người lớn mải nhìn lên sân khấu. Dưới chân họ cũng có chuyện đấy."
         }
       ]
     },
@@ -2256,7 +2747,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "\"Họp rà soát phòng sinh hoạt CLB: bốn giờ chiều thứ Hai tuần sau.\" Dán ngay cạnh hộp luôn."
+          "text": "\"Họp rà soát phòng sinh hoạt CLB: 16:00 thứ Hai 30/09.\" Dán ngay cạnh hộp luôn."
         },
         {
           "type": "line",
@@ -2534,7 +3025,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Tờ lịch tháng 9 treo cạnh bảng. Ô thứ Hai 23 khoanh đỏ, ghi tay: \"Họp rà soát phòng CLB\".)"
+          "text": "(Tờ lịch tháng 9 treo cạnh bảng. Ô thứ Hai 30 khoanh đỏ, ghi tay: \"Họp rà soát phòng CLB\".)"
         },
         {
           "type": "line",
@@ -4452,7 +4943,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "neutral",
-          "text": "Tuần này chú tớ trực ca sáng đấy. Hỏi chú xem sáng thứ Hai có gì lạ không."
+          "text": "Sáng thứ Hai 16/09 chú tớ trực cổng. Hỏi chú xem hôm nộp thư có gì lạ không."
         },
         {
           "type": "reminder",
@@ -4624,7 +5115,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Thứ Hai, bốn giờ chiều. Phòng họp tầng ba. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ."
+          "text": "Thứ Hai 30/09, bốn giờ chiều. Phòng họp tầng ba. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ."
         },
         {
           "type": "line",
@@ -15381,7 +15872,7 @@ const GOC = {
       },
       "quotes": {
         "Nội dung hiển thị": [
-          "Họp rà soát phòng sinh hoạt CLB: bốn giờ chiều thứ Hai tuần sau."
+          "Họp rà soát phòng sinh hoạt CLB: 16:00 thứ Hai 30/09/2024."
         ]
       }
     },

@@ -121,3 +121,36 @@ describe('mở đầu thật: sảnh KTX', () => {
     expect(hien(THAT, s)).toEqual(['md-00-thang-may']);
   });
 });
+
+describe('mở đầu thật: Trung thu ở sân KTX', () => {
+  it('bốn dấu cần xem, ba chi tiết ẩn và Hà Vy đứng ngoài cụm đồ vật', () => {
+    const san = THAT.chuoi.find((c) => c.id === 'md-10-mat-banh');
+    expect(san?.canh).toBe('san-ktx-trung-thu');
+    const kp = san?.nodes.find((n) => n.type === 'explore');
+    expect(kp?.type).toBe('explore');
+    if (kp?.type !== 'explore') return;
+    expect(kp.diem.filter((d) => d.dau === 'chinh').map((d) => d.chuoi)).toEqual([
+      'md-10-dia-banh', 'md-10-vun-banh', 'md-10-den-ca-chep', 'md-10-doi-dep',
+    ]);
+    expect(kp.diem.filter((d) => d.sprite.startsWith('vung:') && d.dau === undefined).map((d) => d.chuoi)).toEqual([
+      'md-10-dau-lan', 'md-10-balo-banh-rang', 'md-10-ap-phich',
+    ]);
+    expect(kp.diem.find((d) => d.sprite === 'nv:ha-vy')).toMatchObject({ x: 62, y: 100, rong: 14, dau: 'phu' });
+  });
+
+  it('đoán sai trở lại câu hỏi, đoán đứa trẻ mới sang buổi thứ hai', () => {
+    const hoi = THAT.chuoi.find((c) => c.id === 'md-10-hoi-banh');
+    const re = hoi?.nodes.find((n) => n.type === 'branch');
+    expect(re?.type).toBe('branch');
+    if (re?.type !== 'branch') return;
+    expect(re.choices.map((c) => [c.id, c.hauQua.find((h) => h.kind === 'di-toi')])).toEqual([
+      ['tre-con', { kind: 'di-toi', chuoi: 'md-10-doan-dung' }],
+      ['tung', { kind: 'di-toi', chuoi: 'md-10-doan-tung' }],
+      ['robotics', { kind: 'di-toi', chuoi: 'md-10-doan-robotics' }],
+    ]);
+    for (const id of ['md-10-doan-tung', 'md-10-doan-robotics']) {
+      expect(THAT.chuoi.find((c) => c.id === id)?.nodes.at(-1)).toEqual({ type: 'goto', to: 'md-10-hoi-banh' });
+    }
+    expect(THAT.chuoi.find((c) => c.id === 'md-10-doan-dung')?.nodes.at(-1)).toEqual({ type: 'goto', to: 'md-11-phong-clb' });
+  });
+});

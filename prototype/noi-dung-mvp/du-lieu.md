@@ -66,7 +66,7 @@
 <!-- Chương 1, ngày 4 (ĐÃ CHỐT C, 30/09/2026): nhật ký máy in phòng máy, mở bằng phiếu tra cứu thứ hai. Chép từ
      docs/mvp/kiem-bang-vu1.py. Thư: tài khoản dùng chung clb_robotics in kien-nghi-phong-clb.docx lúc 23:10 Chủ nhật (01/10/2026: đổi từ mã SV21… để không lộ khóa học của người in — dàn ý mùa 1);
      Hoài và Hiếu đều có in nhưng không phải thư; SV240146 in bài tập 23:18 là nhiễu. Ngày theo lịch thật năm 2024
-     (lich.md "Ngày mở đầu"): 14/09 thứ Bảy (Ngày hội), 15/09 Chủ nhật, 16/09 thứ Hai (sáng nộp thư, 16h phòng CLB). -->
+     (lich.md "Ngày mở đầu"): 14/09 thứ Bảy (Ngày hội), 15/09 Chủ nhật in thư, 16/09 thứ Hai sáng nộp thư; CLB nhận bản sao ngày 23/09. -->
 
 | thoi_diem | tai_khoan | ten_tep | so_trang |
 |---|---|---|---|
