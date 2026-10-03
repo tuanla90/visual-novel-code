@@ -16,7 +16,8 @@ bị bản MVP (QĐ-077).
 │   ├── thiet-ke/                 thiết kế dài hạn của cả game
 │   │   ├── vu-tru-chan-hung-tong-quan.md   vũ trụ chung: tầm nhìn, nhân vật, dòng thời gian
 │   │   ├── clb-tham-tu-du-lieu-GDD-v0.5.md  tài liệu thiết kế game (GDD)
-│   │   └── vu1-buoi-giai-trinh-kich-ban.md  kịch bản buổi giải trình Vụ 1 (bản đầy đủ)
+│   │   ├── vu1-buoi-giai-trinh-kich-ban.md  kịch bản buổi giải trình Vụ 1 (bản đầy đủ)
+│   │   └── tham-khao-game-trinh-tham-v0.1.md  tư liệu: bài học từ Danganronpa, Adventure Escape… cho dữ kiện và nhịp
 │   ├── session-trao-doi-2026-09-28.md  bản ghi buổi brainstorm hướng MVP (tư liệu)
 │   ├── mvp/                      tầm nhìn MVP
 │   │   ├── kich-ban-vu1-mvp-khung.md       kịch bản khung: mở đầu tuần 1 + Vụ 1 (QĐ-087)
