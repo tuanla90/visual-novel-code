@@ -49,7 +49,7 @@ const ketVu2 = (re: Record<string, string>, traLoi?: ChienThuat['traLoi']): { s:
 describe('Vụ 2 "Tin đồn": sang vụ sau từ màn kết Vụ 1', () => {
   it('lịch: vụ sau vu2 (Tin đồn) và nhiệm vụ phụ so-phong do Duy giao, mở sau vu2', () => {
     expect(KB.lich.vuSau?.map((v) => [v.id, v.chuoi, v.ngay]).slice(0, 2)).toEqual([['vu2', 'tin-mo', '2024-10-09'], ['vu3', 'v3-mo', '2024-10-10']]);
-    expect(KB.lich.nhiemVuPhu?.map((p) => [p.id, p.chuoi, p.nguoiGiao, p.moSau])).toEqual([['so-phong', 'v2-mo', 'duy', 'vu2'], ['micro', 'p-mic-mo', 'duy', 'vu4'], ['hoan-tien', 'p-hoan-mo', 'minh-anh', 'vu5'], ['dan-lac', 'p-lac-mo', 'tung', 'vu3']]);
+    expect(KB.lich.nhiemVuPhu?.map((p) => [p.id, p.chuoi, p.nguoiGiao, p.moSau])).toEqual([['so-phong', 'v2-mo', 'duy', 'vu2'], ['micro', 'p-mic-mo', 'duy', 'vu4'], ['hoan-tien', 'p-hoan-mo', 'minh-anh', 'vu5'], ['dan-lac', 'p-lac-mo', 'tung', 'vu3'], ['tui-do', 'p-tui-mo', 'tung', 'vu2']]);
   });
 
   it('màn kết Vụ 1: còn vụ kế, máy đã đặt cờ kết, chưa có nhiệm vụ phụ nào mở', () => {
@@ -199,7 +199,7 @@ describe('Nhiệm vụ phụ "Bốn mục trong sổ đã ký" (Duy giao, mở s
 
   it('màn kết Vụ 2 có nhiệm vụ phụ; nhận → giai đoạn phu, bảng sạch; xong → về lại màn kết Vụ 2, hết việc để nhận', () => {
     const ket = toiKetVu2();
-    expect(ketCua(ket).phu.map((p) => p.id)).toEqual(['so-phong']);
+    expect(ketCua(ket).phu.map((p) => p.id)).toEqual(['so-phong', 'tui-do']);
     const vao = xuLy(KB, ket, { type: 'lam-nhiem-vu-phu', id: 'so-phong' });
     expect(vao.giaiDoan).toBe('phu');
     expect(vao.phu).toMatchObject({ id: 'so-phong', veLai: ket.conTro, giaiDoan: 'vu-sau' });
@@ -210,7 +210,7 @@ describe('Nhiệm vụ phụ "Bốn mục trong sổ đã ký" (Duy giao, mở s
     expect(xuLy(KB, vao, { type: 'sang-vu-sau' })).toBe(vao);
 
     const xong = choiTuDong(KB, vao, { traLoi: (id, lan) => (id === 'q-v2-ket-luan' && lan === 0 ? 'sai' : 'dung') }, (_s, kn) => kn.kind === 'end');
-    expect(ketCua(xong)).toMatchObject({ phuXong: { id: 'so-phong' }, vu: null, vuKe: null, phu: [] });
+    expect(ketCua(xong)).toMatchObject({ phuXong: { id: 'so-phong' }, vu: null, vuKe: null, phu: [expect.objectContaining({ id: 'tui-do' })] });
     expect(xong.co).toEqual(expect.arrayContaining(['so-phong-hoan-tat', 'v2-log-mo', 'v2-ket-luan-dung']));
     expect(xong.hoSo.bangChung).toContain('ev-v2-activities');
     expect(xong.soTay).toEqual(expect.arrayContaining(['chuan-hoa', 'sap-xep']));
@@ -220,7 +220,7 @@ describe('Nhiệm vụ phụ "Bốn mục trong sổ đã ký" (Duy giao, mở s
     expect(ve.giaiDoan).toBe('vu-sau');
     expect(ve.phu ?? null).toBeNull();
     expect(ve.conTro).toEqual(ket.conTro);
-    expect(ketCua(ve)).toMatchObject({ vu: { id: 'vu2' }, phu: [], phuXong: null });
+    expect(ketCua(ve)).toMatchObject({ vu: { id: 'vu2' }, phu: [expect.objectContaining({ id: 'tui-do' })], phuXong: null });
   });
 
   it('câu mở của việc phụ vẫn rẽ theo kết Vụ 1; điểm nhảy vu2-buoi tới đúng thẻ với hai giấy nhớ của việc này', () => {

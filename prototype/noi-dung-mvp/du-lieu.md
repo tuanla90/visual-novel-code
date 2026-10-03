@@ -352,3 +352,57 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 | LD-0252 | 2024-09-08 | SV240251 | SV240377 | KTX |
 | LD-0256 | 2024-09-08 | SV240251 | SV240415 | KTX |
 | LD-0259 | 2024-09-08 | SV240251 | SV240466 | KTX |
+
+## lich_hoc {bảng}
+- Cột: ma_lhp TEXT, mon TEXT, phong TEXT, thu TEXT, ca TEXT, gio_bat_dau TEXT
+
+<!-- Nhiệm vụ phụ "Túi đồ trên ghế đá" (thứ Tư 30/10/2024): lịch các lớp học phần. Môn Kinh tế vi mô có 12 lớp KTVM-01…KTVM-12, mỗi lớp
+     bẫy một điều kiện: KTVM-01 (tòa A, thứ Hai), KTVM-02 (thứ Ba), KTVM-04 (thứ Tư nhưng buổi chiều), KTVM-06 (tòa C), KTVM-08 (tòa A),
+     KTVM-09 (thứ Năm), KTVM-11 và KTVM-12 (mã bắt đầu "KTVM-1", không khớp "KTVM-0"). Đúng ba lớp: KTVM-03 (B204, 07:30), KTVM-05 (B102, 09:30),
+     KTVM-07 (B305, 09:30) — thứ Tư, buổi sáng, tòa B, mã KTVM-0…. Dòng nền (các môn khác) do tools/noi-dung/nhieu-mvp.ts thêm: không thêm
+     lớp nào có mã bắt đầu "KTVM". -->
+
+| ma_lhp | mon | phong | thu | ca | gio_bat_dau |
+|---|---|---|---|---|---|
+| KTVM-01 | Kinh tế vi mô | A205 | THU_HAI | SANG | 07:30 |
+| KTVM-02 | Kinh tế vi mô | B204 | THU_BA | SANG | 07:30 |
+| KTVM-03 | Kinh tế vi mô | B204 | THU_TU | SANG | 07:30 |
+| KTVM-04 | Kinh tế vi mô | B301 | THU_TU | CHIEU | 13:30 |
+| KTVM-05 | Kinh tế vi mô | B102 | THU_TU | SANG | 09:30 |
+| KTVM-06 | Kinh tế vi mô | C203 | THU_TU | SANG | 07:30 |
+| KTVM-07 | Kinh tế vi mô | B305 | THU_TU | SANG | 09:30 |
+| KTVM-08 | Kinh tế vi mô | A101 | THU_TU | SANG | 09:30 |
+| KTVM-09 | Kinh tế vi mô | B204 | THU_NAM | SANG | 09:30 |
+| KTVM-11 | Kinh tế vi mô | B204 | THU_TU | SANG | 07:30 |
+| KTVM-12 | Kinh tế vi mô | B102 | THU_TU | SANG | 09:30 |
+
+## dang_ky_hoc {bảng}
+- Cột: ma_lhp TEXT, ma_sv TEXT
+
+<!-- Nhiệm vụ phụ "Túi đồ trên ghế đá": sinh viên đăng ký lớp học phần (khóa nối với lich_hoc: ma_lhp; với sinh_vien: ma_sv). Ba lớp đúng
+     điều kiện: KTVM-03 có Hiếu (SV240228, BC24A, lớp 07:30), KTVM-05 có Hồng (SV240412, BC24B), KTVM-07 có Toàn (SV240418, BC24B): ba người
+     Báo chí. Bẫy: Mai, Đạt (BC24A) học KTVM-04 buổi chiều; Phúc (BC24A) học KTVM-11; Yến (BC24A) học KTVM-06 tòa C; Ngọc (BC24B) học
+     KTVM-08 tòa A. Dòng nền do tools/noi-dung/nhieu-mvp.ts thêm: chỉ đăng ký vào các lớp học phần nền, không thêm ai vào lớp KTVM. -->
+
+| ma_lhp | ma_sv |
+|---|---|
+| KTVM-03 | SV240228 |
+| KTVM-03 | SV240201 |
+| KTVM-03 | SV240204 |
+| KTVM-03 | SV240304 |
+| KTVM-03 | SV240307 |
+| KTVM-05 | SV240412 |
+| KTVM-05 | SV240207 |
+| KTVM-05 | SV240210 |
+| KTVM-07 | SV240418 |
+| KTVM-07 | SV240213 |
+| KTVM-07 | SV240216 |
+| KTVM-04 | SV240105 |
+| KTVM-04 | SV240122 |
+| KTVM-11 | SV240146 |
+| KTVM-06 | SV240131 |
+| KTVM-08 | SV240415 |
+| KTVM-01 | SV240310 |
+| KTVM-02 | SV240313 |
+| KTVM-09 | SV240316 |
+| KTVM-12 | SV240219 |

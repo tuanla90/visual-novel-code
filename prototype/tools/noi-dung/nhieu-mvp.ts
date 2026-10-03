@@ -17,6 +17,8 @@
  *    kho đang 0; phiên cũ không ở máy văn phòng xưởng. khoan_chi: KHÔNG thêm (bản xuất giới hạn theo truyện Vụ 5).
  *  - luan_chuyen: phiếu thêm vào chỉ mang mã tài sản của CLB khác (không nối được với sổ tài sản CLB mình).
  *  - luot_don: không thêm lượt nào do SV240251 (Tùng) dẫn, không lượt nào đón SV240317 (Hoài): chín lượt của Tùng, một lượt nhà xe.
+ *  - lich_hoc / dang_ky_hoc: chỉ thêm lớp học phần của các môn KHÁC (mã không bắt đầu "KTVM"), và chỉ đăng ký sinh viên vào các lớp nền
+ *    ấy: ba lớp KTVM-03, KTVM-05, KTVM-07 giữ đúng người của truyện (Hiếu, Hồng, Toàn là ba người Báo chí).
  *  - giao_dich: không thêm dòng HOAN. quet_the_thu_vien: KHÔNG thêm (thư viện chỉ in cho mỗi người bản của chính họ).
  * Không import gì (chạy được cả trong công cụ lẫn trong trình duyệt): kich-ban.gen.ts chỉ chứa dòng của truyện, dữ liệu nền
  * được sinh lại lúc nạp trò chơi; bộ kiểm cũng thêm nền trước khi chạy SQL.
@@ -535,6 +537,52 @@ function themLuotDon(d: BoDuLieuMvp): void {
   sap(b, 1, 0);
 }
 
+const MON_HOC: readonly { ma: string; ten: string }[] = [
+  { ma: 'NLKT', ten: 'Nguyên lý kế toán' },
+  { ma: 'MKCB', ten: 'Marketing căn bản' },
+  { ma: 'TRHO', ten: 'Triết học Mác – Lênin' },
+  { ma: 'TA01', ten: 'Tiếng Anh 1' },
+  { ma: 'TOAN', ten: 'Toán cao cấp' },
+  { ma: 'PLDC', ten: 'Pháp luật đại cương' },
+  { ma: 'THDC', ten: 'Tin học đại cương' },
+  { ma: 'QTHO', ten: 'Quản trị học' },
+  { ma: 'XSTK', ten: 'Xác suất thống kê' },
+  { ma: 'TCDN', ten: 'Tài chính doanh nghiệp' },
+  { ma: 'KNMM', ten: 'Kỹ năng mềm' },
+  { ma: 'LSDG', ten: 'Lịch sử Đảng' },
+  { ma: 'KTLU', ten: 'Kinh tế lượng' },
+  { ma: 'CSDL', ten: 'Cơ sở dữ liệu' },
+  { ma: 'LTMA', ten: 'Luật thương mại' },
+  { ma: 'NVBC', ten: 'Nghiệp vụ báo chí' },
+  { ma: 'LGCB', ten: 'Logistics căn bản' },
+  { ma: 'KTVO', ten: 'Kinh tế vĩ mô' },
+];
+
+/** Lớp học phần nền của các môn khác + sinh viên đăng ký vào chúng. Không đụng tới lớp KTVM của truyện. */
+function themLichVaDangKy(d: BoDuLieuMvp): void {
+  const lich = bangTheo(d, 'lich_hoc');
+  const dk = bangTheo(d, 'dang_ky_hoc');
+  const sv = bangTheo(d, 'sinh_vien');
+  if (!lich || !dk || !sv) return;
+  const r = xn(2114);
+  const ma = sv.dong.map((h) => chu(h[0]));
+  const THU_HOC = ['THU_HAI', 'THU_BA', 'THU_TU', 'THU_NAM', 'THU_SAU', 'THU_BAY'] as const;
+  const GIO_SANG = ['07:30', '09:30'] as const;
+  const GIO_CHIEU = ['13:30', '15:30'] as const;
+  for (const m of MON_HOC) {
+    const n = r.so(5, 9);
+    for (let i = 1; i <= n; i++) {
+      const sang = r.co(0.6);
+      const phong = `${r.chon(['A', 'B', 'C'])}${r.so(1, 4)}${hai(r.so(1, 12))}`;
+      const lhp = `${m.ma}-${hai(i)}`;
+      lich.dong.push([lhp, m.ten, phong, r.chon(THU_HOC), sang ? 'SANG' : 'CHIEU', sang ? r.chon(GIO_SANG) : r.chon(GIO_CHIEU)]);
+      for (const sinhVien of r.tron([...ma]).slice(0, r.so(16, 30))) dk.dong.push([lhp, sinhVien]);
+    }
+  }
+  sap(lich, 0);
+  sap(dk, 0, 1);
+}
+
 /** Thêm dữ liệu nền vào bộ dữ liệu đã đọc từ du-lieu.md (sửa tại chỗ, trả lại chính nó). */
 export function themNhieuMvp<T extends BoDuLieuMvp>(d: T): T {
   themLop(d);
@@ -550,5 +598,6 @@ export function themNhieuMvp<T extends BoDuLieuMvp>(d: T): T {
   themTaiSan(d);
   themGiaoDich(d);
   themLuotDon(d);
+  themLichVaDangKy(d);
   return d;
 }

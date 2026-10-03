@@ -92,3 +92,11 @@
 - Ngày: 2024-10-11
 - Tiêu đề kết: Chín lượt, một lượt nhầm
 - Lời kết: Sổ đón ghi chín lượt Tùng dẫn: tám lượt tới ký túc xá, một lượt tới nhà xe, là lượt của Hoài. Sổ chỉ ghi nơi tới; vì sao nhầm là điều Tùng tự nhớ lại và tự nói ra.
+
+## Túi đồ trên ghế đá {nhiệm vụ phụ: tui-do}
+- Chuỗi: p-tui-mo
+- Người giao: tung
+- Mở sau: vu2
+- Ngày: 2024-10-30
+- Tiêu đề kết: Túi về tay chủ, đơn tới muộn hay kịp
+- Lời kết: Chiếc túi vải trên ghế đá là của Hiếu, lớp BC24A; trong túi có đơn học bổng hạn nộp 17 giờ ngày 30/10. Túi nào cũng về đúng người, chỉ khác tờ đơn tới Phòng Công tác sinh viên lúc nào. Lịch học và danh sách đăng ký nói được ai học lớp nào, không nói ai là người đánh rơi.

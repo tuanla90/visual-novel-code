@@ -718,6 +718,11 @@ const GOC = {
       "id": "sanh-den-pin",
       "ten": "Sảnh tòa B",
       "anhNen": null
+    },
+    {
+      "id": "ghe-da-tui-do",
+      "ten": "Ghế đá cạnh lối đi",
+      "anhNen": "bg-mvp-ghe-da-tui-do"
     }
   ],
   "diaDiem": [],
@@ -880,6 +885,16 @@ const GOC = {
         "ngay": "2024-10-11",
         "tieuDeKet": "Chín lượt, một lượt nhầm",
         "loiKet": "Sổ đón ghi chín lượt Tùng dẫn: tám lượt tới ký túc xá, một lượt tới nhà xe, là lượt của Hoài. Sổ chỉ ghi nơi tới; vì sao nhầm là điều Tùng tự nhớ lại và tự nói ra."
+      },
+      {
+        "id": "tui-do",
+        "ten": "Túi đồ trên ghế đá",
+        "chuoi": "p-tui-mo",
+        "nguoiGiao": "tung",
+        "moSau": "vu2",
+        "ngay": "2024-10-30",
+        "tieuDeKet": "Túi về tay chủ, đơn tới muộn hay kịp",
+        "loiKet": "Chiếc túi vải trên ghế đá là của Hiếu, lớp BC24A; trong túi có đơn học bổng hạn nộp 17 giờ ngày 30/10. Túi nào cũng về đúng người, chỉ khác tờ đơn tới Phòng Công tác sinh viên lúc nào. Lịch học và danh sách đăng ký nói được ai học lớp nào, không nói ai là người đánh rơi."
       }
     ]
   },
@@ -13578,6 +13593,933 @@ const GOC = {
           "type": "end"
         }
       ]
+    },
+    {
+      "id": "p-tui-mo",
+      "title": "Ghế đá cạnh lối đi: một chiếc túi không tên",
+      "canh": "ghe-da-tui-do",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Việc của Tùng — Thứ Tư, 30 tháng 10"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Gần bốn giờ chiều. Ba người ra khỏi tòa B, đi tắt lối có hàng cây lấy bóng để ra nhà xe. Dưới gốc cây, trên ghế đá, có một chiếc túi vải mở miệng. Đồ bày ra mặt ghế như vừa có người lấy ra tìm gì đó rồi bỏ đấy."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Ơ, túi ai bỏ quên đây này?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chai nước chưa ráo hơi nước. Chưa lâu."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Không ghi tên. Chị đề nghị mang xuống nộp bác Thịnh. Bác trực sảnh tòa B, có sổ đồ thất lạc. Mất gì ở khu này người ta cũng ra chỗ bác hỏi đầu tiên."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Khoan. CLB thám tử mà nộp luôn thì còn gì là thám tử! Tự tìm ra chủ túi, trả tận tay, chẳng hay hơn à?"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Bác ghi sổ, trả đúng người. Cách ấy không sai."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Cách nào túi cũng về tay chủ. Chọn đi."
+        },
+        {
+          "type": "branch",
+          "id": "r-tui",
+          "asker": {
+            "speaker": "narrator",
+            "text": "Chiếc túi không ghi tên ai. Làm gì với nó?"
+          },
+          "choices": [
+            {
+              "id": "bao-ve",
+              "text": "Mang xuống nộp bác Thịnh ở sảnh tòa B.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "p-tui-nop"
+                }
+              ]
+            },
+            {
+              "id": "tu-tim",
+              "text": "Thử tự tìm ra chủ túi.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "p-tui-nhin"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-tui-nop",
+      "title": "Sảnh tòa B: sổ đồ thất lạc của bác Thịnh",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Sảnh tòa B giờ tan tiết. Bác Thịnh ngồi sau bàn trực, trước mặt là cuốn sổ bìa cứng, mép bìa kẻ tay hai chữ \"Thất lạc\"."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Bác ơi, bọn cháu nhặt được cái túi này ở ghế đá lối ra nhà xe."
+        },
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "neutral",
+          "text": "Để đó."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bác mở nắp bút. Mỗi món một dòng: túi vải, giáo trình, hộp bút, vé xe, hóa đơn photo, tờ đơn trong bìa nhựa. Ví và điện thoại bác bỏ riêng vào ngăn kéo, khóa lại."
+        },
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "neutral",
+          "text": "Ai hỏi thì bác hỏi lại họ mất những gì. Nói đúng thì bác trả."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cuối dòng, bác ký một chữ: T. Rồi đóng sổ."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Tớ cá là chủ túi ra nhận ngay tối nay."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Đừng cá."
+        },
+        {
+          "type": "goto",
+          "to": "p-tui-sang"
+        }
+      ]
+    },
+    {
+      "id": "p-tui-sang",
+      "title": "Sáng hôm sau: trước cửa Phòng Công tác sinh viên",
+      "canh": "phong-ctsv",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Sáng hôm sau — Thứ Năm, 31 tháng 10"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bảy giờ năm mươi. Nhóm đi ngang hành lang tòa hành chính. Cửa Phòng Công tác sinh viên còn khóa. Một tờ giấy dán ở khung kính: hồ sơ học bổng đợt này khóa lúc 17 giờ ngày 30 tháng 10."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Trước cửa có một người đứng. Hiếu, lớp BC24A. Chiếc túi vải đeo bên vai. Trong tay cậu ấy là tờ đơn trong bìa nhựa, dấu đỏ ở góc."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Cái bìa nhựa ấy. Đúng cái hôm qua trên ghế đá."
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Hôm qua tôi bỏ quên túi ở ghế đá. Quay lại thì mất. Tôi tìm quanh nhà xe tới tối. Sáng nay bác bảo vệ gặp tôi ở cổng, hỏi tôi mất gì. Tôi kể đúng, bác trả."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cô Lan từ cầu thang đi lên, tay lục chùm chìa khóa. Cô đọc tờ giấy dán, rồi nhìn tờ đơn trong tay Hiếu."
+        },
+        {
+          "type": "line",
+          "speaker": "co-lan",
+          "expression": "neutral",
+          "text": "Đợt này khóa từ năm giờ chiều qua rồi em. Cô không mở lại được."
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Dạ, em biết. Em muốn nộp vào đợt sau cho đỡ phải viết lại."
+        },
+        {
+          "type": "line",
+          "speaker": "co-lan",
+          "expression": "smile",
+          "text": "Thế thì cô nhận để đó. Đợt sau cô báo."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Bọn chị nộp túi cho bác từ chiều qua."
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Nộp bác là đúng cách rồi. Tôi mới là người để quên."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hiếu gật đầu với cả nhóm rồi đi theo cô Lan vào phòng. Chiếc túi vải lắc nhẹ trên vai cậu ấy."
+        },
+        {
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "id": "p-tui-nhin",
+      "title": "Ghế đá: chỉ nhìn những gì nằm ngoài",
+      "canh": "ghe-da-tui-do",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Đấy! Tìm ra chủ túi trước, rồi mới tính!"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Được. Nhưng đồng hồ vẫn chạy. Hơn hai mươi phút chưa ra thì chị mang túi xuống bác Thịnh, như chị nói ban đầu. Hai cách đều đúng."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Luật trước đã. Mình chỉ nhìn những gì đang nằm ngoài. Không mở ví, không mở điện thoại, không thò tay xuống đáy túi. Đồ của người ta."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Ba người cúi xuống mặt ghế. Nắng chiều lọt qua tán cây, in những đốm sáng lên giáo trình, lên tờ hóa đơn, lên cái bìa nhựa."
+        },
+        {
+          "type": "task",
+          "text": "Xem kỹ những món đang để ngoài trên ghế đá"
+        },
+        {
+          "type": "explore",
+          "id": "kp-tui-do",
+          "diem": [
+            {
+              "sprite": "vung:nhan-sach",
+              "x": 44,
+              "y": 44,
+              "rong": 6,
+              "chuoi": "p-tui-nhan",
+              "sau": [],
+              "nhan": "Nhãn dán trên bìa giáo trình",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:ve-xe",
+              "x": 51,
+              "y": 66,
+              "rong": 9,
+              "chuoi": "p-tui-ve",
+              "sau": [],
+              "nhan": "Vé gửi xe màu xanh",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:hoa-don",
+              "x": 58,
+              "y": 55,
+              "rong": 10,
+              "chuoi": "p-tui-hoa-don",
+              "sau": [],
+              "nhan": "Hóa đơn quán photo",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:to-don",
+              "x": 69,
+              "y": 65,
+              "rong": 17,
+              "chuoi": "p-tui-to-don",
+              "sau": [],
+              "nhan": "Tờ đơn trong bìa nhựa",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:vi",
+              "x": 67,
+              "y": 47,
+              "rong": 13,
+              "chuoi": "p-tui-vi",
+              "sau": [],
+              "nhan": "Ví da nâu",
+              "dau": "phu"
+            },
+            {
+              "sprite": "vung:dien-thoai",
+              "x": 77,
+              "y": 40,
+              "rong": 13,
+              "chuoi": "p-tui-dien-thoai",
+              "sau": [],
+              "nhan": "Điện thoại úp mặt",
+              "dau": "phu"
+            },
+            {
+              "sprite": "vung:tui-vai",
+              "x": 21,
+              "y": 39,
+              "rong": 28,
+              "chuoi": "p-tui-tui-vai",
+              "sau": [],
+              "nhan": "Túi vải mở miệng"
+            },
+            {
+              "sprite": "vung:hop-but",
+              "x": 59,
+              "y": 34,
+              "rong": 19,
+              "chuoi": "p-tui-hop-but",
+              "sau": [],
+              "nhan": "Hộp bút"
+            },
+            {
+              "sprite": "vung:chai-nuoc",
+              "x": 77,
+              "y": 87,
+              "rong": 6,
+              "chuoi": "p-tui-chai",
+              "sau": [],
+              "nhan": "Chai nước dưới đất"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Một nhãn bong nửa mã, một vé xe, một hóa đơn, một tờ đơn có hạn. Đủ để thu hẹp."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Mang túi về phòng CLB. Laptop ở đó."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng bê chiếc túi bằng hai tay, như bê một chậu cây dễ đổ."
+        },
+        {
+          "type": "goto",
+          "to": "p-tui-tra"
+        }
+      ]
+    },
+    {
+      "id": "p-tui-nhan",
+      "title": "Nhãn dán trên bìa giáo trình",
+      "canh": "ghe-da-tui-do",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Nhãn dán trên bìa giáo trình Kinh tế vi mô bị bong một góc. Mã lớp học phần chỉ còn đọc được \"KTVM-0\", rồi một vệt keo. Chữ số cuối đã mất."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Mã đứng đầu thì đọc được. Chữ số cuối thì không."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-tui-nhan"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-tui-ve",
+      "title": "Vé gửi xe màu xanh",
+      "canh": "ghe-da-tui-do",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Vé gửi xe màu xanh, in hình chiếc xe máy. Nhà xe tòa B. Giờ vào: 07:12, ngày 30/10."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "Bảy giờ mười hai sáng nay. Chủ túi đi sớm hơn tớ nhiều."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Nhà xe tòa B. Vé còn ở đây, vậy xe cậu ấy chưa lấy ra."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-tui-toa-b"
+            },
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-tui-sang"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-tui-hoa-don",
+      "title": "Hóa đơn quán photo",
+      "canh": "ghe-da-tui-do",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hóa đơn quán photo cổng trước, giấy nhiệt, chữ mờ dần: bốn mươi trang A4. Thứ Tư, ngày 30/10, 13 giờ 42."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Hôm nay là thứ Tư. Photo lúc một giờ bốn mươi hai chiều. Vậy chủ túi vẫn còn ở trong trường."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-tui-thu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-tui-to-don",
+      "title": "Tờ đơn trong bìa nhựa",
+      "canh": "ghe-da-tui-do",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tờ đơn xin học bổng đã điền tay, kẹp trong bìa nhựa trong. Dấu đỏ ở góc ghi hạn nộp: 17 giờ 00, ngày 30/10/2024. Dòng đầu: \"Khoa Báo c…\", chữ cuối bị mép nhựa che. Họ tên người làm đơn nằm ở đúng chỗ nhựa dày nhất, đọc không ra."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Hạn nộp mười bảy giờ. Hôm nay!"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Khoa Báo c… chỉ có thể là Báo chí. Tên thì mình không rút tờ giấy ra để đọc. Tờ đơn là của người ta."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-tui-khoa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-tui-vi",
+      "title": "Ví da nâu",
+      "canh": "ghe-da-tui-do",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng đưa tay về phía chiếc ví da nâu. Hà Vy giữ cổ tay cậu ấy lại, không nói."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Tớ chỉ xem có thẻ sinh viên không thôi mà."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Chỉ xem thôi cũng là mở."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng rụt tay về, nhét vào túi quần."
+        }
+      ]
+    },
+    {
+      "id": "p-tui-dien-thoai",
+      "title": "Điện thoại úp mặt",
+      "canh": "ghe-da-tui-do",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Ngón tay bạn đã chạm vào mép chiếc điện thoại úp mặt. Bạn rút tay lại.)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Màn hình khóa cũng là chuyện riêng của người ta."
+        }
+      ]
+    },
+    {
+      "id": "p-tui-tui-vai",
+      "title": "Túi vải mở miệng",
+      "canh": "ghe-da-tui-do",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Túi vải thô không móc khóa, không thẻ tên, không logo. Đáy túi có vết cà phê khô bằng đồng xu."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Không có gì ghi tên người. Mình không thò tay xuống đáy."
+        }
+      ]
+    },
+    {
+      "id": "p-tui-hop-but",
+      "title": "Hộp bút",
+      "canh": "ghe-da-tui-do",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hộp bút vải bò xanh, khóa kéo mở nửa chừng. Hai bút bi, một bút chì kim, một bút dạ quang vàng. Không tên."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Bút dạ quang cũng hết mực đúng lúc ôn thi giống tớ."
+        }
+      ]
+    },
+    {
+      "id": "p-tui-chai",
+      "title": "Chai nước dưới đất",
+      "canh": "ghe-da-tui-do",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chai nước nắp xanh, còn quá nửa. Vỏ chai ngoài còn đọng một lớp hơi nước mỏng."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "Còn mát này."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chủ túi rời chỗ này chưa lâu."
+        }
+      ]
+    },
+    {
+      "id": "p-tui-tra",
+      "title": "Phòng CLB: lịch học và danh sách đăng ký",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Phòng CLB, bốn giờ năm phút. Chiếc túi nằm trên bàn giữa sổ tài sản và tách trà nguội của Duy."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Cô Hạnh mở cho tài khoản CLB hai bảng này từ hồi làm phiếu tra cứu: lịch lớp học phần, và ai đăng ký lớp nào. Chỉ có mã, tên, lớp. Không số điện thoại, không điểm."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Còn chưa tới một tiếng nữa là hạn. Đi từ cái nhỏ nhất. Lớp học phần nào có thể là lớp của chủ túi?"
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-tui-lich-hoc"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Nhãn giáo trình: mã lớp bắt đầu bằng \"KTVM-0\". Hóa đơn: thứ Tư. Vé xe: vào sáng nay. Vé còn ghi nhà xe tòa B."
+        },
+        {
+          "type": "task",
+          "text": "Những lớp học phần nào có thể là lớp của chủ túi?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Mỗi món trên ghế đá cho một điều kiện: mã lớp, thứ, buổi, tòa. Phòng học ghi chữ tòa ở đầu mã phòng."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-tui-lop"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Ba lớp. KTVM-03, KTVM-05, KTVM-07."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Ba lớp mà mỗi lớp mấy chục sinh viên. Danh sách đăng ký chỉ ghi mã lớp học phần với mã sinh viên. Lớp sinh hoạt thì nằm ở bảng sinh viên."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tờ đơn ghi Khoa Báo chí. Lớp Báo chí mã bắt đầu bằng BC. Nối hai bảng, lấy ba lớp học phần trên phiếu."
+        },
+        {
+          "type": "task",
+          "text": "Trong ba lớp ấy, những ai là sinh viên Báo chí?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Bảng đăng ký và bảng sinh viên có chung mã sinh viên. Nối theo mã ấy, rồi giữ ba lớp học phần trên phiếu và lớp sinh hoạt bắt đầu bằng BC."
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-tui-dang-ky"
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-tui-nguoi"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Ba người. Hiếu lớp BC24A, Hồng và Toàn lớp BC24B."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Hiếu? Cậu bàn bên hôm mình tra chữ H?"
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Bảng chỉ nói ai đăng ký lớp nào. Chưa nói ai đánh rơi."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Ba cái tên. Phải chọn tìm ai trước."
+        },
+        {
+          "type": "goto",
+          "to": "p-tui-hoi"
+        }
+      ]
+    },
+    {
+      "id": "p-tui-hoi",
+      "title": "Ba cái tên, một chiếc vé gửi xe",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Vé xe ghi vào bãi lúc bảy giờ mười hai. Giờ bắt đầu của ba lớp nằm ngay trên phiếu lớp học phần."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "KTVM-03 vào học lúc bảy rưỡi. KTVM-05 và KTVM-07 chín rưỡi."
+        },
+        {
+          "type": "question",
+          "id": "q-tui-ket-luan",
+          "asker": {
+            "speaker": "tung",
+            "text": "Ba người rồi. Tớ phải chạy đi tìm ai trước?"
+          },
+          "choices": [
+            {
+              "id": "hieu",
+              "text": "Hiếu. Trong ba lớp chỉ lớp của Hiếu vào học lúc 07:30; vé gửi xe ghi vào bãi lúc 07:12. Hai người kia vào lớp 09:30.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "tung",
+                  "expression": "happy",
+                  "text": "Bảy giờ mười hai, vào bãi trước giờ học mười tám phút. Nghe khớp. Tớ đi tìm Hiếu."
+                }
+              ]
+            },
+            {
+              "id": "ca-ba",
+              "text": "Nhắn hỏi cả ba người, ai trả lời trước là chủ túi.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "minh-anh",
+                  "expression": "neutral",
+                  "text": "Cũng được, nhưng còn chưa tới một tiếng. Hai người kia sẽ đọc một tin về chuyện không phải của họ, còn trong ba người đã có một người khớp hơn."
+                }
+              ]
+            },
+            {
+              "id": "mo-vi",
+              "text": "Mở ví xem thẻ sinh viên cho nhanh.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Đã chốt từ đầu: không mở ví. Chưa cần. Vé gửi xe và bảng lớp nói được nhiều hơn tưởng."
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Người mất đồ ở tòa B thường ra hỏi bác bảo vệ trước. Mình xuống sảnh."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Cầm túi theo. Còn bốn mươi phút."
+        },
+        {
+          "type": "goto",
+          "to": "p-tui-gap"
+        }
+      ]
+    },
+    {
+      "id": "p-tui-gap",
+      "title": "Sảnh tòa B: người đang hỏi bác bảo vệ",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Sảnh tòa B, tan tiết cuối. Trước bàn trực của bác Thịnh có một sinh viên đứng thẳng, hai tay vịn mép bàn. Hiếu."
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "annoyed",
+          "text": "Bác ơi, có ai nộp một cái túi vải không ạ? Có giáo trình Kinh tế vi mô với tờ đơn học bổng. Hạn nộp mười bảy giờ."
+        },
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "neutral",
+          "text": "Hôm nay chưa ai nộp túi nào."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Có rồi đây!"
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "surprised",
+          "text": "Túi của tôi!"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Cậu nói xem trong túi còn gì ngoài tờ đơn."
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Ví da nâu, điện thoại, hộp bút vải bò xanh, chai nước. Vé xe vào bãi lúc bảy giờ mười hai."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Đủ rồi. Ví với điện thoại bọn mình không mở. Cậu tự kiểm lại."
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Nguyên vẹn. Nói thẳng nhé: mất tờ này là mất cả kỳ. Cảm ơn."
+        },
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "neutral",
+          "text": "Phòng hành chính đóng đúng năm giờ."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Phòng Công tác sinh viên! Tớ chạy cùng!"
+        },
+        {
+          "type": "goto",
+          "to": "p-tui-ctsv"
+        }
+      ]
+    },
+    {
+      "id": "p-tui-ctsv",
+      "title": "Phòng Công tác sinh viên: mười sáu giờ năm mươi hai",
+      "canh": "phong-ctsv",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Mười sáu giờ năm mươi hai. Hiếu thở dốc, đặt tờ đơn lên quầy. Tùng đứng sau lưng cậu ấy, tay vẫn xách quai túi."
+        },
+        {
+          "type": "line",
+          "speaker": "co-lan",
+          "expression": "neutral",
+          "text": "Còn tám phút. Đưa cô xem."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cô Lan đọc từng dòng, mở ngăn kéo lấy con dấu, ấn xuống góc giấy. Mực đỏ nhòe nhẹ, dòng chữ nhỏ bên dưới: nhận 16 giờ 52."
+        },
+        {
+          "type": "line",
+          "speaker": "co-lan",
+          "expression": "smile",
+          "text": "Nhận rồi em."
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Dạ. Cảm ơn cô. Cảm ơn mấy người."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Con dấu đỏ trên góc tờ đơn vẫn còn ướt."
+        },
+        {
+          "type": "end"
+        }
+      ]
     }
   ],
   "thuThach": {
@@ -14704,6 +15646,238 @@ const GOC = {
         "id": "ev-mic-phieu",
         "title": "PX-17: micro không dây sang tủ thiết bị dùng chung",
         "description": "Kết quả nối phiếu luân chuyển với sổ tài sản: phiếu PX-17 đã nhận, chuyển micro không dây (MIC-02) tới tủ thiết bị dùng chung, tổ thiết bị nhận.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-tui-lop": {
+      "id": "c-tui-lop",
+      "tieuDe": "Lịch lớp học phần",
+      "deBai": "Giáo trình ghi mã lớp học phần bị bong mất chữ số cuối, vé xe ghi nhà xe tòa B vào buổi sáng, hóa đơn ghi thứ Tư. Những lớp học phần nào khớp cả bốn điều?",
+      "manhMoiLienQuan": [
+        "clue-tui-nhan",
+        "clue-tui-toa-b",
+        "clue-tui-sang",
+        "clue-tui-thu"
+      ],
+      "mucTieuHoc": "Ôn ghép nhiều điều kiện bằng AND; chỉ biết đầu mã thì dùng \"bắt đầu bằng\".",
+      "soDongKyVong": 3,
+      "sqlChuan": "SELECT ma_lhp, mon, phong, gio_bat_dau FROM lich_hoc WHERE ma_lhp LIKE 'KTVM-0%' AND thu = 'THU_TU' AND ca = 'SANG' AND phong LIKE 'B%';",
+      "bamO": "ma_lhp",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không lớp nào. Nhãn bong mất chữ số cuối. Chỉ biết đầu mã thì không so bằng được."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 137
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả lịch của trường, một trăm ba mươi bảy lớp học phần. Mình chỉ cần lớp của chủ túi."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 9
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Chín lớp, lẫn lớp của môn khác hoặc của ngày khác. Có điều kiện chưa dùng tới."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 6
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Sáu lớp thứ Tư. Có lớp buổi chiều, có lớp ở tòa khác. Vé xe nói gì?"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 5
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Năm lớp. Vé xe chỉ nhà xe tòa B, hóa đơn chỉ thứ Tư. Còn một điều kiện chưa dùng."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 4
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "thinking",
+              "text": "Bốn lớp, mà có một lớp học lúc mười ba rưỡi. Vé xe vào bãi lúc bảy giờ mười hai."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Ba lớp. Ghim lại, rồi đi tìm người."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-tui-lop",
+        "title": "Ba lớp Kinh tế vi mô sáng thứ Tư ở tòa B",
+        "description": "Kết quả truy vấn: KTVM-03 (B204, 07:30), KTVM-05 (B102, 09:30), KTVM-07 (B305, 09:30). Cả ba là lớp học sáng thứ Tư, tòa B, mã bắt đầu KTVM-0.",
+        "giaTri": [
+          "KTVM-03",
+          "KTVM-05",
+          "KTVM-07"
+        ]
+      },
+      "ghiChu": []
+    },
+    "c-tui-nguoi": {
+      "id": "c-tui-nguoi",
+      "tieuDe": "Danh sách đăng ký nối với bảng sinh viên",
+      "deBai": "Danh sách đăng ký chỉ ghi mã lớp học phần và mã sinh viên; tên và lớp sinh hoạt nằm ở bảng sinh viên. Trong ba lớp trên phiếu, những ai thuộc lớp Báo chí?",
+      "manhMoiLienQuan": [
+        "clue-tui-khoa"
+      ],
+      "mucTieuHoc": "Ôn nối hai bảng theo mã sinh viên; lấy nhiều lớp học phần từ phiếu (\"là một trong\"); lọc tiếp theo đầu mã lớp.",
+      "soDongKyVong": 3,
+      "sqlChuan": "SELECT dang_ky_hoc.ma_lhp, sinh_vien.ma_sv, ho_dem, ten, ma_lop FROM dang_ky_hoc JOIN sinh_vien ON dang_ky_hoc.ma_sv = sinh_vien.ma_sv WHERE ma_lhp IN ('KTVM-03', 'KTVM-05', 'KTVM-07') AND ma_lop LIKE 'BC%';",
+      "bangNoi": [
+        "sinh_vien"
+      ],
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "loi-cot"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Máy báo không có cột đó. Bảng đăng ký không ghi tên, không ghi lớp sinh hoạt. Tên và lớp nằm ở bảng sinh viên. Phải nối hai bảng trước đã."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không ai. Lớp sinh hoạt là BC24A, BC24B… không có lớp nào tên đúng là BC. Chỉ biết đầu mã thì phải so theo đầu mã."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 1
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "thinking",
+              "text": "Một người, mà tờ đơn chỉ ghi Khoa Báo c…, không ghi lớp nào. Đừng gán cho họ một lớp."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 11
+          },
+          "loi": [
+            {
+              "speaker": "minh-anh",
+              "expression": "neutral",
+              "text": "Mười một người của ba lớp, đủ khoa. Tờ đơn ghi Báo chí."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 231
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Hơn hai trăm người Báo chí, của đủ mọi lớp học phần. Mình chỉ xét ba lớp trên phiếu."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 2921
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Cả danh sách đăng ký của trường, gần ba nghìn dòng. Lọc đi."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Ba người. Một người học lớp bảy rưỡi."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-tui-nguoi",
+        "title": "Ba sinh viên Báo chí trong ba lớp",
+        "description": "Kết quả nối: Hiếu (BC24A) học KTVM-03 lúc 07:30; Hồng (BC24B) học KTVM-05 và Toàn (BC24B) học KTVM-07, cùng lúc 09:30. Bảng chỉ nói ai đăng ký lớp nào, chưa nói ai đánh rơi túi.",
         "giaTri": []
       },
       "ghiChu": []
@@ -16560,6 +17734,100 @@ const GOC = {
         "Nội dung": "Trong chín lượt Tùng dẫn có một lượt ghi điểm đến NHA_XE. Tám lượt còn lại đều là KTX."
       },
       "quotes": {}
+    },
+    "clue-tui-nhan": {
+      "id": "clue-tui-nhan",
+      "loai": "clue",
+      "heading": "[KTVM-0]",
+      "fields": {
+        "Tiêu đề": "Mã lớp học phần trên nhãn giáo trình",
+        "Giá trị cho trình dựng": "KTVM-0",
+        "Nguồn": "Nhãn dán trên bìa giáo trình Kinh tế vi mô",
+        "Nội dung": "Nhãn bong mất chữ số cuối. Còn đọc được \"KTVM-0\", tức mã lớp học phần từ KTVM-01 tới KTVM-09."
+      },
+      "quotes": {}
+    },
+    "clue-tui-toa-b": {
+      "id": "clue-tui-toa-b",
+      "loai": "clue",
+      "heading": "[Tòa B]",
+      "fields": {
+        "Tiêu đề": "Nhà xe tòa B",
+        "Giá trị cho trình dựng": "B",
+        "Nguồn": "Vé gửi xe màu xanh",
+        "Nội dung": "Vé ghi nhà xe tòa B. Mã phòng học bắt đầu bằng chữ tòa: phòng tòa B là B…"
+      },
+      "quotes": {}
+    },
+    "clue-tui-sang": {
+      "id": "clue-tui-sang",
+      "loai": "clue",
+      "heading": "[Buổi sáng]",
+      "fields": {
+        "Tiêu đề": "Vào bãi lúc 07:12 sáng nay",
+        "Giá trị cho trình dựng": "SANG",
+        "Nguồn": "Vé gửi xe màu xanh",
+        "Nội dung": "Giờ vào 07:12, ngày 30/10. Cột ca của lịch học ghi SANG cho các lớp buổi sáng, CHIEU cho buổi chiều."
+      },
+      "quotes": {}
+    },
+    "clue-tui-thu": {
+      "id": "clue-tui-thu",
+      "loai": "clue",
+      "heading": "[Thứ Tư]",
+      "fields": {
+        "Tiêu đề": "Hôm nay là thứ Tư",
+        "Giá trị cho trình dựng": "THU_TU",
+        "Nguồn": "Hóa đơn quán photo",
+        "Nội dung": "Hóa đơn photo ghi thứ Tư, ngày 30/10/2024, 13 giờ 42. Cột thu của lịch học ghi THU_TU cho thứ Tư."
+      },
+      "quotes": {}
+    },
+    "clue-tui-khoa": {
+      "id": "clue-tui-khoa",
+      "loai": "clue",
+      "heading": "[Báo chí]",
+      "fields": {
+        "Tiêu đề": "Khoa Báo chí trên tờ đơn",
+        "Giá trị cho trình dựng": "BC",
+        "Nguồn": "Tờ đơn xin học bổng trong bìa nhựa",
+        "Nội dung": "Dòng đầu tờ đơn còn đọc được \"Khoa Báo c…\", chữ cuối bị mép nhựa che. Mã lớp sinh hoạt của khoa Báo chí bắt đầu bằng BC."
+      },
+      "quotes": {}
+    },
+    "doc-tui-lich-hoc": {
+      "id": "doc-tui-lich-hoc",
+      "loai": "doc",
+      "heading": "Lịch các lớp học phần",
+      "fields": {
+        "Tiêu đề": "Lịch lớp học phần học kỳ này",
+        "Nguồn": "Phòng Đào tạo, tài khoản CLB được xem",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Mỗi lớp học phần một dòng, sáu cột: mã lớp, tên môn, phòng, thứ, ca, giờ bắt đầu.",
+          "Thứ viết THU_HAI … THU_BAY; ca viết SANG hoặc CHIEU. Môn Kinh tế vi mô có nhiều lớp, mã từ KTVM-01.",
+          "Chỉ là lịch. Bảng không ghi ai ngồi trong lớp nào."
+        ]
+      }
+    },
+    "doc-tui-dang-ky": {
+      "id": "doc-tui-dang-ky",
+      "loai": "doc",
+      "heading": "Danh sách đăng ký lớp học phần",
+      "fields": {
+        "Tiêu đề": "Ai đăng ký lớp học phần nào",
+        "Nguồn": "Phòng Đào tạo, tài khoản CLB được xem",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Hai cột: mã lớp học phần, mã sinh viên. Mỗi lượt đăng ký một dòng.",
+          "Tên và lớp sinh hoạt không nằm ở đây; chúng nằm ở bảng sinh viên, nối theo mã sinh viên.",
+          "Đăng ký lớp không có nghĩa là hôm ấy người đó có mặt."
+        ]
+      }
     }
   },
   "soTay": {
@@ -16802,6 +18070,18 @@ const GOC = {
       "soDong": 1,
       "noi": "noi-dung-mvp/thu-thach/phu-micro.md:3 thẻ c-mic-phieu, SQL chuẩn",
       "resultId": "ev-mic-phieu"
+    },
+    {
+      "sql": "SELECT ma_lhp, mon, phong, gio_bat_dau FROM lich_hoc WHERE ma_lhp LIKE 'KTVM-0%' AND thu = 'THU_TU' AND ca = 'SANG' AND phong LIKE 'B%';",
+      "soDong": 3,
+      "noi": "noi-dung-mvp/thu-thach/phu-tui-do.md:3 thẻ c-tui-lop, SQL chuẩn",
+      "resultId": "ev-tui-lop"
+    },
+    {
+      "sql": "SELECT dang_ky_hoc.ma_lhp, sinh_vien.ma_sv, ho_dem, ten, ma_lop FROM dang_ky_hoc JOIN sinh_vien ON dang_ky_hoc.ma_sv = sinh_vien.ma_sv WHERE ma_lhp IN ('KTVM-03', 'KTVM-05', 'KTVM-07') AND ma_lop LIKE 'BC%';",
+      "soDong": 3,
+      "noi": "noi-dung-mvp/thu-thach/phu-tui-do.md:29 thẻ c-tui-nguoi, SQL chuẩn",
+      "resultId": "ev-tui-nguoi"
     },
     {
       "sql": "SELECT ma_don, nguoi_dat, so_tien, so_luong_co FROM don_linh_kien JOIN kiem_ke ON don_linh_kien.linh_kien = kiem_ke.linh_kien WHERE so_luong_co = 0;",
@@ -18523,6 +19803,220 @@ const GOC = {
             "SV240251",
             "SV240466",
             "KTX"
+          ]
+        ]
+      },
+      {
+        "ten": "lich_hoc",
+        "cot": [
+          {
+            "ten": "ma_lhp",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "mon",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "phong",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "thu",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ca",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "gio_bat_dau",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "KTVM-01",
+            "Kinh tế vi mô",
+            "A205",
+            "THU_HAI",
+            "SANG",
+            "07:30"
+          ],
+          [
+            "KTVM-02",
+            "Kinh tế vi mô",
+            "B204",
+            "THU_BA",
+            "SANG",
+            "07:30"
+          ],
+          [
+            "KTVM-03",
+            "Kinh tế vi mô",
+            "B204",
+            "THU_TU",
+            "SANG",
+            "07:30"
+          ],
+          [
+            "KTVM-04",
+            "Kinh tế vi mô",
+            "B301",
+            "THU_TU",
+            "CHIEU",
+            "13:30"
+          ],
+          [
+            "KTVM-05",
+            "Kinh tế vi mô",
+            "B102",
+            "THU_TU",
+            "SANG",
+            "09:30"
+          ],
+          [
+            "KTVM-06",
+            "Kinh tế vi mô",
+            "C203",
+            "THU_TU",
+            "SANG",
+            "07:30"
+          ],
+          [
+            "KTVM-07",
+            "Kinh tế vi mô",
+            "B305",
+            "THU_TU",
+            "SANG",
+            "09:30"
+          ],
+          [
+            "KTVM-08",
+            "Kinh tế vi mô",
+            "A101",
+            "THU_TU",
+            "SANG",
+            "09:30"
+          ],
+          [
+            "KTVM-09",
+            "Kinh tế vi mô",
+            "B204",
+            "THU_NAM",
+            "SANG",
+            "09:30"
+          ],
+          [
+            "KTVM-11",
+            "Kinh tế vi mô",
+            "B204",
+            "THU_TU",
+            "SANG",
+            "07:30"
+          ],
+          [
+            "KTVM-12",
+            "Kinh tế vi mô",
+            "B102",
+            "THU_TU",
+            "SANG",
+            "09:30"
+          ]
+        ]
+      },
+      {
+        "ten": "dang_ky_hoc",
+        "cot": [
+          {
+            "ten": "ma_lhp",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ma_sv",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "KTVM-03",
+            "SV240228"
+          ],
+          [
+            "KTVM-03",
+            "SV240201"
+          ],
+          [
+            "KTVM-03",
+            "SV240204"
+          ],
+          [
+            "KTVM-03",
+            "SV240304"
+          ],
+          [
+            "KTVM-03",
+            "SV240307"
+          ],
+          [
+            "KTVM-05",
+            "SV240412"
+          ],
+          [
+            "KTVM-05",
+            "SV240207"
+          ],
+          [
+            "KTVM-05",
+            "SV240210"
+          ],
+          [
+            "KTVM-07",
+            "SV240418"
+          ],
+          [
+            "KTVM-07",
+            "SV240213"
+          ],
+          [
+            "KTVM-07",
+            "SV240216"
+          ],
+          [
+            "KTVM-04",
+            "SV240105"
+          ],
+          [
+            "KTVM-04",
+            "SV240122"
+          ],
+          [
+            "KTVM-11",
+            "SV240146"
+          ],
+          [
+            "KTVM-06",
+            "SV240131"
+          ],
+          [
+            "KTVM-08",
+            "SV240415"
+          ],
+          [
+            "KTVM-01",
+            "SV240310"
+          ],
+          [
+            "KTVM-02",
+            "SV240313"
+          ],
+          [
+            "KTVM-09",
+            "SV240316"
+          ],
+          [
+            "KTVM-12",
+            "SV240219"
           ]
         ]
       }
