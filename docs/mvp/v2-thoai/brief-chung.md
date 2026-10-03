@@ -41,6 +41,9 @@ khoanh-tay); Duy chỉ neutral, smile, serious.
 5. **Trò đùa chạy dài** (số cốc trà đá Tùng nợ, "tớ cá là…") giữ nguyên tinh thần, số tự nhảy ngoài màn hình.
 6. Không đổi **dữ kiện**: ngày giờ, mã sinh viên, mã lớp, số dòng, tên tệp, nội dung dữ liệu, ai biết gì lúc nào.
    Không để nhân vật biết trước điều chỉ lộ ra ở vụ sau.
+7. (Rút ra khi duyệt Vụ 1) **Câu mang manh mối, quy chế, mốc ngày giờ, nguyên văn giấy tờ thì GIỮ NGUYÊN NGHĨA**, chỉ được
+   gọt chữ. Đừng cắt câu giải thích luật (ai được xem gì, vì sao), đừng thay nguyên văn một tờ giấy bằng lời kể lại,
+   đừng đưa đáp án của màn chơi vào lời nhắc. Câu gài cho vụ sau (bác Thịnh "Sổ ghi tên người…", "Căn cứ vào đâu?") giữ y.
 
 ## Định dạng (bắt buộc giữ để máy đọc được)
 - Giữ NGUYÊN mọi tiêu đề `## <mã>` và thứ tự của chúng (máy gắn lời vào khung bằng mã). Không thêm/bớt mã.
