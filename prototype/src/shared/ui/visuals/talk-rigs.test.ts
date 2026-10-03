@@ -8,10 +8,10 @@ describe('bộ nhép môi', () => {
   });
 
   it('chỉ bật khi ảnh đang hiện đúng là tệp nguồn của bộ đó', () => {
-    const anchor = artUrlOfFile('/src/assets/characters/char-minh-anh-anchor.png');
-    const worried = artUrlOfFile('/src/assets/characters/char-minh-anh-worried.png');
-    expect(talkRigFor('minh-anh', anchor)?.sourceFile).toBe('/src/assets/characters/char-minh-anh-anchor.png');
-    expect(talkRigFor('minh-anh', worried)?.sourceFile).toBe('/src/assets/characters/char-minh-anh-worried.png');
+    const anchor = artUrlOfFile('/src/assets/characters/char-minh-anh-anchor.webp');
+    const worried = artUrlOfFile('/src/assets/characters/char-minh-anh-worried.webp');
+    expect(talkRigFor('minh-anh', anchor)?.sourceFile).toBe('/src/assets/characters/char-minh-anh-anchor.webp');
+    expect(talkRigFor('minh-anh', worried)?.sourceFile).toBe('/src/assets/characters/char-minh-anh-worried.webp');
     expect(talkRigFor('minh-anh', '/khac.png')).toBeUndefined();
     expect(talkRigFor('minh-anh', undefined)).toBeUndefined();
     expect(talkRigFor('quan', anchor)).toBeUndefined();

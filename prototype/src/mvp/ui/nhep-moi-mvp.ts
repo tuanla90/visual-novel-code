@@ -112,7 +112,7 @@ function bo(ten: string, mouth: string, hopMieng: Hop, eyes: string, hopMat: Hop
   return [
     ten,
     {
-      sourceFile: `${ten}.png`,
+      sourceFile: `${ten}.webp`,
       width: 768,
       height: 1360,
       mouth: { src: mouth, x: hopMieng[0], y: hopMieng[1], w: hopMieng[2], h: hopMieng[3] },

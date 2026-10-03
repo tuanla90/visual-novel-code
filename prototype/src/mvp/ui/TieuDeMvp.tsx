@@ -4,11 +4,11 @@
  * Chơi mới khi đang có ván → hỏi xác nhận trước khi xóa (lỡ tay là mất tiến độ).
  */
 import './tieu-de-mvp.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AudioSettingsModal } from '../../shared/audio/AudioSettingsModal';
 import { ConfirmDialog } from '../../shared/ui/ConfirmDialog';
 import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
-import { anhNen } from './anh-mvp';
+import { anhNen, taiTruocAnh } from './anh-mvp';
 import { LuuNapMvp } from './LuuNapMvp';
 
 export interface TieuDeMvpProps {
@@ -26,6 +26,13 @@ export function TieuDeMvp({ onVao }: TieuDeMvpProps) {
   const coVan = s !== null;
   const coONap = oLuu.some((o) => o !== null);
   const nen = anhNen('cong-truong');
+  // Trong lúc người chơi đọc màn mở màn: tải sẵn nền và nhân vật của đoạn đầu (xe buýt → cổng → sảnh KTX → phòng 408).
+  useEffect(() => {
+    taiTruocAnh([
+      'bg-mvp-xe-buyt', 'bg-mvp-cong-ktx', 'bg-mvp-sanh-ktx', 'bg-mvp-phong-ktx',
+      'char-nguoi-choi', 'char-tung-ao-xanh', 'char-tung-ao-xanh-happy', 'char-tung-ao-xanh-thinking',
+    ]);
+  }, []);
 
   return (
     <main className="tdm" aria-label="Màn hình mở màn">
