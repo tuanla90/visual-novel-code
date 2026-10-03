@@ -145,7 +145,7 @@ export const BO_NHEP_MOI_MVP: ReadonlyMap<string, TalkRig> = new Map<string, Tal
   bo('char-duy', duyMouth, [344, 360, 80, 37], duyEyes, [305, 262, 175, 56]),
   bo('char-duy-smile', duySmileMouth, [338, 352, 89, 40], duySmileEyes, [302, 261, 175, 55]),
   bo('char-duy-serious', duySeriousMouth, [351, 361, 68, 37], duySeriousEyes, [300, 263, 179, 55]),
-  bo('char-nam', namMouth, [364, 331, 68, 37], namEyes, [323, 225, 171, 59]),
+  bo('char-nam', namMouth, [381, 329, 64, 37], namEyes, [340, 230, 152, 43]),
   bo('char-khanh', khanhMouth, [377, 304, 72, 39], khanhEyes, [342, 207, 155, 47]),
   bo('char-thao', thaoMouth, [362, 478, 60, 44], thaoEyes, [306, 379, 181, 69]),
   bo('char-bach', bachMouth, [376, 306, 71, 45], bachEyes, [337, 208, 157, 44]),
