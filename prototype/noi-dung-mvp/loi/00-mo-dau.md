@@ -114,8 +114,13 @@
 
 ## md-08-tuan-cong-dan.1
 - [THẺ CHỮ] **narrator**: Thứ Hai 09/09 → thứ Sáu 13/09/2024 · Tuần sinh hoạt công dân
-- **narrator**: Cả tuần ngồi hội trường nghe nội quy. Buổi cuối, mỗi người được phát một tấm thẻ lịch in theo khoa, dưới cùng có dòng "Họ tên / Lớp".
-- **player**: (Viết tên vào luôn, kẻo lẫn với thẻ người khác.)
+- **tung** (happy): Tuần này tớ ngồi bàn đầu, chép đủ từng chữ. Tớ cá luôn.
+
+## md-08-tuan-cong-dan.1b
+- **narrator**: Thứ Tư. Bàn cuối. Tùng ngủ gục trên cuốn sổ mới chép được đúng dòng tiêu đề, bút vẫn kẹp trong tay.
+- **narrator**: Thứ Sáu, cả hội trường xếp hàng chụp ảnh thẻ. Ai cũng bảo ảnh mình xấu, rồi lén xem ảnh người đứng sau.
+- **narrator**: Cả tuần ngồi hội trường nghe nội quy. Buổi cuối, mỗi người được phát một tấm thẻ lịch in theo khoa, dưới cùng có dòng "Họ tên / Lớp" để tự viết.
+- **player**: (Viết tên vào luôn, kẻo lẫn với thẻ của ai.)
 
 ## md-09-ngay-hoi.1
 > NHIỆM VỤ: Ghé bàn CLB Thám Tử
@@ -125,6 +130,11 @@
 - [DÀN DỰNG] Nền nhà văn hóa ngày hội, sân đông sinh viên: gian Robotics bên trái đông nhất (bàn gấp trơn, xe robot tự chế, biển bìa vẽ tay bánh răng nhỏ), dọc bậc thềm là mấy gian CLB khác bàn trơn, mỗi gian vài người; bàn Thám Tử khăn trắng bên phải, một ghế gấp, bảng trống, không ai đứng gần.
 - **narrator**: Sân nhà văn hóa đông nghịt. Gian Robotics có chiếc xe robot tự chế trên bàn, mấy bạn đứng chen nhau xem.
 - **narrator**: Bàn CLB Thám Tử nằm tận trong góc, chỉ có một chị ngồi trực.
+- **tung** (happy): Tớ chỉ đi xem thôi nhé. Không đăng ký CLB nào đâu, năm nhất phải lo học.
+
+## md-09-ngay-hoi.2b
+- **narrator**: Mười phút sau, trên tay Tùng có bốn tờ đăng ký, một cái quạt giấy của CLB Guitar và nửa cái bánh rán của CLB Nấu ăn.
+- **tung** (neutral): Chị ơi, đây là bàn CLB Thám Tử ạ? Chị là thành viên CLB ạ?
 - **tung** (neutral): Chị ơi, đây là bàn CLB Thám Tử ạ? Chị là thành viên ở đây ạ?
 - **minh-anh** (neutral): Ừ. Chị trực bàn hôm nay.
 - **tung** (neutral): CLB mình đang điều tra vụ nào không chị?

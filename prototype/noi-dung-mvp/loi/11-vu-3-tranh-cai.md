@@ -194,6 +194,7 @@
 
 ## v3-bd-thu-vien.1
 - **narrator**: Thư viện buổi chiều. Cửa từ kêu tít mỗi lần có người quẹt thẻ đi qua.
+- **narrator**: Bàn nào trống cũng có một chai nước hoặc một cuốn vở nằm giữ chỗ. Chủ của chúng thì không thấy đâu.
 - **ha-vy** (smile): Tối thứ Hai nào tớ cũng ngồi bàn cạnh cửa sổ kia.
 - **tung** (thinking): Vào ra đều phải quẹt thẻ nhỉ. Thế là cái cửa này nhớ giờ của từng người.
 - **narrator**: Ở bàn cạnh cửa sổ, Hoài đang cúi xuống chồng sách, chưa thấy ba đứa.

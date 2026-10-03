@@ -198,7 +198,14 @@
 > NHIỆM VỤ: Đóng hồ sơ mùa
 - **narrator**: Chiều thứ Tư, phòng CLB. Hoài tới sớm, mang theo một xấp giấy nháp còn trắng một mặt.
 - **duy** (neutral): Quỹ đóng thì vẫn họp. Giấy còn nửa tập, bút còn ba cái.
+- **duy** (smile): Bánh quy thì tới hộp BQ-07, còn nguyên. Hôm nay có khách nên chưa ai dám bóc.
 - **nam** (neutral): Tớ qua được một lúc, xong phải về lo tiền giải với anh Bách, chị Thảo. Cảm biến của xưởng ghi mỗi giây một dòng. Tớ muốn tự viết chương trình đọc nó.
+- **tung** (happy): Tớ cá là kỳ sau CLB mình đông gấp đôi.
+- **ha-vy** (neutral): Lần cá thứ hai mươi ba. Trật hai mươi mốt.
+- **tung** (surprised): Tuần trước cậu bảo mới có bốn!
+- **ha-vy** (smile): Tuần này cậu cá với Duy suốt giải bóng của khoa. Tớ chỉ ngồi đếm.
+- **hoai** (neutral): …Tớ cá theo Tùng được không?
+- **tung** (gai-dau): Thế thì lần này tớ phải thắng.
 - **ha-vy** (smile): Từ một chữ H tới một sổ quỹ. Mỗi bước là một phiếu.
 - **minh-anh** (neutral): Hồ sơ cuối kỳ xong. Em là người kéo phiếu đầu tiên của vụ này, em đóng dấu đi.
 - [DÀN DỰNG] Bạn đóng dấu lưu trữ lên bìa hồ sơ. {{nv.duy}} ghim cái huy hiệu sứt lên bảng điều tra, cạnh tờ giấy nhớ ghi lời chú Cường.

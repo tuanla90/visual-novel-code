@@ -73,6 +73,7 @@
 
 - [LỜI md-01-ktx.2]
 - [ẢNH chibi-408-vali]
+- [ẢNH chibi-vali-tho]
 - [ĐI TỚI md-03-toa-b]
 
 ### md-03-toa-b — Sảnh tòa B: cái hộp tôn cũ {cảnh: sanh-toa-b}
@@ -90,6 +91,8 @@
 ### md-08-tuan-cong-dan — Chuyển cảnh: tuần sinh hoạt công dân {cảnh: hoi-truong}
 
 - [LỜI md-08-tuan-cong-dan.1]
+- [ẢNH chibi-ngu-gat]
+- [LỜI md-08-tuan-cong-dan.1b]
 - [HIỆN TÀI LIỆU doc-the-lich-cua-toi]
 - [ĐI TỚI md-09-ngay-hoi]
 
@@ -98,6 +101,8 @@
 - [LỜI md-09-ngay-hoi.1]
 
 - [LỜI md-09-ngay-hoi.2]
+- [ẢNH chibi-ngay-hoi]
+- [LỜI md-09-ngay-hoi.2b]
 - [LỌC THỬ lt-ngay-hoi · 1 dòng · chọn ma_sv = SV240251]
 
 ```sql

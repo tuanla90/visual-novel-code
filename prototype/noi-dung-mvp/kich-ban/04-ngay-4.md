@@ -69,6 +69,7 @@
 
 - [LỜI n4-toi.1]
 - [ẢNH chibi-duy-hop-banh]
+- [ẢNH chibi-banh-quy]
 - [LỜI n4-toi.1b]
 - [LỜI n4-toi.1c]
 - [LỜI n4-toi.1d]
