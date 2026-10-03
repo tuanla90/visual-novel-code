@@ -1565,7 +1565,7 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Nền nhà văn hóa ngày hội (nền chưa vẽ người); gian Robotics bên trái, cờ in hình bánh răng (ảnh cần vẽ thêm — xem báo cáo rà soát A4/A5); bàn Thám Tử bên phải."
+          "text": "Nền nhà văn hóa ngày hội, sân đông sinh viên: gian Robotics bên trái đông nhất (bàn gấp trơn, xe robot tự chế, biển bìa vẽ tay bánh răng nhỏ), dọc bậc thềm là mấy gian CLB khác bàn trơn, mỗi gian vài người; bàn Thám Tử khăn trắng bên phải, một ghế gấp, bảng trống, không ai đứng gần."
         },
         {
           "type": "line",
