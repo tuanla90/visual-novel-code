@@ -250,7 +250,41 @@ export function coTrongHoSo(s: TrangThaiMvp, id: string): boolean {
   );
 }
 
-export function thoaDieuKien(s: TrangThaiMvp, dk: DieuKienMvp | null): boolean {
+export function phanTramBiMat(kb: KichBanMvp, s: TrangThaiMvp): number {
+  let tong = 0;
+  let dat = 0;
+
+  for (let i = 1; i <= 4; i++) {
+    tong++;
+    if (coTrongHoSo(s, `clue-loi-nhan-linh-${i}`)) dat++;
+  }
+
+  const traDa = ['ket-tra-da', 'tin-bd-tra-da-vao', 'v3-bd-tra-da-vao', 'v5-bd-tra-da-vao'];
+  for (const c of traDa) {
+    tong++;
+    if (s.daXemDiem?.includes(c) || (c === 'ket-tra-da' && coTrongHoSo(s, 'vu1-ket-that'))) dat++;
+  }
+
+  const chuoiVung = new Set<string>();
+  for (const c of kb.chuoi) {
+    for (const n of c.nodes) {
+      if (n.type === 'explore') {
+        for (const d of n.diem) {
+          // Chỉ chi tiết ẩn thật: điểm vung: không dấu (điểm ! / ? là việc ai cũng thấy).
+          if (d.sprite.startsWith('vung:') && !d.dau) chuoiVung.add(d.chuoi);
+        }
+      }
+    }
+  }
+  for (const c of chuoiVung) {
+    tong++;
+    if (s.daXemDiem?.includes(c)) dat++;
+  }
+
+  return tong === 0 ? 0 : Math.floor((dat / tong) * 100);
+}
+
+export function thoaDieuKien(kb: KichBanMvp, s: TrangThaiMvp, dk: DieuKienMvp | null): boolean {
   if (!dk) return true;
   switch (dk.kind) {
     case 'co':
@@ -258,9 +292,11 @@ export function thoaDieuKien(s: TrangThaiMvp, dk: DieuKienMvp | null): boolean {
     case 'khong-co':
       return !coTrongHoSo(s, dk.id);
     case 'va':
-      return dk.cac.every((c) => thoaDieuKien(s, c));
+      return dk.cac.every((c) => thoaDieuKien(kb, s, c));
     case 'hoac':
-      return dk.cac.some((c) => thoaDieuKien(s, c));
+      return dk.cac.some((c) => thoaDieuKien(kb, s, c));
+    case 'bi-mat':
+      return phanTramBiMat(kb, s) >= dk.muc;
   }
 }
 
@@ -367,7 +403,7 @@ function luuTuyen(s: TrangThaiMvp): TiepTucTuyenMvp {
     conTro: s.conTro, canh: s.canh, nhiemVu: s.nhiemVu, nhacViec: s.nhacViec,
     thuThachDangLam: s.thuThachDangLam, duKienDangLam: s.duKienDangLam, hoiDap: s.hoiDap,
     khamPha: s.khamPha, doiChat: s.doiChat, choHienTaiLieu: s.choHienTaiLieu, sauKhiHien: s.sauKhiHien,
-    bang: s.bang, hoSoCo: maHoSo(s),
+    bang: s.bang, ngayThang: s.ngayThang ?? null, hoSoCo: maHoSo(s),
   };
 }
 
@@ -441,6 +477,8 @@ function batDauVuSau(s: TrangThaiMvp, vu: Pick<VuSauMvp, 'id' | 'chuoi'>, phu: T
     // Một việc phụ đang tạm cất vẫn tồn tại khi chuyển sang vụ chính kế tiếp.
     phu: phu ?? (s.phu?.tamDung ? { ...s.phu, veLai: s.conTro ? { ...s.conTro } : s.phu.veLai, giaiDoan: s.giaiDoan, tuyenVeLai: luuTuyen(s) } : null),
     conTro: { chuoi: vu.chuoi, nut: 0, boiCanh: 'vu' },
+    // Vụ / việc phụ mới bắt đầu ở ngày khai trong lich.md; ngày đặt giữa vụ trước bằng [NGÀY] không mang sang.
+    ngayThang: null,
     khamPha: null,
     hoiDap: null,
     doiChat: null,
@@ -665,7 +703,7 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
         s = nhayToi(s, nut.to, boiCanh);
         break;
       case 'jump-if':
-        s = thoaDieuKien(s, nut.dieuKien) ? nhayToi(s, nut.to, boiCanh) : tienNut(s);
+        s = thoaDieuKien(kb, s, nut.dieuKien) ? nhayToi(s, nut.to, boiCanh) : tienNut(s);
         break;
       case 'consequence': {
         const kq = apHauQua(s, nut.hauQua);
@@ -683,11 +721,14 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
         if (!ket) return loi(s, 'Lịch không có mục Kết.');
         const chuoiThat = timChuoi(kb, ket.that);
         const dieuKien = chuoiThat?.nodes.find((n) => n.type === 'condition');
-        const that = dieuKien?.type === 'condition' ? thoaDieuKien(s, dieuKien.dieuKien) : false;
+        const that = dieuKien?.type === 'condition' ? thoaDieuKien(kb, s, dieuKien.dieuKien) : false;
         // Ghi kết ngay lúc rẽ: chuỗi kết thật được phép [ĐI TỚI] chuỗi khác (đổi cảnh) trước [KẾT THÚC].
         s = { ...nhayToi(s, that ? ket.that : ket.thuong, 'ket'), ketQua: that ? 'that' : 'thuong' };
         break;
       }
+      case 'set-date':
+        s = tienNut({ ...s, ngayThang: nut.date });
+        break;
       case 'condition':
       case 'note':
       case 'stage':
@@ -715,7 +756,7 @@ export function danhSachDiaDiem(kb: KichBanMvp, s: TrangThaiMvp): DiaDiemHienMvp
         duKien: dk,
         tonKhung: tonVao + dd.tonKhung.moiDuKien,
         daLam: dk.lap === 'mot-lan' && s.duKienDaLam.includes(dk.id),
-        khoa: !thoaDieuKien(s, dk.can),
+        khoa: !thoaDieuKien(kb, s, dk.can),
       });
     }
     ra.push({ diaDiem: dd, duKien });
@@ -757,7 +798,7 @@ export function khungNhin(kb: KichBanMvp, s: TrangThaiMvp): KhungNhinMvp {
     case 'line-pick':
       return { kind: 'line-pick', nut, lanThu: lanThu(nut.id) };
     case 'branch':
-      return { kind: 'branch', nut, luaChon: nut.choices.filter((c) => thoaDieuKien(s, c.khi)) };
+      return { kind: 'branch', nut, luaChon: nut.choices.filter((c) => thoaDieuKien(kb, s, c.khi)) };
     case 'show-document':
       return { kind: 'show-document', documentId: nut.documentId };
     case 'image':

@@ -2,8 +2,41 @@
 
 <!-- Lời Vụ 3 "Tranh cãi trong nhóm" — bản đầu, chờ phiên truyện rà. Bốn cách đọc một phiếu: Tùng kết luận vội; Minh Anh không kết tội nhưng đẩy việc điều tra (Nam là đầu mối duy nhất, cần biết đủ để mời lên chưa); Hà Vy đòi xem lại cách đếm; Duy chờ nguồn thứ hai. Nam phòng thủ nhưng hợp tác. Bản ghi quẹt thẻ thư viện là của chính Nam và chính Hà Vy xin ra (không tra người khác). Nam chưa có ảnh: chỉ neutral. -->
 
+
+## v3-mo.qua.1
+- [THẺ CHỮ] **narrator**: Chủ nhật, 20 tháng 10 · Ngày Phụ nữ Việt Nam
+- **tung** (gai-dau): Mọi người ơi, cứu tớ. Hôm nay 20/10, tặng gì cho một bạn nữ bây giờ?
+- **ha-vy** (thinking): Bạn nào?
+- **tung** (gai-dau): Thì… Hoài. Bên Báo chí ấy.
+- **minh-anh** (happy): Bạn nộp thư hôm họp rà soát à. Thế em biết gì về bạn ấy rồi?
+- **tung** (thinking): Biết… bạn ấy nói thẳng. Với cả không thích ai nói hộ mình.
+- **duy** (serious): Hôm nay 20/10 thật à? Tớ chưa mua gì cho mẹ.
+- **minh-anh** (neutral): Đi luôn đi. Chiều là chợ hoa hết sạch.
+- **player**: (Tùng nhờ chọn quà. Hoài là người thế nào nhỉ?)
+
+## v3-mo.qua.hong
+- **player**: Hoa hồng sáp đi. Đẹp, lại để được lâu.
+- **tung** (happy): Chuẩn. Cửa hàng đối diện cổng có cả hộp gói sẵn.
+- [DÀN DỰNG] Tối hôm ấy, sân ký túc xá.
+- **narrator**: Hoài nhận hộp hoa, nói "Cảm ơn cậu." Hai người đứng thêm một lúc, không ai tìm ra câu thứ hai. Hoài bảo còn bài tập, về trước.
+- **tung** (worried): …Đẹp mà nhỉ?
+
+## v3-mo.qua.gau
+- **player**: Gấu bông đội mũ cử nhân? Dễ thương, khó mà chê.
+- **tung** (happy): Ừ nhỉ. Ai chẳng thích gấu.
+- [DÀN DỰNG] Tối hôm ấy, sân ký túc xá.
+- **narrator**: Hoài cầm con gấu, cười một cái rất lịch sự: "Dễ thương. Cảm ơn cậu." Suốt quãng đường về, con gấu bị kẹp chặt dưới nách, như sợ ai trông thấy.
+- **tung** (gai-dau): Bạn ấy cười rồi đấy. Chắc là… được.
+
+## v3-mo.qua.so
+- **player**: Một cuốn sổ tay nhỏ với cây bút. Học Báo chí, đi đâu cũng phải ghi.
+- **tung** (surprised): Ừ ha! Bạn ấy ghi chép suốt mà.
+- [DÀN DỰNG] Tối hôm ấy, sân ký túc xá.
+- **narrator**: Hoài lật cuốn sổ, thử bút ngay trang đầu, rồi bật cười: "Tớ ghi luôn chuyện đầu tiên nhé. Hôm nhập học có người dẫn tớ ra tận nhà xe."
+- **narrator**: Tùng đứng im mất mấy giây.
+- **tung** (gai-dau): …Hôm ấy tớ dẫn nhầm thật à?
 ## v3-mo.1
-- [THẺ CHỮ] **narrator**: Vụ 3 — Thứ Năm, 10 tháng 10
+- [THẺ CHỮ] **narrator**: Vụ 3 — Thứ Ba, 22 tháng 10
 - **narrator**: Chiều hôm sau. Phiếu tin gốc vẫn ghim giữa bảng. Bốn người, bốn cách đọc.
 - **tung** (chi-tay): Tài khoản kênh của Robotics. Nam trực kênh. Tối đó xưởng mở, Nam bảo về sớm mà chẳng ai làm chứng. Còn gì nữa?
 - **minh-anh** (serious): Chị không nói là Nam. Nhưng Nam là đầu mối duy nhất mình có, và cô Lan đang chờ. Chị cần biết đã đủ để mời Nam lên hỏi chưa.

@@ -2,8 +2,15 @@
 
 <!-- Lời Vụ 5 "Sổ quỹ" — bản đầu, chờ phiên truyện rà. Kết mùa: Khánh (chủ tịch Hội sinh viên kiêm trưởng CLB Robotics) tự nhận, không bị bêu, không nêu việc riêng; thầy Quang xử lý đúng mực; Nam nhận CLB Robotics. Khánh và Nam chưa có ảnh: chỉ neutral. Không nói "Vương Khánh". -->
 
+## v5-mo.qua
+- **minh-anh** (happy): Thứ Tư tuần sau là 20/11. CLB mình tặng gì thầy cô đây?
+- **tung** (happy): Thầy Quang! Thầy toàn hỏi "căn cứ vào đâu". Tặng thầy cuốn sổ ghi căn cứ.
+- **ha-vy** (smile): Rồi thầy hỏi căn cứ vào đâu mà tặng sổ.
+- **duy** (neutral): Hoa là chắc ăn. Tớ đặt cúc họa mi, mùa này đẹp.
+- **minh-anh** (neutral): Nhớ cả cô Hạnh nữa. Năm nay là năm cuối cô còn đi làm.
+- **player**: (Quà tính sau. Trước 20/11 còn một việc đang chờ ở xưởng.)
 ## v5-mo.1
-- [THẺ CHỮ] **narrator**: Vụ 5 — Thứ Sáu, 18 tháng 10
+- [THẺ CHỮ] **narrator**: Vụ 5 — Thứ Bảy, 16 tháng 11
 - **narrator**: Xưởng Robotics, cuối tuần. Nam đứng giữa các kệ linh kiện, tay cầm bảng kiểm kê, mặt khó coi.
 - **nam** (neutral): Biên bản kiểm kê hôm thứ Ba 15 đây. Tài khoản khóa nên tớ đếm tay từng loại, hai lần.
 - **tung** (worried): Rồi sao?
@@ -198,11 +205,24 @@
 - **duy** (neutral): Nam bảo để lại đây. Và cuốn sổ này giữ nhiều mẩu giấy hơn mình tưởng.
 - [THẺ CHỮ] **narrator**: Dữ liệu chỉ ra ai cần hỏi. Người trả lời mới là người nói "vì sao". Mùa 1 khép lại ở chỗ chứng cứ dừng.
 
+## v5-ket-luan.thieu-bi-mat
+- **minh-anh** (serious): Căn phòng này còn nhiều chỗ mình chưa nhìn kỹ. Thôi, để sau kỳ thi.
+- [THẺ CHỮ] **narrator**: Mùa 1 khép lại. Có những thứ vẫn nằm yên chỗ cũ, chờ người để ý.
+
+## v5-nghi-thi.1
+- [THẺ CHỮ] **narrator**: Tối hôm ấy · liên hoan cuối kỳ
+- **minh-anh** (neutral): Thông báo nhé. Từ tuần sau CLB tạm nghỉ sinh hoạt tới hết kỳ thi. Phòng vẫn giữ, chìa chị cầm.
+- **tung** (worried): Nghỉ thật à? Tớ vừa quen ngồi đây.
+- **duy** (neutral): Không ôn thì tháng sau họp ở phòng thi lại.
+- **ha-vy** (smile): Ôn đi. Đề thi cũng là một bộ dữ liệu.
+
+## v5-con-tiep.1
+- [THẺ CHỮ] **narrator**: Còn tiếp — Vụ 6: "Xem lại"
 ## v5-ngan-tu.1
 > NHIỆM VỤ: Tìm chìa ngăn tủ khóa
-- [THẺ CHỮ] **narrator**: Sau kết — tối hôm ấy, phòng CLB
-- **narrator**: Mọi người sắp về thì Duy bày bốn mẩu giấy rơi ra từ cuốn sổ CLB lên bàn.
-- **duy** (neutral): Bốn mẩu giấy. Mà ngăn dưới tủ hồ sơ thì khóa, tớ chưa bao giờ có chìa.
+- [THẺ CHỮ] **narrator**: Giữa tháng Một năm 2025, thi xong — phòng CLB
+- **narrator**: Buổi đầu tiên sau kỳ thi. Duy bày mấy mẩu giấy rơi ra từ cuốn sổ CLB lên bàn.
+- **duy** (neutral): Giấy thì đủ cả rồi. Mà ngăn dưới tủ hồ sơ thì khóa, tớ chưa bao giờ có chìa.
 - **tung** (surprised): Thì cạy ra!
 - **ha-vy** (thinking): Khoan. Đọc lại bốn mẩu đã.
 

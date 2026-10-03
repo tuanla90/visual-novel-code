@@ -12,7 +12,8 @@ export type MocMvp = { kind: 'mo-dau' } | { kind: 'ngay'; ngay: number; khung: s
 export type DieuKienMvp =
   | { kind: 'co'; id: string }
   | { kind: 'khong-co'; id: string }
-  | { kind: 'va' | 'hoac'; cac: DieuKienMvp[] };
+  | { kind: 'va' | 'hoac'; cac: DieuKienMvp[] }
+  | { kind: 'bi-mat'; muc: number };
 
 export type HauQuaMvp =
   | { kind: 'mo-manh-moi'; id: string }
@@ -217,6 +218,7 @@ export type NutMvp =
   | { type: 'end' }
   | { type: 'stage'; action: 'vao' | 'ra'; nhanVat: string }
   | { type: 'wait'; giay: number }
+  | { type: 'set-date'; date: string }
   | { type: 'condition'; dieuKien: DieuKienMvp }
   /** `[NẾU <điều kiện>] → đi tới <chuỗi>`: điều kiện thỏa thì sang chuỗi `to`, không thì chạy tiếp. Máy tự xử lý. */
   | { type: 'jump-if'; dieuKien: DieuKienMvp; to: string }

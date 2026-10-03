@@ -123,7 +123,7 @@ export interface NhacViecMvp {
  * (`bang`, vì vào tuyến khác là gỡ hết thẻ) và mã các thẻ trong hồ sơ lúc cất (`hoSoCo`): thẻ nhận thêm ở tuyến kia khi về
  * nằm trong ngăn gỡ ghim, không chen lên bảng.
  */
-export type TiepTucTuyenMvp = Pick<TrangThaiMvp, 'conTro' | 'canh' | 'nhiemVu' | 'nhacViec' | 'thuThachDangLam' | 'duKienDangLam' | 'hoiDap' | 'khamPha' | 'doiChat' | 'choHienTaiLieu' | 'sauKhiHien' | 'bang'> & {
+export type TiepTucTuyenMvp = Pick<TrangThaiMvp, 'conTro' | 'canh' | 'nhiemVu' | 'nhacViec' | 'thuThachDangLam' | 'duKienDangLam' | 'hoiDap' | 'khamPha' | 'doiChat' | 'choHienTaiLieu' | 'sauKhiHien' | 'bang' | 'ngayThang'> & {
   hoSoCo?: string[];
 };
 export interface TuyenPhuMvp {
@@ -158,6 +158,8 @@ export interface TrangThaiMvp {
   phuCho?: TuyenPhuMvp[];
   /** Ngày điều tra hiện tại (1–5); 0 khi chưa vào ngày. */
   ngay: number;
+  /** Ngày tháng hiện tại trong truyện (YYYY-MM-DD) đặt bằng [NGÀY ...]; null = dùng ngày tính từ mở đầu. */
+  ngayThang?: string | null;
   /** Chỉ số khung giờ đang đứng (0 = Sáng … 2 = Chiều); bằng số khung của lịch (3) = đã hết khung → buổi tối. */
   khung: number;
   /** Dữ kiện chính của ngày đã đạt. */

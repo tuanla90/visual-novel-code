@@ -19,6 +19,7 @@ import { CodeText } from '../../shared/ui/CodeText';
 import { IconBriefcase, IconFileText, IconUsers, IconX, ItemVectorIcon } from '../../shared/ui/icons';
 import type { HoSoMvp as HoSo, TrangThaiMvp, MauGhimMvp } from '../engine/trang-thai';
 import { BangGhimMvp } from './v7/BangGhimMvp';
+import { phanTramBiMat } from '../engine/may';
 import { anhChanDung } from './anh-mvp';
 import { NhanVatMvp } from './NhanVatMvp';
 import { useTheChuaXem } from './the-moi';
@@ -173,6 +174,7 @@ export function HoSoMvp({ kb, trangThai, onDoiCho, onDoiMau, onGhim, hoSo, soTay
             dienTen={dienTen}
             chuaXem={chuaXem}
             onXemThe={xemThe}
+            phanTramBiMat={trangThai ? phanTramBiMat(kb, trangThai) : undefined}
           />
         ) : (
           <NganSoTay kb={kb} soTay={soTay} dienTen={dienTen} thuThachXong={trangThai?.thuThachXong ?? []} />
@@ -191,6 +193,7 @@ function NganHoSo({
   dienTen,
   chuaXem,
   onXemThe,
+  phanTramBiMat,
 }: {
   kb: KichBanMvp;
   hoSo: HoSo;
@@ -200,6 +203,7 @@ function NganHoSo({
   dienTen: (t: string) => string;
   chuaXem: readonly string[];
   onXemThe: (id: string) => void;
+  phanTramBiMat?: number;
 }) {
   const [nhom, setNhom] = useState<Nhom>('tat-ca');
   // Theo thứ tự nhận trong từng nhóm: giấy nhớ → tài liệu → bằng chứng.
@@ -243,6 +247,17 @@ function NganHoSo({
             <span className="inv-stat-val">{soTrangSo}</span>
           </div>
         </div>
+        {phanTramBiMat !== undefined && (
+          <div style={{ marginTop: '16px', padding: '12px', background: 'var(--c-surface-1)', borderRadius: '8px', border: '1px solid var(--c-border-subtle)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '12px', fontWeight: 'bold' }}>
+              <span>BÍ MẬT CỦA MÙA</span>
+              <span>{phanTramBiMat}%</span>
+            </div>
+            <div style={{ height: '6px', background: 'var(--c-surface-2)', borderRadius: '3px', overflow: 'hidden' }}>
+              <div style={{ height: '100%', width: `${phanTramBiMat}%`, background: 'var(--c-primary)' }} />
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="inv-grid-col">

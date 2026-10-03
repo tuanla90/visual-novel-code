@@ -819,7 +819,7 @@ const GOC = {
         "id": "vu3",
         "ten": "Tranh cãi trong nhóm",
         "chuoi": "v3-mo",
-        "ngay": "2024-10-10",
+        "ngay": "2024-10-22",
         "tieuDeKet": "Nam ở thư viện lúc tin được gửi",
         "loiKet": "Bản ghi quẹt thẻ của thư viện và trí nhớ của Hà Vy là hai nguồn riêng, cùng đặt Nam ở thư viện lúc 22:40. Người gửi tin ngồi máy văn phòng xưởng, là ai thì chưa biết."
       },
@@ -827,7 +827,7 @@ const GOC = {
         "id": "vu4",
         "ten": "Giúp Nam",
         "chuoi": "v4-mo",
-        "ngay": "2024-10-14",
+        "ngay": "2024-11-04",
         "tieuDeKet": "Có người mượn tên Nam",
         "loiKet": "Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng, cùng cái máy đã gửi tin đồn, một đơn đúng tối Nam ở thư viện. Máy thì biết, tay thì chưa. Ba người có chìa phòng."
       },
@@ -835,7 +835,7 @@ const GOC = {
         "id": "vu5",
         "ten": "Sổ quỹ",
         "chuoi": "v5-mo",
-        "ngay": "2024-10-18",
+        "ngay": "2024-11-16",
         "tieuDeKet": "Mỗi bước là một phiếu",
         "loiKet": "Ba khoản chi không có hàng được ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Người nhận là người nói \"vì sao\". Mùa 1 khép lại ở chỗ chứng cứ dừng."
       }
@@ -847,7 +847,7 @@ const GOC = {
         "chuoi": "v2-mo",
         "nguoiGiao": "duy",
         "moSau": "vu2",
-        "ngay": "2024-10-25",
+        "ngay": "2024-11-01",
         "tieuDeKet": "Bốn mục có trong sổ, không hơn",
         "loiKet": "Bản xuất và sổ giấy là hai nguồn riêng, cùng ra bốn buổi đã ký. Hồ sơ ghi đúng điều đó: không nói ai tới dự, không nói buổi nào có ích."
       },
@@ -857,7 +857,7 @@ const GOC = {
         "chuoi": "p-mic-mo",
         "nguoiGiao": "duy",
         "moSau": "vu4",
-        "ngay": "2024-11-01",
+        "ngay": "2024-11-15",
         "tieuDeKet": "Micro không mất, chỉ đổi chỗ",
         "loiKet": "Phiếu PX-17 đã có người nhận, chuyển micro không dây sang tủ thiết bị dùng chung; mã dán trên micro trong tủ khớp với mã trên phiếu. Bảng không nói ai quên báo, và hồ sơ cũng không nói thay."
       },
@@ -867,7 +867,7 @@ const GOC = {
         "chuoi": "p-hoan-mo",
         "nguoiGiao": "minh-anh",
         "moSau": "vu5",
-        "ngay": "2024-11-08",
+        "ngay": "2024-11-29",
         "tieuDeKet": "Một khoản hoàn, bản xuất ghi hai lần",
         "loiKet": "Phiếu PH-04 có hai dòng hoàn tiền cùng mã tham chiếu; biên nhận ngân hàng xác nhận một lần hoàn 60.000 đồng. Báo cáo được sửa, bản cũ được giữ. Ai nhập trùng thì bảng không ghi."
       },
@@ -877,7 +877,7 @@ const GOC = {
         "chuoi": "p-lac-mo",
         "nguoiGiao": "tung",
         "moSau": "vu3",
-        "ngay": "2024-10-11",
+        "ngay": "2024-10-25",
         "tieuDeKet": "Chín lượt, một lượt nhầm",
         "loiKet": "Sổ đón ghi chín lượt Tùng dẫn: tám lượt tới ký túc xá, một lượt tới nhà xe, là lượt của Hoài. Sổ chỉ ghi nơi tới; vì sao nhầm là điều Tùng tự nhớ lại và tự nói ra."
       },
@@ -7398,15 +7398,250 @@ const GOC = {
     },
     {
       "id": "v3-mo",
-      "title": "Phòng CLB: bốn người, bốn cách đọc một phiếu",
+      "title": "Ngày Phụ nữ Việt Nam 20/10",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "set-date",
+          "date": "2024-10-20"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Chủ nhật, 20 tháng 10 · Ngày Phụ nữ Việt Nam"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Mọi người ơi, cứu tớ. Hôm nay 20/10, tặng gì cho một bạn nữ bây giờ?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Bạn nào?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Thì… Hoài. Bên Báo chí ấy."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "happy",
+          "text": "Bạn nộp thư hôm họp rà soát à. Thế em biết gì về bạn ấy rồi?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "Biết… bạn ấy nói thẳng. Với cả không thích ai nói hộ mình."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "serious",
+          "text": "Hôm nay 20/10 thật à? Tớ chưa mua gì cho mẹ."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Đi luôn đi. Chiều là chợ hoa hết sạch."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Tùng nhờ chọn quà. Hoài là người thế nào nhỉ?)"
+        },
+        {
+          "type": "branch",
+          "id": "qua-2010-hoai",
+          "asker": {
+            "speaker": "tung",
+            "text": "Tớ nên tặng gì đây?"
+          },
+          "choices": [
+            {
+              "id": "qua-hong",
+              "text": "Bông hồng sáp sặc sỡ",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "v3-qua-hong"
+                }
+              ]
+            },
+            {
+              "id": "qua-gau",
+              "text": "Con gấu bông đội mũ cử nhân",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "v3-qua-gau"
+                }
+              ]
+            },
+            {
+              "id": "qua-so",
+              "text": "Một cuốn sổ tay phóng viên và cây bút mực",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "v3-qua-so"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "goto",
+          "to": "v3-vao-truyen"
+        }
+      ]
+    },
+    {
+      "id": "v3-qua-hong",
+      "title": "Tặng hoa hồng sáp",
       "canh": "phong-clb",
       "mocSomNhat": 1000,
       "nodes": [
         {
           "type": "line",
+          "speaker": "player",
+          "text": "Hoa hồng sáp đi. Đẹp, lại để được lâu."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Chuẩn. Cửa hàng đối diện cổng có cả hộp gói sẵn."
+        },
+        {
+          "type": "note",
+          "text": "Tối hôm ấy, sân ký túc xá."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hoài nhận hộp hoa, nói \"Cảm ơn cậu.\" Hai người đứng thêm một lúc, không ai tìm ra câu thứ hai. Hoài bảo còn bài tập, về trước."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "…Đẹp mà nhỉ?"
+        },
+        {
+          "type": "goto",
+          "to": "v3-vao-truyen"
+        }
+      ]
+    },
+    {
+      "id": "v3-qua-gau",
+      "title": "Tặng gấu bông",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Gấu bông đội mũ cử nhân? Dễ thương, khó mà chê."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Ừ nhỉ. Ai chẳng thích gấu."
+        },
+        {
+          "type": "note",
+          "text": "Tối hôm ấy, sân ký túc xá."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hoài cầm con gấu, cười một cái rất lịch sự: \"Dễ thương. Cảm ơn cậu.\" Suốt quãng đường về, con gấu bị kẹp chặt dưới nách, như sợ ai trông thấy."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Bạn ấy cười rồi đấy. Chắc là… được."
+        },
+        {
+          "type": "goto",
+          "to": "v3-vao-truyen"
+        }
+      ]
+    },
+    {
+      "id": "v3-qua-so",
+      "title": "Tặng sổ tay",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Một cuốn sổ tay nhỏ với cây bút. Học Báo chí, đi đâu cũng phải ghi."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Ừ ha! Bạn ấy ghi chép suốt mà."
+        },
+        {
+          "type": "note",
+          "text": "Tối hôm ấy, sân ký túc xá."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hoài lật cuốn sổ, thử bút ngay trang đầu, rồi bật cười: \"Tớ ghi luôn chuyện đầu tiên nhé. Hôm nhập học có người dẫn tớ ra tận nhà xe.\""
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng đứng im mất mấy giây."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "…Hôm ấy tớ dẫn nhầm thật à?"
+        },
+        {
+          "type": "goto",
+          "to": "v3-vao-truyen"
+        }
+      ]
+    },
+    {
+      "id": "v3-vao-truyen",
+      "title": "Phòng CLB: bốn người, bốn cách đọc một phiếu",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "set-date",
+          "date": "2024-10-22"
+        },
+        {
+          "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Vụ 3 — Thứ Năm, 10 tháng 10"
+          "text": "Vụ 3 — Thứ Ba, 22 tháng 10"
         },
         {
           "type": "line",
@@ -8875,7 +9110,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Vụ 4 — Thứ Hai, 14 tháng 10"
+          "text": "Vụ 4 — Thứ Hai, 4 tháng 11"
         },
         {
           "type": "line",
@@ -9681,6 +9916,57 @@ const GOC = {
     },
     {
       "id": "v5-mo",
+      "title": "Sắp tới 20/11",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "set-date",
+          "date": "2024-11-16"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "happy",
+          "text": "Thứ Tư tuần sau là 20/11. CLB mình tặng gì thầy cô đây?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Thầy Quang! Thầy toàn hỏi \"căn cứ vào đâu\". Tặng thầy cuốn sổ ghi căn cứ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Rồi thầy hỏi căn cứ vào đâu mà tặng sổ."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Hoa là chắc ăn. Tớ đặt cúc họa mi, mùa này đẹp."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Nhớ cả cô Hạnh nữa. Năm nay là năm cuối cô còn đi làm."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Quà tính sau. Trước 20/11 còn một việc đang chờ ở xưởng.)"
+        },
+        {
+          "type": "goto",
+          "to": "v5-vao-truyen"
+        }
+      ]
+    },
+    {
+      "id": "v5-vao-truyen",
       "title": "Nam đếm kho: ba linh kiện không có một cái",
       "canh": "xuong-robot",
       "mocSomNhat": 1000,
@@ -9689,7 +9975,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Vụ 5 — Thứ Sáu, 18 tháng 10"
+          "text": "Vụ 5 — Thứ Bảy, 16 tháng 11"
         },
         {
           "type": "line",
@@ -10271,6 +10557,10 @@ const GOC = {
       "canh": "phong-hop",
       "mocSomNhat": 1000,
       "nodes": [
+        {
+          "type": "set-date",
+          "date": "2024-11-26"
+        },
         {
           "type": "image",
           "imageId": "cg-v5-ao-xanh-don-hoai"
@@ -11671,6 +11961,10 @@ const GOC = {
       "mocSomNhat": 1000,
       "nodes": [
         {
+          "type": "set-date",
+          "date": "2024-11-27"
+        },
+        {
           "type": "task",
           "text": "Đóng hồ sơ mùa"
         },
@@ -11732,29 +12026,54 @@ const GOC = {
           "imageId": "cg-ket-vu5"
         },
         {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Tối hôm ấy · liên hoan cuối kỳ"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Thông báo nhé. Từ tuần sau CLB tạm nghỉ sinh hoạt tới hết kỳ thi. Phòng vẫn giữ, chìa chị cầm."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Nghỉ thật à? Tớ vừa quen ngồi đây."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Không ôn thì tháng sau họp ở phòng thi lại."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Ôn đi. Đề thi cũng là một bộ dữ liệu."
+        },
+        {
           "type": "jump-if",
           "dieuKien": {
-            "kind": "va",
-            "cac": [
-              {
-                "kind": "co",
-                "id": "clue-loi-nhan-linh-1"
-              },
-              {
-                "kind": "co",
-                "id": "clue-loi-nhan-linh-2"
-              },
-              {
-                "kind": "co",
-                "id": "clue-loi-nhan-linh-3"
-              },
-              {
-                "kind": "co",
-                "id": "clue-loi-nhan-linh-4"
-              }
-            ]
+            "kind": "bi-mat",
+            "muc": 70
           },
           "to": "v5-ngan-tu"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Căn phòng này còn nhiều chỗ mình chưa nhìn kỹ. Thôi, để sau kỳ thi."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Mùa 1 khép lại. Có những thứ vẫn nằm yên chỗ cũ, chờ người để ý."
         },
         {
           "type": "end"
@@ -11763,10 +12082,14 @@ const GOC = {
     },
     {
       "id": "v5-ngan-tu",
-      "title": "Cảnh sau kết (chỉ khi đủ bốn mẩu giấy): ngăn tủ khóa trong phòng CLB",
+      "title": "Cảnh sau kết (khi bí mật >= 70%): ngăn tủ khóa trong phòng CLB",
       "canh": "phong-clb-dem",
       "mocSomNhat": 1000,
       "nodes": [
+        {
+          "type": "set-date",
+          "date": "2025-01-15"
+        },
         {
           "type": "task",
           "text": "Tìm chìa ngăn tủ khóa"
@@ -11775,18 +12098,18 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Sau kết — tối hôm ấy, phòng CLB"
+          "text": "Giữa tháng Một năm 2025, thi xong — phòng CLB"
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Mọi người sắp về thì Duy bày bốn mẩu giấy rơi ra từ cuốn sổ CLB lên bàn."
+          "text": "Buổi đầu tiên sau kỳ thi. Duy bày mấy mẩu giấy rơi ra từ cuốn sổ CLB lên bàn."
         },
         {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Bốn mẩu giấy. Mà ngăn dưới tủ hồ sơ thì khóa, tớ chưa bao giờ có chìa."
+          "text": "Giấy thì đủ cả rồi. Mà ngăn dưới tủ hồ sơ thì khóa, tớ chưa bao giờ có chìa."
         },
         {
           "type": "line",
@@ -11907,6 +12230,12 @@ const GOC = {
           "type": "line",
           "speaker": "player",
           "text": "Trang cuối có thêm một dòng, vẫn chữ thầy: \"Manh mối cũ, câu hỏi mới.\""
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Còn tiếp — Vụ 6: \"Xem lại\""
         },
         {
           "type": "image",

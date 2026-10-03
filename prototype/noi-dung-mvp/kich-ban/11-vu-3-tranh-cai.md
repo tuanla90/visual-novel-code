@@ -6,8 +6,31 @@
 
 <!-- Khung Vụ 3 theo dàn ý mùa 1 (docs/mvp/mua-1-dan-y-nam-khanh.md mục 4 và 9.1). Vụ sau của lich.md: chạy từ v3-mo sau màn kết Vụ 2. Điều mới: NHÓM VÀ ĐẾM (màn tổng hợp trên phiếu đã ghim): bài đăng của kênh nhóm theo thiết bị; thẻ thư viện của Nam nhóm theo thứ. Thói quen của Hà Vy (tối thứ Hai nào cũng ở thư viện) thành lời chứng cho Nam. Đối chất trong nhóm: Tùng nêu "Nam gửi tin", người chơi trình thẻ; đủ căn cứ (phiếu quẹt thẻ tối 07/10) → kết đủ; thiếu → kết chưa trọn (Minh Anh mời Nam lên, Nam tự đưa thẻ). Tra thêm thẻ của Hà Vy (tùy chọn) → lời nhắn thứ ba của chị Linh. Lời ở loi/11-vu-3-tranh-cai.md. -->
 
-### v3-mo — Phòng CLB: bốn người, bốn cách đọc một phiếu {cảnh: phong-clb}
+### v3-mo — Ngày Phụ nữ Việt Nam 20/10 {cảnh: phong-clb}
 
+- [NGÀY 2024-10-20]
+- [LỜI v3-mo.qua.1]
+- [RẼ NHÁNH qua-2010-hoai] tung: "Tớ nên tặng gì đây?"
+  - {id: qua-hong} Bông hồng sáp sặc sỡ → hậu quả: đi tới v3-qua-hong
+  - {id: qua-gau} Con gấu bông đội mũ cử nhân → hậu quả: đi tới v3-qua-gau
+  - {id: qua-so} Một cuốn sổ tay phóng viên và cây bút mực → hậu quả: đi tới v3-qua-so
+- [ĐI TỚI v3-vao-truyen]
+
+### v3-qua-hong — Tặng hoa hồng sáp {cảnh: phong-clb}
+- [LỜI v3-mo.qua.hong]
+- [ĐI TỚI v3-vao-truyen]
+
+### v3-qua-gau — Tặng gấu bông {cảnh: phong-clb}
+- [LỜI v3-mo.qua.gau]
+- [ĐI TỚI v3-vao-truyen]
+
+### v3-qua-so — Tặng sổ tay {cảnh: phong-clb}
+- [LỜI v3-mo.qua.so]
+- [ĐI TỚI v3-vao-truyen]
+
+### v3-vao-truyen — Phòng CLB: bốn người, bốn cách đọc một phiếu {cảnh: phong-clb}
+
+- [NGÀY 2024-10-22]
 - [LỜI v3-mo.1]
 - [HẬU QUẢ] mở manh mối clue-kenh-robotics
 - [LỜI v3-mo.2]

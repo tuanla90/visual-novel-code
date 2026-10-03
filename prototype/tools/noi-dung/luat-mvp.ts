@@ -693,8 +693,8 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
       const ma = maTrongDieuKien(dkThat.dieuKien);
       const datDuoc = new Set(ma.filter((id) => producers.has(id)));
       for (const id of ma) if (vatPham.has(id) && !producers.has(id)) err(vt, `true end cần "${id}" nhưng không dữ kiện, thẻ hay chuỗi nào tạo ra nó`);
-      if (!danhGiaDieuKien(dkThat.dieuKien, datDuoc)) err(vt, 'điều kiện true end không thể thỏa dù có đủ mọi thứ đạt được');
-      else if (danhGiaDieuKien(dkThat.dieuKien, new Set([...vatPhamChinh].filter((v) => datDuoc.has(v))))) {
+      if (!danhGiaDieuKien(dkThat.dieuKien, datDuoc, 100)) err(vt, 'điều kiện true end không thể thỏa dù có đủ mọi thứ đạt được');
+      else if (danhGiaDieuKien(dkThat.dieuKien, new Set([...vatPhamChinh].filter((v) => datDuoc.has(v))), 0)) {
         err(vt, 'điều kiện true end thỏa chỉ với dữ kiện chính / đường chạy bắt buộc — true end phải cần ít nhất một dữ kiện phụ hay một lựa chọn [RẼ NHÁNH] (QĐ-086)');
       }
     }

@@ -48,7 +48,7 @@ const ketVu2 = (re: Record<string, string>, traLoi?: ChienThuat['traLoi']): { s:
 
 describe('Vụ 2 "Tin đồn": sang vụ sau từ màn kết Vụ 1', () => {
   it('lịch: vụ sau vu2 (Tin đồn) và nhiệm vụ phụ so-phong do Duy giao, mở sau vu2', () => {
-    expect(KB.lich.vuSau?.map((v) => [v.id, v.chuoi, v.ngay]).slice(0, 2)).toEqual([['vu2', 'tin-mo', '2024-10-09'], ['vu3', 'v3-mo', '2024-10-10']]);
+    expect(KB.lich.vuSau?.map((v) => [v.id, v.chuoi, v.ngay]).slice(0, 2)).toEqual([['vu2', 'tin-mo', '2024-10-09'], ['vu3', 'v3-mo', '2024-10-22']]);
     expect(KB.lich.nhiemVuPhu?.map((p) => [p.id, p.chuoi, p.nguoiGiao, p.moSau])).toEqual([['so-phong', 'v2-mo', 'duy', 'vu2'], ['micro', 'p-mic-mo', 'duy', 'vu4'], ['hoan-tien', 'p-hoan-mo', 'minh-anh', 'vu5'], ['dan-lac', 'p-lac-mo', 'tung', 'vu3'], ['hoc-tro-cu', 'p-hoc-mo', 'co-hanh', 'vu4']]);
   });
 

@@ -57,7 +57,7 @@ export function ThanhUyTin({ con, tong }: { con: number; tong: number }) {
 function ngayHienTai(kb: KichBanMvp, s: TrangThaiMvp): string {
   const viec = s.giaiDoan === 'phu' ? (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id) : null;
   const vu = viec ?? (kb.lich.vuSau ?? []).find((v) => v.id === s.vu);
-  return homNay({ giaiDoan: s.giaiDoan === 'phu' ? 'vu-sau' : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vu?.ngay ?? null }, kb.lich.ngayMoDau ?? null).ngay;
+  return homNay({ giaiDoan: s.giaiDoan === 'phu' ? 'vu-sau' : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vu?.ngay ?? null, ngayThang: s.ngayThang ?? null }, kb.lich.ngayMoDau ?? null).ngay;
 }
 
 const THU_NGAN = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
