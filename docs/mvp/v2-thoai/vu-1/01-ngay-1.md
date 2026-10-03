@@ -1,3 +1,12 @@
+<!-- V2:
+- n1-mo.1: Đổi giọng Tùng cho tự nhiên ("nhớ rồi!"), làm lời Hà Vy gãy gọn, dứt khoát hơn.
+- n1-toa-b.1: Viết lại câu trần thuật mượt hơn, rút ngắn câu nghĩ của người chơi.
+- n1-toa-b.2: Sửa lời Hà Vy ngắn hơn, đổi lời Tùng cho tự nhiên ("Tìm kiểu gì?").
+- n1-hop.1: Thêm câu cảm thán đúng tính cách Tùng, thêm câu cửa miệng "Khoan, tính lại đã" của Hà Vy.
+- n1-bac-thinh.1: Đổi giờ khóa cửa Chủ nhật thành "Mười một rưỡi đêm" cho khớp thiết lập 23:30 và tự nhiên hơn, rút gọn câu.
+- n1-thong-bao-hop.1: Sửa cách Tùng nói cho sinh động ("Dán tơ hơ thế này", "bị đòi phòng").
+-->
+
 # Lời · kich-ban/01-ngay-1.md
 
 <!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/01-ngay-1.md. [DÀN DỰNG] không hiện cho người chơi. Không câu hướng dẫn thao tác: người chơi tự thấy ba chỗ bấm, lời chỉ gợi tò mò. -->

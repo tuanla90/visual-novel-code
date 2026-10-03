@@ -1,3 +1,25 @@
+<!-- V2:
+n2-mo.1: Sửa thoại Minh Anh tự nhiên hơn, Tùng thêm "Tớ cá là"
+n2-co-hanh.1: Sửa thoại Tùng thêm "Tớ cá là", thoại tự nhiên hơn
+n2-co-hanh.1v: Rút gọn giải thích SQL của Cô Hạnh, tránh đọc như giảng bài
+n2-co-hanh.2: Rút gọn thoại
+n2-bd-toa-b.1: Bác Thịnh nói ngắn gọn đúng giờ giấc, Tùng thêm "Tớ cá là"
+n2-bd-cang-tin.1: Sửa thoại Tùng thêm "tớ cá là", tự nhiên hơn
+n2-phong.1: Giữ nguyên
+n2-phong-duy.1: Thoại ngắn gọn đúng tính cách quy trình của Duy
+n2-phong-vy.1: Đổi thành "Đừng đoán gì cả. Tính."
+n2-phong-tung.1: Giữ nguyên thoại Tùng
+n2-phong-minh-anh.1: Chỉnh giọng Minh Anh gãy gọn, dứt khoát hơn
+n2-laptop.0: Hà Vy nói câu ngắn hơn
+n2-laptop.05: Thoại người chơi tự nhiên, Duy và Hà Vy dứt khoát
+n2-laptop.1: Tùng nhấn mạnh chữ HOẶC, Hà Vy dặn phải khớp cả hai
+n2-laptop.2: Rút gọn các câu cảm thán
+n2-toi.1: Tùng thêm "Tớ cá là", rút gọn văn tả cảnh, giữ không khí vui vẻ
+n2-co-hanh-an.1: Hà Vy nói nhấn mạnh hơn
+n2-bd-toa-b-an.1: Giữ nguyên
+n2-bd-cang-tin-an.1: Thêm "tớ cá là" vào câu của Tùng
+-->
+
 # Lời · kich-ban/02-ngay-2.md
 
 <!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/02-ngay-2.md. [DÀN DỰNG] không hiện cho người chơi. Lần tra đầu có SQL: lời không giảng SQL, không nói cách bấm. -->
@@ -20,25 +42,24 @@
 - **ha-vy** (neutral): Hai mươi hai bậc. Quen tật thôi.
 
 ## n2-co-hanh.1v
-- **co-hanh** (neutral): Cô tạo cho CLB một tài khoản, tên là clb_tham_tu.
-- **co-hanh** (neutral): Tài khoản này chỉ xem được bảng lớp sinh hoạt: mã lớp, ngành, khóa, tòa nhà. Trong đấy không có tên ai cả.
-- **player**: Bảng lớp sinh hoạt là một tệp Excel to hả cô?
-- **co-hanh** (smile): Gần thế. Em cứ hình dung cuốn sổ điểm danh: kẻ sẵn mấy cột trên đầu, mỗi dòng bên dưới là một lớp. Cột nói lớp ấy có gì: mã lớp, ngành, khóa, tòa nhà. Có lớp mới thì thêm một dòng, chứ cột không đổi.
-- **co-hanh** (neutral): Trường có vài chục bảng như thế, mỗi bảng ghi một loại việc: bảng lớp, bảng sinh viên, nhật ký in, quẹt thẻ thư viện… Lúc tra, máy không đọc lần từng trang như người. Em nói cho nó ba điều: lấy bảng nào, xem cột nào, giữ lại những dòng nào.
-- **tung** (gai-dau): Giống xếp hàng lấy cơm căng tin cô nhỉ. Mỗi đứa một dòng, cột là món.
-- **ha-vy** (neutral): Và cột cuối là số tiền cậu còn nợ. Bảng, cột, dòng. Tớ ghi vào sổ.
-- **co-hanh** (neutral): Bảng sinh viên có thông tin cá nhân. Muốn xem thì mang phiếu yêu cầu tra cứu, có chữ ký của đơn vị lo vụ việc. Vụ hộp kiến nghị là của Phòng Công tác sinh viên.
-- **co-hanh** (neutral): Tra gì máy cũng ghi lại. Cuối vụ cô xem nhật ký.
+- **co-hanh** (neutral): Cô tạo tài khoản `clb_tham_tu` rồi đấy.
+- **co-hanh** (neutral): Tài khoản này chỉ xem được bảng lớp sinh hoạt. Gồm mã lớp, ngành, khóa, tòa nhà học. Không có tên sinh viên đâu.
+- **player**: Bảng này tra như nào ạ?
+- **co-hanh** (smile): Máy móc rập khuôn lắm. Em cứ nói rõ ba điều: lấy bảng nào, xem cột nào, lọc những dòng nào.
+- **tung** (happy): Giống đi lấy cơm căng tin! Chọn khay, chọn món rồi tính tiền!
+- **ha-vy** (neutral): Bảng, cột, dòng. Tớ ghi lại rồi.
+- **co-hanh** (neutral): Bảng sinh viên có thông tin cá nhân. Muốn xem phải có phiếu tra cứu của Phòng Công tác sinh viên.
+- **co-hanh** (neutral): Tra gì máy đều ghi nhật ký lại hết. Nhớ dùng đúng mục đích.
 
 ## n2-co-hanh.2
 - **player**: Xem được lớp là khoanh vùng được rồi ạ. Em cảm ơn cô.
 - **co-hanh** (smile): Mới khoanh vùng thôi đấy. Lớp thì không tự bỏ thư được đâu.
 
 ## n2-bd-toa-b.1
-- **bac-tu** (smile): Lại mấy cháu CLB Thám Tử à? Cô Lan niêm phong hộp lại rồi, không soi được nữa đâu.
-- **tung** (happy): Bọn cháu qua chào bác thôi ạ. Bác trực ở đây cả tuần hả bác?
-- **bac-tu** (neutral): Thứ Hai tới thứ Bảy. Bảy giờ sáng bác mở cửa, chín giờ tối bác khóa. Chủ nhật bác chỉ ghé buổi tối để khóa cửa, có việc thì sang cổng ký túc tìm chú Cường.
-- **ha-vy** (thinking): Tức là cả ngày Chủ nhật sảnh này không có ai trông.
+- **bac-tu** (smile): Lại qua soi cái hộp à? Cô Lan niêm phong từ sáng qua rồi.
+- **tung** (happy): Cháu đi qua chào bác thôi. Bác trực ở đây suốt ạ? Tớ cá là bác nhớ mặt hết sinh viên!
+- **bac-tu** (neutral): Thứ Hai tới thứ Bảy, mở lúc bảy giờ, chín giờ tối khóa. Chủ nhật sảnh nghỉ, tối bác mới tạt qua chốt cửa.
+- **ha-vy** (thinking): Khoan, tức là cả ngày Chủ nhật sảnh này vắng người.
 
 ## n2-bd-cang-tin.1
 - **narrator**: Giữa buổi sáng, căng tin mới có lác đác vài bàn.
@@ -48,24 +69,24 @@
 
 ## n2-phong.1
 > NHIỆM VỤ: Về phòng CLB, mở laptop
-> NHẮC VIỆC duy (neutral): Laptop tớ để trên bàn. Muốn tra thì tìm tớ.
+> NHẮC VIỆC duy (neutral): Laptop tớ để trên bàn. Máy đây, vào tra đi.
 - **narrator**: Về tới phòng CLB. Mỗi người một góc: Duy bên cái laptop, Hà Vy trước tấm bảng, chị Minh Anh xếp lại giấy tờ, Tùng ngồi vắt vẻo trên bàn.
 
 ## n2-phong-duy.1
-- **duy** (neutral): Máy đây. Tớ đăng nhập tài khoản cô Hạnh vừa tạo rồi.
-- **duy** (serious): Phiếu nào tra ra cũng phải gọn và có căn cứ thì tớ mới nhận vào hồ sơ. Ngồi vào đi.
+- **duy** (neutral): Máy đây. Tớ đăng nhập sẵn tài khoản rồi.
+- **duy** (serious): Lọc ra bảng nào gọn gàng, đúng yêu cầu thì tớ mới lưu hồ sơ. Cậu làm đi.
 
 ## n2-phong-vy.1
-- **ha-vy** (thinking): Tớ ghim câu hỏi lên bảng rồi: lớp nào vừa ở tòa B vừa học Báo chí?
-- **ha-vy** (neutral): Hai tờ giấy nhớ là hai điều mình biết chắc. Còn lại để dữ liệu trả lời, đừng đoán.
+- **ha-vy** (thinking): Câu hỏi tớ ghim lên bảng rồi: lớp nào vừa ở tòa B vừa học Báo chí?
+- **ha-vy** (neutral): Có hai điều kiện đó là chắc chắn. Đừng đoán gì cả. Tính.
 
 ## n2-phong-tung.1
 - **tung** (happy): Cậu biết không, cô Hạnh ở Phòng Đào tạo chỉ làm giờ hành chính thôi. Muốn gặp cô thì đừng đi buổi tối.
 - **tung** (chi-tay): Tớ cá là cả trường này tớ thuộc lịch gần hết. Cần tìm ai cứ hỏi tớ.
 
 ## n2-phong-minh-anh.1
-- **minh-anh** (neutral): Tài khoản hôm nay chỉ mở một bảng. Muốn xem thêm bảng nào thì phải có căn cứ, rồi chị đứng ra xin.
-- **minh-anh** (khoanh-tay): Chiều thứ Hai, thứ Tư, thứ Sáu chị ở phòng này. Khi nào em thấy đủ căn cứ để kết luận thì tìm chị.
+- **minh-anh** (neutral): Tài khoản này chỉ xem được một bảng. Muốn xin thêm dữ liệu thì phải có căn cứ, chị mới xin giúp được.
+- **minh-anh** (khoanh-tay): Chiều thứ Hai, thứ Tư, thứ Sáu chị trực ở đây. Tìm được gì thì báo chị.
 
 ## n2-laptop.0
 > NHIỆM VỤ: Xem tài khoản CLB tra được bảng nào
@@ -77,24 +98,24 @@
 
 ## n2-laptop.05
 > NHIỆM VỤ: Chỉ lấy cột cần xem
-> NHẮC VIỆC duy (neutral): Hàng LẤY CỘT: bấm cột nào thì cột ấy hiện ra. Lấy mã lớp với tòa nhà.
-- **player**: Một trăm mười hai lớp, bốn cột. Nhìn hơi rối.
-- **duy** (neutral): Không cần xem hết đâu. Hàng LẤY CỘT ở trên: muốn xem cột nào thì bấm cột ấy.
-- **ha-vy** (neutral): Cái hộp nằm ở tòa B. Vậy trước hết xem lớp nào ở tòa nào đã.
+> NHẮC VIỆC duy (neutral): Hàng LẤY CỘT: cần cột nào thì bấm giữ lại cột đó. Lấy mã lớp với tòa nhà.
+- **player**: Hơn trăm lớp. Nhìn rối quá.
+- **duy** (neutral): Không cần xem hết đâu. Hàng LẤY CỘT ở trên, cần xem cột nào thì bấm cột ấy.
+- **ha-vy** (neutral): Cái hộp ở tòa B. Vậy cứ lấy cột tòa nhà và cột mã lớp trước đi.
 
 ## n2-laptop.1
 > NHIỆM VỤ: Lớp nào vừa ở tòa B vừa học Báo chí?
-> NHẮC VIỆC ha-vy (day-kinh): Hai tờ giấy nhớ trên bàn: Tòa B, Báo chí K24. Lớp nào khớp?
+> NHẮC VIỆC ha-vy (day-kinh): Tòa B VÀ Báo chí K24. Khớp cả hai điều kiện mới ra được.
 - **player**: Giờ lọc. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà.
-- **tung** (chi-tay): Tòa B hoặc Báo chí, cứ dính một cái là lấy hết cho chắc. Tớ cá kiểu gì chẳng trúng!
-- **ha-vy** (neutral): Đừng cá. Holmes dặn rồi: chưa có dữ liệu mà đã đoán là sai từ gốc. Tính đã.
+- **tung** (chi-tay): Ở tòa B HOẶC học Báo chí! Cứ dính một cái là lấy hết. Tớ cá kiểu gì chẳng trúng!
+- **ha-vy** (day-kinh): Đừng cá. Khớp cả hai điều kiện mới đúng. Cậu định tra từng ấy lớp à?
 
 ## n2-laptop.2
-- **ha-vy** (neutral): Hai lớp: BC24A với BC23A.
-- **player**: BC23A là khóa trước mà? Thẻ lịch ghi K24.
-- **ha-vy** (thinking): Ừ, thẻ lịch nghiêng về BC24A. Nhưng cứ giữ cả hai lớp, loại sau cũng chưa muộn.
-- **tung** (worried): Hai lớp vẫn đông lắm. Mà mình đâu có xem được danh sách sinh viên.
-- **ha-vy** (neutral): Cô Hạnh bảo rồi đấy: phải có phiếu của Phòng Công tác sinh viên.
+- **ha-vy** (neutral): Dữ liệu báo hai lớp: BC24A và BC23A.
+- **player**: BC23A là khóa trước mà? Thẻ lịch ghi rõ K24.
+- **ha-vy** (thinking): Khoan, cứ giữ đó. Loại sau cũng chưa muộn.
+- **tung** (worried): Hai lớp là đông người lắm. Mình đâu có danh sách sinh viên.
+- **ha-vy** (neutral): Cô Hạnh dặn rồi, muốn xem tên phải xin phiếu bên Phòng Công tác sinh viên.
 > NHẮC VIỆC ha-vy (neutral): Hai lớp: BC24A, BC23A. Muốn xem người thì cần phiếu của Phòng Công tác sinh viên.
 
 ## n2-toi.1
@@ -121,5 +142,5 @@
 - **player**: (Năm ngoái đã có người nghịch thế rồi. Hay là chính người trong CLB vẽ?)
 
 ## n2-bd-cang-tin-an.1
-- **narrator**: Bảng đen trên quầy ghi giá bằng phấn: trà đá 3 nghìn, chè đậu đen 10 nghìn. Góc dưới có ai viết thêm: "Nợ quá ba cốc thì ghi tên vào đây".
-- **tung** (gai-dau): Tớ chưa bao giờ nợ quá ba cốc. …Ở căng tin này.
+- **narrator**: Bảng đen ghi giá bằng phấn: trà đá 3k, chè đậu đen 10k. Góc dưới có dòng: "Nợ quá ba cốc thì ghi tên vào đây".
+- **tung** (gai-dau): Tớ cá là tớ chưa bao giờ nợ quá ba cốc. Ít nhất là ở căng tin này!

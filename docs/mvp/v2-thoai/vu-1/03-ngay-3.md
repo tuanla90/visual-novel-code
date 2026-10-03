@@ -1,3 +1,18 @@
+<!-- V2:
+n3-mo.1: Rút gọn lời Minh Anh, ra dáng nghiêm túc.
+n3-ctsv.1: Rút gọn lời Tùng, Hà Vy và cô Lan để thoại tự nhiên, đúng giọng.
+n3-ctsv.1b: Rút gọn lời Quân cho chuyên nghiệp, rõ thẩm quyền.
+n3-ctsv.2: Sửa câu suy nghĩ của Hà Vy cho gãy gọn.
+n3-bd-phong-may.1: Sửa thoại Tùng, Hà Vy ngắn gọn.
+n3-bd-toa-b.1: Sửa thoại bác Thịnh, Tùng cho giống văn nói.
+n3-cang-tin.1: Hiếu nói ngắn, gắt hơn. Tùng đùa tự nhiên hơn.
+n3-phong-vy.1: Hà Vy nói gãy gọn.
+n3-phong-minh-anh.1: Minh Anh nói dứt khoát.
+n3-laptop.1: Tùng nhanh nhảu, Hà Vy chặn lại.
+n3-laptop.2: Rút câu Hà Vy; đổi biểu cảm Tùng sang gai-dau.
+n3-bd-phong-may-an.1: Rút câu Tùng.
+-->
+
 # Lời · kich-ban/03-ngay-3.md
 
 <!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/03-ngay-3.md. [DÀN DỰNG] không hiện cho người chơi. Tin sai của chương: Tùng cá là Hiếu (bị bác ở ngày 4). Tên Hiếu người chơi nghe qua tiếng gọi ở căng tin, không phải ai chỉ điểm. -->
@@ -11,22 +26,22 @@
 > NHIỆM VỤ: Làm sao để được xem bảng sinh viên?
 > NHẮC VIỆC minh-anh (neutral): Kết quả hai lớp hôm qua là căn cứ để xin phiếu tra cứu.
 - **narrator**: Lại con đường tắt qua sân bóng rổ.
-- **tung** (happy): Hôm qua ba phút, hôm nay tớ cá là hai phút rưỡi.
+- **tung** (happy): Hôm qua ba phút. Nay tớ cá là hai phút rưỡi.
 - **ha-vy** (neutral): Đừng cá. Bấm giờ.
 - **player**: Hai phút bốn mươi. Coi như Tùng thua mười giây.
 - **tung** (gai-dau): Tại cậu ấy dừng lại đọc bảng tin!
-- **co-lan** (neutral): Hộp kiến nghị là bên cô quản. Người gửi muốn được trả lời thì phải ghi mã sinh viên của mình vào phiếu gửi. Mã đó được chép vào sổ niêm phong.
-- **co-lan** (neutral): Sổ đó niêm phong. Cô cũng không được tự mở.
-- **player**: Vậy làm sao biết được ai gửi ạ?
-- **co-lan** (neutral): Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô mới tra và trả lời có hoặc không.
+- **co-lan** (neutral): Hộp kiến nghị bên cô quản. Ai gửi phải ghi mã sinh viên, mã đó chép vào sổ.
+- **co-lan** (neutral): Sổ này niêm phong. Cô cũng không tự mở được.
+- **player**: Vậy sao biết được ai gửi ạ?
+- **co-lan** (neutral): Các em phải nộp danh sách mã cụ thể làm căn cứ, cô mới tra.
 - [DÀN DỰNG] Một anh sinh viên đeo kính, mặc gi lê len xanh than, kẹp cái bìa da, đứng ở cửa từ lúc nào.
 - **narrator**: Ở cửa có một anh sinh viên đeo kính, mặc gi lê len xanh than, kẹp cái bìa da, đứng từ lúc nào không ai để ý.
 - **ha-vy** (thinking): Người lạ. Nhìn kỹ trước khi anh ấy mở lời đã.
 
 ## n3-ctsv.1b
-- **quan** (neutral): Tôi là Quân, bên Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi được cử xuống giám sát việc này.
-- **co-lan** (neutral): Hai lớp các em lọc ra hôm qua là căn cứ được. Cô ký phiếu tra cứu: bảng sinh viên, bốn cột, mã, họ đệm, tên, mã lớp. Không hơn.
-- **quan** (neutral): Tôi ký giám sát. Các bạn tra những gì, bên tôi xem hết.
+- **quan** (neutral): Tôi là Quân, Ban Pháp chế Hội sinh viên. Tôi được cử xuống giám sát.
+- **co-lan** (neutral): Danh sách hai lớp hôm qua đủ làm căn cứ. Cô cấp phiếu tra cứu: bảng sinh viên, bốn cột mã, họ đệm, tên, lớp. Không hơn.
+- **quan** (neutral): Tôi ký giám sát. Các bạn tra gì, bên tôi xem hết.
 
 ## n3-ctsv.2
 - **quan** (neutral): Các bạn chỉ được lập căn cứ. Tra sổ là việc của cô Lan, không phải của CLB.
@@ -61,7 +76,7 @@
 - **hieu** (annoyed): Nhóm tôi xin phòng làm bài không được, phải chui rúc thư viện.
 - **tung** (worried): Gắt thế… cậu ta gửi thư à?
 - **ha-vy** (thinking): Ghét với gửi thư là hai việc khác nhau.
-- **hieu** (annoyed): Nhìn gì? Tôi là Hiếu, lớp BC24A. Tôi nói thẳng vậy thôi, có gì tôi nói trước mặt.
+- **hieu** (annoyed): Nhìn gì? Tôi là Hiếu, lớp BC24A. Tôi nói thẳng vậy đấy.
 - **narrator**: Có tiếng gọi từ quầy: "Hiếu ơi, lấy cơm này!" Cậu ta đứng dậy, bỏ đi.
 - **tung** (happy): Thôi, chuyện thư từ để nhóm mình tự kiểm tra. Tớ ra lấy trà đá, ai uống không?
 - **tung** (worried): Khoan, ví còn đúng tiền xe buýt. Thêm cốc trà đá là tối nay đi bộ.
@@ -85,8 +100,8 @@
 > NHIỆM VỤ: Trong hai lớp ấy, ai có thể là người ký chữ H?
 > NHẮC VIỆC tung (chi-tay): Tớ cá là Hiếu! Xem trong hai lớp có ai tên H.
 - [DÀN DỰNG] Phòng CLB. Phiếu tra cứu đã mở bảng sinh viên. Trên bàn: [H], phiếu hai lớp.
-- **tung** (chi-tay): Cậu gắt ở căng tin tên Hiếu. Chữ H đấy! Tớ cá là Hiếu!
-- **ha-vy** (thinking): Cá thì để sau. Xem dữ liệu nói gì đã.
+- **tung** (chi-tay): Cậu căng tin tên Hiếu. Chữ H đấy! Tớ cá là cậu ta!
+- **ha-vy** (thinking): Từ từ cá. Xem dữ liệu đã.
 
 ## n3-laptop.2
 - **player**: Hai người: Hiếu và Hoài. Cùng lớp BC24A.

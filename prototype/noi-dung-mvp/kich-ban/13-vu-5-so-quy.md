@@ -6,13 +6,13 @@
 
 <!-- Khung Vụ 5 theo dàn ý mùa 1 (docs/mvp/mua-1-dan-y-nam-khanh.md mục 6 và 9.2). Vụ sau của lich.md: chạy từ v5-mo sau màn kết Vụ 4. Kết mùa. Nhịp: Nam đếm kho, nối sổ đặt hàng với bảng kiểm kê → ba đơn mượn tên Nam là ba linh kiện không có trong kho (linh kiện là cớ ghi vào sổ) → cần sổ quỹ: thầy Quang hỏi "căn cứ vào đâu?" (đối chất, trình thẻ) rồi cho xuất sổ quỹ khối CLB → nối khoản chi với bảng quỹ → gom theo người duyệt, tính TỔNG (điều mới) → thêm TRUNG BÌNH, chỉ giữ nhóm vượt ngưỡng giải trình một triệu (điều mới: lọc nhóm; quy chế: dưới một triệu mỗi khoản thì chủ tịch Hội duyệt thẳng, Khánh xé nhỏ) → Khánh, chủ tịch Hội sinh viên kiêm trưởng CLB Robotics, duyệt ba khoản lấy từ quỹ CLB Thám Tử. Đối chất BA NHỊP (hội đồng chấm cốt truyện 01/10): nhịp một thẩm quyền ↔ phiếu vượt ngưỡng; nhịp hai "đơn do Nam lập" ↔ phiếu nối đơn với phiên (Vụ 4); Khánh nhận phần tiền; nhịp ba lá thư ↔ lời chú Cường về huy hiệu sứt (Vụ 1), có Hoài, chú Cường, Quân dự. Hỏng nhịp một hoặc hai → chưa ngã ngũ; hỏng nhịp ba → Khánh chỉ nhận tiền, thư chưa ngã ngũ; đủ ba → Khánh nhận cả thư và nói vì sao (không phải cái phòng, là cái sổ). Sau họp: chiếc chìa, Nam và Khánh. Việc riêng của Khánh không nêu. Đủ bốn mẩu giấy trước đó → mở ngăn tủ: hồ sơ vụ đầu tiên của CLB (lớp bí mật, mở sang mùa sau). Lời ở loi/13-vu-5-so-quy.md. -->
 
-### v5-mo — Sắp tới 20/11 {cảnh: phong-clb}
+### v5-qua-2011 — Sắp tới 20/11 {cảnh: phong-clb}
 
 - [NGÀY 2024-11-16]
 - [LỜI v5-mo.qua]
-- [ĐI TỚI v5-vao-truyen]
+- [ĐI TỚI v5-mo]
 
-### v5-vao-truyen — Nam đếm kho: ba linh kiện không có một cái {cảnh: xuong-robot}
+### v5-mo — Nam đếm kho: ba linh kiện không có một cái {cảnh: xuong-robot}
 
 - [LỜI v5-mo.1]
 - [HIỆN TÀI LIỆU doc-kiem-ke]
@@ -63,11 +63,11 @@
 - [LỜI v5-so-quy.5]
 - [HẬU QUẢ] mở manh mối clue-so-phong-may, mở manh mối clue-in-toi-15-9
 - [LỜI v5-so-quy.6]
+- [NGÀY 2024-11-26]
 - [ĐI TỚI v5-doi-chat]
 
 ### v5-doi-chat — Phòng họp, nhịp một: "đúng thẩm quyền" {cảnh: phong-hop}
 
-- [NGÀY 2024-11-26]
 - [ẢNH cg-v5-ao-xanh-don-hoai]
 - [LỜI v5-doi-chat.1]
 - [ĐỐI CHẤT dc-khanh] khanh: "Ba khoản đó là chi cho đội robot trước giải quốc gia. **Khoản dưới một triệu, chủ tịch Hội duyệt là đúng thẩm quyền.** Các bạn có gì mà nói tôi sai?"
@@ -179,6 +179,7 @@
 - [LỜI v5-bien-ban.1]
 - [NẾU có dc-khanh-don-du] → đi tới v5-sau-hop
 - [LỜI v5-bien-ban.2]
+- [NGÀY 2024-11-27]
 - [ĐI TỚI v5-chot]
 
 ### v5-sau-hop — Hành lang sau buổi họp: chiếc chìa {cảnh: hanh-lang-phong-hop}
@@ -186,11 +187,11 @@
 - [LỜI v5-sau-hop.1]
 - [ẢNH cg-v5-chia-va-huy-hieu]
 - [ẢNH cg-v5-hoai-hoi-tung]
+- [NGÀY 2024-11-27]
 - [ĐI TỚI v5-chot]
 
 ### v5-chot — Phòng CLB: đóng hồ sơ mùa {cảnh: phong-clb}
 
-- [NGÀY 2024-11-27]
 - [LỜI v5-ket-luan.1]
 - [ẢNH chibi-v5-hoai-vao-clb]
 - [ẢNH chibi-v5-dong-dau]

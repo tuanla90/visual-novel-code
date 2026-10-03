@@ -1,6 +1,17 @@
 # Lời · kich-ban/00-mo-dau.md
 
-<!--Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/00-mo-dau.md. [DÀN DỰNG] không hiện cho người chơi (đặc tả: ghi chú cho người dựng) — thứ người chơi cần biết phải nằm trong lời dẫn / thoại. Không câu hướng dẫn thao tác (ĐÃ CHỐT C). Đã áp DX-01 (01/10): lời md-02, md-04, md-05, md-06 đã xóa. Đã áp bản rà docs/thiet-ke/ra-soat-loi-chuong-1-2026-09-30.md. -->
+<!-- V2:
+- md-00-xe-buyt.2: làm rõ vali của người khác lăn qua.
+- md-00-sanh-ktx.2: diễn đạt tự nhiên hơn.
+- md-00-thang-may.1: rút gọn suy nghĩ của player.
+- md-00-gap-tung.1: Tùng giải thích áo xanh gọn hơn, bớt kể lể.
+- md-01-ktx.2: sửa thứ tự cãi nhau lúc leo cầu thang trước khi vào phòng.
+- md-07-cong-ktx-toi.1: chú Cường kể gọn hơn, tự nhiên hơn.
+- md-09-ngay-hoi.2: Minh Anh sắc sảo hơn khi Tùng đùa.
+- md-11-la-thu.1b: Duy nói rõ hệ quả giải thể ngắn gọn hơn.
+- md-11-la-thu.3a: chỉnh lời Minh Anh tự nhiên hơn.
+Các khối khác tinh chỉnh nhẹ từ ngữ để thoại ngắn dưới 25 chữ.
+-->
 
 ## md-00-xe-buyt.1
 > NHIỆM VỤ: Tìm đường vào ký túc xá
@@ -63,12 +74,12 @@
 - **tung** (ao-xanh-happy): Khuất sau hành lang kia kìa. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
 - **player**: Tầng bốn, phòng 408.
 - **tung** (ao-xanh-happy): Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ là {{nv.tung}}, học Du lịch.
-- **player**: Cùng phòng á? Tớ tưởng cậu là anh năm hai, năm ba gì đấy, mặc áo tình nguyện thế kia.
+- **player**: Cùng phòng á? Tớ tưởng cậu là anh khóa trên, mặc áo tình nguyện thế kia.
 - **tung** (ao-xanh): Tớ năm nhất thôi. Tớ nhập học đợt một, lên đây từ cuối tháng Tám nên đường nào cũng rành.
 - **tung** (ao-xanh-happy): Đội thiếu người dẫn đường khu ký túc, chú tớ làm bảo vệ nên giới thiệu tớ mượn áo ra phụ hai hôm.
 
 ## md-00-gap-tung.2
-- **tung** (ao-xanh-happy): {{nv.nguoi-choi}} à. Dễ gọi đấy.
+- **tung** (ao-xanh-happy): {{nv.nguoi-choi}} à. Tên dễ gọi đấy.
 
 ## md-00-gap-tung.3
 - **tung** (ao-xanh): {{nv.nguoi-choi.nganh}} à? Lại dân kinh tế. Cả phòng không ai học Toán, sau này tớ mượn vở ai đây.
@@ -85,7 +96,7 @@
 - **tung** (ao-xanh-happy): Tớ cá là ba phút là tới tầng bốn! Cậu leo không kịp đâu.
 - **player**: Này, tớ đang khiêng nửa cái vali của cậu đấy nhé!
 - [DÀN DỰNG] Tùng đẩy cửa phòng 408.
-- **tung** (ao-xanh-happy): Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường. Tớ nợ cậu một cốc trà đá đấy!
+- **tung** (ao-xanh-happy): Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường. Trưa nay tớ nợ cậu cốc trà đá!
 
 ## md-03-toa-b.1
 - [DÀN DỰNG] Hộp tôn xanh treo trên mảng tường gần cửa ra vào (bản CHƯA có thẻ lịch ở khe — DX-03 chưa làm: [KHÁM PHÁ] không có vật tĩnh). Bác Thịnh đứng ở chân cầu thang.
@@ -125,10 +136,10 @@
 - **tung** (neutral): CLB mình đang điều tra vụ nào không chị?
 - **minh-anh** (neutral): Không em ạ. Hồ sơ giờ tra trên hệ thống là ra hết. Mấy kiểu điều tra ngày xưa hết đất diễn rồi.
 - **tung** (happy): Thế giờ CLB chuyên điều tra… mật khẩu Wi-Fi ạ?
-- **minh-anh** (worried): Em ra đây để đùa thì bàn bên kia vui hơn đấy.
+- **minh-anh** (worried): Cậu đùa thì sang gian Robotics bên kia cho vui.
 - **minh-anh** (neutral): Muốn vào thì điền phiếu này. Nhớ ghi mã sinh viên.
 - **tung** (worried): Thẻ bọn em đang đeo là thẻ tạm, chưa in mã chị ạ.
-- **minh-anh** (neutral): Đoàn trường có gửi danh sách tân sinh viên khóa này, mã nằm trong đấy. Tra xong là chị xóa khỏi máy.
+- **minh-anh** (neutral): Đoàn trường có gửi file danh sách tân sinh viên. Em tự tra mã trên máy chị đi.
 - **narrator**: {{nv.tung}} cúi xuống gõ phím vài giây rồi điền một mạch.
 - **minh-anh** (worried): Mã này của một bạn Tùng học Kế toán. Phiếu em lại ghi ngành Du lịch?
 - **tung** (worried): Dạ vâng, em Tùng Du lịch ạ… Tên trong này na ná nhau, em nhìn nhầm dòng.
@@ -180,10 +191,10 @@
 - **ha-vy** (thinking): Có vài thứ hơi lạ. Cậu thử xâu chuỗi lại xem.
 
 ## md-10-doan-tung.1
-- **player**: Tùng lấy chăng? Cậu ấy đứng cạnh bàn.
-- **tung** (worried): Ơ kìa. Tớ chia trà còn chưa uống ngụm nào.
+- **player**: Tùng lấy chăng? Cậu ấy đứng ngay cạnh bàn.
+- **tung** (worried): Ơ kìa. Tớ chia trà còn chưa uống ngụm nào mà.
 - **narrator**: Tùng đặt cốc xuống, quay mặt đi. Cả nhóm nhìn nhau, chẳng ai ăn tiếp.
-- **ha-vy** (neutral): Căn cứ vào đâu? Đứng gần bàn chưa đủ đâu.
+- **ha-vy** (neutral): Đứng gần bàn chưa đủ để kết luận đâu.
 
 ## md-10-doan-robotics.1
 - **player**: Hay người ở gian Robotics? Gian đấy sát sạt sân mình.
@@ -203,9 +214,10 @@
 > NHIỆM VỤ: Dọn tủ hồ sơ cùng CLB
 > NHẮC VIỆC duy (neutral): Ngăn dưới tủ tớ chưa kiểm kê tới.
 - [THẺ CHỮ] **narrator**: Thứ Hai, 23/09/2024 · 16:00 · Phòng CLB
-- **narrator**: Phòng nhỏ, một bàn dài, một tủ hồ sơ. Bộ máy bàn phủ bụi ở góc. Duy mở ngăn tủ dưới cùng; một đám bụi bay lên làm Tùng ho sặc.
-- **duy** (neutral): Tớ giữ chìa khóa phòng, tủ và laptop cũ. Ngăn dưới chưa kiểm kê. Mở xem nào.
-- **ha-vy** (day-kinh): Hôm Trung thu mình thấy đôi dép bé tí dưới chiếc đèn. Ở đây cũng vậy thôi: nhìn chỗ người ta không để ý.
+- **narrator**: Phòng nhỏ, có một bàn dài và tủ hồ sơ. Bộ máy tính phủ bụi ở góc.
+- **narrator**: Duy mở ngăn tủ dưới cùng; đám bụi bay lên làm Tùng ho sặc sụa.
+- **duy** (neutral): Tớ giữ chìa khóa phòng, tủ và laptop cũ. Ngăn dưới này chưa kiểm kê.
+- **ha-vy** (day-kinh): Nhìn dưới đáy tủ đi. Chỗ người ta hay bỏ qua ấy.
 
 ## md-11-phong-clb.2
 - **minh-anh** (neutral): Sổ của CLB đấy, khóa nào cũng chép thêm vài trang. Mấy trang đầu mực xanh là từ hồi mới lập. Năm nay em giữ.
@@ -224,12 +236,11 @@
 - **duy** (serious): Nếu mất phòng, CLB sẽ vào diện chờ giải thể. Hết học kỳ mà chưa có phòng thì giải tán, nộp sổ sách về Hội sinh viên.
 - **narrator**: Duy xoay laptop sang. Mục đặt phòng tháng tới trên hệ thống bị phủ xám, báo dòng "Chờ kết quả rà soát".
 - **minh-anh** (worried): Chưa họp mà đã chặn đặt phòng rồi?
-- **narrator**: Tờ lịch sinh hoạt chị Minh Anh vừa viết còn nằm cạnh bàn phím.
 - **duy** (neutral): Tớ vừa nhận mail. Cả sao kê quỹ cũng phải gửi cho Hội sinh viên kiểm tra.
 
 ## md-11-la-thu.2
-- **player**: Chữ ký lượn thế này, đọc được mỗi chữ H… mà lại còn "đề nghị phản hồi chính thức".
-- **player**: (Cuối trang còn sót một dòng chữ bé tí, bị xén mất nửa. Trông như tên tệp.)
+- **player**: Chữ ký lượn thế này, đọc được mỗi chữ H… mà lại còn ghi "đề nghị phản hồi chính thức".
+- **player**: (Cuối trang còn sót một dòng chữ bé tí, bị xén mất nửa. Trông như tên tệp in ra từ máy tính.)
 
 ## md-11-la-thu.3a
 - **duy** (neutral): Đủ năm người thì CLB chưa bị giải thể ngay. Nhưng phòng vẫn bị xét: báo cáo đã yếu, giờ thêm lá thư này.
