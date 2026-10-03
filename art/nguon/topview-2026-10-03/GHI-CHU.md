@@ -12,3 +12,6 @@ Tạo qua MCP Topview (GPT Image 2, image_edit, 1K, medium; mỗi ảnh 0,2 cred
   (giữ dáng hai người), Image2 = nền phòng CLB; Tùng ngả trên ghế cạnh bàn.
 - `cg-bong-huy-hieu.png` (vẽ lại): bản cũ là cổng chính của trường, một người đi bộ. Chú Cường kể ở CỔNG KÝ TÚC XÁ, 6h45 sáng:
   Image1 = nền `bg-mvp-cong-ktx`, Image2 = chân dung Hoài; cậu sinh viên quay lưng, balo, đưa phong bì nâu.
+- `phong-clb-ngoi-chi-nguoi-magenta.png`: sửa từ ảnh bốn người ngồi, "chỉ giữ bốn người, phần bị ghế/bàn che để trống, nền magenta
+  phẳng". Tách thành ảnh viền `src/assets/mvp/nen/vien-ngoi-<mã người>.webp` (khóa màu magenta → từng người → dò lệch
+  so với ảnh gốc, Duy lệch 10px → viền trắng + quầng vẽ sẵn). Rê chuột chỉ bật độ mờ của ảnh viền, không dùng filter.

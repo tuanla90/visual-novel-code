@@ -51,22 +51,27 @@ export interface KhamPhaMvpProps {
  * PHÒNG CLB CÓ NGƯỜI NGỒI (user 03/10/2026: "ảnh 4 thành viên đang ngồi ở chỗ thay vì 4 cái ảnh đứng sừng sững"): cảnh phòng CLB
  * mà các người để bấm là thành viên CLB thì nền là ảnh họ đang ngồi (`bg-mvp-phong-clb-ngoi-<mã những người có mặt>`), mỗi người
  * là một vùng bấm đúng chỗ ngồi. Khách (Nam, Quân…) vẫn đứng như cũ. Không có ảnh khớp nhóm người → về cách cũ.
- * Vùng ngồi tính theo % ảnh 1360×768 (ảnh do Topview sửa từ nền phòng CLB, art/nguon/topview-2026-10-03).
+ * Vùng ngồi tính theo % ảnh 1360×768 (ảnh do Topview sửa từ nền phòng CLB, art/nguon/topview-2026-10-03) = khung bao ảnh viền
+ * `vien-ngoi-<mã người>.webp` (viền trắng vẽ sẵn theo dáng người, tách từ lớp "chỉ giữ người" của Topview; ba ảnh ngồi chung chỗ).
  */
 const CHO_NGOI: Record<string, { x: number; y: number; rong: number; cao: number }> = {
-  duy: { x: 3, y: 19, rong: 17.6, cao: 49 },
-  'ha-vy': { x: 29.8, y: 23.4, rong: 14.7, cao: 54.7 },
-  'minh-anh': { x: 55.5, y: 17.6, rong: 11.8, cao: 28 },
-  tung: { x: 68, y: 24.7, rong: 24.3, cao: 62 },
+  duy: { x: 2.43, y: 17.84, rong: 18.01, cao: 50.91 },
+  'ha-vy': { x: 30.96, y: 22.66, rong: 13.97, cao: 56.25 },
+  'minh-anh': { x: 55.29, y: 17.06, rong: 12.79, cao: 28.65 },
+  tung: { x: 67.5, y: 24.09, rong: 23.24, cao: 74.61 },
 };
 const THU_TU_NGOI = Object.keys(CHO_NGOI);
 
 /** Ảnh phòng CLB có đúng những thành viên này ngồi (thiếu thì `undefined`). */
 function anhPhongNgoi(canh: string, nguoi: readonly string[]): string | undefined {
   if (canh !== 'phong-clb' || nguoi.length === 0) return undefined;
-  const ma = THU_TU_NGOI.filter((n) => nguoi.includes(n)).join('-');
-  return anhTheoTen(`bg-mvp-phong-clb-ngoi-${ma}`);
+  return anhTheoTen(`bg-mvp-phong-clb-ngoi-${maNgoi(nguoi)}`);
 }
+
+function maNgoi(nguoi: readonly string[]): string {
+  return THU_TU_NGOI.filter((n) => nguoi.includes(n)).join('-');
+}
+
 
 const DAU: Record<NonNullable<DiemKhamPhaMvp['dau']>, { chu: string; doc: string }> = {
   chinh: { chu: '!', doc: 'việc chính' },
@@ -207,6 +212,9 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                     data-chinh={d.diem.dau === 'chinh' && !d.daXem ? '1' : undefined}
                     onClick={() => onXem(d.diem.chuoi)}
                   >
+                    {anhTheoTen(`vien-ngoi-${d.diem.sprite.slice(3)}`) ? (
+                      <img className="mvp-ngoi__vien" src={anhTheoTen(`vien-ngoi-${d.diem.sprite.slice(3)}`)} alt="" draggable={false} />
+                    ) : null}
                     <HuyHieu d={d} />
                     <span className="mvp-ngoi__ten">{kb.nhanVat.find((n) => n.id === d.diem.sprite.slice(3))?.ten}</span>
                   </button>

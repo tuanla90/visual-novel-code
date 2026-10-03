@@ -3194,6 +3194,30 @@
   outline: none;
 }
 .mvp-ngoi.is-da-xem { cursor: default; }
+/* Có ảnh viền vẽ sẵn (03/10/2026, user: "viền trắng quanh đúng nhân vật thôi"): bỏ khung chữ nhật; rê qua chỉ bật độ mờ của ảnh
+   viền (rẻ, không tính filter mỗi lần rê như drop-shadow nên không trễ). */
+.mvp-ngoi:has(.mvp-ngoi__vien),
+.mvp-ngoi:has(.mvp-ngoi__vien):not(:disabled):hover,
+.mvp-ngoi:has(.mvp-ngoi__vien):focus-visible {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.mvp-ngoi__vien {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.08s ease-out;
+}
+.mvp-ngoi:not(:disabled):hover .mvp-ngoi__vien,
+.mvp-ngoi:focus-visible .mvp-ngoi__vien {
+  opacity: 1;
+}
 .mvp-ngoi .mvp-dau { position: absolute; left: 50%; top: -6px; transform: translate(-50%, -100%); }
 .mvp-ngoi__ten {
   position: absolute;
