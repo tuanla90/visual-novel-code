@@ -13980,7 +13980,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Việc của cô Hạnh — Thứ Tư, 20 tháng 11"
+          "text": "Việc của cô Hạnh, thứ Tư 20 tháng 11"
         },
         {
           "type": "line",
@@ -14120,13 +14120,13 @@ const GOC = {
           "type": "line",
           "speaker": "co-hanh",
           "expression": "smile",
-          "text": "Các cháu có lòng quá. Năm nào cũng có mấy bó, mà năm nay cô nhìn bó nào cũng thấy lâu."
+          "text": "Các em có lòng quá. Năm nào cũng có mấy bó, mà năm nay cô nhìn bó nào cũng thấy lâu."
         },
         {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Chúc cô mạnh khỏe ạ. Bọn cháu mang hoa sang, cô còn việc gì cần phụ không ạ?"
+          "text": "Chúc cô mạnh khỏe ạ. Bọn em mang hoa sang, cô còn việc gì cần phụ không ạ?"
         },
         {
           "type": "line",
@@ -14144,7 +14144,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Cô cho bọn cháu xem bảng đó ạ?"
+          "text": "Cô cho bọn em xem danh sách ấy ạ?"
         },
         {
           "type": "show-document",
@@ -14163,13 +14163,13 @@ const GOC = {
           "type": "line",
           "speaker": "co-hanh",
           "expression": "neutral",
-          "text": "Cô mở cho tài khoản CLB đúng một bảng này. Bảng nào khác cô không mở, xong việc là cô khóa lại."
+          "text": "Ừ, cô mở cho các em đúng cái danh sách ấy. Xong thì báo cô một tiếng."
         },
         {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Bọn cháu chỉ cần cột ghi chú và cột tên. Lớp, năm học cứ để nguyên."
+          "text": "Bọn em chỉ cần tên, lớp, năm học và ghi chú thôi ạ."
         },
         {
           "type": "line",
@@ -14392,7 +14392,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Bọn cháu xin phép. Chiều ba giờ bọn cháu qua phụ cô kê bàn ghế."
+          "text": "Bọn em xin phép. Chiều ba giờ bọn em qua phụ cô kê bàn ghế."
         },
         {
           "type": "line",

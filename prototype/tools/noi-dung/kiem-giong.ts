@@ -40,7 +40,9 @@ export interface LuatGiong {
   nhac: { mau: RegExp; vi: string }[];
   doDai: Map<string, number>;
   /** "## Chống giọng AI": mẫu sáo của văn AI, áp cho lời nhân vật ("thoại"), lời dẫn ("dẫn") hay cả hai. */
-  chongAi: { mau: RegExp; loi: boolean; ap: 'thoại' | 'dẫn' | 'tất cả'; vi: string }[];
+  chongAi: { mau: RegExp; loi: boolean; ap: 'thoại' | 'dẫn' | 'tất cả'; theChu: boolean; vi: string }[];
+  /** "## Xưng theo người có mặt": từ cấm khi trong đoạn có / không có những người nhất định. */
+  coMat: { nguoi: Set<string>; khiCo: Set<string>; truKhiCo: Set<string>; chiKhi: string[]; tu: string[]; loi: boolean; vi: string }[];
   /** "## Tiểu từ": tỉ lệ tối thiểu câu thoại có tiểu từ trong một tệp đủ cỡ. */
   tieuTu: { mau: RegExp; toiThieu: number; co: number; boQua: string[] } | null;
 }
@@ -60,7 +62,7 @@ const dsach = (s: string | undefined): string[] => (s ?? '').split(',').map((x) 
 const boNgoac = (s: string): string => s.replace(/^"(.*)"$/, '$1');
 
 export function docLuatGiong(noiDung: string): LuatGiong {
-  const luat: LuatGiong = { thuTu: [], xungHo: [], cachGoi: [], cumRieng: [], cauKhoa: [], tenBo: [], nhac: [], doDai: new Map(), chongAi: [], tieuTu: null };
+  const luat: LuatGiong = { thuTu: [], xungHo: [], cachGoi: [], cumRieng: [], cauKhoa: [], tenBo: [], nhac: [], doDai: new Map(), chongAi: [], tieuTu: null, coMat: [] };
   let phan = '';
   for (const dong of noiDung.replace(/<!--[\s\S]*?-->/g, '').split(/\r?\n/)) {
     const td = /^## (.+)$/.exec(dong);
@@ -84,7 +86,17 @@ export function docLuatGiong(noiDung: string): LuatGiong {
     else if (phan === 'Độ dài') luat.doDai.set(dau, Number((m[1] ?? '').split(' · ')[1]));
     else if (phan === 'Chống giọng AI') {
       const ap = khoa.get('áp');
-      luat.chongAi.push({ mau: new RegExp(dau, 'iu'), loi: khoa.get('mức') === 'lỗi', ap: ap === 'thoại' || ap === 'dẫn' ? ap : 'tất cả', vi });
+      luat.chongAi.push({ mau: new RegExp(dau, 'iu'), loi: khoa.get('mức') === 'lỗi', ap: ap === 'thoại' || ap === 'dẫn' ? ap : 'tất cả', theChu: khoa.get('thẻ chữ') === 'có', vi });
+    } else if (phan === 'Xưng theo người có mặt') {
+      luat.coMat.push({
+        nguoi: new Set(dsach(dau)),
+        khiCo: new Set(dsach(khoa.get('khi có'))),
+        truKhiCo: new Set(dsach(khoa.get('trừ khi có'))),
+        chiKhi: dsach(khoa.get('chỉ khi câu có')),
+        tu: dsach(khoa.get('không nói')),
+        loi: khoa.get('mức') !== 'nhắc',
+        vi,
+      });
     } else if (phan === 'Tiểu từ') {
       luat.tieuTu = { mau: new RegExp(dau.replace(/^mẫu:\s*/, ''), 'iu'), toiThieu: Number(khoa.get('tối thiểu')), co: Number(khoa.get('cỡ')), boQua: dsach(khoa.get('bỏ qua')) };
     }
@@ -215,12 +227,33 @@ export function kiemGiong(luat: LuatGiong, tepLoi: { ten: string; duongDan: stri
     const n = soChu(b.chu);
     if (n > gioiHan) canhBao.push(`${vt(b)}: [độ dài] ${b.nguoi ?? 'nhắc'} ${n} chữ (tối đa ${gioiHan})`);
     // Chống giọng AI
-    if (!b.theChu) {
+    {
       const laDan = b.nguoi === 'narrator';
       for (const r of luat.chongAi) {
+        if (b.theChu && !r.theChu) continue;
         if ((r.ap === 'thoại' && laDan) || (r.ap === 'dẫn' && !laDan)) continue;
         const m = r.mau.exec(b.chu);
         if (m) (r.loi ? loi : canhBao).push(`${vt(b)}: [giọng AI] ${b.nguoi ?? 'nhắc'} "${m[0]}" — ${r.vi}`);
+      }
+    }
+  }
+
+  // Xưng theo người có mặt trong đoạn
+  const coMatDoan = new Map<string, Set<string>>();
+  const loiDoan = new Map<string, Bong[]>();
+  for (const b of bong) loiDoan.set(`${b.tep}#${b.doan}`, [...(loiDoan.get(`${b.tep}#${b.doan}`) ?? []), b]);
+  for (const b of bong) if (b.nguoi) coMatDoan.set(`${b.tep}#${b.doan}`, (coMatDoan.get(`${b.tep}#${b.doan}`) ?? new Set()).add(b.nguoi));
+  for (const b of bong) {
+    if (!b.nguoi || b.loai !== 'thoai') continue;
+    const coMat = coMatDoan.get(`${b.tep}#${b.doan}`) ?? new Set<string>();
+    const loiNoi = boNgoiBa(boTrich(b.chu));
+    for (const r of luat.coMat) {
+      if (!r.nguoi.has(b.nguoi) || ![...r.khiCo].some((x) => coMat.has(x)) || [...r.truKhiCo].some((x) => coMat.has(x))) continue;
+      if (r.chiKhi.length && !r.chiKhi.some((t) => nguyenTu(t).test(loiNoi))) continue;
+      for (const tu of r.tu) {
+        // Người ngoài tự nói từ ấy trước trong đoạn (cô Hạnh dạy "bảng, cột, dòng") thì sinh viên được nói lại.
+        if (loiDoan.get(`${b.tep}#${b.doan}`)?.some((x) => r.khiCo.has(x.nguoi ?? '') && x.dong < b.dong && nguyenTu(tu).test(x.chu))) continue;
+        if (nguyenTu(tu).test(loiNoi)) (r.loi ? loi : canhBao).push(`${vt(b)}: [người có mặt] ${b.nguoi} nói "${tu}" khi có ${[...r.khiCo].filter((x) => coMat.has(x)).join(', ')} — ${r.vi}`);
       }
     }
   }

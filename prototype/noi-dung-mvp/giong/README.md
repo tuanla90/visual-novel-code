@@ -62,7 +62,9 @@ vào brief khi giao AI viết lời. Máy kiểm bắt được phần có mẫu
 | Xu nịnh: "cậu nói đúng", "ý hay" | Đồng ý bằng việc làm: "Ừ, lọc lại đi." |
 | Giọng trợ lý ảo: "Tất nhiên rồi!", "Hy vọng điều này giúp…" | Nhân vật có việc riêng, không phục vụ người chơi |
 | Câu đủ chủ vị, không tiểu từ, ai cũng nói trơn tru như nhau | Tiểu từ (à, ừ, nhỉ, chứ, đấy, thế, mà, ạ), câu cụt, nói dở, ngắt lời; mỗi người một nhịp (Tùng cảm thán, Hà Vy cộc, bác Thịnh rất ngắn) |
-| Gạch dài "—", ngoặc cong “ ”, chữ **đậm**, emoji | Dấu chấm, phẩy, "…"; ngoặc thẳng "…" |
+| Gạch dài "—" (kể cả thẻ chữ tiêu đề), ngoặc cong “ ”, chữ **đậm**, emoji | Dấu chấm, phẩy, "…"; ngoặc thẳng "…"; "Việc của cô Hạnh, thứ Tư 20 tháng 11" |
+| **Nhét chữ vào mồm** (máy không bắt được, soát tay): nhân vật đọc lại luật / thói quen của mình cho người chơi nghe, điều người chơi đã biết. "Cô mở cho tài khoản CLB đúng một bảng này. Bảng nào khác cô không mở, xong việc là cô khóa lại." | Cho thấy bằng việc hoặc một câu đời thường: "Ừ, cô mở cho các em đúng cái danh sách ấy. Xong thì báo cô một tiếng." |
+| Sinh viên nói thuật ngữ dữ liệu với người ngoài CLB: "Bọn cháu chỉ cần cột ghi chú và cột tên." | Nói như đời thật: "Bọn em chỉ cần tên, lớp, năm học và ghi chú thôi ạ." (người ngoài tự nói "cột" trước thì được nói lại) |
 
 ## Quyết định 03/10/2026
 
@@ -70,4 +72,6 @@ vào brief khi giao AI viết lời. Máy kiểm bắt được phần có mẫu
 - Duy (năm hai) xưng **anh/em** với năm nhất, **em/chị** với Minh Anh. Năm nhất gọi "anh Duy".
 - Người chơi xưng theo **người được nói tới**: với Minh Anh "em/chị"; với Tùng, Hà Vy "tớ/cậu" dù Minh Anh đứng đó; nói với cả
   nhóm thì tránh đại từ.
+- Với thầy cô ở trường (cô Hạnh, cô Lan, thầy Quang), sinh viên luôn xưng **em**, kể cả cô sắp nghỉ hưu; thầy cô gọi "các em".
+  "Cháu" chỉ với bác bảo vệ, chú Cường, bà bán trà đá.
 - Quân luôn **tôi/các bạn**. Hiếu **tôi** ở Vụ 1 (còn gắt); từ Vụ 2 (đã gỡ tin) **tớ/các cậu** với nhóm, "em" với cô Lan.

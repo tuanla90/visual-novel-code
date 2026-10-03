@@ -3,7 +3,7 @@
 <!-- Lời nhiệm vụ phụ "Học trò cũ của cô" — bản đầu 03/10/2026, giọng sinh viên miền Bắc. Show don't tell: cô Hạnh xúc động nhưng kiệm lời; học trò cũ chỉ kể qua narrator. Chi tiết ẩn p-hoc-an và cảnh cuối p-hoc-chieu là hé lộ rất nhẹ về bác Thịnh: KHÔNG ai nói ra, KHÔNG giải thích. Dữ liệu cá nhân chỉ xem đúng thứ cần. -->
 
 ## p-hoc-mo.1
-- [THẺ CHỮ] **narrator**: Việc của cô Hạnh — Thứ Tư, 20 tháng 11
+- [THẺ CHỮ] **narrator**: Việc của cô Hạnh, thứ Tư 20 tháng 11
 - **narrator**: Tám giờ kém mười. Phòng CLB còn vương mùi giấy báo ướt. Tùng ôm bó cúc họa mi, Minh Anh đang nhét tấm thiệp vào giữa những cành hoa.
 - **tung** (happy): Hai mươi tháng Mười Một mà. Tớ cá là cô nào nhận hoa cũng cười.
 - **minh-anh** (neutral): Bó này sang Phòng Đào tạo trước. Cô Hạnh nghỉ hưu cuối năm. Hôm nay là hai mươi tháng Mười Một cuối cùng cô còn đi làm.
@@ -24,15 +24,15 @@
 - **co-hanh** (smile): Hoa đẹp quá. Cô cắm vào đâu nhỉ, cái bình này bé quá.
 
 ## p-hoc-co.1
-- **co-hanh** (smile): Các cháu có lòng quá. Năm nào cũng có mấy bó, mà năm nay cô nhìn bó nào cũng thấy lâu.
-- **minh-anh** (neutral): Chúc cô mạnh khỏe ạ. Bọn cháu mang hoa sang, cô còn việc gì cần phụ không ạ?
+- **co-hanh** (smile): Các em có lòng quá. Năm nào cũng có mấy bó, mà năm nay cô nhìn bó nào cũng thấy lâu.
+- **minh-anh** (neutral): Chúc cô mạnh khỏe ạ. Bọn em mang hoa sang, cô còn việc gì cần phụ không ạ?
 - **co-hanh** (neutral): Có. Chiều nay ba giờ cô mời mấy em học trò cũ về ngồi một chút, ở sảnh tòa B. Không hội trường, không loa đài.
 - **co-hanh** (neutral): Khổ nỗi cô chỉ còn danh sách lớp các năm. Nhập tay, mỗi năm một kiểu: chỗ viết hoa chỗ viết thường, chỗ thừa dấu cách. Cô cần những em đã ra trường, mỗi em một cái tên, để cô viết thiệp.
-- **ha-vy** (thinking): Cô cho bọn cháu xem bảng đó ạ?
+- **ha-vy** (thinking): Cô cho bọn em xem danh sách ấy ạ?
 
 ## p-hoc-co.2
-- **co-hanh** (neutral): Cô mở cho tài khoản CLB đúng một bảng này. Bảng nào khác cô không mở, xong việc là cô khóa lại.
-- **duy** (neutral): Bọn cháu chỉ cần cột ghi chú và cột tên. Lớp, năm học cứ để nguyên.
+- **co-hanh** (neutral): Ừ, cô mở cho các em đúng cái danh sách ấy. Xong thì báo cô một tiếng.
+- **duy** (neutral): Bọn em chỉ cần tên, lớp, năm học và ghi chú thôi ạ.
 - **co-hanh** (smile): Thế thì cô yên tâm.
 > NHIỆM VỤ: Lập danh sách học trò cũ đã ra trường, mỗi người một tên
 
@@ -68,7 +68,7 @@
 ## p-hoc-dua.2
 - **co-hanh** (smile): Châu thì cô nhớ, em chuyển lớp giữa năm nên vào hai danh sách. Sơn với Long là cô gõ hai lần. Còn Hùng thì hai cậu khác hẳn nhau, một cậu cao lênh khênh, một cậu hay làm rơi bút.
 - **co-hanh** (neutral): Hai mươi bảy cái thiệp. Cô viết nốt trước trưa.
-- **minh-anh** (neutral): Bọn cháu xin phép. Chiều ba giờ bọn cháu qua phụ cô kê bàn ghế.
+- **minh-anh** (neutral): Bọn em xin phép. Chiều ba giờ bọn em qua phụ cô kê bàn ghế.
 - [THẺ CHỮ] **narrator**: Bảng chỉ cho biết tên trùng. Một người hay hai người, người trong lớp nhận ra.
 
 ## p-hoc-chieu.1

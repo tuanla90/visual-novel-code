@@ -15,6 +15,10 @@ const LUAT = `
 - duy · không nói: tớ, cậu · vì: anh/em
 - hieu · không nói: tôi · từ: 02-b · vì: đổi theo cung
 
+## Xưng theo người có mặt
+- duy, ha-vy · khi có: co-hanh · trừ khi có: bac-tu · không nói: cháu · mức: lỗi · vì: em với thầy cô
+- duy · khi có: co-hanh · chỉ khi câu có: ạ, cô · không nói: cột · mức: lỗi · vì: không nói cột với người ngoài
+
 ## Cách gọi
 - Duy → anh Duy · người nói: tung
 
@@ -37,7 +41,7 @@ const LUAT = `
 - [“”] · mức: lỗi · vì: ngoặc cong
 - (đóng|giữ) vai trò (quan trọng|then chốt) · mức: lỗi · vì: thổi phồng
 - (tớ|em) (cảm thấy|thấy) (rất )?(vui|buồn) · mức: nhắc · áp: thoại · vì: gọi tên cảm xúc
-- — · mức: nhắc · vì: gạch dài
+- — · mức: nhắc · thẻ chữ: có · vì: gạch dài
 
 ## Tiểu từ
 - mẫu: (?<!\\p{L})(à|nhỉ|chứ|đấy|mà|ạ)(?!\\p{L}) · tối thiểu: 0.5 · cỡ: 2 · bỏ qua: tt-
@@ -88,8 +92,8 @@ describe('kiem-giong', () => {
     ]);
     const giongAi = (ds: string[]): string[] => ds.filter((x) => x.includes('[giọng AI]')).map((x) => /"([^"]+)" —/.exec(x)?.[1] ?? '');
     expect(giongAi(kq.loi).sort()).toEqual(['đóng vai trò then chốt', '“'].sort());
-    // "cảm thấy buồn" của narrator không tính (luật chỉ áp cho thoại); gạch dài của thẻ chữ không tính.
-    expect(giongAi(kq.canhBao).sort()).toEqual(['Tớ cảm thấy rất vui', '—'].sort());
+    // "cảm thấy buồn" của narrator không tính (luật chỉ áp cho thoại); gạch dài tính cả thẻ chữ vì luật ghi "thẻ chữ: có".
+    expect(giongAi(kq.canhBao).sort()).toEqual(['Tớ cảm thấy rất vui', '—', '—'].sort());
   });
 
   it('tiểu từ: nhắc khi tệp đủ cỡ mà ít tiểu từ, bỏ qua tệp tt-', () => {
@@ -100,5 +104,23 @@ describe('kiem-giong', () => {
     expect(tieuTu[0]).toContain('01-a.md');
     const luatTt = { ...luat, thuTu: [...luat.thuTu, 'tt-x'] };
     expect(kiemGiong(luatTt, [tep('01-a', '- **tung** (happy): Căn cứ vào đâu? Ừ thì vậy đấy.'), tep('tt-x', ...kho)]).canhBao.filter((x) => x.includes('[tiểu từ]'))).toEqual([]);
+  });
+
+  it('xưng theo người có mặt: em với thầy cô, không nói "cột" với người ngoài trừ khi họ nói trước', () => {
+    const doan = (ma: string, ...dong: string[]): string => [`## ${ma}`, ...dong].join('\n');
+    const kq = kiemGiong(luat, [
+      {
+        ten: '01-a',
+        duongDan: 'loi/01-a.md',
+        noiDung: [
+          doan('a.1', '- **co-hanh** (smile): Các em có lòng quá.', '- **duy** (neutral): Bọn cháu chỉ cần cột tên thôi ạ.', '- **tung** (happy): Căn cứ vào đâu?'),
+          doan('a.2', '- **bac-tu** (neutral): Sổ đây.', '- **co-hanh** (neutral): Cô nhờ bác.', '- **ha-vy** (neutral): Cháu cảm ơn bác ạ.'),
+          doan('a.3', '- **co-hanh** (neutral): Mỗi cột là một thứ.', '- **duy** (neutral): Vâng, cột tên ạ.'),
+        ].join('\n'),
+      },
+    ]);
+    const coMat = kq.loi.filter((x) => x.includes('[người có mặt]'));
+    expect(coMat.map((x) => /nói "([^"]+)"/.exec(x)?.[1]).sort()).toEqual(['cháu', 'cột']);
+    expect(coMat.every((x) => x.includes('01-a.md:3'))).toBe(true);
   });
 });

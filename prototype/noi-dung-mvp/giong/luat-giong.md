@@ -54,12 +54,20 @@ Chốt 03/10/2026: Duy anh/em với năm nhất; người chơi xưng theo ngư�
 - quan · không nói: tớ, cậu, các cậu · vì: tôi/các bạn, lạnh, công vụ
 - hieu · không nói: tớ, các cậu · trước: 10-vu-2-tin-don · vì: Vụ 1 còn gắt, tôi/các bạn
 - hieu · không nói: tôi · từ: 10-vu-2-tin-don · vì: từ Vụ 2 đã gỡ tin, tớ/các cậu với nhóm (vẫn "em" với cô Lan)
-- thay-quang · không nói: tôi, tớ · vì: thầy/các em
-- co-hanh · không nói: tôi, tớ · vì: cô/các em
-- co-lan · không nói: tôi, tớ · vì: cô/các em
+- thay-quang · không nói: tôi, tớ, cháu · vì: thầy/các em
+- co-hanh · không nói: tôi, tớ, cháu · vì: cô/các em, kể cả cô sắp nghỉ hưu (user chốt 03/10)
+- co-lan · không nói: tôi, tớ, cháu · vì: cô/các em
 - bac-tu · không nói: tôi, tớ · vì: bác/cháu
 - chu-cuong · không nói: tôi, tớ · vì: chú/cháu
 - ba-lua · không nói: tôi, tớ · vì: bà/các cháu
+
+## Xưng theo người có mặt
+
+<!-- `- <mã người nói>, … · khi có: <mã>, … [· trừ khi có: <mã>, …] [· chỉ khi câu có: <từ>, …] · không nói: <từ>, … · mức: lỗi|nhắc · vì: …`
+"Có mặt" = có nói trong cùng đoạn lời (## mã). Người "khi có" đã tự nói từ ấy trước trong đoạn thì được nói lại (cô Hạnh dạy "bảng, cột, dòng" ở ngày 2). Dùng khi cách nói phụ thuộc người nghe mà máy không biết câu nói với ai. -->
+
+- tung, ha-vy, player, minh-anh, duy, hoai, hieu, nam, khanh, thao, bach, quan · khi có: co-hanh, co-lan, thay-quang · trừ khi có: bac-tu, chu-cuong, ba-lua · không nói: cháu · mức: lỗi · vì: ở trường, sinh viên xưng "em" với thầy cô dù thầy cô bao nhiêu tuổi; "cháu" chỉ với bác bảo vệ, chú Cường, bà bán trà đá (user chốt 03/10)
+- tung, ha-vy, player, minh-anh, duy · khi có: co-hanh, co-lan, thay-quang, bac-tu, chu-cuong, ba-lua, hoai, hieu, quan, khanh · chỉ khi câu có: ạ, cô, thầy, bác, chú, bà, anh, cậu · không nói: cột, truy vấn, SQL, câu lệnh, chạy lệnh · mức: lỗi · vì: nói chuyện dữ liệu với người ngoài CLB thì nói "tên, lớp, ghi chú", không nói "cột"; "Bọn em chỉ cần tên, lớp, năm học và ghi chú thôi ạ" (user chốt 03/10)
 
 ## Cách gọi
 
@@ -116,7 +124,7 @@ AI gọt lời hay xóa mất những câu này (duyệt v2 Vụ 1, 03/10). -->
 
 <!-- Đảo ngược danh mục "Signs of AI writing" của Wikipedia (WP:AISIGNS, bài "AI slop" / "Rác AI") sang lời thoại tiếng Việt.
 `- <mẫu> · mức: lỗi|nhắc · áp: thoại|dẫn|tất cả · vì: …` — mẫu là biểu thức chính quy (cờ iu: không phân biệt hoa thường).
-"thoại" = lời nhân vật (kể cả người chơi), "dẫn" = narrator; [THẺ CHỮ] (thẻ ngày tháng) không bị kiểm.
+"thoại" = lời nhân vật (kể cả người chơi), "dẫn" = narrator; [THẺ CHỮ] (thẻ ngày tháng) chỉ bị kiểm khi luật ghi "thẻ chữ: có".
 Đo trên lời hiện tại 03/10: gần như không mẫu nào khớp, nên khớp là dấu hiệu thật. Cách viết thay thế: giong/README.md. -->
 
 - oaicite|contentReference|turn0search|\[cite[:_ ]|\[span_\d|:::|grok_card|attached_file · mức: lỗi · vì: dấu vết công cụ AI dán sót
@@ -137,7 +145,7 @@ AI gọt lời hay xóa mất những câu này (duyệt v2 Vụ 1, 03/10). -->
 - (tớ|em|mình|anh|chị|cháu) (cảm thấy|thấy) (rất |thật |vô cùng )?(vui|buồn|lo lắng|hạnh phúc|xúc động|tự hào|biết ơn|hồi hộp|bất an) · mức: nhắc · áp: thoại · vì: gọi tên cảm xúc thay vì cho thấy
 - hít một hơi( thật)? sâu|khẽ mỉm cười|nở một nụ cười|mỉm cười (nhẹ|dịu dàng)|ánh mắt (kiên định|lấp lánh|ánh lên)|trái tim|tâm hồn|ngưng đọng|ngừng trôi|dâng trào|siết chặt tay · mức: nhắc · vì: cử chỉ, cảm giác sáo của truyện AI
 - (cậu|em|bạn|các cậu) nói (rất )?đúng|hoàn toàn (đúng|chính xác)|ý (kiến|tưởng) (rất )?hay · mức: nhắc · áp: thoại · vì: xu nịnh (sycophancy); nhân vật đồng ý thì nói việc tiếp theo
-- — · mức: nhắc · vì: gạch dài trong lời là dấu câu của AI; dùng dấu chấm, phẩy hoặc "…"
+- — · mức: lỗi · thẻ chữ: có · vì: gạch dài là dấu câu của AI, kể cả trong thẻ chữ tiêu đề (user chốt 03/10); dùng dấu phẩy, chấm hoặc "…" ("Việc của cô Hạnh, thứ Tư 20 tháng 11")
 
 ## Tiểu từ
 
@@ -146,3 +154,4 @@ AI gọt lời hay xóa mất những câu này (duyệt v2 Vụ 1, 03/10). -->
 tiểu từ phải ≥ <tối thiểu>; dưới là nhắc. Đo 03/10: lời Vụ 1 đã chuốt 0,30–0,47; việc phụ viết sau cùng thấp nhất (túi đồ 0,14, hoàn tiền 0,18); tt-* là phản hồi màn tra, khô tự nhiên nên bỏ qua. -->
 
 - mẫu: (?<!\p{L})(à|ừ|ờ|ơ|nhỉ|nhé|nhá|chứ|đấy|đây|đâu|thế|mà|đi|ạ|hả|cơ|kìa|á|ấy|vậy|ôi|ơi|hở|thôi|chắc)(?!\p{L})|(không|chưa)\?$ · tối thiểu: 0.2 · cỡ: 30 · bỏ qua: tt-
+
