@@ -1658,7 +1658,7 @@ const GOC = {
         {
           "type": "trial-filter",
           "id": "lt-ngay-hoi",
-          "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';",
+          "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
           "soDong": 1,
           "chon": {
             "cot": "ma_sv",
@@ -1668,7 +1668,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Ba người tên Tùng. Thêm ngành Du lịch thì còn đúng một dòng. Mã ở ô đầu: SV240251."
+          "text": "Ngành Du lịch lọc ra còn mấy chục bạn. Thêm tên Tùng thì đúng một người. Mã ở ô đầu: SV240251."
         },
         {
           "type": "line",
@@ -19245,7 +19245,7 @@ const GOC = {
       "resultId": "ev-v2-activities"
     },
     {
-      "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';",
+      "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
       "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:169 [LỌC THỬ lt-ngay-hoi]"
     },

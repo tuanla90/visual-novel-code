@@ -102,7 +102,7 @@
 - [LỌC THỬ lt-ngay-hoi · 1 dòng · chọn ma_sv = SV240251]
 
 ```sql
-SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';
+SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';
 ```
 
 - [LỜI md-09-ngay-hoi.3]

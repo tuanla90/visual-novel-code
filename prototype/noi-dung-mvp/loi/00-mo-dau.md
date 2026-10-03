@@ -136,7 +136,7 @@
 - **player**: Chị cho em thử lọc một cái được không ạ?
 
 ## md-09-ngay-hoi.3
-- **player**: Ba người tên {{nv.tung}}. Thêm ngành Du lịch thì còn đúng một dòng. Mã ở ô đầu: SV240251.
+- **player**: Ngành Du lịch lọc ra còn mấy chục bạn. Thêm tên {{nv.tung}} thì đúng một người. Mã ở ô đầu: SV240251.
 - **narrator**: {{nv.tung}} dán tờ giấy ghi mã lên phiếu, chép lại từng số.
 - **minh-anh** (neutral): …Nhanh thật. Tối thứ Ba Trung thu, CLB liên hoan ở sân ký túc xá. Hai em tới nhé.
 - **tung** (neutral): Dạ em thì lọc kém, chứ tìm đường với nhắc lịch là việc của em.
