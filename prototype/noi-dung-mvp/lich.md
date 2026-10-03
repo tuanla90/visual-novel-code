@@ -100,3 +100,11 @@
 - Ngày: 2024-11-20
 - Tiêu đề kết: Hai mươi sáu tên, bốn tên xuất hiện hai lần
 - Lời kết: Từ 39 dòng lớp cũ, 30 dòng ghi ra trường, gom lại còn 26 tên không trùng; bốn tên có hai dòng. Danh sách chỉ cho biết tên trùng, không cho biết là một người hay hai người trùng tên, việc đó cô Hạnh nhận ra từ trí nhớ. Danh sách cũng không cho biết ai còn liên lạc được hay sẽ tới.
+
+## Túi đồ trên ghế đá {nhiệm vụ phụ: tui-do}
+- Chuỗi: p-tui-mo
+- Người giao: tung
+- Mở sau: vu2
+- Ngày: 2024-10-30
+- Tiêu đề kết: Túi về tay chủ, đơn tới muộn hay kịp
+- Lời kết: Chiếc túi vải trên ghế đá là của Hiếu, lớp BC24A; trong túi có đơn học bổng hạn nộp 17 giờ ngày 30/10. Túi nào cũng về đúng người, chỉ khác tờ đơn tới Phòng Công tác sinh viên lúc nào. Lịch học và danh sách đăng ký nói được ai học lớp nào, không nói ai là người đánh rơi.

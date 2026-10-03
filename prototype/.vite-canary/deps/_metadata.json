@@ -1,0 +1,62 @@
+{
+  "hash": "dd4483ec",
+  "configHash": "26846cf6",
+  "lockfileHash": "646f67d0",
+  "browserHash": "75029d05",
+  "optimized": {
+    "react-dom": {
+      "src": "../../../../../../prototype/node_modules/react-dom/index.js",
+      "file": "react-dom.js",
+      "fileHash": "f19b0033",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../../../../../prototype/node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "88d626b3",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../../../../../prototype/node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "4a3f5688",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../../../../../prototype/node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "80344888",
+      "needsInterop": true
+    },
+    "react/jsx-runtime": {
+      "src": "../../../../../../prototype/node_modules/react/jsx-runtime.js",
+      "file": "react_jsx-runtime.js",
+      "fileHash": "1bab4c6f",
+      "needsInterop": true
+    },
+    "sql.js": {
+      "src": "../../../../../../prototype/node_modules/sql.js/dist/sql-wasm-browser.js",
+      "file": "sql__js.js",
+      "fileHash": "c4e98c14",
+      "needsInterop": true
+    },
+    "zustand": {
+      "src": "../../../../../../prototype/node_modules/zustand/esm/index.mjs",
+      "file": "zustand.js",
+      "fileHash": "137426ad",
+      "needsInterop": false
+    },
+    "zustand/middleware": {
+      "src": "../../../../../../prototype/node_modules/zustand/esm/middleware.mjs",
+      "file": "zustand_middleware.js",
+      "fileHash": "40f5053a",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "rolldown-runtime-BPOCksWG": {
+      "file": "rolldown-runtime-BPOCksWG.js",
+      "isDynamicEntry": false
+    }
+  }
+}

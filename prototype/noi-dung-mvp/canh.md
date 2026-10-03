@@ -30,3 +30,5 @@
 ### phong-ktx-dem — Phòng KTX 408
 ### san-dem — Sân trường
 ### sanh-den-pin — Sảnh tòa B
+### ghe-da-tui-do — Ghế đá cạnh lối đi
+- Ảnh nền: bg-mvp-ghe-da-tui-do

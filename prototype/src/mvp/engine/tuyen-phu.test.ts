@@ -14,7 +14,7 @@ describe('luân phiên tuyến chính và việc phụ', () => {
   const giuaVu3 = choiTuDong(kb, taoTrangThai(kb, 0), { reNhanh: reNhanhTheo(RE_NHANH_KET_THAT), ten: TEN_MAC_DINH, sangVuSau: true, lamPhu: false }, (_s, kn) => kn.kind === 'challenge' && kn.thuThach.id === 'c-bai-thiet-bi');
 
   it('nhận việc phụ giữa Vụ 3: Vụ 3 chưa xong, việc phụ mở sau Vụ 3 chưa mở', () => {
-    expect(phuMoDuoc(kb, giuaVu3).map((p) => p.id)).toEqual(['so-phong']);
+    expect(phuMoDuoc(kb, giuaVu3).map((p) => p.id)).toEqual(['so-phong', 'tui-do']);
     const s = xuLy(kb, giuaVu3, { type: 'lam-nhiem-vu-phu', id: 'so-phong' });
     expect(s.giaiDoan).toBe('phu');
     expect(s.co).not.toContain('vu3-hoan-tat');

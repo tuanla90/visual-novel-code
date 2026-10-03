@@ -135,7 +135,7 @@ describe('mở đầu thật: Trung thu ở sân KTX', () => {
     expect(kp.diem.filter((d) => d.sprite.startsWith('vung:') && d.dau === undefined).map((d) => d.chuoi)).toEqual([
       'md-10-dau-lan', 'md-10-balo-banh-rang', 'md-10-ap-phich',
     ]);
-    expect(kp.diem.find((d) => d.sprite === 'nv:ha-vy')).toMatchObject({ x: 62, y: 100, rong: 14, dau: 'phu' });
+    expect(kp.diem.find((d) => d.sprite === 'nv:ha-vy')).toMatchObject({ x: 91, y: 100, rong: 14, dau: 'phu' });
   });
 
   it('đoán sai trở lại câu hỏi, đoán đứa trẻ mới sang buổi thứ hai', () => {
