@@ -290,7 +290,7 @@ const GOC = {
         "nam": null,
         "nganh": null,
         "cauNoi": "Tài khoản này chỉ xem được bảng lớp. Muốn xem gì thêm thì mang phiếu sang.",
-        "loi": "Cán bộ Phòng Đào tạo, phụ trách tài khoản, máy in và máy chủ của trường. Cấp quyền rất chặt: xin gì cho nấy, dùng xong là khóa lại."
+        "loi": "Cán bộ Phòng Đào tạo, phụ trách tài khoản, máy in và máy chủ của trường. Cấp quyền rất chặt: xin gì cho nấy, dùng xong là khóa lại. Sắp nghỉ hưu: cô làm ở trường gần ba mươi năm, những năm đầu đứng lớp, sau mới về Phòng Đào tạo."
       }
     },
     {
@@ -880,6 +880,16 @@ const GOC = {
         "ngay": "2024-10-11",
         "tieuDeKet": "Chín lượt, một lượt nhầm",
         "loiKet": "Sổ đón ghi chín lượt Tùng dẫn: tám lượt tới ký túc xá, một lượt tới nhà xe, là lượt của Hoài. Sổ chỉ ghi nơi tới; vì sao nhầm là điều Tùng tự nhớ lại và tự nói ra."
+      },
+      {
+        "id": "hoc-tro-cu",
+        "ten": "Học trò cũ của cô",
+        "chuoi": "p-hoc-mo",
+        "nguoiGiao": "co-hanh",
+        "moSau": "vu4",
+        "ngay": "2024-11-20",
+        "tieuDeKet": "Hai mươi sáu tên, bốn tên xuất hiện hai lần",
+        "loiKet": "Từ 39 dòng lớp cũ, 30 dòng ghi ra trường, gom lại còn 26 tên không trùng; bốn tên có hai dòng. Danh sách chỉ cho biết tên trùng, không cho biết là một người hay hai người trùng tên, việc đó cô Hạnh nhận ra từ trí nhớ. Danh sách cũng không cho biết ai còn liên lạc được hay sẽ tới."
       }
     ]
   },
@@ -13578,6 +13588,496 @@ const GOC = {
           "type": "end"
         }
       ]
+    },
+    {
+      "id": "p-hoc-mo",
+      "title": "Sáng 20/11: bó hoa gói giấy báo",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Việc của cô Hạnh — Thứ Tư, 20 tháng 11"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tám giờ kém mười. Phòng CLB còn vương mùi giấy báo ướt. Tùng ôm bó cúc họa mi, Minh Anh đang nhét tấm thiệp vào giữa những cành hoa."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Hai mươi tháng Mười Một mà. Tớ cá là cô nào nhận hoa cũng cười."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Bó này sang Phòng Đào tạo trước. Cô Hạnh nghỉ hưu cuối năm. Hôm nay là hai mươi tháng Mười Một cuối cùng cô còn đi làm."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Cô vào trường từ hồi nào?"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Gần ba mươi năm. Mấy năm đầu cô đứng lớp, sau mới về Phòng Đào tạo."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Vậy hoa phải đưa tận tay."
+        },
+        {
+          "type": "goto",
+          "to": "p-hoc-dao-tao"
+        }
+      ]
+    },
+    {
+      "id": "p-hoc-dao-tao",
+      "title": "Phòng Đào tạo đầu giờ sáng",
+      "canh": "phong-dao-tao",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Phòng Đào tạo đầu giờ còn vắng. Nắng chưa lên tới quầy, ấm trà trên bàn nhỏ vẫn bốc hơi."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cô Hạnh mặc áo dài, tóc muối tiêu búi gọn sau gáy, đang cúi xuống gấp một tờ giấy khổ lớn. Cô chưa ngẩng lên."
+        },
+        {
+          "type": "explore",
+          "id": "kp-hoc-dao-tao",
+          "diem": [
+            {
+              "sprite": "nv:co-hanh",
+              "x": 40,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "p-hoc-co",
+              "sau": [],
+              "nhan": "Cô ở quầy",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:tap-cu",
+              "x": 5.5,
+              "y": 47,
+              "rong": 5,
+              "chuoi": "p-hoc-an",
+              "sau": [],
+              "nhan": "Tập giấy kẹp bìa xanh trên quầy"
+            }
+          ]
+        },
+        {
+          "type": "goto",
+          "to": "p-hoc-co"
+        }
+      ]
+    },
+    {
+      "id": "p-hoc-an",
+      "title": "Chi tiết ẩn: Tập giấy kẹp bìa xanh",
+      "canh": "phong-dao-tao",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Một tập giấy kẹp bìa xanh sờn gáy, nằm cạnh hộp bút. Tờ trên cùng là danh sách lớp năm học 1995–1996, đánh máy, giấy đã ngả màu cà phê sữa."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Dòng đầu bảng: Đỗ Văn Thịnh. Ghi chú: thôi học."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Cô ơi, cái tên đầu tờ này…"
+        },
+        {
+          "type": "line",
+          "speaker": "co-hanh",
+          "expression": "neutral",
+          "text": "Cậu ấy học giỏi lắm."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cô gập tập giấy lại, đẩy nó vào sâu trong quầy, rồi cầm bó hoa lên ngắm."
+        },
+        {
+          "type": "line",
+          "speaker": "co-hanh",
+          "expression": "smile",
+          "text": "Hoa đẹp quá. Cô cắm vào đâu nhỉ, cái bình này bé quá."
+        }
+      ]
+    },
+    {
+      "id": "p-hoc-co",
+      "title": "Cô Hạnh nhờ: danh sách lớp cũ",
+      "canh": "phong-dao-tao",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "co-hanh",
+          "expression": "smile",
+          "text": "Các cháu có lòng quá. Năm nào cũng có mấy bó, mà năm nay cô nhìn bó nào cũng thấy lâu."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Chúc cô mạnh khỏe ạ. Bọn cháu mang hoa sang, cô còn việc gì cần phụ không ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "co-hanh",
+          "expression": "neutral",
+          "text": "Có. Chiều nay ba giờ cô mời mấy em học trò cũ về ngồi một chút, ở sảnh tòa B. Không hội trường, không loa đài."
+        },
+        {
+          "type": "line",
+          "speaker": "co-hanh",
+          "expression": "neutral",
+          "text": "Khổ nỗi cô chỉ còn danh sách lớp các năm. Nhập tay, mỗi năm một kiểu: chỗ viết hoa chỗ viết thường, chỗ thừa dấu cách. Cô cần những em đã ra trường, mỗi em một cái tên, để cô viết thiệp."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Cô cho bọn cháu xem bảng đó ạ?"
+        },
+        {
+          "type": "show-document",
+          "documentId": "doc-hoc-danh-sach"
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-hoc-ghi-chu"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "co-hanh",
+          "expression": "neutral",
+          "text": "Cô mở cho tài khoản CLB đúng một bảng này. Bảng nào khác cô không mở, xong việc là cô khóa lại."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Bọn cháu chỉ cần cột ghi chú và cột tên. Lớp, năm học cứ để nguyên."
+        },
+        {
+          "type": "line",
+          "speaker": "co-hanh",
+          "expression": "smile",
+          "text": "Thế thì cô yên tâm."
+        },
+        {
+          "type": "task",
+          "text": "Lập danh sách học trò cũ đã ra trường, mỗi người một tên"
+        },
+        {
+          "type": "goto",
+          "to": "p-hoc-tra"
+        }
+      ]
+    },
+    {
+      "id": "p-hoc-tra",
+      "title": "Phòng CLB: gọt danh sách",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Phòng CLB. Laptop mở bảng danh sách lớp cũ, bốn cột: năm học, lớp, họ tên, ghi chú."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Ghi chú đủ thứ. Chỗ ghi \"ra trường\", chỗ \"Ra trường\", chỗ có dấu cách ở đuôi."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Cô cần người đã ra trường. Lấy riêng những dòng ấy ra, ghim lại."
+        },
+        {
+          "type": "task",
+          "text": "Những dòng nào ghi học trò đã ra trường?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Cột ghi chú gõ tay. Chữ hoa, chữ thường, dấu cách thừa: gọt cho cùng một kiểu rồi mới so."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-hoc-ra-truong"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Ba mươi dòng ra trường."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Có người ra trường mà đứng hai dòng thì cô viết hai thiệp. Cô cần mỗi người một tên. Gom theo tên đi."
+        },
+        {
+          "type": "task",
+          "text": "Ba mươi dòng đó gom lại còn bao nhiêu tên?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Phiếu ba mươi dòng ra trường làm nguồn. Gom theo họ tên, mỗi tên một nhóm."
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-hoc-ten"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Hai mươi sáu tên. Ba mươi dòng mà chỉ có hai mươi sáu tên."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Vậy có tên đứng hai dòng. Cô cần biết đó là một người hay hai."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Mình đếm được số dòng của mỗi tên. Tên nào có hơn một dòng thì để cô nhìn."
+        },
+        {
+          "type": "task",
+          "text": "Tên nào xuất hiện hơn một dòng ra trường?"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Phiếu ba mươi dòng làm nguồn. Mỗi tên mấy dòng; chỉ giữ tên có hơn một dòng."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-hoc-mot-dong"
+            }
+          ]
+        },
+        {
+          "type": "challenge",
+          "challengeId": "c-hoc-hai-dong"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Bốn tên: Hoàng Minh Châu, Đinh Công Sơn, Hà Đức Long, Nguyễn Văn Hùng. Mỗi tên hai dòng."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Trùng tên chưa chắc trùng người. Mở phiếu ba mươi dòng ra xem năm học với lớp của từng dòng."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "thinking",
+          "text": "Sơn với Long là cùng năm, cùng lớp. Châu thì hai lớp khác nhau. Hùng cách nhau bốn năm."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Bảng chỉ cho biết trùng tên. Một người hay hai người thì chỉ cô nói được."
+        },
+        {
+          "type": "goto",
+          "to": "p-hoc-dua"
+        }
+      ]
+    },
+    {
+      "id": "p-hoc-dua",
+      "title": "Trả danh sách cho cô Hạnh",
+      "canh": "phong-dao-tao",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cả nhóm mang bản in sang lại Phòng Đào tạo. Cô Hạnh đeo kính lão, ngón tay dò từng dòng, dừng lại ở bốn cái tên."
+        },
+        {
+          "type": "question",
+          "id": "q-hoc-ket-luan",
+          "asker": {
+            "speaker": "co-hanh",
+            "text": "Vậy cô phải viết bao nhiêu cái thiệp?"
+          },
+          "choices": [
+            {
+              "id": "hai-muoi-sau",
+              "text": "Hai mươi sáu tên không trùng. Bốn tên có hai dòng thì cô xem lại: cùng năm cùng lớp có thể là nhập hai lần, cách nhau bốn năm có thể là hai người.",
+              "correct": true,
+              "feedback": [
+                {
+                  "speaker": "co-hanh",
+                  "expression": "smile",
+                  "text": "Đúng cái cô cần. Cô nhìn từng tên một."
+                }
+              ]
+            },
+            {
+              "id": "ba-muoi",
+              "text": "Ba mươi dòng là ba mươi người, mỗi dòng một thiệp.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "co-hanh",
+                  "expression": "neutral",
+                  "text": "Vậy cậu Sơn nhận hai thiệp giống hệt nhau, tưởng cô lẫn."
+                }
+              ]
+            },
+            {
+              "id": "tru-trung",
+              "text": "Tên trùng thì là một người, cô viết hai mươi sáu thiệp.",
+              "correct": false,
+              "feedback": [
+                {
+                  "speaker": "co-hanh",
+                  "expression": "neutral",
+                  "text": "Cậu Hùng thì cô nhớ hai người. Bỏ sót một cậu là một cậu không có thiệp."
+                }
+              ]
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "line",
+          "speaker": "co-hanh",
+          "expression": "smile",
+          "text": "Châu thì cô nhớ, em chuyển lớp giữa năm nên vào hai danh sách. Sơn với Long là cô gõ hai lần. Còn Hùng thì hai cậu khác hẳn nhau, một cậu cao lênh khênh, một cậu hay làm rơi bút."
+        },
+        {
+          "type": "line",
+          "speaker": "co-hanh",
+          "expression": "neutral",
+          "text": "Hai mươi bảy cái thiệp. Cô viết nốt trước trưa."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Bọn cháu xin phép. Chiều ba giờ bọn cháu qua phụ cô kê bàn ghế."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Bảng chỉ cho biết tên trùng. Một người hay hai người, người trong lớp nhận ra."
+        },
+        {
+          "type": "goto",
+          "to": "p-hoc-chieu"
+        }
+      ]
+    },
+    {
+      "id": "p-hoc-chieu",
+      "title": "Chiều 20/11: bàn trà nhỏ ở sảnh tòa B",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Chiều Thứ Tư, 20 tháng 11"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Sảnh tòa B, ba giờ chiều. Hai chiếc bàn ghép lại phủ khăn trắng, một ấm trà, một đĩa bánh quy. Cô Hạnh đứng ở đầu bàn, hai tay đặt hờ lên lưng ghế."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Người đến đầu tiên là một chú đeo bình giữ nhiệt, bước vào còn đứng ngó quanh như tìm lớp. Rồi một cô mặc áo khoác phi công ôm túi giấy. Hai người nhìn nhau, rồi cùng kêu lên: hai mươi lăm năm không gặp mà vẫn nhận ra nhau."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Một cậu cao lênh khênh tên Hùng đến sớm, rụt rè chọn ghế cuối bàn. Mười lăm phút sau, một người đàn ông bụng bia, cũng tên Hùng, thở hổn hển vì kẹt xe. Cô Hạnh nhìn hai người, không nói gì, chỉ rót thêm một chén trà."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cô không phát biểu. Cô nhìn từng người một, rồi chỉ nói: \"Ngồi đi. Cô pha trà.\""
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Ở bàn trực cạnh chân cầu thang, bác Thịnh ngồi im, tay đặt trên cuốn sổ trực. Bác nhìn sang phía bàn trà một lúc lâu, rồi cúi xuống, lật sang trang khác."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Mình về thôi. Để cô ngồi với các em."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Danh sách giúp cô nhớ ra ai để mời. Ai tới, tới để làm gì, là chuyện của từng người."
+        },
+        {
+          "type": "end"
+        }
+      ]
     }
   ],
   "thuThach": {
@@ -14559,6 +15059,140 @@ const GOC = {
         "id": "ev-hoan-nhom",
         "title": "PH-04: hai dòng hoàn, tổng âm 120.000",
         "description": "Kết quả gom theo mã phiếu: chỉ PH-04 có hơn một dòng hoàn (hai dòng, tổng ghi âm 120.000 đồng). Đây là phiếu cần mở chứng từ gốc, chưa phải kết luận.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-hoc-ra-truong": {
+      "id": "c-hoc-ra-truong",
+      "tieuDe": "Danh sách lớp cũ của cô Hạnh",
+      "deBai": "Danh sách lớp các khóa 1995–2005, nhập tay mỗi năm một kiểu. Những dòng nào ghi học trò đã ra trường?",
+      "manhMoiLienQuan": [
+        "clue-hoc-ghi-chu"
+      ],
+      "mucTieuHoc": "Ôn gọt dữ liệu: ô gõ tay lệch chữ hoa và dấu cách thì gọt cả hai trước khi so.",
+      "soDongKyVong": 30,
+      "sqlChuan": "SELECT nam_hoc, lop, ho_ten FROM danh_sach_lop_cu WHERE LOWER(TRIM(ghi_chu)) = 'ra trường';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không dòng nào. Ghi chú viết thường, có dấu, đúng như giấy nhớ."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 18
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Mười tám dòng. Cuối khóa gần như cả lớp ra trường, mà ở đây chỉ được chừng ấy."
+            },
+            {
+              "speaker": "tung",
+              "expression": "surprised",
+              "text": "Có ô viết hoa chữ đầu, có ô thừa dấu cách. Máy coi những ô ấy là chữ khác."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 23
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Hai mươi ba dòng. Vẫn còn thiếu: ô thừa dấu cách và ô viết hoa chữ đầu là hai lỗi khác nhau, mà đều có."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 39
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Cả bảng, ba mươi chín dòng, kể cả người thôi học, người chuyển trường."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Ba mươi dòng ra trường. Ghim lại, rồi gom theo tên."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-hoc-ra-truong",
+        "title": "Ba mươi dòng ghi ra trường",
+        "description": "Kết quả truy vấn: ba mươi dòng ghi học trò đã ra trường, từ các lớp 1997 đến 2005, mỗi dòng ghi năm học, lớp và họ tên.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-hoc-ten": {
+      "id": "c-hoc-ten",
+      "tieuDe": "Dòng ra trường gom theo họ tên",
+      "deBai": "Lấy phiếu ba mươi dòng làm nguồn. Gom theo họ tên: mỗi tên một nhóm, đếm mỗi tên mấy dòng.",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": "Gom và đếm để ra danh sách không trùng: cùng một thao tác, nguồn khác.",
+      "soDongKyVong": 26,
+      "sqlChuan": "SELECT ho_ten, COUNT(*) AS so_dong FROM @ev-hoc-ra-truong GROUP BY ho_ten;",
+      "kieuTrinhDung": "tong-hop",
+      "nguon": "ev-hoc-ra-truong",
+      "nhomTheo": "ho_ten",
+      "truyVanNapSan": null,
+      "phanUng": [],
+      "vatChung": {
+        "id": "ev-hoc-ten",
+        "title": "Hai mươi sáu tên không trùng",
+        "description": "Kết quả gom theo họ tên: ba mươi dòng ra trường còn hai mươi sáu tên. Hai mươi hai tên có một dòng, bốn tên có hai dòng.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-hoc-hai-dong": {
+      "id": "c-hoc-hai-dong",
+      "tieuDe": "Tên có hơn một dòng",
+      "deBai": "Lấy phiếu ba mươi dòng làm nguồn. Gom theo họ tên, chỉ giữ tên có hơn một dòng.",
+      "manhMoiLienQuan": [
+        "clue-hoc-mot-dong"
+      ],
+      "mucTieuHoc": "Ôn lọc nhóm (HAVING) theo số dòng của nhóm.",
+      "soDongKyVong": 4,
+      "sqlChuan": "SELECT ho_ten, COUNT(*) AS so_dong FROM @ev-hoc-ra-truong GROUP BY ho_ten HAVING COUNT(*) > 1;",
+      "kieuTrinhDung": "tong-hop",
+      "nguon": "ev-hoc-ra-truong",
+      "nhomTheo": null,
+      "truyVanNapSan": null,
+      "phanUng": [],
+      "vatChung": {
+        "id": "ev-hoc-hai-dong",
+        "title": "Bốn tên có hai dòng ra trường",
+        "description": "Kết quả gom theo họ tên, chỉ giữ tên có hơn một dòng: Hoàng Minh Châu, Đinh Công Sơn, Hà Đức Long, Nguyễn Văn Hùng, mỗi tên hai dòng. Trùng tên chưa nói được là một người hay hai người.",
         "giaTri": []
       },
       "ghiChu": []
@@ -16560,6 +17194,47 @@ const GOC = {
         "Nội dung": "Trong chín lượt Tùng dẫn có một lượt ghi điểm đến NHA_XE. Tám lượt còn lại đều là KTX."
       },
       "quotes": {}
+    },
+    "doc-hoc-danh-sach": {
+      "id": "doc-hoc-danh-sach",
+      "loai": "doc",
+      "heading": "Danh sách lớp cũ của cô Hạnh",
+      "fields": {
+        "Tiêu đề": "Danh sách lớp các khóa cô Hạnh đứng lớp, 1995–2005",
+        "Nguồn": "Cô Hạnh mở riêng bảng này cho tài khoản CLB, các bảng khác không mở",
+        "Nội dung hiển thị": ""
+      },
+      "quotes": {
+        "Nội dung hiển thị": [
+          "Mỗi dòng một học trò trong một danh sách lớp, bốn cột: năm học, lớp, họ tên, ghi chú.",
+          "Danh sách nhập tay, mỗi năm một kiểu: chữ hoa chữ thường không thống nhất, có ô thừa dấu cách. Ghi chú có thể là ra trường, thôi học hoặc chuyển trường.",
+          "Danh sách không ghi địa chỉ hay số điện thoại, và không cho biết ai còn liên lạc được."
+        ]
+      }
+    },
+    "clue-hoc-ghi-chu": {
+      "id": "clue-hoc-ghi-chu",
+      "loai": "clue",
+      "heading": "[ra trường]",
+      "fields": {
+        "Tiêu đề": "Ghi chú học trò đã ra trường",
+        "Giá trị cho trình dựng": "ra trường",
+        "Nguồn": "Danh sách lớp cũ, Cô Hạnh giải thích",
+        "Nội dung": "Cột ghi_chu của học trò đã ra trường viết \"ra trường\", nhưng mỗi năm gõ một kiểu: chữ hoa đầu câu, dấu cách thừa ở đầu hay cuối ô."
+      },
+      "quotes": {}
+    },
+    "clue-hoc-mot-dong": {
+      "id": "clue-hoc-mot-dong",
+      "loai": "clue",
+      "heading": "[Một dòng]",
+      "fields": {
+        "Tiêu đề": "Mỗi người một dòng ra trường",
+        "Giá trị cho trình dựng": "1",
+        "Nguồn": "Cách lập danh sách mời, Duy nhắc",
+        "Nội dung": "Mỗi người ra trường chỉ nên có một dòng. Tên có hơn một dòng thì cần người trong lớp nhận ra là một người hay hai người trùng tên."
+      },
+      "quotes": {}
     }
   },
   "soTay": {
@@ -16796,6 +17471,27 @@ const GOC = {
       "noi": "noi-dung-mvp/thu-thach/phu-hoan-tien.md:23 thẻ c-hoan-nhom, SQL chuẩn",
       "resultId": "ev-hoan-nhom",
       "sourceResultId": "ev-hoan-loc"
+    },
+    {
+      "sql": "SELECT nam_hoc, lop, ho_ten FROM danh_sach_lop_cu WHERE LOWER(TRIM(ghi_chu)) = 'ra trường';",
+      "soDong": 30,
+      "noi": "noi-dung-mvp/thu-thach/phu-hoc-tro-cu.md:3 thẻ c-hoc-ra-truong, SQL chuẩn",
+      "resultId": "ev-hoc-ra-truong"
+    },
+    {
+      "sql": "SELECT ho_ten, COUNT(*) AS so_dong FROM @ev-hoc-ra-truong GROUP BY ho_ten;",
+      "soDong": 26,
+      "noi": "noi-dung-mvp/thu-thach/phu-hoc-tro-cu.md:25 thẻ c-hoc-ten, SQL chuẩn",
+      "resultId": "ev-hoc-ten",
+      "sourceResultId": "ev-hoc-ra-truong",
+      "sourceGroupColumn": "ho_ten"
+    },
+    {
+      "sql": "SELECT ho_ten, COUNT(*) AS so_dong FROM @ev-hoc-ra-truong GROUP BY ho_ten HAVING COUNT(*) > 1;",
+      "soDong": 4,
+      "noi": "noi-dung-mvp/thu-thach/phu-hoc-tro-cu.md:44 thẻ c-hoc-hai-dong, SQL chuẩn",
+      "resultId": "ev-hoc-hai-dong",
+      "sourceResultId": "ev-hoc-ra-truong"
     },
     {
       "sql": "SELECT ma_phieu, ten_tai_san, luan_chuyen.vi_tri, nguoi_nhan FROM luan_chuyen JOIN tai_san ON luan_chuyen.ma_tai_san = tai_san.ma_tai_san WHERE ten_tai_san = 'Micro không dây' AND trang_thai = 'DA_NHAN';",
@@ -18523,6 +19219,263 @@ const GOC = {
             "SV240251",
             "SV240466",
             "KTX"
+          ]
+        ]
+      },
+      {
+        "ten": "danh_sach_lop_cu",
+        "cot": [
+          {
+            "ten": "nam_hoc",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "lop",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ho_ten",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "ghi_chu",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "1995-1996",
+            "TH95",
+            "Đỗ Văn Thịnh",
+            "thôi học"
+          ],
+          [
+            "1995-1996",
+            "TH95",
+            "Phạm Quang Hòa",
+            null
+          ],
+          [
+            "1995-1996",
+            "TH95",
+            "Lê Thị Mai",
+            null
+          ],
+          [
+            "1995-1996",
+            "TH95",
+            "Vũ Đình Khoa",
+            "chuyển trường"
+          ],
+          [
+            "1995-1996",
+            "TH95",
+            "Nguyễn Thu Hằng",
+            null
+          ],
+          [
+            "1997-1998",
+            "TH95",
+            "Phạm Quang Hòa",
+            "ra trường"
+          ],
+          [
+            "1997-1998",
+            "TH95",
+            "Lê Thị Mai",
+            "Ra trường"
+          ],
+          [
+            "1997-1998",
+            "TH95",
+            "Nguyễn Thu Hằng",
+            "ra trường "
+          ],
+          [
+            "1997-1998",
+            "th95",
+            "Bùi Xuân Trường",
+            "ra trường"
+          ],
+          [
+            "1997-1998",
+            "TH 95",
+            "Hoàng Minh Châu",
+            "Ra trường "
+          ],
+          [
+            "1999-2000",
+            "KT97",
+            "Trần Bích Ngọc",
+            "ra trường"
+          ],
+          [
+            "1999-2000",
+            "KT97",
+            "Đặng Văn Phúc",
+            "ra trường"
+          ],
+          [
+            "1999-2000",
+            "KT97",
+            "Nguyễn Văn Hùng",
+            " ra trường"
+          ],
+          [
+            "1999-2000",
+            "KT97",
+            "Lương Thị Oanh",
+            "thôi học"
+          ],
+          [
+            "1999-2000",
+            "kt97",
+            "Phan Hữu Nghĩa",
+            "Ra trường"
+          ],
+          [
+            "1999-2000",
+            "KT97",
+            "Ngô Thanh Tâm",
+            "ra trường"
+          ],
+          [
+            "1999-2000",
+            "KT97",
+            "Hoàng Minh Châu",
+            "ra trường"
+          ],
+          [
+            "2001-2002",
+            "TH99",
+            "Đinh Công Sơn",
+            "ra trường"
+          ],
+          [
+            "2001-2002",
+            "TH99",
+            "Mai Phương Thảo",
+            "Ra trường"
+          ],
+          [
+            "2001-2002",
+            "TH99",
+            "Cao Thị Hiền",
+            "ra trường "
+          ],
+          [
+            "2001-2002",
+            "TH99",
+            "Vương Tiến Dũng",
+            "chuyển trường"
+          ],
+          [
+            "2001-2002",
+            "TH99",
+            "Lý Quốc Bảo",
+            "ra trường"
+          ],
+          [
+            "2001-2002",
+            "TH 99",
+            "Trịnh Ngọc Ánh",
+            " Ra trường"
+          ],
+          [
+            "2001-2002",
+            "TH99",
+            "Đinh Công Sơn",
+            "ra trường"
+          ],
+          [
+            "2003-2004",
+            "KT01",
+            "Nguyễn Văn Hùng",
+            "ra trường"
+          ],
+          [
+            "2003-2004",
+            "KT01",
+            "Tạ Thu Trang",
+            "ra trường"
+          ],
+          [
+            "2003-2004",
+            "KT01",
+            "Đoàn Việt Anh",
+            "Ra trường"
+          ],
+          [
+            "2003-2004",
+            "KT01",
+            "Kiều Thị Nhung",
+            "ra trường "
+          ],
+          [
+            "2003-2004",
+            "kt01",
+            "Chu Mạnh Cường",
+            "ra trường"
+          ],
+          [
+            "2003-2004",
+            "KT01",
+            "Lâm Gia Hân",
+            "thôi học"
+          ],
+          [
+            "2003-2004",
+            "KT01",
+            "Võ Thanh Sơn",
+            "ra trường"
+          ],
+          [
+            "2004-2005",
+            "TH02",
+            "Bạch Thị Dung",
+            "ra trường"
+          ],
+          [
+            "2004-2005",
+            "TH02",
+            "Hà Đức Long",
+            "Ra trường"
+          ],
+          [
+            "2004-2005",
+            "TH02",
+            "Phùng Thị Vân",
+            "ra trường"
+          ],
+          [
+            "2004-2005",
+            "TH02",
+            "Tô Quang Vinh",
+            "ra trường "
+          ],
+          [
+            "2004-2005",
+            "TH02",
+            "Trần Bích Ngọc",
+            "chuyển trường"
+          ],
+          [
+            "2004-2005",
+            "TH02",
+            "Dương Hải Yến",
+            "ra trường"
+          ],
+          [
+            "2004-2005",
+            "TH02",
+            "Lã Văn Tuấn",
+            "ra trường"
+          ],
+          [
+            "2004-2005",
+            "TH02",
+            "Hà Đức Long",
+            "ra trường"
           ]
         ]
       }

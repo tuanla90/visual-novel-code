@@ -98,7 +98,7 @@
 - Lịch: Giờ hành chính ở Phòng Đào tạo, tòa hành chính.
 - Thường ở: T2–T6 08:00–17:00 → toa-hanh-chinh
 - Câu nói: Tài khoản này chỉ xem được bảng lớp. Muốn xem gì thêm thì mang phiếu sang.
-- Giới thiệu: Cán bộ Phòng Đào tạo, phụ trách tài khoản, máy in và máy chủ của trường. Cấp quyền rất chặt: xin gì cho nấy, dùng xong là khóa lại.
+- Giới thiệu: Cán bộ Phòng Đào tạo, phụ trách tài khoản, máy in và máy chủ của trường. Cấp quyền rất chặt: xin gì cho nấy, dùng xong là khóa lại. Sắp nghỉ hưu: cô làm ở trường gần ba mươi năm, những năm đầu đứng lớp, sau mới về Phòng Đào tạo.
 
 ### co-lan — Cô Lan
 - Vai: Phòng Công tác sinh viên (CTSV). Gọi Minh Anh lên nhận thông báo; giải thích quy chế phiếu gửi, giữ sổ niêm phong hộp kiến nghị và cùng bác Thịnh mở hộp lúc 9h sáng thứ Hai.
