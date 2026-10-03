@@ -35,11 +35,11 @@ describe('màn kết MVP', () => {
     expect(veTieuDe).toHaveBeenCalledTimes(1);
   });
 
-  it('còn vụ sau: nút chính là "Sang Vụ 2 — …", bấm gọi onSangVuSau; Chơi lại vẫn có', async () => {
+  it('còn vụ sau: nút chính là "Tiếp tục vụ chính · Vụ 2: …", bấm gọi onSangVuSau; Chơi lại vẫn có', async () => {
     const sang = vi.fn();
     render(<KetMvp ketQua="that" vuKe={{ so: 2, ten: 'Bốn mục trong sổ đã ký' }} onSangVuSau={sang} onChoiLai={vi.fn()} />);
-    expect(screen.getAllByRole('button').map((b) => b.textContent)).toEqual(['Sang Vụ 2 — Bốn mục trong sổ đã ký', 'Chơi lại từ đầu']);
-    await userEvent.click(screen.getByRole('button', { name: /Sang Vụ 2/ }));
+    expect(screen.getAllByRole('button').map((b) => b.textContent)).toEqual(['Tiếp tục vụ chính · Vụ 2: Bốn mục trong sổ đã ký', 'Chơi lại từ đầu']);
+    await userEvent.click(screen.getByRole('button', { name: /Vụ 2: Bốn mục/ }));
     expect(sang).toHaveBeenCalledTimes(1);
   });
 

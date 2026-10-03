@@ -113,8 +113,14 @@ export interface NhacViecMvp {
   text: string;
 }
 
-/** Các trường riêng của một tuyến truyện, dùng để cất rồi khôi phục đúng cảnh đang chơi. */
-export type TiepTucTuyenMvp = Pick<TrangThaiMvp, 'conTro' | 'canh' | 'nhiemVu' | 'nhacViec' | 'thuThachDangLam' | 'duKienDangLam' | 'hoiDap' | 'khamPha' | 'doiChat' | 'choHienTaiLieu' | 'sauKhiHien'>;
+/**
+ * Các trường riêng của một tuyến truyện, dùng để cất rồi khôi phục đúng cảnh đang chơi. Có cả bảng điều tra của tuyến
+ * (`bang`, vì vào tuyến khác là gỡ hết thẻ) và mã các thẻ trong hồ sơ lúc cất (`hoSoCo`): thẻ nhận thêm ở tuyến kia khi về
+ * nằm trong ngăn gỡ ghim, không chen lên bảng.
+ */
+export type TiepTucTuyenMvp = Pick<TrangThaiMvp, 'conTro' | 'canh' | 'nhiemVu' | 'nhacViec' | 'thuThachDangLam' | 'duKienDangLam' | 'hoiDap' | 'khamPha' | 'doiChat' | 'choHienTaiLieu' | 'sauKhiHien' | 'bang'> & {
+  hoSoCo?: string[];
+};
 export interface TuyenPhuMvp {
   id: string;
   veLai: ConTroMvp | null;

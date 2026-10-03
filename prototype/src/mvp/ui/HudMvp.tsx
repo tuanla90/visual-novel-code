@@ -225,7 +225,7 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
             {menuMo ? (
               <div className="topbar__menu-panel" role="menu" aria-label="Menu tạm dừng">
                 <span className="topbar__menu-title">Tùy chọn</span>
-                {s.giaiDoan !== 'phu' && onMoBangHoatDong ? (
+                {(s.giaiDoan === 'ngay' || s.giaiDoan === 'vu-sau') && onMoBangHoatDong ? (
                   <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onMoBangHoatDong)}>
                     <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M4 5h16M4 12h16M4 19h16" /><circle cx="8" cy="5" r="1.5" fill="currentColor" /><circle cx="16" cy="12" r="1.5" fill="currentColor" />
@@ -238,7 +238,7 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
                     <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M9 8H4V3" /><path d="M4 8a8 8 0 1 1-1 7" />
                     </svg>
-                    <span>Cất việc này, về bảng hoạt động</span>
+                    <span>Cất việc này, về tuyến chính</span>
                   </button>
                 ) : null}
                 <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onMoLichSu)}>

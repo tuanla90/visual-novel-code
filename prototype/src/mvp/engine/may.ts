@@ -356,13 +356,27 @@ function nhayToi(s: TrangThaiMvp, chuoi: string, boiCanh: BoiCanhChuoi): TrangTh
   return { ...s, conTro: { chuoi, nut: 0, boiCanh }, hoiDap: null, khamPha: null };
 }
 
-/** Lưu đúng phần tiến trình của tuyến hiện tại, không đóng băng hồ sơ hay cờ mở khóa dùng chung. */
+const maHoSo = (s: TrangThaiMvp): string[] => [...s.hoSo.taiLieu, ...s.hoSo.manhMoi, ...s.hoSo.bangChung];
+
+/** Lưu đúng phần tiến trình của tuyến hiện tại (kể cả bảng điều tra), không đóng băng hồ sơ hay cờ mở khóa dùng chung. */
 function luuTuyen(s: TrangThaiMvp): TiepTucTuyenMvp {
   return {
     conTro: s.conTro, canh: s.canh, nhiemVu: s.nhiemVu, nhacViec: s.nhacViec,
     thuThachDangLam: s.thuThachDangLam, duKienDangLam: s.duKienDangLam, hoiDap: s.hoiDap,
     khamPha: s.khamPha, doiChat: s.doiChat, choHienTaiLieu: s.choHienTaiLieu, sauKhiHien: s.sauKhiHien,
+    bang: s.bang, hoSoCo: maHoSo(s),
   };
+}
+
+/**
+ * Về lại một tuyến đã cất: trả các trường của tuyến và bảng điều tra lúc cất; thẻ nhận thêm ở tuyến kia vào ngăn gỡ ghim.
+ * Ô lưu cũ chưa cất bảng: giữ bảng hiện tại.
+ */
+function veTuyen(s: TrangThaiMvp, t: TiepTucTuyenMvp): TrangThaiMvp {
+  const { hoSoCo, bang, ...truong } = t;
+  if (!bang || !hoSoCo) return { ...s, ...truong };
+  const moi = maHoSo(s).filter((id) => !hoSoCo.includes(id));
+  return { ...s, ...truong, bang: { ...bang, boGhim: [...new Set([...(bang.boGhim ?? []), ...moi])] } };
 }
 
 // ---------- Vụ sau ----------
@@ -846,12 +860,10 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
   switch (hd.type) {
     case 'lam-nhiem-vu-phu': {
       if (s.phu?.tamDung && s.phu.id === hd.id) {
-        moi = {
-          ...s,
-          giaiDoan: 'phu',
-          phu: { ...s.phu, tamDung: null, veLai: s.conTro ? { ...s.conTro } : null, giaiDoan: s.giaiDoan, tuyenVeLai: luuTuyen(s) },
-          ...s.phu.tamDung,
-        };
+        moi = veTuyen(
+          { ...s, giaiDoan: 'phu', phu: { ...s.phu, tamDung: null, veLai: s.conTro ? { ...s.conTro } : null, giaiDoan: s.giaiDoan, tuyenVeLai: luuTuyen(s) } },
+          s.phu.tamDung,
+        );
         break;
       }
       if (s.giaiDoan === 'phu' || s.giaiDoan === 'mo-dau' || s.giaiDoan === 'hop' || s.giaiDoan === 'het') return s;
@@ -859,40 +871,36 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       if (choChon?.tamDung) {
         const cho = (s.phuCho ?? []).filter((x) => x.id !== hd.id);
         const catHienTai = s.phu?.tamDung ? [{ ...s.phu, veLai: s.conTro ? { ...s.conTro } : null, giaiDoan: s.giaiDoan, tuyenVeLai: luuTuyen(s) }] : [];
-        moi = {
-          ...s,
-          giaiDoan: 'phu',
-          phu: { ...choChon, veLai: s.conTro ? { ...s.conTro } : null, giaiDoan: s.giaiDoan, tuyenVeLai: luuTuyen(s), tamDung: null },
-          phuCho: [...cho, ...catHienTai],
-          ...choChon.tamDung,
-        };
+        moi = veTuyen(
+          {
+            ...s,
+            giaiDoan: 'phu',
+            phu: { ...choChon, veLai: s.conTro ? { ...s.conTro } : null, giaiDoan: s.giaiDoan, tuyenVeLai: luuTuyen(s), tamDung: null },
+            phuCho: [...cho, ...catHienTai],
+          },
+          choChon.tamDung,
+        );
         break;
       }
       const p = phuMoDuoc(kb, s).find((x) => x.id === hd.id);
       if (!p) return s;
-      const truoc = { ...coKhiKet(kb, s), ketQua: s.ketQua };
+      // Nhận từ màn kết: vụ vừa xong được đặt cờ hoàn tất như trước. Nhận giữa vụ (bảng hoạt động): vụ chính chưa xong.
+      const truoc = kn.kind === 'end' ? { ...coKhiKet(kb, s), ketQua: kn.ketQua } : s;
       const catHienTai = s.phu?.tamDung ? [{ ...s.phu, veLai: s.conTro ? { ...s.conTro } : null, giaiDoan: s.giaiDoan, tuyenVeLai: luuTuyen(s) }] : [];
       moi = batDauVuSau({ ...truoc, phuCho: [...(s.phuCho ?? []), ...catHienTai] }, p, { id: p.id, veLai: s.conTro ? { ...s.conTro } : null, giaiDoan: s.giaiDoan, tuyenVeLai: luuTuyen(s) });
       break;
     }
     case 'tam-dung-nhiem-vu-phu': {
       if (s.giaiDoan !== 'phu' || !s.phu || kn.kind === 'end') return s;
-      moi = {
-        ...s,
-        ...(s.phu.tuyenVeLai ?? { conTro: s.phu.veLai }),
-        giaiDoan: s.phu.giaiDoan,
-        phu: {
-          ...s.phu,
-          tamDung: luuTuyen(s),
-        },
-        ...(s.phu.tuyenVeLai ?? { conTro: s.phu.veLai }),
-      };
+      const phuCat = { ...s, giaiDoan: s.phu.giaiDoan, phu: { ...s.phu, tamDung: luuTuyen(s) } };
+      moi = s.phu.tuyenVeLai ? veTuyen(phuCat, s.phu.tuyenVeLai) : { ...phuCat, conTro: s.phu.veLai };
       break;
     }
     case 'xong-nhiem-vu-phu': {
       if (kn.kind !== 'end' || !s.phu) return s;
       // Về lại nút [KẾT THÚC] của vụ chính: màn kết đó hiện lại, nhiệm vụ này không còn trong danh sách.
-      moi = { ...coKhiKet(kb, s), ...(s.phu.tuyenVeLai ?? { conTro: s.phu.veLai }), giaiDoan: s.phu.giaiDoan, phu: null };
+      const xong = { ...coKhiKet(kb, s), giaiDoan: s.phu.giaiDoan, phu: null };
+      moi = s.phu.tuyenVeLai ? veTuyen(xong, s.phu.tuyenVeLai) : { ...xong, conTro: s.phu.veLai, nhiemVu: null, nhacViec: null };
       break;
     }
     case 'sang-vu-sau': {

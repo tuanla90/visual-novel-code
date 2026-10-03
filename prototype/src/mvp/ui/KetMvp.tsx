@@ -103,7 +103,7 @@ export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, phuDangDo, onLamPhu
         <p className="endscreen__lead">Các tuyến đang mở vẫn chờ bạn. Cứ nối tiếp vụ chính, nhận một việc mới, hoặc quay lại việc đang làm dở.</p>
       ) : null}
       <div className="endscreen__actions">
-      {coVuKe ? (
+        {coVuKe ? (
           <button type="button" className="btn btn--primary" onClick={onSangVuSau} autoFocus>
             Tiếp tục vụ chính · Vụ {vuKe.so}: {vuKe.ten}
           </button>

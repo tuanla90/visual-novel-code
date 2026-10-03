@@ -1,11 +1,14 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { useGameStore } from '../shared/store';
 import { initialGameData } from '../shared/store/store';
 import { isClosedPreAnswers } from '../shared/telemetry/survey';
 import { clearTelemetry, getSessionId, getTelemetryEvents } from '../shared/telemetry/track';
 import App from './App';
+
+// Game mặc định vào thẳng MVP; màn tiêu đề và khảo sát của prototype mở bằng `?prototype=1` (App đọc lúc nạp module).
+vi.hoisted(() => window.history.replaceState(null, '', '/?prototype=1'));
 
 const surveyEvents = () => getTelemetryEvents().filter((e) => e.type === 'survey_submitted' || e.type === 'survey_skipped');
 

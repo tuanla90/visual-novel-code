@@ -53,7 +53,8 @@ export function LichMvp({ kb, s, hanPhu, onDong }: LichMvpProps) {
   const cacVuSau = kb.lich.vuSau ?? [];
   const viTriVu = cacVuSau.findIndex((v) => v.id === s.vu);
   const vuNay = viTriVu >= 0 ? cacVuSau[viTriVu] : undefined;
-  const phuNay = (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id);
+  // Việc phụ đang cất (về tuyến chính) không đổi "hôm nay".
+  const phuNay = s.giaiDoan === 'phu' ? (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id) : undefined;
   // Đang làm việc phụ: hôm nay là ngày của việc đó (lịch tính như một vụ sau).
   const tienDo = { giaiDoan: s.giaiDoan === 'phu' ? ('vu-sau' as const) : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: (phuNay ?? vuNay)?.ngay ?? null };
   const hn = homNay(tienDo, ngayMoDau);

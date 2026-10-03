@@ -59,7 +59,7 @@
 - Tiêu đề kết: Mỗi bước là một phiếu
 - Lời kết: Ba khoản chi không có hàng được ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Người nhận là người nói "vì sao". Mùa 1 khép lại ở chỗ chứng cứ dừng.
 
-<!-- Nhiệm vụ phụ: việc một NPC giao, không dính truyện chính, để rèn kỹ năng. Nhận ở màn kết của một vụ chính, sau khi vụ "Mở sau" đã xong; kết bằng [KẾT THÚC] rồi quay lại màn kết đó. Máy đặt cờ <mã>-hoan-tat. Vụ chính không được đòi kỹ năng chỉ dạy ở nhiệm vụ phụ. -->
+<!-- Nhiệm vụ phụ: việc một NPC giao, không dính truyện chính, để rèn kỹ năng. Mở trong bảng hoạt động (menu ≡) hay ở màn kết, sau khi vụ "Mở sau" đã xong; cất giữa chừng được, tuyến chính giữ nguyên cảnh và bảng điều tra; kết bằng [KẾT THÚC] rồi quay lại chỗ đã rời tuyến chính. Máy đặt cờ <mã>-hoan-tat. Vụ chính không được đòi kỹ năng chỉ dạy ở nhiệm vụ phụ. -->
 
 ## Bốn mục trong sổ đã ký {nhiệm vụ phụ: so-phong}
 - Chuỗi: v2-mo
