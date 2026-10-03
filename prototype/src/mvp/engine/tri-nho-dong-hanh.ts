@@ -7,6 +7,7 @@ export const BAN_DONG_HANH = ['tung', 'ha-vy'] as const;
 export type BanDongHanhMvp = (typeof BAN_DONG_HANH)[number];
 export type TinNhanDongHanhMvp = { role: 'user' | 'assistant'; content: string };
 export type TruyVanDaXemMvp = { id: string; nhan: string; sql: string };
+export type QuanSatTruyVanMvp = (query: TruyVanDaXemMvp, loi: readonly LoiMvp[]) => void;
 export interface TriNhoNhanVatMvp {
   loiDaNghe: { id: string; speaker: string; text: string }[];
   hoSoDaThay: string[];
@@ -17,6 +18,7 @@ export interface TriNhoDongHanhMvp {
   canh: string;
   moc: string;
   conTro?: { chuoi: string; nut: number };
+  diemVe?: { chuoi: string; nut: number }[];
   coMat: BanDongHanhMvp[];
   nhanVat: Record<BanDongHanhMvp, TriNhoNhanVatMvp>;
 }
@@ -48,18 +50,21 @@ export function banDangCoMat(kb: KichBanMvp, s: TrangThaiMvp): BanDongHanhMvp[] 
   const parents: { chuoi: string; nut: number }[] = [];
   for (let p = s.khamPha; p; p = p.cha) parents.unshift(p.veLai);
   if (!cungCanh) for (const p of parents) scan(p.chuoi, p.nut);
-  if (s.conTro) scan(s.conTro.chuoi, s.conTro.nut,
-    cungCanh && cu.conTro?.chuoi === s.conTro.chuoi ? cu.conTro.nut + 1 : 0);
+  const daQuet = cu?.conTro?.chuoi === s.conTro?.chuoi ? cu?.conTro : cu?.diemVe?.find((p) => p.chuoi === s.conTro?.chuoi);
+  if (s.conTro) scan(s.conTro.chuoi, s.conTro.nut, cungCanh && daQuet ? daQuet.nut + 1 : 0);
   const kn = khungNhin(kb, s);
   if ((kn.kind === 'line' || kn.kind === 'feedback') && laBan(kn.loi.speaker)) co.add(kn.loi.speaker);
   return BAN_DONG_HANH.filter((id) => co.has(id));
 }
 
 function taoTriNho(kb: KichBanMvp, s: TrangThaiMvp): TriNhoDongHanhMvp {
+  const diemVe: { chuoi: string; nut: number }[] = [];
+  for (let p = s.khamPha; p; p = p.cha) diemVe.push({ chuoi: p.veLai.chuoi, nut: p.veLai.nut });
   return {
     canh: s.canh,
     moc: mocCanh(s),
     conTro: s.conTro ? { chuoi: s.conTro.chuoi, nut: s.conTro.nut } : undefined,
+    diemVe,
     coMat: banDangCoMat(kb, s),
     nhanVat: s.triNhoDongHanh?.nhanVat ?? { tung: rong(), 'ha-vy': rong() },
   };
@@ -90,7 +95,7 @@ function themTruyVan(triNho: TriNhoDongHanhMvp, coMat: readonly BanDongHanhMvp[]
     if (cu.truyVanDaXem.some((x) => x.id === query.id && x.sql === query.sql)) continue;
     triNho.nhanVat = { ...triNho.nhanVat, [ban]: {
       ...cu,
-      truyVanDaXem: [...cu.truyVanDaXem.filter((x) => x.id !== query.id), query].slice(-24),
+      truyVanDaXem: [...cu.truyVanDaXem.filter((x) => x.id !== query.id && x.sql !== query.sql), query].slice(-24),
     } };
   }
 }
@@ -108,7 +113,8 @@ export function ghiNhanTrangThaiDongHanh(kb: KichBanMvp, s: TrangThaiMvp, truoc?
   }
   if (truoc && truoc.batDauLuc === s.batDauLuc) {
     // Người có mặt khi vật chứng được nhận mới biết nó; không truyền cho người ở cảnh kế tiếp.
-    const chungKien = banDangCoMat(kb, truoc);
+    const chungKien = truoc.canh === s.canh && mocCanh(truoc) === mocCanh(s)
+      ? banDangCoMat(kb, truoc).filter((ban) => triNho.coMat.includes(ban)) : [];
     const daCo = new Set(maHoSo(truoc));
     themHoSo(triNho, chungKien, maHoSo(s).filter((ma) => !daCo.has(ma)));
     for (const phieu of Object.values(s.bang?.phieuTruyVan ?? {})) {
@@ -139,5 +145,5 @@ export function ghiNhanTruyVanDongHanh(kb: KichBanMvp, s: TrangThaiMvp, query: T
 /** Chat không phải dữ kiện đã xác minh. Khóa này ngăn phản hồi muộn lọt vào ván/save khác. */
 export function khoaNguCanhDongHanh(s: TrangThaiMvp, ban: BanDongHanhMvp): string {
   const mem = s.triNhoDongHanh?.nhanVat[ban];
-  return JSON.stringify([s.batDauLuc, s.conTro, s.hoiDap?.viTri, s.canh, mocCanh(s), mem?.loiDaNghe, mem?.hoSoDaThay, mem?.truyVanDaXem]);
+  return JSON.stringify([s.batDauLuc, s.conTro, s.hoiDap?.viTri, s.canh, mocCanh(s), s.tenNguoiChoi, s.nganh, s.nhiemVu, s.nhacViec, mem?.loiDaNghe, mem?.hoSoDaThay, mem?.truyVanDaXem]);
 }

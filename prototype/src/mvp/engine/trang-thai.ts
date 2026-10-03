@@ -7,6 +7,7 @@
  *
  * Tách hẳn với `src/story/engine/state.ts` của prototype: hai bản không dùng chung kiểu, store hay khóa lưu.
  */
+import type { TriNhoDongHanhMvp } from './tri-nho-dong-hanh';
 import type { LoiMvp } from '../../content/mvp/types';
 
 /** Vì sao chuỗi đang chạy được mở — quyết định việc gì xảy ra khi chuỗi hết nút mà không `[ĐI TỚI]`. */
@@ -138,7 +139,7 @@ export interface TrangThaiMvp {
   phienBan: 1;
   /** Mốc bắt đầu ván (ms) — khóa phiên, dùng làm khóa xáo lựa chọn. */
   batDauLuc: number;
-  triNhoDongHanh?: import('./tri-nho-dong-hanh').TriNhoDongHanhMvp;
+  triNhoDongHanh?: TriNhoDongHanhMvp;
   /**
    * Tên người chơi tự gõ / xúc xắc ở `[TẠO NHÂN VẬT ten]` (rỗng tới lúc đó; ô lưu cũ có sẵn 'Khôi').
    * Chỉ nằm trong trạng thái (Lưu/Nạp) — KHÔNG ghi vào telemetry (QĐ-077).

@@ -5,6 +5,7 @@
  *   · CHỈ GIỮ NHÓM [phép] lớn hơn [giấy nhớ số]
  * Hai hàng cuối chỉ hiện khi SQL chuẩn của thẻ dùng tới (SUM/AVG, HAVING). Câu SQL đang dựng luôn hiện bên dưới.
  */
+import type { QuanSatTruyVanMvp } from '../../engine/tri-nho-dong-hanh';
 import { useMemo, useState, type CSSProperties } from 'react';
 import type { BoDuLieuMvp, KichBanMvp, TheThuThachMvp } from '../../../content/mvp/types';
 import { IconPin, IconPlay } from '../../../shared/ui/icons';
@@ -29,7 +30,7 @@ export interface KetQuaTraTongHop {
 }
 
 export interface ManTongHopMvpProps {
-  onDaXemTruyVan?: (query: import('../../engine/tri-nho-dong-hanh').TruyVanDaXemMvp, loi: readonly import('../../../content/mvp/types').LoiMvp[]) => void;
+  onDaXemTruyVan?: QuanSatTruyVanMvp;
   kb: KichBanMvp;
   duLieu: BoDuLieuMvp;
   the: TheThuThachMvp;
@@ -134,11 +135,11 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
       }
       const so = soVoiChuan(chuan, kq);
       setKetQua({ sql, cot: kq.cot, dong: kq.dong, dung: so.dung, duSo: so.cotThieu.filter((c) => !kq.cot.includes(c)).length === 0 });
-      onDaXemTruyVan?.({ id: the.id, nhan: the.tieuDe, sql }, so.dung ? [] : [{ speaker: 'ha-vy', text: `Kết quả có ${kq.dong.length} nhóm; chưa trả lời đúng câu hỏi.` }]);
+      onDaXemTruyVan?.({ id: the.id, nhan: the.tieuDe, sql }, []);
       if (!so.dung) {
         // Lời tả kết quả, không nói cách sửa: thiếu cột → nêu cột thiếu; lệch số nhóm → nêu số nhóm.
         const thieu = so.cotThieu.filter((c) => !kq.cot.includes(c));
-        setLoiNoi({
+        const phanUng = {
           speaker: 'ha-vy',
           text:
             so.soDongNguoiChoi !== so.soDongChuan
@@ -146,7 +147,9 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
               : thieu.length > 0
                 ? `Số nhóm thì khớp, nhưng bảng còn thiếu con số đề bài hỏi (${thieu.join(', ')}).`
                 : 'Số nhóm thì khớp, nhưng các con số trong bảng chưa đúng thứ đề bài hỏi.',
-        });
+        };
+        setLoiNoi(phanUng);
+        onDaXemTruyVan?.({ id: the.id, nhan: the.tieuDe, sql }, [phanUng]);
       }
     } catch (e) {
       setLoiNoi({ speaker: 'duy', text: (e as Error).message });

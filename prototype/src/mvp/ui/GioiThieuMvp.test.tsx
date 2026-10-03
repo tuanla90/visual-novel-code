@@ -35,4 +35,17 @@ describe('GioiThieuMvp — Màn giới thiệu nhân vật mới trên MVP', () 
     const { container } = render(<GioiThieuMvp kb={kb} nhanVat="khong-ton-tai" onDong={handleDong} />);
     expect(container.firstChild).toBeNull();
   });
+
+  it('đặt chữ sang bên phải (is-text-right) cho Quân và Hà Vy để không che nhân vật', () => {
+    const handleDong = vi.fn();
+    const { container: cQuan } = render(<GioiThieuMvp kb={kb} nhanVat="quan" onDong={handleDong} />);
+    const cardQuan = cQuan.querySelector('.chara-debut__card--intro');
+    expect(cardQuan).toHaveClass('is-text-right');
+    expect(cardQuan).not.toHaveClass('is-text-left');
+
+    const { container: cHaVy } = render(<GioiThieuMvp kb={kb} nhanVat="ha-vy" onDong={handleDong} />);
+    const cardHaVy = cHaVy.querySelector('.chara-debut__card--intro');
+    expect(cardHaVy).toHaveClass('is-text-right');
+    expect(cardHaVy).not.toHaveClass('is-text-left');
+  });
 });

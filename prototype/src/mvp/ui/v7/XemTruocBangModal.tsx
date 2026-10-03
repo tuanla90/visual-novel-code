@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { BoDuLieuMvp } from '../../../content/mvp/types';
 import { chaySql, type GiaTriSql } from '../../engine/sql-mvp';
 import { soundEngine } from '../../../shared/audio/sound-engine';
@@ -9,6 +9,7 @@ export interface XemTruocBangModalProps {
   tenBangNoi?: string;
   khoaNoi?: string;
   onDong: () => void;
+  onDaXemTruyVan?: (sql: string) => void;
 }
 
 export function XemTruocBangModal({
@@ -17,7 +18,9 @@ export function XemTruocBangModal({
   tenBangNoi,
   khoaNoi,
   onDong,
+  onDaXemTruyVan,
 }: XemTruocBangModalProps) {
+  const [resultSql, setResultSql] = useState('');
   const [dangTai, setDangTai] = useState(true);
   const [cot, setCot] = useState<string[]>([]);
   const [dong, setDong] = useState<GiaTriSql[][]>([]);
@@ -43,6 +46,7 @@ export function XemTruocBangModal({
       .then((res) => {
         if (!active) return;
         if (res.ok) {
+          setResultSql(sqlXemTruoc);
           setCot(res.cot);
           setDong(res.dong);
         } else {
@@ -62,17 +66,22 @@ export function XemTruocBangModal({
     };
   }, [duLieu, sqlXemTruoc]);
 
+  const dongModal = useCallback(() => {
+    if (resultSql === sqlXemTruoc) onDaXemTruyVan?.(resultSql);
+    onDong();
+  }, [resultSql, sqlXemTruoc, onDaXemTruyVan, onDong]);
+
   // Phím Esc để đóng
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         soundEngine.playSfx('click');
-        onDong();
+        dongModal();
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [onDong]);
+  }, [dongModal]);
 
   const coNoi = !!(tenBangNoi && khoaNoi);
   const cotMoi = useMemo(() => {
@@ -89,7 +98,7 @@ export function XemTruocBangModal({
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           soundEngine.playSfx('click');
-          onDong();
+          dongModal();
         }
       }}
     >
@@ -122,7 +131,7 @@ export function XemTruocBangModal({
             className="v7-preview-modal__close-btn"
             onClick={() => {
               soundEngine.playSfx('click');
-              onDong();
+              dongModal();
             }}
             aria-label="Đóng bảng xem trước (Esc)"
           >
@@ -203,7 +212,7 @@ export function XemTruocBangModal({
             className="v7-preview-modal__action-btn"
             onClick={() => {
               soundEngine.playSfx('select');
-              onDong();
+              dongModal();
             }}
           >
             ✓ Đã hiểu & Quay lại dựng câu

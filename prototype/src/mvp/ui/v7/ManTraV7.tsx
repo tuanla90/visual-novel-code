@@ -12,6 +12,7 @@
  * so (y nguyên → bỏ dấu cách thừa → coi như chữ thường → cả hai) và hàng "XẾP THEO" (cột, tăng / giảm). Dấu cách đầu / cuối
  * của ô chữ trong bảng kết quả hiện thành dấu chấm mờ để người chơi nhìn thấy dữ liệu bẩn.
  */
+import type { QuanSatTruyVanMvp } from '../../engine/tri-nho-dong-hanh';
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type DragEvent } from 'react';
 import type { BoDuLieuMvp, KichBanMvp, LoiMvp, TheThuThachMvp } from '../../../content/mvp/types';
 import { soundEngine } from '../../../shared/audio/sound-engine';
@@ -66,7 +67,7 @@ function soNhipNhun(cau: string): number {
   return Math.min(10, Math.max(2, Math.round((cau.length * 0.045) / 0.32)));
 }
 export interface ManTraV7Props {
-  onDaXemTruyVan?: (query: import('../../engine/tri-nho-dong-hanh').TruyVanDaXemMvp, loi: readonly LoiMvp[]) => void;
+  onDaXemTruyVan?: QuanSatTruyVanMvp;
   kb: KichBanMvp;
   duLieu: BoDuLieuMvp | null;
   the: TheThuThachMvp;
@@ -423,6 +424,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
       ) : null}
       {xemTruocMo && duLieu && bang ? (
         <XemTruocBangModal
+          onDaXemTruyVan={(sql) => onDaXemTruyVan?.({ id: `${the.id}:xem-truoc`, nhan: `Xem trước bảng ${bang.ten}`, sql }, [])}
           duLieu={duLieu}
           tenBangGoc={bang.ten}
           tenBangNoi={cau.noiBang?.bang}

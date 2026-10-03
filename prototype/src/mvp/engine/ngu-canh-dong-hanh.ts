@@ -8,6 +8,9 @@ export interface DuKienSqlDongHanh {
   id: string;
   title: string;
   source: 'sqlite-run';
+  query: string;
+  queryTruncated: boolean;
+  limited: boolean;
   status: 'available' | 'unavailable';
   columns: string[];
   rows: GiaTriSql[][];
@@ -27,17 +30,20 @@ export async function taoNguCanhDongHanh(kb: KichBanMvp, state: TrangThaiMvp, ba
     .filter((v): v is string => !!v).map(thayTen).join('\n').slice(0, 1800);
   const daCo = new Set([...s.hoSo.manhMoi, ...s.hoSo.taiLieu, ...s.hoSo.bangChung]);
   const phieuBai = new Set(Object.values(kb.thuThach).flatMap((t) => t.vatChung ? [t.vatChung.id] : []));
-  const words = question.toLocaleLowerCase('vi').split(/\s+/).filter((w) => w.length > 2);
+  const normalize = (text: string): string => text.toLocaleLowerCase('vi').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
+  const stopWords = new Set(['minh', 'ban', 'cua', 'cho', 'nay', 'nhung', 'duoc', 'khong', 'chua', 'biet', 'can']);
+  const words = normalize(question).split(/[^a-z0-9_]+/).filter((w) => w.length > 2 && !stopWords.has(w));
   const queries = mem.truyVanDaXem.map((q, i) => ({ q, score: i / Math.max(1, mem.truyVanDaXem.length)
-    + words.filter((w) => `${q.nhan} ${q.id}`.toLocaleLowerCase('vi').includes(w)).length }))
+    + words.filter((w) => normalize(`${q.nhan} ${q.id} ${q.sql}`).includes(w)).length }))
     .sort((a, b) => b.score - a.score).slice(0, 4).map(({ q }) => q);
   const databaseFacts: DuKienSqlDongHanh[] = [];
   for (const q of queries) {
     const result = kb.duLieu ? await chaySql(kb.duLieu, q.sql) : null;
     databaseFacts.push({
       id: q.id, title: thayTen(q.nhan).slice(0, 180), source: 'sqlite-run',
+      query: q.sql.slice(0, 1000), queryTruncated: q.sql.length > 1000, limited: /\bLIMIT\b/i.test(q.sql),
       status: result?.ok ? 'available' : 'unavailable',
-      columns: result?.ok ? result.cot.slice(0, 8) : [],
+      columns: result?.ok ? result.cot.slice(0, 8).map((c) => c.slice(0, 100)) : [],
       rows: result?.ok ? result.dong.slice(0, 6).map((row) => row.slice(0, 8).map((v) => typeof v === 'string' ? v.slice(0, 100) : v)) : [],
       rowCount: result?.ok ? result.dong.length : null,
       truncated: !!result?.ok && (result.dong.length > 6 || result.cot.length > 8 || result.dong.some((r) => r.some((v) => typeof v === 'string' && v.length > 100))),
@@ -45,9 +51,9 @@ export async function taoNguCanhDongHanh(kb: KichBanMvp, state: TrangThaiMvp, ba
   }
   const context = {
     runId: String(s.batDauLuc), selfProfile,
-    playerName: s.tenNguoiChoi,
-    scene: kb.canh.find((c) => c.id === s.canh)?.ten ?? '', day: s.ngay,
-    currentTask: s.triNhoDongHanh!.coMat.includes(ban) ? thayTen(s.nhacViec?.text ?? s.nhiemVu ?? '') : '',
+    playerName: s.tenNguoiChoi.slice(0, 60),
+    scene: (kb.canh.find((c) => c.id === s.canh)?.ten ?? '').slice(0, 180), day: s.ngay,
+    currentTask: s.triNhoDongHanh!.coMat.includes(ban) ? thayTen(s.nhacViec?.text ?? s.nhiemVu ?? '').slice(0, 500) : '',
     knownDialogue: mem.loiDaNghe.slice(-30).map((l) => ({ speaker: tenNguoiNoi(kb, l.speaker, s), text: thayTen(l.text).slice(0, 400) })),
     unlockedEvidence: mem.hoSoDaThay.filter((id) => daCo.has(id)).slice(-16).flatMap((id) => {
       const the = kb.hoSo[id];
@@ -65,8 +71,10 @@ export async function taoNguCanhDongHanh(kb: KichBanMvp, state: TrangThaiMvp, ba
     else if (context.unlockedEvidence.length) context.unlockedEvidence.shift();
     else {
       const fact = [...databaseFacts].reverse().find((f) => f.rows.length > 0);
-      if (!fact) break;
-      fact.rows.pop(); fact.truncated = true;
+      if (fact) { fact.rows.pop(); fact.truncated = true; }
+      else if (databaseFacts.length > 1) databaseFacts.pop();
+      else if (context.knownDialogue.length) context.knownDialogue.shift();
+      else break;
     }
   }
   return context;

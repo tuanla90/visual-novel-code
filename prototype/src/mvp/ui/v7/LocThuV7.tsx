@@ -7,6 +7,7 @@
  *
  * Câu lọc lấy từ nút kịch bản (`nut.sql`): mỗi điều kiện `<cột> = '<giá trị>'` thành một hàng "cột · bằng · ô thả thẻ".
  */
+import type { QuanSatTruyVanMvp } from '../../engine/tri-nho-dong-hanh';
 import { useEffect, useMemo, useRef, useState, type DragEvent } from 'react';
 import type { BoDuLieuMvp, NutMvp } from '../../../content/mvp/types';
 import { soundEngine } from '../../../shared/audio/sound-engine';
@@ -23,6 +24,7 @@ export interface LocThuV7Props {
   duLieu: BoDuLieuMvp | null;
   nut: Extract<NutMvp, { type: 'trial-filter' }>;
   onChon: (giaTri: string) => void;
+  onDaXemTruyVan?: QuanSatTruyVanMvp;
 }
 
 const NHAN_COT: Record<string, string> = {
@@ -36,7 +38,7 @@ export const nhanCot = (cot: string): string => NHAN_COT[cot.toLowerCase()] ?? c
 const KINH = { x: 90, y: 36, w: 1420, h: 740 };
 const nhay = (v: string): string => `'${v.replace(/'/g, "''")}'`;
 
-export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
+export function LocThuV7({ duLieu, nut, onChon, onDaXemTruyVan }: LocThuV7Props) {
   const cau = useMemo(() => cauTuSql(nut.sql), [nut.sql]);
   const dieuKien = useMemo(() => (cau?.dieuKien ?? []).map((d) => ({ cot: d.cot, giaTri: d.giaTri?.tho ?? '' })), [cau]);
   const bang = /FROM\s+([A-Za-z_][A-Za-z0-9_]*)/i.exec(nut.sql)?.[1] ?? '';
@@ -114,6 +116,7 @@ export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
     await ngu(350);
     if (!song.current) return;
     setKq(r);
+    onDaXemTruyVan?.({ id: nut.id, nhan: 'Lọc thử ở Ngày hội', sql: `${cau.khung} WHERE ${dieu.join(' AND ')}` }, []);
     setDangLoc(false);
   };
 

@@ -32,8 +32,8 @@
 ### n2-bd-toa-b — Bản đồ ngày 2 (tùy chọn): ghé sảnh tòa B hỏi bác Thịnh {cảnh: sanh-toa-b}
 
 - [KHÁM PHÁ kp-toi-n2-bd-toa-b]
-  - nv:bac-tu · x 30% · y 100% · rộng 15% → n2-bd-toa-b-vao · dấu: ! · nhãn: Bác bảo vệ
-  - vung:bang-tin · x 40% · y 38% · rộng 4% → n2-bd-toa-b-an · nhãn: Bảng tin cạnh cột
+  - nv:bac-tu · x 78% · y 100% · rộng 16% → n2-bd-toa-b-vao · dấu: ! · nhãn: Bác bảo vệ
+  - vung:bang-tin · x 43.3% · y 37.4% · rộng 9.4% → n2-bd-toa-b-an · nhãn: Bảng tin cạnh cột
 
 ### n2-bd-toa-b-vao — Tới nơi: Bản đồ ngày 2 (tùy chọn): ghé sảnh tòa B hỏi bác Thịnh {cảnh: sanh-toa-b}
 

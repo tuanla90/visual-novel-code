@@ -90,6 +90,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const batDau = useKhoMvp((k) => k.batDau);
   const hanhDong = useKhoMvp((k) => k.hanhDong);
   const ghiNhanTruyVan = useKhoMvp((k) => k.ghiNhanTruyVan);
+  const lanDoiVan = useKhoMvp((k) => k.lanDoiVan);
   const xoa = useKhoMvp((k) => k.xoa);
   const luuVaoO = useKhoMvp((k) => k.luuVaoO);
   const napTuO = useKhoMvp((k) => k.napTuO);
@@ -416,7 +417,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       case 'fix-query':
         return (
           <PhongTraMvp
-            onDaXemTruyVan={(query, loi) => ghiNhanTruyVan(query, loi, s)}
+            onDaXemTruyVan={(query, loi) => ghiNhanTruyVan(query, loi, s, lanDoiVan)}
             key={`${kn.thuThach.id}-${kn.kind}`}
             kb={kb}
             s={s}
@@ -434,11 +435,11 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       case 'effect':
         return isEffectId(kn.effectId) ? <ObjectionEffect effectId={kn.effectId} onDone={tiep} /> : <HieuUngLa onDone={tiep} />;
       case 'projector':
-        return <ManChieuMvp kb={kb} duLieu={kb.duLieu} nut={kn.nut} onTiep={tiep} />;
+        return <ManChieuMvp onDaXemTruyVan={(sql) => ghiNhanTruyVan({ id: `chieu:${s.conTro?.chuoi}:${s.conTro?.nut}`, nhan: 'Màn chiếu buổi họp', sql }, [], s, lanDoiVan)} kb={kb} duLieu={kb.duLieu} nut={kn.nut} onTiep={tiep} />;
       case 'notebook-lookup':
         return <TraSoMvp kb={kb} trang={kn.trang} dienTen={dienTen} onTiep={tiep} />;
       case 'trial-filter':
-        return <LocThuV7 key={kn.nut.id} duLieu={kb.duLieu} nut={kn.nut} onChon={(giaTri) => hanhDong({ type: 'chon-o', giaTri })} />;
+        return <LocThuV7 onDaXemTruyVan={(query, loi) => ghiNhanTruyVan(query, loi, s, lanDoiVan)} key={`${lanDoiVan}:${kn.nut.id}`} duLieu={kb.duLieu} nut={kn.nut} onChon={(giaTri) => hanhDong({ type: 'chon-o', giaTri })} />;
       case 'create-character':
         return (
           <TaoNhanVatMvp
@@ -525,9 +526,9 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         />
       ) : null}
       <DongHanhMvp
+        key={JSON.stringify([lanDoiVan, s.batDauLuc, s.conTro, s.hoiDap?.viTri, kn.kind, gioiThieuMo, laTheChu])}
         kb={kb}
         s={s}
-        dienTen={dienTen}
         visible={['line', 'feedback', 'question', 'branch', 'doi-chat'].includes(kn.kind) && !gioiThieuMo && !laTheChu}
       />
       <SanKhauMvp

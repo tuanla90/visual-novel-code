@@ -1988,7 +1988,7 @@ const GOC = {
             },
             {
               "sprite": "nv:ha-vy",
-              "x": 91,
+              "x": 58,
               "y": 100,
               "rong": 14,
               "chuoi": "md-10-ha-vy-goi",
@@ -3090,9 +3090,9 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:bac-tu",
-              "x": 30,
+              "x": 78,
               "y": 100,
-              "rong": 15,
+              "rong": 16,
               "chuoi": "n2-bd-toa-b-vao",
               "sau": [],
               "nhan": "Bác bảo vệ",
@@ -3100,9 +3100,9 @@ const GOC = {
             },
             {
               "sprite": "vung:bang-tin",
-              "x": 40,
-              "y": 38,
-              "rong": 4,
+              "x": 43.3,
+              "y": 37.4,
+              "rong": 9.4,
               "chuoi": "n2-bd-toa-b-an",
               "sau": [],
               "nhan": "Bảng tin cạnh cột"

@@ -7,6 +7,7 @@
  * Phòng máy không có bảng trên tường nên vào thẳng màn máy; phiếu vẫn ghim lên bảng sau khi tra đúng.
  * Buổi họp (`fix-query`) là màn chiếu: không có bảng, xong là đi tiếp.
  */
+import type { QuanSatTruyVanMvp } from '../../engine/tri-nho-dong-hanh';
 import { useState } from 'react';
 import type { BoDuLieuMvp, KichBanMvp, TheThuThachMvp } from '../../../content/mvp/types';
 import { soundEngine } from '../../../shared/audio/sound-engine';
@@ -19,7 +20,7 @@ import { ManTraV7, type CanhTra, type NguonPhieuV7 } from './ManTraV7';
 import { ManTongHopMvp, type KetQuaTraTongHop } from './ManTongHopMvp';
 
 export interface PhongTraMvpProps {
-  onDaXemTruyVan?: import('./ManTraV7').ManTraV7Props['onDaXemTruyVan'];
+  onDaXemTruyVan?: QuanSatTruyVanMvp;
   kb: KichBanMvp;
   s: TrangThaiMvp;
   duLieu: BoDuLieuMvp | null;
@@ -141,7 +142,7 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
   return (
     <div className="phong-tra" data-pha="may">
       {mode === 'challenge' && !laPhongMay ? <button className="phong-tra__ve-bang" type="button" onClick={() => setPha({ ten: 'bang' })}>Về bảng điều tra</button> : null}
-      {the.kieuTrinhDung === 'tong-hop' && duLieu ? <ManTongHopMvp kb={kb} canh={canh} duLieu={duLieu} the={the} nguon={nguonDuocChon} giayNho={giayNho} dienTen={dienTen} nhanNguon={(id) => s.bang?.phieuTruyVan?.[id]?.nhan ?? Object.values(kb.thuThach).find((t) => t.vatChung?.id === id)?.vatChung?.title} onXong={hoanTatTongHop} /> : <ManTraV7
+      {the.kieuTrinhDung === 'tong-hop' && duLieu ? <ManTongHopMvp onDaXemTruyVan={onDaXemTruyVan} kb={kb} canh={canh} duLieu={duLieu} the={the} nguon={nguonDuocChon} giayNho={giayNho} dienTen={dienTen} nhanNguon={(id) => s.bang?.phieuTruyVan?.[id]?.nhan ?? Object.values(kb.thuThach).find((t) => t.vatChung?.id === id)?.vatChung?.title} onXong={hoanTatTongHop} /> : <ManTraV7
         kb={kb}
         duLieu={duLieu}
         the={the}
@@ -149,6 +150,7 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
         canh={canh}
         giayNho={giayNho}
         dienTen={dienTen}
+        onDaXemTruyVan={onDaXemTruyVan}
         nguonPhieu={nguonPhieu}
         onXong={(dung, result) => {
           const isNguonDuocKhaiBao = !!the.vatChung && Object.values(kb.thuThach).some((challenge) => challenge.nguon === the.vatChung?.id);

@@ -1,5 +1,31 @@
 # Nhật Ký Thay Đổi (.agent/changelog.md)
 
+## [2026-10-04] Rà Soát Cảnh Giới Thiệu Nhân Vật: Sửa Lỗi Che Người & Khắc Phục Lệch Màu Sắc
+
+### 1. Bối Cảnh & Vấn Đề (UX & Visual Hierarchy):
+- **Lỗi chữ che người**: Màn giới thiệu nhân vật Quân (`quan`) và Hà Vy (`ha-vy`) bị gán cứng `textSide = 'left'`, khiến tấm thẻ chữ và nút bấm đè trực tiếp lên ngực và mặt của nhân vật. Trong khi toàn bộ 1/3 bên phải khung hình là bối cảnh trống.
+- **Lỗi lệch màu sắc (Color Inconsistency)**:
+  - Trên cùng màn hình debut của Tùng: Chức danh dùng `--debut-accent` màu xanh lam thể thao `#38bdf8`, nhưng Tag `NHÂN VẬT MỚI`, nút `Tiếp tục` và viền glow dùng `--debut-accent-grad` màu cam `#fb923c` do CSS selector bị lệch màu với `mau-nhan-vat.ts`.
+  - Cô Hạnh mặc áo dài hoa sen đỏ mận nhưng bị gán màu xanh `#38bdf8` trùng với Tùng và Duy.
+  - Các nhân vật mới/chưa có CSS selector bị rơi về màu vàng mặc định ở nút bấm dù chữ mang màu riêng.
+
+### 2. Giải Pháp Triển Khai:
+- **Rà soát 100% ảnh intro 16:9 (`prototype/src/assets/art/intro-*.webp`)**:
+  - Xác minh tất cả 19 nhân vật đều đứng ở 1/3 bên trái khung hình (x ≈ 10%–35%), để trống nửa bên phải (x ≈ 45%–100%).
+  - Xóa bỏ hoàn toàn quy tắc ép trái `CHU_BEN_TRAI` trong `GioiThieuMvp.tsx` và `INTRO_TEXT_SIDE` trong `CharacterDebutSplash.tsx`. Cố định `textSide = 'right'` cho toàn bộ nhân vật.
+- **Tự động sinh màu động bằng `color-mix`**:
+  - Cập nhật `CharacterDebutCard` và base class `.chara-debut` tự động phái sinh `--debut-accent-grad` và `--debut-accent-glow` trực tiếp từ `accentColor` thông qua `color-mix(in srgb, ...)`.
+  - Triệt tiêu hoàn toàn khả năng lệch màu giữa chữ và nút/tag/glow.
+- **Đồng bộ bảng màu nhân vật**:
+  - Tùng: đồng bộ màu lam thể thao `#38bdf8` thống nhất giữa `mau-nhan-vat.ts`, `character-debut.css`, `character-profiles.ts` và `CharaProfileView.tsx`.
+  - Cô Hạnh: chuyển sang đỏ hoa sen `#f43f5e` quý phái khớp với áo dài sen.
+  - Thầy Khải: bổ sung màu xám bạc `#cbd5e1`.
+
+### 3. Kiểm Thử:
+- `CharacterDebutSplash.test.tsx`: 6/6 tests passed (bổ sung test kiểm tra `is-text-right` và CSS variables).
+- `GioiThieuMvp.test.tsx`: 4/4 tests passed (bổ sung test kiểm tra `is-text-right` cho Quân và Hà Vy).
+- `npm run typecheck` & `npm run build`: Thành công 100%.
+
 ## [2026-10-04] Khảo Sát Bảng & Xem Trước Cột Mới Khi JOIN (Hướng C + A)
 
 ### 1. Bối Cảnh & Vấn Đề (UX & Data Detective Scaffolding):
