@@ -7,6 +7,7 @@
  * rộng ~45% khung → ảnh đặt rộng 220% ô tròn, dịch sao cho điểm đó vào giữa ô (CSS `.nhac-viec__mat img`).
  * Đổi câu → trượt vào lại (key theo câu). Trang trí thuần; trình đọc màn hình đọc "Việc đang làm — <tên> nhắc: <câu>".
  */
+import { useState } from 'react';
 import type { KichBanMvp } from '../../content/mvp/types';
 import type { NhacViecMvp as NhacViec } from '../engine/trang-thai';
 import { anhChanDung } from './anh-mvp';
@@ -21,13 +22,29 @@ export interface NhacViecMvpProps {
 }
 
 export function NhacViecMvp({ kb, nhac, dienTen, tenNguoiChoi }: NhacViecMvpProps) {
+  const [moRong, setMoRong] = useState(false);
   const laNguoiChoi = nhac.nhanVat === 'player';
   const nv = kb.nhanVat.find((n) => n.id === nhac.nhanVat);
   const ten = laNguoiChoi ? tenNguoiChoi || 'Bạn' : (nv?.ten ?? 'Nhân vật');
   const url = anhChanDung(laNguoiChoi ? 'nguoi-choi' : nhac.nhanVat, nhac.bieuCam ?? (laNguoiChoi ? undefined : nv?.bieuCam[0]));
   const cau = dienTen(nhac.text);
   return (
-    <aside key={`${nhac.nhanVat}|${cau}`} className="nhac-viec" aria-label={`Việc đang làm — ${ten} nhắc: ${cau}`} data-nhan-vat={nhac.nhanVat}>
+    <aside
+      key={`${nhac.nhanVat}|${cau}`}
+      className={`nhac-viec${moRong ? ' is-expanded' : ''}`}
+      aria-label={`Việc đang làm — ${ten} nhắc: ${cau}`}
+      data-nhan-vat={nhac.nhanVat}
+      onClick={() => setMoRong((v) => !v)}
+      title={cau}
+      role="note"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setMoRong((v) => !v);
+        }
+      }}
+    >
       <span className="nhac-viec__mat" aria-hidden="true">
         {url ? <img src={url} alt="" draggable={false} /> : <span className="nhac-viec__chu-tat">{ten.trim().charAt(0)}</span>}
       </span>

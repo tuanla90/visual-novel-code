@@ -87,4 +87,57 @@ describe('DialogBox — chống nhảy cóc thoại (press guard)', () => {
     expect(onOpenNotebook).toHaveBeenCalledTimes(1);
     expect(onAdvance).not.toHaveBeenCalled();
   });
+
+  it('không còn ký hiệu mũi tên tam giác cuộn (chỉ giữ nút Tiếp tục)', () => {
+    const { container } = render(<DialogBox line={LINE} onAdvance={() => {}} />);
+    expect(container.querySelector('.dialog__scroll-arrow')).toBeNull();
+  });
+
+  it('văn bản dài: cuộn xem tiếp trước khi qua câu thoại mới', () => {
+    const onAdvance = vi.fn();
+    const LONG_LINE: DialogueLine = {
+      speaker: 'ha-vy',
+      expression: 'neutral',
+      text: 'Khoan. Mình mới đếm có một kiểu: tài khoản nào gửi. Đổi cách đếm xem có thấy gì khác không đã. Chúng ta cần kiểm tra lại toàn bộ danh sách sinh viên.',
+    };
+    const { container } = render(<DialogBox line={LONG_LINE} onAdvance={onAdvance} />);
+    const textEl = container.querySelector('.dialog__text') as HTMLElement;
+    expect(textEl).toBeInTheDocument();
+
+    // Giả lập DOM scroll: scrollHeight 200, clientHeight 75, scrollTop 0
+    Object.defineProperty(textEl, 'scrollHeight', { configurable: true, value: 200 });
+    Object.defineProperty(textEl, 'clientHeight', { configurable: true, value: 75 });
+    let currentScrollTop = 0;
+    Object.defineProperty(textEl, 'scrollTop', {
+      configurable: true,
+      get: () => currentScrollTop,
+      set: (val) => { currentScrollTop = val; },
+    });
+    textEl.scrollBy = vi.fn((options?: ScrollToOptions | number) => {
+      if (typeof options === 'object' && options?.top) {
+        currentScrollTop += options.top;
+      }
+    }) as unknown as typeof textEl.scrollBy;
+
+    const nextBtn = screen.getByRole('button', { name: /Tiếp tục/ });
+    act(() => vi.advanceTimersByTime(401));
+
+    // Bấm lần 1: cuộn tiếp trang sau thay vì gọi onAdvance
+    act(() => {
+      fireEvent.click(nextBtn);
+    });
+    expect(textEl.scrollBy).toHaveBeenCalled();
+    expect(onAdvance).not.toHaveBeenCalled();
+
+    // Cập nhật scrollTop đến cuối văn bản
+    currentScrollTop = 130; // 130 + 75 = 205 >= 200 - 6
+    act(() => vi.advanceTimersByTime(401));
+
+    // Bấm lần 2: khi đã ở cuối trang thì qua câu mới
+    act(() => {
+      fireEvent.click(nextBtn);
+    });
+    expect(onAdvance).toHaveBeenCalledTimes(1);
+  });
 });
+

@@ -14,9 +14,14 @@
 - **quan** (chi-man): Bên tôi lọc lại cho chắc: tên bắt đầu bằng H hoặc học lớp BC24A, ra năm trăm chín mươi lăm dòng. Hồ sơ các bạn nộp chỉ có hai người.
 
 ## hop-00.3
-- **tung** (surprised): Ơ… năm trăm chín mươi lăm dòng thật.
+- **tung** (surprised): Ơ… năm trăm chín mươi lăm dòng thật! Danh sách dài dằng dặc thế này thì đỡ sao nổi!
+- **minh-anh** (happy): Đừng cuống. Dữ liệu và logic là sân nhà của tụi mình mà.
+- **tung** (happy): Chuẩn luôn! Cả tuần thức trắng cày SQL với nhau rồi, sợ gì! Lên bục vạch lỗi câu lệnh cho anh ấy sáng mắt ra đi bạn ơi!
+- **ha-vy** (smile): Tụi mình tin cậu. Tiến lên bẻ gãy câu HOẶC đó đi!
+- **player**: Cứ để em. Năm trăm dòng thừa thãi này… sẽ biến mất ngay bây giờ!
 > NHẮC VIỆC ha-vy (day-kinh): Gần sáu trăm dòng… câu của anh Quân lấy rộng ở chỗ nào?
-- [DÀN DỰNG] Nhịp 1: người chơi chạm vào chữ HOẶC, đổi thành VÀ → 2 dòng. Nhịp 2: "Số liệu đây!". Chạm sai, chạy thử đều không phạt.
+- [DÀN DỰNG] Nhân vật chính tự tin sải bước tiến thẳng về phía máy chiếu đối đầu Quân.
+
 
 ## hop-00.4
 - **ha-vy** (neutral): Anh đang lấy cả người tên H lẫn cả lớp BC24A, gộp làm một ạ. Bọn em chỉ cần người vừa tên H, vừa học lớp BC24A.

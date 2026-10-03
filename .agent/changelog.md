@@ -1,6 +1,55 @@
 # Nhật Ký Thay Đổi (.agent/changelog.md)
 
-## [2026-09-29] Triển Khai Chế Độ Màn Hình Dọc (Mobile Portrait Mode 9:16) & Smartphone Simulator
+## [2026-10-03] Chèn Meme JoJo (NVC Tiến Lên), Buff Tự Tin Cho NVC & Thêm Chữ Đè Lên Cảnh Kaiba
+
+### 1. Kịch Bản & Cảnh Meme JoJo (`cg-hop-doi-dau`):
+- **Chèn CG JoJo vào kịch bản**: Bổ sung `- [ẢNH cg-hop-doi-dau]` ngay trước thử thách sửa SQL câu `OR` của Quân (`c-sua-or-quan`) trong `06-hop-va-ket.md`.
+- **Buff tự tin cho Nhân vật chính**: Mở rộng phân đoạn thoại `hop-00.3` trong `loi/06-hop-va-ket.md` với sự cổ vũ nhiệt tình của Tùng, Minh Anh, Hà Vy, và câu thoại khẳng khái, tự tin của người chơi trước khi bước lên bục máy chiếu.
+- **Tiêu đề meme & Manga stamps**:
+  - Tiêu đề: *"Ồ? Thay vì nhận thua, cậu lại dám tiến lại gần tôi sao?"*
+  - Chữ đè lên ảnh: *"ゴゴゴ MENACING…"* và *"Không bước lại gần sao bẻ được câu lệnh của anh!"*.
+
+### 2. Cảnh Quân Thua Giống Kaiba (`cg-quan-bi-bac`):
+- **Bổ sung chữ đè lên ảnh (Meme Stamps)**: Tạo các lớp nhãn hiệu ứng phong cách manga/comic Kaiba defeat:
+  - Tiêu đề: *"KHÔNG THỂ NÀO! KẾT LUẬN CỦA TÔI… BAY MÀU RỒI?!"*
+  - Con dấu chéo đỏ lớn: *"BÁC BỎ HOÀN TOÀN!"*
+  - Góc trái: *"IT SHOULD HAVE BEEN ME!"*
+  - Góc phải: *"595 DÒNG → 2 DÒNG!"*.
+
+### 3. Tinh Chỉnh CSS & Sửa Lỗi Build:
+- Thêm cấu trúc `mvp-anhchen__khung` và các biến thể `mvp-anhchen__de-len--*` trong `mvp.css`.
+- Sửa lỗi cú pháp CSS trong `NhacViecMvp.css` (selector trước media query) và `v7.css` (thừa dấu đóng ngoặc sớm).
+- Bổ sung unit test cho meme trong `AnhChenMvp.test.tsx`.
+
+## [2026-10-03] Tối Ưu Hộp Thoại, Nút Lùi Cho Sự Kiện Ảnh & Căn Chỉnh Giao Diện Mobile
+
+### 1. Hộp Thoại & Nút Tiếp Tục (DialogBox):
+- **Bỏ biểu tượng tam giác cuộn (`▼`)**: Xóa bỏ icon `.dialog__scroll-arrow` bên trong khung thoại để tránh trùng lặp với nút Tiếp tục.
+- **Cố định kích thước khung thoại 3 dòng trên mobile**: Thiết lập chiều cao cố định (`height: 114px`, `max-height: 114px`) và giới hạn hiển thị 3 dòng chữ (`height: calc(1.48em * 3)`, `overflow: hidden`) trong `portrait.css`. Khung thoại không còn co giãn hay nhảy kích thước giữa các câu thoại ngắn/dài.
+- **Phân trang thoại dài (Tap-to-scroll)**: Khi nội dung dài hơn 3 dòng, bấm vào hộp thoại hoặc nút Tiếp tục sẽ cuộn đọc tiếp trang nội dung còn lại; cú bấm tiếp theo sau khi đã xem hết mới chuyển sang câu thoại mới.
+- **Tách biệt tên nhân vật**: Tăng khoảng đệm trên của khung chữ (`padding-top: 24px`) và đẩy badge tên người nói (`.dialog__speaker`) lên cao hơn (`top: -18px`), tạo khoảng cách thoáng đãng, không bị đè sát chữ.
+
+### 2. Sửa Nút Lùi Khi Gặp Sự Kiện Ảnh Chèn (AnhChenMvp):
+- Khắc phục lỗi khi bấm lùi từ câu thoại ngay sau ảnh CG/chibi: trước đây bị kẹt hiển thị ảnh và chỉ có thể bấm Next; nay nút Back lùi chuẩn xác về câu thoại trước ảnh.
+
+### 3. Tối Ưu Giao Diện Mobile, HUD & Giới Thiệu Nhân Vật:
+- **Tăng diện tích tương tác**: Tăng vùng bấm nút địa điểm trên mobile, bố cục lại khối thông tin nhiệm vụ và các nút chức năng để tránh tình trạng đè chéo hoặc cắt chữ.
+- **Dàn trang giới thiệu nhân vật (Debut Splash)**: Cân chỉnh bố cục trên màn hình dọc và điện thoại thật, chống tràn lấp nội dung mô tả nhân vật.
+
+### 4. Tệp chỉnh sửa:
+- `prototype/src/shared/ui/DialogBox.tsx`
+- `prototype/src/shared/ui/DialogBox.test.tsx`
+- `prototype/src/styles/portrait.css`
+- `prototype/src/shared/vn/vn-controls.css`
+- `prototype/src/mvp/ui/AnhChenMvp.tsx`
+- `prototype/src/story/ui/character-debut.css`
+- `prototype/src/evidence/ui/chara-profile.css`
+- `prototype/src/mvp/ui/HudMvp.tsx`
+- `prototype/src/mvp/ui/DoiChatMvp.tsx`
+- `prototype/src/mvp/ui/v7/BangGhimMvp.tsx`
+- `.agent/changelog.md`
+
+
 
 ### 1. Kiến Trúc Bộ Khung Màn Hình Dọc & Simulator Máy Tính:
 - **Tùy chọn `viewportMode` trong `vn-store.ts`**: Hỗ trợ 3 trạng thái (`auto` | `mobile` | `desktop`), lưu trữ bền vững trong `localStorage`.

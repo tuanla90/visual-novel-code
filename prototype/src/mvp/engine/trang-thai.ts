@@ -108,9 +108,9 @@ export interface GhiChuTruyVanMvp {
   nguonId: string;
 }
 
-/** Bốn màu đầu ghim: đỏ (mặc định), xanh dương, lục, tím. */
-export type MauGhimMvp = 'do' | 'xanh' | 'luc' | 'tim';
-export const MAU_GHIM: readonly MauGhimMvp[] = ['do', 'xanh', 'luc', 'tim'];
+/** Năm màu đầu ghim: đỏ (trọng tâm), cam (chưa xác định), xanh (tham chiếu), lục (xác thực), tím (nghi vấn). */
+export type MauGhimMvp = 'do' | 'cam' | 'xanh' | 'luc' | 'tim';
+export const MAU_GHIM: readonly MauGhimMvp[] = ['do', 'cam', 'xanh', 'luc', 'tim'];
 
 export interface NhacViecMvp {
   nhanVat: string;

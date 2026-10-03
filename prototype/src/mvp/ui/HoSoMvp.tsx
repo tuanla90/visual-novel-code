@@ -351,7 +351,7 @@ function NganSoTay({ kb, soTay, dienTen, thuThachXong }: { kb: KichBanMvp; soTay
             <span className="notebook__journal-pill">
               <IconFileText width={16} height={16} aria-hidden="true" /> BẢNG ĐÃ MỞ
             </span>
-            <span className="notebook__journal-time">Hà Vy ghi</span>
+            <span className="notebook__journal-time">{bang.length} bảng dữ liệu</span>
           </div>
           <div className="mvp-kho__bang-ds" role="group" aria-label="Các bảng đã mở">
             {bang.map((b) => (
@@ -383,9 +383,7 @@ function NganSoTay({ kb, soTay, dienTen, thuThachXong }: { kb: KichBanMvp; soTay
                   <span className="notebook__journal-pill">
                     <IconFileText width={16} height={16} aria-hidden="true" /> {NHAN_LOAI_SO[t.loai] ?? t.loai}
                   </span>
-                  <span className="notebook__journal-time">
-                    Trang {i + 1} · {t.loai === 'tâm đắc' ? 'Bạn ghi' : 'Hà Vy ghi'}
-                  </span>
+                  <span className="notebook__journal-time">Trang {i + 1}</span>
                 </div>
                 <h3 className="notebook__journal-title">{dienTen(t.ten)}</h3>
                 <div className="notebook__journal-body">

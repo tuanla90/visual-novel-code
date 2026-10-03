@@ -87,6 +87,7 @@ function mocHud(kb: KichBanMvp, s: TrangThaiMvp): { kicker: string; so: string; 
 export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onBatDauLai, onVeTieuDe, onMoLich, onTamDungViecPhu, onMoBangHoatDong }: HudMvpProps) {
   const [menuMo, setMenuMo] = useState(false);
   const [xacNhan, setXacNhan] = useState(false);
+  const [moRongNhiemVu, setMoRongNhiemVu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const viewportMode = useVnStore((k) => k.viewportMode);
   const toggleViewportMode = useVnStore((k) => k.toggleViewportMode);
@@ -96,6 +97,10 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
   const coUyTin = s.giaiDoan === 'hop' && tong > 0;
   const daXongNgay = (so: number): boolean => s.giaiDoan === 'hop' || s.giaiDoan === 'het' || s.giaiDoan === 'vu-sau' || s.giaiDoan === 'phu' || (s.giaiDoan === 'ngay' && so < s.ngay);
   const nhanDocNgang = viewportMode === 'mobile' ? 'Chuyển sang màn hình ngang PC' : 'Chuyển sang màn hình dọc Mobile 9:16';
+
+  useEffect(() => {
+    setMoRongNhiemVu(false);
+  }, [s.nhiemVu]);
 
   // Menu: Esc hay bấm ra ngoài thì đóng (không dùng <details> như prototype để bắt được Esc).
   useEffect(() => {
@@ -162,7 +167,11 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
           {veNgay}
         </div>
       )}
-      <div className="topbar__task" aria-live="polite">
+      <div
+        className={`topbar__task${moRongNhiemVu ? ' is-expanded' : ''}`}
+        aria-live="polite"
+        onClick={() => setMoRongNhiemVu((m) => !m)}
+      >
         <svg className="topbar__task-icon" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="12" r="7" stroke="currentColor" strokeWidth="1.8" fill="none" />
           <circle cx="12" cy="12" r="2.5" fill="currentColor" />

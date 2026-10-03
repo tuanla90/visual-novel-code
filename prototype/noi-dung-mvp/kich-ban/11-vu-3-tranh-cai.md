@@ -1,5 +1,9 @@
 ## Vụ 3 — Tranh cãi trong nhóm (thứ Năm 10/10/2024)
 
+<!-- timeline-ref {"dependsOn":["tin-goc"]} -->
+
+<!-- timeline-ref {"tables":["bai_dang_kenh","quet_the_thu_vien"],"evidence":[{"id":"bai-tin-vp","title":"Bài đăng buổi tối đi từ máy văn phòng xưởng","table":"bai_dang_kenh","where":{"ma_bai":"BD-10"},"usedAt":"v3-xuong","note":"Cần phân biệt thiết bị của bài tin đồn với điện thoại trực kênh Nam thường giữ."},{"id":"ngoai-pham-thu-vien","title":"Nam và Hà Vy ở thư viện trong tối tin đồn","table":"quet_the_thu_vien","where":{"ten":["Nam","Hà Vy"]},"dateFrom":{"table":"tin_nhan","where":{"ma_tin":"T-01"} },"usedAt":"v3-thu-vien","note":"Khoảng vào–ra phải bao trùm giờ tin gốc; thói quen các tuần khác là sự kiện liên đới."}]} -->
+
 <!-- Khung Vụ 3 theo dàn ý mùa 1 (docs/mvp/mua-1-dan-y-nam-khanh.md mục 4 và 9.1). Vụ sau của lich.md: chạy từ v3-mo sau màn kết Vụ 2. Điều mới: NHÓM VÀ ĐẾM (màn tổng hợp trên phiếu đã ghim): bài đăng của kênh nhóm theo thiết bị; thẻ thư viện của Nam nhóm theo thứ. Thói quen của Hà Vy (tối thứ Hai nào cũng ở thư viện) thành lời chứng cho Nam. Đối chất trong nhóm: Tùng nêu "Nam gửi tin", người chơi trình thẻ; đủ căn cứ (phiếu quẹt thẻ tối 07/10) → kết đủ; thiếu → kết chưa trọn (Minh Anh mời Nam lên, Nam tự đưa thẻ). Tra thêm thẻ của Hà Vy (tùy chọn) → lời nhắn thứ ba của chị Linh. Lời ở loi/11-vu-3-tranh-cai.md. -->
 
 ### v3-mo — Phòng CLB: bốn người, bốn cách đọc một phiếu {cảnh: phong-clb}

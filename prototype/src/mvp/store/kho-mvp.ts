@@ -39,8 +39,8 @@ export interface KhoMvp {
 
   batDau: () => void;
   hanhDong: (hd: HanhDongMvp) => void;
-  /** Lùi một bước (về trạng thái trước hành động gần nhất). Trả `false` khi không còn gì để lùi. */
-  lui: () => boolean;
+  /** Lùi một bước (về trạng thái trước hành động gần nhất). Có thể bỏ qua các trạng thái trung gian (như ảnh chèn). Trả `false` khi không còn gì để lùi. */
+  lui: (boQua?: (s: TrangThaiMvp) => boolean) => boolean;
   /** Đổi thẳng trạng thái (Nạp ô lưu). */
   datTrangThai: (s: TrangThaiMvp) => void;
   xoa: () => void;
@@ -85,11 +85,15 @@ export function taoKhoMvp(options: { persist?: boolean; storageKey?: string } = 
       const sau = xuLy(KICH_BAN, s, hd);
       if (sau !== s) set((k) => ({ trangThai: sau, lichSuLui: [...k.lichSuLui, s].slice(-SO_BUOC_LUI_MVP) }));
     },
-    lui: () => {
+    lui: (boQua?: (s: TrangThaiMvp) => boolean) => {
       const ds = get().lichSuLui;
-      const truoc = ds[ds.length - 1];
-      if (!truoc) return false;
-      set({ trangThai: truoc, lichSuLui: ds.slice(0, -1) });
+      let idx = ds.length - 1;
+      while (idx >= 0 && boQua && boQua(ds[idx]!)) {
+        idx--;
+      }
+      if (idx < 0) return false;
+      const truoc = ds[idx]!;
+      set({ trangThai: truoc, lichSuLui: ds.slice(0, idx) });
       return true;
     },
     datTrangThai: (s) => set({ trangThai: s, lichSuLui: [] }),

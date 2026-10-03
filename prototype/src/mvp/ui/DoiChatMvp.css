@@ -14,6 +14,66 @@
   width: 100%;
   height: 100%;
 }
+/* Ngăn kéo chứa khay thẻ hồ sơ: có thể mở ra hoặc thu gọn để không choán sân khấu */
+.doi-chat__ngan-keo {
+  position: relative;
+  width: 100%;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, transform 0.25s ease, margin 0.25s ease;
+  pointer-events: auto;
+}
+.doi-chat__ngan-keo.is-dong {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  overflow: hidden;
+  margin-bottom: -10px;
+}
+.doi-chat__ngan-keo.is-mo {
+  max-height: 280px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  overflow: visible;
+}
+.doi-chat__ngan-keo-thanh {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 14px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(245, 158, 11, 0.4);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
+}
+.doi-chat__ngan-keo-tieude {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fde68a;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.doi-chat__ngan-keo-dong {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  color: #e2e8f0;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.doi-chat__ngan-keo-dong:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #fca5a5;
+}
 .doi-chat__khay {
   width: 100%;
   min-width: 0;
@@ -22,12 +82,14 @@
   display: flex;
   gap: 14px;
   align-items: flex-end;
-  padding: 18px 16px 14px;
+  padding: 16px 16px 14px;
   overflow-x: auto;
   overflow-y: visible;
   scrollbar-width: thin;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.42) 100%);
-  border-radius: 14px 14px 4px 4px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.92) 100%);
+  border-radius: 0 0 6px 6px;
+  border-left: 1.5px solid rgba(245, 158, 11, 0.4);
+  border-right: 1.5px solid rgba(245, 158, 11, 0.4);
   /* Kệ gỗ: thanh gỗ mỏng đỡ thẻ (ảnh GUI tham chiếu Topview 01/10). */
   border-bottom: 9px solid #5a3a1c;
   box-shadow:
@@ -164,6 +226,52 @@
   color: #8a1c1c;
 }
 
+/* Thanh tab mở / thu khay thẻ nằm ngay trên nóc hộp thoại */
+.doi-chat__thanh-tab {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 6px;
+  width: 100%;
+}
+.doi-chat__tab-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(30, 41, 59, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(245, 158, 11, 0.5);
+  border-radius: 8px;
+  color: #fef3c7;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s ease;
+  pointer-events: auto;
+}
+.doi-chat__tab-toggle:hover {
+  background: rgba(45, 55, 72, 0.95);
+  border-color: #f59e0b;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.25);
+}
+.doi-chat__tab-toggle.is-mo {
+  background: rgba(245, 158, 11, 0.22);
+  border-color: #f59e0b;
+  color: #fbbf24;
+}
+.doi-chat__tab-icon {
+  font-size: 1rem;
+}
+.doi-chat__tab-arrow {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
 /* Hộp thoại giả thuyết: viền hổ phách mảnh, con dấu đỏ to. */
 .doi-chat__hop {
   width: 100%;
@@ -262,6 +370,72 @@
   background: #fff;
 }
 
+/* Thẻ đang chọn hiển thị dạng chip bấm được */
+.doi-chat__the-chon-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  background: rgba(245, 158, 11, 0.18);
+  border: 1.5px solid rgba(245, 158, 11, 0.55);
+  color: #fef3c7;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  pointer-events: auto;
+}
+.doi-chat__the-chon-preview:hover {
+  background: rgba(245, 158, 11, 0.28);
+  border-color: #fbbf24;
+  transform: translateY(-1px);
+}
+.doi-chat__the-chon-loai {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fde68a;
+  letter-spacing: 0.04em;
+}
+.doi-chat__the-chon-ten {
+  font-weight: 700;
+  color: #ffffff;
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.doi-chat__the-chon-doi {
+  font-size: 0.75rem;
+  color: #fde68a;
+  padding-left: 4px;
+  opacity: 0.9;
+}
+.doi-chat__goi-y-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245, 158, 11, 0.14);
+  border: 1.5px dashed rgba(245, 158, 11, 0.55);
+  border-radius: 8px;
+  color: #fde68a;
+  font-family: var(--font-ui);
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  pointer-events: auto;
+}
+.doi-chat__goi-y-btn:hover {
+  background: rgba(245, 158, 11, 0.25);
+  border-color: #f59e0b;
+  border-style: solid;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
 /* Màn dọc: khay thấp hơn, thẻ nhỏ, chữ nhỏ, hai nút chia đôi một hàng; hộp thoại không được tràn khỏi màn. */
 .game--portrait .doi-chat__khay {
   flex: 0 1 auto;
@@ -300,11 +474,23 @@
 .game--portrait .dc-the--phieu {
   width: 136px;
 }
+.game--portrait .doi-chat__ngan-keo.is-mo {
+  max-height: 220px;
+}
+.game--portrait .doi-chat__the-chon-ten {
+  max-width: 130px;
+}
 .game--portrait .doi-chat__nut {
   width: 100%;
   justify-content: flex-end;
 }
 @media (max-width: 768px) {
+  .doi-chat__ngan-keo.is-mo {
+    max-height: 220px;
+  }
+  .doi-chat__the-chon-ten {
+    max-width: 130px;
+  }
   .doi-chat__khay {
     flex: 0 1 auto;
     min-height: 0;
@@ -349,10 +535,20 @@
   margin-inline: 0.75rem;
 }
 
-/* Khung `.stage__content:has(> .mc)` tắt nhận chuột cho cả vùng; hàng thẻ phải bật lại, nếu không chuột thật không bấm được thẻ. */
+/* Khung `.stage__content:has(> .mc)` tắt nhận chuột cho cả vùng; các phần tử tương tác phải bật lại. */
 .doi-chat__khay,
-.doi-chat__khay .dc-the {
+.doi-chat__khay .dc-the,
+.doi-chat__ngan-keo,
+.doi-chat__ngan-keo button,
+.doi-chat__thanh-tab,
+.doi-chat__thanh-tab button,
+.doi-chat__the-chon-preview,
+.doi-chat__goi-y-btn {
   pointer-events: auto;
+}
+.doi-chat__ngan-keo.is-dong,
+.doi-chat__ngan-keo.is-dong * {
+  pointer-events: none !important;
 }
 .doi-chat .doi-chat__hop,
 .doi-chat .doi-chat__hop .dialog,

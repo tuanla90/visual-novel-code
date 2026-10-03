@@ -37,7 +37,7 @@ export const CHARACTER_PROFILES: Record<CharacterId, CharacterProfile> = {
       'Luôn nhắc nhở cả nhóm: Không vội vàng kết luận khi chưa có đối chứng tài liệu gốc.',
     ],
     expressions: ['neutral', 'worried', 'happy'] as const,
-    accentColor: '#c8102e',
+    accentColor: '#f87171',
   },
   'ha-vy': {
     id: 'ha-vy',
@@ -59,7 +59,7 @@ export const CHARACTER_PROFILES: Record<CharacterId, CharacterProfile> = {
       'Phát hiện lỗ hổng logic nghiêm trọng trong câu lệnh dùng phép OR của Quân.',
     ],
     expressions: ['neutral', 'thinking', 'smile'] as const,
-    accentColor: '#0f766e',
+    accentColor: '#34d399',
   },
   quan: {
     id: 'quan',
@@ -81,7 +81,7 @@ export const CHARACTER_PROFILES: Record<CharacterId, CharacterProfile> = {
       'Nhận thức sâu sắc bài học về đạo đức trích xuất dữ liệu.',
     ],
     expressions: ['neutral', 'smug', 'stunned'] as const,
-    accentColor: '#334155',
+    accentColor: '#60a5fa',
   },
   hoai: {
     id: 'hoai',
@@ -103,7 +103,7 @@ export const CHARACTER_PROFILES: Record<CharacterId, CharacterProfile> = {
       'Thông tin cá nhân đã được CLB hủy bỏ bảo mật sau buổi giải trình.',
     ],
     expressions: ['nervous', 'downcast', 'relieved'] as const,
-    accentColor: '#7c3aed',
+    accentColor: '#c084fc',
   },
   'bac-tu': {
     id: 'bac-tu',
@@ -125,7 +125,7 @@ export const CHARACTER_PROFILES: Record<CharacterId, CharacterProfile> = {
       'Chìa khóa then chốt giúp lật ngược tình thế tại phòng giải trình.',
     ],
     expressions: ['neutral'] as const,
-    accentColor: '#78350f',
+    accentColor: '#fbbf24',
   },
   tung: {
     id: 'tung',
@@ -147,6 +147,6 @@ export const CHARACTER_PROFILES: Record<CharacterId, CharacterProfile> = {
       'Cổ vũ và ủng hộ nhiệt tình khi người chơi tham gia CLB Thám tử Dữ liệu.',
     ],
     expressions: ['neutral'] as const,
-    accentColor: '#c2410c',
+    accentColor: '#fb923c',
   },
 };

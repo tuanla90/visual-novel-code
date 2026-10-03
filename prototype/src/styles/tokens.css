@@ -1,16 +1,14 @@
 /* Token thiết kế dùng chung. Gói 7 (hinh-giao-dien) được đổi GIÁ TRỊ, không đổi TÊN token. */
 :root {
-  /* Phông */
-  /* Be Vietnam Pro: toàn bộ giao diện, nút, tiêu đề, nhãn và hội thoại mặc định. */
-  --font-ui: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  /* Source Serif 4: lời kể, hội thoại và văn bản dài trong tài liệu trong game. */
-  --font-reading: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-  /* JetBrains Mono: SQL, mã, tên cột và dữ liệu có cấu trúc. */
-  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, 'Courier New', monospace;
-  /* Playwrite VN: chỉ chữ viết tay xuất hiện trên thư, ghi chú và giấy nháp trong thế giới game. */
-  --font-handwriting: 'Playwrite VN', cursive;
-  /* Dancing Script: lựa chọn phụ do người chơi bật riêng để đọc hội thoại. */
-  --font-reader-script: 'Dancing Script', cursive;
+  /* Phông hệ thống tinh giản (Bộ 3 phông cốt lõi) */
+  /* 1. Noto Sans: Toàn bộ giao diện, nút, tiêu đề, nhãn, hội thoại và đọc tài liệu. */
+  --font-ui: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-reading: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* 2. Roboto Mono: SQL, mã, tên bảng, tên cột và dữ liệu bảng có cấu trúc. */
+  --font-mono: 'Roboto Mono', ui-monospace, Consolas, 'Courier New', monospace;
+  /* 3. Playwrite India: Chữ viết tay, chữ ký trên hồ sơ, thư từ và giấy nhớ. */
+  --font-handwriting: 'Playwrite IN', 'Playwrite India', cursive;
+  --font-reader-script: 'Playwrite IN', 'Playwrite India', cursive;
 
   /* Cỡ chữ: nội dung ≥ 16px */
   --fs-sm: 0.875rem; /* 14px — chỉ dùng cho nhãn phụ, không dùng cho nội dung đọc */

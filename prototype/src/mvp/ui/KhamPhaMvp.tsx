@@ -75,7 +75,7 @@ function maNgoi(nguoi: readonly string[]): string {
 
 const DAU: Record<NonNullable<DiemKhamPhaMvp['dau']>, { chu: string; doc: string }> = {
   chinh: { chu: '!', doc: 'việc chính' },
-  phu: { chu: '?', doc: 'còn điều chưa xem' },
+  phu: { chu: '?', doc: 'chuyện thêm' },
 };
 
 function HuyHieu({ d }: { d: DiemKhamPhaHienMvp }) {
@@ -132,10 +132,8 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
   const tieuDe = laBanDo ? 'Đi đâu bây giờ?' : laQuanSat ? `Quan sát ${nv?.trongCau ?? ''}` : tenCanh;
   // Không còn dòng đếm "Còn N chỗ chưa xem" (user 03/10/2026): đếm sẵn làm mất phần tự tìm. Chỉ bản đồ và phòng có dấu ! / ? giữ chú giải.
   const phu = laBanDo
-    ? `${homNay ? `${homNay}${gio ? `, ${gio}` : ''}. ` : ''}Dấu ! là việc chính. Dấu ? là chỗ còn điều chưa xem.`
-    : !laQuanSat && diem.some((d) => d.diem.dau)
-      ? 'Dấu ! là việc chính, dấu ? là chuyện thêm.'
-      : '';
+    ? (homNay ? `${homNay}${gio ? `, ${gio}` : ''}` : '')
+    : '';
   /** Người đang ở một nơi mà người chơi ĐÃ BIẾT: đã gặp và thẻ nhân vật có dòng "Lịch". */
   const nguoiBiet = (d: DiemKhamPhaMvp): string[] => {
     // Người kịch bản đặt ở đây (`có:`) cộng người lịch "Thường ở" đặt ở ghim này vào thứ, giờ của bản đồ.
@@ -226,9 +224,10 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                   <button
                     key={d.diem.chuoi}
                     type="button"
-                    className={`mvp-ghim${d.daXem ? ' is-xong' : ''}${d.diem.x >= 80 ? ' mvp-ghim--phai' : d.diem.x <= 20 ? ' mvp-ghim--trai' : ''}`}
+                    className={`mvp-ghim${d.daXem ? ' is-xong' : ''}${d.diem.dau && !d.daXem ? ` is-${d.diem.dau}` : ''}${d.diem.x >= 80 ? ' mvp-ghim--phai' : d.diem.x <= 20 ? ' mvp-ghim--trai' : ''}`}
                     style={{ left: `${d.diem.x}%`, top: `${d.diem.y}%` }}
                     aria-label={`${nhanDoc(i, d)}${nguoi.length > 0 ? ` — đang ở đây: ${nguoi.map((n) => kb.nhanVat.find((x) => x.id === n)?.ten ?? n).join(', ')}` : ''}${d.daXem ? ' — đã ghé' : ''}`}
+                    title={`${nhan[i] ?? ''}${d.diem.dau && !d.daXem ? ` (${DAU[d.diem.dau].doc})` : ''}${d.daXem ? ' — đã ghé' : ''}`}
                     disabled={d.daXem}
                     data-diem={d.diem.chuoi}
                     data-chinh={d.diem.dau === 'chinh' && !d.daXem ? '1' : undefined}
@@ -267,11 +266,15 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                     className={`mvp-an${d.daXem ? ' is-da-xem' : ''}`}
                     style={{ left: `${d.diem.x}%`, top: `${d.diem.y}%`, width: `${d.diem.rong}%` }}
                     aria-label={nhanDoc(i, d)}
+                    title={`${nhan[i] ?? 'Soi chi tiết'}${d.daXem ? ' — đã xem' : ''}`}
                     disabled={d.daXem}
                     data-diem={d.diem.chuoi}
                     onClick={() => onXem(d.diem.chuoi)}
                   >
                     <span className="mvp-an__goi-y" aria-hidden="true" />
+                    {kinhLup && !d.daXem ? (
+                      <img className="mvp-an__kinh" src={kinhLup} alt="" draggable={false} aria-hidden="true" />
+                    ) : null}
                   </button>
                 );
               }
@@ -285,7 +288,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                   className={`mvp-diem mvp-diem--khampha is-${d.daXem ? 'da-xem' : 'mo'}${url ? '' : ' is-tam'}${d.diem.sprite.startsWith('nv:') ? ' is-nguoi' : ''}`}
                   style={style}
                   aria-label={nhanDoc(i, d)}
-                  title={`${nhan[i] ?? ''}${d.daXem ? ' — đã xem' : ''}`}
+                  title={`${nhan[i] ?? ''}${d.diem.dau && !d.daXem ? ` (${DAU[d.diem.dau].doc})` : ''}${d.daXem ? ' — đã xem' : ''}`}
                   disabled={d.daXem}
                   data-diem={d.diem.chuoi}
                   data-chinh={d.diem.dau === 'chinh' && !d.daXem ? '1' : undefined}

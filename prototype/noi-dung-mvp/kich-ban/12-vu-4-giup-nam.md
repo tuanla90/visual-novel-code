@@ -1,5 +1,9 @@
 ## Vụ 4 — Giúp Nam (thứ Hai 14/10/2024)
 
+<!-- timeline-ref {"dependsOn":["ngoai-pham-thu-vien","tin-goc"]} -->
+
+<!-- timeline-ref {"tables":["don_linh_kien","phien_dang_nhap"],"evidence":[{"id":"don-nam-that","title":"Đơn Nam thực sự đặt từ máy xưởng số 2","table":"don_linh_kien","where":{"ma_don":["DLK-01","DLK-05"]},"splitBy":"ma_don","join":{"table":"phien_dang_nhap","on":"ma_phien"},"usedAt":"v4-noi","note":"Hai đơn thật tạo mốc so sánh với ba đơn bị mượn tên."},{"id":"don-nam-mao-danh","title":"Đơn mang tên Nam được tạo ban đêm từ máy văn phòng","table":"don_linh_kien","where":{"ma_don":["DLK-03","DLK-06","DLK-08"]},"splitBy":"ma_don","join":{"table":"phien_dang_nhap","on":"ma_phien"},"usedAt":"v4-noi","note":"Nối bằng mã phiên; ngày đặt hàng và ngày phiên phải khớp. DLK-08 cần đối chiếu với bản ghi thư viện của Nam."}]} -->
+
 <!-- Khung Vụ 4 theo dàn ý mùa 1 (docs/mvp/mua-1-dan-y-nam-khanh.md mục 5). Vụ sau của lich.md: chạy từ v4-mo sau màn kết Vụ 3. Nhịp: thống kê trước (nhóm và đếm đơn theo người đặt: Nam đứng tên 5, nói chỉ đặt 2) → manh mối mới (mỗi đơn có mã phiên đăng nhập) → dẫn sang bảng khác, phải NỐI theo mã phiên (điều mới: khối "nối với … theo …"; nối theo cột trùng tên khác như ngày thì ra kết quả sai) → nhóm và đếm lại theo máy (3 đơn từ máy văn phòng xưởng, ban đêm). Mảnh ghép: có người mượn tên Nam, cùng cái máy đã gửi tin đồn, một đơn đúng tối 07/10 lúc Nam ở thư viện. Nam từ đây điều tra cùng. Tra nốt mọi đơn từ máy văn phòng (bắt buộc, hội đồng vòng 2 bỏ rẽ nhánh giả) → lời nhắn thứ tư của chị Linh. Bảng phiên đăng nhập do Phòng Quản trị mạng xuất theo đề nghị của thầy Quang, không do Nam (đang bị khóa tài khoản) tự xuất. Lời ở loi/12-vu-4-giup-nam.md. -->
 
 ### v4-mo — Nam tới phòng CLB với một rắc rối của chính mình {cảnh: phong-clb}

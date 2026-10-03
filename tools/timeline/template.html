@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f2">
+  <title>Mùa 1 — Lịch truyện để quyết định</title>
+  <style>/* TIMELINE_STYLES */</style>
+</head>
+<body>
+  <header class="page-header">
+    <div><h1>Lịch truyện Mùa 1</h1><p>Xếp lịch từ các mốc ảnh hưởng cốt truyện, chứng cứ và điều kiện mở nhiệm vụ.</p></div>
+    <details class="source-info"><summary>Nguồn và cách cập nhật</summary><div><p>Ngày và bản ghi được đọc từ các file game. Ghi chú <code>timeline-ref</code> trong kịch bản chọn chứng cứ quan trọng bằng mã, không chép lại ngày.</p><p>Lịch đề xuất nằm ở file plan; các khoảng kích hoạt đề xuất chưa có hiệu lực trong game.</p><p>Sau khi sửa nguồn: <code>npm run timeline:mua-1</code>.</p><ul id="sources"></ul></div></details>
+  </header>
+  <div class="workspace">
+    <aside class="filters" aria-label="Bộ lọc chọn nhiều">
+      <div class="filter-heading"><h2>Bộ lọc</h2><button id="reset" class="text-button">Đặt lại</button></div>
+      <p class="filter-tip">Chọn nhiều mục trong mỗi nhóm.</p>
+      <div id="filter-fields"></div>
+    </aside>
+    <main>
+      <div class="toolbar">
+        <label class="search"><span>Tìm mốc, nhân vật hoặc mã chứng cứ</span><input id="search" type="search" placeholder="Ví dụ: Nam, micro, DLK-08…"></label>
+        <label class="grouping"><span>Nhóm theo</span><select id="group"><option value="case">Vụ / nhiệm vụ</option><option value="month">Tháng</option></select></label>
+      </div>
+      <nav class="views" aria-label="Cách xem lịch" role="tablist">
+        <button data-view="events" role="tab" aria-selected="true" aria-controls="content">Mốc quyết định</button>
+        <button data-view="windows" role="tab" aria-selected="false" aria-controls="content">Khoảng kích hoạt</button>
+        <button data-view="constraints" role="tab" aria-selected="false" aria-controls="content">Ràng buộc lịch <span id="issue-count"></span></button>
+      </nav>
+      <div class="reading-guide" id="guide"></div>
+      <div class="result-line"><span id="result-count" role="status" aria-live="polite"></span><button class="text-button" id="collapse">Thu gọn chi tiết</button></div>
+      <div id="content" role="tabpanel"></div>
+    </main>
+  </div>
+  <footer>Dữ liệu chuẩn được giữ trong kịch bản game. Các log phụ được gom vào “Sự kiện liên đới” của từng vụ.</footer>
+  <script id="timeline-data" type="application/json">/* TIMELINE_DATA */</script>
+  <script>/* TIMELINE_SCRIPT */</script>
+</body>
+</html>

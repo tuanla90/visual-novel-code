@@ -1,5 +1,7 @@
 ## Nhiệm vụ phụ — Một lần dẫn lạc (thứ Sáu 11/10/2024, thư viện → cổng KTX → phòng 408; Tùng nhờ)
 
+<!-- timeline-ref {"tables":["luot_don"],"evidence":[{"id":"tung-dan-hoai","title":"Tùng đưa Hoài tới nhà xe trong ngày đón tân sinh viên","table":"luot_don","where":{"ma_luot":"LD-0247"},"usedAt":"p-lac-phong","note":"Ngày dẫn lạc là ngày phát sinh sự việc; ngày nhiệm vụ trong lich.md là lúc nhóm đọc sổ và nghe Tùng kể lại."}]} -->
+
 <!-- Nhiệm vụ phụ của lich.md (`{nhiệm vụ phụ: dan-lac}`, mở sau Vụ 3 "Tranh cãi trong nhóm"; user chốt 02/10/2026: tuyến Tùng–Hoài, Tùng là bạn cùng phòng nên người chơi có lý do giúp). Ôn LỌC → GOM VÀ ĐẾM → LỌC TIẾP rồi bấm ô mã, trên một bảng mới (luot_don). Có cảnh hành động: thư viện đóng cửa, bác Thịnh soi đèn pin, chạy cho kịp giờ đóng cổng KTX (ảnh cg-chay-dem; rẽ nhánh đường tắt / đường chính chỉ đổi lời ở cổng, không đổi kết). Không hạn, không kết xấu. Hà Vy và Duy không có mặt: kiểm phiếu qua tin nhắn nhóm. Lời ở loi/23-phu-dan-lac.md. -->
 
 ### p-lac-mo — Thư viện tối thứ Sáu: Tùng không học nổi {cảnh: thu-vien}

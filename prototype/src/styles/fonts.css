@@ -1,8 +1,12 @@
-/* Phông chữ đóng gói cục bộ qua @fontsource (QĐ-009): không phụ thuộc Google Fonts lúc chạy.
-   Chỉ nạp các trọng số dùng đến để giảm kích thước bundle. */
-@import '@fontsource/be-vietnam-pro/400.css';
-@import '@fontsource/be-vietnam-pro/500.css';
-@import '@fontsource/be-vietnam-pro/600.css';
-@import '@fontsource/be-vietnam-pro/700.css';
-@import '@fontsource/jetbrains-mono/400.css';
-@import '@fontsource/jetbrains-mono/600.css';
+/* Phông chữ đóng gói cục bộ qua @fontsource: chạy offline 100% không phụ thuộc Google Fonts.
+   1. Noto Sans: Nội dung chính & toàn bộ giao diện (400, 500, 600, 700)
+   2. Roboto Mono: Code SQL, bảng dữ liệu & terminal (400, 600)
+   3. Playwrite India (Playwrite IN): Chữ viết tay, chữ ký & giấy nhớ (400)
+*/
+@import '@fontsource/noto-sans/400.css';
+@import '@fontsource/noto-sans/500.css';
+@import '@fontsource/noto-sans/600.css';
+@import '@fontsource/noto-sans/700.css';
+@import '@fontsource/roboto-mono/400.css';
+@import '@fontsource/roboto-mono/600.css';
+@import '@fontsource/playwrite-in/400.css';

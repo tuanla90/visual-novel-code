@@ -3,27 +3,29 @@
  * Màu theo trang phục của từng người trong bộ ảnh hiện tại.
  */
 const MAU_NHAN_VAT: Record<string, string> = {
-  // Dàn năm màu (02/10/2026): Minh Anh đỏ, Tùng lam, Hà Vy lục, nhân vật chính vàng, Duy xám than.
-  tung: '#1d4ed8',
-  'minh-anh': '#c8102e',
-  'ha-vy': '#15803d',
-  duy: '#374151',
-  quan: '#334155',
-  hoai: '#9a6b3f',
-  'bac-tu': '#78350f',
-  'chu-cuong': '#4d7c0f',
-  'co-hanh': '#0284c7',
-  'co-lan': '#7c5cc4',
-  'thay-khai': '#475569',
-  'thay-quang': '#7f1d1d',
-  hieu: '#a16207',
-  dat: '#0f766e',
-  nam: '#3f6b6b',
-  khanh: '#1f2937',
-  thao: '#5b6b2f',
-  bach: '#57534e',
+  // Dàn màu sáng, tương phản cao trên nền tối (WCAG AA/AAA) cho màn giới thiệu nhân vật và thẻ hồ sơ
+  tung: '#38bdf8',
+  'minh-anh': '#f87171',
+  'ha-vy': '#34d399',
+  duy: '#38bdf8',
+  quan: '#60a5fa',
+  hoai: '#c084fc',
+  'bac-tu': '#fbbf24',
+  'chu-cuong': '#4ade80',
+  'co-hanh': '#38bdf8',
+  'co-lan': '#e879f9',
+  'thay-khai': '#cbd5e1',
+  'thay-quang': '#f87171',
+  hieu: '#facc15',
+  dat: '#2dd4bf',
+  nam: '#22d3ee',
+  khanh: '#cbd5e1',
+  thao: '#a3e635',
+  bach: '#e2e8f0',
+  'ba-lua': '#fbbf24',
+  'co-phu-trach': '#f472b6',
 };
-const MAU_MAC_DINH = '#1d4ed8';
+const MAU_MAC_DINH = '#fbbf24';
 
 export function mauNhanVat(id: string): string {
   return MAU_NHAN_VAT[id] ?? MAU_MAC_DINH;

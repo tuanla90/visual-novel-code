@@ -8,7 +8,7 @@
  * Người chơi (`player`, nam — QĐ-084) cũng lên dàn khi nói (user yêu cầu 29/09: có hình nhân vật chính ở các đoạn
  * nói chuyện), ảnh `char-nguoi-choi` (đã tách nền), nhãn là tên người chơi đặt ở màn tạo nhân vật.
  */
-import { useState, type CSSProperties, type ReactNode } from 'react';
+import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { isCharacterId, isExpressionOf } from '../../shared/ids';
 import { Portrait } from '../../shared/ui/Portrait';
@@ -156,19 +156,37 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
   const lineTyping = useVnStore((s) => s.lineTyping);
   const nen = anhNen(canh, dem);
   const tenCanh = kb.canh.find((c) => c.id === canh)?.ten ?? 'Cảnh';
+  const [moDiaDiem, setMoDiaDiem] = useState(false);
+
+  useEffect(() => {
+    setMoDiaDiem(false);
+  }, [canh]);
+
+  useEffect(() => {
+    if (!moDiaDiem) return;
+    const timer = setTimeout(() => setMoDiaDiem(false), 3500);
+    return () => clearTimeout(timer);
+  }, [moDiaDiem]);
 
   return (
     <section className={`stage mvp-stage${shaking ? ' is-shaking' : ''}${nhacViec ? ' co-nhac' : ''}`} data-scene={canh} aria-label={`Cảnh: ${tenCanh}`}>
       <div className="stage__backdrop mvp-stage__backdrop" aria-hidden="true" data-art-source={nen ? 'image' : 'placeholder'}>
         {coHoatCanh(canh) ? <HoatCanhMvp key={canh} canh={canh} /> : nen ? <img className="stage__backdrop-img" src={nen} alt="" draggable={false} /> : <div className="mvp-stage__nen-tam" />}
       </div>
-      <div className="stage__scene-label">
+      <button
+        type="button"
+        className={`stage__scene-label stage__scene-label--btn${moDiaDiem ? ' is-expanded' : ''}`}
+        onClick={() => setMoDiaDiem((m) => !m)}
+        aria-label={`Địa điểm: ${tenCanh}`}
+        aria-expanded={moDiaDiem}
+        title={`Địa điểm: ${tenCanh}`}
+      >
         <svg className="stage__scene-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" fill="#f59e0b" stroke="#d97706" strokeWidth="1.2" />
           <circle cx="12" cy="10" r="3" fill="#fffdf2" />
         </svg>
         <span className="stage__scene-text">{tenCanh}</span>
-      </div>
+      </button>
       {nhacViec ? <NhacViecMvp kb={kb} nhac={nhacViec} dienTen={dienTen ?? ((t) => t)} tenNguoiChoi={tenNguoiChoi} /> : null}
       {/* Cảnh có hoạt cảnh: nhân vật đã nằm trong ảnh tách lớp, không vẽ thêm nhân vật đứng (hộp thoại vẫn ghi tên người nói). */}
       <div className="stage__portraits" data-so-nguoi={coDan && !coHoatCanh(canh) ? moi.thanhVien.length : 0}>

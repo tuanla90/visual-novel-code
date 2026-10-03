@@ -1,5 +1,7 @@
 ## Nhiệm vụ phụ — Một lần hoàn tiền, hai dòng ghi (thứ Sáu 08/11/2024, phòng CLB; Minh Anh giao)
 
+<!-- timeline-ref {"tables":["giao_dich"],"evidence":[{"id":"hoan-trung","title":"Một lần hoàn tiền bị ghi thành hai dòng","table":"giao_dich","where":{"ma_gd":["GD-06","GD-07"]},"usedAt":"p-hoan-mo","note":"Bảng giao_dich chưa có ngày tạo hay ngày hoàn; chưa thể kiểm tra thứ tự thời gian của chứng cứ này."}]} -->
+
 <!-- Nhiệm vụ phụ của lich.md (`{nhiệm vụ phụ: hoan-tien}`, mở sau Vụ 5 "Sổ quỹ"): rèn NHÓM, ĐẾM, TỔNG và LỌC NHÓM (lần này lọc nhóm theo số dòng). Theo docs/mvp/mua-1-kich-ban-ready-dev.md mục 7 (gói cũ gọi là "Vụ 4"). Một cảnh, không hạn, không kết xấu, không tìm "ai gian lận". Lọc dòng hoàn tiền → ghim phiếu → gom theo mã phiếu, tính tổng, chỉ giữ nhóm có hơn một dòng → PH-04 → mở biên nhận ngân hàng: một lần hoàn. Lời ở loi/22-phu-hoan-tien.md. -->
 
 ### p-hoan-mo — Tổng hoàn tiền trong bảng cao hơn biên nhận {cảnh: phong-clb}

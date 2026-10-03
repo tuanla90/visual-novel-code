@@ -25,6 +25,42 @@ const NHAN_BIEU_CAM: Record<string, string> = {
   serious: 'Nghiêm túc',
   annoyed: 'Khó chịu',
   stern: 'Nghiêm khắc',
+  // Dáng & biểu cảm đặc thù trong game:
+  'gai-dau': 'Gãi đầu',
+  'chi-tay': 'Chỉ tay',
+  'day-kinh': 'Đẩy kính',
+  'khoanh-tay': 'Khoanh tay',
+  'chi-man': 'Chỉ màn',
+  'ao-xanh': 'Áo xanh',
+  'ao-xanh-happy': 'Áo xanh (Vui)',
+  'ao-xanh-worried': 'Áo xanh (Lo)',
+  'ao-xanh-gai-dau': 'Áo xanh (Bí)',
+  'ao-xanh-chi-tay': 'Áo xanh (Chỉ)',
+  'ao-xanh-surprised': 'Áo xanh (Ngạc nhiên)',
+  'ao-xanh-thinking': 'Áo xanh (Nghĩ)',
+  'ao-xanh-doi-mu': 'Đội mũ',
+};
+
+/** Bối cảnh đặc trưng của từng nhân vật trong hồ sơ (thay vì cố định một nền CLB) */
+const NEN_NHAN_VAT: Record<string, string> = {
+  'ba-lua': 'tra-da',
+  'chu-cuong': 'cong-ktx',
+  'bac-tu': 'sanh-toa-b',
+  'co-hanh': 'phong-dao-tao',
+  'co-lan': 'phong-ctsv',
+  'thay-quang': 'phong-hop',
+  'thay-khai': 'phong-may',
+  'quan': 'phong-hop',
+  'nam': 'xuong-robot',
+  'khanh': 'phong-hop',
+  'bach': 'xuong-robot',
+  'thao': 'xuong-robot',
+  'ha-vy': 'thu-vien',
+  'hoai': 'thu-vien',
+  'tung': 'phong-ktx',
+  'minh-anh': 'phong-clb',
+  'duy': 'phong-clb',
+  'hieu': 'sanh-toa-b',
 };
 
 export function NhanVatMvp({ kb, daGap }: { kb: KichBanMvp; daGap: readonly string[] }) {
@@ -32,7 +68,8 @@ export function NhanVatMvp({ kb, daGap }: { kb: KichBanMvp; daGap: readonly stri
   const [chon, setChon] = useState<string | null>(ds[0]?.id ?? null);
   const nv = ds.find((n) => n?.id === chon) ?? ds[0];
   const [bieuCam, setBieuCam] = useState<string | null>(null);
-  const nen = anhNen('phong-clb');
+  const maNen = nv ? (NEN_NHAN_VAT[nv.id] ?? 'phong-clb') : 'phong-clb';
+  const nen = anhNen(maNen);
 
   if (!nv?.gioiThieu) {
     return (
@@ -96,18 +133,21 @@ export function NhanVatMvp({ kb, daGap }: { kb: KichBanMvp; daGap: readonly stri
                 {nv.bieuCam.map((b) => {
                   const url = anhChanDung(nv.id, b);
                   const la = b === bc;
+                  const tenBieuCam = NHAN_BIEU_CAM[b] ?? b.replace(/-/g, ' ');
                   return (
                     <button
                       key={b}
                       type="button"
                       className={`chara-profile__expr-btn${la ? ' is-active' : ''}`}
                       aria-pressed={la}
-                      aria-label={`Biểu cảm: ${NHAN_BIEU_CAM[b] ?? b}`}
-                      title={`Biểu cảm: ${NHAN_BIEU_CAM[b] ?? b}`}
+                      aria-label={`Biểu cảm: ${tenBieuCam}`}
+                      title={`Biểu cảm: ${tenBieuCam}`}
                       onClick={() => setBieuCam(b)}
                     >
-                      <span className="chara-profile__expr-preview mvp-nhanvat__nho">{url ? <img src={url} alt="" draggable={false} /> : null}</span>
-                      <span className="chara-profile__expr-name">{NHAN_BIEU_CAM[b] ?? b}</span>
+                      <span className="chara-profile__expr-preview mvp-nhanvat__nho" data-character={nv.id}>
+                        {url ? <img src={url} alt="" draggable={false} /> : null}
+                      </span>
+                      <span className="chara-profile__expr-name">{tenBieuCam}</span>
                     </button>
                   );
                 })}

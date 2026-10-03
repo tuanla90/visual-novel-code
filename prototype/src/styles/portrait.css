@@ -33,6 +33,7 @@
   display: flex;
   flex-direction: column;
   background: #000;
+  transform: translateZ(0);
 }
 
 /* Tai thỏ / Dynamic Island giả lập */
@@ -300,19 +301,31 @@
     width: 100% !important;
   }
   .dialog--glass {
-    padding: 16px 18px 12px !important;
+    padding: 24px 18px 12px !important;
     border-radius: 16px !important;
-    min-height: 80px !important;
+    height: 114px !important;
+    min-height: 114px !important;
+    max-height: 114px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
   }
   .dialog--glass .dialog__speaker {
-    top: -14px !important;
-    left: 12px !important;
+    top: -18px !important;
+    left: 14px !important;
     font-size: 0.92rem !important;
-    padding: 4px 12px !important;
+    padding: 3px 14px 3px 10px !important;
   }
   .dialog--glass .dialog__text {
-    font-size: 1.05rem !important;
+    font-size: 1.02rem !important;
     line-height: 1.48 !important;
+    height: calc(1.48em * 3) !important;
+    max-height: calc(1.48em * 3) !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .dialog__footer--external {
     margin-top: 6px !important;
@@ -339,19 +352,31 @@
   width: 100% !important;
 }
 .game--portrait .dialog--glass {
-  padding: 16px 18px 12px !important;
+  padding: 24px 18px 12px !important;
   border-radius: 16px !important;
-  min-height: 80px !important;
+  height: 114px !important;
+  min-height: 114px !important;
+  max-height: 114px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
 }
 .game--portrait .dialog--glass .dialog__speaker {
-  top: -14px !important;
-  left: 12px !important;
+  top: -18px !important;
+  left: 14px !important;
   font-size: 0.92rem !important;
-  padding: 4px 12px !important;
+  padding: 3px 14px 3px 10px !important;
 }
 .game--portrait .dialog--glass .dialog__text {
-  font-size: 1.05rem !important;
+  font-size: 1.02rem !important;
   line-height: 1.48 !important;
+  height: calc(1.48em * 3) !important;
+  max-height: calc(1.48em * 3) !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 .game--portrait .dialog__footer--external {
   margin-top: 6px !important;
@@ -529,6 +554,34 @@
     overflow-x: auto !important;
     padding-bottom: 6px !important;
   }
+  .notebook__chara-container {
+    overflow-y: auto !important;
+    max-height: 100% !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .chara-profile {
+    overflow-y: visible !important;
+    height: auto !important;
+    min-height: 100% !important;
+    padding: 6px 8px 24px 8px !important;
+  }
+  .chara-profile__nav {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+    padding: 4px 4px 8px !important;
+    margin-bottom: 6px !important;
+    scrollbar-width: thin !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .chara-profile__tab {
+    flex: 0 0 auto !important;
+    font-size: 0.75rem !important;
+    padding: 4px 10px !important;
+  }
+  .chara-profile__polaroid-stack {
+    max-width: 220px !important;
+  }
 }
 /* Cùng luật cho chế độ dọc giả lập (.game--portrait) trên màn rộng. */
 .game--portrait .notebook,
@@ -548,6 +601,34 @@
   flex-direction: row !important;
   overflow-x: auto !important;
   padding-bottom: 6px !important;
+}
+.game--portrait .notebook__chara-container {
+  overflow-y: auto !important;
+  max-height: 100% !important;
+  -webkit-overflow-scrolling: touch;
+}
+.game--portrait .chara-profile {
+  overflow-y: visible !important;
+  height: auto !important;
+  min-height: 100% !important;
+  padding: 6px 8px 24px 8px !important;
+}
+.game--portrait .chara-profile__nav {
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  justify-content: flex-start !important;
+  padding: 4px 4px 8px !important;
+  margin-bottom: 6px !important;
+  scrollbar-width: thin !important;
+  -webkit-overflow-scrolling: touch;
+}
+.game--portrait .chara-profile__tab {
+  flex: 0 0 auto !important;
+  font-size: 0.75rem !important;
+  padding: 4px 10px !important;
+}
+.game--portrait .chara-profile__polaroid-stack {
+  max-width: 220px !important;
 }
 
 /* --- 2.8 THU NHẬN VẬT PHẨM (DOCUMENT REVEAL) TRÊN MÀN HÌNH DỌC --- */
@@ -601,13 +682,24 @@
   .topbar__task-text {
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.25;
   }
   .topbar__task {
     grid-row: 2 !important;
     grid-column: 1 / -1 !important;
     width: 100% !important;
     max-width: 100% !important;
+    cursor: pointer;
+  }
+  .topbar__task.is-expanded .topbar__task-text {
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    white-space: normal !important;
   }
   .dialog__footer--external {
     flex-wrap: wrap !important;
@@ -648,13 +740,24 @@
 .game--portrait .topbar__task-text {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.25;
 }
 .game--portrait .topbar__task {
   grid-row: 2 !important;
   grid-column: 1 / -1 !important;
   width: 100% !important;
   max-width: 100% !important;
+  cursor: pointer;
+}
+.game--portrait .topbar__task.is-expanded .topbar__task-text {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  white-space: normal !important;
 }
 .game--portrait .dialog__footer--external {
   flex-wrap: wrap !important;

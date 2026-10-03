@@ -7,7 +7,7 @@
  * sau khi lời đổi KHÔNG qua lời. Nút "Tiếp tục ▸" là cú bấm chủ ý: nhận ngay cú bấm đơn, chỉ bỏ cú
  * bấm lặp của bấm đúp.
  */
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { speakerLabel } from '../display-names';
 import type { DialogueLine } from '../../story/types';
 import { CodeText } from './CodeText';
@@ -275,24 +275,66 @@ export function DialogBox({
     return () => setLineTyping(false);
   }, [isDone, setLineTyping]);
 
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const [pageIndex, setPageIndex] = useState<number>(0);
+
+  // Khi đổi câu thoại: reset trang và cuộn lên đầu
+  useEffect(() => {
+    setPageIndex(0);
+    if (textRef.current) textRef.current.scrollTop = 0;
+  }, [line.text]);
+
+  const hasMoreText = useCallback((): boolean => {
+    const el = textRef.current;
+    if (!el) return false;
+    return el.scrollTop + el.clientHeight < el.scrollHeight - 6;
+  }, []);
+
+  const scrollNextPage = useCallback((): void => {
+    const el = textRef.current;
+    if (el) {
+      el.scrollBy({ top: el.clientHeight, behavior: 'smooth' });
+      setPageIndex((p: number) => p + 1);
+    }
+  }, []);
+
   // Tự động chuyển câu trong chế độ Auto hoặc Skip; tạm dừng khi có lớp phủ (hồ sơ, lịch sử, giới thiệu nhân vật…).
   useEffect(() => {
     if (!isDone || !keyboardEnabled) return;
     if (skipping) {
-      const timer = setTimeout(advanceFromLine, 80);
+      const timer = setTimeout(() => {
+        if (hasMoreText()) {
+          scrollNextPage();
+        } else {
+          advanceFromLine();
+        }
+      }, 80);
       return () => clearTimeout(timer);
     }
     if (autoMode) {
       const delay = Math.max(1400, line.text.length * 45);
-      const timer = setTimeout(advanceFromLine, delay);
+      const timer = setTimeout(() => {
+        if (hasMoreText()) {
+          scrollNextPage();
+        } else {
+          advanceFromLine();
+        }
+      }, delay);
       return () => clearTimeout(timer);
     }
-  }, [isDone, keyboardEnabled, autoMode, skipping, line.text.length, advanceFromLine]);
+  }, [isDone, keyboardEnabled, autoMode, skipping, line.text.length, pageIndex, hasMoreText, scrollNextPage, advanceFromLine]);
 
   const handleBoxClick = (e: { detail: number }) => {
     if (!guard.click(e)) return;
-    if (!isDone) completeImmediately();
-    else advanceFromLine();
+    if (!isDone) {
+      completeImmediately();
+      return;
+    }
+    if (hasMoreText()) {
+      scrollNextPage();
+      return;
+    }
+    advanceFromLine();
   };
 
   useEffect(() => {
@@ -304,12 +346,19 @@ export function DialogBox({
       if (active instanceof HTMLButtonElement && !rootRef.current?.contains(active)) return;
       e.preventDefault();
       if (!guard.key(e)) return;
-      if (!isDone) completeImmediately();
-      else advanceFromLine();
+      if (!isDone) {
+        completeImmediately();
+        return;
+      }
+      if (hasMoreText()) {
+        scrollNextPage();
+        return;
+      }
+      advanceFromLine();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [guard, advanceFromLine, keyboardEnabled, isDone, completeImmediately]);
+  }, [guard, advanceFromLine, keyboardEnabled, isDone, completeImmediately, hasMoreText, scrollNextPage]);
 
   // Lùi lại câu trước: ← hoặc PageUp.
   useEffect(() => {
@@ -358,12 +407,9 @@ export function DialogBox({
             <span>{label}</span>
           </div>
         ) : null}
-        <p className={`dialog__text dialog__text--${dialogueFont}`}>
+        <p ref={textRef} className={`dialog__text dialog__text--${dialogueFont}`}>
           <CodeText text={displayedText} />
         </p>
-        {isDone ? (
-          <span className="dialog__scroll-arrow" aria-hidden="true">▼</span>
-        ) : null}
       </div>
 
       {/* Button Hồ sơ / QuickBar mobile và Tiếp tục nằm ngoài khung thoại */}
@@ -415,7 +461,14 @@ export function DialogBox({
               // Nút chủ ý: nhận ngay cú bấm đơn, chỉ bỏ cú bấm lặp của bấm đúp.
               if (!guard.click(e, { immediate: true })) return;
               soundEngine.playSfx('page');
-              completeImmediately();
+              if (!isDone) {
+                completeImmediately();
+                return;
+              }
+              if (hasMoreText()) {
+                scrollNextPage();
+                return;
+              }
               advanceFromLine();
             }}
           >

@@ -137,7 +137,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
 - [LỜI md-11-la-thu.2]
 - [HẬU QUẢ] mở manh mối clue-chu-ky-h
 - [LỜI md-11-la-thu.3a]
-- [ẢNH cg-nghi-di-tung]
+- [ẢNH cg-nghi-di-tung-ha-vy]
 - [LỜI md-11-la-thu.3b]
 
 ### md-10-soi-ban-do — Quan sát Tùng: tờ bản đồ trên tay {cảnh: phong-clb}

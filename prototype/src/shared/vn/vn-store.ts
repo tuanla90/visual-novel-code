@@ -33,13 +33,16 @@ export interface SaveSlot extends SaveSnapshot {
   screenshot?: string;
 }
 
-export type DialogueFont = 'source-serif' | 'dancing-script' | 'playwrite-vn' | 'be-vietnam-pro';
+export type DialogueFont = 'noto-sans' | 'roboto-mono' | 'playwrite-in' | 'source-serif' | 'dancing-script' | 'playwrite-vn' | 'be-vietnam-pro';
 
 export const FONT_LABELS: Record<DialogueFont, string> = {
-  'source-serif': 'Source Serif 4',
-  'dancing-script': 'Dancing Script',
-  'playwrite-vn': 'Playwrite VN',
-  'be-vietnam-pro': 'Sans Mặc định',
+  'noto-sans': 'Noto Sans (Chính)',
+  'roboto-mono': 'Roboto Mono (Code)',
+  'playwrite-in': 'Playwrite India (Viết tay)',
+  'source-serif': 'Noto Sans',
+  'dancing-script': 'Playwrite India',
+  'playwrite-vn': 'Playwrite India',
+  'be-vietnam-pro': 'Noto Sans',
 };
 
 export type TextSpeed = 'slow' | 'normal' | 'fast' | 'instant';
@@ -274,7 +277,7 @@ export const useVnStore = create<VnState>((set, get) => ({
   lineTyping: false,
   textSpeed: loadTextSpeed(),
   skipUnread: loadSkipUnread(),
-  dialogueFont: (typeof window !== 'undefined' && (localStorage.getItem('clb_vn_font') as DialogueFont)) || 'source-serif',
+  dialogueFont: (typeof window !== 'undefined' && (localStorage.getItem('clb_vn_font') as DialogueFont)) || 'noto-sans',
   backlog: [],
   readLines: initialSession.readLines,
   seenDebuts: initialSession.seenDebuts,
@@ -318,10 +321,10 @@ export const useVnStore = create<VnState>((set, get) => ({
     set({ skipUnread });
   },
   cycleDialogueFont: () => {
-    const fonts: DialogueFont[] = ['source-serif', 'dancing-script', 'playwrite-vn', 'be-vietnam-pro'];
+    const fonts: DialogueFont[] = ['noto-sans', 'roboto-mono', 'playwrite-in'];
     set((s) => {
       const idx = fonts.indexOf(s.dialogueFont);
-      const nextFont = fonts[(idx + 1) % fonts.length] ?? 'source-serif';
+      const nextFont = fonts[(idx + 1) % fonts.length] ?? 'noto-sans';
       if (typeof window !== 'undefined') {
         localStorage.setItem('clb_vn_font', nextFont);
       }

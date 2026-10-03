@@ -2020,7 +2020,7 @@ const GOC = {
         },
         {
           "type": "image",
-          "imageId": "cg-nghi-di-tung"
+          "imageId": "cg-nghi-di-tung-ha-vy"
         },
         {
           "type": "line",
@@ -4173,6 +4173,10 @@ const GOC = {
           "challengeId": "c-in"
         },
         {
+          "type": "image",
+          "imageId": "cg-reo-ho-manh-moi"
+        },
+        {
           "type": "line",
           "speaker": "player",
           "text": "23 giờ 10 tối Chủ nhật. Một trang, tệp kien-nghi-phong-clb.docx, tài khoản clb_robotics."
@@ -4676,7 +4680,30 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "surprised",
-          "text": "Ơ… năm trăm chín mươi lăm dòng thật."
+          "text": "Ơ… năm trăm chín mươi lăm dòng thật! Danh sách dài dằng dặc thế này thì đỡ sao nổi!"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "happy",
+          "text": "Đừng cuống. Dữ liệu và logic là sân nhà của tụi mình mà."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Chuẩn luôn! Cả tuần thức trắng cày SQL với nhau rồi, sợ gì! Lên bục vạch lỗi câu lệnh cho anh ấy sáng mắt ra đi bạn ơi!"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Tụi mình tin cậu. Tiến lên bẻ gãy câu HOẶC đó đi!"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Cứ để em. Năm trăm dòng thừa thãi này… sẽ biến mất ngay bây giờ!"
         },
         {
           "type": "reminder",
@@ -4686,7 +4713,11 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Nhịp 1: người chơi chạm vào chữ HOẶC, đổi thành VÀ → 2 dòng. Nhịp 2: \"Số liệu đây!\". Chạm sai, chạy thử đều không phạt."
+          "text": "Nhân vật chính tự tin sải bước tiến thẳng về phía máy chiếu đối đầu Quân."
+        },
+        {
+          "type": "image",
+          "imageId": "cg-hop-doi-dau"
         },
         {
           "type": "fix-query",

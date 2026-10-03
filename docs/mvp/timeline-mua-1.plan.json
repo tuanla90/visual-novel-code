@@ -1,0 +1,19 @@
+{
+  "title": "Lịch giãn nhịp Mùa 1 — đề xuất",
+  "status": "Các khoảng ngày ở đây chưa được game dùng làm điều kiện kích hoạt",
+  "items": [
+    {"id":"qua-hoai","date":"2024-10-20","tracks":["relationship","event"],"caseId":"season","title":"20/10: Tùng chọn quà riêng cho Hoài","detail":"Chọn quà là Easter egg; việc trao quà phụ thuộc tiến độ tình cảm. Cần chốt có đòi nhiệm vụ Một lần dẫn lạc hay chỉ cần đã biết Hoài.","condition":"Chưa đặc tả cờ quan hệ; cần quyết định trước khi viết cảnh."},
+    {"ref":"vu3","date":"2024-10-22","to":"2024-10-24","windowMode":"story-span","detail":"Khoảng diễn ra gợi ý, tạo khoảng thở sau Vụ 2. Ngày từng cảnh trong khoảng này chưa chốt."},
+    {"ref":"dan-lac","from":"2024-10-25","to":"2024-12-03","windowMode":"activation","tracks":["side","relationship"],"detail":"Có thể nhận bất kỳ lúc nào trong khoảng nếu đã xong Vụ 3. Ngày nhận phải trở thành ngày bối cảnh; cảnh kể lại vào trưa hôm sau cần giữ quan hệ +1 ngày."},
+    {"ref":"so-phong","from":"2024-11-01","to":"2024-12-03","windowMode":"activation","detail":"Mở trong khoảng sau khi đã xong Vụ 2. Chọn ngày bắt đầu sau buổi xác nhận cuối trong sổ; các ngày log được đọc trực tiếp từ dữ liệu game."},
+    {"ref":"vu4","date":"2024-11-04","to":"2024-11-08","windowMode":"story-span","detail":"Khoảng diễn ra gợi ý. Hoàn thành Vụ 3 rồi mới bắt đầu; chưa chia ngày riêng cho từng cảnh."},
+    {"ref":"micro","from":"2024-11-15","to":"2024-12-03","windowMode":"activation","detail":"Mở nếu đã xong Vụ 4 và phiếu đã nhận tồn tại. Phiếu đề xuất không được coi là đồ đã chuyển."},
+    {"ref":"vu5","date":"2024-11-17","to":"2024-11-21","windowMode":"story-span","detail":"Khép vụ trước tháng ôn thi; vẫn giữ thứ tự tiền chi → lá thư → đơn linh kiện trong dữ liệu gốc."},
+    {"id":"nha-giao","date":"2024-11-20","tracks":["event"],"caseId":"season","title":"20/11: sinh hoạt Ngày Nhà giáo Việt Nam","detail":"Một cảnh sinh hoạt nhỏ. Chưa có cảnh chuẩn hay cờ tặng quà cho thầy Khải.","condition":"Cần viết sự kiện và chốt điều kiện tham dự."},
+    {"id":"tra-da-khai","from":"2024-11-27","to":"2024-12-03","windowMode":"activation","tracks":["hidden"],"caseId":"season","title":"Hàng nước: bà bán nước hé lộ chuyện thầy Khải","detail":"Đề xuất mở sau hoạt động tặng quà/liên quan thầy, rồi chủ động hỏi ở hàng nước. Chưa có cờ và thoại chuẩn.","condition":"Đã hoàn thành hoạt động quà phù hợp + đến hàng nước + chọn hỏi về thầy Khải; chưa đặc tả thành cờ runtime."},
+    {"ref":"hoan-tien","from":"2024-11-29","to":"2024-12-03","windowMode":"activation","detail":"Mở nếu đã xong Vụ 5. Dữ liệu giao_dich chưa có ngày hoàn tiền, nên cần bổ sung ngày trước khi chốt cửa sổ."},
+    {"id":"buoi-cuoi","date":"2024-12-04","tracks":["main","event"],"caseId":"season","title":"Buổi sinh hoạt cuối trước khi CLB nghỉ ôn thi","detail":"Dùng ảnh ăn mừng hiện tại. Chưa đủ tuyến ẩn thì kết game; đủ chi tiết thì mở quyền chơi act bổ sung.","condition":"Hoàn thành Vụ 5. Điều kiện đầy đủ tuyến thầy Khải chưa được đặc tả."},
+    {"id":"act-khai","date":null,"tracks":["hidden"],"caseId":"season","title":"Sau kỳ thi: act SQL về thầy Khải và vụ án oan","detail":"Ngày chưa chốt vì lịch thi và dữ liệu vụ án oan chưa được xây. Đây là tuyến mới, khác ngăn tủ/hồ sơ CLB đã có ở kết Vụ 5.","condition":"Đủ manh mối tuyến thầy Khải + qua kỳ thi; cần thiết kế cờ và bảng dữ liệu."},
+    {"id":"trung-thu","date":"2024-09-17","tracks":["event"],"caseId":"vu2","flashback":true,"title":"Trung thu: tìm đồ ẩn để tập quan sát","detail":"Ngày sự kiện gốc trùng Ngày 1 Vụ 1. Nếu đặt ở đầu Vụ 2, trình bày bằng hồi tưởng; ngày người chơi xem và ngày sự việc xảy ra là hai mốc khác nhau.","condition":"Đề xuất hồi tưởng tại đầu Vụ 2; chưa có minigame chuẩn."}
+  ]
+}

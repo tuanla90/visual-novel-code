@@ -1,5 +1,7 @@
 ## Nhiệm vụ phụ — Chiếc micro ở tủ chung (thứ Sáu 01/11/2024, phòng CLB; Duy giao)
 
+<!-- timeline-ref {"tables":["luan_chuyen","tai_san"],"evidence":[{"id":"micro-da-chuyen","title":"Micro MIC-02 được nhận ở tủ thiết bị chung","table":"luan_chuyen","where":{"ma_phieu":"PX-17"},"usedAt":"p-mic-mo","note":"Phiếu đã nhận phải có trước lúc tìm micro; các phiếu đề xuất chưa chứng minh đồ đã chuyển."}]} -->
+
 <!-- Nhiệm vụ phụ của lich.md (`{nhiệm vụ phụ: micro}`, mở sau Vụ 4 "Giúp Nam"): rèn NỐI HAI BẢNG. Theo docs/mvp/mua-1-kich-ban-ready-dev.md mục 6 (gói cũ gọi là "Vụ 3"). Một cảnh, không hạn, không kết xấu, không ai bị nghi lấy cắp. Phiếu luân chuyển chỉ ghi mã, sổ tài sản mới ghi tên → phải nối theo mã tài sản; cột vi_tri trùng tên ở hai bảng nhưng khác nghĩa (bẫy nối sai). Sau khi tra: mở tủ dùng chung, mã dán trên micro khớp. Quân hỏi một câu về khóa nối. Lời ở loi/21-phu-micro.md. -->
 
 ### p-mic-mo — Duy kiểm kê thiết bị, thiếu chiếc micro không dây {cảnh: phong-clb}

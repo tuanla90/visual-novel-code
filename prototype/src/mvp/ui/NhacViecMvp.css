@@ -120,7 +120,51 @@
   -webkit-box-orient: vertical;
 }
 
-/* Màn dọc đang có nhắc việc: nhãn địa điểm chỉ còn biểu tượng ghim (tên vẫn ở title/aria), để không đè lên bong bóng. */
+.nhac-viec {
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.nhac-viec:active {
+  transform: scale(0.98);
+}
+.nhac-viec:focus-visible {
+  outline: 2px solid #d97706;
+  outline-offset: 2px;
+}
+.nhac-viec.is-expanded {
+  z-index: 44;
+  box-shadow:
+    0 8px 24px rgba(15, 23, 42, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.15);
+}
+.nhac-viec.is-expanded .nhac-viec__cau {
+  -webkit-line-clamp: unset !important;
+  display: block;
+}
+
+/* Nút nhãn địa điểm: tương tác được */
+.stage__scene-label.stage__scene-label--btn {
+  cursor: pointer;
+  border: 1.5px solid rgba(217, 119, 6, 0.4);
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, padding 0.18s ease;
+}
+.stage__scene-label.stage__scene-label--btn:active {
+  transform: scale(0.95);
+}
+.stage__scene-label.stage__scene-label--btn:focus-visible {
+  outline: 2px solid #d97706;
+  outline-offset: 2px;
+}
+
+/* Màn dọc đang có nhắc việc: nhãn địa điểm chỉ còn biểu tượng ghim (tên vẫn ở title/aria), để không đè lên bong bóng.
+   Khi người dùng chạm vào icon (is-expanded), nhãn bung ra để xem tên cảnh rõ ràng. */
 .game--portrait .mvp-stage.co-nhac .stage__scene-text {
   position: absolute;
   width: 1px;
@@ -131,6 +175,9 @@
 }
 .game--portrait .mvp-stage.co-nhac .stage__scene-label {
   padding: 5px 8px !important;
+  min-width: 38px;
+  min-height: 38px;
+  justify-content: center;
 }
 @media (max-width: 768px) {
   .mvp-stage.co-nhac .stage__scene-text {
@@ -143,14 +190,55 @@
   }
   .mvp-stage.co-nhac .stage__scene-label {
     padding: 5px 8px !important;
+    min-width: 38px;
+    min-height: 38px;
+    justify-content: center;
   }
 }
 
-/* Màn dọc / điện thoại: ô mặt nhỏ hơn, nhường chỗ cho nhãn địa điểm bên phải. */
+.game--portrait .mvp-stage.co-nhac .stage__scene-label.is-expanded {
+  z-index: 45 !important;
+  padding: 6px 14px 6px 10px !important;
+  max-width: calc(100% - 16px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.game--portrait .mvp-stage.co-nhac .stage__scene-label.is-expanded .stage__scene-text {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: nowrap !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  color: #78350f !important;
+}
+
+@media (max-width: 768px) {
+  .mvp-stage.co-nhac .stage__scene-label.is-expanded {
+    z-index: 45 !important;
+    padding: 6px 14px 6px 10px !important;
+    max-width: calc(100% - 16px);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  .mvp-stage.co-nhac .stage__scene-label.is-expanded .stage__scene-text {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: nowrap !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    color: #78350f !important;
+  }
+}
+
+/* Màn dọc / điện thoại: tăng diện tích hiển thị câu nhắc, 3 dòng chữ, tránh cắt chữ */
 .game--portrait .nhac-viec {
   top: 8px;
   left: 22px;
-  max-width: calc(100% - 158px);
+  max-width: calc(100% - 78px) !important;
   gap: 9px;
   padding: 6px 12px 6px 6px;
   border-radius: 16px;
@@ -161,13 +249,15 @@
   margin: -10px 0 -10px -16px;
 }
 .game--portrait .nhac-viec__cau {
-  font-size: 0.86rem;
+  font-size: 0.84rem;
+  line-height: 1.25;
+  -webkit-line-clamp: 3;
 }
 @media (max-width: 768px) {
   .nhac-viec {
     top: 8px;
     left: 22px;
-    max-width: calc(100% - 158px);
+    max-width: calc(100% - 78px) !important;
     gap: 9px;
     padding: 6px 12px 6px 6px;
     border-radius: 16px;
@@ -178,6 +268,8 @@
     margin: -10px 0 -10px -16px;
   }
   .nhac-viec__cau {
-    font-size: 0.86rem;
+    font-size: 0.84rem;
+    line-height: 1.25;
+    -webkit-line-clamp: 3;
   }
 }

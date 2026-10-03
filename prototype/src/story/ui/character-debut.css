@@ -55,8 +55,92 @@
 
 .chara-debut[data-character="bac-tu"] {
   --debut-accent: #fbbf24;
-  --debut-accent-grad: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #b45309 100%);
+  --debut-accent-grad: linear-gradient(135deg, #fde047 0%, #f59e0b 50%, #b45309 100%);
   --debut-accent-glow: rgba(245, 158, 11, 0.55);
+}
+
+.chara-debut[data-character="thay-quang"] {
+  --debut-accent: #f87171;
+  --debut-accent-grad: linear-gradient(135deg, #fca5a5 0%, #ef4444 50%, #b91c1c 100%);
+  --debut-accent-glow: rgba(239, 68, 68, 0.55);
+}
+
+.chara-debut[data-character="thay-khai"] {
+  --debut-accent: #cbd5e1;
+  --debut-accent-grad: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 50%, #475569 100%);
+  --debut-accent-glow: rgba(203, 213, 225, 0.55);
+}
+
+.chara-debut[data-character="duy"] {
+  --debut-accent: #38bdf8;
+  --debut-accent-grad: linear-gradient(135deg, #7dd3fc 0%, #0284c7 50%, #0369a1 100%);
+  --debut-accent-glow: rgba(56, 189, 248, 0.55);
+}
+
+.chara-debut[data-character="chu-cuong"] {
+  --debut-accent: #4ade80;
+  --debut-accent-grad: linear-gradient(135deg, #86efac 0%, #22c55e 50%, #15803d 100%);
+  --debut-accent-glow: rgba(74, 222, 128, 0.55);
+}
+
+.chara-debut[data-character="co-hanh"] {
+  --debut-accent: #38bdf8;
+  --debut-accent-grad: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 50%, #0284c7 100%);
+  --debut-accent-glow: rgba(56, 189, 248, 0.55);
+}
+
+.chara-debut[data-character="co-lan"] {
+  --debut-accent: #e879f9;
+  --debut-accent-grad: linear-gradient(135deg, #f0abfc 0%, #d946ef 50%, #a21caf 100%);
+  --debut-accent-glow: rgba(232, 121, 249, 0.55);
+}
+
+.chara-debut[data-character="hieu"] {
+  --debut-accent: #facc15;
+  --debut-accent-grad: linear-gradient(135deg, #fde047 0%, #eab308 50%, #a16207 100%);
+  --debut-accent-glow: rgba(250, 204, 21, 0.55);
+}
+
+.chara-debut[data-character="dat"] {
+  --debut-accent: #2dd4bf;
+  --debut-accent-grad: linear-gradient(135deg, #5eead4 0%, #14b8a6 50%, #0f766e 100%);
+  --debut-accent-glow: rgba(45, 212, 191, 0.55);
+}
+
+.chara-debut[data-character="nam"] {
+  --debut-accent: #22d3ee;
+  --debut-accent-grad: linear-gradient(135deg, #67e8f9 0%, #06b6d4 50%, #0e7490 100%);
+  --debut-accent-glow: rgba(34, 211, 238, 0.55);
+}
+
+.chara-debut[data-character="khanh"] {
+  --debut-accent: #cbd5e1;
+  --debut-accent-grad: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 50%, #475569 100%);
+  --debut-accent-glow: rgba(203, 213, 225, 0.55);
+}
+
+.chara-debut[data-character="thao"] {
+  --debut-accent: #a3e635;
+  --debut-accent-grad: linear-gradient(135deg, #bef264 0%, #84cc16 50%, #4d7c0f 100%);
+  --debut-accent-glow: rgba(163, 230, 53, 0.55);
+}
+
+.chara-debut[data-character="bach"] {
+  --debut-accent: #e2e8f0;
+  --debut-accent-grad: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 50%, #64748b 100%);
+  --debut-accent-glow: rgba(226, 232, 240, 0.55);
+}
+
+.chara-debut[data-character="ba-lua"] {
+  --debut-accent: #fbbf24;
+  --debut-accent-grad: linear-gradient(135deg, #fde047 0%, #f59e0b 50%, #b45309 100%);
+  --debut-accent-glow: rgba(245, 158, 11, 0.55);
+}
+
+.chara-debut[data-character="co-phu-trach"] {
+  --debut-accent: #f472b6;
+  --debut-accent-grad: linear-gradient(135deg, #fbcfe8 0%, #ec4899 50%, #be185d 100%);
+  --debut-accent-glow: rgba(244, 114, 182, 0.55);
 }
 
 @keyframes charaDebutFadeIn {
@@ -106,13 +190,6 @@
   }
 }
 
-@media (max-width: 720px) {
-  .chara-debut__card {
-    grid-template-columns: 1fr;
-    gap: var(--sp-3, 0.75rem);
-    padding: var(--sp-3, 0.75rem);
-  }
-}
 
 /* Khung ảnh Full Picture / Spotlight */
 .chara-debut__visual {
@@ -276,17 +353,18 @@
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
-/* Chức danh nhân vật: Dùng font viết tay Playwrite IS & màu accent */
+/* Chức danh nhân vật: Rõ nét, tương phản cao, không bị lóa/lấp chữ */
 .chara-debut__role {
-  font-family: 'Playwrite IS', 'Playwrite VN', cursive;
-  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
-  font-weight: 500;
+  font-family: var(--font-reading), 'Be Vietnam Pro', var(--font-ui), sans-serif;
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  font-weight: 700;
   color: var(--debut-accent);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   line-height: 1.25;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 14px var(--debut-accent-glow);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 12px var(--debut-accent-glow);
   display: inline-block;
   margin-top: 2px;
+  filter: brightness(1.25);
 }
 
 /* Meta chips */
@@ -327,7 +405,7 @@
 
 /* Icon quote tươi sáng, nổi bật, phát sáng glow */
 .chara-debut__quote-icon {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-ui), Georgia, serif;
   font-size: 2.8rem;
   font-weight: 800;
   line-height: 0.7;
@@ -343,7 +421,7 @@
 
 .chara-debut__quote-text {
   margin: 0;
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-ui), sans-serif;
   font-style: italic;
   font-size: 1rem;
   line-height: 1.55;
@@ -384,7 +462,7 @@
 }
 
 .chara-debut__prompt-text {
-  font-family: 'Playwrite IS', 'Playwrite VN', sans-serif;
+  font-family: var(--font-handwriting), sans-serif;
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -460,24 +538,325 @@
   left: 0;
 }
 
-@media (max-width: 720px) {
+/* ==========================================================================
+   BỐ CỤC MOBILE & PORTRAIT (MÀN HÌNH DỌC)
+   Áp dụng đồng nhất cho:
+   1. Điện thoại thật (@media max-width: 768px)
+   2. Chế độ giả lập dọc (.game--portrait, .game-simulator-bezel)
+   ========================================================================== */
+
+/* 1. Trên điện thoại thật (màn hình hẹp <= 768px) */
+@media (max-width: 768px) {
+  .chara-debut {
+    padding: 10px !important;
+  }
+
+  .chara-debut__card,
   .chara-debut__card--intro {
-    display: grid;
-    aspect-ratio: auto;
-    overflow-y: auto;
-    max-height: calc(100dvh - 24px);
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: min(390px, 100%) !important;
+    max-height: calc(100dvh - 20px) !important;
+    border-radius: 16px !important;
+    background: linear-gradient(180deg, #111827 0%, #0b1120 100%) !important;
+    border: 1px solid var(--debut-panel-border, rgba(255, 255, 255, 0.16)) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 25px var(--debut-accent-glow) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    margin: auto !important;
+    padding: 0 !important;
+    aspect-ratio: auto !important;
   }
+
   .chara-debut__intro-img {
-    position: relative;
-    aspect-ratio: 16 / 9;
-    height: auto;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: cover !important;
+    object-position: 25% center !important;
+    flex-shrink: 0 !important;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%) !important;
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%) !important;
   }
-  .chara-debut__card--intro .chara-debut__content {
-    position: relative;
-    width: auto;
-    padding: var(--sp-3, 0.75rem);
-    background: transparent;
+
+  .chara-debut__visual {
+    position: relative !important;
+    height: min(220px, 30vh) !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+    border-radius: 15px 15px 0 0 !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   }
+
+  .chara-debut__card--intro .chara-debut__content,
+  .chara-debut__card .chara-debut__content {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px 14px 14px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Khối thông tin: Bỏ skew trên mobile để không bao giờ bị cắt mép / lấp chữ */
+  .chara-debut__panel {
+    transform: none !important;
+    border-radius: 8px !important;
+    overflow: visible !important;
+  }
+  .chara-debut__panel > * {
+    transform: none !important;
+  }
+  .chara-debut__panel::before {
+    width: 4px !important;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  .chara-debut__panel--header {
+    padding: 12px 14px !important;
+    gap: 6px !important;
+  }
+
+  .chara-debut__tag {
+    font-size: 0.68rem !important;
+    padding: 3px 9px !important;
+    letter-spacing: 1px !important;
+  }
+
+  .chara-debut__name {
+    font-size: 1.45rem !important;
+    line-height: 1.2 !important;
+    color: #ffffff !important;
+    word-break: break-word !important;
+  }
+
+  .chara-debut__role {
+    font-family: var(--font-reading), 'Be Vietnam Pro', -apple-system, sans-serif !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: #fef08a !important;
+    letter-spacing: 0.2px !important;
+    line-height: 1.3 !important;
+    filter: none !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9) !important;
+    word-break: break-word !important;
+  }
+
+  .chara-debut__chips {
+    gap: 6px !important;
+    margin-top: 2px !important;
+  }
+
+  .chara-debut__chip {
+    font-size: 0.78rem !important;
+    padding: 3px 9px !important;
+  }
+
+  .chara-debut__panel--quote {
+    padding: 10px 12px !important;
+    gap: 8px !important;
+  }
+  .chara-debut__quote-icon {
+    font-size: 1.8rem !important;
+  }
+  .chara-debut__quote-text {
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .chara-debut__prompt {
+    transform: none !important;
+    width: 100% !important;
+    min-height: 44px !important;
+    border-radius: 8px !important;
+    margin-top: 4px !important;
+    align-self: stretch !important;
+    justify-content: center !important;
+  }
+  .chara-debut__prompt > * {
+    transform: none !important;
+  }
+  .chara-debut__prompt-text {
+    font-size: 0.95rem !important;
+    font-family: var(--font-ui), sans-serif !important;
+  }
+}
+
+/* 2. Chế độ giả lập điện thoại trên máy tính (.game--portrait / .game-simulator-bezel) */
+.game-simulator-bezel .chara-debut,
+.game--portrait .chara-debut {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 100 !important;
+  padding: 10px !important;
+}
+
+.game-simulator-bezel .chara-debut__card,
+.game-simulator-bezel .chara-debut__card--intro,
+.game--portrait .chara-debut__card,
+.game--portrait .chara-debut__card--intro {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  max-width: min(390px, 100%) !important;
+  max-height: calc(100% - 20px) !important;
+  border-radius: 16px !important;
+  background: linear-gradient(180deg, #111827 0%, #0b1120 100%) !important;
+  border: 1px solid var(--debut-panel-border, rgba(255, 255, 255, 0.16)) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 25px var(--debut-accent-glow) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  margin: auto !important;
+  padding: 0 !important;
+  aspect-ratio: auto !important;
+}
+
+.game-simulator-bezel .chara-debut__intro-img,
+.game--portrait .chara-debut__intro-img {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: cover !important;
+  object-position: 25% center !important;
+  flex-shrink: 0 !important;
+  border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px !important;
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%) !important;
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%) !important;
+}
+
+.game-simulator-bezel .chara-debut__visual,
+.game--portrait .chara-debut__visual {
+  position: relative !important;
+  height: min(220px, 30vh) !important;
+  width: 100% !important;
+  flex-shrink: 0 !important;
+  border-radius: 15px 15px 0 0 !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.game-simulator-bezel .chara-debut__card--intro .chara-debut__content,
+.game-simulator-bezel .chara-debut__card .chara-debut__content,
+.game--portrait .chara-debut__card--intro .chara-debut__content,
+.game--portrait .chara-debut__card .chara-debut__content {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 10px 14px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  box-sizing: border-box !important;
+}
+
+.game-simulator-bezel .chara-debut__panel,
+.game--portrait .chara-debut__panel {
+  transform: none !important;
+  border-radius: 8px !important;
+  overflow: visible !important;
+}
+.game-simulator-bezel .chara-debut__panel > *,
+.game--portrait .chara-debut__panel > * {
+  transform: none !important;
+}
+.game-simulator-bezel .chara-debut__panel::before,
+.game--portrait .chara-debut__panel::before {
+  width: 4px !important;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.game-simulator-bezel .chara-debut__panel--header,
+.game--portrait .chara-debut__panel--header {
+  padding: 12px 14px !important;
+  gap: 6px !important;
+}
+
+.game-simulator-bezel .chara-debut__tag,
+.game--portrait .chara-debut__tag {
+  font-size: 0.68rem !important;
+  padding: 3px 9px !important;
+  letter-spacing: 1px !important;
+}
+
+.game-simulator-bezel .chara-debut__name,
+.game--portrait .chara-debut__name {
+  font-size: 1.45rem !important;
+  line-height: 1.2 !important;
+  color: #ffffff !important;
+  word-break: break-word !important;
+}
+
+.game-simulator-bezel .chara-debut__role,
+.game--portrait .chara-debut__role {
+  font-family: var(--font-reading), 'Be Vietnam Pro', -apple-system, sans-serif !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  color: #fef08a !important;
+  letter-spacing: 0.2px !important;
+  line-height: 1.3 !important;
+  filter: none !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9) !important;
+  word-break: break-word !important;
+}
+
+.game-simulator-bezel .chara-debut__chips,
+.game--portrait .chara-debut__chips {
+  gap: 6px !important;
+  margin-top: 2px !important;
+}
+
+.game-simulator-bezel .chara-debut__chip,
+.game--portrait .chara-debut__chip {
+  font-size: 0.78rem !important;
+  padding: 3px 9px !important;
+}
+
+.game-simulator-bezel .chara-debut__panel--quote,
+.game--portrait .chara-debut__panel--quote {
+  padding: 10px 12px !important;
+  gap: 8px !important;
+}
+.game-simulator-bezel .chara-debut__quote-icon,
+.game--portrait .chara-debut__quote-icon {
+  font-size: 1.8rem !important;
+}
+.game-simulator-bezel .chara-debut__quote-text,
+.game--portrait .chara-debut__quote-text {
+  font-size: 0.85rem !important;
+  line-height: 1.4 !important;
+}
+
+.game-simulator-bezel .chara-debut__prompt,
+.game--portrait .chara-debut__prompt {
+  transform: none !important;
+  width: 100% !important;
+  min-height: 44px !important;
+  border-radius: 8px !important;
+  margin-top: 4px !important;
+  align-self: stretch !important;
+  justify-content: center !important;
+}
+.game-simulator-bezel .chara-debut__prompt > *,
+.game--portrait .chara-debut__prompt > * {
+  transform: none !important;
+}
+.game-simulator-bezel .chara-debut__prompt-text,
+.game--portrait .chara-debut__prompt-text {
+  font-size: 0.95rem !important;
+  font-family: var(--font-ui), sans-serif !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

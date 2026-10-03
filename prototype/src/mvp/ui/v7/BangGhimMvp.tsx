@@ -16,6 +16,7 @@ import { CO_THE, KHUNG_BANG, dungBang, gocNghieng, MA_THE_HOI, viTriThe, type Th
 import { MAU_GHIM, type MauGhimMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp } from '../../engine/trang-thai';
 import { anhTheoTen } from '../anh-mvp';
 import { TheHoSo } from '../TheHoSo';
+import { IconTerminal, IconX } from '../../../shared/ui/icons';
 import './v7.css';
 
 export interface BangGhimMvpProps {
@@ -40,7 +41,13 @@ export interface BangGhimMvpProps {
   onGhim?: (the: string, ghim: boolean) => void;
 }
 
-const TEN_MAU: Record<MauGhimMvp, string> = { do: 'đỏ', xanh: 'xanh dương', luc: 'lục', tim: 'tím' };
+const TEN_MAU: Record<MauGhimMvp, string> = {
+  do: 'đỏ (trọng tâm)',
+  cam: 'cam (chưa xác định)',
+  xanh: 'xanh (tham chiếu)',
+  luc: 'lục (đã xác thực)',
+  tim: 'tím (nghi vấn)',
+};
 
 const boNgoac = (t: string): string => t.replace(/^\[|\]$/g, '');
 
@@ -52,8 +59,10 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
     return keo ? { ...vt, [keo.id]: { x: keo.x, y: keo.y } } : vt;
   }, [bang, s.bang, keo]);
   const [xem, datXem] = useState<string | null>(null);
+  const [hienMenuGhim, setHienMenuGhim] = useState(false);
   const setXem = (id: string | null): void => {
     datXem(id);
+    setHienMenuGhim(false);
     if (id) onXemThe?.(id);
   };
 
@@ -126,9 +135,8 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
     window.addEventListener('keydown', onKey, true);
     return () => window.removeEventListener('keydown', onKey, true);
   }, [xem]);
-
   const theXem = xem ? bang.the.find((t) => t.id === xem) : undefined;
-  const anhXem = theXem?.anh ? anhTheoTen(theXem.anh) : undefined;
+  const anhXem = theXem?.anh && theXem.loai !== 'tai-lieu' ? anhTheoTen(theXem.anh) : undefined;
   const KIEU_DAY: Record<string, string> = { 'truy-van': 'dùng để tra', 'loai-tru': 'loại trừ', nguon: 'nguồn' };
   const noiXem = theXem
     ? bang.day.flatMap((d) => {
@@ -246,84 +254,125 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
       ) : null}
       {theXem ? (
         <div
-          className="bang__xem"
+          className="bang__xem bang__xem--focus"
           role="dialog"
           aria-label="Thẻ đang xem"
           onClick={(e) => {
             if (e.target === e.currentTarget) setXem(null);
           }}
         >
-          <div className="bang__xem-hop">
-            {anhXem ? <img className="bang__xem-anh" src={anhXem} alt="" draggable={false} /> : null}
-            <div className="bang__xem-chu">
-              {theXem.the ? <TheHoSo the={theXem.the} dienTen={dienTen} /> : <p className="bang__xem-hoi">{dienTen(theXem.nhan)}</p>}
-              {theXem.giaTri.length > 0 ? (
-                <div className="bang__xem-muc">
-                  <span className="bang__xem-muc-nhan">Giấy nhớ mang sang laptop</span>
-                  <span className="bang__xem-the-nho">
+          {/* Nút đóng ngoài cho trợ năng / bàn phím và kiểm thử */}
+          <button
+            type="button"
+            className="bang__xem-dong-ngoai"
+            onClick={() => setXem(null)}
+            aria-label="Đóng"
+            title="Đóng (Esc hoặc bấm ra ngoài thẻ)"
+            autoFocus
+          >
+            <IconX width={16} height={16} aria-hidden="true" />
+            <span>Đóng</span>
+          </button>
+
+          {/* Tấm thẻ phóng to trực diện (Phương án 3) */}
+          <div className="bang__xem-the-focal" onClick={(e) => e.stopPropagation()}>
+            {/* Đầu ghim tương tác: hover hoặc click để mở popover đổi màu ghim & gỡ bảng */}
+            {theXem.loai !== 'hoi' && theXem.id !== MA_THE_HOI ? (
+              <div
+                className="bang__xem-ghim-khu"
+                onMouseEnter={() => setHienMenuGhim(true)}
+                onMouseLeave={() => setHienMenuGhim(false)}
+              >
+                <button
+                  type="button"
+                  className={`bang__xem-ghim-nut bang__xem-ghim-nut--${theXem.mau}`}
+                  onClick={() => setHienMenuGhim((prev) => !prev)}
+                  aria-label={`Đầu ghim ${TEN_MAU[theXem.mau]} - Bấm để đổi màu hoặc gỡ thẻ`}
+                  title={`Đầu ghim ${TEN_MAU[theXem.mau]} - Bấm hoặc rê chuột để đổi màu / gỡ thẻ`}
+                  aria-expanded={hienMenuGhim}
+                />
+
+                {/* Popover màu ghim và nút gỡ bảng trôi ngay trên đầu ghim */}
+                {hienMenuGhim && (onDoiMau || onGhim) ? (
+                  <div className="bang__xem-ghim-popover" role="dialog" aria-label="Tùy chọn đầu ghim">
+                    <span className="bang__xem-popover-mui" aria-hidden="true" />
+                    {onDoiMau ? (
+                      <div className="bang__xem-popover-mau" role="radiogroup" aria-label="Chọn màu đầu ghim">
+                        {MAU_GHIM.map((m) => (
+                          <button
+                            key={m}
+                            type="button"
+                            role="radio"
+                            aria-checked={theXem.mau === m}
+                            aria-label={`Ghim ${TEN_MAU[m]}`}
+                            title={`Ghim ${TEN_MAU[m]}`}
+                            className={`bang__mau-nut bang__mau-nut--${m}${theXem.mau === m ? ' is-chon' : ''}`}
+                            onClick={() => {
+                              onDoiMau(theXem.id, m);
+                            }}
+                          />
+                        ))}
+                      </div>
+                    ) : null}
+                    {onGhim ? (
+                      <button
+                        type="button"
+                        className="bang__go bang__go--popover"
+                        title="Gỡ thẻ khỏi bảng (vẫn còn trong hồ sơ, ghim lại được ở khay Chưa ghim)"
+                        onClick={() => {
+                          onGhim(theXem.id, false);
+                          setXem(null);
+                        }}
+                      >
+                        Gỡ khỏi bảng
+                      </button>
+                    ) : null}
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
+
+            {/* Thân thẻ phóng to */}
+            <div className="bang__xem-the-than">
+              {anhXem ? <img className="bang__xem-anh" src={anhXem} alt="" draggable={false} /> : null}
+              <div className="bang__xem-chu">
+                {theXem.the ? <TheHoSo the={theXem.the} dienTen={dienTen} /> : <p className="bang__xem-hoi">{dienTen(theXem.nhan)}</p>}
+
+                {/* Giá trị truy vấn: hiển thị trực tiếp dạng chip, không cần tiêu đề text rườm rà */}
+                {theXem.giaTri.length > 0 ? (
+                  <div className="bang__xem-gia-tri-hang" aria-label="Giá trị điều kiện truy vấn">
                     {theXem.giaTri.map((g) => (
-                      <span key={g} className={`bang__xem-nho${theXem.gach.includes(g) ? ' is-gach' : ''}`}>
+                      <span key={g} className={`bang__xem-nho${theXem.gach.includes(g) ? ' is-gach' : ''}`} title="Giá trị điều kiện dùng khi mở laptop">
+                        <IconTerminal width={12} height={12} aria-hidden="true" />
                         {g}
                       </span>
                     ))}
-                  </span>
-                </div>
-              ) : null}
-              {theXem.gach.length > 0 ? <p className="bang__xem-ghi">Đã loại: {theXem.gach.join(', ')}</p> : null}
-              {noiXem.length > 0 ? (
-                <div className="bang__xem-muc">
-                  <span className="bang__xem-muc-nhan">Nối dây với</span>
-                  <ul className="bang__xem-noi">
-                    {noiXem.map((n) => (
-                      <li key={n.id}>
-                        <button type="button" className={`bang__xem-noi-nut bang__xem-noi-nut--${n.mau}`} onClick={() => setXem(n.id)}>
-                          <span aria-hidden="true">{n.chieu}</span> {dienTen(boNgoac(n.nhan))}
-                          <small>{n.kieu}</small>
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-              {theXem.id !== MA_THE_HOI && (onDoiMau || onGhim) ? (
-                <div className="bang__xem-ghim">
-                  {onDoiMau ? (
-                    <span className="bang__mau-nhan">Màu ghim và dây</span>
-                  ) : null}
-                  {onDoiMau ? (
-                    <span className="bang__mau" role="radiogroup" aria-label="Màu đầu ghim">
-                      {MAU_GHIM.map((m) => (
-                        <button
-                          key={m}
-                          type="button"
-                          role="radio"
-                          aria-checked={theXem.mau === m}
-                          aria-label={`Ghim ${TEN_MAU[m]}`}
-                          title={`Ghim ${TEN_MAU[m]}`}
-                          className={`bang__mau-nut bang__mau-nut--${m}${theXem.mau === m ? ' is-chon' : ''}`}
-                          onClick={() => onDoiMau(theXem.id, m)}
-                        />
+                  </div>
+                ) : null}
+
+                {theXem.gach.length > 0 ? <p className="bang__xem-ghi">Đã loại: {theXem.gach.join(', ')}</p> : null}
+
+                {noiXem.length > 0 ? (
+                  <div className="bang__xem-noi-hang">
+                    <span className="bang__xem-noi-nhan">Dây nối:</span>
+                    <ul className="bang__xem-noi">
+                      {noiXem.map((n) => (
+                        <li key={n.id}>
+                          <button type="button" className={`bang__xem-noi-nut bang__xem-noi-nut--${n.mau}`} onClick={() => setXem(n.id)}>
+                            <span aria-hidden="true">{n.chieu}</span> {dienTen(boNgoac(n.nhan))}
+                            <small>{n.kieu}</small>
+                          </button>
+                        </li>
                       ))}
-                    </span>
-                  ) : null}
-                  {onGhim ? (
-                    <button
-                      type="button"
-                      className="btn btn--ghost bang__go"
-                      title="Gỡ thẻ khỏi bảng (vẫn còn trong hồ sơ, ghim lại được ở khay Chưa ghim)"
-                      onClick={() => {
-                        onGhim(theXem.id, false);
-                        setXem(null);
-                      }}
-                    >
-                      Gỡ khỏi bảng
-                    </button>
-                  ) : null}
-                </div>
-              ) : null}
-              <button type="button" className="btn btn--primary" onClick={() => setXem(null)} autoFocus>
-                Đóng
-              </button>
+                    </ul>
+                  </div>
+                ) : null}
+              </div>
+            </div>
+
+            {/* Chỉ dẫn đóng tự nhiên */}
+            <div className="bang__xem-chi-dan" aria-hidden="true">
+              Bấm ra ngoài thẻ hoặc phím Esc để đóng
             </div>
           </div>
         </div>

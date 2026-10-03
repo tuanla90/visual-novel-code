@@ -18,6 +18,13 @@ body {
   color: var(--c-text);
   background: var(--c-bg);
   -webkit-font-smoothing: antialiased;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 button,
@@ -26,6 +33,14 @@ select,
 textarea {
   font: inherit;
   color: inherit;
+}
+
+input,
+textarea,
+[contenteditable="true"],
+.selectable {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 button {
@@ -80,4 +95,83 @@ body {
 }
 body:has(.game) {
   overflow: hidden;
+}
+
+/* ---------- Thanh cuộn tinh tế (Global Scrollbar System) ---------- */
+/* 
+ * Chuẩn W3C (Firefox 64+, Chrome 121+, Edge 121+, Safari 17.2+)
+ * Thanh mảnh, trong suốt, ẩn hoàn toàn mũi tên dày cộm của Windows 
+ */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.45) transparent;
+}
+
+/* WebKit / Chromium (Chrome, Edge, Safari, Opera) */
+*::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+  border: 1.5px solid transparent;
+  background-clip: padding-box;
+  transition: background-color 0.15s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: rgba(71, 85, 105, 0.9);
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Ẩn các nút mũi tên cuộn Windows mặc định */
+*::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Tinh chỉnh thanh cuộn trên các bề mặt tối (Dark / Terminal / Corkboard) */
+.dark,
+[data-theme="dark"],
+.v7-kinh,
+.chal,
+.terminal-workspace,
+.bang__cuon {
+  scrollbar-color: rgba(148, 163, 184, 0.35) transparent;
+}
+
+.dark *::-webkit-scrollbar-thumb,
+[data-theme="dark"] *::-webkit-scrollbar-thumb,
+.v7-kinh *::-webkit-scrollbar-thumb,
+.chal *::-webkit-scrollbar-thumb,
+.terminal-workspace *::-webkit-scrollbar-thumb,
+.bang__cuon *::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.32);
+  background-clip: padding-box;
+}
+
+.dark *::-webkit-scrollbar-thumb:hover,
+[data-theme="dark"] *::-webkit-scrollbar-thumb:hover,
+.v7-kinh *::-webkit-scrollbar-thumb:hover,
+.chal *::-webkit-scrollbar-thumb:hover,
+.terminal-workspace *::-webkit-scrollbar-thumb:hover,
+.bang__cuon *::-webkit-scrollbar-thumb:hover {
+  background: rgba(203, 213, 225, 0.65);
+  background-clip: padding-box;
 }

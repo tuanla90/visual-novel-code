@@ -1,5 +1,7 @@
 ## Nhiệm vụ phụ — Bốn mục trong sổ đã ký (thứ Sáu 25/10/2024, phòng CLB; Duy giao)
 
+<!-- timeline-ref {"tables":["nhat_ky_su_dung"],"evidence":[{"id":"bon-buoi-xac-nhan","title":"Buổi sử dụng phòng CLB đã có xác nhận","table":"nhat_ky_su_dung","where":{"ma_buoi":["BUOI-02","BUOI-04","BUOI-06","BUOI-08"]},"splitBy":"ma_buoi","usedAt":"v2-tra","note":"Muốn kết luận có bốn buổi đã ký thì cảnh đọc sổ phải nằm sau buổi cuối cùng. Dòng dự kiến không phải buổi đã xảy ra."}]} -->
+
 <!-- Nhiệm vụ phụ của lich.md (`{nhiệm vụ phụ: so-phong}`, mở sau Vụ 2 "Tin đồn"): nhận ở màn kết, chạy từ v2-mo, kết bằng [KẾT THÚC] rồi quay lại màn kết. Trước 01/10 tối đây là "Vụ 2" của gói ready-for-dev (docs/mvp/mua-1-kich-ban-ready-dev.md mục 5), nên mã chuỗi / thẻ vẫn mang tiền tố v2-. Một cảnh (phòng CLB), không bản đồ, không hạn, không uy tín, không kết xấu. Điều mới: gọt cột trước khi so (TRIM, LOWER) và xếp theo (ORDER BY). Câu mở rẽ theo kết Vụ 1 bằng cờ máy đặt (vu1-ket-that). Lời ở loi/20-phu-so-phong.md. -->
 
 ### v2-mo — Mở Vụ 2: hồ sơ cuối kỳ {cảnh: phong-clb}

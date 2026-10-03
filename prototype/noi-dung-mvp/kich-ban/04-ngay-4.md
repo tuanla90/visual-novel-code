@@ -1,5 +1,7 @@
 ## Ngày 4 — Sổ niêm phong (thứ Sáu tuần 2)
 
+<!-- timeline-ref {"tables":["nhat_ky_in"],"evidence":[{"id":"thu-in","title":"Lá thư được in từ tài khoản CLB Robotics","table":"nhat_ky_in","where":{"ten_tep":"kien-nghi-phong-clb.docx"},"usedAt":"n4-phong-may","note":"Log chỉ chứng minh tài khoản và thời điểm in; chưa chứng minh ai ngồi máy."}]} -->
+
 <!-- Khung chương 1 (ĐÃ CHỐT C): CTSV tra sổ (Hoài có, Hiếu không) → LỰA CHỌN NHÌN THẤY ĐƯỢC: ghé phòng máy hay về. Phòng máy: nhật ký in theo mã + tên tệp → 0 dòng → bỏ điều kiện mã → SV210745 (năm 4). Nhật ký in là một nửa điều kiện kết thật. Điều mới (tùy chọn): 0 dòng cũng là một câu trả lời. Lời ở loi/04-ngay-4.md. -->
 
 ### n4-mo — Sáng ngày 4: nộp hai mã {cảnh: phong-clb}
@@ -35,6 +37,7 @@
 - [LỜI n4-phong-may.1]
 - [HẬU QUẢ] mở manh mối clue-ten-tep
 - [THỬ THÁCH c-in]
+- [ẢNH cg-reo-ho-manh-moi]
 - [LỜI n4-phong-may.2]
 
 ### n4-ve — Về phòng CLB {cảnh: phong-clb}

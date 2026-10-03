@@ -1,0 +1,9 @@
+{
+  "description": "Ghi chú bối cảnh lịch, độc lập với điều kiện mở nhiệm vụ trong game",
+  "marks": [
+    {"date":"2024-09-17","title":"Tết Trung thu","note":"Rằm tháng Tám năm 2024. Ngày lễ văn hóa, không tự tạo ngày nghỉ hay sự kiện trong game.","source":"https://vn.china-embassy.gov.cn/vn/lsfw/202312/t20231228_11214298.htm"},
+    {"date":"2024-10-20","title":"Ngày Phụ nữ Việt Nam","note":"Ngày kỷ niệm; có thể làm bối cảnh tuyến Tùng–Hoài nếu có sự kiện được viết."},
+    {"date":"2024-10-31","title":"Halloween","note":"Dịp văn hóa phổ biến; không phải ngày nghỉ lễ Việt Nam."},
+    {"date":"2024-11-20","title":"Ngày Nhà giáo Việt Nam","note":"Ngày kỷ niệm; có thể làm bối cảnh tuyến thầy Khải nếu có sự kiện được viết."}
+  ]
+}

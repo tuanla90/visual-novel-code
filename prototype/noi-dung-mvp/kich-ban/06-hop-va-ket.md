@@ -9,6 +9,7 @@
 - [LỜI hop-00.2]
 - [MÀN CHIẾU hop-chieu-or · truy vấn nạp sẵn c-sua-or-quan · chạy · 595 dòng]
 - [LỜI hop-00.3]
+- [ẢNH cg-hop-doi-dau]
 - [SỬA TRUY VẤN c-sua-or-quan]
 - [HIỆU ỨNG co-so-lieu-day]
 - [ẢNH chibi-so-lieu-day]

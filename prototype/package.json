@@ -22,8 +22,9 @@
     "noi-dung:sinh:mvp": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/sinh-mvp.ts"
   },
   "dependencies": {
-    "@fontsource/be-vietnam-pro": "^5.3.0",
-    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/noto-sans": "^5.3.0",
+    "@fontsource/playwrite-in": "^5.3.0",
+    "@fontsource/roboto-mono": "^5.3.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "sql.js": "^1.14.2",

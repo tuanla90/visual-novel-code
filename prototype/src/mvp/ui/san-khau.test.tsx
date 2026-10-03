@@ -3,6 +3,7 @@
  * `char-nguoi-choi`, nhãn là tên người chơi; người kể (`narrator`) thì không.
  */
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
@@ -79,3 +80,44 @@ describe('SanKhauMvp — tối đa 3 người trên dàn', () => {
     expect(dan(container)).toEqual(['minh-anh']);
   });
 });
+
+describe('SanKhauMvp — nhãn địa điểm tương tác và bong bóng nhắc việc', () => {
+  it('nhãn địa điểm là nút bấm, bấm vào chuyển sang trạng thái mở rộng is-expanded', async () => {
+    const user = userEvent.setup();
+    render(<SanKhauMvp kb={kb} canh="cong-truong" speaker="tung" />);
+    const nut = screen.getByRole('button', { name: /Địa điểm: Cổng trường/ });
+    expect(nut).toBeInTheDocument();
+    expect(nut).toHaveAttribute('aria-expanded', 'false');
+    expect(nut).not.toHaveClass('is-expanded');
+
+    await user.click(nut);
+    expect(nut).toHaveAttribute('aria-expanded', 'true');
+    expect(nut).toHaveClass('is-expanded');
+
+    await user.click(nut);
+    expect(nut).toHaveAttribute('aria-expanded', 'false');
+    expect(nut).not.toHaveClass('is-expanded');
+  });
+
+  it('bong bóng nhắc việc có thể bấm để mở rộng hoặc thu gọn', async () => {
+    const user = userEvent.setup();
+    const { container } = render(
+      <SanKhauMvp
+        kb={kb}
+        canh="sanh-chinh"
+        speaker="tung"
+        nhacViec={{ nhanVat: 'tung', text: 'Thang máy hỏng, sơ đồ không vẽ thang bộ. Trong sảnh này ai là người hỏi được?' }}
+      />
+    );
+    const nhac = container.querySelector('.nhac-viec') as HTMLElement;
+    expect(nhac).toBeInTheDocument();
+    expect(nhac).not.toHaveClass('is-expanded');
+
+    await user.click(nhac);
+    expect(nhac).toHaveClass('is-expanded');
+
+    await user.click(nhac);
+    expect(nhac).not.toHaveClass('is-expanded');
+  });
+});
+

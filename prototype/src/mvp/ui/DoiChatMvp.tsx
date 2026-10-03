@@ -62,6 +62,7 @@ export function DoiChatMvp({ kb, s, nut, daTrinh, muc, conLuot, dienTen, tenNguo
       .sort((a, b) => THU_TU[a.loai] - THU_TU[b.loai]);
   }, [kb, s, nut]);
   const [chon, setChon] = useState<string | null>(null);
+  const [moKhay, setMoKhay] = useState(false);
   const theChon = chon ? the.find((t) => t.id === chon) : undefined;
   const chonDuoc = !!theChon && !daTrinh.includes(theChon.id);
 
@@ -79,42 +80,78 @@ export function DoiChatMvp({ kb, s, nut, daTrinh, muc, conLuot, dienTen, tenNguo
 
   return (
     <div className="mc doi-chat" role="group" aria-label="Đối chất: trình bằng chứng">
-      <div className="doi-chat__khay" role="listbox" aria-label="Thẻ trong hồ sơ" aria-activedescendant={chon ? `dc-the-${chon}` : undefined} onKeyDown={onKey}>
-        {the.length === 0 ? <p className="doi-chat__trong">Hồ sơ chưa có thẻ nào.</p> : null}
-        {the.map((t) => {
-          const daDung = daTrinh.includes(t.id);
-          const m = daDung ? mucCuaThe(nut, t.id) : null;
-          const anh = t.anh ? anhTheoTen(t.anh) : undefined;
-          return (
-            <button
-              key={t.id}
-              id={`dc-the-${t.id}`}
-              type="button"
-              role="option"
-              aria-selected={chon === t.id}
-              data-the={t.id}
-              className={`dc-the dc-the--${t.loai}${chon === t.id ? ' is-chon' : ''}${daDung ? ' is-da-trinh' : ''}`}
-              title={daDung ? `Đã trình — ${m === 'khac' ? 'không liên quan' : TEN_MUC[m ?? 'khong']}` : `${NHAN_LOAI[t.loai]}: ${dienTen(boNgoac(t.nhan))}`}
-              onClick={() => setChon(t.id)}
-              onDoubleClick={() => !daDung && onTrinh(t.id)}
-              disabled={false}
-            >
-              <span className="dc-the__ghim" aria-hidden="true" />
-              {anh ? <img className="dc-the__anh" src={anh} alt="" draggable={false} /> : null}
-              <span className="dc-the__loai">{NHAN_LOAI[t.loai]}</span>
-              <span className="dc-the__nhan">{dienTen(boNgoac(t.nhan))}</span>
-              {t.phu && t.loai !== 'tin' ? <span className="dc-the__phu">{dienTen(t.phu)}</span> : null}
-              {daDung ? (
-                <span className={`dc-the__dau dc-the__dau--${m ?? 'khac'}`} aria-hidden="true">
-                  {m === 'khac' ? 'Không liên quan' : TEN_MUC[m ?? 'khong']}
-                </span>
-              ) : null}
-            </button>
-          );
-        })}
+      {/* Ngăn kéo thẻ hồ sơ có thể mở ra / thu lại */}
+      <div className={`doi-chat__ngan-keo${moKhay ? ' is-mo' : ' is-dong'}`}>
+        <div className="doi-chat__ngan-keo-thanh">
+          <span className="doi-chat__ngan-keo-tieude">📁 Hồ sơ bằng chứng ({the.length} thẻ)</span>
+          <button
+            type="button"
+            className="doi-chat__ngan-keo-dong"
+            onClick={() => setMoKhay(false)}
+            aria-label="Thu gọn khay thẻ"
+            title="Thu gọn khay thẻ"
+          >
+            ✕ Thu gọn
+          </button>
+        </div>
+        <div className="doi-chat__khay" role="listbox" aria-label="Thẻ trong hồ sơ" aria-activedescendant={chon ? `dc-the-${chon}` : undefined} onKeyDown={onKey}>
+          {the.length === 0 ? <p className="doi-chat__trong">Hồ sơ chưa có thẻ nào.</p> : null}
+          {the.map((t) => {
+            const daDung = daTrinh.includes(t.id);
+            const m = daDung ? mucCuaThe(nut, t.id) : null;
+            const anh = t.anh ? anhTheoTen(t.anh) : undefined;
+            return (
+              <button
+                key={t.id}
+                id={`dc-the-${t.id}`}
+                type="button"
+                role="option"
+                aria-selected={chon === t.id}
+                data-the={t.id}
+                className={`dc-the dc-the--${t.loai}${chon === t.id ? ' is-chon' : ''}${daDung ? ' is-da-trinh' : ''}`}
+                title={daDung ? `Đã trình — ${m === 'khac' ? 'không liên quan' : TEN_MUC[m ?? 'khong']}` : `${NHAN_LOAI[t.loai]}: ${dienTen(boNgoac(t.nhan))}`}
+                onClick={() => setChon(t.id)}
+                onDoubleClick={() => !daDung && onTrinh(t.id)}
+                disabled={false}
+              >
+                <span className="dc-the__ghim" aria-hidden="true" />
+                {anh ? <img className="dc-the__anh" src={anh} alt="" draggable={false} /> : null}
+                <span className="dc-the__loai">{NHAN_LOAI[t.loai]}</span>
+                <span className="dc-the__nhan">{dienTen(boNgoac(t.nhan))}</span>
+                {t.phu && t.loai !== 'tin' ? <span className="dc-the__phu">{dienTen(t.phu)}</span> : null}
+                {daDung ? (
+                  <span className={`dc-the__dau dc-the__dau--${m ?? 'khac'}`} aria-hidden="true">
+                    {m === 'khac' ? 'Không liên quan' : TEN_MUC[m ?? 'khong']}
+                  </span>
+                ) : null}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <div className="dialog-container doi-chat__hop">
+        {/* Nút Tab bar mở / thu khay ngay trên nóc hộp thoại */}
+        <div className="doi-chat__thanh-tab">
+          <button
+            type="button"
+            className={`doi-chat__tab-toggle${moKhay ? ' is-mo' : ''}`}
+            onClick={() => setMoKhay((v) => !v)}
+            aria-expanded={moKhay}
+            title={moKhay ? 'Thu gọn khay thẻ' : 'Mở hồ sơ chọn thẻ'}
+          >
+            <span className="doi-chat__tab-icon" aria-hidden="true">📁</span>
+            <span>
+              {moKhay
+                ? 'Thu gọn hồ sơ'
+                : theChon
+                  ? `Đã chọn: ${dienTen(boNgoac(theChon.nhan))}`
+                  : `Mở hồ sơ (${the.length} thẻ)`}
+            </span>
+            <span className="doi-chat__tab-arrow" aria-hidden="true">{moKhay ? '▼' : '▲'}</span>
+          </button>
+        </div>
+
         <div className="dialog dialog--glass" data-speaker={nut.asker.speaker}>
           <div className="dialog__speaker">
             <span>{tenNguoiNoi(nut.asker.speaker)}</span>
@@ -144,12 +181,43 @@ export function DoiChatMvp({ kb, s, nut, daTrinh, muc, conLuot, dienTen, tenNguo
                 </span>
               </span>
             ) : null}
-            {theChon ? null : <span className="doi-chat__goi-y">Bấm một thẻ trong hàng thẻ để chọn, rồi trình thẻ ấy để bác giả thuyết.</span>}
+            {theChon ? (
+              <button
+                type="button"
+                className="doi-chat__the-chon-preview"
+                onClick={() => setMoKhay((v) => !v)}
+                title="Bấm để mở hồ sơ đổi thẻ khác"
+              >
+                <span className="doi-chat__the-chon-loai">{NHAN_LOAI[theChon.loai]}:</span>
+                <span className="doi-chat__the-chon-ten">{dienTen(boNgoac(theChon.nhan))}</span>
+                <span className="doi-chat__the-chon-doi">Đổi ▾</span>
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="doi-chat__goi-y-btn"
+                onClick={() => setMoKhay(true)}
+              >
+                📁 Bấm để chọn thẻ
+              </button>
+            )}
             <span className="doi-chat__nut">
               <button type="button" className="btn btn--ghost doi-chat__chua-du" onClick={onChuaDu} title="Kết thúc phần trình bày ở mức đang đạt">
                 Chưa đủ căn cứ để nói
               </button>
-              <button type="button" className="btn btn--primary doi-chat__trinh" disabled={!chonDuoc} onClick={() => theChon && onTrinh(theChon.id)} title={chonDuoc ? `Trình: ${dienTen(boNgoac(theChon.nhan))}` : 'Chọn một thẻ trong hồ sơ trước'}>
+              <button
+                type="button"
+                className="btn btn--primary doi-chat__trinh"
+                disabled={!chonDuoc && !theChon}
+                onClick={() => {
+                  if (theChon) {
+                    if (chonDuoc) onTrinh(theChon.id);
+                  } else {
+                    setMoKhay(true);
+                  }
+                }}
+                title={chonDuoc ? `Trình: ${dienTen(boNgoac(theChon?.nhan ?? ''))}` : 'Mở hồ sơ để chọn một thẻ'}
+              >
                 {theChon ? 'Trình thẻ này' : 'Chọn một thẻ'}
               </button>
             </span>

@@ -94,7 +94,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const napTuO = useKhoMvp((k) => k.napTuO);
   const datTrangThai = useKhoMvp((k) => k.datTrangThai);
   const luiKho = useKhoMvp((k) => k.lui);
-  const coTheLui = useKhoMvp((k) => k.lichSuLui.length > 0);
+  const coTheLui = useKhoMvp((k) => k.lichSuLui.some((st) => khungNhin(KICH_BAN, st).kind !== 'image'));
 
   /** Hồ sơ và Sổ cá nhân là hai tab của cùng một khung (phong cách hòm đồ prototype); `null` = đóng. */
   const [kho, setKho] = useState<TabHoSoMvp | null>(null);
@@ -286,12 +286,13 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     return null;
   };
   // Lùi lại một bước (nút Lùi ở hộp thoại, phím ←): về đúng trạng thái trước cú bấm gần nhất, bỏ câu đang hiện khỏi lịch sử.
+  // Khi gặp ảnh chèn (chibi/CG), lùi thẳng về trước ảnh (bỏ qua ảnh) để người chơi đọc lại thoại thay vì kẹt ở ảnh.
   const lui = (): void => {
     const dangLaLoi = kn.kind === 'line' || kn.kind === 'feedback';
     if (useVnStore.getState().autoMode) useVnStore.getState().toggleAutoMode();
     setSkipMode(false);
     setGioiThieuMo(null);
-    if (luiKho() && dangLaLoi) popBacklog();
+    if (luiKho((st) => khungNhin(kb, st).kind === 'image') && dangLaLoi) popBacklog();
   };
   const bangQuanSat = quanSat ? <BangQuanSatMvp kb={kb} s={s} loaiManHinh={kn.kind} onNhay={nhay} /> : null;
 
@@ -408,7 +409,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       case 'show-document':
         return <TaiLieuMvp kb={kb} id={kn.documentId} dienTen={dienTen} onCat={tiep} />;
       case 'image':
-        return <AnhChenMvp key={kn.imageId} id={kn.imageId} onTiep={tiep} />;
+        return <AnhChenMvp key={kn.imageId} id={kn.imageId} onTiep={tiep} onBack={coTheLui ? lui : undefined} />;
       case 'challenge':
       case 'fix-query':
         return (
