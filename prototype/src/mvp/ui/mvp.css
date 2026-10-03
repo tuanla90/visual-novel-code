@@ -4186,3 +4186,171 @@
   from { opacity: 0; transform: scale(0.7) rotate(-6deg); }
   to { opacity: 1; transform: scale(1) rotate(0deg); }
 }
+
+/* ========== MÀN CHUYỂN CẢNH ĐIỆN ẢNH (CINEMATIC TITLE CARD) ========== */
+/* Khi kịch bản có [THẺ CHỮ] (thời gian / địa điểm / triết lý): nền sân khấu phủ tối mờ điện ảnh,
+   ẩn bóng thoại nhân vật, dàn diễn viên và nhãn địa điểm. */
+.mvp-stage.is-the-chu .stage__backdrop {
+  filter: blur(18px) brightness(0.22) saturate(0.8) !important;
+  transform: scale(1.08) !important;
+  transition: filter 0.5s ease-out, transform 0.5s ease-out !important;
+}
+.mvp-stage.is-the-chu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: radial-gradient(circle at center, rgba(15, 23, 42, 0.65) 0%, rgba(3, 7, 18, 0.95) 100%);
+  pointer-events: none;
+  animation: the-chu-fade 0.4s ease-out;
+}
+@keyframes the-chu-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Đặt toàn bộ container thẻ chữ phủ giữa màn hình */
+.stage__content:has(> .dialog-container > .dialog--card) {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 30 !important;
+  pointer-events: auto !important;
+  padding: clamp(16px, 4vw, 40px) !important;
+  margin: 0 !important;
+}
+.stage__content:has(> .dialog-container > .dialog--card) > .dialog-container {
+  width: 100% !important;
+  max-width: 860px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: auto !important;
+}
+
+/* Thẻ chữ chuyển cảnh điện ảnh */
+.dialog--card {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  padding: clamp(32px, 5vw, 52px) clamp(24px, 5vw, 56px) !important;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.94) 0%, rgba(15, 23, 42, 0.98) 100%) !important;
+  border: 1px solid rgba(245, 158, 11, 0.45) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85), 0 0 35px rgba(245, 158, 11, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  cursor: pointer;
+  user-select: none;
+  animation: the-chu-enter 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+@keyframes the-chu-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.dialog--card:hover {
+  border-color: rgba(245, 158, 11, 0.7) !important;
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.9), 0 0 45px rgba(245, 158, 11, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Hoa văn trang trí trên thẻ */
+.dialog__card-decor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 240px;
+  color: #f59e0b;
+}
+.dialog__card-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.6), transparent);
+}
+.dialog__card-icon {
+  font-size: 1rem;
+  color: #fbbf24;
+  filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6));
+}
+
+/* Chữ nội dung thẻ */
+.dialog--card .dialog__text {
+  font-family: var(--font-reading, inherit);
+  font-size: clamp(1.25rem, 2.6vw, 1.85rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.55 !important;
+  letter-spacing: 0.03em !important;
+  color: #fffdf5 !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+  margin: 0;
+  padding: 0;
+}
+
+/* Gợi ý tiếp tục ở đáy thẻ */
+.dialog__card-hint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: rgba(254, 243, 199, 0.7);
+  animation: the-chu-pulse 2s ease-in-out infinite;
+}
+@keyframes the-chu-pulse {
+  0%, 100% { opacity: 0.55; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(2px); }
+}
+
+/* Footer của màn title card: căn giữa, nút tiếp tục thanh nhã */
+.dialog__footer--card {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: 18px !important;
+  width: 100% !important;
+}
+.dialog__footer--card .dialog__footer-left {
+  display: none !important;
+}
+.dialog__footer--card .dialog__footer-right {
+  display: flex !important;
+  justify-content: center !important;
+}
+.dialog__footer--card .dialog__next {
+  background: rgba(245, 158, 11, 0.18) !important;
+  border: 1px solid rgba(245, 158, 11, 0.5) !important;
+  color: #fef3c7 !important;
+  padding: 9px 24px !important;
+  border-radius: 9999px !important;
+  font-size: 0.95rem !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.2s ease !important;
+}
+.dialog__footer--card .dialog__next:hover {
+  background: rgba(245, 158, 11, 0.35) !important;
+  border-color: #fbbf24 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3) !important;
+}
