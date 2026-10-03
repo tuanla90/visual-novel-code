@@ -1,4 +1,4 @@
-# Cắt khít cho các bộ MVP mới thêm (chưa qua công cụ): miệng theo cat-mieng-moi.py, mắt theo cat-mat-moi.py, ghi tệp + tọa độ.
+# Cắt khít cho các bộ mới thêm hoặc vẽ lại (MVP và talk-rigs) (chưa qua công cụ): miệng theo cat-mieng-moi.py, mắt theo cat-mat-moi.py, ghi tệp + tọa độ.
 # Hộp cũ (to) trong nhep-moi-mvp.ts làm cửa sổ tìm. Dùng: python cat-bo-moi.py <tên ảnh> [<tên ảnh>…]
 # rồi chạy loc-net-le.py <các tên> --ghi và ghi-toa-do.py.
 import sys, os, re, io
@@ -42,7 +42,7 @@ def nguon(ten):
 
 moi = {}
 for r in doc_rigs():
-    if r['tep'] != 'mvp' or r['ten'] not in CHON:
+    if r['ten'] not in CHON:  # cả bộ MVP lẫn bộ talk (talk-rigs.ts) cùng tên ảnh thì cắt cả hai
         continue
     nsM['G2'] = nsE['G2'] = nguon(r['ten'])
     e = catE(r)
@@ -58,13 +58,26 @@ for r in doc_rigs():
         continue
     m['img'].save(r['mouth'], 'WEBP', quality=92, alpha_quality=100, method=6)
     e['img'].save(r['eyes'], 'WEBP', quality=92, alpha_quality=100, method=6)
-    moi[r['ten']] = (m['box'], e['box'])
+    moi[(r['tep'], r['ten'])] = (m['box'], e['box'], r)
     print(f"{r['ten']:26s} mieng {m['box']} mat {e['box']} dich ({m['dx']},{m['dy']})/({e['dx']},{e['dy']})")
 p = 'src/mvp/ui/nhep-moi-mvp.ts'
 t = io.open(p, encoding='utf-8').read()
-for ten, (m, e) in moi.items():
+for (tep, ten), (m, e, r) in moi.items():
+    if tep != 'mvp':
+        continue
     t, n = re.subn(r"(bo\('" + re.escape(ten) + r"', \w+, )\[\d+, \d+, \d+, \d+\](, \w+, )\[\d+, \d+, \d+, \d+\]",
                    lambda mm: f"{mm.group(1)}[{m[0]}, {m[1]}, {m[2]}, {m[3]}]{mm.group(2)}[{e[0]}, {e[1]}, {e[2]}, {e[3]}]", t)
     assert n == 1, ten
-io.open(p, 'w', encoding='utf-8', newline='\n').write(t)
+io.open(p, 'w', encoding='utf-8', newline=chr(10)).write(t)
+p = 'src/shared/ui/visuals/talk-rigs.ts'
+t = io.open(p, encoding='utf-8').read()
+for (tep, ten), (m, e, r) in moi.items():
+    if tep != 'talk':
+        continue
+    sf = '/' + r['base'].replace(os.sep, '/')
+    pat = (r"(sourceFile: '" + re.escape(sf) + r"',\s*width: \d+,\s*height: \d+,\s*mouth: \{ src: \w+, )x: \d+, y: \d+, w: \d+, h: \d+"
+           r"( \},\s*eyes: \{ src: \w+, )x: \d+, y: \d+, w: \d+, h: \d+")
+    t, n = re.subn(pat, lambda mm: f"{mm.group(1)}x: {m[0]}, y: {m[1]}, w: {m[2]}, h: {m[3]}{mm.group(2)}x: {e[0]}, y: {e[1]}, w: {e[2]}, h: {e[3]}", t)
+    assert n == 1, ten
+io.open(p, 'w', encoding='utf-8', newline=chr(10)).write(t)
 print('ghi', len(moi), '/', len(CHON))

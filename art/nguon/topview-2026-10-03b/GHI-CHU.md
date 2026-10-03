@@ -15,3 +15,11 @@ Tạo qua MCP Topview (GPT Image 2, image_edit, 1K, medium; 0,2 credit/ảnh), b
 - `bg-mvp-ghe-da-tui-do.png`: sửa từ `bg-mvp-cong-truong`. Ghế đá dưới gốc cây, chiều muộn, túi vải rơi, đồ bày ra: giáo trình
   "Kinh tế vi mô" có nhãn lớp học phần, vé gửi xe, hóa đơn photo, đơn trong bìa nhựa có dấu đỏ, ví nâu đóng, điện thoại úp,
   hộp bút, chai nước. Dùng cho nhiệm vụ phụ `tui-do`.
+# Ảnh Topview 03/10/2026 (tối)
+
+- `bg-mvp-nha-van-hoa-dong-clb.png`: nền Ngày hội CLB, sửa thẳng từ nền cũ (một ảnh vào, không kèm ảnh mẫu bố cục để giữ nét).
+- Minh Anh vẽ lại mặt (user thấy các biểu cảm kém xinh hơn ảnh gốc: mặt bè, cằm vuông, mắt nhỏ). Vui / lo / nghiêm: lấy ảnh neo
+  `g2-char-minh-anh-anchor` rồi chỉ đổi nét mặt ("Pixel-identical copy … EXCEPT the facial expression"). Khoanh tay khác dáng nên
+  giữ ảnh cũ, đưa `char-minh-anh-v2-anchor` làm Image2 để sửa mặt theo. Ghi đè `topview-2026-10-01/g2/g2-char-minh-anh-*.png`
+  (cả `--mieng`, `--mat`), chạy `xu-ly-anh-dan-moi-2026-10-01.py` rồi bộ cắt nhép (`cat-bo-moi.py` giờ nhận cả bộ talk-rigs).
+- `minh-anh-so-sanh.png`: bảng so sánh hiện tại / cách A (giữ ảnh cũ, Image2 làm mẫu mặt) / cách B (từ ảnh neo) — user chọn B.
