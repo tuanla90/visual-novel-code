@@ -118,7 +118,7 @@
 
 ## md-09-ngay-hoi.2
 - [DÀN DỰNG] Nền nhà văn hóa ngày hội (nền chưa vẽ người); gian Robotics bên trái, cờ in hình bánh răng (ảnh cần vẽ thêm — xem báo cáo rà soát A4/A5); bàn Thám Tử bên phải.
-- **narrator**: Sân nhà văn hóa giăng cờ, bàn CLB kê kín lối đi. Gian Robotics rộng nhất, cờ in hình bánh răng, bảng dán "Đang xin mở rộng xưởng".
+- **narrator**: Sân nhà văn hóa giăng cờ, bàn CLB kê kín lối đi. Gian Robotics rộng nhất, cờ in hình bánh răng, bảng dán "Đang xin mở rộng xưởng thực hành".
 - **narrator**: Bàn CLB Thám Tử nằm tận trong góc, chỉ có một chị ngồi trực.
 - **tung** (neutral): Chị ơi, đây là bàn CLB Thám Tử ạ? Chị là thành viên ở đây ạ?
 - **minh-anh** (neutral): Ừ. Chị trực bàn hôm nay.

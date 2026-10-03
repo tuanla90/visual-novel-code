@@ -1570,7 +1570,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Sân nhà văn hóa giăng cờ, bàn CLB kê kín lối đi. Gian Robotics rộng nhất, cờ in hình bánh răng, bảng dán \"Đang xin mở rộng xưởng\"."
+          "text": "Sân nhà văn hóa giăng cờ, bàn CLB kê kín lối đi. Gian Robotics rộng nhất, cờ in hình bánh răng, bảng dán \"Đang xin mở rộng xưởng thực hành\"."
         },
         {
           "type": "line",
