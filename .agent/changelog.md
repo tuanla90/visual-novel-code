@@ -1,6 +1,40 @@
 # Nhật Ký Thay Đổi (.agent/changelog.md)
 
-## [2026-10-04] Tách Thẻ Chữ (Thời Gian / Địa Điểm / Triết Lý) Thành Màn Title Card Điện Ảnh (Cinematic Title Card Screen)
+## [2026-10-04] Đồng Nhất Màn Laptop Ngày Hội (`LocThuV7`): Lọc Ngành Trước Tên Sau, Tên Cột Excel Tiếng Việt & Lưới Tròn Chục
+
+### 1. Đồng Nhất Màn Hình Laptop Với Bản Sửa Mới Nhất (`LocThuV7.tsx` & `v7.css`):
+- **Phóng to mặt kính máy tính**: Nâng kích thước vùng kính từ `1100×640` lên chuẩn `1420×740` (tương đương `CANH_TRA` của laptop CLB), xóa bỏ khoảng đen thụt lùi ở hai bên.
+- **Nền cảnh laptop**: Gắn ảnh nền laptop CLB (`canh-tra-phong-clb`) được phóng to 1.33×, ẩn bàn phím thừa phía dưới và viền đen dày cục mịch cũ.
+- **Giấy nhớ**: Dán gọn gàng ở mép trái viền laptop (`left: 10px`), căn chỉnh khoảng cách hợp lý, không đè lấn lên bảng hiển thị.
+
+### 2. Đảo Thứ Tự Lọc: Lọc Ngành Trước, Lọc Tên Sau (Tối Ưu Logic & Trải Nghiệm Điều Tra):
+- **Vấn đề cũ**: Lọc tên "Tùng" trước -> danh sách chỉ còn đúng 3 bạn, người chơi nhìn thấy ngay Trần Tùng (Du lịch) ở dòng 1 nên cảm thấy vô lý khi bị bắt buộc kéo tiếp thẻ Du lịch.
+- **Giải pháp mới**:
+  - `00-mo-dau.md`: Đổi query sang `WHERE nganh = 'Du lịch' AND ten = 'Tùng'`.
+  - Nhịp 1: Thả thẻ **Du lịch** trước -> danh sách thu hẹp về nhóm sinh viên ngành Du lịch (vài chục bạn, vẫn cần lọc tiếp).
+  - Nhịp 2: Thả thẻ **Tùng** -> danh sách rút gọn về **đúng 1 người duy nhất**: Trần Tùng.
+  - Cập nhật lời thoại của nhân vật chính trong `00-mo-dau.md`: *"Ngành Du lịch lọc ra còn mấy chục bạn. Thêm tên Tùng thì đúng một người. Mã ở ô đầu: SV240251."*
+
+### 3. Tên Cột Chuẩn Excel Tiếng Việt Có Dấu:
+- Tiêu đề cửa sổ đổi thành: `▣ Danh sách tân sinh viên K24 (Excel)`.
+- Chuyển đổi tên các cột sang tiếng Việt có dấu:
+  - `ma_sv` -> **Mã SV**
+  - `ho_dem` -> **Họ đệm**
+  - `ten` -> **Tên**
+  - `nganh` -> **Ngành**
+- Đồng bộ hiển thị trên thanh điều kiện lọc, tiêu đề bảng kết quả và các thông điệp hướng dẫn.
+
+### 4. Thiết Kế Lưới Tròn Chục Trực Quan (`DongPhieu.tsx`):
+- **Vấn đề cũ**: Thuật toán tự do tính ra 33 cột × 29 hàng = 957 ô. Khi hiển thị 956 người, ô góc dưới bị trống mất đúng 1 ô tạo cảm giác hình chữ nhật bị sứt mẻ và số cột 33 là số lẻ không thể ước lượng.
+- **Giải pháp mới**:
+  - Chuẩn hóa số cột về bội số của 10 (cụ thể: **40 cột**).
+  - Thêm khoảng ngắt nhẹ 8px giữa các block 10 cột.
+  - Người chơi nhìn vào đếm được ngay: 1 block = 10 người, mỗi hàng có 4 block = 40 người. Hàng cuối cùng có 36 ô lẻ ra rất tự nhiên và dễ dàng ước lượng tổng số lượng.
+
+### 5. Kiểm Thử & Toàn Vẹn:
+- Chạy `npm run noi-dung:sinh:mvp` và `npm run kiem-noi-dung:mvp`: 58 tệp đạt chuẩn, 39/39 câu SQL khớp số dòng.
+- Vitest `loc-thu-v7.test.tsx` (4/4 tests passed), `sql-mvp.test.ts` (8/8 tests passed).
+- TypeScript strict mode & Vite build: 100% passed.
 
 ### 1. Bối Cảnh & Vấn Đề (UX / Visual Clutter):
 - Trước đây, khi gặp thẻ chữ (`- [THẺ CHỮ] **narrator**: ...`, ví dụ mở đầu game: `Chủ nhật, 08/09/2024 · Đại học Chấn Hưng`), hệ thống hiển thị thẻ vàng lơ lửng ngay giữa màn hình.
