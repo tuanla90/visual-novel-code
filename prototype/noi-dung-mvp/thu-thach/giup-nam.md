@@ -42,6 +42,7 @@ SELECT nguoi_dat, COUNT(*) AS so_dong FROM @ev-don-da-duyet GROUP BY nguoi_dat;
 - Tiêu đề: Đơn của Nam nối với phiên đăng nhập
 - Đề bài hiển thị: Sổ đặt hàng ghi mã phiên; bảng phiên đăng nhập ghi máy và giờ của mỗi phiên. Năm đơn đứng tên Nam được tạo từ máy nào, lúc mấy giờ?
 - Manh mối liên quan: clue-ma-phien, clue-nguoi-dat-nam
+- Bảng chọn: don_linh_kien · phien_dang_nhap
 - Nối được với: phien_dang_nhap
 - Mục tiêu học: Nối hai bảng theo cột chung đúng nghĩa (mã phiên); nối theo cột trùng tên khác (ngày) thì mỗi đơn kéo theo cả phiên của người khác.
 - Số dòng kỳ vọng: 5

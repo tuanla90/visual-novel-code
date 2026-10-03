@@ -281,6 +281,8 @@ export interface TheThuThachMvp {
   nguon?: string | null;
   /** Thẻ có JOIN: các bảng người chơi được chọn ở khối "nối với" (`- Nối được với: a · b`); thiếu → bảng JOIN trong SQL chuẩn. */
   bangNoi?: string[];
+  /** Thẻ có chọn bảng: các bảng người chơi được chọn làm nguồn (`- Bảng chọn: a · b`); nếu có, màn tra hiện dropdown chọn bảng. */
+  bangChon?: string[];
   /** Cột nhóm được gợi ý/giới hạn bởi nội dung; null cho phép người chơi chọn. */
   nhomTheo?: string | null;
   /**

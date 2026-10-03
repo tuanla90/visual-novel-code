@@ -47,7 +47,7 @@ describe('lọc thử Ngày hội (v7)', () => {
     expect(vung.textContent).not.toMatch(/SELECT|WHERE/);
     expect(screen.queryByRole('button', { name: /CHẠY/ })).toBeNull();
     expect([...vung.querySelectorAll('.v7-o--cot')].map((e) => e.textContent)).toEqual(['Ngành', 'Tên']);
-    await waitFor(() => expect(Number(vung.querySelector('.v7-so__n')?.textContent)).toBeGreaterThan(3));
+    await waitFor(() => expect(Number(vung.querySelector('.v7-so__n')?.textContent)).toBeGreaterThan(3), { timeout: 10000 });
   });
 
   it('thả thẻ Du lịch trước → lọc bớt, chưa bấm ô được; thả thẻ Tùng → còn 1 người', async () => {

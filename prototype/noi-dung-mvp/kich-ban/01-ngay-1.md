@@ -11,9 +11,9 @@
 
 - [LỜI n1-toa-b.1]
 - [KHÁM PHÁ kp-toa-b]
-  - obj-hop-kien-nghi · x 28% · y 50% · rộng 8% → n1-hop · nhãn: Soi khe hộp kiến nghị
+  - obj-hop-kien-nghi · x 35.2% · y 45.5% · rộng 3.4% → n1-hop · nhãn: Soi khe hộp kiến nghị
   - nv:bac-tu · x 78% · y 100% · rộng 16% → n1-bac-thinh · nhãn: Hỏi bác bảo vệ
-  - obj-thong-bao-hop · x 35.5% · y 42% · rộng 4% → n1-thong-bao-hop · nhãn: Đọc tờ giấy dán cạnh hộp
+  - obj-thong-bao-hop · x 40.5% · y 43.5% · rộng 2.6% → n1-thong-bao-hop · nhãn: Đọc thông báo dán trên bảng tin
 - [LỜI n1-toa-b.2]
 
 ### n1-hop — Khe hộp: mẩu thẻ lịch rách {cảnh: sanh-toa-b}

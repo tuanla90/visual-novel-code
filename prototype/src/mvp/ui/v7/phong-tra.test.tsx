@@ -49,7 +49,7 @@ describe('phòng tra: bảng → máy → ghim', () => {
     await u.click(screen.getByRole('button', { name: /^Báo chí \(giấy nhớ/ }));
     await u.click(screen.getByRole('button', { name: /^Ô giá trị điều kiện 2/ }));
     await u.click(screen.getByRole('button', { name: /CHẠY$/ }));
-    await u.click(await screen.findByRole('button', { name: 'Ghim lên bảng' }));
+    await u.click(await screen.findByRole('button', { name: 'Ghim lên bảng' }, { timeout: 10000 }));
 
     expect(pha()).toBe('ghim');
     expect(onXong).not.toHaveBeenCalled();

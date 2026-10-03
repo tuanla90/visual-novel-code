@@ -5,6 +5,7 @@
 - Tiêu đề: Sổ đặt hàng so với kiểm kê
 - Đề bài hiển thị: Nối sổ đặt hàng với bảng kiểm kê của Nam. Đơn nào đặt mua thứ mà trong kho đang là số không?
 - Manh mối liên quan: clue-so-luong-co-0
+- Bảng chọn: don_linh_kien · kiem_ke
 - Nối được với: kiem_ke
 - Mục tiêu học: Ôn nối bảng với một bảng mới, khóa nối là tên linh kiện; lọc trên cột của bảng thứ hai.
 - Số dòng kỳ vọng: 3
@@ -24,6 +25,7 @@ SELECT ma_don, nguoi_dat, so_tien, so_luong_co FROM don_linh_kien JOIN kiem_ke O
 - Tiêu đề: Sổ chi nối với bảng quỹ
 - Đề bài hiển thị: Sổ chi ghi mã quỹ; bảng quỹ cho biết mã nào là quỹ của CLB nào. Khoản chi nào ghi vào quỹ CLB Thám Tử?
 - Manh mối liên quan: clue-quy-tham-tu
+- Bảng chọn: khoan_chi · quy
 - Nối được với: quy
 - Mục tiêu học: Nối theo mã quỹ rồi lọc theo cột của bảng quỹ; ghim thành phiếu để gom.
 - Số dòng kỳ vọng: 6

@@ -17,7 +17,7 @@ import type { BoDuLieuMvp, KichBanMvp, LoiMvp, TheThuThachMvp } from '../../../c
 import { soundEngine } from '../../../shared/audio/sound-engine';
 import { track } from '../../../shared/telemetry/track';
 import { CodeText } from '../../../shared/ui/CodeText';
-import { IconLock, IconPin, IconPlay, IconPointer, IconSearch } from '../../../shared/ui/icons';
+import { IconPin, IconPlay, IconPointer, IconSearch } from '../../../shared/ui/icons';
 import type { GiaTriHoSo } from '../../engine/giay-nho';
 import { tenNguoiNoi } from '../../engine/may';
 import { chamThuThach, chaySql, phanUngSauKhiChay, type KetQuaCham } from '../../engine/sql-mvp';
@@ -43,10 +43,12 @@ import { SoiDieuKienMvp } from '../SoiDieuKienMvp';
 import { DongPhieu, type DongPhieuRef } from './DongPhieu';
 import { KiemPhieu } from './KiemPhieu';
 import { NHIP, ngu } from './nhip';
-import { CANH_TRA, type CanhTra } from './canh-tra';
+import { CANH_TRA, type CanhTra, type NguonPhieuV7 } from './canh-tra';
+import { KhungNguonBangV7 } from './KhungNguonBangV7';
+import { XemTruocBangModal } from './XemTruocBangModal';
 import './v7.css';
 
-export type { CanhTra } from './canh-tra';
+export type { CanhTra, NguonPhieuV7 } from './canh-tra';
 
 const TOI_DA_DIEU_KIEN = 3;
 /**
@@ -64,6 +66,7 @@ function soNhipNhun(cau: string): number {
   return Math.min(10, Math.max(2, Math.round((cau.length * 0.045) / 0.32)));
 }
 export interface ManTraV7Props {
+  onDaXemTruyVan?: (query: import('../../engine/tri-nho-dong-hanh').TruyVanDaXemMvp, loi: readonly LoiMvp[]) => void;
   kb: KichBanMvp;
   duLieu: BoDuLieuMvp | null;
   the: TheThuThachMvp;
@@ -80,20 +83,12 @@ export interface ManTraV7Props {
   onXong: (dung: string[], result?: { sql: string; cot: { ten: string; kieu: 'TEXT' | 'INTEGER' }[]; soDong: number }) => void;
 }
 
-export interface NguonPhieuV7 {
-  id: string;
-  nhan: string;
-  sql: string;
-  cot: { ten: string; kieu: 'TEXT' | 'INTEGER' }[];
-  soDong: number;
-}
-
 /** Bảng kết quả chỉ vẽ ngần này dòng đầu (bảng thật có tới vài nghìn dòng); con số lớn bên cạnh vẫn là tổng thật. */
 export const TOI_DA_DONG_HIEN = 40;
 /** Số giấy nhớ tối đa dán quanh laptop; tờ cũ hơn vào ngăn "Còn trên bảng". */
 export const TOI_DA_GIAY = 10;
 
-export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonPhieu, onXong }: ManTraV7Props) {
+export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonPhieu, onXong, onDaXemTruyVan }: ManTraV7Props) {
   const cauHinh = CANH_TRA[canh];
   // Nguồn là phiếu: `FROM @<mã phiếu>` của SQL chuẩn thành `FROM <tên tạm>`, mọi câu chạy có tiền tố `WITH <tên tạm> AS (…)`.
   const tenNguon = nguonPhieu ? tenCte(nguonPhieu.id) : null;
@@ -103,11 +98,16 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     [the.sqlChuan, nguonPhieu, tenNguon],
   );
   const khung = useMemo(() => khungTuSqlChuan(sqlChuan), [sqlChuan]);
+  const [bangGocChon, setBangGocChon] = useState<string | null>(null);
+  useEffect(() => {
+    setBangGocChon(null);
+  }, [the.id]);
   const bang = useMemo(() => {
     if (nguonPhieu && tenNguon) return { ten: tenNguon, cot: nguonPhieu.cot, soDong: nguonPhieu.soDong };
-    const b = duLieu?.bang.find((x) => x.ten === khung?.bang);
+    const tenCanTim = bangGocChon ?? khung?.bang;
+    const b = duLieu?.bang.find((x) => x.ten === tenCanTim);
     return b ? { ten: b.ten, cot: b.cot, soDong: b.dong.length } : undefined;
-  }, [duLieu, khung, nguonPhieu, tenNguon]);
+  }, [duLieu, khung, nguonPhieu, tenNguon, bangGocChon]);
   const khoi = useMemo(() => khoiCuaThe(sqlChuan), [sqlChuan]);
   // Thẻ "chọn bảng" (bài nhập môn): SQL chuẩn chỉ là SELECT … FROM <bảng>, không lọc / nối / xếp → người chơi chọn bảng rồi CHẠY.
   const khongLoc = mode !== 'fix-query' && !nguonPhieu && !/\b(?:WHERE|JOIN|ORDER\s+BY|GROUP\s+BY)\b/i.test(sqlChuan);
@@ -151,6 +151,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   const sql = tienTo + sqlNgoai;
   const [dangChon, setDangChon] = useState<GiaTriHoSo | null>(null);
   const [daChonBang, setDaChonBang] = useState(!chonBang);
+  const [xemTruocMo, setXemTruocMo] = useState(false);
   const [cham, setCham] = useState<KetQuaCham | null>(null);
   const [daChay, setDaChay] = useState<WhereTach | null>(null);
   const [dangChay, setDangChay] = useState(false);
@@ -322,11 +323,12 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
               ? [{ speaker: 'ha-vy', expression: 'thinking', text: 'Phiếu gọn rồi, nhưng chưa trả lời đúng câu hỏi trên bảng. Xem lại điều kiện xem.' }]
               : [];
       setLoiNoi(loiThe.length > 0 ? loiThe : macDinh);
+      if (kq.trangThai !== 'loi') onDaXemTruyVan?.({ id: the.id, nhan: the.tieuDe, sql }, loiThe.length > 0 ? loiThe : macDinh);
     } finally {
       banRon.current = false;
       if (song.current) setDangChay(false);
     }
-  }, [duLieu, khung, dung, sql, sqlNgoai, sqlChuan, tienTo, the, tongDong, demToi, cau, chonCot, cotLay, cotChuan, nguongDuy]);
+  }, [duLieu, khung, dung, sql, sqlNgoai, sqlChuan, tienTo, the, tongDong, demToi, cau, chonCot, cotLay, cotChuan, nguongDuy, onDaXemTruyVan]);
 
   if (!duLieu) return <p className="game__error">Vụ này chưa có bộ dữ liệu (du-lieu.md) nên không chạy được.</p>;
   if (!khung || !bang) return <p className="game__error">Thẻ thử thách này thiếu khung SELECT … FROM … hợp lệ.</p>;
@@ -419,94 +421,62 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
       {nguongDuy !== null ? (
         <KiemPhieu duy={`phiếu tối đa ${nguongDuy} dòng${the.bamO ? `, có cột ${the.bamO}` : ''}`} duyDat={duyDat} vy="đúng câu hỏi trên bảng" vyDat={vyDat} />
       ) : null}
+      {xemTruocMo && duLieu && bang ? (
+        <XemTruocBangModal
+          duLieu={duLieu}
+          tenBangGoc={bang.ten}
+          tenBangNoi={cau.noiBang?.bang}
+          khoaNoi={cau.noiBang?.cot}
+          onDong={() => setXemTruocMo(false)}
+        />
+      ) : null}
       <div className="v7-cau v7-cau--3cot">
-        <div className="v7-cot v7-cot--nguon">
-          <span className="v7-cot__nhan">1. NGUỒN BẢNG</span>
-          <div className="v7-cau__bang">
-            {nguonPhieu ? (
-              <span className="v7-o v7-o--bang v7-o--phieu" title={`Phiếu đã ghim "${dienTen(nguonPhieu.nhan)}" dùng làm nguồn, tên tạm ${bang.ten}`}>
-                <IconPin className="v7-bt" /> {dienTen(nguonPhieu.nhan)}
-              </span>
-            ) : chonBang ? (
-              <select
-                className={`v7-o v7-o--bang v7-o--chon-bang${daChonBang ? '' : ' is-trong'}`}
-                aria-label="Chọn bảng để tra"
-                disabled={khoa}
-                value={daChonBang ? bang.ten : ''}
-                onChange={(e) => setDaChonBang(e.target.value !== '')}
-              >
-                <option value="">chọn bảng…</option>
-                <option value={bang.ten}>{bang.ten}</option>
-              </select>
-            ) : (
-              <span className="v7-o v7-o--bang" title={`Bảng ${bang.ten}`}>
-                <IconLock className="v7-bt" /> {bang.ten}
-              </span>
-            )}
-            <small>{daChonBang ? `${tongDong} dòng` : 'chưa chọn bảng'}</small>
-          </div>
-          {khoi.noi ? (
-            <div className="v7-noi-vung" aria-label="Nối với bảng khác">
-              <span className="v7-o v7-o--dau" aria-hidden="true">
-                NỐI VỚI
-              </span>
-              <button
-                type="button"
-                className={`v7-o v7-o--bang v7-o--noi-bang${cau.noiBang?.bang ? '' : ' is-trong'}`}
-                disabled={khoa}
-                aria-label={`Nối với bảng: ${cau.noiBang?.bang || 'chưa nối'} — bấm để đổi`}
-                onClick={() =>
-                  doiCau((c) => {
-                    const k = c.noiBang?.bang ? bangNoiDuoc.indexOf(c.noiBang.bang) + 1 : 0;
-                    const ke = bangNoiDuoc[k];
-                    const cotGoc = bang?.cot.map((x) => x.ten) ?? [];
-                    return { ...c, noiBang: ke === undefined ? null : { bang: ke, cot: '' }, dieuKien: c.dieuKien.map((d) => (cotGoc.includes(d.cot) ? d : { ...d, cot: cotGoc[0] ?? d.cot })) };
-                  })
-                }
-              >
-                {cau.noiBang?.bang ? `${cau.noiBang.bang}` : 'chưa nối'}
-              </button>
-              {cau.noiBang?.bang ? (
-                <>
-                  <span className="v7-o v7-o--dau" aria-hidden="true">
-                    THEO
-                  </span>
-                  <button
-                    type="button"
-                    className={`v7-o v7-o--cot${cau.noiBang.cot ? '' : ' is-trong'}`}
-                    disabled={khoa}
-                    aria-label={`Cột nối: ${cau.noiBang.cot || 'chưa chọn'} — bấm để đổi`}
-                    onClick={() =>
-                      doiCau((c) => {
-                        if (!c.noiBang) return c;
-                        const ke = cotChung[(cotChung.indexOf(c.noiBang.cot) + 1) % Math.max(1, cotChung.length)];
-                        return { ...c, noiBang: { ...c.noiBang, cot: ke ?? '' } };
-                      })
-                    }
-                  >
-                    {cau.noiBang.cot || 'chưa chọn cột'}
-                  </button>
-                </>
-              ) : null}
-            </div>
-          ) : null}
-          {chonCot ? (
-            <div className="v7-lay" role="group" aria-label="Các cột lấy ra">
-              <span className="v7-o v7-o--dau" aria-hidden="true">
-                LẤY CỘT
-              </span>
-              {bang.cot.map((c) => {
-                const bat = cotLay.includes(c.ten);
-                return (
-                  <button key={c.ten} type="button" className={`v7-o v7-o--lay${bat ? ' is-bat' : ''}`} disabled={khoa} aria-pressed={bat} aria-label={`Cột ${c.ten}: ${bat ? 'đang lấy — bấm để bỏ' : 'chưa lấy — bấm để lấy'}`} onClick={() => doiCot(c.ten)}>
-                    <span aria-hidden="true">{bat ? '✓' : '+'}</span> {c.ten}
-                  </button>
-                );
-              })}
-              {cotLay.length === 0 ? <small className="v7-lay__nhac">bấm cột muốn xem</small> : null}
-            </div>
-          ) : null}
-        </div>
+        {bang ? (
+          <KhungNguonBangV7
+            bang={bang}
+            daChonBang={daChonBang}
+            chonBang={chonBang}
+            onChonBang={(ten) => {
+              setDaChonBang(ten !== '');
+              if (ten && duLieu) {
+                setBangGocChon(ten);
+                doiCau((c) => {
+                  const bMoi = duLieu.bang.find((x) => x.ten === ten);
+                  const cotMoi = bMoi?.cot.map((x) => x.ten) ?? [];
+                  const khungMoi = c.khung.replace(/\bFROM\s+[a-z0-9_]+/i, `FROM ${ten}`);
+                  return {
+                    ...c,
+                    khung: khungMoi,
+                    dieuKien: c.dieuKien.map((d) => (cotMoi.includes(d.cot) ? d : { ...d, cot: cotMoi[0] ?? d.cot })),
+                  };
+                });
+              }
+            }}
+            danhSachBangChon={the.bangChon}
+            nguonPhieu={nguonPhieu}
+            dienTen={dienTen}
+            tongDong={tongDong}
+            khoa={khoa}
+            khoiNoi={khoi.noi}
+            bangNoiDuoc={bangNoiDuoc}
+            cauNoiBang={cau.noiBang ?? undefined}
+            cotChung={cotChung}
+            onDoiNoiBang={(b, cot) =>
+              doiCau((c) => {
+                const cotGoc = bang?.cot.map((x) => x.ten) ?? [];
+                if (!b) return { ...c, noiBang: undefined, dieuKien: c.dieuKien.map((d) => (cotGoc.includes(d.cot) ? d : { ...d, cot: cotGoc[0] ?? d.cot })) };
+                const bDuLieu = duLieu?.bang.find((x) => x.ten === b);
+                const cotGiao = bang && bDuLieu ? bang.cot.map((x) => x.ten).filter((t) => bDuLieu.cot.some((x) => x.ten === t)) : [];
+                const khoaNoi = cot !== undefined ? cot : (cotGiao[0] ?? '');
+                return { ...c, noiBang: { bang: b, cot: khoaNoi } };
+              })
+            }
+            chonCot={chonCot}
+            cotLay={cotLay}
+            onDoiCot={doiCot}
+            onMoXemTruoc={() => setXemTruocMo(true)}
+          />
+        ) : null}
 
         <div className="v7-cot v7-cot--chinh">
           <span className="v7-cot__nhan">2. ĐIỀU KIỆN LỌC</span>
@@ -809,7 +779,10 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
         <button
           type="button"
           className="v7-thoai"
-          onClick={() => setLoiNoi((ds) => ds.slice(1))}
+          onClick={() => {
+            if (cham && cham.trangThai !== 'loi') onDaXemTruyVan?.({ id: the.id, nhan: the.tieuDe, sql }, loiNoi.slice(1, 2));
+            setLoiNoi((ds) => ds.slice(1));
+          }}
           aria-label={`${tenNguoiNoi(kb, loi.speaker)}: ${dienTen(loi.text)} — bấm để đóng`}
         >
           {chibiNoi ? (

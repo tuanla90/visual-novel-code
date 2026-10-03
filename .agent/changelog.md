@@ -1,6 +1,35 @@
 # Nhật Ký Thay Đổi (.agent/changelog.md)
 
-## [2026-10-04] Đồng Nhất Màn Laptop Ngày Hội (`LocThuV7`): Lọc Ngành Trước Tên Sau, Tên Cột Excel Tiếng Việt & Lưới Tròn Chục
+## [2026-10-04] Khảo Sát Bảng & Xem Trước Cột Mới Khi JOIN (Hướng C + A)
+
+### 1. Bối Cảnh & Vấn Đề (UX & Data Detective Scaffolding):
+- Trước đây, chỉ có Vụ 1 (`c-bang-lop`) có bước chọn bảng rồi chạy xem output. Từ Vụ 2 trở đi, bảng nguồn bị khóa cứng (`🔒`), ép người chơi lọc ngay mà chưa khảo sát được cấu trúc và mẫu dữ liệu của bảng.
+- Đặc biệt ở các bài JOIN (Vụ 4 `c-don-nam-may`, Vụ 5 `c-dat-ma-khong-co`, `c-chi-tham-tu`): người chơi chọn bảng và khóa nối xong nhưng không "nhìn thấy" bảng nối thực tế đã bổ sung thêm những cột nào, dẫn đến việc phải đoán mò cột ở phần điều kiện lọc tiếp theo.
+
+### 2. Giải Pháp Triển Khai (Hướng C + A):
+- **KhungNguonBangV7.tsx**:
+  - Hỗ trợ dropdown chọn bảng linh hoạt từ danh sách bảng ứng viên (`the.bangChon` hoặc `chonBang`).
+  - Hỗ trợ chọn bảng nối (`NỐI VỚI`) và khóa nối (`THEO`).
+  - Tích hợp nút **`👁️ Xem trước bảng nối / Khảo sát bảng`** (`.v7-btn-preview`) kèm hiệu ứng pulse dot mời gọi người chơi kiểm tra dữ liệu.
+- **XemTruocBangModal.tsx**:
+  - Modal xem trước 6 dòng dữ liệu mẫu và toàn bộ cấu trúc cột thực tế (chạy query SQLite thật qua `chaySql`).
+  - **Trực quan hóa JOIN**: Tự động nhận diện và **highlight nổi bật các cột mới nối từ bảng thứ hai** (màu xanh ngọc, badge `✨ Cột mới từ <tên bảng>`, tag `MỚI` trên từng header cột).
+  - Giúp người chơi xác nhận ngay: bảng đã nối thành công, các cột mới (`may`, `gio`, v.v.) đã sẵn sàng để lọc điều kiện.
+- **Tuân thủ quy tắc 1000 dòng (The 1000-Line Rule in GEMINI.md)**:
+  - Tách `KhungNguonBangV7.tsx` (190 dòng) và `XemTruocBangModal.tsx` (216 dòng) ra khỏi `ManTraV7.tsx`.
+  - Giảm dung lượng `ManTraV7.tsx` từ **976 dòng xuống còn 951 dòng** an toàn, sạch sẽ, đạt chuẩn modular.
+- **Khai báo Markdown**:
+  - Bổ sung `- Bảng chọn: don_linh_kien · phien_dang_nhap` cho `c-don-nam-may`.
+  - Bổ sung `- Bảng chọn: don_linh_kien · kiem_ke` cho `c-dat-ma-khong-co`.
+  - Bổ sung `- Bảng chọn: khoan_chi · quy` cho `c-chi-tham-tu`.
+
+### 3. Kiểm Thử & Xác Nhận:
+- Unit test mới `src/mvp/ui/v7/xem-truoc-bang.test.tsx` (3/3 tests passed).
+- Toàn bộ suite `src/mvp/ui/v7/` (6 test files, 27 tests passed 100%).
+- `npm run kiem-noi-dung:mvp`: 58/58 tệp đạt chuẩn, 39/39 câu SQL khớp số dòng 100%.
+- `npm run typecheck`: 0 lỗi TypeScript strict mode.
+
+
 
 ### 1. Đồng Nhất Màn Hình Laptop Với Bản Sửa Mới Nhất (`LocThuV7.tsx` & `v7.css`):
 - **Phóng to mặt kính máy tính**: Nâng kích thước vùng kính từ `1100×640` lên chuẩn `1420×740` (tương đương `CANH_TRA` của laptop CLB), xóa bỏ khoảng đen thụt lùi ở hai bên.

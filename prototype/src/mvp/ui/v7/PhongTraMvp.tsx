@@ -19,6 +19,7 @@ import { ManTraV7, type CanhTra, type NguonPhieuV7 } from './ManTraV7';
 import { ManTongHopMvp, type KetQuaTraTongHop } from './ManTongHopMvp';
 
 export interface PhongTraMvpProps {
+  onDaXemTruyVan?: import('./ManTraV7').ManTraV7Props['onDaXemTruyVan'];
   kb: KichBanMvp;
   s: TrangThaiMvp;
   duLieu: BoDuLieuMvp | null;
@@ -36,7 +37,7 @@ export interface PhongTraMvpProps {
 
 type Pha = { ten: 'bang' } | { ten: 'may' } | { ten: 'ghim'; id: string; dung: string[]; phieu?: PhieuTruyVanMvp; ghiChu?: GhiChuTruyVanMvp[] };
 
-export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, onDoiCho, onDoiMau, onXong }: PhongTraMvpProps) {
+export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, onDoiCho, onDoiMau, onXong, onDaXemTruyVan }: PhongTraMvpProps) {
   const laPhongMay = noi !== undefined && /phòng máy/i.test(noi);
   const canh: CanhTra = mode === 'fix-query' ? 'man-chieu' : laPhongMay ? 'phong-may' : 'phong-clb';
   const [pha, setPha] = useState<Pha>(() => (mode === 'fix-query' || laPhongMay ? { ten: 'may' } : { ten: 'bang' }));

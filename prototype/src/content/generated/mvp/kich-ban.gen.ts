@@ -2623,9 +2623,9 @@ const GOC = {
           "diem": [
             {
               "sprite": "obj-hop-kien-nghi",
-              "x": 28,
-              "y": 50,
-              "rong": 8,
+              "x": 35.2,
+              "y": 45.5,
+              "rong": 3.4,
               "chuoi": "n1-hop",
               "sau": [],
               "nhan": "Soi khe hộp kiến nghị"
@@ -2641,12 +2641,12 @@ const GOC = {
             },
             {
               "sprite": "obj-thong-bao-hop",
-              "x": 35.5,
-              "y": 42,
-              "rong": 4,
+              "x": 40.5,
+              "y": 43.5,
+              "rong": 2.6,
               "chuoi": "n1-thong-bao-hop",
               "sau": [],
-              "nhan": "Đọc tờ giấy dán cạnh hộp"
+              "nhan": "Đọc thông báo dán trên bảng tin"
             }
           ]
         },
@@ -15946,6 +15946,10 @@ const GOC = {
       "bangNoi": [
         "phien_dang_nhap"
       ],
+      "bangChon": [
+        "don_linh_kien",
+        "phien_dang_nhap"
+      ],
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -16897,6 +16901,10 @@ const GOC = {
       "bangNoi": [
         "kiem_ke"
       ],
+      "bangChon": [
+        "don_linh_kien",
+        "kiem_ke"
+      ],
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -16969,6 +16977,10 @@ const GOC = {
       "soDongKyVong": 6,
       "sqlChuan": "SELECT ma_chi, ma_don, so_tien, nguoi_duyet, ngay_chi FROM khoan_chi JOIN quy ON khoan_chi.ma_quy = quy.ma_quy WHERE clb = 'THAM_TU';",
       "bangNoi": [
+        "quy"
+      ],
+      "bangChon": [
+        "khoan_chi",
         "quy"
       ],
       "truyVanNapSan": null,
@@ -19063,7 +19075,7 @@ const GOC = {
     {
       "sql": "SELECT may, COUNT(*) AS so_dong FROM @ev-don-nam-may GROUP BY may;",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:68 thẻ c-don-nam-theo-may, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:69 thẻ c-don-nam-theo-may, SQL chuẩn",
       "resultId": "ev-don-nam-theo-may",
       "sourceResultId": "ev-don-nam-may",
       "sourceGroupColumn": "may"
@@ -19071,7 +19083,7 @@ const GOC = {
     {
       "sql": "SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE may = 'MAY-VP-XUONG';",
       "soDong": 4,
-      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:87 thẻ c-may-vp, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:88 thẻ c-may-vp, SQL chuẩn",
       "resultId": "ev-may-vp"
     },
     {
@@ -19156,20 +19168,20 @@ const GOC = {
     {
       "sql": "SELECT ma_chi, ma_don, so_tien, nguoi_duyet, ngay_chi FROM khoan_chi JOIN quy ON khoan_chi.ma_quy = quy.ma_quy WHERE clb = 'THAM_TU';",
       "soDong": 6,
-      "noi": "noi-dung-mvp/thu-thach/so-quy.md:25 thẻ c-chi-tham-tu, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/so-quy.md:26 thẻ c-chi-tham-tu, SQL chuẩn",
       "resultId": "ev-chi-tham-tu"
     },
     {
       "sql": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet;",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/so-quy.md:47 thẻ c-chi-theo-nguoi-duyet, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/so-quy.md:49 thẻ c-chi-theo-nguoi-duyet, SQL chuẩn",
       "resultId": "ev-chi-theo-nguoi-duyet",
       "sourceResultId": "ev-chi-tham-tu"
     },
     {
       "sql": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_tien) AS tb_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet HAVING SUM(so_tien) > 1000000;",
       "soDong": 1,
-      "noi": "noi-dung-mvp/thu-thach/so-quy.md:65 thẻ c-chi-vuot-muc, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/so-quy.md:67 thẻ c-chi-vuot-muc, SQL chuẩn",
       "resultId": "ev-chi-vuot-muc",
       "sourceResultId": "ev-chi-tham-tu"
     },

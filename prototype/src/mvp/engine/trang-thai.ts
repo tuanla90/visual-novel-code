@@ -138,6 +138,7 @@ export interface TrangThaiMvp {
   phienBan: 1;
   /** Mốc bắt đầu ván (ms) — khóa phiên, dùng làm khóa xáo lựa chọn. */
   batDauLuc: number;
+  triNhoDongHanh?: import('./tri-nho-dong-hanh').TriNhoDongHanhMvp;
   /**
    * Tên người chơi tự gõ / xúc xắc ở `[TẠO NHÂN VẬT ten]` (rỗng tới lúc đó; ô lưu cũ có sẵn 'Khôi').
    * Chỉ nằm trong trạng thái (Lưu/Nạp) — KHÔNG ghi vào telemetry (QĐ-077).

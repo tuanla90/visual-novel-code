@@ -15,4 +15,8 @@ export const DAO_CU_CANH: Record<string, DaoCuCanh[]> = {
     { sprite: 'obj-thong-bao-thang-may', x: 10.5, y: 38.5, rong: 3.6 },
     { sprite: 'obj-so-do-ktx', x: 44, y: 35.5, rong: 10 },
   ],
+  'sanh-toa-b': [
+    { sprite: 'obj-hop-kien-nghi', x: 35.2, y: 45.5, rong: 3.4 },
+    { sprite: 'obj-thong-bao-hop', x: 40.5, y: 43.5, rong: 2.6 },
+  ],
 };

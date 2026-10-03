@@ -29,6 +29,7 @@ export interface KetQuaTraTongHop {
 }
 
 export interface ManTongHopMvpProps {
+  onDaXemTruyVan?: (query: import('../../engine/tri-nho-dong-hanh').TruyVanDaXemMvp, loi: readonly import('../../../content/mvp/types').LoiMvp[]) => void;
   kb: KichBanMvp;
   duLieu: BoDuLieuMvp;
   the: TheThuThachMvp;
@@ -56,7 +57,7 @@ function sqlChuanCoNguon(sql: string, nguon: NguonTongHop[]): string {
 /** Phần tử kế tiếp trong vòng `ds` (sau phần tử cuối là `''` = chưa chọn). */
 const vongKe = (ds: readonly string[], dang: string): string => ds[ds.indexOf(dang) + 1] ?? '';
 
-export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, nhanNguon, onXong }: ManTongHopMvpProps) {
+export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, nhanNguon, onXong, onDaXemTruyVan }: ManTongHopMvpProps) {
   const cauHinh = CANH_TRA[canh];
   const [nguonId, setNguonId] = useState(nguon.length === 1 ? (nguon[0]?.id ?? '') : '');
   const [nhomTheo, setNhomTheo] = useState('');
@@ -133,6 +134,7 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
       }
       const so = soVoiChuan(chuan, kq);
       setKetQua({ sql, cot: kq.cot, dong: kq.dong, dung: so.dung, duSo: so.cotThieu.filter((c) => !kq.cot.includes(c)).length === 0 });
+      onDaXemTruyVan?.({ id: the.id, nhan: the.tieuDe, sql }, so.dung ? [] : [{ speaker: 'ha-vy', text: `Kết quả có ${kq.dong.length} nhóm; chưa trả lời đúng câu hỏi.` }]);
       if (!so.dung) {
         // Lời tả kết quả, không nói cách sửa: thiếu cột → nêu cột thiếu; lệch số nhóm → nêu số nhóm.
         const thieu = so.cotThieu.filter((c) => !kq.cot.includes(c));

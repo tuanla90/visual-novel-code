@@ -89,6 +89,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const oLuu = useKhoMvp((k) => k.oLuu);
   const batDau = useKhoMvp((k) => k.batDau);
   const hanhDong = useKhoMvp((k) => k.hanhDong);
+  const ghiNhanTruyVan = useKhoMvp((k) => k.ghiNhanTruyVan);
   const xoa = useKhoMvp((k) => k.xoa);
   const luuVaoO = useKhoMvp((k) => k.luuVaoO);
   const napTuO = useKhoMvp((k) => k.napTuO);
@@ -415,6 +416,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       case 'fix-query':
         return (
           <PhongTraMvp
+            onDaXemTruyVan={(query, loi) => ghiNhanTruyVan(query, loi, s)}
             key={`${kn.thuThach.id}-${kn.kind}`}
             kb={kb}
             s={s}

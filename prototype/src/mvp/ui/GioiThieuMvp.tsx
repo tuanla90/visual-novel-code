@@ -9,9 +9,6 @@ import { CharacterDebutCard } from '../../story/ui/CharacterDebutSplash';
 import { anhChanDung, anhTheoTen } from './anh-mvp';
 import { mauNhanVat } from './mau-nhan-vat';
 
-/** Ảnh giới thiệu đặt nhân vật một bên, chữ đi vào phía còn trống (như prototype). */
-const CHU_BEN_TRAI = new Set(['ha-vy', 'quan']);
-
 export function GioiThieuMvp({ kb, nhanVat, onDong }: { kb: KichBanMvp; nhanVat: string; onDong: (id: string) => void }) {
   const nv = kb.nhanVat.find((n) => n.id === nhanVat);
   const gt = nv?.gioiThieu;
@@ -27,7 +24,7 @@ export function GioiThieuMvp({ kb, nhanVat, onDong }: { kb: KichBanMvp; nhanVat:
       major={gt.nganh}
       accentColor={mauNhanVat(nv.id)}
       intro={intro ? { url: intro } : null}
-      textSide={CHU_BEN_TRAI.has(nv.id) ? 'left' : 'right'}
+      textSide="right"
       visual={
         <div className="chara-debut__portrait-wrap mvp-gioithieu__chandung">{chanDung ? <img src={chanDung} alt={nv.ten} draggable={false} /> : null}</div>
       }
