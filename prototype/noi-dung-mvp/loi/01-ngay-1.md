@@ -28,7 +28,7 @@
 - **ha-vy** (thinking): Mẩu đó giờ ai biết ở đâu. Mà thẻ mắc ở khe chưa chắc đã là của người bỏ thư.
 
 ## n1-bac-thinh.1
-- **bac-tu** (neutral): Cháu hỏi cái hộp à? Sáng thứ Hai 9 giờ, bác với cô phụ trách mở. Lá thư ấy nằm trên cùng.
+- **bac-tu** (neutral): Cháu hỏi cái hộp à? Sáng thứ Hai 9 giờ, bác với cô Lan bên Công tác sinh viên mở. Lá thư ấy nằm trên cùng.
 - **player**: Nằm trên cùng… tức là được bỏ vào sau cùng ạ?
 - **bac-tu** (neutral): Chắc thế. Tối Chủ nhật bác đi khóa cửa, ngó qua khe thì hộp còn trống. Bảy giờ sáng thứ Hai bác mới mở cửa tòa.
 - **bac-tu** (neutral): Từ bảy giờ tới lúc mở hộp, ra vào tòa này toàn sinh viên mấy lớp sinh hoạt đầu tuần ở đây thôi.

@@ -31,7 +31,7 @@ import type { SqlJsStatic } from 'sql.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '../../..'); // prototype/
-const CACHE_DIR = 'node_modules/.vite-canary';
+const CACHE_DIR = '.vite-canary';
 const SERVED_DIR = path.join(root, CACHE_DIR, 'served');
 const IMPORTER_URL = '/src/sql-challenge/engine/sqljs.ts';
 
@@ -46,7 +46,7 @@ async function getText(url: string): Promise<{ status: number; type: string; tex
   return { status: res.status, type: res.headers.get('content-type') ?? '', text: await res.text() };
 }
 
-/** Tải một module đã phục vụ và mọi chunk `/node_modules/.vite/deps/…` nó import về đĩa, trả đường dẫn tệp. */
+/** Tải một module đã phục vụ và mọi chunk trong cache Vite nó import về đĩa, trả đường dẫn tệp. */
 async function materialize(url: string, seen = new Map<string, string>()): Promise<string> {
   const key = url.split('?')[0] ?? url;
   const known = seen.get(key);
@@ -56,8 +56,8 @@ async function materialize(url: string, seen = new Map<string, string>()): Promi
   const { status, text } = await getText(url);
   expect(status, `GET ${url}`).toBe(200);
   let code = text;
-  // Chunk của optimizer nằm ở /node_modules/<cacheDir>/deps/… (cacheDir của canary là .vite-canary).
-  for (const m of text.matchAll(/from\s+["'](\/node_modules\/\.vite[\w.-]*\/deps\/[^"']+)["']/g)) {
+  // Chunk của optimizer nằm trong cache riêng của canary.
+  for (const m of text.matchAll(/from\s+["'](\/\.vite-canary\/deps\/[^"']+)["']/g)) {
     const depUrl = m[1] ?? '';
     const depFile = await materialize(depUrl, seen);
     code = code.replaceAll(`"${depUrl}"`, JSON.stringify(pathToFileURL(depFile).href));
@@ -70,6 +70,7 @@ async function materialize(url: string, seen = new Map<string, string>()): Promi
 describe('canary: Vite dev phục vụ sql.js nạp được như trình duyệt', () => {
   beforeAll(async () => {
     server = await createServer({
+      configLoader: 'runner',
       configFile: path.join(root, 'vite.config.ts'),
       root,
       logLevel: 'silent',

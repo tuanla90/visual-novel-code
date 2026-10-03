@@ -52,7 +52,7 @@ export const sampleEvidence: EvidenceContent = {
     'doc-handover-log': {
       id: 'doc-handover-log',
       title: '(MẪU) Sổ bàn giao niêm phong — kết quả đối chiếu',
-      source: '(MẪU) Cô phụ trách hộp góp ý',
+      source: '(MẪU) Cô Lan, Phòng CTSV',
       body: ['(MẪU) SV240317 — có trong sổ.', '(MẪU) SV240228 — không có trong sổ.'],
       caveat: '(MẪU) Sổ cho biết ai đã ký gửi phong bì, không cho biết ai viết lá thư.',
     },

@@ -4,8 +4,8 @@
 
 > NHIỆM VỤ: Đối chiếu với sổ bàn giao
 
-- [DÀN DỰNG] Bước 7 của QĐ-024; theo §2.1, phần Kết bắt đầu từ bước xác minh độc lập. Cô phụ trách hộp góp ý không lên hình, chỉ xuất hiện qua lời kể và tài liệu. Không dùng hiệu ứng "Có số liệu đây!" ở đây: khoảnh khắc này dẫn tới nhân chứng, cần nhẹ nhàng.
-- **narrator**: Hai mươi phút sau, cô phụ trách hộp góp ý gửi lên kết quả đối chiếu.
+- [DÀN DỰNG] Bước 7 của QĐ-024; theo §2.1, phần Kết bắt đầu từ bước xác minh độc lập. Cô Lan không lên hình ở cảnh này, chỉ xuất hiện qua lời kể và tài liệu. Không dùng hiệu ứng "Có số liệu đây!" ở đây: khoảnh khắc này dẫn tới nhân chứng, cần nhẹ nhàng.
+- **narrator**: Hai mươi phút sau, cô Lan gửi lên kết quả đối chiếu.
 - [HIỆN TÀI LIỆU doc-handover-log]
 - **ha-vy** (thinking): Sổ niêm phong, không ai được xem. Cô chỉ trả lời mã nào có, mã nào không.
 - **quan** (neutral): SV240317 có trong sổ. Phòng CTSV sẽ mời bạn ấy lên.

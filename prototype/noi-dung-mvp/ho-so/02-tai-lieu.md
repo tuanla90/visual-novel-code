@@ -42,4 +42,4 @@
 - Ảnh: doc-van-ban-thay-quang
 - Nguồn: Phòng Đào tạo
 - Nội dung hiển thị:
-> CLB chỉ lập danh sách mã ứng viên kèm căn cứ; cô phụ trách tự tra sổ. Tài khoản CLB chỉ xem bảng lớp; bảng khác cần phiếu yêu cầu tra cứu của Phòng CTSV.
+> CLB chỉ lập danh sách mã ứng viên kèm căn cứ; cô Lan tự tra sổ. Tài khoản CLB chỉ xem bảng lớp; bảng khác cần phiếu yêu cầu tra cứu của Phòng CTSV.

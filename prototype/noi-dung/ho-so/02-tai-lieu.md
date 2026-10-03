@@ -25,7 +25,7 @@
 ### doc-handover-log — Sổ bàn giao niêm phong
 
 - Tiêu đề: Sổ bàn giao niêm phong — kết quả đối chiếu
-- Nguồn: Cô phụ trách hộp góp ý, gửi qua Phòng CTSV theo đề nghị của CLB
+- Nguồn: Cô Lan, Phòng CTSV, gửi theo đề nghị của CLB
 - Nội dung hiển thị trên tài liệu:
 
 > Hộp góp ý giảng đường B, mở sáng thứ Hai: 1 phong bì có yêu cầu phản hồi chính thức. Chữ ký người gửi chỉ đọc được chữ H đầu. Mã sinh viên ghi trên phiếu gửi đã chép vào sổ.

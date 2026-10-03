@@ -39,12 +39,12 @@
 
 - **bac-tu** (neutral): CLB Thám Tử đấy à? Lâu lắm rồi mới thấy các cháu đi hỏi chuyện.
 - **minh-anh** (neutral): Dạ. Bác ơi, sáng nay hộp góp ý nào được mở ạ?
-- **bac-tu** (neutral): Mỗi hộp này thôi, hộp giảng đường B. Cô phụ trách hộp góp ý mở, bác đứng lau ngay đây.
+- **bac-tu** (neutral): Mỗi hộp này thôi, hộp giảng đường B. Cô Lan mở, bác đứng lau ngay đây.
 - **bac-tu** (neutral): Hộp tòa A với tòa C tuần này chưa đến lượt mở.
 - **ha-vy** (thinking): Vậy người bỏ thư đã đến tòa B. Lớp nào sinh hoạt ở tòa B thì sinh viên lớp ấy hay qua lại đây.
 - **minh-anh** (worried): Nhưng view của mình chỉ có lớp, làm gì có tòa nhà.
 - **ha-vy** (thinking): Thì tìm xem lớp nào sinh hoạt ở tòa B. Chắc phải có bảng ghi chuyện đó.
-- [DÀN DỰNG] Vì sao giữ manh mối này: nó đổi câu hỏi và cấu trúc truy vấn — bảng `sinh_vien` không có cột tòa nhà, nên phải hỏi bảng `lop_sinh_hoat` trước (c2), rồi dùng kết quả làm điều kiện `ma_lop IN (…)` của c3. Câu "cô phụ trách hộp góp ý" cài sẵn nguồn xác minh độc lập cho cú lật ở deb-04 và end-01.
+- [DÀN DỰNG] Vì sao giữ manh mối này: nó đổi câu hỏi và cấu trúc truy vấn — bảng `sinh_vien` không có cột tòa nhà, nên phải hỏi bảng `lop_sinh_hoat` trước (c2), rồi dùng kết quả làm điều kiện `ma_lop IN (…)` của c3. Câu "cô Lan mở hộp" cài sẵn nguồn xác minh độc lập cho cú lật ở deb-04 và end-01.
 
 ### inv-box — Mẩu bookmark ở khe hộp {scene: corridor-b}
 

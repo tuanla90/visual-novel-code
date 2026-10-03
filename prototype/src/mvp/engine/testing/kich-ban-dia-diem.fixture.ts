@@ -153,7 +153,7 @@ export const KICH_BAN_DIA_DIEM = {
       "ten": "Bác Thịnh",
       "hoTen": null,
       "trongCau": "bác Thịnh",
-      "vai": "Bảo vệ giảng đường B. Cùng cô phụ trách mở hộp kiến nghị lúc 9h sáng thứ Hai.",
+      "vai": "Bảo vệ tòa B. Cùng cô Lan mở hộp kiến nghị lúc 9h sáng thứ Hai.",
       "bieuCam": [
         "neutral"
       ],
@@ -233,27 +233,6 @@ export const KICH_BAN_DIA_DIEM = {
       }
     },
     {
-      "id": "thay-khai",
-      "ten": "Thầy Khải",
-      "hoTen": null,
-      "trongCau": "thầy Khải",
-      "vai": "Quản lý phòng máy.",
-      "bieuCam": [
-        "neutral"
-      ],
-      "xuatHienTu": {
-        "kind": "mo-dau"
-      },
-      "chiQuaLoiKe": false,
-      "gioiThieu": {
-        "danhXung": "Quản lý phòng máy",
-        "nam": null,
-        "nganh": null,
-        "cauNoi": "Các em chỉ xem đúng dòng liên quan thôi nhé.",
-        "loi": "Thầy quản lý phòng máy của trường. Máy nào ai ngồi, lệnh in nào của ai, thầy đều có nhật ký."
-      }
-    },
-    {
       "id": "hoai",
       "ten": "Hoài",
       "hoTen": "Lê Thu Hoài",
@@ -322,19 +301,6 @@ export const KICH_BAN_DIA_DIEM = {
         "cauNoi": "Có thế thôi.",
         "loi": "Lớp trưởng lớp BC24A. Để ý chuyện trong lớp, nhưng chỉ kể đúng những gì mình nghe thấy."
       }
-    },
-    {
-      "id": "co-phu-trach",
-      "ten": "Cô phụ trách hộp kiến nghị",
-      "hoTen": null,
-      "trongCau": "cô phụ trách hộp kiến nghị",
-      "vai": "Giữ sổ niêm phong. Chỉ xuất hiện qua lời kể và tài liệu.",
-      "bieuCam": [],
-      "xuatHienTu": {
-        "kind": "mo-dau"
-      },
-      "chiQuaLoiKe": true,
-      "gioiThieu": null
     }
   ],
   "canh": [
@@ -848,7 +814,7 @@ export const KICH_BAN_DIA_DIEM = {
         },
         {
           "id": "dk-nop-hai-ma",
-          "moTa": "Nộp 2 mã kèm căn cứ; cô phụ trách tra sổ: SV240317 có, SV240228 không",
+          "moTa": "Nộp 2 mã kèm căn cứ; cô Lan tra sổ: SV240317 có, SV240228 không",
           "nhan": "chinh",
           "moTu": {
             "kind": "ngay",
@@ -1605,7 +1571,7 @@ export const KICH_BAN_DIA_DIEM = {
           "type": "line",
           "speaker": "tung",
           "expression": "neutral",
-          "text": "Phòng máy của thầy Khải đấy. Chưa có việc thì đứng ngoài ngó thôi."
+          "text": "Phòng máy đang có lớp đấy. Chưa có việc thì đứng ngoài ngó thôi."
         },
         {
           "type": "goto",
@@ -1949,7 +1915,7 @@ export const KICH_BAN_DIA_DIEM = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Thầy Quang cho CLB lập căn cứ. Cô phụ trách tự tra, Hội sinh viên giám sát."
+          "text": "Thầy Quang cho CLB lập căn cứ. Cô Lan tự tra, Hội sinh viên giám sát."
         },
         {
           "type": "line",
@@ -1999,7 +1965,7 @@ export const KICH_BAN_DIA_DIEM = {
           "type": "line",
           "speaker": "bac-tu",
           "expression": "neutral",
-          "text": "Cháu hỏi cái hộp à? Sáng thứ Hai 9 giờ, bác với cô phụ trách mở. Lá thư ấy nằm trên cùng."
+          "text": "Cháu hỏi cái hộp à? Sáng thứ Hai 9 giờ, bác với cô Lan mở. Lá thư ấy nằm trên cùng."
         },
         {
           "type": "line",
@@ -2204,7 +2170,7 @@ export const KICH_BAN_DIA_DIEM = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Thầy Khải cho mượn phòng máy thêm một tiếng. Vào đi, tớ ngồi cạnh."
+          "text": "Phòng máy còn mở thêm một tiếng. Vào đi, tớ ngồi cạnh."
         },
         {
           "type": "goto",
@@ -2380,7 +2346,7 @@ export const KICH_BAN_DIA_DIEM = {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
-          "text": "Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô phụ trách hộp mới tra và trả lời có hoặc không."
+          "text": "Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô Lan mới tra và trả lời có hoặc không."
         },
         {
           "type": "note",
@@ -2396,7 +2362,7 @@ export const KICH_BAN_DIA_DIEM = {
           "type": "line",
           "speaker": "quan",
           "expression": "neutral",
-          "text": "Các bạn chỉ được lập căn cứ. Tra sổ là việc của cô phụ trách, không phải của CLB."
+          "text": "Các bạn chỉ được lập căn cứ. Tra sổ là việc của cô Lan, không phải của CLB."
         },
         {
           "type": "line",
@@ -2573,9 +2539,9 @@ export const KICH_BAN_DIA_DIEM = {
       "nodes": [
         {
           "type": "line",
-          "speaker": "thay-khai",
+          "speaker": "co-hanh",
           "expression": "neutral",
-          "text": "Nhật ký in của phòng máy đây. Các em chỉ xem đúng dòng liên quan thôi nhé."
+          "text": "Nhật ký in của phòng máy đây. Cô cho các em xem đúng dòng liên quan thôi nhé."
         },
         {
           "type": "line",
@@ -2647,7 +2613,7 @@ export const KICH_BAN_DIA_DIEM = {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
-          "text": "Cô phụ trách tra rồi. SV240317: có trong sổ. SV240228: không có."
+          "text": "Cô Lan tra rồi. SV240317: có trong sổ. SV240228: không có."
         },
         {
           "type": "line",
@@ -3543,7 +3509,7 @@ export const KICH_BAN_DIA_DIEM = {
         "Tiêu đề": "Hộp tòa B, mở 9h sáng thứ Hai",
         "Giá trị cho trình dựng": "B",
         "Nguồn": "Lời bác Thịnh, sảnh tòa B",
-        "Nội dung": "Bác và cô phụ trách mở hộp 9h sáng thứ Hai; thư nằm trên cùng."
+        "Nội dung": "Bác Thịnh và cô Lan mở hộp 9h sáng thứ Hai; thư nằm trên cùng."
       },
       "quotes": {}
     },
@@ -3577,7 +3543,7 @@ export const KICH_BAN_DIA_DIEM = {
       "fields": {
         "Tiêu đề": "Cần mã và căn cứ",
         "Nguồn": "Quy chế phiếu gửi, Phòng CTSV",
-        "Nội dung": "Cô phụ trách chỉ trả lời có/không cho một mã cụ thể khi có căn cứ bằng văn bản."
+        "Nội dung": "Cô Lan chỉ trả lời có/không cho một mã cụ thể khi có căn cứ bằng văn bản."
       },
       "quotes": {}
     },
@@ -3609,7 +3575,7 @@ export const KICH_BAN_DIA_DIEM = {
       "heading": "[Hoài là người nộp]",
       "fields": {
         "Tiêu đề": "Sổ niêm phong: SV240317 có, SV240228 không",
-        "Nguồn": "Cô phụ trách hộp kiến nghị tra sổ, qua Phòng CTSV",
+        "Nguồn": "Cô Lan tra sổ niêm phong hộp kiến nghị, Phòng CTSV",
         "Nội dung": "Nguồn độc lập cho biết ai là người nộp; chưa cho biết ai viết."
       },
       "quotes": {}
@@ -3701,7 +3667,7 @@ export const KICH_BAN_DIA_DIEM = {
       },
       "quotes": {
         "Nội dung hiển thị": [
-          "CLB chỉ lập danh sách mã ứng viên kèm căn cứ; cô phụ trách tự tra sổ; quyền dữ liệu tạm thu hồi sau buổi họp."
+          "CLB chỉ lập danh sách mã ứng viên kèm căn cứ; cô Lan tự tra sổ; quyền dữ liệu tạm thu hồi sau buổi họp."
         ]
       }
     },

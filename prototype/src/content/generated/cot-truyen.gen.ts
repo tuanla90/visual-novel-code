@@ -429,7 +429,7 @@ export const COT_TRUYEN = {
           "type": "line",
           "speaker": "bac-tu",
           "expression": "neutral",
-          "text": "Mỗi hộp này thôi, hộp giảng đường B. Cô phụ trách hộp góp ý mở, bác đứng lau ngay đây."
+          "text": "Mỗi hộp này thôi, hộp giảng đường B. Cô Lan mở, bác đứng lau ngay đây."
         },
         {
           "type": "line",
@@ -457,7 +457,7 @@ export const COT_TRUYEN = {
         },
         {
           "type": "note",
-          "text": "Vì sao giữ manh mối này: nó đổi câu hỏi và cấu trúc truy vấn — bảng `sinh_vien` không có cột tòa nhà, nên phải hỏi bảng `lop_sinh_hoat` trước (c2), rồi dùng kết quả làm điều kiện `ma_lop IN (…)` của c3. Câu \"cô phụ trách hộp góp ý\" cài sẵn nguồn xác minh độc lập cho cú lật ở deb-04 và end-01."
+          "text": "Vì sao giữ manh mối này: nó đổi câu hỏi và cấu trúc truy vấn — bảng `sinh_vien` không có cột tòa nhà, nên phải hỏi bảng `lop_sinh_hoat` trước (c2), rồi dùng kết quả làm điều kiện `ma_lop IN (…)` của c3. Câu \"cô Lan mở hộp\" cài sẵn nguồn xác minh độc lập cho cú lật ở deb-04 và end-01."
         }
       ]
     },
@@ -1107,7 +1107,7 @@ export const COT_TRUYEN = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Cô phụ trách hộp góp ý. Bác Tư bảo sáng nay cô mở hộp B."
+          "text": "Cô Lan bên Công tác sinh viên. Bác Tư bảo sáng nay cô mở hộp B."
         },
         {
           "type": "line",
@@ -1139,12 +1139,12 @@ export const COT_TRUYEN = {
         },
         {
           "type": "note",
-          "text": "Bước 7 của QĐ-024; theo §2.1, phần Kết bắt đầu từ bước xác minh độc lập. Cô phụ trách hộp góp ý không lên hình, chỉ xuất hiện qua lời kể và tài liệu. Không dùng hiệu ứng \"Có số liệu đây!\" ở đây: khoảnh khắc này dẫn tới nhân chứng, cần nhẹ nhàng."
+          "text": "Bước 7 của QĐ-024; theo §2.1, phần Kết bắt đầu từ bước xác minh độc lập. Cô Lan không lên hình ở cảnh này, chỉ xuất hiện qua lời kể và tài liệu. Không dùng hiệu ứng \"Có số liệu đây!\" ở đây: khoảnh khắc này dẫn tới nhân chứng, cần nhẹ nhàng."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hai mươi phút sau, cô phụ trách hộp góp ý gửi lên kết quả đối chiếu."
+          "text": "Hai mươi phút sau, cô Lan gửi lên kết quả đối chiếu."
         },
         {
           "type": "show-document",
