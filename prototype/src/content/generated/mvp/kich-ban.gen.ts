@@ -1968,7 +1968,7 @@ const GOC = {
             },
             {
               "sprite": "nv:ha-vy",
-              "x": 62,
+              "x": 91,
               "y": 100,
               "rong": 14,
               "chuoi": "md-10-ha-vy-goi",

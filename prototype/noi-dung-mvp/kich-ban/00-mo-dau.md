@@ -133,7 +133,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
   - vung:gian-robotics · x 74% · y 50% · rộng 17% → md-10-gian-robotics · dấu: ? · nhãn: Gian đèn ông sao
   - vung:balo-banh-rang · x 77% · y 70% · rộng 8% → md-10-balo-banh-rang · nhãn: Balo trên ghế xanh
   - vung:ap-phich · x 89% · y 38% · rộng 9% → md-10-ap-phich · nhãn: Áp phích trên bảng tin
-  - nv:ha-vy · x 62% · y 100% · rộng 14% → md-10-ha-vy-goi · dấu: ? · nhãn: Hà Vy
+  - nv:ha-vy · x 91% · y 100% · rộng 14% → md-10-ha-vy-goi · dấu: ? · nhãn: Hà Vy
 - [LỜI md-10-mat-banh.2]
 - [ĐI TỚI md-10-hoi-banh]
 
