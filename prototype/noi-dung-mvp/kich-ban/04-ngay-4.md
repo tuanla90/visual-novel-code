@@ -17,7 +17,7 @@
 - [LỜI n4-ctsv.1]
 - [KHÁM PHÁ kp-toi-n4-ctsv]
   - nv:co-lan · x 35% · y 100% · rộng 15% → n4-ctsv-vao · dấu: ! · nhãn: Cô Lan
-  - vung:khay-giay · x 89% · y 60% · rộng 8% → n4-ctsv-an · nhãn: Khay giấy trên quầy
+  - vung:khay-giay · x 88.5% · y 50% · rộng 10% → n4-ctsv-an · nhãn: Khay giấy trên quầy
 
 ### n4-ctsv-vao — Tới nơi: CTSV tra sổ niêm phong {cảnh: phong-ctsv}
 

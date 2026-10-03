@@ -3875,7 +3875,7 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:ha-vy",
-              "x": 45,
+              "x": 68,
               "y": 100,
               "rong": 15,
               "chuoi": "n3-bd-phong-may-vao",
@@ -3885,9 +3885,9 @@ const GOC = {
             },
             {
               "sprite": "vung:dep",
-              "x": 14,
+              "x": 15.5,
               "y": 81,
-              "rong": 8,
+              "rong": 11,
               "chuoi": "n3-bd-phong-may-an",
               "sau": [],
               "nhan": "Hai đôi dép trước cửa"
@@ -3963,9 +3963,9 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:bac-tu",
-              "x": 30,
+              "x": 78,
               "y": 100,
-              "rong": 15,
+              "rong": 16,
               "chuoi": "n3-bd-toa-b-vao",
               "sau": [],
               "nhan": "Bác bảo vệ",
@@ -3973,8 +3973,8 @@ const GOC = {
             },
             {
               "sprite": "vung:binh-cuu-hoa",
-              "x": 38.5,
-              "y": 57,
+              "x": 38.7,
+              "y": 55,
               "rong": 3,
               "chuoi": "n3-bd-toa-b-an",
               "sau": [],
