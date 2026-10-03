@@ -1,5 +1,18 @@
 # Nhật Ký Thay Đổi (.agent/changelog.md)
 
+## [2026-10-03] Chuẩn Hóa Hệ Thống 3 Phông Chữ Offline & Tinh Chỉnh Bảng Ghim / Cuộn Toàn Game
+
+### 1. Chuẩn Hóa Hệ Thống 3 Phông Chữ (Self-hosted offline):
+- **Noto Sans** (`@fontsource/noto-sans`): Phông chính toàn diện cho UI, hội thoại câu chuyện, nút bấm, HUD và nội dung đọc.
+- **Roboto Mono** (`@fontsource/roboto-mono`): Phông đơn cách (monospace) chuyên biệt cho code SQL, bảng kết quả, terminal, schema và số liệu.
+- **Playwrite India** (`@fontsource/playwrite-in`): Phông viết tay nghệ thuật cho chữ ký nhân vật, giấy nhớ dán (sticky notes), manh mối ghi chép.
+- **Offline 100%**: Loại bỏ phụ thuộc mạng bên ngoài, gỡ các gói font cũ và thẻ link Google Fonts trong `index.html` và `app.css`.
+
+### 2. Tinh Chỉnh Bảng Ghim, Manh Mối & Đồng Bộ Thanh Cuộn:
+- Đồng bộ thanh cuộn mỏng, thanh thoát trên toàn game; khắc phục triệt để lỗi 2 thanh cuộn lồng nhau.
+- Cải tiến bảng ghim điều tra: tương tác đổi màu ghim trực tiếp, gỡ ghim nhanh, đóng bảng khi nhấp ra ngoài.
+- Tinh chỉnh hiển thị văn bản trực tiếp trên tài liệu chứng cứ thay vì các khối che giả.
+
 ## [2026-10-03] Chèn Meme JoJo (NVC Tiến Lên), Buff Tự Tin Cho NVC & Thêm Chữ Đè Lên Cảnh Kaiba
 
 ### 1. Kịch Bản & Cảnh Meme JoJo (`cg-hop-doi-dau`):
