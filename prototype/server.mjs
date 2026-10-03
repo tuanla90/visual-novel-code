@@ -3,6 +3,7 @@ import { stat } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createCompanionHandler } from './ai-companion.mjs';
 
 const dist = resolve(fileURLToPath(new URL('./dist/', import.meta.url)));
 const port = Number(process.env.PORT || 4173);
@@ -26,8 +27,10 @@ const types = {
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
 };
+const companionHandler = createCompanionHandler();
 
 createServer(async (request, response) => {
+  if (await companionHandler(request, response)) return;
   if (request.method !== 'GET' && request.method !== 'HEAD') {
     response.writeHead(405, { Allow: 'GET, HEAD' }).end();
     return;

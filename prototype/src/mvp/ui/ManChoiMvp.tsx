@@ -522,9 +522,12 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           }}
         />
       ) : null}
-      {['line', 'feedback', 'question', 'branch', 'doi-chat'].includes(kn.kind) && !gioiThieuMo && !laTheChu ? (
-        <DongHanhMvp kb={kb} s={s} dienTen={dienTen} />
-      ) : null}
+      <DongHanhMvp
+        kb={kb}
+        s={s}
+        dienTen={dienTen}
+        visible={['line', 'feedback', 'question', 'branch', 'doi-chat'].includes(kn.kind) && !gioiThieuMo && !laTheChu}
+      />
       <SanKhauMvp
         kb={kb}
         canh={noiDangO ? noiDangO.diaDiem.canh : s.canh}

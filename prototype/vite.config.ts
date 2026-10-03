@@ -1,7 +1,27 @@
 /// <reference types="vitest/config" />
 import { realpathSync } from 'node:fs';
-import { defineConfig, searchForWorkspaceRoot } from 'vite';
+import { defineConfig, searchForWorkspaceRoot, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import { createCompanionHandler } from './ai-companion.mjs';
+
+const companionHandler = createCompanionHandler();
+const companionApiPlugin: Plugin = {
+  name: 'ai-companion-api',
+  configureServer(server) {
+    server.middlewares.use((request, response, next) => {
+      void companionHandler(request, response).then((handled) => {
+        if (!handled) next();
+      }).catch(next);
+    });
+  },
+  configurePreviewServer(server) {
+    server.middlewares.use((request, response, next) => {
+      void companionHandler(request, response).then((handled) => {
+        if (!handled) next();
+      }).catch(next);
+    });
+  },
+};
 
 // Cấu hình dùng chung cho Vite (dev/build/preview) và Vitest.
 // sql.js: trình duyệt nạp tệp .wasm qua import `?url` (xem src/sql-challenge/engine/sqljs.ts).
@@ -10,7 +30,7 @@ import react from '@vitejs/plugin-react';
 // làm dev vỡ ngay lúc nạp (SyntaxError "does not provide an export named 'default'") trong khi
 // build/preview vẫn chạy vì rolldown tự interop CJS. Canary: src/sql-challenge/engine/sqljs.dev.test.ts.
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), companionApiPlugin],
   optimizeDeps: {
     include: ['sql.js'],
   },

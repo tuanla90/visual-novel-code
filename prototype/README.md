@@ -32,7 +32,20 @@ npx vite preview --port 4173  # phục vụ dist/ tại http://localhost:4173
 bất kỳ máy chủ tĩnh nào (tệp `.wasm` cần trả `Content-Type: application/wasm`; `vite preview` đã làm đúng).
 Máy thử nghiệm không có Node thì chép thư mục `dist/` sang và dùng một máy chủ tĩnh bất kỳ.
 
-Game chạy hoàn toàn trên máy người chơi, không gọi mạng sau khi đã tải trang.
+Nội dung game chạy trên máy người chơi; tính năng chat AI cần kết nối mạng.
+
+### Chat AI với Tùng và Hà Vy
+
+Khung **Đi cùng** gửi câu hỏi tới OpenAI Responses API qua endpoint cùng máy chủ; khóa API không được đưa vào trình duyệt. Để chạy local bằng PowerShell:
+
+```powershell
+$env:OPENAI_API_KEY = "<API key của bạn>"
+npm run dev
+```
+
+Khi deploy, đặt `OPENAI_API_KEY` trong biến môi trường của máy chủ Railway. `OPENAI_MODEL` là tùy chọn; mặc định là `gpt-6-astra`. Không đặt khóa API vào mã nguồn, tệp giao diện hay biến `VITE_*`.
+
+Chat gửi tin nhắn, các câu thoại gần đây đã hiện, tên cảnh, việc đang làm và hồ sơ đã mở tới máy chủ AI để tạo phản hồi. Nội dung chat không lưu vào game save; API được gọi với `store: false`. Nếu chưa cấu hình khóa, khung chat báo rõ máy chủ chưa bật AI.
 
 ## 3. Trình duyệt hỗ trợ
 
