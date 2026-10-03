@@ -1260,8 +1260,24 @@ const GOC = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "ao-xanh-happy",
-          "text": "Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ là Tùng, học Du lịch."
+          "expression": "ao-xanh-thinking",
+          "text": "408 à… Để tớ dò danh sách đã."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cậu ấy lật mặt sau tờ sơ đồ. Một bảng xếp phòng in chữ bé tí, ngón tay dò từ dòng đầu xuống."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Dòng gần cuối kìa. 408, hai tên."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "ao-xanh-surprised",
+          "text": "…Ơ, tên tớ đây. Thế là cùng phòng thật! Tớ là Tùng, học Du lịch."
         },
         {
           "type": "line",
@@ -1323,13 +1339,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Toán thì chịu, chứ Excel thì tớ lo được. File danh sách nghìn dòng tớ lọc một cái là ra."
+          "text": "Du lịch mà cũng cần vở Toán à?"
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "ao-xanh-chi-tay",
-          "text": "Thế thì chia việc đi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali. Tớ cá là ba phút tới tầng bốn!"
+          "expression": "ao-xanh-gai-dau",
+          "text": "Xác suất thống kê, kỳ hai. Nghe tên đã thấy trượt. Thôi, đưa tớ một đầu vali."
         },
         {
           "type": "goto",
@@ -1688,8 +1704,8 @@ const GOC = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "neutral",
-          "text": "Dạ em thì lọc kém, chứ tìm đường với nhắc lịch là việc của em."
+          "expression": "gai-dau",
+          "text": "Lại cậu. Hôm nhập học tớ dò bảng xếp phòng cũng chậm hơn cậu."
         },
         {
           "type": "line",
@@ -19245,7 +19261,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:170 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:173 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

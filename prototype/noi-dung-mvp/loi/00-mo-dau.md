@@ -62,7 +62,10 @@
 - **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế? Thang máy đang bảo trì.
 - **tung** (ao-xanh-happy): Khuất sau hành lang kia kìa. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
 - **player**: Tầng bốn, phòng 408.
-- **tung** (ao-xanh-happy): Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ là {{nv.tung}}, học Du lịch.
+- **tung** (ao-xanh-thinking): 408 à… Để tớ dò danh sách đã.
+- **narrator**: Cậu ấy lật mặt sau tờ sơ đồ. Một bảng xếp phòng in chữ bé tí, ngón tay dò từ dòng đầu xuống.
+- **player**: Dòng gần cuối kìa. 408, hai tên.
+- **tung** (ao-xanh-surprised): …Ơ, tên tớ đây. Thế là cùng phòng thật! Tớ là {{nv.tung}}, học Du lịch.
 - **player**: Cùng phòng á? Tớ tưởng cậu là anh năm hai, năm ba gì đấy, mặc áo tình nguyện thế kia.
 - **tung** (ao-xanh): Tớ năm nhất thôi. Tớ nhập học đợt một, lên đây từ cuối tháng Tám nên đường nào cũng rành.
 - **tung** (ao-xanh-happy): Đội thiếu người dẫn đường khu ký túc, chú tớ làm bảo vệ nên giới thiệu tớ mượn áo ra phụ hai hôm.
@@ -72,8 +75,8 @@
 
 ## md-00-gap-tung.3
 - **tung** (ao-xanh): {{nv.nguoi-choi.nganh}} à? Lại dân kinh tế. Cả phòng không ai học Toán, sau này tớ mượn vở ai đây.
-- **player**: Toán thì chịu, chứ Excel thì tớ lo được. File danh sách nghìn dòng tớ lọc một cái là ra.
-- **tung** (ao-xanh-chi-tay): Thế thì chia việc đi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali. Tớ cá là ba phút tới tầng bốn!
+- **player**: Du lịch mà cũng cần vở Toán à?
+- **tung** (ao-xanh-gai-dau): Xác suất thống kê, kỳ hai. Nghe tên đã thấy trượt. Thôi, đưa tớ một đầu vali.
 
 ## md-01-ktx.1
 > NHIỆM VỤ: Nhận phòng KTX
@@ -139,7 +142,7 @@
 - **player**: Ba người tên {{nv.tung}}. Thêm ngành Du lịch thì còn đúng một dòng. Mã ở ô đầu: SV240251.
 - **narrator**: {{nv.tung}} dán tờ giấy ghi mã lên phiếu, chép lại từng số.
 - **minh-anh** (neutral): …Nhanh thật. Tối thứ Ba Trung thu, CLB liên hoan ở sân ký túc xá. Hai em tới nhé.
-- **tung** (neutral): Dạ em thì lọc kém, chứ tìm đường với nhắc lịch là việc của em.
+- **tung** (gai-dau): Lại cậu. Hôm nhập học tớ dò bảng xếp phòng cũng chậm hơn cậu.
 - **minh-anh** (neutral): Bảy giờ tối nhé. Tới muộn thì hết bánh đấy.
 
 ## md-10-trung-thu.1
