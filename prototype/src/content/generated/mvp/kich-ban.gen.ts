@@ -1364,18 +1364,29 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hai đứa khiêng cái vali, mỗi đứa một quai. Vừa leo thang bộ vừa cãi nhau."
+          "text": "Hai đứa khiêng cái vali lên thang bộ, mỗi đứa một quai."
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "ao-xanh-happy",
-          "text": "Tớ cá là ba phút là tới tầng bốn! Cậu leo không kịp đâu."
+          "expression": "ao-xanh-chi-tay",
+          "text": "Tớ cá là ba phút là tới tầng bốn. Thua tớ khao trà đá!"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bảy phút sau, cả hai mới tới chiếu nghỉ tầng ba, đứng thở."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Này, tớ đang khiêng nửa cái vali của cậu đấy nhé!"
+          "text": "Ba phút của cậu dài nhỉ."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "ao-xanh-gai-dau",
+          "text": "Vali cậu đựng gạch à? …Thôi, tớ nợ cậu một cốc trà đá."
         },
         {
           "type": "note",
@@ -1385,7 +1396,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh-happy",
-          "text": "Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường. Tớ nợ cậu một cốc trà đá đấy!"
+          "text": "Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường."
         },
         {
           "type": "image",
@@ -19249,7 +19260,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:172 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:174 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

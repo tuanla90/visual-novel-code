@@ -85,11 +85,13 @@
 
 ## md-01-ktx.2
 - [DÀN DỰNG] Hai người khiêng vali lên tới tầng bốn, cùng thở dốc. {{nv.tung}} đẩy cửa phòng 408.
-- **narrator**: Hai đứa khiêng cái vali, mỗi đứa một quai. Vừa leo thang bộ vừa cãi nhau.
-- **tung** (ao-xanh-happy): Tớ cá là ba phút là tới tầng bốn! Cậu leo không kịp đâu.
-- **player**: Này, tớ đang khiêng nửa cái vali của cậu đấy nhé!
+- **narrator**: Hai đứa khiêng cái vali lên thang bộ, mỗi đứa một quai.
+- **tung** (ao-xanh-chi-tay): Tớ cá là ba phút là tới tầng bốn. Thua tớ khao trà đá!
+- **narrator**: Bảy phút sau, cả hai mới tới chiếu nghỉ tầng ba, đứng thở.
+- **player**: Ba phút của cậu dài nhỉ.
+- **tung** (ao-xanh-gai-dau): Vali cậu đựng gạch à? …Thôi, tớ nợ cậu một cốc trà đá.
 - [DÀN DỰNG] Tùng đẩy cửa phòng 408.
-- **tung** (ao-xanh-happy): Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường. Tớ nợ cậu một cốc trà đá đấy!
+- **tung** (ao-xanh-happy): Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường.
 
 ## md-03-toa-b.1
 - [DÀN DỰNG] Hộp tôn xanh treo trên mảng tường gần cửa ra vào (bản CHƯA có thẻ lịch ở khe — DX-03 chưa làm: [KHÁM PHÁ] không có vật tĩnh). Bác Thịnh đứng ở chân cầu thang.
