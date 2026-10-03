@@ -85,7 +85,12 @@ describe('sảnh KTX: [KHÁM PHÁ]', () => {
     act(() => useKhoMvp.getState().hanhDong({ type: 'tiep' }));
     expect(document.body.textContent).toContain('Khuất sau hành lang kia');
     expect(screen.queryByRole('dialog', { name: /Giới thiệu nhân vật/ })).toBeNull();
-    act(() => useKhoMvp.getState().hanhDong({ type: 'tiep' }));
+    // "Tầng bốn, phòng 408" → Tùng dò bảng xếp phòng → người chơi chỉ dòng 408 (04/10): chưa tự xưng thì chưa có thẻ.
+    for (let i = 0; i < 4; i++) {
+      act(() => useKhoMvp.getState().hanhDong({ type: 'tiep' }));
+      expect(screen.queryByRole('dialog', { name: /Giới thiệu nhân vật/ })).toBeNull();
+    }
+    expect(document.body.textContent).toContain('Dòng gần cuối kìa');
     act(() => useKhoMvp.getState().hanhDong({ type: 'tiep' }));
     expect(document.body.textContent).toContain('Tớ là Tùng, học Du lịch.');
     expect(screen.queryByRole('dialog', { name: /Giới thiệu nhân vật/ })).toBeNull();

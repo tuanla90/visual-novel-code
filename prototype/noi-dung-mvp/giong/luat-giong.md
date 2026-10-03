@@ -155,3 +155,18 @@ tiểu từ phải ≥ <tối thiểu>; dưới là nhắc. Đo 03/10: lời V�
 
 - mẫu: (?<!\p{L})(à|ừ|ờ|ơ|nhỉ|nhé|nhá|chứ|đấy|đây|đâu|thế|mà|đi|ạ|hả|cơ|kìa|á|ấy|vậy|ôi|ơi|hở|thôi|chắc)(?!\p{L})|(không|chưa)\?$ · tối thiểu: 0.2 · cỡ: 30 · bỏ qua: tt-
 
+
+## Nói thẳng
+
+<!-- "Nói thẳng" / "nhét chữ vào mồm" (user 03–04/10): nhân vật tự khai tính cách, sở trường, vai trò của mình, hay đọc lại luật
+và thói quen của mình cho người chơi nghe. Ngoài đời không ai nói thế; cho thấy bằng việc làm. Cú pháp như "## Chống giọng AI".
+Đo 04/10: bốn mẫu dưới khớp đúng bốn câu lỗi ở cảnh gặp Tùng và Ngày hội, không báo nhầm câu nào. Phần diễn đạt khác chữ
+(cô Hạnh "Bảng nào khác cô không mở, xong việc là cô khóa lại") máy không bắt được: soát tay theo README. -->
+
+- (?<!\p{L})(tớ|em|mình|cháu)( thì| cũng| vốn)?( [^.,!?]{0,15})? (giỏi|kém|dở|thạo|chuyên|lo được|không giỏi|không rành)(?!\p{L}) · mức: lỗi · áp: thoại · vì: tự khai sở trường ("Excel thì tớ lo được", "em thì lọc kém"); cho thấy bằng việc làm
+- chứ [^.,!?]{1,40} thì (tớ|em|mình|cháu) (lo|làm|giỏi|rành) · mức: lỗi · áp: thoại · vì: "X thì chịu, chứ Y thì tớ lo": tự giới thiệu kỹ năng
+- là việc của (tớ|em|mình|cháu)(?!\p{L}) · mức: lỗi · áp: thoại · vì: tự nhận vai trò ("tìm đường là việc của em")
+- (cậu|em|các cậu) lo [^.!?]{1,30}, (tớ|anh|chị|mình) lo · mức: lỗi · áp: thoại · vì: chia vai bằng lời ("Cậu lo lọc, tớ lo đường")
+- (?<!\p{L})(tính (tớ|em|mình|cháu)|(tớ|em|mình) vốn (là|hay|thích|không))(?!\p{L}) · mức: nhắc · áp: thoại · vì: tự tả tính cách
+- (?<!\p{L})(tôi|tớ|em|mình|bác|cô|chú|anh|chị|cháu)( thì| vốn| cứ)? (nói|sống|tính) (thẳng|thật thà|thẳng tính) · mức: lỗi · áp: thoại · vì: tự tả cách nói của mình (Hiếu "Tôi nói thẳng vậy thôi"); cho thấy bằng việc: "Có gì hỏi thẳng đây, đừng xì xào sau lưng"
+- (?:^|[.!?…]\s+)(Tớ|Tôi|Mình) (trông|trực|giữ|quản|phụ trách) [^.!?]{0,40} · mức: nhắc · áp: thoại · vì: tự khai vai trò ("Bác trông tòa này" — bộ đồng phục đã cho thấy); chỉ xét đại từ chắc là tự xưng, "Bác/Chú/Em" thường là gọi người nghe

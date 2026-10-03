@@ -48,7 +48,7 @@ noi-dung-mvp/kich-ban/06-hop-va-ket.md:8: [MÀN CHIẾU hop-chieu-or]: khai 13 d
 - Nhân vật không được nói trước `Xuất hiện từ` (Quân: ngày 3; thầy Quang, Hoài: ngày họp).
 - Kết thật mở đầu bằng `[ĐIỀU KIỆN]`; điều kiện phải đạt được và phải **cần dữ kiện phụ** (chỉ dữ kiện chính mà đủ là lỗi).
 - `trừ uy tín` chỉ ở chuỗi của ngày họp; có `Uy tín` thì phải có "Khi mất uy tín".
-- `[TẠO NHÂN VẬT ten]` rồi `[TẠO NHÂN VẬT nganh]`, mỗi cái đúng một lần, ở mở đầu. `{{nv.nguoi-choi}}` dùng được (runtime thay bằng tên người chơi).
+- `[TẠO NHÂN VẬT ten]` đúng một lần, ở mở đầu. `[TẠO NHÂN VẬT nganh]` tùy chọn (tối đa một lần); từ 04/10/2026 game bỏ bước chọn ngành, người chơi học Kế toán (`NGANH_NGUOI_CHOI` trong `src/mvp/engine/may.ts`), `{{nv.nguoi-choi.nganh}}` thay bằng ngành ấy. `{{nv.nguoi-choi}}` dùng được (runtime thay bằng tên người chơi).
 - Chuỗi không được lịch, dữ kiện hay `[ĐI TỚI]` nào nối tới là lỗi ("chuỗi lẻ").
 - Số dòng khai ở `[LỌC THỬ … · n dòng]`, `[MÀN CHIẾU … · n dòng]` (có câu SQL) và `- Số dòng kỳ vọng:` của thẻ thử thách phải bằng số dòng câu SQL chạy thật trên `du-lieu.md`. Số dòng chỉ ghi trong `[DÀN DỰNG]` (không kèm câu SQL) máy **chưa** kiểm được.
 

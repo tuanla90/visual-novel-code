@@ -1,6 +1,6 @@
 /**
  * Màn tạo nhân vật MVP (gói tao-nhan-vat-mvp) qua giao diện thật `ManChoiMvp`: gõ tên → câu sau có tên; tên sai → báo
- * lỗi, không tiến; xúc xắc (hàm ngẫu nhiên giả) điền tên + lời Tùng; chọn ngành → trạng thái; Lưu/Nạp giữ tên;
+ * lỗi, không tiến; xúc xắc (hàm ngẫu nhiên giả) điền tên + lời Tùng; ngành cố định (bỏ bước chọn 04/10); Lưu/Nạp giữ tên;
  * phím tắt VN không bắt phím khi đang gõ; tên KHÔNG có trong bất kỳ sự kiện telemetry nào (QĐ-077).
  */
 import { act, render, screen } from '@testing-library/react';
@@ -34,7 +34,6 @@ function toiCauHoi(s: TrangThaiMvp, truong: 'ten' | 'nganh'): TrangThaiMvp {
   throw new Error(`không tới câu hỏi ${truong}`);
 }
 const oCauTen = (): TrangThaiMvp => toiCauHoi(taoTrangThai(kb, 1), 'ten');
-const oCauNganh = (ten = 'Bảo'): TrangThaiMvp => toiCauHoi(xuLy(kb, oCauTen(), { type: 'dat-ten', ten }), 'nganh');
 const trangThai = (): TrangThaiMvp => {
   const s = useKhoMvp.getState().trangThai;
   if (!s) throw new Error('kho trống');
@@ -74,7 +73,7 @@ describe('câu hỏi tên (ManChoiMvp)', () => {
     veManChoi(oCauTen());
     await userEvent.type(screen.getByLabelText('Tên nhân vật của bạn'), '  Nguyễn Bảo {Enter}');
     expect(trangThai().tenNguoiChoi).toBe('Nguyễn Bảo');
-    expect(await screen.findByText('Nguyễn Bảo à. Dễ gọi đấy.')).toBeInTheDocument();
+    expect(await screen.findByText('Nguyễn Bảo à. Dễ gọi đấy. Cậu học ngành gì?')).toBeInTheDocument();
   });
 
   it.each([
@@ -139,21 +138,21 @@ describe('nút xúc xắc (TaoNhanVatMvp, hàm ngẫu nhiên giả)', () => {
   });
 });
 
-describe('câu hỏi ngành (ManChoiMvp)', () => {
-  it('ngành là các nút; chọn → lưu vào trạng thái, đi tiếp', async () => {
-    veManChoi(oCauNganh());
-    expect(screen.getByText('Cậu học ngành gì?')).toBeInTheDocument();
-    expect(screen.getAllByRole('button', { name: /Kế toán|Quản trị kinh doanh|Tài chính – Ngân hàng|Marketing|Thương mại điện tử/ })).toHaveLength(5);
-    await cho(PRESS_GUARD_MS + 50);
-    await userEvent.click(screen.getByRole('button', { name: 'Tài chính – Ngân hàng' }));
-    expect(trangThai().nganh).toBe('Tài chính – Ngân hàng');
-    expect(khungNhin(kb, trangThai()).kind).toBe('line');
+describe('ngành cố định (ManChoiMvp, 04/10/2026)', () => {
+  it('đặt tên xong không có nút chọn ngành: Tùng hỏi bằng lời, câu sau là người chơi đáp "Kế toán."', async () => {
+    veManChoi(oCauTen());
+    await userEvent.type(screen.getByLabelText('Tên nhân vật của bạn'), 'Bảo{Enter}');
+    expect(document.body.textContent).toContain('Bảo à. Dễ gọi đấy. Cậu học ngành gì?');
+    expect(screen.queryByRole('button', { name: 'Marketing' })).toBeNull();
+    act(() => useKhoMvp.getState().hanhDong({ type: 'tiep' }));
+    expect(document.body.textContent).toContain('Kế toán.');
+    expect(trangThai().nganh).toBe('Kế toán');
   });
 });
 
 describe('Lưu / Nạp (kho MVP)', () => {
   it('lưu vào ô sau khi đặt tên, chơi lại, nạp → tên và ngành quay về', () => {
-    const s = xuLy(kb, oCauNganh('Trần Quốc'), { type: 'chon-nganh', nganh: 'Kế toán' });
+    const s = xuLy(kb, oCauTen(), { type: 'dat-ten', ten: 'Trần Quốc' });
     act(() => {
       useKhoMvp.getState().datTrangThai(s);
       useKhoMvp.getState().luuVaoO(2, 'Mở đầu');
@@ -169,7 +168,7 @@ describe('Lưu / Nạp (kho MVP)', () => {
 });
 
 describe('telemetry không chứa tên (QĐ-077)', () => {
-  it('đi qua cả hai câu hỏi (kèm bật/tắt Auto để có sự kiện) → không payload nào có tên', async () => {
+  it('đặt tên rồi đi tiếp (kèm bật/tắt Auto để có sự kiện) → không payload nào có tên', async () => {
     const TEN = 'Phạm Khôi Nguyên';
     veManChoi(oCauTen());
     await userEvent.type(screen.getByLabelText('Tên nhân vật của bạn'), `${TEN}{Enter}`);
@@ -177,9 +176,6 @@ describe('telemetry không chứa tên (QĐ-077)', () => {
     act(() => useVnStore.getState().toggleAutoMode());
     act(() => useVnStore.getState().toggleAutoMode());
     act(() => useKhoMvp.getState().hanhDong({ type: 'tiep' }));
-    await cho(PRESS_GUARD_MS + 50);
-    await userEvent.click(await screen.findByRole('button', { name: 'Marketing' }));
-    expect(trangThai().nganh).toBe('Marketing');
     const suKien = getTelemetryEvents();
     expect(suKien.length).toBeGreaterThan(0);
     const json = JSON.stringify(suKien);

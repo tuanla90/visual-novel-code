@@ -353,12 +353,16 @@ function apHauQua(s: TrangThaiMvp, cac: HauQuaMvp[]): { s: TrangThaiMvp; daNhay:
 
 // ---------- Khởi tạo ----------
 
+/** Ngành của người chơi. `[TẠO NHÂN VẬT nganh]` vẫn đọc được nếu kịch bản đặt lại bước chọn. */
+export const NGANH_NGUOI_CHOI = 'Kế toán';
+
 export function taoTrangThai(kb: KichBanMvp, batDauLuc: number = Date.now()): TrangThaiMvp {
   const s: TrangThaiMvp = {
     phienBan: 1,
     batDauLuc,
     tenNguoiChoi: '',
-    nganh: '',
+    // Ngành cố định (user 04/10/2026): bỏ bước chọn ngành ở mở đầu; Tùng hỏi bằng lời, Hà Vy đoán ở Trung thu, thẻ hồ sơ hiện.
+    nganh: NGANH_NGUOI_CHOI,
     giaiDoan: 'mo-dau',
     ngay: 0,
     khung: 0,

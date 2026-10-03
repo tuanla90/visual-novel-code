@@ -61,11 +61,11 @@
 - **hieu** (annoyed): Nhóm tôi xin phòng làm bài không được, phải chui rúc thư viện.
 - **tung** (worried): Gắt thế… cậu ta gửi thư à?
 - **ha-vy** (thinking): Ghét với gửi thư là hai việc khác nhau.
-- **hieu** (annoyed): Nhìn gì? Tôi là Hiếu, lớp BC24A. Tôi nói thẳng vậy thôi, có gì tôi nói trước mặt.
+- **hieu** (annoyed): Nhìn gì? Tôi là Hiếu, lớp BC24A. Có gì hỏi thẳng đây, đừng xì xào sau lưng.
 - **narrator**: Có tiếng gọi từ quầy: "Hiếu ơi, lấy cơm này!" Cậu ta đứng dậy, bỏ đi.
 - **tung** (happy): Thôi, chuyện thư từ để nhóm mình tự kiểm tra. Tớ ra lấy trà đá, ai uống không?
 - **tung** (worried): Khoan, ví còn đúng tiền xe buýt. Thêm cốc trà đá là tối nay đi bộ.
-- **player**: Để tớ mời. Coi như cảm ơn cậu chỉ đường hôm đầu.
+- **player**: Để tớ mời. Cốc hôm khiêng vali thì cậu vẫn nợ đấy.
 
 ## n3-phong.1
 - **narrator**: Về phòng CLB. Phiếu tra cứu của cô Lan nằm trên bàn, cạnh cái laptop.

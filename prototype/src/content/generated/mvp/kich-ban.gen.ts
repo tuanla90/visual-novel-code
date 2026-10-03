@@ -1260,8 +1260,24 @@ const GOC = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "ao-xanh-happy",
-          "text": "Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ là Tùng, học Du lịch."
+          "expression": "ao-xanh-thinking",
+          "text": "408 à… Để tớ dò danh sách đã."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cậu ấy lật mặt sau tờ sơ đồ. Một bảng xếp phòng in chữ bé tí, ngón tay dò từ dòng đầu xuống."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Dòng gần cuối kìa. 408, hai tên."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "ao-xanh-surprised",
+          "text": "…Ơ, tên tớ đây. Thế là cùng phòng thật! Tớ là Tùng, học Du lịch."
         },
         {
           "type": "line",
@@ -1295,41 +1311,29 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh-happy",
-          "text": "{{nv.nguoi-choi}} à. Dễ gọi đấy."
+          "text": "{{nv.nguoi-choi}} à. Dễ gọi đấy. Cậu học ngành gì?"
         },
         {
-          "type": "create-character",
-          "truong": "nganh",
-          "asker": {
-            "speaker": "tung",
-            "expression": "ao-xanh",
-            "text": "Cậu học ngành gì?"
-          },
-          "xucXac": null,
-          "luaChon": [
-            "Kế toán",
-            "Quản trị kinh doanh",
-            "Tài chính – Ngân hàng",
-            "Marketing",
-            "Thương mại điện tử"
-          ]
+          "type": "line",
+          "speaker": "player",
+          "text": "{{nv.nguoi-choi.nganh}}."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh",
-          "text": "{{nv.nguoi-choi.nganh}} à? Lại dân kinh tế. Cả phòng không ai học Toán, sau này tớ mượn vở ai đây."
+          "text": "Lại dân kinh tế. Cả phòng không ai học Toán, sau này tớ mượn vở ai đây."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Toán thì chịu, chứ Excel thì tớ lo được. File danh sách nghìn dòng tớ lọc một cái là ra."
+          "text": "Du lịch mà cũng cần vở Toán à?"
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "ao-xanh-chi-tay",
-          "text": "Thế thì chia việc đi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali. Tớ cá là ba phút tới tầng bốn!"
+          "expression": "ao-xanh-gai-dau",
+          "text": "Xác suất thống kê, kỳ hai. Nghe tên đã thấy trượt. Thôi, đưa tớ một đầu vali."
         },
         {
           "type": "goto",
@@ -1360,18 +1364,29 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hai đứa khiêng cái vali, mỗi đứa một quai. Vừa leo thang bộ vừa cãi nhau."
+          "text": "Hai đứa khiêng cái vali lên thang bộ, mỗi đứa một quai."
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "ao-xanh-happy",
-          "text": "Tớ cá là ba phút là tới tầng bốn! Cậu leo không kịp đâu."
+          "expression": "ao-xanh-chi-tay",
+          "text": "Tớ cá là ba phút là tới tầng bốn. Thua tớ khao trà đá!"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bảy phút sau, cả hai mới tới chiếu nghỉ tầng ba, đứng thở."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Này, tớ đang khiêng nửa cái vali của cậu đấy nhé!"
+          "text": "Ba phút của cậu dài nhỉ."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "ao-xanh-gai-dau",
+          "text": "Vali cậu đựng gạch à? …Thôi, tớ nợ cậu một cốc trà đá."
         },
         {
           "type": "note",
@@ -1381,7 +1396,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh-happy",
-          "text": "Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường. Tớ nợ cậu một cốc trà đá đấy!"
+          "text": "Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường."
         },
         {
           "type": "image",
@@ -1400,19 +1415,18 @@ const GOC = {
       "mocSomNhat": 0,
       "nodes": [
         {
-          "type": "note",
-          "text": "Hộp tôn xanh treo trên mảng tường gần cửa ra vào (bản CHƯA có thẻ lịch ở khe — DX-03 chưa làm: [KHÁM PHÁ] không có vật tĩnh). Bác Thịnh đứng ở chân cầu thang."
+          "type": "image",
+          "imageId": "obj-hop-kien-nghi-trong"
         },
         {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Sảnh tòa B vắng tanh. Trên tường gần cửa ra vào treo một cái hộp tôn xanh, biển ghi \"Hộp tiếp nhận kiến nghị\"."
+          "type": "note",
+          "text": "Ảnh obj-hop-kien-nghi-trong (khe trống, chưa có thẻ lịch) hiện trước lời: ảnh cho thấy cái hộp, lời dẫn không tả lại (show, don't tell 04/10). Bác Thịnh đứng ở chân cầu thang."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh",
-          "text": "Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ."
+          "text": "Hộp kiến nghị đây. Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ."
         },
         {
           "type": "line",
@@ -1430,7 +1444,7 @@ const GOC = {
           "type": "line",
           "speaker": "bac-tu",
           "expression": "neutral",
-          "text": "Bác trông tòa này. Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào."
+          "text": "Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào."
         },
         {
           "type": "goto",
@@ -1684,8 +1698,8 @@ const GOC = {
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "neutral",
-          "text": "Dạ em thì lọc kém, chứ tìm đường với nhắc lịch là việc của em."
+          "expression": "gai-dau",
+          "text": "Lại cậu. Hôm nhập học tớ dò bảng xếp phòng cũng chậm hơn cậu."
         },
         {
           "type": "line",
@@ -4128,7 +4142,7 @@ const GOC = {
           "type": "line",
           "speaker": "hieu",
           "expression": "annoyed",
-          "text": "Nhìn gì? Tôi là Hiếu, lớp BC24A. Tôi nói thẳng vậy thôi, có gì tôi nói trước mặt."
+          "text": "Nhìn gì? Tôi là Hiếu, lớp BC24A. Có gì hỏi thẳng đây, đừng xì xào sau lưng."
         },
         {
           "type": "line",
@@ -4150,7 +4164,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Để tớ mời. Coi như cảm ơn cậu chỉ đường hôm đầu."
+          "text": "Để tớ mời. Cốc hôm khiêng vali thì cậu vẫn nợ đấy."
         },
         {
           "type": "goto",
@@ -7456,7 +7470,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "thinking",
-          "text": "Biết… bạn ấy nói thẳng. Với cả không thích ai nói hộ mình."
+          "text": "Biết… bạn ấy nói bé lắm. Hôm họp ngồi chờ ngoài cửa mà tay vẫn ghi ghi chép chép gì đấy."
         },
         {
           "type": "line",
@@ -19259,7 +19273,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:169 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:173 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

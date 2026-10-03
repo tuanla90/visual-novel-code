@@ -9,7 +9,7 @@
 - **ha-vy** (thinking): Bạn nào?
 - **tung** (gai-dau): Thì… Hoài. Bên Báo chí ấy.
 - **minh-anh** (happy): Bạn nộp thư hôm họp rà soát à. Thế em biết gì về bạn ấy rồi?
-- **tung** (thinking): Biết… bạn ấy nói thẳng. Với cả không thích ai nói hộ mình.
+- **tung** (thinking): Biết… bạn ấy nói bé lắm. Hôm họp ngồi chờ ngoài cửa mà tay vẫn ghi ghi chép chép gì đấy.
 - **duy** (serious): Hôm nay 20/10 thật à? Tớ chưa mua gì cho mẹ.
 - **minh-anh** (neutral): Đi luôn đi. Chiều là chợ hoa hết sạch.
 - **player**: (Tùng nhờ chọn quà. Hoài là người thế nào nhỉ?)

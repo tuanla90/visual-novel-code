@@ -40,7 +40,7 @@ export interface LuatGiong {
   nhac: { mau: RegExp; vi: string }[];
   doDai: Map<string, number>;
   /** "## Chống giọng AI": mẫu sáo của văn AI, áp cho lời nhân vật ("thoại"), lời dẫn ("dẫn") hay cả hai. */
-  chongAi: { mau: RegExp; loi: boolean; ap: 'thoại' | 'dẫn' | 'tất cả'; theChu: boolean; vi: string }[];
+  chongAi: { mau: RegExp; loi: boolean; ap: 'thoại' | 'dẫn' | 'tất cả'; theChu: boolean; nhan: string; vi: string }[];
   /** "## Xưng theo người có mặt": từ cấm khi trong đoạn có / không có những người nhất định. */
   coMat: { nguoi: Set<string>; khiCo: Set<string>; truKhiCo: Set<string>; chiKhi: string[]; tu: string[]; loi: boolean; vi: string }[];
   /** "## Tiểu từ": tỉ lệ tối thiểu câu thoại có tiểu từ trong một tệp đủ cỡ. */
@@ -84,9 +84,9 @@ export function docLuatGiong(noiDung: string): LuatGiong {
     else if (phan === 'Tên đã bỏ') luat.tenBo.push({ cum: dau, vi });
     else if (phan === 'Lời nhắc không lộ đáp án') luat.nhac.push({ mau: new RegExp(dau, 'u'), vi });
     else if (phan === 'Độ dài') luat.doDai.set(dau, Number((m[1] ?? '').split(' · ')[1]));
-    else if (phan === 'Chống giọng AI') {
+    else if (phan === 'Chống giọng AI' || phan === 'Nói thẳng') {
       const ap = khoa.get('áp');
-      luat.chongAi.push({ mau: new RegExp(dau, 'iu'), loi: khoa.get('mức') === 'lỗi', ap: ap === 'thoại' || ap === 'dẫn' ? ap : 'tất cả', theChu: khoa.get('thẻ chữ') === 'có', vi });
+      luat.chongAi.push({ mau: new RegExp(dau, 'iu'), loi: khoa.get('mức') === 'lỗi', ap: ap === 'thoại' || ap === 'dẫn' ? ap : 'tất cả', theChu: khoa.get('thẻ chữ') === 'có', nhan: phan === 'Nói thẳng' ? 'nói thẳng' : 'giọng AI', vi });
     } else if (phan === 'Xưng theo người có mặt') {
       luat.coMat.push({
         nguoi: new Set(dsach(dau)),
@@ -233,7 +233,7 @@ export function kiemGiong(luat: LuatGiong, tepLoi: { ten: string; duongDan: stri
         if (b.theChu && !r.theChu) continue;
         if ((r.ap === 'thoại' && laDan) || (r.ap === 'dẫn' && !laDan)) continue;
         const m = r.mau.exec(b.chu);
-        if (m) (r.loi ? loi : canhBao).push(`${vt(b)}: [giọng AI] ${b.nguoi ?? 'nhắc'} "${m[0]}" — ${r.vi}`);
+        if (m) (r.loi ? loi : canhBao).push(`${vt(b)}: [${r.nhan}] ${b.nguoi ?? 'nhắc'} "${m[0]}" — ${r.vi}`);
       }
     }
   }

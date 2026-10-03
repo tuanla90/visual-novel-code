@@ -62,18 +62,22 @@
 - **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế? Thang máy đang bảo trì.
 - **tung** (ao-xanh-happy): Khuất sau hành lang kia kìa. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
 - **player**: Tầng bốn, phòng 408.
-- **tung** (ao-xanh-happy): Ơ, 408 là phòng tớ! Thế là cùng phòng rồi. Tớ là {{nv.tung}}, học Du lịch.
+- **tung** (ao-xanh-thinking): 408 à… Để tớ dò danh sách đã.
+- **narrator**: Cậu ấy lật mặt sau tờ sơ đồ. Một bảng xếp phòng in chữ bé tí, ngón tay dò từ dòng đầu xuống.
+- **player**: Dòng gần cuối kìa. 408, hai tên.
+- **tung** (ao-xanh-surprised): …Ơ, tên tớ đây. Thế là cùng phòng thật! Tớ là {{nv.tung}}, học Du lịch.
 - **player**: Cùng phòng á? Tớ tưởng cậu là anh năm hai, năm ba gì đấy, mặc áo tình nguyện thế kia.
 - **tung** (ao-xanh): Tớ năm nhất thôi. Tớ nhập học đợt một, lên đây từ cuối tháng Tám nên đường nào cũng rành.
 - **tung** (ao-xanh-happy): Đội thiếu người dẫn đường khu ký túc, chú tớ làm bảo vệ nên giới thiệu tớ mượn áo ra phụ hai hôm.
 
 ## md-00-gap-tung.2
-- **tung** (ao-xanh-happy): {{nv.nguoi-choi}} à. Dễ gọi đấy.
+- **tung** (ao-xanh-happy): {{nv.nguoi-choi}} à. Dễ gọi đấy. Cậu học ngành gì?
+- **player**: {{nv.nguoi-choi.nganh}}.
 
 ## md-00-gap-tung.3
-- **tung** (ao-xanh): {{nv.nguoi-choi.nganh}} à? Lại dân kinh tế. Cả phòng không ai học Toán, sau này tớ mượn vở ai đây.
-- **player**: Toán thì chịu, chứ Excel thì tớ lo được. File danh sách nghìn dòng tớ lọc một cái là ra.
-- **tung** (ao-xanh-chi-tay): Thế thì chia việc đi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali. Tớ cá là ba phút tới tầng bốn!
+- **tung** (ao-xanh): Lại dân kinh tế. Cả phòng không ai học Toán, sau này tớ mượn vở ai đây.
+- **player**: Du lịch mà cũng cần vở Toán à?
+- **tung** (ao-xanh-gai-dau): Xác suất thống kê, kỳ hai. Nghe tên đã thấy trượt. Thôi, đưa tớ một đầu vali.
 
 ## md-01-ktx.1
 > NHIỆM VỤ: Nhận phòng KTX
@@ -81,19 +85,20 @@
 
 ## md-01-ktx.2
 - [DÀN DỰNG] Hai người khiêng vali lên tới tầng bốn, cùng thở dốc. {{nv.tung}} đẩy cửa phòng 408.
-- **narrator**: Hai đứa khiêng cái vali, mỗi đứa một quai. Vừa leo thang bộ vừa cãi nhau.
-- **tung** (ao-xanh-happy): Tớ cá là ba phút là tới tầng bốn! Cậu leo không kịp đâu.
-- **player**: Này, tớ đang khiêng nửa cái vali của cậu đấy nhé!
+- **narrator**: Hai đứa khiêng cái vali lên thang bộ, mỗi đứa một quai.
+- **tung** (ao-xanh-chi-tay): Tớ cá là ba phút là tới tầng bốn. Thua tớ khao trà đá!
+- **narrator**: Bảy phút sau, cả hai mới tới chiếu nghỉ tầng ba, đứng thở.
+- **player**: Ba phút của cậu dài nhỉ.
+- **tung** (ao-xanh-gai-dau): Vali cậu đựng gạch à? …Thôi, tớ nợ cậu một cốc trà đá.
 - [DÀN DỰNG] Tùng đẩy cửa phòng 408.
-- **tung** (ao-xanh-happy): Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường. Tớ nợ cậu một cốc trà đá đấy!
+- **tung** (ao-xanh-happy): Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường.
 
 ## md-03-toa-b.1
-- [DÀN DỰNG] Hộp tôn xanh treo trên mảng tường gần cửa ra vào (bản CHƯA có thẻ lịch ở khe — DX-03 chưa làm: [KHÁM PHÁ] không có vật tĩnh). Bác Thịnh đứng ở chân cầu thang.
-- **narrator**: Sảnh tòa B vắng tanh. Trên tường gần cửa ra vào treo một cái hộp tôn xanh, biển ghi "Hộp tiếp nhận kiến nghị".
-- **tung** (ao-xanh): Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
+- [DÀN DỰNG] Ảnh obj-hop-kien-nghi-trong (khe trống, chưa có thẻ lịch) hiện trước lời: ảnh cho thấy cái hộp, lời dẫn không tả lại (show, don't tell 04/10). Bác Thịnh đứng ở chân cầu thang.
+- **tung** (ao-xanh): Hộp kiến nghị đây. Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
 - **bac-tu** (neutral): Hai cháu tìm phòng nào? Chiều Chủ nhật tòa này khóa hết lớp rồi.
 - **tung** (ao-xanh): Dạ không ạ, cháu dẫn bạn đi xem trường thôi.
-- **bac-tu** (neutral): Bác trông tòa này. Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào.
+- **bac-tu** (neutral): Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào.
 
 ## md-07-cong-ktx-toi.1
 - [DÀN DỰNG] Tối. Hai người quẹt thẻ ở phòng trực cổng KTX. Nền tối bg-mvp-cong-ktx-dem (DX-02).
@@ -139,7 +144,7 @@
 - **player**: Ngành Du lịch lọc ra còn mấy chục bạn. Thêm tên {{nv.tung}} thì đúng một người. Mã ở ô đầu: SV240251.
 - **narrator**: {{nv.tung}} dán tờ giấy ghi mã lên phiếu, chép lại từng số.
 - **minh-anh** (neutral): …Nhanh thật. Tối thứ Ba Trung thu, CLB liên hoan ở sân ký túc xá. Hai em tới nhé.
-- **tung** (neutral): Dạ em thì lọc kém, chứ tìm đường với nhắc lịch là việc của em.
+- **tung** (gai-dau): Lại cậu. Hôm nhập học tớ dò bảng xếp phòng cũng chậm hơn cậu.
 - **minh-anh** (neutral): Bảy giờ tối nhé. Tới muộn thì hết bánh đấy.
 
 ## md-10-trung-thu.1

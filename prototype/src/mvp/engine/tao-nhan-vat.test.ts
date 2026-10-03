@@ -1,13 +1,13 @@
 // @vitest-environment node
 /**
- * Tạo nhân vật MVP (gói tao-nhan-vat-mvp, QĐ-084): máy dừng ở `[TẠO NHÂN VẬT ten]` / `[TẠO NHÂN VẬT nganh]`,
+ * Tạo nhân vật MVP (gói tao-nhan-vat-mvp, QĐ-084): máy dừng ở `[TẠO NHÂN VẬT ten]` (bước chọn ngành bỏ 04/10/2026, ngành cố định),
  * nhận tên hợp lệ (thay `{{nv.nguoi-choi}}` ở câu sau), từ chối tên sai, xúc xắc tất định với hàm ngẫu nhiên giả,
  * ngành lưu vào trạng thái, Lưu/Nạp giữ tên, ô lưu cũ (tên 'Khôi') vẫn nạp được.
  */
 import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
-import { dienTen, khungNhin, kiemTen, TEN_MAC_DINH, TEN_XUC_XAC, tenNgauNhien, taoTrangThai, xuLy, type KhungNhinMvp } from './may';
+import { dienTen, khungNhin, kiemTen, NGANH_NGUOI_CHOI, TEN_MAC_DINH, TEN_XUC_XAC, tenNgauNhien, taoTrangThai, xuLy, type KhungNhinMvp } from './may';
 import type { TrangThaiMvp } from './trang-thai';
 
 const KB = KICH_BAN_MVP as unknown as KichBanMvp;
@@ -85,7 +85,7 @@ describe('máy MVP: [TẠO NHÂN VẬT ten]', () => {
     const kn = khungNhin(KB, s);
     if (kn.kind !== 'line') throw new Error(kn.kind);
     expect(kn.loi.text).toContain('{{nv.nguoi-choi}}');
-    expect(dienTen(KB, s, kn.loi.text)).toBe('Nguyễn Bảo à. Dễ gọi đấy.');
+    expect(dienTen(KB, s, kn.loi.text)).toBe('Nguyễn Bảo à. Dễ gọi đấy. Cậu học ngành gì?');
   });
 
   it.each([[''], ['x'.repeat(21)], ['Bảo 2'], ['Bảo@']])('tên sai (%j) → không tiến, không đổi trạng thái', (ten) => {
@@ -137,33 +137,32 @@ describe('xúc xắc: tenNgauNhien', () => {
   });
 });
 
-describe('máy MVP: [TẠO NHÂN VẬT nganh]', () => {
-  const toiNganh = (): TrangThaiMvp => toiCauHoi(xuLy(KB, toiCauHoi(taoTrangThai(KB, 1), 'ten'), { type: 'dat-ten', ten: 'Bảo' }), 'nganh');
-
-  it('dừng ở câu hỏi ngành với đủ 5 ngành; chọn → lưu vào trạng thái và đi tiếp', () => {
-    const s = toiNganh();
-    const kn = cauHoi(s);
-    expect(kn.nut.luaChon).toEqual(['Kế toán', 'Quản trị kinh doanh', 'Tài chính – Ngân hàng', 'Marketing', 'Thương mại điện tử']);
-    const sau = xuLy(KB, s, { type: 'chon-nganh', nganh: 'Marketing' });
-    expect(sau.nganh).toBe('Marketing');
-    expect(sau.tenNguoiChoi).toBe('Bảo');
-    expect(khungNhin(KB, sau).kind).toBe('line');
-  });
-
-  it('ngành ngoài danh sách, hay đặt tên ở câu hỏi ngành → bị từ chối', () => {
-    const s = toiNganh();
-    expect(xuLy(KB, s, { type: 'chon-nganh', nganh: 'Toán ứng dụng' })).toBe(s);
-    expect(xuLy(KB, s, { type: 'dat-ten', ten: 'Khác' })).toBe(s);
+describe('ngành cố định (04/10/2026: bỏ bước chọn ngành)', () => {
+  it('trạng thái đầu đã có ngành; cả mở đầu không còn câu hỏi ngành; Tùng hỏi bằng lời, người chơi đáp đúng ngành', () => {
+    const s0 = taoTrangThai(KB, 1);
+    expect(s0.nganh).toBe(NGANH_NGUOI_CHOI);
+    const nut = KB.chuoi.flatMap((c) => c.nodes).filter((n) => n.type === 'create-character');
+    expect(nut.map((n) => (n.type === 'create-character' ? n.truong : ''))).toEqual(['ten']);
+    let s = xuLy(KB, toiCauHoi(s0, 'ten'), { type: 'dat-ten', ten: 'Bảo' });
+    const loi: string[] = [];
+    for (let i = 0; i < 4; i++) {
+      const kn = khungNhin(KB, s);
+      if (kn.kind !== 'line') break;
+      loi.push(dienTen(KB, s, kn.loi.text));
+      s = xuLy(KB, s, { type: 'tiep' });
+    }
+    expect(loi[0]).toBe('Bảo à. Dễ gọi đấy. Cậu học ngành gì?');
+    expect(loi[1]).toBe(`${NGANH_NGUOI_CHOI}.`);
   });
 });
 
 describe('Lưu / Nạp và ô lưu cũ', () => {
   it('Lưu/Nạp (JSON) giữ tên và ngành', () => {
-    let s = toiCauHoi(xuLy(KB, toiCauHoi(taoTrangThai(KB, 1), 'ten'), { type: 'dat-ten', ten: 'Lê Văn Việt' }), 'nganh');
-    s = xuLy(KB, s, { type: 'chon-nganh', nganh: 'Kế toán' });
+    const s = xuLy(KB, toiCauHoi(taoTrangThai(KB, 1), 'ten'), { type: 'dat-ten', ten: 'Lê Văn Việt' });
     const nap = JSON.parse(JSON.stringify(s)) as TrangThaiMvp;
     expect(nap).toEqual(s);
     expect(nap.tenNguoiChoi).toBe('Lê Văn Việt');
+    expect(nap.nganh).toBe(NGANH_NGUOI_CHOI);
     expect(dienTen(KB, nap, 'Chào {{nv.nguoi-choi}}.')).toBe('Chào Lê Văn Việt.');
   });
 

@@ -25,6 +25,7 @@ npm run kiem-giong -- --so <thư mục v2>  # kiểm bản v2 do AI viết và s
 - **nhắc**: cụm dành riêng bị người khác dùng, bong bóng quá dài, câu lặp nguyên văn ở hai đoạn; ở chế độ `--so`: **mất dữ kiện**
   (số, giờ, ngày, mã, nguyên văn trong ngoặc kép, biến `{{…}}` có ở bản gốc mà bản v2 không còn), **người nói mới** chen vào đoạn.
 - **giọng AI**: dấu vết công cụ, ngoặc cong, chữ đậm, emoji, giọng trợ lý ảo, "đóng vai trò then chốt" là LỖI; các mẫu sáo khác là nhắc.
+- **nói thẳng**: nhân vật tự khai sở trường, vai trò ("chứ Excel thì tớ lo", "là việc của em", "cậu lo X, tớ lo Y") là LỖI.
 - **tiểu từ**: tệp từ 30 câu thoại trở lên mà dưới 20% câu có tiểu từ (à, ừ, nhỉ, chứ, đấy, thế, mà, ạ…) là nhắc.
 - Lời trong ngoặc kép (nhại lời người khác) và ngôi thứ ba ("cậu ấy", "anh ấy") không tính là xưng hô.
 - Biểu cảm sai, người nói chưa tới lượt xuất hiện: đã có ở `npm run kiem-noi-dung:mvp`.
@@ -63,6 +64,9 @@ vào brief khi giao AI viết lời. Máy kiểm bắt được phần có mẫu
 | Giọng trợ lý ảo: "Tất nhiên rồi!", "Hy vọng điều này giúp…" | Nhân vật có việc riêng, không phục vụ người chơi |
 | Câu đủ chủ vị, không tiểu từ, ai cũng nói trơn tru như nhau | Tiểu từ (à, ừ, nhỉ, chứ, đấy, thế, mà, ạ), câu cụt, nói dở, ngắt lời; mỗi người một nhịp (Tùng cảm thán, Hà Vy cộc, bác Thịnh rất ngắn) |
 | Gạch dài "—" (kể cả thẻ chữ tiêu đề), ngoặc cong “ ”, chữ **đậm**, emoji | Dấu chấm, phẩy, "…"; ngoặc thẳng "…"; "Việc của cô Hạnh, thứ Tư 20 tháng 11" |
+| **Nói thẳng**: nhân vật tự khai sở trường, vai trò, tính cách. "Toán thì chịu, chứ Excel thì tớ lo được." "Cậu lo lọc, tớ lo đường." "Em thì lọc kém, chứ tìm đường là việc của em." (máy bắt các mẫu này) | Cho thấy bằng việc: Tùng dò bảng xếp phòng mãi chưa ra, người chơi chỉ ngay "Dòng gần cuối kìa. 408, hai tên." Ở Ngày hội Tùng chỉ nhắc lại: "Lại cậu." |
+| **Lời dẫn tả lại cảnh** (soát tay): "Sảnh tòa B vắng tanh. Trên tường gần cửa ra vào treo một cái hộp tôn xanh, biển ghi…" — điều ảnh nền đã cho thấy hay lẽ ra phải cho thấy (ảnh còn không có hộp, biển trên ảnh để trống) | Để ảnh nói: chèn ảnh vật (`[ẢNH obj-hop-kien-nghi-trong]`), nhân vật gọi tên nó trong lúc làm việc của mình ("Hộp kiến nghị đây. Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ."). Lời dẫn chỉ dành cho điều ảnh không vẽ được: thời gian, âm thanh, mùi, việc đang xảy ra |
+| **Lời dẫn kể sai sự thật** (máy không bắt được, soát tay): lời dẫn nói điều thoại không có, hay sai ai làm gì. "Vừa leo thang bộ vừa cãi nhau" mà không ai cãi; người chơi nói "khiêng nửa cái vali của cậu" trong khi vali là của người chơi | Lời dẫn chỉ kể điều thấy được và khớp thoại; đọc lại xem đồ là của ai, ai giúp ai, ai nợ ai. Cá trật thì cho thấy: "Bảy phút sau, cả hai mới tới chiếu nghỉ tầng ba, đứng thở." |
 | **Nhét chữ vào mồm** (máy không bắt được, soát tay): nhân vật đọc lại luật / thói quen của mình cho người chơi nghe, điều người chơi đã biết. "Cô mở cho tài khoản CLB đúng một bảng này. Bảng nào khác cô không mở, xong việc là cô khóa lại." | Cho thấy bằng việc hoặc một câu đời thường: "Ừ, cô mở cho các em đúng cái danh sách ấy. Xong thì báo cô một tiếng." |
 | Sinh viên nói thuật ngữ dữ liệu với người ngoài CLB: "Bọn cháu chỉ cần cột ghi chú và cột tên." | Nói như đời thật: "Bọn em chỉ cần tên, lớp, năm học và ghi chú thôi ạ." (người ngoài tự nói "cột" trước thì được nói lại) |
 
