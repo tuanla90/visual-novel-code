@@ -78,6 +78,7 @@
 
 ### md-03-toa-b — Sảnh tòa B: cái hộp tôn cũ {cảnh: sanh-toa-b}
 
+- [ẢNH obj-hop-kien-nghi-trong]
 - [LỜI md-03-toa-b.1]
 - [ĐI TỚI md-07-cong-ktx-toi]
 

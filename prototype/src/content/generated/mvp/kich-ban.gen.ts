@@ -1419,19 +1419,18 @@ const GOC = {
       "mocSomNhat": 0,
       "nodes": [
         {
-          "type": "note",
-          "text": "Hộp tôn xanh treo trên mảng tường gần cửa ra vào (bản CHƯA có thẻ lịch ở khe — DX-03 chưa làm: [KHÁM PHÁ] không có vật tĩnh). Bác Thịnh đứng ở chân cầu thang."
+          "type": "image",
+          "imageId": "obj-hop-kien-nghi-trong"
         },
         {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Sảnh tòa B vắng tanh. Trên tường gần cửa ra vào treo một cái hộp tôn xanh, biển ghi \"Hộp tiếp nhận kiến nghị\"."
+          "type": "note",
+          "text": "Ảnh obj-hop-kien-nghi-trong (khe trống, chưa có thẻ lịch) hiện trước lời: ảnh cho thấy cái hộp, lời dẫn không tả lại (show, don't tell 04/10). Bác Thịnh đứng ở chân cầu thang."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh",
-          "text": "Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ."
+          "text": "Hộp kiến nghị đây. Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ."
         },
         {
           "type": "line",
@@ -1449,7 +1448,7 @@ const GOC = {
           "type": "line",
           "speaker": "bac-tu",
           "expression": "neutral",
-          "text": "Bác trông tòa này. Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào."
+          "text": "Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào."
         },
         {
           "type": "goto",
@@ -4147,7 +4146,7 @@ const GOC = {
           "type": "line",
           "speaker": "hieu",
           "expression": "annoyed",
-          "text": "Nhìn gì? Tôi là Hiếu, lớp BC24A. Tôi nói thẳng vậy thôi, có gì tôi nói trước mặt."
+          "text": "Nhìn gì? Tôi là Hiếu, lớp BC24A. Có gì hỏi thẳng đây, đừng xì xào sau lưng."
         },
         {
           "type": "line",
@@ -4169,7 +4168,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Để tớ mời. Coi như cảm ơn cậu chỉ đường hôm đầu."
+          "text": "Để tớ mời. Cốc hôm khiêng vali thì cậu vẫn nợ đấy."
         },
         {
           "type": "goto",
@@ -7491,7 +7490,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "thinking",
-          "text": "Biết… bạn ấy nói thẳng. Với cả không thích ai nói hộ mình."
+          "text": "Biết… bạn ấy nói bé lắm. Hôm họp ngồi chờ ngoài cửa mà tay vẫn ghi ghi chép chép gì đấy."
         },
         {
           "type": "line",

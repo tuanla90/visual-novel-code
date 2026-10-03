@@ -94,12 +94,11 @@
 - **tung** (ao-xanh-happy): Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường.
 
 ## md-03-toa-b.1
-- [DÀN DỰNG] Hộp tôn xanh treo trên mảng tường gần cửa ra vào (bản CHƯA có thẻ lịch ở khe — DX-03 chưa làm: [KHÁM PHÁ] không có vật tĩnh). Bác Thịnh đứng ở chân cầu thang.
-- **narrator**: Sảnh tòa B vắng tanh. Trên tường gần cửa ra vào treo một cái hộp tôn xanh, biển ghi "Hộp tiếp nhận kiến nghị".
-- **tung** (ao-xanh): Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
+- [DÀN DỰNG] Ảnh obj-hop-kien-nghi-trong (khe trống, chưa có thẻ lịch) hiện trước lời: ảnh cho thấy cái hộp, lời dẫn không tả lại (show, don't tell 04/10). Bác Thịnh đứng ở chân cầu thang.
+- **tung** (ao-xanh): Hộp kiến nghị đây. Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
 - **bac-tu** (neutral): Hai cháu tìm phòng nào? Chiều Chủ nhật tòa này khóa hết lớp rồi.
 - **tung** (ao-xanh): Dạ không ạ, cháu dẫn bạn đi xem trường thôi.
-- **bac-tu** (neutral): Bác trông tòa này. Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào.
+- **bac-tu** (neutral): Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào.
 
 ## md-07-cong-ktx-toi.1
 - [DÀN DỰNG] Tối. Hai người quẹt thẻ ở phòng trực cổng KTX. Nền tối bg-mvp-cong-ktx-dem (DX-02).

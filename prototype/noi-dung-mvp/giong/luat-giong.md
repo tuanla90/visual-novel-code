@@ -168,3 +168,5 @@ và thói quen của mình cho người chơi nghe. Ngoài đời không ai nói
 - là việc của (tớ|em|mình|cháu)(?!\p{L}) · mức: lỗi · áp: thoại · vì: tự nhận vai trò ("tìm đường là việc của em")
 - (cậu|em|các cậu) lo [^.!?]{1,30}, (tớ|anh|chị|mình) lo · mức: lỗi · áp: thoại · vì: chia vai bằng lời ("Cậu lo lọc, tớ lo đường")
 - (?<!\p{L})(tính (tớ|em|mình|cháu)|(tớ|em|mình) vốn (là|hay|thích|không))(?!\p{L}) · mức: nhắc · áp: thoại · vì: tự tả tính cách
+- (?<!\p{L})(tôi|tớ|em|mình|bác|cô|chú|anh|chị|cháu)( thì| vốn| cứ)? (nói|sống|tính) (thẳng|thật thà|thẳng tính) · mức: lỗi · áp: thoại · vì: tự tả cách nói của mình (Hiếu "Tôi nói thẳng vậy thôi"); cho thấy bằng việc: "Có gì hỏi thẳng đây, đừng xì xào sau lưng"
+- (?:^|[.!?…]\s+)(Tớ|Tôi|Mình) (trông|trực|giữ|quản|phụ trách) [^.!?]{0,40} · mức: nhắc · áp: thoại · vì: tự khai vai trò ("Bác trông tòa này" — bộ đồng phục đã cho thấy); chỉ xét đại từ chắc là tự xưng, "Bác/Chú/Em" thường là gọi người nghe
