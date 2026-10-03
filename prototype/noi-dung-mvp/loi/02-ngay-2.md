@@ -5,19 +5,19 @@
 ## n2-mo.1
 > NHIỆM VỤ: Sang Phòng Đào tạo nhận tài khoản tra cứu
 - [THẺ CHỮ] **narrator**: Ngày 2 — Thứ Tư
-- **minh-anh** (neutral): Đơn xin quyền tra cứu, {{nv.thay-quang.trong-cau}} duyệt rồi. Lát nữa sang Phòng Đào tạo, {{nv.co-hanh.trong-cau}} cài tài khoản cho CLB.
-- **duy** (neutral): Laptop của CLB tớ mang theo.
-- **tung** (happy): Có tài khoản là tra được hết hả chị?
-- **minh-anh** (neutral): Được đúng những gì người ta cho phép. Hỏi cô là biết.
+- **minh-anh** (neutral): Đơn xin quyền tra cứu, {{nv.thay-quang.trong-cau}} duyệt rồi. Lát nữa sang Phòng Đào tạo, {{nv.co-hanh.trong-cau}} sẽ cấp tài khoản.
+- **duy** (neutral): Laptop CLB đây. Tớ cầm theo rồi.
+- **tung** (happy): Có tài khoản là tra được hết hả chị? Tớ cá là tìm ra ngay!
+- **minh-anh** (neutral): Được xem đúng quyền thôi. Tới đó hỏi cô là rõ.
 
 ## n2-co-hanh.1
 > NHIỆM VỤ: Tài khoản của CLB được xem những gì?
-> NHẮC VIỆC minh-anh (neutral): Được xem đúng những gì người ta cho phép. Nghe cô nói hết đã.
+> NHẮC VIỆC minh-anh (neutral): Được xem đúng quyền thôi. Tới đó hỏi cô là rõ.
 - **narrator**: Trên đường sang tòa hành chính.
-- **tung** (happy): Đường tắt qua sân bóng rổ, nhanh hơn ba phút. Tớ dẫn.
+- **tung** (happy): Đi tắt qua sân bóng rổ, nhanh hơn ba phút. Tớ dẫn đường cho!
 - **ha-vy** (smile): Cậu đo cả thời gian đi bộ à?
-- **tung** (chi-tay): Hướng dẫn viên thì phải biết chứ. Còn cậu thì đếm bậc cầu thang, tớ thấy rồi.
-- **ha-vy** (neutral): Hai mươi hai bậc. Đếm cho quen tay thôi.
+- **tung** (chi-tay): Hướng dẫn viên thì phải thuộc đường chứ. Còn cậu đi sau cứ lẩm nhẩm, tớ cá là lại đếm bậc cầu thang!
+- **ha-vy** (neutral): Hai mươi hai bậc. Quen tật thôi.
 
 ## n2-co-hanh.1v
 - **co-hanh** (neutral): Cô tạo cho CLB một tài khoản, tên là clb_tham_tu.
@@ -31,8 +31,8 @@
 - **co-hanh** (neutral): Tra gì máy cũng ghi lại. Cuối vụ cô xem nhật ký.
 
 ## n2-co-hanh.2
-- **player**: Bảng lớp thôi cũng đủ khoanh vùng rồi ạ. Em cảm ơn cô.
-- **co-hanh** (smile): Khoanh vùng thôi đấy nhé. Lớp thì không bỏ thư được.
+- **player**: Xem được lớp là khoanh vùng được rồi ạ. Em cảm ơn cô.
+- **co-hanh** (smile): Mới khoanh vùng thôi đấy. Lớp thì không tự bỏ thư được đâu.
 
 ## n2-bd-toa-b.1
 - **bac-tu** (smile): Lại mấy cháu CLB Thám Tử à? Cô Lan niêm phong hộp lại rồi, không soi được nữa đâu.
@@ -42,9 +42,9 @@
 
 ## n2-bd-cang-tin.1
 - **narrator**: Giữa buổi sáng, căng tin mới có lác đác vài bàn.
-- **tung** (happy): Giờ này vắng, trưa mới chen nhau. Muốn nghe chuyện trong trường thì cứ ra đây giờ ăn trưa.
-- **tung** (chi-tay): À, tối thứ Hai nào đi đá bóng về tớ cũng thấy cậu ngồi ở thư viện tới lúc đóng cửa đấy, Hà Vy.
-- **ha-vy** (neutral): Cậu để ý người khác kỹ thật. Ừ, tối thứ Hai tớ không có tiết sáng hôm sau.
+- **tung** (happy): Giờ này vắng. Trưa ra đây á, tớ cá là chen bẹp ruột!
+- **tung** (chi-tay): Tối thứ Hai đi đá bóng về tớ toàn thấy cậu ở thư viện tới lúc đóng cửa đấy, Hà Vy.
+- **ha-vy** (neutral): Cậu soi kỹ thật đấy. Ừ, tối thứ Hai tớ rảnh.
 
 ## n2-phong.1
 > NHIỆM VỤ: Về phòng CLB, mở laptop
@@ -69,11 +69,11 @@
 
 ## n2-laptop.0
 > NHIỆM VỤ: Xem tài khoản CLB tra được bảng nào
-> NHẮC VIỆC ha-vy (neutral): Chưa lọc gì vội. Chọn bảng rồi chạy, xem nó có những cột nào.
+> NHẮC VIỆC ha-vy (neutral): Cứ mở bảng xem thử đã. Chưa biết cột nào thì lọc kiểu gì.
 - [DÀN DỰNG] Phòng CLB buổi chiều. Laptop CLB đã đăng nhập tài khoản mới. Giấy nhớ [Tòa B], [Báo chí K24] trên bàn.
 - **narrator**: Cái laptop cũ khởi động mất gần hai phút.
 - **duy** (neutral): Tài khoản cô Hạnh tạo chỉ mở được đúng một bảng.
-- **ha-vy** (neutral): Thì mở nó ra xem đã. Chưa biết bảng ghi gì thì biết lọc cái gì.
+- **ha-vy** (neutral): Cứ mở bảng xem thử đã. Chưa biết cột nào thì lọc kiểu gì.
 
 ## n2-laptop.05
 > NHIỆM VỤ: Chỉ lấy cột cần xem
@@ -98,27 +98,26 @@
 > NHẮC VIỆC ha-vy (neutral): Hai lớp: BC24A, BC23A. Muốn xem người thì cần phiếu của Phòng Công tác sinh viên.
 
 ## n2-toi.1
-- **narrator**: Tối, phòng 408. Ấm siêu tốc réo. Tùng bóc hai gói mì, gói nào cũng bẻ đôi cho vừa cái bát inox.
-- **tung** (happy): Bí kíp ký túc: nước sôi đổ ngập, úp cái đĩa lên, đếm tới một trăm tám mươi.
+- **narrator**: Tối, phòng 408. Tùng bóc hai gói mì, bẻ đôi nhét vừa cái bát inox.
+- **tung** (happy): Bí kíp này: đổ nước sôi ngập, úp đĩa lên, đếm chuẩn một trăm tám mươi giây.
 - **player**: Cậu đếm thật à?
-- **tung** (chi-tay): Tớ cá là cậu chưa đếm tới năm mươi đã mở ra ăn.
-- **narrator**: Điện thoại rung liên tục. Chị Minh Anh vừa lập nhóm chat "CLB Thám Tử (5)".
-- **narrator**: Duy gửi ảnh cái tủ hồ sơ đã khóa, kèm đúng một dòng: "Đã kiểm. Ngủ sớm."
-- **narrator**: Hà Vy gửi ảnh một trang vở kín chữ số, rồi một nhãn dán con mèo đeo kính.
-- **tung** (surprised): Hà Vy mà cũng biết gửi nhãn dán á?
-- **player**: Cậu trả lời đi. Mà mì nở hết rồi kìa.
-- **tung** (gai-dau): Chết. Một trăm tám mươi của tớ!
-- **narrator**: Mì nhão. Hai đứa vẫn ăn hết, húp cả nước.
-- **player**: Tối mai đổi sang bánh mì nhé. Kinh phí thí nghiệm hôm nay bằng đúng hai gói mì.
-- **tung** (worried): Mai ăn ở căng tin đi. Chờ đã, cuối tuần còn phải nạp tiền vào ví sinh viên nữa!
-- **player**: Mới đầu tuần mà đã tính tới cuối tuần rồi à?
+- **tung** (chi-tay): Tớ cá là cậu chưa đếm tới năm mươi đã mở ra gắp rồi!
+- **narrator**: Điện thoại rung. Chị Minh Anh vừa lập nhóm chat "CLB Thám Tử (5)".
+- **narrator**: Duy gửi ảnh cái tủ hồ sơ đã khóa kín: "Đã kiểm. Ngủ sớm."
+- **narrator**: Hà Vy gửi một trang vở chi chít số, kèm nhãn dán con mèo đeo kính.
+- **tung** (surprised): Ơ kìa, Hà Vy mà cũng dùng nhãn dán á?
+- **player**: Lo mà úp mì đi. Nở bung bét rồi kìa.
+- **tung** (gai-dau): Chết dở! Trôi mất một trăm tám mươi giây của tớ!
+- **narrator**: Mì nhão. Hai đứa vẫn ăn sạch, húp cả nước.
+- **player**: Tối mai gặm bánh mì đi. Quỹ bay sạch vào hai gói mì này rồi.
+- **tung** (worried): Mai ra căng tin mà ăn nợ. Khoan, cuối tuần còn phải nạp tiền thẻ sinh viên nữa!
 
 ## n2-co-hanh-an.1
-- **player**: (Tờ lịch tháng 9 treo cạnh bảng. Ô thứ Hai 30 khoanh đỏ, ghi tay: "Họp rà soát phòng CLB".)
-- **ha-vy** (thinking): Phòng Đào tạo cũng ghi ngày họp của mình rồi. Hạn là thật đấy.
+- **player**: (Tờ lịch tháng 9. Ô ngày 30 khoanh đỏ: "Họp rà soát phòng CLB".)
+- **ha-vy** (thinking): Lịch họp ghi lên tận đây rồi. Hạn chót là thật đấy.
 
 ## n2-bd-toa-b-an.1
-- **narrator**: Góc bảng tin còn sót tờ danh sách phòng CLB năm ngoái: "Phòng 204 nhà CLB: CLB Thám Tử". Có người vẽ thêm cái kính lúp bằng bút bi.
+- **narrator**: Góc bảng tin còn tờ danh sách CLB năm ngoái: "Phòng 204: CLB Thám Tử". Có ai vẽ thêm cái kính lúp.
 - **player**: (Năm ngoái đã có người nghịch thế rồi. Hay là chính người trong CLB vẽ?)
 
 ## n2-bd-cang-tin-an.1
