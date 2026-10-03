@@ -99,7 +99,7 @@
 - Mở sau: vu4
 - Ngày: 2024-11-20
 - Tiêu đề kết: Hai mươi sáu tên, bốn tên xuất hiện hai lần
-- Lời kết: Từ 39 dòng lớp cũ, 30 dòng ghi ra trường, gom lại còn 26 tên không trùng; bốn tên có hai dòng. Danh sách chỉ cho biết tên trùng, không cho biết là một người hay hai người trùng tên, việc đó cô Hạnh nhận ra từ trí nhớ. Danh sách cũng không cho biết ai còn liên lạc được hay sẽ tới.
+- Lời kết: Từ bốn trăm dòng lớp cũ, 30 dòng ghi ra trường, gom lại còn 26 tên không trùng; bốn tên có hai dòng. Danh sách chỉ cho biết tên trùng, không cho biết là một người hay hai người trùng tên, việc đó cô Hạnh nhận ra từ trí nhớ. Danh sách cũng không cho biết ai còn liên lạc được hay sẽ tới.
 
 ## Túi đồ trên ghế đá {nhiệm vụ phụ: tui-do}
 - Chuỗi: p-tui-mo

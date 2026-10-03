@@ -262,4 +262,27 @@ describe('màn tra v7 · buổi họp (fix-query c-sua-or-quan, màn chiếu)', 
     await u.click(screen.getByRole('button', { name: 'Tiếp tục' }));
     expect(onXong).toHaveBeenCalledWith([]);
   });
+
+  it('không bị mất chữ H khi bấm vào ô giá trị; cột và phép cố định; nút Đặt lại khôi phục câu ban đầu', async () => {
+    const { u } = ve('c-sua-or-quan', { mode: 'fix-query', canh: 'man-chieu', giayNho: giaTriTuHoSo(kb, nhayToi(kb, 'hop-sua-or', 1).hoSo) });
+
+    // Cột và phép bị khóa cố định trên màn chiếu
+    expect(screen.getByRole('button', { name: /^Cột của điều kiện 1: ten \(cố định\)/ })).toBeDisabled();
+    expect(screen.getByRole('button', { name: /^Phép so sánh của điều kiện 1: bắt đầu bằng \(cố định\)/ })).toBeDisabled();
+
+    // Bấm vào ô giá trị H không bị gỡ mất
+    const oH = screen.getByRole('button', { name: /^Giá trị điều kiện 1: H \(cố định trên màn chiếu\)/ });
+    await u.click(oH);
+    expect(screen.getByText('H')).toBeInTheDocument();
+    expect(cauSql()).toBe("SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A'");
+
+    // Đổi HOẶC sang VÀ
+    await u.click(screen.getByRole('button', { name: /^Nối điều kiện 2: HOẶC \(OR\)/ }));
+    expect(cauSql()).toBe("SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A'");
+
+    // Bấm nút Đặt lại -> khôi phục về câu ban đầu với OR
+    const nutDatLai = screen.getByRole('button', { name: '↺ Đặt lại' });
+    await u.click(nutDatLai);
+    expect(cauSql()).toBe("SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A'");
+  });
 });

@@ -894,7 +894,7 @@ const GOC = {
         "moSau": "vu4",
         "ngay": "2024-11-20",
         "tieuDeKet": "Hai mươi sáu tên, bốn tên xuất hiện hai lần",
-        "loiKet": "Từ 39 dòng lớp cũ, 30 dòng ghi ra trường, gom lại còn 26 tên không trùng; bốn tên có hai dòng. Danh sách chỉ cho biết tên trùng, không cho biết là một người hay hai người trùng tên, việc đó cô Hạnh nhận ra từ trí nhớ. Danh sách cũng không cho biết ai còn liên lạc được hay sẽ tới."
+        "loiKet": "Từ bốn trăm dòng lớp cũ, 30 dòng ghi ra trường, gom lại còn 26 tên không trùng; bốn tên có hai dòng. Danh sách chỉ cho biết tên trùng, không cho biết là một người hay hai người trùng tên, việc đó cô Hạnh nhận ra từ trí nhớ. Danh sách cũng không cho biết ai còn liên lạc được hay sẽ tới."
       },
       {
         "id": "tui-do",
@@ -16430,13 +16430,13 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 39
+            "n": 400
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả bảng, ba mươi chín dòng, kể cả người thôi học, người chuyển trường."
+              "text": "Cả bảng, bốn trăm dòng, kể cả người thôi học, người chuyển trường."
             }
           ]
         },

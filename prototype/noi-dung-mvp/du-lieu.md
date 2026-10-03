@@ -357,7 +357,7 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 - Cột: nam_hoc TEXT, lop TEXT, ho_ten TEXT, ghi_chu TEXT
 
 <!-- Nhiệm vụ phụ "Học trò cũ của cô" (20/11/2024): danh sách lớp các khóa 1995–2005 cô Hạnh đứng lớp / chủ nhiệm, nhập tay, mỗi năm một kiểu (`␣` = dấu cách).
-     39 dòng; ghi_chu "ra trường" viết lệch: hoa chữ đầu, dấu cách đầu / cuối → lọc `= 'ra trường'` chỉ ra 18, TRIM hay LOWER riêng lẻ ra 23, phải LOWER(TRIM()) mới đủ 30.
+     39 dòng truyện gốc được bộ sinh nhieu-mvp.ts nâng lên 400 dòng cỡ trường thật; ghi_chu "ra trường" viết lệch: hoa chữ đầu, dấu cách đầu / cuối → lọc `= 'ra trường'` chỉ ra 18, TRIM hay LOWER riêng lẻ ra 23, phải LOWER(TRIM()) mới đủ 30.
      30 dòng ra trường gom thành 26 tên không trùng; bốn tên có hai dòng: Hoàng Minh Châu (chuyển lớp, hai lớp khác năm), Đinh Công Sơn và Hà Đức Long (cùng năm cùng lớp, nhập hai lần),
      Nguyễn Văn Hùng (1999 và 2003: hai người trùng tên, chỉ cô Hạnh biết). Dòng đầu bảng (Đỗ Văn Thịnh, 1995–1996, thôi học) là chi tiết ẩn của tuyến bí mật: không cột, không câu hỏi nào nhắc tới. -->
 

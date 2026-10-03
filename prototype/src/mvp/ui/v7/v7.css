@@ -245,10 +245,19 @@
   max-width: none;
   user-select: none;
 }
+.v7[data-canh='phong-clb'] .v7-nen {
+  transform: scale(1.33) translateY(3%);
+  transform-origin: 50% 36%;
+}
+.v7[data-canh='phong-may'] .v7-nen {
+  transform: scale(1.18) translateY(1.5%);
+  transform-origin: 50% 40%;
+}
 .v7--ngang .v7-o-kinh {
   position: absolute;
-  box-shadow: 0 0 30px rgba(100, 181, 246, 0.2);
-  border-radius: 3px;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.75), 0 0 16px rgba(100, 181, 246, 0.25);
+  border-radius: 6px;
+  border: 4px solid #1a222d;
   overflow: hidden;
 }
 .v7[data-canh='man-chieu'] .v7-o-kinh {
@@ -298,6 +307,26 @@
   color: #9fb3c2;
   font: 600 0.76em var(--font-mono);
 }
+.v7-dat-lai {
+  margin-left: auto;
+  padding: 0.25em 0.65em;
+  border: 1px solid rgba(159, 179, 194, 0.35);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #cde1ef;
+  font: 600 0.88em var(--font-ui);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.v7-dat-lai:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(159, 179, 194, 0.65);
+  color: #fff;
+}
+.v7-dat-lai:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
 .v7-de {
   flex: none;
   margin: 0;
@@ -312,6 +341,47 @@
   gap: 1.4em;
   align-items: flex-start;
   padding: 0.6em 1.05em 0.3em;
+}
+.v7-cau.v7-cau--3cot {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(360px, 2.2fr) minmax(180px, 1.15fr);
+  gap: 12px;
+  align-items: stretch;
+  padding: 0.5em 0.8em;
+  background: rgba(8, 14, 20, 0.45);
+  border-bottom: 1px solid rgba(100, 181, 246, 0.15);
+}
+.v7-cot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45em;
+  min-width: 0;
+  padding: 0.5em 0.7em;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+.v7-cot__nhan {
+  font: 800 0.72em/1.2 var(--font-ui);
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  text-transform: uppercase;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+  padding-bottom: 0.35em;
+  margin-bottom: 0.2em;
+}
+.v7-cot__mac-dinh {
+  font: 500 0.85em var(--font-ui);
+  color: #64748b;
+  font-style: italic;
+  padding: 0.5em 0.2em;
+}
+.v7-noi-vung {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  flex-wrap: wrap;
+  margin-top: 0.3em;
 }
 .v7-cau__bang {
   display: flex;
@@ -407,7 +477,28 @@ span.v7-o--bang:not(.v7-o--phieu) {
   background: #fff3cd;
   color: #6d4c00;
 }
-.v7-o--bo,
+.v7-o--bo {
+  width: 1.85em;
+  height: 1.85em;
+  min-width: 1.85em;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.18);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  font-size: 0.95em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: none;
+  transition: all 0.15s ease;
+}
+.v7-o--bo:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.55);
+  color: #fff;
+  border-color: #ef4444;
+  transform: scale(1.12);
+}
 .v7-o--them {
   width: 2.1em;
   height: 2.1em;
@@ -452,6 +543,19 @@ span.v7-o--bang:not(.v7-o--phieu) {
   border-color: transparent;
   padding: 0;
   min-width: 0;
+}
+.v7-khe.is-co-dinh {
+  cursor: default;
+}
+.v7-khe.is-khoi-phuc {
+  border-color: #64b5f6;
+  color: #90caf9;
+  background: rgba(100, 181, 246, 0.12);
+  cursor: pointer;
+}
+.v7-khe.is-khoi-phuc:hover {
+  background: rgba(100, 181, 246, 0.22);
+  border-color: #90caf9;
 }
 .v7-khe__giay {
   display: inline-block;
@@ -676,6 +780,23 @@ span.v7-o--bang:not(.v7-o--phieu) {
 }
 .v7-nut--soi.is-mo {
   background: var(--v7-vang);
+}
+.v7-nut--dat-lai {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #e2e8f0;
+  font-size: 1.05em;
+  padding: 0 1.2em;
+  box-shadow: 0 0.2em 0 rgba(0, 0, 0, 0.35);
+}
+.v7-nut--dat-lai:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+.v7-nut--dat-lai:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 .v7-nut--chay {
   padding: 0 1.9em;
@@ -2087,16 +2208,31 @@ span.v7-o--bang:not(.v7-o--phieu) {
 /* ---------- Vụ 2: khối gọt cột (TRIM / LOWER) và hàng "xếp theo" (ORDER BY) ---------- */
 .v7-o--got {
   font-size: 0.82em;
-  padding-inline: 0.55em;
-  border-style: dashed;
-  opacity: 0.8;
+  padding: 0 0.65em;
+  height: 2.3em;
+  border: 1px dashed rgba(159, 179, 194, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+  color: #94a3b8;
+  border-radius: 6px;
+  box-shadow: none;
+  transition: all 0.15s ease;
+}
+.v7-o--got:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 196, 87, 0.5);
+  color: #f1f5f9;
 }
 .v7-o--got.is-bat {
-  border-style: solid;
-  opacity: 1;
-  background: rgba(255, 196, 87, 0.18);
-  border-color: #ffc457;
+  border: 1px solid #ffc457;
+  background: rgba(255, 196, 87, 0.22);
   color: #ffe2a6;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(255, 196, 87, 0.25);
+}
+.v7-o--got-icon {
+  font-size: 0.9em;
+  opacity: 0.85;
+  margin-right: 2px;
 }
 .v7-xep {
   padding-top: 0.4em;

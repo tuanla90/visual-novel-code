@@ -30,7 +30,7 @@ export type GiaTriDung =
 export type ChuanHoa = 'khong' | 'got' | 'thuong' | 'got-thuong';
 export const VONG_CHUAN_HOA: readonly ChuanHoa[] = ['khong', 'got', 'thuong', 'got-thuong'];
 export const TEN_CHUAN_HOA: Record<ChuanHoa, string> = {
-  khong: 'y nguyên',
+  khong: 'để nguyên',
   got: 'bỏ dấu cách thừa',
   thuong: 'đổi chữ thường',
   'got-thuong': 'bỏ cách + chữ thường',

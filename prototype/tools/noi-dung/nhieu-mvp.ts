@@ -583,6 +583,106 @@ function themLichVaDangKy(d: BoDuLieuMvp): void {
   sap(dk, 0, 1);
 }
 
+/** Danh sách lớp cũ các khóa 1995–2005 (cô Hạnh nhờ tra cứu).
+ * Nâng từ 39 dòng lên 400 dòng cỡ trường thật qua 10 năm học.
+ * Giữ nguyên 30 dòng ra trường của truyện (18 chuẩn, 5 hoa đầu, 5 cách cuối, 2 cách đầu);
+ * dòng Đỗ Văn Thịnh (1995–1996, thôi học) luôn ở vị trí đầu bảng.
+ * Dòng nền thêm vào TUYỆT ĐỐI không có ghi_chu 'ra trường' (kể cả hoa/cách),
+ * không trùng tên 4 người có 2 dòng ra trường và Đỗ Văn Thịnh.
+ */
+function themDanhSachLopCu(d: BoDuLieuMvp): void {
+  const b = bangTheo(d, 'danh_sach_lop_cu');
+  if (!b) return;
+  const r = xn(2115);
+  const NAM_HOC = [
+    '1995-1996',
+    '1996-1997',
+    '1997-1998',
+    '1998-1999',
+    '1999-2000',
+    '2000-2001',
+    '2001-2002',
+    '2002-2003',
+    '2003-2004',
+    '2004-2005',
+  ] as const;
+
+  const LOP_THEO_NAM: Record<string, string[]> = {
+    '1995-1996': ['TH95', 'th95', 'TH 95', 'KT95'],
+    '1996-1997': ['TH95', 'KT96', 'TH96'],
+    '1997-1998': ['TH95', 'th95', 'TH 95', 'KT97', 'TH97'],
+    '1998-1999': ['KT97', 'kt97', 'TH98', 'KT98'],
+    '1999-2000': ['KT97', 'kt97', 'TH99', 'TH 99'],
+    '2000-2001': ['TH99', 'KT00', 'TH00'],
+    '2001-2002': ['TH99', 'TH 99', 'KT01', 'kt01'],
+    '2002-2003': ['KT01', 'TH02', 'KT02'],
+    '2003-2004': ['KT01', 'kt01', 'TH02', 'TH03'],
+    '2004-2005': ['TH02', 'KT03', 'TH04'],
+  };
+
+  const GHI_CHU_KHAC = [
+    null, null, null, null, null, null, null,
+    'thôi học',
+    'chuyển trường',
+    'bảo lưu',
+    'chuyển lớp',
+    'khen thưởng',
+  ] as const;
+
+  const TEN_CAM = new Set([
+    'Hoàng Minh Châu',
+    'Đinh Công Sơn',
+    'Hà Đức Long',
+    'Nguyễn Văn Hùng',
+    'Đỗ Văn Thịnh',
+    'Trần Bích Ngọc',
+    'Phạm Quang Hòa',
+    'Lê Thị Mai',
+    'Bùi Xuân Trường',
+    'Đặng Văn Phúc',
+  ]);
+
+  const SO_DONG_CAN = 361;
+  const moiNam = Math.floor(SO_DONG_CAN / NAM_HOC.length);
+  const conLai = SO_DONG_CAN - moiNam * NAM_HOC.length;
+
+  const dongGoc = [...b.dong];
+  const dongMoi: GiaTriO[][] = [];
+
+  for (let idx = 0; idx < NAM_HOC.length; idx++) {
+    const nam = NAM_HOC[idx]!;
+    const cacLop = LOP_THEO_NAM[nam] ?? ['TH' + nam.slice(2, 4)];
+    const soDongNam = moiNam + (idx < conLai ? 1 : 0);
+    for (let i = 0; i < soDongNam; i++) {
+      let hoTen = `${r.chon(HO)} ${r.chon(DEM)} ${r.chon(TEN)}`;
+      while (TEN_CAM.has(hoTen)) {
+        hoTen = `${r.chon(HO)} ${r.chon(DEM)} ${r.chon(TEN)}`;
+      }
+      const lop = r.chon(cacLop);
+      const ghiChu = r.chon(GHI_CHU_KHAC);
+      dongMoi.push([nam, lop, hoTen, ghiChu]);
+    }
+  }
+
+  const dongThinh = dongGoc[0];
+  const dongGocConLai = dongGoc.slice(1);
+
+  const tatCa = [...dongGocConLai, ...dongMoi];
+  tatCa.sort((x, y) => {
+    const nX = chu(x[0]);
+    const nY = chu(y[0]);
+    if (nX !== nY) return nX < nY ? -1 : 1;
+    const lX = chu(x[1]);
+    const lY = chu(y[1]);
+    if (lX !== lY) return lX < lY ? -1 : 1;
+    const tX = chu(x[2]);
+    const tY = chu(y[2]);
+    return tX < tY ? -1 : 1;
+  });
+
+  b.dong = dongThinh ? [dongThinh, ...tatCa] : tatCa;
+}
+
 /** Thêm dữ liệu nền vào bộ dữ liệu đã đọc từ du-lieu.md (sửa tại chỗ, trả lại chính nó). */
 export function themNhieuMvp<T extends BoDuLieuMvp>(d: T): T {
   themLop(d);
@@ -599,5 +699,6 @@ export function themNhieuMvp<T extends BoDuLieuMvp>(d: T): T {
   themGiaoDich(d);
   themLuotDon(d);
   themLichVaDangKy(d);
+  themDanhSachLopCu(d);
   return d;
 }

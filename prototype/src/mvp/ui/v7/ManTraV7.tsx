@@ -198,6 +198,14 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     doiCau((c) => ({ ...c, khung: khungCua(moi) }));
   };
   const doiDk = (i: number, f: (d: DieuKienDung) => DieuKienDung): void => doiCau((c) => ({ ...c, dieuKien: c.dieuKien.map((d, k) => (k === i ? f(d) : d)) }));
+  /** Đặt lại câu ban đầu với thử thách nạp sẵn (fix-query, màn chiếu). */
+  const datLaiCauBanDau = useCallback(() => {
+    if (!the.truyVanNapSan) return;
+    const goc = cauTuSql(the.truyVanNapSan);
+    if (!goc) return;
+    soundEngine.playSfx('click');
+    doiCau(() => goc);
+  }, [the.truyVanNapSan, doiCau]);
   const dat = (i: number, g: GiaTriHoSo): void => {
     soundEngine.playSfx('select');
     doiDk(i, (d) => ({ ...d, giaTri: { nguon: 'giay-nho', tho: g.giaTri, nhieu: g.nhieu, the: g.the } }));
@@ -363,7 +371,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     const phai = i >= nua;
     const k = phai ? i - nua : i;
     return {
-      left: phai ? cauHinh.kinh.x + cauHinh.kinh.w - 6 : cauHinh.kinh.x - 122,
+      left: phai ? cauHinh.kinh.x + cauHinh.kinh.w - 18 : cauHinh.kinh.x - 90,
       top: cauHinh.kinh.y + 22 + k * buocGiay,
       ['--r' as string]: `${((i * 37) % 9) - 4}deg`,
       ['--img' as string]: `url("${anhTheoTen(`giay-nho-${String((i % 10) + 1).padStart(2, '0')}`) ?? ''}")`,
@@ -395,54 +403,50 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     <div className="v7-kinh" data-region="sql">
       <div className="v7-thanh">
         <span>▣ tra-cuu — {cauHinh.may}</span>
+        {the.truyVanNapSan ? (
+          <button
+            type="button"
+            className="v7-dat-lai"
+            disabled={dangChay}
+            onClick={datLaiCauBanDau}
+            title="Khôi phục câu truy vấn ban đầu trên màn chiếu"
+          >
+            ↺ Đặt lại câu ban đầu
+          </button>
+        ) : null}
       </div>
       <p className="v7-de">{dienTen(the.deBai)}</p>
       {nguongDuy !== null ? (
         <KiemPhieu duy={`phiếu tối đa ${nguongDuy} dòng${the.bamO ? `, có cột ${the.bamO}` : ''}`} duyDat={duyDat} vy="đúng câu hỏi trên bảng" vyDat={vyDat} />
       ) : null}
-      <div className="v7-cau">
-        <div className="v7-cau__bang">
-          {nguonPhieu ? (
-            <span className="v7-o v7-o--bang v7-o--phieu" title={`Phiếu đã ghim "${dienTen(nguonPhieu.nhan)}" dùng làm nguồn, tên tạm ${bang.ten}`}>
-              <IconPin className="v7-bt" /> {dienTen(nguonPhieu.nhan)}
-            </span>
-          ) : chonBang ? (
-            <select
-              className={`v7-o v7-o--bang v7-o--chon-bang${daChonBang ? '' : ' is-trong'}`}
-              aria-label="Chọn bảng để tra"
-              disabled={khoa}
-              value={daChonBang ? bang.ten : ''}
-              onChange={(e) => setDaChonBang(e.target.value !== '')}
-            >
-              <option value="">chọn bảng…</option>
-              <option value={bang.ten}>{bang.ten}</option>
-            </select>
-          ) : (
-            <span className="v7-o v7-o--bang" title={`Bảng ${bang.ten}`}>
-              <IconLock className="v7-bt" /> {bang.ten}
-            </span>
-          )}
-          <small>{daChonBang ? `${tongDong} dòng` : 'chưa chọn bảng'}</small>
-        </div>
-        {chonCot ? (
-          <div className="v7-lay" role="group" aria-label="Các cột lấy ra">
-            <span className="v7-o v7-o--dau" aria-hidden="true">
-              LẤY CỘT
-            </span>
-            {bang.cot.map((c) => {
-              const bat = cotLay.includes(c.ten);
-              return (
-                <button key={c.ten} type="button" className={`v7-o v7-o--lay${bat ? ' is-bat' : ''}`} disabled={khoa} aria-pressed={bat} aria-label={`Cột ${c.ten}: ${bat ? 'đang lấy — bấm để bỏ' : 'chưa lấy — bấm để lấy'}`} onClick={() => doiCot(c.ten)}>
-                  <span aria-hidden="true">{bat ? '✓' : '+'}</span> {c.ten}
-                </button>
-              );
-            })}
-            {cotLay.length === 0 ? <small className="v7-lay__nhac">bấm cột muốn xem</small> : null}
+      <div className="v7-cau v7-cau--3cot">
+        <div className="v7-cot v7-cot--nguon">
+          <span className="v7-cot__nhan">1. NGUỒN BẢNG</span>
+          <div className="v7-cau__bang">
+            {nguonPhieu ? (
+              <span className="v7-o v7-o--bang v7-o--phieu" title={`Phiếu đã ghim "${dienTen(nguonPhieu.nhan)}" dùng làm nguồn, tên tạm ${bang.ten}`}>
+                <IconPin className="v7-bt" /> {dienTen(nguonPhieu.nhan)}
+              </span>
+            ) : chonBang ? (
+              <select
+                className={`v7-o v7-o--bang v7-o--chon-bang${daChonBang ? '' : ' is-trong'}`}
+                aria-label="Chọn bảng để tra"
+                disabled={khoa}
+                value={daChonBang ? bang.ten : ''}
+                onChange={(e) => setDaChonBang(e.target.value !== '')}
+              >
+                <option value="">chọn bảng…</option>
+                <option value={bang.ten}>{bang.ten}</option>
+              </select>
+            ) : (
+              <span className="v7-o v7-o--bang" title={`Bảng ${bang.ten}`}>
+                <IconLock className="v7-bt" /> {bang.ten}
+              </span>
+            )}
+            <small>{daChonBang ? `${tongDong} dòng` : 'chưa chọn bảng'}</small>
           </div>
-        ) : null}
-        <ol className="v7-cau__dk" aria-label="Các điều kiện">
           {khoi.noi ? (
-            <li className="v7-dk v7-noi" aria-label="Nối với bảng khác">
+            <div className="v7-noi-vung" aria-label="Nối với bảng khác">
               <span className="v7-o v7-o--dau" aria-hidden="true">
                 NỐI VỚI
               </span>
@@ -453,7 +457,6 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                 aria-label={`Nối với bảng: ${cau.noiBang?.bang || 'chưa nối'} — bấm để đổi`}
                 onClick={() =>
                   doiCau((c) => {
-                    // Vòng: chưa nối → từng bảng → chưa nối. Đổi bảng thì chọn lại khóa; cột điều kiện thuộc bảng cũ về cột đầu.
                     const k = c.noiBang?.bang ? bangNoiDuoc.indexOf(c.noiBang.bang) + 1 : 0;
                     const ke = bangNoiDuoc[k];
                     const cotGoc = bang?.cot.map((x) => x.ten) ?? [];
@@ -485,111 +488,167 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                   </button>
                 </>
               ) : null}
-            </li>
+            </div>
           ) : null}
-          {cau.dieuKien.map((d, i) => {
-            const noi = cau.noi[i - 1] ?? 'AND';
-            const nhieu = d.giaTri?.nguon === 'giay-nho' && (d.giaTri.nhieu?.length ?? 0) > 1;
-            return (
-              <li key={i} className="v7-dk" data-dk={i + 1}>
-                {i > 0 ? (
+          {chonCot ? (
+            <div className="v7-lay" role="group" aria-label="Các cột lấy ra">
+              <span className="v7-o v7-o--dau" aria-hidden="true">
+                LẤY CỘT
+              </span>
+              {bang.cot.map((c) => {
+                const bat = cotLay.includes(c.ten);
+                return (
+                  <button key={c.ten} type="button" className={`v7-o v7-o--lay${bat ? ' is-bat' : ''}`} disabled={khoa} aria-pressed={bat} aria-label={`Cột ${c.ten}: ${bat ? 'đang lấy — bấm để bỏ' : 'chưa lấy — bấm để lấy'}`} onClick={() => doiCot(c.ten)}>
+                    <span aria-hidden="true">{bat ? '✓' : '+'}</span> {c.ten}
+                  </button>
+                );
+              })}
+              {cotLay.length === 0 ? <small className="v7-lay__nhac">bấm cột muốn xem</small> : null}
+            </div>
+          ) : null}
+        </div>
+
+        <div className="v7-cot v7-cot--chinh">
+          <span className="v7-cot__nhan">2. ĐIỀU KIỆN LỌC</span>
+          <ol className="v7-cau__dk" aria-label="Các điều kiện">
+            {cau.dieuKien.map((d, i) => {
+              const noi = cau.noi[i - 1] ?? 'AND';
+              const nhieu = d.giaTri?.nguon === 'giay-nho' && (d.giaTri.nhieu?.length ?? 0) > 1;
+              return (
+                <li key={i} className="v7-dk" data-dk={i + 1}>
+                  {i > 0 ? (
+                    <button
+                      type="button"
+                      className={`v7-o v7-o--noi${noi === 'OR' ? ' is-hoac' : ''}`}
+                      disabled={khoa}
+                      aria-label={`Nối điều kiện ${i + 1}: ${TEN_NOI[noi]} (${noi}) — bấm để đổi`}
+                      onClick={() => doiCau((c) => ({ ...c, noi: c.noi.map((x, k) => (k === i - 1 ? (x === 'AND' ? 'OR' : 'AND') : x)) }))}
+                    >
+                      {TEN_NOI[noi]}
+                    </button>
+                  ) : (
+                    <span className="v7-o v7-o--dau" aria-hidden="true">
+                      LỌC
+                    </span>
+                  )}
                   <button
                     type="button"
-                    className={`v7-o v7-o--noi${noi === 'OR' ? ' is-hoac' : ''}`}
-                    disabled={khoa}
-                    aria-label={`Nối điều kiện ${i + 1}: ${TEN_NOI[noi]} (${noi}) — bấm để đổi`}
-                    onClick={() => doiCau((c) => ({ ...c, noi: c.noi.map((x, k) => (k === i - 1 ? (x === 'AND' ? 'OR' : 'AND') : x)) }))}
+                    className="v7-o v7-o--cot"
+                    disabled={khoa || laChieu}
+                    title={laChieu ? 'Cột cố định trên màn chiếu' : undefined}
+                    aria-label={`Cột của điều kiện ${i + 1}: ${d.cot}${laChieu ? ' (cố định)' : ' — bấm để đổi'}`}
+                    onClick={() => doiDk(i, (x) => ({ ...x, cot: cot[(cot.indexOf(x.cot) + 1) % cot.length] ?? x.cot }))}
                   >
-                    {TEN_NOI[noi]}
+                    {d.cot}
                   </button>
-                ) : (
+                  {khoi.chuanHoa && kieuCot(d.cot) === 'TEXT' ? (
+                    <button
+                      type="button"
+                      className={`v7-o v7-o--got${d.chuanHoa && d.chuanHoa !== 'khong' ? ' is-bat' : ''}`}
+                      disabled={khoa || laChieu}
+                      title={laChieu ? 'Gọt cột cố định trên màn chiếu' : 'Làm sạch cột: để nguyên / bỏ cách / chữ thường / cả hai'}
+                      aria-label={`Gọt cột ${d.cot} trước khi so: ${TEN_CHUAN_HOA[d.chuanHoa ?? 'khong']}${laChieu ? ' (cố định)' : ' — bấm để đổi'}`}
+                      onClick={() => doiDk(i, (x) => ({ ...x, chuanHoa: VONG_CHUAN_HOA[(VONG_CHUAN_HOA.indexOf(x.chuanHoa ?? 'khong') + 1) % VONG_CHUAN_HOA.length] ?? 'khong' }))}
+                    >
+                      <span className="v7-o--got-icon" aria-hidden="true">✨</span> {TEN_CHUAN_HOA[d.chuanHoa ?? 'khong']}
+                    </button>
+                  ) : null}
+                  <button
+                    type="button"
+                    className="v7-o v7-o--phep"
+                    disabled={khoa || laChieu}
+                    title={laChieu ? 'Phép so sánh cố định trên màn chiếu' : undefined}
+                    aria-label={`Phép so sánh của điều kiện ${i + 1}: ${TEN_PHEP[d.phep]}${laChieu ? ' (cố định)' : ' — bấm để đổi'}`}
+                    onClick={() => doiDk(i, (x) => ({ ...x, phep: x.phep === 'bang' ? 'bat-dau-bang' : 'bang' }))}
+                  >
+                    {nhieu && d.phep === 'bang' ? 'là một trong' : TEN_PHEP[d.phep]}
+                  </button>
+                  <button
+                    type="button"
+                    className={`v7-khe${d.giaTri ? ' is-co' : ''}${dangChon && !d.giaTri ? ' is-moi' : ''}${laChieu ? (d.giaTri ? ' is-co-dinh' : ' is-khoi-phuc') : ''}`}
+                    disabled={khoa}
+                    aria-label={
+                      d.giaTri
+                        ? laChieu
+                          ? `Giá trị điều kiện ${i + 1}: ${d.giaTri.tho} (cố định trên màn chiếu)`
+                          : `Giá trị điều kiện ${i + 1}: ${d.giaTri.tho} — bấm để gỡ`
+                        : laChieu
+                          ? `Ô giá trị điều kiện ${i + 1}: trống — bấm để khôi phục`
+                          : `Ô giá trị điều kiện ${i + 1}: thả giấy nhớ vào đây`
+                    }
+                    title={laChieu ? (d.giaTri ? 'Giá trị cố định trên màn chiếu' : 'Bấm để khôi phục giá trị ban đầu') : undefined}
+                    onDragOver={(e) => e.preventDefault()}
+                    onDrop={laChieu ? undefined : tha(i)}
+                    onClick={() => {
+                      if (laChieu) {
+                        if (!d.giaTri && the.truyVanNapSan) {
+                          const goc = cauTuSql(the.truyVanNapSan);
+                          const gGoc = goc?.dieuKien[i]?.giaTri;
+                          if (gGoc) {
+                            soundEngine.playSfx('select');
+                            doiDk(i, (x) => ({ ...x, giaTri: gGoc }));
+                          }
+                        }
+                        return;
+                      }
+                      if (dangChon) dat(i, dangChon);
+                      else if (d.giaTri) doiDk(i, (x) => ({ ...x, giaTri: null }));
+                    }}
+                  >
+                    {d.giaTri ? (
+                      <span className="v7-khe__giay">{d.giaTri.tho}</span>
+                    ) : laChieu ? (
+                      '↺ khôi phục'
+                    ) : (
+                      'thả giấy nhớ'
+                    )}
+                  </button>
+                  {!laChieu ? (
+                    <button
+                      type="button"
+                      className="v7-o v7-o--bo"
+                      disabled={khoa}
+                      aria-label={`Bỏ điều kiện ${i + 1}`}
+                      title="Bỏ điều kiện này"
+                      onClick={() => doiCau((c) => ({ ...c, dieuKien: c.dieuKien.filter((_x, k) => k !== i), noi: c.noi.filter((_x, k) => k !== Math.max(0, i - 1)) }))}
+                    >
+                      ×
+                    </button>
+                  ) : null}
+                </li>
+              );
+            })}
+            {cau.dieuKien.length < TOI_DA_DIEU_KIEN && !laChieu && !khongLoc ? (
+              <li className={cau.dieuKien.length === 0 ? 'v7-dk' : undefined}>
+                {cau.dieuKien.length === 0 ? (
                   <span className="v7-o v7-o--dau" aria-hidden="true">
                     LỌC
                   </span>
-                )}
-                <button
-                  type="button"
-                  className="v7-o v7-o--cot"
-                  disabled={khoa}
-                  aria-label={`Cột của điều kiện ${i + 1}: ${d.cot} — bấm để đổi`}
-                  onClick={() => doiDk(i, (x) => ({ ...x, cot: cot[(cot.indexOf(x.cot) + 1) % cot.length] ?? x.cot }))}
-                >
-                  {d.cot}
-                </button>
-                {khoi.chuanHoa && kieuCot(d.cot) === 'TEXT' ? (
-                  <button
-                    type="button"
-                    className={`v7-o v7-o--got${d.chuanHoa && d.chuanHoa !== 'khong' ? ' is-bat' : ''}`}
-                    disabled={khoa}
-                    aria-label={`Gọt cột ${d.cot} trước khi so: ${TEN_CHUAN_HOA[d.chuanHoa ?? 'khong']} — bấm để đổi`}
-                    onClick={() => doiDk(i, (x) => ({ ...x, chuanHoa: VONG_CHUAN_HOA[(VONG_CHUAN_HOA.indexOf(x.chuanHoa ?? 'khong') + 1) % VONG_CHUAN_HOA.length] ?? 'khong' }))}
-                  >
-                    {TEN_CHUAN_HOA[d.chuanHoa ?? 'khong']}
-                  </button>
                 ) : null}
                 <button
                   type="button"
-                  className="v7-o v7-o--phep"
+                  className={`v7-o v7-o--them${cau.dieuKien.length === 0 ? ' is-dau' : ''}`}
                   disabled={khoa}
-                  aria-label={`Phép so sánh của điều kiện ${i + 1}: ${TEN_PHEP[d.phep]} — bấm để đổi`}
-                  onClick={() => doiDk(i, (x) => ({ ...x, phep: x.phep === 'bang' ? 'bat-dau-bang' : 'bang' }))}
+                  aria-label="Thêm điều kiện"
+                  onClick={() =>
+                    doiCau((c) => ({
+                      ...c,
+                      dieuKien: [...c.dieuKien, { cot: cot[c.dieuKien.length % Math.max(1, cot.length)] ?? '', phep: 'bang', giaTri: null }],
+                      noi: c.dieuKien.length === 0 ? [] : [...c.noi, 'AND'],
+                    }))
+                  }
                 >
-                  {nhieu && d.phep === 'bang' ? 'là một trong' : TEN_PHEP[d.phep]}
+                  {cau.dieuKien.length === 0 ? '+ thêm điều kiện' : '+'}
                 </button>
-                <button
-                  type="button"
-                  className={`v7-khe${d.giaTri ? ' is-co' : ''}${dangChon && !d.giaTri ? ' is-moi' : ''}`}
-                  disabled={khoa}
-                  aria-label={d.giaTri ? `Giá trị điều kiện ${i + 1}: ${d.giaTri.tho} — bấm để gỡ` : `Ô giá trị điều kiện ${i + 1}: thả giấy nhớ vào đây`}
-                  onDragOver={(e) => e.preventDefault()}
-                  onDrop={tha(i)}
-                  onClick={() => {
-                    if (dangChon) dat(i, dangChon);
-                    else if (d.giaTri) doiDk(i, (x) => ({ ...x, giaTri: null }));
-                  }}
-                >
-                  {d.giaTri ? <span className="v7-khe__giay">{d.giaTri.tho}</span> : 'thả giấy nhớ'}
-                </button>
-                {cau.dieuKien.length > Math.min(1, dkSan) && !laChieu ? (
-                  <button
-                    type="button"
-                    className="v7-o v7-o--bo"
-                    disabled={khoa}
-                    aria-label={`Bỏ điều kiện ${i + 1}`}
-                    onClick={() => doiCau((c) => ({ ...c, dieuKien: c.dieuKien.filter((_x, k) => k !== i), noi: c.noi.filter((_x, k) => k !== Math.max(0, i - 1)) }))}
-                  >
-                    ×
-                  </button>
-                ) : null}
               </li>
-            );
-          })}
-          {cau.dieuKien.length < TOI_DA_DIEU_KIEN && !laChieu && !khongLoc ? (
-            <li className={cau.dieuKien.length === 0 ? 'v7-dk' : undefined}>
-              {cau.dieuKien.length === 0 ? (
-                <span className="v7-o v7-o--dau" aria-hidden="true">
-                  LỌC
-                </span>
-              ) : null}
-              <button
-                type="button"
-                className={`v7-o v7-o--them${cau.dieuKien.length === 0 ? ' is-dau' : ''}`}
-                disabled={khoa}
-                aria-label="Thêm điều kiện"
-                onClick={() =>
-                  doiCau((c) => ({
-                    ...c,
-                    dieuKien: [...c.dieuKien, { cot: cot[c.dieuKien.length % Math.max(1, cot.length)] ?? '', phep: 'bang', giaTri: null }],
-                    noi: c.dieuKien.length === 0 ? [] : [...c.noi, 'AND'],
-                  }))
-                }
-              >
-                {cau.dieuKien.length === 0 ? '+ thêm điều kiện' : '+'}
-              </button>
-            </li>
-          ) : null}
+            ) : null}
+          </ol>
+        </div>
+
+        <div className="v7-cot v7-cot--phu">
+          <span className="v7-cot__nhan">3. SẮP XẾP</span>
           {khoi.sapXep ? (
-            <li className="v7-dk v7-xep" aria-label="Xếp kết quả">
+            <div className="v7-dk v7-xep" aria-label="Xếp kết quả">
               <span className="v7-o v7-o--dau" aria-hidden="true">
                 XẾP THEO
               </span>
@@ -600,7 +659,6 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                 aria-label={`Xếp theo: ${cau.xep ? cau.xep.cot : 'chưa xếp'} — bấm để đổi`}
                 onClick={() =>
                   doiCau((c) => {
-                    // Vòng: chưa xếp → từng cột → chưa xếp.
                     const k = c.xep ? cot.indexOf(c.xep.cot) + 1 : 0;
                     const ke = cot[k];
                     return { ...c, xep: ke === undefined ? null : { cot: ke, giam: c.xep?.giam ?? false } };
@@ -620,9 +678,11 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                   {cau.xep.giam ? '↓ giảm dần' : '↑ tăng dần'}
                 </button>
               ) : null}
-            </li>
-          ) : null}
-        </ol>
+            </div>
+          ) : (
+            <div className="v7-cot__mac-dinh">Theo thứ tự bảng</div>
+          )}
+        </div>
       </div>
 
       <div className={`v7-vung${cham && cham.trangThai !== 'loi' ? ' co-ket-qua' : ''}`} aria-live="polite" aria-label="Kết quả">
@@ -709,6 +769,17 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
         </details>
       ) : null}
       <div className="v7-day">
+        {the.truyVanNapSan && !dung ? (
+          <button
+            type="button"
+            className="v7-nut v7-nut--phu v7-nut--dat-lai"
+            disabled={dangChay}
+            onClick={datLaiCauBanDau}
+            title="Khôi phục lại câu truy vấn ban đầu trên màn chiếu"
+          >
+            ↺ Đặt lại
+          </button>
+        ) : null}
         {daChay && cham && cham.trangThai !== 'loi' ? (
           <button type="button" className={`v7-nut v7-nut--soi${soi ? ' is-mo' : ''}`} onClick={() => setSoi(!soi)}>
             <IconSearch className="v7-bt" /> Xem từng điều kiện

@@ -250,116 +250,162 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
       </div>
       <p className="v7-de">{dienTen(the.deBai)}</p>
       <KiemPhieu duy="mỗi nhóm một dòng, đủ con số đề hỏi" duyDat={ketQua ? ketQua.duSo : null} vy="đúng câu hỏi trên bảng" vyDat={ketQua ? ketQua.dung : null} />
-      <div className="v7-cau">
-        <div className="v7-cau__bang">
-          <button
-            type="button"
-            className={`v7-o v7-o--bang v7-o--phieu${selectedNguon ? '' : ' is-trong'}`}
-            disabled={khoa}
-            aria-label={`Nguồn: ${selectedNguon ? tenNguon(selectedNguon.id) : 'chưa chọn phiếu'} — bấm để đổi`}
-            onClick={() =>
-              doi(() => {
-                const ids = nguon.map((n) => n.id);
-                setNguonId(nguon.length === 1 ? (ids[0] ?? '') : vongKe(ids, nguonId));
-                setNhomTheo('');
-                setWhereCot('');
-                setTinh([]);
-                setGiuCot('');
-              })
-            }
-          >
-            <IconPin className="v7-bt" /> {selectedNguon ? tenNguon(selectedNguon.id) : 'chọn phiếu nguồn'}
-          </button>
-          <small>{selectedNguon ? 'phiếu làm nguồn' : 'bấm để chọn'}</small>
+      <div className="v7-cau v7-cau--3cot">
+        <div className="v7-cot v7-cot--nguon">
+          <span className="v7-cot__nhan">1. NGUỒN PHIẾU</span>
+          <div className="v7-cau__bang">
+            <button
+              type="button"
+              className={`v7-o v7-o--bang v7-o--phieu${selectedNguon ? '' : ' is-trong'}`}
+              disabled={khoa}
+              aria-label={`Nguồn: ${selectedNguon ? tenNguon(selectedNguon.id) : 'chưa chọn phiếu'} — bấm để đổi`}
+              onClick={() =>
+                doi(() => {
+                  const ids = nguon.map((n) => n.id);
+                  setNguonId(nguon.length === 1 ? (ids[0] ?? '') : vongKe(ids, nguonId));
+                  setNhomTheo('');
+                  setWhereCot('');
+                  setTinh([]);
+                  setGiuCot('');
+                })
+              }
+            >
+              <IconPin className="v7-bt" /> {selectedNguon ? tenNguon(selectedNguon.id) : 'chọn phiếu nguồn'}
+            </button>
+            <small>{selectedNguon ? 'phiếu làm nguồn' : 'bấm để chọn'}</small>
+          </div>
         </div>
-        <ol className="v7-cau__dk" aria-label="Các khối của câu tổng hợp">
-          <li className="v7-dk">
-            <span className="v7-o v7-o--dau" aria-hidden="true">
-              LỌC
-            </span>
-            <button
-              type="button"
-              className={`v7-o v7-o--cot${whereCot ? '' : ' is-trong'}`}
-              disabled={khoa || !selectedNguon}
-              aria-label={`Cột lọc: ${whereCot || 'không lọc'} — bấm để đổi`}
-              onClick={() => doi(() => setWhereCot(vongKe(cot, whereCot)))}
-            >
-              {whereCot || 'không lọc'}
-            </button>
-            {whereCot ? (
-              <>
-                <span className="v7-o v7-o--phep" aria-hidden="true">
-                  bằng
-                </span>
-                {khe('Ô giá trị lọc', whereGiay, setWhereGiay, false)}
-              </>
-            ) : null}
-          </li>
-          <li className="v7-dk">
-            <span className="v7-o v7-o--dau" aria-hidden="true">
-              NHÓM THEO
-            </span>
-            <button
-              type="button"
-              className={`v7-o v7-o--cot${nhomTheo ? '' : ' is-trong'}`}
-              disabled={khoa || !selectedNguon}
-              aria-label={`Nhóm theo: ${nhomTheo || 'chưa chọn cột'} — bấm để đổi`}
-              onClick={() => doi(() => setNhomTheo(vongKe(cot, nhomTheo)))}
-            >
-              {nhomTheo || 'chọn cột'}
-            </button>
-          </li>
-          <li className="v7-dk">
-            <span className="v7-o v7-o--dau" aria-hidden="true">
-              TÍNH
-            </span>
-            <span className="v7-o v7-o--phep" title="Mỗi nhóm luôn được đếm số dòng">
-              đếm dòng
-            </span>
-            {khoi.tinh ? (['SUM', 'AVG'] as const).map(nutTinh) : null}
-          </li>
-          {khoi.giuNhom ? (
+
+        <div className="v7-cot v7-cot--chinh">
+          <span className="v7-cot__nhan">2. LỌC, GOM NHÓM & TÍNH</span>
+          <ol className="v7-cau__dk" aria-label="Các khối của câu tổng hợp">
             <li className="v7-dk">
               <span className="v7-o v7-o--dau" aria-hidden="true">
-                CHỈ GIỮ NHÓM
+                LỌC
               </span>
               <button
                 type="button"
-                className={`v7-o v7-o--cot${giuHam ? '' : ' is-trong'}`}
+                className={`v7-o v7-o--cot${whereCot ? '' : ' is-trong'}`}
                 disabled={khoa || !selectedNguon}
-                aria-label={`Giữ nhóm theo: ${giuHam ? TEN_HAM[giuHam] : 'giữ mọi nhóm'} — bấm để đổi`}
-                onClick={() =>
-                  doi(() => {
-                    const ke = vongKe(['COUNT', 'SUM', 'AVG'], giuHam) as HamTongHop | '';
-                    setGiuHam(ke);
-                    if (ke && ke !== 'COUNT' && !giuCot) setGiuCot(cotSo[0] ?? '');
-                  })
-                }
+                aria-label={`Cột lọc: ${whereCot || 'không lọc'} — bấm để đổi`}
+                onClick={() => doi(() => setWhereCot(vongKe(cot, whereCot)))}
               >
-                {giuHam ? `có ${TEN_HAM[giuHam]}` : 'giữ mọi nhóm'}
+                {whereCot || 'không lọc'}
               </button>
-              {giuHam && giuHam !== 'COUNT' ? (
-                <button
-                  type="button"
-                  className="v7-o v7-o--cot"
-                  disabled={khoa}
-                  aria-label={`Cột của phép giữ nhóm: ${giuCot || 'chưa chọn'} — bấm để đổi`}
-                  onClick={() => doi(() => setGiuCot(vongKe(cotSo, giuCot) || (cotSo[0] ?? '')))}
-                >
-                  {giuCot || 'chọn cột số'}
-                </button>
-              ) : null}
-              {giuHam ? (
+              {whereCot ? (
                 <>
                   <span className="v7-o v7-o--phep" aria-hidden="true">
-                    lớn hơn
+                    bằng
                   </span>
-                  {khe('Ô ngưỡng giữ nhóm', giuGiay, setGiuGiay, true)}
+                  {khe('Ô giá trị lọc', whereGiay, setWhereGiay, false)}
+                  <button
+                    type="button"
+                    className="v7-o v7-o--bo"
+                    disabled={khoa}
+                    aria-label="Bỏ lọc"
+                    title="Bỏ lọc này"
+                    onClick={() =>
+                      doi(() => {
+                        setWhereCot('');
+                        setWhereGiay(null);
+                      })
+                    }
+                  >
+                    ×
+                  </button>
                 </>
               ) : null}
             </li>
-          ) : null}
-        </ol>
+            <li className="v7-dk">
+              <span className="v7-o v7-o--dau" aria-hidden="true">
+                NHÓM THEO
+              </span>
+              <button
+                type="button"
+                className={`v7-o v7-o--cot${nhomTheo ? '' : ' is-trong'}`}
+                disabled={khoa || !selectedNguon}
+                aria-label={`Nhóm theo: ${nhomTheo || 'chưa chọn cột'} — bấm để đổi`}
+                onClick={() => doi(() => setNhomTheo(vongKe(cot, nhomTheo)))}
+              >
+                {nhomTheo || 'chọn cột'}
+              </button>
+            </li>
+            <li className="v7-dk">
+              <span className="v7-o v7-o--dau" aria-hidden="true">
+                TÍNH
+              </span>
+              <span className="v7-o v7-o--phep" title="Mỗi nhóm luôn được đếm số dòng">
+                đếm dòng
+              </span>
+              {khoi.tinh ? (['SUM', 'AVG'] as const).map(nutTinh) : null}
+            </li>
+          </ol>
+        </div>
+
+        <div className="v7-cot v7-cot--phu">
+          <span className="v7-cot__nhan">3. LỌC THEO NHÓM</span>
+          {khoi.giuNhom ? (
+            <ol className="v7-cau__dk">
+              <li className="v7-dk">
+                <span className="v7-o v7-o--dau" aria-hidden="true">
+                  CHỈ GIỮ
+                </span>
+                <button
+                  type="button"
+                  className={`v7-o v7-o--cot${giuHam ? '' : ' is-trong'}`}
+                  disabled={khoa || !selectedNguon}
+                  aria-label={`Giữ nhóm theo: ${giuHam ? TEN_HAM[giuHam] : 'giữ mọi nhóm'} — bấm để đổi`}
+                  onClick={() =>
+                    doi(() => {
+                      const ke = vongKe(['COUNT', 'SUM', 'AVG'], giuHam) as HamTongHop | '';
+                      setGiuHam(ke);
+                      if (ke && ke !== 'COUNT' && !giuCot) setGiuCot(cotSo[0] ?? '');
+                    })
+                  }
+                >
+                  {giuHam ? `có ${TEN_HAM[giuHam]}` : 'giữ mọi nhóm'}
+                </button>
+                {giuHam && giuHam !== 'COUNT' ? (
+                  <button
+                    type="button"
+                    className="v7-o v7-o--cot"
+                    disabled={khoa}
+                    aria-label={`Cột của phép giữ nhóm: ${giuCot || 'chưa chọn'} — bấm để đổi`}
+                    onClick={() => doi(() => setGiuCot(vongKe(cotSo, giuCot) || (cotSo[0] ?? '')))}
+                  >
+                    {giuCot || 'chọn cột số'}
+                  </button>
+                ) : null}
+                {giuHam ? (
+                  <>
+                    <span className="v7-o v7-o--phep" aria-hidden="true">
+                      lớn hơn
+                    </span>
+                    {khe('Ô ngưỡng giữ nhóm', giuGiay, setGiuGiay, true)}
+                    <button
+                      type="button"
+                      className="v7-o v7-o--bo"
+                      disabled={khoa}
+                      aria-label="Bỏ điều kiện giữ nhóm"
+                      title="Bỏ lọc nhóm này"
+                      onClick={() =>
+                        doi(() => {
+                          setGiuHam('');
+                          setGiuCot('');
+                          setGiuGiay(null);
+                        })
+                      }
+                    >
+                      ×
+                    </button>
+                  </>
+                ) : null}
+              </li>
+            </ol>
+          ) : (
+            <div className="v7-cot__mac-dinh">Giữ tất cả nhóm</div>
+          )}
+        </div>
       </div>
 
       <div className={`v7-vung${ketQua ? ' co-ket-qua' : ''}`} aria-live="polite" aria-label="Kết quả">
