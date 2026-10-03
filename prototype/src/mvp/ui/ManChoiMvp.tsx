@@ -236,6 +236,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   }, [clearBacklog, xoa, batDau]);
 
   if (!s || !kn) return null;
+  const laTheChu = kn.kind === 'line' && kn.display === 'card';
   const dienTen = (t: string): string => dienTenMay(kb, s, t);
   /** Số thứ tự của một vụ sau (vụ gốc là 1). */
   const soVu = (id: string): number => (kb.lich.vuSau ?? []).findIndex((v) => v.id === id) + 2;
@@ -521,7 +522,9 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           }}
         />
       ) : null}
-      {['line', 'feedback', 'question', 'branch', 'doi-chat'].includes(kn.kind) && !gioiThieuMo ? <DongHanhMvp kb={kb} s={s} dienTen={dienTen} /> : null}
+      {['line', 'feedback', 'question', 'branch', 'doi-chat'].includes(kn.kind) && !gioiThieuMo && !laTheChu ? (
+        <DongHanhMvp kb={kb} s={s} dienTen={dienTen} />
+      ) : null}
       <SanKhauMvp
         kb={kb}
         canh={noiDangO ? noiDangO.diaDiem.canh : s.canh}
@@ -529,11 +532,12 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         speaker={loiHienTai?.speaker}
         expression={loiHienTai?.expression}
         shaking={rung}
-        coDan={!['chon-dia-diem', 'explore', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick'].includes(kn.kind)}
+        coDan={!laTheChu && !['chon-dia-diem', 'explore', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick'].includes(kn.kind)}
         tenNguoiChoi={s.tenNguoiChoi}
-        // Việc nhắc chỉ hiện khi sân khấu còn là cảnh (màn tra, tài liệu, ảnh chèn, màn chiếu… phủ kín thì ẩn).
-        nhacViec={['chon-dia-diem', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick', 'challenge', 'fix-query'].includes(kn.kind) ? null : s.nhacViec}
+        // Việc nhắc chỉ hiện khi sân khấu còn là cảnh (màn tra, tài liệu, ảnh chèn, màn chiếu, thẻ chữ… thì ẩn).
+        nhacViec={laTheChu || ['chon-dia-diem', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick', 'challenge', 'fix-query'].includes(kn.kind) ? null : s.nhacViec}
         dienTen={dienTen}
+        isCard={laTheChu}
       >
         {noiDung}
       </SanKhauMvp>
