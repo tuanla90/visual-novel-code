@@ -319,6 +319,11 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           them(`${it.id}-du`, { kind: 'chuoi', id: c.id });
           them(`${it.id}-ho-tro`, { kind: 'chuoi', id: c.id });
           if (!it.bangChung.some((b) => b.muc === 'du')) err(vt, `[ĐỐI CHẤT ${it.id}] cần ít nhất một thẻ [ĐỦ CĂN CỨ]`);
+          if (!it.cauHoi) err(vt, `[ĐỐI CHẤT ${it.id}] thiếu dòng con "[CÂU HỎI] <câu hỏi cụ thể người chơi trả lời bằng thẻ>"`);
+          {
+            const dau = it.asker.text.split('**').length - 1;
+            if (dau === 0 || dau % 2 !== 0) err(vt, `[ĐỐI CHẤT ${it.id}] giả thuyết phải đánh dấu chỗ cần bác bằng một cặp **…**`);
+          }
           if (!it.chuaDu) err(vt, `[ĐỐI CHẤT ${it.id}] thiếu dòng con "[CHƯA ĐỦ] → phản hồi: …"`);
           if (!it.khac) err(vt, `[ĐỐI CHẤT ${it.id}] thiếu dòng con "[KHÁC] → phản hồi: …"`);
           for (const b of it.bangChung) canVatPham(b.id, vt, null, `[ĐỐI CHẤT ${it.id}]`);
@@ -730,7 +735,10 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
         if (it.kind === 'task') bao(it.text, vt, 'nhiệm vụ');
         if (it.kind === 'reminder') bao(it.text, vt, 'nhắc việc');
         if (it.kind === 'question') for (const ch of it.choices) bao(ch.text, vt, 'lựa chọn');
-        if (it.kind === 'doi-chat') bao(it.asker.text, vt, 'giả thuyết đối chất');
+        if (it.kind === 'doi-chat') {
+          bao(it.asker.text, vt, 'giả thuyết đối chất');
+          if (it.cauHoi) bao(it.cauHoi, vt, 'câu hỏi đối chất');
+        }
         if (it.kind === 'branch') for (const ch of it.branch.choices) bao(ch.text, vt, 'lựa chọn');
       });
     }

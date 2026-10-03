@@ -359,12 +359,26 @@ button.v7-o:active:not(:disabled) {
 .v7-o:disabled {
   cursor: default;
 }
+/* Ô bấm được mà đang khóa (đang chạy / đã đúng): nhạt màu như nút tắt. */
+button.v7-o:disabled,
+select.v7-o:disabled {
+  opacity: 0.55;
+  filter: saturate(0.5);
+  box-shadow: none;
+}
 .v7-o--bang {
   background: #37474f;
   color: #cfd8dc;
   font-family: var(--font-mono);
   font-size: 0.94em;
   cursor: default;
+}
+/* Bảng khóa sẵn (không chọn được): phẳng, nhạt, viền mảnh — không giống nút bấm. */
+span.v7-o--bang:not(.v7-o--phieu) {
+  background: rgba(55, 71, 79, 0.35);
+  color: #8fa3b3;
+  border: 1px solid rgba(207, 216, 220, 0.18);
+  box-shadow: none;
 }
 .v7-o--dau {
   min-width: 4.9em;
@@ -406,6 +420,13 @@ button.v7-o:active:not(:disabled) {
   margin-left: 5.4em;
   border: 2px dashed rgba(255, 255, 255, 0.3);
   background: transparent;
+}
+/* Câu chưa có điều kiện nào: nút + đứng ngay sau chữ LỌC, có chữ cho dễ thấy. */
+.v7-o--them.is-dau {
+  width: auto;
+  margin-left: 0;
+  padding: 0 0.8em;
+  font-size: 0.85em;
 }
 .v7-khe {
   min-width: 8.4em;
@@ -811,6 +832,9 @@ button.v7-o:active:not(:disabled) {
 }
 .v7--doc .v7-o--them {
   margin-left: 0;
+}
+.v7--doc .v7-o--them.is-dau {
+  width: auto;
 }
 .v7--doc .v7-kq {
   width: auto;

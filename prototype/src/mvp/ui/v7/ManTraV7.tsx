@@ -49,6 +49,11 @@ import './v7.css';
 export type { CanhTra } from './canh-tra';
 
 const TOI_DA_DIEU_KIEN = 3;
+/**
+ * Màn lọc đầu tiên (c-lop, ngày 2) dựng sẵn hai điều kiện để dạy VÀ / HOẶC. Qua màn ấy (user chốt 03/10/2026) câu bắt đầu
+ * không có điều kiện nào: người chơi tự bấm + thêm, bấm × bỏ.
+ */
+const DK_DUNG_SAN: Readonly<Record<string, number>> = { 'c-lop': 2 };
 const TEN_NOI: Record<'AND' | 'OR', string> = { AND: 'VÀ', OR: 'HOẶC' };
 
 /**
@@ -125,14 +130,15 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   // Khối "nối với" (thẻ có JOIN): các bảng được chọn khai ở thẻ, thiếu thì lấy bảng JOIN của SQL chuẩn.
   const bangNoiDuoc = useMemo(() => (khoi.noi ? (the.bangNoi?.length ? the.bangNoi : bangNoiTrongSql(sqlChuan)) : []), [khoi.noi, the.bangNoi, sqlChuan]);
 
+  const dkSan = khongLoc ? 0 : (DK_DUNG_SAN[the.id] ?? 0);
   const [cau, setCau] = useState<CauDung>(() => {
     const napSan = mode === 'fix-query' && the.truyVanNapSan ? cauTuSql(the.truyVanNapSan) : null;
     if (napSan) return napSan;
     const cotGoc = bang?.cot.map((c) => c.ten) ?? [];
     return {
       khung: chonCot ? khungCua(chonCot) : (khung?.khung ?? ''),
-      dieuKien: khongLoc ? [] : [0, 1].map((i) => ({ cot: cotGoc[i % Math.max(1, cotGoc.length)] ?? '', phep: 'bang', giaTri: null })),
-      noi: khongLoc ? [] : ['AND'],
+      dieuKien: Array.from({ length: dkSan }, (_x, i) => ({ cot: cotGoc[i % Math.max(1, cotGoc.length)] ?? '', phep: 'bang', giaTri: null })),
+      noi: Array.from({ length: Math.max(0, dkSan - 1) }, () => 'AND'),
     };
   });
   const bangNoi = useMemo(() => (cau.noiBang?.bang ? duLieu?.bang.find((b) => b.ten === cau.noiBang?.bang) : undefined), [duLieu, cau.noiBang?.bang]);
@@ -544,7 +550,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                 >
                   {d.giaTri ? <span className="v7-khe__giay">{d.giaTri.tho}</span> : 'thả giấy nhớ'}
                 </button>
-                {cau.dieuKien.length > 1 && !laChieu ? (
+                {cau.dieuKien.length > Math.min(1, dkSan) && !laChieu ? (
                   <button
                     type="button"
                     className="v7-o v7-o--bo"
@@ -559,15 +565,26 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
             );
           })}
           {cau.dieuKien.length < TOI_DA_DIEU_KIEN && !laChieu && !khongLoc ? (
-            <li>
+            <li className={cau.dieuKien.length === 0 ? 'v7-dk' : undefined}>
+              {cau.dieuKien.length === 0 ? (
+                <span className="v7-o v7-o--dau" aria-hidden="true">
+                  LỌC
+                </span>
+              ) : null}
               <button
                 type="button"
-                className="v7-o v7-o--them"
+                className={`v7-o v7-o--them${cau.dieuKien.length === 0 ? ' is-dau' : ''}`}
                 disabled={khoa}
                 aria-label="Thêm điều kiện"
-                onClick={() => doiCau((c) => ({ ...c, dieuKien: [...c.dieuKien, { cot: cot[c.dieuKien.length % Math.max(1, cot.length)] ?? '', phep: 'bang', giaTri: null }], noi: [...c.noi, 'AND'] }))}
+                onClick={() =>
+                  doiCau((c) => ({
+                    ...c,
+                    dieuKien: [...c.dieuKien, { cot: cot[c.dieuKien.length % Math.max(1, cot.length)] ?? '', phep: 'bang', giaTri: null }],
+                    noi: c.dieuKien.length === 0 ? [] : [...c.noi, 'AND'],
+                  }))
+                }
               >
-                +
+                {cau.dieuKien.length === 0 ? '+ thêm điều kiện' : '+'}
               </button>
             </li>
           ) : null}

@@ -239,7 +239,7 @@ export type MucMvp =
    *   `  - [CHƯA ĐỦ] → phản hồi: <lời>` (nước đi "chưa đủ căn cứ", bắt buộc)
    *   `  - [KHÁC] → phản hồi: <lời>` (thẻ không khai, bắt buộc)
    */
-  | { kind: 'doi-chat'; id: string; asker: { speaker: string; text: string }; bangChung: RawBangChungDoiChat[]; chuaDu: RawLine[] | null; khac: RawLine[] | null; truUyTin: boolean }
+  | { kind: 'doi-chat'; id: string; asker: { speaker: string; text: string }; cauHoi: string | null; bangChung: RawBangChungDoiChat[]; chuaDu: RawLine[] | null; khac: RawLine[] | null; truUyTin: boolean }
   | { kind: 'challenge'; id: string }
   | { kind: 'fix-query'; id: string }
   | { kind: 'effect'; id: string }
@@ -1033,6 +1033,10 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
             dc.bangChung.push({ id: m2[1] ?? '', muc: MUC_DOI_CHAT[m2[2] ?? ''] ?? 'goi-y', feedback: parseFeedbackDc(m2[3] ?? '') });
             return i;
           }
+          if ((m2 = /^ {2}- \[CÂU HỎI\] (.+)$/.exec(line))) {
+            dc.cauHoi = (m2[1] ?? '').trim();
+            return i;
+          }
           if ((m2 = /^ {2}- \[CHƯA ĐỦ\] → phản hồi: (.+)$/.exec(line))) {
             dc.chuaDu = parseFeedbackDc(m2[1] ?? '');
             return i;
@@ -1041,7 +1045,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
             dc.khac = parseFeedbackDc(m2[1] ?? '');
             return i;
           }
-          throw new Error(`dòng con [ĐỐI CHẤT] sai quy ước "${line}" — viết "  - {<mã thẻ>} [ĐỦ CĂN CỨ|HỖ TRỢ|GỢI Ý] → phản hồi: …", "  - [CHƯA ĐỦ] → phản hồi: …", "  - [KHÁC] → phản hồi: …"`);
+          throw new Error(`dòng con [ĐỐI CHẤT] sai quy ước "${line}" — viết "  - [CÂU HỎI] …", "  - {<mã thẻ>} [ĐỦ CĂN CỨ|HỖ TRỢ|GỢI Ý] → phản hồi: …", "  - [CHƯA ĐỦ] → phản hồi: …", "  - [KHÁC] → phản hồi: …"`);
         }
         if (branch) {
           const m = new RegExp(`^ {2}- \\{id: (${MA})\\}(?: \\[KHI (.+?)\\])? (.+?) → hậu quả: (.+)$`).exec(line);
@@ -1101,7 +1105,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         return add(question);
       }
       if ((m = new RegExp(`^- \\[ĐỐI CHẤT (${MA})( · trừ uy tín)?\\] ([a-z-]+): "(.*)"$`).exec(line))) {
-        doiChat = { kind: 'doi-chat', id: m[1] ?? '', asker: { speaker: m[3] ?? '', text: m[4] ?? '' }, bangChung: [], chuaDu: null, khac: null, truUyTin: m[2] !== undefined };
+        doiChat = { kind: 'doi-chat', id: m[1] ?? '', asker: { speaker: m[3] ?? '', text: m[4] ?? '' }, cauHoi: null, bangChung: [], chuaDu: null, khac: null, truUyTin: m[2] !== undefined };
         return add(doiChat);
       }
       if ((m = new RegExp(`^- \\[(THỬ THÁCH|SỬA TRUY VẤN) (${MA})\\]$`).exec(line))) return add({ kind: m[1] === 'THỬ THÁCH' ? 'challenge' : 'fix-query', id: m[2] ?? '' });

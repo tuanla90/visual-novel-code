@@ -62,6 +62,7 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
         type: 'doi-chat',
         id: it.id,
         asker: it.asker,
+        cauHoi: it.cauHoi ?? '',
         bangChung: it.bangChung.map((b) => ({ id: b.id, muc: b.muc, feedback: b.feedback.map(loi) })),
         chuaDu: (it.chuaDu ?? []).map(loi),
         khac: (it.khac ?? []).map(loi),

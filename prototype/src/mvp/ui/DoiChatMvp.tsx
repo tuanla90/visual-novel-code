@@ -7,6 +7,9 @@
  * dựng) cuộn ngang phía trên; hộp thoại kính của rival với giả thuyết ở dưới (như `[RẼ NHÁNH]`); hai nút: "Trình thẻ này"
  * (cần chọn thẻ) và "Chưa đủ căn cứ để nói". Thẻ đã trình mờ đi, có dấu mức; mức cao nhất đã đạt ghi ở góc.
  * Bàn phím: thẻ là nút (Enter/Space chọn), mũi tên trái/phải chuyển thẻ.
+ *
+ * 03/10/2026 (user: "quá nhiều dữ kiện mà câu hỏi chung chung"): khay chỉ có thẻ đang trên bảng (bỏ giấy tờ nền) và thẻ cũ
+ * mà chính màn này khai; giả thuyết tô nổi chỗ cần bác (`**…**`), dưới là câu hỏi cụ thể (`[CÂU HỎI]`).
  */
 import { useMemo, useState, type KeyboardEvent } from 'react';
 import type { KichBanMvp, NutMvp } from '../../content/mvp/types';
@@ -44,15 +47,17 @@ function mucCuaThe(nut: NutDoiChat, id: string): Muc | 'khac' {
 }
 
 export function DoiChatMvp({ kb, s, nut, daTrinh, muc, dienTen, tenNguoiNoi, onTrinh, onChuaDu }: DoiChatMvpProps) {
-  // Thẻ trong hồ sơ, bỏ thẻ "câu hỏi đang mở" (không phải bằng chứng).
-  // Thêm thẻ của các vụ trước (đã gỡ khỏi bảng) mà một màn đối chất nào đó của kịch bản có nhắc tới: người chơi phải trình
-  // được bằng chứng cũ, nhưng khay không phình thành cả hồ sơ. Lấy theo MỌI màn đối chất nên không lộ riêng đáp án màn này.
+  // Thẻ đang trên bảng điều tra, bỏ thẻ "câu hỏi đang mở" và giấy tờ nền (tài liệu) — trừ thẻ chính màn này khai.
+  // Thêm thẻ của các vụ trước (đã gỡ khỏi bảng) chỉ khi chính màn này khai: người chơi phải trình được bằng chứng cũ, nhưng
+  // khay không độn thẻ của vụ khác. Màn nào cũng khai cả thẻ GỢI Ý (thẻ bẫy) nên khay không lộ riêng đáp án.
   const the = useMemo(() => {
     const bang = dungBang(kb, s);
-    const duocNhac = new Set(kb.chuoi.flatMap((c) => c.nodes.flatMap((n) => (n.type === 'doi-chat' ? n.bangChung.map((x) => x.id) : []))));
-    const cu = bang.boGhim.filter((t) => duocNhac.has(t.id));
-    return [...bang.the, ...cu].filter((t) => t.loai !== 'hoi' && t.loai !== 'note').sort((a, b) => THU_TU[a.loai] - THU_TU[b.loai]);
-  }, [kb, s]);
+    const khai = new Set(nut.bangChung.map((x) => x.id));
+    const cu = bang.boGhim.filter((t) => khai.has(t.id));
+    return [...bang.the.filter((t) => t.loai !== 'tai-lieu' || khai.has(t.id)), ...cu]
+      .filter((t) => t.loai !== 'hoi' && t.loai !== 'note')
+      .sort((a, b) => THU_TU[a.loai] - THU_TU[b.loai]);
+  }, [kb, s, nut]);
   const [chon, setChon] = useState<string | null>(null);
   const theChon = chon ? the.find((t) => t.id === chon) : undefined;
   const chonDuoc = !!theChon && !daTrinh.includes(theChon.id);
@@ -113,8 +118,15 @@ export function DoiChatMvp({ kb, s, nut, daTrinh, muc, dienTen, tenNguoiNoi, onT
             <span className="doi-chat__nhan-gt">Giả thuyết</span>
           </div>
           <p className="dialog__text doi-chat__gt">
-            <CodeText text={dienTen(nut.asker.text)} />
+            {dienTen(nut.asker.text)
+              .split('**')
+              .map((doan, i) => (i % 2 === 1 ? <mark key={i} className="doi-chat__diem"><CodeText text={doan} /></mark> : <CodeText key={i} text={doan} />))}
           </p>
+          {nut.cauHoi ? (
+            <p className="doi-chat__cau-hoi">
+              <span className="doi-chat__cau-hoi-nhan">Câu hỏi</span> {dienTen(nut.cauHoi)}
+            </p>
+          ) : null}
           <div className="doi-chat__thanh">
             <span className={`doi-chat__muc doi-chat__muc--${muc}`} aria-live="polite">
               Mức đã đạt: <b>{TEN_MUC[muc]}</b>

@@ -96,7 +96,7 @@
 - **ha-vy** (neutral): Thói quen không chứng minh được đúng tối ấy. Nó chỉ cho thấy tớ có lý do ngồi đó. Thứ ghi đúng tối ấy là cửa từ: Nam vào 21 giờ 50, ra 23 giờ 05. Về CLB.
 
 ## v3-doi-chat.1
-> NHIỆM VỤ: Tùng cá là Nam gửi tin. Thẻ nào bác được?
+> NHIỆM VỤ: Lúc 22:40 tối 07/10 Nam ở đâu? Trình thẻ chứng minh
 - **narrator**: Phòng CLB. Mọi phiếu đã ghim lên bảng. Minh Anh chờ.
 - **minh-anh** (serious): Tùng nói trước. Rồi các em trình cái gì có trong hồ sơ.
 

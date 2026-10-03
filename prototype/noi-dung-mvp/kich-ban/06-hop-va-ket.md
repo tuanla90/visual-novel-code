@@ -29,7 +29,8 @@
 ### hop-02 — Mời Hoài vào hỏi chuyện nộp thư {cảnh: phong-hop}
 
 - [LỜI hop-02.1]
-- [ĐỐI CHẤT dc-ai-viet] quan: "Mã trong sổ là của Hoài. Thư do Hoài mang tới hộp. Chữ ký bắt đầu bằng H, Hoài cũng H. Bên tôi kết luận: Hoài là người viết lá thư này."
+- [ĐỐI CHẤT dc-ai-viet] quan: "Mã trong sổ là của Hoài. Thư do Hoài mang tới hộp. Chữ ký bắt đầu bằng H, Hoài cũng H. Bên tôi kết luận: **Hoài là người viết lá thư này.**"
+  - [CÂU HỎI] Hoài mang thư tới hộp. Nhưng lá thư được in ra bằng tài khoản của ai? Trình thẻ cho biết điều đó.
   - {ev-nhat-ky-in} [ĐỦ CĂN CỨ] → phản hồi: **minh-anh** (neutral): Thưa thầy, bọn em có nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật — từ tài khoản dùng chung của một CLB, không phải của Hoài.<br>**quan** (stunned): …Tài khoản CLB?<br>**thay-quang** (neutral): Tài khoản in thư không phải của người nộp thư. Vậy câu "Hoài viết" chưa đứng được.
   - {clue-loi-chu-cuong} [HỖ TRỢ] → phản hồi: **ha-vy** (neutral): Sáng thứ Hai, bác bảo vệ ký túc xá thấy một cậu sinh viên đeo huy hiệu bánh răng đưa phong bì cho một bạn nữ, rồi bạn ấy đi thẳng về phía tòa B ạ.<br>**quan** (neutral): Lời kể thôi. Bác ấy không nhìn rõ mặt, cũng không biết trong phong bì có gì.<br>**thay-quang** (neutral): Thầy ghi nhận. Nhưng mới là một lời kể, chưa đủ để nói ai viết.
   - {clue-hoai-nguoi-nop} [GỢI Ý] → phản hồi: **quan** (smug): Chính thẻ này nói Hoài là người nộp. Các bạn đang củng cố cho bên tôi đấy.<br>**ha-vy** (thinking): Người nộp thôi. Thẻ này chưa nói ai viết.

@@ -195,11 +195,13 @@ export type NutMvp =
    * Mỗi thẻ khai sẵn một mức: `du` (đủ căn cứ — kết thúc đối chất, đặt cờ `<mã>-du`), `ho-tro` (củng cố, đặt cờ `<mã>-ho-tro`,
    * đối chất tiếp), `goi-y` (chỉ gợi hướng, tiếp). Thẻ không khai → `khac` (sai, trừ uy tín nếu `truUyTin`). Nước đi
    * "Chưa đủ căn cứ để nói" (`chuaDu`) luôn có: kết thúc đối chất ở mức đang đạt.
+   * Giả thuyết đánh dấu chỗ cần bác bằng `**…**`; `cauHoi` (`[CÂU HỎI]`, 03/10/2026) là câu hỏi cụ thể người chơi cần trả lời bằng thẻ.
    */
   | {
       type: 'doi-chat';
       id: string;
       asker: { speaker: string; text: string };
+      cauHoi: string;
       bangChung: { id: string; muc: MucDoiChatMvp; feedback: LoiMvp[] }[];
       chuaDu: LoiMvp[];
       khac: LoiMvp[];

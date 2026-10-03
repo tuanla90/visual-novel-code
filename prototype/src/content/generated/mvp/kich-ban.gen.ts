@@ -4308,8 +4308,9 @@ const GOC = {
           "id": "dc-ai-viet",
           "asker": {
             "speaker": "quan",
-            "text": "Mã trong sổ là của Hoài. Thư do Hoài mang tới hộp. Chữ ký bắt đầu bằng H, Hoài cũng H. Bên tôi kết luận: Hoài là người viết lá thư này."
+            "text": "Mã trong sổ là của Hoài. Thư do Hoài mang tới hộp. Chữ ký bắt đầu bằng H, Hoài cũng H. Bên tôi kết luận: **Hoài là người viết lá thư này.**"
           },
+          "cauHoi": "Hoài mang thư tới hộp. Nhưng lá thư được in ra bằng tài khoản của ai? Trình thẻ cho biết điều đó.",
           "bangChung": [
             {
               "id": "ev-nhat-ky-in",
@@ -6752,7 +6753,7 @@ const GOC = {
       "nodes": [
         {
           "type": "task",
-          "text": "Tùng cá là Nam gửi tin. Thẻ nào bác được?"
+          "text": "Lúc 22:40 tối 07/10 Nam ở đâu? Trình thẻ chứng minh"
         },
         {
           "type": "line",
@@ -6770,8 +6771,9 @@ const GOC = {
           "id": "dc-nam",
           "asker": {
             "speaker": "tung",
-            "text": "Tài khoản kênh của Robotics gửi tin lúc 22:40. Nam trực kênh. Tối đó xưởng mở, Nam bảo về sớm mà không ai làm chứng. Tớ cá là Nam gửi."
+            "text": "Tài khoản kênh của Robotics gửi tin lúc 22:40. Nam trực kênh. Tối đó xưởng mở, Nam bảo về sớm mà **không ai làm chứng**. Tớ cá là Nam gửi."
           },
+          "cauHoi": "Lúc 22:40 tối 07/10, khi tin được gửi, Nam đang ở đâu? Trình thẻ cho biết điều đó.",
           "bangChung": [
             {
               "id": "ev-toi-07",
@@ -8363,8 +8365,9 @@ const GOC = {
           "id": "dc-xin-so-quy",
           "asker": {
             "speaker": "thay-quang",
-            "text": "Các em muốn thầy cho xuất sổ quỹ của khối CLB, một sổ không thuộc CLB các em. Căn cứ vào đâu?"
+            "text": "Các em muốn thầy cho xuất sổ quỹ của khối CLB, một sổ không thuộc CLB các em. **Căn cứ vào đâu?**"
           },
+          "cauHoi": "Ba đơn linh kiện đã được duyệt chi tiền. Hàng của ba đơn ấy có trong kho không? Trình thẻ cho biết điều đó.",
           "bangChung": [
             {
               "id": "ev-dat-ma-khong-co",
@@ -8898,8 +8901,9 @@ const GOC = {
           "id": "dc-khanh",
           "asker": {
             "speaker": "khanh",
-            "text": "Ba khoản đó là chi cho đội robot trước giải quốc gia. Khoản dưới một triệu, chủ tịch Hội duyệt là đúng thẩm quyền. Các bạn có gì mà nói tôi sai?"
+            "text": "Ba khoản đó là chi cho đội robot trước giải quốc gia. **Khoản dưới một triệu, chủ tịch Hội duyệt là đúng thẩm quyền.** Các bạn có gì mà nói tôi sai?"
           },
+          "cauHoi": "Từng khoản dưới một triệu. Cộng cả ba khoản thì bao nhiêu, ghi vào quỹ nào, có vượt ngưỡng phải giải trình không? Trình thẻ cho biết điều đó.",
           "bangChung": [
             {
               "id": "ev-chi-vuot-muc",
@@ -9022,8 +9026,9 @@ const GOC = {
           "id": "dc-khanh-don",
           "asker": {
             "speaker": "khanh",
-            "text": "Giải trình thì đơn giản. Hàng đặt gia công bên ngoài, chưa về kho. Còn ba đơn ấy do Nam lập, tên Nam còn trên sổ. Tôi chỉ duyệt theo đề xuất của thành viên. Ghi nhầm mã quỹ là lỗi nhập liệu."
+            "text": "Giải trình thì đơn giản. Hàng đặt gia công bên ngoài, chưa về kho. Còn **ba đơn ấy do Nam lập**, tên Nam còn trên sổ. Tôi chỉ duyệt theo đề xuất của thành viên. Ghi nhầm mã quỹ là lỗi nhập liệu."
           },
+          "cauHoi": "Ba đơn được tạo lúc nào, từ máy nào? Lúc ấy Nam có thể ngồi ở máy đó không? Trình thẻ cho biết điều đó.",
           "bangChung": [
             {
               "id": "ev-don-nam-may",
@@ -9291,8 +9296,9 @@ const GOC = {
           "id": "dc-khanh-thu",
           "asker": {
             "speaker": "khanh",
-            "text": "Tiền thì tôi nhận. Nhưng lá thư với cái tin thì đừng gán cho tôi. Huy hiệu phát ba chục người, tài khoản in với tài khoản kênh cả ban chủ nhiệm dùng. Phiếu nào của các bạn có tên tôi?"
+            "text": "Tiền thì tôi nhận. Nhưng lá thư với cái tin thì đừng gán cho tôi. Huy hiệu phát ba chục người, tài khoản in với tài khoản kênh cả ban chủ nhiệm dùng. **Phiếu nào của các bạn có tên tôi?**"
           },
+          "cauHoi": "Lá thư in lúc 23:10 tối Chủ nhật 15/9. Lúc ấy những ai ở trong phòng máy? Trình thẻ cho biết điều đó.",
           "bangChung": [
             {
               "id": "clue-so-phong-may",
@@ -9464,8 +9470,9 @@ const GOC = {
           "id": "dc-khanh-so-do",
           "asker": {
             "speaker": "thay-quang",
-            "text": "Em Khánh nói vào phòng máy để in sơ đồ cho đội. Nghe hợp lý. Các em còn gì về tối hôm ấy không? Không thì thầy dừng phần lá thư ở đây."
+            "text": "Em Khánh nói **vào phòng máy để in sơ đồ cho đội**. Nghe hợp lý. Các em còn gì về tối hôm ấy không? Không thì thầy dừng phần lá thư ở đây."
           },
+          "cauHoi": "Tối 15/9, tài khoản Robotics in những lệnh nào, lúc mấy giờ? Lúc Khánh ở trong phòng có lệnh in sơ đồ nào không? Trình thẻ cho biết điều đó.",
           "bangChung": [
             {
               "id": "clue-in-toi-15-9",
@@ -9726,8 +9733,9 @@ const GOC = {
           "id": "dc-khanh-vi-sao",
           "asker": {
             "speaker": "thay-quang",
-            "text": "Thầy chưa hiểu một điều. Một lá thư đòi thu phòng thì liên quan gì tới ba khoản chi? Các em có gì cho thấy mối liên hệ ấy không?"
+            "text": "Thầy chưa hiểu một điều. **Một lá thư đòi thu phòng thì liên quan gì tới ba khoản chi?** Các em có gì cho thấy mối liên hệ ấy không?"
           },
+          "cauHoi": "Sổ quỹ của từng CLB bao giờ mới có người đọc? Lá thư tới trước hay sau lúc ấy? Trình thẻ cho biết điều đó.",
           "bangChung": [
             {
               "id": "ev-chi-tham-tu",

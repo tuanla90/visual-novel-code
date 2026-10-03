@@ -193,6 +193,37 @@
 .doi-chat__gt {
   font-style: italic;
 }
+/* Chỗ cần bác trong giả thuyết (`**…**` ở kịch bản): bút dạ vàng. */
+.doi-chat__diem {
+  background: linear-gradient(transparent 55%, rgba(250, 204, 21, 0.55) 55%);
+  color: inherit;
+  font-weight: 700;
+  font-style: normal;
+  padding: 0 2px;
+}
+/* Câu hỏi cụ thể người chơi trả lời bằng thẻ (`[CÂU HỎI]`). */
+.doi-chat__cau-hoi {
+  margin: 8px 0 0;
+  padding: 8px 12px;
+  border-left: 4px solid #d97706;
+  border-radius: 6px;
+  background: rgba(254, 243, 199, 0.92);
+  color: #3a2a0c;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.doi-chat__cau-hoi-nhan {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 7px;
+  border-radius: 4px;
+  background: #d97706;
+  color: #fff;
+  font-size: 0.75em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  vertical-align: 0.1em;
+}
 .doi-chat__thanh {
   display: flex;
   align-items: center;

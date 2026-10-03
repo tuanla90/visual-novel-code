@@ -38,8 +38,13 @@ function ve(id: string, o: { canh?: CanhTra; giayNho?: GiaTriHoSo[]; mode?: 'cha
 }
 
 type U = ReturnType<typeof userEvent.setup>;
+/** Thêm điều kiện (nút +) tới khi có đủ `i` điều kiện: qua màn c-lop câu bắt đầu không có điều kiện nào. */
+async function coDk(u: U, i: number): Promise<void> {
+  while (screen.queryAllByRole('button', { name: /^Cột của điều kiện \d+: / }).length < i) await u.click(screen.getByRole('button', { name: 'Thêm điều kiện' }));
+}
 /** Bấm ô cột của điều kiện `i` tới khi đúng cột `cot` (ô cột xoay vòng qua các cột của bảng). */
 async function chonCot(u: U, i: number, cot: string): Promise<void> {
+  await coDk(u, i);
   for (let k = 0; k < 8; k++) {
     const nut = screen.getByRole('button', { name: new RegExp(`^Cột của điều kiện ${i}: `) });
     if (nut.textContent === cot) return;
@@ -49,6 +54,7 @@ async function chonCot(u: U, i: number, cot: string): Promise<void> {
 }
 /** Bấm giấy nhớ (theo chữ trên giấy) rồi bấm ô giá trị của điều kiện `i`. */
 async function datGiay(u: U, giaTri: string, i: number): Promise<void> {
+  await coDk(u, i);
   await u.click(screen.getByRole('button', { name: new RegExp(`^${giaTri.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')} \\(giấy nhớ`) }));
   await u.click(screen.getByRole('button', { name: new RegExp(`^Ô giá trị điều kiện ${i}`) }));
 }
@@ -149,6 +155,20 @@ describe('màn tra v7 · c-ten-h (ngày 3, laptop phòng CLB)', () => {
     expect(onXong).toHaveBeenCalledTimes(1);
   });
 
+  it('qua màn c-lop: câu bắt đầu không có điều kiện; + thêm, × bỏ được cả điều kiện cuối cùng', async () => {
+    const { u } = ve('c-ten-h', { giayNho: giay() });
+    expect(screen.queryByRole('button', { name: /^Cột của điều kiện 1/ })).toBeNull();
+    expect(cauSql()).toBe('SELECT ho_dem, ten, ma_lop FROM sinh_vien');
+    await u.click(screen.getByRole('button', { name: 'Thêm điều kiện' }));
+    await u.click(screen.getByRole('button', { name: 'Thêm điều kiện' }));
+    expect(screen.getAllByRole('button', { name: /^Cột của điều kiện \d/ })).toHaveLength(2);
+    await u.click(screen.getByRole('button', { name: 'Bỏ điều kiện 2' }));
+    await u.click(screen.getByRole('button', { name: 'Bỏ điều kiện 1' }));
+    expect(screen.queryByRole('button', { name: /^Cột của điều kiện 1/ })).toBeNull();
+    await datGiay(u, 'H', 1);
+    expect(cauSql()).toMatch(/FROM sinh_vien WHERE \w+ = 'H'$/);
+  });
+
   it('bấm giấy lần nữa thì bỏ chọn; bấm ô đã có giấy (không cầm giấy) thì gỡ giấy ra', async () => {
     const { u } = ve('c-ten-h', { giayNho: giay() });
     const h = screen.getByRole('button', { name: /^H \(giấy nhớ/ });
@@ -187,6 +207,8 @@ describe('màn tra v7 · luật chương 1', () => {
     expect(screen.queryByText(theCua('c-lop').mucTieuHoc || '—')).toBeNull();
     expect(screen.queryByRole('tablist')).toBeNull();
     expect(screen.queryByRole('textbox')).toBeNull();
+    // Màn lọc đầu tiên: dựng sẵn hai điều kiện (dạy VÀ / HOẶC), không bỏ được điều kiện cuối.
+    expect(screen.getAllByRole('button', { name: /^Cột của điều kiện \d/ })).toHaveLength(2);
   });
 
   it('c-in ở phòng máy: chỉ bảng nhật ký in, nhãn "máy phòng máy"', () => {

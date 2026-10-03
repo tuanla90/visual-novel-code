@@ -53,7 +53,8 @@
 ### v3-doi-chat — Phòng CLB: Tùng nêu giả thuyết, người chơi trình thẻ {cảnh: phong-clb}
 
 - [LỜI v3-doi-chat.1]
-- [ĐỐI CHẤT dc-nam] tung: "Tài khoản kênh của Robotics gửi tin lúc 22:40. Nam trực kênh. Tối đó xưởng mở, Nam bảo về sớm mà không ai làm chứng. Tớ cá là Nam gửi."
+- [ĐỐI CHẤT dc-nam] tung: "Tài khoản kênh của Robotics gửi tin lúc 22:40. Nam trực kênh. Tối đó xưởng mở, Nam bảo về sớm mà **không ai làm chứng**. Tớ cá là Nam gửi."
+  - [CÂU HỎI] Lúc 22:40 tối 07/10, khi tin được gửi, Nam đang ở đâu? Trình thẻ cho biết điều đó.
   - {ev-toi-07} [ĐỦ CĂN CỨ] → phản hồi: **ha-vy** (neutral): Tối 07/10, cửa từ thư viện ghi Nam vào 21:50, ra 23:05. Tin gửi 22:40.<br>**tung** (surprised): Quẹt vào rồi trèo cửa sổ ra thì sao?<br>**ha-vy** (neutral): Tớ ngồi cách cậu ấy hai bàn, cùng tối đó. Tớ nhớ lúc chuông 22 giờ 30 nhắc sắp đóng cửa, cậu ấy còn đang xếp sách. Thẻ của tớ ghi tớ ở đó tới 23 giờ.<br>**ha-vy** (neutral): Và máy gửi tin nằm trong phòng văn phòng xưởng, cách thư viện cả một sân trường.<br>**minh-anh** (neutral): Cửa từ là nguồn độc lập, có giờ vào giờ ra; lời Vy khớp đúng quãng giữa; chỗ gửi tin thì cách xa. Đủ để không mời Nam lên.
   - {ev-nam-thu} [HỖ TRỢ] → phản hồi: **ha-vy** (thinking): Bốn tối thứ Hai có trong tệp, tối nào Nam cũng ở thư viện. Một thói quen. Thói quen thì chưa phải bằng chứng cho đúng tối đó.<br>**tung** (gai-dau): Thì có thể tối đó cậu ấy nghỉ một hôm.
   - {ev-vy-thu-vien} [HỖ TRỢ] → phản hồi: **ha-vy** (neutral): Tối thứ Hai nào tớ cũng ở thư viện, thẻ của tớ ghi thế. Nên lời tớ kể về tối đó không phải nhớ bừa.<br>**duy** (neutral): Lời chứng mà đếm được thì nặng hơn lời chứng suông.
