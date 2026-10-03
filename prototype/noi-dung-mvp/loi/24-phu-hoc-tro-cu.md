@@ -3,7 +3,7 @@
 <!-- Lời nhiệm vụ phụ "Học trò cũ của cô" — bản đầu 03/10/2026, giọng sinh viên miền Bắc. Show don't tell: cô Hạnh xúc động nhưng kiệm lời; học trò cũ chỉ kể qua narrator. Chi tiết ẩn p-hoc-an và cảnh cuối p-hoc-chieu là hé lộ rất nhẹ về bác Thịnh: KHÔNG ai nói ra, KHÔNG giải thích. Dữ liệu cá nhân chỉ xem đúng thứ cần. -->
 
 ## p-hoc-mo.1
-- [THẺ CHỮ] **narrator**: Việc của cô Hạnh, thứ Tư 20 tháng 11
+- [THẺ CHỮ] **narrator**: Thứ Tư, 20/11/2024 · Việc của cô Hạnh
 - **narrator**: Tám giờ kém mười. Phòng CLB còn vương mùi giấy báo ướt. Tùng ôm bó cúc họa mi, Minh Anh đang nhét tấm thiệp vào giữa những cành hoa.
 - **tung** (happy): Hai mươi tháng Mười Một mà. Tớ cá là cô nào nhận hoa cũng cười.
 - **minh-anh** (neutral): Bó này sang Phòng Đào tạo trước. Cô Hạnh nghỉ hưu cuối năm. Hôm nay là hai mươi tháng Mười Một cuối cùng cô còn đi làm.
@@ -72,7 +72,7 @@
 - [THẺ CHỮ] **narrator**: Bảng chỉ cho biết tên trùng. Một người hay hai người, người trong lớp nhận ra.
 
 ## p-hoc-chieu.1
-- [THẺ CHỮ] **narrator**: Chiều Thứ Tư, 20 tháng 11
+- [THẺ CHỮ] **narrator**: Chiều thứ Tư, 20/11/2024
 - **narrator**: Sảnh tòa B, ba giờ chiều. Hai chiếc bàn ghép lại phủ khăn trắng, một ấm trà, một đĩa bánh quy. Cô Hạnh đứng ở đầu bàn, hai tay đặt hờ lên lưng ghế.
 - **narrator**: Người đến đầu tiên là một chú đeo bình giữ nhiệt, bước vào còn đứng ngó quanh như tìm lớp. Rồi một cô mặc áo khoác phi công ôm túi giấy. Hai người nhìn nhau, rồi cùng kêu lên: hai mươi lăm năm không gặp mà vẫn nhận ra nhau.
 - **narrator**: Một cậu cao lênh khênh tên Hùng đến sớm, rụt rè chọn ghế cuối bàn. Mười lăm phút sau, một người đàn ông bụng bia, cũng tên Hùng, thở hổn hển vì kẹt xe. Cô Hạnh nhìn hai người, không nói gì, chỉ rót thêm một chén trà.

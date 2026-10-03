@@ -108,7 +108,7 @@
 - **tung** (ao-xanh-happy): Thứ Bảy đi với tớ nhé?
 
 ## md-08-tuan-cong-dan.1
-- [THẺ CHỮ] **narrator**: Thứ Hai → thứ Sáu — Tuần sinh hoạt công dân
+- [THẺ CHỮ] **narrator**: Thứ Hai 09/09 → thứ Sáu 13/09/2024 · Tuần sinh hoạt công dân
 - **narrator**: Cả tuần ngồi hội trường nghe nội quy. Buổi cuối, mỗi người được phát một tấm thẻ lịch in theo khoa, dưới cùng có dòng "Họ tên / Lớp".
 - **player**: (Viết tên vào luôn, kẻo lẫn với thẻ người khác.)
 

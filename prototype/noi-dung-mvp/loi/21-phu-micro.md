@@ -3,7 +3,7 @@
 <!-- Lời nhiệm vụ phụ "chiếc micro" — bản đầu theo "Lời thoại chính" của gói cũ mục 6, giọng sinh viên miền Bắc. Không ai bị gọi là quên hay lấy; nhân vật tả kết quả, không nói cách bấm. -->
 
 ## p-mic-mo.1
-- [THẺ CHỮ] **narrator**: Việc ở CLB — Thứ Sáu, 1 tháng 11
+- [THẺ CHỮ] **narrator**: Thứ Sáu, 15/11/2024 · Việc ở CLB
 - **narrator**: Chiều thứ Sáu. Duy bày thiết bị ra bàn để kiểm kê cho buổi hướng dẫn cuối kỳ, đếm đi đếm lại.
 - **duy** (neutral): Micro không dây không ở ngăn dưới. Sổ tài sản vẫn ghi nó thuộc CLB mình, để ở tủ CLB.
 - **tung** (chi-tay): Tớ cá là ai đó cầm đi rồi quên trả.

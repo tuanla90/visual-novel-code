@@ -66,7 +66,7 @@ export function LichMvp({ kb, s, hanPhu, onDong }: LichMvpProps) {
 
   const tenHomNay = (() => {
     if (hn.moDau) return 'Tuần đầu ở trường';
-    if (s.giaiDoan === 'ngay') return [`Ngày ${s.ngay}`, tenNgay(s.ngay)].filter(Boolean).join(' · ');
+    if (s.giaiDoan === 'ngay') return tenNgay(s.ngay) || 'Điều tra';
     if (s.giaiDoan === 'phu' && phuNay) return `Việc phụ · ${phuNay.ten}`;
     if (s.giaiDoan === 'vu-sau' && vuNay) return `Vụ ${viTriVu + 2} · ${vuNay.ten}`;
     return s.giaiDoan === 'hop' ? 'Buổi họp rà soát' : 'Sau buổi họp';

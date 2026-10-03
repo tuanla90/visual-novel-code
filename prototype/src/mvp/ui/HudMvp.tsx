@@ -148,7 +148,7 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
             <span
               key={n.so}
               className={`topbar__pip${daXongNgay(n.so) ? ' is-done' : ''}${s.giaiDoan === 'ngay' && n.so === s.ngay ? ' is-current' : ''}`}
-              title={`Ngày ${n.so}${n.ten ? ` · ${n.ten}` : ''}`}
+              title={n.ten || undefined}
             />
           ))}
         </span>

@@ -3,7 +3,7 @@
 <!-- Lời nhiệm vụ phụ "Túi đồ trên ghế đá" — bản đầu 03/10/2026, giọng sinh viên miền Bắc. Hai đường (nộp bác Thịnh / tự tìm) đều đúng, không đường nào được viết như lựa chọn kém. Quyền riêng tư: chỉ nhìn đồ lộ ra ngoài, ví và điện thoại không ai mở. Bác Thịnh ký tắt "T." ở sổ: chỉ cho thấy, không ai bình luận. Show don't tell: Hiếu không bị ai trách. Nhân vật tả kết quả, không nói cách bấm. -->
 
 ## p-tui-mo.1
-- [THẺ CHỮ] **narrator**: Việc của Tùng — Thứ Tư, 30 tháng 10
+- [THẺ CHỮ] **narrator**: Thứ Tư, 30/10/2024 · Việc của Tùng
 - **narrator**: Gần bốn giờ chiều. Ba người ra khỏi tòa B, đi tắt lối có hàng cây lấy bóng để ra nhà xe. Dưới gốc cây, trên ghế đá, có một chiếc túi vải mở miệng. Đồ bày ra mặt ghế như vừa có người lấy ra tìm gì đó rồi bỏ đấy.
 - **tung** (surprised): Ơ, túi ai bỏ quên đây này?
 - **ha-vy** (thinking): Chai nước chưa ráo hơi nước. Chưa lâu.
@@ -23,7 +23,7 @@
 - **ha-vy** (neutral): Đừng cá.
 
 ## p-tui-sang.1
-- [THẺ CHỮ] **narrator**: Sáng hôm sau — Thứ Năm, 31 tháng 10
+- [THẺ CHỮ] **narrator**: Sáng thứ Năm, 31/10/2024
 - **narrator**: Bảy giờ năm mươi. Nhóm đi ngang hành lang tòa hành chính. Cửa Phòng Công tác sinh viên còn khóa. Một tờ giấy dán ở khung kính: hồ sơ học bổng đợt này khóa lúc 17 giờ ngày 30 tháng 10.
 - **narrator**: Trước cửa có một người đứng. Hiếu, lớp BC24A. Chiếc túi vải đeo bên vai. Trong tay cậu ấy là tờ đơn trong bìa nhựa, dấu đỏ ở góc.
 - **tung** (surprised): Cái bìa nhựa ấy. Đúng cái hôm qua trên ghế đá.

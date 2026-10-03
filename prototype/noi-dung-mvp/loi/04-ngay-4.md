@@ -4,7 +4,7 @@
 
 ## n4-mo.1
 > NHIỆM VỤ: Mang hai mã sang Phòng Công tác sinh viên
-- [THẺ CHỮ] **narrator**: Ngày 4 — Thứ Sáu
+- [THẺ CHỮ] **narrator**: Thứ Sáu, 27/09/2024
 - **minh-anh** (neutral): Chị ghi hai mã và các bước lọc vào phiếu yêu cầu rồi. Các em cầm qua Phòng Công tác sinh viên nhé.
 
 ## n4-ctsv.1

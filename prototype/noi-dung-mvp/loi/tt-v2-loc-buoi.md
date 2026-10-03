@@ -8,9 +8,9 @@
 - Khi chạy ra 2 dòng với ma_phong: **ha-vy** (thinking): Hai dòng viết đúng từng chữ như giấy nhớ. Mà một dòng trong đó mới là dự kiến.
 - Khi chạy ra 2 dòng: **duy** (neutral): Hai buổi thôi à? Sổ giấy tớ đếm được nhiều hơn. <br> **ha-vy** (thinking): Mới bắt được một kiểu viết lệch. Vẫn còn kiểu khác.
 - Khi chạy ra 3 dòng: **ha-vy** (thinking): Ba dòng. Vẫn còn kiểu viết lệch chưa bắt được. Mà trong này có dòng nào chưa ký không?
-- Khi chạy ra 5 dòng: **duy** (serious): Buổi 30/10 chưa diễn ra. Dòng ấy mới là dự kiến, chưa ai ký.
+- Khi chạy ra 5 dòng: **duy** (serious): Buổi 30/10 vẫn ghi dự kiến. Chưa ai ký xác nhận.
 - Khi chạy ra 182 dòng: **ha-vy** (neutral): Một trăm tám mươi hai dòng đã ký, của đủ mọi phòng trong nhà văn hóa. Mình cần riêng phòng mình.
-- Khi chạy ra 267 dòng: **tung** (gai-dau): Cả sổ, hai trăm sáu mươi bảy dòng. Đủ mọi phòng, có cả buổi chưa diễn ra.
+- Khi chạy ra 267 dòng: **tung** (gai-dau): Cả sổ, hai trăm sáu mươi bảy dòng. Đủ mọi phòng, có cả buổi chưa ai ký.
 - Khi sai thứ tự: **duy** (neutral): Đủ bốn buổi rồi. Nhưng sổ giấy ghi lần lượt từ đầu tháng, thứ tự này tớ dò từng dòng không kịp.
 - Khi đúng: **duy** (smile): Bốn buổi, từ mùng 2 tới 23, đúng thứ tự trong sổ. Để tớ dò.
 - [DÀN DỰNG] Đường "sai có ích": [clb-tham-tu] vào ma_phong, [DA_XAC_NHAN] vào trang_thai, so y nguyên → 1 dòng. Gọt dấu cách → 2. Thêm chữ thường → 4, chưa xếp → "sai thứ tự". Xếp theo ngay → đúng.

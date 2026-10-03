@@ -51,10 +51,10 @@ describe('màn lịch', () => {
     expect(screen.queryByRole('dialog', { name: /Tháng 9 2024/ })).toBeNull();
   });
 
-  it('ngày 1: hôm nay thứ Ba 24/09/2024 · Sảnh tòa B; hạn họp còn 6 ngày; ngày chưa tới không có mốc', () => {
+  it('ngày 1: hôm nay thứ Ba 24/09/2024, Sảnh tòa B (không "Ngày 1"); hạn họp còn 6 ngày; ngày chưa tới không có mốc', () => {
     render(<LichMvp kb={kb} s={ngay1()} onDong={vi.fn()} />);
     const lich = screen.getByRole('dialog');
-    expect(lich).toHaveTextContent(/Hôm nay\s*Thứ Ba, 24\/09\/2024\s*Ngày 1 · Sảnh tòa B/);
+    expect(lich).toHaveTextContent(/Hôm nay\s*Thứ Ba, 24\/09\/2024\s*Sảnh tòa B/);
     expect(lich).toHaveTextContent(/HạnBuổi họp rà soát · 16:00Thứ Hai, 30\/09\/2024 \(còn 6 ngày\)/);
     const daQua = within(lich).getByRole('heading', { name: 'Đã qua' }).nextElementSibling as HTMLElement;
     expect(within(daQua).getAllByRole('listitem').map((li) => li.textContent)).toEqual([

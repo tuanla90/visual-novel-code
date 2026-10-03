@@ -4,7 +4,7 @@
 
 ## n3-mo.1
 > NHIỆM VỤ: Sang Phòng Công tác sinh viên xin phiếu tra cứu
-- [THẺ CHỮ] **narrator**: Ngày 3 — Thứ Năm
+- [THẺ CHỮ] **narrator**: Thứ Năm, 26/09/2024
 - **minh-anh** (neutral): Chị báo cô Lan rồi. Cầm kết quả hôm qua sang, đó là căn cứ xin phiếu.
 
 ## n3-ctsv.1
@@ -99,7 +99,7 @@
 ## n3-bd-phong-may-an.1
 - **narrator**: Hai đôi dép lê xếp ngay ngắn trước cửa phòng máy. Phòng trải thảm, vào là phải bỏ giày.
 - **tung** (happy): Trốn tiết nhìn dép là biết. Phòng máy tự điểm danh luôn.
-- **narrator**: Cạnh khung cửa dán tờ danh sách lớp thực hành tuần trước. Ba cái tên bị khoanh đỏ, bên cạnh ghi tay: "Vắng quá 20% — không đủ điều kiện dự thi. Học lại kỳ sau."
+- **narrator**: Cạnh khung cửa dán tờ danh sách lớp thực hành tuần trước. Ba cái tên bị khoanh đỏ, bên cạnh ghi tay: "Vắng quá 20%, không đủ điều kiện dự thi. Học lại kỳ sau."
 - **tung** (worried): …Một trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng.
 
 ## n3-bd-toa-b-an.1

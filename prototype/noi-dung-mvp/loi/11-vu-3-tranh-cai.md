@@ -4,7 +4,7 @@
 
 
 ## v3-mo.qua.1
-- [THẺ CHỮ] **narrator**: Chủ nhật, 20 tháng 10 · Ngày Phụ nữ Việt Nam
+- [THẺ CHỮ] **narrator**: Chủ nhật, 20/10/2024 · Ngày Phụ nữ Việt Nam
 - **tung** (gai-dau): Mọi người ơi, cứu tớ. Hôm nay 20/10, tặng gì cho một bạn nữ bây giờ?
 - **ha-vy** (thinking): Bạn nào?
 - **tung** (gai-dau): Thì… Hoài. Bên Báo chí ấy.
@@ -36,7 +36,7 @@
 - **narrator**: Tùng đứng im mất mấy giây.
 - **tung** (gai-dau): …Hôm ấy tớ dẫn nhầm thật à?
 ## v3-mo.1
-- [THẺ CHỮ] **narrator**: Vụ 3 — Thứ Ba, 22 tháng 10
+- [THẺ CHỮ] **narrator**: Thứ Ba, 22/10/2024
 - **narrator**: Chiều hôm sau. Phiếu tin gốc vẫn ghim giữa bảng. Bốn người, bốn cách đọc.
 - **tung** (chi-tay): Tài khoản kênh của Robotics. Nam trực kênh. Tối đó xưởng mở, Nam bảo về sớm mà chẳng ai làm chứng. Còn gì nữa?
 - **minh-anh** (serious): Chị không nói là Nam. Nhưng Nam là đầu mối duy nhất mình có, và cô Lan đang chờ. Chị cần biết đã đủ để mời Nam lên hỏi chưa.

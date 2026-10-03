@@ -4,7 +4,7 @@
 
 ## n2-mo.1
 > NHIỆM VỤ: Sang Phòng Đào tạo nhận tài khoản tra cứu
-- [THẺ CHỮ] **narrator**: Ngày 2 — Thứ Tư
+- [THẺ CHỮ] **narrator**: Thứ Tư, 25/09/2024
 - **minh-anh** (neutral): Đơn xin quyền tra cứu, {{nv.thay-quang.trong-cau}} duyệt rồi. Lát nữa sang Phòng Đào tạo, {{nv.co-hanh.trong-cau}} sẽ cấp tài khoản.
 - **duy** (neutral): Laptop CLB đây. Tớ cầm theo rồi.
 - **tung** (happy): Có tài khoản là tra được hết hả chị? Tớ cá là tìm ra ngay!

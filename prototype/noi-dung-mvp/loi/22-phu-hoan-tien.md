@@ -3,7 +3,7 @@
 <!-- Lời nhiệm vụ phụ "hoàn tiền" — bản đầu theo "Lời thoại chính" của gói cũ mục 7, giọng sinh viên miền Bắc. Không tìm người chịu lỗi; nhân vật tả kết quả, không nói cách bấm. -->
 
 ## p-hoan-mo.1
-- [THẺ CHỮ] **narrator**: Việc ở CLB — Thứ Sáu, 8 tháng 11
+- [THẺ CHỮ] **narrator**: Thứ Sáu, 29/11/2024 · Việc ở CLB
 - **narrator**: Phòng CLB, sau buổi hướng dẫn SQL cho tân thành viên. Minh Anh ngồi với bản xuất thu chi và một xấp biên nhận.
 - **minh-anh** (khoanh-tay): Bảng cộng tiền hoàn ra một trăm năm mươi lăm nghìn. Biên nhận chị cầm cộng lại chỉ có chín mươi lăm. Lệch sáu mươi.
 - **minh-anh** (neutral): Mình cần biết phiếu nào phải mở ra xem lại. Chưa phải tìm người chịu lỗi.

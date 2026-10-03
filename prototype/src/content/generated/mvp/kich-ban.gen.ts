@@ -1525,7 +1525,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Thứ Hai → thứ Sáu — Tuần sinh hoạt công dân"
+          "text": "Thứ Hai 09/09 → thứ Sáu 13/09/2024 · Tuần sinh hoạt công dân"
         },
         {
           "type": "line",
@@ -2573,7 +2573,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Ngày 1 — Thứ Ba"
+          "text": "Thứ Ba, 24/09/2024"
         },
         {
           "type": "line",
@@ -2826,7 +2826,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Ngày 2 — Thứ Tư"
+          "text": "Thứ Tư, 25/09/2024"
         },
         {
           "type": "line",
@@ -3645,7 +3645,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Ngày 3 — Thứ Năm"
+          "text": "Thứ Năm, 26/09/2024"
         },
         {
           "type": "line",
@@ -3945,7 +3945,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Cạnh khung cửa dán tờ danh sách lớp thực hành tuần trước. Ba cái tên bị khoanh đỏ, bên cạnh ghi tay: \"Vắng quá 20% — không đủ điều kiện dự thi. Học lại kỳ sau.\""
+          "text": "Cạnh khung cửa dán tờ danh sách lớp thực hành tuần trước. Ba cái tên bị khoanh đỏ, bên cạnh ghi tay: \"Vắng quá 20%, không đủ điều kiện dự thi. Học lại kỳ sau.\""
         },
         {
           "type": "line",
@@ -4360,7 +4360,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Ngày 4 — Thứ Sáu"
+          "text": "Thứ Sáu, 27/09/2024"
         },
         {
           "type": "line",
@@ -4974,7 +4974,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Ngày 5 — Thứ Bảy"
+          "text": "Thứ Bảy, 28/09/2024"
         },
         {
           "type": "note",
@@ -6023,7 +6023,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Vụ 2 — Thứ Tư, 9 tháng 10"
+          "text": "Thứ Tư, 09/10/2024"
         },
         {
           "type": "line",
@@ -7446,7 +7446,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Chủ nhật, 20 tháng 10 · Ngày Phụ nữ Việt Nam"
+          "text": "Chủ nhật, 20/10/2024 · Ngày Phụ nữ Việt Nam"
         },
         {
           "type": "line",
@@ -7689,7 +7689,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Vụ 3 — Thứ Ba, 22 tháng 10"
+          "text": "Thứ Ba, 22/10/2024"
         },
         {
           "type": "line",
@@ -9158,7 +9158,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Vụ 4 — Thứ Hai, 4 tháng 11"
+          "text": "Thứ Hai, 04/11/2024"
         },
         {
           "type": "line",
@@ -10023,7 +10023,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Vụ 5 — Thứ Bảy, 16 tháng 11"
+          "text": "Thứ Bảy, 16/11/2024"
         },
         {
           "type": "line",
@@ -12150,7 +12150,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Giữa tháng Một năm 2025, thi xong — phòng CLB"
+          "text": "Giữa tháng 01/2025, thi xong · Phòng CLB"
         },
         {
           "type": "line",
@@ -12241,7 +12241,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Trong ngăn tủ: một cuốn sổ bìa cứng, chữ viết tay đã ngả màu. Trang đầu ghi \"Hồ sơ vụ thứ nhất — CLB Thám Tử Dữ Liệu\", ký tên Trịnh Quang."
+          "text": "Trong ngăn tủ: một cuốn sổ bìa cứng, chữ viết tay đã ngả màu. Trang đầu ghi \"CLB Thám Tử Dữ Liệu: hồ sơ vụ thứ nhất\", ký tên Trịnh Quang."
         },
         {
           "type": "line",
@@ -12287,7 +12287,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Còn tiếp — Vụ 6: \"Xem lại\""
+          "text": "Còn tiếp · Vụ 6: \"Xem lại\""
         },
         {
           "type": "image",
@@ -12514,7 +12514,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Việc ở CLB — Thứ Sáu, 25 tháng 10"
+          "text": "Thứ Sáu, 01/11/2024 · Việc ở CLB"
         },
         {
           "type": "line",
@@ -12549,7 +12549,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Việc ở CLB — Thứ Sáu, 25 tháng 10"
+          "text": "Thứ Sáu, 01/11/2024 · Việc ở CLB"
         },
         {
           "type": "line",
@@ -12761,7 +12761,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Bốn buổi: mùng 2, mùng 9, 16 và 23 tháng 10. Buổi 30 mới là dự kiến nên không vào."
+          "text": "Bốn buổi: mùng 2, mùng 9, 16 và 23 tháng 10. Buổi 30 vẫn ghi dự kiến, chưa ai ký nên không vào."
         },
         {
           "type": "line",
@@ -12809,7 +12809,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "smile",
-          "text": "Bốn mã buổi này đủ chữ ký trong sổ. Dòng 30/10 trong sổ còn để trống ô ký, đúng là lịch dự kiến."
+          "text": "Bốn mã buổi này đủ chữ ký trong sổ. Dòng 30/10 trong sổ còn để trống ô ký, chưa ai xác nhận buổi ấy."
         },
         {
           "type": "consequence",
@@ -12962,7 +12962,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Việc ở CLB — Thứ Sáu, 1 tháng 11"
+          "text": "Thứ Sáu, 15/11/2024 · Việc ở CLB"
         },
         {
           "type": "line",
@@ -13185,7 +13185,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Việc ở CLB — Thứ Sáu, 8 tháng 11"
+          "text": "Thứ Sáu, 29/11/2024 · Việc ở CLB"
         },
         {
           "type": "line",
@@ -13419,7 +13419,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Việc của Tùng — Thứ Sáu, 11 tháng 10"
+          "text": "Thứ Sáu, 25/10/2024 · Việc của Tùng"
         },
         {
           "type": "line",
@@ -13917,7 +13917,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Tùng xé một trang vở, kê lên tập bản đồ, vẽ. Cổng chính, hàng cây, ký túc xá, một mũi tên to. Góc dưới ghi: \"Lần này không qua nhà xe. Tớ xin lỗi vì hôm ấy không hỏi lại. — Tùng, áo xanh.\""
+          "text": "Tùng xé một trang vở, kê lên tập bản đồ, vẽ. Cổng chính, hàng cây, ký túc xá, một mũi tên to. Góc dưới ghi: \"Lần này không qua nhà xe. Tớ xin lỗi vì hôm ấy không hỏi lại. Tùng, áo xanh.\""
         },
         {
           "type": "line",
@@ -13980,7 +13980,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Việc của cô Hạnh, thứ Tư 20 tháng 11"
+          "text": "Thứ Tư, 20/11/2024 · Việc của cô Hạnh"
         },
         {
           "type": "line",
@@ -14416,7 +14416,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Chiều Thứ Tư, 20 tháng 11"
+          "text": "Chiều thứ Tư, 20/11/2024"
         },
         {
           "type": "line",
@@ -14470,7 +14470,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Việc của Tùng — Thứ Tư, 30 tháng 10"
+          "text": "Thứ Tư, 30/10/2024 · Việc của Tùng"
         },
         {
           "type": "line",
@@ -14614,7 +14614,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Sáng hôm sau — Thứ Năm, 31 tháng 10"
+          "text": "Sáng thứ Năm, 31/10/2024"
         },
         {
           "type": "line",
@@ -17783,7 +17783,7 @@ const GOC = {
             {
               "speaker": "duy",
               "expression": "serious",
-              "text": "Buổi 30/10 chưa diễn ra. Dòng ấy mới là dự kiến, chưa ai ký."
+              "text": "Buổi 30/10 vẫn ghi dự kiến. Chưa ai ký xác nhận."
             }
           ]
         },
@@ -17809,7 +17809,7 @@ const GOC = {
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả sổ, hai trăm sáu mươi bảy dòng. Đủ mọi phòng, có cả buổi chưa diễn ra."
+              "text": "Cả sổ, hai trăm sáu mươi bảy dòng. Đủ mọi phòng, có cả buổi chưa ai ký."
             }
           ]
         },

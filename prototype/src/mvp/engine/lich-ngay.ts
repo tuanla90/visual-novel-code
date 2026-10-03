@@ -201,7 +201,8 @@ export function mocLich(s: TienDoNgay, tuy: TuyChonMocLich = {}): MocLich[] {
     const toi = s.giaiDoan === 'ngay' ? Math.max(1, s.ngay) : 5;
     for (let n = 1; n <= toi; n++) {
       const ten = tuy.tenNgay?.(n);
-      them({ ngay: l.ngayDieuTra(n), ten: `Ngày ${n}`, ngan: `Ngày ${n}`, ...(ten ? { chiTiet: ten } : {}) });
+      // Không hiện "Ngày n" cho người chơi (user 03/10: chỉ ngày thật, tăng nhập vai); tên đoạn truyện làm nhãn.
+      them({ ngay: l.ngayDieuTra(n), ten: ten || "Điều tra", ngan: ten || "Điều tra" });
     }
     them({ ngay: l.hop, ten: 'Buổi họp rà soát', ngan: 'Họp', chiTiet: '16:00', han: 'vu' }, 'han');
   }

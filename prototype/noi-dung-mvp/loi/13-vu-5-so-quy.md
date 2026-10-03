@@ -10,7 +10,7 @@
 - **minh-anh** (neutral): Nhớ cả cô Hạnh nữa. Năm nay là năm cuối cô còn đi làm.
 - **player**: (Quà tính sau. Trước 20/11 còn một việc đang chờ ở xưởng.)
 ## v5-mo.1
-- [THẺ CHỮ] **narrator**: Vụ 5 — Thứ Bảy, 16 tháng 11
+- [THẺ CHỮ] **narrator**: Thứ Bảy, 16/11/2024
 - **narrator**: Xưởng Robotics, cuối tuần. Nam đứng giữa các kệ linh kiện, tay cầm bảng kiểm kê, mặt khó coi.
 - **nam** (neutral): Biên bản kiểm kê hôm thứ Ba 15 đây. Tài khoản khóa nên tớ đếm tay từng loại, hai lần.
 - **tung** (worried): Rồi sao?
@@ -217,10 +217,10 @@
 - **ha-vy** (smile): Ôn đi. Đề thi cũng là một bộ dữ liệu.
 
 ## v5-con-tiep.1
-- [THẺ CHỮ] **narrator**: Còn tiếp — Vụ 6: "Xem lại"
+- [THẺ CHỮ] **narrator**: Còn tiếp · Vụ 6: "Xem lại"
 ## v5-ngan-tu.1
 > NHIỆM VỤ: Tìm chìa ngăn tủ khóa
-- [THẺ CHỮ] **narrator**: Giữa tháng Một năm 2025, thi xong — phòng CLB
+- [THẺ CHỮ] **narrator**: Giữa tháng 01/2025, thi xong · Phòng CLB
 - **narrator**: Buổi đầu tiên sau kỳ thi. Duy bày mấy mẩu giấy rơi ra từ cuốn sổ CLB lên bàn.
 - **duy** (neutral): Giấy thì đủ cả rồi. Mà ngăn dưới tủ hồ sơ thì khóa, tớ chưa bao giờ có chìa.
 - **tung** (surprised): Thì cạy ra!
@@ -228,7 +228,7 @@
 
 ## v5-ngan-tu.2
 - [DÀN DỰNG] Bạn nhấc tấm bảng nguyên tắc. Một chiếc chìa nhỏ dán băng dính ở mặt sau, khẽ chạm vào tường.
-- **narrator**: Trong ngăn tủ: một cuốn sổ bìa cứng, chữ viết tay đã ngả màu. Trang đầu ghi "Hồ sơ vụ thứ nhất — CLB Thám Tử Dữ Liệu", ký tên Trịnh Quang.
+- **narrator**: Trong ngăn tủ: một cuốn sổ bìa cứng, chữ viết tay đã ngả màu. Trang đầu ghi "CLB Thám Tử Dữ Liệu: hồ sơ vụ thứ nhất", ký tên Trịnh Quang.
 - **tung** (surprised): Thầy Quang? Thầy Quang lập CLB này á?
 - **player**: Trang kết luận có một cái tên, bị gạch đi. Cả cuốn không ghim một phiếu nào.
 - **duy** (neutral): Bên lề có hai chữ, mực xanh đã ngả màu: "Xem lại."

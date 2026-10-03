@@ -3,7 +3,7 @@
 <!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/05-ngay-5.md. [DÀN DỰNG] không hiện cho người chơi. Lời chú Cường là cảnh bắt buộc (01/10): không nói năm, không rõ mặt. Lời tối không phụ thuộc người chơi đã có nhật ký in hay chưa. -->
 
 ## n5-mo.1
-- [THẺ CHỮ] **narrator**: Ngày 5 — Thứ Bảy
+- [THẺ CHỮ] **narrator**: Thứ Bảy, 28/09/2024
 - [DÀN DỰNG] Sáng sớm ở cổng KTX. {{nv.chu-cuong}} vừa đi tuần về, tay cầm đèn pin.
 - **narrator**: Sáng sớm ở cổng ký túc xá. {{nv.chu-cuong}} vừa đi một vòng kiểm tra về, đèn pin còn cầm trên tay.
 - **tung** (neutral): Sáng thứ Hai 16/09 chú tớ trực cổng. Hỏi chú xem hôm nộp thư có gì lạ không.

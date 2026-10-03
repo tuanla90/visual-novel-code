@@ -3,7 +3,7 @@
 <!-- Lời nhiệm vụ phụ "Một lần dẫn lạc" — bản đầu 02/10/2026, giọng sinh viên miền Bắc. Tuyến Tùng–Hoài: Tùng hấp tấp, nhiệt tình; Hoài rụt rè, hiền. Nhân vật tả kết quả, không nói cách bấm. Sổ chỉ ghi nơi tới: "vì sao" là Tùng tự nhớ, không phải dữ liệu nói. -->
 
 ## p-lac-mo.1
-- [THẺ CHỮ] **narrator**: Việc của Tùng — Thứ Sáu, 11 tháng 10
+- [THẺ CHỮ] **narrator**: Thứ Sáu, 25/10/2024 · Việc của Tùng
 - **narrator**: Gần mười một giờ đêm. Thư viện tầng ba giảng đường B còn lác đác vài bàn sáng đèn. Hà Vy đã về từ chín giờ.
 - **narrator**: Tùng ngồi đối diện bạn, giở tập bản đồ trường ra rồi lại gập vào. Trang vở trước mặt cậu ấy vẫn trắng.
 - **player**: Cậu nhìn mỗi trang ấy nửa tiếng rồi đấy.
@@ -83,7 +83,7 @@
 - **tung** (worried): Tớ là cộng tác viên mượn áo, có ai tập huấn cho đâu. Tám lượt kia tớ dẫn đúng, nên tớ cứ nghĩ mình không bao giờ sai.
 
 ## p-lac-ket.1
-- **narrator**: Tùng xé một trang vở, kê lên tập bản đồ, vẽ. Cổng chính, hàng cây, ký túc xá, một mũi tên to. Góc dưới ghi: "Lần này không qua nhà xe. Tớ xin lỗi vì hôm ấy không hỏi lại. — Tùng, áo xanh."
+- **narrator**: Tùng xé một trang vở, kê lên tập bản đồ, vẽ. Cổng chính, hàng cây, ký túc xá, một mũi tên to. Góc dưới ghi: "Lần này không qua nhà xe. Tớ xin lỗi vì hôm ấy không hỏi lại. Tùng, áo xanh."
 - **tung** (gai-dau): Có sến quá không?
 - **player**: Thiếu một thứ. Vẽ thêm đường ra quán trà đá.
 - **narrator**: Trưa hôm sau, ở thư viện. Hoài mở tờ giấy, nhìn rất lâu, rồi gập lại kẹp vào vở.

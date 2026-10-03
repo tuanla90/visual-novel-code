@@ -3,7 +3,7 @@
 <!-- Lời Vụ 2 "Tin đồn" — bản đầu, chờ phiên truyện rà. Giọng như chương 1 (Tùng, Hà Vy, Duy, Nam: tớ/cậu; Minh Anh: chị/em). Nam chưa có ảnh nên chỉ dùng biểu cảm neutral. Hết vụ Nam vẫn chưa được gỡ nghi: không viết câu nào khẳng định Nam vô can. Không nói Nam học năm mấy. Nhân vật tả kết quả, không nói cách bấm. -->
 
 ## tin-mo.1
-- [THẺ CHỮ] **narrator**: Vụ 2 — Thứ Tư, 9 tháng 10
+- [THẺ CHỮ] **narrator**: Thứ Tư, 09/10/2024
 - **narrator**: Hơn hai tuần sau buổi họp rà soát. Chiều thứ Tư, phòng CLB.
 - **minh-anh** (serious): Từ tối thứ Hai, kênh sinh viên chuyền nhau một tin về CLB mình. Sáng nay cô Lan gọi chị lên hỏi.
 - **tung** (surprised): Tin gì thế ạ?

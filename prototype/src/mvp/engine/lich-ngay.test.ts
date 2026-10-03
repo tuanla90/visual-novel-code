@@ -77,7 +77,7 @@ describe('lich-ngay: mốc chương 1 năm 2024', () => {
 });
 
 describe('mocLich', () => {
-  it('ngày 1: mốc tuần đầu đã qua, ngày 1 là hôm nay, buổi họp là hạn của vụ; ngày chưa tới không hiện', () => {
+  it('ngày 1: mốc tuần đầu đã qua, ngày 1 là hôm nay (nhãn là tên đoạn truyện, không "Ngày 1"), buổi họp là hạn của vụ; ngày chưa tới không hiện', () => {
     const ds = mocLich(ngayDt(1), { tenNgay: (n) => (n === 1 ? 'Sảnh tòa B' : '') });
     expect(ds.map((m) => [m.ngay, m.ten, m.loai])).toEqual([
       ['2024-09-08', 'Nhận phòng KTX', 'qua'],
@@ -85,10 +85,10 @@ describe('mocLich', () => {
       ['2024-09-14', 'Ngày hội CLB', 'qua'],
       ['2024-09-17', 'Trung thu · CLB gặp mặt', 'qua'],
       ['2024-09-23', 'Phòng CLB · lá thư', 'qua'],
-      ['2024-09-24', 'Ngày 1', 'hom-nay'],
+      ['2024-09-24', 'Sảnh tòa B', 'hom-nay'],
       ['2024-09-30', 'Buổi họp rà soát', 'han'],
     ]);
-    expect(ds.find((m) => m.ten === 'Ngày 1')?.chiTiet).toBe('Sảnh tòa B');
+    expect(ds.some((m) => /Ngày \d/.test(m.ten))).toBe(false);
     expect(ds.find((m) => m.loai === 'han')?.han).toBe('vu');
   });
 
@@ -107,7 +107,7 @@ describe('mocLich', () => {
 
   it('buổi họp: năm ngày đã qua, hạn thành hôm nay mà vẫn đánh dấu hạn', () => {
     const ds = mocLich({ giaiDoan: 'hop', ngay: 5 });
-    const ngayDieuTra = ds.filter((m) => /^Ngày \d$/.test(m.ten));
+    const ngayDieuTra = ds.filter((m) => m.ngay >= '2024-09-24' && m.ngay <= '2024-09-28');
     expect(ngayDieuTra).toHaveLength(5);
     expect(ngayDieuTra.every((m) => m.loai === 'qua')).toBe(true);
     expect(ds.at(-1)).toMatchObject({ ten: 'Buổi họp rà soát', loai: 'hom-nay', han: 'vu' });

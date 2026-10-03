@@ -3,13 +3,13 @@
 <!-- Lời nhiệm vụ phụ "sổ sử dụng phòng" (trước 01/10 tối là "Vụ 2") — bản đầu viết theo "Lời thoại chính" của docs/mvp/mua-1-kich-ban-ready-dev.md mục 5, giọng sinh viên miền Bắc như chương 1 (Duy, Tùng, Hà Vy: tớ/cậu; Minh Anh: chị/em; Quân: tôi/các bạn). Chờ phiên truyện rà. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/20-phu-so-phong.md. Không nhắc Hoài / Hiếu như nghi phạm; không nêu tên người soạn thư. Nhân vật tả kết quả, không nói cách bấm. -->
 
 ## v2-mo.1
-- [THẺ CHỮ] **narrator**: Việc ở CLB — Thứ Sáu, 25 tháng 10
+- [THẺ CHỮ] **narrator**: Thứ Sáu, 01/11/2024 · Việc ở CLB
 - **narrator**: Hơn một tháng sau buổi họp rà soát. Phòng CLB vẫn sáng đèn mỗi chiều thứ Tư.
 - **minh-anh** (neutral): Thầy Quang dặn rồi: muốn giữ phòng thì tháng nào cũng nộp báo cáo hoạt động. Tháng 10 là kỳ đầu tiên.
 - **minh-anh** (serious): Mà chị không muốn chỉ nộp cho xong. Cuối kỳ trường rà soát lại, chị muốn mình có một bộ hồ sơ ai mở ra cũng tự kiểm được.
 
 ## v2-mo-that.1
-- [THẺ CHỮ] **narrator**: Việc ở CLB — Thứ Sáu, 25 tháng 10
+- [THẺ CHỮ] **narrator**: Thứ Sáu, 01/11/2024 · Việc ở CLB
 - **narrator**: Hơn một tháng sau buổi họp rà soát. Phòng CLB vẫn sáng đèn mỗi chiều thứ Tư.
 - **minh-anh** (neutral): Chuyện lá thư thì thầy Quang vẫn đang cho hỏi lại. Chưa có gì mới.
 - **minh-anh** (happy): Thầy không bắt CLB nộp báo cáo tháng. Nhưng cuối kỳ trường vẫn rà soát phòng, và chị muốn lúc ấy mình có một bộ hồ sơ ai mở ra cũng tự kiểm được.
@@ -39,7 +39,7 @@
 - **duy** (neutral): Lọc xong thì xếp theo ngày giúp tớ. Sổ giấy ghi lần lượt từ đầu tháng, tớ dò từng dòng cho nhanh.
 
 ## v2-tra.2
-- **player**: Bốn buổi: mùng 2, mùng 9, 16 và 23 tháng 10. Buổi 30 mới là dự kiến nên không vào.
+- **player**: Bốn buổi: mùng 2, mùng 9, 16 và 23 tháng 10. Buổi 30 vẫn ghi dự kiến, chưa ai ký nên không vào.
 - **tung** (happy): Thế là không buổi nào biến mất cả. Chỉ là mỗi người gõ một kiểu.
 - **ha-vy** (smile): Gọt cho các dòng về cùng một kiểu rồi mới so. Tớ ghi vào sổ rồi đấy.
 
@@ -47,7 +47,7 @@
 > NHIỆM VỤ: Bản xuất có khớp sổ giấy không?
 - [DÀN DỰNG] {{nv.duy}} mở sổ giấy, dò từng dòng với phiếu kết quả.
 - **duy** (neutral): Mùng 2, họp thành viên: có chữ ký. Mùng 9, ôn SQL: có. 16, kiểm kê hồ sơ: có. 23, hướng dẫn tân thành viên: có.
-- **duy** (smile): Bốn mã buổi này đủ chữ ký trong sổ. Dòng 30/10 trong sổ còn để trống ô ký, đúng là lịch dự kiến.
+- **duy** (smile): Bốn mã buổi này đủ chữ ký trong sổ. Dòng 30/10 trong sổ còn để trống ô ký, chưa ai xác nhận buổi ấy.
 
 ## v2-xac-nhan.2
 - **minh-anh** (neutral): Bản xuất một nguồn, sổ giấy một nguồn. Hai nguồn riêng cùng ra bốn buổi.
