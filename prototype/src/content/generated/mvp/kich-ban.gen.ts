@@ -3651,7 +3651,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Chị gọi cho cô Lan rồi. Các em mang kết quả hai lớp hôm qua sang, đấy là căn cứ để xin phiếu tra cứu."
+          "text": "Chị báo cô Lan rồi. Cầm kết quả hôm qua sang, đó là căn cứ xin phiếu."
         },
         {
           "type": "explore",
@@ -3859,7 +3859,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Tức là mình cần mã, và cần căn cứ cho từng mã một."
+          "text": "Vậy là cần mã cụ thể. Và căn cứ cho từng mã."
         },
         {
           "type": "goto",
@@ -3915,13 +3915,13 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "thinking",
-          "text": "Tối Chủ nhật vẫn mở à. Lá thư kia được in vào tối nào nhỉ?"
+          "text": "Tối Chủ nhật vẫn mở. Thư kia in tối nào nhỉ?"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Chưa biết. Nhưng nhớ lấy chỗ này: vào phải ký sổ."
+          "text": "Chưa rõ. Nhớ kỹ: vào phải ký sổ."
         }
       ]
     },
@@ -3940,7 +3940,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Thế ai trốn tiết thực hành thì nhìn dép là biết vắng ai. Phòng máy tự điểm danh hộ thầy."
+          "text": "Trốn tiết nhìn dép là biết. Phòng máy tự điểm danh luôn."
         },
         {
           "type": "line",
@@ -3951,7 +3951,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "…Một trong ba cái tên kia là thằng cùng phòng bên cạnh. Hôm trước nó còn khoe trốn tiết đi đá bóng."
+          "text": "…Một trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng."
         }
       ]
     },
@@ -3998,19 +3998,19 @@ const GOC = {
           "type": "line",
           "speaker": "bac-tu",
           "expression": "smile",
-          "text": "Hộp vẫn niêm phong nguyên đấy. Hôm nay các cháu đi đâu mà đông thế?"
+          "text": "Hộp vẫn niêm phong nguyên đấy. Nay đi đâu đông thế?"
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Bọn cháu sang Phòng Công tác sinh viên ạ. Cô Lan với cô Hạnh cùng ở tòa hành chính đúng không bác?"
+          "text": "Bọn cháu sang Phòng Công tác sinh viên ạ. Cô Lan với cô Hạnh ở cùng tòa nhỉ?"
         },
         {
           "type": "line",
           "speaker": "bac-tu",
           "expression": "neutral",
-          "text": "Ừ, cùng tầng. Giờ hành chính lúc nào cũng có người."
+          "text": "Ừ, cùng tầng. Giờ hành chính là có người."
         }
       ]
     },
@@ -4108,25 +4108,25 @@ const GOC = {
           "type": "line",
           "speaker": "hieu",
           "expression": "annoyed",
-          "text": "Đọc thông báo rà soát chưa? Cái CLB Thám Tử ấy giữ nguyên một phòng chả để làm gì."
+          "text": "Thấy thông báo chưa? CLB Thám Tử chiếm nguyên cái phòng chả để làm gì."
         },
         {
           "type": "line",
           "speaker": "hieu",
           "expression": "annoyed",
-          "text": "Nhóm tôi vừa xin phòng làm bài nhóm, người ta bảo hết phòng. Phải ngồi ké thư viện."
+          "text": "Nhóm tôi xin phòng làm bài không được, phải chui rúc thư viện."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Nghe gắt thế… hay thư là cậu này gửi?"
+          "text": "Gắt thế… cậu ta gửi thư à?"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Ghét CLB với gửi thư là hai chuyện khác nhau."
+          "text": "Ghét với gửi thư là hai việc khác nhau."
         },
         {
           "type": "line",
@@ -4149,12 +4149,12 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Khoan, ví tớ còn đúng tiền xe buýt. Gọi thêm trà đá chắc tối nay phải đi bộ về ký túc mất."
+          "text": "Khoan, ví còn đúng tiền xe buýt. Thêm cốc trà đá là tối nay đi bộ."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Vậy để tớ mời. Coi như cảm ơn cậu chỉ đường hôm đầu."
+          "text": "Để tớ mời. Coi như cảm ơn cậu chỉ đường hôm đầu."
         },
         {
           "type": "goto",
@@ -4245,7 +4245,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Tùng cá là Hiếu. Tớ thì chưa cá gì. Một người gắt ở căng tin chưa phải là một dòng dữ liệu."
+          "text": "Tùng cá là Hiếu. Tớ không cá. Người gắt ở căng tin chưa phải là dữ liệu."
         }
       ]
     },
@@ -4265,7 +4265,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "khoanh-tay",
-          "text": "Cứ làm cho đúng. Mình không có gì phải giấu thì người ta soi cũng không sao."
+          "text": "Cứ làm đúng. Mình không sai thì họ soi cũng không sao."
         }
       ]
     },
@@ -4324,19 +4324,19 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Có cả Hoài nữa. Hai người này mới chỉ khớp chữ H với lớp thôi."
+          "text": "Có cả Hoài. Mới khớp được lớp và tên H thôi."
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "neutral",
+          "expression": "gai-dau",
           "text": "Thế giờ làm gì?"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Mai mang hai mã sang Phòng Công tác sinh viên. Cô Lan tra sổ, có hay không là biết."
+          "text": "Mai mang hai mã này sang cô Lan. Tra sổ là rõ."
         },
         {
           "type": "reminder",
@@ -4366,7 +4366,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Hai mã, kèm căn cứ: hai lớp, chữ H, cách lọc ra. Chị ghi cả vào đơn rồi. Các em mang sang Phòng Công tác sinh viên nhé."
+          "text": "Chị ghi hai mã và các bước lọc vào phiếu yêu cầu rồi. Các em cầm qua Phòng Công tác sinh viên nhé."
         },
         {
           "type": "explore",
@@ -4436,7 +4436,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Thì mình biết thêm một điều là mình sai ở đâu đó. Cũng là biết thêm."
+          "text": "Thì chứng tỏ mình sai ở đâu đó. Cũng là một manh mối."
         },
         {
           "type": "line",
@@ -4446,8 +4446,8 @@ const GOC = {
         {
           "type": "line",
           "speaker": "ha-vy",
-          "expression": "smile",
-          "text": "Không. Tớ chỉ đếm bậc cầu thang cho đỡ run thôi."
+          "expression": "day-kinh",
+          "text": "Không. Tớ đang đếm bậc cầu thang cho đỡ run."
         },
         {
           "type": "explore",
@@ -4486,7 +4486,7 @@ const GOC = {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
-          "text": "Cô tra rồi. SV240317: có trong sổ. SV240228: không có."
+          "text": "Cô tra rồi. SV240317 có trong sổ. SV240228 thì không."
         },
         {
           "type": "line",
@@ -4497,19 +4497,19 @@ const GOC = {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
-          "text": "Cô chỉ nói được là mã đó có trong sổ niêm phong. Thế thôi."
+          "text": "Sổ niêm phong chỉ xác nhận mã đó có mặt. Cô không kết luận thêm."
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "worried",
-          "text": "SV240228 là Hiếu… không có à? Thế là tớ cá trượt rồi."
+          "expression": "gai-dau",
+          "text": "Mã của Hiếu không có… Tớ cá trượt rồi à?"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Trượt cũng được. Loại được một người."
+          "text": "Trượt cũng được. Loại thêm một người."
         },
         {
           "type": "consequence",
@@ -4530,7 +4530,7 @@ const GOC = {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
-          "text": "Theo quy chế, người có mã trong sổ sẽ được mời đến buổi họp, ngồi chờ bên ngoài. Có mời vào hay không là do buổi họp."
+          "text": "Theo quy chế, sinh viên có mã trong sổ sẽ được mời đến buổi họp. Có gọi vào hay không do buổi họp quyết định."
         },
         {
           "type": "branch",
@@ -4575,13 +4575,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Trên cùng khay giấy là phiếu yêu cầu tra cứu của CLB, chữ ký cô Lan còn tươi mực."
+          "text": "Trên khay là phiếu yêu cầu tra cứu của CLB, chữ ký cô Lan còn tươi mực."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Phiếu mình đây rồi. Có chữ ký thì cô Lan mới mở sổ."
+          "text": "Phiếu của mình. Phải có chữ ký duyệt thì cô Lan mới mở sổ."
         }
       ]
     },
@@ -4604,35 +4604,35 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Phòng Đào tạo ngay cạnh Phòng Công tác sinh viên. Cô Hạnh mở sổ yêu cầu tra cứu."
+          "text": "Phòng Đào tạo ngay cạnh đó. Cô Hạnh nhận phiếu yêu cầu."
         },
         {
           "type": "line",
           "speaker": "co-hanh",
           "expression": "neutral",
-          "text": "Máy in của trường ghi tài khoản, giờ in, tên tệp và số trang. Cô cho các em xem đúng bảng nhật ký in để lập căn cứ."
+          "text": "Máy in trường lưu tài khoản, giờ in, tên tệp. Cô mở đúng bảng nhật ký in cho các em xem."
         },
         {
           "type": "line",
           "speaker": "co-hanh",
           "expression": "neutral",
-          "text": "Bản in có dòng chân trang ghi tên tệp. Thư của các em có không?"
+          "text": "Dưới chân bản in thường có tên tệp. Thư của các em có không?"
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Có ạ. Nhưng bản chụp bị xén mép, chỉ đọc được đoạn đầu: kien-nghi…"
+          "text": "Có ạ. Nhưng bản chụp bị xén, chỉ đọc được chữ: kien-nghi…"
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Hoài nộp thư thì chắc Hoài in chứ gì!"
+          "text": "Hoài nộp thì chắc chắn Hoài in rồi!"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
-          "expression": "neutral",
+          "expression": "day-kinh",
           "text": "Thử thì biết."
         },
         {
@@ -4655,43 +4655,43 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "23 giờ 10 tối Chủ nhật. Một trang, tệp kien-nghi-phong-clb.docx, tài khoản clb_robotics."
+          "text": "23 giờ 10 tối Chủ nhật. Tệp kien-nghi-phong-clb.docx, in từ tài khoản clb_robotics."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
-          "expression": "thinking",
-          "text": "Không phải mã sinh viên. Đây là tài khoản dùng chung của một CLB."
+          "expression": "day-kinh",
+          "text": "Không phải mã sinh viên cá nhân. Đây là tài khoản CLB."
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "worried",
-          "text": "Robotics á? Thế người in không phải Hoài."
+          "expression": "surprised",
+          "text": "Robotics á? Vậy người in không phải Hoài rồi."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Thư in từ tài khoản của CLB Robotics. Người mang đi nộp là Hoài. Hai việc, có khi là hai người."
+          "text": "Thư in từ tài khoản Robotics, nhưng Hoài mang nộp. Có khi là hai người khác nhau."
         },
         {
           "type": "line",
           "speaker": "co-hanh",
           "expression": "neutral",
-          "text": "Nhật ký chỉ ghi tài khoản dùng chung. Cô chưa có căn cứ để nói ai đã ngồi máy."
+          "text": "Nhật ký chỉ ghi tài khoản. Cô không có căn cứ nói ai trực tiếp ngồi máy."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "chi-tay",
-          "text": "Tối Chủ nhật vào phòng máy phải ký sổ mà cô. Mở sổ ra là biết ngay ai ngồi đây!"
+          "text": "Tối Chủ nhật vào phòng máy phải ký sổ! Xem sổ là biết ngay ai ngồi giờ đó!"
         },
         {
           "type": "line",
           "speaker": "co-hanh",
           "expression": "neutral",
-          "text": "Sổ ký giấy do bác bảo vệ tòa B giữ. Các em hỏi bác Thịnh, nhưng muốn mở sổ phải có chữ ký người có thẩm quyền."
+          "text": "Sổ ký giấy bác Thịnh tòa B giữ. Nhưng muốn mở phải có chữ ký người có thẩm quyền."
         },
         {
           "type": "reminder",
@@ -4750,19 +4750,19 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Chị ơi, sổ niêm phong có mã của Hoài. Mã của Hiếu thì không."
+          "text": "Chị ơi, sổ niêm phong có mã của Hoài, không có Hiếu."
         },
         {
           "type": "line",
           "speaker": "minh-anh",
-          "expression": "neutral",
-          "text": "Nói có sách, mách có chứng: đến đây đủ để nói ai nộp, chưa đủ để nói ai viết."
+          "expression": "khoanh-tay",
+          "text": "Nói có sách, mách có chứng. Mới biết ai nộp chứ chưa biết ai viết."
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "worried",
-          "text": "Còn thư ấy in ở đâu thì vẫn chưa ai biết…"
+          "expression": "gai-dau",
+          "text": "Và cũng chưa biết thư đó được in từ đâu…"
         },
         {
           "type": "goto",
@@ -4838,13 +4838,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Trên ghế đá có cái ca nhựa và ấm trà của bác Thịnh, nắp còn ấm."
+          "text": "Trên ghế đá là ca nhựa và ấm trà của bác Thịnh, nắp vẫn còn ấm."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Bác trực từ sáng tới tối, chắc một ngày uống hết hai ấm."
+          "text": "Bác trực suốt ngày, chắc phải uống hết hai ấm này."
         }
       ]
     },
@@ -4857,13 +4857,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Tối thứ Sáu. Không ai muốn về trước. Duy cắm ấm đun nước, Minh Anh lôi từ ngăn kéo ra một hộp bánh quy mở từ kỳ trước."
+          "text": "Tối thứ Sáu, phòng CLB. Duy cắm ấm đun nước. Minh Anh lôi từ ngăn kéo ra hộp bánh quy từ kỳ trước."
         },
         {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "happy",
-          "text": "Luật CLB: ai ăn cái cuối cùng thì mua hộp mới."
+          "text": "Nhắc lại luật CLB: ai ăn cái cuối cùng thì mua hộp mới nhé."
         },
         {
           "type": "image",
@@ -4873,19 +4873,19 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Chơi gì đi chứ. Trò \"ba dữ kiện\": tớ tả một người bằng ba điều, mọi người đoán."
+          "text": "Chơi trò \"ba dữ kiện\" đi! Tớ tả một người qua ba điều, mọi người đoán nhé."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "chi-tay",
-          "text": "Một: đeo kính. Hai: đi đâu cũng ôm vở. Ba: từ thứ Hai tới giờ chưa cười lần nào."
+          "text": "Một: đeo kính. Hai: hay ôm vở. Ba: từ đầu tuần tới giờ chưa thấy cười."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
-          "expression": "neutral",
-          "text": "Ba điều ấy khớp với ít nhất bốn mươi người trên thư viện. Dữ kiện chưa đủ hẹp."
+          "expression": "day-kinh",
+          "text": "Ba điều ấy khớp với cả chục người trên thư viện. Dữ kiện quá lỏng."
         },
         {
           "type": "line",
@@ -4902,7 +4902,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Tới lượt tớ. Một: thuộc đường. Hai: hay cá. Ba: cá mười thua chín."
+          "text": "Tới lượt tớ. Một: thuộc đường. Hai: thích cá cược. Ba: cá mười thua chín."
         },
         {
           "type": "image",
@@ -4912,18 +4912,18 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "surprised",
-          "text": "Ơ! Đấy là vu khống có dữ liệu!"
+          "text": "Ơ! Thế là vu khống có số liệu à!"
         },
         {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "happy",
-          "text": "Có dữ liệu thì không gọi là vu khống nữa đâu em."
+          "text": "Đã có số liệu thì không gọi là vu khống nữa đâu em."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Chín giờ thì hộp bánh hết. Người ăn cái cuối là Duy. Duy mở sổ, ghi một dòng: \"Nợ CLB một hộp bánh.\""
+          "text": "Chín giờ tối, hộp bánh hết. Người ăn cái cuối là Duy. Cậu lẳng lặng mở sổ, ghi: \"Nợ CLB một hộp bánh.\""
         },
         {
           "type": "image",
@@ -4933,30 +4933,30 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Biên bản đã ghi, nhân chứng đầy đủ. Mai Duy nhớ mua loại sô-cô-la nhé!"
+          "text": "Ghi sổ rồi nhé, nhân chứng đầy đủ! Mai Duy nhớ mua loại sô-cô-la đấy!"
         },
         {
           "type": "line",
           "speaker": "duy",
           "expression": "smile",
-          "text": "Được. Còn hộp mới thì để tớ mua, nhưng tối nay cậu rửa ấm siêu tốc."
+          "text": "Được. Tớ mua hộp mới, bù lại tối nay cậu đi rửa ấm trà."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Chốt. Tớ ghi vào biên bản luôn!"
+          "text": "Chốt luôn! Tớ ghi vào biên bản đây."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Tùng vừa ghi xong thì Duy đặt ấm siêu tốc cạnh bồn rửa. Cả phòng bỗng im thin thít."
+          "text": "Tùng vừa lật sổ ghi xong thì Duy đặt ngay ấm nước ra trước mặt."
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "worried",
-          "text": "Chuyển thật luôn á? Tớ tưởng biên bản để tham khảo thôi!"
+          "expression": "gai-dau",
+          "text": "Đòi nợ liền tay thế à? Tớ tưởng biên bản chỉ để tham khảo!"
         },
         {
           "type": "image",
@@ -5055,25 +5055,25 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "surprised",
-          "text": "Huy hiệu bánh răng… Hôm Ngày hội, gian Robotics treo cờ in đúng hình ấy."
+          "text": "Huy hiệu bánh răng? Hôm Ngày hội CLB, cờ của bọn Robotics in đúng hình đấy!"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
-          "expression": "thinking",
-          "text": "Huy hiệu thì cả CLB đeo. Mới biết là một người của Robotics, chưa biết là ai."
+          "expression": "day-kinh",
+          "text": "Huy hiệu thì thành viên nào cũng có. Mới khoanh được là người của Robotics thôi."
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "worried",
-          "text": "Thế Robotics thì dính gì tới phòng của mình?"
+          "expression": "gai-dau",
+          "text": "Nhưng Robotics thì liên quan gì tới phòng của mình?"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Chưa biết. Ghi lại đã."
+          "text": "Đừng đoán bừa. Ghi lại đã."
         },
         {
           "type": "goto",
@@ -5111,26 +5111,26 @@ const GOC = {
         {
           "type": "line",
           "speaker": "ha-vy",
-          "expression": "neutral",
-          "text": "Soát lại nhé. Hộp ở tòa B, thẻ lịch khoa Báo chí: ra hai lớp. Chữ H trong hai lớp: Hiếu với Hoài. Sổ niêm phong: chỉ có mã của Hoài."
+          "expression": "day-kinh",
+          "text": "Tổng hợp lại. Thẻ lịch Báo chí ra hai lớp. Lọc tên H có Hiếu với Hoài. Sổ niêm phong có mã của Hoài."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Thứ Hai họp, mình chỉ nói đúng những gì có chứng."
+          "text": "Thứ Hai họp. Chỉ nói những gì dữ liệu chứng minh được."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Thế nhỡ người ta hỏi ai viết thư thì sao?"
+          "text": "Nhỡ người ta vặn hỏi ai là người viết thư thì sao?"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Có chứng thì trình chứng. Không có thì nói là chưa biết."
+          "text": "Có chứng cứ thì trình. Không có thì bảo chưa biết."
         },
         {
           "type": "image",
@@ -5195,30 +5195,30 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "surprised",
-          "text": "Ơ… năm trăm chín mươi lăm dòng thật! Danh sách dài dằng dặc thế này thì đỡ sao nổi!"
+          "text": "Ơ… năm trăm chín mươi lăm dòng thật! Dài thế này thì tra đến bao giờ?"
         },
         {
           "type": "line",
           "speaker": "minh-anh",
-          "expression": "happy",
-          "text": "Đừng cuống. Dữ liệu và logic là sân nhà của tụi mình mà."
+          "expression": "serious",
+          "text": "Đừng cuống. Dữ liệu là sân nhà của tụi mình mà."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Chuẩn luôn! Cả tuần thức trắng cày SQL với nhau rồi, sợ gì! Lên bục vạch lỗi câu lệnh cho anh ấy sáng mắt ra đi bạn ơi!"
+          "text": "Chuẩn! Cả tuần thức trắng cày SQL rồi. Lên bục vạch lỗi câu lệnh luôn bạn ơi!"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
-          "expression": "smile",
-          "text": "Tụi mình tin cậu. Tiến lên bẻ gãy câu HOẶC đó đi!"
+          "expression": "neutral",
+          "text": "Tụi mình tin cậu. Lên bẻ gãy câu HOẶC đó đi."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Cứ để em. Năm trăm dòng thừa thãi này… sẽ biến mất ngay bây giờ!"
+          "text": "Cứ để tớ. Năm trăm dòng thừa thãi này… sẽ biến mất ngay bây giờ!"
         },
         {
           "type": "reminder",
@@ -5250,7 +5250,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Anh đang lấy cả người tên H lẫn cả lớp BC24A, gộp làm một ạ. Bọn em chỉ cần người vừa tên H, vừa học lớp BC24A."
+          "text": "Anh đang gộp chung người tên H và người học lớp BC24A. Bọn em chỉ tìm người vừa tên H, vừa học BC24A."
         },
         {
           "type": "line",
@@ -5375,13 +5375,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hoài được mời vào. Bạn ấy đứng nép cạnh cửa, hai tay nắm chặt quai túi."
+          "text": "Hoài được gọi vào. Bạn ấy đứng nép cạnh cửa, hai tay nắm chặt quai túi."
         },
         {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Em Hoài, em kể lại giúp thầy hôm em nộp thư."
+          "text": "Em Hoài. Em kể lại lúc nộp thư giúp thầy."
         },
         {
           "type": "line",
@@ -5405,7 +5405,7 @@ const GOC = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Được, em ngồi xuống ghế đi. Các em còn gì trình thêm không?"
+          "text": "Được, em ngồi xuống đi. Các em còn gì trình thêm không?"
         },
         {
           "type": "line",
@@ -5584,19 +5584,19 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hoài bước vào đúng lúc màn chiếu còn hiện hai dòng. Một dòng có tên bạn ấy."
+          "text": "Hoài bước vào. Màn chiếu vẫn đang hiện hai dòng, một dòng có tên bạn ấy."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Khoan… chiếu tên bạn ấy lên rồi gọi vào thế này, khác gì hỏi cung."
+          "text": "Khoan… chiếu tên bạn ấy lên rồi gọi vào, khác gì hỏi cung."
         },
         {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "stern",
-          "text": "Ở đây không ai đối chất với một bạn năm nhất. Thầy hỏi, các em nghe."
+          "text": "Không ai đối chất với sinh viên năm nhất ở đây. Thầy hỏi, các em nghe."
         },
         {
           "type": "line",
@@ -5617,19 +5617,19 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hoài cúi gằm, không nói thêm câu nào."
+          "text": "Hoài cúi gằm, không dám nói thêm câu nào."
         },
         {
           "type": "line",
           "speaker": "quan",
           "expression": "smug",
-          "text": "Vậy là chính bạn ấy mang thư tới hộp."
+          "text": "Vậy là chính bạn ấy nộp."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Mang tới hộp thôi anh. Chưa biết bạn ấy viết hay chỉ mang hộ."
+          "text": "Mới biết là mang nộp thôi. Chưa có chứng cứ bạn ấy viết."
         },
         {
           "type": "line",
@@ -5728,7 +5728,7 @@ const GOC = {
           "type": "line",
           "speaker": "quan",
           "expression": "stunned",
-          "text": "…Hóa ra người nộp còn không biết trong thư viết gì. Em xin lỗi thầy, xin lỗi các bạn. Bên em lọc rộng rồi vội nghi cả một lớp ạ."
+          "text": "…Hóa ra người nộp còn không biết trong thư viết gì. Em xin lỗi thầy, xin lỗi các bạn. Bên em lọc rộng rồi vội nghi cả lớp ạ."
         },
         {
           "type": "note",
@@ -5744,7 +5744,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "smile",
-          "text": "Được. Tớ nhớ đấy nhé."
+          "text": "Tớ nhớ đấy nhé."
         },
         {
           "type": "goto",
@@ -5816,13 +5816,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Gốc cây ngoài cổng chính. Một cái ô bạc màu, mấy cái ghế nhựa xanh đỏ, cái ấm nhôm to bằng cái xô."
+          "text": "Gốc cây ngoài cổng chính. Một cái ô bạc màu, mấy cái ghế nhựa, cái ấm nhôm to bằng cái xô."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Bà ơi, cho cháu ba trà đá! Hôm nay cháu khao."
+          "text": "Bà ơi, cho cháu ba cốc trà đá! Hôm nay cháu khao."
         },
         {
           "type": "image",
@@ -5848,24 +5848,24 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "gai-dau",
-          "text": "Lần này tớ không cá. Hôm ở phòng máy tớ nói bừa một câu về Hoài. Suýt nữa bạn ấy mang tiếng vì cái mồm tớ."
+          "text": "Lần này tớ chừa. Hôm ở phòng máy tớ lỡ mồm nghi cho Hoài. Suýt nữa bạn ấy mang tiếng."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Cậu nói \"chắc Hoài in\". Nhật ký in thì nói khác."
+          "text": "Cậu cứ khăng khăng \"chắc Hoài in\". Nhật ký in thì nói khác."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Ừ. Giờ gặp bạn ấy tớ chẳng biết mở mồm thế nào."
+          "text": "Ừ. Giờ gặp bạn ấy chẳng biết mở lời thế nào."
         },
         {
           "type": "line",
           "speaker": "ba-lua",
           "expression": "neutral",
-          "text": "Mấy đứa ở cái phòng tầng hai nhà câu lạc bộ đấy hả? Phòng có cái tủ sắt."
+          "text": "Mấy đứa ở phòng tầng hai nhà câu lạc bộ đấy hả? Phòng có cái tủ sắt."
         },
         {
           "type": "line",
@@ -5876,13 +5876,13 @@ const GOC = {
           "type": "line",
           "speaker": "ba-lua",
           "expression": "smile",
-          "text": "Hồi bà mới dọn hàng ra đây, phòng ấy còn là kho chổi. Có một cậu sinh viên xin được chìa, tự tay khuân cái tủ sắt lên. Chiều nào xong việc cũng ra đây ngồi ghi ghi chép chép."
+          "text": "Hồi bà mới ra đây, phòng ấy là kho chổi. Có cậu sinh viên xin được chìa, tự khuân tủ sắt lên. Chiều nào cũng ra đây ghi chép."
         },
         {
           "type": "line",
           "speaker": "ba-lua",
           "expression": "smile",
-          "text": "Hè cũng như đông, cậu ấy chỉ gọi trà nóng. Ngồi quán trà đá mà gọi trà nóng thì bà nhớ."
+          "text": "Hè cũng như đông, cậu ấy chỉ gọi trà nóng. Ra quán trà đá mà gọi trà nóng thì bà nhớ lâu."
         },
         {
           "type": "line",

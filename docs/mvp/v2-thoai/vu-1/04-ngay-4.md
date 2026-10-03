@@ -1,3 +1,21 @@
+<!-- V2:
+- n4-mo.1: Sửa lời Minh Anh tự nhiên hơn.
+- n4-ctsv.1: Rút gọn lời Hà Vy, đổi biểu cảm thành day-kinh.
+- n4-ctsv.1v: Rút gọn thoại cô Lan, đổi biểu cảm Tùng thành gai-dau.
+- n4-ctsv.2: Làm mượt thoại cô Lan theo đúng quy chế.
+- n4-phong-may.1: Sửa narrator cho gãy gọn, đổi biểu cảm Hà Vy.
+- n4-phong-may.2: Làm mượt thoại Tùng (đổi thành surprised) và cô Hạnh.
+- n4-sanh-toa-b.1: Làm thoại bác Thịnh dứt khoát hơn.
+- n4-ve.1: Đổi biểu cảm Minh Anh thành khoanh-tay, gọt lời Tùng.
+- n4-bd-toa-b.1: Rút gọn thoại bác Thịnh, đổi biểu cảm Hà Vy thành day-kinh.
+- n4-toi.1: Gọt lại lời narrator và Minh Anh.
+- n4-toi.1b: Sửa thoại Tùng cho tự nhiên khi rủ chơi trò chơi, đổi biểu cảm Hà Vy.
+- n4-toi.1c: Nhấn mạnh tình huống Duy ghi sổ.
+- n4-toi.1d: Làm câu đùa giữa Tùng và Duy nhịp nhàng hơn, đổi biểu cảm Tùng (gai-dau).
+- n4-ctsv-an.1: Lược bớt chữ thừa.
+- n4-bd-toa-b-an.1: Làm câu của Tùng tự nhiên hơn.
+-->
+
 # Lời · kich-ban/04-ngay-4.md
 
 <!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/04-ngay-4.md. [DÀN DỰNG] không hiện cho người chơi. Câu hỏi [RẼ NHÁNH] nằm ở khung. Cô Hạnh không nói ai đã dùng tài khoản chung. -->
@@ -49,9 +67,9 @@
 
 ## n4-sanh-toa-b.1
 - **narrator**: Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đang ngồi ở bàn trực.
-- **tung** (chi-tay): Bác ơi, cho bọn cháu xem sổ ký vào phòng máy tối Chủ nhật được không ạ?
-- **bac-tu** (neutral): Sổ ghi tên người. Không có chữ ký người có thẩm quyền thì bác không mở.
-- **ha-vy** (neutral): Vâng ạ. Bọn cháu chỉ ghi lại nhật ký in trước.
+- **tung** (chi-tay): Bác ơi, bọn cháu mượn sổ ký phòng máy tối Chủ nhật được không ạ?
+- **bac-tu** (neutral): Sổ có thông tin cá nhân. Không có chữ ký lãnh đạo, bác không cho xem.
+- **ha-vy** (neutral): Vâng ạ. Chúng cháu ghi nhận nhật ký máy in trước.
 
 ## n4-ve.1
 - **ha-vy** (neutral): Chị ơi, sổ niêm phong có mã của Hoài, không có Hiếu.
@@ -59,9 +77,9 @@
 - **tung** (gai-dau): Và cũng chưa biết thư đó được in từ đâu…
 
 ## n4-bd-toa-b.1
-- **bac-tu** (neutral): Sáng nay có cậu đeo kính bên Hội xuống đứng nhìn cái hộp một lúc rồi đi. Không hỏi bác câu nào.
-- **tung** (thinking): Anh Quân đấy bác ạ.
-- **ha-vy** (neutral): Anh ấy kiểm bọn mình, và kiểm cả cái hộp. Cẩn thận như thế thì mình càng phải có căn cứ.
+- **bac-tu** (neutral): Sáng nay có cậu bên Hội xuống đứng nhìn hộp kiến nghị mãi. Chẳng hỏi câu nào.
+- **tung** (thinking): Chắc là anh Quân đấy bác ạ.
+- **ha-vy** (day-kinh): Anh ấy kiểm tra từ manh mối nhỏ nhất. Mình càng phải bám sát căn cứ.
 
 ## n4-toi.1
 - **narrator**: Tối thứ Sáu, phòng CLB. Duy cắm ấm đun nước. Minh Anh lôi từ ngăn kéo ra hộp bánh quy từ kỳ trước.
