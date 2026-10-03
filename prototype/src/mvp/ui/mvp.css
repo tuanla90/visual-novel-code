@@ -2103,6 +2103,28 @@
   border-radius: 12px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
 }
+.mvp-anhchen__meme {
+  position: absolute;
+  top: max(18px, env(safe-area-inset-top));
+  left: 50%;
+  z-index: 2;
+  width: max-content;
+  max-width: min(760px, calc(100vw - 40px));
+  margin: 0;
+  padding: 10px 18px;
+  transform: translateX(-50%) rotate(-1deg);
+  border: 1px solid rgba(255, 246, 211, 0.7);
+  border-radius: 5px 14px 5px 14px;
+  background: rgba(20, 31, 43, 0.88);
+  color: #fff5d8;
+  font: 900 clamp(1.05rem, 3vw, 1.8rem)/1.2 var(--font-ui);
+  letter-spacing: 0.035em;
+  text-align: center;
+  text-wrap: balance;
+  text-shadow: 0 2px 0 rgba(82, 32, 19, 0.6);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
 .mvp-anhchen__nut {
   position: absolute;
   right: var(--sp-4);

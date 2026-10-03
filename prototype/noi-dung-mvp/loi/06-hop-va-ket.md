@@ -46,7 +46,7 @@
 - **ha-vy** (neutral): Mang tới hộp thôi anh. Chưa biết bạn ấy viết hay chỉ mang hộ.
 - **thay-quang** (neutral): Em Hoài đang rất căng. Hôm nay thầy không hỏi thêm em ở đây.
 
-## ket-that.1
+## ket-that.1a
 - [DÀN DỰNG] {{nv.thay-quang}} quay sang {{nv.hoai}}.
 - **thay-quang** (neutral): Em Hoài, nhật ký in nói lá thư in từ tài khoản của một CLB, không phải của em. Phong bì em bỏ vào hộp là từ đâu ra?
 - **hoai** (nervous): Dạ… có một anh em không quen nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký như bình thường vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ. Mặt anh ấy em không nhớ rõ ạ.
@@ -58,6 +58,8 @@
 - **thay-quang** (neutral): Còn thư do ai soạn, thầy sẽ cho hỏi lại. Chưa có căn cứ thì chưa nêu tên ai ở đây.
 - **hoai** (relieved): Em xin lỗi vì làm mọi người mất công ạ.
 - **minh-anh** (happy): Không sao đâu em. Cảm ơn thầy ạ.
+
+## ket-that.1b
 - **quan** (stunned): …Hóa ra người nộp còn không biết trong thư viết gì. Em xin lỗi thầy, xin lỗi các bạn. Bên em lọc rộng rồi vội nghi cả một lớp ạ.
 - [DÀN DỰNG] {{nv.tung}} thì thầm với {{nv.ha-vy}}.
 - **tung** (happy): Giữ được phòng rồi! Tối nay tớ khao trà đá.

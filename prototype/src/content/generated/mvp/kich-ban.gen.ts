@@ -1898,6 +1898,14 @@ const GOC = {
           "text": "Bốn rưỡi, cô Lan bên Phòng Công tác sinh viên gọi chị Minh Anh lên. Mười phút sau chị quay về, tay cầm hai tờ giấy."
         },
         {
+          "type": "note",
+          "text": "Chị Minh Anh ngồi xuống bàn, hai tay đan trước mặt; phong thư nằm ngay trước mặt chị."
+        },
+        {
+          "type": "image",
+          "imageId": "cg-minh-anh-dan-tay"
+        },
+        {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "worried",
@@ -1977,6 +1985,14 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "day-kinh",
           "text": "Khoan, tính lại đã. Mình mới có một chữ H với một cái hộp."
+        },
+        {
+          "type": "note",
+          "text": "Chị Minh Anh nhìn Tùng, chỉ hai ngón tay vào thái dương như nhắc cậu nghĩ kỹ."
+        },
+        {
+          "type": "image",
+          "imageId": "cg-nghi-di-tung"
         },
         {
           "type": "line",
@@ -4432,6 +4448,10 @@ const GOC = {
           "text": "Anh Quân bảo Hoài viết. Trong hồ sơ, thẻ nào bác được câu ấy?"
         },
         {
+          "type": "image",
+          "imageId": "cg-bang-chung-day"
+        },
+        {
           "type": "doi-chat",
           "id": "dc-ai-viet",
           "asker": {
@@ -4710,6 +4730,10 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "happy",
           "text": "Không sao đâu em. Cảm ơn thầy ạ."
+        },
+        {
+          "type": "image",
+          "imageId": "cg-quan-bi-bac"
         },
         {
           "type": "line",

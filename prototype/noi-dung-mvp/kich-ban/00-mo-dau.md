@@ -129,12 +129,16 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
 
 ### md-11-la-thu — Phòng CLB, 16h40: lá thư {cảnh: phong-clb}
 
-- [LỜI md-11-la-thu.1]
+- [LỜI md-11-la-thu.1a]
+- [ẢNH cg-minh-anh-dan-tay]
+- [LỜI md-11-la-thu.1b]
 - [ẢNH chibi-la-thu]
 - [HIỆN TÀI LIỆU doc-thu-che]
 - [LỜI md-11-la-thu.2]
 - [HẬU QUẢ] mở manh mối clue-chu-ky-h
-- [LỜI md-11-la-thu.3]
+- [LỜI md-11-la-thu.3a]
+- [ẢNH cg-nghi-di-tung]
+- [LỜI md-11-la-thu.3b]
 
 ### md-10-soi-ban-do — Quan sát Tùng: tờ bản đồ trên tay {cảnh: phong-clb}
 

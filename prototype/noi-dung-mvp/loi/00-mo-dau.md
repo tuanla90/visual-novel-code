@@ -166,9 +166,12 @@
 ## md-10-phong-clb.4
 - **duy** (neutral): Báo cáo năm ngoái đây. Kết luận đúng hai chữ: "hoạt động yếu".
 
-## md-11-la-thu.1
+## md-11-la-thu.1a
 - [DÀN DỰNG] {{nv.minh-anh}} ra ngoài rồi quay lại với hai tờ giấy: thông báo lịch họp rà soát và bản chụp thư đã che thông tin.
 - **narrator**: Bốn rưỡi, cô Lan bên Phòng Công tác sinh viên gọi chị Minh Anh lên. Mười phút sau chị quay về, tay cầm hai tờ giấy.
+- [DÀN DỰNG] Chị Minh Anh ngồi xuống bàn, hai tay đan trước mặt; phong thư nằm ngay trước mặt chị.
+
+## md-11-la-thu.1b
 - **minh-anh** (worried): Thứ Hai tuần sau, phòng CLB mình bị đưa ra họp rà soát.
 - **minh-anh** (neutral): Có người bỏ thư vào hộp kiến nghị ở tòa B, đề nghị thu hồi phòng. Tên người gửi bị che, CLB chỉ được xem nội dung.
 - **duy** (serious): Mất phòng không chỉ là mất chỗ ngồi đâu. Quy chế ghi: CLB không còn phòng sinh hoạt thì vào diện chờ giải thể. Hết học kỳ vẫn chưa có phòng là giải thể, giấy tờ sổ sách chuyển hết về Hội sinh viên. Trường rà soát phòng hai đợt: đầu kỳ nhận kiến nghị tới 20 tháng 9, cuối kỳ rà lại lần nữa.
@@ -179,11 +182,14 @@
 - **player**: Chữ ký lượn thế này, đọc được mỗi chữ H… mà lại còn "đề nghị phản hồi chính thức".
 - **player**: (Cuối trang còn sót một dòng chữ bé tí, bị xén mất nửa. Trông như tên tệp.)
 
-## md-11-la-thu.3
+## md-11-la-thu.3a
 - **duy** (neutral): Giờ đủ năm người thì CLB chưa bị giải thể. Nhưng phòng vẫn bị xét: báo cáo năm ngoái đã yếu, giờ thêm lá thư này.
 - **minh-anh** (neutral): {{nv.thay-quang}}, phó hiệu trưởng, cho CLB một tuần tự tìm căn cứ, mang ra buổi họp.
 - **tung** (neutral): Thế giờ bắt đầu từ đâu ạ?
 - **ha-vy** (day-kinh): Khoan, tính lại đã. Mình mới có một chữ H với một cái hộp.
+- [DÀN DỰNG] Chị Minh Anh nhìn Tùng, chỉ hai ngón tay vào thái dương như nhắc cậu nghĩ kỹ.
+
+## md-11-la-thu.3b
 - **minh-anh** (serious): Thì bắt đầu từ cái hộp. Nói có sách, mách có chứng. Mai ra tòa B.
 > NHẮC VIỆC minh-anh (serious): Một tuần tìm căn cứ. Mai bắt đầu từ cái hộp ở tòa B.
 

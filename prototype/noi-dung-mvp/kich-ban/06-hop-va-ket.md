@@ -29,6 +29,7 @@
 ### hop-02 — Mời Hoài vào hỏi chuyện nộp thư {cảnh: phong-hop}
 
 - [LỜI hop-02.1]
+- [ẢNH cg-bang-chung-day]
 - [ĐỐI CHẤT dc-ai-viet] quan: "Mã trong sổ là của Hoài. Thư do Hoài mang tới hộp. Chữ ký bắt đầu bằng H, Hoài cũng H. Bên tôi kết luận: **Hoài là người viết lá thư này.**"
   - [CÂU HỎI] Hoài mang thư tới hộp. Nhưng lá thư được in ra bằng tài khoản của ai? Trình thẻ cho biết điều đó.
   - {ev-nhat-ky-in} [ĐỦ CĂN CỨ] → phản hồi: **minh-anh** (neutral): Thưa thầy, bọn em có nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật — từ tài khoản dùng chung của một CLB, không phải của Hoài.<br>**quan** (stunned): …Tài khoản CLB?<br>**thay-quang** (neutral): Tài khoản in thư không phải của người nộp thư. Vậy câu "Hoài viết" chưa đứng được.
@@ -50,7 +51,9 @@
 ### ket-that — True end: Hoài kể chuyện được nhờ; mẩu giấy trong sổ CLB {cảnh: phong-hop}
 
 - [ĐIỀU KIỆN] có dc-ai-viet-du
-- [LỜI ket-that.1]
+- [LỜI ket-that.1a]
+- [ẢNH cg-quan-bi-bac]
+- [LỜI ket-that.1b]
 - [ĐI TỚI ket-that-clb]
 
 ### ket-that-clb — Chiều muộn ở phòng CLB: mẩu giấy trong sổ CLB {cảnh: phong-clb}
