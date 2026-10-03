@@ -178,9 +178,11 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 ## quet_the_thu_vien {bảng}
 - Cột: ten TEXT, ngay TEXT, thu TEXT, gio_vao TEXT, gio_ra TEXT
 
-<!-- Vụ 3: bản ghi quẹt thẻ thư viện do CHÍNH Nam và Hà Vy xin in (thư viện chỉ in cho mỗi người bản của họ). Cột thứ có sẵn vì hàm
-     ngày giờ nằm ngoài phạm vi mùa 1. Thói quen: tối thứ Hai nào cả hai cũng ở thư viện; tối 07/10 (thứ Hai) Hà Vy 20:00–23:00,
-     Nam 21:50–23:05, tin gửi 22:40. -->
+<!-- Vụ 3: bản ghi quẹt thẻ thư viện do Nam tải toàn bộ từ lúc vào trường (K23) và Hà Vy tải từ đầu năm (K24),
+     gộp chung một tệp. 10 dòng canon được bộ sinh nhieu-mvp.ts mở rộng thành 37 dòng (Nam 32 lượt từ năm ngoái đến nay,
+     Hà Vy 5 lượt). Cột thứ có sẵn vì hàm ngày giờ nằm ngoài phạm vi mùa 1. Thói quen: tối thứ Hai nào Nam cũng ở thư viện (27 lần);
+     tối 07/10 (thứ Hai) chỉ có Hà Vy 20:00–23:00 và Nam 21:50–23:05, tin gửi 22:40. -->
+
 
 | ten | ngay | thu | gio_vao | gio_ra |
 |---|---|---|---|---|
@@ -267,10 +269,11 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 ## khoan_chi {bảng}
 - Cột: ma_chi TEXT, ma_don TEXT, ma_quy TEXT, so_tien INTEGER, nguoi_duyet TEXT, ngay_chi TEXT
 
-<!-- Vụ 5: bản xuất sổ chi khối CLB (chỉ các khoản ghi vào quỹ CLB Thám Tử và khoản liên quan các đơn). Ba khoản lớn (KC-03, 06, 08)
-     trả cho ba đơn không có hàng, ghi vào quỹ CLB Thám Tử, người duyệt Khánh; ba khoản văn phòng phẩm nhỏ Minh Anh duyệt. Trung bình:
+<!-- Vụ 5: sổ chi khối CLB toàn trường (11 dòng canon của CLB Thám Tử và Robotics được bộ sinh nhieu-mvp.ts mở rộng thành 200 dòng của 19 CLB toàn trường).
+     Ba khoản lớn (KC-03, 06, 08) trả cho ba đơn không có hàng, ghi vào quỹ CLB Thám Tử, người duyệt Khánh; ba khoản văn phòng phẩm nhỏ Minh Anh duyệt. Trung bình:
      Khánh 800000, Minh Anh 150000 (chia hết). ngay_chi: ba khoản lớn xuất 10–12/09, TRƯỚC lá thư 16/09 và trước ngày tạo ba đơn (27/09, 04/10, 07/10):
-     tiền đi trước, thư đi sau, đơn viết sau cùng cho khớp sổ. -->
+     tiền đi trước, thư đi sau, đơn viết sau cùng cho khớp sổ. Dòng nền sinh thêm không ghi vào quỹ CLB Thám Tử. -->
+
 
 | ma_chi | ma_don | ma_quy | so_tien | nguoi_duyet | ngay_chi |
 |---|---|---|---|---|---|

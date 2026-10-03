@@ -1388,10 +1388,6 @@ const GOC = {
           "imageId": "chibi-408-vali"
         },
         {
-          "type": "image",
-          "imageId": "chibi-408-nam-bep"
-        },
-        {
           "type": "goto",
           "to": "md-03-toa-b"
         }
@@ -2366,10 +2362,6 @@ const GOC = {
         {
           "type": "note",
           "text": "Chị Minh Anh nhìn Tùng, chỉ hai ngón tay vào thái dương như nhắc cậu nghĩ kỹ."
-        },
-        {
-          "type": "image",
-          "imageId": "cg-nghi-di-tung-ha-vy"
         },
         {
           "type": "line",
@@ -3503,6 +3495,10 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Đừng cá. Holmes dặn rồi: chưa có dữ liệu mà đã đoán là sai từ gốc. Tính đã."
+        },
+        {
+          "type": "image",
+          "imageId": "cg-nghi-di-tung-ha-vy"
         },
         {
           "type": "challenge",
@@ -4905,10 +4901,6 @@ const GOC = {
           "text": "Tới lượt tớ. Một: thuộc đường. Hai: thích cá cược. Ba: cá mười thua chín."
         },
         {
-          "type": "image",
-          "imageId": "chibi-vy-cuoi-deu"
-        },
-        {
           "type": "line",
           "speaker": "tung",
           "expression": "surprised",
@@ -4924,10 +4916,6 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Chín giờ tối, hộp bánh hết. Người ăn cái cuối là Duy. Cậu lẳng lặng mở sổ, ghi: \"Nợ CLB một hộp bánh.\""
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-duy-ok"
         },
         {
           "type": "line",
@@ -4957,10 +4945,6 @@ const GOC = {
           "speaker": "tung",
           "expression": "gai-dau",
           "text": "Đòi nợ liền tay thế à? Tớ tưởng biên bản chỉ để tham khảo!"
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-tung-tinh-nham"
         }
       ]
     },
@@ -5243,10 +5227,6 @@ const GOC = {
           "effectId": "co-so-lieu-day"
         },
         {
-          "type": "image",
-          "imageId": "chibi-so-lieu-day"
-        },
-        {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
@@ -5418,10 +5398,6 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "serious",
           "text": "Anh Quân bảo Hoài viết. Trong hồ sơ, thẻ nào bác được câu ấy?"
-        },
-        {
-          "type": "image",
-          "imageId": "cg-bang-chung-day"
         },
         {
           "type": "doi-chat",
@@ -5823,10 +5799,6 @@ const GOC = {
           "speaker": "tung",
           "expression": "happy",
           "text": "Bà ơi, cho cháu ba cốc trà đá! Hôm nay cháu khao."
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-khao-tra-da"
         },
         {
           "type": "line",
@@ -7098,6 +7070,10 @@ const GOC = {
           "speaker": "duy",
           "expression": "neutral",
           "text": "Bản xuất của cô Lan tớ nạp vào máy rồi. Ngồi vào đi."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-duy-ok"
         }
       ]
     },
@@ -7138,6 +7114,10 @@ const GOC = {
           "speaker": "tung",
           "expression": "chi-tay",
           "text": "Tớ cá là đa số chỉ bấm chuyển tiếp chứ có đọc đâu."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-tung-tinh-nham"
         }
       ]
     },
@@ -7494,6 +7474,10 @@ const GOC = {
           "type": "line",
           "speaker": "player",
           "text": "(Tùng nhờ chọn quà. Hoài là người thế nào nhỉ?)"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-khao-tra-da"
         },
         {
           "type": "branch",
@@ -8082,7 +8066,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Nam mở cổng sinh viên trên điện thoại, tải bản ghi cửa từ của chính mình trong tháng 9 và tháng 10, gửi vào nhóm."
+          "text": "Nam mở cổng sinh viên trên điện thoại, tải toàn bộ bản ghi cửa từ của mình từ lúc vào trường tới giờ, gửi vào nhóm."
         },
         {
           "type": "line",
@@ -8113,13 +8097,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Năm lần. Ngày với thứ ghi sẵn."
+          "text": "Ba mươi hai lần. Ngày với thứ ghi sẵn từ năm ngoái tới giờ."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Năm dòng, nhìn là thấy thứ Hai nhiều. Nhưng \"nhiều\" là mấy? Thói quen thì phải đếm được."
+          "text": "Ba mươi hai dòng, nhìn là thấy thứ Hai nhiều. Nhưng \"nhiều\" là mấy? Thói quen thì phải đếm được."
         },
         {
           "type": "task",
@@ -8138,7 +8122,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Thứ Hai bốn lần, tối nào có trong tệp cũng thế. Thứ Năm một lần."
+          "text": "Thứ Hai hai mươi bảy lần, tối thứ Hai nào có trong tệp cũng thế. Thứ Năm năm lần."
         },
         {
           "type": "line",
@@ -8365,7 +8349,7 @@ const GOC = {
                 {
                   "speaker": "ha-vy",
                   "expression": "thinking",
-                  "text": "Bốn tối thứ Hai có trong tệp, tối nào Nam cũng ở thư viện. Một thói quen. Thói quen thì chưa phải bằng chứng cho đúng tối đó."
+                  "text": "Hai mươi bảy tối thứ Hai có trong tệp, tối nào Nam cũng ở thư viện. Một thói quen từ năm ngoái. Thói quen thì chưa phải bằng chứng cho đúng tối đó."
                 },
                 {
                   "speaker": "tung",
@@ -10511,6 +10495,10 @@ const GOC = {
           "challengeId": "c-chi-vuot-muc"
         },
         {
+          "type": "image",
+          "imageId": "chibi-so-lieu-day"
+        },
+        {
           "type": "line",
           "speaker": "player",
           "text": "Còn một dòng. Khánh: ba khoản, tổng hai triệu tư, trung bình tám trăm nghìn."
@@ -11290,6 +11278,10 @@ const GOC = {
       "canh": "phong-hop",
       "mocSomNhat": 1000,
       "nodes": [
+        {
+          "type": "image",
+          "imageId": "cg-bang-chung-day"
+        },
         {
           "type": "doi-chat",
           "id": "dc-khanh-so-do",
@@ -13720,6 +13712,10 @@ const GOC = {
           "type": "line",
           "speaker": "player",
           "text": "Để tớ. Cho tớ mã sinh viên của cậu."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-408-nam-bep"
         },
         {
           "type": "show-document",
@@ -16999,13 +16995,13 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 11
+            "n": 200
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả bản xuất, có cả quỹ Robotics. Mình chỉ cần quỹ CLB mình."
+              "text": "Cả sổ chi các CLB, hai trăm khoản. Mình chỉ cần quỹ CLB mình."
             }
           ]
         },
@@ -17480,7 +17476,7 @@ const GOC = {
         "clue-ten-nam"
       ],
       "mucTieuHoc": "Lọc theo tên để ghim thành phiếu riêng của một người.",
-      "soDongKyVong": 5,
+      "soDongKyVong": 32,
       "sqlChuan": "SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Nam';",
       "truyVanNapSan": null,
       "phanUng": [
@@ -17500,13 +17496,13 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 10
+            "n": 37
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả tờ, của cả hai người. Mình cần riêng của Nam."
+              "text": "Cả tờ, ba mươi bảy lượt của cả hai người từ trước tới giờ. Mình cần riêng của Nam."
             }
           ]
         },
@@ -17518,15 +17514,15 @@ const GOC = {
             {
               "speaker": "nam",
               "expression": "neutral",
-              "text": "Năm lần. Đúng là của tớ."
+              "text": "Ba mươi hai lần. Đúng là của tớ từ năm ngoái tới giờ."
             }
           ]
         }
       ],
       "vatChung": {
         "id": "ev-nam-thu-vien",
-        "title": "Năm lần Nam quẹt thẻ thư viện",
-        "description": "Kết quả truy vấn: năm lần Nam vào thư viện trong tháng 9 và 10, có ngày, thứ, giờ vào, giờ ra.",
+        "title": "Ba mươi hai lần Nam quẹt thẻ thư viện",
+        "description": "Kết quả truy vấn: ba mươi hai lần Nam vào thư viện từ năm ngoái đến nay, có ngày, thứ, giờ vào, giờ ra.",
         "giaTri": []
       },
       "ghiChu": []
@@ -17546,8 +17542,8 @@ const GOC = {
       "phanUng": [],
       "vatChung": {
         "id": "ev-nam-thu",
-        "title": "Nam: tối thứ Hai 4 lần, thứ Năm 1 lần",
-        "description": "Kết quả nhóm theo thứ: bốn tối thứ Hai liền Nam đều ở thư viện. Một thói quen đếm được; chưa phải bằng chứng cho riêng tối 07/10.",
+        "title": "Nam: tối thứ Hai 27 lần, thứ Năm 5 lần",
+        "description": "Kết quả nhóm theo thứ: hai mươi bảy tối thứ Hai Nam đều ở thư viện từ lúc vào trường. Một thói quen bền bỉ đếm được; chưa phải bằng chứng cho riêng tối 07/10.",
         "giaTri": []
       },
       "ghiChu": []
@@ -17593,13 +17589,13 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 5
+            "n": 32
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Năm lần. Mình chỉ cần tối mùng 7."
+              "text": "Ba mươi hai lần. Mình chỉ cần tối mùng 7."
             }
           ]
         },
@@ -17652,7 +17648,7 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 10
+            "n": 37
           },
           "loi": [
             {
@@ -19212,7 +19208,7 @@ const GOC = {
     },
     {
       "sql": "SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Nam';",
-      "soDong": 5,
+      "soDong": 32,
       "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:45 thẻ c-nam-thu-vien, SQL chuẩn",
       "resultId": "ev-nam-thu-vien"
     },
@@ -19245,7 +19241,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:170 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:169 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

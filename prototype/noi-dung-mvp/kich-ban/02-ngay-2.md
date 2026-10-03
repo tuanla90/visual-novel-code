@@ -90,6 +90,7 @@
 - [LỜI n2-laptop.05]
 - [THỬ THÁCH c-cot-lop]
 - [LỜI n2-laptop.1]
+- [ẢNH cg-nghi-di-tung-ha-vy]
 - [THỬ THÁCH c-lop]
 - [LỜI n2-laptop.2]
 - [ĐI TỚI n2-toi]

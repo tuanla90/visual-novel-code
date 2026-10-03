@@ -104,6 +104,7 @@
 ### tin-phong-duy — Vụ 2: Duy mở laptop (việc chính) {cảnh: phong-clb}
 
 - [LỜI tin-phong-duy.1]
+- [ẢNH chibi-duy-ok]
 
 ### tin-phong-vy — Vụ 2: Hà Vy và câu hỏi trên bảng {cảnh: phong-clb}
 
@@ -112,6 +113,7 @@
 ### tin-phong-tung — Vụ 2: Tùng kể chuyện nghe ở căng tin {cảnh: phong-clb}
 
 - [LỜI tin-phong-tung.1]
+- [ẢNH chibi-tung-tinh-nham]
 
 ### tin-phong-minh-anh — Vụ 2: Minh Anh nói về việc xin dữ liệu {cảnh: phong-clb}
 

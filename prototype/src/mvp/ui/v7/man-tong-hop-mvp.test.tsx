@@ -5,15 +5,19 @@ import type { TheThuThachMvp } from '../../../content/mvp/types';
 import { KICH_BAN as kb } from '../../store/kho-mvp';
 import { ManTongHopMvp } from './ManTongHopMvp';
 
-const theGia: TheThuThachMvp = {
+const theGia = {
   id: 'c-test-tong-hop',
   tieuDe: 'Thử nghiệm tổng hợp',
   deBai: 'Lấy phiếu làm nguồn. Gom theo họ tên: đếm dòng.',
   sqlChuan: 'SELECT ho_ten, COUNT(*) FROM @ev-nguon GROUP BY ho_ten',
-  phanHoi: {
-    khiDung: 'Đúng rồi!',
-  },
-};
+  manhMoiLienQuan: [],
+  mucTieuHoc: null,
+  soDongKyVong: null,
+  truyVanNapSan: null,
+  phanUng: [],
+  vatChung: null,
+  ghiChu: [],
+} as TheThuThachMvp;
 
 const nguonGia = [
   {

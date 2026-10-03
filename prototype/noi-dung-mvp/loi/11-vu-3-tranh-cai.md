@@ -89,21 +89,22 @@
 - **hoai** (neutral): Ừ. Tớ mà gặp lại cái balo ấy là tớ nhận ra.
 - **hoai** (neutral): Mà cậu là bạn áo xanh tình nguyện tuần đầu đúng không? Hôm ấy cậu dẫn tớ lạc sang tận nhà xe.
 - **tung** (gai-dau): Tớ dẫn đúng hướng, chỉ sai tòa thôi. Áo thì tớ vẫn cất trong tủ.
-- **narrator**: Nam mở cổng sinh viên trên điện thoại, tải bản ghi cửa từ của chính mình trong tháng 9 và tháng 10, gửi vào nhóm.
+- **narrator**: Nam mở cổng sinh viên trên điện thoại, tải toàn bộ bản ghi cửa từ của mình từ lúc vào trường tới giờ, gửi vào nhóm.
 - **ha-vy** (neutral): Tớ cũng tải bản của tớ, gộp chung vào một tệp cho dễ tra. Tên ai thì ghi tên người đó.
 - **nam** (neutral): Lọc ra của tớ rồi xem.
 > NHIỆM VỤ: Nam vào thư viện những ngày nào?
 > NHẮC VIỆC ha-vy (thinking): Tệp có cả hai tên. Lọc đúng tên Nam.
 
 ## v3-thu-vien.2
-- **player**: Năm lần. Ngày với thứ ghi sẵn.
-- **ha-vy** (thinking): Năm dòng, nhìn là thấy thứ Hai nhiều. Nhưng "nhiều" là mấy? Thói quen thì phải đếm được.
+- **player**: Ba mươi hai lần. Ngày với thứ ghi sẵn từ năm ngoái tới giờ.
+- **ha-vy** (thinking): Ba mươi hai dòng, nhìn là thấy thứ Hai nhiều. Nhưng "nhiều" là mấy? Thói quen thì phải đếm được.
 > NHIỆM VỤ: Nam quẹt thẻ thư viện vào thứ mấy nhiều nhất, mấy lần?
 > NHẮC VIỆC ha-vy (thinking): Cùng một cục phiếu, gom theo thứ rồi đếm.
 
 ## v3-thu-vien.3
-- **player**: Thứ Hai bốn lần, tối nào có trong tệp cũng thế. Thứ Năm một lần.
+- **player**: Thứ Hai hai mươi bảy lần, tối thứ Hai nào có trong tệp cũng thế. Thứ Năm năm lần.
 - **nam** (neutral): Tối thứ Hai thư viện vắng. Tớ ngồi bàn cạnh cửa sổ, làm bài tới khi họ đuổi.
+
 - **ha-vy** (thinking): …Bàn cạnh cửa sổ. Tối thứ Hai.
 - **tung** (surprised): Sao thế?
 - **ha-vy** (thinking): Tối thứ Hai nào tớ cũng ở thư viện. Tớ nhớ có một cậu tuần nào cũng tới muộn, ngồi bàn cạnh cửa sổ. Tớ không để ý mặt.

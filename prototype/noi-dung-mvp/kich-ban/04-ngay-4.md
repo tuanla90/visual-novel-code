@@ -70,8 +70,5 @@
 - [LỜI n4-toi.1]
 - [ẢNH chibi-duy-hop-banh]
 - [LỜI n4-toi.1b]
-- [ẢNH chibi-vy-cuoi-deu]
 - [LỜI n4-toi.1c]
-- [ẢNH chibi-duy-ok]
 - [LỜI n4-toi.1d]
-- [ẢNH chibi-tung-tinh-nham]

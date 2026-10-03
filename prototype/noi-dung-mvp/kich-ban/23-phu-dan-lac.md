@@ -40,6 +40,7 @@
 ### p-lac-phong — Phòng 408: sổ đón của đội tình nguyện {cảnh: phong-ktx-dem}
 
 - [LỜI p-lac-phong.1]
+- [ẢNH chibi-408-nam-bep]
 - [HIỆN TÀI LIỆU doc-so-don]
 - [HẬU QUẢ] mở manh mối clue-ma-tung
 - [LỜI p-lac-phong.2]

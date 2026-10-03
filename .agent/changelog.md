@@ -1,5 +1,85 @@
 # Nhật Ký Thay Đổi (.agent/changelog.md)
 
+## [2026-10-04] Mở Rộng Dữ Liệu Thực Tế: Sổ Chi 19 CLB (`khoan_chi` 200 dòng) & Lịch Sử Thư Viện Của Nam (`quet_the_thu_vien` 37 dòng)
+
+### 1. Mở Rộng Bảng `khoan_chi` Lên 200 Dòng (Sổ Chi 19 CLB Toàn Trường):
+- **Thuật toán sinh dữ liệu nền (`themQuyVaChi` trong `nhieu-mvp.ts`)**:
+  - Sinh thêm 189 khoản chi nền ngẫu nhiên có hạt giống cố định (`seed: 2116`) cho 18 CLB còn lại (Văn nghệ, Guitar, Nhiếp ảnh, Tiếng Anh, Cờ vua, Bóng đá, v.v.).
+  - Nâng tổng số dòng của `khoan_chi` từ 11 dòng lên đúng **200 dòng** quy mô trường đại học thực thụ.
+- **Bảo toàn 100% logic cốt truyện & bài học SQL sư phạm**:
+  - Tuyệt đối không sinh thêm dòng nào cho quỹ `Q-TT` (chỉ đúng 6 dòng cốt truyện của CLB Thám Tử).
+  - Truy vấn `c-chi-tham-tu` (`WHERE clb = 'THAM_TU'`): vẫn trả về chính xác **6 dòng**.
+  - Các bài tổng hợp `SUM`, `AVG`, `HAVING` (`c-chi-theo-nguoi-duyet` và `c-chi-vuot-muc`) của Minh Anh và Khánh được bảo toàn trọn vẹn 100%.
+  - Cập nhật phản xạ của Tùng trong `tt-so-quy.md`: *"Cả sổ chi các CLB, hai trăm khoản. Mình chỉ cần quỹ CLB mình."*
+
+### 2. Mở Rộng Bảng `quet_the_thu_vien` Lên 37 Dòng (Lịch Sử Nam Từ Khi Vào Trường):
+- **Thuật toán sinh dữ liệu nền (`themQuetTheThuVien` trong `nhieu-mvp.ts`)**:
+  - Bổ sung 27 lượt quẹt thẻ của Nam trong năm học 2023–2024 (23 tối thứ Hai, 4 tối thứ Năm) từ khi Nam nhập học khóa K23.
+  - Cùng 5 lượt của Nam trong năm học 2024–2025 -> Tổng cộng Nam có **32 lượt** vào thư viện từ năm ngoái đến nay (27 tối thứ Hai, 5 tối thứ Năm).
+  - Giữ nguyên vẹn 5 lượt của Hà Vy (tân sinh viên K24 nhập học tháng 9). Tổng bảng đạt **37 dòng**.
+- **Bảo toàn 100% chứng cứ ngoại phạm & bài học sư phạm**:
+  - Thử thách `c-nam-thu-vien`: lọc theo Nam ra đúng **32 dòng**.
+  - Thử thách `c-nam-thu`: gom theo thứ vẫn giữ nguyên đúng **2 nhóm** (THU_HAI: 27 lần, THU_NAM: 5 lần).
+  - Thử thách `c-toi-07` (`WHERE ngay = '2024-10-07'`): tối mùng 7 chỉ có Nam và Hà Vy quẹt thẻ, kết quả ra đúng **2 dòng** chuẩn xác.
+  - Thử thách `c-vy-thu-vien`: vẫn trả về đúng **5 dòng**.
+  - Đồng bộ lời thoại nhân vật trong `11-vu-3-tranh-cai.md` và `tt-tranh-cai.md` phản ánh rõ thói quen 27 tối thứ Hai của Nam từ năm ngoái đến nay.
+
+### 3. Rà Soát & Kiểm Thử Toàn Diện:
+- Chạy `npm run noi-dung:sinh:mvp`: Tái sinh kịch bản `kich-ban.gen.ts`.
+- Chạy `npm run kiem-noi-dung:mvp`: 58/58 tệp đạt chuẩn, 39/39 câu SQL kiểm tra số dòng khớp 100%.
+- Chạy `npm run typecheck`: 0 lỗi TypeScript strict mode.
+- Chạy toàn bộ test suite Vitest: **128/128 test files passed**, **1052/1052 tests passed** (100% pass rate).
+
+
+
+## [2026-10-03] Phân Bổ Lại Meme & Chibi: Xóa Bỏ Dồn Cục, Tăng Tính Căng Thẳng Cho Vụ 5 & Cân Bằng Toàn Game
+
+### 1. Giữ Nguyên Vẹn Bộ Ba Meme Đỉnh Cao Ở Vụ 1:
+- `cg-minh-anh-dan-tay` (Gendo đan tay - Evangelion): Cảnh nhận lá thư nặc danh ở Mở đầu.
+- `cg-hop-doi-dau` (DIO vs Jotaro - JoJo): Cảnh đối đầu trước khi sửa câu truy vấn ở Buổi họp.
+- `cg-quan-bi-bac` (Kaiba bị đánh bật - Yu-Gi-Oh): Cảnh Quân bị bác bỏ kết luận.
+
+### 2. Dồn Hai Visual Phoenix Wright Sang Vụ 5 (Climax Mùa 1):
+- `chibi-so-lieu-day` (Phoenix Wright số liệu): Chuyển từ Buổi họp Vụ 1 sang Vụ 5 sau khi chạy xong câu lệnh tổng hợp `c-chi-vuot-muc` (số liệu đã ra!).
+- `cg-bang-chung-day` ("BẰNG CHỨNG ĐÂY!" - Phoenix Wright chỉ tay): Chuyển sang Vụ 5 tại nhịp đối chất quyết định `dc-khanh-so-do`, lúc lật ngược lời Khánh ("Sơ đồ tôi in thì các bạn đâu có tra!").
+
+### 3. Phân Bổ Lại Các Meme Sang Vụ 2, 3 và Việc Phụ:
+- **Take my money** (`chibi-khao-tra-da`): Chuyển từ quán trà đá Vụ 1 sang Vụ 3 (`v3-qua-2010`), lúc Tùng cuống cuồng chìa tiền mua quà 20/10 tặng bạn gái.
+- **Yamcha nằm hố** (`chibi-408-nam-bep`): Rút khỏi chỗ đè ảnh ở Mở đầu, chuyển sang Việc phụ Dẫn lạc (`23-phu-dan-lac.md`), lúc hai bạn chạy trốn bác Thịnh soi đèn pin về tới KTX lúc 23h, kiệt sức nằm bẹp xuống phòng 408.
+- **Think-Mark-Think** (`cg-nghi-di-tung-ha-vy`): Rút khỏi Mở đầu, chuyển sang Ngày 2 (`02-ngay-2.md`), lúc Tùng đoán mò "Tòa B hoặc Báo chí lấy hết kiểu gì chả trúng" bị Hà Vy mắng "Đừng cá... Tính đã!".
+- **Math Lady tính nhẩm** (`chibi-tung-tinh-nham`): Rút khỏi tối Ngày 4, chuyển sang đầu Vụ 2 (`tin-phong-tung`), lúc Tùng suy luận số người chuyển tiếp tin đồn ở căng tin.
+- **Saitama OK** (`chibi-duy-ok`): Rút khỏi tối Ngày 4, chuyển sang đầu Vụ 2 (`tin-phong-duy`), lúc Duy mở laptop tuân thủ quy trình.
+
+### 4. Giải Quyết Triệt Để Hiện Tượng Ảnh Đè Ảnh & Dồn Cục:
+- **Tối Ngày 4 (`04-ngay-4.md`)**: Rút 3/4 meme, chỉ giữ lại `chibi-duy-hop-banh` (Zelda Link giơ hộp bánh) làm điểm nhấn vui tươi, không còn tình trạng mỗi câu thoại nhảy một popup ảnh.
+- **Mở đầu (`00-mo-dau.md`)**: Tách `chibi-408-nam-bep` và `cg-nghi-di-tung-ha-vy`, xóa bỏ hoàn toàn hiện tượng 2 ảnh bật liền nhau không có thoại.
+- **Quán trà đá cuối Vụ 1 (`06-hop-va-ket.md`)**: Chỉ giữ lại `chibi-ghi-la-ghi` (Hà Vy nâng ly trà đá "True Story"), tạo nhịp kết thúc nhẹ nhàng, duyên dáng.
+
+## [2026-10-03] Tái Thiết Kế Trình Dựng Câu Lệnh: Bố Cục 3 Cột (Query Pipeline), Zoom To Màn Hình Laptop & Nút Xóa Lọc
+
+### 1. Phóng To Màn Hình Laptop (Maximized Laptop Viewport):
+- **Tăng diện tích mặt kính lên +64%**: Nâng kích thước mặt kính từ `1094×588` lên `1420×740` trong `canh-tra.ts`.
+- **Cắt giảm bàn phím thừa & xóa khoảng đen 2 bên**: Áp dụng `transform: scale(1.33)` cho ảnh nền phòng CLB, đẩy phần bàn phím thừa xuống đáy và mở rộng màn hình tràn sang hai bên.
+- **Dán giấy nhớ bám viền tự nhiên**: Căn chỉnh tọa độ `viTriGiay` bám sát mép viền ngoài của laptop.
+
+### 2. Bố Cục 3 Cột Logic (3-Column Query Pipeline):
+- **Cột 1: Nguồn Dữ Liệu (`FROM` / `JOIN`)**: Chọn bảng / phiếu nguồn, khối nối bảng (`JOIN ON`) và chọn cột (`SELECT`).
+- **Cột 2: Lọc Dòng, Gom Nhóm & Tính Toán (`WHERE` / `GROUP BY` / `AGG`)**: 
+  - Điều kiện lọc dòng (`WHERE`) có thể thêm/bớt linh hoạt.
+  - Gom nhóm (`GROUP BY`) chọn cột gom.
+  - Tính toán hàm tổng hợp (`COUNT`, `SUM`, `AVG`).
+- **Cột 3: Hậu Xử Lý & Sắp Xếp (`HAVING` / `ORDER BY` / `RUN`)**:
+  - Lọc nhóm (`HAVING`) với ngưỡng giá trị.
+  - Sắp xếp thứ tự (`ORDER BY` tăng/giảm).
+
+### 3. Cải Tiến UX Khối Lọc & Nút Làm Sạch (TRIM/LOWER):
+- **Bổ sung nút `×` (Bỏ lọc / Bỏ điều kiện)**:
+  - Cho phép người chơi bấm `×` để gỡ bỏ bộ lọc ngay lập tức ở cả màn tra (`ManTraV7`) và màn tổng hợp (`ManTongHopMvp`), không bị kẹt khi chỉ còn 1 điều kiện.
+  - Bổ sung nút `×` bỏ điều kiện giữ nhóm `HAVING`.
+- **Đổi "y nguyên" thành "để nguyên"**:
+  - Chuyển `khong: 'y nguyên'` thành `khong: 'để nguyên'` trong `TEN_CHUAN_HOA`.
+  - Thiết kế lại style `.v7-o--got`: loại bỏ khối xám xịt dày cộp khi chưa bật, chuyển thành nút tiện ích tinh tế có icon `✨` và viền mảnh nhẹ nhàng, chỉ sáng rực rỡ khi kích hoạt chuẩn hóa.
+
 ## [2026-10-03] Mở Rộng Dữ Liệu Thực Tế: Seeding Bảng `danh_sach_lop_cu` Lên 400 Dòng & Rà Soát Hệ Thống
 
 ### 1. Seeding Thực Tế Bảng `danh_sach_lop_cu` (Từ 39 lên 400 dòng):

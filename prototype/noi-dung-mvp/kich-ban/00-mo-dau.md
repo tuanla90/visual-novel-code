@@ -75,7 +75,6 @@
 
 - [LỜI md-01-ktx.2]
 - [ẢNH chibi-408-vali]
-- [ẢNH chibi-408-nam-bep]
 - [ĐI TỚI md-03-toa-b]
 
 ### md-03-toa-b — Sảnh tòa B: cái hộp tôn cũ {cảnh: sanh-toa-b}
@@ -179,7 +178,6 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
 - [LỜI md-11-la-thu.2]
 - [HẬU QUẢ] mở manh mối clue-chu-ky-h
 - [LỜI md-11-la-thu.3a]
-- [ẢNH cg-nghi-di-tung-ha-vy]
 - [LỜI md-11-la-thu.3b]
 
 ### md-10-soi-ban-do — Quan sát Tùng: tờ bản đồ trên tay {cảnh: san-ktx-trung-thu}

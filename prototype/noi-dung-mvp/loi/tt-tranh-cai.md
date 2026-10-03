@@ -11,16 +11,17 @@
 
 ## c-nam-thu-vien.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Tên trên bản ghi viết đúng như giấy nhớ: Nam.
-- Khi chạy ra 10 dòng: **tung** (gai-dau): Cả tờ, của cả hai người. Mình cần riêng của Nam.
-- Khi đúng: **nam** (neutral): Năm lần. Đúng là của tớ.
+- Khi chạy ra 37 dòng: **tung** (gai-dau): Cả tờ, ba mươi bảy lượt của cả hai người từ trước tới giờ. Mình cần riêng của Nam.
+- Khi đúng: **nam** (neutral): Ba mươi hai lần. Đúng là của tớ từ năm ngoái tới giờ.
 
 ## c-toi-07.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Ngày trên bản ghi viết dạng năm-tháng-ngày.
 - Khi chạy ra 1 dòng: **ha-vy** (thinking): Một dòng thôi à? Tối đó tớ cũng ở đấy mà.
-- Khi chạy ra 5 dòng: **tung** (gai-dau): Năm lần. Mình chỉ cần tối mùng 7.
+- Khi chạy ra 32 dòng: **tung** (gai-dau): Ba mươi hai lần. Mình chỉ cần tối mùng 7.
 - Khi đúng: **ha-vy** (smile): Hai dòng. Tối mùng 7, cả hai đứa.
 
 ## c-vy-thu-vien.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Tên tớ trên bản ghi có dấu cách, viết đúng như giấy nhớ.
-- Khi chạy ra 10 dòng: **tung** (gai-dau): Cả tờ. Mình cần riêng của Hà Vy.
+- Khi chạy ra 37 dòng: **tung** (gai-dau): Cả tờ. Mình cần riêng của Hà Vy.
 - Khi đúng: **ha-vy** (neutral): Năm lần. Bốn tối thứ Hai.
+
