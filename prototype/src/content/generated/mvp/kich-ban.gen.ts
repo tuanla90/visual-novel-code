@@ -150,7 +150,7 @@ const GOC = {
         "chuaQuen": "Anh khóa trên",
         "nam": "Năm hai",
         "nganh": "Hành chính học",
-        "cauNoi": "Chìa khóa, tủ hồ sơ với cái máy tính cũ đều tớ giữ.",
+        "cauNoi": "Đồ ra khỏi phòng là phải có tên.",
         "loi": "Ở CLB từ năm nhất. Giữ chìa khóa phòng, tủ hồ sơ và sổ tài sản. Việc gì cũng làm theo đúng quy trình, giấy tờ nào cũng biết nằm ở ngăn nào."
       }
     },
@@ -1718,6 +1718,202 @@ const GOC = {
       ]
     },
     {
+      "id": "md-10-gap-duy",
+      "title": "Trung thu: người chơi tự tới chào anh đang buộc chân bàn gấp",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "explore",
+          "id": "kp-soi-duy",
+          "kieu": "quan-sat",
+          "nhanVat": "duy",
+          "diem": [
+            {
+              "sprite": "vung:chia-khoa",
+              "x": 45,
+              "y": 90,
+              "rong": 14,
+              "chuoi": "md-10-soi-duy-chia",
+              "sau": [],
+              "nhan": "Chùm chìa khóa"
+            },
+            {
+              "sprite": "vung:ho-so",
+              "x": 31,
+              "y": 68,
+              "rong": 22,
+              "chuoi": "md-10-soi-duy-ho-so",
+              "sau": [],
+              "nhan": "Tập bìa giấy"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Rảnh tay thì giữ hộ anh cái chân bàn này với. Buộc mãi nó vẫn sụp."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Vâng, để em giữ."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "smile",
+          "text": "Được rồi đấy. Anh là Duy, năm hai, ở CLB từ năm nhất."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Anh đi liên hoan mà cũng mang cả tập hồ sơ ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Sổ mượn đồ. Bàn này của phòng CLB, mai phải trả đủ bốn chân."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "smile",
+          "text": "Trà ở đầu bàn, mấy đứa tự rót nhé."
+        }
+      ]
+    },
+    {
+      "id": "md-10-soi-duy-chia",
+      "title": "Quan sát Duy: chùm chìa khóa ở thắt lưng",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Chùm chìa khóa móc ở thắt lưng. Cái nào cũng dán một mẩu băng dính ghi chữ.)"
+        }
+      ]
+    },
+    {
+      "id": "md-10-soi-duy-ho-so",
+      "title": "Quan sát Duy: tập bìa giấy kẹp nách",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Tập bìa giấy kẹp nách, mép vuốt phẳng phiu. Đi liên hoan mà vẫn mang theo.)"
+        }
+      ]
+    },
+    {
+      "id": "md-10-gap-ha-vy",
+      "title": "Trung thu: người chơi tự tới chào bạn nữ đứng tách ra cạnh bảng tin",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "explore",
+          "id": "kp-soi-ha-vy",
+          "kieu": "quan-sat",
+          "nhanVat": "ha-vy",
+          "diem": [
+            {
+              "sprite": "vung:sach",
+              "x": 57,
+              "y": 56,
+              "rong": 26,
+              "chuoi": "md-10-soi-vy-sach",
+              "sau": [],
+              "nhan": "Quyển sách"
+            },
+            {
+              "sprite": "vung:kinh",
+              "x": 52,
+              "y": 24,
+              "rong": 30,
+              "chuoi": "md-10-soi-vy-kinh",
+              "sau": [],
+              "nhan": "Cặp kính"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Cậu nhìn tớ lâu thế. Từ sách tới kính rồi đấy."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "À… cậu cũng vào CLB à?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Mới đăng ký. Tớ là Hà Vy, Toán ứng dụng."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Hôm Ngày hội tớ không thấy cậu ở bàn CLB."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Tớ điền form trên mạng."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Toán! Thế là tớ có người cho mượn vở rồi."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Mượn thì được, chép thì không."
+        }
+      ]
+    },
+    {
+      "id": "md-10-soi-vy-sach",
+      "title": "Quan sát Hà Vy: quyển sách bọc giấy báo",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Bìa sách bọc giấy báo, gáy viết tay: \"Sherlock Holmes, tập hai\".)"
+        }
+      ]
+    },
+    {
+      "id": "md-10-soi-vy-kinh",
+      "title": "Quan sát Hà Vy: cặp kính",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Gọng kính mảnh. Bạn ấy nhìn ai cũng lâu hơn người khác một nhịp.)"
+        }
+      ]
+    },
+    {
       "id": "md-10-trung-thu",
       "title": "Sân KTX, thứ Ba 17/09 19h: CLB gặp mặt lần đầu",
       "canh": "san-ktx-trung-thu",
@@ -1741,48 +1937,54 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Hà Vy đứng ở mép phải sân, không che bàn bánh, đèn cá chép hay gian Robotics. Những người khác chỉ hiện trong thoại."
+          "text": "Ảnh nền đã có dây đèn lồng, bàn bánh, đèn cá chép, gian Robotics: lời dẫn không tả lại (04/10). Sau câu Minh Anh, người chơi tự bấm vào Duy (cạnh bàn bánh) và Hà Vy (mép phải sân) để làm quen."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Dây đèn lồng vắt ngang sân. Bên trái, bàn CLB Thám Tử kê cạnh khay bánh nướng. Tiếng trống lân tập dồn từng nhịp."
+          "text": "Tiếng trống lân tập dồn từng nhịp, át cả tiếng nói chuyện."
         },
         {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "happy",
-          "text": "Hai em tới đúng giờ. Chị là Minh Anh, chủ nhiệm CLB. Hôm nay làm quen đã."
+          "text": "Hai em tới đúng giờ. Chị là Minh Anh, chủ nhiệm CLB."
         },
         {
           "type": "line",
-          "speaker": "duy",
-          "expression": "smile",
-          "text": "Tớ là Duy, năm hai Hành chính học. Tớ dựng bàn với giữ đồ. Ai uống trà thì tự rót nhé."
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "happy",
-          "text": "Ơ, hôm Ngày hội tớ không thấy cậu nhỉ?"
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
+          "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Tớ đăng ký qua form online. Tớ là Hà Vy, học Toán ứng dụng."
+          "text": "Mọi người tới cả rồi đấy. Đi chào một vòng đi, lát chị gọi."
         },
         {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "happy",
-          "text": "Toán! Thế là tớ có người cho mượn vở rồi."
+          "type": "task",
+          "text": "Đi chào mọi người trong CLB"
         },
         {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "neutral",
-          "text": "Mượn thì được, chép thì không."
+          "type": "explore",
+          "id": "kp-lam-quen",
+          "diem": [
+            {
+              "sprite": "nv:duy",
+              "x": 30,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "md-10-gap-duy",
+              "sau": [],
+              "nhan": "Anh cạnh bàn bánh",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "nv:ha-vy",
+              "x": 86,
+              "y": 100,
+              "rong": 14,
+              "chuoi": "md-10-gap-ha-vy",
+              "sau": [],
+              "nhan": "Bạn nữ đeo kính",
+              "dau": "chinh"
+            }
+          ]
         },
         {
           "type": "line",
@@ -2205,9 +2407,9 @@ const GOC = {
         },
         {
           "type": "reminder",
-          "speaker": "duy",
+          "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Ngăn dưới tủ tớ chưa kiểm kê tới."
+          "text": "Ngăn dưới cùng của tủ hồ sơ từ năm ngoái chưa ai mở."
         },
         {
           "type": "line",
@@ -2217,20 +2419,25 @@ const GOC = {
         },
         {
           "type": "line",
-          "speaker": "narrator",
-          "text": "Phòng nhỏ, một bàn dài, một tủ hồ sơ. Bộ máy bàn phủ bụi ở góc. Duy mở ngăn tủ dưới cùng; một đám bụi bay lên làm Tùng ho sặc."
-        },
-        {
-          "type": "line",
-          "speaker": "duy",
+          "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Tớ giữ chìa khóa phòng, tủ và laptop cũ. Ngăn dưới chưa kiểm kê. Mở xem nào."
+          "text": "Hôm nay dọn tủ hồ sơ. Ngăn dưới cùng từ năm ngoái chưa ai đụng tới."
         },
         {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "day-kinh",
-          "text": "Hôm Trung thu mình thấy đôi dép bé tí dưới chiếc đèn. Ở đây cũng vậy thôi: nhìn chỗ người ta không để ý."
+          "type": "explore",
+          "id": "kp-phong-md11",
+          "diem": [
+            {
+              "sprite": "vung:tu-ho-so",
+              "x": 94,
+              "y": 56,
+              "rong": 11,
+              "chuoi": "md-11-tu",
+              "sau": [],
+              "nhan": "Tủ hồ sơ",
+              "dau": "chinh"
+            }
+          ]
         },
         {
           "type": "show-document",
@@ -2260,6 +2467,36 @@ const GOC = {
         {
           "type": "goto",
           "to": "md-11-la-thu"
+        }
+      ]
+    },
+    {
+      "id": "md-11-tu",
+      "title": "Phòng CLB: ngăn dưới cùng của tủ hồ sơ",
+      "canh": "phong-clb",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Ngăn dưới cùng không kéo ra được. Khóa.)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Duy tháo chùm chìa ở thắt lưng, dò mấy mẩu băng dính, tới chìa thứ ba mới mở được. Một đám bụi bay lên làm Tùng ho sặc."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Ngăn này anh chưa kiểm kê. Cứ lôi hết ra bàn."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "day-kinh",
+          "text": "Hôm Trung thu mình thấy đôi dép bé tí dưới chiếc đèn. Ở đây cũng vậy thôi: nhìn chỗ người ta không để ý."
         }
       ]
     },
@@ -2324,7 +2561,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Tớ vừa nhận mail. Cả sao kê quỹ cũng phải gửi cho Hội sinh viên kiểm tra."
+          "text": "Em vừa nhận mail, chị ạ. Cả sao kê quỹ cũng phải gửi cho Hội sinh viên kiểm tra."
         },
         {
           "type": "image",

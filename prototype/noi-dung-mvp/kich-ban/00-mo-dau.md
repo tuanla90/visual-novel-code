@@ -108,10 +108,44 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
 - [LỜI md-09-ngay-hoi.3]
 - [ĐI TỚI md-10-trung-thu]
 
+### md-10-gap-duy — Trung thu: người chơi tự tới chào anh đang buộc chân bàn gấp {cảnh: san-ktx-trung-thu}
+
+- [KHÁM PHÁ kp-soi-duy · quan sát duy]
+  - vung:chia-khoa · x 45% · y 90% · rộng 14% → md-10-soi-duy-chia · nhãn: Chùm chìa khóa
+  - vung:ho-so · x 31% · y 68% · rộng 22% → md-10-soi-duy-ho-so · nhãn: Tập bìa giấy
+- [LỜI md-10-gap-duy.2]
+
+### md-10-soi-duy-chia — Quan sát Duy: chùm chìa khóa ở thắt lưng {cảnh: san-ktx-trung-thu}
+
+- [LỜI md-10-soi-duy-chia.1]
+
+### md-10-soi-duy-ho-so — Quan sát Duy: tập bìa giấy kẹp nách {cảnh: san-ktx-trung-thu}
+
+- [LỜI md-10-soi-duy-ho-so.1]
+
+### md-10-gap-ha-vy — Trung thu: người chơi tự tới chào bạn nữ đứng tách ra cạnh bảng tin {cảnh: san-ktx-trung-thu}
+
+- [KHÁM PHÁ kp-soi-ha-vy · quan sát ha-vy]
+  - vung:sach · x 57% · y 56% · rộng 26% → md-10-soi-vy-sach · nhãn: Quyển sách
+  - vung:kinh · x 52% · y 24% · rộng 30% → md-10-soi-vy-kinh · nhãn: Cặp kính
+- [LỜI md-10-gap-ha-vy.2]
+
+### md-10-soi-vy-sach — Quan sát Hà Vy: quyển sách bọc giấy báo {cảnh: san-ktx-trung-thu}
+
+- [LỜI md-10-soi-vy-sach.1]
+
+### md-10-soi-vy-kinh — Quan sát Hà Vy: cặp kính {cảnh: san-ktx-trung-thu}
+
+- [LỜI md-10-soi-vy-kinh.1]
+
 ### md-10-trung-thu — Sân KTX, thứ Ba 17/09 19h: CLB gặp mặt lần đầu {cảnh: san-ktx-trung-thu}
 
 - [LỜI md-10-trung-thu.1]
 - [LỜI md-10-trung-thu.2]
+- [KHÁM PHÁ kp-lam-quen]
+  - nv:duy · x 30% · y 100% · rộng 15% → md-10-gap-duy · dấu: ! · nhãn: Anh cạnh bàn bánh
+  - nv:ha-vy · x 86% · y 100% · rộng 14% → md-10-gap-ha-vy · dấu: ! · nhãn: Bạn nữ đeo kính
+- [LỜI md-10-trung-thu.2b]
 - [KHÁM PHÁ kp-soi-tung · quan sát tung · Hà Vy soi]
   - vung:ban-do · x 82% · y 56% · rộng 24% → md-10-soi-ban-do · nhãn: Tờ giấy trên tay
   - vung:ao · x 50% · y 44% · rộng 22% → md-10-soi-ao · nhãn: Cái áo
@@ -161,12 +195,18 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
 ### md-11-phong-clb — Thứ Hai 23/09, 16h: dọn phòng CLB {cảnh: phong-clb}
 
 - [LỜI md-11-phong-clb.1]
+- [KHÁM PHÁ kp-phong-md11]
+  - vung:tu-ho-so · x 94% · y 56% · rộng 11% → md-11-tu · dấu: ! · nhãn: Tủ hồ sơ
 - [HIỆN TÀI LIỆU doc-so-chi-linh]
 - [TRA SỔ kiem-hai-lan · tâm đắc]
 - [LỜI md-11-phong-clb.2]
 - [HIỆN TÀI LIỆU doc-bao-cao-yeu]
 - [LỜI md-11-phong-clb.3]
 - [ĐI TỚI md-11-la-thu]
+
+### md-11-tu — Phòng CLB: ngăn dưới cùng của tủ hồ sơ {cảnh: phong-clb}
+
+- [LỜI md-11-tu.1]
 
 ### md-11-la-thu — Phòng CLB, 16h40: bản sao lá thư và giấy mời {cảnh: phong-clb}
 

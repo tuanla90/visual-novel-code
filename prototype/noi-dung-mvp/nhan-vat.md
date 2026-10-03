@@ -57,7 +57,7 @@
 - Thường ở: T2–T7 13:30–18:00 → nha-clb
 - Năm: Năm hai
 - Ngành: Hành chính học
-- Câu nói: Chìa khóa, tủ hồ sơ với cái máy tính cũ đều tớ giữ.
+- Câu nói: Đồ ra khỏi phòng là phải có tên.
 - Giới thiệu: Ở CLB từ năm nhất. Giữ chìa khóa phòng, tủ hồ sơ và sổ tài sản. Việc gì cũng làm theo đúng quy trình, giấy tờ nào cũng biết nằm ở ngăn nào.
 
 ### quan — Quân
