@@ -56,7 +56,7 @@ export const TEN_TOI_DA = 20;
 
 /**
  * Tên gọi nam Việt Nam phổ biến cho nút xúc xắc. Đã bỏ: tên nhân vật trong truyện (Tùng, Quân, Duy, Hiếu, Đạt,
- * Cường, Thịnh, Quang, Khải, Đức, Nam…) và mọi tên bắt đầu bằng H (vụ án xoay quanh chữ ký "[H.]" — người chơi tên H
+ * Cường, Thịnh, Quang, Đức, Nam…) và mọi tên bắt đầu bằng H (vụ án xoay quanh chữ ký "[H.]" — người chơi tên H
  * sẽ tự thành nghi phạm). `tenNgauNhien` lọc thêm theo `nhan-vat.md` / tên cấm lúc chạy, phòng khi nội dung đổi.
  */
 export const TEN_XUC_XAC: readonly string[] = [

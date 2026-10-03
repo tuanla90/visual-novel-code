@@ -14,7 +14,7 @@
 - Tiêu đề: Hộp tòa B, mở 9h sáng thứ Hai
 - Giá trị cho trình dựng: B
 - Nguồn: Lời {{nv.bac-tu.trong-cau}}, sảnh tòa B
-- Nội dung: Bác và cô phụ trách mở hộp 9h sáng thứ Hai; thư nằm trên cùng. Từ 7 giờ tới lúc mở hộp, ra vào tòa B chỉ có sinh viên các lớp sinh hoạt ở tòa này.
+- Nội dung: Bác Thịnh và cô Lan mở hộp 9h sáng thứ Hai; thư nằm trên cùng. Từ 7 giờ tới lúc mở hộp, ra vào tòa B chỉ có sinh viên các lớp sinh hoạt ở tòa này.
 
 ### clue-bao-chi-k24 — [Báo chí K24]
 - Tiêu đề: Thẻ lịch khoa Báo chí K24 mắc ở khe hộp
@@ -30,12 +30,12 @@
 ### clue-can-ma-va-can-cu — [Cần mã và căn cứ]
 - Tiêu đề: Cần mã và căn cứ
 - Nguồn: Quy chế phiếu gửi, Phòng CTSV
-- Nội dung: Cô phụ trách chỉ trả lời có/không cho một mã cụ thể khi có căn cứ bằng văn bản.
+- Nội dung: Cô Lan chỉ trả lời có/không cho một mã cụ thể khi có căn cứ bằng văn bản.
 
 ### clue-phieu-tra-cuu — [Phiếu tra cứu]
 - Tiêu đề: Phiếu yêu cầu tra cứu
 - Nguồn: {{nv.co-lan}} ký, {{nv.quan}} giám sát, Phòng CTSV
-- Nội dung: Cô Lan ký, anh Quân (Hội sinh viên) ký giám sát. Căn cứ: hai lớp BC24A, BC23A. Mở bảng sinh viên, bốn cột: mã, họ đệm, tên, mã lớp. Chỉ để lập căn cứ; tra sổ niêm phong là việc của cô phụ trách.
+- Nội dung: Cô Lan ký, anh Quân (Hội sinh viên) ký giám sát. Căn cứ: hai lớp BC24A, BC23A. Mở bảng sinh viên, bốn cột: mã, họ đệm, tên, mã lớp. Chỉ để lập căn cứ; tra sổ niêm phong là việc của cô Lan.
 
 ### clue-loi-chu-cuong — [Lời chú Cường]
 - Tiêu đề: Phong bì nâu trao tay 6:45 sáng thứ Hai
@@ -47,13 +47,13 @@
 - Ảnh: doc-so-niem-phong-trang
 - Loại trừ: ev-hai-ma
 - Gạch: SV240228
-- Nguồn: Cô phụ trách hộp kiến nghị tra sổ, qua Phòng CTSV
+- Nguồn: {{nv.co-lan}} tra sổ niêm phong hộp kiến nghị, Phòng CTSV
 - Nội dung: Nguồn độc lập cho biết ai là người nộp; chưa cho biết ai viết.
 
 ### clue-ten-tep — [Tên tệp]
 - Tiêu đề: Chân trang lá thư: tên tệp
 - Giá trị cho trình dựng: kien-nghi
-- Nguồn: {{nv.thay-khai}}, phòng máy
+- Nguồn: {{nv.co-hanh}}, Phòng Đào tạo
 - Nội dung: Bản in từ máy phòng máy có dòng chân trang ghi tên tệp. Chân trang bản chụp lá thư bị xén, chỉ đọc được đoạn đầu: "kien-nghi-…".
 
 ### clue-loi-nhan-linh-1 — [Mẩu giấy trong sổ]

@@ -1,6 +1,6 @@
 # Lời · kich-ban/04-ngay-4.md
 
-<!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/04-ngay-4.md. [DÀN DỰNG] không hiện cho người chơi. Câu hỏi [RẼ NHÁNH] nằm ở khung. Thầy Khải không nói tài khoản là của ai (tên chỉ đến từ dữ liệu). -->
+<!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/04-ngay-4.md. [DÀN DỰNG] không hiện cho người chơi. Câu hỏi [RẼ NHÁNH] nằm ở khung. Cô Hạnh không nói ai đã dùng tài khoản chung. -->
 
 ## n4-mo.1
 > NHIỆM VỤ: Mang hai mã sang Phòng Công tác sinh viên
@@ -17,7 +17,7 @@
 - **ha-vy** (smile): Không. Tớ chỉ đếm bậc cầu thang cho đỡ run thôi.
 
 ## n4-ctsv.1v
-- **co-lan** (neutral): Cô phụ trách tra rồi. SV240317: có trong sổ. SV240228: không có.
+- **co-lan** (neutral): Cô tra rồi. SV240317: có trong sổ. SV240228: không có.
 - **player**: Vậy SV240317 là người nộp thư ạ?
 - **co-lan** (neutral): Cô chỉ nói được là mã đó có trong sổ niêm phong. Thế thôi.
 - **tung** (worried): SV240228 là Hiếu… không có à? Thế là tớ cá trượt rồi.
@@ -29,10 +29,10 @@
 
 ## n4-phong-may.1
 > NHIỆM VỤ: Lá thư được in từ tài khoản nào?
-> NHẮC VIỆC ha-vy (thinking): Chân trang thư là tên tệp. Nhật ký in sẽ ghi ai in nó.
-- **thay-khai** (neutral): Máy in ở đây nhớ hết: tài khoản nào in, lúc nào, tệp gì, mấy trang.
-- **thay-khai** (neutral): Máy in là của phòng thầy, nên phiếu thì thầy ký. Thầy mở cho các em đúng bảng nhật ký in, chỉ để lập căn cứ.
-- **thay-khai** (neutral): Bản in từ máy ở đây có dòng chân trang ghi tên tệp. Thư của các em có không?
+> NHẮC VIỆC ha-vy (thinking): Chân trang thư là tên tệp. Nhật ký in sẽ ghi tài khoản nào in nó.
+- **narrator**: Phòng Đào tạo ngay cạnh Phòng Công tác sinh viên. Cô Hạnh mở sổ yêu cầu tra cứu.
+- **co-hanh** (neutral): Máy in của trường ghi tài khoản, giờ in, tên tệp và số trang. Cô cho các em xem đúng bảng nhật ký in để lập căn cứ.
+- **co-hanh** (neutral): Bản in có dòng chân trang ghi tên tệp. Thư của các em có không?
 - **player**: Có ạ. Nhưng bản chụp bị xén mép, chỉ đọc được đoạn đầu: kien-nghi…
 - **tung** (happy): Hoài nộp thư thì chắc Hoài in chứ gì!
 - **ha-vy** (neutral): Thử thì biết.
@@ -42,10 +42,16 @@
 - **ha-vy** (thinking): Không phải mã sinh viên. Đây là tài khoản dùng chung của một CLB.
 - **tung** (worried): Robotics á? Thế người in không phải Hoài.
 - **ha-vy** (thinking): Thư in từ tài khoản của CLB Robotics. Người mang đi nộp là Hoài. Hai việc, có khi là hai người.
-- **thay-khai** (neutral): Tài khoản ấy những ai dùng thì thầy không nói. Các em cũng chưa cần biết, đúng không?
-- **tung** (chi-tay): Tối Chủ nhật vào phòng máy phải ký sổ mà thầy. Mở sổ ra là biết ngay ai ngồi đây!
-- **thay-khai** (neutral): Sổ ấy ghi tên từng người. Viết thư kiến nghị không phải là lỗi, thầy không mở sổ để truy người viết. Bao giờ có chuyện đáng mở thì phải có người đủ thẩm quyền ký.
+- **co-hanh** (neutral): Nhật ký chỉ ghi tài khoản dùng chung. Cô chưa có căn cứ để nói ai đã ngồi máy.
+- **tung** (chi-tay): Tối Chủ nhật vào phòng máy phải ký sổ mà cô. Mở sổ ra là biết ngay ai ngồi đây!
+- **co-hanh** (neutral): Sổ ký giấy do bác bảo vệ tòa B giữ. Các em hỏi bác Thịnh, nhưng muốn mở sổ phải có chữ ký người có thẩm quyền.
 > NHẮC VIỆC ha-vy (thinking): Thư in từ tài khoản CLB Robotics. Người nộp là Hoài. Hai việc, có khi là hai người.
+
+## n4-sanh-toa-b.1
+- **narrator**: Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đang ngồi ở bàn trực.
+- **tung** (chi-tay): Bác ơi, cho bọn cháu xem sổ ký vào phòng máy tối Chủ nhật được không ạ?
+- **bac-tu** (neutral): Sổ ghi tên người. Không có chữ ký người có thẩm quyền thì bác không mở.
+- **ha-vy** (neutral): Vâng ạ. Bọn cháu chỉ ghi lại nhật ký in trước.
 
 ## n4-ve.1
 - **ha-vy** (neutral): Chị ơi, sổ niêm phong có mã của Hoài. Mã của Hiếu thì không.
@@ -83,7 +89,7 @@
 
 ## n4-ctsv-an.1
 - **narrator**: Trên cùng khay giấy là phiếu yêu cầu tra cứu của CLB, chữ ký cô Lan còn tươi mực.
-- **ha-vy** (neutral): Phiếu mình đây rồi. Có chữ ký thì cô phụ trách mới mở sổ.
+- **ha-vy** (neutral): Phiếu mình đây rồi. Có chữ ký thì cô Lan mới mở sổ.
 
 ## n4-bd-toa-b-an.1
 - **narrator**: Trên ghế đá có cái ca nhựa và ấm trà của bác Thịnh, nắp còn ấm.

@@ -10,10 +10,10 @@
 > Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, năm đơn cộng lại 2.670.000 đồng. Giấy đề ngày 11/10, lập theo danh sách chủ tịch Hội sinh viên chuyển xuống; {{nv.quan}} ký. Kèm bản sổ đặt hàng của xưởng.
 > Nam nói mình chỉ đặt hai đơn: cảm biến dò line và bánh xe.
 
-### doc-phien-dang-nhap — Bảng phiên đăng nhập do thầy Khải xuất
+### doc-phien-dang-nhap — Bảng phiên đăng nhập do cô Hạnh xuất
 - Tiêu đề: Bản xuất nguyên bản, có dấu xác nhận
 - Ảnh: doc-phien-dang-nhap
-- Nguồn: {{nv.thay-khai}} (phòng máy, nơi đặt máy chủ), theo đề nghị của {{nv.thay-quang}}
+- Nguồn: {{nv.co-hanh}} (Phòng Đào tạo, nơi quản lý máy chủ của trường), theo đề nghị của {{nv.thay-quang}}
 - Nội dung hiển thị:
 > Mỗi phiên đăng nhập của phần mềm đặt hàng: mã phiên, máy, ngày, giờ. Có cả phiên không tạo đơn.
 > Tài khoản quản trị của Nam đang bị khóa; bảng này không qua tay Nam.

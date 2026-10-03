@@ -79,18 +79,18 @@
 - Giới thiệu: Trực cổng ký túc xá, biết mặt gần hết sinh viên trong khu. Nhớ nhiều chuyện cũ của trường, kể cả thời CLB Thám Tử còn nổi tiếng.
 
 ### bac-tu — Bác Thịnh
-- Vai: Bảo vệ giảng đường B. Cùng cô phụ trách mở hộp kiến nghị lúc 9h sáng thứ Hai.
+- Vai: Bảo vệ tòa B, giữ sổ ký giấy vào phòng máy tối Chủ nhật. Cùng cô Lan mở hộp kiến nghị lúc 9h sáng thứ Hai.
 - Biểu cảm: neutral, smile
 - Danh xưng: Bảo vệ giảng đường B
 - Không xưng tên: có
 - Khi chưa quen: Bác bảo vệ
-- Lịch: Trực sảnh tòa B từ thứ Hai tới thứ Bảy, mở cửa 7 giờ sáng, khóa các phòng học 9 giờ tối; lối lên thư viện tầng ba để tới 11 giờ đêm rồi mới khóa sảnh. Chủ nhật chỉ ghé buổi tối để khóa cửa.
-- Thường ở: T2–T7 07:00–23:00 → toa-b; CN 20:00–23:00 → toa-b
+- Lịch: Trực sảnh tòa B từ thứ Hai tới thứ Bảy, mở cửa 7 giờ sáng, khóa các phòng học 9 giờ tối; lối lên thư viện tầng ba để tới 11 giờ đêm rồi mới khóa sảnh. Chủ nhật ghé từ 8 giờ tối, giữ sổ ký phòng máy và khóa sảnh lúc 23 giờ 30.
+- Thường ở: T2–T7 07:00–23:00 → toa-b; CN 20:00–23:30 → toa-b
 - Câu nói: Mép hộp sắc đấy, đừng thò tay vào.
 - Giới thiệu: Trực ở chân cầu thang tòa B. Ít lời, giờ giấc đâu ra đấy, việc gì không tận mắt thấy thì không nói.
 
 ### co-hanh — Cô Hạnh
-- Vai: Phòng Đào tạo. Tạo tài khoản tra cứu của CLB trên laptop (ngày 2): chỉ xem bảng lớp; bảng có thông tin cá nhân phải có phiếu yêu cầu tra cứu.
+- Vai: Phòng Đào tạo, quản lý tài khoản, máy in và máy chủ của trường. Tạo tài khoản tra cứu của CLB trên laptop (ngày 2): chỉ xem bảng lớp; bảng có thông tin cá nhân phải có phiếu yêu cầu tra cứu.
 - Biểu cảm: neutral, smile
 - Danh xưng: Phòng Đào tạo
 - Không xưng tên: có
@@ -98,10 +98,10 @@
 - Lịch: Giờ hành chính ở Phòng Đào tạo, tòa hành chính.
 - Thường ở: T2–T6 08:00–17:00 → toa-hanh-chinh
 - Câu nói: Tài khoản này chỉ xem được bảng lớp. Muốn xem gì thêm thì mang phiếu sang.
-- Giới thiệu: Cán bộ Phòng Đào tạo, phụ trách dữ liệu sinh viên. Cấp quyền rất chặt: xin gì cho nấy, dùng xong là khóa lại.
+- Giới thiệu: Cán bộ Phòng Đào tạo, phụ trách tài khoản, máy in và máy chủ của trường. Cấp quyền rất chặt: xin gì cho nấy, dùng xong là khóa lại.
 
 ### co-lan — Cô Lan
-- Vai: Phòng Công tác sinh viên (CTSV). Gọi Minh Anh lên nhận thông báo; giải thích quy chế phiếu gửi.
+- Vai: Phòng Công tác sinh viên (CTSV). Gọi Minh Anh lên nhận thông báo; giải thích quy chế phiếu gửi, giữ sổ niêm phong hộp kiến nghị và cùng bác Thịnh mở hộp lúc 9h sáng thứ Hai.
 - Biểu cảm: neutral, smile
 - Danh xưng: Phòng Công tác sinh viên
 - Không xưng tên: có
@@ -109,7 +109,7 @@
 - Lịch: Giờ hành chính ở Phòng Công tác sinh viên, tòa hành chính.
 - Thường ở: T2–T6 08:00–17:00 → toa-hanh-chinh
 - Câu nói: Sổ đó niêm phong. Cô cũng không được tự mở.
-- Giới thiệu: Cán bộ Phòng Công tác sinh viên, người giải thích cho CLB các quy chế về phiếu gửi và hộp kiến nghị.
+- Giới thiệu: Cán bộ Phòng Công tác sinh viên, giữ sổ niêm phong hộp kiến nghị và giải thích cho CLB các quy chế về phiếu gửi.
 
 ### thay-quang — Thầy Quang
 - Vai: Phó hiệu trưởng phụ trách sinh viên. Chủ trì buổi họp rà soát, quyết định.
@@ -119,17 +119,6 @@
 - Khi chưa quen: Thầy chủ trì
 - Câu nói: Các em còn gì trình thêm không?
 - Giới thiệu: Chủ trì buổi họp rà soát phòng CLB. Nghe hết các bên rồi mới quyết, và chỉ quyết dựa trên căn cứ.
-
-### thay-khai — Thầy Khải
-- Vai: Quản lý phòng máy.
-- Biểu cảm: neutral
-- Danh xưng: Quản lý phòng máy
-- Không xưng tên: có
-- Khi chưa quen: Thầy phòng máy
-- Lịch: Ở phòng máy từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật trực cho sinh viên in bài.
-- Thường ở: T2–T7 07:30–21:00 → phong-may; CN 18:00–23:30 → phong-may
-- Câu nói: Các em chỉ xem đúng dòng liên quan thôi nhé.
-- Giới thiệu: Thầy quản lý phòng máy của trường. Máy nào ai ngồi, lệnh in nào của ai, thầy đều có nhật ký.
 
 ### hoai — Hoài
 - Họ tên: Lê Thu Hoài
@@ -203,7 +192,3 @@
 - Thường ở: T2–T6 13:00–21:00 → tra-da; T7–CN 06:30–21:00 → tra-da
 - Câu nói: Khách của bà, bà nhớ cốc chứ nhớ gì tên.
 - Giới thiệu: Bán trà đá ngoài cổng chính đã hai chục năm. Sinh viên khóa nào ngồi ghế nào, gọi cốc gì, bà nhớ hết; chỉ tên là không nhớ.
-
-### co-phu-trach — Cô phụ trách hộp kiến nghị
-- Vai: Giữ sổ niêm phong. Chỉ xuất hiện qua lời kể và tài liệu.
-- Chỉ qua lời kể: có

@@ -49,7 +49,6 @@ const NEN_NHAN_VAT: Record<string, string> = {
   'co-hanh': 'phong-dao-tao',
   'co-lan': 'phong-ctsv',
   'thay-quang': 'phong-hop',
-  'thay-khai': 'phong-may',
   'quan': 'phong-hop',
   'nam': 'xuong-robot',
   'khanh': 'phong-hop',

@@ -211,7 +211,7 @@ const GOC = {
       "ten": "Bác Thịnh",
       "hoTen": null,
       "trongCau": "bác Thịnh",
-      "vai": "Bảo vệ giảng đường B. Cùng cô phụ trách mở hộp kiến nghị lúc 9h sáng thứ Hai.",
+      "vai": "Bảo vệ tòa B, giữ sổ ký giấy vào phòng máy tối Chủ nhật. Cùng cô Lan mở hộp kiến nghị lúc 9h sáng thứ Hai.",
       "bieuCam": [
         "neutral",
         "smile"
@@ -221,7 +221,7 @@ const GOC = {
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
-        "lich": "Trực sảnh tòa B từ thứ Hai tới thứ Bảy, mở cửa 7 giờ sáng, khóa các phòng học 9 giờ tối; lối lên thư viện tầng ba để tới 11 giờ đêm rồi mới khóa sảnh. Chủ nhật chỉ ghé buổi tối để khóa cửa.",
+        "lich": "Trực sảnh tòa B từ thứ Hai tới thứ Bảy, mở cửa 7 giờ sáng, khóa các phòng học 9 giờ tối; lối lên thư viện tầng ba để tới 11 giờ đêm rồi mới khóa sảnh. Chủ nhật ghé từ 8 giờ tối, giữ sổ ký phòng máy và khóa sảnh lúc 23 giờ 30.",
         "thuongO": [
           {
             "thu": [
@@ -241,7 +241,7 @@ const GOC = {
               0
             ],
             "tu": "20:00",
-            "den": "23:00",
+            "den": "23:30",
             "noi": "toa-b"
           }
         ],
@@ -259,7 +259,7 @@ const GOC = {
       "ten": "Cô Hạnh",
       "hoTen": null,
       "trongCau": "cô Hạnh",
-      "vai": "Phòng Đào tạo. Tạo tài khoản tra cứu của CLB trên laptop (ngày 2): chỉ xem bảng lớp; bảng có thông tin cá nhân phải có phiếu yêu cầu tra cứu.",
+      "vai": "Phòng Đào tạo, quản lý tài khoản, máy in và máy chủ của trường. Tạo tài khoản tra cứu của CLB trên laptop (ngày 2): chỉ xem bảng lớp; bảng có thông tin cá nhân phải có phiếu yêu cầu tra cứu.",
       "bieuCam": [
         "neutral",
         "smile"
@@ -290,7 +290,7 @@ const GOC = {
         "nam": null,
         "nganh": null,
         "cauNoi": "Tài khoản này chỉ xem được bảng lớp. Muốn xem gì thêm thì mang phiếu sang.",
-        "loi": "Cán bộ Phòng Đào tạo, phụ trách dữ liệu sinh viên. Cấp quyền rất chặt: xin gì cho nấy, dùng xong là khóa lại."
+        "loi": "Cán bộ Phòng Đào tạo, phụ trách tài khoản, máy in và máy chủ của trường. Cấp quyền rất chặt: xin gì cho nấy, dùng xong là khóa lại."
       }
     },
     {
@@ -298,7 +298,7 @@ const GOC = {
       "ten": "Cô Lan",
       "hoTen": null,
       "trongCau": "cô Lan",
-      "vai": "Phòng Công tác sinh viên (CTSV). Gọi Minh Anh lên nhận thông báo; giải thích quy chế phiếu gửi.",
+      "vai": "Phòng Công tác sinh viên (CTSV). Gọi Minh Anh lên nhận thông báo; giải thích quy chế phiếu gửi, giữ sổ niêm phong hộp kiến nghị và cùng bác Thịnh mở hộp lúc 9h sáng thứ Hai.",
       "bieuCam": [
         "neutral",
         "smile"
@@ -329,7 +329,7 @@ const GOC = {
         "nam": null,
         "nganh": null,
         "cauNoi": "Sổ đó niêm phong. Cô cũng không được tự mở.",
-        "loi": "Cán bộ Phòng Công tác sinh viên, người giải thích cho CLB các quy chế về phiếu gửi và hộp kiến nghị."
+        "loi": "Cán bộ Phòng Công tác sinh viên, giữ sổ niêm phong hộp kiến nghị và giải thích cho CLB các quy chế về phiếu gửi."
       }
     },
     {
@@ -355,53 +355,6 @@ const GOC = {
         "nganh": null,
         "cauNoi": "Các em còn gì trình thêm không?",
         "loi": "Chủ trì buổi họp rà soát phòng CLB. Nghe hết các bên rồi mới quyết, và chỉ quyết dựa trên căn cứ."
-      }
-    },
-    {
-      "id": "thay-khai",
-      "ten": "Thầy Khải",
-      "hoTen": null,
-      "trongCau": "thầy Khải",
-      "vai": "Quản lý phòng máy.",
-      "bieuCam": [
-        "neutral"
-      ],
-      "xuatHienTu": {
-        "kind": "mo-dau"
-      },
-      "chiQuaLoiKe": false,
-      "gioiThieu": {
-        "lich": "Ở phòng máy từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật trực cho sinh viên in bài.",
-        "thuongO": [
-          {
-            "thu": [
-              1,
-              2,
-              3,
-              4,
-              5,
-              6
-            ],
-            "tu": "07:30",
-            "den": "21:00",
-            "noi": "phong-may"
-          },
-          {
-            "thu": [
-              0
-            ],
-            "tu": "18:00",
-            "den": "23:30",
-            "noi": "phong-may"
-          }
-        ],
-        "danhXung": "Quản lý phòng máy",
-        "chuaQuen": "Thầy phòng máy",
-        "khongXungTen": true,
-        "nam": null,
-        "nganh": null,
-        "cauNoi": "Các em chỉ xem đúng dòng liên quan thôi nhé.",
-        "loi": "Thầy quản lý phòng máy của trường. Máy nào ai ngồi, lệnh in nào của ai, thầy đều có nhật ký."
       }
     },
     {
@@ -633,19 +586,6 @@ const GOC = {
         "cauNoi": "Khách của bà, bà nhớ cốc chứ nhớ gì tên.",
         "loi": "Bán trà đá ngoài cổng chính đã hai chục năm. Sinh viên khóa nào ngồi ghế nào, gọi cốc gì, bà nhớ hết; chỉ tên là không nhớ."
       }
-    },
-    {
-      "id": "co-phu-trach",
-      "ten": "Cô phụ trách hộp kiến nghị",
-      "hoTen": null,
-      "trongCau": "cô phụ trách hộp kiến nghị",
-      "vai": "Giữ sổ niêm phong. Chỉ xuất hiện qua lời kể và tài liệu.",
-      "bieuCam": [],
-      "xuatHienTu": {
-        "kind": "mo-dau"
-      },
-      "chiQuaLoiKe": true,
-      "gioiThieu": null
     }
   ],
   "canh": [
@@ -2271,7 +2211,7 @@ const GOC = {
           "type": "line",
           "speaker": "bac-tu",
           "expression": "neutral",
-          "text": "Cháu hỏi cái hộp à? Sáng thứ Hai 9 giờ, bác với cô phụ trách mở. Lá thư ấy nằm trên cùng."
+          "text": "Cháu hỏi cái hộp à? Sáng thứ Hai 9 giờ, bác với cô Lan bên Công tác sinh viên mở. Lá thư ấy nằm trên cùng."
         },
         {
           "type": "line",
@@ -2647,7 +2587,7 @@ const GOC = {
           "type": "line",
           "speaker": "bac-tu",
           "expression": "smile",
-          "text": "Lại mấy cháu CLB Thám Tử à? Cái hộp cô phụ trách niêm phong lại rồi, không soi được nữa đâu."
+          "text": "Lại mấy cháu CLB Thám Tử à? Cô Lan niêm phong hộp lại rồi, không soi được nữa đâu."
         },
         {
           "type": "line",
@@ -3288,7 +3228,7 @@ const GOC = {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
-          "text": "Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô phụ trách hộp mới tra và trả lời có hoặc không."
+          "text": "Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô mới tra và trả lời có hoặc không."
         },
         {
           "type": "note",
@@ -3376,7 +3316,7 @@ const GOC = {
           "type": "line",
           "speaker": "quan",
           "expression": "neutral",
-          "text": "Các bạn chỉ được lập căn cứ. Tra sổ là việc của cô phụ trách, không phải của CLB."
+          "text": "Các bạn chỉ được lập căn cứ. Tra sổ là việc của cô Lan, không phải của CLB."
         },
         {
           "type": "line",
@@ -3432,7 +3372,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ ở bàn trực."
+          "text": "Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ ở bàn trực sảnh tòa B."
         },
         {
           "type": "line",
@@ -3859,7 +3799,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Mai mang hai mã sang Phòng Công tác sinh viên. Cô phụ trách tra sổ, có hay không là biết."
+          "text": "Mai mang hai mã sang Phòng Công tác sinh viên. Cô Lan tra sổ, có hay không là biết."
         },
         {
           "type": "reminder",
@@ -4009,7 +3949,7 @@ const GOC = {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
-          "text": "Cô phụ trách tra rồi. SV240317: có trong sổ. SV240228: không có."
+          "text": "Cô tra rồi. SV240317: có trong sổ. SV240228: không có."
         },
         {
           "type": "line",
@@ -4060,12 +4000,12 @@ const GOC = {
           "id": "r-phong-may",
           "asker": {
             "speaker": "tung",
-            "text": "Mà thư đánh máy thì phải in ở đâu chứ nhỉ? Tiện đường, ghé phòng máy không?"
+            "text": "Mà thư đánh máy thì phải in ở đâu chứ nhỉ? Phòng Đào tạo ngay cạnh đây, tiện đường ghé hỏi cô Hạnh không?"
           },
           "choices": [
             {
               "id": "ghe",
-              "text": "Ghé phòng máy hỏi thầy Khải.",
+              "text": "Ghé Phòng Đào tạo hỏi cô Hạnh về nhật ký in.",
               "khi": null,
               "hauQua": [
                 {
@@ -4104,14 +4044,14 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Phiếu mình đây rồi. Có chữ ký thì cô phụ trách mới mở sổ."
+          "text": "Phiếu mình đây rồi. Có chữ ký thì cô Lan mới mở sổ."
         }
       ]
     },
     {
       "id": "n4-phong-may",
-      "title": "Phòng máy: nhật ký in",
-      "canh": "phong-may",
+      "title": "Phòng Đào tạo: nhật ký in",
+      "canh": "phong-dao-tao",
       "mocSomNhat": 41,
       "nodes": [
         {
@@ -4122,25 +4062,24 @@ const GOC = {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Chân trang thư là tên tệp. Nhật ký in sẽ ghi ai in nó."
+          "text": "Chân trang thư là tên tệp. Nhật ký in sẽ ghi tài khoản nào in nó."
         },
         {
           "type": "line",
-          "speaker": "thay-khai",
-          "expression": "neutral",
-          "text": "Máy in ở đây nhớ hết: tài khoản nào in, lúc nào, tệp gì, mấy trang."
+          "speaker": "narrator",
+          "text": "Phòng Đào tạo ngay cạnh Phòng Công tác sinh viên. Cô Hạnh mở sổ yêu cầu tra cứu."
         },
         {
           "type": "line",
-          "speaker": "thay-khai",
+          "speaker": "co-hanh",
           "expression": "neutral",
-          "text": "Máy in là của phòng thầy, nên phiếu thì thầy ký. Thầy mở cho các em đúng bảng nhật ký in, chỉ để lập căn cứ."
+          "text": "Máy in của trường ghi tài khoản, giờ in, tên tệp và số trang. Cô cho các em xem đúng bảng nhật ký in để lập căn cứ."
         },
         {
           "type": "line",
-          "speaker": "thay-khai",
+          "speaker": "co-hanh",
           "expression": "neutral",
-          "text": "Bản in từ máy ở đây có dòng chân trang ghi tên tệp. Thư của các em có không?"
+          "text": "Bản in có dòng chân trang ghi tên tệp. Thư của các em có không?"
         },
         {
           "type": "line",
@@ -4201,27 +4140,66 @@ const GOC = {
         },
         {
           "type": "line",
-          "speaker": "thay-khai",
+          "speaker": "co-hanh",
           "expression": "neutral",
-          "text": "Tài khoản ấy những ai dùng thì thầy không nói. Các em cũng chưa cần biết, đúng không?"
+          "text": "Nhật ký chỉ ghi tài khoản dùng chung. Cô chưa có căn cứ để nói ai đã ngồi máy."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "chi-tay",
-          "text": "Tối Chủ nhật vào phòng máy phải ký sổ mà thầy. Mở sổ ra là biết ngay ai ngồi đây!"
+          "text": "Tối Chủ nhật vào phòng máy phải ký sổ mà cô. Mở sổ ra là biết ngay ai ngồi đây!"
         },
         {
           "type": "line",
-          "speaker": "thay-khai",
+          "speaker": "co-hanh",
           "expression": "neutral",
-          "text": "Sổ ấy ghi tên từng người. Viết thư kiến nghị không phải là lỗi, thầy không mở sổ để truy người viết. Bao giờ có chuyện đáng mở thì phải có người đủ thẩm quyền ký."
+          "text": "Sổ ký giấy do bác bảo vệ tòa B giữ. Các em hỏi bác Thịnh, nhưng muốn mở sổ phải có chữ ký người có thẩm quyền."
         },
         {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "thinking",
           "text": "Thư in từ tài khoản CLB Robotics. Người nộp là Hoài. Hai việc, có khi là hai người."
+        },
+        {
+          "type": "goto",
+          "to": "n4-sanh-toa-b"
+        }
+      ]
+    },
+    {
+      "id": "n4-sanh-toa-b",
+      "title": "Sảnh tòa B: hỏi bác Thịnh về sổ ký",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 41,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đang ngồi ở bàn trực."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Bác ơi, cho bọn cháu xem sổ ký vào phòng máy tối Chủ nhật được không ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "neutral",
+          "text": "Sổ ghi tên người. Không có chữ ký người có thẩm quyền thì bác không mở."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Vâng ạ. Bọn cháu chỉ ghi lại nhật ký in trước."
+        },
+        {
+          "type": "goto",
+          "to": "n4-toi"
         }
       ]
     },
@@ -8604,7 +8582,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Khóa là phải. Bảng ấy mà do Nam xuất thì ai cũng bảo Nam sửa được. Chị nhờ thầy Quang xin thầy Khải bên phòng máy xuất thẳng cho CLB mình. Máy chủ phần mềm đặt hàng đặt ở đó."
+          "text": "Khóa là phải. Bảng ấy mà do Nam xuất thì ai cũng bảo Nam sửa được. Chị nhờ thầy Quang đề nghị cô Hạnh bên Phòng Đào tạo xuất thẳng cho CLB mình. Máy chủ của trường do phòng cô quản lý."
         },
         {
           "type": "line",
@@ -8650,13 +8628,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Chiều. Thầy Khải tự mang bản xuất sang phòng CLB."
+          "text": "Chiều. Cô Hạnh tự mang bản xuất sang phòng CLB."
         },
         {
           "type": "line",
-          "speaker": "thay-khai",
+          "speaker": "co-hanh",
           "expression": "neutral",
-          "text": "Bảng phiên đăng nhập của phần mềm đặt hàng. Thầy xuất nguyên bản từ máy chủ theo đề nghị của thầy Quang, chưa lọc dòng nào. Lần trước các em tra nhật ký in cũng ở chỗ thầy, nhớ không?"
+          "text": "Bảng phiên đăng nhập của phần mềm đặt hàng. Cô xuất nguyên bản từ máy chủ theo đề nghị của thầy Quang, chưa lọc dòng nào."
         },
         {
           "type": "task",
@@ -9736,19 +9714,19 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "serious",
-          "text": "Tiền bị lấy từ đúng quỹ của CLB mà lá thư đòi thu phòng, bốn ngày trước lá thư. Với căn cứ ấy chị xin thầy Quang cho mở trang sổ ký phòng máy tối Chủ nhật 15/9. Hồi tháng 9 Tùng đòi xem, thầy Khải không cho."
+          "text": "Tiền bị lấy từ đúng quỹ của CLB mà lá thư đòi thu phòng, bốn ngày trước lá thư. Với căn cứ ấy chị xin thầy Quang cho mở trang sổ ký phòng máy tối Chủ nhật 15/9. Hồi tháng 9 Tùng đòi xem, bác Thịnh không cho."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "gai-dau",
-          "text": "Hồi ấy tớ đòi mở để truy người viết thư. Thầy không cho là phải."
+          "text": "Hồi ấy tớ đòi mở để truy người viết thư. Bác không cho là phải."
         },
         {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Thầy Quang ký rồi. Thầy Khải chụp đúng một trang ấy."
+          "text": "Thầy Quang ký rồi. Bác Thịnh mở đúng một trang ấy."
         },
         {
           "type": "consequence",
@@ -9766,7 +9744,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Tối Chủ nhật 15/9, bảy dòng. Năm bạn vào in bài. Hai người của Robotics: Thảo vào 20 giờ 10, ra 21 giờ 30. Khánh vào 22 giờ 40, ra 23 giờ 20. Thầy Khải gửi kèm các lệnh in của tài khoản Robotics tối ấy: hai lệnh, 20 giờ 40 và 23 giờ 10."
+          "text": "Tối Chủ nhật 15/9, bảy dòng. Năm bạn vào in bài. Hai người của Robotics: Thảo vào 20 giờ 10, ra 21 giờ 30. Khánh vào 22 giờ 40, ra 23 giờ 20. Cô Hạnh gửi nhật ký in của tài khoản Robotics tối ấy: hai lệnh, 20 giờ 40 và 23 giờ 10."
         },
         {
           "type": "line",
@@ -10555,7 +10533,7 @@ const GOC = {
                 {
                   "speaker": "duy",
                   "expression": "neutral",
-                  "text": "Đúng, phiếu này chỉ lọc tên tệp lá thư. Thầy Khải còn gửi kèm một trang khác về cả tối hôm ấy."
+                  "text": "Đúng, phiếu này chỉ lọc tên tệp lá thư. Cô Hạnh còn gửi kèm một trang khác về cả tối hôm ấy."
                 }
               ]
             },
@@ -15228,7 +15206,7 @@ const GOC = {
         "Tiêu đề": "Hộp tòa B, mở 9h sáng thứ Hai",
         "Giá trị cho trình dựng": "B",
         "Nguồn": "Lời bác Thịnh, sảnh tòa B",
-        "Nội dung": "Bác và cô phụ trách mở hộp 9h sáng thứ Hai; thư nằm trên cùng. Từ 7 giờ tới lúc mở hộp, ra vào tòa B chỉ có sinh viên các lớp sinh hoạt ở tòa này."
+        "Nội dung": "Bác Thịnh và cô Lan mở hộp 9h sáng thứ Hai; thư nằm trên cùng. Từ 7 giờ tới lúc mở hộp, ra vào tòa B chỉ có sinh viên các lớp sinh hoạt ở tòa này."
       },
       "quotes": {}
     },
@@ -15262,7 +15240,7 @@ const GOC = {
       "fields": {
         "Tiêu đề": "Cần mã và căn cứ",
         "Nguồn": "Quy chế phiếu gửi, Phòng CTSV",
-        "Nội dung": "Cô phụ trách chỉ trả lời có/không cho một mã cụ thể khi có căn cứ bằng văn bản."
+        "Nội dung": "Cô Lan chỉ trả lời có/không cho một mã cụ thể khi có căn cứ bằng văn bản."
       },
       "quotes": {}
     },
@@ -15273,7 +15251,7 @@ const GOC = {
       "fields": {
         "Tiêu đề": "Phiếu yêu cầu tra cứu",
         "Nguồn": "Cô Lan ký, Quân giám sát, Phòng CTSV",
-        "Nội dung": "Cô Lan ký, anh Quân (Hội sinh viên) ký giám sát. Căn cứ: hai lớp BC24A, BC23A. Mở bảng sinh viên, bốn cột: mã, họ đệm, tên, mã lớp. Chỉ để lập căn cứ; tra sổ niêm phong là việc của cô phụ trách."
+        "Nội dung": "Cô Lan ký, anh Quân (Hội sinh viên) ký giám sát. Căn cứ: hai lớp BC24A, BC23A. Mở bảng sinh viên, bốn cột: mã, họ đệm, tên, mã lớp. Chỉ để lập căn cứ; tra sổ niêm phong là việc của cô Lan."
       },
       "quotes": {}
     },
@@ -15297,7 +15275,7 @@ const GOC = {
         "Ảnh": "doc-so-niem-phong-trang",
         "Loại trừ": "ev-hai-ma",
         "Gạch": "SV240228",
-        "Nguồn": "Cô phụ trách hộp kiến nghị tra sổ, qua Phòng CTSV",
+        "Nguồn": "Cô Lan tra sổ niêm phong hộp kiến nghị, Phòng CTSV",
         "Nội dung": "Nguồn độc lập cho biết ai là người nộp; chưa cho biết ai viết."
       },
       "quotes": {}
@@ -15309,7 +15287,7 @@ const GOC = {
       "fields": {
         "Tiêu đề": "Chân trang lá thư: tên tệp",
         "Giá trị cho trình dựng": "kien-nghi",
-        "Nguồn": "Thầy Khải, phòng máy",
+        "Nguồn": "Cô Hạnh, Phòng Đào tạo",
         "Nội dung": "Bản in từ máy phòng máy có dòng chân trang ghi tên tệp. Chân trang bản chụp lá thư bị xén, chỉ đọc được đoạn đầu: \"kien-nghi-…\"."
       },
       "quotes": {}
@@ -15419,7 +15397,7 @@ const GOC = {
       },
       "quotes": {
         "Nội dung hiển thị": [
-          "CLB chỉ lập danh sách mã ứng viên kèm căn cứ; cô phụ trách tự tra sổ. Tài khoản CLB chỉ xem bảng lớp; bảng khác cần phiếu yêu cầu tra cứu của Phòng CTSV."
+          "CLB chỉ lập danh sách mã ứng viên kèm căn cứ; cô Lan tự tra sổ. Tài khoản CLB chỉ xem bảng lớp; bảng khác cần phiếu yêu cầu tra cứu của Phòng CTSV."
         ]
       }
     },
@@ -15670,11 +15648,11 @@ const GOC = {
     "doc-phien-dang-nhap": {
       "id": "doc-phien-dang-nhap",
       "loai": "doc",
-      "heading": "Bảng phiên đăng nhập do thầy Khải xuất",
+      "heading": "Bảng phiên đăng nhập do cô Hạnh xuất",
       "fields": {
         "Tiêu đề": "Bản xuất nguyên bản, có dấu xác nhận",
         "Ảnh": "doc-phien-dang-nhap",
-        "Nguồn": "Thầy Khải (phòng máy, nơi đặt máy chủ), theo đề nghị của Thầy Quang",
+        "Nguồn": "Cô Hạnh (Phòng Đào tạo, nơi quản lý máy chủ của trường), theo đề nghị của Thầy Quang",
         "Nội dung hiển thị": ""
       },
       "quotes": {
@@ -15870,7 +15848,7 @@ const GOC = {
       "heading": "[Sổ ký phòng máy tối 15/9]",
       "fields": {
         "Tiêu đề": "Trang sổ ký vào phòng máy, tối Chủ nhật 15/9",
-        "Nguồn": "Thầy Khải giữ sổ; Thầy Quang ký cho mở đúng một trang sau khi phiếu sáu khoản cho thấy tiền bị lấy từ đúng quỹ của CLB bị lá thư đòi thu phòng",
+        "Nguồn": "Bác Thịnh giữ sổ; Thầy Quang ký cho bác mở đúng một trang sau khi phiếu sáu khoản cho thấy tiền bị lấy từ đúng quỹ của CLB bị lá thư đòi thu phòng",
         "Nội dung": "Tối Chủ nhật muốn vào phòng máy phải ký sổ. Tối 15/9 có bảy dòng: năm sinh viên vào in bài, và hai người của CLB Robotics: Thảo vào 20:10, ra 21:30; Khánh vào 22:40, ra 23:20. Nhật ký in ghi lá thư in lúc 23:10. Sổ nói ai ở trong phòng, không nói ai bấm in."
       },
       "quotes": {}
@@ -15881,7 +15859,7 @@ const GOC = {
       "heading": "[Nhật ký in tối 15/9: không có sơ đồ thứ hai]",
       "fields": {
         "Tiêu đề": "Các lệnh in của tài khoản clb_robotics tối Chủ nhật 15/9",
-        "Nguồn": "Thầy Khải gửi kèm trang sổ ký, trích từ nhật ký in của phòng máy",
+        "Nguồn": "Cô Hạnh (Phòng Đào tạo) gửi nhật ký in của phòng máy",
         "Nội dung": "Tối 15/9 tài khoản clb_robotics in đúng hai lệnh. 20:40: so-do-mach-xe-do-line.pdf, 3 trang. 23:10: kien-nghi-phong-clb.docx, 1 trang. Không có lệnh thứ ba. Cả phòng máy, từ 22:40 tới 23:20, có ba lệnh in: một đồ án và một báo cáo nhóm bằng tài khoản của hai sinh viên khác, và lá thư. Không có sơ đồ mạch nào."
       },
       "quotes": {}

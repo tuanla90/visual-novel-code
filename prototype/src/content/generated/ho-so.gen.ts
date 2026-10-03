@@ -24,7 +24,7 @@ export const HO_SO = {
       "id": "clue-box-building-b",
       "title": "Hộp góp ý giảng đường B",
       "source": "Lời bác Tư lao công, hành lang giảng đường B",
-      "content": "Sáng nay cô phụ trách hộp góp ý chỉ mở một hộp: hộp ở giảng đường B. Hộp tòa A và tòa C tuần này chưa đến lượt mở. Bảng `sinh_vien` không có cột tòa nhà.",
+      "content": "Sáng nay cô Lan bên Công tác sinh viên chỉ mở một hộp: hộp ở giảng đường B. Hộp tòa A và tòa C tuần này chưa đến lượt mở. Bảng `sinh_vien` không có cột tòa nhà.",
       "builderValue": {
         "label": "B — Hộp góp ý giảng đường B",
         "column": "toa_nha",
@@ -74,7 +74,7 @@ export const HO_SO = {
     "doc-handover-log": {
       "id": "doc-handover-log",
       "title": "Sổ bàn giao niêm phong — kết quả đối chiếu",
-      "source": "Cô phụ trách hộp góp ý, gửi qua Phòng CTSV theo đề nghị của CLB",
+      "source": "Cô Lan, Phòng CTSV, gửi theo đề nghị của CLB",
       "body": [
         "Hộp góp ý giảng đường B, mở sáng thứ Hai: 1 phong bì có yêu cầu phản hồi chính thức. Chữ ký người gửi chỉ đọc được chữ H đầu. Mã sinh viên ghi trên phiếu gửi đã chép vào sổ.",
         "Đối chiếu theo đề nghị: SV240317 — có trong sổ. SV240228 — không có trong sổ.",

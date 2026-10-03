@@ -55,7 +55,7 @@ function findLeaks(text: string): string[] {
 
 describe('canary tự kiểm: bắt đúng lỗi cắm sẵn', () => {
   it.each([
-    ['Cô phụ trách hộp góp ý, gửi qua Phòng CTSV theo đề nghị của CLB (end-01)', 'end-01'],
+    ['Cô Lan, Phòng CTSV, gửi theo đề nghị của CLB (end-01)', 'end-01'],
     ['Mở lại thẻ clue-signature-h', 'clue-signature-h'],
     ['Câu q-sig-h chưa trả lời', 'q-sig-h'],
     ['Điểm hs-letter', 'hs-letter'],

@@ -82,7 +82,7 @@
   - (D) {id: nguon-khac} Tìm một nguồn khác ngoài dữ liệu để đối chiếu hai bạn này. [ĐÚNG] → phản hồi: **quan** (neutral): Đó là câu tôi chờ. Nguồn nào?
 - [DÀN DỰNG] Bốn lựa chọn dài 12–13 chữ, cùng giọng thường. Lựa chọn đúng không nêu nguồn cụ thể: người chơi tự nối với lời {{nv.bac-tu.trong-cau}} ở inv-bac-tu (QĐ-035).
 - [DÀN DỰNG] Giao diện xáo thứ tự lựa chọn mỗi lần hiện câu hỏi; chữ (A)…(D) chỉ là nhãn khi viết, không hiển thị; telemetry ghi id lựa chọn (QĐ-035). Ghi riêng lựa chọn ĐẦU TIÊN của q-verify (câu "dữ liệu đã đủ kết luận chưa?", §9.3); cho chọn lại không giới hạn.
-- **player**: Cô phụ trách hộp góp ý. {{nv.bac-tu}} bảo sáng nay cô mở hộp B.
+- **player**: Cô Lan bên Công tác sinh viên. {{nv.bac-tu}} bảo sáng nay cô mở hộp B.
 - **minh-anh** (neutral): CLB chỉ xin cô đối chiếu đúng hai mã này thôi, không hơn.
 - **quan** (neutral): Tôi sẽ chuyển đề nghị ngay.
 - [ĐI TỚI end-01]

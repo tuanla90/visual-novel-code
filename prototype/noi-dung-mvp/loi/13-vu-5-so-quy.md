@@ -72,12 +72,12 @@
 - **minh-anh** (serious): Chị gửi thầy Quang. Việc còn lại là của thầy.
 
 ## v5-so-quy.5
-- **minh-anh** (serious): Tiền bị lấy từ đúng quỹ của CLB mà lá thư đòi thu phòng, bốn ngày trước lá thư. Với căn cứ ấy chị xin thầy Quang cho mở trang sổ ký phòng máy tối Chủ nhật 15/9. Hồi tháng 9 Tùng đòi xem, thầy Khải không cho.
-- **tung** (gai-dau): Hồi ấy tớ đòi mở để truy người viết thư. Thầy không cho là phải.
-- **duy** (neutral): Thầy Quang ký rồi. Thầy Khải chụp đúng một trang ấy.
+- **minh-anh** (serious): Tiền bị lấy từ đúng quỹ của CLB mà lá thư đòi thu phòng, bốn ngày trước lá thư. Với căn cứ ấy chị xin thầy Quang cho mở trang sổ ký phòng máy tối Chủ nhật 15/9. Hồi tháng 9 Tùng đòi xem, bác Thịnh không cho.
+- **tung** (gai-dau): Hồi ấy tớ đòi mở để truy người viết thư. Bác không cho là phải.
+- **duy** (neutral): Thầy Quang ký rồi. Bác Thịnh mở đúng một trang ấy.
 
 ## v5-so-quy.6
-- **player**: Tối Chủ nhật 15/9, bảy dòng. Năm bạn vào in bài. Hai người của Robotics: Thảo vào 20 giờ 10, ra 21 giờ 30. Khánh vào 22 giờ 40, ra 23 giờ 20. Thầy Khải gửi kèm các lệnh in của tài khoản Robotics tối ấy: hai lệnh, 20 giờ 40 và 23 giờ 10.
+- **player**: Tối Chủ nhật 15/9, bảy dòng. Năm bạn vào in bài. Hai người của Robotics: Thảo vào 20 giờ 10, ra 21 giờ 30. Khánh vào 22 giờ 40, ra 23 giờ 20. Cô Hạnh gửi nhật ký in của tài khoản Robotics tối ấy: hai lệnh, 20 giờ 40 và 23 giờ 10.
 - **ha-vy** (thinking): 23 giờ 10 là lá thư. Trong phòng lúc ấy, người của Robotics chỉ có một. Mới là cơ hội và thời gian, chưa phải ai bấm in.
 - **minh-anh** (serious): Sổ ký là giấy, nhật ký in là máy. Hai nguồn riêng. Mang cả hai lên.
 

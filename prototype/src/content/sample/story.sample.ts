@@ -251,7 +251,7 @@ export const sampleStory: StoryContent = {
             ],
           },
         },
-        { type: 'line', speaker: 'player', text: '(MẪU) Cô phụ trách hộp góp ý.' },
+        { type: 'line', speaker: 'player', text: '(MẪU) Cô Lan bên Công tác sinh viên.' },
         { type: 'goto', to: 'end-01' },
       ],
     },

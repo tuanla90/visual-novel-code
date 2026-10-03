@@ -121,7 +121,7 @@
   - {clue-in-toi-15-9} [ĐỦ CĂN CỨ] → phản hồi: **khanh** (neutral): Sơ đồ tôi in thì các bạn đâu có tra.<br>**player**: Em tra rồi ạ. Tối 15/9 tài khoản Robotics in đúng hai lệnh: 20 giờ 40 và 23 giờ 10.<br>**ha-vy** (neutral): 20 giờ 40 là sơ đồ mạch, lúc ấy chị Thảo còn trong phòng. 23 giờ 10 là lá thư. Còn cả phòng máy, từ 22 giờ 40 tới 23 giờ 20, chỉ có ba lệnh in: một đồ án, một báo cáo nhóm của hai bạn khác, và lá thư. Không có sơ đồ nào, bằng tài khoản nào cũng không.<br>**thay-quang** (neutral): Em Khánh, vậy sơ đồ của em đâu?<br>**khanh** (neutral): …
   - {clue-thao-in-so-do} [HỖ TRỢ] → phản hồi: **player**: Sơ đồ của đội thì tối Chủ nhật nào chị Thảo cũng in. Tối ấy chị ấy ra trước khi anh vào hơn một tiếng.<br>**khanh** (neutral): Thảo in bộ của Thảo. Tôi in thêm một bộ.<br>**thay-quang** (neutral): Thói quen của người khác chưa bác được lời em Khánh. Có gì ghi lại các lệnh in tối ấy không?
   - {clue-so-phong-may} [HỖ TRỢ] → phản hồi: **thay-quang** (neutral): Trang này thầy xem rồi. Nó đặt em Khánh trong phòng, và em ấy đã nói vào làm gì. Còn gì khác không?
-  - {ev-nhat-ky-in} [HỖ TRỢ] → phản hồi: **khanh** (neutral): Phiếu ấy chỉ có một dòng về lá thư.<br>**duy** (neutral): Đúng, phiếu này chỉ lọc tên tệp lá thư. Thầy Khải còn gửi kèm một trang khác về cả tối hôm ấy.
+  - {ev-nhat-ky-in} [HỖ TRỢ] → phản hồi: **khanh** (neutral): Phiếu ấy chỉ có một dòng về lá thư.<br>**duy** (neutral): Đúng, phiếu này chỉ lọc tên tệp lá thư. Cô Hạnh còn gửi kèm một trang khác về cả tối hôm ấy.
   - {clue-loi-chu-cuong} [GỢI Ý] → phản hồi: **thay-quang** (neutral): Cái huy hiệu thầy ghi rồi. Thầy đang hỏi về tối Chủ nhật ở phòng máy.
   - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, bọn em không còn gì về tối hôm ấy ạ.<br>**thay-quang** (neutral): Vậy phần lá thư dừng ở đây. Thầy sẽ hỏi riêng.
   - [KHÁC] → phản hồi: **thay-quang** (neutral): Cái này nói gì về tối 15/9?<br>**minh-anh** (worried): Em xem lại hồ sơ ạ.
@@ -229,4 +229,3 @@
 ### v5-bd-tra-da-an — Chi tiết ẩn: Chiếc xe đạp cũ {cảnh: tra-da}
 
 - [LỜI v5-bd-tra-da-an.1]
-

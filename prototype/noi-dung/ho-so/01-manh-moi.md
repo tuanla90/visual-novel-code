@@ -11,7 +11,7 @@
 
 - Tiêu đề: Hộp góp ý giảng đường B
 - Nguồn: Lời {{nv.bac-tu.trong-cau}} lao công, hành lang giảng đường B
-- Nội dung: Sáng nay cô phụ trách hộp góp ý chỉ mở một hộp: hộp ở giảng đường B. Hộp tòa A và tòa C tuần này chưa đến lượt mở. Bảng `sinh_vien` không có cột tòa nhà.
+- Nội dung: Sáng nay cô Lan bên Công tác sinh viên chỉ mở một hộp: hộp ở giảng đường B. Hộp tòa A và tòa C tuần này chưa đến lượt mở. Bảng `sinh_vien` không có cột tòa nhà.
 - Giá trị cho trình dựng: `B`, dùng cho cột `toa_nha`.
 - Câu hỏi còn mở: Những lớp nào sinh hoạt ở giảng đường B?
 - Lưu ý: Cho biết lá thư được bỏ vào hộp nào, không cho biết ai bỏ.

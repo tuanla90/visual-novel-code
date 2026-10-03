@@ -18,7 +18,7 @@
 - **co-lan** (neutral): Hộp kiến nghị là bên cô quản. Người gửi muốn được trả lời thì phải ghi mã sinh viên của mình vào phiếu gửi. Mã đó được chép vào sổ niêm phong.
 - **co-lan** (neutral): Sổ đó niêm phong. Cô cũng không được tự mở.
 - **player**: Vậy làm sao biết được ai gửi ạ?
-- **co-lan** (neutral): Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô phụ trách hộp mới tra và trả lời có hoặc không.
+- **co-lan** (neutral): Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô mới tra và trả lời có hoặc không.
 - [DÀN DỰNG] Một anh sinh viên đeo kính, mặc gi lê len xanh than, kẹp cái bìa da, đứng ở cửa từ lúc nào.
 - **narrator**: Ở cửa có một anh sinh viên đeo kính, mặc gi lê len xanh than, kẹp cái bìa da, đứng từ lúc nào không ai để ý.
 - **ha-vy** (thinking): Người lạ. Nhìn kỹ trước khi anh ấy mở lời đã.
@@ -29,7 +29,7 @@
 - **quan** (neutral): Tôi ký giám sát. Các bạn tra những gì, bên tôi xem hết.
 
 ## n3-ctsv.2
-- **quan** (neutral): Các bạn chỉ được lập căn cứ. Tra sổ là việc của cô phụ trách, không phải của CLB.
+- **quan** (neutral): Các bạn chỉ được lập căn cứ. Tra sổ là việc của cô Lan, không phải của CLB.
 - **ha-vy** (thinking): Tức là mình cần mã, và cần căn cứ cho từng mã một.
 
 ## n3-soi-kinh.1
@@ -45,7 +45,7 @@
 - **ha-vy** (thinking): Tới để xem, không phải để giúp.
 
 ## n3-bd-phong-may.1
-- **narrator**: Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ ở bàn trực.
+- **narrator**: Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ ở bàn trực sảnh tòa B.
 - **tung** (thinking): Tối Chủ nhật vẫn mở à. Lá thư kia được in vào tối nào nhỉ?
 - **ha-vy** (neutral): Chưa biết. Nhưng nhớ lấy chỗ này: vào phải ký sổ.
 
@@ -93,7 +93,7 @@
 - **tung** (happy): Thấy chưa, có Hiếu!
 - **ha-vy** (neutral): Có cả Hoài nữa. Hai người này mới chỉ khớp chữ H với lớp thôi.
 - **tung** (neutral): Thế giờ làm gì?
-- **ha-vy** (neutral): Mai mang hai mã sang Phòng Công tác sinh viên. Cô phụ trách tra sổ, có hay không là biết.
+- **ha-vy** (neutral): Mai mang hai mã sang Phòng Công tác sinh viên. Cô Lan tra sổ, có hay không là biết.
 > NHẮC VIỆC ha-vy (neutral): Hiếu và Hoài, cùng BC24A. Mai mang hai mã sang Phòng Công tác sinh viên.
 
 ## n3-bd-phong-may-an.1

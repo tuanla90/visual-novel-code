@@ -80,7 +80,7 @@ const gio = (g: number, p: number): string => `${hai(g)}:${hai(p)}`;
 
 const HO = ['Nguyễn', 'Trần', 'Lê', 'Phạm', 'Hoàng', 'Huỳnh', 'Phan', 'Vũ', 'Võ', 'Đặng', 'Bùi', 'Đỗ', 'Hồ', 'Ngô', 'Dương', 'Lý', 'Đinh', 'Trịnh', 'Mai', 'Lương', 'Tạ', 'Cao', 'Chu', 'Tô', 'Lâm', 'Hà', 'Nguyễn', 'Nguyễn', 'Trần', 'Lê'] as const;
 const DEM = ['Văn', 'Thị', 'Minh', 'Thu', 'Ngọc', 'Quốc', 'Đức', 'Thanh', 'Gia', 'Bảo', 'Hải', 'Kim', 'Xuân', 'Tuấn', 'Hữu', 'Thùy', 'Phương', 'Mỹ', 'Tiến', 'Mạnh', 'Nhật', 'Hồng', 'Trọng', 'Diệu', 'Khả', 'Thành', 'Như', 'Công'] as const;
-/** Không có tên nhân vật truyện (Tùng, Duy, Linh, Quân, Nam, Khánh, Bách, Thảo, Vy, Anh, Hạnh, Lan, Thịnh, Cường, Quang, Khải, Hiếu, Hoài…). */
+/** Không có tên nhân vật truyện (Tùng, Duy, Linh, Quân, Nam, Khánh, Bách, Thảo, Vy, Anh, Hạnh, Lan, Thịnh, Cường, Quang, Hiếu, Hoài…). */
 const TEN = [
   'An', 'Bình', 'Chi', 'Dũng', 'Dung', 'Giang', 'Hải', 'Hằng', 'Hân', 'Hòa', 'Huy', 'Hùng', 'Hương', 'Hưng', 'Hồng', 'Khoa', 'Kiên', 'Lâm', 'Long',
   'Ly', 'Mai', 'My', 'Nga', 'Ngân', 'Nghĩa', 'Ngọc', 'Nhân', 'Nhi', 'Nhung', 'Oanh', 'Phát', 'Phong', 'Phúc', 'Phương', 'Quyên', 'Quỳnh', 'Sơn', 'Tâm', 'Thành',

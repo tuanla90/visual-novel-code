@@ -87,8 +87,6 @@ import hoaiNervousMouth from './nhep/char-hoai-nervous/mouth.webp';
 import hoaiNervousEyes from './nhep/char-hoai-nervous/eyes.webp';
 import hoaiNeutralMouth from './nhep/char-hoai-neutral/mouth.webp';
 import hoaiNeutralEyes from './nhep/char-hoai-neutral/eyes.webp';
-import thayKhaiAnchorMouth from './nhep/char-thay-khai-anchor/mouth.webp';
-import thayKhaiAnchorEyes from './nhep/char-thay-khai-anchor/eyes.webp';
 import thayQuangAnchorMouth from './nhep/char-thay-quang-anchor/mouth.webp';
 import thayQuangAnchorEyes from './nhep/char-thay-quang-anchor/eyes.webp';
 import thayQuangSmileMouth from './nhep/char-thay-quang-smile/mouth.webp';
@@ -162,7 +160,6 @@ export const BO_NHEP_MOI_MVP: ReadonlyMap<string, TalkRig> = new Map<string, Tal
   bo('char-hoai-relieved', hoaiRelievedMouth, [375, 391, 73, 41], hoaiRelievedEyes, [325, 293, 191, 60]),
   bo('char-hoai-nervous', hoaiNervousMouth, [390, 395, 57, 43], hoaiNervousEyes, [325, 297, 195, 56]),
   bo('char-hoai-neutral', hoaiNeutralMouth, [383, 393, 61, 39], hoaiNeutralEyes, [321, 285, 199, 61]),
-  bo('char-thay-khai-anchor', thayKhaiAnchorMouth, [353, 296, 74, 48], thayKhaiAnchorEyes, [334, 202, 144, 56]),
   bo('char-thay-quang-anchor', thayQuangAnchorMouth, [383, 342, 89, 56], thayQuangAnchorEyes, [354, 234, 165, 47]),
   bo('char-thay-quang-smile', thayQuangSmileMouth, [379, 333, 97, 54], thayQuangSmileEyes, [352, 226, 169, 51]),
   bo('char-thay-quang-stern', thayQuangSternMouth, [387, 333, 85, 54], thayQuangSternEyes, [356, 228, 163, 44]),

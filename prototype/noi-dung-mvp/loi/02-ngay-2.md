@@ -35,7 +35,7 @@
 - **co-hanh** (smile): Khoanh vùng thôi đấy nhé. Lớp thì không bỏ thư được.
 
 ## n2-bd-toa-b.1
-- **bac-tu** (smile): Lại mấy cháu CLB Thám Tử à? Cái hộp cô phụ trách niêm phong lại rồi, không soi được nữa đâu.
+- **bac-tu** (smile): Lại mấy cháu CLB Thám Tử à? Cô Lan niêm phong hộp lại rồi, không soi được nữa đâu.
 - **tung** (happy): Bọn cháu qua chào bác thôi ạ. Bác trực ở đây cả tuần hả bác?
 - **bac-tu** (neutral): Thứ Hai tới thứ Bảy. Bảy giờ sáng bác mở cửa, chín giờ tối bác khóa. Chủ nhật bác chỉ ghé buổi tối để khóa cửa, có việc thì sang cổng ký túc tìm chú Cường.
 - **ha-vy** (thinking): Tức là cả ngày Chủ nhật sảnh này không có ai trông.
