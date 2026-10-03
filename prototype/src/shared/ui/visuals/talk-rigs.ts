@@ -45,6 +45,10 @@ import tungNeutralMouth from './talk/tung-neutral/mouth.webp';
 import tungNeutralEyes from './talk/tung-neutral/eyes.webp';
 import haVyThinkingMouth from './talk/ha-vy-thinking/mouth.webp';
 import haVyThinkingEyes from './talk/ha-vy-thinking/eyes.webp';
+import tungHappyMouth from './talk/tung-happy/mouth.webp';
+import tungHappyEyes from './talk/tung-happy/eyes.webp';
+import tungWorriedMouth from './talk/tung-worried/mouth.webp';
+import tungWorriedEyes from './talk/tung-worried/eyes.webp';
 
 export interface TalkPatch {
   src: string;
@@ -157,13 +161,36 @@ const RIGS: readonly TalkRig[] = [
     mouth: { src: hoaiRelievedMouth, x: 378, y: 467, w: 67, h: 39 },
     eyes: { src: hoaiRelievedEyes, x: 331, y: 375, w: 176, h: 58 },
   },
+  // Tùng (30/09, art/nguon/cat-mieng-nhep-moi.py): ảnh neo cười hé miệng → miếng là miệng KHÉP; vui cười to → miệng khép cười.
+  {
+    sourceFile: '/src/assets/characters/char-tung-anchor.png',
+    width: 768,
+    height: 1360,
+    mouth: { src: tungNeutralMouth, x: 339, y: 292, w: 152, h: 86 },
+    eyes: { src: tungNeutralEyes, x: 304, y: 203, w: 228, h: 109 },
+  },
+  {
+    sourceFile: '/src/assets/mvp/nhan-vat/char-tung-happy.png',
+    width: 768,
+    height: 1360,
+    mouth: { src: tungHappyMouth, x: 338, y: 286, w: 164, h: 98 },
+    eyes: { src: tungHappyEyes, x: 283, y: 206, w: 246, h: 93 },
+  },
+  {
+    sourceFile: '/src/assets/mvp/nhan-vat/char-tung-worried.png',
+    width: 768,
+    height: 1360,
+    mouth: { src: tungWorriedMouth, x: 352, y: 293, w: 146, h: 84 },
+    eyes: { src: tungWorriedEyes, x: 306, y: 197, w: 227, h: 109 },
+  },
 ];
 
 /** Bộ nhép môi của ảnh đang hiện (so URL tệp nguồn); ảnh khác / chưa có bộ → `undefined`. */
 export function talkRigFor(character: CharacterId, shownUrl: string | undefined): TalkRig | undefined {
   if (!shownUrl) return undefined;
-  const prefix = `/src/assets/characters/char-${character}-`;
-  return RIGS.find((rig) => rig.sourceFile.startsWith(prefix) && artUrlOfFile(rig.sourceFile) === shownUrl);
+  // Ảnh chân dung nằm ở src/assets/characters/ hoặc src/assets/mvp/nhan-vat/ (biểu cảm làm cho bản MVP).
+  const ten = `/char-${character}-`;
+  return RIGS.find((rig) => rig.sourceFile.includes(ten) && artUrlOfFile(rig.sourceFile) === shownUrl);
 }
 
 /** Mọi tệp nguồn có bộ nhép môi (cho test). */

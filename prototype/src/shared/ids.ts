@@ -17,12 +17,12 @@ export type SceneId = (typeof SCENE_IDS)[number];
 
 // ---------- Nhân vật và biểu cảm ----------
 export const CHARACTER_EXPRESSIONS = {
-  'minh-anh': ['neutral', 'worried', 'happy'],
+  'minh-anh': ['neutral', 'worried', 'happy', 'serious'],
   'ha-vy': ['neutral', 'thinking', 'smile'],
   quan: ['neutral', 'smug', 'stunned'],
   hoai: ['nervous', 'downcast', 'relieved'],
-  'bac-tu': ['neutral'],
-  tung: ['neutral'],
+  'bac-tu': ['neutral', 'smile'],
+  tung: ['neutral', 'happy', 'worried', 'surprised', 'thinking'],
 } as const satisfies Record<string, readonly string[]>;
 
 export type CharacterId = keyof typeof CHARACTER_EXPRESSIONS;

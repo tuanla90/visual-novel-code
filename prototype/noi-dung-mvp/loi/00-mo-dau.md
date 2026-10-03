@@ -134,7 +134,6 @@
 
 ## md-09-ngay-hoi.2b
 - **narrator**: Mười phút sau, trên tay Tùng có bốn tờ đăng ký, một cái quạt giấy của CLB Guitar và nửa cái bánh rán của CLB Nấu ăn.
-- **tung** (neutral): Chị ơi, đây là bàn CLB Thám Tử ạ? Chị là thành viên CLB ạ?
 - **tung** (neutral): Chị ơi, đây là bàn CLB Thám Tử ạ? Chị là thành viên ở đây ạ?
 - **minh-anh** (neutral): Ừ. Chị trực bàn hôm nay.
 - **tung** (neutral): CLB mình đang điều tra vụ nào không chị?
