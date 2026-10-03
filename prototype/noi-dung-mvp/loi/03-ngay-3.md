@@ -98,7 +98,9 @@
 
 ## n3-bd-phong-may-an.1
 - **narrator**: Hai đôi dép lê xếp ngay ngắn trước cửa phòng máy. Phòng trải thảm, vào là phải bỏ giày.
-- **tung** (happy): Thế ai trốn tiết vào đây là để lại dấu dép ngay cửa. Phòng máy tự điểm danh hộ thầy.
+- **tung** (happy): Thế ai trốn tiết thực hành thì nhìn dép là biết vắng ai. Phòng máy tự điểm danh hộ thầy.
+- **narrator**: Cạnh khung cửa dán tờ danh sách lớp thực hành tuần trước. Ba cái tên bị khoanh đỏ, bên cạnh ghi tay: "Vắng quá 20% — không đủ điều kiện dự thi. Học lại kỳ sau."
+- **tung** (worried): …Một trong ba cái tên kia là thằng cùng phòng bên cạnh. Hôm trước nó còn khoe trốn tiết đi đá bóng.
 
 ## n3-bd-toa-b-an.1
 - **narrator**: Tem kiểm định trên bình cứu hỏa ghi tháng 9 năm nay, bên cạnh có chữ ký tắt: "T."

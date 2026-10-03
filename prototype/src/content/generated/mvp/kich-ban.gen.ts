@@ -3463,7 +3463,18 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Thế ai trốn tiết vào đây là để lại dấu dép ngay cửa. Phòng máy tự điểm danh hộ thầy."
+          "text": "Thế ai trốn tiết thực hành thì nhìn dép là biết vắng ai. Phòng máy tự điểm danh hộ thầy."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cạnh khung cửa dán tờ danh sách lớp thực hành tuần trước. Ba cái tên bị khoanh đỏ, bên cạnh ghi tay: \"Vắng quá 20% — không đủ điều kiện dự thi. Học lại kỳ sau.\""
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "…Một trong ba cái tên kia là thằng cùng phòng bên cạnh. Hôm trước nó còn khoe trốn tiết đi đá bóng."
         }
       ]
     },
