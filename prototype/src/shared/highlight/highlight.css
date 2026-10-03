@@ -1,0 +1,18 @@
+.game-highlight { font-weight: 650; }
+.game-highlight--person { color: #245da8; }
+.game-highlight--time { color: #875600; }
+.game-highlight--place { color: #167049; }
+.game-highlight--item { color: #88449a; }
+/* Dark dialogue surfaces need brighter text; documents keep the dark palette. */
+.dialog--glass .game-highlight--person,
+.dialog--card .game-highlight--person,
+.backlog-modal__card .game-highlight--person { color: #8fc6ff; }
+.dialog--glass .game-highlight--time,
+.dialog--card .game-highlight--time,
+.backlog-modal__card .game-highlight--time { color: #ffce78; }
+.dialog--glass .game-highlight--place,
+.dialog--card .game-highlight--place,
+.backlog-modal__card .game-highlight--place { color: #87e1b4; }
+.dialog--glass .game-highlight--item,
+.dialog--card .game-highlight--item,
+.backlog-modal__card .game-highlight--item { color: #e5adf6; }

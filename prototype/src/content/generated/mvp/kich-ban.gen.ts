@@ -4461,9 +4461,9 @@ const GOC = {
             },
             {
               "sprite": "vung:khay-giay",
-              "x": 89,
-              "y": 60,
-              "rong": 8,
+              "x": 88.5,
+              "y": 50,
+              "rong": 10,
               "chuoi": "n4-ctsv-an",
               "sau": [],
               "nhan": "Khay giấy trên quầy"
@@ -7230,7 +7230,7 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:ba-lua",
-              "x": 30,
+              "x": 46,
               "y": 100,
               "rong": 15,
               "chuoi": "tin-bd-tra-da-vao",
@@ -7240,9 +7240,9 @@ const GOC = {
             },
             {
               "sprite": "vung:xe-dap",
-              "x": 62,
-              "y": 55,
-              "rong": 10,
+              "x": 62.5,
+              "y": 53,
+              "rong": 16,
               "chuoi": "tin-bd-tra-da-an",
               "sau": [],
               "nhan": "Chiếc xe đạp cũ"
@@ -7840,7 +7840,7 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:nam",
-              "x": 60,
+              "x": 48,
               "y": 100,
               "rong": 15,
               "chuoi": "v3-xuong-vao",
@@ -7851,8 +7851,8 @@ const GOC = {
             {
               "sprite": "vung:bang-trang",
               "x": 73,
-              "y": 30,
-              "rong": 12,
+              "y": 30.5,
+              "rong": 16,
               "chuoi": "v3-xuong-an",
               "sau": [],
               "nhan": "Bảng trắng trên tường"
@@ -8834,7 +8834,7 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:ha-vy",
-              "x": 72,
+              "x": 45,
               "y": 100,
               "rong": 15,
               "chuoi": "v3-bd-thu-vien-vao",
@@ -8922,7 +8922,7 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:ba-lua",
-              "x": 30,
+              "x": 46,
               "y": 100,
               "rong": 15,
               "chuoi": "v3-bd-tra-da-vao",
@@ -8932,9 +8932,9 @@ const GOC = {
             },
             {
               "sprite": "vung:xe-dap",
-              "x": 62,
-              "y": 55,
-              "rong": 10,
+              "x": 62.5,
+              "y": 53,
+              "rong": 16,
               "chuoi": "v3-bd-tra-da-an",
               "sau": [],
               "nhan": "Chiếc xe đạp cũ"
@@ -12362,7 +12362,7 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:ba-lua",
-              "x": 30,
+              "x": 46,
               "y": 100,
               "rong": 15,
               "chuoi": "v5-bd-tra-da-vao",
@@ -12372,9 +12372,9 @@ const GOC = {
             },
             {
               "sprite": "vung:xe-dap",
-              "x": 62,
-              "y": 55,
-              "rong": 10,
+              "x": 62.5,
+              "y": 53,
+              "rong": 16,
               "chuoi": "v5-bd-tra-da-an",
               "sau": [],
               "nhan": "Chiếc xe đạp cũ"

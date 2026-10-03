@@ -1,4 +1,6 @@
 const DATA = JSON.parse(document.getElementById('timeline-data').textContent);
+const highlighter = new TimelineHighlight.Engine(DATA.highlightTerms ?? []);
+const highlightEnabled = new Set(Object.keys(TimelineHighlight.categories));
 const el = (id) => document.getElementById(id);
 const esc = (value = '') => String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const href = (file) => '../../' + file.split('/').map(encodeURIComponent).join('/');
@@ -166,6 +168,7 @@ function render() {
   const windows = state.view === 'windows' ? windowModels() : [];
   el('result-count').textContent = state.view === 'events' ? events.length + ' mốc quyết định · log nền đã gộp' : state.view === 'windows' ? windows.length + ' nhánh / khoảng kích hoạt' : findings.length + ' điểm cần xử lý';
   el('content').innerHTML = state.view === 'events' ? renderEvents(events) : state.view === 'windows' ? renderWindows(windows) : renderConstraints(findings);
+  highlighter.apply(el('content'), [...highlightEnabled]);
 }
 function reset() {
   state.sources = new Set(['canon']); state.tracks = new Set(Object.keys(trackNames)); state.months = new Set(months); state.cases = new Set(DATA.cases.map((c) => c.id)); state.query = ''; state.group = 'case'; state.view = 'events'; el('search').value = ''; el('group').value = 'case'; renderFilters(); render();
@@ -185,4 +188,18 @@ el('reset').addEventListener('click', reset);
 el('content').addEventListener('click', (event) => { if (event.target.closest('[data-reset]')) reset(); });
 el('collapse').addEventListener('click', () => el('content').querySelectorAll('details[open]').forEach((node) => { node.open = false; }));
 el('sources').innerHTML = DATA.sources.map((file) => '<li>' + link(file) + '</li>').join('');
+function renderHighlightOptions() {
+  el('highlight-options').innerHTML = Object.entries(TimelineHighlight.categories).map(([id, title]) => '<label><input type="checkbox" value="' + id + '"' + (highlightEnabled.has(id) ? ' checked' : '') + '><span class="hl hl-' + id + '">' + esc(title) + '</span></label>').join('');
+  el('highlight-toggle').textContent = highlightEnabled.size ? 'Tắt tất cả' : 'Bật tất cả';
+}
+el('highlight-options').addEventListener('change', (event) => {
+  if (event.target.checked) highlightEnabled.add(event.target.value); else highlightEnabled.delete(event.target.value);
+  highlighter.apply(el('content'), [...highlightEnabled]);
+  el('highlight-toggle').textContent = highlightEnabled.size ? 'Tắt tất cả' : 'Bật tất cả';
+});
+el('highlight-toggle').addEventListener('click', () => {
+  if (highlightEnabled.size) highlightEnabled.clear(); else Object.keys(TimelineHighlight.categories).forEach((id) => highlightEnabled.add(id));
+  renderHighlightOptions(); highlighter.apply(el('content'), [...highlightEnabled]);
+});
+renderHighlightOptions();
 renderFilters(); render();

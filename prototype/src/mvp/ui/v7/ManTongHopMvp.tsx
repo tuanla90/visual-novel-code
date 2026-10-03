@@ -9,6 +9,7 @@ import type { QuanSatTruyVanMvp } from '../../engine/tri-nho-dong-hanh';
 import { useMemo, useState, type CSSProperties } from 'react';
 import type { BoDuLieuMvp, KichBanMvp, TheThuThachMvp } from '../../../content/mvp/types';
 import { IconPin, IconPlay } from '../../../shared/ui/icons';
+import { CodeText } from '../../../shared/ui/CodeText';
 import type { GiaTriHoSo } from '../../engine/giay-nho';
 import type { DieuKienDung } from '../../engine/trinh-dung';
 import { TEN_HAM, khoiTongHopCuaThe, taoSqlTongHop, type CauTongHop, type HamTongHop, type NguonTongHop } from '../../engine/trinh-dung-tong-hop';
@@ -477,7 +478,7 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
           {chibiNoi ? <img className="v7-thoai__mat" src={chibiNoi} alt="" draggable={false} /> : null}
           <span className="v7-thoai__than">
             <b>{tenNguoiNoi(kb, loiNoi.speaker)}</b>
-            <span>{loiNoi.text}</span>
+            <span><CodeText text={loiNoi.text} /></span>
           </span>
           <span className="v7-thoai__them" aria-hidden="true">
             ✕

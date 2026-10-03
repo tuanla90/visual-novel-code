@@ -26,8 +26,8 @@ export function TheHoSo({ the, dienTen }: { the: TheHoSoMvp; dienTen: (t: string
         </div>
 
         <header className="mvp-the__dau mvp-doc-to__dau">
-          <h3 className="mvp-the__tieude">{dienTen(the.heading)}</h3>
-          {nguon ? <p className="mvp-the__nguon">Nguồn: {dienTen(nguon)}</p> : null}
+          <h3 className="mvp-the__tieude"><CodeText text={dienTen(the.heading)} /></h3>
+          {nguon ? <p className="mvp-the__nguon">Nguồn: <CodeText text={dienTen(nguon)} /></p> : null}
         </header>
 
         {/* Đoạn văn bản trước dạng fake hình chữ nhật */}
@@ -83,8 +83,8 @@ export function TheHoSo({ the, dienTen }: { the: TheHoSoMvp; dienTen: (t: string
     <article className={`mvp-the mvp-the--${the.loai}`}>
       <header className="mvp-the__dau">
         <span className="mvp-the__loai">{NHAN_LOAI[the.loai]}</span>
-        <h3 className="mvp-the__tieude">{dienTen(the.heading)}</h3>
-        {nguon ? <p className="mvp-the__nguon">Nguồn: {dienTen(nguon)}</p> : null}
+        <h3 className="mvp-the__tieude"><CodeText text={dienTen(the.heading)} /></h3>
+        {nguon ? <p className="mvp-the__nguon">Nguồn: <CodeText text={dienTen(nguon)} /></p> : null}
       </header>
       {noiDung ? (
         <p className="mvp-the__noidung">

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useVnStore } from './vn-store';
 import { soundEngine } from '../audio/sound-engine';
 import './vn-controls.css';
+import { CodeText } from '../ui/CodeText';
 
 export interface BacklogModalProps {
   open: boolean;
@@ -58,7 +59,7 @@ export function BacklogModal({ open, onClose }: BacklogModalProps) {
             backlog.map((item, idx) => (
               <div key={`${item.id}-${idx}`} className="backlog-item">
                 <span className="backlog-item__speaker">{item.speakerName || 'Người dẫn truyện'}</span>
-                <span className="backlog-item__text">{item.text}</span>
+                <span className="backlog-item__text"><CodeText text={item.text} /></span>
               </div>
             ))
           )}

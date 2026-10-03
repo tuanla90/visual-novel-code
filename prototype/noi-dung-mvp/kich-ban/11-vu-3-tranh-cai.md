@@ -49,8 +49,8 @@
 
 - [LỜI v3-xuong.1]
 - [KHÁM PHÁ kp-toi-v3-xuong]
-  - nv:nam · x 60% · y 100% · rộng 15% → v3-xuong-vao · dấu: ! · nhãn: Nam
-  - vung:bang-trang · x 73% · y 30% · rộng 12% → v3-xuong-an · nhãn: Bảng trắng trên tường
+  - nv:nam · x 48% · y 100% · rộng 15% → v3-xuong-vao · dấu: ! · nhãn: Nam
+  - vung:bang-trang · x 73% · y 30.5% · rộng 16% → v3-xuong-an · nhãn: Bảng trắng trên tường
 
 ### v3-xuong-vao — Tới nơi: Xưởng Robotics: Nam mở bản xuất bài đăng của kênh {cảnh: xuong-robot}
 
@@ -143,7 +143,7 @@
 ### v3-bd-thu-vien — Bản đồ Vụ 3 (tùy chọn): ghé thư viện {cảnh: thu-vien}
 
 - [KHÁM PHÁ kp-toi-v3-bd-thu-vien]
-  - nv:ha-vy · x 72% · y 100% · rộng 15% → v3-bd-thu-vien-vao · dấu: ! · nhãn: Hà Vy
+  - nv:ha-vy · x 45% · y 100% · rộng 15% → v3-bd-thu-vien-vao · dấu: ! · nhãn: Hà Vy
   - vung:quay · x 58% · y 40% · rộng 8% → v3-bd-thu-vien-an · nhãn: Quầy thủ thư
 
 ### v3-bd-thu-vien-vao — Tới nơi: Bản đồ Vụ 3 (tùy chọn): ghé thư viện {cảnh: thu-vien}
@@ -157,8 +157,8 @@
 ### v3-bd-tra-da — Bản đồ Vụ 3 (tùy chọn): quán trà đá, chuyện một kết luận sai {cảnh: tra-da}
 
 - [KHÁM PHÁ kp-toi-v3-bd-tra-da]
-  - nv:ba-lua · x 30% · y 100% · rộng 15% → v3-bd-tra-da-vao · dấu: ! · nhãn: Bà bán trà đá
-  - vung:xe-dap · x 62% · y 55% · rộng 10% → v3-bd-tra-da-an · nhãn: Chiếc xe đạp cũ
+  - nv:ba-lua · x 46% · y 100% · rộng 15% → v3-bd-tra-da-vao · dấu: ! · nhãn: Bà bán trà đá
+  - vung:xe-dap · x 62.5% · y 53% · rộng 16% → v3-bd-tra-da-an · nhãn: Chiếc xe đạp cũ
 
 ### v3-bd-tra-da-vao — Tới nơi: Bản đồ Vụ 3 (tùy chọn): quán trà đá, chuyện một kết luận sai {cảnh: tra-da}
 

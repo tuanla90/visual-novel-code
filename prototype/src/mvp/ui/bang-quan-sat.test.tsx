@@ -60,8 +60,8 @@ describe('bảng người quan sát MVP', () => {
   });
 
   it('hủy xác nhận → không đổi ván', async () => {
-    const dau = taoTrangThai(kb, 1);
-    veManChoi('/?facilitator=1', dau);
+    veManChoi('/?facilitator=1');
+    const dau = trangThai();
     const bang = screen.getByRole('complementary', { name: 'Bảng người quan sát (MVP)' });
     await userEvent.click(within(bang).getByRole('button', { name: 'Mở bảng' }));
     await userEvent.click(within(bang).getByRole('button', { name: 'Ngày 2 · Lớp ở tòa B và học Báo chí' }));

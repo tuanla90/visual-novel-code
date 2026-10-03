@@ -5,6 +5,7 @@
  */
 import '../../evidence/ui/chara-profile.css';
 import { useState } from 'react';
+import { HighlightText } from '../../shared/highlight/HighlightText';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { anhChanDung, anhNen } from './anh-mvp';
 import { mauNhanVat } from './mau-nhan-vat';
@@ -189,7 +190,7 @@ export function NhanVatMvp({ kb, daGap }: { kb: KichBanMvp; daGap: readonly stri
           <section className="chara-profile__section">
             <div className="chara-profile__pill-header">GIỚI THIỆU</div>
             <div className="chara-profile__section-content">
-              <p>{gt.loi}</p>
+              <p><HighlightText text={gt.loi} /></p>
               {gt.lich ? (
                 <p className="mvp-nhanvat__lich">
                   <b>Thường gặp ở đâu:</b> {gt.lich}

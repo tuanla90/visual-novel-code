@@ -6,6 +6,7 @@ import { useKhoMvp } from '../store/kho-mvp';
 import { banDangCoMat, khoaNguCanhDongHanh, type BanDongHanhMvp as BanBe } from '../engine/tri-nho-dong-hanh';
 import { taoNguCanhDongHanh } from '../engine/ngu-canh-dong-hanh';
 import { anhChanDung } from './anh-mvp';
+import { HighlightText } from '../../shared/highlight/HighlightText';
 
 export function DongHanhMvp({
   kb,
@@ -126,7 +127,7 @@ export function DongHanhMvp({
               </div>
             ) : tinNhan.map((item, index) => (
               <p key={`${index}-${item.role}`} className={`dong-hanh__tin-nhan-muc dong-hanh__tin-nhan-muc--${item.role}`}>
-                {item.role === 'assistant' ? <b>{tenNhanVat(nhanVat)}</b> : <b>{s.tenNguoiChoi || 'Bạn'}</b>} {item.content}
+                {item.role === 'assistant' ? <b>{tenNhanVat(nhanVat)}</b> : <b>{s.tenNguoiChoi || 'Bạn'}</b>} <HighlightText text={item.content} />
               </p>
             ))}
             {dangGui ? <p className="dong-hanh__dang-go">{tenNhanVat(nhanVat)} đang nghĩ…</p> : null}

@@ -40,8 +40,8 @@ export function TaiLieuMvp({ kb, id, dienTen, onCat }: TaiLieuMvpProps) {
         ) : null}
         <div className="mvp-nhan__chu">
           <span className="mvp-nhan__loai">{NHAN_LOAI[the.loai]}</span>
-          <h3 className="mvp-nhan__tieude">{dienTen(the.heading)}</h3>
-          {nguon ? <p className="mvp-nhan__nguon">Nguồn: {dienTen(nguon)}</p> : null}
+          <h3 className="mvp-nhan__tieude"><CodeText text={dienTen(the.heading)} /></h3>
+          {nguon ? <p className="mvp-nhan__nguon">Nguồn: <CodeText text={dienTen(nguon)} /></p> : null}
           {noiDung ? (
             <p className="mvp-nhan__noidung">
               <CodeText text={dienTen(noiDung)} />

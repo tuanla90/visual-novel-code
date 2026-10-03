@@ -8,7 +8,9 @@
  * Trạng thái nằm trong `store/kho-mvp.ts` (khóa riêng), không đụng store prototype.
  */
 import './mvp.css';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { HighlightProvider } from '../../shared/highlight/HighlightText';
+import { highlightMvp } from './highlight-mvp';
 import type { KichBanMvp, LoiMvp } from '../../content/mvp/types';
 import { isFacilitatorMode } from '../../app/facilitator-mode';
 import { isEffectId } from '../../shared/ids';
@@ -86,6 +88,7 @@ function thuHomNay(kb: KichBanMvp, s: TrangThaiMvp): number {
 export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const kb = KICH_BAN;
   const s = useKhoMvp((k) => k.trangThai);
+  const highlightEngine = useMemo(() => highlightMvp(kb, s?.tenNguoiChoi ?? ''), [kb, s?.tenNguoiChoi]);
   const oLuu = useKhoMvp((k) => k.oLuu);
   const batDau = useKhoMvp((k) => k.batDau);
   const hanhDong = useKhoMvp((k) => k.hanhDong);
@@ -611,7 +614,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           <div className="game-simulator-island">
             <div className="game-simulator-island-camera" />
           </div>
-          {game}
+          <HighlightProvider engine={highlightEngine}>{game}</HighlightProvider>
           <div className="game-simulator-home-bar" />
         </div>
         {bangQuanSat}
@@ -621,7 +624,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   }
   return (
     <>
-      {game}
+      <HighlightProvider engine={highlightEngine}>{game}</HighlightProvider>
       {bangQuanSat}
       {nhacXoay}
     </>
