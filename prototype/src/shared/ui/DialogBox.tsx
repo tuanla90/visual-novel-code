@@ -399,6 +399,13 @@ export function DialogBox({
         onClick={handleBoxClick}
         data-speaker={line.speaker}
       >
+        {display === 'card' ? (
+          <div className="dialog__card-decor" aria-hidden="true">
+            <span className="dialog__card-line" />
+            <span className="dialog__card-icon">✦</span>
+            <span className="dialog__card-line" />
+          </div>
+        ) : null}
         {label ? (
           <div className="dialog__speaker">
             <svg className="dialog__speaker-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -410,12 +417,17 @@ export function DialogBox({
         <p ref={textRef} className={`dialog__text dialog__text--${dialogueFont}`}>
           <CodeText text={displayedText} />
         </p>
+        {display === 'card' ? (
+          <div className="dialog__card-hint" aria-hidden="true">
+            <span>Nhấp chuột hoặc phím Cách để tiếp tục</span>
+          </div>
+        ) : null}
       </div>
 
       {/* Button Hồ sơ / QuickBar mobile và Tiếp tục nằm ngoài khung thoại */}
-      <div className="dialog__footer dialog__footer--external">
+      <div className={`dialog__footer dialog__footer--external${display === 'card' ? ' dialog__footer--card' : ''}`}>
         <div className="dialog__footer-left">
-          {onOpenNotebook ? (
+          {display !== 'card' && onOpenNotebook ? (
             <button
               type="button"
               className="dialog__btn-notebook"
