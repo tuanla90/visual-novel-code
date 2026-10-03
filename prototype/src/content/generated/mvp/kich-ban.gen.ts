@@ -8076,6 +8076,12 @@ const GOC = {
         },
         {
           "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tớ cũng hay lên thư viện tra tài liệu, để tớ xuất bản của tớ gộp chung vào luôn cho khách quan."
+        },
+        {
+          "type": "line",
           "speaker": "nam",
           "expression": "neutral",
           "text": "Lọc ra của tớ rồi xem."
@@ -8088,7 +8094,7 @@ const GOC = {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Tệp có cả hai tên. Lọc đúng tên Nam."
+          "text": "Tệp có nhiều người. Lọc đúng tên Nam."
         },
         {
           "type": "challenge",
@@ -17471,7 +17477,7 @@ const GOC = {
     "c-nam-thu-vien": {
       "id": "c-nam-thu-vien",
       "tieuDe": "Bản ghi quẹt thẻ thư viện",
-      "deBai": "Bản ghi cửa từ thư viện do chính Nam và Hà Vy tải về từ cổng sinh viên, gộp chung một tệp. Nam vào thư viện những ngày nào?",
+      "deBai": "Bản ghi cửa từ thư viện của các thành viên tải về từ cổng sinh viên, gộp chung một tệp. Nam vào thư viện những ngày nào?",
       "manhMoiLienQuan": [
         "clue-ten-nam"
       ],
@@ -17496,13 +17502,13 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 37
+            "n": 72
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả tờ, ba mươi bảy lượt của cả hai người từ trước tới giờ. Mình cần riêng của Nam."
+              "text": "Cả tệp, bảy mươi hai lượt quẹt thẻ của cả mấy người từ trước tới giờ. Mình cần riêng của Nam."
             }
           ]
         },
@@ -17648,13 +17654,13 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 37
+            "n": 72
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả tờ. Mình cần riêng của Hà Vy."
+              "text": "Cả tệp. Mình cần riêng của Hà Vy."
             }
           ]
         },

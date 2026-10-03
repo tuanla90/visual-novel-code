@@ -30,7 +30,7 @@
 - `src/mvp/ui/tao-nhan-vat.test.tsx` (11/11 tests passed).
 - TypeScript strict typecheck & Vite production build: 100% passed, 0 lỗi.
 
-## [2026-10-04] Mở Rộng Dữ Liệu Thực Tế: Sổ Chi 19 CLB (`khoan_chi` 200 dòng) & Lịch Sử Thư Viện Của Nam (`quet_the_thu_vien` 37 dòng)
+## [2026-10-04] Mở Rộng Dữ Liệu Thực Tế: Sổ Chi 19 CLB (`khoan_chi` 200 dòng) & Lịch Sử Thư Viện (`quet_the_thu_vien` 72 dòng)
 
 ### 1. Mở Rộng Bảng `khoan_chi` Lên 200 Dòng (Sổ Chi 19 CLB Toàn Trường):
 - **Thuật toán sinh dữ liệu nền (`themQuyVaChi` trong `nhieu-mvp.ts`)**:
@@ -42,23 +42,25 @@
   - Các bài tổng hợp `SUM`, `AVG`, `HAVING` (`c-chi-theo-nguoi-duyet` và `c-chi-vuot-muc`) của Minh Anh và Khánh được bảo toàn trọn vẹn 100%.
   - Cập nhật phản xạ của Tùng trong `tt-so-quy.md`: *"Cả sổ chi các CLB, hai trăm khoản. Mình chỉ cần quỹ CLB mình."*
 
-### 2. Mở Rộng Bảng `quet_the_thu_vien` Lên 37 Dòng (Lịch Sử Nam Từ Khi Vào Trường):
+### 2. Mở Rộng Bảng `quet_the_thu_vien` Lên 72 Dòng (Nam K23, Duy K23 & Hà Vy K24):
 - **Thuật toán sinh dữ liệu nền (`themQuetTheThuVien` trong `nhieu-mvp.ts`)**:
-  - Bổ sung 27 lượt quẹt thẻ của Nam trong năm học 2023–2024 (23 tối thứ Hai, 4 tối thứ Năm) từ khi Nam nhập học khóa K23.
-  - Cùng 5 lượt của Nam trong năm học 2024–2025 -> Tổng cộng Nam có **32 lượt** vào thư viện từ năm ngoái đến nay (27 tối thứ Hai, 5 tối thứ Năm).
-  - Giữ nguyên vẹn 5 lượt của Hà Vy (tân sinh viên K24 nhập học tháng 9). Tổng bảng đạt **37 dòng**.
+  - **Nam (K23)**: Sinh thêm 27 lượt quẹt thẻ của Nam từ năm học 2023–2024 (22 tối thứ Hai, 5 tối thứ Năm) từ khi Nam nhập học. Cùng với 5 lượt trong học kỳ 2024–2025 $\rightarrow$ Tổng cộng Nam có **32 lượt** vào thư viện từ năm ngoái đến nay (27 tối thứ Hai, 5 tối thứ Năm).
+  - **Duy (K23)**: Thêm bạn cùng khóa Duy chuyên lên học ôn 2 ngày trong tuần (cố định **thứ Ba & thứ Sáu**), với **35 lượt** quẹt thẻ trải dài từ năm 2023 tới nay.
+  - **Hà Vy (K24)**: Giữ nguyên vẹn 5 lượt của Hà Vy (tân sinh viên nhập học tháng 9).
+  - **Tổng cộng toàn bảng**: $32 + 35 + 5 =$ **72 dòng** (tăng gấp đôi dữ liệu thực tế).
 - **Bảo toàn 100% chứng cứ ngoại phạm & bài học sư phạm**:
   - Thử thách `c-nam-thu-vien`: lọc theo Nam ra đúng **32 dòng**.
-  - Thử thách `c-nam-thu`: gom theo thứ vẫn giữ nguyên đúng **2 nhóm** (THU_HAI: 27 lần, THU_NAM: 5 lần).
-  - Thử thách `c-toi-07` (`WHERE ngay = '2024-10-07'`): tối mùng 7 chỉ có Nam và Hà Vy quẹt thẻ, kết quả ra đúng **2 dòng** chuẩn xác.
+  - Thử thách `c-nam-thu`: gom theo thứ vẫn giữ nguyên đúng **2 nhóm** (`THU_HAI`: 27 lần, `THU_NAM`: 5 lần).
+  - Duy chỉ đi thư viện vào thứ Ba và thứ Sáu $\rightarrow$ **0 lượt vào thứ Hai**. Do đó, thử thách `c-toi-07` (`WHERE ngay = '2024-10-07'`) tối thứ Hai vẫn chỉ có duy nhất Nam và Hà Vy quẹt thẻ $\rightarrow$ kết quả ra đúng **2 dòng** tuyệt đối chuẩn xác.
   - Thử thách `c-vy-thu-vien`: vẫn trả về đúng **5 dòng**.
-  - Đồng bộ lời thoại nhân vật trong `11-vu-3-tranh-cai.md` và `tt-tranh-cai.md` phản ánh rõ thói quen 27 tối thứ Hai của Nam từ năm ngoái đến nay.
+  - Tùng trong `tt-tranh-cai.md` phản ứng thực tế: *"Bảy mươi hai lượt quẹt thẻ... nhiều người với nhiều ngày quá. Không lọc thì nhìn hoa mắt."*
+  - Đồng bộ lời thoại nhân vật trong `11-vu-3-tranh-cai.md` và `tt-tranh-cai.md` phản ánh rõ dữ liệu xuất chung cả của Duy, Nam và Hà Vy, làm nổi bật thói quen 27 tối thứ Hai của Nam từ năm ngoái đến nay.
 
 ### 3. Rà Soát & Kiểm Thử Toàn Diện:
 - Chạy `npm run noi-dung:sinh:mvp`: Tái sinh kịch bản `kich-ban.gen.ts`.
 - Chạy `npm run kiem-noi-dung:mvp`: 58/58 tệp đạt chuẩn, 39/39 câu SQL kiểm tra số dòng khớp 100%.
 - Chạy `npm run typecheck`: 0 lỗi TypeScript strict mode.
-- Chạy toàn bộ test suite Vitest: **128/128 test files passed**, **1052/1052 tests passed** (100% pass rate).
+- Chạy toàn bộ test suite Vitest: **128/128 test files passed**, **1056/1056 tests passed** (100% pass rate).
 
 
 

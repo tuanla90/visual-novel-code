@@ -178,10 +178,11 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 ## quet_the_thu_vien {bảng}
 - Cột: ten TEXT, ngay TEXT, thu TEXT, gio_vao TEXT, gio_ra TEXT
 
-<!-- Vụ 3: bản ghi quẹt thẻ thư viện do Nam tải toàn bộ từ lúc vào trường (K23) và Hà Vy tải từ đầu năm (K24),
-     gộp chung một tệp. 10 dòng canon được bộ sinh nhieu-mvp.ts mở rộng thành 37 dòng (Nam 32 lượt từ năm ngoái đến nay,
+<!-- Vụ 3: bản ghi quẹt thẻ thư viện do Nam tải toàn bộ từ lúc vào trường (K23), Hà Vy tải từ đầu năm (K24),
+     và Duy (bạn khóa K23 hay lên học ôn thứ Ba & thứ Sáu) chia sẻ lịch tải của mình, gộp chung một tệp.
+     10 dòng canon được bộ sinh nhieu-mvp.ts mở rộng thành 72 dòng (Nam 32 lượt từ năm ngoái đến nay, Duy 35 lượt thứ Ba & Sáu,
      Hà Vy 5 lượt). Cột thứ có sẵn vì hàm ngày giờ nằm ngoài phạm vi mùa 1. Thói quen: tối thứ Hai nào Nam cũng ở thư viện (27 lần);
-     tối 07/10 (thứ Hai) chỉ có Hà Vy 20:00–23:00 và Nam 21:50–23:05, tin gửi 22:40. -->
+     Duy chỉ lên thứ Ba và thứ Sáu; tối 07/10 (thứ Hai) chỉ có Hà Vy 20:00–23:00 và Nam 21:50–23:05, tin gửi 22:40. -->
 
 
 | ten | ngay | thu | gio_vao | gio_ra |

@@ -66,6 +66,7 @@ const CAU: [string, string][] = [
   ['the-tv: cả bảng quet_the_thu_vien', 'SELECT * FROM quet_the_thu_vien'],
   ['the-tv: chỉ của Nam', "SELECT * FROM quet_the_thu_vien WHERE ten = 'Nam'"],
   ['the-tv: chỉ của Hà Vy', "SELECT * FROM quet_the_thu_vien WHERE ten = 'Hà Vy'"],
+  ['the-tv: chỉ của Duy', "SELECT * FROM quet_the_thu_vien WHERE ten = 'Duy'"],
   ['the-tv: tối 07/10', "SELECT * FROM quet_the_thu_vien WHERE ngay = '2024-10-07'"],
 ];
 console.log('== Câu chạy sai hay gặp');

@@ -11,7 +11,7 @@
 
 ## c-nam-thu-vien.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Tên trên bản ghi viết đúng như giấy nhớ: Nam.
-- Khi chạy ra 37 dòng: **tung** (gai-dau): Cả tờ, ba mươi bảy lượt của cả hai người từ trước tới giờ. Mình cần riêng của Nam.
+- Khi chạy ra 72 dòng: **tung** (gai-dau): Cả tệp, bảy mươi hai lượt quẹt thẻ của cả mấy người từ trước tới giờ. Mình cần riêng của Nam.
 - Khi đúng: **nam** (neutral): Ba mươi hai lần. Đúng là của tớ từ năm ngoái tới giờ.
 
 ## c-toi-07.1
@@ -22,6 +22,7 @@
 
 ## c-vy-thu-vien.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Tên tớ trên bản ghi có dấu cách, viết đúng như giấy nhớ.
-- Khi chạy ra 37 dòng: **tung** (gai-dau): Cả tờ. Mình cần riêng của Hà Vy.
+- Khi chạy ra 72 dòng: **tung** (gai-dau): Cả tệp. Mình cần riêng của Hà Vy.
 - Khi đúng: **ha-vy** (neutral): Năm lần. Bốn tối thứ Hai.
+
 

@@ -41,7 +41,7 @@ SELECT thiet_bi, COUNT(*) AS so_dong FROM @ev-bai-dang GROUP BY thiet_bi;
 ### c-nam-thu-vien — Nam vào thư viện những ngày nào? {challenge: c-nam-thu-vien}
 
 - Tiêu đề: Bản ghi quẹt thẻ thư viện
-- Đề bài hiển thị: Bản ghi cửa từ thư viện do chính Nam và Hà Vy tải về từ cổng sinh viên, gộp chung một tệp. Nam vào thư viện những ngày nào?
+- Đề bài hiển thị: Bản ghi cửa từ thư viện của các thành viên tải về từ cổng sinh viên, gộp chung một tệp. Nam vào thư viện những ngày nào?
 - Manh mối liên quan: clue-ten-nam
 - Mục tiêu học: Lọc theo tên để ghim thành phiếu riêng của một người.
 - Số dòng kỳ vọng: 32

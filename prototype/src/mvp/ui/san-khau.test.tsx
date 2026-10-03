@@ -119,5 +119,14 @@ describe('SanKhauMvp — nhãn địa điểm tương tác và bong bóng nhắc
     await user.click(nhac);
     expect(nhac).not.toHaveClass('is-expanded');
   });
+
+  it('sảnh KTX: nền sân khấu luôn hiển thị đạo cụ cố định (thông báo thang máy & bản đồ KTX)', () => {
+    const { container } = render(<SanKhauMvp kb={kb} canh="sanh-ktx" speaker="narrator" />);
+    const daoCu = container.querySelectorAll<HTMLImageElement>('.mvp-stage__dao-cu');
+    expect(daoCu.length).toBe(2);
+    const srcList = [...daoCu].map((img) => img.src);
+    expect(srcList.some((s) => s.includes('obj-thong-bao-thang-may'))).toBe(true);
+    expect(srcList.some((s) => s.includes('obj-so-do-ktx'))).toBe(true);
+  });
 });
 

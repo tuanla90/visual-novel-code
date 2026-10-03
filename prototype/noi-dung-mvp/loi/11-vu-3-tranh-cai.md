@@ -91,9 +91,11 @@
 - **tung** (gai-dau): Tớ dẫn đúng hướng, chỉ sai tòa thôi. Áo thì tớ vẫn cất trong tủ.
 - **narrator**: Nam mở cổng sinh viên trên điện thoại, tải toàn bộ bản ghi cửa từ của mình từ lúc vào trường tới giờ, gửi vào nhóm.
 - **ha-vy** (neutral): Tớ cũng tải bản của tớ, gộp chung vào một tệp cho dễ tra. Tên ai thì ghi tên người đó.
+- **duy** (neutral): Tớ cũng hay lên thư viện tra tài liệu, để tớ xuất bản của tớ gộp chung vào luôn cho khách quan.
 - **nam** (neutral): Lọc ra của tớ rồi xem.
 > NHIỆM VỤ: Nam vào thư viện những ngày nào?
-> NHẮC VIỆC ha-vy (thinking): Tệp có cả hai tên. Lọc đúng tên Nam.
+> NHẮC VIỆC ha-vy (thinking): Tệp có nhiều người. Lọc đúng tên Nam.
+
 
 ## v3-thu-vien.2
 - **player**: Ba mươi hai lần. Ngày với thứ ghi sẵn từ năm ngoái tới giờ.

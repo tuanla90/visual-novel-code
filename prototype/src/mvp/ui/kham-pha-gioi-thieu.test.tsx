@@ -35,17 +35,27 @@ describe('sảnh KTX: [KHÁM PHÁ]', () => {
   it('mở đầu chỉ có tờ giấy thang máy (bảng tin hiện sau), chưa có Tùng; bấm tờ giấy → lời kể; về lại cảnh thì chỗ đó mờ, bảng tin hiện', async () => {
     veManChoi(toiSanh());
     const canh = screen.getByRole('region', { name: 'Khám phá: Sảnh ký túc xá' });
-    expect(within(canh).getByRole('button', { name: 'Xem tờ giấy trên cửa thang máy' })).toBeEnabled();
+    const nutThangMayDau = within(canh).getByRole('button', { name: 'Xem tờ giấy trên cửa thang máy' });
+    expect(nutThangMayDau).toBeEnabled();
+    expect(nutThangMayDau).toHaveClass('is-mo');
     expect(within(canh).queryByRole('button', { name: 'Xem bảng tin' })).toBeNull();
+    // Bản đồ KTX vẫn luôn hiển thị trên bảng tin (trạng thái tĩnh is-cho, chưa tới lượt bấm)
+    const anhCho = canh.querySelector('.is-cho img') as HTMLImageElement;
+    expect(anhCho).not.toBeNull();
+    expect(anhCho.src).toContain('obj-so-do-ktx');
     expect(within(canh).queryByRole('button', { name: /cậu bạn áo xanh/ })).toBeNull();
 
-    await userEvent.click(screen.getByRole('button', { name: 'Xem tờ giấy trên cửa thang máy' }));
+    await userEvent.click(nutThangMayDau);
     expect(screen.queryByRole('region', { name: /^Khám phá/ })).toBeNull();
     expect(document.body.textContent).toContain('Thang máy bảo trì đến hết tuần');
 
     for (let i = 0; i < 5 && !screen.queryByRole('region', { name: /^Khám phá/ }); i++) act(() => useKhoMvp.getState().hanhDong({ type: 'tiep' }));
-    expect(screen.getByRole('button', { name: 'Xem tờ giấy trên cửa thang máy' })).toBeDisabled();
-    expect(screen.getByRole('button', { name: 'Xem bảng tin' })).toBeEnabled();
+    const nutThangMaySau = screen.getByRole('button', { name: 'Xem tờ giấy trên cửa thang máy' });
+    expect(nutThangMaySau).toBeDisabled();
+    expect(nutThangMaySau).toHaveClass('is-da-xem');
+    const nutBangTin = screen.getByRole('button', { name: 'Xem bảng tin' });
+    expect(nutBangTin).toBeEnabled();
+    expect(nutBangTin).toHaveClass('is-mo');
   });
 
   it('màn giới thiệu của Tùng chờ đúng câu tự giới thiệu và cú bấm tiếp sau câu đó', async () => {

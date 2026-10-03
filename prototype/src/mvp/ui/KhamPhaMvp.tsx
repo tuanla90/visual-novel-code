@@ -23,6 +23,7 @@ import { danhSoTrung, nhanDiemKhamPha } from '../engine/nhan-cho-xem';
 import { anhChanDung, anhNen, anhSprite, anhTheoTen } from './anh-mvp';
 import { dangO } from '../engine/lich-nhan-vat';
 import { BAN_DO_MVP, TI_LE_NEN } from './ban-do-mvp';
+import { DAO_CU_CANH } from './dao-cu-canh';
 
 export interface KhamPhaMvpProps {
   kb: KichBanMvp;
@@ -194,6 +195,21 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
         <div className="mvp-canh__vung" ref={vungRef}>
           <div className={`mvp-canh__khung${laBanDo ? ' mvp-bando__khung' : ''}${nenNgoi ? ' is-ngoi' : ''}`} style={soDe}>
             {nenNgoi ?? nen ? <img className="mvp-canh__nen" src={nenNgoi ?? nen} alt="" draggable={false} /> : <div className="mvp-canh__nen mvp-stage__nen-tam" />}
+            {(!laBanDo && !laQuanSat ? (DAO_CU_CANH[canh] ?? []).filter((dc) => !diem.some((d) => d.diem.sprite === dc.sprite)) : []).map((dc) => {
+              const url = anhSprite(dc.sprite);
+              if (!url) return null;
+              const style = { left: `${dc.x}%`, top: `${dc.y}%`, width: `${dc.rong}%` } as CSSProperties;
+              return (
+                <div
+                  key={dc.sprite}
+                  className="mvp-diem mvp-diem--khampha is-cho"
+                  style={style}
+                  aria-hidden="true"
+                >
+                  <img className="mvp-diem__anh" src={url} alt="" draggable={false} />
+                </div>
+              );
+            })}
             {diem.map((d, i) => {
               const ngoi = nenNgoi && d.diem.sprite.startsWith('nv:') ? CHO_NGOI[d.diem.sprite.slice(3)] : undefined;
               if (ngoi) {

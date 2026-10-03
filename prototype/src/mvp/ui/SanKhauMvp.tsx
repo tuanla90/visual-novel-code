@@ -15,11 +15,12 @@ import { Portrait } from '../../shared/ui/Portrait';
 import { useVnStore } from '../../shared/vn/vn-store';
 import type { NhacViecMvp as NhacViec } from '../engine/trang-thai';
 import { TalkOverlay } from '../../shared/ui/visuals/TalkOverlay';
-import { anhChanDung, anhNen, anhTheoTen } from './anh-mvp';
+import { anhChanDung, anhNen, anhSprite, anhTheoTen } from './anh-mvp';
 import { boNhepMoiTheoUrl } from './nhep-moi-mvp';
 import { HoatCanhMvp } from './HoatCanhMvp';
 import { coHoatCanh } from './hoat-canh-mvp';
 import { NhacViecMvp } from './NhacViecMvp';
+import { DAO_CU_CANH } from './dao-cu-canh';
 
 export interface SanKhauMvpProps {
   kb: KichBanMvp;
@@ -170,10 +171,42 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
     return () => clearTimeout(timer);
   }, [moDiaDiem]);
 
+  const daoCu = coDan ? DAO_CU_CANH[canh] : undefined;
+
   return (
     <section className={`stage mvp-stage${shaking ? ' is-shaking' : ''}${nhacViec ? ' co-nhac' : ''}${isCard ? ' is-the-chu' : ''}`} data-scene={canh} aria-label={`Cảnh: ${tenCanh}`}>
       <div className="stage__backdrop mvp-stage__backdrop" aria-hidden="true" data-art-source={nen ? 'image' : 'placeholder'}>
-        {coHoatCanh(canh) ? <HoatCanhMvp key={canh} canh={canh} /> : nen ? <img className="stage__backdrop-img" src={nen} alt="" draggable={false} /> : <div className="mvp-stage__nen-tam" />}
+        {coHoatCanh(canh) ? (
+          <HoatCanhMvp key={canh} canh={canh} />
+        ) : nen ? (
+          daoCu && daoCu.length > 0 ? (
+            <div className="mvp-stage__lop-canh">
+              <img className="stage__backdrop-img" src={nen} alt="" draggable={false} />
+              {daoCu.map((dc) => {
+                const url = anhSprite(dc.sprite);
+                if (!url) return null;
+                return (
+                  <img
+                    key={dc.sprite}
+                    className="mvp-stage__dao-cu"
+                    src={url}
+                    alt=""
+                    draggable={false}
+                    style={{
+                      left: `${dc.x}%`,
+                      top: `${dc.y}%`,
+                      width: `${dc.rong}%`,
+                    }}
+                  />
+                );
+              })}
+            </div>
+          ) : (
+            <img className="stage__backdrop-img" src={nen} alt="" draggable={false} />
+          )
+        ) : (
+          <div className="mvp-stage__nen-tam" />
+        )}
       </div>
       {!isCard ? (
         <button
