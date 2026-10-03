@@ -1,55 +1,55 @@
 {
-  "hash": "dd4483ec",
-  "configHash": "26846cf6",
+  "hash": "ae2faf63",
+  "configHash": "29f5a294",
   "lockfileHash": "646f67d0",
-  "browserHash": "75029d05",
+  "browserHash": "24960ec9",
   "optimized": {
     "react-dom": {
       "src": "../../../../../../prototype/node_modules/react-dom/index.js",
       "file": "react-dom.js",
-      "fileHash": "f19b0033",
+      "fileHash": "5af3bfcf",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../../../../../prototype/node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "88d626b3",
+      "fileHash": "49707bbf",
       "needsInterop": true
     },
     "react": {
       "src": "../../../../../../prototype/node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "4a3f5688",
+      "fileHash": "b076edd8",
       "needsInterop": true
     },
     "react/jsx-dev-runtime": {
       "src": "../../../../../../prototype/node_modules/react/jsx-dev-runtime.js",
       "file": "react_jsx-dev-runtime.js",
-      "fileHash": "80344888",
+      "fileHash": "237632f3",
       "needsInterop": true
     },
     "react/jsx-runtime": {
       "src": "../../../../../../prototype/node_modules/react/jsx-runtime.js",
       "file": "react_jsx-runtime.js",
-      "fileHash": "1bab4c6f",
+      "fileHash": "a31d9382",
       "needsInterop": true
     },
     "sql.js": {
       "src": "../../../../../../prototype/node_modules/sql.js/dist/sql-wasm-browser.js",
       "file": "sql__js.js",
-      "fileHash": "c4e98c14",
+      "fileHash": "bf6d98e6",
       "needsInterop": true
     },
     "zustand": {
       "src": "../../../../../../prototype/node_modules/zustand/esm/index.mjs",
       "file": "zustand.js",
-      "fileHash": "137426ad",
+      "fileHash": "f2073343",
       "needsInterop": false
     },
     "zustand/middleware": {
       "src": "../../../../../../prototype/node_modules/zustand/esm/middleware.mjs",
       "file": "zustand_middleware.js",
-      "fileHash": "40f5053a",
+      "fileHash": "49c4d885",
       "needsInterop": false
     }
   },

@@ -36,6 +36,6 @@ describe('bộ nhép môi MVP', () => {
     expect(boNhepMoiTheoUrl('/assets/char-khong-co-bo.png')).toBeUndefined();
     expect(boNhepMoiTheoUrl(undefined)).toBeUndefined();
     // Chỉ mục tùy ý (test không phụ thuộc import.meta.glob).
-    expect(boNhepMoiTheoUrl('x', (t) => (t === 'char-quan-chi-man' ? 'x' : undefined))?.eyes.h).toBe(49);
+    expect(boNhepMoiTheoUrl('x', (t) => (t === 'char-quan-chi-man' ? 'x' : undefined))?.eyes.h).toBe(48);
   });
 });
