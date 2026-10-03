@@ -56,6 +56,11 @@ const CAU: [string, string][] = [
   ['micro: nối vị trí + tên', `SELECT * FROM ${LC_VT} WHERE ten_tai_san = 'Micro không dây'`],
   ['micro: nối vị trí + tên + đã nhận', `SELECT * FROM ${LC_VT} WHERE ten_tai_san = 'Micro không dây' AND trang_thai = 'DA_NHAN'`],
   ['micro: nối vị trí + đã nhận', `SELECT * FROM ${LC_VT} WHERE trang_thai = 'DA_NHAN'`],
+  ['c-hoc: cả bảng danh_sach_lop_cu', 'SELECT * FROM danh_sach_lop_cu'],
+  ['c-hoc: LOWER(TRIM) ra trường', "SELECT * FROM danh_sach_lop_cu WHERE LOWER(TRIM(ghi_chu)) = 'ra trường'"],
+  ['c-hoc: chỉ lọc ra trường', "SELECT * FROM danh_sach_lop_cu WHERE ghi_chu = 'ra trường'"],
+  ['c-hoc: chỉ TRIM ra trường', "SELECT * FROM danh_sach_lop_cu WHERE TRIM(ghi_chu) = 'ra trường'"],
+  ['c-hoc: chỉ LOWER ra trường', "SELECT * FROM danh_sach_lop_cu WHERE LOWER(ghi_chu) = 'ra trường'"],
 ];
 console.log('== Câu chạy sai hay gặp');
 for (const [ten, sql] of CAU) console.log(`${demDong(db, sql)}\t${ten}`);

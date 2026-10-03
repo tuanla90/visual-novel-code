@@ -1,5 +1,35 @@
 # Nhật Ký Thay Đổi (.agent/changelog.md)
 
+## [2026-10-03] Mở Rộng Dữ Liệu Thực Tế: Seeding Bảng `danh_sach_lop_cu` Lên 400 Dòng & Rà Soát Hệ Thống
+
+### 1. Seeding Thực Tế Bảng `danh_sach_lop_cu` (Từ 39 lên 400 dòng):
+- **Bổ sung thuật toán sinh dữ liệu nền (`themDanhSachLopCu` trong `nhieu-mvp.ts`)**:
+  - Sinh thêm 361 dòng dữ liệu ngẫu nhiên có hạt giống cố định (`seed: 2115`), trải đều qua 10 niên khóa (1995–1996 đến 2004–2005) và các lớp `TH`, `KT`.
+  - Tăng tổng số dòng từ 39 dòng lên đúng **400 dòng** quy mô trường đại học thực tế.
+- **Bảo toàn 100% bất biến cốt truyện & logic SQL sư phạm**:
+  - Giữ nguyên vẹn 30 dòng sinh viên ra trường của cốt truyện.
+  - Các dòng nền bổ sung TUYỆT ĐỐI không chứa `ghi_chu` là `ra trường` dưới bất kỳ biến thể nào (chỉ chọn từ `[null, thôi học, chuyển trường, bảo lưu, chuyển lớp, khen thưởng]`).
+  - Đảm bảo các kết quả truy vấn sư phạm hoàn toàn chuẩn xác:
+    - Cả bảng: đúng 400 dòng.
+    - Không lọc chuẩn hóa: đúng 18 dòng.
+    - Chỉ dùng `TRIM`: đúng 23 dòng.
+    - Chỉ dùng `LOWER`: đúng 23 dòng.
+    - Dùng cả `LOWER(TRIM(...))`: đúng 30 dòng.
+    - Gom nhóm (`GROUP BY ho_ten HAVING COUNT(*) > 1`): đúng 26 tên độc nhất, 4 tên có 2 dòng (Châu, Sơn, Long, Hùng).
+  - Dòng easter egg của `Đỗ Văn Thịnh` (1995–1996, thôi học) luôn được giữ cố định ở dòng đầu tiên của bảng.
+
+### 2. Đồng Bộ Nội Dung Kịch Bản & Lời Thoại:
+- Cập nhật lời thoại nhân vật Tùng trong `loi/tt-phu-hoc-tro-cu.md`: *"Cả bảng, bốn trăm dòng, kể cả người thôi học, người chuyển trường."* khi người chơi chạy truy vấn chưa lọc.
+- Cập nhật lời dẫn kết nhiệm vụ trong `lich.md`: *"Từ bốn trăm dòng lớp cũ, 30 dòng ghi ra trường..."*.
+- Cập nhật ghi chú giải thích trong `du-lieu.md`.
+- Sinh lại kịch bản TypeScript tự động (`kich-ban.gen.ts`).
+
+### 3. Rà Soát & Kiểm Thử Toàn Diện:
+- Chạy `npm run kiem-noi-dung:mvp`: 58/58 tệp nội dung đạt chuẩn, 39 câu truy vấn kiểm tra đều khớp 100%.
+- Chạy `npm run typecheck`: 0 lỗi TypeScript strict mode.
+- Chạy toàn bộ test suite Vitest: **127/127 test files passed**, **1050/1050 tests passed** (100% pass rate).
+
+
 ## [2026-10-03] Tái Thiết Kế Màn Kết Vụ: Hiển Thị Trọn Vẹn Ảnh 16:9 & Không Cuộn (Zero-Scroll)
 
 ### 1. Khắc Phục Lỗi Cắt Xén Ảnh CG (16:9 Showcase):
