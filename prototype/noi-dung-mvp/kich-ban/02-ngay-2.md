@@ -9,6 +9,7 @@
   - ghim:toa-hanh-chinh · x 21% · y 54% · rộng 5% → n2-co-hanh · dấu: ! · có: co-hanh · nhãn: Phòng Đào tạo
   - ghim:toa-b · x 48% · y 29% · rộng 5% → n2-bd-toa-b · dấu: ? · có: bac-tu · nhãn: Sảnh tòa B
   - ghim:cang-tin · x 88% · y 41% · rộng 5% → n2-bd-cang-tin · dấu: ? · nhãn: Căng tin
+  - ghim:nha-clb · x 45% · y 17% · rộng 5% → n2-phong · sau: n2-co-hanh · dấu: ! · nhãn: Phòng CLB
 
 ### n2-co-hanh — Cô Hạnh tạo tài khoản CLB (chỉ bảng lớp) {cảnh: phong-dao-tao}
 
@@ -16,7 +17,6 @@
 - [HIỆN TÀI LIỆU doc-van-ban-thay-quang]
 - [HẬU QUẢ] mở manh mối clue-quyen-du-lieu
 - [LỜI n2-co-hanh.2]
-- [ĐI TỚI n2-phong]
 
 ### n2-bd-toa-b — Bản đồ ngày 2 (tùy chọn): ghé sảnh tòa B hỏi bác Thịnh {cảnh: sanh-toa-b}
 

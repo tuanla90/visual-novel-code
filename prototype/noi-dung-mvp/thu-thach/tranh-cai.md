@@ -6,6 +6,7 @@
 - Đề bài hiển thị: Bản xuất bài đăng của mọi kênh trong trường, chín ngày đầu tháng 10. Kênh Robotics đăng những bài nào?
 - Manh mối liên quan: clue-kenh-robotics
 - Mục tiêu học: Lọc ra một tập để ghim thành phiếu, chuẩn bị nhóm và đếm.
+- Chọn cột: không
 - Số dòng kỳ vọng: 9
 - SQL chuẩn:
 

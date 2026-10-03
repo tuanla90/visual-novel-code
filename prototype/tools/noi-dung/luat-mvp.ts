@@ -326,6 +326,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           }
           if (!it.chuaDu) err(vt, `[ĐỐI CHẤT ${it.id}] thiếu dòng con "[CHƯA ĐỦ] → phản hồi: …"`);
           if (!it.khac) err(vt, `[ĐỐI CHẤT ${it.id}] thiếu dòng con "[KHÁC] → phản hồi: …"`);
+          if (!it.hetLuot) err(vt, `[ĐỐI CHẤT ${it.id}] thiếu dòng con "[HẾT LƯỢT] → phản hồi: …" (lời khi trình sai đủ số lần cho phép)`);
           for (const b of it.bangChung) canVatPham(b.id, vt, null, `[ĐỐI CHẤT ${it.id}]`);
           if (new Set(it.bangChung.map((b) => b.id)).size !== it.bangChung.length) err(vt, `[ĐỐI CHẤT ${it.id}] có thẻ khai hai lần`);
           if (it.truUyTin) truUyTin.push({ chuoi: c.id, vt });

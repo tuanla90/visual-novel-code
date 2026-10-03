@@ -22,6 +22,7 @@
   - {ev-toi-07} [GỢI Ý] → phản hồi: **thay-quang** (neutral): Em Nam ở thư viện tối đó. Thầy ghi nhận, nhưng điều ấy liên quan gì tới sổ quỹ?
   - [CHƯA ĐỦ] → phản hồi: **thay-quang** (stern): Chưa đủ căn cứ thì thầy chưa mở sổ của người khác cho các em xem. Về làm rõ đã.<br>**minh-anh** (worried): Dạ. Bọn em về đếm lại kho ạ.
   - [KHÁC] → phản hồi: **thay-quang** (neutral): Cái này nói gì về tiền?<br>**minh-anh** (worried): Em xem lại hồ sơ ạ.
+  - [HẾT LƯỢT] → phản hồi: **thay-quang** (stern): Thầy hỏi căn cứ, các em đưa ba thứ chẳng nói gì về tiền. Thầy chưa thể mở sổ của người khác cho các em xem.<br>**minh-anh** (worried): Dạ, bọn em xin phép dừng ạ.
 - [NẾU có dc-xin-so-quy-du] → đi tới v5-nhan-so
 - [LỜI v5-thay-quang.2]
 - [ĐI TỚI v5-thay-quang]
@@ -66,6 +67,7 @@
   - {ev-don-nam-may} [GỢI Ý] → phản hồi: **khanh** (neutral): Đơn đứng tên Nam thì hỏi Nam. Tôi đang hỏi về thẩm quyền duyệt chi.
   - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, bọn em chỉ nói được tới đây: ba khoản chi gắn với ba đơn kho không có hàng, ghi vào quỹ CLB Thám Tử. Ai chi vào việc gì, bọn em không có căn cứ.<br>**thay-quang** (neutral): Biết dừng ở chỗ chứng cứ dừng. Phần còn lại thầy làm việc với Hội sinh viên.
   - [KHÁC] → phản hồi: **khanh** (neutral): Cái này thì liên quan gì tới quỹ?<br>**minh-anh** (worried): Em xem lại hồ sơ ạ.
+  - [HẾT LƯỢT] → phản hồi: **khanh** (neutral): Thưa thầy, ba lần rồi, các bạn ấy vẫn chưa đưa được gì về thẩm quyền.<br>**thay-quang** (stern): Trình lạc đề ba lần thì thầy phải dừng phần này. Các em nói tới đâu thầy ghi tới đó.
 - [NẾU có dc-khanh-du] → đi tới v5-doi-chat-2
 - [ĐI TỚI v5-ket-thieu]
 
@@ -81,6 +83,7 @@
   - {ev-dat-ma-khong-co} [HỖ TRỢ] → phản hồi: **nam** (neutral): Gia công ngoài thì phải có biên nhận giao việc. Anh có không ạ?<br>**khanh** (neutral): Sẽ bổ sung. Nhưng đơn vẫn là đơn của em.
   - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, ai lập ba đơn ấy thì bọn em chưa có căn cứ để nói. Bọn em dừng ở chỗ ba khoản vượt ngưỡng.<br>**thay-quang** (neutral): Vậy dừng ở đó. Phần còn lại thầy làm việc với Hội sinh viên.
   - [KHÁC] → phản hồi: **khanh** (neutral): Cái này nói gì về người lập đơn?<br>**minh-anh** (worried): Em xem lại hồ sơ ạ.
+  - [HẾT LƯỢT] → phản hồi: **khanh** (neutral): Đấy, thầy xem. Ba tờ giấy, chẳng tờ nào nói ai lập đơn.<br>**thay-quang** (stern): Thầy dừng phần này ở đây. Ai lập đơn, thầy sẽ tự hỏi lại.
 - [NẾU có dc-khanh-don-du] → đi tới v5-nhan-tien
 - [ĐI TỚI v5-ket-thieu]
 
@@ -102,6 +105,7 @@
   - {clue-giao-chia} [GỢI Ý] → phản hồi: **khanh** (neutral): Ba người có chìa. Thảo còn để chìa ngoài ngăn bàn. Mà lá thư đâu có in ở xưởng.
   - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, phần lá thư bọn em không có căn cứ nào gắn với một người. Bọn em dừng ở phần tiền.<br>**thay-quang** (neutral): Dừng đúng chỗ. Phần ấy thầy sẽ hỏi riêng.
   - [KHÁC] → phản hồi: **khanh** (neutral): Cái này thì liên quan gì tới lá thư?<br>**minh-anh** (worried): Em xem lại hồ sơ ạ.
+  - [HẾT LƯỢT] → phản hồi: **khanh** (neutral): Ba lần rồi mà vẫn không có tên tôi. Thôi thì đừng gán lá thư cho tôi nữa.<br>**thay-quang** (stern): Thầy ghi nhận phần tiền. Phần lá thư dừng ở đây.
 - [NẾU có dc-khanh-thu-du] → đi tới v5-so-do
 - [LỜI v5-ket-tien.1]
 - [ĐI TỚI v5-ket-luan]
@@ -117,6 +121,7 @@
   - {clue-loi-chu-cuong} [GỢI Ý] → phản hồi: **thay-quang** (neutral): Cái huy hiệu thầy ghi rồi. Thầy đang hỏi về tối Chủ nhật ở phòng máy.
   - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, bọn em không còn gì về tối hôm ấy ạ.<br>**thay-quang** (neutral): Vậy phần lá thư dừng ở đây. Thầy sẽ hỏi riêng.
   - [KHÁC] → phản hồi: **thay-quang** (neutral): Cái này nói gì về tối 15/9?<br>**minh-anh** (worried): Em xem lại hồ sơ ạ.
+  - [HẾT LƯỢT] → phản hồi: **thay-quang** (stern): Thầy hỏi về tối Chủ nhật, các em đưa ba thứ khác. Thầy dừng phần lá thư ở đây.
 - [NẾU có dc-khanh-so-do-du] → đi tới v5-gioi-han
 - [LỜI v5-ket-tien.1b]
 - [ĐI TỚI v5-ket-luan]
@@ -140,6 +145,7 @@
   - {clue-loi-nhan-linh-1} [GỢI Ý] → phản hồi: **thay-quang** (neutral): …Mẩu giấy này để sau buổi họp.<br>**duy** (neutral): Dạ. Em xin lỗi thầy.
   - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, lá thư để làm gì thì bọn em không có căn cứ ạ.<br>**thay-quang** (neutral): Vậy phần ấy thầy hỏi riêng.
   - [KHÁC] → phản hồi: **thay-quang** (neutral): Cái này nói gì về lá thư và ba khoản chi?<br>**minh-anh** (worried): Em xem lại hồ sơ ạ.
+  - [HẾT LƯỢT] → phản hồi: **thay-quang** (stern): Ba lần rồi, thầy vẫn chưa thấy lá thư dính gì tới ba khoản chi. Phần ấy thầy hỏi riêng.
 - [NẾU có dc-khanh-vi-sao-du] → đi tới v5-vi-sao-hoi
 - [LỜI v5-ket-thu.1]
 - [ĐI TỚI v5-ket-luan]

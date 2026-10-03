@@ -5,12 +5,12 @@
 - Tiêu đề: Sổ đặt linh kiện của xưởng
 - Đề bài hiển thị: Sổ đặt linh kiện của xưởng Robotics ghi từ năm 2022, đơn các kỳ trước đã quyết toán. Những đơn nào đang ở trạng thái đã duyệt?
 - Manh mối liên quan: clue-da-duyet
-- Mục tiêu học: Lọc theo trạng thái để ghim thành phiếu, chuẩn bị gom và đếm.
+- Mục tiêu học: Lọc theo trạng thái để ghim thành phiếu; ôn gọt dữ liệu: ô gõ tay dính dấu cách thì phải bỏ dấu cách thừa trước khi so.
 - Số dòng kỳ vọng: 8
 - SQL chuẩn:
 
 ```sql
-SELECT ma_don, ngay, nguoi_dat, linh_kien, so_tien, ma_phien FROM don_linh_kien WHERE trang_thai = 'DA_DUYET';
+SELECT ma_don, ngay, nguoi_dat, linh_kien, so_tien, ma_phien FROM don_linh_kien WHERE TRIM(trang_thai) = 'DA_DUYET';
 ```
 
 - [LỜI c-don-da-duyet.1]

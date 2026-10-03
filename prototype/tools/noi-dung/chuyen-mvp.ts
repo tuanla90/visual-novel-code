@@ -66,6 +66,7 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
         bangChung: it.bangChung.map((b) => ({ id: b.id, muc: b.muc, feedback: b.feedback.map(loi) })),
         chuaDu: (it.chuaDu ?? []).map(loi),
         khac: (it.khac ?? []).map(loi),
+        hetLuot: (it.hetLuot ?? []).map(loi),
         truUyTin: it.truUyTin,
       };
     case 'challenge':

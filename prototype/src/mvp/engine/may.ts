@@ -46,6 +46,9 @@ import { MAU_GHIM, type BoiCanhChuoi, type KhamPhaMvp, type MauGhimMvp, type Tra
  * trạng thái mới bắt đầu với tên rỗng, người chơi tự gõ hoặc bấm xúc xắc. Ô lưu cũ (trước gói tao-nhan-vat) có sẵn
  * `tenNguoiChoi: 'Khôi'` nên vẫn nạp được như cũ.
  */
+/** Đối chất: số lần được trình thẻ không liên quan; lần thứ ba là hết lượt (user 03/10/2026: sai mãi phải mất uy tín). */
+export const SO_LAN_SAI_DOI_CHAT = 3;
+
 export const TEN_MAC_DINH = 'Khôi';
 
 /** Độ dài tối đa của tên người chơi (tính theo ký tự sau khi bỏ khoảng trắng thừa). */
@@ -177,7 +180,7 @@ export type KhungNhinMvp =
   | { kind: 'chon-dia-diem'; diaDiem: DiaDiemHienMvp[]; khungConLai: number }
   | { kind: 'question'; nut: Extract<NutMvp, { type: 'question' }>; lanThu: number }
   /** `[ĐỐI CHẤT]`: thẻ đã trình (mờ, không trình lại), mức cao nhất đã đạt, số lần trình. */
-  | { kind: 'doi-chat'; nut: Extract<NutMvp, { type: 'doi-chat' }>; daTrinh: string[]; muc: 'khong' | 'goi-y' | 'ho-tro' | 'du'; lanThu: number }
+  | { kind: 'doi-chat'; nut: Extract<NutMvp, { type: 'doi-chat' }>; daTrinh: string[]; muc: 'khong' | 'goi-y' | 'ho-tro' | 'du'; lanThu: number; /** Lần trình sai còn lại trước khi hết lượt. */ conLuot: number }
   | { kind: 'line-pick'; nut: Extract<NutMvp, { type: 'line-pick' }>; lanThu: number }
   | { kind: 'branch'; nut: Extract<NutMvp, { type: 'branch' }>; luaChon: Extract<NutMvp, { type: 'branch' }>['choices'] }
   | { kind: 'show-document'; documentId: string }
@@ -746,7 +749,7 @@ export function khungNhin(kb: KichBanMvp, s: TrangThaiMvp): KhungNhinMvp {
       return { kind: 'question', nut, lanThu: lanThu(nut.id) };
     case 'doi-chat': {
       const dc = s.doiChat && s.doiChat.id === nut.id ? s.doiChat : null;
-      return { kind: 'doi-chat', nut, daTrinh: dc?.daTrinh ?? [], muc: dc?.muc ?? 'khong', lanThu: lanThu(nut.id) };
+      return { kind: 'doi-chat', nut, daTrinh: dc?.daTrinh ?? [], muc: dc?.muc ?? 'khong', lanThu: lanThu(nut.id), conLuot: Math.max(0, SO_LAN_SAI_DOI_CHAT - (dc?.sai ?? 0)) };
     }
     case 'line-pick':
       return { kind: 'line-pick', nut, lanThu: lanThu(nut.id) };
@@ -983,8 +986,15 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       let co = s.co;
       if (muc === 'du') co = them(co, `${nut.id}-du`);
       if (muc === 'ho-tro') co = them(co, `${nut.id}-ho-tro`);
-      const s2 = { ...s, co, doiChat: { id: nut.id, daTrinh: [...kn.daTrinh, hd.the], muc: mucMoi } };
-      moi = batDauPhanHoi(kb, s2, nut.id, 'doi-chat', muc === 'du', b ? b.feedback : nut.khac, nut.truUyTin && muc === 'khac');
+      // Trình thẻ không liên quan quá SO_LAN_SAI_DOI_CHAT lần: mất uy tín trước người nghe — đối chất dừng ở mức đang đạt (như
+      // "Chưa đủ căn cứ để nói"), cờ `<mã>-het-luot` để tổng kết trừ phần uy tín.
+      const sai = (s.doiChat?.id === nut.id ? (s.doiChat.sai ?? 0) : 0) + (muc === 'khac' ? 1 : 0);
+      const hetLuot = muc === 'khac' && sai >= SO_LAN_SAI_DOI_CHAT;
+      if (hetLuot) co = them(co, `${nut.id}-het-luot`);
+      const s2 = { ...s, co, doiChat: { id: nut.id, daTrinh: [...kn.daTrinh, hd.the], muc: mucMoi, sai } };
+      moi = hetLuot
+        ? batDauPhanHoi(kb, s2, nut.id, 'doi-chat', true, [...nut.khac, ...nut.hetLuot], nut.truUyTin)
+        : batDauPhanHoi(kb, s2, nut.id, 'doi-chat', muc === 'du', b ? b.feedback : nut.khac, nut.truUyTin && muc === 'khac');
       break;
     }
     case 'chua-du': {
@@ -1046,7 +1056,8 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       if (kn.kind !== 'explore' || !kp || !s.conTro) return s;
       const d = kn.diem.find((x) => x.diem.chuoi === hd.chuoi);
       if (!d || d.daXem) return s;
-      moi = { ...s, khamPha: { ...kp, daXem: [...kp.daXem, d.diem.chuoi] }, conTro: { chuoi: d.diem.chuoi, nut: 0, boiCanh: s.conTro.boiCanh } };
+      const daXemDiem = (s.daXemDiem ?? []).includes(d.diem.chuoi) ? s.daXemDiem : [...(s.daXemDiem ?? []), d.diem.chuoi];
+      moi = { ...s, daXemDiem, khamPha: { ...kp, daXem: [...kp.daXem, d.diem.chuoi] }, conTro: { chuoi: d.diem.chuoi, nut: 0, boiCanh: s.conTro.boiCanh } };
       break;
     }
   }

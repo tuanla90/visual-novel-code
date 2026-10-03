@@ -62,6 +62,7 @@
   - {ev-tin-goc} [GỢI Ý] → phản hồi: **tung** (chi-tay): Chính phiếu này nói tài khoản Robotics gửi. Cậu đang củng cố cho tớ đấy.<br>**duy** (neutral): Tài khoản. Chưa phải người.
   - [CHƯA ĐỦ] → phản hồi: **minh-anh** (serious): Chưa đủ để nói Nam không làm, cũng chưa đủ để nói Nam làm. Vậy chị mời Nam lên hỏi.<br>**duy** (neutral): Mời lên hỏi thì cũng là một nguồn. Nhưng mình đang thiếu nguồn, không phải thiếu người để hỏi.
   - [KHÁC] → phản hồi: **tung** (worried): Cái này thì liên quan gì tới tối thứ Hai?<br>**ha-vy** (thinking): Xem lại hồ sơ đã.
+  - [HẾT LƯỢT] → phản hồi: **tung** (chi-tay): Ba lần rồi nhé! Đưa toàn thứ chẳng liên quan, thế là cậu cũng chịu tớ đúng không?<br>**minh-anh** (serious): Thôi. Trình lạc đề nữa thì chẳng ai nghe mình nói. Dừng ở đây đã.
 - [NẾU có dc-nam-du] → đi tới v3-ket-du
 - [LỜI v3-ket-thieu.1]
 - [HẬU QUẢ] đặt co.v3-moi-nam-len

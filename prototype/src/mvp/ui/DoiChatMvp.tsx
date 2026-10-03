@@ -15,6 +15,7 @@ import { useMemo, useState, type KeyboardEvent } from 'react';
 import type { KichBanMvp, NutMvp } from '../../content/mvp/types';
 import { CodeText } from '../../shared/ui/CodeText';
 import { dungBang, type TheBang } from '../engine/bang-dieu-tra';
+import { SO_LAN_SAI_DOI_CHAT } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import { anhTheoTen } from './anh-mvp';
 import './DoiChatMvp.css';
@@ -28,6 +29,8 @@ export interface DoiChatMvpProps {
   nut: NutDoiChat;
   daTrinh: string[];
   muc: Muc;
+  /** Lần trình sai (thẻ không liên quan) còn lại trước khi hết lượt; thiếu = không hiện. */
+  conLuot?: number;
   dienTen: (t: string) => string;
   tenNguoiNoi: (ma: string) => string;
   onTrinh: (the: string) => void;
@@ -46,7 +49,7 @@ function mucCuaThe(nut: NutDoiChat, id: string): Muc | 'khac' {
   return nut.bangChung.find((b) => b.id === id)?.muc ?? 'khac';
 }
 
-export function DoiChatMvp({ kb, s, nut, daTrinh, muc, dienTen, tenNguoiNoi, onTrinh, onChuaDu }: DoiChatMvpProps) {
+export function DoiChatMvp({ kb, s, nut, daTrinh, muc, conLuot, dienTen, tenNguoiNoi, onTrinh, onChuaDu }: DoiChatMvpProps) {
   // Thẻ đang trên bảng điều tra, bỏ thẻ "câu hỏi đang mở" và giấy tờ nền (tài liệu) — trừ thẻ chính màn này khai.
   // Thêm thẻ của các vụ trước (đã gỡ khỏi bảng) chỉ khi chính màn này khai: người chơi phải trình được bằng chứng cũ, nhưng
   // khay không độn thẻ của vụ khác. Màn nào cũng khai cả thẻ GỢI Ý (thẻ bẫy) nên khay không lộ riêng đáp án.
@@ -131,6 +134,16 @@ export function DoiChatMvp({ kb, s, nut, daTrinh, muc, dienTen, tenNguoiNoi, onT
             <span className={`doi-chat__muc doi-chat__muc--${muc}`} aria-live="polite">
               Mức đã đạt: <b>{TEN_MUC[muc]}</b>
             </span>
+            {conLuot !== undefined ? (
+              <span className={`doi-chat__luot${conLuot <= 1 ? ' is-sap-het' : ''}`} title={`Trình thẻ không liên quan ${SO_LAN_SAI_DOI_CHAT} lần là mất uy tín, phần trình bày dừng ở mức đang đạt.`} aria-label={`Uy tín: còn ${conLuot} trên ${SO_LAN_SAI_DOI_CHAT} lần được trình nhầm`}>
+                Uy tín
+                <span aria-hidden="true">
+                  {Array.from({ length: SO_LAN_SAI_DOI_CHAT }, (_x, i) => (
+                    <i key={i} className={i < conLuot ? 'is-con' : ''} />
+                  ))}
+                </span>
+              </span>
+            ) : null}
             {theChon ? null : <span className="doi-chat__goi-y">Bấm một thẻ trong hàng thẻ để chọn, rồi trình thẻ ấy để bác giả thuyết.</span>}
             <span className="doi-chat__nut">
               <button type="button" className="btn btn--ghost doi-chat__chua-du" onClick={onChuaDu} title="Kết thúc phần trình bày ở mức đang đạt">

@@ -200,18 +200,19 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 
 <!-- Vụ 4 (và Vụ 5): sổ đặt linh kiện của xưởng Robotics, tháng 9–10. Nam đứng tên 5 đơn nhưng chỉ đặt 2 (DLK-01, DLK-05, từ máy
      xưởng số 2 buổi chiều); ba đơn kia (DLK-03, 06, 08) tạo ban đêm từ máy văn phòng xưởng, trong đó DLK-08 lúc 22:05 tối 07/10 khi Nam
-     ở thư viện. Hai đơn CHO_DUYET là nhiễu cho bài lọc. Vụ 5: ba đơn đêm là ba linh kiện không có trong kho. -->
+     ở thư viện. Hai đơn CHO_DUYET là nhiễu cho bài lọc. 03/10/2026 (ôn gọt dữ liệu ở tuyến chính): ba đơn đêm gõ tay trên máy
+     văn phòng nên ô trạng thái dính dấu cách ở đuôi (`␣`) — lọc `= 'DA_DUYET'` chỉ ra 5 đơn, phải TRIM mới đủ 8. Vụ 5: ba đơn đêm là ba linh kiện không có trong kho. -->
 
 | ma_don | ngay | nguoi_dat | linh_kien | so_luong | so_tien | ma_phien | trang_thai |
 |---|---|---|---|---|---|---|---|
 | DLK-01 | 2024-09-20 | Nam | Cảm biến dò line | 4 | 120000 | PH-11 | DA_DUYET |
 | DLK-02 | 2024-09-24 | Bách | Pin 18650 | 10 | 200000 | PH-12 | DA_DUYET |
-| DLK-03 | 2024-09-27 | Nam | Động cơ servo | 8 | 800000 | PH-13 | DA_DUYET |
+| DLK-03 | 2024-09-27 | Nam | Động cơ servo | 8 | 800000 | PH-13 | DA_DUYET␣ |
 | DLK-04 | 2024-10-01 | Thảo | Dây nối | 20 | 60000 | PH-14 | DA_DUYET |
 | DLK-05 | 2024-10-02 | Nam | Bánh xe | 6 | 150000 | PH-15 | DA_DUYET |
-| DLK-06 | 2024-10-04 | Nam | Mạch điều khiển | 3 | 900000 | PH-16 | DA_DUYET |
+| DLK-06 | 2024-10-04 | Nam | Mạch điều khiển | 3 | 900000 | PH-16 | DA_DUYET␣␣ |
 | DLK-07 | 2024-10-05 | Khánh | Ốc vít | 100 | 40000 | PH-17 | DA_DUYET |
-| DLK-08 | 2024-10-07 | Nam | Bộ khung nhôm | 2 | 700000 | PH-18 | DA_DUYET |
+| DLK-08 | 2024-10-07 | Nam | Bộ khung nhôm | 2 | 700000 | PH-18 | DA_DUYET␣ |
 | DLK-09 | 2024-10-08 | Thảo | Keo dán | 5 | 30000 | PH-19 | CHO_DUYET |
 | DLK-10 | 2024-10-08 | Bách | Mỏ hàn | 2 | 180000 | PH-20 | CHO_DUYET |
 

@@ -3143,3 +3143,133 @@
 .mvp-kho :is(.inv-slot, .inv-filter-btn, .inventory-nav__tab, .inventory-nav__close):focus-visible {
   outline-color: #315b4a;
 }
+
+/* Màn Hà Vy soi (03/10/2026): chi tiết ẩn, không kính lúp mồi sẵn. Cả khung ảnh mang con trỏ soi; rê qua đúng chỗ thì kính hiện
+   ra; để lâu (14 giây) chưa thấy thì nháy rất nhẹ. Màn cảm ứng không rê được nên nháy sớm hơn (6 giây). */
+.mvp-soinv__vung[data-soi-an] .mvp-soinv__khung { cursor: zoom-in; }
+.mvp-soi--an .mvp-soi__kinh,
+.mvp-soi--an .mvp-soi__vong { opacity: 0; animation: none; transition: opacity 0.25s ease-out; }
+.mvp-soi--an:hover .mvp-soi__kinh,
+.mvp-soi--an:focus-visible .mvp-soi__kinh,
+.mvp-soi--an:hover .mvp-soi__vong,
+.mvp-soi--an:focus-visible .mvp-soi__vong { opacity: 1; }
+.mvp-soi--an.is-da-xem .mvp-soi__kinh,
+.mvp-soi--an.is-da-xem .mvp-soi__vong { opacity: 0.45; }
+@media (prefers-reduced-motion: no-preference) {
+  .mvp-soi--an:not(.is-da-xem):not(:hover) .mvp-soi__kinh { animation: mvp-soi-an-nhay 3s ease-in-out 14s infinite; }
+}
+@media (hover: none) and (prefers-reduced-motion: no-preference) {
+  .mvp-soi--an:not(.is-da-xem) .mvp-soi__kinh { animation-delay: 6s; }
+}
+@keyframes mvp-soi-an-nhay {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.55; }
+}
+.mvp-catcanh__phu {
+  display: block;
+  margin-top: 4px;
+  font: italic 600 clamp(12px, 1.6vw, 16px)/1.2 var(--font-reading);
+  letter-spacing: 0;
+  color: #e6f4ea;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Phòng CLB có người ngồi (03/10/2026): mỗi thành viên là một vùng bấm trong suốt đúng chỗ ngồi; rê qua thì sáng viền,
+   tên luôn hiện dưới chân, dấu ! / ? trên đầu. */
+.mvp-ngoi {
+  position: absolute;
+  z-index: 2;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 18px;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.mvp-ngoi:not(:disabled):hover,
+.mvp-ngoi:focus-visible {
+  border-color: rgba(255, 253, 240, 0.95);
+  background: rgba(255, 250, 230, 0.12);
+  box-shadow: 0 0 18px rgba(255, 236, 170, 0.65);
+  outline: none;
+}
+.mvp-ngoi.is-da-xem { cursor: default; }
+.mvp-ngoi .mvp-dau { position: absolute; left: 50%; top: -6px; transform: translate(-50%, -100%); }
+.mvp-ngoi__ten {
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  transform: translateX(-50%);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.78);
+  color: #fffdf5;
+  font: 700 clamp(11px, 1.3vw, 14px)/1.2 var(--font-ui);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.mvp-ngoi.is-da-xem .mvp-ngoi__ten { background: rgba(15, 23, 42, 0.5); color: #cbd5e1; }
+
+/* Màn kết dựng lại (03/10/2026): ảnh CG không còn đẩy chữ xuống bắt cuộn. Màn ngang: hai cột — ảnh trái đứng yên, chữ + biên bản
+   bên phải tự cuộn. Màn dọc / hẹp: ảnh thành dải trên cùng (tối đa 30% chiều cao), phần dưới cuộn. */
+.endscreen.mvp-ket--moi {
+  padding: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  width: min(1180px, 100%);
+  justify-self: center;
+  border-width: 2px;
+}
+.mvp-ket--moi .mvp-ket__than {
+  min-height: 0;
+  overflow: auto;
+  display: grid;
+  align-content: start;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5) var(--sp-5);
+}
+.mvp-ket--moi .mvp-ket__anh { position: relative; min-height: 0; overflow: hidden; background: #0f172a; }
+.mvp-ket--moi .mvp-ket__cg {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  aspect-ratio: auto;
+  object-fit: cover;
+  object-position: center 30%;
+}
+.mvp-ket--moi .mvp-chot { width: 100%; margin: 0; }
+@media (min-width: 900px) and (orientation: landscape) {
+  .game:not(.game--portrait) .endscreen.mvp-ket--moi.co-cg { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
+  .game:not(.game--portrait) .mvp-ket--moi .mvp-ket__anh::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 70%, color-mix(in srgb, var(--c-dialog-bg) 70%, transparent));
+    pointer-events: none;
+  }
+}
+@media (max-width: 899px), (orientation: portrait) {
+  .endscreen.mvp-ket--moi.co-cg { grid-template-rows: auto minmax(0, 1fr); }
+  .mvp-ket--moi .mvp-ket__anh { height: min(30vh, 260px); }
+}
+.game--portrait .endscreen.mvp-ket--moi.co-cg { grid-template-columns: none; grid-template-rows: auto minmax(0, 1fr); }
+.game--portrait .mvp-ket--moi .mvp-ket__anh { height: min(30vh, 220px); }
+.mvp-chot__dau-hang { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+.mvp-chot__dau-hang .mvp-chot__dau { margin: 0; }
+.mvp-chot__vong {
+  --pt: 0;
+  flex: none;
+  width: 68px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background:
+    radial-gradient(closest-side, #f6ecd6 74%, transparent 76% 100%),
+    conic-gradient(#b4532a calc(var(--pt) * 1%), rgba(90, 70, 40, 0.18) 0);
+  color: #5a2a10;
+}
+.mvp-chot__vong b { font: 800 1.05rem/1 var(--font-ui); }
+.mvp-chot__vong small { font: 600 0.6rem/1.1 var(--font-ui); letter-spacing: 0.04em; }

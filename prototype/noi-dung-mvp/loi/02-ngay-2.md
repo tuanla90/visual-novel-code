@@ -20,6 +20,11 @@
 - **ha-vy** (neutral): Hai mươi hai bậc. Đếm cho quen tay thôi.
 - **co-hanh** (neutral): Cô tạo cho CLB một tài khoản, tên là clb_tham_tu.
 - **co-hanh** (neutral): Tài khoản này chỉ xem được bảng lớp sinh hoạt: mã lớp, ngành, khóa, tòa nhà. Trong đấy không có tên ai cả.
+- **player**: Bảng lớp sinh hoạt là một tệp Excel to hả cô?
+- **co-hanh** (smile): Gần thế. Em cứ hình dung cuốn sổ điểm danh: kẻ sẵn mấy cột trên đầu, mỗi dòng bên dưới là một lớp. Cột nói lớp ấy có gì: mã lớp, ngành, khóa, tòa nhà. Có lớp mới thì thêm một dòng, chứ cột không đổi.
+- **co-hanh** (neutral): Trường có vài chục bảng như thế, mỗi bảng ghi một loại việc: bảng lớp, bảng sinh viên, nhật ký in, quẹt thẻ thư viện… Lúc tra, máy không đọc lần từng trang như người. Em nói cho nó ba điều: lấy bảng nào, xem cột nào, giữ lại những dòng nào.
+- **tung** (gai-dau): Giống xếp hàng lấy cơm căng tin cô nhỉ. Mỗi đứa một dòng, cột là món.
+- **ha-vy** (neutral): Và cột cuối là số tiền cậu còn nợ. Bảng, cột, dòng. Tớ ghi vào sổ.
 - **co-hanh** (neutral): Bảng sinh viên có thông tin cá nhân. Muốn xem thì mang phiếu yêu cầu tra cứu, có chữ ký của đơn vị lo vụ việc. Vụ hộp kiến nghị là của Phòng Công tác sinh viên.
 - **co-hanh** (neutral): Tra gì máy cũng ghi lại. Cuối vụ cô xem nhật ký.
 

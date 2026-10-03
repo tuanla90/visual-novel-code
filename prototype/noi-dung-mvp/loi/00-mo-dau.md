@@ -151,6 +151,7 @@
 - **ha-vy** (neutral): Mượn thì được, chép thì không.
 - **tung** (happy): Thế cậu đoán được tớ học gì không?
 - **ha-vy** (neutral): Khỏi đoán. Nhìn là ra. Cậu thử nhìn xem, đừng nhìn mặt, nhìn những thứ cậu ấy mang theo.
+- **ha-vy** (day-kinh): Mà nhớ này: người thường chỉ nhìn chỗ sáng nhất. Thám tử lia mắt qua cả những góc chẳng ai để ý, mép giấy, vết dán, cái gài trên quai túi. Thứ đáng chú ý ít khi tự sáng lên chờ mình.
 
 ## md-10-phong-clb.2b
 - **ha-vy** (smile): Cầm bản đồ đã nhàu, thuộc đường, thích dẫn người khác đi. Du lịch chứ gì.

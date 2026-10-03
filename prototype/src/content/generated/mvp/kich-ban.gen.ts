@@ -1776,6 +1776,12 @@ const GOC = {
           "text": "Khỏi đoán. Nhìn là ra. Cậu thử nhìn xem, đừng nhìn mặt, nhìn những thứ cậu ấy mang theo."
         },
         {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "day-kinh",
+          "text": "Mà nhớ này: người thường chỉ nhìn chỗ sáng nhất. Thám tử lia mắt qua cả những góc chẳng ai để ý, mép giấy, vết dán, cái gài trên quai túi. Thứ đáng chú ý ít khi tự sáng lên chờ mình."
+        },
+        {
           "type": "explore",
           "id": "kp-soi-tung",
           "kieu": "quan-sat",
@@ -2383,6 +2389,18 @@ const GOC = {
               "sau": [],
               "nhan": "Căng tin",
               "dau": "phu"
+            },
+            {
+              "sprite": "ghim:nha-clb",
+              "x": 45,
+              "y": 17,
+              "rong": 5,
+              "chuoi": "n2-phong",
+              "sau": [
+                "n2-co-hanh"
+              ],
+              "nhan": "Phòng CLB",
+              "dau": "chinh"
             }
           ]
         }
@@ -2447,6 +2465,35 @@ const GOC = {
         },
         {
           "type": "line",
+          "speaker": "player",
+          "text": "Bảng lớp sinh hoạt là một tệp Excel to hả cô?"
+        },
+        {
+          "type": "line",
+          "speaker": "co-hanh",
+          "expression": "smile",
+          "text": "Gần thế. Em cứ hình dung cuốn sổ điểm danh: kẻ sẵn mấy cột trên đầu, mỗi dòng bên dưới là một lớp. Cột nói lớp ấy có gì: mã lớp, ngành, khóa, tòa nhà. Có lớp mới thì thêm một dòng, chứ cột không đổi."
+        },
+        {
+          "type": "line",
+          "speaker": "co-hanh",
+          "expression": "neutral",
+          "text": "Trường có vài chục bảng như thế, mỗi bảng ghi một loại việc: bảng lớp, bảng sinh viên, nhật ký in, quẹt thẻ thư viện… Lúc tra, máy không đọc lần từng trang như người. Em nói cho nó ba điều: lấy bảng nào, xem cột nào, giữ lại những dòng nào."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Giống xếp hàng lấy cơm căng tin cô nhỉ. Mỗi đứa một dòng, cột là món."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Và cột cuối là số tiền cậu còn nợ. Bảng, cột, dòng. Tớ ghi vào sổ."
+        },
+        {
+          "type": "line",
           "speaker": "co-hanh",
           "expression": "neutral",
           "text": "Bảng sinh viên có thông tin cá nhân. Muốn xem thì mang phiếu yêu cầu tra cứu, có chữ ký của đơn vị lo vụ việc. Vụ hộp kiến nghị là của Phòng Công tác sinh viên."
@@ -2480,10 +2527,6 @@ const GOC = {
           "speaker": "co-hanh",
           "expression": "smile",
           "text": "Khoanh vùng thôi đấy nhé. Lớp thì không bỏ thư được."
-        },
-        {
-          "type": "goto",
-          "to": "n2-phong"
         }
       ]
     },
@@ -4573,6 +4616,23 @@ const GOC = {
               "speaker": "minh-anh",
               "expression": "worried",
               "text": "Em xem lại hồ sơ đã ạ."
+            }
+          ],
+          "hetLuot": [
+            {
+              "speaker": "quan",
+              "expression": "smug",
+              "text": "Thưa thầy, ba lần đưa ra ba tờ chẳng dính gì tới việc ai viết thư. Bên tôi xin giữ kết luận."
+            },
+            {
+              "speaker": "thay-quang",
+              "expression": "stern",
+              "text": "Các em trình lạc đề ba lần rồi. Thầy ghi nhận tới đây thôi."
+            },
+            {
+              "speaker": "minh-anh",
+              "expression": "worried",
+              "text": "Dạ. Bọn em xin dừng ở chỗ đã có căn cứ ạ."
             }
           ],
           "truUyTin": false
@@ -7047,6 +7107,18 @@ const GOC = {
               "text": "Xem lại hồ sơ đã."
             }
           ],
+          "hetLuot": [
+            {
+              "speaker": "tung",
+              "expression": "chi-tay",
+              "text": "Ba lần rồi nhé! Đưa toàn thứ chẳng liên quan, thế là cậu cũng chịu tớ đúng không?"
+            },
+            {
+              "speaker": "minh-anh",
+              "expression": "serious",
+              "text": "Thôi. Trình lạc đề nữa thì chẳng ai nghe mình nói. Dừng ở đây đã."
+            }
+          ],
           "truUyTin": false
         },
         {
@@ -7680,7 +7752,7 @@ const GOC = {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Đơn đặt trên máy xưởng, ai đăng nhập cũng điền tên người đặt được. Ban kiểm tra gửi kèm bản sổ đặt hàng của xưởng, có cả đơn còn chờ duyệt. Các cậu xem hộ."
+          "text": "Đơn đặt trên máy xưởng, ai đăng nhập cũng điền tên người đặt được. Ban kiểm tra gửi kèm bản sổ đặt hàng của xưởng, có cả đơn còn chờ duyệt. Giấy của họ ghi kỳ này duyệt tám đơn. Các cậu xem hộ."
         },
         {
           "type": "line",
@@ -8589,6 +8661,18 @@ const GOC = {
               "text": "Em xem lại hồ sơ ạ."
             }
           ],
+          "hetLuot": [
+            {
+              "speaker": "thay-quang",
+              "expression": "stern",
+              "text": "Thầy hỏi căn cứ, các em đưa ba thứ chẳng nói gì về tiền. Thầy chưa thể mở sổ của người khác cho các em xem."
+            },
+            {
+              "speaker": "minh-anh",
+              "expression": "worried",
+              "text": "Dạ, bọn em xin phép dừng ạ."
+            }
+          ],
           "truUyTin": false
         },
         {
@@ -9141,6 +9225,18 @@ const GOC = {
               "text": "Em xem lại hồ sơ ạ."
             }
           ],
+          "hetLuot": [
+            {
+              "speaker": "khanh",
+              "expression": "neutral",
+              "text": "Thưa thầy, ba lần rồi, các bạn ấy vẫn chưa đưa được gì về thẩm quyền."
+            },
+            {
+              "speaker": "thay-quang",
+              "expression": "stern",
+              "text": "Trình lạc đề ba lần thì thầy phải dừng phần này. Các em nói tới đâu thầy ghi tới đó."
+            }
+          ],
           "truUyTin": false
         },
         {
@@ -9304,6 +9400,18 @@ const GOC = {
               "speaker": "minh-anh",
               "expression": "worried",
               "text": "Em xem lại hồ sơ ạ."
+            }
+          ],
+          "hetLuot": [
+            {
+              "speaker": "khanh",
+              "expression": "neutral",
+              "text": "Đấy, thầy xem. Ba tờ giấy, chẳng tờ nào nói ai lập đơn."
+            },
+            {
+              "speaker": "thay-quang",
+              "expression": "stern",
+              "text": "Thầy dừng phần này ở đây. Ai lập đơn, thầy sẽ tự hỏi lại."
             }
           ],
           "truUyTin": false
@@ -9571,6 +9679,18 @@ const GOC = {
               "text": "Em xem lại hồ sơ ạ."
             }
           ],
+          "hetLuot": [
+            {
+              "speaker": "khanh",
+              "expression": "neutral",
+              "text": "Ba lần rồi mà vẫn không có tên tôi. Thôi thì đừng gán lá thư cho tôi nữa."
+            },
+            {
+              "speaker": "thay-quang",
+              "expression": "stern",
+              "text": "Thầy ghi nhận phần tiền. Phần lá thư dừng ở đây."
+            }
+          ],
           "truUyTin": false
         },
         {
@@ -9737,6 +9857,13 @@ const GOC = {
               "speaker": "minh-anh",
               "expression": "worried",
               "text": "Em xem lại hồ sơ ạ."
+            }
+          ],
+          "hetLuot": [
+            {
+              "speaker": "thay-quang",
+              "expression": "stern",
+              "text": "Thầy hỏi về tối Chủ nhật, các em đưa ba thứ khác. Thầy dừng phần lá thư ở đây."
             }
           ],
           "truUyTin": false
@@ -9973,6 +10100,13 @@ const GOC = {
               "speaker": "minh-anh",
               "expression": "worried",
               "text": "Em xem lại hồ sơ ạ."
+            }
+          ],
+          "hetLuot": [
+            {
+              "speaker": "thay-quang",
+              "expression": "stern",
+              "text": "Ba lần rồi, thầy vẫn chưa thấy lá thư dính gì tới ba khoản chi. Phần ấy thầy hỏi riêng."
             }
           ],
           "truUyTin": false
@@ -12627,9 +12761,9 @@ const GOC = {
       "manhMoiLienQuan": [
         "clue-da-duyet"
       ],
-      "mucTieuHoc": "Lọc theo trạng thái để ghim thành phiếu, chuẩn bị gom và đếm.",
+      "mucTieuHoc": "Lọc theo trạng thái để ghim thành phiếu; ôn gọt dữ liệu: ô gõ tay dính dấu cách thì phải bỏ dấu cách thừa trước khi so.",
       "soDongKyVong": 8,
-      "sqlChuan": "SELECT ma_don, ngay, nguoi_dat, linh_kien, so_tien, ma_phien FROM don_linh_kien WHERE trang_thai = 'DA_DUYET';",
+      "sqlChuan": "SELECT ma_don, ngay, nguoi_dat, linh_kien, so_tien, ma_phien FROM don_linh_kien WHERE TRIM(trang_thai) = 'DA_DUYET';",
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -12655,6 +12789,24 @@ const GOC = {
               "speaker": "ha-vy",
               "expression": "thinking",
               "text": "Hai dòng. Đây là hai đơn còn chờ, mình cần đơn đã duyệt."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 5
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Năm đơn? Giấy của Ban kiểm tra ghi kỳ này duyệt tám. Ba đơn kia vẫn trong sổ, chỉ là ô trạng thái không khớp."
+            },
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Sổ gõ tay hay dính dấu cách ở đuôi lắm. Bỏ dấu cách thừa đi rồi hẵng so."
             }
           ]
         },
@@ -13501,6 +13653,7 @@ const GOC = {
       "mucTieuHoc": "Ôn \"bắt đầu bằng\"; kết quả nhiều dòng được ghim thành phiếu để dùng tiếp.",
       "soDongKyVong": 5,
       "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB Thám Tử soi dữ liệu%';",
+      "chonCot": [],
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -13526,6 +13679,30 @@ const GOC = {
               "speaker": "tung",
               "expression": "gai-dau",
               "text": "Cả ba trăm ba mươi tám tin của kênh từ tối qua. Có cả tin tìm ví với tin pass giáo trình."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "thieu-cot"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Đủ năm tin rồi, nhưng phiếu này còn phải lọc tiếp tin gốc. Cần mã tin, lúc gửi, tài khoản gửi, và cột loại tin."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "thua-cot"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Đủ mà thừa. Nội dung tin thì năm dòng như nhau, khỏi chép vào phiếu. Lấy mã tin, lúc gửi, tài khoản với loại tin thôi."
             }
           ]
         },
@@ -13769,6 +13946,7 @@ const GOC = {
       "mucTieuHoc": "Lọc ra một tập để ghim thành phiếu, chuẩn bị nhóm và đếm.",
       "soDongKyVong": 9,
       "sqlChuan": "SELECT ma_bai, ngay, buoi, thiet_bi FROM bai_dang_kenh WHERE kenh = 'clb_robotics';",
+      "chonCot": [],
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -13794,6 +13972,30 @@ const GOC = {
               "speaker": "tung",
               "expression": "gai-dau",
               "text": "Bài của mọi kênh trong trường, ba trăm lẻ một bài. Mình chỉ cần kênh Robotics."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "thieu-cot"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Chín bài đúng rồi, nhưng lát nữa phải gom theo thiết bị gửi. Lấy mã bài, ngày, buổi và thiết bị."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "thua-cot"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Thừa cột. Tên kênh thì chín dòng như một, ghi làm gì. Mã bài, ngày, buổi, thiết bị là đủ."
             }
           ]
         },
@@ -15271,7 +15473,7 @@ const GOC = {
       "resultId": "ev-hai-dong-sua"
     },
     {
-      "sql": "SELECT ma_don, ngay, nguoi_dat, linh_kien, so_tien, ma_phien FROM don_linh_kien WHERE trang_thai = 'DA_DUYET';",
+      "sql": "SELECT ma_don, ngay, nguoi_dat, linh_kien, so_tien, ma_phien FROM don_linh_kien WHERE TRIM(trang_thai) = 'DA_DUYET';",
       "soDong": 8,
       "noi": "noi-dung-mvp/thu-thach/giup-nam.md:3 thẻ c-don-da-duyet, SQL chuẩn",
       "resultId": "ev-don-da-duyet"
@@ -15279,7 +15481,7 @@ const GOC = {
     {
       "sql": "SELECT nguoi_dat, COUNT(*) AS so_dong FROM @ev-don-da-duyet GROUP BY nguoi_dat;",
       "soDong": 4,
-      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:24 thẻ c-don-theo-nguoi, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:25 thẻ c-don-theo-nguoi, SQL chuẩn",
       "resultId": "ev-don-theo-nguoi",
       "sourceResultId": "ev-don-da-duyet",
       "sourceGroupColumn": "nguoi_dat"
@@ -15287,13 +15489,13 @@ const GOC = {
     {
       "sql": "SELECT ma_don, linh_kien, may, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE nguoi_dat = 'Nam';",
       "soDong": 5,
-      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:43 thẻ c-don-nam-may, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:44 thẻ c-don-nam-may, SQL chuẩn",
       "resultId": "ev-don-nam-may"
     },
     {
       "sql": "SELECT may, COUNT(*) AS so_dong FROM @ev-don-nam-may GROUP BY may;",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:67 thẻ c-don-nam-theo-may, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:68 thẻ c-don-nam-theo-may, SQL chuẩn",
       "resultId": "ev-don-nam-theo-may",
       "sourceResultId": "ev-don-nam-may",
       "sourceGroupColumn": "may"
@@ -15301,7 +15503,7 @@ const GOC = {
     {
       "sql": "SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE may = 'MAY-VP-XUONG';",
       "soDong": 4,
-      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:86 thẻ c-may-vp, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:87 thẻ c-may-vp, SQL chuẩn",
       "resultId": "ev-may-vp"
     },
     {
@@ -15379,20 +15581,20 @@ const GOC = {
     {
       "sql": "SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/thu-thach/tin-don.md:24 thẻ c-tin-goc, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/tin-don.md:27 thẻ c-tin-goc, SQL chuẩn",
       "resultId": "ev-tin-goc",
       "sourceResultId": "ev-tin-don"
     },
     {
       "sql": "SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = '2024-10-07';",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/tin-don.md:47 thẻ c-tin-may, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/tin-don.md:50 thẻ c-tin-may, SQL chuẩn",
       "resultId": "ev-tin-may"
     },
     {
       "sql": "SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/thu-thach/tin-don.md:69 thẻ c-tin-xuong, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/tin-don.md:72 thẻ c-tin-xuong, SQL chuẩn",
       "resultId": "ev-tin-xuong"
     },
     {
@@ -15404,7 +15606,7 @@ const GOC = {
     {
       "sql": "SELECT thiet_bi, COUNT(*) AS so_dong FROM @ev-bai-dang GROUP BY thiet_bi;",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:23 thẻ c-bai-thiet-bi, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:26 thẻ c-bai-thiet-bi, SQL chuẩn",
       "resultId": "ev-bai-thiet-bi",
       "sourceResultId": "ev-bai-dang",
       "sourceGroupColumn": "thiet_bi"
@@ -15412,13 +15614,13 @@ const GOC = {
     {
       "sql": "SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Nam';",
       "soDong": 5,
-      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:42 thẻ c-nam-thu-vien, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:45 thẻ c-nam-thu-vien, SQL chuẩn",
       "resultId": "ev-nam-thu-vien"
     },
     {
       "sql": "SELECT thu, COUNT(*) AS so_dong FROM @ev-nam-thu-vien GROUP BY thu;",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:62 thẻ c-nam-thu, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:65 thẻ c-nam-thu, SQL chuẩn",
       "resultId": "ev-nam-thu",
       "sourceResultId": "ev-nam-thu-vien",
       "sourceGroupColumn": "thu"
@@ -15426,13 +15628,13 @@ const GOC = {
     {
       "sql": "SELECT ten, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ngay = '2024-10-07';",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:81 thẻ c-toi-07, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:84 thẻ c-toi-07, SQL chuẩn",
       "resultId": "ev-toi-07"
     },
     {
       "sql": "SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';",
       "soDong": 5,
-      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:102 thẻ c-vy-thu-vien, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:105 thẻ c-vy-thu-vien, SQL chuẩn",
       "resultId": "ev-vy-thu-vien"
     },
     {
@@ -16385,7 +16587,7 @@ const GOC = {
             8,
             800000,
             "PH-13",
-            "DA_DUYET"
+            "DA_DUYET "
           ],
           [
             "DLK-04",
@@ -16415,7 +16617,7 @@ const GOC = {
             3,
             900000,
             "PH-16",
-            "DA_DUYET"
+            "DA_DUYET  "
           ],
           [
             "DLK-07",
@@ -16435,7 +16637,7 @@ const GOC = {
             2,
             700000,
             "PH-18",
-            "DA_DUYET"
+            "DA_DUYET "
           ],
           [
             "DLK-09",

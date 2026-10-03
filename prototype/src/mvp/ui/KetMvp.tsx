@@ -3,6 +3,7 @@
  * bỏ câu hỏi so ba cách nhập của QĐ-092. Tiêu đề không ghi "kết thật / kết thường" — đó là chữ của người làm game.
  */
 import { LOI_CHOT, type TongKetVu } from '../engine/tong-ket';
+import type { CSSProperties } from 'react';
 import { anhTheoTen } from './anh-mvp';
 
 export interface KetMvpProps {
@@ -46,9 +47,15 @@ export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, phuDangDo, onLamPhu
   }
   const cg = vu ? (vu.id ? anhTheoTen(`cg-ket-${vu.id}`) : undefined) : anhTheoTen(ketQua === 'that' ? 'cg-ket-that' : 'cg-ket-thuong');
   const coVuKe = !!vuKe && !!onSangVuSau;
+  const bienBan = anhTheoTen('ui-bien-ban');
   return (
-    <section className="endscreen mvp-ket" aria-labelledby="mvp-ket-tieude">
-      {cg ? <img className="mvp-ket__cg" src={cg} alt="" draggable={false} /> : null}
+    <section className={`endscreen mvp-ket mvp-ket--moi${cg ? ' co-cg' : ''}`} aria-labelledby="mvp-ket-tieude">
+      {cg ? (
+        <div className="mvp-ket__anh">
+          <img className="mvp-ket__cg" src={cg} alt="" draggable={false} />
+        </div>
+      ) : null}
+      <div className="mvp-ket__than">
       <p className="mvp-chal__kicker">{vu ? `Hết Vụ ${vu.so} — ${vu.ten}` : 'Hết Vụ 1 — Chữ ký H'}</p>
       <h2 id="mvp-ket-tieude" className="endscreen__title">
         {vu ? vu.tieuDeKet : ketQua === 'that' ? 'Người nộp không phải người viết' : 'Mới chỉ là một ý kiến sinh viên'}
@@ -61,8 +68,14 @@ export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, phuDangDo, onLamPhu
             : 'Dữ liệu chỉ ra ai cần hỏi, không chỉ ra ai đã làm. Muốn biết ai viết thư, cần thêm bằng chứng từ nơi khác.'}
       </p>
       {tongKet ? (
-        <aside className={`mvp-chot mvp-chot--${tongKet.muc}`} aria-label="Chị Minh Anh chốt hồ sơ" style={anhTheoTen('ui-bien-ban') ? { backgroundImage: `url("${anhTheoTen('ui-bien-ban')}")` } : undefined}>
-          <h3 className="mvp-chot__dau">Minh Anh chốt hồ sơ</h3>
+        <aside className={`mvp-chot mvp-chot--${tongKet.muc}`} aria-label="Chị Minh Anh chốt hồ sơ" style={bienBan ? { backgroundImage: `url("${bienBan}")` } : undefined}>
+          <div className="mvp-chot__dau-hang">
+            <h3 className="mvp-chot__dau">Minh Anh chốt hồ sơ</h3>
+            <span className="mvp-chot__vong" style={{ '--pt': tongKet.phanTram } as CSSProperties} role="img" aria-label={`Độ hoàn thành ${tongKet.phanTram}%`}>
+              <b>{tongKet.phanTram}%</b>
+              <small>hoàn thành</small>
+            </span>
+          </div>
           <ul className="mvp-chot__ds">
             <li>
               <span>Phiếu tra cứu đã ghim</span>
@@ -78,11 +91,27 @@ export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, phuDangDo, onLamPhu
                 </b>
               </li>
             ) : null}
+            {tongKet.doiChat.tong > 0 ? (
+              <li>
+                <span>Đối chất giữ được uy tín</span>
+                <b>
+                  {tongKet.doiChat.tong - tongKet.hetLuot}/{tongKet.doiChat.tong}
+                </b>
+              </li>
+            ) : null}
             {tongKet.cauHoi.tong > 0 ? (
               <li>
                 <span>Câu hỏi đáp đúng ngay lần đầu</span>
                 <b>
                   {tongKet.cauHoi.ngay}/{tongKet.cauHoi.tong}
+                </b>
+              </li>
+            ) : null}
+            {tongKet.chuyenAn.tong > 0 ? (
+              <li>
+                <span>Chuyện ẩn đã khám phá</span>
+                <b>
+                  {tongKet.chuyenAn.co}/{tongKet.chuyenAn.tong}
                 </b>
               </li>
             ) : null}
@@ -126,6 +155,7 @@ export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, phuDangDo, onLamPhu
             Về màn tiêu đề
           </button>
         ) : null}
+      </div>
       </div>
     </section>
   );

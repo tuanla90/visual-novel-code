@@ -181,6 +181,8 @@ export interface TrangThaiMvp {
   daGioiThieu?: string[];
   /** Nhân vật đã nói chuyện với người chơi ít nhất một câu (thứ tự gặp) — bản đồ dùng để hiện ảnh mặt người đã biết lịch. Ô lưu cũ: không có = []. */
   daNoi?: string[];
+  /** Chuỗi của mọi chỗ đã bấm ở `[KHÁM PHÁ]` trong cả ván (khác `khamPha.daXem` chỉ sống trong một cảnh) — tổng kết đếm chuyện ẩn. Ô lưu cũ: không có = []. */
+  daXemDiem?: string[];
   co: string[];
   /** Trang sổ đã vào sổ cá nhân (`[GHI SỔ]`, tự ghi — QĐ-092), theo thứ tự học. */
   soTay: string[];
@@ -207,7 +209,7 @@ export interface TrangThaiMvp {
    * `[ĐỐI CHẤT]` đang mở: các thẻ đã trình (mờ đi, không trình lại) và mức cao nhất đã đạt. Mức đạt cũng được ghi thành
    * cờ `<mã>-du` / `<mã>-ho-tro` trong `co` để `[ĐIỀU KIỆN]` dùng. Rời nút → `null`. Ô lưu cũ: không có.
    */
-  doiChat?: { id: string; daTrinh: string[]; muc: 'khong' | 'goi-y' | 'ho-tro' | 'du' } | null;
+  doiChat?: { id: string; daTrinh: string[]; muc: 'khong' | 'goi-y' | 'ho-tro' | 'du'; /** Số lần trình thẻ không liên quan. */ sai?: number } | null;
   ketQua: 'that' | 'thuong' | null;
   /** Nội dung không nhất quán lúc chạy (chuỗi không tồn tại…); khung nhìn `error`. */
   loi: string | null;

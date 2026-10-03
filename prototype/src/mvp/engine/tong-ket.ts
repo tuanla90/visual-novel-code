@@ -4,7 +4,10 @@
  *   - phiếu tra cứu đã ghim / số thẻ thử thách của vụ (có nhánh tùy chọn thì thiếu phiếu của nhánh chưa đi);
  *   - giả thuyết đã bác ĐỦ CĂN CỨ / số lần đối chất đã gặp;
  *   - câu hỏi trả lời đúng ngay lần đầu / số câu đã gặp;
- *   - mẩu giấy trong sổ CLB của vụ (nếu vụ có).
+ *   - mẩu giấy trong sổ CLB của vụ (nếu vụ có);
+ *   - chuyện ẩn đã khám phá (03/10/2026): chỗ bấm TÙY CHỌN của `[KHÁM PHÁ]` trong vụ — ở cảnh có điểm "!" thì mọi điểm khác "!"
+ *     (dấu "?", chi tiết ẩn) là tùy chọn; cảnh không có "!" bắt xem hết nên không tính. Đếm theo `s.daXemDiem`.
+ * `phanTram` = độ hoàn thành (trung bình các dòng, mỗi dòng một phần bằng nhau).
  * Chuỗi của một vụ = mọi chuỗi đi tới được từ chuỗi mở vụ (dò mọi chuỗi ký tự trùng mã chuỗi); vụ gốc = phần còn lại.
  */
 import type { KichBanMvp } from '../../content/mvp/types';
@@ -16,6 +19,11 @@ export interface TongKetVu {
   cauHoi: { ngay: number; tong: number };
   /** `null` = vụ không có mẩu giấy. */
   mauGiay: boolean | null;
+  /** Chuyện ẩn / tùy chọn đã khám phá; `tong` 0 = vụ không có. */
+  chuyenAn: { co: number; tong: number };
+  /** Đối chất hết lượt trình (trình sai quá số lần cho phép). */
+  hetLuot: number;
+  phanTram: number;
   muc: 'kin' | 'du' | 'thieu';
 }
 
@@ -58,9 +66,28 @@ export function tongKetVu(kb: KichBanMvp, s: TrangThaiMvp, batDau: string | null
   // Mẩu giấy "của vụ" là mẩu được MỞ trong vụ (hậu quả), không tính mẩu chỉ được nhắc tới làm bằng chứng / điều kiện.
   const moTrongVu = [...new Set(nut.flatMap((n) => (n.type === 'consequence' ? (JSON.stringify(n.hauQua).match(/clue-loi-nhan-linh-\d+/g) ?? []) : [])))];
   const mauGiay = moTrongVu.length === 0 ? null : moTrongVu.every((id) => s.hoSo.manhMoi.includes(id));
-  const diem = [phieu.tong === 0 ? 1 : phieu.co / phieu.tong, doiChat.tong === 0 ? 1 : doiChat.du / doiChat.tong, cauHoi.tong === 0 ? 1 : cauHoi.ngay / cauHoi.tong, mauGiay === false ? 0 : 1];
+  const tuyChon = [
+    ...new Set(
+      nut.flatMap((n) => {
+        if (n.type !== 'explore' || !n.diem.some((d) => d.dau === 'chinh')) return [];
+        return n.diem.filter((d) => d.dau !== 'chinh').map((d) => d.chuoi);
+      }),
+    ),
+  ];
+  const daXem = new Set(s.daXemDiem ?? []);
+  const chuyenAn = { co: tuyChon.filter((c) => daXem.has(c)).length, tong: tuyChon.length };
+  const hetLuot = dc.filter((id) => s.co.includes(`${id}-het-luot`)).length;
+  const diem = [
+    phieu.tong === 0 ? 1 : phieu.co / phieu.tong,
+    doiChat.tong === 0 ? 1 : doiChat.du / doiChat.tong,
+    // Uy tín ở đối chất: mỗi lần hết lượt trình là một phần mất.
+    ...(doiChat.tong === 0 ? [] : [(doiChat.tong - hetLuot) / doiChat.tong]),
+    cauHoi.tong === 0 ? 1 : cauHoi.ngay / cauHoi.tong,
+    ...(mauGiay === null ? [] : [mauGiay ? 1 : 0]),
+    ...(chuyenAn.tong === 0 ? [] : [chuyenAn.co / chuyenAn.tong]),
+  ];
   const tb = diem.reduce((a, b) => a + b, 0) / diem.length;
-  return { phieu, doiChat, cauHoi, mauGiay, muc: tb >= 0.999 ? 'kin' : tb >= 0.7 ? 'du' : 'thieu' };
+  return { phieu, doiChat, cauHoi, mauGiay, chuyenAn, hetLuot, phanTram: Math.round(tb * 100), muc: tb >= 0.999 ? 'kin' : tb >= 0.7 ? 'du' : 'thieu' };
 }
 
 /** Câu chị Minh Anh chốt theo mức. */

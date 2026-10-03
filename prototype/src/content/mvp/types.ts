@@ -205,6 +205,8 @@ export type NutMvp =
       bangChung: { id: string; muc: MucDoiChatMvp; feedback: LoiMvp[] }[];
       chuaDu: LoiMvp[];
       khac: LoiMvp[];
+      /** `[HẾT LƯỢT]` (03/10/2026): lời khi người chơi trình sai (thẻ không liên quan) đủ số lần cho phép — đối chất dừng ở mức đang đạt. */
+      hetLuot: LoiMvp[];
       truUyTin: boolean;
     }
   | { type: 'challenge'; challengeId: string }

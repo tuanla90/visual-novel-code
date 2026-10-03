@@ -5,6 +5,8 @@
 ## c-tin-don.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Tin trong kênh dài hơn mấy chữ trên giấy nhớ, còn đoạn sau nữa. "Bằng" thì phải khớp cả câu; mình chỉ có mấy chữ đầu thôi.
 - Khi chạy ra 338 dòng: **tung** (gai-dau): Cả ba trăm ba mươi tám tin của kênh từ tối qua. Có cả tin tìm ví với tin pass giáo trình.
+- Khi thiếu cột: **ha-vy** (thinking): Đủ năm tin rồi, nhưng phiếu này còn phải lọc tiếp tin gốc. Cần mã tin, lúc gửi, tài khoản gửi, và cột loại tin.
+- Khi thừa cột: **duy** (neutral): Đủ mà thừa. Nội dung tin thì năm dòng như nhau, khỏi chép vào phiếu. Lấy mã tin, lúc gửi, tài khoản với loại tin thôi.
 - Khi đúng: **ha-vy** (neutral): Năm tin cùng một câu. Ghim lại đã.
 - [DÀN DỰNG] Đường "sai có ích": [CLB Thám Tử soi dữ liệu] vào noi_dung với "bằng" → 0 dòng → đổi "bắt đầu bằng" → 5 dòng.
 

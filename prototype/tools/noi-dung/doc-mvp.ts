@@ -239,7 +239,7 @@ export type MucMvp =
    *   `  - [CHƯA ĐỦ] → phản hồi: <lời>` (nước đi "chưa đủ căn cứ", bắt buộc)
    *   `  - [KHÁC] → phản hồi: <lời>` (thẻ không khai, bắt buộc)
    */
-  | { kind: 'doi-chat'; id: string; asker: { speaker: string; text: string }; cauHoi: string | null; bangChung: RawBangChungDoiChat[]; chuaDu: RawLine[] | null; khac: RawLine[] | null; truUyTin: boolean }
+  | { kind: 'doi-chat'; id: string; asker: { speaker: string; text: string }; cauHoi: string | null; bangChung: RawBangChungDoiChat[]; chuaDu: RawLine[] | null; khac: RawLine[] | null; hetLuot: RawLine[] | null; truUyTin: boolean }
   | { kind: 'challenge'; id: string }
   | { kind: 'fix-query'; id: string }
   | { kind: 'effect'; id: string }
@@ -1045,7 +1045,11 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
             dc.khac = parseFeedbackDc(m2[1] ?? '');
             return i;
           }
-          throw new Error(`dòng con [ĐỐI CHẤT] sai quy ước "${line}" — viết "  - [CÂU HỎI] …", "  - {<mã thẻ>} [ĐỦ CĂN CỨ|HỖ TRỢ|GỢI Ý] → phản hồi: …", "  - [CHƯA ĐỦ] → phản hồi: …", "  - [KHÁC] → phản hồi: …"`);
+          if ((m2 = /^ {2}- \[HẾT LƯỢT\] → phản hồi: (.+)$/.exec(line))) {
+            dc.hetLuot = parseFeedbackDc(m2[1] ?? '');
+            return i;
+          }
+          throw new Error(`dòng con [ĐỐI CHẤT] sai quy ước "${line}" — viết "  - [CÂU HỎI] …", "  - {<mã thẻ>} [ĐỦ CĂN CỨ|HỖ TRỢ|GỢI Ý] → phản hồi: …", "  - [CHƯA ĐỦ] → phản hồi: …", "  - [KHÁC] → phản hồi: …", "  - [HẾT LƯỢT] → phản hồi: …"`);
         }
         if (branch) {
           const m = new RegExp(`^ {2}- \\{id: (${MA})\\}(?: \\[KHI (.+?)\\])? (.+?) → hậu quả: (.+)$`).exec(line);
@@ -1105,7 +1109,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         return add(question);
       }
       if ((m = new RegExp(`^- \\[ĐỐI CHẤT (${MA})( · trừ uy tín)?\\] ([a-z-]+): "(.*)"$`).exec(line))) {
-        doiChat = { kind: 'doi-chat', id: m[1] ?? '', asker: { speaker: m[3] ?? '', text: m[4] ?? '' }, cauHoi: null, bangChung: [], chuaDu: null, khac: null, truUyTin: m[2] !== undefined };
+        doiChat = { kind: 'doi-chat', id: m[1] ?? '', asker: { speaker: m[3] ?? '', text: m[4] ?? '' }, cauHoi: null, bangChung: [], chuaDu: null, khac: null, hetLuot: null, truUyTin: m[2] !== undefined };
         return add(doiChat);
       }
       if ((m = new RegExp(`^- \\[(THỬ THÁCH|SỬA TRUY VẤN) (${MA})\\]$`).exec(line))) return add({ kind: m[1] === 'THỬ THÁCH' ? 'challenge' : 'fix-query', id: m[2] ?? '' });
@@ -1279,7 +1283,7 @@ export function loiTrongChuoi(c: RawChuoiMvp): { line: RawLine; dong: number }[]
     } else if (it.kind === 'doi-chat') {
       out.push({ line: { speaker: it.asker.speaker, expression: null, text: it.asker.text }, dong });
       for (const b of it.bangChung) for (const f of b.feedback) out.push({ line: f, dong });
-      for (const f of [...(it.chuaDu ?? []), ...(it.khac ?? [])]) out.push({ line: f, dong });
+      for (const f of [...(it.chuaDu ?? []), ...(it.khac ?? []), ...(it.hetLuot ?? [])]) out.push({ line: f, dong });
     } else if (it.kind === 'branch') out.push({ line: { speaker: it.branch.asker.speaker, expression: null, text: it.branch.asker.text }, dong });
     else if (it.kind === 'create-character') out.push({ line: it.tao.asker, dong });
     else if (it.kind === 'line-pick') for (const r of it.rows) for (const f of r.feedback) out.push({ line: f, dong });

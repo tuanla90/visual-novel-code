@@ -11,6 +11,9 @@
  *   - `bản đồ`: nền là bản đồ trường, mỗi điểm `ghim:<mã>` là một ghim nơi đến có tên, dấu ! / ?, và ẢNH MẶT những người đang ở đó
  *     (`có:`) — chỉ hiện người đã gặp và đã biết lịch (thẻ nhân vật có dòng "Lịch");
  *   - `quan sát <nv>`: chân dung nhân vật phóng to, mỗi điểm `vung:<mã>` là một chi tiết để soi (kiểu Sherlock Holmes).
+ *
+ * 03/10/2026 (user): màn `· Hà Vy soi` KHÔNG mồi kính lúp nữa — chi tiết ẩn, rê chuột (hay chạm) qua đúng chỗ mới hiện kính;
+ * để lâu chưa thấy thì nháy rất nhẹ. Lần soi đầu (mở đầu, chưa có Hà Vy) vẫn hiện kính để dạy thao tác.
  */
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { DiemKhamPhaMvp, KichBanMvp } from '../../content/mvp/types';
@@ -42,6 +45,27 @@ export interface KhamPhaMvpProps {
   dang?: string;
   /** Quan sát: mở bằng cảnh cắt đôi mắt Hà Vy, kính lóe sáng, rồi các điểm soi mới hiện (user chốt 02/10/2026). */
   haVySoi?: boolean;
+}
+
+/**
+ * PHÒNG CLB CÓ NGƯỜI NGỒI (user 03/10/2026: "ảnh 4 thành viên đang ngồi ở chỗ thay vì 4 cái ảnh đứng sừng sững"): cảnh phòng CLB
+ * mà các người để bấm là thành viên CLB thì nền là ảnh họ đang ngồi (`bg-mvp-phong-clb-ngoi-<mã những người có mặt>`), mỗi người
+ * là một vùng bấm đúng chỗ ngồi. Khách (Nam, Quân…) vẫn đứng như cũ. Không có ảnh khớp nhóm người → về cách cũ.
+ * Vùng ngồi tính theo % ảnh 1360×768 (ảnh do Topview sửa từ nền phòng CLB, art/nguon/topview-2026-10-03).
+ */
+const CHO_NGOI: Record<string, { x: number; y: number; rong: number; cao: number }> = {
+  duy: { x: 3, y: 19, rong: 17.6, cao: 49 },
+  'ha-vy': { x: 29.8, y: 23.4, rong: 14.7, cao: 54.7 },
+  'minh-anh': { x: 55.5, y: 17.6, rong: 11.8, cao: 28 },
+  tung: { x: 68, y: 24.7, rong: 24.3, cao: 73.6 },
+};
+const THU_TU_NGOI = Object.keys(CHO_NGOI);
+
+/** Ảnh phòng CLB có đúng những thành viên này ngồi (thiếu thì `undefined`). */
+function anhPhongNgoi(canh: string, nguoi: readonly string[]): string | undefined {
+  if (canh !== 'phong-clb' || nguoi.length === 0) return undefined;
+  const ma = THU_TU_NGOI.filter((n) => nguoi.includes(n)).join('-');
+  return anhTheoTen(`bg-mvp-phong-clb-ngoi-${ma}`);
 }
 
 const DAU: Record<NonNullable<DiemKhamPhaMvp['dau']>, { chu: string; doc: string }> = {
@@ -106,7 +130,9 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
     ? `${homNay ? `${homNay}${gio ? `, ${gio}` : ''}. ` : ''}Dấu ! là việc chính. Dấu ? là chỗ còn điều chưa xem.`
     : laQuanSat
       ? conMoi > 0
-        ? `Bấm vào chi tiết đáng chú ý. Còn ${conMoi} chi tiết.`
+        ? haVySoi
+          ? `Còn ${conMoi} chi tiết. Chúng không tự sáng lên đâu.`
+          : `Bấm vào chi tiết đáng chú ý. Còn ${conMoi} chi tiết.`
         : 'Đã soi hết.'
       : diem.some((d) => d.diem.dau)
         ? 'Bấm vào từng người. Dấu ! là việc chính, dấu ? là chuyện thêm.'
@@ -121,6 +147,8 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
   };
 
   const anhQuanSat = laQuanSat && nhanVat ? anhChanDung(nhanVat, dang ?? nv?.bieuCam[0]) : undefined;
+  const thanhVienNgoi = !laBanDo && !laQuanSat ? diem.map((d) => d.diem.sprite).filter((sp) => sp.startsWith('nv:') && sp.slice(3) in CHO_NGOI).map((sp) => sp.slice(3)) : [];
+  const nenNgoi = anhPhongNgoi(canh, thanhVienNgoi);
   const anhMatVy = anhTheoTen('cat-canh-ha-vy-mat');
 
   return (
@@ -135,13 +163,16 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
       </div>
 
       {laQuanSat ? (
-        <div className={`mvp-soinv__vung${catCanh.dang ? ' dang-cat-canh' : ''}${haVySoi ? ' co-ha-vy' : ''}`}>
+        <div className={`mvp-soinv__vung${catCanh.dang ? ' dang-cat-canh' : ''}${haVySoi ? ' co-ha-vy' : ''}`} data-soi-an={haVySoi ? '1' : undefined}>
           {catCanh.dang ? (
             <button type="button" className="mvp-catcanh" onClick={catCanh.boQua} aria-label="Hà Vy quan sát — bấm để bỏ qua">
               <span className="mvp-catcanh__dai">
                 {anhMatVy ? <img className="mvp-catcanh__anh" src={anhMatVy} alt="" draggable={false} /> : null}
                 <span className="mvp-catcanh__loe" aria-hidden="true" />
-                <span className="mvp-catcanh__chu">Hà Vy quan sát</span>
+                <span className="mvp-catcanh__chu">
+                  Hà Vy quan sát
+                  <span className="mvp-catcanh__phu">Nhìn cả chỗ không ai để ý</span>
+                </span>
               </span>
             </button>
           ) : null}
@@ -151,7 +182,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
               <button
                 key={d.diem.chuoi}
                 type="button"
-                className={`mvp-soi${d.daXem ? ' is-da-xem' : ''}`}
+                className={`mvp-soi${d.daXem ? ' is-da-xem' : ''}${haVySoi ? ' mvp-soi--an' : ''}`}
                 style={{ left: `${d.diem.x}%`, top: `${d.diem.y}%`, width: `${d.diem.rong}%` }}
                 aria-label={nhanDoc(i, d)}
                 title={`${nhan[i] ?? ''}${d.daXem ? ' — đã soi' : ''}`}
@@ -168,8 +199,28 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
       ) : (
         <div className="mvp-canh__vung" ref={vungRef}>
           <div className={`mvp-canh__khung${laBanDo ? ' mvp-bando__khung' : ''}`} style={soDe}>
-            {nen ? <img className="mvp-canh__nen" src={nen} alt="" draggable={false} /> : <div className="mvp-canh__nen mvp-stage__nen-tam" />}
+            {nenNgoi ?? nen ? <img className="mvp-canh__nen" src={nenNgoi ?? nen} alt="" draggable={false} /> : <div className="mvp-canh__nen mvp-stage__nen-tam" />}
             {diem.map((d, i) => {
+              const ngoi = nenNgoi && d.diem.sprite.startsWith('nv:') ? CHO_NGOI[d.diem.sprite.slice(3)] : undefined;
+              if (ngoi) {
+                return (
+                  <button
+                    key={d.diem.chuoi}
+                    type="button"
+                    className={`mvp-ngoi${d.daXem ? ' is-da-xem' : ''}`}
+                    style={{ left: `${ngoi.x}%`, top: `${ngoi.y}%`, width: `${ngoi.rong}%`, height: `${ngoi.cao}%` }}
+                    aria-label={nhanDoc(i, d)}
+                    title={`${nhan[i] ?? ''}${d.daXem ? ' — đã nói chuyện' : ''}`}
+                    disabled={d.daXem}
+                    data-diem={d.diem.chuoi}
+                    data-chinh={d.diem.dau === 'chinh' && !d.daXem ? '1' : undefined}
+                    onClick={() => onXem(d.diem.chuoi)}
+                  >
+                    <HuyHieu d={d} />
+                    <span className="mvp-ngoi__ten">{kb.nhanVat.find((n) => n.id === d.diem.sprite.slice(3))?.ten}</span>
+                  </button>
+                );
+              }
               if (laBanDo || d.diem.sprite.startsWith('ghim:')) {
                 const nguoi = nguoiBiet(d.diem);
                 return (

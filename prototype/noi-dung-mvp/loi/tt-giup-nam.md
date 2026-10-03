@@ -5,6 +5,7 @@
 ## c-don-da-duyet.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Giá trị trạng thái viết hoa, gạch dưới, đúng như giấy nhớ.
 - Khi chạy ra 2 dòng: **ha-vy** (thinking): Hai dòng. Đây là hai đơn còn chờ, mình cần đơn đã duyệt.
+- Khi chạy ra 5 dòng: **ha-vy** (thinking): Năm đơn? Giấy của Ban kiểm tra ghi kỳ này duyệt tám. Ba đơn kia vẫn trong sổ, chỉ là ô trạng thái không khớp.<br>**duy** (neutral): Sổ gõ tay hay dính dấu cách ở đuôi lắm. Bỏ dấu cách thừa đi rồi hẵng so.
 - Khi chạy ra 156 dòng: **tung** (gai-dau): Cả sổ, từ năm 2022 tới giờ. Đơn các năm trước quyết toán xong hết rồi, còn hai đơn kỳ này thì đang chờ duyệt.
 - Khi đúng: **ha-vy** (neutral): Tám đơn đã duyệt. Ghim lại, rồi gom.
 

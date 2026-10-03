@@ -19,7 +19,7 @@
 
 ## v4-mo.2
 - **tung** (worried): Ba đơn lạ. Ai đặt?
-- **nam** (neutral): Đơn đặt trên máy xưởng, ai đăng nhập cũng điền tên người đặt được. Ban kiểm tra gửi kèm bản sổ đặt hàng của xưởng, có cả đơn còn chờ duyệt. Các cậu xem hộ.
+- **nam** (neutral): Đơn đặt trên máy xưởng, ai đăng nhập cũng điền tên người đặt được. Ban kiểm tra gửi kèm bản sổ đặt hàng của xưởng, có cả đơn còn chờ duyệt. Giấy của họ ghi kỳ này duyệt tám đơn. Các cậu xem hộ.
 - **ha-vy** (thinking): Chưa đọc tên vội. Đếm trước: mỗi người đứng tên mấy đơn, rồi mới xem đơn của Nam.
 > NHIỆM VỤ: Sổ đặt hàng của xưởng có những đơn nào đã duyệt?
 > NHẮC VIỆC ha-vy (thinking): Chỉ lấy đơn đã duyệt. Trạng thái ghi ở cột trang_thai.

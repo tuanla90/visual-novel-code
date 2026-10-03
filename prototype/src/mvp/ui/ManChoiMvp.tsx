@@ -327,6 +327,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             nut={kn.nut}
             daTrinh={kn.daTrinh}
             muc={kn.muc}
+            conLuot={kn.conLuot}
             dienTen={dienTen}
             tenNguoiNoi={(ma) => tenNguoiNoi(kb, ma, s)}
             onTrinh={(the) => hanhDong({ type: 'trinh-the', the })}

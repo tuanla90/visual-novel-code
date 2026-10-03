@@ -39,6 +39,7 @@
   - {ev-hai-dong-sua} [GỢI Ý] → phản hồi: **quan** (neutral): Hai dòng, hai người. Vẫn không nói ai viết.<br>**ha-vy** (neutral): Đúng, phiếu này chỉ cho biết chỗ cần đến.
   - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, đến đây bọn em chỉ nói được ai nộp. Ai viết thì bọn em chưa có căn cứ ạ.<br>**thay-quang** (neutral): Biết dừng ở chỗ chứng cứ dừng. Được.
   - [KHÁC] → phản hồi: **quan** (neutral): Cái này thì liên quan gì tới việc ai viết thư?<br>**minh-anh** (worried): Em xem lại hồ sơ đã ạ.
+  - [HẾT LƯỢT] → phản hồi: **quan** (smug): Thưa thầy, ba lần đưa ra ba tờ chẳng dính gì tới việc ai viết thư. Bên tôi xin giữ kết luận.<br>**thay-quang** (stern): Các em trình lạc đề ba lần rồi. Thầy ghi nhận tới đây thôi.<br>**minh-anh** (worried): Dạ. Bọn em xin dừng ở chỗ đã có căn cứ ạ.
 - [RẼ KẾT]
 
 ### hop-doi-chat — Hỏi thẳng: Hoài co người lại {cảnh: phong-hop}

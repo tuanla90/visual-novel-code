@@ -359,3 +359,24 @@
 .doi-chat .doi-chat__hop button {
   pointer-events: auto;
 }
+
+/* Uy tín ở đối chất (03/10/2026): ba chấm, mỗi lần trình thẻ không liên quan mất một; hết thì phần trình bày dừng. */
+.doi-chat__luot {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #fde68a;
+}
+.doi-chat__luot > span { display: inline-flex; gap: 4px; }
+.doi-chat__luot i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #fde68a;
+  background: transparent;
+}
+.doi-chat__luot i.is-con { background: #fbbf24; }
+.doi-chat__luot.is-sap-het { color: #fca5a5; }
+.doi-chat__luot.is-sap-het i { border-color: #fca5a5; }
+.doi-chat__luot.is-sap-het i.is-con { background: #f87171; }

@@ -5,6 +5,8 @@
 ## c-bai-dang.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Giá trị này có đang nằm đúng cột của nó không nhỉ?
 - Khi chạy ra 301 dòng: **tung** (gai-dau): Bài của mọi kênh trong trường, ba trăm lẻ một bài. Mình chỉ cần kênh Robotics.
+- Khi thiếu cột: **ha-vy** (thinking): Chín bài đúng rồi, nhưng lát nữa phải gom theo thiết bị gửi. Lấy mã bài, ngày, buổi và thiết bị.
+- Khi thừa cột: **duy** (neutral): Thừa cột. Tên kênh thì chín dòng như một, ghi làm gì. Mã bài, ngày, buổi, thiết bị là đủ.
 - Khi đúng: **ha-vy** (neutral): Chín bài. Ghim lại, rồi nhóm.
 
 ## c-nam-thu-vien.1

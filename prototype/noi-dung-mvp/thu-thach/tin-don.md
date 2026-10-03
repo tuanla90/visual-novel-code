@@ -6,6 +6,7 @@
 - Đề bài hiển thị: Kênh sinh viên chuyền nhau một câu về CLB. Những tin nào mang câu đó?
 - Manh mối liên quan: clue-noi-dung-tin
 - Mục tiêu học: Ôn "bắt đầu bằng"; kết quả nhiều dòng được ghim thành phiếu để dùng tiếp.
+- Chọn cột: không
 - Số dòng kỳ vọng: 5
 - SQL chuẩn:
 
