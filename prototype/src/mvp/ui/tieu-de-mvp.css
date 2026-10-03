@@ -1,9 +1,11 @@
-/* Màn mở màn bản MVP (TieuDeMvp.tsx). */
+/* Màn mở màn bản MVP (TieuDeMvp.tsx): ảnh bìa dàn nhân vật + logo + dải nút kiểu game. */
 .tdm {
   position: fixed;
   inset: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   overflow: hidden;
   background: #1b1612;
   color: #fff8e8;
@@ -15,113 +17,236 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.04);
-  animation: tdm-troi 24s ease-in-out infinite alternate;
+  object-position: 50% 35%;
+  transform: scale(1.03);
+  animation: tdm-troi 28s ease-in-out infinite alternate;
 }
 .tdm__phu {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 50% 45%, rgba(20, 14, 8, 0.35) 0%, rgba(20, 14, 8, 0.78) 100%),
-    linear-gradient(180deg, rgba(20, 14, 8, 0.2), rgba(20, 14, 8, 0.6));
+    linear-gradient(180deg, rgba(14, 9, 5, 0.78) 0%, rgba(14, 9, 5, 0.1) 30%, rgba(14, 9, 5, 0) 52%, rgba(14, 9, 5, 0.82) 100%),
+    radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.45) 100%);
 }
-.tdm__khung {
+
+/* Logo */
+.tdm__logo {
   position: relative;
-  width: min(92vw, 30rem);
-  padding: 1.5rem 1rem;
+  margin-top: clamp(0.8rem, 4vh, 2.6rem);
   text-align: center;
-  animation: tdm-hien 0.9s ease-out both;
+  animation: tdm-roi 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
-.tdm__kicker {
-  margin: 0 0 0.4rem;
-  font-size: 0.85rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+.tdm__nhan {
+  display: inline-block;
+  padding: 0.12rem 0.9rem;
+  border: 2px solid #f5c46b;
+  border-radius: 0.3rem;
+  background: rgba(20, 12, 4, 0.7);
+  font-size: clamp(0.9rem, 2.2vw, 1.3rem);
+  font-weight: 800;
+  letter-spacing: 0.4em;
+  padding-left: calc(0.9rem + 0.4em);
   color: #f5c46b;
 }
 .tdm__ten {
-  margin: 0;
-  font-size: clamp(2rem, 7vw, 3.4rem);
-  line-height: 1.1;
-  font-weight: 800;
-  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.7), 0 0 2px #000;
+  margin: 0.2rem 0 0;
+  font-size: clamp(2.1rem, 7.5vw, 4.6rem);
+  line-height: 1.02;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff6dc;
+  -webkit-text-stroke: 1px rgba(60, 30, 5, 0.9);
+  text-shadow: 0 2px 0 #b9701a, 0 4px 0 #7a430d, 0 8px 22px rgba(0, 0, 0, 0.8);
 }
-.tdm__lead {
-  margin: 0.9rem auto 1.8rem;
-  max-width: 24rem;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #eadfc6;
-}
+
+/* Menu */
 .tdm__menu {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem 1rem;
+  width: min(96vw, 60rem);
+  margin-bottom: clamp(1rem, 6vh, 3.2rem);
+  padding: 0 0.5rem;
+  animation: tdm-len 0.9s 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 .tdm__nut {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 11rem;
+  padding: 0.75rem 1.6rem;
+  border: 0;
+  background: none;
+  color: #fff3d6;
+  font: inherit;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: skewX(-10deg);
+  transition: transform 0.15s, filter 0.15s;
+}
+.tdm__nut > * {
+  position: relative;
+  transform: skewX(10deg);
+}
+.tdm__nut-nen {
+  position: absolute !important;
+  inset: 0;
+  transform: none !important;
+  border: 2px solid rgba(255, 226, 160, 0.55);
+  border-radius: 0.3rem;
+  background: linear-gradient(180deg, rgba(60, 40, 22, 0.88), rgba(24, 15, 8, 0.92));
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 240, 200, 0.25);
+  overflow: hidden;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+.tdm__nut-nen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+}
+.tdm__nut-bt {
+  flex: none;
+  color: #f5c46b;
+}
+.tdm__nut-chu {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.1rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid rgba(255, 240, 210, 0.35);
-  border-radius: 0.6rem;
-  background: rgba(30, 22, 14, 0.55);
-  backdrop-filter: blur(6px);
-  color: inherit;
-  font: inherit;
-  font-size: 1.05rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.15s, background 0.15s, border-color 0.15s;
+  line-height: 1.15;
 }
-.tdm__nut small {
-  font-size: 0.78rem;
-  font-weight: 400;
+.tdm__nut-chu small {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
   color: #f5c46b;
 }
 .tdm__nut:hover:not(:disabled),
 .tdm__nut:focus-visible {
-  transform: translateY(-2px);
-  background: rgba(245, 196, 107, 0.25);
-  border-color: #f5c46b;
   outline: none;
+  transform: skewX(-10deg) translateY(-4px) scale(1.05);
+  filter: brightness(1.12);
+}
+.tdm__nut:hover:not(:disabled) .tdm__nut-nen,
+.tdm__nut:focus-visible .tdm__nut-nen {
+  border-color: #ffe29a;
+  background: linear-gradient(180deg, #e39a35, #a9561a);
+  box-shadow: 0 6px 22px rgba(245, 160, 40, 0.55), inset 0 1px 0 rgba(255, 240, 200, 0.6);
+}
+.tdm__nut:hover:not(:disabled) .tdm__nut-nen::after,
+.tdm__nut:focus-visible .tdm__nut-nen::after {
+  animation: tdm-bong 0.7s ease-out;
+}
+.tdm__nut:hover:not(:disabled) .tdm__nut-bt,
+.tdm__nut:focus-visible .tdm__nut-bt,
+.tdm__nut:hover:not(:disabled) .tdm__nut-chu small,
+.tdm__nut:focus-visible .tdm__nut-chu small {
+  color: #fff3d6;
+}
+.tdm__nut:active:not(:disabled) {
+  transform: skewX(-10deg) translateY(0) scale(0.98);
 }
 .tdm__nut--chinh {
-  background: #d9892b;
-  border-color: #f5c46b;
-  color: #22160a;
+  min-width: 14rem;
+  font-size: 1.3rem;
 }
-.tdm__nut--chinh small {
-  color: #4a2c0a;
+.tdm__nut--chinh .tdm__nut-nen {
+  border-color: #ffe29a;
+  background: linear-gradient(180deg, #f0a93e, #c0651c);
+  box-shadow: 0 4px 18px rgba(245, 160, 40, 0.5), inset 0 1px 0 rgba(255, 240, 200, 0.65);
+  animation: tdm-tho 2.4s ease-in-out infinite;
 }
-.tdm__nut--chinh:hover:not(:disabled),
-.tdm__nut--chinh:focus-visible {
-  background: #f0a23f;
+.tdm__nut--chinh .tdm__nut-bt,
+.tdm__nut--chinh .tdm__nut-chu small {
+  color: #3b1d05;
+}
+.tdm__nut--chinh {
+  color: #2a1505;
+  text-shadow: 0 1px 0 rgba(255, 235, 190, 0.6);
+}
+.tdm__nut--chinh:hover:not(:disabled) .tdm__nut-bt,
+.tdm__nut--chinh:focus-visible .tdm__nut-bt,
+.tdm__nut--chinh:hover:not(:disabled) .tdm__nut-chu small,
+.tdm__nut--chinh:focus-visible .tdm__nut-chu small {
+  color: #3b1d05;
 }
 .tdm__nut:disabled {
-  opacity: 0.45;
+  opacity: 0.4;
+  filter: grayscale(0.6);
   cursor: not-allowed;
 }
-.tdm__chan {
-  margin: 1.2rem 0 0;
-  font-size: 0.78rem;
-  color: #cbbf9f;
-}
+
 @keyframes tdm-troi {
   to {
-    transform: scale(1.1) translate(-1.5%, -1%);
+    transform: scale(1.09) translate(-1%, -0.8%);
   }
 }
-@keyframes tdm-hien {
+@keyframes tdm-roi {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(-18px);
+  }
+}
+@keyframes tdm-len {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+@keyframes tdm-bong {
+  to {
+    left: 130%;
+  }
+}
+@keyframes tdm-tho {
+  50% {
+    box-shadow: 0 4px 28px rgba(255, 190, 70, 0.85), inset 0 1px 0 rgba(255, 240, 200, 0.65);
+  }
+}
+
+/* Điện thoại dọc / màn hẹp: nút xếp dọc, ảnh bìa căn giữa người. */
+@media (max-width: 640px) {
+  .tdm__nen {
+    object-position: 50% 30%;
+  }
+  .tdm__menu {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.55rem;
+    width: min(88vw, 20rem);
+    margin-bottom: 1.4rem;
+  }
+  .tdm__nut {
+    min-width: 0;
+    justify-content: center;
+    padding: 0.6rem 1rem;
+  }
+}
+@media (max-height: 420px) {
+  .tdm__menu {
+    gap: 0.4rem 0.7rem;
+  }
+  .tdm__nut {
+    padding: 0.45rem 1rem;
+    font-size: 0.95rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .tdm__nen,
-  .tdm__khung {
+  .tdm__logo,
+  .tdm__menu,
+  .tdm__nut--chinh .tdm__nut-nen {
     animation: none;
   }
 }

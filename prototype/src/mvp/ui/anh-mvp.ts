@@ -41,22 +41,6 @@ export function anhTheoTen(ten: string, chiMuc: ReadonlyMap<string, string> = CH
   return chiMuc.get(ten.toLowerCase());
 }
 
-const DA_TAI_TRUOC = new Set<string>();
-
-/** Tải và giải mã sẵn các ảnh (theo tên tệp) lúc máy rảnh — màn mở màn gọi để vào ván không bị ảnh hiện trễ. */
-export function taiTruocAnh(cacTen: readonly string[], chiMuc: ReadonlyMap<string, string> = CHI_MUC): void {
-  if (typeof Image === 'undefined') return;
-  for (const ten of cacTen) {
-    const url = anhTheoTen(ten, chiMuc);
-    if (!url || DA_TAI_TRUOC.has(url)) continue;
-    DA_TAI_TRUOC.add(url);
-    const img = new Image();
-    img.decoding = 'async';
-    img.src = url;
-    void img.decode?.().catch(() => undefined);
-  }
-}
-
 /** URL nền của một cảnh; `dem` = ưu tiên bản tối nếu có. */
 export function anhNen(canh: string, dem = false, chiMuc: ReadonlyMap<string, string> = CHI_MUC): string | undefined {
   if (dem) {
