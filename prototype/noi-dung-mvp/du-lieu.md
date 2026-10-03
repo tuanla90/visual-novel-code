@@ -352,3 +352,53 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 | LD-0252 | 2024-09-08 | SV240251 | SV240377 | KTX |
 | LD-0256 | 2024-09-08 | SV240251 | SV240415 | KTX |
 | LD-0259 | 2024-09-08 | SV240251 | SV240466 | KTX |
+
+## danh_sach_lop_cu {bảng}
+- Cột: nam_hoc TEXT, lop TEXT, ho_ten TEXT, ghi_chu TEXT
+
+<!-- Nhiệm vụ phụ "Học trò cũ của cô" (20/11/2024): danh sách lớp các khóa 1995–2005 cô Hạnh đứng lớp / chủ nhiệm, nhập tay, mỗi năm một kiểu (`␣` = dấu cách).
+     39 dòng; ghi_chu "ra trường" viết lệch: hoa chữ đầu, dấu cách đầu / cuối → lọc `= 'ra trường'` chỉ ra 18, TRIM hay LOWER riêng lẻ ra 23, phải LOWER(TRIM()) mới đủ 30.
+     30 dòng ra trường gom thành 26 tên không trùng; bốn tên có hai dòng: Hoàng Minh Châu (chuyển lớp, hai lớp khác năm), Đinh Công Sơn và Hà Đức Long (cùng năm cùng lớp, nhập hai lần),
+     Nguyễn Văn Hùng (1999 và 2003: hai người trùng tên, chỉ cô Hạnh biết). Dòng đầu bảng (Đỗ Văn Thịnh, 1995–1996, thôi học) là chi tiết ẩn của tuyến bí mật: không cột, không câu hỏi nào nhắc tới. -->
+
+| nam_hoc | lop | ho_ten | ghi_chu |
+|---|---|---|---|
+| 1995-1996 | TH95 | Đỗ Văn Thịnh | thôi học |
+| 1995-1996 | TH95 | Phạm Quang Hòa | NULL |
+| 1995-1996 | TH95 | Lê Thị Mai | NULL |
+| 1995-1996 | TH95 | Vũ Đình Khoa | chuyển trường |
+| 1995-1996 | TH95 | Nguyễn Thu Hằng | NULL |
+| 1997-1998 | TH95 | Phạm Quang Hòa | ra trường |
+| 1997-1998 | TH95 | Lê Thị Mai | Ra trường |
+| 1997-1998 | TH95 | Nguyễn Thu Hằng | ra trường␣ |
+| 1997-1998 | th95 | Bùi Xuân Trường | ra trường |
+| 1997-1998 | TH 95 | Hoàng Minh Châu | Ra trường␣ |
+| 1999-2000 | KT97 | Trần Bích Ngọc | ra trường |
+| 1999-2000 | KT97 | Đặng Văn Phúc | ra trường |
+| 1999-2000 | KT97 | Nguyễn Văn Hùng | ␣ra trường |
+| 1999-2000 | KT97 | Lương Thị Oanh | thôi học |
+| 1999-2000 | kt97 | Phan Hữu Nghĩa | Ra trường |
+| 1999-2000 | KT97 | Ngô Thanh Tâm | ra trường |
+| 1999-2000 | KT97 | Hoàng Minh Châu | ra trường |
+| 2001-2002 | TH99 | Đinh Công Sơn | ra trường |
+| 2001-2002 | TH99 | Mai Phương Thảo | Ra trường |
+| 2001-2002 | TH99 | Cao Thị Hiền | ra trường␣ |
+| 2001-2002 | TH99 | Vương Tiến Dũng | chuyển trường |
+| 2001-2002 | TH99 | Lý Quốc Bảo | ra trường |
+| 2001-2002 | TH 99 | Trịnh Ngọc Ánh | ␣Ra trường |
+| 2001-2002 | TH99 | Đinh Công Sơn | ra trường |
+| 2003-2004 | KT01 | Nguyễn Văn Hùng | ra trường |
+| 2003-2004 | KT01 | Tạ Thu Trang | ra trường |
+| 2003-2004 | KT01 | Đoàn Việt Anh | Ra trường |
+| 2003-2004 | KT01 | Kiều Thị Nhung | ra trường␣ |
+| 2003-2004 | kt01 | Chu Mạnh Cường | ra trường |
+| 2003-2004 | KT01 | Lâm Gia Hân | thôi học |
+| 2003-2004 | KT01 | Võ Thanh Sơn | ra trường |
+| 2004-2005 | TH02 | Bạch Thị Dung | ra trường |
+| 2004-2005 | TH02 | Hà Đức Long | Ra trường |
+| 2004-2005 | TH02 | Phùng Thị Vân | ra trường |
+| 2004-2005 | TH02 | Tô Quang Vinh | ra trường␣ |
+| 2004-2005 | TH02 | Trần Bích Ngọc | chuyển trường |
+| 2004-2005 | TH02 | Dương Hải Yến | ra trường |
+| 2004-2005 | TH02 | Lã Văn Tuấn | ra trường |
+| 2004-2005 | TH02 | Hà Đức Long | ra trường |
