@@ -26,6 +26,9 @@ A = GOC / 'prototype/src/assets'
 _spec = importlib.util.spec_from_file_location('xu_ly_cu', Path(__file__).with_name('xu-ly-anh-2026-09-30.py'))
 cu = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(cu)
+_spec2 = importlib.util.spec_from_file_location('co_dau', Path(__file__).with_name('can-co-dau-2026-10-04.py'))
+co_dau = importlib.util.module_from_spec(_spec2)
+_spec2.loader.exec_module(co_dau)
 
 # Ảnh Duy: cùng phép phóng với ảnh neo đã căn (tỉ lệ đầu 0,205 → 0,225; đỉnh tóc cách mép trên 4%; căn giữa theo đầu).
 NEO_DUY = GOC / 'art/nguon/topview-2026-10-01/char-duy-v2-anchor-l3.png'
@@ -69,6 +72,8 @@ def xu_ly(f: Path) -> str:
         ra = cu.tach_hong_tim(im).resize((768, 1360), Image.LANCZOS)
         if ten.startswith('char-duy'):
             ra = can_duy(ra)
+        if co_dau.tra(ten):  # đồng bộ cỡ đầu cả dàn (04/10, co-dau-2026-10-04.json)
+            ra = co_dau.doi_co(ra, co_dau.tra(ten))
         dich = dich_chan_dung(ten)
         ra.save(dich, optimize=True)
     elif ten.startswith('chibi-'):

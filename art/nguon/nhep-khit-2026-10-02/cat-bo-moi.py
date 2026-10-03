@@ -29,13 +29,24 @@ _s.loader.exec_module(xm)
 TAM = tempfile.mkdtemp()
 
 
+_s2 = importlib.util.spec_from_file_location('co_dau', os.path.join(HERE, '..', 'can-co-dau-2026-10-04.py'))
+co_dau = importlib.util.module_from_spec(_s2)
+_s2.loader.exec_module(co_dau)
+
+
 def nguon(ten):
-    if not ten.startswith('char-duy'):
+    """Khung nguồn đã qua đúng phép biến đổi như ảnh trong game: Duy phóng can_duy, cả dàn đổi cỡ đầu (co-dau)."""
+    v = co_dau.tra(ten)
+    if not ten.startswith('char-duy') and not v:
         return G2
     for loai in ('mieng', 'mat'):
         im = Image.open(f'{G2}/g2-{ten}--{loai}.png').convert('RGB').resize((768, 1360), Image.LANCZOS)
+        if ten.startswith('char-duy'):
+            im = xm.can_duy(im)
+        if v:
+            im = co_dau.doi_co(im, v)
         nen = Image.new('RGB', (768, 1360), (255, 0, 255))
-        nen.paste(xm.can_duy(im))
+        nen.paste(im, (0, 0), im if im.mode == 'RGBA' else None)
         nen.save(f'{TAM}/g2-{ten}--{loai}.png')
     return TAM
 
