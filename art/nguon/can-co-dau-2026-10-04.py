@@ -3,7 +3,9 @@
 Đo khoảng mắt → cằm trên ảnh neo của từng người (mắt lấy từ bộ nhép, cằm dò theo nét viền dưới miệng), phóng/thu cả người
 quanh điểm (tâm mặt, đỉnh đầu) cho khoảng đó về 146 px (mức của Tùng, giữa nhóm chính). Phóng to giữ đỉnh đầu đứng yên nên
 ai thấp (bà Lụa) vẫn thấp; thu nhỏ giữ mép dưới (người hạ thấp xuống, không hở chân). Nữ trẻ (Minh Anh, Hà Vy, Hoài, Thảo)
-thu thêm x0,90 và cô Lan x0,93 (khóa `nu`): user thấy nữ vẫn to hơn nam khi cùng cỡ mặt. Bác Tư, thầy Quang vẽ mặt dài theo tuổi nên đo mắt → cằm bị thừa: đặt tay 0,97 như nhóm chính.
+thu thêm x0,90 và cô Lan x0,93 (khóa `nu`): user thấy nữ vẫn to hơn nam khi cùng cỡ mặt. Sau đó user chỉnh tay: Minh Anh
+x1,05 (búi tóc nên cao hơn Hoài), Hà Vy x0,95; `dy` dời cả người xuống cho vòng hông khớp nhau (dây lưng về quanh dòng 1060):
+Thảo 180, cô Lan 100, cô Hạnh 100. Bác Tư, thầy Quang vẽ mặt dài theo tuổi nên đo mắt → cằm bị thừa: đặt tay 0,97 như nhóm chính.
 Bảng hệ số ở co-dau-2026-10-04.json; xu-ly-anh-dan-moi-2026-10-01.py và cat-bo-moi.py dùng lại bảng này khi dựng lại ảnh.
 
 Chạy một lần từ prototype/:  python ../art/nguon/can-co-dau-2026-10-04.py [--ghi]
@@ -41,14 +43,14 @@ def doi_co(im: Image.Image, v) -> Image.Image:
     top = neo_y(v, H)
     to = im.convert('RGBA').resize((round(W * s), round(H * s)), Image.LANCZOS)
     khung = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-    khung.paste(to, (round(cx - cx * s), round(top - top * s)), to)
+    khung.paste(to, (round(cx - cx * s), round(top - top * s) + v.get('dy', 0)), to)
     return khung
 
 
 def doi_hop(b, v):
     s, cx, top = v['s'], v['cx'], neo_y(v)
     x, y, w, h = b
-    return [round(cx + (x - cx) * s), round(top + (y - top) * s), max(1, round(w * s)), max(1, round(h * s))]
+    return [round(cx + (x - cx) * s), round(top + (y - top) * s) + v.get('dy', 0), max(1, round(w * s)), max(1, round(h * s))]
 
 
 def main():
