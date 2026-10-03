@@ -38,7 +38,7 @@ describe('màn lịch', () => {
     veManChoi(s);
     const ve = within(thanhTren()).getByRole('button', { name: /^Mở lịch/ });
     expect(ve).toHaveAttribute('title', 'Mở lịch');
-    expect(ve.querySelector('.topbar__chapter-number')).toHaveTextContent(`3/${kb.lich.ngay.length}`);
+    expect(ve.querySelector('.topbar__chapter-number')).toHaveTextContent('19/9');
 
     await userEvent.click(ve);
     const lich = screen.getByRole('dialog', { name: /Tháng 9 2024/ });

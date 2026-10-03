@@ -30,14 +30,17 @@
 ## md-00-thang-may.1
 - **narrator**: Tờ giấy dán ngay giữa cửa thang máy: "Thang máy bảo trì đến hết tuần. Sinh viên vui lòng đi thang bộ."
 - **player**: (Hết tuần… Tức là cả tuần leo bộ.)
+- **player**: (Thang bộ ở đâu nhỉ? Bảng tin trên tường kia chắc có sơ đồ.)
 
 ## md-00-so-do.1
 - **narrator**: Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ, có chấm "Bạn đang ở đây".
 - **player**: (Phòng 408 ở dãy giữa, tầng bốn. Đúng nhà này rồi.)
 - **player**: (Sơ đồ chỉ vẽ ba dãy nhà nhìn từ trên xuống. Thang bộ ở đâu thì chịu.)
+- **player**: (Hai tấm biển chịu rồi. Phải hỏi người thôi. Mà hỏi ai giữa đám đông này?)
+> NHIỆM VỤ: Tìm người hỏi đường lên tầng bốn
+> NHẮC VIỆC player: Thang máy hỏng, sơ đồ không vẽ thang bộ. Trong sảnh này ai là người hỏi được?
 
 ## md-00-thay-tung.1
-> NHẮC VIỆC player: Thang máy hỏng, sơ đồ không vẽ thang bộ. Trong sảnh này ai là người hỏi được?
 - **player**: (Ai cũng kéo vali, ai cũng mới tới như mình. Hỏi họ thì chắc cũng chịu.)
 - **player**: (Khoan. Giữa đám đông có một cái lưng áo xanh, không vali, không balo.)
 - **player**: (Nhìn kỹ đã rồi hẵng hỏi.)
@@ -68,7 +71,7 @@
 - **tung** (ao-xanh-happy): {{nv.nguoi-choi}} à. Dễ gọi đấy.
 
 ## md-00-gap-tung.3
-- **tung** (ao-xanh): Lại dân kinh tế. Cả phòng chẳng ai học Toán, sau này thi biết mượn vở ai đây.
+- **tung** (ao-xanh): {{nv.nguoi-choi.nganh}} à? Lại dân kinh tế. Cả phòng chẳng ai học Toán, sau này thi biết mượn vở ai đây.
 - **player**: Toán thì chịu, chứ Excel thì được. File xếp phòng mấy nghìn dòng, tớ lọc cái là ra tên mình.
 - **tung** (ao-xanh-chi-tay): Thế là chia việc được rồi. Cậu lo lọc, tớ lo đường. Đưa tớ một đầu vali. Tớ cá là ba phút là tới tầng bốn.
 
@@ -157,6 +160,7 @@
 - **ha-vy** (smile): Cầm bản đồ đã nhàu, thuộc đường, thích dẫn người khác đi. Du lịch chứ gì.
 - **tung** (surprised): Ơ đúng! Sao cậu biết?
 - **ha-vy** (neutral): Holmes gọi thế là nhìn mà có quan sát. Cái áo thì không nói được gì, nên tớ bỏ.
+- **ha-vy** (smile): Còn cậu thì khỏi đoán, Tùng khoe với cả tầng rồi: {{nv.nguoi-choi.nganh}}. Dân sổ sách, đọc bảng nhanh hơn đọc mặt người. CLB đang thiếu đúng kiểu đấy.
 - **duy** (smile): Còn tớ là {{nv.duy}}, năm hai Hành chính học. Chìa khóa phòng, tủ hồ sơ, cả cái laptop cũ cất trong tủ, đều tớ giữ.
 - **duy** (neutral): Ngăn dưới tớ chưa kiểm kê tới. Cậu mở xem có gì trong đấy.
 > NHẮC VIỆC duy (neutral): Ngăn dưới tủ tớ chưa kiểm kê tới.

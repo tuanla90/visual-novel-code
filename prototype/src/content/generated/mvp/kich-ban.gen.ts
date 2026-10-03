@@ -1047,9 +1047,9 @@ const GOC = {
           "diem": [
             {
               "sprite": "obj-thong-bao-thang-may",
-              "x": 12,
-              "y": 44,
-              "rong": 4,
+              "x": 10.5,
+              "y": 38.5,
+              "rong": 3.6,
               "chuoi": "md-00-thang-may",
               "sau": [],
               "nhan": "Xem tờ giấy trên cửa thang máy"
@@ -1057,10 +1057,12 @@ const GOC = {
             {
               "sprite": "obj-so-do-ktx",
               "x": 44,
-              "y": 40,
-              "rong": 11,
+              "y": 35.5,
+              "rong": 10,
               "chuoi": "md-00-so-do",
-              "sau": [],
+              "sau": [
+                "md-00-thang-may"
+              ],
               "nhan": "Xem bảng tin"
             },
             {
@@ -1094,6 +1096,11 @@ const GOC = {
           "type": "line",
           "speaker": "player",
           "text": "(Hết tuần… Tức là cả tuần leo bộ.)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Thang bộ ở đâu nhỉ? Bảng tin trên tường kia chắc có sơ đồ.)"
         }
       ]
     },
@@ -1117,6 +1124,20 @@ const GOC = {
           "type": "line",
           "speaker": "player",
           "text": "(Sơ đồ chỉ vẽ ba dãy nhà nhìn từ trên xuống. Thang bộ ở đâu thì chịu.)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Hai tấm biển chịu rồi. Phải hỏi người thôi. Mà hỏi ai giữa đám đông này?)"
+        },
+        {
+          "type": "task",
+          "text": "Tìm người hỏi đường lên tầng bốn"
+        },
+        {
+          "type": "reminder",
+          "speaker": "player",
+          "text": "Thang máy hỏng, sơ đồ không vẽ thang bộ. Trong sảnh này ai là người hỏi được?"
         }
       ]
     },
@@ -1126,11 +1147,6 @@ const GOC = {
       "canh": "sanh-ktx",
       "mocSomNhat": 0,
       "nodes": [
-        {
-          "type": "reminder",
-          "speaker": "player",
-          "text": "Thang máy hỏng, sơ đồ không vẽ thang bộ. Trong sảnh này ai là người hỏi được?"
-        },
         {
           "type": "line",
           "speaker": "player",
@@ -1332,7 +1348,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh",
-          "text": "Lại dân kinh tế. Cả phòng chẳng ai học Toán, sau này thi biết mượn vở ai đây."
+          "text": "{{nv.nguoi-choi.nganh}} à? Lại dân kinh tế. Cả phòng chẳng ai học Toán, sau này thi biết mượn vở ai đây."
         },
         {
           "type": "line",
@@ -1522,6 +1538,10 @@ const GOC = {
           "text": "Thứ Bảy đi với tớ nhé?"
         },
         {
+          "type": "image",
+          "imageId": "chibi-chuyen-that"
+        },
+        {
           "type": "goto",
           "to": "md-08-tuan-cong-dan"
         }
@@ -1705,10 +1725,6 @@ const GOC = {
           "text": "Biết nhận là mình nhầm thì được rồi. Bắt đầu từ việc đến đúng giờ nhé."
         },
         {
-          "type": "image",
-          "imageId": "chibi-ghi-la-ghi"
-        },
-        {
           "type": "goto",
           "to": "md-10-phong-clb"
         }
@@ -1834,6 +1850,12 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Holmes gọi thế là nhìn mà có quan sát. Cái áo thì không nói được gì, nên tớ bỏ."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Còn cậu thì khỏi đoán, Tùng khoe với cả tầng rồi: {{nv.nguoi-choi.nganh}}. Dân sổ sách, đọc bảng nhanh hơn đọc mặt người. CLB đang thiếu đúng kiểu đấy."
         },
         {
           "type": "line",
@@ -2974,14 +2996,6 @@ const GOC = {
         {
           "type": "image",
           "imageId": "chibi-mi-tom"
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-lai-suat"
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-0-dong"
         }
       ]
     },
@@ -3397,10 +3411,6 @@ const GOC = {
           "text": "Vậy để tớ mời. Coi như cảm ơn cậu chỉ đường hôm đầu."
         },
         {
-          "type": "image",
-          "imageId": "chibi-khao-tra-da"
-        },
-        {
           "type": "goto",
           "to": "n3-phong"
         }
@@ -3548,6 +3558,10 @@ const GOC = {
         {
           "type": "challenge",
           "challengeId": "c-ten-h"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-0-dong"
         },
         {
           "type": "line",
@@ -3960,6 +3974,10 @@ const GOC = {
           "text": "Luật CLB: ai ăn cái cuối cùng thì mua hộp mới."
         },
         {
+          "type": "image",
+          "imageId": "chibi-duy-hop-banh"
+        },
+        {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
@@ -3995,6 +4013,10 @@ const GOC = {
           "text": "Tới lượt tớ. Một: thuộc đường. Hai: hay cá. Ba: cá mười thua chín."
         },
         {
+          "type": "image",
+          "imageId": "chibi-vy-cuoi-deu"
+        },
+        {
           "type": "line",
           "speaker": "tung",
           "expression": "surprised",
@@ -4010,6 +4032,10 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Chín giờ thì hộp bánh hết. Người ăn cái cuối là Duy. Duy mở sổ, ghi một dòng: \"Nợ CLB một hộp bánh.\""
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-duy-ok"
         },
         {
           "type": "line",
@@ -4042,23 +4068,7 @@ const GOC = {
         },
         {
           "type": "image",
-          "imageId": "chibi-duy-hop-banh"
-        },
-        {
-          "type": "image",
           "imageId": "chibi-tung-tinh-nham"
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-vy-cuoi-deu"
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-duy-ok"
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-chuyen-that"
         }
       ]
     },
@@ -4896,6 +4906,10 @@ const GOC = {
           "text": "Bà ơi, cho cháu ba trà đá! Hôm nay cháu khao."
         },
         {
+          "type": "image",
+          "imageId": "chibi-khao-tra-da"
+        },
+        {
           "type": "line",
           "speaker": "ba-lua",
           "expression": "smile",
@@ -4906,6 +4920,10 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "smile",
           "text": "Cậu cá thua tớ bao nhiêu lần rồi, trả bằng trà đá thì còn lâu mới hết."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-ghi-la-ghi"
         },
         {
           "type": "line",
@@ -7642,6 +7660,10 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "smile",
           "text": "Lãi suất hợp lý đấy."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-lai-suat"
         },
         {
           "type": "line",
@@ -15646,7 +15668,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:165 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:169 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

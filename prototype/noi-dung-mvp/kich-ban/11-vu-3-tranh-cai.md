@@ -111,3 +111,5 @@
 ### v3-bd-cang-tin — Bản đồ Vụ 3 (tùy chọn): chè đậu đen ở căng tin, sổ nợ của Tùng {cảnh: cang-tin}
 
 - [LỜI v3-bd-cang-tin.1]
+- [ẢNH chibi-lai-suat]
+- [LỜI v3-bd-cang-tin.1b]

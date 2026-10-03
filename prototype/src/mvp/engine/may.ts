@@ -1072,7 +1072,7 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
  * `{{nv.<mã>}}` khác bằng tên nhân vật trong nhan-vat.md.
  */
 export function dienTen(kb: KichBanMvp, s: TrangThaiMvp, text: string): string {
-  return text.replace(/\{\{nv\.([a-z0-9-]+)\}\}/g, (_m, ma: string) => {
+  return text.replace(/\{\{nv\.nguoi-choi\.nganh\}\}/g, () => s.nganh || 'kinh tế').replace(/\{\{nv\.([a-z0-9-]+)\}\}/g, (_m, ma: string) => {
     if (ma === 'nguoi-choi') return s.tenNguoiChoi || TEN_MAC_DINH;
     return kb.nhanVat.find((n) => n.id === ma)?.trongCau ?? ma;
   });

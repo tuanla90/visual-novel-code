@@ -182,4 +182,6 @@
 - **tung** (gai-dau): …định nói là hôm nay tớ quên ví.
 - **player**: Tớ trả. Ghi sổ nợ: Tùng, một cốc chè, lãi là một lần dẫn đường không lạc.
 - **ha-vy** (smile): Lãi suất hợp lý đấy.
+
+## v3-bd-cang-tin.1b
 - **narrator**: Bàn trong góc, mấy bạn năm nhất chụm đầu chép bài tập Triết của nhau. Chuông báo tiết reo, cả căng tin đứng dậy cùng một lúc.

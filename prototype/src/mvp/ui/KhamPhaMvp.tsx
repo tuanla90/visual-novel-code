@@ -57,7 +57,7 @@ const CHO_NGOI: Record<string, { x: number; y: number; rong: number; cao: number
   duy: { x: 3, y: 19, rong: 17.6, cao: 49 },
   'ha-vy': { x: 29.8, y: 23.4, rong: 14.7, cao: 54.7 },
   'minh-anh': { x: 55.5, y: 17.6, rong: 11.8, cao: 28 },
-  tung: { x: 68, y: 24.7, rong: 24.3, cao: 73.6 },
+  tung: { x: 68, y: 24.7, rong: 24.3, cao: 62 },
 };
 const THU_TU_NGOI = Object.keys(CHO_NGOI);
 
@@ -124,21 +124,13 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
   const soDe = { '--ti-le': `${tiLe.rong} / ${tiLe.cao}`, '--ti-le-so': tiLe.rong / tiLe.cao } as CSSProperties;
   const nhan = danhSoTrung(diem.map((d) => nhanDiemKhamPha(kb, d.diem)));
   const nhanDoc = (i: number, d: DiemKhamPhaHienMvp): string => `${nhan[i] ?? ''}${d.diem.dau && !d.daXem ? ` (${DAU[d.diem.dau].doc})` : ''}`;
-  const conMoi = diem.filter((d) => !d.daXem).length;
   const tieuDe = laBanDo ? 'Đi đâu bây giờ?' : laQuanSat ? `Quan sát ${nv?.trongCau ?? ''}` : tenCanh;
+  // Không còn dòng đếm "Còn N chỗ chưa xem" (user 03/10/2026): đếm sẵn làm mất phần tự tìm. Chỉ bản đồ và phòng có dấu ! / ? giữ chú giải.
   const phu = laBanDo
     ? `${homNay ? `${homNay}${gio ? `, ${gio}` : ''}. ` : ''}Dấu ! là việc chính. Dấu ? là chỗ còn điều chưa xem.`
-    : laQuanSat
-      ? conMoi > 0
-        ? haVySoi
-          ? `Còn ${conMoi} chi tiết. Chúng không tự sáng lên đâu.`
-          : `Bấm vào chi tiết đáng chú ý. Còn ${conMoi} chi tiết.`
-        : 'Đã soi hết.'
-      : diem.some((d) => d.diem.dau)
-        ? 'Bấm vào từng người. Dấu ! là việc chính, dấu ? là chuyện thêm.'
-        : conMoi > 0
-          ? `Còn ${conMoi} chỗ chưa xem`
-          : 'Đã xem hết chỗ ở đây.';
+    : !laQuanSat && diem.some((d) => d.diem.dau)
+      ? 'Dấu ! là việc chính, dấu ? là chuyện thêm.'
+      : '';
   /** Người đang ở một nơi mà người chơi ĐÃ BIẾT: đã gặp và thẻ nhân vật có dòng "Lịch". */
   const nguoiBiet = (d: DiemKhamPhaMvp): string[] => {
     // Người kịch bản đặt ở đây (`có:`) cộng người lịch "Thường ở" đặt ở ghim này vào thứ, giờ của bản đồ.
@@ -157,8 +149,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
       <div className="mvp-canh__dau">
         <div className="mvp-canh__tieude">
           <h2>{tieuDe}</h2>
-          {/* Chương 1 (ĐÃ CHỐT C): không câu dặn thao tác ở cảnh thường — chỉ báo còn bao nhiêu chỗ. */}
-          <p>{phu}</p>
+          {phu ? <p>{phu}</p> : null}
         </div>
       </div>
 
@@ -198,7 +189,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
         </div>
       ) : (
         <div className="mvp-canh__vung" ref={vungRef}>
-          <div className={`mvp-canh__khung${laBanDo ? ' mvp-bando__khung' : ''}`} style={soDe}>
+          <div className={`mvp-canh__khung${laBanDo ? ' mvp-bando__khung' : ''}${nenNgoi ? ' is-ngoi' : ''}`} style={soDe}>
             {nenNgoi ?? nen ? <img className="mvp-canh__nen" src={nenNgoi ?? nen} alt="" draggable={false} /> : <div className="mvp-canh__nen mvp-stage__nen-tam" />}
             {diem.map((d, i) => {
               const ngoi = nenNgoi && d.diem.sprite.startsWith('nv:') ? CHO_NGOI[d.diem.sprite.slice(3)] : undefined;

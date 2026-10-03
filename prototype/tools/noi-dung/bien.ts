@@ -48,7 +48,8 @@ function giaTri(ten: string, bang: BangTen, tuyChon: TuyChonThayBien): { chu: st
       return { loi: `biến "{{${ten}}}" sai dạng — viết {{nv.<mã>}} hoặc {{nv.<mã>.<dạng>}}` };
     }
     if ((MA_GIU_CHO as readonly string[]).includes(ma)) {
-      if (tuyChon.giuCho && dang === DANG_MAC_DINH) return { giu: true };
+      // `{{nv.nguoi-choi.nganh}}` (03/10/2026): ngành người chơi chọn, máy thay lúc chạy như tên.
+      if (tuyChon.giuCho && (dang === DANG_MAC_DINH || (ma === 'nguoi-choi' && dang === 'nganh'))) return { giu: true };
       return { loi: `biến "{{${ten}}}": mã "${ma}" đang giữ chỗ, chưa dùng được (QĐ-077)` };
     }
     if (!coKhoa(bang.nv, ma)) {

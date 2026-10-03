@@ -139,6 +139,30 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   }, [bgmEnabled]);
   useEffect(() => () => soundEngine.stopBgm(), []);
 
+  // Giữ Ctrl để tua thoại (user 03/10/2026); thả phím, rời cửa sổ hay đang gõ chữ thì thôi tua.
+  useEffect(() => {
+    const dat = useVnStore.getState().setGiuTua;
+    const xuong = (e: KeyboardEvent): void => {
+      if (e.key !== 'Control' || e.repeat) return;
+      const t = e.target as HTMLElement | null;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+      dat(true);
+    };
+    const len = (e: KeyboardEvent): void => {
+      if (e.key === 'Control') dat(false);
+    };
+    const tha = (): void => dat(false);
+    window.addEventListener('keydown', xuong);
+    window.addEventListener('keyup', len);
+    window.addEventListener('blur', tha);
+    return () => {
+      window.removeEventListener('keydown', xuong);
+      window.removeEventListener('keyup', len);
+      window.removeEventListener('blur', tha);
+      dat(false);
+    };
+  }, []);
+
   // Hồ sơ có thêm thẻ → thẻ thu nhỏ rơi xuống dưới nút Hồ sơ rồi bay vào nút (`TheMoiMvp`), kèm tiếng chuông như
   // prototype; thẻ ghi vào danh sách "chưa xem" (nhãn MỚI trong khung Hồ sơ). Thẻ đến khi đợt trước còn bay → xếp hàng.
   // Hồ sơ mất thẻ (nạp ván khác, chơi lại) → không báo, đặt lại mốc và bỏ danh sách chưa xem.

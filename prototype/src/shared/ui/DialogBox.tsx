@@ -121,7 +121,7 @@ function VnQuickButtons({
           toggleSkipMode();
         }}
         disabled={!skipMode && !alreadyRead}
-        title={alreadyRead || skipMode ? 'Tua nhanh qua thoại đã đọc' : 'Chỉ tua được thoại đã đọc'}
+        title={alreadyRead || skipMode ? 'Tua nhanh qua thoại đã đọc (giữ Ctrl để tua cả thoại mới)' : 'Chỉ tua được thoại đã đọc — giữ Ctrl để tua cả thoại mới'}
       >
         <IconFastForward width={14} height={14} />
         <span>Skip</span>
@@ -242,7 +242,9 @@ export function DialogBox({
   const pushBacklog = useVnStore((s) => s.pushBacklog);
 
   // Skip chỉ tua thoại đã đọc: gặp lời mới thì dừng để người chơi không lỡ manh mối.
-  const skipping = skipMode && alreadyRead;
+  const giuTua = useVnStore((s) => s.giuTua);
+  // Giữ Ctrl thì tua cả lời chưa đọc (người chơi tự chọn, như các game hình ảnh khác).
+  const skipping = (skipMode && alreadyRead) || giuTua;
   useEffect(() => {
     if (skipMode && !alreadyRead) setSkipMode(false);
   }, [skipMode, alreadyRead, setSkipMode]);

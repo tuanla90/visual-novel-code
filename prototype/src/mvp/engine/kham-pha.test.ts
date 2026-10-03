@@ -112,12 +112,12 @@ describe('máy MVP: [KHÁM PHÁ]', () => {
 });
 
 describe('mở đầu thật: sảnh KTX', () => {
-  it('chuỗi đầu dẫn tới [KHÁM PHÁ] ở sảnh KTX; Tùng chỉ hiện sau khi xem thang máy và bảng tin', () => {
+  it('chuỗi đầu dẫn tới [KHÁM PHÁ] ở sảnh KTX; bảng tin hiện sau tờ giấy thang máy, Tùng hiện sau cả hai', () => {
     let s = taoTrangThai(THAT, 1);
     for (let i = 0; i < 50 && khungNhin(THAT, s).kind === 'line'; i++) s = tiep(THAT, s);
     const kn = khungNhin(THAT, s);
     expect(kn.kind).toBe('explore');
     expect(s.canh).toBe('sanh-ktx');
-    expect(hien(THAT, s)).toEqual(['md-00-thang-may', 'md-00-so-do']);
+    expect(hien(THAT, s)).toEqual(['md-00-thang-may']);
   });
 });

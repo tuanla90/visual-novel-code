@@ -32,11 +32,11 @@ afterEach(() => {
 });
 
 describe('sảnh KTX: [KHÁM PHÁ]', () => {
-  it('hai chỗ bấm có nhãn, chưa có Tùng; bấm tờ giấy trên thang máy → lời kể; về lại cảnh thì chỗ đó mờ', async () => {
+  it('mở đầu chỉ có tờ giấy thang máy (bảng tin hiện sau), chưa có Tùng; bấm tờ giấy → lời kể; về lại cảnh thì chỗ đó mờ, bảng tin hiện', async () => {
     veManChoi(toiSanh());
     const canh = screen.getByRole('region', { name: 'Khám phá: Sảnh ký túc xá' });
     expect(within(canh).getByRole('button', { name: 'Xem tờ giấy trên cửa thang máy' })).toBeEnabled();
-    expect(within(canh).getByRole('button', { name: 'Xem bảng tin' })).toBeEnabled();
+    expect(within(canh).queryByRole('button', { name: 'Xem bảng tin' })).toBeNull();
     expect(within(canh).queryByRole('button', { name: /cậu bạn áo xanh/ })).toBeNull();
 
     await userEvent.click(screen.getByRole('button', { name: 'Xem tờ giấy trên cửa thang máy' }));
@@ -45,6 +45,7 @@ describe('sảnh KTX: [KHÁM PHÁ]', () => {
 
     for (let i = 0; i < 5 && !screen.queryByRole('region', { name: /^Khám phá/ }); i++) act(() => useKhoMvp.getState().hanhDong({ type: 'tiep' }));
     expect(screen.getByRole('button', { name: 'Xem tờ giấy trên cửa thang máy' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Xem bảng tin' })).toBeEnabled();
   });
 
   it('màn giới thiệu của Tùng chờ đúng câu tự giới thiệu và cú bấm tiếp sau câu đó', async () => {

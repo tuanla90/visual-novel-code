@@ -35,7 +35,8 @@ describe('thanh trên MVP (phong cách .topbar của prototype)', () => {
     veManChoi(taoTrangThai(kb, 1));
     const hdr = thanhTren();
     expect(hdr).toHaveClass('topbar');
-    expect(hdr.querySelector('.topbar__chapter-number')).toHaveTextContent(`0/${kb.lich.ngay.length}`);
+    expect(hdr.querySelector('.topbar__chapter-number')).toHaveTextContent('8/9');
+    expect(hdr.querySelector('.topbar__chapter-kicker')).toHaveTextContent('CN');
     expect(hdr.querySelectorAll('.topbar__pip')).toHaveLength(kb.lich.ngay.length);
     expect(hdr.querySelector('.topbar__task-label')).toHaveTextContent('Nhiệm vụ');
     expect(hdr.querySelector('.topbar__capsule-group')).not.toBeNull();
@@ -52,11 +53,12 @@ describe('thanh trên MVP (phong cách .topbar của prototype)', () => {
     }
   });
 
-  it('ngày đang chơi: vé "n/5", vạch trước là xong, vạch hiện tại sáng', () => {
+  it('ngày đang chơi: vé là ngày thật trong truyện (ngày 3 = thứ Năm 19/9), vạch trước là xong, vạch hiện tại sáng', () => {
     const s = nhayToi(kb, 'ten-h', 1);
     veManChoi(s);
     const hdr = thanhTren();
-    expect(hdr.querySelector('.topbar__chapter-number')).toHaveTextContent(`${s.ngay}/${kb.lich.ngay.length}`);
+    expect(hdr.querySelector('.topbar__chapter-number')).toHaveTextContent('19/9');
+    expect(hdr.querySelector('.topbar__chapter-kicker')).toHaveTextContent('T5');
     const vach = [...hdr.querySelectorAll('.topbar__pip')];
     expect(vach.filter((v) => v.classList.contains('is-done'))).toHaveLength(s.ngay - 1);
     expect(vach[s.ngay - 1]).toHaveClass('is-current');

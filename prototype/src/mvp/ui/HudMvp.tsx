@@ -13,6 +13,7 @@ import type { KichBanMvp } from '../../content/mvp/types';
 import { ConfirmDialog } from '../../shared/ui/ConfirmDialog';
 import { IconFolderOpen, IconHistory, IconRotateCcw, IconSave, IconSliders } from '../../shared/ui/icons';
 import { useVnStore } from '../../shared/vn/vn-store';
+import { dinhDangNgay, hoaDau, homNay, thuCua } from '../engine/lich-ngay';
 import { tenKhungHienTai } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import './LichMvp.css';
@@ -52,25 +53,35 @@ export function ThanhUyTin({ con, tong }: { con: number; tong: number }) {
   );
 }
 
-/** Mốc hiện tại cho vé bên trái: chữ nhỏ ("Ngày"/"Buổi"), số lớn, tên dưới (khung giờ / tên giai đoạn). */
+/** Ngày thật trong truyện của tiến độ hiện tại (ISO). Việc phụ / vụ sau lấy ngày khai ở lich.md. */
+function ngayHienTai(kb: KichBanMvp, s: TrangThaiMvp): string {
+  const viec = s.giaiDoan === 'phu' ? (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id) : null;
+  const vu = viec ?? (kb.lich.vuSau ?? []).find((v) => v.id === s.vu);
+  return homNay({ giaiDoan: s.giaiDoan === 'phu' ? 'vu-sau' : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vu?.ngay ?? null }, kb.lich.ngayMoDau ?? null).ngay;
+}
+
+const THU_NGAN = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
+
+/**
+ * Mốc hiện tại cho vé bên trái (03/10/2026, user: "đưa thành ngày thực tế"): chữ nhỏ là thứ, số lớn là ngày/tháng trong truyện
+ * (8/9, 15/9…), tên dưới là đoạn truyện. Bấm vé mở lịch.
+ */
 function mocHud(kb: KichBanMvp, s: TrangThaiMvp): { kicker: string; so: string; ten: string; nhanDai: string } {
-  const tongNgay = kb.lich.ngay.length;
-  if (s.giaiDoan === 'mo-dau') return { kicker: 'Ngày', so: `0/${tongNgay}`, ten: 'Mở đầu', nhanDai: 'Mở đầu' };
-  if (s.giaiDoan === 'ngay') {
-    const khung = tenKhungHienTai(kb, s);
-    return { kicker: 'Ngày', so: `${s.ngay}/${tongNgay}`, ten: khung, nhanDai: `Ngày ${s.ngay} · ${khung}` };
-  }
-  if (s.giaiDoan === 'hop') return { kicker: 'Buổi', so: 'Họp', ten: 'Buổi họp rà soát', nhanDai: 'Buổi họp rà soát' };
-  if (s.giaiDoan === 'phu') {
-    const ten = tenKhungHienTai(kb, s);
-    return { kicker: 'Việc', so: 'phụ', ten, nhanDai: `Việc phụ · ${ten}` };
-  }
-  if (s.giaiDoan === 'vu-sau') {
+  const iso = ngayHienTai(kb, s);
+  const [, m = '', d = ''] = iso.split('-');
+  const so = `${Number(d)}/${Number(m)}`;
+  const kicker = THU_NGAN[thuCua(iso)] ?? '';
+  const ngayDai = hoaDau(dinhDangNgay(iso));
+  let ten = 'Kết thúc';
+  if (s.giaiDoan === 'mo-dau') ten = 'Mở đầu';
+  else if (s.giaiDoan === 'ngay') ten = tenKhungHienTai(kb, s);
+  else if (s.giaiDoan === 'hop') ten = 'Buổi họp rà soát';
+  else if (s.giaiDoan === 'phu') ten = `Việc phụ · ${tenKhungHienTai(kb, s)}`;
+  else if (s.giaiDoan === 'vu-sau') {
     const i = (kb.lich.vuSau ?? []).findIndex((v) => v.id === s.vu);
-    const ten = kb.lich.vuSau?.[i]?.ten ?? '';
-    return { kicker: 'Vụ', so: String(i + 2), ten, nhanDai: `Vụ ${i + 2} · ${ten}` };
+    ten = `Vụ ${i + 2} · ${kb.lich.vuSau?.[i]?.ten ?? ''}`;
   }
-  return { kicker: 'Vụ 1', so: 'Kết', ten: 'Kết thúc', nhanDai: 'Kết thúc' };
+  return { kicker, so, ten, nhanDai: `${ngayDai} · ${ten}` };
 }
 
 export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onBatDauLai, onVeTieuDe, onMoLich, onTamDungViecPhu, onMoBangHoatDong }: HudMvpProps) {
@@ -118,6 +129,12 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
           {moc.kicker}
         </span>
         <span className="topbar__chapter-number">{moc.so}</span>
+        {onMoLich ? (
+          <svg className="topbar__lich-icon" viewBox="0 0 24 24" width={12} height={12} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+            <rect x="3.5" y="5" width="17" height="15" rx="2" />
+            <path d="M3.5 10h17M8 3v4M16 3v4" />
+          </svg>
+        ) : null}
       </span>
       <span className="topbar__chapter-info">
         <span className="topbar__chapter-name">{moc.ten}</span>

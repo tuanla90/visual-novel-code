@@ -39,7 +39,9 @@
 
 - [LỜI n4-toi.1]
 - [ẢNH chibi-duy-hop-banh]
-- [ẢNH chibi-tung-tinh-nham]
+- [LỜI n4-toi.1b]
 - [ẢNH chibi-vy-cuoi-deu]
+- [LỜI n4-toi.1c]
 - [ẢNH chibi-duy-ok]
-- [ẢNH chibi-chuyen-that]
+- [LỜI n4-toi.1d]
+- [ẢNH chibi-tung-tinh-nham]

@@ -58,6 +58,9 @@ export const SAVE_SLOT_COUNT = 6;
 interface VnState {
   autoMode: boolean;
   skipMode: boolean;
+  /** Đang giữ Ctrl (03/10/2026): tua liên tục, kể cả lời chưa đọc; thả phím là dừng. */
+  giuTua: boolean;
+  setGiuTua: (v: boolean) => void;
   hideUi: boolean;
   viewportMode: ViewportMode;
   /** Câu thoại hiện tại còn đang chạy chữ (chân dung người nói mấp máy môi). */
@@ -264,6 +267,8 @@ const initialSession = loadSession();
 export const useVnStore = create<VnState>((set, get) => ({
   autoMode: false,
   skipMode: false,
+  giuTua: false,
+  setGiuTua: (giuTua) => set({ giuTua }),
   hideUi: false,
   viewportMode: loadViewportMode(),
   lineTyping: false,

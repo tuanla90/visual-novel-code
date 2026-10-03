@@ -20,8 +20,8 @@
 
 - [LỜI md-00-sanh-ktx.2]
 - [KHÁM PHÁ kp-sanh-ktx]
-  - obj-thong-bao-thang-may · x 12% · y 44% · rộng 4% → md-00-thang-may · nhãn: Xem tờ giấy trên cửa thang máy
-  - obj-so-do-ktx · x 44% · y 40% · rộng 11% → md-00-so-do · nhãn: Xem bảng tin
+  - obj-thong-bao-thang-may · x 10.5% · y 38.5% · rộng 3.6% → md-00-thang-may · nhãn: Xem tờ giấy trên cửa thang máy
+  - obj-so-do-ktx · x 44% · y 35.5% · rộng 10% → md-00-so-do · sau: md-00-thang-may · nhãn: Xem bảng tin
   - vung:lung-ao-xanh · x 87.5% · y 44% · rộng 9% → md-00-thay-tung · sau: md-00-thang-may, md-00-so-do · nhãn: Tấm lưng áo xanh giữa đám đông
 
 ### md-00-thang-may — Tờ giấy dán trên cửa thang máy {cảnh: sanh-ktx}
@@ -86,6 +86,7 @@
 ### md-07-cong-ktx-toi — Cổng KTX, tối: chú Cường {cảnh: cong-ktx-dem}
 
 - [LỜI md-07-cong-ktx-toi.1]
+- [ẢNH chibi-chuyen-that]
 - [ĐI TỚI md-08-tuan-cong-dan]
 
 ### md-08-tuan-cong-dan — Chuyển cảnh: tuần sinh hoạt công dân {cảnh: hoi-truong}
@@ -106,7 +107,6 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
 ```
 
 - [LỜI md-09-ngay-hoi.3]
-- [ẢNH chibi-ghi-la-ghi]
 - [ĐI TỚI md-10-phong-clb]
 
 ### md-10-phong-clb — Phòng CLB, thứ Hai 16h: làm quen và dọn phòng {cảnh: phong-clb}

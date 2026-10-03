@@ -3273,3 +3273,168 @@
 }
 .mvp-chot__vong b { font: 800 1.05rem/1 var(--font-ui); }
 .mvp-chot__vong small { font: 600 0.6rem/1.1 var(--font-ui); letter-spacing: 0.04em; }
+
+/* Nút lựa chọn chuẩn chung (03/10/2026, user: "thêm trong suốt, nhìn được ảnh đằng sau"): mọi kiểu lựa chọn (câu hỏi, rẽ nhánh,
+   chọn dòng, chọn ngành) dùng một kiểu kính mờ — nền tối ~55% + làm mờ phía sau, viền vàng, chữ có bóng để đọc được trên áo
+   nhân vật. Rê / chọn thì đặc lại. */
+.mvp-game .mc__choice {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.58), rgba(15, 23, 42, 0.46));
+  backdrop-filter: blur(7px) saturate(1.15);
+  -webkit-backdrop-filter: blur(7px) saturate(1.15);
+  border: 1.5px solid rgba(253, 230, 138, 0.75);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+.mvp-game .mc__choice:hover,
+.mvp-game .mc__choice:focus-visible {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.86), rgba(15, 23, 42, 0.8));
+}
+.mvp-game .mc__choices { gap: 10px; }
+
+/* ---------- Nhận thẻ hồ sơ mới (TaiLieuMvp, 03/10/2026): kiểu "nhận vật phẩm" ---------- */
+.stage__content:has(> .mvp-nhan) {
+  grid-row: 2 / 4;
+  align-self: center;
+  min-height: 0;
+  max-height: 100%;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  position: relative;
+  margin-bottom: var(--sp-2);
+}
+.mvp-nhan {
+  --mau: #fbbf24;
+  position: relative;
+  width: min(720px, calc(100vw - 32px));
+  max-height: 100%;
+  margin: auto;
+  padding: 40px clamp(18px, 3vw, 30px) 22px;
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  overflow: hidden auto;
+  border-radius: 18px;
+  border: 1.5px solid color-mix(in srgb, var(--mau) 60%, transparent);
+  background: radial-gradient(120% 90% at 50% 0%, rgba(51, 65, 85, 0.92), rgba(10, 15, 28, 0.94));
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 4px rgba(0, 0, 0, 0.25), inset 0 0 40px color-mix(in srgb, var(--mau) 14%, transparent);
+  color: #f8fafc;
+  isolation: isolate;
+}
+.mvp-nhan--clue { --mau: #fde047; }
+.mvp-nhan--doc { --mau: #93c5fd; }
+.mvp-nhan--ev { --mau: #6ee7b7; }
+.mvp-nhan__tia {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 46%;
+  width: 160%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  background: repeating-conic-gradient(from 0deg, color-mix(in srgb, var(--mau) 18%, transparent) 0deg 9deg, transparent 9deg 24deg);
+  mask-image: radial-gradient(circle, #000 0 22%, transparent 62%);
+  -webkit-mask-image: radial-gradient(circle, #000 0 22%, transparent 62%);
+  pointer-events: none;
+}
+.mvp-nhan__ruy-bang {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+  margin: 0;
+  padding: 7px 26px 8px;
+  border-radius: 0 0 14px 14px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--mau) 92%, #fff), var(--mau));
+  color: #1c1917;
+  font: 800 0.82rem/1 var(--font-ui);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
+}
+.mvp-nhan__ruy-bang span { font-size: 1.05rem; margin-right: 4px; }
+.mvp-nhan__the {
+  width: 100%;
+  display: grid;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fffaf0, #f4ead6);
+  color: #2a2320;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45), 0 0 0 3px color-mix(in srgb, var(--mau) 55%, transparent);
+}
+.mvp-nhan__the.co-anh { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); }
+.mvp-nhan__anh {
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #e7dcc4;
+  rotate: -2deg;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+  border: 5px solid #fff;
+}
+.mvp-nhan__anh img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mvp-nhan__chu { display: grid; gap: 6px; min-width: 0; }
+.mvp-nhan__loai {
+  justify-self: start;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--mau) 35%, #fff);
+  color: #1f2937;
+  font: 800 0.7rem/1.2 var(--font-ui);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.mvp-nhan__tieude { margin: 0; font: 700 clamp(1.25rem, 2.6vw, 1.6rem)/1.25 var(--font-reading); }
+.mvp-nhan__nguon { margin: 0; font-size: 0.88rem; color: #6b5e4b; }
+.mvp-nhan__noidung { margin: 4px 0 0; font: 1.05rem/1.55 var(--font-reading); }
+.mvp-nhan__trich { margin: 4px 0 0; padding: 10px 0 0; border-top: 1px dashed #d6c8aa; font: 1.02rem/1.55 var(--font-reading); }
+.mvp-nhan__trich p { margin: 0 0 4px; }
+.mvp-nhan__nut {
+  min-height: 46px;
+  padding: 10px 30px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #fde68a, #f59e0b);
+  color: #3b2104;
+  font: 800 1.02rem/1 var(--font-ui);
+  letter-spacing: 0.02em;
+  box-shadow: 0 5px 0 #b45309, 0 10px 20px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+.mvp-nhan__nut:hover { filter: brightness(1.06); }
+.mvp-nhan__nut:active { translate: 0 3px; box-shadow: 0 2px 0 #b45309, 0 6px 12px rgba(0, 0, 0, 0.4); }
+.mvp-nhan__nut:focus-visible { outline: 3px solid #fef3c7; outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference) {
+  .mvp-nhan__tia { animation: mvp-nhan-xoay 18s linear infinite; }
+  .mvp-nhan__the { animation: mvp-nhan-bat 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both; }
+  .mvp-nhan__ruy-bang { animation: mvp-nhan-ruy 0.35s ease-out 0.1s both; }
+}
+@keyframes mvp-nhan-xoay { to { rotate: 360deg; } }
+@keyframes mvp-nhan-bat { from { opacity: 0; scale: 0.82; } to { opacity: 1; scale: 1; } }
+@keyframes mvp-nhan-ruy { from { translate: -50% -100%; } to { translate: -50% 0; } }
+@media (max-width: 640px) {
+  .mvp-nhan__the.co-anh { grid-template-columns: none; }
+  .mvp-nhan__anh { max-width: 260px; justify-self: center; }
+}
+.game--portrait .mvp-nhan__the.co-anh { grid-template-columns: none; }
+.game--portrait .mvp-nhan__anh { max-width: 240px; justify-self: center; }
+.mvp-nhan { overflow: hidden; grid-template-rows: minmax(0, 1fr) auto; }
+.mvp-nhan__the { min-height: 0; max-height: 100%; overflow: auto; }
+
+/* Vé ngày là nút mở lịch: biểu tượng lịch nhỏ ở góc, rê thì sáng lên (03/10/2026). */
+.mvp-topbar .topbar__chapter-count { position: relative; }
+.topbar__lich-icon {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  padding: 2px;
+  border-radius: 4px;
+  background: #fbbf24;
+  color: #1c1917;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.mvp-topbar button.topbar__chapter:hover .topbar__chapter-count { filter: brightness(1.1); box-shadow: 0 0 0 2px #fbbf24; }
+/* Phòng CLB có người ngồi: ảnh ngồi phải hiện ngay trong khung (màn ngang mặc định ẩn ảnh khung vì sân khấu đã vẽ nền trống). */
+.game .mvp-khampha .mvp-canh__khung.is-ngoi .mvp-canh__nen { visibility: visible; }

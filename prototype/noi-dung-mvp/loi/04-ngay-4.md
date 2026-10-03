@@ -58,15 +58,21 @@
 ## n4-toi.1
 - **narrator**: Tối thứ Sáu. Không ai muốn về trước. Duy cắm ấm đun nước, Minh Anh lôi từ ngăn kéo ra một hộp bánh quy mở từ kỳ trước.
 - **minh-anh** (happy): Luật CLB: ai ăn cái cuối cùng thì mua hộp mới.
+
+## n4-toi.1b
 - **tung** (happy): Chơi gì đi chứ. Trò "ba dữ kiện": tớ tả một người bằng ba điều, mọi người đoán.
 - **tung** (chi-tay): Một: đeo kính. Hai: đi đâu cũng ôm vở. Ba: từ thứ Hai tới giờ chưa cười lần nào.
 - **ha-vy** (neutral): Ba điều ấy khớp với ít nhất bốn mươi người trên thư viện. Dữ kiện chưa đủ hẹp.
 - **duy** (smile): Đấy, vừa cười xong. Điều thứ ba sai rồi.
 - **ha-vy** (smile): Tớ không cười. Tớ đang chỉnh kính.
 - **player**: Tới lượt tớ. Một: thuộc đường. Hai: hay cá. Ba: cá mười thua chín.
+
+## n4-toi.1c
 - **tung** (surprised): Ơ! Đấy là vu khống có dữ liệu!
 - **minh-anh** (happy): Có dữ liệu thì không gọi là vu khống nữa đâu em.
 - **narrator**: Chín giờ thì hộp bánh hết. Người ăn cái cuối là Duy. Duy mở sổ, ghi một dòng: "Nợ CLB một hộp bánh."
+
+## n4-toi.1d
 - **tung** (happy): Biên bản đã ghi, nhân chứng đầy đủ. Mai Duy nhớ mua loại sô-cô-la nhé!
 - **duy** (smile): Được. Còn hộp mới thì để tớ mua, nhưng tối nay cậu rửa ấm siêu tốc.
 - **tung** (happy): Chốt. Tớ ghi vào biên bản luôn!

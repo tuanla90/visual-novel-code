@@ -67,5 +67,3 @@
 
 - [LỜI n2-toi.1]
 - [ẢNH chibi-mi-tom]
-- [ẢNH chibi-lai-suat]
-- [ẢNH chibi-0-dong]

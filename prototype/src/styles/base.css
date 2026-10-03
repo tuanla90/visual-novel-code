@@ -70,3 +70,14 @@ pre,
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Thanh cuộn ngang thoáng hiện rồi mất làm màn hình giật (user 03/10/2026): hiệu ứng trượt vào (cảnh cắt, thẻ bật lên, thông báo)
+   tràn khỏi mép trong chốc lát. Trang không bao giờ cần cuộn ngang; khi đang trong game thì khóa cả trang — các khung trong game
+   tự cuộn bên trong. */
+html,
+body {
+  overflow-x: hidden;
+}
+body:has(.game) {
+  overflow: hidden;
+}

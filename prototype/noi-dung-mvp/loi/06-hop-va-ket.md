@@ -73,11 +73,15 @@
 - **ha-vy** (thinking): Đừng cá. Chưa có gì để tính cả.
 - **tung** (happy): Thế thì đi. Trà đá. Tớ hứa rồi.
 
-## ket-tra-da.1
+## ket-tra-da.1a
 - **narrator**: Gốc cây ngoài cổng chính. Một cái ô bạc màu, mấy cái ghế nhựa xanh đỏ, cái ấm nhôm to bằng cái xô.
 - **tung** (happy): Bà ơi, cho cháu ba trà đá! Hôm nay cháu khao.
+
+## ket-tra-da.1b
 - **ba-lua** (smile): Ba cốc chín nghìn. Khao thế thì bà cũng khao được.
 - **ha-vy** (smile): Cậu cá thua tớ bao nhiêu lần rồi, trả bằng trà đá thì còn lâu mới hết.
+
+## ket-tra-da.1c
 - **tung** (gai-dau): Lần này tớ không cá. Hôm ở phòng máy tớ nói bừa một câu về Hoài. Suýt nữa bạn ấy mang tiếng vì cái mồm tớ.
 - **player**: Cậu nói "chắc Hoài in". Nhật ký in thì nói khác.
 - **tung** (worried): Ừ. Giờ gặp bạn ấy tớ chẳng biết mở mồm thế nào.
