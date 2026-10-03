@@ -43,18 +43,21 @@ describe('AnhChenMvp', () => {
     expect(onTiep).not.toHaveBeenCalled();
   });
 
-  it('hiển thị chú thích meme và chữ đè lên ảnh cho cg-hop-doi-dau (JoJo)', () => {
+  it('hiển thị bóng chat hội thoại đối đầu cho cg-hop-doi-dau (JoJo)', () => {
     render(<AnhChenMvp id="cg-hop-doi-dau" onTiep={vi.fn()} />);
-    expect(screen.getByText('Ồ? Thay vì nhận thua, cậu lại dám tiến lại gần tôi sao?')).toBeInTheDocument();
-    expect(screen.getByText('ゴゴゴ MENACING…')).toBeInTheDocument();
-    expect(screen.getByText('Không bước lại gần sao bẻ được câu lệnh của anh!')).toBeInTheDocument();
+    expect(screen.getByText('Quân')).toBeInTheDocument();
+    expect(screen.getByText('Ồ? Thay vì nhận thua, cậu lại dám bước lên đối chất sao?')).toBeInTheDocument();
+    expect(screen.getByText('Bạn')).toBeInTheDocument();
+    expect(screen.getByText('Không bước lên, sao bẻ được câu truy vấn của anh!')).toBeInTheDocument();
+    expect(screen.queryByText('ゴゴゴ MENACING…')).toBeNull();
   });
 
-  it('hiển thị chú thích meme và chữ đè lên ảnh cho cg-quan-bi-bac (Kaiba)', () => {
+  it('hiển thị 2 câu cho cg-quan-bi-bac (Kaiba) không tiếng Anh và không che mặt', () => {
     render(<AnhChenMvp id="cg-quan-bi-bac" onTiep={vi.fn()} />);
-    expect(screen.getByText('KHÔNG THỂ NÀO! KẾT LUẬN CỦA TÔI… BAY MÀU RỒI?!')).toBeInTheDocument();
+    expect(screen.getByText('Quân')).toBeInTheDocument();
+    expect(screen.getByText('Không thể nào! Kết luận của tôi… bay màu rồi?!')).toBeInTheDocument();
     expect(screen.getByText('BÁC BỎ HOÀN TOÀN!')).toBeInTheDocument();
-    expect(screen.getByText('IT SHOULD HAVE BEEN ME!')).toBeInTheDocument();
-    expect(screen.getByText('595 DÒNG → 2 DÒNG!')).toBeInTheDocument();
+    expect(screen.queryByText('IT SHOULD HAVE BEEN ME!')).toBeNull();
+    expect(screen.queryByText('595 DÒNG → 2 DÒNG!')).toBeNull();
   });
 });

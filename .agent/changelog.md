@@ -1,5 +1,33 @@
 # Nhật Ký Thay Đổi (.agent/changelog.md)
 
+## [2026-10-03] Tái Thiết Kế Màn Kết Vụ: Hiển Thị Trọn Vẹn Ảnh 16:9 & Không Cuộn (Zero-Scroll)
+
+### 1. Khắc Phục Lỗi Cắt Xén Ảnh CG (16:9 Showcase):
+- Bỏ cơ chế ép ảnh theo chiều cao dọc của modal khiến ảnh 16:9 bị crop hơn 40% bề ngang (mất nhân vật ở hai bên mép).
+- Giữ nguyên tỉ lệ vàng 16:9 (`aspect-ratio: 16 / 9; width: 100%`) giúp hiển thị đầy đủ 100% toàn bộ 4 nhân vật (Hà Vy, Minh Anh, Duy, Tùng).
+- Thêm tính năng **Lightbox Modal**: nhấp vào ảnh hoặc biểu tượng "🔍 Phóng to ảnh" để mở xem ảnh kích thước lớn toàn màn hình với nền mờ và nút đóng tiện lợi (ESC).
+
+### 2. Phân Bổ Bố Cục 2 Cột Cân Bằng (Balanced Two-Column Zero-Scroll):
+- **Cột Trái (Story & Visuals)**: Khung ảnh CG 16:9 + Kicker & Tiêu đề vụ án + Lời dẫn cốt truyện + Cụm nút hành động (Tiếp tục vụ chính, Chơi lại từ đầu, Về màn tiêu đề).
+- **Cột Phải (Case Assessment)**: Dành riêng cho Tờ biên bản kẹp giấy chị Minh Anh (`.mvp-chot`), căn giữa chiều dọc, tinh chỉnh padding/margin để toàn bộ điểm số, chỉ số và con dấu mộc nằm trọn vẹn trong màn hình.
+- **Loại bỏ hoàn toàn thanh cuộn dọc (Zero-Scroll)**: Không còn tình trạng thanh cuộn cắt ngang bảng điểm hoặc giấu mất các nút bấm hành động ở dưới đáy.
+- **Tối ưu Mobile / Portrait**: Tự động xếp chồng dọc mượt mà với thanh cuộn tự nhiên khi màn hình quá ngắn.
+
+## [2026-10-03] Chuyển Đổi Sang 2 Bóng Chat Đối Đầu (Quân - NVC) Trong Cảnh JoJo
+
+### 1. Cải Tiến Cảnh Đối Đầu (`cg-hop-doi-dau`):
+- **Bỏ hoàn toàn chữ tiếng Nhật & khung che đen**: Xóa `ゴゴゴ MENACING…` và thanh tiêu đề che mặt nhân vật.
+- **Bóng chat của Quân (Xanh neon)**: *"Ồ? Thay vì nhận thua, cậu lại dám bước lên đối chất sao?"* kèm thẻ tên `Quân` và đuôi bóng thoại trỏ về phía Quân, đặt tại góc trên bên trái không che khuôn mặt.
+- **Bóng chat của Nhân vật chính (Vàng hổ phách)**: *"Không bước lên, sao bẻ được câu truy vấn của anh!"* kèm thẻ tên `Bạn` và đuôi bóng thoại trỏ về phía NVC áo hoodie vàng ở góc dưới bên phải.
+- **Tối ưu hiển thị Responsive & Mobile**: Đảm bảo bóng thoại co giãn linh hoạt và chữ rõ nét trên cả màn hình PC lẫn điện thoại.
+
+### 2. Cải Tiến Cảnh Quân Bị Bác Bỏ (`cg-quan-bi-bac`):
+- **Bỏ tiếng Anh & hộp đen che đỉnh**: Xóa bỏ `IT SHOULD HAVE BEEN ME!` và khung đen che mặt/tóc/tay Quân.
+- **Giữ lại đúng 2 câu sắc nét**:
+  1. Bóng chat tiếng thốt của Quân ở góc trên bên phải: *"Không thể nào! Kết luận của tôi… bay màu rồi?!"* (cách xa mặt Quân, đuôi trỏ sang trái).
+  2. Con dấu đỏ lớn: *"BÁC BỎ HOÀN TOÀN!"* hạ thấp xuống vùng áo ghi-lê (`top: 57%`), hoàn toàn không chạm cằm hay che mặt Quân.
+- **Giải phóng 100% gương mặt Quân**: Biểu cảm gào thét và bàn tay giơ lên của Quân hiển thị trọn vẹn, không bị bất kỳ thành phần nào che lấp.
+
 ## [2026-10-03] Chuẩn Hóa Hệ Thống 3 Phông Chữ Offline & Tinh Chỉnh Bảng Ghim / Cuộn Toàn Game
 
 ### 1. Chuẩn Hóa Hệ Thống 3 Phông Chữ (Self-hosted offline):
