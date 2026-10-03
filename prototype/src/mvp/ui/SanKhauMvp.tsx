@@ -57,6 +57,9 @@ interface DanDien {
 /** Tối đa bấy nhiêu người đứng trên dàn; người thứ tư nói → người nói lâu nhất trước đó rời dàn. */
 export const TOI_DA_TREN_DAN = 3;
 
+/** Cảnh nền kín, người chơi chỉ độc thoại trong lòng: không vẽ chân dung đứng chắn cảnh (xe buýt mở đầu). */
+const CANH_KHONG_DAN: ReadonlySet<string> = new Set(['xe-buyt']);
+
 /** Người nói lên dàn chân dung: người chơi, hoặc nhân vật có trong nhan-vat.md không "chỉ qua lời kể" (không phải `narrator`). */
 function laNhanVatHien(kb: KichBanMvp, speaker: string | undefined): speaker is string {
   if (speaker === 'player') return true;
@@ -193,8 +196,8 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
       ) : null}
       {nhacViec ? <NhacViecMvp kb={kb} nhac={nhacViec} dienTen={dienTen ?? ((t) => t)} tenNguoiChoi={tenNguoiChoi} /> : null}
       {/* Cảnh có hoạt cảnh: nhân vật đã nằm trong ảnh tách lớp, không vẽ thêm nhân vật đứng (hộp thoại vẫn ghi tên người nói). */}
-      <div className="stage__portraits" data-so-nguoi={coDan && !coHoatCanh(canh) ? moi.thanhVien.length : 0}>
-        {(coDan && !coHoatCanh(canh) ? moi.thanhVien : []).map((t, i) => {
+      <div className="stage__portraits" data-so-nguoi={coDan && !CANH_KHONG_DAN.has(canh) && !coHoatCanh(canh) ? moi.thanhVien.length : 0}>
+        {(coDan && !CANH_KHONG_DAN.has(canh) && !coHoatCanh(canh) ? moi.thanhVien : []).map((t, i) => {
           const dangNoi = t.nhanVat === speaker;
           const pos = viTri(moi.thanhVien.length, i);
           const phai = pos > 0.5;

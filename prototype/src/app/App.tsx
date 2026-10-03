@@ -10,6 +10,7 @@ import { isFacilitatorMode } from './facilitator-mode';
 import { useVnStore } from '../shared/vn/vn-store';
 import { ManChoiMvp } from '../mvp/ui/ManChoiMvp';
 import { useKhoMvp } from '../mvp/store/kho-mvp';
+import { TieuDeMvp } from '../mvp/ui/TieuDeMvp';
 
 /**
  * Game chính là MVP. Prototype cũ vẫn có thể mở để đối chiếu qua `?prototype=1`.
@@ -30,10 +31,28 @@ export default function App() {
   const [preDraft, setPreDraft] = useState<PreSurveyDraft>(EMPTY_PRE_DRAFT);
   // Bản MVP (gói kien-truc-mvp): màn riêng, kho riêng; vào từ nút "Chơi bản MVP", ra bằng menu "Về màn tiêu đề".
   const [mvpMode, setMvpMode] = useState(CHI_MVP);
-  const hasMvpProgress = useKhoMvp((k) => k.trangThai !== null);
+  // Bản MVP chính: mở app ra màn mở màn (TieuDeMvp) trước, bấm Chơi mới / Chơi tiếp / Nạp mới vào ván.
+  const [daVaoMvp, setDaVaoMvp] = useState(false);
+  const hasMvpProgress =useKhoMvp((k) => k.trangThai !== null);
   const showTitle = !titleDismissed || progress === null;
 
-  if (mvpMode) return <ManChoiMvp onVeTieuDe={CHI_MVP ? undefined : () => setMvpMode(false)} />;
+  if (mvpMode) {
+    if (CHI_MVP && !daVaoMvp) {
+      return (
+        <TieuDeMvp
+          onVao={(moi) => {
+            if (moi) {
+              useVnStore.getState().clearBacklog();
+              useKhoMvp.getState().xoa();
+              useKhoMvp.getState().batDau();
+            }
+            setDaVaoMvp(true);
+          }}
+        />
+      );
+    }
+    return <ManChoiMvp onVeTieuDe={CHI_MVP ? () => setDaVaoMvp(false) : () => setMvpMode(false)} />;
+  }
 
   /** Ghi khảo sát đầu game vào phiên hiện tại (một lần mỗi phiên): gửi nếu trả lời đủ, không thì bỏ qua. */
   const commitPreSurvey = () => {
