@@ -6,7 +6,13 @@
 
 <!-- Khung Vụ 5 theo dàn ý mùa 1 (docs/mvp/mua-1-dan-y-nam-khanh.md mục 6 và 9.2). Vụ sau của lich.md: chạy từ v5-mo sau màn kết Vụ 4. Kết mùa. Nhịp: Nam đếm kho, nối sổ đặt hàng với bảng kiểm kê → ba đơn mượn tên Nam là ba linh kiện không có trong kho (linh kiện là cớ ghi vào sổ) → cần sổ quỹ: thầy Quang hỏi "căn cứ vào đâu?" (đối chất, trình thẻ) rồi cho xuất sổ quỹ khối CLB → nối khoản chi với bảng quỹ → gom theo người duyệt, tính TỔNG (điều mới) → thêm TRUNG BÌNH, chỉ giữ nhóm vượt ngưỡng giải trình một triệu (điều mới: lọc nhóm; quy chế: dưới một triệu mỗi khoản thì chủ tịch Hội duyệt thẳng, Khánh xé nhỏ) → Khánh, chủ tịch Hội sinh viên kiêm trưởng CLB Robotics, duyệt ba khoản lấy từ quỹ CLB Thám Tử. Đối chất BA NHỊP (hội đồng chấm cốt truyện 01/10): nhịp một thẩm quyền ↔ phiếu vượt ngưỡng; nhịp hai "đơn do Nam lập" ↔ phiếu nối đơn với phiên (Vụ 4); Khánh nhận phần tiền; nhịp ba lá thư ↔ lời chú Cường về huy hiệu sứt (Vụ 1), có Hoài, chú Cường, Quân dự. Hỏng nhịp một hoặc hai → chưa ngã ngũ; hỏng nhịp ba → Khánh chỉ nhận tiền, thư chưa ngã ngũ; đủ ba → Khánh nhận cả thư và nói vì sao (không phải cái phòng, là cái sổ). Sau họp: chiếc chìa, Nam và Khánh. Việc riêng của Khánh không nêu. Đủ bốn mẩu giấy trước đó → mở ngăn tủ: hồ sơ vụ đầu tiên của CLB (lớp bí mật, mở sang mùa sau). Lời ở loi/13-vu-5-so-quy.md. -->
 
-### v5-mo — Nam đếm kho: ba linh kiện không có một cái {cảnh: xuong-robot}
+### v5-mo — Sắp tới 20/11 {cảnh: phong-clb}
+
+- [NGÀY 2024-11-16]
+- [LỜI v5-mo.qua]
+- [ĐI TỚI v5-vao-truyen]
+
+### v5-vao-truyen — Nam đếm kho: ba linh kiện không có một cái {cảnh: xuong-robot}
 
 - [LỜI v5-mo.1]
 - [HIỆN TÀI LIỆU doc-kiem-ke]
@@ -61,6 +67,7 @@
 
 ### v5-doi-chat — Phòng họp, nhịp một: "đúng thẩm quyền" {cảnh: phong-hop}
 
+- [NGÀY 2024-11-26]
 - [ẢNH cg-v5-ao-xanh-don-hoai]
 - [LỜI v5-doi-chat.1]
 - [ĐỐI CHẤT dc-khanh] khanh: "Ba khoản đó là chi cho đội robot trước giải quốc gia. **Khoản dưới một triệu, chủ tịch Hội duyệt là đúng thẩm quyền.** Các bạn có gì mà nói tôi sai?"
@@ -183,15 +190,19 @@
 
 ### v5-chot — Phòng CLB: đóng hồ sơ mùa {cảnh: phong-clb}
 
+- [NGÀY 2024-11-27]
 - [LỜI v5-ket-luan.1]
 - [ẢNH chibi-v5-hoai-vao-clb]
 - [ẢNH chibi-v5-dong-dau]
 - [ẢNH cg-ket-vu5]
-- [NẾU có clue-loi-nhan-linh-1 và có clue-loi-nhan-linh-2 và có clue-loi-nhan-linh-3 và có clue-loi-nhan-linh-4] → đi tới v5-ngan-tu
+- [LỜI v5-nghi-thi.1]
+- [NẾU bí mật >= 70%] → đi tới v5-ngan-tu
+- [LỜI v5-ket-luan.thieu-bi-mat]
 - [KẾT THÚC]
 
-### v5-ngan-tu — Cảnh sau kết (chỉ khi đủ bốn mẩu giấy): ngăn tủ khóa trong phòng CLB {cảnh: phong-clb-dem}
+### v5-ngan-tu — Cảnh sau kết (khi bí mật >= 70%): ngăn tủ khóa trong phòng CLB {cảnh: phong-clb-dem}
 
+- [NGÀY 2025-01-15]
 - [LỜI v5-ngan-tu.1]
 - [HỎI q-v5-chia] duy: "Bốn mẩu giấy, một ngăn tủ khóa. Người viết để chìa ở đâu trong phòng này?"
   - (A) {id: bang} Sau tấm bảng nguyên tắc. [ĐÚNG] → phản hồi: **player**: Mẩu cuối bảo "mặt trước thì các em đọc mỗi buổi họp rồi". Thứ cả nhóm đọc mỗi buổi họp là bảng nguyên tắc. Mình chưa bao giờ nhìn mặt sau.
@@ -199,6 +210,7 @@
   - (C) {id: cay-tu} Không có chìa đâu, cạy tủ thôi. → phản hồi: **ha-vy** (thinking): Người ta để giấy cho mình tìm, không phải để mình phá.
 - [HẬU QUẢ] mở manh mối clue-loi-nhan-linh-5, hiện tài liệu doc-ho-so-vu-dau
 - [LỜI v5-ngan-tu.2]
+- [LỜI v5-con-tiep.1]
 - [ẢNH cg-v5-ho-so-vu-dau]
 - [KẾT THÚC]
 

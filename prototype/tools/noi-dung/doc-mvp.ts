@@ -248,6 +248,7 @@ export type MucMvp =
   | { kind: 'end' }
   | { kind: 'stage'; action: 'vao' | 'ra'; nhanVat: string }
   | { kind: 'wait'; giay: number }
+  | { kind: 'set-date'; date: string }
   | { kind: 'condition'; dieuKien: DieuKien; chu: string }
   /** `- [NẾU <điều kiện>] → đi tới <chuỗi>`: thỏa thì sang chuỗi đó, không thì chạy tiếp dòng dưới. */
   | { kind: 'jump-if'; dieuKien: DieuKien; chuoi: string }
@@ -1134,6 +1135,10 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       if (line === '- [KẾT THÚC]') return add({ kind: 'end' });
       if ((m = /^- \[(VÀO|RA) ([a-z-]+)\]$/.exec(line))) return add({ kind: 'stage', action: m[1] === 'VÀO' ? 'vao' : 'ra', nhanVat: m[2] ?? '' });
       if ((m = /^- \[CHỜ (\d+) giây\]$/.exec(line))) return add({ kind: 'wait', giay: Number(m[1]) });
+      if ((m = /^- \[NGÀY (\d{4}-\d{2}-\d{2})\]$/.exec(line))) {
+        if (!ngayHopLe(m[1] ?? '')) throw new Error(`[NGÀY] không hợp lệ: "${m[1]}"`);
+        return add({ kind: 'set-date', date: m[1] ?? '' });
+      }
       if ((m = /^- \[ĐIỀU KIỆN\] (.+)$/.exec(line))) {
         if (seq.items.length > 0) throw new Error('[ĐIỀU KIỆN] phải là dòng đầu của chuỗi');
         return add({ kind: 'condition', dieuKien: docDieuKien(m[1] ?? ''), chu: m[1] ?? '' });

@@ -72,7 +72,7 @@ function thanhLine(kb: typeof KICH_BAN, s: TrangThaiMvp, loi: LoiMvp): DialogueL
 function homNayChu(kb: KichBanMvp, s: TrangThaiMvp): string {
   const viec = s.giaiDoan === 'phu' ? (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id) : null;
   const vu = viec ?? (kb.lich.vuSau ?? []).find((v) => v.id === s.vu);
-  const hn = homNay({ giaiDoan: s.giaiDoan === 'phu' ? 'vu-sau' : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vu?.ngay ?? null }, kb.lich.ngayMoDau ?? null);
+  const hn = homNay({ giaiDoan: s.giaiDoan === 'phu' ? 'vu-sau' : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vu?.ngay ?? null, ngayThang: s.ngayThang ?? null }, kb.lich.ngayMoDau ?? null);
   return hoaDau(dinhDangNgay(hn.ngay));
 }
 
@@ -80,7 +80,7 @@ function homNayChu(kb: KichBanMvp, s: TrangThaiMvp): string {
 function thuHomNay(kb: KichBanMvp, s: TrangThaiMvp): number {
   const viec = s.giaiDoan === 'phu' ? (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id) : null;
   const vu = viec ?? (kb.lich.vuSau ?? []).find((v) => v.id === s.vu);
-  return thuCua(homNay({ giaiDoan: s.giaiDoan === 'phu' ? 'vu-sau' : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vu?.ngay ?? null }, kb.lich.ngayMoDau ?? null).ngay);
+  return thuCua(homNay({ giaiDoan: s.giaiDoan === 'phu' ? 'vu-sau' : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vu?.ngay ?? null, ngayThang: s.ngayThang ?? null }, kb.lich.ngayMoDau ?? null).ngay);
 }
 
 export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {

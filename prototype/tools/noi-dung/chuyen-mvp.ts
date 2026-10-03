@@ -87,6 +87,8 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
       return { type: 'stage', action: it.action, nhanVat: it.nhanVat };
     case 'wait':
       return { type: 'wait', giay: it.giay };
+    case 'set-date':
+      return { type: 'set-date', date: it.date };
     case 'condition':
       return { type: 'condition', dieuKien: it.dieuKien };
     case 'jump-if':

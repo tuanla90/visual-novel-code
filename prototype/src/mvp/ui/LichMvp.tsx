@@ -56,7 +56,7 @@ export function LichMvp({ kb, s, hanPhu, onDong }: LichMvpProps) {
   // Việc phụ đang cất (về tuyến chính) không đổi "hôm nay".
   const phuNay = s.giaiDoan === 'phu' ? (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id) : undefined;
   // Đang làm việc phụ: hôm nay là ngày của việc đó (lịch tính như một vụ sau).
-  const tienDo = { giaiDoan: s.giaiDoan === 'phu' ? ('vu-sau' as const) : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: (phuNay ?? vuNay)?.ngay ?? null };
+  const tienDo = { giaiDoan: s.giaiDoan === 'phu' ? ('vu-sau' as const) : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: (phuNay ?? vuNay)?.ngay ?? null, ngayThang: s.ngayThang ?? null };
   const hn = homNay(tienDo, ngayMoDau);
   const tenNgay = (so: number): string => kb.lich.ngay.find((n) => n.so === so)?.ten ?? '';
   const vuSau = cacVuSau.slice(0, viTriVu + 1).flatMap((v, i) => (v.ngay ? [{ ngay: v.ngay, ten: `Vụ ${i + 2} · ${v.ten}`, ngan: `Vụ ${i + 2}` }] : []));

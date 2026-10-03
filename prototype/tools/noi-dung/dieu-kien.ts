@@ -8,7 +8,8 @@
 export type DieuKien =
   | { kind: 'co'; id: string }
   | { kind: 'khong-co'; id: string }
-  | { kind: 'va' | 'hoac'; cac: DieuKien[] };
+  | { kind: 'va' | 'hoac'; cac: DieuKien[] }
+  | { kind: 'bi-mat'; muc: number };
 
 const MA_RE = /^[a-z0-9-]+$/;
 
@@ -46,7 +47,16 @@ export function docDieuKien(chu: string): DieuKien {
       if (!MA_RE.test(id)) throw new Error(`sau "không có" phải là một mã: "${id}"`);
       return { kind: 'khong-co', id };
     }
-    throw new Error(`điều kiện chỉ nhận "có <mã>", "không có <mã>", "và", "hoặc", ngoặc — gặp "${t}"`);
+    if (t === 'bí' && peek() === 'mật') {
+      next(); // skip 'mật'
+      if (next() !== '>=') throw new Error('dùng "bí mật >= n%"');
+      const so = next();
+      if (!so.endsWith('%')) throw new Error('dùng "bí mật >= n%" (thiếu dấu %)');
+      const muc = Number(so.slice(0, -1));
+      if (isNaN(muc) || muc < 0 || muc > 100) throw new Error(`số % không hợp lệ: "${so}"`);
+      return { kind: 'bi-mat', muc };
+    }
+    throw new Error(`điều kiện chỉ nhận "có <mã>", "không có <mã>", "bí mật >= n%", "và", "hoặc", ngoặc — gặp "${t}"`);
   };
   const term = (): DieuKien => {
     const cac = [atom()];
@@ -72,20 +82,23 @@ export function docDieuKien(chu: string): DieuKien {
 /** Mọi mã được nhắc trong điều kiện. */
 export function maTrongDieuKien(dk: DieuKien): string[] {
   if (dk.kind === 'co' || dk.kind === 'khong-co') return [dk.id];
+  if (dk.kind === 'bi-mat') return [];
   return dk.cac.flatMap(maTrongDieuKien);
 }
 
 /** Đánh giá với tập mã "đang có". */
-export function danhGiaDieuKien(dk: DieuKien, co: ReadonlySet<string>): boolean {
+export function danhGiaDieuKien(dk: DieuKien, co: ReadonlySet<string>, mucBiMat: number = 0): boolean {
   switch (dk.kind) {
     case 'co':
       return co.has(dk.id);
     case 'khong-co':
       return !co.has(dk.id);
     case 'va':
-      return dk.cac.every((c) => danhGiaDieuKien(c, co));
+      return dk.cac.every((c) => danhGiaDieuKien(c, co, mucBiMat));
     case 'hoac':
-      return dk.cac.some((c) => danhGiaDieuKien(c, co));
+      return dk.cac.some((c) => danhGiaDieuKien(c, co, mucBiMat));
+    case 'bi-mat':
+      return mucBiMat >= dk.muc;
   }
 }
 

@@ -118,6 +118,8 @@ export interface TienDoNgay {
   conTro?: { chuoi: string } | null;
   /** Giai đoạn `vu-sau`: ngày thật của vụ đang chơi (`lich.vuSau[].ngay`); thiếu → coi như còn ở ngày họp. */
   ngayVu?: string | null;
+  /** Ngày tháng hiện tại do [NGÀY YYYY-MM-DD] đặt. */
+  ngayThang?: string | null;
 }
 
 /**
@@ -126,6 +128,7 @@ export interface TienDoNgay {
  * còn lại là Chủ nhật nhận phòng. Vụ 2 trở đi nên khai ngày ngay trong khung thay cho bảng tra này.
  */
 export function homNay(s: TienDoNgay, ngayMoDau?: string | null): HomNay {
+  if (s.ngayThang) return { ngay: s.ngayThang, moDau: false };
   const l = lichNgay(ngayMoDau);
   if (s.giaiDoan === 'mo-dau') {
     const chuoi = s.conTro?.chuoi ?? '';

@@ -3,7 +3,7 @@
 <!-- Lời Vụ 4 "Giúp Nam" — bản đầu, chờ phiên truyện rà. Nam giờ ở phe điều tra: tên mình bị mượn. Thoại nhắc lại mảnh ghép Vụ 2–3 (máy văn phòng xưởng, phòng khóa, chìa ban chủ nhiệm) nhưng chỉ nói tới mức bằng chứng cho phép. Nam chưa có ảnh: chỉ neutral. -->
 
 ## v4-mo.1
-- [THẺ CHỮ] **narrator**: Vụ 4 — Thứ Hai, 14 tháng 10
+- [THẺ CHỮ] **narrator**: Vụ 4 — Thứ Hai, 4 tháng 11
 - **narrator**: Đầu tuần. Ba đứa leo cầu thang lên phòng CLB, Tùng đi trước, hai bậc một.
 - **tung** (chi-tay): Tớ cá là hôm nay chị Minh Anh tới trước bọn mình.
 - **ha-vy** (neutral): Từ đầu năm cậu cá trật bốn lần. Tớ có đếm.
