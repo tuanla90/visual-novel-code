@@ -88,7 +88,7 @@
   inset: 0;
   display: grid;
   place-items: center;
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-reading);
   font-weight: 800;
   font-size: 1.4rem;
   color: #fffdfa;
@@ -109,7 +109,7 @@
   color: #b45309;
 }
 .nhac-viec__cau {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-reading);
   font-style: italic;
   font-weight: 600;
   font-size: 1.04rem;

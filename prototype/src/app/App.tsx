@@ -12,11 +12,11 @@ import { ManChoiMvp } from '../mvp/ui/ManChoiMvp';
 import { useKhoMvp } from '../mvp/store/kho-mvp';
 
 /**
- * Bản gửi chơi thử chỉ có MVP (không màn tiêu đề của prototype): build với `VITE_CHI_MVP=1`, hoặc mở `?mvp=1`.
- * Vào thẳng ván MVP (ManChoiMvp tự bắt đầu khi chưa có ván); không có mục "Về màn tiêu đề".
+ * Game chính là MVP. Prototype cũ vẫn có thể mở để đối chiếu qua `?prototype=1`.
  */
 const CHI_MVP =
-  import.meta.env.VITE_CHI_MVP === '1' || (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('mvp') === '1');
+  import.meta.env.VITE_CHI_MVP !== '0' && import.meta.env.VITE_PROTOTYPE !== '1' &&
+  !(typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('prototype') === '1');
 
 export default function App() {
   const progress = useGameStore((s) => s.progress);
@@ -77,7 +77,7 @@ export default function App() {
             commitPreSurvey();
             setTitleDismissed(true);
           }}
-          onStartMvp={() => setMvpMode(true)}
+          onStartMvp={CHI_MVP ? undefined : () => setMvpMode(true)}
           hasMvpProgress={hasMvpProgress}
           preSurveySlot={
             preDone && progress !== null ? (

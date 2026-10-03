@@ -15,6 +15,7 @@ export interface KetMvpProps {
   onSangVuSau?: () => void;
   /** Nhiệm vụ phụ nhận được ở màn kết này: mỗi việc một nút "<người giao> nhờ: <tên việc>". */
   phu?: { id: string; ten: string; nguoiGiao: string }[];
+  phuDangDo?: { id: string; ten: string; nguoiGiao: string }[];
   onLamPhu?: (id: string) => void;
   /** Màn kết của một nhiệm vụ phụ: chữ lấy từ lich.md, chỉ có nút quay lại. */
   phuXong?: { ten: string; tieuDeKet: string; loiKet: string } | null;
@@ -26,7 +27,7 @@ export interface KetMvpProps {
   onVeTieuDe?: () => void;
 }
 
-export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, onLamPhu, phuXong, onXongPhu, tongKet, onChoiLai, onVeTieuDe }: KetMvpProps) {
+export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, phuDangDo, onLamPhu, phuXong, onXongPhu, tongKet, onChoiLai, onVeTieuDe }: KetMvpProps) {
   if (phuXong) {
     return (
       <section className="endscreen mvp-ket" aria-labelledby="mvp-ket-tieude">
@@ -98,15 +99,23 @@ export function KetMvp({ ketQua, vu, vuKe, onSangVuSau, phu, onLamPhu, phuXong, 
           </span>
         </aside>
       ) : null}
+      {vuKe || (phu ?? []).length > 0 || (phuDangDo ?? []).length > 0 ? (
+        <p className="endscreen__lead">Các tuyến đang mở vẫn chờ bạn. Cứ nối tiếp vụ chính, nhận một việc mới, hoặc quay lại việc đang làm dở.</p>
+      ) : null}
       <div className="endscreen__actions">
-        {coVuKe ? (
+      {coVuKe ? (
           <button type="button" className="btn btn--primary" onClick={onSangVuSau} autoFocus>
-            Sang Vụ {vuKe.so} — {vuKe.ten}
+            Tiếp tục vụ chính · Vụ {vuKe.so}: {vuKe.ten}
           </button>
         ) : null}
         {(phu ?? []).map((p) => (
           <button key={p.id} type="button" className="btn" onClick={() => onLamPhu?.(p.id)}>
-            {p.nguoiGiao} nhờ: {p.ten}
+            {p.nguoiGiao} nhờ · {p.ten}
+          </button>
+        ))}
+        {(phuDangDo ?? []).map((p) => (
+          <button key={p.id} type="button" className="btn" onClick={() => onLamPhu?.(p.id)}>
+            Tiếp tục việc đã cất · {p.ten}
           </button>
         ))}
         <button type="button" className={coVuKe ? 'btn' : 'btn btn--primary'} onClick={onChoiLai} autoFocus={!coVuKe}>

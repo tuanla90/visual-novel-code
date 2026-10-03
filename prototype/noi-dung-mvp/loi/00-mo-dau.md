@@ -11,7 +11,7 @@
 - [DÀN DỰNG] Xe buýt vừa chạy khỏi trạm; người chơi đứng trên vỉa hè cạnh vali. Nền: cổng hai trụ, thanh chắn, tòa mái ngói đỏ bên trái, tòa kính bên phải.
 - **narrator**: Xe buýt dừng trước cổng trường. Cửa vừa mở, hơi nóng đầu giờ chiều hắt thẳng vào mặt.
 - **player**: (Phòng 408. Cơ mà ký túc xá nằm đâu thì thông báo không ghi…)
-- **narrator**: Mấy bạn kéo vali vòng qua thanh chắn, đi thẳng theo con đường rợp bóng cây.
+- **narrator**: Chiếc vali lăn qua thanh chắn, theo con đường rợp bóng cây dẫn vào khu ký túc xá.
 - **player**: (Chắc cùng về ký túc xá. Cứ bám theo đã.)
 
 ## md-00-cong-ktx.1
@@ -79,6 +79,10 @@
 ## md-01-ktx.2
 - [DÀN DỰNG] Hai người khiêng vali lên tới tầng bốn, cùng thở dốc. {{nv.tung}} đẩy cửa phòng 408.
 - **tung** (ao-xanh-happy): Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường, tuần sau vào học đỡ lạc.
+- **narrator**: Hai đứa khiêng vali, mỗi người giữ một quai rồi tranh nhau xem ai nhớ đường lên tầng bốn tốt hơn.
+- **tung** (happy): Ba phút tới tầng bốn! Tớ cá cậu không leo kịp đâu.
+- **player**: Tớ đang khiêng nửa cái vali của cậu đấy nhé!
+- **tung** (happy): Thế mới gọi là tình bạn cùng phòng. Lên tới nơi tớ bao cậu cốc nước!
 
 ## md-03-toa-b.1
 - [DÀN DỰNG] Hộp tôn xanh treo trên mảng tường gần cửa ra vào (bản CHƯA có thẻ lịch ở khe — DX-03 chưa làm: [KHÁM PHÁ] không có vật tĩnh). Bác Thịnh đứng ở chân cầu thang.

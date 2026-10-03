@@ -842,7 +842,7 @@
 }
 
 .stage__scene-text {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-reading);
   font-weight: 700;
   font-style: normal;
   font-size: 1.02rem;
@@ -1074,7 +1074,7 @@
 
 .docview__title {
   margin: 4px 0 2px 0;
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: var(--font-reading);
   font-size: 1.42rem;
   font-weight: 700;
   line-height: 1.25;
@@ -1222,7 +1222,7 @@
 
 /* Chữ viết tay cho lá thư nặc danh chữ H */
 .docview__body--doc-letter .docview__dossier-body {
-  font-family: 'Playwrite VN', cursive, sans-serif;
+  font-family: var(--font-handwriting);
   font-size: 1.15rem;
   line-height: 1.85;
   color: #0f172a;
@@ -1287,7 +1287,7 @@
 }
 
 .docview__paper--letter .docview__paper-text {
-  font-family: 'Playwrite VN', cursive, sans-serif;
+  font-family: var(--font-handwriting);
   font-size: 0.95rem;
   line-height: 1.7;
   color: #1e293b;
@@ -1381,7 +1381,7 @@
   border: 1.5px solid #d97706 !important;
   border-radius: 8px 22px 8px 22px !important;
   color: #3b1d06 !important;
-  font-family: 'Playwrite IS', 'Playwrite VN', 'Source Serif 4', Georgia, cursive, serif !important;
+  font-family: var(--font-ui) !important;
   font-size: 1.1rem !important;
   font-weight: 800 !important;
   font-style: italic;
@@ -1498,7 +1498,7 @@
 }
 .dialog__text {
   margin: 0;
-  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-family: var(--font-reading);
   font-size: 1.22rem;
   line-height: 1.75;
   max-width: none;
@@ -2777,7 +2777,7 @@ html.facilitator-on #root {
 /* Chữ "Tiếp tục" thư pháp nghệ thuật */
 .dialog__next .dialog__next-text,
 .dialog__next span {
-  font-family: 'Playwrite IS', 'Playwrite VN', 'Source Serif 4', Georgia, cursive, serif !important;
+  font-family: var(--font-ui) !important;
   font-size: 1.15rem !important;
   font-weight: 800 !important;
   font-style: italic;

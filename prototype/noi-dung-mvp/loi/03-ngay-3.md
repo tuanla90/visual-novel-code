@@ -63,6 +63,9 @@
 - **ha-vy** (thinking): Ghét CLB với gửi thư là hai chuyện khác nhau.
 - **hieu** (annoyed): Nhìn gì? Tôi là Hiếu, lớp BC24A. Tôi nói thẳng vậy thôi, có gì tôi nói trước mặt.
 - **narrator**: Có tiếng gọi từ quầy: "Hiếu ơi, lấy cơm này!" Cậu ta đứng dậy, bỏ đi.
+- **tung** (happy): Thôi, chuyện thư từ để nhóm mình tự kiểm tra. Tớ ra lấy trà đá, ai uống không?
+- **tung** (worried): Khoan, ví tớ còn đúng tiền xe buýt. Gọi thêm trà đá chắc tối nay phải đi bộ về ký túc mất.
+- **player**: Vậy để tớ mời. Coi như cảm ơn cậu chỉ đường hôm đầu.
 
 ## n3-phong.1
 - **narrator**: Về phòng CLB. Phiếu tra cứu của cô Lan nằm trên bàn, cạnh cái laptop.

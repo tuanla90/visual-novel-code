@@ -22,7 +22,7 @@ import { BacklogModal } from '../../shared/vn/BacklogModal';
 import { useVnStore } from '../../shared/vn/vn-store';
 import { ObjectionEffect } from '../../story/ui/ObjectionEffect';
 import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
-import { canGioiThieu, dienTen as dienTenMay, khungNhin, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
+import { canGioiThieu, dienTen as dienTenMay, khungNhin, phuMoDuoc, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
 import { giaTriTuHoSo } from '../engine/giay-nho';
 import { chonNhacNen, type NhacTruoc } from '../engine/nhac';
 import type { TrangThaiMvp } from '../engine/trang-thai';
@@ -70,14 +70,16 @@ function thanhLine(kb: typeof KICH_BAN, s: TrangThaiMvp, loi: LoiMvp): DialogueL
 
 /** Ngày trong truyện dạng "Thứ Tư, 11/09/2024" (cho đầu bản đồ). */
 function homNayChu(kb: KichBanMvp, s: TrangThaiMvp): string {
-  const vu = (kb.lich.vuSau ?? []).find((v) => v.id === s.vu) ?? (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id);
+  const viec = s.giaiDoan === 'phu' ? (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id) : null;
+  const vu = viec ?? (kb.lich.vuSau ?? []).find((v) => v.id === s.vu);
   const hn = homNay({ giaiDoan: s.giaiDoan === 'phu' ? 'vu-sau' : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vu?.ngay ?? null }, kb.lich.ngayMoDau ?? null);
   return hoaDau(dinhDangNgay(hn.ngay));
 }
 
 /** Thứ trong truyện (0 = Chủ nhật) — lịch nhân vật trên bản đồ tính theo thứ này. */
 function thuHomNay(kb: KichBanMvp, s: TrangThaiMvp): number {
-  const vu = (kb.lich.vuSau ?? []).find((v) => v.id === s.vu) ?? (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id);
+  const viec = s.giaiDoan === 'phu' ? (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id) : null;
+  const vu = viec ?? (kb.lich.vuSau ?? []).find((v) => v.id === s.vu);
   return thuCua(homNay({ giaiDoan: s.giaiDoan === 'phu' ? 'vu-sau' : s.giaiDoan, ngay: s.ngay, conTro: s.conTro, ngayVu: vu?.ngay ?? null }, kb.lich.ngayMoDau ?? null).ngay);
 }
 
@@ -101,6 +103,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const [luuNap, setLuuNap] = useState<'save' | 'load' | null>(null);
   const [caiDat, setCaiDat] = useState(false);
   const [lichMo, setLichMo] = useState(false);
+  const [bangHoatDongMo, setBangHoatDongMo] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   /** Nơi đang đứng trong ngày (`null` = bản đồ). Gắn với ngày: sang ngày khác coi như về bản đồ. */
   const [dangO, setDangO] = useState<{ ngay: number; noi: string } | null>(null);
@@ -431,6 +434,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
               hanhDong({ type: 'sang-vu-sau' });
             }}
             phu={kn.phu.map((p) => ({ id: p.id, ten: p.ten, nguoiGiao: tenNguoiNoi(kb, p.nguoiGiao) }))}
+            phuDangDo={kn.phuDangDo.map((p) => ({ id: p.id, ten: p.ten, nguoiGiao: tenNguoiNoi(kb, p.nguoiGiao) }))}
             onLamPhu={(id) => {
               clearBacklog();
               hanhDong({ type: 'lam-nhiem-vu-phu', id });
@@ -474,7 +478,23 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         onBatDauLai={choiLai}
         onVeTieuDe={onVeTieuDe}
         onMoLich={() => setLichMo(true)}
+        onTamDungViecPhu={() => hanhDong({ type: 'tam-dung-nhiem-vu-phu' })}
+        onMoBangHoatDong={() => setBangHoatDongMo(true)}
       />
+      {bangHoatDongMo && s ? (
+        <BangHoatDongMvp
+          cacViec={phuMoDuoc(kb, s).map((p) => ({ id: p.id, ten: p.ten, nguoiGiao: tenNguoiNoi(kb, p.nguoiGiao) }))}
+          viecDangDo={[
+            ...(s.phu?.tamDung ? [s.phu.id] : []),
+            ...(s.phuCho ?? []).map((p) => p.id),
+          ].map((id) => (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === id)).filter((p): p is NonNullable<typeof p> => !!p).map((p) => ({ id: p.id, ten: p.ten }))}
+          onTiepTuyenChinh={() => setBangHoatDongMo(false)}
+          onChonViec={(id) => {
+            setBangHoatDongMo(false);
+            hanhDong({ type: 'lam-nhiem-vu-phu', id });
+          }}
+        />
+      ) : null}
       {['line', 'feedback', 'question', 'branch', 'doi-chat'].includes(kn.kind) && !gioiThieuMo ? <DongHanhMvp kb={kb} s={s} dienTen={dienTen} /> : null}
       <SanKhauMvp
         kb={kb}
@@ -578,4 +598,41 @@ function HieuUngLa({ onDone }: { onDone: () => void }) {
     onDone();
   }, [onDone]);
   return null;
+}
+
+function BangHoatDongMvp({
+  cacViec,
+  viecDangDo,
+  onTiepTuyenChinh,
+  onChonViec,
+}: {
+  cacViec: { id: string; ten: string; nguoiGiao: string }[];
+  viecDangDo: { id: string; ten: string }[];
+  onTiepTuyenChinh: () => void;
+  onChonViec: (id: string) => void;
+}) {
+  return (
+    <div className="mvp-hoatdong__nen" role="presentation">
+      <section className="mvp-hoatdong" role="dialog" aria-modal="true" aria-labelledby="mvp-hoatdong-tieude">
+        <h2 id="mvp-hoatdong-tieude">Bảng hoạt động</h2>
+        <p>Vụ chính vẫn giữ nguyên chỗ bạn đang điều tra. Có thể ghé giúp bạn bè một việc rồi quay lại bất cứ lúc nào.</p>
+        <div className="mvp-hoatdong__ds">
+          <button type="button" className="btn btn--primary" onClick={onTiepTuyenChinh} autoFocus>
+            Trở về tuyến chính
+          </button>
+          {viecDangDo.map((v) => (
+            <button key={v.id} type="button" className="btn" onClick={() => onChonViec(v.id)}>
+              Tiếp tục việc đã cất · {v.ten}
+            </button>
+          ))}
+          {cacViec.map((v) => (
+            <button key={v.id} type="button" className="btn" onClick={() => onChonViec(v.id)}>
+              {v.nguoiGiao} nhờ · {v.ten}
+            </button>
+          ))}
+        </div>
+        {cacViec.length === 0 && viecDangDo.length === 0 ? <p className="mvp-hoatdong__trong">Chưa có việc phụ mới. Cứ tiếp tục khám phá nhé.</p> : null}
+      </section>
+    </div>
+  );
 }

@@ -45,6 +45,7 @@
 ### n3-cang-tin — Căng tin: Hiếu nói xấu CLB {cảnh: cang-tin}
 
 - [LỜI n3-cang-tin.1]
+- [ẢNH chibi-khao-tra-da]
 - [ĐI TỚI n3-phong]
 
 ### n3-phong — Phòng CLB buổi chiều ngày 3: ai có việc nấy {cảnh: phong-clb}

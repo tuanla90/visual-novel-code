@@ -39,7 +39,7 @@ import type {
   TheThuThachMvp,
   VuSauMvp,
 } from '../../content/mvp/types';
-import { MAU_GHIM, type BoiCanhChuoi, type KhamPhaMvp, type MauGhimMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp } from './trang-thai';
+import { MAU_GHIM, type BoiCanhChuoi, type KhamPhaMvp, type MauGhimMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp, type TiepTucTuyenMvp } from './trang-thai';
 
 /**
  * Tên dự phòng khi trạng thái chưa có tên (chưa qua câu hỏi tên, hay ô lưu hỏng). Không dùng trên đường chạy thường:
@@ -143,6 +143,8 @@ export type HanhDongMvp =
   | { type: 'sang-vu-sau' }
   /** Màn kết của một vụ chính: nhận một nhiệm vụ phụ đang mở. */
   | { type: 'lam-nhiem-vu-phu'; id: string }
+  /** Cất việc phụ đang làm để quay về bảng hoạt động. */
+  | { type: 'tam-dung-nhiem-vu-phu' }
   /** Màn kết của nhiệm vụ phụ: quay lại màn kết của vụ chính. */
   | { type: 'xong-nhiem-vu-phu' };
 
@@ -193,10 +195,12 @@ export type KhungNhinMvp =
       ketQua: 'that' | 'thuong';
       vu: VuSauMvp | null;
       vuKe: VuSauMvp | null;
-      /** Nhiệm vụ phụ nhận được ở màn kết này (rỗng khi đang ở màn kết của một nhiệm vụ phụ). */
+      /** Nhiệm vụ phụ đã mở, có thể nhận từ bảng hoạt động trong mọi đoạn của tuyến chính. */
       phu: NhiemVuPhuMvp[];
       /** Nhiệm vụ phụ vừa xong (màn kết của nó); `null` = màn kết của vụ chính. */
       phuXong: NhiemVuPhuMvp | null;
+      /** Việc phụ đã nhận nhưng đang tạm cất, có thể tiếp tục từ đây. */
+      phuDangDo: NhiemVuPhuMvp[];
     }
   | { kind: 'error'; message: string };
 
@@ -352,6 +356,15 @@ function nhayToi(s: TrangThaiMvp, chuoi: string, boiCanh: BoiCanhChuoi): TrangTh
   return { ...s, conTro: { chuoi, nut: 0, boiCanh }, hoiDap: null, khamPha: null };
 }
 
+/** Lưu đúng phần tiến trình của tuyến hiện tại, không đóng băng hồ sơ hay cờ mở khóa dùng chung. */
+function luuTuyen(s: TrangThaiMvp): TiepTucTuyenMvp {
+  return {
+    conTro: s.conTro, canh: s.canh, nhiemVu: s.nhiemVu, nhacViec: s.nhacViec,
+    thuThachDangLam: s.thuThachDangLam, duKienDangLam: s.duKienDangLam, hoiDap: s.hoiDap,
+    khamPha: s.khamPha, doiChat: s.doiChat, choHienTaiLieu: s.choHienTaiLieu, sauKhiHien: s.sauKhiHien,
+  };
+}
+
 // ---------- Vụ sau ----------
 
 /** Vụ sau đang chơi (`null` = đang ở vụ gốc). */
@@ -379,7 +392,7 @@ function ketQuaVuGoc(kb: KichBanMvp, s: TrangThaiMvp): 'that' | 'thuong' {
 function coKhiKet(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
   if ((kb.lich.vuSau ?? []).length === 0 && (kb.lich.nhiemVuPhu ?? []).length === 0) return s;
   const vu = vuDangChoi(kb, s);
-  const moi = s.phu ? [`${s.phu.id}-hoan-tat`] : vu ? [`${vu.id}-hoan-tat`] : [`${kb.lich.vu.id}-hoan-tat`, `${kb.lich.vu.id}-ket-${ketQuaVuGoc(kb, s)}`];
+  const moi = s.giaiDoan === 'phu' && s.phu ? [`${s.phu.id}-hoan-tat`] : vu ? [`${vu.id}-hoan-tat`] : [`${kb.lich.vu.id}-hoan-tat`, `${kb.lich.vu.id}-ket-${ketQuaVuGoc(kb, s)}`];
   const thieu = moi.filter((c) => !s.co.includes(c));
   return thieu.length === 0 ? s : { ...s, co: [...s.co, ...thieu] };
 }
@@ -389,10 +402,15 @@ export function phuDangLam(kb: KichBanMvp, s: TrangThaiMvp): NhiemVuPhuMvp | nul
   return s.phu ? ((kb.lich.nhiemVuPhu ?? []).find((p) => p.id === s.phu?.id) ?? null) : null;
 }
 
-/** Nhiệm vụ phụ nhận được lúc này: vụ `moSau` đã xong, bản thân nó chưa xong, và không đang làm nhiệm vụ phụ nào. */
+/** Nhiệm vụ phụ có thể nhận: vụ `moSau` đã xong và bản thân việc chưa hoàn tất. */
 export function phuMoDuoc(kb: KichBanMvp, s: TrangThaiMvp): NhiemVuPhuMvp[] {
-  if (s.phu) return [];
-  return (kb.lich.nhiemVuPhu ?? []).filter((p) => s.co.includes(`${p.moSau}-hoan-tat`) && !s.co.includes(`${p.id}-hoan-tat`));
+  const daNhan = new Set([...(s.phu ? [s.phu.id] : []), ...(s.phuCho ?? []).map((p) => p.id)]);
+  return (kb.lich.nhiemVuPhu ?? []).filter((p) => s.co.includes(`${p.moSau}-hoan-tat`) && !s.co.includes(`${p.id}-hoan-tat`) && !daNhan.has(p.id));
+}
+
+function phuDaCat(kb: KichBanMvp, s: TrangThaiMvp): NhiemVuPhuMvp[] {
+  const ids = [...(s.phu?.tamDung ? [s.phu.id] : []), ...(s.phuCho ?? []).map((p) => p.id)];
+  return ids.map((id) => (kb.lich.nhiemVuPhu ?? []).find((p) => p.id === id)).filter((p): p is NhiemVuPhuMvp => !!p);
 }
 
 /** Bắt đầu một vụ sau: gỡ mọi thẻ đang có khỏi bảng điều tra (mang theo trong hồ sơ, ghim lại được), chạy chuỗi của vụ. */
@@ -403,7 +421,8 @@ function batDauVuSau(s: TrangThaiMvp, vu: Pick<VuSauMvp, 'id' | 'chuoi'>, phu: T
     ...s,
     giaiDoan: phu ? 'phu' : 'vu-sau',
     vu: phu ? (s.vu ?? null) : vu.id,
-    phu,
+    // Một việc phụ đang tạm cất vẫn tồn tại khi chuyển sang vụ chính kế tiếp.
+    phu: phu ?? (s.phu?.tamDung ? { ...s.phu, veLai: s.conTro ? { ...s.conTro } : s.phu.veLai, giaiDoan: s.giaiDoan, tuyenVeLai: luuTuyen(s) } : null),
     conTro: { chuoi: vu.chuoi, nut: 0, boiCanh: 'vu' },
     khamPha: null,
     hoiDap: null,
@@ -744,10 +763,11 @@ export function khungNhin(kb: KichBanMvp, s: TrangThaiMvp): KhungNhinMvp {
       return {
         kind: 'end',
         ketQua: s.ketQua ?? ketQuaVuGoc(kb, s),
-        vu: s.phu ? null : vuDangChoi(kb, s),
-        vuKe: s.phu ? null : vuKeTiep(kb, s),
+        vu: s.giaiDoan === 'phu' ? null : vuDangChoi(kb, s),
+        vuKe: s.giaiDoan === 'phu' ? null : vuKeTiep(kb, s),
         phu: phuMoDuoc(kb, s),
-        phuXong: phuDangLam(kb, s),
+        phuXong: s.giaiDoan === 'phu' ? phuDangLam(kb, s) : null,
+        phuDangDo: phuDaCat(kb, s),
       };
     default:
       return { kind: 'error', message: `Nút "${nut.type}" không phải nút cần người chơi.` };
@@ -825,17 +845,54 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
 
   switch (hd.type) {
     case 'lam-nhiem-vu-phu': {
-      if (kn.kind !== 'end' || !s.conTro) return s;
-      const p = kn.phu.find((x) => x.id === hd.id);
+      if (s.phu?.tamDung && s.phu.id === hd.id) {
+        moi = {
+          ...s,
+          giaiDoan: 'phu',
+          phu: { ...s.phu, tamDung: null, veLai: s.conTro ? { ...s.conTro } : null, giaiDoan: s.giaiDoan, tuyenVeLai: luuTuyen(s) },
+          ...s.phu.tamDung,
+        };
+        break;
+      }
+      if (s.giaiDoan === 'phu' || s.giaiDoan === 'mo-dau' || s.giaiDoan === 'hop' || s.giaiDoan === 'het') return s;
+      const choChon = (s.phuCho ?? []).find((x) => x.id === hd.id);
+      if (choChon?.tamDung) {
+        const cho = (s.phuCho ?? []).filter((x) => x.id !== hd.id);
+        const catHienTai = s.phu?.tamDung ? [{ ...s.phu, veLai: s.conTro ? { ...s.conTro } : null, giaiDoan: s.giaiDoan, tuyenVeLai: luuTuyen(s) }] : [];
+        moi = {
+          ...s,
+          giaiDoan: 'phu',
+          phu: { ...choChon, veLai: s.conTro ? { ...s.conTro } : null, giaiDoan: s.giaiDoan, tuyenVeLai: luuTuyen(s), tamDung: null },
+          phuCho: [...cho, ...catHienTai],
+          ...choChon.tamDung,
+        };
+        break;
+      }
+      const p = phuMoDuoc(kb, s).find((x) => x.id === hd.id);
       if (!p) return s;
-      const truoc = { ...coKhiKet(kb, s), ketQua: kn.ketQua };
-      moi = batDauVuSau(truoc, p, { id: p.id, veLai: { ...s.conTro }, giaiDoan: s.giaiDoan });
+      const truoc = { ...coKhiKet(kb, s), ketQua: s.ketQua };
+      const catHienTai = s.phu?.tamDung ? [{ ...s.phu, veLai: s.conTro ? { ...s.conTro } : null, giaiDoan: s.giaiDoan, tuyenVeLai: luuTuyen(s) }] : [];
+      moi = batDauVuSau({ ...truoc, phuCho: [...(s.phuCho ?? []), ...catHienTai] }, p, { id: p.id, veLai: s.conTro ? { ...s.conTro } : null, giaiDoan: s.giaiDoan, tuyenVeLai: luuTuyen(s) });
+      break;
+    }
+    case 'tam-dung-nhiem-vu-phu': {
+      if (s.giaiDoan !== 'phu' || !s.phu || kn.kind === 'end') return s;
+      moi = {
+        ...s,
+        ...(s.phu.tuyenVeLai ?? { conTro: s.phu.veLai }),
+        giaiDoan: s.phu.giaiDoan,
+        phu: {
+          ...s.phu,
+          tamDung: luuTuyen(s),
+        },
+        ...(s.phu.tuyenVeLai ?? { conTro: s.phu.veLai }),
+      };
       break;
     }
     case 'xong-nhiem-vu-phu': {
       if (kn.kind !== 'end' || !s.phu) return s;
       // Về lại nút [KẾT THÚC] của vụ chính: màn kết đó hiện lại, nhiệm vụ này không còn trong danh sách.
-      moi = { ...coKhiKet(kb, s), conTro: { ...s.phu.veLai }, giaiDoan: s.phu.giaiDoan, phu: null, nhiemVu: null, nhacViec: null };
+      moi = { ...coKhiKet(kb, s), ...(s.phu.tuyenVeLai ?? { conTro: s.phu.veLai }), giaiDoan: s.phu.giaiDoan, phu: null };
       break;
     }
     case 'sang-vu-sau': {

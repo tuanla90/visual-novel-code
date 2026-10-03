@@ -977,7 +977,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Mấy bạn kéo vali vòng qua thanh chắn, đi thẳng theo con đường rợp bóng cây."
+          "text": "Chiếc vali lăn qua thanh chắn, theo con đường rợp bóng cây dẫn vào khu ký túc xá."
         },
         {
           "type": "line",
@@ -1368,10 +1368,6 @@ const GOC = {
           "text": "Cất đồ xong tớ dẫn đi một vòng trường."
         },
         {
-          "type": "image",
-          "imageId": "chibi-408-vali"
-        },
-        {
           "type": "note",
           "text": "Hai người khiêng vali lên tới tầng bốn, cùng thở dốc. Tùng đẩy cửa phòng 408."
         },
@@ -1380,6 +1376,36 @@ const GOC = {
           "speaker": "tung",
           "expression": "ao-xanh-happy",
           "text": "Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường, tuần sau vào học đỡ lạc."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hai đứa khiêng vali, mỗi người giữ một quai rồi tranh nhau xem ai nhớ đường lên tầng bốn tốt hơn."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Ba phút tới tầng bốn! Tớ cá cậu không leo kịp đâu."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tớ đang khiêng nửa cái vali của cậu đấy nhé!"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Thế mới gọi là tình bạn cùng phòng. Lên tới nơi tớ bao cậu cốc nước!"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-408-vali"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-408-nam-bep"
         },
         {
           "type": "goto",
@@ -1677,6 +1703,10 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "neutral",
           "text": "Biết nhận là mình nhầm thì được rồi. Bắt đầu từ việc đến đúng giờ nhé."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-ghi-la-ghi"
         },
         {
           "type": "goto",
@@ -2865,6 +2895,34 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Mì nhão. Hai đứa vẫn ăn hết, húp cả nước."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tối mai đổi sang bánh mì nhé. Kinh phí thí nghiệm hôm nay bằng đúng hai gói mì."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Mai ăn ở căng tin đi. Chờ đã, cuối tuần còn phải nạp tiền vào ví sinh viên nữa!"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Mới đầu tuần mà đã tính tới cuối tuần rồi à?"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-mi-tom"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-lai-suat"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-0-dong"
         }
       ]
     },
@@ -3261,6 +3319,27 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Có tiếng gọi từ quầy: \"Hiếu ơi, lấy cơm này!\" Cậu ta đứng dậy, bỏ đi."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Thôi, chuyện thư từ để nhóm mình tự kiểm tra. Tớ ra lấy trà đá, ai uống không?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Khoan, ví tớ còn đúng tiền xe buýt. Gọi thêm trà đá chắc tối nay phải đi bộ về ký túc mất."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Vậy để tớ mời. Coi như cảm ơn cậu chỉ đường hôm đầu."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-khao-tra-da"
         },
         {
           "type": "goto",
@@ -3872,6 +3951,55 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Chín giờ thì hộp bánh hết. Người ăn cái cuối là Duy. Duy mở sổ, ghi một dòng: \"Nợ CLB một hộp bánh.\""
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Biên bản đã ghi, nhân chứng đầy đủ. Mai Duy nhớ mua loại sô-cô-la nhé!"
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "smile",
+          "text": "Được. Còn hộp mới thì để tớ mua, nhưng tối nay cậu rửa ấm siêu tốc."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Chốt. Tớ ghi vào biên bản luôn!"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng vừa ghi xong thì Duy đặt ấm siêu tốc cạnh bồn rửa. Cả phòng bỗng im thin thít."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Chuyển thật luôn á? Tớ tưởng biên bản để tham khảo thôi!"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-duy-hop-banh"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-tung-tinh-nham"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-vy-cuoi-deu"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-duy-ok"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-chuyen-that"
         }
       ]
     },
@@ -15292,7 +15420,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:160 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:165 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

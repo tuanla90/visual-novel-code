@@ -66,3 +66,6 @@
 ### n2-toi — Tối ngày 2, phòng 408: mì tôm và nhóm chat của CLB (không khí ký túc xá, không có manh mối) {cảnh: phong-ktx-dem}
 
 - [LỜI n2-toi.1]
+- [ẢNH chibi-mi-tom]
+- [ẢNH chibi-lai-suat]
+- [ẢNH chibi-0-dong]

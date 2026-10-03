@@ -67,3 +67,8 @@
 - **tung** (surprised): Ơ! Đấy là vu khống có dữ liệu!
 - **minh-anh** (happy): Có dữ liệu thì không gọi là vu khống nữa đâu em.
 - **narrator**: Chín giờ thì hộp bánh hết. Người ăn cái cuối là Duy. Duy mở sổ, ghi một dòng: "Nợ CLB một hộp bánh."
+- **tung** (happy): Biên bản đã ghi, nhân chứng đầy đủ. Mai Duy nhớ mua loại sô-cô-la nhé!
+- **duy** (smile): Được. Còn hộp mới thì để tớ mua, nhưng tối nay cậu rửa ấm siêu tốc.
+- **tung** (happy): Chốt. Tớ ghi vào biên bản luôn!
+- **narrator**: Tùng vừa ghi xong thì Duy đặt ấm siêu tốc cạnh bồn rửa. Cả phòng bỗng im thin thít.
+- **tung** (worried): Chuyển thật luôn á? Tớ tưởng biên bản để tham khảo thôi!

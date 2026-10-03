@@ -34,6 +34,8 @@ export interface HudMvpProps {
   onVeTieuDe?: () => void;
   /** Vé "NGÀY n/5" thành nút mở lịch (LichMvp). Bỏ trống → vé chỉ để xem như trước. */
   onMoLich?: () => void;
+  onTamDungViecPhu?: () => void;
+  onMoBangHoatDong?: () => void;
 }
 
 /** Thanh uy tín: `con` vạch đầy trên `tong`. */
@@ -71,7 +73,7 @@ function mocHud(kb: KichBanMvp, s: TrangThaiMvp): { kicker: string; so: string; 
   return { kicker: 'Vụ 1', so: 'Kết', ten: 'Kết thúc', nhanDai: 'Kết thúc' };
 }
 
-export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onBatDauLai, onVeTieuDe, onMoLich }: HudMvpProps) {
+export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onBatDauLai, onVeTieuDe, onMoLich, onTamDungViecPhu, onMoBangHoatDong }: HudMvpProps) {
   const [menuMo, setMenuMo] = useState(false);
   const [xacNhan, setXacNhan] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -223,6 +225,22 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
             {menuMo ? (
               <div className="topbar__menu-panel" role="menu" aria-label="Menu tạm dừng">
                 <span className="topbar__menu-title">Tùy chọn</span>
+                {s.giaiDoan !== 'phu' && onMoBangHoatDong ? (
+                  <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onMoBangHoatDong)}>
+                    <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M4 5h16M4 12h16M4 19h16" /><circle cx="8" cy="5" r="1.5" fill="currentColor" /><circle cx="16" cy="12" r="1.5" fill="currentColor" />
+                    </svg>
+                    <span>Bảng hoạt động</span>
+                  </button>
+                ) : null}
+                {s.giaiDoan === 'phu' && onTamDungViecPhu ? (
+                  <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onTamDungViecPhu)}>
+                    <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M9 8H4V3" /><path d="M4 8a8 8 0 1 1-1 7" />
+                    </svg>
+                    <span>Cất việc này, về bảng hoạt động</span>
+                  </button>
+                ) : null}
                 <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onMoLichSu)}>
                   <IconHistory width={16} height={16} aria-hidden="true" />
                   <span>Lịch sử thoại</span>

@@ -102,3 +102,6 @@
 - **player**: Cậu trả lời đi. Mà mì nở hết rồi kìa.
 - **tung** (gai-dau): Chết. Một trăm tám mươi của tớ!
 - **narrator**: Mì nhão. Hai đứa vẫn ăn hết, húp cả nước.
+- **player**: Tối mai đổi sang bánh mì nhé. Kinh phí thí nghiệm hôm nay bằng đúng hai gói mì.
+- **tung** (worried): Mai ăn ở căng tin đi. Chờ đã, cuối tuần còn phải nạp tiền vào ví sinh viên nữa!
+- **player**: Mới đầu tuần mà đã tính tới cuối tuần rồi à?

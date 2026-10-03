@@ -155,8 +155,8 @@ export interface LichMvp {
    */
   vuSau?: VuSauMvp[];
   /**
-   * Nhiệm vụ phụ (`## <Tên> {nhiệm vụ phụ: <mã>}`): việc một NPC giao, không dính truyện chính, để rèn kỹ năng. Làm được từ
-   * màn kết của một vụ chính khi vụ `moSau` đã xong; kết bằng `[KẾT THÚC]` rồi quay lại màn kết đó.
+   * Nhiệm vụ phụ (`## <Tên> {nhiệm vụ phụ: <mã>}`): việc một NPC giao, không dính truyện chính, để rèn kỹ năng. Mở trong
+   * bảng hoạt động sau khi vụ `moSau` đã xong; tuyến đang chơi được cất đúng vị trí để người chơi luân phiên tiến triển.
    */
   nhiemVuPhu?: NhiemVuPhuMvp[];
 }

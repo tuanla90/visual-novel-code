@@ -113,6 +113,16 @@ export interface NhacViecMvp {
   text: string;
 }
 
+/** Các trường riêng của một tuyến truyện, dùng để cất rồi khôi phục đúng cảnh đang chơi. */
+export type TiepTucTuyenMvp = Pick<TrangThaiMvp, 'conTro' | 'canh' | 'nhiemVu' | 'nhacViec' | 'thuThachDangLam' | 'duKienDangLam' | 'hoiDap' | 'khamPha' | 'doiChat' | 'choHienTaiLieu' | 'sauKhiHien'>;
+export interface TuyenPhuMvp {
+  id: string;
+  veLai: ConTroMvp | null;
+  giaiDoan: GiaiDoanMvp;
+  tuyenVeLai?: TiepTucTuyenMvp | null;
+  tamDung?: TiepTucTuyenMvp | null;
+}
+
 export interface TrangThaiMvp {
   phienBan: 1;
   /** Mốc bắt đầu ván (ms) — khóa phiên, dùng làm khóa xáo lựa chọn. */
@@ -129,10 +139,12 @@ export interface TrangThaiMvp {
   /** Vụ sau đang chơi (`lich.vuSau[].id`, giai đoạn `vu-sau`). Không có / `null` = vụ gốc. Ô lưu cũ: không có trường. */
   vu?: string | null;
   /**
-   * Nhiệm vụ phụ đang làm (giai đoạn `phu`): mã, và chỗ quay về khi xong — con trỏ nút `[KẾT THÚC]` của vụ chính cùng giai
-   * đoạn lúc đó. Không có / `null` = không làm nhiệm vụ phụ.
+   * Nhiệm vụ phụ đang làm hoặc đã cất: mã, điểm quay về tuyến đang chơi và trạng thái có thể tiếp tục từ đúng cảnh. Không
+   * có / `null` = chưa nhận việc phụ.
    */
-  phu?: { id: string; veLai: ConTroMvp; giaiDoan: GiaiDoanMvp } | null;
+  phu?: TuyenPhuMvp | null;
+  /** Các tuyến phụ khác đã nhận và cất lại để có thể luân phiên nhiều tuyến. */
+  phuCho?: TuyenPhuMvp[];
   /** Ngày điều tra hiện tại (1–5); 0 khi chưa vào ngày. */
   ngay: number;
   /** Chỉ số khung giờ đang đứng (0 = Sáng … 2 = Chiều); bằng số khung của lịch (3) = đã hết khung → buổi tối. */

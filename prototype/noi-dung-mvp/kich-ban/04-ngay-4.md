@@ -38,3 +38,8 @@
 ### n4-toi — Tối thứ Sáu, phòng CLB: hộp bánh quy và trò "ba dữ kiện" (không khí nhóm bạn, không có manh mối) {cảnh: phong-clb-dem}
 
 - [LỜI n4-toi.1]
+- [ẢNH chibi-duy-hop-banh]
+- [ẢNH chibi-tung-tinh-nham]
+- [ẢNH chibi-vy-cuoi-deu]
+- [ẢNH chibi-duy-ok]
+- [ẢNH chibi-chuyen-that]

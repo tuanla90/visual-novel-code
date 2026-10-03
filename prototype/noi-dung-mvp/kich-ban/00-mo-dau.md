@@ -73,8 +73,9 @@
 
 - [LỜI md-01-ktx.1]
 
-- [ẢNH chibi-408-vali]
 - [LỜI md-01-ktx.2]
+- [ẢNH chibi-408-vali]
+- [ẢNH chibi-408-nam-bep]
 - [ĐI TỚI md-03-toa-b]
 
 ### md-03-toa-b — Sảnh tòa B: cái hộp tôn cũ {cảnh: sanh-toa-b}
@@ -105,6 +106,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
 ```
 
 - [LỜI md-09-ngay-hoi.3]
+- [ẢNH chibi-ghi-la-ghi]
 - [ĐI TỚI md-10-phong-clb]
 
 ### md-10-phong-clb — Phòng CLB, thứ Hai 16h: làm quen và dọn phòng {cảnh: phong-clb}

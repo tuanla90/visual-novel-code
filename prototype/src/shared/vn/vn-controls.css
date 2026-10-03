@@ -209,7 +209,7 @@
 
 .dialog__next .dialog__next-text,
 .dialog__next span {
-  font-family: 'Playwrite IS', 'Playwrite VN', 'Source Serif 4', Georgia, cursive, serif !important;
+  font-family: var(--font-ui) !important;
   font-size: 1.15rem !important;
   font-weight: 800 !important;
   font-style: italic;
@@ -249,7 +249,7 @@
 }
 
 .dialog--glass .dialog__speaker span {
-  font-family: 'Playwrite IS', cursive, sans-serif !important;
+  font-family: var(--font-ui) !important;
   font-size: 1.25rem !important;
   font-weight: 700 !important;
   color: #2b1803 !important;
@@ -271,7 +271,7 @@
 
 /* Chữ thoại chạy: trải rộng tự nhiên khắp khung, không ngắt dòng cụt lủn */
 .dialog--glass .dialog__text {
-  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif !important;
+  font-family: var(--font-reading) !important;
   font-size: 1.24rem !important;
   line-height: 1.75 !important;
   color: #f1f5f9 !important;
@@ -286,7 +286,7 @@
 
 /* Các biến thể phông chữ hội thoại */
 .dialog--glass .dialog__text--source-serif {
-  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif !important;
+  font-family: var(--font-reading) !important;
   font-size: 1.24rem !important;
   line-height: 1.75 !important;
   font-weight: 400 !important;
@@ -294,7 +294,7 @@
 }
 
 .dialog--glass .dialog__text--dancing-script {
-  font-family: 'Dancing Script', cursive, sans-serif !important;
+  font-family: var(--font-reader-script) !important;
   font-size: 1.48rem !important;
   line-height: 1.55 !important;
   font-weight: 600 !important;
@@ -302,7 +302,7 @@
 }
 
 .dialog--glass .dialog__text--playwrite-vn {
-  font-family: 'Playwrite VN', cursive, sans-serif !important;
+  font-family: var(--font-handwriting) !important;
   font-size: 1.12rem !important;
   line-height: 1.85 !important;
   font-weight: 400 !important;
@@ -310,7 +310,7 @@
 }
 
 .dialog--glass .dialog__text--be-vietnam-pro {
-  font-family: 'Be Vietnam Pro', system-ui, sans-serif !important;
+  font-family: var(--font-ui) !important;
   font-size: 1.125rem !important;
   line-height: 1.7 !important;
 }
@@ -416,7 +416,7 @@
 }
 
 .backlog-item__text {
-  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-family: var(--font-reading);
   font-size: 1.08rem;
   line-height: 1.65;
   color: #e2e8f0;
