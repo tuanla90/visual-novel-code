@@ -1,5 +1,35 @@
 # Nhật Ký Thay Đổi (.agent/changelog.md)
 
+## [2026-10-04] Tách Thẻ Chữ (Thời Gian / Địa Điểm / Triết Lý) Thành Màn Title Card Điện Ảnh (Cinematic Title Card Screen)
+
+### 1. Bối Cảnh & Vấn Đề (UX / Visual Clutter):
+- Trước đây, khi gặp thẻ chữ (`- [THẺ CHỮ] **narrator**: ...`, ví dụ mở đầu game: `Chủ nhật, 08/09/2024 · Đại học Chấn Hưng`), hệ thống hiển thị thẻ vàng lơ lửng ngay giữa màn hình.
+- Xảy ra xung đột thị giác (3 luồng thông tin đè lên nhau):
+  1. Thẻ vàng che 40% cảnh cổng trường.
+  2. Bóng thoại nhắc việc của nhân vật chính ("BẠN: Tìm ký túc xá đã...") hiện ở góc trên bên trái.
+  3. Badge nhãn cảnh ("Cổng trường"), nút "Hồ sơ" và các nút HUD khác hiển thị cùng lúc.
+  => Người chơi bị phân tâm, phá vỡ nhịp nghỉ điện ảnh (establishing context).
+
+### 2. Giải Pháp Triển Khai (Chuẩn Visual Novel / Ace Attorney):
+- **Tách riêng biệt thành Màn Title Card Điện Ảnh khi `display === 'card'`**:
+  - `SanKhauMvp.tsx`:
+    - Thêm cờ `isCard`. Khi là thẻ chữ: thêm class `.is-the-chu` làm mờ sâu cảnh nền (`filter: blur(18px) brightness(0.22)`), phủ lớp gradient tối sâu điện ảnh (`radial-gradient`), ẩn nhãn địa điểm (`stage__scene-label`).
+  - `ManChoiMvp.tsx`:
+    - Ẩn hoàn toàn bóng thoại nhắc việc (`nhacViec = null`).
+    - Ẩn thanh đồng hành (`DongHanhMvp`).
+    - Không vẽ dàn chân dung (`coDan = false`).
+  - `DialogBox.tsx` & `mvp.css`:
+    - Nâng cấp `.dialog--card` thành thẻ Title Card điện ảnh cao cấp: Nền tối kính mờ (`rgba(30, 41, 59, 0.94)` kết hợp `backdrop-filter: blur(20px)`), viền vàng hổ phách tinh tế (`rgba(245, 158, 11, 0.45)`), đổ bóng sâu 3D.
+    - Bổ sung hoa văn trang trí đường kẻ mảnh và ngôi sao điện ảnh `✦`.
+    - Thêm dòng gợi ý nhẹ nhàng ở đáy: *"Nhấp chuột hoặc phím Cách để tiếp tục"*.
+    - Ẩn nút "Hồ sơ" bên ngoài footer, căn giữa nút "Tiếp tục" tối giản bo tròn viên thuốc (pill button).
+    - Toàn bộ màn hình có thể nhấp chuột bất kỳ đâu hoặc bấm Space / Enter để tiếp tục vào cảnh thực tế.
+
+### 3. Kiểm Thử & Xác Nhận:
+- Unit test `src/shared/ui/components.test.tsx` (11/11 tests passed): Đã bổ sung kiểm tra sự hiện diện của `.dialog__card-decor`, `.dialog__card-hint` và xác nhận nút hồ sơ ẩn hoàn toàn.
+- `src/mvp/ui/tao-nhan-vat.test.tsx` (11/11 tests passed).
+- TypeScript strict typecheck & Vite production build: 100% passed, 0 lỗi.
+
 ## [2026-10-04] Mở Rộng Dữ Liệu Thực Tế: Sổ Chi 19 CLB (`khoan_chi` 200 dòng) & Lịch Sử Thư Viện Của Nam (`quet_the_thu_vien` 37 dòng)
 
 ### 1. Mở Rộng Bảng `khoan_chi` Lên 200 Dòng (Sổ Chi 19 CLB Toàn Trường):
