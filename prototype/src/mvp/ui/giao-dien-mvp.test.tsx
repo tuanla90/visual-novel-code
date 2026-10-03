@@ -53,11 +53,11 @@ describe('thanh trên MVP (phong cách .topbar của prototype)', () => {
     }
   });
 
-  it('ngày đang chơi: vé là ngày thật trong truyện (ngày 3 = thứ Năm 19/9), vạch trước là xong, vạch hiện tại sáng', () => {
+  it('ngày đang chơi: vé là ngày thật trong truyện (ngày 3 = thứ Năm 26/9), vạch trước là xong, vạch hiện tại sáng', () => {
     const s = nhayToi(kb, 'ten-h', 1);
     veManChoi(s);
     const hdr = thanhTren();
-    expect(hdr.querySelector('.topbar__chapter-number')).toHaveTextContent('19/9');
+    expect(hdr.querySelector('.topbar__chapter-number')).toHaveTextContent('26/9');
     expect(hdr.querySelector('.topbar__chapter-kicker')).toHaveTextContent('T5');
     const vach = [...hdr.querySelectorAll('.topbar__pip')];
     expect(vach.filter((v) => v.classList.contains('is-done'))).toHaveLength(s.ngay - 1);

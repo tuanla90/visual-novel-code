@@ -114,7 +114,7 @@
 - **player**: Mới đầu tuần mà đã tính tới cuối tuần rồi à?
 
 ## n2-co-hanh-an.1
-- **player**: (Tờ lịch tháng 9 treo cạnh bảng. Ô thứ Hai 23 khoanh đỏ, ghi tay: "Họp rà soát phòng CLB".)
+- **player**: (Tờ lịch tháng 9 treo cạnh bảng. Ô thứ Hai 30 khoanh đỏ, ghi tay: "Họp rà soát phòng CLB".)
 - **ha-vy** (thinking): Phòng Đào tạo cũng ghi ngày họp của mình rồi. Hạn là thật đấy.
 
 ## n2-bd-toa-b-an.1

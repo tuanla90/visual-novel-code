@@ -35,5 +35,5 @@
 - **bac-tu** (neutral): Còn ai bỏ thì bác chịu. Ngần ấy đứa, bác nhớ sao hết mặt.
 
 ## n1-thong-bao-hop.1
-- **player**: "Họp rà soát phòng sinh hoạt CLB: bốn giờ chiều thứ Hai tuần sau." Dán ngay cạnh hộp luôn.
+- **player**: "Họp rà soát phòng sinh hoạt CLB: 16:00 thứ Hai 30/09." Dán ngay cạnh hộp luôn.
 - **tung** (worried): Ai đi qua cũng đọc được. Thế là cả trường biết CLB mình sắp bị xét phòng.

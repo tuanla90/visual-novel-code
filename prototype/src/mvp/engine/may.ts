@@ -1093,6 +1093,8 @@ export function canGioiThieu(kb: KichBanMvp, s: TrangThaiMvp, kn: KhungNhinMvp):
   const nguoi = kn.loi.speaker;
   if (!nguoi || (s.daGioiThieu ?? []).includes(nguoi)) return null;
   if (!kb.nhanVat.find((n) => n.id === nguoi)?.gioiThieu) return null;
+  // Ngày hội chỉ gặp chị trực bàn; chị tự giới thiệu ở buổi Trung thu của CLB.
+  if (nguoi === 'minh-anh' && s.conTro?.chuoi === 'md-09-ngay-hoi') return null;
   const tuXung = (text: string): boolean => TU_GIOI_THIEU.test(text.normalize('NFC'));
   if (tuXung(kn.loi.text)) return nguoi;
   const chuoi = s.conTro ? timChuoi(kb, s.conTro.chuoi) : undefined;

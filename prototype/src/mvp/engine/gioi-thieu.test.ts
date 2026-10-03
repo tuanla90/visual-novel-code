@@ -24,6 +24,21 @@ function choMoThe(nguoi: string): { chuoi: string; text: string } | null {
 }
 
 describe('thẻ giới thiệu nhân vật', () => {
+  it('chị trực bàn Ngày hội giữ tên tạm tới câu tự xưng ở đêm Trung thu', () => {
+    const ngayHoi = kb.chuoi.find((c) => c.id === 'md-09-ngay-hoi');
+    const trungThu = kb.chuoi.find((c) => c.id === 'md-10-trung-thu');
+    const oLoi = (chuoi: typeof ngayHoi) => chuoi?.nodes.findIndex((n) => n.type === 'line' && n.speaker === 'minh-anh') ?? -1;
+    for (const [c, moThe] of [[ngayHoi, false], [trungThu, true]] as const) {
+      const i = oLoi(c);
+      expect(i).toBeGreaterThanOrEqual(0);
+      const n = c?.nodes[i];
+      if (!c || n?.type !== 'line') continue;
+      const s = { ...taoTrangThai(kb), conTro: { chuoi: c.id, nut: i, boiCanh: 'mo-dau' as const } };
+      const kn: KhungNhinMvp = { kind: 'line', loi: { speaker: n.speaker, text: n.text } };
+      expect(canGioiThieu(kb, s, kn) === 'minh-anh').toBe(moThe);
+    }
+  });
+
   it('nhân vật nào có thẻ giới thiệu và có lời thoại cũng có chỗ mở thẻ', () => {
     const coLoi = new Set(kb.chuoi.flatMap((c) => c.nodes.flatMap((n) => (n.type === 'line' ? [n.speaker] : []))));
     const thieu = kb.nhanVat.filter((n) => n.gioiThieu && coLoi.has(n.id) && !choMoThe(n.id)).map((n) => n.id);

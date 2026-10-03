@@ -11,6 +11,8 @@
 ### cang-tin — Căng tin
 ### ngoai-phong-may — Ngoài phòng máy
 ### nha-van-hoa — Nhà văn hóa
+### san-ktx-trung-thu — Sân ký túc xá, đêm Trung thu
+- Ảnh nền: bg-mvp-san-ktx-trung-thu
 ### hoi-truong — Hội trường
 ### phong-clb — Phòng CLB
 - Ảnh nền: bg-clb-room
