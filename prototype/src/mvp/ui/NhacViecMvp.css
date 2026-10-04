@@ -59,7 +59,7 @@
   }
 }
 
-/* Ô mặt tròn, lấn ra ngoài mép trái bong bóng: ảnh chân dung cắt quanh đầu (điểm 50%,20% của ảnh vào giữa ô). */
+/* Ô mặt tròn, lấn ra ngoài mép trái bong bóng: ảnh chân dung cắt quanh đầu nhân vật */
 .nhac-viec__mat {
   position: relative;
   flex: 0 0 auto;
@@ -78,11 +78,34 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 220%;
+  width: var(--mat-scale, 215%);
   height: auto;
-  transform: translate(-50%, -20%);
+  transform: translate(var(--mat-x, -50%), var(--mat-y, -20%));
   pointer-events: none;
 }
+
+/* Căn chỉnh vị trí tâm mặt cho từng nhân vật để không bị cắt cằm/mắt/trán trong ô tròn nhắc việc */
+.nhac-viec[data-nhan-vat='minh-anh'], .nhac-viec__mat[data-nhan-vat='minh-anh'] { --mat-y: -25%; --mat-scale: 215%; }
+.nhac-viec[data-nhan-vat='ha-vy'], .nhac-viec__mat[data-nhan-vat='ha-vy'] { --mat-y: -26.5%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='tung'], .nhac-viec__mat[data-nhan-vat='tung'] { --mat-y: -19%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='duy'], .nhac-viec__mat[data-nhan-vat='duy'] { --mat-y: -22%; --mat-scale: 215%; }
+.nhac-viec[data-nhan-vat='player'],
+.nhac-viec[data-nhan-vat='nguoi-choi'],
+.nhac-viec__mat[data-nhan-vat='player'],
+.nhac-viec__mat[data-nhan-vat='nguoi-choi'] { --mat-y: -21%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='quan'], .nhac-viec__mat[data-nhan-vat='quan'] { --mat-y: -20%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='hoai'], .nhac-viec__mat[data-nhan-vat='hoai'] { --mat-y: -27.5%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='bac-tu'], .nhac-viec__mat[data-nhan-vat='bac-tu'] { --mat-y: -20%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='chu-cuong'], .nhac-viec__mat[data-nhan-vat='chu-cuong'] { --mat-y: -18%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='co-hanh'], .nhac-viec__mat[data-nhan-vat='co-hanh'] { --mat-y: -28.5%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='co-lan'], .nhac-viec__mat[data-nhan-vat='co-lan'] { --mat-y: -29.5%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='thay-quang'], .nhac-viec__mat[data-nhan-vat='thay-quang'] { --mat-y: -21.5%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='hieu'], .nhac-viec__mat[data-nhan-vat='hieu'] { --mat-y: -17%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='nam'], .nhac-viec__mat[data-nhan-vat='nam'] { --mat-y: -21%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='khanh'], .nhac-viec__mat[data-nhan-vat='khanh'] { --mat-y: -18%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='bach'], .nhac-viec__mat[data-nhan-vat='bach'] { --mat-y: -19%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='thao'], .nhac-viec__mat[data-nhan-vat='thao'] { --mat-y: -29.5%; --mat-scale: 210%; }
+.nhac-viec[data-nhan-vat='ba-lua'], .nhac-viec__mat[data-nhan-vat='ba-lua'] { --mat-y: -38%; --mat-x: -48%; --mat-scale: 210%; }
 .nhac-viec__chu-tat {
   position: absolute;
   inset: 0;

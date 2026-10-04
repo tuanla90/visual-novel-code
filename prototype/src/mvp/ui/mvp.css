@@ -3123,7 +3123,15 @@
   box-shadow: 0 0 0 2px #fffdfa, 0 0 0 4px #d97706, 0 3px 8px rgba(15, 23, 42, 0.35);
   cursor: pointer;
 }
-.dong-hanh__nguoi img { position: absolute; left: 50%; top: 50%; width: 220%; height: auto; transform: translate(-50%, -20%); pointer-events: none; }
+.dong-hanh__nguoi img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--mat-scale, 215%);
+  height: auto;
+  transform: translate(var(--mat-x, -50%), var(--mat-y, -20%));
+  pointer-events: none;
+}
 .dong-hanh__nguoi.is-noi { box-shadow: 0 0 0 2px #fffdfa, 0 0 0 4px #1f5f8b, 0 3px 8px rgba(15, 23, 42, 0.35); }
 .dong-hanh__chat {
   flex-basis: 100%;
@@ -3318,10 +3326,33 @@
   overflow: hidden;
   background: radial-gradient(circle at 50% 35%, #fde68a, #d97706);
 }
-.mvp-ghim__mat:first-child { margin-left: 0; }
-.mvp-ghim__mat img { position: absolute; left: 50%; top: 50%; width: 220%; height: auto; transform: translate(-50%, -20%); }
-/* Bà bán trà đá thấp, lưng còng: mặt nằm thấp hơn trong ảnh nên dời khung cắt xuống. */
-.mvp-ghim__mat[data-nv='ba-lua'] img { transform: translate(-48%, -38%); }
+.mvp-ghim__mat img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--mat-scale, 215%);
+  height: auto;
+  transform: translate(var(--mat-x, -50%), var(--mat-y, -20%));
+}
+/* Căn chỉnh tâm mặt theo từng nhân vật (tránh cắt cằm/mắt/trán khi bo tròn) */
+[data-nhan-vat='minh-anh'], [data-nv='minh-anh'] { --mat-y: -25%; --mat-scale: 215%; }
+[data-nhan-vat='ha-vy'], [data-nv='ha-vy'] { --mat-y: -26.5%; --mat-scale: 210%; }
+[data-nhan-vat='tung'], [data-nv='tung'] { --mat-y: -19%; --mat-scale: 210%; }
+[data-nhan-vat='duy'], [data-nv='duy'] { --mat-y: -22%; --mat-scale: 215%; }
+[data-nhan-vat='player'], [data-nhan-vat='nguoi-choi'], [data-nv='player'], [data-nv='nguoi-choi'] { --mat-y: -21%; --mat-scale: 210%; }
+[data-nhan-vat='quan'], [data-nv='quan'] { --mat-y: -20%; --mat-scale: 210%; }
+[data-nhan-vat='hoai'], [data-nv='hoai'] { --mat-y: -27.5%; --mat-scale: 210%; }
+[data-nhan-vat='bac-tu'], [data-nv='bac-tu'] { --mat-y: -20%; --mat-scale: 210%; }
+[data-nhan-vat='chu-cuong'], [data-nv='chu-cuong'] { --mat-y: -18%; --mat-scale: 210%; }
+[data-nhan-vat='co-hanh'], [data-nv='co-hanh'] { --mat-y: -28.5%; --mat-scale: 210%; }
+[data-nhan-vat='co-lan'], [data-nv='co-lan'] { --mat-y: -29.5%; --mat-scale: 210%; }
+[data-nhan-vat='thay-quang'], [data-nv='thay-quang'] { --mat-y: -21.5%; --mat-scale: 210%; }
+[data-nhan-vat='hieu'], [data-nv='hieu'] { --mat-y: -17%; --mat-scale: 210%; }
+[data-nhan-vat='nam'], [data-nv='nam'] { --mat-y: -21%; --mat-scale: 210%; }
+[data-nhan-vat='khanh'], [data-nv='khanh'] { --mat-y: -18%; --mat-scale: 210%; }
+[data-nhan-vat='bach'], [data-nv='bach'] { --mat-y: -19%; --mat-scale: 210%; }
+[data-nhan-vat='thao'], [data-nv='thao'] { --mat-y: -29.5%; --mat-scale: 210%; }
+[data-nhan-vat='ba-lua'], [data-nv='ba-lua'] { --mat-y: -38%; --mat-x: -48%; --mat-scale: 210%; }
 .mvp-ghim__them { margin-left: 3px; font: 700 12px/1 var(--font-ui); }
 .mvp-ghim:disabled { cursor: default; }
 /* Màn quan sát chân dung: ảnh nhân vật phóng to, mỗi vùng soi một vòng tròn nhịp. */

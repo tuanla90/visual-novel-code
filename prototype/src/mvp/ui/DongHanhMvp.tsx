@@ -76,7 +76,7 @@ export function DongHanhMvp({
       });
       const data = await response.json() as { reply?: unknown; error?: unknown };
       if (!response.ok || typeof data.reply !== 'string') {
-        if (response.status === 503) throw new Error('AI chưa được cấu hình trên máy chủ.');
+        if (response.status === 503) throw new Error(typeof data.error === 'string' ? data.error : 'AI chưa được cấu hình trên máy chủ.');
         if (response.status === 429) throw new Error('Bạn ấy cần nghỉ một chút. Thử lại sau nhé.');
         throw new Error(typeof data.error === 'string' ? data.error : 'Chưa kết nối được. Thử lại nhé.');
       }
@@ -103,6 +103,7 @@ export function DongHanhMvp({
             key={id}
             type="button"
             className={`dong-hanh__nguoi${nhanVat === id ? ' is-noi' : ''}`}
+            data-nhan-vat={id}
             aria-label={`Chat với ${nv?.ten ?? id}`}
             title={`Chat với ${nv?.ten ?? id}`}
             aria-pressed={nhanVat === id}

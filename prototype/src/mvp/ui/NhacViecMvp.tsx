@@ -45,7 +45,7 @@ export function NhacViecMvp({ kb, nhac, dienTen, tenNguoiChoi }: NhacViecMvpProp
         }
       }}
     >
-      <span className="nhac-viec__mat" aria-hidden="true">
+      <span className="nhac-viec__mat" aria-hidden="true" data-nhan-vat={nhac.nhanVat}>
         {url ? <img src={url} alt="" draggable={false} /> : <span className="nhac-viec__chu-tat">{ten.trim().charAt(0)}</span>}
       </span>
       <span className="nhac-viec__noi">
