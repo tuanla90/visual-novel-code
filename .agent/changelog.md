@@ -1,6 +1,33 @@
 # Nhật Ký Thay Đổi (.agent/changelog.md)
 
-## [2026-10-04] Rà Soát Cảnh Giới Thiệu Nhân Vật: Sửa Lỗi Che Người & Khắc Phục Lệch Màu Sắc
+## [2026-10-04] Rà Soát Kịch Bản Toàn Diện: Chuẩn Hóa Vai Trò Nhân Vật & Xưng Hô Tuyệt Đối
+
+### 1. Bối Cảnh & Ranh Giới Nhân Vật (Character Matrix):
+- **Hà Vy (Năm 1 Toán ứng dụng)**: Tuyệt đối không biết SQL từ đầu. Tiếp cận dữ liệu bằng tư duy tập hợp & logic học (giao, hợp, phần bù, điều kiện đồng thời, phủ định, mẫu thói quen). Đã loại bỏ hoàn toàn các thuật ngữ SQL kỹ thuật (`WHERE`, `SELECT`, "câu lệnh", "bẻ gãy cú pháp", "cày SQL"). Vy không giảng bài như chuyên gia công nghệ.
+- **Minh Anh (Năm 3 Luật kinh tế, Chủ nhiệm CLB)**: Giữ vững tôn chỉ *"Nói có sách, mách có chứng - chứng phải hai"*. Tập trung vào căn cứ pháp lý, quy chế, con dấu, thẩm quyền. Không can thiệp kỹ thuật SQL.
+- **Tùng (Năm 1 Du lịch)**: Sợ toán, dốt công nghệ, ngợp trước dữ liệu lớn/nhiều số. Thích cá cược (*"Tớ cá là..."*), hay kết luận vội nhưng biết nhận sai. Tình cảm với Hoài phát triển chân thực, nhẹ nhàng.
+- **Duy (Năm 2 Hành chính học, Quản lý tài sản CLB)**: Bám sát sổ sách, biên bản (*"Kiểm hai lần, kết luận một lần"*). Sửa triệt để xưng hô: Duy luôn xưng "anh/em" với sinh viên năm nhất (Tùng, Vy, Player, Hoài, Hiếu); xưng "em/chị" với Minh Anh. Năm nhất gọi Duy là "anh Duy".
+- **Player (Năm 1)**: Người duy nhất cầm cuốn Sổ tay CLB truyền lại và trực tiếp gõ lệnh SQL.
+- **Hiếu (Năm 1 Báo chí)**: Từ Vụ 2 trở đi (sau khi gỡ hiểu lầm) chuyển sang xưng "tớ/các cậu" thân thiện với nhóm.
+
+### 2. Các Tệp Kịch Bản Đã Rà Soát & Khắc Phục:
+- `prototype/noi-dung-mvp/loi/02-ngay-2.md`: Sửa nhắc việc của Duy xưng "anh" với Player.
+- `prototype/noi-dung-mvp/loi/04-ngay-4.md`: Tùng gọi "anh Duy", Duy xưng "anh/em" với Tùng khi đổi lượt rửa ấm trà.
+- `prototype/noi-dung-mvp/loi/06-hop-va-ket.md`: Sửa `hop-00.3` chuẩn vai (Tùng hoảng loạn trước 595 người, Minh Anh giữ căn cứ quy chế, Hà Vy phân tích phép hợp/giao tập hợp, Player nhận giải trình truy vấn); Duy xưng "anh" khi mở tủ sắt.
+- `prototype/noi-dung-mvp/loi/10-vu-2-tin-don.md`: Sửa Duy xưng "anh" với năm nhất trong xưởng Robotics và phòng CLB.
+- `prototype/noi-dung-mvp/loi/11-vu-3-tranh-cai.md`: Sửa Duy xưng "anh" khi nhắc mua hoa 20/10 gửi mẹ và tra sổ.
+- `prototype/noi-dung-mvp/loi/12-vu-4-giup-nam.md`: Sửa Duy xưng "anh"; xóa bỏ câu AI nịnh nọt của Nam ("Các cậu nói đúng" → nói thẳng vào việc bị mượn tên).
+- `prototype/noi-dung-mvp/loi/13-vu-5-so-quy.md`: Duy xưng "em" với Minh Anh khi đặt cúc họa mi 20/11 tri ân thầy cô, xưng "anh" khi mở tủ sổ sách; Tùng và Vy gọi "anh Duy".
+- `prototype/noi-dung-mvp/loi/20-phu-so-phong.md`, `21-phu-micro.md`, `tt-v2-loc-buoi.md`: Sửa Duy xưng "anh/em" với năm nhất và "em/chị" với Minh Anh.
+- `prototype/noi-dung-mvp/loi/25-phu-tui-do.md`: Sửa Hiếu xưng "tớ/các cậu" khi nhận lại chiếc túi vải.
+- `prototype/src/content/generated/mvp/kich-ban.gen.ts`: Tự động tái sinh mã nguồn kịch bản tương ứng.
+
+### 3. Kết Quả Kiểm Thử (100% Green):
+- `npm run kiem-giong`: 0 lỗi trên toàn bộ 30 tệp lời (1573 bong bóng thoại).
+- `npm run noi-dung:sinh` & `npm run kiem-noi-dung`: 0 lỗi trên 58 tệp nội dung (39/39 câu SQL khớp chính xác).
+- `npm run typecheck`: 0 lỗi TypeScript strict mode.
+- `npm run test`: 132/132 files passed, 1072/1072 tests passed.
+
 
 ### 1. Bối Cảnh & Vấn Đề (UX & Visual Hierarchy):
 - **Lỗi chữ che người**: Màn giới thiệu nhân vật Quân (`quan`) và Hà Vy (`ha-vy`) bị gán cứng `textSide = 'left'`, khiến tấm thẻ chữ và nút bấm đè trực tiếp lên ngực và mặt của nhân vật. Trong khi toàn bộ 1/3 bên phải khung hình là bối cảnh trống.

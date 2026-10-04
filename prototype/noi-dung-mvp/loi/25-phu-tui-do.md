@@ -27,13 +27,13 @@
 - **narrator**: Bảy giờ năm mươi. Nhóm đi ngang hành lang tòa hành chính. Cửa Phòng Công tác sinh viên còn khóa. Một tờ giấy dán ở khung kính: hồ sơ học bổng đợt này khóa lúc 17 giờ ngày 30 tháng 10.
 - **narrator**: Trước cửa có một người đứng. Hiếu, lớp BC24A. Chiếc túi vải đeo bên vai. Trong tay cậu ấy là tờ đơn trong bìa nhựa, dấu đỏ ở góc.
 - **tung** (surprised): Cái bìa nhựa ấy. Đúng cái hôm qua trên ghế đá.
-- **hieu** (neutral): Hôm qua tôi bỏ quên túi ở ghế đá. Quay lại thì mất. Tôi tìm quanh nhà xe tới tối. Sáng nay bác bảo vệ gặp tôi ở cổng, hỏi tôi mất gì. Tôi kể đúng, bác trả.
+- **hieu** (neutral): Hôm qua tớ bỏ quên túi ở ghế đá. Quay lại thì mất. Tớ tìm quanh nhà xe tới tối. Sáng nay bác bảo vệ gặp tớ ở cổng, hỏi tớ mất gì. Tớ kể đúng, bác trả.
 - **narrator**: Cô Lan từ cầu thang đi lên, tay lục chùm chìa khóa. Cô đọc tờ giấy dán, rồi nhìn tờ đơn trong tay Hiếu.
 - **co-lan** (neutral): Đợt này khóa từ năm giờ chiều qua rồi em. Cô không mở lại được.
 - **hieu** (neutral): Dạ, em biết. Em muốn nộp vào đợt sau cho đỡ phải viết lại.
 - **co-lan** (smile): Thế thì cô nhận để đó. Đợt sau cô báo.
 - **minh-anh** (neutral): Bọn chị nộp túi cho bác từ chiều qua.
-- **hieu** (neutral): Nộp bác là đúng cách rồi. Tôi mới là người để quên.
+- **hieu** (neutral): Nộp bác là đúng cách rồi. Tớ mới là người để quên.
 - **narrator**: Hiếu gật đầu với cả nhóm rồi đi theo cô Lan vào phòng. Chiếc túi vải lắc nhẹ trên vai cậu ấy.
 
 ## p-tui-nhin.1
@@ -125,7 +125,7 @@
 - **hieu** (annoyed): Bác ơi, có ai nộp một cái túi vải không ạ? Có giáo trình Kinh tế vi mô với tờ đơn học bổng. Hạn nộp mười bảy giờ.
 - **bac-tu** (neutral): Hôm nay chưa ai nộp túi nào.
 - **tung** (happy): Có rồi đây!
-- **hieu** (surprised): Túi của tôi!
+- **hieu** (surprised): Túi của tớ!
 - **ha-vy** (neutral): Cậu nói xem trong túi còn gì ngoài tờ đơn.
 - **hieu** (neutral): Ví da nâu, điện thoại, hộp bút vải bò xanh, chai nước. Vé xe vào bãi lúc bảy giờ mười hai.
 - **ha-vy** (smile): Đủ rồi. Ví với điện thoại bọn mình không mở. Cậu tự kiểm lại.
@@ -138,5 +138,5 @@
 - **co-lan** (neutral): Còn tám phút. Đưa cô xem.
 - **narrator**: Cô Lan đọc từng dòng, mở ngăn kéo lấy con dấu, ấn xuống góc giấy. Mực đỏ nhòe nhẹ, dòng chữ nhỏ bên dưới: nhận 16 giờ 52.
 - **co-lan** (smile): Nhận rồi em.
-- **hieu** (neutral): Dạ. Cảm ơn cô. Cảm ơn mấy người.
+- **hieu** (neutral): Dạ. Cảm ơn cô. Cảm ơn các cậu.
 - **narrator**: Con dấu đỏ trên góc tờ đơn vẫn còn ướt.

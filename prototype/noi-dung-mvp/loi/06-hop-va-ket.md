@@ -73,7 +73,7 @@
 
 ## ket-that.2
 - **narrator**: Chiều muộn, cả nhóm về phòng CLB dọn bảng. Từ cuốn sổ CLB rơi ra một mẩu giấy gấp tư.
-- **duy** (neutral): Mực xanh, ngả màu cả rồi. Tớ kiểm kê cái tủ này cả năm, chưa thấy tờ này bao giờ.
+- **duy** (neutral): Mực xanh, ngả màu cả rồi. Anh kiểm kê cái tủ này cả năm, chưa thấy tờ này bao giờ.
 - **player**: "Căn phòng này giữ nhiều hơn em nghĩ."
 - **tung** (surprised): Giữ gì cơ? Phòng có mỗi cái tủ với cái bảng.
 - **ha-vy** (thinking): Đừng cá. Chưa có gì để tính cả.

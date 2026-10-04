@@ -81,8 +81,8 @@
 - **narrator**: Chín giờ tối, hộp bánh hết. Người ăn cái cuối là Duy. Cậu lẳng lặng mở sổ, ghi: "Nợ CLB một hộp bánh."
 
 ## n4-toi.1d
-- **tung** (happy): Ghi sổ rồi nhé, nhân chứng đầy đủ! Mai Duy nhớ mua loại sô-cô-la đấy!
-- **duy** (smile): Được. Tớ mua hộp mới, bù lại tối nay cậu đi rửa ấm trà.
+- **tung** (happy): Ghi sổ rồi nhé, nhân chứng đầy đủ! Mai anh Duy nhớ mua loại sô-cô-la đấy!
+- **duy** (smile): Được. Anh mua hộp mới, bù lại tối nay em đi rửa ấm trà.
 - **tung** (happy): Chốt luôn! Tớ ghi vào biên bản đây.
 - **narrator**: Tùng vừa lật sổ ghi xong thì Duy đặt ngay ấm nước ra trước mặt.
 - **tung** (gai-dau): Đòi nợ liền tay thế à? Tớ tưởng biên bản chỉ để tham khảo!

@@ -6,7 +6,7 @@
 - **minh-anh** (happy): Tuần sau 20/11 rồi. CLB mình tri ân thầy cô thế nào đây?
 - **tung** (happy): Thầy Quang trước đi chị! Thầy toàn hỏi "căn cứ vào đâu". Tặng thầy cuốn sổ ghi chữ Căn Cứ.
 - **ha-vy** (smile): Để rồi thầy hỏi: "Căn cứ vào đâu các em nghĩ thầy cần sổ?" à.
-- **duy** (neutral): Cứ hoa tươi là trang trọng nhất. Tớ đặt cúc họa mi đầu mùa nhé.
+- **duy** (neutral): Cứ hoa tươi là trang trọng nhất. Để em đặt cúc họa mi đầu mùa nhé.
 - **minh-anh** (neutral): Nhớ cả phần cô Hạnh nữa. Năm nay là năm cuối cô còn đi làm trước khi nghỉ hưu.
 - **player**: (Quà tính sau. Trước 20/11 còn một việc đang chờ ở xưởng.)
 ## v5-mo.1
@@ -192,7 +192,7 @@
 - **nam** (neutral): Lệ phí giải hạn cuối tháng này. Kinh phí năm nay toàn anh ấy chạy. Giờ tớ phải tự đi xin lại từ đầu.
 - **thao** (neutral): Tiền giải thì chị với Bách đi xin cùng em. Chìa của chị cũng treo lên móc rồi.
 - **hoai** (neutral): Tùng ơi, cái áo xanh ấy… CLB các cậu còn nhận người không?
-- **tung** (ao-xanh-happy): Đơn ở chỗ Duy. Chiều thứ Tư, phòng CLB. Lần này tớ dẫn đúng tòa.
+- **tung** (ao-xanh-happy): Đơn ở chỗ anh Duy. Chiều thứ Tư, phòng CLB. Lần này tớ dẫn đúng tòa.
 
 ## v5-ket-luan.1
 > NHIỆM VỤ: Đóng hồ sơ mùa
@@ -203,7 +203,7 @@
 - **tung** (happy): Tớ cá là kỳ sau CLB mình đông gấp đôi.
 - **ha-vy** (neutral): Lần cá thứ hai mươi ba. Trật hai mươi mốt.
 - **tung** (surprised): Tuần trước cậu bảo mới có bốn!
-- **ha-vy** (smile): Tuần này cậu cá với Duy suốt giải bóng của khoa. Tớ chỉ ngồi đếm.
+- **ha-vy** (smile): Tuần này cậu cá với anh Duy suốt giải bóng của khoa. Tớ chỉ ngồi đếm.
 - **hoai** (neutral): …Tớ cá theo Tùng được không?
 - **tung** (gai-dau): Thế thì lần này tớ phải thắng.
 - **ha-vy** (smile): Từ một chữ H tới một sổ quỹ. Mỗi bước là một phiếu.
@@ -229,7 +229,7 @@
 > NHIỆM VỤ: Tìm chìa ngăn tủ khóa
 - [THẺ CHỮ] **narrator**: Giữa tháng 01/2025, thi xong · Phòng CLB
 - **narrator**: Buổi đầu tiên sau kỳ thi. Duy bày mấy mẩu giấy rơi ra từ cuốn sổ CLB lên bàn.
-- **duy** (neutral): Giấy thì đủ cả rồi. Mà ngăn dưới tủ hồ sơ thì khóa, tớ chưa bao giờ có chìa.
+- **duy** (neutral): Giấy thì đủ cả rồi. Mà ngăn dưới tủ hồ sơ thì khóa, anh chưa bao giờ có chìa.
 - **tung** (surprised): Thì cạy ra!
 - **ha-vy** (thinking): Khoan. Đọc lại bốn mẩu đã.
 
@@ -245,7 +245,7 @@
 - **player**: Trang cuối có thêm một dòng, vẫn chữ thầy: "Manh mối cũ, câu hỏi mới."
 
 ## v5-phong-duy.1
-- **duy** (serious): Sổ này không phải của CLB mình. Thầy Quang cho xem tới đâu, tớ mở tới đó.
+- **duy** (serious): Sổ này không phải của CLB mình. Thầy Quang cho xem tới đâu, anh mở tới đó.
 
 ## v5-phong-vy.1
 - **ha-vy** (thinking): Câu hỏi trên bảng: khoản chi nào ghi vào quỹ của mình?

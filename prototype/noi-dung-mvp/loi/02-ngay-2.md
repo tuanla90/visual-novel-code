@@ -48,7 +48,7 @@
 
 ## n2-phong.1
 > NHIỆM VỤ: Về phòng CLB, mở laptop
-> NHẮC VIỆC duy (neutral): Laptop tớ để trên bàn. Muốn tra thì tìm tớ.
+> NHẮC VIỆC duy (neutral): Laptop anh để trên bàn. Muốn tra thì tìm anh.
 - **narrator**: Về tới phòng CLB. Mỗi người một góc: Duy bên cái laptop, Hà Vy trước tấm bảng, chị Minh Anh xếp lại giấy tờ, Tùng ngồi vắt vẻo trên bàn.
 
 ## n2-phong-duy.1

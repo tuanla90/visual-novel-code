@@ -11,7 +11,7 @@
 - **ha-vy** (smile): Cái gì đếm được thì tớ đếm.
 - **player**: Lần này Tùng thắng. Cửa mở sẵn rồi kìa.
 - **narrator**: Trong phòng không chỉ có chị Minh Anh. Lần này không phải nhóm sang xưởng, mà Nam tự tới phòng CLB, tay cầm một tờ giấy.
-- **nam** (neutral): Các cậu nói đúng. Có người đang mượn tên tớ, mà không phải chỉ cái tin đồn.
+- **nam** (neutral): Có người đang mượn tên tớ, mà không phải chỉ mỗi cái tin đồn.
 - **minh-anh** (neutral): Ngồi xuống đã. Chuyện gì?
 - **nam** (neutral): Ban kiểm tra của Hội sinh viên gửi giấy yêu cầu giải trình ngân sách xưởng. Họ tạm dừng giải ngân, vì tớ đứng tên năm đơn trong hai tháng, cộng lại hơn hai triệu rưỡi, có đơn gần một triệu. Trong năm đơn ấy tớ chỉ đặt hai: cảm biến với bánh xe, mấy trăm nghìn. Ba đơn kia tớ không đặt.
 - [DÀN DỰNG] {{nv.quan}} bước vào sau {{nv.nam}}, tay cầm cặp hồ sơ.

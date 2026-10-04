@@ -20,8 +20,8 @@
 ## v2-giao-viec.1
 - **minh-anh** (neutral): Mục đầu tiên là sử dụng phòng. Chị cần ghi tháng 10 có bao nhiêu mục trong sổ, và mục nào có chữ ký xác nhận.
 - **minh-anh** (serious): Không cần con số đẹp. Cần con số truy ngược được.
-- **duy** (neutral): Sổ sử dụng phòng tớ giữ. Bản giấy đây, còn đây là bản xuất từ máy quản lý phòng của tòa nhà.
-- **duy** (neutral): Mã phòng trong bản xuất là do từng người trực gõ tay. Tớ chưa lọc, chưa bỏ dòng nào.
+- **duy** (neutral): Sổ sử dụng phòng em giữ. Bản giấy đây, còn đây là bản xuất từ máy quản lý phòng của tòa nhà.
+- **duy** (neutral): Mã phòng trong bản xuất là do từng người trực gõ tay. Em chưa lọc, chưa bỏ dòng nào.
 
 ## v2-giao-viec.2
 - **player**: Bảy dòng. Hai dòng là của kho chung. Còn lại là phòng mình, nhưng mỗi dòng viết mã phòng một kiểu.
@@ -30,7 +30,7 @@
 - **ha-vy** (thinking): Khoan đã. Viết khác kiểu chưa có nghĩa là có người sửa.
 
 ## v2-tin-tung.1
-- **duy** (neutral): Tớ xuất. Sáng nay, từ máy quản lý phòng, trước mặt bác trực tòa nhà. Tớ chưa đụng vào dòng nào.
+- **duy** (neutral): Anh xuất. Sáng nay, từ máy quản lý phòng, trước mặt bác trực tòa nhà. Anh chưa đụng vào dòng nào.
 - **tung** (gai-dau): Ờ… thế thì không ai sửa cả.
 - **ha-vy** (neutral): Đoán người thì phải hỏi từng người. Xem cột mã phòng thì chỉ cần mở máy.
 - **tung** (worried): Rồi, tớ cá trượt. Mở máy đi.
@@ -39,7 +39,7 @@
 > NHIỆM VỤ: Tháng 10, phòng CLB có những buổi nào đã ký xác nhận?
 > NHẮC VIỆC ha-vy (thinking): Cùng một phòng mà mỗi dòng viết mã một kiểu. Máy so từng chữ một.
 - **ha-vy** (thinking): Với mình thì "CLB-THAM-TU" hay "clb-tham-tu" là một phòng. Với máy thì đấy là hai chuỗi khác nhau. Thêm một dấu cách ở đuôi cũng thành chuỗi khác.
-- **duy** (neutral): Lọc xong thì xếp theo ngày giúp tớ. Sổ giấy ghi lần lượt từ đầu tháng, tớ dò từng dòng cho nhanh.
+- **duy** (neutral): Lọc xong thì xếp theo ngày giúp anh. Sổ giấy ghi lần lượt từ đầu tháng, anh dò từng dòng cho nhanh.
 
 ## v2-tra.2
 - **player**: Bốn buổi: mùng 2, mùng 9, 16 và 23 tháng 10. Buổi 30 vẫn ghi dự kiến, chưa ai ký nên không vào.
@@ -66,5 +66,5 @@
 - **quan** (neutral): Ghi thế thì bên tôi kiểm lại được. Hẹn các bạn ở mục tài sản.
 - **tung** (gai-dau): Lần này tớ cá trượt hẳn hai lần.
 - **ha-vy** (smile): Đừng cá. Dò.
-- **duy** (neutral): Xong mục phòng. Tuần sau tớ kiểm kê thiết bị cho buổi hướng dẫn cuối kỳ.
+- **duy** (neutral): Xong mục phòng. Tuần sau anh kiểm kê thiết bị cho buổi hướng dẫn cuối kỳ.
 - [THẺ CHỮ] **narrator**: Dữ liệu nhập tay ít khi sạch. Gọt cho các dòng về cùng một kiểu rồi mới so. Kết quả nói được đến đâu thì ghi đến đó.

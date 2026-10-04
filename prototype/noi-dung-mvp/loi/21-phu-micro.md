@@ -7,7 +7,7 @@
 - **narrator**: Chiều thứ Sáu. Duy bày thiết bị ra bàn để kiểm kê cho buổi hướng dẫn cuối kỳ, đếm đi đếm lại.
 - **narrator**: Cuối bàn là một hộp bánh quy đã vơi nửa, nhãn ghi "BQ-09".
 - **tung** (surprised): BQ-09 rồi á?
-- **duy** (neutral): Luật là ai ăn cái cuối thì mua hộp mới. Tớ kiểm kê sau cùng nên lần nào cũng là tớ.
+- **duy** (neutral): Luật là ai ăn cái cuối thì mua hộp mới. Anh kiểm kê sau cùng nên lần nào cũng là anh.
 - **duy** (neutral): Micro không dây không ở ngăn dưới. Sổ tài sản vẫn ghi nó thuộc CLB mình, để ở tủ CLB.
 - **tung** (chi-tay): Tớ cá là ai đó cầm đi rồi quên trả.
 - **minh-anh** (neutral): Mình chưa có căn cứ để gọi là quên hay lấy. Tòa nhà có phiếu luân chuyển thiết bị, tìm trên phiếu trước.
@@ -15,7 +15,7 @@
 ## p-mic-mo.2
 - **duy** (neutral): Phiếu luân chuyển đây. Nhưng phiếu chỉ ghi mã tài sản với nơi chuyển tới, không ghi tên. Tên thì nằm ở sổ tài sản.
 - **ha-vy** (thinking): Vậy phải ghép phiếu với sổ. Hai bảng có hai cột trùng tên, xem cột nào mới là của chính từng thiết bị.
-- **duy** (neutral): Mà phiếu có cái đã nhận, có cái mới đề xuất. Tớ cần phiếu đã có người nhận.
+- **duy** (neutral): Mà phiếu có cái đã nhận, có cái mới đề xuất. Anh cần phiếu đã có người nhận.
 > NHIỆM VỤ: Phiếu nào đã có người nhận ghi chuyển chiếc micro không dây, và chuyển tới đâu?
 > NHẮC VIỆC ha-vy (thinking): Phiếu chỉ ghi mã, tên nằm ở sổ tài sản. Cần đúng chiếc micro không dây và phiếu đã có người nhận.
 
@@ -25,7 +25,7 @@
 - [DÀN DỰNG] {{nv.duy}} và {{nv.minh-anh}} mở tủ thiết bị dùng chung. Ngăn giữa có một chiếc micro không dây, đế sạc còn cắm điện, trên thân dán nhãn MIC-02.
 
 ## p-mic-mo.4
-- **duy** (neutral): Mã trên micro là MIC-02, đúng mã trên phiếu. Tài sản không mất, chỗ để đã đổi. Tớ sửa lại sổ.
+- **duy** (neutral): Mã trên micro là MIC-02, đúng mã trên phiếu. Tài sản không mất, chỗ để đã đổi. Anh sửa lại sổ.
 - **tung** (gai-dau): Tớ đoán sai rồi. May mà có mã, khỏi phải đoán người.
 - **minh-anh** (neutral): Phiếu còn lại của nó là chị đề xuất mượn sang phòng âm thanh cho buổi hướng dẫn. Chưa ai nhận nên micro vẫn nằm đây.
 
