@@ -697,6 +697,7 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 ⚠ (bản cũ: tự chuyển nơi)
 
 **Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-26)
 - [Đi tiếp](#doan-6)
 
 ---

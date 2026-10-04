@@ -723,6 +723,7 @@ SELECT ma_don, nguoi_dat, so_tien, so_luong_co FROM don_linh_kien JOIN kiem_ke O
 ⚠ (bản cũ: tự chuyển nơi)
 
 **Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-25)
 - [Đi tiếp](#doan-5)
 
 ---
@@ -810,6 +811,7 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ⚠ (bản cũ: tự chuyển nơi)
 
 **Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-25)
 - [Đi tiếp](#doan-10)
 
 ---

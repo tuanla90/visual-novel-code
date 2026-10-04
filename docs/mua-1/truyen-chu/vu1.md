@@ -171,34 +171,33 @@ Buổi họp rà soát
 - *Thứ Hai 30/09, bốn giờ chiều. Phòng họp tầng ba. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ.*
 - **Thầy Quang**: Thầy là Quang, phó hiệu trưởng phụ trách sinh viên, chủ trì buổi rà soát này. Hôm nay thầy phải chốt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử. Mời các em trình bày căn cứ.
 - **Minh Anh**: Dạ, bọn em xin trình bày cách bọn em lọc ra danh sách ạ.
-- **Quân**: Bên tôi lọc lại cho chắc: tên bắt đầu bằng H hoặc học lớp BC24A, ra năm trăm chín mươi lăm dòng. Hồ sơ các bạn nộp chỉ có hai người.
-- **Tùng** (ngạc nhiên): Ơ… năm trăm chín mươi lăm người! Thế này bằng cả nửa khóa của trường rồi còn gì!
+- **Quân**: Bên tôi lọc lại cho chắc: tên là Hoài hoặc học lớp BC24A, ra ba mươi hai dòng. Hồ sơ các bạn nộp chỉ có một người.
+- **Tùng** (ngạc nhiên): Ơ… ba mươi hai người! Thế này là cả lớp BC24A rồi còn gì!
 - **Minh Anh** (nghiêm túc): Đừng cuống. Hồ sơ của mình có căn cứ rõ ràng, bình tĩnh xem lại xem.
 - **Hà Vy** (suy nghĩ): Danh sách này bị gộp hai nhóm lại rồi. Họ lấy cả hai thay vì chỉ lấy phần trùng nhau.
 - *Suy nghĩ của bạn:* *(Để tớ lên giải thích cho thầy. Anh Quân đang chọn nhầm điều kiện.)*
 > 💭 **Nhắc nhở** (Hà Vy): Gần sáu trăm dòng… câu của anh Quân lấy rộng ở chỗ nào?
 > [CG cg-hop-doi-dau] (chưa có mô tả)
 #### 💻 Màn tra dữ liệu: Câu truy vấn trên màn chiếu (thẻ `c-sua-or-quan`)
-*Đề bài:* Câu của Quân đang chiếu trên màn: "tên bắt đầu bằng H hoặc lớp BC24A", ra 595 dòng. Hồ sơ CLB nộp chỉ có 2.
+*Đề bài:* Câu của Quân đang chiếu trên màn: "tên là Hoài hoặc lớp BC24A". Hồ sơ CLB nộp chỉ có 1 người.
 
 ```sql
-SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';
+SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 ```
 
-*Kết quả chạy thật: 2 dòng*
+*Kết quả chạy thật: 1 dòng*
 
 | ma_sv | ten |
 | --- | --- |
-| SV240228 | Hiếu |
 | SV240317 | Hoài |
 
-- **Lọc từng bước**: Lớp trước: 3.879 → 32 → 2 · Tên trước: 3.879 → 565 → 2
+- **Lọc từng bước**: Lớp trước: 3.879 → 32 → 1 · Tên trước: 3.879 → 1 → 1
 
-> 🗂️ **Bằng chứng thu thập**: **Hai dòng sau khi sửa** — Truy vấn của Quân sau khi đổi OR thành AND.
+> 🗂️ **Bằng chứng thu thập**: **Một dòng sau khi sửa** — Truy vấn của Quân sau khi đổi OR thành AND.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Anh đang gộp chung người tên H và người học lớp BC24A. Bọn em chỉ tìm người vừa tên H, vừa học BC24A.)*
-- **Quân**: …Hai dòng. Vâng. Mời các bạn nói tiếp.
+- *Suy nghĩ của bạn:* *(Anh đang gộp chung người tên Hoài và cả lớp BC24A. Bọn em chỉ tìm người vừa tên Hoài, vừa học BC24A.)*
+- **Quân**: …Một dòng. Vâng. Mời các bạn nói tiếp.
 
 **Lựa chọn tiếp theo:**
 - [Đi tiếp](#doan-22)
@@ -241,7 +240,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';
 - **Thầy Quang**: Được. Với những gì trình bày ở buổi họp này, thầy chưa đủ căn cứ để biết ai viết thư. Còn em Hoài, em ấy không bị xử lý gì cả.
 - **Thầy Quang**: Thư vẫn được tính là một ý kiến sinh viên trong hồ sơ. Chưa thu phòng ngay. CLB được sinh hoạt đến hết học kỳ, nộp báo cáo hoạt động hằng tháng.
 - **Minh Anh** (lo lắng): Dạ, tháng nào bọn em cũng sẽ nộp đủ ạ.
-> 📜 **[THẺ CHỮ]** Hai dòng chỉ cho ta chỗ cần đến. Phần còn lại cần thêm bằng chứng, và biết hỏi đúng lúc, đúng cách.
+> 📜 **[THẺ CHỮ]** Một dòng chỉ cho ta chỗ cần đến. Phần còn lại cần thêm bằng chứng, và biết hỏi đúng lúc, đúng cách.
 
 🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.
 
@@ -482,14 +481,14 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';
 ---
 
 <a id="doan-22"></a>
-### Đoạn 22: Nhịp 3: hai dòng này là người viết thư?
+### Đoạn 22: Nhịp 3: bạn này là người viết thư?
 
-📍 **Phòng họp rà soát** — *Nhịp 3: hai dòng này là người viết thư?*
+📍 **Phòng họp rà soát** — *Nhịp 3: bạn này là người viết thư?*
 
-❓ **Thầy Quang hỏi**: "Vậy hai bạn này là người viết thư?"
+❓ **Thầy Quang hỏi**: "Vậy bạn này là người viết thư?"
 *Các lựa chọn trả lời:*
   - "Dạ, chưa nói được ạ. Người có mã trong sổ chưa chắc đã là người soạn thư." ✅ → **Thầy Quang**: Tách được người có mã trong sổ với người viết thư. Được, thầy ghi nhận.
-  - "Có ạ. Hai bạn ấy khớp cả tên lẫn lớp của người ký." ❌ → **Minh Anh** (lo lắng): Thầy cho em nói lại ạ: dữ liệu chỉ giúp thu hẹp thôi.
+  - "Có ạ. Bạn ấy khớp cả tên lẫn lớp của người ký." ❌ → **Minh Anh** (lo lắng): Thầy cho em nói lại ạ: dữ liệu chỉ giúp thu hẹp thôi.
   - "Không ạ. Hai bạn ấy chỉ trùng tên với lớp thôi." ❌ → **Hà Vy** (suy nghĩ): Chưa loại được đâu. Mã của Hoài có trong sổ mà.
 
 🔀 **Lựa chọn của bạn** (Thầy Quang: "Trong hai bạn, sổ chỉ có mã của em Hoài. Em ấy đang ngồi chờ ngoài hành lang. Các em đề nghị bước tiếp theo thế nào?"):
@@ -497,7 +496,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';
 **Lựa chọn tiếp theo:**
 - [Chọn: "Mã trong sổ mới cho biết bạn ấy có nộp, chưa đủ để gọi bạn ấy vào. Xin dừng ở đây."](#doan-9)
 - [Chọn: "Mời bạn ấy vào, để bạn ấy tự kể chuyện nộp thư."](#doan-51)
-- [Chọn: "Mời bạn ấy vào, chiếu hai dòng lên để bạn ấy xác nhận luôn cho nhanh."](#doan-52)
+- [Chọn: "Mời bạn ấy vào, chiếu dòng có tên bạn ấy lên để bạn ấy xác nhận luôn cho nhanh."](#doan-52)
 
 ---
 
@@ -808,7 +807,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';
 - *Hai đôi dép lê xếp ngay ngắn trước cửa phòng máy. Phòng trải thảm, vào là phải bỏ giày.*
 - **Tùng** (vui vẻ): Trốn tiết nhìn dép là biết. Phòng máy tự điểm danh luôn.
 - *Cạnh khung cửa dán tờ danh sách lớp thực hành tuần trước. Ba cái tên bị khoanh đỏ, bên cạnh ghi tay: "Vắng quá 20%, không đủ điều kiện dự thi. Học lại kỳ sau."*
-- **Tùng** (lo lắng): …Một trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng.
+- **Tùng** (lo lắng): …Thằng phòng bên nằm trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng.
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Ngoài phòng máy](#doan-17)
@@ -945,7 +944,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';
 - [Trình thẻ: [Lời chú Cường] (HỖ TRỢ)](#doan-122)
 - [Trình thẻ: [Hoài là người nộp] (GỢI Ý)](#doan-123)
 - [Trình thẻ: Hai mã ứng viên kèm căn cứ (GỢI Ý)](#doan-124)
-- [Trình thẻ: Hai dòng sau khi sửa (GỢI Ý)](#doan-125)
+- [Trình thẻ: Một dòng sau khi sửa (GỢI Ý)](#doan-125)
 - [Nói: "Chưa đủ căn cứ"](#doan-126)
 - [Trình thẻ khác](#doan-127)
 
@@ -956,7 +955,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';
 
 📍 **Phòng họp rà soát** — *Hỏi thẳng: Hoài co người lại*
 
-- *Hoài bước vào. Màn chiếu vẫn đang hiện hai dòng, một dòng có tên bạn ấy.*
+- *Hoài bước vào. Màn chiếu vẫn đang hiện một dòng có tên bạn ấy.*
 - **Hà Vy**: Khoan… chiếu tên bạn ấy lên rồi gọi vào, khác gì hỏi cung.
 - **Thầy Quang**: Không ai đối chất với sinh viên năm nhất ở đây. Thầy hỏi, các em nghe.
 - **Thầy Quang**: Em Hoài, lá thư có chữ ký này là em bỏ vào hộp đúng không?
@@ -1181,7 +1180,7 @@ SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' A
 *Đề bài:* Lá thư được đánh máy rồi in ra. Máy in nhớ ai đã in tệp nào.
 
 ```sql
-SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep LIKE 'kien-nghi%';
+SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = 'kien-nghi-phong-clb.docx';
 ```
 
 *Kết quả chạy thật: 1 dòng*
@@ -1321,7 +1320,7 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep LIK
 
 📍 **Phòng CLB** — *Hà Vy đọc câu hỏi mới trên bảng*
 
-- **Hà Vy** (suy nghĩ): Câu hỏi mới trên bảng: trong hai lớp ấy, ai có tên bắt đầu bằng H?
+- **Hà Vy** (suy nghĩ): Câu hỏi mới trên bảng: trong hai lớp ấy, lấy danh sách lớp, rồi tự dò bằng mắt xem ai tên chữ H.
 - **Hà Vy**: Tùng cá là Hiếu rồi đấy. Tớ thì chưa dám nói gì.
 
 **Lựa chọn tiếp theo:**
@@ -1420,26 +1419,29 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep LIK
 *Đề bài:* Chữ ký chỉ đọc được chữ H. Người ký học một trong hai lớp. Là ai?
 
 ```sql
-SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop IN ('BC24A', 'BC23A') AND ten LIKE 'H%';
+SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 ```
 
-*Kết quả chạy thật: 2 dòng*
+*Kết quả chạy thật: 32 dòng*
 
 | ma_sv | ho_dem | ten | ma_lop |
 | --- | --- | --- | --- |
+| SV240105 | Hồ Ngọc | Mai | BC24A |
+| SV240122 | Phạm Tiến | Đạt | BC24A |
+| SV240131 | Vũ Hải | Yến | BC24A |
+| SV240144 | Phạm Thị | Thiện | BC24A |
+| SV240146 | Đỗ Gia | Phúc | BC24A |
+| SV240195 | Nguyễn Thu | Khang | BC24A |
 | SV240228 | Trần Minh | Hiếu | BC24A |
-| SV240317 | Lê Thu | Hoài | BC24A |
-
-- **Lọc từng bước**: Lớp trước: 3.879 → 62 → 2 · Tên trước: 3.879 → 565 → 2
+| SV240237 | Võ Nhật | Trí | BC24A |
+| SV240267 | Bùi Khả | Trang | BC24A |
+| SV240272 | Lê Gia | Đông | BC24A |
+*... còn 22 dòng nữa*
 
 *Các bẫy và phản hồi từ nhân vật:*
-- Nếu lọc ra 0 dòng với ma_lop, ten → **Hà Vy** (suy nghĩ): Không ai tên đúng một chữ H cả. / **Tùng** (gãi đầu): Ơ, không ai à? Rõ ràng chữ ký có chữ H mà.
-- Nếu lọc ra 0 dòng với ten → **Hà Vy** (suy nghĩ): Không ai tên đúng một chữ H cả.
-- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Chẳng ra ai cả. Trong hai lớp ấy không ai khớp như thế.
-- Nếu thiếu cột → **Duy**: Ra hai cái tên rồi. Nhưng trường gần bốn nghìn người, trùng tên là chuyện thường, nên sổ nào cũng ghi theo mã sinh viên. Lên hàng LẤY CỘT bấm thêm ma_sv, phiếu này mới chỉ đúng người.
-- Nếu lọc ra 565 dòng với ten → **Tùng** (gãi đầu): Năm trăm sáu mươi lăm người tên bắt đầu bằng H, của cả trường. Mình mới cần hai lớp thôi mà.
-- Nếu lọc ra 62 dòng với ma_lop → **Hà Vy** (suy nghĩ): Sáu mươi hai người, đủ cả hai lớp. Còn chữ H trên chữ ký nữa.
-- Nếu lọc ra 1 dòng với ma_lop, ho_dem → **Hà Vy** (suy nghĩ): Mai? Họ Hồ bắt đầu bằng H, nhưng tên thì không.
+- Nếu lọc ra 30 dòng → **Hà Vy** (suy nghĩ): Ba mươi người lớp BC23A. Dò hết rồi, chẳng ai tên bắt đầu bằng chữ H.
+- Nếu lọc ra 32 dòng → **Hà Vy** (suy nghĩ): Ba mươi hai người lớp BC24A. Dò từng tên một… Có Hiếu với Hoài.
+- Nếu thiếu cột → **Duy**: Thấy hai cái tên rồi. Nhưng trường gần bốn nghìn người, trùng tên là chuyện thường. Lên hàng LẤY CỘT bấm thêm ma_sv, phiếu này mới chỉ đúng người.
 
 > 🗂️ **Bằng chứng thu thập**: **Hai mã ứng viên kèm căn cứ** — Kết quả truy vấn: hai sinh viên có tên bắt đầu bằng H, cùng lớp BC24A — Hiếu và Hoài.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
@@ -2180,6 +2182,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop IN ('BC24A', 'BC23
 ⚠ (bản cũ: tự chuyển nơi)
 
 **Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-113)
 - [Đi tiếp](#doan-41)
 
 ---
@@ -2251,10 +2254,10 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop IN ('BC24A', 'BC23
 ---
 
 <a id="doan-125"></a>
-### Đoạn 125: Đối chất: Trình Hai dòng sau khi sửa
+### Đoạn 125: Đối chất: Trình Một dòng sau khi sửa
 
 ⚖️ **Phản hồi đối chất:**
-- **Quân**: Hai dòng, hai người. Vẫn không nói ai viết.
+- **Quân**: Một dòng, một người. Vẫn không nói ai viết.
 - **Hà Vy**: Đúng, phiếu này chỉ cho biết chỗ cần đến.
 
 ⚠️ *Căn cứ này chưa đủ để kết luận.*

@@ -430,6 +430,7 @@ SELECT dang_ky_hoc.ma_lhp, sinh_vien.ma_sv, ho_dem, ten, ma_lop FROM dang_ky_hoc
 ⚠ (bản cũ: tự chuyển nơi)
 
 **Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-18)
 - [Đi tiếp](#doan-14)
 
 ---

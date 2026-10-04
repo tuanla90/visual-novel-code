@@ -78,7 +78,7 @@
 - **duy** (neutral): Có phiếu của cô Lan rồi, máy mở thêm được bảng sinh viên. Bốn cột, không hơn.
 
 ## n3-phong-vy.1
-- **ha-vy** (thinking): Câu hỏi mới trên bảng: trong hai lớp ấy, ai có tên bắt đầu bằng H?
+- **ha-vy** (thinking): Câu hỏi mới trên bảng: trong hai lớp ấy, lấy danh sách lớp, rồi tự dò bằng mắt xem ai tên chữ H.
 - **ha-vy** (neutral): Tùng cá là Hiếu rồi đấy. Tớ thì chưa dám nói gì.
 
 ## n3-phong-minh-anh.1
@@ -104,7 +104,7 @@
 - **narrator**: Hai đôi dép lê xếp ngay ngắn trước cửa phòng máy. Phòng trải thảm, vào là phải bỏ giày.
 - **tung** (happy): Trốn tiết nhìn dép là biết. Phòng máy tự điểm danh luôn.
 - **narrator**: Cạnh khung cửa dán tờ danh sách lớp thực hành tuần trước. Ba cái tên bị khoanh đỏ, bên cạnh ghi tay: "Vắng quá 20%, không đủ điều kiện dự thi. Học lại kỳ sau."
-- **tung** (worried): …Một trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng.
+- **tung** (worried): …Thằng phòng bên nằm trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng.
 
 ## n3-bd-toa-b-an.1
 - **narrator**: Tem kiểm định trên bình cứu hỏa ghi tháng 9 năm nay, bên cạnh có chữ ký tắt: "T."

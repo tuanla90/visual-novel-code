@@ -4440,7 +4440,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "…Một trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng."
+          "text": "…Thằng phòng bên nằm trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng."
         }
       ]
     },
@@ -4728,7 +4728,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Câu hỏi mới trên bảng: trong hai lớp ấy, ai có tên bắt đầu bằng H?"
+          "text": "Câu hỏi mới trên bảng: trong hai lớp ấy, lấy danh sách lớp, rồi tự dò bằng mắt xem ai tên chữ H."
         },
         {
           "type": "line",
@@ -5677,23 +5677,23 @@ const GOC = {
           "type": "line",
           "speaker": "quan",
           "expression": "chi-man",
-          "text": "Bên tôi lọc lại cho chắc: tên bắt đầu bằng H hoặc học lớp BC24A, ra năm trăm chín mươi lăm dòng. Hồ sơ các bạn nộp chỉ có hai người."
+          "text": "Bên tôi lọc lại cho chắc: tên là Hoài hoặc học lớp BC24A, ra ba mươi hai dòng. Hồ sơ các bạn nộp chỉ có một người."
         },
         {
           "type": "projector",
           "id": "hop-chieu-or",
           "source": {
             "kind": "sql",
-            "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';"
+            "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';"
           },
           "run": true,
-          "expectedRowCount": 595
+          "expectedRowCount": 32
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "surprised",
-          "text": "Ơ… năm trăm chín mươi lăm người! Thế này bằng cả nửa khóa của trường rồi còn gì!"
+          "text": "Ơ… ba mươi hai người! Thế này là cả lớp BC24A rồi còn gì!"
         },
         {
           "type": "line",
@@ -5737,13 +5737,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Anh đang gộp chung người tên H và người học lớp BC24A. Bọn em chỉ tìm người vừa tên H, vừa học BC24A."
+          "text": "Anh đang gộp chung người tên Hoài và cả lớp BC24A. Bọn em chỉ tìm người vừa tên Hoài, vừa học BC24A."
         },
         {
           "type": "line",
           "speaker": "quan",
           "expression": "neutral",
-          "text": "…Hai dòng. Vâng. Mời các bạn nói tiếp."
+          "text": "…Một dòng. Vâng. Mời các bạn nói tiếp."
         },
         {
           "type": "goto",
@@ -5753,7 +5753,7 @@ const GOC = {
     },
     {
       "id": "hop-01",
-      "title": "Nhịp 3: hai dòng này là người viết thư?",
+      "title": "Nhịp 3: bạn này là người viết thư?",
       "canh": "phong-hop",
       "mocSomNhat": 1000,
       "nodes": [
@@ -5762,7 +5762,7 @@ const GOC = {
           "id": "q-thu-pham",
           "asker": {
             "speaker": "thay-quang",
-            "text": "Vậy hai bạn này là người viết thư?"
+            "text": "Vậy bạn này là người viết thư?"
           },
           "choices": [
             {
@@ -5779,7 +5779,7 @@ const GOC = {
             },
             {
               "id": "co",
-              "text": "Có ạ. Hai bạn ấy khớp cả tên lẫn lớp của người ký.",
+              "text": "Có ạ. Bạn ấy khớp cả tên lẫn lớp của người ký.",
               "correct": false,
               "feedback": [
                 {
@@ -5836,7 +5836,7 @@ const GOC = {
             },
             {
               "id": "doi-chat",
-              "text": "Mời bạn ấy vào, chiếu hai dòng lên để bạn ấy xác nhận luôn cho nhanh.",
+              "text": "Mời bạn ấy vào, chiếu dòng có tên bạn ấy lên để bạn ấy xác nhận luôn cho nhanh.",
               "khi": null,
               "hauQua": [
                 {
@@ -5990,13 +5990,13 @@ const GOC = {
               ]
             },
             {
-              "id": "ev-hai-dong-sua",
+              "id": "ev-mot-dong-sua",
               "muc": "goi-y",
               "feedback": [
                 {
                   "speaker": "quan",
                   "expression": "neutral",
-                  "text": "Hai dòng, hai người. Vẫn không nói ai viết."
+                  "text": "Một dòng, một người. Vẫn không nói ai viết."
                 },
                 {
                   "speaker": "ha-vy",
@@ -6067,7 +6067,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hoài bước vào. Màn chiếu vẫn đang hiện hai dòng, một dòng có tên bạn ấy."
+          "text": "Hoài bước vào. Màn chiếu vẫn đang hiện một dòng có tên bạn ấy."
         },
         {
           "type": "line",
@@ -6485,7 +6485,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Hai dòng chỉ cho ta chỗ cần đến. Phần còn lại cần thêm bằng chứng, và biết hỏi đúng lúc, đúng cách."
+          "text": "Một dòng chỉ cho ta chỗ cần đến. Phần còn lại cần thêm bằng chứng, và biết hỏi đúng lúc, đúng cách."
         },
         {
           "type": "end"
@@ -16026,7 +16026,7 @@ const GOC = {
       ],
       "mucTieuHoc": "0 dòng cũng là một câu trả lời; bỏ bớt điều kiện để thấy ai thật sự in.",
       "soDongKyVong": 1,
-      "sqlChuan": "SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep LIKE 'kien-nghi%';",
+      "sqlChuan": "SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = 'kien-nghi-phong-clb.docx';",
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -16290,9 +16290,9 @@ const GOC = {
       "manhMoiLienQuan": [
         "clue-chu-ky-h"
       ],
-      "mucTieuHoc": "\"=\" so khớp chính xác, ra 0 dòng thì xem lại dữ liệu; \"bắt đầu bằng\" (LIKE 'H%') mới khớp một chữ cái. Phiếu muốn dùng tiếp phải có cột mã.",
-      "soDongKyVong": 2,
-      "sqlChuan": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop IN ('BC24A', 'BC23A') AND ten LIKE 'H%';",
+      "mucTieuHoc": "\"=\" so khớp chính xác.",
+      "soDongKyVong": 32,
+      "sqlChuan": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';",
       "chonCot": [
         "ho_dem",
         "ten",
@@ -16304,51 +16304,26 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 0,
-            "cot": [
-              "ma_lop",
-              "ten"
-            ]
+            "n": 30
           },
           "loi": [
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Không ai tên đúng một chữ H cả."
-            },
-            {
-              "speaker": "tung",
-              "expression": "gai-dau",
-              "text": "Ơ, không ai à? Rõ ràng chữ ký có chữ H mà."
+              "text": "Ba mươi người lớp BC23A. Dò hết rồi, chẳng ai tên bắt đầu bằng chữ H."
             }
           ]
         },
         {
           "khi": {
             "kind": "so-dong",
-            "n": 0,
-            "cot": [
-              "ten"
-            ]
+            "n": 32
           },
           "loi": [
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Không ai tên đúng một chữ H cả."
-            }
-          ]
-        },
-        {
-          "khi": {
-            "kind": "so-dong",
-            "n": 0
-          },
-          "loi": [
-            {
-              "speaker": "ha-vy",
-              "expression": "thinking",
-              "text": "Chẳng ra ai cả. Trong hai lớp ấy không ai khớp như thế."
+              "text": "Ba mươi hai người lớp BC24A. Dò từng tên một… Có Hiếu với Hoài."
             }
           ]
         },
@@ -16360,56 +16335,7 @@ const GOC = {
             {
               "speaker": "duy",
               "expression": "neutral",
-              "text": "Ra hai cái tên rồi. Nhưng trường gần bốn nghìn người, trùng tên là chuyện thường, nên sổ nào cũng ghi theo mã sinh viên. Lên hàng LẤY CỘT bấm thêm ma_sv, phiếu này mới chỉ đúng người."
-            }
-          ]
-        },
-        {
-          "khi": {
-            "kind": "so-dong",
-            "n": 565,
-            "cot": [
-              "ten"
-            ]
-          },
-          "loi": [
-            {
-              "speaker": "tung",
-              "expression": "gai-dau",
-              "text": "Năm trăm sáu mươi lăm người tên bắt đầu bằng H, của cả trường. Mình mới cần hai lớp thôi mà."
-            }
-          ]
-        },
-        {
-          "khi": {
-            "kind": "so-dong",
-            "n": 62,
-            "cot": [
-              "ma_lop"
-            ]
-          },
-          "loi": [
-            {
-              "speaker": "ha-vy",
-              "expression": "thinking",
-              "text": "Sáu mươi hai người, đủ cả hai lớp. Còn chữ H trên chữ ký nữa."
-            }
-          ]
-        },
-        {
-          "khi": {
-            "kind": "so-dong",
-            "n": 1,
-            "cot": [
-              "ma_lop",
-              "ho_dem"
-            ]
-          },
-          "loi": [
-            {
-              "speaker": "ha-vy",
-              "expression": "thinking",
-              "text": "Mai? Họ Hồ bắt đầu bằng H, nhưng tên thì không."
+              "text": "Thấy hai cái tên rồi. Nhưng trường gần bốn nghìn người, trùng tên là chuyện thường. Lên hàng LẤY CỘT bấm thêm ma_sv, phiếu này mới chỉ đúng người."
             }
           ]
         }
@@ -16424,24 +16350,24 @@ const GOC = {
         ]
       },
       "ghiChu": [
-        "Lần chạy \"sai có ích\": kéo [H] với phép \"bằng\" → 0 dòng (không ai tên đúng một chữ \"H\"). Đổi \"bắt đầu bằng\" → 2 dòng (Hiếu, Hoài). Bẫy: lọc nhầm cột ho_dem → 1 dòng."
+        "Lần chạy \"sai có ích\": kéo chọn lớp BC23A → 30 dòng (dò mắt không ai tên H). Lớp BC24A → 32 dòng (Hiếu, Hoài). Bẫy: quên chọn ma_sv."
       ]
     },
     "c-sua-or-quan": {
       "id": "c-sua-or-quan",
       "tieuDe": "Câu truy vấn trên màn chiếu",
-      "deBai": "Câu của Quân đang chiếu trên màn: \"tên bắt đầu bằng H hoặc lớp BC24A\", ra 595 dòng. Hồ sơ CLB nộp chỉ có 2.",
+      "deBai": "Câu của Quân đang chiếu trên màn: \"tên là Hoài hoặc lớp BC24A\". Hồ sơ CLB nộp chỉ có 1 người.",
       "manhMoiLienQuan": [
         "clue-chu-ky-h"
       ],
       "mucTieuHoc": "Phần hợp (OR) và phần giao (AND).",
-      "soDongKyVong": 2,
-      "sqlChuan": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';",
-      "truyVanNapSan": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",
+      "soDongKyVong": 1,
+      "sqlChuan": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';",
+      "truyVanNapSan": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",
       "phanUng": [],
       "vatChung": {
-        "id": "ev-hai-dong-sua",
-        "title": "Hai dòng sau khi sửa",
+        "id": "ev-mot-dong-sua",
+        "title": "Một dòng sau khi sửa",
         "description": "Truy vấn của Quân sau khi đổi OR thành AND.",
         "giaTri": []
       },
@@ -19644,7 +19570,7 @@ const GOC = {
   },
   "soDongKhai": [
     {
-      "sql": "SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep LIKE 'kien-nghi%';",
+      "sql": "SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = 'kien-nghi-phong-clb.docx';",
       "soDong": 1,
       "noi": "noi-dung-mua-1/thu-thach/c-in.md:3 thẻ c-in, SQL chuẩn",
       "resultId": "ev-nhat-ky-in"
@@ -19667,16 +19593,16 @@ const GOC = {
       "resultId": "ev-hai-lop"
     },
     {
-      "sql": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop IN ('BC24A', 'BC23A') AND ten LIKE 'H%';",
-      "soDong": 2,
+      "sql": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';",
+      "soDong": 32,
       "noi": "noi-dung-mua-1/thu-thach/c-ten-h.md:3 thẻ c-ten-h, SQL chuẩn",
       "resultId": "ev-hai-ma"
     },
     {
-      "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';",
-      "soDong": 2,
-      "noi": "noi-dung-mua-1/thu-thach/c-ten-h.md:31 thẻ c-sua-or-quan, SQL chuẩn",
-      "resultId": "ev-hai-dong-sua"
+      "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';",
+      "soDong": 1,
+      "noi": "noi-dung-mua-1/thu-thach/c-ten-h.md:27 thẻ c-sua-or-quan, SQL chuẩn",
+      "resultId": "ev-mot-dong-sua"
     },
     {
       "sql": "SELECT ma_don, ngay, nguoi_dat, linh_kien, so_tien, ma_phien FROM don_linh_kien WHERE TRIM(trang_thai) = 'DA_DUYET';",
@@ -19888,8 +19814,8 @@ const GOC = {
       "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:195 [LỌC THỬ lt-ngay-hoi]"
     },
     {
-      "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",
-      "soDong": 595,
+      "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",
+      "soDong": 32,
       "noi": "noi-dung-mua-1/kich-ban/06-hop-va-ket.md:18 [MÀN CHIẾU hop-chieu-or]"
     }
   ],

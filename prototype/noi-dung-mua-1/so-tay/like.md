@@ -1,3 +1,4 @@
+<!-- Ghi chú cho B4.4: Trang này chuyển sang mở ở Vụ 2 do Vụ 1 đã bỏ LIKE -->
 # like — "Bằng" và "bắt đầu bằng" {trang sổ: like}
 
 - Loại: lỗi thường gặp

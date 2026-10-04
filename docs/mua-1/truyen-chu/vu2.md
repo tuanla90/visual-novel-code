@@ -538,6 +538,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB
 
 **Lựa chọn tiếp theo:**
 - [Mở bản đồ](#doan-23)
+- [Mở bản đồ](#doan-23)
 - [Sau khi xem hết các chỗ](#doan-25)
 
 ---
@@ -549,6 +550,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB
 ⚠ (bản cũ: tự chuyển nơi)
 
 **Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-23)
 - [Đi tiếp](#doan-6)
 
 ---
@@ -602,6 +604,7 @@ SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';
 🔀 **Lựa chọn của bạn** (Hà Vy: "Hai chỗ Nam vừa buột miệng nói ra. Xem chỗ nào trước?"):
 
 **Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-23)
 - [Chọn: "Nhật ký đăng nhập của kênh."](#doan-12)
 - [Chọn: "Bảng đăng ký dùng xưởng ngoài cửa."](#doan-13)
 

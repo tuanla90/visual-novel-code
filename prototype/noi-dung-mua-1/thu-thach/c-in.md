@@ -10,7 +10,7 @@
 - SQL chuẩn:
 
 ```sql
-SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep LIKE 'kien-nghi%';
+SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = 'kien-nghi-phong-clb.docx';
 ```
 
 - [LỜI c-in.1]

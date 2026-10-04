@@ -14,10 +14,10 @@
 - **narrator**: Thứ Hai 30/09, bốn giờ chiều. Phòng họp tầng ba. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ.
 - **thay-quang** (neutral): Thầy là Quang, phó hiệu trưởng phụ trách sinh viên, chủ trì buổi rà soát này. Hôm nay thầy phải chốt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử. Mời các em trình bày căn cứ.
 - **minh-anh** (neutral): Dạ, bọn em xin trình bày cách bọn em lọc ra danh sách ạ.
-- **quan** (chi-man): Bên tôi lọc lại cho chắc: tên bắt đầu bằng H hoặc học lớp BC24A, ra năm trăm chín mươi lăm dòng. Hồ sơ các bạn nộp chỉ có hai người.
+- **quan** (chi-man): Bên tôi lọc lại cho chắc: tên là Hoài hoặc học lớp BC24A, ra ba mươi hai dòng. Hồ sơ các bạn nộp chỉ có một người.
 
 ## hop-00.3
-- **tung** (surprised): Ơ… năm trăm chín mươi lăm người! Thế này bằng cả nửa khóa của trường rồi còn gì!
+- **tung** (surprised): Ơ… ba mươi hai người! Thế này là cả lớp BC24A rồi còn gì!
 - **minh-anh** (serious): Đừng cuống. Hồ sơ của mình có căn cứ rõ ràng, bình tĩnh xem lại xem.
 - **ha-vy** (thinking): Danh sách này bị gộp hai nhóm lại rồi. Họ lấy cả hai thay vì chỉ lấy phần trùng nhau.
 - **player**: Để tớ lên giải thích cho thầy. Anh Quân đang chọn nhầm điều kiện.
@@ -25,8 +25,8 @@
 - [DÀN DỰNG] Nhân vật chính xin phép thầy Quang, bước lên cạnh máy chiếu để chỉ ra chỗ nhầm lẫn.
 
 ## hop-00.4
-- **player**: Anh đang gộp chung người tên H và người học lớp BC24A. Bọn em chỉ tìm người vừa tên H, vừa học BC24A.
-- **quan** (neutral): …Hai dòng. Vâng. Mời các bạn nói tiếp.
+- **player**: Anh đang gộp chung người tên Hoài và cả lớp BC24A. Bọn em chỉ tìm người vừa tên Hoài, vừa học BC24A.
+- **quan** (neutral): …Một dòng. Vâng. Mời các bạn nói tiếp.
 
 ## hop-02.1
 - [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa, rồi ngồi xuống ghế khi thầy bảo.
@@ -41,7 +41,7 @@
 
 ## hop-doi-chat.1
 - [DÀN DỰNG] {{nv.hoai}} được gọi vào, đứng nép cạnh cửa, nhìn lên màn chiếu có tên mình.
-- **narrator**: Hoài bước vào. Màn chiếu vẫn đang hiện hai dòng, một dòng có tên bạn ấy.
+- **narrator**: Hoài bước vào. Màn chiếu vẫn đang hiện một dòng có tên bạn ấy.
 - **ha-vy** (neutral): Khoan… chiếu tên bạn ấy lên rồi gọi vào, khác gì hỏi cung.
 - **thay-quang** (stern): Không ai đối chất với sinh viên năm nhất ở đây. Thầy hỏi, các em nghe.
 - **thay-quang** (neutral): Em Hoài, lá thư có chữ ký này là em bỏ vào hộp đúng không?
@@ -116,4 +116,4 @@
 - **thay-quang** (neutral): Được. Với những gì trình bày ở buổi họp này, thầy chưa đủ căn cứ để biết ai viết thư. Còn em Hoài, em ấy không bị xử lý gì cả.
 - **thay-quang** (neutral): Thư vẫn được tính là một ý kiến sinh viên trong hồ sơ. Chưa thu phòng ngay. CLB được sinh hoạt đến hết học kỳ, nộp báo cáo hoạt động hằng tháng.
 - **minh-anh** (worried): Dạ, tháng nào bọn em cũng sẽ nộp đủ ạ.
-- [THẺ CHỮ] **narrator**: Hai dòng chỉ cho ta chỗ cần đến. Phần còn lại cần thêm bằng chứng, và biết hỏi đúng lúc, đúng cách.
+- [THẺ CHỮ] **narrator**: Một dòng chỉ cho ta chỗ cần đến. Phần còn lại cần thêm bằng chứng, và biết hỏi đúng lúc, đúng cách.

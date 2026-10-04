@@ -5,14 +5,14 @@
 - Tiêu đề: Tên bắt đầu bằng H trong hai lớp
 - Đề bài hiển thị: Chữ ký chỉ đọc được chữ H. Người ký học một trong hai lớp. Là ai?
 - Manh mối liên quan: clue-chu-ky-h, ev-hai-lop
-- Mục tiêu học: "=" so khớp chính xác, ra 0 dòng thì xem lại dữ liệu; "bắt đầu bằng" (LIKE 'H%') mới khớp một chữ cái. Phiếu muốn dùng tiếp phải có cột mã.
+- Mục tiêu học: "=" so khớp chính xác.
 - Chọn cột: ho_dem, ten, ma_lop
 - Bấm ô lấy giấy nhớ: ma_sv
-- Số dòng kỳ vọng: 2
+- Số dòng kỳ vọng: 32
 - SQL chuẩn:
 
 ```sql
-SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop IN ('BC24A', 'BC23A') AND ten LIKE 'H%';
+SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 ```
 
 - [LỜI c-ten-h.1]
@@ -24,23 +24,23 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop IN ('BC24A', 'BC23
 ### c-sua-or-quan — Sửa câu OR của Quân ở buổi họp {challenge: c-sua-or-quan}
 
 - Tiêu đề: Câu truy vấn trên màn chiếu
-- Đề bài hiển thị: Câu của Quân đang chiếu trên màn: "tên bắt đầu bằng H hoặc lớp BC24A", ra 595 dòng. Hồ sơ CLB nộp chỉ có 2.
+- Đề bài hiển thị: Câu của Quân đang chiếu trên màn: "tên là Hoài hoặc lớp BC24A". Hồ sơ CLB nộp chỉ có 1 người.
 - Manh mối liên quan: clue-chu-ky-h
 - Mục tiêu học: Phần hợp (OR) và phần giao (AND).
-- Số dòng kỳ vọng: 2
+- Số dòng kỳ vọng: 1
 - SQL chuẩn:
 
 ```sql
-SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';
+SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 ```
 
 - Truy vấn nạp sẵn:
 
 ```sql
-SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';
+SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';
 ```
 
 - Nguồn điều kiện nạp sẵn: dk-ten ← clue-chu-ky-h · dk-lop ← ev-hai-lop
-- Vật chứng lưu vào hồ sơ: ev-hai-dong-sua
-  - Tiêu đề: Hai dòng sau khi sửa
+- Vật chứng lưu vào hồ sơ: ev-mot-dong-sua
+  - Tiêu đề: Một dòng sau khi sửa
   - Mô tả: Truy vấn của Quân sau khi đổi OR thành AND.
