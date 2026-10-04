@@ -3,13 +3,14 @@
 <!--Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/00-mo-dau.md. [DÀN DỰNG] không hiện cho người chơi (đặc tả: ghi chú cho người dựng) — thứ người chơi cần biết phải nằm trong lời dẫn / thoại. Không câu hướng dẫn thao tác (ĐÃ CHỐT C). Đã áp DX-01 (01/10): lời md-02, md-04, md-05, md-06 đã xóa. Đã áp bản rà docs/thiet-ke/ra-soat-loi-chuong-1-2026-09-30.md. -->
 
 ## md-00-tren-xe.1
-- [THẺ CHỮ] **narrator**: Chủ nhật, 08/09/2024 · Chuyến xe buýt lên Hà Nội
-- **narrator**: Tay vịn rung theo từng ổ gà. Cửa kính kéo hé, gió lùa vào mang theo mùi bụi đường và mùi nắng đầu thu.
+- [THẺ CHỮ] **narrator**: Chủ nhật, 08/09/2024 · Xe buýt lên Hà Nội
+- **narrator**: Chuyến xe buýt đường dài chạy chậm dọc con đường vào thành phố, nắng đầu chiều rọi vàng lên thân xe.
+- **narrator**: Bên khung cửa sổ kéo hé, một cậu trai chống khuỷu tay lên thành xe, tựa cằm vào bàn tay, mắt nhìn theo hàng cây đang lùi dần. Chiếc vali xanh dựng sát bên chân. Mấy hàng ghế sau, có người ngủ gật, có người lướt điện thoại.
 - **player**: (Vậy là lên Hà Nội thật rồi.)
 - **player**: (Sáng nay mẹ còn nhét thêm hộp ruốc vào vali, dặn đi dặn lại: ăn đúng bữa, đừng thức khuya, có chuyện gì thì gọi về ngay.)
 - **player**: (Đỗ Đại học Chấn Hưng. Đọc giấy báo trúng tuyển đến lần thứ ba mình mới dám tin.)
-- **narrator**: Ngoài cửa sổ, ruộng lúa thưa dần, nhà cao tầng dày lên, biển quảng cáo chen nhau sát mép đường.
-- **narrator**: Xe chậm dần. Giọng phụ xe vọng xuống dọc lối đi: "Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!"
+- **narrator**: Ngoài kia, xe máy nối đuôi nhau chạy sát thân xe, hàng quán hai bên dày dần, nhà cao tầng mọc lên sau rặng cây.
+- **narrator**: Xe chậm dần. Giọng phụ xe vọng ra qua cửa sổ: "Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!"
 - **player**: (Tới rồi. Phòng 408… Đi thôi.)
 
 ## md-00-xe-buyt.1

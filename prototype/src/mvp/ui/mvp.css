@@ -4364,6 +4364,9 @@
 .stage__content:has(> .dialog-container > .dialog--card) {
   position: absolute !important;
   inset: 0 !important;
+  /* .stage là lưới nhiều hàng: không chỉ rõ thì khối tuyệt đối chỉ cao bằng hàng cuối (thẻ bị rơi xuống đáy). */
+  grid-row: 1 / -1 !important;
+  grid-column: 1 / -1 !important;
   width: 100% !important;
   height: 100% !important;
   display: flex !important;
@@ -4385,8 +4388,9 @@
   pointer-events: auto !important;
 }
 
-/* Thẻ chữ chuyển cảnh điện ảnh */
-.dialog--card {
+/* Thẻ chữ chuyển cảnh điện ảnh. `.dialog.dialog--card`: phải thắng `.dialog { display: grid }` của app.css
+   (cùng độ ưu tiên thì lớp nào nạp sau thắng), nếu không hoa văn đầu thẻ lệch trái. */
+.dialog.dialog--card {
   position: relative;
   width: 100%;
   max-width: 760px;

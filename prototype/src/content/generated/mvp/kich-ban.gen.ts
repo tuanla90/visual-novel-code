@@ -924,12 +924,17 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Chủ nhật, 08/09/2024 · Chuyến xe buýt lên Hà Nội"
+          "text": "Chủ nhật, 08/09/2024 · Xe buýt lên Hà Nội"
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Tay vịn rung theo từng ổ gà. Cửa kính kéo hé, gió lùa vào mang theo mùi bụi đường và mùi nắng đầu thu."
+          "text": "Chuyến xe buýt đường dài chạy chậm dọc con đường vào thành phố, nắng đầu chiều rọi vàng lên thân xe."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bên khung cửa sổ kéo hé, một cậu trai chống khuỷu tay lên thành xe, tựa cằm vào bàn tay, mắt nhìn theo hàng cây đang lùi dần. Chiếc vali xanh dựng sát bên chân. Mấy hàng ghế sau, có người ngủ gật, có người lướt điện thoại."
         },
         {
           "type": "line",
@@ -949,12 +954,12 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Ngoài cửa sổ, ruộng lúa thưa dần, nhà cao tầng dày lên, biển quảng cáo chen nhau sát mép đường."
+          "text": "Ngoài kia, xe máy nối đuôi nhau chạy sát thân xe, hàng quán hai bên dày dần, nhà cao tầng mọc lên sau rặng cây."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Xe chậm dần. Giọng phụ xe vọng xuống dọc lối đi: \"Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!\""
+          "text": "Xe chậm dần. Giọng phụ xe vọng ra qua cửa sổ: \"Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!\""
         },
         {
           "type": "line",
@@ -19876,7 +19881,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:194 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:195 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",
