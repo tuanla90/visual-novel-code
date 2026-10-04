@@ -83,8 +83,9 @@
 
 ### md-03-toa-b — Sảnh tòa B: cái hộp tôn cũ {cảnh: sanh-toa-b}
 
-- [ẢNH obj-hop-kien-nghi-trong]
 - [LỜI md-03-toa-b.1]
+- [ẢNH obj-hop-kien-nghi-trong]
+- [LỜI md-03-toa-b.2]
 - [ĐI TỚI md-07-cong-ktx-toi]
 
 ### md-07-cong-ktx-toi — Cổng KTX, tối: chú Cường {cảnh: cong-ktx-dem}

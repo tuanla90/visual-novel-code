@@ -186,7 +186,8 @@ export function LocThuV7({ duLieu, nut, onChon, onDaXemTruyVan }: LocThuV7Props)
   );
 
   return (
-    <VungV7 canh="loc-thu" anhCanh={anhTheoTen('canh-tra-phong-clb')} kinhO={KINH} giay={giay} nhan="Lọc danh sách">
+    // Lọc thử diễn ra ở bàn Ngày hội (nhà văn hóa), không phải phòng CLB: chỉ vẽ chiếc laptop (nền trong suốt), cảnh thật lộ ra quanh máy.
+    <VungV7 canh="loc-thu" anhCanh={anhTheoTen('canh-tra-laptop')} kinhO={KINH} giay={giay} nhan="Lọc danh sách">
       <div className="v7-kinh">
         <div className="v7-thanh">
           <span>▣ Danh sách tân sinh viên K24 (Excel)</span>
