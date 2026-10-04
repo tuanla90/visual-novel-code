@@ -1,5 +1,4 @@
 # Vụ 1 — Chữ ký H {vụ: vu1}
-
 <!-- Chương 1 đi theo truyện (docs/thiet-ke/ban-giao-huong-moi-2026-09-30.md, ĐÃ CHỐT C, user chốt 30/09/2026): mỗi ngày chạy MỘT chuỗi, không bản đồ, không khung giờ, không hạn, không uy tín, không kết xấu. Thứ Ba → thứ Bảy tuần 2 là ngày 1–5; thứ Hai tuần 3 là buổi họp rà soát. -->
 
 ## Luật
@@ -7,23 +6,25 @@
 - Khung giờ: sang "Sáng", trua "Trưa", chieu "Chiều"
 
 ## Mở đầu
+- Hạn chót: 2024-09-30
+- Việc chốt: Buổi họp rà soát
 <!-- Lịch thật: truyện năm 2024 — K24 là tân sinh viên. "Ngày mở đầu" là Chủ nhật nhận phòng KTX; mọi mốc khác tính từ đây (src/mvp/engine/lich-ngay.ts): CN 08/09 nhận phòng → T2–T6 09–13/09 tuần sinh hoạt công dân → T7 14/09 Ngày hội CLB → CN 15/09 23:10 thư in ở phòng máy (du-lieu.md, nhat_ky_in) → sáng T2 16/09 thư được nộp vào hộp kiến nghị → T3 17/09 19h Trung thu ở sân KTX, buổi gặp đầu CLB → T2 23/09 16h phòng CLB, nhận bản sao thư và giấy mời → ngày 1–5 = T3 24/09 … T7 28/09 → T2 30/09 16h họp rà soát. Bộ đọc không nhận mục "## Lịch thật" (tiêu đề lạ) nên ngày ghi ở dòng "- Ngày mở đầu"; thiếu dòng thì lịch dùng 2024-09-08. -->
 - Chuỗi đầu: md-00-tren-xe
 - Ngày mở đầu: 2024-09-08
 
-## Sảnh tòa B {ngày: 1 · theo truyện}
+## Sảnh tòa B {ngày: 1 · theo truyện · bắt đầu ở: phong-clb}
 - Chuỗi: n1-mo
 
-## Tài khoản CLB {ngày: 2 · theo truyện}
+## Tài khoản CLB {ngày: 2 · theo truyện · bắt đầu ở: phong-clb}
 - Chuỗi: n2-mo
 
-## Phiếu tra cứu {ngày: 3 · theo truyện}
+## Phiếu tra cứu {ngày: 3 · theo truyện · bắt đầu ở: phong-clb}
 - Chuỗi: n3-mo
 
-## Sổ niêm phong {ngày: 4 · theo truyện}
+## Sổ niêm phong {ngày: 4 · theo truyện · bắt đầu ở: phong-clb}
 - Chuỗi: n4-mo
 
-## Cổng KTX {ngày: 5 · theo truyện}
+## Cổng KTX {ngày: 5 · theo truyện · bắt đầu ở: cong-ktx}
 - Chuỗi: n5-mo
 
 ## Buổi họp rà soát {ngày họp}

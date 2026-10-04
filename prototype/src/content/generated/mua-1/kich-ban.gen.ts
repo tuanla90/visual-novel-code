@@ -765,12 +765,15 @@ const GOC = {
     },
     "chuoiDau": "md-00-tren-xe",
     "ngayMoDau": "2024-09-08",
+    "hanChot": "2024-09-30",
+    "viecChot": "Buổi họp rà soát",
     "ngay": [
       {
         "so": 1,
         "ten": "Sảnh tòa B",
         "kieu": "theo-truyen",
         "chuoi": "n1-mo",
+        "batDauO": "phong-clb",
         "duKienChinh": "",
         "moNgay": null,
         "buoiToi": ""
@@ -780,6 +783,7 @@ const GOC = {
         "ten": "Tài khoản CLB",
         "kieu": "theo-truyen",
         "chuoi": "n2-mo",
+        "batDauO": "phong-clb",
         "duKienChinh": "",
         "moNgay": null,
         "buoiToi": ""
@@ -789,6 +793,7 @@ const GOC = {
         "ten": "Phiếu tra cứu",
         "kieu": "theo-truyen",
         "chuoi": "n3-mo",
+        "batDauO": "phong-clb",
         "duKienChinh": "",
         "moNgay": null,
         "buoiToi": ""
@@ -798,6 +803,7 @@ const GOC = {
         "ten": "Sổ niêm phong",
         "kieu": "theo-truyen",
         "chuoi": "n4-mo",
+        "batDauO": "phong-clb",
         "duKienChinh": "",
         "moNgay": null,
         "buoiToi": ""
@@ -807,6 +813,7 @@ const GOC = {
         "ten": "Cổng KTX",
         "kieu": "theo-truyen",
         "chuoi": "n5-mo",
+        "batDauO": "cong-ktx",
         "duKienChinh": "",
         "moNgay": null,
         "buoiToi": ""
