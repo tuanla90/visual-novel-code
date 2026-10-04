@@ -51,6 +51,13 @@
 - **player**: (Khoan. Có một cái lưng áo xanh giữa đám đông, không kéo vali.)
 - **player**: (Nhìn kỹ xem đã.)
 
+## md-00-tung-chi-duong.1
+- **hoai** (nervous): Bạn ơi... tòa KTX nữ đi đường nào ạ?
+- **tung** (ao-xanh-chi-tay): À, KTX. Cậu cứ đi thẳng tới cuối đường, rẽ trái hai lần là tới nhé. Cứ kéo vali theo đường đấy là thấy!
+- **hoai** (relieved): Tớ cảm ơn.
+- [DÀN DỰNG] Bạn nữ kéo vali lạch cạch đi về hướng Tùng vừa chỉ.
+- **player**: (Khoan đã. Bảng sơ đồ trên tường ghi hướng đó dẫn ra nhà xe mà. Cậu áo xanh kia chỉ nhầm lối rồi.)
+
 ## md-00-soi-ao.1
 - **player**: (Sơ mi xanh dài tay, trên ngực gắn lá cờ nhỏ. Áo của đội tình nguyện.)
 - **player**: (Ngày nhập học thì đây chắc là người đón tân sinh viên.)
@@ -224,6 +231,17 @@
 - **ha-vy** (neutral): Tùng còn đang bận nhìn cái đĩa bánh.
 - **ha-vy** (neutral): Phiếu đăng ký cậu gấp trong túi áo, ô ngành học vẫn lộ ra một góc.
 - **tung** (happy): Đúng là dân Toán, mắt tinh như cú vọ. Tớ nhìn lướt qua chẳng thấy gì.
+
+## md-10-gap-hoai.1
+- **hoai** (nervous): Cậu áo xanh ơi...
+- **tung** (surprised): Cậu gọi tớ à?
+- **hoai** (neutral): Hôm nhập học cậu chỉ tớ ra nhà xe, nhưng tớ hỏi người khác tìm được đường lên phòng rồi. Cảm ơn cậu nhé.
+- **tung** (worried): Ơ... tớ chỉ nhầm à? Tớ xin lỗi, tớ không cố ý đâu!
+- **hoai** (nervous): Cho tớ hỏi... phòng máy in của trường ở đâu vậy? Tớ cần in bài tập.
+- **tung** (gai-dau): Máy in à? Ờ... cậu vòng ra sau dãy nhà này, rẽ phải, đi qua căng tin là tới phòng Đào tạo. Có máy in ở đó.
+- [DÀN DỰNG] Hà Vy khẽ nheo mắt nhìn Tùng.
+- **hoai** (relieved): Tớ là Hoài, lớp BC24A. Cảm ơn cậu nhiều.
+- **tung** (happy): Tớ là Tùng. Lần này tớ thề tớ không chỉ nhầm nữa đâu.
 
 ## md-10-mat-banh.1
 > NHIỆM VỤ: Tìm chiếc bánh nướng của CLB

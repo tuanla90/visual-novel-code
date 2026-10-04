@@ -40,6 +40,11 @@
 ### md-00-thay-tung — Chi tiết ẩn đầu tiên: một tấm lưng áo xanh giữa đám đông {cảnh: sanh-ktx}
 
 - [LỜI md-00-thay-tung.1]
+- [ĐI TỚI md-00-tung-chi-duong]
+
+### md-00-tung-chi-duong — Thấy Tùng chỉ đường cho bạn nữ {cảnh: sanh-ktx}
+
+- [LỜI md-00-tung-chi-duong.1]
 - [ĐI TỚI md-00-soi-tung]
 
 ### md-00-soi-tung — Soi cậu bạn áo xanh trước khi hỏi: bấm vào người rồi bấm vào áo {cảnh: sanh-ktx}
@@ -161,6 +166,11 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
   - vung:ao · x 50% · y 44% · rộng 22% → md-10-soi-ao · nhãn: Cái áo
   - vung:mui · x 57% · y 21% · rộng 14% → md-10-soi-mui · nhãn: Miếng băng trên mũi
 - [LỜI md-10-trung-thu.3]
+- [ĐI TỚI md-10-gap-hoai]
+
+### md-10-gap-hoai — Hoài xuất hiện hỏi đường {cảnh: san-ktx-trung-thu}
+
+- [LỜI md-10-gap-hoai.1]
 - [ẢNH chibi-clb-nhom]
 - [ĐI TỚI md-10-mat-banh]
 

@@ -63,7 +63,7 @@
 ### quan — Quân
 - Vai: Trưởng ban Pháp chế – Kiểm tra Hội sinh viên. Gặp CLB lần đầu ở CTSV ngày 3 (giám sát), chất vấn ở buổi họp ngày 6.
 - Biểu cảm: neutral, smug, stunned, chi-man
-- Xuất hiện từ: ngày 3
+- Xuất hiện từ: mở đầu
 - Danh xưng: Ban Pháp chế – Kiểm tra, Hội sinh viên
 - Khi chưa quen: Anh sinh viên đeo kính
 - Câu nói: Biết ai nộp chưa có nghĩa là biết ai viết.
@@ -124,9 +124,9 @@
 - Họ tên: Lê Thu Hoài
 - Vai: Lớp BC24A, người nộp thư hộ. Theo quy chế, ngồi chờ ngoài phòng họp; người chơi chọn cách mời vào (tự kể / đối chất / không mời). Không nêu tên người nhờ.
 - Biểu cảm: neutral, nervous, downcast, relieved
-- Xuất hiện từ: ngày họp
+- Xuất hiện từ: mở đầu
 - Danh xưng: Sinh viên lớp BC24A
-- Khi chưa quen: Bạn nữ lớp BC24A
+- Khi chưa quen: Bạn nữ kéo vali
 - Lịch: Tan học là lên thư viện, ngồi bàn cạnh cửa sổ tới chiều muộn.
 - Thường ở: T2–T6 14:00–17:30 → thu-vien
 - Năm: Năm nhất

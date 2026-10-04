@@ -34,8 +34,8 @@
 - **co-hanh** (neutral): Máy in trường lưu tài khoản, giờ in, tên tệp. Cô mở đúng bảng nhật ký in cho các em xem.
 - **co-hanh** (neutral): Dưới chân bản in thường có tên tệp. Thư của các em có không?
 - **player**: Có ạ. Nhưng bản chụp bị xén, chỉ đọc được chữ: kien-nghi…
-- **tung** (happy): Hoài nộp thì chắc chắn Hoài in rồi!
-- **ha-vy** (day-kinh): Tớ cũng chưa rõ. Cứ thử đi.
+- **tung** (happy): Thư đánh máy thì phải in. Hôm Trung thu Hoài hỏi tớ đường ra phòng máy in đấy. Chắc chắn Hoài in rồi!
+- **ha-vy** (day-kinh): Hỏi đường chưa phải là in. Cứ kiểm tra nhật ký đã.
 
 ## n4-phong-may.2
 - **player**: 23 giờ 10 tối Chủ nhật. Tệp kien-nghi-phong-clb.docx, in từ tài khoản clb_robotics.

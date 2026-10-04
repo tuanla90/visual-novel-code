@@ -88,8 +88,8 @@
 - **ha-vy** (smile): Cậu cá thua tớ bao nhiêu lần rồi, trả bằng trà đá thì còn lâu mới hết.
 
 ## ket-tra-da.1c
-- **tung** (gai-dau): Lần này tớ chừa. Hôm ở chỗ cô Hạnh tớ lỡ mồm nghi cho Hoài. Suýt nữa bạn ấy mang tiếng.
-- **player**: Cậu cứ khăng khăng "chắc Hoài in". Nhật ký in thì nói khác.
+- **tung** (gai-dau): Lần này tớ chừa. Hôm ở chỗ cô Hạnh tớ lỡ mồm nghi cho Hoài. Bạn ấy chỉ hỏi đường thôi mà tớ... Suýt nữa làm bạn ấy mang tiếng.
+- **player**: Cậu cứ khăng khăng "chắc chắn Hoài in". Nhật ký in thì nói khác.
 - **tung** (worried): Ừ. Giờ gặp bạn ấy chẳng biết mở lời thế nào.
 - **ba-lua** (neutral): Mấy đứa ở phòng tầng hai nhà câu lạc bộ đấy hả? Phòng có cái tủ sắt.
 - **player**: Vâng ạ. Sao bà biết ạ?

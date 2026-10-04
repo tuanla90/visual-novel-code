@@ -167,9 +167,7 @@ const GOC = {
         "chi-man"
       ],
       "xuatHienTu": {
-        "kind": "ngay",
-        "ngay": 3,
-        "khung": "sang"
+        "kind": "mo-dau"
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
@@ -370,7 +368,7 @@ const GOC = {
         "relieved"
       ],
       "xuatHienTu": {
-        "kind": "ngay-hop"
+        "kind": "mo-dau"
       },
       "chiQuaLoiKe": false,
       "gioiThieu": {
@@ -390,7 +388,7 @@ const GOC = {
           }
         ],
         "danhXung": "Sinh viên lớp BC24A",
-        "chuaQuen": "Bạn nữ lớp BC24A",
+        "chuaQuen": "Bạn nữ kéo vali",
         "nam": "Năm nhất",
         "nganh": null,
         "cauNoi": "Dạ… vâng ạ.",
@@ -1175,6 +1173,45 @@ const GOC = {
           "type": "line",
           "speaker": "player",
           "text": "(Nhìn kỹ xem đã.)"
+        },
+        {
+          "type": "goto",
+          "to": "md-00-tung-chi-duong"
+        }
+      ]
+    },
+    {
+      "id": "md-00-tung-chi-duong",
+      "title": "Thấy Tùng chỉ đường cho bạn nữ",
+      "canh": "sanh-ktx",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "nervous",
+          "text": "Bạn ơi... tòa KTX nữ đi đường nào ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "ao-xanh-chi-tay",
+          "text": "À, KTX. Cậu cứ đi thẳng tới cuối đường, rẽ trái hai lần là tới nhé. Cứ kéo vali theo đường đấy là thấy!"
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "relieved",
+          "text": "Tớ cảm ơn."
+        },
+        {
+          "type": "note",
+          "text": "Bạn nữ kéo vali lạch cạch đi về hướng Tùng vừa chỉ."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Khoan đã. Bảng sơ đồ trên tường ghi hướng đó dẫn ra nhà xe mà. Cậu áo xanh kia chỉ nhầm lối rồi.)"
         },
         {
           "type": "goto",
@@ -2189,6 +2226,70 @@ const GOC = {
           "speaker": "tung",
           "expression": "happy",
           "text": "Đúng là dân Toán, mắt tinh như cú vọ. Tớ nhìn lướt qua chẳng thấy gì."
+        },
+        {
+          "type": "goto",
+          "to": "md-10-gap-hoai"
+        }
+      ]
+    },
+    {
+      "id": "md-10-gap-hoai",
+      "title": "Hoài xuất hiện hỏi đường",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "nervous",
+          "text": "Cậu áo xanh ơi..."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Cậu gọi tớ à?"
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "neutral",
+          "text": "Hôm nhập học cậu chỉ tớ ra nhà xe, nhưng tớ hỏi người khác tìm được đường lên phòng rồi. Cảm ơn cậu nhé."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Ơ... tớ chỉ nhầm à? Tớ xin lỗi, tớ không cố ý đâu!"
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "nervous",
+          "text": "Cho tớ hỏi... phòng máy in của trường ở đâu vậy? Tớ cần in bài tập."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Máy in à? Ờ... cậu vòng ra sau dãy nhà này, rẽ phải, đi qua căng tin là tới phòng Đào tạo. Có máy in ở đó."
+        },
+        {
+          "type": "note",
+          "text": "Hà Vy khẽ nheo mắt nhìn Tùng."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "relieved",
+          "text": "Tớ là Hoài, lớp BC24A. Cảm ơn cậu nhiều."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Tớ là Tùng. Lần này tớ thề tớ không chỉ nhầm nữa đâu."
         },
         {
           "type": "image",
@@ -5116,13 +5217,13 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Hoài nộp thì chắc chắn Hoài in rồi!"
+          "text": "Thư đánh máy thì phải in. Hôm Trung thu Hoài hỏi tớ đường ra phòng máy in đấy. Chắc chắn Hoài in rồi!"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "day-kinh",
-          "text": "Tớ cũng chưa rõ. Cứ thử đi."
+          "text": "Hỏi đường chưa phải là in. Cứ kiểm tra nhật ký đã."
         },
         {
           "type": "consequence",
@@ -6327,12 +6428,12 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "gai-dau",
-          "text": "Lần này tớ chừa. Hôm ở chỗ cô Hạnh tớ lỡ mồm nghi cho Hoài. Suýt nữa bạn ấy mang tiếng."
+          "text": "Lần này tớ chừa. Hôm ở chỗ cô Hạnh tớ lỡ mồm nghi cho Hoài. Bạn ấy chỉ hỏi đường thôi mà tớ... Suýt nữa làm bạn ấy mang tiếng."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Cậu cứ khăng khăng \"chắc Hoài in\". Nhật ký in thì nói khác."
+          "text": "Cậu cứ khăng khăng \"chắc chắn Hoài in\". Nhật ký in thì nói khác."
         },
         {
           "type": "line",
@@ -19811,7 +19912,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:195 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:204 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",
