@@ -415,8 +415,17 @@ describe('[KHÁM PHÁ] trong chuỗi (cảnh bấm vật, sảnh KTX của mở 
     return { mvp: kq.mvp, loi: [...kq.loi, ...luat.loi].map(dinhDangLoi), mocChuoi: luat.mocChuoi };
   };
 
+  it('dấu theo vai trò (04/10): cảnh không có dấu nào thì mọi chỗ bắt buộc phải mang "!"; có "!" thì chỗ không dấu là chi tiết ẩn', () => {
+    const khongDau = docKham(['  - obj-a · x 10% · y 50% · rộng 5% → x-a', '  - obj-a · x 20% · y 50% · rộng 5% → x-b'], new Set(['obj-a'])).loi;
+    expect(khongDau).toEqual([
+      'noi-dung-mvp/kich-ban/01.md:7: [KHÁM PHÁ kp1]: chỗ bấm "obj-a" là bắt buộc (cảnh không có dấu nào) nên phải có "· dấu: !"; chỗ tùy chọn ghi "· dấu: ?", chi tiết ẩn để trống',
+      'noi-dung-mvp/kich-ban/01.md:7: [KHÁM PHÁ kp1]: chỗ bấm "obj-a" là bắt buộc (cảnh không có dấu nào) nên phải có "· dấu: !"; chỗ tùy chọn ghi "· dấu: ?", chi tiết ẩn để trống',
+    ]);
+    expect(docKham(['  - obj-a · x 10% · y 50% · rộng 5% → x-a · dấu: !', '  - obj-a · x 20% · y 50% · rộng 5% → x-b'], new Set(['obj-a'])).loi).toEqual([]);
+  });
+
   it('đọc chỗ bấm: tọa độ, chuỗi, "sau:", "nhãn:"; chuỗi con nối vào mở đầu (không lẻ)', () => {
-    const kq = docKham(['  - obj-a · x 10% · y 50% · rộng 5% → x-a · nhãn: Xem tờ giấy', '  - nv:tung · x 80% · y 100% · rộng 15% → x-b · sau: x-a'], new Set(['obj-a']));
+    const kq = docKham(['  - obj-a · x 10% · y 50% · rộng 5% → x-a · dấu: ! · nhãn: Xem tờ giấy', '  - nv:tung · x 80% · y 100% · rộng 15% → x-b · sau: x-a · dấu: ?'], new Set(['obj-a']));
     expect(kq.loi).toEqual([]);
     const kham = kq.mvp.chuoi.find((c) => c.id === 'md-1')?.items.find((it) => it.kind === 'explore');
     expect(kham).toEqual({
@@ -428,8 +437,8 @@ describe('[KHÁM PHÁ] trong chuỗi (cảnh bấm vật, sảnh KTX của mở 
       dang: null,
       haVySoi: false,
       diem: [
-        { sprite: 'obj-a', x: 10, y: 50, rong: 5, chuoi: 'x-a', sau: [], nhan: 'Xem tờ giấy', dau: null, co: [] },
-        { sprite: 'nv:tung', x: 80, y: 100, rong: 15, chuoi: 'x-b', sau: ['x-a'], nhan: null, dau: null, co: [] },
+        { sprite: 'obj-a', x: 10, y: 50, rong: 5, chuoi: 'x-a', sau: [], nhan: 'Xem tờ giấy', dau: 'chinh', co: [] },
+        { sprite: 'nv:tung', x: 80, y: 100, rong: 15, chuoi: 'x-b', sau: ['x-a'], nhan: null, dau: 'phu', co: [] },
       ],
     });
     expect(kq.mocChuoi.get('x-a')).toBe(0);
@@ -447,7 +456,7 @@ describe('[KHÁM PHÁ] trong chuỗi (cảnh bấm vật, sảnh KTX của mở 
     expect(docKham(['  - obj-a · x 10% · y 50% · rộng 5% → x-a', '  - obj-a · x 20% · y 50% · rộng 5% → x-b · sau: la']).loi).toEqual(
       expect.arrayContaining(['noi-dung-mvp/kich-ban/01.md:7: [KHÁM PHÁ kp1]: "sau: la" phải là chuỗi của một chỗ bấm khác trong cùng [KHÁM PHÁ]']),
     );
-    expect(docKham(['  - obj-khong · x 10% · y 50% · rộng 5% → x-a', '  - obj-a · x 20% · y 50% · rộng 5% → x-b'], new Set(['obj-a'])).loi).toEqual([
+    expect(docKham(['  - obj-khong · x 10% · y 50% · rộng 5% → x-a · dấu: !', '  - obj-a · x 20% · y 50% · rộng 5% → x-b · dấu: !'], new Set(['obj-a'])).loi).toEqual([
       'noi-dung-mvp/kich-ban/01.md:7: [KHÁM PHÁ kp1]: không có ảnh vật "obj-khong" trong src/assets/mvp/vat/',
     ]);
   });

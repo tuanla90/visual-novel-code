@@ -25,9 +25,9 @@
 
 - [LỜI md-00-sanh-ktx.2]
 - [KHÁM PHÁ kp-sanh-ktx]
-  - obj-thong-bao-thang-may · x 10.5% · y 38.5% · rộng 3.6% → md-00-thang-may · nhãn: Xem tờ giấy trên cửa thang máy
-  - obj-so-do-ktx · x 44% · y 35.5% · rộng 10% → md-00-so-do · sau: md-00-thang-may · nhãn: Xem bảng tin
-  - vung:lung-ao-xanh · x 87.5% · y 44% · rộng 9% → md-00-thay-tung · sau: md-00-thang-may, md-00-so-do · nhãn: Tấm lưng áo xanh giữa đám đông
+  - obj-thong-bao-thang-may · x 10.5% · y 38.5% · rộng 3.6% → md-00-thang-may · dấu: ! · nhãn: Xem tờ giấy trên cửa thang máy
+  - obj-so-do-ktx · x 44% · y 35.5% · rộng 10% → md-00-so-do · sau: md-00-thang-may · dấu: ! · nhãn: Xem bảng tin
+  - vung:lung-ao-xanh · x 87.5% · y 44% · rộng 9% → md-00-thay-tung · sau: md-00-thang-may, md-00-so-do · dấu: ! · nhãn: Tấm lưng áo xanh giữa đám đông
 
 ### md-00-thang-may — Tờ giấy dán trên cửa thang máy {cảnh: sanh-ktx}
 

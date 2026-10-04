@@ -3565,6 +3565,17 @@
   z-index: 3;
 }
 .mvp-an.is-da-xem { cursor: default; }
+/* Vùng có dấu "!" / "?" (đầu mối, chuyện thêm): vòng hiện sẵn và sáng theo nhịp như vật bấm, không đổi cỡ. */
+.mvp-an.is-co-dau:not(.is-da-xem) .mvp-an__goi-y {
+  opacity: 0.75;
+  animation: mvp-vien 2s ease-in-out infinite;
+}
+.mvp-an.is-co-dau .mvp-dau {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -110%);
+}
 .mvp-an__goi-y {
   position: absolute;
   inset: 6%;

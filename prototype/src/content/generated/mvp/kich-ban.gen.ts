@@ -1095,7 +1095,8 @@ const GOC = {
               "rong": 3.6,
               "chuoi": "md-00-thang-may",
               "sau": [],
-              "nhan": "Xem tờ giấy trên cửa thang máy"
+              "nhan": "Xem tờ giấy trên cửa thang máy",
+              "dau": "chinh"
             },
             {
               "sprite": "obj-so-do-ktx",
@@ -1106,7 +1107,8 @@ const GOC = {
               "sau": [
                 "md-00-thang-may"
               ],
-              "nhan": "Xem bảng tin"
+              "nhan": "Xem bảng tin",
+              "dau": "chinh"
             },
             {
               "sprite": "vung:lung-ao-xanh",
@@ -1118,7 +1120,8 @@ const GOC = {
                 "md-00-thang-may",
                 "md-00-so-do"
               ],
-              "nhan": "Tấm lưng áo xanh giữa đám đông"
+              "nhan": "Tấm lưng áo xanh giữa đám đông",
+              "dau": "chinh"
             }
           ]
         }
@@ -3121,7 +3124,8 @@ const GOC = {
               "rong": 3.4,
               "chuoi": "n1-hop",
               "sau": [],
-              "nhan": "Soi khe hộp kiến nghị"
+              "nhan": "Soi khe hộp kiến nghị",
+              "dau": "chinh"
             },
             {
               "sprite": "nv:bac-tu",
@@ -3130,7 +3134,8 @@ const GOC = {
               "rong": 16,
               "chuoi": "n1-bac-thinh",
               "sau": [],
-              "nhan": "Hỏi bác bảo vệ"
+              "nhan": "Hỏi bác bảo vệ",
+              "dau": "chinh"
             },
             {
               "sprite": "obj-thong-bao-hop",
@@ -3139,7 +3144,8 @@ const GOC = {
               "rong": 2.6,
               "chuoi": "n1-thong-bao-hop",
               "sau": [],
-              "nhan": "Đọc thông báo dán trên bảng tin"
+              "nhan": "Đọc thông báo dán trên bảng tin",
+              "dau": "chinh"
             }
           ]
         },
