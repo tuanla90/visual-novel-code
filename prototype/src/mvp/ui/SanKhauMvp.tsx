@@ -40,6 +40,7 @@ export interface SanKhauMvpProps {
   dienTen?: (t: string) => string;
   /** Màn chuyển cảnh thời gian / địa điểm dạng thẻ chữ lớn điện ảnh: ẩn nhãn địa điểm, làm tối cảnh. */
   isCard?: boolean;
+  dongHanh?: ReactNode;
   children?: ReactNode;
 }
 
@@ -155,24 +156,22 @@ function ChanDungMvp({
   );
 }
 
-export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, coDan = true, tenNguoiChoi, nhacViec, dienTen, isCard = false, children }: SanKhauMvpProps) {
+export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, coDan = true, tenNguoiChoi, nhacViec, dienTen, isCard = false, dongHanh, children }: SanKhauMvpProps) {
   const [dan, setDan] = useState<DanDien>(() => danKe(kb, null, canh, speaker, expression));
   const moi = danKe(kb, dan, canh, speaker, expression);
   if (moi !== dan) setDan(moi);
   const lineTyping = useVnStore((s) => s.lineTyping);
   const nen = anhNen(canh, dem);
   const tenCanh = kb.canh.find((c) => c.id === canh)?.ten ?? 'Cảnh';
-  const [moDiaDiem, setMoDiaDiem] = useState(false);
-
-  useEffect(() => {
-    setMoDiaDiem(false);
-  }, [canh]);
+  const [diaDiem, setDiaDiem] = useState({ canh, mo: false });
+  if (diaDiem.canh !== canh) setDiaDiem({ canh, mo: false });
+  const moDiaDiem = diaDiem.canh === canh && diaDiem.mo;
 
   useEffect(() => {
     if (!moDiaDiem) return;
-    const timer = setTimeout(() => setMoDiaDiem(false), 3500);
+    const timer = setTimeout(() => setDiaDiem({ canh, mo: false }), 3500);
     return () => clearTimeout(timer);
-  }, [moDiaDiem]);
+  }, [canh, moDiaDiem]);
 
   const daoCu = coDan ? DAO_CU_CANH[canh] : undefined;
 
@@ -212,10 +211,11 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
         )}
       </div>
       {!isCard ? (
+        <div className="mvp-stage__canh-ban">
         <button
           type="button"
           className={`stage__scene-label stage__scene-label--btn${moDiaDiem ? ' is-expanded' : ''}`}
-          onClick={() => setMoDiaDiem((m) => !m)}
+          onClick={() => setDiaDiem({ canh, mo: !moDiaDiem })}
           aria-label={`Địa điểm: ${tenCanh}`}
           aria-expanded={moDiaDiem}
           title={`Địa điểm: ${tenCanh}`}
@@ -226,6 +226,8 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
           </svg>
           <span className="stage__scene-text">{tenCanh}</span>
         </button>
+        {dongHanh}
+        </div>
       ) : null}
       {nhacViec ? <NhacViecMvp kb={kb} nhac={nhacViec} dienTen={dienTen ?? ((t) => t)} tenNguoiChoi={tenNguoiChoi} /> : null}
       {/* Cảnh có hoạt cảnh: nhân vật đã nằm trong ảnh tách lớp, không vẽ thêm nhân vật đứng (hộp thoại vẫn ghi tên người nói). */}

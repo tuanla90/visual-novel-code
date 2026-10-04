@@ -12,7 +12,7 @@ import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp, LoiMvp } from '../../content/mvp/types';
 import { taoTrangThai, tenKhungHienTai, xuLy, type HanhDongMvp } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
-import { ghiNhanTrangThaiDongHanh, ghiNhanTruyVanDongHanh, khoaNguCanhDongHanh, type BanDongHanhMvp, type TinNhanDongHanhMvp, type TruyVanDaXemMvp } from '../engine/tri-nho-dong-hanh';
+import { banDangCoMat, ghiNhanTrangThaiDongHanh, ghiNhanTruyVanDongHanh, khoaNguCanhDongHanh, type BanDongHanhMvp, type TinNhanDongHanhMvp, type TinNhanNhomDongHanhMvp, type TruyVanDaXemMvp } from '../engine/tri-nho-dong-hanh';
 
 export const KICH_BAN: KichBanMvp = KICH_BAN_MVP as unknown as KichBanMvp;
 
@@ -51,6 +51,7 @@ export interface KhoMvp {
   napTuO: (o: number) => TrangThaiMvp | null;
   ghiNhanTruyVan: (query: TruyVanDaXemMvp, loi: readonly LoiMvp[], tai: TrangThaiMvp, lan: number) => void;
   ghiNhanChat: (ban: BanDongHanhMvp, messages: TinNhanDongHanhMvp[], key: string, lan: number) => boolean;
+  ghiNhanChatNhom: (messages: TinNhanNhomDongHanhMvp[], keys: Partial<Record<BanDongHanhMvp, string>>, lan: number) => boolean;
 }
 
 function boNhoPhien(): Storage {
@@ -126,6 +127,16 @@ export function taoKhoMvp(options: { persist?: boolean; storageKey?: string } = 
       const s = get().trangThai;
       if (!s || get().lanDoiVan !== lan || s.batDauLuc !== tai.batDauLuc || JSON.stringify(s.conTro) !== JSON.stringify(tai.conTro)) return;
       set({ trangThai: ghiNhanTruyVanDongHanh(KICH_BAN, s, query, loi) });
+    },
+    ghiNhanChatNhom: (messages, keys, lan) => {
+      const s = get().trangThai;
+      if (!s || get().lanDoiVan !== lan) return false;
+      const present = banDangCoMat(KICH_BAN, s);
+      if (!present.length || present.length !== Object.keys(keys).length
+        || present.some((ban) => keys[ban] !== khoaNguCanhDongHanh(s, ban))) return false;
+      const daXem = ghiNhanTrangThaiDongHanh(KICH_BAN, s);
+      set({ trangThai: { ...daXem, triNhoDongHanh: { ...daXem.triNhoDongHanh!, hoiThoaiNhom: messages.slice(-36) } } });
+      return true;
     },
     ghiNhanChat: (ban, messages, key, lan) => {
       const s = get().trangThai;

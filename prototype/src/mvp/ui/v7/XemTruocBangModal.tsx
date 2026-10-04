@@ -10,6 +10,8 @@ export interface XemTruocBangModalProps {
   khoaNoi?: string;
   onDong: () => void;
   onDaXemTruyVan?: (sql: string) => void;
+  sqlPhieuNguon?: string;
+  nhanPhieuNguon?: string;
 }
 
 export function XemTruocBangModal({
@@ -19,6 +21,8 @@ export function XemTruocBangModal({
   khoaNoi,
   onDong,
   onDaXemTruyVan,
+  sqlPhieuNguon,
+  nhanPhieuNguon,
 }: XemTruocBangModalProps) {
   const [resultSql, setResultSql] = useState('');
   const [dangTai, setDangTai] = useState(true);
@@ -31,11 +35,18 @@ export function XemTruocBangModal({
   const cotNoi = useMemo(() => bDuLieuNoi?.cot.map((c) => c.ten) ?? [], [bDuLieuNoi]);
 
   const sqlXemTruoc = useMemo(() => {
+    if (sqlPhieuNguon) {
+      const cte = `WITH ${tenBangGoc} AS (${sqlPhieuNguon.trim().replace(/;\s*$/, '')})`;
+      if (tenBangNoi && khoaNoi) {
+        return `${cte} SELECT * FROM ${tenBangGoc} JOIN ${tenBangNoi} ON ${tenBangGoc}.${khoaNoi} = ${tenBangNoi}.${khoaNoi} LIMIT 6;`;
+      }
+      return `${cte} SELECT * FROM ${tenBangGoc} LIMIT 6;`;
+    }
     if (tenBangNoi && khoaNoi) {
       return `SELECT * FROM ${tenBangGoc} JOIN ${tenBangNoi} ON ${tenBangGoc}.${khoaNoi} = ${tenBangNoi}.${khoaNoi} LIMIT 6;`;
     }
     return `SELECT * FROM ${tenBangGoc} LIMIT 6;`;
-  }, [tenBangGoc, tenBangNoi, khoaNoi]);
+  }, [tenBangGoc, tenBangNoi, khoaNoi, sqlPhieuNguon]);
 
   useEffect(() => {
     let active = true;
@@ -106,7 +117,14 @@ export function XemTruocBangModal({
         <div className="v7-preview-modal__header">
           <div className="v7-preview-modal__title-group">
             <h3 className="v7-preview-modal__title">
-              {coNoi ? (
+              {nhanPhieuNguon ? (
+                <>
+                  Khảo sát phiếu nguồn: <strong>{nhanPhieuNguon}</strong>
+                  <small style={{ display: 'block', fontSize: '0.78rem', fontWeight: 500, color: '#94a3b8', marginTop: 2 }}>
+                    Tên bảng tạm trong câu truy vấn: <code>{tenBangGoc}</code>
+                  </small>
+                </>
+              ) : coNoi ? (
                 <>
                   Khảo sát kết quả JOIN: <code>{tenBangGoc}</code> + <code>{tenBangNoi}</code>
                 </>
@@ -116,7 +134,11 @@ export function XemTruocBangModal({
                 </>
               )}
             </h3>
-            {coNoi ? (
+            {nhanPhieuNguon ? (
+              <span className="v7-preview-modal__badge v7-preview-modal__badge--single">
+                {dong.length} dòng mẫu từ phiếu
+              </span>
+            ) : coNoi ? (
               <span className="v7-preview-modal__badge">
                 Đã bổ sung {cotMoi.length} cột mới từ {tenBangNoi}
               </span>

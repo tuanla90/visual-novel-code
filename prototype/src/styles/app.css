@@ -1646,6 +1646,22 @@
   user-select: none;
 }
 
+.mc__choice-text {
+  display: block;
+  width: 100%;
+  text-align: center;
+  line-height: 1.45;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.mc__choice .game-highlight {
+  display: inline;
+  white-space: normal;
+  font-weight: 700;
+}
+
 /* Mã code trong câu chọn */
 .mc__choice .code-text {
   background: rgba(251, 191, 36, 0.18);

@@ -8,9 +8,10 @@
       this.dictionary = new Map();
       const groups = new Map();
       entries.forEach(({ text, category, canonical }) => {
-        if (!categories[category] || !text?.trim()) return;
-        for (const variant of new Set([text.normalize('NFC'), text.normalize('NFD')])) {
-          this.dictionary.set(category + ':' + variant.toLocaleLowerCase('vi'), canonical ?? text);
+        const clean = text?.trim();
+        if (!categories[category] || !clean) return;
+        for (const variant of new Set([clean.normalize('NFC'), clean.normalize('NFD')])) {
+          this.dictionary.set(category + ':' + variant.toLocaleLowerCase('vi'), canonical ?? clean);
           if (!groups.has(category)) groups.set(category, []);
           groups.get(category).push(variant);
         }

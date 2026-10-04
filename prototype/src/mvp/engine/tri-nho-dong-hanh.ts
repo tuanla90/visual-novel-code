@@ -6,6 +6,11 @@ import { checkSingleSelect } from '../../sql-challenge/engine/sql-text';
 export const BAN_DONG_HANH = ['tung', 'ha-vy'] as const;
 export type BanDongHanhMvp = (typeof BAN_DONG_HANH)[number];
 export type TinNhanDongHanhMvp = { role: 'user' | 'assistant'; content: string };
+export type TinNhanNhomDongHanhMvp = TinNhanDongHanhMvp & {
+  character?: BanDongHanhMvp;
+  target?: BanDongHanhMvp;
+  heardBy: BanDongHanhMvp[];
+};
 export type TruyVanDaXemMvp = { id: string; nhan: string; sql: string };
 export type QuanSatTruyVanMvp = (query: TruyVanDaXemMvp, loi: readonly LoiMvp[]) => void;
 export interface TriNhoNhanVatMvp {
@@ -21,6 +26,7 @@ export interface TriNhoDongHanhMvp {
   diemVe?: { chuoi: string; nut: number }[];
   coMat: BanDongHanhMvp[];
   nhanVat: Record<BanDongHanhMvp, TriNhoNhanVatMvp>;
+  hoiThoaiNhom?: TinNhanNhomDongHanhMvp[];
 }
 
 const laBan = (id: string): id is BanDongHanhMvp => (BAN_DONG_HANH as readonly string[]).includes(id);
@@ -67,6 +73,7 @@ function taoTriNho(kb: KichBanMvp, s: TrangThaiMvp): TriNhoDongHanhMvp {
     diemVe,
     coMat: banDangCoMat(kb, s),
     nhanVat: s.triNhoDongHanh?.nhanVat ?? { tung: rong(), 'ha-vy': rong() },
+    hoiThoaiNhom: s.triNhoDongHanh?.hoiThoaiNhom,
   };
 }
 

@@ -137,8 +137,8 @@ export function KhungNguonBangV7({
             type="button"
             className={`v7-btn-preview${coNoiBang ? ' is-co-noi' : ''}`}
             onClick={onMoXemTruoc}
-            title={coNoiBang ? 'Xem trước dữ liệu kèm các cột mới nối từ bảng khác' : 'Xem trước 6 dòng mẫu của bảng'}
-            aria-label="Xem trước dữ liệu mẫu"
+            title={coNoiBang ? 'Xem trước dữ liệu kèm các cột mới nối từ bảng khác' : nguonPhieu ? `Xem trước dữ liệu mẫu từ phiếu "${dienTen(nguonPhieu.nhan)}"` : 'Xem trước 6 dòng mẫu của bảng'}
+            aria-label={nguonPhieu ? 'Xem trước dữ liệu phiếu nguồn' : 'Xem trước dữ liệu mẫu'}
           >
             <span className="v7-btn-preview__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -147,7 +147,7 @@ export function KhungNguonBangV7({
               </svg>
             </span>
             <span className="v7-btn-preview__text">
-              {coNoiBang ? 'Xem trước bảng nối' : 'Khảo sát bảng'}
+              {coNoiBang ? 'Xem trước bảng nối' : nguonPhieu ? 'Khảo sát phiếu nguồn' : 'Khảo sát bảng'}
             </span>
             {coNoiBang && <span className="v7-btn-preview__dot" aria-hidden="true" />}
           </button>

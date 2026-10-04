@@ -16,6 +16,7 @@ import { CO_THE, KHUNG_BANG, dungBang, gocNghieng, MA_THE_HOI, viTriThe, type Th
 import { MAU_GHIM, type MauGhimMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp } from '../../engine/trang-thai';
 import { anhTheoTen } from '../anh-mvp';
 import { TheHoSo } from '../TheHoSo';
+import { chaySql, type GiaTriSql } from '../../engine/sql-mvp';
 import { IconTerminal, IconX } from '../../../shared/ui/icons';
 import './v7.css';
 
@@ -53,11 +54,18 @@ const boNgoac = (t: string): string => t.replace(/^\[|\]$/g, '');
 
 export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chuaXem, onXemThe, onDoiMau, onGhim }: BangGhimMvpProps) {
   const bang = useMemo(() => dungBang(kb, s, them), [kb, s, them]);
+  // Local state lưu vị trí người chơi đã kéo, đảm bảo thẻ giữ nguyên vị trí sau khi thả tay, không bị tự động sắp xếp lại hoặc giật về chỗ cũ.
+  const [viTriCucBo, setViTriCucBo] = useState<Record<string, { x: number; y: number }>>({});
+  useEffect(() => {
+    setViTriCucBo({});
+  }, [s.batDauLuc]);
+
   const [keo, setKeo] = useState<{ id: string; x: number; y: number } | null>(null);
   const viTri = useMemo(() => {
-    const vt = viTriThe(bang, s.bang?.viTri);
+    const daKeo = { ...(s.bang?.viTri ?? {}), ...viTriCucBo };
+    const vt = viTriThe(bang, daKeo);
     return keo ? { ...vt, [keo.id]: { x: keo.x, y: keo.y } } : vt;
-  }, [bang, s.bang, keo]);
+  }, [bang, s.bang?.viTri, viTriCucBo, keo]);
   const [xem, datXem] = useState<string | null>(null);
   const [hienMenuGhim, setHienMenuGhim] = useState(false);
   const setXem = (id: string | null): void => {
@@ -84,12 +92,31 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
   const tiLe = ngang ? Math.min(co.w / KHUNG_BANG.rong, co.h / KHUNG_BANG.cao) : Math.max(0.5, co.h / KHUNG_BANG.cao);
 
   // Kéo thẻ bằng con trỏ (chuột lẫn cảm ứng); nhích dưới 6px coi là bấm → mở thẻ.
-  const dangKeo = useRef<{ id: string; x0: number; y0: number; px: number; py: number; daNhich: boolean } | null>(null);
+  const dangKeo = useRef<{
+    id: string;
+    x0: number;
+    y0: number;
+    px: number;
+    py: number;
+    xHienTai: number;
+    yHienTai: number;
+    daNhich: boolean;
+  } | null>(null);
+
   const batDauKeo = (t: TheBang) => (e: ReactPointerEvent<HTMLElement>) => {
     if (e.button !== 0) return;
     const p = viTri[t.id];
     if (!p) return;
-    dangKeo.current = { id: t.id, x0: p.x, y0: p.y, px: e.clientX, py: e.clientY, daNhich: false };
+    dangKeo.current = {
+      id: t.id,
+      x0: p.x,
+      y0: p.y,
+      px: e.clientX,
+      py: e.clientY,
+      xHienTai: p.x,
+      yHienTai: p.y,
+      daNhich: false,
+    };
     e.currentTarget.setPointerCapture?.(e.pointerId);
   };
   const dangDi = (e: ReactPointerEvent<HTMLElement>): void => {
@@ -97,22 +124,38 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
     if (!k) return;
     const dx = (e.clientX - k.px) / tiLe;
     const dy = (e.clientY - k.py) / tiLe;
-    if (!k.daNhich && Math.hypot(dx, dy) < 6) return;
-    k.daNhich = true;
+    if (!k.daNhich) {
+      if (Math.hypot(dx, dy) < 6) return;
+      k.daNhich = true;
+    }
     if (!onDoiCho) return;
     const c = CO_THE[bang.the.find((t) => t.id === k.id)?.loai ?? 'tin'];
-    setKeo({ id: k.id, x: Math.max(0, Math.min(KHUNG_BANG.rong - c.rong, k.x0 + dx)), y: Math.max(8, Math.min(KHUNG_BANG.cao - 60, k.y0 + dy)) });
+    const xMoi = Math.round(Math.max(0, Math.min(KHUNG_BANG.rong - c.rong, k.x0 + dx)));
+    const yMoi = Math.round(Math.max(8, Math.min(KHUNG_BANG.cao - 60, k.y0 + dy)));
+    k.xHienTai = xMoi;
+    k.yHienTai = yMoi;
+    setKeo({ id: k.id, x: xMoi, y: yMoi });
   };
-  const thaRa = (): void => {
+  const thaRa = (e: ReactPointerEvent<HTMLElement>): void => {
     const k = dangKeo.current;
-    dangKeo.current = null;
     if (!k) return;
+    dangKeo.current = null;
+    try {
+      e.currentTarget.releasePointerCapture?.(e.pointerId);
+    } catch {
+      // bỏ qua
+    }
     if (!k.daNhich) {
       setXem(k.id);
       return;
     }
-    if (keo && onDoiCho) onDoiCho(keo.id, keo.x, keo.y);
+    const cuoiX = k.xHienTai;
+    const cuoiY = k.yHienTai;
     setKeo(null);
+    if (onDoiCho) {
+      setViTriCucBo((prev) => ({ ...prev, [k.id]: { x: cuoiX, y: cuoiY } }));
+      onDoiCho(k.id, cuoiX, cuoiY);
+    }
   };
 
   /** Đầu ghim của thẻ (giữa mép trên) — sợi chỉ buộc vào đây. */
@@ -145,6 +188,23 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
         return t ? [{ id: t.id, nhan: t.nhan, mau: d.mau, chieu: d.tu === theXem.id ? '→' : '←', kieu: KIEU_DAY[d.kieu] ?? '' }] : [];
       })
     : [];
+
+  const [ketQuaSql, setKetQuaSql] = useState<{ cot: string[]; dong: GiaTriSql[][] } | null>(null);
+  useEffect(() => {
+    let huy = false;
+    if (!theXem?.sql || !kb.duLieu) {
+      setKetQuaSql(null);
+      return;
+    }
+    chaySql(kb.duLieu, theXem.sql).then((res) => {
+      if (huy) return;
+      if (res.ok) setKetQuaSql({ cot: res.cot, dong: res.dong });
+      else setKetQuaSql(null);
+    });
+    return () => {
+      huy = true;
+    };
+  }, [theXem, kb.duLieu]);
 
   return (
     <div className="bang" role="region" aria-label="Bảng điều tra">
@@ -203,7 +263,7 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                   {t.loai === 'phieu' ? (
                     <>
                       <span className="the__loai">Phiếu tra cứu</span>
-                      <h3 className="the__nhan">{dienTen(t.nhan)}</h3>
+                      <h3 className="the__nhan">{dienTen(t.tieuDe ?? t.nhan)}</h3>
                       {t.phu ? <span className="the__dau">{t.phu.toUpperCase()}</span> : null}
                       {t.giaTri.length > 0 ? (
                         <span className="the__gia">
@@ -218,20 +278,29 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                   ) : t.loai === 'note' ? (
                     <>
                       <span className="the__loai">Giấy nhớ truy vấn</span>
-                      <h3 className="the__nhan">{dienTen(t.nhan)}</h3>
+                      <h3 className="the__nhan">{dienTen(t.tieuDe ?? t.nhan)}</h3>
                       {t.phu ? <span className="the__nguon">{dienTen(t.phu)}</span> : null}
                       <span className="the__gia">{t.giaTri.map((g) => <span key={g}>{g}</span>)}</span>
                     </>
                   ) : t.loai === 'vat' || t.loai === 'tai-lieu' ? (
                     <>
                       {anh ? <img className="the__anh" src={anh} alt="" draggable={false} /> : <span className="the__anh the__anh--trong" aria-hidden="true" />}
-                      <span className="the__chu">{dienTen(boNgoac(t.nhan))}</span>
+                      <span className="the__chu">{dienTen(boNgoac(t.tieuDe ?? t.nhan))}</span>
                     </>
                   ) : t.loai === 'hoi' ? (
-                    <span className="the__cau">{dienTen(t.nhan)}</span>
+                    <span className="the__cau">{dienTen(t.tieuDe ?? t.nhan)}</span>
                   ) : (
                     <>
-                      <span className="the__nhan">{dienTen(boNgoac(t.nhan))}</span>
+                      {t.tieuDe && boNgoac(t.tieuDe) !== boNgoac(t.nhan) ? (
+                        <>
+                          <h3 className="the__nhan the__nhan--tieude" title={dienTen(t.tieuDe)}>{dienTen(t.tieuDe)}</h3>
+                          <div className="the__chip-hang">
+                            <span className="the__chip-ma" title={`Mã: ${dienTen(boNgoac(t.nhan))}`}>{dienTen(boNgoac(t.nhan))}</span>
+                          </div>
+                        </>
+                      ) : (
+                        <h3 className="the__nhan">{dienTen(boNgoac(t.nhan))}</h3>
+                      )}
                       {t.phu ? <span className="the__nguon">{dienTen(t.phu)}</span> : null}
                     </>
                   )}
@@ -275,9 +344,17 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
           </button>
 
           {/* Tấm thẻ phóng to trực diện (Phương án 3) */}
-          <div className="bang__xem-the-focal" onClick={(e) => e.stopPropagation()}>
-            {/* Đầu ghim tương tác: hover hoặc click để mở popover đổi màu ghim & gỡ bảng */}
-            {theXem.loai !== 'hoi' && theXem.id !== MA_THE_HOI ? (
+          <div className={`bang__xem-the-focal${theXem.loai === 'hoi' ? ' bang__xem-the-focal--hoi' : ''}`} onClick={(e) => e.stopPropagation()}>
+            {/* Đầu ghim: cố định cho thẻ câu hỏi trung tâm, tương tác đổi màu cho các thẻ khác */}
+            {theXem.loai === 'hoi' || theXem.id === MA_THE_HOI ? (
+              <div className="bang__xem-ghim-khu">
+                <div
+                  className="bang__xem-ghim-nut bang__xem-ghim-nut--do bang__xem-ghim-nut--tinh"
+                  title="Ghim đỏ cố định ở trung tâm bảng"
+                  aria-hidden="true"
+                />
+              </div>
+            ) : (
               <div
                 className="bang__xem-ghim-khu"
                 onMouseEnter={() => setHienMenuGhim(true)}
@@ -330,13 +407,22 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                   </div>
                 ) : null}
               </div>
-            ) : null}
+            )}
 
             {/* Thân thẻ phóng to */}
-            <div className="bang__xem-the-than">
-              {anhXem ? <img className="bang__xem-anh" src={anhXem} alt="" draggable={false} /> : null}
-              <div className="bang__xem-chu">
-                {theXem.the ? <TheHoSo the={theXem.the} dienTen={dienTen} /> : <p className="bang__xem-hoi">{dienTen(theXem.nhan)}</p>}
+            <div className={`bang__xem-the-than${theXem.loai === 'hoi' ? ' bang__xem-the-than--hoi' : ''}`}>
+              {theXem.loai === 'hoi' ? (
+                <div className="bang__xem-hoi-card">
+                  <span className="bang__xem-hoi-dau" aria-hidden="true">?</span>
+                  <span className="bang__xem-hoi-loai">Trọng tâm điều tra</span>
+                  <p className="bang__xem-hoi">{dienTen(theXem.nhan)}</p>
+                  <span className="bang__xem-hoi-nhac">Thu thập manh mối và chạy truy vấn dữ liệu để giải đáp</span>
+                </div>
+              ) : (
+                <>
+                  {anhXem ? <img className="bang__xem-anh" src={anhXem} alt="" draggable={false} /> : null}
+                  <div className="bang__xem-chu">
+                    {theXem.the ? <TheHoSo the={theXem.the} dienTen={dienTen} /> : <p className="bang__xem-hoi">{dienTen(theXem.nhan)}</p>}
 
                 {/* Giá trị truy vấn: hiển thị trực tiếp dạng chip, không cần tiêu đề text rườm rà */}
                 {theXem.giaTri.length > 0 ? (
@@ -351,6 +437,46 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                 ) : null}
 
                 {theXem.gach.length > 0 ? <p className="bang__xem-ghi">Đã loại: {theXem.gach.join(', ')}</p> : null}
+
+                {theXem.sql ? (
+                  <div className="bang__xem-sql-khu">
+                    <span className="bang__xem-sql-nhan">Câu truy vấn SQL:</span>
+                    <pre className="bang__xem-sql-code"><code>{theXem.sql}</code></pre>
+                  </div>
+                ) : null}
+
+                {ketQuaSql ? (
+                  <div className="bang__xem-bang-khu">
+                    <span className="bang__xem-sql-nhan">Kết quả ({ketQuaSql.dong.length} dòng):</span>
+                    <div className="bang__xem-bang-cuon">
+                      <table className="bang__xem-bang">
+                        <thead>
+                          <tr>
+                            {ketQuaSql.cot.map((c) => (
+                              <th key={c} scope="col">{c}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {ketQuaSql.dong.slice(0, 10).map((row, r) => (
+                            <tr key={r}>
+                              {row.map((val, c) => (
+                                <td key={c}>{val === null ? '(trống)' : String(val)}</td>
+                              ))}
+                            </tr>
+                          ))}
+                          {ketQuaSql.dong.length > 10 ? (
+                            <tr>
+                              <td colSpan={ketQuaSql.cot.length} className="bang__xem-bang-them">
+                                … còn {ketQuaSql.dong.length - 10} dòng nữa
+                              </td>
+                            </tr>
+                          ) : null}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                ) : null}
 
                 {noiXem.length > 0 ? (
                   <div className="bang__xem-noi-hang">
@@ -368,7 +494,9 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                   </div>
                 ) : null}
               </div>
-            </div>
+            </>
+          )}
+        </div>
 
             {/* Chỉ dẫn đóng tự nhiên */}
             <div className="bang__xem-chi-dan" aria-hidden="true">

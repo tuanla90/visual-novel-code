@@ -1,6 +1,40 @@
 # Nhật Ký Thay Đổi (.agent/changelog.md)
 
-## [2026-10-04] Rà Soát Kịch Bản Toàn Diện: Chuẩn Hóa Vai Trò Nhân Vật & Xưng Hô Tuyệt Đối
+## [2026-10-05] Nâng Cấp Trải Nghiệm Thẻ Bảng Ghim, Đối Chất & Khảo Sát Nguồn Phiếu Kết Quả
+
+### 1. Bối Cảnh & Vấn Đề (Feedback Người Dùng):
+- **Kéo thẻ tự do bị nhảy/tự sắp xếp**: Khi người chơi kéo thẻ ghim trên bảng điều tra, các thẻ khác bị tính lại vị trí mặc định dẫn đến việc vị trí bị xáo trộn ngoài ý muốn.
+- **Thông tin thẻ quá ít/khó nhớ**:
+  - Tiêu đề thẻ trên bảng ghim và ở khay đối chất chỉ hiển thị mỗi chữ cái hoặc mã rút gọn (như `[B]`, `[Tòa B]`), không rõ nội dung chứng cứ là gì.
+  - Khi xem lại thẻ hoặc phiếu kết quả truy vấn trên bảng ghim thì không xem lại được câu truy vấn SQL và bảng kết quả tương ứng.
+  - Trong màn đối chất (`[ĐỐI CHẤT]`), người chơi chỉ thấy nút chọn thẻ mà không xem lại được nội dung chi tiết bên trong thẻ trước khi quyết định trình bằng chứng.
+- **Khảo sát phiếu kết quả trên laptop**: Khi nguồn truy vấn là một phiếu kết quả từ trước (`nguonPhieu`), người chơi không có tính năng xem trước (preview) dữ liệu giống như các bảng thông thường.
+- **Giới hạn số điều kiện WHERE (`TOI_DA_DIEU_KIEN`)**: Màn tra cứu chỉ cho phép tối đa 3 điều kiện, khiến bài `phu-tui-do` (yêu cầu 4 điều kiện: `ma_lhp LIKE 'KTVM-0%' AND thu = 'THU_TU' AND ca = 'SANG' AND phong LIKE 'B%'`) bị ẩn nút `+ thêm điều kiện` khi đạt 3 điều kiện, không thể giải được.
+
+### 2. Giải Pháp Triển Khai:
+- **Nâng Giới Hạn Điều Kiện WHERE (`ManTraV7.tsx`)**:
+  - Nâng `TOI_DA_DIEU_KIEN` từ `3` lên `6`.
+  - Người chơi thoải mái thêm 4, 5 điều kiện cho các bài lọc phức tạp như `phu-tui-do`.
+- **Cố Định Vị Trí Thẻ Kéo & Giữ Nguyên Thứ Tự Bố Cục (`bang-dieu-tra.ts`, `BangGhimMvp.tsx`)**:
+  - `viTriThe()` luôn tăng bộ đếm slot mặc định cho mọi thẻ thay vì nhảy cóc khi gặp thẻ đã kéo.
+  - Sử dụng state tọa độ cục bộ (`viTriCucBo`) và ref theo dõi kéo thả để lưu giữ tọa độ tức thì, triệt tiêu hiện tượng thẻ giật lại hoặc các thẻ xung quanh xáo trộn.
+- **Bổ Sung Dữ Liệu SQL & Tiêu Đề Đầy Đủ Cho Thẻ (`TheBang`, `TheHoSo.tsx`)**:
+  - Mở rộng interface `TheBang` với `tieuDe?: string`, `sql?: string`, `cot?: string[]`.
+  - Trên bảng ghim: hiển thị `t.tieuDe` rõ ràng với badge mã hồ sơ (`the__chip-ma`) bên cạnh.
+  - Trong modal xem chi tiết thẻ (`theXem` trên bảng ghim và trong màn đối chất): hiển thị toàn văn câu lệnh SQL và thực thi `chaySql` hiển thị trực tiếp bảng kết quả 10 dòng đầu.
+- **Màn Đối Chất Trực Quan (`DoiChatMvp.tsx`, `DoiChatMvp.css`)**:
+  - Khay thẻ hiển thị tiêu đề đầy đủ cùng tag mã ngắn.
+  - Bổ sung nút xem nhanh (👁) trên mỗi thẻ và nút `👁 Xem kỹ` tại thanh thao tác bên cạnh chip thẻ đã chọn.
+  - Tích hợp Modal xem chi tiết thẻ trong đối chất: cho phép duyệt thông tin hồ sơ (`TheHoSo`), dữ kiện lọc, câu truy vấn SQL và bảng kết quả; kèm nút "Trình thẻ này ngay" trực tiếp từ modal.
+- **Khảo Sát Nguồn Phiếu Kết Quả Trên Laptop (`XemTruocBangModal.tsx`, `ManTraV7.tsx`, `KhungNguonBangV7.tsx`)**:
+  - Hỗ trợ `sqlPhieuNguon`: bọc CTE `WITH <tenBang> AS (<sqlPhieuNguon>) SELECT * FROM <tenBang> LIMIT 6;` để khảo sát cấu trúc cột và mẫu dữ liệu của phiếu nguồn trước khi truy vấn tiếp.
+  - Cập nhật nhãn nút "Khảo sát phiếu nguồn" khi `nguonPhieu` đang hoạt động.
+
+### 3. Kiểm Thử & Đảm Bảo Chất Lượng:
+- 132/132 test files passed, 1079/1079 tests passed.
+- `npm run typecheck`: 0 lỗi.
+- Đảm bảo giới hạn < 1000 dòng trên mọi tệp.
+
 
 ### 1. Bối Cảnh & Ranh Giới Nhân Vật (Character Matrix):
 - **Hà Vy (Năm 1 Toán ứng dụng)**: Tuyệt đối không biết SQL từ đầu. Tiếp cận dữ liệu bằng tư duy tập hợp & logic học (giao, hợp, phần bù, điều kiện đồng thời, phủ định, mẫu thói quen). Đã loại bỏ hoàn toàn các thuật ngữ SQL kỹ thuật (`WHERE`, `SELECT`, "câu lệnh", "bẻ gãy cú pháp", "cày SQL"). Vy không giảng bài như chuyên gia công nghệ.

@@ -5,7 +5,7 @@
  * Kiểu dáng nằm ngay trong helper (một tệp, dùng được ở mọi nơi); màu nền đổi được qua biến CSS
  * `--code-text-bg` / `--code-text-fg` đặt ở khung chứa (gói hinh-giao-dien có thể thay bằng lớp CSS).
  */
-import type { CSSProperties } from 'react';
+import { Fragment, type CSSProperties } from 'react';
 import { HighlightText } from '../highlight/HighlightText';
 
 const CODE_STYLE: CSSProperties = {
@@ -37,7 +37,7 @@ export function CodeText({ text }: CodeTextProps) {
         {part}
       </code>
     ) : (
-      <span key={i}><HighlightText text={part} /></span>
+      <Fragment key={i}><HighlightText text={part} /></Fragment>
     );
   });
   return <>{nodes}</>;

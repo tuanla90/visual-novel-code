@@ -3088,3 +3088,111 @@ span.v7-o--bang:not(.v7-o--phieu) {
 .v7-preview-modal__action-btn:hover {
   background: #047857;
 }
+
+/* Khối câu lệnh SQL đã tra & Bảng kết quả trong modal xem thẻ */
+.bang__xem-sql-khu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #0f172a;
+  border-radius: 8px;
+  border: 1px solid #334155;
+}
+.bang__xem-sql-nhan {
+  color: #38bdf8;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.bang__xem-sql-code {
+  margin: 0;
+  font-family: var(--font-code, monospace);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #f1f5f9;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.bang__xem-bang-khu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+.bang__xem-bang-cuon {
+  max-height: 180px;
+  overflow-y: auto;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+}
+.bang__xem-bang {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  text-align: left;
+}
+.bang__xem-bang th {
+  position: sticky;
+  top: 0;
+  background: #f1f5f9;
+  color: #334155;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-bottom: 2px solid #cbd5e1;
+}
+.bang__xem-bang td {
+  padding: 5px 10px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #1e293b;
+}
+.bang__xem-bang tr:last-child td {
+  border-bottom: none;
+}
+.bang__xem-bang-them {
+  text-align: center;
+  font-style: italic;
+  color: #64748b;
+  padding: 6px 10px;
+}
+
+/* Thẻ giấy nhớ trên bảng: hiển thị tiêu đề rõ nghĩa + chip mã */
+.the--tin .the__nhan--tieude {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #1e293b;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.the--tin .the__chip-hang {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 2px 0;
+}
+.the--tin .the__chip-ma {
+  display: inline-block;
+  padding: 1px 6px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+}
+.mvp-the__ma {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+  background: #e2e8f0;
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-top: 3px;
+}

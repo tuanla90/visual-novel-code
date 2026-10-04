@@ -1,18 +1,41 @@
-.game-highlight { font-weight: 650; }
+.game-highlight {
+  display: inline;
+  font-weight: 650;
+  white-space: normal;
+}
 .game-highlight--person { color: #245da8; }
 .game-highlight--time { color: #875600; }
 .game-highlight--place { color: #167049; }
 .game-highlight--item { color: #88449a; }
-/* Dark dialogue surfaces need brighter text; documents keep the dark palette. */
+
+/* Dark surfaces (dialogue, backlog, choice options) need brighter text; documents keep the dark palette. */
 .dialog--glass .game-highlight--person,
 .dialog--card .game-highlight--person,
-.backlog-modal__card .game-highlight--person { color: #8fc6ff; }
+.backlog-modal__card .game-highlight--person,
+.mc__choice .game-highlight--person { color: #8fc6ff; }
+
 .dialog--glass .game-highlight--time,
 .dialog--card .game-highlight--time,
-.backlog-modal__card .game-highlight--time { color: #ffce78; }
+.backlog-modal__card .game-highlight--time,
+.mc__choice .game-highlight--time { color: #ffce78; }
+
 .dialog--glass .game-highlight--place,
 .dialog--card .game-highlight--place,
-.backlog-modal__card .game-highlight--place { color: #87e1b4; }
+.backlog-modal__card .game-highlight--place,
+.mc__choice .game-highlight--place { color: #87e1b4; }
+
 .dialog--glass .game-highlight--item,
 .dialog--card .game-highlight--item,
-.backlog-modal__card .game-highlight--item { color: #e5adf6; }
+.backlog-modal__card .game-highlight--item,
+.mc__choice .game-highlight--item { color: #e5adf6; }
+
+/* Choice buttons gaming hover & focus glow for highlighted terms */
+.mc__choice:hover .game-highlight--person,
+.mc__choice:focus-visible .game-highlight--person { color: #bae0ff; text-shadow: 0 0 8px rgba(143, 198, 255, 0.6); }
+.mc__choice:hover .game-highlight--time,
+.mc__choice:focus-visible .game-highlight--time { color: #fff1b8; text-shadow: 0 0 8px rgba(255, 206, 120, 0.6); }
+.mc__choice:hover .game-highlight--place,
+.mc__choice:focus-visible .game-highlight--place { color: #b7eb8f; text-shadow: 0 0 8px rgba(135, 225, 180, 0.6); }
+.mc__choice:hover .game-highlight--item,
+.mc__choice:focus-visible .game-highlight--item { color: #efdbff; text-shadow: 0 0 8px rgba(229, 173, 246, 0.6); }
+

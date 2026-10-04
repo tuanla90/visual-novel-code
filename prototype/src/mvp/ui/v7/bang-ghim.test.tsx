@@ -87,6 +87,26 @@ describe('bảng ghim', () => {
     expect(document.querySelectorAll('.bang__chi--truy-van.is-moi')).toHaveLength(2);
   });
 
+  it('sau khi thả thẻ đã kéo, thẻ giữ nguyên vị trí mới và không bị tự động sắp xếp lại về vị trí cũ', () => {
+    const s = nhayToi(kb, 'ten-h', 1);
+    const onDoiCho = vi.fn();
+    render(<BangGhimMvp kb={kb} s={s} dienTen={(t) => t} onDoiCho={onDoiCho} />);
+    const the = screen.getByRole('article', { name: 'Mẩu tin: Tòa B' });
+    const x0 = parseFloat(the.style.left);
+    const y0 = parseFloat(the.style.top);
+
+    // Kéo thẻ
+    fireEvent.pointerDown(the, { button: 0, pointerId: 1, clientX: 100, clientY: 100 });
+    fireEvent.pointerMove(the, { pointerId: 1, clientX: 160, clientY: 180 });
+    // Thả thẻ
+    fireEvent.pointerUp(the, { pointerId: 1, clientX: 160, clientY: 180 });
+
+    expect(onDoiCho).toHaveBeenCalledWith('clue-toa-b', x0 + 60, y0 + 80);
+    // Vị trí vẫn được ghim ở chỗ mới, không giật về chỗ cũ
+    expect(the.style.left).toBe(`${x0 + 60}px`);
+    expect(the.style.top).toBe(`${y0 + 80}px`);
+  });
+
   it('bảng trống (chưa có gì trong hồ sơ, không nhiệm vụ) → "Bảng còn trống."', () => {
     const s = { ...nhayToi(kb, 'lop', 1), hoSo: { manhMoi: [], taiLieu: [], bangChung: [] }, nhiemVu: null };
     render(<BangGhimMvp kb={kb} s={s} dienTen={(t) => t} />);

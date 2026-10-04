@@ -52,7 +52,8 @@ import './v7.css';
 
 export type { CanhTra, NguonPhieuV7 } from './canh-tra';
 
-const TOI_DA_DIEU_KIEN = 3;
+/** Tối đa 6 điều kiện WHERE để phục vụ các bài lọc nhiều tiêu chí như phu-tui-do (cần 4 điều kiện). */
+const TOI_DA_DIEU_KIEN = 6;
 /**
  * Màn lọc đầu tiên (c-lop, ngày 2) dựng sẵn hai điều kiện để dạy VÀ / HOẶC. Qua màn ấy (user chốt 03/10/2026) câu bắt đầu
  * không có điều kiện nào: người chơi tự bấm + thêm, bấm × bỏ.
@@ -430,6 +431,8 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
           tenBangGoc={bang.ten}
           tenBangNoi={cau.noiBang?.bang}
           khoaNoi={cau.noiBang?.cot}
+          sqlPhieuNguon={nguonPhieu?.sql}
+          nhanPhieuNguon={nguonPhieu?.nhan}
           onDong={() => setXemTruocMo(false)}
         />
       ) : null}

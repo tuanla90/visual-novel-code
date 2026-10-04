@@ -19,7 +19,7 @@ export interface DuKienSqlDongHanh {
 }
 
 /** Reuse the same read-only SQLite instance as the laptop. Only replay queries this character saw. */
-export async function taoNguCanhDongHanh(kb: KichBanMvp, state: TrangThaiMvp, ban: BanDongHanhMvp, question: string) {
+export async function taoNguCanhDongHanh(kb: KichBanMvp, state: TrangThaiMvp, ban: BanDongHanhMvp, question: string, byteLimit = 16_000) {
   const s = ghiNhanTrangThaiDongHanh(kb, state);
   const mem = s.triNhoDongHanh!.nhanVat[ban];
   const thayTen = (text: string): string => dienTen(kb, s, text);
@@ -66,7 +66,7 @@ export async function taoNguCanhDongHanh(kb: KichBanMvp, state: TrangThaiMvp, ba
   };
   // Leave room for the question and chat history under the server's 24 KB request limit.
   const bytes = (): number => new TextEncoder().encode(JSON.stringify(context)).length;
-  while (bytes() > 16_000) {
+  while (bytes() > byteLimit) {
     if (context.knownDialogue.length > 4) context.knownDialogue.shift();
     else if (context.unlockedEvidence.length) context.unlockedEvidence.shift();
     else {

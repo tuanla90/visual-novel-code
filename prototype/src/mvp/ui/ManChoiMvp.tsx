@@ -387,7 +387,9 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
                 {kn.luaChon.map((c) => (
                   <li key={c.id} className="mc__choice-item">
                     <button type="button" className="mc__choice" onClick={() => hanhDong({ type: 'chon', luaChon: c.id })}>
-                      <CodeText text={dienTen(c.text)} />
+                      <span className="mc__choice-text">
+                        <CodeText text={dienTen(c.text)} />
+                      </span>
                     </button>
                   </li>
                 ))}
@@ -419,7 +421,9 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
               {kn.nut.lines.map((d) => (
                 <li key={d.index} className="mc__choice-item">
                   <button type="button" className="mc__choice mono" onClick={() => hanhDong({ type: 'chon-dong', index: d.index })}>
-                    {d.sql}
+                    <span className="mc__choice-text">
+                      {d.sql}
+                    </span>
                   </button>
                 </li>
               ))}
@@ -543,12 +547,6 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           }}
         />
       ) : null}
-      <DongHanhMvp
-        key={JSON.stringify([lanDoiVan, s.batDauLuc, s.conTro, s.hoiDap?.viTri, kn.kind, gioiThieuMo, laTheChu])}
-        kb={kb}
-        s={s}
-        visible={['line', 'feedback', 'question', 'branch', 'doi-chat'].includes(kn.kind) && !gioiThieuMo && !laTheChu}
-      />
       <SanKhauMvp
         kb={kb}
         canh={noiDangO ? noiDangO.diaDiem.canh : s.canh}
@@ -562,6 +560,12 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         nhacViec={laTheChu || ['chon-dia-diem', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick', 'challenge', 'fix-query'].includes(kn.kind) ? null : s.nhacViec}
         dienTen={dienTen}
         isCard={laTheChu}
+        dongHanh={<DongHanhMvp
+          key={JSON.stringify([lanDoiVan, s.batDauLuc, s.conTro, s.hoiDap?.viTri, kn.kind, gioiThieuMo, laTheChu])}
+          kb={kb}
+          s={s}
+          visible={['line', 'feedback', 'question', 'branch', 'doi-chat'].includes(kn.kind) && !gioiThieuMo && !laTheChu}
+        />}
       >
         {noiDung}
       </SanKhauMvp>
