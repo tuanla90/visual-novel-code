@@ -1508,29 +1508,47 @@ span.v7-o--bang:not(.v7-o--phieu) {
   text-align: center;
   overflow-wrap: anywhere;
 }
-/* Câu hỏi đang mở: thẻ tròn nét đứt. */
+/* Câu hỏi đang mở: thẻ tròn nét đứt ở trung tâm bảng điều tra. */
 .the--hoi {
   width: 178px;
   height: 178px;
-  padding: 26px 22px;
+  padding: 26px 20px;
   border-radius: 50%;
-  border: 4px dashed #b71c1c;
-  background: #fff;
+  border: 4px dashed #dc2626;
+  background: radial-gradient(circle at 50% 35%, #ffffff 0%, #fffdfa 60%, #fef3c7 100%);
   align-items: center;
   justify-content: center;
   text-align: center;
-  box-shadow: 2px 5px 11px rgba(0, 0, 0, 0.38);
+  box-shadow:
+    0 0 0 4px rgba(220, 38, 38, 0.14),
+    0 0 0 8px rgba(254, 243, 199, 0.4),
+    3px 8px 18px rgba(0, 0, 0, 0.42);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+.the--hoi:hover {
+  transform: scale(1.04);
+  box-shadow:
+    0 0 0 6px rgba(220, 38, 38, 0.22),
+    0 0 0 10px rgba(254, 243, 199, 0.6),
+    0 12px 26px rgba(0, 0, 0, 0.52);
+  cursor: pointer;
 }
 .the--hoi::after {
   content: '?';
   position: absolute;
-  top: 6px;
-  right: 24px;
-  color: #b71c1c;
-  font: 800 28px var(--font-ui);
+  top: 8px;
+  right: 22px;
+  color: #dc2626;
+  font: 800 28px/1 var(--font-ui);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
 }
 .the__cau {
-  font: 700 14.5px/1.3 var(--font-ui);
+  font: 800 14px/1.32 var(--font-ui);
+  color: #1e293b;
+  overflow-wrap: break-word;
+  max-width: 136px;
+  user-select: none;
 }
 
 /* Nút ở góc bảng. */
@@ -1898,16 +1916,95 @@ span.v7-o--bang:not(.v7-o--phieu) {
   padding: 10px 14px;
   margin: 4px 0 0;
 }
-.bang__xem-hoi {
-  margin: 0;
-  padding: 30px 24px;
-  border-radius: 16px;
-  background: rgba(185, 28, 28, 0.85);
-  border: 3px dashed #fca5a5;
-  color: #ffffff;
-  font: 800 1.35rem/1.4 var(--font-ui);
+/* Hộp xem phóng to câu hỏi trọng tâm điều tra: hình tròn cao cấp */
+.bang__xem-the-focal--hoi {
+  width: auto;
+  max-width: min(440px, 92vw);
+  align-items: center;
+}
+.bang__xem-the-than--hoi {
+  justify-content: center;
+  width: auto;
+}
+.bang__xem-ghim-nut--tinh {
+  cursor: default;
+  pointer-events: none;
+}
+.bang__xem-hoi-card {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  max-width: min(380px, 86vw);
+  max-height: min(380px, 86vw);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 32%, #ffffff 0%, #fffdfa 55%, #fef3c7 100%);
+  border: 4.5px dashed #dc2626;
+  box-shadow:
+    0 0 0 6px rgba(220, 38, 38, 0.16),
+    0 0 0 12px rgba(254, 243, 199, 0.45),
+    0 24px 60px rgba(0, 0, 0, 0.65),
+    inset 0 2px 14px rgba(220, 38, 38, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 42px 30px;
   text-align: center;
-  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.65);
+  box-sizing: border-box;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Biểu tượng dấu hỏi chìm làm watermark nghệ thuật */
+.bang__xem-hoi-dau {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: 900 230px/1 var(--font-ui);
+  color: rgba(220, 38, 38, 0.06);
+  pointer-events: none;
+  user-select: none;
+}
+
+.bang__xem-hoi-loai {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  background: #dc2626;
+  color: #ffffff;
+  font: 800 0.72rem/1.2 var(--font-ui);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.35);
+}
+
+.bang__xem-hoi {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: #1e293b;
+  font: 800 1.34rem/1.4 var(--font-ui);
+  text-align: center;
+  overflow-wrap: break-word;
+  max-width: 290px;
+}
+
+.bang__xem-hoi-nhac {
+  position: relative;
+  z-index: 1;
+  margin-top: 14px;
+  color: #854d0e;
+  font: 500 0.76rem/1.35 var(--font-ui);
+  max-width: 250px;
+  opacity: 0.9;
 }
 
 /* Các chip giá trị truy vấn: KHÔNG CÒN CHỮ "GIẤY NHỚ MANG SANG LAPTOP" */
