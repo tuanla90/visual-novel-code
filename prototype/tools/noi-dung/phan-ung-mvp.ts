@@ -13,7 +13,16 @@
  */
 import { parseSpoken, type RawLine } from './doc.ts';
 
-export type KhiChay = { kind: 'so-dong'; n: number; cot?: string[] } | { kind: 'loi-cot' } | { kind: 'loi' } | { kind: 'dung' } | { kind: 'sai-thu-tu' } | { kind: 'thieu-cot' } | { kind: 'thua-cot' };
+export type KhiChay =
+  | { kind: 'so-dong'; n: number; cot?: string[] }
+  | { kind: 'loi-cot' }
+  | { kind: 'loi' }
+  | { kind: 'dung' }
+  | { kind: 'sai-thu-tu' }
+  | { kind: 'thieu-cot' }
+  | { kind: 'thua-cot' }
+  | { kind: 'sai-cot-nop' }
+  | { kind: 'xem-tung-buoc' };
 
 export interface RawPhanUng {
   khi: KhiChay;
@@ -38,8 +47,10 @@ export function docPhanUng(fields: Readonly<Record<string, string>>): { phanUng:
     else if (nhan === 'Khi sai thứ tự') khi = { kind: 'sai-thu-tu' };
     else if (nhan === 'Khi thiếu cột') khi = { kind: 'thieu-cot' };
     else if (nhan === 'Khi thừa cột') khi = { kind: 'thua-cot' };
+    else if (nhan === 'Khi chọn sai cột nộp') khi = { kind: 'sai-cot-nop' };
+    else if (nhan === 'Khi xem từng bước') khi = { kind: 'xem-tung-buoc' };
     if (!khi) {
-      loi.push(`dòng "${nhan}" lạ — dùng "Khi chạy ra <n> dòng", "Khi chạy ra <n> dòng với <cột>, <cột>", "Khi lỗi không có cột", "Khi lỗi", "Khi đúng", "Khi sai thứ tự", "Khi thiếu cột", "Khi thừa cột"`);
+      loi.push(`dòng "${nhan}" lạ — dùng "Khi chạy ra <n> dòng", "Khi chạy ra <n> dòng với <cột>, <cột>", "Khi lỗi không có cột", "Khi lỗi", "Khi đúng", "Khi sai thứ tự", "Khi thiếu cột", "Khi thừa cột", "Khi chọn sai cột nộp", "Khi xem từng bước"`);
       continue;
     }
     try {

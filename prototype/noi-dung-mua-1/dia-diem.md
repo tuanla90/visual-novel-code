@@ -1,0 +1,1 @@
+<!-- Chương 1 đi theo truyện (ĐÃ CHỐT C, 30/09/2026): không có ngày chọn địa điểm nên tệp này để trống. Chỗ bấm trong từng cảnh khai bằng [KHÁM PHÁ] ngay trong chuỗi (kich-ban/). Tệp dùng lại từ Vụ 2 (ngày có hạn). -->

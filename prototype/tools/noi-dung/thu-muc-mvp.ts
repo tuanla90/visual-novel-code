@@ -38,7 +38,8 @@ function tatCaMd(goc: string): string[] {
   return out;
 }
 
-export function gomTepMvp(goc: string, hienThi = 'noi-dung-mvp'): { tep: TepMvp[]; loi: LoiNoiDung[]; doanLoi: DoanLoi[] } {
+export function gomTepMvp(goc: string, hienThi?: string): { tep: TepMvp[]; loi: LoiNoiDung[]; doanLoi: DoanLoi[] } {
+  const ht = hienThi ?? (goc.includes('noi-dung-mua-1') ? 'noi-dung-mua-1' : 'noi-dung-mvp');
   const tep: TepMvp[] = [];
   const loi: LoiNoiDung[] = [];
   const doanLoi: DoanLoi[] = [];
@@ -46,25 +47,26 @@ export function gomTepMvp(goc: string, hienThi = 'noi-dung-mvp'): { tep: TepMvp[
   const conLai = new Set(tatCaMd(goc).filter((p) => !/(^|\/)(.*\.?)README\.md$/i.test(p) && !p.startsWith('giong/')));
   for (const p of [...conLai].filter((x) => x.startsWith('loi/')).sort()) {
     conLai.delete(p);
-    const d = docTepLoi(`${hienThi}/${p}`, readFileSync(join(goc, p), 'utf8'));
+    const d = docTepLoi(`${ht}/${p}`, readFileSync(join(goc, p), 'utf8'));
     doanLoi.push(...d.doan);
     loi.push(...d.loi);
   }
   for (const c of CHO_DOC) {
     const thuoc = [...conLai].filter((p) => (c.thuMuc ? p.startsWith(`${c.duongDan}/`) && !p.slice(c.duongDan.length + 1).includes('/') : p === c.duongDan)).sort();
-    if (thuoc.length === 0 && !c.thuMuc) loi.push({ tep: `${hienThi}/${c.duongDan}`, dong: 1, thongBao: `thiếu tệp ${c.duongDan}` });
+    if (thuoc.length === 0 && !c.thuMuc) loi.push({ tep: `${ht}/${c.duongDan}`, dong: 1, thongBao: `thiếu tệp ${c.duongDan}` });
     for (const p of thuoc) {
       conLai.delete(p);
-      tep.push({ duongDan: `${hienThi}/${p}`, loai: c.loai, noiDung: readFileSync(join(goc, p), 'utf8') });
+      tep.push({ duongDan: `${ht}/${p}`, loai: c.loai, noiDung: readFileSync(join(goc, p), 'utf8') });
     }
   }
-  for (const p of conLai) loi.push({ tep: `${hienThi}/${p}`, dong: 1, thongBao: `tệp nằm ngoài các chỗ bộ đọc MVP biết (${[...CHO_DOC.map((c) => c.duongDan), 'loi'].join(', ')})` });
+  for (const p of conLai) loi.push({ tep: `${ht}/${p}`, dong: 1, thongBao: `tệp nằm ngoài các chỗ bộ đọc MVP biết (${[...CHO_DOC.map((c) => c.duongDan), 'loi'].join(', ')})` });
   return { tep, loi, doanLoi };
 }
 
 /** Đọc cả thư mục: ghép lời vào khung, đọc, rồi trả lỗi về đúng tệp/dòng gốc. `soLoiTam`: số dòng lời còn "(tạm)". */
-export function docThuMucMvp(goc: string, hienThi = 'noi-dung-mvp'): KetQuaDocMvp & { tep: TepMvp[]; soLoiTam: number; banDo: Map<string, NguonDong[]> } {
-  const g = gomTepMvp(goc, hienThi);
+export function docThuMucMvp(goc: string, hienThi?: string): KetQuaDocMvp & { tep: TepMvp[]; soLoiTam: number; banDo: Map<string, NguonDong[]> } {
+  const ht = hienThi ?? (goc.includes('noi-dung-mua-1') ? 'noi-dung-mua-1' : 'noi-dung-mvp');
+  const g = gomTepMvp(goc, ht);
   const khung = g.tep.filter((t) => t.loai === 'kich-ban' || t.loai === 'thu-thach');
   const ghep = ghepLoi(khung, g.doanLoi);
   const tep = g.tep.map((t) => (ghep.noiDung.has(t.duongDan) ? { ...t, noiDung: ghep.noiDung.get(t.duongDan) ?? t.noiDung } : t));

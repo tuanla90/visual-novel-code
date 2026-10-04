@@ -1149,3 +1149,121 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 - Chú thích `<!-- … -->` (một hay nhiều dòng) bỏ qua. Không thay biến `{{…}}` trong tệp này.
 - Câu SQL được kiểm chỉ nhận **một** câu `SELECT`/`WITH` (dấu `;` cuối được phép).
 - Bộ đọc nằm riêng ở `tools/noi-dung/du-lieu-mvp.ts` (`docDuLieuMvp`); phần chạy ở `tools/noi-dung/sql-mvp.ts`. Đổi nguồn dữ liệu sang YAML (§11) chỉ cần thay bộ đọc, giữ đầu ra `BoDuLieuMvp`.
+
+## 19. Bộ kịch bản Mùa 1 (gói T0, QĐ-093)
+
+### 19.1 Thư mục `prototype/noi-dung-mua-1/`
+
+Thư mục `prototype/noi-dung-mua-1/` là không gian nội dung chính thức cho toàn bộ Mùa 1 (gồm 5 vụ án chính: Vụ 1 "Chữ ký H", Vụ 2 "Học bổng biến mất", Vụ 3 "Điểm số ảo", Vụ 4 "Máy chủ rò rỉ", Vụ 5 "Bóng ma đồ án" cùng 6 nhiệm vụ phụ).
+Thư mục này hoạt động song song và độc lập hoàn toàn với `prototype/noi-dung-mvp/` để đảm bảo an toàn tuyệt đối cho bản demo MVP.
+
+Dữ liệu kịch bản TypeScript được sinh riêng ra tệp:
+`prototype/src/content/generated/mua-1/kich-ban.gen.ts`.
+
+### 19.2 Các lệnh công cụ kịch bản Mùa 1
+
+Trong thư mục `prototype/`:
+
+- `npm run kiem-noi-dung:mua1`: Kiểm tra toàn diện bộ nội dung Mùa 1 (cú pháp Markdown, tham chiếu đồ thị, luật máy lịch, người quen, tính toán số dòng SQL trên `du-lieu.md`).
+- `npm run noi-dung:sinh:mua1`: Đọc và sinh tệp `src/content/generated/mua-1/kich-ban.gen.ts` từ `noi-dung-mua-1/`.
+- `npm run kiem-giong:mua1`: Quét kiểm tra văn phong, giọng điệu, từ cấm và xưng hô cho toàn bộ tệp thoại Mùa 1 (hỗ trợ cờ `-- --chi-loi`).
+- `npm run kiem-ky-nang:mua1`: Kiểm tra sự xuất hiện sớm của các từ khóa SQL theo bảng ma trận kỹ năng A4 (phát hiện bài tập dùng lệnh vượt trước vụ án cho phép).
+- `npx tsx tools/truyen-chu.ts`: Trình xuất 11 tệp sách truyện chữ phân đoạn CYOA (Choose-Your-Own-Adventure) ra thư mục `docs/mua-1/truyen-chu/`.
+
+### 19.3 Các cú pháp mới bổ sung cho Mùa 1 (A5)
+
+Kế thừa toàn bộ cú pháp của MVP (§18), Mùa 1 bổ sung các cú pháp sau:
+
+#### a. Lịch và Sự kiện (`lich.md`)
+1. **Hạn chót và Việc chốt của vụ:**
+   ```markdown
+   ## Mở đầu
+   - Chuỗi đầu: md-01-ktx
+   - Hạn chót: 2024-09-30
+   - Việc chốt: Buổi giải trình Hội sinh viên
+   ```
+   Và ở các vụ sau:
+   ```markdown
+   ## Học bổng {vụ sau: vu2}
+   - Chuỗi: v2-mo-dau
+   - Ngày: 2024-10-08
+   - Hạn chót: 2024-10-15
+   - Việc chốt: Họp Hội đồng xét duyệt
+   ```
+2. **Việc ngày lễ (`{việc ngày lễ: <mã>}`):**
+   ```markdown
+   ## Trung thu tại KTX {việc ngày lễ: le-trung-thu}
+   - Ngày: 2024-09-17
+   - Thuộc vụ: vu1
+   - Chuỗi: le-trung-thu-mo
+   - Người giao: tung
+   - Khi lỡ: le-trung-thu-lo
+   ```
+3. **Người quen và Hảo cảm (`{người quen: <mã>}`):**
+   ```markdown
+   ## Bác Thịnh {người quen: bac-thinh}
+   - Mở sau: vu1
+   - Việc 1: nq-thinh-1 · mở sau vu1
+   - Việc 2: nq-thinh-2 · mở sau vu1
+   - Việc 3: nq-thinh-3 · mở sau vu2
+   - Ảnh CG: cg-thinh-tra · chú thích: Tách trà đêm · mô tả: Bác Thịnh ngồi gác đêm
+   - Giúp ở: dc-vu3-quan
+   ```
+
+#### b. Chuỗi kịch bản (`kich-ban/*.md`)
+1. **Đánh dấu kết thúc việc chính của ngày:**
+   ```markdown
+   - [XONG VIỆC CHÍNH]
+   ```
+   Dùng để kích hoạt nút "Hết ngày" trên giao diện khi người chơi đã hoàn tất công việc chính.
+2. **Người quen nói thay trong Đối chất:**
+   ```markdown
+   - [ĐỐI CHẤT dc-vu3-quan] quan: "Bạn có **chứng cứ** nào chứng minh không?"
+     - [CÂU HỎI] Ai xác nhận việc này?
+     - {ev-the-lich} [ĐỦ CĂN CỨ] → phản hồi: **quan** (stunned): Đúng là thẻ thật...
+     - [CHƯA ĐỦ] → phản hồi: **quan** (smug): Chưa thuyết phục.
+     - [HẾT LƯỢT] → phản hồi: **quan** (smug): Hết giờ giải trình rồi.
+     - [KHÁC] → phản hồi: **quan** (smug): Thẻ này không liên quan.
+     - [NGƯỜI QUEN bac-thinh] → nói thay: s-thinh-noi-thay
+   ```
+   Nếu người chơi đạt đủ 3/3 hảo cảm với Bác Thịnh, lựa chọn nhờ nói thay sẽ xuất hiện và đưa trực tiếp tới kết quả thành công.
+3. **Ảnh minh họa kèm chú thích và mô tả:**
+   ```markdown
+   - [ẢNH cg-thinh-tra · chú thích: Tách trà đêm · mô tả: Bác Thịnh ngồi gác đêm bên tách trà]
+   ```
+
+#### c. Cảnh nền (`canh.md`)
+Hỗ trợ trường mô tả ngữ cảnh phục vụ việc đọc truyện chữ hoặc hỗ trợ accessibility:
+```markdown
+### sanh-toa-b — Sảnh tòa B · mô tả: Sảnh rộng tầng 1 tòa B, có hòm kiến nghị góc cầu thang
+- Ảnh nền: bg-sanh-toa-b
+```
+hoặc viết dòng con:
+```markdown
+### sanh-toa-b — Sảnh tòa B
+- Ảnh nền: bg-sanh-toa-b
+- Mô tả: Sảnh rộng tầng 1 tòa B, có hòm kiến nghị góc cầu thang
+```
+
+### 19.4 Các quy tắc kiểm tra logic mới (B1, B2)
+
+Bộ kiểm tra `npm run kiem-noi-dung:mua1` bổ sung các quy tắc khắt khe:
+
+1. **Quy tắc Máy lịch (B1):**
+   - Vụ có khai ngày bắt buộc phải có `Hạn chót`.
+   - `Hạn chót` phải bằng hoặc sau `Ngày` bắt đầu vụ.
+   - Mỗi ngày trong vụ phải có đúng một nút `[XONG VIỆC CHÍNH]`.
+   - Một ngày không được có vượt quá 2 việc chính.
+   - Ngày của `việc ngày lễ` phải nằm trong khoảng thời gian diễn ra vụ mà nó trực thuộc.
+   - Không được có hai việc ngày lễ diễn ra trong cùng một ngày.
+   - Manh mối bắt buộc (cần cho true end hoặc đáp [ĐỦ CĂN CỨ]) không được chỉ kiếm được ở các chuỗi tùy chọn.
+
+2. **Quy tắc Người quen và Hảo cảm (B2):**
+   - Mỗi người quen phải có chính xác 3 nhiệm vụ (tương ứng 3 tim hảo cảm).
+   - Mốc mở sau của việc thứ 3 không được muộn hơn vụ diễn ra nhịp đối chất mà người đó hỗ trợ.
+   - Trường `Giúp ở` phải trỏ tới một nhịp `[ĐỐI CHẤT]` có dòng `[NGƯỜI QUEN <mã>]` tương ứng.
+   - Nhịp `[ĐỐI CHẤT]` có người quen giúp vẫn bắt buộc phải có ít nhất một thẻ `[ĐỦ CĂN CỨ]` người chơi tự thu thập được trên tuyến chính (để đảm bảo không bị soft-lock nếu không làm việc phụ).
+
+### 19.5 Chuyển đổi bộ nội dung tại Runtime
+
+Game giữ chế độ mặc định là MVP. Trên màn hình Tiêu đề (Title Screen), một nút chuyển đổi nội dung cho phép chuyển qua lại giữa `Bản MVP (Vụ 1)` và `Mùa 1 (Bản đầy đủ)`. Trạng thái lưu trữ được quản lý qua `layMaBoNoiDung()` và `doiBoNoiDung()` trong kho MVP.

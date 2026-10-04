@@ -33,7 +33,12 @@ function dem(m: RawMvp): string {
   return `${m.nhanVat.length} nhân vật, ${m.canh.length} cảnh, ${m.diaDiem.length} địa điểm, ${duKien} dữ kiện, ${m.lich?.ngay.length ?? 0} ngày, ${m.chuoi.length} chuỗi, ${loiThoai} lời thoại, ${m.challenges.length} thẻ thử thách, ${m.soTay.length} trang sổ, ${m.dossier.length} thẻ hồ sơ, ${m.duLieu?.bang.length ?? 0} bảng dữ liệu`;
 }
 
-export async function kiemNoiDungMvp(thuMuc: string = THU_MUC_NOI_DUNG_MVP): Promise<KetQuaKiemMvp> {
+export async function kiemNoiDungMvp(
+  thuMuc: string = THU_MUC_NOI_DUNG_MVP,
+  thuMucSinh: string = THU_MUC_SINH_MVP,
+  hamVanBan: (d: DuLieuMvp) => Record<string, string> = vanBanMvp,
+  nhanThuMuc: string = 'noi-dung-mvp',
+): Promise<KetQuaKiemMvp> {
   const kq = docThuMucMvp(thuMuc);
   const loiDoc = [...kq.loi];
   const luat = kiemLuatMvp(kq.mvp, { spriteVat: docSpriteVat(), anh: docTenAnh() });
@@ -44,7 +49,7 @@ export async function kiemNoiDungMvp(thuMuc: string = THU_MUC_NOI_DUNG_MVP): Pro
   if (loi.length === 0) {
     try {
       duLieu = chuyenMvp(kq.mvp, luat);
-      tepCu = tepLechTrenDia(vanBanMvp(duLieu), THU_MUC_SINH_MVP);
+      tepCu = tepLechTrenDia(hamVanBan(duLieu), thuMucSinh);
     } catch (e) {
       loi.push((e as Error).message);
     }
@@ -56,9 +61,9 @@ export async function kiemNoiDungMvp(thuMuc: string = THU_MUC_NOI_DUNG_MVP): Pro
     sql = chay.ketQua;
   }
   const soSql = sql ? `; ${sql.length} câu SQL khai số dòng, chạy thật khớp ${sql.filter((s) => s.soDongThat === s.soDong).length}` : '';
-  const tomTat = loi.length === 0 ? `noi-dung-mvp: ${kq.tep.length} tệp, không lỗi — ${dem(kq.mvp)}${soSql}.` : `noi-dung-mvp: ${kq.tep.length} tệp, ${loi.length} lỗi.`;
+  const tomTat = loi.length === 0 ? `${nhanThuMuc}: ${kq.tep.length} tệp, không lỗi — ${dem(kq.mvp)}${soSql}.` : `${nhanThuMuc}: ${kq.tep.length} tệp, ${loi.length} lỗi.`;
   const canhBao = luat.canhBao.map((l) => dinhDangLoi(traViTri(l, kq.banDo)));
-  if (kq.soLoiTam > 0) canhBao.push(`noi-dung-mvp/loi/: còn ${kq.soLoiTam} dòng lời "(tạm)" chờ phiên truyện viết lời thật`);
+  if (kq.soLoiTam > 0) canhBao.push(`${nhanThuMuc}/loi/: còn ${kq.soLoiTam} dòng lời "(tạm)" chờ phiên truyện viết lời thật`);
   return { loi, canhBao, tomTat, tepCu, sql };
 }
 

@@ -9,7 +9,7 @@ import { AudioSettingsModal } from '../../shared/audio/AudioSettingsModal';
 import { soundEngine } from '../../shared/audio/sound-engine';
 import { ConfirmDialog } from '../../shared/ui/ConfirmDialog';
 import { taoTrangThai } from '../engine/may';
-import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
+import { doiBoNoiDung, KICH_BAN, layMaBoNoiDung, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
 import { anhTheoTen } from './anh-mvp';
 import { LuuNapMvp } from './LuuNapMvp';
 import { taiTruocTheoVan } from './tai-truoc-mvp';
@@ -108,6 +108,18 @@ export function TieuDeMvp({ onVao }: TieuDeMvpProps) {
         <Nut ma="nap" nhan="Nạp ván" disabled={!coONap} title={coONap ? undefined : 'Chưa có ván nào được lưu'} onClick={() => setNap(true)} />
         <Nut ma="cai" nhan="Cài đặt" onClick={() => setCaiDat(true)} />
       </nav>
+      {import.meta.env.DEV ? (
+        <footer style={{ position: 'relative', zIndex: 2, marginBottom: '0.6rem', textAlign: 'center' }}>
+          <button
+            type="button"
+            onClick={() => doiBoNoiDung(layMaBoNoiDung() === 'mvp' ? 'mua-1' : 'mvp')}
+            style={{ background: 'rgba(20, 12, 4, 0.75)', border: '1px solid #f5c46b', color: '#fff8e8', borderRadius: '4px', padding: '3px 10px', fontSize: '0.8rem', cursor: 'pointer' }}
+            title="Bấm để chuyển giữa bản MVP và Mùa 1"
+          >
+            Bộ nội dung: {layMaBoNoiDung() === 'mua-1' ? 'Mùa 1' : 'MVP'} (bấm để đổi)
+          </button>
+        </footer>
+      ) : null}
 
       <AudioSettingsModal open={caiDat} onClose={() => setCaiDat(false)} />
       {nap ? (

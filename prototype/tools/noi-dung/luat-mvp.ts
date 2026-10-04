@@ -38,6 +38,34 @@ export interface TuyChonLuatMvp {
 
 type Producer = { kind: 'du-kien'; id: string } | { kind: 'the'; id: string } | { kind: 'chuoi'; id: string };
 
+export function layCotSqlChuan(sql: string, bangCsdl?: { ten: string; cot: { ten: string }[] }[]): string[] | null {
+  const m = /^\s*(?:WITH\s+[\s\S]+?\s+AS\s+\([\s\S]+?\)\s+)?SELECT\s+([\s\S]+?)\s+FROM\s+([A-Za-z0-9_]+)/i.exec(sql);
+  if (!m) return null;
+  const rawSelect = m[1]?.trim();
+  const tableName = m[2]?.trim();
+  if (rawSelect === '*') {
+    if (bangCsdl && tableName) {
+      const b = bangCsdl.find((x) => x.ten.toLowerCase() === tableName.toLowerCase());
+      if (b) return b.cot.map((c) => c.ten);
+    }
+    return null;
+  }
+  const cols: string[] = [];
+  for (const part of (rawSelect ?? '').split(',')) {
+    const trimmed = part.trim();
+    const mAlias = /\bAS\s+([A-Za-z0-9_]+)$/i.exec(trimmed);
+    if (mAlias && mAlias[1]) {
+      cols.push(mAlias[1]);
+      continue;
+    }
+    const mCol = /(?:[A-Za-z0-9_]+\.)?([A-Za-z0-9_]+)$/.exec(trimmed);
+    if (mCol && mCol[1]) {
+      cols.push(mCol[1]);
+    }
+  }
+  return cols;
+}
+
 export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLuat {
   const loi: LoiNoiDung[] = [];
   const canhBao: LoiNoiDung[] = [];
@@ -125,6 +153,21 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     for (const b of ds) if (!bang.has(b)) err(c.viTri, `thẻ ${c.id}, "Nối được với": không có bảng "${b}" trong du-lieu.md`);
     const sql = c.sql['SQL chuẩn'] ?? '';
     for (const m of sql.matchAll(/\bJOIN\s+([A-Za-z_][A-Za-z0-9_]*)/gi)) if (m[1] && !ds.includes(m[1])) err(c.viTri, `thẻ ${c.id}, "Nối được với": thiếu bảng "${m[1]}" mà SQL chuẩn nối tới`);
+  }
+  // Kiểm Cột nộp (S12): Cột nộp phải có trong các cột của SQL chuẩn.
+  for (const c of mvp.challenges) {
+    const cotNopStr = c.fields['Cột nộp'];
+    if (!cotNopStr) continue;
+    const cotNopDs = cotNopStr.split(',').map((x) => x.trim()).filter(Boolean);
+    const sql = c.sql['SQL chuẩn'] ?? '';
+    const cotHopLe = layCotSqlChuan(sql, mvp.duLieu?.bang);
+    if (cotHopLe && cotHopLe.length > 0) {
+      for (const cot of cotNopDs) {
+        if (!cotHopLe.includes(cot)) {
+          err(c.viTri, `thẻ ${c.id}: Cột nộp "${cot}" không có trong các cột của SQL chuẩn (${cotHopLe.join(', ')})`);
+        }
+      }
+    }
   }
   // V2 aggregate cards may use only a result card from an earlier challenge.
   const evidenceOwner = new Map(mvp.challenges.flatMap((c, i) => c.evidence ? [[c.evidence.id, { c, i }] as const] : []));
@@ -532,7 +575,29 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   if (lich.ngayHop) goc.push({ id: lich.ngayHop.chuoi, t: 1000 });
   if (lich.ket) goc.push({ id: lich.ket.that, t: 1000 }, { id: lich.ket.thuong, t: 1000 });
   // Vụ sau chạy sau khi vụ gốc kết: cùng mốc "ngày họp" (mọi nhân vật đã xuất hiện).
-  for (const v of lich.vuSau) goc.push({ id: v.chuoi, t: 1000 });
+  for (const v of lich.vuSau) {
+    goc.push({ id: v.chuoi, t: 1000 });
+    for (const d of v.cacNgay) {
+      canChuoiLich(d.chuoi, v.viTri, `vụ ${v.id}, ngày ${d.ngay}`);
+      goc.push({ id: d.chuoi, t: 1000 });
+    }
+  }
+  for (const l of lich.viecNgayLe ?? []) {
+    canChuoiLich(l.chuoi, l.viTri, `việc ngày lễ ${l.id}, "Chuỗi"`);
+    canChuoiLich(l.khiLo, l.viTri, `việc ngày lễ ${l.id}, "Khi lỡ"`);
+    goc.push({ id: l.chuoi, t: 1000 }, { id: l.khiLo, t: 1000 });
+  }
+  for (const n of lich.nguoiQuen ?? []) {
+    for (const v of n.viec) if (chuoi.has(v.id)) goc.push({ id: v.id, t: 1000 });
+  }
+  for (const c of mvp.chuoi) {
+    for (const it of c.items) {
+      if (it.kind === 'doi-chat' && it.nguoiQuen) {
+        canChuoiLich(it.nguoiQuen.noiThay, c.viTri, `đối chất ${it.id}, nói thay`);
+        goc.push({ id: it.nguoiQuen.noiThay, t: 1000 });
+      }
+    }
+  }
   for (const g of goc) if (chuoi.has(g.id)) mocChuoi.set(g.id, Math.min(mocChuoi.get(g.id) ?? Infinity, g.t));
   let doi = true;
   while (doi) {
@@ -794,6 +859,196 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     for (const d of mvp.dossier) for (const q of Object.values(d.quotes).flat()) bao(q, d.viTri, `thẻ hồ sơ ${d.id}`);
     for (const t of mvp.challenges) for (const [k, v] of Object.entries(t.fields)) bao(v, t.viTri, `thẻ ${t.id}, "${k}"`);
     for (const s of mvp.soTay) for (const l of [...s.trangChiLinh, ...s.haVy.map((x) => x.text)]) bao(l, s.viTri, `trang sổ ${s.id}`);
+  }
+
+  // ---------- Luật Mùa 1 (B1, B2) ----------
+  const dsVu = [lich.vu.id, ...lich.vuSau.filter((x) => !x.phu).map((x) => x.id)];
+  const thuTuVu = (id: string): number => {
+    const idx = dsVu.indexOf(id);
+    return idx >= 0 ? idx : 999;
+  };
+  const timVuCuaChuoi = (chuoiId: string): string | null => {
+    for (const v of lich.vuSau) {
+      if (toiDuoc(v.chuoi).has(chuoiId)) return v.id;
+      for (const d of v.cacNgay) {
+        if (toiDuoc(d.chuoi).has(chuoiId)) return v.id;
+      }
+    }
+    if (toiDuoc(lich.chuoiDau).has(chuoiId)) return lich.vu.id;
+    for (const n of lich.ngay) {
+      if (n.chuoi && toiDuoc(n.chuoi).has(chuoiId)) return lich.vu.id;
+      if (n.moNgay && toiDuoc(n.moNgay).has(chuoiId)) return lich.vu.id;
+    }
+    if (lich.ngayHop && toiDuoc(lich.ngayHop.chuoi).has(chuoiId)) return lich.vu.id;
+    if (lich.ket) {
+      if (toiDuoc(lich.ket.that).has(chuoiId)) return lich.vu.id;
+      if (toiDuoc(lich.ket.thuong).has(chuoiId)) return lich.vu.id;
+    }
+    return null;
+  };
+
+  // B1. Vụ có hạn chót và ngày
+  for (const v of lich.vuSau) {
+    if (v.ngay && v.hanChot && v.hanChot < v.ngay) {
+      err(v.viTri, `vụ ${v.id}: Hạn chót "${v.hanChot}" trước Ngày "${v.ngay}"`);
+    }
+    if (v.cacNgay && v.cacNgay.length > 0 && !v.hanChot) {
+      err(v.viTri, `vụ ${v.id}: vụ thiếu Hạn chót`);
+    }
+    for (const d of v.cacNgay) {
+      const cacChuoiCuaNgay = toiDuoc(d.chuoi);
+      let coXong = false;
+      let soViecChinh = 0;
+      for (const cid of cacChuoiCuaNgay) {
+        const ch = chuoi.get(cid);
+        if (!ch) continue;
+        for (const it of ch.items) {
+          if (it.kind === 'xong-viec-chinh') coXong = true;
+          if (it.kind === 'explore') {
+            for (const diem of it.diem) {
+              if (diem.dau === 'chinh') soViecChinh++;
+            }
+          }
+        }
+      }
+      if (!coXong) err(v.viTri, `vụ ${v.id}, ngày ${d.ngay}: một ngày không có [XONG VIỆC CHÍNH]`);
+      if (soViecChinh > 2) err(v.viTri, `vụ ${v.id}, ngày ${d.ngay}: một ngày có hơn 2 việc chính (${soViecChinh})`);
+    }
+  }
+
+  // B1. Việc ngày lễ
+  const ngayLeDaCo = new Map<string, string>();
+  for (const le of lich.viecNgayLe ?? []) {
+    const da = ngayLeDaCo.get(le.ngay);
+    if (da) err(le.viTri, `hai việc ngày lễ cùng ngày "${le.ngay}": ${da} và ${le.id}`);
+    else ngayLeDaCo.set(le.ngay, le.id);
+
+    if (!nhanVat.has(le.nguoiGiao)) err(le.viTri, `việc ngày lễ ${le.id}, "Người giao": không có nhân vật "${le.nguoiGiao}" trong nhan-vat.md`);
+    if (!chuoi.has(le.chuoi)) err(le.viTri, `việc ngày lễ ${le.id}, "Chuỗi": không có chuỗi "${le.chuoi}"`);
+    if (!chuoi.has(le.khiLo)) err(le.viTri, `việc ngày lễ ${le.id}, "Khi lỡ": không có chuỗi "${le.khiLo}"`);
+
+    const vuChinh = lich.vuSau.find((x) => x.id === le.thuocVu) ?? (lich.vu.id === le.thuocVu ? lich.vu : null);
+    if (!vuChinh) {
+      err(le.viTri, `việc ngày lễ ${le.id}, "Thuộc vụ": "${le.thuocVu}" không phải vụ hợp lệ`);
+    } else if ('ngay' in vuChinh && vuChinh.ngay && 'hanChot' in vuChinh && vuChinh.hanChot) {
+      if (le.ngay < vuChinh.ngay || le.ngay > vuChinh.hanChot) {
+        err(le.viTri, `việc ngày lễ ${le.id}: Ngày "${le.ngay}" nằm ngoài khoảng ngày của Thuộc vụ ${le.thuocVu} (${vuChinh.ngay} → ${vuChinh.hanChot})`);
+      }
+    }
+  }
+
+  // B2. Người quen
+  for (const nq of lich.nguoiQuen ?? []) {
+    if (nq.viec.length !== 3) {
+      err(nq.viTri, `người quen ${nq.id}: người quen có ít hơn hoặc hơn 3 việc (có ${nq.viec.length})`);
+    }
+    if (nq.moSau && !dsVu.includes(nq.moSau)) {
+      err(nq.viTri, `người quen ${nq.id}, "Mở sau": "${nq.moSau}" không phải mã một vụ chính`);
+    }
+    for (const v of nq.viec) {
+      if (!dsVu.includes(v.moSau)) {
+        err(nq.viTri, `người quen ${nq.id}, việc ${v.id}: "mở sau ${v.moSau}" không phải mã một vụ chính`);
+      }
+    }
+    let dcFound: (MucMvp & { kind: 'doi-chat' }) | null = null;
+    let dcChuoiId: string | null = null;
+    for (const c of mvp.chuoi) {
+      for (const it of c.items) {
+        if (it.kind === 'doi-chat' && it.id === nq.giupO) {
+          dcFound = it;
+          dcChuoiId = c.id;
+          break;
+        }
+      }
+      if (dcFound) break;
+    }
+    if (!dcFound) {
+      err(nq.viTri, `người quen ${nq.id}: "Giúp ở" trỏ tới đối chất không tồn tại "${nq.giupO}"`);
+    } else {
+      if (!dcFound.nguoiQuen || dcFound.nguoiQuen.ma !== nq.id) {
+        err(nq.viTri, `người quen ${nq.id}: "Giúp ở" trỏ tới đối chất "${nq.giupO}" không có dòng "[NGƯỜI QUEN ${nq.id}]" tương ứng`);
+      }
+      if (nq.viec.length === 3 && dcChuoiId) {
+        const vuCuaDc = timVuCuaChuoi(dcChuoiId);
+        const v3MoSau = nq.viec[2]?.moSau ?? '';
+        if (vuCuaDc && v3MoSau && thuTuVu(v3MoSau) > thuTuVu(vuCuaDc)) {
+          err(nq.viTri, `người quen ${nq.id}: mở sau của việc 3 (${v3MoSau}) muộn hơn vụ của nhịp người ấy giúp (${vuCuaDc})`);
+        }
+      }
+    }
+  }
+
+  // B2. Đối chất có [NGƯỜI QUEN]
+  for (const c of mvp.chuoi) {
+    for (const it of c.items) {
+      if (it.kind !== 'doi-chat') continue;
+      const vt: ViTri = { tep: c.viTri.tep, dong: c.itemDong[c.items.indexOf(it)] ?? c.viTri.dong };
+      if (it.nguoiQuen) {
+        const duCards = it.bangChung.filter((b) => b.muc === 'du');
+        if (duCards.length === 0) {
+          err(vt, `[ĐỐI CHẤT ${it.id}] có [NGƯỜI QUEN] mà không có thẻ ĐỦ CĂN CỨ`);
+        } else {
+          const vuCuaDc = timVuCuaChuoi(c.id);
+          if (vuCuaDc) {
+            const coTheVuChinh = duCards.some((b) => {
+              const prods = producers.get(b.id) ?? [];
+              return prods.some((p) => {
+                if (p.kind === 'du-kien') return true;
+                if (p.kind === 'the') return true;
+                if (p.kind === 'chuoi') return timVuCuaChuoi(p.id) === vuCuaDc;
+                return false;
+              });
+            });
+            if (!coTheVuChinh) {
+              err(vt, `[ĐỐI CHẤT ${it.id}] có [NGƯỜI QUEN] nhưng không có thẻ ĐỦ CĂN CỨ kiếm được trong vụ chính`);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // B1. Manh mối bắt buộc chỉ kiếm được ở chuỗi tùy chọn
+  const chuoiTuyChon = new Set<string>();
+  for (const c of mvp.chuoi) {
+    for (const it of c.items) {
+      if (it.kind === 'explore') {
+        for (const d of it.diem) {
+          if (d.dau === 'phu') {
+            for (const r of toiDuoc(d.chuoi)) chuoiTuyChon.add(r);
+          }
+        }
+      }
+    }
+  }
+  const kiemManhMoiBatBuoc = (id: string, vt: ViTri, ten: string): void => {
+    const prods = producers.get(id) ?? [];
+    if (prods.length > 0) {
+      const chiTuyChon = prods.every((p) => (p.kind === 'chuoi' ? chuoiTuyChon.has(p.id) : false));
+      if (chiTuyChon) {
+        err(vt, `${ten}: manh mối bắt buộc "${id}" chỉ kiếm được ở chuỗi tùy chọn`);
+      }
+    }
+  };
+  if (lich.ket?.that) {
+    const cThat = chuoi.get(lich.ket.that);
+    const dkNode = cThat?.items.find((it) => it.kind === 'condition');
+    if (dkNode && dkNode.kind === 'condition') {
+      for (const id of maTrongDieuKien(dkNode.dieuKien)) {
+        kiemManhMoiBatBuoc(id, cThat?.viTri ?? lich.ket.viTri, 'điều kiện true end');
+      }
+    }
+  }
+  for (const c of mvp.chuoi) {
+    for (const it of c.items) {
+      if (it.kind === 'doi-chat') {
+        for (const b of it.bangChung) {
+          if (b.muc === 'du') {
+            kiemManhMoiBatBuoc(b.id, c.viTri, `[ĐỐI CHẤT ${it.id}]`);
+          }
+        }
+      }
+    }
   }
 
   return kq;

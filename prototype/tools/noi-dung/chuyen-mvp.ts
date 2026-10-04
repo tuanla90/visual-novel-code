@@ -53,8 +53,12 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
       return { type: 'goto', to: it.to };
     case 'show-document':
       return { type: 'show-document', documentId: it.id };
-    case 'image':
-      return { type: 'image', imageId: it.id };
+    case 'image': {
+      const img: Obj = { type: 'image', imageId: it.id };
+      if (it.chuThich) img.chuThich = it.chuThich;
+      if (it.moTa) img.moTa = it.moTa;
+      return img;
+    }
     case 'question':
       return { type: 'question', id: it.id, asker: it.asker, choices: it.choices.map(luaChon), truUyTin: it.truUyTin };
     case 'doi-chat':
@@ -68,6 +72,7 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
         khac: (it.khac ?? []).map(loi),
         hetLuot: (it.hetLuot ?? []).map(loi),
         truUyTin: it.truUyTin,
+        ...(it.nguoiQuen ? { nguoiQuen: it.nguoiQuen } : {}),
       };
     case 'challenge':
     case 'fix-query':
@@ -110,6 +115,8 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
       return { type: 'save-evidence', evidenceId: it.id };
     case 'ending-branch':
       return { type: 'ending-branch' };
+    case 'xong-viec-chinh':
+      return { type: 'xong-viec-chinh' };
     case 'explore':
       return {
         type: 'explore',
@@ -129,6 +136,7 @@ function chuoi(c: RawChuoiMvp, mocSomNhat: number, soDongKhai: DuLieuMvp['soDong
     id: c.id,
     title: c.title,
     canh: c.canh,
+    ...(c.canhCat ? { canhCat: true } : {}),
     mocSomNhat,
     nodes: c.items.map((it, k) => nut(it, `${c.viTri.tep}:${c.itemDong[k] ?? c.viTri.dong}`, soDongKhai)),
   };
@@ -176,6 +184,8 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     // "Chọn cột: a, b" (hoặc "không"): bài chọn cột của SELECT; giá trị là các cột bật sẵn.
     ...(t.fields['Chọn cột'] !== undefined ? { chonCot: t.fields['Chọn cột'].trim() === 'không' ? [] : t.fields['Chọn cột'].split(',').map((c) => c.trim()).filter((c) => c !== '') } : {}),
     ...(t.fields['Bấm ô lấy giấy nhớ'] ? { bamO: t.fields['Bấm ô lấy giấy nhớ'].trim() } : {}),
+    // "Cột nộp: a, b" (S12)
+    ...(t.fields['Cột nộp'] !== undefined ? { cotNop: t.fields['Cột nộp'].split(',').map((c) => c.trim()).filter((c) => c !== '') } : {}),
     truyVanNapSan: t.sql['Truy vấn nạp sẵn'] ?? null,
     phanUng: docPhanUng(t.fields).phanUng.map((p) => ({ khi: p.khi, loi: p.loi.map(loi) })),
     vatChung: t.evidence
@@ -221,7 +231,7 @@ export function chuyenMvp(mvp: RawMvp, luat: KetQuaLuat): DuLieuMvp {
       chiQuaLoiKe: n.chiQuaLoiKe,
       gioiThieu: n.gioiThieu,
     })),
-    canh: mvp.canh.map((c) => ({ id: c.id, ten: c.ten, anhNen: c.anhNen })),
+    canh: mvp.canh.map((c) => ({ id: c.id, ten: c.ten, anhNen: c.anhNen, ...(c.moTa ? { moTa: c.moTa } : {}) })),
     diaDiem: mvp.diaDiem.map((d) => ({
       id: d.id,
       ten: d.ten,
@@ -250,13 +260,59 @@ export function chuyenMvp(mvp: RawMvp, luat: KetQuaLuat): DuLieuMvp {
       luat: lich.luat,
       chuoiDau: lich.chuoiDau,
       ngayMoDau: lich.ngayMoDau,
-      ngay: lich.ngay.map((n) => ({ so: n.so, ten: n.ten, kieu: n.kieu, chuoi: n.chuoi, duKienChinh: n.duKienChinh, moNgay: n.moNgay, buoiToi: n.buoiToi })),
+      ...(lich.hanChot ? { hanChot: lich.hanChot } : {}),
+      ...(lich.viecChot ? { viecChot: lich.viecChot } : {}),
+      ngay: lich.ngay.map((n) => ({ so: n.so, ten: n.ten, kieu: n.kieu, chuoi: n.chuoi, ...(n.batDauO ? { batDauO: n.batDauO } : {}), duKienChinh: n.duKienChinh, moNgay: n.moNgay, buoiToi: n.buoiToi })),
       ngayHop: lich.ngayHop ? { chuoi: lich.ngayHop.chuoi } : null,
       ket: lich.ket ? { that: lich.ket.that, thuong: lich.ket.thuong } : null,
       // Chỉ ghi khi có vụ sau: bộ một vụ sinh ra y như trước.
-      ...(lich.vuSau.some((v) => !v.phu) ? { vuSau: lich.vuSau.filter((v) => !v.phu).map((v) => ({ id: v.id, ten: v.ten, chuoi: v.chuoi, ngay: v.ngay, tieuDeKet: v.tieuDeKet, loiKet: v.loiKet })) } : {}),
+      ...(lich.vuSau.some((v) => !v.phu)
+        ? {
+            vuSau: lich.vuSau
+              .filter((v) => !v.phu)
+              .map((v) => ({
+                id: v.id,
+                ten: v.ten,
+                chuoi: v.chuoi,
+                ngay: v.ngay,
+                ...(v.batDauO ? { batDauO: v.batDauO } : {}),
+                ...(v.hanChot ? { hanChot: v.hanChot } : {}),
+                ...(v.viecChot ? { viecChot: v.viecChot } : {}),
+                ...(v.cacNgay && v.cacNgay.length > 0 ? { cacNgay: v.cacNgay } : {}),
+                tieuDeKet: v.tieuDeKet,
+                loiKet: v.loiKet,
+              })),
+          }
+        : {}),
       ...(lich.vuSau.some((v) => v.phu)
         ? { nhiemVuPhu: lich.vuSau.filter((v) => v.phu).map((v) => ({ id: v.id, ten: v.ten, chuoi: v.chuoi, nguoiGiao: v.nguoiGiao ?? '', moSau: v.moSau ?? '', ngay: v.ngay, tieuDeKet: v.tieuDeKet, loiKet: v.loiKet })) }
+        : {}),
+      ...(lich.viecNgayLe && lich.viecNgayLe.length > 0
+        ? {
+            viecNgayLe: lich.viecNgayLe.map((l) => ({
+              id: l.id,
+              ten: l.ten,
+              ngay: l.ngay,
+              thuocVu: l.thuocVu,
+              chuoi: l.chuoi,
+              nguoiGiao: l.nguoiGiao,
+              khiLo: l.khiLo,
+              ...(l.tieuDeKet ? { tieuDeKet: l.tieuDeKet } : {}),
+              ...(l.loiKet ? { loiKet: l.loiKet } : {}),
+            })),
+          }
+        : {}),
+      ...(lich.nguoiQuen && lich.nguoiQuen.length > 0
+        ? {
+            nguoiQuen: lich.nguoiQuen.map((n) => ({
+              id: n.id,
+              ten: n.ten,
+              moSau: n.moSau,
+              viec: n.viec.map((v) => ({ id: v.id, moSau: v.moSau })),
+              anhCg: n.anhCg,
+              giupO: n.giupO,
+            })),
+          }
         : {}),
     },
     chuoi: chuoiDs,

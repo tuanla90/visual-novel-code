@@ -83,6 +83,7 @@ export interface CanhMvp {
   id: string;
   ten: string;
   anhNen: string | null;
+  moTa?: string | null;
 }
 
 export type NhanDuKienMvp = 'chinh' | 'phu' | 'nhieu';
@@ -134,9 +135,41 @@ export interface NgayMvp {
    */
   kieu: 'dia-diem' | 'theo-truyen';
   chuoi: string | null;
+  /** Nơi bắt đầu ngày (đặc tả A3 mục 14, B1). */
+  batDauO?: string | null;
   duKienChinh: string;
   moNgay: string | null;
   buoiToi: string;
+}
+
+export interface ViecNgayLeMvp {
+  id: string;
+  ten: string;
+  ngay: string;
+  thuocVu: string;
+  chuoi: string;
+  nguoiGiao: string;
+  khiLo: string;
+  tieuDeKet?: string;
+  loiKet?: string;
+}
+
+export interface ViecNguoiQuenMvp {
+  id: string;
+  moSau: string;
+}
+
+export interface NguoiQuenMvp {
+  id: string;
+  ten: string;
+  moSau: string;
+  viec: ViecNguoiQuenMvp[];
+  anhCg: {
+    anh: string;
+    chuThich?: string | null;
+    moTa?: string | null;
+  };
+  giupO: string;
 }
 
 export interface LichMvp {
@@ -147,6 +180,10 @@ export interface LichMvp {
   chuoiDau: string;
   /** Ngày thật của mở đầu (`- Ngày mở đầu:` ở lich.md, dạng YYYY-MM-DD); thiếu → null / không có. Lịch trong game tính từ đây. */
   ngayMoDau?: string | null;
+  /** Hạn chót của vụ (YYYY-MM-DD) nếu vụ có hạn chót. */
+  hanChot?: string | null;
+  /** Tên việc chốt ở hạn. */
+  viecChot?: string | null;
   ngay: NgayMvp[];
   ngayHop: { chuoi: string } | null;
   ket: { that: string; thuong: string } | null;
@@ -160,6 +197,10 @@ export interface LichMvp {
    * bảng hoạt động sau khi vụ `moSau` đã xong; tuyến đang chơi được cất đúng vị trí để người chơi luân phiên tiến triển.
    */
   nhiemVuPhu?: NhiemVuPhuMvp[];
+  /** Việc ngày lễ theo lịch (A5). */
+  viecNgayLe?: ViecNgayLeMvp[];
+  /** Người quen và việc hảo cảm (A5). */
+  nguoiQuen?: NguoiQuenMvp[];
 }
 
 export interface NhiemVuPhuMvp extends VuSauMvp {
@@ -175,6 +216,14 @@ export interface VuSauMvp {
   chuoi: string;
   /** Ngày thật của vụ (YYYY-MM-DD) cho màn lịch; thiếu → null. */
   ngay: string | null;
+  /** Nơi bắt đầu ngày (nếu vụ chỉ có một ngày). */
+  batDauO?: string | null;
+  /** Hạn chót của vụ (YYYY-MM-DD) theo cú pháp A5. */
+  hanChot?: string | null;
+  /** Tên việc chốt theo cú pháp A5. */
+  viecChot?: string | null;
+  /** Danh sách ngày và chuỗi bắt đầu của từng ngày. */
+  cacNgay?: { ngay: string; chuoi: string; batDauO?: string | null }[];
   /** Chữ màn kết của vụ (tiêu đề lớn và một câu dưới). */
   tieuDeKet: string;
   loiKet: string;
@@ -189,7 +238,7 @@ export type NutMvp =
   | { type: 'goto'; to: string }
   | { type: 'show-document'; documentId: string }
   /** `[ẢNH …]`: ảnh chèn giữa hội thoại (chibi, CG), tra theo tên tệp trong src/assets/**. */
-  | { type: 'image'; imageId: string }
+  | { type: 'image'; imageId: string; chuThich?: string | null; moTa?: string | null }
   | { type: 'question'; id: string; asker: { speaker: string; text: string }; choices: LuaChonMvp[]; truUyTin: boolean }
   /**
    * `[ĐỐI CHẤT <mã>]` (01/10/2026, đề xuất gameplay §4–5): rival nêu giả thuyết, người chơi trình thẻ trong hồ sơ để đáp.
@@ -209,7 +258,11 @@ export type NutMvp =
       /** `[HẾT LƯỢT]` (03/10/2026): lời khi người chơi trình sai (thẻ không liên quan) đủ số lần cho phép — đối chất dừng ở mức đang đạt. */
       hetLuot: LoiMvp[];
       truUyTin: boolean;
+      /** Người quen nói thay khi đủ 3 bậc hảo cảm (A5). */
+      nguoiQuen?: { ma: string; noiThay: string } | null;
     }
+  /** `[XONG VIỆC CHÍNH]` (A5): hiện nút "Hết ngày" */
+  | { type: 'xong-viec-chinh' }
   | { type: 'challenge'; challengeId: string }
   | { type: 'fix-query'; challengeId: string }
   | { type: 'effect'; effectId: string }
@@ -256,6 +309,8 @@ export interface ChuoiMvp {
   id: string;
   title: string;
   canh: string;
+  /** Cảnh cắt (A3 mục 14, B1): diễn ra ở nơi khác, chạy xong về lại nơi cũ. */
+  canhCat?: boolean;
   /** Số thứ tự mốc sớm nhất chuỗi có thể chạy (0 = mở đầu, d·10+i = ngày d khung i, d·10+9 = buổi tối, 1000 = ngày họp). */
   mocSomNhat: number;
   nodes: NutMvp[];
@@ -292,6 +347,8 @@ export interface TheThuThachMvp {
   chonCot?: string[];
   /** `- Bấm ô lấy giấy nhớ: <cột>`: tra đúng rồi, người chơi bấm từng ô của cột này để chép ra giấy nhớ, xong mới ghim được (thao tác học ở Ngày hội). */
   bamO?: string;
+  /** `- Cột nộp: a, b`: các cột nộp (S12). */
+  cotNop?: string[];
 }
 
 /** `cot`: chỉ khớp khi các điều kiện người chơi đã điền dùng đúng tập cột này ("Khi chạy ra 0 dòng với a, b"). */
@@ -304,7 +361,11 @@ export type KhiChayMvp =
   | { kind: 'sai-thu-tu' }
   /** Bài chọn cột: đủ đúng dòng nhưng thiếu cột của câu chuẩn / lấy thừa cột. */
   | { kind: 'thieu-cot' }
-  | { kind: 'thua-cot' };
+  | { kind: 'thua-cot' }
+  /** "Khi chọn sai cột nộp" (S12). */
+  | { kind: 'sai-cot-nop' }
+  /** "Khi xem từng bước" (S12). */
+  | { kind: 'xem-tung-buoc' };
 
 export interface PhanUngMvp {
   khi: KhiChayMvp;

@@ -9,14 +9,42 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
+import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
 import type { KichBanMvp, LoiMvp } from '../../content/mvp/types';
 import { taoTrangThai, tenKhungHienTai, xuLy, type HanhDongMvp } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import { ghiNhanTrangThaiDongHanh, ghiNhanTruyVanDongHanh, khoaNguCanhDongHanh, type BanDongHanhMvp, type TinNhanDongHanhMvp, type TruyVanDaXemMvp } from '../engine/tri-nho-dong-hanh';
 
-export const KICH_BAN: KichBanMvp = KICH_BAN_MVP as unknown as KichBanMvp;
+export const KHOA_BO_NOI_DUNG = 'clb_bo_noi_dung';
+
+export function layMaBoNoiDung(): 'mvp' | 'mua-1' {
+  if (typeof window !== 'undefined') {
+    const urlBo = new URLSearchParams(window.location.search).get('bo');
+    if (urlBo === 'mua-1' || urlBo === 'mvp') return urlBo;
+    const tuStorage = sessionStorage.getItem(KHOA_BO_NOI_DUNG);
+    if (tuStorage === 'mua-1' || tuStorage === 'mvp') return tuStorage;
+  }
+  if (import.meta.env.VITE_BO_NOI_DUNG === 'mua-1') return 'mua-1';
+  return 'mvp';
+}
+
+export function doiBoNoiDung(bo: 'mvp' | 'mua-1'): void {
+  if (typeof window !== 'undefined') {
+    sessionStorage.setItem(KHOA_BO_NOI_DUNG, bo);
+    window.location.reload();
+  }
+}
+
+export const KICH_BAN: KichBanMvp = (
+  layMaBoNoiDung() === 'mua-1' ? KICH_BAN_MUA_1 : KICH_BAN_MVP
+) as unknown as KichBanMvp;
 
 export const KHOA_KHO_MVP = 'clb_mvp_tien_do_v1';
+export const KHOA_KHO_MUA_1 = 'clb_mua1_tien_do_v1';
+
+export function layKhoaLuu(bo: 'mvp' | 'mua-1' = layMaBoNoiDung()): string {
+  return bo === 'mua-1' ? KHOA_KHO_MUA_1 : KHOA_KHO_MVP;
+}
 export const SO_O_LUU_MVP = 6;
 /** Phiên bản dữ liệu lưu; tăng khi nội dung đổi làm ván cũ không chơi tiếp được (xem `migrate`). */
 export const PHIEN_BAN_KHO_MVP = 5;
@@ -141,7 +169,7 @@ export function taoKhoMvp(options: { persist?: boolean; storageKey?: string } = 
   if (options.persist === false) return create<KhoMvp>()(khoiTao);
   return create<KhoMvp>()(
     persist(khoiTao, {
-      name: options.storageKey ?? KHOA_KHO_MVP,
+      name: options.storageKey ?? layKhoaLuu(),
       // v2 (30/09/2026): chương 1 chuyển sang ngày theo truyện — ván và ô lưu v1 trỏ tới ngày / chuỗi / dữ kiện không
       // còn, nên bỏ hẳn (ván mới từ đầu) thay vì nạp một trạng thái hỏng.
       version: PHIEN_BAN_KHO_MVP,

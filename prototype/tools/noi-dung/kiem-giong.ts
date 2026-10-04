@@ -350,9 +350,10 @@ function docTepLoiThuMuc(thuMuc: string, hienThi: string): { ten: string; duongD
     .map((f) => ({ ten: f.replace(/\.md$/, ''), duongDan: `${hienThi}/${f}`, noiDung: readFileSync(join(thuMuc, f), 'utf8') }));
 }
 
-export function chayKiemGiong(thuMucV2?: string): KetQuaGiong & { tomTat: string } {
-  const luat = docLuatGiong(readFileSync(join(GOC, 'giong/luat-giong.md'), 'utf8'));
-  const goc = docTepLoiThuMuc(join(GOC, 'loi'), 'noi-dung-mvp/loi');
+export function chayKiemGiong(thuMucV2?: string, thuMucGoc: string = GOC): KetQuaGiong & { tomTat: string } {
+  const luat = docLuatGiong(readFileSync(join(thuMucGoc, 'giong/luat-giong.md'), 'utf8'));
+  const hienThiGoc = relative(process.cwd(), join(thuMucGoc, 'loi')).split('\\').join('/');
+  const goc = docTepLoiThuMuc(join(thuMucGoc, 'loi'), hienThiGoc);
   let tep = goc;
   const them: KetQuaGiong = { loi: [], canhBao: [] };
   if (thuMucV2) {
@@ -380,8 +381,10 @@ export function chayKiemGiong(thuMucV2?: string): KetQuaGiong & { tomTat: string
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const i = process.argv.indexOf('--so');
-  const { loi, canhBao, tomTat } = chayKiemGiong(i >= 0 ? process.argv[i + 1] : undefined);
+  const iSo = process.argv.indexOf('--so');
+  const iNd = process.argv.indexOf('--noi-dung');
+  const thuMucGoc = iNd >= 0 && process.argv[iNd + 1] ? resolve(process.env.INIT_CWD ?? process.cwd(), process.argv[iNd + 1]!) : GOC;
+  const { loi, canhBao, tomTat } = chayKiemGiong(iSo >= 0 ? process.argv[iSo + 1] : undefined, thuMucGoc);
   const nhom = (ds: string[]): string[] => [...ds].sort((x, y) => (/\[([^\]]+)\]/.exec(x)?.[1] ?? '').localeCompare(/\[([^\]]+)\]/.exec(y)?.[1] ?? '') || x.localeCompare(y));
   for (const l of nhom(loi)) console.error(`LỖI  ${l}`);
   if (!process.argv.includes('--chi-loi')) for (const c of nhom(canhBao)) console.log(`nhắc ${c}`);

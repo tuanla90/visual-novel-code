@@ -1,0 +1,36 @@
+## Cảnh nền
+
+<!-- Tên sau dấu "—" HIỆN cho người chơi (nhãn cảnh): chỉ ghi tên nơi, không ghi chú tác giả. 7 cảnh nền mới của MVP + các cảnh Vụ 1 đã có/đã liệt kê (kịch bản khung mục 11). "Ảnh nền" không bắt buộc: chưa có ảnh thì bỏ. Cảnh buổi tối là cảnh riêng có đuôi `-dem` (ảnh `bg-mvp-<mã>`): chương 1 không còn "Cuối ngày" nên máy không tự đổi sang ảnh tối. -->
+
+### xe-buyt — Trên xe buýt
+### cong-truong — Cổng trường
+### phong-ktx — Phòng KTX 408
+### cong-ktx — Cổng KTX
+### cong-ktx-dem — Cổng KTX
+### sanh-ktx — Sảnh ký túc xá
+### sanh-toa-b — Sảnh tòa B
+### cang-tin — Căng tin
+### ngoai-phong-may — Ngoài phòng máy
+### nha-van-hoa — Nhà văn hóa
+### san-ktx-trung-thu — Sân ký túc xá, đêm Trung thu
+- Ảnh nền: bg-mvp-san-ktx-trung-thu
+### hoi-truong — Hội trường
+### phong-clb — Phòng CLB
+- Ảnh nền: bg-clb-room
+### phong-clb-dem — Phòng CLB
+### phong-may — Trong phòng máy
+### phong-ctsv — Phòng Công tác sinh viên
+### phong-dao-tao — Phòng Đào tạo
+### phong-hop — Phòng họp rà soát
+### hanh-lang-phong-hop — Hành lang ngoài phòng họp
+### ban-do — Bản đồ trường
+### xuong-robot — Xưởng CLB Robotics
+### thu-vien — Thư viện trường
+### thu-vien-dem — Thư viện trường
+### tra-da — Quán trà đá cổng trường
+### sanh-toa-b-dem — Sảnh tòa B
+### phong-ktx-dem — Phòng KTX 408
+### san-dem — Sân trường
+### sanh-den-pin — Sảnh tòa B
+### ghe-da-tui-do — Ghế đá cạnh lối đi
+- Ảnh nền: bg-mvp-ghe-da-tui-do
