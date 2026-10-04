@@ -82,6 +82,13 @@ Thêm script `truyen-chu:mua1` vào `prototype/package.json`. Lệnh này xuất
   - mỗi lỗi trên có một ví dụ;
   - vụ mẫu có một cảnh cắt và một đoạn "Đang ở <nơi>" có lựa chọn "Mở bản đồ".
 
+### S12. Truyện chữ in lọc từng bước, bộ đọc nhận `Cột nộp` (luật mới 04/10, `giao-viec.md` A3 mục 15, B3, E2)
+
+- Màn tra có từ hai điều kiện `WHERE` trở lên: in dòng **Lọc từng bước** cho mọi thứ tự điều kiện (tối đa 3 điều kiện), số dòng chạy thật trên dữ liệu: "Lớp trước: 3.912 → 31 → 2 · Tên trước: 3.912 → 565 → 2". Tách điều kiện ở cấp ngoài cùng theo VÀ; câu có HOẶC thì mỗi vế HOẶC (hay mỗi ngoặc) là một bước gộp, số tăng.
+- Bộ đọc nhận dòng `- Cột nộp: <cột>[, <cột>]` trong thẻ thử thách và lời `Khi chọn sai cột nộp`, `Khi xem từng bước`. Bộ kiểm báo lỗi khi `Cột nộp` không có trong các cột của SQL chuẩn. Truyện chữ in "Nộp cột: …".
+- Không làm màn chơi (phần Chạy/Nộp, hoạt cảnh là của gói B3).
+- Test: một câu VÀ hai điều kiện ra đúng số từng bước ở cả hai thứ tự; một câu HOẶC; lỗi `Cột nộp` sai.
+
 ### S10. Báo cáo cho đúng
 
 - Bảng C2 trong báo cáo cũ ghi sai tên vụ ("Học bổng biến mất", "Điểm số ảo", "Máy chủ rò rỉ", "Bóng ma đồ án"). Các tên này không có trong nội dung. Mọi tên vụ trong báo cáo phải lấy đúng từ `lich.md`. Ghi rõ cách đếm từng cột C2: đếm dòng thoại nào, có tính phần mở đầu không.
@@ -96,7 +103,7 @@ Thêm script `truyen-chu:mua1` vào `prototype/package.json`. Lệnh này xuất
 
 ## Nghiệm thu lần này
 
-- [ ] S1–S9 và S11 đạt, mỗi mục có test hoặc kiểm được bằng lệnh.
+- [ ] S1–S9, S11, S12 đạt, mỗi mục có test hoặc kiểm được bằng lệnh.
 - [ ] `npm run truyen-chu:mua1` chạy xong; thư mục `docs/mua-1/truyen-chu/` có đúng `README.md` cộng 5 vụ cộng 6 việc phụ, mỗi cái một tệp.
 - [ ] Tám lệnh A6 cùng `kiem-ky-nang:mua1` như mốc: xanh, trừ lint (6 lỗi + 1 cảnh báo cũ) và `kiem-ky-nang:mua1` (được phép báo lỗi trên bản chép).
 - [ ] `git diff --stat -- prototype/noi-dung-mvp prototype/src/content/generated/mvp` rỗng.

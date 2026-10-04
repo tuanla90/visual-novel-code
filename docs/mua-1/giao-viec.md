@@ -48,6 +48,7 @@
 12. Dấu điểm bấm: "!" là đầu mối chính, "?" là việc phụ, chi tiết ẩn không dấu. Tô màu chữ chỉ cho thứ vào hồ sơ (`highlight.json`).
 13. Lời chỉ nhắc vật, người có trên ảnh nền của cảnh.
 14. **Người chơi tự chọn đi đâu; hết cảnh vẫn đứng nguyên chỗ.** Đổi nơi chỉ khi người chơi tự mở bản đồ bấm, hoặc tự bấm lựa chọn đi cùng ai đó. Hết thoại, hết cảnh cắt thì về cảnh khám phá của nơi đang đứng; không tự chuyển nơi, không tự về bản đồ, không tự hết ngày. Nhân vật rủ đi đâu thì đặt "!" ở nơi ấy trên bản đồ. Đầu ngày mới bắt đầu ở một nơi cố định (thường là phòng 408). (Kế hoạch mục 2, luật 7.)
+15. **Màn tra: chạy thoải mái, nộp mới chấm, nộp có bước xác nhận, xem được từng bước lọc.** Ra đúng rồi vẫn sửa câu, chạy lại được; không khóa, không tự đi tiếp. Chỉ khi bấm "Nộp" mới chấm, và trước khi nộp có bước xác nhận (chọn cột trả lời câu hỏi, đọc lại câu bằng lời). Câu có từ hai điều kiện trở lên xem được hoạt cảnh lọc từng bước, đổi được thứ tự điều kiện để thấy số dòng rơi khác nhau. (B3.)
 
 ### A4. Bảng kỹ năng theo vụ (máy kiểm theo bảng này)
 
@@ -116,6 +117,8 @@ Hảo cảm = số việc đã xong (0–3); máy đặt cờ `nq-<mã>-du` khi 
 ```
 
 Có cờ `nq-bac-tu-du` thì màn đối chất không hỏi người chơi, chạy chuỗi nói thay rồi tính ĐỦ CĂN CỨ. Không có cờ thì đối chất như cũ (người chơi tự chọn thẻ). Khối phải vẫn có ít nhất một thẻ `[ĐỦ CĂN CỨ]` kiếm được trong vụ chính.
+
+**Thẻ thử thách (màn tra mới, B3):** thêm dòng `- Cột nộp: <cột>[, <cột>]` (cột người chơi phải chọn ở bước xác nhận khi nộp); tệp lời thẻ thêm được `- Khi chọn sai cột nộp: …` và `- Khi xem từng bước: …`. Cảnh cắt: `{cảnh: <cảnh> · cảnh cắt}`; dòng ngày thêm `· bắt đầu ở: <cảnh>` (A3 mục 14).
 
 **Album và sticker:** mọi `[ẢNH cg-…]` người chơi đã xem vào album; mọi `[ẢNH chibi-…]` đã xem thành sticker. Thêm tùy chọn `- [ẢNH cg-x · chú thích: …]` cho dòng chú thích viết tay.
 
@@ -208,6 +211,20 @@ Thứ tự (theo mục E): T0 trước, rồi B4 → B10 (nội dung, duyệt b�
 - Ô trống hiện chữ mờ "(trống)" ở màn kết quả; khác với chữ rỗng.
 - Câu xem trước luôn hiện SQL thật.
 - Sổ CLB thêm trang cho từng kỹ năng (`so-tay/`), mỗi trang ghi cách viết ở hệ khác khi khác SQLite (`EXTRACT`, `DATE_TRUNC`, `ROUND(x, -3)`).
+- **Chạy và Nộp tách riêng (A3 mục 15):**
+  - Nút "Chạy" chỉ chạy thử: hiện bảng kết quả và lời phản ứng bẫy (`Khi chạy ra n dòng`) như hiện nay, nhưng **không chấm, không khóa câu, không hiện nút đi tiếp**. Câu đã ra đúng vẫn sửa, chạy lại được bao nhiêu lần cũng được.
+  - Nút "Nộp" luôn có (khi đã chạy ít nhất một lần). Bấm Nộp thì mở **bước xác nhận**:
+    - đọc lại câu bằng lời thường ("Lấy mã, tên của sinh viên lớp BC24A và tên bắt đầu bằng H") cùng số dòng;
+    - người chơi **chọn cột trả lời câu hỏi** trong các cột của kết quả (thẻ khai `- Cột nộp: <cột>[, <cột>]`; thẻ có `Bấm ô lấy giấy nhớ` thì mặc định là cột ấy);
+    - hai nút "Nộp" và "Sửa tiếp".
+  - Chấm khi xác nhận: kết quả đúng và cột chọn đúng thì ghim, đi tiếp. Chọn sai cột thì Hà Vy nhắc một câu (lời thẻ `Khi chọn sai cột nộp`), quay lại màn tra. Kết quả sai thì nhân vật phản ứng theo bẫy, quay lại màn tra. Nộp sai không khóa, không có kết xấu.
+  - Nhật ký đồng hành ghi cả lần chạy thử lẫn lần nộp.
+- **Hoạt cảnh lọc từng bước (A3 mục 15):** câu có từ hai điều kiện `WHERE` trở lên thì có nút "Xem từng bước".
+  - Máy tách `WHERE` thành các điều kiện ở cấp ngoài cùng, chạy thật từng bước cộng dồn để lấy số dòng thật sau mỗi điều kiện.
+  - Hoạt cảnh: bắt đầu từ cả bảng ("3.912 dòng"); mỗi bước sáng một điều kiện, các dòng bị loại mờ đi và rơi xuống, bộ đếm chạy xuống số mới. Bảng to (trên khoảng 200 dòng) thì vẽ cột khối thay cho từng dòng, bộ đếm vẫn là số thật.
+  - Người chơi kéo đổi thứ tự các điều kiện rồi xem lại; hai lần xem gần nhất đặt cạnh nhau ("Lớp trước: 3.912 → 31 → 2", "Tên trước: 3.912 → 565 → 2") để thấy với VÀ kết quả cuối như nhau, chỉ số giữa đường khác.
+  - Với HOẶC: hoạt cảnh là gộp, dòng được thêm vào (số tăng), dòng trùng chỉ tính một lần. Câu trộn VÀ với HOẶC thì đi theo ngoặc, mỗi ngoặc là một bước.
+  - Xem từng bước không tính vào chấm, không tốn gì. Thẻ có thể khai lời `Khi xem từng bước` để nhân vật bình một câu.
 - **Máy kiểm kỹ năng:** bộ kiểm đọc SQL chuẩn của mọi thẻ thử thách, màn chiếu, lọc thử; báo lỗi khi dùng mẫu chưa tới vụ theo bảng A4 (việc phụ tính theo `mở sau`).
 
 **Nghiệm thu B3:**
@@ -215,6 +232,11 @@ Thứ tự (theo mục E): T0 trước, rồi B4 → B10 (nội dung, duyệt b�
 - [ ] Máy kiểm kỹ năng có test cho mỗi dòng bảng A4 (dùng sớm một vụ là lỗi, đúng vụ là qua).
 - [ ] Thẻ có `ORDER BY` vẫn chấm thứ tự dòng; thẻ có `CASE` chấm cả cột nhãn.
 - [ ] Màn tra dùng được trên điện thoại cầm dọc.
+- [ ] Test: chạy ra đúng rồi vẫn đổi được giấy nhớ, phép so, cột và chạy lại; không có gì tự đi tiếp khi chỉ bấm Chạy.
+- [ ] Test bước xác nhận: chọn đúng cột với kết quả đúng thì ghim; chọn sai cột thì quay lại kèm lời nhắc; kết quả sai thì phản ứng bẫy; "Sửa tiếp" giữ nguyên câu đang lắp.
+- [ ] Bộ kiểm báo lỗi: `Cột nộp` không có trong các cột của SQL chuẩn.
+- [ ] Test lọc từng bước: với câu VÀ hai điều kiện, số dòng mỗi bước khớp chạy thật ở cả hai thứ tự, số cuối bằng nhau; với HOẶC số tăng; dòng trùng không đếm hai lần.
+- [ ] Hoạt cảnh chạy mượt trên điện thoại cầm dọc; có nút bỏ qua; người bật giảm chuyển động thì chỉ hiện số từng bước.
 
 ### B4. Tuyến Khánh: Vụ 1, 2, 4, 6, 8 (sắp lại từ năm vụ cũ)
 
@@ -367,7 +389,7 @@ Túi đồ (Tùng, bỏ phần nối, bỏ ngày 30/10), Sổ sử dụng phòng
    - Kiểu sách "tự chọn hướng đi": truyện chia thành các đoạn đánh số; mỗi lựa chọn là một liên kết tới đoạn tiếp theo (`[Chọn: Mời Hoài vào](#doan-12)`), bấm được trong VS Code và trình xem Markdown.
    - Lời thoại: `**Tùng** (lúng túng): …`. Suy nghĩ người chơi in nghiêng.
    - **Ảnh, CG, chibi, meme**: một khung chữ thay cho ảnh, ghi mã ảnh và mô tả, ví dụ `> [CG cg-v4-nam-thu-vien] Nam ngồi bàn cạnh cửa sổ, đồng hồ thư viện chỉ 22:40.` Chibi ghi thêm "(sticker)". Ảnh chưa có mô tả thì in mã kèm "(chưa có mô tả)".
-   - **Màn tra SQL chỉ hiện kết quả**, không phải chơi: đề bài, câu SQL chuẩn, bảng kết quả chạy thật (tối đa 10 dòng, dài hơn thì ghi "… còn n dòng"), rồi các dòng tóm bẫy: "Nếu lọc `> 400` thay vì `BETWEEN`: ra 7 dòng → Hà Vy: …". Truyện đi tiếp như người chơi đã tra đúng.
+   - **Màn tra SQL chỉ hiện kết quả**, không phải chơi: đề bài, câu SQL chuẩn, bảng kết quả chạy thật (tối đa 10 dòng, dài hơn thì ghi "… còn n dòng"), rồi các dòng tóm bẫy: "Nếu lọc `> 400` thay vì `BETWEEN`: ra 7 dòng → Hà Vy: …". Truyện đi tiếp như người chơi đã tra đúng. Câu có từ hai điều kiện `WHERE` trở lên thì in thêm dòng **Lọc từng bước** với mọi thứ tự điều kiện (tối đa 3 điều kiện), số chạy thật: "Lớp trước: 3.912 → 31 → 2 · Tên trước: 3.912 → 565 → 2". Có `Cột nộp` thì in "Nộp cột: ma_sv".
    - **Đối chất**: in giả thuyết, câu hỏi, danh sách thẻ trình được; mỗi thẻ là một lựa chọn dẫn tới phản hồi của nó; thẻ ĐỦ CĂN CỨ dẫn tiếp truyện. Nhịp có người quen in hai nhánh: "Nếu đủ hảo cảm với Nam: …" và "Nếu chưa: tự chọn thẻ".
    - **Lịch**: đầu mỗi ngày một dòng "Thứ Ba, 08/10/2024 · Còn 7 ngày tới buổi giải trình"; cuối ngày "Hết ngày". Việc ngày lễ là một lựa chọn trong ngày ấy, kèm nhánh "bỏ lỡ" dẫn tới chuỗi `Khi lỡ`.
    - **Bản đồ, khám phá**: mỗi nơi, mỗi người bấm được là một lựa chọn; chi tiết ẩn ghi "(chi tiết ẩn)". Hết một đoạn thoại thì quay lại đoạn "Đang ở <nơi>" của nơi ấy: liệt kê những chỗ còn bấm được, cộng lựa chọn "Mở bản đồ" dẫn tới đoạn bản đồ của ngày (các nơi đi được, nơi có "!" ghi rõ), cộng "Hết ngày" khi đã xong việc chính. Không có lựa chọn "Đi tiếp" tự chuyển nơi (A3 mục 14).
