@@ -1,5 +1,5 @@
 import { createContext, Fragment, useContext, type ReactNode } from 'react';
-import { Engine } from './engine.js';
+import type { Engine } from './engine.js';
 import './highlight.css';
 import { useVnStore } from '../vn/vn-store';
 

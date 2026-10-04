@@ -18,6 +18,7 @@
     "lint": "eslint .",
     "kiem-noi-dung": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/kiem.ts && npm run -s kiem-noi-dung:mvp",
     "noi-dung:sinh": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/sinh.ts && npm run -s noi-dung:sinh:mvp",
+    "kiem-to-mau": "vitest run src/mvp/ui/to-mau-luat.test.ts",
     "kiem-giong": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/kiem-giong.ts",
     "kiem-noi-dung:mvp": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/kiem-mvp.ts",
     "noi-dung:sinh:mvp": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/sinh-mvp.ts"

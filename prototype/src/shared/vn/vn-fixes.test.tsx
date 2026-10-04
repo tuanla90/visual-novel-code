@@ -122,7 +122,7 @@ describe('vn-store — lưu trong phiên và tùy chọn', () => {
     useVnStore.getState().setTextSpeed('normal');
     useVnStore.getState().setTextSpeed('slow');
     // Tùy chọn lưu cùng chỗ: tốc độ chữ + "Skip cả lời chưa đọc" (01/10/2026).
-    expect(JSON.parse(localStorage.getItem('clb_vn_prefs_v1')!)).toEqual({ textSpeed: 'slow', skipUnread: false });
+    expect(JSON.parse(localStorage.getItem('clb_vn_prefs_v1')!)).toEqual({ textSpeed: 'slow', skipUnread: false, highlightEnabled: true });
     expect(getTelemetryEvents().at(-1)).toMatchObject({ type: 'text_speed_changed', speed: 'slow' });
     useVnStore.getState().setTextSpeed('normal');
   });
