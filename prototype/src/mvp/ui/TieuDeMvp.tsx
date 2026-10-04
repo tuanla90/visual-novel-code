@@ -4,6 +4,7 @@
  * Chơi mới khi đang có ván → hỏi xác nhận trước khi xóa. Phím mũi tên / Tab đổi nút, Enter chọn; rê chuột và bấm có tiếng.
  */
 import './tieu-de-mvp.css';
+import './RotateForLandscape.css';
 import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { AudioSettingsModal } from '../../shared/audio/AudioSettingsModal';
 import { soundEngine } from '../../shared/audio/sound-engine';
@@ -98,6 +99,11 @@ export function TieuDeMvp({ onVao }: TieuDeMvpProps) {
     <main className="tdm" aria-label="Màn hình mở màn">
       {bia ? <img className="tdm__nen" src={bia} alt="" draggable={false} /> : null}
       <div className="tdm__phu" aria-hidden="true" />
+      <div className="mvp-xoay" role="status">
+        <span className="mvp-xoay__may" aria-hidden="true" />
+        <p className="mvp-xoay__chu">Xoay ngang điện thoại để chơi</p>
+        <p className="mvp-xoay__phu">Game được thiết kế để chơi ngang xuyên suốt các màn.</p>
+      </div>
       <header className="tdm__logo">
         {nhanTren && conLai.length > 0 ? <span className="tdm__nhan">{nhanTren}</span> : null}
         <h1 className="tdm__ten">{tenLon}</h1>

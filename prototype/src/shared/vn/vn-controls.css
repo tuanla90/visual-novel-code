@@ -182,7 +182,7 @@
     inset 0 -2px 4px rgba(180, 83, 9, 0.25),
     0 0 14px rgba(245, 158, 11, 0.3) !important;
   cursor: pointer !important;
-  transform: rotate(-1.2deg);
+  transform: none;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, filter 0.2s ease !important;
   overflow: hidden;
 }
@@ -191,7 +191,7 @@
   background-image: none !important;
   background: linear-gradient(135deg, #ffffff 0%, #fef3c7 25%, #fde047 70%, #f59e0b 100%) !important;
   border-color: #b45309 !important;
-  transform: rotate(-1.2deg) scale(1.05) translateY(-2px) !important;
+  transform: scale(1.05) translateY(-2px) !important;
   box-shadow: 
     0 10px 24px rgba(15, 23, 42, 0.45),
     0 4px 10px rgba(0, 0, 0, 0.25),
@@ -201,7 +201,7 @@
 
 .dialog__next:active {
   background-image: none !important;
-  transform: rotate(-1.2deg) scale(0.97) translateY(1px) !important;
+  transform: scale(0.97) translateY(1px) !important;
   box-shadow: 
     0 3px 8px rgba(15, 23, 42, 0.35),
     0 0 10px rgba(245, 158, 11, 0.4) !important;
@@ -212,7 +212,7 @@
   font-family: var(--font-ui) !important;
   font-size: 1.15rem !important;
   font-weight: 800 !important;
-  font-style: italic;
+  font-style: normal;
   color: #3b1d06 !important;
   letter-spacing: 0.03em;
   line-height: 1;

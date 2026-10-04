@@ -12,7 +12,6 @@ import { useEffect, useRef, useState } from 'react';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { ConfirmDialog } from '../../shared/ui/ConfirmDialog';
 import { IconFolderOpen, IconHistory, IconRotateCcw, IconSave, IconSliders } from '../../shared/ui/icons';
-import { useVnStore } from '../../shared/vn/vn-store';
 import { dinhDangNgay, hoaDau, homNay, thuCua } from '../engine/lich-ngay';
 import { tenKhungHienTai } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
@@ -89,14 +88,11 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
   const [xacNhan, setXacNhan] = useState(false);
   const [moRongNhiemVu, setMoRongNhiemVu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const viewportMode = useVnStore((k) => k.viewportMode);
-  const toggleViewportMode = useVnStore((k) => k.toggleViewportMode);
   const moc = mocHud(kb, s);
   const tenNgay = kb.lich.ngay.find((n) => n.so === s.ngay)?.ten ?? '';
   const tong = kb.lich.luat.uyTin ?? 0;
   const coUyTin = s.giaiDoan === 'hop' && tong > 0;
   const daXongNgay = (so: number): boolean => s.giaiDoan === 'hop' || s.giaiDoan === 'het' || s.giaiDoan === 'vu-sau' || s.giaiDoan === 'phu' || (s.giaiDoan === 'ngay' && so < s.ngay);
-  const nhanDocNgang = viewportMode === 'mobile' ? 'Chuyển sang màn hình ngang PC' : 'Chuyển sang màn hình dọc Mobile 9:16';
 
   useEffect(() => {
     setMoRongNhiemVu(false);
@@ -187,19 +183,6 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
       <div className="topbar__actions">
         {coUyTin ? <ThanhUyTin con={s.uyTin} tong={tong} /> : null}
         <div className="topbar__capsule-group" role="toolbar" aria-label="Điều khiển">
-          <button
-            type="button"
-            className={`topbar__capsule-btn topbar__capsule-btn--viewport${viewportMode === 'mobile' ? ' is-active' : ''}`}
-            aria-label={nhanDocNgang}
-            title={nhanDocNgang}
-            onClick={toggleViewportMode}
-          >
-            <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-              <line x1="12" y1="18" x2="12.01" y2="18" />
-            </svg>
-            <span className="topbar__capsule-text-responsive">{viewportMode === 'mobile' ? 'Dọc' : 'Dọc/Ngang'}</span>
-          </button>
           <button
             type="button"
             className="topbar__capsule-btn topbar__capsule-btn--dossier"

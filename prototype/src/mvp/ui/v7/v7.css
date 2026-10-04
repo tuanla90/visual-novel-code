@@ -275,12 +275,17 @@
 .v7--doc .v7-o-kinh {
   flex: 1;
   min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
   border: 6px solid #2e3237;
   border-radius: 10px;
   /* Điện thoại hẹp: câu dài / ba điều kiện thì cuộn dọc trong mặt kính, không cắt mất nút CHẠY. */
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
+  scrollbar-gutter: stable;
 }
 
 /* ---------- Mặt kính: phần mềm tra cứu ---------- */
@@ -659,6 +664,17 @@ span.v7-o--bang:not(.v7-o--phieu) {
   background: rgba(10, 20, 28, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
+.v7--doc .v7-vung .v7-kq {
+  position: static;
+  inset: auto;
+  flex: none;
+  width: auto;
+  min-height: 180px;
+  margin: 0.25em 0.8em;
+  align-self: stretch;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
 .v7-kq table {
   width: 100%;
   border-collapse: separate;
@@ -947,8 +963,37 @@ span.v7-o--bang:not(.v7-o--phieu) {
   margin-top: 2px;
 }
 .v7--doc .v7-cau {
+  order: 0;
+  flex: none;
   flex-direction: column;
   gap: 0.5em;
+}
+.v7--doc .v7-cau.v7-cau--3cot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65em;
+  align-items: stretch;
+  padding: 0.7em;
+}
+.v7--doc .v7-cot {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.7em;
+}
+.v7--doc .v7-cot--nguon {
+  order: 0;
+}
+.v7--doc .v7-cot--chinh {
+  order: 1;
+}
+.v7--doc .v7-cot--phu {
+  order: 2;
+}
+.v7--doc .v7-cot__nhan {
+  font-size: 0.78em;
+}
+.v7-kinh--tong-hop.v7--doc .v7-cau.v7-cau--3cot {
+  flex: none;
 }
 .v7--doc .v7-cau__bang {
   flex-direction: row;
@@ -973,15 +1018,63 @@ span.v7-o--bang:not(.v7-o--phieu) {
   font-size: 2.6em;
 }
 .v7--doc .v7-vung {
-  min-height: 170px;
+  position: relative;
+  order: 5;
+  flex: none;
+  min-height: 240px;
+  margin: 0 0.8em;
+  align-self: stretch;
 }
 /* Hàng nút CHẠY / Ghim / Xem từng điều kiện dính đáy mặt kính: nội dung dài phải cuộn thì nút vẫn luôn thấy. */
 .v7--doc .v7-day {
   position: sticky;
-  bottom: 0;
+  order: 4;
+  bottom: -1px;
   z-index: 2;
-  background: linear-gradient(rgba(14, 26, 35, 0), #0e1a23 30%);
+  justify-content: stretch;
+  padding: 0.65em 0.8em;
+  background: #0e1a23;
+  border-top: 1px solid rgba(100, 181, 246, 0.18);
 }
+.v7--doc .v7-day > .v7-nut--chay,
+.v7--doc .v7-day > .v7-nut--ghim {
+  width: 100%;
+  min-height: 48px;
+  height: auto;
+  font-size: 1.05em;
+}
+.v7--doc .v7-day > .v7-nut--soi {
+  min-height: 44px;
+}
+.v7--doc[data-canh='man-chieu'] .v7-day {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.55em;
+}
+.v7--doc[data-canh='man-chieu'] .v7-day > .v7-nut {
+  width: 100%;
+  min-height: 44px;
+  height: auto;
+  margin: 0;
+}
+.v7--doc .v7-sql {
+  order: 6;
+  flex: none;
+  margin: 0 0.8em;
+  padding: 0.55em 0.7em;
+  border-top: 1px solid rgba(100, 181, 246, 0.16);
+  border-bottom: 1px solid rgba(100, 181, 246, 0.16);
+  overflow-wrap: anywhere;
+  max-height: 7.5em;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.v7--doc .v7-con {
+  order: 7;
+  flex: none;
+  margin: 0 0.8em;
+}
+.v7--doc .v7-day { flex: none; }
 /* Chữ nhỏ nhất trên điện thoại: thanh tiêu đề 12 px, câu SQL 13 px (mặc định tính theo em ra ~11 px). */
 .v7--doc .v7-thanh {
   font-size: 12px;
@@ -1013,6 +1106,65 @@ span.v7-o--bang:not(.v7-o--phieu) {
   content: '';
   position: absolute;
   inset: -3px;
+}
+
+@media (max-width: 560px) {
+  .v7--doc {
+    gap: 4px;
+    padding: 42px 5px 5px;
+  }
+  .v7--doc .v7-o-kinh {
+    flex: none;
+    height: min(76vh, 680px);
+    border-width: 4px;
+  }
+  .v7--doc .v7-kinh {
+    font-size: 15px;
+  }
+  .v7--doc .v7-de {
+    padding: 0.65em 0.8em 0.15em;
+    font-size: 1.02em;
+  }
+  .v7--doc .v7-cau.v7-cau--3cot {
+    padding: 0.55em;
+  }
+  .v7--doc .v7-cot {
+    gap: 0.55em;
+    padding: 0.6em;
+  }
+  .v7--doc .v7-o {
+    max-width: 100%;
+    min-height: 42px;
+    height: auto;
+    padding-top: 0.35em;
+    padding-bottom: 0.35em;
+    white-space: normal;
+    text-align: center;
+  }
+  .v7--doc .v7-cau__bang {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+  .v7--doc .v7-cau__bang .v7-o--bang {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .v7--doc .v7-dk {
+    gap: 0.4em;
+  }
+  .v7--doc .v7-vung .v7-kq {
+    min-height: 165px;
+    margin-right: 0.55em;
+    margin-left: 0.55em;
+    align-self: stretch;
+  }
+  .v7--doc .v7-vung {
+    min-height: 210px;
+  }
+  .v7--doc .v7-day {
+    padding: 0.55em;
+  }
 }
 
 /* ---------- Hộp thoại: nhân vật lên tiếng rồi ẩn ---------- */

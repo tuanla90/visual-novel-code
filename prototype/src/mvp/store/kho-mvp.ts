@@ -118,8 +118,9 @@ export function taoKhoMvp(options: { persist?: boolean; storageKey?: string } = 
       const daLuu = get().oLuu[o];
       if (!daLuu) return null;
       const s = ghiNhanTrangThaiDongHanh(KICH_BAN, structuredClone(daLuu.trangThai));
-      set({ trangThai: s, lichSuLui: [], lanDoiVan: get().lanDoiVan + 1 });
-      return s;
+      const sua = xuLy(KICH_BAN, s, { type: 'sua-con-tro' });
+      set({ trangThai: sua, lichSuLui: [], lanDoiVan: get().lanDoiVan + 1 });
+      return sua;
     },
     ghiNhanTruyVan: (query, loi, tai, lan) => {
       const s = get().trangThai;
@@ -148,6 +149,14 @@ export function taoKhoMvp(options: { persist?: boolean; storageKey?: string } = 
       migrate: (_cu, phienBan) => (phienBan < PHIEN_BAN_KHO_MVP ? { trangThai: null, oLuu: Array.from({ length: SO_O_LUU_MVP }, () => null) } : _cu) as KhoMvp,
       storage: createJSONStorage(boNhoPhien),
       partialize: (k) => ({ trangThai: k.trangThai, oLuu: k.oLuu }) as unknown as KhoMvp,
+      onRehydrateStorage: () => (state) => {
+        if (state?.trangThai) {
+          const sua = xuLy(KICH_BAN, state.trangThai, { type: 'sua-con-tro' });
+          if (sua !== state.trangThai) {
+            state.trangThai = sua;
+          }
+        }
+      },
     }),
   );
 }

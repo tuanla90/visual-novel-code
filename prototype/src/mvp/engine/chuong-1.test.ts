@@ -204,4 +204,14 @@ describe('ảnh chèn giữa hội thoại ([ẢNH …])', () => {
     expect(s.conTro?.nut).toBeGreaterThan(0);
     expect(khungNhin(kb, s).kind).not.toBe('image');
   });
+
+  it('tự phục hồi khi con trỏ chuỗi md-00-tren-xe vượt quá độ dài (lưu phiên bản cũ)', () => {
+    let s = taoTrangThai(KB, 1);
+    s = { ...s, conTro: { chuoi: 'md-00-tren-xe', nut: 8, boiCanh: 'mo-dau' } };
+    expect(khungNhin(KB, s).kind).toBe('error');
+    const sau = xuLy(KB, s, { type: 'sua-con-tro' });
+    expect(sau.loi).toBeNull();
+    expect(sau.conTro?.chuoi).toBe('md-00-xe-buyt');
+    expect(khungNhin(KB, sau).kind).toBe('line');
+  });
 });

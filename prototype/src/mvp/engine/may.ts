@@ -682,6 +682,11 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
     const boiCanh = conTro.boiCanh;
     if (s.canh !== chuoi.canh) s = { ...s, canh: chuoi.canh };
     if (nut === undefined) {
+      const nutCuoi = chuoi.nodes[chuoi.nodes.length - 1];
+      if (nutCuoi && nutCuoi.type === 'goto' && conTro.nut >= chuoi.nodes.length) {
+        s = nhayToi(s, nutCuoi.to, boiCanh);
+        continue;
+      }
       s = hetChuoi(kb, s, boiCanh);
       continue;
     }

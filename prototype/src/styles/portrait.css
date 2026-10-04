@@ -303,13 +303,14 @@
   .dialog--glass {
     padding: 24px 18px 12px !important;
     border-radius: 16px !important;
-    height: 114px !important;
+    height: auto !important;
     min-height: 114px !important;
-    max-height: 114px !important;
+    max-height: min(42dvh, 300px) !important;
     box-sizing: border-box !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
+    overflow-y: auto !important;
   }
   .dialog--glass .dialog__speaker {
     top: -18px !important;
@@ -320,9 +321,9 @@
   .dialog--glass .dialog__text {
     font-size: 1.02rem !important;
     line-height: 1.48 !important;
-    height: calc(1.48em * 3) !important;
-    max-height: calc(1.48em * 3) !important;
-    overflow: hidden !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
     margin: 0 !important;
     width: 100% !important;
     box-sizing: border-box !important;
@@ -354,13 +355,14 @@
 .game--portrait .dialog--glass {
   padding: 24px 18px 12px !important;
   border-radius: 16px !important;
-  height: 114px !important;
+  height: auto !important;
   min-height: 114px !important;
-  max-height: 114px !important;
+  max-height: min(42dvh, 300px) !important;
   box-sizing: border-box !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: flex-start !important;
+  overflow-y: auto !important;
 }
 .game--portrait .dialog--glass .dialog__speaker {
   top: -18px !important;
@@ -371,9 +373,9 @@
 .game--portrait .dialog--glass .dialog__text {
   font-size: 1.02rem !important;
   line-height: 1.48 !important;
-  height: calc(1.48em * 3) !important;
-  max-height: calc(1.48em * 3) !important;
-  overflow: hidden !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
   margin: 0 !important;
   width: 100% !important;
   box-sizing: border-box !important;
@@ -445,6 +447,24 @@
   border-radius: 6px !important;
   background: rgba(15, 23, 42, 0.65) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+/* MVP mobile games are played in landscape. Give the shorter viewport to the scene,
+   and let landscape viewports use their full width instead of a portrait simulator. */
+@media (max-width: 900px) and (orientation: landscape) {
+  html, body, #root { height: 100dvh; }
+  .game { height: 100dvh !important; grid-template-rows: auto minmax(0, 1fr) !important; }
+  .mvp-game { width: 100vw; max-width: none; }
+  .game-simulator-backdrop { height: 100dvh; padding: 0; }
+  .game-simulator-bezel {
+    width: 100vw;
+    height: 100dvh;
+    max-width: none;
+    aspect-ratio: auto;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .game-simulator-island, .game-simulator-home-bar { display: none; }
 }
 .game--portrait .vn-quick-bar--mobile .vn-btn svg {
   width: 12px !important;

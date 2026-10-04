@@ -417,11 +417,6 @@ export function DialogBox({
         <p ref={textRef} className={`dialog__text dialog__text--${dialogueFont}`}>
           <CodeText text={displayedText} />
         </p>
-        {display === 'card' ? (
-          <div className="dialog__card-hint" aria-hidden="true">
-            <span>Nhấp chuột hoặc phím Cách để tiếp tục</span>
-          </div>
-        ) : null}
       </div>
 
       {/* Button Hồ sơ / QuickBar mobile và Tiếp tục nằm ngoài khung thoại */}
@@ -472,7 +467,6 @@ export function DialogBox({
               e.stopPropagation();
               // Nút chủ ý: nhận ngay cú bấm đơn, chỉ bỏ cú bấm lặp của bấm đúp.
               if (!guard.click(e, { immediate: true })) return;
-              soundEngine.playSfx('page');
               if (!isDone) {
                 completeImmediately();
                 return;

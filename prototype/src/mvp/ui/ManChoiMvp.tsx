@@ -8,6 +8,7 @@
  * Trạng thái nằm trong `store/kho-mvp.ts` (khóa riêng), không đụng store prototype.
  */
 import './mvp.css';
+import './RotateForLandscape.css';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HighlightProvider } from '../../shared/highlight/HighlightText';
 import { highlightMvp } from './highlight-mvp';
@@ -213,8 +214,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   useEffect(() => {
     if (loaiKn !== 'line' && loaiKn !== 'feedback') setSkipMode(false);
   }, [loaiKn, setSkipMode]);
-  // Ô lưu cũ trỏ vào một nút máy tự chạy qua (nội dung đổi làm lệch số thứ tự nút): tự chạy tiếp thay vì báo lỗi.
-  const lechConTro = kn?.kind === 'error' && /không phải nút cần người chơi/.test(kn.message);
+  // Ô lưu cũ trỏ vào một nút máy tự chạy qua (nội dung đổi làm lệch số thứ tự nút) hoặc vượt quá độ dài chuỗi (gọt bớt dòng): tự chạy tiếp thay vì báo lỗi.
+  const lechConTro = kn?.kind === 'error' && (/không phải nút cần người chơi/.test(kn.message) || /hết nút/.test(kn.message));
   useEffect(() => {
     if (lechConTro) hanhDong({ type: 'sua-con-tro' });
   }, [lechConTro, hanhDong]);
@@ -283,7 +284,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const dem = s.giaiDoan === 'ngay' && s.khung >= kb.lich.khung.length;
   const rung = kn.kind === 'effect' || loiHienTai?.expression === 'stunned';
   const laDoc = viewportMode === 'mobile';
-  const laGiaLap = laDoc && typeof window !== 'undefined' && window.innerWidth > 768;
+  const laGiaLap = laDoc && typeof window !== 'undefined' && window.innerWidth > 768 && window.matchMedia('(orientation: portrait)').matches;
   const noiDangO = kn.kind === 'chon-dia-diem' && dangO && dangO.ngay === s.ngay ? kn.diaDiem.find((d) => d.diaDiem.id === dangO.noi) : undefined;
 
   // Bảng người quan sát (`?facilitator=1`): nhảy tới phần SQL = máy tự chơi ván mới tới đó (engine/tu-choi.ts).
@@ -496,6 +497,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           />
         );
       case 'error':
+        if (lechConTro) return null;
         return (
           <div className="game__error" role="alert">
             <p>Nội dung không nhất quán: {kn.message}</p>
@@ -611,12 +613,12 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   );
 
   // Điện thoại nằm ngang (cao ≤ 500 px, màn cảm ứng): màn tra và khay hồ sơ không đủ chỗ → phủ lời nhắc xoay dọc.
-  // Ẩn/hiện hoàn toàn bằng CSS (mvp.css `.mvp-xoay`), xoay lại là chơi tiếp, không mất gì.
+  // Ẩn/hiện bằng stylesheet dùng chung cả màn mở đầu; xoay ngang để tiếp tục.
   const nhacXoay = (
     <div className="mvp-xoay" role="status">
       <span className="mvp-xoay__may" aria-hidden="true" />
-      <p className="mvp-xoay__chu">Xoay dọc điện thoại để chơi</p>
-      <p className="mvp-xoay__phu">Màn tra cứu và khay hồ sơ cần chiều cao — để ngang sẽ bị che mất.</p>
+      <p className="mvp-xoay__chu">Xoay ngang điện thoại để chơi</p>
+      <p className="mvp-xoay__phu">Game được thiết kế để chơi ngang xuyên suốt các màn.</p>
     </div>
   );
 
