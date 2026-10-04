@@ -28,6 +28,8 @@ interface LuatXungHo {
   tuTep?: string;
   truocTep?: string;
   vi: string;
+  /** Nhãn trong báo lỗi: "xưng hô" hoặc "thuật ngữ" (## Thuật ngữ theo vai, cùng cú pháp). */
+  nhan: string;
 }
 
 export interface LuatGiong {
@@ -75,7 +77,8 @@ export function docLuatGiong(noiDung: string): LuatGiong {
     const { dau, khoa } = tachMuc(m[1] ?? '');
     const vi = khoa.get('vì') ?? '';
     if (phan === 'Thứ tự truyện') luat.thuTu.push(dau);
-    else if (phan === 'Xưng hô') luat.xungHo.push({ nguoi: dau, tu: dsach(khoa.get('không nói')), tuTep: khoa.get('từ'), truocTep: khoa.get('trước'), vi });
+    else if (phan === 'Xưng hô' || phan === 'Thuật ngữ theo vai')
+      luat.xungHo.push({ nguoi: dau, tu: dsach(khoa.get('không nói')), tuTep: khoa.get('từ'), truocTep: khoa.get('trước'), vi, nhan: phan === 'Xưng hô' ? 'xưng hô' : 'thuật ngữ' });
     else if (phan === 'Cách gọi') {
       const [ten = '', dung = ''] = dau.split('→').map((x) => x.trim());
       luat.cachGoi.push({ ten, dung, nguoi: new Set(dsach(khoa.get('người nói'))) });
@@ -125,7 +128,7 @@ const THOAI = /\*\*([a-z0-9-]+)\*\*(?: \([^)]*\))?:\s*/g;
 
 /** Thay `{{nv.<mã>[.đuôi]}}` bằng tên trong nhan-vat.md để luật đọc như người chơi đọc. */
 function moBien(chu: string, ten: Map<string, string>): string {
-  return chu.replace(/\{\{nv\.([a-z-]+)(?:\.[a-z.-]+)?\}\}/g, (_, ma: string) => (ma === 'nguoi-choi' ? 'Nam' : (ten.get(ma) ?? ma)));
+  return chu.replace(/\{\{nv\.([a-z-]+)(?:\.[a-z.-]+)?\}\}/g, (_, ma: string) => (ma === 'nguoi-choi' ? 'Khoa' : (ten.get(ma) ?? ma)));
 }
 
 function tachBong(d: DoanLoi, tep: string, duongDan: string, ten: Map<string, string>): Bong[] {
@@ -202,7 +205,7 @@ export function kiemGiong(luat: LuatGiong, tepLoi: { ten: string; duongDan: stri
     // Xưng hô
     for (const x of luat.xungHo) {
       if (b.nguoi !== x.nguoi || !trongKhoang(b.tep, x.tuTep, x.truocTep)) continue;
-      for (const tu of x.tu) if (nguyenTu(tu).test(boNgoiBa(loiNoi))) loi.push(`${vt(b)}: [xưng hô] ${x.nguoi} nói "${tu}" — ${x.vi}`);
+      for (const tu of x.tu) if (nguyenTu(tu).test(boNgoiBa(loiNoi))) loi.push(`${vt(b)}: [${x.nhan}] ${x.nguoi} nói "${tu}" — ${x.vi}`);
     }
     // Cách gọi
     if (b.nguoi) {

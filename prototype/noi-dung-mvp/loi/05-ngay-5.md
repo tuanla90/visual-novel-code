@@ -18,10 +18,10 @@
 - **chu-cuong** (neutral): Không. Cậu ấy đứng xa, trời lại mới sáng, chú chỉ để ý cái huy hiệu thôi. Cái bánh răng sứt mất một răng, trông lệch lệch nên chú nhớ.
 
 ## n5-chu-cuong.2
-- **tung** (surprised): Huy hiệu bánh răng? Hôm Ngày hội CLB, cờ của bọn Robotics in đúng hình đấy!
+- **tung** (surprised): Huy hiệu bánh răng? Hôm Ngày hội CLB, biển của bọn Robotics vẽ đúng hình đấy!
 - **ha-vy** (day-kinh): Huy hiệu thì thành viên nào cũng có. Mới khoanh được là người của Robotics thôi.
 - **tung** (gai-dau): Nhưng Robotics thì liên quan gì tới phòng của mình?
-- **ha-vy** (neutral): Đừng đoán bừa. Ghi lại đã.
+- **ha-vy** (neutral): Đừng đoán bừa vội. Cứ ghi lại đã, tính sau.
 
 ## n5-toi.1
 > NHIỆM VỤ: Soát lại hồ sơ trước buổi họp
@@ -29,7 +29,6 @@
 - [THẺ CHỮ] **narrator**: Tối thứ Bảy
 - **narrator**: Tối, phòng CLB. Hà Vy ghim hết giấy tờ lên bảng, Tùng căng chỉ nối từng tờ.
 - **ha-vy** (day-kinh): Tổng hợp lại. Thẻ lịch Báo chí ra hai lớp. Lọc tên H có Hiếu với Hoài. Sổ niêm phong có mã của Hoài.
-- **ha-vy** (thinking): Thứ Hai họp. Chỉ nói những gì dữ liệu chứng minh được.
 - **tung** (worried): Nhỡ người ta vặn hỏi ai là người viết thư thì sao?
 - **ha-vy** (neutral): Có chứng cứ thì trình. Không có thì bảo chưa biết.
 - **tung** (happy): Rõ rồi. Tối mai tớ ngủ sớm, thứ Hai tỉnh như sáo.

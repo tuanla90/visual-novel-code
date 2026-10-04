@@ -25,7 +25,7 @@
 - [DÀN DỰNG] {{nv.duy}} và {{nv.minh-anh}} mở tủ thiết bị dùng chung. Ngăn giữa có một chiếc micro không dây, đế sạc còn cắm điện, trên thân dán nhãn MIC-02.
 
 ## p-mic-mo.4
-- **duy** (neutral): Mã trên micro là MIC-02, đúng mã trên phiếu. Tài sản không mất, chỗ để đã đổi. Anh sửa lại sổ.
+- **duy** (neutral): Mã trên micro là MIC-02, đúng mã trên phiếu. Tài sản không mất, chỗ để đã đổi. Về sửa lại sổ thôi.
 - **tung** (gai-dau): Tớ đoán sai rồi. May mà có mã, khỏi phải đoán người.
 - **minh-anh** (neutral): Phiếu còn lại của nó là chị đề xuất mượn sang phòng âm thanh cho buổi hướng dẫn. Chưa ai nhận nên micro vẫn nằm đây.
 

@@ -17,7 +17,7 @@
 - **tung** (happy): Đi tắt qua sân bóng rổ, nhanh hơn ba phút. Tớ dẫn đường cho!
 - **ha-vy** (smile): Cậu đo cả thời gian đi bộ à?
 - **tung** (chi-tay): Hướng dẫn viên thì phải thuộc đường chứ. Còn cậu đi sau cứ lẩm nhẩm, tớ cá là lại đếm bậc cầu thang!
-- **ha-vy** (neutral): Hai mươi hai bậc. Quen tật thôi.
+- **ha-vy** (neutral): Hai mươi hai bậc. Tật từ bé rồi, đi đâu cũng đếm.
 
 ## n2-co-hanh.1v
 - **co-hanh** (neutral): Cô tạo cho CLB một tài khoản, tên là clb_tham_tu.
@@ -26,7 +26,7 @@
 - **co-hanh** (smile): Gần thế. Em cứ hình dung cuốn sổ điểm danh: kẻ sẵn mấy cột trên đầu, mỗi dòng bên dưới là một lớp. Cột nói lớp ấy có gì: mã lớp, ngành, khóa, tòa nhà. Có lớp mới thì thêm một dòng, chứ cột không đổi.
 - **co-hanh** (neutral): Trường có vài chục bảng như thế, mỗi bảng ghi một loại việc: bảng lớp, bảng sinh viên, nhật ký in, quẹt thẻ thư viện… Lúc tra, máy không đọc lần từng trang như người. Em nói cho nó ba điều: lấy bảng nào, xem cột nào, giữ lại những dòng nào.
 - **tung** (gai-dau): Giống xếp hàng lấy cơm căng tin cô nhỉ. Mỗi đứa một dòng, cột là món.
-- **ha-vy** (neutral): Và cột cuối là số tiền cậu còn nợ. Bảng, cột, dòng. Tớ ghi vào sổ.
+- **ha-vy** (neutral): Và cột cuối là số tiền cậu còn nợ.
 - **co-hanh** (neutral): Bảng sinh viên có thông tin cá nhân. Muốn xem thì mang phiếu yêu cầu tra cứu, có chữ ký của đơn vị lo vụ việc. Vụ hộp kiến nghị là của Phòng Công tác sinh viên.
 - **co-hanh** (neutral): Tra gì máy cũng ghi lại. Cuối vụ cô xem nhật ký.
 
@@ -37,7 +37,7 @@
 ## n2-bd-toa-b.1
 - **bac-tu** (smile): Lại mấy cháu CLB Thám Tử à? Cô Lan niêm phong hộp lại rồi, không soi được nữa đâu.
 - **tung** (happy): Bọn cháu qua chào bác thôi ạ. Bác trực ở đây cả tuần hả bác?
-- **bac-tu** (neutral): Thứ Hai tới thứ Bảy. Bảy giờ sáng bác mở cửa, chín giờ tối bác khóa. Chủ nhật bác chỉ ghé buổi tối để khóa cửa, có việc thì sang cổng ký túc tìm chú Cường.
+- **bac-tu** (neutral): Thứ Hai tới thứ Bảy. Bảy giờ sáng bác mở cửa, thư viện đóng lúc mười một giờ đêm thì bác khóa. Chủ nhật bác chỉ ghé buổi tối để khóa cửa, có việc thì sang cổng ký túc tìm chú Cường.
 - **ha-vy** (thinking): Tức là cả ngày Chủ nhật sảnh này không có ai trông.
 
 ## n2-bd-cang-tin.1
@@ -52,16 +52,14 @@
 - **narrator**: Về tới phòng CLB. Mỗi người một góc: Duy bên cái laptop, Hà Vy trước tấm bảng, chị Minh Anh xếp lại giấy tờ, Tùng ngồi vắt vẻo trên bàn.
 
 ## n2-phong-duy.1
-- **duy** (neutral): Máy đây. Anh đăng nhập tài khoản cô Hạnh vừa tạo rồi.
-- **duy** (serious): Phiếu nào tra ra cũng phải gọn và có căn cứ thì anh mới nhận vào hồ sơ. Ngồi vào đi.
+- **duy** (neutral): Máy đây. Anh đăng nhập tài khoản cô Hạnh vừa tạo rồi, ngồi vào đi.
 
 ## n2-phong-vy.1
 - **ha-vy** (thinking): Tớ ghim câu hỏi lên bảng rồi: lớp nào vừa ở tòa B vừa học Báo chí?
-- **ha-vy** (neutral): Hai tờ giấy nhớ là hai điều mình biết chắc. Còn lại để dữ liệu trả lời, đừng đoán.
+- **ha-vy** (neutral): Hai tờ giấy nhớ là hai điều mình biết chắc. Còn lại thì chưa.
 
 ## n2-phong-tung.1
 - **tung** (happy): Cậu biết không, cô Hạnh ở Phòng Đào tạo chỉ làm giờ hành chính thôi. Muốn gặp cô thì đừng đi buổi tối.
-- **tung** (chi-tay): Tớ cá là cả trường này tớ thuộc lịch gần hết. Cần tìm ai cứ hỏi tớ.
 
 ## n2-phong-minh-anh.1
 - **minh-anh** (neutral): Tài khoản hôm nay chỉ mở một bảng. Muốn xem thêm bảng nào thì phải có căn cứ, rồi chị đứng ra xin.
@@ -87,7 +85,7 @@
 > NHẮC VIỆC ha-vy (day-kinh): Hai tờ giấy nhớ trên bàn: Tòa B, Báo chí K24. Lớp nào khớp?
 - **player**: Giờ lọc. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà.
 - **tung** (chi-tay): Tòa B hoặc Báo chí, cứ dính một cái là lấy hết cho chắc. Tớ cá kiểu gì chẳng trúng!
-- **ha-vy** (neutral): Đừng cá. Holmes dặn rồi: chưa có dữ liệu mà đã đoán là sai từ gốc. Tính đã.
+- **ha-vy** (neutral): Đừng cá vội. Holmes bảo chưa có dữ liệu mà đã đoán là sai từ gốc đấy. Tính đã nào.
 
 ## n2-laptop.2
 - **ha-vy** (neutral): Hai lớp: BC24A với BC23A.

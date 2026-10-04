@@ -12,13 +12,14 @@ dòng dữ liệu khớp. Thầy Quang (người lập CLB) hay hỏi "Căn cứ
 
 | Mã | Tên | Tuổi / vai | Tính cách | Cách nói | Xưng hô |
 |---|---|---|---|---|---|
-| `player` | Người chơi | Năm nhất | Tò mò, ít nói, hay tự nghĩ trong đầu | Câu trong ngoặc `( … )` là suy nghĩ | tớ/cậu với bạn; em với khóa trên, thầy cô |
-| `tung` | Tùng | Năm nhất Du lịch, bạn cùng phòng | Hay đùa, hay cá cược ("Tớ cá là…"), nhiệt tình, nhanh nhảu kết luận, thuộc đường | Câu ngắn, cảm thán, hay nói quá | tớ/cậu; em/chị với Minh Anh |
-| `ha-vy` | Hà Vy | Năm nhất Toán ứng dụng | Logic, mê Sherlock Holmes, ít lời, nhìn ra chi tiết | Ngắn, khô, hay chặn người khác: "Khoan, tính lại đã.", "Đừng cá. Tính." Không giảng bài | tớ/cậu; em/chị |
-| `minh-anh` | Minh Anh | Năm ba Luật kinh tế, chủ nhiệm | Nghiêm túc, có trách nhiệm, không đùa lúc bận, che chở người mới | "Nói có sách, mách có chứng." Ra quyết định gọn | chị/em với năm nhất, năm hai |
-| `duy` | Duy | Năm hai Hành chính học | Giữ chìa khóa, tủ hồ sơ, sổ tài sản; đúng quy trình, điềm | Bình thản, nói về giấy tờ, ngăn nào có gì | tớ/cậu với năm nhất; em/chị với Minh Anh |
+| `player` | Người chơi | Năm nhất | Tò mò, ít nói, hay tự nghĩ trong đầu. Người DUY NHẤT gõ lệnh và nói chuyện câu lệnh | Câu trong ngoặc `( … )` là suy nghĩ | tớ/cậu với bạn; em với khóa trên, thầy cô; nói với cả nhóm có Minh Anh thì tránh đại từ |
+| `tung` | Tùng | Năm nhất Du lịch, bạn cùng phòng | Hay đùa, hay cá cược ("Tớ cá là…"), nhiệt tình, nhanh nhảu kết luận nhưng biết nhận sai, thuộc đường. Sợ toán, ngợp trước số lớn, không nói thuật ngữ SQL | Câu ngắn, cảm thán, hay nói quá | tớ/cậu; em/anh với Duy ("anh Duy"); em/chị với Minh Anh |
+| `ha-vy` | Hà Vy | Năm nhất Toán ứng dụng | Logic, mê Sherlock Holmes, ít lời, nhìn ra chi tiết. Chưa biết SQL: nghĩ bằng tập hợp (gộp, phần trùng nhau, vừa… vừa…, trừ ra) | Ngắn, khô, hay chặn người khác: "Khoan, tính lại đã.", "Đừng cá. Tính." Không giảng bài, không nói WHERE / câu lệnh / cú pháp | tớ/cậu; em/anh với Duy; em/chị với Minh Anh |
+| `minh-anh` | Minh Anh | Năm ba Luật kinh tế, chủ nhiệm | Nghiêm túc, có trách nhiệm, không đùa lúc bận, che chở người mới | "Nói có sách, mách có chứng." Ra quyết định gọn. Nói căn cứ, quy chế, thẩm quyền; không nói thuật ngữ SQL | chị/em với năm nhất, năm hai |
+| `duy` | Duy | Năm hai Hành chính học | Giữ chìa khóa, tủ hồ sơ, sổ tài sản; đúng quy trình, điềm | Bình thản, nói về giấy tờ, ngăn nào có gì. "Kiểm hai lần, kết luận một lần" | anh/em với năm nhất (năm nhất gọi "anh Duy"); em/chị với Minh Anh; nói với cả nhóm có Minh Anh thì tránh đại từ |
 | `quan` | Quân | Ban Pháp chế Hội sinh viên | Bám quy chế, soi từng chữ, hơi tự đắc | Ngắn, lạnh: "Biết ai nộp chưa có nghĩa là biết ai viết." | tôi/các bạn |
-| `hieu` | Hiếu | Năm nhất BC24A | Nói thẳng, hơi gắt, bực vì nhóm xin phòng không được | "Tôi nói thẳng vậy thôi." | tôi/các bạn |
+| `hieu` | Hiếu | Năm nhất BC24A | Nói thẳng, hơi gắt, bực vì nhóm xin phòng không được | Cụt, thẳng; cho thấy bằng việc, không tự khai "tôi nói thẳng" | Vụ 1: tôi/các bạn. Từ Vụ 2 (đã gỡ tin): tớ/các cậu với năm nhất, em/chị với Minh Anh, em với cô Lan |
+| `nam` | Nam | Năm hai (K23, cùng khóa Duy), CLB Robotics, trực kênh và giữ sổ xưởng | Thẳng, tự lo việc của mình, không nghi bừa ai | Nói việc, không nịnh ("Các cậu nói đúng" là lỗi) | anh/em với năm nhất (năm nhất gọi "anh Nam"); tớ/cậu với Duy; em với Minh Anh, Khánh, Bách, Thảo |
 | `hoai` | Hoài | Năm nhất BC24A, người nộp thư hộ | Rụt rè, nói nhỏ, ngập ngừng | "Dạ… vâng ạ." | em với khóa trên; tớ với bạn |
 | `chu-cuong` | Chú Cường | Bảo vệ KTX, chú của Tùng | Xởi lởi, nhớ chuyện cũ | Kể chuyện, hay nhắc "hồi đó" | chú/cháu |
 | `bac-tu` | Bác Thịnh | Bảo vệ tòa B | Ít lời, đúng giờ, không thấy tận mắt thì không nói | Rất ngắn | bác/cháu |

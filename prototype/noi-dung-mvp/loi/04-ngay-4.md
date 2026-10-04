@@ -21,7 +21,7 @@
 - **player**: Vậy SV240317 là người nộp thư ạ?
 - **co-lan** (neutral): Sổ niêm phong chỉ xác nhận mã đó có mặt. Cô không kết luận thêm.
 - **tung** (gai-dau): Mã của Hiếu không có… Tớ cá trượt rồi à?
-- **ha-vy** (neutral): Trượt cũng được. Loại thêm một người.
+- **ha-vy** (neutral): Trượt cũng chẳng sao. Ít ra mình loại được thêm một người.
 
 ## n4-ctsv.2
 - **quan** (neutral): Biết ai nộp chưa có nghĩa là biết ai viết.
@@ -35,7 +35,7 @@
 - **co-hanh** (neutral): Dưới chân bản in thường có tên tệp. Thư của các em có không?
 - **player**: Có ạ. Nhưng bản chụp bị xén, chỉ đọc được chữ: kien-nghi…
 - **tung** (happy): Hoài nộp thì chắc chắn Hoài in rồi!
-- **ha-vy** (day-kinh): Thử thì biết.
+- **ha-vy** (day-kinh): Tớ cũng chưa rõ. Cứ thử đi.
 
 ## n4-phong-may.2
 - **player**: 23 giờ 10 tối Chủ nhật. Tệp kien-nghi-phong-clb.docx, in từ tài khoản clb_robotics.
@@ -61,7 +61,7 @@
 ## n4-bd-toa-b.1
 - **bac-tu** (neutral): Sáng nay có cậu đeo kính bên Hội xuống đứng nhìn cái hộp một lúc rồi đi. Không hỏi bác câu nào.
 - **tung** (thinking): Anh Quân đấy bác ạ.
-- **ha-vy** (neutral): Anh ấy kiểm bọn mình, và kiểm cả cái hộp. Cẩn thận như thế thì mình càng phải có căn cứ.
+- **ha-vy** (neutral): Anh ấy kiểm bọn mình, kiểm cả cái hộp.
 
 ## n4-toi.1
 - **narrator**: Tối thứ Sáu, phòng CLB. Duy cắm ấm đun nước. Minh Anh lôi từ ngăn kéo ra hộp bánh quy từ kỳ trước.
@@ -72,7 +72,7 @@
 - **tung** (chi-tay): Một: đeo kính. Hai: hay ôm vở. Ba: từ đầu tuần tới giờ chưa thấy cười.
 - **ha-vy** (day-kinh): Ba điều ấy khớp với cả chục người trên thư viện. Dữ kiện quá lỏng.
 - **duy** (smile): Đấy, vừa cười xong. Điều thứ ba sai rồi.
-- **ha-vy** (smile): Tớ không cười. Tớ đang chỉnh kính.
+- **ha-vy** (smile): Em không cười. Em đang chỉnh kính.
 - **player**: Tới lượt tớ. Một: thuộc đường. Hai: thích cá cược. Ba: cá mười thua chín.
 
 ## n4-toi.1c
@@ -83,13 +83,13 @@
 ## n4-toi.1d
 - **tung** (happy): Ghi sổ rồi nhé, nhân chứng đầy đủ! Mai anh Duy nhớ mua loại sô-cô-la đấy!
 - **duy** (smile): Được. Anh mua hộp mới, bù lại tối nay em đi rửa ấm trà.
-- **tung** (happy): Chốt luôn! Tớ ghi vào biên bản đây.
+- **tung** (happy): Chốt luôn! Em ghi vào biên bản đây.
 - **narrator**: Tùng vừa lật sổ ghi xong thì Duy đặt ngay ấm nước ra trước mặt.
-- **tung** (gai-dau): Đòi nợ liền tay thế à? Tớ tưởng biên bản chỉ để tham khảo!
+- **tung** (gai-dau): Đòi nợ liền tay thế hả anh? Em tưởng biên bản chỉ để tham khảo!
 
 ## n4-ctsv-an.1
 - **narrator**: Trên khay là phiếu yêu cầu tra cứu của CLB, chữ ký cô Lan còn tươi mực.
-- **ha-vy** (neutral): Phiếu của mình. Phải có chữ ký duyệt thì cô Lan mới mở sổ.
+- **ha-vy** (neutral): Phiếu của mình. Cô Lan ký rồi kìa.
 
 ## n4-bd-toa-b-an.1
 - **narrator**: Trên ghế đá là ca nhựa và ấm trà của bác Thịnh, nắp vẫn còn ấm.

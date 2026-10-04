@@ -7,7 +7,7 @@
 - **narrator**: Hơn một tháng sau buổi họp rà soát. Phòng CLB vẫn sáng đèn mỗi chiều thứ Tư.
 - **narrator**: Trên bảng ghim có thêm một tờ giấy kẻ ô, tiêu đề "Sổ nợ của Tùng", đã sang dòng thứ mười hai. Dòng mới nhất: "Hai cốc trà đá. Chủ nợ: Hà Vy."
 - **tung** (gai-dau): Dòng ấy không tính. Hôm đó cậu ấy tự mời.
-- **ha-vy** (neutral): Ghi là ghi.
+- **ha-vy** (neutral): Ghi rồi thì là nợ, cậu cãi cũng không được.
 - **minh-anh** (neutral): Thầy Quang dặn rồi: muốn giữ phòng thì tháng nào cũng nộp báo cáo hoạt động. Tháng 10 là kỳ đầu tiên.
 - **minh-anh** (serious): Mà chị không muốn chỉ nộp cho xong. Cuối kỳ trường rà soát lại, chị muốn mình có một bộ hồ sơ ai mở ra cũng tự kiểm được.
 
@@ -38,13 +38,12 @@
 ## v2-tra.1
 > NHIỆM VỤ: Tháng 10, phòng CLB có những buổi nào đã ký xác nhận?
 > NHẮC VIỆC ha-vy (thinking): Cùng một phòng mà mỗi dòng viết mã một kiểu. Máy so từng chữ một.
-- **ha-vy** (thinking): Với mình thì "CLB-THAM-TU" hay "clb-tham-tu" là một phòng. Với máy thì đấy là hai chuỗi khác nhau. Thêm một dấu cách ở đuôi cũng thành chuỗi khác.
+- **ha-vy** (thinking): Với mình thì "CLB-THAM-TU" hay "clb-tham-tu" là một phòng. Với máy thì đấy là hai cách viết khác nhau. Thêm một dấu cách ở đuôi cũng thành khác.
 - **duy** (neutral): Lọc xong thì xếp theo ngày giúp anh. Sổ giấy ghi lần lượt từ đầu tháng, anh dò từng dòng cho nhanh.
 
 ## v2-tra.2
 - **player**: Bốn buổi: mùng 2, mùng 9, 16 và 23 tháng 10. Buổi 30 vẫn ghi dự kiến, chưa ai ký nên không vào.
 - **tung** (happy): Thế là không buổi nào biến mất cả. Chỉ là mỗi người gõ một kiểu.
-- **ha-vy** (smile): Gọt cho các dòng về cùng một kiểu rồi mới so. Tớ ghi vào sổ rồi đấy.
 
 ## v2-xac-nhan.1
 > NHIỆM VỤ: Bản xuất có khớp sổ giấy không?
@@ -65,6 +64,6 @@
 - **minh-anh** (serious): Ai tham dự, buổi nào có ích thì bản ghi này không nói. Hồ sơ cũng không nói thay nó.
 - **quan** (neutral): Ghi thế thì bên tôi kiểm lại được. Hẹn các bạn ở mục tài sản.
 - **tung** (gai-dau): Lần này tớ cá trượt hẳn hai lần.
-- **ha-vy** (smile): Đừng cá. Dò.
-- **duy** (neutral): Xong mục phòng. Tuần sau anh kiểm kê thiết bị cho buổi hướng dẫn cuối kỳ.
+- **ha-vy** (smile): Đừng cá nữa. Dò từng dòng đi.
+- **duy** (neutral): Xong mục phòng. Giữa tháng tới lượt kiểm kê thiết bị cho buổi hướng dẫn cuối kỳ.
 - [THẺ CHỮ] **narrator**: Dữ liệu nhập tay ít khi sạch. Gọt cho các dòng về cùng một kiểu rồi mới so. Kết quả nói được đến đâu thì ghi đến đó.

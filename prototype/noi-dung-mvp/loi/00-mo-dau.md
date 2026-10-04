@@ -9,9 +9,6 @@
 - **player**: (Sáng nay mẹ còn nhét thêm hộp ruốc vào vali, dặn đi dặn lại: ăn đúng bữa, đừng thức khuya, có chuyện gì thì gọi về ngay.)
 - **player**: (Đỗ Đại học Chấn Hưng. Đọc giấy báo trúng tuyển đến lần thứ ba mình mới dám tin.)
 - **narrator**: Ngoài cửa sổ, ruộng lúa thưa dần, nhà cao tầng dày lên, biển quảng cáo chen nhau sát mép đường.
-- **player**: (Một mình giữa thành phố to thế này, nghĩ cũng hơi run. Nhưng mà háo hức nhiều hơn.)
-- **player**: (Ở ký túc xá, gặp người mới, học những thứ chưa từng học. Không biết bốn năm tới sẽ thế nào.)
-- **player**: (Mong là mình không phí nó. Biết đâu sau này ra trường, nhà mình đỡ vất vả hơn.)
 - **narrator**: Xe chậm dần. Giọng phụ xe vọng xuống dọc lối đi: "Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!"
 - **player**: (Tới rồi. Phòng 408… Đi thôi.)
 
@@ -80,7 +77,7 @@
 - **player**: Dòng gần cuối kìa. 408, hai tên.
 - **tung** (ao-xanh-surprised): …Ơ, tên tớ đây. Thế là cùng phòng thật! Tớ là {{nv.tung}}, học Du lịch.
 - **player**: Cùng phòng á? Tớ tưởng cậu là anh năm hai, năm ba gì đấy, mặc áo tình nguyện thế kia.
-- **tung** (ao-xanh): Tớ năm nhất thôi. Tớ nhập học đợt một, lên đây từ cuối tháng Tám nên đường nào cũng rành.
+- **tung** (ao-xanh): Tớ năm nhất thôi. Nhập học đợt một, lên đây từ cuối tháng Tám.
 - **tung** (ao-xanh-happy): Đội thiếu người dẫn đường khu ký túc, chú tớ làm bảo vệ nên giới thiệu tớ mượn áo ra phụ hai hôm.
 
 ## md-00-gap-tung.2
@@ -228,7 +225,7 @@
 ## md-10-mat-banh.1
 > NHIỆM VỤ: Tìm chiếc bánh nướng của CLB
 > NHẮC VIỆC ha-vy (neutral): Ai cũng nhìn quanh bàn thôi. Thử để ý dưới đất xem.
-- **minh-anh** (worried): Ủa, đĩa bánh ban nãy chị nhớ có năm cái cơ mà? Thiếu mất một cái rồi này.
+- **minh-anh** (worried): Ơ, đĩa bánh ban nãy chị nhớ có năm cái cơ mà? Thiếu mất một cái rồi này.
 - **tung** (worried): Ơ tớ thề tớ mới rót trà chứ chưa kịp đụng vào bánh đâu nhé!
 - **ha-vy** (neutral): Đừng đoán vội. Cứ tìm xung quanh xem có rơi rớt đâu không.
 
@@ -270,7 +267,7 @@
 - **ha-vy** (neutral): Không ghi thì một tuần nữa mỗi người nhớ một kiểu.
 
 ## md-11-minh-anh.1
-- **minh-anh** (neutral): Chị đang soạn lịch sinh hoạt tháng này. Thứ Hai nào cũng họp, bốn giờ chiều.
+- **minh-anh** (neutral): Chị đang soạn lịch sinh hoạt. Từ tháng sau, thứ Tư nào cũng họp, bốn giờ chiều.
 - **minh-anh** (happy): Đông thế này thì năm nay phòng không còn vắng nữa.
 
 ## md-11-tung.1
@@ -278,10 +275,10 @@
 
 ## md-11-tu.1
 - **player**: (Ngăn dưới cùng không kéo ra được. Khóa.)
-- **duy** (neutral): Khóa đấy. Để anh.
+- **duy** (neutral): Khóa đấy, để anh mở cho.
 - **narrator**: Duy tháo chùm chìa ở thắt lưng, dò mấy mẩu băng dính, tới chìa thứ ba mới mở được. Một đám bụi bay lên làm Tùng ho sặc.
 - **duy** (neutral): Ngăn này anh chưa kiểm kê. Cứ lôi hết ra bàn.
-- **ha-vy** (day-kinh): Hôm Trung thu mình thấy đôi dép bé tí dưới chiếc đèn. Ở đây cũng vậy thôi: nhìn chỗ người ta không để ý.
+- **ha-vy** (day-kinh): Lôi cả mấy tờ lót dưới đáy ngăn ra nữa nhé.
 
 ## md-11-phong-clb.2
 - **minh-anh** (neutral): Sổ của CLB đấy, khóa nào cũng chép thêm vài trang. Mấy trang đầu mực xanh là từ hồi mới lập. Năm nay em giữ.
@@ -324,11 +321,11 @@
 
 ## md-10-soi-ao.1
 - **player**: Áo thể thao màu lam, không in tên khoa nào.
-- **ha-vy** (neutral): Vậy không đoán khoa từ áo được. Chi tiết không nói gì thì bỏ qua, đừng ép nó nói.
+- **ha-vy** (neutral): Áo này thì chịu, chẳng đoán được gì.
 
 ## md-10-soi-mui.1
 - **player**: Miếng băng cá nhân trên sống mũi.
-- **tung** (happy): Hôm khuân đồ cho tân sinh viên tớ đập mặt vào cửa thang máy. Đội tình nguyện đón tân sinh viên mà!
+- **tung** (happy): Hôm khuân đồ cho tân sinh viên tớ đập mặt vào cổng sắt ký túc. Đội tình nguyện đón tân sinh viên mà!
 
 ## md-10-dia-banh.1
 - **player**: (Đĩa trên bàn gấp lót năm tờ giấy, nhưng chỉ còn bốn chiếc bánh. Một tờ giấy vừa bị kéo lệch.)

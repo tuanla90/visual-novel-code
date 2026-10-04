@@ -6,7 +6,7 @@
 - Khi lỗi không có cột: **duy** (neutral): Máy báo không có cột đó. Số lượng trong kho nằm ở bảng kiểm kê, nối rồi mới lọc được.
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Kho không có thì bảng kiểm kê ghi số 0, giấy nhớ cũng là số 0.
 - Khi chạy ra 156 dòng: **tung** (gai-dau): Cả sổ, một trăm năm mươi sáu đơn. Mình chỉ cần thứ trong kho đang là số không.
-- Khi đúng: **nam** (neutral): Ba đơn. Đúng ba đơn mang tên tớ.
+- Khi đúng: **nam** (neutral): Ba đơn. Đúng ba đơn mang tên anh.
 
 ## c-chi-tham-tu.1
 - Khi lỗi không có cột: **duy** (neutral): Máy báo không có cột đó. Tên CLB nằm ở bảng quỹ, nối rồi mới lọc được.

@@ -16,7 +16,7 @@
 > NHẮC VIỆC minh-anh (neutral): Kết quả hai lớp hôm qua là căn cứ để xin phiếu tra cứu.
 - **narrator**: Lại con đường tắt qua sân bóng rổ.
 - **tung** (happy): Hôm qua ba phút, hôm nay tớ cá là hai phút rưỡi.
-- **ha-vy** (neutral): Đừng cá. Bấm giờ.
+- **ha-vy** (neutral): Đừng cá nữa. Để tớ bấm giờ cho.
 - **player**: Hai phút bốn mươi. Coi như Tùng thua mười giây.
 - **tung** (gai-dau): Tại cậu ấy dừng lại đọc bảng tin!
 - **co-lan** (neutral): Hộp kiến nghị là bên cô quản. Người gửi muốn được trả lời thì phải ghi mã sinh viên của mình vào phiếu gửi. Mã đó được chép vào sổ niêm phong.
@@ -25,7 +25,7 @@
 - **co-lan** (neutral): Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô mới tra và trả lời có hoặc không.
 - [DÀN DỰNG] Một anh sinh viên đeo kính, mặc gi lê len xanh than, kẹp cái bìa da, đứng ở cửa từ lúc nào.
 - **narrator**: Ở cửa có một anh sinh viên đeo kính, mặc gi lê len xanh than, kẹp cái bìa da, đứng từ lúc nào không ai để ý.
-- **ha-vy** (thinking): Người lạ. Nhìn kỹ trước khi anh ấy mở lời đã.
+- **ha-vy** (thinking): Người lạ kìa. Nhìn kỹ một chút trước khi anh ấy mở lời đã.
 
 ## n3-ctsv.1b
 - **quan** (neutral): Tôi là Quân, bên Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi được cử xuống giám sát việc này.
@@ -41,12 +41,12 @@
 - **ha-vy** (thinking): Người kỹ tính. Mình viết gì anh ấy cũng sẽ soi từng chữ.
 
 ## n3-soi-gi-le.1
-- **player**: Gi lê len, sơ mi cài kín cổ. Thầy cô thì mặc vest, đây không phải thầy cô.
+- **player**: Gi lê len, sơ mi cài kín cổ. Mặt còn trẻ quá, không phải thầy cô.
 - **ha-vy** (neutral): Sinh viên, mà ăn mặc như đi họp. Người của một ban nào đó trong Hội.
 
 ## n3-soi-tay.1
 - **player**: Đứng thẳng, hai tay chắp sau lưng, không cầm bút, không cầm sổ.
-- **ha-vy** (thinking): Tới để xem, không phải để giúp.
+- **ha-vy** (thinking): Anh ấy tới để xem mình làm, chứ không phải để giúp đâu.
 
 ## n3-bd-phong-may.1
 - **narrator**: Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ ở bàn trực sảnh tòa B.
@@ -68,7 +68,7 @@
 - **hieu** (annoyed): Nhìn gì? Tôi là Hiếu, lớp BC24A. Có gì hỏi thẳng đây, đừng xì xào sau lưng.
 - **narrator**: Có tiếng gọi từ quầy: "Hiếu ơi, lấy cơm này!" Cậu ta đứng dậy, bỏ đi.
 - **tung** (happy): Thôi, chuyện thư từ để nhóm mình tự kiểm tra. Tớ ra lấy trà đá, ai uống không?
-- **tung** (worried): Khoan, ví còn đúng tiền xe buýt. Thêm cốc trà đá là tối nay đi bộ.
+- **tung** (worried): Khoan, ví còn đúng tiền cơm tối. Thêm cốc trà đá là tối nay nhịn.
 - **player**: Để tớ mời. Cốc hôm khiêng vali thì cậu vẫn nợ đấy.
 
 ## n3-phong.1
@@ -79,7 +79,7 @@
 
 ## n3-phong-vy.1
 - **ha-vy** (thinking): Câu hỏi mới trên bảng: trong hai lớp ấy, ai có tên bắt đầu bằng H?
-- **ha-vy** (neutral): Tùng cá là Hiếu. Tớ không cá. Người gắt ở căng tin chưa phải là dữ liệu.
+- **ha-vy** (neutral): Tùng cá là Hiếu rồi đấy. Tớ thì chưa dám nói gì.
 
 ## n3-phong-minh-anh.1
 - **minh-anh** (neutral): Anh Quân ký giám sát, nghĩa là mình tra gì bên Hội cũng xem được.

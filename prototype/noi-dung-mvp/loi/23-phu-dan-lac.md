@@ -7,7 +7,7 @@
 - **narrator**: Gần mười một giờ đêm. Thư viện tầng ba giảng đường B còn lác đác vài bàn sáng đèn. Hà Vy đã về từ chín giờ.
 - **narrator**: Tùng ngồi đối diện bạn, giở tập bản đồ trường ra rồi lại gập vào. Trang vở trước mặt cậu ấy vẫn trắng.
 - **player**: Cậu nhìn mỗi trang ấy nửa tiếng rồi đấy.
-- **tung** (gai-dau): Tớ có đọc đâu. Hôm qua Hoài bảo tuần đầu tớ dẫn bạn ấy lạc sang tận nhà xe. Tớ còn cãi là "chỉ sai tòa". Về nghĩ lại thấy cãi thế kỳ quá.
+- **tung** (gai-dau): Tớ có đọc đâu. Hôm thứ Ba Hoài bảo tuần đầu tớ dẫn bạn ấy lạc sang tận nhà xe. Tớ còn cãi là "chỉ sai tòa". Về nghĩ lại thấy cãi thế kỳ quá.
 - **tung** (worried): Tớ nói bừa về bạn ấy một lần rồi. Lần này tớ muốn xin lỗi cho tử tế. Mà xin lỗi thì phải biết mình sai cái gì đã chứ.
 - **player**: Cậu không nhớ hôm ấy à?
 - **tung** (thinking): Tuần đầu tớ dẫn bao nhiêu lượt, nhớ sao nổi. Nhưng đội tình nguyện có sổ đón, lượt nào cũng ghi. Bản xuất nằm trong laptop tớ, ở phòng.
@@ -55,7 +55,7 @@
 
 ## p-lac-phong.2
 - **tung** (neutral): SV240251. Trong sổ, tình nguyện viên ghi bằng mã, tân sinh viên cũng ghi bằng mã.
-- **narrator**: Điện thoại rung. Tin nhắn của Hà Vy trong nhóm: "Hai ông tướng về tới phòng chưa? Tra gì thì gửi phiếu lên đây, tớ với Duy xem."
+- **narrator**: Điện thoại rung. Tin nhắn của Hà Vy trong nhóm: "Hai ông tướng về tới phòng chưa? Tra gì thì gửi phiếu lên đây, tớ với anh Duy xem."
 - **tung** (surprised): Sao Vy biết bọn mình định tra?
 - **player**: Cậu kể với cả nhóm từ chiều rồi.
 > NHIỆM VỤ: Tìm các lượt đón do Tùng dẫn

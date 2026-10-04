@@ -9,7 +9,7 @@
 - **minh-anh** (neutral): Bó này sang Phòng Đào tạo trước. Cô Hạnh nghỉ hưu cuối năm. Hôm nay là hai mươi tháng Mười Một cuối cùng cô còn đi làm.
 - **duy** (neutral): Cô vào trường từ hồi nào?
 - **minh-anh** (neutral): Gần ba mươi năm. Mấy năm đầu cô đứng lớp, sau mới về Phòng Đào tạo.
-- **ha-vy** (smile): Vậy hoa phải đưa tận tay.
+- **ha-vy** (smile): Thế thì hoa phải đưa tận tay cô mới được.
 
 ## p-hoc-dao-tao.1
 - **narrator**: Phòng Đào tạo đầu giờ còn vắng. Nắng chưa lên tới quầy, ấm trà trên bàn nhỏ vẫn bốc hơi.
@@ -78,5 +78,5 @@
 - **narrator**: Một cậu cao lênh khênh tên Hùng đến sớm, rụt rè chọn ghế cuối bàn. Mười lăm phút sau, một người đàn ông bụng bia, cũng tên Hùng, thở hổn hển vì kẹt xe. Cô Hạnh nhìn hai người, không nói gì, chỉ rót thêm một chén trà.
 - **narrator**: Cô không phát biểu. Cô nhìn từng người một, rồi chỉ nói: "Ngồi đi. Cô pha trà."
 - **narrator**: Ở bàn trực cạnh chân cầu thang, bác Thịnh ngồi im, tay đặt trên cuốn sổ trực. Bác nhìn sang phía bàn trà một lúc lâu, rồi cúi xuống, lật sang trang khác.
-- **minh-anh** (neutral): Mình về thôi. Để cô ngồi với các em.
+- **minh-anh** (neutral): Mình về thôi. Để cô ngồi với học trò.
 - [THẺ CHỮ] **narrator**: Danh sách giúp cô nhớ ra ai để mời. Ai tới, tới để làm gì, là chuyện của từng người.

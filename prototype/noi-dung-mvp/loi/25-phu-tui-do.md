@@ -4,7 +4,7 @@
 
 ## p-tui-mo.1
 - [THẺ CHỮ] **narrator**: Thứ Tư, 30/10/2024 · Việc của Tùng
-- **narrator**: Gần bốn giờ chiều. Ba người ra khỏi tòa B, đi tắt lối có hàng cây lấy bóng để ra nhà xe. Dưới gốc cây, trên ghế đá, có một chiếc túi vải mở miệng. Đồ bày ra mặt ghế như vừa có người lấy ra tìm gì đó rồi bỏ đấy.
+- **narrator**: Gần bốn giờ chiều. Bốn người ra khỏi tòa B, đi tắt lối có hàng cây lấy bóng để ra nhà xe. Dưới gốc cây, trên ghế đá, có một chiếc túi vải mở miệng. Đồ bày ra mặt ghế như vừa có người lấy ra tìm gì đó rồi bỏ đấy.
 - **tung** (surprised): Ơ, túi ai bỏ quên đây này?
 - **ha-vy** (thinking): Chai nước chưa ráo hơi nước. Chưa lâu.
 - **minh-anh** (neutral): Không ghi tên. Chị đề nghị mang xuống nộp bác Thịnh. Bác trực sảnh tòa B, có sổ đồ thất lạc. Mất gì ở khu này người ta cũng ra chỗ bác hỏi đầu tiên.
@@ -20,7 +20,7 @@
 - **bac-tu** (neutral): Ai hỏi thì bác hỏi lại họ mất những gì. Nói đúng thì bác trả.
 - **narrator**: Cuối dòng, bác ký một chữ: T. Rồi đóng sổ.
 - **tung** (happy): Tớ cá là chủ túi ra nhận ngay tối nay.
-- **ha-vy** (neutral): Đừng cá.
+- **ha-vy** (neutral): Đừng cá vội. Chưa chắc người ta biết mình mất túi ở đâu.
 
 ## p-tui-sang.1
 - [THẺ CHỮ] **narrator**: Sáng thứ Năm, 31/10/2024
@@ -33,18 +33,18 @@
 - **hieu** (neutral): Dạ, em biết. Em muốn nộp vào đợt sau cho đỡ phải viết lại.
 - **co-lan** (smile): Thế thì cô nhận để đó. Đợt sau cô báo.
 - **minh-anh** (neutral): Bọn chị nộp túi cho bác từ chiều qua.
-- **hieu** (neutral): Nộp bác là đúng cách rồi. Tớ mới là người để quên.
+- **hieu** (neutral): Nộp bác là đúng cách rồi chị. Em mới là người để quên.
 - **narrator**: Hiếu gật đầu với cả nhóm rồi đi theo cô Lan vào phòng. Chiếc túi vải lắc nhẹ trên vai cậu ấy.
 
 ## p-tui-nhin.1
 - **tung** (happy): Đấy! Tìm ra chủ túi trước, rồi mới tính!
-- **minh-anh** (neutral): Được. Nhưng đồng hồ vẫn chạy. Hơn hai mươi phút chưa ra thì chị mang túi xuống bác Thịnh, như chị nói ban đầu. Hai cách đều đúng.
-- **ha-vy** (thinking): Luật trước đã. Mình chỉ nhìn những gì đang nằm ngoài. Không mở ví, không mở điện thoại, không thò tay xuống đáy túi. Đồ của người ta.
-- **narrator**: Ba người cúi xuống mặt ghế. Nắng chiều lọt qua tán cây, in những đốm sáng lên giáo trình, lên tờ hóa đơn, lên cái bìa nhựa.
+- **minh-anh** (neutral): Được. Nhưng đồng hồ vẫn chạy. Hơn hai mươi phút chưa ra thì chị mang túi xuống bác Thịnh.
+- **ha-vy** (thinking): Chỉ nhìn đồ đang để ngoài thôi. Ví với điện thoại thì đừng động vào.
+- **narrator**: Bốn người cúi xuống mặt ghế. Nắng chiều lọt qua tán cây, in những đốm sáng lên giáo trình, lên tờ hóa đơn, lên cái bìa nhựa.
 > NHIỆM VỤ: Xem kỹ những món đang để ngoài trên ghế đá
 
 ## p-tui-nhin.2
-- **ha-vy** (thinking): Một nhãn bong nửa mã, một vé xe, một hóa đơn, một tờ đơn có hạn. Đủ để thu hẹp.
+- **ha-vy** (thinking): Bấy nhiêu thứ là đủ để thu hẹp rồi.
 - **minh-anh** (neutral): Mang túi về phòng CLB. Laptop ở đó.
 - **narrator**: Tùng bê chiếc túi bằng hai tay, như bê một chậu cây dễ đổ.
 
@@ -69,7 +69,7 @@
 ## p-tui-vi.1
 - **narrator**: Tùng đưa tay về phía chiếc ví da nâu. Hà Vy giữ cổ tay cậu ấy lại, không nói.
 - **tung** (surprised): Tớ chỉ xem có thẻ sinh viên không thôi mà.
-- **ha-vy** (neutral): Chỉ xem thôi cũng là mở.
+- **ha-vy** (neutral): Chỉ xem thôi thì cũng là mở ví người ta rồi.
 - **narrator**: Tùng rụt tay về, nhét vào túi quần.
 
 ## p-tui-dien-thoai.1
@@ -118,7 +118,7 @@
 
 ## p-tui-hoi.2
 - **ha-vy** (thinking): Người mất đồ ở tòa B thường ra hỏi bác bảo vệ trước. Mình xuống sảnh.
-- **minh-anh** (neutral): Cầm túi theo. Còn bốn mươi phút.
+- **minh-anh** (neutral): Cầm túi theo nhé. Còn có bốn mươi phút thôi.
 
 ## p-tui-gap.1
 - **narrator**: Sảnh tòa B, tan tiết cuối. Trước bàn trực của bác Thịnh có một sinh viên đứng thẳng, hai tay vịn mép bàn. Hiếu.
@@ -129,7 +129,7 @@
 - **ha-vy** (neutral): Cậu nói xem trong túi còn gì ngoài tờ đơn.
 - **hieu** (neutral): Ví da nâu, điện thoại, hộp bút vải bò xanh, chai nước. Vé xe vào bãi lúc bảy giờ mười hai.
 - **ha-vy** (smile): Đủ rồi. Ví với điện thoại bọn mình không mở. Cậu tự kiểm lại.
-- **hieu** (neutral): Nguyên vẹn. Nói thẳng nhé: mất tờ này là mất cả kỳ. Cảm ơn.
+- **hieu** (neutral): Còn nguyên cả. Nói thẳng nhé: mất tờ này là mất cả kỳ. Cảm ơn nhé.
 - **bac-tu** (neutral): Phòng hành chính đóng đúng năm giờ.
 - **tung** (surprised): Phòng Công tác sinh viên! Tớ chạy cùng!
 
@@ -138,5 +138,5 @@
 - **co-lan** (neutral): Còn tám phút. Đưa cô xem.
 - **narrator**: Cô Lan đọc từng dòng, mở ngăn kéo lấy con dấu, ấn xuống góc giấy. Mực đỏ nhòe nhẹ, dòng chữ nhỏ bên dưới: nhận 16 giờ 52.
 - **co-lan** (smile): Nhận rồi em.
-- **hieu** (neutral): Dạ. Cảm ơn cô. Cảm ơn các cậu.
+- **hieu** (neutral): Dạ. Cảm ơn cô. Cảm ơn mọi người.
 - **narrator**: Con dấu đỏ trên góc tờ đơn vẫn còn ướt.

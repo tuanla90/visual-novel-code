@@ -25,7 +25,7 @@
 - [DÀN DỰNG] Nhân vật chính xin phép thầy Quang, bước lên cạnh máy chiếu để chỉ ra chỗ nhầm lẫn.
 
 ## hop-00.4
-- **ha-vy** (neutral): Anh đang gộp chung người tên H và người học lớp BC24A. Bọn em chỉ tìm người vừa tên H, vừa học BC24A.
+- **player**: Anh đang gộp chung người tên H và người học lớp BC24A. Bọn em chỉ tìm người vừa tên H, vừa học BC24A.
 - **quan** (neutral): …Hai dòng. Vâng. Mời các bạn nói tiếp.
 
 ## hop-02.1
@@ -73,11 +73,11 @@
 
 ## ket-that.2
 - **narrator**: Chiều muộn, cả nhóm về phòng CLB dọn bảng. Từ cuốn sổ CLB rơi ra một mẩu giấy gấp tư.
-- **duy** (neutral): Mực xanh, ngả màu cả rồi. Anh kiểm kê cái tủ này cả năm, chưa thấy tờ này bao giờ.
+- **duy** (neutral): Mực xanh, ngả màu cả rồi. Sổ này năm nào cũng kiểm, chưa thấy tờ này bao giờ.
 - **player**: "Căn phòng này giữ nhiều hơn em nghĩ."
 - **tung** (surprised): Giữ gì cơ? Phòng có mỗi cái tủ với cái bảng.
 - **ha-vy** (thinking): Đừng cá. Chưa có gì để tính cả.
-- **tung** (happy): Thế thì đi. Trà đá. Tớ hứa rồi.
+- **tung** (happy): Thế thì đi uống trà đá thôi. Tớ hứa rồi mà.
 
 ## ket-tra-da.1a
 - **narrator**: Gốc cây ngoài cổng chính. Một cái ô bạc màu, mấy cái ghế nhựa, cái ấm nhôm to bằng cái xô.
@@ -88,7 +88,7 @@
 - **ha-vy** (smile): Cậu cá thua tớ bao nhiêu lần rồi, trả bằng trà đá thì còn lâu mới hết.
 
 ## ket-tra-da.1c
-- **tung** (gai-dau): Lần này tớ chừa. Hôm ở phòng máy tớ lỡ mồm nghi cho Hoài. Suýt nữa bạn ấy mang tiếng.
+- **tung** (gai-dau): Lần này tớ chừa. Hôm ở chỗ cô Hạnh tớ lỡ mồm nghi cho Hoài. Suýt nữa bạn ấy mang tiếng.
 - **player**: Cậu cứ khăng khăng "chắc Hoài in". Nhật ký in thì nói khác.
 - **tung** (worried): Ừ. Giờ gặp bạn ấy chẳng biết mở lời thế nào.
 - **ba-lua** (neutral): Mấy đứa ở phòng tầng hai nhà câu lạc bộ đấy hả? Phòng có cái tủ sắt.
@@ -103,11 +103,11 @@
 - **ha-vy** (thinking): Một người kể, chưa có giấy tờ gì. Cứ ghi lại đã, ghi rõ là lời kể.
 - **player**: Tớ ghi vào sổ. Nguồn: bà bán trà đá ngoài cổng.
 - [DÀN DỰNG] Thấy bóng {{nv.hoai}} ôm cặp đi qua bên kia đường, {{nv.tung}} hấp tấp nhổm dậy va vào bàn suýt đổ cốc nước.
-- **tung** (worried): Ơ Hoài ơi! Đợi tớ... chuyện hôm trước tớ...
-- **hoai** (nervous): Ơ... tớ chào các cậu nhé, xe buýt sắp tới rồi tớ phải chạy đây!
-- **narrator**: Hoài giật mình quay lại rồi đi nhanh hơn về phía bến xe.
+- **tung** (worried): Ơ Hoài ơi! Đợi tớ… chuyện hôm trước tớ…
+- **hoai** (nervous): Ơ… tớ chào các cậu nhé. Tớ phải về kẻo muộn.
+- **narrator**: Hoài giật mình quay lại, gật đầu một cái rồi đi nhanh hơn.
 - **ha-vy** (smile): Cậu định xin lỗi người ta hay tính bắc loa dọa bạn ấy đấy?
-- **tung** (gai-dau): Oan cho tớ, tớ còn chưa kịp nói xong chữ "xin" mà...
+- **tung** (gai-dau): Oan cho tớ, tớ còn chưa kịp nói xong chữ "xin" mà…
 - **ba-lua** (smile): Con trai con lứa xin lỗi con gái mà gọi với qua đường như đòi nợ! Mai mời con bé cốc trà mà tạ lỗi.
 - [THẺ CHỮ] **narrator**: SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.
 

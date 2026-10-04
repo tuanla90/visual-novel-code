@@ -7,7 +7,7 @@
 - Ảnh: doc-thu-hoi-don
 - Nguồn: {{nv.nam}} mang tới phòng CLB
 - Nội dung hiển thị:
-> Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, năm đơn cộng lại 2.670.000 đồng. Giấy đề ngày 11/10, lập theo danh sách chủ tịch Hội sinh viên chuyển xuống; {{nv.quan}} ký. Kèm bản sổ đặt hàng của xưởng.
+> Ban kiểm tra Hội sinh viên tạm dừng giải ngân cho xưởng Robotics, yêu cầu giải trình năm đơn linh kiện đứng tên Nam trong tháng 9 và 10, năm đơn cộng lại 2.670.000 đồng. Giấy đề ngày 01/11, lập theo danh sách chủ tịch Hội sinh viên chuyển xuống; {{nv.quan}} ký. Kèm bản sổ đặt hàng của xưởng.
 > Nam nói mình chỉ đặt hai đơn: cảm biến dò line và bánh xe.
 
 ### doc-phien-dang-nhap — Bảng phiên đăng nhập do cô Hạnh xuất

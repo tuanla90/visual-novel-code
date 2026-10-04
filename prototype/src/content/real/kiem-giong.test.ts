@@ -15,6 +15,9 @@ const LUAT = `
 - duy · không nói: tớ, cậu · vì: anh/em
 - hieu · không nói: tôi · từ: 02-b · vì: đổi theo cung
 
+## Thuật ngữ theo vai
+- ha-vy · không nói: câu lệnh, WHERE · vì: Vy nghĩ bằng tập hợp, không nói SQL
+
 ## Xưng theo người có mặt
 - duy, ha-vy · khi có: co-hanh · trừ khi có: bac-tu · không nói: cháu · mức: lỗi · vì: em với thầy cô
 - duy · khi có: co-hanh · chỉ khi câu có: ạ, cô · không nói: cột · mức: lỗi · vì: không nói cột với người ngoài
@@ -51,6 +54,12 @@ const tep = (ten: string, ...dong: string[]): { ten: string; duongDan: string; n
 
 describe('kiem-giong', () => {
   const luat = docLuatGiong(LUAT);
+
+  it('thuật ngữ theo vai: Vy nói thuật ngữ SQL là lỗi, người chơi nói thì không', () => {
+    const kq = kiemGiong(luat, [tep('01-a', '- **ha-vy** (thinking): Rà đúng mệnh đề WHERE đi.', '- **player**: Câu lệnh của anh Quân lấy rộng.')]);
+    expect(kq.loi.filter((l) => l.includes('[thuật ngữ]'))).toHaveLength(1);
+    expect(kq.loi.join('\n')).toContain('ha-vy nói "WHERE"');
+  });
 
   it('đọc đủ các phần luật', () => {
     expect(luat.thuTu).toEqual(['01-a', '02-b']);

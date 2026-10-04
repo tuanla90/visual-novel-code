@@ -79,3 +79,44 @@ vào brief khi giao AI viết lời. Máy kiểm bắt được phần có mẫu
 - Với thầy cô ở trường (cô Hạnh, cô Lan, thầy Quang), sinh viên luôn xưng **em**, kể cả cô sắp nghỉ hưu; thầy cô gọi "các em".
   "Cháu" chỉ với bác bảo vệ, chú Cường, bà bán trà đá.
 - Quân luôn **tôi/các bạn**. Hiếu **tôi** ở Vụ 1 (còn gắt); từ Vụ 2 (đã gỡ tin) **tớ/các cậu** với nhóm, "em" với cô Lan.
+
+## Quyết định 04/10/2026 (rút từ đợt rà soát lời cb4deef và bản AI gọt 6922085)
+
+- **Đúng vai khi nói chuyện dữ liệu**: chỉ người chơi gõ lệnh và nói "câu lệnh". Hà Vy nghĩ bằng tập hợp ("Họ lấy cả hai thay vì
+  chỉ lấy phần trùng nhau"), Minh Anh nói căn cứ, Tùng ngợp trước số. Máy bắt: mục "## Thuật ngữ theo vai".
+- **Xưng theo người được nói tới, cho mọi khóa dưới**: Duy đáp lời Minh Anh thì "em" ("Em nạp vào laptop rồi chị"); Tùng, Hà Vy
+  đáp lời Duy thì "em" ("Em không cười. Em đang chỉnh kính"); Nam, Hiếu đáp lời Minh Anh thì "em". Nói với cả nhóm có Minh Anh thì
+  bỏ đại từ ("Còn chưa kịp đặt hoa…", "Cảm ơn mọi người"). Máy không biết câu nói với ai: soát tay theo câu ngay trước.
+- **Không nịnh**: "Các cậu nói đúng" bỏ, nói thẳng vào việc ("Có người đang mượn tên em…").
+- **Giọng miền Bắc**: không "ủa, nè, hông, tui". Máy bắt ở "## Chống giọng AI".
+- **AI gọt câu không được đổi dữ kiện của tuyến khác**: bản gọt 6922085 đổi lời Tùng thành "hôm đấy cậu bảo muốn đi gửi xe" làm
+  gãy việc phụ "Một lần dẫn lạc" (Tùng tự nhận không hỏi lại); thêm "xe buýt" cho Hoài trong khi Hoài kéo vali vào ký túc.
+
+## Quyết định 04/10/2026, bảng lý do sửa Vụ 1 (Ngày hội Trung thu)
+
+Lời phải hợp tuổi 18–21. Bảng user duyệt cho bản sửa 6922085, rút thành luật:
+
+| Lỗi | Ví dụ bị sửa | Viết thay | Máy |
+|---|---|---|---|
+| Ẩn dụ, nhân hóa kiểu hoạt hình mẫu giáo | Minh Anh "Trăng tròn mà như sắp lăn khỏi bảng"; Tùng tả đầu lân "Tớ hiểu nó"; "bánh tự mọc chân" | Một nhận xét thực tế: "Dán chèn cả lên bảng tin trường, gió thổi cái là bong" | nhắc |
+| Tự gọi người khác là "người lớn" (cả nhóm là người lớn) | Hà Vy "Nhìn chỗ người lớn không để ý ấy" | "Đám đông mải nhìn lên sân khấu", "Ai cũng nhìn quanh bàn thôi" | lỗi |
+| Câu cụt kiểu tập đếm, bài tập đọc lớp 2 | "Sao năm cánh mà nhấp nháy tám màu"; "đĩa bánh vừa đủ năm người mà hụt mất một chiếc. Ai cầm nhỉ?" | Câu đời thường có ngạc nhiên, có tiểu từ: "Thiếu mất một cái rồi này", "Ơ tớ thề tớ mới rót trà…" | (tiểu từ) |
+| Suy nghĩ người chơi nói điều hiển nhiên | Dép trẻ con "Chẳng ai trong CLB đi vừa" | Suy nghĩ bật ra câu hỏi tiếp theo: "Quanh đây có trẻ nhỏ chạy chơi à?" | tay |
+| Cường điệu kiểu sitcom: người ở xa phản ứng với câu nói nhỏ | Bạn Robotics khựng tay, khách ngoái nhìn khi người chơi đoán | Bỏ phản ứng; nhân vật bên mình bác bằng lý | tay |
+| Xưng hô sai vai với trẻ con | Minh Anh nói với bé Na "Con cứ ăn đi" (giọng phụ huynh) | "Bé cứ cầm ăn đi nhé", chị/bé | tay |
+| Khen cộc như cô giáo | Hà Vy "Giỏi." | Nói việc vừa làm được: "Quan sát tốt đấy. Lần theo vệt vụn bánh với đôi dép là ra ngay." | lỗi |
+
+Gợi ý theo tinh thần Sherlock Holmes: chỉ hướng quan sát (ai cũng nhìn chỗ nào, chỗ nào chưa ai nhìn), không phán theo tuổi, vai người khác.
+
+## Gọt lời 04/10/2026 (user: "bỏ bớt câu nói trực tiếp, ngây ngô, sách giáo khoa, cụt lủn, gượng ép, cường điệu")
+
+Soát tay, máy không bắt được. Câu thuộc một trong các loại dưới thì cắt hẳn, hoặc giữ đúng phần việc:
+
+- **Nói trực tiếp bài học / luật**: "Chi tiết không nói gì thì bỏ qua, đừng ép nó nói", "Ngưỡng ấy để tìm nhóm cần hỏi, không phải để kết tội", "Đến đây dữ liệu dừng, không phải mình non". Thẻ chữ cuối cảnh đã nói bài học, nhân vật không nói lại.
+- **Nhắc lại điều người chơi vừa làm / vừa biết**: "Bảng, cột, dòng. Tớ ghi vào sổ", "Gọt cho các dòng về cùng một kiểu rồi mới so", Vy đọc lại cả chuỗi lập luận sau khi người chơi đã tra ra.
+- **Liệt kê manh mối**: "Một nhãn bong nửa mã, một vé xe, một hóa đơn…", "Phải xem ai mở hộp, mở lúc nào, trong hộp còn sót lại gì".
+- **Thoại độc thoại cảm xúc kiểu văn mẫu**: "Một mình giữa thành phố to thế này… háo hức nhiều hơn", "Mong là mình không phí nó".
+- **Câu đệm gượng**: "Lần đầu tớ thấy một tập giấy nặng thế."
+- **Cường điệu, gắt quá mức với người lớn hơn**: Tùng nói khóa trên "Nói điêu là lộ ngay", "Giải thích đi!".
+- **Câu cụt kiểu khẩu hiệu** (user 04/10): "Thử thì biết." → "Tớ cũng chưa rõ. Cứ thử đi."; "Đừng cá. Dò." → "Đừng cá nữa. Dò từng dòng đi."; "Ghi là ghi." → "Ghi rồi thì là nợ, cậu cãi cũng không được." Hà Vy vẫn ngắn, nhưng là câu nói thật: có tiểu từ, có chủ ngữ khi cần. Hoặc cắt hẳn. "Đừng cá" vẫn là câu riêng của Vy, chỉ nói thêm cho tròn.
+

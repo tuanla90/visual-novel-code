@@ -51,6 +51,7 @@ Chốt 03/10/2026: Duy anh/em với năm nhất; người chơi xưng theo ngư�
 - player · không nói: tôi · vì: tớ/cậu với bạn, em với khóa trên và thầy cô
 - minh-anh · không nói: tớ, cậu, các cậu · vì: năm ba, chị/em với năm nhất và năm hai
 - duy · không nói: tớ, cậu, các cậu · vì: năm hai, anh/em với năm nhất, em/chị với Minh Anh (chốt 03/10)
+- nam · không nói: cậu, các cậu · vì: năm hai, anh/em với năm nhất, tớ/cậu với Duy (Duy gần như không nói chuyện riêng với Nam), em với Minh Anh, Khánh, Bách, Thảo (user chốt 04/10)
 - quan · không nói: tớ, cậu, các cậu · vì: tôi/các bạn, lạnh, công vụ
 - hieu · không nói: tớ, các cậu · trước: 10-vu-2-tin-don · vì: Vụ 1 còn gắt, tôi/các bạn
 - hieu · không nói: tôi · từ: 10-vu-2-tin-don · vì: từ Vụ 2 đã gỡ tin, tớ/các cậu với nhóm (vẫn "em" với cô Lan)
@@ -60,6 +61,17 @@ Chốt 03/10/2026: Duy anh/em với năm nhất; người chơi xưng theo ngư�
 - bac-tu · không nói: tôi, tớ · vì: bác/cháu
 - chu-cuong · không nói: tôi, tớ · vì: chú/cháu
 - ba-lua · không nói: tôi, tớ · vì: bà/các cháu
+
+## Thuật ngữ theo vai
+
+<!-- Cùng cú pháp với "## Xưng hô": từ / cụm mà nhân vật ấy không nói, vì không hợp vai (rà soát 04/10/2026).
+Chỉ người chơi gõ lệnh và nói chuyện câu lệnh. Hà Vy (năm nhất Toán) nghĩ bằng tập hợp: gộp, phần trùng nhau, vừa… vừa…, trừ ra.
+Minh Anh (Luật) nói căn cứ, quy chế, thẩm quyền. Tùng sợ toán, ngợp số, không "cày SQL". Từ "bảng, dòng, lọc, nối, gom, đếm"
+là từ chung cô Hạnh dạy ở ngày 2, ai cũng nói được. -->
+
+- ha-vy · không nói: SQL, WHERE, SELECT, JOIN, OR, AND, câu lệnh, cú pháp, mệnh đề, truy vấn · vì: Vy chưa biết SQL, nghĩ bằng tập hợp ("Họ lấy cả hai thay vì chỉ lấy phần trùng nhau"); không giảng bài
+- minh-anh · không nói: SQL, WHERE, SELECT, JOIN, OR, AND, câu lệnh, cú pháp, mệnh đề, truy vấn · vì: Minh Anh giữ căn cứ, quy chế; không can thiệp kỹ thuật
+- tung · không nói: SQL, WHERE, SELECT, JOIN, OR, AND, câu lệnh, cú pháp, mệnh đề, truy vấn · vì: Tùng sợ toán, ngợp số; người chơi mới là người gõ lệnh
 
 ## Xưng theo người có mặt
 
@@ -75,7 +87,9 @@ Chốt 03/10/2026: Duy anh/em với năm nhất; người chơi xưng theo ngư�
 Trong lời của những người nói ấy, <tên> phải đứng sau <cách gọi đúng> (vd. "anh Duy"). Lời dẫn (narrator) gọi trống. -->
 
 - Duy → anh Duy · người nói: tung, ha-vy, player, hoai, hieu
-- Minh Anh → chị Minh Anh · người nói: tung, ha-vy, player, hoai, hieu, duy
+- Minh Anh → chị Minh Anh · người nói: tung, ha-vy, player, hoai, hieu, duy, nam
+- Nam → anh Nam · người nói: tung, ha-vy, player, hoai, hieu · vì: Nam năm hai (K23), cùng khóa Duy (user chốt 04/10)
+- Khánh → anh Khánh · người nói: tung, ha-vy, hoai, hieu, nam
 
 ## Cụm dành riêng
 
@@ -145,6 +159,10 @@ AI gọt lời hay xóa mất những câu này (duyệt v2 Vụ 1, 03/10). -->
 - (tớ|em|mình|anh|chị|cháu) (cảm thấy|thấy) (rất |thật |vô cùng )?(vui|buồn|lo lắng|hạnh phúc|xúc động|tự hào|biết ơn|hồi hộp|bất an) · mức: nhắc · áp: thoại · vì: gọi tên cảm xúc thay vì cho thấy
 - hít một hơi( thật)? sâu|khẽ mỉm cười|nở một nụ cười|mỉm cười (nhẹ|dịu dàng)|ánh mắt (kiên định|lấp lánh|ánh lên)|trái tim|tâm hồn|ngưng đọng|ngừng trôi|dâng trào|siết chặt tay · mức: nhắc · vì: cử chỉ, cảm giác sáo của truyện AI
 - (cậu|em|bạn|các cậu) nói (rất )?đúng|hoàn toàn (đúng|chính xác)|ý (kiến|tưởng) (rất )?hay · mức: nhắc · áp: thoại · vì: xu nịnh (sycophancy); nhân vật đồng ý thì nói việc tiếp theo
+- (?<!\p{L})(ủa|nè|hông|nhen|nghen|tui|dzậy|dữ thần)(?!\p{L}) · mức: lỗi · áp: thoại · vì: giọng miền Nam; cả game giọng sinh viên miền Bắc ("Ủa" → "Ơ")
+- (?<!\p{L})người lớn(?!\p{L}) · mức: lỗi · áp: thoại · vì: cả nhóm 18–21 tuổi, gọi người khác là "người lớn" nghe như trẻ con cấp 1 phá án (user 04/10); nói "đám đông", "ai cũng…"
+- (?:^|[.!?…]\s+)Giỏi[.!] · mức: lỗi · áp: thoại · vì: khen cộc như cô giáo phát phiếu bé ngoan (user 04/10); nói việc vừa làm được ("Lần theo vệt vụn bánh là ra")
+- như sắp lăn|mọc chân|(?<!\p{L})tớ hiểu nó(?!\p{L}) · mức: nhắc · áp: thoại · vì: nhân hóa, ẩn dụ kiểu hoạt hình mẫu giáo ("trăng như sắp lăn khỏi bảng", "bánh tự mọc chân", đầu lân "tớ hiểu nó") (user 04/10)
 - — · mức: lỗi · thẻ chữ: có · vì: gạch dài là dấu câu của AI, kể cả trong thẻ chữ tiêu đề (user chốt 03/10); dùng dấu phẩy, chấm hoặc "…" ("Việc của cô Hạnh, thứ Tư 20 tháng 11")
 
 ## Tiểu từ

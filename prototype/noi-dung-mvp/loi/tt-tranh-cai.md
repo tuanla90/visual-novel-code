@@ -7,12 +7,12 @@
 - Khi chạy ra 301 dòng: **tung** (gai-dau): Bài của mọi kênh trong trường, ba trăm lẻ một bài. Mình chỉ cần kênh Robotics.
 - Khi thiếu cột: **ha-vy** (thinking): Chín bài đúng rồi, nhưng lát nữa phải gom theo thiết bị gửi. Lấy mã bài, ngày, buổi và thiết bị.
 - Khi thừa cột: **duy** (neutral): Thừa cột. Tên kênh thì chín dòng như một, ghi làm gì. Mã bài, ngày, buổi, thiết bị là đủ.
-- Khi đúng: **ha-vy** (neutral): Chín bài. Ghim lại, rồi nhóm.
+- Khi đúng: **ha-vy** (neutral): Chín bài. Ghim lại đã, rồi mình nhóm.
 
 ## c-nam-thu-vien.1
-- Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Tên trên bản ghi viết đúng như giấy nhớ: Nam.
-- Khi chạy ra 72 dòng: **tung** (gai-dau): Cả tệp, bảy mươi hai lượt quẹt thẻ của cả mấy người từ trước tới giờ. Mình cần riêng của Nam.
-- Khi đúng: **nam** (neutral): Ba mươi hai lần. Đúng là của tớ từ năm ngoái tới giờ.
+- Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Tên trên bản ghi viết đúng như giấy nhớ.
+- Khi chạy ra 72 dòng: **tung** (gai-dau): Cả tệp, bảy mươi hai lượt quẹt thẻ của cả mấy người từ trước tới giờ. Mình cần riêng của anh Nam.
+- Khi đúng: **nam** (neutral): Ba mươi hai lần. Đúng là của anh từ năm ngoái tới giờ.
 
 ## c-toi-07.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Ngày trên bản ghi viết dạng năm-tháng-ngày.

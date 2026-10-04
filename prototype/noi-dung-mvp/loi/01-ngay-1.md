@@ -5,8 +5,7 @@
 ## n1-mo.1
 - [THẺ CHỮ] **narrator**: Thứ Ba, 24/09/2024
 - **tung** (chi-tay): Hộp kiến nghị tòa B thì nhớ rồi! Hôm đầu tới trường tớ với {{nv.nguoi-choi}} vừa đi qua nó.
-- **ha-vy** (thinking): Nói ở đây vô ích. Ra tận nơi.
-- **ha-vy** (neutral): Phải xem ai mở hộp, mở lúc nào, trong hộp còn sót lại gì.
+- **ha-vy** (thinking): Ngồi đây đoán thì được gì. Ra tận nơi xem đã.
 
 ## n1-toa-b.1
 > NHIỆM VỤ: Ai đã bỏ lá thư vào cái hộp này?
