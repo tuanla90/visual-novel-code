@@ -4,15 +4,16 @@
 
 ## md-00-tren-xe.1
 - [THẺ CHỮ] **narrator**: Chủ nhật, 08/09/2024 · Xe buýt lên Hà Nội
-- **narrator**: Tay vịn rung theo từng ổ gà. Cửa kính kéo hé, gió lùa vào mang theo mùi bụi đường và mùi nắng đầu thu.
+- **narrator**: Chuyến xe buýt đường dài chạy chậm dọc con đường vào thành phố, nắng đầu chiều rọi vàng lên thân xe cũ.
+- **narrator**: Bên khung cửa sổ kéo hé, một cậu trai chống khuỷu tay lên thành xe, tựa cằm vào bàn tay, mắt nhìn theo hàng cây đang lùi dần. Chiếc vali xanh ngồi ngay ghế bên cạnh.
 - **player**: (Vậy là lên Hà Nội thật rồi.)
 - **player**: (Sáng nay mẹ còn nhét thêm hộp ruốc vào vali, dặn đi dặn lại: ăn đúng bữa, đừng thức khuya, có chuyện gì thì gọi về ngay.)
 - **player**: (Đỗ Đại học Chấn Hưng. Đọc giấy báo trúng tuyển đến lần thứ ba mình mới dám tin.)
-- **narrator**: Ngoài cửa sổ, ruộng lúa thưa dần, nhà cao tầng dày lên, biển quảng cáo chen nhau sát mép đường.
+- **narrator**: Ngoài kia, ruộng lúa thưa dần, nhà cao tầng dày lên, biển quảng cáo chen nhau sát mép đường.
 - **player**: (Một mình giữa thành phố to thế này, nghĩ cũng hơi run. Nhưng mà háo hức nhiều hơn.)
 - **player**: (Ở ký túc xá, gặp người mới, học những thứ chưa từng học. Không biết bốn năm tới sẽ thế nào.)
 - **player**: (Mong là mình không phí nó. Biết đâu sau này ra trường, nhà mình đỡ vất vả hơn.)
-- **narrator**: Xe chậm dần. Giọng phụ xe vọng xuống dọc lối đi: "Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!"
+- **narrator**: Xe chậm dần. Giọng phụ xe vọng ra qua cửa sổ: "Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!"
 - **player**: (Tới rồi. Phòng 408… Đi thôi.)
 
 ## md-00-xe-buyt.1
