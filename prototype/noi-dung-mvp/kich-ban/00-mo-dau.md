@@ -205,13 +205,33 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
 
 - [LỜI md-11-phong-clb.1]
 - [KHÁM PHÁ kp-phong-md11]
-  - vung:tu-ho-so · x 94% · y 56% · rộng 11% → md-11-tu · dấu: ! · nhãn: Tủ hồ sơ
+  - nv:duy · x 15% · y 100% · rộng 15% → md-11-duy · dấu: ? · nhãn: Duy: máy bàn
+  - nv:ha-vy · x 38% · y 100% · rộng 15% → md-11-vy · dấu: ? · nhãn: Hà Vy: cuốn sổ
+  - nv:minh-anh · x 62% · y 100% · rộng 15% → md-11-minh-anh · dấu: ? · nhãn: Minh Anh: tờ lịch
+  - nv:tung · x 82% · y 100% · rộng 15% → md-11-tung · dấu: ? · nhãn: Tùng
+  - vung:tu-ho-so · x 95.5% · y 60% · rộng 7% → md-11-tu · dấu: ! · nhãn: Tủ hồ sơ
 - [HIỆN TÀI LIỆU doc-so-chi-linh]
 - [TRA SỔ kiem-hai-lan · tâm đắc]
 - [LỜI md-11-phong-clb.2]
 - [HIỆN TÀI LIỆU doc-bao-cao-yeu]
 - [LỜI md-11-phong-clb.3]
 - [ĐI TỚI md-11-la-thu]
+
+### md-11-duy — Phòng CLB: Duy gõ máy bàn {cảnh: phong-clb}
+
+- [LỜI md-11-duy.1]
+
+### md-11-vy — Phòng CLB: Hà Vy ghi sổ {cảnh: phong-clb}
+
+- [LỜI md-11-vy.1]
+
+### md-11-minh-anh — Phòng CLB: Minh Anh soạn lịch sinh hoạt {cảnh: phong-clb}
+
+- [LỜI md-11-minh-anh.1]
+
+### md-11-tung — Phòng CLB: Tùng ngồi trông ghế {cảnh: phong-clb}
+
+- [LỜI md-11-tung.1]
 
 ### md-11-tu — Phòng CLB: ngăn dưới cùng của tủ hồ sơ {cảnh: phong-clb}
 

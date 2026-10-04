@@ -142,6 +142,7 @@
 ## md-09-ngay-hoi.2
 - [DÀN DỰNG] Nền nhà văn hóa ngày hội, sân đông sinh viên: gian Robotics bên trái đông nhất (bàn gấp trơn, xe robot tự chế, biển bìa vẽ tay bánh răng nhỏ), dọc bậc thềm là mấy gian CLB khác bàn trơn, mỗi gian vài người; bàn Thám Tử khăn trắng bên phải, một ghế gấp, bảng trống, không ai đứng gần.
 - **narrator**: Sân nhà văn hóa đông nghịt. Gian Robotics có chiếc xe robot tự chế trên bàn, mấy bạn đứng chen nhau xem.
+- **narrator**: Một anh đứng sau bàn rao to: "Đang xin mở rộng xưởng thực hành, vào đội là có chỗ ngồi hàn mạch!"
 - **narrator**: Bàn CLB Thám Tử nằm tận trong góc, chỉ có một chị ngồi trực.
 - **tung** (happy): Tớ chỉ đi xem thôi nhé. Không đăng ký CLB nào đâu, năm nhất phải lo học.
 
@@ -259,6 +260,22 @@
 > NHẮC VIỆC minh-anh (neutral): Ngăn dưới cùng của tủ hồ sơ từ năm ngoái chưa ai mở.
 - [THẺ CHỮ] **narrator**: Thứ Hai, 23/09/2024 · 16:00 · Phòng CLB
 - **minh-anh** (neutral): Hôm nay dọn tủ hồ sơ. Ngăn dưới cùng từ năm ngoái chưa ai đụng tới.
+
+## md-11-duy.1
+- **duy** (neutral): Anh đang chép lại sổ mượn đồ hôm Trung thu. Bàn gấp trả đủ bốn chân, ghế nhựa thì thiếu một cái.
+- **duy** (smile): Ai cầm về phòng thì mai mang trả nhé. Anh không ghi tên đâu… lần này thôi.
+
+## md-11-vy.1
+- **ha-vy** (thinking): Tớ chép lại vụ chiếc bánh hôm Trung thu. Ai đứng đâu, lúc mấy giờ.
+- **player**: Ghi cả giờ á?
+- **ha-vy** (neutral): Không ghi thì một tuần nữa mỗi người nhớ một kiểu.
+
+## md-11-minh-anh.1
+- **minh-anh** (neutral): Chị đang soạn lịch sinh hoạt tháng này. Thứ Hai nào cũng họp, bốn giờ chiều.
+- **minh-anh** (happy): Đông thế này thì năm nay phòng không còn vắng nữa.
+
+## md-11-tung.1
+- **tung** (happy): Dọn tủ cứ để anh Duy với cậu. Tớ mà gặp bụi là hắt xì cả buổi.
 
 ## md-11-tu.1
 - **player**: (Ngăn dưới cùng không kéo ra được. Khóa.)

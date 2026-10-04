@@ -1682,6 +1682,11 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
+          "text": "Một anh đứng sau bàn rao to: \"Đang xin mở rộng xưởng thực hành, vào đội là có chỗ ngồi hàn mạch!\""
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
           "text": "Bàn CLB Thám Tử nằm tận trong góc, chỉ có một chị ngồi trực."
         },
         {
@@ -2536,10 +2541,50 @@ const GOC = {
           "id": "kp-phong-md11",
           "diem": [
             {
+              "sprite": "nv:duy",
+              "x": 15,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "md-11-duy",
+              "sau": [],
+              "nhan": "Duy: máy bàn",
+              "dau": "phu"
+            },
+            {
+              "sprite": "nv:ha-vy",
+              "x": 38,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "md-11-vy",
+              "sau": [],
+              "nhan": "Hà Vy: cuốn sổ",
+              "dau": "phu"
+            },
+            {
+              "sprite": "nv:minh-anh",
+              "x": 62,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "md-11-minh-anh",
+              "sau": [],
+              "nhan": "Minh Anh: tờ lịch",
+              "dau": "phu"
+            },
+            {
+              "sprite": "nv:tung",
+              "x": 82,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "md-11-tung",
+              "sau": [],
+              "nhan": "Tùng",
+              "dau": "phu"
+            },
+            {
               "sprite": "vung:tu-ho-so",
-              "x": 94,
-              "y": 56,
-              "rong": 11,
+              "x": 95.5,
+              "y": 60,
+              "rong": 7,
               "chuoi": "md-11-tu",
               "sau": [],
               "nhan": "Tủ hồ sơ",
@@ -2575,6 +2620,85 @@ const GOC = {
         {
           "type": "goto",
           "to": "md-11-la-thu"
+        }
+      ]
+    },
+    {
+      "id": "md-11-duy",
+      "title": "Phòng CLB: Duy gõ máy bàn",
+      "canh": "phong-clb",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Anh đang chép lại sổ mượn đồ hôm Trung thu. Bàn gấp trả đủ bốn chân, ghế nhựa thì thiếu một cái."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "smile",
+          "text": "Ai cầm về phòng thì mai mang trả nhé. Anh không ghi tên đâu… lần này thôi."
+        }
+      ]
+    },
+    {
+      "id": "md-11-vy",
+      "title": "Phòng CLB: Hà Vy ghi sổ",
+      "canh": "phong-clb",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tớ chép lại vụ chiếc bánh hôm Trung thu. Ai đứng đâu, lúc mấy giờ."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Ghi cả giờ á?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Không ghi thì một tuần nữa mỗi người nhớ một kiểu."
+        }
+      ]
+    },
+    {
+      "id": "md-11-minh-anh",
+      "title": "Phòng CLB: Minh Anh soạn lịch sinh hoạt",
+      "canh": "phong-clb",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Chị đang soạn lịch sinh hoạt tháng này. Thứ Hai nào cũng họp, bốn giờ chiều."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "happy",
+          "text": "Đông thế này thì năm nay phòng không còn vắng nữa."
+        }
+      ]
+    },
+    {
+      "id": "md-11-tung",
+      "title": "Phòng CLB: Tùng ngồi trông ghế",
+      "canh": "phong-clb",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Dọn tủ cứ để anh Duy với cậu. Tớ mà gặp bụi là hắt xì cả buổi."
         }
       ]
     },
@@ -19809,7 +19933,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:196 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:197 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",
