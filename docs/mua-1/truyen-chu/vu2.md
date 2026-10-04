@@ -19,7 +19,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - [Đoạn 13: Tuyến hiện trường: bảng đăng ký dùng xưởng](#doan-13)
 - [Đoạn 14: Tới nơi: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học](#doan-14)
 - [Đoạn 15: Chi tiết ẩn: Tấm bảng đen trên quầy](#doan-15)
-- *... và 7 đoạn tiếp theo*
+- *... và 8 đoạn tiếp theo*
 
 ## 👥 Nhân vật xuất hiện
 
@@ -104,8 +104,6 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB
 - **Hà Vy**: Đừng cá. Mới biết có năm tin mang câu đó. Tin nào có trước thì phiếu chưa nói.
 - **Minh Anh**: Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem.
 > 🎯 **NHIỆM VỤ**: Sang xưởng Robotics hỏi người trực kênh
-📍 **Đang ở Phòng CLB:**
-*Những chỗ có thể khám phá ở đây:*
 
 ⚠ (bản cũ: tự chuyển nơi)
 
@@ -114,9 +112,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB
 - [Khám phá: Hà Vy: câu hỏi trên bảng (chi tiết ẩn / tùy chọn)](#doan-3)
 - [Khám phá: Tùng: chuyện ở căng tin (chi tiết ẩn / tùy chọn)](#doan-4)
 - [Khám phá: Minh Anh: xin dữ liệu (chi tiết ẩn / tùy chọn)](#doan-5)
-- [Khám phá: Xưởng Robotics](#doan-6)
-- [Khám phá: Căng tin (chi tiết ẩn / tùy chọn)](#doan-7)
-- [Khám phá: Quán trà đá (chi tiết ẩn / tùy chọn)](#doan-8)
+- [Mở bản đồ](#doan-23)
+- [Mở bản đồ](#doan-23)
 - [Đi tiếp](#doan-6)
 
 ---
@@ -238,6 +235,7 @@ SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';
 - [Khám phá: Cái hộp trên tay](#doan-9)
 - [Khám phá: Cây bút dạ](#doan-10)
 - [Khám phá: Tay áo](#doan-11)
+- [Mở bản đồ](#doan-23)
 - [Chọn: "Nhật ký đăng nhập của kênh."](#doan-12)
 - [Chọn: "Bảng đăng ký dùng xưởng ngoài cửa."](#doan-13)
 
@@ -254,6 +252,7 @@ SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';
 **Lựa chọn tiếp theo:**
 - [Khám phá: Tùng](#doan-14)
 - [Khám phá: Tấm bảng đen trên quầy](#doan-15)
+- [Mở bản đồ](#doan-23)
 
 ---
 
@@ -268,6 +267,7 @@ SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';
 **Lựa chọn tiếp theo:**
 - [Khám phá: Bà bán trà đá](#doan-16)
 - [Khám phá: Chiếc xe đạp cũ](#doan-17)
+- [Mở bản đồ](#doan-23)
 
 ---
 
@@ -348,12 +348,10 @@ SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = 
 - *Suy nghĩ của bạn:* *(Ngày mùng 7 có hai lần. 15 giờ 10 từ máy xưởng số 2. 22 giờ 31 từ máy văn phòng xưởng.)*
 - **Nam**: Lần buổi chiều là anh, anh hay ngồi máy số 2. Lần buổi tối thì không phải anh. Phòng văn phòng là phòng riêng, thường khóa, chìa thì ban chủ nhiệm giữ. Anh có vào đó bao giờ đâu.
 - **Hà Vy** (suy nghĩ): Đăng nhập 22:31, tin gửi 22:40. Khớp giờ. Nhưng mới biết máy nào, chưa biết ai ngồi máy.
-🔀 **Lựa chọn của bạn** (Hà Vy: "Còn chỗ thứ hai Nam chỉ: bảng đăng ký dùng xưởng. Xem nốt, hay về báo chị Minh Anh?"):
 
 **Lựa chọn tiếp theo:**
 - [Nếu đã có "Tối 07/10 xưởng mở tới 23 giờ": Rẽ sang hướng khác](#doan-18)
-- [Chọn: "Ra cửa xem nốt bảng đăng ký."](#doan-13)
-- [Chọn: "Về báo chị Minh Anh."](#doan-19)
+- [Mở bản đồ](#doan-23)
 
 ---
 
@@ -393,12 +391,10 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 - **Tùng** (gãi đầu): Về sớm thì ai làm chứng cho anh?
 - **Nam**: Bọn nó cắm mặt hàn mạch, có ai ngẩng lên xem anh về lúc nào. Với lại máy văn phòng đặt trong phòng riêng, thường khóa. Chìa do ban chủ nhiệm giữ, thành viên như anh không có quyền đụng vào. Anh về rồi thì ai vào đó ngồi, anh chịu.
 - **Hà Vy** (suy nghĩ): Lịch đăng ký tới 23 giờ, tin gửi 22:40. Nhưng đăng ký chưa chắc đã có mặt.
-🔀 **Lựa chọn của bạn** (Hà Vy: "Còn chỗ thứ nhất Nam chỉ: nhật ký đăng nhập của kênh. Xem nốt, hay về báo chị Minh Anh?"):
 
 **Lựa chọn tiếp theo:**
 - [Nếu đã có "Hai lần đăng nhập ngày 07/10": Rẽ sang hướng khác](#doan-20)
-- [Chọn: "Xem nốt nhật ký đăng nhập."](#doan-12)
-- [Chọn: "Về báo chị Minh Anh."](#doan-19)
+- [Mở bản đồ](#doan-23)
 
 ---
 
@@ -564,5 +560,22 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 **Hết ngày.**
 
 
+
+---
+
+<a id="doan-23"></a>
+### Đoạn 23: Bản đồ Thứ Tư, 09/10/2024
+
+🗺️ **Bản đồ** — *Thứ Tư, 09/10/2024*
+
+*Những nơi có thể đi tới:*
+
+**Lựa chọn tiếp theo:**
+- [Đi tới: Xưởng Robotics !](#doan-6)
+- [Đi tới: Căng tin (tùy chọn)](#doan-7)
+- [Đi tới: Quán trà đá (tùy chọn)](#doan-8)
+- [Đi tới: Ra cửa xem nốt bảng đăng ký.](#doan-13)
+- [Đi tới: Về báo chị Minh Anh.](#doan-19)
+- [Đi tới: Xem nốt nhật ký đăng nhập.](#doan-12)
 
 ---

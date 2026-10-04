@@ -19,7 +19,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - [Đoạn 13: Nhịp hai: "đơn do Nam lập, tôi chỉ duyệt"](#doan-13)
 - [Đoạn 14: Chưa đủ căn cứ: chưa ngã ngũ](#doan-14)
 - [Đoạn 15: Khánh nhận phần tiền; nhịp ba: lá thư](#doan-15)
-- *... và 53 đoạn tiếp theo*
+- *... và 54 đoạn tiếp theo*
 
 ## 👥 Nhân vật xuất hiện
 
@@ -134,11 +134,11 @@ SELECT ma_don, nguoi_dat, so_tien, so_luong_co FROM don_linh_kien JOIN kiem_ke O
 - **Minh Anh** (nghiêm túc): Thầy nói đúng. Mình phải mang căn cứ về tiền và hàng, không phải về người. Xem lại hồ sơ rồi vào lại.
 
 **Lựa chọn tiếp theo:**
-- [Trình thẻ: Ba đơn đặt mua thứ không có trong kho (ĐỦ CĂN CỨ)](#doan-26)
-- [Trình thẻ: Năm đơn của Nam: máy và giờ tạo (HỖ TRỢ)](#doan-27)
-- [Trình thẻ: Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05 (GỢI Ý)](#doan-28)
-- [Nói: "Chưa đủ căn cứ"](#doan-29)
-- [Trình thẻ khác](#doan-30)
+- [Trình thẻ: Ba đơn đặt mua thứ không có trong kho (ĐỦ CĂN CỨ)](#doan-27)
+- [Trình thẻ: Năm đơn của Nam: máy và giờ tạo (HỖ TRỢ)](#doan-28)
+- [Trình thẻ: Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05 (GỢI Ý)](#doan-29)
+- [Nói: "Chưa đủ căn cứ"](#doan-30)
+- [Trình thẻ khác](#doan-31)
 - [Nếu đã có "dc-xin-so-quy-du": Rẽ sang hướng khác](#doan-4)
 - [Đi tiếp](#doan-3)
 
@@ -154,14 +154,11 @@ SELECT ma_don, nguoi_dat, so_tien, so_luong_co FROM don_linh_kien JOIN kiem_ke O
 - **Cô Lan**: Cô bên Công tác sinh viên in kèm quy chế quỹ khối CLB. Khoản dưới một triệu thì chủ tịch Hội duyệt thẳng. Tổng một người duyệt từ MỘT quỹ trong một học kỳ vượt một triệu thì người đó phải giải trình; Phòng Kế hoạch soát ngưỡng ấy lúc đối chiếu cuối kỳ, cùng lúc gửi sao kê. Phần về CLB chờ giải thể ở trang sau, các em tự đọc.
 - **Minh Anh**: Em cảm ơn hai cô ạ.
 > 🎯 **NHIỆM VỤ**: Mang bản xuất sổ quỹ về phòng CLB
-📍 **Đang ở Phòng Đào tạo:**
-*Những chỗ có thể khám phá ở đây:*
 
 ⚠ (bản cũ: tự chuyển nơi)
 
 **Lựa chọn tiếp theo:**
-- [Khám phá: Phòng CLB](#doan-5)
-- [Khám phá: Quán trà đá (chi tiết ẩn / tùy chọn)](#doan-6)
+- [Mở bản đồ](#doan-25)
 - [Đi tiếp](#doan-5)
 
 ---
@@ -265,6 +262,7 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 - [Khám phá: Duy: mở laptop](#doan-7)
 - [Khám phá: Hà Vy: câu hỏi trên bảng (chi tiết ẩn / tùy chọn)](#doan-8)
 - [Khám phá: Minh Anh: ba khoản chị duyệt (chi tiết ẩn / tùy chọn)](#doan-9)
+- [Mở bản đồ](#doan-25)
 - [Đi tiếp](#doan-10)
 
 ---
@@ -280,6 +278,7 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 **Lựa chọn tiếp theo:**
 - [Khám phá: Bà bán trà đá](#doan-11)
 - [Khám phá: Chiếc xe đạp cũ](#doan-12)
+- [Mở bản đồ](#doan-25)
 
 ---
 
@@ -344,12 +343,12 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 
 **Lựa chọn tiếp theo:**
-- [Trình thẻ: Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000 (ĐỦ CĂN CỨ)](#doan-32)
-- [Trình thẻ: Minh Anh 3 khoản, 450.000; Khánh 3 khoản, 2.400.000 (HỖ TRỢ)](#doan-33)
-- [Trình thẻ: Ba đơn đặt mua thứ không có trong kho (HỖ TRỢ)](#doan-34)
-- [Trình thẻ: Năm đơn của Nam: máy và giờ tạo (GỢI Ý)](#doan-35)
-- [Nói: "Chưa đủ căn cứ"](#doan-36)
-- [Trình thẻ khác](#doan-37)
+- [Trình thẻ: Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000 (ĐỦ CĂN CỨ)](#doan-33)
+- [Trình thẻ: Minh Anh 3 khoản, 450.000; Khánh 3 khoản, 2.400.000 (HỖ TRỢ)](#doan-34)
+- [Trình thẻ: Ba đơn đặt mua thứ không có trong kho (HỖ TRỢ)](#doan-35)
+- [Trình thẻ: Năm đơn của Nam: máy và giờ tạo (GỢI Ý)](#doan-36)
+- [Nói: "Chưa đủ căn cứ"](#doan-37)
+- [Trình thẻ khác](#doan-38)
 - [Nếu đã có "dc-khanh-du": Rẽ sang hướng khác](#doan-13)
 - [Đi tiếp](#doan-14)
 
@@ -404,13 +403,13 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 
 **Lựa chọn tiếp theo:**
-- [Trình thẻ: Năm đơn của Nam: máy và giờ tạo (ĐỦ CĂN CỨ)](#doan-39)
-- [Trình thẻ: Máy văn phòng xưởng: 3 đơn đêm mang tên Nam, 1 đơn ngày của Khánh (ĐỦ CĂN CỨ)](#doan-40)
-- [Trình thẻ: Sáu khoản chi ghi vào quỹ CLB Thám Tử (ĐỦ CĂN CỨ)](#doan-41)
-- [Trình thẻ: Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05 (HỖ TRỢ)](#doan-42)
-- [Trình thẻ: Ba đơn đặt mua thứ không có trong kho (HỖ TRỢ)](#doan-43)
-- [Nói: "Chưa đủ căn cứ"](#doan-44)
-- [Trình thẻ khác](#doan-45)
+- [Trình thẻ: Năm đơn của Nam: máy và giờ tạo (ĐỦ CĂN CỨ)](#doan-40)
+- [Trình thẻ: Máy văn phòng xưởng: 3 đơn đêm mang tên Nam, 1 đơn ngày của Khánh (ĐỦ CĂN CỨ)](#doan-41)
+- [Trình thẻ: Sáu khoản chi ghi vào quỹ CLB Thám Tử (ĐỦ CĂN CỨ)](#doan-42)
+- [Trình thẻ: Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05 (HỖ TRỢ)](#doan-43)
+- [Trình thẻ: Ba đơn đặt mua thứ không có trong kho (HỖ TRỢ)](#doan-44)
+- [Nói: "Chưa đủ căn cứ"](#doan-45)
+- [Trình thẻ khác](#doan-46)
 - [Nếu đã có "dc-khanh-don-du": Rẽ sang hướng khác](#doan-15)
 - [Đi tiếp](#doan-14)
 
@@ -457,13 +456,13 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 - **Thầy Quang**: Phòng của CLB Thám Tử giữ nguyên. Thầy nhận hồ sơ của các em vào đợt rà soát cuối kỳ.
 
 **Lựa chọn tiếp theo:**
-- [Trình thẻ: [Sổ ký phòng máy tối 15/9] (ĐỦ CĂN CỨ)](#doan-47)
-- [Trình thẻ: [Lời chú Cường] (HỖ TRỢ)](#doan-48)
-- [Trình thẻ: [Huy hiệu sứt: lỗi khuôn, Khánh giữ] (HỖ TRỢ)](#doan-49)
-- [Trình thẻ: Nhật ký in 23:10 Chủ nhật (HỖ TRỢ)](#doan-50)
-- [Trình thẻ: [Tờ giao chìa: Khánh, Bách, Thảo] (GỢI Ý)](#doan-51)
-- [Nói: "Chưa đủ căn cứ"](#doan-52)
-- [Trình thẻ khác](#doan-53)
+- [Trình thẻ: [Sổ ký phòng máy tối 15/9] (ĐỦ CĂN CỨ)](#doan-48)
+- [Trình thẻ: [Lời chú Cường] (HỖ TRỢ)](#doan-49)
+- [Trình thẻ: [Huy hiệu sứt: lỗi khuôn, Khánh giữ] (HỖ TRỢ)](#doan-50)
+- [Trình thẻ: Nhật ký in 23:10 Chủ nhật (HỖ TRỢ)](#doan-51)
+- [Trình thẻ: [Tờ giao chìa: Khánh, Bách, Thảo] (GỢI Ý)](#doan-52)
+- [Nói: "Chưa đủ căn cứ"](#doan-53)
+- [Trình thẻ khác](#doan-54)
 - [Nếu đã có "dc-khanh-thu-du": Rẽ sang hướng khác](#doan-17)
 - [Đi tiếp](#doan-16)
 
@@ -501,13 +500,13 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 - **Minh Anh**: Chưa đủ thì ghi là chưa đủ ạ.
 
 **Lựa chọn tiếp theo:**
-- [Trình thẻ: [Nhật ký in tối 15/9: không có sơ đồ thứ hai] (ĐỦ CĂN CỨ)](#doan-55)
-- [Trình thẻ: [Lời chị Thảo: sơ đồ in tối Chủ nhật] (HỖ TRỢ)](#doan-56)
-- [Trình thẻ: [Sổ ký phòng máy tối 15/9] (HỖ TRỢ)](#doan-57)
-- [Trình thẻ: Nhật ký in 23:10 Chủ nhật (HỖ TRỢ)](#doan-58)
-- [Trình thẻ: [Lời chú Cường] (GỢI Ý)](#doan-59)
-- [Nói: "Chưa đủ căn cứ"](#doan-60)
-- [Trình thẻ khác](#doan-61)
+- [Trình thẻ: [Nhật ký in tối 15/9: không có sơ đồ thứ hai] (ĐỦ CĂN CỨ)](#doan-56)
+- [Trình thẻ: [Lời chị Thảo: sơ đồ in tối Chủ nhật] (HỖ TRỢ)](#doan-57)
+- [Trình thẻ: [Sổ ký phòng máy tối 15/9] (HỖ TRỢ)](#doan-58)
+- [Trình thẻ: Nhật ký in 23:10 Chủ nhật (HỖ TRỢ)](#doan-59)
+- [Trình thẻ: [Lời chú Cường] (GỢI Ý)](#doan-60)
+- [Nói: "Chưa đủ căn cứ"](#doan-61)
+- [Trình thẻ khác](#doan-62)
 - [Nếu đã có "dc-khanh-so-do-du": Rẽ sang hướng khác](#doan-20)
 - [Đi tiếp](#doan-16)
 
@@ -654,12 +653,12 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 - **Hoài** (nhẹ nhõm): Em cảm ơn thầy ạ.
 
 **Lựa chọn tiếp theo:**
-- [Trình thẻ: Sáu khoản chi ghi vào quỹ CLB Thám Tử (HỖ TRỢ)](#doan-63)
-- [Trình thẻ: [Sao kê quỹ về cuối kỳ] (ĐỦ CĂN CỨ)](#doan-64)
-- [Trình thẻ: Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000 (HỖ TRỢ)](#doan-65)
-- [Trình thẻ: [Mẩu giấy trong sổ] (GỢI Ý)](#doan-66)
-- [Nói: "Chưa đủ căn cứ"](#doan-67)
-- [Trình thẻ khác](#doan-68)
+- [Trình thẻ: Sáu khoản chi ghi vào quỹ CLB Thám Tử (HỖ TRỢ)](#doan-64)
+- [Trình thẻ: [Sao kê quỹ về cuối kỳ] (ĐỦ CĂN CỨ)](#doan-65)
+- [Trình thẻ: Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000 (HỖ TRỢ)](#doan-66)
+- [Trình thẻ: [Mẩu giấy trong sổ] (GỢI Ý)](#doan-67)
+- [Nói: "Chưa đủ căn cứ"](#doan-68)
+- [Trình thẻ khác](#doan-69)
 - [Nếu đã có "dc-khanh-vi-sao-du": Rẽ sang hướng khác](#doan-23)
 - [Đi tiếp](#doan-16)
 
@@ -710,17 +709,30 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ---
 
 <a id="doan-25"></a>
-### Đoạn 25: Tiếp tục: Phòng Đào tạo: "Căn cứ vào đâu?"
+### Đoạn 25: Bản đồ Thứ Bảy, 16/11/2024
 
-- *Cả nhóm ra khỏi phòng Đào tạo, chưa có sổ quỹ. Minh Anh dừng ở hành lang.*
-- **Minh Anh** (nghiêm túc): Thầy nói đúng. Mình phải mang căn cứ về tiền và hàng, không phải về người. Xem lại hồ sơ rồi vào lại.
+🗺️ **Bản đồ** — *Thứ Bảy, 16/11/2024*
 
-- [Đọc tiếp sang Đoạn 26: Đối chất: Trình Ba đơn đặt mua thứ không có trong kho](#doan-26)
+*Những nơi có thể đi tới:*
+
+**Lựa chọn tiếp theo:**
+- [Đi tới: Phòng CLB !](#doan-5)
+- [Đi tới: Quán trà đá (tùy chọn)](#doan-6)
 
 ---
 
 <a id="doan-26"></a>
-### Đoạn 26: Đối chất: Trình Ba đơn đặt mua thứ không có trong kho
+### Đoạn 26: Tiếp tục: Phòng Đào tạo: "Căn cứ vào đâu?"
+
+- *Cả nhóm ra khỏi phòng Đào tạo, chưa có sổ quỹ. Minh Anh dừng ở hành lang.*
+- **Minh Anh** (nghiêm túc): Thầy nói đúng. Mình phải mang căn cứ về tiền và hàng, không phải về người. Xem lại hồ sơ rồi vào lại.
+
+- [Đọc tiếp sang Đoạn 27: Đối chất: Trình Ba đơn đặt mua thứ không có trong kho](#doan-27)
+
+---
+
+<a id="doan-27"></a>
+### Đoạn 27: Đối chất: Trình Ba đơn đặt mua thứ không có trong kho
 
 ⚖️ **Phản hồi đối chất:**
 - **Minh Anh**: Thưa thầy, ba đơn linh kiện ghi đã duyệt, trên đơn tổng hai triệu tư, nhưng kiểm kê xưởng không có một cái nào. Đơn đã duyệt mà hàng không có, nên bọn em cần xác minh tiền ấy có xuất khỏi quỹ nào không, ai duyệt.
@@ -729,12 +741,12 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Tiếp tục câu chuyện](#doan-25)
+- [Tiếp tục câu chuyện](#doan-26)
 
 ---
 
-<a id="doan-27"></a>
-### Đoạn 27: Đối chất: Trình Năm đơn của Nam: máy và giờ tạo
+<a id="doan-28"></a>
+### Đoạn 28: Đối chất: Trình Năm đơn của Nam: máy và giờ tạo
 
 ⚖️ **Phản hồi đối chất:**
 - **Hà Vy**: Ba đơn ấy tạo ban đêm từ máy văn phòng xưởng, đứng tên Nam mà Nam không đặt ạ.
@@ -747,8 +759,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-28"></a>
-### Đoạn 28: Đối chất: Trình Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05
+<a id="doan-29"></a>
+### Đoạn 29: Đối chất: Trình Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05
 
 ⚖️ **Phản hồi đối chất:**
 - **Thầy Quang**: Em Nam ở thư viện tối đó. Thầy ghi nhận, nhưng điều ấy liên quan gì tới sổ quỹ?
@@ -760,8 +772,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-29"></a>
-### Đoạn 29: Đối chất: Chưa đủ căn cứ
+<a id="doan-30"></a>
+### Đoạn 30: Đối chất: Chưa đủ căn cứ
 
 ⚖️ **Phản hồi khi thừa nhận chưa đủ căn cứ:**
 - **Thầy Quang**: Chưa đủ căn cứ thì thầy chưa mở sổ của người khác cho các em xem. Về làm rõ đã.
@@ -772,8 +784,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-30"></a>
-### Đoạn 30: Đối chất: Thẻ không khớp
+<a id="doan-31"></a>
+### Đoạn 31: Đối chất: Thẻ không khớp
 
 ⚖️ **Phản hồi khi trình thẻ không liên quan:**
 - **Thầy Quang**: Cái này nói gì về tiền?
@@ -784,16 +796,16 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-31"></a>
-### Đoạn 31: Tiếp tục: Phòng họp, nhịp một: "đúng thẩm quyền"
+<a id="doan-32"></a>
+### Đoạn 32: Tiếp tục: Phòng họp, nhịp một: "đúng thẩm quyền"
 
 
-- [Đọc tiếp sang Đoạn 32: Đối chất: Trình Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000](#doan-32)
+- [Đọc tiếp sang Đoạn 33: Đối chất: Trình Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000](#doan-33)
 
 ---
 
-<a id="doan-32"></a>
-### Đoạn 32: Đối chất: Trình Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000
+<a id="doan-33"></a>
+### Đoạn 33: Đối chất: Trình Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000
 
 ⚖️ **Phản hồi đối chất:**
 - **Minh Anh**: Từng khoản thì đúng thẩm quyền ạ. Nhưng sổ chi ghi ba khoản ấy vào quỹ CLB Thám Tử, không phải quỹ Robotics. Cộng lại hai triệu tư, vượt ngưỡng phải giải trình, người duyệt là anh Khánh. Em là chủ quỹ mà chưa từng thấy.
@@ -802,12 +814,12 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Tiếp tục câu chuyện](#doan-31)
+- [Tiếp tục câu chuyện](#doan-32)
 
 ---
 
-<a id="doan-33"></a>
-### Đoạn 33: Đối chất: Trình Minh Anh 3 khoản, 450.000; Khánh 3 khoản, 2.400.000
+<a id="doan-34"></a>
+### Đoạn 34: Đối chất: Trình Minh Anh 3 khoản, 450.000; Khánh 3 khoản, 2.400.000
 
 ⚖️ **Phản hồi đối chất:**
 - **Hà Vy**: Sổ quỹ CLB Thám Tử có hai người duyệt: chị Minh Anh ba khoản nhỏ, và anh ba khoản lớn.
@@ -820,8 +832,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-34"></a>
-### Đoạn 34: Đối chất: Trình Ba đơn đặt mua thứ không có trong kho
+<a id="doan-35"></a>
+### Đoạn 35: Đối chất: Trình Ba đơn đặt mua thứ không có trong kho
 
 ⚖️ **Phản hồi đối chất:**
 - **Nam**: Ba đơn đó không có cái linh kiện nào trong kho. Em đếm hai lần.
@@ -834,8 +846,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-35"></a>
-### Đoạn 35: Đối chất: Trình Năm đơn của Nam: máy và giờ tạo
+<a id="doan-36"></a>
+### Đoạn 36: Đối chất: Trình Năm đơn của Nam: máy và giờ tạo
 
 ⚖️ **Phản hồi đối chất:**
 - **Khánh**: Đơn đứng tên Nam thì hỏi Nam. Tôi đang hỏi về thẩm quyền duyệt chi.
@@ -847,8 +859,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-36"></a>
-### Đoạn 36: Đối chất: Chưa đủ căn cứ
+<a id="doan-37"></a>
+### Đoạn 37: Đối chất: Chưa đủ căn cứ
 
 ⚖️ **Phản hồi khi thừa nhận chưa đủ căn cứ:**
 - **Minh Anh**: Thưa thầy, bọn em chỉ nói được tới đây: ba khoản chi gắn với ba đơn kho không có hàng, ghi vào quỹ CLB Thám Tử. Ai chi vào việc gì, bọn em không có căn cứ.
@@ -859,8 +871,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-37"></a>
-### Đoạn 37: Đối chất: Thẻ không khớp
+<a id="doan-38"></a>
+### Đoạn 38: Đối chất: Thẻ không khớp
 
 ⚖️ **Phản hồi khi trình thẻ không liên quan:**
 - **Khánh**: Cái này thì liên quan gì tới quỹ?
@@ -871,16 +883,16 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-38"></a>
-### Đoạn 38: Tiếp tục: Nhịp hai: "đơn do Nam lập, tôi chỉ duyệt"
+<a id="doan-39"></a>
+### Đoạn 39: Tiếp tục: Nhịp hai: "đơn do Nam lập, tôi chỉ duyệt"
 
 
-- [Đọc tiếp sang Đoạn 39: Đối chất: Trình Năm đơn của Nam: máy và giờ tạo](#doan-39)
+- [Đọc tiếp sang Đoạn 40: Đối chất: Trình Năm đơn của Nam: máy và giờ tạo](#doan-40)
 
 ---
 
-<a id="doan-39"></a>
-### Đoạn 39: Đối chất: Trình Năm đơn của Nam: máy và giờ tạo
+<a id="doan-40"></a>
+### Đoạn 40: Đối chất: Trình Năm đơn của Nam: máy và giờ tạo
 
 ⚖️ **Phản hồi đối chất:**
 - **Duy**: Ba đơn ấy tạo ban đêm từ cùng một máy trong phòng văn phòng xưởng. Chìa thì bọn em không dựa vào, chị Thảo để chìa ở ngăn bàn. Bọn em dựa vào giờ: đơn ngày 07/10 tạo lúc 22 giờ 05.
@@ -890,12 +902,12 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Tiếp tục câu chuyện](#doan-38)
+- [Tiếp tục câu chuyện](#doan-39)
 
 ---
 
-<a id="doan-40"></a>
-### Đoạn 40: Đối chất: Trình Máy văn phòng xưởng: 3 đơn đêm mang tên Nam, 1 đơn ngày của Khánh
+<a id="doan-41"></a>
+### Đoạn 41: Đối chất: Trình Máy văn phòng xưởng: 3 đơn đêm mang tên Nam, 1 đơn ngày của Khánh
 
 ⚖️ **Phản hồi đối chất:**
 - **Duy**: Máy văn phòng xưởng tạo bốn đơn. Một đơn ban ngày đứng tên anh. Ba đơn ban đêm đứng tên Nam. Chìa thì bọn em không dựa vào; bọn em dựa vào giờ.
@@ -905,12 +917,12 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Tiếp tục câu chuyện](#doan-38)
+- [Tiếp tục câu chuyện](#doan-39)
 
 ---
 
-<a id="doan-41"></a>
-### Đoạn 41: Đối chất: Trình Sáu khoản chi ghi vào quỹ CLB Thám Tử
+<a id="doan-42"></a>
+### Đoạn 42: Đối chất: Trình Sáu khoản chi ghi vào quỹ CLB Thám Tử
 
 ⚖️ **Phản hồi đối chất:**
 - *Suy nghĩ của bạn:* *(Anh nói anh duyệt theo đề xuất của Nam. Sổ chi ghi ba khoản ấy là tạm ứng, xuất ngày 10, 11 và 12 tháng 9. Mã đơn điền bổ sung sau, đúng ngày ba đơn được tạo: 27/9, 4/10 và 7/10.)*
@@ -921,12 +933,12 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Tiếp tục câu chuyện](#doan-38)
+- [Tiếp tục câu chuyện](#doan-39)
 
 ---
 
-<a id="doan-42"></a>
-### Đoạn 42: Đối chất: Trình Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05
+<a id="doan-43"></a>
+### Đoạn 43: Đối chất: Trình Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05
 
 ⚖️ **Phản hồi đối chất:**
 - **Hà Vy**: Tối 07/10 Nam ở thư viện từ 21 giờ 50 tới 23 giờ 05.
@@ -939,8 +951,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-43"></a>
-### Đoạn 43: Đối chất: Trình Ba đơn đặt mua thứ không có trong kho
+<a id="doan-44"></a>
+### Đoạn 44: Đối chất: Trình Ba đơn đặt mua thứ không có trong kho
 
 ⚖️ **Phản hồi đối chất:**
 - **Nam**: Gia công ngoài thì phải có biên nhận giao việc. Anh có không ạ?
@@ -953,8 +965,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-44"></a>
-### Đoạn 44: Đối chất: Chưa đủ căn cứ
+<a id="doan-45"></a>
+### Đoạn 45: Đối chất: Chưa đủ căn cứ
 
 ⚖️ **Phản hồi khi thừa nhận chưa đủ căn cứ:**
 - **Minh Anh**: Thưa thầy, ai lập ba đơn ấy thì bọn em chưa có căn cứ để nói. Bọn em dừng ở chỗ ba khoản vượt ngưỡng.
@@ -965,8 +977,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-45"></a>
-### Đoạn 45: Đối chất: Thẻ không khớp
+<a id="doan-46"></a>
+### Đoạn 46: Đối chất: Thẻ không khớp
 
 ⚖️ **Phản hồi khi trình thẻ không liên quan:**
 - **Khánh**: Cái này nói gì về người lập đơn?
@@ -977,20 +989,20 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-46"></a>
-### Đoạn 46: Tiếp tục: Khánh nhận phần tiền; nhịp ba: lá thư
+<a id="doan-47"></a>
+### Đoạn 47: Tiếp tục: Khánh nhận phần tiền; nhịp ba: lá thư
 
 - **Thầy Quang**: Phần tiền em Khánh đã nhận. Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên. Phần lá thư thì chưa có căn cứ gắn với một người, thầy sẽ hỏi riêng. Cảm ơn chú Cường và em Hoài đã tới.
 - **Hoài**: Em xin lỗi, em không giúp được gì ạ.
 - **Minh Anh**: Em tới là giúp rồi. Chưa đủ thì ghi là chưa đủ.
 - **Thầy Quang**: Phòng của CLB Thám Tử giữ nguyên. Thầy nhận hồ sơ của các em vào đợt rà soát cuối kỳ.
 
-- [Đọc tiếp sang Đoạn 47: Đối chất: Trình [Sổ ký phòng máy tối 15/9]](#doan-47)
+- [Đọc tiếp sang Đoạn 48: Đối chất: Trình [Sổ ký phòng máy tối 15/9]](#doan-48)
 
 ---
 
-<a id="doan-47"></a>
-### Đoạn 47: Đối chất: Trình [Sổ ký phòng máy tối 15/9]
+<a id="doan-48"></a>
+### Đoạn 48: Đối chất: Trình [Sổ ký phòng máy tối 15/9]
 
 ⚖️ **Phản hồi đối chất:**
 - *Suy nghĩ của bạn:* *(Nhật ký in ghi lá thư in lúc 23 giờ 10 tối Chủ nhật 15/9, bằng tài khoản của Robotics. Sổ ký vào phòng tối đó có bảy dòng, chỉ hai người của Robotics. Chị Thảo ra lúc 21 giờ 30. Anh vào 22 giờ 40, ra 23 giờ 20.)*
@@ -1000,12 +1012,12 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Tiếp tục câu chuyện](#doan-46)
+- [Tiếp tục câu chuyện](#doan-47)
 
 ---
 
-<a id="doan-48"></a>
-### Đoạn 48: Đối chất: Trình [Lời chú Cường]
+<a id="doan-49"></a>
+### Đoạn 49: Đối chất: Trình [Lời chú Cường]
 
 ⚖️ **Phản hồi đối chất:**
 - **Hà Vy**: Sáng thứ Hai 16/9, người đưa phong bì ở cổng ký túc xá đeo balo có huy hiệu bánh răng sứt một răng.
@@ -1020,8 +1032,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-49"></a>
-### Đoạn 49: Đối chất: Trình [Huy hiệu sứt: lỗi khuôn, Khánh giữ]
+<a id="doan-50"></a>
+### Đoạn 50: Đối chất: Trình [Huy hiệu sứt: lỗi khuôn, Khánh giữ]
 
 ⚖️ **Phản hồi đối chất:**
 - **Nam**: Cái sứt là lỗi khuôn, chỉ có một cái, anh xin giữ.
@@ -1034,8 +1046,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-50"></a>
-### Đoạn 50: Đối chất: Trình Nhật ký in 23:10 Chủ nhật
+<a id="doan-51"></a>
+### Đoạn 51: Đối chất: Trình Nhật ký in 23:10 Chủ nhật
 
 ⚖️ **Phản hồi đối chất:**
 - **Hà Vy**: Lá thư in từ tài khoản dùng chung của Robotics, 23 giờ 10 tối Chủ nhật.
@@ -1049,8 +1061,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-51"></a>
-### Đoạn 51: Đối chất: Trình [Tờ giao chìa: Khánh, Bách, Thảo]
+<a id="doan-52"></a>
+### Đoạn 52: Đối chất: Trình [Tờ giao chìa: Khánh, Bách, Thảo]
 
 ⚖️ **Phản hồi đối chất:**
 - **Khánh**: Ba người có chìa. Thảo còn để chìa ngoài ngăn bàn. Mà lá thư đâu có in ở xưởng.
@@ -1062,8 +1074,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-52"></a>
-### Đoạn 52: Đối chất: Chưa đủ căn cứ
+<a id="doan-53"></a>
+### Đoạn 53: Đối chất: Chưa đủ căn cứ
 
 ⚖️ **Phản hồi khi thừa nhận chưa đủ căn cứ:**
 - **Minh Anh**: Thưa thầy, phần lá thư bọn em không có căn cứ nào gắn với một người. Bọn em dừng ở phần tiền.
@@ -1074,8 +1086,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-53"></a>
-### Đoạn 53: Đối chất: Thẻ không khớp
+<a id="doan-54"></a>
+### Đoạn 54: Đối chất: Thẻ không khớp
 
 ⚖️ **Phản hồi khi trình thẻ không liên quan:**
 - **Khánh**: Cái này thì liên quan gì tới lá thư?
@@ -1086,18 +1098,18 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-54"></a>
-### Đoạn 54: Tiếp tục: Khánh thắng một nhịp: "em vào in sơ đồ"
+<a id="doan-55"></a>
+### Đoạn 55: Tiếp tục: Khánh thắng một nhịp: "em vào in sơ đồ"
 
 - **Thầy Quang**: Phần tiền em Khánh đã nhận. Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên. Phần lá thư thầy dừng ở đây và sẽ hỏi riêng. Cảm ơn chú Cường và em Hoài đã tới.
 - **Minh Anh**: Chưa đủ thì ghi là chưa đủ ạ.
 
-- [Đọc tiếp sang Đoạn 55: Đối chất: Trình [Nhật ký in tối 15/9: không có sơ đồ thứ hai]](#doan-55)
+- [Đọc tiếp sang Đoạn 56: Đối chất: Trình [Nhật ký in tối 15/9: không có sơ đồ thứ hai]](#doan-56)
 
 ---
 
-<a id="doan-55"></a>
-### Đoạn 55: Đối chất: Trình [Nhật ký in tối 15/9: không có sơ đồ thứ hai]
+<a id="doan-56"></a>
+### Đoạn 56: Đối chất: Trình [Nhật ký in tối 15/9: không có sơ đồ thứ hai]
 
 ⚖️ **Phản hồi đối chất:**
 - **Khánh**: Sơ đồ tôi in thì các bạn đâu có tra.
@@ -1109,12 +1121,12 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Tiếp tục câu chuyện](#doan-54)
+- [Tiếp tục câu chuyện](#doan-55)
 
 ---
 
-<a id="doan-56"></a>
-### Đoạn 56: Đối chất: Trình [Lời chị Thảo: sơ đồ in tối Chủ nhật]
+<a id="doan-57"></a>
+### Đoạn 57: Đối chất: Trình [Lời chị Thảo: sơ đồ in tối Chủ nhật]
 
 ⚖️ **Phản hồi đối chất:**
 - *Suy nghĩ của bạn:* *(Sơ đồ của đội thì tối Chủ nhật nào chị Thảo cũng in. Tối ấy chị ấy ra trước khi anh vào hơn một tiếng.)*
@@ -1128,8 +1140,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-57"></a>
-### Đoạn 57: Đối chất: Trình [Sổ ký phòng máy tối 15/9]
+<a id="doan-58"></a>
+### Đoạn 58: Đối chất: Trình [Sổ ký phòng máy tối 15/9]
 
 ⚖️ **Phản hồi đối chất:**
 - **Thầy Quang**: Trang này thầy xem rồi. Nó đặt em Khánh trong phòng, và em ấy đã nói vào làm gì. Còn gì khác không?
@@ -1141,8 +1153,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-58"></a>
-### Đoạn 58: Đối chất: Trình Nhật ký in 23:10 Chủ nhật
+<a id="doan-59"></a>
+### Đoạn 59: Đối chất: Trình Nhật ký in 23:10 Chủ nhật
 
 ⚖️ **Phản hồi đối chất:**
 - **Khánh**: Phiếu ấy chỉ có một dòng về lá thư.
@@ -1155,8 +1167,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-59"></a>
-### Đoạn 59: Đối chất: Trình [Lời chú Cường]
+<a id="doan-60"></a>
+### Đoạn 60: Đối chất: Trình [Lời chú Cường]
 
 ⚖️ **Phản hồi đối chất:**
 - **Thầy Quang**: Cái huy hiệu thầy ghi rồi. Thầy đang hỏi về tối Chủ nhật ở phòng máy.
@@ -1168,8 +1180,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-60"></a>
-### Đoạn 60: Đối chất: Chưa đủ căn cứ
+<a id="doan-61"></a>
+### Đoạn 61: Đối chất: Chưa đủ căn cứ
 
 ⚖️ **Phản hồi khi thừa nhận chưa đủ căn cứ:**
 - **Minh Anh**: Thưa thầy, bọn em không còn gì về tối hôm ấy ạ.
@@ -1180,8 +1192,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-61"></a>
-### Đoạn 61: Đối chất: Thẻ không khớp
+<a id="doan-62"></a>
+### Đoạn 62: Đối chất: Thẻ không khớp
 
 ⚖️ **Phản hồi khi trình thẻ không liên quan:**
 - **Thầy Quang**: Cái này nói gì về tối 15/9?
@@ -1192,19 +1204,19 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-62"></a>
-### Đoạn 62: Tiếp tục: Khánh nhận lá thư; nhịp bốn: lá thư liên quan gì tới ba khoản chi
+<a id="doan-63"></a>
+### Đoạn 63: Tiếp tục: Khánh nhận lá thư; nhịp bốn: lá thư liên quan gì tới ba khoản chi
 
 - **Thầy Quang**: Phần tiền và phần lá thư em Khánh đã nhận. Vì sao thì thầy hỏi riêng. Việc kỷ luật và trả lại quỹ, thầy làm với Hội sinh viên.
 - **Thầy Quang**: Phòng của CLB Thám Tử giữ nguyên. Em Hoài, em Nam: tên hai em không dính gì tới việc này nữa.
 - **Hoài** (nhẹ nhõm): Em cảm ơn thầy ạ.
 
-- [Đọc tiếp sang Đoạn 63: Đối chất: Trình Sáu khoản chi ghi vào quỹ CLB Thám Tử](#doan-63)
+- [Đọc tiếp sang Đoạn 64: Đối chất: Trình Sáu khoản chi ghi vào quỹ CLB Thám Tử](#doan-64)
 
 ---
 
-<a id="doan-63"></a>
-### Đoạn 63: Đối chất: Trình Sáu khoản chi ghi vào quỹ CLB Thám Tử
+<a id="doan-64"></a>
+### Đoạn 64: Đối chất: Trình Sáu khoản chi ghi vào quỹ CLB Thám Tử
 
 ⚖️ **Phản hồi đối chất:**
 - *Suy nghĩ của bạn:* *(Tiền rời quỹ ngày 10, 11 và 12 tháng 9. Lá thư đòi thu phòng tới ngày 16. Đơn đầu tiên mãi ngày 27 mới có, sau buổi họp bọn em giữ được phòng.)*
@@ -1217,8 +1229,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-64"></a>
-### Đoạn 64: Đối chất: Trình [Sao kê quỹ về cuối kỳ]
+<a id="doan-65"></a>
+### Đoạn 65: Đối chất: Trình [Sao kê quỹ về cuối kỳ]
 
 ⚖️ **Phản hồi đối chất:**
 - *Suy nghĩ của bạn:* *(Sao kê quỹ chỉ tự về các CLB vào cuối kỳ, cùng đợt rà soát phòng; ngưỡng một triệu cũng tới lúc ấy mới được soát. Muốn xem sớm hơn thì giấy phải qua chủ tịch Hội.)*
@@ -1228,12 +1240,12 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Tiếp tục câu chuyện](#doan-62)
+- [Tiếp tục câu chuyện](#doan-63)
 
 ---
 
-<a id="doan-65"></a>
-### Đoạn 65: Đối chất: Trình Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000
+<a id="doan-66"></a>
+### Đoạn 66: Đối chất: Trình Khánh: 3 khoản, tổng 2.400.000, trung bình 800.000
 
 ⚖️ **Phản hồi đối chất:**
 - **Duy**: Phiếu này nói bao nhiêu và ai duyệt. Còn bao giờ, và bao giờ mới có người đọc, thì phiếu khác nói.
@@ -1245,8 +1257,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-66"></a>
-### Đoạn 66: Đối chất: Trình [Mẩu giấy trong sổ]
+<a id="doan-67"></a>
+### Đoạn 67: Đối chất: Trình [Mẩu giấy trong sổ]
 
 ⚖️ **Phản hồi đối chất:**
 - **Thầy Quang**: …Mẩu giấy này để sau buổi họp.
@@ -1259,8 +1271,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-67"></a>
-### Đoạn 67: Đối chất: Chưa đủ căn cứ
+<a id="doan-68"></a>
+### Đoạn 68: Đối chất: Chưa đủ căn cứ
 
 ⚖️ **Phản hồi khi thừa nhận chưa đủ căn cứ:**
 - **Minh Anh**: Thưa thầy, lá thư để làm gì thì bọn em không có căn cứ ạ.
@@ -1271,8 +1283,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ---
 
-<a id="doan-68"></a>
-### Đoạn 68: Đối chất: Thẻ không khớp
+<a id="doan-69"></a>
+### Đoạn 69: Đối chất: Thẻ không khớp
 
 ⚖️ **Phản hồi khi trình thẻ không liên quan:**
 - **Thầy Quang**: Cái này nói gì về lá thư và ba khoản chi?

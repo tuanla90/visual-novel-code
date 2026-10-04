@@ -865,3 +865,29 @@ describe('Gói T0 Mùa 1: R1', () => {
     expect(soDongNgay).toBeGreaterThanOrEqual(5);
   });
 });
+
+
+describe('Gói T0 Mùa 1: Đoạn Bản đồ ngày N và Khám phá cùng cảnh (R4)', () => {
+  it('trong một đoạn "Đang ở X", mọi lựa chọn "Khám phá" dẫn tới chuỗi có cùng cảnh X', () => {
+    const duongDan = join(THU_MUC_XUAT_TRUYEN, 'vu1.md');
+    if (!existsSync(duongDan)) return;
+    const noiDung = readFileSync(duongDan, 'utf8');
+    
+    // We want to ensure that "Khám phá: Phòng Đào tạo" does NOT appear under "Đang ở Phòng CLB:"
+    // It should appear under "🗺️ **Bản đồ**"
+    
+    const cacDoan = noiDung.split('---');
+    for (const doan of cacDoan) {
+       if (doan.includes('📍 **Đang ở Phòng CLB:**')) {
+          expect(doan).not.toContain('Khám phá: Phòng Đào tạo');
+          expect(doan).not.toContain('Khám phá: Sảnh tòa B');
+       }
+    }
+    
+    // Verify Bản đồ section exists
+    expect(noiDung).toContain('🗺️ **Bản đồ**');
+    
+    // Verify Mở bản đồ choice exists and points to map section
+    expect(noiDung).toContain('Mở bản đồ');
+  });
+});

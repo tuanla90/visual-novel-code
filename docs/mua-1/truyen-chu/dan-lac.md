@@ -11,6 +11,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - [Đoạn 5: Cổng KTX: kịp giờ, giày đầy bùn](#doan-5)
 - [Đoạn 6: Cổng KTX: muộn một phút](#doan-6)
 - [Đoạn 7: Phòng 408: sổ đón của đội tình nguyện](#doan-7)
+- [Đoạn 8: Bản đồ Thứ Sáu, 25/10/2024](#doan-8)
 
 ## 👥 Nhân vật xuất hiện
 
@@ -98,11 +99,9 @@ Thứ Sáu, 25/10/2024
 
 - *Hai đứa lách qua cánh cửa sảnh còn hé, lao ra sân. Tùng giơ tập bản đồ lên như giơ cúp, chân vẫn không dừng.*
 - *Cuối đường, chốt bảo vệ ký túc xá đã bật đèn pin. Chú Cường sắp kéo cổng.*
-🔀 **Lựa chọn của bạn** (Người kể: "Mười một giờ bảy phút. Cổng ký túc đóng mười một giờ mười lăm. Chạy đường nào?"):
 
 **Lựa chọn tiếp theo:**
-- [Chọn: "Cắt qua sân bóng: tối nhưng gần."](#doan-5)
-- [Chọn: "Chạy đường chính: có đèn nhưng vòng."](#doan-6)
+- [Mở bản đồ](#doan-8)
 
 ---
 
@@ -255,5 +254,18 @@ SELECT ma_luot, ngay, ma_sv FROM @ev-don-tung WHERE diem_den = 'NHA_XE';
 🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.
 > **Chín lượt, một lượt nhầm** — Sổ đón ghi chín lượt Tùng dẫn: tám lượt tới ký túc xá, một lượt tới nhà xe, là lượt của Hoài. Sổ chỉ ghi nơi tới; vì sao nhầm là điều Tùng tự nhớ lại và tự nói ra.
 
+
+---
+
+<a id="doan-8"></a>
+### Đoạn 8: Bản đồ Thứ Sáu, 25/10/2024
+
+🗺️ **Bản đồ** — *Thứ Sáu, 25/10/2024*
+
+*Những nơi có thể đi tới:*
+
+**Lựa chọn tiếp theo:**
+- [Đi tới: Cắt qua sân bóng: tối nhưng gần.](#doan-5)
+- [Đi tới: Chạy đường chính: có đèn nhưng vòng.](#doan-6)
 
 ---

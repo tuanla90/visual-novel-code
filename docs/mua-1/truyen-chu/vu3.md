@@ -19,7 +19,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - [Đoạn 13: Chi tiết ẩn: Quầy thủ thư](#doan-13)
 - [Đoạn 14: Tới nơi: Bản đồ Vụ 3 (tùy chọn): quán trà đá, chuyện một kết luận sai](#doan-14)
 - [Đoạn 15: Chi tiết ẩn: Chiếc xe đạp cũ](#doan-15)
-- *... và 18 đoạn tiếp theo*
+- *... và 19 đoạn tiếp theo*
 
 ## 👥 Nhân vật xuất hiện
 
@@ -135,16 +135,11 @@ Thứ Ba, 22/10/2024
 - **Duy**: Bản xuất bài đăng thì gồm mọi kênh. Lấy riêng bài của kênh Robotics trước, rồi mới gom theo thiết bị mà đếm.
 > 🎯 **NHIỆM VỤ**: Kênh Robotics tháng 10 hay đăng bài từ thiết bị nào?
 > 💭 **Nhắc nhở** (Hà Vy): Chín bài nhìn hoa mắt. Giá mà gom những bài cùng một thiết bị vào một cục rồi đếm.
-📍 **Đang ở Phòng CLB:**
-*Những chỗ có thể khám phá ở đây:*
 
 ⚠ (bản cũ: tự chuyển nơi)
 
 **Lựa chọn tiếp theo:**
-- [Khám phá: Xưởng Robotics](#doan-6)
-- [Khám phá: Thư viện (chi tiết ẩn / tùy chọn)](#doan-7)
-- [Khám phá: Quán trà đá (chi tiết ẩn / tùy chọn)](#doan-8)
-- [Khám phá: Căng tin (chi tiết ẩn / tùy chọn)](#doan-9)
+- [Mở bản đồ](#doan-26)
 - [Đi tiếp](#doan-6)
 
 ---
@@ -164,6 +159,7 @@ Thứ Ba, 22/10/2024
 **Lựa chọn tiếp theo:**
 - [Khám phá: Nam](#doan-10)
 - [Khám phá: Bảng trắng trên tường](#doan-11)
+- [Mở bản đồ](#doan-26)
 
 ---
 
@@ -178,6 +174,7 @@ Thứ Ba, 22/10/2024
 **Lựa chọn tiếp theo:**
 - [Khám phá: Hà Vy](#doan-12)
 - [Khám phá: Quầy thủ thư](#doan-13)
+- [Mở bản đồ](#doan-26)
 
 ---
 
@@ -192,6 +189,7 @@ Thứ Ba, 22/10/2024
 **Lựa chọn tiếp theo:**
 - [Khám phá: Bà bán trà đá](#doan-14)
 - [Khám phá: Chiếc xe đạp cũ](#doan-15)
+- [Mở bản đồ](#doan-26)
 
 ---
 
@@ -206,6 +204,7 @@ Thứ Ba, 22/10/2024
 **Lựa chọn tiếp theo:**
 - [Khám phá: Tùng](#doan-16)
 - [Khám phá: Tấm bảng đen trên quầy](#doan-17)
+- [Mở bản đồ](#doan-26)
 
 ---
 
@@ -577,13 +576,13 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 - **Nam**: Không sao. Lần sau đọc kỹ hồ sơ trước đã.
 
 **Lựa chọn tiếp theo:**
-- [Trình thẻ: Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05 (ĐỦ CĂN CỨ)](#doan-27)
-- [Trình thẻ: Nam: tối thứ Hai 27 lần, thứ Năm 5 lần (HỖ TRỢ)](#doan-28)
-- [Trình thẻ: Năm lần Hà Vy quẹt thẻ thư viện (HỖ TRỢ)](#doan-29)
-- [Trình thẻ: 8 bài từ điện thoại trực, 1 bài từ máy văn phòng (HỖ TRỢ)](#doan-30)
-- [Trình thẻ: Tin gốc: 22:40 tối 07/10 (GỢI Ý)](#doan-31)
-- [Nói: "Chưa đủ căn cứ"](#doan-32)
-- [Trình thẻ khác](#doan-33)
+- [Trình thẻ: Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05 (ĐỦ CĂN CỨ)](#doan-28)
+- [Trình thẻ: Nam: tối thứ Hai 27 lần, thứ Năm 5 lần (HỖ TRỢ)](#doan-29)
+- [Trình thẻ: Năm lần Hà Vy quẹt thẻ thư viện (HỖ TRỢ)](#doan-30)
+- [Trình thẻ: 8 bài từ điện thoại trực, 1 bài từ máy văn phòng (HỖ TRỢ)](#doan-31)
+- [Trình thẻ: Tin gốc: 22:40 tối 07/10 (GỢI Ý)](#doan-32)
+- [Nói: "Chưa đủ căn cứ"](#doan-33)
+- [Trình thẻ khác](#doan-34)
 - [Nếu đã có "dc-nam-du": Rẽ sang hướng khác](#doan-22)
 - [Đi tiếp](#doan-23)
 
@@ -679,7 +678,22 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 ---
 
 <a id="doan-26"></a>
-### Đoạn 26: Tiếp tục: Phòng CLB: Tùng nêu giả thuyết, người chơi trình thẻ
+### Đoạn 26: Bản đồ Thứ Ba, 22/10/2024
+
+🗺️ **Bản đồ** — *Thứ Ba, 22/10/2024*
+
+*Những nơi có thể đi tới:*
+
+**Lựa chọn tiếp theo:**
+- [Đi tới: Xưởng Robotics !](#doan-6)
+- [Đi tới: Thư viện (tùy chọn)](#doan-7)
+- [Đi tới: Quán trà đá (tùy chọn)](#doan-8)
+- [Đi tới: Căng tin (tùy chọn)](#doan-9)
+
+---
+
+<a id="doan-27"></a>
+### Đoạn 27: Tiếp tục: Phòng CLB: Tùng nêu giả thuyết, người chơi trình thẻ
 
 - **Minh Anh** (nghiêm túc): Vậy chị mời Nam lên.
 - *Chiều hôm đó, Nam lên phòng CLB. Không nói nhiều, Nam đặt lên bàn tờ bản ghi quẹt thẻ thư viện của mình.*
@@ -688,12 +702,12 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 - **Tùng** (lo lắng): Em xin lỗi anh.
 - **Nam**: Không sao. Lần sau đọc kỹ hồ sơ trước đã.
 
-- [Đọc tiếp sang Đoạn 27: Đối chất: Trình Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05](#doan-27)
+- [Đọc tiếp sang Đoạn 28: Đối chất: Trình Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05](#doan-28)
 
 ---
 
-<a id="doan-27"></a>
-### Đoạn 27: Đối chất: Trình Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05
+<a id="doan-28"></a>
+### Đoạn 28: Đối chất: Trình Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05
 
 ⚖️ **Phản hồi đối chất:**
 - **Hà Vy**: Tối 07/10, cửa từ thư viện ghi Nam vào 21:50, ra 23:05. Tin gửi 22:40.
@@ -705,12 +719,12 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Tiếp tục câu chuyện](#doan-26)
+- [Tiếp tục câu chuyện](#doan-27)
 
 ---
 
-<a id="doan-28"></a>
-### Đoạn 28: Đối chất: Trình Nam: tối thứ Hai 27 lần, thứ Năm 5 lần
+<a id="doan-29"></a>
+### Đoạn 29: Đối chất: Trình Nam: tối thứ Hai 27 lần, thứ Năm 5 lần
 
 ⚖️ **Phản hồi đối chất:**
 - **Hà Vy** (suy nghĩ): Hai mươi bảy tối thứ Hai có trong tệp, tối nào Nam cũng ở thư viện. Một thói quen từ năm ngoái. Thói quen thì chưa phải bằng chứng cho đúng tối đó.
@@ -723,8 +737,8 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 
 ---
 
-<a id="doan-29"></a>
-### Đoạn 29: Đối chất: Trình Năm lần Hà Vy quẹt thẻ thư viện
+<a id="doan-30"></a>
+### Đoạn 30: Đối chất: Trình Năm lần Hà Vy quẹt thẻ thư viện
 
 ⚖️ **Phản hồi đối chất:**
 - **Hà Vy**: Tối thứ Hai nào tớ cũng ở thư viện, thẻ của tớ ghi thế. Nên lời tớ kể về tối đó không phải nhớ bừa.
@@ -737,8 +751,8 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 
 ---
 
-<a id="doan-30"></a>
-### Đoạn 30: Đối chất: Trình 8 bài từ điện thoại trực, 1 bài từ máy văn phòng
+<a id="doan-31"></a>
+### Đoạn 31: Đối chất: Trình 8 bài từ điện thoại trực, 1 bài từ máy văn phòng
 
 ⚖️ **Phản hồi đối chất:**
 - **Hà Vy** (suy nghĩ): Tám bài từ điện thoại trực, một bài từ máy văn phòng xưởng. Bài tin đồn khác hẳn thói quen đăng của kênh.
@@ -751,8 +765,8 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 
 ---
 
-<a id="doan-31"></a>
-### Đoạn 31: Đối chất: Trình Tin gốc: 22:40 tối 07/10
+<a id="doan-32"></a>
+### Đoạn 32: Đối chất: Trình Tin gốc: 22:40 tối 07/10
 
 ⚖️ **Phản hồi đối chất:**
 - **Tùng** (chỉ tay): Chính phiếu này nói tài khoản Robotics gửi. Cậu đang củng cố cho tớ đấy.
@@ -765,8 +779,8 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 
 ---
 
-<a id="doan-32"></a>
-### Đoạn 32: Đối chất: Chưa đủ căn cứ
+<a id="doan-33"></a>
+### Đoạn 33: Đối chất: Chưa đủ căn cứ
 
 ⚖️ **Phản hồi khi thừa nhận chưa đủ căn cứ:**
 - **Minh Anh** (nghiêm túc): Chưa đủ để nói Nam không làm, cũng chưa đủ để nói Nam làm. Vậy chị mời Nam lên hỏi.
@@ -777,8 +791,8 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 
 ---
 
-<a id="doan-33"></a>
-### Đoạn 33: Đối chất: Thẻ không khớp
+<a id="doan-34"></a>
+### Đoạn 34: Đối chất: Thẻ không khớp
 
 ⚖️ **Phản hồi khi trình thẻ không liên quan:**
 - **Tùng** (lo lắng): Cái này thì liên quan gì tới tối thứ Hai?
