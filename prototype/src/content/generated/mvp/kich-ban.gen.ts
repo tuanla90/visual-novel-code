@@ -924,7 +924,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Chủ nhật, 08/09/2024 · Chuyến xe buýt lên Hà Nội"
+          "text": "Chủ nhật, 08/09/2024 · Xe buýt lên Hà Nội"
         },
         {
           "type": "line",
