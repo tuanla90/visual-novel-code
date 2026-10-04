@@ -929,12 +929,12 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Chuyến xe buýt đường dài chạy chậm dọc con đường vào thành phố, nắng đầu chiều rọi vàng lên thân xe cũ."
+          "text": "Chuyến xe buýt đường dài chạy chậm dọc con đường vào thành phố, nắng đầu chiều rọi vàng lên thân xe."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Bên khung cửa sổ kéo hé, một cậu trai chống khuỷu tay lên thành xe, tựa cằm vào bàn tay, mắt nhìn theo hàng cây đang lùi dần. Chiếc vali xanh ngồi ngay ghế bên cạnh."
+          "text": "Bên khung cửa sổ kéo hé, một cậu trai chống khuỷu tay lên thành xe, tựa cằm vào bàn tay, mắt nhìn theo hàng cây đang lùi dần. Chiếc vali xanh dựng sát bên chân. Mấy hàng ghế sau, có người ngủ gật, có người lướt điện thoại."
         },
         {
           "type": "line",
@@ -954,7 +954,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Ngoài kia, ruộng lúa thưa dần, nhà cao tầng dày lên, biển quảng cáo chen nhau sát mép đường."
+          "text": "Ngoài kia, xe máy nối đuôi nhau chạy sát thân xe, hàng quán hai bên dày dần, nhà cao tầng mọc lên sau rặng cây."
         },
         {
           "type": "line",
