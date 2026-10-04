@@ -63,4 +63,27 @@ describe('màn kết MVP', () => {
     render(<KetMvp ketQua="that" onChoiLai={vi.fn()} />);
     expect(screen.queryByRole('button', { name: 'Về màn tiêu đề' })).toBeNull();
   });
+
+  it('hiển thị xếp hạng S, A, B, C và bỏ chữ "hoàn thành" bị che khi có tổng kết', () => {
+    render(
+      <KetMvp
+        ketQua="that"
+        tongKet={{
+          phieu: { co: 4, tong: 4 },
+          doiChat: { du: 1, tong: 1 },
+          cauHoi: { ngay: 1, tong: 1 },
+          mauGiay: true,
+          chuyenAn: { co: 2, tong: 2 },
+          hetLuot: 0,
+          phanTram: 100,
+          muc: 'kin',
+          hang: 'S',
+        }}
+        onChoiLai={vi.fn()}
+      />
+    );
+    expect(screen.getByText('S')).toBeInTheDocument();
+    expect(screen.getByText('100%')).toBeInTheDocument();
+    expect(screen.queryByText('hoàn thành')).toBeNull();
+  });
 });

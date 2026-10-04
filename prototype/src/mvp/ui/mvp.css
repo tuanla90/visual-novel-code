@@ -3373,7 +3373,7 @@
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
 }
 .mvp-chot__dau { color: #8a4b12; }
-.mvp-chot__ds li { border-bottom: 1px dotted rgba(90, 70, 40, 0.35); padding: 2px 0; }
+.mvp-chot__ds li { border-bottom: none !important; padding: 3px 0; }
 .mvp-chot__loi { padding-right: 56px; }
 .mvp-chot__moc {
   position: absolute;
@@ -3847,6 +3847,7 @@
    - Hỗ trợ xem trọn ảnh cỡ lớn (Lightbox).
    - Màn dọc / di động (Portrait): Xếp chồng tự nhiên.
 */
+.endscreen.mvp-ket,
 .endscreen.mvp-ket--moi {
   padding: clamp(14px, 1.8vw, 24px) clamp(16px, 2.2vw, 30px);
   overflow: hidden;
@@ -3855,13 +3856,19 @@
   max-height: min(92vh, 680px);
   justify-self: center;
   align-self: center;
-  border-width: 2px;
-  background: var(--c-dialog-bg, #0f172a);
+  border-width: 1.5px !important;
+  border-style: solid !important;
+  border-color: rgba(245, 158, 11, 0.5) !important;
+  border-radius: 14px !important;
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.98) 0%, rgba(24, 33, 53, 0.96) 100%) !important;
+  color: #f8fafc !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(245, 158, 11, 0.15) !important;
+  backdrop-filter: blur(16px);
 }
 
 @media (min-width: 900px) and (orientation: landscape) {
   .game:not(.game--portrait) .endscreen.mvp-ket--moi.co-tong-ket {
-    grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
     column-gap: clamp(18px, 2.5vw, 32px);
     align-items: center;
   }
@@ -3882,32 +3889,32 @@
   gap: 10px;
 }
 
-/* Khung ảnh CG: tỉ lệ 16:9 chuẩn, hiển thị trọn vẹn mọi nhân vật */
+/* Khung ảnh CG: tỉ lệ 16:9 chuẩn, hiển thị trọn vẹn nhân vật không bị cắt phần đầu */
 .mvp-ket--moi .mvp-ket__anh {
   position: relative;
   width: 100%;
-  max-width: 540px;
+  max-width: 520px;
   aspect-ratio: 16 / 9;
   border-radius: 8px;
   overflow: hidden;
   background: #090d16;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   user-select: none;
 }
 .mvp-ket--moi .mvp-ket__anh:hover {
   transform: translateY(-2px);
-  border-color: rgba(251, 191, 36, 0.6);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  border-color: #fbbf24;
+  box-shadow: 0 10px 28px rgba(245, 158, 11, 0.3);
 }
 .mvp-ket--moi .mvp-ket__cg {
   width: 100%;
   height: 100%;
   margin: 0;
   object-fit: cover;
-  object-position: center;
+  object-position: center 25%;
   display: block;
 }
 .mvp-ket__anh-hint {
@@ -3916,16 +3923,19 @@
   bottom: 8px;
   padding: 3px 8px;
   border-radius: 4px;
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(15, 23, 42, 0.82);
   backdrop-filter: blur(4px);
-  color: #f1f5f9;
+  color: #fde68a;
+  border: 1px solid rgba(245, 158, 11, 0.3);
   font: 600 0.72rem/1.2 var(--font-ui);
   letter-spacing: 0.02em;
-  opacity: 0.75;
-  transition: opacity 0.15s ease;
+  opacity: 0.85;
+  transition: opacity 0.15s ease, background 0.15s ease;
 }
 .mvp-ket--moi .mvp-ket__anh:hover .mvp-ket__anh-hint {
   opacity: 1;
+  background: rgba(15, 23, 42, 0.95);
+  border-color: #f59e0b;
 }
 
 /* Khối nội dung chữ (Kicker + Tiêu đề + Đoạn dẫn) */
@@ -3956,16 +3966,62 @@
   color: #cbd5e1;
 }
 
-/* Khối nút hành động */
+/* Dòng thông báo các tuyến đang mở: độ tương phản cao, nổi bật trên nền tối */
+.mvp-ket__tuyen-mo {
+  color: #fde68a !important;
+  background: rgba(245, 158, 11, 0.12) !important;
+  border-left: 3px solid #f59e0b;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: clamp(0.85rem, 1.1vw, 0.92rem);
+  line-height: 1.45;
+  margin: 2px 0 6px 0;
+}
+
+/* Khối nút hành động phong cách gaming visual novel */
 .mvp-ket--moi .endscreen__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 4px;
+  gap: 10px;
+  margin-top: 6px;
 }
 .mvp-ket--moi .endscreen__actions .btn {
-  padding: 7px 16px;
+  position: relative;
+  padding: 8px 18px;
   font-size: 0.92rem;
+  font-weight: 700;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+  color: #e2e8f0;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.mvp-ket--moi .endscreen__actions .btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(51, 65, 85, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+  border-color: rgba(245, 158, 11, 0.7);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5), 0 0 12px rgba(245, 158, 11, 0.3);
+}
+.mvp-ket--moi .endscreen__actions .btn:active {
+  transform: translateY(1px);
+}
+/* Nút chính: Phong cách vàng kim Game Visual Novel nổi bật */
+.mvp-ket--moi .endscreen__actions .btn--primary {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 60%, #b45309 100%);
+  color: #271202;
+  border: 1px solid #fde68a;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.mvp-ket--moi .endscreen__actions .btn--primary:hover {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 60%, #d97706 100%);
+  color: #1a0b01;
+  border-color: #fff;
+  box-shadow: 0 6px 24px rgba(245, 158, 11, 0.65), 0 0 16px rgba(251, 191, 36, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 /* Tờ biên bản chị Minh Anh (.mvp-chot): tinh chỉnh kích thước để nằm vừa vặn */
@@ -3986,8 +4042,9 @@
   margin: 6px 0;
 }
 .mvp-ket--moi .mvp-chot__ds li {
+  border-bottom: none !important;
   font-size: 0.92rem;
-  padding: 2px 0;
+  padding: 3px 0;
 }
 .mvp-ket--moi .mvp-chot__loi {
   margin: 8px 0 0;
@@ -4084,6 +4141,58 @@
 }
 .mvp-chot__dau-hang { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
 .mvp-chot__dau-hang .mvp-chot__dau { margin: 0; }
+.mvp-chot__hang {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  font-family: var(--font-ui, system-ui, sans-serif);
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border: 1.5px solid transparent;
+  user-select: none;
+}
+.mvp-chot__hang-chu {
+  font-size: 1.4rem;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.mvp-chot__hang-pt {
+  font-size: 0.95rem;
+  font-weight: 700;
+  opacity: 0.95;
+  letter-spacing: 0.02em;
+}
+/* Rank S: Vàng kim rực rỡ */
+.mvp-chot__hang--s {
+  background: linear-gradient(135deg, #f59e0b, #b45309);
+  color: #fffbeb;
+  border-color: #fde68a;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.45);
+}
+/* Rank A: Đỏ son ruby */
+.mvp-chot__hang--a {
+  background: linear-gradient(135deg, #ef4444, #991b1b);
+  color: #fef2f2;
+  border-color: #fca5a5;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+}
+/* Rank B: Xanh ngọc biển */
+.mvp-chot__hang--b {
+  background: linear-gradient(135deg, #0284c7, #075985);
+  color: #f0f9ff;
+  border-color: #7dd3fc;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+}
+/* Rank C: Thép bạc */
+.mvp-chot__hang--c {
+  background: linear-gradient(135deg, #64748b, #334155);
+  color: #f8fafc;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 10px rgba(71, 85, 105, 0.3);
+}
 .mvp-chot__vong {
   --pt: 0;
   flex: none;

@@ -3,17 +3,29 @@ import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { khungNhin, taoTrangThai } from './may';
-import { tongKetVu } from './tong-ket';
+import { tinhHang, tongKetVu } from './tong-ket';
 import { choiTuDong, RE_NHANH_KET_THAT, reNhanhTheo } from './tu-choi';
 
 const KB = KICH_BAN_MVP as unknown as KichBanMvp;
 
 describe('tổng kết vụ', () => {
-  it('ván mới: chưa có phiếu nào, mức "thiếu"', () => {
+  it('đánh giá hạng S, A, B, C theo phần trăm', () => {
+    expect(tinhHang(100)).toBe('S');
+    expect(tinhHang(95)).toBe('S');
+    expect(tinhHang(94)).toBe('A');
+    expect(tinhHang(80)).toBe('A');
+    expect(tinhHang(79)).toBe('B');
+    expect(tinhHang(65)).toBe('B');
+    expect(tinhHang(64)).toBe('C');
+    expect(tinhHang(0)).toBe('C');
+  });
+
+  it('ván mới: chưa có phiếu nào, mức "thiếu", hạng C', () => {
     const tk = tongKetVu(KB, taoTrangThai(KB, 1), null);
     expect(tk.phieu.co).toBe(0);
     expect(tk.phieu.tong).toBeGreaterThan(3);
     expect(tk.muc).toBe('thieu');
+    expect(tk.hang).toBe('C');
   });
 
   it('máy chơi đường kết thật tới màn kết Vụ 1: đủ phiếu của đường đã đi, có mẩu giấy, không tính chuỗi của vụ sau', () => {
@@ -23,6 +35,7 @@ describe('tổng kết vụ', () => {
     expect(tk.phieu.co).toBe(tk.phieu.tong);
     expect(tk.mauGiay).toBe(true);
     expect(tk.muc).not.toBe('thieu');
+    expect(['S', 'A']).toContain(tk.hang);
     // Vụ 2 chưa chơi: tổng kết của nó trống.
     const v2 = (KB.lich.vuSau ?? [])[0];
     if (!v2) throw new Error('thiếu vụ sau');
