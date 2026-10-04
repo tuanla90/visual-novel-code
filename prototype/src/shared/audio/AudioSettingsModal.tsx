@@ -47,6 +47,8 @@ export function AudioSettingsModal({ open, onClose }: AudioSettingsModalProps) {
   const setTextSpeed = useVnStore((s) => s.setTextSpeed);
   const skipUnread = useVnStore((s) => s.skipUnread);
   const setSkipUnread = useVnStore((s) => s.setSkipUnread);
+  const highlightEnabled = useVnStore((s) => s.highlightEnabled);
+  const setHighlightEnabled = useVnStore((s) => s.setHighlightEnabled);
 
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -83,6 +85,13 @@ export function AudioSettingsModal({ open, onClose }: AudioSettingsModalProps) {
         </div>
 
         <div className="audio-modal__content">
+          <label className="audio-row audio-row--check">
+            <input type="checkbox" checked={highlightEnabled} onChange={(event) => setHighlightEnabled(event.target.checked)} />
+            <span className="audio-row__label">
+              <span>Tô màu manh mối</span>
+              <span className="audio-row__val">Nhấn chi tiết quan trọng của vụ chính, nhiệm vụ phụ và tuyến ẩn</span>
+            </span>
+          </label>
           <fieldset className="settings-speed">
             <legend className="settings-speed__legend">Tốc độ chạy chữ</legend>
             <div className="settings-speed__options" role="radiogroup" aria-label="Tốc độ chạy chữ">

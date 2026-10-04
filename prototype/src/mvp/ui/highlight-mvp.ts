@@ -1,8 +1,9 @@
 import type { KichBanMvp } from '../../content/mvp/types';
-import { Engine, type HighlightEntry, type HighlightCategory } from '../../shared/highlight/engine.js';
+import { type HighlightEntry, type HighlightCategory } from '../../shared/highlight/engine.js';
+import { StoryHighlightEngine, storyHighlightProfile } from './story-highlight';
 
 /** Canonical generated game content supplies the lexicon; no second handwritten list. */
-export function highlightMvp(kb: KichBanMvp, playerName: string): Engine {
+export function highlightMvp(kb: KichBanMvp, playerName: string, caseId = 'vu1', sideQuestId: string | null = null): StoryHighlightEngine {
   const entries = new Map<string, HighlightEntry>();
   const add = (text: string | null | undefined, category: HighlightCategory) => {
     if (!text || text.includes('{{')) return;
@@ -31,5 +32,5 @@ export function highlightMvp(kb: KichBanMvp, playerName: string): Engine {
     const columns = table.cot.map((column, index) => /^(?:ma_(?:don|chi|phien|phieu|tin|bai|luot|tai_san|tham_chieu)|linh_kien|ten_tep)$/.test(column.ten) ? index : -1).filter(index => index >= 0);
     for (const row of table.dong) for (const index of columns) if (typeof row[index] === 'string') add(row[index], 'item');
   }
-  return new Engine([...entries.values()]);
+  return new StoryHighlightEngine([...entries.values()], storyHighlightProfile(caseId, sideQuestId));
 }

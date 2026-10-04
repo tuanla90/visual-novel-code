@@ -1,0 +1,51 @@
+{
+  "vu1": {
+    "clues": ["lá thư", "phong bì", "chữ ký", "chữ H", "thẻ lịch", "hộp kiến nghị", "sổ niêm phong", "nhật ký in", "lịch sử in", "phiếu tra cứu", "mã sinh viên", "huy hiệu bánh răng", "bánh răng sứt"],
+    "relations": ["nộp thư", "in thư", "viết thư", "gửi thư", "niêm phong", "ký nhận", "in lúc", "in vào", "in tối", "đưa phong bì", "nhận phong bì", "đối chiếu", "chứng cứ", "bằng chứng"]
+  },
+  "vu2": {
+    "clues": ["tin đồn", "tin gốc", "tin chuyển tiếp", "kênh Robotics", "tài khoản kênh", "phiên đăng nhập", "giờ đăng nhập", "giờ gửi", "máy văn phòng", "lịch xưởng", "lịch đặt xưởng", "bảng đăng ký dùng xưởng"],
+    "relations": ["gửi tin", "đăng nhập", "đặt xưởng", "mở xưởng", "xưởng mở", "đối chiếu", "chứng cứ", "bằng chứng"]
+  },
+  "vu3": {
+    "clues": ["tin gốc", "kênh Robotics", "bản ghi thư viện", "cửa từ", "lượt quẹt", "thẻ thư viện", "sơ đồ mạch", "sơ đồ in", "phiên đăng nhập", "ngoại phạm"],
+    "relations": ["gửi tin", "đăng nhập", "quẹt thẻ", "in sơ đồ", "in tối", "đối chiếu", "chứng cứ", "bằng chứng", "ngoại phạm"]
+  },
+  "vu4": {
+    "clues": ["đơn đặt hàng", "sổ đặt hàng", "mã đơn", "mã phiên", "phiên đăng nhập", "người đặt", "người duyệt", "đã duyệt", "huy hiệu", "bánh răng sứt", "giải trình ngân sách"],
+    "relations": ["đặt hàng", "duyệt đơn", "đăng nhập", "ký duyệt", "đối chiếu", "chứng cứ", "bằng chứng"]
+  },
+  "so-phong": {
+    "clues": ["sổ sử dụng phòng", "sổ giấy", "mã phòng", "đã ký xác nhận", "bốn buổi", "chữ ký"],
+    "relations": ["ký nhận", "xác nhận", "đối chiếu", "khớp", "đếm", "chứng cứ"]
+  },
+  "micro": {
+    "clues": ["micro không dây", "MIC-02", "sổ tài sản", "phiếu luân chuyển", "mã dán", "đã nhận"],
+    "relations": ["nhận micro", "ký nhận", "luân chuyển", "đối chiếu", "mã dán", "chứng cứ"]
+  },
+  "hoan-tien": {
+    "clues": ["hoàn tiền", "phiếu PH-04", "PH-04", "biên nhận ngân hàng", "mã giao dịch", "ghi trùng"],
+    "relations": ["hoàn tiền", "đối chiếu", "ghi trùng", "chuyển khoản", "chứng cứ"]
+  },
+  "dan-lac": {
+    "clues": ["sổ đón tân sinh viên", "SV240251", "điểm đến", "nhà xe", "sổ đón"],
+    "relations": ["dẫn lạc", "ghi nhầm", "ghi là", "ghi nhà xe", "đối chiếu", "chứng cứ"]
+  },
+  "hoc-tro-cu": {
+    "clues": ["danh sách lớp cũ", "danh sách học trò", "ra trường", "thôi học", "chuyển trường", "ghi chú", "trùng tên"],
+    "relations": ["ra trường", "thôi học", "chuyển trường", "đối chiếu", "trùng tên", "ghi chú"]
+  },
+  "tui-do": {
+    "clues": ["KTVM-0", "nhãn giáo trình", "mã lớp học phần", "lịch lớp học phần", "danh sách đăng ký", "khoa Báo chí", "đơn học bổng", "nhà xe tòa B", "vào bãi"],
+    "relations": ["vào bãi", "đăng ký lớp", "nộp đơn", "hạn nộp", "đối chiếu", "nhãn giáo trình"]
+  },
+  "hidden": {
+    "clues": ["mẩu giấy", "sổ CLB cũ", "cậu trà nóng", "sổ của Chi Linh", "thôi học", "vụ án oan", "hồ sơ cũ", "huy hiệu sứt", "sứt một răng"],
+    "people": ["cậu trà nóng", "Chi Linh", "Đỗ Văn Thịnh"],
+    "relations": ["mẩu giấy", "kẹp trong sổ", "bà kể", "bà nhớ", "thôi học", "vụ án oan", "đối chiếu", "chứng cứ", "sứt một răng"]
+  },
+  "vu5": {
+    "clues": ["sổ quỹ", "sao kê", "phiếu chi", "mã chi", "mã tham chiếu", "chuyển khoản", "giao dịch", "chữ ký", "biên nhận", "người nhận tiền", "khoản chi"],
+    "relations": ["chuyển tiền", "chuyển khoản", "rút tiền", "ký nhận", "thanh toán", "đối chiếu", "chứng cứ", "bằng chứng"]
+  }
+}

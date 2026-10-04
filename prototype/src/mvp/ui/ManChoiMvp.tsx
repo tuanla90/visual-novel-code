@@ -89,7 +89,10 @@ function thuHomNay(kb: KichBanMvp, s: TrangThaiMvp): number {
 export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const kb = KICH_BAN;
   const s = useKhoMvp((k) => k.trangThai);
-  const highlightEngine = useMemo(() => highlightMvp(kb, s?.tenNguoiChoi ?? ''), [kb, s?.tenNguoiChoi]);
+  const highlightCase = s?.vu ?? 'vu1';
+  const highlightSideQuest = s?.phu?.id ?? null;
+  const highlightPlayer = s?.tenNguoiChoi ?? '';
+  const highlightEngine = useMemo(() => highlightMvp(kb, highlightPlayer, highlightCase, highlightSideQuest), [kb, highlightPlayer, highlightCase, highlightSideQuest]);
   const oLuu = useKhoMvp((k) => k.oLuu);
   const batDau = useKhoMvp((k) => k.batDau);
   const hanhDong = useKhoMvp((k) => k.hanhDong);
