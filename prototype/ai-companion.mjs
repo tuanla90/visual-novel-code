@@ -1,3 +1,6 @@
+import { readFileSync } from 'node:fs';
+import { parseEnv } from 'node:util';
+
 const PATH = '/api/companion/chat';
 const BODY_LIMIT = 24_000;
 const RATE_LIMIT = 24;
@@ -146,7 +149,74 @@ function outputText(data) {
   return parts.join('\n').trim();
 }
 
-export function createCompanionHandler({ fetchImpl = fetch, env = process.env } = {}) {
+/** Server-only configuration. Environment variables override local files; local files never enter client code. */
+function companionEnv() {
+  let files = {};
+  for (const filename of ['.env', '.env.local']) {
+    try {
+      files = { ...files, ...parseEnv(readFileSync(new URL(filename, import.meta.url), 'utf8')) };
+    } catch (error) {
+      if (error?.code !== 'ENOENT') throw new Error(`Không đọc được cấu hình AI trong ${filename}.`);
+    }
+  }
+  return { ...files, ...process.env };
+}
+
+function providerConfigs(env) {
+  const geminiModel = env.GEMINI_MODEL?.trim().replace(/^models\//, '') || 'gemini-3.5-flash-lite';
+  const available = [
+    { provider: 'deepseek', key: env.DEEPSEEK_API_KEY?.trim(),
+      model: env.DEEPSEEK_MODEL?.trim() || 'deepseek-flash', url: 'https://api.deepseek.com/chat/completions' },
+    { provider: 'gemini', key: env.GEMINI_API_KEY?.trim(), model: geminiModel,
+      url: `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(geminiModel)}:generateContent` },
+    { provider: 'openai', key: env.OPENAI_API_KEY?.trim(),
+      model: env.OPENAI_MODEL?.trim() || 'gpt-6-astra', url: 'https://api.openai.com/v1/responses' },
+  ];
+  const selected = env.AI_PROVIDER?.trim().toLowerCase() || 'auto';
+  return available.filter((config) => config.key && (selected === 'auto' || config.provider === selected));
+}
+
+function providerPayload(config, instructions, input) {
+  if (config.provider === 'deepseek') return {
+    model: config.model,
+    messages: [{ role: 'system', content: instructions }, ...input],
+    thinking: { type: 'disabled' }, max_tokens: 220, stream: false,
+  };
+  if (config.provider === 'gemini') {
+    const contents = [];
+    for (const item of input) {
+      const role = item.role === 'assistant' ? 'model' : 'user';
+      // Truncated chat history may start with an assistant turn or contain unanswered consecutive user turns.
+      if (!contents.length && role === 'model') continue;
+      const previous = contents.at(-1);
+      if (previous?.role === role) previous.parts.push({ text: item.content });
+      else contents.push({ role, parts: [{ text: item.content }] });
+    }
+    return {
+      systemInstruction: { parts: [{ text: instructions }] }, contents,
+      generationConfig: {
+        maxOutputTokens: 1024,
+        ...(config.model.startsWith('gemini-3') ? { thinkingConfig: {
+          thinkingLevel: config.model === 'gemini-3.5-flash-lite' ? 'minimal' : 'low', includeThoughts: false,
+        } } : {}),
+      },
+    };
+  }
+  return { model: config.model, instructions, input, max_output_tokens: 220, store: false };
+}
+
+function providerText(config, data) {
+  if (config.provider === 'deepseek') return text(data?.choices?.[0]?.message?.content, 1200).trim();
+  if (config.provider === 'gemini') {
+    const parts = data?.candidates?.[0]?.content?.parts;
+    // Never expose reasoning/thought parts to the player.
+    return Array.isArray(parts) ? text(parts.filter((p) => p?.thought !== true && typeof p?.text === 'string')
+      .map((p) => p.text).join('\n'), 1200).trim() : '';
+  }
+  return outputText(data).slice(0, 1200);
+}
+
+export function createCompanionHandler({ fetchImpl = fetch, env = companionEnv() } = {}) {
   return async function companionHandler(request, response) {
     const pathname = new URL(request.url ?? '/', 'http://localhost').pathname;
     if (pathname !== PATH) return false;
@@ -162,7 +232,8 @@ export function createCompanionHandler({ fetchImpl = fetch, env = process.env } 
       respond(response, 429, { error: 'Bạn gửi nhiều tin nhắn quá nhanh.' });
       return true;
     }
-    if (!env.OPENAI_API_KEY) {
+    const configs = providerConfigs(env);
+    if (!configs.length) {
       respond(response, 503, { error: 'AI chưa được cấu hình trên máy chủ.' });
       return true;
     }
@@ -190,32 +261,60 @@ export function createCompanionHandler({ fetchImpl = fetch, env = process.env } 
           ].join('\n'),
         },
       ];
-      const upstream = await fetchImpl('https://api.openai.com/v1/responses', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${env.OPENAI_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: env.OPENAI_MODEL || 'gpt-6-astra',
-          instructions: `Nhân vật: ${character.name}.\nTÍNH CÁCH VÀ VAI TRÒ: ${character.persona}\n\nQUY TẮC: ${RULES}`,
-          input,
-          max_output_tokens: 220,
-          store: false,
-        }),
-        signal: AbortSignal.timeout(45_000),
-      });
-      if (!upstream.ok) {
-        respond(response, 502, { error: 'AI đang bận hoặc máy chủ chưa được cấp quyền truy cập. Thử lại sau nhé.' });
-        return true;
+      const instructions = `Nhân vật: ${character.name}.\nTÍNH CÁCH VÀ VAI TRÒ: ${character.persona}\n\nQUY TẮC: ${RULES}`;
+      const deadline = Date.now() + 45_000;
+      let failure = { status: 502, error: 'Không kết nối được với AI. Thử lại sau nhé.' };
+      const disconnected = new AbortController();
+      const onClose = () => disconnected.abort();
+      response.once('close', onClose);
+      try {
+        for (const [index, config] of configs.entries()) {
+          if (response.destroyed || disconnected.signal.aborted) return true;
+          const remaining = deadline - Date.now();
+          if (remaining <= 0) break;
+          // Share the total timeout so a slow provider still leaves time for the other configured keys.
+          const timeout = Math.max(1, Math.floor(remaining / (configs.length - index)));
+          try {
+            const upstream = await fetchImpl(config.url, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                ...(config.provider === 'gemini' ? { 'x-goog-api-key': config.key } : { Authorization: `Bearer ${config.key}` }),
+              },
+              body: JSON.stringify(providerPayload(config, instructions, input)),
+              signal: AbortSignal.any([disconnected.signal, AbortSignal.timeout(timeout)]),
+            });
+            if (!upstream.ok) {
+              failure = upstream.status === 429
+                ? { status: 429, error: 'AI đang nhận nhiều yêu cầu. Thử lại sau một chút nhé.' }
+                : [401, 402, 403].includes(upstream.status)
+                  ? { status: 503, error: 'Kết nối AI của máy chủ chưa sẵn sàng. Kiểm tra khóa API và số dư/quota tài khoản.' }
+                  : { status: 502, error: 'AI đang bận hoặc chưa truy cập được model đã cấu hình. Thử lại sau nhé.' };
+              await upstream.body?.cancel();
+              continue;
+            }
+            const data = await upstream.json();
+            const reply = providerText(config, data);
+            if (!reply) {
+              failure = { status: 502, error: 'Bạn ấy chưa nghĩ ra câu trả lời. Thử nhắn lại nhé.' };
+              // Respect content blocks instead of rerouting blocked content to another provider.
+              if (config.provider === 'gemini' && (data?.promptFeedback?.blockReason
+                || ['SAFETY', 'PROHIBITED_CONTENT', 'BLOCKLIST', 'RECITATION'].includes(data?.candidates?.[0]?.finishReason))) break;
+              if (config.provider === 'openai' && Array.isArray(data?.output)
+                && data.output.some((item) => item?.content?.some((part) => part?.type === 'refusal'))) break;
+              continue;
+            }
+            if (!response.destroyed) respond(response, 200, { reply });
+            return true;
+          } catch {
+            failure = { status: 502, error: 'Không kết nối được với AI. Thử lại sau nhé.' };
+          }
+        }
+      } finally {
+        response.off('close', onClose);
       }
-      const data = await upstream.json();
-      const reply = outputText(data).slice(0, 1_200);
-      if (!reply) {
-        respond(response, 502, { error: 'Bạn ấy chưa nghĩ ra câu trả lời. Thử nhắn lại nhé.' });
-        return true;
-      }
-      respond(response, 200, { reply });
+      if (!response.destroyed) respond(response, failure.status, { error: failure.error });
+
     } catch (error) {
       respond(response, error?.status ?? 502, {
         error: error?.status ? error.message : 'Không kết nối được với AI. Kiểm tra mạng rồi thử lại nhé.',

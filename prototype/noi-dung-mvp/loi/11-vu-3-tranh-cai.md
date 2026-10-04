@@ -5,13 +5,13 @@
 
 ## v3-mo.qua.1
 - [THẺ CHỮ] **narrator**: Chủ nhật, 20/10/2024 · Ngày Phụ nữ Việt Nam
-- **tung** (gai-dau): Mọi người ơi, cứu tớ. Hôm nay 20/10, tặng gì cho một bạn nữ bây giờ?
+- **tung** (gai-dau): Cả nhà ơi cứu nguy! Hôm nay 20/10 rồi, mua quà gì tặng bạn nữ bây giờ?
 - **ha-vy** (thinking): Bạn nào?
-- **tung** (gai-dau): Thì… Hoài. Bên Báo chí ấy.
+- **tung** (gai-dau): Thì… bạn Hoài bên Báo chí ấy.
 - **minh-anh** (happy): Bạn nộp thư hôm họp rà soát à. Thế em biết gì về bạn ấy rồi?
 - **tung** (thinking): Biết… bạn ấy nói bé lắm. Hôm họp ngồi chờ ngoài cửa mà tay vẫn ghi ghi chép chép gì đấy.
-- **duy** (serious): Hôm nay 20/10 thật à? Tớ chưa mua gì cho mẹ.
-- **minh-anh** (neutral): Đi luôn đi. Chiều là chợ hoa hết sạch.
+- **duy** (serious): Chết thật, 20/10 rồi á? Tớ còn chưa kịp đặt hoa gửi về cho mẹ.
+- **minh-anh** (neutral): Ra cổng mua gửi luôn đi em. Chiều là ngoài sạp người ta tranh nhau sạch đấy.
 - **player**: (Tùng nhờ chọn quà. Hoài là người thế nào nhỉ?)
 
 ## v3-mo.qua.hong
@@ -32,9 +32,9 @@
 - **player**: Một cuốn sổ tay nhỏ với cây bút. Học Báo chí, đi đâu cũng phải ghi.
 - **tung** (surprised): Ừ ha! Bạn ấy ghi chép suốt mà.
 - [DÀN DỰNG] Tối hôm ấy, sân ký túc xá.
-- **narrator**: Hoài lật cuốn sổ, thử bút ngay trang đầu, rồi bật cười: "Tớ ghi luôn chuyện đầu tiên nhé. Hôm nhập học có người dẫn tớ ra tận nhà xe."
+- **narrator**: Hoài lật cuốn sổ, thử bút ngay trang đầu, rồi bật cười: "Để tớ ghi luôn chuyện đầu tiên nhé. Hôm nhập học có một anh áo xanh nhiệt tình dẫn tớ đi lạc ra tận nhà xe."
 - **narrator**: Tùng đứng im mất mấy giây.
-- **tung** (gai-dau): …Hôm ấy tớ dẫn nhầm thật à?
+- **tung** (gai-dau): …Ơ kìa, hôm đấy cậu bảo muốn đi gửi xe cơ mà?!
 ## v3-mo.1
 - [THẺ CHỮ] **narrator**: Thứ Ba, 22/10/2024
 - **narrator**: Chiều hôm sau. Phiếu tin gốc vẫn ghim giữa bảng. Bốn người, bốn cách đọc.

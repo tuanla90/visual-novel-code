@@ -7,8 +7,8 @@
 - [THẺ CHỮ] **narrator**: Thứ Năm, 26/09/2024
 - **tung** (happy): Sáng nay tớ có tiết Triết, nhờ thằng cùng lớp điểm danh hộ rồi.
 - **ha-vy** (neutral): Điểm danh hộ là sửa dữ liệu đầu vào đấy.
-- **tung** (gai-dau): Cậu nói thế tớ thấy mình như tội phạm.
-- **minh-anh** (khoanh-tay): Chị coi như chưa nghe thấy. Lần sau đi học đi em.
+- **tung** (gai-dau): Trời đất, cậu nói nghe nghiêm trọng như tớ vừa phạm pháp không bằng.
+- **minh-anh** (khoanh-tay): Chị coi như chưa nghe thấy nhé. Lần sau lo mà đi học đầy đủ đấy.
 - **minh-anh** (neutral): Chị báo cô Lan rồi. Cầm kết quả hôm qua sang, đó là căn cứ xin phiếu.
 
 ## n3-ctsv.1

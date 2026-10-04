@@ -46,6 +46,7 @@ import { KiemPhieu } from './KiemPhieu';
 import { NHIP, ngu } from './nhip';
 import { CANH_TRA, type CanhTra, type NguonPhieuV7 } from './canh-tra';
 import { KhungNguonBangV7 } from './KhungNguonBangV7';
+import { KhungCotVaXepV7 } from './KhungCotVaXepV7';
 import { XemTruocBangModal } from './XemTruocBangModal';
 import './v7.css';
 
@@ -374,8 +375,8 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     const phai = i >= nua;
     const k = phai ? i - nua : i;
     return {
-      left: phai ? cauHinh.kinh.x + cauHinh.kinh.w - 18 : cauHinh.kinh.x - 90,
-      top: cauHinh.kinh.y + 22 + k * buocGiay,
+      left: phai ? cauHinh.kinh.x + cauHinh.kinh.w - 18 : cauHinh.kinh.x - 122,
+      top: cauHinh.kinh.y + 60 + k * buocGiay,
       ['--r' as string]: `${((i * 37) % 9) - 4}deg`,
       ['--img' as string]: `url("${anhTheoTen(`giay-nho-${String((i % 10) + 1).padStart(2, '0')}`) ?? ''}")`,
     };
@@ -473,9 +474,6 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                 return { ...c, noiBang: { bang: b, cot: khoaNoi } };
               })
             }
-            chonCot={chonCot}
-            cotLay={cotLay}
-            onDoiCot={doiCot}
             onMoXemTruoc={() => setXemTruocMo(true)}
           />
         ) : null}
@@ -617,44 +615,27 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
           </ol>
         </div>
 
-        <div className="v7-cot v7-cot--phu">
-          <span className="v7-cot__nhan">3. SẮP XẾP</span>
-          {khoi.sapXep ? (
-            <div className="v7-dk v7-xep" aria-label="Xếp kết quả">
-              <span className="v7-o v7-o--dau" aria-hidden="true">
-                XẾP THEO
-              </span>
-              <button
-                type="button"
-                className={`v7-o v7-o--cot${cau.xep ? '' : ' is-trong'}`}
-                disabled={khoa}
-                aria-label={`Xếp theo: ${cau.xep ? cau.xep.cot : 'chưa xếp'} — bấm để đổi`}
-                onClick={() =>
-                  doiCau((c) => {
-                    const k = c.xep ? cot.indexOf(c.xep.cot) + 1 : 0;
-                    const ke = cot[k];
-                    return { ...c, xep: ke === undefined ? null : { cot: ke, giam: c.xep?.giam ?? false } };
-                  })
-                }
-              >
-                {cau.xep ? cau.xep.cot : 'chưa xếp'}
-              </button>
-              {cau.xep ? (
-                <button
-                  type="button"
-                  className="v7-o v7-o--phep"
-                  disabled={khoa}
-                  aria-label={`Chiều xếp: ${cau.xep.giam ? 'giảm dần' : 'tăng dần'} — bấm để đổi`}
-                  onClick={() => doiCau((c) => (c.xep ? { ...c, xep: { ...c.xep, giam: !c.xep.giam } } : c))}
-                >
-                  {cau.xep.giam ? '↓ giảm dần' : '↑ tăng dần'}
-                </button>
-              ) : null}
-            </div>
-          ) : (
-            <div className="v7-cot__mac-dinh">Theo thứ tự bảng</div>
-          )}
-        </div>
+        <KhungCotVaXepV7
+          chonCot={chonCot}
+          bang={bang}
+          cotLay={cotLay}
+          onDoiCot={doiCot}
+          khoa={khoa}
+          onChonTatCaCot={() => {
+            if (!bang) return;
+            const tatCa = bang.cot.map((c) => c.ten);
+            const daChonHet = tatCa.every((t) => cotLay.includes(t));
+            if (daChonHet) {
+              doiCau((c) => ({ ...c, cot: [] }));
+            } else {
+              doiCau((c) => ({ ...c, cot: tatCa }));
+            }
+          }}
+          khoiSapXep={khoi.sapXep}
+          cauXep={cau.xep ?? null}
+          cot={cot}
+          onDoiXep={(updater) => doiCau((c) => ({ ...c, xep: updater(c.xep ?? null) }))}
+        />
       </div>
 
       <div className={`v7-vung${cham && cham.trangThai !== 'loi' ? ' co-ket-qua' : ''}`} aria-live="polite" aria-label="Kết quả">

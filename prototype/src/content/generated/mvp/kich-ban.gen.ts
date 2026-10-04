@@ -1395,7 +1395,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh",
-          "text": "Lại dân kinh tế. Cả phòng không ai học Toán, sau này tớ mượn vở ai đây."
+          "text": "Lại dân kinh tế à? Thế là phòng mình chẳng mống nào học Toán rồi, sau này biết bấu víu ai đây."
         },
         {
           "type": "line",
@@ -1406,7 +1406,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh-gai-dau",
-          "text": "Xác suất thống kê, kỳ hai. Nghe tên đã thấy trượt. Thôi, đưa tớ một đầu vali."
+          "text": "Kỳ hai dính môn Xác suất Thống kê mới cay chứ. Chưa học đã thấy điềm trượt rồi. Thôi, xách vali lên phòng đã!"
         },
         {
           "type": "goto",
@@ -1732,14 +1732,14 @@ const GOC = {
         {
           "type": "line",
           "speaker": "minh-anh",
-          "expression": "worried",
-          "text": "Em ra đây để đùa thì bàn bên kia vui hơn đấy."
+          "expression": "happy",
+          "text": "Tấu hài giỏi đấy em. Muốn diễn hài thì sang bàn CLB Kịch Nghệ bên kia, còn muốn giải mã thật thì điền phiếu này."
         },
         {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Muốn vào thì điền phiếu này. Nhớ ghi mã sinh viên."
+          "text": "Ghi rõ ngành với mã sinh viên vào nhé."
         },
         {
           "type": "line",
@@ -2187,7 +2187,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Cậu liếc một cái đã thấy à? Tớ đứng cạnh cả tuần chẳng để ý."
+          "text": "Đúng là dân Toán, mắt tinh như cú vọ. Tớ nhìn lướt qua chẳng thấy gì."
         },
         {
           "type": "image",
@@ -2213,25 +2213,25 @@ const GOC = {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Nhìn chỗ người lớn không để ý ấy."
+          "text": "Ai cũng nhìn quanh bàn thôi. Thử để ý dưới đất xem."
         },
         {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "worried",
-          "text": "Khoan, đĩa bánh vừa đủ năm người mà hụt mất một chiếc. Ai cầm nhỉ?"
+          "text": "Ủa, đĩa bánh ban nãy chị nhớ có năm cái cơ mà? Thiếu mất một cái rồi này."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Tớ mới chia trà thôi nhé."
+          "text": "Ơ tớ thề tớ mới rót trà chứ chưa kịp đụng vào bánh đâu nhé!"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Đừng đoán vội. Nhìn chỗ người lớn không để ý ấy."
+          "text": "Đừng đoán vội. Cứ tìm xung quanh xem có rơi rớt đâu không."
         },
         {
           "type": "explore",
@@ -2432,18 +2432,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Hay người ở gian Robotics? Gian đấy sát sạt sân mình."
-        },
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Một bạn bên Robotics khựng tay lại khi đang mắc đèn ông sao. Vài khách cũng ngoái nhìn."
+          "text": "Hay có bạn nào bên gian Robotics sang lấy? Gian đấy ngay sát bàn mình."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Cậu ấy đang bận bán đèn. Mình thấy cậu ấy sang bàn bánh lúc nào?"
+          "text": "Bên họ đang đông khách, ai cũng bận tay bận chân. Đừng đoán mò khi chưa có chứng cứ."
         },
         {
           "type": "goto",
@@ -2477,19 +2472,19 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "happy",
-          "text": "Con cứ ăn đi. Chị lại tưởng bánh tự mọc chân."
+          "text": "Bé cứ cầm ăn đi nhé. Nãy giờ bọn chị cứ thắc mắc mãi."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "May quá, tớ hết bị nghi rồi. Cậu nợ tớ một miếng đấy nhé."
+          "text": "Phù, may quá giải oan cho tớ rồi nhé! Tí chia bánh tớ phải được miếng to nhất."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "smile",
-          "text": "Giỏi. Đôi dép với vụn bánh đã trả lời hộ rồi."
+          "text": "Quan sát tốt đấy. Lần theo vệt vụn bánh với đôi dép là ra ngay."
         },
         {
           "type": "line",
@@ -2845,7 +2840,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Đôi dép nhựa nhỏ xíu cạnh chiếc đèn. Chẳng ai trong CLB đi vừa.)"
+          "text": "(Đôi dép nhựa trẻ con màu vàng để cạnh chiếc đèn. Quanh đây có trẻ nhỏ chạy chơi à?)"
         }
       ]
     },
@@ -2859,7 +2854,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Đầu lân nằm chờ biểu diễn mà mắt cứ nhìn vào đĩa bánh. Tớ hiểu nó."
+          "text": "Đầu lân quẳng chỏng chơ giữa sân khấu, chắc đội múa lân lại kéo nhau đi mua nước rồi."
         }
       ]
     },
@@ -2873,7 +2868,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "smile",
-          "text": "Robotics đang bán đèn ông sao gắn LED kìa. Sao năm cánh mà nhấp nháy tám màu."
+          "text": "Gian Robotics đông khách phết. Mấy cái đèn ông sao họ tự hàn mạch LED nhấp nháy bán chạy ghê."
         }
       ]
     },
@@ -2900,7 +2895,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "happy",
-          "text": "Áp phích Trung thu dán lệch thế kia. Trăng tròn mà như sắp lăn khỏi bảng."
+          "text": "Áp phích Trung thu dán chèn cả lên bảng tin trường. Dán vội thế này khéo mai lại bong ra."
         }
       ]
     },
@@ -2914,7 +2909,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Người lớn mải nhìn sân khấu. Dưới chân họ cũng có chuyện đấy."
+          "text": "Đám đông mải nhìn lên sân khấu. Cậu thử cúi xuống tìm dấu vết xem."
         }
       ]
     },
@@ -4022,13 +4017,13 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "gai-dau",
-          "text": "Cậu nói thế tớ thấy mình như tội phạm."
+          "text": "Trời đất, cậu nói nghe nghiêm trọng như tớ vừa phạm pháp không bằng."
         },
         {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "khoanh-tay",
-          "text": "Chị coi như chưa nghe thấy. Lần sau đi học đi em."
+          "text": "Chị coi như chưa nghe thấy nhé. Lần sau lo mà đi học đầy đủ đấy."
         },
         {
           "type": "line",
@@ -5604,24 +5599,24 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "serious",
-          "text": "Đừng cuống. Dữ liệu là sân nhà của tụi mình mà."
+          "text": "Bình tĩnh nào. Đừng để con số gần sáu trăm dòng dọa mình, cứ rà đúng mệnh đề WHERE."
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
-          "text": "Chuẩn! Cả tuần thức trắng cày SQL rồi. Lên bục vạch lỗi câu lệnh luôn bạn ơi!"
+          "expression": "worried",
+          "text": "Câu OR gom cả trường vào thế kia thì sai rõ rồi. Cậu lên chỉ ra cho thầy xem đi!"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Tụi mình tin cậu. Lên bẻ gãy câu HOẶC đó đi."
+          "text": "Chỉ cần phân tích điều kiện kép là sáng tỏ. Mình đã chuẩn bị kỹ rồi, cố lên."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Cứ để tớ. Năm trăm dòng thừa thãi này… sẽ biến mất ngay bây giờ!"
+          "text": "Mọi người yên tâm. Cứ nói có sách, mách có chứng theo dữ liệu là được."
         },
         {
           "type": "reminder",
@@ -5631,7 +5626,7 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Nhân vật chính tự tin sải bước tiến thẳng về phía máy chiếu đối đầu Quân."
+          "text": "Nhân vật chính xin phép thầy Quang, bước lên cạnh máy chiếu để chỉ ra lỗi logic trong câu lệnh."
         },
         {
           "type": "image",
@@ -6315,42 +6310,42 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Bên kia đường, Hoài ôm cặp đi ngang qua cổng. Tùng đứng bật dậy, suýt đổ cốc."
+          "text": "Thấy bóng Hoài ôm cặp đi qua bên kia đường, Tùng hấp tấp nhổm dậy va vào bàn suýt đổ cốc nước."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Hoài ơi! Tớ… hôm trước tớ…"
+          "text": "Ơ Hoài ơi! Đợi tớ... chuyện hôm trước tớ..."
         },
         {
           "type": "line",
           "speaker": "hoai",
           "expression": "nervous",
-          "text": "Tớ chào các cậu. Tớ phải về kẻo muộn."
+          "text": "Ơ... tớ chào các cậu nhé, xe buýt sắp tới rồi tớ phải chạy đây!"
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hoài gật đầu một cái rồi đi nhanh hơn."
+          "text": "Hoài giật mình quay lại rồi đi nhanh hơn về phía bến xe."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "smile",
-          "text": "Cậu vừa xin lỗi hay vừa dọa bạn ấy thế?"
+          "text": "Cậu định xin lỗi người ta hay tính bắc loa dọa bạn ấy đấy?"
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "gai-dau",
-          "text": "Tớ còn chưa nói xong chữ \"xin\"."
+          "text": "Oan cho tớ, tớ còn chưa kịp nói xong chữ \"xin\" mà..."
         },
         {
           "type": "line",
           "speaker": "ba-lua",
           "expression": "smile",
-          "text": "Xin lỗi thì đừng gọi giật qua đường. Mai kia mời con bé cốc trà."
+          "text": "Con trai con lứa xin lỗi con gái mà gọi với qua đường như đòi nợ! Mai mời con bé cốc trà mà tạ lỗi."
         },
         {
           "type": "line",
@@ -7868,7 +7863,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "gai-dau",
-          "text": "Mọi người ơi, cứu tớ. Hôm nay 20/10, tặng gì cho một bạn nữ bây giờ?"
+          "text": "Cả nhà ơi cứu nguy! Hôm nay 20/10 rồi, mua quà gì tặng bạn nữ bây giờ?"
         },
         {
           "type": "line",
@@ -7880,7 +7875,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "gai-dau",
-          "text": "Thì… Hoài. Bên Báo chí ấy."
+          "text": "Thì… bạn Hoài bên Báo chí ấy."
         },
         {
           "type": "line",
@@ -7898,13 +7893,13 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "serious",
-          "text": "Hôm nay 20/10 thật à? Tớ chưa mua gì cho mẹ."
+          "text": "Chết thật, 20/10 rồi á? Tớ còn chưa kịp đặt hoa gửi về cho mẹ."
         },
         {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Đi luôn đi. Chiều là chợ hoa hết sạch."
+          "text": "Ra cổng mua gửi luôn đi em. Chiều là ngoài sạp người ta tranh nhau sạch đấy."
         },
         {
           "type": "line",
@@ -8076,7 +8071,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hoài lật cuốn sổ, thử bút ngay trang đầu, rồi bật cười: \"Tớ ghi luôn chuyện đầu tiên nhé. Hôm nhập học có người dẫn tớ ra tận nhà xe.\""
+          "text": "Hoài lật cuốn sổ, thử bút ngay trang đầu, rồi bật cười: \"Để tớ ghi luôn chuyện đầu tiên nhé. Hôm nhập học có một anh áo xanh nhiệt tình dẫn tớ đi lạc ra tận nhà xe.\""
         },
         {
           "type": "line",
@@ -8087,7 +8082,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "gai-dau",
-          "text": "…Hôm ấy tớ dẫn nhầm thật à?"
+          "text": "…Ơ kìa, hôm đấy cậu bảo muốn đi gửi xe cơ mà?!"
         },
         {
           "type": "set-date",
@@ -10407,31 +10402,31 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "happy",
-          "text": "Thứ Tư tuần sau là 20/11. CLB mình tặng gì thầy cô đây?"
+          "text": "Tuần sau 20/11 rồi. CLB mình tri ân thầy cô thế nào đây?"
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Thầy Quang! Thầy toàn hỏi \"căn cứ vào đâu\". Tặng thầy cuốn sổ ghi căn cứ."
+          "text": "Thầy Quang trước đi chị! Thầy toàn hỏi \"căn cứ vào đâu\". Tặng thầy cuốn sổ ghi chữ Căn Cứ."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "smile",
-          "text": "Rồi thầy hỏi căn cứ vào đâu mà tặng sổ."
+          "text": "Để rồi thầy hỏi: \"Căn cứ vào đâu các em nghĩ thầy cần sổ?\" à."
         },
         {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Hoa là chắc ăn. Tớ đặt cúc họa mi, mùa này đẹp."
+          "text": "Cứ hoa tươi là trang trọng nhất. Tớ đặt cúc họa mi đầu mùa nhé."
         },
         {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Nhớ cả cô Hạnh nữa. Năm nay là năm cuối cô còn đi làm."
+          "text": "Nhớ cả phần cô Hạnh nữa. Năm nay là năm cuối cô còn đi làm trước khi nghỉ hưu."
         },
         {
           "type": "line",

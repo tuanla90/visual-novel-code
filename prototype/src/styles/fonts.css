@@ -2,6 +2,10 @@
    1. Noto Sans: Nội dung chính & toàn bộ giao diện (400, 500, 600, 700)
    2. Roboto Mono: Code SQL, bảng dữ liệu & terminal (400, 600)
    3. Playwrite India (Playwrite IN): Chữ viết tay, chữ ký & giấy nhớ (400)
+      Lưu ý: Không dùng @import '@fontsource/playwrite-in/400.css' vì CSS mặc định của fontsource
+      bị giới hạn unicode-range khiến các ký tự tiếng Việt mở rộng (như 'ụ' trong chữ "tục", 'ế', 'ơ', 'ư')
+      bị trình duyệt fallback sang font sans-serif. File font .woff2/.woff thực tế chứa đầy đủ 100%
+      ký tự tiếng Việt, nên khai báo trực tiếp để tận dụng toàn bộ glyphs.
 */
 @import '@fontsource/noto-sans/400.css';
 @import '@fontsource/noto-sans/500.css';
@@ -9,4 +13,12 @@
 @import '@fontsource/noto-sans/700.css';
 @import '@fontsource/roboto-mono/400.css';
 @import '@fontsource/roboto-mono/600.css';
-@import '@fontsource/playwrite-in/400.css';
+
+@font-face {
+  font-family: 'Playwrite IN';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('@fontsource/playwrite-in/files/playwrite-in-latin-400-normal.woff2') format('woff2'),
+       url('@fontsource/playwrite-in/files/playwrite-in-latin-400-normal.woff') format('woff');
+}

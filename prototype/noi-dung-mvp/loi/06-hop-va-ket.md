@@ -18,12 +18,12 @@
 
 ## hop-00.3
 - **tung** (surprised): Ơ… năm trăm chín mươi lăm dòng thật! Dài thế này thì tra đến bao giờ?
-- **minh-anh** (serious): Đừng cuống. Dữ liệu là sân nhà của tụi mình mà.
-- **tung** (happy): Chuẩn! Cả tuần thức trắng cày SQL rồi. Lên bục vạch lỗi câu lệnh luôn bạn ơi!
-- **ha-vy** (neutral): Tụi mình tin cậu. Lên bẻ gãy câu HOẶC đó đi.
-- **player**: Cứ để tớ. Năm trăm dòng thừa thãi này… sẽ biến mất ngay bây giờ!
+- **minh-anh** (serious): Bình tĩnh nào. Đừng để con số gần sáu trăm dòng dọa mình, cứ rà đúng mệnh đề WHERE.
+- **tung** (worried): Câu OR gom cả trường vào thế kia thì sai rõ rồi. Cậu lên chỉ ra cho thầy xem đi!
+- **ha-vy** (neutral): Chỉ cần phân tích điều kiện kép là sáng tỏ. Mình đã chuẩn bị kỹ rồi, cố lên.
+- **player**: Mọi người yên tâm. Cứ nói có sách, mách có chứng theo dữ liệu là được.
 > NHẮC VIỆC ha-vy (day-kinh): Gần sáu trăm dòng… câu của anh Quân lấy rộng ở chỗ nào?
-- [DÀN DỰNG] Nhân vật chính tự tin sải bước tiến thẳng về phía máy chiếu đối đầu Quân.
+- [DÀN DỰNG] Nhân vật chính xin phép thầy Quang, bước lên cạnh máy chiếu để chỉ ra lỗi logic trong câu lệnh.
 
 ## hop-00.4
 - **ha-vy** (neutral): Anh đang gộp chung người tên H và người học lớp BC24A. Bọn em chỉ tìm người vừa tên H, vừa học BC24A.
@@ -103,13 +103,13 @@
 - **tung** (surprised): Cái tủ ấy! "Căn phòng này giữ nhiều hơn em nghĩ."
 - **ha-vy** (thinking): Một người kể, chưa có giấy tờ gì. Cứ ghi lại đã, ghi rõ là lời kể.
 - **player**: Tớ ghi vào sổ. Nguồn: bà bán trà đá ngoài cổng.
-- [DÀN DỰNG] Bên kia đường, {{nv.hoai}} ôm cặp đi ngang qua cổng. {{nv.tung}} đứng bật dậy, suýt đổ cốc.
-- **tung** (worried): Hoài ơi! Tớ… hôm trước tớ…
-- **hoai** (nervous): Tớ chào các cậu. Tớ phải về kẻo muộn.
-- **narrator**: Hoài gật đầu một cái rồi đi nhanh hơn.
-- **ha-vy** (smile): Cậu vừa xin lỗi hay vừa dọa bạn ấy thế?
-- **tung** (gai-dau): Tớ còn chưa nói xong chữ "xin".
-- **ba-lua** (smile): Xin lỗi thì đừng gọi giật qua đường. Mai kia mời con bé cốc trà.
+- [DÀN DỰNG] Thấy bóng {{nv.hoai}} ôm cặp đi qua bên kia đường, {{nv.tung}} hấp tấp nhổm dậy va vào bàn suýt đổ cốc nước.
+- **tung** (worried): Ơ Hoài ơi! Đợi tớ... chuyện hôm trước tớ...
+- **hoai** (nervous): Ơ... tớ chào các cậu nhé, xe buýt sắp tới rồi tớ phải chạy đây!
+- **narrator**: Hoài giật mình quay lại rồi đi nhanh hơn về phía bến xe.
+- **ha-vy** (smile): Cậu định xin lỗi người ta hay tính bắc loa dọa bạn ấy đấy?
+- **tung** (gai-dau): Oan cho tớ, tớ còn chưa kịp nói xong chữ "xin" mà...
+- **ba-lua** (smile): Con trai con lứa xin lỗi con gái mà gọi với qua đường như đòi nợ! Mai mời con bé cốc trà mà tạ lỗi.
 - [THẺ CHỮ] **narrator**: SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.
 
 ## ket-thuong.1

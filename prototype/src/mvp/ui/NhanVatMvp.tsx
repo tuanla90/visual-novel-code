@@ -9,6 +9,7 @@ import { HighlightText } from '../../shared/highlight/HighlightText';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { anhChanDung, anhNen } from './anh-mvp';
 import { mauNhanVat } from './mau-nhan-vat';
+import { soundEngine } from '../../shared/audio/sound-engine';
 
 /** Nhãn biểu cảm trên nút chọn (như prototype). */
 const NHAN_BIEU_CAM: Record<string, string> = {
@@ -81,8 +82,16 @@ export function NhanVatMvp({ kb, daGap }: { kb: KichBanMvp; daGap: readonly stri
   const gt = nv.gioiThieu;
   const bc = bieuCam && nv.bieuCam.includes(bieuCam) ? bieuCam : (nv.bieuCam[0] ?? 'neutral');
   const anh = anhChanDung(nv.id, bc);
-  // Nhân vật chỉ có một ảnh (mọi biểu cảm mượn ảnh neo) → không hiện hàng biểu cảm giống hệt nhau.
+  // Nhân vật chỉ có một ảnh (mọi biểu cảm mượn ảnh neo) → không cần tương tác đổi biểu cảm.
   const nhieuAnh = new Set(nv.bieuCam.map((b) => anhChanDung(nv.id, b))).size > 1;
+
+  const doiBieuCamTiep = () => {
+    if (!nv || nv.bieuCam.length <= 1) return;
+    const idx = nv.bieuCam.indexOf(bc);
+    const tiep = (idx + 1) % nv.bieuCam.length;
+    setBieuCam(nv.bieuCam[tiep] ?? null);
+    soundEngine.playSfx('click');
+  };
 
   return (
     <div className="chara-profile mvp-nhanvat" data-character={nv.id}>
@@ -110,53 +119,52 @@ export function NhanVatMvp({ kb, daGap }: { kb: KichBanMvp; daGap: readonly stri
         <div className="chara-profile__showcase">
           <div className="chara-profile__polaroid-stack">
             <div className="chara-profile__polaroid-underlay" aria-hidden="true" />
-            <div className="chara-profile__polaroid">
-              <div className="chara-profile__tape" aria-hidden="true" />
+            <div
+              className={`chara-profile__polaroid anim-card-enter${nhieuAnh ? ' is-interactive' : ''}`}
+              key={nv.id}
+              onClick={nhieuAnh ? doiBieuCamTiep : undefined}
+              onKeyDown={(e) => {
+                if (nhieuAnh && (e.key === 'Enter' || e.key === ' ')) {
+                  e.preventDefault();
+                  doiBieuCamTiep();
+                }
+              }}
+              tabIndex={nhieuAnh ? 0 : undefined}
+              role={nhieuAnh ? 'button' : undefined}
+              aria-label={nhieuAnh ? `Nhân vật ${nv.ten}, biểu cảm: ${NHAN_BIEU_CAM[bc] ?? bc}. Nhấn vào ảnh để đổi biểu cảm` : undefined}
+              title={nhieuAnh ? `Nhấn vào ảnh để đổi biểu cảm (${nv.bieuCam.indexOf(bc) + 1}/${nv.bieuCam.length})` : undefined}
+            >
               <div
                 className="chara-profile__art-wrap"
                 style={nen ? { backgroundImage: `url(${nen})`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined}
               >
-                <div className="chara-profile__portrait-large mvp-nhanvat__anh">{anh ? <img src={anh} alt={`${nv.ten}, ${NHAN_BIEU_CAM[bc] ?? bc}`} draggable={false} /> : null}</div>
+                <div className="chara-profile__portrait-large mvp-nhanvat__anh">
+                  {anh ? (
+                    <img
+                      key={`${nv.id}-${bc}`}
+                      className="anim-expr-change"
+                      src={anh}
+                      alt={`${nv.ten}, ${NHAN_BIEU_CAM[bc] ?? bc}`}
+                      draggable={false}
+                    />
+                  ) : null}
+                </div>
               </div>
               <div className="chara-profile__signature" aria-hidden="true">
                 <span className="chara-profile__signature-text">{nv.ten}</span>
               </div>
+              {nhieuAnh ? (
+                <div className="chara-profile__expr-badge" aria-hidden="true">
+                  <span className="chara-profile__expr-badge-icon">🎭</span>
+                  <span className="chara-profile__expr-badge-name">{NHAN_BIEU_CAM[bc] ?? bc}</span>
+                  <span className="chara-profile__expr-badge-count">({nv.bieuCam.indexOf(bc) + 1}/{nv.bieuCam.length})</span>
+                </div>
+              ) : null}
             </div>
           </div>
-
-          {nhieuAnh ? (
-            <div className="chara-profile__expressions">
-              <div className="chara-profile__expr-label">
-                <span>BIỂU CẢM:</span>
-              </div>
-              <div className="chara-profile__expr-list">
-                {nv.bieuCam.map((b) => {
-                  const url = anhChanDung(nv.id, b);
-                  const la = b === bc;
-                  const tenBieuCam = NHAN_BIEU_CAM[b] ?? b.replace(/-/g, ' ');
-                  return (
-                    <button
-                      key={b}
-                      type="button"
-                      className={`chara-profile__expr-btn${la ? ' is-active' : ''}`}
-                      aria-pressed={la}
-                      aria-label={`Biểu cảm: ${tenBieuCam}`}
-                      title={`Biểu cảm: ${tenBieuCam}`}
-                      onClick={() => setBieuCam(b)}
-                    >
-                      <span className="chara-profile__expr-preview mvp-nhanvat__nho" data-character={nv.id}>
-                        {url ? <img src={url} alt="" draggable={false} /> : null}
-                      </span>
-                      <span className="chara-profile__expr-name">{tenBieuCam}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          ) : null}
         </div>
 
-        <div className="chara-profile__info">
+        <div className="chara-profile__info anim-info-enter" key={nv.id}>
           <div className="chara-profile__name-row">
             <h3 className="chara-profile__name">
               <span>{nv.hoTen ?? nv.ten}</span>

@@ -318,11 +318,11 @@
   pointer-events: none;
   transition: filter 0.12s ease;
 }
-/* Viền trắng bám đường bao trong suốt của ảnh (drop-shadow theo alpha, chồng 4 hướng + quầng mềm). */
+/* Bỏ hiệu ứng viền trắng phát sáng drop-shadow làm biến dạng màu da và chi tiết nhân vật.
+   Phản hồi rê chuột giữ tự nhiên qua con trỏ và hiệu ứng nhấn lún (:active). */
 .mvp-diem:hover:not(:disabled) .mvp-diem__anh,
 .mvp-diem:focus-visible .mvp-diem__anh {
-  filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
-    drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+  filter: none;
 }
 .mvp-diem:focus-visible {
   outline: none;
@@ -360,29 +360,18 @@
   opacity: 0.7;
   filter: grayscale(0.6) brightness(0.85);
 }
-/* Cảnh [KHÁM PHÁ]: chỗ cần bấm có hiệu ứng lớn dần (growing) và viền trắng nhịp; bấm xong giữ nguyên không mờ. */
+/* Cảnh [KHÁM PHÁ]: hiện êm, giữ nguyên màu sắc gốc của nhân vật/vật thể, không phát sáng */
 .mvp-diem--khampha {
   animation: mvp-hien 0.5s ease-out both;
 }
 .mvp-diem--khampha.is-mo .mvp-diem__anh {
-  transform-origin: center center;
-  animation: mvp-diem-grow 2s ease-in-out infinite;
+  filter: none;
+  animation: none;
+  transform: none;
 }
 @keyframes mvp-hien {
   from {
     opacity: 0;
-  }
-}
-@keyframes mvp-diem-grow {
-  0%, 100% {
-    transform: scale(1);
-    filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
-      drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
-  }
-  50% {
-    transform: scale(1.08);
-    filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
-      drop-shadow(0 0 14px rgba(255, 255, 255, 0.95));
   }
 }
 @media (prefers-reduced-motion: reduce) {

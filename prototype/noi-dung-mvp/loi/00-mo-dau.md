@@ -88,9 +88,9 @@
 - **player**: {{nv.nguoi-choi.nganh}}.
 
 ## md-00-gap-tung.3
-- **tung** (ao-xanh): Lại dân kinh tế. Cả phòng không ai học Toán, sau này tớ mượn vở ai đây.
+- **tung** (ao-xanh): Lại dân kinh tế à? Thế là phòng mình chẳng mống nào học Toán rồi, sau này biết bấu víu ai đây.
 - **player**: Du lịch mà cũng cần vở Toán à?
-- **tung** (ao-xanh-gai-dau): Xác suất thống kê, kỳ hai. Nghe tên đã thấy trượt. Thôi, đưa tớ một đầu vali.
+- **tung** (ao-xanh-gai-dau): Kỳ hai dính môn Xác suất Thống kê mới cay chứ. Chưa học đã thấy điềm trượt rồi. Thôi, xách vali lên phòng đã!
 
 ## md-01-ktx.1
 > NHIỆM VỤ: Nhận phòng KTX
@@ -152,8 +152,8 @@
 - **tung** (neutral): CLB mình đang điều tra vụ nào không chị?
 - **minh-anh** (neutral): Không em ạ. Hồ sơ giờ tra trên hệ thống là ra hết. Mấy kiểu điều tra ngày xưa hết đất diễn rồi.
 - **tung** (happy): Thế giờ CLB chuyên điều tra… mật khẩu Wi-Fi ạ?
-- **minh-anh** (worried): Em ra đây để đùa thì bàn bên kia vui hơn đấy.
-- **minh-anh** (neutral): Muốn vào thì điền phiếu này. Nhớ ghi mã sinh viên.
+- **minh-anh** (happy): Tấu hài giỏi đấy em. Muốn diễn hài thì sang bàn CLB Kịch Nghệ bên kia, còn muốn giải mã thật thì điền phiếu này.
+- **minh-anh** (neutral): Ghi rõ ngành với mã sinh viên vào nhé.
 - **tung** (worried): Thẻ bọn em đang đeo là thẻ tạm, chưa in mã chị ạ.
 - **minh-anh** (neutral): Đoàn trường có gửi danh sách tân sinh viên khóa này, mã nằm trong đấy. Tra xong là chị xóa khỏi máy.
 - **narrator**: {{nv.tung}} cúi xuống gõ phím vài giây rồi điền một mạch.
@@ -222,14 +222,14 @@
 - **player**: Ơ, Tùng mách cậu à?
 - **ha-vy** (neutral): Tùng còn đang bận nhìn cái đĩa bánh.
 - **ha-vy** (neutral): Phiếu đăng ký cậu gấp trong túi áo, ô ngành học vẫn lộ ra một góc.
-- **tung** (happy): Cậu liếc một cái đã thấy à? Tớ đứng cạnh cả tuần chẳng để ý.
+- **tung** (happy): Đúng là dân Toán, mắt tinh như cú vọ. Tớ nhìn lướt qua chẳng thấy gì.
 
 ## md-10-mat-banh.1
 > NHIỆM VỤ: Tìm chiếc bánh nướng của CLB
-> NHẮC VIỆC ha-vy (neutral): Nhìn chỗ người lớn không để ý ấy.
-- **minh-anh** (worried): Khoan, đĩa bánh vừa đủ năm người mà hụt mất một chiếc. Ai cầm nhỉ?
-- **tung** (worried): Tớ mới chia trà thôi nhé.
-- **ha-vy** (neutral): Đừng đoán vội. Nhìn chỗ người lớn không để ý ấy.
+> NHẮC VIỆC ha-vy (neutral): Ai cũng nhìn quanh bàn thôi. Thử để ý dưới đất xem.
+- **minh-anh** (worried): Ủa, đĩa bánh ban nãy chị nhớ có năm cái cơ mà? Thiếu mất một cái rồi này.
+- **tung** (worried): Ơ tớ thề tớ mới rót trà chứ chưa kịp đụng vào bánh đâu nhé!
+- **ha-vy** (neutral): Đừng đoán vội. Cứ tìm xung quanh xem có rơi rớt đâu không.
 
 ## md-10-mat-banh.2
 - **ha-vy** (thinking): Có vài thứ hơi lạ. Cậu thử xâu chuỗi lại xem.
@@ -241,17 +241,16 @@
 - **ha-vy** (neutral): Căn cứ vào đâu? Đứng gần bàn chưa đủ đâu.
 
 ## md-10-doan-robotics.1
-- **player**: Hay người ở gian Robotics? Gian đấy sát sạt sân mình.
-- **narrator**: Một bạn bên Robotics khựng tay lại khi đang mắc đèn ông sao. Vài khách cũng ngoái nhìn.
-- **ha-vy** (neutral): Cậu ấy đang bận bán đèn. Mình thấy cậu ấy sang bàn bánh lúc nào?
+- **player**: Hay có bạn nào bên gian Robotics sang lấy? Gian đấy ngay sát bàn mình.
+- **ha-vy** (neutral): Bên họ đang đông khách, ai cũng bận tay bận chân. Đừng đoán mò khi chưa có chứng cứ.
 
 ## md-10-doan-dung.1
 - **player**: Đôi dép bé tí cạnh đèn cá chép, với vệt vụn bánh kéo từ bàn ra. Một đứa trẻ đã lấy bánh.
 - **narrator**: Đúng lúc ấy, một bé gái kéo chiếc đèn cá chép chạy từ sau sân khấu ra. Má dính vụn bánh, tay cầm nửa chiếc bánh nướng.
 - **chu-cuong** (smile): Na! Bố dặn muốn ăn thì xin các anh chị cơ mà.
-- **minh-anh** (happy): Con cứ ăn đi. Chị lại tưởng bánh tự mọc chân.
-- **tung** (happy): May quá, tớ hết bị nghi rồi. Cậu nợ tớ một miếng đấy nhé.
-- **ha-vy** (smile): Giỏi. Đôi dép với vụn bánh đã trả lời hộ rồi.
+- **minh-anh** (happy): Bé cứ cầm ăn đi nhé. Nãy giờ bọn chị cứ thắc mắc mãi.
+- **tung** (happy): Phù, may quá giải oan cho tớ rồi nhé! Tí chia bánh tớ phải được miếng to nhất.
+- **ha-vy** (smile): Quan sát tốt đấy. Lần theo vệt vụn bánh với đôi dép là ra ngay.
 - **minh-anh** (neutral): Thứ Hai tới, bốn giờ qua phòng CLB dọn tủ nhé. Buổi sinh hoạt thứ hai của mình.
 
 ## md-11-phong-clb.1
@@ -323,19 +322,19 @@
 - **player**: (Đèn cá chép đỏ nằm lệch trên sân. Dây kéo căng về phía sau sân khấu.)
 
 ## md-10-doi-dep.1
-- **player**: (Đôi dép nhựa nhỏ xíu cạnh chiếc đèn. Chẳng ai trong CLB đi vừa.)
+- **player**: (Đôi dép nhựa trẻ con màu vàng để cạnh chiếc đèn. Quanh đây có trẻ nhỏ chạy chơi à?)
 
 ## md-10-dau-lan.1
-- **tung** (happy): Đầu lân nằm chờ biểu diễn mà mắt cứ nhìn vào đĩa bánh. Tớ hiểu nó.
+- **tung** (happy): Đầu lân quẳng chỏng chơ giữa sân khấu, chắc đội múa lân lại kéo nhau đi mua nước rồi.
 
 ## md-10-gian-robotics.1
-- **duy** (smile): Robotics đang bán đèn ông sao gắn LED kìa. Sao năm cánh mà nhấp nháy tám màu.
+- **duy** (smile): Gian Robotics đông khách phết. Mấy cái đèn ông sao họ tự hàn mạch LED nhấp nháy bán chạy ghê.
 
 ## md-10-balo-banh-rang.1
 - **player**: (Balo đen đặt trên ghế nhựa. Quai có huy hiệu kim loại hình bánh răng, sứt một răng.)
 
 ## md-10-ap-phich.1
-- **minh-anh** (happy): Áp phích Trung thu dán lệch thế kia. Trăng tròn mà như sắp lăn khỏi bảng.
+- **minh-anh** (happy): Áp phích Trung thu dán chèn cả lên bảng tin trường. Dán vội thế này khéo mai lại bong ra.
 
 ## md-10-ha-vy-goi.1
-- **ha-vy** (neutral): Người lớn mải nhìn sân khấu. Dưới chân họ cũng có chuyện đấy.
+- **ha-vy** (neutral): Đám đông mải nhìn lên sân khấu. Cậu thử cúi xuống tìm dấu vết xem.

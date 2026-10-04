@@ -108,11 +108,11 @@
   cursor: not-allowed;
 }
 
-/* Thân thẻ hồ sơ 2 cột */
+/* Thân thẻ hồ sơ 2 cột - Tỉ lệ mới cân đối: Cột ảnh chiếm ~42%, cột thông tin ~58% */
 .chara-profile__body {
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
-  gap: 20px;
+  grid-template-columns: minmax(330px, 42%) minmax(0, 1fr);
+  gap: 24px;
   align-items: start;
   position: relative;
   z-index: 1;
@@ -125,7 +125,7 @@
   }
 }
 
-/* Cột trái: Khung ảnh Polaroid xếp chồng & Dải chọn biểu cảm */
+/* Cột trái: Khung ảnh Polaroid xếp chồng tương tác */
 .chara-profile__showcase {
   display: flex;
   flex-direction: column;
@@ -138,7 +138,7 @@
 .chara-profile__polaroid-stack {
   position: relative;
   width: 100%;
-  max-width: 280px;
+  max-width: 380px;
   display: flex;
   justify-content: center;
   perspective: 900px;
@@ -149,7 +149,7 @@
   position: absolute;
   inset: 0;
   background: #ffffff;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid rgba(191, 219, 254, 0.7);
   box-shadow: 0 6px 18px rgba(30, 58, 138, 0.08);
   transform: rotate(3.5deg) scale(0.98);
@@ -165,55 +165,129 @@
   z-index: 1;
   width: 100%;
   background: #ffffff;
-  padding: 8px 8px 30px 8px;
-  border-radius: 8px;
-  box-shadow: 0 10px 24px rgba(30, 58, 138, 0.12), 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 10px 10px 34px 10px;
+  border-radius: 10px;
+  box-shadow: 0 12px 28px rgba(30, 58, 138, 0.14), 0 2px 6px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(191, 219, 254, 0.8);
   transform: rotate(-2deg);
   transform-origin: center center;
   transform-style: preserve-3d;
   box-sizing: border-box;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  user-select: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
 }
 
-.chara-profile__polaroid:hover {
-  transform: rotate(-0.5deg) translateY(-5px) rotateY(3deg) scale(1.02);
-  box-shadow: 0 18px 36px rgba(30, 58, 138, 0.2), 0 4px 10px rgba(0, 0, 0, 0.08);
+.chara-profile__polaroid.is-interactive {
+  cursor: pointer;
+}
+
+.chara-profile__polaroid.is-interactive:hover {
+  transform: rotate(-0.5deg) translateY(-4px) scale(1.015);
+  box-shadow: 0 18px 36px rgba(30, 58, 138, 0.22), 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.chara-profile__polaroid.is-interactive:active {
+  transform: rotate(-0.5deg) translateY(-1px) scale(0.995);
+}
+
+.chara-profile__polaroid:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
 }
 
 .chara-profile__polaroid-stack:hover .chara-profile__polaroid-underlay {
   transform: rotate(5deg) scale(0.99) translate3d(4px, 2px, 0);
 }
 
-/* Băng dính Washi Tape nghiêng góc trên bên trái */
-.chara-profile__tape {
+/* Badge hiển thị biểu cảm nổi ở góc dưới ảnh */
+.chara-profile__expr-badge {
   position: absolute;
-  top: -8px;
-  left: -10px;
-  width: 64px;
-  height: 22px;
-  transform: rotate(-35deg);
-  background: rgba(147, 197, 253, 0.85);
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.4) 0,
-    rgba(255, 255, 255, 0.4) 4px,
-    transparent 4px,
-    transparent 8px
-  );
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-  z-index: 3;
+  bottom: 8px;
+  right: 12px;
+  background: rgba(30, 58, 138, 0.88);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  transition: all 0.2s ease;
   pointer-events: none;
-  border-left: 2px dashed rgba(255, 255, 255, 0.7);
-  border-right: 2px dashed rgba(255, 255, 255, 0.7);
+  z-index: 2;
 }
 
-/* Vùng chứa ảnh nhân vật đứng trên bối cảnh thật - Tối ưu chiều cao 250px chuẩn khung 580px */
+.chara-profile__polaroid.is-interactive:hover .chara-profile__expr-badge {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
+}
+
+.chara-profile__expr-badge-count {
+  font-size: 0.65rem;
+  opacity: 0.8;
+  font-weight: 600;
+}
+
+/* Animation khi đổi thẻ nhân vật */
+@keyframes charaPolaroidEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) rotate(4deg) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(-2deg) scale(1);
+  }
+}
+
+@keyframes charaInfoEnter {
+  0% {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation khi đổi biểu cảm (click vào ảnh) */
+@keyframes charaExprChange {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.965);
+  }
+  50% {
+    transform: scale(1.015);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.chara-profile__polaroid.anim-card-enter {
+  animation: charaPolaroidEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.chara-profile__info.anim-info-enter {
+  animation: charaInfoEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.mvp-nhanvat__anh img.anim-expr-change {
+  animation: charaExprChange 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Vùng chứa ảnh nhân vật đứng trên bối cảnh thật - Tỉ lệ lớn cao 330px chuẩn khung */
 .chara-profile__art-wrap {
   width: 100%;
-  height: 250px;
+  height: 330px;
   background-color: #dbeafe;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid rgba(147, 197, 253, 0.4);
   display: flex;
   align-items: center;

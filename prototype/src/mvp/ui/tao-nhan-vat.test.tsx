@@ -21,7 +21,7 @@ const kb = KICH_BAN_MVP as unknown as KichBanMvp;
 const cho = (ms: number) => act(() => new Promise<void>((r) => setTimeout(r, ms)));
 
 function toiCauHoi(s: TrangThaiMvp, truong: 'ten' | 'nganh'): TrangThaiMvp {
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 80; i++) {
     const kn = khungNhin(kb, s);
     // Người chơi thật đóng màn "Nhân vật mới" khi Tùng nói câu đầu; màn đó mở sẽ bắt phím của ô tên.
     const gt = canGioiThieu(kb, s, kn);

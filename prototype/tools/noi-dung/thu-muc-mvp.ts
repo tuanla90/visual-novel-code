@@ -43,7 +43,7 @@ export function gomTepMvp(goc: string, hienThi = 'noi-dung-mvp'): { tep: TepMvp[
   const loi: LoiNoiDung[] = [];
   const doanLoi: DoanLoi[] = [];
   // giong/ là luật giọng cho máy kiểm giọng (kiem-giong.ts) và người viết, không phải nội dung game.
-  const conLai = new Set(tatCaMd(goc).filter((p) => !/(^|\/)README\.md$/.test(p) && !p.startsWith('giong/')));
+  const conLai = new Set(tatCaMd(goc).filter((p) => !/(^|\/)(.*\.?)README\.md$/i.test(p) && !p.startsWith('giong/')));
   for (const p of [...conLai].filter((x) => x.startsWith('loi/')).sort()) {
     conLai.delete(p);
     const d = docTepLoi(`${hienThi}/${p}`, readFileSync(join(goc, p), 'utf8'));

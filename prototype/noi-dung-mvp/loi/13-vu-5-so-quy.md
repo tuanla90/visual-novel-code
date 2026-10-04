@@ -3,11 +3,11 @@
 <!-- Lời Vụ 5 "Sổ quỹ" — bản đầu, chờ phiên truyện rà. Kết mùa: Khánh (chủ tịch Hội sinh viên kiêm trưởng CLB Robotics) tự nhận, không bị bêu, không nêu việc riêng; thầy Quang xử lý đúng mực; Nam nhận CLB Robotics. Khánh và Nam chưa có ảnh: chỉ neutral. Không nói "Vương Khánh". -->
 
 ## v5-mo.qua
-- **minh-anh** (happy): Thứ Tư tuần sau là 20/11. CLB mình tặng gì thầy cô đây?
-- **tung** (happy): Thầy Quang! Thầy toàn hỏi "căn cứ vào đâu". Tặng thầy cuốn sổ ghi căn cứ.
-- **ha-vy** (smile): Rồi thầy hỏi căn cứ vào đâu mà tặng sổ.
-- **duy** (neutral): Hoa là chắc ăn. Tớ đặt cúc họa mi, mùa này đẹp.
-- **minh-anh** (neutral): Nhớ cả cô Hạnh nữa. Năm nay là năm cuối cô còn đi làm.
+- **minh-anh** (happy): Tuần sau 20/11 rồi. CLB mình tri ân thầy cô thế nào đây?
+- **tung** (happy): Thầy Quang trước đi chị! Thầy toàn hỏi "căn cứ vào đâu". Tặng thầy cuốn sổ ghi chữ Căn Cứ.
+- **ha-vy** (smile): Để rồi thầy hỏi: "Căn cứ vào đâu các em nghĩ thầy cần sổ?" à.
+- **duy** (neutral): Cứ hoa tươi là trang trọng nhất. Tớ đặt cúc họa mi đầu mùa nhé.
+- **minh-anh** (neutral): Nhớ cả phần cô Hạnh nữa. Năm nay là năm cuối cô còn đi làm trước khi nghỉ hưu.
 - **player**: (Quà tính sau. Trước 20/11 còn một việc đang chờ ở xưởng.)
 ## v5-mo.1
 - [THẺ CHỮ] **narrator**: Thứ Bảy, 16/11/2024

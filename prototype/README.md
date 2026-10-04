@@ -36,20 +36,36 @@ Nội dung game chạy trên máy người chơi; tính năng chat AI cần kế
 
 ### Chat AI với Tùng và Hà Vy
 
-Khung **Đi cùng** gửi câu hỏi tới OpenAI Responses API qua endpoint cùng máy chủ; khóa API không được đưa vào trình duyệt. Để chạy local bằng PowerShell:
+Khung **Đi cùng** gọi AI qua endpoint `/api/companion/chat` của máy chủ game. Backend hỗ trợ DeepSeek, Gemini và OpenAI; khóa API nằm ở máy chủ. Với `AI_PROVIDER=auto` (mặc định), có key dịch vụ nào thì dùng dịch vụ đó. Nếu có nhiều key, thứ tự là **DeepSeek → Gemini → OpenAI**. Khi lỗi mạng, timeout, sai key/model hoặc hết quota, backend thử dịch vụ kế tiếp đã có key; tổng thời gian tối đa 45 giây. Nếu AI chặn nội dung, backend trả thông báo thay vì chuyển dịch vụ.
 
-```powershell
-$env:OPENAI_API_KEY = "<API key của bạn>"
-npm run dev
+**Biến Railway:** trong Variables của service chạy game, thêm `AI_PROVIDER=auto` và ít nhất một key bên dưới. Model là tùy chọn:
+
+| Dịch vụ | Biến API key | Biến model | Model mặc định |
+| --- | --- | --- | --- |
+| DeepSeek | `DEEPSEEK_API_KEY` | `DEEPSEEK_MODEL` | `deepseek-flash` |
+| Gemini | `GEMINI_API_KEY` | `GEMINI_MODEL` | `gemini-3.5-flash-lite` |
+| OpenAI | `OPENAI_API_KEY` | `OPENAI_MODEL` | `gpt-6-astra` |
+
+Điền key dịch vụ bạn có; các key khác có thể để trống. Redeploy/restart service sau khi thêm hoặc đổi Variables. Lựa chọn provider/model chỉ lấy từ cấu hình máy chủ. Có thể đặt `AI_PROVIDER=deepseek`, `gemini` hoặc `openai` để dùng riêng dịch vụ đó.
+
+DeepSeek dùng [Chat Completions API](https://api-docs.deepseek.com/api/create-chat-completion/) với thinking tắt cho lời chat ngắn ([tài liệu thinking](https://api-docs.deepseek.com/guides/thinking_mode/)). Gemini dùng [Generate Content API](https://ai.google.dev/gemini-api/docs/generate-content/text-generation) với system instruction, lịch sử `user/model`, và model [Gemini 3.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite). Phần suy luận nội bộ không gửi cho người chơi.
+
+**Chạy local:** mở `prototype/.env.local` (nếu chưa có thì tạo từ `.env.example`) và điền ít nhất một key lấy từ [DeepSeek Platform](https://platform.deepseek.com/api_keys) hoặc [Google AI Studio](https://aistudio.google.com/apikey):
+
+```dotenv
+AI_PROVIDER=auto
+DEEPSEEK_API_KEY=
+GEMINI_API_KEY=
+OPENAI_API_KEY=
 ```
 
-Khi deploy, đặt `OPENAI_API_KEY` trong biến môi trường của máy chủ Railway. `OPENAI_MODEL` là tùy chọn; mặc định là `gpt-6-astra`. Không đặt khóa API vào mã nguồn, tệp giao diện hay biến `VITE_*`.
+Trong thư mục `prototype`, chạy `npm.cmd run dev` trên PowerShell. Dev, preview và `npm.cmd start` đều đọc `.env` rồi `.env.local` trong thư mục này; biến môi trường hệ thống được ưu tiên hơn các tệp. Khởi động lại máy chủ sau khi đổi key/model. `.env.local` được Git bỏ qua; `.env.example` chỉ chứa cấu hình mẫu không có key. Giữ key trong biến máy chủ, không dùng prefix `VITE_`.
 
 Chat gửi tin nhắn, hồ sơ tính cách và phần thoại/hồ sơ **riêng nhân vật đã chứng kiến** tới máy chủ AI. Tri thức và hội thoại của Tùng/Hà Vy nằm trong trạng thái ván: Lưu/Nạp và Lùi khôi phục đúng thời điểm; ván mới bắt đầu lại. Save cũ chưa có lịch sử chỉ ghi nhận từ cảnh hiện tại, không tự cấp toàn bộ hồ sơ cho nhân vật.
 
 Dữ liệu số lấy bằng `chaySql` trên chính SQLite chỉ đọc mà laptop đang dùng (`kb.duLieu`; hiện bộ dữ liệu game cố định, chưa sinh dataset riêng mỗi run). Mỗi lần chat chỉ chạy lại tối đa 4 truy vấn người chơi đã xem cùng nhân vật: kết quả laptop, lọc thử, màn chiếu và xem trước bảng. Gửi tên cột, tổng dòng thật và tối đa 6 dòng/8 cột, có cờ cắt mẫu; không gửi toàn bộ DB, SQL đáp án chuẩn chưa xem hay sự kiện tương lai. Khi nguồn không chạy được, AI nhận trạng thái chưa có dữ liệu. Phản hồi đang chờ bị bỏ khi đổi cảnh, Lùi hoặc Nạp save.
 
-Khóa API chỉ ở máy chủ; API dùng `store: false`. Nếu chưa cấu hình khóa, chat báo máy chủ chưa bật AI.
+Khóa API chỉ ở máy chủ. Backend chỉ trả lời văn bản cuối cùng, lọc phần suy luận nội bộ của DeepSeek/Gemini. Nhánh OpenAI dùng `store: false`. Nếu chưa cấu hình khóa, chat báo máy chủ chưa bật AI.
 
 ## 3. Trình duyệt hỗ trợ
 

@@ -18,9 +18,6 @@ export interface KhungNguonBangV7Props {
   cauNoiBang?: { bang: string; cot: string };
   cotChung: string[];
   onDoiNoiBang: (bang?: string, cot?: string) => void;
-  chonCot: readonly string[] | null;
-  cotLay: string[];
-  onDoiCot: (tenCot: string) => void;
   onMoXemTruoc: () => void;
 }
 
@@ -39,9 +36,6 @@ export function KhungNguonBangV7({
   cauNoiBang,
   cotChung,
   onDoiNoiBang,
-  chonCot,
-  cotLay,
-  onDoiCot,
   onMoXemTruoc,
 }: KhungNguonBangV7Props) {
   const coNhieuBangGoc = danhSachBangChon && danhSachBangChon.length > 1;
@@ -146,37 +140,17 @@ export function KhungNguonBangV7({
             title={coNoiBang ? 'Xem trước dữ liệu kèm các cột mới nối từ bảng khác' : 'Xem trước 6 dòng mẫu của bảng'}
             aria-label="Xem trước dữ liệu mẫu"
           >
-            <span className="v7-btn-preview__icon" aria-hidden="true">👁️</span>
+            <span className="v7-btn-preview__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </span>
             <span className="v7-btn-preview__text">
               {coNoiBang ? 'Xem trước bảng nối' : 'Khảo sát bảng'}
             </span>
             {coNoiBang && <span className="v7-btn-preview__dot" aria-hidden="true" />}
           </button>
-        </div>
-      ) : null}
-
-      {chonCot ? (
-        <div className="v7-lay" role="group" aria-label="Các cột lấy ra">
-          <span className="v7-o v7-o--dau" aria-hidden="true">
-            LẤY CỘT
-          </span>
-          {bang.cot.map((c) => {
-            const bat = cotLay.includes(c.ten);
-            return (
-              <button
-                key={c.ten}
-                type="button"
-                className={`v7-o v7-o--lay${bat ? ' is-bat' : ''}`}
-                disabled={khoa}
-                aria-pressed={bat}
-                aria-label={`Cột ${c.ten}: ${bat ? 'đang lấy — bấm để bỏ' : 'chưa lấy — bấm để lấy'}`}
-                onClick={() => onDoiCot(c.ten)}
-              >
-                <span aria-hidden="true">{bat ? '✓' : '+'}</span> {c.ten}
-              </button>
-            );
-          })}
-          {cotLay.length === 0 ? <small className="v7-lay__nhac">bấm cột muốn xem</small> : null}
         </div>
       ) : null}
     </div>
