@@ -53,10 +53,11 @@ Vụ 10 kéo qua Tết: hai ngày trước Tết (ngăn tủ mở, ông Công ô
 4. **Thứ gì gắn với ngày thì qua ngày là mất**: nơi tùy chọn trên bản đồ, người chỉ có mặt hôm ấy, chi tiết ẩn của hôm ấy. Manh mối bắt buộc thì không bao giờ mất. Hạn chót có nghĩa ở đây: tới buổi chốt, người chơi cầm gì trình nấy.
 5. **Tới hạn chót thì buổi chốt diễn ra.** Đủ căn cứ là kết đủ; thiếu là kết chưa trọn (không có kết xấu, giữ quyết định chương 1). Phần thưởng kết thật (lời nhắn chị Linh) thường nằm ở thứ tùy chọn của một ngày nào đó.
 6. **Số ngày do nội dung quyết.** Mỗi ngày 1–2 việc chính, cộng ngày chốt. Nội dung không vừa thì kéo hạn trong truyện (dời buổi họp, có lý do) chứ không nhồi vào một ngày.
+7. **Người chơi tự chọn đi đâu; hết cảnh vẫn đứng nguyên chỗ** (user chốt 04/10). Lúc nào người chơi cũng đứng ở một nơi, trên cảnh khám phá của nơi ấy. Chỉ đổi nơi khi người chơi tự mở bản đồ và bấm, hoặc tự bấm một lựa chọn kiểu "Đi cùng Tùng ra tòa B". Hết một đoạn thoại hay một cảnh cắt (CG, hoạt cảnh, hồi tưởng) thì về lại cảnh khám phá của nơi đang đứng. Không tự chuyển sang nơi khác, không tự về bản đồ, không tự hết ngày. Nhân vật rủ đi đâu thì nơi ấy hiện dấu "!" trên bản đồ, người chơi tự đi. Riêng đầu ngày mới, người chơi bắt đầu ở một nơi cố định (thường là phòng 408).
 
 ### So với máy hiện có
 
-- Vụ 1 đang chạy kiểu "ngày theo truyện": mỗi ngày một chuỗi, tự sang ngày. Đổi thành: chuỗi chính của ngày xong thì hiện nút "Hết ngày".
+- Vụ 1 đang chạy kiểu "ngày theo truyện": mỗi ngày một chuỗi, tự sang ngày, `[ĐI TỚI]` tự chuyển người chơi sang nơi khác. Bản mới bỏ cả hai (luật 7). Đổi thành: chuỗi chính của ngày xong thì hiện nút "Hết ngày".
 - Vụ 2–5 cũ dùng bản đồ có ghi giờ (`giờ 09:30`). Giờ chỉ còn để trang trí cảnh (sáng, chiều, tối), không tiêu.
 - Cần thêm: dòng `- Hạn chót:` và `- Việc chốt:` cho mỗi vụ ở `lich.md`; khai ngày cho từng ngày trong vụ; máy kiểm báo lỗi nếu một ngày có hơn 2 việc chính hoặc manh mối bắt buộc nằm ở chỗ tùy chọn.
 

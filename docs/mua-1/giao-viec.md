@@ -47,6 +47,7 @@
 11. Luật viết của user (brief chung + giong/README): show don't tell; gợi ý không liệt kê; câu ngắn giọng sinh viên; giới thiệu nhân vật đúng trình tự (tên tạm trước); không gạch dài "—" trong chữ hiển thị; không "nói thẳng" (nhân vật tự khai sở trường, vai trò); Vy, Minh Anh, Tùng không nói thuật ngữ SQL; xưng hô theo `luat-giong.md`; năm nhất gọi "anh Nam", "anh Duy"; sinh viên xưng "em" với thầy cô; không giọng miền Nam.
 12. Dấu điểm bấm: "!" là đầu mối chính, "?" là việc phụ, chi tiết ẩn không dấu. Tô màu chữ chỉ cho thứ vào hồ sơ (`highlight.json`).
 13. Lời chỉ nhắc vật, người có trên ảnh nền của cảnh.
+14. **Người chơi tự chọn đi đâu; hết cảnh vẫn đứng nguyên chỗ.** Đổi nơi chỉ khi người chơi tự mở bản đồ bấm, hoặc tự bấm lựa chọn đi cùng ai đó. Hết thoại, hết cảnh cắt thì về cảnh khám phá của nơi đang đứng; không tự chuyển nơi, không tự về bản đồ, không tự hết ngày. Nhân vật rủ đi đâu thì đặt "!" ở nơi ấy trên bản đồ. Đầu ngày mới bắt đầu ở một nơi cố định (thường là phòng 408). (Kế hoạch mục 2, luật 7.)
 
 ### A4. Bảng kỹ năng theo vụ (máy kiểm theo bảng này)
 
@@ -159,6 +160,7 @@ Thứ tự (theo mục E): T0 trước, rồi B4 → B10 (nội dung, duyệt b�
 - Qua ngày thì các chuỗi chỉ thuộc ngày cũ không vào được nữa.
 - Việc ngày lễ: hiện đúng ngày ấy với dấu "?" ở người giao; hết ngày thì đóng hẳn, chạy chuỗi `Khi lỡ` ở ngày kế; không có đường nào mở lại (kể cả sau màn kết mùa, kể cả nạp lại lưu cũ).
 - Vụ 10 kéo qua Tết: hỗ trợ "nhảy lịch" trong vụ (một chuỗi chuyển cảnh rồi sang ngày sau Tết).
+- **Đứng nguyên chỗ (A3 mục 14):** chuỗi hết nút thì về cảnh khám phá của nơi đang đứng, không về bản đồ, không hết ngày. `[ĐI TỚI]` chỉ được dẫn tới chuỗi cùng nơi. Cảnh cắt khác nơi (hồi tưởng, CG ở chỗ khác) khai thêm `· cảnh cắt` trong tiêu đề chuỗi: `{cảnh: <cảnh> · cảnh cắt}`; chạy xong thì về lại nơi cũ. Đổi nơi chỉ qua bản đồ hoặc lựa chọn `[RẼ NHÁNH]` mà người chơi bấm (lựa chọn ấy đưa người chơi tới nơi mới và đứng ở đó). Mỗi ngày khai nơi bắt đầu: `- Ngày YYYY-MM-DD: <chuỗi> · bắt đầu ở: <cảnh>`.
 
 **Nghiệm thu B1:**
 - [ ] Bộ kiểm báo lỗi: vụ thiếu `Hạn chót`; `Hạn chót` trước `Ngày`; một ngày không có `[XONG VIỆC CHÍNH]`; một ngày có hơn 2 việc chính; việc ngày lễ có `Ngày` nằm ngoài khoảng ngày của `Thuộc vụ`; hai việc ngày lễ cùng ngày; manh mối bắt buộc (dùng ở `[ĐIỀU KIỆN]` của kết đủ hoặc ở thẻ ĐỦ CĂN CỨ) chỉ kiếm được ở chuỗi tùy chọn.
@@ -166,6 +168,8 @@ Thứ tự (theo mục E): T0 trước, rồi B4 → B10 (nội dung, duyệt b�
 - [ ] Test máy: làm việc phụ, tra, đi bản đồ 50 lần liền thì ngày không đổi; bấm "Hết ngày" trước `[XONG VIỆC CHÍNH]` thì không được; sau thì được.
 - [ ] Test: việc ngày lễ có mặt đúng ngày, mất sau "Hết ngày", không mở lại sau khi nạp lưu; chuỗi `Khi lỡ` chạy đúng một lần.
 - [ ] Test: tới ngày hạn chót thì chỉ còn chuỗi chốt; kết đủ hay chưa trọn theo `[ĐIỀU KIỆN]`.
+- [ ] Bộ kiểm (bộ mùa 1) báo lỗi: `[ĐI TỚI]` sang chuỗi khác nơi mà chuỗi đích không khai `· cảnh cắt`; chuỗi `· cảnh cắt` chứa `[ĐI TỚI]` sang nơi thứ ba; ngày thiếu `bắt đầu ở`.
+- [ ] Test máy: hết một chuỗi thoại thì người chơi vẫn ở cảnh khám phá của nơi ấy (không về bản đồ, ngày không đổi); hết cảnh cắt thì về đúng nơi trước cảnh cắt; chỉ bấm bản đồ hoặc lựa chọn đi cùng mới đổi nơi.
 - [ ] Lưu game cũ (5 vụ) nạp lên không sập: hoặc chuyển đổi được, hoặc báo rõ "bản lưu của phiên bản cũ" và bắt đầu lại.
 - [ ] README nội dung và đặc tả mục 18 có cú pháp mới, kèm ví dụ.
 
@@ -366,7 +370,7 @@ Túi đồ (Tùng, bỏ phần nối, bỏ ngày 30/10), Sổ sử dụng phòng
    - **Màn tra SQL chỉ hiện kết quả**, không phải chơi: đề bài, câu SQL chuẩn, bảng kết quả chạy thật (tối đa 10 dòng, dài hơn thì ghi "… còn n dòng"), rồi các dòng tóm bẫy: "Nếu lọc `> 400` thay vì `BETWEEN`: ra 7 dòng → Hà Vy: …". Truyện đi tiếp như người chơi đã tra đúng.
    - **Đối chất**: in giả thuyết, câu hỏi, danh sách thẻ trình được; mỗi thẻ là một lựa chọn dẫn tới phản hồi của nó; thẻ ĐỦ CĂN CỨ dẫn tiếp truyện. Nhịp có người quen in hai nhánh: "Nếu đủ hảo cảm với Nam: …" và "Nếu chưa: tự chọn thẻ".
    - **Lịch**: đầu mỗi ngày một dòng "Thứ Ba, 08/10/2024 · Còn 7 ngày tới buổi giải trình"; cuối ngày "Hết ngày". Việc ngày lễ là một lựa chọn trong ngày ấy, kèm nhánh "bỏ lỡ" dẫn tới chuỗi `Khi lỡ`.
-   - **Bản đồ, khám phá**: mỗi nơi, mỗi người bấm được là một lựa chọn; chi tiết ẩn ghi "(chi tiết ẩn)".
+   - **Bản đồ, khám phá**: mỗi nơi, mỗi người bấm được là một lựa chọn; chi tiết ẩn ghi "(chi tiết ẩn)". Hết một đoạn thoại thì quay lại đoạn "Đang ở <nơi>" của nơi ấy: liệt kê những chỗ còn bấm được, cộng lựa chọn "Mở bản đồ" dẫn tới đoạn bản đồ của ngày (các nơi đi được, nơi có "!" ghi rõ), cộng "Hết ngày" khi đã xong việc chính. Không có lựa chọn "Đi tiếp" tự chuyển nơi (A3 mục 14).
    - **Điều kiện, cờ**: lựa chọn nào phụ thuộc cờ thì ghi điều kiện bằng lời ("chỉ hiện nếu đã gặp bác Thịnh ở ngày 2").
    - Đầu tệp: mục lục ngày, nhân vật xuất hiện, bảng đo C2 của vụ.
 4. **Mục lục mùa** `docs/mua-1/truyen-chu/README.md`: mười vụ theo lịch, việc ngày lễ đặt đúng ngày, người quen và việc của họ theo thứ tự mở.
