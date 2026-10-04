@@ -8,7 +8,9 @@
  * Trạng thái nằm trong `store/kho-mvp.ts` (khóa riêng), không đụng store prototype.
  */
 import './mvp.css';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { HighlightProvider } from '../../shared/highlight/HighlightText';
+import { highlightMvp } from './highlight-mvp';
 import type { KichBanMvp, LoiMvp } from '../../content/mvp/types';
 import { isFacilitatorMode } from '../../app/facilitator-mode';
 import { isEffectId } from '../../shared/ids';
@@ -49,6 +51,7 @@ import { NoiMvp } from './NoiMvp';
 import { SanKhauMvp } from './SanKhauMvp';
 import { TaiLieuMvp } from './TaiLieuMvp';
 import { TaoNhanVatMvp } from './TaoNhanVatMvp';
+import { taiTruocTheoVan } from './tai-truoc-mvp';
 import { maMoi, theMoiTuMa, useTheChuaXem, type TheMoi } from './the-moi';
 import { TheMoiMvp } from './TheMoiMvp';
 import { TraSoMvp } from './TrangSoMvp';
@@ -86,9 +89,12 @@ function thuHomNay(kb: KichBanMvp, s: TrangThaiMvp): number {
 export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const kb = KICH_BAN;
   const s = useKhoMvp((k) => k.trangThai);
+  const highlightEngine = useMemo(() => highlightMvp(kb, s?.tenNguoiChoi ?? ''), [kb, s?.tenNguoiChoi]);
   const oLuu = useKhoMvp((k) => k.oLuu);
   const batDau = useKhoMvp((k) => k.batDau);
   const hanhDong = useKhoMvp((k) => k.hanhDong);
+  const ghiNhanTruyVan = useKhoMvp((k) => k.ghiNhanTruyVan);
+  const lanDoiVan = useKhoMvp((k) => k.lanDoiVan);
   const xoa = useKhoMvp((k) => k.xoa);
   const luuVaoO = useKhoMvp((k) => k.luuVaoO);
   const napTuO = useKhoMvp((k) => k.napTuO);
@@ -227,6 +233,15 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     soundEngine.chonNhac(nhac);
   }, [kb, s]);
 
+  // Nhìn trước kịch bản: tải sẵn nền / chân dung / ảnh chèn của vài chuỗi sắp tới (tai-truoc-mvp.ts) để cảnh mới không hiện trễ.
+  const chuoiHienTai = s?.conTro?.chuoi;
+  const nutHienTai = s?.conTro?.nut;
+  const ngayHienTai = s?.ngay;
+  useEffect(() => {
+    const st = useKhoMvp.getState().trangThai;
+    if (st) taiTruocTheoVan(kb, st);
+  }, [kb, chuoiHienTai, nutHienTai, ngayHienTai]);
+
   const dongKho = useCallback(() => setKho(null), []);
   const choiLai = useCallback(() => {
     clearBacklog();
@@ -236,6 +251,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   }, [clearBacklog, xoa, batDau]);
 
   if (!s || !kn) return null;
+  const laTheChu = kn.kind === 'line' && kn.display === 'card';
   const dienTen = (t: string): string => dienTenMay(kb, s, t);
   /** Số thứ tự của một vụ sau (vụ gốc là 1). */
   const soVu = (id: string): number => (kb.lich.vuSau ?? []).findIndex((v) => v.id === id) + 2;
@@ -414,6 +430,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       case 'fix-query':
         return (
           <PhongTraMvp
+            onDaXemTruyVan={(query, loi) => ghiNhanTruyVan(query, loi, s, lanDoiVan)}
             key={`${kn.thuThach.id}-${kn.kind}`}
             kb={kb}
             s={s}
@@ -431,11 +448,11 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       case 'effect':
         return isEffectId(kn.effectId) ? <ObjectionEffect effectId={kn.effectId} onDone={tiep} /> : <HieuUngLa onDone={tiep} />;
       case 'projector':
-        return <ManChieuMvp kb={kb} duLieu={kb.duLieu} nut={kn.nut} onTiep={tiep} />;
+        return <ManChieuMvp onDaXemTruyVan={(sql) => ghiNhanTruyVan({ id: `chieu:${s.conTro?.chuoi}:${s.conTro?.nut}`, nhan: 'Màn chiếu buổi họp', sql }, [], s, lanDoiVan)} kb={kb} duLieu={kb.duLieu} nut={kn.nut} onTiep={tiep} />;
       case 'notebook-lookup':
         return <TraSoMvp kb={kb} trang={kn.trang} dienTen={dienTen} onTiep={tiep} />;
       case 'trial-filter':
-        return <LocThuV7 key={kn.nut.id} duLieu={kb.duLieu} nut={kn.nut} onChon={(giaTri) => hanhDong({ type: 'chon-o', giaTri })} />;
+        return <LocThuV7 onDaXemTruyVan={(query, loi) => ghiNhanTruyVan(query, loi, s, lanDoiVan)} key={`${lanDoiVan}:${kn.nut.id}`} duLieu={kb.duLieu} nut={kn.nut} onChon={(giaTri) => hanhDong({ type: 'chon-o', giaTri })} />;
       case 'create-character':
         return (
           <TaoNhanVatMvp
@@ -521,7 +538,12 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           }}
         />
       ) : null}
-      {['line', 'feedback', 'question', 'branch', 'doi-chat'].includes(kn.kind) && !gioiThieuMo ? <DongHanhMvp kb={kb} s={s} dienTen={dienTen} /> : null}
+      <DongHanhMvp
+        key={JSON.stringify([lanDoiVan, s.batDauLuc, s.conTro, s.hoiDap?.viTri, kn.kind, gioiThieuMo, laTheChu])}
+        kb={kb}
+        s={s}
+        visible={['line', 'feedback', 'question', 'branch', 'doi-chat'].includes(kn.kind) && !gioiThieuMo && !laTheChu}
+      />
       <SanKhauMvp
         kb={kb}
         canh={noiDangO ? noiDangO.diaDiem.canh : s.canh}
@@ -529,11 +551,12 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         speaker={loiHienTai?.speaker}
         expression={loiHienTai?.expression}
         shaking={rung}
-        coDan={!['chon-dia-diem', 'explore', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick'].includes(kn.kind)}
+        coDan={!laTheChu && !['chon-dia-diem', 'explore', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick'].includes(kn.kind)}
         tenNguoiChoi={s.tenNguoiChoi}
-        // Việc nhắc chỉ hiện khi sân khấu còn là cảnh (màn tra, tài liệu, ảnh chèn, màn chiếu… phủ kín thì ẩn).
-        nhacViec={['chon-dia-diem', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick', 'challenge', 'fix-query'].includes(kn.kind) ? null : s.nhacViec}
+        // Việc nhắc chỉ hiện khi sân khấu còn là cảnh (màn tra, tài liệu, ảnh chèn, màn chiếu, thẻ chữ… thì ẩn).
+        nhacViec={laTheChu || ['chon-dia-diem', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick', 'challenge', 'fix-query'].includes(kn.kind) ? null : s.nhacViec}
         dienTen={dienTen}
+        isCard={laTheChu}
       >
         {noiDung}
       </SanKhauMvp>
@@ -601,7 +624,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           <div className="game-simulator-island">
             <div className="game-simulator-island-camera" />
           </div>
-          {game}
+          <HighlightProvider engine={highlightEngine}>{game}</HighlightProvider>
           <div className="game-simulator-home-bar" />
         </div>
         {bangQuanSat}
@@ -611,7 +634,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   }
   return (
     <>
-      {game}
+      <HighlightProvider engine={highlightEngine}>{game}</HighlightProvider>
       {bangQuanSat}
       {nhacXoay}
     </>

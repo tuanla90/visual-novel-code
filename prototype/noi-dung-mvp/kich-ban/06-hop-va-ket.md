@@ -12,7 +12,6 @@
 - [ẢNH cg-hop-doi-dau]
 - [SỬA TRUY VẤN c-sua-or-quan]
 - [HIỆU ỨNG co-so-lieu-day]
-- [ẢNH chibi-so-lieu-day]
 - [LỜI hop-00.4]
 - [ĐI TỚI hop-01]
 
@@ -30,7 +29,6 @@
 ### hop-02 — Mời Hoài vào hỏi chuyện nộp thư {cảnh: phong-hop}
 
 - [LỜI hop-02.1]
-- [ẢNH cg-bang-chung-day]
 - [ĐỐI CHẤT dc-ai-viet] quan: "Mã trong sổ là của Hoài. Thư do Hoài mang tới hộp. Chữ ký bắt đầu bằng H, Hoài cũng H. Bên tôi kết luận: **Hoài là người viết lá thư này.**"
   - [CÂU HỎI] Hoài mang thư tới hộp. Nhưng lá thư được in ra bằng tài khoản của ai? Trình thẻ cho biết điều đó.
   - {ev-nhat-ky-in} [ĐỦ CĂN CỨ] → phản hồi: **minh-anh** (neutral): Thưa thầy, bọn em có nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật — từ tài khoản dùng chung của một CLB, không phải của Hoài.<br>**quan** (stunned): …Tài khoản CLB?<br>**thay-quang** (neutral): Tài khoản in thư không phải của người nộp thư. Vậy câu "Hoài viết" chưa đứng được.
@@ -67,7 +65,6 @@
 ### ket-tra-da — Sau kết thật: Tùng khao trà đá; bà Lụa kể về cái tủ sắt {cảnh: tra-da}
 
 - [LỜI ket-tra-da.1a]
-- [ẢNH chibi-khao-tra-da]
 - [LỜI ket-tra-da.1b]
 - [ẢNH chibi-ghi-la-ghi]
 - [LỜI ket-tra-da.1c]

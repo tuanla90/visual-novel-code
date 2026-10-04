@@ -41,10 +41,10 @@ SELECT thiet_bi, COUNT(*) AS so_dong FROM @ev-bai-dang GROUP BY thiet_bi;
 ### c-nam-thu-vien — Nam vào thư viện những ngày nào? {challenge: c-nam-thu-vien}
 
 - Tiêu đề: Bản ghi quẹt thẻ thư viện
-- Đề bài hiển thị: Bản ghi cửa từ thư viện do chính Nam và Hà Vy tải về từ cổng sinh viên, gộp chung một tệp. Nam vào thư viện những ngày nào?
+- Đề bài hiển thị: Bản ghi cửa từ thư viện của các thành viên tải về từ cổng sinh viên, gộp chung một tệp. Nam vào thư viện những ngày nào?
 - Manh mối liên quan: clue-ten-nam
 - Mục tiêu học: Lọc theo tên để ghim thành phiếu riêng của một người.
-- Số dòng kỳ vọng: 5
+- Số dòng kỳ vọng: 32
 - SQL chuẩn:
 
 ```sql
@@ -53,8 +53,8 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Nam';
 
 - [LỜI c-nam-thu-vien.1]
 - Vật chứng lưu vào hồ sơ: ev-nam-thu-vien
-  - Tiêu đề: Năm lần Nam quẹt thẻ thư viện
-  - Mô tả: Kết quả truy vấn: năm lần Nam vào thư viện trong tháng 9 và 10, có ngày, thứ, giờ vào, giờ ra.
+  - Tiêu đề: Ba mươi hai lần Nam quẹt thẻ thư viện
+  - Mô tả: Kết quả truy vấn: ba mươi hai lần Nam vào thư viện từ năm ngoái đến nay, có ngày, thứ, giờ vào, giờ ra.
 
 ### c-nam-thu — Nam quẹt thẻ thư viện vào thứ mấy nhiều nhất, mấy lần? {challenge: c-nam-thu}
 
@@ -72,8 +72,8 @@ SELECT thu, COUNT(*) AS so_dong FROM @ev-nam-thu-vien GROUP BY thu;
 ```
 
 - Vật chứng lưu vào hồ sơ: ev-nam-thu
-  - Tiêu đề: Nam: tối thứ Hai 4 lần, thứ Năm 1 lần
-  - Mô tả: Kết quả nhóm theo thứ: bốn tối thứ Hai liền Nam đều ở thư viện. Một thói quen đếm được; chưa phải bằng chứng cho riêng tối 07/10.
+  - Tiêu đề: Nam: tối thứ Hai 27 lần, thứ Năm 5 lần
+  - Mô tả: Kết quả nhóm theo thứ: hai mươi bảy tối thứ Hai Nam đều ở thư viện từ lúc vào trường. Một thói quen bền bỉ đếm được; chưa phải bằng chứng cho riêng tối 07/10.
 
 ### c-toi-07 — Tối 07/10 ai quẹt thẻ, vào và ra lúc mấy giờ? {challenge: c-toi-07}
 

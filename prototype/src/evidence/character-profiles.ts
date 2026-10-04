@@ -147,6 +147,6 @@ export const CHARACTER_PROFILES: Record<CharacterId, CharacterProfile> = {
       'Cổ vũ và ủng hộ nhiệt tình khi người chơi tham gia CLB Thám tử Dữ liệu.',
     ],
     expressions: ['neutral'] as const,
-    accentColor: '#fb923c',
+    accentColor: '#38bdf8',
   },
 };

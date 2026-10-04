@@ -19,7 +19,7 @@ const CHARACTER_DOT_COLORS: Record<CharacterId, string> = {
   quan: '#3b82f6',
   hoai: '#8b5cf6',
   'bac-tu': '#d97706',
-  tung: '#f97316',
+  tung: '#38bdf8',
 };
 
 /** Tên nhãn hiển thị cho các biểu cảm trên giao diện thẻ hồ sơ */

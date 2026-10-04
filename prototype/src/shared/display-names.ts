@@ -38,6 +38,8 @@ const EXPRESSION_NAMES: Record<ExpressionId, string> = {
   nervous: 'bối rối',
   downcast: 'cúi mặt',
   relieved: 'nhẹ nhõm',
+  serious: 'nghiêm túc',
+  surprised: 'ngạc nhiên',
 };
 
 const PART_NAMES: Record<PartId, string> = {

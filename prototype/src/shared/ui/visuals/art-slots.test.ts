@@ -56,6 +56,13 @@ const USER_MANIFEST: Record<string, string> = {
   'char-hoai-relieved': 'hoai-relieved',
   'char-bac-tu-neutral': 'bac-tu-neutral',
   'char-tung-anchor': 'tung-neutral',
+  // Biểu cảm làm cho bản MVP (30/09), tệp ở src/assets/mvp/nhan-vat/.
+  'char-tung-happy': 'tung-happy',
+  'char-tung-worried': 'tung-worried',
+  'char-tung-surprised': 'tung-surprised',
+  'char-tung-thinking': 'tung-thinking',
+  'char-minh-anh-serious': 'minh-anh-serious',
+  'char-bac-tu-smile': 'bac-tu-smile',
 };
 
 describe('ô ảnh: danh sách và README', () => {

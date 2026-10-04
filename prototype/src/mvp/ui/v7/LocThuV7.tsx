@@ -7,6 +7,7 @@
  *
  * Câu lọc lấy từ nút kịch bản (`nut.sql`): mỗi điều kiện `<cột> = '<giá trị>'` thành một hàng "cột · bằng · ô thả thẻ".
  */
+import type { QuanSatTruyVanMvp } from '../../engine/tri-nho-dong-hanh';
 import { useEffect, useMemo, useRef, useState, type DragEvent } from 'react';
 import type { BoDuLieuMvp, NutMvp } from '../../../content/mvp/types';
 import { soundEngine } from '../../../shared/audio/sound-engine';
@@ -23,12 +24,21 @@ export interface LocThuV7Props {
   duLieu: BoDuLieuMvp | null;
   nut: Extract<NutMvp, { type: 'trial-filter' }>;
   onChon: (giaTri: string) => void;
+  onDaXemTruyVan?: QuanSatTruyVanMvp;
 }
 
-const KINH = { x: 250, y: 96, w: 1100, h: 640 };
+const NHAN_COT: Record<string, string> = {
+  ma_sv: 'Mã SV',
+  ho_dem: 'Họ đệm',
+  ten: 'Tên',
+  nganh: 'Ngành',
+};
+export const nhanCot = (cot: string): string => NHAN_COT[cot.toLowerCase()] ?? cot;
+
+const KINH = { x: 90, y: 36, w: 1420, h: 740 };
 const nhay = (v: string): string => `'${v.replace(/'/g, "''")}'`;
 
-export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
+export function LocThuV7({ duLieu, nut, onChon, onDaXemTruyVan }: LocThuV7Props) {
   const cau = useMemo(() => cauTuSql(nut.sql), [nut.sql]);
   const dieuKien = useMemo(() => (cau?.dieuKien ?? []).map((d) => ({ cot: d.cot, giaTri: d.giaTri?.tho ?? '' })), [cau]);
   const bang = /FROM\s+([A-Za-z_][A-Za-z0-9_]*)/i.exec(nut.sql)?.[1] ?? '';
@@ -106,6 +116,7 @@ export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
     await ngu(350);
     if (!song.current) return;
     setKq(r);
+    onDaXemTruyVan?.({ id: nut.id, nhan: 'Lọc thử ở Ngày hội', sql: `${cau.khung} WHERE ${dieu.join(' AND ')}` }, []);
     setDangLoc(false);
   };
 
@@ -141,7 +152,12 @@ export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
           key={d.giaTri}
           type="button"
           className={`v7-giay${dangChon === d.giaTri ? ' is-chon' : ''}`}
-          style={{ left: KINH.x - 118, top: KINH.y + 110 + (daTha + j) * 132, ['--r' as string]: `${j % 2 === 0 ? -4 : 3}deg`, ['--img' as string]: `url("${anhTheoTen(`giay-nho-0${((daTha + j) % 9) + 1}`) ?? ''}")` }}
+          style={{
+            left: 10,
+            top: KINH.y + 70 + (daTha + j) * 140,
+            ['--r' as string]: `${j % 2 === 0 ? -4 : 3}deg`,
+            ['--img' as string]: `url("${anhTheoTen(`giay-nho-0${((daTha + j) % 9) + 1}`) ?? ''}")`,
+          }}
           draggable
           aria-pressed={dangChon === d.giaTri}
           aria-label={`Thẻ ${d.giaTri}`}
@@ -152,7 +168,17 @@ export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
         </button>
       ))}
       {chep ? (
-        <span className="v7-giay v7-giay--chep" style={{ left: KINH.x - 118, top: KINH.y + 110, ['--r' as string]: '-3deg', ['--img' as string]: `url("${anhTheoTen('giay-nho-03') ?? ''}")` }} role="status" aria-label={`Giấy nhớ mới: ${chep}`}>
+        <span
+          className="v7-giay v7-giay--chep"
+          style={{
+            left: 10,
+            top: KINH.y + 70,
+            ['--r' as string]: '-3deg',
+            ['--img' as string]: `url("${anhTheoTen('giay-nho-03') ?? ''}")`,
+          }}
+          role="status"
+          aria-label={`Giấy nhớ mới: ${chep}`}
+        >
           <span className="v7-giay__chu">{chep}</span>
         </span>
       ) : null}
@@ -160,14 +186,14 @@ export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
   );
 
   return (
-    <VungV7 canh="loc-thu" anhCanh={undefined} kinhO={KINH} giay={giay} nhan="Lọc danh sách">
+    <VungV7 canh="loc-thu" anhCanh={anhTheoTen('canh-tra-phong-clb')} kinhO={KINH} giay={giay} nhan="Lọc danh sách">
       <div className="v7-kinh">
         <div className="v7-thanh">
-          <span>▣ danh sách tân sinh viên</span>
+          <span>▣ Danh sách tân sinh viên K24 (Excel)</span>
         </div>
         <div className="v7-cau">
           <div className="v7-cau__bang">
-            <span className="v7-o v7-o--bang">danh sách</span>
+            <span className="v7-o v7-o--bang">Danh sách SV</span>
             <small>{tong} người</small>
           </div>
           <ol className="v7-cau__dk" aria-label="Điều kiện lọc">
@@ -177,13 +203,14 @@ export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
               return (
                 <li key={d.cot} className={`v7-dk${i > daTha ? ' is-cho' : ''}`} data-dk={i + 1}>
                   {i > 0 ? <span className="v7-o v7-o--noi">VÀ</span> : null}
-                  <span className="v7-o v7-o--cot">{d.cot}</span>
+                  <span className="v7-o v7-o--cot" data-cot={d.cot}>{nhanCot(d.cot)}</span>
                   <span className="v7-o v7-o--phep">bằng</span>
                   <button
                     type="button"
                     className={`v7-khe${co ? ' is-co' : ''}${toi && dangChon ? ' is-moi' : ''}${rung === `o${i}` ? ' is-rung' : ''}`}
                     disabled={co || !toi}
-                    aria-label={co ? `Đang lọc: ${d.cot} bằng ${d.giaTri}` : `Ô giá trị của cột ${d.cot}`}
+                    aria-label={co ? `Đang lọc: ${nhanCot(d.cot)} bằng ${d.giaTri}` : `Ô giá trị của cột ${nhanCot(d.cot)}`}
+                    data-cot={d.cot}
                     onDragOver={(e: DragEvent) => e.preventDefault()}
                     onDrop={(e: DragEvent) => {
                       e.preventDefault();
@@ -210,7 +237,7 @@ export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
                   <tr>
                     {kq.cot.map((c, k) => (
                       <th key={c} scope="col" className={locXong && k === iCot && nhac ? 'is-can' : undefined}>
-                        {c}
+                        {nhanCot(c)}
                       </th>
                     ))}
                   </tr>
@@ -227,7 +254,7 @@ export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
                             <button
                               type="button"
                               className={`v7-o-bam${sai.includes(khoa) ? ' is-sai' : ''}${rung === khoa ? ' is-rung' : ''}${chep === chu && k === iCot ? ' is-chep' : ''}`}
-                              aria-label={`Ô ${kq.cot[k] ?? ''}: ${chu}`}
+                              aria-label={`Ô ${nhanCot(kq.cot[k] ?? '')}: ${chu}`}
                               disabled={!!chep}
                               onClick={() => bamO(r, k)}
                             >
@@ -242,12 +269,12 @@ export function LocThuV7({ duLieu, nut, onChon }: LocThuV7Props) {
               </table>
               {!locXong && !dangLoc && conThe[0] ? (
                 <p className="v7-kq__nhac">
-                  Còn {kq.dong.length} người. Thả tiếp thẻ {conThe[0].giaTri} vào ô {conThe[0].cot}.
+                  Còn {kq.dong.length} người. Thả tiếp thẻ {conThe[0].giaTri} vào ô {nhanCot(conThe[0].cot)}.
                 </p>
               ) : null}
               {locXong && !chep ? (
                 <p className="v7-kq__nhac">
-                  <IconPointer className="v7-bt" /> {nhac ? `Cái cần lấy nằm ở cột ${nut.chon.cot}. Bấm vào ô ấy.` : `Còn ${kq.dong.length} người. Bấm vào ô ${nut.chon.cot} để chép ra giấy nhớ.`}
+                  <IconPointer className="v7-bt" /> {nhac ? `Cái cần lấy nằm ở cột ${nhanCot(nut.chon.cot)}. Bấm vào ô ấy.` : `Còn ${kq.dong.length} người. Bấm vào ô ${nhanCot(nut.chon.cot)} để chép ra giấy nhớ.`}
                 </p>
               ) : null}
               {chep ? <p className="v7-kq__nhac">Đã chép {chep} ra giấy nhớ.</p> : null}

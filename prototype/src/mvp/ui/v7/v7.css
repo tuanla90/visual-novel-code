@@ -1920,12 +1920,16 @@ span.v7-o--bang:not(.v7-o--phieu) {
 
 /* ---------- Lọc thử ở Ngày hội: máy của chị Minh Anh, chưa hiện SQL ---------- */
 .v7[data-canh='loc-thu'] {
-  background: rgba(8, 12, 20, 0.6);
+  background: transparent;
+}
+.v7[data-canh='loc-thu'] .v7-nen {
+  transform: scale(1.33) translateY(3%);
+  transform-origin: 50% 36%;
 }
 .v7[data-canh='loc-thu'] .v7-o-kinh {
-  border: 14px solid #23272c;
-  border-radius: 18px;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+  border: 4px solid #1e293b;
+  border-radius: 12px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
 }
 .v7-kq--chon tbody tr {
   cursor: pointer;
@@ -2620,3 +2624,234 @@ span.v7-o--bang:not(.v7-o--phieu) {
 /* Ảnh chibi của người kiểm phiếu. */
 .v7-kiem__nguoi { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 4px; }
 .v7-kiem__mat { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; object-position: 50% 12%; background: #fde68a; flex: none; }
+
+/* NÚT XEM TRƯỚC / KHẢO SÁT DỮ LIỆU & MODAL PREVIEW (HƯỚNG C + A) */
+.v7-xem-truoc-vung {
+  margin-top: 0.5em;
+}
+.v7-btn-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.4em 0.8em;
+  border-radius: 0.5em;
+  border: 1px solid rgba(110, 231, 183, 0.4);
+  background: rgba(16, 185, 129, 0.12);
+  color: #a7f3d0;
+  font: 600 0.82rem/1 var(--font-ui);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.v7-btn-preview:hover {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: #34d399;
+  color: #fff;
+  transform: translateY(-1px);
+}
+.v7-btn-preview.is-co-noi {
+  border-color: #34d399;
+  background: rgba(16, 185, 129, 0.22);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
+  color: #fff;
+}
+.v7-btn-preview__icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+.v7-btn-preview__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+  animation: v7-pulse 1.6s infinite ease-in-out;
+}
+@keyframes v7-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.4); }
+}
+
+/* Modal khảo sát dữ liệu */
+.v7-preview-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: v7-hien 0.2s ease-out;
+}
+.v7-preview-modal {
+  width: 100%;
+  max-width: 920px;
+  max-height: 90vh;
+  background: #111827;
+  border: 1px solid #374151;
+  border-radius: 0.75rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.v7-preview-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #1f2937;
+  background: #1e293b;
+}
+.v7-preview-modal__title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.v7-preview-modal__title {
+  font: 700 1rem var(--font-ui);
+  color: #e2e8f0;
+  margin: 0;
+}
+.v7-preview-modal__title code {
+  color: #38bdf8;
+  font-family: var(--font-mono, monospace);
+  background: rgba(56, 189, 248, 0.12);
+  padding: 0.1em 0.4em;
+  border-radius: 0.25em;
+}
+.v7-preview-modal__badge {
+  background: rgba(16, 185, 129, 0.18);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  color: #6ee7b7;
+  font: 600 0.75rem var(--font-ui);
+  padding: 0.2em 0.6em;
+  border-radius: 9999px;
+}
+.v7-preview-modal__badge--single {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.35);
+  color: #7dd3fc;
+}
+.v7-preview-modal__close-btn {
+  background: transparent;
+  border: 1px solid #4b5563;
+  color: #9ca3af;
+  font: 600 0.8rem var(--font-ui);
+  padding: 0.3em 0.7em;
+  border-radius: 0.4em;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.v7-preview-modal__close-btn:hover {
+  background: #374151;
+  color: #fff;
+  border-color: #6b7280;
+}
+.v7-preview-modal__sql-code {
+  padding: 0.6rem 1.25rem;
+  background: #090d16;
+  border-bottom: 1px solid #1f2937;
+  font: 500 0.8rem/1.4 var(--font-mono, monospace);
+  color: #94a3b8;
+  overflow-x: auto;
+}
+.v7-preview-modal__body {
+  padding: 1.25rem;
+  overflow-y: auto;
+  flex: 1;
+}
+.v7-preview-modal__loading,
+.v7-preview-modal__error {
+  padding: 2rem;
+  text-align: center;
+  color: #94a3b8;
+  font: 500 0.9rem var(--font-ui);
+}
+.v7-preview-modal__error { color: #f87171; }
+.v7-preview-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #1f2937;
+  border-radius: 0.5rem;
+}
+.v7-preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  font: 500 0.82rem var(--font-mono, monospace);
+  text-align: left;
+}
+.v7-preview-th {
+  padding: 0.65rem 0.9rem;
+  border-bottom: 2px solid #374151;
+  white-space: nowrap;
+  background: #1e293b;
+  color: #cbd5e1;
+}
+.v7-preview-th.is-cot-moi {
+  background: rgba(16, 185, 129, 0.18);
+  color: #6ee7b7;
+  border-bottom-color: #10b981;
+}
+.v7-preview-th__name {
+  margin-right: 0.4em;
+}
+.v7-preview-th__tag {
+  display: inline-block;
+  background: #059669;
+  color: #fff;
+  font: 700 0.65rem sans-serif;
+  padding: 0.1em 0.35em;
+  border-radius: 0.25em;
+  text-transform: uppercase;
+}
+.v7-preview-td {
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid #1f2937;
+  color: #e2e8f0;
+  white-space: nowrap;
+}
+.v7-preview-td.is-cot-moi {
+  background: rgba(16, 185, 129, 0.06);
+  color: #a7f3d0;
+  font-weight: 600;
+}
+.v7-preview-table tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.04);
+}
+.v7-preview-null {
+  color: #64748b;
+  font-style: italic;
+}
+.v7-preview-modal__footer {
+  padding: 0.85rem 1.25rem;
+  border-top: 1px solid #1f2937;
+  background: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.v7-preview-modal__hint {
+  font: 500 0.82rem var(--font-ui);
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.v7-preview-modal__hint strong { color: #fef08a; }
+.v7-preview-modal__action-btn {
+  background: #059669;
+  border: 1px solid #10b981;
+  color: #fff;
+  font: 700 0.85rem var(--font-ui);
+  padding: 0.45rem 1.1rem;
+  border-radius: 0.45rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.v7-preview-modal__action-btn:hover {
+  background: #047857;
+}

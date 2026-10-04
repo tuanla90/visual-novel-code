@@ -40,6 +40,7 @@
 ### p-lac-phong — Phòng 408: sổ đón của đội tình nguyện {cảnh: phong-ktx-dem}
 
 - [LỜI p-lac-phong.1]
+- [ẢNH chibi-408-nam-bep]
 - [HIỆN TÀI LIỆU doc-so-don]
 - [HẬU QUẢ] mở manh mối clue-ma-tung
 - [LỜI p-lac-phong.2]
@@ -55,4 +56,6 @@
   - (B) {id: kem} Cậu dẫn đường kém, sổ ghi rõ rồi. → phản hồi: **tung** (gai-dau): Tám trên chín lượt tới đúng ký túc mà. Sai một lượt thì viết một lượt thôi.
   - (C) {id: noi-nho} Tại Hoài nói nhỏ quá, sổ cũng cho thấy thế. → phản hồi: **tung** (worried): Sổ có ghi ai nói to nói nhỏ đâu. Với lại người dẫn đường là tớ, hỏi lại là việc của tớ.
 - [LỜI p-lac-ket.1]
+- [ẢNH chibi-lac-nha-xe]
+- [LỜI p-lac-ket.2]
 - [KẾT THÚC]

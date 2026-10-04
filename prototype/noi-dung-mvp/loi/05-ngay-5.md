@@ -6,6 +6,7 @@
 - [THẺ CHỮ] **narrator**: Thứ Bảy, 28/09/2024
 - [DÀN DỰNG] Sáng sớm ở cổng KTX. {{nv.chu-cuong}} vừa đi tuần về, tay cầm đèn pin.
 - **narrator**: Sáng sớm ở cổng ký túc xá. {{nv.chu-cuong}} vừa đi một vòng kiểm tra về, đèn pin còn cầm trên tay.
+- **narrator**: Dãy vòi nước nóng tầng một đã có một hàng xô nhựa xếp giữ chỗ từ năm rưỡi. Xô nào cũng viết số phòng bằng bút xóa.
 - **tung** (neutral): Sáng thứ Hai 16/09 chú tớ trực cổng. Hỏi chú xem hôm nộp thư có gì lạ không.
 > NHẮC VIỆC tung (neutral): Sáng thứ Hai ai ra cổng sớm, chú tớ hay để ý lắm.
 
@@ -31,3 +32,4 @@
 - **ha-vy** (thinking): Thứ Hai họp. Chỉ nói những gì dữ liệu chứng minh được.
 - **tung** (worried): Nhỡ người ta vặn hỏi ai là người viết thư thì sao?
 - **ha-vy** (neutral): Có chứng cứ thì trình. Không có thì bảo chưa biết.
+- **tung** (happy): Rõ rồi. Tối mai tớ ngủ sớm, thứ Hai tỉnh như sáo.

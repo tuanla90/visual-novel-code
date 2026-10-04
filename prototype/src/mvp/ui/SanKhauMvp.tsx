@@ -15,11 +15,12 @@ import { Portrait } from '../../shared/ui/Portrait';
 import { useVnStore } from '../../shared/vn/vn-store';
 import type { NhacViecMvp as NhacViec } from '../engine/trang-thai';
 import { TalkOverlay } from '../../shared/ui/visuals/TalkOverlay';
-import { anhChanDung, anhNen, anhTheoTen } from './anh-mvp';
+import { anhChanDung, anhNen, anhSprite, anhTheoTen } from './anh-mvp';
 import { boNhepMoiTheoUrl } from './nhep-moi-mvp';
 import { HoatCanhMvp } from './HoatCanhMvp';
 import { coHoatCanh } from './hoat-canh-mvp';
 import { NhacViecMvp } from './NhacViecMvp';
+import { DAO_CU_CANH } from './dao-cu-canh';
 
 export interface SanKhauMvpProps {
   kb: KichBanMvp;
@@ -37,6 +38,8 @@ export interface SanKhauMvpProps {
   nhacViec?: NhacViec | null;
   /** Điền `{{nv.…}}` cho câu nhắc việc. */
   dienTen?: (t: string) => string;
+  /** Màn chuyển cảnh thời gian / địa điểm dạng thẻ chữ lớn điện ảnh: ẩn nhãn địa điểm, làm tối cảnh. */
+  isCard?: boolean;
   children?: ReactNode;
 }
 
@@ -54,6 +57,9 @@ interface DanDien {
 
 /** Tối đa bấy nhiêu người đứng trên dàn; người thứ tư nói → người nói lâu nhất trước đó rời dàn. */
 export const TOI_DA_TREN_DAN = 3;
+
+/** Cảnh nền kín, người chơi chỉ độc thoại trong lòng: không vẽ chân dung đứng chắn cảnh (xe buýt mở đầu). */
+const CANH_KHONG_DAN: ReadonlySet<string> = new Set(['xe-buyt']);
 
 /** Người nói lên dàn chân dung: người chơi, hoặc nhân vật có trong nhan-vat.md không "chỉ qua lời kể" (không phải `narrator`). */
 function laNhanVatHien(kb: KichBanMvp, speaker: string | undefined): speaker is string {
@@ -149,7 +155,7 @@ function ChanDungMvp({
   );
 }
 
-export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, coDan = true, tenNguoiChoi, nhacViec, dienTen, children }: SanKhauMvpProps) {
+export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, coDan = true, tenNguoiChoi, nhacViec, dienTen, isCard = false, children }: SanKhauMvpProps) {
   const [dan, setDan] = useState<DanDien>(() => danKe(kb, null, canh, speaker, expression));
   const moi = danKe(kb, dan, canh, speaker, expression);
   if (moi !== dan) setDan(moi);
@@ -168,29 +174,63 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
     return () => clearTimeout(timer);
   }, [moDiaDiem]);
 
+  const daoCu = coDan ? DAO_CU_CANH[canh] : undefined;
+
   return (
-    <section className={`stage mvp-stage${shaking ? ' is-shaking' : ''}${nhacViec ? ' co-nhac' : ''}`} data-scene={canh} aria-label={`Cảnh: ${tenCanh}`}>
+    <section className={`stage mvp-stage${shaking ? ' is-shaking' : ''}${nhacViec ? ' co-nhac' : ''}${isCard ? ' is-the-chu' : ''}`} data-scene={canh} aria-label={`Cảnh: ${tenCanh}`}>
       <div className="stage__backdrop mvp-stage__backdrop" aria-hidden="true" data-art-source={nen ? 'image' : 'placeholder'}>
-        {coHoatCanh(canh) ? <HoatCanhMvp key={canh} canh={canh} /> : nen ? <img className="stage__backdrop-img" src={nen} alt="" draggable={false} /> : <div className="mvp-stage__nen-tam" />}
+        {coHoatCanh(canh) ? (
+          <HoatCanhMvp key={canh} canh={canh} />
+        ) : nen ? (
+          daoCu && daoCu.length > 0 ? (
+            <div className="mvp-stage__lop-canh">
+              <img className="stage__backdrop-img" src={nen} alt="" draggable={false} />
+              {daoCu.map((dc) => {
+                const url = anhSprite(dc.sprite);
+                if (!url) return null;
+                return (
+                  <img
+                    key={dc.sprite}
+                    className="mvp-stage__dao-cu"
+                    src={url}
+                    alt=""
+                    draggable={false}
+                    style={{
+                      left: `${dc.x}%`,
+                      top: `${dc.y}%`,
+                      width: `${dc.rong}%`,
+                    }}
+                  />
+                );
+              })}
+            </div>
+          ) : (
+            <img className="stage__backdrop-img" src={nen} alt="" draggable={false} />
+          )
+        ) : (
+          <div className="mvp-stage__nen-tam" />
+        )}
       </div>
-      <button
-        type="button"
-        className={`stage__scene-label stage__scene-label--btn${moDiaDiem ? ' is-expanded' : ''}`}
-        onClick={() => setMoDiaDiem((m) => !m)}
-        aria-label={`Địa điểm: ${tenCanh}`}
-        aria-expanded={moDiaDiem}
-        title={`Địa điểm: ${tenCanh}`}
-      >
-        <svg className="stage__scene-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
-          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" fill="#f59e0b" stroke="#d97706" strokeWidth="1.2" />
-          <circle cx="12" cy="10" r="3" fill="#fffdf2" />
-        </svg>
-        <span className="stage__scene-text">{tenCanh}</span>
-      </button>
+      {!isCard ? (
+        <button
+          type="button"
+          className={`stage__scene-label stage__scene-label--btn${moDiaDiem ? ' is-expanded' : ''}`}
+          onClick={() => setMoDiaDiem((m) => !m)}
+          aria-label={`Địa điểm: ${tenCanh}`}
+          aria-expanded={moDiaDiem}
+          title={`Địa điểm: ${tenCanh}`}
+        >
+          <svg className="stage__scene-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" fill="#f59e0b" stroke="#d97706" strokeWidth="1.2" />
+            <circle cx="12" cy="10" r="3" fill="#fffdf2" />
+          </svg>
+          <span className="stage__scene-text">{tenCanh}</span>
+        </button>
+      ) : null}
       {nhacViec ? <NhacViecMvp kb={kb} nhac={nhacViec} dienTen={dienTen ?? ((t) => t)} tenNguoiChoi={tenNguoiChoi} /> : null}
       {/* Cảnh có hoạt cảnh: nhân vật đã nằm trong ảnh tách lớp, không vẽ thêm nhân vật đứng (hộp thoại vẫn ghi tên người nói). */}
-      <div className="stage__portraits" data-so-nguoi={coDan && !coHoatCanh(canh) ? moi.thanhVien.length : 0}>
-        {(coDan && !coHoatCanh(canh) ? moi.thanhVien : []).map((t, i) => {
+      <div className="stage__portraits" data-so-nguoi={coDan && !CANH_KHONG_DAN.has(canh) && !coHoatCanh(canh) ? moi.thanhVien.length : 0}>
+        {(coDan && !CANH_KHONG_DAN.has(canh) && !coHoatCanh(canh) ? moi.thanhVien : []).map((t, i) => {
           const dangNoi = t.nhanVat === speaker;
           const pos = viTri(moi.thanhVien.length, i);
           const phai = pos > 0.5;

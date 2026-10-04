@@ -12,8 +12,9 @@ const MAU_NHAN_VAT: Record<string, string> = {
   hoai: '#c084fc',
   'bac-tu': '#fbbf24',
   'chu-cuong': '#4ade80',
-  'co-hanh': '#38bdf8',
+  'co-hanh': '#f43f5e',
   'co-lan': '#e879f9',
+  'thay-khai': '#cbd5e1',
   'thay-quang': '#f87171',
   hieu: '#facc15',
   dat: '#2dd4bf',
@@ -22,6 +23,7 @@ const MAU_NHAN_VAT: Record<string, string> = {
   thao: '#a3e635',
   bach: '#e2e8f0',
   'ba-lua': '#fbbf24',
+  'co-phu-trach': '#f472b6',
 };
 const MAU_MAC_DINH = '#fbbf24';
 

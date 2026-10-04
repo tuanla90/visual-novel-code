@@ -5,9 +5,11 @@
  *   · CHỈ GIỮ NHÓM [phép] lớn hơn [giấy nhớ số]
  * Hai hàng cuối chỉ hiện khi SQL chuẩn của thẻ dùng tới (SUM/AVG, HAVING). Câu SQL đang dựng luôn hiện bên dưới.
  */
+import type { QuanSatTruyVanMvp } from '../../engine/tri-nho-dong-hanh';
 import { useMemo, useState, type CSSProperties } from 'react';
 import type { BoDuLieuMvp, KichBanMvp, TheThuThachMvp } from '../../../content/mvp/types';
 import { IconPin, IconPlay } from '../../../shared/ui/icons';
+import { CodeText } from '../../../shared/ui/CodeText';
 import type { GiaTriHoSo } from '../../engine/giay-nho';
 import type { DieuKienDung } from '../../engine/trinh-dung';
 import { TEN_HAM, khoiTongHopCuaThe, taoSqlTongHop, type CauTongHop, type HamTongHop, type NguonTongHop } from '../../engine/trinh-dung-tong-hop';
@@ -29,6 +31,7 @@ export interface KetQuaTraTongHop {
 }
 
 export interface ManTongHopMvpProps {
+  onDaXemTruyVan?: QuanSatTruyVanMvp;
   kb: KichBanMvp;
   duLieu: BoDuLieuMvp;
   the: TheThuThachMvp;
@@ -56,7 +59,7 @@ function sqlChuanCoNguon(sql: string, nguon: NguonTongHop[]): string {
 /** Phần tử kế tiếp trong vòng `ds` (sau phần tử cuối là `''` = chưa chọn). */
 const vongKe = (ds: readonly string[], dang: string): string => ds[ds.indexOf(dang) + 1] ?? '';
 
-export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, nhanNguon, onXong }: ManTongHopMvpProps) {
+export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, nhanNguon, onXong, onDaXemTruyVan }: ManTongHopMvpProps) {
   const cauHinh = CANH_TRA[canh];
   const [nguonId, setNguonId] = useState(nguon.length === 1 ? (nguon[0]?.id ?? '') : '');
   const [nhomTheo, setNhomTheo] = useState('');
@@ -133,10 +136,11 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
       }
       const so = soVoiChuan(chuan, kq);
       setKetQua({ sql, cot: kq.cot, dong: kq.dong, dung: so.dung, duSo: so.cotThieu.filter((c) => !kq.cot.includes(c)).length === 0 });
+      onDaXemTruyVan?.({ id: the.id, nhan: the.tieuDe, sql }, []);
       if (!so.dung) {
         // Lời tả kết quả, không nói cách sửa: thiếu cột → nêu cột thiếu; lệch số nhóm → nêu số nhóm.
         const thieu = so.cotThieu.filter((c) => !kq.cot.includes(c));
-        setLoiNoi({
+        const phanUng = {
           speaker: 'ha-vy',
           text:
             so.soDongNguoiChoi !== so.soDongChuan
@@ -144,7 +148,9 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
               : thieu.length > 0
                 ? `Số nhóm thì khớp, nhưng bảng còn thiếu con số đề bài hỏi (${thieu.join(', ')}).`
                 : 'Số nhóm thì khớp, nhưng các con số trong bảng chưa đúng thứ đề bài hỏi.',
-        });
+        };
+        setLoiNoi(phanUng);
+        onDaXemTruyVan?.({ id: the.id, nhan: the.tieuDe, sql }, [phanUng]);
       }
     } catch (e) {
       setLoiNoi({ speaker: 'duy', text: (e as Error).message });
@@ -472,7 +478,7 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
           {chibiNoi ? <img className="v7-thoai__mat" src={chibiNoi} alt="" draggable={false} /> : null}
           <span className="v7-thoai__than">
             <b>{tenNguoiNoi(kb, loiNoi.speaker)}</b>
-            <span>{loiNoi.text}</span>
+            <span><CodeText text={loiNoi.text} /></span>
           </span>
           <span className="v7-thoai__them" aria-hidden="true">
             ✕

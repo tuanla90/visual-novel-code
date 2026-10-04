@@ -104,6 +104,7 @@
 ### tin-phong-duy — Vụ 2: Duy mở laptop (việc chính) {cảnh: phong-clb}
 
 - [LỜI tin-phong-duy.1]
+- [ẢNH chibi-duy-ok]
 
 ### tin-phong-vy — Vụ 2: Hà Vy và câu hỏi trên bảng {cảnh: phong-clb}
 
@@ -112,6 +113,7 @@
 ### tin-phong-tung — Vụ 2: Tùng kể chuyện nghe ở căng tin {cảnh: phong-clb}
 
 - [LỜI tin-phong-tung.1]
+- [ẢNH chibi-tung-tinh-nham]
 
 ### tin-phong-minh-anh — Vụ 2: Minh Anh nói về việc xin dữ liệu {cảnh: phong-clb}
 
@@ -134,8 +136,8 @@
 ### tin-bd-tra-da — Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ {cảnh: tra-da}
 
 - [KHÁM PHÁ kp-toi-tin-bd-tra-da]
-  - nv:ba-lua · x 30% · y 100% · rộng 15% → tin-bd-tra-da-vao · dấu: ! · nhãn: Bà bán trà đá
-  - vung:xe-dap · x 62% · y 55% · rộng 10% → tin-bd-tra-da-an · nhãn: Chiếc xe đạp cũ
+  - nv:ba-lua · x 46% · y 100% · rộng 15% → tin-bd-tra-da-vao · dấu: ! · nhãn: Bà bán trà đá
+  - vung:xe-dap · x 62.5% · y 53% · rộng 16% → tin-bd-tra-da-an · nhãn: Chiếc xe đạp cũ
 
 ### tin-bd-tra-da-vao — Tới nơi: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ {cảnh: tra-da}
 

@@ -5,6 +5,9 @@
 ## p-mic-mo.1
 - [THẺ CHỮ] **narrator**: Thứ Sáu, 15/11/2024 · Việc ở CLB
 - **narrator**: Chiều thứ Sáu. Duy bày thiết bị ra bàn để kiểm kê cho buổi hướng dẫn cuối kỳ, đếm đi đếm lại.
+- **narrator**: Cuối bàn là một hộp bánh quy đã vơi nửa, nhãn ghi "BQ-09".
+- **tung** (surprised): BQ-09 rồi á?
+- **duy** (neutral): Luật là ai ăn cái cuối thì mua hộp mới. Tớ kiểm kê sau cùng nên lần nào cũng là tớ.
 - **duy** (neutral): Micro không dây không ở ngăn dưới. Sổ tài sản vẫn ghi nó thuộc CLB mình, để ở tủ CLB.
 - **tung** (chi-tay): Tớ cá là ai đó cầm đi rồi quên trả.
 - **minh-anh** (neutral): Mình chưa có căn cứ để gọi là quên hay lấy. Tòa nhà có phiếu luân chuyển thiết bị, tìm trên phiếu trước.

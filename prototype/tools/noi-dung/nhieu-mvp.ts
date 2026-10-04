@@ -443,12 +443,42 @@ function themDonVaPhien(d: BoDuLieuMvp): void {
 
 function themQuyVaChi(d: BoDuLieuMvp): void {
   const quy = bangTheo(d, 'quy');
+  const kc = bangTheo(d, 'khoan_chi');
   if (!quy) return;
   const coQuy = new Set(quy.dong.map((h) => chu(h[0])));
   for (const c of CLB) if (!coQuy.has(c.quy)) quy.dong.push([c.quy, c.ma.toUpperCase(), `Quỹ CLB ${c.ten}`]);
-  // Sổ chi KHÔNG thêm dòng nền: theo truyện, thầy Quang chỉ cho xuất các khoản ghi vào quỹ CLB Thám Tử và khoản liên quan ba đơn
-  // đang xét (sổ không thuộc CLB). Bảng quỹ thì đủ 19 CLB (bảng tra mã quỹ).
+
+  if (!kc) return;
+  const r = xn(2116);
+  // Danh sách các quỹ CLB khác ngoài CLB Thám Tử (Q-TT được bảo toàn riêng cho cốt truyện)
+  const cacQuyKhac = quy.dong
+    .map((h) => chu(h[0]))
+    .filter((q) => q !== 'Q-TT');
+  if (cacQuyKhac.length === 0) return;
+
+  const NGUOI_DUYET = ['Trang', 'Tuấn', 'Nga', 'Long', 'Khoa', 'Châu', 'Bình', 'An', 'Phong', 'Huy', 'Sơn', 'Tú', 'Thư', 'Đức', 'Kiên', 'Hà', 'Vân'] as const;
+  const TIEN_CHAN = [50000, 80000, 100000, 120000, 150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000, 600000, 750000, 850000, 950000];
+
+  const SO_DONG_CAN = 200;
+  const soConLai = SO_DONG_CAN - kc.dong.length;
+  let stt = 11;
+  const ngayDau = tuNgay('2024-09-02');
+  const ngayCuoi = tuNgay('2024-10-25');
+
+  for (let i = 0; i < soConLai; i++) {
+    stt += 1;
+    const maChi = `KC-${stt < 100 ? hai(stt) : stt}`;
+    const q = r.chon(cacQuyKhac);
+    const tien = r.chon(TIEN_CHAN);
+    const nguoi = r.chon(NGUOI_DUYET);
+    const ms = r.so(ngayDau, ngayCuoi);
+    const ngay = raNgay(ms);
+    const coDon = r.co(0.4);
+    const maDon = coDon ? `VPP-${hai(r.so(10, 99))}` : null;
+    kc.dong.push([maChi, maDon, q, tien, nguoi, ngay]);
+  }
 }
+
 
 const TAI_SAN_CLB: readonly [string, string, string][] = [
   ['MC-01', 'Máy chiếu mini', 'TU_CLB'],
@@ -683,6 +713,110 @@ function themDanhSachLopCu(d: BoDuLieuMvp): void {
   b.dong = dongThinh ? [dongThinh, ...tatCa] : tatCa;
 }
 
+/** Bản ghi quẹt thẻ thư viện của Nam từ lúc vào trường (K23, từ 2023 đến nay).
+ * Thêm 27 dòng vào năm học 2023–2024 (23 tối thứ Hai, 4 tối thứ Năm).
+ * Cùng 5 dòng canon năm 2024 (4 thứ Hai, 1 thứ Năm) -> tổng 32 lượt của Nam (27 THU_HAI, 5 THU_NAM).
+ * Bảng kết quả gom theo thứ giữ đúng 2 nhóm: THU_HAI và THU_NAM.
+ * Tối 07/10/2024 không thêm dòng nào -> giữ nguyên đúng 2 người (Nam và Hà Vy).
+ */
+function themQuetTheThuVien(d: BoDuLieuMvp): void {
+  const b = bangTheo(d, 'quet_the_thu_vien');
+  if (!b) return;
+
+  const CAC_NGAY_NAM_CU: [string, 'THU_HAI' | 'THU_NAM', string, string][] = [
+    // Học kỳ 1 (2023–2024): 11 tối thứ Hai, 2 tối thứ Năm
+    ['2023-09-11', 'THU_HAI', '21:30', '23:00'],
+    ['2023-09-18', 'THU_HAI', '21:40', '23:05'],
+    ['2023-09-25', 'THU_HAI', '21:50', '23:00'],
+    ['2023-10-02', 'THU_HAI', '21:35', '22:55'],
+    ['2023-10-09', 'THU_HAI', '21:45', '23:00'],
+    ['2023-10-12', 'THU_NAM', '19:40', '21:15'],
+    ['2023-10-16', 'THU_HAI', '21:50', '23:05'],
+    ['2023-10-23', 'THU_HAI', '21:30', '23:00'],
+    ['2023-10-30', 'THU_HAI', '21:40', '23:00'],
+    ['2023-11-06', 'THU_HAI', '21:55', '23:10'],
+    ['2023-11-13', 'THU_HAI', '21:35', '22:50'],
+    ['2023-11-16', 'THU_NAM', '19:30', '21:00'],
+    ['2023-11-20', 'THU_HAI', '21:45', '23:05'],
+    ['2023-11-27', 'THU_HAI', '21:50', '23:00'],
+    // Học kỳ 2 (2023–2024): 12 tối thứ Hai, 2 tối thứ Năm
+    ['2024-02-19', 'THU_HAI', '21:30', '23:00'],
+    ['2024-02-26', 'THU_HAI', '21:40', '23:00'],
+    ['2024-03-04', 'THU_HAI', '21:50', '23:05'],
+    ['2024-03-11', 'THU_HAI', '21:35', '22:55'],
+    ['2024-03-14', 'THU_NAM', '19:30', '21:00'],
+    ['2024-03-18', 'THU_HAI', '21:45', '23:00'],
+    ['2024-03-25', 'THU_HAI', '21:50', '23:05'],
+    ['2024-04-01', 'THU_HAI', '21:30', '23:00'],
+    ['2024-04-08', 'THU_HAI', '21:40', '23:00'],
+    ['2024-04-15', 'THU_HAI', '21:55', '23:10'],
+    ['2024-04-18', 'THU_NAM', '19:45', '21:15'],
+    ['2024-04-22', 'THU_HAI', '21:35', '22:50'],
+    ['2024-05-06', 'THU_HAI', '21:45', '23:05'],
+  ];
+
+  for (const [ngay, thu, vao, ra] of CAC_NGAY_NAM_CU) {
+    b.dong.push(['Nam', ngay, thu, vao, ra]);
+  }
+
+  // Lịch sử của Duy (Năm 2, chuyên cần lên thư viện vào thứ Ba và thứ Sáu hàng tuần, không đi thứ Hai):
+  // 35 lượt trong suốt các học kỳ 2023–2024 và 2024–2025 -> tổng bảng đạt 72 dòng.
+  const CAC_NGAY_DUY: [string, 'THU_BA' | 'THU_SAU', string, string][] = [
+    // HK1 2023-2024
+    ['2023-09-12', 'THU_BA', '14:00', '17:00'],
+    ['2023-09-15', 'THU_SAU', '14:30', '17:15'],
+    ['2023-09-19', 'THU_BA', '14:00', '16:45'],
+    ['2023-09-22', 'THU_SAU', '15:00', '17:30'],
+    ['2023-10-03', 'THU_BA', '14:15', '17:00'],
+    ['2023-10-06', 'THU_SAU', '14:00', '16:30'],
+    ['2023-10-17', 'THU_BA', '14:30', '17:00'],
+    ['2023-10-20', 'THU_SAU', '14:00', '17:15'],
+    ['2023-10-31', 'THU_BA', '14:00', '16:45'],
+    ['2023-11-03', 'THU_SAU', '14:30', '17:00'],
+    ['2023-11-14', 'THU_BA', '14:00', '17:00'],
+    ['2023-11-17', 'THU_SAU', '15:00', '17:30'],
+    ['2023-11-28', 'THU_BA', '14:15', '16:50'],
+    ['2023-12-01', 'THU_SAU', '14:00', '17:00'],
+    ['2023-12-12', 'THU_BA', '14:00', '16:30'],
+    // HK2 2023-2024
+    ['2024-02-20', 'THU_BA', '14:00', '17:00'],
+    ['2024-02-23', 'THU_SAU', '14:30', '17:15'],
+    ['2024-03-05', 'THU_BA', '14:00', '16:45'],
+    ['2024-03-08', 'THU_SAU', '15:00', '17:30'],
+    ['2024-03-19', 'THU_BA', '14:15', '17:00'],
+    ['2024-03-22', 'THU_SAU', '14:00', '16:30'],
+    ['2024-04-02', 'THU_BA', '14:30', '17:00'],
+    ['2024-04-05', 'THU_SAU', '14:00', '17:15'],
+    ['2024-04-16', 'THU_BA', '14:00', '16:45'],
+    ['2024-04-19', 'THU_SAU', '14:30', '17:00'],
+    ['2024-05-07', 'THU_BA', '14:00', '17:00'],
+    ['2024-05-10', 'THU_SAU', '15:00', '17:30'],
+    ['2024-05-14', 'THU_BA', '14:15', '16:50'],
+    ['2024-05-17', 'THU_SAU', '14:00', '17:00'],
+    ['2024-05-21', 'THU_BA', '14:00', '16:30'],
+    ['2024-05-24', 'THU_SAU', '14:30', '17:00'],
+    // HK1 2024-2025
+    ['2024-09-17', 'THU_BA', '14:00', '17:00'],
+    ['2024-09-20', 'THU_SAU', '14:30', '17:15'],
+    ['2024-09-24', 'THU_BA', '14:00', '16:45'],
+    ['2024-10-04', 'THU_SAU', '14:00', '17:00'],
+  ];
+
+  for (const [ngay, thu, vao, ra] of CAC_NGAY_DUY) {
+    b.dong.push(['Duy', ngay, thu, vao, ra]);
+  }
+
+  // Sắp xếp lại bảng theo ngày tăng dần, sau đó giờ vào
+  b.dong.sort((x, y) => {
+    const ngX = chu(x[1]);
+    const ngY = chu(y[1]);
+    if (ngX !== ngY) return ngX < ngY ? -1 : 1;
+    const vX = chu(x[3]);
+    const vY = chu(y[3]);
+    return vX < vY ? -1 : 1;
+  });
+}
+
 /** Thêm dữ liệu nền vào bộ dữ liệu đã đọc từ du-lieu.md (sửa tại chỗ, trả lại chính nó). */
 export function themNhieuMvp<T extends BoDuLieuMvp>(d: T): T {
   themLop(d);
@@ -700,5 +834,7 @@ export function themNhieuMvp<T extends BoDuLieuMvp>(d: T): T {
   themLuotDon(d);
   themLichVaDangKy(d);
   themDanhSachLopCu(d);
+  themQuetTheThuVien(d);
   return d;
 }
+

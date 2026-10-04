@@ -15,9 +15,10 @@ export interface ManChieuMvpProps {
   duLieu: BoDuLieuMvp | null;
   nut: Extract<NutMvp, { type: 'projector' }>;
   onTiep: () => void;
+  onDaXemTruyVan?: (sql: string) => void;
 }
 
-export function ManChieuMvp({ kb, duLieu, nut, onTiep }: ManChieuMvpProps) {
+export function ManChieuMvp({ kb, duLieu, nut, onTiep, onDaXemTruyVan }: ManChieuMvpProps) {
   const sql = sqlCuaManChieu(kb, nut);
   // Kết quả gắn với câu SQL đã chạy: đổi câu → kết quả cũ không hiện (không cần setState đầu effect).
   const [daChay, setDaChay] = useState<{ sql: string; kq: KetQuaChay } | null>(null);
@@ -51,7 +52,7 @@ export function ManChieuMvp({ kb, duLieu, nut, onTiep }: ManChieuMvpProps) {
       ) : null}
       {nut.run && kq && !kq.ok ? <p className="game__error">Không chạy được: {kq.thongDiep}</p> : null}
       <div className="mvp-lop__nut">
-        <button type="button" className="btn btn--primary" onClick={onTiep} autoFocus>
+        <button type="button" className="btn btn--primary" onClick={() => { if (kq?.ok && sql) onDaXemTruyVan?.(sql); onTiep(); }} autoFocus>
           Tiếp tục
         </button>
       </div>

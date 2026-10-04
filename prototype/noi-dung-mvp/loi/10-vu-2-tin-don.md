@@ -5,6 +5,9 @@
 ## tin-mo.1
 - [THẺ CHỮ] **narrator**: Thứ Tư, 09/10/2024
 - **narrator**: Hơn hai tuần sau buổi họp rà soát. Chiều thứ Tư, phòng CLB.
+- **narrator**: Trên bàn có một hộp bánh quy mới, nắp dán nhãn viết tay: "Tài sản CLB. BQ-04. Người mua: Duy."
+- **tung** (surprised): BQ-04? Hôm trước mới là hộp đầu tiên mà.
+- **duy** (neutral): Ba hộp kia hết trong tuần các cậu kiểm tra giữa kỳ. Tớ ăn cái cuối cả ba lần.
 - **minh-anh** (serious): Từ tối thứ Hai, kênh sinh viên chuyền nhau một tin về CLB mình. Sáng nay cô Lan gọi chị lên hỏi.
 - **tung** (surprised): Tin gì thế ạ?
 - [DÀN DỰNG] {{nv.hieu}} lớp Báo chí ló đầu vào cửa, tay cầm điện thoại.

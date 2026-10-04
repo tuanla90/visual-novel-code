@@ -2,12 +2,25 @@
 
 <!--Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/00-mo-dau.md. [DÀN DỰNG] không hiện cho người chơi (đặc tả: ghi chú cho người dựng) — thứ người chơi cần biết phải nằm trong lời dẫn / thoại. Không câu hướng dẫn thao tác (ĐÃ CHỐT C). Đã áp DX-01 (01/10): lời md-02, md-04, md-05, md-06 đã xóa. Đã áp bản rà docs/thiet-ke/ra-soat-loi-chuong-1-2026-09-30.md. -->
 
+## md-00-tren-xe.1
+- [THẺ CHỮ] **narrator**: Chủ nhật, 08/09/2024 · Chuyến xe buýt lên Hà Nội
+- **narrator**: Tay vịn rung theo từng ổ gà. Cửa kính kéo hé, gió lùa vào mang theo mùi bụi đường và mùi nắng đầu thu.
+- **player**: (Vậy là lên Hà Nội thật rồi.)
+- **player**: (Sáng nay mẹ còn nhét thêm hộp ruốc vào vali, dặn đi dặn lại: ăn đúng bữa, đừng thức khuya, có chuyện gì thì gọi về ngay.)
+- **player**: (Đỗ Đại học Chấn Hưng. Đọc giấy báo trúng tuyển đến lần thứ ba mình mới dám tin.)
+- **narrator**: Ngoài cửa sổ, ruộng lúa thưa dần, nhà cao tầng dày lên, biển quảng cáo chen nhau sát mép đường.
+- **player**: (Một mình giữa thành phố to thế này, nghĩ cũng hơi run. Nhưng mà háo hức nhiều hơn.)
+- **player**: (Ở ký túc xá, gặp người mới, học những thứ chưa từng học. Không biết bốn năm tới sẽ thế nào.)
+- **player**: (Mong là mình không phí nó. Biết đâu sau này ra trường, nhà mình đỡ vất vả hơn.)
+- **narrator**: Xe chậm dần. Giọng phụ xe vọng xuống dọc lối đi: "Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!"
+- **player**: (Tới rồi. Phòng 408… Đi thôi.)
+
 ## md-00-xe-buyt.1
 > NHIỆM VỤ: Tìm đường vào ký túc xá
 > NHẮC VIỆC player: Tìm ký túc xá đã. Thông báo chỉ ghi: phòng 408.
 
 ## md-00-xe-buyt.2
-- [THẺ CHỮ] **narrator**: Chủ nhật, 08/09/2024 · Đại học Chấn Hưng
+- [THẺ CHỮ] **narrator**: Đại học Chấn Hưng · Cổng trường
 - [DÀN DỰNG] Xe buýt vừa chạy khỏi trạm; người chơi đứng trên vỉa hè cạnh vali. Nền: cổng hai trụ, thanh chắn, tòa mái ngói đỏ bên trái, tòa kính bên phải.
 - **narrator**: Xe buýt dừng trước cổng trường. Cửa vừa mở, hơi nóng đầu giờ chiều hắt thẳng vào mặt.
 - **player**: (Phòng 408. Ký túc xá nằm đâu thì thông báo không ghi…)
@@ -114,17 +127,26 @@
 
 ## md-08-tuan-cong-dan.1
 - [THẺ CHỮ] **narrator**: Thứ Hai 09/09 → thứ Sáu 13/09/2024 · Tuần sinh hoạt công dân
-- **narrator**: Cả tuần ngồi hội trường nghe nội quy. Buổi cuối, mỗi người được phát một tấm thẻ lịch in theo khoa, dưới cùng có dòng "Họ tên / Lớp".
-- **player**: (Viết tên vào luôn, kẻo lẫn với thẻ người khác.)
+- **tung** (happy): Tuần này tớ ngồi bàn đầu, chép đủ từng chữ. Tớ cá luôn.
+
+## md-08-tuan-cong-dan.1b
+- **narrator**: Thứ Tư. Bàn cuối. Tùng ngủ gục trên cuốn sổ mới chép được đúng dòng tiêu đề, bút vẫn kẹp trong tay.
+- **narrator**: Thứ Sáu, cả hội trường xếp hàng chụp ảnh thẻ. Ai cũng bảo ảnh mình xấu, rồi lén xem ảnh người đứng sau.
+- **narrator**: Cả tuần ngồi hội trường nghe nội quy. Buổi cuối, mỗi người được phát một tấm thẻ lịch in theo khoa, dưới cùng có dòng "Họ tên / Lớp" để tự viết.
+- **player**: (Viết tên vào luôn, kẻo lẫn với thẻ của ai.)
 
 ## md-09-ngay-hoi.1
 > NHIỆM VỤ: Ghé bàn CLB Thám Tử
 > NHẮC VIỆC tung (chi-tay): Bàn Thám Tử ở góc kia. Tớ cá là vắng nhất sân.
 
 ## md-09-ngay-hoi.2
-- [DÀN DỰNG] Nền nhà văn hóa ngày hội (nền chưa vẽ người); gian Robotics bên trái, cờ in hình bánh răng (ảnh cần vẽ thêm — xem báo cáo rà soát A4/A5); bàn Thám Tử bên phải.
-- **narrator**: Sân nhà văn hóa giăng cờ, bàn CLB kê kín lối đi. Gian Robotics rộng nhất, cờ in hình bánh răng, bảng dán "Đang xin mở rộng xưởng thực hành".
+- [DÀN DỰNG] Nền nhà văn hóa ngày hội, sân đông sinh viên: gian Robotics bên trái đông nhất (bàn gấp trơn, xe robot tự chế, biển bìa vẽ tay bánh răng nhỏ), dọc bậc thềm là mấy gian CLB khác bàn trơn, mỗi gian vài người; bàn Thám Tử khăn trắng bên phải, một ghế gấp, bảng trống, không ai đứng gần.
+- **narrator**: Sân nhà văn hóa đông nghịt. Gian Robotics có chiếc xe robot tự chế trên bàn, mấy bạn đứng chen nhau xem.
 - **narrator**: Bàn CLB Thám Tử nằm tận trong góc, chỉ có một chị ngồi trực.
+- **tung** (happy): Tớ chỉ đi xem thôi nhé. Không đăng ký CLB nào đâu, năm nhất phải lo học.
+
+## md-09-ngay-hoi.2b
+- **narrator**: Mười phút sau, trên tay Tùng có bốn tờ đăng ký, một cái quạt giấy của CLB Guitar và nửa cái bánh rán của CLB Nấu ăn.
 - **tung** (neutral): Chị ơi, đây là bàn CLB Thám Tử ạ? Chị là thành viên ở đây ạ?
 - **minh-anh** (neutral): Ừ. Chị trực bàn hôm nay.
 - **tung** (neutral): CLB mình đang điều tra vụ nào không chị?
@@ -141,7 +163,7 @@
 - **player**: Chị cho em thử lọc một cái được không ạ?
 
 ## md-09-ngay-hoi.3
-- **player**: Ba người tên {{nv.tung}}. Thêm ngành Du lịch thì còn đúng một dòng. Mã ở ô đầu: SV240251.
+- **player**: Ngành Du lịch lọc ra còn mấy chục bạn. Thêm tên {{nv.tung}} thì đúng một người. Mã ở ô đầu: SV240251.
 - **narrator**: {{nv.tung}} dán tờ giấy ghi mã lên phiếu, chép lại từng số.
 - **minh-anh** (neutral): …Nhanh thật. Tối thứ Ba Trung thu, CLB liên hoan ở sân ký túc xá. Hai em tới nhé.
 - **tung** (gai-dau): Lại cậu. Hôm nhập học tớ dò bảng xếp phòng cũng chậm hơn cậu.

@@ -10,6 +10,7 @@
 
 - [NGÀY 2024-10-20]
 - [LỜI v3-mo.qua.1]
+- [ẢNH chibi-khao-tra-da]
 - [RẼ NHÁNH qua-2010-hoai] tung: "Tớ nên tặng gì đây?"
   - {id: qua-hong} Bông hồng sáp sặc sỡ → hậu quả: đi tới v3-qua-hong
   - {id: qua-gau} Con gấu bông đội mũ cử nhân → hậu quả: đi tới v3-qua-gau
@@ -48,8 +49,8 @@
 
 - [LỜI v3-xuong.1]
 - [KHÁM PHÁ kp-toi-v3-xuong]
-  - nv:nam · x 60% · y 100% · rộng 15% → v3-xuong-vao · dấu: ! · nhãn: Nam
-  - vung:bang-trang · x 73% · y 30% · rộng 12% → v3-xuong-an · nhãn: Bảng trắng trên tường
+  - nv:nam · x 48% · y 100% · rộng 15% → v3-xuong-vao · dấu: ! · nhãn: Nam
+  - vung:bang-trang · x 73% · y 30.5% · rộng 16% → v3-xuong-an · nhãn: Bảng trắng trên tường
 
 ### v3-xuong-vao — Tới nơi: Xưởng Robotics: Nam mở bản xuất bài đăng của kênh {cảnh: xuong-robot}
 
@@ -97,7 +98,7 @@
 - [ĐỐI CHẤT dc-nam] tung: "Tài khoản kênh của Robotics gửi tin lúc 22:40. Nam trực kênh. Tối đó xưởng mở, Nam bảo về sớm mà **không ai làm chứng**. Tớ cá là Nam gửi."
   - [CÂU HỎI] Lúc 22:40 tối 07/10, khi tin được gửi, Nam đang ở đâu? Trình thẻ cho biết điều đó.
   - {ev-toi-07} [ĐỦ CĂN CỨ] → phản hồi: **ha-vy** (neutral): Tối 07/10, cửa từ thư viện ghi Nam vào 21:50, ra 23:05. Tin gửi 22:40.<br>**tung** (surprised): Quẹt vào rồi trèo cửa sổ ra thì sao?<br>**ha-vy** (neutral): Tớ ngồi cách cậu ấy hai bàn, cùng tối đó. Tớ nhớ lúc chuông 22 giờ 30 nhắc sắp đóng cửa, cậu ấy còn đang xếp sách. Thẻ của tớ ghi tớ ở đó tới 23 giờ.<br>**ha-vy** (neutral): Và máy gửi tin nằm trong phòng văn phòng xưởng, cách thư viện cả một sân trường.<br>**minh-anh** (neutral): Cửa từ là nguồn độc lập, có giờ vào giờ ra; lời Vy khớp đúng quãng giữa; chỗ gửi tin thì cách xa. Đủ để không mời Nam lên.
-  - {ev-nam-thu} [HỖ TRỢ] → phản hồi: **ha-vy** (thinking): Bốn tối thứ Hai có trong tệp, tối nào Nam cũng ở thư viện. Một thói quen. Thói quen thì chưa phải bằng chứng cho đúng tối đó.<br>**tung** (gai-dau): Thì có thể tối đó cậu ấy nghỉ một hôm.
+  - {ev-nam-thu} [HỖ TRỢ] → phản hồi: **ha-vy** (thinking): Hai mươi bảy tối thứ Hai có trong tệp, tối nào Nam cũng ở thư viện. Một thói quen từ năm ngoái. Thói quen thì chưa phải bằng chứng cho đúng tối đó.<br>**tung** (gai-dau): Thì có thể tối đó cậu ấy nghỉ một hôm.
   - {ev-vy-thu-vien} [HỖ TRỢ] → phản hồi: **ha-vy** (neutral): Tối thứ Hai nào tớ cũng ở thư viện, thẻ của tớ ghi thế. Nên lời tớ kể về tối đó không phải nhớ bừa.<br>**duy** (neutral): Lời chứng mà đếm được thì nặng hơn lời chứng suông.
   - {ev-bai-thiet-bi} [HỖ TRỢ] → phản hồi: **ha-vy** (thinking): Tám bài từ điện thoại trực, một bài từ máy văn phòng xưởng. Bài tin đồn khác hẳn thói quen đăng của kênh.<br>**tung** (worried): Khác thói quen thôi. Ai cấm Nam đổi máy một hôm.
   - {ev-tin-goc} [GỢI Ý] → phản hồi: **tung** (chi-tay): Chính phiếu này nói tài khoản Robotics gửi. Cậu đang củng cố cho tớ đấy.<br>**duy** (neutral): Tài khoản. Chưa phải người.
@@ -142,7 +143,7 @@
 ### v3-bd-thu-vien — Bản đồ Vụ 3 (tùy chọn): ghé thư viện {cảnh: thu-vien}
 
 - [KHÁM PHÁ kp-toi-v3-bd-thu-vien]
-  - nv:ha-vy · x 72% · y 100% · rộng 15% → v3-bd-thu-vien-vao · dấu: ! · nhãn: Hà Vy
+  - nv:ha-vy · x 45% · y 100% · rộng 15% → v3-bd-thu-vien-vao · dấu: ! · nhãn: Hà Vy
   - vung:quay · x 58% · y 40% · rộng 8% → v3-bd-thu-vien-an · nhãn: Quầy thủ thư
 
 ### v3-bd-thu-vien-vao — Tới nơi: Bản đồ Vụ 3 (tùy chọn): ghé thư viện {cảnh: thu-vien}
@@ -156,8 +157,8 @@
 ### v3-bd-tra-da — Bản đồ Vụ 3 (tùy chọn): quán trà đá, chuyện một kết luận sai {cảnh: tra-da}
 
 - [KHÁM PHÁ kp-toi-v3-bd-tra-da]
-  - nv:ba-lua · x 30% · y 100% · rộng 15% → v3-bd-tra-da-vao · dấu: ! · nhãn: Bà bán trà đá
-  - vung:xe-dap · x 62% · y 55% · rộng 10% → v3-bd-tra-da-an · nhãn: Chiếc xe đạp cũ
+  - nv:ba-lua · x 46% · y 100% · rộng 15% → v3-bd-tra-da-vao · dấu: ! · nhãn: Bà bán trà đá
+  - vung:xe-dap · x 62.5% · y 53% · rộng 16% → v3-bd-tra-da-an · nhãn: Chiếc xe đạp cũ
 
 ### v3-bd-tra-da-vao — Tới nơi: Bản đồ Vụ 3 (tùy chọn): quán trà đá, chuyện một kết luận sai {cảnh: tra-da}
 

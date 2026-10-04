@@ -6,6 +6,7 @@
  * `--code-text-bg` / `--code-text-fg` đặt ở khung chứa (gói hinh-giao-dien có thể thay bằng lớp CSS).
  */
 import type { CSSProperties } from 'react';
+import { HighlightText } from '../highlight/HighlightText';
 
 const CODE_STYLE: CSSProperties = {
   fontFamily: 'var(--font-mono)',
@@ -24,7 +25,7 @@ export interface CodeTextProps {
 }
 
 export function CodeText({ text }: CodeTextProps) {
-  if (!text.includes('`')) return <>{text}</>;
+  if (!text.includes('`')) return <HighlightText text={text} />;
   const parts = text.split('`');
   // Số dấu lẻ → mẩu cuối không có dấu đóng: ghép lại thành chữ thường (bỏ dấu lẻ).
   const unmatched = parts.length % 2 === 0;
@@ -36,7 +37,7 @@ export function CodeText({ text }: CodeTextProps) {
         {part}
       </code>
     ) : (
-      <span key={i}>{part}</span>
+      <span key={i}><HighlightText text={part} /></span>
     );
   });
   return <>{nodes}</>;

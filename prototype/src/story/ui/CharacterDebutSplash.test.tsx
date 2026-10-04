@@ -36,4 +36,25 @@ describe('CharacterDebutSplash — Hiệu ứng xuất hiện nhân vật mới 
 
     expect(screen.getByRole('button', { name: 'Tiếp tục' })).toHaveFocus();
   });
+
+  it('đặt thẻ chữ sang bên phải (is-text-right) cho Quân và Hà Vy để không che nhân vật đứng bên trái', () => {
+    const { container: cQuan } = render(<CharacterDebutSplash characterId="quan" onDismiss={() => {}} />);
+    const cardQuan = cQuan.querySelector('.chara-debut__card--intro');
+    expect(cardQuan).toHaveClass('is-text-right');
+    expect(cardQuan).not.toHaveClass('is-text-left');
+
+    const { container: cHaVy } = render(<CharacterDebutSplash characterId="ha-vy" onDismiss={() => {}} />);
+    const cardHaVy = cHaVy.querySelector('.chara-debut__card--intro');
+    expect(cardHaVy).toHaveClass('is-text-right');
+    expect(cardHaVy).not.toHaveClass('is-text-left');
+  });
+
+  it('thiết lập đồng bộ cả 3 biến CSS accent, grad và glow từ accentColor', () => {
+    render(<CharacterDebutSplash characterId="minh-anh" onDismiss={() => {}} />);
+    const dialog = screen.getByRole('dialog');
+    const styleAttr = dialog.getAttribute('style') ?? '';
+    expect(styleAttr).toContain('--debut-accent: #f87171');
+    expect(styleAttr).toContain('--debut-accent-grad:');
+    expect(styleAttr).toContain('--debut-accent-glow:');
+  });
 });

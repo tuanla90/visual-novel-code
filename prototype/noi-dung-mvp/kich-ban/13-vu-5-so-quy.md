@@ -59,6 +59,7 @@
 - [THỬ THÁCH c-chi-theo-nguoi-duyet]
 - [LỜI v5-so-quy.3]
 - [THỬ THÁCH c-chi-vuot-muc]
+- [ẢNH chibi-so-lieu-day]
 - [LỜI v5-so-quy.4]
 - [LỜI v5-so-quy.5]
 - [HẬU QUẢ] mở manh mối clue-so-phong-may, mở manh mối clue-in-toi-15-9
@@ -123,6 +124,7 @@
 
 ### v5-so-do — Khánh thắng một nhịp: "em vào in sơ đồ" {cảnh: phong-hop}
 
+- [ẢNH cg-bang-chung-day]
 - [ĐỐI CHẤT dc-khanh-so-do] thay-quang: "Em Khánh nói **vào phòng máy để in sơ đồ cho đội**. Nghe hợp lý. Các em còn gì về tối hôm ấy không? Không thì thầy dừng phần lá thư ở đây."
   - [CÂU HỎI] Tối 15/9, tài khoản Robotics in những lệnh nào, lúc mấy giờ? Lúc Khánh ở trong phòng có lệnh in sơ đồ nào không? Trình thẻ cho biết điều đó.
   - {clue-in-toi-15-9} [ĐỦ CĂN CỨ] → phản hồi: **khanh** (neutral): Sơ đồ tôi in thì các bạn đâu có tra.<br>**player**: Em tra rồi ạ. Tối 15/9 tài khoản Robotics in đúng hai lệnh: 20 giờ 40 và 23 giờ 10.<br>**ha-vy** (neutral): 20 giờ 40 là sơ đồ mạch, lúc ấy chị Thảo còn trong phòng. 23 giờ 10 là lá thư. Còn cả phòng máy, từ 22 giờ 40 tới 23 giờ 20, chỉ có ba lệnh in: một đồ án, một báo cáo nhóm của hai bạn khác, và lá thư. Không có sơ đồ nào, bằng tài khoản nào cũng không.<br>**thay-quang** (neutral): Em Khánh, vậy sơ đồ của em đâu?<br>**khanh** (neutral): …
@@ -230,8 +232,8 @@
 ### v5-bd-tra-da — Bản đồ Vụ 5 (tùy chọn): quán trà đá, "cậu trà nóng" giờ ở đâu {cảnh: tra-da}
 
 - [KHÁM PHÁ kp-toi-v5-bd-tra-da]
-  - nv:ba-lua · x 30% · y 100% · rộng 15% → v5-bd-tra-da-vao · dấu: ! · nhãn: Bà bán trà đá
-  - vung:xe-dap · x 62% · y 55% · rộng 10% → v5-bd-tra-da-an · nhãn: Chiếc xe đạp cũ
+  - nv:ba-lua · x 46% · y 100% · rộng 15% → v5-bd-tra-da-vao · dấu: ! · nhãn: Bà bán trà đá
+  - vung:xe-dap · x 62.5% · y 53% · rộng 16% → v5-bd-tra-da-an · nhãn: Chiếc xe đạp cũ
 
 ### v5-bd-tra-da-vao — Tới nơi: Bản đồ Vụ 5 (tùy chọn): quán trà đá, "cậu trà nóng" giờ ở đâu {cảnh: tra-da}
 

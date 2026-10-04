@@ -2,6 +2,11 @@
 
 <!-- Theo kịch bản khung mục 3, đã áp DX-01 (01/10/2026): bỏ md-02 bản đồ, md-04 căng tin, md-05 phòng máy; md-06 bảng tin gộp vào md-07. Nối: md-01 → md-03 → md-07 → md-08 → md-09. Thoại bản hội đồng v1 (29/09): giọng sinh viên miền Bắc, tớ/cậu. -->
 
+### md-00-tren-xe — Chủ nhật tuần 1: trên chuyến xe buýt lên Hà Nội {cảnh: xe-buyt}
+
+- [LỜI md-00-tren-xe.1]
+- [ĐI TỚI md-00-xe-buyt]
+
 ### md-00-xe-buyt — Chủ nhật tuần 1: xuống xe buýt trước cổng trường {cảnh: cong-truong}
 
 - [LỜI md-00-xe-buyt.1]
@@ -73,7 +78,7 @@
 
 - [LỜI md-01-ktx.2]
 - [ẢNH chibi-408-vali]
-- [ẢNH chibi-408-nam-bep]
+- [ẢNH chibi-vali-tho]
 - [ĐI TỚI md-03-toa-b]
 
 ### md-03-toa-b — Sảnh tòa B: cái hộp tôn cũ {cảnh: sanh-toa-b}
@@ -91,6 +96,8 @@
 ### md-08-tuan-cong-dan — Chuyển cảnh: tuần sinh hoạt công dân {cảnh: hoi-truong}
 
 - [LỜI md-08-tuan-cong-dan.1]
+- [ẢNH chibi-ngu-gat]
+- [LỜI md-08-tuan-cong-dan.1b]
 - [HIỆN TÀI LIỆU doc-the-lich-cua-toi]
 - [ĐI TỚI md-09-ngay-hoi]
 
@@ -99,10 +106,12 @@
 - [LỜI md-09-ngay-hoi.1]
 
 - [LỜI md-09-ngay-hoi.2]
+- [ẢNH chibi-ngay-hoi]
+- [LỜI md-09-ngay-hoi.2b]
 - [LỌC THỬ lt-ngay-hoi · 1 dòng · chọn ma_sv = SV240251]
 
 ```sql
-SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';
+SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';
 ```
 
 - [LỜI md-09-ngay-hoi.3]
@@ -166,7 +175,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
   - vung:gian-robotics · x 74% · y 50% · rộng 17% → md-10-gian-robotics · dấu: ? · nhãn: Gian đèn ông sao
   - vung:balo-banh-rang · x 77% · y 70% · rộng 8% → md-10-balo-banh-rang · nhãn: Balo trên ghế xanh
   - vung:ap-phich · x 89% · y 38% · rộng 9% → md-10-ap-phich · nhãn: Áp phích trên bảng tin
-  - nv:ha-vy · x 91% · y 100% · rộng 14% → md-10-ha-vy-goi · dấu: ? · nhãn: Hà Vy
+  - nv:ha-vy · x 58% · y 100% · rộng 14% → md-10-ha-vy-goi · dấu: ? · nhãn: Hà Vy
 - [LỜI md-10-mat-banh.2]
 - [ĐI TỚI md-10-hoi-banh]
 
@@ -218,7 +227,6 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
 - [LỜI md-11-la-thu.2]
 - [HẬU QUẢ] mở manh mối clue-chu-ky-h
 - [LỜI md-11-la-thu.3a]
-- [ẢNH cg-nghi-di-tung-ha-vy]
 - [LỜI md-11-la-thu.3b]
 
 ### md-10-soi-ban-do — Quan sát Tùng: tờ bản đồ trên tay {cảnh: san-ktx-trung-thu}

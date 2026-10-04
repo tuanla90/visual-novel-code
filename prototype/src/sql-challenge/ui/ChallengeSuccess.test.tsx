@@ -108,13 +108,13 @@ describe('Thành công → câu đọc kết quả → Lưu vào hồ sơ', () =
     await user.click(screen.getByRole('button', { name: /Chạy truy vấn/ }));
     await screen.findByText('10 dòng');
     await passPressGuard();
-    await user.dblClick(screen.getByRole('button', { name: 'Những người có họ đệm bắt đầu bằng H.' }));
+    const btnSai = screen.getByRole('button', { name: 'Những người có họ đệm bắt đầu bằng H.' });
+    await user.dblClick(btnSai);
+    // Cú bấm ngay sau lần chọn (trong khoảng khóa) cũng không tính.
+    await user.click(btnSai);
     expect(eventsOf('question_answered')).toHaveLength(1);
     expect(eventsOf('question_answered')[0]).toMatchObject({ choiceId: 'ho-h', attempt: 1, isFirstChoice: true });
     expect(screen.getByText(/Điều kiện đặt ở cột ten, không phải ho_dem/)).toBeInTheDocument();
-    // Cú bấm ngay sau lần chọn (trong khoảng khóa) cũng không tính.
-    await user.click(screen.getByRole('button', { name: 'Những người có họ đệm bắt đầu bằng H.' }));
-    expect(eventsOf('question_answered')).toHaveLength(1);
     await passPressGuard();
     await user.click(screen.getByRole('button', { name: 'Những người có tên gọi bắt đầu bằng H.' }));
     expect(eventsOf('question_answered').map((e) => [e.attempt, e.correct])).toEqual([

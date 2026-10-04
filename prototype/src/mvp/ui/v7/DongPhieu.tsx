@@ -53,11 +53,29 @@ export const DongPhieu = forwardRef<DongPhieuRef, { tong: number }>(function Don
     // Lưới chiếm ~62% bề ngang (con số lớn nằm bên phải); phiếu giữ tỉ lệ 11:8, to tối đa 46px để ít dòng vẫn ra dáng phiếu.
     const vungW = w * 0.62 - 16;
     const vungH = h - 28;
+
+    // Chọn số cột tròn chục (10, 20, 30, 40, 50...) để người chơi dễ ước lượng số lượng (không dùng số cột lẻ).
     let cot = Math.max(1, Math.ceil(Math.sqrt((n * vungW) / (vungH * 1.35))));
-    let pw = Math.min(vungW / cot, 46);
+    if (n >= 40) {
+      const boiSo10 = [20, 30, 40, 50, 60];
+      cot = 40;
+      for (const c of boiSo10) {
+        const hC = Math.ceil(n / c);
+        const wO = vungW / (c + Math.floor(c / 10) * 0.4);
+        if (hC * wO * 0.78 <= vungH) {
+          cot = c;
+          break;
+        }
+      }
+    }
+
+    const soBlock10 = Math.floor(cot / 10);
+    const kheChuc = cot >= 20 ? 8 : 0;
+    const tongKhe = Math.max(0, soBlock10 - 1) * kheChuc;
+    let pw = Math.min((vungW - tongKhe) / cot, 46);
     while (Math.ceil(n / cot) * pw * 0.78 > vungH && cot < n) {
-      cot++;
-      pw = Math.min(vungW / cot, 46);
+      cot = Math.min(n, cot + (cot >= 20 ? 10 : 1));
+      pw = Math.min((vungW - Math.max(0, Math.floor(cot / 10) - 1) * kheChuc) / cot, 46);
     }
     const ph = pw * 0.78;
     const cw = pw - Math.max(2, pw * 0.14);
@@ -66,6 +84,17 @@ export const DongPhieu = forwardRef<DongPhieuRef, { tong: number }>(function Don
     const ox = 14;
     const oy = Math.max(12, (h - hang * ph) / 2);
     const bo = Math.min(4, cw * 0.18);
+
+    const toaDoO = (k: number) => {
+      const c = k % cot;
+      const r = Math.floor(k / cot);
+      const b = kheChuc > 0 ? Math.floor(c / 10) : 0;
+      return {
+        x: ox + c * pw + b * kheChuc,
+        y: oy + r * ph,
+      };
+    };
+
     const now = performance.now();
     let dangDong = false;
     for (let m = 0; m < MAU_PHIEU.length; m++) {
@@ -73,8 +102,7 @@ export const DongPhieu = forwardRef<DongPhieuRef, { tong: number }>(function Don
       cx.beginPath();
       for (let k = 0; k < n; k++) {
         if (s.mau[k] !== m || (s.roi[k] ?? Infinity) <= now) continue;
-        const x = ox + (k % cot) * pw;
-        const y = oy + Math.floor(k / cot) * ph;
+        const { x, y } = toaDoO(k);
         if (cx.roundRect) cx.roundRect(x, y, cw, ch, bo);
         else cx.rect(x, y, cw, ch);
       }
@@ -96,9 +124,10 @@ export const DongPhieu = forwardRef<DongPhieuRef, { tong: number }>(function Don
       if (t >= 1) continue;
       dangDong = true;
       const e = de(t);
+      const { x, y } = toaDoO(k);
       cx.save();
       cx.globalAlpha = 1 - e;
-      cx.translate(ox + (k % cot) * pw + cw / 2, oy + Math.floor(k / cot) * ph + ch / 2 + h * 0.7 * e);
+      cx.translate(x + cw / 2, y + ch / 2 + h * 0.7 * e);
       cx.rotate(e * 2.8);
       cx.fillStyle = MAU_PHIEU[s.mau[k] ?? 0] ?? '#fff';
       cx.fillRect(-cw / 2, -ch / 2, cw, ch);

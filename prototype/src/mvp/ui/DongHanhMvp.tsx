@@ -1,60 +1,144 @@
-/**
- * BẠN ĐỒNG HÀNH (user chốt 02/10/2026: bộ ba người chơi – Tùng – Hà Vy): dải ảnh mặt tròn "Đi cùng" ở góc trên phải sân khấu,
- * cho người chơi luôn thấy ai đang đi với mình. Ai có mặt lấy từ chính kịch bản: Tùng / Hà Vy có lời trong chuỗi đang chạy thì
- * đang đi cùng. Bấm một người: người ấy nói lại việc đang nhắc (nếu chính họ nhắc), không thì một câu đúng giọng
- * (Tùng nói về người, Hà Vy nói về dữ liệu).
- */
-import { useState } from 'react';
+/** Chat AI tùy chọn cho Tùng và Hà Vy, dùng ngữ cảnh chỉ gồm sự kiện từng nhân vật đã chứng kiến. */
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import type { KichBanMvp } from '../../content/mvp/types';
 import type { TrangThaiMvp } from '../engine/trang-thai';
+import { useKhoMvp } from '../store/kho-mvp';
+import { banDangCoMat, khoaNguCanhDongHanh, type BanDongHanhMvp as BanBe } from '../engine/tri-nho-dong-hanh';
+import { taoNguCanhDongHanh } from '../engine/ngu-canh-dong-hanh';
 import { anhChanDung } from './anh-mvp';
+import { HighlightText } from '../../shared/highlight/HighlightText';
 
-const BO_BA = ['tung', 'ha-vy'] as const;
+export function DongHanhMvp({
+  kb,
+  s,
+  visible = true,
+}: {
+  kb: KichBanMvp;
+  s: TrangThaiMvp;
+  visible?: boolean;
+}) {
+  const ds = banDangCoMat(kb, s);
+  const ghiNhanChat = useKhoMvp((k) => k.ghiNhanChat);
+  const [nhanVat, setNhanVat] = useState<BanBe | null>(null);
+  const [noiDung, setNoiDung] = useState('');
+  const [dangGui, setDangGui] = useState(false);
+  const [loi, setLoi] = useState('');
+  const tinNhanRef = useRef<HTMLDivElement>(null);
 
-const CAU: Record<string, readonly string[]> = {
-  tung: ['Tớ đi cùng đây. Cần hỏi ai thì bảo, người thì tớ quen.', 'Tớ cá là… thôi, cậu cứ xem đã.', 'Đi đâu tiếp cứ để tớ dẫn đường.'],
-  'ha-vy': ['Đừng cá. Xem dữ liệu nói gì đã.', 'Thiếu căn cứ thì cứ nói là thiếu.', 'Có dữ liệu rồi mới đoán. Đoán trước là hỏng.'],
-};
+  const request = useRef<AbortController | null>(null);
+  useEffect(() => () => request.current?.abort(), []);
+  const tenNhanVat = (id: string): string => kb.nhanVat.find((n) => n.id === id)?.ten ?? id;
+  const tinNhan = nhanVat ? (s.triNhoDongHanh?.nhanVat[nhanVat].hoiThoai ?? []) : [];
 
-/** Tùng / Hà Vy có lời (thoại, nhắc việc, hỏi) trong chuỗi đang chạy. */
-function dongHanhCua(kb: KichBanMvp, s: TrangThaiMvp): string[] {
-  const c = kb.chuoi.find((x) => x.id === s.conTro?.chuoi);
-  if (!c) return [];
-  const noi = new Set<string>();
-  for (const n of c.nodes) {
-    if (n.type === 'line' || n.type === 'reminder') noi.add(n.speaker);
-    else if (n.type === 'question' || n.type === 'doi-chat' || n.type === 'branch') noi.add(n.asker.speaker);
-  }
-  return BO_BA.filter((id) => noi.has(id));
-}
+  useEffect(() => {
+    if (tinNhanRef.current) tinNhanRef.current.scrollTop = tinNhanRef.current.scrollHeight;
+  }, [tinNhan.length, dangGui, nhanVat]);
 
-export function DongHanhMvp({ kb, s, dienTen }: { kb: KichBanMvp; s: TrangThaiMvp; dienTen: (t: string) => string }) {
-  const ds = dongHanhCua(kb, s);
-  const [noi, setNoi] = useState<{ ai: string; cau: string } | null>(null);
-  const [luot, setLuot] = useState(0);
-  if (ds.length === 0) return null;
-  const hoi = (id: string): void => {
-    const nhac = s.nhacViec && s.nhacViec.nhanVat === id ? dienTen(s.nhacViec.text) : null;
-    const cau = nhac ?? CAU[id]?.[luot % (CAU[id]?.length ?? 1)] ?? '';
-    setLuot(luot + 1);
-    setNoi(noi?.ai === id && noi.cau === cau ? null : { ai: id, cau });
+  if (!visible || ds.length === 0) return null;
+
+  const chonBan = (id: BanBe): void => {
+    request.current?.abort();
+    setDangGui(false); setNoiDung('');
+    setNhanVat(id);
+    setLoi('');
   };
+
+  const gui = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
+    event.preventDefault();
+    const text = noiDung.trim();
+    if (!nhanVat || !text || dangGui) return;
+    const ban = nhanVat;
+    const current = useKhoMvp.getState().trangThai;
+    if (!current || !banDangCoMat(kb, current).includes(ban)) return;
+    const key = khoaNguCanhDongHanh(current, ban);
+    const lan = useKhoMvp.getState().lanDoiVan;
+    const history = current.triNhoDongHanh?.nhanVat[ban].hoiThoai ?? [];
+    const next = [...history, { role: 'user' as const, content: text }].slice(-12);
+    if (!ghiNhanChat(ban, next, key, lan)) return;
+    // A legacy save gains its first observation when chat starts.
+    const observed = useKhoMvp.getState().trangThai!;
+    const requestKey = khoaNguCanhDongHanh(observed, ban);
+    const stillHere = (): boolean => {
+      const latest = useKhoMvp.getState().trangThai;
+      return !!latest && useKhoMvp.getState().lanDoiVan === lan && khoaNguCanhDongHanh(latest, ban) === requestKey && !controller.signal.aborted;
+    };
+    const controller = new AbortController();
+    request.current = controller;
+    setNoiDung(''); setLoi(''); setDangGui(true);
+    try {
+      const context = await taoNguCanhDongHanh(kb, observed, ban, text);
+      if (!stillHere()) return;
+      const payload = { character: ban, message: text, history: history.slice(-10), context };
+      while (new TextEncoder().encode(JSON.stringify(payload)).length > 23_000 && payload.history.length) payload.history.shift();
+      const response = await fetch('/api/companion/chat', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload), signal: controller.signal,
+      });
+      const data = await response.json() as { reply?: unknown; error?: unknown };
+      if (!response.ok || typeof data.reply !== 'string') {
+        if (response.status === 503) throw new Error('AI chưa được cấu hình trên máy chủ.');
+        if (response.status === 429) throw new Error('Bạn ấy cần nghỉ một chút. Thử lại sau nhé.');
+        throw new Error(typeof data.error === 'string' ? data.error : 'Chưa kết nối được. Thử lại nhé.');
+      }
+      if (stillHere()) ghiNhanChat(ban, [...next, { role: 'assistant', content: data.reply }], requestKey, lan);
+    } catch (error) {
+      if (stillHere()) {
+        ghiNhanChat(ban, history, requestKey, lan);
+        setNoiDung(text);
+        setLoi(error instanceof Error ? error.message : 'Chưa kết nối được. Thử lại nhé.');
+      }
+    } finally {
+      if (request.current === controller) { request.current = null; setDangGui(false); }
+    }
+  };
+
   return (
-    <aside className="dong-hanh" aria-label={`Đi cùng: ${ds.map((id) => kb.nhanVat.find((n) => n.id === id)?.ten ?? id).join(', ')}`}>
+    <aside className="dong-hanh" aria-label={`Đi cùng: ${ds.map(tenNhanVat).join(', ')}`}>
       <span className="dong-hanh__nhan">Đi cùng</span>
       {ds.map((id) => {
         const nv = kb.nhanVat.find((n) => n.id === id);
         const url = anhChanDung(id, nv?.bieuCam[0]);
         return (
-          <button key={id} type="button" className={`dong-hanh__nguoi${noi?.ai === id ? ' is-noi' : ''}`} aria-label={`Hỏi ${nv?.ten ?? id}`} title={`Hỏi ${nv?.ten ?? id}`} onClick={() => hoi(id)}>
+          <button
+            key={id}
+            type="button"
+            className={`dong-hanh__nguoi${nhanVat === id ? ' is-noi' : ''}`}
+            aria-label={`Chat với ${nv?.ten ?? id}`}
+            title={`Chat với ${nv?.ten ?? id}`}
+            aria-pressed={nhanVat === id}
+            onClick={() => chonBan(id as BanBe)}
+          >
             {url ? <img src={url} alt="" draggable={false} /> : <span>{(nv?.ten ?? id).charAt(0)}</span>}
           </button>
         );
       })}
-      {noi ? (
-        <button type="button" className="dong-hanh__cau" onClick={() => setNoi(null)} aria-label={`${kb.nhanVat.find((n) => n.id === noi.ai)?.ten ?? noi.ai}: ${noi.cau} — bấm để đóng`}>
-          <b>{kb.nhanVat.find((n) => n.id === noi.ai)?.ten ?? noi.ai}</b> {noi.cau}
-        </button>
+      {nhanVat && ds.includes(nhanVat) ? (
+        <section className="dong-hanh__chat" aria-label={`Chat với ${tenNhanVat(nhanVat)}`}>
+          <header className="dong-hanh__chat-dau">
+            <b>{tenNhanVat(nhanVat)}</b>
+            <button type="button" onClick={() => setNhanVat(null)} aria-label="Đóng chat">×</button>
+          </header>
+          <p className="dong-hanh__chat-rieng-tu">Tin nhắn và dữ kiện bạn ấy đã chứng kiến được gửi cho AI để trả lời.</p>
+          <div ref={tinNhanRef} className="dong-hanh__tin-nhan" aria-live="polite">
+            {tinNhan.length === 0 ? (
+              <div className="dong-hanh__goi-y">
+                <p>{nhanVat === 'tung' ? 'Muốn tìm đường, nhớ lịch hay đang bí chỗ nào?' : 'Có dữ kiện nào mình cùng kiểm tra không?'}</p>
+                <button type="button" onClick={() => setNoiDung(nhanVat === 'tung' ? 'Tớ nên chú ý điều gì ở đây?' : 'Mình đã biết chắc những gì rồi?')}>Gợi ý câu hỏi</button>
+              </div>
+            ) : tinNhan.map((item, index) => (
+              <p key={`${index}-${item.role}`} className={`dong-hanh__tin-nhan-muc dong-hanh__tin-nhan-muc--${item.role}`}>
+                {item.role === 'assistant' ? <b>{tenNhanVat(nhanVat)}</b> : <b>{s.tenNguoiChoi || 'Bạn'}</b>} <HighlightText text={item.content} />
+              </p>
+            ))}
+            {dangGui ? <p className="dong-hanh__dang-go">{tenNhanVat(nhanVat)} đang nghĩ…</p> : null}
+          </div>
+          {loi ? <p className="dong-hanh__loi" role="alert">{loi}</p> : null}
+          <form className="dong-hanh__nhap" onSubmit={gui}>
+            <label className="visually-hidden" htmlFor="dong-hanh-cau-hoi">Nhắn {tenNhanVat(nhanVat)}</label>
+            <input id="dong-hanh-cau-hoi" value={noiDung} onChange={(event) => setNoiDung(event.target.value)} maxLength={600} placeholder="Nhắn cho bạn ấy…" disabled={dangGui} />
+            <button type="submit" disabled={dangGui || !noiDung.trim()}>{dangGui ? '…' : 'Gửi'}</button>
+          </form>
+        </section>
       ) : null}
     </aside>
   );

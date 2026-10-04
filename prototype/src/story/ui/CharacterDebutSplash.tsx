@@ -13,13 +13,10 @@ export interface CharacterDebutSplashProps {
 }
 
 /**
- * Ảnh giới thiệu (prompt E, prompts-assets-prototype-full-v0.1.md) đặt nhân vật ở một bên và chừa
- * ~40% khung bên kia cho tên: chữ đi vào phía còn trống. Mặc định nhân vật bên trái → chữ bên phải.
+ * Ảnh giới thiệu 16:9: nhân vật đứng ở bên trái (x ~ 10-35%), chữ đi vào phía bên phải còn trống (x ~ 45-100%).
+ * Mặc định tất cả nhân vật có ảnh intro đều dùng textSide = 'right'.
  */
-const INTRO_TEXT_SIDE: Partial<Record<CharacterId, 'left' | 'right'>> = {
-  'ha-vy': 'left',
-  quan: 'left',
-};
+const INTRO_TEXT_SIDE: Partial<Record<CharacterId, 'left' | 'right'>> = {};
 
 export function CharacterDebutSplash({ characterId, onDismiss }: CharacterDebutSplashProps) {
   const profile = CHARACTER_PROFILES[characterId];
@@ -113,7 +110,13 @@ export function CharacterDebutCard({ id, fullName, title, year, major, quote, ac
       role="dialog"
       aria-modal="true"
       aria-label={`Giới thiệu nhân vật: ${fullName}`}
-      style={{ '--debut-accent': accentColor } as CSSProperties}
+      style={
+        {
+          '--debut-accent': accentColor,
+          '--debut-accent-grad': `linear-gradient(135deg, color-mix(in srgb, ${accentColor}, white 25%) 0%, ${accentColor} 50%, color-mix(in srgb, ${accentColor}, black 25%) 100%)`,
+          '--debut-accent-glow': `color-mix(in srgb, ${accentColor} 50%, transparent)`,
+        } as CSSProperties
+      }
     >
       <div className="chara-debut__backdrop" />
 

@@ -1,5 +1,206 @@
 # Nhật Ký Thay Đổi (.agent/changelog.md)
 
+## [2026-10-04] Rà Soát Cảnh Giới Thiệu Nhân Vật: Sửa Lỗi Che Người & Khắc Phục Lệch Màu Sắc
+
+### 1. Bối Cảnh & Vấn Đề (UX & Visual Hierarchy):
+- **Lỗi chữ che người**: Màn giới thiệu nhân vật Quân (`quan`) và Hà Vy (`ha-vy`) bị gán cứng `textSide = 'left'`, khiến tấm thẻ chữ và nút bấm đè trực tiếp lên ngực và mặt của nhân vật. Trong khi toàn bộ 1/3 bên phải khung hình là bối cảnh trống.
+- **Lỗi lệch màu sắc (Color Inconsistency)**:
+  - Trên cùng màn hình debut của Tùng: Chức danh dùng `--debut-accent` màu xanh lam thể thao `#38bdf8`, nhưng Tag `NHÂN VẬT MỚI`, nút `Tiếp tục` và viền glow dùng `--debut-accent-grad` màu cam `#fb923c` do CSS selector bị lệch màu với `mau-nhan-vat.ts`.
+  - Cô Hạnh mặc áo dài hoa sen đỏ mận nhưng bị gán màu xanh `#38bdf8` trùng với Tùng và Duy.
+  - Các nhân vật mới/chưa có CSS selector bị rơi về màu vàng mặc định ở nút bấm dù chữ mang màu riêng.
+
+### 2. Giải Pháp Triển Khai:
+- **Rà soát 100% ảnh intro 16:9 (`prototype/src/assets/art/intro-*.webp`)**:
+  - Xác minh tất cả 19 nhân vật đều đứng ở 1/3 bên trái khung hình (x ≈ 10%–35%), để trống nửa bên phải (x ≈ 45%–100%).
+  - Xóa bỏ hoàn toàn quy tắc ép trái `CHU_BEN_TRAI` trong `GioiThieuMvp.tsx` và `INTRO_TEXT_SIDE` trong `CharacterDebutSplash.tsx`. Cố định `textSide = 'right'` cho toàn bộ nhân vật.
+- **Tự động sinh màu động bằng `color-mix`**:
+  - Cập nhật `CharacterDebutCard` và base class `.chara-debut` tự động phái sinh `--debut-accent-grad` và `--debut-accent-glow` trực tiếp từ `accentColor` thông qua `color-mix(in srgb, ...)`.
+  - Triệt tiêu hoàn toàn khả năng lệch màu giữa chữ và nút/tag/glow.
+- **Đồng bộ bảng màu nhân vật**:
+  - Tùng: đồng bộ màu lam thể thao `#38bdf8` thống nhất giữa `mau-nhan-vat.ts`, `character-debut.css`, `character-profiles.ts` và `CharaProfileView.tsx`.
+  - Cô Hạnh: chuyển sang đỏ hoa sen `#f43f5e` quý phái khớp với áo dài sen.
+  - Thầy Khải: bổ sung màu xám bạc `#cbd5e1`.
+
+### 3. Kiểm Thử:
+- `CharacterDebutSplash.test.tsx`: 6/6 tests passed (bổ sung test kiểm tra `is-text-right` và CSS variables).
+- `GioiThieuMvp.test.tsx`: 4/4 tests passed (bổ sung test kiểm tra `is-text-right` cho Quân và Hà Vy).
+- `npm run typecheck` & `npm run build`: Thành công 100%.
+
+## [2026-10-04] Khảo Sát Bảng & Xem Trước Cột Mới Khi JOIN (Hướng C + A)
+
+### 1. Bối Cảnh & Vấn Đề (UX & Data Detective Scaffolding):
+- Trước đây, chỉ có Vụ 1 (`c-bang-lop`) có bước chọn bảng rồi chạy xem output. Từ Vụ 2 trở đi, bảng nguồn bị khóa cứng (`🔒`), ép người chơi lọc ngay mà chưa khảo sát được cấu trúc và mẫu dữ liệu của bảng.
+- Đặc biệt ở các bài JOIN (Vụ 4 `c-don-nam-may`, Vụ 5 `c-dat-ma-khong-co`, `c-chi-tham-tu`): người chơi chọn bảng và khóa nối xong nhưng không "nhìn thấy" bảng nối thực tế đã bổ sung thêm những cột nào, dẫn đến việc phải đoán mò cột ở phần điều kiện lọc tiếp theo.
+
+### 2. Giải Pháp Triển Khai (Hướng C + A):
+- **KhungNguonBangV7.tsx**:
+  - Hỗ trợ dropdown chọn bảng linh hoạt từ danh sách bảng ứng viên (`the.bangChon` hoặc `chonBang`).
+  - Hỗ trợ chọn bảng nối (`NỐI VỚI`) và khóa nối (`THEO`).
+  - Tích hợp nút **`👁️ Xem trước bảng nối / Khảo sát bảng`** (`.v7-btn-preview`) kèm hiệu ứng pulse dot mời gọi người chơi kiểm tra dữ liệu.
+- **XemTruocBangModal.tsx**:
+  - Modal xem trước 6 dòng dữ liệu mẫu và toàn bộ cấu trúc cột thực tế (chạy query SQLite thật qua `chaySql`).
+  - **Trực quan hóa JOIN**: Tự động nhận diện và **highlight nổi bật các cột mới nối từ bảng thứ hai** (màu xanh ngọc, badge `✨ Cột mới từ <tên bảng>`, tag `MỚI` trên từng header cột).
+  - Giúp người chơi xác nhận ngay: bảng đã nối thành công, các cột mới (`may`, `gio`, v.v.) đã sẵn sàng để lọc điều kiện.
+- **Tuân thủ quy tắc 1000 dòng (The 1000-Line Rule in GEMINI.md)**:
+  - Tách `KhungNguonBangV7.tsx` (190 dòng) và `XemTruocBangModal.tsx` (216 dòng) ra khỏi `ManTraV7.tsx`.
+  - Giảm dung lượng `ManTraV7.tsx` từ **976 dòng xuống còn 951 dòng** an toàn, sạch sẽ, đạt chuẩn modular.
+- **Khai báo Markdown**:
+  - Bổ sung `- Bảng chọn: don_linh_kien · phien_dang_nhap` cho `c-don-nam-may`.
+  - Bổ sung `- Bảng chọn: don_linh_kien · kiem_ke` cho `c-dat-ma-khong-co`.
+  - Bổ sung `- Bảng chọn: khoan_chi · quy` cho `c-chi-tham-tu`.
+
+### 3. Kiểm Thử & Xác Nhận:
+- Unit test mới `src/mvp/ui/v7/xem-truoc-bang.test.tsx` (3/3 tests passed).
+- Toàn bộ suite `src/mvp/ui/v7/` (6 test files, 27 tests passed 100%).
+- `npm run kiem-noi-dung:mvp`: 58/58 tệp đạt chuẩn, 39/39 câu SQL khớp số dòng 100%.
+- `npm run typecheck`: 0 lỗi TypeScript strict mode.
+
+
+
+### 1. Đồng Nhất Màn Hình Laptop Với Bản Sửa Mới Nhất (`LocThuV7.tsx` & `v7.css`):
+- **Phóng to mặt kính máy tính**: Nâng kích thước vùng kính từ `1100×640` lên chuẩn `1420×740` (tương đương `CANH_TRA` của laptop CLB), xóa bỏ khoảng đen thụt lùi ở hai bên.
+- **Nền cảnh laptop**: Gắn ảnh nền laptop CLB (`canh-tra-phong-clb`) được phóng to 1.33×, ẩn bàn phím thừa phía dưới và viền đen dày cục mịch cũ.
+- **Giấy nhớ**: Dán gọn gàng ở mép trái viền laptop (`left: 10px`), căn chỉnh khoảng cách hợp lý, không đè lấn lên bảng hiển thị.
+
+### 2. Đảo Thứ Tự Lọc: Lọc Ngành Trước, Lọc Tên Sau (Tối Ưu Logic & Trải Nghiệm Điều Tra):
+- **Vấn đề cũ**: Lọc tên "Tùng" trước -> danh sách chỉ còn đúng 3 bạn, người chơi nhìn thấy ngay Trần Tùng (Du lịch) ở dòng 1 nên cảm thấy vô lý khi bị bắt buộc kéo tiếp thẻ Du lịch.
+- **Giải pháp mới**:
+  - `00-mo-dau.md`: Đổi query sang `WHERE nganh = 'Du lịch' AND ten = 'Tùng'`.
+  - Nhịp 1: Thả thẻ **Du lịch** trước -> danh sách thu hẹp về nhóm sinh viên ngành Du lịch (vài chục bạn, vẫn cần lọc tiếp).
+  - Nhịp 2: Thả thẻ **Tùng** -> danh sách rút gọn về **đúng 1 người duy nhất**: Trần Tùng.
+  - Cập nhật lời thoại của nhân vật chính trong `00-mo-dau.md`: *"Ngành Du lịch lọc ra còn mấy chục bạn. Thêm tên Tùng thì đúng một người. Mã ở ô đầu: SV240251."*
+
+### 3. Tên Cột Chuẩn Excel Tiếng Việt Có Dấu:
+- Tiêu đề cửa sổ đổi thành: `▣ Danh sách tân sinh viên K24 (Excel)`.
+- Chuyển đổi tên các cột sang tiếng Việt có dấu:
+  - `ma_sv` -> **Mã SV**
+  - `ho_dem` -> **Họ đệm**
+  - `ten` -> **Tên**
+  - `nganh` -> **Ngành**
+- Đồng bộ hiển thị trên thanh điều kiện lọc, tiêu đề bảng kết quả và các thông điệp hướng dẫn.
+
+### 4. Thiết Kế Lưới Tròn Chục Trực Quan (`DongPhieu.tsx`):
+- **Vấn đề cũ**: Thuật toán tự do tính ra 33 cột × 29 hàng = 957 ô. Khi hiển thị 956 người, ô góc dưới bị trống mất đúng 1 ô tạo cảm giác hình chữ nhật bị sứt mẻ và số cột 33 là số lẻ không thể ước lượng.
+- **Giải pháp mới**:
+  - Chuẩn hóa số cột về bội số của 10 (cụ thể: **40 cột**).
+  - Thêm khoảng ngắt nhẹ 8px giữa các block 10 cột.
+  - Người chơi nhìn vào đếm được ngay: 1 block = 10 người, mỗi hàng có 4 block = 40 người. Hàng cuối cùng có 36 ô lẻ ra rất tự nhiên và dễ dàng ước lượng tổng số lượng.
+
+### 5. Kiểm Thử & Toàn Vẹn:
+- Chạy `npm run noi-dung:sinh:mvp` và `npm run kiem-noi-dung:mvp`: 58 tệp đạt chuẩn, 39/39 câu SQL khớp số dòng.
+- Vitest `loc-thu-v7.test.tsx` (4/4 tests passed), `sql-mvp.test.ts` (8/8 tests passed).
+- TypeScript strict mode & Vite build: 100% passed.
+
+### 1. Bối Cảnh & Vấn Đề (UX / Visual Clutter):
+- Trước đây, khi gặp thẻ chữ (`- [THẺ CHỮ] **narrator**: ...`, ví dụ mở đầu game: `Chủ nhật, 08/09/2024 · Đại học Chấn Hưng`), hệ thống hiển thị thẻ vàng lơ lửng ngay giữa màn hình.
+- Xảy ra xung đột thị giác (3 luồng thông tin đè lên nhau):
+  1. Thẻ vàng che 40% cảnh cổng trường.
+  2. Bóng thoại nhắc việc của nhân vật chính ("BẠN: Tìm ký túc xá đã...") hiện ở góc trên bên trái.
+  3. Badge nhãn cảnh ("Cổng trường"), nút "Hồ sơ" và các nút HUD khác hiển thị cùng lúc.
+  => Người chơi bị phân tâm, phá vỡ nhịp nghỉ điện ảnh (establishing context).
+
+### 2. Giải Pháp Triển Khai (Chuẩn Visual Novel / Ace Attorney):
+- **Tách riêng biệt thành Màn Title Card Điện Ảnh khi `display === 'card'`**:
+  - `SanKhauMvp.tsx`:
+    - Thêm cờ `isCard`. Khi là thẻ chữ: thêm class `.is-the-chu` làm mờ sâu cảnh nền (`filter: blur(18px) brightness(0.22)`), phủ lớp gradient tối sâu điện ảnh (`radial-gradient`), ẩn nhãn địa điểm (`stage__scene-label`).
+  - `ManChoiMvp.tsx`:
+    - Ẩn hoàn toàn bóng thoại nhắc việc (`nhacViec = null`).
+    - Ẩn thanh đồng hành (`DongHanhMvp`).
+    - Không vẽ dàn chân dung (`coDan = false`).
+  - `DialogBox.tsx` & `mvp.css`:
+    - Nâng cấp `.dialog--card` thành thẻ Title Card điện ảnh cao cấp: Nền tối kính mờ (`rgba(30, 41, 59, 0.94)` kết hợp `backdrop-filter: blur(20px)`), viền vàng hổ phách tinh tế (`rgba(245, 158, 11, 0.45)`), đổ bóng sâu 3D.
+    - Bổ sung hoa văn trang trí đường kẻ mảnh và ngôi sao điện ảnh `✦`.
+    - Thêm dòng gợi ý nhẹ nhàng ở đáy: *"Nhấp chuột hoặc phím Cách để tiếp tục"*.
+    - Ẩn nút "Hồ sơ" bên ngoài footer, căn giữa nút "Tiếp tục" tối giản bo tròn viên thuốc (pill button).
+    - Toàn bộ màn hình có thể nhấp chuột bất kỳ đâu hoặc bấm Space / Enter để tiếp tục vào cảnh thực tế.
+
+### 3. Kiểm Thử & Xác Nhận:
+- Unit test `src/shared/ui/components.test.tsx` (11/11 tests passed): Đã bổ sung kiểm tra sự hiện diện của `.dialog__card-decor`, `.dialog__card-hint` và xác nhận nút hồ sơ ẩn hoàn toàn.
+- `src/mvp/ui/tao-nhan-vat.test.tsx` (11/11 tests passed).
+- TypeScript strict typecheck & Vite production build: 100% passed, 0 lỗi.
+
+## [2026-10-04] Mở Rộng Dữ Liệu Thực Tế: Sổ Chi 19 CLB (`khoan_chi` 200 dòng) & Lịch Sử Thư Viện (`quet_the_thu_vien` 72 dòng)
+
+### 1. Mở Rộng Bảng `khoan_chi` Lên 200 Dòng (Sổ Chi 19 CLB Toàn Trường):
+- **Thuật toán sinh dữ liệu nền (`themQuyVaChi` trong `nhieu-mvp.ts`)**:
+  - Sinh thêm 189 khoản chi nền ngẫu nhiên có hạt giống cố định (`seed: 2116`) cho 18 CLB còn lại (Văn nghệ, Guitar, Nhiếp ảnh, Tiếng Anh, Cờ vua, Bóng đá, v.v.).
+  - Nâng tổng số dòng của `khoan_chi` từ 11 dòng lên đúng **200 dòng** quy mô trường đại học thực thụ.
+- **Bảo toàn 100% logic cốt truyện & bài học SQL sư phạm**:
+  - Tuyệt đối không sinh thêm dòng nào cho quỹ `Q-TT` (chỉ đúng 6 dòng cốt truyện của CLB Thám Tử).
+  - Truy vấn `c-chi-tham-tu` (`WHERE clb = 'THAM_TU'`): vẫn trả về chính xác **6 dòng**.
+  - Các bài tổng hợp `SUM`, `AVG`, `HAVING` (`c-chi-theo-nguoi-duyet` và `c-chi-vuot-muc`) của Minh Anh và Khánh được bảo toàn trọn vẹn 100%.
+  - Cập nhật phản xạ của Tùng trong `tt-so-quy.md`: *"Cả sổ chi các CLB, hai trăm khoản. Mình chỉ cần quỹ CLB mình."*
+
+### 2. Mở Rộng Bảng `quet_the_thu_vien` Lên 72 Dòng (Nam K23, Duy K23 & Hà Vy K24):
+- **Thuật toán sinh dữ liệu nền (`themQuetTheThuVien` trong `nhieu-mvp.ts`)**:
+  - **Nam (K23)**: Sinh thêm 27 lượt quẹt thẻ của Nam từ năm học 2023–2024 (22 tối thứ Hai, 5 tối thứ Năm) từ khi Nam nhập học. Cùng với 5 lượt trong học kỳ 2024–2025 $\rightarrow$ Tổng cộng Nam có **32 lượt** vào thư viện từ năm ngoái đến nay (27 tối thứ Hai, 5 tối thứ Năm).
+  - **Duy (K23)**: Thêm bạn cùng khóa Duy chuyên lên học ôn 2 ngày trong tuần (cố định **thứ Ba & thứ Sáu**), với **35 lượt** quẹt thẻ trải dài từ năm 2023 tới nay.
+  - **Hà Vy (K24)**: Giữ nguyên vẹn 5 lượt của Hà Vy (tân sinh viên nhập học tháng 9).
+  - **Tổng cộng toàn bảng**: $32 + 35 + 5 =$ **72 dòng** (tăng gấp đôi dữ liệu thực tế).
+- **Bảo toàn 100% chứng cứ ngoại phạm & bài học sư phạm**:
+  - Thử thách `c-nam-thu-vien`: lọc theo Nam ra đúng **32 dòng**.
+  - Thử thách `c-nam-thu`: gom theo thứ vẫn giữ nguyên đúng **2 nhóm** (`THU_HAI`: 27 lần, `THU_NAM`: 5 lần).
+  - Duy chỉ đi thư viện vào thứ Ba và thứ Sáu $\rightarrow$ **0 lượt vào thứ Hai**. Do đó, thử thách `c-toi-07` (`WHERE ngay = '2024-10-07'`) tối thứ Hai vẫn chỉ có duy nhất Nam và Hà Vy quẹt thẻ $\rightarrow$ kết quả ra đúng **2 dòng** tuyệt đối chuẩn xác.
+  - Thử thách `c-vy-thu-vien`: vẫn trả về đúng **5 dòng**.
+  - Tùng trong `tt-tranh-cai.md` phản ứng thực tế: *"Bảy mươi hai lượt quẹt thẻ... nhiều người với nhiều ngày quá. Không lọc thì nhìn hoa mắt."*
+  - Đồng bộ lời thoại nhân vật trong `11-vu-3-tranh-cai.md` và `tt-tranh-cai.md` phản ánh rõ dữ liệu xuất chung cả của Duy, Nam và Hà Vy, làm nổi bật thói quen 27 tối thứ Hai của Nam từ năm ngoái đến nay.
+
+### 3. Rà Soát & Kiểm Thử Toàn Diện:
+- Chạy `npm run noi-dung:sinh:mvp`: Tái sinh kịch bản `kich-ban.gen.ts`.
+- Chạy `npm run kiem-noi-dung:mvp`: 58/58 tệp đạt chuẩn, 39/39 câu SQL kiểm tra số dòng khớp 100%.
+- Chạy `npm run typecheck`: 0 lỗi TypeScript strict mode.
+- Chạy toàn bộ test suite Vitest: **128/128 test files passed**, **1056/1056 tests passed** (100% pass rate).
+
+
+
+## [2026-10-03] Phân Bổ Lại Meme & Chibi: Xóa Bỏ Dồn Cục, Tăng Tính Căng Thẳng Cho Vụ 5 & Cân Bằng Toàn Game
+
+### 1. Giữ Nguyên Vẹn Bộ Ba Meme Đỉnh Cao Ở Vụ 1:
+- `cg-minh-anh-dan-tay` (Gendo đan tay - Evangelion): Cảnh nhận lá thư nặc danh ở Mở đầu.
+- `cg-hop-doi-dau` (DIO vs Jotaro - JoJo): Cảnh đối đầu trước khi sửa câu truy vấn ở Buổi họp.
+- `cg-quan-bi-bac` (Kaiba bị đánh bật - Yu-Gi-Oh): Cảnh Quân bị bác bỏ kết luận.
+
+### 2. Dồn Hai Visual Phoenix Wright Sang Vụ 5 (Climax Mùa 1):
+- `chibi-so-lieu-day` (Phoenix Wright số liệu): Chuyển từ Buổi họp Vụ 1 sang Vụ 5 sau khi chạy xong câu lệnh tổng hợp `c-chi-vuot-muc` (số liệu đã ra!).
+- `cg-bang-chung-day` ("BẰNG CHỨNG ĐÂY!" - Phoenix Wright chỉ tay): Chuyển sang Vụ 5 tại nhịp đối chất quyết định `dc-khanh-so-do`, lúc lật ngược lời Khánh ("Sơ đồ tôi in thì các bạn đâu có tra!").
+
+### 3. Phân Bổ Lại Các Meme Sang Vụ 2, 3 và Việc Phụ:
+- **Take my money** (`chibi-khao-tra-da`): Chuyển từ quán trà đá Vụ 1 sang Vụ 3 (`v3-qua-2010`), lúc Tùng cuống cuồng chìa tiền mua quà 20/10 tặng bạn gái.
+- **Yamcha nằm hố** (`chibi-408-nam-bep`): Rút khỏi chỗ đè ảnh ở Mở đầu, chuyển sang Việc phụ Dẫn lạc (`23-phu-dan-lac.md`), lúc hai bạn chạy trốn bác Thịnh soi đèn pin về tới KTX lúc 23h, kiệt sức nằm bẹp xuống phòng 408.
+- **Think-Mark-Think** (`cg-nghi-di-tung-ha-vy`): Rút khỏi Mở đầu, chuyển sang Ngày 2 (`02-ngay-2.md`), lúc Tùng đoán mò "Tòa B hoặc Báo chí lấy hết kiểu gì chả trúng" bị Hà Vy mắng "Đừng cá... Tính đã!".
+- **Math Lady tính nhẩm** (`chibi-tung-tinh-nham`): Rút khỏi tối Ngày 4, chuyển sang đầu Vụ 2 (`tin-phong-tung`), lúc Tùng suy luận số người chuyển tiếp tin đồn ở căng tin.
+- **Saitama OK** (`chibi-duy-ok`): Rút khỏi tối Ngày 4, chuyển sang đầu Vụ 2 (`tin-phong-duy`), lúc Duy mở laptop tuân thủ quy trình.
+
+### 4. Giải Quyết Triệt Để Hiện Tượng Ảnh Đè Ảnh & Dồn Cục:
+- **Tối Ngày 4 (`04-ngay-4.md`)**: Rút 3/4 meme, chỉ giữ lại `chibi-duy-hop-banh` (Zelda Link giơ hộp bánh) làm điểm nhấn vui tươi, không còn tình trạng mỗi câu thoại nhảy một popup ảnh.
+- **Mở đầu (`00-mo-dau.md`)**: Tách `chibi-408-nam-bep` và `cg-nghi-di-tung-ha-vy`, xóa bỏ hoàn toàn hiện tượng 2 ảnh bật liền nhau không có thoại.
+- **Quán trà đá cuối Vụ 1 (`06-hop-va-ket.md`)**: Chỉ giữ lại `chibi-ghi-la-ghi` (Hà Vy nâng ly trà đá "True Story"), tạo nhịp kết thúc nhẹ nhàng, duyên dáng.
+
+## [2026-10-03] Tái Thiết Kế Trình Dựng Câu Lệnh: Bố Cục 3 Cột (Query Pipeline), Zoom To Màn Hình Laptop & Nút Xóa Lọc
+
+### 1. Phóng To Màn Hình Laptop (Maximized Laptop Viewport):
+- **Tăng diện tích mặt kính lên +64%**: Nâng kích thước mặt kính từ `1094×588` lên `1420×740` trong `canh-tra.ts`.
+- **Cắt giảm bàn phím thừa & xóa khoảng đen 2 bên**: Áp dụng `transform: scale(1.33)` cho ảnh nền phòng CLB, đẩy phần bàn phím thừa xuống đáy và mở rộng màn hình tràn sang hai bên.
+- **Dán giấy nhớ bám viền tự nhiên**: Căn chỉnh tọa độ `viTriGiay` bám sát mép viền ngoài của laptop.
+
+### 2. Bố Cục 3 Cột Logic (3-Column Query Pipeline):
+- **Cột 1: Nguồn Dữ Liệu (`FROM` / `JOIN`)**: Chọn bảng / phiếu nguồn, khối nối bảng (`JOIN ON`) và chọn cột (`SELECT`).
+- **Cột 2: Lọc Dòng, Gom Nhóm & Tính Toán (`WHERE` / `GROUP BY` / `AGG`)**: 
+  - Điều kiện lọc dòng (`WHERE`) có thể thêm/bớt linh hoạt.
+  - Gom nhóm (`GROUP BY`) chọn cột gom.
+  - Tính toán hàm tổng hợp (`COUNT`, `SUM`, `AVG`).
+- **Cột 3: Hậu Xử Lý & Sắp Xếp (`HAVING` / `ORDER BY` / `RUN`)**:
+  - Lọc nhóm (`HAVING`) với ngưỡng giá trị.
+  - Sắp xếp thứ tự (`ORDER BY` tăng/giảm).
+
+### 3. Cải Tiến UX Khối Lọc & Nút Làm Sạch (TRIM/LOWER):
+- **Bổ sung nút `×` (Bỏ lọc / Bỏ điều kiện)**:
+  - Cho phép người chơi bấm `×` để gỡ bỏ bộ lọc ngay lập tức ở cả màn tra (`ManTraV7`) và màn tổng hợp (`ManTongHopMvp`), không bị kẹt khi chỉ còn 1 điều kiện.
+  - Bổ sung nút `×` bỏ điều kiện giữ nhóm `HAVING`.
+- **Đổi "y nguyên" thành "để nguyên"**:
+  - Chuyển `khong: 'y nguyên'` thành `khong: 'để nguyên'` trong `TEN_CHUAN_HOA`.
+  - Thiết kế lại style `.v7-o--got`: loại bỏ khối xám xịt dày cộp khi chưa bật, chuyển thành nút tiện ích tinh tế có icon `✨` và viền mảnh nhẹ nhàng, chỉ sáng rực rỡ khi kích hoạt chuẩn hóa.
+
 ## [2026-10-03] Mở Rộng Dữ Liệu Thực Tế: Seeding Bảng `danh_sach_lop_cu` Lên 400 Dòng & Rà Soát Hệ Thống
 
 ### 1. Seeding Thực Tế Bảng `danh_sach_lop_cu` (Từ 39 lên 400 dòng):

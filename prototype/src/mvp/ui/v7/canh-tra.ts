@@ -1,6 +1,14 @@
 /** Cảnh của màn tra / màn tổng hợp v7: ảnh nền và tọa độ mặt kính. */
 export type CanhTra = 'phong-clb' | 'phong-may' | 'man-chieu';
 
+export interface NguonPhieuV7 {
+  id: string;
+  nhan: string;
+  sql: string;
+  cot: { ten: string; kieu: 'TEXT' | 'INTEGER' }[];
+  soDong: number;
+}
+
 /** Ảnh cảnh và tọa độ mặt kính trên khung 1600×900: màn hình được zoom to tối đa để hiển thị 3 cột và bảng rộng rãi. */
 export const CANH_TRA: Record<CanhTra, { anh: string | null; kinh: { x: number; y: number; w: number; h: number }; may: string }> = {
   'phong-clb': { anh: 'canh-tra-phong-clb', kinh: { x: 90, y: 36, w: 1420, h: 740 }, may: 'laptop CLB · tài khoản clb_tham_tu' },

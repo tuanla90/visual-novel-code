@@ -171,6 +171,8 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     ...(t.fields['Kiểu'] === 'lọc tiếp' ? { kieuTrinhDung: 'loc-tiep', nguon: t.fields['Nguồn'] ?? null } : {}),
     // "Nối được với: a · b": các bảng hiện ở khối "nối với" của màn tra (thẻ có JOIN).
     ...(t.fields['Nối được với'] ? { bangNoi: chiaGiaTri(t.fields['Nối được với']) } : {}),
+    // "Bảng chọn: a · b": các bảng hiện ở dropdown chọn bảng nguồn.
+    ...(t.fields['Bảng chọn'] ? { bangChon: chiaGiaTri(t.fields['Bảng chọn']) } : {}),
     // "Chọn cột: a, b" (hoặc "không"): bài chọn cột của SELECT; giá trị là các cột bật sẵn.
     ...(t.fields['Chọn cột'] !== undefined ? { chonCot: t.fields['Chọn cột'].trim() === 'không' ? [] : t.fields['Chọn cột'].split(',').map((c) => c.trim()).filter((c) => c !== '') } : {}),
     ...(t.fields['Bấm ô lấy giấy nhớ'] ? { bamO: t.fields['Bấm ô lấy giấy nhớ'].trim() } : {}),

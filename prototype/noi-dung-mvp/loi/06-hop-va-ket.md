@@ -5,6 +5,9 @@
 ## hop-00.1
 > NHIỆM VỤ: Buổi họp rà soát
 > NHẮC VIỆC minh-anh (serious): Nói có sách, mách có chứng. Trình đúng những gì đã tra.
+- **narrator**: Thứ Hai, ba giờ rưỡi chiều, hành lang tầng ba. Tùng ngáp tới cái thứ tư.
+- **ha-vy** (neutral): "Ngủ sớm" của cậu là mấy giờ?
+- **tung** (gai-dau): Hai giờ sáng. Tớ nằm tập nói "dạ thưa thầy" tới lúc quên cả cách thở.
 
 ## hop-00.2
 - [DÀN DỰNG] {{nv.thay-quang}} ngồi giữa; {{nv.co-lan}} và {{nv.quan}} một bên, CLB một bên. {{nv.hoai}} ngồi chờ ngoài hành lang theo quy chế, chưa được mời vào.

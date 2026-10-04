@@ -6,8 +6,8 @@
 /* Khai báo màu gradient theo từng nhân vật */
 .chara-debut {
   --debut-accent: #fbbf24;
-  --debut-accent-grad: linear-gradient(135deg, #fde047 0%, #eab308 50%, #a16207 100%);
-  --debut-accent-glow: rgba(234, 179, 8, 0.45);
+  --debut-accent-grad: linear-gradient(135deg, color-mix(in srgb, var(--debut-accent), white 25%) 0%, var(--debut-accent) 50%, color-mix(in srgb, var(--debut-accent), black 25%) 100%);
+  --debut-accent-glow: color-mix(in srgb, var(--debut-accent) 50%, transparent);
   --debut-panel-border: rgba(255, 255, 255, 0.16);
 
   position: fixed;
@@ -30,9 +30,9 @@
 }
 
 .chara-debut[data-character="tung"] {
-  --debut-accent: #fb923c;
-  --debut-accent-grad: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #c2410c 100%);
-  --debut-accent-glow: rgba(249, 115, 22, 0.55);
+  --debut-accent: #38bdf8;
+  --debut-accent-grad: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 50%, #0284c7 100%);
+  --debut-accent-glow: rgba(56, 189, 248, 0.55);
 }
 
 .chara-debut[data-character="ha-vy"] {
@@ -65,6 +65,12 @@
   --debut-accent-glow: rgba(239, 68, 68, 0.55);
 }
 
+.chara-debut[data-character="thay-khai"] {
+  --debut-accent: #cbd5e1;
+  --debut-accent-grad: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 50%, #64748b 100%);
+  --debut-accent-glow: rgba(203, 213, 225, 0.55);
+}
+
 .chara-debut[data-character="duy"] {
   --debut-accent: #38bdf8;
   --debut-accent-grad: linear-gradient(135deg, #7dd3fc 0%, #0284c7 50%, #0369a1 100%);
@@ -78,9 +84,9 @@
 }
 
 .chara-debut[data-character="co-hanh"] {
-  --debut-accent: #38bdf8;
-  --debut-accent-grad: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 50%, #0284c7 100%);
-  --debut-accent-glow: rgba(56, 189, 248, 0.55);
+  --debut-accent: #f43f5e;
+  --debut-accent-grad: linear-gradient(135deg, #fda4af 0%, #f43f5e 50%, #be123c 100%);
+  --debut-accent-glow: rgba(244, 63, 94, 0.55);
 }
 
 .chara-debut[data-character="co-lan"] {

@@ -11,5 +11,6 @@
 ## c-chi-tham-tu.1
 - Khi lỗi không có cột: **duy** (neutral): Máy báo không có cột đó. Tên CLB nằm ở bảng quỹ, nối rồi mới lọc được.
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Mã CLB viết hoa, gạch dưới, đúng như giấy nhớ.
-- Khi chạy ra 11 dòng: **tung** (gai-dau): Cả bản xuất, có cả quỹ Robotics. Mình chỉ cần quỹ CLB mình.
+- Khi chạy ra 200 dòng: **tung** (gai-dau): Cả sổ chi các CLB, hai trăm khoản. Mình chỉ cần quỹ CLB mình.
+
 - Khi đúng: **minh-anh** (neutral): Sáu khoản. Ba khoản chị duyệt, ba khoản chị chưa từng thấy.

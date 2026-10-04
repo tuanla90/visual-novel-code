@@ -73,6 +73,14 @@ bị giật. Game hiển thị theo chiều cao, neo đáy khung. Thiếu một 
 | `char-hoai-relieved`    | Hoài     | nhẹ nhõm (relieved)      | `hoai-relieved`           |
 | `char-bac-tu-neutral`   | Bác Tư   | bình thường, cỡ nhỏ      | `bac-tu-neutral`          |
 | `char-tung-anchor`      | Tùng     | bình thường (neutral)    | `tung-neutral`            |
+| `char-tung-happy`       | Tùng     | vui (happy)              | `tung-happy`              |
+| `char-tung-worried`     | Tùng     | lo lắng (worried)        | `tung-worried`            |
+| `char-tung-surprised`   | Tùng     | ngạc nhiên (surprised)   | `tung-surprised`          |
+| `char-tung-thinking`    | Tùng     | đang nghĩ (thinking)     | `tung-thinking`           |
+| `char-minh-anh-serious` | Minh Anh | nghiêm túc (serious)     | `minh-anh-serious`        |
+| `char-bac-tu-smile`     | Bác Tư   | mỉm cười (smile)         | `bac-tu-smile`            |
+
+Bảy dòng cuối (30/09) là biểu cảm làm cho bản MVP; tệp nằm ở `src/assets/mvp/nhan-vat/` (máy quét mọi thư mục con).
 
 `char-<nhân vật>-<biểu cảm>` cũng nhận được cho biểu cảm gốc (ví dụ `char-minh-anh-neutral`,
 `char-hoai-nervous`) — dùng khi muốn thay ảnh neo bằng một ảnh riêng cho biểu cảm đó.

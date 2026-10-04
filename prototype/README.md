@@ -32,7 +32,24 @@ npx vite preview --port 4173  # phục vụ dist/ tại http://localhost:4173
 bất kỳ máy chủ tĩnh nào (tệp `.wasm` cần trả `Content-Type: application/wasm`; `vite preview` đã làm đúng).
 Máy thử nghiệm không có Node thì chép thư mục `dist/` sang và dùng một máy chủ tĩnh bất kỳ.
 
-Game chạy hoàn toàn trên máy người chơi, không gọi mạng sau khi đã tải trang.
+Nội dung game chạy trên máy người chơi; tính năng chat AI cần kết nối mạng.
+
+### Chat AI với Tùng và Hà Vy
+
+Khung **Đi cùng** gửi câu hỏi tới OpenAI Responses API qua endpoint cùng máy chủ; khóa API không được đưa vào trình duyệt. Để chạy local bằng PowerShell:
+
+```powershell
+$env:OPENAI_API_KEY = "<API key của bạn>"
+npm run dev
+```
+
+Khi deploy, đặt `OPENAI_API_KEY` trong biến môi trường của máy chủ Railway. `OPENAI_MODEL` là tùy chọn; mặc định là `gpt-6-astra`. Không đặt khóa API vào mã nguồn, tệp giao diện hay biến `VITE_*`.
+
+Chat gửi tin nhắn, hồ sơ tính cách và phần thoại/hồ sơ **riêng nhân vật đã chứng kiến** tới máy chủ AI. Tri thức và hội thoại của Tùng/Hà Vy nằm trong trạng thái ván: Lưu/Nạp và Lùi khôi phục đúng thời điểm; ván mới bắt đầu lại. Save cũ chưa có lịch sử chỉ ghi nhận từ cảnh hiện tại, không tự cấp toàn bộ hồ sơ cho nhân vật.
+
+Dữ liệu số lấy bằng `chaySql` trên chính SQLite chỉ đọc mà laptop đang dùng (`kb.duLieu`; hiện bộ dữ liệu game cố định, chưa sinh dataset riêng mỗi run). Mỗi lần chat chỉ chạy lại tối đa 4 truy vấn người chơi đã xem cùng nhân vật: kết quả laptop, lọc thử, màn chiếu và xem trước bảng. Gửi tên cột, tổng dòng thật và tối đa 6 dòng/8 cột, có cờ cắt mẫu; không gửi toàn bộ DB, SQL đáp án chuẩn chưa xem hay sự kiện tương lai. Khi nguồn không chạy được, AI nhận trạng thái chưa có dữ liệu. Phản hồi đang chờ bị bỏ khi đổi cảnh, Lùi hoặc Nạp save.
+
+Khóa API chỉ ở máy chủ; API dùng `store: false`. Nếu chưa cấu hình khóa, chat báo máy chủ chưa bật AI.
 
 ## 3. Trình duyệt hỗ trợ
 

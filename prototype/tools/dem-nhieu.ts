@@ -61,6 +61,13 @@ const CAU: [string, string][] = [
   ['c-hoc: chỉ lọc ra trường', "SELECT * FROM danh_sach_lop_cu WHERE ghi_chu = 'ra trường'"],
   ['c-hoc: chỉ TRIM ra trường', "SELECT * FROM danh_sach_lop_cu WHERE TRIM(ghi_chu) = 'ra trường'"],
   ['c-hoc: chỉ LOWER ra trường', "SELECT * FROM danh_sach_lop_cu WHERE LOWER(ghi_chu) = 'ra trường'"],
+  ['khoan_chi: cả bảng', 'SELECT * FROM khoan_chi'],
+  ['khoan_chi: quỹ THAM_TU', "SELECT * FROM khoan_chi JOIN quy ON khoan_chi.ma_quy = quy.ma_quy WHERE clb = 'THAM_TU'"],
+  ['the-tv: cả bảng quet_the_thu_vien', 'SELECT * FROM quet_the_thu_vien'],
+  ['the-tv: chỉ của Nam', "SELECT * FROM quet_the_thu_vien WHERE ten = 'Nam'"],
+  ['the-tv: chỉ của Hà Vy', "SELECT * FROM quet_the_thu_vien WHERE ten = 'Hà Vy'"],
+  ['the-tv: chỉ của Duy', "SELECT * FROM quet_the_thu_vien WHERE ten = 'Duy'"],
+  ['the-tv: tối 07/10', "SELECT * FROM quet_the_thu_vien WHERE ngay = '2024-10-07'"],
 ];
 console.log('== Câu chạy sai hay gặp');
 for (const [ten, sql] of CAU) console.log(`${demDong(db, sql)}\t${ten}`);

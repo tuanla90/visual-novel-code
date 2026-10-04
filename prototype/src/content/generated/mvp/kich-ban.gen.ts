@@ -590,6 +590,11 @@ const GOC = {
   ],
   "canh": [
     {
+      "id": "xe-buyt",
+      "ten": "Trên xe buýt",
+      "anhNen": null
+    },
+    {
       "id": "cong-truong",
       "ten": "Cổng trường",
       "anhNen": null
@@ -755,7 +760,7 @@ const GOC = {
       "phuNhieuMax": 3,
       "uyTin": null
     },
-    "chuoiDau": "md-00-xe-buyt",
+    "chuoiDau": "md-00-tren-xe",
     "ngayMoDau": "2024-09-08",
     "ngay": [
       {
@@ -910,6 +915,74 @@ const GOC = {
   },
   "chuoi": [
     {
+      "id": "md-00-tren-xe",
+      "title": "Chủ nhật tuần 1: trên chuyến xe buýt lên Hà Nội",
+      "canh": "xe-buyt",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Chủ nhật, 08/09/2024 · Chuyến xe buýt lên Hà Nội"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tay vịn rung theo từng ổ gà. Cửa kính kéo hé, gió lùa vào mang theo mùi bụi đường và mùi nắng đầu thu."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Vậy là lên Hà Nội thật rồi.)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Sáng nay mẹ còn nhét thêm hộp ruốc vào vali, dặn đi dặn lại: ăn đúng bữa, đừng thức khuya, có chuyện gì thì gọi về ngay.)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Đỗ Đại học Chấn Hưng. Đọc giấy báo trúng tuyển đến lần thứ ba mình mới dám tin.)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Ngoài cửa sổ, ruộng lúa thưa dần, nhà cao tầng dày lên, biển quảng cáo chen nhau sát mép đường."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Một mình giữa thành phố to thế này, nghĩ cũng hơi run. Nhưng mà háo hức nhiều hơn.)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Ở ký túc xá, gặp người mới, học những thứ chưa từng học. Không biết bốn năm tới sẽ thế nào.)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Mong là mình không phí nó. Biết đâu sau này ra trường, nhà mình đỡ vất vả hơn.)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Xe chậm dần. Giọng phụ xe vọng xuống dọc lối đi: \"Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!\""
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Tới rồi. Phòng 408… Đi thôi.)"
+        },
+        {
+          "type": "goto",
+          "to": "md-00-xe-buyt"
+        }
+      ]
+    },
+    {
       "id": "md-00-xe-buyt",
       "title": "Chủ nhật tuần 1: xuống xe buýt trước cổng trường",
       "canh": "cong-truong",
@@ -928,7 +1001,7 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Chủ nhật, 08/09/2024 · Đại học Chấn Hưng"
+          "text": "Đại học Chấn Hưng · Cổng trường"
         },
         {
           "type": "note",
@@ -1404,7 +1477,7 @@ const GOC = {
         },
         {
           "type": "image",
-          "imageId": "chibi-408-nam-bep"
+          "imageId": "chibi-vali-tho"
         },
         {
           "type": "goto",
@@ -1543,13 +1616,33 @@ const GOC = {
         },
         {
           "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Tuần này tớ ngồi bàn đầu, chép đủ từng chữ. Tớ cá luôn."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-ngu-gat"
+        },
+        {
+          "type": "line",
           "speaker": "narrator",
-          "text": "Cả tuần ngồi hội trường nghe nội quy. Buổi cuối, mỗi người được phát một tấm thẻ lịch in theo khoa, dưới cùng có dòng \"Họ tên / Lớp\"."
+          "text": "Thứ Tư. Bàn cuối. Tùng ngủ gục trên cuốn sổ mới chép được đúng dòng tiêu đề, bút vẫn kẹp trong tay."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Thứ Sáu, cả hội trường xếp hàng chụp ảnh thẻ. Ai cũng bảo ảnh mình xấu, rồi lén xem ảnh người đứng sau."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Cả tuần ngồi hội trường nghe nội quy. Buổi cuối, mỗi người được phát một tấm thẻ lịch in theo khoa, dưới cùng có dòng \"Họ tên / Lớp\" để tự viết."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Viết tên vào luôn, kẻo lẫn với thẻ người khác.)"
+          "text": "(Viết tên vào luôn, kẻo lẫn với thẻ của ai.)"
         },
         {
           "type": "show-document",
@@ -1579,17 +1672,32 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Nền nhà văn hóa ngày hội (nền chưa vẽ người); gian Robotics bên trái, cờ in hình bánh răng (ảnh cần vẽ thêm — xem báo cáo rà soát A4/A5); bàn Thám Tử bên phải."
+          "text": "Nền nhà văn hóa ngày hội, sân đông sinh viên: gian Robotics bên trái đông nhất (bàn gấp trơn, xe robot tự chế, biển bìa vẽ tay bánh răng nhỏ), dọc bậc thềm là mấy gian CLB khác bàn trơn, mỗi gian vài người; bàn Thám Tử khăn trắng bên phải, một ghế gấp, bảng trống, không ai đứng gần."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Sân nhà văn hóa giăng cờ, bàn CLB kê kín lối đi. Gian Robotics rộng nhất, cờ in hình bánh răng, bảng dán \"Đang xin mở rộng xưởng thực hành\"."
+          "text": "Sân nhà văn hóa đông nghịt. Gian Robotics có chiếc xe robot tự chế trên bàn, mấy bạn đứng chen nhau xem."
         },
         {
           "type": "line",
           "speaker": "narrator",
           "text": "Bàn CLB Thám Tử nằm tận trong góc, chỉ có một chị ngồi trực."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Tớ chỉ đi xem thôi nhé. Không đăng ký CLB nào đâu, năm nhất phải lo học."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-ngay-hoi"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Mười phút sau, trên tay Tùng có bốn tờ đăng ký, một cái quạt giấy của CLB Guitar và nửa cái bánh rán của CLB Nấu ăn."
         },
         {
           "type": "line",
@@ -1676,7 +1784,7 @@ const GOC = {
         {
           "type": "trial-filter",
           "id": "lt-ngay-hoi",
-          "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';",
+          "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
           "soDong": 1,
           "chon": {
             "cot": "ma_sv",
@@ -1686,7 +1794,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Ba người tên Tùng. Thêm ngành Du lịch thì còn đúng một dòng. Mã ở ô đầu: SV240251."
+          "text": "Ngành Du lịch lọc ra còn mấy chục bạn. Thêm tên Tùng thì đúng một người. Mã ở ô đầu: SV240251."
         },
         {
           "type": "line",
@@ -2208,7 +2316,7 @@ const GOC = {
             },
             {
               "sprite": "nv:ha-vy",
-              "x": 91,
+              "x": 58,
               "y": 100,
               "rong": 14,
               "chuoi": "md-10-ha-vy-goi",
@@ -2625,10 +2733,6 @@ const GOC = {
           "text": "Chị Minh Anh nhìn Tùng, chỉ hai ngón tay vào thái dương như nhắc cậu nghĩ kỹ."
         },
         {
-          "type": "image",
-          "imageId": "cg-nghi-di-tung-ha-vy"
-        },
-        {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "serious",
@@ -2888,9 +2992,9 @@ const GOC = {
           "diem": [
             {
               "sprite": "obj-hop-kien-nghi",
-              "x": 28,
-              "y": 50,
-              "rong": 8,
+              "x": 35.2,
+              "y": 45.5,
+              "rong": 3.4,
               "chuoi": "n1-hop",
               "sau": [],
               "nhan": "Soi khe hộp kiến nghị"
@@ -2906,12 +3010,12 @@ const GOC = {
             },
             {
               "sprite": "obj-thong-bao-hop",
-              "x": 35.5,
-              "y": 42,
-              "rong": 4,
+              "x": 40.5,
+              "y": 43.5,
+              "rong": 2.6,
               "chuoi": "n1-thong-bao-hop",
               "sau": [],
-              "nhan": "Đọc tờ giấy dán cạnh hộp"
+              "nhan": "Đọc thông báo dán trên bảng tin"
             }
           ]
         },
@@ -3355,9 +3459,9 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:bac-tu",
-              "x": 30,
+              "x": 78,
               "y": 100,
-              "rong": 15,
+              "rong": 16,
               "chuoi": "n2-bd-toa-b-vao",
               "sau": [],
               "nhan": "Bác bảo vệ",
@@ -3365,9 +3469,9 @@ const GOC = {
             },
             {
               "sprite": "vung:bang-tin",
-              "x": 40,
-              "y": 38,
-              "rong": 4,
+              "x": 43.3,
+              "y": 37.4,
+              "rong": 9.4,
               "chuoi": "n2-bd-toa-b-an",
               "sau": [],
               "nhan": "Bảng tin cạnh cột"
@@ -3762,6 +3866,10 @@ const GOC = {
           "text": "Đừng cá. Holmes dặn rồi: chưa có dữ liệu mà đã đoán là sai từ gốc. Tính đã."
         },
         {
+          "type": "image",
+          "imageId": "cg-nghi-di-tung-ha-vy"
+        },
+        {
           "type": "challenge",
           "challengeId": "c-lop"
         },
@@ -3903,6 +4011,30 @@ const GOC = {
           "speaker": "narrator",
           "display": "card",
           "text": "Thứ Năm, 26/09/2024"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Sáng nay tớ có tiết Triết, nhờ thằng cùng lớp điểm danh hộ rồi."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Điểm danh hộ là sửa dữ liệu đầu vào đấy."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Cậu nói thế tớ thấy mình như tội phạm."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "khoanh-tay",
+          "text": "Chị coi như chưa nghe thấy. Lần sau đi học đi em."
         },
         {
           "type": "line",
@@ -4136,7 +4268,7 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:ha-vy",
-              "x": 45,
+              "x": 68,
               "y": 100,
               "rong": 15,
               "chuoi": "n3-bd-phong-may-vao",
@@ -4146,9 +4278,9 @@ const GOC = {
             },
             {
               "sprite": "vung:dep",
-              "x": 14,
+              "x": 15.5,
               "y": 81,
-              "rong": 8,
+              "rong": 11,
               "chuoi": "n3-bd-phong-may-an",
               "sau": [],
               "nhan": "Hai đôi dép trước cửa"
@@ -4224,9 +4356,9 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:bac-tu",
-              "x": 30,
+              "x": 78,
               "y": 100,
-              "rong": 15,
+              "rong": 16,
               "chuoi": "n3-bd-toa-b-vao",
               "sau": [],
               "nhan": "Bác bảo vệ",
@@ -4234,8 +4366,8 @@ const GOC = {
             },
             {
               "sprite": "vung:binh-cuu-hoa",
-              "x": 38.5,
-              "y": 57,
+              "x": 38.7,
+              "y": 55,
               "rong": 3,
               "chuoi": "n3-bd-toa-b-an",
               "sau": [],
@@ -4722,9 +4854,9 @@ const GOC = {
             },
             {
               "sprite": "vung:khay-giay",
-              "x": 89,
-              "y": 60,
-              "rong": 8,
+              "x": 88.5,
+              "y": 50,
+              "rong": 10,
               "chuoi": "n4-ctsv-an",
               "sau": [],
               "nhan": "Khay giấy trên quầy"
@@ -5127,6 +5259,10 @@ const GOC = {
           "imageId": "chibi-duy-hop-banh"
         },
         {
+          "type": "image",
+          "imageId": "chibi-banh-quy"
+        },
+        {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
@@ -5162,10 +5298,6 @@ const GOC = {
           "text": "Tới lượt tớ. Một: thuộc đường. Hai: thích cá cược. Ba: cá mười thua chín."
         },
         {
-          "type": "image",
-          "imageId": "chibi-vy-cuoi-deu"
-        },
-        {
           "type": "line",
           "speaker": "tung",
           "expression": "surprised",
@@ -5181,10 +5313,6 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Chín giờ tối, hộp bánh hết. Người ăn cái cuối là Duy. Cậu lẳng lặng mở sổ, ghi: \"Nợ CLB một hộp bánh.\""
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-duy-ok"
         },
         {
           "type": "line",
@@ -5214,10 +5342,6 @@ const GOC = {
           "speaker": "tung",
           "expression": "gai-dau",
           "text": "Đòi nợ liền tay thế à? Tớ tưởng biên bản chỉ để tham khảo!"
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-tung-tinh-nham"
         }
       ]
     },
@@ -5241,6 +5365,11 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Sáng sớm ở cổng ký túc xá. Chú Cường vừa đi một vòng kiểm tra về, đèn pin còn cầm trên tay."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Dãy vòi nước nóng tầng một đã có một hàng xô nhựa xếp giữ chỗ từ năm rưỡi. Xô nào cũng viết số phòng bằng bút xóa."
         },
         {
           "type": "line",
@@ -5390,6 +5519,12 @@ const GOC = {
           "text": "Có chứng cứ thì trình. Không có thì bảo chưa biết."
         },
         {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Rõ rồi. Tối mai tớ ngủ sớm, thứ Hai tỉnh như sáo."
+        },
+        {
           "type": "image",
           "imageId": "chibi-bang-ghim"
         }
@@ -5410,6 +5545,23 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "serious",
           "text": "Nói có sách, mách có chứng. Trình đúng những gì đã tra."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Thứ Hai, ba giờ rưỡi chiều, hành lang tầng ba. Tùng ngáp tới cái thứ tư."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "\"Ngủ sớm\" của cậu là mấy giờ?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Hai giờ sáng. Tớ nằm tập nói \"dạ thưa thầy\" tới lúc quên cả cách thở."
         },
         {
           "type": "note",
@@ -5498,10 +5650,6 @@ const GOC = {
         {
           "type": "effect",
           "effectId": "co-so-lieu-day"
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-so-lieu-day"
         },
         {
           "type": "line",
@@ -5675,10 +5823,6 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "serious",
           "text": "Anh Quân bảo Hoài viết. Trong hồ sơ, thẻ nào bác được câu ấy?"
-        },
-        {
-          "type": "image",
-          "imageId": "cg-bang-chung-day"
         },
         {
           "type": "doi-chat",
@@ -6082,10 +6226,6 @@ const GOC = {
           "text": "Bà ơi, cho cháu ba cốc trà đá! Hôm nay cháu khao."
         },
         {
-          "type": "image",
-          "imageId": "chibi-khao-tra-da"
-        },
-        {
           "type": "line",
           "speaker": "ba-lua",
           "expression": "smile",
@@ -6286,6 +6426,23 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Hơn hai tuần sau buổi họp rà soát. Chiều thứ Tư, phòng CLB."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Trên bàn có một hộp bánh quy mới, nắp dán nhãn viết tay: \"Tài sản CLB. BQ-04. Người mua: Duy.\""
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "BQ-04? Hôm trước mới là hộp đầu tiên mà."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Ba hộp kia hết trong tuần các cậu kiểm tra giữa kỳ. Tớ ăn cái cuối cả ba lần."
         },
         {
           "type": "line",
@@ -7355,6 +7512,10 @@ const GOC = {
           "speaker": "duy",
           "expression": "neutral",
           "text": "Bản xuất của cô Lan tớ nạp vào máy rồi. Ngồi vào đi."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-duy-ok"
         }
       ]
     },
@@ -7395,6 +7556,10 @@ const GOC = {
           "speaker": "tung",
           "expression": "chi-tay",
           "text": "Tớ cá là đa số chỉ bấm chuyển tiếp chứ có đọc đâu."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-tung-tinh-nham"
         }
       ]
     },
@@ -7507,7 +7672,7 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:ba-lua",
-              "x": 30,
+              "x": 46,
               "y": 100,
               "rong": 15,
               "chuoi": "tin-bd-tra-da-vao",
@@ -7517,9 +7682,9 @@ const GOC = {
             },
             {
               "sprite": "vung:xe-dap",
-              "x": 62,
-              "y": 55,
-              "rong": 10,
+              "x": 62.5,
+              "y": 53,
+              "rong": 16,
               "chuoi": "tin-bd-tra-da-an",
               "sau": [],
               "nhan": "Chiếc xe đạp cũ"
@@ -7751,6 +7916,10 @@ const GOC = {
           "type": "line",
           "speaker": "player",
           "text": "(Tùng nhờ chọn quà. Hoài là người thế nào nhỉ?)"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-khao-tra-da"
         },
         {
           "type": "branch",
@@ -8113,7 +8282,7 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:nam",
-              "x": 60,
+              "x": 48,
               "y": 100,
               "rong": 15,
               "chuoi": "v3-xuong-vao",
@@ -8124,8 +8293,8 @@ const GOC = {
             {
               "sprite": "vung:bang-trang",
               "x": 73,
-              "y": 30,
-              "rong": 12,
+              "y": 30.5,
+              "rong": 16,
               "chuoi": "v3-xuong-an",
               "sau": [],
               "nhan": "Bảng trắng trên tường"
@@ -8339,13 +8508,19 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Nam mở cổng sinh viên trên điện thoại, tải bản ghi cửa từ của chính mình trong tháng 9 và tháng 10, gửi vào nhóm."
+          "text": "Nam mở cổng sinh viên trên điện thoại, tải toàn bộ bản ghi cửa từ của mình từ lúc vào trường tới giờ, gửi vào nhóm."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Tớ cũng tải bản của tớ, gộp chung vào một tệp cho dễ tra. Tên ai thì ghi tên người đó."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tớ cũng hay lên thư viện tra tài liệu, để tớ xuất bản của tớ gộp chung vào luôn cho khách quan."
         },
         {
           "type": "line",
@@ -8361,7 +8536,7 @@ const GOC = {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Tệp có cả hai tên. Lọc đúng tên Nam."
+          "text": "Tệp có nhiều người. Lọc đúng tên Nam."
         },
         {
           "type": "challenge",
@@ -8370,13 +8545,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Năm lần. Ngày với thứ ghi sẵn."
+          "text": "Ba mươi hai lần. Ngày với thứ ghi sẵn từ năm ngoái tới giờ."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Năm dòng, nhìn là thấy thứ Hai nhiều. Nhưng \"nhiều\" là mấy? Thói quen thì phải đếm được."
+          "text": "Ba mươi hai dòng, nhìn là thấy thứ Hai nhiều. Nhưng \"nhiều\" là mấy? Thói quen thì phải đếm được."
         },
         {
           "type": "task",
@@ -8395,7 +8570,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Thứ Hai bốn lần, tối nào có trong tệp cũng thế. Thứ Năm một lần."
+          "text": "Thứ Hai hai mươi bảy lần, tối thứ Hai nào có trong tệp cũng thế. Thứ Năm năm lần."
         },
         {
           "type": "line",
@@ -8622,7 +8797,7 @@ const GOC = {
                 {
                   "speaker": "ha-vy",
                   "expression": "thinking",
-                  "text": "Bốn tối thứ Hai có trong tệp, tối nào Nam cũng ở thư viện. Một thói quen. Thói quen thì chưa phải bằng chứng cho đúng tối đó."
+                  "text": "Hai mươi bảy tối thứ Hai có trong tệp, tối nào Nam cũng ở thư viện. Một thói quen từ năm ngoái. Thói quen thì chưa phải bằng chứng cho đúng tối đó."
                 },
                 {
                   "speaker": "tung",
@@ -9101,7 +9276,7 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:ha-vy",
-              "x": 72,
+              "x": 45,
               "y": 100,
               "rong": 15,
               "chuoi": "v3-bd-thu-vien-vao",
@@ -9132,6 +9307,11 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Thư viện buổi chiều. Cửa từ kêu tít mỗi lần có người quẹt thẻ đi qua."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bàn nào trống cũng có một chai nước hoặc một cuốn vở nằm giữ chỗ. Chủ của chúng thì không thấy đâu."
         },
         {
           "type": "line",
@@ -9189,7 +9369,7 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:ba-lua",
-              "x": 30,
+              "x": 46,
               "y": 100,
               "rong": 15,
               "chuoi": "v3-bd-tra-da-vao",
@@ -9199,9 +9379,9 @@ const GOC = {
             },
             {
               "sprite": "vung:xe-dap",
-              "x": 62,
-              "y": 55,
-              "rong": 10,
+              "x": 62.5,
+              "y": 53,
+              "rong": 16,
               "chuoi": "v3-bd-tra-da-an",
               "sau": [],
               "nhan": "Chiếc xe đạp cũ"
@@ -10768,6 +10948,10 @@ const GOC = {
           "challengeId": "c-chi-vuot-muc"
         },
         {
+          "type": "image",
+          "imageId": "chibi-so-lieu-day"
+        },
+        {
           "type": "line",
           "speaker": "player",
           "text": "Còn một dòng. Khánh: ba khoản, tổng hai triệu tư, trung bình tám trăm nghìn."
@@ -11548,6 +11732,10 @@ const GOC = {
       "mocSomNhat": 1000,
       "nodes": [
         {
+          "type": "image",
+          "imageId": "cg-bang-chung-day"
+        },
+        {
           "type": "doi-chat",
           "id": "dc-khanh-so-do",
           "asker": {
@@ -12290,9 +12478,51 @@ const GOC = {
         },
         {
           "type": "line",
+          "speaker": "duy",
+          "expression": "smile",
+          "text": "Bánh quy thì tới hộp BQ-07, còn nguyên. Hôm nay có khách nên chưa ai dám bóc."
+        },
+        {
+          "type": "line",
           "speaker": "nam",
           "expression": "neutral",
           "text": "Tớ qua được một lúc, xong phải về lo tiền giải với anh Bách, chị Thảo. Cảm biến của xưởng ghi mỗi giây một dòng. Tớ muốn tự viết chương trình đọc nó."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Tớ cá là kỳ sau CLB mình đông gấp đôi."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Lần cá thứ hai mươi ba. Trật hai mươi mốt."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Tuần trước cậu bảo mới có bốn!"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Tuần này cậu cá với Duy suốt giải bóng của khoa. Tớ chỉ ngồi đếm."
+        },
+        {
+          "type": "line",
+          "speaker": "hoai",
+          "expression": "neutral",
+          "text": "…Tớ cá theo Tùng được không?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Thế thì lần này tớ phải thắng."
         },
         {
           "type": "line",
@@ -12621,7 +12851,7 @@ const GOC = {
           "diem": [
             {
               "sprite": "nv:ba-lua",
-              "x": 30,
+              "x": 46,
               "y": 100,
               "rong": 15,
               "chuoi": "v5-bd-tra-da-vao",
@@ -12631,9 +12861,9 @@ const GOC = {
             },
             {
               "sprite": "vung:xe-dap",
-              "x": 62,
-              "y": 55,
-              "rong": 10,
+              "x": 62.5,
+              "y": 53,
+              "rong": 16,
               "chuoi": "v5-bd-tra-da-an",
               "sau": [],
               "nhan": "Chiếc xe đạp cũ"
@@ -12777,6 +13007,23 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Hơn một tháng sau buổi họp rà soát. Phòng CLB vẫn sáng đèn mỗi chiều thứ Tư."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Trên bảng ghim có thêm một tờ giấy kẻ ô, tiêu đề \"Sổ nợ của Tùng\", đã sang dòng thứ mười hai. Dòng mới nhất: \"Hai cốc trà đá. Chủ nợ: Hà Vy.\""
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Dòng ấy không tính. Hôm đó cậu ấy tự mời."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Ghi là ghi."
         },
         {
           "type": "line",
@@ -13228,6 +13475,23 @@ const GOC = {
         },
         {
           "type": "line",
+          "speaker": "narrator",
+          "text": "Cuối bàn là một hộp bánh quy đã vơi nửa, nhãn ghi \"BQ-09\"."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "BQ-09 rồi á?"
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Luật là ai ăn cái cuối thì mua hộp mới. Tớ kiểm kê sau cùng nên lần nào cũng là tớ."
+        },
+        {
+          "type": "line",
           "speaker": "duy",
           "expression": "neutral",
           "text": "Micro không dây không ở ngăn dưới. Sổ tài sản vẫn ghi nó thuộc CLB mình, để ở tủ CLB."
@@ -13460,6 +13724,18 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "neutral",
           "text": "Mình cần biết phiếu nào phải mở ra xem lại. Chưa phải tìm người chịu lỗi."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Tớ cá là có ai cộng nhầm."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Lần thứ ba mươi tám. Tớ ghi rồi, cậu cứ nói tiếp."
         },
         {
           "type": "line",
@@ -13979,6 +14255,10 @@ const GOC = {
           "text": "Để tớ. Cho tớ mã sinh viên của cậu."
         },
         {
+          "type": "image",
+          "imageId": "chibi-408-nam-bep"
+        },
+        {
           "type": "show-document",
           "documentId": "doc-so-don"
         },
@@ -14215,6 +14495,21 @@ const GOC = {
           "speaker": "hoai",
           "expression": "neutral",
           "text": "Lạc một lần thì nhớ lâu."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Cổng phụ chứ gì. Tớ đi một lần là thuộc."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chiều hôm ấy, nhóm chat CLB có tin nhắn mới của Tùng: \"Cho tớ hỏi, từ cổng phụ về ký túc thì rẽ bên nào? Tớ đang đứng ở nhà xe.\""
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-lac-nha-xe"
         },
         {
           "type": "line",
@@ -16201,6 +16496,10 @@ const GOC = {
       "bangNoi": [
         "phien_dang_nhap"
       ],
+      "bangChon": [
+        "don_linh_kien",
+        "phien_dang_nhap"
+      ],
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -17152,6 +17451,10 @@ const GOC = {
       "bangNoi": [
         "kiem_ke"
       ],
+      "bangChon": [
+        "don_linh_kien",
+        "kiem_ke"
+      ],
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -17226,6 +17529,10 @@ const GOC = {
       "bangNoi": [
         "quy"
       ],
+      "bangChon": [
+        "khoan_chi",
+        "quy"
+      ],
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -17256,13 +17563,13 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 11
+            "n": 200
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả bản xuất, có cả quỹ Robotics. Mình chỉ cần quỹ CLB mình."
+              "text": "Cả sổ chi các CLB, hai trăm khoản. Mình chỉ cần quỹ CLB mình."
             }
           ]
         },
@@ -17732,12 +18039,12 @@ const GOC = {
     "c-nam-thu-vien": {
       "id": "c-nam-thu-vien",
       "tieuDe": "Bản ghi quẹt thẻ thư viện",
-      "deBai": "Bản ghi cửa từ thư viện do chính Nam và Hà Vy tải về từ cổng sinh viên, gộp chung một tệp. Nam vào thư viện những ngày nào?",
+      "deBai": "Bản ghi cửa từ thư viện của các thành viên tải về từ cổng sinh viên, gộp chung một tệp. Nam vào thư viện những ngày nào?",
       "manhMoiLienQuan": [
         "clue-ten-nam"
       ],
       "mucTieuHoc": "Lọc theo tên để ghim thành phiếu riêng của một người.",
-      "soDongKyVong": 5,
+      "soDongKyVong": 32,
       "sqlChuan": "SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Nam';",
       "truyVanNapSan": null,
       "phanUng": [
@@ -17757,13 +18064,13 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 10
+            "n": 72
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả tờ, của cả hai người. Mình cần riêng của Nam."
+              "text": "Cả tệp, bảy mươi hai lượt quẹt thẻ của cả mấy người từ trước tới giờ. Mình cần riêng của Nam."
             }
           ]
         },
@@ -17775,15 +18082,15 @@ const GOC = {
             {
               "speaker": "nam",
               "expression": "neutral",
-              "text": "Năm lần. Đúng là của tớ."
+              "text": "Ba mươi hai lần. Đúng là của tớ từ năm ngoái tới giờ."
             }
           ]
         }
       ],
       "vatChung": {
         "id": "ev-nam-thu-vien",
-        "title": "Năm lần Nam quẹt thẻ thư viện",
-        "description": "Kết quả truy vấn: năm lần Nam vào thư viện trong tháng 9 và 10, có ngày, thứ, giờ vào, giờ ra.",
+        "title": "Ba mươi hai lần Nam quẹt thẻ thư viện",
+        "description": "Kết quả truy vấn: ba mươi hai lần Nam vào thư viện từ năm ngoái đến nay, có ngày, thứ, giờ vào, giờ ra.",
         "giaTri": []
       },
       "ghiChu": []
@@ -17803,8 +18110,8 @@ const GOC = {
       "phanUng": [],
       "vatChung": {
         "id": "ev-nam-thu",
-        "title": "Nam: tối thứ Hai 4 lần, thứ Năm 1 lần",
-        "description": "Kết quả nhóm theo thứ: bốn tối thứ Hai liền Nam đều ở thư viện. Một thói quen đếm được; chưa phải bằng chứng cho riêng tối 07/10.",
+        "title": "Nam: tối thứ Hai 27 lần, thứ Năm 5 lần",
+        "description": "Kết quả nhóm theo thứ: hai mươi bảy tối thứ Hai Nam đều ở thư viện từ lúc vào trường. Một thói quen bền bỉ đếm được; chưa phải bằng chứng cho riêng tối 07/10.",
         "giaTri": []
       },
       "ghiChu": []
@@ -17850,13 +18157,13 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 5
+            "n": 32
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Năm lần. Mình chỉ cần tối mùng 7."
+              "text": "Ba mươi hai lần. Mình chỉ cần tối mùng 7."
             }
           ]
         },
@@ -17909,13 +18216,13 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 10
+            "n": 72
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả tờ. Mình cần riêng của Hà Vy."
+              "text": "Cả tệp. Mình cần riêng của Hà Vy."
             }
           ]
         },
@@ -19318,7 +19625,7 @@ const GOC = {
     {
       "sql": "SELECT may, COUNT(*) AS so_dong FROM @ev-don-nam-may GROUP BY may;",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:68 thẻ c-don-nam-theo-may, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:69 thẻ c-don-nam-theo-may, SQL chuẩn",
       "resultId": "ev-don-nam-theo-may",
       "sourceResultId": "ev-don-nam-may",
       "sourceGroupColumn": "may"
@@ -19326,7 +19633,7 @@ const GOC = {
     {
       "sql": "SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap ON don_linh_kien.ma_phien = phien_dang_nhap.ma_phien WHERE may = 'MAY-VP-XUONG';",
       "soDong": 4,
-      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:87 thẻ c-may-vp, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/giup-nam.md:88 thẻ c-may-vp, SQL chuẩn",
       "resultId": "ev-may-vp"
     },
     {
@@ -19411,20 +19718,20 @@ const GOC = {
     {
       "sql": "SELECT ma_chi, ma_don, so_tien, nguoi_duyet, ngay_chi FROM khoan_chi JOIN quy ON khoan_chi.ma_quy = quy.ma_quy WHERE clb = 'THAM_TU';",
       "soDong": 6,
-      "noi": "noi-dung-mvp/thu-thach/so-quy.md:25 thẻ c-chi-tham-tu, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/so-quy.md:26 thẻ c-chi-tham-tu, SQL chuẩn",
       "resultId": "ev-chi-tham-tu"
     },
     {
       "sql": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet;",
       "soDong": 2,
-      "noi": "noi-dung-mvp/thu-thach/so-quy.md:47 thẻ c-chi-theo-nguoi-duyet, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/so-quy.md:49 thẻ c-chi-theo-nguoi-duyet, SQL chuẩn",
       "resultId": "ev-chi-theo-nguoi-duyet",
       "sourceResultId": "ev-chi-tham-tu"
     },
     {
       "sql": "SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_tien) AS tb_so_tien FROM @ev-chi-tham-tu GROUP BY nguoi_duyet HAVING SUM(so_tien) > 1000000;",
       "soDong": 1,
-      "noi": "noi-dung-mvp/thu-thach/so-quy.md:65 thẻ c-chi-vuot-muc, SQL chuẩn",
+      "noi": "noi-dung-mvp/thu-thach/so-quy.md:67 thẻ c-chi-vuot-muc, SQL chuẩn",
       "resultId": "ev-chi-vuot-muc",
       "sourceResultId": "ev-chi-tham-tu"
     },
@@ -19469,7 +19776,7 @@ const GOC = {
     },
     {
       "sql": "SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Nam';",
-      "soDong": 5,
+      "soDong": 32,
       "noi": "noi-dung-mvp/thu-thach/tranh-cai.md:45 thẻ c-nam-thu-vien, SQL chuẩn",
       "resultId": "ev-nam-thu-vien"
     },
@@ -19500,14 +19807,14 @@ const GOC = {
       "resultId": "ev-v2-activities"
     },
     {
-      "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh = 'Du lịch';",
+      "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:174 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:196 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",
       "soDong": 595,
-      "noi": "noi-dung-mvp/kich-ban/06-hop-va-ket.md:15 [MÀN CHIẾU hop-chieu-or]"
+      "noi": "noi-dung-mvp/kich-ban/06-hop-va-ket.md:18 [MÀN CHIẾU hop-chieu-or]"
     }
   ],
   "duLieu": {

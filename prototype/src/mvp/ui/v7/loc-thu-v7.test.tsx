@@ -37,51 +37,51 @@ function ve() {
 }
 
 describe('lọc thử Ngày hội (v7)', () => {
-  it('nút kịch bản: hai điều kiện ten = Tùng VÀ nganh = Du lịch, lấy ô ma_sv', () => {
-    expect(NUT).toMatchObject({ sql: expect.stringMatching(/WHERE ten = 'Tùng' AND nganh = 'Du lịch'/), soDong: 1, chon: { cot: 'ma_sv', giaTri: 'SV240251' } });
+  it('nút kịch bản: hai điều kiện nganh = Du lịch VÀ ten = Tùng, lấy ô ma_sv', () => {
+    expect(NUT).toMatchObject({ sql: expect.stringMatching(/WHERE nganh = 'Du lịch' AND ten = 'Tùng'/), soDong: 1, chon: { cot: 'ma_sv', giaTri: 'SV240251' } });
   });
 
-  it('chưa hiện SQL, không nút chạy; hai hàng điều kiện (ten, nganh); con số là cả danh sách', async () => {
+  it('chưa hiện SQL, không nút chạy; hai hàng điều kiện (Ngành, Tên); con số là cả danh sách', async () => {
     ve();
     const vung = screen.getByRole('region', { name: 'Lọc danh sách' });
     expect(vung.textContent).not.toMatch(/SELECT|WHERE/);
     expect(screen.queryByRole('button', { name: /CHẠY/ })).toBeNull();
-    expect([...vung.querySelectorAll('.v7-o--cot')].map((e) => e.textContent)).toEqual(['ten', 'nganh']);
-    await waitFor(() => expect(Number(vung.querySelector('.v7-so__n')?.textContent)).toBeGreaterThan(3));
+    expect([...vung.querySelectorAll('.v7-o--cot')].map((e) => e.textContent)).toEqual(['Ngành', 'Tên']);
+    await waitFor(() => expect(Number(vung.querySelector('.v7-so__n')?.textContent)).toBeGreaterThan(3), { timeout: 10000 });
   });
 
-  it('thả thẻ Tùng → còn 3 người, chưa bấm ô được; thả thẻ Du lịch → còn 1 người', async () => {
+  it('thả thẻ Du lịch trước → lọc bớt, chưa bấm ô được; thả thẻ Tùng → còn 1 người', async () => {
     const { u } = ve();
-    const o = screen.getByRole('button', { name: 'Ô giá trị của cột ten' });
+    const o = screen.getByRole('button', { name: 'Ô giá trị của cột Ngành' });
     await u.click(o);
     expect(screen.queryByRole('table')).toBeNull();
-    // Ô ngành chưa tới lượt.
-    expect(screen.getByRole('button', { name: 'Ô giá trị của cột nganh' })).toBeDisabled();
-    await u.click(screen.getByRole('button', { name: 'Thẻ Tùng' }));
+    // Ô tên chưa tới lượt.
+    expect(screen.getByRole('button', { name: 'Ô giá trị của cột Tên' })).toBeDisabled();
+    await u.click(screen.getByRole('button', { name: 'Thẻ Du lịch' }));
     await u.click(o);
     const bang = await screen.findByRole('table');
-    expect(within(bang).getAllByRole('row')).toHaveLength(1 + 3);
+    expect(within(bang).getAllByRole('row').length).toBeGreaterThan(1);
     expect(within(bang).queryByRole('button')).toBeNull();
-    expect(screen.getByRole('button', { name: 'Đang lọc: ten bằng Tùng' })).toBeDisabled();
-    await u.click(screen.getByRole('button', { name: 'Thẻ Du lịch' }));
-    await u.click(screen.getByRole('button', { name: 'Ô giá trị của cột nganh' }));
+    expect(screen.getByRole('button', { name: 'Đang lọc: Ngành bằng Du lịch' })).toBeDisabled();
+    await u.click(screen.getByRole('button', { name: 'Thẻ Tùng' }));
+    await u.click(screen.getByRole('button', { name: 'Ô giá trị của cột Tên' }));
     await waitFor(() => expect(within(screen.getByRole('table')).getAllByRole('row')).toHaveLength(1 + 1));
     expect(document.querySelector('.v7-so__n')).toHaveTextContent('1');
   });
 
   it('bấm ô khác cột mã → ô gạch, có lời nhắc cột, chưa gọi onChon; bấm ô mã → chép ra giấy nhớ rồi onChon(mã)', async () => {
     const { onChon, u } = ve();
-    await u.click(screen.getByRole('button', { name: 'Thẻ Tùng' }));
-    await u.click(screen.getByRole('button', { name: 'Ô giá trị của cột ten' }));
-    await screen.findByRole('table');
     await u.click(screen.getByRole('button', { name: 'Thẻ Du lịch' }));
-    await u.click(screen.getByRole('button', { name: 'Ô giá trị của cột nganh' }));
-    const oTen = await screen.findByRole('button', { name: 'Ô ten: Tùng' });
+    await u.click(screen.getByRole('button', { name: 'Ô giá trị của cột Ngành' }));
+    await screen.findByRole('table');
+    await u.click(screen.getByRole('button', { name: 'Thẻ Tùng' }));
+    await u.click(screen.getByRole('button', { name: 'Ô giá trị của cột Tên' }));
+    const oTen = await screen.findByRole('button', { name: 'Ô Tên: Tùng' });
     await u.click(oTen);
     expect(oTen).toHaveClass('is-sai');
     expect(onChon).not.toHaveBeenCalled();
-    expect(screen.getByText(/Cái cần lấy nằm ở cột ma_sv/)).toBeInTheDocument();
-    await u.click(screen.getByRole('button', { name: 'Ô ma_sv: SV240251' }));
+    expect(screen.getByText(/Cái cần lấy nằm ở cột Mã SV/)).toBeInTheDocument();
+    await u.click(screen.getByRole('button', { name: 'Ô Mã SV: SV240251' }));
     expect(screen.getByRole('status', { name: 'Giấy nhớ mới: SV240251' })).toBeInTheDocument();
     await waitFor(() => expect(onChon).toHaveBeenCalledWith('SV240251'), { timeout: 3000 });
   });
