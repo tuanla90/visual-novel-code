@@ -34,7 +34,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-1"></a>
 ### Đoạn 1: Sáng 20/11: bó hoa gói giấy báo
 
-📅 **Thứ Tư, 20/11/2024**
+Thứ Tư, 20/11/2024
 
 📍 **Phòng CLB** — *Sáng 20/11: bó hoa gói giấy báo*
 

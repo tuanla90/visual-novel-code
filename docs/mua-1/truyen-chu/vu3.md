@@ -48,7 +48,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-1"></a>
 ### Đoạn 1: Ngày Phụ nữ Việt Nam 20/10
 
-📅 **Thứ Ba, 22/10/2024**
+Thứ Ba, 22/10/2024
 
 📍 **Phòng CLB** — *Ngày Phụ nữ Việt Nam 20/10*
 
@@ -671,6 +671,9 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 
 🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.
 > **Nam ở thư viện lúc tin được gửi** — Bản ghi quẹt thẻ của thư viện và trí nhớ của Hà Vy là hai nguồn riêng, cùng đặt Nam ở thư viện lúc 22:40. Người gửi tin ngồi máy văn phòng xưởng, là ai thì chưa biết.
+
+**Hết ngày.**
+
 
 
 ---

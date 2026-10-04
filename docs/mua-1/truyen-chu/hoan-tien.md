@@ -28,7 +28,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-1"></a>
 ### Đoạn 1: Tổng hoàn tiền trong bảng cao hơn biên nhận
 
-📅 **Thứ Sáu, 29/11/2024**
+Thứ Sáu, 29/11/2024
 
 📍 **Phòng CLB** — *Tổng hoàn tiền trong bảng cao hơn biên nhận*
 

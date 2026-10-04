@@ -69,7 +69,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-2"></a>
 ### Đoạn 2: Sáng ngày 1: Tùng rủ ra tòa B
 
-📅 **Ngày 1**
+Ngày 1
 
 📍 **Phòng CLB** — *Sáng ngày 1: Tùng rủ ra tòa B*
 
@@ -87,7 +87,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-3"></a>
 ### Đoạn 3: Sáng ngày 2: lên phòng Đào tạo
 
-📅 **Ngày 2**
+Ngày 2
 
 📍 **Phòng CLB** — *Sáng ngày 2: lên phòng Đào tạo*
 
@@ -111,7 +111,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-4"></a>
 ### Đoạn 4: Sáng ngày 3: sang Phòng CTSV
 
-📅 **Ngày 3**
+Ngày 3
 
 📍 **Phòng CLB** — *Sáng ngày 3: sang Phòng CTSV*
 
@@ -136,7 +136,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-5"></a>
 ### Đoạn 5: Sáng ngày 4: nộp hai mã
 
-📅 **Ngày 4**
+Ngày 4
 
 📍 **Phòng CLB** — *Sáng ngày 4: nộp hai mã*
 
@@ -156,7 +156,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-6"></a>
 ### Đoạn 6: Sáng ngày 5: cổng KTX
 
-📅 **Ngày 5**
+Ngày 5
 
 📍 **Cổng KTX** — *Sáng ngày 5: cổng KTX*
 
@@ -173,7 +173,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-7"></a>
 ### Đoạn 7: Nhịp 1–2: câu HOẶC của Quân → VÀ → "Số liệu đây!"
 
-📅 **Buổi họp rà soát**
+Buổi họp rà soát
 
 📍 **Phòng họp rà soát** — *Nhịp 1–2: câu HOẶC của Quân → VÀ → "Số liệu đây!"*
 
@@ -258,6 +258,9 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';
 > 📜 **[THẺ CHỮ]** Hai dòng chỉ cho ta chỗ cần đến. Phần còn lại cần thêm bằng chứng, và biết hỏi đúng lúc, đúng cách.
 
 🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.
+
+**Hết ngày.**
+
 
 
 ---
@@ -940,7 +943,11 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';
 - **Tùng** (vui vẻ): Rõ rồi. Tối mai tớ ngủ sớm, thứ Hai tỉnh như sáo.
 > [CHIBI chibi-bang-ghim (sticker)] (chưa có mô tả)
 
-- [Đọc tiếp sang Đoạn 51: Mời Hoài vào hỏi chuyện nộp thư](#doan-51)
+**Hết ngày.**
+
+
+**Lựa chọn tiếp theo:**
+- [Sang ngày 6](#doan-7)
 
 ---
 
@@ -1023,6 +1030,9 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' AND ma_lop = 'BC24A';
 > 📜 **[THẺ CHỮ]** SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.
 
 🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.
+
+**Hết ngày.**
+
 
 
 ---
@@ -1315,7 +1325,11 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep LIK
 - **Tùng** (lo lắng): Mai ra căng tin mà ăn nợ. Khoan, cuối tuần còn phải nạp tiền thẻ sinh viên nữa!
 > [CHIBI chibi-mi-tom (sticker)] (chưa có mô tả)
 
-- [Đọc tiếp sang Đoạn 63: Duy mở laptop (việc chính)](#doan-63)
+**Hết ngày.**
+
+
+**Lựa chọn tiếp theo:**
+- [Sang ngày 3](#doan-4)
 
 ---
 
@@ -1398,7 +1412,11 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep LIK
 - *Tùng vừa lật sổ ghi xong thì Duy đặt ngay ấm nước ra trước mặt.*
 - **Tùng** (gãi đầu): Đòi nợ liền tay thế hả anh? Em tưởng biên bản chỉ để tham khảo!
 
-- [Đọc tiếp sang Đoạn 68: Soi cậu bạn áo xanh trước khi hỏi: bấm vào người rồi bấm vào áo](#doan-68)
+**Hết ngày.**
+
+
+**Lựa chọn tiếp theo:**
+- [Sang ngày 5](#doan-6)
 
 ---
 

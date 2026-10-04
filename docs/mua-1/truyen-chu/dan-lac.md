@@ -33,7 +33,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-1"></a>
 ### Đoạn 1: Thư viện tối thứ Sáu: Tùng không học nổi
 
-📅 **Thứ Sáu, 25/10/2024**
+Thứ Sáu, 25/10/2024
 
 📍 **Thư viện trường** — *Thư viện tối thứ Sáu: Tùng không học nổi*
 

@@ -46,7 +46,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-1"></a>
 ### Đoạn 1: Tin đồn về CLB; lọc các tin mang câu đó
 
-📅 **Thứ Tư, 09/10/2024**
+Thứ Tư, 09/10/2024
 
 📍 **Phòng CLB** — *Tin đồn về CLB; lọc các tin mang câu đó*
 
@@ -560,6 +560,9 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 
 🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.
 > **Một tài khoản, chưa phải một người** — Tin gốc đi từ tài khoản kênh của CLB Robotics, lúc 22:40 tối thứ Hai. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
+
+**Hết ngày.**
+
 
 
 ---

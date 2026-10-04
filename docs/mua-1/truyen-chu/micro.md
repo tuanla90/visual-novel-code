@@ -28,7 +28,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-1"></a>
 ### Đoạn 1: Duy kiểm kê thiết bị, thiếu chiếc micro không dây
 
-📅 **Thứ Sáu, 15/11/2024**
+Thứ Sáu, 15/11/2024
 
 📍 **Phòng CLB** — *Duy kiểm kê thiết bị, thiếu chiếc micro không dây*
 

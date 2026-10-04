@@ -33,7 +33,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-1"></a>
 ### Đoạn 1: Mở Vụ 2: hồ sơ cuối kỳ
 
-📅 **Thứ Sáu, 01/11/2024**
+Thứ Sáu, 01/11/2024
 
 📍 **Phòng CLB** — *Mở Vụ 2: hồ sơ cuối kỳ*
 

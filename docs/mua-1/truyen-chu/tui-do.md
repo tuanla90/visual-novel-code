@@ -45,7 +45,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-1"></a>
 ### Đoạn 1: Ghế đá cạnh lối đi: một chiếc túi không tên
 
-📅 **Thứ Tư, 30/10/2024**
+Thứ Tư, 30/10/2024
 
 📍 **Ghế đá cạnh lối đi** — *Ghế đá cạnh lối đi: một chiếc túi không tên*
 

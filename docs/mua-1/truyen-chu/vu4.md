@@ -40,7 +40,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-1"></a>
 ### Đoạn 1: Nam tới phòng CLB với một rắc rối của chính mình
 
-📅 **Thứ Hai, 04/11/2024**
+Thứ Hai, 04/11/2024
 
 📍 **Phòng CLB** — *Nam tới phòng CLB với một rắc rối của chính mình*
 
@@ -320,6 +320,9 @@ SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap
 
 🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.
 > **Có người mượn tên Nam** — Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng, cùng cái máy đã gửi tin đồn, một đơn đúng tối Nam ở thư viện. Máy thì biết, tay thì chưa. Ba người có chìa phòng.
+
+**Hết ngày.**
+
 
 **Lựa chọn tiếp theo:**
 - [Khám phá: Tấm thẻ đeo cổ](#doan-8)

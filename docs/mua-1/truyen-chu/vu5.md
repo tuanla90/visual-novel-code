@@ -51,7 +51,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-1"></a>
 ### Đoạn 1: Sắp tới 20/11
 
-📅 **Thứ Bảy, 16/11/2024**
+Thứ Bảy, 16/11/2024
 
 📍 **Phòng CLB** — *Sắp tới 20/11*
 
@@ -572,6 +572,9 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.
 > **Mỗi bước là một phiếu** — Ba khoản chi không có hàng được ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Người nhận là người nói "vì sao". Mùa 1 khép lại ở chỗ chứng cứ dừng.
 
+**Hết ngày.**
+
+
 **Lựa chọn tiếp theo:**
 - [Nếu bí mật mức 70: Rẽ sang hướng khác](#doan-21)
 
@@ -624,6 +627,9 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.
 > **Mỗi bước là một phiếu** — Ba khoản chi không có hàng được ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Người nhận là người nói "vì sao". Mùa 1 khép lại ở chỗ chứng cứ dừng.
+
+**Hết ngày.**
+
 
 
 ---
