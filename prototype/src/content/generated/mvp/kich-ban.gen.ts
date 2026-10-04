@@ -1485,18 +1485,43 @@ const GOC = {
       "mocSomNhat": 0,
       "nodes": [
         {
-          "type": "image",
-          "imageId": "obj-hop-kien-nghi-trong"
+          "type": "task",
+          "text": "Đi một vòng trường với Tùng"
         },
         {
           "type": "note",
-          "text": "Ảnh obj-hop-kien-nghi-trong (khe trống, chưa có thẻ lịch) hiện trước lời: ảnh cho thấy cái hộp, lời dẫn không tả lại (show, don't tell 04/10). Bác Thịnh đứng ở chân cầu thang."
+          "text": "Sảnh tòa B, chiều Chủ nhật (nền sanh-toa-b, trên ảnh chưa có hộp). Bác Thịnh đứng ở chân cầu thang. Ảnh cái hộp CHỈ hiện sau khi Tùng chỉ tay (04/10: hiện ngay khi vào cảnh thì đột ngột, người chơi chưa biết vì sao mình ở đây)."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng dẫn đi hết dãy giảng đường, chỉ từng tòa như hướng dẫn viên. Chiều Chủ nhật, cả tòa B im phăng phắc, chỉ nghe tiếng dép hai đứa."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "ao-xanh-chi-tay",
+          "text": "Tòa B đây. Học đại cương kiểu gì cậu cũng mòn gót ở đây."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh",
-          "text": "Hộp kiến nghị đây. Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ."
+          "text": "Ơ, cái hộp cạnh cửa kia vẫn còn à?"
+        },
+        {
+          "type": "image",
+          "imageId": "obj-hop-kien-nghi-trong"
+        },
+        {
+          "type": "note",
+          "text": "Ngay sau ảnh obj-hop-kien-nghi-trong (khe trống, chưa có thẻ lịch): ảnh cho thấy cái hộp, lời không tả lại."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "ao-xanh",
+          "text": "Hộp kiến nghị đấy. Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ."
         },
         {
           "type": "line",
@@ -19881,7 +19906,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:195 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:200 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

@@ -105,8 +105,15 @@
 - **tung** (ao-xanh-happy): Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường.
 
 ## md-03-toa-b.1
-- [DÀN DỰNG] Ảnh obj-hop-kien-nghi-trong (khe trống, chưa có thẻ lịch) hiện trước lời: ảnh cho thấy cái hộp, lời dẫn không tả lại (show, don't tell 04/10). Bác Thịnh đứng ở chân cầu thang.
-- **tung** (ao-xanh): Hộp kiến nghị đây. Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
+> NHIỆM VỤ: Đi một vòng trường với Tùng
+- [DÀN DỰNG] Sảnh tòa B, chiều Chủ nhật (nền sanh-toa-b, trên ảnh chưa có hộp). Bác Thịnh đứng ở chân cầu thang. Ảnh cái hộp CHỈ hiện sau khi Tùng chỉ tay (04/10: hiện ngay khi vào cảnh thì đột ngột, người chơi chưa biết vì sao mình ở đây).
+- **narrator**: {{nv.tung}} dẫn đi hết dãy giảng đường, chỉ từng tòa như hướng dẫn viên. Chiều Chủ nhật, cả tòa B im phăng phắc, chỉ nghe tiếng dép hai đứa.
+- **tung** (ao-xanh-chi-tay): Tòa B đây. Học đại cương kiểu gì cậu cũng mòn gót ở đây.
+- **tung** (ao-xanh): Ơ, cái hộp cạnh cửa kia vẫn còn à?
+
+## md-03-toa-b.2
+- [DÀN DỰNG] Ngay sau ảnh obj-hop-kien-nghi-trong (khe trống, chưa có thẻ lịch): ảnh cho thấy cái hộp, lời không tả lại.
+- **tung** (ao-xanh): Hộp kiến nghị đấy. Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
 - **bac-tu** (neutral): Hai cháu tìm phòng nào? Chiều Chủ nhật tòa này khóa hết lớp rồi.
 - **tung** (ao-xanh): Dạ không ạ, cháu dẫn bạn đi xem trường thôi.
 - **bac-tu** (neutral): Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào.
