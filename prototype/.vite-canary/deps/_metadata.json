@@ -1,55 +1,55 @@
 {
-  "hash": "ae2faf63",
-  "configHash": "29f5a294",
+  "hash": "e7d6c2a8",
+  "configHash": "58281431",
   "lockfileHash": "646f67d0",
-  "browserHash": "24960ec9",
+  "browserHash": "289ce6f0",
   "optimized": {
     "react-dom": {
-      "src": "../../../../../../prototype/node_modules/react-dom/index.js",
+      "src": "../../node_modules/react-dom/index.js",
       "file": "react-dom.js",
-      "fileHash": "5af3bfcf",
+      "fileHash": "15be708b",
       "needsInterop": true
     },
     "react-dom/client": {
-      "src": "../../../../../../prototype/node_modules/react-dom/client.js",
+      "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "49707bbf",
+      "fileHash": "4987625e",
       "needsInterop": true
     },
     "react": {
-      "src": "../../../../../../prototype/node_modules/react/index.js",
+      "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "b076edd8",
+      "fileHash": "bec195ae",
       "needsInterop": true
     },
     "react/jsx-dev-runtime": {
-      "src": "../../../../../../prototype/node_modules/react/jsx-dev-runtime.js",
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
       "file": "react_jsx-dev-runtime.js",
-      "fileHash": "237632f3",
+      "fileHash": "17732f05",
       "needsInterop": true
     },
     "react/jsx-runtime": {
-      "src": "../../../../../../prototype/node_modules/react/jsx-runtime.js",
+      "src": "../../node_modules/react/jsx-runtime.js",
       "file": "react_jsx-runtime.js",
-      "fileHash": "a31d9382",
+      "fileHash": "1782baaa",
       "needsInterop": true
     },
     "sql.js": {
-      "src": "../../../../../../prototype/node_modules/sql.js/dist/sql-wasm-browser.js",
+      "src": "../../node_modules/sql.js/dist/sql-wasm-browser.js",
       "file": "sql__js.js",
-      "fileHash": "bf6d98e6",
+      "fileHash": "7bef78a2",
       "needsInterop": true
     },
     "zustand": {
-      "src": "../../../../../../prototype/node_modules/zustand/esm/index.mjs",
+      "src": "../../node_modules/zustand/esm/index.mjs",
       "file": "zustand.js",
-      "fileHash": "f2073343",
+      "fileHash": "db5e2552",
       "needsInterop": false
     },
     "zustand/middleware": {
-      "src": "../../../../../../prototype/node_modules/zustand/esm/middleware.mjs",
+      "src": "../../node_modules/zustand/esm/middleware.mjs",
       "file": "zustand_middleware.js",
-      "fileHash": "49c4d885",
+      "fileHash": "0317bc51",
       "needsInterop": false
     }
   },

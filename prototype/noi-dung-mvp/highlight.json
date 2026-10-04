@@ -1,51 +1,177 @@
 {
   "vu1": {
-    "clues": ["lá thư", "phong bì", "chữ ký", "chữ H", "thẻ lịch", "hộp kiến nghị", "sổ niêm phong", "nhật ký in", "lịch sử in", "phiếu tra cứu", "mã sinh viên", "huy hiệu bánh răng", "bánh răng sứt"],
+    "the": {
+      "doc-the-lich-cua-toi": ["thẻ lịch"],
+      "doc-so-chi-linh": ["sổ CLB"],
+      "doc-bao-cao-yeu": ["báo cáo năm ngoái"],
+      "doc-thu-che": ["lá thư", "bản chụp"],
+      "clue-chu-ky-h": ["chữ H"],
+      "ev-the-lich": ["thẻ lịch", "khe hộp"],
+      "clue-bao-chi-k24": ["khoa Báo chí"],
+      "clue-toa-b": ["mở hộp"],
+      "doc-thong-bao-hop": ["họp rà soát"],
+      "doc-van-ban-thay-quang": ["lập căn cứ"],
+      "clue-quyen-du-lieu": ["tài khoản CLB", "bảng lớp"],
+      "clue-can-ma-va-can-cu": ["mã cụ thể", "căn cứ bằng văn bản"],
+      "clue-phieu-tra-cuu": ["phiếu yêu cầu tra cứu", "phiếu tra cứu"],
+      "clue-hoai-nguoi-nop": ["sổ niêm phong", "người nộp"],
+      "clue-ten-tep": ["tên tệp"],
+      "clue-loi-chu-cuong": ["huy hiệu bánh răng", "phong bì nâu"],
+      "clue-loi-nhan-linh-1": ["mẩu giấy"],
+      "clue-tra-da-1": ["cậu trà nóng", "cái tủ sắt"],
+      "ev-hai-dong-sua": ["hai dòng"],
+      "ev-bang-lop": ["bảng lớp"],
+      "ev-hai-lop": ["BC24A", "BC23A"],
+      "ev-nhat-ky-in": ["nhật ký in"],
+      "ev-hai-ma": ["bắt đầu bằng H"]
+    },
     "relations": ["nộp thư", "in thư", "viết thư", "gửi thư", "niêm phong", "ký nhận", "in lúc", "in vào", "in tối", "đưa phong bì", "nhận phong bì", "đối chiếu", "chứng cứ", "bằng chứng"]
   },
   "vu2": {
-    "clues": ["tin đồn", "tin gốc", "tin chuyển tiếp", "kênh Robotics", "tài khoản kênh", "phiên đăng nhập", "giờ đăng nhập", "giờ gửi", "máy văn phòng", "lịch xưởng", "lịch đặt xưởng", "bảng đăng ký dùng xưởng"],
+    "the": {
+      "doc-tin-don": ["tin đồn"],
+      "clue-noi-dung-tin": ["soi dữ liệu"],
+      "clue-sao-ke-cuoi-ky": ["sao kê"],
+      "clue-tin-goc": ["tin gốc", "chuyển tiếp"],
+      "clue-ngay-gui": ["tin gốc gửi lúc", "nhật ký đăng nhập"],
+      "doc-lich-xuong": ["lịch đặt xưởng", "bảng đăng ký dùng xưởng"],
+      "clue-xuong-toi": ["mở tới 23"],
+      "clue-loi-nhan-linh-2": ["mẩu giấy"],
+      "clue-tra-da-2": ["hai cuốn sổ"],
+      "ev-tin-don": ["năm tài khoản"],
+      "ev-tin-goc": ["tin gốc"],
+      "ev-tin-may": ["máy xưởng số 2"],
+      "ev-tin-xuong": ["mở tới 23"]
+    },
     "relations": ["gửi tin", "đăng nhập", "đặt xưởng", "mở xưởng", "xưởng mở", "đối chiếu", "chứng cứ", "bằng chứng"]
   },
   "vu3": {
-    "clues": ["tin gốc", "kênh Robotics", "bản ghi thư viện", "cửa từ", "lượt quẹt", "thẻ thư viện", "sơ đồ mạch", "sơ đồ in", "phiên đăng nhập", "ngoại phạm"],
+    "the": {
+      "clue-kenh-robotics": ["kênh Robotics", "bản xuất bài đăng"],
+      "clue-ten-nam": ["bản ghi cửa từ"],
+      "clue-toi-07": ["tin gốc"],
+      "clue-ten-vy": ["bản ghi cửa từ"],
+      "clue-loi-nhan-linh-3": ["kết luận sai"],
+      "clue-giao-chia": ["giao chìa", "phòng văn phòng"],
+      "clue-thao-in-so-do": ["sơ đồ mạch"],
+      "clue-tra-da-3": ["kết luận sai"],
+      "ev-bai-dang": ["kênh Robotics"],
+      "ev-bai-thiet-bi": ["điện thoại trực"],
+      "ev-nam-thu-vien": ["thẻ thư viện", "quẹt thẻ"],
+      "ev-nam-thu": ["ở thư viện"],
+      "ev-toi-07": ["quẹt thẻ"],
+      "ev-vy-thu-vien": ["thẻ thư viện"]
+    },
     "relations": ["gửi tin", "đăng nhập", "quẹt thẻ", "in sơ đồ", "in tối", "đối chiếu", "chứng cứ", "bằng chứng", "ngoại phạm"]
   },
   "vu4": {
-    "clues": ["đơn đặt hàng", "sổ đặt hàng", "mã đơn", "mã phiên", "phiên đăng nhập", "người đặt", "người duyệt", "đã duyệt", "huy hiệu", "bánh răng sứt", "giải trình ngân sách"],
+    "the": {
+      "doc-thu-hoi-don": ["giải trình ngân sách"],
+      "clue-da-duyet": ["đã duyệt", "sổ đặt hàng"],
+      "clue-ma-phien": ["mã phiên"],
+      "clue-nguoi-dat-nam": ["người đứng tên", "sổ đặt hàng"],
+      "doc-phien-dang-nhap": ["phiên đăng nhập"],
+      "clue-may-vp": ["máy văn phòng xưởng"],
+      "clue-loi-nhan-linh-4": ["mẩu giấy"],
+      "clue-huy-hieu-sut": ["huy hiệu bánh răng", "sứt một răng"],
+      "ev-don-da-duyet": ["đơn đã duyệt"],
+      "ev-don-theo-nguoi": ["người đặt"],
+      "ev-don-nam-may": ["máy xưởng số 2"],
+      "ev-don-nam-theo-may": ["máy văn phòng xưởng"],
+      "ev-may-vp": ["máy văn phòng xưởng"]
+    },
     "relations": ["đặt hàng", "duyệt đơn", "đăng nhập", "ký duyệt", "đối chiếu", "chứng cứ", "bằng chứng"]
   },
+  "vu5": {
+    "the": {
+      "doc-kiem-ke": ["bảng kiểm kê", "đếm tay"],
+      "clue-so-luong-co-0": ["kho không có"],
+      "doc-so-quy": ["sổ quỹ", "tạm ứng tiền mặt"],
+      "clue-quy-tham-tu": ["quỹ CLB Thám Tử"],
+      "clue-han-muc": ["ngưỡng giải trình"],
+      "clue-so-phong-may": ["sổ ký phòng máy"],
+      "clue-in-toi-15-9": ["nhật ký in"],
+      "clue-loi-chu-cuong": ["huy hiệu sứt"],
+      "clue-huy-hieu-sut": ["huy hiệu sứt", "sứt một răng"],
+      "clue-giao-chia": ["chìa phòng văn phòng"],
+      "clue-thao-in-so-do": ["chị Thảo"],
+      "clue-sao-ke-cuoi-ky": ["sao kê"],
+      "clue-loi-nhan-linh-1": ["mẩu giấy"],
+      "clue-loi-nhan-linh-5": ["ngăn dưới tủ"],
+      "doc-ho-so-vu-dau": ["hồ sơ vụ thứ nhất"],
+      "clue-tra-da-4": ["cậu trà nóng"],
+      "ev-dat-ma-khong-co": ["sổ đặt hàng", "động cơ servo"],
+      "ev-chi-tham-tu": ["quỹ CLB Thám Tử"],
+      "ev-chi-theo-nguoi-duyet": ["người duyệt"],
+      "ev-chi-vuot-muc": ["ngưỡng giải trình"]
+    },
+    "relations": ["chuyển tiền", "chuyển khoản", "rút tiền", "ký nhận", "thanh toán", "đối chiếu", "chứng cứ", "bằng chứng"]
+  },
   "so-phong": {
-    "clues": ["sổ sử dụng phòng", "sổ giấy", "mã phòng", "đã ký xác nhận", "bốn buổi", "chữ ký"],
+    "the": {
+      "doc-v2-raw-logs": ["sổ sử dụng phòng"],
+      "clue-ma-phong-clb": ["mã phòng"],
+      "clue-da-xac-nhan": ["chữ ký trong sổ"],
+      "clue-v2-so-giay": ["sổ giấy", "bốn buổi"],
+      "ev-v2-activities": ["bốn buổi"]
+    },
     "relations": ["ký nhận", "xác nhận", "đối chiếu", "khớp", "đếm", "chứng cứ"]
   },
   "micro": {
-    "clues": ["micro không dây", "MIC-02", "sổ tài sản", "phiếu luân chuyển", "mã dán", "đã nhận"],
+    "the": {
+      "doc-mic-so-tai-san": ["sổ tài sản", "phiếu luân chuyển"],
+      "clue-mic-ten": ["micro không dây"],
+      "clue-mic-da-nhan": ["có người nhận"],
+      "clue-mic-ma-dan": ["MIC-02"],
+      "ev-mic-phieu": ["PX-17", "micro không dây"]
+    },
     "relations": ["nhận micro", "ký nhận", "luân chuyển", "đối chiếu", "mã dán", "chứng cứ"]
   },
   "hoan-tien": {
-    "clues": ["hoàn tiền", "phiếu PH-04", "PH-04", "biên nhận ngân hàng", "mã giao dịch", "ghi trùng"],
+    "the": {
+      "doc-hoan-ban-xuat": ["bản xuất thu chi"],
+      "clue-hoan-loai": ["giao dịch hoàn", "hoàn tiền"],
+      "clue-hoan-mot-dong": ["chứng từ gốc"],
+      "doc-hoan-bien-nhan": ["biên nhận ngân hàng", "PH-04", "NH-771"],
+      "ev-hoan-loc": ["dòng hoàn tiền"],
+      "ev-hoan-nhom": ["PH-04"]
+    },
     "relations": ["hoàn tiền", "đối chiếu", "ghi trùng", "chuyển khoản", "chứng cứ"]
   },
   "dan-lac": {
-    "clues": ["sổ đón tân sinh viên", "SV240251", "điểm đến", "nhà xe", "sổ đón"],
+    "the": {
+      "doc-so-don": ["sổ đón"],
+      "clue-ma-tung": ["SV240251"],
+      "clue-nha-xe": ["điểm đến", "nhà xe"],
+      "ev-don-tung": ["chín lượt"],
+      "ev-don-noi-den": ["điểm đến"],
+      "ev-don-lac": ["SV240317"]
+    },
     "relations": ["dẫn lạc", "ghi nhầm", "ghi là", "ghi nhà xe", "đối chiếu", "chứng cứ"]
   },
   "hoc-tro-cu": {
-    "clues": ["danh sách lớp cũ", "danh sách học trò", "ra trường", "thôi học", "chuyển trường", "ghi chú", "trùng tên"],
+    "the": {
+      "doc-hoc-danh-sach": ["danh sách lớp cũ"],
+      "clue-hoc-ghi-chu": ["đã ra trường"],
+      "clue-hoc-mot-dong": ["hơn một dòng"],
+      "ev-hoc-ra-truong": ["đã ra trường"],
+      "ev-hoc-ten": ["hai mươi sáu tên"],
+      "ev-hoc-hai-dong": ["hơn một dòng"]
+    },
     "relations": ["ra trường", "thôi học", "chuyển trường", "đối chiếu", "trùng tên", "ghi chú"]
   },
   "tui-do": {
-    "clues": ["KTVM-0", "nhãn giáo trình", "mã lớp học phần", "lịch lớp học phần", "danh sách đăng ký", "khoa Báo chí", "đơn học bổng", "nhà xe tòa B", "vào bãi"],
+    "the": {
+      "clue-tui-nhan": ["KTVM-0", "nhãn dán"],
+      "clue-tui-toa-b": ["nhà xe tòa B"],
+      "clue-tui-sang": ["vào bãi"],
+      "clue-tui-thu": ["thứ Tư"],
+      "clue-tui-khoa": ["đơn xin học bổng"],
+      "doc-tui-lich-hoc": ["lịch lớp học phần", "Kinh tế vi mô"],
+      "doc-tui-dang-ky": ["danh sách đăng ký"],
+      "ev-tui-lop": ["Kinh tế vi mô"],
+      "ev-tui-nguoi": ["đăng ký lớp"]
+    },
     "relations": ["vào bãi", "đăng ký lớp", "nộp đơn", "hạn nộp", "đối chiếu", "nhãn giáo trình"]
-  },
-  "hidden": {
-    "clues": ["mẩu giấy", "sổ CLB cũ", "cậu trà nóng", "sổ của Chi Linh", "thôi học", "vụ án oan", "hồ sơ cũ", "huy hiệu sứt", "sứt một răng"],
-    "people": ["cậu trà nóng", "Chi Linh", "Đỗ Văn Thịnh"],
-    "relations": ["mẩu giấy", "kẹp trong sổ", "bà kể", "bà nhớ", "thôi học", "vụ án oan", "đối chiếu", "chứng cứ", "sứt một răng"]
-  },
-  "vu5": {
-    "clues": ["sổ quỹ", "sao kê", "phiếu chi", "mã chi", "mã tham chiếu", "chuyển khoản", "giao dịch", "chữ ký", "biên nhận", "người nhận tiền", "khoản chi"],
-    "relations": ["chuyển tiền", "chuyển khoản", "rút tiền", "ký nhận", "thanh toán", "đối chiếu", "chứng cứ", "bằng chứng"]
   }
 }

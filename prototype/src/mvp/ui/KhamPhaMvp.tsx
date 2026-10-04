@@ -274,12 +274,13 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                 );
               }
               if (d.diem.sprite.startsWith('vung:')) {
-                // Chi tiết ẨN trên cảnh (tấm lưng áo xanh giữa đám đông): không có dấu, người chơi tự tìm; để lâu mới nháy gợi ý.
+                // Chi tiết ẨN trên cảnh: không có dấu, người chơi tự tìm; để lâu mới nháy gợi ý. Vùng có dấu (đầu mối "!" / chuyện
+                // thêm "?", luật 04/10) thì vòng và huy hiệu hiện sẵn như vật bấm.
                 return (
                   <button
                     key={d.diem.chuoi}
                     type="button"
-                    className={`mvp-an${d.daXem ? ' is-da-xem' : ''}`}
+                    className={`mvp-an${d.daXem ? ' is-da-xem' : ''}${d.diem.dau ? ' is-co-dau' : ''}`}
                     style={{ left: `${d.diem.x}%`, top: `${d.diem.y}%`, width: `${d.diem.rong}%` }}
                     aria-label={nhanDoc(i, d)}
                     title={`${nhan[i] ?? 'Soi chi tiết'}${d.daXem ? ' — đã xem' : ''}`}
@@ -288,6 +289,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                     onClick={() => onXem(d.diem.chuoi)}
                   >
                     <span className="mvp-an__goi-y" aria-hidden="true" />
+                    {d.diem.dau ? <HuyHieu d={d} /> : null}
                     {kinhLup && !d.daXem ? (
                       <img className="mvp-an__kinh" src={kinhLup} alt="" draggable={false} aria-hidden="true" />
                     ) : null}

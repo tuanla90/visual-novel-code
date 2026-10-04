@@ -7,7 +7,7 @@
 - **narrator**: Hơn hai tuần sau buổi họp rà soát. Chiều thứ Tư, phòng CLB.
 - **narrator**: Trên bàn có một hộp bánh quy mới, nắp dán nhãn viết tay: "Tài sản CLB. BQ-04. Người mua: Duy."
 - **tung** (surprised): BQ-04? Hôm trước mới là hộp đầu tiên mà.
-- **duy** (neutral): Ba hộp kia hết trong tuần các cậu kiểm tra giữa kỳ. Tớ ăn cái cuối cả ba lần.
+- **duy** (neutral): Ba hộp kia hết trong tuần mấy đứa kiểm tra giữa kỳ. Anh ăn cái cuối cả ba lần.
 - **minh-anh** (serious): Từ tối thứ Hai, kênh sinh viên chuyền nhau một tin về CLB mình. Sáng nay cô Lan gọi chị lên hỏi.
 - **tung** (surprised): Tin gì thế ạ?
 - [DÀN DỰNG] {{nv.hieu}} lớp Báo chí ló đầu vào cửa, tay cầm điện thoại.
@@ -20,7 +20,7 @@
 - **tung** (worried): Ơ, mình có soi ai đâu. Tra gì cũng có phiếu, lại có anh Quân ngồi giám sát mà.
 - **minh-anh** (serious): Cuối kỳ là đợt rà soát phòng, cũng là lúc Phòng Kế hoạch gửi sao kê quỹ về các CLB. Chị không muốn tin này treo tới lúc đó.
 - **minh-anh** (khoanh-tay): Thế nên chị mới cần biết tin này bắt đầu từ đâu. Cô Lan cho mình bản xuất các tin công khai của kênh, từ tối thứ Hai tới trưa hôm qua.
-- **duy** (neutral): Tin công khai, ai vào kênh cũng đọc được. Tớ nạp vào laptop rồi. Bản xuất ghi nguyên văn từng tin, kể cả tin bấm chuyển tiếp: bấm chuyển thì chữ giữ y nguyên.
+- **duy** (neutral): Tin công khai, ai vào kênh cũng đọc được. Anh nạp vào laptop rồi. Bản xuất ghi nguyên văn từng tin, kể cả tin bấm chuyển tiếp: bấm chuyển thì chữ giữ y nguyên.
 > NHIỆM VỤ: Những tin nào trong kênh mang câu tin đồn?
 > NHẮC VIỆC ha-vy (thinking): Lọc ra các tin mang câu đó trước đã. Chưa vội đọc tên ai.
 
@@ -93,7 +93,7 @@
 
 ## tin-tuyen-xuong.1
 - **narrator**: Cạnh cửa xưởng có tấm bảng đăng ký dùng xưởng, kín chữ viết tay. Góc bảng ghi "bản sao từ lịch đặt xưởng trên máy".
-- **duy** (neutral): Khoan, góc bảng ghi "bản sao từ lịch đặt xưởng trên máy". Cổng tra cứu lịch của nhà văn hóa mở cho sinh viên, để tớ tải bản gốc về laptop tra cho chắc. Chữ tay dễ chép nhầm.
+- **duy** (neutral): Khoan, góc bảng ghi "bản sao từ lịch đặt xưởng trên máy". Cổng tra cứu lịch của nhà văn hóa mở cho sinh viên, để anh tải bản gốc về laptop tra cho chắc. Chữ tay dễ chép nhầm.
 > NHIỆM VỤ: Tối 07/10, xưởng được đăng ký từ mấy giờ tới mấy giờ, cho hoạt động nào?
 > NHẮC VIỆC ha-vy (thinking): Ngày là mùng 7. Lịch đặt xưởng ghi theo ngày.
 
@@ -136,11 +136,11 @@
 - **minh-anh** (serious): Chị không nói là Nam. Nhưng Nam là đầu mối duy nhất mình đang có. Phải hỏi cho ra.
 - **duy** (neutral): Còn một chuyện mới: phòng văn phòng xưởng thường khóa, chìa ban chủ nhiệm giữ. Người ngồi máy đó tối thứ Hai có chìa, hoặc được mở cửa cho.
 - **ha-vy** (thinking): Khoan. Mật khẩu thì cả ban chủ nhiệm đều biết mà.
-- **duy** (neutral): Tớ thì chờ thêm một nguồn nữa rồi mới nói.
+- **duy** (neutral): Anh thì chờ thêm một nguồn nữa rồi mới nói.
 - [THẺ CHỮ] **narrator**: Một tài khoản chưa phải là một con người. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
 
 ## tin-phong-duy.1
-- **duy** (neutral): Bản xuất của cô Lan tớ nạp vào máy rồi. Ngồi vào đi.
+- **duy** (neutral): Bản xuất của cô Lan anh nạp vào máy rồi. Ngồi vào đi.
 
 ## tin-phong-vy.1
 - **ha-vy** (thinking): Câu hỏi tớ ghim rồi: những tin nào mang đúng câu ấy?

@@ -76,7 +76,7 @@
 
 ## v4-may-vp.3
 > NHIỆM VỤ: Chốt điều nói được với Ban kiểm tra
-- **duy** (neutral): Tên một người, tay một người khác… trong sổ có kẹp một câu. Để tớ xem.
+- **duy** (neutral): Tên một người, tay một người khác… trong sổ có kẹp một câu. Để anh xem.
 - [DÀN DỰNG] {{nv.duy}} lật sổ CLB tới trang cuối.
 - **player**: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi."
 - **tung** (worried): Giống hệt chuyện Nam.
@@ -88,7 +88,7 @@
 
 ## v4-ket.1
 > NHIỆM VỤ: Chốt điều nói được với Ban kiểm tra
-- **duy** (neutral): Giấy giải trình đề ngày 11, một ngày sau hôm mình gỡ nghi cho Nam. Tớ ghi lại thôi, chưa nói gì.
+- **duy** (neutral): Giấy giải trình đề ngày 11, một ngày sau hôm mình gỡ nghi cho Nam. Anh ghi lại thôi, chưa nói gì.
 - [DÀN DỰNG] Có tiếng gõ cửa. {{nv.khanh}} đứng ở cửa phòng CLB, balo khoác một bên vai.
 - **khanh** (neutral): Nam ở đây à. Danh sách Ban kiểm tra cầm là anh chuyển. Đủ cả năm đơn, kể cả hai đơn em đặt thật, để họ khỏi bảo mình chọn lọc. Cứ giải trình đúng sự thật, anh sẽ nói đỡ một câu. Còn bên Thám Tử, cần giấy tờ gì qua Hội thì cứ gửi anh, anh ký chuyển cho.
 - **nam** (neutral): Vâng anh.
@@ -111,7 +111,7 @@
 - [THẺ CHỮ] **narrator**: Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nghi ngờ mạnh vẫn chưa phải bằng chứng: càng chắc trong lòng, càng phải tìm nguồn thứ hai.
 
 ## v4-phong-duy.1
-- **duy** (neutral): Bản sổ đặt hàng Ban kiểm tra gửi kèm, tớ nạp vào máy rồi. Cả sổ, từ hồi xưởng mới số hóa.
+- **duy** (neutral): Bản sổ đặt hàng Ban kiểm tra gửi kèm, anh nạp vào máy rồi. Cả sổ, từ hồi xưởng mới số hóa.
 
 ## v4-phong-nam.1
 - **nam** (neutral): Hai đơn tớ đặt thật là cảm biến dò line với bánh xe. Tớ đặt buổi chiều, ở máy xưởng số 2, lúc đang trực.

@@ -35,10 +35,10 @@ describe('sảnh KTX: [KHÁM PHÁ]', () => {
   it('mở đầu chỉ có tờ giấy thang máy (bảng tin hiện sau), chưa có Tùng; bấm tờ giấy → lời kể; về lại cảnh thì chỗ đó mờ, bảng tin hiện', async () => {
     veManChoi(toiSanh());
     const canh = screen.getByRole('region', { name: 'Khám phá: Sảnh ký túc xá' });
-    const nutThangMayDau = within(canh).getByRole('button', { name: 'Xem tờ giấy trên cửa thang máy' });
+    const nutThangMayDau = within(canh).getByRole('button', { name: /^Xem tờ giấy trên cửa thang máy/ });
     expect(nutThangMayDau).toBeEnabled();
     expect(nutThangMayDau).toHaveClass('is-mo');
-    expect(within(canh).queryByRole('button', { name: 'Xem bảng tin' })).toBeNull();
+    expect(within(canh).queryByRole('button', { name: /^Xem bảng tin/ })).toBeNull();
     // Bản đồ KTX vẫn luôn hiển thị trên bảng tin (trạng thái tĩnh is-cho, chưa tới lượt bấm)
     const anhCho = canh.querySelector('.is-cho img') as HTMLImageElement;
     expect(anhCho).not.toBeNull();
@@ -50,10 +50,10 @@ describe('sảnh KTX: [KHÁM PHÁ]', () => {
     expect(document.body.textContent).toContain('Thang máy bảo trì đến hết tuần');
 
     for (let i = 0; i < 5 && !screen.queryByRole('region', { name: /^Khám phá/ }); i++) act(() => useKhoMvp.getState().hanhDong({ type: 'tiep' }));
-    const nutThangMaySau = screen.getByRole('button', { name: 'Xem tờ giấy trên cửa thang máy' });
+    const nutThangMaySau = screen.getByRole('button', { name: /^Xem tờ giấy trên cửa thang máy/ });
     expect(nutThangMaySau).toBeDisabled();
     expect(nutThangMaySau).toHaveClass('is-da-xem');
-    const nutBangTin = screen.getByRole('button', { name: 'Xem bảng tin' });
+    const nutBangTin = screen.getByRole('button', { name: /^Xem bảng tin/ });
     expect(nutBangTin).toBeEnabled();
     expect(nutBangTin).toHaveClass('is-mo');
   });

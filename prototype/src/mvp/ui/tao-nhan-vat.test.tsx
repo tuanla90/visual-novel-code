@@ -3,7 +3,7 @@
  * lỗi, không tiến; xúc xắc (hàm ngẫu nhiên giả) điền tên + lời Tùng; ngành cố định (bỏ bước chọn 04/10); Lưu/Nạp giữ tên;
  * phím tắt VN không bắt phím khi đang gõ; tên KHÔNG có trong bất kỳ sự kiện telemetry nào (QĐ-077).
  */
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
@@ -21,7 +21,7 @@ const kb = KICH_BAN_MVP as unknown as KichBanMvp;
 const cho = (ms: number) => act(() => new Promise<void>((r) => setTimeout(r, ms)));
 
 function toiCauHoi(s: TrangThaiMvp, truong: 'ten' | 'nganh'): TrangThaiMvp {
-  for (let i = 0; i < 80; i++) {
+  for (let i = 0; i < 200; i++) {
     const kn = khungNhin(kb, s);
     // Người chơi thật đóng màn "Nhân vật mới" khi Tùng nói câu đầu; màn đó mở sẽ bắt phím của ô tên.
     const gt = canGioiThieu(kb, s, kn);
@@ -73,7 +73,8 @@ describe('câu hỏi tên (ManChoiMvp)', () => {
     veManChoi(oCauTen());
     await userEvent.type(screen.getByLabelText('Tên nhân vật của bạn'), '  Nguyễn Bảo {Enter}');
     expect(trangThai().tenNguoiChoi).toBe('Nguyễn Bảo');
-    expect(await screen.findByText('Nguyễn Bảo à. Dễ gọi đấy. Cậu học ngành gì?')).toBeInTheDocument();
+    // Chữ thoại có thể bị tách thành nhiều thẻ (tô sáng từ khóa), nên so theo chữ của cả trang.
+    await waitFor(() => expect(document.body.textContent).toContain('Nguyễn Bảo à. Dễ gọi đấy. Cậu học ngành gì?'));
   });
 
   it.each([

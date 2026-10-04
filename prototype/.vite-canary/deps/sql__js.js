@@ -1,5 +1,5 @@
 import { t as __commonJSMin } from "./rolldown-runtime-BPOCksWG.js";
-//#region ../../../../prototype/node_modules/sql.js/dist/sql-wasm-browser.js
+//#region node_modules/sql.js/dist/sql-wasm-browser.js
 var require_sql_wasm_browser = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var initSqlJsPromise = void 0;
 	var initSqlJs = function(moduleConfig) {

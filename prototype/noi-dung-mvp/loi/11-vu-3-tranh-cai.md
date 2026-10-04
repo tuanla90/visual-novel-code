@@ -10,7 +10,7 @@
 - **tung** (gai-dau): Thì… bạn Hoài bên Báo chí ấy.
 - **minh-anh** (happy): Bạn nộp thư hôm họp rà soát à. Thế em biết gì về bạn ấy rồi?
 - **tung** (thinking): Biết… bạn ấy nói bé lắm. Hôm họp ngồi chờ ngoài cửa mà tay vẫn ghi ghi chép chép gì đấy.
-- **duy** (serious): Chết thật, 20/10 rồi á? Tớ còn chưa kịp đặt hoa gửi về cho mẹ.
+- **duy** (serious): Chết thật, 20/10 rồi á? Anh còn chưa kịp đặt hoa gửi về cho mẹ.
 - **minh-anh** (neutral): Ra cổng mua gửi luôn đi em. Chiều là ngoài sạp người ta tranh nhau sạch đấy.
 - **player**: (Tùng nhờ chọn quà. Hoài là người thế nào nhỉ?)
 
@@ -41,7 +41,7 @@
 - **tung** (chi-tay): Tài khoản kênh của Robotics. Nam trực kênh. Tối đó xưởng mở, Nam bảo về sớm mà chẳng ai làm chứng. Còn gì nữa?
 - **minh-anh** (serious): Chị không nói là Nam. Nhưng Nam là đầu mối duy nhất mình có, và cô Lan đang chờ. Chị cần biết đã đủ để mời Nam lên hỏi chưa.
 - **ha-vy** (thinking): Khoan. Mình mới đếm có một kiểu: tài khoản nào gửi. Đổi cách đếm xem có thấy gì khác không đã.
-- **duy** (neutral): Tớ thì chờ một nguồn nữa, ngoài kênh, rồi mới nói.
+- **duy** (neutral): Anh thì chờ một nguồn nữa, ngoài kênh, rồi mới nói.
 
 ## v3-mo.2
 - **player**: Đổi cách đếm là đếm cái gì ạ?
@@ -91,7 +91,7 @@
 - **tung** (gai-dau): Tớ dẫn đúng hướng, chỉ sai tòa thôi. Áo thì tớ vẫn cất trong tủ.
 - **narrator**: Nam mở cổng sinh viên trên điện thoại, tải toàn bộ bản ghi cửa từ của mình từ lúc vào trường tới giờ, gửi vào nhóm.
 - **ha-vy** (neutral): Tớ cũng tải bản của tớ, gộp chung vào một tệp cho dễ tra. Tên ai thì ghi tên người đó.
-- **duy** (neutral): Tớ cũng hay lên thư viện tra tài liệu, để tớ xuất bản của tớ gộp chung vào luôn cho khách quan.
+- **duy** (neutral): Anh cũng hay lên thư viện tra tài liệu, để anh xuất bản của anh gộp chung vào luôn cho khách quan.
 - **nam** (neutral): Lọc ra của tớ rồi xem.
 > NHIỆM VỤ: Nam vào thư viện những ngày nào?
 > NHẮC VIỆC ha-vy (thinking): Tệp có nhiều người. Lọc đúng tên Nam.
@@ -156,7 +156,7 @@
 - **minh-anh** (neutral): Hai nguồn riêng cùng khớp một quãng giờ. Lại là "kiểm hai lần" trong sổ CLB.
 
 ## v3-ket-ky.1
-- **duy** (neutral): Nhắc mới nhớ. Trang "Kiểm hai lần" ấy… hôm trước có một mẩu, để tớ xem lại.
+- **duy** (neutral): Nhắc mới nhớ. Trang "Kiểm hai lần" ấy… hôm trước có một mẩu, để anh xem lại.
 - [DÀN DỰNG] {{nv.duy}} lật trang, một mẩu giấy nữa.
 
 ## v3-ket-ky.2

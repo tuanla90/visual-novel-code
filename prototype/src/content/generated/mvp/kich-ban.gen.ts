@@ -1095,7 +1095,8 @@ const GOC = {
               "rong": 3.6,
               "chuoi": "md-00-thang-may",
               "sau": [],
-              "nhan": "Xem tờ giấy trên cửa thang máy"
+              "nhan": "Xem tờ giấy trên cửa thang máy",
+              "dau": "chinh"
             },
             {
               "sprite": "obj-so-do-ktx",
@@ -1106,7 +1107,8 @@ const GOC = {
               "sau": [
                 "md-00-thang-may"
               ],
-              "nhan": "Xem bảng tin"
+              "nhan": "Xem bảng tin",
+              "dau": "chinh"
             },
             {
               "sprite": "vung:lung-ao-xanh",
@@ -1118,7 +1120,8 @@ const GOC = {
                 "md-00-thang-may",
                 "md-00-so-do"
               ],
-              "nhan": "Tấm lưng áo xanh giữa đám đông"
+              "nhan": "Tấm lưng áo xanh giữa đám đông",
+              "dau": "chinh"
             }
           ]
         }
@@ -1682,6 +1685,11 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
+          "text": "Một anh đứng sau bàn rao to: \"Đang xin mở rộng xưởng thực hành, vào đội là có chỗ ngồi hàn mạch!\""
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
           "text": "Bàn CLB Thám Tử nằm tận trong góc, chỉ có một chị ngồi trực."
         },
         {
@@ -1939,7 +1947,7 @@ const GOC = {
               "rong": 26,
               "chuoi": "md-10-soi-vy-sach",
               "sau": [],
-              "nhan": "Quyển sách"
+              "nhan": "Tập giấy trên tay"
             },
             {
               "sprite": "vung:kinh",
@@ -1956,7 +1964,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Cậu nhìn tớ lâu thế. Từ sách tới kính rồi đấy."
+          "text": "Cậu nhìn tớ lâu thế. Từ tập giấy tới cái kính rồi đấy."
         },
         {
           "type": "line",
@@ -1997,14 +2005,14 @@ const GOC = {
     },
     {
       "id": "md-10-soi-vy-sach",
-      "title": "Quan sát Hà Vy: quyển sách bọc giấy báo",
+      "title": "Quan sát Hà Vy: tập giấy ôm trước ngực",
       "canh": "san-ktx-trung-thu",
       "mocSomNhat": 0,
       "nodes": [
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Bìa sách bọc giấy báo, gáy viết tay: \"Sherlock Holmes, tập hai\".)"
+          "text": "(Mấy tờ giấy in ôm sát trước ngực. Qua mép giấy thấy dòng tiêu đề in đậm: \"Sherlock Holmes\".)"
         }
       ]
     },
@@ -2531,10 +2539,50 @@ const GOC = {
           "id": "kp-phong-md11",
           "diem": [
             {
+              "sprite": "nv:duy",
+              "x": 15,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "md-11-duy",
+              "sau": [],
+              "nhan": "Duy: máy bàn",
+              "dau": "phu"
+            },
+            {
+              "sprite": "nv:ha-vy",
+              "x": 38,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "md-11-vy",
+              "sau": [],
+              "nhan": "Hà Vy: cuốn sổ",
+              "dau": "phu"
+            },
+            {
+              "sprite": "nv:minh-anh",
+              "x": 62,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "md-11-minh-anh",
+              "sau": [],
+              "nhan": "Minh Anh: tờ lịch",
+              "dau": "phu"
+            },
+            {
+              "sprite": "nv:tung",
+              "x": 82,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "md-11-tung",
+              "sau": [],
+              "nhan": "Tùng",
+              "dau": "phu"
+            },
+            {
               "sprite": "vung:tu-ho-so",
-              "x": 94,
-              "y": 56,
-              "rong": 11,
+              "x": 95.5,
+              "y": 60,
+              "rong": 7,
               "chuoi": "md-11-tu",
               "sau": [],
               "nhan": "Tủ hồ sơ",
@@ -2574,6 +2622,85 @@ const GOC = {
       ]
     },
     {
+      "id": "md-11-duy",
+      "title": "Phòng CLB: Duy gõ máy bàn",
+      "canh": "phong-clb",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Anh đang chép lại sổ mượn đồ hôm Trung thu. Bàn gấp trả đủ bốn chân, ghế nhựa thì thiếu một cái."
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "smile",
+          "text": "Ai cầm về phòng thì mai mang trả nhé. Anh không ghi tên đâu… lần này thôi."
+        }
+      ]
+    },
+    {
+      "id": "md-11-vy",
+      "title": "Phòng CLB: Hà Vy ghi sổ",
+      "canh": "phong-clb",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tớ chép lại vụ chiếc bánh hôm Trung thu. Ai đứng đâu, lúc mấy giờ."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Ghi cả giờ á?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Không ghi thì một tuần nữa mỗi người nhớ một kiểu."
+        }
+      ]
+    },
+    {
+      "id": "md-11-minh-anh",
+      "title": "Phòng CLB: Minh Anh soạn lịch sinh hoạt",
+      "canh": "phong-clb",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Chị đang soạn lịch sinh hoạt tháng này. Thứ Hai nào cũng họp, bốn giờ chiều."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "happy",
+          "text": "Đông thế này thì năm nay phòng không còn vắng nữa."
+        }
+      ]
+    },
+    {
+      "id": "md-11-tung",
+      "title": "Phòng CLB: Tùng ngồi trông ghế",
+      "canh": "phong-clb",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Dọn tủ cứ để anh Duy với cậu. Tớ mà gặp bụi là hắt xì cả buổi."
+        }
+      ]
+    },
+    {
       "id": "md-11-tu",
       "title": "Phòng CLB: ngăn dưới cùng của tủ hồ sơ",
       "canh": "phong-clb",
@@ -2583,6 +2710,12 @@ const GOC = {
           "type": "line",
           "speaker": "player",
           "text": "(Ngăn dưới cùng không kéo ra được. Khóa.)"
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Khóa đấy. Để anh."
         },
         {
           "type": "line",
@@ -2986,7 +3119,8 @@ const GOC = {
               "rong": 3.4,
               "chuoi": "n1-hop",
               "sau": [],
-              "nhan": "Soi khe hộp kiến nghị"
+              "nhan": "Soi khe hộp kiến nghị",
+              "dau": "chinh"
             },
             {
               "sprite": "nv:bac-tu",
@@ -2995,7 +3129,8 @@ const GOC = {
               "rong": 16,
               "chuoi": "n1-bac-thinh",
               "sau": [],
-              "nhan": "Hỏi bác bảo vệ"
+              "nhan": "Hỏi bác bảo vệ",
+              "dau": "chinh"
             },
             {
               "sprite": "obj-thong-bao-hop",
@@ -3004,7 +3139,8 @@ const GOC = {
               "rong": 2.6,
               "chuoi": "n1-thong-bao-hop",
               "sau": [],
-              "nhan": "Đọc thông báo dán trên bảng tin"
+              "nhan": "Đọc thông báo dán trên bảng tin",
+              "dau": "chinh"
             }
           ]
         },
@@ -3188,7 +3324,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Laptop CLB đây. Tớ cầm theo rồi."
+          "text": "Laptop CLB đây. Em cầm theo rồi."
         },
         {
           "type": "line",
@@ -3681,13 +3817,13 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Máy đây. Tớ đăng nhập tài khoản cô Hạnh vừa tạo rồi."
+          "text": "Máy đây. Anh đăng nhập tài khoản cô Hạnh vừa tạo rồi."
         },
         {
           "type": "line",
           "speaker": "duy",
           "expression": "serious",
-          "text": "Phiếu nào tra ra cũng phải gọn và có căn cứ thì tớ mới nhận vào hồ sơ. Ngồi vào đi."
+          "text": "Phiếu nào tra ra cũng phải gọn và có căn cứ thì anh mới nhận vào hồ sơ. Ngồi vào đi."
         },
         {
           "type": "goto",
@@ -5593,30 +5729,24 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "surprised",
-          "text": "Ơ… năm trăm chín mươi lăm dòng thật! Dài thế này thì tra đến bao giờ?"
+          "text": "Ơ… năm trăm chín mươi lăm người! Thế này bằng cả nửa khóa của trường rồi còn gì!"
         },
         {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "serious",
-          "text": "Bình tĩnh nào. Đừng để con số gần sáu trăm dòng dọa mình, cứ rà đúng mệnh đề WHERE."
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "worried",
-          "text": "Câu OR gom cả trường vào thế kia thì sai rõ rồi. Cậu lên chỉ ra cho thầy xem đi!"
+          "text": "Đừng cuống. Hồ sơ của mình có căn cứ rõ ràng, bình tĩnh xem lại xem."
         },
         {
           "type": "line",
           "speaker": "ha-vy",
-          "expression": "neutral",
-          "text": "Chỉ cần phân tích điều kiện kép là sáng tỏ. Mình đã chuẩn bị kỹ rồi, cố lên."
+          "expression": "thinking",
+          "text": "Danh sách này bị gộp hai nhóm lại rồi. Họ lấy cả hai thay vì chỉ lấy phần trùng nhau."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Mọi người yên tâm. Cứ nói có sách, mách có chứng theo dữ liệu là được."
+          "text": "Để tớ lên giải thích cho thầy. Anh Quân đang chọn nhầm điều kiện."
         },
         {
           "type": "reminder",
@@ -5626,7 +5756,7 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Nhân vật chính xin phép thầy Quang, bước lên cạnh máy chiếu để chỉ ra lỗi logic trong câu lệnh."
+          "text": "Nhân vật chính xin phép thầy Quang, bước lên cạnh máy chiếu để chỉ ra chỗ nhầm lẫn."
         },
         {
           "type": "image",
@@ -6431,7 +6561,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Ba hộp kia hết trong tuần các cậu kiểm tra giữa kỳ. Tớ ăn cái cuối cả ba lần."
+          "text": "Ba hộp kia hết trong tuần mấy đứa kiểm tra giữa kỳ. Anh ăn cái cuối cả ba lần."
         },
         {
           "type": "line",
@@ -6515,7 +6645,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Tin công khai, ai vào kênh cũng đọc được. Tớ nạp vào laptop rồi. Bản xuất ghi nguyên văn từng tin, kể cả tin bấm chuyển tiếp: bấm chuyển thì chữ giữ y nguyên."
+          "text": "Tin công khai, ai vào kênh cũng đọc được. Anh nạp vào laptop rồi. Bản xuất ghi nguyên văn từng tin, kể cả tin bấm chuyển tiếp: bấm chuyển thì chữ giữ y nguyên."
         },
         {
           "type": "task",
@@ -7096,7 +7226,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Khoan, góc bảng ghi \"bản sao từ lịch đặt xưởng trên máy\". Cổng tra cứu lịch của nhà văn hóa mở cho sinh viên, để tớ tải bản gốc về laptop tra cho chắc. Chữ tay dễ chép nhầm."
+          "text": "Khoan, góc bảng ghi \"bản sao từ lịch đặt xưởng trên máy\". Cổng tra cứu lịch của nhà văn hóa mở cho sinh viên, để anh tải bản gốc về laptop tra cho chắc. Chữ tay dễ chép nhầm."
         },
         {
           "type": "task",
@@ -7477,7 +7607,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Tớ thì chờ thêm một nguồn nữa rồi mới nói."
+          "text": "Anh thì chờ thêm một nguồn nữa rồi mới nói."
         },
         {
           "type": "line",
@@ -7500,7 +7630,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Bản xuất của cô Lan tớ nạp vào máy rồi. Ngồi vào đi."
+          "text": "Bản xuất của cô Lan anh nạp vào máy rồi. Ngồi vào đi."
         },
         {
           "type": "image",
@@ -7893,7 +8023,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "serious",
-          "text": "Chết thật, 20/10 rồi á? Tớ còn chưa kịp đặt hoa gửi về cho mẹ."
+          "text": "Chết thật, 20/10 rồi á? Anh còn chưa kịp đặt hoa gửi về cho mẹ."
         },
         {
           "type": "line",
@@ -8133,7 +8263,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Tớ thì chờ một nguồn nữa, ngoài kênh, rồi mới nói."
+          "text": "Anh thì chờ một nguồn nữa, ngoài kênh, rồi mới nói."
         },
         {
           "type": "consequence",
@@ -8509,7 +8639,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Tớ cũng hay lên thư viện tra tài liệu, để tớ xuất bản của tớ gộp chung vào luôn cho khách quan."
+          "text": "Anh cũng hay lên thư viện tra tài liệu, để anh xuất bản của anh gộp chung vào luôn cho khách quan."
         },
         {
           "type": "line",
@@ -9000,7 +9130,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Nhắc mới nhớ. Trang \"Kiểm hai lần\" ấy… hôm trước có một mẩu, để tớ xem lại."
+          "text": "Nhắc mới nhớ. Trang \"Kiểm hai lần\" ấy… hôm trước có một mẩu, để anh xem lại."
         },
         {
           "type": "note",
@@ -10023,7 +10153,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Tên một người, tay một người khác… trong sổ có kẹp một câu. Để tớ xem."
+          "text": "Tên một người, tay một người khác… trong sổ có kẹp một câu. Để anh xem."
         },
         {
           "type": "note",
@@ -10125,7 +10255,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Giấy giải trình đề ngày 11, một ngày sau hôm mình gỡ nghi cho Nam. Tớ ghi lại thôi, chưa nói gì."
+          "text": "Giấy giải trình đề ngày 11, một ngày sau hôm mình gỡ nghi cho Nam. Anh ghi lại thôi, chưa nói gì."
         },
         {
           "type": "note",
@@ -10278,7 +10408,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Bản sổ đặt hàng Ban kiểm tra gửi kèm, tớ nạp vào máy rồi. Cả sổ, từ hồi xưởng mới số hóa."
+          "text": "Bản sổ đặt hàng Ban kiểm tra gửi kèm, anh nạp vào máy rồi. Cả sổ, từ hồi xưởng mới số hóa."
         }
       ]
     },
@@ -19798,7 +19928,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:196 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:197 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

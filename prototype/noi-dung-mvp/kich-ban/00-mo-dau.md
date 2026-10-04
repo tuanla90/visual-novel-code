@@ -25,9 +25,9 @@
 
 - [LỜI md-00-sanh-ktx.2]
 - [KHÁM PHÁ kp-sanh-ktx]
-  - obj-thong-bao-thang-may · x 10.5% · y 38.5% · rộng 3.6% → md-00-thang-may · nhãn: Xem tờ giấy trên cửa thang máy
-  - obj-so-do-ktx · x 44% · y 35.5% · rộng 10% → md-00-so-do · sau: md-00-thang-may · nhãn: Xem bảng tin
-  - vung:lung-ao-xanh · x 87.5% · y 44% · rộng 9% → md-00-thay-tung · sau: md-00-thang-may, md-00-so-do · nhãn: Tấm lưng áo xanh giữa đám đông
+  - obj-thong-bao-thang-may · x 10.5% · y 38.5% · rộng 3.6% → md-00-thang-may · dấu: ! · nhãn: Xem tờ giấy trên cửa thang máy
+  - obj-so-do-ktx · x 44% · y 35.5% · rộng 10% → md-00-so-do · sau: md-00-thang-may · dấu: ! · nhãn: Xem bảng tin
+  - vung:lung-ao-xanh · x 87.5% · y 44% · rộng 9% → md-00-thay-tung · sau: md-00-thang-may, md-00-so-do · dấu: ! · nhãn: Tấm lưng áo xanh giữa đám đông
 
 ### md-00-thang-may — Tờ giấy dán trên cửa thang máy {cảnh: sanh-ktx}
 
@@ -135,11 +135,11 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
 ### md-10-gap-ha-vy — Trung thu: người chơi tự tới chào bạn nữ đứng tách ra cạnh bảng tin {cảnh: san-ktx-trung-thu}
 
 - [KHÁM PHÁ kp-soi-ha-vy · quan sát ha-vy]
-  - vung:sach · x 57% · y 56% · rộng 26% → md-10-soi-vy-sach · nhãn: Quyển sách
+  - vung:sach · x 57% · y 56% · rộng 26% → md-10-soi-vy-sach · nhãn: Tập giấy trên tay
   - vung:kinh · x 52% · y 24% · rộng 30% → md-10-soi-vy-kinh · nhãn: Cặp kính
 - [LỜI md-10-gap-ha-vy.2]
 
-### md-10-soi-vy-sach — Quan sát Hà Vy: quyển sách bọc giấy báo {cảnh: san-ktx-trung-thu}
+### md-10-soi-vy-sach — Quan sát Hà Vy: tập giấy ôm trước ngực {cảnh: san-ktx-trung-thu}
 
 - [LỜI md-10-soi-vy-sach.1]
 
@@ -205,13 +205,33 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
 
 - [LỜI md-11-phong-clb.1]
 - [KHÁM PHÁ kp-phong-md11]
-  - vung:tu-ho-so · x 94% · y 56% · rộng 11% → md-11-tu · dấu: ! · nhãn: Tủ hồ sơ
+  - nv:duy · x 15% · y 100% · rộng 15% → md-11-duy · dấu: ? · nhãn: Duy: máy bàn
+  - nv:ha-vy · x 38% · y 100% · rộng 15% → md-11-vy · dấu: ? · nhãn: Hà Vy: cuốn sổ
+  - nv:minh-anh · x 62% · y 100% · rộng 15% → md-11-minh-anh · dấu: ? · nhãn: Minh Anh: tờ lịch
+  - nv:tung · x 82% · y 100% · rộng 15% → md-11-tung · dấu: ? · nhãn: Tùng
+  - vung:tu-ho-so · x 95.5% · y 60% · rộng 7% → md-11-tu · dấu: ! · nhãn: Tủ hồ sơ
 - [HIỆN TÀI LIỆU doc-so-chi-linh]
 - [TRA SỔ kiem-hai-lan · tâm đắc]
 - [LỜI md-11-phong-clb.2]
 - [HIỆN TÀI LIỆU doc-bao-cao-yeu]
 - [LỜI md-11-phong-clb.3]
 - [ĐI TỚI md-11-la-thu]
+
+### md-11-duy — Phòng CLB: Duy gõ máy bàn {cảnh: phong-clb}
+
+- [LỜI md-11-duy.1]
+
+### md-11-vy — Phòng CLB: Hà Vy ghi sổ {cảnh: phong-clb}
+
+- [LỜI md-11-vy.1]
+
+### md-11-minh-anh — Phòng CLB: Minh Anh soạn lịch sinh hoạt {cảnh: phong-clb}
+
+- [LỜI md-11-minh-anh.1]
+
+### md-11-tung — Phòng CLB: Tùng ngồi trông ghế {cảnh: phong-clb}
+
+- [LỜI md-11-tung.1]
 
 ### md-11-tu — Phòng CLB: ngăn dưới cùng của tủ hồ sơ {cảnh: phong-clb}
 

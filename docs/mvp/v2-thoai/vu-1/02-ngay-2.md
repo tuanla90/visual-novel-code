@@ -28,7 +28,7 @@ n2-bd-cang-tin-an.1: Thêm "tớ cá là" vào câu của Tùng
 > NHIỆM VỤ: Sang Phòng Đào tạo nhận tài khoản tra cứu
 - [THẺ CHỮ] **narrator**: Ngày 2 — Thứ Tư
 - **minh-anh** (neutral): Đơn xin quyền tra cứu, {{nv.thay-quang.trong-cau}} duyệt rồi. Lát nữa sang Phòng Đào tạo, {{nv.co-hanh.trong-cau}} sẽ cấp tài khoản.
-- **duy** (neutral): Laptop CLB đây. Tớ cầm theo rồi.
+- **duy** (neutral): Laptop CLB đây. Em cầm theo rồi.
 - **tung** (happy): Có tài khoản là tra được hết hả chị? Tớ cá là tìm ra ngay!
 - **minh-anh** (neutral): Được xem đúng quyền thôi. Tới đó hỏi cô là rõ.
 
@@ -69,12 +69,12 @@ n2-bd-cang-tin-an.1: Thêm "tớ cá là" vào câu của Tùng
 
 ## n2-phong.1
 > NHIỆM VỤ: Về phòng CLB, mở laptop
-> NHẮC VIỆC duy (neutral): Laptop tớ để trên bàn. Máy đây, vào tra đi.
+> NHẮC VIỆC duy (neutral): Laptop anh để trên bàn. Máy đây, vào tra đi.
 - **narrator**: Về tới phòng CLB. Mỗi người một góc: Duy bên cái laptop, Hà Vy trước tấm bảng, chị Minh Anh xếp lại giấy tờ, Tùng ngồi vắt vẻo trên bàn.
 
 ## n2-phong-duy.1
-- **duy** (neutral): Máy đây. Tớ đăng nhập sẵn tài khoản rồi.
-- **duy** (serious): Lọc ra bảng nào gọn gàng, đúng yêu cầu thì tớ mới lưu hồ sơ. Cậu làm đi.
+- **duy** (neutral): Máy đây. Anh đăng nhập sẵn tài khoản rồi.
+- **duy** (serious): Lọc ra bảng nào gọn gàng, đúng yêu cầu thì anh mới lưu hồ sơ. Em làm đi.
 
 ## n2-phong-vy.1
 - **ha-vy** (thinking): Câu hỏi tớ ghim lên bảng rồi: lớp nào vừa ở tòa B vừa học Báo chí?

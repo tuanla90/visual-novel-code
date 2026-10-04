@@ -17,13 +17,12 @@
 - **quan** (chi-man): Bên tôi lọc lại cho chắc: tên bắt đầu bằng H hoặc học lớp BC24A, ra năm trăm chín mươi lăm dòng. Hồ sơ các bạn nộp chỉ có hai người.
 
 ## hop-00.3
-- **tung** (surprised): Ơ… năm trăm chín mươi lăm dòng thật! Dài thế này thì tra đến bao giờ?
-- **minh-anh** (serious): Bình tĩnh nào. Đừng để con số gần sáu trăm dòng dọa mình, cứ rà đúng mệnh đề WHERE.
-- **tung** (worried): Câu OR gom cả trường vào thế kia thì sai rõ rồi. Cậu lên chỉ ra cho thầy xem đi!
-- **ha-vy** (neutral): Chỉ cần phân tích điều kiện kép là sáng tỏ. Mình đã chuẩn bị kỹ rồi, cố lên.
-- **player**: Mọi người yên tâm. Cứ nói có sách, mách có chứng theo dữ liệu là được.
+- **tung** (surprised): Ơ… năm trăm chín mươi lăm người! Thế này bằng cả nửa khóa của trường rồi còn gì!
+- **minh-anh** (serious): Đừng cuống. Hồ sơ của mình có căn cứ rõ ràng, bình tĩnh xem lại xem.
+- **ha-vy** (thinking): Danh sách này bị gộp hai nhóm lại rồi. Họ lấy cả hai thay vì chỉ lấy phần trùng nhau.
+- **player**: Để tớ lên giải thích cho thầy. Anh Quân đang chọn nhầm điều kiện.
 > NHẮC VIỆC ha-vy (day-kinh): Gần sáu trăm dòng… câu của anh Quân lấy rộng ở chỗ nào?
-- [DÀN DỰNG] Nhân vật chính xin phép thầy Quang, bước lên cạnh máy chiếu để chỉ ra lỗi logic trong câu lệnh.
+- [DÀN DỰNG] Nhân vật chính xin phép thầy Quang, bước lên cạnh máy chiếu để chỉ ra chỗ nhầm lẫn.
 
 ## hop-00.4
 - **ha-vy** (neutral): Anh đang gộp chung người tên H và người học lớp BC24A. Bọn em chỉ tìm người vừa tên H, vừa học BC24A.

@@ -2,7 +2,7 @@
   const categories = { person: 'Tên người', time: 'Thời gian', place: 'Địa điểm', item: 'Vật phẩm / chứng cứ' };
   const word = /[\p{L}\p{M}\p{N}_]/u;
   const escapeRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const timePattern = /(?:\b20\d{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])(?:[ T](?:[01]\d|2[0-3]):[0-5]\d)?\b|\b(?:0?[1-9]|[12]\d|3[01])\/(?:0?[1-9]|1[0-2])(?:\/(?:20\d{2}|\d{2}))?\b|\b(?:[01]?\d|2[0-3]):[0-5]\d(?:[–—-](?:[01]?\d|2[0-3]):[0-5]\d)?\b|(?:thứ\s+(?:Hai|Ba|Tư|Năm|Sáu|Bảy)|Chủ\s+nhật|ngày\s+(?:mai|hôm\s+sau|\d+(?:\/\d{1,2}(?:\/\d{2,4})?)?)|hôm\s+nay|tháng\s+\d{1,2}|tuần\s+\d+|trưa\s+hôm\s+sau)|\b(?:T[2-7]|CN)\b)/giu;
+  const timePattern = /(?:\b20\d{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])(?:[ T](?:[01]\d|2[0-3]):[0-5]\d)?\b|\b(?:0?[1-9]|[12]\d|3[01])\/(?:0?[1-9]|1[0-2])(?:\/(?:20\d{2}|\d{2}))?\b|\b(?:[01]?\d|2[0-3]):[0-5]\d(?:[–—-](?:[01]?\d|2[0-3]):[0-5]\d)?\b|(?:thứ\s+(?:Hai|Ba|Tư|Năm|Sáu|Bảy)|Chủ\s+nhật|ngày\s+(?:mai|hôm\s+sau|\d+(?:\/\d{1,2}(?:\/\d{2,4})?)?)|hôm\s+nay|tháng\s+\d{1,2}|tuần\s+\d+|trưa\s+hôm\s+sau)|\b(?:T[2-7]|CN)\b|\b(?:[01]?\d|2[0-3])\s*giờ(?:\s*rưỡi|\s*kém\s*\d{1,2}|\s*[0-5]?\d(?:\s*phút)?)?(?![\p{L}\p{N}])|\b(?:[01]?\d|2[0-3])h(?:[0-5]\d)?\b)/giu;
   class Engine {
     constructor(entries = []) {
       this.dictionary = new Map();

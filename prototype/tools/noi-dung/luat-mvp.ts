@@ -58,6 +58,36 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   const duKien = new Map<string, RawDuKien>();
   for (const d of mvp.diaDiem) for (const k of d.duKien) duKien.set(k.id, k);
   const chuoi = new Map(mvp.chuoi.map((c) => [c.id, c]));
+  /**
+   * Chuỗi của một chỗ bấm [KHÁM PHÁ] có mang đầu mối nhiệm vụ không: mở manh mối / tài liệu / bằng chứng, vào màn tra, hay đi tiếp
+   * truyện ([ĐI TỚI], [HẬU QUẢ] đi tới, [NẾU] → đi tới). Xét cả chuỗi của các chỗ soi lồng bên trong (không theo [ĐI TỚI] đi xa).
+   * Trả câu mô tả để báo lỗi, hoặc null.
+   */
+  const dauMoiCua = (id: string, sau = 0): string | null => {
+    const c = chuoi.get(id);
+    if (!c || sau > 2) return null;
+    for (const it of c.items) {
+      if (it.kind === 'show-document') return `mở tài liệu ${it.id}`;
+      if (it.kind === 'save-evidence') return `lưu bằng chứng ${it.id}`;
+      if (it.kind === 'challenge' || it.kind === 'trial-filter') return `vào màn tra ${it.id}`;
+      if (it.kind === 'goto' || it.kind === 'jump-if') return 'đi tiếp truyện';
+      if (it.kind === 'consequence') {
+        for (const h of it.hauQua) {
+          if (h.kind === 'mo-manh-moi') return `mở manh mối ${h.id}`;
+          if (h.kind === 'hien-tai-lieu') return `mở tài liệu ${h.id}`;
+          if (h.kind === 'luu-bang-chung') return `lưu bằng chứng ${h.id}`;
+          if (h.kind === 'di-toi') return 'đi tiếp truyện';
+        }
+      }
+      if (it.kind === 'explore') {
+        for (const d of it.diem) {
+          const con = dauMoiCua(d.chuoi, sau + 1);
+          if (con) return con;
+        }
+      }
+    }
+    return null;
+  };
   const the = new Map(mvp.challenges.map((c) => [c.id, c]));
   const soTay = new Map(mvp.soTay.map((s) => [s.id, s]));
   /** Mọi mã vật phẩm khai báo (clue-, doc- ở hồ sơ; ev- ở hồ sơ hoặc thẻ thử thách). */
@@ -406,6 +436,22 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
               if (!(v >= 0 && v <= 100)) err(vt, `${noi}: ${ten} phải trong 0–100%: ${v}%`);
             }
             if (d.rong === 0) err(vt, `${noi}: rộng phải lớn hơn 0%`);
+          }
+          // Dấu theo vai trò (user 04/10/2026): "!" = đầu mối của nhiệm vụ đang làm (bắt buộc, hoặc mở manh mối / tài liệu /
+          // bằng chứng / màn tra); "?" = chuyện thêm, đầu mối việc phụ; KHÔNG dấu = chỉ chi tiết ẩn (không bắt buộc, không mở gì).
+          // Màn soi chân dung (quan sát) không dùng dấu: mọi vòng soi đều phải xem.
+          if (it.kieu !== 'quan-sat' && it.diem.length > 0) {
+            const coDau = it.diem.some((d) => d.dau);
+            for (const d of it.diem) {
+              const ten = d.nhan ?? d.sprite;
+              const moGi = dauMoiCua(d.chuoi);
+              // Đi tiếp truyện thì luôn là "!"; mở manh mối / tài liệu thì "!" (nhiệm vụ chính) hoặc "?" (việc phụ, tuyến bí mật
+              // như mẩu chuyện quán trà đá) — chỉ không được để trống, vì không dấu là chi tiết ẩn.
+              if (moGi === 'đi tiếp truyện' && d.dau !== 'chinh') err(vt, `${noi}: chỗ bấm "${ten}" đi tiếp truyện nên phải có "· dấu: !" (đầu mối nhiệm vụ)`);
+              else if (moGi && !d.dau) err(vt, `${noi}: chỗ bấm "${ten}" ${moGi} nên phải có dấu: "!" nếu là đầu mối nhiệm vụ chính, "?" nếu là việc phụ`);
+              // Không có dấu nào thì máy bắt xem hết mọi chỗ: chỗ bắt buộc mà không có "!" thì người chơi không biết phải tìm.
+              if (!coDau) err(vt, `${noi}: chỗ bấm "${ten}" là bắt buộc (cảnh không có dấu nào) nên phải có "· dấu: !"; chỗ tùy chọn ghi "· dấu: ?", chi tiết ẩn để trống`);
+            }
           }
           break;
         }

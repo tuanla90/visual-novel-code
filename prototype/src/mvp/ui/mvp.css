@@ -318,24 +318,23 @@
   pointer-events: none;
   transition: filter 0.12s ease;
 }
-/* Bỏ hiệu ứng viền trắng phát sáng drop-shadow làm biến dạng màu da và chi tiết nhân vật.
-   Phản hồi rê chuột giữ tự nhiên qua con trỏ và hiệu ứng nhấn lún (:active). */
+/* Rê / chọn: chỉ sáng màu lên, không viền, không quầng, không đổi cỡ (user 04/10: viền trắng loang trông như vật phình to). */
 .mvp-diem:hover:not(:disabled) .mvp-diem__anh,
 .mvp-diem:focus-visible .mvp-diem__anh {
-  filter: none;
+  filter: brightness(1.3) saturate(1.25);
 }
 .mvp-diem:focus-visible {
   outline: none;
 }
-/* Vật bấm được: con trỏ kính lúp ("xem xét"); người (ảnh `nv:`) giữ bàn tay. Bấm xuống thì vật lún về phía chân
-   (`scale` riêng, không đè `transform` căn chỗ; gốc 0 0 = chân giữa của ảnh sau translate(-50%, -100%)). */
+/* Vật bấm được: con trỏ kính lúp ("xem xét"); người (ảnh `nv:`) giữ bàn tay. Bấm xuống thì chỉ NGƯỜI lún nhẹ về phía chân
+   (`scale` riêng, không đè `transform` căn chỗ; gốc 0 0 = chân giữa của ảnh sau translate(-50%, -100%)); vật thì không đổi cỡ. */
 .mvp-diem:not(:disabled) {
   cursor: zoom-in;
 }
 .mvp-diem.is-nguoi:not(:disabled) {
   cursor: pointer;
 }
-.mvp-diem:active:not(:disabled) {
+.mvp-diem.is-nguoi:active:not(:disabled) {
   transform-origin: 0 0;
   scale: 0.96;
 }
@@ -360,18 +359,23 @@
   opacity: 0.7;
   filter: grayscale(0.6) brightness(0.85);
 }
-/* Cảnh [KHÁM PHÁ]: hiện êm, giữ nguyên màu sắc gốc của nhân vật/vật thể, không phát sáng */
+/* Cảnh [KHÁM PHÁ] dạy người chơi bấm vật: chỗ chưa xem sáng màu lên theo nhịp nhẹ (user 04/10: không viền, không quầng,
+   không đổi cỡ — vật thường đã vẽ sẵn trong ảnh nền, ảnh vật chồng khít lên); bấm xong giữ nguyên không mờ; chỗ mới hiện
+   (có "sau:") mờ dần vào. */
 .mvp-diem--khampha {
   animation: mvp-hien 0.5s ease-out both;
 }
 .mvp-diem--khampha.is-mo .mvp-diem__anh {
-  filter: none;
-  animation: none;
-  transform: none;
+  animation: mvp-vien 2s ease-in-out infinite;
 }
 @keyframes mvp-hien {
   from {
     opacity: 0;
+  }
+}
+@keyframes mvp-vien {
+  50% {
+    filter: brightness(1.3) saturate(1.25);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -380,7 +384,7 @@
     animation: none;
     transform: none;
   }
-  .mvp-diem:active:not(:disabled) {
+  .mvp-diem.is-nguoi:active:not(:disabled) {
     scale: none;
   }
 }
@@ -3592,6 +3596,17 @@
   z-index: 3;
 }
 .mvp-an.is-da-xem { cursor: default; }
+/* Vùng có dấu "!" / "?" (đầu mối, chuyện thêm): vòng hiện sẵn và sáng theo nhịp như vật bấm, không đổi cỡ. */
+.mvp-an.is-co-dau:not(.is-da-xem) .mvp-an__goi-y {
+  opacity: 0.75;
+  animation: mvp-vien 2s ease-in-out infinite;
+}
+.mvp-an.is-co-dau .mvp-dau {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -110%);
+}
 .mvp-an__goi-y {
   position: absolute;
   inset: 6%;

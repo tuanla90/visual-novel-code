@@ -6,7 +6,7 @@
 > NHIỆM VỤ: Sang Phòng Đào tạo nhận tài khoản tra cứu
 - [THẺ CHỮ] **narrator**: Thứ Tư, 25/09/2024
 - **minh-anh** (neutral): Đơn xin quyền tra cứu, {{nv.thay-quang.trong-cau}} duyệt rồi. Lát nữa sang Phòng Đào tạo, {{nv.co-hanh.trong-cau}} sẽ cấp tài khoản.
-- **duy** (neutral): Laptop CLB đây. Tớ cầm theo rồi.
+- **duy** (neutral): Laptop CLB đây. Em cầm theo rồi.
 - **tung** (happy): Có tài khoản là tra được hết hả chị? Tớ cá là tìm ra ngay!
 - **minh-anh** (neutral): Được xem đúng quyền thôi. Tới đó hỏi cô là rõ.
 
@@ -52,8 +52,8 @@
 - **narrator**: Về tới phòng CLB. Mỗi người một góc: Duy bên cái laptop, Hà Vy trước tấm bảng, chị Minh Anh xếp lại giấy tờ, Tùng ngồi vắt vẻo trên bàn.
 
 ## n2-phong-duy.1
-- **duy** (neutral): Máy đây. Tớ đăng nhập tài khoản cô Hạnh vừa tạo rồi.
-- **duy** (serious): Phiếu nào tra ra cũng phải gọn và có căn cứ thì tớ mới nhận vào hồ sơ. Ngồi vào đi.
+- **duy** (neutral): Máy đây. Anh đăng nhập tài khoản cô Hạnh vừa tạo rồi.
+- **duy** (serious): Phiếu nào tra ra cũng phải gọn và có căn cứ thì anh mới nhận vào hồ sơ. Ngồi vào đi.
 
 ## n2-phong-vy.1
 - **ha-vy** (thinking): Tớ ghim câu hỏi lên bảng rồi: lớp nào vừa ở tòa B vừa học Báo chí?
