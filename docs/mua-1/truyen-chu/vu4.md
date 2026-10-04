@@ -14,6 +14,8 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - [Đoạn 8: Quan sát Khánh: tấm thẻ đeo cổ](#doan-8)
 - [Đoạn 9: Quan sát Khánh: cái balo](#doan-9)
 - [Đoạn 10: Quan sát Khánh: huy hiệu bánh răng sứt](#doan-10)
+- [Đoạn 12: Sau khi xem hết các chỗ ở Phòng CLB](#doan-12)
+- [Đoạn 13: Sau khi xem hết các chỗ ở Phòng CLB](#doan-13)
 
 ## 👥 Nhân vật xuất hiện
 
@@ -64,66 +66,12 @@ Thứ Hai, 04/11/2024
 > 💭 **Nhắc nhở** (Hà Vy): Chỉ lấy đơn đã duyệt. Trạng thái ghi ở cột trang_thai.
 📍 **Đang ở Phòng CLB:**
 *Những chỗ có thể khám phá ở đây:*
-#### 💻 Màn tra dữ liệu: Sổ đặt linh kiện của xưởng (thẻ `c-don-da-duyet`)
-*Đề bài:* Sổ đặt linh kiện của xưởng Robotics ghi từ năm 2022, đơn các kỳ trước đã quyết toán. Những đơn nào đang ở trạng thái đã duyệt?
-
-```sql
-SELECT ma_don, ngay, nguoi_dat, linh_kien, so_tien, ma_phien FROM don_linh_kien WHERE TRIM(trang_thai) = 'DA_DUYET';
-```
-
-*Kết quả chạy thật: 8 dòng*
-
-| ma_don | ngay | nguoi_dat | linh_kien | so_tien | ma_phien |
-| --- | --- | --- | --- | --- | --- |
-| DLK-01 | 2024-09-20 | Nam | Cảm biến dò line | 120000 | PH-11 |
-| DLK-02 | 2024-09-24 | Bách | Pin 18650 | 200000 | PH-12 |
-| DLK-03 | 2024-09-27 | Nam | Động cơ servo | 800000 | PH-13 |
-| DLK-04 | 2024-10-01 | Thảo | Dây nối | 60000 | PH-14 |
-| DLK-05 | 2024-10-02 | Nam | Bánh xe | 150000 | PH-15 |
-| DLK-06 | 2024-10-04 | Nam | Mạch điều khiển | 900000 | PH-16 |
-| DLK-07 | 2024-10-05 | Khánh | Ốc vít | 40000 | PH-17 |
-| DLK-08 | 2024-10-07 | Nam | Bộ khung nhôm | 700000 | PH-18 |
-
-*Các bẫy và phản hồi từ nhân vật:*
-- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không dòng nào. Giá trị trạng thái viết hoa, gạch dưới, đúng như giấy nhớ.
-- Nếu lọc ra 2 dòng → **Hà Vy** (suy nghĩ): Hai dòng. Đây là hai đơn còn chờ, mình cần đơn đã duyệt.
-- Nếu lọc ra 5 dòng → **Hà Vy** (suy nghĩ): Năm đơn? Giấy của Ban kiểm tra ghi kỳ này duyệt tám. Ba đơn kia vẫn trong sổ, chỉ là ô trạng thái không khớp. / **Duy**: Sổ gõ tay hay dính dấu cách ở đuôi lắm. Bỏ dấu cách thừa đi rồi hẵng so.
-- Nếu lọc ra 156 dòng → **Tùng** (gãi đầu): Cả sổ, từ năm 2022 tới giờ. Đơn các năm trước quyết toán xong hết rồi, còn hai đơn kỳ này thì đang chờ duyệt.
-- Nếu tra đúng → **Hà Vy**: Tám đơn đã duyệt. Ghim lại, rồi gom.
-
-> 🗂️ **Bằng chứng thu thập**: **Tám đơn linh kiện đã duyệt** — Kết quả truy vấn: tám đơn đã duyệt, mỗi đơn ghi ngày, người đứng tên, linh kiện, số tiền và mã phiên đăng nhập lúc tạo đơn.
-*Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
-
-- *Suy nghĩ của bạn:* *(Tám đơn đã duyệt.)*
-- **Hà Vy** (suy nghĩ): Tám đơn, gom theo người đặt rồi đếm. Xem anh Nam đứng tên bao nhiêu so với người khác.
-> 🎯 **NHIỆM VỤ**: Mỗi người đứng tên bao nhiêu đơn đã duyệt?
-> 💭 **Nhắc nhở** (Hà Vy): Phiếu tám đơn làm nguồn, gom theo người đặt.
-#### 💻 Màn tra dữ liệu: Đơn đã duyệt, gom theo người đặt (thẻ `c-don-theo-nguoi`)
-*Đề bài:* Lấy phiếu tám đơn làm nguồn. Gom theo người đứng tên, đếm mỗi người mấy đơn.
-
-```sql
-SELECT nguoi_dat, COUNT(*) AS so_dong FROM @ev-don-da-duyet GROUP BY nguoi_dat;
-```
-
-*(Chạy SQL: near "@ev": syntax error)*
-
-> 🗂️ **Bằng chứng thu thập**: **Nam đứng tên 5 trong 8 đơn** — Kết quả gom theo người đặt: Nam 5 đơn, Bách 1, Thảo 1, Khánh 1. Nam nói mình chỉ đặt hai.
-*Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
-
-- *Suy nghĩ của bạn:* *(Anh Nam năm đơn. Anh Bách, chị Thảo, anh Khánh mỗi người một.)*
-- **Nam**: Năm. Mà anh chỉ đặt hai: cảm biến dò line với bánh xe. Động cơ servo, mạch điều khiển, khung nhôm thì anh không đặt. Anh Bách là phó CLB, chị Thảo lo kỹ thuật, anh Khánh là trưởng CLB.
-- **Tùng** (chỉ tay): Thế ba đơn kia ai gõ tên anh vào?
-- **Duy**: Sổ không ghi ai gõ. Nhưng mỗi đơn có một cột mã phiên: phiên đăng nhập của máy lúc tạo đơn. Máy xưởng có bảng phiên đăng nhập không?
-- **Nam**: Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong. Thứ Ba 12 là hôm tớ kiểm kê kho, lịch với sổ đều nằm trong tài khoản ấy. Lịch ấy ban tổ chức giải bắt nộp, muốn dời sát ngày phải ghi lý do. Khóa tài khoản rồi thì chỉ còn cách đếm tay.
-- **Minh Anh**: Khóa là phải. Bảng ấy mà do Nam xuất thì ai cũng bảo Nam sửa được. Chị nhờ thầy Quang đề nghị cô Hạnh bên Phòng Đào tạo xuất thẳng cho CLB mình. Máy chủ của trường do phòng cô quản lý.
-- **Hà Vy** (suy nghĩ): Vậy là hai bảng. Đơn thì ở sổ đặt hàng, máy thì ở bảng phiên. Chung nhau cái mã phiên.
-- **Tùng** (chỉ tay): Đơn cảm biến ghi PH-11. Bên bảng phiên mà cũng có một dòng PH-11 thì đấy là cái máy tạo ra đơn ấy, đúng không?
 
 **Lựa chọn tiếp theo:**
 - [Khám phá: Duy: mở laptop](#doan-2)
 - [Khám phá: Nam: hai đơn đặt thật (chi tiết ẩn / tùy chọn)](#doan-3)
 - [Khám phá: Quân: việc giám sát (chi tiết ẩn / tùy chọn)](#doan-4)
-- [Đi tiếp](#doan-5)
+- [Sau khi xem hết các chỗ](#doan-12)
 
 ---
 
@@ -304,30 +252,12 @@ SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap
 - **Hà Vy** (suy nghĩ): Anh ấy chưa đi ngay. Nhìn cho kỹ.
 📍 **Đang ở Phòng CLB:**
 *Những chỗ có thể khám phá ở đây:*
-> [CG cg-v4-huy-hieu-sut] (chưa có mô tả)
-- **Tùng** (lo lắng): Tớ thấy cái huy hiệu rồi. Nãy giờ tớ nín thở luôn.
-- **Hà Vy** (suy nghĩ): Nín là đúng đấy. Nói ra lúc ấy thì cũng như cá thôi.
-- **Nam**: Huy hiệu làm ba chục cái hồi đầu năm. Cái sứt là lỗi khuôn, anh Khánh xin giữ. Nhưng balo anh ấy hay để ở xưởng, ai cũng cầm ra cổng được. Anh không nói là anh ấy.
-- **Hà Vy**: Biết balo chưa phải biết người. Ghi thẻ, không kết.
-- **Tùng** (gãi đầu): Lần này tớ biết mà vẫn không cá.
-- **Minh Anh** (nghiêm túc): Muốn nói với thầy Quang thì cần một nguồn thứ hai, không dính gì tới cái huy hiệu. Và phải biết ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt.
-- **Minh Anh**: Sao kê thì cuối kỳ mới tự về. Chủ quỹ xin giữa kỳ cũng được, nhưng giấy phải qua chủ tịch Hội ký chuyển. Chị chưa xin lần nào, nên giờ chị mới biết điều đó. Và người ký chuyển vừa đứng ở cửa, tự mời mình gửi giấy.
-- **Duy**: Tức là muốn xem sổ thì phải hỏi đúng người mình chưa được nói tên. Còn một đường nữa: thầy Quang.
-- **Nam**: Mình không nghi ai cả. Nhưng mình muốn biết là ai.
-- **Hà Vy**: Thì mình hỏi sổ thôi.
-> 📜 **[THẺ CHỮ]** Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nghi ngờ mạnh vẫn chưa phải bằng chứng: càng chắc trong lòng, càng phải tìm nguồn thứ hai.
-> [CHIBI chibi-v4-khong-ca (sticker)] (chưa có mô tả)
-
-🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.
-> **Có người mượn tên Nam** — Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng, cùng cái máy đã gửi tin đồn, một đơn đúng tối Nam ở thư viện. Máy thì biết, tay thì chưa. Ba người có chìa phòng.
-
-**Hết ngày.**
-
 
 **Lựa chọn tiếp theo:**
 - [Khám phá: Tấm thẻ đeo cổ](#doan-8)
 - [Khám phá: Cái balo](#doan-9)
 - [Khám phá: Thứ gài trên quai balo](#doan-10)
+- [Sau khi xem hết các chỗ](#doan-13)
 
 ---
 
@@ -367,5 +297,94 @@ SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Phòng CLB](#doan-1)
+
+---
+
+<a id="doan-12"></a>
+### Đoạn 12: Sau khi xem hết các chỗ ở Phòng CLB
+
+#### 💻 Màn tra dữ liệu: Sổ đặt linh kiện của xưởng (thẻ `c-don-da-duyet`)
+*Đề bài:* Sổ đặt linh kiện của xưởng Robotics ghi từ năm 2022, đơn các kỳ trước đã quyết toán. Những đơn nào đang ở trạng thái đã duyệt?
+
+```sql
+SELECT ma_don, ngay, nguoi_dat, linh_kien, so_tien, ma_phien FROM don_linh_kien WHERE TRIM(trang_thai) = 'DA_DUYET';
+```
+
+*Kết quả chạy thật: 8 dòng*
+
+| ma_don | ngay | nguoi_dat | linh_kien | so_tien | ma_phien |
+| --- | --- | --- | --- | --- | --- |
+| DLK-01 | 2024-09-20 | Nam | Cảm biến dò line | 120000 | PH-11 |
+| DLK-02 | 2024-09-24 | Bách | Pin 18650 | 200000 | PH-12 |
+| DLK-03 | 2024-09-27 | Nam | Động cơ servo | 800000 | PH-13 |
+| DLK-04 | 2024-10-01 | Thảo | Dây nối | 60000 | PH-14 |
+| DLK-05 | 2024-10-02 | Nam | Bánh xe | 150000 | PH-15 |
+| DLK-06 | 2024-10-04 | Nam | Mạch điều khiển | 900000 | PH-16 |
+| DLK-07 | 2024-10-05 | Khánh | Ốc vít | 40000 | PH-17 |
+| DLK-08 | 2024-10-07 | Nam | Bộ khung nhôm | 700000 | PH-18 |
+
+*Các bẫy và phản hồi từ nhân vật:*
+- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không dòng nào. Giá trị trạng thái viết hoa, gạch dưới, đúng như giấy nhớ.
+- Nếu lọc ra 2 dòng → **Hà Vy** (suy nghĩ): Hai dòng. Đây là hai đơn còn chờ, mình cần đơn đã duyệt.
+- Nếu lọc ra 5 dòng → **Hà Vy** (suy nghĩ): Năm đơn? Giấy của Ban kiểm tra ghi kỳ này duyệt tám. Ba đơn kia vẫn trong sổ, chỉ là ô trạng thái không khớp. / **Duy**: Sổ gõ tay hay dính dấu cách ở đuôi lắm. Bỏ dấu cách thừa đi rồi hẵng so.
+- Nếu lọc ra 156 dòng → **Tùng** (gãi đầu): Cả sổ, từ năm 2022 tới giờ. Đơn các năm trước quyết toán xong hết rồi, còn hai đơn kỳ này thì đang chờ duyệt.
+- Nếu tra đúng → **Hà Vy**: Tám đơn đã duyệt. Ghim lại, rồi gom.
+
+> 🗂️ **Bằng chứng thu thập**: **Tám đơn linh kiện đã duyệt** — Kết quả truy vấn: tám đơn đã duyệt, mỗi đơn ghi ngày, người đứng tên, linh kiện, số tiền và mã phiên đăng nhập lúc tạo đơn.
+*Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
+
+- *Suy nghĩ của bạn:* *(Tám đơn đã duyệt.)*
+- **Hà Vy** (suy nghĩ): Tám đơn, gom theo người đặt rồi đếm. Xem anh Nam đứng tên bao nhiêu so với người khác.
+> 🎯 **NHIỆM VỤ**: Mỗi người đứng tên bao nhiêu đơn đã duyệt?
+> 💭 **Nhắc nhở** (Hà Vy): Phiếu tám đơn làm nguồn, gom theo người đặt.
+#### 💻 Màn tra dữ liệu: Đơn đã duyệt, gom theo người đặt (thẻ `c-don-theo-nguoi`)
+*Đề bài:* Lấy phiếu tám đơn làm nguồn. Gom theo người đứng tên, đếm mỗi người mấy đơn.
+
+```sql
+SELECT nguoi_dat, COUNT(*) AS so_dong FROM @ev-don-da-duyet GROUP BY nguoi_dat;
+```
+
+*(Chạy SQL: near "@ev": syntax error)*
+
+> 🗂️ **Bằng chứng thu thập**: **Nam đứng tên 5 trong 8 đơn** — Kết quả gom theo người đặt: Nam 5 đơn, Bách 1, Thảo 1, Khánh 1. Nam nói mình chỉ đặt hai.
+*Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
+
+- *Suy nghĩ của bạn:* *(Anh Nam năm đơn. Anh Bách, chị Thảo, anh Khánh mỗi người một.)*
+- **Nam**: Năm. Mà anh chỉ đặt hai: cảm biến dò line với bánh xe. Động cơ servo, mạch điều khiển, khung nhôm thì anh không đặt. Anh Bách là phó CLB, chị Thảo lo kỹ thuật, anh Khánh là trưởng CLB.
+- **Tùng** (chỉ tay): Thế ba đơn kia ai gõ tên anh vào?
+- **Duy**: Sổ không ghi ai gõ. Nhưng mỗi đơn có một cột mã phiên: phiên đăng nhập của máy lúc tạo đơn. Máy xưởng có bảng phiên đăng nhập không?
+- **Nam**: Có. Phần mềm đặt hàng ghi mỗi phiên là máy nào, giờ nào. Nhưng tài khoản quản trị của tớ bị khóa từ sáng nay, chờ giải trình xong. Thứ Ba 12 là hôm tớ kiểm kê kho, lịch với sổ đều nằm trong tài khoản ấy. Lịch ấy ban tổ chức giải bắt nộp, muốn dời sát ngày phải ghi lý do. Khóa tài khoản rồi thì chỉ còn cách đếm tay.
+- **Minh Anh**: Khóa là phải. Bảng ấy mà do Nam xuất thì ai cũng bảo Nam sửa được. Chị nhờ thầy Quang đề nghị cô Hạnh bên Phòng Đào tạo xuất thẳng cho CLB mình. Máy chủ của trường do phòng cô quản lý.
+- **Hà Vy** (suy nghĩ): Vậy là hai bảng. Đơn thì ở sổ đặt hàng, máy thì ở bảng phiên. Chung nhau cái mã phiên.
+- **Tùng** (chỉ tay): Đơn cảm biến ghi PH-11. Bên bảng phiên mà cũng có một dòng PH-11 thì đấy là cái máy tạo ra đơn ấy, đúng không?
+
+**Lựa chọn tiếp theo:**
+- [Đi tiếp](#doan-5)
+
+---
+
+<a id="doan-13"></a>
+### Đoạn 13: Sau khi xem hết các chỗ ở Phòng CLB
+
+> [CG cg-v4-huy-hieu-sut] (chưa có mô tả)
+- **Tùng** (lo lắng): Tớ thấy cái huy hiệu rồi. Nãy giờ tớ nín thở luôn.
+- **Hà Vy** (suy nghĩ): Nín là đúng đấy. Nói ra lúc ấy thì cũng như cá thôi.
+- **Nam**: Huy hiệu làm ba chục cái hồi đầu năm. Cái sứt là lỗi khuôn, anh Khánh xin giữ. Nhưng balo anh ấy hay để ở xưởng, ai cũng cầm ra cổng được. Anh không nói là anh ấy.
+- **Hà Vy**: Biết balo chưa phải biết người. Ghi thẻ, không kết.
+- **Tùng** (gãi đầu): Lần này tớ biết mà vẫn không cá.
+- **Minh Anh** (nghiêm túc): Muốn nói với thầy Quang thì cần một nguồn thứ hai, không dính gì tới cái huy hiệu. Và phải biết ba đơn kia tiền ở đâu ra, trả bằng quỹ nào, ai duyệt.
+- **Minh Anh**: Sao kê thì cuối kỳ mới tự về. Chủ quỹ xin giữa kỳ cũng được, nhưng giấy phải qua chủ tịch Hội ký chuyển. Chị chưa xin lần nào, nên giờ chị mới biết điều đó. Và người ký chuyển vừa đứng ở cửa, tự mời mình gửi giấy.
+- **Duy**: Tức là muốn xem sổ thì phải hỏi đúng người mình chưa được nói tên. Còn một đường nữa: thầy Quang.
+- **Nam**: Mình không nghi ai cả. Nhưng mình muốn biết là ai.
+- **Hà Vy**: Thì mình hỏi sổ thôi.
+> 📜 **[THẺ CHỮ]** Hai bảng nối nhau bằng một cột chung. Nối đúng cột thì mỗi dòng kéo theo đúng phần còn lại của nó. Nghi ngờ mạnh vẫn chưa phải bằng chứng: càng chắc trong lòng, càng phải tìm nguồn thứ hai.
+> [CHIBI chibi-v4-khong-ca (sticker)] (chưa có mô tả)
+
+🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.
+> **Có người mượn tên Nam** — Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng, cùng cái máy đã gửi tin đồn, một đơn đúng tối Nam ở thư viện. Máy thì biết, tay thì chưa. Ba người có chìa phòng.
+
+**Hết ngày.**
+
+
 
 ---

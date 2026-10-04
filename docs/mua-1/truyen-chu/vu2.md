@@ -19,7 +19,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - [Đoạn 13: Tuyến hiện trường: bảng đăng ký dùng xưởng](#doan-13)
 - [Đoạn 14: Tới nơi: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học](#doan-14)
 - [Đoạn 15: Chi tiết ẩn: Tấm bảng đen trên quầy](#doan-15)
-- *... và 8 đoạn tiếp theo*
+- *... và 11 đoạn tiếp theo*
 
 ## 👥 Nhân vật xuất hiện
 
@@ -72,40 +72,6 @@ Thứ Tư, 09/10/2024
 > 💭 **Nhắc nhở** (Hà Vy): Lọc ra các tin mang câu đó trước đã. Chưa vội đọc tên ai.
 📍 **Đang ở Phòng CLB:**
 *Những chỗ có thể khám phá ở đây:*
-#### 💻 Màn tra dữ liệu: Tin đồn trên kênh sinh viên (thẻ `c-tin-don`)
-*Đề bài:* Kênh sinh viên chuyền nhau một câu về CLB. Những tin nào mang câu đó?
-
-```sql
-SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB Thám Tử soi dữ liệu%';
-```
-
-*Kết quả chạy thật: 5 dòng*
-
-| ma_tin | thoi_diem | tai_khoan | loai |
-| --- | --- | --- | --- |
-| T-097 | 2024-10-07 22:40 | clb_robotics | GOC |
-| T-102 | 2024-10-07 22:55 | SV240254 | CHUYEN_TIEP |
-| T-160 | 2024-10-08 07:10 | SV230311 | CHUYEN_TIEP |
-| T-193 | 2024-10-08 08:02 | SV220118 | CHUYEN_TIEP |
-| T-317 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP |
-
-*Các bẫy và phản hồi từ nhân vật:*
-- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không dòng nào. Tin trong kênh dài hơn mấy chữ trên giấy nhớ, còn đoạn sau nữa. "Bằng" thì phải khớp cả câu; mình chỉ có mấy chữ đầu thôi.
-- Nếu lọc ra 338 dòng → **Tùng** (gãi đầu): Cả ba trăm ba mươi tám tin của kênh từ tối qua. Có cả tin tìm ví với tin pass giáo trình.
-- Nếu thiếu cột → **Hà Vy** (suy nghĩ): Đủ năm tin rồi, nhưng phiếu này còn phải lọc tiếp tin gốc. Cần mã tin, lúc gửi, tài khoản gửi, và cột loại tin.
-- Nếu thừa cột → **Duy**: Đủ mà thừa. Nội dung tin thì năm dòng như nhau, khỏi chép vào phiếu. Lấy mã tin, lúc gửi, tài khoản với loại tin thôi.
-- Nếu tra đúng → **Hà Vy**: Năm tin cùng một câu. Ghim lại đã.
-
-> 🗂️ **Bằng chứng thu thập**: **Năm tin mang câu tin đồn** — Kết quả truy vấn: năm tin cùng một câu, từ năm tài khoản. Bốn tài khoản là mã sinh viên, một là clb_robotics. Phiếu chưa nói tin nào có trước.
-*Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
-
-- *Suy nghĩ của bạn:* *(Năm tin mang câu đó, từ năm tài khoản. Bốn cái là mã sinh viên. Một cái là clb_robotics.)*
-- **Tùng** (chỉ tay): Lại Robotics! Hôm trước là cái huy hiệu bánh răng, giờ là tài khoản. Tớ cá là…
-- **Hà Vy**: Đừng cá. Mới biết có năm tin mang câu đó. Tin nào có trước thì phiếu chưa nói.
-- **Minh Anh**: Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem.
-> 🎯 **NHIỆM VỤ**: Sang xưởng Robotics hỏi người trực kênh
-
-⚠ (bản cũ: tự chuyển nơi)
 
 **Lựa chọn tiếp theo:**
 - [Khám phá: Duy: mở laptop](#doan-2)
@@ -113,8 +79,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB
 - [Khám phá: Tùng: chuyện ở căng tin (chi tiết ẩn / tùy chọn)](#doan-4)
 - [Khám phá: Minh Anh: xin dữ liệu (chi tiết ẩn / tùy chọn)](#doan-5)
 - [Mở bản đồ](#doan-23)
-- [Mở bản đồ](#doan-23)
-- [Đi tiếp](#doan-6)
+- [Sau khi xem hết các chỗ](#doan-24)
 
 ---
 
@@ -186,58 +151,13 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB
 - **Hà Vy** (suy nghĩ): Người lạ đấy. Mình nhìn một lượt trước rồi hẵng hỏi.
 📍 **Đang ở Xưởng CLB Robotics:**
 *Những chỗ có thể khám phá ở đây:*
-- **Nam**: Mấy em tìm ai? Ban chủ nhiệm chiều nay đi họp cả rồi.
-- *Suy nghĩ của bạn:* *(Bọn em bên CLB Thám Tử. Kênh của Robotics do ai trực ạ?)*
-- **Nam**: Anh. Anh là Nam. Bài tuyển thành viên, lịch xưởng, đều anh đăng.
-- **Tùng** (chỉ tay): Thế cái tin "CLB Thám Tử soi dữ liệu sinh viên" cũng là anh đăng à?
-- **Nam**: Tin nào cơ? Cho anh xem.
-- **Nam**: Năm dòng này lẫn cả tin chuyển tiếp. Chuyển tiếp thì ai cũng bấm được. Muốn biết nó bắt đầu từ đâu thì tìm tin gốc ấy. Kênh có ghi loại của từng tin.
-- **Hà Vy** (suy nghĩ): Năm tin này mình ghim rồi. Lọc tiếp ngay trên phiếu ấy, khỏi lạc sang tin khác của kênh.
-> 🎯 **NHIỆM VỤ**: Trong năm tin đó, tin nào là tin gốc?
-> 💭 **Nhắc nhở** (Hà Vy): Phiếu vừa ghim dùng làm nguồn được. Lọc tiếp ra tin gốc.
-#### 💻 Màn tra dữ liệu: Tin gốc của tin đồn (thẻ `c-tin-goc`)
-*Đề bài:* Năm tin trên phiếu lẫn cả tin chuyển tiếp. Tin nào là tin gốc?
-
-```sql
-SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';
-```
-
-*(Chạy SQL: near "@ev": syntax error)*
-
-*Các bẫy và phản hồi từ nhân vật:*
-- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không dòng nào. Giá trị này có đang nằm đúng cột của nó không nhỉ?
-- Nếu lọc ra 5 dòng → **Tùng** (gãi đầu): Vẫn đủ năm tin. Chưa tách được tin gốc ra.
-- Nếu tra đúng → **Hà Vy** (suy nghĩ): Còn đúng một tin. Phiếu năm tin vẫn nguyên trên bảng, mình chỉ lọc tiếp trên nó.
-
-> 🗂️ **Bằng chứng thu thập**: **Tin gốc: 22:40 tối 07/10** — Kết quả lọc tiếp trên phiếu năm tin: một tin gốc, gửi 22:40 thứ Hai 07/10 từ tài khoản clb_robotics. Phiếu cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
-*Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
-
-- *Suy nghĩ của bạn:* *(Một tin gốc. 22 giờ 40 tối thứ Hai, mùng 7. Tài khoản clb_robotics.)*
-- **Nam**: …Từ kênh của bọn anh thật à.
-- **Tùng** (chỉ tay): Kênh của anh, tài khoản của anh. Thế thì còn ai vào đây nữa?
-- **Nam**: Anh chỉ đăng bài buổi chiều. 22 giờ 40 thì anh không ngồi kênh.
-- **Tùng** (lo lắng): Ai trực kênh mà chẳng nói thế.
-- **Nam**: Thế em tưởng mỗi mình anh có mật khẩu à? Cả ban chủ nhiệm đều biết. Giờ đó xưởng còn mở, ai chả vào máy được, sao cứ đổ cho anh.
-- **Tùng** (chỉ tay): Xưởng mở giờ đó á? Ngoài cửa có dán bảng đăng ký kia kìa.
-- **Hà Vy** (suy nghĩ): Còn mật khẩu nhiều người biết thì kênh có ghi ai đăng nhập không? Không có thì bọn em nhờ bên quản trị trường mở.
-- **Nam**: …Khỏi nhờ. Anh là quản trị kênh, anh mở nhật ký đăng nhập được. Xem đi, xem cả bảng ngoài cửa luôn.
-- **Duy**: Vậy là hai chỗ kiểm được. Xem cả hai, hay xem một rồi về báo chị Minh Anh, tùy mình.
-> [CHIBI chibi-v2-tung-chi-nam (sticker)] (chưa có mô tả)
-- **Khánh**: Nam, ban tổ chức cho đội mình lùi hạn lệ phí tới hết tháng 11 rồi, anh vừa xin được. Cứ tập tiếp đi. Anh lấy tập hồ sơ giải rồi quay lại họp. Có khách à?
-- **Nam**: Các bạn bên CLB Thám Tử ạ. Hỏi chuyện cái tin trong kênh.
-- **Khánh**: Anh là Khánh, trưởng CLB. Tin ấy anh có nghe. Kênh thì Nam trực, các em cần xem gì cứ để Nam mở, bên anh không giấu. Hỏi nhẹ thôi nhé, em nó sắp thi đấu.
-- **Tùng** (ngạc nhiên): Anh Khánh chủ tịch Hội sinh viên đấy.
-- **Nam**: Anh Khánh lo cho đội lắm. Kinh phí đi giải năm nay toàn anh ấy chạy.
-> [CG cg-v2-khanh-xuong] (chưa có mô tả)
-🔀 **Lựa chọn của bạn** (Hà Vy: "Hai chỗ Nam vừa buột miệng nói ra. Xem chỗ nào trước?"):
 
 **Lựa chọn tiếp theo:**
 - [Khám phá: Cái hộp trên tay](#doan-9)
 - [Khám phá: Cây bút dạ](#doan-10)
 - [Khám phá: Tay áo](#doan-11)
 - [Mở bản đồ](#doan-23)
-- [Chọn: "Nhật ký đăng nhập của kênh."](#doan-12)
-- [Chọn: "Bảng đăng ký dùng xưởng ngoài cửa."](#doan-13)
+- [Sau khi xem hết các chỗ](#doan-26)
 
 ---
 
@@ -577,5 +497,112 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 - [Đi tới: Ra cửa xem nốt bảng đăng ký.](#doan-13)
 - [Đi tới: Về báo chị Minh Anh.](#doan-19)
 - [Đi tới: Xem nốt nhật ký đăng nhập.](#doan-12)
+
+---
+
+<a id="doan-24"></a>
+### Đoạn 24: Sau khi xem hết các chỗ ở Phòng CLB
+
+#### 💻 Màn tra dữ liệu: Tin đồn trên kênh sinh viên (thẻ `c-tin-don`)
+*Đề bài:* Kênh sinh viên chuyền nhau một câu về CLB. Những tin nào mang câu đó?
+
+```sql
+SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB Thám Tử soi dữ liệu%';
+```
+
+*Kết quả chạy thật: 5 dòng*
+
+| ma_tin | thoi_diem | tai_khoan | loai |
+| --- | --- | --- | --- |
+| T-097 | 2024-10-07 22:40 | clb_robotics | GOC |
+| T-102 | 2024-10-07 22:55 | SV240254 | CHUYEN_TIEP |
+| T-160 | 2024-10-08 07:10 | SV230311 | CHUYEN_TIEP |
+| T-193 | 2024-10-08 08:02 | SV220118 | CHUYEN_TIEP |
+| T-317 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP |
+
+*Các bẫy và phản hồi từ nhân vật:*
+- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không dòng nào. Tin trong kênh dài hơn mấy chữ trên giấy nhớ, còn đoạn sau nữa. "Bằng" thì phải khớp cả câu; mình chỉ có mấy chữ đầu thôi.
+- Nếu lọc ra 338 dòng → **Tùng** (gãi đầu): Cả ba trăm ba mươi tám tin của kênh từ tối qua. Có cả tin tìm ví với tin pass giáo trình.
+- Nếu thiếu cột → **Hà Vy** (suy nghĩ): Đủ năm tin rồi, nhưng phiếu này còn phải lọc tiếp tin gốc. Cần mã tin, lúc gửi, tài khoản gửi, và cột loại tin.
+- Nếu thừa cột → **Duy**: Đủ mà thừa. Nội dung tin thì năm dòng như nhau, khỏi chép vào phiếu. Lấy mã tin, lúc gửi, tài khoản với loại tin thôi.
+- Nếu tra đúng → **Hà Vy**: Năm tin cùng một câu. Ghim lại đã.
+
+> 🗂️ **Bằng chứng thu thập**: **Năm tin mang câu tin đồn** — Kết quả truy vấn: năm tin cùng một câu, từ năm tài khoản. Bốn tài khoản là mã sinh viên, một là clb_robotics. Phiếu chưa nói tin nào có trước.
+*Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
+
+- *Suy nghĩ của bạn:* *(Năm tin mang câu đó, từ năm tài khoản. Bốn cái là mã sinh viên. Một cái là clb_robotics.)*
+- **Tùng** (chỉ tay): Lại Robotics! Hôm trước là cái huy hiệu bánh răng, giờ là tài khoản. Tớ cá là…
+- **Hà Vy**: Đừng cá. Mới biết có năm tin mang câu đó. Tin nào có trước thì phiếu chưa nói.
+- **Minh Anh**: Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem.
+> 🎯 **NHIỆM VỤ**: Sang xưởng Robotics hỏi người trực kênh
+
+**Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-23)
+- [Sau khi xem hết các chỗ](#doan-25)
+
+---
+
+<a id="doan-25"></a>
+### Đoạn 25: Sau khi xem hết các chỗ ở Phòng CLB
+
+
+⚠ (bản cũ: tự chuyển nơi)
+
+**Lựa chọn tiếp theo:**
+- [Đi tiếp](#doan-6)
+
+---
+
+<a id="doan-26"></a>
+### Đoạn 26: Sau khi xem hết các chỗ ở Xưởng CLB Robotics
+
+- **Nam**: Mấy em tìm ai? Ban chủ nhiệm chiều nay đi họp cả rồi.
+- *Suy nghĩ của bạn:* *(Bọn em bên CLB Thám Tử. Kênh của Robotics do ai trực ạ?)*
+- **Nam**: Anh. Anh là Nam. Bài tuyển thành viên, lịch xưởng, đều anh đăng.
+- **Tùng** (chỉ tay): Thế cái tin "CLB Thám Tử soi dữ liệu sinh viên" cũng là anh đăng à?
+- **Nam**: Tin nào cơ? Cho anh xem.
+- **Nam**: Năm dòng này lẫn cả tin chuyển tiếp. Chuyển tiếp thì ai cũng bấm được. Muốn biết nó bắt đầu từ đâu thì tìm tin gốc ấy. Kênh có ghi loại của từng tin.
+- **Hà Vy** (suy nghĩ): Năm tin này mình ghim rồi. Lọc tiếp ngay trên phiếu ấy, khỏi lạc sang tin khác của kênh.
+> 🎯 **NHIỆM VỤ**: Trong năm tin đó, tin nào là tin gốc?
+> 💭 **Nhắc nhở** (Hà Vy): Phiếu vừa ghim dùng làm nguồn được. Lọc tiếp ra tin gốc.
+#### 💻 Màn tra dữ liệu: Tin gốc của tin đồn (thẻ `c-tin-goc`)
+*Đề bài:* Năm tin trên phiếu lẫn cả tin chuyển tiếp. Tin nào là tin gốc?
+
+```sql
+SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';
+```
+
+*(Chạy SQL: near "@ev": syntax error)*
+
+*Các bẫy và phản hồi từ nhân vật:*
+- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không dòng nào. Giá trị này có đang nằm đúng cột của nó không nhỉ?
+- Nếu lọc ra 5 dòng → **Tùng** (gãi đầu): Vẫn đủ năm tin. Chưa tách được tin gốc ra.
+- Nếu tra đúng → **Hà Vy** (suy nghĩ): Còn đúng một tin. Phiếu năm tin vẫn nguyên trên bảng, mình chỉ lọc tiếp trên nó.
+
+> 🗂️ **Bằng chứng thu thập**: **Tin gốc: 22:40 tối 07/10** — Kết quả lọc tiếp trên phiếu năm tin: một tin gốc, gửi 22:40 thứ Hai 07/10 từ tài khoản clb_robotics. Phiếu cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
+*Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
+
+- *Suy nghĩ của bạn:* *(Một tin gốc. 22 giờ 40 tối thứ Hai, mùng 7. Tài khoản clb_robotics.)*
+- **Nam**: …Từ kênh của bọn anh thật à.
+- **Tùng** (chỉ tay): Kênh của anh, tài khoản của anh. Thế thì còn ai vào đây nữa?
+- **Nam**: Anh chỉ đăng bài buổi chiều. 22 giờ 40 thì anh không ngồi kênh.
+- **Tùng** (lo lắng): Ai trực kênh mà chẳng nói thế.
+- **Nam**: Thế em tưởng mỗi mình anh có mật khẩu à? Cả ban chủ nhiệm đều biết. Giờ đó xưởng còn mở, ai chả vào máy được, sao cứ đổ cho anh.
+- **Tùng** (chỉ tay): Xưởng mở giờ đó á? Ngoài cửa có dán bảng đăng ký kia kìa.
+- **Hà Vy** (suy nghĩ): Còn mật khẩu nhiều người biết thì kênh có ghi ai đăng nhập không? Không có thì bọn em nhờ bên quản trị trường mở.
+- **Nam**: …Khỏi nhờ. Anh là quản trị kênh, anh mở nhật ký đăng nhập được. Xem đi, xem cả bảng ngoài cửa luôn.
+- **Duy**: Vậy là hai chỗ kiểm được. Xem cả hai, hay xem một rồi về báo chị Minh Anh, tùy mình.
+> [CHIBI chibi-v2-tung-chi-nam (sticker)] (chưa có mô tả)
+- **Khánh**: Nam, ban tổ chức cho đội mình lùi hạn lệ phí tới hết tháng 11 rồi, anh vừa xin được. Cứ tập tiếp đi. Anh lấy tập hồ sơ giải rồi quay lại họp. Có khách à?
+- **Nam**: Các bạn bên CLB Thám Tử ạ. Hỏi chuyện cái tin trong kênh.
+- **Khánh**: Anh là Khánh, trưởng CLB. Tin ấy anh có nghe. Kênh thì Nam trực, các em cần xem gì cứ để Nam mở, bên anh không giấu. Hỏi nhẹ thôi nhé, em nó sắp thi đấu.
+- **Tùng** (ngạc nhiên): Anh Khánh chủ tịch Hội sinh viên đấy.
+- **Nam**: Anh Khánh lo cho đội lắm. Kinh phí đi giải năm nay toàn anh ấy chạy.
+> [CG cg-v2-khanh-xuong] (chưa có mô tả)
+🔀 **Lựa chọn của bạn** (Hà Vy: "Hai chỗ Nam vừa buột miệng nói ra. Xem chỗ nào trước?"):
+
+**Lựa chọn tiếp theo:**
+- [Chọn: "Nhật ký đăng nhập của kênh."](#doan-12)
+- [Chọn: "Bảng đăng ký dùng xưởng ngoài cửa."](#doan-13)
 
 ---

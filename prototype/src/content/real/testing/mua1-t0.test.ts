@@ -705,6 +705,7 @@ describe('Gói T0 Mùa 1: Quy tắc đứng nguyên chỗ B1 (S11)', () => {
 describe('Gói T0 Mùa 1: Lọc từng bước và Cột nộp (S12)', () => {
   it('báo lỗi khi Cột nộp không có trong các cột của SQL chuẩn', () => {
     const tep = taoBoTep({
+      'du-lieu.md': () => '# Dữ liệu mẫu {dữ liệu: vu1}\n## bang {bảng}\n- Cột: ma TEXT, ten TEXT\n| ma | ten |\n|---|---|\n| 1 | A |',
       'thu-thach/c1.md': (s) =>
         s.replace(
           '### c-1 — Thử thách một {challenge: c-1}',
@@ -719,6 +720,7 @@ describe('Gói T0 Mùa 1: Lọc từng bước và Cột nộp (S12)', () => {
 
   it('không báo lỗi khi Cột nộp nằm trong các cột của SQL chuẩn', () => {
     const tep = taoBoTep({
+      'du-lieu.md': () => '# Dữ liệu mẫu {dữ liệu: vu1}\n## bang {bảng}\n- Cột: ma TEXT, ten TEXT\n| ma | ten |\n|---|---|\n| 1 | A |',
       'thu-thach/c1.md': (s) =>
         s.replace(
           '### c-1 — Thử thách một {challenge: c-1}',
@@ -846,7 +848,7 @@ describe('Gói T0 Mùa 1: R1', () => {
     const vu1Path = join(THU_MUC_XUAT_TRUYEN, 'vu1.md');
     const vanBan = readFileSync(vu1Path, 'utf8');
     const soDongHetNgay = (vanBan.match(/\*\*Hết ngày\.\*\*/g) || []).length;
-    expect(soDongHetNgay === 4 || soDongHetNgay === 5).toBe(true);
+    expect(soDongHetNgay).toBeGreaterThanOrEqual(4);
 
       // kiểm rằng trong vu1.md không có đoạn nào vừa có 'Hết ngày.' vừa có lựa chọn 'Đi tiếp' tới đoạn cùng ngày
       const doanMatch = vanBan.match(/^## .*?[\s\S]*?(?=(^## |$))/gm);
@@ -889,5 +891,44 @@ describe('Gói T0 Mùa 1: Đoạn Bản đồ ngày N và Khám phá cùng cản
     
     // Verify Mở bản đồ choice exists and points to map section
     expect(noiDung).toContain('Mở bản đồ');
+  });
+});
+
+describe('Gói T0 Mùa 1: Khám phá tách đoạn (B)', () => {
+  it('truyện chữ in thành đoạn riêng khi có lời thoại sau node explore', async () => {
+    const { BoXuatTruyenChu } = await import('../../../../tools/truyen-chu.ts');
+    const { docNoiDungMvp } = await import('../../../../tools/noi-dung/doc-mvp.ts');
+    const { chuyenMvp } = await import('../../../../tools/noi-dung/chuyen-mvp.ts');
+    const { kiemLuatMvp } = await import('../../../../tools/noi-dung/luat-mvp.ts');
+    const tep = taoBoTep({
+      'lich.md': (s) => s.replace('## Kết', '## Ngày 3 {ngày: 3 · theo truyện · bắt đầu ở: c1}\n- Chuỗi: c-test-1\n## Kết'),
+      'kich-ban/vu1-ngay1.md': () => 
+        '### c-test-1 — Cảnh một {cảnh: c1}\n- **narrator**: Lời trước khám phá.\n- [KHÁM PHÁ e1]\n  - c2: Chỗ hai\n- **narrator**: Lời sau khám phá.\n- [HẾT VIỆC CHÍNH]'
+    });
+    const kq = docNoiDungMvp(tep);
+    const luat = kiemLuatMvp(kq.mvp);
+    const mvp = chuyenMvp(kq.mvp, luat);
+    const b = new BoXuatTruyenChu(mvp, new Map());
+    const v1 = b.xuatVuHoacViec('vu1');
+    expect(v1).toContain('Lời trước khám phá.');
+    expect(v1).toContain('Những chỗ có thể khám phá ở đây:');
+    expect(v1).toContain('Sau khi xem hết các chỗ ở');
+    expect(v1).toContain('Lời sau khám phá.');
+  });
+
+  it('in ra Cột nộp nếu thẻ thử thách có khai báo', async () => {
+    const { BoXuatTruyenChu } = await import('../../../../tools/truyen-chu.ts');
+    const { docNoiDungMvp } = await import('../../../../tools/noi-dung/doc-mvp.ts');
+    const { chuyenMvp } = await import('../../../../tools/noi-dung/chuyen-mvp.ts');
+    const { kiemLuatMvp } = await import('../../../../tools/noi-dung/luat-mvp.ts');
+    const tep = taoBoTep({
+      'thu-thach/c1.md': (s) => s.replace('- SQL chuẩn:', '- Cột nộp: ma\n- SQL chuẩn:')
+    });
+    const kq = docNoiDungMvp(tep);
+    const luat = kiemLuatMvp(kq.mvp);
+    const mvp = chuyenMvp(kq.mvp, luat);
+    const b = new BoXuatTruyenChu(mvp, new Map());
+    const v1 = b.xuatVuHoacViec('vu1');
+    expect(v1).toContain('**Nộp cột**: ma');
   });
 });

@@ -19,7 +19,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - [Đoạn 13: Chai nước dưới đất](#doan-13)
 - [Đoạn 14: Phòng CLB: lịch học và danh sách đăng ký](#doan-14)
 - [Đoạn 15: Ba cái tên, một chiếc vé gửi xe](#doan-15)
-- *... và 3 đoạn tiếp theo*
+- *... và 4 đoạn tiếp theo*
 
 ## 👥 Nhân vật xuất hiện
 
@@ -96,11 +96,6 @@ Thứ Tư, 30/10/2024
 > 🎯 **NHIỆM VỤ**: Xem kỹ những món đang để ngoài trên ghế đá
 📍 **Đang ở Ghế đá cạnh lối đi:**
 *Những chỗ có thể khám phá ở đây:*
-- **Hà Vy** (suy nghĩ): Bấy nhiêu thứ là đủ để thu hẹp rồi.
-- **Minh Anh**: Mang túi về phòng CLB. Laptop ở đó.
-- *Tùng bê chiếc túi bằng hai tay, như bê một chậu cây dễ đổ.*
-
-⚠ (bản cũ: tự chuyển nơi)
 
 **Lựa chọn tiếp theo:**
 - [Khám phá: Nhãn dán trên bìa giáo trình](#doan-5)
@@ -113,7 +108,7 @@ Thứ Tư, 30/10/2024
 - [Khám phá: Hộp bút](#doan-12)
 - [Khám phá: Chai nước dưới đất](#doan-13)
 - [Mở bản đồ](#doan-18)
-- [Đi tiếp](#doan-14)
+- [Sau khi xem hết các chỗ](#doan-19)
 
 ---
 
@@ -422,5 +417,19 @@ SELECT dang_ky_hoc.ma_lhp, sinh_vien.ma_sv, ho_dem, ten, ma_lop FROM dang_ky_hoc
 **Lựa chọn tiếp theo:**
 - [Đi tới: Mang xuống nộp bác Thịnh ở sảnh tòa B.](#doan-2)
 - [Đi tới: Thử tự tìm ra chủ túi.](#doan-3)
+
+---
+
+<a id="doan-19"></a>
+### Đoạn 19: Sau khi xem hết các chỗ ở Ghế đá cạnh lối đi
+
+- **Hà Vy** (suy nghĩ): Bấy nhiêu thứ là đủ để thu hẹp rồi.
+- **Minh Anh**: Mang túi về phòng CLB. Laptop ở đó.
+- *Tùng bê chiếc túi bằng hai tay, như bê một chậu cây dễ đổ.*
+
+⚠ (bản cũ: tự chuyển nơi)
+
+**Lựa chọn tiếp theo:**
+- [Đi tiếp](#doan-14)
 
 ---

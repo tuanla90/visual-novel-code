@@ -9,6 +9,7 @@
  *
  * Mọi lỗi có `<tệp>:<dòng>`. Không import gì từ `src/`.
  */
+import { execFileSync } from 'node:child_process';
 import { danhGiaDieuKien, docMoc, maTrongDieuKien, taThuTu, THU_TU_BUOI_TOI, thuTuMoc, type HauQua, type Moc } from './dieu-kien.ts';
 import { loiTrongChuoi, type MucMvp, type RawChuoiMvp, type RawDuKien, type RawMvp } from './doc-mvp.ts';
 import type { LoiNoiDung, ViTri } from './doc.ts';
@@ -39,31 +40,29 @@ export interface TuyChonLuatMvp {
 type Producer = { kind: 'du-kien'; id: string } | { kind: 'the'; id: string } | { kind: 'chuoi'; id: string };
 
 export function layCotSqlChuan(sql: string, bangCsdl?: { ten: string; cot: { ten: string }[] }[]): string[] | null {
-  const m = /^\s*(?:WITH\s+[\s\S]+?\s+AS\s+\([\s\S]+?\)\s+)?SELECT\s+([\s\S]+?)\s+FROM\s+([A-Za-z0-9_]+)/i.exec(sql);
-  if (!m) return null;
-  const rawSelect = m[1]?.trim();
-  const tableName = m[2]?.trim();
-  if (rawSelect === '*') {
-    if (bangCsdl && tableName) {
-      const b = bangCsdl.find((x) => x.ten.toLowerCase() === tableName.toLowerCase());
-      if (b) return b.cot.map((c) => c.ten);
-    }
+  if (!bangCsdl) return null;
+  const script = `
+import initSqlJs from "sql.js";
+import fs from "node:fs";
+import { createRequire } from "node:module";
+const req = createRequire(process.cwd() + "/");
+const wasm = fs.readFileSync(req.resolve("sql.js/dist/sql-wasm.wasm"));
+const SQL = await initSqlJs({ wasmBinary: wasm });
+const db = new SQL.Database();
+const { sql, bang } = JSON.parse(fs.readFileSync(0, "utf-8"));
+for (const b of bang) {
+  db.run(\`CREATE TABLE "\${b.ten}" (\${b.cot.map(c => \`"\${c.ten}" TEXT\`).join(", ")})\`);
+}
+const st = db.prepare(sql);
+console.log(JSON.stringify(st.getColumnNames()));
+`;
+  try {
+    const input = JSON.stringify({ sql, bang: bangCsdl });
+    const out = execFileSync(process.execPath, ["--input-type=module", "-e", script], { input, encoding: "utf-8" });
+    return JSON.parse(out);
+  } catch (_e) {
     return null;
   }
-  const cols: string[] = [];
-  for (const part of (rawSelect ?? '').split(',')) {
-    const trimmed = part.trim();
-    const mAlias = /\bAS\s+([A-Za-z0-9_]+)$/i.exec(trimmed);
-    if (mAlias && mAlias[1]) {
-      cols.push(mAlias[1]);
-      continue;
-    }
-    const mCol = /(?:[A-Za-z0-9_]+\.)?([A-Za-z0-9_]+)$/.exec(trimmed);
-    if (mCol && mCol[1]) {
-      cols.push(mCol[1]);
-    }
-  }
-  return cols;
 }
 
 export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLuat {

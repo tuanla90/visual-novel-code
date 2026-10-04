@@ -172,6 +172,7 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     deBai: field('Đề bài hiển thị'),
     manhMoiLienQuan: (t.fields['Manh mối liên quan'] ?? '').match(/clue-[a-z0-9-]+/g) ?? [],
     mucTieuHoc: t.fields['Mục tiêu học'] ?? null,
+    ...(t.fields['Cột nộp'] ? { cotNop: t.fields['Cột nộp'].split(',').map((x) => x.trim()).filter(Boolean) } : {}),
     soDongKyVong,
     sqlChuan,
     ...(t.fields['Kiểu'] === 'tổng hợp' ? { kieuTrinhDung: 'tong-hop', nguon: t.fields['Nguồn'] ?? null, nhomTheo: t.fields['Nhóm theo'] || null } : {}),

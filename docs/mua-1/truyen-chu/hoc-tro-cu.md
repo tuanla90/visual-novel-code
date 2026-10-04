@@ -11,6 +11,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - [Đoạn 5: Phòng CLB: gọt danh sách](#doan-5)
 - [Đoạn 6: Trả danh sách cho cô Hạnh](#doan-6)
 - [Đoạn 7: Chiều 20/11: bàn trà nhỏ ở sảnh tòa B](#doan-7)
+- [Đoạn 9: Sau khi xem hết các chỗ ở Phòng Đào tạo](#doan-9)
 
 ## 👥 Nhân vật xuất hiện
 
@@ -66,7 +67,7 @@ Thứ Tư, 20/11/2024
 **Lựa chọn tiếp theo:**
 - [Khám phá: Cô ở quầy](#doan-3)
 - [Khám phá: Tập giấy kẹp bìa xanh trên quầy](#doan-4)
-- [Đi tiếp](#doan-3)
+- [Sau khi xem hết các chỗ](#doan-9)
 
 ---
 
@@ -239,5 +240,14 @@ SELECT ho_ten, COUNT(*) AS so_dong FROM @ev-hoc-ra-truong GROUP BY ho_ten HAVING
 🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.
 > **Hai mươi sáu tên, bốn tên xuất hiện hai lần** — Từ bốn trăm dòng lớp cũ, 30 dòng ghi ra trường, gom lại còn 26 tên không trùng; bốn tên có hai dòng. Danh sách chỉ cho biết tên trùng, không cho biết là một người hay hai người trùng tên, việc đó cô Hạnh nhận ra từ trí nhớ. Danh sách cũng không cho biết ai còn liên lạc được hay sẽ tới.
 
+
+---
+
+<a id="doan-9"></a>
+### Đoạn 9: Sau khi xem hết các chỗ ở Phòng Đào tạo
+
+
+**Lựa chọn tiếp theo:**
+- [Đi tiếp](#doan-3)
 
 ---

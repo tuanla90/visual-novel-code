@@ -769,11 +769,12 @@ export class BoXuatTruyenChu {
     // Tạo nội dung từng đoạn
     for (const cId of dsChuoiKhamPha) {
       const c = this.duLieu.chuoi.find((x) => x.id === cId);
-      const so = chuoiToSo.get(cId)!;
+      let so = chuoiToSo.get(cId)!;
       if (!c) {
         const doanLoi = { so, tieuDe: `Chuỗi ${cId}`, dong: [`*(Không tìm thấy nội dung chuỗi ${cId})*`], luaChon: [] }; doan.push(doanLoi);  continue;
       }
 
+      let tieuDe = c.title;
       const tieuDeCanh = this.tenCanh(c.canh);
       const moTa = this.moTaCanh(c.canh);
       const dong: string[] = [];
@@ -915,6 +916,32 @@ export class BoXuatTruyenChu {
                 if (mapData && !luaChon.some(x => x.nhan === 'Mở bản đồ')) {
                     luaChon.push({ nhan: 'Mở bản đồ', toiSo: mapData.so });
                 }
+            }
+            const mapData = dayToMapData.get(daKhamPha.get(cId)!);
+            if (i < c.nodes.length - 1) {
+              const tenNoi = this.tenCanh(c.canh) || c.canh;
+              const nhanSau = `Sau khi xem hết các chỗ ở ${tenNoi}`;
+              const soSau = taoDoanBoSung(nhanSau);
+              luaChon.push({
+                nhan: 'Sau khi xem hết các chỗ',
+                toiSo: soSau,
+              });
+              
+              doan.push({
+                so,
+                tieuDe,
+                dong: [...dong],
+                luaChon: [...luaChon],
+              });
+
+              so = soSau;
+              tieuDe = nhanSau;
+              dong.length = 0;
+              luaChon.length = 0;
+              
+              if (mapData) {
+                  luaChon.push({ nhan: 'Mở bản đồ', toiSo: mapData.so });
+              }
             }
             break;
           }
@@ -1091,7 +1118,7 @@ export class BoXuatTruyenChu {
 
       const doanChinh: DoanTruyen = {
         so,
-        tieuDe: c.title,
+        tieuDe,
         dong,
         luaChon,
       };
