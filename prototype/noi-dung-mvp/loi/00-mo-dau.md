@@ -178,13 +178,13 @@
 - **duy** (smile): Trà ở đầu bàn, mấy đứa tự rót nhé.
 
 ## md-10-soi-vy-sach.1
-- **player**: (Bìa sách bọc giấy báo, gáy viết tay: "Sherlock Holmes, tập hai".)
+- **player**: (Mấy tờ giấy in ôm sát trước ngực. Qua mép giấy thấy dòng tiêu đề in đậm: "Sherlock Holmes".)
 
 ## md-10-soi-vy-kinh.1
 - **player**: (Gọng kính mảnh. Bạn ấy nhìn ai cũng lâu hơn người khác một nhịp.)
 
 ## md-10-gap-ha-vy.2
-- **ha-vy** (neutral): Cậu nhìn tớ lâu thế. Từ sách tới kính rồi đấy.
+- **ha-vy** (neutral): Cậu nhìn tớ lâu thế. Từ tập giấy tới cái kính rồi đấy.
 - **player**: À… cậu cũng vào CLB à?
 - **ha-vy** (neutral): Mới đăng ký. Tớ là {{nv.ha-vy}}, Toán ứng dụng.
 - **tung** (surprised): Hôm Ngày hội tớ không thấy cậu ở bàn CLB.
@@ -240,6 +240,7 @@
 
 ## md-11-tu.1
 - **player**: (Ngăn dưới cùng không kéo ra được. Khóa.)
+- **duy** (neutral): Khóa đấy. Để anh.
 - **narrator**: Duy tháo chùm chìa ở thắt lưng, dò mấy mẩu băng dính, tới chìa thứ ba mới mở được. Một đám bụi bay lên làm Tùng ho sặc.
 - **duy** (neutral): Ngăn này anh chưa kiểm kê. Cứ lôi hết ra bàn.
 - **ha-vy** (day-kinh): Hôm Trung thu mình thấy đôi dép bé tí dưới chiếc đèn. Ở đây cũng vậy thôi: nhìn chỗ người ta không để ý.

@@ -126,11 +126,11 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE ten = 'Tùng' AND nganh 
 ### md-10-gap-ha-vy — Trung thu: người chơi tự tới chào bạn nữ đứng tách ra cạnh bảng tin {cảnh: san-ktx-trung-thu}
 
 - [KHÁM PHÁ kp-soi-ha-vy · quan sát ha-vy]
-  - vung:sach · x 57% · y 56% · rộng 26% → md-10-soi-vy-sach · nhãn: Quyển sách
+  - vung:sach · x 57% · y 56% · rộng 26% → md-10-soi-vy-sach · nhãn: Tập giấy trên tay
   - vung:kinh · x 52% · y 24% · rộng 30% → md-10-soi-vy-kinh · nhãn: Cặp kính
 - [LỜI md-10-gap-ha-vy.2]
 
-### md-10-soi-vy-sach — Quan sát Hà Vy: quyển sách bọc giấy báo {cảnh: san-ktx-trung-thu}
+### md-10-soi-vy-sach — Quan sát Hà Vy: tập giấy ôm trước ngực {cảnh: san-ktx-trung-thu}
 
 - [LỜI md-10-soi-vy-sach.1]
 

@@ -1831,7 +1831,7 @@ const GOC = {
               "rong": 26,
               "chuoi": "md-10-soi-vy-sach",
               "sau": [],
-              "nhan": "Quyển sách"
+              "nhan": "Tập giấy trên tay"
             },
             {
               "sprite": "vung:kinh",
@@ -1848,7 +1848,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Cậu nhìn tớ lâu thế. Từ sách tới kính rồi đấy."
+          "text": "Cậu nhìn tớ lâu thế. Từ tập giấy tới cái kính rồi đấy."
         },
         {
           "type": "line",
@@ -1889,14 +1889,14 @@ const GOC = {
     },
     {
       "id": "md-10-soi-vy-sach",
-      "title": "Quan sát Hà Vy: quyển sách bọc giấy báo",
+      "title": "Quan sát Hà Vy: tập giấy ôm trước ngực",
       "canh": "san-ktx-trung-thu",
       "mocSomNhat": 0,
       "nodes": [
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Bìa sách bọc giấy báo, gáy viết tay: \"Sherlock Holmes, tập hai\".)"
+          "text": "(Mấy tờ giấy in ôm sát trước ngực. Qua mép giấy thấy dòng tiêu đề in đậm: \"Sherlock Holmes\".)"
         }
       ]
     },
@@ -2480,6 +2480,12 @@ const GOC = {
           "type": "line",
           "speaker": "player",
           "text": "(Ngăn dưới cùng không kéo ra được. Khóa.)"
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Khóa đấy. Để anh."
         },
         {
           "type": "line",
