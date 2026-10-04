@@ -49,7 +49,7 @@
 - **ha-vy** (thinking): Anh ấy tới để xem mình làm, chứ không phải để giúp đâu.
 
 ## n3-bd-phong-may.1
-- **narrator**: Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ ở bàn trực sảnh tòa B.
+- **narrator**: Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ với bác trực sảnh tòa B.
 - **tung** (thinking): Tối Chủ nhật vẫn mở. Thư kia in tối nào nhỉ?
 - **ha-vy** (neutral): Chưa rõ. Nhớ kỹ: vào phải ký sổ.
 

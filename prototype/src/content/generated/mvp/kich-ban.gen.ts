@@ -700,6 +700,11 @@ const GOC = {
       "anhNen": null
     },
     {
+      "id": "thu-vien-dem",
+      "ten": "Thư viện trường",
+      "anhNen": null
+    },
+    {
       "id": "tra-da",
       "ten": "Quán trà đá cổng trường",
       "anhNen": null
@@ -927,14 +932,13 @@ const GOC = {
           "text": "Chủ nhật, 08/09/2024 · Xe buýt lên Hà Nội"
         },
         {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Chuyến xe buýt đường dài chạy chậm dọc con đường vào thành phố, nắng đầu chiều rọi vàng lên thân xe."
+          "type": "note",
+          "text": "Ảnh bg-mvp-xe-buyt đã vẽ người chơi tựa cửa sổ, vali xanh dưới chân, khách trong xe, xe máy ngoài đường: lời dẫn không tả lại."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Bên khung cửa sổ kéo hé, một cậu trai chống khuỷu tay lên thành xe, tựa cằm vào bàn tay, mắt nhìn theo hàng cây đang lùi dần. Chiếc vali xanh dựng sát bên chân. Mấy hàng ghế sau, có người ngủ gật, có người lướt điện thoại."
+          "text": "Xe vào nội thành lúc đầu giờ chiều. Tiếng còi xe máy dồn lên mỗi lúc một dày."
         },
         {
           "type": "line",
@@ -943,28 +947,13 @@ const GOC = {
         },
         {
           "type": "line",
-          "speaker": "player",
-          "text": "(Sáng nay mẹ còn nhét thêm hộp ruốc vào vali, dặn đi dặn lại: ăn đúng bữa, đừng thức khuya, có chuyện gì thì gọi về ngay.)"
-        },
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Đỗ Đại học Chấn Hưng. Đọc giấy báo trúng tuyển đến lần thứ ba mình mới dám tin.)"
-        },
-        {
-          "type": "line",
           "speaker": "narrator",
-          "text": "Ngoài kia, xe máy nối đuôi nhau chạy sát thân xe, hàng quán hai bên dày dần, nhà cao tầng mọc lên sau rặng cây."
-        },
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Xe chậm dần. Giọng phụ xe vọng ra qua cửa sổ: \"Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!\""
+          "text": "Xe chậm dần. Giọng phụ xe vọng xuống: \"Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!\""
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Tới rồi. Phòng 408… Đi thôi.)"
+          "text": "(Tới rồi. Phòng 408, đi thôi.)"
         },
         {
           "type": "goto",
@@ -995,27 +984,17 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Xe buýt vừa chạy khỏi trạm; người chơi đứng trên vỉa hè cạnh vali. Nền: cổng hai trụ, thanh chắn, tòa mái ngói đỏ bên trái, tòa kính bên phải."
+          "text": "Nền bg-mvp-cong-truong: cổng hai trụ, thanh chắn hạ, chốt bảo vệ, mái chờ xe buýt và quán nước bên trái; trên ảnh KHÔNG có người, KHÔNG có vali (người chơi là góc nhìn). Lời không nhắc vali, không nhắc người khác ở cổng."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Xe buýt dừng trước cổng trường. Cửa vừa mở, hơi nóng đầu giờ chiều hắt thẳng vào mặt."
+          "text": "Xe buýt chạy đi. Chốt bảo vệ đóng cửa kính, chưa thấy ai ra."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Phòng 408. Ký túc xá nằm đâu thì thông báo không ghi…)"
-        },
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Vài chiếc vali lăn qua thanh chắn, theo con đường rợp bóng cây đi vào trong."
-        },
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Chắc họ cũng về ký túc xá. Cứ bám theo đã.)"
+          "text": "(Phòng 408. Ký túc xá ở đâu thì thông báo không ghi… Cứ đi theo đường chính vào trong xem đã.)"
         },
         {
           "type": "goto",
@@ -1025,19 +1004,18 @@ const GOC = {
     },
     {
       "id": "md-00-cong-ktx",
-      "title": "Kéo vali qua sân trường tới cổng ký túc xá",
+      "title": "Đi qua sân trường tới cổng ký túc xá",
       "canh": "cong-ktx",
       "mocSomNhat": 0,
       "nodes": [
         {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Qua dãy giảng đường sơn vàng và nhà để xe, cuối đường là một cổng sắt xanh kéo ngang."
+          "type": "note",
+          "text": "Nền bg-mvp-cong-ktx: cổng sắt xanh mở, dây cờ đuôi nheo, nhà xe bên trái, phòng trực bên phải; không có người, không có vali."
         },
         {
           "type": "line",
-          "speaker": "narrator",
-          "text": "Bánh vali kẹt vào ray cổng. Phải nhấc bổng cả cái vali lên mới qua được."
+          "speaker": "player",
+          "text": "(Dây cờ giăng tận cổng thế kia, chắc ký túc xá đây rồi.)"
         },
         {
           "type": "line",
@@ -1430,7 +1408,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hai đứa khiêng cái vali lên thang bộ, mỗi đứa một quai."
+          "text": "Thang bộ hẹp, mỗi tầng hai đợt dốc."
         },
         {
           "type": "line",
@@ -1636,7 +1614,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Tuần này tớ ngồi bàn đầu, chép đủ từng chữ. Tớ cá luôn."
+          "text": "Tuần này tớ ngồi hàng ghế đầu, chép đủ từng chữ. Tớ cá luôn."
         },
         {
           "type": "image",
@@ -1645,7 +1623,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Thứ Tư. Bàn cuối. Tùng ngủ gục trên cuốn sổ mới chép được đúng dòng tiêu đề, bút vẫn kẹp trong tay."
+          "text": "Thứ Tư. Hàng ghế cuối. Tùng ngủ gục, cuốn sổ trên đùi mới chép được đúng dòng tiêu đề, bút vẫn kẹp trong tay."
         },
         {
           "type": "line",
@@ -2242,7 +2220,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "worried",
-          "text": "Ơ, đĩa bánh ban nãy chị nhớ có năm cái cơ mà? Thiếu mất một cái rồi này."
+          "text": "Ơ, đĩa bánh ban nãy chị nhớ có bốn cái cơ mà? Thiếu mất một cái rồi này."
         },
         {
           "type": "line",
@@ -2949,7 +2927,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Đĩa trên bàn gấp lót năm tờ giấy, nhưng chỉ còn bốn chiếc bánh. Một tờ giấy vừa bị kéo lệch.)"
+          "text": "(Đĩa trên bàn gấp chỉ còn ba chiếc bánh. Chỗ trống trên đĩa còn dính vụn.)"
         }
       ]
     },
@@ -3706,7 +3684,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Giữa buổi sáng, căng tin mới có lác đác vài bàn."
+          "text": "Giữa buổi sáng, căng tin còn vắng tanh."
         },
         {
           "type": "line",
@@ -4420,7 +4398,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ ở bàn trực sảnh tòa B."
+          "text": "Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ với bác trực sảnh tòa B."
         },
         {
           "type": "line",
@@ -5225,7 +5203,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đang ngồi ở bàn trực."
+          "text": "Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đang ngồi ở ghế đá cạnh cửa."
         },
         {
           "type": "line",
@@ -5487,11 +5465,6 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Sáng sớm ở cổng ký túc xá. Chú Cường vừa đi một vòng kiểm tra về, đèn pin còn cầm trên tay."
-        },
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Dãy vòi nước nóng tầng một đã có một hàng xô nhựa xếp giữ chỗ từ năm rưỡi. Xô nào cũng viết số phòng bằng bút xóa."
         },
         {
           "type": "line",
@@ -6526,6 +6499,10 @@ const GOC = {
       "mocSomNhat": 1000,
       "nodes": [
         {
+          "type": "image",
+          "imageId": "obj-hop-banh-quy"
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
@@ -7210,7 +7187,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Cạnh cửa xưởng có tấm bảng đăng ký dùng xưởng, kín chữ viết tay. Góc bảng ghi \"bản sao từ lịch đặt xưởng trên máy\"."
+          "text": "Cạnh cửa xưởng dán tờ bảng đăng ký dùng xưởng, ô nào cũng chi chít chữ viết tay. Góc tờ ghi \"bản sao từ lịch đặt xưởng trên máy\"."
         },
         {
           "type": "line",
@@ -7734,13 +7711,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Căng tin giờ tan học. Bàn nào cũng có người cúi vào điện thoại."
+          "text": "Căng tin giờ tan học. Điện thoại Tùng rung liền mấy tiếng."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Kia, lại có người vừa bấm chuyển tiếp cái tin ấy."
+          "text": "Nhóm lớp tớ cũng vừa có đứa chuyển tiếp cái tin ấy."
         },
         {
           "type": "line",
@@ -8559,7 +8536,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Thư viện trường nằm trên tầng ba giảng đường B. Bác Thịnh ngồi ở bàn trực dưới chân cầu thang."
+          "text": "Thư viện trường nằm trên tầng ba giảng đường B. Bác Thịnh ngồi ở ghế đá cạnh cửa sảnh."
         },
         {
           "type": "line",
@@ -9419,11 +9396,6 @@ const GOC = {
         },
         {
           "type": "line",
-          "speaker": "narrator",
-          "text": "Bàn nào trống cũng có một chai nước hoặc một cuốn vở nằm giữ chỗ. Chủ của chúng thì không thấy đâu."
-        },
-        {
-          "type": "line",
           "speaker": "ha-vy",
           "expression": "smile",
           "text": "Tối thứ Hai nào tớ cũng ngồi bàn cạnh cửa sổ kia."
@@ -9672,7 +9644,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Bàn trong góc, mấy bạn năm nhất chụm đầu chép bài tập Triết của nhau. Chuông báo tiết reo, cả căng tin đứng dậy cùng một lúc."
+          "text": "Chuông báo tiết reo. Tùng vơ vội cốc chè, đứng dậy."
         }
       ]
     },
@@ -13560,6 +13532,10 @@ const GOC = {
       "mocSomNhat": 1000,
       "nodes": [
         {
+          "type": "image",
+          "imageId": "obj-hop-banh-quy"
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
@@ -14042,7 +14018,7 @@ const GOC = {
     {
       "id": "p-lac-mo",
       "title": "Thư viện tối thứ Sáu: Tùng không học nổi",
-      "canh": "thu-vien",
+      "canh": "thu-vien-dem",
       "mocSomNhat": 1000,
       "nodes": [
         {
@@ -14076,7 +14052,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Tớ nói bừa về bạn ấy một lần rồi. Lần này tớ muốn xin lỗi cho tử tế. Mà xin lỗi thì phải biết mình sai cái gì đã chứ."
+          "text": "Tớ nói bừa về bạn ấy một lần rồi. Giờ muốn xin lỗi thì ít ra phải biết mình sai chỗ nào đã."
         },
         {
           "type": "line",
@@ -14118,7 +14094,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hai đứa lao xuống cầu thang. Sảnh tầng một đã tắt đèn, chỉ còn ánh sáng hắt vào từ sân."
+          "text": "Hai đứa lao xuống cầu thang. Sảnh tầng một vắng tanh, chỉ còn đèn hành lang."
         },
         {
           "type": "line",
@@ -14157,7 +14133,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Một vệt đèn pin quét ngang sảnh, dừng lại đúng chỗ Tùng đang nhảy hai bậc một."
+          "text": "Đèn sảnh vụt tắt. Một vệt đèn pin quét ngang, dừng lại đúng chỗ Tùng đang nhảy hai bậc một."
         },
         {
           "type": "line",
@@ -14499,7 +14475,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Tớ là cộng tác viên mượn áo, có ai tập huấn cho đâu. Tám lượt kia tớ dẫn đúng, nên tớ cứ nghĩ mình không bao giờ sai."
+          "text": "Tớ là cộng tác viên mượn áo, có ai tập huấn cho đâu. Tám lượt kia dẫn đúng nên tớ cứ yên trí."
         },
         {
           "type": "question",
@@ -15062,35 +15038,38 @@ const GOC = {
       "mocSomNhat": 1000,
       "nodes": [
         {
+          "type": "image",
+          "imageId": "cg-hoc-tro-cu"
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
           "text": "Chiều thứ Tư, 20/11/2024"
         },
         {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Sảnh tòa B, ba giờ chiều. Hai chiếc bàn ghép lại phủ khăn trắng, một ấm trà, một đĩa bánh quy. Cô Hạnh đứng ở đầu bàn, hai tay đặt hờ lên lưng ghế."
+          "type": "note",
+          "text": "Ảnh cg-hoc-tro-cu đã vẽ bàn ghép phủ khăn trắng, ấm trà, đĩa bánh, cô Hạnh rót trà, học trò cũ quanh bàn, bác Thịnh ngồi ghế đá cạnh cửa: lời dẫn không tả lại."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Người đến đầu tiên là một chú đeo bình giữ nhiệt, bước vào còn đứng ngó quanh như tìm lớp. Rồi một cô mặc áo khoác phi công ôm túi giấy. Hai người nhìn nhau, rồi cùng kêu lên: hai mươi lăm năm không gặp mà vẫn nhận ra nhau."
+          "text": "Ba giờ chiều. Hai người vừa tới nhìn nhau một lúc, rồi cùng kêu lên: hai mươi lăm năm không gặp mà vẫn nhận ra nhau."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Một cậu cao lênh khênh tên Hùng đến sớm, rụt rè chọn ghế cuối bàn. Mười lăm phút sau, một người đàn ông bụng bia, cũng tên Hùng, thở hổn hển vì kẹt xe. Cô Hạnh nhìn hai người, không nói gì, chỉ rót thêm một chén trà."
+          "text": "Ông Hùng cao lênh khênh tới sớm nhất, ngồi tít cuối bàn. Mười lăm phút sau, một ông Hùng khác tới, thở hổn hển vì kẹt xe. Cô Hạnh nhìn hai người, không nói gì, chỉ rót thêm một chén trà."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Cô không phát biểu. Cô nhìn từng người một, rồi chỉ nói: \"Ngồi đi. Cô pha trà.\""
+          "text": "Cô không phát biểu. Cô chỉ nói: \"Ngồi đi. Cô pha trà.\""
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Ở bàn trực cạnh chân cầu thang, bác Thịnh ngồi im, tay đặt trên cuốn sổ trực. Bác nhìn sang phía bàn trà một lúc lâu, rồi cúi xuống, lật sang trang khác."
+          "text": "Bác Thịnh nhìn sang phía bàn trà một lúc lâu, rồi cúi xuống, lật sang trang sổ khác."
         },
         {
           "type": "line",
@@ -15124,7 +15103,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Gần bốn giờ chiều. Bốn người ra khỏi tòa B, đi tắt lối có hàng cây lấy bóng để ra nhà xe. Dưới gốc cây, trên ghế đá, có một chiếc túi vải mở miệng. Đồ bày ra mặt ghế như vừa có người lấy ra tìm gì đó rồi bỏ đấy."
+          "text": "Gần bốn giờ chiều. Bốn người ra khỏi tòa B, đi tắt lối có hàng cây để ra nhà xe."
         },
         {
           "type": "line",
@@ -15205,7 +15184,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Sảnh tòa B giờ tan tiết. Bác Thịnh ngồi sau bàn trực, trước mặt là cuốn sổ bìa cứng, mép bìa kẻ tay hai chữ \"Thất lạc\"."
+          "text": "Sảnh tòa B giờ tan tiết. Bác Thịnh ngồi ở ghế đá cạnh cửa, cuốn sổ bìa cứng để trên đùi, mép bìa kẻ tay hai chữ \"Thất lạc\"."
         },
         {
           "type": "line",
@@ -15222,7 +15201,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Bác mở nắp bút. Mỗi món một dòng: túi vải, giáo trình, hộp bút, vé xe, hóa đơn photo, tờ đơn trong bìa nhựa. Ví và điện thoại bác bỏ riêng vào ngăn kéo, khóa lại."
+          "text": "Bác mở nắp bút. Mỗi món một dòng: túi vải, giáo trình, hộp bút, vé xe, hóa đơn photo, tờ đơn trong bìa nhựa. Ví và điện thoại bác bỏ riêng vào túi áo."
         },
         {
           "type": "line",
@@ -15268,12 +15247,12 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Bảy giờ năm mươi. Nhóm đi ngang hành lang tòa hành chính. Cửa Phòng Công tác sinh viên còn khóa. Một tờ giấy dán ở khung kính: hồ sơ học bổng đợt này khóa lúc 17 giờ ngày 30 tháng 10."
+          "text": "Bảy giờ năm mươi. Phòng Công tác sinh viên vừa mở cửa. Trên quầy dựng tờ giấy: hồ sơ học bổng đợt này khóa lúc 17 giờ ngày 30 tháng 10."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Trước cửa có một người đứng. Hiếu, lớp BC24A. Chiếc túi vải đeo bên vai. Trong tay cậu ấy là tờ đơn trong bìa nhựa, dấu đỏ ở góc."
+          "text": "Trước quầy có một người đứng. Hiếu, lớp BC24A. Chiếc túi vải đeo bên vai. Trong tay cậu ấy là tờ đơn trong bìa nhựa, dấu đỏ ở góc."
         },
         {
           "type": "line",
@@ -15290,7 +15269,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Cô Lan từ cầu thang đi lên, tay lục chùm chìa khóa. Cô đọc tờ giấy dán, rồi nhìn tờ đơn trong tay Hiếu."
+          "text": "Cô Lan từ phòng trong đi ra. Cô liếc tờ giấy trên quầy, rồi nhìn tờ đơn trong tay Hiếu."
         },
         {
           "type": "line",
@@ -15325,7 +15304,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hiếu gật đầu với cả nhóm rồi đi theo cô Lan vào phòng. Chiếc túi vải lắc nhẹ trên vai cậu ấy."
+          "text": "Cô Lan nhận tờ đơn, cất vào ngăn kéo. Hiếu gật đầu với cả nhóm rồi đi ra. Chiếc túi vải lắc nhẹ trên vai cậu ấy."
         },
         {
           "type": "end"
@@ -15359,7 +15338,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Bốn người cúi xuống mặt ghế. Nắng chiều lọt qua tán cây, in những đốm sáng lên giáo trình, lên tờ hóa đơn, lên cái bìa nhựa."
+          "text": "Bốn người cúi xuống mặt ghế."
         },
         {
           "type": "task",
@@ -15924,7 +15903,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Sảnh tòa B, tan tiết cuối. Trước bàn trực của bác Thịnh có một sinh viên đứng thẳng, hai tay vịn mép bàn. Hiếu."
+          "text": "Sảnh tòa B, tan tiết cuối. Trước ghế đá chỗ bác Thịnh ngồi có một sinh viên đứng thở dốc, hai tay trống trơn. Hiếu."
         },
         {
           "type": "line",
@@ -19906,7 +19885,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:200 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mvp/kich-ban/00-mo-dau.md:195 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A';",

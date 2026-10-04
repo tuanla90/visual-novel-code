@@ -48,7 +48,7 @@
 > NHẮC VIỆC ha-vy (thinking): Thư in từ tài khoản CLB Robotics. Người nộp là Hoài. Hai việc, có khi là hai người.
 
 ## n4-sanh-toa-b.1
-- **narrator**: Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đang ngồi ở bàn trực.
+- **narrator**: Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đang ngồi ở ghế đá cạnh cửa.
 - **tung** (chi-tay): Bác ơi, cho bọn cháu xem sổ ký vào phòng máy tối Chủ nhật được không ạ?
 - **bac-tu** (neutral): Sổ ghi tên người. Không có chữ ký người có thẩm quyền thì bác không mở.
 - **ha-vy** (neutral): Vâng ạ. Bọn cháu chỉ ghi lại nhật ký in trước.

@@ -92,7 +92,7 @@
 - **tung** (gai-dau): …Ừ thì chưa có tên.
 
 ## tin-tuyen-xuong.1
-- **narrator**: Cạnh cửa xưởng có tấm bảng đăng ký dùng xưởng, kín chữ viết tay. Góc bảng ghi "bản sao từ lịch đặt xưởng trên máy".
+- **narrator**: Cạnh cửa xưởng dán tờ bảng đăng ký dùng xưởng, ô nào cũng chi chít chữ viết tay. Góc tờ ghi "bản sao từ lịch đặt xưởng trên máy".
 - **duy** (neutral): Khoan, góc bảng ghi "bản sao từ lịch đặt xưởng trên máy". Cổng tra cứu lịch của nhà văn hóa mở cho sinh viên, để anh tải bản gốc về laptop tra cho chắc. Chữ tay dễ chép nhầm.
 > NHIỆM VỤ: Tối 07/10, xưởng được đăng ký từ mấy giờ tới mấy giờ, cho hoạt động nào?
 > NHẮC VIỆC ha-vy (thinking): Ngày là mùng 7. Lịch đặt xưởng ghi theo ngày.
@@ -155,8 +155,8 @@
 - **minh-anh** (serious): Mình bị đồn là soi dữ liệu. Vậy càng phải tra đúng thứ mình được phép tra.
 
 ## tin-bd-cang-tin.1
-- **narrator**: Căng tin giờ tan học. Bàn nào cũng có người cúi vào điện thoại.
-- **tung** (worried): Kia, lại có người vừa bấm chuyển tiếp cái tin ấy.
+- **narrator**: Căng tin giờ tan học. Điện thoại Tùng rung liền mấy tiếng.
+- **tung** (worried): Nhóm lớp tớ cũng vừa có đứa chuyển tiếp cái tin ấy.
 - **ha-vy** (neutral): Chuyển tiếp thì dễ. Mình đi tìm người gửi đầu tiên.
 
 ## tin-soi-hop.1

@@ -53,5 +53,6 @@
 
 ### p-hoc-chieu — Chiều 20/11: bàn trà nhỏ ở sảnh tòa B {cảnh: sanh-toa-b}
 
+- [ẢNH cg-hoc-tro-cu]
 - [LỜI p-hoc-chieu.1]
 - [KẾT THÚC]

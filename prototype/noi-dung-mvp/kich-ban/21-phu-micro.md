@@ -6,6 +6,7 @@
 
 ### p-mic-mo — Duy kiểm kê thiết bị, thiếu chiếc micro không dây {cảnh: phong-clb}
 
+- [ẢNH obj-hop-banh-quy]
 - [LỜI p-mic-mo.1]
 - [HIỆN TÀI LIỆU doc-mic-so-tai-san]
 - [HẬU QUẢ] mở manh mối clue-mic-ten, mở manh mối clue-mic-da-nhan

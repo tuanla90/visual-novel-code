@@ -79,7 +79,7 @@
 - **duy** (neutral): Đấy, thế là có một nguồn ngoài kênh. Lên thư viện thôi.
 
 ## v3-len-thu-vien.1
-- **narrator**: Thư viện trường nằm trên tầng ba giảng đường B. {{nv.bac-tu}} ngồi ở bàn trực dưới chân cầu thang.
+- **narrator**: Thư viện trường nằm trên tầng ba giảng đường B. {{nv.bac-tu}} ngồi ở ghế đá cạnh cửa sảnh.
 - **bac-tu** (smile): Lại mấy đứa CLB Thám Tử. Lên thư viện à? Tối thứ Hai trên ấy vắng lắm, chỉ có vài đứa quen mặt. Thư viện có mỗi một cửa, ra vào đều phải quẹt thẻ.
 
 ## v3-thu-vien.1
@@ -194,7 +194,6 @@
 
 ## v3-bd-thu-vien.1
 - **narrator**: Thư viện buổi chiều. Cửa từ kêu tít mỗi lần có người quẹt thẻ đi qua.
-- **narrator**: Bàn nào trống cũng có một chai nước hoặc một cuốn vở nằm giữ chỗ. Chủ của chúng thì không thấy đâu.
 - **ha-vy** (smile): Tối thứ Hai nào tớ cũng ngồi bàn cạnh cửa sổ kia.
 - **tung** (thinking): Vào ra đều phải quẹt thẻ nhỉ. Thế là cái cửa này nhớ giờ của từng người.
 - **narrator**: Ở bàn cạnh cửa sổ, Hoài đang cúi xuống chồng sách, chưa thấy ba đứa.
@@ -223,7 +222,7 @@
 - **ha-vy** (smile): Lãi suất hợp lý đấy.
 
 ## v3-bd-cang-tin.1b
-- **narrator**: Bàn trong góc, mấy bạn năm nhất chụm đầu chép bài tập Triết của nhau. Chuông báo tiết reo, cả căng tin đứng dậy cùng một lúc.
+- **narrator**: Chuông báo tiết reo. Tùng vơ vội cốc chè, đứng dậy.
 
 ## v3-xuong-an.1
 - **narrator**: Bảng trắng kẻ lịch trực kênh của xưởng. Ô nào cũng ghi "Nam", riêng tối thứ Hai để trống.

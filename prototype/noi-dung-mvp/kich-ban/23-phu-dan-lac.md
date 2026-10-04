@@ -4,7 +4,7 @@
 
 <!-- Nhiệm vụ phụ của lich.md (`{nhiệm vụ phụ: dan-lac}`, mở sau Vụ 3 "Tranh cãi trong nhóm"; user chốt 02/10/2026: tuyến Tùng–Hoài, Tùng là bạn cùng phòng nên người chơi có lý do giúp). Ôn LỌC → GOM VÀ ĐẾM → LỌC TIẾP rồi bấm ô mã, trên một bảng mới (luot_don). Có cảnh hành động: thư viện đóng cửa, bác Thịnh soi đèn pin, chạy cho kịp giờ đóng cổng KTX (ảnh cg-chay-dem; rẽ nhánh đường tắt / đường chính chỉ đổi lời ở cổng, không đổi kết). Không hạn, không kết xấu. Hà Vy và Duy không có mặt: kiểm phiếu qua tin nhắn nhóm. Lời ở loi/23-phu-dan-lac.md. -->
 
-### p-lac-mo — Thư viện tối thứ Sáu: Tùng không học nổi {cảnh: thu-vien}
+### p-lac-mo — Thư viện tối thứ Sáu: Tùng không học nổi {cảnh: thu-vien-dem}
 
 - [LỜI p-lac-mo.1]
 - [ĐI TỚI p-lac-sanh]

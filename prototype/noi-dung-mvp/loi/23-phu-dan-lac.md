@@ -8,7 +8,7 @@
 - **narrator**: Tùng ngồi đối diện bạn, giở tập bản đồ trường ra rồi lại gập vào. Trang vở trước mặt cậu ấy vẫn trắng.
 - **player**: Cậu nhìn mỗi trang ấy nửa tiếng rồi đấy.
 - **tung** (gai-dau): Tớ có đọc đâu. Hôm thứ Ba Hoài bảo tuần đầu tớ dẫn bạn ấy lạc sang tận nhà xe. Tớ còn cãi là "chỉ sai tòa". Về nghĩ lại thấy cãi thế kỳ quá.
-- **tung** (worried): Tớ nói bừa về bạn ấy một lần rồi. Lần này tớ muốn xin lỗi cho tử tế. Mà xin lỗi thì phải biết mình sai cái gì đã chứ.
+- **tung** (worried): Tớ nói bừa về bạn ấy một lần rồi. Giờ muốn xin lỗi thì ít ra phải biết mình sai chỗ nào đã.
 - **player**: Cậu không nhớ hôm ấy à?
 - **tung** (thinking): Tuần đầu tớ dẫn bao nhiêu lượt, nhớ sao nổi. Nhưng đội tình nguyện có sổ đón, lượt nào cũng ghi. Bản xuất nằm trong laptop tớ, ở phòng.
 - [DÀN DỰNG] Chuông báo thư viện đóng cửa. Đèn các dãy bàn tắt dần từ cuối phòng lên.
@@ -16,14 +16,14 @@
 > NHIỆM VỤ: Về kịp ký túc xá trước giờ đóng cổng
 
 ## p-lac-sanh.1
-- **narrator**: Hai đứa lao xuống cầu thang. Sảnh tầng một đã tắt đèn, chỉ còn ánh sáng hắt vào từ sân.
+- **narrator**: Hai đứa lao xuống cầu thang. Sảnh tầng một vắng tanh, chỉ còn đèn hành lang.
 - **tung** (surprised): Chết, tập bản đồ! Tớ để trên bàn!
 - **player**: Mai lấy.
 - **tung** (worried): Trong ấy có cả sơ đồ tớ vẽ tay. Mười giây thôi!
 - **narrator**: Tùng quay ngược lên cầu thang. Tiếng chân rầm rập ba tầng lầu, đi lên rồi đi xuống.
 
 ## p-lac-den.1
-- **narrator**: Một vệt đèn pin quét ngang sảnh, dừng lại đúng chỗ Tùng đang nhảy hai bậc một.
+- **narrator**: Đèn sảnh vụt tắt. Một vệt đèn pin quét ngang, dừng lại đúng chỗ Tùng đang nhảy hai bậc một.
 - **bac-tu** (neutral): Ai còn ở trên đấy? Thư viện đóng rồi, bác khóa sảnh bây giờ!
 - **bac-tu** (neutral): Đứng lại bác xem thẻ! Mép bậc thang trơn đấy, đừng có chạy!
 - **tung** (happy): Cháu chào bác ạ! Mai cháu lên trình thẻ!
@@ -80,7 +80,7 @@
 - **tung** (thinking): Mã này tớ thấy ở đâu rồi.
 - **player**: Trên phiếu hai mã hồi tháng Chín. Lê Thu Hoài, lớp BC24A.
 - **tung** (gai-dau): Sáng Chủ nhật… Tớ nhớ rồi. Bạn ấy kéo cái vali to hơn người, hỏi đường nhỏ lắm. Tớ nghe ra "nhà xe", tưởng bạn ấy đi gửi xe, thế là dẫn thẳng ra đó. Tớ không hỏi lại.
-- **tung** (worried): Tớ là cộng tác viên mượn áo, có ai tập huấn cho đâu. Tám lượt kia tớ dẫn đúng, nên tớ cứ nghĩ mình không bao giờ sai.
+- **tung** (worried): Tớ là cộng tác viên mượn áo, có ai tập huấn cho đâu. Tám lượt kia dẫn đúng nên tớ cứ yên trí.
 
 ## p-lac-ket.1
 - **narrator**: Tùng xé một trang vở, kê lên tập bản đồ, vẽ. Cổng chính, hàng cây, ký túc xá, một mũi tên to. Góc dưới ghi: "Lần này không qua nhà xe. Tớ xin lỗi vì hôm ấy không hỏi lại. Tùng, áo xanh."

@@ -6,6 +6,7 @@
 
 ### tin-mo — Tin đồn về CLB; lọc các tin mang câu đó {cảnh: phong-clb}
 
+- [ẢNH obj-hop-banh-quy]
 - [LỜI tin-mo.1]
 - [ẢNH chibi-v2-hieu-cua]
 - [HIỆN TÀI LIỆU doc-tin-don]

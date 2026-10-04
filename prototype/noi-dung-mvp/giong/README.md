@@ -120,3 +120,9 @@ Soát tay, máy không bắt được. Câu thuộc một trong các loại dư�
 - **Cường điệu, gắt quá mức với người lớn hơn**: Tùng nói khóa trên "Nói điêu là lộ ngay", "Giải thích đi!".
 - **Câu cụt kiểu khẩu hiệu** (user 04/10): "Thử thì biết." → "Tớ cũng chưa rõ. Cứ thử đi."; "Đừng cá. Dò." → "Đừng cá nữa. Dò từng dòng đi."; "Ghi là ghi." → "Ghi rồi thì là nợ, cậu cãi cũng không được." Hà Vy vẫn ngắn, nhưng là câu nói thật: có tiểu từ, có chủ ngữ khi cần. Hoặc cắt hẳn. "Đừng cá" vẫn là câu riêng của Vy, chỉ nói thêm cho tròn.
 
+
+## Lời khớp ảnh (user 04/10, cảnh mở đầu)
+
+- Lời chỉ nhắc vật / người **có trên ảnh** của cảnh đó. Cổng trường, cổng KTX vẽ trống: không "vài chiếc vali lăn qua thanh chắn", không "bánh vali kẹt ray cổng". Vali của người chơi chỉ hiện ở xe buýt, sảnh KTX và hai ảnh chibi cầu thang.
+- Ảnh đã vẽ thì lời dẫn không tả lại (người chơi tựa cửa sổ, vali dưới chân). Ghi điều ảnh vẽ vào `[DÀN DỰNG]` để người sửa lời sau đối chiếu.
+- Độc thoại nhớ nhà, tự sự kiểu văn mẫu ("mẹ nhét thêm hộp ruốc", "đọc giấy báo đến lần thứ ba mới dám tin") là vi phạm, cắt.

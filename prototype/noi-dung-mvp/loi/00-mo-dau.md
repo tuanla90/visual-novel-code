@@ -4,14 +4,11 @@
 
 ## md-00-tren-xe.1
 - [THẺ CHỮ] **narrator**: Chủ nhật, 08/09/2024 · Xe buýt lên Hà Nội
-- **narrator**: Chuyến xe buýt đường dài chạy chậm dọc con đường vào thành phố, nắng đầu chiều rọi vàng lên thân xe.
-- **narrator**: Bên khung cửa sổ kéo hé, một cậu trai chống khuỷu tay lên thành xe, tựa cằm vào bàn tay, mắt nhìn theo hàng cây đang lùi dần. Chiếc vali xanh dựng sát bên chân. Mấy hàng ghế sau, có người ngủ gật, có người lướt điện thoại.
+- [DÀN DỰNG] Ảnh bg-mvp-xe-buyt đã vẽ người chơi tựa cửa sổ, vali xanh dưới chân, khách trong xe, xe máy ngoài đường: lời dẫn không tả lại.
+- **narrator**: Xe vào nội thành lúc đầu giờ chiều. Tiếng còi xe máy dồn lên mỗi lúc một dày.
 - **player**: (Vậy là lên Hà Nội thật rồi.)
-- **player**: (Sáng nay mẹ còn nhét thêm hộp ruốc vào vali, dặn đi dặn lại: ăn đúng bữa, đừng thức khuya, có chuyện gì thì gọi về ngay.)
-- **player**: (Đỗ Đại học Chấn Hưng. Đọc giấy báo trúng tuyển đến lần thứ ba mình mới dám tin.)
-- **narrator**: Ngoài kia, xe máy nối đuôi nhau chạy sát thân xe, hàng quán hai bên dày dần, nhà cao tầng mọc lên sau rặng cây.
-- **narrator**: Xe chậm dần. Giọng phụ xe vọng ra qua cửa sổ: "Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!"
-- **player**: (Tới rồi. Phòng 408… Đi thôi.)
+- **narrator**: Xe chậm dần. Giọng phụ xe vọng xuống: "Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!"
+- **player**: (Tới rồi. Phòng 408, đi thôi.)
 
 ## md-00-xe-buyt.1
 > NHIỆM VỤ: Tìm đường vào ký túc xá
@@ -19,15 +16,13 @@
 
 ## md-00-xe-buyt.2
 - [THẺ CHỮ] **narrator**: Đại học Chấn Hưng · Cổng trường
-- [DÀN DỰNG] Xe buýt vừa chạy khỏi trạm; người chơi đứng trên vỉa hè cạnh vali. Nền: cổng hai trụ, thanh chắn, tòa mái ngói đỏ bên trái, tòa kính bên phải.
-- **narrator**: Xe buýt dừng trước cổng trường. Cửa vừa mở, hơi nóng đầu giờ chiều hắt thẳng vào mặt.
-- **player**: (Phòng 408. Ký túc xá nằm đâu thì thông báo không ghi…)
-- **narrator**: Vài chiếc vali lăn qua thanh chắn, theo con đường rợp bóng cây đi vào trong.
-- **player**: (Chắc họ cũng về ký túc xá. Cứ bám theo đã.)
+- [DÀN DỰNG] Nền bg-mvp-cong-truong: cổng hai trụ, thanh chắn hạ, chốt bảo vệ, mái chờ xe buýt và quán nước bên trái; trên ảnh KHÔNG có người, KHÔNG có vali (người chơi là góc nhìn). Lời không nhắc vali, không nhắc người khác ở cổng.
+- **narrator**: Xe buýt chạy đi. Chốt bảo vệ đóng cửa kính, chưa thấy ai ra.
+- **player**: (Phòng 408. Ký túc xá ở đâu thì thông báo không ghi… Cứ đi theo đường chính vào trong xem đã.)
 
 ## md-00-cong-ktx.1
-- **narrator**: Qua dãy giảng đường sơn vàng và nhà để xe, cuối đường là một cổng sắt xanh kéo ngang.
-- **narrator**: Bánh vali kẹt vào ray cổng. Phải nhấc bổng cả cái vali lên mới qua được.
+- [DÀN DỰNG] Nền bg-mvp-cong-ktx: cổng sắt xanh mở, dây cờ đuôi nheo, nhà xe bên trái, phòng trực bên phải; không có người, không có vali.
+- **player**: (Dây cờ giăng tận cổng thế kia, chắc ký túc xá đây rồi.)
 - **player**: (Phòng 408, tầng bốn. Mong là có thang máy.)
 
 ## md-00-sanh-ktx.1
@@ -96,7 +91,7 @@
 
 ## md-01-ktx.2
 - [DÀN DỰNG] Hai người khiêng vali lên tới tầng bốn, cùng thở dốc. {{nv.tung}} đẩy cửa phòng 408.
-- **narrator**: Hai đứa khiêng cái vali lên thang bộ, mỗi đứa một quai.
+- **narrator**: Thang bộ hẹp, mỗi tầng hai đợt dốc.
 - **tung** (ao-xanh-chi-tay): Tớ cá là ba phút là tới tầng bốn. Thua tớ khao trà đá!
 - **narrator**: Bảy phút sau, cả hai mới tới chiếu nghỉ tầng ba, đứng thở.
 - **player**: Ba phút của cậu dài nhỉ.
@@ -132,10 +127,10 @@
 
 ## md-08-tuan-cong-dan.1
 - [THẺ CHỮ] **narrator**: Thứ Hai 09/09 → thứ Sáu 13/09/2024 · Tuần sinh hoạt công dân
-- **tung** (happy): Tuần này tớ ngồi bàn đầu, chép đủ từng chữ. Tớ cá luôn.
+- **tung** (happy): Tuần này tớ ngồi hàng ghế đầu, chép đủ từng chữ. Tớ cá luôn.
 
 ## md-08-tuan-cong-dan.1b
-- **narrator**: Thứ Tư. Bàn cuối. Tùng ngủ gục trên cuốn sổ mới chép được đúng dòng tiêu đề, bút vẫn kẹp trong tay.
+- **narrator**: Thứ Tư. Hàng ghế cuối. Tùng ngủ gục, cuốn sổ trên đùi mới chép được đúng dòng tiêu đề, bút vẫn kẹp trong tay.
 - **narrator**: Thứ Sáu, cả hội trường xếp hàng chụp ảnh thẻ. Ai cũng bảo ảnh mình xấu, rồi lén xem ảnh người đứng sau.
 - **narrator**: Cả tuần ngồi hội trường nghe nội quy. Buổi cuối, mỗi người được phát một tấm thẻ lịch in theo khoa, dưới cùng có dòng "Họ tên / Lớp" để tự viết.
 - **player**: (Viết tên vào luôn, kẻo lẫn với thẻ của ai.)
@@ -233,7 +228,7 @@
 ## md-10-mat-banh.1
 > NHIỆM VỤ: Tìm chiếc bánh nướng của CLB
 > NHẮC VIỆC ha-vy (neutral): Ai cũng nhìn quanh bàn thôi. Thử để ý dưới đất xem.
-- **minh-anh** (worried): Ơ, đĩa bánh ban nãy chị nhớ có năm cái cơ mà? Thiếu mất một cái rồi này.
+- **minh-anh** (worried): Ơ, đĩa bánh ban nãy chị nhớ có bốn cái cơ mà? Thiếu mất một cái rồi này.
 - **tung** (worried): Ơ tớ thề tớ mới rót trà chứ chưa kịp đụng vào bánh đâu nhé!
 - **ha-vy** (neutral): Đừng đoán vội. Cứ tìm xung quanh xem có rơi rớt đâu không.
 
@@ -336,7 +331,7 @@
 - **tung** (happy): Hôm khuân đồ cho tân sinh viên tớ đập mặt vào cổng sắt ký túc. Đội tình nguyện đón tân sinh viên mà!
 
 ## md-10-dia-banh.1
-- **player**: (Đĩa trên bàn gấp lót năm tờ giấy, nhưng chỉ còn bốn chiếc bánh. Một tờ giấy vừa bị kéo lệch.)
+- **player**: (Đĩa trên bàn gấp chỉ còn ba chiếc bánh. Chỗ trống trên đĩa còn dính vụn.)
 
 ## md-10-vun-banh.1
 - **player**: (Vụn bánh rơi thành vệt mảnh từ chân bàn chạy ra chỗ đèn cá chép.)

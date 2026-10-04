@@ -14,7 +14,7 @@
 - [LỜI md-00-xe-buyt.2]
 - [ĐI TỚI md-00-cong-ktx]
 
-### md-00-cong-ktx — Kéo vali qua sân trường tới cổng ký túc xá {cảnh: cong-ktx}
+### md-00-cong-ktx — Đi qua sân trường tới cổng ký túc xá {cảnh: cong-ktx}
 
 - [LỜI md-00-cong-ktx.1]
 - [ĐI TỚI md-00-sanh-ktx]

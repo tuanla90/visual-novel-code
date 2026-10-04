@@ -41,7 +41,7 @@
 - **ha-vy** (thinking): Tức là cả ngày Chủ nhật sảnh này không có ai trông.
 
 ## n2-bd-cang-tin.1
-- **narrator**: Giữa buổi sáng, căng tin mới có lác đác vài bàn.
+- **narrator**: Giữa buổi sáng, căng tin còn vắng tanh.
 - **tung** (happy): Giờ này vắng. Trưa ra đây á, tớ cá là chen bẹp ruột!
 - **tung** (chi-tay): Tối thứ Hai đi đá bóng về tớ toàn thấy cậu ở thư viện tới lúc đóng cửa đấy, Hà Vy.
 - **ha-vy** (neutral): Cậu soi kỹ thật đấy. Ừ, tối thứ Hai tớ rảnh.

@@ -73,10 +73,10 @@
 
 ## p-hoc-chieu.1
 - [THẺ CHỮ] **narrator**: Chiều thứ Tư, 20/11/2024
-- **narrator**: Sảnh tòa B, ba giờ chiều. Hai chiếc bàn ghép lại phủ khăn trắng, một ấm trà, một đĩa bánh quy. Cô Hạnh đứng ở đầu bàn, hai tay đặt hờ lên lưng ghế.
-- **narrator**: Người đến đầu tiên là một chú đeo bình giữ nhiệt, bước vào còn đứng ngó quanh như tìm lớp. Rồi một cô mặc áo khoác phi công ôm túi giấy. Hai người nhìn nhau, rồi cùng kêu lên: hai mươi lăm năm không gặp mà vẫn nhận ra nhau.
-- **narrator**: Một cậu cao lênh khênh tên Hùng đến sớm, rụt rè chọn ghế cuối bàn. Mười lăm phút sau, một người đàn ông bụng bia, cũng tên Hùng, thở hổn hển vì kẹt xe. Cô Hạnh nhìn hai người, không nói gì, chỉ rót thêm một chén trà.
-- **narrator**: Cô không phát biểu. Cô nhìn từng người một, rồi chỉ nói: "Ngồi đi. Cô pha trà."
-- **narrator**: Ở bàn trực cạnh chân cầu thang, bác Thịnh ngồi im, tay đặt trên cuốn sổ trực. Bác nhìn sang phía bàn trà một lúc lâu, rồi cúi xuống, lật sang trang khác.
+- [DÀN DỰNG] Ảnh cg-hoc-tro-cu đã vẽ bàn ghép phủ khăn trắng, ấm trà, đĩa bánh, cô Hạnh rót trà, học trò cũ quanh bàn, bác Thịnh ngồi ghế đá cạnh cửa: lời dẫn không tả lại.
+- **narrator**: Ba giờ chiều. Hai người vừa tới nhìn nhau một lúc, rồi cùng kêu lên: hai mươi lăm năm không gặp mà vẫn nhận ra nhau.
+- **narrator**: Ông Hùng cao lênh khênh tới sớm nhất, ngồi tít cuối bàn. Mười lăm phút sau, một ông Hùng khác tới, thở hổn hển vì kẹt xe. Cô Hạnh nhìn hai người, không nói gì, chỉ rót thêm một chén trà.
+- **narrator**: Cô không phát biểu. Cô chỉ nói: "Ngồi đi. Cô pha trà."
+- **narrator**: Bác Thịnh nhìn sang phía bàn trà một lúc lâu, rồi cúi xuống, lật sang trang sổ khác.
 - **minh-anh** (neutral): Mình về thôi. Để cô ngồi với học trò.
 - [THẺ CHỮ] **narrator**: Danh sách giúp cô nhớ ra ai để mời. Ai tới, tới để làm gì, là chuyện của từng người.

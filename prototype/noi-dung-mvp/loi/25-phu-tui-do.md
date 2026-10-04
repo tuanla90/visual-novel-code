@@ -4,7 +4,7 @@
 
 ## p-tui-mo.1
 - [THẺ CHỮ] **narrator**: Thứ Tư, 30/10/2024 · Việc của Tùng
-- **narrator**: Gần bốn giờ chiều. Bốn người ra khỏi tòa B, đi tắt lối có hàng cây lấy bóng để ra nhà xe. Dưới gốc cây, trên ghế đá, có một chiếc túi vải mở miệng. Đồ bày ra mặt ghế như vừa có người lấy ra tìm gì đó rồi bỏ đấy.
+- **narrator**: Gần bốn giờ chiều. Bốn người ra khỏi tòa B, đi tắt lối có hàng cây để ra nhà xe.
 - **tung** (surprised): Ơ, túi ai bỏ quên đây này?
 - **ha-vy** (thinking): Chai nước chưa ráo hơi nước. Chưa lâu.
 - **minh-anh** (neutral): Không ghi tên. Chị đề nghị mang xuống nộp bác Thịnh. Bác trực sảnh tòa B, có sổ đồ thất lạc. Mất gì ở khu này người ta cũng ra chỗ bác hỏi đầu tiên.
@@ -13,10 +13,10 @@
 - **ha-vy** (neutral): Cách nào túi cũng về tay chủ. Chọn đi.
 
 ## p-tui-nop.1
-- **narrator**: Sảnh tòa B giờ tan tiết. Bác Thịnh ngồi sau bàn trực, trước mặt là cuốn sổ bìa cứng, mép bìa kẻ tay hai chữ "Thất lạc".
+- **narrator**: Sảnh tòa B giờ tan tiết. Bác Thịnh ngồi ở ghế đá cạnh cửa, cuốn sổ bìa cứng để trên đùi, mép bìa kẻ tay hai chữ "Thất lạc".
 - **minh-anh** (neutral): Bác ơi, bọn cháu nhặt được cái túi này ở ghế đá lối ra nhà xe.
 - **bac-tu** (neutral): Để đó.
-- **narrator**: Bác mở nắp bút. Mỗi món một dòng: túi vải, giáo trình, hộp bút, vé xe, hóa đơn photo, tờ đơn trong bìa nhựa. Ví và điện thoại bác bỏ riêng vào ngăn kéo, khóa lại.
+- **narrator**: Bác mở nắp bút. Mỗi món một dòng: túi vải, giáo trình, hộp bút, vé xe, hóa đơn photo, tờ đơn trong bìa nhựa. Ví và điện thoại bác bỏ riêng vào túi áo.
 - **bac-tu** (neutral): Ai hỏi thì bác hỏi lại họ mất những gì. Nói đúng thì bác trả.
 - **narrator**: Cuối dòng, bác ký một chữ: T. Rồi đóng sổ.
 - **tung** (happy): Tớ cá là chủ túi ra nhận ngay tối nay.
@@ -24,23 +24,23 @@
 
 ## p-tui-sang.1
 - [THẺ CHỮ] **narrator**: Sáng thứ Năm, 31/10/2024
-- **narrator**: Bảy giờ năm mươi. Nhóm đi ngang hành lang tòa hành chính. Cửa Phòng Công tác sinh viên còn khóa. Một tờ giấy dán ở khung kính: hồ sơ học bổng đợt này khóa lúc 17 giờ ngày 30 tháng 10.
-- **narrator**: Trước cửa có một người đứng. Hiếu, lớp BC24A. Chiếc túi vải đeo bên vai. Trong tay cậu ấy là tờ đơn trong bìa nhựa, dấu đỏ ở góc.
+- **narrator**: Bảy giờ năm mươi. Phòng Công tác sinh viên vừa mở cửa. Trên quầy dựng tờ giấy: hồ sơ học bổng đợt này khóa lúc 17 giờ ngày 30 tháng 10.
+- **narrator**: Trước quầy có một người đứng. Hiếu, lớp BC24A. Chiếc túi vải đeo bên vai. Trong tay cậu ấy là tờ đơn trong bìa nhựa, dấu đỏ ở góc.
 - **tung** (surprised): Cái bìa nhựa ấy. Đúng cái hôm qua trên ghế đá.
 - **hieu** (neutral): Hôm qua tớ bỏ quên túi ở ghế đá. Quay lại thì mất. Tớ tìm quanh nhà xe tới tối. Sáng nay bác bảo vệ gặp tớ ở cổng, hỏi tớ mất gì. Tớ kể đúng, bác trả.
-- **narrator**: Cô Lan từ cầu thang đi lên, tay lục chùm chìa khóa. Cô đọc tờ giấy dán, rồi nhìn tờ đơn trong tay Hiếu.
+- **narrator**: Cô Lan từ phòng trong đi ra. Cô liếc tờ giấy trên quầy, rồi nhìn tờ đơn trong tay Hiếu.
 - **co-lan** (neutral): Đợt này khóa từ năm giờ chiều qua rồi em. Cô không mở lại được.
 - **hieu** (neutral): Dạ, em biết. Em muốn nộp vào đợt sau cho đỡ phải viết lại.
 - **co-lan** (smile): Thế thì cô nhận để đó. Đợt sau cô báo.
 - **minh-anh** (neutral): Bọn chị nộp túi cho bác từ chiều qua.
 - **hieu** (neutral): Nộp bác là đúng cách rồi chị. Em mới là người để quên.
-- **narrator**: Hiếu gật đầu với cả nhóm rồi đi theo cô Lan vào phòng. Chiếc túi vải lắc nhẹ trên vai cậu ấy.
+- **narrator**: Cô Lan nhận tờ đơn, cất vào ngăn kéo. Hiếu gật đầu với cả nhóm rồi đi ra. Chiếc túi vải lắc nhẹ trên vai cậu ấy.
 
 ## p-tui-nhin.1
 - **tung** (happy): Đấy! Tìm ra chủ túi trước, rồi mới tính!
 - **minh-anh** (neutral): Được. Nhưng đồng hồ vẫn chạy. Hơn hai mươi phút chưa ra thì chị mang túi xuống bác Thịnh.
 - **ha-vy** (thinking): Chỉ nhìn đồ đang để ngoài thôi. Ví với điện thoại thì đừng động vào.
-- **narrator**: Bốn người cúi xuống mặt ghế. Nắng chiều lọt qua tán cây, in những đốm sáng lên giáo trình, lên tờ hóa đơn, lên cái bìa nhựa.
+- **narrator**: Bốn người cúi xuống mặt ghế.
 > NHIỆM VỤ: Xem kỹ những món đang để ngoài trên ghế đá
 
 ## p-tui-nhin.2
@@ -121,7 +121,7 @@
 - **minh-anh** (neutral): Cầm túi theo nhé. Còn có bốn mươi phút thôi.
 
 ## p-tui-gap.1
-- **narrator**: Sảnh tòa B, tan tiết cuối. Trước bàn trực của bác Thịnh có một sinh viên đứng thẳng, hai tay vịn mép bàn. Hiếu.
+- **narrator**: Sảnh tòa B, tan tiết cuối. Trước ghế đá chỗ bác Thịnh ngồi có một sinh viên đứng thở dốc, hai tay trống trơn. Hiếu.
 - **hieu** (annoyed): Bác ơi, có ai nộp một cái túi vải không ạ? Có giáo trình Kinh tế vi mô với tờ đơn học bổng. Hạn nộp mười bảy giờ.
 - **bac-tu** (neutral): Hôm nay chưa ai nộp túi nào.
 - **tung** (happy): Có rồi đây!
