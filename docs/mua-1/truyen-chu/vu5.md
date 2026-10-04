@@ -60,7 +60,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - **Hà Vy**: Để rồi thầy hỏi: "Căn cứ vào đâu các em nghĩ thầy cần sổ?" à.
 - **Duy**: Cứ hoa tươi là trang trọng nhất. Để em đặt cúc họa mi đầu mùa nhé.
 - **Minh Anh**: Nhớ cả phần cô Hạnh nữa. Năm nay là năm cuối cô còn đi làm trước khi nghỉ hưu.
-- *Suy nghĩ của bạn:* *((Quà tính sau. Trước 20/11 còn một việc đang chờ ở xưởng.))*
+- *Suy nghĩ của bạn:* *(Quà tính sau. Trước 20/11 còn một việc đang chờ ở xưởng.)*
 
 ⚠ (bản cũ: tự chuyển nơi)
 

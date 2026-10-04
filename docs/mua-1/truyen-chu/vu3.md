@@ -60,7 +60,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - **Tùng** (suy nghĩ): Biết… bạn ấy nói bé lắm. Hôm họp ngồi chờ ngoài cửa mà tay vẫn ghi ghi chép chép gì đấy.
 - **Duy** (nghiêm túc): Chết thật, 20/10 rồi á? Còn chưa kịp đặt hoa gửi về cho mẹ.
 - **Minh Anh**: Ra cổng mua gửi luôn đi em. Chiều là ngoài sạp người ta tranh nhau sạch đấy.
-- *Suy nghĩ của bạn:* *((Tùng nhờ chọn quà. Hoài là người thế nào nhỉ?))*
+- *Suy nghĩ của bạn:* *(Tùng nhờ chọn quà. Hoài là người thế nào nhỉ?)*
 > [CHIBI chibi-khao-tra-da (sticker)] (chưa có mô tả)
 🔀 **Lựa chọn của bạn** (Tùng: "Tớ nên tặng gì đây?"):
 
@@ -349,7 +349,7 @@ SELECT thiet_bi, COUNT(*) AS so_dong FROM @ev-bai-dang GROUP BY thiet_bi;
 📍 **Quán trà đá cổng trường** — *Chi tiết ẩn: Chiếc xe đạp cũ*
 
 - *Giỏ xe đạp hôm nay có thêm túi đá viên, bà vừa đạp đi mua về, đá còn bốc hơi lạnh.*
-- *Suy nghĩ của bạn:* *((Quán trà đá mà đá phải đạp xe đi mua. Thảo nào bà dậy sớm thế.))*
+- *Suy nghĩ của bạn:* *(Quán trà đá mà đá phải đạp xe đi mua. Thảo nào bà dậy sớm thế.)*
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Quán trà đá cổng trường](#doan-8)
@@ -381,7 +381,7 @@ SELECT thiet_bi, COUNT(*) AS so_dong FROM @ev-bai-dang GROUP BY thiet_bi;
 📍 **Căng tin** — *Chi tiết ẩn: Tấm bảng đen trên quầy*
 
 - *Dòng phấn ghi nợ trên bảng đen giờ chỉ còn một tên, gạch hẳn, bên cạnh ghi: "đã trả".*
-- *Suy nghĩ của bạn:* *((Có người trả nợ rồi. Chắc chắn không phải Tùng.))*
+- *Suy nghĩ của bạn:* *(Có người trả nợ rồi. Chắc chắn không phải Tùng.)*
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Căng tin](#doan-9)

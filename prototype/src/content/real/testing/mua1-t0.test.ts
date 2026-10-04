@@ -810,3 +810,30 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hùng' OR ma_lop = 'A1';
 });
 
 
+
+describe('Gói T0 Mùa 1: R3 và R5', () => {
+  it('Ngoặc kép đôi ở lời nghĩ (R3)', async () => {
+    const { BoXuatTruyenChu } = await import('../../../../tools/truyen-chu.ts');
+    const b = new BoXuatTruyenChu({} as unknown as ConstructorParameters<typeof BoXuatTruyenChu>[0], new Map());
+    const result1 = (b as unknown as { dinhDangLoi: (l: { speaker: string; text: string }) => string }).dinhDangLoi({ speaker: 'player', text: '((Vậy là lên Hà Nội thật rồi.))' });
+    expect(result1).toBe('*Suy nghĩ của bạn:* *(Vậy là lên Hà Nội thật rồi.)*');
+    
+    const result2 = (b as unknown as { dinhDangLoi: (l: { speaker: string; text: string }) => string }).dinhDangLoi({ speaker: 'player', text: '(Vậy là lên Hà Nội thật rồi.)' });
+    expect(result2).toBe('*Suy nghĩ của bạn:* *(Vậy là lên Hà Nội thật rồi.)*');
+
+    const result3 = (b as unknown as { dinhDangLoi: (l: { speaker: string; text: string }) => string }).dinhDangLoi({ speaker: 'player', text: 'Vậy là lên Hà Nội thật rồi.' });
+    expect(result3).toBe('*Suy nghĩ của bạn:* *(Vậy là lên Hà Nội thật rồi.)*');
+  });
+
+  it('Mục lục: nói rõ đây là 5 vụ cũ, chưa phải 10 vụ (R5)', async () => {
+    const { BoXuatTruyenChu } = await import('../../../../tools/truyen-chu.ts');
+    const b = new BoXuatTruyenChu({ lich: { vu: { ten: 'Vụ 1 — Mất tích' } } } as unknown as ConstructorParameters<typeof BoXuatTruyenChu>[0], new Map());
+    const dsTep = [
+      { ma: 'vu1', tenTep: 'vu1.md', tieuDe: 'Vụ 1 — Mất tích', laPhu: false, soVu: 1, soChuoi: 5, soManTra: 2 },
+    ];
+    const md = b.xuatMucLucMua(dsTep);
+    expect(md).toContain('> **Đây là bản chép 5 vụ cũ của MVP, chưa sửa.**');
+    expect(md).toContain('| Vụ | Mã | Tên vụ án | Số chuỗi | Số màn tra | Tệp truyện chữ |');
+    expect(md).toContain('| 1 | `vu1` | **Vụ 1 — Mất tích** | 5 | 2 | [Đọc truyện](vu1.md) |');
+  });
+});

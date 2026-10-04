@@ -216,7 +216,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 
 📍 **Ghế đá cạnh lối đi** — *Điện thoại úp mặt*
 
-- *Suy nghĩ của bạn:* *((Ngón tay bạn đã chạm vào mép chiếc điện thoại úp mặt. Bạn rút tay lại.))*
+- *Suy nghĩ của bạn:* *(Ngón tay bạn đã chạm vào mép chiếc điện thoại úp mặt. Bạn rút tay lại.)*
 - **Minh Anh**: Màn hình khóa cũng là chuyện riêng của người ta.
 
 **Lựa chọn tiếp theo:**

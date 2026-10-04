@@ -186,6 +186,7 @@ export class BoXuatTruyenChu {
   private rawCanh: Map<string, { ten: string; moTa?: string | null }>;
   private db: Awaited<ReturnType<typeof moCsdlMvp>> | null = null;
   private theDaCo: Set<string> = new Set();
+  public thongKeCuoi = { soChuoi: 0, soManTra: 0 };
 
   constructor(duLieu: DuLieuMvp, rawCanh: Map<string, { ten: string; moTa?: string | null }>) {
     this.rawCanh = rawCanh;
@@ -303,7 +304,11 @@ export class BoXuatTruyenChu {
   private dinhDangLoi(l: LoiMvp): string {
     const text = this.dienTen(l.text);
     if (l.speaker === 'player' || l.speaker === 'nguoi-choi') {
-      return `*Suy nghĩ của bạn:* *(${text})*`;
+      let cleanText = text.trim();
+      while (cleanText.startsWith('(') && cleanText.endsWith(')')) {
+        cleanText = cleanText.slice(1, -1).trim();
+      }
+      return `*Suy nghĩ của bạn:* *(${cleanText})*`;
     }
     if (l.speaker === 'narrator') {
       return `*${text}*`;
@@ -1081,24 +1086,27 @@ export class BoXuatTruyenChu {
       ketQua.push('');
     }
 
+    this.thongKeCuoi = { soChuoi: dsChuoiKhamPha.length, soManTra: demManTra };
     return ketQua.join('\n');
   }
 
-  xuatMucLucMua(dsTep: { ma: string; tenTep: string; tieuDe: string; laPhu: boolean }[]): string {
+  xuatMucLucMua(dsTep: { ma: string; tenTep: string; tieuDe: string; laPhu: boolean; soChuoi: number; soManTra: number; soVu?: number }[]): string {
     const lich = this.duLieu.lich;
     const dong: string[] = [];
     dong.push('# CLB Thám Tử Dữ Liệu — Mùa 1: Mục lục truyện chữ');
+    dong.push('');
+    dong.push('> **Đây là bản chép 5 vụ cũ của MVP, chưa sửa.** Mùa 1 theo kế hoạch có 10 vụ (`docs/mua-1/ke-hoach-10-vu.md`). Các gói B4 → B10 sẽ sắp lại 5 vụ này thành Vụ 1, 2, 4, 6, 8 và viết thêm Vụ 3, 5, 7, 9, 10. Mục lục này tự cập nhật theo nội dung.');
     dong.push('');
     dong.push('Bản chuyển đổi toàn bộ các vụ án và nhiệm vụ phụ sang định dạng truyện chữ tương tác (Gamebook / CYOA).');
     dong.push('Người chơi có thể đọc, đưa ra lựa chọn và xem kết quả SQL chạy thật trực tiếp trên tài liệu Markdown.');
     dong.push('');
     dong.push('## 📚 Danh sách các Vụ án chính');
     dong.push('');
-    dong.push('| Vụ | Mã | Tên vụ án | Tệp truyện chữ |');
-    dong.push('|---|---|---|---|');
+    dong.push('| Vụ | Mã | Tên vụ án | Số chuỗi | Số màn tra | Tệp truyện chữ |');
+    dong.push('|---|---|---|---|---|---|');
 
     for (const t of dsTep.filter((x) => !x.laPhu)) {
-      dong.push(`| ${t.ma} | \`${t.ma}\` | **${t.tieuDe}** | [Đọc truyện](${t.tenTep}) |`);
+      dong.push(`| ${t.soVu || ''} | \`${t.ma}\` | **${t.tieuDe}** | ${t.soChuoi} | ${t.soManTra} | [Đọc truyện](${t.tenTep}) |`);
     }
 
     dong.push('');
@@ -1199,7 +1207,7 @@ export async function chayXuatTruyen(
   // Đọc danh sách vụ án chính từ lich (S2)
   const tenVu1 = kb.lich.vu.ten.replace(/^Vụ \d+\s*[—–-]\s*/, '');
   const dsVuChinh = [
-    { ma: 'vu1', tenTep: 'vu1.md', tieuDe: `Vụ 1 — ${tenVu1}`, laPhu: false },
+    { ma: 'vu1', tenTep: 'vu1.md', tieuDe: `Vụ 1 — ${tenVu1}`, laPhu: false, soVu: 1, soChuoi: 0, soManTra: 0 },
     ...(kb.lich.vuSau ?? []).map((v) => {
       const soVu = boXuat.laySoVu(v.id);
       const ten = v.ten.replace(/^Vụ \d+\s*[—–-]\s*/, '');
@@ -1208,6 +1216,9 @@ export async function chayXuatTruyen(
         tenTep: `${v.id}.md`,
         tieuDe: `Vụ ${soVu} — ${ten}`,
         laPhu: false,
+        soVu,
+        soChuoi: 0,
+        soManTra: 0
       };
     }),
   ];
@@ -1218,6 +1229,8 @@ export async function chayXuatTruyen(
     tenTep: `${p.id}.md`,
     tieuDe: p.ten,
     laPhu: true,
+    soChuoi: 0,
+    soManTra: 0
   }));
 
   const tatCa = [...dsVuChinh, ...dsViecPhu];
@@ -1228,9 +1241,19 @@ export async function chayXuatTruyen(
 
   for (const muc of mucTieu) {
     const noiDung = boXuat.xuatVuHoacViec(muc.ma);
+    muc.soChuoi = boXuat.thongKeCuoi.soChuoi;
+    muc.soManTra = boXuat.thongKeCuoi.soManTra;
     const duongDanChinh = join(thuMucXuat, muc.tenTep);
     writeFileSync(duongDanChinh, noiDung, 'utf8');
     danhSachDaXuat.push(duongDanChinh);
+  }
+
+  for (const muc of tatCa) {
+    if (muc.soChuoi === 0 && muc.soManTra === 0) {
+      boXuat.xuatVuHoacViec(muc.ma);
+      muc.soChuoi = boXuat.thongKeCuoi.soChuoi;
+      muc.soManTra = boXuat.thongKeCuoi.soManTra;
+    }
   }
 
   // Luôn cập nhật README mục lục mùa
