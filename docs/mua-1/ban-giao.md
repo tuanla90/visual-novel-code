@@ -74,6 +74,8 @@
 4. Người điều phối: soát tờ dữ kiện nháp theo canon rồi chuyển vào `noi-dung-mua-1/hoi-dap/`, chạy đủ lệnh kiểm, chơi Vụ 1 từ đầu tới kết trên trình duyệt với `?bo=mua-1` như người chơi, rồi mới báo user.
 Lưu ý: trong lúc agent đang sửa cây làm việc, commit từng tệp cụ thể, đừng `git add -A`.
 
+**User đã chơi thử và TRẢ LẠI phần điều hướng (05/10 đêm) → gói B13 đang chạy nền.** Đề bài: `docs/mua-1/brief/b13-dieu-huong-tu-do.md`. Ý user: nút một đường ("Xuống xe") thì tự động; nói chuyện xong ở một nơi thì ở lại nơi đó, không tự về bản đồ; màn tra lùi được về bảng thông tin rồi về phòng CLB; người chơi tự do đi đâu thì đi. Khi agent xong: tự chạy lại lệnh kiểm, rồi CHƠI TAY trên trình duyệt đúng ba luồng user nêu (mở đầu tới sảnh; ngày 2 bản đồ tới cô Hạnh rồi xem chi tiết ẩn; ngày 2 laptop vào màn tra rồi lùi ra) trước khi báo.
+
 **B12 CHƠI ĐƯỢC (05/10 đêm), chờ user chơi thử.** Chạy: `npm run dev` ở `prototype/` của worktree này rồi mở `http://localhost:5173/?bo=mua-1` (thêm `&facilitator=1` để có bảng nhảy tới từng ngày; đã thử, dùng được với bộ mùa 1). Cấu hình xem trước của Claude: `b12-dev` (cổng 5174) trong `.claude/launch.json`.
 - Đã nghiệm thu: giao diện màn hỏi đáp (agent), test máy tự chơi hết Vụ 1 mùa 1 ở cả ba cách chơi tới kết thật (`src/mvp/engine/hoi-dap-vu-1.test.ts`), kiểm nội dung không lỗi, giọng 0 lỗi, tsc sạch.
 - Người điều phối đã chơi tay trên trình duyệt CHỈ cảnh bác Thịnh ngày 1 (gõ, bấm, xem cả đoạn, gợi ý, hỏi mở, rời sớm bị giữ, quay lại hỏi tiếp, thẻ Tòa B mở) và chat bạn đi cùng ở cảnh khám phá ("làm gì tiếp", "gợi ý đi"). CHƯA chơi tay: mười cảnh hỏi đáp còn lại, giới hạn lượt và từ chối, màn điện thoại dọc, tờ "Lời …" trên bảng hồ sơ.
