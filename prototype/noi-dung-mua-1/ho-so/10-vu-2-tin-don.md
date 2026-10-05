@@ -14,7 +14,7 @@
 - Tiêu đề: Mấy chữ đầu của tin đồn
 - Giá trị cho trình dựng: CLB Thám Tử soi dữ liệu
 - Nguồn: Ảnh chụp tin, Phòng CTSV chuyển về
-- Nội dung: Tin nào cũng mở đầu bằng mấy chữ này. Bản xuất của kênh ghi nguyên văn từng tin, nên phần sau có thể dài hơn.
+- Nội dung: Tin bấm chuyển nào cũng mở đầu bằng mấy chữ này, nguyên văn, phần sau có thể dài hơn. Tin người ta gõ tay thì có thể thêm chữ đằng trước, đằng sau.
 
 ### clue-tin-goc — [Tin gốc]
 - Tiêu đề: Kênh ghi loại của từng tin

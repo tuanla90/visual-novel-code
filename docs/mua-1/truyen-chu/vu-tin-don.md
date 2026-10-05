@@ -403,8 +403,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 | T-193 | 2024-10-08 08:02 | SV220118 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
 | T-317 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
 | T-331 | 2024-10-08 12:05 | SV240412 | GOC | Nghe nói CLB Thám Tử soi điểm |
-| T-339 | 2024-10-08 12:30 | SV240201 | TRA_LOI |  clb thám tử soi dữ liệu sinh viên đấy |
-| T-340 | 2024-10-08 13:15 | SV240207 | TRA_LOI |  CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-339 | 2024-10-08 12:30 | SV240201 | TRA_LOI | thấy bảo clb thám tử soi dữ liệu sinh viên đấy |
+| T-340 | 2024-10-08 13:15 | SV240207 | TRA_LOI | Ơ thật à? CLB Thám Tử soi dữ liệu sinh viên á |
 
 - **Nộp cột**: ma_tin
 
@@ -417,8 +417,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
 - *Suy nghĩ của bạn:* *(Lên 8 tin rồi. Tin T-08 là "Nghe nói CLB Thám Tử soi điểm", T-09 và T-10 thì thêm nội dung lạ. Mình có nên giữ T-08 không? (tạm))*
-- **Minh Anh** (nghiêm túc): T-08 là tự viết lại, không phải chép nguyên câu. Phải loại nó ra, chỉ tìm những tin chép nguyên văn nhưng có thể lỡ tay dính dấu cách hay viết thường thôi. (tạm)
-- **Hà Vy** (suy nghĩ): Vậy trước khi so, gọt dấu cách thừa và đưa hết về chữ thường cho giống nhau, rồi tìm lại những tin mở đầu bằng câu ấy. (tạm)
+- **Minh Anh** (nghiêm túc): T-08 là tin chuyện khác, không phải câu tin đồn. Phải loại nó ra, chỉ giữ những tin có đúng câu ấy, dù người ta gõ thêm gì đằng trước, đằng sau. (tạm)
+- **Hà Vy** (suy nghĩ): Vậy tìm theo đoạn dài hơn của câu ấy, đoạn mà tin chuyện điểm không có. (tạm)
 
 **Lựa chọn tiếp theo:**
 - [Đi tiếp](#doan-27)
@@ -426,15 +426,15 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ---
 
 <a id="doan-20"></a>
-### Đoạn 20: Thử làm sạch
+### Đoạn 20: Thử chứa cả đoạn dài
 
-📍 **Phòng CLB** — *Thử làm sạch*
+📍 **Phòng CLB** — *Thử chứa cả đoạn dài*
 
-#### 💻 Màn tra dữ liệu: Làm sạch (thẻ `c-tin-sach`)
-*Đề bài:* Biết đâu có người cố tình gõ chữ thường hoặc lỡ dính dấu cách ở đầu. Làm sạch nội dung rồi tìm các tin bắt đầu bằng đoạn đó.
+#### 💻 Màn tra dữ liệu: Chứa cả đoạn dài (thẻ `c-tin-sach`)
+*Đề bài:* Tin chuyện khác cũng nhắc tới CLB. Tìm các tin có chứa đoạn "soi dữ liệu sinh viên", dù người gõ thêm chữ đằng trước hay đằng sau.
 
 ```sql
-SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TRIM(noi_dung)) LIKE 'clb thám tử soi%';
+SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung LIKE '%soi dữ liệu sinh viên%';
 ```
 
 *Kết quả chạy thật: 7 dòng*
@@ -446,14 +446,15 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TR
 | T-160 | 2024-10-08 07:10 | SV230311 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
 | T-193 | 2024-10-08 08:02 | SV220118 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
 | T-317 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
-| T-339 | 2024-10-08 12:30 | SV240201 | TRA_LOI |  clb thám tử soi dữ liệu sinh viên đấy |
-| T-340 | 2024-10-08 13:15 | SV240207 | TRA_LOI |  CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-339 | 2024-10-08 12:30 | SV240201 | TRA_LOI | thấy bảo clb thám tử soi dữ liệu sinh viên đấy |
+| T-340 | 2024-10-08 13:15 | SV240207 | TRA_LOI | Ơ thật à? CLB Thám Tử soi dữ liệu sinh viên á |
 
 - **Nộp cột**: ma_tin
 
 *Các bẫy và phản hồi từ nhân vật:*
-- Nếu lọc ra 0 dòng → **Tùng** (gãi đầu): Lại không ra tin nào rồi. Cậu viết đúng hàm làm sạch chưa?
-- Nếu lọc ra 8 dòng → **Hà Vy** (suy nghĩ): Vẫn tám dòng. Nhớ đưa về chữ thường và bỏ dấu cách thừa, rồi tìm những tin BẮT ĐẦU bằng câu đó.
+- Nếu lọc ra 0 dòng → **Tùng** (gãi đầu): Lại trắng. Cậu chép đúng cả đoạn ấy chưa? (tạm)
+- Nếu lọc ra 8 dòng → **Hà Vy** (suy nghĩ): Vẫn tám dòng, vẫn còn tin chuyện điểm. Đoạn này ngắn quá, tin nào nhắc tới CLB cũng dính. (tạm)
+- Nếu lọc ra 5 dòng → **Tùng** (gãi đầu): Năm tin, hai tin gõ trả lời đâu mất rồi? Đoạn cần tìm nằm giữa câu của người ta cơ mà. (tạm)
 - Nếu chọn sai cột nộp → **Hà Vy** (suy nghĩ): Đừng vội, nộp đúng cột mã tin đã.
 - Nếu tra đúng → **Minh Anh** (nghiêm túc): Bảy tin. Lòi ra thêm hai tài khoản lạ.
 
@@ -578,8 +579,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 
 | ma_tin | thoi_diem | tai_khoan | loai | noi_dung |
 | --- | --- | --- | --- | --- |
-| T-339 | 2024-10-08 12:30 | SV240201 | TRA_LOI |  clb thám tử soi dữ liệu sinh viên đấy |
-| T-340 | 2024-10-08 13:15 | SV240207 | TRA_LOI |  CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-339 | 2024-10-08 12:30 | SV240201 | TRA_LOI | thấy bảo clb thám tử soi dữ liệu sinh viên đấy |
+| T-340 | 2024-10-08 13:15 | SV240207 | TRA_LOI | Ơ thật à? CLB Thám Tử soi dữ liệu sinh viên á |
 
 - **Nộp cột**: ma_tin
 
@@ -905,25 +906,31 @@ SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = 
 > 🎯 **NHIỆM VỤ**: Tối 07/10, xưởng được đăng ký từ mấy giờ tới mấy giờ, cho hoạt động nào?
 > 💭 **Nhắc nhở** (Hà Vy): Ngày là mùng 7. Lịch đặt xưởng ghi theo ngày.
 > 🗂️ **Tài liệu mới**: **Bảng đăng ký dùng xưởng** — 
-#### 💻 Màn tra dữ liệu: Lịch đặt xưởng (thẻ `c-tin-xuong`)
-*Đề bài:* Lịch đặt xưởng của nhà văn hóa. Tối 07/10 xưởng được đăng ký từ mấy giờ tới mấy giờ, cho hoạt động nào?
+#### 💻 Màn tra dữ liệu: Sổ đặt phòng nhà văn hóa (thẻ `c-tin-xuong`)
+*Đề bài:* Sổ đặt phòng của nhà văn hóa; mã phòng do người đặt tự gõ. Xưởng Robotics là phòng XR-01. Ngày 07/10 xưởng được đặt những buổi nào, cho việc gì?
 
 ```sql
-SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
+SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '2024-10-07' AND LOWER(TRIM(ma_phong)) = 'xr-01';
 ```
 
-*Kết quả chạy thật: 1 dòng*
+*Kết quả chạy thật: 2 dòng*
 
-| ngay | tu_gio | den_gio | muc_dich |
-| --- | --- | --- | --- |
-| 2024-10-07 | 19:00 | 23:00 | Đội thi đấu tập |
+| ngay | ma_phong | tu_gio | den_gio | muc_dich |
+| --- | --- | --- | --- | --- |
+| 2024-10-07 | XR-01 | 14:00 | 17:00 | Sửa bàn hàn |
+| 2024-10-07 | Xr-01  | 19:00 | 23:00 | Đội thi đấu tập |
+
+- **Lọc từng bước**: Lower trước: 20 → 11 → 2 · Ngày trước: 20 → 4 → 2
 
 *Các bẫy và phản hồi từ nhân vật:*
-- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không dòng nào. Lịch ghi ngày theo dạng năm-tháng-ngày. Giá trị có nằm đúng cột không?
-- Nếu lọc ra 266 dòng → **Tùng** (gãi đầu): Cả sổ đặt xưởng từ năm 2022. Mình chỉ cần tối mùng 7.
-- Nếu tra đúng → **Duy**: Một dòng: tối mùng 7, 19 giờ tới 23 giờ, đội thi đấu tập.
+- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Mất cả buổi chiều lẫn buổi tối. Mã phòng trong sổ mỗi người gõ một kiểu, cậu nhìn lại từng dòng xem. (tạm)
+- Nếu lọc ra 1 dòng → **Tùng** (chỉ tay): Chỉ có buổi chiều sửa bàn hàn! Tối thứ Hai không ai đặt xưởng à? Thế anh Nam bảo đội ở lại tập là sao? (tạm) / **Hà Vy** (suy nghĩ): Hoặc là có, mà người đặt gõ mã phòng khác cậu. Sổ này ai cũng tự gõ trên điện thoại. (tạm)
+- Nếu lọc ra 4 dòng → **Duy**: Bốn buổi trong ngày mùng 7, đủ các phòng. Xưởng là XR-01 thôi. (tạm)
+- Nếu lọc ra 11 dòng → **Duy**: Mười một buổi của xưởng trong hai tuần. Mình chỉ cần ngày mùng 7. (tạm)
+- Nếu lọc ra 20 dòng → **Tùng** (gãi đầu): Cả sổ đặt phòng nhà văn hóa hai tuần. Mình chỉ cần xưởng, ngày mùng 7. (tạm)
+- Nếu tra đúng → **Duy**: Hai dòng: chiều mùng 7 sửa bàn hàn, tối 19 giờ tới 23 giờ đội thi đấu tập. Dòng tối gõ mã phòng kiểu khác hẳn. (tạm)
 
-> 🗂️ **Bằng chứng thu thập**: **Tối 07/10 xưởng mở tới 23 giờ** — Kết quả truy vấn: thứ Hai 07/10, xưởng đăng ký từ 19:00 tới 23:00 cho đội thi đấu tập. Đây là lịch đăng ký, chưa cho biết ai thật sự có mặt.
+> 🗂️ **Bằng chứng thu thập**: **Tối 07/10 xưởng mở tới 23 giờ** — Kết quả truy vấn sổ đặt phòng: thứ Hai 07/10, xưởng đặt chiều 14:00–17:00 sửa bàn hàn và tối 19:00 tới 23:00 cho đội thi đấu tập (dòng tối gõ mã phòng kiểu khác). Đây là lịch đăng ký, chưa cho biết ai thật sự có mặt.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
 - *Suy nghĩ của bạn:* *(Thứ Hai mùng 7, từ 19 giờ tới 23 giờ: xưởng đăng ký cho đội thi đấu tập.)*
@@ -1425,14 +1432,14 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Tùng** (chỉ tay): Thế cái tin "CLB Thám Tử soi dữ liệu sinh viên" cũng là anh đăng à?
 - **Nam**: Tin nào cơ? Cho anh xem.
 - **Nam**: Năm dòng này lẫn cả tin chuyển tiếp. Chuyển tiếp thì ai cũng bấm được. Muốn biết nó bắt đầu từ đâu thì tìm tin gốc ấy. Kênh có ghi loại của từng tin.
-- **Hà Vy** (suy nghĩ): Năm tin này mình in ra từ hôm qua. Giờ tìm lại trong cả kênh, vẫn câu ấy đã gọt sạch, chỉ giữ tin tự viết.
+- **Hà Vy** (suy nghĩ): Năm tin này mình in ra từ hôm qua. Giờ tìm lại trong cả kênh, vẫn đoạn dài của câu ấy, chỉ giữ tin tự viết.
 > 🎯 **NHIỆM VỤ**: Trong năm tin đó, tin nào là tin gốc?
-> 💭 **Nhắc nhở** (Hà Vy): Vẫn câu tin đồn đã gọt sạch như lúc nãy, chỉ giữ tin tự viết.
+> 💭 **Nhắc nhở** (Hà Vy): Vẫn đoạn dài của câu tin đồn như lúc nãy, chỉ giữ tin tự viết.
 #### 💻 Màn tra dữ liệu: Tin gốc của tin đồn (thẻ `c-tin-goc`)
 *Đề bài:* Bỏ qua các tin chuyển tiếp, tìm duy nhất tin gốc từ những tin chép lại.
 
 ```sql
-SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TRIM(noi_dung)) LIKE 'clb thám tử soi%' AND loai = 'GOC';
+SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung LIKE '%soi dữ liệu sinh viên%' AND loai = 'GOC';
 ```
 
 *Kết quả chạy thật: 1 dòng*
@@ -1442,11 +1449,12 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TR
 | T-097 | 2024-10-07 22:40 | clb_robotics | GOC | CLB Thám Tử soi dữ liệu sinh viên đấy |
 
 - **Nộp cột**: ma_tin
-- **Lọc từng bước**: Loai trước: 340 → 249 → 1 · Lower trước: 340 → 7 → 1
+- **Lọc từng bước**: Loai trước: 340 → 249 → 1 · Noi_dung trước: 340 → 7 → 1
 
 *Các bẫy và phản hồi từ nhân vật:*
 - Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không ra tin nào.
 - Nếu lọc ra 7 dòng → **Tùng** (gãi đầu): Bảy tin này lẫn cả chuyển tiếp. Lọc riêng tin gốc ra chứ.
+- Nếu lọc ra 2 dòng → **Hà Vy** (suy nghĩ): Hai tin tự viết, mà một tin là chuyện điểm. Đoạn cậu tìm ngắn quá rồi. (tạm)
 - Nếu chọn sai cột nộp → **Hà Vy** (suy nghĩ): Nhớ chọn cột mã tin.
 - Nếu tra đúng → **Hà Vy** (suy nghĩ): Còn lại đúng một tin. Đây chính là gốc gác của tin đồn.
 

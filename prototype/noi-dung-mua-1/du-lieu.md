@@ -109,11 +109,11 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 ## tin_nhan {bảng}
 - Cột: ma_tin TEXT, thoi_diem TEXT, tai_khoan TEXT, loai TEXT, noi_dung TEXT
 
-<!-- Vụ 2 "Tin đồn" (docs/mvp/mua-1-dan-y-nam-khanh.md mục 3). Bản xuất các tin công khai của kênh sinh viên, tối thứ Hai 07/10 tới
-     trưa thứ Ba 08/10/2024. Năm tin mang câu tin đồn: T-01 là tin GỐC (22:40 tối 07/10, tài khoản kênh clb_robotics), bốn tin
-     còn lại là chuyển tiếp (bấm chuyển thì chữ giữ y nguyên). T-08 nhắc chuyện tương tự nhưng viết khác nên không khớp "bắt đầu bằng".
-     T-09, T-10 loại TRA_LOI: tin gõ tay trả lời dưới một tin khác, nên chữ lệch (viết thường, thừa dấu cách) và chỉ bắt được sau khi
-     làm sạch (B4.4b, user chốt 05/10). -->
+<!-- Vụ 2 "Tin đồn" (B4.4a, đổi ở B4.4b). Bản xuất các tin công khai của kênh sinh viên, tối thứ Hai 07/10 tới trưa thứ Ba
+     08/10/2024. T-01 là tin GỐC (22:40 tối 07/10, tài khoản kênh clb_robotics); T-02, 03, 05, 07 là chuyển tiếp (bấm chuyển thì chữ
+     giữ y nguyên), nên "bắt đầu bằng" ra 5. T-09, T-10 loại TRA_LOI: tin gõ tay trả lời dưới một tin khác, có chữ đằng trước câu
+     tin đồn, nên chỉ "chứa" mới bắt được. T-08 là tin chuyện khác ("soi điểm"): chứa cụm ngắn "CLB Thám Tử soi" kéo cả T-08 (8 dòng,
+     bẫy), chứa cụm dài "soi dữ liệu sinh viên" ra đúng 7. Tin gốc = chứa cụm dài VÀ loai = 'GOC' (1 dòng). -->
 
 | ma_tin | thoi_diem | tai_khoan | loai | noi_dung |
 |---|---|---|---|---|
@@ -125,8 +125,8 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 | T-06 | 2024-10-08 09:15 | clb_robotics | GOC | Tuyển thành viên đội robot |
 | T-07 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
 | T-08 | 2024-10-08 12:05 | SV240412 | GOC | Nghe nói CLB Thám Tử soi điểm |
-| T-09 | 2024-10-08 12:30 | SV240201 | TRA_LOI | ␣clb thám tử soi dữ liệu sinh viên đấy |
-| T-10 | 2024-10-08 13:15 | SV240207 | TRA_LOI | ␣CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-09 | 2024-10-08 12:30 | SV240201 | TRA_LOI | thấy bảo clb thám tử soi dữ liệu sinh viên đấy |
+| T-10 | 2024-10-08 13:15 | SV240207 | TRA_LOI | Ơ thật à? CLB Thám Tử soi dữ liệu sinh viên á |
 
 ## dang_nhap_kenh {bảng}
 - Cột: tai_khoan TEXT, may TEXT, ngay TEXT, gio TEXT
@@ -142,19 +142,38 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 | SV240254 | DIEN-THOAI | 2024-10-07 | 22:50 |
 | SV240213 | DIEN-THOAI | 2024-10-08 | 07:25 |
 
-## dat_xuong {bảng}
-- Cột: ngay TEXT, thu TEXT, tu_gio TEXT, den_gio TEXT, muc_dich TEXT
+## dat_phong {bảng}
+- Cột: ngay TEXT, ma_phong TEXT, tu_gio TEXT, den_gio TEXT, muc_dich TEXT
 
-<!-- Vụ 2, tuyến hiện trường: lịch đặt xưởng tuần 07/10 (bản xuất từ phần mềm đặt phòng của nhà văn hóa; bảng dán ở cửa là bản sao). -->
+<!-- Vụ 2 (B4.4b, thay bảng dat_xuong cũ): sổ đặt phòng nhà văn hóa, bản xuất từ cổng tra cứu cho sinh viên, lấy chiều 10/10/2024.
+     Mã phòng do NGƯỜI ĐẶT TỰ GÕ trên điện thoại hay máy tính, nên một phòng có nhiều kiểu: "XR-01" (chuẩn), "xr-01" (gõ máy tính),
+     "Xr-01" (điện thoại tự viết hoa chữ đầu), thêm dấu cách thừa ở cuối như bàn phím điện thoại hay thêm. `␣` = một dấu cách THẬT.
+     XR-01 = xưởng CLB Robotics; HT-01 hội trường nhỏ; PT-02 phòng tập; PH-03 phòng họp. Chỉ dùng chữ không dấu (LOWER của SQLite
+     chỉ đổi chữ ASCII). Dòng quan trọng: tối thứ Hai 07/10, 19:00–23:00, gõ "Xr-01␣": so bằng thẳng thì sót (chỉ còn buổi chiều),
+     phải LOWER(TRIM(ma_phong)) = 'xr-01' mới ra đủ 2 dòng của ngày 07/10; bỏ LOWER hay bỏ TRIM đều thiếu dòng tối. -->
 
-| ngay | thu | tu_gio | den_gio | muc_dich |
+| ngay | ma_phong | tu_gio | den_gio | muc_dich |
 |---|---|---|---|---|
-| 2024-10-07 | THU_HAI | 19:00 | 23:00 | Đội thi đấu tập |
-| 2024-10-08 | THU_BA | 14:00 | 17:00 | Sinh hoạt thành viên |
-| 2024-10-09 | THU_TU | 19:00 | 21:00 | Đội thi đấu tập |
-| 2024-10-10 | THU_NAM | 14:00 | 16:00 | Hướng dẫn thành viên mới |
-| 2024-10-11 | THU_SAU | 19:00 | 21:30 | Đội thi đấu tập |
-| 2024-10-12 | THU_BAY | 08:00 | 11:00 | Dọn xưởng |
+| 2024-09-30 | XR-01 | 19:00 | 21:00 | Đội thi đấu tập |
+| 2024-09-30 | HT-01 | 08:00 | 11:00 | Tập văn nghệ khoa |
+| 2024-10-01 | xr-01 | 14:00 | 17:00 | Sinh hoạt thành viên |
+| 2024-10-02 | Ph-03␣ | 14:00 | 16:00 | Họp Đoàn khoa Kế toán |
+| 2024-10-02 | Xr-01 | 19:00 | 21:00 | Đội thi đấu tập |
+| 2024-10-03 | HT-01␣ | 18:00 | 21:00 | Tập văn nghệ khoa |
+| 2024-10-04 | XR-01 | 19:00 | 21:30 | Đội thi đấu tập |
+| 2024-10-05 | pt-02 | 08:00 | 11:00 | Câu lạc bộ guitar |
+| 2024-10-07 | XR-01 | 14:00 | 17:00 | Sửa bàn hàn |
+| 2024-10-07 | Xr-01␣ | 19:00 | 23:00 | Đội thi đấu tập |
+| 2024-10-07 | Ph-03␣ | 14:00 | 16:00 | Họp ban cán sự lớp |
+| 2024-10-07 | HT-01 | 18:00 | 20:00 | Tập văn nghệ chào mừng 15/10 |
+| 2024-10-08 | XR-01 | 14:00 | 17:00 | Sinh hoạt thành viên |
+| 2024-10-09 | xr-01 | 19:00 | 21:00 | Đội thi đấu tập |
+| 2024-10-10 | XR-01␣ | 14:00 | 16:00 | Hướng dẫn thành viên mới |
+| 2024-10-11 | Xr-01 | 19:00 | 21:30 | Đội thi đấu tập |
+| 2024-10-12 | XR-01 | 08:00 | 11:00 | Dọn xưởng |
+| 2024-10-12 | HT-01 | 08:00 | 11:00 | Tổng duyệt lễ kỷ niệm 15/10 |
+| 2024-10-14 | HT-01 | 14:00 | 17:00 | Tổng duyệt lễ kỷ niệm 15/10 |
+| 2024-10-15 | HT-01 | 07:00 | 11:30 | Lễ kỷ niệm ngày truyền thống |
 
 ## bai_dang_kenh {bảng}
 - Cột: ma_bai TEXT, kenh TEXT, ngay TEXT, buoi TEXT, thiet_bi TEXT

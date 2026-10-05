@@ -7370,13 +7370,13 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "serious",
-          "text": "T-08 là tự viết lại, không phải chép nguyên câu. Phải loại nó ra, chỉ tìm những tin chép nguyên văn nhưng có thể lỡ tay dính dấu cách hay viết thường thôi. (tạm)"
+          "text": "T-08 là tin chuyện khác, không phải câu tin đồn. Phải loại nó ra, chỉ giữ những tin có đúng câu ấy, dù người ta gõ thêm gì đằng trước, đằng sau. (tạm)"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Vậy trước khi so, gọt dấu cách thừa và đưa hết về chữ thường cho giống nhau, rồi tìm lại những tin mở đầu bằng câu ấy. (tạm)"
+          "text": "Vậy tìm theo đoạn dài hơn của câu ấy, đoạn mà tin chuyện điểm không có. (tạm)"
         },
         {
           "type": "goto",
@@ -7515,7 +7515,7 @@ const GOC = {
     },
     {
       "id": "tin-tra-sach",
-      "title": "Thử làm sạch",
+      "title": "Thử chứa cả đoạn dài",
       "canh": "phong-clb",
       "mocSomNhat": 1000,
       "nodes": [
@@ -7942,7 +7942,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Năm tin này mình in ra từ hôm qua. Giờ tìm lại trong cả kênh, vẫn câu ấy đã gọt sạch, chỉ giữ tin tự viết."
+          "text": "Năm tin này mình in ra từ hôm qua. Giờ tìm lại trong cả kênh, vẫn đoạn dài của câu ấy, chỉ giữ tin tự viết."
         },
         {
           "type": "task",
@@ -7952,7 +7952,7 @@ const GOC = {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Vẫn câu tin đồn đã gọt sạch như lúc nãy, chỉ giữ tin tự viết."
+          "text": "Vẫn đoạn dài của câu tin đồn như lúc nãy, chỉ giữ tin tự viết."
         },
         {
           "type": "consequence",
@@ -19604,15 +19604,15 @@ const GOC = {
     },
     "c-tin-sach": {
       "id": "c-tin-sach",
-      "tieuDe": "Làm sạch",
-      "deBai": "Biết đâu có người cố tình gõ chữ thường hoặc lỡ dính dấu cách ở đầu. Làm sạch nội dung rồi tìm các tin bắt đầu bằng đoạn đó.",
+      "tieuDe": "Chứa cả đoạn dài",
+      "deBai": "Tin chuyện khác cũng nhắc tới CLB. Tìm các tin có chứa đoạn \"soi dữ liệu sinh viên\", dù người gõ thêm chữ đằng trước hay đằng sau.",
       "manhMoiLienQuan": [],
-      "mucTieuHoc": "Kết hợp LOWER và TRIM.",
+      "mucTieuHoc": "Chọn đoạn đủ dài cho LIKE '%…%' để bỏ tin chuyện khác mà vẫn giữ tin gõ thêm chữ.",
       "cotNop": [
         "ma_tin"
       ],
       "soDongKyVong": 7,
-      "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TRIM(noi_dung)) LIKE 'clb thám tử soi%';",
+      "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung LIKE '%soi dữ liệu sinh viên%';",
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -19624,7 +19624,7 @@ const GOC = {
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Lại không ra tin nào rồi. Cậu viết đúng hàm làm sạch chưa?"
+              "text": "Lại trắng. Cậu chép đúng cả đoạn ấy chưa? (tạm)"
             }
           ]
         },
@@ -19637,7 +19637,20 @@ const GOC = {
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Vẫn tám dòng. Nhớ đưa về chữ thường và bỏ dấu cách thừa, rồi tìm những tin BẮT ĐẦU bằng câu đó."
+              "text": "Vẫn tám dòng, vẫn còn tin chuyện điểm. Đoạn này ngắn quá, tin nào nhắc tới CLB cũng dính. (tạm)"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 5
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Năm tin, hai tin gõ trả lời đâu mất rồi? Đoạn cần tìm nằm giữa câu của người ta cơ mà. (tạm)"
             }
           ]
         },
@@ -19753,7 +19766,7 @@ const GOC = {
         "ma_tin"
       ],
       "soDongKyVong": 1,
-      "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TRIM(noi_dung)) LIKE 'clb thám tử soi%' AND loai = 'GOC';",
+      "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung LIKE '%soi dữ liệu sinh viên%' AND loai = 'GOC';",
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -19779,6 +19792,19 @@ const GOC = {
               "speaker": "tung",
               "expression": "gai-dau",
               "text": "Bảy tin này lẫn cả chuyển tiếp. Lọc riêng tin gốc ra chứ."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 2
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Hai tin tự viết, mà một tin là chuyện điểm. Đoạn cậu tìm ngắn quá rồi. (tạm)"
             }
           ]
         },
@@ -19904,14 +19930,14 @@ const GOC = {
     },
     "c-tin-xuong": {
       "id": "c-tin-xuong",
-      "tieuDe": "Lịch đặt xưởng",
-      "deBai": "Lịch đặt xưởng của nhà văn hóa. Tối 07/10 xưởng được đăng ký từ mấy giờ tới mấy giờ, cho hoạt động nào?",
+      "tieuDe": "Sổ đặt phòng nhà văn hóa",
+      "deBai": "Sổ đặt phòng của nhà văn hóa; mã phòng do người đặt tự gõ. Xưởng Robotics là phòng XR-01. Ngày 07/10 xưởng được đặt những buổi nào, cho việc gì?",
       "manhMoiLienQuan": [
         "clue-ngay-gui"
       ],
-      "mucTieuHoc": "Hai hướng điều tra, mỗi hướng một nguồn riêng; cùng một giá trị ngày dùng cho hai bảng.",
-      "soDongKyVong": 1,
-      "sqlChuan": "SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';",
+      "mucTieuHoc": "Làm sạch chữ gõ tay trước khi so bằng: LOWER và TRIM (bỏ cái nào cũng thiếu dòng).",
+      "soDongKyVong": 2,
+      "sqlChuan": "SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '2024-10-07' AND LOWER(TRIM(ma_phong)) = 'xr-01';",
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -19923,20 +19949,64 @@ const GOC = {
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Không dòng nào. Lịch ghi ngày theo dạng năm-tháng-ngày. Giá trị có nằm đúng cột không?"
+              "text": "Mất cả buổi chiều lẫn buổi tối. Mã phòng trong sổ mỗi người gõ một kiểu, cậu nhìn lại từng dòng xem. (tạm)"
             }
           ]
         },
         {
           "khi": {
             "kind": "so-dong",
-            "n": 266
+            "n": 1
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "chi-tay",
+              "text": "Chỉ có buổi chiều sửa bàn hàn! Tối thứ Hai không ai đặt xưởng à? Thế anh Nam bảo đội ở lại tập là sao? (tạm)"
+            },
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Hoặc là có, mà người đặt gõ mã phòng khác cậu. Sổ này ai cũng tự gõ trên điện thoại. (tạm)"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 4
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Bốn buổi trong ngày mùng 7, đủ các phòng. Xưởng là XR-01 thôi. (tạm)"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 11
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Mười một buổi của xưởng trong hai tuần. Mình chỉ cần ngày mùng 7. (tạm)"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 20
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả sổ đặt xưởng từ năm 2022. Mình chỉ cần tối mùng 7."
+              "text": "Cả sổ đặt phòng nhà văn hóa hai tuần. Mình chỉ cần xưởng, ngày mùng 7. (tạm)"
             }
           ]
         },
@@ -19948,7 +20018,7 @@ const GOC = {
             {
               "speaker": "duy",
               "expression": "neutral",
-              "text": "Một dòng: tối mùng 7, 19 giờ tới 23 giờ, đội thi đấu tập."
+              "text": "Hai dòng: chiều mùng 7 sửa bàn hàn, tối 19 giờ tới 23 giờ đội thi đấu tập. Dòng tối gõ mã phòng kiểu khác hẳn. (tạm)"
             }
           ]
         }
@@ -19956,7 +20026,7 @@ const GOC = {
       "vatChung": {
         "id": "ev-tin-xuong",
         "title": "Tối 07/10 xưởng mở tới 23 giờ",
-        "description": "Kết quả truy vấn: thứ Hai 07/10, xưởng đăng ký từ 19:00 tới 23:00 cho đội thi đấu tập. Đây là lịch đăng ký, chưa cho biết ai thật sự có mặt.",
+        "description": "Kết quả truy vấn sổ đặt phòng: thứ Hai 07/10, xưởng đặt chiều 14:00–17:00 sửa bàn hàn và tối 19:00 tới 23:00 cho đội thi đấu tập (dòng tối gõ mã phòng kiểu khác). Đây là lịch đăng ký, chưa cho biết ai thật sự có mặt.",
         "giaTri": []
       },
       "ghiChu": []
@@ -20740,7 +20810,7 @@ const GOC = {
         "Tiêu đề": "Mấy chữ đầu của tin đồn",
         "Giá trị cho trình dựng": "CLB Thám Tử soi dữ liệu",
         "Nguồn": "Ảnh chụp tin, Phòng CTSV chuyển về",
-        "Nội dung": "Tin nào cũng mở đầu bằng mấy chữ này. Bản xuất của kênh ghi nguyên văn từng tin, nên phần sau có thể dài hơn."
+        "Nội dung": "Tin bấm chuyển nào cũng mở đầu bằng mấy chữ này, nguyên văn, phần sau có thể dài hơn. Tin người ta gõ tay thì có thể thêm chữ đằng trước, đằng sau."
       },
       "quotes": {}
     },
@@ -21781,7 +21851,7 @@ const GOC = {
       "noi": "noi-dung-mua-1/thu-thach/tin-don.md:40 thẻ c-tin-chua, SQL chuẩn"
     },
     {
-      "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TRIM(noi_dung)) LIKE 'clb thám tử soi%';",
+      "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung LIKE '%soi dữ liệu sinh viên%';",
       "soDong": 7,
       "noi": "noi-dung-mua-1/thu-thach/tin-don.md:58 thẻ c-tin-sach, SQL chuẩn",
       "resultId": "ev-tin-don"
@@ -21789,24 +21859,24 @@ const GOC = {
     {
       "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoan IN ('SV240201', 'SV240207');",
       "soDong": 2,
-      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:79 thẻ c-tin-in, SQL chuẩn"
+      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:80 thẻ c-tin-in, SQL chuẩn"
     },
     {
-      "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TRIM(noi_dung)) LIKE 'clb thám tử soi%' AND loai = 'GOC';",
+      "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung LIKE '%soi dữ liệu sinh viên%' AND loai = 'GOC';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:97 thẻ c-tin-goc, SQL chuẩn",
+      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:98 thẻ c-tin-goc, SQL chuẩn",
       "resultId": "ev-tin-goc"
     },
     {
       "sql": "SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = '2024-10-07';",
       "soDong": 2,
-      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:120 thẻ c-tin-may, SQL chuẩn",
+      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:122 thẻ c-tin-may, SQL chuẩn",
       "resultId": "ev-tin-may"
     },
     {
-      "sql": "SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';",
-      "soDong": 1,
-      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:142 thẻ c-tin-xuong, SQL chuẩn",
+      "sql": "SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '2024-10-07' AND LOWER(TRIM(ma_phong)) = 'xr-01';",
+      "soDong": 2,
+      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:144 thẻ c-tin-xuong, SQL chuẩn",
       "resultId": "ev-tin-xuong"
     },
     {
@@ -22393,14 +22463,14 @@ const GOC = {
             "2024-10-08 12:30",
             "SV240201",
             "TRA_LOI",
-            " clb thám tử soi dữ liệu sinh viên đấy"
+            "thấy bảo clb thám tử soi dữ liệu sinh viên đấy"
           ],
           [
             "T-10",
             "2024-10-08 13:15",
             "SV240207",
             "TRA_LOI",
-            " CLB Thám Tử soi dữ liệu sinh viên đấy"
+            "Ơ thật à? CLB Thám Tử soi dữ liệu sinh viên á"
           ]
         ]
       },
@@ -22458,14 +22528,14 @@ const GOC = {
         ]
       },
       {
-        "ten": "dat_xuong",
+        "ten": "dat_phong",
         "cot": [
           {
             "ten": "ngay",
             "kieu": "TEXT"
           },
           {
-            "ten": "thu",
+            "ten": "ma_phong",
             "kieu": "TEXT"
           },
           {
@@ -22483,46 +22553,144 @@ const GOC = {
         ],
         "dong": [
           [
+            "2024-09-30",
+            "XR-01",
+            "19:00",
+            "21:00",
+            "Đội thi đấu tập"
+          ],
+          [
+            "2024-09-30",
+            "HT-01",
+            "08:00",
+            "11:00",
+            "Tập văn nghệ khoa"
+          ],
+          [
+            "2024-10-01",
+            "xr-01",
+            "14:00",
+            "17:00",
+            "Sinh hoạt thành viên"
+          ],
+          [
+            "2024-10-02",
+            "Ph-03 ",
+            "14:00",
+            "16:00",
+            "Họp Đoàn khoa Kế toán"
+          ],
+          [
+            "2024-10-02",
+            "Xr-01",
+            "19:00",
+            "21:00",
+            "Đội thi đấu tập"
+          ],
+          [
+            "2024-10-03",
+            "HT-01 ",
+            "18:00",
+            "21:00",
+            "Tập văn nghệ khoa"
+          ],
+          [
+            "2024-10-04",
+            "XR-01",
+            "19:00",
+            "21:30",
+            "Đội thi đấu tập"
+          ],
+          [
+            "2024-10-05",
+            "pt-02",
+            "08:00",
+            "11:00",
+            "Câu lạc bộ guitar"
+          ],
+          [
             "2024-10-07",
-            "THU_HAI",
+            "XR-01",
+            "14:00",
+            "17:00",
+            "Sửa bàn hàn"
+          ],
+          [
+            "2024-10-07",
+            "Xr-01 ",
             "19:00",
             "23:00",
             "Đội thi đấu tập"
           ],
           [
+            "2024-10-07",
+            "Ph-03 ",
+            "14:00",
+            "16:00",
+            "Họp ban cán sự lớp"
+          ],
+          [
+            "2024-10-07",
+            "HT-01",
+            "18:00",
+            "20:00",
+            "Tập văn nghệ chào mừng 15/10"
+          ],
+          [
             "2024-10-08",
-            "THU_BA",
+            "XR-01",
             "14:00",
             "17:00",
             "Sinh hoạt thành viên"
           ],
           [
             "2024-10-09",
-            "THU_TU",
+            "xr-01",
             "19:00",
             "21:00",
             "Đội thi đấu tập"
           ],
           [
             "2024-10-10",
-            "THU_NAM",
+            "XR-01 ",
             "14:00",
             "16:00",
             "Hướng dẫn thành viên mới"
           ],
           [
             "2024-10-11",
-            "THU_SAU",
+            "Xr-01",
             "19:00",
             "21:30",
             "Đội thi đấu tập"
           ],
           [
             "2024-10-12",
-            "THU_BAY",
+            "XR-01",
             "08:00",
             "11:00",
             "Dọn xưởng"
+          ],
+          [
+            "2024-10-12",
+            "HT-01",
+            "08:00",
+            "11:00",
+            "Tổng duyệt lễ kỷ niệm 15/10"
+          ],
+          [
+            "2024-10-14",
+            "HT-01",
+            "14:00",
+            "17:00",
+            "Tổng duyệt lễ kỷ niệm 15/10"
+          ],
+          [
+            "2024-10-15",
+            "HT-01",
+            "07:00",
+            "11:30",
+            "Lễ kỷ niệm ngày truyền thống"
           ]
         ]
       },

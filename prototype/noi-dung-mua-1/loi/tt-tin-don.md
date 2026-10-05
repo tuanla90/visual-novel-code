@@ -19,8 +19,9 @@
 - Khi đúng: **minh-anh** (neutral): Lên 8 tin rồi. Nhìn xem, có một tin bị sửa nội dung.
 
 ## c-tin-sach.1
-- Khi chạy ra 0 dòng: **tung** (gai-dau): Lại không ra tin nào rồi. Cậu viết đúng hàm làm sạch chưa?
-- Khi chạy ra 8 dòng: **ha-vy** (thinking): Vẫn tám dòng. Nhớ đưa về chữ thường và bỏ dấu cách thừa, rồi tìm những tin BẮT ĐẦU bằng câu đó.
+- Khi chạy ra 0 dòng: **tung** (gai-dau): Lại trắng. Cậu chép đúng cả đoạn ấy chưa? (tạm)
+- Khi chạy ra 8 dòng: **ha-vy** (thinking): Vẫn tám dòng, vẫn còn tin chuyện điểm. Đoạn này ngắn quá, tin nào nhắc tới CLB cũng dính. (tạm)
+- Khi chạy ra 5 dòng: **tung** (gai-dau): Năm tin, hai tin gõ trả lời đâu mất rồi? Đoạn cần tìm nằm giữa câu của người ta cơ mà. (tạm)
 - Khi chọn sai cột nộp: **ha-vy** (thinking): Đừng vội, nộp đúng cột mã tin đã.
 - Khi đúng: **minh-anh** (serious): Bảy tin. Lòi ra thêm hai tài khoản lạ.
 
@@ -33,6 +34,7 @@
 ## c-tin-goc.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không ra tin nào.
 - Khi chạy ra 7 dòng: **tung** (gai-dau): Bảy tin này lẫn cả chuyển tiếp. Lọc riêng tin gốc ra chứ.
+- Khi chạy ra 2 dòng: **ha-vy** (thinking): Hai tin tự viết, mà một tin là chuyện điểm. Đoạn cậu tìm ngắn quá rồi. (tạm)
 - Khi chọn sai cột nộp: **ha-vy** (thinking): Nhớ chọn cột mã tin.
 - Khi đúng: **ha-vy** (thinking): Còn lại đúng một tin. Đây chính là gốc gác của tin đồn.
 
@@ -44,6 +46,9 @@
 - Khi đúng: **ha-vy** (neutral): Hai lần trong ngày mùng 7. 15 giờ 10 từ máy xưởng số 2, 22 giờ 31 từ máy văn phòng xưởng.
 
 ## c-tin-xuong.1
-- Khi chạy ra 0 dòng: **ha-vy** (thinking): Không dòng nào. Lịch ghi ngày theo dạng năm-tháng-ngày. Giá trị có nằm đúng cột không?
-- Khi chạy ra 266 dòng: **tung** (gai-dau): Cả sổ đặt xưởng từ năm 2022. Mình chỉ cần tối mùng 7.
-- Khi đúng: **duy** (neutral): Một dòng: tối mùng 7, 19 giờ tới 23 giờ, đội thi đấu tập.
+- Khi chạy ra 0 dòng: **ha-vy** (thinking): Mất cả buổi chiều lẫn buổi tối. Mã phòng trong sổ mỗi người gõ một kiểu, cậu nhìn lại từng dòng xem. (tạm)
+- Khi chạy ra 1 dòng: **tung** (chi-tay): Chỉ có buổi chiều sửa bàn hàn! Tối thứ Hai không ai đặt xưởng à? Thế anh Nam bảo đội ở lại tập là sao? (tạm)<br>**ha-vy** (thinking): Hoặc là có, mà người đặt gõ mã phòng khác cậu. Sổ này ai cũng tự gõ trên điện thoại. (tạm)
+- Khi chạy ra 4 dòng: **duy** (neutral): Bốn buổi trong ngày mùng 7, đủ các phòng. Xưởng là XR-01 thôi. (tạm)
+- Khi chạy ra 11 dòng: **duy** (neutral): Mười một buổi của xưởng trong hai tuần. Mình chỉ cần ngày mùng 7. (tạm)
+- Khi chạy ra 20 dòng: **tung** (gai-dau): Cả sổ đặt phòng nhà văn hóa hai tuần. Mình chỉ cần xưởng, ngày mùng 7. (tạm)
+- Khi đúng: **duy** (neutral): Hai dòng: chiều mùng 7 sửa bàn hàn, tối 19 giờ tới 23 giờ đội thi đấu tập. Dòng tối gõ mã phòng kiểu khác hẳn. (tạm)

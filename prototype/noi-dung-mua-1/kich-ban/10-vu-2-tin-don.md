@@ -1,8 +1,8 @@
 ## Vụ 2 — Tin đồn (08/10 → 15/10/2024)
 
-<!-- timeline-ref {"tables":["tin_nhan","dang_nhap_kenh","dat_xuong"],"evidence":[{"id":"tin-goc","title":"Tin đồn gốc được gửi","table":"tin_nhan","where":{"ma_tin":"T-01"},"usedAt":"tin-gap-nam","note":"Tin gốc phải tồn tại trước lúc nhóm lấy bản xuất; các tin chuyển tiếp là sự kiện liên đới."},{"id":"dang-nhap-vp","title":"Tài khoản kênh đăng nhập từ máy văn phòng xưởng","table":"dang_nhap_kenh","where":{"tai_khoan":"clb_robotics","may":"MAY-VP-XUONG"},"usedAt":"tin-tuyen-may","note":"Đối chiếu giờ đăng nhập với giờ tin gốc; đây chưa phải bằng chứng về người gửi."},{"id":"dat-xuong-tin","title":"Xưởng có lịch đội thi đấu tập trong tối gửi tin","table":"dat_xuong","where":{"thu":"THU_HAI"},"dateFrom":{"table":"tin_nhan","where":{"ma_tin":"T-01"} },"dateRole":"scheduled","usedAt":"tin-tuyen-xuong","note":"Ngày trong lịch đặt xưởng là ngày sử dụng đã đặt trước, không phải ngày bản xuất được tạo."}]} -->
+<!-- timeline-ref {"tables":["tin_nhan","dang_nhap_kenh","dat_phong"],"evidence":[{"id":"tin-goc","title":"Tin đồn gốc được gửi","table":"tin_nhan","where":{"ma_tin":"T-01"},"usedAt":"tin-gap-nam","note":"Tin gốc phải tồn tại trước lúc nhóm lấy bản xuất; các tin chuyển tiếp là sự kiện liên đới."},{"id":"dang-nhap-vp","title":"Tài khoản kênh đăng nhập từ máy văn phòng xưởng","table":"dang_nhap_kenh","where":{"tai_khoan":"clb_robotics","may":"MAY-VP-XUONG"},"usedAt":"tin-tuyen-may","note":"Đối chiếu giờ đăng nhập với giờ tin gốc; đây chưa phải bằng chứng về người gửi."},{"id":"dat-xuong-tin","title":"Xưởng có lịch đội thi đấu tập trong tối gửi tin","table":"dat_phong","where":{"ma_phong":"Xr-01 "},"dateFrom":{"table":"tin_nhan","where":{"ma_tin":"T-01"} },"dateRole":"scheduled","usedAt":"tin-tuyen-xuong","note":"Ngày trong lịch đặt xưởng là ngày sử dụng đã đặt trước, không phải ngày bản xuất được tạo."}]} -->
 
-<!-- Vụ 2 "Tin đồn", vụ sau nhiều ngày (B4.4b, dàn ý ở docs/mua-1/brief/b4-4b-dan-y.md). Năm ngày có việc: T3 08/10 (tin tới CLB; bằng, bắt đầu bằng, chứa), T4 09/10 (làm sạch, IN, gặp Nam, tin gốc), T5 10/10 (đối chất Hiếu ở căng tin, hai hướng kiểm ở xưởng), T2 14/10 (tập trước), T3 15/10 (lễ kỷ niệm, buổi giải trình với Quân hai nhịp, kết). Hết cảnh thì đứng nguyên chỗ; đổi nơi bằng [ĐI CÙNG] hoặc bản đồ. Mảnh ghép: tin gốc gửi từ tài khoản kênh của CLB Robotics, 22:40 tối 07/10, từ máy văn phòng xưởng. Hết vụ Nam vẫn CHƯA được gỡ nghi. Lời ở loi/10-vu-2-tin-don.md. -->
+<!-- Vụ 2 "Tin đồn", vụ sau nhiều ngày (B4.4b, dàn ý ở docs/mua-1/brief/b4-4b-dan-y.md). Năm ngày có việc: T3 08/10 (tin tới CLB; bằng, bắt đầu bằng, chứa), T4 09/10 (chứa cụm dài, IN, gặp Nam, tin gốc), T5 10/10 (đối chất Hiếu ở căng tin, hai hướng kiểm ở xưởng; sổ đặt phòng gõ tay: làm sạch), T2 14/10 (tập trước), T3 15/10 (lễ kỷ niệm, buổi giải trình với Quân hai nhịp, kết). Hết cảnh thì đứng nguyên chỗ; đổi nơi bằng [ĐI CÙNG] hoặc bản đồ. Mảnh ghép: tin gốc gửi từ tài khoản kênh của CLB Robotics, 22:40 tối 07/10, từ máy văn phòng xưởng. Hết vụ Nam vẫn CHƯA được gỡ nghi. Lời ở loi/10-vu-2-tin-don.md. -->
 
 <!-- Ngày T3 08/10/2024 -->
 
@@ -85,7 +85,7 @@
 
 - [LỜI tin-n2-tung.1]
 
-### tin-tra-sach — Thử làm sạch {cảnh: phong-clb}
+### tin-tra-sach — Thử chứa cả đoạn dài {cảnh: phong-clb}
 
 - [THỬ THÁCH c-tin-sach]
 - [LỜI tin-tra-sach.1]
