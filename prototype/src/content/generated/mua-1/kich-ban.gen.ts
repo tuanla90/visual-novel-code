@@ -7201,7 +7201,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Vậy thử xem tin nào bắt đầu bằng câu đó. Cậu dùng \"%\" nhé. (tạm)"
+          "text": "Vậy thử xem tin nào bắt đầu bằng câu đó, phía sau viết gì cũng được. (tạm)"
         },
         {
           "type": "goto",
@@ -7370,13 +7370,13 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "serious",
-          "text": "T-08 là tự viết lại, không phải copy-paste. Phải loại nó ra, chỉ tìm những tin chép nguyên văn nhưng có thể lỡ tay dính dấu cách hay viết thường thôi. (tạm)"
+          "text": "T-08 là tự viết lại, không phải chép nguyên câu. Phải loại nó ra, chỉ tìm những tin chép nguyên văn nhưng có thể lỡ tay dính dấu cách hay viết thường thôi. (tạm)"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Vậy bỏ dấu % ở đầu đi, dùng TRIM để xóa dấu cách thừa, và LOWER để đưa về chữ thường giống nhau, rồi tìm xem có tin nào bắt đầu bằng đoạn đó không. (tạm)"
+          "text": "Vậy trước khi so, gọt dấu cách thừa và đưa hết về chữ thường cho giống nhau, rồi tìm lại những tin mở đầu bằng câu ấy. (tạm)"
         },
         {
           "type": "goto",
@@ -7942,7 +7942,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Năm tin này mình ghim rồi. Lọc tiếp ngay trên phiếu ấy, khỏi lạc sang tin khác của kênh."
+          "text": "Năm tin này mình in ra từ hôm qua. Giờ tìm lại trong cả kênh, vẫn câu ấy đã gọt sạch, chỉ giữ tin tự viết."
         },
         {
           "type": "task",
@@ -7952,7 +7952,7 @@ const GOC = {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Phiếu vừa ghim dùng làm nguồn được. Lọc tiếp ra tin gốc."
+          "text": "Vẫn câu tin đồn đã gọt sạch như lúc nãy, chỉ giữ tin tự viết."
         },
         {
           "type": "consequence",
@@ -19666,7 +19666,12 @@ const GOC = {
           ]
         }
       ],
-      "vatChung": null,
+      "vatChung": {
+        "id": "ev-tin-don",
+        "title": "Các tin mang câu tin đồn",
+        "description": "Kết quả truy vấn: nhiều tin chép lại cùng một câu, từ các tài khoản khác nhau. Phiếu chưa nói tin nào có trước.",
+        "giaTri": []
+      },
       "ghiChu": []
     },
     "c-tin-in": {
@@ -19733,12 +19738,7 @@ const GOC = {
           ]
         }
       ],
-      "vatChung": {
-        "id": "ev-tin-don",
-        "title": "Các tin mang câu tin đồn",
-        "description": "Kết quả truy vấn: nhiều tin chép lại cùng một câu, từ các tài khoản khác nhau. Phiếu chưa nói tin nào có trước.",
-        "giaTri": []
-      },
+      "vatChung": null,
       "ghiChu": []
     },
     "c-tin-goc": {
@@ -20752,7 +20752,7 @@ const GOC = {
         "Tiêu đề": "Kênh ghi loại của từng tin",
         "Giá trị cho trình dựng": "GOC",
         "Nguồn": "Nam, người trực kênh của CLB Robotics",
-        "Nội dung": "Mỗi tin có một loại: GOC là tin người đó tự viết, CHUYEN_TIEP là tin bấm chuyển lại. Chuyển tiếp thì ai cũng bấm được."
+        "Nội dung": "Mỗi tin có một loại: GOC là tin người đó tự viết, CHUYEN_TIEP là tin bấm chuyển lại. Chuyển tiếp thì ai cũng bấm được. TRA_LOI là tin gõ tay trả lời dưới một tin khác."
       },
       "quotes": {}
     },
@@ -21783,13 +21783,13 @@ const GOC = {
     {
       "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TRIM(noi_dung)) LIKE 'clb thám tử soi%';",
       "soDong": 7,
-      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:58 thẻ c-tin-sach, SQL chuẩn"
+      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:58 thẻ c-tin-sach, SQL chuẩn",
+      "resultId": "ev-tin-don"
     },
     {
       "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoan IN ('SV240201', 'SV240207');",
       "soDong": 2,
-      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:76 thẻ c-tin-in, SQL chuẩn",
-      "resultId": "ev-tin-don"
+      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:79 thẻ c-tin-in, SQL chuẩn"
     },
     {
       "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TRIM(noi_dung)) LIKE 'clb thám tử soi%' AND loai = 'GOC';",
@@ -22392,14 +22392,14 @@ const GOC = {
             "T-09",
             "2024-10-08 12:30",
             "SV240201",
-            "CHUYEN_TIEP",
+            "TRA_LOI",
             " clb thám tử soi dữ liệu sinh viên đấy"
           ],
           [
             "T-10",
             "2024-10-08 13:15",
             "SV240207",
-            "CHUYEN_TIEP",
+            "TRA_LOI",
             " CLB Thám Tử soi dữ liệu sinh viên đấy"
           ]
         ]

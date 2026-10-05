@@ -111,7 +111,9 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 
 <!-- Vụ 2 "Tin đồn" (docs/mvp/mua-1-dan-y-nam-khanh.md mục 3). Bản xuất các tin công khai của kênh sinh viên, tối thứ Hai 07/10 tới
      trưa thứ Ba 08/10/2024. Năm tin mang câu tin đồn: T-01 là tin GỐC (22:40 tối 07/10, tài khoản kênh clb_robotics), bốn tin
-     còn lại là chuyển tiếp. T-08 nhắc chuyện tương tự nhưng viết khác nên không khớp "bắt đầu bằng". -->
+     còn lại là chuyển tiếp (bấm chuyển thì chữ giữ y nguyên). T-08 nhắc chuyện tương tự nhưng viết khác nên không khớp "bắt đầu bằng".
+     T-09, T-10 loại TRA_LOI: tin gõ tay trả lời dưới một tin khác, nên chữ lệch (viết thường, thừa dấu cách) và chỉ bắt được sau khi
+     làm sạch (B4.4b, user chốt 05/10). -->
 
 | ma_tin | thoi_diem | tai_khoan | loai | noi_dung |
 |---|---|---|---|---|
@@ -123,8 +125,8 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 | T-06 | 2024-10-08 09:15 | clb_robotics | GOC | Tuyển thành viên đội robot |
 | T-07 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
 | T-08 | 2024-10-08 12:05 | SV240412 | GOC | Nghe nói CLB Thám Tử soi điểm |
-| T-09 | 2024-10-08 12:30 | SV240201 | CHUYEN_TIEP | ␣clb thám tử soi dữ liệu sinh viên đấy |
-| T-10 | 2024-10-08 13:15 | SV240207 | CHUYEN_TIEP | ␣CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-09 | 2024-10-08 12:30 | SV240201 | TRA_LOI | ␣clb thám tử soi dữ liệu sinh viên đấy |
+| T-10 | 2024-10-08 13:15 | SV240207 | TRA_LOI | ␣CLB Thám Tử soi dữ liệu sinh viên đấy |
 
 ## dang_nhap_kenh {bảng}
 - Cột: tai_khoan TEXT, may TEXT, ngay TEXT, gio TEXT

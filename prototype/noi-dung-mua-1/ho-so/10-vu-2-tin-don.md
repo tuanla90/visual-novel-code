@@ -20,7 +20,7 @@
 - Tiêu đề: Kênh ghi loại của từng tin
 - Giá trị cho trình dựng: GOC
 - Nguồn: {{nv.nam}}, người trực kênh của CLB Robotics
-- Nội dung: Mỗi tin có một loại: GOC là tin người đó tự viết, CHUYEN_TIEP là tin bấm chuyển lại. Chuyển tiếp thì ai cũng bấm được.
+- Nội dung: Mỗi tin có một loại: GOC là tin người đó tự viết, CHUYEN_TIEP là tin bấm chuyển lại. Chuyển tiếp thì ai cũng bấm được. TRA_LOI là tin gõ tay trả lời dưới một tin khác.
 
 ### clue-ngay-gui — [Ngày gửi tin gốc]
 - Tiêu đề: Tin gốc gửi tối thứ Hai 07/10

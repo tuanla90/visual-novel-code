@@ -26,7 +26,7 @@
 
 ## tin-mo-sau-bang
 - **player**: Không có tin nào đúng y câu ấy. Chắc là tin còn đoạn sau. (tạm)
-- **ha-vy** (thinking): Vậy thử xem tin nào bắt đầu bằng câu đó. Cậu dùng "%" nhé. (tạm)
+- **ha-vy** (thinking): Vậy thử xem tin nào bắt đầu bằng câu đó, phía sau viết gì cũng được. (tạm)
 
 ## tin-tra-bat-dau.1
 - **player**: Có 5 tin bắt đầu bằng đoạn này. Từ từ, nhỡ họ viết thêm ở phía trước thì sao? Ví dụ "tớ nghe nói..." (tạm)
@@ -34,8 +34,8 @@
 
 ## tin-tra-chua.1
 - **player**: Lên 8 tin rồi. Tin T-08 là "Nghe nói CLB Thám Tử soi điểm", T-09 và T-10 thì thêm nội dung lạ. Mình có nên giữ T-08 không? (tạm)
-- **minh-anh** (serious): T-08 là tự viết lại, không phải copy-paste. Phải loại nó ra, chỉ tìm những tin chép nguyên văn nhưng có thể lỡ tay dính dấu cách hay viết thường thôi. (tạm)
-- **ha-vy** (thinking): Vậy bỏ dấu % ở đầu đi, dùng TRIM để xóa dấu cách thừa, và LOWER để đưa về chữ thường giống nhau, rồi tìm xem có tin nào bắt đầu bằng đoạn đó không. (tạm)
+- **minh-anh** (serious): T-08 là tự viết lại, không phải chép nguyên câu. Phải loại nó ra, chỉ tìm những tin chép nguyên văn nhưng có thể lỡ tay dính dấu cách hay viết thường thôi. (tạm)
+- **ha-vy** (thinking): Vậy trước khi so, gọt dấu cách thừa và đưa hết về chữ thường cho giống nhau, rồi tìm lại những tin mở đầu bằng câu ấy. (tạm)
 
 ## tin-tra-sach.1
 - **player**: Giảm xuống còn 7 tin. T-08 đã bị loại. (tạm)
@@ -66,9 +66,9 @@
 - **nam** (neutral): Tin nào cơ? Cho anh xem.
 - [DÀN DỰNG] {{nv.nam}} đọc phiếu năm tin.
 - **nam** (neutral): Năm dòng này lẫn cả tin chuyển tiếp. Chuyển tiếp thì ai cũng bấm được. Muốn biết nó bắt đầu từ đâu thì tìm tin gốc ấy. Kênh có ghi loại của từng tin.
-- **ha-vy** (thinking): Năm tin này mình ghim rồi. Lọc tiếp ngay trên phiếu ấy, khỏi lạc sang tin khác của kênh.
+- **ha-vy** (thinking): Năm tin này mình in ra từ hôm qua. Giờ tìm lại trong cả kênh, vẫn câu ấy đã gọt sạch, chỉ giữ tin tự viết.
 > NHIỆM VỤ: Trong năm tin đó, tin nào là tin gốc?
-> NHẮC VIỆC ha-vy (thinking): Phiếu vừa ghim dùng làm nguồn được. Lọc tiếp ra tin gốc.
+> NHẮC VIỆC ha-vy (thinking): Vẫn câu tin đồn đã gọt sạch như lúc nãy, chỉ giữ tin tự viết.
 
 ## tin-gap-nam.2
 - **player**: Một tin gốc. 22 giờ 40 tối thứ Hai, mùng 7. Tài khoản clb_robotics.

@@ -403,8 +403,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 | T-193 | 2024-10-08 08:02 | SV220118 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
 | T-317 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
 | T-331 | 2024-10-08 12:05 | SV240412 | GOC | Nghe nói CLB Thám Tử soi điểm |
-| T-339 | 2024-10-08 12:30 | SV240201 | CHUYEN_TIEP |  clb thám tử soi dữ liệu sinh viên đấy |
-| T-340 | 2024-10-08 13:15 | SV240207 | CHUYEN_TIEP |  CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-339 | 2024-10-08 12:30 | SV240201 | TRA_LOI |  clb thám tử soi dữ liệu sinh viên đấy |
+| T-340 | 2024-10-08 13:15 | SV240207 | TRA_LOI |  CLB Thám Tử soi dữ liệu sinh viên đấy |
 
 - **Nộp cột**: ma_tin
 
@@ -417,8 +417,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
 - *Suy nghĩ của bạn:* *(Lên 8 tin rồi. Tin T-08 là "Nghe nói CLB Thám Tử soi điểm", T-09 và T-10 thì thêm nội dung lạ. Mình có nên giữ T-08 không? (tạm))*
-- **Minh Anh** (nghiêm túc): T-08 là tự viết lại, không phải copy-paste. Phải loại nó ra, chỉ tìm những tin chép nguyên văn nhưng có thể lỡ tay dính dấu cách hay viết thường thôi. (tạm)
-- **Hà Vy** (suy nghĩ): Vậy bỏ dấu % ở đầu đi, dùng TRIM để xóa dấu cách thừa, và LOWER để đưa về chữ thường giống nhau, rồi tìm xem có tin nào bắt đầu bằng đoạn đó không. (tạm)
+- **Minh Anh** (nghiêm túc): T-08 là tự viết lại, không phải chép nguyên câu. Phải loại nó ra, chỉ tìm những tin chép nguyên văn nhưng có thể lỡ tay dính dấu cách hay viết thường thôi. (tạm)
+- **Hà Vy** (suy nghĩ): Vậy trước khi so, gọt dấu cách thừa và đưa hết về chữ thường cho giống nhau, rồi tìm lại những tin mở đầu bằng câu ấy. (tạm)
 
 **Lựa chọn tiếp theo:**
 - [Đi tiếp](#doan-27)
@@ -446,8 +446,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TR
 | T-160 | 2024-10-08 07:10 | SV230311 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
 | T-193 | 2024-10-08 08:02 | SV220118 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
 | T-317 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
-| T-339 | 2024-10-08 12:30 | SV240201 | CHUYEN_TIEP |  clb thám tử soi dữ liệu sinh viên đấy |
-| T-340 | 2024-10-08 13:15 | SV240207 | CHUYEN_TIEP |  CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-339 | 2024-10-08 12:30 | SV240201 | TRA_LOI |  clb thám tử soi dữ liệu sinh viên đấy |
+| T-340 | 2024-10-08 13:15 | SV240207 | TRA_LOI |  CLB Thám Tử soi dữ liệu sinh viên đấy |
 
 - **Nộp cột**: ma_tin
 
@@ -457,6 +457,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TR
 - Nếu chọn sai cột nộp → **Hà Vy** (suy nghĩ): Đừng vội, nộp đúng cột mã tin đã.
 - Nếu tra đúng → **Minh Anh** (nghiêm túc): Bảy tin. Lòi ra thêm hai tài khoản lạ.
 
+> 🗂️ **Bằng chứng thu thập**: **Các tin mang câu tin đồn** — Kết quả truy vấn: nhiều tin chép lại cùng một câu, từ các tài khoản khác nhau. Phiếu chưa nói tin nào có trước.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
 - *Suy nghĩ của bạn:* *(Giảm xuống còn 7 tin. T-08 đã bị loại. (tạm))*
@@ -577,8 +578,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 
 | ma_tin | thoi_diem | tai_khoan | loai | noi_dung |
 | --- | --- | --- | --- | --- |
-| T-339 | 2024-10-08 12:30 | SV240201 | CHUYEN_TIEP |  clb thám tử soi dữ liệu sinh viên đấy |
-| T-340 | 2024-10-08 13:15 | SV240207 | CHUYEN_TIEP |  CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-339 | 2024-10-08 12:30 | SV240201 | TRA_LOI |  clb thám tử soi dữ liệu sinh viên đấy |
+| T-340 | 2024-10-08 13:15 | SV240207 | TRA_LOI |  CLB Thám Tử soi dữ liệu sinh viên đấy |
 
 - **Nộp cột**: ma_tin
 
@@ -588,7 +589,6 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 - Nếu chọn sai cột nộp → **Hà Vy** (suy nghĩ): Nộp nhầm cột rồi.
 - Nếu tra đúng → **Tùng** (chỉ tay): Đây rồi! Đúng là hai cái mã này.
 
-> 🗂️ **Bằng chứng thu thập**: **Các tin mang câu tin đồn** — Kết quả truy vấn: nhiều tin chép lại cùng một câu, từ các tài khoản khác nhau. Phiếu chưa nói tin nào có trước.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
 - *Suy nghĩ của bạn:* *(Hai tin của hai tài khoản này ghi loại khác hẳn: trả lời. (tạm))*
@@ -1141,7 +1141,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
 - *Suy nghĩ của bạn:* *(Không có tin nào đúng y câu ấy. Chắc là tin còn đoạn sau. (tạm))*
-- **Hà Vy** (suy nghĩ): Vậy thử xem tin nào bắt đầu bằng câu đó. Cậu dùng "%" nhé. (tạm)
+- **Hà Vy** (suy nghĩ): Vậy thử xem tin nào bắt đầu bằng câu đó, phía sau viết gì cũng được. (tạm)
 
 **Lựa chọn tiếp theo:**
 - [Mở bản đồ](#doan-54)
@@ -1425,9 +1425,9 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Tùng** (chỉ tay): Thế cái tin "CLB Thám Tử soi dữ liệu sinh viên" cũng là anh đăng à?
 - **Nam**: Tin nào cơ? Cho anh xem.
 - **Nam**: Năm dòng này lẫn cả tin chuyển tiếp. Chuyển tiếp thì ai cũng bấm được. Muốn biết nó bắt đầu từ đâu thì tìm tin gốc ấy. Kênh có ghi loại của từng tin.
-- **Hà Vy** (suy nghĩ): Năm tin này mình ghim rồi. Lọc tiếp ngay trên phiếu ấy, khỏi lạc sang tin khác của kênh.
+- **Hà Vy** (suy nghĩ): Năm tin này mình in ra từ hôm qua. Giờ tìm lại trong cả kênh, vẫn câu ấy đã gọt sạch, chỉ giữ tin tự viết.
 > 🎯 **NHIỆM VỤ**: Trong năm tin đó, tin nào là tin gốc?
-> 💭 **Nhắc nhở** (Hà Vy): Phiếu vừa ghim dùng làm nguồn được. Lọc tiếp ra tin gốc.
+> 💭 **Nhắc nhở** (Hà Vy): Vẫn câu tin đồn đã gọt sạch như lúc nãy, chỉ giữ tin tự viết.
 #### 💻 Màn tra dữ liệu: Tin gốc của tin đồn (thẻ `c-tin-goc`)
 *Đề bài:* Bỏ qua các tin chuyển tiếp, tìm duy nhất tin gốc từ những tin chép lại.
 

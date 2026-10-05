@@ -1,4 +1,4 @@
-<!-- Thẻ thử thách Vụ 2 "Tin đồn" (kich-ban/10-vu-2-tin-don.md). Ba lần tra: c-tin-don  — laptop phòng CLB: lọc các tin mang câu tin đồn ("bằng" ra 0 dòng vì tin còn đoạn sau → "bắt đầu bằng" ra 5). Phiếu ev-tin-don được ghim và dùng làm nguồn cho thẻ sau. c-tin-goc  — "Kiểu: lọc tiếp": nguồn là PHIẾU ev-tin-don (màn tra hiện WITH tin_don AS (phiếu …)); lọc loai = GOC → 1 dòng. c-tin-may  — tuyến dữ liệu của song tuyến: nhật ký đăng nhập của kênh, tài khoản + ngày → 2 dòng (15:10 máy xưởng số 2, 22:31 máy văn phòng xưởng). Lời "Khi …": loi/tt-tin-don.md. -->
+<!-- Thẻ thử thách Vụ 2 "Tin đồn" (kich-ban/10-vu-2-tin-don.md, B4.4a/B4.4b). Tám màn trên tuyến chính, theo ngày: 08/10 c-tin-bang (bằng, 0 dòng: tin còn đoạn sau), c-tin-bat-dau (bắt đầu bằng, 5), c-tin-chua (chứa, 8, có T-08 tự viết phải bỏ); 09/10 c-tin-sach (làm sạch bằng LOWER, TRIM, 7; lưu ev-tin-don), c-tin-in (IN hai tài khoản gõ trả lời, 2), c-tin-goc (một câu VÀ trên bảng gốc, loai = GOC, 1; lưu ev-tin-goc); 10/10 c-tin-may (nhật ký đăng nhập của kênh, 2; ev-tin-may), c-tin-xuong (lịch đặt xưởng, 1; ev-tin-xuong). Lời "Khi …": loi/tt-tin-don.md. -->
 
 ### c-tin-bang — Lọc tin đồn y hệt {challenge: c-tin-bang}
 
@@ -60,6 +60,9 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TR
 ```
 
 - [LỜI c-tin-sach.1]
+- Vật chứng lưu vào hồ sơ: ev-tin-don
+  - Tiêu đề: Các tin mang câu tin đồn
+  - Mô tả: Kết quả truy vấn: nhiều tin chép lại cùng một câu, từ các tài khoản khác nhau. Phiếu chưa nói tin nào có trước.
 
 ### c-tin-in — Kiểm tra tài khoản {challenge: c-tin-in}
 
@@ -75,9 +78,6 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 ```
 
 - [LỜI c-tin-in.1]
-- Vật chứng lưu vào hồ sơ: ev-tin-don
-  - Tiêu đề: Các tin mang câu tin đồn
-  - Mô tả: Kết quả truy vấn: nhiều tin chép lại cùng một câu, từ các tài khoản khác nhau. Phiếu chưa nói tin nào có trước.
 
 ### c-tin-goc — Tìm tin gốc {challenge: c-tin-goc}
 
