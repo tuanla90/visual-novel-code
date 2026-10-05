@@ -55,6 +55,13 @@
 - Lời Vụ 6 cũ (04/11) ghi Tùng "cá trật bốn lần", bằng số ở 14/10 của Vụ 2; gói làm lại Vụ 6 phải nâng số.
 - Toàn bộ lời mới của Vụ 2 còn đánh dấu `(tạm)`, chờ user đọc.
 
+### Trang đọc truyện (để user duyệt và góp ý)
+
+- Trang: https://claude.ai/artifact/LNorSmaKFVyxPSXMFaY533 (riêng tư của user). Mỗi lần hiện một đoạn, nút rẽ ở cuối, cột "Đường đã đi" để quay lại, bấm "Góp ý" cạnh từng câu để ghi.
+- Nguồn: `tools/doc-truyen/doc-truyen.html` (trang) và `tools/doc-truyen/sinh-du-lieu.py` (tách `docs/mua-1/truyen-chu/*.md` thành các tệp JSON dưới 40 KB; trạng thái "sẵn sàng / bản cũ" của từng vụ khai trong `DANH_SACH` của tệp này).
+- **Sau mỗi lần đổi nội dung:** `npm run truyen-chu:mua1`, rồi `PYTHONIOENCODING=utf-8 python tools/doc-truyen/sinh-du-lieu.py <scratchpad>/doc-truyen`, rồi đăng lại bằng công cụ Artifact với `url` ở trên, `file_path` là tệp trang, `root` là `<scratchpad>/doc-truyen`, `files` là mọi tệp trong `du-lieu/`.
+- **Đọc góp ý của user:** công cụ ArtifactData, `action: "list"`, `collection: "gop-y"` với `url` trên. Mỗi mục có `vu`, `doan`, `tieuDe`, `trich` (câu được chọn), `ghiChu`. Xử lý xong mục nào thì hỏi user trước khi xóa.
+
 ## 3. Việc tiếp theo
 
 1. **Chờ user đọc truyện chữ Vụ 2** và góp ý. Sửa theo góp ý trước khi sang vụ khác.

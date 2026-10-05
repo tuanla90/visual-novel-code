@@ -13,3 +13,4 @@ Tách riêng khỏi MVP (user chốt 04/10/2026). MVP đã xong và giữ nguyê
 Nội dung game của mùa 1: `prototype/noi-dung-mua-1/` (gói T0 tạo bằng cách chép từ MVP).
 
 - [ban-giao.md](ban-giao.md): bàn giao cho phiên khác (trạng thái, việc tiếp, cách giao Gemini, nghiệm thu, bẫy).
+- Trang đọc truyện có nút rẽ, đường đã đi và góp ý từng câu: nguồn ở `tools/doc-truyen/`, cách đăng lại ở `ban-giao.md`.
