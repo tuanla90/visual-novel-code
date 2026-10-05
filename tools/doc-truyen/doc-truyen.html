@@ -165,9 +165,16 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
 .xem:hover{background:var(--accent-bg)}
 .xem.none{border-color:var(--rule);color:var(--faint);cursor:default}
 .lb{position:fixed;inset:0;z-index:20;background:var(--veil);color:var(--veil-ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:calc(env(safe-area-inset-top, 0px) + 16px) 16px calc(env(safe-area-inset-bottom, 0px) + 16px)}
-.lb img{max-width:100%;max-height:calc(100% - 60px);object-fit:contain;border-radius:6px}
+.lb{overflow:auto;justify-content:flex-start}
+.lb img{max-width:100%;max-height:62vh;object-fit:contain;border-radius:6px;flex:0 0 auto}
+.lbbox{width:min(100%,560px);display:flex;flex-direction:column;gap:8px;font-family:var(--ui)}
+.lbbox label{font:500 13px/1.3 var(--ui)}
+.lbbox textarea{width:100%;min-height:64px;resize:vertical;padding:8px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--surface);color:var(--ink);font:14px/1.5 var(--ui)}
+.lbbox .nlist{padding:0}
+.lbbox .acts{display:flex;gap:8px;align-items:center}
+.lbbox .saved{font-size:12.5px}
 .lb .cap{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:center;font:500 13px/1.4 var(--mono)}
-.lb .btn{background:transparent;color:var(--veil-ink);border-color:var(--veil-ink)}
+.lb .cap .btn{background:transparent;color:var(--veil-ink);border-color:var(--veil-ink)}
 </style>
 
 <div class="wrap">
@@ -224,6 +231,12 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Xem ảnh">
   <img id="lbImg" alt="">
   <div class="cap"><span id="lbCap"></span><button class="btn" id="lbClose" type="button">Đóng</button></div>
+  <form class="lbbox" id="lbForm">
+    <label for="lbTa">Góp ý về ảnh này (bỏ, vẽ lại, đổi ý tưởng, sửa chỗ nào…)</label>
+    <textarea id="lbTa"></textarea>
+    <div class="acts"><button class="btn pri" type="submit">Lưu góp ý về ảnh</button><span class="saved" id="lbSaved" hidden>Đã lưu.</span></div>
+    <ul class="nlist" id="lbNotes"></ul>
+  </form>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
@@ -418,14 +431,34 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
   }
 
   // ---------- Xem ảnh ----------
+  let anhDangXem = null;   // mã ảnh đang mở trong khung
+  function veGopYAnh() {
+    const ul = $('lbNotes'); ul.replaceChildren();
+    if (!anhDangXem) return;
+    gopY.filter((g) => g.anh === anhDangXem && hien(g)).sort(theoThoiGian).forEach((g) => {
+      const li = el('li'); li.append(el('p', null, g.ghiChu));
+      if (g.trangThai === 'da-sua') li.append(el('span', 'done', 'Đã sửa, chờ bạn xem'));
+      if (g.traLoi) li.append(taoTraLoi(g));
+      ul.append(li);
+    });
+  }
   function moAnh(duong, chu) {
+    anhDangXem = duong.replace(/^anh\//, '').replace(/\.[a-z]+$/, '');
+    $('lbTa').value = ''; $('lbSaved').hidden = true; veGopYAnh();
     const im = $('lbImg');
     // ghi kèm cỡ ảnh thật, để biết ảnh nào còn nhỏ so với màn hình to
     im.onload = () => { $('lbCap').textContent = chu + ' · ' + im.naturalWidth + '×' + im.naturalHeight; };
     im.src = duong; im.alt = chu;
     $('lbCap').textContent = chu; $('lb').hidden = false; $('lbClose').focus();
   }
-  function dongAnh() { $('lb').hidden = true; $('lbImg').removeAttribute('src'); }
+  function dongAnh() { $('lb').hidden = true; $('lbImg').removeAttribute('src'); anhDangXem = null; }
+  $('lbForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const ghiChu = $('lbTa').value.trim(); if (!ghiChu || !anhDangXem || !vu) { $('lbTa').focus(); return; }
+    const so = path[path.length - 1]; const ma = anhDangXem;
+    await luuGopY({ vu: vu.ma, vuTen: vu.ten, doan: so, tieuDe: doan.get(so)?.tieuDe || '', khoa: 'anh:' + ma, anh: ma, loai: 'anh', trich: 'Ảnh ' + ma, ghiChu, trangThai: 'moi', taoLuc: new Date().toISOString() });
+    $('lbTa').value = ''; $('lbSaved').hidden = false; veGopYAnh();
+  });
   $('lbClose').addEventListener('click', dongAnh);
   $('lb').addEventListener('click', (e) => { if (e.target === $('lb')) dongAnh(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('lb').hidden) dongAnh(); });
@@ -495,7 +528,8 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
     const ca = $('caDoan'); ca.replaceChildren();
     cua.filter((g) => !khop.has(g.id)).forEach((g) => {
       const m = taoMemo(g);
-      if (g.khoa !== '*') m.prepend(el('p', null, (g.trangThai === 'da-sua' ? 'Câu cũ: «' : 'Câu gốc đã đổi: «') + (g.trich || '') + '»'));
+      if (g.loai === 'anh') m.prepend(el('p', null, 'Về ảnh ' + g.anh + ':'));
+      else if (g.khoa !== '*') m.prepend(el('p', null, (g.trangThai === 'da-sua' ? 'Câu cũ: «' : 'Câu gốc đã đổi: «') + (g.trich || '') + '»'));
       ca.append(m);
     });
     if (openKey === '*') ca.append(taoForm('*', '(cả đoạn)', null));
@@ -545,6 +579,7 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
   // ---------- Xấp góp ý ----------
   function dsGopY() { return gopY.filter((g) => hien(g) && (!$('onlyVu').checked || !vu || g.vu === vu.ma)).sort((a, b) => (a.vu === b.vu ? soCua(a) - soCua(b) || theoThoiGian(a, b) : String(a.vu).localeCompare(String(b.vu)))); }
   function veGopY() {
+    veGopYAnh();
     const ul = $('nlist'); ul.replaceChildren();
     const ds = dsGopY();
     const xong = gopY.filter(daXong).length;
