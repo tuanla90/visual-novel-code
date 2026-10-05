@@ -7390,7 +7390,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Có 5 tin bắt đầu bằng đoạn này. Từ từ, nhỡ họ viết thêm ở phía trước thì sao? Ví dụ \"tớ nghe nói...\" (tạm)"
+          "text": "Năm tin bắt đầu bằng câu này. Mà nhỡ có người gõ thêm gì đằng trước thì sao? (tạm)"
         },
         {
           "type": "line",
@@ -7417,13 +7417,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Lên 8 tin rồi. Tin T-08 là \"Nghe nói CLB Thám Tử soi điểm\", T-09 và T-10 thì thêm nội dung lạ. Mình có nên giữ T-08 không? (tạm)"
+          "text": "Lên tám tin. Hai tin có chữ gõ thêm đằng trước câu ấy. Còn một tin nói chuyện khác: \"Nghe nói CLB Thám Tử soi điểm\". (tạm)"
         },
         {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "serious",
-          "text": "T-08 là tin chuyện khác, không phải câu tin đồn. Phải loại nó ra, chỉ giữ những tin có đúng câu ấy, dù người ta gõ thêm gì đằng trước, đằng sau. (tạm)"
+          "text": "Tin chuyện điểm không phải câu tin đồn, phải loại ra. Chỉ giữ tin có đúng câu ấy, dù người ta gõ thêm gì đằng trước, đằng sau. (tạm)"
         },
         {
           "type": "line",
@@ -7446,12 +7446,12 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Có một tin nói chuyện khác hẳn, phải bỏ ra. (tạm)"
+          "text": "Trong mấy tin vừa ra có một tin nói chuyện khác hẳn, phải bỏ ra. (tạm)"
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Còn hai tin người ta gõ thêm chữ thì để mai tính. (tạm)"
+          "text": "Còn hai tin gõ thêm chữ, mai xem là của ai. (tạm)"
         },
         {
           "type": "line",
@@ -7613,7 +7613,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Còn mấy tin người ta gõ thêm chữ, hôm qua chưa gom được. (tạm)"
+          "text": "Hôm qua còn lẫn một tin chuyện khác. Hai tin gõ thêm chữ thì chưa biết của ai. (tạm)"
         },
         {
           "type": "line",
@@ -7733,13 +7733,13 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Giảm xuống còn 7 tin. T-08 đã bị loại. (tạm)"
+          "text": "Còn bảy tin. Tin chuyện điểm không còn nữa. (tạm)"
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "chi-tay",
-          "text": "Hai ông mã này gửi ngay sau giờ tan học. Xem xem tin nào do hai ông đó gửi? (tạm)"
+          "text": "Hai mã sinh viên này lạ, gửi tầm trưa hôm qua. Xem riêng tin của hai mã ấy đi. (tạm)"
         },
         {
           "type": "goto",
@@ -9941,7 +9941,82 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hai giờ chiều, phòng Công tác sinh viên. Cô Lan ngồi đầu bàn, Quân ngồi cạnh, tập biên bản mở sẵn. (tạm)"
+          "text": "Phòng Công tác sinh viên. Cô Lan ngồi đầu bàn, Quân ngồi cạnh, tập biên bản mở sẵn. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "co-lan",
+          "expression": "neutral",
+          "text": "Phòng nhận được đơn của sinh viên hỏi về cái tin trên kênh. Hôm nay cô mời các em lên nói cho rõ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Em xin phép bắt đầu, thưa cô. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Tôi đọc lại nguyên văn: \"CLB Thám Tử soi dữ liệu sinh viên.\" (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Từ hôm tin này xuất hiện, CLB các bạn đã làm gì? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Bọn em xin cô Lan bản xuất các tin công khai của kênh, rồi tra trong đó ạ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "co-lan",
+          "expression": "neutral",
+          "text": "Đúng, bản ấy Phòng cấp. Toàn tin ai vào kênh cũng đọc được. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Tra ra được gì? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Tin ấy bắt đầu từ một tin duy nhất, gửi tối thứ Hai mùng 7 ạ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Quân ghi một dòng, không ngẩng lên. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng ngồi thẳng lưng, hai tay giấu dưới gầm bàn. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Một tin, một buổi tối. Tôi ghi nhận. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Nhưng biết giờ chưa phải là biết chỗ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Quân đặt bút xuống, nhìn sang dãy ghế đối diện. (tạm)"
         },
         {
           "type": "doi-chat",
@@ -10051,9 +10126,37 @@ const GOC = {
         },
         {
           "type": "line",
+          "speaker": "narrator",
+          "text": "Quân lật biên bản sang trang mới. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "co-lan",
+          "expression": "neutral",
+          "text": "Cái máy văn phòng ấy đặt ở chỗ nào trong xưởng, Minh Anh? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Dạ, trong phòng riêng ở cuối xưởng ạ. (tạm)"
+        },
+        {
+          "type": "line",
           "speaker": "quan",
           "expression": "neutral",
-          "text": "Tôi ghi rồi. Một máy, một giờ. Sang ý tiếp. (tạm)"
+          "text": "Phòng riêng. Không phải ai đi ngang cũng ngồi vào được. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Quân gõ đầu bút xuống trang giấy. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "smug",
+          "text": "Vậy thì bên tôi thấy đã rõ. (tạm)"
         },
         {
           "type": "doi-chat",
@@ -10199,6 +10302,59 @@ const GOC = {
           "text": "Quân gạch một dòng trong biên bản, viết lại ngay bên dưới. (tạm)"
         },
         {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Biên bản ghi: tin gửi từ tài khoản kênh Robotics, chưa xác định người gửi. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "co-lan",
+          "expression": "neutral",
+          "text": "Chiều nay Phòng đăng đính chính lên kênh. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "co-lan",
+          "expression": "smile",
+          "text": "Các em về được rồi. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Phiếu xin dữ liệu lần này các bạn nộp đủ. Lần sau cũng thế. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Bọn em cảm ơn cô ạ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Ra tới hành lang, Tùng mới thở ra. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Trong ấy tớ không dám nhúc nhích luôn. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Cậu chưa cá câu nào suốt buổi. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Thì có ai hỏi tớ đâu. (tạm)"
+        },
+        {
           "type": "branch",
           "id": "go-with-tin-ket-luan",
           "asker": {
@@ -10230,7 +10386,58 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Quân viết tên Nam vào mục người cần làm rõ. Nét bút đậm, ngồi đầu bàn bên kia cũng đọc được. (tạm)"
+          "text": "Quân viết tên Nam vào mục người cần làm rõ. Nét bút đậm, ngồi bên này bàn cũng đọc được. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "co-lan",
+          "expression": "neutral",
+          "text": "Đính chính chiều nay chỉ đăng một ý: CLB Thám Tử không soi dữ liệu sinh viên. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "co-lan",
+          "expression": "neutral",
+          "text": "Còn ai gửi tin thì Phòng chưa nói gì. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Bên tôi sẽ mời bạn Nam lên làm việc sau. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Minh Anh gật đầu, đứng dậy. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Suốt dọc hành lang, Minh Anh không nói câu nào. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Chị ơi, có phải tại em không? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Không phải tại em. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Tại mình chưa nói ra được giấy tờ của mình dừng ở đâu. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Phía sau, cửa phòng đóng lại. Tập biên bản vẫn nằm trên bàn. (tạm)"
         },
         {
           "type": "branch",
@@ -20070,13 +20277,13 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 338
+            "n": 340
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Cả ba trăm ba mươi tám tin của kênh từ tối qua. Có cả tin tìm ví với tin pass giáo trình."
+              "text": "Cả ba trăm bốn mươi tin của kênh từ tối qua. Có cả tin tìm ví với tin pass giáo trình."
             }
           ]
         },
@@ -20208,7 +20415,7 @@ const GOC = {
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Không thấy gì. Dùng phần trăm đúng chưa đấy?"
+              "text": "Trắng trơn. Cậu gõ đúng cụm ấy chưa?"
             }
           ]
         },
@@ -20221,7 +20428,7 @@ const GOC = {
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Năm dòng là của ban nãy. Nhớ dùng ký hiệu phần trăm ở cả hai đầu nhé."
+              "text": "Vẫn năm tin ban nãy. Thế này thì tin nào có chữ đằng trước vẫn lọt mất."
             }
           ]
         },
@@ -20245,7 +20452,7 @@ const GOC = {
             {
               "speaker": "minh-anh",
               "expression": "neutral",
-              "text": "Lên 8 tin rồi. Nhìn xem, có một tin bị sửa nội dung."
+              "text": "Lên tám tin. Nhìn kỹ xem, có tin không phải câu ấy."
             }
           ]
         }
@@ -20373,7 +20580,7 @@ const GOC = {
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Đây là toàn bộ bảy tin mình vừa lọc ra mà. Dùng IN để lấy hai cái cần tìm thôi."
+              "text": "Vẫn cả bảy tin ban nãy. Mình chỉ cần tin của hai mã kia thôi."
             }
           ]
         },
@@ -20442,7 +20649,7 @@ const GOC = {
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Bảy tin này lẫn cả chuyển tiếp. Lọc riêng tin gốc ra chứ."
+              "text": "Bảy tin này lẫn cả tin bấm chuyển với tin trả lời. Giữ riêng tin tự viết thôi chứ."
             }
           ]
         },

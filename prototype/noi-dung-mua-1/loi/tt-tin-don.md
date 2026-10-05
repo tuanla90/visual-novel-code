@@ -1,7 +1,7 @@
 # Lời · thu-thach/tin-don.md
 
 ## c-tin-bang.1
-- Khi chạy ra 338 dòng: **tung** (gai-dau): Cả ba trăm ba mươi tám tin của kênh từ tối qua. Có cả tin tìm ví với tin pass giáo trình.
+- Khi chạy ra 340 dòng: **tung** (gai-dau): Cả ba trăm bốn mươi tin của kênh từ tối qua. Có cả tin tìm ví với tin pass giáo trình.
 - Khi chọn sai cột nộp: **ha-vy** (thinking): Mình cần tìm mã tin để nộp.
 - Khi thừa cột: **duy** (neutral): Thừa cột rồi. Chỉ lấy mã tin, thời điểm, tài khoản, loại và nội dung thôi.
 - Khi đúng: **ha-vy** (thinking): Không có dòng nào. "Bằng" thì phải khớp y hệt cả câu; tin đồn chắc còn đoạn sau.
@@ -13,10 +13,10 @@
 - Khi đúng: **tung** (chi-tay): Có 5 tin! Bắt đầu lòi ra rồi.
 
 ## c-tin-chua.1
-- Khi chạy ra 0 dòng: **tung** (gai-dau): Không thấy gì. Dùng phần trăm đúng chưa đấy?
-- Khi chạy ra 5 dòng: **ha-vy** (thinking): Năm dòng là của ban nãy. Nhớ dùng ký hiệu phần trăm ở cả hai đầu nhé.
+- Khi chạy ra 0 dòng: **tung** (gai-dau): Trắng trơn. Cậu gõ đúng cụm ấy chưa?
+- Khi chạy ra 5 dòng: **ha-vy** (thinking): Vẫn năm tin ban nãy. Thế này thì tin nào có chữ đằng trước vẫn lọt mất.
 - Khi chọn sai cột nộp: **ha-vy** (thinking): Cậu chưa chọn đúng cột mã tin kìa.
-- Khi đúng: **minh-anh** (neutral): Lên 8 tin rồi. Nhìn xem, có một tin bị sửa nội dung.
+- Khi đúng: **minh-anh** (neutral): Lên tám tin. Nhìn kỹ xem, có tin không phải câu ấy.
 
 ## c-tin-sach.1
 - Khi chạy ra 0 dòng: **tung** (gai-dau): Lại trắng. Cậu chép đúng cả đoạn ấy chưa? (tạm)
@@ -27,13 +27,13 @@
 
 ## c-tin-in.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Chắc gõ sai mã sinh viên.
-- Khi chạy ra 7 dòng: **tung** (gai-dau): Đây là toàn bộ bảy tin mình vừa lọc ra mà. Dùng IN để lấy hai cái cần tìm thôi.
+- Khi chạy ra 7 dòng: **tung** (gai-dau): Vẫn cả bảy tin ban nãy. Mình chỉ cần tin của hai mã kia thôi.
 - Khi chọn sai cột nộp: **ha-vy** (thinking): Nộp nhầm cột rồi.
 - Khi đúng: **tung** (chi-tay): Đây rồi! Đúng là hai cái mã này.
 
 ## c-tin-goc.1
 - Khi chạy ra 0 dòng: **ha-vy** (thinking): Không ra tin nào.
-- Khi chạy ra 7 dòng: **tung** (gai-dau): Bảy tin này lẫn cả chuyển tiếp. Lọc riêng tin gốc ra chứ.
+- Khi chạy ra 7 dòng: **tung** (gai-dau): Bảy tin này lẫn cả tin bấm chuyển với tin trả lời. Giữ riêng tin tự viết thôi chứ.
 - Khi chạy ra 2 dòng: **ha-vy** (thinking): Hai tin tự viết, mà một tin là chuyện điểm. Đoạn cậu tìm ngắn quá rồi. (tạm)
 - Khi chọn sai cột nộp: **ha-vy** (thinking): Nhớ chọn cột mã tin.
 - Khi đúng: **ha-vy** (thinking): Còn lại đúng một tin. Đây chính là gốc gác của tin đồn.

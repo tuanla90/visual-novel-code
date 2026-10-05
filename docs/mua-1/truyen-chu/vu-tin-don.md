@@ -29,6 +29,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - **Hiếu**: Sinh viên lớp BC24A
 - **Hà Vy**: năm 1 Toán ứng dụng, thành viên mới của clb thám tử
 - **Quân**: Ban Pháp chế – Kiểm tra, Hội sinh viên
+- **Cô Lan**: Phòng Công tác sinh viên
 - **Bác Thịnh**: Bảo vệ giảng đường B
 - **Nam**: Thành viên CLB Robotics
 - **Khánh**: Chủ tịch Hội sinh viên, trưởng CLB Robotics
@@ -38,7 +39,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 
 | Tiêu chí | Ngưỡng thiết kế | Thực tế | Đánh giá |
 |---|---|---|---|
-| Số dòng thoại | ≥ 300 | 279 | ⚠️ Bản mẫu |
+| Số dòng thoại | ≥ 300 | 315 | ✅ Đạt |
 | Số chuỗi phân cảnh | ≥ 40 | 53 | ✅ Đạt |
 | Màn tra cứu SQL | ≥ 5 | 8 | ✅ Đạt |
 | Nhịp đối chất | ≥ 3 | 3 | ✅ Đạt |
@@ -103,7 +104,7 @@ Thứ Tư, 09/10/2024 · Còn 6 ngày tới Buổi giải trình chiều 15/10
 > 📜 **[THẺ CHỮ]** Thứ Tư, 09/10/2024
 - **Minh Anh**: Chị vừa ở chỗ cô Lan về, cô hỏi CLB mình đã tới đâu rồi. (tạm)
 - *Hà Vy chỉ lên bảng. (tạm)*
-- **Hà Vy**: Còn mấy tin người ta gõ thêm chữ, hôm qua chưa gom được. (tạm)
+- **Hà Vy**: Hôm qua còn lẫn một tin chuyện khác. Hai tin gõ thêm chữ thì chưa biết của ai. (tạm)
 - **Tùng** (lo lắng): Sáng nay có bạn cùng lớp hỏi đùa tớ: có tra điểm tớ không đấy. (tạm)
 - **Tùng** (gãi đầu): Tớ cười trừ, chẳng biết đáp sao. (tạm)
 - **Minh Anh** (nghiêm túc): Vậy hôm nay gom cho xong mấy tin đó đã. (tạm)
@@ -304,7 +305,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Duy**: Chiều nay xưởng bên ấy sinh hoạt thành viên tới năm giờ chị ạ. Tờ lịch nhà văn hóa ghim trên bảng ghi thế. (tạm)
 - **Minh Anh**: Vậy mai hẵng sang. (tạm)
 - **Minh Anh**: Hôm nay làm cho gọn danh sách tin này đã. (tạm)
-- *Suy nghĩ của bạn:* *(Có 5 tin bắt đầu bằng đoạn này. Từ từ, nhỡ họ viết thêm ở phía trước thì sao? Ví dụ "tớ nghe nói..." (tạm))*
+- *Suy nghĩ của bạn:* *(Năm tin bắt đầu bằng câu này. Mà nhỡ có người gõ thêm gì đằng trước thì sao? (tạm))*
 - **Tùng** (lo lắng): Lại còn thế nữa. Tìm tiếp đi cậu. (tạm)
 
 **Lựa chọn tiếp theo:**
@@ -407,11 +408,29 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 📍 **Phòng Công tác sinh viên** — *Chiều 15/10, phòng Công tác sinh viên: buổi giải trình, Quân hai nhịp*
 
-- *Hai giờ chiều, phòng Công tác sinh viên. Cô Lan ngồi đầu bàn, Quân ngồi cạnh, tập biên bản mở sẵn. (tạm)*
+- *Phòng Công tác sinh viên. Cô Lan ngồi đầu bàn, Quân ngồi cạnh, tập biên bản mở sẵn. (tạm)*
+- **Cô Lan**: Phòng nhận được đơn của sinh viên hỏi về cái tin trên kênh. Hôm nay cô mời các em lên nói cho rõ. (tạm)
+- **Quân**: Em xin phép bắt đầu, thưa cô. (tạm)
+- **Quân**: Tôi đọc lại nguyên văn: "CLB Thám Tử soi dữ liệu sinh viên." (tạm)
+- **Quân**: Từ hôm tin này xuất hiện, CLB các bạn đã làm gì? (tạm)
+- **Minh Anh**: Bọn em xin cô Lan bản xuất các tin công khai của kênh, rồi tra trong đó ạ. (tạm)
+- **Cô Lan**: Đúng, bản ấy Phòng cấp. Toàn tin ai vào kênh cũng đọc được. (tạm)
+- **Quân**: Tra ra được gì? (tạm)
+- **Minh Anh**: Tin ấy bắt đầu từ một tin duy nhất, gửi tối thứ Hai mùng 7 ạ. (tạm)
+- *Quân ghi một dòng, không ngẩng lên. (tạm)*
+- *Tùng ngồi thẳng lưng, hai tay giấu dưới gầm bàn. (tạm)*
+- **Quân**: Một tin, một buổi tối. Tôi ghi nhận. (tạm)
+- **Quân**: Nhưng biết giờ chưa phải là biết chỗ. (tạm)
+- *Quân đặt bút xuống, nhìn sang dãy ghế đối diện. (tạm)*
 ⚖️ **ĐỐI CHẤT**: Quân nêu giả thuyết: "Mật khẩu kênh cả ban chủ nhiệm Robotics đều biết. **Tin ấy có thể gửi từ điện thoại của bất kỳ ai, ở bất cứ đâu.** Các bạn khoanh được chỗ nào?"
 *Câu hỏi:* Ngay trước giờ tin gốc, tài khoản kênh vào từ máy nào? Trình thẻ cho thấy điều đó.
 
-- **Quân**: Tôi ghi rồi. Một máy, một giờ. Sang ý tiếp. (tạm)
+- *Quân lật biên bản sang trang mới. (tạm)*
+- **Cô Lan**: Cái máy văn phòng ấy đặt ở chỗ nào trong xưởng, Minh Anh? (tạm)
+- **Minh Anh**: Dạ, trong phòng riêng ở cuối xưởng ạ. (tạm)
+- **Quân**: Phòng riêng. Không phải ai đi ngang cũng ngồi vào được. (tạm)
+- *Quân gõ đầu bút xuống trang giấy. (tạm)*
+- **Quân** (tự đắc): Vậy thì bên tôi thấy đã rõ. (tạm)
 ⚖️ **ĐỐI CHẤT**: Quân nêu giả thuyết: "Tài khoản của Robotics, máy trong xưởng Robotics, người trực kênh là Nam. Bên tôi kết luận: **Nam là người gửi tin.**"
 *Câu hỏi:* Trong các bản ghi đang có, chỗ nào cho biết ai ngồi máy lúc 22 giờ 40? Trình thẻ để chỉ ra bản ghi dừng ở đâu.
 
@@ -462,15 +481,15 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Nộp cột**: ma_tin
 
 *Các bẫy và phản hồi từ nhân vật:*
-- Nếu lọc ra 0 dòng → **Tùng** (gãi đầu): Không thấy gì. Dùng phần trăm đúng chưa đấy?
-- Nếu lọc ra 5 dòng → **Hà Vy** (suy nghĩ): Năm dòng là của ban nãy. Nhớ dùng ký hiệu phần trăm ở cả hai đầu nhé.
+- Nếu lọc ra 0 dòng → **Tùng** (gãi đầu): Trắng trơn. Cậu gõ đúng cụm ấy chưa?
+- Nếu lọc ra 5 dòng → **Hà Vy** (suy nghĩ): Vẫn năm tin ban nãy. Thế này thì tin nào có chữ đằng trước vẫn lọt mất.
 - Nếu chọn sai cột nộp → **Hà Vy** (suy nghĩ): Cậu chưa chọn đúng cột mã tin kìa.
-- Nếu tra đúng → **Minh Anh**: Lên 8 tin rồi. Nhìn xem, có một tin bị sửa nội dung.
+- Nếu tra đúng → **Minh Anh**: Lên tám tin. Nhìn kỹ xem, có tin không phải câu ấy.
 
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Lên 8 tin rồi. Tin T-08 là "Nghe nói CLB Thám Tử soi điểm", T-09 và T-10 thì thêm nội dung lạ. Mình có nên giữ T-08 không? (tạm))*
-- **Minh Anh** (nghiêm túc): T-08 là tin chuyện khác, không phải câu tin đồn. Phải loại nó ra, chỉ giữ những tin có đúng câu ấy, dù người ta gõ thêm gì đằng trước, đằng sau. (tạm)
+- *Suy nghĩ của bạn:* *(Lên tám tin. Hai tin có chữ gõ thêm đằng trước câu ấy. Còn một tin nói chuyện khác: "Nghe nói CLB Thám Tử soi điểm". (tạm))*
+- **Minh Anh** (nghiêm túc): Tin chuyện điểm không phải câu tin đồn, phải loại ra. Chỉ giữ tin có đúng câu ấy, dù người ta gõ thêm gì đằng trước, đằng sau. (tạm)
 - **Hà Vy** (suy nghĩ): Vậy tìm theo đoạn dài hơn của câu ấy, đoạn mà tin chuyện điểm không có. (tạm)
 
 **Lựa chọn tiếp theo:**
@@ -514,8 +533,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 > 🗂️ **Bằng chứng thu thập**: **Các tin mang câu tin đồn** — Kết quả truy vấn: nhiều tin chép lại cùng một câu, từ các tài khoản khác nhau. Phiếu chưa nói tin nào có trước.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Giảm xuống còn 7 tin. T-08 đã bị loại. (tạm))*
-- **Tùng** (chỉ tay): Hai ông mã này gửi ngay sau giờ tan học. Xem xem tin nào do hai ông đó gửi? (tạm)
+- *Suy nghĩ của bạn:* *(Còn bảy tin. Tin chuyện điểm không còn nữa. (tạm))*
+- **Tùng** (chỉ tay): Hai mã sinh viên này lạ, gửi tầm trưa hôm qua. Xem riêng tin của hai mã ấy đi. (tạm)
 
 **Lựa chọn tiếp theo:**
 - [Đi tiếp](#doan-28)
@@ -599,6 +618,15 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 📍 **Phòng Công tác sinh viên** — *Biên bản ghi một tài khoản, chưa phải một người*
 
 - *Quân gạch một dòng trong biên bản, viết lại ngay bên dưới. (tạm)*
+- **Quân**: Biên bản ghi: tin gửi từ tài khoản kênh Robotics, chưa xác định người gửi. (tạm)
+- **Cô Lan**: Chiều nay Phòng đăng đính chính lên kênh. (tạm)
+- **Cô Lan**: Các em về được rồi. (tạm)
+- **Quân**: Phiếu xin dữ liệu lần này các bạn nộp đủ. Lần sau cũng thế. (tạm)
+- **Minh Anh**: Bọn em cảm ơn cô ạ. (tạm)
+- *Ra tới hành lang, Tùng mới thở ra. (tạm)*
+- **Tùng** (vui vẻ): Trong ấy tớ không dám nhúc nhích luôn. (tạm)
+- **Hà Vy**: Cậu chưa cá câu nào suốt buổi. (tạm)
+- **Tùng** (gãi đầu): Thì có ai hỏi tớ đâu. (tạm)
 
 **Lựa chọn tiếp theo:**
 - [Về phòng CLB](#doan-31)
@@ -610,7 +638,16 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 📍 **Phòng Công tác sinh viên** — *Biên bản ghi tên Nam ở mục người cần làm rõ*
 
-- *Quân viết tên Nam vào mục người cần làm rõ. Nét bút đậm, ngồi đầu bàn bên kia cũng đọc được. (tạm)*
+- *Quân viết tên Nam vào mục người cần làm rõ. Nét bút đậm, ngồi bên này bàn cũng đọc được. (tạm)*
+- **Cô Lan**: Đính chính chiều nay chỉ đăng một ý: CLB Thám Tử không soi dữ liệu sinh viên. (tạm)
+- **Cô Lan**: Còn ai gửi tin thì Phòng chưa nói gì. (tạm)
+- **Quân**: Bên tôi sẽ mời bạn Nam lên làm việc sau. (tạm)
+- *Minh Anh gật đầu, đứng dậy. (tạm)*
+- *Suốt dọc hành lang, Minh Anh không nói câu nào. (tạm)*
+- **Tùng** (lo lắng): Chị ơi, có phải tại em không? (tạm)
+- **Minh Anh** (nghiêm túc): Không phải tại em. (tạm)
+- **Minh Anh** (nghiêm túc): Tại mình chưa nói ra được giấy tờ của mình dừng ở đâu. (tạm)
+- *Phía sau, cửa phòng đóng lại. Tập biên bản vẫn nằm trên bàn. (tạm)*
 
 **Lựa chọn tiếp theo:**
 - [Về phòng CLB](#doan-31)
@@ -622,8 +659,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 📍 **Phòng CLB** — *Cuối chiều 08/10: khép danh sách, hẹn mai*
 
-- *Suy nghĩ của bạn:* *(Có một tin nói chuyện khác hẳn, phải bỏ ra. (tạm))*
-- *Suy nghĩ của bạn:* *(Còn hai tin người ta gõ thêm chữ thì để mai tính. (tạm))*
+- *Suy nghĩ của bạn:* *(Trong mấy tin vừa ra có một tin nói chuyện khác hẳn, phải bỏ ra. (tạm))*
+- *Suy nghĩ của bạn:* *(Còn hai tin gõ thêm chữ, mai xem là của ai. (tạm))*
 - **Minh Anh**: Mai ba giờ chiều, đủ mặt nhé. (tạm)
 - *Duy đậy nắp hộp bánh quy BQ-04, gạch thêm một vạch lên nhãn dán. (tạm)*
 - **Tùng** (vui vẻ): Đói quá rồi. (tạm)
@@ -657,7 +694,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 
 *Các bẫy và phản hồi từ nhân vật:*
 - Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Chắc gõ sai mã sinh viên.
-- Nếu lọc ra 7 dòng → **Tùng** (gãi đầu): Đây là toàn bộ bảy tin mình vừa lọc ra mà. Dùng IN để lấy hai cái cần tìm thôi.
+- Nếu lọc ra 7 dòng → **Tùng** (gãi đầu): Vẫn cả bảy tin ban nãy. Mình chỉ cần tin của hai mã kia thôi.
 - Nếu chọn sai cột nộp → **Hà Vy** (suy nghĩ): Nộp nhầm cột rồi.
 - Nếu tra đúng → **Tùng** (chỉ tay): Đây rồi! Đúng là hai cái mã này.
 
@@ -1214,7 +1251,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Nộp cột**: ma_tin
 
 *Các bẫy và phản hồi từ nhân vật:*
-- Nếu lọc ra 338 dòng → **Tùng** (gãi đầu): Cả ba trăm ba mươi tám tin của kênh từ tối qua. Có cả tin tìm ví với tin pass giáo trình.
+- Nếu lọc ra 340 dòng → **Tùng** (gãi đầu): Cả ba trăm bốn mươi tin của kênh từ tối qua. Có cả tin tìm ví với tin pass giáo trình.
 - Nếu chọn sai cột nộp → **Hà Vy** (suy nghĩ): Mình cần tìm mã tin để nộp.
 - Nếu thừa cột → **Duy**: Thừa cột rồi. Chỉ lấy mã tin, thời điểm, tài khoản, loại và nội dung thôi.
 - Nếu tra đúng → **Hà Vy** (suy nghĩ): Không có dòng nào. "Bằng" thì phải khớp y hệt cả câu; tin đồn chắc còn đoạn sau.
@@ -1232,7 +1269,12 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 <a id="doan-57"></a>
 ### Đoạn 57: Tiếp tục: Chiều 15/10, phòng Công tác sinh viên: buổi giải trình, Quân hai nhịp
 
-- **Quân**: Tôi ghi rồi. Một máy, một giờ. Sang ý tiếp. (tạm)
+- *Quân lật biên bản sang trang mới. (tạm)*
+- **Cô Lan**: Cái máy văn phòng ấy đặt ở chỗ nào trong xưởng, Minh Anh? (tạm)
+- **Minh Anh**: Dạ, trong phòng riêng ở cuối xưởng ạ. (tạm)
+- **Quân**: Phòng riêng. Không phải ai đi ngang cũng ngồi vào được. (tạm)
+- *Quân gõ đầu bút xuống trang giấy. (tạm)*
+- **Quân** (tự đắc): Vậy thì bên tôi thấy đã rõ. (tạm)
 
 - [Đọc tiếp sang Đoạn 58: Đối chất: Trình Hai lần đăng nhập ngày 07/10](#doan-58)
 
@@ -1526,7 +1568,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 *Các bẫy và phản hồi từ nhân vật:*
 - Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không ra tin nào.
-- Nếu lọc ra 7 dòng → **Tùng** (gãi đầu): Bảy tin này lẫn cả chuyển tiếp. Lọc riêng tin gốc ra chứ.
+- Nếu lọc ra 7 dòng → **Tùng** (gãi đầu): Bảy tin này lẫn cả tin bấm chuyển với tin trả lời. Giữ riêng tin tự viết thôi chứ.
 - Nếu lọc ra 2 dòng → **Hà Vy** (suy nghĩ): Hai tin tự viết, mà một tin là chuyện điểm. Đoạn cậu tìm ngắn quá rồi. (tạm)
 - Nếu chọn sai cột nộp → **Hà Vy** (suy nghĩ): Nhớ chọn cột mã tin.
 - Nếu tra đúng → **Hà Vy** (suy nghĩ): Còn lại đúng một tin. Đây chính là gốc gác của tin đồn.

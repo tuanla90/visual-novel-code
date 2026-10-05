@@ -29,17 +29,17 @@
 - **ha-vy** (thinking): Vậy thử xem tin nào bắt đầu bằng câu đó, phía sau viết gì cũng được. (tạm)
 
 ## tin-tra-bat-dau.1
-- **player**: Có 5 tin bắt đầu bằng đoạn này. Từ từ, nhỡ họ viết thêm ở phía trước thì sao? Ví dụ "tớ nghe nói..." (tạm)
+- **player**: Năm tin bắt đầu bằng câu này. Mà nhỡ có người gõ thêm gì đằng trước thì sao? (tạm)
 - **tung** (worried): Lại còn thế nữa. Tìm tiếp đi cậu. (tạm)
 
 ## tin-tra-chua.1
-- **player**: Lên 8 tin rồi. Tin T-08 là "Nghe nói CLB Thám Tử soi điểm", T-09 và T-10 thì thêm nội dung lạ. Mình có nên giữ T-08 không? (tạm)
-- **minh-anh** (serious): T-08 là tin chuyện khác, không phải câu tin đồn. Phải loại nó ra, chỉ giữ những tin có đúng câu ấy, dù người ta gõ thêm gì đằng trước, đằng sau. (tạm)
+- **player**: Lên tám tin. Hai tin có chữ gõ thêm đằng trước câu ấy. Còn một tin nói chuyện khác: "Nghe nói CLB Thám Tử soi điểm". (tạm)
+- **minh-anh** (serious): Tin chuyện điểm không phải câu tin đồn, phải loại ra. Chỉ giữ tin có đúng câu ấy, dù người ta gõ thêm gì đằng trước, đằng sau. (tạm)
 - **ha-vy** (thinking): Vậy tìm theo đoạn dài hơn của câu ấy, đoạn mà tin chuyện điểm không có. (tạm)
 
 ## tin-tra-sach.1
-- **player**: Giảm xuống còn 7 tin. T-08 đã bị loại. (tạm)
-- **tung** (chi-tay): Hai ông mã này gửi ngay sau giờ tan học. Xem xem tin nào do hai ông đó gửi? (tạm)
+- **player**: Còn bảy tin. Tin chuyện điểm không còn nữa. (tạm)
+- **tung** (chi-tay): Hai mã sinh viên này lạ, gửi tầm trưa hôm qua. Xem riêng tin của hai mã ấy đi. (tạm)
 
 ## tin-mo.3
 - **player**: Năm tin mang câu đó, từ năm tài khoản. Bốn cái là mã sinh viên. Một cái là clb_robotics.
@@ -239,8 +239,8 @@
 
 ## tin-n1-chot.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 08/10. Nơi: phòng CLB, cuối chiều (chuỗi `tin-n1-chot`, sau màn `c-tin-chua`). Có mặt: Minh Anh, Duy, Tùng, Hà Vy, người chơi. Mục đích: khép việc chính ngày 08/10. Nhịp: (1) Người chơi tóm một câu: có một tin tự viết lại (T-08), phải bỏ ra; còn hai tin người ta gõ thêm chữ thì mai tính. (2) Minh Anh dặn mai đủ người, ba giờ chiều. (3) Duy đậy nắp hộp BQ-04, gạch thêm một vạch lên nhãn. (4) Tùng rủ người chơi về ăn tối (dẫn vào nút "Về phòng KTX ăn tối"). Phải lộ: kế hoạch mai. Cấm lộ: số 7 tin của màn chứa cụm dài. Trò đùa: hộp bánh quy BQ-04 (Duy đếm bánh bằng vạch). Số dòng nhắm tới: 6 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
-- **player**: Có một tin nói chuyện khác hẳn, phải bỏ ra. (tạm)
-- **player**: Còn hai tin người ta gõ thêm chữ thì để mai tính. (tạm)
+- **player**: Trong mấy tin vừa ra có một tin nói chuyện khác hẳn, phải bỏ ra. (tạm)
+- **player**: Còn hai tin gõ thêm chữ, mai xem là của ai. (tạm)
 - **minh-anh** (neutral): Mai ba giờ chiều, đủ mặt nhé. (tạm)
 - **narrator**: Duy đậy nắp hộp bánh quy BQ-04, gạch thêm một vạch lên nhãn dán. (tạm)
 - **tung** (happy): Đói quá rồi. (tạm)
@@ -270,7 +270,7 @@
 - [THẺ CHỮ] **narrator**: Thứ Tư, 09/10/2024
 - **minh-anh** (neutral): Chị vừa ở chỗ cô Lan về, cô hỏi CLB mình đã tới đâu rồi. (tạm)
 - **narrator**: Hà Vy chỉ lên bảng. (tạm)
-- **ha-vy** (neutral): Còn mấy tin người ta gõ thêm chữ, hôm qua chưa gom được. (tạm)
+- **ha-vy** (neutral): Hôm qua còn lẫn một tin chuyện khác. Hai tin gõ thêm chữ thì chưa biết của ai. (tạm)
 - **tung** (worried): Sáng nay có bạn cùng lớp hỏi đùa tớ: có tra điểm tớ không đấy. (tạm)
 - **tung** (gai-dau): Tớ cười trừ, chẳng biết đáp sao. (tạm)
 - **minh-anh** (serious): Vậy hôm nay gom cho xong mấy tin đó đã. (tạm)
@@ -450,16 +450,52 @@
 
 ## tin-gt-mo.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 15/10. Nơi: phòng Công tác sinh viên, trước nhịp 1. Có mặt: cô Lan, Quân, Minh Anh, Duy, Tùng, Hà Vy, người chơi. Mục đích: mở buổi giải trình. Nhịp: (1) Cô Lan mở buổi: có đơn của sinh viên gửi Phòng về tin trên kênh. (2) Quân đọc lại câu tin đồn, hỏi CLB đã làm gì. (3) Minh Anh trình bày ngắn: bản xuất do Phòng cấp, toàn tin công khai. (4) Quân không bàn chuyện Hiếu; Quân hỏi thẳng nơi gửi (dẫn vào `[ĐỐI CHẤT dc-tin-quan-may]`). Phải lộ: buổi giải trình có biên bản. Cấm lộ: nhịp 2 trước khi nhịp 1 xong. Trò đùa: không. Số dòng nhắm tới: 14 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
-- **narrator**: Hai giờ chiều, phòng Công tác sinh viên. Cô Lan ngồi đầu bàn, Quân ngồi cạnh, tập biên bản mở sẵn. (tạm)
+- **narrator**: Phòng Công tác sinh viên. Cô Lan ngồi đầu bàn, Quân ngồi cạnh, tập biên bản mở sẵn. (tạm)
+- **co-lan** (neutral): Phòng nhận được đơn của sinh viên hỏi về cái tin trên kênh. Hôm nay cô mời các em lên nói cho rõ. (tạm)
+- **quan** (neutral): Em xin phép bắt đầu, thưa cô. (tạm)
+- **quan** (neutral): Tôi đọc lại nguyên văn: "CLB Thám Tử soi dữ liệu sinh viên." (tạm)
+- **quan** (neutral): Từ hôm tin này xuất hiện, CLB các bạn đã làm gì? (tạm)
+- **minh-anh** (neutral): Bọn em xin cô Lan bản xuất các tin công khai của kênh, rồi tra trong đó ạ. (tạm)
+- **co-lan** (neutral): Đúng, bản ấy Phòng cấp. Toàn tin ai vào kênh cũng đọc được. (tạm)
+- **quan** (neutral): Tra ra được gì? (tạm)
+- **minh-anh** (neutral): Tin ấy bắt đầu từ một tin duy nhất, gửi tối thứ Hai mùng 7 ạ. (tạm)
+- **narrator**: Quân ghi một dòng, không ngẩng lên. (tạm)
+- **narrator**: Tùng ngồi thẳng lưng, hai tay giấu dưới gầm bàn. (tạm)
+- **quan** (neutral): Một tin, một buổi tối. Tôi ghi nhận. (tạm)
+- **quan** (neutral): Nhưng biết giờ chưa phải là biết chỗ. (tạm)
+- **narrator**: Quân đặt bút xuống, nhìn sang dãy ghế đối diện. (tạm)
 
 ## tin-gt-giua
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 15/10. Nơi: phòng Công tác sinh viên, giữa hai nhịp. Có mặt: cô Lan, Quân, Minh Anh, người chơi. Mục đích: chuyển từ "máy nào" sang "ai". Nhịp: (1) Quân lật biên bản, ghi. (2) Cô Lan hỏi máy văn phòng xưởng đặt ở đâu; Minh Anh đáp phòng riêng trong xưởng. (3) Quân nói giọng chắc: thế thì đã rõ ai (dẫn vào `[ĐỐI CHẤT dc-tin-quan-nguoi]`). Phải lộ: không. Cấm lộ: câu trả lời nhịp 2. Trò đùa: không. Số dòng nhắm tới: 6 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
-- **quan** (neutral): Tôi ghi rồi. Một máy, một giờ. Sang ý tiếp. (tạm)
+- **narrator**: Quân lật biên bản sang trang mới. (tạm)
+- **co-lan** (neutral): Cái máy văn phòng ấy đặt ở chỗ nào trong xưởng, Minh Anh? (tạm)
+- **minh-anh** (neutral): Dạ, trong phòng riêng ở cuối xưởng ạ. (tạm)
+- **quan** (neutral): Phòng riêng. Không phải ai đi ngang cũng ngồi vào được. (tạm)
+- **narrator**: Quân gõ đầu bút xuống trang giấy. (tạm)
+- **quan** (smug): Vậy thì bên tôi thấy đã rõ. (tạm)
 
 ## tin-gt-ket-du.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 15/10. Nơi: phòng Công tác sinh viên, nhịp 2 đủ căn cứ. Có mặt: cô Lan, Quân, Minh Anh, Duy, Tùng, Hà Vy, người chơi. Mục đích: kết đủ của buổi giải trình. Nhịp: (1) Quân gạch một dòng trong biên bản, viết lại bên dưới. (2) Cô Lan: Phòng sẽ đăng đính chính lên kênh chiều nay (hậu quả tốt, nhìn thấy). (3) Quân nói với Minh Anh một câu về quy trình, không khen. (4) Ra cửa, Tùng thở ra; Hà Vy: "Cậu chưa cá câu nào suốt buổi." Phải lộ: đính chính. Cấm lộ: ai ngồi máy. Trò đùa: Hà Vy đếm cá. Số dòng nhắm tới: 10 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
 - **narrator**: Quân gạch một dòng trong biên bản, viết lại ngay bên dưới. (tạm)
+- **quan** (neutral): Biên bản ghi: tin gửi từ tài khoản kênh Robotics, chưa xác định người gửi. (tạm)
+- **co-lan** (neutral): Chiều nay Phòng đăng đính chính lên kênh. (tạm)
+- **co-lan** (smile): Các em về được rồi. (tạm)
+- **quan** (neutral): Phiếu xin dữ liệu lần này các bạn nộp đủ. Lần sau cũng thế. (tạm)
+- **minh-anh** (neutral): Bọn em cảm ơn cô ạ. (tạm)
+- **narrator**: Ra tới hành lang, Tùng mới thở ra. (tạm)
+- **tung** (happy): Trong ấy tớ không dám nhúc nhích luôn. (tạm)
+- **ha-vy** (neutral): Cậu chưa cá câu nào suốt buổi. (tạm)
+- **tung** (gai-dau): Thì có ai hỏi tớ đâu. (tạm)
 
 ## tin-gt-ket-chua.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 15/10. Nơi: phòng Công tác sinh viên, nhịp 2 chưa đủ / hết lượt. Có mặt: cô Lan, Quân, Minh Anh, Duy, Tùng, Hà Vy, người chơi. Mục đích: kết chưa trọn của buổi giải trình, cho thấy hậu quả. Nhịp: (1) Quân viết tên Nam vào mục người cần làm rõ; người chơi nhìn thấy dòng chữ ấy. (2) Cô Lan: đính chính chỉ đăng phần CLB không soi dữ liệu; phần người gửi để ngỏ. (3) Minh Anh im suốt lúc ra cửa; Tùng hỏi có phải vì mình không; Minh Anh: vì mình chưa nói được chỗ giấy tờ dừng. Phải lộ: tên Nam trên biên bản. Cấm lộ: ai ngồi máy. Trò đùa: không. Số dòng nhắm tới: 10 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
-- **narrator**: Quân viết tên Nam vào mục người cần làm rõ. Nét bút đậm, ngồi đầu bàn bên kia cũng đọc được. (tạm)
+- **narrator**: Quân viết tên Nam vào mục người cần làm rõ. Nét bút đậm, ngồi bên này bàn cũng đọc được. (tạm)
+- **co-lan** (neutral): Đính chính chiều nay chỉ đăng một ý: CLB Thám Tử không soi dữ liệu sinh viên. (tạm)
+- **co-lan** (neutral): Còn ai gửi tin thì Phòng chưa nói gì. (tạm)
+- **quan** (neutral): Bên tôi sẽ mời bạn Nam lên làm việc sau. (tạm)
+- **narrator**: Minh Anh gật đầu, đứng dậy. (tạm)
+- **narrator**: Suốt dọc hành lang, Minh Anh không nói câu nào. (tạm)
+- **tung** (worried): Chị ơi, có phải tại em không? (tạm)
+- **minh-anh** (serious): Không phải tại em. (tạm)
+- **minh-anh** (serious): Tại mình chưa nói ra được giấy tờ của mình dừng ở đâu. (tạm)
+- **narrator**: Phía sau, cửa phòng đóng lại. Tập biên bản vẫn nằm trên bàn. (tạm)
