@@ -285,4 +285,15 @@ describe('màn tra v7 · buổi họp (fix-query c-sua-or-quan, màn chiếu)', 
     await u.click(nutDatLai);
     expect(cauSql()).toBe("SELECT ma_sv, ten FROM sinh_vien WHERE ten LIKE 'H%' OR ma_lop = 'BC24A'");
   });
+
+  it('cho phép thêm tới 4 điều kiện WHERE (như bài phu-tui-do)', async () => {
+    const { u } = ve('c-ten-h', { giayNho: [] });
+    // Bắt đầu c-ten-h có 0 điều kiện
+    expect(screen.queryAllByRole('button', { name: /^Cột của điều kiện \d+: / })).toHaveLength(0);
+    // Thêm đủ 4 điều kiện
+    await coDk(u, 4);
+    expect(screen.getAllByRole('button', { name: /^Cột của điều kiện \d+: / })).toHaveLength(4);
+    // Nút thêm vẫn còn để thêm tiếp nếu cần
+    expect(screen.getByRole('button', { name: 'Thêm điều kiện' })).toBeInTheDocument();
+  });
 });

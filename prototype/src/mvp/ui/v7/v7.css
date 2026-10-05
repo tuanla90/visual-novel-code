@@ -275,12 +275,17 @@
 .v7--doc .v7-o-kinh {
   flex: 1;
   min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
   border: 6px solid #2e3237;
   border-radius: 10px;
   /* Điện thoại hẹp: câu dài / ba điều kiện thì cuộn dọc trong mặt kính, không cắt mất nút CHẠY. */
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
+  scrollbar-gutter: stable;
 }
 
 /* ---------- Mặt kính: phần mềm tra cứu ---------- */
@@ -659,6 +664,17 @@ span.v7-o--bang:not(.v7-o--phieu) {
   background: rgba(10, 20, 28, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
+.v7--doc .v7-vung .v7-kq {
+  position: static;
+  inset: auto;
+  flex: none;
+  width: auto;
+  min-height: 180px;
+  margin: 0.25em 0.8em;
+  align-self: stretch;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
 .v7-kq table {
   width: 100%;
   border-collapse: separate;
@@ -947,8 +963,37 @@ span.v7-o--bang:not(.v7-o--phieu) {
   margin-top: 2px;
 }
 .v7--doc .v7-cau {
+  order: 0;
+  flex: none;
   flex-direction: column;
   gap: 0.5em;
+}
+.v7--doc .v7-cau.v7-cau--3cot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65em;
+  align-items: stretch;
+  padding: 0.7em;
+}
+.v7--doc .v7-cot {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.7em;
+}
+.v7--doc .v7-cot--nguon {
+  order: 0;
+}
+.v7--doc .v7-cot--chinh {
+  order: 1;
+}
+.v7--doc .v7-cot--phu {
+  order: 2;
+}
+.v7--doc .v7-cot__nhan {
+  font-size: 0.78em;
+}
+.v7-kinh--tong-hop.v7--doc .v7-cau.v7-cau--3cot {
+  flex: none;
 }
 .v7--doc .v7-cau__bang {
   flex-direction: row;
@@ -973,15 +1018,63 @@ span.v7-o--bang:not(.v7-o--phieu) {
   font-size: 2.6em;
 }
 .v7--doc .v7-vung {
-  min-height: 170px;
+  position: relative;
+  order: 5;
+  flex: none;
+  min-height: 240px;
+  margin: 0 0.8em;
+  align-self: stretch;
 }
 /* Hàng nút CHẠY / Ghim / Xem từng điều kiện dính đáy mặt kính: nội dung dài phải cuộn thì nút vẫn luôn thấy. */
 .v7--doc .v7-day {
   position: sticky;
-  bottom: 0;
+  order: 4;
+  bottom: -1px;
   z-index: 2;
-  background: linear-gradient(rgba(14, 26, 35, 0), #0e1a23 30%);
+  justify-content: stretch;
+  padding: 0.65em 0.8em;
+  background: #0e1a23;
+  border-top: 1px solid rgba(100, 181, 246, 0.18);
 }
+.v7--doc .v7-day > .v7-nut--chay,
+.v7--doc .v7-day > .v7-nut--ghim {
+  width: 100%;
+  min-height: 48px;
+  height: auto;
+  font-size: 1.05em;
+}
+.v7--doc .v7-day > .v7-nut--soi {
+  min-height: 44px;
+}
+.v7--doc[data-canh='man-chieu'] .v7-day {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.55em;
+}
+.v7--doc[data-canh='man-chieu'] .v7-day > .v7-nut {
+  width: 100%;
+  min-height: 44px;
+  height: auto;
+  margin: 0;
+}
+.v7--doc .v7-sql {
+  order: 6;
+  flex: none;
+  margin: 0 0.8em;
+  padding: 0.55em 0.7em;
+  border-top: 1px solid rgba(100, 181, 246, 0.16);
+  border-bottom: 1px solid rgba(100, 181, 246, 0.16);
+  overflow-wrap: anywhere;
+  max-height: 7.5em;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.v7--doc .v7-con {
+  order: 7;
+  flex: none;
+  margin: 0 0.8em;
+}
+.v7--doc .v7-day { flex: none; }
 /* Chữ nhỏ nhất trên điện thoại: thanh tiêu đề 12 px, câu SQL 13 px (mặc định tính theo em ra ~11 px). */
 .v7--doc .v7-thanh {
   font-size: 12px;
@@ -1013,6 +1106,65 @@ span.v7-o--bang:not(.v7-o--phieu) {
   content: '';
   position: absolute;
   inset: -3px;
+}
+
+@media (max-width: 560px) {
+  .v7--doc {
+    gap: 4px;
+    padding: 42px 5px 5px;
+  }
+  .v7--doc .v7-o-kinh {
+    flex: none;
+    height: min(76vh, 680px);
+    border-width: 4px;
+  }
+  .v7--doc .v7-kinh {
+    font-size: 15px;
+  }
+  .v7--doc .v7-de {
+    padding: 0.65em 0.8em 0.15em;
+    font-size: 1.02em;
+  }
+  .v7--doc .v7-cau.v7-cau--3cot {
+    padding: 0.55em;
+  }
+  .v7--doc .v7-cot {
+    gap: 0.55em;
+    padding: 0.6em;
+  }
+  .v7--doc .v7-o {
+    max-width: 100%;
+    min-height: 42px;
+    height: auto;
+    padding-top: 0.35em;
+    padding-bottom: 0.35em;
+    white-space: normal;
+    text-align: center;
+  }
+  .v7--doc .v7-cau__bang {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+  .v7--doc .v7-cau__bang .v7-o--bang {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .v7--doc .v7-dk {
+    gap: 0.4em;
+  }
+  .v7--doc .v7-vung .v7-kq {
+    min-height: 165px;
+    margin-right: 0.55em;
+    margin-left: 0.55em;
+    align-self: stretch;
+  }
+  .v7--doc .v7-vung {
+    min-height: 210px;
+  }
+  .v7--doc .v7-day {
+    padding: 0.55em;
+  }
 }
 
 /* ---------- Hộp thoại: nhân vật lên tiếng rồi ẩn ---------- */
@@ -1356,29 +1508,47 @@ span.v7-o--bang:not(.v7-o--phieu) {
   text-align: center;
   overflow-wrap: anywhere;
 }
-/* Câu hỏi đang mở: thẻ tròn nét đứt. */
+/* Câu hỏi đang mở: thẻ tròn nét đứt ở trung tâm bảng điều tra. */
 .the--hoi {
   width: 178px;
   height: 178px;
-  padding: 26px 22px;
+  padding: 26px 20px;
   border-radius: 50%;
-  border: 4px dashed #b71c1c;
-  background: #fff;
+  border: 4px dashed #dc2626;
+  background: radial-gradient(circle at 50% 35%, #ffffff 0%, #fffdfa 60%, #fef3c7 100%);
   align-items: center;
   justify-content: center;
   text-align: center;
-  box-shadow: 2px 5px 11px rgba(0, 0, 0, 0.38);
+  box-shadow:
+    0 0 0 4px rgba(220, 38, 38, 0.14),
+    0 0 0 8px rgba(254, 243, 199, 0.4),
+    3px 8px 18px rgba(0, 0, 0, 0.42);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+.the--hoi:hover {
+  transform: scale(1.04);
+  box-shadow:
+    0 0 0 6px rgba(220, 38, 38, 0.22),
+    0 0 0 10px rgba(254, 243, 199, 0.6),
+    0 12px 26px rgba(0, 0, 0, 0.52);
+  cursor: pointer;
 }
 .the--hoi::after {
   content: '?';
   position: absolute;
-  top: 6px;
-  right: 24px;
-  color: #b71c1c;
-  font: 800 28px var(--font-ui);
+  top: 8px;
+  right: 22px;
+  color: #dc2626;
+  font: 800 28px/1 var(--font-ui);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
 }
 .the__cau {
-  font: 700 14.5px/1.3 var(--font-ui);
+  font: 800 14px/1.32 var(--font-ui);
+  color: #1e293b;
+  overflow-wrap: break-word;
+  max-width: 136px;
+  user-select: none;
 }
 
 /* Nút ở góc bảng. */
@@ -1746,16 +1916,95 @@ span.v7-o--bang:not(.v7-o--phieu) {
   padding: 10px 14px;
   margin: 4px 0 0;
 }
-.bang__xem-hoi {
-  margin: 0;
-  padding: 30px 24px;
-  border-radius: 16px;
-  background: rgba(185, 28, 28, 0.85);
-  border: 3px dashed #fca5a5;
-  color: #ffffff;
-  font: 800 1.35rem/1.4 var(--font-ui);
+/* Hộp xem phóng to câu hỏi trọng tâm điều tra: hình tròn cao cấp */
+.bang__xem-the-focal--hoi {
+  width: auto;
+  max-width: min(440px, 92vw);
+  align-items: center;
+}
+.bang__xem-the-than--hoi {
+  justify-content: center;
+  width: auto;
+}
+.bang__xem-ghim-nut--tinh {
+  cursor: default;
+  pointer-events: none;
+}
+.bang__xem-hoi-card {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  max-width: min(380px, 86vw);
+  max-height: min(380px, 86vw);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 32%, #ffffff 0%, #fffdfa 55%, #fef3c7 100%);
+  border: 4.5px dashed #dc2626;
+  box-shadow:
+    0 0 0 6px rgba(220, 38, 38, 0.16),
+    0 0 0 12px rgba(254, 243, 199, 0.45),
+    0 24px 60px rgba(0, 0, 0, 0.65),
+    inset 0 2px 14px rgba(220, 38, 38, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 42px 30px;
   text-align: center;
-  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.65);
+  box-sizing: border-box;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Biểu tượng dấu hỏi chìm làm watermark nghệ thuật */
+.bang__xem-hoi-dau {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: 900 230px/1 var(--font-ui);
+  color: rgba(220, 38, 38, 0.06);
+  pointer-events: none;
+  user-select: none;
+}
+
+.bang__xem-hoi-loai {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  background: #dc2626;
+  color: #ffffff;
+  font: 800 0.72rem/1.2 var(--font-ui);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.35);
+}
+
+.bang__xem-hoi {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: #1e293b;
+  font: 800 1.34rem/1.4 var(--font-ui);
+  text-align: center;
+  overflow-wrap: break-word;
+  max-width: 290px;
+}
+
+.bang__xem-hoi-nhac {
+  position: relative;
+  z-index: 1;
+  margin-top: 14px;
+  color: #854d0e;
+  font: 500 0.76rem/1.35 var(--font-ui);
+  max-width: 250px;
+  opacity: 0.9;
 }
 
 /* Các chip giá trị truy vấn: KHÔNG CÒN CHỮ "GIẤY NHỚ MANG SANG LAPTOP" */
@@ -2935,4 +3184,112 @@ span.v7-o--bang:not(.v7-o--phieu) {
 }
 .v7-preview-modal__action-btn:hover {
   background: #047857;
+}
+
+/* Khối câu lệnh SQL đã tra & Bảng kết quả trong modal xem thẻ */
+.bang__xem-sql-khu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #0f172a;
+  border-radius: 8px;
+  border: 1px solid #334155;
+}
+.bang__xem-sql-nhan {
+  color: #38bdf8;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.bang__xem-sql-code {
+  margin: 0;
+  font-family: var(--font-code, monospace);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #f1f5f9;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.bang__xem-bang-khu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+.bang__xem-bang-cuon {
+  max-height: 180px;
+  overflow-y: auto;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+}
+.bang__xem-bang {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  text-align: left;
+}
+.bang__xem-bang th {
+  position: sticky;
+  top: 0;
+  background: #f1f5f9;
+  color: #334155;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-bottom: 2px solid #cbd5e1;
+}
+.bang__xem-bang td {
+  padding: 5px 10px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #1e293b;
+}
+.bang__xem-bang tr:last-child td {
+  border-bottom: none;
+}
+.bang__xem-bang-them {
+  text-align: center;
+  font-style: italic;
+  color: #64748b;
+  padding: 6px 10px;
+}
+
+/* Thẻ giấy nhớ trên bảng: hiển thị tiêu đề rõ nghĩa + chip mã */
+.the--tin .the__nhan--tieude {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #1e293b;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.the--tin .the__chip-hang {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 2px 0;
+}
+.the--tin .the__chip-ma {
+  display: inline-block;
+  padding: 1px 6px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+}
+.mvp-the__ma {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+  background: #e2e8f0;
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-top: 3px;
 }

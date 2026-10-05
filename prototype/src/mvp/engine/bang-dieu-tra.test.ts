@@ -110,14 +110,20 @@ describe('chỗ ghim', () => {
     expect(vt[s.hoSo.taiLieu[0] ?? '']).toEqual({ x: 26, y: 34 });
     expect(vt[s.hoSo.taiLieu[1] ?? '']).toEqual({ x: 40, y: 174 });
     expect(viTriThe(b, { 'clue-chu-ky-h': { x: 700, y: 500 } })['clue-chu-ky-h']).toEqual({ x: 700, y: 500 });
-    // Thẻ đã kéo không đẩy tài liệu khác ra khỏi cột.
-    expect(viTriThe(b, { [s.hoSo.taiLieu[0] ?? '']: { x: 900, y: 10 } })[s.hoSo.taiLieu[1] ?? '']).toEqual({ x: 26, y: 34 });
+    // Thẻ đã kéo không làm tài liệu khác bị tự động sắp xếp / dồn lên.
+    expect(viTriThe(b, { [s.hoSo.taiLieu[0] ?? '']: { x: 900, y: 10 } })[s.hoSo.taiLieu[1] ?? '']).toEqual({ x: 40, y: 174 });
 
     const la = (id: string): TheBang => ({ id, loai: 'tin', nhan: id, phu: null, giaTri: [], gach: [], anh: null, khongDuLieu: true, the: null, mau: 'do' });
     const tu = viTriThe({ the: [la('x1'), la('x2'), la('x3'), la('x4'), la('x5'), la('x6'), la('x7')], day: [], boGhim: [] });
     expect(tu.x1).toEqual({ x: 190, y: 60 });
     expect(tu.x2).toEqual({ x: 422, y: 60 });
     expect(tu.x7).toEqual({ x: 190, y: 270 });
+    // Kéo x2 đi chỗ khác: x3 và x7 không bị tự động dồn lên hay sắp xếp lại ô của x2
+    const tuSauKhiKeo = viTriThe({ the: [la('x1'), la('x2'), la('x3'), la('x4'), la('x5'), la('x6'), la('x7')], day: [], boGhim: [] }, { x2: { x: 800, y: 800 } });
+    expect(tuSauKhiKeo.x1).toEqual({ x: 190, y: 60 });
+    expect(tuSauKhiKeo.x2).toEqual({ x: 800, y: 800 });
+    expect(tuSauKhiKeo.x3).toEqual({ x: 654, y: 60 });
+    expect(tuSauKhiKeo.x7).toEqual({ x: 190, y: 270 });
   });
 
   it('buổi họp (bảng đầy nhất chương 1): mọi thẻ nằm trọn trong khung 1600×900', () => {

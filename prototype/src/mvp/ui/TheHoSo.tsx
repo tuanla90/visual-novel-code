@@ -13,6 +13,9 @@ export function TheHoSo({ the, dienTen }: { the: TheHoSoMvp; dienTen: (t: string
   const noiDung = the.fields['Nội dung'] ?? (the.quotes['Nội dung hiển thị'] ? undefined : the.fields['Nội dung hiển thị']);
   const trich = the.quotes['Nội dung hiển thị'] ?? [];
 
+  const tieuDe = the.fields['Tiêu đề'] ?? the.heading;
+  const boNgoac = (t: string): string => t.replace(/^\[|\]$/g, '');
+
   if (the.loai === 'doc') {
     return (
       <article className="mvp-the mvp-the--doc mvp-doc-to">
@@ -26,7 +29,10 @@ export function TheHoSo({ the, dienTen }: { the: TheHoSoMvp; dienTen: (t: string
         </div>
 
         <header className="mvp-the__dau mvp-doc-to__dau">
-          <h3 className="mvp-the__tieude"><CodeText text={dienTen(the.heading)} /></h3>
+          <h3 className="mvp-the__tieude"><CodeText text={dienTen(tieuDe)} /></h3>
+          {tieuDe !== the.heading && boNgoac(tieuDe) !== boNgoac(the.heading) ? (
+            <span className="mvp-the__ma" title="Mã tài liệu">{dienTen(the.heading)}</span>
+          ) : null}
           {nguon ? <p className="mvp-the__nguon">Nguồn: <CodeText text={dienTen(nguon)} /></p> : null}
         </header>
 
@@ -83,7 +89,10 @@ export function TheHoSo({ the, dienTen }: { the: TheHoSoMvp; dienTen: (t: string
     <article className={`mvp-the mvp-the--${the.loai}`}>
       <header className="mvp-the__dau">
         <span className="mvp-the__loai">{NHAN_LOAI[the.loai]}</span>
-        <h3 className="mvp-the__tieude"><CodeText text={dienTen(the.heading)} /></h3>
+        <h3 className="mvp-the__tieude"><CodeText text={dienTen(tieuDe)} /></h3>
+        {tieuDe !== the.heading && boNgoac(tieuDe) !== boNgoac(the.heading) ? (
+          <span className="mvp-the__ma" title="Mã hồ sơ">{dienTen(the.heading)}</span>
+        ) : null}
         {nguon ? <p className="mvp-the__nguon">Nguồn: <CodeText text={dienTen(nguon)} /></p> : null}
       </header>
       {noiDung ? (

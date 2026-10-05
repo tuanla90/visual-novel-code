@@ -173,7 +173,7 @@ function CauNganh({ kb, nut, dienTen, onChonNganh }: Omit<TaoNhanVatMvpProps, 'o
                   if (guard.click(e)) onChonNganh(nganh);
                 }}
               >
-                {nganh}
+                <span className="mc__choice-text">{nganh}</span>
               </button>
             </li>
           ))}

@@ -27,6 +27,8 @@ export interface TheBang {
   loai: LoaiTheBang;
   /** Chữ lớn trên thẻ (vd "[Tòa B]", "Hai lớp: BC24A, BC23A"). */
   nhan: string;
+  /** Tiêu đề đầy đủ có ngữ cảnh (vd "Hộp tòa B, mở 9h sáng thứ Hai"). */
+  tieuDe?: string | null;
   /** Dòng nhỏ: nguồn mẩu tin / số dòng của phiếu. */
   phu: string | null;
   /** Giá trị kéo được vào truy vấn. */
@@ -40,6 +42,10 @@ export interface TheBang {
   the: TheHoSoMvp | null;
   /** Màu đầu ghim người chơi chọn (mặc định đỏ). */
   mau: MauGhimMvp;
+  /** Câu lệnh SQL chuẩn / đã chạy (với thẻ phiếu truy vấn). */
+  sql?: string | null;
+  /** Cột kết quả truy vấn (nếu có). */
+  cot?: { ten: string; kieu: 'TEXT' | 'INTEGER' }[];
 }
 
 export interface DayBang {
@@ -96,7 +102,21 @@ export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; d
     const tt = thuThachCua(id);
     const truyVan = phieuCua(id);
     if (truyVan) {
-      dat({ id, loai: 'phieu', nhan: truyVan.nhan, phu: truyVan.tongHop ? 'TỔNG HỢP' : `${truyVan.soDong} dòng`, giaTri: [], gach: [], anh: null, khongDuLieu: false, the: hs ?? null, mau: mauCua(id) });
+      dat({
+        id,
+        loai: 'phieu',
+        nhan: truyVan.nhan,
+        tieuDe: truyVan.nhan,
+        phu: truyVan.tongHop ? 'TỔNG HỢP' : `${truyVan.soDong} dòng`,
+        giaTri: [],
+        gach: [],
+        anh: null,
+        khongDuLieu: false,
+        the: hs ?? null,
+        mau: mauCua(id),
+        sql: truyVan.sql,
+        cot: truyVan.cot,
+      });
       return;
     }
     if (tt?.vatChung) {
@@ -105,6 +125,7 @@ export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; d
         id,
         loai: 'phieu',
         nhan: tt.vatChung.title,
+        tieuDe: tt.vatChung.title,
         phu: n === null ? null : `${n} dòng`,
         giaTri: tt.vatChung.giaTri,
         gach: [],
@@ -112,16 +133,19 @@ export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; d
         khongDuLieu: tt.vatChung.giaTri.length === 0,
         the: hs ?? { id, loai: 'ev', heading: tt.vatChung.title, fields: { 'Nội dung': tt.vatChung.description }, quotes: {} },
         mau: mauCua(id),
+        sql: tt.sqlChuan,
       });
       return;
     }
     if (!hs) return;
     const giaTri = tach(hs.fields['Giá trị cho trình dựng']);
     const loai: LoaiTheBang = hs.loai === 'doc' ? 'tai-lieu' : hs.loai === 'ev' ? 'vat' : 'tin';
+    const tieuDe = hs.fields['Tiêu đề'] ?? hs.heading;
     dat({
       id,
       loai,
       nhan: hs.heading,
+      tieuDe,
       phu: hs.fields['Nguồn'] ?? null,
       giaTri,
       gach: [],
@@ -144,7 +168,19 @@ export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; d
     if (!coRoi.has(note.nguonId)) continue;
     const id = note.id;
     if (coRoi.has(id)) continue;
-    dat({ id, loai: 'note', nhan: note.nhan, phu: `Trích cột ${note.cot}`, giaTri: note.giaTri, gach: [], anh: null, khongDuLieu: false, the: null, mau: mauCua(id) });
+    dat({
+      id,
+      loai: 'note',
+      nhan: note.nhan,
+      tieuDe: note.nhan,
+      phu: `Trích cột ${note.cot}`,
+      giaTri: note.giaTri,
+      gach: [],
+      anh: null,
+      khongDuLieu: false,
+      the: null,
+      mau: mauCua(id),
+    });
   }
 
   // Sợi chỉ đỏ: thẻ đã kéo vào câu → phiếu kết quả.
@@ -178,7 +214,7 @@ export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; d
   }
 
   if (s.nhiemVu && s.giaiDoan !== 'het') {
-    the.push({ id: MA_THE_HOI, loai: 'hoi', nhan: s.nhiemVu, phu: null, giaTri: [], gach: [], anh: null, khongDuLieu: true, the: null, mau: 'do' });
+    the.push({ id: MA_THE_HOI, loai: 'hoi', nhan: s.nhiemVu, tieuDe: s.nhiemVu, phu: null, giaTri: [], gach: [], anh: null, khongDuLieu: true, the: null, mau: 'do' });
   }
   return { the, day, boGhim };
 }
@@ -207,16 +243,16 @@ const CHO_SAN: Record<string, { x: number; y: number }> = {
   'clue-bao-chi-k24': { x: 204, y: 530 },
   'ev-the-lich': { x: 410, y: 640 },
   'clue-quyen-du-lieu': { x: 424, y: 232 },
-  'ev-hai-lop': { x: 636, y: 430 },
+  'ev-hai-lop': { x: 460, y: 460 },
   'clue-can-ma-va-can-cu': { x: 440, y: 46 },
-  'clue-phieu-tra-cuu': { x: 664, y: 58 },
-  'ev-hai-ma': { x: 910, y: 236 },
-  'clue-hoai-nguoi-nop': { x: 1176, y: 96 },
-  'clue-ten-tep': { x: 916, y: 590 },
-  'ev-nhat-ky-in': { x: 1150, y: 500 },
-  'clue-loi-chu-cuong': { x: 1400, y: 330 },
-  'ev-hai-dong-sua': { x: 1340, y: 716 },
-  [MA_THE_HOI]: { x: 1396, y: 40 },
+  'clue-phieu-tra-cuu': { x: 711, y: 58 },
+  'ev-hai-ma': { x: 960, y: 236 },
+  'clue-hoai-nguoi-nop': { x: 1200, y: 96 },
+  'clue-ten-tep': { x: 960, y: 590 },
+  'ev-nhat-ky-in': { x: 1200, y: 480 },
+  'clue-loi-chu-cuong': { x: 1400, y: 310 },
+  'ev-hai-dong-sua': { x: 1340, y: 680 },
+  [MA_THE_HOI]: { x: 711, y: 361 },
 };
 
 /** Góc nghiêng cố định theo mã (bảng trông như ghim tay mà không nhảy mỗi lần vẽ lại). */
@@ -226,29 +262,26 @@ export function gocNghieng(id: string): number {
   return ((h % 9) - 4) * 0.7;
 }
 
-/** Vị trí từng thẻ: chỗ người chơi đã kéo tới → chỗ dựng sẵn → tự xếp. Tài liệu xếp thành cột ở mép trái. */
+/** Vị trí từng thẻ: chỗ người chơi đã kéo tới → chỗ dựng sẵn → tự xếp. Tài liệu xếp thành cột ở mép trái.
+ * Khi một thẻ được kéo, các thẻ khác giữ nguyên slot mặc định, không tự động dồn lên hay sắp xếp lại. */
 export function viTriThe(bang: BangDieuTra, daKeo: Record<string, { x: number; y: number }> = {}): Record<string, { x: number; y: number }> {
   const ra: Record<string, { x: number; y: number }> = {};
   let soTaiLieu = 0;
   let tuXep = 0;
   for (const t of bang.the) {
     const keo = daKeo[t.id];
-    if (keo) {
-      ra[t.id] = keo;
-      continue;
-    }
     if (t.loai === 'tai-lieu') {
-      ra[t.id] = { x: 26 + (soTaiLieu % 2) * 14, y: 34 + soTaiLieu * 140 };
+      ra[t.id] = keo ?? { x: 26 + (soTaiLieu % 2) * 14, y: 34 + soTaiLieu * 140 };
       soTaiLieu++;
       continue;
     }
     const san = CHO_SAN[t.id];
     if (san) {
-      ra[t.id] = san;
+      ra[t.id] = keo ?? san;
       continue;
     }
     // Tự xếp: lưới 6 cột bắt đầu từ góc trên, tránh cột tài liệu.
-    ra[t.id] = { x: 190 + (tuXep % 6) * 232, y: 60 + Math.floor(tuXep / 6) * 210 };
+    ra[t.id] = keo ?? { x: 190 + (tuXep % 6) * 232, y: 60 + Math.floor(tuXep / 6) * 210 };
     tuXep++;
   }
   return ra;

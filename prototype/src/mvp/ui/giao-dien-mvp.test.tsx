@@ -129,7 +129,8 @@ describe('bảng điều tra + sổ cá nhân MVP (khung hòm đồ prototype)',
     theH.focus();
     await userEvent.keyboard('{Enter}');
     const xem = within(hop).getByRole('dialog', { name: 'Thẻ đang xem' });
-    expect(within(xem).getByRole('heading', { name: h.heading })).toBeInTheDocument();
+    const tieuDeMongDoi = h.fields?.['Tiêu đề'] ?? h.heading;
+    expect(within(xem).getByRole('heading', { name: tieuDeMongDoi })).toBeInTheDocument();
     await userEvent.click(within(xem).getByRole('button', { name: 'Đóng' }));
     expect(within(hop).queryByRole('dialog', { name: 'Thẻ đang xem' })).toBeNull();
     await userEvent.keyboard('{Escape}');

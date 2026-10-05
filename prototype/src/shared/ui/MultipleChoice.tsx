@@ -71,7 +71,9 @@ export function MultipleChoice({ question, attempts, gameKey, onChoose, random, 
                   onChoose(c.id);
                 }}
               >
-                <CodeText text={c.text} />
+                <span className="mc__choice-text">
+                  <CodeText text={c.text} />
+                </span>
               </button>
             </li>
           ))}

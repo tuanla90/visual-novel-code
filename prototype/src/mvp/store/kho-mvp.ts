@@ -13,7 +13,7 @@ import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
 import type { KichBanMvp, LoiMvp } from '../../content/mvp/types';
 import { taoTrangThai, tenKhungHienTai, xuLy, type HanhDongMvp } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
-import { ghiNhanTrangThaiDongHanh, ghiNhanTruyVanDongHanh, khoaNguCanhDongHanh, type BanDongHanhMvp, type TinNhanDongHanhMvp, type TruyVanDaXemMvp } from '../engine/tri-nho-dong-hanh';
+import { banDangCoMat, ghiNhanTrangThaiDongHanh, ghiNhanTruyVanDongHanh, khoaNguCanhDongHanh, type BanDongHanhMvp, type TinNhanDongHanhMvp, type TinNhanNhomDongHanhMvp, type TruyVanDaXemMvp } from '../engine/tri-nho-dong-hanh';
 
 export const KHOA_BO_NOI_DUNG = 'clb_bo_noi_dung';
 
@@ -79,6 +79,7 @@ export interface KhoMvp {
   napTuO: (o: number) => TrangThaiMvp | null;
   ghiNhanTruyVan: (query: TruyVanDaXemMvp, loi: readonly LoiMvp[], tai: TrangThaiMvp, lan: number) => void;
   ghiNhanChat: (ban: BanDongHanhMvp, messages: TinNhanDongHanhMvp[], key: string, lan: number) => boolean;
+  ghiNhanChatNhom: (messages: TinNhanNhomDongHanhMvp[], keys: Partial<Record<BanDongHanhMvp, string>>, lan: number) => boolean;
 }
 
 function boNhoPhien(): Storage {
@@ -146,13 +147,24 @@ export function taoKhoMvp(options: { persist?: boolean; storageKey?: string } = 
       const daLuu = get().oLuu[o];
       if (!daLuu) return null;
       const s = ghiNhanTrangThaiDongHanh(KICH_BAN, structuredClone(daLuu.trangThai));
-      set({ trangThai: s, lichSuLui: [], lanDoiVan: get().lanDoiVan + 1 });
-      return s;
+      const sua = xuLy(KICH_BAN, s, { type: 'sua-con-tro' });
+      set({ trangThai: sua, lichSuLui: [], lanDoiVan: get().lanDoiVan + 1 });
+      return sua;
     },
     ghiNhanTruyVan: (query, loi, tai, lan) => {
       const s = get().trangThai;
       if (!s || get().lanDoiVan !== lan || s.batDauLuc !== tai.batDauLuc || JSON.stringify(s.conTro) !== JSON.stringify(tai.conTro)) return;
       set({ trangThai: ghiNhanTruyVanDongHanh(KICH_BAN, s, query, loi) });
+    },
+    ghiNhanChatNhom: (messages, keys, lan) => {
+      const s = get().trangThai;
+      if (!s || get().lanDoiVan !== lan) return false;
+      const present = banDangCoMat(KICH_BAN, s);
+      if (!present.length || present.length !== Object.keys(keys).length
+        || present.some((ban) => keys[ban] !== khoaNguCanhDongHanh(s, ban))) return false;
+      const daXem = ghiNhanTrangThaiDongHanh(KICH_BAN, s);
+      set({ trangThai: { ...daXem, triNhoDongHanh: { ...daXem.triNhoDongHanh!, hoiThoaiNhom: messages.slice(-36) } } });
+      return true;
     },
     ghiNhanChat: (ban, messages, key, lan) => {
       const s = get().trangThai;
@@ -176,6 +188,14 @@ export function taoKhoMvp(options: { persist?: boolean; storageKey?: string } = 
       migrate: (_cu, phienBan) => (phienBan < PHIEN_BAN_KHO_MVP ? { trangThai: null, oLuu: Array.from({ length: SO_O_LUU_MVP }, () => null) } : _cu) as KhoMvp,
       storage: createJSONStorage(boNhoPhien),
       partialize: (k) => ({ trangThai: k.trangThai, oLuu: k.oLuu }) as unknown as KhoMvp,
+      onRehydrateStorage: () => (state) => {
+        if (state?.trangThai) {
+          const sua = xuLy(KICH_BAN, state.trangThai, { type: 'sua-con-tro' });
+          if (sua !== state.trangThai) {
+            state.trangThai = sua;
+          }
+        }
+      },
     }),
   );
 }

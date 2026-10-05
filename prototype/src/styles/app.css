@@ -1646,6 +1646,22 @@
   user-select: none;
 }
 
+.mc__choice-text {
+  display: block;
+  width: 100%;
+  text-align: center;
+  line-height: 1.45;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.mc__choice .game-highlight {
+  display: inline;
+  white-space: normal;
+  font-weight: 700;
+}
+
 /* Mã code trong câu chọn */
 .mc__choice .code-text {
   background: rgba(251, 191, 36, 0.18);
@@ -2716,7 +2732,7 @@ html.facilitator-on #root {
     inset 0 -2px 4px rgba(180, 83, 9, 0.25),
     0 0 14px rgba(245, 158, 11, 0.3) !important;
   cursor: pointer !important;
-  transform: rotate(-1.2deg);
+  transform: none;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, filter 0.2s ease !important;
   user-select: none;
   overflow: hidden;
@@ -2747,7 +2763,7 @@ html.facilitator-on #root {
 }
 
 .dialog__next:hover {
-  transform: rotate(-1.2deg) scale(1.05) translateY(-2px) !important;
+  transform: scale(1.05) translateY(-2px) !important;
   background: linear-gradient(135deg, #ffffff 0%, #fef3c7 25%, #fde047 70%, #f59e0b 100%) !important;
   border-color: #b45309 !important;
   box-shadow: 
@@ -2764,7 +2780,7 @@ html.facilitator-on #root {
 }
 
 .dialog__next:active {
-  transform: rotate(-1.2deg) scale(0.97) translateY(1px) !important;
+  transform: scale(0.97) translateY(1px) !important;
   box-shadow: 
     0 3px 8px rgba(15, 23, 42, 0.35),
     0 0 10px rgba(245, 158, 11, 0.4) !important;
@@ -2778,7 +2794,7 @@ html.facilitator-on #root {
   font-family: var(--font-ui) !important;
   font-size: 1.15rem !important;
   font-weight: 800 !important;
-  font-style: italic;
+  font-style: normal;
   color: #3b1d06 !important;
   letter-spacing: 0.03em;
   line-height: 1;

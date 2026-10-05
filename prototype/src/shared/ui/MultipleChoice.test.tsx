@@ -3,6 +3,7 @@ import { StrictMode } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { MultipleChoiceQuestion } from '../../story/types';
 import { forgetChoiceOrders } from './choice-order';
+import { HighlightProvider } from '../highlight/HighlightText';
 import { MultipleChoice } from './MultipleChoice';
 
 const QUESTION: MultipleChoiceQuestion = {
@@ -80,4 +81,57 @@ describe('MultipleChoice', () => {
 
     expect(labels1).toEqual(labels2);
   });
+
+  it('bọc nội dung trong .mc__choice-text và bảo toàn khoảng trắng khi tô màu từ khóa', () => {
+    const onChoose = vi.fn();
+    const mockEngine = {
+      tokenize(text: string) {
+        if (text.includes('thư viện')) {
+          const start = text.indexOf('thư viện');
+          return [{ start, end: start + 8, text: 'thư viện', category: 'place' as const }];
+        }
+        return [];
+      },
+    };
+
+    const questionWithKeywords: MultipleChoiceQuestion = {
+      id: 'q-mc-highlight',
+      asker: { speaker: 'ha-vy', expression: 'neutral', text: 'Tìm ở đâu?' },
+      choices: [
+        { id: 'opt-1', text: 'Gặp Nam ở thư viện vào buổi sáng', correct: true, feedback: [] },
+        { id: 'opt-2', text: 'Kiểm tra `select * from users` ngay', correct: false, feedback: [] },
+      ],
+    };
+
+    const { container } = render(
+      <HighlightProvider engine={mockEngine as any}>
+        <MultipleChoice question={questionWithKeywords} attempts={0} gameKey={null} onChoose={onChoose} />
+      </HighlightProvider>,
+    );
+
+    const choiceButtons = container.querySelectorAll<HTMLButtonElement>('.mc__choice');
+    expect(choiceButtons.length).toBe(2);
+
+    // Kiểm tra cấu trúc .mc__choice-text để bảo đảm inline formatting context
+    const textWrappers = container.querySelectorAll('.mc__choice-text');
+    expect(textWrappers.length).toBe(2);
+
+    // Kiểm tra văn bản giữ nguyên khoảng trắng, không dính chữ ("ở thư viện" chứ không phải "ởthư viện")
+    const opt1Btn = Array.from(choiceButtons).find((b) => b.textContent?.includes('Gặp Nam'));
+    const opt2Btn = Array.from(choiceButtons).find((b) => b.textContent?.includes('Kiểm tra'));
+    expect(opt1Btn).toBeDefined();
+    expect(opt2Btn).toBeDefined();
+    expect(opt1Btn?.textContent).toBe('Gặp Nam ở thư viện vào buổi sáng');
+
+    const highlightSpan = opt1Btn?.querySelector('.game-highlight');
+    expect(highlightSpan).not.toBeNull();
+    expect(highlightSpan?.textContent).toBe('thư viện');
+    expect(highlightSpan?.classList.contains('game-highlight--place')).toBe(true);
+
+    // Kiểm tra code text trong lựa chọn
+    const codeTag = opt2Btn?.querySelector('code');
+    expect(codeTag).not.toBeNull();
+    expect(codeTag?.textContent).toBe('select * from users');
+  });
 });
+

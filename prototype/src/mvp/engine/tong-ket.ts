@@ -13,6 +13,16 @@
 import type { KichBanMvp } from '../../content/mvp/types';
 import type { TrangThaiMvp } from './trang-thai';
 
+export type HangDanhGia = 'S' | 'A' | 'B' | 'C';
+
+/** Xếp hạng theo độ hoàn thành: S (>=95%), A (>=80%), B (>=65%), C (<65%). */
+export function tinhHang(phanTram: number): HangDanhGia {
+  if (phanTram >= 95) return 'S';
+  if (phanTram >= 80) return 'A';
+  if (phanTram >= 65) return 'B';
+  return 'C';
+}
+
 export interface TongKetVu {
   phieu: { co: number; tong: number };
   doiChat: { du: number; tong: number };
@@ -25,6 +35,7 @@ export interface TongKetVu {
   hetLuot: number;
   phanTram: number;
   muc: 'kin' | 'du' | 'thieu';
+  hang: HangDanhGia;
 }
 
 function chuoiTu(kb: KichBanMvp, batDau: string): Set<string> {
@@ -87,7 +98,18 @@ export function tongKetVu(kb: KichBanMvp, s: TrangThaiMvp, batDau: string | null
     ...(chuyenAn.tong === 0 ? [] : [chuyenAn.co / chuyenAn.tong]),
   ];
   const tb = diem.reduce((a, b) => a + b, 0) / diem.length;
-  return { phieu, doiChat, cauHoi, mauGiay, chuyenAn, hetLuot, phanTram: Math.round(tb * 100), muc: tb >= 0.999 ? 'kin' : tb >= 0.7 ? 'du' : 'thieu' };
+  const phanTram = Math.round(tb * 100);
+  return {
+    phieu,
+    doiChat,
+    cauHoi,
+    mauGiay,
+    chuyenAn,
+    hetLuot,
+    phanTram,
+    muc: tb >= 0.999 ? 'kin' : tb >= 0.7 ? 'du' : 'thieu',
+    hang: tinhHang(phanTram),
+  };
 }
 
 /** Câu chị Minh Anh chốt theo mức. */

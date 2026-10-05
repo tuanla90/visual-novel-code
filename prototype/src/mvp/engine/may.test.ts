@@ -55,6 +55,18 @@ describe('máy MVP: mở đầu', () => {
     expect(s.nganh).toBe('Kế toán');
   });
 
+  it('tự phục hồi khi con trỏ ô lưu / phiên cũ vượt quá độ dài chuỗi do kịch bản được gọt bớt dòng', () => {
+    let s = taoTrangThai(KB, 1);
+    const chuoiDau = KB.lich.chuoiDau;
+    const c = KB.chuoi.find((x) => x.id === chuoiDau)!;
+    // Giả lập trạng thái lưu từ phiên bản trước: con trỏ lưu vượt quá số nút hiện có
+    s = { ...s, conTro: { chuoi: chuoiDau, nut: c.nodes.length + 3, boiCanh: 'mo-dau' } };
+    expect(khungNhin(KB, s).kind).toBe('error');
+    const sau = xuLy(KB, s, { type: 'sua-con-tro' });
+    expect(sau.loi).toBeNull();
+    expect(khungNhin(KB, sau).kind).not.toBe('error');
+  });
+
   it('đi hết mở đầu (lọc thử ở Ngày hội, sổ CLB, lá thư) → ngày 1 sáng, có manh mối [H.]', () => {
     const s = choi(taoTrangThai(KB, 1), { chonDuKien: () => null }, (st) => st.giaiDoan === 'ngay');
     expect(s.ngay).toBe(1);

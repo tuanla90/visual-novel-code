@@ -27,7 +27,7 @@ describe('DialogBox', () => {
     render(<DialogBox line={{ speaker: 'narrator', text: 'Thông điệp' }} display="card" onAdvance={onAdvance} onOpenNotebook={onOpenNotebook} />);
     expect(document.querySelector('.dialog--card')).not.toBeNull();
     expect(document.querySelector('.dialog__card-decor')).not.toBeNull();
-    expect(document.querySelector('.dialog__card-hint')).not.toBeNull();
+    expect(document.querySelector('.dialog__card-hint')).toBeNull();
     expect(document.querySelector('.dialog__btn-notebook')).toBeNull();
     await passPressGuard();
     await user.click(screen.getByText('Thông điệp'));

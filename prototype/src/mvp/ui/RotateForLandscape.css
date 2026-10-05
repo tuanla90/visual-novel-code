@@ -1,0 +1,40 @@
+/* One landscape instruction across the MVP title, story, map, SQL challenges and inventory. */
+.mvp-xoay { display: none; }
+
+@media (orientation: portrait) and (max-width: 900px) {
+  .mvp-xoay {
+    position: fixed;
+    inset: 0;
+    z-index: 10050;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px;
+    background: rgba(8, 12, 20, 0.98);
+    color: #f8fafc;
+    text-align: center;
+  }
+
+  .mvp-xoay__may {
+    width: 34px;
+    height: 58px;
+    margin-bottom: 8px;
+    border: 3px solid #fbbf24;
+    border-radius: 8px;
+    animation: mvp-xoay 2.4s ease-in-out infinite;
+  }
+
+  .mvp-xoay__chu { margin: 0; color: #fde68a; font: 800 1.25rem var(--font-ui); }
+  .mvp-xoay__phu { max-width: 34em; margin: 0; color: rgba(248, 250, 252, 0.8); font-size: 0.95rem; }
+}
+
+@keyframes mvp-xoay {
+  0%, 20% { transform: rotate(0deg); }
+  55%, 100% { transform: rotate(90deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mvp-xoay__may { animation: none; }
+}

@@ -63,9 +63,13 @@ Trong thư mục `prototype`, chạy `npm.cmd run dev` trên PowerShell. Dev, pr
 
 Chat gửi tin nhắn, hồ sơ tính cách và phần thoại/hồ sơ **riêng nhân vật đã chứng kiến** tới máy chủ AI. Tri thức và hội thoại của Tùng/Hà Vy nằm trong trạng thái ván: Lưu/Nạp và Lùi khôi phục đúng thời điểm; ván mới bắt đầu lại. Save cũ chưa có lịch sử chỉ ghi nhận từ cảnh hiện tại, không tự cấp toàn bộ hồ sơ cho nhân vật.
 
+**Trò chuyện nhóm:** bấm **Đi cùng** hoặc ảnh bạn đồng hành để mở một cuộc trò chuyện chung. Chọn **Cả nhóm**, chọn tên người muốn hỏi, hoặc gọi tên trong câu hỏi. Câu hỏi về dữ kiện/suy luận ưu tiên Hà Vy; các câu hỏi khác ưu tiên Tùng khi có mặt. Một người trả lời chính; người còn lại chỉ có thể góp một câu khi câu hỏi cần thêm góc nhìn, và được phép im lặng. Mỗi lượt dùng ngữ cảnh riêng cho từng người, không chuyển dữ kiện DB giữa hai nhân vật. Lịch sử ghi lại ai có mặt để người đến sau không tự biết các cuộc trò chuyện trước. Lời chat sinh ra không trở thành bằng chứng đã xác minh. Lượt góp lời tối đa 12 giây trong tổng hạn 45 giây; lỗi ở lượt này vẫn giữ câu trả lời chính.
+
+Địa điểm nằm bên trái, bạn đồng hành và khung trò chuyện ở bên phải. Khi mở chat, lời nhắc **Việc đang làm** từ kịch bản được ghim trong khung (bấm để đọc đầy đủ). Chạm nhiệm vụ trên thanh trạng thái để xem toàn bộ mục tiêu và lời nhắc. Trên mobile, thanh trạng thái chỉ có một hàng; các điều khiển Lùi, Auto, Skip, Lưu/Nạp và Cài đặt nằm trong menu, phần thoại giữ nút **Tiếp tục**. Nút **Nói** gửi lời cho nhóm/người đang chọn.
+
 Dữ liệu số lấy bằng `chaySql` trên chính SQLite chỉ đọc mà laptop đang dùng (`kb.duLieu`; hiện bộ dữ liệu game cố định, chưa sinh dataset riêng mỗi run). Mỗi lần chat chỉ chạy lại tối đa 4 truy vấn người chơi đã xem cùng nhân vật: kết quả laptop, lọc thử, màn chiếu và xem trước bảng. Gửi tên cột, tổng dòng thật và tối đa 6 dòng/8 cột, có cờ cắt mẫu; không gửi toàn bộ DB, SQL đáp án chuẩn chưa xem hay sự kiện tương lai. Khi nguồn không chạy được, AI nhận trạng thái chưa có dữ liệu. Phản hồi đang chờ bị bỏ khi đổi cảnh, Lùi hoặc Nạp save.
 
-Khóa API chỉ ở máy chủ. Backend chỉ trả lời văn bản cuối cùng, lọc phần suy luận nội bộ của DeepSeek/Gemini. Nhánh OpenAI dùng `store: false`. Nếu chưa cấu hình khóa, chat báo máy chủ chưa bật AI.
+Khóa API chỉ ở máy chủ. Backend chỉ trả lời văn bản cuối cùng, lọc phần suy luận nội bộ của DeepSeek/Gemini. Nhánh OpenAI dùng `store: false`. Khi kết nối chưa sẵn sàng, khung trò chuyện báo gián đoạn và hướng dẫn thử lại; không hiện thuật ngữ cấu hình AI trong lời trò chuyện.
 
 ## 3. Trình duyệt hỗ trợ
 
