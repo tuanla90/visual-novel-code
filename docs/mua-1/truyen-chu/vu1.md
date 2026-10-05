@@ -41,7 +41,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 
 | Tiêu chí | Ngưỡng thiết kế | Thực tế | Đánh giá |
 |---|---|---|---|
-| Số dòng thoại | ≥ 300 | 500 | ✅ Đạt |
+| Số dòng thoại | ≥ 300 | 499 | ✅ Đạt |
 | Số chuỗi phân cảnh | ≥ 40 | 111 | ✅ Đạt |
 | Màn tra cứu SQL | ≥ 5 | 5 | ✅ Đạt |
 | Nhịp đối chất | ≥ 3 | 1 | ⚠️ Bản mẫu |
@@ -849,7 +849,6 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 📍 **Phòng Công tác sinh viên** — *Chi tiết ẩn: Khay giấy trên quầy*
 
 - *Trên khay là phiếu yêu cầu tra cứu của CLB, chữ ký cô Lan còn tươi mực.*
-- **Hà Vy**: Phiếu của mình. Cô Lan ký rồi kìa.
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Phòng Công tác sinh viên](#doan-19)

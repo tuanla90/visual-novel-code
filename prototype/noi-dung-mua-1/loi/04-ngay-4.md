@@ -89,7 +89,6 @@
 
 ## n4-ctsv-an.1
 - **narrator**: Trên khay là phiếu yêu cầu tra cứu của CLB, chữ ký cô Lan còn tươi mực.
-- **ha-vy** (neutral): Phiếu của mình. Cô Lan ký rồi kìa.
 
 ## n4-bd-toa-b-an.1
 - **narrator**: Trên ghế đá là ca nhựa và ấm trà của bác Thịnh, nắp vẫn còn ấm.

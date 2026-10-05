@@ -5442,12 +5442,6 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Trên khay là phiếu yêu cầu tra cứu của CLB, chữ ký cô Lan còn tươi mực."
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "neutral",
-          "text": "Phiếu của mình. Cô Lan ký rồi kìa."
         }
       ]
     },
