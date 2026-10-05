@@ -188,3 +188,15 @@ và thói quen của mình cho người chơi nghe. Ngoài đời không ai nói
 - (?<!\p{L})(tính (tớ|em|mình|cháu)|(tớ|em|mình) vốn (là|hay|thích|không))(?!\p{L}) · mức: nhắc · áp: thoại · vì: tự tả tính cách
 - (?<!\p{L})(tôi|tớ|em|mình|bác|cô|chú|anh|chị|cháu)( thì| vốn| cứ)? (nói|sống|tính) (thẳng|thật thà|thẳng tính) · mức: lỗi · áp: thoại · vì: tự tả cách nói của mình (Hiếu "Tôi nói thẳng vậy thôi"); cho thấy bằng việc: "Có gì hỏi thẳng đây, đừng xì xào sau lưng"
 - (?:^|[.!?…]\s+)(Tớ|Tôi|Mình) (trông|trực|giữ|quản|phụ trách) [^.!?]{0,40} · mức: nhắc · áp: thoại · vì: tự khai vai trò ("Bác trông tòa này" — bộ đồng phục đã cho thấy); chỉ xét đại từ chắc là tự xưng, "Bác/Chú/Em" thường là gọi người nghe
+
+<!-- Tự vấn kể lể: vẫn thuộc mục "Nói thẳng" (máy chỉ đọc mẫu ở hai mục "Chống giọng AI" và "Nói thẳng"). -->
+
+<!-- User 05/10/2026, đọc cảnh mở đầu Vụ 1: lời người chơi tự nghĩ mà lại thuật cho người đọc nghe một tờ giấy ghi gì, thiếu gì
+("Thông báo chỉ ghi: phòng 408", "Ký túc xá ở đâu thì thông báo không ghi", "Sơ đồ chỉ vẽ ba dãy nhà") là "nói trực tiếp".
+Người thật tự vấn bằng câu hỏi ("Không biết ký túc xá ở chỗ nào nhỉ?"). Cú pháp như "## Chống giọng AI".
+Chỉ bắt lời nghĩ trong ngoặc đơn và lời nhắc việc; lời nói ra miệng về giới hạn của chứng cứ ("Phiếu chưa nói tin nào có trước")
+là chủ ý của truyện, không bắt. Phần diễn đạt khác chữ (lời dẫn nói điều hiển nhiên, sai thực tế, nhắc lại số phòng) soát tay theo README. -->
+
+- ^\(?[^)]*(thông báo|giấy báo|sơ đồ|tờ giấy|bảng tin|tấm biển|biển)( trên tường| kia| này)?( thì)? (chỉ|không|chưa|chẳng) (ghi|vẽ|nói|cho biết|đề)(?!\p{L}) · mức: lỗi · áp: thoại · vì: tự vấn mà thuật lại tờ giấy ghi gì, thiếu gì; đổi thành câu hỏi tự hỏi ("Thế thang bộ nằm chỗ nào?")
+- ^\(?[^)]*\S+ ở đâu thì [^.!?)]{1,30} (không|chưa|chẳng) (ghi|vẽ|nói|cho biết)(?!\p{L}) · mức: lỗi · áp: thoại · vì: "X ở đâu thì Y không ghi": kể lể; người thật tự hỏi "X ở chỗ nào nhỉ?"
+- ^\([^)]*(thông báo|giấy báo|sơ đồ|tờ giấy|bảng tin) [^.!?)]{0,20}(ghi|vẽ)( rõ)?:? · mức: nhắc · áp: thoại · vì: người chơi tự đọc lại giấy tờ cho người đọc nghe; nếu cần nội dung tờ giấy thì để lời dẫn đọc một lần

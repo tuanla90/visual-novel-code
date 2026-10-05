@@ -126,3 +126,12 @@ Soát tay, máy không bắt được. Câu thuộc một trong các loại dư�
 - Lời chỉ nhắc vật / người **có trên ảnh** của cảnh đó. Cổng trường, cổng KTX vẽ trống: không "vài chiếc vali lăn qua thanh chắn", không "bánh vali kẹt ray cổng". Vali của người chơi chỉ hiện ở xe buýt, sảnh KTX và hai ảnh chibi cầu thang.
 - Ảnh đã vẽ thì lời dẫn không tả lại (người chơi tựa cửa sổ, vali dưới chân). Ghi điều ảnh vẽ vào `[DÀN DỰNG]` để người sửa lời sau đối chiếu.
 - Độc thoại nhớ nhà, tự sự kiểu văn mẫu ("mẹ nhét thêm hộp ruốc", "đọc giấy báo đến lần thứ ba mới dám tin") là vi phạm, cắt.
+
+## Tự vấn và lời dẫn (user 05/10/2026, cảnh mở đầu Vụ 1)
+
+User đọc cảnh xuống xe buýt và trả lại. Bốn điều, áp cho mọi vụ:
+
+- **Tự vấn là câu hỏi, không phải bản tin.** Lời người chơi tự nghĩ và lời `> NHẮC VIỆC player` viết như người thật tự hỏi: "Tìm ký túc xá đã. Thông báo chỉ ghi: phòng 408." → "Không biết ký túc xá ở chỗ nào nhỉ?". Các câu thuật "thông báo chỉ ghi…", "sơ đồ chỉ vẽ…", "X ở đâu thì thông báo không ghi" là nói trực tiếp: máy bắt (các mẫu "tự vấn kể lể" ở cuối mục "## Nói thẳng" của `luat-giong.md`).
+- **Lời dẫn không nói điều hiển nhiên.** "Xe buýt chạy đi." không cho biết gì: cắt. Lời dẫn chỉ ở lại khi nó đưa một điều người chơi cần mà ảnh không cho (nội dung tờ giấy, một tiếng động, thời gian trôi).
+- **Đúng với đời thật.** Ngày nhập học không ai đóng cửa kính chốt bảo vệ. Ảnh nền vẽ trống thì lời im, không bịa lý do cho cái trống ấy.
+- **Điều đã nói thì không nhắc lại.** Số phòng 408 chỉ nói một lần ở chỗ người chơi cần tới nó (nghĩ ra "tức là tầng bốn"), không lặp ở mỗi cảnh.

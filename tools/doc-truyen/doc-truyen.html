@@ -123,6 +123,9 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
 .memo{font:14px/1.5 var(--ui);background:var(--note-bg);color:var(--note-ink);border-left:3px solid var(--note);border-radius:0 6px 6px 0;padding:8px 10px;margin:.4em 0 .2em;display:flex;flex-direction:column;gap:6px}
 .memo p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
 .memo .acts{display:flex;gap:6px;flex-wrap:wrap}
+.reply{border-top:1px dashed var(--note);padding-top:6px;font-size:13px}
+.reply b{font-weight:600}
+.done{align-self:flex-start;font:600 11px/1.6 var(--ui);padding:0 8px;border-radius:999px;background:var(--ok-bg);color:var(--ok)}
 .memo .btn{font-size:12px;padding:3px 9px;background:transparent;border-color:var(--note);color:var(--note-ink)}
 .form{font-family:var(--ui);display:flex;flex-direction:column;gap:8px;margin:.5em 0 .3em;padding:10px;border:1px solid var(--note);border-radius:6px;background:var(--surface)}
 .form label{font:500 12px/1.3 var(--ui);color:var(--muted)}
@@ -380,8 +383,15 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
     setTimeout(() => ta.focus(), 0);
     return f;
   }
+  function taoTraLoi(g) {
+    const r = el('p', 'reply'); r.append(el('b', null, 'Claude: '), document.createTextNode(g.traLoi));
+    return r;
+  }
   function taoMemo(g) {
-    const m = el('div', 'memo'); m.append(el('p', null, g.ghiChu));
+    const m = el('div', 'memo');
+    if (g.trangThai === 'da-sua') m.append(el('span', 'done', 'Đã sửa'));
+    m.append(el('p', null, g.ghiChu));
+    if (g.traLoi) m.append(taoTraLoi(g));
     const acts = el('div', 'acts');
     const sua = el('button', 'btn', 'Sửa'); sua.type = 'button';
     sua.addEventListener('click', () => { m.replaceWith(taoForm(g.khoa, g.trich, g)); });
@@ -410,7 +420,7 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
     const ca = $('caDoan'); ca.replaceChildren();
     cua.filter((g) => !khop.has(g.id)).forEach((g) => {
       const m = taoMemo(g);
-      if (g.khoa !== '*') m.prepend(el('p', null, 'Câu gốc đã đổi: «' + (g.trich || '') + '»'));
+      if (g.khoa !== '*') m.prepend(el('p', null, (g.trangThai === 'da-sua' ? 'Câu cũ: «' : 'Câu gốc đã đổi: «') + (g.trich || '') + '»'));
       ca.append(m);
     });
     if (openKey === '*') ca.append(taoForm('*', '(cả đoạn)', null));
@@ -471,6 +481,8 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
       li.append(w);
       if (g.khoa !== '*' && g.trich) li.append(el('q', null, g.trich));
       li.append(el('p', null, g.ghiChu));
+      if (g.trangThai === 'da-sua') li.append(el('span', 'done', 'Đã sửa'));
+      if (g.traLoi) li.append(taoTraLoi(g));
       ul.append(li);
     });
   }

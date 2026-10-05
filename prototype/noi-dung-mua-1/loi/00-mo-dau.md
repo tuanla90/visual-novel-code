@@ -8,22 +8,21 @@
 - **narrator**: Xe vào nội thành lúc đầu giờ chiều. Tiếng còi xe máy dồn lên mỗi lúc một dày.
 - **player**: (Vậy là lên Hà Nội thật rồi.)
 - **narrator**: Xe chậm dần. Giọng phụ xe vọng xuống: "Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!"
-- **player**: (Tới rồi. Phòng 408, đi thôi.)
+- **player**: (Tới rồi. Xuống thôi.)
 
 ## md-00-xe-buyt.1
 > NHIỆM VỤ: Tìm đường vào ký túc xá
-> NHẮC VIỆC player: Tìm ký túc xá đã. Thông báo chỉ ghi: phòng 408.
+> NHẮC VIỆC player: Không biết ký túc xá ở chỗ nào nhỉ?
 
 ## md-00-xe-buyt.2
 - [THẺ CHỮ] **narrator**: Đại học Chấn Hưng · Cổng trường
 - [DÀN DỰNG] Nền bg-mvp-cong-truong: cổng hai trụ, thanh chắn hạ, chốt bảo vệ, mái chờ xe buýt và quán nước bên trái; trên ảnh KHÔNG có người, KHÔNG có vali (người chơi là góc nhìn). Lời không nhắc vali, không nhắc người khác ở cổng.
-- **narrator**: Xe buýt chạy đi. Chốt bảo vệ đóng cửa kính, chưa thấy ai ra.
-- **player**: (Phòng 408. Ký túc xá ở đâu thì thông báo không ghi… Cứ đi theo đường chính vào trong xem đã.)
+- **player**: (Trường rộng thế này… Thôi, cứ theo đường chính vào xem.)
 
 ## md-00-cong-ktx.1
 - [DÀN DỰNG] Nền bg-mvp-cong-ktx: cổng sắt xanh mở, dây cờ đuôi nheo, nhà xe bên trái, phòng trực bên phải; không có người, không có vali.
 - **player**: (Dây cờ giăng tận cổng thế kia, chắc ký túc xá đây rồi.)
-- **player**: (Phòng 408, tầng bốn. Mong là có thang máy.)
+- **player**: (Phòng mình là 408, tức là tầng bốn. Mong là có thang máy.)
 
 ## md-00-sanh-ktx.1
 > NHIỆM VỤ: Tìm đường lên phòng 408
@@ -40,11 +39,10 @@
 
 ## md-00-so-do.1
 - **narrator**: Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ, có chấm "Bạn đang ở đây".
-- **player**: (Phòng 408 ở dãy giữa, tầng bốn. Đúng nhà này rồi.)
-- **player**: (Sơ đồ chỉ vẽ ba dãy nhà nhìn từ trên xuống. Không thấy thang bộ đâu.)
+- **player**: (Ơ, thế thang bộ nằm ở chỗ nào?)
 - **player**: (Chịu rồi, phải hỏi thôi. Mà hỏi ai giữa đám đông này?)
 > NHIỆM VỤ: Tìm người hỏi đường lên tầng bốn
-> NHẮC VIỆC player: Thang máy hỏng, sơ đồ không vẽ thang bộ. Trong sảnh này hỏi ai được?
+> NHẮC VIỆC player: Hỏi ai trong sảnh này được nhỉ?
 
 ## md-00-thay-tung.1
 - **player**: (Ai cũng mới tới như mình. Có hỏi thì họ cũng chịu.)
@@ -56,7 +54,7 @@
 - **tung** (ao-xanh-chi-tay): À, KTX. Cậu cứ đi thẳng tới cuối đường, rẽ trái hai lần là tới nhé. Cứ kéo vali theo đường đấy là thấy!
 - **hoai** (relieved): Tớ cảm ơn.
 - [DÀN DỰNG] Bạn nữ kéo vali lạch cạch đi về hướng Tùng vừa chỉ.
-- **player**: (Khoan đã. Bảng sơ đồ trên tường ghi hướng đó dẫn ra nhà xe mà. Cậu áo xanh kia chỉ nhầm lối rồi.)
+- **player**: (Khoan. Hướng đó ra nhà xe cơ mà? Cậu áo xanh kia chỉ nhầm lối rồi.)
 
 ## md-00-soi-ao.1
 - **player**: (Sơ mi xanh dài tay, trên ngực gắn lá cờ nhỏ. Áo của đội tình nguyện.)

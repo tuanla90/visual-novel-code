@@ -1001,7 +1001,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Tới rồi. Phòng 408, đi thôi.)"
+          "text": "(Tới rồi. Xuống thôi.)"
         },
         {
           "type": "branch",
@@ -1039,7 +1039,7 @@ const GOC = {
         {
           "type": "reminder",
           "speaker": "player",
-          "text": "Tìm ký túc xá đã. Thông báo chỉ ghi: phòng 408."
+          "text": "Không biết ký túc xá ở chỗ nào nhỉ?"
         },
         {
           "type": "line",
@@ -1053,13 +1053,8 @@ const GOC = {
         },
         {
           "type": "line",
-          "speaker": "narrator",
-          "text": "Xe buýt chạy đi. Chốt bảo vệ đóng cửa kính, chưa thấy ai ra."
-        },
-        {
-          "type": "line",
           "speaker": "player",
-          "text": "(Phòng 408. Ký túc xá ở đâu thì thông báo không ghi… Cứ đi theo đường chính vào trong xem đã.)"
+          "text": "(Trường rộng thế này… Thôi, cứ theo đường chính vào xem.)"
         },
         {
           "type": "branch",
@@ -1102,7 +1097,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Phòng 408, tầng bốn. Mong là có thang máy.)"
+          "text": "(Phòng mình là 408, tức là tầng bốn. Mong là có thang máy.)"
         },
         {
           "type": "branch",
@@ -1231,12 +1226,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Phòng 408 ở dãy giữa, tầng bốn. Đúng nhà này rồi.)"
-        },
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Sơ đồ chỉ vẽ ba dãy nhà nhìn từ trên xuống. Không thấy thang bộ đâu.)"
+          "text": "(Ơ, thế thang bộ nằm ở chỗ nào?)"
         },
         {
           "type": "line",
@@ -1250,7 +1240,7 @@ const GOC = {
         {
           "type": "reminder",
           "speaker": "player",
-          "text": "Thang máy hỏng, sơ đồ không vẽ thang bộ. Trong sảnh này hỏi ai được?"
+          "text": "Hỏi ai trong sảnh này được nhỉ?"
         }
       ]
     },
@@ -1312,7 +1302,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Khoan đã. Bảng sơ đồ trên tường ghi hướng đó dẫn ra nhà xe mà. Cậu áo xanh kia chỉ nhầm lối rồi.)"
+          "text": "(Khoan. Hướng đó ra nhà xe cơ mà? Cậu áo xanh kia chỉ nhầm lối rồi.)"
         },
         {
           "type": "goto",
@@ -22786,7 +22776,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:204 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:202 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",

@@ -41,7 +41,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 
 | Tiêu chí | Ngưỡng thiết kế | Thực tế | Đánh giá |
 |---|---|---|---|
-| Số dòng thoại | ≥ 300 | 504 | ✅ Đạt |
+| Số dòng thoại | ≥ 300 | 502 | ✅ Đạt |
 | Số chuỗi phân cảnh | ≥ 40 | 111 | ✅ Đạt |
 | Màn tra cứu SQL | ≥ 5 | 5 | ✅ Đạt |
 | Nhịp đối chất | ≥ 3 | 1 | ⚠️ Bản mẫu |
@@ -57,7 +57,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - *Xe vào nội thành lúc đầu giờ chiều. Tiếng còi xe máy dồn lên mỗi lúc một dày.*
 - *Suy nghĩ của bạn:* *(Vậy là lên Hà Nội thật rồi.)*
 - *Xe chậm dần. Giọng phụ xe vọng xuống: "Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!"*
-- *Suy nghĩ của bạn:* *(Tới rồi. Phòng 408, đi thôi.)*
+- *Suy nghĩ của bạn:* *(Tới rồi. Xuống thôi.)*
 
 **Lựa chọn tiếp theo:**
 - [Xuống xe](#doan-10)
@@ -250,10 +250,9 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 📍 **Cổng trường** — *Chủ nhật tuần 1: xuống xe buýt trước cổng trường*
 
 > 🎯 **NHIỆM VỤ**: Tìm đường vào ký túc xá
-> 💭 **Nhắc nhở** (Bạn): Tìm ký túc xá đã. Thông báo chỉ ghi: phòng 408.
+> 💭 **Nhắc nhở** (Bạn): Không biết ký túc xá ở chỗ nào nhỉ?
 > 📜 **[THẺ CHỮ]** Đại học Chấn Hưng · Cổng trường
-- *Xe buýt chạy đi. Chốt bảo vệ đóng cửa kính, chưa thấy ai ra.*
-- *Suy nghĩ của bạn:* *(Phòng 408. Ký túc xá ở đâu thì thông báo không ghi… Cứ đi theo đường chính vào trong xem đã.)*
+- *Suy nghĩ của bạn:* *(Trường rộng thế này… Thôi, cứ theo đường chính vào xem.)*
 
 **Lựa chọn tiếp theo:**
 - [Tới cổng ký túc xá](#doan-24)
@@ -513,7 +512,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 📍 **Cổng KTX** — *Đi qua sân trường tới cổng ký túc xá*
 
 - *Suy nghĩ của bạn:* *(Dây cờ giăng tận cổng thế kia, chắc ký túc xá đây rồi.)*
-- *Suy nghĩ của bạn:* *(Phòng 408, tầng bốn. Mong là có thang máy.)*
+- *Suy nghĩ của bạn:* *(Phòng mình là 408, tức là tầng bốn. Mong là có thang máy.)*
 
 **Lựa chọn tiếp theo:**
 - [Vào sảnh](#doan-54)
@@ -1230,11 +1229,10 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
 📍 **Sảnh ký túc xá** — *Sơ đồ khu nhà trên bảng tin*
 
 - *Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ, có chấm "Bạn đang ở đây".*
-- *Suy nghĩ của bạn:* *(Phòng 408 ở dãy giữa, tầng bốn. Đúng nhà này rồi.)*
-- *Suy nghĩ của bạn:* *(Sơ đồ chỉ vẽ ba dãy nhà nhìn từ trên xuống. Không thấy thang bộ đâu.)*
+- *Suy nghĩ của bạn:* *(Ơ, thế thang bộ nằm ở chỗ nào?)*
 - *Suy nghĩ của bạn:* *(Chịu rồi, phải hỏi thôi. Mà hỏi ai giữa đám đông này?)*
 > 🎯 **NHIỆM VỤ**: Tìm người hỏi đường lên tầng bốn
-> 💭 **Nhắc nhở** (Bạn): Thang máy hỏng, sơ đồ không vẽ thang bộ. Trong sảnh này hỏi ai được?
+> 💭 **Nhắc nhở** (Bạn): Hỏi ai trong sảnh này được nhỉ?
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Sảnh ký túc xá](#doan-54)
@@ -1376,7 +1374,7 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
 - **Hoài**: Bạn ơi... tòa KTX nữ đi đường nào ạ?
 - **Tùng**: À, KTX. Cậu cứ đi thẳng tới cuối đường, rẽ trái hai lần là tới nhé. Cứ kéo vali theo đường đấy là thấy!
 - **Hoài** (nhẹ nhõm): Tớ cảm ơn.
-- *Suy nghĩ của bạn:* *(Khoan đã. Bảng sơ đồ trên tường ghi hướng đó dẫn ra nhà xe mà. Cậu áo xanh kia chỉ nhầm lối rồi.)*
+- *Suy nghĩ của bạn:* *(Khoan. Hướng đó ra nhà xe cơ mà? Cậu áo xanh kia chỉ nhầm lối rồi.)*
 
 **Lựa chọn tiếp theo:**
 - [Đi tiếp](#doan-70)
