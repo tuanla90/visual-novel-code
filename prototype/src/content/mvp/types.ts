@@ -426,6 +426,11 @@ export interface KichBanMvp {
   duLieu: BoDuLieuMvp | null;
   /** Tờ dữ kiện của các cảnh hỏi nhân chứng (`noi-dung-mua-1/hoi-dap/*.json`, gói B12). Bộ MVP không có. */
   hoiDap?: BoHoiDapMvp;
+  /**
+   * Gói B13 (bộ mùa 1, `sinh-mua1.ts` đặt): điều hướng tự do. `[ĐI CÙNG]` máy tự đi; làm xong một điểm ở cảnh khám phá thì
+   * ở lại cảnh, người chơi tự bấm rời đi ("Về bản đồ" / "Đi tiếp"); màn tra lùi được về cảnh đã mở nó. Thiếu = như cũ (bộ MVP).
+   */
+  dieuHuongTuDo?: boolean;
 }
 
 // ---------- Hỏi nhân chứng (gói B12, docs/mua-1/brief/b12-vu-1.md) ----------

@@ -25,7 +25,7 @@ import { BacklogModal } from '../../shared/vn/BacklogModal';
 import { useVnStore } from '../../shared/vn/vn-store';
 import { ObjectionEffect } from '../../story/ui/ObjectionEffect';
 import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
-import { canGioiThieu, dienTen as dienTenMay, khungNhin, phuMoDuoc, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
+import { canGioiThieu, canhLuiThuThach, dienTen as dienTenMay, khungNhin, phuMoDuoc, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
 import { giaTriTuHoSo } from '../engine/giay-nho';
 import { chonNhacNen, type NhacTruoc } from '../engine/nhac';
 import type { TrangThaiMvp } from '../engine/trang-thai';
@@ -439,7 +439,10 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       case 'image':
         return <AnhChenMvp key={kn.imageId} id={kn.imageId} onTiep={tiep} onBack={coTheLui ? lui : undefined} />;
       case 'challenge':
-      case 'fix-query':
+      case 'fix-query': {
+        // Gói B13: màn tra lùi được về cảnh đã mở nó (bộ điều hướng tự do; buổi họp, bộ MVP thì không).
+        const luiVe = kn.kind === 'challenge' ? canhLuiThuThach(kb, s) : null;
+        const tenCanhRoi = luiVe ? kb.canh.find((c) => c.id === luiVe.canh)?.ten : undefined;
         return (
           <PhongTraMvp
             onDaXemTruyVan={(query, loi) => ghiNhanTruyVan(query, loi, s, lanDoiVan)}
@@ -455,8 +458,10 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             onDoiCho={(the, x, y) => hanhDong({ type: 'doi-cho-the', the, x, y })}
             onDoiMau={(the, mau) => hanhDong({ type: 'doi-mau-ghim', the, mau })}
             onXong={(dung, phieu, ghiChu) => hanhDong({ type: 'xong-thu-thach', thuThach: kn.thuThach.id, dung, ...(phieu ? { phieu } : {}), ...(ghiChu?.length ? { ghiChu } : {}) })}
+            {...(luiVe ? { onRoi: () => hanhDong({ type: 'roi-thu-thach' }), ...(tenCanhRoi ? { tenCanhRoi } : {}) } : {})}
           />
         );
+      }
       case 'effect':
         return isEffectId(kn.effectId) ? <ObjectionEffect effectId={kn.effectId} onDone={tiep} /> : <HieuUngLa onDone={tiep} />;
       case 'projector':
@@ -489,7 +494,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           />
         );
       case 'explore':
-        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} thu={thuHomNay(kb, s)} gio={kn.nut.gio} dang={kn.nut.dang} haVySoi={kn.nut.haVySoi} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} />;
+        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} thu={thuHomNay(kb, s)} gio={kn.nut.gio} dang={kn.nut.dang} haVySoi={kn.nut.haVySoi} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} roi={kn.roi ?? null} onRoi={() => hanhDong({ type: 'roi-canh' })} />;
       case 'end':
         return (
           <KetMvp

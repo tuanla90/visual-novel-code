@@ -66,6 +66,9 @@ function hanhDongTuDong(s: TrangThaiMvp, kn: Exclude<KhungNhinMvp, { kind: 'end'
     case 'create-character':
       return kn.nut.truong === 'ten' ? { type: 'dat-ten', ten: ct.ten ?? TEN_MAC_DINH } : { type: 'chon-nganh', nganh: kn.nut.luaChon[0] ?? '' };
     case 'explore': {
+      // Điều hướng tự do (gói B13): xong việc chính thì máy không tự đẩy đi nữa — máy tự chơi tự bấm rời cảnh ("Về bản đồ" /
+      // "Đi tiếp") đúng lúc máy cũ tự đi, nên đường đi và hồ sơ như trước.
+      if (kn.roi && kn.xongChinh) return { type: 'roi-canh' };
       // Bấm chỗ đầu tiên chưa xem (theo thứ tự trong kịch bản); chỗ có "sau:" hiện dần.
       const d = kn.diem.find((x) => !x.daXem);
       return d ? { type: 'xem-diem', chuoi: d.diem.chuoi } : { type: 'tiep' };

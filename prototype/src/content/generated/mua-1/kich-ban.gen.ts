@@ -24803,5 +24803,5 @@ const GOC = {
 } satisfies KichBanMvp;
 
 /** Bảng dữ liệu = dòng của truyện (ở trên) + dữ liệu nền sinh lại lúc nạp (tools/noi-dung/nhieu-mvp.ts, hạt cố định). */
-export const KICH_BAN_MUA_1 = { ...GOC, hoiDap: HOI_DAP_MUA_1, duLieu: GOC.duLieu ? themNhieuMvp(GOC.duLieu) : GOC.duLieu } satisfies KichBanMvp;
+export const KICH_BAN_MUA_1 = { ...GOC, dieuHuongTuDo: true, hoiDap: HOI_DAP_MUA_1, duLieu: GOC.duLieu ? themNhieuMvp(GOC.duLieu) : GOC.duLieu } satisfies KichBanMvp;
 export const KICH_BAN_MVP = KICH_BAN_MUA_1;

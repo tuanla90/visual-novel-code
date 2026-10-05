@@ -7,7 +7,7 @@
  *     `[HỎI ĐÁP]` và buổi hỏi đang mở. `hoiDap.nhatKy` là các dòng hỏi đáp (vẽ như khung chat), `hoiDap.bong` là bóng thoại
  *     của bạn đi cùng (góc phải), `hoiDap.danhSach` là trang "Cần làm rõ" của sổ CLB, `hoiDap.giayNho` là giấy nhớ đã hỏi ra.
  *   - Hành động (gửi qua `xuLy` của may.ts, như mọi hành động khác):
- *       `{ type: 'doi-cach-choi', cach }`       đổi cách chơi (lúc nào cũng được, lưu cùng ván);
+ *       `{ type: 'doi-cach-choi', cach }`       đổi cách chơi (lúc nào cũng được, lưu cùng ván; chỉ đổi thiết lập, khung giữ nguyên);
  *       `{ type: 'hoi-dap-hoi', cau }`           cách gõ: câu người chơi gõ (máy so chữ xếp lớp);
  *       `{ type: 'hoi-dap-hoi', cau, lop }`      cách bấm / bấm câu gợi ý bậc 2: `cau`, `lop` lấy từ `hoiDap.cauBam` hay `bong`;
  *       `{ type: 'hoi-dap-ke-tiep' }`            cách "xem cả đoạn" giữa buổi: nhân chứng kể nốt điều còn thiếu (`hoiDap.conKe`);
@@ -408,6 +408,8 @@ export interface KhungHoiDapMvp {
   cauBam: CauBamMvp[];
   /** Cách "xem cả đoạn": còn điều để kể nốt. */
   conKe: boolean;
+  /** Cách "xem cả đoạn", buổi hỏi chưa hỏi ra gì: nút nghe kể sẽ chạy cả đoạn viết sẵn (đọc như lời kể thường). */
+  caDoan: boolean;
   /** Số câu còn hỏi được; `null` = không giới hạn. */
   conLuot: number | null;
   daDong: boolean;
@@ -470,6 +472,7 @@ export function khungHoiDap(kb: KichBanMvp, s: TrangThaiMvp, ma: string): KhungH
     giayNho: giayNhoCuaTo(s, to),
     cauBam,
     conKe: !b.daRoi && !!dieuKeTiep(s, to),
+    caDoan: cachChoiCua(s) === 'tu-dong' && !b.daRoi && biet.size === 0,
     conLuot: to.gioiHan ? Math.max(0, to.gioiHan.soCau - td.luot) : null,
     daDong: b.dong,
     daRoi: b.daRoi,

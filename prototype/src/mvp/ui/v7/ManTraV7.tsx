@@ -48,6 +48,7 @@ import { CANH_TRA, type CanhTra, type NguonPhieuV7 } from './canh-tra';
 import { KhungNguonBangV7 } from './KhungNguonBangV7';
 import { KhungCotVaXepV7 } from './KhungCotVaXepV7';
 import { XemTruocBangModal } from './XemTruocBangModal';
+import { boNhapManTra, ghiNhapManTra, layNhapManTra } from './nhap-man-tra';
 import './v7.css';
 
 export type { CanhTra, NguonPhieuV7 } from './canh-tra';
@@ -82,6 +83,11 @@ export interface ManTraV7Props {
    * `WITH <tên> AS (<câu của phiếu>) SELECT … FROM <tên> WHERE …` — người chơi thấy phiếu trở thành một "bảng tạm" có tên.
    */
   nguonPhieu?: NguonPhieuV7 | null;
+  /**
+   * Gói B13: khóa bản nháp (`nhap-man-tra.ts`). Có khóa thì câu đang soạn được giữ khi màn tra đóng (lùi về bảng, rời về cảnh)
+   * và mở lại đúng như lúc rời. Thiếu = như cũ (mỗi lần mở là câu mới).
+   */
+  khoaNhap?: string;
   /** Người chơi bấm ghim / đi tiếp sau khi tra đúng; `dung` = mã các thẻ đã kéo vào câu. */
   onXong: (dung: string[], result?: { sql: string; cot: { ten: string; kieu: 'TEXT' | 'INTEGER' }[]; soDong: number }) => void;
 }
@@ -91,7 +97,8 @@ export const TOI_DA_DONG_HIEN = 40;
 /** Số giấy nhớ tối đa dán quanh laptop; tờ cũ hơn vào ngăn "Còn trên bảng". */
 export const TOI_DA_GIAY = 10;
 
-export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonPhieu, onXong, onDaXemTruyVan }: ManTraV7Props) {
+export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonPhieu, khoaNhap, onXong, onDaXemTruyVan }: ManTraV7Props) {
+  const [nhap] = useState(() => layNhapManTra(khoaNhap));
   const cauHinh = CANH_TRA[canh];
   // Nguồn là phiếu: `FROM @<mã phiếu>` của SQL chuẩn thành `FROM <tên tạm>`, mọi câu chạy có tiền tố `WITH <tên tạm> AS (…)`.
   const tenNguon = nguonPhieu ? tenCte(nguonPhieu.id) : null;
@@ -101,8 +108,12 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     [the.sqlChuan, nguonPhieu, tenNguon],
   );
   const khung = useMemo(() => khungTuSqlChuan(sqlChuan), [sqlChuan]);
-  const [bangGocChon, setBangGocChon] = useState<string | null>(null);
+  const [bangGocChon, setBangGocChon] = useState<string | null>(() => nhap?.bangGocChon ?? null);
+  // Đổi thẻ (không phải lần mở đầu) thì bỏ bảng đã chọn; lần mở đầu giữ bảng của bản nháp.
+  const theTruoc = useRef(the.id);
   useEffect(() => {
+    if (theTruoc.current === the.id) return;
+    theTruoc.current = the.id;
     setBangGocChon(null);
   }, [the.id]);
   const bang = useMemo(() => {
@@ -119,7 +130,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   const chonBang = khongLoc && !chonCot;
   const cotChuan = useMemo(() => (/^SELECT\s+(.+?)\s+FROM\s/i.exec(khung?.khung ?? '')?.[1] ?? '').split(',').map((c) => c.trim()).filter((c) => c !== ''), [khung]);
   const khungCua = (ds: readonly string[]): string => `SELECT ${ds.length > 0 ? ds.join(', ') : '…'} FROM ${khung?.bang ?? ''}`;
-  const [cotLay, setCotLay] = useState<string[]>(() => chonCot ?? []);
+  const [cotLay, setCotLay] = useState<string[]>(() => nhap?.cotLay ?? chonCot ?? []);
   /**
    * HAI NGƯỜI KIỂM PHIẾU (user chốt 02/10/2026): Duy kiểm hình thức — phiếu phải đủ gọn để dò tay (tối đa 3 / 5 / 10 dòng, làm tròn lên
    * từ số dòng của đáp án) và có cột mã nếu thẻ cần; Hà Vy kiểm ý nghĩa — phiếu có trả lời đúng câu hỏi ghim trên bảng không.
@@ -135,6 +146,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
 
   const dkSan = khongLoc ? 0 : (DK_DUNG_SAN[the.id] ?? 0);
   const [cau, setCau] = useState<CauDung>(() => {
+    if (nhap) return nhap.cau;
     const napSan = mode === 'fix-query' && the.truyVanNapSan ? cauTuSql(the.truyVanNapSan) : null;
     if (napSan) return napSan;
     const cotGoc = bang?.cot.map((c) => c.ten) ?? [];
@@ -153,7 +165,10 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   const sqlNgoai = thanhSql(cau, kieuCot, cotChung);
   const sql = tienTo + sqlNgoai;
   const [dangChon, setDangChon] = useState<GiaTriHoSo | null>(null);
-  const [daChonBang, setDaChonBang] = useState(!chonBang);
+  const [daChonBang, setDaChonBang] = useState(() => nhap?.daChonBang ?? !chonBang);
+  useEffect(() => {
+    ghiNhapManTra(khoaNhap, { cau, cotLay, bangGocChon, daChonBang });
+  }, [khoaNhap, cau, cotLay, bangGocChon, daChonBang]);
   const [xemTruocMo, setXemTruocMo] = useState(false);
   const [cham, setCham] = useState<KetQuaCham | null>(null);
   const [daChay, setDaChay] = useState<WhereTach | null>(null);
@@ -353,6 +368,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   const xong = (): void => {
     if (xongRoi) return;
     setXongRoi(true);
+    boNhapManTra(khoaNhap);
     const duocDungLamNguon = !!the.vatChung && Object.values(kb.thuThach).some((challenge) => challenge.nguon === the.vatChung?.id);
     if (duocDungLamNguon && cham?.trangThai === 'dung' && cham.chay.ok) {
       onXong(dungCacThe, {

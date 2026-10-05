@@ -50,6 +50,9 @@ describe('máy so chữ', () => {
 describe('cách "xem cả đoạn": chạy như trước gói B12', () => {
   it('đoạn [LỜI] rồi hậu quả mở manh mối, ghi nhận tuDongDuKien', () => {
     let s = vaoBacThinh(KB, 'tu-dong');
+    // Khung hỏi vẫn mở (ba nút đổi cách luôn có mặt); bấm nút nghe kể thì đoạn viết sẵn mới chạy.
+    expect(hd(khungNhin(KB, s))).toMatchObject({ cachChoi: 'tu-dong', caDoan: true });
+    s = lam(KB, s, { type: 'hoi-dap-ke-tiep' });
     const kn = khungNhin(KB, s);
     expect(kn.kind).toBe('line');
     expect(kn.kind === 'line' && kn.loi.speaker).toBe('bac-tu');
@@ -199,11 +202,16 @@ describe('ba cách chơi đổi được giữa buổi', () => {
     expect(h.cauBam.map((c) => c.lop)).toContain('thu-tren-cung');
   });
 
-  it('sang "xem cả đoạn" khi chưa hỏi ra gì: chạy đoạn viết sẵn; khi đã hỏi dở: kể nốt từng điều', () => {
+  it('sang "xem cả đoạn" khi chưa hỏi ra gì: khung giữ nguyên, bấm nghe kể mới chạy đoạn viết sẵn; khi đã hỏi dở: kể nốt từng điều', () => {
     const s1 = lam(KB, vaoBacThinh(), { type: 'doi-cach-choi', cach: 'tu-dong' });
-    expect(khungNhin(KB, s1).kind).toBe('line');
+    expect(hd(khungNhin(KB, s1))).toMatchObject({ cachChoi: 'tu-dong', caDoan: true });
+    // Bấm nhầm thì đổi lại được ngay: khung hỏi còn nguyên, chưa mất gì.
+    const lai = lam(KB, s1, { type: 'doi-cach-choi', cach: 'go' });
+    expect(hd(khungNhin(KB, lai))).toMatchObject({ cachChoi: 'go', caDoan: false });
+    expect(hd(khungNhin(KB, lai)).nhatKy).toEqual(hd(khungNhin(KB, vaoBacThinh())).nhatKy);
+    expect(khungNhin(KB, lam(KB, s1, { type: 'hoi-dap-ke-tiep' })).kind).toBe('line');
     let s = lam(KB, vaoBacThinh(), hoi('ai mở hộp'), { type: 'doi-cach-choi', cach: 'tu-dong' });
-    expect(hd(khungNhin(KB, s)).conKe).toBe(true);
+    expect(hd(khungNhin(KB, s))).toMatchObject({ conKe: true, caDoan: false });
     for (let i = 0; i < 10 && hd(khungNhin(KB, s)).conKe; i++) s = lam(KB, s, { type: 'hoi-dap-ke-tiep' });
     expect(tienDoCua(s, 'n1-bac-thinh').biet.sort()).toEqual([...TO.tuDongDuKien].sort());
     expect(hd(khungNhin(KB, s)).du).toBe(true);
@@ -353,7 +361,7 @@ describe('loiDaThay: lời của buổi hỏi rải nhiều đoạn (n3-ctsv, n4
   });
 
   it('cách "xem cả đoạn": chạy đủ các đoạn như trước gói B12', () => {
-    const s = vao('n3-ctsv', 'tu-dong');
+    const s = lam(KB, vao('n3-ctsv', 'tu-dong'), { type: 'hoi-dap-ke-tiep' });
     const kn = khungNhin(KB, s);
     expect(kn.kind === 'line' && kn.loi.text).toBe('Lại con đường tắt qua sân bóng rổ.');
     expect(s.daThayLoi ?? null).toBeNull();

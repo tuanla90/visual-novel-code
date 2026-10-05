@@ -2,7 +2,7 @@
  * CẢNH KHÁM PHÁ (`[KHÁM PHÁ]`, đặc tả §18.6) — nền của cảnh đang đứng với các vật / người bấm được, dùng chung lớp CSS
  * với màn trong địa điểm (`NoiMvp`): khung giữ tỉ lệ ảnh, điểm đặt theo % (chân ảnh), vuốt ngang trên điện thoại dọc.
  *
- * Khác `NoiMvp`: không tốn khung, không có "Về bản đồ"; chỗ CHƯA xem luôn sáng viền trắng (cảnh dạy người chơi bấm vật),
+ * Khác `NoiMvp`: không tốn khung, nút rời cảnh chỉ có khi máy cho (gói B13, xem dưới); chỗ CHƯA xem luôn sáng viền trắng (cảnh dạy người chơi bấm vật),
  * chỗ đã xem mờ đi; chỗ có "sau:" hiện dần (máy đã lọc, xem `diemDangHien`). Nhãn qua `nhanDiemKhamPha` — không lộ nội dung.
  *
  * Ba kiểu (02/10/2026, user chốt):
@@ -16,6 +16,8 @@
  * Lần soi đầu (mở đầu, chưa có Hà Vy) vẫn hiện kính để dạy thao tác.
  * 05/10/2026 (gói B12, user): chi tiết ẩn KHÔNG nháy, không phát sáng dù để lâu; muốn biết việc chính hay cần gợi ý thì hỏi bạn
  * đi cùng. Dấu "!" / "?" của điểm bấm giữ nguyên.
+ * 05/10/2026 (gói B13, user: "cho user freely khám phá"): bộ mùa 1 có nút rời cảnh do máy cho (`roi`): "Về bản đồ" ở nơi tới từ
+ * bản đồ, "Đi tiếp" ở cảnh khác khi việc chính đã xong mà còn chỗ chưa xem. Máy không tự đẩy người chơi đi nữa.
  */
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { DiemKhamPhaMvp, KichBanMvp } from '../../content/mvp/types';
@@ -48,6 +50,9 @@ export interface KhamPhaMvpProps {
   dang?: string;
   /** Quan sát: mở bằng cảnh cắt đôi mắt Hà Vy, kính lóe sáng, rồi các điểm soi mới hiện (user chốt 02/10/2026). */
   haVySoi?: boolean;
+  /** Gói B13: nút rời cảnh ("Về bản đồ" / "Đi tiếp"); `null` / thiếu = không có nút. */
+  roi?: { kieu: 've-ban-do' | 'di-tiep'; nhan: string } | null;
+  onRoi?: () => void;
 }
 
 /**
@@ -102,7 +107,7 @@ function useCatCanhHaVy(bat: boolean): { dang: boolean; boQua: () => void } {
   return { dang, boQua: () => setDang(false) };
 }
 
-export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay, thu, gio, dang, haVySoi }: KhamPhaMvpProps) {
+export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay, thu, gio, dang, haVySoi, roi, onRoi }: KhamPhaMvpProps) {
   const catCanh = useCatCanhHaVy(!!haVySoi && kieu === 'quan-sat' && diem.every((d) => !d.daXem));
   const onXem = (chuoi: string): void => {
     soundEngine.playSfx('select');
@@ -158,6 +163,29 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
           {phu ? <p>{phu}</p> : null}
         </div>
       </div>
+      {/* Nút rời cảnh nằm góc phải dưới: góc phải trên là chỗ của khung "Đi cùng" (.mvp-stage__canh-ban). */}
+      {roi && onRoi ? (
+        <button
+          type="button"
+          className={`btn mvp-canh__nut mvp-canh__roi mvp-canh__roi--${roi.kieu}`}
+          onClick={() => {
+            soundEngine.playSfx('select');
+            onRoi();
+          }}
+        >
+          {roi.kieu === 've-ban-do' ? (
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z" />
+              <path d="M9 4v14M15 6v14" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          )}
+          <span>{roi.nhan}</span>
+        </button>
+      ) : null}
 
       {laQuanSat ? (
         <div className={`mvp-soinv__vung${catCanh.dang ? ' dang-cat-canh' : ''}${haVySoi ? ' co-ha-vy' : ''}`} data-soi-an={haVySoi ? '1' : undefined}>

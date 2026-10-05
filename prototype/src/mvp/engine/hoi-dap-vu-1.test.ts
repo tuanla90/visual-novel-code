@@ -25,9 +25,8 @@ describe('Vụ 1 mùa 1 với buổi hỏi nhân chứng', () => {
       }, 20000);
       expect(khungNhin(KB, ket)).toMatchObject({ kind: 'end', ketQua: 'that' });
       expect(ket.hoSo.manhMoi).toEqual(expect.arrayContaining(MANH_MOI_HOI_DAP));
-      // Cách bấm và gõ phải thật sự mở khung hỏi đáp ở các cảnh trên tuyến chính; cách "xem cả đoạn" thì không mở khung nào.
-      if (cach === 'tu-dong') expect([...daGap]).toEqual([]);
-      else expect([...daGap]).toEqual(expect.arrayContaining(['n1-bac-thinh', 'n2-co-hanh-vao', 'n3-ctsv', 'n4-ctsv-vao', 'n5-chu-cuong']));
+      // Cách nào cũng mở khung hỏi đáp ở các cảnh trên tuyến chính (ba nút đổi cách luôn có mặt, kể cả ở "xem cả đoạn").
+      expect([...daGap]).toEqual(expect.arrayContaining(['n1-bac-thinh', 'n2-co-hanh-vao', 'n3-ctsv', 'n4-ctsv-vao', 'n5-chu-cuong']));
     });
   }
 });

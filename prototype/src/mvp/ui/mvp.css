@@ -242,6 +242,14 @@
   gap: 6px;
   min-height: 44px;
 }
+/* Nút rời cảnh khám phá (gói B13): góc phải dưới, chỗ của nút "Tiếp tục" ở màn lời. Góc phải trên là khung "Đi cùng". */
+.mvp-canh__roi {
+  position: absolute;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 6;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
 .mvp-canh__vung {
   position: relative;
   flex: 1 1 auto;

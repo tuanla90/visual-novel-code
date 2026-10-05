@@ -78,7 +78,7 @@ export function HoiDapMvp({ kb, hoiDap: h, dienTen, tenNguoiNoi, tenNguoiChoi, o
     </button>
   );
   const nutKeNot = (chu: string) => (
-    <button type="button" className="btn mvp-hoidap__ke" onClick={() => onHanhDong({ type: 'hoi-dap-ke-tiep' })} disabled={!h.conKe}>
+    <button type="button" className="btn mvp-hoidap__ke" onClick={() => onHanhDong({ type: 'hoi-dap-ke-tiep' })} disabled={!h.conKe && !h.caDoan}>
       {chu}
     </button>
   );
@@ -88,7 +88,9 @@ export function HoiDapMvp({ kb, hoiDap: h, dienTen, tenNguoiNoi, tenNguoiChoi, o
     thaoTac = (
       <div className="mvp-hoidap__ket" role="status">
         <p>
-          Bạn chào {nc} khi đã rõ {daRo} trên {h.danhSach.length} điều trong sổ{tuHoiRa > 0 ? `, và tự hỏi ra thêm ${tuHoiRa} điều ngoài sổ.` : '.'}
+          {h.danhSach.length === 0
+            ? `Bạn chào ${nc}${tuHoiRa > 0 ? `, mang về ${tuHoiRa} điều tự hỏi ra.` : '.'}`
+            : `Bạn chào ${nc} khi đã rõ ${daRo} trên ${h.danhSach.length} điều trong sổ${tuHoiRa > 0 ? `, và tự hỏi ra thêm ${tuHoiRa} điều ngoài sổ.` : '.'}`}
           {conMo > 0 ? ` Điều còn thiếu vẫn nằm trong sổ; muốn rõ thì phải quay lại gặp ${nc}.` : ''}
         </p>
         <button type="button" className="btn btn--primary mvp-hoidap__tiep" onClick={() => onHanhDong({ type: 'tiep' })} autoFocus>
@@ -100,10 +102,12 @@ export function HoiDapMvp({ kb, hoiDap: h, dienTen, tenNguoiNoi, tenNguoiChoi, o
     thaoTac = (
       <>
         <div className="mvp-hoidap__hang">
-          {nutKeNot(h.conKe ? 'Nghe kể tiếp' : 'Đã kể hết đoạn')}
+          {nutKeNot(h.caDoan ? `Nghe ${nc} kể` : h.conKe ? 'Nghe kể tiếp' : 'Đã kể hết đoạn')}
           {nutRoiDi}
         </div>
-        <p className="mvp-hoidap__ghi">{h.conKe ? `Bấm một lần, ${nc} kể một điều.` : `${tenNc} đã kể hết đoạn viết sẵn.`}</p>
+        <p className="mvp-hoidap__ghi">
+          {h.caDoan ? `Bấm "Nghe ${nc} kể" để đọc cả đoạn như lời kể thường. Muốn tự hỏi thì chọn "Bấm câu hỏi" hoặc "Gõ câu hỏi" ở trên.` : h.conKe ? `Bấm một lần, ${nc} kể một điều.` : `${tenNc} đã kể hết đoạn viết sẵn.`}
+        </p>
       </>
     );
   } else if (h.cachChoi === 'bam') {

@@ -45,6 +45,22 @@ export interface KhamPhaMvp {
    * lại cảnh ngoài (bản đồ) thay vì mất luôn. `[ĐI TỚI]` vẫn bỏ cả chồng.
    */
   cha?: KhamPhaMvp | null;
+  /**
+   * Gói B13 (điều hướng tự do, bộ mùa 1): chuỗi của chỗ bấm đang chạy (chỗ người chơi bấm gần nhất). Buổi hỏi rời sớm có thể
+   * gỡ chỗ đó khỏi `daXem`; trường này vẫn giữ để màn tra mở sau đó biết lùi về đúng chỗ nào.
+   */
+  dangXem?: string;
+}
+
+/**
+ * Gói B13: việc dở gắn với một chỗ bấm (khóa = chuỗi của chỗ bấm) — bấm lại chỗ đó thì chạy tiếp từ đây thay vì từ đầu chuỗi.
+ *   - `trong`: rời một nơi trên bản đồ khi việc chính chưa xong → cảnh khám phá của nơi đó (không kèm `cha`) với các chỗ đã xem;
+ *   - `quaNhay`: rời màn tra mở qua `[ĐI TỚI]` từ chuỗi của chỗ bấm (cảnh khám phá đã đóng lúc nhảy).
+ */
+export interface DangDoMvp {
+  conTro: ConTroMvp;
+  trong?: KhamPhaMvp | null;
+  quaNhay?: boolean;
 }
 
 export type GiaiDoanMvp = 'mo-dau' | 'ngay' | 'hop' | 'het' | 'vu-sau' | 'phu';
@@ -182,7 +198,7 @@ export interface BuoiHoiMvp {
  * (`bang`, vì vào tuyến khác là gỡ hết thẻ) và mã các thẻ trong hồ sơ lúc cất (`hoSoCo`): thẻ nhận thêm ở tuyến kia khi về
  * nằm trong ngăn gỡ ghim, không chen lên bảng.
  */
-export type TiepTucTuyenMvp = Pick<TrangThaiMvp, 'conTro' | 'canh' | 'nhiemVu' | 'nhacViec' | 'thuThachDangLam' | 'duKienDangLam' | 'hoiDap' | 'buoiHoi' | 'daThayLoi' | 'khamPha' | 'doiChat' | 'choHienTaiLieu' | 'sauKhiHien' | 'bang' | 'ngayThang'> & {
+export type TiepTucTuyenMvp = Pick<TrangThaiMvp, 'conTro' | 'canh' | 'nhiemVu' | 'nhacViec' | 'thuThachDangLam' | 'duKienDangLam' | 'hoiDap' | 'buoiHoi' | 'daThayLoi' | 'khamPha' | 'canhLui' | 'doiChat' | 'choHienTaiLieu' | 'sauKhiHien' | 'bang' | 'ngayThang'> & {
   hoSoCo?: string[];
 };
 export interface TuyenPhuMvp {
@@ -235,6 +251,13 @@ export interface TrangThaiMvp {
    * xem. `[ĐI TỚI]` / "đi tới" rời cảnh (xóa trường này). Không có trường (ô lưu cũ) = `null`.
    */
   khamPha?: KhamPhaMvp | null;
+  /**
+   * Gói B13 (bộ mùa 1): cảnh khám phá vừa đóng vì `[ĐI TỚI]` / "đi tới" từ chuỗi của một chỗ bấm. Màn tra mở sau cú nhảy đó lùi
+   * về cảnh này được ("Về phòng CLB"). Cú nhảy khác (không từ chỗ bấm), sang ngày, mở cảnh mới thì xóa. Thiếu = không có.
+   */
+  canhLui?: KhamPhaMvp | null;
+  /** Gói B13: việc dở theo chuỗi chỗ bấm (xem `DangDoMvp`). Thiếu = không có. */
+  dangDo?: Record<string, DangDoMvp>;
   /** Dữ kiện đang làm (chuỗi hoặc thử thách); ghi nhận khi xong. */
   duKienDangLam: string | null;
   /** Thử thách đang mở từ dữ kiện kiểu `Thử thách:` (không nằm trong chuỗi). */

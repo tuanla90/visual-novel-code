@@ -44,9 +44,10 @@ export function vanBanMua1(d: DuLieuMvp, hoiDap: BoHoiDap | null = null): Record
       `const GOC = ${js(d)} satisfies KichBanMvp;`,
       '',
       '/** Bảng dữ liệu = dòng của truyện (ở trên) + dữ liệu nền sinh lại lúc nạp (tools/noi-dung/nhieu-mvp.ts, hạt cố định). */',
+      // `dieuHuongTuDo` (gói B13): bộ mùa 1 dùng luật điều hướng tự do của máy; bộ MVP không đặt cờ, chạy như cũ.
       hoiDap
-        ? 'export const KICH_BAN_MUA_1 = { ...GOC, hoiDap: HOI_DAP_MUA_1, duLieu: GOC.duLieu ? themNhieuMvp(GOC.duLieu) : GOC.duLieu } satisfies KichBanMvp;'
-        : 'export const KICH_BAN_MUA_1 = { ...GOC, duLieu: GOC.duLieu ? themNhieuMvp(GOC.duLieu) : GOC.duLieu } satisfies KichBanMvp;',
+        ? 'export const KICH_BAN_MUA_1 = { ...GOC, dieuHuongTuDo: true, hoiDap: HOI_DAP_MUA_1, duLieu: GOC.duLieu ? themNhieuMvp(GOC.duLieu) : GOC.duLieu } satisfies KichBanMvp;'
+        : 'export const KICH_BAN_MUA_1 = { ...GOC, dieuHuongTuDo: true, duLieu: GOC.duLieu ? themNhieuMvp(GOC.duLieu) : GOC.duLieu } satisfies KichBanMvp;',
       'export const KICH_BAN_MVP = KICH_BAN_MUA_1;',
       '',
     ].join('\n'),

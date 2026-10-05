@@ -6,6 +6,10 @@
  *
  * Phòng máy không có bảng trên tường nên vào thẳng màn máy; phiếu vẫn ghim lên bảng sau khi tra đúng.
  * Buổi họp (`fix-query`) là màn chiếu: không có bảng, xong là đi tiếp.
+ *
+ * Gói B13 (điều hướng tự do, bộ mùa 1): màn máy lùi về bảng ("Về bảng điều tra"), bảng lùi về cảnh đã mở nó ("Về phòng CLB",
+ * `onRoi`); phòng máy không có bảng nên màn máy lùi thẳng về cảnh. Câu đang soạn giữ trong bản nháp (`nhap-man-tra.ts`), phiếu
+ * đã ghim nằm trong trạng thái ván, nên quay lại là còn nguyên.
  */
 import type { QuanSatTruyVanMvp } from '../../engine/tri-nho-dong-hanh';
 import { useState } from 'react';
@@ -34,15 +38,34 @@ export interface PhongTraMvpProps {
   /** Đổi màu ghim / gỡ, ghim lại thẻ ngay trên bảng của phòng tra (như bảng trong hồ sơ). */
   onDoiMau?: (the: string, mau: MauGhimMvp) => void;
   onXong: (dung: string[], phieu?: PhieuTruyVanMvp, ghiChu?: GhiChuTruyVanMvp[]) => void;
+  /** Gói B13: rời màn tra chưa giải, về cảnh đã mở nó. Thiếu = không có nút (bộ MVP, buổi họp). */
+  onRoi?: () => void;
+  /** Tên cảnh lùi về, cho nhãn nút ("Phòng CLB" → "Về phòng CLB"). */
+  tenCanhRoi?: string;
 }
 
 type Pha = { ten: 'bang' } | { ten: 'may' } | { ten: 'ghim'; id: string; dung: string[]; phieu?: PhieuTruyVanMvp; ghiChu?: GhiChuTruyVanMvp[] };
 
-export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, onDoiCho, onDoiMau, onXong, onDaXemTruyVan }: PhongTraMvpProps) {
+export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, onDoiCho, onDoiMau, onXong, onDaXemTruyVan, onRoi, tenCanhRoi }: PhongTraMvpProps) {
   const laPhongMay = noi !== undefined && /phòng máy/i.test(noi);
   const canh: CanhTra = mode === 'fix-query' ? 'man-chieu' : laPhongMay ? 'phong-may' : 'phong-clb';
   const [pha, setPha] = useState<Pha>(() => (mode === 'fix-query' || laPhongMay ? { ten: 'may' } : { ten: 'bang' }));
   const [xong, setXong] = useState(false);
+  const khoaNhap = mode === 'challenge' ? `${s.batDauLuc}:${the.id}` : undefined;
+  const coRoi = mode === 'challenge' && !!onRoi;
+  const nhanRoi = `Về ${tenCanhRoi ? tenCanhRoi.charAt(0).toLocaleLowerCase('vi') + tenCanhRoi.slice(1) : 'cảnh trước'}`;
+  const nutRoi = coRoi ? (
+    <button
+      className="phong-tra__ve-bang phong-tra__roi"
+      type="button"
+      onClick={() => {
+        soundEngine.playSfx('select');
+        onRoi?.();
+      }}
+    >
+      {nhanRoi}
+    </button>
+  ) : null;
   const nguonTongHop: NguonTongHop[] = [
     ...(duLieu ? nguonBangTongHop(duLieu) : []),
     ...Object.values(s.bang?.phieuTruyVan ?? {}).map((p) => ({ id: p.id, sql: p.sql, cot: p.cot })),
@@ -97,6 +120,7 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
   if (pha.ten === 'bang') {
     return (
       <div className="phong-tra" data-pha="bang">
+        {nutRoi}
         <BangGhimMvp kb={kb} s={s} dienTen={dienTen} onDoiCho={onDoiCho} {...(onDoiMau ? { onDoiMau } : {})}>
           <button
             type="button"
@@ -141,7 +165,7 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
   }
   return (
     <div className="phong-tra" data-pha="may">
-      {mode === 'challenge' && !laPhongMay ? <button className="phong-tra__ve-bang" type="button" onClick={() => setPha({ ten: 'bang' })}>Về bảng điều tra</button> : null}
+      {mode === 'challenge' && !laPhongMay ? <button className="phong-tra__ve-bang" type="button" onClick={() => setPha({ ten: 'bang' })}>Về bảng điều tra</button> : laPhongMay ? nutRoi : null}
       {the.kieuTrinhDung === 'tong-hop' && duLieu ? <ManTongHopMvp onDaXemTruyVan={onDaXemTruyVan} kb={kb} canh={canh} duLieu={duLieu} the={the} nguon={nguonDuocChon} giayNho={giayNho} dienTen={dienTen} nhanNguon={(id) => s.bang?.phieuTruyVan?.[id]?.nhan ?? Object.values(kb.thuThach).find((t) => t.vatChung?.id === id)?.vatChung?.title} onXong={hoanTatTongHop} /> : <ManTraV7
         kb={kb}
         duLieu={duLieu}
@@ -152,6 +176,7 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
         dienTen={dienTen}
         onDaXemTruyVan={onDaXemTruyVan}
         nguonPhieu={nguonPhieu}
+        {...(khoaNhap ? { khoaNhap } : {})}
         onXong={(dung, result) => {
           const isNguonDuocKhaiBao = !!the.vatChung && Object.values(kb.thuThach).some((challenge) => challenge.nguon === the.vatChung?.id);
           const phieu = result && the.vatChung && isNguonDuocKhaiBao
