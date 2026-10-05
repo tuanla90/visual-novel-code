@@ -333,7 +333,7 @@
 ## tin-n3-hieu.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 10/10. Nơi: căng tin, trước `[ĐỐI CHẤT dc-tin-hieu]`. Có mặt: Hiếu, Tùng, Hà Vy, người chơi. Mục đích: dẫn vào đối chất. Nhịp: (1) Hiếu: lớp Hiếu bàn chuyện tin ấy suốt giờ giải lao sáng nay. (2) Hiếu nói thẳng: các cậu làm to chuyện; Hiếu vẫn tin là chuyện cũ. (3) Hà Vy đặt điện thoại xuống, bảo người chơi đưa thứ mình có. Phải lộ: Hiếu giữ ý cũ. Cấm lộ: đáp án (không ai nhắc "tin gốc" trước khi người chơi trình thẻ). Trò đùa: không. Số dòng nhắm tới: 6 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
 - **hieu** (neutral): Sáng nay lớp tớ bàn cái tin ấy suốt giờ giải lao. (tạm)
-- **hieu** (neutral): Tớ nói thẳng nhé. Nghe xong tớ càng nghĩ các cậu đang lo thừa. (tạm)
+- **hieu** (neutral): Nghe xong tớ càng nghĩ các cậu đang lo thừa. (tạm)
 - **tung** (worried): Cậu đã xem bọn tớ tìm được gì đâu. (tạm)
 - **hieu** (annoyed): Thế các cậu tìm được gì nào? (tạm)
 - **narrator**: Hà Vy đặt điện thoại xuống bàn. (tạm)

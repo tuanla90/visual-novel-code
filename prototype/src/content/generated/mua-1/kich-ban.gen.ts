@@ -8593,7 +8593,7 @@ const GOC = {
           "type": "line",
           "speaker": "hieu",
           "expression": "neutral",
-          "text": "Tớ nói thẳng nhé. Nghe xong tớ càng nghĩ các cậu đang lo thừa. (tạm)"
+          "text": "Nghe xong tớ càng nghĩ các cậu đang lo thừa. (tạm)"
         },
         {
           "type": "line",

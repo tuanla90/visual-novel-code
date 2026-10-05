@@ -499,7 +499,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 📍 **Căng tin** — *Đối chất Hiếu: tin có từ lâu, ai cũng chuyển*
 
 - **Hiếu**: Sáng nay lớp tớ bàn cái tin ấy suốt giờ giải lao. (tạm)
-- **Hiếu**: Tớ nói thẳng nhé. Nghe xong tớ càng nghĩ các cậu đang lo thừa. (tạm)
+- **Hiếu**: Nghe xong tớ càng nghĩ các cậu đang lo thừa. (tạm)
 - **Tùng** (lo lắng): Cậu đã xem bọn tớ tìm được gì đâu. (tạm)
 - **Hiếu**: Thế các cậu tìm được gì nào? (tạm)
 - *Hà Vy đặt điện thoại xuống bàn. (tạm)*
