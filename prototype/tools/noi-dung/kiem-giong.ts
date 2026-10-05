@@ -122,6 +122,8 @@ interface Bong {
   khi: boolean;
   /** Thẻ chữ (ngày tháng, tiêu đề cảnh): không phải lời nói. */
   theChu: boolean;
+  /** Gợi ý hai bậc của màn tra ("- Gợi ý[ khi …]: bậc 1 <br> bậc 2", gói B14): 1 hoặc 2. Bậc 1 không được lộ đáp án (luật "## Lời nhắc không lộ đáp án"). */
+  goiYBac?: number;
   chu: string;
 }
 
@@ -135,7 +137,8 @@ function moBien(chu: string, ten: Map<string, string>): string {
 function tachBong(d: DoanLoi, tep: string, duongDan: string, ten: Map<string, string>): Bong[] {
   const out: Bong[] = [];
   for (const { chu, so } of d.dong) {
-    const base = { tep, duongDan, dong: so, doan: d.ma, khi: chu.startsWith('- Khi '), theChu: chu.startsWith('- [THẺ CHỮ]') };
+    const laGoiY = /^- Gợi ý(?: khi [^:*]+)?:/.test(chu);
+    const base = { tep, duongDan, dong: so, doan: d.ma, khi: chu.startsWith('- Khi ') || laGoiY, theChu: chu.startsWith('- [THẺ CHỮ]') };
     const nv = /^> NHIỆM VỤ:\s*(.*)$/.exec(chu);
     if (nv) {
       out.push({ ...base, nguoi: null, loai: 'nhac', chu: moBien(nv[1] ?? '', ten) });
@@ -147,14 +150,14 @@ function tachBong(d: DoanLoi, tep: string, duongDan: string, ten: Map<string, st
       continue;
     }
     if (chu.startsWith('- [DÀN DỰNG]')) continue;
-    // Thoại thường, thẻ chữ, và "- Khi …: **a** (…): … <br> **b** (…): …"
-    const than = chu.replace(/^- (?:\[THẺ CHỮ\] |Khi [^*]*?:\s*)?/, '');
-    for (const phan of than.split(/\s*<br>\s*/)) {
+    // Thoại thường, thẻ chữ, "- Khi …: **a** (…): … <br> **b** (…): …" và "- Gợi ý[ khi …]: <bậc 1> <br> <bậc 2>"
+    const than = chu.replace(/^- (?:\[THẺ CHỮ\] |(?:Khi|Gợi ý)[^*]*?:\s*)?/, '');
+    than.split(/\s*<br>\s*/).forEach((phan, i) => {
       THOAI.lastIndex = 0;
       const m = THOAI.exec(phan);
-      if (!m || m.index !== 0) continue;
-      out.push({ ...base, nguoi: m[1] ?? null, loai: 'thoai', chu: moBien(phan.slice(m[0].length), ten) });
-    }
+      if (!m || m.index !== 0) return;
+      out.push({ ...base, nguoi: m[1] ?? null, loai: 'thoai', ...(laGoiY ? { goiYBac: i + 1 } : {}), chu: moBien(phan.slice(m[0].length), ten) });
+    });
   }
   return out;
 }
@@ -226,6 +229,8 @@ export function kiemGiong(luat: LuatGiong, tepLoi: { ten: string; duongDan: stri
     for (const tb of luat.tenBo) if (nguyenTu(tb.cum, 'u').test(b.chu)) loi.push(`${vt(b)}: [tên đã bỏ] "${tb.cum}" — ${tb.vi}`);
     // Lời nhắc
     if (b.loai === 'nhac') for (const n of luat.nhac) if (n.mau.test(b.chu)) loi.push(`${vt(b)}: [lời nhắc] "${b.chu}" — ${n.vi}`);
+    // Gợi ý bậc 1 của màn tra nói điều còn thiếu về mặt điều tra, không đọc đáp án (bậc 2 mới nói thao tác).
+    if (b.goiYBac === 1) for (const n of luat.nhac) if (n.mau.test(b.chu)) loi.push(`${vt(b)}: [gợi ý bậc 1] "${b.chu}" — ${n.vi}`);
     // Độ dài
     const gioiHan = luat.doDai.get(b.nguoi ?? '') ?? luat.doDai.get('mặc định') ?? Infinity;
     const n = soChu(b.chu);

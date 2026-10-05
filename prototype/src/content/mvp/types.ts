@@ -332,8 +332,17 @@ export interface TheThuThachMvp {
   truyVanNapSan: string | null;
   /** Lời nhân vật sau mỗi lần chạy, theo kết quả (dòng "Khi …" của thẻ — tools/noi-dung/phan-ung-mvp.ts). */
   phanUng: PhanUngMvp[];
-  /** Bằng chứng lưu vào hồ sơ khi xong; `null` = bài giữa chuỗi phòng máy, không lưu gì (QĐ-092). */
-  vatChung: { id: string; title: string; description: string; giaTri: string[] } | null;
+  /**
+   * Gợi ý hai bậc của bạn đi cùng ở màn tra (gói B14; dòng "- Gợi ý[ khi …]: <bậc 1> <br> <bậc 2>" cạnh các dòng "Khi …",
+   * tools/noi-dung/phan-ung-mvp.ts). Thiếu = thẻ chưa có gợi ý (bộ MVP).
+   */
+  goiY?: GoiYTheMvp[];
+  /**
+   * Bằng chứng lưu vào hồ sơ khi xong; `null` = bài giữa chuỗi phòng máy, không lưu gì (QĐ-092).
+   * `chuTrenGiay` (gói B14): câu in trên tờ giấy nhớ ở màn tra, giá trị bọc `**…**`; một câu cho mỗi tờ.
+   * `tachGiay` (gói B14, dòng con "Giấy nhớ: mỗi giá trị một tờ"): phiếu nhiều giá trị thành từng tờ giấy riêng, kéo từng giá trị.
+   */
+  vatChung: { id: string; title: string; description: string; giaTri: string[]; chuTrenGiay?: string[]; tachGiay?: boolean } | null;
   ghiChu: string[];
   /** Trình dựng tổng hợp chỉ bật rõ ràng trên nội dung Vụ 2; thiếu = trình dựng WHERE chương 1. */
   kieuTrinhDung?: 'tong-hop' | 'loc-tiep';
@@ -354,6 +363,16 @@ export interface TheThuThachMvp {
   bamO?: string;
   /** `- Cột nộp: a, b`: các cột nộp (S12). */
   cotNop?: string[];
+}
+
+/**
+ * Một gợi ý hai bậc của màn tra: bậc 1 nói điều còn thiếu về mặt điều tra, bậc 2 nói thẳng thao tác bằng chữ trên màn hình.
+ * `khi`: chỉ dùng khi lần chạy gần nhất khớp điều kiện (như dòng "Khi …"); thiếu = gợi ý chung của thẻ.
+ */
+export interface GoiYTheMvp {
+  khi?: KhiChayMvp;
+  bac1: LoiMvp;
+  bac2: LoiMvp;
 }
 
 /** `cot`: chỉ khớp khi các điều kiện người chơi đã điền dùng đúng tập cột này ("Khi chạy ra 0 dòng với a, b"). */

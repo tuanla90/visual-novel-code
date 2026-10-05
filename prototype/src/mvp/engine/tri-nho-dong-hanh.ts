@@ -60,7 +60,10 @@ export function banDangCoMat(kb: KichBanMvp, s: TrangThaiMvp): BanDongHanhMvp[] 
   if (s.conTro) scan(s.conTro.chuoi, s.conTro.nut, cungCanh && daQuet ? daQuet.nut + 1 : 0);
   const kn = khungNhin(kb, s);
   if ((kn.kind === 'line' || kn.kind === 'feedback') && laBan(kn.loi.speaker)) co.add(kn.loi.speaker);
-  return BAN_DONG_HANH.filter((id) => co.has(id));
+  // Người có thẻ giới thiệu mà chưa giới thiệu xong thì còn là người lạ, chưa phải bạn đi cùng (user 05/10: ô "Đi cùng" hiện
+  // Tùng từ lúc cậu ấy còn là "cậu bạn áo xanh" đang chỉ đường cho người khác).
+  const daQuen = (id: BanDongHanhMvp): boolean => !kb.nhanVat.find((n) => n.id === id)?.gioiThieu || (s.daGioiThieu ?? []).includes(id);
+  return BAN_DONG_HANH.filter((id) => co.has(id) && daQuen(id));
 }
 
 function taoTriNho(kb: KichBanMvp, s: TrangThaiMvp): TriNhoDongHanhMvp {

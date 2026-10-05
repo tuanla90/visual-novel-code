@@ -20,6 +20,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
   - Tiêu đề: Hai mã ứng viên kèm căn cứ
   - Mô tả: Kết quả truy vấn: hai sinh viên có tên bắt đầu bằng H, cùng lớp BC24A — Hiếu và Hoài.
   - Giá trị cho trình dựng: SV240228 · SV240317
+  - Chữ trên giấy: Mã của Hiếu và Hoài: **SV240228, SV240317**
 
 ### c-sua-or-quan — Sửa câu OR của Quân ở buổi họp {challenge: c-sua-or-quan}
 
@@ -41,6 +42,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';
 ```
 
 - Nguồn điều kiện nạp sẵn: dk-ten ← clue-chu-ky-h · dk-lop ← ev-hai-lop
+- [LỜI c-sua-or-quan.1]
 - Vật chứng lưu vào hồ sơ: ev-mot-dong-sua
   - Tiêu đề: Một dòng sau khi sửa
   - Mô tả: Truy vấn của Quân sau khi đổi OR thành AND.

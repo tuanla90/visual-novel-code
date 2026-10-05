@@ -41,7 +41,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 
 | Tiêu chí | Ngưỡng thiết kế | Thực tế | Đánh giá |
 |---|---|---|---|
-| Số dòng thoại | ≥ 300 | 487 | ✅ Đạt |
+| Số dòng thoại | ≥ 300 | 488 | ✅ Đạt |
 | Số chuỗi phân cảnh | ≥ 40 | 103 | ✅ Đạt |
 | Màn tra cứu SQL | ≥ 5 | 5 | ✅ Đạt |
 | Nhịp đối chất | ≥ 3 | 1 | ⚠️ Bản mẫu |
@@ -1369,6 +1369,7 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
 - **Hoài**: Bạn ơi... tòa KTX nữ đi đường nào ạ?
 - **Tùng**: Sang bên nữ á? Cậu cứ ra cửa sảnh, rẽ trái là tới luôn. Ngay kia kìa!
 - **Hoài** (nhẹ nhõm): Tớ cảm ơn.
+- *Bạn nữ kéo vali lạch cạch đi về hướng cậu ấy vừa chỉ.*
 - *Suy nghĩ của bạn:* *(Chỉ đường trơn tru thế kia thì chắc rành khu này lắm.)*
 
 **Lựa chọn tiếp theo:**

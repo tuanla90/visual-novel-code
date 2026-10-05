@@ -1,24 +1,28 @@
 ## Giấy nhớ (clue-…) — người chơi tự tạo trên bảng hồ sơ vụ
 
 <!-- Chữ do phiên truyện viết (30/09); mã và "Giá trị cho trình dựng" thuộc phiên logic. -->
+<!-- Gói B14 (05/10/2026): "Chữ trên giấy" = câu in trên tờ giấy nhớ dán quanh màn tra, nói giá trị ấy là gì; giá trị kéo vào ô lọc bọc trong **…**. Thẻ nhiều giá trị thì mỗi giá trị một câu, cách nhau bằng " · " như dòng "Giá trị cho trình dựng". Tối đa 60 ký tự một câu (máy kiểm: tools/noi-dung/man-tra-mua1.ts). -->
 <!-- Bảng điều tra: "Ảnh" = tên tệp ảnh của thẻ; "Loại trừ: <mã phiếu>" vẽ sợi chỉ cam tới phiếu đó, "Gạch: <giá trị>" gạch giá trị ấy trên phiếu (engine/bang-dieu-tra.ts). -->
 
 ### clue-chu-ky-h — [H]
 - Tiêu đề: Chữ ký tay (chỉ đọc được chữ H)
 - Ảnh: doc-chu-ky-h
 - Giá trị cho trình dựng: H
+- Chữ trên giấy: Chữ ký trên thư bắt đầu bằng chữ **H**
 - Nguồn: Bản chụp thư đã che thông tin, Phòng CTSV chuyển về
 - Nội dung: Chữ ký tay trên phiếu gửi: chữ H viết hoa rõ, phần sau là một nét lượn không đọc được; kèm dòng "đề nghị phản hồi chính thức". Không tên, không mã trên thư.
 
 ### clue-toa-b — [Tòa B]
 - Tiêu đề: Hộp tòa B, mở 9h sáng thứ Hai
 - Giá trị cho trình dựng: B
+- Chữ trên giấy: Thư được bỏ vào hộp ở tòa **B**
 - Nguồn: Lời {{nv.bac-tu.trong-cau}}, sảnh tòa B
 - Nội dung: Bác Thịnh và cô Lan mở hộp 9h sáng thứ Hai; thư nằm trên cùng. Từ 7 giờ tới lúc mở hộp, ra vào tòa B chỉ có sinh viên các lớp sinh hoạt ở tòa này.
 
 ### clue-bao-chi-k24 — [Báo chí K24]
 - Tiêu đề: Thẻ lịch khoa Báo chí K24 mắc ở khe hộp
 - Giá trị cho trình dựng: Báo chí · K24
+- Chữ trên giấy: Thẻ lịch của khoa **Báo chí** · Thẻ lịch của khóa **K24**
 - Nguồn: Khe hộp kiến nghị, sảnh tòa B
 - Nội dung: Phần in còn nguyên "Khoa Báo chí – Truyền thông · K24"; dòng viết tay "Họ tên / Lớp" bị xé mất. Còn biết chủ thẻ học khoa Báo chí; lớp nào thì không.
 
@@ -53,6 +57,7 @@
 ### clue-ten-tep — [Tên tệp]
 - Tiêu đề: Chân trang lá thư: tên tệp
 - Giá trị cho trình dựng: kien-nghi
+- Chữ trên giấy: Tên tệp ở chân trang thư, đoạn đầu: **kien-nghi**
 - Nguồn: {{nv.co-hanh}}, Phòng Đào tạo
 - Nội dung: Bản in từ máy phòng máy có dòng chân trang ghi tên tệp. Chân trang bản chụp lá thư bị xén, chỉ đọc được đoạn đầu: "kien-nghi-…".
 

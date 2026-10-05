@@ -7,7 +7,7 @@ import type { Moc } from './dieu-kien.ts';
 import type { MucMvp, RawChuoiMvp, RawMvp } from './doc-mvp.ts';
 import type { RawChallengeCard, RawLine } from './doc.ts';
 import type { KetQuaLuat } from './luat-mvp.ts';
-import { docPhanUng } from './phan-ung-mvp.ts';
+import { docGoiY, docPhanUng } from './phan-ung-mvp.ts';
 
 type Obj = Record<string, unknown>;
 
@@ -182,6 +182,7 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     soDongKyVong = Number(soDongChu);
     soDongKhai.push({ sql: sqlChuan, soDong: soDongKyVong, noi: `${noi} thẻ ${t.id}, SQL chuẩn`, ...(t.evidence ? { resultId: t.evidence.id } : {}), ...((t.fields['Kiểu'] === 'tổng hợp' || t.fields['Kiểu'] === 'lọc tiếp') && t.fields['Nguồn'] ? { sourceResultId: t.fields['Nguồn'] } : {}), ...(t.fields['Kiểu'] === 'tổng hợp' && t.fields['Nhóm theo'] ? { sourceGroupColumn: t.fields['Nhóm theo'] } : {}) });
   }
+  const goiY = docGoiY(t.fields).goiY;
   return {
     id: t.id,
     tieuDe: field('Tiêu đề'),
@@ -205,8 +206,17 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     ...(t.fields['Cột nộp'] !== undefined ? { cotNop: t.fields['Cột nộp'].split(',').map((c) => c.trim()).filter((c) => c !== '') } : {}),
     truyVanNapSan: t.sql['Truy vấn nạp sẵn'] ?? null,
     phanUng: docPhanUng(t.fields).phanUng.map((p) => ({ khi: p.khi, loi: p.loi.map(loi) })),
+    // Gợi ý hai bậc của bạn đi cùng ở màn tra (gói B14); thẻ không có dòng "Gợi ý" thì không ghi gì (bộ MVP sinh ra y như trước).
+    ...(goiY.length > 0 ? { goiY: goiY.map((g) => ({ ...(g.khi ? { khi: g.khi } : {}), bac1: loi(g.bac1), bac2: loi(g.bac2) })) } : {}),
     vatChung: t.evidence
-      ? { id: t.evidence.id, title: t.evidence.title, description: t.evidence.description, giaTri: chiaGiaTri(t.evidence.giaTri) }
+      ? {
+          id: t.evidence.id,
+          title: t.evidence.title,
+          description: t.evidence.description,
+          giaTri: chiaGiaTri(t.evidence.giaTri),
+          ...(t.evidence.chuTrenGiay ? { chuTrenGiay: chiaGiaTri(t.evidence.chuTrenGiay) } : {}),
+          ...(t.evidence.tachGiay ? { tachGiay: true } : {}),
+        }
       : null,
     ghiChu: t.notes,
   };

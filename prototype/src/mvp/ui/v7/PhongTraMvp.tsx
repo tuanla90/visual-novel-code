@@ -10,13 +10,17 @@
  * Gói B13 (điều hướng tự do, bộ mùa 1): màn máy lùi về bảng ("Về bảng điều tra"), bảng lùi về cảnh đã mở nó ("Về phòng CLB",
  * `onRoi`); phòng máy không có bảng nên màn máy lùi thẳng về cảnh. Câu đang soạn giữ trong bản nháp (`nhap-man-tra.ts`), phiếu
  * đã ghim nằm trong trạng thái ván, nên quay lại là còn nguyên.
+ *
+ * Gói B14: bạn đi cùng có mặt ở màn máy. Thẻ có gợi ý hai bậc thì màn tra tự lấy từ thẻ; thẻ chưa có (các vụ sau của bộ mùa 1)
+ * thì bạn đang có mặt nhắc lại việc đang làm bằng lời viết sẵn (`banDuPhong`, lời "gợi ý" của hoi-dap/dong-hanh.json).
  */
-import type { QuanSatTruyVanMvp } from '../../engine/tri-nho-dong-hanh';
-import { useState } from 'react';
+import { banDangCoMat, type QuanSatTruyVanMvp } from '../../engine/tri-nho-dong-hanh';
+import { useMemo, useState } from 'react';
 import type { BoDuLieuMvp, KichBanMvp, TheThuThachMvp } from '../../../content/mvp/types';
 import { soundEngine } from '../../../shared/audio/sound-engine';
 import type { GiaTriHoSo } from '../../engine/giay-nho';
 import type { TrangThaiMvp, GhiChuTruyVanMvp, PhieuTruyVanMvp, MauGhimMvp } from '../../engine/trang-thai';
+import { loiVietSan } from '../../engine/dong-hanh-viet-san';
 import { nguonBangTongHop, type NguonTongHop } from '../../engine/trinh-dung-tong-hop';
 import { BangGhimMvp } from './BangGhimMvp';
 import { khungTuSqlChuan } from '../../engine/trinh-dung';
@@ -53,6 +57,14 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
   const [xong, setXong] = useState(false);
   const khoaNhap = mode === 'challenge' ? `${s.batDauLuc}:${the.id}` : undefined;
   const coRoi = mode === 'challenge' && !!onRoi;
+  const banDuPhong = useMemo(() => {
+    const bo = kb.hoiDap?.dongHanh;
+    if (!bo || the.goiY?.length) return [];
+    return banDangCoMat(kb, s).flatMap((b) => {
+      const loi = bo.loi[b];
+      return loi ? [{ ai: b as string, loi: loiVietSan(kb, s, loi, 'goi-y') }] : [];
+    });
+  }, [kb, s, the]);
   const nhanRoi = `Về ${tenCanhRoi ? tenCanhRoi.charAt(0).toLocaleLowerCase('vi') + tenCanhRoi.slice(1) : 'cảnh trước'}`;
   const nutRoi = coRoi ? (
     <button
@@ -176,6 +188,7 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
         dienTen={dienTen}
         onDaXemTruyVan={onDaXemTruyVan}
         nguonPhieu={nguonPhieu}
+        banDuPhong={banDuPhong}
         {...(khoaNhap ? { khoaNhap } : {})}
         onXong={(dung, result) => {
           const isNguonDuocKhaiBao = !!the.vatChung && Object.values(kb.thuThach).some((challenge) => challenge.nguon === the.vatChung?.id);

@@ -18,3 +18,4 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
   - Tiêu đề: Nhật ký in 23:10 Chủ nhật
   - Mô tả: 1 trang, tệp kien-nghi-phong-clb.docx, tài khoản clb_robotics: tài khoản dùng chung của CLB Robotics, không phải mã của một sinh viên. Tài khoản in thư không phải của người nộp.
   - Giá trị cho trình dựng: clb_robotics
+  - Chữ trên giấy: Tài khoản đã in lá thư: **clb_robotics**

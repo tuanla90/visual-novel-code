@@ -3293,3 +3293,356 @@ span.v7-o--bang:not(.v7-o--phieu) {
   border-radius: 4px;
   margin-top: 3px;
 }
+
+/* ======================= GÓI B14 (05/10/2026): màn tra dễ dùng hơn ======================= */
+/* docs/mua-1/brief/b14-man-tra.md. Màn hẹp: lớp `.v7--doc` (VungV7 tự đặt khi vùng chứa dọc) và @media; bảng điều tra thêm
+   `.game--portrait`. */
+
+/* --- C + D. Giấy nhớ dán trên rìa máy, các tờ không sát nhau (chỗ dán: giay-nho-quanh.ts viTriGiay); tờ có "Chữ trên giấy" in cả câu --- */
+.v7-giay--quanh {
+  width: 136px;
+  min-height: 118px;
+  padding: 18px 28px 12px 12px;
+}
+.v7-giay--quanh.is-phai {
+  padding: 18px 12px 12px 28px;
+}
+.v7-giay--cau {
+  font: 600 15px/1.24 var(--font-ui);
+}
+.v7-giay__cau {
+  display: block;
+  overflow-wrap: break-word;
+}
+/* Giá trị kéo vào ô lọc: đậm, to hơn, tô bút dạ. */
+.v7-giay__gia {
+  padding: 0 2px;
+  border-radius: 2px;
+  background: linear-gradient(transparent 52%, rgba(255, 138, 101, 0.55) 52%);
+  font-weight: 800;
+  font-size: 1.14em;
+  overflow-wrap: anywhere;
+}
+.v7--doc .v7-dai {
+  gap: 12px;
+  padding: 4px 4px 8px;
+}
+.v7--doc .v7-giay--cau {
+  max-width: 190px;
+  font-size: 13.5px;
+  line-height: 1.25;
+  white-space: normal;
+  text-align: left;
+}
+@media (max-width: 560px) {
+  .v7--doc .v7-giay--cau {
+    max-width: 168px;
+    font-size: 13px;
+  }
+}
+
+/* --- E. Hoạt cảnh đi tiếp từ bảng đang có (hoat-canh-bang.ts; màn tra và màn lọc thử dùng chung) --- */
+/* Dòng không còn khớp rụng khỏi bảng, lần lượt từ trên xuống; hết lượt rụng vừa khớp RUNG_MS (30 × 20ms + 0,5s). */
+.v7-kq tbody tr.is-roi {
+  animation: v7-hang-roi 0.5s cubic-bezier(0.55, 0, 0.9, 0.5) both;
+  animation-delay: calc(min(var(--j, var(--i, 0)), 30) * 20ms);
+}
+@keyframes v7-hang-roi {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  30% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate(0.5em, 2.4em) rotate(2deg);
+  }
+}
+/* Bảng vừa dồn dòng: dòng còn lại trượt lên bằng Web Animations (useRungBang), không phát lại hiệu ứng hiện dần. */
+.v7-kq--don tbody tr:not(.is-roi) {
+  animation: none;
+}
+/* Bảng của lần chạy trước, còn lại sau khi sửa câu: mờ đi, ghi rõ là kết quả cũ. */
+.v7-kq--cu table {
+  opacity: 0.5;
+  filter: saturate(0.6);
+}
+.v7-kq__cu {
+  margin: 0;
+  padding: 0.35em 0.75em;
+  background: #1b2b36;
+  color: #ffd98a;
+  font: 600 0.78em/1.3 var(--font-ui);
+  letter-spacing: 0.03em;
+}
+@media (prefers-reduced-motion: reduce) {
+  .v7-kq tbody tr.is-roi {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* --- A. Bạn đi cùng ở góc phải trên của màn tra (BanDiCungManTra) --- */
+/* Bóng thoại mọc sang TRÁI dọc mép trên: không phủ hàng "LẤY CỘT", ô lọc hay nút CHẠY mà lời gợi ý nhắc tới; chừa góc trái
+   cho nút "Về bảng điều tra". */
+.v7-ban {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  z-index: 30;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: calc(100% - 200px);
+  pointer-events: none;
+}
+.v7-ban > * {
+  pointer-events: auto;
+}
+.v7-ban__mat {
+  flex: none;
+  display: flex;
+  gap: 6px;
+}
+.v7-ban__nguoi {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 2px solid #fffdfa;
+  border-radius: 50%;
+  background: #fde68a;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
+}
+.v7-ban__nguoi img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 12%;
+}
+.v7-ban__nguoi span {
+  color: #3a2f12;
+  font: 700 1.1rem var(--font-ui);
+}
+.v7-ban__nguoi:hover,
+.v7-ban__nguoi:focus-visible {
+  outline: 3px solid #64b5f6;
+  outline-offset: 2px;
+}
+.v7-ban__nguoi.is-noi {
+  box-shadow:
+    0 0 0 3px #1f5f8b,
+    0 3px 8px rgba(0, 0, 0, 0.45);
+}
+.v7-ban__bong {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 10px;
+  row-gap: 3px;
+  align-items: start;
+  width: min(560px, calc(100vw - 330px));
+  min-width: 240px;
+  padding: 9px 10px 9px 13px;
+  border-radius: 14px 3px 14px 14px;
+  background: #fffdfa;
+  color: #2a2320;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  font: 500 0.92rem/1.42 var(--font-ui);
+}
+.v7-ban__bong b {
+  grid-column: 1;
+  color: #87500e;
+  font: 700 0.76rem/1.3 var(--font-ui);
+}
+.v7-ban__bong[data-nhan-vat='ha-vy'] b {
+  color: #74506f;
+}
+.v7-ban__bong p {
+  grid-column: 1;
+  margin: 0;
+}
+.v7-ban__nut {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.v7-ban__them,
+.v7-ban__dong {
+  min-height: 36px;
+  padding: 6px 12px;
+  border-radius: 9px;
+  font: 600 0.82rem/1.2 var(--font-ui);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.v7-ban__them {
+  border: 1px solid #1f5f8b;
+  background: #e9f0f5;
+  color: #243c50;
+}
+.v7-ban__dong {
+  border: 1px solid #d8cfc0;
+  background: transparent;
+  color: #75614e;
+}
+.v7-ban button:focus-visible {
+  outline: 3px solid #1f5f8b;
+  outline-offset: 2px;
+}
+/* Máy thấp (điện thoại cầm ngang): ảnh mặt nhỏ lại, bóng thoại gọn hơn. */
+@media (max-height: 560px) {
+  .v7-ban {
+    top: 4px;
+    right: 6px;
+  }
+  .v7-ban__nguoi {
+    width: 40px;
+    height: 40px;
+  }
+  .v7-ban__bong {
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+}
+/* Màn dọc: ảnh mặt nằm trong dải trên cùng (bên phải nút "Về bảng điều tra"), bóng thoại mọc xuống dưới, nút nằm ngang. */
+.v7--doc .v7-ban {
+  top: 2px;
+  right: 8px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  max-width: calc(100% - 16px);
+}
+.v7--doc .v7-ban__nguoi {
+  width: 40px;
+  height: 40px;
+}
+.v7--doc .v7-ban__bong {
+  grid-template-columns: minmax(0, 1fr);
+  width: min(340px, calc(100vw - 16px));
+  min-width: 0;
+  padding: 9px 12px;
+  border-radius: 14px 3px 14px 14px;
+}
+.v7--doc .v7-ban__nut {
+  grid-column: 1;
+  grid-row: auto;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+@media (max-width: 560px) {
+  .v7--doc .v7-ban__bong {
+    font-size: 0.88rem;
+  }
+  .v7--doc .v7-ban__them,
+  .v7--doc .v7-ban__dong {
+    min-height: 40px;
+  }
+}
+
+/* Lời nhân vật ở lại tới lần chạy sau (gói B14): màn dọc và máy thấp thì hộp thoại không được nằm đè lên nút CHẠY. */
+/* Màn dọc: hộp thoại thành một khối riêng dưới màn hình (mặt kính co lại), không phủ lên gì. */
+.v7--doc .v7-thoai {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  flex: none;
+  width: auto;
+  margin: 0;
+  padding: 8px 34px 8px 10px;
+  transform: none;
+  animation: none;
+  font-size: 15px;
+}
+.v7--doc .v7-thoai__mat {
+  width: 48px;
+  height: 48px;
+}
+/* Máy thấp cầm ngang: hộp thoại dạt sang trái, nút CHẠY ở góc phải dưới vẫn bấm được. */
+@media (max-height: 560px) {
+  .v7--ngang .v7-thoai {
+    left: 10px;
+    bottom: 8px;
+    width: min(560px, 58%);
+    padding: 8px 34px 8px 10px;
+    transform: none;
+    animation: none;
+    font-size: 15px;
+  }
+  .v7--ngang .v7-thoai__mat {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+/* --- B. Chọn màu ghim bằng bấm: dải màu ở lại, chấm đủ to cho ngón tay (BangGhimMvp) --- */
+.bang__xem-ghim-nut {
+  width: 40px;
+  height: 40px;
+}
+/* Vùng chạm của đầu ghim rộng hơn hình (≥ 48px). */
+.bang__xem-ghim-nut::after {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+}
+.bang__xem-ghim-nut.is-mo {
+  transform: scale(1.12);
+  box-shadow:
+    0 0 0 3px #fff,
+    0 6px 18px rgba(0, 0, 0, 0.75);
+}
+.bang__xem-ghim-popover {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 14px;
+  max-width: calc(100vw - 24px);
+  padding: 9px 16px;
+  white-space: normal;
+}
+.bang__xem-popover-mau {
+  gap: 10px;
+}
+.bang__xem-popover-mau .bang__mau-nut {
+  width: 44px;
+  height: 44px;
+  border-width: 3px;
+}
+.bang__xem-popover-mau .bang__mau-nut:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+.bang__go--popover {
+  min-height: 44px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+}
+/* Màn hẹp: dải màu có thể xuống hai hàng (màu / nút gỡ) nên bo góc vừa phải, chấm màu sát nhau hơn một chút. */
+@media (max-width: 560px) {
+  .bang__xem-ghim-popover {
+    border-radius: 20px;
+    padding: 9px 12px;
+  }
+  .bang__xem-popover-mau {
+    gap: 8px;
+  }
+}
+.game--portrait .bang__xem-ghim-popover {
+  border-radius: 20px;
+  padding: 9px 12px;
+}
+.game--portrait .bang__xem-popover-mau {
+  gap: 8px;
+}

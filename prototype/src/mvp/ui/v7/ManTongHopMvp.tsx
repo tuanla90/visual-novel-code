@@ -6,7 +6,7 @@
  * Hai hàng cuối chỉ hiện khi SQL chuẩn của thẻ dùng tới (SUM/AVG, HAVING). Câu SQL đang dựng luôn hiện bên dưới.
  */
 import type { QuanSatTruyVanMvp } from '../../engine/tri-nho-dong-hanh';
-import { useMemo, useState, type CSSProperties } from 'react';
+import { useMemo, useState } from 'react';
 import type { BoDuLieuMvp, KichBanMvp, TheThuThachMvp } from '../../../content/mvp/types';
 import { IconPin, IconPlay } from '../../../shared/ui/icons';
 import { CodeText } from '../../../shared/ui/CodeText';
@@ -18,6 +18,8 @@ import { tenNguoiNoi } from '../../engine/may';
 import { anhTheoTen } from '../anh-mvp';
 import { CANH_TRA, type CanhTra } from './canh-tra';
 import { VungV7 } from './ManTraV7';
+import { ChuGiay } from './GiayNhoV7';
+import { leGiay, lopGiay, nhanGiay, viTriGiay } from './giay-nho-quanh';
 import { KiemPhieu } from './KiemPhieu';
 import './v7.css';
 
@@ -179,34 +181,22 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
       if (g && (!chiSo || LA_SO.test(g.giaTri.trim()))) dat(g);
     });
 
-  // Giấy nhớ quanh viền: nửa trái, nửa phải (cùng cách xếp với màn tra).
+  // Giấy nhớ quanh viền: nửa trái, nửa phải (cùng cách xếp với màn tra, `giay-nho-quanh.ts`: dán trên rìa máy, các tờ không sát nhau).
   const nua = Math.ceil(giayNho.length / 2);
-  const buocGiay = Math.min(146, (cauHinh.kinh.h - 8) / Math.max(1, nua));
-  const viTriGiay = (i: number): CSSProperties => {
-    const phai = i >= nua;
-    const k = phai ? i - nua : i;
-    return {
-      left: phai ? cauHinh.kinh.x + cauHinh.kinh.w - 6 : cauHinh.kinh.x - 122,
-      top: cauHinh.kinh.y + 22 + k * buocGiay,
-      ['--r' as string]: `${((i * 37) % 9) - 4}deg`,
-      ['--img' as string]: `url("${anhTheoTen(`giay-nho-${String((i % 10) + 1).padStart(2, '0')}`) ?? ''}")`,
-    };
-  };
   const giay = giayNho.map((g, i) => (
     <button
       key={g.khoa}
       type="button"
-      className={`v7-giay${i >= nua ? ' is-phai' : ''}${dangChon?.khoa === g.khoa ? ' is-chon' : ''}${g.nhieu ? ' is-nhieu' : ''}${(g.nhieu ?? [g.giaTri]).some((v) => v.length > 6) ? ' is-dai' : ''}`}
-      style={viTriGiay(i)}
+      className={`v7-giay v7-giay--quanh${i >= nua ? ' is-phai' : ''}${dangChon?.khoa === g.khoa ? ' is-chon' : ''}${lopGiay(g)}`}
+      style={viTriGiay(i, giayNho.length, cauHinh.kinh)}
       draggable={!khoa}
       disabled={khoa}
       aria-pressed={dangChon?.khoa === g.khoa}
-      aria-label={`${g.giaTri} (giấy nhớ ${dienTen(g.nguon)})`}
+      aria-label={nhanGiay(g, dienTen)}
       onDragStart={(e) => e.dataTransfer.setData('text/plain', g.khoa)}
       onClick={() => setDangChon(dangChon?.khoa === g.khoa ? null : g)}
     >
-      <span className="v7-giay__chu">{g.nhieu ? g.nhieu.map((v) => <span key={v}>{v}</span>) : g.giaTri}</span>
-      <small className="v7-giay__nguon">{dienTen(g.nguon).replace(/^\[|\]$/g, '')}</small>
+      <ChuGiay g={g} dienTen={dienTen} />
     </button>
   ));
 
@@ -471,7 +461,7 @@ export function ManTongHopMvp({ kb, duLieu, the, canh, nguon, giayNho, dienTen, 
 
   const chibiNoi = loiNoi ? anhTheoTen(`chibi-${loiNoi.speaker}`) : undefined;
   return (
-    <VungV7 canh={canh} anhCanh={cauHinh.anh ? anhTheoTen(cauHinh.anh) : undefined} kinhO={cauHinh.kinh} giay={giay} nhan="Tổng hợp dữ liệu">
+    <VungV7 canh={canh} anhCanh={cauHinh.anh ? anhTheoTen(cauHinh.anh) : undefined} kinhO={cauHinh.kinh} giay={giay} le={giayNho.length > 0 ? leGiay(cauHinh.kinh) : 0} nhan="Tổng hợp dữ liệu">
       {kinh}
       {loiNoi ? (
         <button type="button" className="v7-thoai" onClick={() => setLoiNoi(null)} aria-label={`${tenNguoiNoi(kb, loiNoi.speaker)}: ${loiNoi.text} — bấm để đóng`}>

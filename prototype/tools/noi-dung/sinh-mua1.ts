@@ -11,6 +11,7 @@ import { chuyenMvp, type DuLieuMvp } from './chuyen-mvp.ts';
 import { dinhDangLoi } from './doc-mvp.ts';
 import { docHoiDap, type BoHoiDap } from './hoi-dap-mua1.ts';
 import { kiemLuatMvp } from './luat-mvp.ts';
+import { kiemManTraMua1 } from './man-tra-mua1.ts';
 import { tepLechTrenDia } from './sinh.ts';
 import { docSpriteVat, docTenAnh, docThuMucMvp, traViTri } from './thu-muc-mvp.ts';
 
@@ -76,7 +77,7 @@ export function sinhVanBanMua1(thuMuc: string = THU_MUC_NOI_DUNG_MUA_1): KetQuaS
   const luat = kiemLuatMvp(kq.mvp, { spriteVat: docSpriteVat(), anh: docTenAnh() });
   // Giọng của lời trong tờ dữ kiện do `kiem-noi-dung:mua1` / `kiem-giong:mua1` kiểm (như lời trong loi/); ở đây chỉ luật tờ.
   const hd = docHoiDap(thuMuc, kq.mvp, { giong: false, nguonLoi: { banDo: kq.banDo, doanLoi: kq.doanLoi } });
-  const loi = [...kq.loi, ...luat.loi.map((l) => traViTri(l, kq.banDo))].map(dinhDangLoi).concat(hd.loi);
+  const loi = [...kq.loi, ...luat.loi.map((l) => traViTri(l, kq.banDo))].map(dinhDangLoi).concat(hd.loi, kiemManTraMua1(kq.mvp, { banDo: kq.banDo, doanLoi: kq.doanLoi }).loi);
   if (loi.length > 0) return { tep: {}, duLieu: null, loi };
   try {
     const duLieu = chuyenMvp(kq.mvp, luat);

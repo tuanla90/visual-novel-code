@@ -244,6 +244,11 @@ export interface TrangThaiMvp {
   daVaoHomNay: string[];
   /** Cảnh đang hiển thị (giữ khi đứng ở danh sách địa điểm để nền không nhảy). */
   canh: string;
+  /**
+   * Nhân vật đã rời dàn chân dung của cảnh đang đứng (`[RA <mã>]` trong khung; `player` = người chơi đứng ngoài quan sát).
+   * Người đó nói lại, `[VÀO <mã>]`, hoặc đổi cảnh thì hết hiệu lực.
+   */
+  raDan?: string[];
 
   conTro: ConTroMvp | null;
   /**

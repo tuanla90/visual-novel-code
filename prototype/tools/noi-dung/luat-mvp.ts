@@ -472,7 +472,8 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           }
           break;
         case 'stage':
-          if (!nhanVat.has(it.nhanVat)) err(vt, `[${it.action === 'vao' ? 'VÀO' : 'RA'} ${it.nhanVat}]: không có nhân vật "${it.nhanVat}"`);
+          // `[RA player]`: người chơi đứng ngoài quan sát, không lên dàn chân dung cho tới khi nói.
+          if (!nhanVat.has(it.nhanVat) && !(it.action === 'ra' && it.nhanVat === 'player')) err(vt, `[${it.action === 'vao' ? 'VÀO' : 'RA'} ${it.nhanVat}]: không có nhân vật "${it.nhanVat}"`);
           break;
         case 'explore': {
           const noi = `[KHÁM PHÁ ${it.id}]`;

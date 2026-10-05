@@ -1274,6 +1274,11 @@ const GOC = {
       "mocSomNhat": 0,
       "nodes": [
         {
+          "type": "stage",
+          "action": "ra",
+          "nhanVat": "player"
+        },
+        {
           "type": "line",
           "speaker": "hoai",
           "expression": "nervous",
@@ -1293,7 +1298,17 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Bạn nữ kéo vali lạch cạch đi về hướng Tùng vừa chỉ."
+          "text": "Người chơi đứng ngoài nhìn: trên hình chỉ có bạn nữ và cậu áo xanh. Hết đoạn này bạn nữ rời hình."
+        },
+        {
+          "type": "stage",
+          "action": "ra",
+          "nhanVat": "hoai"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bạn nữ kéo vali lạch cạch đi về hướng cậu ấy vừa chỉ."
         },
         {
           "type": "line",
@@ -18505,12 +18520,68 @@ const GOC = {
           ]
         }
       ],
+      "goiY": [
+        {
+          "bac1": {
+            "speaker": "ha-vy",
+            "expression": "thinking",
+            "text": "Máy in nhớ tên tệp. Chân trang lá thư còn đọc được đoạn đầu của tên tệp đấy."
+          },
+          "bac2": {
+            "speaker": "ha-vy",
+            "expression": "neutral",
+            "text": "Bấm \"+ thêm điều kiện\", đổi cột thành ten_tep, thả giấy kien-nghi vào. Bấm chữ \"bằng\" cho nó thành \"bắt đầu bằng\", rồi bấm CHẠY."
+          }
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0,
+            "cot": [
+              "tai_khoan",
+              "ten_tep"
+            ]
+          },
+          "bac1": {
+            "speaker": "ha-vy",
+            "expression": "thinking",
+            "text": "Hai mã ấy chưa từng in tệp này. Vậy đừng hỏi theo hai mã nữa, hỏi xem ai đã in nó."
+          },
+          "bac2": {
+            "speaker": "ha-vy",
+            "expression": "neutral",
+            "text": "Bấm dấu × ở dòng lọc có hai mã sinh viên để bỏ dòng ấy đi, chỉ giữ dòng ten_tep, rồi bấm CHẠY."
+          }
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0,
+            "cot": [
+              "ten_tep"
+            ]
+          },
+          "bac1": {
+            "speaker": "ha-vy",
+            "expression": "thinking",
+            "text": "Mình chỉ có đoạn đầu của tên tệp. Đòi khớp đủ cả tên thì không dòng nào khớp là phải."
+          },
+          "bac2": {
+            "speaker": "ha-vy",
+            "expression": "neutral",
+            "text": "Ở dòng ten_tep, bấm vào chữ \"bằng\" cho nó đổi thành \"bắt đầu bằng\", rồi bấm CHẠY."
+          }
+        }
+      ],
       "vatChung": {
         "id": "ev-nhat-ky-in",
         "title": "Nhật ký in 23:10 Chủ nhật",
         "description": "1 trang, tệp kien-nghi-phong-clb.docx, tài khoản clb_robotics: tài khoản dùng chung của CLB Robotics, không phải mã của một sinh viên. Tài khoản in thư không phải của người nộp.",
         "giaTri": [
           "clb_robotics"
+        ],
+        "chuTrenGiay": [
+          "Tài khoản đã in lá thư: **clb_robotics**"
         ]
       },
       "ghiChu": [
@@ -18538,6 +18609,20 @@ const GOC = {
               "text": "Ghim lại đã. Giờ mới biết mình có gì để lọc."
             }
           ]
+        }
+      ],
+      "goiY": [
+        {
+          "bac1": {
+            "speaker": "ha-vy",
+            "expression": "thinking",
+            "text": "Chưa mở bảng nào thì chưa có gì để xem. Tài khoản của CLB được xem bảng nào nhỉ?"
+          },
+          "bac2": {
+            "speaker": "ha-vy",
+            "expression": "neutral",
+            "text": "Ở ô NGUỒN BẢNG, bấm vào chữ \"chọn bảng…\", chọn lop_sinh_hoat rồi bấm CHẠY."
+          }
         }
       ],
       "vatChung": {
@@ -18594,6 +18679,20 @@ const GOC = {
               "text": "Vẫn một trăm mười hai dòng, chỉ còn hai cột."
             }
           ]
+        }
+      ],
+      "goiY": [
+        {
+          "bac1": {
+            "speaker": "ha-vy",
+            "expression": "thinking",
+            "text": "Mình chỉ hỏi lớp nào ở tòa nào thôi. Bảng cần đúng hai thứ ấy, không thiếu, không thừa."
+          },
+          "bac2": {
+            "speaker": "ha-vy",
+            "expression": "neutral",
+            "text": "Ở hàng LẤY CỘT, bấm cho sáng hai cột ma_lop và toa_nha, các cột khác để tắt, rồi bấm CHẠY."
+          }
         }
       ],
       "vatChung": null,
@@ -18689,6 +18788,52 @@ const GOC = {
           ]
         }
       ],
+      "goiY": [
+        {
+          "bac1": {
+            "speaker": "ha-vy",
+            "expression": "thinking",
+            "text": "Cái hộp ở tòa B, thẻ lịch của khoa Báo chí. Lớp mình tìm phải khớp cả hai cơ."
+          },
+          "bac2": {
+            "speaker": "ha-vy",
+            "expression": "neutral",
+            "text": "Ở hai dòng lọc, bấm vào tên cột để đổi thành toa_nha và nganh. Thả giấy B vào dòng toa_nha, giấy Báo chí vào dòng nganh, để chữ nối là VÀ rồi bấm CHẠY."
+          }
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 33
+          },
+          "bac1": {
+            "speaker": "ha-vy",
+            "expression": "thinking",
+            "text": "Ba mươi ba lớp là gộp cả hai nhóm lại rồi. Mình chỉ cần phần trùng nhau thôi."
+          },
+          "bac2": {
+            "speaker": "ha-vy",
+            "expression": "neutral",
+            "text": "Bấm vào chữ HOẶC giữa hai dòng lọc cho nó đổi thành VÀ, rồi bấm CHẠY."
+          }
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "bac1": {
+            "speaker": "ha-vy",
+            "expression": "thinking",
+            "text": "Không lớp nào thì lạ thật. Xem lại hai tờ giấy đã nằm đúng chỗ của nó chưa."
+          },
+          "bac2": {
+            "speaker": "ha-vy",
+            "expression": "neutral",
+            "text": "Giấy B đi với cột toa_nha, giấy Báo chí đi với cột nganh. Bấm vào tên cột ở dòng lọc để đổi cột, rồi bấm CHẠY."
+          }
+        }
+      ],
       "vatChung": {
         "id": "ev-hai-lop",
         "title": "Hai lớp: BC24A, BC23A",
@@ -18696,7 +18841,12 @@ const GOC = {
         "giaTri": [
           "BC24A",
           "BC23A"
-        ]
+        ],
+        "chuTrenGiay": [
+          "Lớp ở tòa B, học Báo chí: **BC24A**",
+          "Lớp ở tòa B, học Báo chí: **BC23A**"
+        ],
+        "tachGiay": true
       },
       "ghiChu": [
         "Tùng rủ nối HOẶC → 33 lớp. Đổi VÀ → 2 lớp (BC24A, BC23A) → phiếu kết quả vào hồ sơ."
@@ -18735,8 +18885,7 @@ const GOC = {
         },
         {
           "khi": {
-            "kind": "so-dong",
-            "n": 32
+            "kind": "dung"
           },
           "loi": [
             {
@@ -18759,6 +18908,82 @@ const GOC = {
           ]
         }
       ],
+      "goiY": [
+        {
+          "bac1": {
+            "speaker": "ha-vy",
+            "expression": "thinking",
+            "text": "Mình có hai lớp. Cứ xem danh sách từng lớp một đã, rồi dò xem ai tên bắt đầu bằng chữ H."
+          },
+          "bac2": {
+            "speaker": "ha-vy",
+            "expression": "neutral",
+            "text": "Bấm \"+ thêm điều kiện\", bấm vào tên cột cho tới khi ra ma_lop, thả giấy BC24A vào ô bên cạnh rồi bấm CHẠY. Xong thì thử tiếp với giấy BC23A."
+          }
+        },
+        {
+          "khi": {
+            "kind": "thieu-cot"
+          },
+          "bac1": {
+            "speaker": "duy",
+            "expression": "neutral",
+            "text": "Có tên rồi, nhưng cô Lan tra sổ bằng gì? Cô chỉ trả lời cho một mã cụ thể thôi."
+          },
+          "bac2": {
+            "speaker": "duy",
+            "expression": "neutral",
+            "text": "Ở hàng LẤY CỘT, bấm thêm cột ma_sv cho nó sáng lên, rồi bấm CHẠY lại."
+          }
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 30
+          },
+          "bac1": {
+            "speaker": "ha-vy",
+            "expression": "thinking",
+            "text": "Lớp BC23A không có ai tên bắt đầu bằng chữ H. Vẫn còn một lớp nữa chưa xem."
+          },
+          "bac2": {
+            "speaker": "ha-vy",
+            "expression": "neutral",
+            "text": "Bấm vào ô đang có giấy BC23A để gỡ ra, thả giấy BC24A vào đó rồi bấm CHẠY."
+          }
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 2
+          },
+          "bac1": {
+            "speaker": "ha-vy",
+            "expression": "thinking",
+            "text": "Hai cái tên thì thấy rồi. Nhưng cứ để nguyên danh sách cả lớp đã, kẻo mình lọc sót ai."
+          },
+          "bac2": {
+            "speaker": "ha-vy",
+            "expression": "neutral",
+            "text": "Bấm dấu × để bỏ dòng lọc theo tên, chỉ giữ dòng ma_lop với giấy BC24A. Ở hàng LẤY CỘT lấy thêm ma_sv, rồi bấm CHẠY."
+          }
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "bac1": {
+            "speaker": "ha-vy",
+            "expression": "thinking",
+            "text": "Ba mươi hai cái tên. Chữ ký trên thư mở đầu bằng chữ gì, cậu còn nhớ không?"
+          },
+          "bac2": {
+            "speaker": "ha-vy",
+            "expression": "neutral",
+            "text": "Tìm hai dòng có tên bắt đầu bằng chữ H, bấm vào ô ma_sv của từng dòng để chép ra giấy nhớ. Đủ hai ô thì bấm \"Ghim lên bảng\"."
+          }
+        }
+      ],
       "vatChung": {
         "id": "ev-hai-ma",
         "title": "Hai mã ứng viên kèm căn cứ",
@@ -18766,6 +18991,9 @@ const GOC = {
         "giaTri": [
           "SV240228",
           "SV240317"
+        ],
+        "chuTrenGiay": [
+          "Mã của Hiếu và Hoài: **SV240228, SV240317**"
         ]
       },
       "ghiChu": [
@@ -18784,6 +19012,20 @@ const GOC = {
       "sqlChuan": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';",
       "truyVanNapSan": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",
       "phanUng": [],
+      "goiY": [
+        {
+          "bac1": {
+            "speaker": "ha-vy",
+            "expression": "thinking",
+            "text": "Ba mươi hai dòng là cả lớp BC24A rồi. Mình chỉ cần người vừa tên Hoài vừa học lớp ấy."
+          },
+          "bac2": {
+            "speaker": "ha-vy",
+            "expression": "neutral",
+            "text": "Bấm vào chữ HOẶC giữa hai dòng lọc cho nó đổi thành VÀ, rồi bấm CHẠY."
+          }
+        }
+      ],
       "vatChung": {
         "id": "ev-mot-dong-sua",
         "title": "Một dòng sau khi sửa",
@@ -21180,6 +21422,7 @@ const GOC = {
         "Tiêu đề": "Chữ ký tay (chỉ đọc được chữ H)",
         "Ảnh": "doc-chu-ky-h",
         "Giá trị cho trình dựng": "H",
+        "Chữ trên giấy": "Chữ ký trên thư bắt đầu bằng chữ **H**",
         "Nguồn": "Bản chụp thư đã che thông tin, Phòng CTSV chuyển về",
         "Nội dung": "Chữ ký tay trên phiếu gửi: chữ H viết hoa rõ, phần sau là một nét lượn không đọc được; kèm dòng \"đề nghị phản hồi chính thức\". Không tên, không mã trên thư."
       },
@@ -21192,6 +21435,7 @@ const GOC = {
       "fields": {
         "Tiêu đề": "Hộp tòa B, mở 9h sáng thứ Hai",
         "Giá trị cho trình dựng": "B",
+        "Chữ trên giấy": "Thư được bỏ vào hộp ở tòa **B**",
         "Nguồn": "Lời bác Thịnh, sảnh tòa B",
         "Nội dung": "Bác Thịnh và cô Lan mở hộp 9h sáng thứ Hai; thư nằm trên cùng. Từ 7 giờ tới lúc mở hộp, ra vào tòa B chỉ có sinh viên các lớp sinh hoạt ở tòa này."
       },
@@ -21204,6 +21448,7 @@ const GOC = {
       "fields": {
         "Tiêu đề": "Thẻ lịch khoa Báo chí K24 mắc ở khe hộp",
         "Giá trị cho trình dựng": "Báo chí · K24",
+        "Chữ trên giấy": "Thẻ lịch của khoa **Báo chí** · Thẻ lịch của khóa **K24**",
         "Nguồn": "Khe hộp kiến nghị, sảnh tòa B",
         "Nội dung": "Phần in còn nguyên \"Khoa Báo chí – Truyền thông · K24\"; dòng viết tay \"Họ tên / Lớp\" bị xé mất. Còn biết chủ thẻ học khoa Báo chí; lớp nào thì không."
       },
@@ -21274,6 +21519,7 @@ const GOC = {
       "fields": {
         "Tiêu đề": "Chân trang lá thư: tên tệp",
         "Giá trị cho trình dựng": "kien-nghi",
+        "Chữ trên giấy": "Tên tệp ở chân trang thư, đoạn đầu: **kien-nghi**",
         "Nguồn": "Cô Hạnh, Phòng Đào tạo",
         "Nội dung": "Bản in từ máy phòng máy có dòng chân trang ghi tên tệp. Chân trang bản chụp lá thư bị xén, chỉ đọc được đoạn đầu: \"kien-nghi-…\"."
       },
@@ -22340,12 +22586,12 @@ const GOC = {
     {
       "sql": "SELECT ma_lop, toa_nha FROM lop_sinh_hoat;",
       "soDong": 112,
-      "noi": "noi-dung-mua-1/thu-thach/c-lop.md:20 thẻ c-cot-lop, SQL chuẩn"
+      "noi": "noi-dung-mua-1/thu-thach/c-lop.md:21 thẻ c-cot-lop, SQL chuẩn"
     },
     {
       "sql": "SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' AND nganh = 'Báo chí';",
       "soDong": 2,
-      "noi": "noi-dung-mua-1/thu-thach/c-lop.md:37 thẻ c-lop, SQL chuẩn",
+      "noi": "noi-dung-mua-1/thu-thach/c-lop.md:39 thẻ c-lop, SQL chuẩn",
       "resultId": "ev-hai-lop"
     },
     {
@@ -22357,7 +22603,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/thu-thach/c-ten-h.md:27 thẻ c-sua-or-quan, SQL chuẩn",
+      "noi": "noi-dung-mua-1/thu-thach/c-ten-h.md:33 thẻ c-sua-or-quan, SQL chuẩn",
       "resultId": "ev-mot-dong-sua"
     },
     {
@@ -22586,7 +22832,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:179 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:182 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",

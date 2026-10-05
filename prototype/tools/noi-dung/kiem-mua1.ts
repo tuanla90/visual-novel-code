@@ -1,11 +1,13 @@
 /**
  * `npm run kiem-noi-dung:mua1` — kiểm nội dung `prototype/noi-dung-mua-1/` theo quy tắc Mùa 1, kể cả tờ dữ kiện hỏi nhân
- * chứng `hoi-dap/*.json` (gói B12: luật tờ, kiểm chéo kịch bản, giọng của lời trong tờ).
+ * chứng `hoi-dap/*.json` (gói B12: luật tờ, kiểm chéo kịch bản, giọng của lời trong tờ) và màn tra (gói B14: gợi ý hai bậc của
+ * bạn đi cùng, chữ trên giấy nhớ; man-tra-mua1.ts).
  * Không import gì từ `src/`.
  */
 import { fileURLToPath } from 'node:url';
 import { docHoiDap, type BoHoiDap } from './hoi-dap-mua1.ts';
 import { kiemNoiDungMvp } from './kiem-mvp.ts';
+import { kiemManTraMua1 } from './man-tra-mua1.ts';
 import { THU_MUC_NOI_DUNG_MUA_1, THU_MUC_SINH_MUA_1, vanBanMua1 } from './sinh-mua1.ts';
 
 export async function kiemNoiDungMua1(
@@ -16,7 +18,9 @@ export async function kiemNoiDungMua1(
   return kiemNoiDungMvp(thuMuc, thuMucSinh, (d) => vanBanMua1(d, bo), 'noi-dung-mua-1', (mvp, nguonLoi) => {
     const kq = docHoiDap(thuMuc, mvp, { nguonLoi });
     bo = kq.bo;
-    return { loi: kq.loi, tomTat: kq.tomTat };
+    // Gói B14: gợi ý hai bậc của màn tra và chữ trên giấy nhớ.
+    const manTra = kiemManTraMua1(mvp, nguonLoi);
+    return { loi: [...kq.loi, ...manTra.loi], tomTat: [kq.tomTat, manTra.tomTat].filter((x) => x !== '').join('; ') };
   });
 }
 

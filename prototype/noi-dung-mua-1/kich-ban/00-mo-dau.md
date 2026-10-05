@@ -44,7 +44,10 @@
 
 ### md-00-tung-chi-duong — Thấy Tùng chỉ đường cho bạn nữ {cảnh: sanh-ktx}
 
+- [RA player]
 - [LỜI md-00-tung-chi-duong.1]
+- [RA hoai]
+- [LỜI md-00-tung-chi-duong.2]
 - [ĐI TỚI md-00-gap-tung]
 
 ### md-00-gap-tung — Hỏi đường cậu bạn áo xanh: tạo nhân vật {cảnh: sanh-ktx}

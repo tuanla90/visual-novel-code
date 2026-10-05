@@ -6,6 +6,8 @@
  * Người chơi kéo thẻ để sắp lại (vị trí lưu trong trạng thái), bấm thẻ để đọc kỹ.
  * 01/10/2026 (câu 5 đề xuất gameplay): trong hộp xem kỹ có hàng 4 màu đầu ghim (người chơi tự nhóm, ý nghĩa tùy họ; sợi chỉ
  * theo màu ghim của thẻ nguồn) và nút "Gỡ khỏi bảng"; thẻ đã gỡ nằm ở khay "Chưa ghim" góc dưới trái, bấm để ghim lại.
+ * 05/10/2026 (gói B14, user: "di chuột lên để chọn màu hơi khó dùng"): dải màu mở bằng BẤM vào đầu ghim và ở lại cho tới khi
+ * chọn màu, bấm ra ngoài hoặc Esc; không còn mở theo rê chuột. Chấm màu 44px, đi bằng phím mũi tên / Tab, Enter để chọn.
  *
  * Mặt bảng là khung 1600×900 co theo vùng chứa; màn dọc thì bảng cao vừa màn và cuộn ngang.
  * Dữ liệu dựng ở `engine/bang-dieu-tra.ts`.
@@ -70,6 +72,18 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
   }, [bang, s.bang?.viTri, viTriCucBo, keo]);
   const [xem, datXem] = useState<string | null>(null);
   const [hienMenuGhim, setHienMenuGhim] = useState(false);
+  const nutGhim = useRef<HTMLButtonElement>(null);
+  const dayMau = useRef<HTMLDivElement>(null);
+  /** Đóng dải màu, trả tiêu điểm về đầu ghim (bàn phím không bị lạc). */
+  const dongMenuGhim = (): void => {
+    setHienMenuGhim(false);
+    nutGhim.current?.focus();
+  };
+  // Dải màu vừa mở: tiêu điểm vào màu đang chọn để phím mũi tên dùng được ngay.
+  useEffect(() => {
+    if (!hienMenuGhim) return;
+    (dayMau.current?.querySelector<HTMLElement>('[aria-checked="true"]') ?? dayMau.current?.querySelector<HTMLElement>('button'))?.focus();
+  }, [hienMenuGhim]);
   const setXem = (id: string | null): void => {
     datXem(id);
     setHienMenuGhim(false);
@@ -168,18 +182,22 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
     return { x: p.x + CO_THE[t.loai].rong / 2, y: p.y + 4 };
   };
 
-  // Esc khi đang xem kỹ một thẻ: chỉ đóng thẻ (bắt ở pha capture để khung Hồ sơ bên ngoài không đóng theo).
+  // Esc khi đang xem kỹ một thẻ: chỉ đóng thẻ (bắt ở pha capture để khung Hồ sơ bên ngoài không đóng theo). Dải màu đang mở
+  // thì Esc đóng dải màu trước.
   useEffect(() => {
     if (!xem) return;
     const onKey = (e: KeyboardEvent): void => {
       if (e.key !== 'Escape') return;
       e.preventDefault();
       e.stopImmediatePropagation();
-      datXem(null);
+      if (hienMenuGhim) {
+        setHienMenuGhim(false);
+        nutGhim.current?.focus();
+      } else datXem(null);
     };
     window.addEventListener('keydown', onKey, true);
     return () => window.removeEventListener('keydown', onKey, true);
-  }, [xem]);
+  }, [xem, hienMenuGhim]);
   const theXem = xem ? bang.the.find((t) => t.id === xem) : undefined;
   const anhXem = theXem?.anh && theXem.loai !== 'tai-lieu' ? anhTheoTen(theXem.anh) : undefined;
   const KIEU_DAY: Record<string, string> = { 'truy-van': 'dùng để tra', 'loai-tru': 'loại trừ', nguon: 'nguồn' };
@@ -329,7 +347,10 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
           role="dialog"
           aria-label="Thẻ đang xem"
           onClick={(e) => {
-            if (e.target === e.currentTarget) setXem(null);
+            if (e.target !== e.currentTarget) return;
+            // Dải màu đang mở: bấm ra ngoài chỉ đóng dải màu, thẻ vẫn mở.
+            if (hienMenuGhim) setHienMenuGhim(false);
+            else setXem(null);
           }}
         >
           {/* Nút đóng ngoài cho trợ năng / bàn phím và kiểm thử */}
@@ -346,7 +367,14 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
           </button>
 
           {/* Tấm thẻ phóng to trực diện (Phương án 3) */}
-          <div className={`bang__xem-the-focal${theXem.loai === 'hoi' ? ' bang__xem-the-focal--hoi' : ''}`} onClick={(e) => e.stopPropagation()}>
+          <div
+            className={`bang__xem-the-focal${theXem.loai === 'hoi' ? ' bang__xem-the-focal--hoi' : ''}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              // Bấm vào thân thẻ (ngoài khu đầu ghim) cũng là bấm ra ngoài dải màu.
+              if (hienMenuGhim && !(e.target as HTMLElement).closest('.bang__xem-ghim-khu')) setHienMenuGhim(false);
+            }}
+          >
             {/* Đầu ghim: cố định cho thẻ câu hỏi trung tâm, tương tác đổi màu cho các thẻ khác */}
             {theXem.loai === 'hoi' || theXem.id === MA_THE_HOI ? (
               <div className="bang__xem-ghim-khu">
@@ -357,17 +385,15 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                 />
               </div>
             ) : (
-              <div
-                className="bang__xem-ghim-khu"
-                onMouseEnter={() => setHienMenuGhim(true)}
-                onMouseLeave={() => setHienMenuGhim(false)}
-              >
+              <div className="bang__xem-ghim-khu">
                 <button
+                  ref={nutGhim}
                   type="button"
-                  className={`bang__xem-ghim-nut bang__xem-ghim-nut--${theXem.mau}`}
+                  className={`bang__xem-ghim-nut bang__xem-ghim-nut--${theXem.mau}${hienMenuGhim ? ' is-mo' : ''}`}
                   onClick={() => setHienMenuGhim((prev) => !prev)}
                   aria-label={`Đầu ghim ${TEN_MAU[theXem.mau]} - Bấm để đổi màu hoặc gỡ thẻ`}
-                  title={`Đầu ghim ${TEN_MAU[theXem.mau]} - Bấm hoặc rê chuột để đổi màu / gỡ thẻ`}
+                  title={`Đầu ghim ${TEN_MAU[theXem.mau]} - Bấm để đổi màu / gỡ thẻ`}
+                  aria-haspopup="true"
                   aria-expanded={hienMenuGhim}
                 />
 
@@ -376,7 +402,21 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                   <div className="bang__xem-ghim-popover" role="dialog" aria-label="Tùy chọn đầu ghim">
                     <span className="bang__xem-popover-mui" aria-hidden="true" />
                     {onDoiMau ? (
-                      <div className="bang__xem-popover-mau" role="radiogroup" aria-label="Chọn màu đầu ghim">
+                      <div
+                        ref={dayMau}
+                        className="bang__xem-popover-mau"
+                        role="radiogroup"
+                        aria-label="Chọn màu đầu ghim"
+                        onKeyDown={(e) => {
+                          // Phím mũi tên đi giữa các chấm màu (vòng tròn); Enter / phím cách chọn màu đang đứng.
+                          const buoc = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0;
+                          if (buoc === 0) return;
+                          e.preventDefault();
+                          const cac = [...e.currentTarget.querySelectorAll<HTMLElement>('[role="radio"]')];
+                          const i = cac.indexOf(document.activeElement as HTMLElement);
+                          cac[(i + buoc + cac.length) % cac.length]?.focus();
+                        }}
+                      >
                         {MAU_GHIM.map((m) => (
                           <button
                             key={m}
@@ -387,7 +427,9 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                             title={`Ghim ${TEN_MAU[m]}`}
                             className={`bang__mau-nut bang__mau-nut--${m}${theXem.mau === m ? ' is-chon' : ''}`}
                             onClick={() => {
+                              // Chọn xong thì dải màu đóng.
                               onDoiMau(theXem.id, m);
+                              dongMenuGhim();
                             }}
                           />
                         ))}

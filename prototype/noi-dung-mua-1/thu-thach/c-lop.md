@@ -50,3 +50,5 @@ SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' A
   - Tiêu đề: Hai lớp: BC24A, BC23A
   - Mô tả: Lớp ở tòa B và học ngành Báo chí: đúng hai lớp.
   - Giá trị cho trình dựng: BC24A · BC23A
+  - Giấy nhớ: mỗi giá trị một tờ
+  - Chữ trên giấy: Lớp ở tòa B, học Báo chí: **BC24A** · Lớp ở tòa B, học Báo chí: **BC23A**

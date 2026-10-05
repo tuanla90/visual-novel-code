@@ -111,7 +111,9 @@ export interface RawChallengeCard {
   onCorrect: RawLine | null;
   question: RawQuestion | null;
   /** `giaTri`: dòng con "Giá trị cho trình dựng" (MVP, QĐ-092) — chữ của khối/giấy nhớ khi dùng bằng chứng làm giá trị. */
-  evidence: { id: string; title: string; description: string; giaTri?: string } | null;
+  /** `chuTrenGiay`: dòng con "Chữ trên giấy" (gói B14): câu in trên tờ giấy nhớ ở màn tra, giá trị bọc `**…**`. */
+  /** `tachGiay`: dòng con "Giấy nhớ: mỗi giá trị một tờ" (gói B14): phiếu nhiều giá trị thành từng tờ giấy nhớ riêng. */
+  evidence: { id: string; title: string; description: string; giaTri?: string; chuTrenGiay?: string; tachGiay?: boolean } | null;
   notes: string[];
   viTri: ViTri;
 }
@@ -636,11 +638,15 @@ export function docNoiDung(tepList: readonly TepNoiDung[], tuyChon: TuyChonDoc =
         return;
       }
       if (line.startsWith('  - ')) {
-        const m = /^ {2}- (Tiêu đề|Mô tả|Giá trị cho trình dựng): (.+)$/.exec(line);
+        const m = /^ {2}- (Tiêu đề|Mô tả|Giá trị cho trình dựng|Chữ trên giấy|Giấy nhớ): (.+)$/.exec(line);
         if (!m || !evidenceOpen || !c.evidence) throw new Error(`dòng con lạ trong thẻ thử thách "${line}"`);
         if (m[1] === 'Tiêu đề') c.evidence.title = m[2] ?? '';
         else if (m[1] === 'Mô tả') c.evidence.description = m[2] ?? '';
-        else c.evidence.giaTri = m[2] ?? '';
+        else if (m[1] === 'Chữ trên giấy') c.evidence.chuTrenGiay = m[2] ?? '';
+        else if (m[1] === 'Giấy nhớ') {
+          if ((m[2] ?? '').trim() !== 'mỗi giá trị một tờ') throw new Error(`thẻ ${c.id}: dòng con "Giấy nhớ" chỉ nhận "mỗi giá trị một tờ"`);
+          c.evidence.tachGiay = true;
+        } else c.evidence.giaTri = m[2] ?? '';
         return;
       }
       evidenceOpen = false;

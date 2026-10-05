@@ -576,6 +576,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         dem={dem}
         speaker={loiHienTai?.speaker}
         expression={loiHienTai?.expression}
+        {...(s.raDan?.length ? { raDan: s.raDan } : {})}
         shaking={rung}
         coDan={!laTheChu && !['chon-dia-diem', 'explore', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick'].includes(kn.kind)}
         tenNguoiChoi={s.tenNguoiChoi}

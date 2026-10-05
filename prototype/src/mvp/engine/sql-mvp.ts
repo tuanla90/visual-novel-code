@@ -79,8 +79,14 @@ const THONG_DIEP_KHONG_SELECT = {
   not_select: 'Chỉ chấp nhận một câu SELECT (hoặc WITH … SELECT).',
 } as const;
 
-/** Chạy một câu SELECT chỉ-đọc; không bao giờ ném. */
-export async function chaySql(duLieu: BoDuLieuMvp, sql: string): Promise<KetQuaChay> {
+/** Số dòng tối đa của một kết quả (câu của người chơi, câu chuẩn). */
+export const TOI_DA_DONG_KET_QUA = 2000;
+
+/**
+ * Chạy một câu SELECT chỉ-đọc; không bao giờ ném. `toiDa`: số dòng tối đa của kết quả (mặc định 2000); câu soi của hoạt cảnh
+ * màn tra (một dòng 0/1 cho mỗi dòng của bảng) truyền số lớn hơn để bảng vài nghìn dòng vẫn có hoạt cảnh (gói B14).
+ */
+export async function chaySql(duLieu: BoDuLieuMvp, sql: string, toiDa: number = TOI_DA_DONG_KET_QUA): Promise<KetQuaChay> {
   const kiem = checkSingleSelect(sql.normalize('NFC').trim());
   if (!kiem.ok) return { ok: false, loai: 'khong-phai-select', thongDiep: THONG_DIEP_KHONG_SELECT[kiem.reason] };
   let db: Database;
@@ -100,7 +106,7 @@ export async function chaySql(duLieu: BoDuLieuMvp, sql: string): Promise<KetQuaC
     const cot = st.getColumnNames();
     const dong: GiaTriSql[][] = [];
     while (st.step()) {
-      if (dong.length >= 2000) return { ok: false, loai: 'khac', thongDiep: 'Kết quả vượt quá 2000 dòng.' };
+      if (dong.length >= toiDa) return { ok: false, loai: 'khac', thongDiep: `Kết quả vượt quá ${toiDa} dòng.` };
       dong.push(st.get().map(giaTri));
     }
     return { ok: true, cot, dong };

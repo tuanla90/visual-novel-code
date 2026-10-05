@@ -23,6 +23,9 @@ loadSqlJs().catch((err: unknown) => {
   console.warn('[sqljs] Nạp sớm SQLite thất bại; sẽ thử lại khi vào thử thách.', err);
 });
 
+// Cổng cho công cụ quay ván (tools/quay-van): chỉ ở chế độ dev.
+if (import.meta.env.DEV) void import('./mvp/dev/cong-quay');
+
 createRoot(rootEl).render(
   <StrictMode>
     <App />

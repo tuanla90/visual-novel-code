@@ -52,7 +52,10 @@
 - **hoai** (nervous): Bạn ơi... tòa KTX nữ đi đường nào ạ?
 - **tung** (ao-xanh-chi-tay): Sang bên nữ á? Cậu cứ ra cửa sảnh, rẽ trái là tới luôn. Ngay kia kìa!
 - **hoai** (relieved): Tớ cảm ơn.
-- [DÀN DỰNG] Bạn nữ kéo vali lạch cạch đi về hướng Tùng vừa chỉ.
+- [DÀN DỰNG] Người chơi đứng ngoài nhìn: trên hình chỉ có bạn nữ và cậu áo xanh. Hết đoạn này bạn nữ rời hình.
+
+## md-00-tung-chi-duong.2
+- **narrator**: Bạn nữ kéo vali lạch cạch đi về hướng cậu ấy vừa chỉ.
 - **player**: (Chỉ đường trơn tru thế kia thì chắc rành khu này lắm.)
 
 ## md-00-gap-tung.1

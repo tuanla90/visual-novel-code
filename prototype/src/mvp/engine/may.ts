@@ -779,7 +779,7 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
     const { chuoi, nut } = ht;
     const conTro = s.conTro;
     const boiCanh = conTro.boiCanh;
-    if (s.canh !== chuoi.canh) s = { ...s, canh: chuoi.canh };
+    if (s.canh !== chuoi.canh) s = { ...s, canh: chuoi.canh, ...(s.raDan?.length ? { raDan: [] } : {}) };
     if (nut === undefined) {
       const nutCuoi = chuoi.nodes[chuoi.nodes.length - 1];
       if (nutCuoi && nutCuoi.type === 'goto' && conTro.nut >= chuoi.nodes.length) {
@@ -802,6 +802,8 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
     }
     if (canNguoiChoi(nut)) {
       if (nut.type === 'end') return coKhiKet(kb, s);
+      // Người đã rời dàn (`[RA x]`) mà nói lại thì coi như đã vào lại.
+      if (nut.type === 'line' && s.raDan?.includes(nut.speaker)) return { ...s, raDan: s.raDan.filter((x) => x !== nut.speaker) };
       if (nut.type !== 'explore') return s;
       // Tới nút [KHÁM PHÁ] lần đầu → mở cảnh (chưa xem chỗ nào); quay về từ chuỗi của một chỗ bấm → giữ danh sách đã xem.
       const kp = s.khamPha;
@@ -861,9 +863,16 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
         // người chơi bấm nút nghe kể (`hoi-dap-ke-tiep`) thì đoạn viết sẵn mới chạy, xem `xemCaDoan`.
         return moBuoiHoi(kb, s, nut.ma);
       }
+      case 'stage': {
+        // `[RA x]`: x rời dàn chân dung (giao diện đọc `raDan`); `[VÀO x]`: hết rời. Trí nhớ bạn đi cùng đọc thẳng nút này.
+        const da = s.raDan ?? [];
+        if (nut.action === 'ra' && !da.includes(nut.nhanVat)) s = { ...s, raDan: [...da, nut.nhanVat] };
+        else if (nut.action === 'vao' && da.includes(nut.nhanVat)) s = { ...s, raDan: da.filter((x) => x !== nut.nhanVat) };
+        s = tienNut(s);
+        break;
+      }
       case 'condition':
       case 'note':
-      case 'stage':
       case 'wait':
       default:
         s = tienNut(s);
@@ -1386,9 +1395,28 @@ export function canGioiThieu(kb: KichBanMvp, s: TrangThaiMvp, kn: KhungNhinMvp):
   if (nguoi === 'minh-anh' && s.conTro?.chuoi === 'md-09-ngay-hoi') return null;
   const tuXung = (text: string): boolean => TU_GIOI_THIEU.test(text.normalize('NFC'));
   if (tuXung(kn.loi.text)) return nguoi;
+  const laTuXung = (n: NutMvp): boolean => n.type === 'line' && n.speaker === nguoi && tuXung(n.text);
   const chuoi = s.conTro ? timChuoi(kb, s.conTro.chuoi) : undefined;
-  const sapTuXung = (chuoi?.nodes ?? []).slice((s.conTro?.nut ?? 0) + 1).some((n) => n.type === 'line' && n.speaker === nguoi && tuXung(n.text));
-  return sapTuXung ? null : nguoi;
+  if (!chuoi) return nguoi;
+  if (chuoi.nodes.slice((s.conTro?.nut ?? 0) + 1).some(laTuXung)) return null;
+  // Câu tự xưng nằm ở chuỗi nối liền phía sau (`[ĐI TỚI]` / `[ĐI CÙNG]` cuối chuỗi): cũng chờ. User 05/10: thẻ "Tùng, bạn cùng
+  // phòng 408" bật ngay câu Tùng chỉ đường cho bạn nữ, khi người chơi chưa hỏi tên, chưa biết ở chung phòng.
+  let ke: ChuoiMvp | undefined = chuoi;
+  for (let i = 0; i < 6 && ke; i++) {
+    const cuoi: NutMvp | undefined = ke.nodes[ke.nodes.length - 1];
+    const dich: string | undefined = cuoi?.type === 'goto' ? cuoi.to : cuoi && laDiCung(cuoi) ? cuoi.choices[0]?.hauQua.flatMap((h) => (h.kind === 'di-toi' ? [h.chuoi] : []))[0] : undefined;
+    ke = dich ? timChuoi(kb, dich) : undefined;
+    if (ke?.nodes.some(laTuXung)) return null;
+  }
+  // Người chơi chỉ đứng ngoài nhìn (cả chuỗi không nói thành tiếng câu nào) và nhân vật này về sau mới tự xưng với người chơi:
+  // chưa tới lúc giới thiệu (Hoài hỏi đường Tùng ở sảnh ký túc xá; tới Trung thu mới xưng tên).
+  const chiNghi = (t: string): boolean => /^\(.*\)$/s.test(t.trim());
+  const nguoiChoiNoi = chuoi.nodes.some((n) => n.type === 'line' && n.speaker === 'player' && !chiNghi(n.text));
+  if (!nguoiChoiNoi) {
+    const viTri = kb.chuoi.findIndex((c) => c.id === chuoi.id);
+    if (viTri >= 0 && kb.chuoi.slice(viTri + 1).some((c) => c.nodes.some(laTuXung))) return null;
+  }
+  return nguoi;
 }
 
 /**

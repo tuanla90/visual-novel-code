@@ -12,6 +12,8 @@ export interface DongPhieuRef {
   toMau: (dong: readonly number[], mau: number) => void;
   /** Thả rơi các phiếu, mỗi tờ trễ ngẫu nhiên tới `treToiDa` ms. */
   tha: (dong: readonly number[], treToiDa?: number) => void;
+  /** Cất các phiếu đi ngay, không diễn cảnh rơi (máy bật giảm chuyển động; lần chạy đã diễn trên bảng kết quả). */
+  an: (dong: readonly number[]) => void;
 }
 
 const MAU_PHIEU = ['#9fb3c2', '#ff8a65', '#64b5f6', '#c4a5f5', '#ffffff'] as const;
@@ -152,6 +154,12 @@ export const DongPhieu = forwardRef<DongPhieuRef, { tong: number }>(function Don
     tha: (dong, treToiDa = 350) => {
       const now = performance.now();
       for (const k of dong) if (k < tt.current.roi.length && tt.current.roi[k] === Infinity) tt.current.roi[k] = now + Math.random() * treToiDa;
+      kich();
+    },
+    an: (dong) => {
+      // Mốc rơi lùi về quá khứ đủ xa: vòng vẽ coi như phiếu đã rơi xong.
+      const xua = performance.now() - ROI_MS * 2;
+      for (const k of dong) if (k < tt.current.roi.length) tt.current.roi[k] = xua;
       kich();
     },
   }));
