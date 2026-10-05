@@ -6029,7 +6029,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Tối, phòng CLB. Hà Vy ghim hết giấy tờ lên bảng, Tùng căng chỉ nối từng tờ."
+          "text": "Hà Vy ghim hết giấy tờ lên bảng, Tùng căng chỉ nối từng tờ."
         },
         {
           "type": "line",

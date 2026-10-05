@@ -26,7 +26,7 @@
 > NHIỆM VỤ: Soát lại hồ sơ trước buổi họp
 > NHẮC VIỆC ha-vy (neutral): Thứ Hai họp. Chỉ nói đúng những gì có chứng.
 - [THẺ CHỮ] **narrator**: Tối thứ Bảy
-- **narrator**: Tối, phòng CLB. Hà Vy ghim hết giấy tờ lên bảng, Tùng căng chỉ nối từng tờ.
+- **narrator**: Hà Vy ghim hết giấy tờ lên bảng, Tùng căng chỉ nối từng tờ.
 - **ha-vy** (day-kinh): Tổng hợp lại. Thẻ lịch Báo chí ra hai lớp. Lọc tên H có Hiếu với Hoài. Sổ niêm phong có mã của Hoài.
 - **tung** (worried): Nhỡ người ta vặn hỏi ai là người viết thư thì sao?
 - **ha-vy** (neutral): Có chứng cứ thì trình. Không có thì bảo chưa biết.

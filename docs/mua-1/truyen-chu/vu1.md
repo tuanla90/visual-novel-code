@@ -890,7 +890,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 > 🎯 **NHIỆM VỤ**: Soát lại hồ sơ trước buổi họp
 > 💭 **Nhắc nhở** (Hà Vy): Thứ Hai họp. Chỉ nói đúng những gì có chứng.
 > 📜 **[THẺ CHỮ]** Tối thứ Bảy
-- *Tối, phòng CLB. Hà Vy ghim hết giấy tờ lên bảng, Tùng căng chỉ nối từng tờ.*
+- *Hà Vy ghim hết giấy tờ lên bảng, Tùng căng chỉ nối từng tờ.*
 - **Hà Vy**: Tổng hợp lại. Thẻ lịch Báo chí ra hai lớp. Lọc tên H có Hiếu với Hoài. Sổ niêm phong có mã của Hoài.
 - **Tùng** (lo lắng): Nhỡ người ta vặn hỏi ai là người viết thư thì sao?
 - **Hà Vy**: Có chứng cứ thì trình. Không có thì bảo chưa biết.
