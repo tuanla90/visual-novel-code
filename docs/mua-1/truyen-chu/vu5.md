@@ -108,7 +108,7 @@ SELECT ma_don, nguoi_dat, so_tien, so_luong_co FROM don_linh_kien JOIN kiem_ke O
 > 🗂️ **Bằng chứng thu thập**: **Ba đơn đặt mua thứ không có trong kho** — Kết quả nối sổ đặt hàng với kiểm kê: động cơ servo, mạch điều khiển, khung nhôm — ba đơn đứng tên Nam từ máy văn phòng xưởng, ghi đã duyệt, mà kho không có một cái. Tiền có thật sự xuất khỏi quỹ nào thì phải xem sổ quỹ.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Ba đơn. Đúng ba đơn đứng tên anh Nam từ máy văn phòng xưởng.)*
+- **Bạn**: Ba đơn. Đúng ba đơn đứng tên anh Nam từ máy văn phòng xưởng.
 - **Nam**: Linh kiện chỉ là cái cớ để ghi vào sổ. Còn tiền có thật sự đi đâu không, sổ đặt hàng không nói.
 - **Minh Anh** (nghiêm túc): Tiền thì nằm trong sổ quỹ. Sổ quỹ khối CLB không phải của mình, chị không tự mở được. Phải xin thầy Quang.
 - **Tùng** (gãi đầu): Thầy Quang thì lại "căn cứ vào đâu".
@@ -165,7 +165,7 @@ SELECT ma_don, nguoi_dat, so_tien, so_luong_co FROM don_linh_kien JOIN kiem_ke O
 - *Đường từ tòa hành chính về nhà câu lạc bộ. Minh Anh ôm tập giấy đi trước, không nói gì.*
 - **Tùng** (lo lắng): Chị ấy im thế là giận hay là sợ?
 - **Hà Vy**: Là đang tính. Quỹ mang tên CLB mình, mà chữ ký duyệt thì chị ấy chưa thấy bao giờ.
-- *Suy nghĩ của bạn:* *(Thầy Quang hỏi "căn cứ vào đâu". Giờ căn cứ nằm trong tập giấy kia.)*
+- **Bạn**: Thầy Quang hỏi "căn cứ vào đâu". Giờ căn cứ nằm trong tập giấy kia.
 - *Chiều, phòng CLB. Bản xuất cô Hạnh gửi đã nằm trong laptop: chỉ gồm các khoản chi ghi vào quỹ CLB Thám Tử và các khoản liên quan ba đơn.*
 - **Duy**: Mỗi khoản chi có mã quỹ. Bảng quỹ cho biết mã nào là quỹ của CLB nào. Lại hai bảng.
 > 🎯 **NHIỆM VỤ**: Khoản chi nào ghi vào quỹ CLB Thám Tử?
@@ -275,14 +275,14 @@ SELECT ma_don, nguoi_dat, so_tien, so_luong_co FROM don_linh_kien JOIN kiem_ke O
 
 - *Quán trà đá, đầu giờ chiều. Bà chủ quán đang tráng cốc.*
 - **Bà bán trà đá**: Hôm nay mặt đứa nào cũng căng thế. Uống đi rồi hẵng tính.
-- *Suy nghĩ của bạn:* *(Bà ơi, ngày xưa có một anh sinh viên trông cái phòng tủ sắt của bọn cháu, hay ra đây gọi trà nóng. Sau này bà có gặp lại anh ấy không ạ?)*
+- **Bạn**: Bà ơi, ngày xưa có một anh sinh viên trông cái phòng tủ sắt của bọn cháu, hay ra đây gọi trà nóng. Sau này bà có gặp lại anh ấy không ạ?
 - **Bà bán trà đá**: Cậu trà nóng ấy hả? Gặp suốt. Giờ đi làm ngay trong trường, sơ mi cài kín cổ, tóc muối tiêu rồi. Sáng nào đi ngang cũng gật đầu chào bà, thỉnh thoảng vẫn ngồi xuống gọi cốc trà nóng.
 - **Tùng** (ngạc nhiên): Người ấy vẫn ở trong trường ạ? Là ai hả bà?
 - **Bà bán trà đá**: Bà nhớ cốc, không nhớ tên. Mà cậu ấy có một câu cửa miệng, sinh viên ra đây toàn nhại lại: "Căn cứ vào đâu?"
 - **Hà Vy** (suy nghĩ): Mình vừa nghe đúng câu ấy xong.
 - **Tùng** (chỉ tay): Tớ cá là…
 - **Hà Vy**: Đừng cá. Một lời kể với một câu cửa miệng thì chưa đủ để ghim tên ai lên bảng.
-- *Suy nghĩ của bạn:* *(Tớ ghi lại. Lời kể, chưa đối chiếu với gì cả.)*
+- **Bạn**: Tớ ghi lại. Lời kể, chưa đối chiếu với gì cả.
 - **Tùng** (suy nghĩ): Bà ơi, hôm nào xong việc, bà để dành cho cháu thêm một cái ghế nhé.
 - **Bà bán trà đá**: Cho con bé hay ôm cặp chứ gì. Mời được nó ra đây ngồi thì bà khao. Có câu mở đầu chưa?
 - **Tùng** (gãi đầu): Cháu có rồi ạ. Hai chữ.
@@ -489,7 +489,7 @@ SELECT ma_don, nguoi_dat, so_tien, so_luong_co FROM don_linh_kien JOIN kiem_ke O
 ❓ **Thầy Quang hỏi**: "Em là người trình trang sổ ấy. Theo em, tới đây chứng cứ đủ nói đến đâu?"
 *Các lựa chọn trả lời:*
   - "Anh Khánh chắc chắn là người in lá thư." ❌ → **Hà Vy** (suy nghĩ): Sổ ghi ai ở trong phòng. Cột nào ghi ai bấm in?
-  - "Anh Khánh có mặt lúc lá thư được in, và lý do anh nêu không khớp nhật ký in. Còn ai bấm in thì em chưa chứng minh được." ✅ → **Khánh**: Tôi vừa nhận lấy tiền của CLB các bạn đấy. Thế mà vẫn "chưa chứng minh được" à? / *Suy nghĩ của bạn:* *(Vâng. Phần nào chưa rõ thì em vẫn phải ghi là chưa rõ.)*
+  - "Anh Khánh có mặt lúc lá thư được in, và lý do anh nêu không khớp nhật ký in. Còn ai bấm in thì em chưa chứng minh được." ✅ → **Khánh**: Tôi vừa nhận lấy tiền của CLB các bạn đấy. Thế mà vẫn "chưa chứng minh được" à? / **Bạn**: Vâng. Phần nào chưa rõ thì em vẫn phải ghi là chưa rõ.
   - "Trang sổ ấy không giúp được gì." ❌ → **Duy**: Nó đặt một người vào phòng đúng giờ, và bác được một lý do. Thế là có giúp.
 
 
@@ -511,18 +511,18 @@ SELECT ma_don, nguoi_dat, so_tien, so_luong_co FROM don_linh_kien JOIN kiem_ke O
 - **Hà Vy** (suy nghĩ): Khoan đã. Đọc lại bốn mẩu giấy xem nào.
 ❓ **Duy hỏi**: "Bốn mẩu giấy, một ngăn tủ khóa. Người viết để chìa ở đâu trong phòng này?"
 *Các lựa chọn trả lời:*
-  - "Sau tấm bảng nguyên tắc." ✅ → *Suy nghĩ của bạn:* *(Mẩu cuối bảo "mặt trước thì các em đọc mỗi buổi họp rồi". Thứ cả nhóm đọc mỗi buổi họp là bảng nguyên tắc. Mình chưa bao giờ nhìn mặt sau.)*
+  - "Sau tấm bảng nguyên tắc." ✅ → **Bạn**: Mẩu cuối bảo "mặt trước thì các em đọc mỗi buổi họp rồi". Thứ cả nhóm đọc mỗi buổi họp là bảng nguyên tắc. Mình chưa bao giờ nhìn mặt sau.
   - "Trong gáy cuốn sổ CLB." ❌ → **Duy**: Cuốn ấy cả nhóm lật suốt mùa rồi. Có gì thì đã rơi ra hết.
   - "Không có chìa đâu, cạy tủ thôi." ❌ → **Hà Vy** (suy nghĩ): Người ta để giấy cho mình tìm, không phải để mình phá.
 
 - *Trong ngăn tủ: một cuốn sổ bìa cứng, chữ viết tay đã ngả màu. Trang đầu ghi "CLB Thám Tử Dữ Liệu: hồ sơ vụ thứ nhất", ký tên Trịnh Quang.*
 - **Tùng** (ngạc nhiên): Thầy Quang? Thầy Quang lập CLB này á?
-- *Suy nghĩ của bạn:* *(Trang kết luận có một cái tên, bị gạch đi. Cả cuốn không ghim một phiếu nào.)*
+- **Bạn**: Trang kết luận có một cái tên, bị gạch đi. Cả cuốn không ghim một phiếu nào.
 - **Duy**: Bên lề có hai chữ, mực xanh đã ngả màu: "Xem lại."
 - **Hà Vy** (suy nghĩ): Nét chữ này giống hệt bốn mẩu giấy. Giống cả chữ ký ở trang đầu.
 - **Tùng** (ngạc nhiên): Thế bốn mẩu giấy là thầy viết? Thầy tự gạch kết luận của chính mình à?
 - **Hà Vy** (suy nghĩ): Thầy hỏi "căn cứ vào đâu" từ bao giờ nhỉ?
-- *Suy nghĩ của bạn:* *(Trang cuối có thêm một dòng, vẫn chữ thầy: "Manh mối cũ, câu hỏi mới.")*
+- **Bạn**: Trang cuối có thêm một dòng, vẫn chữ thầy: "Manh mối cũ, câu hỏi mới."
 > 📜 **[THẺ CHỮ]** Còn tiếp · Vụ 6: "Xem lại"
 > [CG cg-v5-ho-so-vu-dau] (chưa có mô tả)
 
@@ -737,7 +737,7 @@ SELECT ma_chi, ma_don, so_tien, nguoi_duyet, ngay_chi FROM khoan_chi JOIN quy ON
 > 🗂️ **Bằng chứng thu thập**: **Sáu khoản chi ghi vào quỹ CLB Thám Tử** — Kết quả nối sổ chi với bảng quỹ: sáu khoản ghi vào quỹ CLB Thám Tử. Ba khoản văn phòng phẩm nhỏ do Minh Anh duyệt; ba khoản lớn gắn với ba đơn linh kiện, người duyệt ghi là Khánh, xuất ngày 10, 11 và 12 tháng 9.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Sáu khoản ghi vào quỹ CLB Thám Tử. Ba khoản nhỏ chị Minh Anh duyệt. Ba khoản lớn là tạm ứng, người duyệt và ký nhận ghi là Khánh, xuất ngày 10, 11 và 12 tháng 9. Cột mã đơn điền sau, ghi đúng mã ba đơn linh kiện kho không có hàng.)*
+- **Bạn**: Sáu khoản ghi vào quỹ CLB Thám Tử. Ba khoản nhỏ chị Minh Anh duyệt. Ba khoản lớn là tạm ứng, người duyệt và ký nhận ghi là Khánh, xuất ngày 10, 11 và 12 tháng 9. Cột mã đơn điền sau, ghi đúng mã ba đơn linh kiện kho không có hàng.
 - **Minh Anh**: Ba khoản chị duyệt là văn phòng phẩm, chị nhớ. Ba khoản kia chị chưa từng thấy.
 - **Nam**: Đơn sớm nhất trong ba đơn ấy tạo ngày 27 tháng 9. Tiền tạm ứng trước, đơn viết sau, vừa kịp hạn ba mươi ngày bổ sung chứng từ.
 - **Hà Vy** (suy nghĩ): Gom theo người duyệt rồi đếm. Nhưng lần này đếm số dòng chưa đủ: ba khoản nhỏ với ba khoản lớn đếm ra bằng nhau. Phải cộng tiền.
@@ -755,7 +755,7 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien FROM @ev-c
 > 🗂️ **Bằng chứng thu thập**: **Minh Anh 3 khoản, 450.000; Khánh 3 khoản, 2.400.000** — Kết quả gom theo người duyệt: Minh Anh ba khoản, tổng 450.000; Khánh ba khoản, tổng 2.400.000. Cùng số khoản, tiền gấp hơn năm lần.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Chị Minh Anh: ba khoản, tổng bốn trăm năm mươi nghìn. Anh Khánh: ba khoản, tổng hai triệu tư.)*
+- **Bạn**: Chị Minh Anh: ba khoản, tổng bốn trăm năm mươi nghìn. Anh Khánh: ba khoản, tổng hai triệu tư.
 - **Minh Anh**: Tờ quy chế cô Lan in đây: khoản dưới một triệu thì chủ tịch Hội duyệt thẳng, không cần trưởng CLB chủ quỹ ký. Chị là chủ quỹ mà không biết ba khoản này, là vì thế. Sao kê tổng thì Phòng Kế hoạch giữ, cuối kỳ mới gửi.
 - **Duy**: Nhưng tổng các khoản một người duyệt từ một quỹ trong học kỳ mà vượt một triệu thì cuối kỳ Phòng Kế hoạch đòi người đó giải trình.
 - **Hà Vy** (suy nghĩ): Và tính thêm trung bình mỗi khoản. Xem từng khoản to cỡ nào so với mức duyệt thẳng.
@@ -774,7 +774,7 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
 > [CHIBI chibi-so-lieu-day (sticker)] (chưa có mô tả)
-- *Suy nghĩ của bạn:* *(Còn một dòng. Anh Khánh: ba khoản, tổng hai triệu tư, trung bình tám trăm nghìn.)*
+- **Bạn**: Còn một dòng. Anh Khánh: ba khoản, tổng hai triệu tư, trung bình tám trăm nghìn.
 - **Hà Vy** (suy nghĩ): Trung bình tám trăm nghìn một khoản, dưới mức một triệu. Nhìn lại phiếu sáu khoản: tám trăm, chín trăm, bảy trăm. Từng khoản đều dưới mức duyệt thẳng, cộng lại thì vượt ngưỡng giải trình.
 - **Tùng** (lo lắng): Ba khoản nhỏ vừa đủ lọt… ghi vào quỹ CLB mình, cho ba đơn kho không có hàng.
 - **Nam**: Anh Khánh. Trưởng CLB của mình. Hôm ở xưởng anh ấy còn bảo mọi người hỏi mình nhẹ thôi.
@@ -783,7 +783,7 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 - **Minh Anh** (nghiêm túc): Tiền bị lấy từ đúng quỹ của CLB mà lá thư đòi thu phòng, bốn ngày trước lá thư. Với căn cứ ấy chị xin thầy Quang cho mở trang sổ ký phòng máy tối Chủ nhật 15/9. Hồi tháng 9 Tùng đòi xem, bác Thịnh không cho.
 - **Tùng** (gãi đầu): Hồi ấy tớ đòi mở để truy người viết thư. Bác không cho là phải.
 - **Duy**: Thầy Quang ký rồi. Bác Thịnh mở đúng một trang ấy.
-- *Suy nghĩ của bạn:* *(Tối Chủ nhật 15/9, bảy dòng. Năm bạn vào in bài. Hai người của Robotics: chị Thảo vào 20 giờ 10, ra 21 giờ 30. Anh Khánh vào 22 giờ 40, ra 23 giờ 20. Cô Hạnh gửi nhật ký in của tài khoản Robotics tối ấy: hai lệnh, 20 giờ 40 và 23 giờ 10.)*
+- **Bạn**: Tối Chủ nhật 15/9, bảy dòng. Năm bạn vào in bài. Hai người của Robotics: chị Thảo vào 20 giờ 10, ra 21 giờ 30. Anh Khánh vào 22 giờ 40, ra 23 giờ 20. Cô Hạnh gửi nhật ký in của tài khoản Robotics tối ấy: hai lệnh, 20 giờ 40 và 23 giờ 10.
 - **Hà Vy** (suy nghĩ): 23 giờ 10 là lá thư. Trong phòng lúc ấy, người của Robotics chỉ có một. Mới là cơ hội và thời gian, chưa phải ai bấm in.
 - **Minh Anh** (nghiêm túc): Sổ ký là giấy, nhật ký in là máy. Hai nguồn riêng. Mang cả hai lên.
 
@@ -928,7 +928,7 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ### Đoạn 44: Đối chất: Trình Sáu khoản chi ghi vào quỹ CLB Thám Tử
 
 ⚖️ **Phản hồi đối chất:**
-- *Suy nghĩ của bạn:* *(Anh nói anh duyệt theo đề xuất của Nam. Sổ chi ghi ba khoản ấy là tạm ứng, xuất ngày 10, 11 và 12 tháng 9. Mã đơn điền bổ sung sau, đúng ngày ba đơn được tạo: 27/9, 4/10 và 7/10.)*
+- **Bạn**: Anh nói anh duyệt theo đề xuất của Nam. Sổ chi ghi ba khoản ấy là tạm ứng, xuất ngày 10, 11 và 12 tháng 9. Mã đơn điền bổ sung sau, đúng ngày ba đơn được tạo: 27/9, 4/10 và 7/10.
 - **Hà Vy**: Tiền tạm ứng trước, mã đơn điền sau. Lúc anh ký nhận tiền thì trên máy chưa có đơn nào của Nam để duyệt theo.
 - **Thầy Quang**: Đơn lập sau chưa chứng minh là không có đề xuất trước. Em Khánh, hồi ấy em có đề xuất viết tay nào của em Nam không? Và giấy giao việc gia công?
 - **Khánh**: …Không ạ.
@@ -1010,7 +1010,7 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ### Đoạn 50: Đối chất: Trình Trang sổ ký vào phòng máy, tối Chủ nhật 15/9
 
 ⚖️ **Phản hồi đối chất:**
-- *Suy nghĩ của bạn:* *(Nhật ký in ghi lá thư in lúc 23 giờ 10 tối Chủ nhật 15/9, bằng tài khoản của Robotics. Sổ ký vào phòng tối đó có bảy dòng, chỉ hai người của Robotics. Chị Thảo ra lúc 21 giờ 30. Anh vào 22 giờ 40, ra 23 giờ 20.)*
+- **Bạn**: Nhật ký in ghi lá thư in lúc 23 giờ 10 tối Chủ nhật 15/9, bằng tài khoản của Robotics. Sổ ký vào phòng tối đó có bảy dòng, chỉ hai người của Robotics. Chị Thảo ra lúc 21 giờ 30. Anh vào 22 giờ 40, ra 23 giờ 20.
 - **Khánh**: Em vào in sơ đồ cho đội ạ.
 - **Thầy Quang**: Hợp lý.
 
@@ -1120,7 +1120,7 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 
 ⚖️ **Phản hồi đối chất:**
 - **Khánh**: Sơ đồ tôi in thì các bạn đâu có tra.
-- *Suy nghĩ của bạn:* *(Em tra rồi ạ. Tối 15/9 tài khoản Robotics in đúng hai lệnh: 20 giờ 40 và 23 giờ 10.)*
+- **Bạn**: Em tra rồi ạ. Tối 15/9 tài khoản Robotics in đúng hai lệnh: 20 giờ 40 và 23 giờ 10.
 - **Hà Vy**: 20 giờ 40 là sơ đồ mạch, lúc ấy chị Thảo còn trong phòng. 23 giờ 10 là lá thư. Còn cả phòng máy, từ 22 giờ 40 tới 23 giờ 20, chỉ có ba lệnh in: một đồ án, một báo cáo nhóm của hai bạn khác, và lá thư. Không có sơ đồ nào, bằng tài khoản nào cũng không.
 - **Thầy Quang**: Em Khánh, vậy sơ đồ của em đâu?
 - **Khánh**: …
@@ -1136,7 +1136,7 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ### Đoạn 59: Đối chất: Trình Sơ đồ mạch của đội do Thảo in
 
 ⚖️ **Phản hồi đối chất:**
-- *Suy nghĩ của bạn:* *(Sơ đồ của đội thì tối Chủ nhật nào chị Thảo cũng in. Tối ấy chị ấy ra trước khi anh vào hơn một tiếng.)*
+- **Bạn**: Sơ đồ của đội thì tối Chủ nhật nào chị Thảo cũng in. Tối ấy chị ấy ra trước khi anh vào hơn một tiếng.
 - **Khánh**: Thảo in bộ của Thảo. Tôi in thêm một bộ.
 - **Thầy Quang**: Thói quen của người khác chưa bác được lời em Khánh. Có gì ghi lại các lệnh in tối ấy không?
 
@@ -1228,7 +1228,7 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ### Đoạn 66: Đối chất: Trình Sáu khoản chi ghi vào quỹ CLB Thám Tử
 
 ⚖️ **Phản hồi đối chất:**
-- *Suy nghĩ của bạn:* *(Tiền rời quỹ ngày 10, 11 và 12 tháng 9. Lá thư đòi thu phòng tới ngày 16. Đơn đầu tiên mãi ngày 27 mới có, sau buổi họp bọn em giữ được phòng.)*
+- **Bạn**: Tiền rời quỹ ngày 10, 11 và 12 tháng 9. Lá thư đòi thu phòng tới ngày 16. Đơn đầu tiên mãi ngày 27 mới có, sau buổi họp bọn em giữ được phòng.
 - **Thầy Quang**: Tiền trước, thư sau, đơn sau cùng. Nhưng thư thì giúp gì được cho tiền? Có gì nói về chuyện ai được đọc sổ, và bao giờ, không?
 
 ⚠️ *Căn cứ này chưa đủ để kết luận.*
@@ -1242,8 +1242,8 @@ SELECT nguoi_duyet, COUNT(*) AS so_dong, SUM(so_tien) AS tong_so_tien, AVG(so_ti
 ### Đoạn 67: Đối chất: Trình Sao kê quỹ CLB chỉ về vào cuối kỳ
 
 ⚖️ **Phản hồi đối chất:**
-- *Suy nghĩ của bạn:* *(Sao kê quỹ chỉ tự về các CLB vào cuối kỳ, cùng đợt rà soát phòng; ngưỡng một triệu cũng tới lúc ấy mới được soát. Muốn xem sớm hơn thì giấy phải qua chủ tịch Hội.)*
-- *Suy nghĩ của bạn:* *(Tức là tới cuối kỳ mới có người đọc ba khoản ấy. Mà lá thư đòi thu phòng lại tới ngay tuần đầu.)*
+- **Bạn**: Sao kê quỹ chỉ tự về các CLB vào cuối kỳ, cùng đợt rà soát phòng; ngưỡng một triệu cũng tới lúc ấy mới được soát. Muốn xem sớm hơn thì giấy phải qua chủ tịch Hội.
+- **Bạn**: Tức là tới cuối kỳ mới có người đọc ba khoản ấy. Mà lá thư đòi thu phòng lại tới ngay tuần đầu.
 - **Thầy Quang**: Thư đi trước ngày có người đọc sổ. Thầy thấy rồi.
 
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**

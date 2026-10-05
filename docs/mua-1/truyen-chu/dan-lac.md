@@ -40,10 +40,10 @@ Thứ Sáu, 25/10/2024
 > 📜 **[THẺ CHỮ]** Thứ Sáu, 25/10/2024 · Việc của Tùng
 - *Gần mười một giờ đêm. Thư viện tầng ba giảng đường B còn lác đác vài bàn sáng đèn. Hà Vy đã về từ chín giờ.*
 - *Tùng ngồi đối diện bạn, giở tập bản đồ trường ra rồi lại gập vào. Trang vở trước mặt cậu ấy vẫn trắng.*
-- *Suy nghĩ của bạn:* *(Cậu nhìn mỗi trang ấy nửa tiếng rồi đấy.)*
+- **Bạn**: Cậu nhìn mỗi trang ấy nửa tiếng rồi đấy.
 - **Tùng** (gãi đầu): Tớ có đọc đâu. Hôm thứ Ba Hoài bảo tuần đầu tớ dẫn bạn ấy lạc sang tận nhà xe. Tớ còn cãi là "chỉ sai tòa". Về nghĩ lại thấy cãi thế kỳ quá.
 - **Tùng** (lo lắng): Tớ nói bừa về bạn ấy một lần rồi. Giờ muốn xin lỗi thì ít ra phải biết mình sai chỗ nào đã.
-- *Suy nghĩ của bạn:* *(Cậu không nhớ hôm ấy à?)*
+- **Bạn**: Cậu không nhớ hôm ấy à?
 - **Tùng** (suy nghĩ): Tuần đầu tớ dẫn bao nhiêu lượt, nhớ sao nổi. Nhưng đội tình nguyện có sổ đón, lượt nào cũng ghi. Bản xuất nằm trong laptop tớ, ở phòng.
 - **Tùng** (ngạc nhiên): Mười một giờ rồi á? Cổng ký túc đóng mười một giờ mười lăm!
 > 🎯 **NHIỆM VỤ**: Về kịp ký túc xá trước giờ đóng cổng
@@ -62,7 +62,7 @@ Thứ Sáu, 25/10/2024
 
 - *Hai đứa lao xuống cầu thang. Sảnh tầng một vắng tanh, chỉ còn đèn hành lang.*
 - **Tùng** (ngạc nhiên): Chết, tập bản đồ! Tớ để trên bàn!
-- *Suy nghĩ của bạn:* *(Mai lấy.)*
+- **Bạn**: Mai lấy.
 - **Tùng** (lo lắng): Trong ấy có cả sơ đồ tớ vẽ tay. Mười giây thôi!
 - *Tùng quay ngược lên cầu thang. Tiếng chân rầm rập ba tầng lầu, đi lên rồi đi xuống.*
 
@@ -151,13 +151,13 @@ Thứ Sáu, 25/10/2024
 - *Phòng 408. Tùng bật laptop, ngồi khoanh chân trên giường, tóc còn bết mồ hôi.*
 - **Tùng**: Đây. Sổ đón tân sinh viên của đội tình nguyện. Mỗi lượt đón một dòng: ai đón, đón ai, đưa tới đâu.
 - **Tùng** (gãi đầu): Mà nó dài lắm, của cả đội, mấy năm liền. Tớ thì chỉ biết kéo chuột từ trên xuống.
-- *Suy nghĩ của bạn:* *(Để tớ. Cho tớ mã sinh viên của cậu.)*
+- **Bạn**: Để tớ. Cho tớ mã sinh viên của cậu.
 > [CHIBI chibi-408-nam-bep (sticker)] (chưa có mô tả)
 > 🗂️ **Tài liệu mới**: **Sổ đón tân sinh viên** — 
 - **Tùng**: SV240251. Trong sổ, tình nguyện viên ghi bằng mã, tân sinh viên cũng ghi bằng mã.
 - *Điện thoại rung. Tin nhắn của Hà Vy trong nhóm: "Hai ông tướng về tới phòng chưa? Tra gì thì gửi phiếu lên đây, tớ với anh Duy xem."*
 - **Tùng** (ngạc nhiên): Sao Vy biết bọn mình định tra?
-- *Suy nghĩ của bạn:* *(Cậu kể với cả nhóm từ chiều rồi.)*
+- **Bạn**: Cậu kể với cả nhóm từ chiều rồi.
 > 🎯 **NHIỆM VỤ**: Tìm các lượt đón do Tùng dẫn
 > 💭 **Nhắc nhở** (Tùng): Sổ ghi tình nguyện viên bằng mã. Mã của tớ là SV240251.
 #### 💻 Màn tra dữ liệu: Sổ đón của đội tình nguyện (thẻ `c-don-tung`)
@@ -189,9 +189,9 @@ SELECT ma_luot, ngay, ma_sv, diem_den FROM luot_don WHERE tinh_nguyen_vien = 'SV
 > 🗂️ **Bằng chứng thu thập**: **Chín lượt đón do Tùng dẫn** — Kết quả truy vấn: chín lượt Tùng dẫn trong hai ngày 07 và 08/09/2024, có mã tân sinh viên và điểm đến.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Chín lượt, trong hai ngày 7 và 8 tháng 9.)*
+- **Bạn**: Chín lượt, trong hai ngày 7 và 8 tháng 9.
 - **Tùng** (suy nghĩ): Chín lượt. Thế trong chín lượt ấy tớ đưa người ta tới những đâu?
-- *Suy nghĩ của bạn:* *(Gom theo điểm đến rồi đếm là thấy.)*
+- **Bạn**: Gom theo điểm đến rồi đếm là thấy.
 > 🎯 **NHIỆM VỤ**: Gom chín lượt của Tùng theo điểm đến
 > 💭 **Nhắc nhở** (Tùng): Chín lượt của tớ nằm trên phiếu rồi. Gom theo điểm đến, đếm mỗi nơi mấy lượt.
 #### 💻 Màn tra dữ liệu: Lượt đón của Tùng, gom theo điểm đến (thẻ `c-don-noi-den`)
@@ -206,9 +206,9 @@ SELECT diem_den, COUNT(*) AS so_dong FROM @ev-don-tung GROUP BY diem_den;
 > 🗂️ **Bằng chứng thu thập**: **Ký túc xá 8 lượt, nhà xe 1 lượt** — Kết quả gom theo điểm đến: tám lượt tới ký túc xá, một lượt tới nhà xe. Phiếu đếm được số lượt, chưa nói lượt nhà xe là của ai.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Ký túc xá tám lượt. Nhà xe một lượt.)*
+- **Bạn**: Ký túc xá tám lượt. Nhà xe một lượt.
 - **Tùng** (ngạc nhiên): Một! Đúng một lượt nhà xe. Tớ có nhớ là mình đưa ai ra nhà xe đâu.
-- *Suy nghĩ của bạn:* *(Lọc tiếp trên chín lượt, lấy đúng lượt ấy, xem mã tân sinh viên.)*
+- **Bạn**: Lọc tiếp trên chín lượt, lấy đúng lượt ấy, xem mã tân sinh viên.
 > 🎯 **NHIỆM VỤ**: Lượt nào Tùng đưa tới nhà xe, và đón ai?
 > 💭 **Nhắc nhở** (Tùng): Trong chín lượt của tớ, lượt nào ghi điểm đến là nhà xe? Tớ cần mã của người tớ đón.
 #### 💻 Màn tra dữ liệu: Lượt tới nhà xe (thẻ `c-don-lac`)
@@ -228,9 +228,9 @@ SELECT ma_luot, ngay, ma_sv FROM @ev-don-tung WHERE diem_den = 'NHA_XE';
 > 🗂️ **Bằng chứng thu thập**: **LD-0247: Tùng đưa SV240317 tới nhà xe** — Kết quả lọc tiếp trên phiếu chín lượt: lượt LD-0247 ngày 08/09/2024, tân sinh viên SV240317, điểm đến nhà xe. Sổ ghi nơi tới, không ghi vì sao.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Lượt LD-0247, Chủ nhật 8 tháng 9. Mã tân sinh viên SV240317.)*
+- **Bạn**: Lượt LD-0247, Chủ nhật 8 tháng 9. Mã tân sinh viên SV240317.
 - **Tùng** (suy nghĩ): Mã này tớ thấy ở đâu rồi.
-- *Suy nghĩ của bạn:* *(Trên phiếu hai mã hồi tháng Chín. Lê Thu Hoài, lớp BC24A.)*
+- **Bạn**: Trên phiếu hai mã hồi tháng Chín. Lê Thu Hoài, lớp BC24A.
 - **Tùng** (gãi đầu): Sáng Chủ nhật… Tớ nhớ rồi. Bạn ấy kéo cái vali to hơn người, hỏi đường nhỏ lắm. Tớ nghe ra "nhà xe", tưởng bạn ấy đi gửi xe, thế là dẫn thẳng ra đó. Tớ không hỏi lại.
 - **Tùng** (lo lắng): Tớ là cộng tác viên mượn áo, có ai tập huấn cho đâu. Tám lượt kia dẫn đúng nên tớ cứ yên trí.
 ❓ **Tùng hỏi**: "Thế trong lời xin lỗi, tớ được viết gì cho chắc?"
@@ -241,7 +241,7 @@ SELECT ma_luot, ngay, ma_sv FROM @ev-don-tung WHERE diem_den = 'NHA_XE';
 
 - *Tùng xé một trang vở, kê lên tập bản đồ, vẽ. Cổng chính, hàng cây, ký túc xá, một mũi tên to. Góc dưới ghi: "Lần này không qua nhà xe. Tớ xin lỗi vì hôm ấy không hỏi lại. Tùng, áo xanh."*
 - **Tùng** (gãi đầu): Có sến quá không?
-- *Suy nghĩ của bạn:* *(Thiếu một thứ. Vẽ thêm đường ra quán trà đá.)*
+- **Bạn**: Thiếu một thứ. Vẽ thêm đường ra quán trà đá.
 - *Trưa hôm sau, ở thư viện. Hoài mở tờ giấy, nhìn rất lâu, rồi gập lại kẹp vào vở.*
 - **Hoài** (nhẹ nhõm): Tớ cảm ơn cậu. Hôm ấy tớ nói bé quá, mà tớ cũng không dám hỏi lại.
 - **Hoài**: Nhưng cậu vẽ thiếu cổng phụ. Đi cổng phụ gần hơn.

@@ -77,7 +77,7 @@ Thứ Ba, 22/10/2024
 
 📍 **Phòng CLB** — *Tặng hoa hồng sáp*
 
-- *Suy nghĩ của bạn:* *(Hoa hồng sáp đi. Đẹp, lại để được lâu.)*
+- **Bạn**: Hoa hồng sáp đi. Đẹp, lại để được lâu.
 - **Tùng** (vui vẻ): Chuẩn. Cửa hàng đối diện cổng có cả hộp gói sẵn.
 - *Hoài nhận hộp hoa, nói "Cảm ơn cậu." Hai người đứng thêm một lúc, không ai tìm ra câu thứ hai. Hoài bảo còn bài tập, về trước.*
 - **Tùng** (lo lắng): …Đẹp mà nhỉ?
@@ -92,7 +92,7 @@ Thứ Ba, 22/10/2024
 
 📍 **Phòng CLB** — *Tặng gấu bông*
 
-- *Suy nghĩ của bạn:* *(Gấu bông đội mũ cử nhân? Dễ thương, khó mà chê.)*
+- **Bạn**: Gấu bông đội mũ cử nhân? Dễ thương, khó mà chê.
 - **Tùng** (vui vẻ): Ừ nhỉ. Ai chẳng thích gấu.
 - *Hoài cầm con gấu, cười một cái rất lịch sự: "Dễ thương. Cảm ơn cậu." Suốt quãng đường về, con gấu bị kẹp chặt dưới nách, như sợ ai trông thấy.*
 - **Tùng** (gãi đầu): Bạn ấy cười rồi đấy. Chắc là… được.
@@ -107,7 +107,7 @@ Thứ Ba, 22/10/2024
 
 📍 **Phòng CLB** — *Tặng sổ tay*
 
-- *Suy nghĩ của bạn:* *(Một cuốn sổ tay nhỏ với cây bút. Học Báo chí, đi đâu cũng phải ghi.)*
+- **Bạn**: Một cuốn sổ tay nhỏ với cây bút. Học Báo chí, đi đâu cũng phải ghi.
 - **Tùng** (ngạc nhiên): Ừ ha! Bạn ấy ghi chép suốt mà.
 - *Hoài lật cuốn sổ, thử bút ngay trang đầu, rồi bật cười: "Để tớ ghi luôn chuyện đầu tiên nhé. Hôm nhập học có người dẫn tớ ra tận nhà xe."*
 - *Tùng đứng im mất mấy giây.*
@@ -129,7 +129,7 @@ Thứ Ba, 22/10/2024
 - **Minh Anh** (nghiêm túc): Chị không nói là Nam. Nhưng Nam là đầu mối duy nhất mình có, và cô Lan đang chờ. Chị cần biết đã đủ để mời Nam lên hỏi chưa.
 - **Hà Vy** (suy nghĩ): Khoan. Mình mới đếm có một kiểu: tài khoản nào gửi. Đổi cách đếm xem có thấy gì khác không đã.
 - **Duy**: Em thì chờ một nguồn nữa, ngoài kênh, rồi mới nói.
-- *Suy nghĩ của bạn:* *(Đổi cách đếm là đếm cái gì ạ?)*
+- **Bạn**: Đổi cách đếm là đếm cái gì ạ?
 - **Hà Vy** (suy nghĩ): Kênh của Robotics đăng bao nhiêu bài trong tháng, từ máy nào, buổi nào. Nếu bài tin đồn khác hẳn thói quen của kênh thì cũng là một điều đáng ghi.
 - **Minh Anh**: Được. Sang xưởng. Nhưng lần này hỏi thẳng Nam: tối đó cậu ấy ở đâu, có gì chứng minh.
 - **Duy**: Bản xuất bài đăng thì gồm mọi kênh. Lấy riêng bài của kênh Robotics trước, rồi mới gom theo thiết bị mà đếm.
@@ -149,7 +149,7 @@ Thứ Ba, 22/10/2024
 
 - *Trên đường sang xưởng, Tùng đi trước một quãng.*
 - **Hà Vy**: Cậu ấy giận tớ vì hôm qua tớ bảo cậu ấy đừng cá.
-- *Suy nghĩ của bạn:* *(Tùng không giận lâu đâu. Tới cổng xưởng là quên.)*
+- **Bạn**: Tùng không giận lâu đâu. Tới cổng xưởng là quên.
 - **Tùng** (chỉ tay): Tớ nghe thấy đấy nhé! Mà đúng, tớ quên rồi.
 📍 **Đang ở Xưởng CLB Robotics:**
 *Những chỗ có thể khám phá ở đây:*
@@ -247,7 +247,7 @@ SELECT ma_bai, ngay, buoi, thiet_bi FROM bai_dang_kenh WHERE kenh = 'clb_robotic
 > 🗂️ **Bằng chứng thu thập**: **Chín bài của kênh Robotics** — Kết quả truy vấn: chín bài kênh Robotics đăng trong tháng 10, mỗi bài ghi ngày, buổi và thiết bị gửi.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Chín bài của kênh Robotics trong tháng 10.)*
+- **Bạn**: Chín bài của kênh Robotics trong tháng 10.
 - **Hà Vy** (suy nghĩ): Chín bài. Mình muốn biết kênh này hay đăng từ máy nào.
 > 🎯 **NHIỆM VỤ**: Chín bài đó đăng từ những thiết bị nào, mỗi thiết bị mấy bài?
 > 💭 **Nhắc nhở** (Hà Vy): Lấy phiếu chín bài làm nguồn, nhóm theo thiết bị.
@@ -263,7 +263,7 @@ SELECT thiet_bi, COUNT(*) AS so_dong FROM @ev-bai-dang GROUP BY thiet_bi;
 > 🗂️ **Bằng chứng thu thập**: **8 bài từ điện thoại trực, 1 bài từ máy văn phòng** — Kết quả nhóm theo thiết bị: 8 bài gửi từ điện thoại trực kênh (Nam giữ), 1 bài gửi từ máy văn phòng xưởng. Bài tin đồn là bài duy nhất khác thói quen đăng của kênh.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Tám bài từ điện thoại trực kênh. Một bài từ máy văn phòng xưởng.)*
+- **Bạn**: Tám bài từ điện thoại trực kênh. Một bài từ máy văn phòng xưởng.
 - **Nam**: Bài thì anh đăng bằng điện thoại trực. Máy xưởng số 2 anh chỉ đăng nhập để xem thống kê kênh, không đăng gì từ đó.
 - **Nam**: Điện thoại trực là cái anh giữ. Anh đăng toàn buổi chiều, bằng cái đó.
 - **Tùng** (lo lắng): Điện thoại anh giữ thì chứng minh được gì? Hôm đó anh đổi sang máy bàn thì sao?
@@ -328,7 +328,7 @@ SELECT thiet_bi, COUNT(*) AS so_dong FROM @ev-bai-dang GROUP BY thiet_bi;
 - **Tùng** (lo lắng): Bà ơi, lỡ nói sai cho một người rồi thì làm thế nào ạ?
 - **Bà bán trà đá**: Hỏi đúng người rồi đấy. Ngày xưa có cậu sinh viên trông cái phòng tủ sắt của các cháu, bà gọi là "cậu trà nóng". Có một dạo cậu ấy ngồi đây cả buổi chiều, sổ mở mà không viết chữ nào.
 - **Bà bán trà đá**: Bà hỏi thì bảo: "Cháu kết luận sai cho một người, bà ạ. Cả câu lạc bộ tin cháu."
-- *Suy nghĩ của bạn:* *(Rồi anh ấy làm gì ạ?)*
+- **Bạn**: Rồi anh ấy làm gì ạ?
 - **Bà bán trà đá**: Hôm sau dẫn một cậu khác ra đây, mời cốc trà, xin lỗi ngay trước mặt bà. Xong ngồi gạch cái gì đó trong sổ, gạch mạnh tới rách cả giấy.
 - **Hà Vy** (suy nghĩ): Kết luận sai, rồi tự tay gạch. Ghi lại. Vẫn là lời kể.
 - **Tùng** (suy nghĩ): Mời trà, xin lỗi trước mặt người khác. Nghe thì dễ.
@@ -362,7 +362,7 @@ SELECT thiet_bi, COUNT(*) AS so_dong FROM @ev-bai-dang GROUP BY thiet_bi;
 - **Tùng** (vui vẻ): Chè đậu đen, ba cốc! Hôm nay tớ…
 - **Hà Vy**: Khao à? Hôm qua cậu vừa than cuối tháng nhà mới gửi tiền.
 - **Tùng** (gãi đầu): …định nói là hôm nay tớ quên ví.
-- *Suy nghĩ của bạn:* *(Tớ trả. Ghi sổ nợ: Tùng, một cốc chè, lãi là một lần dẫn đường không lạc.)*
+- **Bạn**: Tớ trả. Ghi sổ nợ: Tùng, một cốc chè, lãi là một lần dẫn đường không lạc.
 - **Hà Vy**: Lãi suất hợp lý đấy.
 > [CHIBI chibi-lai-suat (sticker)] (chưa có mô tả)
 - *Chuông báo tiết reo. Tùng vơ vội cốc chè, đứng dậy.*
@@ -448,7 +448,7 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Nam';
 > 🗂️ **Bằng chứng thu thập**: **Ba mươi hai lần Nam quẹt thẻ thư viện** — Kết quả truy vấn: ba mươi hai lần Nam vào thư viện từ năm ngoái đến nay, có ngày, thứ, giờ vào, giờ ra.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Ba mươi hai lần. Ngày với thứ ghi sẵn từ năm ngoái tới giờ.)*
+- **Bạn**: Ba mươi hai lần. Ngày với thứ ghi sẵn từ năm ngoái tới giờ.
 - **Hà Vy** (suy nghĩ): Ba mươi hai dòng, nhìn là thấy thứ Hai nhiều. Nhưng "nhiều" là mấy? Thói quen thì phải đếm được.
 > 🎯 **NHIỆM VỤ**: Nam quẹt thẻ thư viện vào thứ mấy nhiều nhất, mấy lần?
 > 💭 **Nhắc nhở** (Hà Vy): Cùng một cục phiếu, gom theo thứ rồi đếm.
@@ -464,7 +464,7 @@ SELECT thu, COUNT(*) AS so_dong FROM @ev-nam-thu-vien GROUP BY thu;
 > 🗂️ **Bằng chứng thu thập**: **Nam: tối thứ Hai 27 lần, thứ Năm 5 lần** — Kết quả nhóm theo thứ: hai mươi bảy tối thứ Hai Nam đều ở thư viện từ lúc vào trường. Một thói quen bền bỉ đếm được; chưa phải bằng chứng cho riêng tối 07/10.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Thứ Hai hai mươi bảy lần, tối thứ Hai nào có trong tệp cũng thế. Thứ Năm năm lần.)*
+- **Bạn**: Thứ Hai hai mươi bảy lần, tối thứ Hai nào có trong tệp cũng thế. Thứ Năm năm lần.
 - **Nam**: Tối thứ Hai thư viện vắng. Anh ngồi bàn cạnh cửa sổ, làm bài tới khi họ đuổi.
 - **Hà Vy** (suy nghĩ): …Bàn cạnh cửa sổ. Tối thứ Hai.
 - **Tùng** (ngạc nhiên): Sao thế?
@@ -495,7 +495,7 @@ SELECT ten, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ngay = '2024-10-07';
 > 🗂️ **Bằng chứng thu thập**: **Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05** — Kết quả truy vấn: tối 07/10 Hà Vy quẹt thẻ vào 20:00, ra 23:00; Nam vào 21:50, ra 23:05. Tin gốc gửi lúc 22:40. Nguồn độc lập của thư viện, có giờ vào giờ ra.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Tối mùng 7 có hai người. Hà Vy vào 20 giờ, ra 23 giờ. Anh Nam vào 21 giờ 50, ra 23 giờ 05.)*
+- **Bạn**: Tối mùng 7 có hai người. Hà Vy vào 20 giờ, ra 23 giờ. Anh Nam vào 21 giờ 50, ra 23 giờ 05.
 - **Tùng** (gãi đầu): Quẹt vào rồi trèo cửa sổ ra thì sao? Cửa từ chỉ biết lúc vào với lúc ra.
 - **Hà Vy**: Tớ ngồi cách anh Nam hai bàn. Chuông 22 giờ 30 nhắc sắp đóng cửa, anh ấy còn đang xếp sách. Tớ nhớ vì tớ cũng đang xếp.
 - **Duy**: Cửa từ một nguồn, lời Vy một nguồn. Nhưng lời Vy thì ai làm chứng? Thẻ của Vy.
@@ -542,7 +542,7 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 > 🗂️ **Bằng chứng thu thập**: **Năm lần Hà Vy quẹt thẻ thư viện** — Kết quả truy vấn: bốn tối thứ Hai và một tối thứ Tư. Thói quen của Hà Vy trùng với thói quen của Nam.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Năm lần. Bốn tối thứ Hai, một tối thứ Tư.)*
+- **Bạn**: Năm lần. Bốn tối thứ Hai, một tối thứ Tư.
 - **Tùng** (vui vẻ): Hai người như nhau. Đúng là hai cái máy.
 - **Hà Vy**: Thói quen chỉ cho thấy tớ có lý do ngồi đó. Còn tối ấy thì cửa từ ghi rồi. Về CLB.
 > [CHIBI chibi-v3-hai-cai-may (sticker)] (chưa có mô tả)
@@ -629,7 +629,7 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 
 - **Duy**: Nhắc mới nhớ. Trang "Kiểm hai lần" ấy… hôm trước có một mẩu, để anh xem lại.
 - **Duy**: Mẩu thứ ba rồi. Vẫn đúng nét chữ ấy.
-- *Suy nghĩ của bạn:* *("Vụ đầu tiên của CLB kết luận sai. Cuốn cũ ghi lại nó.")*
+- **Bạn**: "Vụ đầu tiên của CLB kết luận sai. Cuốn cũ ghi lại nó."
 - **Tùng** (ngạc nhiên): Vụ đầu tiên của CLB? Từ hồi nào?
 - **Hà Vy** (suy nghĩ): Chưa biết. Nhưng người viết ghi "kết luận sai". Giống chuyện hôm nay.
 
@@ -645,7 +645,7 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 
 > 🎯 **NHIỆM VỤ**: Ai có chìa khóa văn phòng xưởng?
 - *Chiều muộn, xưởng Robotics. Nam dẫn cả nhóm tới cửa phòng văn phòng. Trên cửa dán một tờ giấy đã ngả màu.*
-- *Suy nghĩ của bạn:* *("Giao chìa phòng văn phòng." Ba tên: Khánh, Bách, Thảo.)*
+- **Bạn**: "Giao chìa phòng văn phòng." Ba tên: Khánh, Bách, Thảo.
 - **Nam**: Anh Khánh đang họp bên Hội. Anh Bách với chị Thảo thì ở kia.
 - **Thảo**: Chị là Thảo, lo kỹ thuật của xưởng. Phòng ấy chị mở nhiều nhất. Nhưng chìa của chị nằm ngăn bàn ngoài xưởng cả tháng nay, ai mở ngăn cũng lấy được. Chị không chối.
 - **Bách**: Anh là Bách, phó CLB. Tối mùng 7 anh về quê, vé xe còn giữ. Chìa anh không cho ai mượn.

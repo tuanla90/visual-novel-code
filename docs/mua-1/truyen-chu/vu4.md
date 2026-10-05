@@ -52,7 +52,7 @@ Thứ Hai, 04/11/2024
 - **Hà Vy**: Từ đầu năm cậu cá trật bốn lần. Tớ có đếm.
 - **Tùng** (ngạc nhiên): Cậu đếm cả cái đấy à?
 - **Hà Vy**: Cái gì đếm được thì tớ đếm.
-- *Suy nghĩ của bạn:* *(Lần này Tùng thắng. Cửa mở sẵn rồi kìa.)*
+- **Bạn**: Lần này Tùng thắng. Cửa mở sẵn rồi kìa.
 - *Trong phòng không chỉ có chị Minh Anh. Lần này không phải nhóm sang xưởng, mà Nam tự tới phòng CLB, tay cầm một tờ giấy.*
 - **Nam**: Có người đang mượn tên em, mà không phải chỉ mỗi cái tin đồn.
 - **Minh Anh**: Ngồi xuống đã. Chuyện gì?
@@ -152,7 +152,7 @@ SELECT ma_don, linh_kien, may, gio FROM don_linh_kien JOIN phien_dang_nhap ON do
 > 🗂️ **Bằng chứng thu thập**: **Năm đơn của Nam: máy và giờ tạo** — Kết quả nối hai bảng: hai đơn tạo buổi chiều từ máy xưởng số 2, ba đơn tạo ban đêm từ máy văn phòng xưởng (21:50, 22:10, 22:05). Đơn 07/10 tạo lúc 22:05, khi Nam đang ở thư viện.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Năm đơn của anh Nam. Hai đơn buổi chiều từ máy xưởng số 2. Ba đơn còn lại từ máy văn phòng xưởng, 21 giờ 50, 22 giờ 10 và 22 giờ 05.)*
+- **Bạn**: Năm đơn của anh Nam. Hai đơn buổi chiều từ máy xưởng số 2. Ba đơn còn lại từ máy văn phòng xưởng, 21 giờ 50, 22 giờ 10 và 22 giờ 05.
 - **Nam**: Máy xưởng số 2 buổi chiều là anh. Máy văn phòng ban đêm thì anh chưa bao giờ ngồi. Phòng đó khóa.
 - **Hà Vy** (suy nghĩ): Năm dòng này gom theo máy rồi đếm, cho chắc.
 > 🎯 **NHIỆM VỤ**: Năm đơn đứng tên Nam chia theo máy ra sao?
@@ -169,7 +169,7 @@ SELECT may, COUNT(*) AS so_dong FROM @ev-don-nam-may GROUP BY may;
 > 🗂️ **Bằng chứng thu thập**: **3 đơn từ máy văn phòng xưởng, 2 từ máy xưởng số 2** — Kết quả gom theo máy: ba đơn mang tên Nam tạo từ máy văn phòng xưởng (phòng khóa, chìa ban chủ nhiệm giữ), hai đơn từ máy xưởng số 2 là của Nam.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Máy văn phòng xưởng ba đơn. Máy xưởng số 2 hai đơn.)*
+- **Bạn**: Máy văn phòng xưởng ba đơn. Máy xưởng số 2 hai đơn.
 - **Tùng** (ngạc nhiên): Máy văn phòng xưởng. Lại nó. Tin đồn cũng gửi từ đó.
 - **Hà Vy** (suy nghĩ): Và đơn ngày 07/10 tạo lúc 22 giờ 05. Tối đó anh Nam ở thư viện tới 23 giờ 05, mình đã có bản ghi.
 - **Nam**: Hai việc xảy ra trên cùng một máy, cùng một tối. Chưa biết có cùng một người làm không.
@@ -216,14 +216,14 @@ SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap
 > 🗂️ **Bằng chứng thu thập**: **Máy văn phòng xưởng: 3 đơn đêm mang tên Nam, 1 đơn ngày của Khánh** — Kết quả: bốn đơn tạo từ máy văn phòng xưởng. Ba đơn ban đêm đứng tên Nam; một đơn ốc vít 10:15 sáng đứng tên Khánh, trưởng CLB, là người dùng máy đó hợp lệ ban ngày. Ba người có chìa phòng: Khánh, Bách, Thảo.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Bốn đơn. Ba đơn đứng tên anh Nam, ban đêm. Một đơn ốc vít đứng tên anh Khánh, 10 giờ 15 sáng.)*
+- **Bạn**: Bốn đơn. Ba đơn đứng tên anh Nam, ban đêm. Một đơn ốc vít đứng tên anh Khánh, 10 giờ 15 sáng.
 - **Nam**: Ốc vít thì đúng là anh Khánh đặt, hôm đó anh thấy. Trưởng CLB ngồi máy văn phòng ban ngày là chuyện thường.
 - **Hà Vy** (suy nghĩ): Ban ngày máy đó có người dùng hợp lệ. Mình mới biết máy, chưa biết tay.
 - **Duy**: Mà bảng phiên ghi máy văn phòng có năm phiên, nối xong chỉ ra bốn đơn. Một phiên sáng 02/10 không tạo đơn nào: có người mở phần mềm rồi thôi. Nối kiểu này thì phiên không có đơn không hiện ra.
 - **Duy**: Tờ giao chìa hôm trước: ba người có chìa. Đừng vội.
 > 🎯 **NHIỆM VỤ**: Chốt điều nói được với Ban kiểm tra
 - **Duy**: Tên một người, tay một người khác… trong sổ có kẹp một câu. Để anh xem.
-- *Suy nghĩ của bạn:* *("Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi.")*
+- **Bạn**: "Cái tên trên bản ghi và người ngồi ở đó là hai chuyện. Vụ đầu tiên, không ai hỏi câu ấy. Mặt trước thì các em đọc mỗi buổi họp rồi."
 - **Tùng** (lo lắng): Giống hệt chuyện anh Nam.
 - **Hà Vy** (suy nghĩ): Mực này cũ hơn bọn mình nhiều. Cuốn sổ cũ mà mấy mẩu giấy nhắc, chắc kể đúng chuyện này.
 
@@ -266,7 +266,7 @@ SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap
 
 📍 **Phòng CLB** — *Quan sát Khánh: tấm thẻ đeo cổ*
 
-- *Suy nghĩ của bạn:* *(Thẻ đeo cổ dây xanh, loại thẻ của cán bộ Hội.)*
+- **Bạn**: Thẻ đeo cổ dây xanh, loại thẻ của cán bộ Hội.
 - **Hà Vy**: Chủ tịch Hội. Giấy nào qua Hội cũng qua tay anh ấy.
 
 **Lựa chọn tiếp theo:**
@@ -279,7 +279,7 @@ SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap
 
 📍 **Phòng CLB** — *Quan sát Khánh: cái balo*
 
-- *Suy nghĩ của bạn:* *(Balo khoác một bên vai, to, cũ.)*
+- **Bạn**: Balo khoác một bên vai, to, cũ.
 - **Nam**: Balo ấy anh Khánh hay để ở xưởng cả ngày.
 
 **Lựa chọn tiếp theo:**
@@ -292,7 +292,7 @@ SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap
 
 📍 **Phòng CLB** — *Quan sát Khánh: huy hiệu bánh răng sứt*
 
-- *Suy nghĩ của bạn:* *(Trên quai balo gài một cái huy hiệu bánh răng. Sứt mất một răng.)*
+- **Bạn**: Trên quai balo gài một cái huy hiệu bánh răng. Sứt mất một răng.
 - **Tùng** (lo lắng): Bánh răng sứt một răng… Chú Cường tả đúng cái này.
 
 **Lựa chọn tiếp theo:**
@@ -333,7 +333,7 @@ SELECT ma_don, ngay, nguoi_dat, linh_kien, so_tien, ma_phien FROM don_linh_kien 
 > 🗂️ **Bằng chứng thu thập**: **Tám đơn linh kiện đã duyệt** — Kết quả truy vấn: tám đơn đã duyệt, mỗi đơn ghi ngày, người đứng tên, linh kiện, số tiền và mã phiên đăng nhập lúc tạo đơn.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Tám đơn đã duyệt.)*
+- **Bạn**: Tám đơn đã duyệt.
 - **Hà Vy** (suy nghĩ): Tám đơn, gom theo người đặt rồi đếm. Xem anh Nam đứng tên bao nhiêu so với người khác.
 > 🎯 **NHIỆM VỤ**: Mỗi người đứng tên bao nhiêu đơn đã duyệt?
 > 💭 **Nhắc nhở** (Hà Vy): Phiếu tám đơn làm nguồn, gom theo người đặt.
@@ -349,7 +349,7 @@ SELECT nguoi_dat, COUNT(*) AS so_dong FROM @ev-don-da-duyet GROUP BY nguoi_dat;
 > 🗂️ **Bằng chứng thu thập**: **Nam đứng tên 5 trong 8 đơn** — Kết quả gom theo người đặt: Nam 5 đơn, Bách 1, Thảo 1, Khánh 1. Nam nói mình chỉ đặt hai.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Anh Nam năm đơn. Anh Bách, chị Thảo, anh Khánh mỗi người một.)*
+- **Bạn**: Anh Nam năm đơn. Anh Bách, chị Thảo, anh Khánh mỗi người một.
 - **Nam**: Năm. Mà anh chỉ đặt hai: cảm biến dò line với bánh xe. Động cơ servo, mạch điều khiển, khung nhôm thì anh không đặt. Anh Bách là phó CLB, chị Thảo lo kỹ thuật, anh Khánh là trưởng CLB.
 - **Tùng** (chỉ tay): Thế ba đơn kia ai gõ tên anh vào?
 - **Duy**: Sổ không ghi ai gõ. Nhưng mỗi đơn có một cột mã phiên: phiên đăng nhập của máy lúc tạo đơn. Máy xưởng có bảng phiên đăng nhập không?

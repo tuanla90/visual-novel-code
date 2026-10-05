@@ -101,7 +101,7 @@ Thứ Tư, 20/11/2024
 
 - *Một tập giấy kẹp bìa xanh sờn gáy, nằm cạnh hộp bút. Tờ trên cùng là danh sách lớp năm học 1995–1996, đánh máy, giấy đã ngả màu cà phê sữa.*
 - *Dòng đầu bảng: Đỗ Văn Thịnh. Ghi chú: thôi học.*
-- *Suy nghĩ của bạn:* *(Cô ơi, cái tên đầu tờ này…)*
+- **Bạn**: Cô ơi, cái tên đầu tờ này…
 - **Cô Hạnh**: Cậu ấy học giỏi lắm.
 - *Cô gập tập giấy lại, đẩy nó vào sâu trong quầy, rồi cầm bó hoa lên ngắm.*
 - **Cô Hạnh**: Hoa đẹp quá. Cô cắm vào đâu nhỉ, cái bình này bé quá.
@@ -154,7 +154,7 @@ SELECT nam_hoc, lop, ho_ten FROM danh_sach_lop_cu WHERE LOWER(TRIM(ghi_chu)) = '
 > 🗂️ **Bằng chứng thu thập**: **Ba mươi dòng ghi ra trường** — Kết quả truy vấn: ba mươi dòng ghi học trò đã ra trường, từ các lớp 1997 đến 2005, mỗi dòng ghi năm học, lớp và họ tên.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Ba mươi dòng ra trường.)*
+- **Bạn**: Ba mươi dòng ra trường.
 - **Duy**: Có người ra trường mà đứng hai dòng thì cô viết hai thiệp. Cô cần mỗi người một tên. Gom theo tên đi.
 > 🎯 **NHIỆM VỤ**: Ba mươi dòng đó gom lại còn bao nhiêu tên?
 > 💭 **Nhắc nhở** (Hà Vy): Phiếu ba mươi dòng ra trường làm nguồn. Gom theo họ tên, mỗi tên một nhóm.
@@ -170,7 +170,7 @@ SELECT ho_ten, COUNT(*) AS so_dong FROM @ev-hoc-ra-truong GROUP BY ho_ten;
 > 🗂️ **Bằng chứng thu thập**: **Hai mươi sáu tên không trùng** — Kết quả gom theo họ tên: ba mươi dòng ra trường còn hai mươi sáu tên. Hai mươi hai tên có một dòng, bốn tên có hai dòng.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Hai mươi sáu tên. Ba mươi dòng mà chỉ có hai mươi sáu tên.)*
+- **Bạn**: Hai mươi sáu tên. Ba mươi dòng mà chỉ có hai mươi sáu tên.
 - **Minh Anh**: Vậy có tên đứng hai dòng. Cô cần biết đó là một người hay hai.
 - **Hà Vy** (suy nghĩ): Mình đếm được số dòng của mỗi tên. Tên nào có hơn một dòng thì để cô nhìn.
 > 🎯 **NHIỆM VỤ**: Tên nào xuất hiện hơn một dòng ra trường?
@@ -187,7 +187,7 @@ SELECT ho_ten, COUNT(*) AS so_dong FROM @ev-hoc-ra-truong GROUP BY ho_ten HAVING
 > 🗂️ **Bằng chứng thu thập**: **Bốn tên có hai dòng ra trường** — Kết quả gom theo họ tên, chỉ giữ tên có hơn một dòng: Hoàng Minh Châu, Đinh Công Sơn, Hà Đức Long, Nguyễn Văn Hùng, mỗi tên hai dòng. Trùng tên chưa nói được là một người hay hai người.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Bốn tên: Hoàng Minh Châu, Đinh Công Sơn, Hà Đức Long, Nguyễn Văn Hùng. Mỗi tên hai dòng.)*
+- **Bạn**: Bốn tên: Hoàng Minh Châu, Đinh Công Sơn, Hà Đức Long, Nguyễn Văn Hùng. Mỗi tên hai dòng.
 - **Duy**: Trùng tên chưa chắc trùng người. Mở phiếu ba mươi dòng ra xem năm học với lớp của từng dòng.
 - **Tùng** (suy nghĩ): Sơn với Long là cùng năm, cùng lớp. Châu thì hai lớp khác nhau. Hùng cách nhau bốn năm.
 - **Hà Vy** (suy nghĩ): Bảng chỉ cho biết trùng tên. Một người hay hai người thì chỉ cô nói được.

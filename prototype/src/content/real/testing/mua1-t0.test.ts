@@ -1289,7 +1289,8 @@ describe('Gói T0 Mùa 1: R3 và R5', () => {
     expect(result2).toBe('*Suy nghĩ của bạn:* *(Vậy là lên Hà Nội thật rồi.)*');
 
     const result3 = (b as unknown as { dinhDangLoi: (l: { speaker: string; text: string }) => string }).dinhDangLoi({ speaker: 'player', text: 'Vậy là lên Hà Nội thật rồi.' });
-    expect(result3).toBe('*Suy nghĩ của bạn:* *(Vậy là lên Hà Nội thật rồi.)*');
+    // Không ngoặc là người chơi nói thành tiếng, không ghi thành "Suy nghĩ" (05/10).
+    expect(result3).toBe('**Bạn**: Vậy là lên Hà Nội thật rồi.');
   });
 
   it('Mục lục: nói rõ đây là 5 vụ cũ, chưa phải 10 vụ (R5)', async () => {

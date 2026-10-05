@@ -45,28 +45,7 @@
 ### md-00-tung-chi-duong — Thấy Tùng chỉ đường cho bạn nữ {cảnh: sanh-ktx}
 
 - [LỜI md-00-tung-chi-duong.1]
-- [ĐI TỚI md-00-soi-tung]
-
-### md-00-soi-tung — Soi cậu bạn áo xanh trước khi hỏi: bấm vào người rồi bấm vào áo {cảnh: sanh-ktx}
-
-- [KHÁM PHÁ kp-soi-tung-sanh · quan sát tung/ao-xanh]
-  - vung:ao · x 66% · y 45% · rộng 22% → md-00-soi-ao · nhãn: Cái áo xanh
-  - vung:mu · x 22% · y 30% · rộng 20% → md-00-soi-mu · nhãn: Cái mũ sau lưng
-  - vung:to-giay · x 84% · y 57% · rộng 22% → md-00-soi-to-giay · nhãn: Tờ giấy trên tay
-- [LỜI md-00-soi-tung.1]
 - [ĐI TỚI md-00-gap-tung]
-
-### md-00-soi-ao — Soi cậu bạn áo xanh: cái áo {cảnh: sanh-ktx}
-
-- [LỜI md-00-soi-ao.1]
-
-### md-00-soi-mu — Soi cậu bạn áo xanh: cái mũ tai bèo {cảnh: sanh-ktx}
-
-- [LỜI md-00-soi-mu.1]
-
-### md-00-soi-to-giay — Soi cậu bạn áo xanh: tờ giấy trên tay {cảnh: sanh-ktx}
-
-- [LỜI md-00-soi-to-giay.1]
 
 ### md-00-gap-tung — Hỏi đường cậu bạn áo xanh: tạo nhân vật {cảnh: sanh-ktx}
 
@@ -125,33 +104,11 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
 
 ### md-10-gap-duy — Trung thu: người chơi tự tới chào anh đang buộc chân bàn gấp {cảnh: san-ktx-trung-thu}
 
-- [KHÁM PHÁ kp-soi-duy · quan sát duy]
-  - vung:chia-khoa · x 45% · y 90% · rộng 14% → md-10-soi-duy-chia · nhãn: Chùm chìa khóa
-  - vung:ho-so · x 31% · y 68% · rộng 22% → md-10-soi-duy-ho-so · nhãn: Tập bìa giấy
 - [LỜI md-10-gap-duy.2]
-
-### md-10-soi-duy-chia — Quan sát Duy: chùm chìa khóa ở thắt lưng {cảnh: san-ktx-trung-thu}
-
-- [LỜI md-10-soi-duy-chia.1]
-
-### md-10-soi-duy-ho-so — Quan sát Duy: tập bìa giấy kẹp nách {cảnh: san-ktx-trung-thu}
-
-- [LỜI md-10-soi-duy-ho-so.1]
 
 ### md-10-gap-ha-vy — Trung thu: người chơi tự tới chào bạn nữ đứng tách ra cạnh bảng tin {cảnh: san-ktx-trung-thu}
 
-- [KHÁM PHÁ kp-soi-ha-vy · quan sát ha-vy]
-  - vung:sach · x 57% · y 56% · rộng 26% → md-10-soi-vy-sach · nhãn: Tập giấy trên tay
-  - vung:kinh · x 52% · y 24% · rộng 30% → md-10-soi-vy-kinh · nhãn: Cặp kính
 - [LỜI md-10-gap-ha-vy.2]
-
-### md-10-soi-vy-sach — Quan sát Hà Vy: tập giấy ôm trước ngực {cảnh: san-ktx-trung-thu}
-
-- [LỜI md-10-soi-vy-sach.1]
-
-### md-10-soi-vy-kinh — Quan sát Hà Vy: cặp kính {cảnh: san-ktx-trung-thu}
-
-- [LỜI md-10-soi-vy-kinh.1]
 
 ### md-10-trung-thu — Sân KTX, thứ Ba 17/09 19h: CLB gặp mặt lần đầu {cảnh: san-ktx-trung-thu}
 

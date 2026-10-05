@@ -55,19 +55,6 @@
 - [DÀN DỰNG] Bạn nữ kéo vali lạch cạch đi về hướng Tùng vừa chỉ.
 - **player**: (Chỉ đường trơn tru thế kia thì chắc rành khu này lắm.)
 
-## md-00-soi-ao.1
-- **player**: (Sơ mi xanh dài tay, trên ngực gắn lá cờ nhỏ. Áo của đội tình nguyện.)
-- **player**: (Ngày nhập học thì đây chắc là người đón tân sinh viên.)
-
-## md-00-soi-mu.1
-- **player**: (Mũ tai bèo đeo sau lưng. Chắc đứng nắng cả buổi rồi.)
-
-## md-00-soi-to-giay.1
-- **player**: (Tay cầm tờ sơ đồ gấp đôi, mép quăn hết cả. Chắc chỉ đường cho bao nhiêu người rồi.)
-
-## md-00-soi-tung.1
-- **player**: (Đúng người của đội đón tân sinh viên rồi.)
-
 ## md-00-gap-tung.1
 - **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế?
 - **tung** (ao-xanh-happy): Khuất sau hành lang kia kìa. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
@@ -180,7 +167,7 @@
 
 ## md-10-trung-thu.2
 - [THẺ CHỮ] **narrator**: Thứ Ba, 17/09/2024 · 19:00 · Sân ký túc xá
-- [DÀN DỰNG] Ảnh nền đã có dây đèn lồng, bàn bánh, đèn cá chép, gian Robotics: lời dẫn không tả lại (04/10). Sau câu Minh Anh, người chơi tự bấm vào Duy (cạnh bàn bánh) và Hà Vy (mép phải sân) để làm quen.
+- [DÀN DỰNG] Ảnh nền đã có dây đèn lồng, bàn bánh, đèn cá chép, gian Robotics: lời dẫn không tả lại (04/10). Sau câu Minh Anh, người chơi tự bấm vào Duy (cạnh bàn bánh) và Hà Vy (mép phải sân) để làm quen. Tới chào là nói chuyện luôn, chưa có màn soi: lần soi đầu tiên là lúc Hà Vy bảo nhìn đồ Tùng mang theo (user 05/10).
 - **narrator**: Tiếng trống lân tập dồn từng nhịp, át cả tiếng nói chuyện.
 - **minh-anh** (happy): Hai em tới đúng giờ. Chị là {{nv.minh-anh}}, chủ nhiệm CLB.
 - **minh-anh** (neutral): Mọi người tới cả rồi đấy. Đi chào một vòng đi, lát chị gọi.
@@ -190,12 +177,6 @@
 - **tung** (happy): Thế cậu đoán được tớ học ngành gì không?
 - **ha-vy** (neutral): Để xem. Cậu thử nhìn đồ Tùng mang theo đi.
 
-## md-10-soi-duy-chia.1
-- **player**: (Chùm chìa khóa móc ở thắt lưng. Cái nào cũng dán một mẩu băng dính ghi chữ.)
-
-## md-10-soi-duy-ho-so.1
-- **player**: (Tập bìa giấy kẹp nách, mép vuốt phẳng phiu. Đi liên hoan mà vẫn mang theo.)
-
 ## md-10-gap-duy.2
 - **duy** (neutral): Rảnh tay thì giữ hộ anh cái chân bàn này với. Buộc mãi nó vẫn sụp.
 - **player**: Vâng, để em giữ.
@@ -204,15 +185,8 @@
 - **duy** (neutral): Sổ mượn đồ. Bàn này của phòng CLB, mai phải trả đủ bốn chân.
 - **duy** (smile): Trà ở đầu bàn, mấy đứa tự rót nhé.
 
-## md-10-soi-vy-sach.1
-- **player**: (Mấy tờ giấy in ôm sát trước ngực. Qua mép giấy thấy dòng tiêu đề in đậm: "Sherlock Holmes".)
-
-## md-10-soi-vy-kinh.1
-- **player**: (Gọng kính mảnh. Bạn ấy nhìn ai cũng lâu hơn người khác một nhịp.)
-
 ## md-10-gap-ha-vy.2
-- **ha-vy** (neutral): Cậu nhìn tớ lâu thế. Từ tập giấy tới cái kính rồi đấy.
-- **player**: À… cậu cũng vào CLB à?
+- **player**: Chào cậu. Cậu cũng vào CLB à?
 - **ha-vy** (neutral): Mới đăng ký. Tớ là {{nv.ha-vy}}, Toán ứng dụng.
 - **tung** (surprised): Hôm Ngày hội tớ không thấy cậu ở bàn CLB.
 - **ha-vy** (neutral): Tớ điền form trên mạng.

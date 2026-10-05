@@ -76,7 +76,7 @@ SELECT ma_phieu, ten_tai_san, luan_chuyen.vi_tri, nguoi_nhan FROM luan_chuyen JO
 > 🗂️ **Bằng chứng thu thập**: **PX-17: micro không dây sang tủ thiết bị dùng chung** — Kết quả nối phiếu luân chuyển với sổ tài sản: phiếu PX-17 đã nhận, chuyển micro không dây (MIC-02) tới tủ thiết bị dùng chung, tổ thiết bị nhận.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Một phiếu. PX-17, ngày 24 tháng 10, chuyển micro không dây sang tủ thiết bị dùng chung. Tổ thiết bị đã nhận.)*
+- **Bạn**: Một phiếu. PX-17, ngày 24 tháng 10, chuyển micro không dây sang tủ thiết bị dùng chung. Tổ thiết bị đã nhận.
 - **Duy**: Tủ dùng chung ở cuối hành lang. Đi xem.
 > [CHIBI chibi-phu-tu-micro (sticker)] (chưa có mô tả)
 - **Duy**: Mã trên micro là MIC-02, đúng mã trên phiếu. Tài sản không mất, chỗ để đã đổi. Về sửa lại sổ thôi.

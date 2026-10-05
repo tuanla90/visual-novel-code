@@ -1301,104 +1301,7 @@ const GOC = {
         },
         {
           "type": "goto",
-          "to": "md-00-soi-tung"
-        }
-      ]
-    },
-    {
-      "id": "md-00-soi-tung",
-      "title": "Soi cậu bạn áo xanh trước khi hỏi: bấm vào người rồi bấm vào áo",
-      "canh": "sanh-ktx",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "explore",
-          "id": "kp-soi-tung-sanh",
-          "kieu": "quan-sat",
-          "nhanVat": "tung",
-          "dang": "ao-xanh",
-          "diem": [
-            {
-              "sprite": "vung:ao",
-              "x": 66,
-              "y": 45,
-              "rong": 22,
-              "chuoi": "md-00-soi-ao",
-              "sau": [],
-              "nhan": "Cái áo xanh"
-            },
-            {
-              "sprite": "vung:mu",
-              "x": 22,
-              "y": 30,
-              "rong": 20,
-              "chuoi": "md-00-soi-mu",
-              "sau": [],
-              "nhan": "Cái mũ sau lưng"
-            },
-            {
-              "sprite": "vung:to-giay",
-              "x": 84,
-              "y": 57,
-              "rong": 22,
-              "chuoi": "md-00-soi-to-giay",
-              "sau": [],
-              "nhan": "Tờ giấy trên tay"
-            }
-          ]
-        },
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Đúng người của đội đón tân sinh viên rồi.)"
-        },
-        {
-          "type": "goto",
           "to": "md-00-gap-tung"
-        }
-      ]
-    },
-    {
-      "id": "md-00-soi-ao",
-      "title": "Soi cậu bạn áo xanh: cái áo",
-      "canh": "sanh-ktx",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Sơ mi xanh dài tay, trên ngực gắn lá cờ nhỏ. Áo của đội tình nguyện.)"
-        },
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Ngày nhập học thì đây chắc là người đón tân sinh viên.)"
-        }
-      ]
-    },
-    {
-      "id": "md-00-soi-mu",
-      "title": "Soi cậu bạn áo xanh: cái mũ tai bèo",
-      "canh": "sanh-ktx",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Mũ tai bèo đeo sau lưng. Chắc đứng nắng cả buổi rồi.)"
-        }
-      ]
-    },
-    {
-      "id": "md-00-soi-to-giay",
-      "title": "Soi cậu bạn áo xanh: tờ giấy trên tay",
-      "canh": "sanh-ktx",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Tay cầm tờ sơ đồ gấp đôi, mép quăn hết cả. Chắc chỉ đường cho bao nhiêu người rồi.)"
         }
       ]
     },
@@ -2058,32 +1961,6 @@ const GOC = {
       "mocSomNhat": 0,
       "nodes": [
         {
-          "type": "explore",
-          "id": "kp-soi-duy",
-          "kieu": "quan-sat",
-          "nhanVat": "duy",
-          "diem": [
-            {
-              "sprite": "vung:chia-khoa",
-              "x": 45,
-              "y": 90,
-              "rong": 14,
-              "chuoi": "md-10-soi-duy-chia",
-              "sau": [],
-              "nhan": "Chùm chìa khóa"
-            },
-            {
-              "sprite": "vung:ho-so",
-              "x": 31,
-              "y": 68,
-              "rong": 22,
-              "chuoi": "md-10-soi-duy-ho-so",
-              "sau": [],
-              "nhan": "Tập bìa giấy"
-            }
-          ]
-        },
-        {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
@@ -2121,73 +1998,15 @@ const GOC = {
       ]
     },
     {
-      "id": "md-10-soi-duy-chia",
-      "title": "Quan sát Duy: chùm chìa khóa ở thắt lưng",
-      "canh": "san-ktx-trung-thu",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Chùm chìa khóa móc ở thắt lưng. Cái nào cũng dán một mẩu băng dính ghi chữ.)"
-        }
-      ]
-    },
-    {
-      "id": "md-10-soi-duy-ho-so",
-      "title": "Quan sát Duy: tập bìa giấy kẹp nách",
-      "canh": "san-ktx-trung-thu",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Tập bìa giấy kẹp nách, mép vuốt phẳng phiu. Đi liên hoan mà vẫn mang theo.)"
-        }
-      ]
-    },
-    {
       "id": "md-10-gap-ha-vy",
       "title": "Trung thu: người chơi tự tới chào bạn nữ đứng tách ra cạnh bảng tin",
       "canh": "san-ktx-trung-thu",
       "mocSomNhat": 0,
       "nodes": [
         {
-          "type": "explore",
-          "id": "kp-soi-ha-vy",
-          "kieu": "quan-sat",
-          "nhanVat": "ha-vy",
-          "diem": [
-            {
-              "sprite": "vung:sach",
-              "x": 57,
-              "y": 56,
-              "rong": 26,
-              "chuoi": "md-10-soi-vy-sach",
-              "sau": [],
-              "nhan": "Tập giấy trên tay"
-            },
-            {
-              "sprite": "vung:kinh",
-              "x": 52,
-              "y": 24,
-              "rong": 30,
-              "chuoi": "md-10-soi-vy-kinh",
-              "sau": [],
-              "nhan": "Cặp kính"
-            }
-          ]
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "neutral",
-          "text": "Cậu nhìn tớ lâu thế. Từ tập giấy tới cái kính rồi đấy."
-        },
-        {
           "type": "line",
           "speaker": "player",
-          "text": "À… cậu cũng vào CLB à?"
+          "text": "Chào cậu. Cậu cũng vào CLB à?"
         },
         {
           "type": "line",
@@ -2222,32 +2041,6 @@ const GOC = {
       ]
     },
     {
-      "id": "md-10-soi-vy-sach",
-      "title": "Quan sát Hà Vy: tập giấy ôm trước ngực",
-      "canh": "san-ktx-trung-thu",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Mấy tờ giấy in ôm sát trước ngực. Qua mép giấy thấy dòng tiêu đề in đậm: \"Sherlock Holmes\".)"
-        }
-      ]
-    },
-    {
-      "id": "md-10-soi-vy-kinh",
-      "title": "Quan sát Hà Vy: cặp kính",
-      "canh": "san-ktx-trung-thu",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Gọng kính mảnh. Bạn ấy nhìn ai cũng lâu hơn người khác một nhịp.)"
-        }
-      ]
-    },
-    {
       "id": "md-10-trung-thu",
       "title": "Sân KTX, thứ Ba 17/09 19h: CLB gặp mặt lần đầu",
       "canh": "san-ktx-trung-thu",
@@ -2271,7 +2064,7 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Ảnh nền đã có dây đèn lồng, bàn bánh, đèn cá chép, gian Robotics: lời dẫn không tả lại (04/10). Sau câu Minh Anh, người chơi tự bấm vào Duy (cạnh bàn bánh) và Hà Vy (mép phải sân) để làm quen."
+          "text": "Ảnh nền đã có dây đèn lồng, bàn bánh, đèn cá chép, gian Robotics: lời dẫn không tả lại (04/10). Sau câu Minh Anh, người chơi tự bấm vào Duy (cạnh bàn bánh) và Hà Vy (mép phải sân) để làm quen. Tới chào là nói chuyện luôn, chưa có màn soi: lần soi đầu tiên là lúc Hà Vy bảo nhìn đồ Tùng mang theo (user 05/10)."
         },
         {
           "type": "line",
@@ -22748,7 +22541,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:201 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:179 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",

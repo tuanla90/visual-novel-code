@@ -298,7 +298,7 @@ SELECT ma_lhp, mon, phong, gio_bat_dau FROM lich_hoc WHERE ma_lhp LIKE 'KTVM-0%'
 > 🗂️ **Bằng chứng thu thập**: **Ba lớp Kinh tế vi mô sáng thứ Tư ở tòa B** — Kết quả truy vấn: KTVM-03 (B204, 07:30), KTVM-05 (B102, 09:30), KTVM-07 (B305, 09:30). Cả ba là lớp học sáng thứ Tư, tòa B, mã bắt đầu KTVM-0.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Ba lớp. KTVM-03, KTVM-05, KTVM-07.)*
+- **Bạn**: Ba lớp. KTVM-03, KTVM-05, KTVM-07.
 - **Duy**: Ba lớp mà mỗi lớp mấy chục sinh viên. Danh sách đăng ký chỉ ghi mã lớp học phần với mã sinh viên. Lớp sinh hoạt thì nằm ở bảng sinh viên.
 - **Hà Vy** (suy nghĩ): Tờ đơn ghi Khoa Báo chí. Lớp Báo chí mã bắt đầu bằng BC. Nối hai bảng, lấy ba lớp học phần trên phiếu.
 > 🎯 **NHIỆM VỤ**: Trong ba lớp ấy, những ai là sinh viên Báo chí?
@@ -333,7 +333,7 @@ SELECT dang_ky_hoc.ma_lhp, sinh_vien.ma_sv, ho_dem, ten, ma_lop FROM dang_ky_hoc
 > 🗂️ **Bằng chứng thu thập**: **Ba sinh viên Báo chí trong ba lớp** — Kết quả nối: Hiếu (BC24A) học KTVM-03 lúc 07:30; Hồng (BC24B) học KTVM-05 và Toàn (BC24B) học KTVM-07, cùng lúc 09:30. Bảng chỉ nói ai đăng ký lớp nào, chưa nói ai đánh rơi túi.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Ba người. Hiếu lớp BC24A, Hồng và Toàn lớp BC24B.)*
+- **Bạn**: Ba người. Hiếu lớp BC24A, Hồng và Toàn lớp BC24B.
 - **Tùng** (ngạc nhiên): Hiếu? Cậu bàn bên hôm mình tra chữ H?
 - **Duy**: Bảng chỉ nói ai đăng ký lớp nào. Chưa nói ai đánh rơi.
 - **Minh Anh**: Ba cái tên. Phải chọn tìm ai trước.

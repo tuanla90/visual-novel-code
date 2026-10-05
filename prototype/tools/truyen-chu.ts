@@ -335,6 +335,8 @@ export class BoXuatTruyenChu {
     const text = this.dienTen(l.text);
     if (l.speaker === 'player' || l.speaker === 'nguoi-choi') {
       let cleanText = text.trim();
+      // Lời trong ngoặc là tự nghĩ; không ngoặc là người chơi nói thành tiếng.
+      if (!(cleanText.startsWith('(') && cleanText.endsWith(')'))) return `**Bạn**: ${cleanText}`;
       while (cleanText.startsWith('(') && cleanText.endsWith(')')) {
         cleanText = cleanText.slice(1, -1).trim();
       }

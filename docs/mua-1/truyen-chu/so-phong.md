@@ -76,7 +76,7 @@ Thứ Sáu, 01/11/2024
 - **Duy**: Sổ sử dụng phòng em giữ. Bản giấy đây, còn đây là bản xuất từ máy quản lý phòng của tòa nhà.
 - **Duy**: Mã phòng trong bản xuất là do từng người trực gõ tay. Em chưa lọc, chưa bỏ dòng nào.
 > 🗂️ **Tài liệu mới**: **Bản xuất sổ sử dụng phòng** — 
-- *Suy nghĩ của bạn:* *(Bảy dòng. Hai dòng là của kho chung. Còn lại là phòng mình, nhưng mỗi dòng viết mã phòng một kiểu.)*
+- **Bạn**: Bảy dòng. Hai dòng là của kho chung. Còn lại là phòng mình, nhưng mỗi dòng viết mã phòng một kiểu.
 - **Duy**: Ừ. Có dòng viết hoa, có dòng viết thường, có dòng dính thêm dấu cách ở đuôi. Trong sổ giấy thì vẫn là một phòng thôi.
 - **Tùng** (ngạc nhiên): Ơ, tháng 10 mình sinh hoạt đều mà. Sao đếm theo mã phòng lại thấy thiếu buổi?
 - **Hà Vy** (suy nghĩ): Khoan đã. Viết khác kiểu chưa có nghĩa là có người sửa.
@@ -132,7 +132,7 @@ SELECT ma_buoi, ngay, hoat_dong FROM nhat_ky_su_dung WHERE LOWER(TRIM(ma_phong))
 
 > 📓 **Sổ cá nhân**: `TRIM(cột)`: bỏ dấu cách ở đầu và cuối. `LOWER(cột)`: đổi về chữ thường. Gọt cột rồi mới so với giá trị.
 > 📓 **Sổ cá nhân**: `ORDER BY cột`: xếp kết quả tăng dần theo cột đó. Thêm `DESC` để xếp giảm dần.
-- *Suy nghĩ của bạn:* *(Bốn buổi: mùng 2, mùng 9, 16 và 23 tháng 10. Buổi 30 vẫn ghi dự kiến, chưa ai ký nên không vào.)*
+- **Bạn**: Bốn buổi: mùng 2, mùng 9, 16 và 23 tháng 10. Buổi 30 vẫn ghi dự kiến, chưa ai ký nên không vào.
 - **Tùng** (vui vẻ): Thế là không buổi nào biến mất cả. Chỉ là mỗi người gõ một kiểu.
 > [CHIBI chibi-phu-got-ma-phong (sticker)] (chưa có mô tả)
 

@@ -71,7 +71,7 @@ Thứ Ba, 08/10/2024 · Còn 7 ngày tới Buổi giải trình chiều 15/10
 - **Hiếu**: Tớ báo một câu thế thôi, tớ về lớp đây. (tạm)
 > [CHIBI chibi-v2-hieu-cua (sticker)] (chưa có mô tả)
 > 🗂️ **Tài liệu mới**: **Ảnh chụp tin đồn** — 
-- *Suy nghĩ của bạn:* *("CLB Thám Tử soi dữ liệu sinh viên.")*
+- **Bạn**: "CLB Thám Tử soi dữ liệu sinh viên."
 - **Tùng** (lo lắng): Ơ, mình có soi ai đâu. Tra gì cũng có phiếu, lại có anh Quân ngồi giám sát mà.
 - **Minh Anh** (nghiêm túc): Cuối kỳ là đợt rà soát phòng, cũng là lúc Phòng Kế hoạch gửi sao kê quỹ về các CLB. Chị không muốn tin này treo tới lúc đó.
 - **Minh Anh**: Thế nên chị mới cần biết tin này bắt đầu từ đâu. Cô Lan cho mình bản xuất các tin công khai của kênh, từ tối thứ Hai tới trưa nay.
@@ -128,10 +128,10 @@ Thứ Năm, 10/10/2024 · Còn 5 ngày tới Buổi giải trình chiều 15/10
 > 📜 **[THẺ CHỮ]** Thứ Năm, 10/10/2024
 - **Tùng** (ngạc nhiên): Hiếu nhắn tớ này: "Trưa ra căng tin, tớ có chuyện." (tạm)
 - **Tùng** (lo lắng): Khéo Hiếu định cãi chuyện bấm chuyển hôm nọ. (tạm)
-- *Suy nghĩ của bạn:* *(Chưa gặp mà cậu đã định cá à? (tạm))*
+- **Bạn**: Chưa gặp mà cậu đã định cá à? (tạm)
 - **Tùng** (vui vẻ): Cá luôn. Tớ cá Hiếu ra xin lỗi bọn mình. (tạm)
 - **Tùng** (vui vẻ): Trưa nay ra sớm một tí, kẻo hết chỗ. (tạm)
-- *Suy nghĩ của bạn:* *(Ra sớm thì được. Cá thì tớ không theo. (tạm))*
+- **Bạn**: Ra sớm thì được. Cá thì tớ không theo. (tạm)
 
 **Lựa chọn tiếp theo:**
 - [Đi cùng Tùng ra căng tin](#doan-15)
@@ -149,7 +149,7 @@ Thứ Hai, 14/10/2024 · Còn 1 ngày tới Buổi giải trình chiều 15/10
 - *Ba ngày cuối tuần, CLB nghỉ. Kênh sinh viên vẫn có người chuyển cái tin ấy, thưa dần. (tạm)*
 - *Trưa thứ Hai, Tùng ở quê lên, xách theo một túi bánh. (tạm)*
 - **Tùng** (vui vẻ): Mẹ tớ gói cả rổ bánh khúc, bắt mang đi bằng được. Cậu ăn không? (tạm)
-- *Suy nghĩ của bạn:* *(Cho tớ một cái. (tạm))*
+- **Bạn**: Cho tớ một cái. (tạm)
 - **Tùng**: Chiều nay tập ở phòng CLB đấy. Mai là lên giải trình rồi. (tạm)
 
 **Lựa chọn tiếp theo:**
@@ -189,7 +189,7 @@ Thứ Ba, 15/10/2024 · Còn 0 ngày tới Buổi giải trình chiều 15/10
 - **Quân**: Mỗi người gõ tên mình một kiểu. Hoa thường lẫn lộn, có tên còn thừa cả dấu cách. (tạm)
 - **Quân**: Tôi cần biết những ai trúng trước buổi chiều. (tạm)
 - **Tùng** (vui vẻ): Để bọn em, anh ạ. (tạm)
-- *Suy nghĩ của bạn:* *(Cậu nhận nhanh thế. (tạm))*
+- **Bạn**: Cậu nhận nhanh thế. (tạm)
 - **Tùng** (vui vẻ): Ăn trưa xong làm một lèo là xong ấy mà. (tạm)
 - *Tùng đón tờ danh sách từ tay Quân. (tạm)*
 
@@ -299,7 +299,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Năm tin mang câu đó, từ năm tài khoản. Bốn cái là mã sinh viên. Một cái là clb_robotics.)*
+- **Bạn**: Năm tin mang câu đó, từ năm tài khoản. Bốn cái là mã sinh viên. Một cái là clb_robotics.
 - **Tùng** (chỉ tay): Lại Robotics! Hôm trước là cái huy hiệu bánh răng, giờ là tài khoản. Tớ cá là…
 - **Hà Vy**: Đừng cá. Mới biết có năm tin mang câu đó. Tin nào có trước thì phiếu chưa nói.
 - **Minh Anh**: Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem.
@@ -307,7 +307,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Duy**: Chiều nay xưởng bên ấy sinh hoạt thành viên tới năm giờ chị ạ. Tờ lịch nhà văn hóa ghim trên bảng ghi thế. (tạm)
 - **Minh Anh**: Vậy mai hẵng sang. (tạm)
 - **Minh Anh**: Hôm nay làm cho gọn danh sách tin này đã. (tạm)
-- *Suy nghĩ của bạn:* *(Năm tin bắt đầu bằng câu này. Mà nhỡ có người gõ thêm gì đằng trước thì sao? (tạm))*
+- **Bạn**: Năm tin bắt đầu bằng câu này. Mà nhỡ có người gõ thêm gì đằng trước thì sao? (tạm)
 - **Tùng** (lo lắng): Lại còn thế nữa. Tìm tiếp đi cậu. (tạm)
 
 **Lựa chọn tiếp theo:**
@@ -370,14 +370,14 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Duy**: Hộp trước hết từ hôm thứ Năm. Anh không hỏi ai ăn. (tạm)
 - **Minh Anh**: Tập nhé. Chị hỏi như mai người ta sẽ hỏi. (tạm)
 - **Minh Anh** (nghiêm túc): Tin này bắt đầu từ đâu, gửi từ đâu? (tạm)
-- *Suy nghĩ của bạn:* *(Mười giờ bốn mươi tối thứ Hai tuần trước, từ tài khoản kênh của Robotics. Vào kênh bằng máy văn phòng xưởng ạ. (tạm))*
+- **Bạn**: Mười giờ bốn mươi tối thứ Hai tuần trước, từ tài khoản kênh của Robotics. Vào kênh bằng máy văn phòng xưởng ạ. (tạm)
 - **Minh Anh**: Thế ai gửi? (tạm)
 - **Tùng** (chỉ tay): Anh Nam chứ ai ạ! (tạm)
 - **Hà Vy**: Cậu lại cá đấy. Từ đầu năm cậu trật bốn lần rồi. (tạm)
 - **Tùng** (lo lắng): Thì anh ấy trực kênh mà. (tạm)
 - **Minh Anh** (nghiêm túc): Mai chị không đỡ lời cho em được đâu, Tùng. (tạm)
 - **Minh Anh** (nghiêm túc): Mai ai cũng chỉ nói điều có giấy tờ làm chứng. (tạm)
-- *Suy nghĩ của bạn:* *(Thế câu "ai gửi" thì trả lời sao hả chị? (tạm))*
+- **Bạn**: Thế câu "ai gửi" thì trả lời sao hả chị? (tạm)
 - **Minh Anh**: Câu đó mai em tự trả lời. (tạm)
 - *Duy xếp các tờ kết quả theo thứ tự ngày, kẹp ghim lại. (tạm)*
 
@@ -473,7 +473,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Lên tám tin. Hai tin có chữ gõ thêm đằng trước câu ấy. Còn một tin nói chuyện khác: "Nghe nói CLB Thám Tử soi điểm". (tạm))*
+- **Bạn**: Lên tám tin. Hai tin có chữ gõ thêm đằng trước câu ấy. Còn một tin nói chuyện khác: "Nghe nói CLB Thám Tử soi điểm". (tạm)
 - **Minh Anh** (nghiêm túc): Tin chuyện điểm không phải câu tin đồn, phải loại ra. Chỉ giữ tin có đúng câu ấy, dù người ta gõ thêm gì đằng trước, đằng sau. (tạm)
 - **Hà Vy** (suy nghĩ): Vậy tìm theo đoạn dài hơn của câu ấy, đoạn mà tin chuyện điểm không có. (tạm)
 
@@ -518,7 +518,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 > 🗂️ **Bằng chứng thu thập**: **Các tin mang câu tin đồn** — Kết quả truy vấn: nhiều tin chép lại cùng một câu, từ các tài khoản khác nhau. Phiếu chưa nói tin nào có trước.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Còn bảy tin. Tin chuyện điểm không còn nữa. (tạm))*
+- **Bạn**: Còn bảy tin. Tin chuyện điểm không còn nữa. (tạm)
 - **Tùng** (chỉ tay): Hai mã sinh viên này lạ, gửi tầm trưa hôm qua. Xem riêng tin của hai mã ấy đi. (tạm)
 
 **Lựa chọn tiếp theo:**
@@ -574,7 +574,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Bác Thịnh**: Mà các cháu soi điểm sinh viên thật đấy à? Thằng cháu bác ở quê cũng gửi cho bác cái tin ấy. (tạm)
 - **Tùng** (lo lắng): Không có đâu bác ơi! (tạm)
 - *Mấy bạn đi ngang sảnh quay lại nhìn. (tạm)*
-- *Suy nghĩ của bạn:* *(Bọn cháu tra gì cũng phải có phiếu, có người ngồi giám sát bác ạ. (tạm))*
+- **Bạn**: Bọn cháu tra gì cũng phải có phiếu, có người ngồi giám sát bác ạ. (tạm)
 - **Bác Thịnh**: Bác hỏi cho biết thôi. Kéo căng đầu bên ấy lên tí nào. (tạm)
 
 **Lựa chọn tiếp theo:**
@@ -642,8 +642,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 📍 **Phòng CLB** — *Cuối chiều 08/10: khép danh sách, hẹn mai*
 
-- *Suy nghĩ của bạn:* *(Trong mấy tin vừa ra có một tin nói chuyện khác hẳn, phải bỏ ra. (tạm))*
-- *Suy nghĩ của bạn:* *(Còn hai tin gõ thêm chữ, mai xem là của ai. (tạm))*
+- **Bạn**: Trong mấy tin vừa ra có một tin nói chuyện khác hẳn, phải bỏ ra. (tạm)
+- **Bạn**: Còn hai tin gõ thêm chữ, mai xem là của ai. (tạm)
 - **Minh Anh**: Mai ba giờ chiều, đủ mặt nhé. (tạm)
 - *Duy đậy nắp hộp bánh quy BQ-04, gạch thêm một vạch lên nhãn dán. (tạm)*
 - **Tùng** (vui vẻ): Đói quá rồi. (tạm)
@@ -683,7 +683,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Hai tin này ghi loại là trả lời. Hai mã sinh viên đều K24 khoa Kế toán, cùng khoa tớ. (tạm))*
+- **Bạn**: Hai tin này ghi loại là trả lời. Hai mã sinh viên đều K24 khoa Kế toán, cùng khoa tớ. (tạm)
 - **Tùng** (chỉ tay): Trả lời bên dưới tin người khác à. Tớ cá là hai bạn ấy... (tạm)
 - **Hà Vy**: Khoan cá đã. Hai bạn ấy cũng chỉ gõ lại câu cũ thôi. (tạm)
 - **Minh Anh** (nghiêm túc): Việc hôm nay là tìm xem tin này bắt đầu từ đâu. (tạm)
@@ -764,7 +764,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 - *Điện thoại của Tùng rung trên giường. Rồi rung tiếp. (tạm)*
 - **Tùng** (lo lắng): Nhóm lớp, nhóm quê, đứa nào cũng gửi cái tin kia, kèm cái mặt cười. (tạm)
 - *Tùng tắt tiếng, úp điện thoại xuống gối. (tạm)*
-- *Suy nghĩ của bạn:* *(Cậu có trả lời ai không? (tạm))*
+- **Bạn**: Cậu có trả lời ai không? (tạm)
 - **Tùng** (gãi đầu): Định cãi, rồi thôi. Cãi bằng gì bây giờ. (tạm)
 - *Tùng lôi cuốn sổ nợ ra, lật tới dòng chín. (tạm)*
 - **Tùng** (vui vẻ): Nửa gói mì, chủ nợ là cậu. Cho tớ khất tới thứ Sáu nhé. (tạm)
@@ -790,7 +790,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 - **Tùng** (chỉ tay): Tớ cá là tới nơi sẽ có một ông mặt gian gian ngồi sẵn cạnh máy tính.
 - **Hà Vy**: Cậu vừa kết án một người chưa gặp, bằng một cái máy chưa thấy.
 - **Tùng** (gãi đầu): Thì tớ đoán cho vui.
-- *Suy nghĩ của bạn:* *(Đoán cho vui thì được. Đừng ghi vào hồ sơ là được.)*
+- **Bạn**: Đoán cho vui thì được. Đừng ghi vào hồ sơ là được.
 - **Hà Vy**: Câu ấy thì tớ cho ghi.
 - *Xưởng của CLB Robotics nằm cuối dãy nhà văn hóa. Một cậu đang dán nhãn hộp linh kiện, ngẩng lên khi thấy cả nhóm.*
 - **Hà Vy** (suy nghĩ): Người lạ đấy. Mình nhìn một lượt trước rồi hẵng hỏi.
@@ -858,7 +858,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 
 📍 **Xưởng CLB Robotics** — *Quan sát Nam: cái hộp linh kiện*
 
-- *Suy nghĩ của bạn:* *(Hộp các tông đựng linh kiện, túi nào cũng dán nhãn.)*
+- **Bạn**: Hộp các tông đựng linh kiện, túi nào cũng dán nhãn.
 - **Hà Vy** (suy nghĩ): Người giữ sổ sách của xưởng. Chuyện giấy tờ, giờ giấc thì hỏi cậu này.
 
 **Lựa chọn tiếp theo:**
@@ -871,7 +871,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 
 📍 **Xưởng CLB Robotics** — *Quan sát Nam: cây bút dạ*
 
-- *Suy nghĩ của bạn:* *(Bút dạ còn mở nắp.)*
+- **Bạn**: Bút dạ còn mở nắp.
 - **Tùng**: Đang dán nhãn dở. Mình tới bất ngờ, cậu ấy không chuẩn bị gì trước.
 
 **Lựa chọn tiếp theo:**
@@ -884,7 +884,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 
 📍 **Xưởng CLB Robotics** — *Quan sát Nam: tay áo xắn*
 
-- *Suy nghĩ của bạn:* *(Tay áo khoác xắn tới khuỷu.)*
+- **Bạn**: Tay áo khoác xắn tới khuỷu.
 - **Hà Vy**: Người làm việc ở xưởng, không phải người ngồi họp.
 
 **Lựa chọn tiếp theo:**
@@ -950,7 +950,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 - **Tùng** (vui vẻ): Bà nhớ bọn cháu này!
 - **Bà bán trà đá**: Bà nhớ cái phòng. Hồi xưa có một cậu sinh viên trông phòng ấy, chiều nào cũng ra đây. Hè cũng gọi trà nóng nên bà gọi là "cậu trà nóng".
 - **Bà bán trà đá**: Cậu ấy có hai cuốn sổ. Một cuốn bìa cứng đã sờn, một cuốn mới tinh. Ngồi đúng cái ghế cháu đang ngồi, chép từ cuốn cũ sang cuốn mới, chép cả tháng trời.
-- *Suy nghĩ của bạn:* *(Chép lại cả cuốn ạ? Sao anh ấy không dùng luôn cuốn cũ?)*
+- **Bạn**: Chép lại cả cuốn ạ? Sao anh ấy không dùng luôn cuốn cũ?
 - **Bà bán trà đá**: Bà cũng hỏi thế. Cậu ấy bảo: "Cuốn cũ có chỗ cháu không muốn người sau chép theo."
 - **Hà Vy** (suy nghĩ): Chép lại mà bỏ đi một chỗ. Tớ muốn biết chỗ bị bỏ.
 - **Hà Vy**: Cậu định gọi à?
@@ -1010,7 +1010,7 @@ SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = 
 > 🗂️ **Bằng chứng thu thập**: **Hai lần đăng nhập ngày 07/10** — Kết quả truy vấn: tài khoản clb_robotics đăng nhập 15:10 từ máy xưởng số 2 và 22:31 từ máy văn phòng xưởng. Tin gốc gửi lúc 22:40. Phiếu cho biết máy nào, chưa cho biết ai ngồi máy.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Ngày mùng 7 có hai lần. 15 giờ 10 từ máy xưởng số 2. 22 giờ 31 từ máy văn phòng xưởng.)*
+- **Bạn**: Ngày mùng 7 có hai lần. 15 giờ 10 từ máy xưởng số 2. 22 giờ 31 từ máy văn phòng xưởng.
 - **Nam**: Lần buổi chiều là anh, anh hay ngồi máy số 2. Lần buổi tối thì không phải anh. Phòng văn phòng là phòng riêng, thường khóa, chìa thì ban chủ nhiệm giữ. Anh có vào đó bao giờ đâu.
 - **Hà Vy** (suy nghĩ): Đăng nhập 22:31, tin gửi 22:40. Khớp giờ. Nhưng mới biết máy nào, chưa biết ai ngồi máy.
 🔀 **Lựa chọn của bạn** (Hà Vy: "Còn chỗ thứ hai Nam chỉ: bảng đăng ký dùng xưởng. Xem nốt, hay về báo chị Minh Anh?"):
@@ -1059,7 +1059,7 @@ SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '20
 > 🗂️ **Bằng chứng thu thập**: **Tối 07/10 xưởng mở tới 23 giờ** — Kết quả truy vấn sổ đặt phòng: thứ Hai 07/10, xưởng đặt chiều 14:00–17:00 sửa bàn hàn và tối 19:00 tới 23:00 cho đội thi đấu tập (dòng tối gõ mã phòng kiểu khác). Đây là lịch đăng ký, chưa cho biết ai thật sự có mặt.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Thứ Hai mùng 7, từ 19 giờ tới 23 giờ: xưởng đăng ký cho đội thi đấu tập.)*
+- **Bạn**: Thứ Hai mùng 7, từ 19 giờ tới 23 giờ: xưởng đăng ký cho đội thi đấu tập.
 - **Nam**: Tối đó đội ở lại tập. Anh cũng trong đội, nhưng anh về sớm.
 - **Tùng** (gãi đầu): Về sớm thì ai làm chứng cho anh?
 - **Nam**: Bọn nó cắm mặt hàn mạch, có ai ngẩng lên xem anh về lúc nào. Với lại máy văn phòng đặt trong phòng riêng, thường khóa. Chìa do ban chủ nhiệm giữ, thành viên như anh không có quyền đụng vào. Anh về rồi thì ai vào đó ngồi, anh chịu.
@@ -1094,7 +1094,7 @@ SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '20
 📍 **Phòng CLB** — *Về phòng CLB báo lại*
 
 - **Minh Anh**: Thế nào rồi?
-- *Suy nghĩ của bạn:* *(Tin gốc gửi lúc 22:40 tối thứ Hai, từ tài khoản kênh của CLB Robotics ạ.)*
+- **Bạn**: Tin gốc gửi lúc 22:40 tối thứ Hai, từ tài khoản kênh của CLB Robotics ạ.
 - **Hà Vy**: Anh Nam nói ra hai chỗ kiểm được. Bọn em mới xem một, chỗ kia chưa xem.
 - **Minh Anh**: Một nguồn thì chị chưa nói với cô Lan được. Nói có sách, mách có chứng: chứng phải hai. Các em quay lại xưởng, xem nốt chỗ kia rồi về.
 - **Tùng** (gãi đầu): Biết thế xem luôn cho rồi.
@@ -1127,12 +1127,12 @@ SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '20
 📍 **Phòng CLB** — *Về phòng CLB báo lại, đủ hai hướng*
 
 - **Minh Anh**: Thế nào rồi?
-- *Suy nghĩ của bạn:* *(Tin gốc gửi lúc 22:40 tối thứ Hai, từ tài khoản kênh của CLB Robotics ạ. Tài khoản ấy đăng nhập lúc 22:31 từ máy văn phòng xưởng. Tối đó xưởng đăng ký mở tới 23 giờ.)*
+- **Bạn**: Tin gốc gửi lúc 22:40 tối thứ Hai, từ tài khoản kênh của CLB Robotics ạ. Tài khoản ấy đăng nhập lúc 22:31 từ máy văn phòng xưởng. Tối đó xưởng đăng ký mở tới 23 giờ.
 - **Hà Vy**: Anh Nam nói ra hai chỗ kiểm được, bọn em xem cả hai. Giờ và chỗ khớp nhau, còn tên người thì không nguồn nào có.
 - **Minh Anh**: Hai nguồn riêng cùng khớp. Còn ai ngồi máy thì bảng không trả lời được. Đúng cái "kiểm hai lần" ở trang đầu sổ CLB.
 - **Duy**: Nhắc mới nhớ. Trang "Kiểm hai lần" trong sổ… khoan đã.
 - **Duy**: Kẹp ở trang "Kiểm hai lần". Một mẩu giấy, vẫn thứ mực xanh cũ ấy.
-- *Suy nghĩ của bạn:* *("Sổ này chép lại từ một cuốn cũ hơn. Cuốn cũ vẫn nằm trong phòng này.")*
+- **Bạn**: "Sổ này chép lại từ một cuốn cũ hơn. Cuốn cũ vẫn nằm trong phòng này."
 - **Tùng** (ngạc nhiên): Thế cuốn cũ nằm đâu?
 - **Hà Vy** (suy nghĩ): Tớ cũng chưa biết. Cứ cất vào hồ sơ đã.
 > [CHIBI chibi-v2-manh-giay-linh (sticker)] (chưa có mô tả)
@@ -1239,7 +1239,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Không có tin nào đúng y câu ấy. Chắc là tin còn đoạn sau. (tạm))*
+- **Bạn**: Không có tin nào đúng y câu ấy. Chắc là tin còn đoạn sau. (tạm)
 - **Hà Vy** (suy nghĩ): Vậy thử xem tin nào bắt đầu bằng câu đó, phía sau viết gì cũng được. (tạm)
 
 **Lựa chọn tiếp theo:**
@@ -1274,7 +1274,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ### Đoạn 58: Đối chất: Trình Hai lần đăng nhập ngày 07/10
 
 ⚖️ **Phản hồi đối chất:**
-- *Suy nghĩ của bạn:* *(Nhật ký đăng nhập của kênh ghi 22 giờ 31 tối mùng 7, tài khoản kênh vào từ máy văn phòng xưởng. Chín phút sau, tin gốc được gửi. (tạm))*
+- **Bạn**: Nhật ký đăng nhập của kênh ghi 22 giờ 31 tối mùng 7, tài khoản kênh vào từ máy văn phòng xưởng. Chín phút sau, tin gốc được gửi. (tạm)
 - **Quân** (sững sờ): Một máy để bàn trong xưởng. Không phải điện thoại. (tạm)
 - **Cô Lan**: Cô ghi lại: một máy, một giờ. (tạm)
 
@@ -1363,8 +1363,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ### Đoạn 65: Đối chất: Trình Hai lần đăng nhập ngày 07/10
 
 ⚖️ **Phản hồi đối chất:**
-- *Suy nghĩ của bạn:* *(Nhật ký đăng nhập ghi tài khoản, máy, ngày, giờ. Không chỗ nào ghi tên người ngồi máy. (tạm))*
-- *Suy nghĩ của bạn:* *(Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi. (tạm))*
+- **Bạn**: Nhật ký đăng nhập ghi tài khoản, máy, ngày, giờ. Không chỗ nào ghi tên người ngồi máy. (tạm)
+- **Bạn**: Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi. (tạm)
 - **Quân** (sững sờ): Các bạn tự chỉ ra chỗ hồ sơ của mình dừng lại. (tạm)
 - **Cô Lan**: Cô ghi: một tài khoản, chưa phải một người. (tạm)
 
@@ -1379,8 +1379,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ### Đoạn 66: Đối chất: Trình Tin gốc: 22:40 tối 07/10
 
 ⚖️ **Phản hồi đối chất:**
-- *Suy nghĩ của bạn:* *(Tin gốc chỉ có tài khoản clb_robotics và giờ gửi. Tên người gửi không có trên phiếu. (tạm))*
-- *Suy nghĩ của bạn:* *(Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi. (tạm))*
+- **Bạn**: Tin gốc chỉ có tài khoản clb_robotics và giờ gửi. Tên người gửi không có trên phiếu. (tạm)
+- **Bạn**: Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi. (tạm)
 - **Quân** (sững sờ): Vậy là chưa phải Nam. Chưa phải ai cả. (tạm)
 
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
@@ -1455,8 +1455,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ### Đoạn 72: Đối chất: Trình Tin gốc: 22:40 tối 07/10
 
 ⚖️ **Phản hồi đối chất:**
-- *Suy nghĩ của bạn:* *(Cả bản xuất chỉ có đúng một tin tự viết mang câu ấy, gửi lúc 22 giờ 40 tối thứ Hai. Mấy tin còn lại đều chép lại nó. (tạm))*
-- *Suy nghĩ của bạn:* *(Tin có từ lâu thì tin đầu tiên đã phải là tin chuyển tiếp rồi. (tạm))*
+- **Bạn**: Cả bản xuất chỉ có đúng một tin tự viết mang câu ấy, gửi lúc 22 giờ 40 tối thứ Hai. Mấy tin còn lại đều chép lại nó. (tạm)
+- **Bạn**: Tin có từ lâu thì tin đầu tiên đã phải là tin chuyển tiếp rồi. (tạm)
 - **Hiếu** (ngạc nhiên): Tối thứ Hai tuần này á? Thế mà lớp tớ cứ tưởng chuyện từ năm ngoái. (tạm)
 
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
@@ -1470,7 +1470,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ### Đoạn 73: Đối chất: Trình Kênh ghi loại của từng tin
 
 ⚖️ **Phản hồi đối chất:**
-- *Suy nghĩ của bạn:* *(Kênh ghi loại của từng tin: tin tự viết, tin bấm chuyển, tin gõ trả lời. (tạm))*
+- **Bạn**: Kênh ghi loại của từng tin: tin tự viết, tin bấm chuyển, tin gõ trả lời. (tạm)
 - **Hiếu**: Thì đấy, bấm chuyển nhiều thế còn gì. (tạm)
 - **Hà Vy** (suy nghĩ): Biết có mấy loại tin là một chuyện. Tin tự viết gửi lúc nào thì phải có phiếu. (tạm)
 
@@ -1536,7 +1536,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ### Đoạn 78: Sau khi xem hết các chỗ ở Xưởng CLB Robotics
 
 - **Nam**: Mấy em tìm ai? Ban chủ nhiệm chiều nay đi họp cả rồi.
-- *Suy nghĩ của bạn:* *(Bọn em bên CLB Thám Tử. Kênh của Robotics do ai trực ạ?)*
+- **Bạn**: Bọn em bên CLB Thám Tử. Kênh của Robotics do ai trực ạ?
 - **Nam**: Anh. Anh là Nam. Bài tuyển thành viên, lịch xưởng, đều anh đăng.
 - **Tùng** (chỉ tay): Thế cái tin "CLB Thám Tử soi dữ liệu sinh viên" cũng là anh đăng à?
 - **Nam**: Tin nào cơ? Cho anh xem.
@@ -1570,7 +1570,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 > 🗂️ **Bằng chứng thu thập**: **Tin gốc: 22:40 tối 07/10** — Kết quả truy vấn bảng gốc: một tin gốc, gửi 22:40 thứ Hai 07/10 từ tài khoản clb_robotics. Phiếu cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Một tin gốc. 22 giờ 40 tối thứ Hai, mùng 7. Tài khoản clb_robotics.)*
+- **Bạn**: Một tin gốc. 22 giờ 40 tối thứ Hai, mùng 7. Tài khoản clb_robotics.
 - **Nam**: …Từ kênh của bọn anh thật à.
 - **Tùng** (chỉ tay): Kênh của anh, tài khoản của anh. Thế thì còn ai vào đây nữa?
 - **Nam**: Anh chỉ đăng bài buổi chiều. 22 giờ 40 thì anh không ngồi kênh.
