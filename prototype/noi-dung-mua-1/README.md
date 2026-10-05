@@ -53,6 +53,18 @@ Trong thư mục `prototype/`:
    - `canh.md`: `### <mã> — <Tên> · mô tả: <mô tả>` hoặc `- Mô tả: <mô tả>`.
    - `[ẢNH <mã> · chú thích: <chú thích> · mô tả: <mô tả>]`.
 
+### Cú pháp đã chạy được sau A5 (bộ đọc `tools/noi-dung/doc-mvp.ts`, ghi 05/10/2026)
+
+Chỉ tả thứ bộ đọc nhận thật; ví dụ lấy từ nội dung đang chạy hoặc từ test `src/content/real/testing/mua1-t0.test.ts`.
+
+7. **Đi cùng** (trong `kich-ban/*.md`): `- [ĐI CÙNG <chuỗi>] <nhãn nút>`. Một nút người chơi tự bấm để đổi nơi (A3 mục 14). Nhãn bắt buộc; dòng này phải là dòng cuối của chuỗi. Máy kiểm "đứng nguyên chỗ" coi đây là đổi nơi hợp lệ; bộ sinh chuyển thành một `[RẼ NHÁNH]` một lựa chọn. Ví dụ (`kich-ban/01-ngay-1.md`): `- [ĐI CÙNG n1-toa-b] Đi cùng Tùng ra tòa B`.
+8. **Cảnh cắt** (tiêu đề chuỗi): `### <mã> — <mô tả> {cảnh: <mã cảnh> · cảnh cắt}`. Chỉ chuỗi khai `· cảnh cắt` mới được `[ĐI TỚI]` tới từ một nơi khác; cảnh cắt không được `[ĐI TỚI]` tiếp sang nơi thứ ba. Ví dụ (test mùa 1): `### s-cat — Cảnh cắt {cảnh: c2 · cảnh cắt}`.
+9. **Cột nộp** (trong thẻ `thu-thach/*.md`): `- Cột nộp: <cột>[, <cột>]`, cột phải có trong SELECT của `SQL chuẩn`. Tệp lời thẻ (`loi/tt-*.md`) thêm được `- Khi chọn sai cột nộp: **ai** (biểu cảm): …` và `- Khi xem từng bước: …`. Ví dụ (`thu-thach/tin-don.md`, thẻ `c-tin-bang`): `- Cột nộp: ma_tin`.
+10. **Nơi bắt đầu của ngày** (trong `lich.md`):
+    - ngày của Vụ 1: thêm vào tiêu đề, `## <Tên> {ngày: <n> · theo truyện · bắt đầu ở: <cảnh>}`. Ví dụ: `## Sảnh tòa B {ngày: 1 · theo truyện · bắt đầu ở: phong-clb}`.
+    - vụ sau có một ngày: `- Ngày: YYYY-MM-DD · bắt đầu ở: <cảnh>`. Ví dụ (`lich.md`, Vụ 3 cũ): `- Ngày: 2024-10-22 · bắt đầu ở: phong-clb`.
+11. **Nhiều ngày trong một vụ sau** (trong mục `{vụ sau: …}` của `lich.md`): mỗi ngày một dòng `- Ngày YYYY-MM-DD: <chuỗi đầu ngày> · bắt đầu ở: <cảnh>`, cùng `- Hạn chót:` (bắt buộc khi có dòng ngày) và `- Việc chốt:`. Ví dụ (test mùa 1): `- Ngày 2024-10-08: s-tin · bắt đầu ở: c1`. Máy kiểm đòi mỗi ngày tới được ít nhất một `[XONG VIỆC CHÍNH]` và không quá 2 điểm `· dấu: !` trong mọi chuỗi tới được từ chuỗi đầu ngày; truyện chữ in dòng đầu ngày "Thứ Ba, 08/10/2024 · Còn N ngày tới <Việc chốt>". (Bộ đọc nhận cú pháp này; Vụ 2 là vụ đầu tiên dùng thật, xem `docs/mua-1/brief/b4-4b-dan-y.md` về các chỗ máy kiểm chưa khớp.)
+
 ## Tệp nào chứa gì (đọc theo thứ tự này)
 
 | Tệp | Chứa gì | Viết thế nào |
