@@ -74,6 +74,8 @@
 4. Người điều phối: soát tờ dữ kiện nháp theo canon rồi chuyển vào `noi-dung-mua-1/hoi-dap/`, chạy đủ lệnh kiểm, chơi Vụ 1 từ đầu tới kết trên trình duyệt với `?bo=mua-1` như người chơi, rồi mới báo user.
 Lưu ý: trong lúc agent đang sửa cây làm việc, commit từng tệp cụ thể, đừng `git add -A`.
 
+**Tiến độ B12 (05/10 đêm):** agent MÁY xong, đã nghiệm thu và commit (11 tờ hỏi đáp trong `noi-dung-mua-1/hoi-dap/`, đánh dấu `- [HỎI ĐÁP <mã>]` trong khung; kiểm nội dung không lỗi, giọng 0 lỗi, test liên quan qua, tsc sạch; đo 70 câu thử: 62/70, hỏi trúng 30/31, trả nhầm dữ kiện 6). Agent GIAO DIỆN đang chạy nền (màn hỏi đáp, `loiDaThay` cho ba chuỗi có lời ngắt quãng, bỏ nháy chi tiết ẩn, bạn đi cùng trả lời "việc chính", "gợi ý"). CHƯA chơi thử trên trình duyệt; mặc định cách gõ nên `?bo=mua-1` chưa chơi qua được các cảnh hỏi đáp cho tới khi giao diện xong. Việc còn lại của người điều phối: nghiệm thu giao diện, chơi Vụ 1 từ đầu tới kết như người chơi, soát lời các tờ theo canon, cho truyện chữ in được cảnh hỏi đáp.
+
 **Agent nội dung đã xong (05/10 tối):** 10 tờ nháp ở `docs/mua-1/hoi-dap-nhap/` (tự kiểm 0 lỗi bằng `tu-kiem.py`), persona 7 nhân chứng ở cuối `nen-loi/persona.md`. Chưa chuyển vào `noi-dung-mua-1/hoi-dap/`, chưa thêm dòng đánh dấu vào `kich-ban/`. Nó báo các chỗ truyện mâu thuẫn, CHỜ USER QUYẾT, chưa sửa:
 1. Bác Thịnh có mặt ở sảnh tòa B chiều Chủ nhật 08/09 (md-03-toa-b.2), trong khi thẻ nhân vật và n2-bd-toa-b.1 nói Chủ nhật bác chỉ ghé buổi tối.
 2. n2-bd-toa-b.1 nói Chủ nhật bác "chỉ ghé để khóa cửa", bỏ mất việc giữ sổ ký phòng máy (có ở thẻ, n3-bd-phong-may.1, n4-phong-may.2).
