@@ -37,7 +37,7 @@
 | B4.1 → B4.3 | Vụ 1: bỏ `LIKE`/`IN`, Hoài xuất hiện sớm, hạn chót 30/09, hết lỗi đứng nguyên chỗ |
 | B4.4a | Vụ 2: sáu màn tra chữ (bản đầu; đã đổi ở B4.4b) |
 | T2 | Công cụ đỡ **vụ sau nhiều ngày**: kết vụ ở ngày cuối, hết cảnh đứng nguyên chỗ, chỉ đếm "!" trên tuyến chính, "Hết ngày" sang ngày thật kế tiếp |
-| T3, T4 | Truyện chữ in `[ĐI CÙNG]`, `[RẼ NHÁNH]` ở đúng chuỗi; sửa liên kết (T4: xem sổ canh ngày 05/10) |
+| T3, T4 | Truyện chữ in `[ĐI CÙNG]`, `[RẼ NHÁNH]`, `[RẼ KẾT]` ở đúng chuỗi; "Quay lại" đúng ngày; mỗi đối chất một đoạn |
 | **B4.4b** | **Vụ 2 dựng lại xong:** 5 ngày 08/10 → 15/10, 53 chuỗi, 8 màn tra, 3 đối chất, 346 dòng thoại (chuẩn C2 ≥ 300). Chờ user đọc `docs/mua-1/truyen-chu/vu-tin-don.md` |
 
 ### Quyết định user thêm ngày 05/10
@@ -164,7 +164,7 @@ agy --print="Đọc tệp <scratchpad>/luot-loi-N.md và làm đúng theo đó. 
 | 6 | Gemini | Lời lượt 2 (10 khối, 49 dòng) | đạt sau gọt 45 câu, trả lại LF | b9e7d0c, 5198e39 |
 | 7 | Gemini | Lời lượt 3 (7 khối, 42 dòng) | đạt sau khi viết lại 6 khối | adff8ec |
 | 8 | Gemini | Lời lượt 4 (4 khối, 40 dòng) | đạt sau khi viết lại cả 4 khối; kèm gọt lời thẻ | 01f21b9 |
-| 9 | Codex | T4 ba lỗi liên kết truyện chữ | xem commit kế sau 01f21b9 | – |
+| 9 | Codex, rồi Claude Opus | T4 liên kết truyện chữ (Codex hết hạn mức giữa chừng, Opus làm nốt) | đạt, vitest 79/79 | b2ec456 |
 
 ## 8. Báo cáo cho user
 
