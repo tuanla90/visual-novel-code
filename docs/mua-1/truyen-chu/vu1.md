@@ -1226,8 +1226,8 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
 📍 **Sảnh ký túc xá** — *Sơ đồ khu nhà trên bảng tin*
 
 - *Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ, có chấm "Bạn đang ở đây".*
-- *Suy nghĩ của bạn:* *(Ơ, thế thang bộ nằm ở chỗ nào?)*
-- *Suy nghĩ của bạn:* *(Chịu rồi, phải hỏi thôi. Mà hỏi ai giữa đám đông này?)*
+- *Suy nghĩ của bạn:* *(Nhìn mãi chẳng thấy thang bộ đâu.)*
+- *Suy nghĩ của bạn:* *(Chịu rồi, phải hỏi ai đó thôi.)*
 > 🎯 **NHIỆM VỤ**: Tìm người hỏi đường lên tầng bốn
 > 💭 **Nhắc nhở** (Bạn): Hỏi ai trong sảnh này được nhỉ?
 
@@ -2292,7 +2292,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 <a id="doan-125"></a>
 ### Đoạn 125: Sau khi xem hết các chỗ ở Sảnh ký túc xá
 
-- *Suy nghĩ của bạn:* *(Người của đội đón tân sinh viên hẳn hoi. Chỉ nhầm cho bạn kia thôi, chứ thang bộ ngay trong nhà này thì chắc cậu ấy biết nhỉ?)*
+- *Suy nghĩ của bạn:* *(Người của đội đón tân sinh viên đây rồi. Vừa chỉ nhầm cho bạn kia, nhưng thang bộ ngay trong nhà này thì chắc biết chứ nhỉ?)*
 
 **Lựa chọn tiếp theo:**
 - [Đi tiếp](#doan-74)

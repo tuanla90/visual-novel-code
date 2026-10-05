@@ -1226,12 +1226,12 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Ơ, thế thang bộ nằm ở chỗ nào?)"
+          "text": "(Nhìn mãi chẳng thấy thang bộ đâu.)"
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Chịu rồi, phải hỏi thôi. Mà hỏi ai giữa đám đông này?)"
+          "text": "(Chịu rồi, phải hỏi ai đó thôi.)"
         },
         {
           "type": "task",
@@ -1355,7 +1355,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Người của đội đón tân sinh viên hẳn hoi. Chỉ nhầm cho bạn kia thôi, chứ thang bộ ngay trong nhà này thì chắc cậu ấy biết nhỉ?)"
+          "text": "(Người của đội đón tân sinh viên đây rồi. Vừa chỉ nhầm cho bạn kia, nhưng thang bộ ngay trong nhà này thì chắc biết chứ nhỉ?)"
         },
         {
           "type": "goto",

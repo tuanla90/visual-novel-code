@@ -39,8 +39,8 @@
 
 ## md-00-so-do.1
 - **narrator**: Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ, có chấm "Bạn đang ở đây".
-- **player**: (Ơ, thế thang bộ nằm ở chỗ nào?)
-- **player**: (Chịu rồi, phải hỏi thôi. Mà hỏi ai giữa đám đông này?)
+- **player**: (Nhìn mãi chẳng thấy thang bộ đâu.)
+- **player**: (Chịu rồi, phải hỏi ai đó thôi.)
 > NHIỆM VỤ: Tìm người hỏi đường lên tầng bốn
 > NHẮC VIỆC player: Hỏi ai trong sảnh này được nhỉ?
 
@@ -67,7 +67,7 @@
 - **player**: (Một tờ sơ đồ gấp đôi, mép đã quăn. Cậu ấy cầm để chỉ đường cho người khác.)
 
 ## md-00-soi-tung.1
-- **player**: (Người của đội đón tân sinh viên hẳn hoi. Chỉ nhầm cho bạn kia thôi, chứ thang bộ ngay trong nhà này thì chắc cậu ấy biết nhỉ?)
+- **player**: (Người của đội đón tân sinh viên đây rồi. Vừa chỉ nhầm cho bạn kia, nhưng thang bộ ngay trong nhà này thì chắc biết chứ nhỉ?)
 
 ## md-00-gap-tung.1
 - **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế?
