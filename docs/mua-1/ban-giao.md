@@ -67,6 +67,8 @@
 
 ## 3. Việc tiếp theo
 
+**Đang làm (05/10 tối): bộ nền lời.** User muốn chốt văn hóa, persona, bối cảnh, cảm xúc, mục tiêu trước khi máy viết lời (xem `prototype/noi-dung-mua-1/nen-loi/README.md`). Bản đầu đã ở trang đọc, nhóm "Nền lời"; user duyệt theo thứ tự văn hóa, persona, thẻ cảnh. Chưa duyệt xong thì chưa viết lại lời theo thẻ, và chưa bắt đầu Vụ 4. Việc kế sau khi user duyệt: dựng công cụ ghép đề bài và bước model soát trích mã mục, chạy thử trên đoạn Vụ 1 từ Trung thu tới 24/09, đếm số góp ý trên 100 câu. Cùng ngày: đã bỏ mọi màn người chơi tự soi trước bài dạy của Hà Vy ở Trung thu.
+
 1. **Chờ user đọc truyện chữ Vụ 2** và góp ý. Sửa theo góp ý trước khi sang vụ khác.
 2. **Vụ 4** (Nam ở đâu lúc 22:40, từ Vụ 3 cũ), **Vụ 6** (Giúp Nam, từ Vụ 4 cũ), **Vụ 8** (Sổ quỹ, từ Vụ 5 cũ), theo `giao-viec.md` B4. Mỗi vụ đi đúng dây chuyền đã chạy được ở Vụ 2 (mục 4).
 3. Lời gợi ý, lời bàn ở bản đồ, lời nhắc cuối ngày của người đi cùng (gói B11) cho Vụ 2, nếu user chốt làm.
