@@ -17,7 +17,7 @@
 - **tung** (happy): Đi tắt qua sân bóng rổ, nhanh hơn ba phút. Tớ dẫn đường cho!
 - **ha-vy** (smile): Cậu đo cả thời gian đi bộ à?
 - **tung** (chi-tay): Hướng dẫn viên thì phải thuộc đường chứ. Còn cậu đi sau cứ lẩm nhẩm, tớ cá là lại đếm bậc cầu thang!
-- **ha-vy** (neutral): Hai mươi hai bậc. Tật từ bé rồi, đi đâu cũng đếm.
+- **ha-vy** (neutral): Hai mươi hai bậc.
 
 ## n2-co-hanh.1v
 - **co-hanh** (neutral): Cô tạo cho CLB một tài khoản, tên là clb_tham_tu.
@@ -41,7 +41,6 @@
 - **ha-vy** (thinking): Tức là cả ngày Chủ nhật sảnh này không có ai trông.
 
 ## n2-bd-cang-tin.1
-- **narrator**: Giữa buổi sáng, căng tin còn vắng tanh.
 - **tung** (happy): Giờ này vắng. Trưa ra đây á, tớ cá là chen bẹp ruột!
 - **tung** (chi-tay): Tối thứ Hai đi đá bóng về tớ toàn thấy cậu ở thư viện tới lúc đóng cửa đấy, Hà Vy.
 - **ha-vy** (neutral): Cậu soi kỹ thật đấy. Ừ, tối thứ Hai tớ rảnh.
@@ -70,7 +69,6 @@
 > NHẮC VIỆC ha-vy (neutral): Cứ mở bảng xem thử đã. Chưa biết cột nào thì lọc kiểu gì.
 - [DÀN DỰNG] Phòng CLB buổi chiều. Laptop CLB đã đăng nhập tài khoản mới. Giấy nhớ [Tòa B], [Báo chí K24] trên bàn.
 - **narrator**: Cái laptop cũ khởi động mất gần hai phút.
-- **duy** (neutral): Tài khoản cô Hạnh tạo chỉ mở được đúng một bảng.
 - **ha-vy** (neutral): Cứ mở bảng xem thử đã. Chưa biết cột nào thì lọc kiểu gì.
 
 ## n2-laptop.05
@@ -83,7 +81,7 @@
 ## n2-laptop.1
 > NHIỆM VỤ: Lớp nào vừa ở tòa B vừa học Báo chí?
 > NHẮC VIỆC ha-vy (day-kinh): Hai tờ giấy nhớ trên bàn: Tòa B, Báo chí K24. Lớp nào khớp?
-- **player**: Giờ lọc. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà.
+- **player**: Giờ lọc kiểu gì đây?
 - **tung** (chi-tay): Tòa B hoặc Báo chí, cứ dính một cái là lấy hết cho chắc. Tớ cá kiểu gì chẳng trúng!
 - **ha-vy** (neutral): Đừng cá vội. Holmes bảo chưa có dữ liệu mà đã đoán là sai từ gốc đấy. Tính đã nào.
 

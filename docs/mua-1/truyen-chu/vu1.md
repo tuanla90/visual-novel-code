@@ -41,7 +41,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 
 | Tiêu chí | Ngưỡng thiết kế | Thực tế | Đánh giá |
 |---|---|---|---|
-| Số dòng thoại | ≥ 300 | 502 | ✅ Đạt |
+| Số dòng thoại | ≥ 300 | 500 | ✅ Đạt |
 | Số chuỗi phân cảnh | ≥ 40 | 111 | ✅ Đạt |
 | Màn tra cứu SQL | ≥ 5 | 5 | ✅ Đạt |
 | Nhịp đối chất | ≥ 3 | 1 | ⚠️ Bản mẫu |
@@ -290,7 +290,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Tùng** (vui vẻ): Đi tắt qua sân bóng rổ, nhanh hơn ba phút. Tớ dẫn đường cho!
 - **Hà Vy**: Cậu đo cả thời gian đi bộ à?
 - **Tùng** (chỉ tay): Hướng dẫn viên thì phải thuộc đường chứ. Còn cậu đi sau cứ lẩm nhẩm, tớ cá là lại đếm bậc cầu thang!
-- **Hà Vy**: Hai mươi hai bậc. Tật từ bé rồi, đi đâu cũng đếm.
+- **Hà Vy**: Hai mươi hai bậc.
 📍 **Đang ở Phòng Đào tạo:**
 *Những chỗ có thể khám phá ở đây:*
 
@@ -635,7 +635,6 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 
 📍 **Căng tin** — *Tới nơi: Bản đồ ngày 2 (tùy chọn): tạt qua căng tin*
 
-- *Giữa buổi sáng, căng tin còn vắng tanh.*
 - **Tùng** (vui vẻ): Giờ này vắng. Trưa ra đây á, tớ cá là chen bẹp ruột!
 - **Tùng** (chỉ tay): Tối thứ Hai đi đá bóng về tớ toàn thấy cậu ở thư viện tới lúc đóng cửa đấy, Hà Vy.
 - **Hà Vy**: Cậu soi kỹ thật đấy. Ừ, tối thứ Hai tớ rảnh.
@@ -1019,7 +1018,6 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 > 🎯 **NHIỆM VỤ**: Xem tài khoản CLB tra được bảng nào
 > 💭 **Nhắc nhở** (Hà Vy): Cứ mở bảng xem thử đã. Chưa biết cột nào thì lọc kiểu gì.
 - *Cái laptop cũ khởi động mất gần hai phút.*
-- **Duy**: Tài khoản cô Hạnh tạo chỉ mở được đúng một bảng.
 - **Hà Vy**: Cứ mở bảng xem thử đã. Chưa biết cột nào thì lọc kiểu gì.
 #### 💻 Màn tra dữ liệu: Bảng lớp sinh hoạt (thẻ `c-bang-lop`)
 *Đề bài:* Tài khoản CLB chỉ xem được một bảng. Chọn bảng ấy rồi chạy, xem nó ghi những gì.
@@ -1087,7 +1085,7 @@ SELECT ma_lop, toa_nha FROM lop_sinh_hoat;
 
 > 🎯 **NHIỆM VỤ**: Lớp nào vừa ở tòa B vừa học Báo chí?
 > 💭 **Nhắc nhở** (Hà Vy): Hai tờ giấy nhớ trên bàn: Tòa B, Báo chí K24. Lớp nào khớp?
-- *Suy nghĩ của bạn:* *(Giờ lọc. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà.)*
+- *Suy nghĩ của bạn:* *(Giờ lọc kiểu gì đây?)*
 - **Tùng** (chỉ tay): Tòa B hoặc Báo chí, cứ dính một cái là lấy hết cho chắc. Tớ cá kiểu gì chẳng trúng!
 - **Hà Vy**: Đừng cá vội. Holmes bảo chưa có dữ liệu mà đã đoán là sai từ gốc đấy. Tính đã nào.
 > [CG cg-nghi-di-tung-ha-vy] (chưa có mô tả)

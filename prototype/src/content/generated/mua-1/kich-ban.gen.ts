@@ -3757,7 +3757,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Hai mươi hai bậc. Tật từ bé rồi, đi đâu cũng đếm."
+          "text": "Hai mươi hai bậc."
         },
         {
           "type": "explore",
@@ -4014,11 +4014,6 @@ const GOC = {
       "nodes": [
         {
           "type": "line",
-          "speaker": "narrator",
-          "text": "Giữa buổi sáng, căng tin còn vắng tanh."
-        },
-        {
-          "type": "line",
           "speaker": "tung",
           "expression": "happy",
           "text": "Giờ này vắng. Trưa ra đây á, tớ cá là chen bẹp ruột!"
@@ -4224,12 +4219,6 @@ const GOC = {
         },
         {
           "type": "line",
-          "speaker": "duy",
-          "expression": "neutral",
-          "text": "Tài khoản cô Hạnh tạo chỉ mở được đúng một bảng."
-        },
-        {
-          "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Cứ mở bảng xem thử đã. Chưa biết cột nào thì lọc kiểu gì."
@@ -4282,7 +4271,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Giờ lọc. Mỗi dòng có mã lớp, ngành, khóa học, tòa nhà."
+          "text": "Giờ lọc kiểu gì đây?"
         },
         {
           "type": "line",
