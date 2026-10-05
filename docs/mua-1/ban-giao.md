@@ -74,6 +74,17 @@
 4. Người điều phối: soát tờ dữ kiện nháp theo canon rồi chuyển vào `noi-dung-mua-1/hoi-dap/`, chạy đủ lệnh kiểm, chơi Vụ 1 từ đầu tới kết trên trình duyệt với `?bo=mua-1` như người chơi, rồi mới báo user.
 Lưu ý: trong lúc agent đang sửa cây làm việc, commit từng tệp cụ thể, đừng `git add -A`.
 
+**Agent nội dung đã xong (05/10 tối):** 10 tờ nháp ở `docs/mua-1/hoi-dap-nhap/` (tự kiểm 0 lỗi bằng `tu-kiem.py`), persona 7 nhân chứng ở cuối `nen-loi/persona.md`. Chưa chuyển vào `noi-dung-mua-1/hoi-dap/`, chưa thêm dòng đánh dấu vào `kich-ban/`. Nó báo các chỗ truyện mâu thuẫn, CHỜ USER QUYẾT, chưa sửa:
+1. Bác Thịnh có mặt ở sảnh tòa B chiều Chủ nhật 08/09 (md-03-toa-b.2), trong khi thẻ nhân vật và n2-bd-toa-b.1 nói Chủ nhật bác chỉ ghé buổi tối.
+2. n2-bd-toa-b.1 nói Chủ nhật bác "chỉ ghé để khóa cửa", bỏ mất việc giữ sổ ký phòng máy (có ở thẻ, n3-bd-phong-may.1, n4-phong-may.2).
+3. n3-bd-phong-may.1 không nói tối Chủ nhật phòng máy mở tới mấy giờ; thư in lúc 23:10 dễ bị đọc là ngoài giờ.
+4. n3-bd-toa-b-an.1: người chơi nghĩ "Bác Thịnh…" khi chưa ai gọi tên bác (lần đầu là cô Hạnh ở n4-phong-may.2).
+5. Chú Cường: thẻ ghi lịch ca tối nhưng sáng 28/09 chú ở cổng; thẻ nói chú biết mặt gần hết sinh viên trong khu mà không nhận ra Hoài.
+6. Bà bán trà đá ở Vụ 2 (loi/10-vu-2-tin-don.md khoảng dòng 193) kể "cậu trà nóng" như lần đầu, trùng kết thật Vụ 1.
+7. Bà bán hàng "hai chục năm" so với tuổi thầy Quang (cậu trà nóng thời sinh viên, nay là phó hiệu trưởng tóc muối tiêu).
+8. n2-bd-toa-b.1 nói thư viện đóng 23 giờ, thẻ Nam ghi Nam ở thư viện tới 23:15.
+Còn hai điểm thiết kế: (a) một manh mối phủ nhiều dòng danh sách nhưng chỉ gắn vào một dòng (clue-quyen-du-lieu, clue-loi-chu-cuong); (b) hai `canCo` ở n3-ctsv và n4-ctsv-vao gần như không bao giờ bật vì người chơi luôn có đủ giấy từ hôm trước.
+
 **Đang làm (05/10 tối): bộ nền lời.** User muốn chốt văn hóa, persona, bối cảnh, cảm xúc, mục tiêu trước khi máy viết lời (xem `prototype/noi-dung-mua-1/nen-loi/README.md`). Bản đầu đã ở trang đọc, nhóm "Nền lời"; user duyệt theo thứ tự văn hóa, persona, thẻ cảnh. Chưa duyệt xong thì chưa viết lại lời theo thẻ, và chưa bắt đầu Vụ 4. Việc kế sau khi user duyệt: dựng công cụ ghép đề bài và bước model soát trích mã mục, chạy thử trên đoạn Vụ 1 từ Trung thu tới 24/09, đếm số góp ý trên 100 câu. Cùng ngày: đã bỏ mọi màn người chơi tự soi trước bài dạy của Hà Vy ở Trung thu.
 
 1. **Chờ user đọc truyện chữ Vụ 2** và góp ý. Sửa theo góp ý trước khi sang vụ khác.

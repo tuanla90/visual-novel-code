@@ -1,0 +1,152 @@
+{
+  "ma": "n4-sanh-toa-b",
+  "ten": "Hỏi bác bảo vệ tòa B về sổ ký vào phòng máy",
+  "ngay": "Thứ Sáu, 27/09/2024",
+  "canh": "sanh-toa-b",
+  "nhanChung": "bac-tu",
+  "nguoiDiCung": ["ha-vy", "tung"],
+  "ghiChu": "Lời của chuỗi chỉ có một câu của bác (câu khóa, giữ nguyên văn ở biến thể thang). Ba dữ kiện ẩn lấy từ thẻ nhân vật và tờ giấy trên cửa phòng máy (n3-bd-phong-may.1). Người trong sổ là việc của Vụ 6: bác không nói, không nhận là không nhớ.",
+  "moDau": "Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đang ngồi ở ghế đá cạnh cửa.",
+  "tuDongDuKien": ["khong-mo-so"],
+  "danhSach": [
+    { "ma": "L1", "cau": "Có xem được sổ ký vào phòng máy tối Chủ nhật không?", "can": ["khong-mo-so"] }
+  ],
+  "duKien": [
+    {
+      "ma": "khong-mo-so",
+      "noiDung": "Sổ ghi tên người; không có chữ ký người có thẩm quyền thì bác không mở.",
+      "nguon": "loi/04-ngay-4.md n4-sanh-toa-b.1 (câu khóa ở giong/luat-giong.md)",
+      "chuBatBuoc": ["chữ ký người có thẩm quyền"],
+      "giayNho": "Sổ ký vào phòng máy: bác bảo vệ chỉ mở khi có chữ ký người có thẩm quyền.",
+      "an": false, "tuKe": true, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Sổ ghi tên người. Không có chữ ký người có thẩm quyền thì bác không mở.",
+        "co-khong": "Sổ ấy ghi tên người, cháu ạ. Không có chữ ký người có thẩm quyền thì bác không mở.",
+        "ke": "Sổ ấy ghi tên người ta đấy. Cháu mang giấy có chữ ký người có thẩm quyền sang thì bác mở, không thì thôi.",
+        "lai": "Bác nói rồi. Không có chữ ký người có thẩm quyền thì bác không mở.",
+        "tu-ke": "Sổ ghi tên người. Không có chữ ký người có thẩm quyền thì bác không mở."
+      },
+      "cauHoiMau": [
+        "Bác cho bọn cháu xem sổ ký vào phòng máy tối Chủ nhật được không ạ?",
+        "cho cháu xem sổ ký với bác",
+        "bác mở sổ cho cháu xem được không",
+        "xem so ky phong may duoc ko bac",
+        "sổ ký có xem được không ạ",
+        "muốn xem sổ thì cần gì hả bác",
+        "bác ơi sổ ký tối Chủ nhật đâu ạ"
+      ],
+      "goiY": {
+        "ai": "tung",
+        "bac1": "Tớ cá là sổ ký ghi đủ tên người ngồi máy tối hôm ấy! Mà bác có cho xem không thì chưa biết.",
+        "bac2": "Bác cho bọn cháu xem sổ ký vào phòng máy tối Chủ nhật được không ạ?"
+      }
+    },
+    {
+      "ma": "giu-so",
+      "noiDung": "Tối Chủ nhật, sinh viên vào phòng máy phải ký sổ với bác ở sảnh tòa B.",
+      "nguon": "loi/03-ngay-3.md n3-bd-phong-may.1; loi/04-ngay-4.md n4-phong-may.2; nhan-vat.md bac-tu (Vai)",
+      "chuBatBuoc": ["ký sổ"],
+      "giayNho": "Tối Chủ nhật vào phòng máy phải ký sổ với bác bảo vệ tòa B.",
+      "an": true, "tuKe": false, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Tối Chủ nhật ai vào phòng máy cũng phải ký sổ với bác ở đây.",
+        "co-khong": "Đứa nào vào phòng máy tối Chủ nhật cũng phải ký sổ với bác.",
+        "lai": "Tối Chủ nhật vào phòng máy là phải ký sổ, bác nói rồi."
+      },
+      "cauHoiMau": [
+        "Tối Chủ nhật vào phòng máy phải làm gì ạ?",
+        "ai giữ sổ ký phòng máy",
+        "vào phòng máy có phải ký không bác",
+        "so ky o dau bac",
+        "tối Chủ nhật ai cũng phải ký à bác",
+        "ký sổ ở đâu ạ"
+      ]
+    },
+    {
+      "ma": "ghe-tu-tam-gio",
+      "noiDung": "Chủ nhật bác ghé tòa B từ tám giờ tối.",
+      "nguon": "nhan-vat.md bac-tu (Lịch, Thường ở)",
+      "chuBatBuoc": ["tám giờ tối"],
+      "giayNho": "Chủ nhật bác bảo vệ ghé tòa B từ tám giờ tối.",
+      "an": true, "tuKe": false, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Chủ nhật thì tám giờ tối bác mới ghé.",
+        "co-khong": "Chủ nhật bác chỉ ghé từ tám giờ tối thôi.",
+        "lai": "Tám giờ tối bác mới ghé, cháu ạ."
+      },
+      "cauHoiMau": [
+        "Tối Chủ nhật bác có ở đây không ạ?",
+        "chủ nhật bác đến lúc mấy giờ",
+        "bác trực tối chủ nhật à",
+        "cn bac co o day ko",
+        "hôm in thư bác có ở sảnh không ạ",
+        "tối Chủ nhật mấy giờ bác tới ạ"
+      ]
+    },
+    {
+      "ma": "in-bai-toi-cn",
+      "noiDung": "Tối Chủ nhật phòng máy mở cho sinh viên in bài.",
+      "nguon": "loi/03-ngay-3.md n3-bd-phong-may.1",
+      "chuBatBuoc": ["in bài"],
+      "giayNho": "Tối Chủ nhật phòng máy mở cho sinh viên in bài.",
+      "an": true, "tuKe": false, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Tối Chủ nhật phòng máy mở cho sinh viên vào in bài.",
+        "co-khong": "Tối Chủ nhật vẫn mở, cho sinh viên vào in bài.",
+        "lai": "Mở cho sinh viên in bài thôi, bác nói rồi."
+      },
+      "cauHoiMau": [
+        "Tối Chủ nhật phòng máy có mở không ạ?",
+        "chủ nhật phòng máy mở làm gì",
+        "toi cn phong may co mo ko",
+        "tối Chủ nhật vào phòng máy làm gì hả bác",
+        "Chủ nhật có in bài được không bác",
+        "cuối tuần có in được không bác"
+      ]
+    }
+  ],
+  "lopKhac": {
+    "chao": { "loi": ["Ừ, lại mấy cháu à.", "Chào cháu. Có việc gì thế?"] },
+    "cam-on": { "loi": ["Ừ, không có gì.", "Ừ."] },
+    "hoi-mo": {
+      "hoiTiep": "Bác còn gì dặn bọn cháu nữa không ạ?",
+      "hetKe": ["Bác chỉ biết thế. Cháu hỏi cụ thể thì bác nói.", "Hết rồi. Có giấy thì quay lại."]
+    },
+    "tam-biet": { "loi": ["Ừ, đi đi.", "Đi cẩn thận. Bậc thềm trơn đấy."] },
+    "khong-ro": { "loi": ["Cái đấy bác không rõ.", "Bác không tận mắt thấy thì bác không nói.", "Chuyện ấy cháu hỏi bên phòng ban."] },
+    "ngoai-le": { "loi": ["Bác đang trực, cháu ạ.", "Chuyện đó thì bác chịu.", "Thôi, cháu hỏi việc của cháu đi."] },
+    "hoi-rieng-tu": { "loi": ["Hỏi chuyện bác làm gì. Ngồi đây cả ngày, có gì đâu mà kể.", "Chuyện nhà bác thì cháu hỏi làm gì."] },
+    "pha-game": { "loi": ["Cháu nói cái gì bác không hiểu.", "Nói gì lạ thế cháu."] },
+    "doi-dap-an": { "loi": ["Ai làm thì bác không biết. Bác chỉ biết giờ mở, giờ khóa.", "Bác không đoán mò cho ai đâu."] }
+  },
+  "chuDeKhongBiet": [
+    {
+      "ma": "ai-in",
+      "cauHoiMau": ["tối Chủ nhật ai vào in lúc mười một giờ", "ai ngồi máy tối hôm ấy", "bác có thấy ai in thư không", "ai vao phong may toi cn", "bác nhớ ai vào phòng máy không ạ"],
+      "loi": ["Ai vào thì đã ký sổ. Sổ chưa mở được thì bác không nói.", "Bác không nói chuyện người ta khi chưa có giấy, cháu ạ."]
+    },
+    {
+      "ma": "tham-quyen",
+      "cauHoiMau": ["ai là người có thẩm quyền ạ", "ai ký thì bác mở", "xin chữ ký ai bây giờ", "nguoi co tham quyen la ai"],
+      "loi": ["Cái ấy cháu hỏi bên phòng ban. Bác không quyết được.", "Có chữ ký đúng người thì bác mở, cháu ạ. Ai ký thì phòng ban biết."]
+    },
+    {
+      "ma": "camera",
+      "cauHoiMau": ["sảnh có camera không bác", "camera phòng máy", "xem camera được không ạ"],
+      "loi": ["Chuyện máy móc ấy bác không nắm, cháu ạ.", "Cái đấy bác chịu."]
+    },
+    {
+      "ma": "robotics",
+      "cauHoiMau": ["bác có biết clb_robotics không", "CLB Robotics hay vào phòng máy không ạ", "bác biết ai bên Robotics không"],
+      "loi": ["Chuyện ấy cứ có giấy rồi hẵng hỏi bác.", "Tài khoản tài kiếc thì bác không biết, cháu ạ."]
+    }
+  ],
+  "tuKhoaTrongChuyen": ["so", "so ky", "ky", "phong may", "chu nhat", "toi", "in", "tham quyen", "chu ky", "mo", "khoa", "sanh", "toa", "truc", "bao ve", "robotics", "nhat ky in", "giay"],
+  "roiDi": {
+    "nut": "Chào bác, bọn cháu đi ạ",
+    "loiBan": "Bọn cháu cảm ơn bác ạ.",
+    "giuLai": { "ai": "ha-vy", "loi": "Khoan, tính lại đã. Còn dòng này chưa rõ:" },
+    "du": { "ai": "ha-vy", "loi": "Vâng ạ. Bọn cháu chỉ ghi lại nhật ký in trước." },
+    "thieu": { "ai": "ha-vy", "loi": "Thôi được. Dòng ấy tớ để nguyên trong sổ." }
+  }
+}

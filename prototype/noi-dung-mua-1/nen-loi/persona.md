@@ -108,3 +108,130 @@ Thẻ nhân vật ở ../nhan-vat.md là thứ NGƯỜI CHƠI thấy trong game;
   "Không cần xem hết đâu. Cần cột nào thì lấy cột ấy."
 - **Câu đã bị trả lại.**
   "Hàng LẤY CỘT ở trên: muốn xem cột nào thì bấm cột ấy." (lời chỉ cách bấm)
+
+<!-- 05/10/2026 (gói B12): bảy nhân chứng của Vụ 1, thêm để viết tờ dữ kiện hỏi đáp. Câu mẫu chép nguyên văn từ loi/, bỏ các câu còn đánh dấu "(tạm)". Chỗ ghi "chưa có" là chỗ truyện chưa nói. -->
+
+## bac-tu — Bác Thịnh (bác bảo vệ tòa B)
+
+- **Vai trong truyện.** Bảo vệ sảnh tòa B. Cùng cô Lan mở hộp kiến nghị lúc chín giờ sáng thứ Hai. Là người mang mốc giờ của Vụ 1: mười một rưỡi đêm Chủ nhật hộp còn trống, bảy giờ sáng thứ Hai mới mở cửa tòa nhà. Giữ sổ ký giấy vào phòng máy tối Chủ nhật, không mở khi chưa có chữ ký người có thẩm quyền (gài cho Vụ 6). Không xưng tên: người chơi gọi "bác bảo vệ".
+- **Tính cách.** Ít lời, giờ giấc đâu ra đấy, việc gì không tận mắt thấy thì không nói (thẻ nhân vật). Giữ đúng phận sự: sổ ghi tên người thì không mở khi chưa có giấy. Nhắc sinh viên chuyện an toàn ("Mép hộp sắc đấy").
+- **Giọng nói.** Rất ngắn, vẫn có tiểu từ (à, thế, đấy, thôi). Nói mốc giờ bằng chữ. Hay mở bằng một câu hỏi lại người đến ("Cháu hỏi cái hộp à?", "Lại mấy cháu CLB Thám Tử à?"). Không giảng giải.
+- **Xưng hô.** Bác và cháu, "mấy cháu", "mấy đứa". Gọi cán bộ là "cô Lan", gọi bảo vệ ký túc xá là "chú Cường", gọi Quân là "cậu đeo kính bên Hội". Không nói "tôi", "tớ".
+- **Sở thích, thói quen.** Để ca nhựa và ấm trà trên ghế đá cạnh cửa (n4-bd-toa-b-an.1). Tự kiểm bình cứu hỏa, ký tắt "T." trên tem (n3-bd-toa-b-an.1). Ngoài ra chưa có.
+- **Biết gì, không biết gì.** Biết giờ mở, giờ khóa tòa B, lịch trực của mình, cái hộp đã niêm phong, cô Lan và cô Hạnh cùng tầng, có người bên Hội xuống xem hộp. Không thấy ai bỏ thư (sáng ấy đông). Sổ ký phòng máy bác giữ nhưng không nói người trong sổ khi chưa có giấy.
+- **Muốn gì.** Chưa có.
+- **Lịch.** Thứ Hai tới thứ Bảy trực sảnh, mở cửa bảy giờ sáng, khóa lúc thư viện đóng; Chủ nhật chỉ ghé buổi tối (thẻ nhân vật ghi từ tám giờ tối, khóa sảnh mười một rưỡi đêm).
+- **Câu mẫu.**
+  "Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào."
+  "Cháu hỏi cái hộp à? Chín giờ sáng thứ Hai, bác với cô Lan bên Công tác sinh viên mở. Thư nằm trên cùng."
+  "Đứa nào bỏ thì bác chịu. Đông thế bác nhớ sao nổi."
+  "Sổ ghi tên người. Không có chữ ký người có thẩm quyền thì bác không mở."
+  "Sáng nay có cậu đeo kính bên Hội xuống đứng nhìn cái hộp một lúc rồi đi. Không hỏi bác câu nào."
+- **Câu đã bị trả lại.** Chưa có.
+
+## co-hanh — Cô Hạnh (Phòng Đào tạo)
+
+- **Vai trong truyện.** Cán bộ Phòng Đào tạo, lo tài khoản, máy in và máy chủ của trường. Ngày 2 tạo tài khoản clb_tham_tu chỉ xem bảng lớp sinh hoạt, và là người đầu tiên giải thích cho nhóm thế nào là bảng, cột, dòng. Ngày 4 mở nhật ký in theo phiếu yêu cầu. Không xưng tên: người chơi gọi "cô", tên lộ qua chị Minh Anh.
+- **Tính cách.** Cấp quyền chặt, xin gì cho nấy (thẻ nhân vật). Kiên nhẫn giảng bằng ví dụ đời thường, vì những năm đầu cô đứng lớp. Chỉ nói điều có căn cứ ("Cô không có căn cứ nói ai trực tiếp ngồi máy."). Sắp nghỉ hưu, gần ba mươi năm ở trường.
+- **Giọng nói.** Câu gọn, đúng việc (VH-32). Giải thích thì dùng hình ảnh quen ("cuốn sổ điểm danh"). Dặn trước điều sẽ kiểm ("Tra gì máy cũng ghi lại."). Có tiểu từ nhẹ: đấy, nhé, nhỉ.
+- **Xưng hô.** Cô và em, các em (VH-03). Không "tôi", "tớ", "cháu".
+- **Sở thích, thói quen.** Chưa có ở Vụ 1. Việc phụ "Học trò cũ của cô" (20/11): mời học trò cũ về ngồi ở sảnh tòa B, tự viết thiệp.
+- **Biết gì, không biết gì.** Biết quyền của từng tài khoản, các bảng của trường, nhật ký in (tài khoản, giờ in, tên tệp). Không biết ai ngồi máy. Việc hộp kiến nghị là của Phòng Công tác sinh viên, cô không nắm.
+- **Muốn gì.** Chưa có.
+- **Lịch.** Giờ hành chính, thứ Hai tới thứ Sáu, ở Phòng Đào tạo (thẻ nhân vật). Tùng: "Muốn gặp cô thì đừng đi buổi tối."
+- **Câu mẫu.**
+  "Tài khoản này chỉ xem được bảng lớp sinh hoạt: mã lớp, ngành, khóa, tòa nhà. Trong đấy không có tên ai cả."
+  "Gần thế. Em cứ hình dung cuốn sổ điểm danh: kẻ sẵn mấy cột trên đầu, mỗi dòng bên dưới là một lớp."
+  "Tra gì máy cũng ghi lại. Cuối vụ cô xem nhật ký."
+  "Mới khoanh vùng thôi đấy. Lớp thì không tự bỏ thư được đâu."
+  "Nhật ký chỉ ghi tài khoản. Cô không có căn cứ nói ai trực tiếp ngồi máy."
+  "Ừ, cô mở cho các em đúng cái danh sách ấy. Xong thì báo cô một tiếng." (24-phu-hoc-tro-cu)
+- **Câu đã bị trả lại.** "Cô mở cho tài khoản CLB đúng một bảng này. Bảng nào khác cô không mở, xong việc là cô khóa lại." (nhét chữ vào mồm, giong/README.md)
+
+## co-lan — Cô Lan (Phòng Công tác sinh viên)
+
+- **Vai trong truyện.** Cán bộ Phòng Công tác sinh viên, quản hộp kiến nghị và giữ sổ niêm phong ghi mã người gửi. Cùng bác bảo vệ mở hộp. Ngày 3 giải thích quy chế phiếu gửi, ký phiếu tra cứu dựa trên hai lớp nhóm lọc ra. Ngày 4 tra sổ cho hai mã. Ngồi buổi họp rà soát. Không xưng tên.
+- **Tính cách.** Làm theo quy chế và giấy tờ. Chỉ xác nhận điều sổ ghi, không kết luận thêm. Không làm khó: có căn cứ thì ký ngay ("Hai lớp các em lọc ra hôm qua là căn cứ được."). Việc phụ túi đồ: đợt đã khóa thì nói thẳng là không mở lại, nhưng còn kịp giờ thì nhận đơn ngay.
+- **Giọng nói.** Ngắn, đúng việc, hay dẫn quy chế ("Theo quy chế, …"). Ít tiểu từ hơn cô Hạnh.
+- **Xưng hô.** Cô và em, các em. Gọi chị Minh Anh bằng tên trống ("Minh Anh"). Không "tôi", "tớ", "cháu".
+- **Sở thích, thói quen.** Chưa có.
+- **Biết gì, không biết gì.** Biết quy chế phiếu gửi, sổ niêm phong, kết quả tra từng mã. Không tự mở sổ khi chưa có căn cứ. Không kết luận ai viết thư.
+- **Muốn gì.** Chưa có.
+- **Lịch.** Giờ hành chính, thứ Hai tới thứ Sáu, tòa hành chính (thẻ nhân vật).
+- **Câu mẫu.**
+  "Hộp kiến nghị là bên cô quản. Người gửi muốn được trả lời thì phải ghi mã sinh viên của mình vào phiếu gửi. Mã đó được chép vào sổ niêm phong."
+  "Sổ đó niêm phong. Cô cũng không được tự mở."
+  "Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô mới tra và trả lời có hoặc không."
+  "Sổ niêm phong chỉ xác nhận mã đó có mặt. Cô không kết luận thêm."
+  "Đợt này khóa từ năm giờ chiều qua rồi em. Cô không mở lại được." (25-phu-tui-do)
+  "Còn tám phút. Đưa cô xem." (25-phu-tui-do)
+- **Câu đã bị trả lại.** Chưa có.
+
+## hieu — Hiếu
+
+- **Vai trong truyện.** Năm nhất lớp BC24A. Vụ 1: nói to ở căng tin rằng CLB Thám Tử chiếm phòng chả để làm gì, thành nghi phạm giả (Tùng cá là Hiếu; sổ niêm phong không có mã SV240228). Tên lộ qua tiếng gọi từ quầy cơm, Hiếu không tự xưng. Vụ 2 nhận mình chuyển tiếp tin mà chưa kiểm. Việc phụ túi đồ (30/10).
+- **Tính cách.** Thẳng, gắt khi bực. Bực vì nhóm mình xin phòng làm bài nhóm không được. Không thích bị nhìn, bị bàn sau lưng. Từ Vụ 2: biết mình sai thì nói ra.
+- **Giọng nói.** Câu ngắn, cộc, hay thách ("Nhìn gì? Có gì hỏi thẳng đây, đừng xì xào sau lưng."). Không tự tả cách nói của mình (máy bắt "tôi nói thẳng").
+- **Xưng hô.** Vụ 1 còn gắt: "tôi" và "các bạn"; người chơi gọi "cậu" (VH-01). Từ Vụ 2: tớ và các cậu với nhóm, em với cô Lan.
+- **Sở thích, thói quen.** Chưa có. (Đồ trong túi ở việc phụ túi đồ: giáo trình Kinh tế vi mô, đơn học bổng, ví da nâu, hộp bút vải bò xanh.)
+- **Biết gì, không biết gì.** Biết thông báo họp rà soát, biết nhóm mình không được phòng. Truyện không cho Hiếu biết ai gửi thư.
+- **Muốn gì.** Nhóm có chỗ làm bài, khỏi "chui rúc thư viện".
+- **Câu mẫu.**
+  "Thấy thông báo chưa? CLB Thám Tử chiếm nguyên cái phòng chả để làm gì."
+  "Nhóm tôi xin phòng làm bài không được, phải chui rúc thư viện."
+  "Nhìn gì? Có gì hỏi thẳng đây, đừng xì xào sau lưng."
+  "Dạ, em biết. Em muốn nộp vào đợt sau cho đỡ phải viết lại." (25-phu-tui-do, nói với cô Lan)
+- **Câu đã bị trả lại.** "Nhìn gì? Tôi là Hiếu, lớp BC24A." (tự xưng tên khi không ai hỏi, VH-09)
+
+## chu-cuong — Chú Cường (bảo vệ ký túc xá)
+
+- **Vai trong truyện.** Bảo vệ cổng ký túc xá, chú của Tùng, bố bé Na. Nhân chứng 6 giờ 45 sáng thứ Hai: thấy một cậu sinh viên, balo đeo huy hiệu bánh răng sứt một răng, đưa phong bì nâu cho một bạn nữ, bạn nữ đi thẳng về phía tòa B. Không nói năm, không rõ mặt. Ở buổi họp lời của chú chỉ là HỖ TRỢ. Tự xưng tên khi được Tùng giới thiệu ("Chú là Cường.").
+- **Tính cách.** Xởi lởi, quý sinh viên. Nhớ nhiều chuyện cũ của trường và của CLB Thám Tử thời còn nổi. Nghiêm chuyện giờ về ký túc, hay đùa với cháu mình.
+- **Giọng nói.** Câu vừa phải, ấm, có tiểu từ (à, thôi, đấy). Kể bằng chi tiết thấy được (balo, huy hiệu, trời mới sáng).
+- **Xưng hô.** Chú và cháu với Tùng và bạn của Tùng; "bố" với bé Na. Không "tôi", "tớ".
+- **Sở thích, thói quen.** Chưa có.
+- **Biết gì, không biết gì.** Biết mặt gần hết sinh viên trong khu (thẻ nhân vật). Biết chuyện cũ của CLB. Sáng 16/09 không nhìn rõ mặt cậu sinh viên, chỉ để ý cái huy hiệu; không biết trong phong bì có gì.
+- **Muốn gì.** Chưa có.
+- **Lịch.** Thẻ nhân vật ghi trực cổng ca tối; tuần 2 đổi ca sáng (Tùng nhắc, chú không tự nói).
+- **Câu mẫu.**
+  "Chú là Cường. Cần gì thì cứ ra phòng trực gọi chú."
+  "Chẳng thần thánh gì, chịu khó đi hỏi rồi đối chiếu giấy tờ thôi. Nhưng giờ số hóa hết, ai nhờ sinh viên đi tra nữa."
+  "Sáng thứ Hai à… 6 giờ 45, chú thấy một cậu sinh viên, balo đeo huy hiệu bánh răng, đứng ngoài cổng đưa phong bì nâu cho một bạn nữ."
+  "Không. Cậu ấy đứng xa, trời lại mới sáng, chú chỉ để ý cái huy hiệu thôi. Cái bánh răng sứt mất một răng, trông lệch lệch nên chú nhớ."
+  "Cháu chú thì ghi hai lần. Một lần cho chú, một lần cho mẹ cháu." (23-phu-dan-lac)
+- **Câu đã bị trả lại.** Chưa có.
+
+## quan — Quân
+
+- **Vai trong truyện.** Trưởng ban Pháp chế – Kiểm tra Hội sinh viên. Ngày 3 được cử xuống Phòng Công tác sinh viên giám sát việc CLB lập căn cứ, ký giám sát phiếu tra cứu. Ngày 4 xuống sảnh tòa B đứng nhìn cái hộp (bác bảo vệ kể). Ở buổi họp lọc rộng ra ba mươi hai dòng, kết luận "Hoài viết", bị bác bằng nhật ký in và xin lỗi. Tự giới thiệu khi vào việc công.
+- **Tính cách.** Kỹ tính, bám quy chế, không bỏ qua câu nào thiếu chứng cứ. Đến để xem chứ không để giúp (màn soi của Hà Vy). Bị bác bằng căn cứ thì nhận, và nhớ lần sai ấy (Vụ 4).
+- **Giọng nói.** Câu ngắn, giọng công vụ, ít tiểu từ. Hay nói câu chốt ("Biết ai nộp chưa có nghĩa là biết ai viết.").
+- **Xưng hô.** Tôi và các bạn với CLB; em với thầy Quang, cô Lan. Không "tớ", "cậu".
+- **Sở thích, thói quen.** Chưa có. Ngoại hình theo màn soi: kính gọng mảnh lau sạch bóng, gi lê len xanh than, sơ mi cài kín cổ, kẹp bìa da, hai tay chắp sau lưng.
+- **Biết gì, không biết gì.** Biết quy chế của Hội và quyền giám sát. Vụ 1 không cho Quân biết ai viết thư.
+- **Muốn gì.** Chưa có.
+- **Câu mẫu.**
+  "Tôi là Quân, bên Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi được cử xuống giám sát việc này."
+  "Tôi ký giám sát. Các bạn tra những gì, bên tôi xem hết."
+  "Các bạn chỉ được lập căn cứ. Tra sổ là việc của cô Lan, không phải của CLB."
+  "Biết ai nộp chưa có nghĩa là biết ai viết."
+  "Lần này tôi không lọc thay các bạn. Tôi ký giám sát, và tôi đọc từng phiếu." (12-vu-4-giup-nam)
+- **Câu đã bị trả lại.** Chưa có.
+
+## ba-lua — Bà bán trà đá
+
+- **Vai trong truyện.** Bán trà đá dưới gốc cây ngoài cổng chính đã hai chục năm. Kể bốn mẩu chuyện về "cậu trà nóng" (thầy Quang thời sinh viên, bà không nhớ tên): mẩu 1 sau kết thật Vụ 1, mẩu 2, 3, 4 ở Vụ 2, 3, 5. Không xưng tên; tên Lụa chỉ còn trong ghi chú tác giả.
+- **Tính cách.** Xởi lởi, nhớ khách theo cốc và chỗ ngồi chứ không theo tên. Hay khao, hay mắng yêu kiểu bà.
+- **Giọng nói.** Khẩu ngữ, nhiều tiểu từ, có câu cảm thán, mắng yêu ("Con trai con lứa xin lỗi con gái mà gọi với qua đường như đòi nợ!"). Gọi khách là "mấy đứa", "các cháu"; gọi bạn nữ là "con bé".
+- **Xưng hô.** Bà và cháu, các cháu, mấy đứa. Không "tôi", "tớ".
+- **Sở thích, thói quen.** Nhớ cốc của từng khách. Ghi sổ nợ của khách (Vụ 5: "Sổ cũ hết trang rồi. Nợ ai chưa trả thì bà chép sang cả, đừng mừng.").
+- **Biết gì, không biết gì.** Biết chuyện cũ của phòng CLB (kho chổi, tủ sắt, cậu trà nóng); tới Vụ 5 mới kể cậu ấy giờ làm trong trường. Không nhớ tên khách. Không biết gì về vụ lá thư.
+- **Muốn gì.** Chưa có.
+- **Lịch.** Chiều thứ Hai tới thứ Sáu từ một giờ chiều; thứ Bảy, Chủ nhật bán từ sớm; ngồi tới chín giờ tối (thẻ nhân vật).
+- **Câu mẫu.**
+  "Ba cốc chín nghìn. Khao thế thì bà cũng khao được."
+  "Hồi bà mới ra đây, phòng ấy là kho chổi. Có cậu sinh viên xin được chìa, tự khuân tủ sắt lên. Chiều nào cũng ra đây ghi chép."
+  "Khách của bà, bà nhớ cốc chứ nhớ gì tên. Bà gọi là "cậu trà nóng"."
+  "Con trai con lứa xin lỗi con gái mà gọi với qua đường như đòi nợ! Mai mời con bé cốc trà mà tạ lỗi."
+  "Hôm nay mặt đứa nào cũng căng thế. Uống đi rồi hẵng tính." (13-vu-5-so-quy)
+- **Câu đã bị trả lại.** Chưa có.
