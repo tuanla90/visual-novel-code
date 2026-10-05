@@ -614,7 +614,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Hà Vy** (suy nghĩ): Tức là cả ngày Chủ nhật sảnh này không có ai trông.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sảnh tòa B](#doan-11)
+- [Quay lại: Đang ở Sảnh tòa B](#doan-13)
 
 ---
 
@@ -627,7 +627,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Năm ngoái đã có người nghịch thế rồi. Hay là chính người trong CLB vẽ?)*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sảnh tòa B](#doan-11)
+- [Quay lại: Đang ở Sảnh tòa B](#doan-13)
 
 ---
 
@@ -680,7 +680,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Hà Vy**: Hai tờ giấy nhớ là hai điều mình biết chắc. Còn lại thì chưa.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng CLB](#doan-105)
+- [Quay lại: Đang ở Phòng CLB](#doan-15)
 
 ---
 
@@ -692,7 +692,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Tùng** (vui vẻ): Cậu biết không, cô Hạnh ở Phòng Đào tạo chỉ làm giờ hành chính thôi. Muốn gặp cô thì đừng đi buổi tối.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng CLB](#doan-105)
+- [Quay lại: Đang ở Phòng CLB](#doan-15)
 
 ---
 
@@ -705,7 +705,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Minh Anh**: Chiều thứ Hai, thứ Tư, thứ Sáu chị ở phòng này. Khi nào em thấy đủ căn cứ để kết luận thì tìm chị.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng CLB](#doan-105)
+- [Quay lại: Đang ở Phòng CLB](#doan-15)
 
 ---
 
@@ -808,7 +808,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Bác Thịnh**: Ừ, cùng tầng. Giờ hành chính là có người.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sảnh tòa B](#doan-11)
+- [Quay lại: Đang ở Sảnh tòa B](#doan-18)
 
 ---
 
@@ -821,7 +821,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Bác Thịnh kiểm cả cái bình này. Ở sảnh này cái gì cũng có người ghi lại.)*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sảnh tòa B](#doan-11)
+- [Quay lại: Đang ở Sảnh tòa B](#doan-18)
 
 ---
 
@@ -854,7 +854,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Hà Vy**: Phiếu của mình. Cô Lan ký rồi kìa.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng Công tác sinh viên](#doan-16)
+- [Quay lại: Đang ở Phòng Công tác sinh viên](#doan-19)
 
 ---
 
@@ -868,7 +868,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Hà Vy**: Anh ấy kiểm bọn mình, kiểm cả cái hộp.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sảnh tòa B](#doan-11)
+- [Quay lại: Đang ở Sảnh tòa B](#doan-20)
 
 ---
 
@@ -881,7 +881,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Tùng** (vui vẻ): Bác trực suốt ngày, chắc phải uống hết hai ấm này.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sảnh tòa B](#doan-11)
+- [Quay lại: Đang ở Sảnh tòa B](#doan-20)
 
 ---
 
@@ -927,8 +927,8 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 
 **Lựa chọn tiếp theo:**
 - [Trình thẻ: Nhật ký in 23:10 Chủ nhật (ĐỦ CĂN CỨ)](#doan-118)
-- [Trình thẻ: [Lời chú Cường] (HỖ TRỢ)](#doan-119)
-- [Trình thẻ: [Hoài là người nộp] (GỢI Ý)](#doan-120)
+- [Trình thẻ: Phong bì nâu trao tay 6:45 sáng thứ Hai (HỖ TRỢ)](#doan-119)
+- [Trình thẻ: Sổ niêm phong: SV240317 có, SV240228 không (GỢI Ý)](#doan-120)
 - [Trình thẻ: Hai mã ứng viên kèm căn cứ (GỢI Ý)](#doan-121)
 - [Trình thẻ: Một dòng sau khi sửa (GỢI Ý)](#doan-122)
 - [Nói: "Chưa đủ căn cứ"](#doan-123)
@@ -1304,7 +1304,7 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
 - **Hà Vy**: Tùng cá là Hiếu rồi đấy. Tớ thì chưa dám nói gì.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng CLB](#doan-105)
+- [Quay lại: Đang ở Phòng CLB](#doan-56)
 
 ---
 
@@ -1317,7 +1317,7 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
 - **Minh Anh**: Cứ làm đúng. Mình không sai thì họ soi cũng không sao.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng CLB](#doan-105)
+- [Quay lại: Đang ở Phòng CLB](#doan-56)
 
 ---
 
@@ -1435,7 +1435,6 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng CLB](#doan-105)
 - [Sang ngày 4](#doan-5)
 
 ---
@@ -1465,7 +1464,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Ngày nhập học thì đây chắc là người đón tân sinh viên.)*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sảnh ký túc xá](#doan-54)
+- [Quay lại: Đang ở Sảnh ký túc xá](#doan-70)
 
 ---
 
@@ -1477,7 +1476,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Mũ tai bèo đeo sau lưng, dây hằn trên cổ áo. Chắc cậu ấy đứng ngoài nắng cả buổi rồi.)*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sảnh ký túc xá](#doan-54)
+- [Quay lại: Đang ở Sảnh ký túc xá](#doan-70)
 
 ---
 
@@ -1489,7 +1488,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Một tờ sơ đồ gấp đôi, mép đã quăn. Cậu ấy cầm để chỉ đường cho người khác.)*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sảnh ký túc xá](#doan-54)
+- [Quay lại: Đang ở Sảnh ký túc xá](#doan-70)
 
 ---
 
@@ -1699,7 +1698,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Hà Vy** (suy nghĩ): Mới học một tuần mà bản đồ đã nhàu thế kia. Cậu ấy dùng nó hằng ngày để dẫn đường.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-81)
+- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-80)
 
 ---
 
@@ -1712,7 +1711,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Hà Vy**: Áo này thì chịu, chẳng đoán được gì.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-81)
+- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-80)
 
 ---
 
@@ -1725,7 +1724,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Tùng** (vui vẻ): Hôm khuân đồ cho tân sinh viên tớ đập mặt vào cổng sắt ký túc. Đội tình nguyện đón tân sinh viên mà!
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-81)
+- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-80)
 
 ---
 
@@ -1781,7 +1780,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Mấy tờ giấy in ôm sát trước ngực. Qua mép giấy thấy dòng tiêu đề in đậm: "Sherlock Holmes".)*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-81)
+- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-82)
 
 ---
 
@@ -1793,7 +1792,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Gọng kính mảnh. Bạn ấy nhìn ai cũng lâu hơn người khác một nhịp.)*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-81)
+- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-82)
 
 ---
 
@@ -1832,7 +1831,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Đĩa trên bàn gấp chỉ còn ba chiếc bánh. Chỗ trống trên đĩa còn dính vụn.)*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-81)
+- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-91)
 
 ---
 
@@ -1844,7 +1843,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Vụn bánh rơi thành vệt mảnh từ chân bàn chạy ra chỗ đèn cá chép.)*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-81)
+- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-91)
 
 ---
 
@@ -1856,7 +1855,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Đèn cá chép đỏ nằm lệch trên sân. Dây kéo căng về phía sau sân khấu.)*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-81)
+- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-91)
 
 ---
 
@@ -1868,7 +1867,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Đôi dép nhựa trẻ con màu vàng để cạnh chiếc đèn. Quanh đây có trẻ nhỏ chạy chơi à?)*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-81)
+- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-91)
 
 ---
 
@@ -1880,7 +1879,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Tùng** (vui vẻ): Đầu lân quẳng chỏng chơ giữa sân khấu, chắc đội múa lân lại kéo nhau đi mua nước rồi.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-81)
+- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-91)
 
 ---
 
@@ -1892,7 +1891,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Duy**: Gian Robotics đông khách phết. Mấy cái đèn ông sao họ tự hàn mạch LED nhấp nháy bán chạy ghê.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-81)
+- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-91)
 
 ---
 
@@ -1904,7 +1903,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Balo đen đặt trên ghế nhựa. Quai có huy hiệu kim loại hình bánh răng, sứt một răng.)*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-81)
+- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-91)
 
 ---
 
@@ -1916,7 +1915,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Minh Anh** (vui vẻ): Áp phích Trung thu dán chèn cả lên bảng tin trường. Dán vội thế này khéo mai lại bong ra.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-81)
+- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-91)
 
 ---
 
@@ -1928,7 +1927,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Hà Vy**: Đám đông mải nhìn lên sân khấu. Cậu thử cúi xuống tìm dấu vết xem.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-81)
+- [Quay lại: Đang ở Sân ký túc xá, đêm Trung thu](#doan-91)
 
 ---
 
@@ -2107,8 +2106,11 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Minh Anh** (nghiêm túc): Thì bắt đầu từ cái hộp. Nói có sách, mách có chứng. Mai ra sảnh tòa B.
 > 💭 **Nhắc nhở** (Minh Anh): Một tuần tìm căn cứ. Mai bắt đầu từ cái hộp ở tòa B.
 
+**Hết ngày.**
+
+
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng CLB](#doan-105)
+- [Sang ngày 1](#doan-2)
 
 ---
 
@@ -2190,7 +2192,9 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 ### Đoạn 117: Tiếp tục: Mời Hoài vào hỏi chuyện nộp thư
 
 
-- [Đọc tiếp sang Đoạn 118: Đối chất: Trình Nhật ký in 23:10 Chủ nhật](#doan-118)
+**Lựa chọn tiếp theo:**
+- [Rẽ kết: kết thật](#doan-8) *(Điều kiện: đã có "dc-ai-viet-du")*
+- [Rẽ kết: kết thường](#doan-9) *(Điều kiện: các trường hợp còn lại)*
 
 ---
 
@@ -2210,7 +2214,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 ---
 
 <a id="doan-119"></a>
-### Đoạn 119: Đối chất: Trình [Lời chú Cường]
+### Đoạn 119: Đối chất: Trình Phong bì nâu trao tay 6:45 sáng thứ Hai
 
 ⚖️ **Phản hồi đối chất:**
 - **Hà Vy**: Sáng thứ Hai, bác bảo vệ ký túc xá thấy một cậu sinh viên đeo huy hiệu bánh răng đưa phong bì cho một bạn nữ, rồi bạn ấy đi thẳng về phía tòa B ạ.
@@ -2225,7 +2229,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 ---
 
 <a id="doan-120"></a>
-### Đoạn 120: Đối chất: Trình [Hoài là người nộp]
+### Đoạn 120: Đối chất: Trình Sổ niêm phong: SV240317 có, SV240228 không
 
 ⚖️ **Phản hồi đối chất:**
 - **Quân** (tự đắc): Chính thẻ này nói Hoài là người nộp. Các bạn đang củng cố cho bên tôi đấy.

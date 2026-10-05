@@ -565,13 +565,6 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 ⚖️ **ĐỐI CHẤT**: Tùng nêu giả thuyết: "Tài khoản kênh của Robotics gửi tin lúc 22:40. Nam trực kênh. Tối đó xưởng mở, Nam bảo về sớm mà **không ai làm chứng**. Tớ cá là Nam gửi."
 *Câu hỏi:* Lúc 22:40 tối 07/10, khi tin được gửi, Nam đang ở đâu? Trình thẻ cho biết điều đó.
 
-> 🎯 **NHIỆM VỤ**: Nói lại cho cả nhóm: mình chắc được điều gì?
-- **Minh Anh** (nghiêm túc): Vậy chị mời Nam lên.
-- *Chiều hôm đó, Nam lên phòng CLB. Không nói nhiều, Nam đặt lên bàn tờ bản ghi quẹt thẻ thư viện của mình.*
-- **Nam**: Tối mùng 7, 21 giờ 50 vào, 23 giờ 05 ra. Có cả tờ này rồi mà vẫn gọi em lên.
-- **Hà Vy** (suy nghĩ): …Tối đó tớ cũng ở đấy. Tớ nhớ ra muộn quá.
-- **Tùng** (lo lắng): Em xin lỗi anh.
-- **Nam**: Không sao. Lần sau đọc kỹ hồ sơ trước đã.
 
 **Lựa chọn tiếp theo:**
 - [Trình thẻ: Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05 (ĐỦ CĂN CỨ)](#doan-29)
@@ -581,8 +574,6 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 - [Trình thẻ: Tin gốc: 22:40 tối 07/10 (GỢI Ý)](#doan-33)
 - [Nói: "Chưa đủ căn cứ"](#doan-34)
 - [Trình thẻ khác](#doan-35)
-- [Nếu đã có "dc-nam-du": Rẽ sang hướng khác](#doan-22)
-- [Đi tiếp](#doan-23)
 
 ---
 
@@ -705,6 +696,7 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 <a id="doan-28"></a>
 ### Đoạn 28: Tiếp tục: Phòng CLB: Tùng nêu giả thuyết, người chơi trình thẻ
 
+> 🎯 **NHIỆM VỤ**: Nói lại cho cả nhóm: mình chắc được điều gì?
 - **Minh Anh** (nghiêm túc): Vậy chị mời Nam lên.
 - *Chiều hôm đó, Nam lên phòng CLB. Không nói nhiều, Nam đặt lên bàn tờ bản ghi quẹt thẻ thư viện của mình.*
 - **Nam**: Tối mùng 7, 21 giờ 50 vào, 23 giờ 05 ra. Có cả tờ này rồi mà vẫn gọi em lên.
@@ -712,7 +704,9 @@ SELECT ngay, thu, gio_vao, gio_ra FROM quet_the_thu_vien WHERE ten = 'Hà Vy';
 - **Tùng** (lo lắng): Em xin lỗi anh.
 - **Nam**: Không sao. Lần sau đọc kỹ hồ sơ trước đã.
 
-- [Đọc tiếp sang Đoạn 29: Đối chất: Trình Tối 07/10: Hà Vy 20:00–23:00, Nam 21:50–23:05](#doan-29)
+**Lựa chọn tiếp theo:**
+- [Nếu đã có "dc-nam-du": Rẽ sang hướng khác](#doan-22)
+- [Đi tiếp](#doan-23)
 
 ---
 

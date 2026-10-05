@@ -221,8 +221,9 @@ function kiemVuHaiNgay(sua: Record<string, string | ((s: string) => string)> = {
   return [...kq.loi, ...kiemLuatMvp(kq.mvp).loi].map(dinhDangLoi);
 }
 
-function xuatVuGia(kichBan: string): string {
+function xuatVuGia(kichBan: string, them: Record<string, string> = {}): string {
   const tep = taoBoTep({
+    ...them,
     'lich.md': (s) => s.replace(
       '- Ngày 2024-10-08: s-tin · bắt đầu ở: c1',
       '- Ngày 2024-10-08: s-tin · bắt đầu ở: c1\n- Ngày 2024-10-09: s-cat · bắt đầu ở: c2',
@@ -236,9 +237,159 @@ function xuatVuGia(kichBan: string): string {
   return new BoXuatTruyenChu(chuyenMvp(kq.mvp, kiemLuatMvp(kq.mvp)), new Map()).xuatVuHoacViec('vu-tin-don');
 }
 
+function xuatVuHaiNgay(sua: Record<string, string | ((s: string) => string)> = {}): string {
+  const kq = docNoiDungMvp(taoVuHaiNgay(sua));
+  return new BoXuatTruyenChu(chuyenMvp(kq.mvp, kiemLuatMvp(kq.mvp)), new Map()).xuatVuHoacViec('vu-tin-don');
+}
+
 function layDoan(vanBan: string, tieuDe: string): string {
   return vanBan.split(/<a id="doan-\d+"><\/a>/).find((d) => d.includes(`: ${tieuDe}\n`)) ?? '';
 }
+
+function cacDoanTheoSo(vanBan: string): Map<number, string> {
+  const doan = new Map<number, string>();
+  for (const m of vanBan.matchAll(/<a id="doan-(\d+)"><\/a>([\s\S]*?)(?=<a id="doan-\d+"><\/a>|$)/g)) {
+    doan.set(Number(m[1]), m[2]!);
+  }
+  return doan;
+}
+
+describe('Gói T4 Mùa 1: liên kết truyện chữ', () => {
+  it('quay về đúng cảnh khám phá đã mở điểm bấm trong cùng ngày', () => {
+    const vanBan = xuatVuHaiNgay({
+      'kich-ban/01.md': (s) => s
+        .replace('### s-tin — Chuỗi tin đồn {cảnh: c1}\n- [XONG VIỆC CHÍNH]', [
+          '### s-tin — Chuỗi tin đồn {cảnh: c1}',
+          '- [KHÁM PHÁ kp-cu]',
+          '  - obj-cu · x 0% · y 0% · rộng 10% → s-cu · nhãn: Điểm cũ',
+          '- [XONG VIỆC CHÍNH]',
+        ].join('\n'))
+        .replace('### s-cat — Cảnh cắt {cảnh: c2 · cảnh cắt}', [
+          '### s-cat — Cảnh cắt {cảnh: c1}',
+          '- [KHÁM PHÁ kp-moi]',
+          '  - obj-moi · x 0% · y 0% · rộng 10% → s-moi · nhãn: Điểm mới',
+        ].join('\n'))
+        .concat('\n### s-cu — Điểm cũ {cảnh: c1}\n- **narrator**: Cũ.\n### s-moi — Điểm mới {cảnh: c1}\n- **narrator**: Mới.\n'),
+    });
+    const soNgayDau = /<a id="doan-(\d+)"><\/a>\n### Đoạn \d+: Chuỗi tin đồn/.exec(vanBan)?.[1];
+    const soNgaySau = /<a id="doan-(\d+)"><\/a>\n### Đoạn \d+: Cảnh cắt/.exec(vanBan)?.[1];
+    expect(soNgayDau).toBeDefined();
+    expect(soNgaySau).toBeDefined();
+    expect(layDoan(vanBan, 'Điểm cũ')).toContain(`[Quay lại: Đang ở Cảnh một](#doan-${soNgayDau})`);
+    expect(layDoan(vanBan, 'Điểm mới')).toContain(`[Quay lại: Đang ở Cảnh một](#doan-${soNgaySau})`);
+  });
+
+  it('hai kết quả việc ngày lễ quay về ngày chứa lựa chọn', () => {
+    const vanBan = xuatVuHaiNgay({
+      'lich.md': (s) => s.replace('Ngày: 2024-10-10', 'Ngày: 2024-10-09'),
+    });
+    const soNgayLe = /<a id="doan-(\d+)"><\/a>\n### Đoạn \d+: Cảnh cắt/.exec(vanBan)?.[1];
+    expect(soNgayLe).toBeDefined();
+    for (const ten of ['Việc ngày lễ', 'Khi lỡ ngày lễ']) {
+      const doan = layDoan(vanBan, ten);
+      expect(doan).toContain(`[Trở lại đầu ngày](#doan-${soNgayLe})`);
+      expect(doan).not.toContain('Đọc tiếp sang');
+      expect(doan).not.toContain('Hoàn tất nhiệm vụ');
+    }
+    // Lựa chọn ở đầu ngày ghi rõ chỉ chọn một lần, vì hai kết quả quay về đây.
+    expect(layDoan(vanBan, 'Cảnh cắt')).toContain('Làm việc ngày lễ: Ngày lễ](#doan-');
+    expect(layDoan(vanBan, 'Cảnh cắt')).toContain('*(Điều kiện: chưa làm hay bỏ qua việc này)*');
+  });
+
+  it('mọi manh mối trong đối chất có lựa chọn với tên từ hồ sơ; hai đối chất một chuỗi tách đoạn', () => {
+    const vanBan = xuatVuGia([
+      '### s-tin — Chuỗi tin đồn {cảnh: c1}',
+      '- [ĐỐI CHẤT dc-a] tung: "Nhịp một?"',
+      '  - {ev-y} [ĐỦ CĂN CỨ] → phản hồi: **tung** (neutral): Đúng nhịp một.',
+      '  - {clue-thu} [HỖ TRỢ] → phản hồi: **tung** (neutral): Chưa đủ nhịp một.',
+      '  - [CHƯA ĐỦ] → phản hồi: **tung** (neutral): Chưa.',
+      '- **tung** (neutral): Giữa hai nhịp.',
+      '- [ĐỐI CHẤT dc-b] tung: "Nhịp hai?"',
+      '  - {ev-y} [ĐỦ CĂN CỨ] → phản hồi: **tung** (neutral): Đúng nhịp hai.',
+      '  - {clue-thu} [GỢI Ý] → phản hồi: **tung** (neutral): Chưa đủ nhịp hai.',
+      '- [XONG VIỆC CHÍNH]',
+    ].join('\n'), {
+      'ho-so/02.md': '### clue-thu — [Thẻ thử]\n- Tiêu đề: Tên manh mối thật\n- Nội dung: Ghi chú.\n',
+    });
+    const doan = cacDoanTheoSo(vanBan);
+    const soCo = (chu: string): number | undefined => [...doan].find(([, noiDung]) => noiDung.includes(chu))?.[0];
+    const soDau = soCo('### Đoạn 1: Chuỗi tin đồn');
+    const soTiep = soCo(': Tiếp tục: Chuỗi tin đồn\n');
+    const soHoTro1 = soCo('Chưa đủ nhịp một.');
+    const soGoiY2 = soCo('Chưa đủ nhịp hai.');
+    const soDu1 = soCo('Đúng nhịp một.');
+    expect([soDau, soTiep, soHoTro1, soGoiY2, soDu1].every((so) => so !== undefined)).toBe(true);
+    const doanDau = doan.get(soDau!)!;
+    const doanTiep = doan.get(soTiep!)!;
+    // Tên lấy từ "Tiêu đề" khi tiêu đề mục hồ sơ chỉ là nhãn trong ngoặc vuông; mỗi đối chất có lựa chọn của chính nó.
+    expect(doanDau).toContain(`- [Trình thẻ: Tên manh mối thật (HỖ TRỢ)](#doan-${soHoTro1})`);
+    expect(doanDau).not.toContain('Nhịp hai?');
+    expect(doanTiep).toContain('Giữa hai nhịp.');
+    expect(doanTiep).toContain('Nhịp hai?');
+    expect(doanTiep).toContain(`- [Trình thẻ: Tên manh mối thật (GỢI Ý)](#doan-${soGoiY2})`);
+    expect(doan.get(soDu1!)).toContain(`[Tiếp tục câu chuyện](#doan-${soTiep})`);
+    expect(doan.get(soGoiY2!)).toContain(`[Quay lại đối chất để chọn thẻ khác](#doan-${soTiep})`);
+    expect(vanBan).not.toContain('[Thẻ thử]');
+    expect(vanBan).not.toMatch(/\[Trình thẻ: \[/);
+  });
+
+  it('RẼ KẾT in hai lựa chọn tới kết thật (kèm điều kiện) và kết thường', () => {
+    const kq = docNoiDungMvp(taoBoTep());
+    const vanBan = new BoXuatTruyenChu(chuyenMvp(kq.mvp, kiemLuatMvp(kq.mvp)), new Map()).xuatVuHoacViec('vu1');
+    const soThat = /<a id="doan-(\d+)"><\/a>\n### Đoạn \d+: Kết thật/.exec(vanBan)?.[1];
+    const soThuong = /<a id="doan-(\d+)"><\/a>\n### Đoạn \d+: Kết thường/.exec(vanBan)?.[1];
+    const doanSauDoiChat = layDoan(vanBan, 'Tiếp tục: Họp');
+    expect(doanSauDoiChat).toContain(`[Rẽ kết: kết thật](#doan-${soThat}) *(Điều kiện: đã có "Bằng chứng Y")*`);
+    expect(doanSauDoiChat).toContain(`[Rẽ kết: kết thường](#doan-${soThuong})`);
+    expect(doanSauDoiChat).not.toContain('Hết ngày');
+  });
+
+  it('mọi đoạn truyện thật có liên kết vào (từ đoạn khác) và mọi liên kết có đích', () => {
+    const cacTep = readdirSync(THU_MUC_XUAT_TRUYEN).filter((ten) => ten.endsWith('.md') && ten !== 'README.md');
+    expect(cacTep.length).toBe(11);
+    for (const tenTep of cacTep) {
+      const doan = cacDoanTheoSo(readFileSync(join(THU_MUC_XUAT_TRUYEN, tenTep), 'utf8'));
+      const coLienKetVao = new Set<number>();
+      const thieuDich: string[] = [];
+      for (const [so, noiDung] of doan) {
+        for (const m of noiDung.matchAll(/\]\(#doan-(\d+)\)/g)) {
+          const toi = Number(m[1]);
+          if (!doan.has(toi)) thieuDich.push(`Đoạn ${so} → ${toi}`);
+          if (toi !== so) coLienKetVao.add(toi);
+        }
+      }
+      expect([...doan.keys()].filter((so) => so !== 1 && !coLienKetVao.has(so)), `${tenTep}: đoạn không có liên kết vào`).toEqual([]);
+      expect(thieuDich, `${tenTep}: liên kết thiếu đích`).toEqual([]);
+    }
+  });
+
+  it('vu-tin-don thật: Quay lại không sang ngày khác, việc ngày lễ về đầu ngày 15/10, không còn Đọc tiếp sang', () => {
+    const vanBan = readFileSync(join(THU_MUC_XUAT_TRUYEN, 'vu-tin-don.md'), 'utf8');
+    const doan = cacDoanTheoSo(vanBan);
+    const soCo = (tieuDe: string): number | undefined => [...doan].find(([, noiDung]) => noiDung.includes(`: ${tieuDe}\n`))?.[0];
+    const soNgay8 = soCo('Tin đồn về CLB; lọc các tin mang câu đó');
+    const soNgay9 = soCo('Chiều 09/10, phòng CLB: Minh Anh ở chỗ cô Lan về');
+    const soNgay15 = soCo('Sáng 15/10, hội trường: lễ kỷ niệm');
+    expect([soNgay8, soNgay9, soNgay15].every((so) => so !== undefined)).toBe(true);
+    expect(doan.get(soCo('Tùng đọc tin nhắn nhóm lớp')!)).toContain(`[Quay lại: Đang ở Phòng CLB](#doan-${soNgay9})`);
+    for (const tieuDe of [
+      'Cuối chiều 09/10, phòng CLB: báo giờ gửi, hẹn mai sang xưởng',
+      'Cuối chiều 10/10, phòng CLB: giấy mời giải trình',
+      'Chiều 14/10, phòng CLB: tập trước buổi giải trình',
+    ]) {
+      const so = soCo(tieuDe);
+      expect(so, tieuDe).toBeDefined();
+      expect(doan.get(so!), tieuDe).not.toContain(`](#doan-${soNgay8})`);
+    }
+    for (const tieuDe of ['Việc ngày lễ 15/10 (tạm): Quân nhờ xem danh sách bốc thăm quà', 'Lỡ việc ngày lễ 15/10']) {
+      const so = soCo(tieuDe);
+      expect(so, tieuDe).toBeDefined();
+      expect(doan.get(so!), tieuDe).toContain(`[Trở lại đầu ngày](#doan-${soNgay15})`);
+    }
+    expect(vanBan).not.toContain('Đọc tiếp sang');
+    expect(vanBan).not.toMatch(/Trình \[/);
+  });
+});
 
 describe('Gói T3 Mùa 1: đường đi truyện chữ', () => {
   it('ĐI CÙNG nằm ở cuối chuỗi chứa nút, giữ nguyên nhãn và không mở bản đồ', () => {

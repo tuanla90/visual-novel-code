@@ -270,7 +270,7 @@ SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap
 - **Hà Vy**: Chủ tịch Hội. Giấy nào qua Hội cũng qua tay anh ấy.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng CLB](#doan-1)
+- [Quay lại: Đang ở Phòng CLB](#doan-7)
 
 ---
 
@@ -283,7 +283,7 @@ SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap
 - **Nam**: Balo ấy anh Khánh hay để ở xưởng cả ngày.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng CLB](#doan-1)
+- [Quay lại: Đang ở Phòng CLB](#doan-7)
 
 ---
 
@@ -296,7 +296,7 @@ SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap
 - **Tùng** (lo lắng): Bánh răng sứt một răng… Chú Cường tả đúng cái này.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng CLB](#doan-1)
+- [Quay lại: Đang ở Phòng CLB](#doan-7)
 
 ---
 

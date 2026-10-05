@@ -174,8 +174,8 @@ Thứ Ba, 15/10/2024 · Còn 0 ngày tới Buổi giải trình chiều 15/10
 
 **Lựa chọn tiếp theo:**
 - [Đi cùng chị Minh Anh sang phòng Công tác sinh viên](#doan-18)
-- [Làm việc ngày lễ: Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam](#doan-6)
-- [Bỏ qua](#doan-7)
+- [Làm việc ngày lễ: Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam](#doan-6) *(Điều kiện: chưa làm hay bỏ qua việc này)*
+- [Bỏ qua](#doan-7) *(Điều kiện: chưa làm hay bỏ qua việc này)*
 
 ---
 
@@ -195,7 +195,8 @@ Thứ Ba, 15/10/2024 · Còn 0 ngày tới Buổi giải trình chiều 15/10
 
 Hết việc ngày lễ.
 
-- [Đọc tiếp sang Đoạn 7: Lỡ việc ngày lễ 15/10](#doan-7)
+**Lựa chọn tiếp theo:**
+- [Trở lại đầu ngày](#doan-5)
 
 ---
 
@@ -208,7 +209,8 @@ Hết việc ngày lễ.
 
 Hết việc ngày lễ.
 
-- [Đọc tiếp sang Đoạn 8: Vụ 2: Duy mở laptop (việc chính)](#doan-8)
+**Lựa chọn tiếp theo:**
+- [Trở lại đầu ngày](#doan-5)
 
 ---
 
@@ -338,7 +340,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - *Chỉ mở vở, ghi thêm một dòng. (tạm)*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng CLB](#doan-1)
+- [Quay lại: Đang ở Phòng CLB](#doan-2)
 
 ---
 
@@ -383,7 +385,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng CLB](#doan-1)
+- [Quay lại bản đồ](#doan-54)
 - [Sang thứ Ba, 15/10/2024](#doan-5)
 
 ---
@@ -425,31 +427,14 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ⚖️ **ĐỐI CHẤT**: Quân nêu giả thuyết: "Mật khẩu kênh cả ban chủ nhiệm Robotics đều biết. **Tin ấy có thể gửi từ điện thoại của bất kỳ ai, ở bất cứ đâu.** Các bạn khoanh được chỗ nào?"
 *Câu hỏi:* Ngay trước giờ tin gốc, tài khoản kênh vào từ máy nào? Trình thẻ cho thấy điều đó.
 
-- *Quân lật biên bản sang trang mới. (tạm)*
-- **Cô Lan**: Cái máy văn phòng ấy đặt ở chỗ nào trong xưởng, Minh Anh? (tạm)
-- **Minh Anh**: Dạ, trong phòng riêng ở cuối xưởng ạ. (tạm)
-- **Quân**: Phòng riêng. Không phải ai đi ngang cũng ngồi vào được. (tạm)
-- *Quân gõ đầu bút xuống trang giấy. (tạm)*
-- **Quân** (tự đắc): Vậy thì bên tôi thấy đã rõ. (tạm)
-⚖️ **ĐỐI CHẤT**: Quân nêu giả thuyết: "Tài khoản của Robotics, máy trong xưởng Robotics, người trực kênh là Nam. Bên tôi kết luận: **Nam là người gửi tin.**"
-*Câu hỏi:* Trong các bản ghi đang có, chỗ nào cho biết ai ngồi máy lúc 22 giờ 40? Trình thẻ để chỉ ra bản ghi dừng ở đâu.
-
 
 **Lựa chọn tiếp theo:**
 - [Trình thẻ: Hai lần đăng nhập ngày 07/10 (ĐỦ CĂN CỨ)](#doan-58)
 - [Trình thẻ: Tối 07/10 xưởng mở tới 23 giờ (HỖ TRỢ)](#doan-59)
 - [Trình thẻ: Tin gốc: 22:40 tối 07/10 (GỢI Ý)](#doan-60)
-- [Trình thẻ: [Ngày gửi tin gốc] (GỢI Ý)](#doan-61)
+- [Trình thẻ: Tin gốc gửi tối thứ Hai 07/10 (GỢI Ý)](#doan-61)
 - [Nói: "Chưa đủ căn cứ"](#doan-62)
 - [Trình thẻ khác](#doan-63)
-- [Trình thẻ: Hai lần đăng nhập ngày 07/10 (ĐỦ CĂN CỨ)](#doan-65)
-- [Trình thẻ: Tin gốc: 22:40 tối 07/10 (ĐỦ CĂN CỨ)](#doan-66)
-- [Trình thẻ: Tối 07/10 xưởng mở tới 23 giờ (HỖ TRỢ)](#doan-67)
-- [Trình thẻ: [Tin gốc] (GỢI Ý)](#doan-68)
-- [Nói: "Chưa đủ căn cứ"](#doan-69)
-- [Trình thẻ khác](#doan-70)
-- [Nếu đã có "dc-tin-quan-nguoi-du": Rẽ sang hướng khác](#doan-25)
-- [Đi tiếp](#doan-26)
 
 ---
 
@@ -558,13 +543,11 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 **Lựa chọn tiếp theo:**
 - [Trình thẻ: Tin gốc: 22:40 tối 07/10 (ĐỦ CĂN CỨ)](#doan-72)
-- [Trình thẻ: [Tin gốc] (HỖ TRỢ)](#doan-73)
+- [Trình thẻ: Kênh ghi loại của từng tin (HỖ TRỢ)](#doan-73)
 - [Trình thẻ: Các tin mang câu tin đồn (GỢI Ý)](#doan-74)
 - [Trình thẻ: Ảnh chụp tin đồn (GỢI Ý)](#doan-75)
 - [Nói: "Chưa đủ căn cứ"](#doan-76)
 - [Trình thẻ khác](#doan-77)
-- [Nếu đã có "dc-tin-hieu-du": Rẽ sang hướng khác](#doan-29)
-- [Đi tiếp](#doan-30)
 
 ---
 
@@ -577,7 +560,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - *Bên dưới có ai viết thêm "CLB soi", rồi lấy tay quẹt nhòe. (tạm)*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Căng tin](#doan-34)
+- [Quay lại: Đang ở Căng tin](#doan-15)
 
 ---
 
@@ -926,7 +909,6 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng CLB](#doan-1)
 - [Sang thứ Năm, 10/10/2024](#doan-3)
 
 ---
@@ -1201,7 +1183,6 @@ SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '20
 
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Phòng CLB](#doan-1)
 - [Sang thứ Hai, 14/10/2024](#doan-4)
 
 ---
@@ -1275,8 +1256,17 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Quân**: Phòng riêng. Không phải ai đi ngang cũng ngồi vào được. (tạm)
 - *Quân gõ đầu bút xuống trang giấy. (tạm)*
 - **Quân** (tự đắc): Vậy thì bên tôi thấy đã rõ. (tạm)
+⚖️ **ĐỐI CHẤT**: Quân nêu giả thuyết: "Tài khoản của Robotics, máy trong xưởng Robotics, người trực kênh là Nam. Bên tôi kết luận: **Nam là người gửi tin.**"
+*Câu hỏi:* Trong các bản ghi đang có, chỗ nào cho biết ai ngồi máy lúc 22 giờ 40? Trình thẻ để chỉ ra bản ghi dừng ở đâu.
 
-- [Đọc tiếp sang Đoạn 58: Đối chất: Trình Hai lần đăng nhập ngày 07/10](#doan-58)
+
+**Lựa chọn tiếp theo:**
+- [Trình thẻ: Hai lần đăng nhập ngày 07/10 (ĐỦ CĂN CỨ)](#doan-65)
+- [Trình thẻ: Tin gốc: 22:40 tối 07/10 (ĐỦ CĂN CỨ)](#doan-66)
+- [Trình thẻ: Tối 07/10 xưởng mở tới 23 giờ (HỖ TRỢ)](#doan-67)
+- [Trình thẻ: Kênh ghi loại của từng tin (GỢI Ý)](#doan-68)
+- [Nói: "Chưa đủ căn cứ"](#doan-69)
+- [Trình thẻ khác](#doan-70)
 
 ---
 
@@ -1324,7 +1314,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ---
 
 <a id="doan-61"></a>
-### Đoạn 61: Đối chất: Trình [Ngày gửi tin gốc]
+### Đoạn 61: Đối chất: Trình Tin gốc gửi tối thứ Hai 07/10
 
 ⚖️ **Phản hồi đối chất:**
 - **Quân**: Ngày gửi thì bên tôi biết rồi. Tôi hỏi chỗ gửi. (tạm)
@@ -1363,7 +1353,9 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ### Đoạn 64: Tiếp tục: Chiều 15/10, phòng Công tác sinh viên: buổi giải trình, Quân hai nhịp
 
 
-- [Đọc tiếp sang Đoạn 65: Đối chất: Trình Hai lần đăng nhập ngày 07/10](#doan-65)
+**Lựa chọn tiếp theo:**
+- [Nếu đã có "dc-tin-quan-nguoi-du": Rẽ sang hướng khác](#doan-25)
+- [Đi tiếp](#doan-26)
 
 ---
 
@@ -1408,12 +1400,12 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ⚠️ *Căn cứ này chưa đủ để kết luận.*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại đối chất để chọn thẻ khác](#doan-18)
+- [Quay lại đối chất để chọn thẻ khác](#doan-57)
 
 ---
 
 <a id="doan-68"></a>
-### Đoạn 68: Đối chất: Trình [Tin gốc]
+### Đoạn 68: Đối chất: Trình Kênh ghi loại của từng tin
 
 ⚖️ **Phản hồi đối chất:**
 - **Quân** (tự đắc): Tờ này nói tin gốc là tin tự viết. Tự viết thì càng phải có người viết. (tạm)
@@ -1422,7 +1414,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ⚠️ *Căn cứ này chưa đủ để kết luận.*
 
 **Lựa chọn tiếp theo:**
-- [Quay lại đối chất để chọn thẻ khác](#doan-18)
+- [Quay lại đối chất để chọn thẻ khác](#doan-57)
 
 ---
 
@@ -1434,7 +1426,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Quân**: Vậy biên bản ghi tên Nam ở mục người cần làm rõ. (tạm)
 
 **Lựa chọn tiếp theo:**
-- [Quay lại đối chất](#doan-18)
+- [Quay lại đối chất](#doan-57)
 
 ---
 
@@ -1445,7 +1437,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Quân**: Tôi hỏi ai ngồi máy. Tờ này trả lời câu khác. (tạm)
 
 **Lựa chọn tiếp theo:**
-- [Quay lại đối chất](#doan-18)
+- [Quay lại đối chất](#doan-57)
 
 ---
 
@@ -1453,7 +1445,9 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ### Đoạn 71: Tiếp tục: Đối chất Hiếu: tin có từ lâu, ai cũng chuyển
 
 
-- [Đọc tiếp sang Đoạn 72: Đối chất: Trình Tin gốc: 22:40 tối 07/10](#doan-72)
+**Lựa chọn tiếp theo:**
+- [Nếu đã có "dc-tin-hieu-du": Rẽ sang hướng khác](#doan-29)
+- [Đi tiếp](#doan-30)
 
 ---
 
@@ -1473,7 +1467,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ---
 
 <a id="doan-73"></a>
-### Đoạn 73: Đối chất: Trình [Tin gốc]
+### Đoạn 73: Đối chất: Trình Kênh ghi loại của từng tin
 
 ⚖️ **Phản hồi đối chất:**
 - *Suy nghĩ của bạn:* *(Kênh ghi loại của từng tin: tin tự viết, tin bấm chuyển, tin gõ trả lời. (tạm))*

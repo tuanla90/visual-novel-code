@@ -255,7 +255,9 @@ export class BoXuatTruyenChu {
   private tenTheHoSo(id: string): string {
     const h = this.duLieu.hoSo[id];
     if (h?.heading || h?.fields?.['Tiêu đề']) {
-      return h.heading ?? h.fields['Tiêu đề'];
+      return h.heading?.startsWith('[') && h.heading.endsWith(']')
+        ? h.fields['Tiêu đề'] ?? h.heading
+        : h.heading ?? h.fields['Tiêu đề'];
     }
     for (const t of Object.values(this.duLieu.thuThach)) {
       if (t.vatChung?.id === id) {
@@ -650,50 +652,68 @@ export class BoXuatTruyenChu {
     const dsViecNgayLe = (lich.viecNgayLe ?? []).filter(
       (l) => l.thuocVu === ma || (laVu1 && (l.thuocVu === 'vu1' || l.thuocVu === 'vu-1')),
     );
-    const chuoiViecNgayLe = new Set<string>();
-    const hangDoiLe = laVuNhieuNgay ? dsViecNgayLe.flatMap((l) => [l.chuoi, l.khiLo]) : [];
-    while (hangDoiLe.length > 0) {
-      const id = hangDoiLe.pop()!;
-      if (chuoiViecNgayLe.has(id)) continue;
-      chuoiViecNgayLe.add(id);
-      const c = this.duLieu.chuoi.find((x) => x.id === id);
-      if (!c) continue;
-      for (const n of c.nodes) {
-        if (n.type === 'goto' || n.type === 'jump-if') hangDoiLe.push(n.to);
-        else if (n.type === 'branch') {
-          for (const ch of n.choices) for (const h of ch.hauQua) if (h.kind === 'di-toi') hangDoiLe.push(h.chuoi);
-        } else if (n.type === 'explore') {
-          for (const d of n.diem) hangDoiLe.push(d.chuoi);
-        } else if (n.type === 'consequence') {
-          for (const h of n.hauQua) if (h.kind === 'di-toi') hangDoiLe.push(h.chuoi);
-        } else if (n.type === 'doi-chat' && n.nguoiQuen) {
-          hangDoiLe.push(n.nguoiQuen.noiThay);
-        }
-      }
-    }
+    // Gắn lựa chọn việc ngày lễ vào đoạn đầu của ngày ấy; nhớ chuỗi chứa lựa chọn để hai kết quả quay về đó (T4).
+    const chuoiChuaViecLe = new Map<string, string>();
     for (const vnl of dsViecNgayLe) {
       hangDoi.push({ id: vnl.chuoi, dayIndex: -1 });
         hangDoi.push({ id: vnl.khiLo, dayIndex: -1 });
-      let ganXong = false;
+      let chuoiChua: string | undefined;
       const ngayFormat = dinhDangNgayThu(vnl.ngay);
-      for (const [, tt] of thongTinNgayCuaChuoi) {
+      for (const [idChuoi, tt] of thongTinNgayCuaChuoi) {
         if (tt.dongNgay.includes(ngayFormat)) {
           if (!tt.viecNgayLe) tt.viecNgayLe = [];
           tt.viecNgayLe.push(vnl);
-          ganXong = true;
+          chuoiChua = idChuoi;
           break;
         }
       }
-      if (!ganXong) {
-        const ttDau = thongTinNgayCuaChuoi.get(chuoiDau) ?? thongTinNgayCuaChuoi.values().next().value;
+      if (!chuoiChua) {
+        const ttDau = thongTinNgayCuaChuoi.get(chuoiDau);
+        const dauTien = thongTinNgayCuaChuoi.entries().next().value;
         if (ttDau) {
           if (!ttDau.viecNgayLe) ttDau.viecNgayLe = [];
           ttDau.viecNgayLe.push(vnl);
+          chuoiChua = chuoiDau;
+        } else if (dauTien) {
+          const [idChuoi, tt] = dauTien;
+          if (!tt.viecNgayLe) tt.viecNgayLe = [];
+          tt.viecNgayLe.push(vnl);
+          chuoiChua = idChuoi;
         } else {
           thongTinNgayCuaChuoi.set(chuoiDau, {
             dongNgay: ngayFormat,
             viecNgayLe: [vnl],
           });
+          chuoiChua = chuoiDau;
+        }
+      }
+      chuoiChuaViecLe.set(vnl.chuoi, chuoiChua);
+    }
+
+    // Các chuỗi thuộc việc ngày lễ (vụ nhiều ngày): không in kết vụ, không Hết ngày, xong thì về đoạn chứa lựa chọn.
+    const chuoiViecNgayLe = new Set<string>();
+    const ngayLeVeDau = new Map<string, string>();
+    const hangDoiLe = laVuNhieuNgay ? dsViecNgayLe.flatMap((l) => {
+      const veDau = chuoiChuaViecLe.get(l.chuoi);
+      return [{ id: l.chuoi, veDau }, { id: l.khiLo, veDau }];
+    }) : [];
+    while (hangDoiLe.length > 0) {
+      const { id, veDau } = hangDoiLe.pop()!;
+      if (chuoiViecNgayLe.has(id)) continue;
+      chuoiViecNgayLe.add(id);
+      if (veDau) ngayLeVeDau.set(id, veDau);
+      const c = this.duLieu.chuoi.find((x) => x.id === id);
+      if (!c) continue;
+      for (const n of c.nodes) {
+        if (n.type === 'goto' || n.type === 'jump-if') hangDoiLe.push({ id: n.to, veDau });
+        else if (n.type === 'branch') {
+          for (const ch of n.choices) for (const h of ch.hauQua) if (h.kind === 'di-toi') hangDoiLe.push({ id: h.chuoi, veDau });
+        } else if (n.type === 'explore') {
+          for (const d of n.diem) hangDoiLe.push({ id: d.chuoi, veDau });
+        } else if (n.type === 'consequence') {
+          for (const h of n.hauQua) if (h.kind === 'di-toi') hangDoiLe.push({ id: h.chuoi, veDau });
+        } else if (n.type === 'doi-chat' && n.nguoiQuen) {
+          hangDoiLe.push({ id: n.nguoiQuen.noiThay, veDau });
         }
       }
     }
@@ -742,12 +762,24 @@ export class BoXuatTruyenChu {
     };
 
     const dayToMapData = new Map<number, { so: number, luaChon: DoanTruyen['luaChon'] }>();
+    const diemKhamPhaVeNguon = new Map<string, { id: string; laBanDo: boolean }>();
     for (const cId of dsChuoiKhamPha) {
       const c = this.duLieu.chuoi.find((x) => x.id === cId);
       if (!c) continue;
       const dayIndex = daKhamPha.get(cId)!;
 
       for (const n of c.nodes) {
+          // Nguồn của mỗi điểm bấm: cảnh khám phá đã in lựa chọn dẫn tới nó, cùng ngày (T4: "Quay lại" không sang ngày khác).
+          if (n.type === 'explore') {
+              for (const d of n.diem) {
+                  const laBanDo = n.kieu === 'ban-do';
+                  const dich = this.duLieu.chuoi.find((x) => x.id === d.chuoi);
+                  const cungNoi = !dich || dich.canh === c.canh;
+                  if ((laBanDo || cungNoi) && daKhamPha.get(d.chuoi) === dayIndex && !diemKhamPhaVeNguon.has(d.chuoi)) {
+                      diemKhamPhaVeNguon.set(d.chuoi, { id: cId, laBanDo });
+                  }
+              }
+          }
           if (n.type === 'explore' && n.kieu === 'ban-do') {
               if (!dayToMapData.has(dayIndex)) {
                   dayToMapData.set(dayIndex, { so: taoDoanBoSung('Bản đồ'), luaChon: [] });
@@ -1021,17 +1053,16 @@ export class BoXuatTruyenChu {
             }
 
             if (doanSauDoiChat > 0) {
-              const cacNodeConLai = c.nodes.slice(i + 1);
-              const dongConLai: string[] = [];
-              for (const kn of cacNodeConLai) {
-                if (kn.type === 'line') dongConLai.push(`- ${this.dinhDangLoi(kn)}`);
-              }
               doan.push({
-                so: doanSauDoiChat,
-                tieuDe: `Tiếp tục: ${c.title}`,
-                dong: dongConLai,
-                luaChon: [],
+                so,
+                tieuDe,
+                dong: [...dong],
+                luaChon: [...luaChon],
               });
+              so = doanSauDoiChat;
+              tieuDe = `Tiếp tục: ${c.title}`;
+              dong.length = 0;
+              luaChon.length = 0;
             }
             break;
           }
@@ -1060,6 +1091,18 @@ export class BoXuatTruyenChu {
             }
             break;
           }
+          case 'ending-branch': {
+            // [RẼ KẾT]: máy chọn kết thật khi thỏa điều kiện của chuỗi kết thật, còn lại là kết thường (T4).
+            const ket = lich.ket;
+            const chuoiThat = ket ? this.duLieu.chuoi.find((x) => x.id === ket.that) : undefined;
+            const dkThat = chuoiThat?.nodes.find((x) => x.type === 'condition');
+            const dkText = dkThat?.type === 'condition' ? this.dkChu(dkThat.dieuKien) : undefined;
+            const soThat = ket ? chuoiToSo.get(ket.that) : undefined;
+            const soThuong = ket ? chuoiToSo.get(ket.thuong) : undefined;
+            if (soThat) luaChon.push({ nhan: 'Rẽ kết: kết thật', toiSo: soThat, dieuKien: dkText });
+            if (soThuong) luaChon.push({ nhan: 'Rẽ kết: kết thường', toiSo: soThuong, dieuKien: dkText ? 'các trường hợp còn lại' : undefined });
+            break;
+          }
           case 'end': {
             dong.push('');
             if (chuoiViecNgayLe.has(cId)) {
@@ -1079,8 +1122,9 @@ export class BoXuatTruyenChu {
         }
       }
 
-      // Lựa chọn việc ngày lễ (S4)
+      // Lựa chọn việc ngày lễ (S4). Vụ nhiều ngày: hai kết quả quay về đây, nên ghi rõ chỉ chọn được một lần (T4).
       if (thongTinNgay?.viecNgayLe) {
+        const dkMotLan = laVuNhieuNgay ? 'chưa làm hay bỏ qua việc này' : undefined;
         for (const vnl of thongTinNgay.viecNgayLe) {
           const toiLe = chuoiToSo.get(vnl.chuoi);
           const toiLo = chuoiToSo.get(vnl.khiLo);
@@ -1088,26 +1132,35 @@ export class BoXuatTruyenChu {
             luaChon.push({
               nhan: `Làm việc ngày lễ: ${vnl.ten}`,
               toiSo: toiLe,
+              dieuKien: dkMotLan,
             });
           }
           if (toiLo) {
             luaChon.push({
               nhan: 'Bỏ qua',
               toiSo: toiLo,
+              dieuKien: dkMotLan,
             });
           }
         }
       }
 
+      // Việc ngày lễ hết thoại (làm xong hay lỡ): quay về đoạn chứa lựa chọn của ngày ấy (T4).
+      if (chuoiViecNgayLe.has(cId) && luaChon.length === 0) {
+        const veDau = ngayLeVeDau.get(cId);
+        const toiSo = veDau ? chuoiToSo.get(veDau) : undefined;
+        if (toiSo) luaChon.push({ nhan: 'Trở lại đầu ngày', toiSo });
+      }
+
       // Quay lại cảnh khám phá nếu hết thoại mà không có lựa chọn nào khác (S11)
       if (luaChon.length === 0 && !c.nodes.some((node) => node.type === 'end' || node.type === 'explore')) {
-        const hubCungNoi = this.duLieu.chuoi.find(
-          (x) => x.canh === c.canh && x.nodes.some((node) => node.type === 'explore') && chuoiToSo.has(x.id),
-        );
-        if (hubCungNoi) {
+        const nguon = diemKhamPhaVeNguon.get(cId);
+        const soBanDo = nguon?.laBanDo ? dayToMapData.get(daKhamPha.get(cId)!)?.so : undefined;
+        const toiSo = nguon ? soBanDo ?? chuoiToSo.get(nguon.id) : undefined;
+        if (toiSo) {
           luaChon.push({
-            nhan: `Quay lại: Đang ở ${this.tenCanh(c.canh)}`,
-            toiSo: chuoiToSo.get(hubCungNoi.id)!,
+            nhan: nguon?.laBanDo ? 'Quay lại bản đồ' : `Quay lại: Đang ở ${this.tenCanh(c.canh)}`,
+            toiSo,
           });
         }
       }
@@ -1280,11 +1333,6 @@ export class BoXuatTruyenChu {
         for (const ch of d.luaChon) {
           const dk = ch.dieuKien ? ` *(Điều kiện: ${ch.dieuKien})*` : '';
           ketQua.push(`- [${ch.nhan}](#doan-${ch.toiSo})${dk}`);
-        }
-      } else {
-        const tiepTheo = doan.find((x) => x.so === d.so + 1);
-        if (tiepTheo && !d.dong.some((l) => l.includes('KẾT THÚC'))) {
-          ketQua.push(`- [Đọc tiếp sang Đoạn ${tiepTheo.so}: ${tiepTheo.tieuDe}](#doan-${tiepTheo.so})`);
         }
       }
       ketQua.push('');
