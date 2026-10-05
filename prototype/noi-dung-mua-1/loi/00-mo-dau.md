@@ -45,29 +45,28 @@
 > NHẮC VIỆC player: Hỏi ai trong sảnh này được nhỉ?
 
 ## md-00-thay-tung.1
-- **player**: (Ai cũng mới tới như mình. Có hỏi thì họ cũng chịu.)
-- **player**: (Khoan. Có một cái lưng áo xanh giữa đám đông, không kéo vali.)
-- **player**: (Nhìn kỹ xem đã.)
+- **player**: (Ai cũng tay xách nách mang, hỏi lúc này thì ngại quá.)
+- **player**: (Kia có một bạn áo xanh tình nguyện, không phải xách gì. Ra hỏi bạn ấy vậy.)
 
 ## md-00-tung-chi-duong.1
 - **hoai** (nervous): Bạn ơi... tòa KTX nữ đi đường nào ạ?
-- **tung** (ao-xanh-chi-tay): À, KTX. Cậu cứ đi thẳng tới cuối đường, rẽ trái hai lần là tới nhé. Cứ kéo vali theo đường đấy là thấy!
+- **tung** (ao-xanh-chi-tay): Sang bên nữ á? Cậu cứ ra cửa sảnh, rẽ trái là tới luôn. Ngay kia kìa!
 - **hoai** (relieved): Tớ cảm ơn.
 - [DÀN DỰNG] Bạn nữ kéo vali lạch cạch đi về hướng Tùng vừa chỉ.
-- **player**: (Khoan. Hướng đó ra nhà xe cơ mà? Cậu áo xanh kia chỉ nhầm lối rồi.)
+- **player**: (Chỉ đường trơn tru thế kia thì chắc rành khu này lắm.)
 
 ## md-00-soi-ao.1
 - **player**: (Sơ mi xanh dài tay, trên ngực gắn lá cờ nhỏ. Áo của đội tình nguyện.)
 - **player**: (Ngày nhập học thì đây chắc là người đón tân sinh viên.)
 
 ## md-00-soi-mu.1
-- **player**: (Mũ tai bèo đeo sau lưng, dây hằn trên cổ áo. Chắc cậu ấy đứng ngoài nắng cả buổi rồi.)
+- **player**: (Mũ tai bèo đeo sau lưng. Chắc đứng nắng cả buổi rồi.)
 
 ## md-00-soi-to-giay.1
-- **player**: (Một tờ sơ đồ gấp đôi, mép đã quăn. Cậu ấy cầm để chỉ đường cho người khác.)
+- **player**: (Tay cầm tờ sơ đồ gấp đôi, mép quăn hết cả. Chắc chỉ đường cho bao nhiêu người rồi.)
 
 ## md-00-soi-tung.1
-- **player**: (Người của đội đón tân sinh viên đây rồi. Vừa chỉ nhầm cho bạn kia, nhưng thang bộ ngay trong nhà này thì chắc biết chứ nhỉ?)
+- **player**: (Đúng người của đội đón tân sinh viên rồi.)
 
 ## md-00-gap-tung.1
 - **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế?

@@ -41,7 +41,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 
 | Tiêu chí | Ngưỡng thiết kế | Thực tế | Đánh giá |
 |---|---|---|---|
-| Số dòng thoại | ≥ 300 | 498 | ✅ Đạt |
+| Số dòng thoại | ≥ 300 | 497 | ✅ Đạt |
 | Số chuỗi phân cảnh | ≥ 40 | 111 | ✅ Đạt |
 | Màn tra cứu SQL | ≥ 5 | 5 | ✅ Đạt |
 | Nhịp đối chất | ≥ 3 | 1 | ⚠️ Bản mẫu |
@@ -1240,9 +1240,8 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
 
 📍 **Sảnh ký túc xá** — *Chi tiết ẩn đầu tiên: một tấm lưng áo xanh giữa đám đông*
 
-- *Suy nghĩ của bạn:* *(Ai cũng mới tới như mình. Có hỏi thì họ cũng chịu.)*
-- *Suy nghĩ của bạn:* *(Khoan. Có một cái lưng áo xanh giữa đám đông, không kéo vali.)*
-- *Suy nghĩ của bạn:* *(Nhìn kỹ xem đã.)*
+- *Suy nghĩ của bạn:* *(Ai cũng tay xách nách mang, hỏi lúc này thì ngại quá.)*
+- *Suy nghĩ của bạn:* *(Kia có một bạn áo xanh tình nguyện, không phải xách gì. Ra hỏi bạn ấy vậy.)*
 
 **Lựa chọn tiếp theo:**
 - [Đi tiếp](#doan-68)
@@ -1368,9 +1367,9 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
 📍 **Sảnh ký túc xá** — *Thấy Tùng chỉ đường cho bạn nữ*
 
 - **Hoài**: Bạn ơi... tòa KTX nữ đi đường nào ạ?
-- **Tùng**: À, KTX. Cậu cứ đi thẳng tới cuối đường, rẽ trái hai lần là tới nhé. Cứ kéo vali theo đường đấy là thấy!
+- **Tùng**: Sang bên nữ á? Cậu cứ ra cửa sảnh, rẽ trái là tới luôn. Ngay kia kìa!
 - **Hoài** (nhẹ nhõm): Tớ cảm ơn.
-- *Suy nghĩ của bạn:* *(Khoan. Hướng đó ra nhà xe cơ mà? Cậu áo xanh kia chỉ nhầm lối rồi.)*
+- *Suy nghĩ của bạn:* *(Chỉ đường trơn tru thế kia thì chắc rành khu này lắm.)*
 
 **Lựa chọn tiếp theo:**
 - [Đi tiếp](#doan-70)
@@ -1467,7 +1466,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 
 📍 **Sảnh ký túc xá** — *Soi cậu bạn áo xanh: cái mũ tai bèo*
 
-- *Suy nghĩ của bạn:* *(Mũ tai bèo đeo sau lưng, dây hằn trên cổ áo. Chắc cậu ấy đứng ngoài nắng cả buổi rồi.)*
+- *Suy nghĩ của bạn:* *(Mũ tai bèo đeo sau lưng. Chắc đứng nắng cả buổi rồi.)*
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Sảnh ký túc xá](#doan-70)
@@ -1479,7 +1478,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 
 📍 **Sảnh ký túc xá** — *Soi cậu bạn áo xanh: tờ giấy trên tay*
 
-- *Suy nghĩ của bạn:* *(Một tờ sơ đồ gấp đôi, mép đã quăn. Cậu ấy cầm để chỉ đường cho người khác.)*
+- *Suy nghĩ của bạn:* *(Tay cầm tờ sơ đồ gấp đôi, mép quăn hết cả. Chắc chỉ đường cho bao nhiêu người rồi.)*
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Sảnh ký túc xá](#doan-70)
@@ -2291,7 +2290,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 <a id="doan-125"></a>
 ### Đoạn 125: Sau khi xem hết các chỗ ở Sảnh ký túc xá
 
-- *Suy nghĩ của bạn:* *(Người của đội đón tân sinh viên đây rồi. Vừa chỉ nhầm cho bạn kia, nhưng thang bộ ngay trong nhà này thì chắc biết chứ nhỉ?)*
+- *Suy nghĩ của bạn:* *(Đúng người của đội đón tân sinh viên rồi.)*
 
 **Lựa chọn tiếp theo:**
 - [Đi tiếp](#doan-74)

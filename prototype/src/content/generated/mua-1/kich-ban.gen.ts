@@ -1253,17 +1253,12 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Ai cũng mới tới như mình. Có hỏi thì họ cũng chịu.)"
+          "text": "(Ai cũng tay xách nách mang, hỏi lúc này thì ngại quá.)"
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Khoan. Có một cái lưng áo xanh giữa đám đông, không kéo vali.)"
-        },
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Nhìn kỹ xem đã.)"
+          "text": "(Kia có một bạn áo xanh tình nguyện, không phải xách gì. Ra hỏi bạn ấy vậy.)"
         },
         {
           "type": "goto",
@@ -1287,7 +1282,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh-chi-tay",
-          "text": "À, KTX. Cậu cứ đi thẳng tới cuối đường, rẽ trái hai lần là tới nhé. Cứ kéo vali theo đường đấy là thấy!"
+          "text": "Sang bên nữ á? Cậu cứ ra cửa sảnh, rẽ trái là tới luôn. Ngay kia kìa!"
         },
         {
           "type": "line",
@@ -1302,7 +1297,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Khoan. Hướng đó ra nhà xe cơ mà? Cậu áo xanh kia chỉ nhầm lối rồi.)"
+          "text": "(Chỉ đường trơn tru thế kia thì chắc rành khu này lắm.)"
         },
         {
           "type": "goto",
@@ -1355,7 +1350,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Người của đội đón tân sinh viên đây rồi. Vừa chỉ nhầm cho bạn kia, nhưng thang bộ ngay trong nhà này thì chắc biết chứ nhỉ?)"
+          "text": "(Đúng người của đội đón tân sinh viên rồi.)"
         },
         {
           "type": "goto",
@@ -1390,7 +1385,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Mũ tai bèo đeo sau lưng, dây hằn trên cổ áo. Chắc cậu ấy đứng ngoài nắng cả buổi rồi.)"
+          "text": "(Mũ tai bèo đeo sau lưng. Chắc đứng nắng cả buổi rồi.)"
         }
       ]
     },
@@ -1403,7 +1398,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Một tờ sơ đồ gấp đôi, mép đã quăn. Cậu ấy cầm để chỉ đường cho người khác.)"
+          "text": "(Tay cầm tờ sơ đồ gấp đôi, mép quăn hết cả. Chắc chỉ đường cho bao nhiêu người rồi.)"
         }
       ]
     },
@@ -22753,7 +22748,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:202 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:201 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",
