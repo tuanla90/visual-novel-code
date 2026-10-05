@@ -1,0 +1,362 @@
+{
+  "ma": "n1-bac-thinh",
+  "nhanChung": "bac-tu",
+  "nguoiDiCung": ["ha-vy", "tung"],
+  "moDau": "Bác bảo vệ đứng ở chân cầu thang, cách cái hộp kiến nghị mấy bước chân.",
+  "tuDongDuKien": ["mo-hop", "thu-tren-cung", "dem-trong", "mo-cua", "ai-ra-vao", "ai-bo"],
+  "danhSach": [
+    { "ma": "L1", "cau": "Có ai thấy người bỏ thư không?", "can": ["ai-bo"] },
+    { "ma": "L2", "cau": "Hộp được mở lúc nào, ai mở?", "can": ["mo-hop"] },
+    { "ma": "L3", "cau": "Thư được bỏ vào trong khoảng nào?", "can": ["dem-trong", "mo-cua"] },
+    { "ma": "L4", "cau": "Khoảng đó những ai ra vào tòa B?", "can": ["ai-ra-vao"], "moManhMoi": "clue-toa-b" }
+  ],
+  "duKien": [
+    {
+      "ma": "mo-hop",
+      "noiDung": "Hộp được mở lúc 9 giờ sáng thứ Hai, bác Thịnh và cô Lan (Phòng Công tác sinh viên) cùng mở.",
+      "chuBatBuoc": ["chín giờ sáng thứ Hai", "cô Lan"],
+      "giayNho": "Hộp mở 9 giờ sáng thứ Hai. Bác bảo vệ và cô Lan bên Công tác sinh viên cùng mở.",
+      "an": false,
+      "tuKe": true,
+      "nhoRa": false,
+      "sauKhi": [],
+      "bienThe": {
+        "thang": "Chín giờ sáng thứ Hai, bác với cô Lan bên Công tác sinh viên mở.",
+        "co-khong": "Bác mở, cùng với cô Lan bên Công tác sinh viên. Chín giờ sáng thứ Hai.",
+        "ke": "Cái hộp ấy à? Chín giờ sáng thứ Hai cô Lan bên Công tác sinh viên xuống, bác với cô cùng mở.",
+        "lai": "Vẫn thế thôi: chín giờ sáng thứ Hai, bác với cô Lan mở.",
+        "tu-ke": "Cháu hỏi cái hộp à? Chín giờ sáng thứ Hai, bác với cô Lan bên Công tác sinh viên mở."
+      },
+      "cauHoiMau": [
+        "Hộp này mở lúc nào, ai mở hả bác?",
+        "ai mở hộp kiến nghị",
+        "hộp kiến nghị mở lúc mấy giờ",
+        "sáng thứ Hai ai là người mở hộp",
+        "bác có mở cái hộp này không",
+        "ai được quyền mở hộp",
+        "hộp mở hôm nào"
+      ],
+      "goiY": {
+        "ai": "ha-vy",
+        "bac1": "Mình chưa biết cái hộp được mở lúc nào.",
+        "bac2": "Hộp này mở lúc nào, ai mở hả bác?"
+      }
+    },
+    {
+      "ma": "ai-bo",
+      "noiDung": "Bác không thấy ai bỏ thư; sáng đó đông sinh viên ra vào nên bác không nhớ.",
+      "chuBatBuoc": [],
+      "giayNho": "Bác bảo vệ không thấy ai bỏ thư.",
+      "an": false,
+      "tuKe": true,
+      "nhoRa": false,
+      "sauKhi": [],
+      "bienThe": {
+        "thang": "Đứa nào bỏ thì bác chịu. Đông thế bác nhớ sao nổi.",
+        "co-khong": "Bác chịu, cháu ạ. Sáng ấy sinh viên ra vào đông, bác không để ý ai đứng chỗ cái hộp.",
+        "ke": "Bác có thấy ai bỏ đâu mà tả. Người qua lại đông, bác chịu.",
+        "lai": "Bác nói rồi, bác không thấy ai bỏ cả.",
+        "tu-ke": "Còn ai bỏ lá thư ấy thì bác chịu. Sáng ấy đông, bác không để ý."
+      },
+      "cauHoiMau": [
+        "Bác có thấy ai bỏ thư vào hộp không ạ?",
+        "ai bỏ thư vậy bác",
+        "người bỏ thư trông thế nào",
+        "bác có nhớ mặt người bỏ thư không",
+        "có ai lảng vảng gần cái hộp không",
+        "bác thấy ai lạ mặt không",
+        "người bỏ thư là nam hay nữ",
+        "ai là người gửi lá thư"
+      ],
+      "goiY": {
+        "ai": "tung",
+        "bac1": "Bác trực ở đây suốt, biết đâu bác thấy người bỏ thư.",
+        "bac2": "Bác có thấy ai bỏ thư vào hộp không ạ?"
+      }
+    },
+    {
+      "ma": "thu-tren-cung",
+      "noiDung": "Lúc mở hộp, lá thư nằm trên cùng.",
+      "chuBatBuoc": ["trên cùng"],
+      "giayNho": "Lúc mở hộp, lá thư nằm trên cùng.",
+      "an": true,
+      "tuKe": false,
+      "nhoRa": true,
+      "sauKhi": ["mo-hop"],
+      "bienThe": {
+        "thang": "Lúc mở ra thì lá thư ấy nằm trên cùng.",
+        "co-khong": "Mở ra là bác thấy nó ngay. Nó nằm trên cùng.",
+        "lai": "Bác bảo rồi, nó nằm trên cùng.",
+        "nho": "À, nhắc mới nhớ. Lúc mở ra, lá thư ấy nằm trên cùng."
+      },
+      "cauHoiMau": [
+        "Lúc mở, lá thư nằm ở đâu trong hộp ạ?",
+        "thư nằm ở đâu trong hộp",
+        "trong hộp lúc đó có gì",
+        "trong hộp còn thư nào khác không",
+        "lá thư để chỗ nào trong hộp",
+        "mở hộp ra thấy gì"
+      ]
+    },
+    {
+      "ma": "dem-trong",
+      "noiDung": "23 giờ 30 đêm Chủ nhật bác khóa cửa, nhìn qua khe thấy hộp còn trống.",
+      "chuBatBuoc": ["mười một rưỡi đêm Chủ nhật", "trống"],
+      "giayNho": "Mười một rưỡi đêm Chủ nhật: hộp còn trống.",
+      "an": false,
+      "tuKe": false,
+      "nhoRa": false,
+      "sauKhi": [],
+      "bienThe": {
+        "thang": "Mười một rưỡi đêm Chủ nhật bác khóa cửa, ngó qua khe thấy trống trơn.",
+        "co-khong": "Đêm ấy thì chưa có gì. Mười một rưỡi đêm Chủ nhật bác khóa cửa, ngó qua khe hộp vẫn trống trơn.",
+        "ke": "Tối Chủ nhật bác ghé qua như mọi tuần. Mười một rưỡi đêm Chủ nhật khóa cửa, bác ngó qua khe hộp, trống trơn.",
+        "lai": "Mười một rưỡi đêm Chủ nhật, lúc bác khóa cửa, hộp còn trống."
+      },
+      "cauHoiMau": [
+        "Trước hôm đó, bác có lần nào nhìn vào hộp không ạ?",
+        "lần cuối bác thấy hộp còn trống là lúc nào",
+        "đêm Chủ nhật trong hộp có thư chưa",
+        "tối hôm trước cái hộp thế nào",
+        "bác khóa cửa tòa B lúc mấy giờ",
+        "mấy giờ bác về hôm Chủ nhật",
+        "thư bỏ vào từ lúc nào bác biết không",
+        "trước khi mở thì trong hộp có gì không"
+      ],
+      "goiY": {
+        "ai": "ha-vy",
+        "bac1": "Lúc mở hộp thì biết rồi. Nhưng trước đó, lần cuối có người nhìn vào hộp là lúc nào?",
+        "bac2": "Trước hôm đó, bác có lần nào nhìn vào hộp không ạ?"
+      }
+    },
+    {
+      "ma": "mo-cua",
+      "noiDung": "7 giờ sáng thứ Hai bác mới mở cửa tòa B.",
+      "chuBatBuoc": ["bảy giờ sáng thứ Hai"],
+      "giayNho": "Bảy giờ sáng thứ Hai tòa B mới mở cửa.",
+      "an": false,
+      "tuKe": false,
+      "nhoRa": false,
+      "sauKhi": [],
+      "bienThe": {
+        "thang": "Bảy giờ sáng thứ Hai bác mới mở cửa tòa này.",
+        "co-khong": "Đêm thì khóa hết. Bảy giờ sáng thứ Hai bác mới mở cửa tòa này.",
+        "lai": "Bảy giờ sáng thứ Hai, bác nói rồi đấy."
+      },
+      "cauHoiMau": [
+        "Sáng thứ Hai bác mở cửa tòa nhà lúc mấy giờ ạ?",
+        "mấy giờ bác mở cửa tòa B",
+        "tòa B mở cửa lúc nào",
+        "sáng thứ Hai bác tới lúc mấy giờ",
+        "buổi sáng mấy giờ sinh viên vào được tòa này",
+        "ban đêm có vào được tòa B không"
+      ],
+      "goiY": {
+        "ai": "tung",
+        "bac1": "Tớ cá là đêm thì tòa này khóa. Thế sáng mấy giờ mới vào được nhỉ?",
+        "bac2": "Sáng thứ Hai bác mở cửa tòa nhà lúc mấy giờ ạ?"
+      }
+    },
+    {
+      "ma": "ai-ra-vao",
+      "noiDung": "Từ lúc mở cửa tới lúc mở hộp, chỉ có sinh viên các lớp sinh hoạt ở tòa B ra vào.",
+      "chuBatBuoc": ["sinh viên các lớp sinh hoạt"],
+      "giayNho": "Sáng thứ Hai, trước lúc mở hộp: chỉ sinh viên các lớp sinh hoạt ở tòa B ra vào.",
+      "an": false,
+      "tuKe": false,
+      "nhoRa": false,
+      "sauKhi": [],
+      "bienThe": {
+        "thang": "Sáng thứ Hai ấy, từ lúc mở cửa tới lúc mở hộp, toàn sinh viên các lớp sinh hoạt ở đây ra vào thôi.",
+        "co-khong": "Người lạ thì bác không thấy. Sáng ấy toàn sinh viên các lớp sinh hoạt ở đây ra vào thôi.",
+        "lai": "Thì toàn sinh viên các lớp sinh hoạt ở đây thôi, bác nói rồi."
+      },
+      "cauHoiMau": [
+        "Sáng hôm đó những ai ra vào đây hả bác?",
+        "sáng thứ Hai có những ai vào tòa B",
+        "ai ra vào sảnh buổi sáng hôm đó",
+        "sáng thứ Hai ai tới sảnh đầu tiên",
+        "có người ngoài nào vào tòa B không",
+        "sáng đó tòa này có đông người không"
+      ],
+      "goiY": {
+        "ai": "ha-vy",
+        "bac1": "Biết khoảng giờ rồi. Giờ đó những ai vào được tòa này?",
+        "bac2": "Sáng hôm đó những ai ra vào đây hả bác?"
+      }
+    },
+    {
+      "ma": "lich-truc",
+      "noiDung": "Bác trực sảnh tòa B từ thứ Hai tới thứ Bảy; Chủ nhật ghé từ 8 giờ tối, giữ sổ ký phòng máy rồi khóa sảnh.",
+      "chuBatBuoc": ["tám giờ tối"],
+      "giayNho": "Chủ nhật bác bảo vệ chỉ ghé tòa B từ tám giờ tối, giữ sổ ký phòng máy.",
+      "an": true,
+      "tuKe": false,
+      "nhoRa": false,
+      "sauKhi": [],
+      "bienThe": {
+        "thang": "Bác trực ở đây từ thứ Hai tới thứ Bảy. Chủ nhật thì tám giờ tối bác mới ghé, giữ sổ ký phòng máy rồi khóa sảnh.",
+        "lai": "Thứ Hai tới thứ Bảy bác trực cả ngày, Chủ nhật tám giờ tối mới ghé."
+      },
+      "cauHoiMau": [
+        "Bác trực ở đây những hôm nào ạ?",
+        "lịch trực của bác thế nào",
+        "bác trực ca nào",
+        "Chủ nhật bác có ở đây không",
+        "tối Chủ nhật có ai vào sảnh tòa B không",
+        "bác có ghi sổ người ra vào không",
+        "ban đêm có bảo vệ trực không"
+      ]
+    }
+  ],
+  "lopKhac": {
+    "chao": {
+      "loi": ["Ừ, chào cháu.", "Chào cháu. Có việc gì thế?"],
+      "cauHoiMau": ["Cháu chào bác ạ", "chào bác", "bác ơi", "em chào bác"]
+    },
+    "cam-on": {
+      "loi": ["Ừ, không có gì.", "Có gì đâu mà cảm ơn."],
+      "cauHoiMau": ["cháu cảm ơn bác ạ", "cảm ơn bác nhiều", "thanks bác", "dạ cháu cảm ơn"]
+    },
+    "hoi-mo": {
+      "hoiTiep": "Bác còn nhớ gì nữa không ạ?",
+      "hetKe": [
+        "Bác biết có thế thôi. Cháu hỏi cụ thể thì bác nhớ được gì nói nấy.",
+        "Chuyện hôm ấy bác chỉ nhớ đến thế. Cháu cần biết gì thì cứ hỏi thẳng."
+      ],
+      "cauHoiMau": [
+        "Bác có biết gì về lá thư này không ạ?",
+        "bác kể cháu nghe chuyện cái hộp với",
+        "bác còn nhớ gì nữa không",
+        "còn gì nữa không bác",
+        "bác biết gì về chuyện này không",
+        "bác nhớ ra thêm gì không ạ",
+        "hôm đó có chuyện gì lạ không bác",
+        "thế bác biết gì",
+        "cái hộp thì sao hả bác"
+      ]
+    },
+    "tam-biet": {
+      "loi": ["Ừ, đi đi. Mép hộp sắc đấy, đừng thò tay vào.", "Ừ, các cháu đi."],
+      "cauHoiMau": ["thôi cháu đi đây ạ", "cháu chào bác cháu về", "cháu xin phép bác ạ", "thế thôi ạ, cháu đi nhé", "bọn cháu đi đây bác ạ", "tạm biệt bác"]
+    },
+    "khong-ro": {
+      "loi": [
+        "Cái đấy bác không rõ.",
+        "Chuyện ấy bác không nắm. Cháu sang hỏi bên Công tác sinh viên xem.",
+        "Bác không tận mắt thấy thì bác không nói được."
+      ]
+    },
+    "ngoai-le": {
+      "loi": [
+        "Bác đang trực, cháu ạ. Hỏi chuyện tòa này thì bác biết gì nói nấy.",
+        "Chuyện đó thì bác chịu.",
+        "Thôi, cháu hỏi việc của cháu đi."
+      ]
+    },
+    "hoi-rieng-tu": {
+      "loi": [
+        "Chuyện nhà bác thì để bác. Cháu hỏi việc của cháu đi.",
+        "Hỏi bác chuyện ấy làm gì? Bác đang trực."
+      ]
+    },
+    "pha-game": {
+      "loi": [
+        "Cháu nói gì bác không hiểu. Hỏi chuyện tòa này thì bác biết gì nói nấy.",
+        "Bác nghe chẳng ra làm sao cả. Cháu hỏi lại xem nào."
+      ]
+    },
+    "doi-dap-an": {
+      "loi": [
+        "Đứa nào thì bác chịu. Cháu hỏi điều bác thấy thì bác nói.",
+        "Bác không đoán mò cho cháu được. Bác thấy gì thì bác nói nấy."
+      ]
+    }
+  },
+  "chuDeKhongBiet": [
+    {
+      "ma": "camera",
+      "cauHoiMau": [
+        "Sảnh này có camera không ạ?",
+        "camera ở đây có quay được cái hộp không",
+        "có camera an ninh không bác",
+        "xem lại hình camera được không",
+        "camera trong tòa B đặt ở đâu",
+        "có máy quay nào chĩa vào hộp không"
+      ],
+      "loi": ["Chuyện camera bác không nắm, cháu ạ.", "Máy móc ấy cháu hỏi bên trường. Bác không rõ."]
+    },
+    {
+      "ma": "khoa-hop",
+      "cauHoiMau": [
+        "Hộp kiến nghị có khóa không ạ?",
+        "ai giữ chìa khóa hộp",
+        "ổ khóa hộp có bị phá không",
+        "chìa khóa cái hộp để ở đâu",
+        "hộp có bị cạy không bác",
+        "khóa hộp còn nguyên không",
+        "ai có chìa mở được hộp"
+      ],
+      "loi": ["Chuyện khóa hộp cháu hỏi cô Lan bên Công tác sinh viên.", "Cái đấy bác không rõ. Cháu hỏi cô Lan xem."]
+    },
+    {
+      "ma": "phong-bi",
+      "cauHoiMau": [
+        "Lá thư có bỏ trong phong bì không ạ?",
+        "thư dán kín hay để hở",
+        "phong bì màu gì",
+        "ngoài phong bì có ghi tên không",
+        "thư viết tay hay đánh máy",
+        "trong thư viết những gì",
+        "bác có đọc lá thư không"
+      ],
+      "loi": ["Thư từ bác không giở ra xem, cháu ạ.", "Trong thư thế nào thì bác chịu. Cháu hỏi bên Công tác sinh viên."]
+    },
+    {
+      "ma": "cua-sau",
+      "cauHoiMau": [
+        "Tòa B có cửa sau không ạ?",
+        "cửa sau có khóa không bác",
+        "ngoài cửa chính còn lối nào vào tòa B",
+        "có ai đi lối cửa sau không",
+        "cửa bên hông tòa nhà có mở không",
+        "lối thoát hiểm có mở không"
+      ],
+      "loi": ["Bác ngồi đây thì bác nói được chuyện ở đây thôi.", "Cái đấy bác không rõ, cháu ạ."]
+    },
+    {
+      "ma": "lao-cong",
+      "cauHoiMau": [
+        "Cô lao công có vào sảnh không ạ?",
+        "cô lao công dọn sảnh lúc mấy giờ",
+        "lao công có chìa khóa tòa B không",
+        "ai quét dọn sảnh này",
+        "cô lao công có thấy gì không",
+        "người dọn vệ sinh có đụng vào hộp không"
+      ],
+      "loi": ["Chuyện của người khác thì cháu hỏi người ta, bác không nói thay.", "Cái đấy bác không rõ."]
+    },
+    {
+      "ma": "hop-lap-dat",
+      "cauHoiMau": [
+        "Cái hộp này đặt ở đây từ bao giờ ạ?",
+        "ai lắp hộp kiến nghị",
+        "hộp bao lâu mới mở một lần",
+        "tuần nào cũng mở hộp à",
+        "hộp kiến nghị có từ năm nào"
+      ],
+      "loi": ["Chuyện cái hộp ấy cháu hỏi bên Công tác sinh viên.", "Cái đấy bác không nắm."]
+    }
+  ],
+  "tuKhoaTrongChuyen": [
+    "hop", "thu", "toa", "cua", "sanh", "camera", "khoa", "chia", "so", "bao ve", "truc", "dem", "sang", "chu nhat",
+    "thu hai", "sinh vien", "phong bi", "lao cong", "ra vao", "kien nghi", "thu pham", "gui"
+  ],
+  "roiDi": {
+    "nut": "Chào bác, đi thôi",
+    "loiBan": "Bọn cháu cảm ơn bác ạ.",
+    "giuLai": { "ai": "ha-vy", "loi": "Khoan, tính lại đã. Trong sổ còn dòng này chưa gạch:" },
+    "du": { "ai": "tung", "loi": "Thế là đủ rồi đấy. Đi thôi!" },
+    "thieu": { "ai": "ha-vy", "loi": "Được. Điều chưa rõ tớ để nguyên trong sổ." }
+  }
+}

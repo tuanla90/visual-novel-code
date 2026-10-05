@@ -131,6 +131,8 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
       return { type: 'ending-branch' };
     case 'xong-viec-chinh':
       return { type: 'xong-viec-chinh' };
+    case 'hoi-dap':
+      return { type: 'hoi-dap', ma: it.ma };
     case 'explore':
       return {
         type: 'explore',

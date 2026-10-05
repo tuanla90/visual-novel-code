@@ -1,6 +1,7 @@
 /**
  * `npm run noi-dung:sinh:mua1` — đọc `prototype/noi-dung-mua-1/`, kiểm chéo, chuyển và GHI
- * `src/content/generated/mua-1/kich-ban.gen.ts`. Có lỗi → in `<tệp>:<dòng>: …`, không ghi, mã thoát 1.
+ * `src/content/generated/mua-1/kich-ban.gen.ts` cùng `hoi-dap.gen.ts` (tờ dữ kiện hỏi nhân chứng, `hoi-dap/*.json`, gói B12).
+ * Có lỗi → in `<tệp>:<dòng>: …`, không ghi, mã thoát 1.
  * Không import gì từ `src/`.
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -8,6 +9,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chuyenMvp, type DuLieuMvp } from './chuyen-mvp.ts';
 import { dinhDangLoi } from './doc-mvp.ts';
+import { docHoiDap, type BoHoiDap } from './hoi-dap-mua1.ts';
 import { kiemLuatMvp } from './luat-mvp.ts';
 import { tepLechTrenDia } from './sinh.ts';
 import { docSpriteVat, docTenAnh, docThuMucMvp, traViTri } from './thu-muc-mvp.ts';
@@ -21,24 +23,45 @@ const DAU_TEP = [
   '// `npm run noi-dung:sinh:mua1`, commit cả .md lẫn .gen.ts.',
 ].join('\n');
 
+const DAU_TEP_HOI_DAP = [
+  '// ĐỪNG SỬA TAY — tệp SINH TỰ ĐỘNG từ prototype/noi-dung-mua-1/hoi-dap/*.json bởi `npm run noi-dung:sinh:mua1`',
+  '// (tools/noi-dung/sinh-mua1.ts, tools/noi-dung/hoi-dap-mua1.ts). Muốn đổi chữ: sửa tệp .json, chạy `npm run kiem-noi-dung:mua1`',
+  '// rồi `npm run noi-dung:sinh:mua1`, commit cả .json lẫn .gen.ts.',
+].join('\n');
+
 const js = (v: unknown): string => JSON.stringify(v, null, 2);
 
-export function vanBanMua1(d: DuLieuMvp): Record<string, string> {
-  return {
+/** Chữ các tệp sinh. `hoiDap` = tờ dữ kiện đã đọc (`null` / thiếu = thư mục không có hoi-dap/, sinh như trước gói B12). */
+export function vanBanMua1(d: DuLieuMvp, hoiDap: BoHoiDap | null = null): Record<string, string> {
+  const tep: Record<string, string> = {
     'kich-ban.gen.ts': [
       DAU_TEP,
       "import type { KichBanMvp } from '../../mvp/types';",
       "import { themNhieuMvp } from '../../../../tools/noi-dung/nhieu-mvp';",
+      ...(hoiDap ? ["import { HOI_DAP_MUA_1 } from './hoi-dap.gen';"] : []),
       '',
       '/** Kịch bản Mùa 1: noi-dung-mua-1/. */',
       `const GOC = ${js(d)} satisfies KichBanMvp;`,
       '',
       '/** Bảng dữ liệu = dòng của truyện (ở trên) + dữ liệu nền sinh lại lúc nạp (tools/noi-dung/nhieu-mvp.ts, hạt cố định). */',
-      'export const KICH_BAN_MUA_1 = { ...GOC, duLieu: GOC.duLieu ? themNhieuMvp(GOC.duLieu) : GOC.duLieu } satisfies KichBanMvp;',
+      hoiDap
+        ? 'export const KICH_BAN_MUA_1 = { ...GOC, hoiDap: HOI_DAP_MUA_1, duLieu: GOC.duLieu ? themNhieuMvp(GOC.duLieu) : GOC.duLieu } satisfies KichBanMvp;'
+        : 'export const KICH_BAN_MUA_1 = { ...GOC, duLieu: GOC.duLieu ? themNhieuMvp(GOC.duLieu) : GOC.duLieu } satisfies KichBanMvp;',
       'export const KICH_BAN_MVP = KICH_BAN_MUA_1;',
       '',
     ].join('\n'),
   };
+  if (hoiDap) {
+    tep['hoi-dap.gen.ts'] = [
+      DAU_TEP_HOI_DAP,
+      "import type { BoHoiDapMvp } from '../../mvp/types';",
+      '',
+      '/** Tờ dữ kiện hỏi nhân chứng Mùa 1 (gói B12): câu hỏi mẫu chung + tờ theo mã chuỗi. */',
+      `export const HOI_DAP_MUA_1 = ${js(hoiDap)} satisfies BoHoiDapMvp;`,
+      '',
+    ].join('\n');
+  }
+  return tep;
 }
 
 export interface KetQuaSinhMua1 {
@@ -50,11 +73,13 @@ export interface KetQuaSinhMua1 {
 export function sinhVanBanMua1(thuMuc: string = THU_MUC_NOI_DUNG_MUA_1): KetQuaSinhMua1 {
   const kq = docThuMucMvp(thuMuc);
   const luat = kiemLuatMvp(kq.mvp, { spriteVat: docSpriteVat(), anh: docTenAnh() });
-  const loi = [...kq.loi, ...luat.loi.map((l) => traViTri(l, kq.banDo))].map(dinhDangLoi);
+  // Giọng của lời trong tờ dữ kiện do `kiem-noi-dung:mua1` / `kiem-giong:mua1` kiểm (như lời trong loi/); ở đây chỉ luật tờ.
+  const hd = docHoiDap(thuMuc, kq.mvp, { giong: false });
+  const loi = [...kq.loi, ...luat.loi.map((l) => traViTri(l, kq.banDo))].map(dinhDangLoi).concat(hd.loi);
   if (loi.length > 0) return { tep: {}, duLieu: null, loi };
   try {
     const duLieu = chuyenMvp(kq.mvp, luat);
-    return { tep: vanBanMua1(duLieu), duLieu, loi: [] };
+    return { tep: vanBanMua1(duLieu, hd.bo), duLieu, loi: [] };
   } catch (e) {
     return { tep: {}, duLieu: null, loi: [(e as Error).message] };
   }

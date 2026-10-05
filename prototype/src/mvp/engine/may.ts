@@ -39,7 +39,8 @@ import type {
   TheThuThachMvp,
   VuSauMvp,
 } from '../../content/mvp/types';
-import { MAU_GHIM, type BoiCanhChuoi, type KhamPhaMvp, type MauGhimMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp, type TiepTucTuyenMvp } from './trang-thai';
+import { MAU_GHIM, type BoiCanhChuoi, type CachChoiMvp, type KhamPhaMvp, type MauGhimMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp, type TiepTucTuyenMvp } from './trang-thai';
+import { cachChoiCua, dongBong, dongChuaGach, ghiTuDong, goiY, hoi, keTiep, khoiThayThe, khungHoiDap, moBuoiHoi, napLaiLuot, roiDi, tienDoCua, toHoiDap, type KhungHoiDapMvp } from './hoi-dap';
 
 /**
  * Tên dự phòng khi trạng thái chưa có tên (chưa qua câu hỏi tên, hay ô lưu hỏng). Không dùng trên đường chạy thường:
@@ -149,7 +150,19 @@ export type HanhDongMvp =
   /** Cất việc phụ đang làm để quay về bảng hoạt động. */
   | { type: 'tam-dung-nhiem-vu-phu' }
   /** Màn kết của nhiệm vụ phụ: quay lại màn kết của vụ chính. */
-  | { type: 'xong-nhiem-vu-phu' };
+  | { type: 'xong-nhiem-vu-phu' }
+  /** Đổi cách chơi cảnh hỏi nhân chứng (gói B12): lúc nào cũng được, lưu cùng ván. */
+  | { type: 'doi-cach-choi'; cach: CachChoiMvp }
+  /** Buổi hỏi: hỏi một câu. Gõ → chỉ `cau` (máy so chữ xếp lớp); bấm → kèm `lop` (mã dữ kiện hoặc 'hoi-mo'). */
+  | { type: 'hoi-dap-hoi'; cau: string; lop?: string }
+  /** Buổi hỏi, cách "xem cả đoạn": nhân chứng kể nốt điều kế tiếp còn thiếu. */
+  | { type: 'hoi-dap-ke-tiep' }
+  /** Buổi hỏi: bấm avatar bạn đi cùng để xin gợi ý (bậc 1 rồi bậc 2). */
+  | { type: 'hoi-dap-goi-y' }
+  /** Buổi hỏi: đóng bóng thoại của bạn đi cùng (cũng là "Hỏi tiếp" khi bị giữ lại). */
+  | { type: 'hoi-dap-dong-bong' }
+  /** Buổi hỏi: nút rời đi ("Vẫn đi" sau khi bị giữ lại cũng là hành động này). */
+  | { type: 'hoi-dap-roi-di' };
 
 // ---------- Khung nhìn ----------
 
@@ -192,6 +205,8 @@ export type KhungNhinMvp =
   | { kind: 'trial-filter'; nut: Extract<NutMvp, { type: 'trial-filter' }>; lanThu: number }
   | { kind: 'create-character'; nut: Extract<NutMvp, { type: 'create-character' }> }
   | { kind: 'explore'; nut: Extract<NutMvp, { type: 'explore' }>; diem: DiemKhamPhaHienMvp[] }
+  /** `[HỎI ĐÁP]` (gói B12): buổi hỏi nhân chứng đang mở (xem `hoi-dap.ts`). */
+  | { kind: 'hoi-dap'; hoiDap: KhungHoiDapMvp }
   /** `vu`: vụ sau vừa kết (`null` = vụ gốc, dùng `ketQua`); `vuKe`: vụ chơi tiếp được, nếu còn. */
   | {
       kind: 'end';
@@ -396,7 +411,7 @@ export function taoTrangThai(kb: KichBanMvp, batDauLuc: number = Date.now()): Tr
 
 /** Sang chuỗi khác (`[ĐI TỚI]`, "đi tới", rẽ kết): rời cảnh `[KHÁM PHÁ]` đang mở, nếu có. */
 function nhayToi(s: TrangThaiMvp, chuoi: string, boiCanh: BoiCanhChuoi): TrangThaiMvp {
-  return { ...s, conTro: { chuoi, nut: 0, boiCanh }, hoiDap: null, khamPha: null };
+  return { ...s, conTro: { chuoi, nut: 0, boiCanh }, hoiDap: null, khamPha: null, buoiHoi: null };
 }
 
 const maHoSo = (s: TrangThaiMvp): string[] => [...s.hoSo.taiLieu, ...s.hoSo.manhMoi, ...s.hoSo.bangChung];
@@ -405,7 +420,7 @@ const maHoSo = (s: TrangThaiMvp): string[] => [...s.hoSo.taiLieu, ...s.hoSo.manh
 function luuTuyen(s: TrangThaiMvp): TiepTucTuyenMvp {
   return {
     conTro: s.conTro, canh: s.canh, nhiemVu: s.nhiemVu, nhacViec: s.nhacViec,
-    thuThachDangLam: s.thuThachDangLam, duKienDangLam: s.duKienDangLam, hoiDap: s.hoiDap,
+    thuThachDangLam: s.thuThachDangLam, duKienDangLam: s.duKienDangLam, hoiDap: s.hoiDap, buoiHoi: s.buoiHoi ?? null,
     khamPha: s.khamPha, doiChat: s.doiChat, choHienTaiLieu: s.choHienTaiLieu, sauKhiHien: s.sauKhiHien,
     bang: s.bang, ngayThang: s.ngayThang ?? null, hoSoCo: maHoSo(s),
   };
@@ -485,6 +500,7 @@ function batDauVuSau(s: TrangThaiMvp, vu: Pick<VuSauMvp, 'id' | 'chuoi'>, phu: T
     ngayThang: null,
     khamPha: null,
     hoiDap: null,
+    buoiHoi: null,
     doiChat: null,
     duKienDangLam: null,
     thuThachDangLam: null,
@@ -738,6 +754,20 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
       case 'set-date':
         s = tienNut({ ...s, ngayThang: nut.date });
         break;
+      case 'hoi-dap': {
+        // Buổi hỏi đang mở ở nút này → chờ người chơi. Không có tờ → chạy qua như dòng thường (đoạn [LỜI] ngay sau).
+        if (s.buoiHoi && s.buoiHoi.ma === nut.ma) return s;
+        if (!toHoiDap(kb, nut.ma)) {
+          s = tienNut(s);
+          break;
+        }
+        // Cách "xem cả đoạn": chạy đúng như trước gói B12 (đoạn [LỜI] rồi hậu quả), ghi nhận các dữ kiện đoạn ấy nói ra.
+        if (cachChoiCua(s) === 'tu-dong') {
+          s = tienNut({ ...ghiTuDong(kb, s, nut.ma), buoiHoi: null });
+          break;
+        }
+        return moBuoiHoi(kb, s, nut.ma);
+      }
       case 'condition':
       case 'note':
       case 'stage':
@@ -829,6 +859,10 @@ export function khungNhin(kb: KichBanMvp, s: TrangThaiMvp): KhungNhinMvp {
       return { kind: 'create-character', nut };
     case 'explore':
       return { kind: 'explore', nut, diem: diemDangHien(nut, s.khamPha?.daXem ?? []) };
+    case 'hoi-dap': {
+      const hd = khungHoiDap(kb, s, nut.ma);
+      return hd ? { kind: 'hoi-dap', hoiDap: hd } : { kind: 'error', message: `Không có tờ dữ kiện "${nut.ma}".` };
+    }
     case 'end':
       return {
         kind: 'end',
@@ -887,6 +921,25 @@ function ketThucPhanHoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
   return tienNut({ ...s, hoiDap: null });
 }
 
+/**
+ * Đóng buổi hỏi sau khi đã chào đi: bỏ qua các nút buổi hỏi đã thay (lời viết sẵn, hậu quả mở manh mối của danh sách), áp các
+ * hậu quả còn lại. Còn dòng chưa gạch thì chỗ bấm của nhân chứng ở [KHÁM PHÁ] coi như chưa xem: việc chính chưa xong.
+ */
+function dongBuoiHoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
+  const b = s.buoiHoi;
+  const conTro = s.conTro;
+  const ht = nutHienTai(kb, s);
+  const to = b ? toHoiDap(kb, b.ma) : undefined;
+  if (!b || !conTro || !to || 'loi' in ht || ht.nut?.type !== 'hoi-dap') return { ...s, buoiHoi: null };
+  const { nutSau, hauQua } = khoiThayThe(ht.chuoi.nodes, conTro.nut, to);
+  let moi: TrangThaiMvp = { ...s, buoiHoi: null, conTro: { ...conTro, nut: nutSau } };
+  const kp = moi.khamPha;
+  if (kp && dongChuaGach(moi, to).length > 0 && kp.daXem.includes(conTro.chuoi)) {
+    moi = { ...moi, khamPha: { ...kp, daXem: kp.daXem.filter((c) => c !== conTro.chuoi) } };
+  }
+  return apHauQua(moi, hauQua).s;
+}
+
 export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangThaiMvp {
   if (s.loi) return s;
   if (hd.type === 'sua-con-tro') return chayToiNutCanNguoiChoi(kb, s);
@@ -909,6 +962,16 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
     const cu = bang.boGhim ?? [];
     const moiBo = hd.ghim ? cu.filter((x) => x !== hd.the) : cu.includes(hd.the) ? cu : [...cu, hd.the];
     return moiBo === cu ? s : { ...s, bang: { ...bang, boGhim: moiBo } };
+  }
+  if (hd.type === 'doi-cach-choi') {
+    if (hd.cach !== 'tu-dong' && hd.cach !== 'bam' && hd.cach !== 'go') return s;
+    const b = s.buoiHoi;
+    const n = s.conTro ? timChuoi(kb, s.conTro.chuoi)?.nodes[s.conTro.nut] : undefined;
+    // Sang "xem cả đoạn" khi buổi hỏi vừa mở, chưa hỏi ra gì: đóng buổi hỏi, chạy đoạn viết sẵn như trước gói B12.
+    if (hd.cach === 'tu-dong' && b && !b.daRoi && n?.type === 'hoi-dap' && n.ma === b.ma && tienDoCua(s, b.ma).biet.length === 0 && s.conTro) {
+      return chayToiNutCanNguoiChoi(kb, { ...ghiTuDong(kb, s, b.ma), cachChoi: hd.cach, buoiHoi: null, conTro: { ...s.conTro, nut: s.conTro.nut + 1 } });
+    }
+    return cachChoiCua(s) === hd.cach && s.cachChoi !== undefined ? s : { ...s, cachChoi: hd.cach };
   }
   const kn = khungNhin(kb, s);
   let moi: TrangThaiMvp | null = null;
@@ -966,7 +1029,10 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       break;
     }
     case 'tiep': {
-      if (kn.kind === 'feedback') {
+      if (kn.kind === 'hoi-dap') {
+        if (!kn.hoiDap.daRoi) return s;
+        moi = dongBuoiHoi(kb, s);
+      } else if (kn.kind === 'feedback') {
         const hoiDap = s.hoiDap;
         if (!hoiDap) return s;
         const viTri = hoiDap.viTri + 1;
@@ -1111,6 +1177,33 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       if (!d || d.daXem) return s;
       const daXemDiem = (s.daXemDiem ?? []).includes(d.diem.chuoi) ? s.daXemDiem : [...(s.daXemDiem ?? []), d.diem.chuoi];
       moi = { ...s, daXemDiem, khamPha: { ...kp, daXem: [...kp.daXem, d.diem.chuoi] }, conTro: { chuoi: d.diem.chuoi, nut: 0, boiCanh: s.conTro.boiCanh } };
+      // Làm việc khác trong cảnh: nhân chứng đã hết lượt hỏi ở chỗ khác được hỏi lại đủ lượt.
+      moi = napLaiLuot(kb, moi, d.diem.chuoi);
+      break;
+    }
+    case 'hoi-dap-hoi': {
+      if (kn.kind !== 'hoi-dap') return s;
+      moi = hoi(kb, s, hd.cau, hd.lop);
+      break;
+    }
+    case 'hoi-dap-ke-tiep': {
+      if (kn.kind !== 'hoi-dap') return s;
+      moi = keTiep(kb, s);
+      break;
+    }
+    case 'hoi-dap-goi-y': {
+      if (kn.kind !== 'hoi-dap') return s;
+      moi = goiY(kb, s, true);
+      break;
+    }
+    case 'hoi-dap-dong-bong': {
+      if (kn.kind !== 'hoi-dap') return s;
+      moi = dongBong(s);
+      break;
+    }
+    case 'hoi-dap-roi-di': {
+      if (kn.kind !== 'hoi-dap') return s;
+      moi = roiDi(kb, s, false);
       break;
     }
   }

@@ -25,6 +25,8 @@
 
 ### n1-bac-thinh — Bác Thịnh kể lúc mở hộp {cảnh: sanh-toa-b}
 
+<!-- Gói B12: hỏi đáp theo tờ hoi-dap/n1-bac-thinh.json. Cách "xem cả đoạn" chạy [LỜI] rồi [HẬU QUẢ] như cũ; cách bấm / gõ mở buổi hỏi thay cho các dòng lời và hậu quả mở manh mối ngay sau (manh mối mở khi gạch đủ dòng danh sách có moManhMoi). -->
+- [HỎI ĐÁP n1-bac-thinh]
 - [LỜI n1-bac-thinh.1]
 - [HẬU QUẢ] mở manh mối clue-toa-b
 

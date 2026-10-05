@@ -38,12 +38,15 @@ export async function kiemNoiDungMvp(
   thuMucSinh: string = THU_MUC_SINH_MVP,
   hamVanBan: (d: DuLieuMvp) => Record<string, string> = vanBanMvp,
   nhanThuMuc: string = 'noi-dung-mvp',
+  /** Kiểm thêm sau khi đọc (Mùa 1: tờ dữ kiện hỏi nhân chứng, gói B12). Trả lỗi đã định dạng `<tệp>:<dòng>: …` và phần tóm tắt thêm. */
+  kiemThem?: (mvp: RawMvp) => { loi: string[]; tomTat: string },
 ): Promise<KetQuaKiemMvp> {
   const kq = docThuMucMvp(thuMuc);
   const loiDoc = [...kq.loi];
   const luat = kiemLuatMvp(kq.mvp, { spriteVat: docSpriteVat(), anh: docTenAnh() });
   loiDoc.push(...luat.loi.map((l) => traViTri(l, kq.banDo)));
-  const loi = loiDoc.map(dinhDangLoi);
+  const them = kiemThem ? kiemThem(kq.mvp) : { loi: [], tomTat: '' };
+  const loi = [...loiDoc.map(dinhDangLoi), ...them.loi];
   let tepCu: string[] = [];
   let duLieu: DuLieuMvp | null = null;
   if (loi.length === 0) {
@@ -61,7 +64,7 @@ export async function kiemNoiDungMvp(
     sql = chay.ketQua;
   }
   const soSql = sql ? `; ${sql.length} câu SQL khai số dòng, chạy thật khớp ${sql.filter((s) => s.soDongThat === s.soDong).length}` : '';
-  const tomTat = loi.length === 0 ? `${nhanThuMuc}: ${kq.tep.length} tệp, không lỗi — ${dem(kq.mvp)}${soSql}.` : `${nhanThuMuc}: ${kq.tep.length} tệp, ${loi.length} lỗi.`;
+  const tomTat = loi.length === 0 ? `${nhanThuMuc}: ${kq.tep.length} tệp, không lỗi — ${dem(kq.mvp)}${soSql}${them.tomTat ? `; ${them.tomTat}` : ''}.` : `${nhanThuMuc}: ${kq.tep.length} tệp, ${loi.length} lỗi.`;
   const canhBao = luat.canhBao.map((l) => dinhDangLoi(traViTri(l, kq.banDo)));
   if (kq.soLoiTam > 0) canhBao.push(`${nhanThuMuc}/loi/: còn ${kq.soLoiTam} dòng lời "(tạm)" chờ phiên truyện viết lời thật`);
   return { loi, canhBao, tomTat, tepCu, sql };

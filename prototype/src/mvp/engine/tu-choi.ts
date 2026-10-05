@@ -70,6 +70,10 @@ function hanhDongTuDong(s: TrangThaiMvp, kn: Exclude<KhungNhinMvp, { kind: 'end'
       const d = kn.diem.find((x) => !x.daXem);
       return d ? { type: 'xem-diem', chuoi: d.diem.chuoi } : { type: 'tiep' };
     }
+    case 'hoi-dap':
+      // Buổi hỏi nhân chứng (gói B12): nghe kể nốt đoạn viết sẵn ("xem cả đoạn"), rồi chào đi; bị giữ lại thì vẫn đi.
+      if (kn.hoiDap.daRoi) return { type: 'tiep' };
+      return kn.hoiDap.conKe ? { type: 'hoi-dap-ke-tiep' } : { type: 'hoi-dap-roi-di' };
   }
 }
 

@@ -3,6 +3,7 @@
 // `npm run noi-dung:sinh:mua1`, commit cả .md lẫn .gen.ts.
 import type { KichBanMvp } from '../../mvp/types';
 import { themNhieuMvp } from '../../../../tools/noi-dung/nhieu-mvp';
+import { HOI_DAP_MUA_1 } from './hoi-dap.gen';
 
 /** Kịch bản Mùa 1: noi-dung-mua-1/. */
 const GOC = {
@@ -3335,6 +3336,10 @@ const GOC = {
       "canh": "sanh-toa-b",
       "mocSomNhat": 11,
       "nodes": [
+        {
+          "type": "hoi-dap",
+          "ma": "n1-bac-thinh"
+        },
         {
           "type": "line",
           "speaker": "bac-tu",
@@ -24758,5 +24763,5 @@ const GOC = {
 } satisfies KichBanMvp;
 
 /** Bảng dữ liệu = dòng của truyện (ở trên) + dữ liệu nền sinh lại lúc nạp (tools/noi-dung/nhieu-mvp.ts, hạt cố định). */
-export const KICH_BAN_MUA_1 = { ...GOC, duLieu: GOC.duLieu ? themNhieuMvp(GOC.duLieu) : GOC.duLieu } satisfies KichBanMvp;
+export const KICH_BAN_MUA_1 = { ...GOC, hoiDap: HOI_DAP_MUA_1, duLieu: GOC.duLieu ? themNhieuMvp(GOC.duLieu) : GOC.duLieu } satisfies KichBanMvp;
 export const KICH_BAN_MVP = KICH_BAN_MUA_1;

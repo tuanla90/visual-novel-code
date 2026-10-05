@@ -284,6 +284,8 @@ export type MucMvp =
    */
   | { kind: 'doi-chat'; id: string; asker: { speaker: string; text: string }; cauHoi: string | null; bangChung: RawBangChungDoiChat[]; chuaDu: RawLine[] | null; khac: RawLine[] | null; hetLuot: RawLine[] | null; truUyTin: boolean; nguoiQuen: { ma: string; noiThay: string } | null }
   | { kind: 'xong-viec-chinh' }
+  /** `- [HỎI ĐÁP <mã>]` (gói B12): cảnh hỏi nhân chứng theo tờ `hoi-dap/<mã>.json`; các dòng lời ngay sau là cách "xem cả đoạn". */
+  | { kind: 'hoi-dap'; ma: string }
   | { kind: 'challenge'; id: string }
   | { kind: 'fix-query'; id: string }
   | { kind: 'effect'; id: string }
@@ -1323,6 +1325,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         return add(item);
       }
       if (line === '- [XONG VIỆC CHÍNH]') return add({ kind: 'xong-viec-chinh' });
+      if ((m = new RegExp(`^- \\[HỎI ĐÁP (${MA})\\]$`).exec(line))) return add({ kind: 'hoi-dap', ma: m[1] ?? '' });
       if (line === '- [KẾT THÚC]') return add({ kind: 'end' });
       if ((m = /^- \[(VÀO|RA) ([a-z-]+)\]$/.exec(line))) return add({ kind: 'stage', action: m[1] === 'VÀO' ? 'vao' : 'ra', nhanVat: m[2] ?? '' });
       if ((m = /^- \[CHỜ (\d+) giây\]$/.exec(line))) return add({ kind: 'wait', giay: Number(m[1]) });

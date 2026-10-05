@@ -17,6 +17,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { docTepLoi, type DoanLoi } from './ghep-loi.ts';
+import { tepLoiHoiDap, traDongHoiDap } from './hoi-dap-loi.ts';
 
 const GOC = fileURLToPath(new URL('../../noi-dung-mvp/', import.meta.url));
 
@@ -373,11 +374,20 @@ export function chayKiemGiong(thuMucV2?: string, thuMucGoc: string = GOC): KetQu
     // Kiểm giọng trên bộ lời đã thay các tệp v2 vào chỗ bản gốc.
     tep = goc.map((g) => v2.find((m) => m.ten === g.ten) ?? g);
   }
-  const kq = kiemGiong(luat, tep);
-  const loi = [...them.loi, ...kq.loi];
-  const canhBao = [...them.canhBao, ...kq.canhBao];
-  const tomTat = `kiem-giong: ${tep.length} tệp lời, ${kq.bong.length} bong bóng — ${loi.length} lỗi, ${canhBao.length} cảnh báo.`;
+  // Lời trong tờ dữ kiện hỏi nhân chứng (hoi-dap/*.json, gói B12): kiểm như lời trong loi/, báo về đúng dòng JSON.
+  const hoiDap = tepLoiHoiDap(thuMucGoc, relative(process.cwd(), join(thuMucGoc, 'hoi-dap')).split('\\').join('/'));
+  const kq = kiemGiong(luat, [...tep, ...hoiDap]);
+  const loi = [...them.loi, ...kq.loi].map((l) => traDongHoiDap(l, hoiDap));
+  const canhBao = [...them.canhBao, ...kq.canhBao].map((l) => traDongHoiDap(l, hoiDap));
+  const tomTat = `kiem-giong: ${tep.length} tệp lời${hoiDap.length ? `, ${hoiDap.length} tờ hỏi đáp` : ''}, ${kq.bong.length} bong bóng — ${loi.length} lỗi, ${canhBao.length} cảnh báo.`;
   return { loi, canhBao, tomTat };
+}
+
+/** Lỗi giọng của riêng lời trong tờ dữ kiện (`<thuMucGoc>/hoi-dap/*.json`), cho `npm run kiem-noi-dung:mua1`. */
+export function loiGiongHoiDap(thuMucGoc: string): string[] {
+  const hoiDap = tepLoiHoiDap(thuMucGoc, relative(process.cwd(), join(thuMucGoc, 'hoi-dap')).split('\\').join('/'));
+  if (hoiDap.length === 0) return [];
+  return chayKiemGiong(undefined, thuMucGoc).loi.filter((l) => hoiDap.some((t) => l.startsWith(`${t.duongDan}:`)));
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {

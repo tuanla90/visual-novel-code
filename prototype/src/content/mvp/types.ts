@@ -263,6 +263,11 @@ export type NutMvp =
     }
   /** `[XONG VIỆC CHÍNH]` (A5): hiện nút "Hết ngày" */
   | { type: 'xong-viec-chinh' }
+  /**
+   * `[HỎI ĐÁP <mã>]` (gói B12): cảnh hỏi nhân chứng theo tờ dữ kiện `kb.hoiDap.to[ma]`. Cách chơi "xem cả đoạn" thì máy
+   * chạy qua (các dòng lời viết sẵn ngay sau rồi hậu quả); cách "bấm" / "gõ" thì mở buổi hỏi (`src/mvp/engine/hoi-dap.ts`).
+   */
+  | { type: 'hoi-dap'; ma: string }
   | { type: 'challenge'; challengeId: string }
   | { type: 'fix-query'; challengeId: string }
   | { type: 'effect'; effectId: string }
@@ -419,6 +424,117 @@ export interface KichBanMvp {
   soDongKhai: SoDongKhaiMvp[];
   /** Bộ dữ liệu SQL cố định của vụ (noi-dung-mvp/du-lieu.md; QĐ-087, QĐ-089). */
   duLieu: BoDuLieuMvp | null;
+  /** Tờ dữ kiện của các cảnh hỏi nhân chứng (`noi-dung-mua-1/hoi-dap/*.json`, gói B12). Bộ MVP không có. */
+  hoiDap?: BoHoiDapMvp;
+}
+
+// ---------- Hỏi nhân chứng (gói B12, docs/mua-1/brief/b12-vu-1.md) ----------
+
+/** Ý định chung, câu hỏi mẫu dùng cho mọi nhân chứng (`hoi-dap/chung.json`). */
+export type YDinhChungMvp = 'chao' | 'cam-on' | 'tam-biet' | 'hoi-mo' | 'hoi-rieng-tu' | 'pha-game' | 'doi-dap-an' | 'ngoai-le';
+export const Y_DINH_CHUNG: readonly YDinhChungMvp[] = ['chao', 'cam-on', 'tam-biet', 'hoi-mo', 'hoi-rieng-tu', 'pha-game', 'doi-dap-an', 'ngoai-le'];
+
+/** Lớp có lời riêng của nhân chứng: ý định chung + "khong-ro" (trong chuyện nhưng không có dữ kiện). */
+export type LopKhacMvp = YDinhChungMvp | 'khong-ro';
+
+/** Biến thể lời của một dữ kiện: hỏi thẳng, hỏi có-không, nhờ kể, hỏi lại, tự kể (câu hỏi mở), nhắc mới nhớ. */
+export type KieuBienTheMvp = 'thang' | 'co-khong' | 'ke' | 'lai' | 'tu-ke' | 'nho';
+
+export interface GoiYHoiDapMvp {
+  /** Bạn đi cùng nói gợi ý (mã nhân vật). */
+  ai: string;
+  /** Bậc 1: điều nhóm chưa biết (không lộ chữ bắt buộc). */
+  bac1: string;
+  /** Bậc 2: câu hỏi bấm được. */
+  bac2: string;
+}
+
+export interface DuKienHoiDapMvp {
+  ma: string;
+  /** Chỉ người viết thấy. */
+  noiDung: string;
+  chuBatBuoc: string[];
+  /** Chữ trên tờ giấy nhớ khi hỏi ra. */
+  giayNho: string;
+  /** Không nằm trong danh sách cần làm rõ: người chơi tự hỏi ra. */
+  an: boolean;
+  /** Nhân chứng tự kể khi được hỏi mở. */
+  tuKe: boolean;
+  /** Nhắc mới nhớ: hỏi mở sau khi đã biết đủ `sauKhi`. */
+  nhoRa: boolean;
+  sauKhi: string[];
+  /** Chưa có đủ các thứ này trong hồ sơ thì nhân chứng từ chối nói dữ kiện này. */
+  canCo: string[];
+  tuChoi: string[];
+  bienThe: Partial<Record<KieuBienTheMvp, string>> & { thang: string; lai: string };
+  /** Câu đầu là câu hiện ở cách bấm và ở gợi ý bậc 2. */
+  cauHoiMau: string[];
+  goiY: GoiYHoiDapMvp | null;
+}
+
+export interface DongDanhSachMvp {
+  ma: string;
+  cau: string;
+  /** Các dữ kiện phải hỏi ra thì dòng này mới gạch. */
+  can: string[];
+  /** Gạch đủ dòng thì mở manh mối này. */
+  moManhMoi: string | null;
+}
+
+export interface LoiLopKhacMvp {
+  loi: string[];
+  /** Câu hỏi mẫu riêng của nhân chứng này (thêm vào câu mẫu chung); câu đầu dùng ở cách bấm khi có. */
+  cauHoiMau: string[];
+}
+
+export interface HoiMoHoiDapMvp {
+  /** Câu hỏi mở ở cách bấm sau khi đã hỏi ra điều gì đó. */
+  hoiTiep: string;
+  /** Lời khi không còn gì tự kể (xoay vòng). */
+  hetKe: string[];
+  cauHoiMau: string[];
+}
+
+export interface ChuDeKhongBietMvp {
+  ma: string;
+  cauHoiMau: string[];
+  loi: string[];
+}
+
+export interface GioiHanHoiDapMvp {
+  soCau: number;
+  lyDo: 'ban' | 'phien';
+  baoTruoc: { con: number; loi: string };
+  het: string;
+}
+
+export interface LoiBanMvp {
+  ai: string;
+  loi: string;
+}
+
+export interface ToHoiDapMvp {
+  /** Trùng mã chuỗi có dòng `- [HỎI ĐÁP <mã>]` trong kich-ban/. */
+  ma: string;
+  nhanChung: string;
+  nguoiDiCung: string[];
+  moDau: string;
+  /** Các dữ kiện đoạn [LỜI] viết sẵn của chuỗi đã nói ra (cách "xem cả đoạn"), theo thứ tự kể. */
+  tuDongDuKien: string[];
+  gioiHan: GioiHanHoiDapMvp | null;
+  danhSach: DongDanhSachMvp[];
+  duKien: DuKienHoiDapMvp[];
+  lopKhac: Record<Exclude<LopKhacMvp, 'hoi-mo'>, LoiLopKhacMvp> & { 'hoi-mo': HoiMoHoiDapMvp };
+  chuDeKhongBiet: ChuDeKhongBietMvp[];
+  tuKhoaTrongChuyen: string[];
+  roiDi: { nut: string; loiBan: string; giuLai: LoiBanMvp; du: LoiBanMvp; thieu: LoiBanMvp };
+}
+
+export interface BoHoiDapMvp {
+  /** Câu hỏi mẫu cho từng ý định chung. */
+  chung: Record<YDinhChungMvp, string[]>;
+  /** Tờ dữ kiện theo mã chuỗi. */
+  to: Record<string, ToHoiDapMvp>;
 }
 
 /** Bảng dữ liệu: cột có kiểu SQLite, hàng theo đúng thứ tự cột; `null` = ô NULL. */

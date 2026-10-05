@@ -119,12 +119,70 @@ export interface NhacViecMvp {
   text: string;
 }
 
+// ---------- Hỏi nhân chứng (gói B12, src/mvp/engine/hoi-dap.ts) ----------
+
+/** Ba cách chơi cảnh hỏi nhân chứng: xem cả đoạn viết sẵn / bấm câu hỏi mẫu / gõ câu hỏi. Thiết lập của người chơi. */
+export type CachChoiMvp = 'tu-dong' | 'bam' | 'go';
+
+/** Tiến độ hỏi một tờ dữ kiện, giữ qua các lần gặp (lưu cùng ván). */
+export interface TienDoHoiDapMvp {
+  /** Mã dữ kiện đã hỏi ra, theo thứ tự. */
+  biet: string[];
+  /** Bậc gợi ý đã hiện cho từng dữ kiện (1, 2). */
+  bacGoiY: Record<string, number>;
+  /** Vị trí xoay vòng lời theo lớp (ý định chung, chủ đề không biết, lời từ chối). */
+  xoay: Record<string, number>;
+  /** Số câu đã tính lượt kể từ lần nạp lại gần nhất (giới hạn số câu); làm việc khác trong cảnh thì về 0. */
+  luot: number;
+}
+
+/** Một dòng trong khung hỏi đáp. `ai`: `player`, `narrator`, mã nhân chứng. */
+export interface DongHoiDapMvp {
+  ai: string;
+  chu: string;
+  /** Câu người chơi: lớp máy xếp vào, điểm, nguồn (gõ / bấm). */
+  lop?: string;
+  diem?: number;
+  nguon?: 'go' | 'bam' | 'ke';
+  /** Lời nhân chứng: biến thể đã chọn, dữ kiện vừa hỏi ra. */
+  bienThe?: string;
+  moi?: string;
+}
+
+/** Bóng thoại của bạn đi cùng ở góc phải. */
+export interface BongDiCungMvp {
+  kieu: 'goi-y-1' | 'goi-y-2' | 'du' | 'giu-lai' | 'roi-di-du' | 'roi-di-thieu';
+  ai: string;
+  /** Lời bạn đi cùng; gợi ý bậc 2 không có lời dẫn riêng (giao diện tự đặt), chỉ có `cauHoi`. */
+  loi: string | null;
+  /** Gợi ý bậc 2: câu hỏi bấm được (gửi `hoi-dap-hoi` với `lop` = dữ kiện). */
+  cauHoi?: string;
+  duKien?: string;
+  /** Giữ lại: dòng còn thiếu trong sổ. */
+  dongThieu?: string;
+}
+
+/** Buổi hỏi đang mở (con trỏ đứng ở nút `[HỎI ĐÁP ma]`). */
+export interface BuoiHoiMvp {
+  ma: string;
+  nhatKy: DongHoiDapMvp[];
+  /** Số câu liền nhau không ra dữ kiện mới (cách gõ: hai câu là bạn đi cùng gợi ý). */
+  truot: number;
+  /** Bạn đi cùng đã giữ lại một lần trong buổi này. */
+  daGiu: boolean;
+  /** Hết lượt hỏi: chỉ còn rời đi hoặc "xem cả đoạn". */
+  dong: boolean;
+  /** Đã chào đi: khung còn hiện lời cuối, `tiep` thì đóng hẳn. */
+  daRoi: boolean;
+  bong: BongDiCungMvp | null;
+}
+
 /**
  * Các trường riêng của một tuyến truyện, dùng để cất rồi khôi phục đúng cảnh đang chơi. Có cả bảng điều tra của tuyến
  * (`bang`, vì vào tuyến khác là gỡ hết thẻ) và mã các thẻ trong hồ sơ lúc cất (`hoSoCo`): thẻ nhận thêm ở tuyến kia khi về
  * nằm trong ngăn gỡ ghim, không chen lên bảng.
  */
-export type TiepTucTuyenMvp = Pick<TrangThaiMvp, 'conTro' | 'canh' | 'nhiemVu' | 'nhacViec' | 'thuThachDangLam' | 'duKienDangLam' | 'hoiDap' | 'khamPha' | 'doiChat' | 'choHienTaiLieu' | 'sauKhiHien' | 'bang' | 'ngayThang'> & {
+export type TiepTucTuyenMvp = Pick<TrangThaiMvp, 'conTro' | 'canh' | 'nhiemVu' | 'nhacViec' | 'thuThachDangLam' | 'duKienDangLam' | 'hoiDap' | 'buoiHoi' | 'khamPha' | 'doiChat' | 'choHienTaiLieu' | 'sauKhiHien' | 'bang' | 'ngayThang'> & {
   hoSoCo?: string[];
 };
 export interface TuyenPhuMvp {
@@ -201,6 +259,12 @@ export interface TrangThaiMvp {
   uyTin: number;
   soLanMatVach: number;
   hoiDap: HoiDapMvp | null;
+  /** Thiết lập cách chơi cảnh hỏi nhân chứng (gói B12). Thiếu = 'go' (gõ câu hỏi). Lưu cùng tiến trình. */
+  cachChoi?: CachChoiMvp;
+  /** Buổi hỏi nhân chứng đang mở; ô lưu cũ không có = không có. */
+  buoiHoi?: BuoiHoiMvp | null;
+  /** Tiến độ hỏi theo mã tờ dữ kiện (điều đã hỏi ra giữ qua các lần gặp và khi đổi cách chơi). */
+  tienDoHoiDap?: Record<string, TienDoHoiDapMvp>;
   /** Số lần đã thử mỗi câu hỏi / chọn dòng / lọc thử / chép sổ (id → lần). */
   lanThu: Record<string, number>;
 
