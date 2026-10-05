@@ -86,7 +86,7 @@ Trong `kich-ban/`: `- [XONG VIỆC CHÍNH]` đặt ở cuối việc chính củ
 **Việc ngày lễ**:
 
 ```
-## Ngày thành lập Hội Sinh viên {việc ngày lễ: le-hoi-sv}
+## Ngày truyền thống Hội Liên hiệp Thanh niên {việc ngày lễ: le-hoi-sv}
 - Ngày: 2024-10-15
 - Thuộc vụ: vu-tin-don
 - Chuỗi: le-hsv-mo

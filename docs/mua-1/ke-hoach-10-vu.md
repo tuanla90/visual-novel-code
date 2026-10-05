@@ -15,7 +15,7 @@ Tuyến Khánh: Vụ 1, 2, 4, 6, 8. Vụ thường: 3, 5, 7, 9. Vụ 10: bí m�
 | Vụ | Tuyến | Chuyện | Bắt đầu → hạn chót | Việc chốt ở hạn | Ngày lễ trong vụ | Kỹ năng mới |
 |---|---|---|---|---|---|---|
 | 1 | Khánh | Chữ ký H | (mở đầu từ 08/09) T3 24/09 → T2 30/09 | buổi họp rà soát | 17/09 Trung thu (mở đầu) | chọn cột, lọc bằng, VÀ, HOẶC |
-| 2 | Khánh | Tin đồn | T3 08/10 → T3 15/10 | giải trình sau lễ kỷ niệm Hội SV | 15/10 Ngày thành lập Hội Sinh viên Việt Nam | bắt đầu bằng, chứa, `IN`, làm sạch chữ |
+| 2 | Khánh | Tin đồn | T3 08/10 → T3 15/10 | giải trình sau lễ kỷ niệm 15/10 | 15/10 Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam (Hội Sinh viên trường tổ chức lễ) | bắt đầu bằng, chứa, `IN`, làm sạch chữ |
 | 3 | thường | Gói hàng "phòng 4.." | T4 16/10 → sáng T2 21/10 | shipper tới lấy hàng hoàn | 20/10 Ngày Phụ nữ Việt Nam | lớn / nhỏ, `BETWEEN` số, xếp theo + vài dòng đầu, lọc tiếp trên phiếu |
 | 4 | Khánh | Nam ở đâu lúc 22:40 | T3 22/10 → T6 25/10 | Minh Anh định mời Nam lên | | so sánh thời gian, `BETWEEN` thời gian, tách giờ / thứ, quy về tuần |
 | 5 | thường | Tiền điện phòng 408 | T2 28/10 → T6 01/11 | hạn nộp tiền điện ở ban quản lý KTX | 31/10 Halloween | `+ - * /`, làm tròn |
@@ -106,7 +106,7 @@ Sửa theo: thẻ `c-ten-h`, sổ CLB `like` và `where-chu`, nhân vật `hoai`
   3. Chứa "CLB Thám Tử soi" → 6, thêm T-08 tin tự viết (đã chạy); người chơi đọc để bỏ T-08.
   4. Thêm dữ liệu: tin chép lại viết thường, dính dấu cách → đổi chữ thường, bỏ dấu cách thừa mới bắt đủ.
   5. `IN`: hai tài khoản, hai máy trong một lần lọc.
-- **Đối chất:** Hiếu ở căng tin (giữa vụ); Quân 2 nhịp ở hạn chót: buổi giải trình chiều 15/10, ngay sau lễ kỷ niệm thành lập Hội SV. Sáng 15/10 là việc ngày lễ của Quân.
+- **Đối chất:** Hiếu ở căng tin (giữa vụ); Quân 2 nhịp ở hạn chót: buổi giải trình chiều 15/10, ngay sau lễ kỷ niệm ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam do Hội Sinh viên trường tổ chức. Sáng 15/10 là việc ngày lễ của Quân.
 - Tìm tin gốc đổi từ lọc tiếp trên phiếu thành một câu có VÀ (`loai = 'GOC'`).
 
 ### Vụ 3: Gói hàng "phòng 4.." (thường) · 16/10 → 21/10: số
@@ -214,7 +214,7 @@ Ba loại: **việc ngày lễ** (một ngày, không chơi lại), **việc c�
 | Ngày | Ngày lễ | Vụ | Việc (tạm) | Người giao | Ôn |
 |---|---|---|---|---|---|
 | T3 17/09 | Trung thu | 1 (mở đầu) | Tuyến chính, không phải việc phụ: buổi gặp đầu CLB, Hoài ra mắt | | |
-| T3 15/10 | Ngày thành lập Hội Sinh viên Việt Nam | 2 | Danh sách bốc thăm quà của Hội gõ lộn xộn tên, lọc ra ai trúng | Quân | chữ, làm sạch, `IN` |
+| T3 15/10 | Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam (15/10/1956) | 2 | Danh sách bốc thăm quà của Hội gõ lộn xộn tên, lọc ra ai trúng | Quân | chữ, làm sạch, `IN` |
 | CN 20/10 | Ngày Phụ nữ Việt Nam | 3 | Tùng chọn quà xin lỗi Hoài: lọc quà trong khoảng giá, xếp theo | Tùng | lớn / nhỏ, `BETWEEN`, xếp theo |
 | T5 31/10 | Halloween | 5 | Giao lưu các CLB ở sân KTX: chia tiền đồ hóa trang và bánh kẹo theo CLB | Duy | phép tính, làm tròn |
 | T4 20/11 | Ngày Nhà giáo Việt Nam | 7 (chiều) | Học trò cũ của cô (đã có) | cô Hạnh | nối, đếm người khác nhau |
