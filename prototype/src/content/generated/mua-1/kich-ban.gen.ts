@@ -3416,7 +3416,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Chiều thứ Ba, sảnh tòa B vắng tanh. Bác bảo vệ đứng ở chân cầu thang. Cạnh cái hộp tôn có một tờ giấy mới dán."
+          "text": "Chiều thứ Ba, sảnh tòa B vắng tanh. Cạnh cái hộp tôn có một tờ giấy mới dán."
         },
         {
           "type": "line",

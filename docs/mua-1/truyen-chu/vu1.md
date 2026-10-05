@@ -266,7 +266,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 
 > 🎯 **NHIỆM VỤ**: Ai đã bỏ lá thư vào cái hộp này?
 > 💭 **Nhắc nhở** (Tùng): Chưa biết là ai, lớp nào. Quanh hộp này có manh mối gì không?
-- *Chiều thứ Ba, sảnh tòa B vắng tanh. Bác bảo vệ đứng ở chân cầu thang. Cạnh cái hộp tôn có một tờ giấy mới dán.*
+- *Chiều thứ Ba, sảnh tòa B vắng tanh. Cạnh cái hộp tôn có một tờ giấy mới dán.*
 - *Suy nghĩ của bạn:* *(Nhiều thứ quá… Bắt đầu từ đâu đây.)*
 📍 **Đang ở Sảnh tòa B:**
 *Những chỗ có thể khám phá ở đây:*

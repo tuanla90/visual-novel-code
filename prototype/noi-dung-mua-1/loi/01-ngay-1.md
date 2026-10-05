@@ -10,7 +10,7 @@
 ## n1-toa-b.1
 > NHIỆM VỤ: Ai đã bỏ lá thư vào cái hộp này?
 > NHẮC VIỆC tung (gai-dau): Chưa biết là ai, lớp nào. Quanh hộp này có manh mối gì không?
-- **narrator**: Chiều thứ Ba, sảnh tòa B vắng tanh. Bác bảo vệ đứng ở chân cầu thang. Cạnh cái hộp tôn có một tờ giấy mới dán.
+- **narrator**: Chiều thứ Ba, sảnh tòa B vắng tanh. Cạnh cái hộp tôn có một tờ giấy mới dán.
 - **player**: (Nhiều thứ quá… Bắt đầu từ đâu đây.)
 
 ## n1-toa-b.2
