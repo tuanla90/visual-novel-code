@@ -1,6 +1,6 @@
 # Bàn giao việc mùa 1 cho phiên khác
 
-> Cập nhật 05/10/2026, khoảng 9h30.
+> Cập nhật 05/10/2026, khoảng 16h30 (bản 9h30 đã cũ: Vụ 2 đã dựng lại xong, cách chia việc đã đổi).
 >
 > Phiên mới chỉ cần đọc tệp này rồi làm tiếp. Các quyết định user đã chốt nằm ở `docs/mua-1/giao-viec.md` mục A3, không được tự đổi.
 
@@ -19,91 +19,94 @@
    - B4: gói đang làm;
    - C2: bảng đo độ dài;
    - E: truyện chữ.
-4. `prototype/noi-dung-mua-1/README.md`: cú pháp nội dung, kể cả `[ĐI CÙNG]`, `Cột nộp`, `· cảnh cắt`, `· bắt đầu ở`.
+4. `prototype/noi-dung-mua-1/README.md`: cú pháp nội dung; mục "Cú pháp đã chạy được sau A5" tả `[ĐI CÙNG]`, `Cột nộp`, `· cảnh cắt`, `· bắt đầu ở`, vụ sau nhiều ngày.
+5. `docs/mua-1/brief/b4-4b-dan-y.md`: dàn ý Vụ 2 theo ngày. Dùng làm MẪU khi dựng dàn ý Vụ 4, 6, 8.
 
 ## 2. Trạng thái
 
-- **Worktree:** `D:\Users\tuanla2\game\learn-code-by-game\.claude\worktrees\mua1-t0`, nhánh `claude/mua1-t0`. `prototype/node_modules` là junction về repo chính, không `npm install`.
-- **`main`** = `e08c0a4` (đã push). Nhánh `claude/mua1-t0` = `main` cộng các commit chưa gộp: T1, B4.3, B4.4a. **Chưa gộp main, chưa push**. Gộp và push chỉ khi user bảo.
-- **App chính vẫn là MVP.** Bộ mùa 1 chỉ mở ở chế độ dev (nút "Bộ nội dung" ở màn tiêu đề, hoặc `?bo=mua-1`) và chưa chơi được cú pháp mới. **Bản mùa 1 để user đọc** là truyện chữ `docs/mua-1/truyen-chu/`, xuất bằng `npm run truyen-chu:mua1`.
+- **Nhánh:** `claude/mua1-t0` (worktree `.claude/worktrees/mua1-t0`) và `claude/mua1-b44b` đang bằng nhau. Phiên trong app không Write/Edit được tệp ở worktree khác (lỗi EBADF), nên phiên 05/10 mở nhánh `claude/mua1-b44b` ngay trong worktree của phiên; đạt gói nào thì `git -C ../mua1-t0 merge --ff-only claude/mua1-b44b`.
+- **`main`** = `e08c0a4` (đã push). Mọi thứ từ T1 trở đi **chưa gộp main, chưa push**. Gộp và push chỉ khi user bảo.
+- **App chính vẫn là MVP.** Game chưa chơi được vụ nhiều ngày (`src/mvp/` chưa đọc các dòng `Ngày YYYY-MM-DD`). **Bản để user đọc** là truyện chữ `docs/mua-1/truyen-chu/`, xuất bằng `npm run truyen-chu:mua1`.
 
 ### Gói đã xong
 
 | Gói | Nội dung |
 |---|---|
-| T0 | Tách bộ `noi-dung-mua-1`, lệnh `:mua1`, máy kiểm kỹ năng, công cụ truyện chữ (lịch, Hết ngày, Đang ở, bản đồ ngày, Lọc từng bước, Nộp cột) |
-| T1 | Cú pháp `- [ĐI CÙNG <chuỗi>] <nhãn>`; máy kiểm coi đó là đổi nơi hợp lệ; chặn `[RẼ NHÁNH]` giả (mọi lựa chọn cùng đích, nhãn "(Tiếp tục)"); ngày thật cho ngày theo truyện |
-| B4.1 | Vụ 1 bỏ `LIKE`/`IN`: tra theo lớp, nhật ký in lọc bằng, câu HOẶC của Quân là `ten = 'Hoài' OR ma_lop = 'BC24A'` |
-| B4.2 | Hoài xuất hiện từ nhập học (bị Tùng chỉ nhầm ra nhà xe) và Trung thu (hỏi đường phòng máy in, xưng tên); Tùng nghi Hoài ở ngày 4 có căn cứ riêng |
-| B4.3 | Vụ 1: hạn chót 30/09, việc chốt, nơi bắt đầu mỗi ngày, `[XONG VIỆC CHÍNH]` mỗi ngày, hết lỗi đứng nguyên chỗ |
-| B4.4a | Vụ 2: sáu màn tra chữ (bằng → bắt đầu bằng → chứa → làm sạch → `IN` → tin gốc một câu VÀ) |
+| T0 | Tách bộ `noi-dung-mua-1`, lệnh `:mua1`, máy kiểm kỹ năng, công cụ truyện chữ |
+| T1 | Cú pháp `[ĐI CÙNG]`; chặn `[RẼ NHÁNH]` giả; ngày thật cho ngày theo truyện |
+| B4.1 → B4.3 | Vụ 1: bỏ `LIKE`/`IN`, Hoài xuất hiện sớm, hạn chót 30/09, hết lỗi đứng nguyên chỗ |
+| B4.4a | Vụ 2: sáu màn tra chữ (bản đầu; đã đổi ở B4.4b) |
+| T2 | Công cụ đỡ **vụ sau nhiều ngày**: kết vụ ở ngày cuối, hết cảnh đứng nguyên chỗ, chỉ đếm "!" trên tuyến chính, "Hết ngày" sang ngày thật kế tiếp |
+| T3, T4 | Truyện chữ in `[ĐI CÙNG]`, `[RẼ NHÁNH]` ở đúng chuỗi; sửa liên kết (T4: xem sổ canh ngày 05/10) |
+| **B4.4b** | **Vụ 2 dựng lại xong:** 5 ngày 08/10 → 15/10, 53 chuỗi, 8 màn tra, 3 đối chất, 346 dòng thoại (chuẩn C2 ≥ 300). Chờ user đọc `docs/mua-1/truyen-chu/vu-tin-don.md` |
+
+### Quyết định user thêm ngày 05/10
+
+- 15/10 là **Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam**, không phải ngày thành lập Hội Sinh viên (đã sửa kế hoạch). Hội Sinh viên trường tổ chức lễ.
+- Hai tin trả lời trong Vụ 2 mang loại `TRA_LOI`, viết như người gõ trả lời (có chữ đằng trước), bắt bằng **chứa**.
+- **Bài làm sạch (`LOWER`, `TRIM`) nằm ở sổ đặt phòng gõ tay** (bảng `dat_phong`), mã bẩn kiểu điện thoại viết hoa chữ đầu: "Xr-01" kèm dấu cách cuối. Dữ liệu bẩn phải trả lời được "ai gõ, bằng gì".
+- **Gói B11 Người đi cùng** (ghi ở `giao-viec.md`): avatar góc phải, gợi ý viết sẵn hiện bằng bóng thoại, có mặt ở bản đồ, nhắc việc trước "Hết ngày", về sau có đoạn đi một mình. Chưa làm; còn ba điểm chưa chốt.
 
 ### Việc còn mở cần user biết
 
-- Câu HOẶC của Quân chỉ ra 32 dòng (bằng cả lớp) vì toàn trường chỉ có một bạn tên Hoài. Bài học HOẶC kém rõ; có thể thêm vài bạn tên Hoài ở lớp khác vào `du-lieu.md`.
+- Câu HOẶC của Quân ở Vụ 1 chỉ ra 32 dòng (bằng cả lớp) vì toàn trường chỉ có một bạn tên Hoài.
 - Vụ 1 mới có 1 đối chất. Chuẩn C2 cần ≥ 3; chưa làm.
-- SQLite so `LIKE` không phân biệt hoa thường với chữ ASCII, nên bài "làm sạch" ở Vụ 2 chủ yếu dựa vào bỏ dấu cách thừa.
+- Vụ 2, buổi giải trình: lời giữa hai nhịp (`tin-gt-giua`) giả định nhịp 1 đã trình đúng thẻ (cô Lan hỏi "cái máy văn phòng ấy"). Nếu người chơi hết lượt ở nhịp 1 thì đoạn này lệch. Cách sửa: tách chuỗi theo cờ `dc-tin-quan-may-du`.
+- Lời Vụ 6 cũ (04/11) ghi Tùng "cá trật bốn lần", bằng số ở 14/10 của Vụ 2; gói làm lại Vụ 6 phải nâng số.
+- Toàn bộ lời mới của Vụ 2 còn đánh dấu `(tạm)`, chờ user đọc.
 
 ## 3. Việc tiếp theo
 
-### B4.4b: dựng lại truyện Vụ 2
+1. **Chờ user đọc truyện chữ Vụ 2** và góp ý. Sửa theo góp ý trước khi sang vụ khác.
+2. **Vụ 4** (Nam ở đâu lúc 22:40, từ Vụ 3 cũ), **Vụ 6** (Giúp Nam, từ Vụ 4 cũ), **Vụ 8** (Sổ quỹ, từ Vụ 5 cũ), theo `giao-viec.md` B4. Mỗi vụ đi đúng dây chuyền đã chạy được ở Vụ 2 (mục 4).
+3. Lời gợi ý, lời bàn ở bản đồ, lời nhắc cuối ngày của người đi cùng (gói B11) cho Vụ 2, nếu user chốt làm.
+4. Rồi tới B5 trở đi (vụ thường mới, ngày lễ, người quen).
 
-Brief đầy đủ ở `docs/mua-1/brief/b4-4b.md`.
-
-**Bài học:** lần giao cả gói một lượt, Vụ 2 **co** từ 127 xuống 31 dòng thoại, nên đã bỏ hết. Gemini báo "228 chuỗi" nhưng đó là tổng cả bộ, không phải Vụ 2. **Phải chia lượt**, mỗi lượt một chỉ tiêu, cấm xóa lời cũ:
-
-| Lượt | Việc | Chỉ tiêu thêm |
-|---|---|---|
-| 1 | Chỉ cấu trúc. `lich.md`: đổi mã `vu2` → `vu-tin-don` ở mọi nơi (cả `Mở sau: vu2` của việc phụ, cờ `vu2-hoan-tat`); `Hạn chót: 2024-10-15`; `Việc chốt: Buổi giải trình chiều 15/10`; dòng `- Ngày …: <chuỗi> · bắt đầu ở: <cảnh>` cho 4–5 ngày. Mỗi ngày một `[XONG VIỆC CHÍNH]`. Sửa lỗi đứng nguyên chỗ bằng `[ĐI CÙNG]`. Test nào tìm `vu2.md` thì đổi sang `vu-tin-don.md`. | Số thoại, số chuỗi không giảm |
-| 2 | Đối chất Hiếu ở căng tin, giữa vụ: "Tin này có từ lâu, ai cũng chuyển." | ≥ 40 dòng, 1 `[ĐỐI CHẤT]` |
-| 3 | Buổi giải trình chiều 15/10 với Quân, 2 nhịp đối chất, có nhịp người chơi nói giới hạn chứng cứ | ≥ 60 dòng, 2 `[ĐỐI CHẤT]` |
-| 4 | Buổi tối không khí sinh viên, Hà Vy soi một người, bản đồ ngày có nơi tùy chọn và chi tiết ẩn | ≥ 60 dòng, ≥ 8 chuỗi |
-| 5 | Lấp cho đủ C2; khung việc ngày lễ 15/10 (Quân) trong `lich.md` | Vụ 2 đạt ≥ 300 thoại, ≥ 40 chuỗi, ≥ 5 màn tra, ≥ 3 đối chất |
-
-**Đo** (trong `prototype/noi-dung-mua-1/`):
+**Đo** một vụ (trong `prototype/noi-dung-mua-1/`), ví dụ Vụ 2:
 
 ```bash
 grep -cE '^- (\*\*|Khi )' loi/10-vu-2-tin-don.md loi/tt-tin-don.md
 ```
 
-Cộng hai số lại. Lời của thẻ trong `tt-*.md` có dạng `- Khi …: **ai**` và C2 tính cả các dòng này (05/10: Vụ 2 = 127 + 32 = 159). Lệnh cũ `grep -c '^- \*\*'` luôn ra 0 với tệp `tt-*.md`, nên lời thẻ bị xóa cũng không lộ.
+Cộng hai số lại. Lời của thẻ trong `tt-*.md` có dạng `- Khi …: **ai**` và C2 tính cả các dòng này (05/10: Vụ 2 = 309 + 37 = 346).
 
 ```bash
 grep -c '^### ' kich-ban/10-vu-2-tin-don.md
 ```
 
-### Sau B4.4b
+## 4. Dây chuyền một vụ (đã chạy được ở Vụ 2, 05/10)
 
-Làm Vụ 4 (Nam ở đâu lúc 22:40, từ Vụ 3 cũ), Vụ 6 (Giúp Nam, từ Vụ 4 cũ), Vụ 8 (Sổ quỹ, từ Vụ 5 cũ), theo `giao-viec.md` B4. Mỗi vụ chia lượt như trên:
-1. màn tra;
-2. cấu trúc ngày;
-3. từng cảnh lớn.
+Mỗi lúc **một** agent (máy 16 GB). Người điều phối (Claude) viết brief, tự nghiệm thu, tự commit.
 
-Rồi tới B5 trở đi (vụ thường mới, ngày lễ, người quen).
+| Bước | Ai | Việc | Ghi chú |
+|---|---|---|---|
+| 1. Khung | Agent Claude Opus | Dàn ý theo ngày (`docs/mua-1/brief/<vụ>-dan-y.md`), `lich.md`, `kich-ban/`, màn tra + dữ liệu, ba `[ĐỐI CHẤT]` viết đủ, khối lời giữ chỗ có chú thích `<!-- DÀN Ý … -->` | Gemini hỏng hai lần ở việc này (lựa chọn giả, co vụ). Công cụ chặn thì DỪNG, báo file:dòng |
+| 2. Công cụ | Codex `gpt-6-sol` | Sửa `tools/`, thêm test | Sandbox của Codex không chạy được vitest (`spawn EPERM`): người giao tự chạy |
+| 3. Lời | Gemini qua `agy`, mỗi lượt 40–50 dòng | Chỉ viết vào các khối `## <mã>` của `loi/<vụ>.md` theo dàn ý trong chú thích | Không được đụng `kich-ban/`, dữ liệu, công cụ |
+| 4. Gọt | Claude điều phối | Đọc từng dòng mới, viết lại câu hỏng, chạy máy kiểm, commit | Lượt 1–2 gọt khoảng hai phần ba số câu; lượt 3–4 viết lại gần hết |
 
-## 4. Cách giao Gemini
-
-User cho dùng Gemini thoải mái ("không cần tiếc token của Gemini, miễn máy chạy được"). Mỗi lúc **một** lượt (máy 16 GB). Chạy nền trong worktree, ghi log:
+Lệnh Codex (chạy nền ở gốc worktree):
 
 ```bash
-agy --print="<việc của lượt> <LUẬT CHUNG bên dưới>" --model gemini-3.1-pro-high --mode accept-edits --dangerously-skip-permissions --print-timeout 4800s > <scratchpad>/luotN.log 2>&1
+codex exec -m gpt-6-sol -c model_reasoning_effort="high" -s workspace-write -C . --skip-git-repo-check -o <scratchpad>/bao-cao.md - < <scratchpad>/brief.md > <scratchpad>/log 2>&1
 ```
 
-**Luật chung** (dán vào cuối prompt mỗi lượt nội dung; đổi tên tệp theo vụ đang làm):
+Lệnh Gemini (chạy nền ở gốc worktree; brief là một tệp trong scratchpad):
 
-> LUẬT CHUNG: Chỉ sửa prototype/noi-dung-mua-1/ (và tệp sinh, truyện chữ bằng lệnh). TUYỆT ĐỐI KHÔNG XÓA chuỗi hay dòng thoại đang có của vụ trừ khi trùng lặp; được viết lại câu chữ, được dời chỗ. Đo trước và sau bằng `grep -c '^- \*\*' loi/<tệp vụ>.md` và `grep -c '^### ' kich-ban/<tệp vụ>.md`; số sau phải ≥ số trước cộng chỉ tiêu của lượt. Biểu cảm chỉ dùng loại có trong nhan-vat.md. Chuyển nơi bằng `- [ĐI CÙNG <chuỗi>] <nhãn>` hoặc bản đồ, không `[ĐI TỚI]` sang cảnh khác. Lời mới thêm `(tạm)` cuối dòng. Luật viết: show don't tell, câu ngắn giọng sinh viên miền Bắc, Hà Vy/Minh Anh/Tùng không nói thuật ngữ SQL, không gạch dài, lời chỉ nhắc vật có trên ảnh nền. Sau `Khi chạy ra <n> dòng với` chỉ được là tên cột SQL. Chạy từng lệnh ở chế độ thường trong prototype/ (không chạy nền rồi chờ): npm run noi-dung:sinh:mua1; npm run kiem-noi-dung:mua1 (không lỗi); npm run kiem-ky-nang:mua1; npm run kiem-giong:mua1 -- --chi-loi (0 lỗi); npm run truyen-chu:mua1; npx vitest run src/content/real/testing/mua1-t0.test.ts; npm run kiem-noi-dung:mvp. KHÔNG commit, KHÔNG push, KHÔNG npm install, không npm test toàn bộ, không đụng noi-dung-mvp, generated/mvp, .vite-canary, tools/. Không để tệp nháp (.js, .cjs, .mjs, .txt ở gốc repo hay prototype/). Cuối cùng IN RA số đo trước và sau, dòng cuối từng lệnh, rồi kết thúc ngay.
+```bash
+agy --print="Đọc tệp <scratchpad>/luot-loi-N.md và làm đúng theo đó. Chỉ sửa tệp lời được nêu trong tệp ấy. Không commit." --model gemini-3.1-pro-high --mode accept-edits --dangerously-skip-permissions --add-dir <scratchpad> --print-timeout 3600s > <scratchpad>/luotN.log 2>&1
+```
 
-**Lượt sửa công cụ** (`tools/`): đổi luật cho phép sửa `tools/` và test. Thêm:
-- `npm run typecheck`: 0 dòng lỗi;
-- `npx eslint <tệp đã sửa>`: cấm `any`;
-- `npm run noi-dung:sinh:mvp` và `kiem-noi-dung:mvp` không đổi.
+**Brief lượt lời phải có** (ý chính):
+
+> Chỉ sửa các khối được liệt kê (bảng mã khối + số dòng nhắm tới); giữ nguyên dòng `## <mã>`, chú thích `<!-- DÀN Ý … -->`, dòng `[THẺ CHỮ]`, chú thích `<!-- Ngày … -->`, kiểu xuống dòng LF. Mỗi dòng mới kết bằng `(tạm)`. Không thêm dữ kiện, tên, số, ngày giờ ngoài dàn ý; điều "Cấm lộ" không xuất hiện. Show don't tell. Câu ngắn giọng sinh viên miền Bắc; câu quá 25 chữ thì tách. Xưng hô theo `luat-giong.md`. Hà Vy, Minh Anh, Tùng không nói thuật ngữ SQL hay thao tác máy; không ai đọc ra đáp án màn tra. Biểu cảm chỉ loại có trong `nhan-vat.md`. Lời chỉ nhắc thứ có trên ảnh nền. Người kể chỉ tả điều nhìn thấy, không kể hộ lời nhân vật, không xưng "tôi", không gọi nhân vật là "cậu ấy". Không câu đệm, không thành ngữ sách vở, không ai tự tả cách nói của mình. Trò đùa chạy dài dùng đúng số dàn ý ghi. Chạy từng lệnh ở chế độ thường trong `prototype/`: `npm run noi-dung:sinh:mua1`; `npm run kiem-noi-dung:mua1` (không lỗi); `npm run kiem-giong:mua1 -- --chi-loi` (0 lỗi); `npm run truyen-chu:mua1`. KHÔNG commit, push, `npm install`, `npm test`; không để tệp nháp. Cuối cùng in số đo trước/sau, số dòng từng khối, dòng cuối từng lệnh.
 
 ## 5. Nghiệm thu (tự kiểm, không tin báo cáo Gemini)
 
 1. `git status --short`: xóa tệp nháp Gemini để lại.
 2. Chạy lại mọi lệnh ở luật chung tại worktree.
 3. **Đo số dòng tự tay.** Đừng tin con số trong báo cáo.
-4. Đọc diff lời thoại, ít nhất các cảnh mới. Soi:
+4. Đọc diff lời thoại, TỪNG dòng mới (`git diff -U0 -- loi/<tệp>`; dòng bị xóa chỉ được là dòng giữ chỗ). Soi:
    - lựa chọn giả;
    - biểu cảm lạ;
    - số dòng nói trong lời không khớp kết quả chạy;
@@ -111,7 +114,7 @@ agy --print="<việc của lượt> <LUẬT CHUNG bên dưới>" --model gemini-
 5. `npm run typecheck`. Đọc output, không tin exit code.
 6. Lint: `main` có mốc **8 lỗi + 1 cảnh báo**, không được thêm.
 7. `git diff --stat -- prototype/noi-dung-mvp prototype/src/content/generated/mvp` phải rỗng.
-8. Đạt thì `git checkout -- prototype/.vite-canary`, rồi commit trên `claude/mua1-t0`. Commit kết thúc bằng dòng `Co-Authored-By` theo quy ước phiên.
+8. Chỉ commit khi `kiem-noi-dung` "không lỗi", `kiem-giong` "0 lỗi" và vitest xanh SAU lần sửa cuối của chính mình (05/10 đã commit nhầm một lỗi giọng do tự gọt rồi không chạy lại). Đạt thì `git checkout -- prototype/.vite-canary`, rồi commit trên `claude/mua1-t0`. Commit kết thúc bằng dòng `Co-Authored-By` theo quy ước phiên.
 9. Trước khi gộp `main`: chạy `npm test` toàn bộ (khoảng 5 phút, chạy một mình). Gộp bằng cách merge `main` vào nhánh rồi fast-forward `main`.
 
 ## 6. Bẫy đã gặp
@@ -124,6 +127,9 @@ agy --print="<việc của lượt> <LUẬT CHUNG bên dưới>" --model gemini-
   - để lỗi lint `any`, lỗi typecheck;
   - chạy lệnh nền rồi thoát giữa chừng;
   - đôi khi tự `commit`.
+- **Gemini ở lượt lời (05/10):** đổi cả tệp sang CRLF; xóa chú thích `<!-- Ngày … -->`; để lại `replace.py` ở gốc repo; người kể xưng "tôi"; chữ miền Nam ("tùm lum"); cho nhân vật bịa dữ kiện ("anh ấy ở xưởng giờ đó"); thành ngữ sách vở.
+- **Mã dòng trong lời:** máy trộn thêm dòng nền rồi **đánh lại mã** (ví dụ `tin_nhan` thêm 330 tin, mã `T-…` đánh lại theo giờ). Lời không được gọi tên mã dòng của dữ liệu viết tay; tả bằng nội dung.
+- **SQLite (thêm):** `LIKE` không phân biệt hoa thường với chữ ASCII và `LOWER` chỉ đổi chữ ASCII. Bài làm sạch chỉ "cần thật" khi so bằng, và mã bẩn chỉ dùng chữ không dấu.
 - **agy xong việc mà không thoát.** Kiểm `Get-Process agy`; tiến trình bắt đầu hôm nay thì `Stop-Process -Force`. PID 31712 (từ 03/10) không phải của phiên này, để nguyên. Có một mục PID 43072 là bóng ma, `taskkill` báo không tồn tại, bỏ qua.
 - **Đứt mạng giữa chừng:** giao lại lượt với câu "làm nốt, giữ phần đã viết", kèm danh sách lỗi đã đo.
 - **Ghi tệp trong worktree khác:** Write/Edit bị chặn. Dùng Python hoặc sed qua Bash. Python trên Windows: `PYTHONIOENCODING=utf-8`, mở tệp với `newline=''` để không đổi CRLF.
@@ -145,6 +151,20 @@ agy --print="<việc của lượt> <LUẬT CHUNG bên dưới>" --model gemini-
 | 11 | B4.4a | đạt | 0f2d60b |
 | 12 | B4.4b một lượt | trả lại, bỏ hết (Vụ 2 co còn 31 dòng) | – |
 | 13 | B4.4b lượt 1 | user tạm dừng trước khi sửa gì | – |
+
+### Sổ canh ngày 05/10 (tóm tắt)
+
+| Lượt | Ai | Việc | Kết quả | Commit |
+|---|---|---|---|---|
+| 1 | Claude Opus | Khung Vụ 2 lần 1: dàn ý, đổi mã vụ, sửa 5 lỗi đứng nguyên chỗ | đạt; dừng đúng luật vì công cụ chưa đỡ vụ nhiều ngày | 554b02a … 4890857 |
+| 2 | Codex | T2 công cụ vụ nhiều ngày | đạt, 15 test mới | cab48bb |
+| 3 | Claude Opus | Khung lần 2: dựng 5 ngày, 3 đối chất, 30 khối giữ chỗ, đổi màn tra theo user | đạt | d711435 … f2908db |
+| 4 | Gemini | Lời lượt 1 (9 khối, 50 dòng) | đạt sau gọt 34 câu | 7e78f74 |
+| 5 | Codex | T3 truyện chữ in `[ĐI CÙNG]` đúng chuỗi | đạt | b8b0a03 |
+| 6 | Gemini | Lời lượt 2 (10 khối, 49 dòng) | đạt sau gọt 45 câu, trả lại LF | b9e7d0c, 5198e39 |
+| 7 | Gemini | Lời lượt 3 (7 khối, 42 dòng) | đạt sau khi viết lại 6 khối | adff8ec |
+| 8 | Gemini | Lời lượt 4 (4 khối, 40 dòng) | đạt sau khi viết lại cả 4 khối; kèm gọt lời thẻ | 01f21b9 |
+| 9 | Codex | T4 ba lỗi liên kết truyện chữ | xem commit kế sau 01f21b9 | – |
 
 ## 8. Báo cáo cho user
 
