@@ -31,6 +31,14 @@ DANH_SACH = [
     ('tui-do', 'Việc phụ · Túi đồ trên ghế đá', 'ban-cu', 'Việc phụ, chưa rà lại theo khung mới.'),
 ]
 
+# Bộ nền lời (văn hóa, persona, thẻ cảnh): mỗi tệp hiện như một "vụ" ở nhóm "Nền lời", mỗi mục "## " là một trang.
+NEN_LOI = 'prototype/noi-dung-mua-1/nen-loi'
+DANH_SACH_NEN = [
+    ('nen-van-hoa', 'Nền 1 · Văn hóa', 'van-hoa.md', 'Luật chung theo vùng và lứa tuổi. Duyệt đầu tiên. Bấm "Góp ý" ở từng mục; mục nào thiếu thì ghi ở "Góp ý cho cả đoạn".'),
+    ('nen-persona', 'Nền 2 · Persona', 'persona.md', 'Mỗi nhân vật một trang: vai, tính cách, giọng, xưng hô, sở thích, câu mẫu. Duyệt sau văn hóa.'),
+    ('nen-the-canh', 'Nền 3 · Thẻ cảnh Vụ 1 (Trung thu tới 24/09)', 'the-canh-vu1.md', 'Mỗi cảnh một thẻ: bối cảnh, cảm xúc, mục tiêu. Duyệt sau persona. Lời trong truyện chưa đổi theo thẻ.'),
+]
+
 RE_DOAN = re.compile(r'^### Đoạn (\d+): (.*)$', re.M)
 RE_CHON = re.compile(r'^- \[(.+)\]\(#doan-(\d+)\)(.*)$')
 RE_NGAY = re.compile(r'^((?:Thứ \S+|Chủ Nhật), \d{2}/\d{2}/\d{4})\b', re.M)
@@ -106,6 +114,8 @@ def gan_anh(doan, kho, chuoi, nen, can_chep):
     for d in doan:
         ma_canh = chuoi.get(d['tieuDe'])
         ten_nen = nen.get(ma_canh) if ma_canh else None
+        if ten_nen and ten_nen not in kho and 'bg-mvp-' + ma_canh in kho:
+            ten_nen = 'bg-mvp-' + ma_canh  # canh.md còn ghi tên ảnh cũ (bg-clb-room)
         d['nen'] = None
         if ten_nen and ten_nen in kho:
             d['nen'] = 'anh/' + os.path.basename(kho[ten_nen])
@@ -117,6 +127,30 @@ def gan_anh(doan, kho, chuoi, nen, can_chep):
                 can_chep[kho[ma]] = d['anh'][ma]
             else:
                 d['anh'][ma] = None
+
+
+def tach_nen(van_ban, kho, nen, can_chep):
+    """Tệp nền lời → danh sách trang: mỗi mục "## tên {cảnh: mã}" một trang, bấm "Mục kế" để sang trang sau."""
+    van_ban = re.sub(r'<!--.*?-->', '', van_ban, flags=re.S)
+    moc = list(re.finditer(r'^## (.+)$', van_ban, re.M))
+    doan = []
+    for i, m in enumerate(moc):
+        cuoi = moc[i + 1].start() if i + 1 < len(moc) else len(van_ban)
+        tieu_de, ma_canh = m.group(1).strip(), None
+        c = re.search(r'\s*\{cảnh: ([a-z0-9-]+)\}\s*$', tieu_de)
+        if c:
+            ma_canh, tieu_de = c.group(1), tieu_de[:c.start()].strip()
+        d = {'so': i + 1, 'soGoc': i + 1, 'tieuDe': tieu_de, 'md': van_ban[m.end():cuoi].strip(), 'chon': [], 'ngay': None, 'nen': None, 'anh': {}}
+        ten_nen = nen.get(ma_canh) if ma_canh else None
+        if ten_nen and ten_nen not in kho and 'bg-mvp-' + ma_canh in kho:
+            ten_nen = 'bg-mvp-' + ma_canh
+        if ten_nen and ten_nen in kho:
+            d['nen'] = 'anh/' + os.path.basename(kho[ten_nen])
+            can_chep[kho[ten_nen]] = d['nen']
+        doan.append(d)
+    for i, d in enumerate(doan[:-1]):
+        d['chon'] = [{'nhan': 'Mục kế: ' + doan[i + 1]['tieuDe'], 'toi': i + 2, 'them': ''}]
+    return doan
 
 
 def danh_lai_so(doan):
@@ -159,13 +193,18 @@ def main():
     kho = lap_kho_anh()
     chuoi, nen = lap_canh()
     can_chep = {}  # tệp ảnh trong kho → đường dẫn đăng (anh/<tên tệp>)
-    for ma, ten, trang_thai, ghi_chu in DANH_SACH:
-        duong = os.path.join(NGUON, ma + '.md')
+    nguon = [(ma, ten, tt, gc, os.path.join(NGUON, ma + '.md'), False) for ma, ten, tt, gc in DANH_SACH]
+    nguon += [(ma, ten, 'nen', gc, os.path.join(NEN_LOI, tep), True) for ma, ten, tep, gc in DANH_SACH_NEN]
+    for ma, ten, trang_thai, ghi_chu, duong, la_nen in nguon:
         if not os.path.exists(duong):
             print('thiếu', duong)
             continue
-        doan = danh_lai_so(tach(io.open(duong, encoding='utf-8').read().replace('\r\n', '\n')))
-        gan_anh(doan, kho, chuoi, nen, can_chep)
+        van_ban = io.open(duong, encoding='utf-8').read().replace('\r\n', '\n')
+        if la_nen:
+            doan = tach_nen(van_ban, kho, nen, can_chep)
+        else:
+            doan = danh_lai_so(tach(van_ban))
+            gan_anh(doan, kho, chuoi, nen, can_chep)
         tep, lo, co = [], [], 2
         for d in doan:
             n = len(json.dumps(d, ensure_ascii=False).encode('utf-8')) + 1
@@ -183,7 +222,7 @@ def main():
                 json.dump(lo, f, ensure_ascii=False, separators=(',', ':'))
             ten_tep.append(t)
         muc_luc.append({
-            'ma': ma, 'ten': ten, 'trangThai': trang_thai, 'ghiChu': ghi_chu, 'tep': ten_tep,
+            'ma': ma, 'ten': ten, 'trangThai': trang_thai, 'ghiChu': ghi_chu, 'tep': ten_tep, 'donVi': 'Mục' if la_nen else 'Đoạn',
             'anhThieu': sorted({m for d in doan for m, p in d['anh'].items() if p is None}),
             'doan': [{'so': d['so'], 'soGoc': d['soGoc'], 'tieuDe': d['tieuDe'], 'ngay': d['ngay']} for d in doan],
         })
