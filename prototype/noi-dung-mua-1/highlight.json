@@ -27,7 +27,7 @@
     },
     "relations": ["nộp thư", "in thư", "viết thư", "gửi thư", "niêm phong", "ký nhận", "in lúc", "in vào", "in tối", "đưa phong bì", "nhận phong bì", "đối chiếu", "chứng cứ", "bằng chứng"]
   },
-  "vu2": {
+  "vu-tin-don": {
     "the": {
       "doc-tin-don": ["tin đồn"],
       "clue-noi-dung-tin": ["soi dữ liệu"],

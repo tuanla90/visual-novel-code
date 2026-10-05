@@ -10,7 +10,7 @@ Người chơi có thể đọc, đưa ra lựa chọn và xem kết quả SQL c
 | Vụ | Mã | Tên vụ án | Số chuỗi | Số màn tra | Tệp truyện chữ |
 |---|---|---|---|---|---|
 | 1 | `vu1` | **Vụ 1 — Chữ ký H** | 111 | 5 | [Đọc truyện](vu1.md) |
-| 2 | `vu2` | **Vụ 2 — Tin đồn** | 22 | 4 | [Đọc truyện](vu2.md) |
+| 2 | `vu-tin-don` | **Vụ 2 — Tin đồn** | 28 | 8 | [Đọc truyện](vu-tin-don.md) |
 | 3 | `vu3` | **Vụ 3 — Tranh cãi trong nhóm** | 25 | 6 | [Đọc truyện](vu3.md) |
 | 4 | `vu4` | **Vụ 4 — Giúp Nam** | 10 | 5 | [Đọc truyện](vu4.md) |
 | 5 | `vu5` | **Vụ 5 — Sổ quỹ** | 24 | 4 | [Đọc truyện](vu5.md) |
@@ -33,8 +33,8 @@ Người chơi có thể đọc, đưa ra lựa chọn và xem kết quả SQL c
 - **09/10/2024**: Vụ 2 — Tin đồn.
 - **22/10/2024**: Vụ 3 — Tranh cãi trong nhóm.
 - **25/10/2024**: Nhiệm vụ phụ — Một lần dẫn lạc (mở sau Vụ 3).
-- **30/10/2024**: Nhiệm vụ phụ — Túi đồ trên ghế đá (mở sau Vụ 2).
-- **01/11/2024**: Nhiệm vụ phụ — Bốn mục trong sổ đã ký (mở sau Vụ 2).
+- **30/10/2024**: Nhiệm vụ phụ — Túi đồ trên ghế đá (mở sau Vụ -tin-don).
+- **01/11/2024**: Nhiệm vụ phụ — Bốn mục trong sổ đã ký (mở sau Vụ -tin-don).
 - **04/11/2024**: Vụ 4 — Giúp Nam.
 - **15/11/2024**: Nhiệm vụ phụ — Chiếc micro ở tủ chung (mở sau Vụ 4).
 - **16/11/2024**: Vụ 5 — Sổ quỹ.

@@ -36,9 +36,11 @@
 
 <!-- Vụ sau (từ Vụ 2): chơi tiếp từ màn kết của vụ trước. Mỗi vụ chạy MỘT chuỗi (tự [ĐI TỚI] các chuỗi khác), kết bằng [KẾT THÚC]. "Ngày" là ngày thật trên màn lịch (truyện năm 2024). Máy tự đặt cờ <mã vụ>-hoan-tat khi một vụ kết; Vụ 1 thêm vu1-ket-that / vu1-ket-thuong. Thẻ của vụ trước được gỡ khỏi bảng điều tra, vẫn nằm trong hồ sơ. Vụ chính nào cũng hé một phần bí ẩn của mùa (docs/mvp/mua-1-dan-y-nam-khanh.md). -->
 
-## Tin đồn {vụ sau: vu2}
+## Tin đồn {vụ sau: vu-tin-don}
 - Chuỗi: tin-mo
 - Ngày: 2024-10-09 · bắt đầu ở: phong-clb
+- Hạn chót: 2024-10-15
+- Việc chốt: Buổi giải trình chiều 15/10
 - Tiêu đề kết: Một tài khoản, chưa phải một người
 - Lời kết: Tin gốc đi từ tài khoản kênh của CLB Robotics, lúc 22:40 tối thứ Hai. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
 
@@ -65,7 +67,7 @@
 ## Bốn mục trong sổ đã ký {nhiệm vụ phụ: so-phong}
 - Chuỗi: v2-mo
 - Người giao: duy
-- Mở sau: vu2
+- Mở sau: vu-tin-don
 - Ngày: 2024-11-01
 - Tiêu đề kết: Bốn mục có trong sổ, không hơn
 - Lời kết: Bản xuất và sổ giấy là hai nguồn riêng, cùng ra bốn buổi đã ký. Hồ sơ ghi đúng điều đó: không nói ai tới dự, không nói buổi nào có ích.
@@ -105,7 +107,7 @@
 ## Túi đồ trên ghế đá {nhiệm vụ phụ: tui-do}
 - Chuỗi: p-tui-mo
 - Người giao: tung
-- Mở sau: vu2
+- Mở sau: vu-tin-don
 - Ngày: 2024-10-30
 - Tiêu đề kết: Túi về tay chủ, đơn tới muộn hay kịp
 - Lời kết: Chiếc túi vải trên ghế đá là của Hiếu, lớp BC24A; trong túi có đơn học bổng hạn nộp 17 giờ ngày 30/10. Túi nào cũng về đúng người, chỉ khác tờ đơn tới Phòng Công tác sinh viên lúc nào. Lịch học và danh sách đăng ký nói được ai học lớp nào, không nói ai là người đánh rơi.

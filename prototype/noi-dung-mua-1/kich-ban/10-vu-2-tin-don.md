@@ -47,7 +47,7 @@
   - ghim:xuong · x 21% · y 24% · rộng 5% → tin-gap-nam · dấu: ! · nhãn: Xưởng Robotics
   - ghim:cang-tin · x 88% · y 41% · rộng 5% → tin-bd-cang-tin · dấu: ? · nhãn: Căng tin
   - ghim:tra-da · x 41% · y 86% · rộng 5% → tin-bd-tra-da · dấu: ? · có: ba-lua · nhãn: Quán trà đá
-- [ĐI TỚI tin-gap-nam]
+- [ĐI CÙNG tin-gap-nam] Đi cùng Tùng sang xưởng Robotics
 
 ### tin-gap-nam — Xưởng Robotics: gặp Nam; lấy phiếu làm nguồn, tìm tin gốc {cảnh: xuong-robot}
 
@@ -81,7 +81,7 @@
 ### tin-may-doi-chieu — Đã xem bảng xưởng rồi mới xem nhật ký: Tùng đối chiếu hai nguồn {cảnh: xuong-robot}
 
 - [LỜI tin-may-doi-chieu.1]
-- [ĐI TỚI tin-ket]
+- [ĐI CÙNG tin-ket] Về phòng CLB báo chị Minh Anh
 
 ### tin-tuyen-xuong — Tuyến hiện trường: bảng đăng ký dùng xưởng {cảnh: xuong-robot}
 
@@ -98,15 +98,23 @@
 ### tin-xuong-doi-chieu — Đã xem nhật ký rồi mới xem bảng xưởng: Tùng đối chiếu hai nguồn {cảnh: xuong-robot}
 
 - [LỜI tin-xuong-doi-chieu.1]
-- [ĐI TỚI tin-ket]
+- [ĐI CÙNG tin-ket] Về phòng CLB báo chị Minh Anh
 
 ### tin-ket — Về phòng CLB báo lại {cảnh: phong-clb}
 
 - [NẾU có ev-tin-may và có ev-tin-xuong] → đi tới tin-ket-du
 - [LỜI tin-ket.1]
 - [HẬU QUẢ] đặt co.tin-ve-som
-- [NẾU có ev-tin-may] → đi tới tin-tuyen-xuong
-- [ĐI TỚI tin-tuyen-may]
+- [NẾU có ev-tin-may] → đi tới tin-ket-quay-xuong
+- [ĐI TỚI tin-ket-quay-may]
+
+### tin-ket-quay-may — Chưa xem nhật ký: quay lại xưởng {cảnh: phong-clb}
+
+- [ĐI CÙNG tin-tuyen-may] Quay lại xưởng xem nhật ký đăng nhập
+
+### tin-ket-quay-xuong — Chưa xem bảng đăng ký: quay lại xưởng {cảnh: phong-clb}
+
+- [ĐI CÙNG tin-tuyen-xuong] Quay lại xưởng xem bảng đăng ký
 
 ### tin-ket-du — Về phòng CLB báo lại, đủ hai hướng {cảnh: phong-clb}
 

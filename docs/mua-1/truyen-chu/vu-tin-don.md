@@ -9,17 +9,17 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - [Đoạn 3: Vụ 2: Hà Vy và câu hỏi trên bảng](#doan-3)
 - [Đoạn 4: Vụ 2: Tùng kể chuyện nghe ở căng tin](#doan-4)
 - [Đoạn 5: Vụ 2: Minh Anh nói về việc xin dữ liệu](#doan-5)
-- [Đoạn 6: Xưởng Robotics: gặp Nam; lấy phiếu làm nguồn, tìm tin gốc](#doan-6)
-- [Đoạn 7: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học](#doan-7)
-- [Đoạn 8: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ](#doan-8)
-- [Đoạn 9: Quan sát Nam: cái hộp linh kiện](#doan-9)
-- [Đoạn 10: Quan sát Nam: cây bút dạ](#doan-10)
-- [Đoạn 11: Quan sát Nam: tay áo xắn](#doan-11)
-- [Đoạn 12: Tuyến dữ liệu: nhật ký đăng nhập của kênh](#doan-12)
-- [Đoạn 13: Tuyến hiện trường: bảng đăng ký dùng xưởng](#doan-13)
-- [Đoạn 14: Tới nơi: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học](#doan-14)
-- [Đoạn 15: Chi tiết ẩn: Tấm bảng đen trên quầy](#doan-15)
-- *... và 11 đoạn tiếp theo*
+- [Đoạn 6: Thử bắt đầu bằng](#doan-6)
+- [Đoạn 7: Thử chứa](#doan-7)
+- [Đoạn 8: Thử làm sạch](#doan-8)
+- [Đoạn 9: Thử IN hai tài khoản](#doan-9)
+- [Đoạn 10: Xưởng Robotics: gặp Nam; lấy phiếu làm nguồn, tìm tin gốc](#doan-10)
+- [Đoạn 11: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học](#doan-11)
+- [Đoạn 12: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ](#doan-12)
+- [Đoạn 13: Quan sát Nam: cái hộp linh kiện](#doan-13)
+- [Đoạn 14: Quan sát Nam: cây bút dạ](#doan-14)
+- [Đoạn 15: Quan sát Nam: tay áo xắn](#doan-15)
+- *... và 17 đoạn tiếp theo*
 
 ## 👥 Nhân vật xuất hiện
 
@@ -36,9 +36,9 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 
 | Tiêu chí | Ngưỡng thiết kế | Thực tế | Đánh giá |
 |---|---|---|---|
-| Số dòng thoại | ≥ 300 | 120 | ⚠️ Bản mẫu |
-| Số chuỗi phân cảnh | ≥ 40 | 22 | ⚠️ Bản mẫu |
-| Màn tra cứu SQL | ≥ 5 | 4 | ⚠️ Bản mẫu |
+| Số dòng thoại | ≥ 300 | 129 | ⚠️ Bản mẫu |
+| Số chuỗi phân cảnh | ≥ 40 | 28 | ⚠️ Bản mẫu |
+| Màn tra cứu SQL | ≥ 5 | 8 | ✅ Đạt |
 | Nhịp đối chất | ≥ 3 | 0 | ⚠️ Bản mẫu |
 
 ---
@@ -46,7 +46,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-1"></a>
 ### Đoạn 1: Tin đồn về CLB; lọc các tin mang câu đó
 
-Thứ Tư, 09/10/2024
+Thứ Tư, 09/10/2024 · Còn 6 ngày tới Buổi giải trình chiều 15/10
 
 📍 **Phòng CLB** — *Tin đồn về CLB; lọc các tin mang câu đó*
 
@@ -78,8 +78,8 @@ Thứ Tư, 09/10/2024
 - [Khám phá: Hà Vy: câu hỏi trên bảng (chi tiết ẩn / tùy chọn)](#doan-3)
 - [Khám phá: Tùng: chuyện ở căng tin (chi tiết ẩn / tùy chọn)](#doan-4)
 - [Khám phá: Minh Anh: xin dữ liệu (chi tiết ẩn / tùy chọn)](#doan-5)
-- [Mở bản đồ](#doan-23)
-- [Sau khi xem hết các chỗ](#doan-24)
+- [Mở bản đồ](#doan-29)
+- [Sau khi xem hết các chỗ](#doan-30)
 
 ---
 
@@ -137,7 +137,175 @@ Thứ Tư, 09/10/2024
 ---
 
 <a id="doan-6"></a>
-### Đoạn 6: Xưởng Robotics: gặp Nam; lấy phiếu làm nguồn, tìm tin gốc
+### Đoạn 6: Thử bắt đầu bằng
+
+📍 **Phòng CLB** — *Thử bắt đầu bằng*
+
+#### 💻 Màn tra dữ liệu: Bắt đầu bằng (thẻ `c-tin-bat-dau`)
+*Đề bài:* Có thể người ta viết thêm nội dung phía sau. Tìm những tin bắt đầu bằng câu đó.
+
+```sql
+SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung LIKE 'CLB Thám Tử soi dữ liệu sinh viên%';
+```
+
+*Kết quả chạy thật: 5 dòng*
+
+| ma_tin | thoi_diem | tai_khoan | loai | noi_dung |
+| --- | --- | --- | --- | --- |
+| T-097 | 2024-10-07 22:40 | clb_robotics | GOC | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-102 | 2024-10-07 22:55 | SV240254 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-160 | 2024-10-08 07:10 | SV230311 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-193 | 2024-10-08 08:02 | SV220118 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-317 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
+
+- **Nộp cột**: ma_tin
+
+*Các bẫy và phản hồi từ nhân vật:*
+- Nếu lọc ra 0 dòng → **Tùng** (gãi đầu): Trắng bóc. Có khi nào người ta thêm chữ đằng trước không?
+- Nếu chọn sai cột nộp → **Hà Vy** (suy nghĩ): Chọn nhầm cột rồi, cậu chọn lại cột mã tin nhé.
+- Nếu thừa cột → **Duy**: Vẫn thừa cột.
+- Nếu tra đúng → **Tùng** (chỉ tay): Có 5 tin! Bắt đầu lòi ra rồi.
+
+*Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
+
+- *Suy nghĩ của bạn:* *(Có 5 tin bắt đầu bằng đoạn này. Từ từ, nhỡ họ viết thêm ở phía trước thì sao? Ví dụ "tớ nghe nói..." (tạm))*
+- **Tùng** (lo lắng): Lại còn thế nữa. Tìm tiếp đi cậu. (tạm)
+
+**Lựa chọn tiếp theo:**
+- [Đi tiếp](#doan-7)
+
+---
+
+<a id="doan-7"></a>
+### Đoạn 7: Thử chứa
+
+📍 **Phòng CLB** — *Thử chứa*
+
+#### 💻 Màn tra dữ liệu: Có chứa (thẻ `c-tin-chua`)
+*Đề bài:* Nhỡ ai đó viết thêm từ ở phía trước thì sao? Tìm những tin có chứa đoạn "CLB Thám Tử soi".
+
+```sql
+SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung LIKE '%CLB Thám Tử soi%';
+```
+
+*Kết quả chạy thật: 8 dòng*
+
+| ma_tin | thoi_diem | tai_khoan | loai | noi_dung |
+| --- | --- | --- | --- | --- |
+| T-097 | 2024-10-07 22:40 | clb_robotics | GOC | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-102 | 2024-10-07 22:55 | SV240254 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-160 | 2024-10-08 07:10 | SV230311 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-193 | 2024-10-08 08:02 | SV220118 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-317 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-331 | 2024-10-08 12:05 | SV240412 | GOC | Nghe nói CLB Thám Tử soi điểm |
+| T-339 | 2024-10-08 12:30 | SV240201 | CHUYEN_TIEP |  clb thám tử soi dữ liệu sinh viên đấy |
+| T-340 | 2024-10-08 13:15 | SV240207 | CHUYEN_TIEP |  CLB Thám Tử soi dữ liệu sinh viên đấy |
+
+- **Nộp cột**: ma_tin
+
+*Các bẫy và phản hồi từ nhân vật:*
+- Nếu lọc ra 0 dòng → **Tùng** (gãi đầu): Không thấy gì. Dùng phần trăm đúng chưa đấy?
+- Nếu lọc ra 5 dòng → **Hà Vy** (suy nghĩ): Năm dòng là của ban nãy. Nhớ dùng ký hiệu phần trăm ở cả hai đầu nhé.
+- Nếu chọn sai cột nộp → **Hà Vy** (suy nghĩ): Cậu chưa chọn đúng cột mã tin kìa.
+- Nếu tra đúng → **Minh Anh**: Lên 8 tin rồi. Nhìn xem, có một tin bị sửa nội dung.
+
+*Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
+
+- *Suy nghĩ của bạn:* *(Lên 8 tin rồi. Tin T-08 là "Nghe nói CLB Thám Tử soi điểm", T-09 và T-10 thì thêm nội dung lạ. Mình có nên giữ T-08 không? (tạm))*
+- **Minh Anh** (nghiêm túc): T-08 là tự viết lại, không phải copy-paste. Phải loại nó ra, chỉ tìm những tin chép nguyên văn nhưng có thể lỡ tay dính dấu cách hay viết thường thôi. (tạm)
+- **Hà Vy** (suy nghĩ): Vậy bỏ dấu % ở đầu đi, dùng TRIM để xóa dấu cách thừa, và LOWER để đưa về chữ thường giống nhau, rồi tìm xem có tin nào bắt đầu bằng đoạn đó không. (tạm)
+
+**Lựa chọn tiếp theo:**
+- [Đi tiếp](#doan-8)
+
+---
+
+<a id="doan-8"></a>
+### Đoạn 8: Thử làm sạch
+
+📍 **Phòng CLB** — *Thử làm sạch*
+
+#### 💻 Màn tra dữ liệu: Làm sạch (thẻ `c-tin-sach`)
+*Đề bài:* Biết đâu có người cố tình gõ chữ thường hoặc lỡ dính dấu cách ở đầu. Làm sạch nội dung rồi tìm các tin bắt đầu bằng đoạn đó.
+
+```sql
+SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TRIM(noi_dung)) LIKE 'clb thám tử soi%';
+```
+
+*Kết quả chạy thật: 7 dòng*
+
+| ma_tin | thoi_diem | tai_khoan | loai | noi_dung |
+| --- | --- | --- | --- | --- |
+| T-097 | 2024-10-07 22:40 | clb_robotics | GOC | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-102 | 2024-10-07 22:55 | SV240254 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-160 | 2024-10-08 07:10 | SV230311 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-193 | 2024-10-08 08:02 | SV220118 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-317 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-339 | 2024-10-08 12:30 | SV240201 | CHUYEN_TIEP |  clb thám tử soi dữ liệu sinh viên đấy |
+| T-340 | 2024-10-08 13:15 | SV240207 | CHUYEN_TIEP |  CLB Thám Tử soi dữ liệu sinh viên đấy |
+
+- **Nộp cột**: ma_tin
+
+*Các bẫy và phản hồi từ nhân vật:*
+- Nếu lọc ra 0 dòng → **Tùng** (gãi đầu): Lại không ra tin nào rồi. Cậu viết đúng hàm làm sạch chưa?
+- Nếu lọc ra 8 dòng → **Hà Vy** (suy nghĩ): Vẫn tám dòng. Nhớ đưa về chữ thường và bỏ dấu cách thừa, rồi tìm những tin BẮT ĐẦU bằng câu đó.
+- Nếu chọn sai cột nộp → **Hà Vy** (suy nghĩ): Đừng vội, nộp đúng cột mã tin đã.
+- Nếu tra đúng → **Minh Anh** (nghiêm túc): Bảy tin. Lòi ra thêm hai tài khoản lạ.
+
+*Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
+
+- *Suy nghĩ của bạn:* *(Giảm xuống còn 7 tin. T-08 đã bị loại. (tạm))*
+- **Tùng** (chỉ tay): Hai ông mã này gửi ngay sau giờ tan học. Xem xem tin nào do hai ông đó gửi? (tạm)
+
+**Lựa chọn tiếp theo:**
+- [Đi tiếp](#doan-9)
+
+---
+
+<a id="doan-9"></a>
+### Đoạn 9: Thử IN hai tài khoản
+
+📍 **Phòng CLB** — *Thử IN hai tài khoản*
+
+#### 💻 Màn tra dữ liệu: Một trong mấy giá trị (thẻ `c-tin-in`)
+*Đề bài:* Trong các tin mới tìm thấy, có hai tài khoản lạ. Lọc xem có tin nào gửi từ một trong hai tài khoản đó không?
+
+```sql
+SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoan IN ('SV240201', 'SV240207');
+```
+
+*Kết quả chạy thật: 2 dòng*
+
+| ma_tin | thoi_diem | tai_khoan | loai | noi_dung |
+| --- | --- | --- | --- | --- |
+| T-339 | 2024-10-08 12:30 | SV240201 | CHUYEN_TIEP |  clb thám tử soi dữ liệu sinh viên đấy |
+| T-340 | 2024-10-08 13:15 | SV240207 | CHUYEN_TIEP |  CLB Thám Tử soi dữ liệu sinh viên đấy |
+
+- **Nộp cột**: ma_tin
+
+*Các bẫy và phản hồi từ nhân vật:*
+- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Chắc gõ sai mã sinh viên.
+- Nếu lọc ra 7 dòng → **Tùng** (gãi đầu): Đây là toàn bộ bảy tin mình vừa lọc ra mà. Dùng IN để lấy hai cái cần tìm thôi.
+- Nếu chọn sai cột nộp → **Hà Vy** (suy nghĩ): Nộp nhầm cột rồi.
+- Nếu tra đúng → **Tùng** (chỉ tay): Đây rồi! Đúng là hai cái mã này.
+
+> 🗂️ **Bằng chứng thu thập**: **Các tin mang câu tin đồn** — Kết quả truy vấn: nhiều tin chép lại cùng một câu, từ các tài khoản khác nhau. Phiếu chưa nói tin nào có trước.
+*Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
+
+- *Suy nghĩ của bạn:* *(Năm tin mang câu đó, từ năm tài khoản. Bốn cái là mã sinh viên. Một cái là clb_robotics.)*
+- **Tùng** (chỉ tay): Lại Robotics! Hôm trước là cái huy hiệu bánh răng, giờ là tài khoản. Tớ cá là…
+- **Hà Vy**: Đừng cá. Mới biết có năm tin mang câu đó. Tin nào có trước thì phiếu chưa nói.
+- **Minh Anh**: Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem.
+> 🎯 **NHIỆM VỤ**: Sang xưởng Robotics hỏi người trực kênh
+
+**Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-29)
+- [Sau khi xem hết các chỗ](#doan-31)
+
+---
+
+<a id="doan-10"></a>
+### Đoạn 10: Xưởng Robotics: gặp Nam; lấy phiếu làm nguồn, tìm tin gốc
 
 📍 **Xưởng CLB Robotics** — *Xưởng Robotics: gặp Nam; lấy phiếu làm nguồn, tìm tin gốc*
 
@@ -153,16 +321,16 @@ Thứ Tư, 09/10/2024
 *Những chỗ có thể khám phá ở đây:*
 
 **Lựa chọn tiếp theo:**
-- [Khám phá: Cái hộp trên tay](#doan-9)
-- [Khám phá: Cây bút dạ](#doan-10)
-- [Khám phá: Tay áo](#doan-11)
-- [Mở bản đồ](#doan-23)
-- [Sau khi xem hết các chỗ](#doan-26)
+- [Khám phá: Cái hộp trên tay](#doan-13)
+- [Khám phá: Cây bút dạ](#doan-14)
+- [Khám phá: Tay áo](#doan-15)
+- [Mở bản đồ](#doan-29)
+- [Sau khi xem hết các chỗ](#doan-32)
 
 ---
 
-<a id="doan-7"></a>
-### Đoạn 7: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học
+<a id="doan-11"></a>
+### Đoạn 11: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học
 
 📍 **Căng tin** — *Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học*
 
@@ -170,14 +338,14 @@ Thứ Tư, 09/10/2024
 *Những chỗ có thể khám phá ở đây:*
 
 **Lựa chọn tiếp theo:**
-- [Khám phá: Tùng](#doan-14)
-- [Khám phá: Tấm bảng đen trên quầy](#doan-15)
-- [Mở bản đồ](#doan-23)
+- [Khám phá: Tùng](#doan-18)
+- [Khám phá: Tấm bảng đen trên quầy](#doan-19)
+- [Mở bản đồ](#doan-29)
 
 ---
 
-<a id="doan-8"></a>
-### Đoạn 8: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ
+<a id="doan-12"></a>
+### Đoạn 12: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ
 
 📍 **Quán trà đá cổng trường** — *Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ*
 
@@ -185,14 +353,14 @@ Thứ Tư, 09/10/2024
 *Những chỗ có thể khám phá ở đây:*
 
 **Lựa chọn tiếp theo:**
-- [Khám phá: Bà bán trà đá](#doan-16)
-- [Khám phá: Chiếc xe đạp cũ](#doan-17)
-- [Mở bản đồ](#doan-23)
+- [Khám phá: Bà bán trà đá](#doan-20)
+- [Khám phá: Chiếc xe đạp cũ](#doan-21)
+- [Mở bản đồ](#doan-29)
 
 ---
 
-<a id="doan-9"></a>
-### Đoạn 9: Quan sát Nam: cái hộp linh kiện
+<a id="doan-13"></a>
+### Đoạn 13: Quan sát Nam: cái hộp linh kiện
 
 📍 **Xưởng CLB Robotics** — *Quan sát Nam: cái hộp linh kiện*
 
@@ -200,12 +368,12 @@ Thứ Tư, 09/10/2024
 - **Hà Vy** (suy nghĩ): Người giữ sổ sách của xưởng. Chuyện giấy tờ, giờ giấc thì hỏi cậu này.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Xưởng CLB Robotics](#doan-6)
+- [Quay lại: Đang ở Xưởng CLB Robotics](#doan-10)
 
 ---
 
-<a id="doan-10"></a>
-### Đoạn 10: Quan sát Nam: cây bút dạ
+<a id="doan-14"></a>
+### Đoạn 14: Quan sát Nam: cây bút dạ
 
 📍 **Xưởng CLB Robotics** — *Quan sát Nam: cây bút dạ*
 
@@ -213,12 +381,12 @@ Thứ Tư, 09/10/2024
 - **Tùng**: Đang dán nhãn dở. Mình tới bất ngờ, cậu ấy không chuẩn bị gì trước.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Xưởng CLB Robotics](#doan-6)
+- [Quay lại: Đang ở Xưởng CLB Robotics](#doan-10)
 
 ---
 
-<a id="doan-11"></a>
-### Đoạn 11: Quan sát Nam: tay áo xắn
+<a id="doan-15"></a>
+### Đoạn 15: Quan sát Nam: tay áo xắn
 
 📍 **Xưởng CLB Robotics** — *Quan sát Nam: tay áo xắn*
 
@@ -226,12 +394,12 @@ Thứ Tư, 09/10/2024
 - **Hà Vy**: Người làm việc ở xưởng, không phải người ngồi họp.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Xưởng CLB Robotics](#doan-6)
+- [Quay lại: Đang ở Xưởng CLB Robotics](#doan-10)
 
 ---
 
-<a id="doan-12"></a>
-### Đoạn 12: Tuyến dữ liệu: nhật ký đăng nhập của kênh
+<a id="doan-16"></a>
+### Đoạn 16: Tuyến dữ liệu: nhật ký đăng nhập của kênh
 
 📍 **Xưởng CLB Robotics** — *Tuyến dữ liệu: nhật ký đăng nhập của kênh*
 
@@ -257,7 +425,7 @@ SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = 
 
 *Các bẫy và phản hồi từ nhân vật:*
 - Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không dòng nào. Giá trị này có đang nằm đúng cột của nó không nhỉ?
-- Nếu lọc ra 21 dòng → **Hà Vy** (suy nghĩ): Hai mươi mốt lần, của kênh Robotics suốt ba tuần. Mình cần đúng ngày mùng 7.
+- Nếu lọc ra 21 dòng → **Hà Vy** (suy nghĩ): Hai mươi mốt lần, của kênh suốt ba tuần. Mình cần đúng ngày mùng 7.
 - Nếu lọc ra 42 dòng → **Hà Vy** (suy nghĩ): Bốn mươi hai lần trong ngày mùng 7, của đủ mọi tài khoản. Mình cần đúng tài khoản kênh Robotics.
 - Nếu lọc ra 1007 dòng → **Tùng** (gãi đầu): Hơn một nghìn lần đăng nhập, của mọi tài khoản trong ba tuần.
 - Nếu tra đúng → **Hà Vy**: Hai lần trong ngày mùng 7. 15 giờ 10 từ máy xưởng số 2, 22 giờ 31 từ máy văn phòng xưởng.
@@ -270,13 +438,13 @@ SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = 
 - **Hà Vy** (suy nghĩ): Đăng nhập 22:31, tin gửi 22:40. Khớp giờ. Nhưng mới biết máy nào, chưa biết ai ngồi máy.
 
 **Lựa chọn tiếp theo:**
-- [Nếu đã có "Tối 07/10 xưởng mở tới 23 giờ": Rẽ sang hướng khác](#doan-18)
-- [Mở bản đồ](#doan-23)
+- [Nếu đã có "Tối 07/10 xưởng mở tới 23 giờ": Rẽ sang hướng khác](#doan-22)
+- [Mở bản đồ](#doan-29)
 
 ---
 
-<a id="doan-13"></a>
-### Đoạn 13: Tuyến hiện trường: bảng đăng ký dùng xưởng
+<a id="doan-17"></a>
+### Đoạn 17: Tuyến hiện trường: bảng đăng ký dùng xưởng
 
 📍 **Xưởng CLB Robotics** — *Tuyến hiện trường: bảng đăng ký dùng xưởng*
 
@@ -299,7 +467,7 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 | 2024-10-07 | 19:00 | 23:00 | Đội thi đấu tập |
 
 *Các bẫy và phản hồi từ nhân vật:*
-- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không dòng nào. Lịch ghi ngày theo dạng năm-tháng-ngày, giấy nhớ cũng vậy. Giá trị có nằm đúng cột không?
+- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không dòng nào. Lịch ghi ngày theo dạng năm-tháng-ngày. Giá trị có nằm đúng cột không?
 - Nếu lọc ra 266 dòng → **Tùng** (gãi đầu): Cả sổ đặt xưởng từ năm 2022. Mình chỉ cần tối mùng 7.
 - Nếu tra đúng → **Duy**: Một dòng: tối mùng 7, 19 giờ tới 23 giờ, đội thi đấu tập.
 
@@ -313,13 +481,13 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 - **Hà Vy** (suy nghĩ): Lịch đăng ký tới 23 giờ, tin gửi 22:40. Nhưng đăng ký chưa chắc đã có mặt.
 
 **Lựa chọn tiếp theo:**
-- [Nếu đã có "Hai lần đăng nhập ngày 07/10": Rẽ sang hướng khác](#doan-20)
-- [Mở bản đồ](#doan-23)
+- [Nếu đã có "Hai lần đăng nhập ngày 07/10": Rẽ sang hướng khác](#doan-24)
+- [Mở bản đồ](#doan-29)
 
 ---
 
-<a id="doan-14"></a>
-### Đoạn 14: Tới nơi: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học
+<a id="doan-18"></a>
+### Đoạn 18: Tới nơi: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học
 
 📍 **Căng tin** — *Tới nơi: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học*
 
@@ -328,12 +496,12 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 - **Hà Vy**: Chuyển tiếp thì dễ. Mình đi tìm người gửi đầu tiên.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Căng tin](#doan-7)
+- [Quay lại: Đang ở Căng tin](#doan-11)
 
 ---
 
-<a id="doan-15"></a>
-### Đoạn 15: Chi tiết ẩn: Tấm bảng đen trên quầy
+<a id="doan-19"></a>
+### Đoạn 19: Chi tiết ẩn: Tấm bảng đen trên quầy
 
 📍 **Căng tin** — *Chi tiết ẩn: Tấm bảng đen trên quầy*
 
@@ -341,12 +509,12 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 - **Tùng** (gãi đầu): Không phải tớ. Tớ chỉ… ghé xem thôi.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Căng tin](#doan-7)
+- [Quay lại: Đang ở Căng tin](#doan-11)
 
 ---
 
-<a id="doan-16"></a>
-### Đoạn 16: Tới nơi: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ
+<a id="doan-20"></a>
+### Đoạn 20: Tới nơi: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ
 
 📍 **Quán trà đá cổng trường** — *Tới nơi: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ*
 
@@ -363,12 +531,12 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 - **Hà Vy**: Câu mở đầu là "xin lỗi". Có hai chữ.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Quán trà đá cổng trường](#doan-8)
+- [Quay lại: Đang ở Quán trà đá cổng trường](#doan-12)
 
 ---
 
-<a id="doan-17"></a>
-### Đoạn 17: Chi tiết ẩn: Chiếc xe đạp cũ
+<a id="doan-21"></a>
+### Đoạn 21: Chi tiết ẩn: Chiếc xe đạp cũ
 
 📍 **Quán trà đá cổng trường** — *Chi tiết ẩn: Chiếc xe đạp cũ*
 
@@ -376,12 +544,12 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 - **Hà Vy**: Sổ ghi nợ của quán. Thời nào cũng có một cuốn sổ như thế.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Quán trà đá cổng trường](#doan-8)
+- [Quay lại: Đang ở Quán trà đá cổng trường](#doan-12)
 
 ---
 
-<a id="doan-18"></a>
-### Đoạn 18: Đã xem bảng xưởng rồi mới xem nhật ký: Tùng đối chiếu hai nguồn
+<a id="doan-22"></a>
+### Đoạn 22: Đã xem bảng xưởng rồi mới xem nhật ký: Tùng đối chiếu hai nguồn
 
 📍 **Xưởng CLB Robotics** — *Đã xem bảng xưởng rồi mới xem nhật ký: Tùng đối chiếu hai nguồn*
 
@@ -390,15 +558,13 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 - **Hà Vy** (suy nghĩ): Khớp giờ, khớp máy. Nhưng lịch là đăng ký, không phải điểm danh. Hai bảng ấy chẳng bảng nào có tên người, Tùng ạ.
 - **Tùng** (gãi đầu): …Ừ thì chưa có tên.
 
-⚠ (bản cũ: tự chuyển nơi)
-
 **Lựa chọn tiếp theo:**
-- [Đi tiếp](#doan-19)
+- [Mở bản đồ](#doan-29)
 
 ---
 
-<a id="doan-19"></a>
-### Đoạn 19: Về phòng CLB báo lại
+<a id="doan-23"></a>
+### Đoạn 23: Về phòng CLB báo lại
 
 📍 **Phòng CLB** — *Về phòng CLB báo lại*
 
@@ -408,17 +574,15 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 - **Minh Anh**: Một nguồn thì chị chưa nói với cô Lan được. Nói có sách, mách có chứng: chứng phải hai. Các em quay lại xưởng, xem nốt chỗ kia rồi về.
 - **Tùng** (gãi đầu): Biết thế xem luôn cho rồi.
 
-⚠ (bản cũ: tự chuyển nơi)
-
 **Lựa chọn tiếp theo:**
-- [Nếu (đã có "Hai lần đăng nhập ngày 07/10" và đã có "Tối 07/10 xưởng mở tới 23 giờ"): Rẽ sang hướng khác](#doan-21)
-- [Nếu đã có "Hai lần đăng nhập ngày 07/10": Rẽ sang hướng khác](#doan-13)
-- [Đi tiếp](#doan-12)
+- [Nếu (đã có "Hai lần đăng nhập ngày 07/10" và đã có "Tối 07/10 xưởng mở tới 23 giờ"): Rẽ sang hướng khác](#doan-25)
+- [Nếu đã có "Hai lần đăng nhập ngày 07/10": Rẽ sang hướng khác](#doan-26)
+- [Đi tiếp](#doan-27)
 
 ---
 
-<a id="doan-20"></a>
-### Đoạn 20: Đã xem nhật ký rồi mới xem bảng xưởng: Tùng đối chiếu hai nguồn
+<a id="doan-24"></a>
+### Đoạn 24: Đã xem nhật ký rồi mới xem bảng xưởng: Tùng đối chiếu hai nguồn
 
 📍 **Xưởng CLB Robotics** — *Đã xem nhật ký rồi mới xem bảng xưởng: Tùng đối chiếu hai nguồn*
 
@@ -427,15 +591,13 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 - **Hà Vy** (suy nghĩ): Khớp giờ, khớp máy. Nhưng lịch là đăng ký, không phải điểm danh. Hai bảng ấy chẳng bảng nào có tên người, Tùng ạ.
 - **Tùng** (gãi đầu): …Ừ thì chưa có tên.
 
-⚠ (bản cũ: tự chuyển nơi)
-
 **Lựa chọn tiếp theo:**
-- [Đi tiếp](#doan-19)
+- [Mở bản đồ](#doan-29)
 
 ---
 
-<a id="doan-21"></a>
-### Đoạn 21: Về phòng CLB báo lại, đủ hai hướng
+<a id="doan-25"></a>
+### Đoạn 25: Về phòng CLB báo lại, đủ hai hướng
 
 📍 **Phòng CLB** — *Về phòng CLB báo lại, đủ hai hướng*
 
@@ -451,13 +613,35 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 > [CHIBI chibi-v2-manh-giay-linh (sticker)] (chưa có mô tả)
 
 **Lựa chọn tiếp theo:**
-- [Nếu đã có "tin-ve-som": Rẽ sang hướng khác](#doan-22)
-- [Đi tiếp](#doan-22)
+- [Nếu đã có "tin-ve-som": Rẽ sang hướng khác](#doan-28)
+- [Đi tiếp](#doan-28)
 
 ---
 
-<a id="doan-22"></a>
-### Đoạn 22: Nói chắc được điều gì; cả nhóm bắt đầu chia ý về Nam
+<a id="doan-26"></a>
+### Đoạn 26: Chưa xem bảng đăng ký: quay lại xưởng
+
+📍 **Phòng CLB** — *Chưa xem bảng đăng ký: quay lại xưởng*
+
+
+**Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-29)
+
+---
+
+<a id="doan-27"></a>
+### Đoạn 27: Chưa xem nhật ký: quay lại xưởng
+
+📍 **Phòng CLB** — *Chưa xem nhật ký: quay lại xưởng*
+
+
+**Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-29)
+
+---
+
+<a id="doan-28"></a>
+### Đoạn 28: Nói chắc được điều gì; cả nhóm bắt đầu chia ý về Nam
 
 📍 **Phòng CLB** — *Nói chắc được điều gì; cả nhóm bắt đầu chia ý về Nam*
 
@@ -483,80 +667,69 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 
 ---
 
-<a id="doan-23"></a>
-### Đoạn 23: Bản đồ Thứ Tư, 09/10/2024
+<a id="doan-29"></a>
+### Đoạn 29: Bản đồ Thứ Tư, 09/10/2024
 
 🗺️ **Bản đồ** — *Thứ Tư, 09/10/2024*
 
 *Những nơi có thể đi tới:*
 
 **Lựa chọn tiếp theo:**
-- [Đi tới: Xưởng Robotics !](#doan-6)
-- [Đi tới: Căng tin (tùy chọn)](#doan-7)
-- [Đi tới: Quán trà đá (tùy chọn)](#doan-8)
-- [Đi tới: Ra cửa xem nốt bảng đăng ký.](#doan-13)
-- [Đi tới: Về báo chị Minh Anh.](#doan-19)
-- [Đi tới: Xem nốt nhật ký đăng nhập.](#doan-12)
+- [Đi tới: Xưởng Robotics !](#doan-10)
+- [Đi tới: Căng tin (tùy chọn)](#doan-11)
+- [Đi tới: Quán trà đá (tùy chọn)](#doan-12)
+- [Đi tới: Ra cửa xem nốt bảng đăng ký.](#doan-17)
+- [Đi tới: Về báo chị Minh Anh.](#doan-23)
+- [Đi tới: Xem nốt nhật ký đăng nhập.](#doan-16)
 
 ---
 
-<a id="doan-24"></a>
-### Đoạn 24: Sau khi xem hết các chỗ ở Phòng CLB
+<a id="doan-30"></a>
+### Đoạn 30: Sau khi xem hết các chỗ ở Phòng CLB
 
-#### 💻 Màn tra dữ liệu: Tin đồn trên kênh sinh viên (thẻ `c-tin-don`)
-*Đề bài:* Kênh sinh viên chuyền nhau một câu về CLB. Những tin nào mang câu đó?
+#### 💻 Màn tra dữ liệu: Lọc bằng (thẻ `c-tin-bang`)
+*Đề bài:* Kênh sinh viên chuyền nhau câu tin đồn. Thử tìm xem có tin nào giống hệt câu đó không?
 
 ```sql
-SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB Thám Tử soi dữ liệu%';
+SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung = 'CLB Thám Tử soi dữ liệu sinh viên';
 ```
 
-*Kết quả chạy thật: 5 dòng*
+*Kết quả chạy thật: 0 dòng*
 
-| ma_tin | thoi_diem | tai_khoan | loai |
-| --- | --- | --- | --- |
-| T-097 | 2024-10-07 22:40 | clb_robotics | GOC |
-| T-102 | 2024-10-07 22:55 | SV240254 | CHUYEN_TIEP |
-| T-160 | 2024-10-08 07:10 | SV230311 | CHUYEN_TIEP |
-| T-193 | 2024-10-08 08:02 | SV220118 | CHUYEN_TIEP |
-| T-317 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP |
+| ma_tin | thoi_diem | tai_khoan | loai | noi_dung |
+| --- | --- | --- | --- | --- |
+
+- **Nộp cột**: ma_tin
 
 *Các bẫy và phản hồi từ nhân vật:*
-- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không dòng nào. Tin trong kênh dài hơn mấy chữ trên giấy nhớ, còn đoạn sau nữa. "Bằng" thì phải khớp cả câu; mình chỉ có mấy chữ đầu thôi.
 - Nếu lọc ra 338 dòng → **Tùng** (gãi đầu): Cả ba trăm ba mươi tám tin của kênh từ tối qua. Có cả tin tìm ví với tin pass giáo trình.
-- Nếu thiếu cột → **Hà Vy** (suy nghĩ): Đủ năm tin rồi, nhưng phiếu này còn phải lọc tiếp tin gốc. Cần mã tin, lúc gửi, tài khoản gửi, và cột loại tin.
-- Nếu thừa cột → **Duy**: Đủ mà thừa. Nội dung tin thì năm dòng như nhau, khỏi chép vào phiếu. Lấy mã tin, lúc gửi, tài khoản với loại tin thôi.
-- Nếu tra đúng → **Hà Vy**: Năm tin cùng một câu. Ghim lại đã.
+- Nếu chọn sai cột nộp → **Hà Vy** (suy nghĩ): Mình cần tìm mã tin để nộp.
+- Nếu thừa cột → **Duy**: Thừa cột rồi. Chỉ lấy mã tin, thời điểm, tài khoản, loại và nội dung thôi.
+- Nếu tra đúng → **Hà Vy** (suy nghĩ): Không có dòng nào. "Bằng" thì phải khớp y hệt cả câu; tin đồn chắc còn đoạn sau.
 
-> 🗂️ **Bằng chứng thu thập**: **Năm tin mang câu tin đồn** — Kết quả truy vấn: năm tin cùng một câu, từ năm tài khoản. Bốn tài khoản là mã sinh viên, một là clb_robotics. Phiếu chưa nói tin nào có trước.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Năm tin mang câu đó, từ năm tài khoản. Bốn cái là mã sinh viên. Một cái là clb_robotics.)*
-- **Tùng** (chỉ tay): Lại Robotics! Hôm trước là cái huy hiệu bánh răng, giờ là tài khoản. Tớ cá là…
-- **Hà Vy**: Đừng cá. Mới biết có năm tin mang câu đó. Tin nào có trước thì phiếu chưa nói.
-- **Minh Anh**: Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem.
-> 🎯 **NHIỆM VỤ**: Sang xưởng Robotics hỏi người trực kênh
+- *Suy nghĩ của bạn:* *(Không có tin nào đúng y câu ấy. Chắc là tin còn đoạn sau. (tạm))*
+- **Hà Vy** (suy nghĩ): Vậy thử xem tin nào bắt đầu bằng câu đó. Cậu dùng "%" nhé. (tạm)
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-23)
-- [Mở bản đồ](#doan-23)
-- [Sau khi xem hết các chỗ](#doan-25)
-
----
-
-<a id="doan-25"></a>
-### Đoạn 25: Sau khi xem hết các chỗ ở Phòng CLB
-
-
-⚠ (bản cũ: tự chuyển nơi)
-
-**Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-23)
+- [Mở bản đồ](#doan-29)
 - [Đi tiếp](#doan-6)
 
 ---
 
-<a id="doan-26"></a>
-### Đoạn 26: Sau khi xem hết các chỗ ở Xưởng CLB Robotics
+<a id="doan-31"></a>
+### Đoạn 31: Sau khi xem hết các chỗ ở Phòng CLB
+
+
+**Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-29)
+- [Mở bản đồ](#doan-29)
+
+---
+
+<a id="doan-32"></a>
+### Đoạn 32: Sau khi xem hết các chỗ ở Xưởng CLB Robotics
 
 - **Nam**: Mấy em tìm ai? Ban chủ nhiệm chiều nay đi họp cả rồi.
 - *Suy nghĩ của bạn:* *(Bọn em bên CLB Thám Tử. Kênh của Robotics do ai trực ạ?)*
@@ -568,20 +741,28 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB
 > 🎯 **NHIỆM VỤ**: Trong năm tin đó, tin nào là tin gốc?
 > 💭 **Nhắc nhở** (Hà Vy): Phiếu vừa ghim dùng làm nguồn được. Lọc tiếp ra tin gốc.
 #### 💻 Màn tra dữ liệu: Tin gốc của tin đồn (thẻ `c-tin-goc`)
-*Đề bài:* Năm tin trên phiếu lẫn cả tin chuyển tiếp. Tin nào là tin gốc?
+*Đề bài:* Bỏ qua các tin chuyển tiếp, tìm duy nhất tin gốc từ những tin chép lại.
 
 ```sql
-SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';
+SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TRIM(noi_dung)) LIKE 'clb thám tử soi%' AND loai = 'GOC';
 ```
 
-*(Chạy SQL: near "@ev": syntax error)*
+*Kết quả chạy thật: 1 dòng*
+
+| ma_tin | thoi_diem | tai_khoan | loai | noi_dung |
+| --- | --- | --- | --- | --- |
+| T-097 | 2024-10-07 22:40 | clb_robotics | GOC | CLB Thám Tử soi dữ liệu sinh viên đấy |
+
+- **Nộp cột**: ma_tin
+- **Lọc từng bước**: Loai trước: 340 → 249 → 1 · Lower trước: 340 → 7 → 1
 
 *Các bẫy và phản hồi từ nhân vật:*
-- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không dòng nào. Giá trị này có đang nằm đúng cột của nó không nhỉ?
-- Nếu lọc ra 5 dòng → **Tùng** (gãi đầu): Vẫn đủ năm tin. Chưa tách được tin gốc ra.
-- Nếu tra đúng → **Hà Vy** (suy nghĩ): Còn đúng một tin. Phiếu năm tin vẫn nguyên trên bảng, mình chỉ lọc tiếp trên nó.
+- Nếu lọc ra 0 dòng → **Hà Vy** (suy nghĩ): Không ra tin nào.
+- Nếu lọc ra 7 dòng → **Tùng** (gãi đầu): Bảy tin này lẫn cả chuyển tiếp. Lọc riêng tin gốc ra chứ.
+- Nếu chọn sai cột nộp → **Hà Vy** (suy nghĩ): Nhớ chọn cột mã tin.
+- Nếu tra đúng → **Hà Vy** (suy nghĩ): Còn lại đúng một tin. Đây chính là gốc gác của tin đồn.
 
-> 🗂️ **Bằng chứng thu thập**: **Tin gốc: 22:40 tối 07/10** — Kết quả lọc tiếp trên phiếu năm tin: một tin gốc, gửi 22:40 thứ Hai 07/10 từ tài khoản clb_robotics. Phiếu cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
+> 🗂️ **Bằng chứng thu thập**: **Tin gốc: 22:40 tối 07/10** — Kết quả truy vấn bảng gốc: một tin gốc, gửi 22:40 thứ Hai 07/10 từ tài khoản clb_robotics. Phiếu cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
 - *Suy nghĩ của bạn:* *(Một tin gốc. 22 giờ 40 tối thứ Hai, mùng 7. Tài khoản clb_robotics.)*
@@ -604,8 +785,8 @@ SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';
 🔀 **Lựa chọn của bạn** (Hà Vy: "Hai chỗ Nam vừa buột miệng nói ra. Xem chỗ nào trước?"):
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-23)
-- [Chọn: "Nhật ký đăng nhập của kênh."](#doan-12)
-- [Chọn: "Bảng đăng ký dùng xưởng ngoài cửa."](#doan-13)
+- [Mở bản đồ](#doan-29)
+- [Chọn: "Nhật ký đăng nhập của kênh."](#doan-16)
+- [Chọn: "Bảng đăng ký dùng xưởng ngoài cửa."](#doan-17)
 
 ---

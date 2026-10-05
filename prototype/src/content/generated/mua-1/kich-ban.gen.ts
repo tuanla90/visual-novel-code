@@ -828,11 +828,13 @@ const GOC = {
     },
     "vuSau": [
       {
-        "id": "vu2",
+        "id": "vu-tin-don",
         "ten": "Tin đồn",
         "chuoi": "tin-mo",
         "ngay": "2024-10-09",
         "batDauO": "phong-clb",
+        "hanChot": "2024-10-15",
+        "viecChot": "Buổi giải trình chiều 15/10",
         "tieuDeKet": "Một tài khoản, chưa phải một người",
         "loiKet": "Tin gốc đi từ tài khoản kênh của CLB Robotics, lúc 22:40 tối thứ Hai. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi."
       },
@@ -870,7 +872,7 @@ const GOC = {
         "ten": "Bốn mục trong sổ đã ký",
         "chuoi": "v2-mo",
         "nguoiGiao": "duy",
-        "moSau": "vu2",
+        "moSau": "vu-tin-don",
         "ngay": "2024-11-01",
         "tieuDeKet": "Bốn mục có trong sổ, không hơn",
         "loiKet": "Bản xuất và sổ giấy là hai nguồn riêng, cùng ra bốn buổi đã ký. Hồ sơ ghi đúng điều đó: không nói ai tới dự, không nói buổi nào có ích."
@@ -920,7 +922,7 @@ const GOC = {
         "ten": "Túi đồ trên ghế đá",
         "chuoi": "p-tui-mo",
         "nguoiGiao": "tung",
-        "moSau": "vu2",
+        "moSau": "vu-tin-don",
         "ngay": "2024-10-30",
         "tieuDeKet": "Túi về tay chủ, đơn tới muộn hay kịp",
         "loiKet": "Chiếc túi vải trên ghế đá là của Hiếu, lớp BC24A; trong túi có đơn học bổng hạn nộp 17 giờ ngày 30/10. Túi nào cũng về đúng người, chỉ khác tờ đơn tới Phòng Công tác sinh viên lúc nào. Lịch học và danh sách đăng ký nói được ai học lớp nào, không nói ai là người đánh rơi."
@@ -7324,8 +7326,25 @@ const GOC = {
           ]
         },
         {
-          "type": "goto",
-          "to": "tin-gap-nam"
+          "type": "branch",
+          "id": "go-with-tin-gap-nam",
+          "asker": {
+            "speaker": "player",
+            "text": "Đi cùng Tùng sang xưởng Robotics"
+          },
+          "choices": [
+            {
+              "id": "go-tin-gap-nam",
+              "text": "Đi cùng Tùng sang xưởng Robotics",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-gap-nam"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -7754,8 +7773,25 @@ const GOC = {
           "text": "…Ừ thì chưa có tên."
         },
         {
-          "type": "goto",
-          "to": "tin-ket"
+          "type": "branch",
+          "id": "go-with-tin-ket",
+          "asker": {
+            "speaker": "player",
+            "text": "Về phòng CLB báo chị Minh Anh"
+          },
+          "choices": [
+            {
+              "id": "go-tin-ket",
+              "text": "Về phòng CLB báo chị Minh Anh",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-ket"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -7905,8 +7941,25 @@ const GOC = {
           "text": "…Ừ thì chưa có tên."
         },
         {
-          "type": "goto",
-          "to": "tin-ket"
+          "type": "branch",
+          "id": "go-with-tin-ket",
+          "asker": {
+            "speaker": "player",
+            "text": "Về phòng CLB báo chị Minh Anh"
+          },
+          "choices": [
+            {
+              "id": "go-tin-ket",
+              "text": "Về phòng CLB báo chị Minh Anh",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-ket"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -7977,11 +8030,69 @@ const GOC = {
             "kind": "co",
             "id": "ev-tin-may"
           },
-          "to": "tin-tuyen-xuong"
+          "to": "tin-ket-quay-xuong"
         },
         {
           "type": "goto",
-          "to": "tin-tuyen-may"
+          "to": "tin-ket-quay-may"
+        }
+      ]
+    },
+    {
+      "id": "tin-ket-quay-may",
+      "title": "Chưa xem nhật ký: quay lại xưởng",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "branch",
+          "id": "go-with-tin-tuyen-may",
+          "asker": {
+            "speaker": "player",
+            "text": "Quay lại xưởng xem nhật ký đăng nhập"
+          },
+          "choices": [
+            {
+              "id": "go-tin-tuyen-may",
+              "text": "Quay lại xưởng xem nhật ký đăng nhập",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-tuyen-may"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-ket-quay-xuong",
+      "title": "Chưa xem bảng đăng ký: quay lại xưởng",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "branch",
+          "id": "go-with-tin-tuyen-xuong",
+          "asker": {
+            "speaker": "player",
+            "text": "Quay lại xưởng xem bảng đăng ký"
+          },
+          "choices": [
+            {
+              "id": "go-tin-tuyen-xuong",
+              "text": "Quay lại xưởng xem bảng đăng ký",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-tuyen-xuong"
+                }
+              ]
+            }
+          ]
         }
       ]
     },

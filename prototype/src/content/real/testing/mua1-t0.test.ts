@@ -605,7 +605,7 @@ describe('Gói T0 Mùa 1: Kiểm tra tính toàn vẹn và sạch sẽ của tru
       'so-phong.md',
       'tui-do.md',
       'vu1.md',
-      'vu2.md',
+      'vu-tin-don.md',
       'vu3.md',
       'vu4.md',
       'vu5.md',
