@@ -304,6 +304,7 @@ export type MucMvp =
   | { kind: 'trial-filter'; id: string; sql: string; soDong: number; chon: { cot: string; giaTri: string } }
   | { kind: 'save-evidence'; id: string }
   | { kind: 'ending-branch' }
+  | { kind: 'go-with'; to: string; label: string }
   | { kind: 'explore'; id: string; diem: RawDiemKhamPha[]; kieu: 'canh' | 'ban-do' | 'quan-sat'; nhanVat: string | null; gio: string | null; dang: string | null; haVySoi: boolean };
 
 export interface RawBangChungDoiChat {
@@ -1353,6 +1354,10 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         return add(item);
       }
       if ((m = new RegExp(`^- \\[LƯU BẰNG CHỨNG (${MA})\\]$`).exec(line))) return add({ kind: 'save-evidence', id: m[1] ?? '' });
+      if ((m = new RegExp(`^- \\[ĐI CÙNG (${MA})\\] (.+)$`).exec(line))) {
+        if (!m[2] || m[2].trim() === '') throw new Error(`[ĐI CÙNG] thiếu nhãn nút`);
+        return add({ kind: 'go-with', to: m[1] ?? '', label: m[2].trim() });
+      }
       if (line === '- [RẼ KẾT]') return add({ kind: 'ending-branch' });
       // `quan sát <nv>/<dáng>`: soi nhân vật trong một dáng / bộ đồ cụ thể; `· Hà Vy soi`: mở bằng cảnh cắt đôi mắt Hà Vy (kính lóe sáng).
       if ((m = new RegExp(`^- \\[KHÁM PHÁ (${MA})(?: · (bản đồ(?: · giờ (\\d\\d:\\d\\d))?|quan sát (${MA})(?:/(${MA}))?( · Hà Vy soi)?))?\\]$`).exec(line))) {

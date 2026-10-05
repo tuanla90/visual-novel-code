@@ -102,6 +102,20 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
       return { type: 'consequence', hauQua: it.hauQua };
     case 'branch':
       return { type: 'branch', id: it.branch.id, asker: it.branch.asker, choices: it.branch.choices };
+    case 'go-with':
+      return {
+        type: 'branch',
+        id: `go-with-${it.to}`,
+        asker: { speaker: 'player', text: it.label },
+        choices: [
+          {
+            id: `go-${it.to}`,
+            text: it.label,
+            khi: null,
+            hauQua: [{ kind: 'di-toi', chuoi: it.to }]
+          }
+        ]
+      };
     case 'notebook-lookup':
       return { type: 'notebook-lookup', trang: it.trang, phan: it.phan };
     case 'notebook-note':

@@ -339,6 +339,11 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           canChuoi(it.to, '[ĐI TỚI]');
           bb.add(it.to);
           break;
+        case 'go-with':
+          canChuoi(it.to, '[ĐI CÙNG]');
+          bb.add(it.to);
+          if (c.items.indexOf(it) !== c.items.length - 1) err(vt, `[ĐI CÙNG] phải là dòng cuối của chuỗi`);
+          break;
         case 'show-document':
           canVatPham(it.id, vt, 'doc-', '[HIỆN TÀI LIỆU]');
           them(it.id, { kind: 'chuoi', id: c.id });
@@ -405,6 +410,17 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           break;
         case 'branch':
           if (it.branch.choices.length < 2) err(vt, `[RẼ NHÁNH ${it.branch.id}] cần ít nhất hai lựa chọn`);
+          {
+            const cacDich = it.branch.choices.map(ch => ch.hauQua.find(h => h.kind === 'di-toi')?.chuoi);
+            if (cacDich.length > 0 && cacDich.every(d => d !== undefined && d === cacDich[0])) {
+              err(vt, `[RẼ NHÁNH ${it.branch.id}] mọi lựa chọn cùng dẫn về một chuỗi`);
+            }
+            for (const ch of it.branch.choices) {
+              if (ch.text === '(Tiếp tục)' || ch.text === '(tạm)') {
+                err(vt, `[RẼ NHÁNH ${it.branch.id}] có lựa chọn giả "${ch.text}"`);
+              }
+            }
+          }
           for (const ch of it.branch.choices) {
             for (const h of ch.hauQua) kiemHauQua(h, vt, `[RẼ NHÁNH ${it.branch.id}]`, c.id, canChuoi);
             if (ch.khi) for (const id of maTrongDieuKien(ch.khi)) canVatPham(id, vt, null, `[RẼ NHÁNH ${it.branch.id}], [KHI]`);

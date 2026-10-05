@@ -69,7 +69,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 <a id="doan-2"></a>
 ### Đoạn 2: Sáng ngày 1: Tùng rủ ra tòa B
 
-Ngày 1
+Thứ Ba, 24/09/2024 · Còn 6 ngày tới Buổi họp rà soát
 
 📍 **Phòng CLB** — *Sáng ngày 1: Tùng rủ ra tòa B*
 
@@ -87,7 +87,7 @@ Ngày 1
 <a id="doan-3"></a>
 ### Đoạn 3: Sáng ngày 2: lên phòng Đào tạo
 
-Ngày 2
+Thứ Tư, 25/09/2024 · Còn 5 ngày tới Buổi họp rà soát
 
 📍 **Phòng CLB** — *Sáng ngày 2: lên phòng Đào tạo*
 
@@ -106,7 +106,7 @@ Ngày 2
 <a id="doan-4"></a>
 ### Đoạn 4: Sáng ngày 3: sang Phòng CTSV
 
-Ngày 3
+Thứ Năm, 26/09/2024 · Còn 4 ngày tới Buổi họp rà soát
 
 📍 **Phòng CLB** — *Sáng ngày 3: sang Phòng CTSV*
 
@@ -126,7 +126,7 @@ Ngày 3
 <a id="doan-5"></a>
 ### Đoạn 5: Sáng ngày 4: nộp hai mã
 
-Ngày 4
+Thứ Sáu, 27/09/2024 · Còn 3 ngày tới Buổi họp rà soát
 
 📍 **Phòng CLB** — *Sáng ngày 4: nộp hai mã*
 
@@ -142,7 +142,7 @@ Ngày 4
 <a id="doan-6"></a>
 ### Đoạn 6: Sáng ngày 5: cổng KTX
 
-Ngày 5
+Thứ Bảy, 28/09/2024 · Còn 2 ngày tới Buổi họp rà soát
 
 📍 **Cổng KTX** — *Sáng ngày 5: cổng KTX*
 
@@ -2145,9 +2145,9 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 ---
 
 <a id="doan-114"></a>
-### Đoạn 114: Bản đồ Ngày 2
+### Đoạn 114: Bản đồ Thứ Tư, 25/09/2024
 
-🗺️ **Bản đồ** — *Ngày 2*
+🗺️ **Bản đồ** — *Thứ Tư, 25/09/2024*
 
 *Những nơi có thể đi tới:*
 
@@ -2160,9 +2160,9 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 ---
 
 <a id="doan-115"></a>
-### Đoạn 115: Bản đồ Ngày 3
+### Đoạn 115: Bản đồ Thứ Năm, 26/09/2024
 
-🗺️ **Bản đồ** — *Ngày 3*
+🗺️ **Bản đồ** — *Thứ Năm, 26/09/2024*
 
 *Những nơi có thể đi tới:*
 
@@ -2174,9 +2174,9 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 ---
 
 <a id="doan-116"></a>
-### Đoạn 116: Bản đồ Ngày 4
+### Đoạn 116: Bản đồ Thứ Sáu, 27/09/2024
 
-🗺️ **Bản đồ** — *Ngày 4*
+🗺️ **Bản đồ** — *Thứ Sáu, 27/09/2024*
 
 *Những nơi có thể đi tới:*
 

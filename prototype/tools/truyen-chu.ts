@@ -64,6 +64,34 @@ export function dinhDangNgayThu(ngayIso: string): string {
   return `${thu}, ${dd}/${mm}/${y}`;
 }
 
+function congNgayIso(iso: string, soNgay: number): string {
+  const parts = iso.split('-').map(Number);
+  const d = new Date(Date.UTC(parts[0] ?? 2024, (parts[1] ?? 1) - 1, parts[2] ?? 1));
+  d.setUTCDate(d.getUTCDate() + soNgay);
+  const y = d.getUTCFullYear();
+  const m = String(d.getUTCMonth() + 1).padStart(2, '0');
+  const day = String(d.getUTCDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+function thuCuaIso(iso: string): number {
+  const parts = iso.split('-').map(Number);
+  return new Date(Date.UTC(parts[0] ?? 2024, (parts[1] ?? 1) - 1, parts[2] ?? 1)).getUTCDay();
+}
+
+function thuKeTiep(iso: string, thu: number): string {
+  const lech = (thu - thuCuaIso(iso) + 7) % 7;
+  return congNgayIso(iso, lech === 0 ? 7 : lech);
+}
+
+function ngayDieuTraIso(soNgay: number, ngayMoDau: string | null): string {
+  const nhanPhong = ngayMoDau || '2024-09-08';
+  const ngayHoi = thuKeTiep(nhanPhong, 6);
+  const trungThu = thuKeTiep(ngayHoi, 2);
+  const phongClb = thuKeTiep(trungThu, 1);
+  return congNgayIso(phongClb, soNgay);
+}
+
 export function tinhSoNgay(tuNgay: string, denNgay: string): number {
   const parts1 = tuNgay.split('-').map(Number);
   const parts2 = denNgay.split('-').map(Number);
@@ -547,11 +575,15 @@ export class BoXuatTruyenChu {
       for (const n of lich.ngay) {
         if (!n.chuoi) continue;
         let dongNgay = `Ngày ${n.so}`;
-        const ngayProp = (n as { ngay?: string }).ngay;
-        if (ngayProp) {
-          let thuNgay = dinhDangNgayThu(ngayProp);
+        const kieuProp = (n as { kieu?: string }).kieu;
+        let ngayThuc = (n as { ngay?: string }).ngay;
+        if (kieuProp === 'theo-truyen') {
+          ngayThuc = ngayDieuTraIso(n.so, lich.ngayMoDau ?? null);
+        }
+        if (ngayThuc) {
+          let thuNgay = dinhDangNgayThu(ngayThuc);
           if (hanChot && viecChot) {
-            const con = tinhSoNgay(ngayProp, hanChot);
+            const con = tinhSoNgay(ngayThuc, hanChot);
             if (con >= 0) thuNgay += ` · Còn ${con} ngày tới ${viecChot}`;
           }
           dongNgay = thuNgay;
