@@ -337,6 +337,24 @@ Túi đồ (Tùng, bỏ phần nối, bỏ ngày 30/10), Sổ sử dụng phòng
 
 **Chưa chốt:** làm lúc nào (đề xuất: sau khi truyện chữ Vụ 2 được duyệt; riêng lời gợi ý của Vụ 2 thêm ngay sau các lượt lời); điều kiện coi là "bí" (để lâu, nộp sai mấy lần, hay người chơi tự bấm avatar); người chưa có chat AI (Minh Anh, Duy, Nam) có mở chat không.
 
+
+### B12. Hỏi nhân chứng bằng gõ chữ (user nêu 05/10/2026 tối; chưa xếp lịch làm)
+
+**User đã chốt:**
+- Hướng đi: người chơi **gõ câu hỏi**, máy **xếp câu hỏi vào một dữ kiện** của nhân chứng, rồi trả lời bằng **một trong các biến thể lời đã viết sẵn** cho dữ kiện đó. Biến thể do model viết lúc dựng game, qua soát và duyệt mẫu như lời thường. Không sinh lời lúc chơi cho nhân chứng.
+- Phải **gợi ý cho người chơi biết còn hỏi được gì**: một **danh sách cần điều tra**, hoặc **bạn đi cùng gợi ý câu hỏi** (hai cách dùng được cùng lúc).
+
+**Đề xuất của Claude (chờ user duyệt):**
+- Mỗi nhân chứng có một **tờ dữ kiện**. Mỗi dữ kiện khai: câu cần làm rõ (dòng hiện ở danh sách), nội dung, chữ bắt buộc (mốc giờ, tên, con số phải có nguyên văn trong mọi biến thể), bốn tới năm biến thể lời, vài câu hỏi mẫu để máy xếp, điều kiện mới chịu nói, và hai bậc gợi ý của bạn đi cùng. Thêm lời "không biết" và lời gạt chuyện ngoài lề.
+- **Danh sách cần điều tra** nằm trong cuốn sổ CLB người chơi đang giữ. Mỗi dòng là một câu hỏi còn mở, không phải đáp án. Hỏi ra thì dòng được gạch và thành giấy nhớ như hiện nay. Dữ kiện chính có trong danh sách; dữ kiện phụ thì không, ai tò mò hỏi thêm mới ra (theo luật dấu "!" và chi tiết ẩn).
+- **Bạn đi cùng gợi ý theo bậc** (dùng khung B11): hỏi trượt hai câu liền thì bóng thoại bậc 1 nói điều nhóm chưa biết; trượt tiếp thì bậc 2 đưa hẳn một câu hỏi, bấm vào là hỏi luôn (đỡ gõ trên điện thoại). Hà Vy gợi ý về căn cứ và mốc giờ, Tùng gợi ý theo kiểu đoán.
+- Một nguồn cho ba thứ: mục "Biết thêm" của thẻ cảnh (nen-loi) sinh ra dòng danh sách, dữ kiện và lời gợi ý.
+- Xếp câu hỏi: thử model so nghĩa chạy trong máy người chơi (khoảng 100 MB, không cần mạng) so với model trên máy chủ của đường chat sẵn có.
+- Máy kiểm: mọi biến thể chứa đủ chữ bắt buộc và không có mốc giờ, con số, tên người nào khác.
+
+**Căn cứ:** Vaudeville (AI tự do, người chơi ép được nhân vật nói trái dữ kiện), bản thử Portopia (chỉ xếp vào lệnh có sẵn, bị chê cứng), bài nghiên cứu "structured knowledge tree" (arXiv 2609.23043: chi tiết bịa giảm từ 17,8% xuống 6,27%, vẫn chưa đủ cho mốc giờ), Dead Meat (lời AI chỉ tốt bằng phần người viết).
+
+**Chưa chốt:** thử ở cảnh nào (đề xuất: bác Thịnh ở sảnh tòa B, năm dữ kiện); cảnh nào giữ kiểu bấm rồi đọc như cũ; đối chất có dùng gõ chữ không; có cho bấm xem cả danh sách câu hỏi mẫu khi người chơi không muốn gõ không.
 ---
 
 ## C. Nghiệm thu chung (mọi gói nội dung)
