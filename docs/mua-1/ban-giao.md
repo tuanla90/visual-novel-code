@@ -63,8 +63,10 @@ Brief đầy đủ ở `docs/mua-1/brief/b4-4b.md`.
 **Đo** (trong `prototype/noi-dung-mua-1/`):
 
 ```bash
-grep -c '^- \*\*' loi/10-vu-2-tin-don.md loi/tt-tin-don.md
+grep -cE '^- (\*\*|Khi )' loi/10-vu-2-tin-don.md loi/tt-tin-don.md
 ```
+
+Cộng hai số lại. Lời của thẻ trong `tt-*.md` có dạng `- Khi …: **ai**` và C2 tính cả các dòng này (05/10: Vụ 2 = 127 + 32 = 159). Lệnh cũ `grep -c '^- \*\*'` luôn ra 0 với tệp `tt-*.md`, nên lời thẻ bị xóa cũng không lộ.
 
 ```bash
 grep -c '^### ' kich-ban/10-vu-2-tin-don.md
