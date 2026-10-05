@@ -113,6 +113,8 @@ Dời lời cũ (không sửa chữ): `[LỜI tin-mo.3]` dời từ `tin-tra-in`
 
 ## 4. Ba đối chất (logic chứng cứ; khối `[ĐỐI CHẤT]` viết sẵn, dán vào `kich-ban/` khi dựng)
 
+Đã chạy thử: dán nguyên ba khối dưới đây vào một bản chép `noi-dung-mua-1` (ngay trước `[HỎI q-tin-ket-luan]`), `npm run kiem-noi-dung:mua1 -- <bản chép>` không lỗi (mã thẻ có thật, thẻ ĐỦ CĂN CỨ là manh mối bắt buộc, giả thuyết có cặp `**…**`, đủ dòng con). Lời phản hồi chưa qua `kiem-giong`.
+
 Thẻ dùng và nơi lấy (mọi đường đi tới ngày 10/10 đều đã qua `tin-gap-nam` và cả hai hướng, vì `tin-ket` bắt quay lại xưởng khi mới xem một hướng):
 - `ev-tin-goc`: thẻ `c-tin-goc`, chuỗi `tin-gap-nam` (09/10, bắt buộc).
 - `ev-tin-may`: thẻ `c-tin-may`, chuỗi `tin-tuyen-may` (09/10, bắt buộc qua `tin-ket` → `tin-ket-quay-may`).
@@ -386,6 +388,7 @@ Gợi ý cho gói công cụ: với vụ sau có dòng `Ngày …`, (1) đòi `[
 - `highlight.json`: khóa `vu2` → `vu-tin-don`.
 - `kich-ban/10-vu-2-tin-don.md`: năm lỗi đứng nguyên chỗ sửa bằng `[ĐI CÙNG]` đúng như mục 3 (`tin-tra-in`, `tin-may-doi-chieu`, `tin-xuong-doi-chieu`, hai chuỗi mới `tin-ket-quay-may`, `tin-ket-quay-xuong`). Không đụng lời.
 - Test `mua1-t0`: tên tệp truyện chữ `vu2.md` → `vu-tin-don.md`.
+- Truyện chữ in nút `[ĐI CÙNG]` sang nơi khác vào đoạn "Bản đồ" của ngày, gộp với lựa chọn trùng đích, nên nhãn "Đi cùng Tùng sang xưởng Robotics" không hiện riêng; liên kết vẫn đủ (test 54/54).
 
 ## 10. Lỗi nội dung có sẵn cần user quyết (luật 1 cấm sửa lời cũ, kể cả dòng "(tạm)")
 
