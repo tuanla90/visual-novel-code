@@ -3065,7 +3065,8 @@
   position: absolute;
   top: 14px;
   right: 16px;
-  z-index: 36;
+  /* Trên lớp điểm bấm của cảnh khám phá (.mvp-canh, z-index 40): ở đó người chơi vẫn hỏi được bạn đi cùng. */
+  z-index: 41;
   display: flex;
   flex-direction: column;
   align-items: flex-end;

@@ -586,7 +586,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             key={JSON.stringify([lanDoiVan, s.batDauLuc, s.conTro, s.hoiDap?.viTri, kn.kind, gioiThieuMo, laTheChu])}
             kb={kb}
             s={s}
-            visible={['line', 'feedback', 'question', 'branch', 'doi-chat'].includes(kn.kind) && !gioiThieuMo && !laTheChu}
+            // Có cả ở cảnh khám phá (user 05/10): chi tiết ẩn không còn phát sáng, người chơi bí thì hỏi bạn đi cùng ngay tại đó.
+            visible={['line', 'feedback', 'question', 'branch', 'doi-chat', 'explore'].includes(kn.kind) && !gioiThieuMo && !laTheChu}
           />
         )}
       >
