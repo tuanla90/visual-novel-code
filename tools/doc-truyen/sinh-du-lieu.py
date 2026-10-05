@@ -64,6 +64,35 @@ def tach(van_ban):
     return doan
 
 
+def danh_lai_so(doan):
+    """Đánh lại số đoạn theo THỨ TỰ ĐỌC (đi sâu theo lựa chọn đầu trước), vì tệp .md đánh số theo lớp nên đọc bị nhảy cóc
+    (1 → 10 → 24 → 54…). Số trong tệp .md giữ ở soGoc để tra ngược."""
+    theo_so = {d['so']: d for d in doan}
+    thu_tu, da = [], set()
+    ngan = [doan[0]['so']] if doan else []
+    while ngan:
+        so = ngan.pop()
+        if so in da or so not in theo_so:
+            continue
+        da.add(so)
+        thu_tu.append(so)
+        for c in reversed(theo_so[so]['chon']):
+            if c['toi'] not in da:
+                ngan.append(c['toi'])
+    thu_tu += [d['so'] for d in doan if d['so'] not in da]  # đoạn không có đường vào: xếp cuối
+    moi = {cu: i + 1 for i, cu in enumerate(thu_tu)}
+    ra = []
+    for cu in thu_tu:
+        d = theo_so[cu]
+        d['soGoc'] = cu
+        d['so'] = moi[cu]
+        d['md'] = re.sub(r'\(#doan-(\d+)\)', lambda m: '(#doan-%d)' % moi.get(int(m.group(1)), int(m.group(1))), d['md'])
+        for c in d['chon']:
+            c['toi'] = moi.get(c['toi'], c['toi'])
+        ra.append(d)
+    return ra
+
+
 def main():
     ra = sys.argv[1] if len(sys.argv) > 1 else '.'
     thu_muc = os.path.join(ra, 'du-lieu')
@@ -77,7 +106,7 @@ def main():
         if not os.path.exists(duong):
             print('thiếu', duong)
             continue
-        doan = tach(io.open(duong, encoding='utf-8').read().replace('\r\n', '\n'))
+        doan = danh_lai_so(tach(io.open(duong, encoding='utf-8').read().replace('\r\n', '\n')))
         tep, lo, co = [], [], 2
         for d in doan:
             n = len(json.dumps(d, ensure_ascii=False).encode('utf-8')) + 1
@@ -96,7 +125,7 @@ def main():
             ten_tep.append(t)
         muc_luc.append({
             'ma': ma, 'ten': ten, 'trangThai': trang_thai, 'ghiChu': ghi_chu, 'tep': ten_tep,
-            'doan': [{'so': d['so'], 'tieuDe': d['tieuDe'], 'ngay': d['ngay']} for d in doan],
+            'doan': [{'so': d['so'], 'soGoc': d['soGoc'], 'tieuDe': d['tieuDe'], 'ngay': d['ngay']} for d in doan],
         })
         print('%-11s %3d đoạn, %d tệp' % (ma, len(doan), len(ten_tep)))
     with io.open(os.path.join(thu_muc, 'muc-luc.json'), 'w', encoding='utf-8', newline='\n') as f:

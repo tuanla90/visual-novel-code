@@ -7,7 +7,7 @@
 - [DÀN DỰNG] Ảnh bg-mvp-xe-buyt đã vẽ người chơi tựa cửa sổ, vali xanh dưới chân, khách trong xe, xe máy ngoài đường: lời dẫn không tả lại.
 - **narrator**: Xe vào nội thành lúc đầu giờ chiều. Tiếng còi xe máy dồn lên mỗi lúc một dày.
 - **player**: (Vậy là lên Hà Nội thật rồi.)
-- **narrator**: Xe chậm dần. Giọng phụ xe vọng xuống: "Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!"
+- **narrator**: Xe chậm dần. Giọng phụ xe vọng xuống: "Đại học Chấn Hưng! Ai xuống thì chuẩn bị!"
 - **player**: (Tới rồi. Xuống thôi.)
 
 ## md-00-xe-buyt.1
@@ -21,21 +21,21 @@
 
 ## md-00-cong-ktx.1
 - [DÀN DỰNG] Nền bg-mvp-cong-ktx: cổng sắt xanh mở, dây cờ đuôi nheo, nhà xe bên trái, phòng trực bên phải; không có người, không có vali.
-- **player**: (Dây cờ giăng tận cổng thế kia, chắc ký túc xá đây rồi.)
-- **player**: (Phòng mình là 408, tức là tầng bốn. Mong là có thang máy.)
+- **player**: (Treo cả cờ đón tân sinh viên cơ à. Ký túc xá đây rồi.)
+- **player**: (Phòng 408, tận tầng bốn. Không biết có thang máy không.)
 
 ## md-00-sanh-ktx.1
 > NHIỆM VỤ: Tìm đường lên phòng 408
-> NHẮC VIỆC player: Tầng bốn. Thang máy hay thang bộ đây?
+> NHẮC VIỆC player: Thang máy ở chỗ nào nhỉ?
 
 ## md-00-sanh-ktx.2
 - [DÀN DỰNG] Sảnh tầng một đông người ngày nhập học: tân sinh viên kéo vali, phụ huynh bê thùng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Lẫn trong đám đông bên phải có một tấm lưng áo xanh tình nguyện, mũ tai bèo đeo sau lưng: chi tiết ẩn, không có dấu, xem xong thang máy và bảng tin thì mới bấm được.
-- **player**: (Mát hẳn. Mà đông thế này… Giờ lên tầng bốn kiểu gì đây?)
+- **player**: (Mát hẳn. Mà đông quá, chẳng nhìn thấy thang máy đâu cả.)
 
 ## md-00-thang-may.1
-- **narrator**: Tờ giấy dán ngay giữa cửa thang máy: "Thang máy bảo trì đến hết tuần. Sinh viên vui lòng đi thang bộ."
-- **player**: (Hết tuần… Nghĩa là cả tuần leo bộ.)
-- **player**: (Thang bộ ở đâu nhỉ? Chắc bảng tin đằng kia có sơ đồ.)
+- **narrator**: Tờ giấy dán ngay giữa cửa thang máy: "Ngày nhập học thang máy quá tải. Xin nhường thang cho phụ huynh lớn tuổi. Sinh viên vui lòng đi thang bộ."
+- **player**: (Nhường thì nhường… nhưng tầng bốn cơ đấy. Lại còn cả cái vali.)
+- **player**: (Thế thang bộ ở chỗ nào nhỉ? Ra bảng tin xem có sơ đồ không.)
 
 ## md-00-so-do.1
 - **narrator**: Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ, có chấm "Bạn đang ở đây".
@@ -70,7 +70,7 @@
 - **player**: (Áo tình nguyện, mũ đi nắng, cầm sẵn sơ đồ. Người này biết đường. Hỏi cậu ấy.)
 
 ## md-00-gap-tung.1
-- **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế? Thang máy đang bảo trì.
+- **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế?
 - **tung** (ao-xanh-happy): Khuất sau hành lang kia kìa. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
 - **player**: Tầng bốn, phòng 408.
 - **tung** (ao-xanh-thinking): 408 à… Để tớ dò danh sách đã.

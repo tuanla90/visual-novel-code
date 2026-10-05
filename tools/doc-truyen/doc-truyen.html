@@ -127,6 +127,9 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
 .reply b{font-weight:600}
 .done{align-self:flex-start;font:600 11px/1.6 var(--ui);padding:0 8px;border-radius:999px;background:var(--ok-bg);color:var(--ok)}
 .memo .btn{font-size:12px;padding:3px 9px;background:transparent;border-color:var(--note);color:var(--note-ink)}
+.memo .btn.pri,.nlist .btn.pri{background:var(--ok);border-color:var(--ok);color:var(--surface)}
+.nlist .acts{display:flex;gap:6px;flex-wrap:wrap}
+.nlist .btn{font-size:12px;padding:3px 9px}
 .form{font-family:var(--ui);display:flex;flex-direction:column;gap:8px;margin:.5em 0 .3em;padding:10px;border:1px solid var(--note);border-radius:6px;background:var(--surface)}
 .form label{font:500 12px/1.3 var(--ui);color:var(--muted)}
 .form textarea{width:100%;min-height:74px;resize:vertical;padding:8px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--sunk);font:14px/1.5 var(--ui)}
@@ -196,8 +199,10 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
     <aside class="panel notes" aria-labelledby="notesH">
       <h2 id="notesH">Góp ý <small id="notesCount"></small></h2>
       <p class="hint" id="notesHint">Bấm “Góp ý” cạnh một câu để ghi lại chỗ chưa ưng.</p>
+      <p class="hint">Mục nào Claude đã sửa, bấm “Ưng rồi” để cất đi. Mục đã cất không bị xóa.</p>
       <div class="bar">
         <label><input type="checkbox" id="onlyVu" checked> Chỉ vụ đang đọc</label>
+        <label><input type="checkbox" id="showDone"> Hiện mục đã xong</label>
         <button class="btn" id="copyBtn" type="button">Chép tất cả</button>
       </div>
       <textarea id="copyOut" hidden readonly aria-label="Toàn bộ góp ý dạng chữ"></textarea>
@@ -250,14 +255,26 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
     gopY = [...gopY, { id: 'l' + Date.now(), ...g }]; ls.set(LOCAL, gopY); veGopY(); danhDau();
   }
   async function suaGopY(id, ghiChu) {
-    if (col) { try { await col.doc(id).update({ ghiChu }); return; } catch { /* rơi xuống dưới */ } }
-    gopY = gopY.map((g) => (g.id === id ? { ...g, ghiChu } : g)); if (!col) ls.set(LOCAL, gopY); veGopY(); danhDau();
+    if (col) { try { await col.doc(id).update({ ghiChu, trangThai: 'moi' }); return; } catch { /* rơi xuống dưới */ } }
+    gopY = gopY.map((g) => (g.id === id ? { ...g, ghiChu, trangThai: 'moi' } : g)); if (!col) ls.set(LOCAL, gopY); veGopY(); danhDau();
   }
   async function xoaGopY(id) {
     if (col) { try { await col.doc(id).delete(); return; } catch { /* rơi xuống dưới */ } }
     gopY = gopY.filter((g) => g.id !== id); if (!col) ls.set(LOCAL, gopY); veGopY(); danhDau();
   }
   const theoThoiGian = (a, b) => String(a.taoLuc || '').localeCompare(String(b.taoLuc || ''));
+  /** Số đoạn hiện tại của một góp ý: tìm theo tên đoạn (số đổi mỗi lần xuất lại truyện); tên trùng hay không còn thì dùng số đã lưu. */
+  function soCua(g) {
+    const v = mucLuc.find((x) => x.ma === g.vu); if (!v) return g.doan;
+    const trung = v.doan.filter((d) => d.tieuDe === g.tieuDe);
+    return trung.length === 1 ? trung[0].so : g.doan;
+  }
+  const daXong = (g) => g.trangThai === 'da-duyet';
+  const hien = (g) => !daXong(g) || $('showDone').checked;
+  async function datTrangThai(id, them) {
+    if (col) { try { await col.doc(id).update(them); return; } catch { /* rơi xuống dưới */ } }
+    gopY = gopY.map((g) => (g.id === id ? { ...g, ...them } : g)); if (!col) ls.set(LOCAL, gopY); veGopY(); danhDau();
+  }
 
   // ---------- Tải dữ liệu ----------
   async function taiJson(t) { const r = await fetch('du-lieu/' + t); if (!r.ok) throw new Error(t); return r.json(); }
@@ -274,8 +291,11 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
     try { lo = await Promise.all(vu.tep.map(taiJson)); }
     catch { $('sheet').replaceChildren(el('div', 'load', 'Không mở được dữ liệu của vụ này. Tải lại trang thử xem.')); return; }
     doan = new Map(lo.flat().map((d) => [d.so, d]));
-    seen = new Set(ls.get('dt-seen-' + vu.ma, []));
-    path = ls.get('dt-path-' + vu.ma, []).filter((s) => doan.has(s));
+    // Số đoạn nay đánh theo thứ tự đọc: đường đã đi lưu bằng số cũ (của tệp .md) thì đổi sang số mới một lần.
+    const doiSo = new Map(vu.doan.map((d) => [d.soGoc ?? d.so, d.so]));
+    const doi = (k) => (ls.get(k, null) || []).map((n) => doiSo.get(n)).filter(Boolean);
+    seen = new Set(ls.get('dt2-seen-' + vu.ma, null) ?? doi('dt-seen-' + vu.ma));
+    path = (ls.get('dt2-path-' + vu.ma, null) ?? doi('dt-path-' + vu.ma)).filter((s) => doan.has(s));
     const dau = vu.doan[0]?.so ?? 1;
     if (soMo && doan.has(soMo)) { if (path[path.length - 1] !== soMo) path.push(soMo); }
     else if (!path.length) path = [dau];
@@ -300,7 +320,7 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
     const d = doan.get(so);
     if (!d) return;
     seen.add(so);
-    ls.set('dt-seen-' + vu.ma, [...seen]); ls.set('dt-path-' + vu.ma, path);
+    ls.set('dt2-seen-' + vu.ma, [...seen]); ls.set('dt2-path-' + vu.ma, path);
     try { history.replaceState(null, '', '#' + vu.ma + '.' + so); } catch { /* khung xem không cho đổi địa chỉ */ }
 
     const sheet = $('sheet');
@@ -365,7 +385,7 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
   function taoForm(khoa, trich, coSan) {
     const f = el('form', 'form');
     const ta = el('textarea'); ta.id = 'gy-ta'; ta.value = coSan ? coSan.ghiChu : '';
-    const lb = el('label', null, coSan ? 'Sửa góp ý' : 'Chỗ này chưa ưng ở đâu?'); lb.htmlFor = 'gy-ta';
+    const lb = el('label', null, coSan ? (coSan.trangThai === 'da-sua' ? 'Còn chưa ưng ở đâu? Ghi thêm vào đây' : 'Sửa góp ý') : 'Chỗ này chưa ưng ở đâu?'); lb.htmlFor = 'gy-ta';
     const acts = el('div', 'acts');
     const ok = el('button', 'btn pri', 'Lưu góp ý'); ok.type = 'submit';
     const huy = el('button', 'btn', 'Hủy'); huy.type = 'button';
@@ -377,7 +397,7 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
       const so = path[path.length - 1];
       openKey = null;
       if (coSan) await suaGopY(coSan.id, ghiChu);
-      else await luuGopY({ vu: vu.ma, vuTen: vu.ten, doan: so, tieuDe: doan.get(so).tieuDe, khoa, trich, ghiChu, taoLuc: new Date().toISOString() });
+      else await luuGopY({ vu: vu.ma, vuTen: vu.ten, doan: so, tieuDe: doan.get(so).tieuDe, khoa, trich, ghiChu, trangThai: 'moi', taoLuc: new Date().toISOString() });
       danhDau();
     });
     setTimeout(() => ta.focus(), 0);
@@ -389,11 +409,17 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
   }
   function taoMemo(g) {
     const m = el('div', 'memo');
-    if (g.trangThai === 'da-sua') m.append(el('span', 'done', 'Đã sửa'));
+    if (g.trangThai === 'da-sua') m.append(el('span', 'done', 'Đã sửa, chờ bạn xem'));
+    if (daXong(g)) m.append(el('span', 'done', 'Đã xong'));
     m.append(el('p', null, g.ghiChu));
     if (g.traLoi) m.append(taoTraLoi(g));
     const acts = el('div', 'acts');
-    const sua = el('button', 'btn', 'Sửa'); sua.type = 'button';
+    if (g.trangThai === 'da-sua') {
+      const ung = el('button', 'btn pri', 'Ưng rồi'); ung.type = 'button';
+      ung.addEventListener('click', () => datTrangThai(g.id, { trangThai: 'da-duyet', duyetLuc: new Date().toISOString() }));
+      acts.append(ung);
+    }
+    const sua = el('button', 'btn', g.trangThai === 'da-sua' ? 'Chưa ưng' : 'Sửa'); sua.type = 'button';
     sua.addEventListener('click', () => { m.replaceWith(taoForm(g.khoa, g.trich, g)); });
     const xoa = el('button', 'btn', 'Xóa'); xoa.type = 'button';
     xoa.addEventListener('click', () => { if (xoa.dataset.chac) xoaGopY(g.id); else { xoa.dataset.chac = '1'; xoa.textContent = 'Bấm lần nữa để xóa'; } });
@@ -403,13 +429,13 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
   function danhDau() {
     const sheet = $('sheet'); const body = sheet.querySelector('.body'); if (!body || !vu) return;
     const so = path[path.length - 1];
-    const cua = gopY.filter((g) => g.vu === vu.ma && g.doan === so).sort(theoThoiGian);
+    const cua = gopY.filter((g) => g.vu === vu.ma && soCua(g) === so && hien(g)).sort(theoThoiGian);
     sheet.querySelectorAll('.memo, .form').forEach((x) => x.remove());
     const khop = new Set();
     body.querySelectorAll('.blk').forEach((b) => {
       const ds = cua.filter((g) => g.khoa === b.dataset.khoa);
       ds.forEach((g) => khop.add(g.id));
-      b.classList.toggle('has', ds.length > 0);
+      b.classList.toggle('has', ds.some((g) => !daXong(g)));
       b.classList.toggle('open', openKey === b.dataset.khoa);
       const cho = b.tagName === 'LI' ? b : null;   // trong danh sách thì chèn ngay trong mục, còn lại chèn sau khối
       const chen = (node) => { if (cho) cho.append(node); else b.after(node); };
@@ -468,26 +494,34 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
   }
 
   // ---------- Xấp góp ý ----------
-  function dsGopY() { return gopY.filter((g) => !$('onlyVu').checked || !vu || g.vu === vu.ma).sort((a, b) => (a.vu === b.vu ? a.doan - b.doan || theoThoiGian(a, b) : String(a.vu).localeCompare(String(b.vu)))); }
+  function dsGopY() { return gopY.filter((g) => hien(g) && (!$('onlyVu').checked || !vu || g.vu === vu.ma)).sort((a, b) => (a.vu === b.vu ? soCua(a) - soCua(b) || theoThoiGian(a, b) : String(a.vu).localeCompare(String(b.vu)))); }
   function veGopY() {
     const ul = $('nlist'); ul.replaceChildren();
     const ds = dsGopY();
-    $('notesCount').textContent = ds.length ? ds.length + ' mục' + (gopY.length > ds.length ? ' / ' + gopY.length : '') : '';
+    const xong = gopY.filter(daXong).length;
+    $('notesCount').textContent = (ds.length ? ds.length + ' mục' : '') + (xong && !$('showDone').checked ? (ds.length ? ' · ' : '') + xong + ' đã xong (ẩn)' : '');
     $('notesEmpty').hidden = ds.length > 0;
     ds.forEach((g) => {
       const li = el('li');
-      const w = el('button', 'where', (g.vuTen || g.vu) + ' · Đoạn ' + g.doan); w.type = 'button';
-      w.addEventListener('click', async () => { if (!vu || g.vu !== vu.ma) await moVu(g.vu, g.doan); else toi(g.doan); });
+      const w = el('button', 'where', (g.vuTen || g.vu) + ' · Đoạn ' + soCua(g)); w.type = 'button';
+      w.addEventListener('click', async () => { if (!vu || g.vu !== vu.ma) await moVu(g.vu, soCua(g)); else toi(soCua(g)); });
       li.append(w);
       if (g.khoa !== '*' && g.trich) li.append(el('q', null, g.trich));
       li.append(el('p', null, g.ghiChu));
-      if (g.trangThai === 'da-sua') li.append(el('span', 'done', 'Đã sửa'));
+      if (g.trangThai === 'da-sua') li.append(el('span', 'done', 'Đã sửa, chờ bạn xem'));
+      if (daXong(g)) li.append(el('span', 'done', 'Đã xong'));
       if (g.traLoi) li.append(taoTraLoi(g));
+      if (g.trangThai === 'da-sua') {
+        const acts = el('div', 'acts');
+        const ung = el('button', 'btn pri', 'Ưng rồi'); ung.type = 'button';
+        ung.addEventListener('click', () => datTrangThai(g.id, { trangThai: 'da-duyet', duyetLuc: new Date().toISOString() }));
+        acts.append(ung); li.append(acts);
+      }
       ul.append(li);
     });
   }
   function chuGopY() {
-    return dsGopY().map((g) => `${g.vuTen || g.vu} · Đoạn ${g.doan} "${g.tieuDe || ''}"\n  ${g.khoa === '*' ? 'Cả đoạn' : 'Câu: «' + (g.trich || '') + '»'}\n  Góp ý: ${g.ghiChu}`).join('\n\n');
+    return dsGopY().map((g) => `${g.vuTen || g.vu} · Đoạn ${soCua(g)} "${g.tieuDe || ''}"\n  ${g.khoa === '*' ? 'Cả đoạn' : 'Câu: «' + (g.trich || '') + '»'}\n  Góp ý: ${g.ghiChu}`).join('\n\n');
   }
 
   // ---------- Nối nút ----------
@@ -496,6 +530,7 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
   $('restartBtn').addEventListener('click', () => { path = [vu.doan[0]?.so ?? 1]; ve(true); });
   $('tocFilter').addEventListener('input', veMucLuc);
   $('onlyVu').addEventListener('change', veGopY);
+  $('showDone').addEventListener('change', () => { veGopY(); danhDau(); });
   $('copyBtn').addEventListener('click', async () => {
     const t = chuGopY(); const out = $('copyOut'); const b = $('copyBtn');
     if (!t) { b.textContent = 'Chưa có gì để chép'; setTimeout(() => (b.textContent = 'Chép tất cả'), 1600); return; }

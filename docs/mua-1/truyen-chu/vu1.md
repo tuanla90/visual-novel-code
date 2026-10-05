@@ -56,7 +56,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 > 📜 **[THẺ CHỮ]** Chủ nhật, 08/09/2024 · Xe buýt lên Hà Nội
 - *Xe vào nội thành lúc đầu giờ chiều. Tiếng còi xe máy dồn lên mỗi lúc một dày.*
 - *Suy nghĩ của bạn:* *(Vậy là lên Hà Nội thật rồi.)*
-- *Xe chậm dần. Giọng phụ xe vọng xuống: "Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!"*
+- *Xe chậm dần. Giọng phụ xe vọng xuống: "Đại học Chấn Hưng! Ai xuống thì chuẩn bị!"*
 - *Suy nghĩ của bạn:* *(Tới rồi. Xuống thôi.)*
 
 **Lựa chọn tiếp theo:**
@@ -511,8 +511,8 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 
 📍 **Cổng KTX** — *Đi qua sân trường tới cổng ký túc xá*
 
-- *Suy nghĩ của bạn:* *(Dây cờ giăng tận cổng thế kia, chắc ký túc xá đây rồi.)*
-- *Suy nghĩ của bạn:* *(Phòng mình là 408, tức là tầng bốn. Mong là có thang máy.)*
+- *Suy nghĩ của bạn:* *(Treo cả cờ đón tân sinh viên cơ à. Ký túc xá đây rồi.)*
+- *Suy nghĩ của bạn:* *(Phòng 408, tận tầng bốn. Không biết có thang máy không.)*
 
 **Lựa chọn tiếp theo:**
 - [Vào sảnh](#doan-54)
@@ -999,8 +999,8 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 📍 **Sảnh ký túc xá** — *Sảnh tầng một dãy nhà giữa: dạy bấm vật*
 
 > 🎯 **NHIỆM VỤ**: Tìm đường lên phòng 408
-> 💭 **Nhắc nhở** (Bạn): Tầng bốn. Thang máy hay thang bộ đây?
-- *Suy nghĩ của bạn:* *(Mát hẳn. Mà đông thế này… Giờ lên tầng bốn kiểu gì đây?)*
+> 💭 **Nhắc nhở** (Bạn): Thang máy ở chỗ nào nhỉ?
+- *Suy nghĩ của bạn:* *(Mát hẳn. Mà đông quá, chẳng nhìn thấy thang máy đâu cả.)*
 📍 **Đang ở Sảnh ký túc xá:**
 *Những chỗ có thể khám phá ở đây:*
 
@@ -1214,9 +1214,9 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
 
 📍 **Sảnh ký túc xá** — *Tờ giấy dán trên cửa thang máy*
 
-- *Tờ giấy dán ngay giữa cửa thang máy: "Thang máy bảo trì đến hết tuần. Sinh viên vui lòng đi thang bộ."*
-- *Suy nghĩ của bạn:* *(Hết tuần… Nghĩa là cả tuần leo bộ.)*
-- *Suy nghĩ của bạn:* *(Thang bộ ở đâu nhỉ? Chắc bảng tin đằng kia có sơ đồ.)*
+- *Tờ giấy dán ngay giữa cửa thang máy: "Ngày nhập học thang máy quá tải. Xin nhường thang cho phụ huynh lớn tuổi. Sinh viên vui lòng đi thang bộ."*
+- *Suy nghĩ của bạn:* *(Nhường thì nhường… nhưng tầng bốn cơ đấy. Lại còn cả cái vali.)*
+- *Suy nghĩ của bạn:* *(Thế thang bộ ở chỗ nào nhỉ? Ra bảng tin xem có sơ đồ không.)*
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Sảnh ký túc xá](#doan-54)
@@ -1495,7 +1495,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 
 📍 **Sảnh ký túc xá** — *Hỏi đường cậu bạn áo xanh: tạo nhân vật*
 
-- *Suy nghĩ của bạn:* *(Cậu ơi, cho tớ hỏi thang bộ ở đâu thế? Thang máy đang bảo trì.)*
+- *Suy nghĩ của bạn:* *(Cậu ơi, cho tớ hỏi thang bộ ở đâu thế?)*
 - **Tùng**: Khuất sau hành lang kia kìa. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
 - *Suy nghĩ của bạn:* *(Tầng bốn, phòng 408.)*
 - **Tùng**: 408 à… Để tớ dò danh sách đã.

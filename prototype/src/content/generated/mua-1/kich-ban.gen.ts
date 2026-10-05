@@ -996,7 +996,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Xe chậm dần. Giọng phụ xe vọng xuống: \"Chấn Hưng! Ai xuống cổng Chấn Hưng chuẩn bị!\""
+          "text": "Xe chậm dần. Giọng phụ xe vọng xuống: \"Đại học Chấn Hưng! Ai xuống thì chuẩn bị!\""
         },
         {
           "type": "line",
@@ -1092,12 +1092,12 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Dây cờ giăng tận cổng thế kia, chắc ký túc xá đây rồi.)"
+          "text": "(Treo cả cờ đón tân sinh viên cơ à. Ký túc xá đây rồi.)"
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Phòng mình là 408, tức là tầng bốn. Mong là có thang máy.)"
+          "text": "(Phòng 408, tận tầng bốn. Không biết có thang máy không.)"
         },
         {
           "type": "branch",
@@ -1135,7 +1135,7 @@ const GOC = {
         {
           "type": "reminder",
           "speaker": "player",
-          "text": "Tầng bốn. Thang máy hay thang bộ đây?"
+          "text": "Thang máy ở chỗ nào nhỉ?"
         },
         {
           "type": "note",
@@ -1144,7 +1144,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Mát hẳn. Mà đông thế này… Giờ lên tầng bốn kiểu gì đây?)"
+          "text": "(Mát hẳn. Mà đông quá, chẳng nhìn thấy thang máy đâu cả.)"
         },
         {
           "type": "explore",
@@ -1198,17 +1198,17 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Tờ giấy dán ngay giữa cửa thang máy: \"Thang máy bảo trì đến hết tuần. Sinh viên vui lòng đi thang bộ.\""
+          "text": "Tờ giấy dán ngay giữa cửa thang máy: \"Ngày nhập học thang máy quá tải. Xin nhường thang cho phụ huynh lớn tuổi. Sinh viên vui lòng đi thang bộ.\""
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Hết tuần… Nghĩa là cả tuần leo bộ.)"
+          "text": "(Nhường thì nhường… nhưng tầng bốn cơ đấy. Lại còn cả cái vali.)"
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Thang bộ ở đâu nhỉ? Chắc bảng tin đằng kia có sơ đồ.)"
+          "text": "(Thế thang bộ ở chỗ nào nhỉ? Ra bảng tin xem có sơ đồ không.)"
         }
       ]
     },
@@ -1416,7 +1416,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Cậu ơi, cho tớ hỏi thang bộ ở đâu thế? Thang máy đang bảo trì."
+          "text": "Cậu ơi, cho tớ hỏi thang bộ ở đâu thế?"
         },
         {
           "type": "line",

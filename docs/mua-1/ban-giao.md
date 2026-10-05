@@ -60,6 +60,8 @@
 - Trang: https://claude.ai/artifact/LNorSmaKFVyxPSXMFaY533 (riêng tư của user). Mỗi lần hiện một đoạn, nút rẽ ở cuối, cột "Đường đã đi" để quay lại, bấm "Góp ý" cạnh từng câu để ghi.
 - Nguồn: `tools/doc-truyen/doc-truyen.html` (trang) và `tools/doc-truyen/sinh-du-lieu.py` (tách `docs/mua-1/truyen-chu/*.md` thành các tệp JSON dưới 40 KB; trạng thái "sẵn sàng / bản cũ" của từng vụ khai trong `DANH_SACH` của tệp này).
 - **Sau mỗi lần đổi nội dung:** `npm run truyen-chu:mua1`, rồi `PYTHONIOENCODING=utf-8 python tools/doc-truyen/sinh-du-lieu.py <scratchpad>/doc-truyen`, rồi đăng lại bằng công cụ Artifact với `url` ở trên, `file_path` là tệp trang, `root` là `<scratchpad>/doc-truyen`, `files` là mọi tệp trong `du-lieu/`.
+- **Số đoạn trên trang khác số trong tệp `.md`:** tệp `.md` đánh số theo lớp nên đọc bị nhảy cóc (1 → 10 → 24 → 54); `sinh-du-lieu.py` đánh lại theo thứ tự đọc (1, 2, 3, 4), số cũ giữ ở `soGoc`. Góp ý bám theo TÊN đoạn (`tieuDe`), số chỉ để hiện.
+- **Vòng đời một góp ý** (`trangThai`): `moi` (user vừa ghi, hoặc bấm "Chưa ưng" rồi ghi thêm) → `da-sua` (Claude sửa xong, kèm `traLoi`) → `da-duyet` (user bấm "Ưng rồi"; trang ẩn đi nhưng KHÔNG xóa, để tra lại bài học). Chỉ xử lý mục `moi`.
 - **Trả lời góp ý:** sửa xong mục nào thì `update` mục đó với `trangThai: "da-sua"` và `traLoi` (một, hai câu nói đã sửa thành gì); trang hiện nhãn "Đã sửa" kèm lời đáp.
 - **Đọc góp ý của user:** công cụ ArtifactData, `action: "list"`, `collection: "gop-y"` với `url` trên. Mỗi mục có `vu`, `doan`, `tieuDe`, `trich` (câu được chọn), `ghiChu`. Xử lý xong mục nào thì hỏi user trước khi xóa.
 
