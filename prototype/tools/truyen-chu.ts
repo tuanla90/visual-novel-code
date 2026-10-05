@@ -747,14 +747,12 @@ export class BoXuatTruyenChu {
       if (!c) continue;
       const dayIndex = daKhamPha.get(cId)!;
 
-      if (!dayToMapData.has(dayIndex)) {
-          dayToMapData.set(dayIndex, { so: taoDoanBoSung('Bản đồ'), luaChon: [] });
-      }
-      
-      const mapData = dayToMapData.get(dayIndex)!;
-
       for (const n of c.nodes) {
           if (n.type === 'explore' && n.kieu === 'ban-do') {
+              if (!dayToMapData.has(dayIndex)) {
+                  dayToMapData.set(dayIndex, { so: taoDoanBoSung('Bản đồ'), luaChon: [] });
+              }
+              const mapData = dayToMapData.get(dayIndex)!;
               for (const d of n.diem) {
                   const targetSo = chuoiToSo.get(d.chuoi);
                   if (targetSo) {
@@ -762,60 +760,13 @@ export class BoXuatTruyenChu {
                       const dauText = d.dau === 'chinh' ? ' !' : d.dau === 'phu' ? ' (tùy chọn)' : '';
                       mapData.luaChon.push({
                           nhan: `Đi tới: ${nhanDiem}${dauText}`,
-                          toiSo: targetSo
+                          toiSo: targetSo,
+                          ...(d.sau.length > 0 ? { dieuKien: `sau: ${d.sau.join(', ')}` } : {}),
                       });
-                  }
-              }
-          } else if (n.type === 'branch') {
-              const isOtherPlace = n.choices.some(ch => ch.hauQua.some(h => {
-                  if (h.kind === 'di-toi') {
-                      const targetChain = this.duLieu.chuoi.find(x => x.id === h.chuoi);
-                      return targetChain && targetChain.canh !== c.canh;
-                  }
-                  return false;
-              }));
-              if (isOtherPlace) {
-                  for (const ch of n.choices) {
-                      let targetSo = 0;
-                      for (const h of ch.hauQua) {
-                          if (h.kind === 'di-toi' && chuoiToSo.has(h.chuoi)) {
-                              targetSo = chuoiToSo.get(h.chuoi)!;
-                              break;
-                          }
-                      }
-                      if (targetSo > 0) {
-                          const dkText = ch.khi ? this.dkChu(ch.khi) : undefined;
-                          mapData.luaChon.push({
-                              nhan: `Đi tới: ${this.dienTen(ch.text)}`,
-                              toiSo: targetSo,
-                              dieuKien: dkText
-                          });
-                      }
-                  }
-              }
-          } else if (n.type === 'explore' && n.kieu !== 'ban-do' && n.kieu !== 'quan-sat') {
-              for (const d of n.diem) {
-                  const targetChain = this.duLieu.chuoi.find(x => x.id === d.chuoi);
-                  if (targetChain && targetChain.canh !== c.canh) {
-                      const targetSo = chuoiToSo.get(d.chuoi);
-                      if (targetSo) {
-                          const nhanDiem = d.nhan || this.tenCanh(d.chuoi) || d.chuoi;
-                          const dauText = d.dau === 'chinh' ? ' !' : d.dau === 'phu' ? ' (tùy chọn)' : '';
-                          mapData.luaChon.push({
-                              nhan: `Đi tới: ${nhanDiem}${dauText}`,
-                              toiSo: targetSo
-                          });
-                      }
                   }
               }
           }
       }
-    }
-    
-    for (const [day, data] of dayToMapData.entries()) {
-        if (data.luaChon.length === 0) {
-            dayToMapData.delete(day);
-        }
     }
 
 
@@ -901,23 +852,11 @@ export class BoXuatTruyenChu {
             dong.push('');
             break;
           }
-                    case 'branch': {
-            const isOtherPlace = n.choices.some(ch => ch.hauQua.some(h => {
-                if (h.kind === 'di-toi') {
-                    const targetChain = this.duLieu.chuoi.find(x => x.id === h.chuoi);
-                    return targetChain && targetChain.canh !== c.canh;
-                }
-                return false;
-            }));
-            if (isOtherPlace) {
-                const mapData = dayToMapData.get(daKhamPha.get(cId)!);
-                if (mapData) {
-                    luaChon.push({ nhan: 'Mở bản đồ', toiSo: mapData.so });
-                }
-                break;
+          case 'branch': {
+            const laDiCung = n.id.startsWith('go-with-');
+            if (!laDiCung) {
+              dong.push(`🔀 **Lựa chọn của bạn** (${this.ten(n.asker.speaker)}: "${this.dienTen(n.asker.text)}"):`);
             }
-
-            dong.push(`🔀 **Lựa chọn của bạn** (${this.ten(n.asker.speaker)}: "${this.dienTen(n.asker.text)}"):`);
             for (const ch of n.choices) {
               let targetSo = 0;
               for (const h of ch.hauQua) {
@@ -929,7 +868,7 @@ export class BoXuatTruyenChu {
               const dkText = ch.khi ? this.dkChu(ch.khi) : undefined;
               if (targetSo > 0) {
                 luaChon.push({
-                  nhan: `Chọn: "${this.dienTen(ch.text)}"`,
+                  nhan: laDiCung ? this.dienTen(ch.text) : `Chọn: "${this.dienTen(ch.text)}"`,
                   toiSo: targetSo,
                   dieuKien: dkText,
                 });

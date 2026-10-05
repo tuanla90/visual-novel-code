@@ -11,7 +11,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - [Đoạn 5: Phòng CLB: gọt danh sách](#doan-5)
 - [Đoạn 6: Trả danh sách cho cô Hạnh](#doan-6)
 - [Đoạn 7: Chiều 20/11: bàn trà nhỏ ở sảnh tòa B](#doan-7)
-- [Đoạn 9: Sau khi xem hết các chỗ ở Phòng Đào tạo](#doan-9)
+- [Đoạn 8: Sau khi xem hết các chỗ ở Phòng Đào tạo](#doan-8)
 
 ## 👥 Nhân vật xuất hiện
 
@@ -67,7 +67,7 @@ Thứ Tư, 20/11/2024
 **Lựa chọn tiếp theo:**
 - [Khám phá: Cô ở quầy](#doan-3)
 - [Khám phá: Tập giấy kẹp bìa xanh trên quầy](#doan-4)
-- [Sau khi xem hết các chỗ](#doan-9)
+- [Sau khi xem hết các chỗ](#doan-8)
 
 ---
 
@@ -243,8 +243,8 @@ SELECT ho_ten, COUNT(*) AS so_dong FROM @ev-hoc-ra-truong GROUP BY ho_ten HAVING
 
 ---
 
-<a id="doan-9"></a>
-### Đoạn 9: Sau khi xem hết các chỗ ở Phòng Đào tạo
+<a id="doan-8"></a>
+### Đoạn 8: Sau khi xem hết các chỗ ở Phòng Đào tạo
 
 
 **Lựa chọn tiếp theo:**

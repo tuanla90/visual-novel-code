@@ -19,7 +19,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - [Đoạn 13: Duy chỉ mấy tin lệch chữ (việc chính)](#doan-13)
 - [Đoạn 14: Tùng đọc tin nhắn nhóm lớp](#doan-14)
 - [Đoạn 15: Căng tin giờ trưa: Hiếu ngồi bàn trong](#doan-15)
-- *... và 66 đoạn tiếp theo*
+- *... và 63 đoạn tiếp theo*
 
 ## 👥 Nhân vật xuất hiện
 
@@ -89,8 +89,7 @@ Thứ Ba, 08/10/2024 · Còn 7 ngày tới Buổi giải trình chiều 15/10
 - [Khám phá: Hà Vy: câu hỏi trên bảng (chi tiết ẩn / tùy chọn)](#doan-9)
 - [Khám phá: Tùng: chuyện ở căng tin (chi tiết ẩn / tùy chọn)](#doan-10)
 - [Khám phá: Minh Anh: xin dữ liệu (chi tiết ẩn / tùy chọn)](#doan-11)
-- [Mở bản đồ](#doan-54)
-- [Sau khi xem hết các chỗ](#doan-60)
+- [Sau khi xem hết các chỗ](#doan-56)
 
 ---
 
@@ -129,7 +128,7 @@ Thứ Năm, 10/10/2024 · Còn 5 ngày tới Buổi giải trình chiều 15/10
 - **Tùng** (ngạc nhiên): Hiếu nhắn tớ này: "Trưa ra căng tin, tớ có chuyện." (tạm)
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-56)
+- [Đi cùng Tùng ra căng tin](#doan-15)
 
 ---
 
@@ -144,7 +143,7 @@ Thứ Hai, 14/10/2024 · Còn 1 ngày tới Buổi giải trình chiều 15/10
 - *Ba ngày cuối tuần, CLB nghỉ. Kênh sinh viên vẫn có người chuyển cái tin ấy, thưa dần. (tạm)*
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-57)
+- [Mở bản đồ](#doan-54)
 
 ---
 
@@ -159,7 +158,7 @@ Thứ Ba, 15/10/2024 · Còn 0 ngày tới Buổi giải trình chiều 15/10
 - *Sáng, hội trường kín ghế. Băng rôn lễ kỷ niệm căng ngang sân khấu. (tạm)*
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-58)
+- [Đi cùng chị Minh Anh sang phòng Công tác sinh viên](#doan-18)
 - [Làm việc ngày lễ: Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam](#doan-6)
 - [Bỏ qua](#doan-7)
 
@@ -333,7 +332,6 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 **Lựa chọn tiếp theo:**
 - [Khám phá: Hiếu](#doan-21)
 - [Khám phá: Tấm bảng đen trên quầy](#doan-22)
-- [Mở bản đồ](#doan-56)
 
 ---
 
@@ -364,7 +362,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 **Lựa chọn tiếp theo:**
 - [Khám phá: Bác bảo vệ (chi tiết ẩn / tùy chọn)](#doan-23)
 - [Khám phá: Bảng tin cạnh cột](#doan-24)
-- [Mở bản đồ](#doan-57)
+- [Mở bản đồ](#doan-54)
 
 ---
 
@@ -383,18 +381,18 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 
 **Lựa chọn tiếp theo:**
-- [Trình thẻ: Hai lần đăng nhập ngày 07/10 (ĐỦ CĂN CỨ)](#doan-62)
-- [Trình thẻ: Tối 07/10 xưởng mở tới 23 giờ (HỖ TRỢ)](#doan-63)
-- [Trình thẻ: Tin gốc: 22:40 tối 07/10 (GỢI Ý)](#doan-64)
-- [Trình thẻ: [Ngày gửi tin gốc] (GỢI Ý)](#doan-65)
-- [Nói: "Chưa đủ căn cứ"](#doan-66)
-- [Trình thẻ khác](#doan-67)
-- [Trình thẻ: Hai lần đăng nhập ngày 07/10 (ĐỦ CĂN CỨ)](#doan-69)
-- [Trình thẻ: Tin gốc: 22:40 tối 07/10 (ĐỦ CĂN CỨ)](#doan-70)
-- [Trình thẻ: Tối 07/10 xưởng mở tới 23 giờ (HỖ TRỢ)](#doan-71)
-- [Trình thẻ: [Tin gốc] (GỢI Ý)](#doan-72)
-- [Nói: "Chưa đủ căn cứ"](#doan-73)
-- [Trình thẻ khác](#doan-74)
+- [Trình thẻ: Hai lần đăng nhập ngày 07/10 (ĐỦ CĂN CỨ)](#doan-58)
+- [Trình thẻ: Tối 07/10 xưởng mở tới 23 giờ (HỖ TRỢ)](#doan-59)
+- [Trình thẻ: Tin gốc: 22:40 tối 07/10 (GỢI Ý)](#doan-60)
+- [Trình thẻ: [Ngày gửi tin gốc] (GỢI Ý)](#doan-61)
+- [Nói: "Chưa đủ căn cứ"](#doan-62)
+- [Trình thẻ khác](#doan-63)
+- [Trình thẻ: Hai lần đăng nhập ngày 07/10 (ĐỦ CĂN CỨ)](#doan-65)
+- [Trình thẻ: Tin gốc: 22:40 tối 07/10 (ĐỦ CĂN CỨ)](#doan-66)
+- [Trình thẻ: Tối 07/10 xưởng mở tới 23 giờ (HỖ TRỢ)](#doan-67)
+- [Trình thẻ: [Tin gốc] (GỢI Ý)](#doan-68)
+- [Nói: "Chưa đủ căn cứ"](#doan-69)
+- [Trình thẻ khác](#doan-70)
 - [Nếu đã có "dc-tin-quan-nguoi-du": Rẽ sang hướng khác](#doan-25)
 - [Đi tiếp](#doan-26)
 
@@ -499,12 +497,12 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 
 **Lựa chọn tiếp theo:**
-- [Trình thẻ: Tin gốc: 22:40 tối 07/10 (ĐỦ CĂN CỨ)](#doan-76)
-- [Trình thẻ: [Tin gốc] (HỖ TRỢ)](#doan-77)
-- [Trình thẻ: Các tin mang câu tin đồn (GỢI Ý)](#doan-78)
-- [Trình thẻ: Ảnh chụp tin đồn (GỢI Ý)](#doan-79)
-- [Nói: "Chưa đủ căn cứ"](#doan-80)
-- [Trình thẻ khác](#doan-81)
+- [Trình thẻ: Tin gốc: 22:40 tối 07/10 (ĐỦ CĂN CỨ)](#doan-72)
+- [Trình thẻ: [Tin gốc] (HỖ TRỢ)](#doan-73)
+- [Trình thẻ: Các tin mang câu tin đồn (GỢI Ý)](#doan-74)
+- [Trình thẻ: Ảnh chụp tin đồn (GỢI Ý)](#doan-75)
+- [Nói: "Chưa đủ căn cứ"](#doan-76)
+- [Trình thẻ khác](#doan-77)
 - [Nếu đã có "dc-tin-hieu-du": Rẽ sang hướng khác](#doan-29)
 - [Đi tiếp](#doan-30)
 
@@ -554,7 +552,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - *Quân gạch một dòng trong biên bản, viết lại ngay bên dưới. (tạm)*
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-58)
+- [Về phòng CLB](#doan-31)
 
 ---
 
@@ -566,7 +564,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - *Quân viết tên Nam vào mục người cần làm rõ. Nét bút đậm, ngồi đầu bàn bên kia cũng đọc được. (tạm)*
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-58)
+- [Về phòng CLB](#doan-31)
 
 ---
 
@@ -583,7 +581,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Tùng** (vui vẻ): Về phòng ăn tối không? (tạm)
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-54)
+- [Về phòng KTX ăn tối](#doan-32)
 
 ---
 
@@ -635,7 +633,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 - *Hiếu mở nhóm lớp, gõ một dòng, xóa đi, rồi gõ lại. (tạm)*
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-56)
+- [Đi cùng Tùng sang xưởng Robotics](#doan-36)
 
 ---
 
@@ -647,7 +645,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 - *Hiếu đứng dậy trả khay. Bàn bên vẫn có đứa đọc to cái tin rồi cười. (tạm)*
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-56)
+- [Đi cùng Tùng sang xưởng Robotics](#doan-36)
 
 ---
 
@@ -727,7 +725,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 - [Khám phá: Cây bút dạ](#doan-38)
 - [Khám phá: Tay áo](#doan-39)
 - [Mở bản đồ](#doan-55)
-- [Sau khi xem hết các chỗ](#doan-82)
+- [Sau khi xem hết các chỗ](#doan-78)
 
 ---
 
@@ -930,10 +928,12 @@ SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = 
 - *Suy nghĩ của bạn:* *(Ngày mùng 7 có hai lần. 15 giờ 10 từ máy xưởng số 2. 22 giờ 31 từ máy văn phòng xưởng.)*
 - **Nam**: Lần buổi chiều là anh, anh hay ngồi máy số 2. Lần buổi tối thì không phải anh. Phòng văn phòng là phòng riêng, thường khóa, chìa thì ban chủ nhiệm giữ. Anh có vào đó bao giờ đâu.
 - **Hà Vy** (suy nghĩ): Đăng nhập 22:31, tin gửi 22:40. Khớp giờ. Nhưng mới biết máy nào, chưa biết ai ngồi máy.
+🔀 **Lựa chọn của bạn** (Hà Vy: "Còn chỗ thứ hai Nam chỉ: bảng đăng ký dùng xưởng. Xem nốt, hay về báo chị Minh Anh?"):
 
 **Lựa chọn tiếp theo:**
 - [Nếu đã có "Tối 07/10 xưởng mở tới 23 giờ": Rẽ sang hướng khác](#doan-47)
-- [Mở bản đồ](#doan-56)
+- [Chọn: "Ra cửa xem nốt bảng đăng ký."](#doan-46)
+- [Chọn: "Về báo chị Minh Anh."](#doan-48)
 
 ---
 
@@ -979,10 +979,12 @@ SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '20
 - **Tùng** (gãi đầu): Về sớm thì ai làm chứng cho anh?
 - **Nam**: Bọn nó cắm mặt hàn mạch, có ai ngẩng lên xem anh về lúc nào. Với lại máy văn phòng đặt trong phòng riêng, thường khóa. Chìa do ban chủ nhiệm giữ, thành viên như anh không có quyền đụng vào. Anh về rồi thì ai vào đó ngồi, anh chịu.
 - **Hà Vy** (suy nghĩ): Lịch đăng ký tới 23 giờ, tin gửi 22:40. Nhưng đăng ký chưa chắc đã có mặt.
+🔀 **Lựa chọn của bạn** (Hà Vy: "Còn chỗ thứ nhất Nam chỉ: nhật ký đăng nhập của kênh. Xem nốt, hay về báo chị Minh Anh?"):
 
 **Lựa chọn tiếp theo:**
 - [Nếu đã có "Hai lần đăng nhập ngày 07/10": Rẽ sang hướng khác](#doan-49)
-- [Mở bản đồ](#doan-56)
+- [Chọn: "Xem nốt nhật ký đăng nhập."](#doan-45)
+- [Chọn: "Về báo chị Minh Anh."](#doan-48)
 
 ---
 
@@ -997,7 +999,7 @@ SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '20
 - **Tùng** (gãi đầu): …Ừ thì chưa có tên.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-56)
+- [Về phòng CLB báo chị Minh Anh](#doan-48)
 
 ---
 
@@ -1030,7 +1032,7 @@ SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '20
 - **Tùng** (gãi đầu): …Ừ thì chưa có tên.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-56)
+- [Về phòng CLB báo chị Minh Anh](#doan-48)
 
 ---
 
@@ -1063,7 +1065,7 @@ SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '20
 
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-56)
+- [Quay lại xưởng xem bảng đăng ký](#doan-46)
 
 ---
 
@@ -1074,7 +1076,7 @@ SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '20
 
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-56)
+- [Quay lại xưởng xem nhật ký đăng nhập](#doan-45)
 
 ---
 
@@ -1095,14 +1097,15 @@ SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '20
 ---
 
 <a id="doan-54"></a>
-### Đoạn 54: Bản đồ Thứ Ba, 08/10/2024
+### Đoạn 54: Bản đồ Thứ Hai, 14/10/2024
 
-🗺️ **Bản đồ** — *Thứ Ba, 08/10/2024*
+🗺️ **Bản đồ** — *Thứ Hai, 14/10/2024*
 
 *Những nơi có thể đi tới:*
 
 **Lựa chọn tiếp theo:**
-- [Đi tới: Về phòng KTX ăn tối](#doan-32)
+- [Đi tới: Phòng CLB !](#doan-16)
+- [Đi tới: Sảnh tòa B (tùy chọn)](#doan-17)
 
 ---
 
@@ -1117,54 +1120,11 @@ SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '20
 - [Đi tới: Xưởng Robotics !](#doan-33)
 - [Đi tới: Căng tin (tùy chọn)](#doan-34)
 - [Đi tới: Quán trà đá (tùy chọn)](#doan-35)
-- [Đi tới: Về phòng CLB báo chị Minh Anh](#doan-40)
 
 ---
 
 <a id="doan-56"></a>
-### Đoạn 56: Bản đồ Thứ Năm, 10/10/2024
-
-🗺️ **Bản đồ** — *Thứ Năm, 10/10/2024*
-
-*Những nơi có thể đi tới:*
-
-**Lựa chọn tiếp theo:**
-- [Đi tới: Đi cùng Tùng ra căng tin](#doan-15)
-- [Đi tới: Đi cùng Tùng sang xưởng Robotics](#doan-36)
-- [Đi tới: Ra cửa xem nốt bảng đăng ký.](#doan-46)
-- [Đi tới: Về báo chị Minh Anh.](#doan-48)
-- [Đi tới: Xem nốt nhật ký đăng nhập.](#doan-45)
-
----
-
-<a id="doan-57"></a>
-### Đoạn 57: Bản đồ Thứ Hai, 14/10/2024
-
-🗺️ **Bản đồ** — *Thứ Hai, 14/10/2024*
-
-*Những nơi có thể đi tới:*
-
-**Lựa chọn tiếp theo:**
-- [Đi tới: Phòng CLB !](#doan-16)
-- [Đi tới: Sảnh tòa B (tùy chọn)](#doan-17)
-
----
-
-<a id="doan-58"></a>
-### Đoạn 58: Bản đồ Thứ Ba, 15/10/2024
-
-🗺️ **Bản đồ** — *Thứ Ba, 15/10/2024*
-
-*Những nơi có thể đi tới:*
-
-**Lựa chọn tiếp theo:**
-- [Đi tới: Đi cùng chị Minh Anh sang phòng Công tác sinh viên](#doan-18)
-- [Đi tới: Về phòng CLB](#doan-31)
-
----
-
-<a id="doan-60"></a>
-### Đoạn 60: Sau khi xem hết các chỗ ở Phòng CLB
+### Đoạn 56: Sau khi xem hết các chỗ ở Phòng CLB
 
 #### 💻 Màn tra dữ liệu: Lọc bằng (thẻ `c-tin-bang`)
 *Đề bài:* Kênh sinh viên chuyền nhau câu tin đồn. Thử tìm xem có tin nào giống hệt câu đó không?
@@ -1192,22 +1152,21 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Hà Vy** (suy nghĩ): Vậy thử xem tin nào bắt đầu bằng câu đó, phía sau viết gì cũng được. (tạm)
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-54)
 - [Đi tiếp](#doan-12)
 
 ---
 
-<a id="doan-61"></a>
-### Đoạn 61: Tiếp tục: Chiều 15/10, phòng Công tác sinh viên: buổi giải trình, Quân hai nhịp
+<a id="doan-57"></a>
+### Đoạn 57: Tiếp tục: Chiều 15/10, phòng Công tác sinh viên: buổi giải trình, Quân hai nhịp
 
 - **Quân**: Tôi ghi rồi. Một máy, một giờ. Sang ý tiếp. (tạm)
 
-- [Đọc tiếp sang Đoạn 62: Đối chất: Trình Hai lần đăng nhập ngày 07/10](#doan-62)
+- [Đọc tiếp sang Đoạn 58: Đối chất: Trình Hai lần đăng nhập ngày 07/10](#doan-58)
 
 ---
 
-<a id="doan-62"></a>
-### Đoạn 62: Đối chất: Trình Hai lần đăng nhập ngày 07/10
+<a id="doan-58"></a>
+### Đoạn 58: Đối chất: Trình Hai lần đăng nhập ngày 07/10
 
 ⚖️ **Phản hồi đối chất:**
 - *Suy nghĩ của bạn:* *(Nhật ký đăng nhập của kênh ghi 22 giờ 31 tối mùng 7, tài khoản kênh vào từ máy văn phòng xưởng. Chín phút sau, tin gốc được gửi. (tạm))*
@@ -1217,12 +1176,12 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Tiếp tục câu chuyện](#doan-61)
+- [Tiếp tục câu chuyện](#doan-57)
 
 ---
 
-<a id="doan-63"></a>
-### Đoạn 63: Đối chất: Trình Tối 07/10 xưởng mở tới 23 giờ
+<a id="doan-59"></a>
+### Đoạn 59: Đối chất: Trình Tối 07/10 xưởng mở tới 23 giờ
 
 ⚖️ **Phản hồi đối chất:**
 - **Minh Anh**: Thưa cô, tối đó xưởng đăng ký mở tới 23 giờ cho đội tập ạ. (tạm)
@@ -1235,8 +1194,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 ---
 
-<a id="doan-64"></a>
-### Đoạn 64: Đối chất: Trình Tin gốc: 22:40 tối 07/10
+<a id="doan-60"></a>
+### Đoạn 60: Đối chất: Trình Tin gốc: 22:40 tối 07/10
 
 ⚖️ **Phản hồi đối chất:**
 - **Quân** (tự đắc): Tờ này cho tôi giờ gửi và tài khoản. Máy nào thì không. (tạm)
@@ -1249,8 +1208,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 ---
 
-<a id="doan-65"></a>
-### Đoạn 65: Đối chất: Trình [Ngày gửi tin gốc]
+<a id="doan-61"></a>
+### Đoạn 61: Đối chất: Trình [Ngày gửi tin gốc]
 
 ⚖️ **Phản hồi đối chất:**
 - **Quân**: Ngày gửi thì bên tôi biết rồi. Tôi hỏi chỗ gửi. (tạm)
@@ -1262,8 +1221,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 ---
 
-<a id="doan-66"></a>
-### Đoạn 66: Đối chất: Chưa đủ căn cứ
+<a id="doan-62"></a>
+### Đoạn 62: Đối chất: Chưa đủ căn cứ
 
 ⚖️ **Phản hồi khi thừa nhận chưa đủ căn cứ:**
 - **Minh Anh** (lo lắng): Thưa cô, bọn em chưa khoanh được tin gửi từ máy nào ạ. (tạm)
@@ -1274,8 +1233,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 ---
 
-<a id="doan-67"></a>
-### Đoạn 67: Đối chất: Thẻ không khớp
+<a id="doan-63"></a>
+### Đoạn 63: Đối chất: Thẻ không khớp
 
 ⚖️ **Phản hồi khi trình thẻ không liên quan:**
 - **Quân**: Tờ này liên quan gì tới chỗ tin được gửi? (tạm)
@@ -1285,16 +1244,16 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 ---
 
-<a id="doan-68"></a>
-### Đoạn 68: Tiếp tục: Chiều 15/10, phòng Công tác sinh viên: buổi giải trình, Quân hai nhịp
+<a id="doan-64"></a>
+### Đoạn 64: Tiếp tục: Chiều 15/10, phòng Công tác sinh viên: buổi giải trình, Quân hai nhịp
 
 
-- [Đọc tiếp sang Đoạn 69: Đối chất: Trình Hai lần đăng nhập ngày 07/10](#doan-69)
+- [Đọc tiếp sang Đoạn 65: Đối chất: Trình Hai lần đăng nhập ngày 07/10](#doan-65)
 
 ---
 
-<a id="doan-69"></a>
-### Đoạn 69: Đối chất: Trình Hai lần đăng nhập ngày 07/10
+<a id="doan-65"></a>
+### Đoạn 65: Đối chất: Trình Hai lần đăng nhập ngày 07/10
 
 ⚖️ **Phản hồi đối chất:**
 - *Suy nghĩ của bạn:* *(Nhật ký đăng nhập ghi tài khoản, máy, ngày, giờ. Không chỗ nào ghi tên người ngồi máy. (tạm))*
@@ -1305,12 +1264,12 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Tiếp tục câu chuyện](#doan-68)
+- [Tiếp tục câu chuyện](#doan-64)
 
 ---
 
-<a id="doan-70"></a>
-### Đoạn 70: Đối chất: Trình Tin gốc: 22:40 tối 07/10
+<a id="doan-66"></a>
+### Đoạn 66: Đối chất: Trình Tin gốc: 22:40 tối 07/10
 
 ⚖️ **Phản hồi đối chất:**
 - *Suy nghĩ của bạn:* *(Tin gốc chỉ có tài khoản clb_robotics và giờ gửi. Tên người gửi không có trên phiếu. (tạm))*
@@ -1320,12 +1279,12 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Tiếp tục câu chuyện](#doan-68)
+- [Tiếp tục câu chuyện](#doan-64)
 
 ---
 
-<a id="doan-71"></a>
-### Đoạn 71: Đối chất: Trình Tối 07/10 xưởng mở tới 23 giờ
+<a id="doan-67"></a>
+### Đoạn 67: Đối chất: Trình Tối 07/10 xưởng mở tới 23 giờ
 
 ⚖️ **Phản hồi đối chất:**
 - **Hà Vy**: Bảng xưởng là lịch đăng ký, không phải điểm danh ạ. Tối đó ai có mặt, bảng không ghi. (tạm)
@@ -1338,8 +1297,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 ---
 
-<a id="doan-72"></a>
-### Đoạn 72: Đối chất: Trình [Tin gốc]
+<a id="doan-68"></a>
+### Đoạn 68: Đối chất: Trình [Tin gốc]
 
 ⚖️ **Phản hồi đối chất:**
 - **Quân** (tự đắc): Tờ này nói tin gốc là tin tự viết. Tự viết thì càng phải có người viết. (tạm)
@@ -1352,8 +1311,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 ---
 
-<a id="doan-73"></a>
-### Đoạn 73: Đối chất: Chưa đủ căn cứ
+<a id="doan-69"></a>
+### Đoạn 69: Đối chất: Chưa đủ căn cứ
 
 ⚖️ **Phản hồi khi thừa nhận chưa đủ căn cứ:**
 - **Minh Anh** (lo lắng): Thưa cô, bọn em chưa có gì để nói ngược lại ý đó ạ. (tạm)
@@ -1364,8 +1323,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 ---
 
-<a id="doan-74"></a>
-### Đoạn 74: Đối chất: Thẻ không khớp
+<a id="doan-70"></a>
+### Đoạn 70: Đối chất: Thẻ không khớp
 
 ⚖️ **Phản hồi khi trình thẻ không liên quan:**
 - **Quân**: Tôi hỏi ai ngồi máy. Tờ này trả lời câu khác. (tạm)
@@ -1375,16 +1334,16 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 ---
 
-<a id="doan-75"></a>
-### Đoạn 75: Tiếp tục: Đối chất Hiếu: tin có từ lâu, ai cũng chuyển
+<a id="doan-71"></a>
+### Đoạn 71: Tiếp tục: Đối chất Hiếu: tin có từ lâu, ai cũng chuyển
 
 
-- [Đọc tiếp sang Đoạn 76: Đối chất: Trình Tin gốc: 22:40 tối 07/10](#doan-76)
+- [Đọc tiếp sang Đoạn 72: Đối chất: Trình Tin gốc: 22:40 tối 07/10](#doan-72)
 
 ---
 
-<a id="doan-76"></a>
-### Đoạn 76: Đối chất: Trình Tin gốc: 22:40 tối 07/10
+<a id="doan-72"></a>
+### Đoạn 72: Đối chất: Trình Tin gốc: 22:40 tối 07/10
 
 ⚖️ **Phản hồi đối chất:**
 - *Suy nghĩ của bạn:* *(Cả bản xuất chỉ có đúng một tin tự viết mang câu ấy, gửi lúc 22 giờ 40 tối thứ Hai. Mấy tin còn lại đều chép lại nó. (tạm))*
@@ -1394,12 +1353,12 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Tiếp tục câu chuyện](#doan-75)
+- [Tiếp tục câu chuyện](#doan-71)
 
 ---
 
-<a id="doan-77"></a>
-### Đoạn 77: Đối chất: Trình [Tin gốc]
+<a id="doan-73"></a>
+### Đoạn 73: Đối chất: Trình [Tin gốc]
 
 ⚖️ **Phản hồi đối chất:**
 - *Suy nghĩ của bạn:* *(Kênh ghi loại của từng tin: tin tự viết, tin bấm chuyển, tin gõ trả lời. (tạm))*
@@ -1413,8 +1372,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 ---
 
-<a id="doan-78"></a>
-### Đoạn 78: Đối chất: Trình Các tin mang câu tin đồn
+<a id="doan-74"></a>
+### Đoạn 74: Đối chất: Trình Các tin mang câu tin đồn
 
 ⚖️ **Phản hồi đối chất:**
 - **Hiếu**: Đấy, mấy tài khoản cùng mang một câu. Đúng là ai cũng chuyển. (tạm)
@@ -1427,8 +1386,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 ---
 
-<a id="doan-79"></a>
-### Đoạn 79: Đối chất: Trình Ảnh chụp tin đồn
+<a id="doan-75"></a>
+### Đoạn 75: Đối chất: Trình Ảnh chụp tin đồn
 
 ⚖️ **Phản hồi đối chất:**
 - **Hiếu**: Ảnh chụp ghi chuyển tiếp nhiều lần. Đúng ý tớ còn gì. (tạm)
@@ -1441,8 +1400,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 ---
 
-<a id="doan-80"></a>
-### Đoạn 80: Đối chất: Chưa đủ căn cứ
+<a id="doan-76"></a>
+### Đoạn 76: Đối chất: Chưa đủ căn cứ
 
 ⚖️ **Phản hồi khi thừa nhận chưa đủ căn cứ:**
 - **Tùng** (lo lắng): Bọn tớ chưa chỉ ra được nó bắt đầu từ đâu. (tạm)
@@ -1453,8 +1412,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 ---
 
-<a id="doan-81"></a>
-### Đoạn 81: Đối chất: Thẻ không khớp
+<a id="doan-77"></a>
+### Đoạn 77: Đối chất: Thẻ không khớp
 
 ⚖️ **Phản hồi khi trình thẻ không liên quan:**
 - **Hiếu**: Cái này thì dính gì tới tin đồn? (tạm)
@@ -1464,8 +1423,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 ---
 
-<a id="doan-82"></a>
-### Đoạn 82: Sau khi xem hết các chỗ ở Xưởng CLB Robotics
+<a id="doan-78"></a>
+### Đoạn 78: Sau khi xem hết các chỗ ở Xưởng CLB Robotics
 
 - **Nam**: Mấy em tìm ai? Ban chủ nhiệm chiều nay đi họp cả rồi.
 - *Suy nghĩ của bạn:* *(Bọn em bên CLB Thám Tử. Kênh của Robotics do ai trực ạ?)*
@@ -1523,6 +1482,6 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 **Lựa chọn tiếp theo:**
 - [Mở bản đồ](#doan-55)
-- [Mở bản đồ](#doan-55)
+- [Về phòng CLB báo chị Minh Anh](#doan-40)
 
 ---

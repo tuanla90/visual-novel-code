@@ -221,6 +221,116 @@ function kiemVuHaiNgay(sua: Record<string, string | ((s: string) => string)> = {
   return [...kq.loi, ...kiemLuatMvp(kq.mvp).loi].map(dinhDangLoi);
 }
 
+function xuatVuGia(kichBan: string): string {
+  const tep = taoBoTep({
+    'lich.md': (s) => s.replace(
+      '- Ngày 2024-10-08: s-tin · bắt đầu ở: c1',
+      '- Ngày 2024-10-08: s-tin · bắt đầu ở: c1\n- Ngày 2024-10-09: s-cat · bắt đầu ở: c2',
+    ),
+    'kich-ban/01.md': (s) => s.replace(
+      '### s-tin — Chuỗi tin đồn {cảnh: c1}\n- [XONG VIỆC CHÍNH]\n- [ĐI TỚI s-cat]\n- [KẾT THÚC]',
+      kichBan,
+    ),
+  });
+  const kq = docNoiDungMvp(tep);
+  return new BoXuatTruyenChu(chuyenMvp(kq.mvp, kiemLuatMvp(kq.mvp)), new Map()).xuatVuHoacViec('vu-tin-don');
+}
+
+function layDoan(vanBan: string, tieuDe: string): string {
+  return vanBan.split(/<a id="doan-\d+"><\/a>/).find((d) => d.includes(`: ${tieuDe}\n`)) ?? '';
+}
+
+describe('Gói T3 Mùa 1: đường đi truyện chữ', () => {
+  it('ĐI CÙNG nằm ở cuối chuỗi chứa nút, giữ nguyên nhãn và không mở bản đồ', () => {
+    const vanBan = xuatVuGia([
+      '### s-tin — Chuỗi tin đồn {cảnh: c1}',
+      '- [ĐI CÙNG s-den] Đi cùng Tùng ra sân',
+      '### s-den — Đã ra sân {cảnh: c2}',
+      '- [XONG VIỆC CHÍNH]',
+    ].join('\n'));
+    const doanDau = layDoan(vanBan, 'Chuỗi tin đồn');
+    const doanDen = /<a id="doan-(\d+)"><\/a>\n### Đoạn \d+: Đã ra sân/.exec(vanBan);
+    expect(doanDen).not.toBeNull();
+    expect(doanDau).toContain(`[Đi cùng Tùng ra sân](#doan-${doanDen?.[1]})`);
+    expect(doanDau).not.toContain('Mở bản đồ');
+    expect(vanBan).not.toContain('🗺️ **Bản đồ**');
+  });
+
+  it('RẼ NHÁNH khác nơi nằm tại chuỗi chứa nút và không lên bản đồ', () => {
+    const vanBan = xuatVuGia([
+      '### s-tin — Chuỗi tin đồn {cảnh: c1}',
+      '- [KHÁM PHÁ kp-map · bản đồ]',
+      '  - ghim:a · x 10% · y 10% · rộng 10% → s-a · dấu: ! · nhãn: Ghim A',
+      '### s-a — Tại A {cảnh: c2}',
+      '- [RẼ NHÁNH rn-test] tung: "Đi đâu?"',
+      '  - {id: ve} Về phòng. → hậu quả: đi tới s-tin',
+      '  - {id: den} Sang B. → hậu quả: đi tới s-b',
+      '### s-b — Tại B {cảnh: c1}',
+      '- [XONG VIỆC CHÍNH]',
+    ].join('\n'));
+    const doanNhanh = layDoan(vanBan, 'Tại A');
+    const doanBanDo = vanBan.split(/<a id="doan-\d+"><\/a>/).find((d) => d.includes('🗺️ **Bản đồ**')) ?? '';
+    expect(doanNhanh).toContain('Chọn: "Về phòng."');
+    expect(doanNhanh).toContain('Chọn: "Sang B."');
+    expect(doanNhanh).not.toContain('Mở bản đồ');
+    expect(doanBanDo).toContain('Đi tới: Ghim A !');
+    expect(doanBanDo).not.toContain('Về phòng.');
+    expect(doanBanDo).not.toContain('Sang B.');
+  });
+
+  it('bản đồ chỉ liệt kê ghim và giữ điều kiện sau', () => {
+    const vanBan = xuatVuGia([
+      '### s-tin — Chuỗi tin đồn {cảnh: c1}',
+      '- [KHÁM PHÁ kp-map · bản đồ]',
+      '  - ghim:a · x 10% · y 10% · rộng 10% → s-a · dấu: ! · nhãn: Ghim A',
+      '  - ghim:b · x 20% · y 20% · rộng 10% → s-b · dấu: ? · sau: s-a · nhãn: Ghim B',
+      '### s-a — Tại A {cảnh: c2}',
+      '- [ĐI CÙNG s-b] Đi cùng Tùng sang B',
+      '### s-b — Tại B {cảnh: c1}',
+      '- [XONG VIỆC CHÍNH]',
+    ].join('\n'));
+    const doanBanDo = vanBan.split(/<a id="doan-\d+"><\/a>/).find((d) => d.includes('🗺️ **Bản đồ**')) ?? '';
+    expect(doanBanDo).toContain('Đi tới: Ghim A !');
+    expect(doanBanDo).toContain('Đi tới: Ghim B (tùy chọn)');
+    expect(doanBanDo).toContain('sau: s-a');
+    expect(doanBanDo).not.toContain('Đi cùng Tùng sang B');
+  });
+
+  it('ngày 10/10 không thể tới xưởng trước khi qua căng tin trong nội dung thật', () => {
+    const vanBan = readFileSync(join(THU_MUC_XUAT_TRUYEN, 'vu-tin-don.md'), 'utf8');
+    const doan = new Map<number, string>();
+    for (const m of vanBan.matchAll(/<a id="doan-(\d+)"><\/a>([\s\S]*?)(?=<a id="doan-\d+"><\/a>|$)/g)) {
+      doan.set(Number(m[1]), m[2]!);
+    }
+    const timSo = (tieuDe: string): number | undefined => [...doan].find(([, noiDung]) => noiDung.includes(`: ${tieuDe}\n`))?.[0];
+    const batDau = timSo('Sáng 10/10, phòng 408: Hiếu nhắn hẹn ra căng tin');
+    const cangTin = timSo('Căng tin giờ trưa: Hiếu ngồi bàn trong');
+    const xuong = timSo('Chiều 10/10, xưởng Robotics: Nam mở sẵn nhật ký');
+    expect(batDau).toBeDefined();
+    expect(cangTin).toBeDefined();
+    expect(xuong).toBeDefined();
+    if (batDau === undefined || cangTin === undefined || xuong === undefined) return;
+    const hangDoi = [{ so: batDau, quaCangTin: false }];
+    const daXem = new Set<string>();
+    let denDuocXuong = false;
+    while (hangDoi.length > 0) {
+      const { so, quaCangTin } = hangDoi.shift()!;
+      const daQua = quaCangTin || so === cangTin;
+      const khoa = `${so}:${daQua}`;
+      if (daXem.has(khoa)) continue;
+      daXem.add(khoa);
+      if (so === xuong) {
+        expect(daQua).toBe(true);
+        denDuocXuong = true;
+      }
+      for (const link of (doan.get(so) ?? '').matchAll(/\]\(#doan-(\d+)\)/g)) {
+        hangDoi.push({ so: Number(link[1]), quaCangTin: daQua });
+      }
+    }
+    expect(denDuocXuong).toBe(true);
+  });
+});
+
 describe('Gói T2 Mùa 1: vụ sau có các ngày riêng', () => {
   it('hai ngày hợp lệ, chuỗi cuối cảnh ngày đầu đứng nguyên chỗ', () => {
     expect(kiemVuHaiNgay()).toEqual([]);

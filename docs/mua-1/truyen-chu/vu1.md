@@ -19,7 +19,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - [Đoạn 13: Bản đồ ngày 2 (tùy chọn): ghé sảnh tòa B hỏi bác Thịnh](#doan-13)
 - [Đoạn 14: Bản đồ ngày 2 (tùy chọn): tạt qua căng tin](#doan-14)
 - [Đoạn 15: Phòng CLB buổi chiều: bốn người, mỗi người một việc](#doan-15)
-- *... và 120 đoạn tiếp theo*
+- *... và 116 đoạn tiếp theo*
 
 ## 👥 Nhân vật xuất hiện
 
@@ -60,7 +60,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - *Suy nghĩ của bạn:* *(Tới rồi. Phòng 408, đi thôi.)*
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
+- [Xuống xe](#doan-10)
 
 ---
 
@@ -76,7 +76,7 @@ Thứ Ba, 24/09/2024 · Còn 6 ngày tới Buổi họp rà soát
 - **Hà Vy** (suy nghĩ): Ngồi đây đoán thì được gì. Ra tận nơi xem đã.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-113)
+- [Đi cùng Tùng ra tòa B](#doan-11)
 
 ---
 
@@ -95,7 +95,7 @@ Thứ Tư, 25/09/2024 · Còn 5 ngày tới Buổi họp rà soát
 - **Minh Anh**: Được xem đúng quyền thôi. Tới đó hỏi cô là rõ.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-114)
+- [Mở bản đồ](#doan-112)
 
 ---
 
@@ -115,7 +115,7 @@ Thứ Năm, 26/09/2024 · Còn 4 ngày tới Buổi họp rà soát
 - **Minh Anh**: Chị báo cô Lan rồi. Cầm kết quả hôm qua sang, đó là căn cứ xin phiếu.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-115)
+- [Mở bản đồ](#doan-113)
 
 ---
 
@@ -131,7 +131,7 @@ Thứ Sáu, 27/09/2024 · Còn 3 ngày tới Buổi họp rà soát
 - **Minh Anh**: Chị ghi hai mã và các bước lọc vào phiếu yêu cầu rồi. Các em cầm qua Phòng Công tác sinh viên nhé.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-116)
+- [Mở bản đồ](#doan-114)
 
 ---
 
@@ -221,7 +221,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Hà Vy**: Tớ nhớ đấy nhé.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-119)
+- [Về phòng CLB](#doan-23)
 
 ---
 
@@ -256,7 +256,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Phòng 408. Ký túc xá ở đâu thì thông báo không ghi… Cứ đi theo đường chính vào trong xem đã.)*
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
+- [Tới cổng ký túc xá](#doan-24)
 
 ---
 
@@ -276,8 +276,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - [Khám phá: Soi khe hộp kiến nghị](#doan-25)
 - [Khám phá: Hỏi bác bảo vệ](#doan-26)
 - [Khám phá: Đọc thông báo dán trên bảng tin](#doan-27)
-- [Mở bản đồ](#doan-113)
-- [Sau khi xem hết các chỗ](#doan-120)
+- [Sau khi xem hết các chỗ](#doan-115)
 
 ---
 
@@ -299,7 +298,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 **Lựa chọn tiếp theo:**
 - [Khám phá: Cô ở quầy](#doan-28)
 - [Khám phá: Tờ lịch treo tường](#doan-29)
-- [Mở bản đồ](#doan-114)
+- [Mở bản đồ](#doan-112)
 
 ---
 
@@ -314,7 +313,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 **Lựa chọn tiếp theo:**
 - [Khám phá: Bác bảo vệ](#doan-30)
 - [Khám phá: Bảng tin cạnh cột](#doan-31)
-- [Mở bản đồ](#doan-114)
+- [Mở bản đồ](#doan-112)
 
 ---
 
@@ -329,7 +328,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 **Lựa chọn tiếp theo:**
 - [Khám phá: Tùng](#doan-32)
 - [Khám phá: Tấm bảng đen trên quầy](#doan-33)
-- [Mở bản đồ](#doan-114)
+- [Mở bản đồ](#doan-112)
 
 ---
 
@@ -349,7 +348,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - [Khám phá: Hà Vy: câu hỏi trên bảng (chi tiết ẩn / tùy chọn)](#doan-35)
 - [Khám phá: Tùng: chuyện ngoài lề (chi tiết ẩn / tùy chọn)](#doan-36)
 - [Khám phá: Minh Anh: xin dữ liệu (chi tiết ẩn / tùy chọn)](#doan-37)
-- [Mở bản đồ](#doan-114)
+- [Mở bản đồ](#doan-112)
 
 ---
 
@@ -378,8 +377,8 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - [Khám phá: Cặp kính](#doan-38)
 - [Khám phá: Áo gi lê len](#doan-39)
 - [Khám phá: Hai tay chắp sau lưng](#doan-40)
-- [Mở bản đồ](#doan-115)
-- [Sau khi xem hết các chỗ](#doan-121)
+- [Mở bản đồ](#doan-113)
+- [Sau khi xem hết các chỗ](#doan-116)
 
 ---
 
@@ -394,7 +393,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 **Lựa chọn tiếp theo:**
 - [Khám phá: Hà Vy](#doan-42)
 - [Khám phá: Hai đôi dép trước cửa](#doan-43)
-- [Mở bản đồ](#doan-115)
+- [Mở bản đồ](#doan-113)
 
 ---
 
@@ -409,7 +408,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 **Lựa chọn tiếp theo:**
 - [Khám phá: Bác bảo vệ](#doan-44)
 - [Khám phá: Bình cứu hỏa](#doan-45)
-- [Mở bản đồ](#doan-115)
+- [Mở bản đồ](#doan-113)
 
 ---
 
@@ -431,7 +430,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 **Lựa chọn tiếp theo:**
 - [Khám phá: Cô Lan](#doan-46)
 - [Khám phá: Khay giấy trên quầy](#doan-47)
-- [Mở bản đồ](#doan-116)
+- [Mở bản đồ](#doan-114)
 
 ---
 
@@ -446,7 +445,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 **Lựa chọn tiếp theo:**
 - [Khám phá: Bác bảo vệ](#doan-48)
 - [Khám phá: Ghế đá](#doan-49)
-- [Mở bản đồ](#doan-116)
+- [Mở bản đồ](#doan-114)
 
 ---
 
@@ -467,7 +466,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Hà Vy**: Đừng đoán bừa vội. Cứ ghi lại đã, tính sau.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-117)
+- [Tối về phòng CLB](#doan-50)
 
 ---
 
@@ -504,7 +503,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Tùng** (vui vẻ): Thế thì đi uống trà đá thôi. Tớ hứa rồi mà.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-119)
+- [Ra quán trà đá cùng Tùng](#doan-53)
 
 ---
 
@@ -517,7 +516,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Phòng 408, tầng bốn. Mong là có thang máy.)*
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
+- [Vào sảnh](#doan-54)
 
 ---
 
@@ -766,7 +765,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - *Suy nghĩ của bạn:* *(Để tớ mời. Cốc hôm khiêng vali thì cậu vẫn nợ đấy.)*
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-115)
+- [Về phòng CLB](#doan-56)
 
 ---
 
@@ -838,9 +837,11 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Hà Vy**: Trượt cũng chẳng sao. Ít ra mình loại được thêm một người.
 - **Quân**: Biết ai nộp chưa có nghĩa là biết ai viết.
 - **Cô Lan**: Theo quy chế, sinh viên có mã trong sổ sẽ được mời đến buổi họp. Có gọi vào hay không do buổi họp quyết định.
+🔀 **Lựa chọn của bạn** (Tùng: "Mà thư đánh máy thì phải in ở đâu chứ nhỉ? Phòng Đào tạo ngay cạnh đây, tiện đường ghé hỏi cô Hạnh không?"):
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-116)
+- [Chọn: "Ghé Phòng Đào tạo hỏi cô Hạnh về nhật ký in."](#doan-57)
+- [Chọn: "Thôi, về CLB báo chị Minh Anh đã."](#doan-58)
 
 ---
 
@@ -925,13 +926,13 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 
 
 **Lựa chọn tiếp theo:**
-- [Trình thẻ: Nhật ký in 23:10 Chủ nhật (ĐỦ CĂN CỨ)](#doan-123)
-- [Trình thẻ: [Lời chú Cường] (HỖ TRỢ)](#doan-124)
-- [Trình thẻ: [Hoài là người nộp] (GỢI Ý)](#doan-125)
-- [Trình thẻ: Hai mã ứng viên kèm căn cứ (GỢI Ý)](#doan-126)
-- [Trình thẻ: Một dòng sau khi sửa (GỢI Ý)](#doan-127)
-- [Nói: "Chưa đủ căn cứ"](#doan-128)
-- [Trình thẻ khác](#doan-129)
+- [Trình thẻ: Nhật ký in 23:10 Chủ nhật (ĐỦ CĂN CỨ)](#doan-118)
+- [Trình thẻ: [Lời chú Cường] (HỖ TRỢ)](#doan-119)
+- [Trình thẻ: [Hoài là người nộp] (GỢI Ý)](#doan-120)
+- [Trình thẻ: Hai mã ứng viên kèm căn cứ (GỢI Ý)](#doan-121)
+- [Trình thẻ: Một dòng sau khi sửa (GỢI Ý)](#doan-122)
+- [Nói: "Chưa đủ căn cứ"](#doan-123)
+- [Trình thẻ khác](#doan-124)
 
 ---
 
@@ -1008,7 +1009,6 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - [Khám phá: Xem tờ giấy trên cửa thang máy](#doan-59)
 - [Khám phá: Xem bảng tin](#doan-60)
 - [Khám phá: Tấm lưng áo xanh giữa đám đông](#doan-61)
-- [Mở bản đồ](#doan-112)
 
 ---
 
@@ -1126,7 +1126,7 @@ SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' A
 > 💭 **Nhắc nhở** (Hà Vy): Hai lớp: BC24A, BC23A. Muốn xem người thì cần phiếu của Phòng Công tác sinh viên.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-114)
+- [Về phòng KTX ăn tối](#doan-62)
 
 ---
 
@@ -1143,7 +1143,7 @@ SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat WHERE toa_nha = 'B' A
 - [Khám phá: Duy: mở laptop](#doan-63)
 - [Khám phá: Hà Vy: câu hỏi trên bảng (chi tiết ẩn / tùy chọn)](#doan-64)
 - [Khám phá: Minh Anh: chuyện anh Quân (chi tiết ẩn / tùy chọn)](#doan-65)
-- [Mở bản đồ](#doan-115)
+- [Mở bản đồ](#doan-113)
 
 ---
 
@@ -1192,7 +1192,7 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
 > 💭 **Nhắc nhở** (Hà Vy): Thư in từ tài khoản CLB Robotics. Người nộp là Hoài. Hai việc, có khi là hai người.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-116)
+- [Sang tòa B gặp bác Thịnh](#doan-66)
 
 ---
 
@@ -1206,7 +1206,7 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
 - **Tùng** (gãi đầu): Và cũng chưa biết thư đó được in từ đâu…
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-116)
+- [Tối họp nhóm bạn ở CLB](#doan-67)
 
 ---
 
@@ -1332,7 +1332,7 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
 - **Hà Vy**: Vâng ạ. Bọn cháu chỉ ghi lại nhật ký in trước.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-116)
+- [Tối họp nhóm bạn ở CLB](#doan-67)
 
 ---
 
@@ -1452,8 +1452,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - [Khám phá: Cái áo xanh](#doan-71)
 - [Khám phá: Cái mũ sau lưng](#doan-72)
 - [Khám phá: Tờ giấy trên tay](#doan-73)
-- [Mở bản đồ](#doan-112)
-- [Sau khi xem hết các chỗ](#doan-130)
+- [Sau khi xem hết các chỗ](#doan-125)
 
 ---
 
@@ -1516,7 +1515,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Tùng**: Kỳ hai dính môn Xác suất Thống kê mới cay chứ. Chưa học đã thấy điềm trượt rồi. Thôi, xách vali lên phòng đã!
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
+- [Lên phòng 408](#doan-75)
 
 ---
 
@@ -1537,7 +1536,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 > [CHIBI chibi-vali-tho (sticker)] (chưa có mô tả)
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
+- [Ra sảnh tòa B](#doan-76)
 
 ---
 
@@ -1557,7 +1556,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Bác Thịnh**: Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
+- [Tới cổng KTX buổi tối](#doan-77)
 
 ---
 
@@ -1578,7 +1577,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 > [CHIBI chibi-chuyen-that (sticker)] (chưa có mô tả)
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
+- [Đi sinh hoạt công dân](#doan-78)
 
 ---
 
@@ -1597,7 +1596,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 > 🗂️ **Tài liệu mới**: **Thẻ lịch của khoa mình** — 
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
+- [Dự ngày hội CLB](#doan-79)
 
 ---
 
@@ -1635,7 +1634,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Minh Anh**: Bảy giờ tối nhé. Tới muộn thì hết bánh đấy.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
+- [Xuống sân phá cỗ Trung thu](#doan-80)
 
 ---
 
@@ -1657,8 +1656,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 **Lựa chọn tiếp theo:**
 - [Khám phá: Anh cạnh bàn bánh](#doan-81)
 - [Khám phá: Bạn nữ đeo kính](#doan-82)
-- [Mở bản đồ](#doan-112)
-- [Sau khi xem hết các chỗ](#doan-131)
+- [Sau khi xem hết các chỗ](#doan-126)
 
 ---
 
@@ -1673,8 +1671,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 **Lựa chọn tiếp theo:**
 - [Khám phá: Chùm chìa khóa](#doan-87)
 - [Khám phá: Tập bìa giấy](#doan-88)
-- [Mở bản đồ](#doan-112)
-- [Sau khi xem hết các chỗ](#doan-133)
+- [Sau khi xem hết các chỗ](#doan-128)
 
 ---
 
@@ -1689,8 +1686,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 **Lựa chọn tiếp theo:**
 - [Khám phá: Tập giấy trên tay](#doan-89)
 - [Khám phá: Cặp kính](#doan-90)
-- [Mở bản đồ](#doan-112)
-- [Sau khi xem hết các chỗ](#doan-134)
+- [Sau khi xem hết các chỗ](#doan-129)
 
 ---
 
@@ -1824,8 +1820,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - [Khám phá: Balo trên ghế xanh](#doan-98)
 - [Khám phá: Áp phích trên bảng tin](#doan-99)
 - [Khám phá: Hà Vy (chi tiết ẩn / tùy chọn)](#doan-100)
-- [Mở bản đồ](#doan-112)
-- [Sau khi xem hết các chỗ](#doan-135)
+- [Sau khi xem hết các chỗ](#doan-130)
 
 ---
 
@@ -1965,7 +1960,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Minh Anh**: Thứ Hai tới, bốn giờ qua phòng CLB dọn tủ nhé. Buổi sinh hoạt thứ hai của mình.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
+- [Tới phòng CLB](#doan-105)
 
 ---
 
@@ -2015,8 +2010,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - [Khám phá: Minh Anh: tờ lịch (chi tiết ẩn / tùy chọn)](#doan-108)
 - [Khám phá: Tùng (chi tiết ẩn / tùy chọn)](#doan-109)
 - [Khám phá: Tủ hồ sơ](#doan-110)
-- [Mở bản đồ](#doan-112)
-- [Sau khi xem hết các chỗ](#doan-136)
+- [Sau khi xem hết các chỗ](#doan-131)
 
 ---
 
@@ -2119,40 +2113,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 ---
 
 <a id="doan-112"></a>
-### Đoạn 112: Bản đồ Ngày 1
-
-🗺️ **Bản đồ** — *Ngày 1*
-
-*Những nơi có thể đi tới:*
-
-**Lựa chọn tiếp theo:**
-- [Đi tới: Xuống xe](#doan-10)
-- [Đi tới: Tới cổng ký túc xá](#doan-24)
-- [Đi tới: Vào sảnh](#doan-54)
-- [Đi tới: Lên phòng 408](#doan-75)
-- [Đi tới: Ra sảnh tòa B](#doan-76)
-- [Đi tới: Tới cổng KTX buổi tối](#doan-77)
-- [Đi tới: Đi sinh hoạt công dân](#doan-78)
-- [Đi tới: Dự ngày hội CLB](#doan-79)
-- [Đi tới: Xuống sân phá cỗ Trung thu](#doan-80)
-- [Đi tới: Tới phòng CLB](#doan-105)
-
----
-
-<a id="doan-113"></a>
-### Đoạn 113: Bản đồ Thứ Ba, 24/09/2024
-
-🗺️ **Bản đồ** — *Thứ Ba, 24/09/2024*
-
-*Những nơi có thể đi tới:*
-
-**Lựa chọn tiếp theo:**
-- [Đi tới: Đi cùng Tùng ra tòa B](#doan-11)
-
----
-
-<a id="doan-114"></a>
-### Đoạn 114: Bản đồ Thứ Tư, 25/09/2024
+### Đoạn 112: Bản đồ Thứ Tư, 25/09/2024
 
 🗺️ **Bản đồ** — *Thứ Tư, 25/09/2024*
 
@@ -2162,13 +2123,12 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - [Đi tới: Phòng Đào tạo !](#doan-12)
 - [Đi tới: Sảnh tòa B (tùy chọn)](#doan-13)
 - [Đi tới: Căng tin (tùy chọn)](#doan-14)
-- [Đi tới: Phòng CLB !](#doan-15)
-- [Đi tới: Về phòng KTX ăn tối](#doan-62)
+- [Đi tới: Phòng CLB !](#doan-15) *(Điều kiện: sau: n2-co-hanh)*
 
 ---
 
-<a id="doan-115"></a>
-### Đoạn 115: Bản đồ Thứ Năm, 26/09/2024
+<a id="doan-113"></a>
+### Đoạn 113: Bản đồ Thứ Năm, 26/09/2024
 
 🗺️ **Bản đồ** — *Thứ Năm, 26/09/2024*
 
@@ -2178,13 +2138,11 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - [Đi tới: Phòng Công tác sinh viên !](#doan-16)
 - [Đi tới: Phòng máy (tùy chọn)](#doan-17)
 - [Đi tới: Sảnh tòa B (tùy chọn)](#doan-18)
-- [Đi tới: Tạt qua căng tin](#doan-41)
-- [Đi tới: Về phòng CLB](#doan-56)
 
 ---
 
-<a id="doan-116"></a>
-### Đoạn 116: Bản đồ Thứ Sáu, 27/09/2024
+<a id="doan-114"></a>
+### Đoạn 114: Bản đồ Thứ Sáu, 27/09/2024
 
 🗺️ **Bản đồ** — *Thứ Sáu, 27/09/2024*
 
@@ -2193,40 +2151,11 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 **Lựa chọn tiếp theo:**
 - [Đi tới: Phòng Công tác sinh viên !](#doan-19)
 - [Đi tới: Sảnh tòa B (tùy chọn)](#doan-20)
-- [Đi tới: Ghé Phòng Đào tạo hỏi cô Hạnh về nhật ký in.](#doan-57)
-- [Đi tới: Thôi, về CLB báo chị Minh Anh đã.](#doan-58)
-- [Đi tới: Sang tòa B gặp bác Thịnh](#doan-66)
-- [Đi tới: Tối họp nhóm bạn ở CLB](#doan-67)
 
 ---
 
-<a id="doan-117"></a>
-### Đoạn 117: Bản đồ Thứ Bảy, 28/09/2024
-
-🗺️ **Bản đồ** — *Thứ Bảy, 28/09/2024*
-
-*Những nơi có thể đi tới:*
-
-**Lựa chọn tiếp theo:**
-- [Đi tới: Tối về phòng CLB](#doan-50)
-
----
-
-<a id="doan-119"></a>
-### Đoạn 119: Bản đồ Ngày 0
-
-🗺️ **Bản đồ** — *Ngày 0*
-
-*Những nơi có thể đi tới:*
-
-**Lựa chọn tiếp theo:**
-- [Đi tới: Về phòng CLB](#doan-23)
-- [Đi tới: Ra quán trà đá cùng Tùng](#doan-53)
-
----
-
-<a id="doan-120"></a>
-### Đoạn 120: Sau khi xem hết các chỗ ở Sảnh tòa B
+<a id="doan-115"></a>
+### Đoạn 115: Sau khi xem hết các chỗ ở Sảnh tòa B
 
 - **Hà Vy** (suy nghĩ): Sáng thứ Hai chỉ có sinh viên sinh hoạt ở đây ra vào. Thẻ lịch lại của khoa Báo chí.
 - **Hà Vy**: Lớp nào vừa sinh hoạt ở tòa B, vừa học Báo chí? Khoanh được lớp là bớt được cả trường.
@@ -2238,13 +2167,12 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-113)
 - [Sang ngày 2](#doan-3)
 
 ---
 
-<a id="doan-121"></a>
-### Đoạn 121: Sau khi xem hết các chỗ ở Phòng Công tác sinh viên
+<a id="doan-116"></a>
+### Đoạn 116: Sau khi xem hết các chỗ ở Phòng Công tác sinh viên
 
 - **Quân**: Tôi là Quân, bên Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi được cử xuống giám sát việc này.
 - **Cô Lan**: Hai lớp các em lọc ra hôm qua là căn cứ được. Cô ký phiếu tra cứu: bảng sinh viên, bốn cột, mã, họ đệm, tên, mã lớp. Không hơn.
@@ -2253,21 +2181,21 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Hà Vy** (suy nghĩ): Vậy là cần mã cụ thể. Và căn cứ cho từng mã.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-115)
-- [Mở bản đồ](#doan-115)
+- [Mở bản đồ](#doan-113)
+- [Tạt qua căng tin](#doan-41)
 
 ---
 
-<a id="doan-122"></a>
-### Đoạn 122: Tiếp tục: Mời Hoài vào hỏi chuyện nộp thư
+<a id="doan-117"></a>
+### Đoạn 117: Tiếp tục: Mời Hoài vào hỏi chuyện nộp thư
 
 
-- [Đọc tiếp sang Đoạn 123: Đối chất: Trình Nhật ký in 23:10 Chủ nhật](#doan-123)
+- [Đọc tiếp sang Đoạn 118: Đối chất: Trình Nhật ký in 23:10 Chủ nhật](#doan-118)
 
 ---
 
-<a id="doan-123"></a>
-### Đoạn 123: Đối chất: Trình Nhật ký in 23:10 Chủ nhật
+<a id="doan-118"></a>
+### Đoạn 118: Đối chất: Trình Nhật ký in 23:10 Chủ nhật
 
 ⚖️ **Phản hồi đối chất:**
 - **Minh Anh**: Thưa thầy, bọn em có nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật — từ tài khoản dùng chung của một CLB, không phải của Hoài.
@@ -2277,12 +2205,12 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 ✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Tiếp tục câu chuyện](#doan-122)
+- [Tiếp tục câu chuyện](#doan-117)
 
 ---
 
-<a id="doan-124"></a>
-### Đoạn 124: Đối chất: Trình [Lời chú Cường]
+<a id="doan-119"></a>
+### Đoạn 119: Đối chất: Trình [Lời chú Cường]
 
 ⚖️ **Phản hồi đối chất:**
 - **Hà Vy**: Sáng thứ Hai, bác bảo vệ ký túc xá thấy một cậu sinh viên đeo huy hiệu bánh răng đưa phong bì cho một bạn nữ, rồi bạn ấy đi thẳng về phía tòa B ạ.
@@ -2296,8 +2224,8 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 
 ---
 
-<a id="doan-125"></a>
-### Đoạn 125: Đối chất: Trình [Hoài là người nộp]
+<a id="doan-120"></a>
+### Đoạn 120: Đối chất: Trình [Hoài là người nộp]
 
 ⚖️ **Phản hồi đối chất:**
 - **Quân** (tự đắc): Chính thẻ này nói Hoài là người nộp. Các bạn đang củng cố cho bên tôi đấy.
@@ -2310,8 +2238,8 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 
 ---
 
-<a id="doan-126"></a>
-### Đoạn 126: Đối chất: Trình Hai mã ứng viên kèm căn cứ
+<a id="doan-121"></a>
+### Đoạn 121: Đối chất: Trình Hai mã ứng viên kèm căn cứ
 
 ⚖️ **Phản hồi đối chất:**
 - **Quân**: Hai mã khớp chữ H và lớp — Hoài hoặc Hiếu, mà sổ chỉ có Hoài.
@@ -2324,8 +2252,8 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 
 ---
 
-<a id="doan-127"></a>
-### Đoạn 127: Đối chất: Trình Một dòng sau khi sửa
+<a id="doan-122"></a>
+### Đoạn 122: Đối chất: Trình Một dòng sau khi sửa
 
 ⚖️ **Phản hồi đối chất:**
 - **Quân**: Một dòng, một người. Vẫn không nói ai viết.
@@ -2338,8 +2266,8 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 
 ---
 
-<a id="doan-128"></a>
-### Đoạn 128: Đối chất: Chưa đủ căn cứ
+<a id="doan-123"></a>
+### Đoạn 123: Đối chất: Chưa đủ căn cứ
 
 ⚖️ **Phản hồi khi thừa nhận chưa đủ căn cứ:**
 - **Minh Anh**: Thưa thầy, đến đây bọn em chỉ nói được ai nộp. Ai viết thì bọn em chưa có căn cứ ạ.
@@ -2350,8 +2278,8 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 
 ---
 
-<a id="doan-129"></a>
-### Đoạn 129: Đối chất: Thẻ không khớp
+<a id="doan-124"></a>
+### Đoạn 124: Đối chất: Thẻ không khớp
 
 ⚖️ **Phản hồi khi trình thẻ không liên quan:**
 - **Quân**: Cái này thì liên quan gì tới việc ai viết thư?
@@ -2362,19 +2290,18 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 
 ---
 
-<a id="doan-130"></a>
-### Đoạn 130: Sau khi xem hết các chỗ ở Sảnh ký túc xá
+<a id="doan-125"></a>
+### Đoạn 125: Sau khi xem hết các chỗ ở Sảnh ký túc xá
 
 - *Suy nghĩ của bạn:* *(Áo tình nguyện, mũ đi nắng, cầm sẵn sơ đồ. Người này biết đường. Hỏi cậu ấy.)*
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
 - [Đi tiếp](#doan-74)
 
 ---
 
-<a id="doan-131"></a>
-### Đoạn 131: Sau khi xem hết các chỗ ở Sân ký túc xá, đêm Trung thu
+<a id="doan-126"></a>
+### Đoạn 126: Sau khi xem hết các chỗ ở Sân ký túc xá, đêm Trung thu
 
 - **Tùng** (vui vẻ): Thế cậu đoán được tớ học ngành gì không?
 - **Hà Vy**: Để xem. Cậu thử nhìn đồ Tùng mang theo đi.
@@ -2382,16 +2309,15 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 *Những chỗ có thể khám phá ở đây:*
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
 - [Khám phá: Tờ giấy trên tay](#doan-83)
 - [Khám phá: Cái áo](#doan-84)
 - [Khám phá: Miếng băng trên mũi](#doan-85)
-- [Sau khi xem hết các chỗ](#doan-132)
+- [Sau khi xem hết các chỗ](#doan-127)
 
 ---
 
-<a id="doan-132"></a>
-### Đoạn 132: Sau khi xem hết các chỗ ở Sân ký túc xá, đêm Trung thu
+<a id="doan-127"></a>
+### Đoạn 127: Sau khi xem hết các chỗ ở Sân ký túc xá, đêm Trung thu
 
 - **Hà Vy**: Cầm bản đồ nhàu, thuộc đường, thích dẫn người khác đi. Du lịch chứ gì.
 - **Tùng** (ngạc nhiên): Ơ đúng! Sao cậu biết?
@@ -2403,13 +2329,12 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Tùng** (vui vẻ): Đúng là dân Toán, mắt tinh như cú vọ. Tớ nhìn lướt qua chẳng thấy gì.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
 - [Đi tiếp](#doan-86)
 
 ---
 
-<a id="doan-133"></a>
-### Đoạn 133: Sau khi xem hết các chỗ ở Sân ký túc xá, đêm Trung thu
+<a id="doan-128"></a>
+### Đoạn 128: Sau khi xem hết các chỗ ở Sân ký túc xá, đêm Trung thu
 
 - **Duy**: Rảnh tay thì giữ hộ anh cái chân bàn này với. Buộc mãi nó vẫn sụp.
 - *Suy nghĩ của bạn:* *(Vâng, để em giữ.)*
@@ -2418,13 +2343,16 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Duy**: Sổ mượn đồ. Bàn này của phòng CLB, mai phải trả đủ bốn chân.
 - **Duy**: Trà ở đầu bàn, mấy đứa tự rót nhé.
 
+**Hết ngày.**
+
+
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
+- [Sang ngày 1](#doan-2)
 
 ---
 
-<a id="doan-134"></a>
-### Đoạn 134: Sau khi xem hết các chỗ ở Sân ký túc xá, đêm Trung thu
+<a id="doan-129"></a>
+### Đoạn 129: Sau khi xem hết các chỗ ở Sân ký túc xá, đêm Trung thu
 
 - **Hà Vy**: Cậu nhìn tớ lâu thế. Từ tập giấy tới cái kính rồi đấy.
 - *Suy nghĩ của bạn:* *(À… cậu cũng vào CLB à?)*
@@ -2434,24 +2362,26 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Tùng** (vui vẻ): Toán! Thế là tớ có người cho mượn vở rồi.
 - **Hà Vy**: Mượn thì được, chép thì không.
 
+**Hết ngày.**
+
+
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
+- [Sang ngày 1](#doan-2)
 
 ---
 
-<a id="doan-135"></a>
-### Đoạn 135: Sau khi xem hết các chỗ ở Sân ký túc xá, đêm Trung thu
+<a id="doan-130"></a>
+### Đoạn 130: Sau khi xem hết các chỗ ở Sân ký túc xá, đêm Trung thu
 
 - **Hà Vy** (suy nghĩ): Có vài thứ hơi lạ. Cậu thử xâu chuỗi lại xem.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
 - [Đi tiếp](#doan-101)
 
 ---
 
-<a id="doan-136"></a>
-### Đoạn 136: Sau khi xem hết các chỗ ở Phòng CLB
+<a id="doan-131"></a>
+### Đoạn 131: Sau khi xem hết các chỗ ở Phòng CLB
 
 > 🗂️ **Tài liệu mới**: **Sổ CLB** — 
 - **Minh Anh**: Sổ của CLB đấy, khóa nào cũng chép thêm vài trang. Mấy trang đầu mực xanh là từ hồi mới lập. Năm nay em giữ.
@@ -2459,7 +2389,6 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - **Duy**: Báo cáo năm ngoái đây. Kết luận đúng hai chữ: "hoạt động yếu".
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-112)
 - [Đi tiếp](#doan-111)
 
 ---

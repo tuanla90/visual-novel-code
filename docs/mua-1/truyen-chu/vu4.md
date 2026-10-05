@@ -14,8 +14,8 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - [Đoạn 8: Quan sát Khánh: tấm thẻ đeo cổ](#doan-8)
 - [Đoạn 9: Quan sát Khánh: cái balo](#doan-9)
 - [Đoạn 10: Quan sát Khánh: huy hiệu bánh răng sứt](#doan-10)
+- [Đoạn 11: Sau khi xem hết các chỗ ở Phòng CLB](#doan-11)
 - [Đoạn 12: Sau khi xem hết các chỗ ở Phòng CLB](#doan-12)
-- [Đoạn 13: Sau khi xem hết các chỗ ở Phòng CLB](#doan-13)
 
 ## 👥 Nhân vật xuất hiện
 
@@ -71,7 +71,7 @@ Thứ Hai, 04/11/2024
 - [Khám phá: Duy: mở laptop](#doan-2)
 - [Khám phá: Nam: hai đơn đặt thật (chi tiết ẩn / tùy chọn)](#doan-3)
 - [Khám phá: Quân: việc giám sát (chi tiết ẩn / tùy chọn)](#doan-4)
-- [Sau khi xem hết các chỗ](#doan-12)
+- [Sau khi xem hết các chỗ](#doan-11)
 
 ---
 
@@ -257,7 +257,7 @@ SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap
 - [Khám phá: Tấm thẻ đeo cổ](#doan-8)
 - [Khám phá: Cái balo](#doan-9)
 - [Khám phá: Thứ gài trên quai balo](#doan-10)
-- [Sau khi xem hết các chỗ](#doan-13)
+- [Sau khi xem hết các chỗ](#doan-12)
 
 ---
 
@@ -300,8 +300,8 @@ SELECT ma_don, nguoi_dat, linh_kien, gio FROM don_linh_kien JOIN phien_dang_nhap
 
 ---
 
-<a id="doan-12"></a>
-### Đoạn 12: Sau khi xem hết các chỗ ở Phòng CLB
+<a id="doan-11"></a>
+### Đoạn 11: Sau khi xem hết các chỗ ở Phòng CLB
 
 #### 💻 Màn tra dữ liệu: Sổ đặt linh kiện của xưởng (thẻ `c-don-da-duyet`)
 *Đề bài:* Sổ đặt linh kiện của xưởng Robotics ghi từ năm 2022, đơn các kỳ trước đã quyết toán. Những đơn nào đang ở trạng thái đã duyệt?
@@ -363,8 +363,8 @@ SELECT nguoi_dat, COUNT(*) AS so_dong FROM @ev-don-da-duyet GROUP BY nguoi_dat;
 
 ---
 
-<a id="doan-13"></a>
-### Đoạn 13: Sau khi xem hết các chỗ ở Phòng CLB
+<a id="doan-12"></a>
+### Đoạn 12: Sau khi xem hết các chỗ ở Phòng CLB
 
 > [CG cg-v4-huy-hieu-sut] (chưa có mô tả)
 - **Tùng** (lo lắng): Tớ thấy cái huy hiệu rồi. Nãy giờ tớ nín thở luôn.

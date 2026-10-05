@@ -19,7 +19,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - [Đoạn 13: Chai nước dưới đất](#doan-13)
 - [Đoạn 14: Phòng CLB: lịch học và danh sách đăng ký](#doan-14)
 - [Đoạn 15: Ba cái tên, một chiếc vé gửi xe](#doan-15)
-- *... và 4 đoạn tiếp theo*
+- *... và 3 đoạn tiếp theo*
 
 ## 👥 Nhân vật xuất hiện
 
@@ -57,9 +57,11 @@ Thứ Tư, 30/10/2024
 - **Tùng** (chỉ tay): Khoan. CLB thám tử mà nộp luôn thì còn gì là thám tử! Tự tìm ra chủ túi, trả tận tay, chẳng hay hơn à?
 - **Minh Anh**: Bác ghi sổ, trả đúng người. Cách ấy không sai.
 - **Hà Vy**: Cách nào túi cũng về tay chủ. Chọn đi.
+🔀 **Lựa chọn của bạn** (Người kể: "Chiếc túi không ghi tên ai. Làm gì với nó?"):
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-18)
+- [Chọn: "Mang xuống nộp bác Thịnh ở sảnh tòa B."](#doan-2)
+- [Chọn: "Thử tự tìm ra chủ túi."](#doan-3)
 
 ---
 
@@ -107,8 +109,7 @@ Thứ Tư, 30/10/2024
 - [Khám phá: Túi vải mở miệng](#doan-11)
 - [Khám phá: Hộp bút](#doan-12)
 - [Khám phá: Chai nước dưới đất](#doan-13)
-- [Mở bản đồ](#doan-18)
-- [Sau khi xem hết các chỗ](#doan-19)
+- [Sau khi xem hết các chỗ](#doan-18)
 
 ---
 
@@ -408,20 +409,7 @@ SELECT dang_ky_hoc.ma_lhp, sinh_vien.ma_sv, ho_dem, ten, ma_lop FROM dang_ky_hoc
 ---
 
 <a id="doan-18"></a>
-### Đoạn 18: Bản đồ Thứ Tư, 30/10/2024
-
-🗺️ **Bản đồ** — *Thứ Tư, 30/10/2024*
-
-*Những nơi có thể đi tới:*
-
-**Lựa chọn tiếp theo:**
-- [Đi tới: Mang xuống nộp bác Thịnh ở sảnh tòa B.](#doan-2)
-- [Đi tới: Thử tự tìm ra chủ túi.](#doan-3)
-
----
-
-<a id="doan-19"></a>
-### Đoạn 19: Sau khi xem hết các chỗ ở Ghế đá cạnh lối đi
+### Đoạn 18: Sau khi xem hết các chỗ ở Ghế đá cạnh lối đi
 
 - **Hà Vy** (suy nghĩ): Bấy nhiêu thứ là đủ để thu hẹp rồi.
 - **Minh Anh**: Mang túi về phòng CLB. Laptop ở đó.
@@ -430,7 +418,6 @@ SELECT dang_ky_hoc.ma_lhp, sinh_vien.ma_sv, ho_dem, ten, ma_lop FROM dang_ky_hoc
 ⚠ (bản cũ: tự chuyển nơi)
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-18)
 - [Đi tiếp](#doan-14)
 
 ---
