@@ -289,7 +289,11 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
     $('sheet').replaceChildren(el('div', 'load', 'Đang mở hồ sơ…'));
     let lo;
     try { lo = await Promise.all(vu.tep.map(taiJson)); }
-    catch { $('sheet').replaceChildren(el('div', 'load', 'Không mở được dữ liệu của vụ này. Tải lại trang thử xem.')); return; }
+    catch (e) {
+      $('sheet').replaceChildren(el('div', 'load', 'Không mở được dữ liệu của vụ này (thiếu tệp ' + (e && e.message ? e.message : '?') + '). Báo Claude tên tệp này để đăng lại.'));
+      doan = new Map(); path = []; seen = new Set(); veDuong(); $('tocList').replaceChildren(); $('tocCount').textContent = '';
+      return;
+    }
     doan = new Map(lo.flat().map((d) => [d.so, d]));
     // Số đoạn nay đánh theo thứ tự đọc: đường đã đi lưu bằng số cũ (của tệp .md) thì đổi sang số mới một lần.
     const doiSo = new Map(vu.doan.map((d) => [d.soGoc ?? d.so, d.so]));

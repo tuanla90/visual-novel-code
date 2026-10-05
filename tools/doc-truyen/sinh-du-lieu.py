@@ -132,6 +132,9 @@ def main():
         json.dump(muc_luc, f, ensure_ascii=False, separators=(',', ':'))
     lon = max(os.path.getsize(os.path.join(thu_muc, t)) for t in os.listdir(thu_muc))
     print('tệp lớn nhất: %d byte' % lon)
+    # Số tệp của một vụ đổi theo độ dài nội dung (05/10: Vụ 1 từ 3 lên 4 tệp, đăng thiếu vu1-4.json nên trang không mở được Vụ 1).
+    # Khi đăng, dán NGUYÊN danh sách dưới đây vào tham số `files`, đừng gõ tay.
+    print('files: ' + json.dumps([{'path': 'du-lieu/' + t} for t in sorted(os.listdir(thu_muc)) if t.endswith('.json')]))
 
 
 if __name__ == '__main__':
