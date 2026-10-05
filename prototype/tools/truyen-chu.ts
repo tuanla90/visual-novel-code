@@ -549,6 +549,7 @@ export class BoXuatTruyenChu {
       (v) => v.id === ma || (ma === 'vu-2' && v.id === 'vu2') || (ma === 'vu-3' && v.id === 'vu3') || (ma === 'vu-4' && v.id === 'vu4') || (ma === 'vu-5' && v.id === 'vu5'),
     );
     const phu = (lich.nhiemVuPhu ?? []).find((p) => p.id === ma);
+    const laVuNhieuNgay = (vu?.cacNgay?.length ?? 0) > 0;
 
     let tieuDeChinh: string;
     if (laVu1) {
@@ -630,9 +631,8 @@ export class BoXuatTruyenChu {
         if (lich.chuoiDau) startChainsForDay.push(lich.chuoiDau);
         for (const n of lich.ngay) if (n.chuoi) startChainsForDay.push(n.chuoi);
         if (lich.ngayHop?.chuoi) startChainsForDay.push(lich.ngayHop.chuoi);
-      } else if (vu?.cacNgay) {
-        if (vu.chuoi) startChainsForDay.push(vu.chuoi);
-        for (const d of vu.cacNgay) startChainsForDay.push(d.chuoi);
+      } else if (laVuNhieuNgay && vu?.cacNgay) {
+        for (const d of vu.cacNgay) if (!startChainsForDay.includes(d.chuoi)) startChainsForDay.push(d.chuoi);
       } else {
         if (chuoiDau) startChainsForDay.push(chuoiDau);
       }
@@ -650,6 +650,27 @@ export class BoXuatTruyenChu {
     const dsViecNgayLe = (lich.viecNgayLe ?? []).filter(
       (l) => l.thuocVu === ma || (laVu1 && (l.thuocVu === 'vu1' || l.thuocVu === 'vu-1')),
     );
+    const chuoiViecNgayLe = new Set<string>();
+    const hangDoiLe = laVuNhieuNgay ? dsViecNgayLe.flatMap((l) => [l.chuoi, l.khiLo]) : [];
+    while (hangDoiLe.length > 0) {
+      const id = hangDoiLe.pop()!;
+      if (chuoiViecNgayLe.has(id)) continue;
+      chuoiViecNgayLe.add(id);
+      const c = this.duLieu.chuoi.find((x) => x.id === id);
+      if (!c) continue;
+      for (const n of c.nodes) {
+        if (n.type === 'goto' || n.type === 'jump-if') hangDoiLe.push(n.to);
+        else if (n.type === 'branch') {
+          for (const ch of n.choices) for (const h of ch.hauQua) if (h.kind === 'di-toi') hangDoiLe.push(h.chuoi);
+        } else if (n.type === 'explore') {
+          for (const d of n.diem) hangDoiLe.push(d.chuoi);
+        } else if (n.type === 'consequence') {
+          for (const h of n.hauQua) if (h.kind === 'di-toi') hangDoiLe.push(h.chuoi);
+        } else if (n.type === 'doi-chat' && n.nguoiQuen) {
+          hangDoiLe.push(n.nguoiQuen.noiThay);
+        }
+      }
+    }
     for (const vnl of dsViecNgayLe) {
       hangDoi.push({ id: vnl.chuoi, dayIndex: -1 });
         hangDoi.push({ id: vnl.khiLo, dayIndex: -1 });
@@ -1102,11 +1123,15 @@ export class BoXuatTruyenChu {
           }
           case 'end': {
             dong.push('');
-            dong.push('🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.');
-            const tieuDeKet = vu?.tieuDeKet ?? phu?.tieuDeKet;
-            const loiKet = vu?.loiKet ?? phu?.loiKet;
-            if (tieuDeKet && loiKet) {
-              dong.push(`> **${tieuDeKet}** — ${loiKet}`);
+            if (chuoiViecNgayLe.has(cId)) {
+              dong.push('Hết việc ngày lễ.');
+            } else {
+              dong.push('🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.');
+              const tieuDeKet = vu?.tieuDeKet ?? phu?.tieuDeKet;
+              const loiKet = vu?.loiKet ?? phu?.loiKet;
+              if (tieuDeKet && loiKet) {
+                dong.push(`> **${tieuDeKet}** — ${loiKet}`);
+              }
             }
             break;
           }
@@ -1158,13 +1183,15 @@ export class BoXuatTruyenChu {
       // Hết ngày (R1) AFTER all choices (including hubCungNoi) are added
       let inHetNgay = false;
       const coXongViec = c.nodes.some(n => n.type === 'xong-viec-chinh');
-      if (coXongViec) {
+      if (chuoiViecNgayLe.has(cId)) {
+        inHetNgay = false;
+      } else if (coXongViec) {
         inHetNgay = true;
       } else if (laVu1) {
         if (luaChon.length === 0 && !c.nodes.some(n => n.type === 'xong-viec-chinh')) {
             inHetNgay = true;
         }
-      } else if (vu) {
+      } else if (vu && !laVuNhieuNgay) {
         // Linear story (Mùa 1 Vụ 2-5)
         if (c.nodes.some(n => n.type === 'end')) {
             inHetNgay = true;
@@ -1182,9 +1209,9 @@ export class BoXuatTruyenChu {
         if (dayIndex >= 0 && dayIndex < startChainsForDay.length - 1) {
            const nextDayStart = startChainsForDay[dayIndex + 1];
            if (nextDayStart && chuoiToSo.has(nextDayStart)) {
-              let nhanSangNgay = `Sang ngày ${dayIndex + 1}`;
-              if (laVu1 && dayIndex === 0) nhanSangNgay = 'Sang ngày 1';
-              else if (laVu1 && dayIndex > 0) nhanSangNgay = `Sang ngày ${dayIndex + 1}`;
+               let nhanSangNgay = `Sang ngày ${dayIndex + 1}`;
+               const ngayKeTiep = vu?.cacNgay?.[dayIndex + 1]?.ngay;
+               if (ngayKeTiep) nhanSangNgay = `Sang ${dinhDangNgayThu(ngayKeTiep).replace(/^Thứ/, 'thứ').replace(/^Chủ/, 'chủ')}`;
               
               luaChon.push({
                  nhan: nhanSangNgay,

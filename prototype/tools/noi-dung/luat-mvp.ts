@@ -310,6 +310,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
 
   // ---------- Tham chiếu trong chuỗi + cạnh đồ thị ----------
   const canhChuoi = new Map<string, Set<string>>(); // chuỗi → chuỗi đi tới
+  const canhTuyenChinh = new Map<string, Set<string>>(); // bỏ đường qua chỗ bấm khám phá không mang !
   const chuaThuThach = new Map<string, Set<string>>(); // chuỗi → thẻ [THỬ THÁCH]/[SỬA TRUY VẤN]
   const reKet: ViTri[] = [];
   const taoNhanVat: { truong: 'ten' | 'nganh'; chuoi: string; idx: number; vt: ViTri }[] = [];
@@ -320,19 +321,24 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   const taoTrongChuoi = new Map<string, Set<string>>();
   for (const c of mvp.chuoi) {
     const dt = new Set<string>();
+    const dtChinh = new Set<string>();
     const tt = new Set<string>();
     const bb = new Set<string>();
     const tao = new Set<string>();
     canhChuoi.set(c.id, dt);
+    canhTuyenChinh.set(c.id, dtChinh);
     chuaThuThach.set(c.id, tt);
     canhBatBuoc.set(c.id, bb);
     taoTrongChuoi.set(c.id, tao);
     if (!canh.has(c.canh)) err(c.viTri, `chuỗi ${c.id}: không có cảnh "${c.canh}" trong canh.md`);
     c.items.forEach((it, k) => {
       const vt: ViTri = { tep: c.viTri.tep, dong: c.itemDong[k] ?? c.viTri.dong };
-      const canChuoi = (id: string, noi: string): void => {
+      const canChuoi = (id: string, noi: string, trenTuyenChinh = true): void => {
         if (!chuoi.has(id)) err(vt, `${noi}: không có chuỗi "${id}"`);
-        else dt.add(id);
+        else {
+          dt.add(id);
+          if (trenTuyenChinh) dtChinh.add(id);
+        }
       };
       switch (it.kind) {
         case 'goto':
@@ -461,6 +467,8 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           if (lich.ket) {
             dt.add(lich.ket.that);
             dt.add(lich.ket.thuong);
+            dtChinh.add(lich.ket.that);
+            dtChinh.add(lich.ket.thuong);
           }
           break;
         case 'stage':
@@ -478,7 +486,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           if (it.diem.length > 0 && it.diem.every((d) => d.sau.length > 0)) err(vt, `${noi}: phải có ít nhất một chỗ hiện ngay (không "sau:")`);
           for (const d of it.diem) {
             if (d.chuoi === c.id) err(vt, `${noi}: chỗ bấm không được trỏ về chính chuỗi chứa nó`);
-            canChuoi(d.chuoi, noi);
+            canChuoi(d.chuoi, noi, d.dau === 'chinh');
             bb.add(d.chuoi);
             for (const s of d.sau) if (!cacChuoi.has(s) || s === d.chuoi) err(vt, `${noi}: "sau: ${s}" phải là chuỗi của một chỗ bấm khác trong cùng [KHÁM PHÁ]`);
             for (const n of d.co) if (!nhanVat.has(n)) err(vt, `${noi}: "có: ${n}" không phải nhân vật trong nhan-vat.md`);
@@ -642,9 +650,23 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     return s;
   };
   const tuHop = lich.ngayHop ? toiDuoc(lich.ngayHop.chuoi) : new Set<string>();
-  // Mỗi vụ sau phải tới được ít nhất một [KẾT THÚC]; chuỗi của vụ sau không được hết nút mà không [ĐI TỚI] / [KẾT THÚC].
+  // Vụ có các dòng Ngày chỉ kết ở ngày cuối; vụ cũ giữ luật tự đi tiếp.
   for (const v of lich.vuSau) {
     if (!chuoi.has(v.chuoi)) continue;
+    if (v.cacNgay.length > 0) {
+      const ngayCuoi = v.cacNgay[v.cacNgay.length - 1]!;
+      const denCuoi = [...toiDuoc(ngayCuoi.chuoi)].map((id) => chuoi.get(id)).filter((c): c is RawChuoiMvp => !!c);
+      if (!denCuoi.some((c) => c.items.some((it) => it.kind === 'end'))) {
+        err(v.viTri, `vụ sau ${v.id}: từ chuỗi ngày cuối "${ngayCuoi.chuoi}" không tới được [KẾT THÚC] nào`);
+      }
+      for (const d of v.cacNgay.slice(0, -1)) {
+        const den = [...toiDuoc(d.chuoi)].map((id) => chuoi.get(id)).filter((c): c is RawChuoiMvp => !!c);
+        if (den.some((c) => c.items.some((it) => it.kind === 'end'))) {
+          err(v.viTri, `vụ sau ${v.id}, ngày ${d.ngay}: từ chuỗi "${d.chuoi}" tới được [KẾT THÚC] trước ngày cuối`);
+        }
+      }
+      continue;
+    }
     const den = [...toiDuoc(v.chuoi)].map((id) => chuoi.get(id)).filter((c): c is RawChuoiMvp => !!c);
     if (!den.some((c) => c.items.some((it) => it.kind === 'end'))) err(v.viTri, `vụ sau ${v.id}: từ chuỗi "${v.chuoi}" không tới được [KẾT THÚC] nào`);
     for (const c of den) {
@@ -910,22 +932,50 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     if (v.cacNgay && v.cacNgay.length > 0 && !v.hanChot) {
       err(v.viTri, `vụ ${v.id}: vụ thiếu Hạn chót`);
     }
+    if (v.cacNgay.length > 0) {
+      const ngayDau = v.cacNgay[0]!;
+      if (v.chuoi !== ngayDau.chuoi) err(v.viTri, `vụ ${v.id}: "Chuỗi" phải trùng chuỗi ngày đầu "${ngayDau.chuoi}"`);
+      if (v.ngay !== ngayDau.ngay) err(v.viTri, `vụ ${v.id}: ngày đầu "${ngayDau.ngay}" phải trùng "Ngày" (${v.ngay ?? 'thiếu'})`);
+      const chuoiDauDaCo = new Set<string>();
+      for (const d of v.cacNgay) {
+        if (chuoiDauDaCo.has(d.chuoi)) err(v.viTri, `vụ ${v.id}: chuỗi đầu ngày "${d.chuoi}" dùng cho nhiều ngày`);
+        chuoiDauDaCo.add(d.chuoi);
+      }
+      for (let i = 1; i < v.cacNgay.length; i++) {
+        const truoc = v.cacNgay[i - 1]!;
+        const hienTai = v.cacNgay[i]!;
+        if (hienTai.ngay <= truoc.ngay) err(v.viTri, `vụ ${v.id}: các ngày phải tăng dần (${truoc.ngay} → ${hienTai.ngay})`);
+      }
+      const ngayCuoi = v.cacNgay[v.cacNgay.length - 1]!;
+      if (v.hanChot && ngayCuoi.ngay > v.hanChot) err(v.viTri, `vụ ${v.id}: ngày cuối "${ngayCuoi.ngay}" sau Hạn chót "${v.hanChot}"`);
+    }
     for (const d of v.cacNgay) {
       const cacChuoiCuaNgay = toiDuoc(d.chuoi);
       let coXong = false;
-      let soViecChinh = 0;
       for (const cid of cacChuoiCuaNgay) {
         const ch = chuoi.get(cid);
         if (!ch) continue;
         for (const it of ch.items) {
           if (it.kind === 'xong-viec-chinh') coXong = true;
-          if (it.kind === 'explore') {
-            for (const diem of it.diem) {
-              if (diem.dau === 'chinh') soViecChinh++;
-            }
-          }
         }
       }
+      const daTham = new Set<string>();
+      const dichViecChinh = new Set<string>();
+      const hangDoi = [d.chuoi];
+      while (hangDoi.length > 0) {
+        const cid = hangDoi.pop()!;
+        if (daTham.has(cid)) continue;
+        daTham.add(cid);
+        const ch = chuoi.get(cid);
+        if (!ch) continue;
+        for (const it of ch.items) {
+          if (it.kind === 'explore') {
+            for (const diem of it.diem) if (diem.dau === 'chinh') dichViecChinh.add(diem.chuoi);
+          }
+        }
+        for (const tiep of canhTuyenChinh.get(cid) ?? []) hangDoi.push(tiep);
+      }
+      const soViecChinh = dichViecChinh.size;
       if (!coXong) err(v.viTri, `vụ ${v.id}, ngày ${d.ngay}: một ngày không có [XONG VIỆC CHÍNH]`);
       if (soViecChinh > 2) err(v.viTri, `vụ ${v.id}, ngày ${d.ngay}: một ngày có hơn 2 việc chính (${soViecChinh})`);
     }

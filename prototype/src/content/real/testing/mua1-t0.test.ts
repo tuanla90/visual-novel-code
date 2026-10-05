@@ -193,6 +193,166 @@ function kiem(sua: Record<string, string | ((s: string) => string)> = {}): strin
   return [...kq.loi, ...kiemLuatMvp(kq.mvp).loi].map(dinhDangLoi);
 }
 
+function taoVuHaiNgay(sua: Record<string, string | ((s: string) => string)> = {}): TepMvp[] {
+  const tep = taoBoTep({
+    'ho-so/02.md': '### ev-z — Bằng chứng phụ\n- Tiêu đề: Z\n- Nội dung: z\n',
+    'lich.md': (s) => s.replace(
+      '- Ngày 2024-10-08: s-tin · bắt đầu ở: c1',
+      '- Ngày 2024-10-08: s-tin · bắt đầu ở: c1\n- Ngày 2024-10-09: s-cat · bắt đầu ở: c2',
+    ),
+    'kich-ban/01.md': (s) => s
+      .replace('### s-noi-thay — Nói thay {cảnh: c1}', '### s-noi-thay — Nói thay {cảnh: c1}\n- [HẬU QUẢ] lưu bằng chứng ev-z')
+      .replace('- [ĐIỀU KIỆN] có ev-y', '- [ĐIỀU KIỆN] có ev-y và có ev-z')
+      .replace('### s-tin — Chuỗi tin đồn {cảnh: c1}\n- [XONG VIỆC CHÍNH]\n- [ĐI TỚI s-cat]\n- [KẾT THÚC]', '### s-tin — Chuỗi tin đồn {cảnh: c1}\n- [XONG VIỆC CHÍNH]')
+      .replace('### s-cat — Cảnh cắt {cảnh: c2 · cảnh cắt}\n- **narrator**: Nhớ lại.\n- [KẾT THÚC]', '### s-cat — Cảnh cắt {cảnh: c2 · cảnh cắt}\n- **narrator**: Nhớ lại.\n- [XONG VIỆC CHÍNH]\n- [KẾT THÚC]'),
+  });
+  return tep.map((t) => {
+    const duongDan = t.duongDan.replace(/^noi-dung-mua-1\//, '');
+    const noiDungMoi = sua[duongDan];
+    return noiDungMoi === undefined ? t : {
+      ...t,
+      noiDung: typeof noiDungMoi === 'string' ? noiDungMoi : noiDungMoi(t.noiDung),
+    };
+  });
+}
+
+function kiemVuHaiNgay(sua: Record<string, string | ((s: string) => string)> = {}): string[] {
+  const kq = docNoiDungMvp(taoVuHaiNgay(sua));
+  return [...kq.loi, ...kiemLuatMvp(kq.mvp).loi].map(dinhDangLoi);
+}
+
+describe('Gói T2 Mùa 1: vụ sau có các ngày riêng', () => {
+  it('hai ngày hợp lệ, chuỗi cuối cảnh ngày đầu đứng nguyên chỗ', () => {
+    expect(kiemVuHaiNgay()).toEqual([]);
+  });
+
+  it('báo lỗi khi ngày đầu tới được kết vụ', () => {
+    const loi = kiemVuHaiNgay({
+      'kich-ban/01.md': (s) => s.replace('### s-tin — Chuỗi tin đồn {cảnh: c1}\n- [XONG VIỆC CHÍNH]', '### s-tin — Chuỗi tin đồn {cảnh: c1}\n- [XONG VIỆC CHÍNH]\n- [KẾT THÚC]'),
+    });
+    expect(loi.some((l) => l.includes('2024-10-08') && l.includes('[KẾT THÚC] trước ngày cuối'))).toBe(true);
+  });
+
+  it('báo lỗi khi ngày cuối không tới được kết vụ', () => {
+    const loi = kiemVuHaiNgay({
+      'kich-ban/01.md': (s) => s.replace('### s-cat — Cảnh cắt {cảnh: c2 · cảnh cắt}\n- **narrator**: Nhớ lại.\n- [XONG VIỆC CHÍNH]\n- [KẾT THÚC]', '### s-cat — Cảnh cắt {cảnh: c2 · cảnh cắt}\n- **narrator**: Nhớ lại.\n- [XONG VIỆC CHÍNH]'),
+    });
+    expect(loi.some((l) => l.includes('ngày cuối "s-cat" không tới được [KẾT THÚC]'))).toBe(true);
+  });
+
+  it('báo lỗi khi Chuỗi khác chuỗi ngày đầu', () => {
+    const loi = kiemVuHaiNgay({ 'lich.md': (s) => s.replace('- Chuỗi: s-tin', '- Chuỗi: s-cat') });
+    expect(loi.some((l) => l.includes('"Chuỗi" phải trùng chuỗi ngày đầu "s-tin"'))).toBe(true);
+  });
+
+  it('báo lỗi khi ngày đầu khác Ngày của vụ', () => {
+    const loi = kiemVuHaiNgay({ 'lich.md': (s) => s.replace('- Ngày: 2024-10-08', '- Ngày: 2024-10-07') });
+    expect(loi.some((l) => l.includes('ngày đầu "2024-10-08" phải trùng "Ngày"'))).toBe(true);
+  });
+
+  it('báo lỗi khi các dòng ngày không tăng dần', () => {
+    const loi = kiemVuHaiNgay({
+      'lich.md': (s) => s.replace(
+        '- Ngày 2024-10-08: s-tin · bắt đầu ở: c1\n- Ngày 2024-10-09: s-cat · bắt đầu ở: c2',
+        '- Ngày 2024-10-09: s-cat · bắt đầu ở: c2\n- Ngày 2024-10-08: s-tin · bắt đầu ở: c1',
+      ),
+    });
+    expect(loi.some((l) => l.includes('các ngày phải tăng dần'))).toBe(true);
+  });
+
+  it('báo lỗi khi hai ngày dùng chung chuỗi đầu', () => {
+    const loi = kiemVuHaiNgay({
+      'lich.md': (s) => s.replace('- Ngày 2024-10-09: s-cat · bắt đầu ở: c2', '- Ngày 2024-10-09: s-tin · bắt đầu ở: c1'),
+    });
+    expect(loi.some((l) => l.includes('chuỗi đầu ngày "s-tin" dùng cho nhiều ngày'))).toBe(true);
+  });
+
+  it('báo lỗi khi ngày cuối sau Hạn chót', () => {
+    const loi = kiemVuHaiNgay({ 'lich.md': (s) => s.replace('- Hạn chót: 2024-10-15', '- Hạn chót: 2024-10-08') });
+    expect(loi.some((l) => l.includes('ngày cuối "2024-10-09" sau Hạn chót'))).toBe(true);
+  });
+
+  it('vụ không có các dòng ngày vẫn bắt chuỗi tự đi tiếp', () => {
+    const loi = kiem({
+      'kich-ban/01.md': (s) => s.replace('### s-tin — Chuỗi tin đồn {cảnh: c1}\n- [XONG VIỆC CHÍNH]\n- [ĐI TỚI s-cat]\n- [KẾT THÚC]', '### s-tin — Chuỗi tin đồn {cảnh: c1}\n- [XONG VIỆC CHÍNH]'),
+      'lich.md': (s) => s.replace('- Ngày 2024-10-08: s-tin · bắt đầu ở: c1\n', ''),
+    });
+    expect(loi.some((l) => l.includes('chuỗi "s-tin"') && l.includes('phải kết bằng [ĐI TỚI'))).toBe(true);
+  });
+
+  it('không đếm các dấu ! ở sau ghim ?', () => {
+    const loi = kiemVuHaiNgay({
+      'kich-ban/01.md': (s) => s.replace(
+        '### s-tin — Chuỗi tin đồn {cảnh: c1}\n- [XONG VIỆC CHÍNH]',
+        [
+          '### s-tin — Chuỗi tin đồn {cảnh: c1}',
+          '- [KHÁM PHÁ kp-map · bản đồ]',
+          '  - ghim:phu · x 10% · y 10% · rộng 10% → s-phu · nhãn: Nơi tùy chọn · dấu: ?',
+          '- [XONG VIỆC CHÍNH]',
+          '### s-phu — Nơi tùy chọn {cảnh: c1}',
+          '- [KHÁM PHÁ kp-phu]',
+          '  - obj-a · x 10% · y 10% · rộng 10% → s-a · dấu: !',
+          '  - obj-b · x 20% · y 20% · rộng 10% → s-b · dấu: !',
+          '  - obj-c · x 30% · y 30% · rộng 10% → s-c · dấu: !',
+          '### s-a — A {cảnh: c1}',
+          '- **narrator**: A.',
+          '### s-b — B {cảnh: c1}',
+          '- **narrator**: B.',
+          '### s-c — C {cảnh: c1}',
+          '- **narrator**: C.',
+        ].join('\n'),
+      ),
+    });
+    expect(loi).toEqual([]);
+  });
+
+  it('báo lỗi khi có ba đích ! trên tuyến chính', () => {
+    const loi = kiemVuHaiNgay({
+      'kich-ban/01.md': (s) => s.replace(
+        '### s-tin — Chuỗi tin đồn {cảnh: c1}\n- [XONG VIỆC CHÍNH]',
+        [
+          '### s-tin — Chuỗi tin đồn {cảnh: c1}',
+          '- [KHÁM PHÁ kp-main]',
+          '  - obj-a · x 10% · y 10% · rộng 10% → s-a · dấu: !',
+          '  - obj-b · x 20% · y 20% · rộng 10% → s-b · dấu: !',
+          '  - obj-c · x 30% · y 30% · rộng 10% → s-c · dấu: !',
+          '- [XONG VIỆC CHÍNH]',
+          '### s-a — A {cảnh: c1}',
+          '- **narrator**: A.',
+          '### s-b — B {cảnh: c1}',
+          '- **narrator**: B.',
+          '### s-c — C {cảnh: c1}',
+          '- **narrator**: C.',
+        ].join('\n'),
+      ),
+    });
+    expect(loi.some((l) => l.includes('2024-10-08') && l.includes('một ngày có hơn 2 việc chính (3)'))).toBe(true);
+  });
+
+  it('hai dấu ! và một Đi cùng trỏ cùng đích chỉ tính một việc', () => {
+    const loi = kiemVuHaiNgay({
+      'kich-ban/01.md': (s) => s.replace(
+        '### s-tin — Chuỗi tin đồn {cảnh: c1}\n- [XONG VIỆC CHÍNH]',
+        [
+          '### s-tin — Chuỗi tin đồn {cảnh: c1}',
+          '- [KHÁM PHÁ kp-main-a]',
+          '  - obj-a · x 10% · y 10% · rộng 10% → s-a · dấu: !',
+          '- [KHÁM PHÁ kp-main-b]',
+          '  - obj-b · x 20% · y 20% · rộng 10% → s-a · dấu: !',
+          '  - obj-c · x 30% · y 30% · rộng 10% → s-b · dấu: !',
+          '- [XONG VIỆC CHÍNH]',
+          '- [ĐI CÙNG s-a] Đi cùng',
+          '### s-a — A {cảnh: c1}',
+          '- **narrator**: A.',
+          '### s-b — B {cảnh: c1}',
+          '- **narrator**: B.',
+        ].join('\n'),
+      ),
+    });
+    expect(loi).toEqual([]);
+  });
+});
+
 describe('Gói T0 Mùa 1: Cú pháp mới và bộ đọc', () => {
   it('đọc đúng cú pháp mới: hạn chót, ngày, việc ngày lễ, người quen, [XONG VIỆC CHÍNH], [NGƯỜI QUEN] đối chất, mô tả cảnh và ảnh', () => {
     const tep = taoBoTep();
@@ -441,6 +601,50 @@ describe('Gói T0 Mùa 1: Máy kiểm kỹ năng Bảng A4 (kiem-ky-nang)', () =
 });
 
 describe('Gói T0 Mùa 1: Xuất truyện chữ và kiểm tra liên kết neo (S4, S5)', () => {
+  it('vụ hai ngày: Hết ngày đầu trỏ tới ngày thật kế tiếp', () => {
+    const kq = docNoiDungMvp(taoVuHaiNgay());
+    const vanBan = new BoXuatTruyenChu(chuyenMvp(kq.mvp, kiemLuatMvp(kq.mvp)), new Map()).xuatVuHoacViec('vu-tin-don');
+    const doan1 = vanBan.split('<a id="doan-1"></a>')[1]?.split('<a id="doan-2"></a>')[0] ?? '';
+    const doan2 = vanBan.split('<a id="doan-2"></a>')[1]?.split('<a id="doan-3"></a>')[0] ?? '';
+    expect(doan1).toContain('Thứ Ba, 08/10/2024 · Còn 7 ngày tới Họp Hội SV');
+    expect(doan1).toContain('[Sang thứ Tư, 09/10/2024](#doan-2)');
+    expect(doan2).toContain('Thứ Tư, 09/10/2024 · Còn 6 ngày tới Họp Hội SV');
+    expect(doan2).not.toContain('Sang thứ');
+  });
+
+  it('việc ngày lễ kết thúc mà không in lời kết vụ hay Hết ngày', () => {
+    const kq = docNoiDungMvp(taoVuHaiNgay());
+    const vanBan = new BoXuatTruyenChu(chuyenMvp(kq.mvp, kiemLuatMvp(kq.mvp)), new Map()).xuatVuHoacViec('vu-tin-don');
+    const doanLe = vanBan.split('<a id="doan-3"></a>')[1]?.split('<a id="doan-4"></a>')[0] ?? '';
+    const doanLo = vanBan.split('<a id="doan-4"></a>')[1] ?? '';
+    for (const doan of [doanLe, doanLo]) {
+      expect(doan).toContain('Hết việc ngày lễ.');
+      expect(doan).not.toContain('Kết quả tin đồn');
+      expect(doan).not.toContain('**Hết ngày.**');
+    }
+  });
+
+  it('chuỗi cụt chưa XONG VIỆC CHÍNH không hiện Hết ngày', () => {
+    const tep = taoVuHaiNgay({
+      'kich-ban/01.md': (s) => s.replace(
+        '### s-tin — Chuỗi tin đồn {cảnh: c1}\n- [XONG VIỆC CHÍNH]',
+        [
+          '### s-tin — Chuỗi tin đồn {cảnh: c1}',
+          '- [KHÁM PHÁ kp-phu · bản đồ]',
+          '  - ghim:phu · x 10% · y 10% · rộng 10% → s-phu · nhãn: Nơi phụ · dấu: ?',
+          '- [XONG VIỆC CHÍNH]',
+          '### s-phu — Nơi phụ {cảnh: c2}',
+          '- **narrator**: Một chuyến ghé ngắn.',
+        ].join('\n'),
+      ),
+    });
+    const kq = docNoiDungMvp(tep);
+    const vanBan = new BoXuatTruyenChu(chuyenMvp(kq.mvp, kiemLuatMvp(kq.mvp)), new Map()).xuatVuHoacViec('vu-tin-don');
+    const doanPhu = vanBan.split(/### Đoạn \d+: Nơi phụ/)[1]?.split('<a id="doan-')[0] ?? '';
+    expect(doanPhu).toContain('Một chuyến ghé ngắn.');
+    expect(doanPhu).not.toContain('**Hết ngày.**');
+  });
+
   it('xuất đúng một vụ mẫu nhỏ dùng hết cú pháp A5 (dòng Còn N ngày, Hết ngày, việc ngày lễ kèm nhánh bỏ qua, cảnh cắt, đoạn Đang ở nơi có Mở bản đồ)', () => {
     const tep = taoBoTep({
       'kich-ban/01.md': (s) =>

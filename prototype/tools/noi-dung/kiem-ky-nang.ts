@@ -213,7 +213,7 @@ export function kiemKyNangMvp(thuMuc: string | RawMvp = THU_MUC_NOI_DUNG_MUA_1):
   for (const v of lich.vuSau) {
     if (!v.phu) {
       const soVu = soVuCuaMa(v.id, mvp);
-      const dsDau = [v.chuoi, ...v.cacNgay.map((d) => d.chuoi)].filter(Boolean);
+      const dsDau = v.cacNgay.length > 0 ? [...new Set(v.cacNgay.map((d) => d.chuoi))] : [v.chuoi];
       loangVu(dsDau, soVu, `Vụ ${soVu} (${v.id})`);
     } else {
       // Việc phụ: dùng kỹ năng của vụ moSau
