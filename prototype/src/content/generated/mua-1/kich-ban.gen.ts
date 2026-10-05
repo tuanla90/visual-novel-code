@@ -831,10 +831,36 @@ const GOC = {
         "id": "vu-tin-don",
         "ten": "Tin đồn",
         "chuoi": "tin-mo",
-        "ngay": "2024-10-09",
-        "batDauO": "phong-clb",
+        "ngay": "2024-10-08",
         "hanChot": "2024-10-15",
         "viecChot": "Buổi giải trình chiều 15/10",
+        "cacNgay": [
+          {
+            "ngay": "2024-10-08",
+            "chuoi": "tin-mo",
+            "batDauO": "phong-clb"
+          },
+          {
+            "ngay": "2024-10-09",
+            "chuoi": "tin-n2-mo",
+            "batDauO": "phong-clb"
+          },
+          {
+            "ngay": "2024-10-10",
+            "chuoi": "tin-n3-mo",
+            "batDauO": "phong-ktx"
+          },
+          {
+            "ngay": "2024-10-14",
+            "chuoi": "tin-n5-mo",
+            "batDauO": "phong-ktx"
+          },
+          {
+            "ngay": "2024-10-15",
+            "chuoi": "tin-n6-mo",
+            "batDauO": "hoi-truong"
+          }
+        ],
         "tieuDeKet": "Một tài khoản, chưa phải một người",
         "loiKet": "Tin gốc đi từ tài khoản kênh của CLB Robotics, lúc 22:40 tối thứ Hai. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi."
       },
@@ -926,6 +952,17 @@ const GOC = {
         "ngay": "2024-10-30",
         "tieuDeKet": "Túi về tay chủ, đơn tới muộn hay kịp",
         "loiKet": "Chiếc túi vải trên ghế đá là của Hiếu, lớp BC24A; trong túi có đơn học bổng hạn nộp 17 giờ ngày 30/10. Túi nào cũng về đúng người, chỉ khác tờ đơn tới Phòng Công tác sinh viên lúc nào. Lịch học và danh sách đăng ký nói được ai học lớp nào, không nói ai là người đánh rơi."
+      }
+    ],
+    "viecNgayLe": [
+      {
+        "id": "le-hoi-sv",
+        "ten": "Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam",
+        "ngay": "2024-10-15",
+        "thuocVu": "vu-tin-don",
+        "chuoi": "le-hsv-mo",
+        "nguoiGiao": "quan",
+        "khiLo": "le-hsv-lo"
       }
     ]
   },
@@ -6975,12 +7012,12 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
-          "text": "Thứ Tư, 09/10/2024"
+          "text": "Thứ Ba, 08/10/2024"
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hơn hai tuần sau buổi họp rà soát. Chiều thứ Tư, phòng CLB."
+          "text": "Hơn một tuần sau buổi họp rà soát. Chiều thứ Ba, phòng CLB."
         },
         {
           "type": "line",
@@ -7034,6 +7071,12 @@ const GOC = {
           "text": "Trong kênh sinh viên. Ai gửi đầu thì tớ không để ý."
         },
         {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Thế sao tối thứ Hai cậu lại bấm chuyển? (tạm)"
+        },
+        {
           "type": "image",
           "imageId": "chibi-v2-hieu-cua"
         },
@@ -7075,7 +7118,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "khoanh-tay",
-          "text": "Thế nên chị mới cần biết tin này bắt đầu từ đâu. Cô Lan cho mình bản xuất các tin công khai của kênh, từ tối thứ Hai tới trưa hôm qua."
+          "text": "Thế nên chị mới cần biết tin này bắt đầu từ đâu. Cô Lan cho mình bản xuất các tin công khai của kênh, từ tối thứ Hai tới trưa nay."
         },
         {
           "type": "line",
@@ -7092,6 +7135,12 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "thinking",
           "text": "Lọc ra các tin mang câu đó trước đã. Chưa vội đọc tên ai."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Cô Lan báo thêm: chiều thứ Ba tuần sau, Hội Sinh viên mời CLB mình lên giải trình. (tạm)"
         },
         {
           "type": "explore",
@@ -7161,6 +7210,88 @@ const GOC = {
       ]
     },
     {
+      "id": "tin-phong-duy",
+      "title": "Vụ 2: Duy mở laptop (việc chính)",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Bản xuất của cô Lan anh nạp vào máy rồi. Ngồi vào đi."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-duy-ok"
+        }
+      ]
+    },
+    {
+      "id": "tin-phong-vy",
+      "title": "Vụ 2: Hà Vy và câu hỏi trên bảng",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Câu hỏi tớ ghim rồi: những tin nào mang đúng câu ấy?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Tin đồn cũng để lại dấu chân. Chưa đọc tên ai vội."
+        }
+      ]
+    },
+    {
+      "id": "tin-phong-tung",
+      "title": "Vụ 2: Tùng kể chuyện nghe ở căng tin",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Trưa nay ở căng tin, hai bàn liền nhắc chuyện này. Mà chẳng ai nói được bọn mình soi cái gì."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Tớ cá là đa số chỉ bấm chuyển tiếp chứ có đọc đâu."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-tung-tinh-nham"
+        }
+      ]
+    },
+    {
+      "id": "tin-phong-minh-anh",
+      "title": "Vụ 2: Minh Anh nói về việc xin dữ liệu",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Cô Lan cho bản xuất này vì toàn tin công khai. Thứ gì không công khai thì chị phải đứng ra xin, và phải có căn cứ."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Mình bị đồn là soi dữ liệu. Vậy càng phải tra đúng thứ mình được phép tra."
+        }
+      ]
+    },
+    {
       "id": "tin-tra-bat-dau",
       "title": "Thử bắt đầu bằng",
       "canh": "phong-clb",
@@ -7169,6 +7300,39 @@ const GOC = {
         {
           "type": "challenge",
           "challengeId": "c-tin-bat-dau"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Năm tin mang câu đó, từ năm tài khoản. Bốn cái là mã sinh viên. Một cái là clb_robotics."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Lại Robotics! Hôm trước là cái huy hiệu bánh răng, giờ là tài khoản. Tớ cá là…"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "day-kinh",
+          "text": "Đừng cá. Mới biết có năm tin mang câu đó. Tin nào có trước thì phiếu chưa nói."
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem."
+        },
+        {
+          "type": "task",
+          "text": "Sang xưởng Robotics hỏi người trực kênh"
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Chiều nay xưởng bên ấy sinh hoạt thành viên tới năm giờ, tờ lịch nhà văn hóa ghi thế. (tạm)"
         },
         {
           "type": "line",
@@ -7216,7 +7380,136 @@ const GOC = {
         },
         {
           "type": "goto",
+          "to": "tin-n1-chot"
+        }
+      ]
+    },
+    {
+      "id": "tin-n1-chot",
+      "title": "Cuối chiều 08/10: khép danh sách, hẹn mai",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Hôm nay gọn được một phần rồi. Mai ba giờ chiều đủ mặt nhé. (tạm)"
+        },
+        {
+          "type": "branch",
+          "id": "go-with-tin-n1-toi",
+          "asker": {
+            "speaker": "player",
+            "text": "Về phòng KTX ăn tối"
+          },
+          "choices": [
+            {
+              "id": "go-tin-n1-toi",
+              "text": "Về phòng KTX ăn tối",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-n1-toi"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-n1-toi",
+      "title": "Tối 08/10, phòng 408: mất nước nóng, điện thoại rung (không khí ký túc xá, không có manh mối)",
+      "canh": "phong-ktx-dem",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tối, phòng 408. Vòi nước nóng ở tầng lại khô. (tạm)"
+        },
+        {
+          "type": "xong-viec-chinh"
+        }
+      ]
+    },
+    {
+      "id": "tin-n2-mo",
+      "title": "Chiều 09/10, phòng CLB: Minh Anh ở chỗ cô Lan về",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Thứ Tư, 09/10/2024"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Chị vừa ở chỗ cô Lan về. Cô hỏi mình đã tới đâu rồi. (tạm)"
+        },
+        {
+          "type": "explore",
+          "id": "kp-phong-n2-v2",
+          "diem": [
+            {
+              "sprite": "nv:duy",
+              "x": 20,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "tin-n2-duy",
+              "sau": [],
+              "nhan": "Duy: mở laptop",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "nv:tung",
+              "x": 62,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "tin-n2-tung",
+              "sau": [],
+              "nhan": "Tùng: điện thoại rung",
+              "dau": "phu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-n2-duy",
+      "title": "Duy chỉ mấy tin lệch chữ (việc chính)",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Mấy tin này lạ. Cùng câu ấy mà chữ mỗi tin một kiểu, như có người gõ lại bằng tay. (tạm)"
+        },
+        {
+          "type": "goto",
           "to": "tin-tra-sach"
+        }
+      ]
+    },
+    {
+      "id": "tin-n2-tung",
+      "title": "Tùng đọc tin nhắn nhóm lớp",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Nhóm lớp tớ có đứa định đăng ký CLB mình, giờ nhắn là thôi để sau. (tạm)"
         }
       ]
     },
@@ -7260,29 +7553,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Năm tin mang câu đó, từ năm tài khoản. Bốn cái là mã sinh viên. Một cái là clb_robotics."
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "chi-tay",
-          "text": "Lại Robotics! Hôm trước là cái huy hiệu bánh răng, giờ là tài khoản. Tớ cá là…"
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "day-kinh",
-          "text": "Đừng cá. Mới biết có năm tin mang câu đó. Tin nào có trước thì phiếu chưa nói."
-        },
-        {
-          "type": "line",
-          "speaker": "minh-anh",
-          "expression": "neutral",
-          "text": "Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem."
-        },
-        {
-          "type": "task",
-          "text": "Sang xưởng Robotics hỏi người trực kênh"
+          "text": "Hai tin của hai tài khoản này ghi loại khác hẳn: trả lời. (tạm)"
         },
         {
           "type": "explore",
@@ -7324,33 +7595,226 @@ const GOC = {
               ]
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "id": "tin-bd-cang-tin",
+      "title": "Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học",
+      "canh": "cang-tin",
+      "mocSomNhat": 1000,
+      "nodes": [
         {
-          "type": "branch",
-          "id": "go-with-tin-gap-nam",
-          "asker": {
-            "speaker": "player",
-            "text": "Đi cùng Tùng sang xưởng Robotics"
-          },
-          "choices": [
+          "type": "explore",
+          "id": "kp-toi-tin-bd-cang-tin",
+          "diem": [
             {
-              "id": "go-tin-gap-nam",
-              "text": "Đi cùng Tùng sang xưởng Robotics",
-              "khi": null,
-              "hauQua": [
-                {
-                  "kind": "di-toi",
-                  "chuoi": "tin-gap-nam"
-                }
-              ]
+              "sprite": "nv:tung",
+              "x": 62,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "tin-bd-cang-tin-vao",
+              "sau": [],
+              "nhan": "Tùng",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:bang-den",
+              "x": 48,
+              "y": 20,
+              "rong": 9,
+              "chuoi": "tin-bd-cang-tin-an",
+              "sau": [],
+              "nhan": "Tấm bảng đen trên quầy"
             }
           ]
         }
       ]
     },
     {
+      "id": "tin-bd-cang-tin-vao",
+      "title": "Tới nơi: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học",
+      "canh": "cang-tin",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Căng tin giờ tan học. Điện thoại Tùng rung liền mấy tiếng."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Nhóm lớp tớ cũng vừa có đứa chuyển tiếp cái tin ấy."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Chuyển tiếp thì dễ. Mình đi tìm người gửi đầu tiên."
+        }
+      ]
+    },
+    {
+      "id": "tin-bd-cang-tin-an",
+      "title": "Chi tiết ẩn: Tấm bảng đen trên quầy",
+      "canh": "cang-tin",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Dòng phấn \"Nợ quá ba cốc thì ghi tên vào đây\" giờ có thêm hai cái tên. Một cái viết nét to, gạch đi rồi viết lại."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Không phải tớ. Tớ chỉ… ghé xem thôi."
+        }
+      ]
+    },
+    {
+      "id": "tin-bd-tra-da",
+      "title": "Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ",
+      "canh": "tra-da",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "explore",
+          "id": "kp-toi-tin-bd-tra-da",
+          "diem": [
+            {
+              "sprite": "nv:ba-lua",
+              "x": 46,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "tin-bd-tra-da-vao",
+              "sau": [],
+              "nhan": "Bà bán trà đá",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:xe-dap",
+              "x": 62.5,
+              "y": 53,
+              "rong": 16,
+              "chuoi": "tin-bd-tra-da-an",
+              "sau": [],
+              "nhan": "Chiếc xe đạp cũ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-bd-tra-da-vao",
+      "title": "Tới nơi: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ",
+      "canh": "tra-da",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Quán trà đá cổng trường, giờ tan học. Khách vừa vãn, ghế nhựa còn trống mấy cái."
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "smile",
+          "text": "Mấy đứa ở phòng tầng hai nhà câu lạc bộ, cái phòng có tủ sắt, phải không? Ngồi đi, ba trà đá."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Bà nhớ bọn cháu này!"
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "neutral",
+          "text": "Bà nhớ cái phòng. Hồi xưa có một cậu sinh viên trông phòng ấy, chiều nào cũng ra đây. Hè cũng gọi trà nóng nên bà gọi là \"cậu trà nóng\"."
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "neutral",
+          "text": "Cậu ấy có hai cuốn sổ. Một cuốn bìa cứng đã sờn, một cuốn mới tinh. Ngồi đúng cái ghế cháu đang ngồi, chép từ cuốn cũ sang cuốn mới, chép cả tháng trời."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Chép lại cả cuốn ạ? Sao anh ấy không dùng luôn cuốn cũ?"
+        },
+        {
+          "type": "line",
+          "speaker": "ba-lua",
+          "expression": "smile",
+          "text": "Bà cũng hỏi thế. Cậu ấy bảo: \"Cuốn cũ có chỗ cháu không muốn người sau chép theo.\""
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chép lại mà bỏ đi một chỗ. Tớ muốn biết chỗ bị bỏ."
+        },
+        {
+          "type": "consequence",
+          "hauQua": [
+            {
+              "kind": "mo-manh-moi",
+              "id": "clue-tra-da-2"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Trong cổng, Hoài ôm cặp đi về phía giảng đường B. Tùng nhổm dậy nửa chừng rồi lại ngồi xuống."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Cậu định gọi à?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Lần trước tớ gọi giật, bạn ấy đi nhanh gấp đôi. Để hôm khác. Tớ chưa nghĩ ra câu mở đầu."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Câu mở đầu là \"xin lỗi\". Có hai chữ."
+        }
+      ]
+    },
+    {
+      "id": "tin-bd-tra-da-an",
+      "title": "Chi tiết ẩn: Chiếc xe đạp cũ",
+      "canh": "tra-da",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chiếc xe đạp cũ dựng cạnh tường, giỏ xe đựng một cuốn sổ bìa xanh quăn mép."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Sổ ghi nợ của quán. Thời nào cũng có một cuốn sổ như thế."
+        }
+      ]
+    },
+    {
       "id": "tin-gap-nam",
-      "title": "Xưởng Robotics: gặp Nam; lấy phiếu làm nguồn, tìm tin gốc",
+      "title": "Xưởng Robotics: gặp Nam, tìm tin gốc",
       "canh": "xuong-robot",
       "mocSomNhat": 1000,
       "nodes": [
@@ -7554,7 +8018,7 @@ const GOC = {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "…Khỏi nhờ. Anh là quản trị kênh, anh mở nhật ký đăng nhập được. Xem đi, xem cả bảng ngoài cửa luôn."
+          "text": "…Khỏi nhờ. Anh là quản trị kênh, anh mở nhật ký đăng nhập được. Mai các em qua mà xem, xem cả bảng ngoài cửa luôn."
         },
         {
           "type": "line",
@@ -7618,11 +8082,426 @@ const GOC = {
           ]
         },
         {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Giờ anh phải dọn chỗ cho đội tập tối nay. Mai chiều các em qua. (tạm)"
+        },
+        {
+          "type": "branch",
+          "id": "go-with-tin-n2-het",
+          "asker": {
+            "speaker": "player",
+            "text": "Về phòng CLB báo chị Minh Anh"
+          },
+          "choices": [
+            {
+              "id": "go-tin-n2-het",
+              "text": "Về phòng CLB báo chị Minh Anh",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-n2-het"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-soi-hop",
+      "title": "Quan sát Nam: cái hộp linh kiện",
+      "canh": "xuong-robot",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Hộp các tông đựng linh kiện, túi nào cũng dán nhãn."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Người giữ sổ sách của xưởng. Chuyện giấy tờ, giờ giấc thì hỏi cậu này."
+        }
+      ]
+    },
+    {
+      "id": "tin-soi-but",
+      "title": "Quan sát Nam: cây bút dạ",
+      "canh": "xuong-robot",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Bút dạ còn mở nắp."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "neutral",
+          "text": "Đang dán nhãn dở. Mình tới bất ngờ, cậu ấy không chuẩn bị gì trước."
+        }
+      ]
+    },
+    {
+      "id": "tin-soi-tay-ao",
+      "title": "Quan sát Nam: tay áo xắn",
+      "canh": "xuong-robot",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tay áo khoác xắn tới khuỷu."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Người làm việc ở xưởng, không phải người ngồi họp."
+        }
+      ]
+    },
+    {
+      "id": "tin-n2-het",
+      "title": "Cuối chiều 09/10, phòng CLB: báo giờ gửi, hẹn mai sang xưởng",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Vậy mai chị báo cô Lan được một điều chắc: giờ gửi. (tạm)"
+        },
+        {
+          "type": "xong-viec-chinh"
+        }
+      ]
+    },
+    {
+      "id": "tin-n3-mo",
+      "title": "Sáng 10/10, phòng 408: Hiếu nhắn hẹn ra căng tin",
+      "canh": "phong-ktx",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Thứ Năm, 10/10/2024"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Hiếu nhắn tớ này: \"Trưa ra căng tin, tớ có chuyện.\" (tạm)"
+        },
+        {
+          "type": "branch",
+          "id": "go-with-tin-n3-cang-tin",
+          "asker": {
+            "speaker": "player",
+            "text": "Đi cùng Tùng ra căng tin"
+          },
+          "choices": [
+            {
+              "id": "go-tin-n3-cang-tin",
+              "text": "Đi cùng Tùng ra căng tin",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-n3-cang-tin"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-n3-cang-tin",
+      "title": "Căng tin giờ trưa: Hiếu ngồi bàn trong",
+      "canh": "cang-tin",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Căng tin giờ trưa, bàn nào cũng cúi vào điện thoại. Hiếu ngồi một mình ở bàn trong. (tạm)"
+        },
+        {
+          "type": "explore",
+          "id": "kp-toi-n3-cang-tin",
+          "diem": [
+            {
+              "sprite": "nv:hieu",
+              "x": 62,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "tin-n3-hieu",
+              "sau": [],
+              "nhan": "Hiếu",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "vung:bang-den",
+              "x": 48,
+              "y": 20,
+              "rong": 9,
+              "chuoi": "tin-n3-cang-tin-an",
+              "sau": [],
+              "nhan": "Tấm bảng đen trên quầy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-n3-hieu",
+      "title": "Đối chất Hiếu: tin có từ lâu, ai cũng chuyển",
+      "canh": "cang-tin",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Sáng nay lớp tớ bàn chuyện tin ấy suốt giờ giải lao. (tạm)"
+        },
+        {
+          "type": "doi-chat",
+          "id": "dc-tin-hieu",
+          "asker": {
+            "speaker": "hieu",
+            "text": "Lớp tớ ai cũng bảo thế. **Tin này có từ lâu rồi, ai cũng chuyển**, các cậu làm to chuyện làm gì."
+          },
+          "cauHoi": "Tin này bắt đầu từ lúc nào, từ một chỗ hay từ khắp nơi? Trình thẻ cho thấy điều đó.",
+          "bangChung": [
+            {
+              "id": "ev-tin-goc",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "player",
+                  "text": "Cả bản xuất chỉ có đúng một tin tự viết mang câu ấy, gửi lúc 22 giờ 40 tối thứ Hai. Mấy tin còn lại đều chép lại nó. (tạm)"
+                },
+                {
+                  "speaker": "player",
+                  "text": "Tin có từ lâu thì tin đầu tiên đã phải là tin chuyển tiếp rồi. (tạm)"
+                },
+                {
+                  "speaker": "hieu",
+                  "expression": "surprised",
+                  "text": "Tối thứ Hai tuần này á? Thế mà lớp tớ cứ tưởng chuyện từ năm ngoái. (tạm)"
+                }
+              ]
+            },
+            {
+              "id": "clue-tin-goc",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "player",
+                  "text": "Kênh ghi loại của từng tin: tin tự viết, tin bấm chuyển, tin gõ trả lời. (tạm)"
+                },
+                {
+                  "speaker": "hieu",
+                  "expression": "annoyed",
+                  "text": "Thì đấy, bấm chuyển nhiều thế còn gì. (tạm)"
+                },
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Biết có mấy loại tin là một chuyện. Tin tự viết gửi lúc nào thì phải có phiếu. (tạm)"
+                }
+              ]
+            },
+            {
+              "id": "ev-tin-don",
+              "muc": "goi-y",
+              "feedback": [
+                {
+                  "speaker": "hieu",
+                  "expression": "neutral",
+                  "text": "Đấy, mấy tài khoản cùng mang một câu. Đúng là ai cũng chuyển. (tạm)"
+                },
+                {
+                  "speaker": "tung",
+                  "expression": "gai-dau",
+                  "text": "Ơ, tờ này lại đứng về phía cậu ấy. (tạm)"
+                }
+              ]
+            },
+            {
+              "id": "doc-tin-don",
+              "muc": "goi-y",
+              "feedback": [
+                {
+                  "speaker": "hieu",
+                  "expression": "neutral",
+                  "text": "Ảnh chụp ghi chuyển tiếp nhiều lần. Đúng ý tớ còn gì. (tạm)"
+                },
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Ảnh chỉ nói từ tối thứ Hai. Trước đó có hay không thì ảnh chưa nói. (tạm)"
+                }
+              ]
+            }
+          ],
+          "chuaDu": [
+            {
+              "speaker": "tung",
+              "expression": "worried",
+              "text": "Bọn tớ chưa chỉ ra được nó bắt đầu từ đâu. (tạm)"
+            },
+            {
+              "speaker": "hieu",
+              "expression": "neutral",
+              "text": "Thế thì tớ vẫn nghĩ như cũ. (tạm)"
+            }
+          ],
+          "khac": [
+            {
+              "speaker": "hieu",
+              "expression": "annoyed",
+              "text": "Cái này thì dính gì tới tin đồn? (tạm)"
+            }
+          ],
+          "hetLuot": [
+            {
+              "speaker": "hieu",
+              "expression": "annoyed",
+              "text": "Thôi, các cậu cứ tra tiếp đi. Tớ ăn cho xong bữa. (tạm)"
+            },
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Mình về đọc lại hồ sơ đã. (tạm)"
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "dc-tin-hieu-du"
+          },
+          "to": "tin-n3-hieu-du"
+        },
+        {
+          "type": "goto",
+          "to": "tin-n3-hieu-chua"
+        }
+      ]
+    },
+    {
+      "id": "tin-n3-hieu-du",
+      "title": "Hiếu gửi tin đính chính vào nhóm lớp",
+      "canh": "cang-tin",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hiếu mở nhóm lớp, gõ một dòng, xóa đi, rồi gõ lại. (tạm)"
+        },
+        {
+          "type": "branch",
+          "id": "go-with-tin-n3-xuong",
+          "asker": {
+            "speaker": "player",
+            "text": "Đi cùng Tùng sang xưởng Robotics"
+          },
+          "choices": [
+            {
+              "id": "go-tin-n3-xuong",
+              "text": "Đi cùng Tùng sang xưởng Robotics",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-n3-xuong"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-n3-hieu-chua",
+      "title": "Hiếu trả khay, bàn bên vẫn đọc to cái tin",
+      "canh": "cang-tin",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hiếu đứng dậy trả khay. Bàn bên vẫn có đứa đọc to cái tin rồi cười. (tạm)"
+        },
+        {
+          "type": "branch",
+          "id": "go-with-tin-n3-xuong",
+          "asker": {
+            "speaker": "player",
+            "text": "Đi cùng Tùng sang xưởng Robotics"
+          },
+          "choices": [
+            {
+              "id": "go-tin-n3-xuong",
+              "text": "Đi cùng Tùng sang xưởng Robotics",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-n3-xuong"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-n3-cang-tin-an",
+      "title": "Chi tiết ẩn: dòng phấn bị xóa nhòe",
+      "canh": "cang-tin",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Dưới dòng phấn ghi nợ có hai chữ \"CLB soi\", bị ai lấy tay xóa nhòe. (tạm)"
+        }
+      ]
+    },
+    {
+      "id": "tin-n3-xuong",
+      "title": "Chiều 10/10, xưởng Robotics: Nam mở sẵn nhật ký",
+      "canh": "xuong-robot",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Nhật ký đăng nhập anh mở sẵn rồi. Bảng đăng ký thì vẫn dán ngoài cửa. (tạm)"
+        },
+        {
           "type": "branch",
           "id": "r-tin-tuyen",
           "asker": {
             "speaker": "ha-vy",
-            "text": "Hai chỗ Nam vừa buột miệng nói ra. Xem chỗ nào trước?"
+            "text": "Hai chỗ anh Nam chỉ hôm qua. Xem chỗ nào trước?"
           },
           "choices": [
             {
@@ -8141,7 +9020,7 @@ const GOC = {
             "kind": "co",
             "id": "tin-ve-som"
           },
-          "to": "tin-ket-luan"
+          "to": "tin-n3-phong"
         },
         {
           "type": "consequence",
@@ -8181,7 +9060,547 @@ const GOC = {
         },
         {
           "type": "goto",
-          "to": "tin-ket-luan"
+          "to": "tin-n3-phong"
+        }
+      ]
+    },
+    {
+      "id": "tin-n3-phong",
+      "title": "Cuối chiều 10/10, phòng CLB: giấy mời giải trình",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Giấy mời đây. Hai giờ chiều thứ Ba, phòng Công tác sinh viên. (tạm)"
+        },
+        {
+          "type": "xong-viec-chinh"
+        }
+      ]
+    },
+    {
+      "id": "tin-n5-mo",
+      "title": "Trưa 14/10, phòng 408: sau ba ngày cuối tuần",
+      "canh": "phong-ktx",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Thứ Hai, 14/10/2024"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Ba ngày cuối tuần, CLB nghỉ. Kênh sinh viên vẫn có người chuyển cái tin ấy, thưa dần. (tạm)"
+        },
+        {
+          "type": "explore",
+          "id": "kp-bd-n5",
+          "kieu": "ban-do",
+          "gio": "14:00",
+          "diem": [
+            {
+              "sprite": "ghim:nha-clb",
+              "x": 45,
+              "y": 17,
+              "rong": 5,
+              "chuoi": "tin-n5-phong",
+              "sau": [],
+              "nhan": "Phòng CLB",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "ghim:toa-b",
+              "x": 48,
+              "y": 29,
+              "rong": 5,
+              "chuoi": "tin-n5-toa-b",
+              "sau": [],
+              "nhan": "Sảnh tòa B",
+              "dau": "phu",
+              "co": [
+                "bac-tu"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-n5-toa-b",
+      "title": "Bản đồ 14/10 (tùy chọn): sảnh tòa B treo băng rôn",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "explore",
+          "id": "kp-toi-n5-toa-b",
+          "diem": [
+            {
+              "sprite": "nv:bac-tu",
+              "x": 78,
+              "y": 100,
+              "rong": 16,
+              "chuoi": "tin-n5-toa-b-vao",
+              "sau": [],
+              "nhan": "Bác bảo vệ",
+              "dau": "phu"
+            },
+            {
+              "sprite": "vung:bang-tin",
+              "x": 43.3,
+              "y": 37.4,
+              "rong": 9.4,
+              "chuoi": "tin-n5-toa-b-an",
+              "sau": [],
+              "nhan": "Bảng tin cạnh cột"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-n5-toa-b-vao",
+      "title": "Tới nơi: bác Thịnh hỏi chuyện tin đồn",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "neutral",
+          "text": "Mấy đứa CLB Thám Tử đấy à? Giữ hộ bác đầu băng rôn này cái. (tạm)"
+        }
+      ]
+    },
+    {
+      "id": "tin-n5-toa-b-an",
+      "title": "Chi tiết ẩn: tờ thông báo lễ kỷ niệm",
+      "canh": "sanh-toa-b",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tờ thông báo lễ kỷ niệm ngày truyền thống dán đè lên góc tờ danh sách CLB năm ngoái. (tạm)"
+        }
+      ]
+    },
+    {
+      "id": "tin-n5-phong",
+      "title": "Chiều 14/10, phòng CLB: tập trước buổi giải trình",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Hộp BQ-05. Hộp trước hết từ hôm thứ Năm, anh không hỏi ai ăn. (tạm)"
+        },
+        {
+          "type": "xong-viec-chinh"
+        }
+      ]
+    },
+    {
+      "id": "tin-n6-mo",
+      "title": "Sáng 15/10, hội trường: lễ kỷ niệm",
+      "canh": "hoi-truong",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "display": "card",
+          "text": "Thứ Ba, 15/10/2024"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Sáng, hội trường kín ghế. Băng rôn lễ kỷ niệm căng ngang sân khấu. (tạm)"
+        },
+        {
+          "type": "branch",
+          "id": "go-with-tin-gt-mo",
+          "asker": {
+            "speaker": "player",
+            "text": "Đi cùng chị Minh Anh sang phòng Công tác sinh viên"
+          },
+          "choices": [
+            {
+              "id": "go-tin-gt-mo",
+              "text": "Đi cùng chị Minh Anh sang phòng Công tác sinh viên",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-gt-mo"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "le-hsv-mo",
+      "title": "Việc ngày lễ 15/10 (tạm): Quân nhờ xem danh sách bốc thăm quà",
+      "canh": "hoi-truong",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Các bạn bên CLB Thám Tử. Tôi nhờ một việc nhỏ, chiều tôi mới rảnh. (tạm)"
+        },
+        {
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "id": "le-hsv-lo",
+      "title": "Lỡ việc ngày lễ 15/10",
+      "canh": "hoi-truong",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tờ danh sách bốc thăm vẫn kẹp dưới tập giấy của Quân, mép đã quăn. (tạm)"
+        },
+        {
+          "type": "end"
+        }
+      ]
+    },
+    {
+      "id": "tin-gt-mo",
+      "title": "Chiều 15/10, phòng Công tác sinh viên: buổi giải trình, Quân hai nhịp",
+      "canh": "phong-ctsv",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hai giờ chiều, phòng Công tác sinh viên. Cô Lan ngồi đầu bàn, Quân ngồi cạnh, tập biên bản mở sẵn. (tạm)"
+        },
+        {
+          "type": "doi-chat",
+          "id": "dc-tin-quan-may",
+          "asker": {
+            "speaker": "quan",
+            "text": "Mật khẩu kênh cả ban chủ nhiệm Robotics đều biết. **Tin ấy có thể gửi từ điện thoại của bất kỳ ai, ở bất cứ đâu.** Các bạn khoanh được chỗ nào?"
+          },
+          "cauHoi": "Ngay trước giờ tin gốc, tài khoản kênh vào từ máy nào? Trình thẻ cho thấy điều đó.",
+          "bangChung": [
+            {
+              "id": "ev-tin-may",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "player",
+                  "text": "Nhật ký đăng nhập của kênh ghi 22 giờ 31 tối mùng 7, tài khoản kênh vào từ máy văn phòng xưởng. Chín phút sau, tin gốc được gửi. (tạm)"
+                },
+                {
+                  "speaker": "quan",
+                  "expression": "stunned",
+                  "text": "Một máy để bàn trong xưởng. Không phải điện thoại. (tạm)"
+                },
+                {
+                  "speaker": "co-lan",
+                  "expression": "neutral",
+                  "text": "Cô ghi lại: một máy, một giờ. (tạm)"
+                }
+              ]
+            },
+            {
+              "id": "ev-tin-xuong",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "minh-anh",
+                  "expression": "neutral",
+                  "text": "Thưa cô, tối đó xưởng đăng ký mở tới 23 giờ cho đội tập ạ. (tạm)"
+                },
+                {
+                  "speaker": "quan",
+                  "expression": "neutral",
+                  "text": "Xưởng mở thì có người. Có người ở xưởng chưa nói tin gửi từ xưởng. (tạm)"
+                }
+              ]
+            },
+            {
+              "id": "ev-tin-goc",
+              "muc": "goi-y",
+              "feedback": [
+                {
+                  "speaker": "quan",
+                  "expression": "smug",
+                  "text": "Tờ này cho tôi giờ gửi và tài khoản. Máy nào thì không. (tạm)"
+                },
+                {
+                  "speaker": "ha-vy",
+                  "expression": "thinking",
+                  "text": "Giờ thì có rồi. Chỗ thì phải tìm ở tờ khác. (tạm)"
+                }
+              ]
+            },
+            {
+              "id": "clue-ngay-gui",
+              "muc": "goi-y",
+              "feedback": [
+                {
+                  "speaker": "quan",
+                  "expression": "neutral",
+                  "text": "Ngày gửi thì bên tôi biết rồi. Tôi hỏi chỗ gửi. (tạm)"
+                }
+              ]
+            }
+          ],
+          "chuaDu": [
+            {
+              "speaker": "minh-anh",
+              "expression": "worried",
+              "text": "Thưa cô, bọn em chưa khoanh được tin gửi từ máy nào ạ. (tạm)"
+            },
+            {
+              "speaker": "quan",
+              "expression": "neutral",
+              "text": "Vậy bên tôi ghi: gửi từ một tài khoản nhiều người biết mật khẩu, chưa rõ nơi gửi. (tạm)"
+            }
+          ],
+          "khac": [
+            {
+              "speaker": "quan",
+              "expression": "neutral",
+              "text": "Tờ này liên quan gì tới chỗ tin được gửi? (tạm)"
+            }
+          ],
+          "hetLuot": [
+            {
+              "speaker": "quan",
+              "expression": "smug",
+              "text": "Ba lần trình, chưa tờ nào chỉ ra máy nào. Bên tôi ghi là chưa rõ. (tạm)"
+            },
+            {
+              "speaker": "minh-anh",
+              "expression": "worried",
+              "text": "Dạ, bọn em xin sang ý sau ạ. (tạm)"
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Tôi ghi rồi. Một máy, một giờ. Sang ý tiếp. (tạm)"
+        },
+        {
+          "type": "doi-chat",
+          "id": "dc-tin-quan-nguoi",
+          "asker": {
+            "speaker": "quan",
+            "text": "Tài khoản của Robotics, máy trong xưởng Robotics, người trực kênh là Nam. Bên tôi kết luận: **Nam là người gửi tin.**"
+          },
+          "cauHoi": "Trong các bản ghi đang có, chỗ nào cho biết ai ngồi máy lúc 22 giờ 40? Trình thẻ để chỉ ra bản ghi dừng ở đâu.",
+          "bangChung": [
+            {
+              "id": "ev-tin-may",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "player",
+                  "text": "Nhật ký đăng nhập ghi tài khoản, máy, ngày, giờ. Không chỗ nào ghi tên người ngồi máy. (tạm)"
+                },
+                {
+                  "speaker": "player",
+                  "text": "Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi. (tạm)"
+                },
+                {
+                  "speaker": "quan",
+                  "expression": "stunned",
+                  "text": "Các bạn tự chỉ ra chỗ hồ sơ của mình dừng lại. (tạm)"
+                },
+                {
+                  "speaker": "co-lan",
+                  "expression": "neutral",
+                  "text": "Cô ghi: một tài khoản, chưa phải một người. (tạm)"
+                }
+              ]
+            },
+            {
+              "id": "ev-tin-goc",
+              "muc": "du",
+              "feedback": [
+                {
+                  "speaker": "player",
+                  "text": "Tin gốc chỉ có tài khoản clb_robotics và giờ gửi. Tên người gửi không có trên phiếu. (tạm)"
+                },
+                {
+                  "speaker": "player",
+                  "text": "Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi. (tạm)"
+                },
+                {
+                  "speaker": "quan",
+                  "expression": "stunned",
+                  "text": "Vậy là chưa phải Nam. Chưa phải ai cả. (tạm)"
+                }
+              ]
+            },
+            {
+              "id": "ev-tin-xuong",
+              "muc": "ho-tro",
+              "feedback": [
+                {
+                  "speaker": "ha-vy",
+                  "expression": "neutral",
+                  "text": "Bảng xưởng là lịch đăng ký, không phải điểm danh ạ. Tối đó ai có mặt, bảng không ghi. (tạm)"
+                },
+                {
+                  "speaker": "quan",
+                  "expression": "neutral",
+                  "text": "Đúng. Nhưng vẫn chưa nói ai ngồi máy. (tạm)"
+                }
+              ]
+            },
+            {
+              "id": "clue-tin-goc",
+              "muc": "goi-y",
+              "feedback": [
+                {
+                  "speaker": "quan",
+                  "expression": "smug",
+                  "text": "Tờ này nói tin gốc là tin tự viết. Tự viết thì càng phải có người viết. (tạm)"
+                },
+                {
+                  "speaker": "tung",
+                  "expression": "worried",
+                  "text": "Ờ, tờ này không đỡ được mình. (tạm)"
+                }
+              ]
+            }
+          ],
+          "chuaDu": [
+            {
+              "speaker": "minh-anh",
+              "expression": "worried",
+              "text": "Thưa cô, bọn em chưa có gì để nói ngược lại ý đó ạ. (tạm)"
+            },
+            {
+              "speaker": "quan",
+              "expression": "neutral",
+              "text": "Vậy biên bản ghi tên Nam ở mục người cần làm rõ. (tạm)"
+            }
+          ],
+          "khac": [
+            {
+              "speaker": "quan",
+              "expression": "neutral",
+              "text": "Tôi hỏi ai ngồi máy. Tờ này trả lời câu khác. (tạm)"
+            }
+          ],
+          "hetLuot": [
+            {
+              "speaker": "quan",
+              "expression": "smug",
+              "text": "Không tờ nào nói ngược lại. Bên tôi giữ tên Nam trong biên bản. (tạm)"
+            },
+            {
+              "speaker": "co-lan",
+              "expression": "neutral",
+              "text": "Cô ghi nhận tới đây. (tạm)"
+            }
+          ],
+          "truUyTin": false
+        },
+        {
+          "type": "jump-if",
+          "dieuKien": {
+            "kind": "co",
+            "id": "dc-tin-quan-nguoi-du"
+          },
+          "to": "tin-gt-ket-du"
+        },
+        {
+          "type": "goto",
+          "to": "tin-gt-ket-chua"
+        }
+      ]
+    },
+    {
+      "id": "tin-gt-ket-du",
+      "title": "Biên bản ghi một tài khoản, chưa phải một người",
+      "canh": "phong-ctsv",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Quân gạch một dòng trong biên bản, viết lại ngay bên dưới. (tạm)"
+        },
+        {
+          "type": "branch",
+          "id": "go-with-tin-ket-luan",
+          "asker": {
+            "speaker": "player",
+            "text": "Về phòng CLB"
+          },
+          "choices": [
+            {
+              "id": "go-tin-ket-luan",
+              "text": "Về phòng CLB",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-ket-luan"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tin-gt-ket-chua",
+      "title": "Biên bản ghi tên Nam ở mục người cần làm rõ",
+      "canh": "phong-ctsv",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Quân viết tên Nam vào mục người cần làm rõ. Nét bút đậm, ngồi đầu bàn bên kia cũng đọc được. (tạm)"
+        },
+        {
+          "type": "branch",
+          "id": "go-with-tin-ket-luan",
+          "asker": {
+            "speaker": "player",
+            "text": "Về phòng CLB"
+          },
+          "choices": [
+            {
+              "id": "go-tin-ket-luan",
+              "text": "Về phòng CLB",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "tin-ket-luan"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -8275,360 +9694,10 @@ const GOC = {
           "text": "Một tài khoản chưa phải là một con người. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi."
         },
         {
+          "type": "xong-viec-chinh"
+        },
+        {
           "type": "end"
-        }
-      ]
-    },
-    {
-      "id": "tin-phong-duy",
-      "title": "Vụ 2: Duy mở laptop (việc chính)",
-      "canh": "phong-clb",
-      "mocSomNhat": 1000,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "duy",
-          "expression": "neutral",
-          "text": "Bản xuất của cô Lan anh nạp vào máy rồi. Ngồi vào đi."
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-duy-ok"
-        }
-      ]
-    },
-    {
-      "id": "tin-phong-vy",
-      "title": "Vụ 2: Hà Vy và câu hỏi trên bảng",
-      "canh": "phong-clb",
-      "mocSomNhat": 1000,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "thinking",
-          "text": "Câu hỏi tớ ghim rồi: những tin nào mang đúng câu ấy?"
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "neutral",
-          "text": "Tin đồn cũng để lại dấu chân. Chưa đọc tên ai vội."
-        }
-      ]
-    },
-    {
-      "id": "tin-phong-tung",
-      "title": "Vụ 2: Tùng kể chuyện nghe ở căng tin",
-      "canh": "phong-clb",
-      "mocSomNhat": 1000,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "worried",
-          "text": "Trưa nay ở căng tin, hai bàn liền nhắc chuyện này. Mà chẳng ai nói được bọn mình soi cái gì."
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "chi-tay",
-          "text": "Tớ cá là đa số chỉ bấm chuyển tiếp chứ có đọc đâu."
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-tung-tinh-nham"
-        }
-      ]
-    },
-    {
-      "id": "tin-phong-minh-anh",
-      "title": "Vụ 2: Minh Anh nói về việc xin dữ liệu",
-      "canh": "phong-clb",
-      "mocSomNhat": 1000,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "minh-anh",
-          "expression": "neutral",
-          "text": "Cô Lan cho bản xuất này vì toàn tin công khai. Thứ gì không công khai thì chị phải đứng ra xin, và phải có căn cứ."
-        },
-        {
-          "type": "line",
-          "speaker": "minh-anh",
-          "expression": "serious",
-          "text": "Mình bị đồn là soi dữ liệu. Vậy càng phải tra đúng thứ mình được phép tra."
-        }
-      ]
-    },
-    {
-      "id": "tin-bd-cang-tin",
-      "title": "Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học",
-      "canh": "cang-tin",
-      "mocSomNhat": 1000,
-      "nodes": [
-        {
-          "type": "explore",
-          "id": "kp-toi-tin-bd-cang-tin",
-          "diem": [
-            {
-              "sprite": "nv:tung",
-              "x": 62,
-              "y": 100,
-              "rong": 15,
-              "chuoi": "tin-bd-cang-tin-vao",
-              "sau": [],
-              "nhan": "Tùng",
-              "dau": "chinh"
-            },
-            {
-              "sprite": "vung:bang-den",
-              "x": 48,
-              "y": 20,
-              "rong": 9,
-              "chuoi": "tin-bd-cang-tin-an",
-              "sau": [],
-              "nhan": "Tấm bảng đen trên quầy"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "tin-bd-cang-tin-vao",
-      "title": "Tới nơi: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học",
-      "canh": "cang-tin",
-      "mocSomNhat": 1000,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Căng tin giờ tan học. Điện thoại Tùng rung liền mấy tiếng."
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "worried",
-          "text": "Nhóm lớp tớ cũng vừa có đứa chuyển tiếp cái tin ấy."
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "neutral",
-          "text": "Chuyển tiếp thì dễ. Mình đi tìm người gửi đầu tiên."
-        }
-      ]
-    },
-    {
-      "id": "tin-bd-cang-tin-an",
-      "title": "Chi tiết ẩn: Tấm bảng đen trên quầy",
-      "canh": "cang-tin",
-      "mocSomNhat": 1000,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Dòng phấn \"Nợ quá ba cốc thì ghi tên vào đây\" giờ có thêm hai cái tên. Một cái viết nét to, gạch đi rồi viết lại."
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "gai-dau",
-          "text": "Không phải tớ. Tớ chỉ… ghé xem thôi."
-        }
-      ]
-    },
-    {
-      "id": "tin-bd-tra-da",
-      "title": "Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ",
-      "canh": "tra-da",
-      "mocSomNhat": 1000,
-      "nodes": [
-        {
-          "type": "explore",
-          "id": "kp-toi-tin-bd-tra-da",
-          "diem": [
-            {
-              "sprite": "nv:ba-lua",
-              "x": 46,
-              "y": 100,
-              "rong": 15,
-              "chuoi": "tin-bd-tra-da-vao",
-              "sau": [],
-              "nhan": "Bà bán trà đá",
-              "dau": "chinh"
-            },
-            {
-              "sprite": "vung:xe-dap",
-              "x": 62.5,
-              "y": 53,
-              "rong": 16,
-              "chuoi": "tin-bd-tra-da-an",
-              "sau": [],
-              "nhan": "Chiếc xe đạp cũ"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "tin-bd-tra-da-vao",
-      "title": "Tới nơi: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ",
-      "canh": "tra-da",
-      "mocSomNhat": 1000,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Quán trà đá cổng trường, giờ tan học. Khách vừa vãn, ghế nhựa còn trống mấy cái."
-        },
-        {
-          "type": "line",
-          "speaker": "ba-lua",
-          "expression": "smile",
-          "text": "Mấy đứa ở phòng tầng hai nhà câu lạc bộ, cái phòng có tủ sắt, phải không? Ngồi đi, ba trà đá."
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "happy",
-          "text": "Bà nhớ bọn cháu này!"
-        },
-        {
-          "type": "line",
-          "speaker": "ba-lua",
-          "expression": "neutral",
-          "text": "Bà nhớ cái phòng. Hồi xưa có một cậu sinh viên trông phòng ấy, chiều nào cũng ra đây. Hè cũng gọi trà nóng nên bà gọi là \"cậu trà nóng\"."
-        },
-        {
-          "type": "line",
-          "speaker": "ba-lua",
-          "expression": "neutral",
-          "text": "Cậu ấy có hai cuốn sổ. Một cuốn bìa cứng đã sờn, một cuốn mới tinh. Ngồi đúng cái ghế cháu đang ngồi, chép từ cuốn cũ sang cuốn mới, chép cả tháng trời."
-        },
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "Chép lại cả cuốn ạ? Sao anh ấy không dùng luôn cuốn cũ?"
-        },
-        {
-          "type": "line",
-          "speaker": "ba-lua",
-          "expression": "smile",
-          "text": "Bà cũng hỏi thế. Cậu ấy bảo: \"Cuốn cũ có chỗ cháu không muốn người sau chép theo.\""
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "thinking",
-          "text": "Chép lại mà bỏ đi một chỗ. Tớ muốn biết chỗ bị bỏ."
-        },
-        {
-          "type": "consequence",
-          "hauQua": [
-            {
-              "kind": "mo-manh-moi",
-              "id": "clue-tra-da-2"
-            }
-          ]
-        },
-        {
-          "type": "note",
-          "text": "Trong cổng, Hoài ôm cặp đi về phía giảng đường B. Tùng nhổm dậy nửa chừng rồi lại ngồi xuống."
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "smile",
-          "text": "Cậu định gọi à?"
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "gai-dau",
-          "text": "Lần trước tớ gọi giật, bạn ấy đi nhanh gấp đôi. Để hôm khác. Tớ chưa nghĩ ra câu mở đầu."
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "smile",
-          "text": "Câu mở đầu là \"xin lỗi\". Có hai chữ."
-        }
-      ]
-    },
-    {
-      "id": "tin-bd-tra-da-an",
-      "title": "Chi tiết ẩn: Chiếc xe đạp cũ",
-      "canh": "tra-da",
-      "mocSomNhat": 1000,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Chiếc xe đạp cũ dựng cạnh tường, giỏ xe đựng một cuốn sổ bìa xanh quăn mép."
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "smile",
-          "text": "Sổ ghi nợ của quán. Thời nào cũng có một cuốn sổ như thế."
-        }
-      ]
-    },
-    {
-      "id": "tin-soi-hop",
-      "title": "Quan sát Nam: cái hộp linh kiện",
-      "canh": "xuong-robot",
-      "mocSomNhat": 1000,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "Hộp các tông đựng linh kiện, túi nào cũng dán nhãn."
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "thinking",
-          "text": "Người giữ sổ sách của xưởng. Chuyện giấy tờ, giờ giấc thì hỏi cậu này."
-        }
-      ]
-    },
-    {
-      "id": "tin-soi-but",
-      "title": "Quan sát Nam: cây bút dạ",
-      "canh": "xuong-robot",
-      "mocSomNhat": 1000,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "Bút dạ còn mở nắp."
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "neutral",
-          "text": "Đang dán nhãn dở. Mình tới bất ngờ, cậu ấy không chuẩn bị gì trước."
-        }
-      ]
-    },
-    {
-      "id": "tin-soi-tay-ao",
-      "title": "Quan sát Nam: tay áo xắn",
-      "canh": "xuong-robot",
-      "mocSomNhat": 1000,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "Tay áo khoác xắn tới khuỷu."
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "neutral",
-          "text": "Người làm việc ở xưởng, không phải người ngồi họp."
         }
       ]
     },

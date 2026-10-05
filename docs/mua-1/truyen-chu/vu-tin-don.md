@@ -5,21 +5,21 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 ## 📅 Mục lục phân đoạn
 
 - [Đoạn 1: Tin đồn về CLB; lọc các tin mang câu đó](#doan-1)
-- [Đoạn 2: Vụ 2: Duy mở laptop (việc chính)](#doan-2)
-- [Đoạn 3: Vụ 2: Hà Vy và câu hỏi trên bảng](#doan-3)
-- [Đoạn 4: Vụ 2: Tùng kể chuyện nghe ở căng tin](#doan-4)
-- [Đoạn 5: Vụ 2: Minh Anh nói về việc xin dữ liệu](#doan-5)
-- [Đoạn 6: Thử bắt đầu bằng](#doan-6)
-- [Đoạn 7: Thử chứa](#doan-7)
-- [Đoạn 8: Thử làm sạch](#doan-8)
-- [Đoạn 9: Thử IN hai tài khoản](#doan-9)
-- [Đoạn 10: Xưởng Robotics: gặp Nam; lấy phiếu làm nguồn, tìm tin gốc](#doan-10)
-- [Đoạn 11: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học](#doan-11)
-- [Đoạn 12: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ](#doan-12)
-- [Đoạn 13: Quan sát Nam: cái hộp linh kiện](#doan-13)
-- [Đoạn 14: Quan sát Nam: cây bút dạ](#doan-14)
-- [Đoạn 15: Quan sát Nam: tay áo xắn](#doan-15)
-- *... và 17 đoạn tiếp theo*
+- [Đoạn 2: Chiều 09/10, phòng CLB: Minh Anh ở chỗ cô Lan về](#doan-2)
+- [Đoạn 3: Sáng 10/10, phòng 408: Hiếu nhắn hẹn ra căng tin](#doan-3)
+- [Đoạn 4: Trưa 14/10, phòng 408: sau ba ngày cuối tuần](#doan-4)
+- [Đoạn 5: Sáng 15/10, hội trường: lễ kỷ niệm](#doan-5)
+- [Đoạn 6: Việc ngày lễ 15/10 (tạm): Quân nhờ xem danh sách bốc thăm quà](#doan-6)
+- [Đoạn 7: Lỡ việc ngày lễ 15/10](#doan-7)
+- [Đoạn 8: Vụ 2: Duy mở laptop (việc chính)](#doan-8)
+- [Đoạn 9: Vụ 2: Hà Vy và câu hỏi trên bảng](#doan-9)
+- [Đoạn 10: Vụ 2: Tùng kể chuyện nghe ở căng tin](#doan-10)
+- [Đoạn 11: Vụ 2: Minh Anh nói về việc xin dữ liệu](#doan-11)
+- [Đoạn 12: Thử bắt đầu bằng](#doan-12)
+- [Đoạn 13: Duy chỉ mấy tin lệch chữ (việc chính)](#doan-13)
+- [Đoạn 14: Tùng đọc tin nhắn nhóm lớp](#doan-14)
+- [Đoạn 15: Căng tin giờ trưa: Hiếu ngồi bàn trong](#doan-15)
+- *... và 66 đoạn tiếp theo*
 
 ## 👥 Nhân vật xuất hiện
 
@@ -28,6 +28,8 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 - **Minh Anh**: năm 3 Luật kinh tế, chủ nhiệm clb thám tử
 - **Hiếu**: Sinh viên lớp BC24A
 - **Hà Vy**: năm 1 Toán ứng dụng, thành viên mới của clb thám tử
+- **Quân**: Ban Pháp chế – Kiểm tra, Hội sinh viên
+- **Bác Thịnh**: Bảo vệ giảng đường B
 - **Nam**: Thành viên CLB Robotics
 - **Khánh**: Chủ tịch Hội sinh viên, trưởng CLB Robotics
 - **Bà bán trà đá**: Quán trà đá cổng trường
@@ -36,23 +38,23 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 
 | Tiêu chí | Ngưỡng thiết kế | Thực tế | Đánh giá |
 |---|---|---|---|
-| Số dòng thoại | ≥ 300 | 129 | ⚠️ Bản mẫu |
-| Số chuỗi phân cảnh | ≥ 40 | 28 | ⚠️ Bản mẫu |
+| Số dòng thoại | ≥ 300 | 163 | ⚠️ Bản mẫu |
+| Số chuỗi phân cảnh | ≥ 40 | 53 | ✅ Đạt |
 | Màn tra cứu SQL | ≥ 5 | 8 | ✅ Đạt |
-| Nhịp đối chất | ≥ 3 | 0 | ⚠️ Bản mẫu |
+| Nhịp đối chất | ≥ 3 | 3 | ✅ Đạt |
 
 ---
 
 <a id="doan-1"></a>
 ### Đoạn 1: Tin đồn về CLB; lọc các tin mang câu đó
 
-Thứ Tư, 09/10/2024 · Còn 6 ngày tới Buổi giải trình chiều 15/10
+Thứ Ba, 08/10/2024 · Còn 7 ngày tới Buổi giải trình chiều 15/10
 
 📍 **Phòng CLB** — *Tin đồn về CLB; lọc các tin mang câu đó*
 
 > [ẢNH obj-hop-banh-quy] (chưa có mô tả)
-> 📜 **[THẺ CHỮ]** Thứ Tư, 09/10/2024
-- *Hơn hai tuần sau buổi họp rà soát. Chiều thứ Tư, phòng CLB.*
+> 📜 **[THẺ CHỮ]** Thứ Ba, 08/10/2024
+- *Hơn một tuần sau buổi họp rà soát. Chiều thứ Ba, phòng CLB.*
 - *Trên bàn có một hộp bánh quy mới, nắp dán nhãn viết tay: "Tài sản CLB. BQ-04. Người mua: Duy."*
 - **Tùng** (ngạc nhiên): BQ-04? Hôm trước mới là hộp đầu tiên mà.
 - **Duy**: Ba hộp kia hết trong tuần mấy đứa kiểm tra giữa kỳ. Anh ăn cái cuối cả ba lần.
@@ -61,30 +63,124 @@ Thứ Tư, 09/10/2024 · Còn 6 ngày tới Buổi giải trình chiều 15/10
 - **Hiếu**: Tin này này. Tối thứ Hai mình còn bấm chuyển tiếp. Hồi lá thư mình cũng gật ầm ầm, giờ nghĩ lại thấy chưa kiểm gì cả. Gỡ rồi, sang báo một tiếng.
 - **Hà Vy**: Cảm ơn cậu. Cậu thấy nó đầu tiên ở đâu?
 - **Hiếu**: Trong kênh sinh viên. Ai gửi đầu thì tớ không để ý.
+- **Tùng** (ngạc nhiên): Thế sao tối thứ Hai cậu lại bấm chuyển? (tạm)
 > [CHIBI chibi-v2-hieu-cua (sticker)] (chưa có mô tả)
 > 🗂️ **Tài liệu mới**: **Ảnh chụp tin đồn** — 
 - *Suy nghĩ của bạn:* *("CLB Thám Tử soi dữ liệu sinh viên.")*
 - **Tùng** (lo lắng): Ơ, mình có soi ai đâu. Tra gì cũng có phiếu, lại có anh Quân ngồi giám sát mà.
 - **Minh Anh** (nghiêm túc): Cuối kỳ là đợt rà soát phòng, cũng là lúc Phòng Kế hoạch gửi sao kê quỹ về các CLB. Chị không muốn tin này treo tới lúc đó.
-- **Minh Anh**: Thế nên chị mới cần biết tin này bắt đầu từ đâu. Cô Lan cho mình bản xuất các tin công khai của kênh, từ tối thứ Hai tới trưa hôm qua.
+- **Minh Anh**: Thế nên chị mới cần biết tin này bắt đầu từ đâu. Cô Lan cho mình bản xuất các tin công khai của kênh, từ tối thứ Hai tới trưa nay.
 - **Duy**: Tin công khai, ai vào kênh cũng đọc được. Em nạp vào laptop rồi chị. Bản xuất ghi nguyên văn từng tin, kể cả tin bấm chuyển tiếp: bấm chuyển thì chữ giữ y nguyên.
 > 🎯 **NHIỆM VỤ**: Những tin nào trong kênh mang câu tin đồn?
 > 💭 **Nhắc nhở** (Hà Vy): Lọc ra các tin mang câu đó trước đã. Chưa vội đọc tên ai.
+- **Minh Anh** (nghiêm túc): Cô Lan báo thêm: chiều thứ Ba tuần sau, Hội Sinh viên mời CLB mình lên giải trình. (tạm)
 📍 **Đang ở Phòng CLB:**
 *Những chỗ có thể khám phá ở đây:*
 
 **Lựa chọn tiếp theo:**
-- [Khám phá: Duy: mở laptop](#doan-2)
-- [Khám phá: Hà Vy: câu hỏi trên bảng (chi tiết ẩn / tùy chọn)](#doan-3)
-- [Khám phá: Tùng: chuyện ở căng tin (chi tiết ẩn / tùy chọn)](#doan-4)
-- [Khám phá: Minh Anh: xin dữ liệu (chi tiết ẩn / tùy chọn)](#doan-5)
-- [Mở bản đồ](#doan-29)
-- [Sau khi xem hết các chỗ](#doan-30)
+- [Khám phá: Duy: mở laptop](#doan-8)
+- [Khám phá: Hà Vy: câu hỏi trên bảng (chi tiết ẩn / tùy chọn)](#doan-9)
+- [Khám phá: Tùng: chuyện ở căng tin (chi tiết ẩn / tùy chọn)](#doan-10)
+- [Khám phá: Minh Anh: xin dữ liệu (chi tiết ẩn / tùy chọn)](#doan-11)
+- [Mở bản đồ](#doan-54)
+- [Sau khi xem hết các chỗ](#doan-60)
 
 ---
 
 <a id="doan-2"></a>
-### Đoạn 2: Vụ 2: Duy mở laptop (việc chính)
+### Đoạn 2: Chiều 09/10, phòng CLB: Minh Anh ở chỗ cô Lan về
+
+Thứ Tư, 09/10/2024 · Còn 6 ngày tới Buổi giải trình chiều 15/10
+
+📍 **Phòng CLB** — *Chiều 09/10, phòng CLB: Minh Anh ở chỗ cô Lan về*
+
+> 📜 **[THẺ CHỮ]** Thứ Tư, 09/10/2024
+- **Minh Anh**: Chị vừa ở chỗ cô Lan về. Cô hỏi mình đã tới đâu rồi. (tạm)
+📍 **Đang ở Phòng CLB:**
+*Những chỗ có thể khám phá ở đây:*
+
+**Lựa chọn tiếp theo:**
+- [Khám phá: Duy: mở laptop](#doan-13)
+- [Khám phá: Tùng: điện thoại rung (chi tiết ẩn / tùy chọn)](#doan-14)
+- [Mở bản đồ](#doan-55)
+
+---
+
+<a id="doan-3"></a>
+### Đoạn 3: Sáng 10/10, phòng 408: Hiếu nhắn hẹn ra căng tin
+
+Thứ Năm, 10/10/2024 · Còn 5 ngày tới Buổi giải trình chiều 15/10
+
+📍 **Phòng KTX 408** — *Sáng 10/10, phòng 408: Hiếu nhắn hẹn ra căng tin*
+
+> 📜 **[THẺ CHỮ]** Thứ Năm, 10/10/2024
+- **Tùng** (ngạc nhiên): Hiếu nhắn tớ này: "Trưa ra căng tin, tớ có chuyện." (tạm)
+
+**Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-56)
+
+---
+
+<a id="doan-4"></a>
+### Đoạn 4: Trưa 14/10, phòng 408: sau ba ngày cuối tuần
+
+Thứ Hai, 14/10/2024 · Còn 1 ngày tới Buổi giải trình chiều 15/10
+
+📍 **Phòng KTX 408** — *Trưa 14/10, phòng 408: sau ba ngày cuối tuần*
+
+> 📜 **[THẺ CHỮ]** Thứ Hai, 14/10/2024
+- *Ba ngày cuối tuần, CLB nghỉ. Kênh sinh viên vẫn có người chuyển cái tin ấy, thưa dần. (tạm)*
+
+**Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-57)
+
+---
+
+<a id="doan-5"></a>
+### Đoạn 5: Sáng 15/10, hội trường: lễ kỷ niệm
+
+Thứ Ba, 15/10/2024 · Còn 0 ngày tới Buổi giải trình chiều 15/10
+
+📍 **Hội trường** — *Sáng 15/10, hội trường: lễ kỷ niệm*
+
+> 📜 **[THẺ CHỮ]** Thứ Ba, 15/10/2024
+- *Sáng, hội trường kín ghế. Băng rôn lễ kỷ niệm căng ngang sân khấu. (tạm)*
+
+**Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-58)
+- [Làm việc ngày lễ: Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam](#doan-6)
+- [Bỏ qua](#doan-7)
+
+---
+
+<a id="doan-6"></a>
+### Đoạn 6: Việc ngày lễ 15/10 (tạm): Quân nhờ xem danh sách bốc thăm quà
+
+📍 **Hội trường** — *Việc ngày lễ 15/10 (tạm): Quân nhờ xem danh sách bốc thăm quà*
+
+- **Quân**: Các bạn bên CLB Thám Tử. Tôi nhờ một việc nhỏ, chiều tôi mới rảnh. (tạm)
+
+Hết việc ngày lễ.
+
+- [Đọc tiếp sang Đoạn 7: Lỡ việc ngày lễ 15/10](#doan-7)
+
+---
+
+<a id="doan-7"></a>
+### Đoạn 7: Lỡ việc ngày lễ 15/10
+
+📍 **Hội trường** — *Lỡ việc ngày lễ 15/10*
+
+- *Tờ danh sách bốc thăm vẫn kẹp dưới tập giấy của Quân, mép đã quăn. (tạm)*
+
+Hết việc ngày lễ.
+
+- [Đọc tiếp sang Đoạn 8: Vụ 2: Duy mở laptop (việc chính)](#doan-8)
+
+---
+
+<a id="doan-8"></a>
+### Đoạn 8: Vụ 2: Duy mở laptop (việc chính)
 
 📍 **Phòng CLB** — *Vụ 2: Duy mở laptop (việc chính)*
 
@@ -96,8 +192,8 @@ Thứ Tư, 09/10/2024 · Còn 6 ngày tới Buổi giải trình chiều 15/10
 
 ---
 
-<a id="doan-3"></a>
-### Đoạn 3: Vụ 2: Hà Vy và câu hỏi trên bảng
+<a id="doan-9"></a>
+### Đoạn 9: Vụ 2: Hà Vy và câu hỏi trên bảng
 
 📍 **Phòng CLB** — *Vụ 2: Hà Vy và câu hỏi trên bảng*
 
@@ -109,8 +205,8 @@ Thứ Tư, 09/10/2024 · Còn 6 ngày tới Buổi giải trình chiều 15/10
 
 ---
 
-<a id="doan-4"></a>
-### Đoạn 4: Vụ 2: Tùng kể chuyện nghe ở căng tin
+<a id="doan-10"></a>
+### Đoạn 10: Vụ 2: Tùng kể chuyện nghe ở căng tin
 
 📍 **Phòng CLB** — *Vụ 2: Tùng kể chuyện nghe ở căng tin*
 
@@ -123,8 +219,8 @@ Thứ Tư, 09/10/2024 · Còn 6 ngày tới Buổi giải trình chiều 15/10
 
 ---
 
-<a id="doan-5"></a>
-### Đoạn 5: Vụ 2: Minh Anh nói về việc xin dữ liệu
+<a id="doan-11"></a>
+### Đoạn 11: Vụ 2: Minh Anh nói về việc xin dữ liệu
 
 📍 **Phòng CLB** — *Vụ 2: Minh Anh nói về việc xin dữ liệu*
 
@@ -136,8 +232,8 @@ Thứ Tư, 09/10/2024 · Còn 6 ngày tới Buổi giải trình chiều 15/10
 
 ---
 
-<a id="doan-6"></a>
-### Đoạn 6: Thử bắt đầu bằng
+<a id="doan-12"></a>
+### Đoạn 12: Thử bắt đầu bằng
 
 📍 **Phòng CLB** — *Thử bắt đầu bằng*
 
@@ -168,16 +264,125 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
+- *Suy nghĩ của bạn:* *(Năm tin mang câu đó, từ năm tài khoản. Bốn cái là mã sinh viên. Một cái là clb_robotics.)*
+- **Tùng** (chỉ tay): Lại Robotics! Hôm trước là cái huy hiệu bánh răng, giờ là tài khoản. Tớ cá là…
+- **Hà Vy**: Đừng cá. Mới biết có năm tin mang câu đó. Tin nào có trước thì phiếu chưa nói.
+- **Minh Anh**: Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem.
+> 🎯 **NHIỆM VỤ**: Sang xưởng Robotics hỏi người trực kênh
+- **Duy**: Chiều nay xưởng bên ấy sinh hoạt thành viên tới năm giờ, tờ lịch nhà văn hóa ghi thế. (tạm)
 - *Suy nghĩ của bạn:* *(Có 5 tin bắt đầu bằng đoạn này. Từ từ, nhỡ họ viết thêm ở phía trước thì sao? Ví dụ "tớ nghe nói..." (tạm))*
 - **Tùng** (lo lắng): Lại còn thế nữa. Tìm tiếp đi cậu. (tạm)
 
 **Lựa chọn tiếp theo:**
-- [Đi tiếp](#doan-7)
+- [Đi tiếp](#doan-19)
 
 ---
 
-<a id="doan-7"></a>
-### Đoạn 7: Thử chứa
+<a id="doan-13"></a>
+### Đoạn 13: Duy chỉ mấy tin lệch chữ (việc chính)
+
+📍 **Phòng CLB** — *Duy chỉ mấy tin lệch chữ (việc chính)*
+
+- **Duy**: Mấy tin này lạ. Cùng câu ấy mà chữ mỗi tin một kiểu, như có người gõ lại bằng tay. (tạm)
+
+**Lựa chọn tiếp theo:**
+- [Đi tiếp](#doan-20)
+
+---
+
+<a id="doan-14"></a>
+### Đoạn 14: Tùng đọc tin nhắn nhóm lớp
+
+📍 **Phòng CLB** — *Tùng đọc tin nhắn nhóm lớp*
+
+- **Tùng** (lo lắng): Nhóm lớp tớ có đứa định đăng ký CLB mình, giờ nhắn là thôi để sau. (tạm)
+
+**Lựa chọn tiếp theo:**
+- [Quay lại: Đang ở Phòng CLB](#doan-1)
+
+---
+
+<a id="doan-15"></a>
+### Đoạn 15: Căng tin giờ trưa: Hiếu ngồi bàn trong
+
+📍 **Căng tin** — *Căng tin giờ trưa: Hiếu ngồi bàn trong*
+
+- *Căng tin giờ trưa, bàn nào cũng cúi vào điện thoại. Hiếu ngồi một mình ở bàn trong. (tạm)*
+📍 **Đang ở Căng tin:**
+*Những chỗ có thể khám phá ở đây:*
+
+**Lựa chọn tiếp theo:**
+- [Khám phá: Hiếu](#doan-21)
+- [Khám phá: Tấm bảng đen trên quầy](#doan-22)
+- [Mở bản đồ](#doan-56)
+
+---
+
+<a id="doan-16"></a>
+### Đoạn 16: Chiều 14/10, phòng CLB: tập trước buổi giải trình
+
+📍 **Phòng CLB** — *Chiều 14/10, phòng CLB: tập trước buổi giải trình*
+
+- **Duy**: Hộp BQ-05. Hộp trước hết từ hôm thứ Năm, anh không hỏi ai ăn. (tạm)
+
+**Hết ngày.**
+
+
+**Lựa chọn tiếp theo:**
+- [Quay lại: Đang ở Phòng CLB](#doan-1)
+- [Sang thứ Ba, 15/10/2024](#doan-5)
+
+---
+
+<a id="doan-17"></a>
+### Đoạn 17: Bản đồ 14/10 (tùy chọn): sảnh tòa B treo băng rôn
+
+📍 **Sảnh tòa B** — *Bản đồ 14/10 (tùy chọn): sảnh tòa B treo băng rôn*
+
+📍 **Đang ở Sảnh tòa B:**
+*Những chỗ có thể khám phá ở đây:*
+
+**Lựa chọn tiếp theo:**
+- [Khám phá: Bác bảo vệ (chi tiết ẩn / tùy chọn)](#doan-23)
+- [Khám phá: Bảng tin cạnh cột](#doan-24)
+- [Mở bản đồ](#doan-57)
+
+---
+
+<a id="doan-18"></a>
+### Đoạn 18: Chiều 15/10, phòng Công tác sinh viên: buổi giải trình, Quân hai nhịp
+
+📍 **Phòng Công tác sinh viên** — *Chiều 15/10, phòng Công tác sinh viên: buổi giải trình, Quân hai nhịp*
+
+- *Hai giờ chiều, phòng Công tác sinh viên. Cô Lan ngồi đầu bàn, Quân ngồi cạnh, tập biên bản mở sẵn. (tạm)*
+⚖️ **ĐỐI CHẤT**: Quân nêu giả thuyết: "Mật khẩu kênh cả ban chủ nhiệm Robotics đều biết. **Tin ấy có thể gửi từ điện thoại của bất kỳ ai, ở bất cứ đâu.** Các bạn khoanh được chỗ nào?"
+*Câu hỏi:* Ngay trước giờ tin gốc, tài khoản kênh vào từ máy nào? Trình thẻ cho thấy điều đó.
+
+- **Quân**: Tôi ghi rồi. Một máy, một giờ. Sang ý tiếp. (tạm)
+⚖️ **ĐỐI CHẤT**: Quân nêu giả thuyết: "Tài khoản của Robotics, máy trong xưởng Robotics, người trực kênh là Nam. Bên tôi kết luận: **Nam là người gửi tin.**"
+*Câu hỏi:* Trong các bản ghi đang có, chỗ nào cho biết ai ngồi máy lúc 22 giờ 40? Trình thẻ để chỉ ra bản ghi dừng ở đâu.
+
+
+**Lựa chọn tiếp theo:**
+- [Trình thẻ: Hai lần đăng nhập ngày 07/10 (ĐỦ CĂN CỨ)](#doan-62)
+- [Trình thẻ: Tối 07/10 xưởng mở tới 23 giờ (HỖ TRỢ)](#doan-63)
+- [Trình thẻ: Tin gốc: 22:40 tối 07/10 (GỢI Ý)](#doan-64)
+- [Trình thẻ: [Ngày gửi tin gốc] (GỢI Ý)](#doan-65)
+- [Nói: "Chưa đủ căn cứ"](#doan-66)
+- [Trình thẻ khác](#doan-67)
+- [Trình thẻ: Hai lần đăng nhập ngày 07/10 (ĐỦ CĂN CỨ)](#doan-69)
+- [Trình thẻ: Tin gốc: 22:40 tối 07/10 (ĐỦ CĂN CỨ)](#doan-70)
+- [Trình thẻ: Tối 07/10 xưởng mở tới 23 giờ (HỖ TRỢ)](#doan-71)
+- [Trình thẻ: [Tin gốc] (GỢI Ý)](#doan-72)
+- [Nói: "Chưa đủ căn cứ"](#doan-73)
+- [Trình thẻ khác](#doan-74)
+- [Nếu đã có "dc-tin-quan-nguoi-du": Rẽ sang hướng khác](#doan-25)
+- [Đi tiếp](#doan-26)
+
+---
+
+<a id="doan-19"></a>
+### Đoạn 19: Thử chứa
 
 📍 **Phòng CLB** — *Thử chứa*
 
@@ -216,12 +421,12 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Hà Vy** (suy nghĩ): Vậy bỏ dấu % ở đầu đi, dùng TRIM để xóa dấu cách thừa, và LOWER để đưa về chữ thường giống nhau, rồi tìm xem có tin nào bắt đầu bằng đoạn đó không. (tạm)
 
 **Lựa chọn tiếp theo:**
-- [Đi tiếp](#doan-8)
+- [Đi tiếp](#doan-27)
 
 ---
 
-<a id="doan-8"></a>
-### Đoạn 8: Thử làm sạch
+<a id="doan-20"></a>
+### Đoạn 20: Thử làm sạch
 
 📍 **Phòng CLB** — *Thử làm sạch*
 
@@ -258,12 +463,106 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TR
 - **Tùng** (chỉ tay): Hai ông mã này gửi ngay sau giờ tan học. Xem xem tin nào do hai ông đó gửi? (tạm)
 
 **Lựa chọn tiếp theo:**
-- [Đi tiếp](#doan-9)
+- [Đi tiếp](#doan-28)
 
 ---
 
-<a id="doan-9"></a>
-### Đoạn 9: Thử IN hai tài khoản
+<a id="doan-21"></a>
+### Đoạn 21: Đối chất Hiếu: tin có từ lâu, ai cũng chuyển
+
+📍 **Căng tin** — *Đối chất Hiếu: tin có từ lâu, ai cũng chuyển*
+
+- **Hiếu**: Sáng nay lớp tớ bàn chuyện tin ấy suốt giờ giải lao. (tạm)
+⚖️ **ĐỐI CHẤT**: Hiếu nêu giả thuyết: "Lớp tớ ai cũng bảo thế. **Tin này có từ lâu rồi, ai cũng chuyển**, các cậu làm to chuyện làm gì."
+*Câu hỏi:* Tin này bắt đầu từ lúc nào, từ một chỗ hay từ khắp nơi? Trình thẻ cho thấy điều đó.
+
+
+**Lựa chọn tiếp theo:**
+- [Trình thẻ: Tin gốc: 22:40 tối 07/10 (ĐỦ CĂN CỨ)](#doan-76)
+- [Trình thẻ: [Tin gốc] (HỖ TRỢ)](#doan-77)
+- [Trình thẻ: Các tin mang câu tin đồn (GỢI Ý)](#doan-78)
+- [Trình thẻ: Ảnh chụp tin đồn (GỢI Ý)](#doan-79)
+- [Nói: "Chưa đủ căn cứ"](#doan-80)
+- [Trình thẻ khác](#doan-81)
+- [Nếu đã có "dc-tin-hieu-du": Rẽ sang hướng khác](#doan-29)
+- [Đi tiếp](#doan-30)
+
+---
+
+<a id="doan-22"></a>
+### Đoạn 22: Chi tiết ẩn: dòng phấn bị xóa nhòe
+
+📍 **Căng tin** — *Chi tiết ẩn: dòng phấn bị xóa nhòe*
+
+- *Dưới dòng phấn ghi nợ có hai chữ "CLB soi", bị ai lấy tay xóa nhòe. (tạm)*
+
+**Lựa chọn tiếp theo:**
+- [Quay lại: Đang ở Căng tin](#doan-34)
+
+---
+
+<a id="doan-23"></a>
+### Đoạn 23: Tới nơi: bác Thịnh hỏi chuyện tin đồn
+
+📍 **Sảnh tòa B** — *Tới nơi: bác Thịnh hỏi chuyện tin đồn*
+
+- **Bác Thịnh**: Mấy đứa CLB Thám Tử đấy à? Giữ hộ bác đầu băng rôn này cái. (tạm)
+
+**Lựa chọn tiếp theo:**
+- [Quay lại: Đang ở Sảnh tòa B](#doan-17)
+
+---
+
+<a id="doan-24"></a>
+### Đoạn 24: Chi tiết ẩn: tờ thông báo lễ kỷ niệm
+
+📍 **Sảnh tòa B** — *Chi tiết ẩn: tờ thông báo lễ kỷ niệm*
+
+- *Tờ thông báo lễ kỷ niệm ngày truyền thống dán đè lên góc tờ danh sách CLB năm ngoái. (tạm)*
+
+**Lựa chọn tiếp theo:**
+- [Quay lại: Đang ở Sảnh tòa B](#doan-17)
+
+---
+
+<a id="doan-25"></a>
+### Đoạn 25: Biên bản ghi một tài khoản, chưa phải một người
+
+📍 **Phòng Công tác sinh viên** — *Biên bản ghi một tài khoản, chưa phải một người*
+
+- *Quân gạch một dòng trong biên bản, viết lại ngay bên dưới. (tạm)*
+
+**Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-58)
+
+---
+
+<a id="doan-26"></a>
+### Đoạn 26: Biên bản ghi tên Nam ở mục người cần làm rõ
+
+📍 **Phòng Công tác sinh viên** — *Biên bản ghi tên Nam ở mục người cần làm rõ*
+
+- *Quân viết tên Nam vào mục người cần làm rõ. Nét bút đậm, ngồi đầu bàn bên kia cũng đọc được. (tạm)*
+
+**Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-58)
+
+---
+
+<a id="doan-27"></a>
+### Đoạn 27: Cuối chiều 08/10: khép danh sách, hẹn mai
+
+📍 **Phòng CLB** — *Cuối chiều 08/10: khép danh sách, hẹn mai*
+
+- **Minh Anh**: Hôm nay gọn được một phần rồi. Mai ba giờ chiều đủ mặt nhé. (tạm)
+
+**Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-54)
+
+---
+
+<a id="doan-28"></a>
+### Đoạn 28: Thử IN hai tài khoản
 
 📍 **Phòng CLB** — *Thử IN hai tài khoản*
 
@@ -292,22 +591,83 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 > 🗂️ **Bằng chứng thu thập**: **Các tin mang câu tin đồn** — Kết quả truy vấn: nhiều tin chép lại cùng một câu, từ các tài khoản khác nhau. Phiếu chưa nói tin nào có trước.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Năm tin mang câu đó, từ năm tài khoản. Bốn cái là mã sinh viên. Một cái là clb_robotics.)*
-- **Tùng** (chỉ tay): Lại Robotics! Hôm trước là cái huy hiệu bánh răng, giờ là tài khoản. Tớ cá là…
-- **Hà Vy**: Đừng cá. Mới biết có năm tin mang câu đó. Tin nào có trước thì phiếu chưa nói.
-- **Minh Anh**: Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem.
-> 🎯 **NHIỆM VỤ**: Sang xưởng Robotics hỏi người trực kênh
+- *Suy nghĩ của bạn:* *(Hai tin của hai tài khoản này ghi loại khác hẳn: trả lời. (tạm))*
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-29)
-- [Sau khi xem hết các chỗ](#doan-31)
+- [Mở bản đồ](#doan-55)
 
 ---
 
-<a id="doan-10"></a>
-### Đoạn 10: Xưởng Robotics: gặp Nam; lấy phiếu làm nguồn, tìm tin gốc
+<a id="doan-29"></a>
+### Đoạn 29: Hiếu gửi tin đính chính vào nhóm lớp
 
-📍 **Xưởng CLB Robotics** — *Xưởng Robotics: gặp Nam; lấy phiếu làm nguồn, tìm tin gốc*
+📍 **Căng tin** — *Hiếu gửi tin đính chính vào nhóm lớp*
+
+- *Hiếu mở nhóm lớp, gõ một dòng, xóa đi, rồi gõ lại. (tạm)*
+
+**Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-56)
+
+---
+
+<a id="doan-30"></a>
+### Đoạn 30: Hiếu trả khay, bàn bên vẫn đọc to cái tin
+
+📍 **Căng tin** — *Hiếu trả khay, bàn bên vẫn đọc to cái tin*
+
+- *Hiếu đứng dậy trả khay. Bàn bên vẫn có đứa đọc to cái tin rồi cười. (tạm)*
+
+**Lựa chọn tiếp theo:**
+- [Mở bản đồ](#doan-56)
+
+---
+
+<a id="doan-31"></a>
+### Đoạn 31: Nói chắc được điều gì; cả nhóm bắt đầu chia ý về Nam
+
+📍 **Phòng CLB** — *Nói chắc được điều gì; cả nhóm bắt đầu chia ý về Nam*
+
+❓ **Minh Anh hỏi**: "Vậy tới giờ, mình nói chắc được điều gì?"
+*Các lựa chọn trả lời:*
+  - "Tin gốc gửi từ tài khoản kênh của CLB Robotics, 22:40 tối 07/10. Ai ngồi gửi thì chưa biết." ✅ → **Minh Anh**: Đúng chừng ấy. Chị báo cô Lan cũng đúng chừng ấy.
+  - "Nam là người gửi, vì Nam trực kênh." ❌ → **Hà Vy** (suy nghĩ): Trực kênh là việc được giao. Trên phiếu có dòng nào ghi ai ngồi gửi không?
+  - "CLB Robotics cố tình tung tin để hại CLB mình." ❌ → **Hà Vy**: Phiếu ghi một tài khoản với một giờ gửi. "Cố tình" với "cả CLB" thì cột nào nói?
+
+- **Tùng** (chỉ tay): Nhưng mà anh Nam trực kênh. Tớ vẫn cá là anh Nam.
+- **Minh Anh** (nghiêm túc): Chị không nói là Nam. Nhưng Nam là đầu mối duy nhất mình đang có. Phải hỏi cho ra.
+- **Duy**: Còn một chuyện mới: phòng văn phòng xưởng thường khóa, chìa ban chủ nhiệm giữ. Người ngồi máy đó tối thứ Hai có chìa, hoặc được mở cửa cho.
+- **Hà Vy** (suy nghĩ): Khoan. Mật khẩu thì cả ban chủ nhiệm đều biết mà.
+- **Duy**: Em thì chờ thêm một nguồn nữa rồi mới nói.
+> 📜 **[THẺ CHỮ]** Một tài khoản chưa phải là một con người. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
+
+🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.
+> **Một tài khoản, chưa phải một người** — Tin gốc đi từ tài khoản kênh của CLB Robotics, lúc 22:40 tối thứ Hai. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
+
+**Hết ngày.**
+
+
+
+---
+
+<a id="doan-32"></a>
+### Đoạn 32: Tối 08/10, phòng 408: mất nước nóng, điện thoại rung (không khí ký túc xá, không có manh mối)
+
+📍 **Phòng KTX 408** — *Tối 08/10, phòng 408: mất nước nóng, điện thoại rung (không khí ký túc xá, không có manh mối)*
+
+- *Tối, phòng 408. Vòi nước nóng ở tầng lại khô. (tạm)*
+
+**Hết ngày.**
+
+
+**Lựa chọn tiếp theo:**
+- [Sang thứ Tư, 09/10/2024](#doan-2)
+
+---
+
+<a id="doan-33"></a>
+### Đoạn 33: Xưởng Robotics: gặp Nam, tìm tin gốc
+
+📍 **Xưởng CLB Robotics** — *Xưởng Robotics: gặp Nam, tìm tin gốc*
 
 - *Đường sang nhà văn hóa, ngang qua sân bóng.*
 - **Tùng** (chỉ tay): Tớ cá là tới nơi sẽ có một ông mặt gian gian ngồi sẵn cạnh máy tính.
@@ -321,16 +681,16 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 *Những chỗ có thể khám phá ở đây:*
 
 **Lựa chọn tiếp theo:**
-- [Khám phá: Cái hộp trên tay](#doan-13)
-- [Khám phá: Cây bút dạ](#doan-14)
-- [Khám phá: Tay áo](#doan-15)
-- [Mở bản đồ](#doan-29)
-- [Sau khi xem hết các chỗ](#doan-32)
+- [Khám phá: Cái hộp trên tay](#doan-37)
+- [Khám phá: Cây bút dạ](#doan-38)
+- [Khám phá: Tay áo](#doan-39)
+- [Mở bản đồ](#doan-55)
+- [Sau khi xem hết các chỗ](#doan-82)
 
 ---
 
-<a id="doan-11"></a>
-### Đoạn 11: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học
+<a id="doan-34"></a>
+### Đoạn 34: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học
 
 📍 **Căng tin** — *Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học*
 
@@ -338,14 +698,14 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 *Những chỗ có thể khám phá ở đây:*
 
 **Lựa chọn tiếp theo:**
-- [Khám phá: Tùng](#doan-18)
-- [Khám phá: Tấm bảng đen trên quầy](#doan-19)
-- [Mở bản đồ](#doan-29)
+- [Khám phá: Tùng](#doan-41)
+- [Khám phá: Tấm bảng đen trên quầy](#doan-42)
+- [Mở bản đồ](#doan-55)
 
 ---
 
-<a id="doan-12"></a>
-### Đoạn 12: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ
+<a id="doan-35"></a>
+### Đoạn 35: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ
 
 📍 **Quán trà đá cổng trường** — *Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ*
 
@@ -353,14 +713,28 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 *Những chỗ có thể khám phá ở đây:*
 
 **Lựa chọn tiếp theo:**
-- [Khám phá: Bà bán trà đá](#doan-20)
-- [Khám phá: Chiếc xe đạp cũ](#doan-21)
-- [Mở bản đồ](#doan-29)
+- [Khám phá: Bà bán trà đá](#doan-43)
+- [Khám phá: Chiếc xe đạp cũ](#doan-44)
+- [Mở bản đồ](#doan-55)
 
 ---
 
-<a id="doan-13"></a>
-### Đoạn 13: Quan sát Nam: cái hộp linh kiện
+<a id="doan-36"></a>
+### Đoạn 36: Chiều 10/10, xưởng Robotics: Nam mở sẵn nhật ký
+
+📍 **Xưởng CLB Robotics** — *Chiều 10/10, xưởng Robotics: Nam mở sẵn nhật ký*
+
+- **Nam**: Nhật ký đăng nhập anh mở sẵn rồi. Bảng đăng ký thì vẫn dán ngoài cửa. (tạm)
+🔀 **Lựa chọn của bạn** (Hà Vy: "Hai chỗ anh Nam chỉ hôm qua. Xem chỗ nào trước?"):
+
+**Lựa chọn tiếp theo:**
+- [Chọn: "Nhật ký đăng nhập của kênh."](#doan-45)
+- [Chọn: "Bảng đăng ký dùng xưởng ngoài cửa."](#doan-46)
+
+---
+
+<a id="doan-37"></a>
+### Đoạn 37: Quan sát Nam: cái hộp linh kiện
 
 📍 **Xưởng CLB Robotics** — *Quan sát Nam: cái hộp linh kiện*
 
@@ -368,12 +742,12 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 - **Hà Vy** (suy nghĩ): Người giữ sổ sách của xưởng. Chuyện giấy tờ, giờ giấc thì hỏi cậu này.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Xưởng CLB Robotics](#doan-10)
+- [Quay lại: Đang ở Xưởng CLB Robotics](#doan-33)
 
 ---
 
-<a id="doan-14"></a>
-### Đoạn 14: Quan sát Nam: cây bút dạ
+<a id="doan-38"></a>
+### Đoạn 38: Quan sát Nam: cây bút dạ
 
 📍 **Xưởng CLB Robotics** — *Quan sát Nam: cây bút dạ*
 
@@ -381,12 +755,12 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 - **Tùng**: Đang dán nhãn dở. Mình tới bất ngờ, cậu ấy không chuẩn bị gì trước.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Xưởng CLB Robotics](#doan-10)
+- [Quay lại: Đang ở Xưởng CLB Robotics](#doan-33)
 
 ---
 
-<a id="doan-15"></a>
-### Đoạn 15: Quan sát Nam: tay áo xắn
+<a id="doan-39"></a>
+### Đoạn 39: Quan sát Nam: tay áo xắn
 
 📍 **Xưởng CLB Robotics** — *Quan sát Nam: tay áo xắn*
 
@@ -394,12 +768,90 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 - **Hà Vy**: Người làm việc ở xưởng, không phải người ngồi họp.
 
 **Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Xưởng CLB Robotics](#doan-10)
+- [Quay lại: Đang ở Xưởng CLB Robotics](#doan-33)
 
 ---
 
-<a id="doan-16"></a>
-### Đoạn 16: Tuyến dữ liệu: nhật ký đăng nhập của kênh
+<a id="doan-40"></a>
+### Đoạn 40: Cuối chiều 09/10, phòng CLB: báo giờ gửi, hẹn mai sang xưởng
+
+📍 **Phòng CLB** — *Cuối chiều 09/10, phòng CLB: báo giờ gửi, hẹn mai sang xưởng*
+
+- **Minh Anh**: Vậy mai chị báo cô Lan được một điều chắc: giờ gửi. (tạm)
+
+**Hết ngày.**
+
+
+**Lựa chọn tiếp theo:**
+- [Quay lại: Đang ở Phòng CLB](#doan-1)
+- [Sang thứ Năm, 10/10/2024](#doan-3)
+
+---
+
+<a id="doan-41"></a>
+### Đoạn 41: Tới nơi: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học
+
+📍 **Căng tin** — *Tới nơi: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học*
+
+- *Căng tin giờ tan học. Điện thoại Tùng rung liền mấy tiếng.*
+- **Tùng** (lo lắng): Nhóm lớp tớ cũng vừa có đứa chuyển tiếp cái tin ấy.
+- **Hà Vy**: Chuyển tiếp thì dễ. Mình đi tìm người gửi đầu tiên.
+
+**Lựa chọn tiếp theo:**
+- [Quay lại: Đang ở Căng tin](#doan-34)
+
+---
+
+<a id="doan-42"></a>
+### Đoạn 42: Chi tiết ẩn: Tấm bảng đen trên quầy
+
+📍 **Căng tin** — *Chi tiết ẩn: Tấm bảng đen trên quầy*
+
+- *Dòng phấn "Nợ quá ba cốc thì ghi tên vào đây" giờ có thêm hai cái tên. Một cái viết nét to, gạch đi rồi viết lại.*
+- **Tùng** (gãi đầu): Không phải tớ. Tớ chỉ… ghé xem thôi.
+
+**Lựa chọn tiếp theo:**
+- [Quay lại: Đang ở Căng tin](#doan-34)
+
+---
+
+<a id="doan-43"></a>
+### Đoạn 43: Tới nơi: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ
+
+📍 **Quán trà đá cổng trường** — *Tới nơi: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ*
+
+- *Quán trà đá cổng trường, giờ tan học. Khách vừa vãn, ghế nhựa còn trống mấy cái.*
+- **Bà bán trà đá**: Mấy đứa ở phòng tầng hai nhà câu lạc bộ, cái phòng có tủ sắt, phải không? Ngồi đi, ba trà đá.
+- **Tùng** (vui vẻ): Bà nhớ bọn cháu này!
+- **Bà bán trà đá**: Bà nhớ cái phòng. Hồi xưa có một cậu sinh viên trông phòng ấy, chiều nào cũng ra đây. Hè cũng gọi trà nóng nên bà gọi là "cậu trà nóng".
+- **Bà bán trà đá**: Cậu ấy có hai cuốn sổ. Một cuốn bìa cứng đã sờn, một cuốn mới tinh. Ngồi đúng cái ghế cháu đang ngồi, chép từ cuốn cũ sang cuốn mới, chép cả tháng trời.
+- *Suy nghĩ của bạn:* *(Chép lại cả cuốn ạ? Sao anh ấy không dùng luôn cuốn cũ?)*
+- **Bà bán trà đá**: Bà cũng hỏi thế. Cậu ấy bảo: "Cuốn cũ có chỗ cháu không muốn người sau chép theo."
+- **Hà Vy** (suy nghĩ): Chép lại mà bỏ đi một chỗ. Tớ muốn biết chỗ bị bỏ.
+- **Hà Vy**: Cậu định gọi à?
+- **Tùng** (gãi đầu): Lần trước tớ gọi giật, bạn ấy đi nhanh gấp đôi. Để hôm khác. Tớ chưa nghĩ ra câu mở đầu.
+- **Hà Vy**: Câu mở đầu là "xin lỗi". Có hai chữ.
+
+**Lựa chọn tiếp theo:**
+- [Quay lại: Đang ở Quán trà đá cổng trường](#doan-35)
+
+---
+
+<a id="doan-44"></a>
+### Đoạn 44: Chi tiết ẩn: Chiếc xe đạp cũ
+
+📍 **Quán trà đá cổng trường** — *Chi tiết ẩn: Chiếc xe đạp cũ*
+
+- *Chiếc xe đạp cũ dựng cạnh tường, giỏ xe đựng một cuốn sổ bìa xanh quăn mép.*
+- **Hà Vy**: Sổ ghi nợ của quán. Thời nào cũng có một cuốn sổ như thế.
+
+**Lựa chọn tiếp theo:**
+- [Quay lại: Đang ở Quán trà đá cổng trường](#doan-35)
+
+---
+
+<a id="doan-45"></a>
+### Đoạn 45: Tuyến dữ liệu: nhật ký đăng nhập của kênh
 
 📍 **Xưởng CLB Robotics** — *Tuyến dữ liệu: nhật ký đăng nhập của kênh*
 
@@ -438,13 +890,13 @@ SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = 
 - **Hà Vy** (suy nghĩ): Đăng nhập 22:31, tin gửi 22:40. Khớp giờ. Nhưng mới biết máy nào, chưa biết ai ngồi máy.
 
 **Lựa chọn tiếp theo:**
-- [Nếu đã có "Tối 07/10 xưởng mở tới 23 giờ": Rẽ sang hướng khác](#doan-22)
-- [Mở bản đồ](#doan-29)
+- [Nếu đã có "Tối 07/10 xưởng mở tới 23 giờ": Rẽ sang hướng khác](#doan-47)
+- [Mở bản đồ](#doan-56)
 
 ---
 
-<a id="doan-17"></a>
-### Đoạn 17: Tuyến hiện trường: bảng đăng ký dùng xưởng
+<a id="doan-46"></a>
+### Đoạn 46: Tuyến hiện trường: bảng đăng ký dùng xưởng
 
 📍 **Xưởng CLB Robotics** — *Tuyến hiện trường: bảng đăng ký dùng xưởng*
 
@@ -481,75 +933,13 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 - **Hà Vy** (suy nghĩ): Lịch đăng ký tới 23 giờ, tin gửi 22:40. Nhưng đăng ký chưa chắc đã có mặt.
 
 **Lựa chọn tiếp theo:**
-- [Nếu đã có "Hai lần đăng nhập ngày 07/10": Rẽ sang hướng khác](#doan-24)
-- [Mở bản đồ](#doan-29)
+- [Nếu đã có "Hai lần đăng nhập ngày 07/10": Rẽ sang hướng khác](#doan-49)
+- [Mở bản đồ](#doan-56)
 
 ---
 
-<a id="doan-18"></a>
-### Đoạn 18: Tới nơi: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học
-
-📍 **Căng tin** — *Tới nơi: Bản đồ Vụ 2 (tùy chọn): căng tin giờ tan học*
-
-- *Căng tin giờ tan học. Điện thoại Tùng rung liền mấy tiếng.*
-- **Tùng** (lo lắng): Nhóm lớp tớ cũng vừa có đứa chuyển tiếp cái tin ấy.
-- **Hà Vy**: Chuyển tiếp thì dễ. Mình đi tìm người gửi đầu tiên.
-
-**Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Căng tin](#doan-11)
-
----
-
-<a id="doan-19"></a>
-### Đoạn 19: Chi tiết ẩn: Tấm bảng đen trên quầy
-
-📍 **Căng tin** — *Chi tiết ẩn: Tấm bảng đen trên quầy*
-
-- *Dòng phấn "Nợ quá ba cốc thì ghi tên vào đây" giờ có thêm hai cái tên. Một cái viết nét to, gạch đi rồi viết lại.*
-- **Tùng** (gãi đầu): Không phải tớ. Tớ chỉ… ghé xem thôi.
-
-**Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Căng tin](#doan-11)
-
----
-
-<a id="doan-20"></a>
-### Đoạn 20: Tới nơi: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ
-
-📍 **Quán trà đá cổng trường** — *Tới nơi: Bản đồ Vụ 2 (tùy chọn): quán trà đá, chuyện hai cuốn sổ*
-
-- *Quán trà đá cổng trường, giờ tan học. Khách vừa vãn, ghế nhựa còn trống mấy cái.*
-- **Bà bán trà đá**: Mấy đứa ở phòng tầng hai nhà câu lạc bộ, cái phòng có tủ sắt, phải không? Ngồi đi, ba trà đá.
-- **Tùng** (vui vẻ): Bà nhớ bọn cháu này!
-- **Bà bán trà đá**: Bà nhớ cái phòng. Hồi xưa có một cậu sinh viên trông phòng ấy, chiều nào cũng ra đây. Hè cũng gọi trà nóng nên bà gọi là "cậu trà nóng".
-- **Bà bán trà đá**: Cậu ấy có hai cuốn sổ. Một cuốn bìa cứng đã sờn, một cuốn mới tinh. Ngồi đúng cái ghế cháu đang ngồi, chép từ cuốn cũ sang cuốn mới, chép cả tháng trời.
-- *Suy nghĩ của bạn:* *(Chép lại cả cuốn ạ? Sao anh ấy không dùng luôn cuốn cũ?)*
-- **Bà bán trà đá**: Bà cũng hỏi thế. Cậu ấy bảo: "Cuốn cũ có chỗ cháu không muốn người sau chép theo."
-- **Hà Vy** (suy nghĩ): Chép lại mà bỏ đi một chỗ. Tớ muốn biết chỗ bị bỏ.
-- **Hà Vy**: Cậu định gọi à?
-- **Tùng** (gãi đầu): Lần trước tớ gọi giật, bạn ấy đi nhanh gấp đôi. Để hôm khác. Tớ chưa nghĩ ra câu mở đầu.
-- **Hà Vy**: Câu mở đầu là "xin lỗi". Có hai chữ.
-
-**Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Quán trà đá cổng trường](#doan-12)
-
----
-
-<a id="doan-21"></a>
-### Đoạn 21: Chi tiết ẩn: Chiếc xe đạp cũ
-
-📍 **Quán trà đá cổng trường** — *Chi tiết ẩn: Chiếc xe đạp cũ*
-
-- *Chiếc xe đạp cũ dựng cạnh tường, giỏ xe đựng một cuốn sổ bìa xanh quăn mép.*
-- **Hà Vy**: Sổ ghi nợ của quán. Thời nào cũng có một cuốn sổ như thế.
-
-**Lựa chọn tiếp theo:**
-- [Quay lại: Đang ở Quán trà đá cổng trường](#doan-12)
-
----
-
-<a id="doan-22"></a>
-### Đoạn 22: Đã xem bảng xưởng rồi mới xem nhật ký: Tùng đối chiếu hai nguồn
+<a id="doan-47"></a>
+### Đoạn 47: Đã xem bảng xưởng rồi mới xem nhật ký: Tùng đối chiếu hai nguồn
 
 📍 **Xưởng CLB Robotics** — *Đã xem bảng xưởng rồi mới xem nhật ký: Tùng đối chiếu hai nguồn*
 
@@ -559,12 +949,12 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 - **Tùng** (gãi đầu): …Ừ thì chưa có tên.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-29)
+- [Mở bản đồ](#doan-56)
 
 ---
 
-<a id="doan-23"></a>
-### Đoạn 23: Về phòng CLB báo lại
+<a id="doan-48"></a>
+### Đoạn 48: Về phòng CLB báo lại
 
 📍 **Phòng CLB** — *Về phòng CLB báo lại*
 
@@ -575,14 +965,14 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 - **Tùng** (gãi đầu): Biết thế xem luôn cho rồi.
 
 **Lựa chọn tiếp theo:**
-- [Nếu (đã có "Hai lần đăng nhập ngày 07/10" và đã có "Tối 07/10 xưởng mở tới 23 giờ"): Rẽ sang hướng khác](#doan-25)
-- [Nếu đã có "Hai lần đăng nhập ngày 07/10": Rẽ sang hướng khác](#doan-26)
-- [Đi tiếp](#doan-27)
+- [Nếu (đã có "Hai lần đăng nhập ngày 07/10" và đã có "Tối 07/10 xưởng mở tới 23 giờ"): Rẽ sang hướng khác](#doan-50)
+- [Nếu đã có "Hai lần đăng nhập ngày 07/10": Rẽ sang hướng khác](#doan-51)
+- [Đi tiếp](#doan-52)
 
 ---
 
-<a id="doan-24"></a>
-### Đoạn 24: Đã xem nhật ký rồi mới xem bảng xưởng: Tùng đối chiếu hai nguồn
+<a id="doan-49"></a>
+### Đoạn 49: Đã xem nhật ký rồi mới xem bảng xưởng: Tùng đối chiếu hai nguồn
 
 📍 **Xưởng CLB Robotics** — *Đã xem nhật ký rồi mới xem bảng xưởng: Tùng đối chiếu hai nguồn*
 
@@ -592,12 +982,12 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 - **Tùng** (gãi đầu): …Ừ thì chưa có tên.
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-29)
+- [Mở bản đồ](#doan-56)
 
 ---
 
-<a id="doan-25"></a>
-### Đoạn 25: Về phòng CLB báo lại, đủ hai hướng
+<a id="doan-50"></a>
+### Đoạn 50: Về phòng CLB báo lại, đủ hai hướng
 
 📍 **Phòng CLB** — *Về phòng CLB báo lại, đủ hai hướng*
 
@@ -613,79 +1003,120 @@ SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';
 > [CHIBI chibi-v2-manh-giay-linh (sticker)] (chưa có mô tả)
 
 **Lựa chọn tiếp theo:**
-- [Nếu đã có "tin-ve-som": Rẽ sang hướng khác](#doan-28)
-- [Đi tiếp](#doan-28)
+- [Nếu đã có "tin-ve-som": Rẽ sang hướng khác](#doan-53)
+- [Đi tiếp](#doan-53)
 
 ---
 
-<a id="doan-26"></a>
-### Đoạn 26: Chưa xem bảng đăng ký: quay lại xưởng
+<a id="doan-51"></a>
+### Đoạn 51: Chưa xem bảng đăng ký: quay lại xưởng
 
 📍 **Phòng CLB** — *Chưa xem bảng đăng ký: quay lại xưởng*
 
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-29)
+- [Mở bản đồ](#doan-56)
 
 ---
 
-<a id="doan-27"></a>
-### Đoạn 27: Chưa xem nhật ký: quay lại xưởng
+<a id="doan-52"></a>
+### Đoạn 52: Chưa xem nhật ký: quay lại xưởng
 
 📍 **Phòng CLB** — *Chưa xem nhật ký: quay lại xưởng*
 
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-29)
+- [Mở bản đồ](#doan-56)
 
 ---
 
-<a id="doan-28"></a>
-### Đoạn 28: Nói chắc được điều gì; cả nhóm bắt đầu chia ý về Nam
+<a id="doan-53"></a>
+### Đoạn 53: Cuối chiều 10/10, phòng CLB: giấy mời giải trình
 
-📍 **Phòng CLB** — *Nói chắc được điều gì; cả nhóm bắt đầu chia ý về Nam*
+📍 **Phòng CLB** — *Cuối chiều 10/10, phòng CLB: giấy mời giải trình*
 
-❓ **Minh Anh hỏi**: "Vậy tới giờ, mình nói chắc được điều gì?"
-*Các lựa chọn trả lời:*
-  - "Tin gốc gửi từ tài khoản kênh của CLB Robotics, 22:40 tối 07/10. Ai ngồi gửi thì chưa biết." ✅ → **Minh Anh**: Đúng chừng ấy. Chị báo cô Lan cũng đúng chừng ấy.
-  - "Nam là người gửi, vì Nam trực kênh." ❌ → **Hà Vy** (suy nghĩ): Trực kênh là việc được giao. Trên phiếu có dòng nào ghi ai ngồi gửi không?
-  - "CLB Robotics cố tình tung tin để hại CLB mình." ❌ → **Hà Vy**: Phiếu ghi một tài khoản với một giờ gửi. "Cố tình" với "cả CLB" thì cột nào nói?
-
-- **Tùng** (chỉ tay): Nhưng mà anh Nam trực kênh. Tớ vẫn cá là anh Nam.
-- **Minh Anh** (nghiêm túc): Chị không nói là Nam. Nhưng Nam là đầu mối duy nhất mình đang có. Phải hỏi cho ra.
-- **Duy**: Còn một chuyện mới: phòng văn phòng xưởng thường khóa, chìa ban chủ nhiệm giữ. Người ngồi máy đó tối thứ Hai có chìa, hoặc được mở cửa cho.
-- **Hà Vy** (suy nghĩ): Khoan. Mật khẩu thì cả ban chủ nhiệm đều biết mà.
-- **Duy**: Em thì chờ thêm một nguồn nữa rồi mới nói.
-> 📜 **[THẺ CHỮ]** Một tài khoản chưa phải là một con người. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
-
-🏁 **KẾT THÚC** — Hoàn tất nhiệm vụ.
-> **Một tài khoản, chưa phải một người** — Tin gốc đi từ tài khoản kênh của CLB Robotics, lúc 22:40 tối thứ Hai. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
+- **Minh Anh** (nghiêm túc): Giấy mời đây. Hai giờ chiều thứ Ba, phòng Công tác sinh viên. (tạm)
 
 **Hết ngày.**
 
 
+**Lựa chọn tiếp theo:**
+- [Quay lại: Đang ở Phòng CLB](#doan-1)
+- [Sang thứ Hai, 14/10/2024](#doan-4)
 
 ---
 
-<a id="doan-29"></a>
-### Đoạn 29: Bản đồ Thứ Tư, 09/10/2024
+<a id="doan-54"></a>
+### Đoạn 54: Bản đồ Thứ Ba, 08/10/2024
+
+🗺️ **Bản đồ** — *Thứ Ba, 08/10/2024*
+
+*Những nơi có thể đi tới:*
+
+**Lựa chọn tiếp theo:**
+- [Đi tới: Về phòng KTX ăn tối](#doan-32)
+
+---
+
+<a id="doan-55"></a>
+### Đoạn 55: Bản đồ Thứ Tư, 09/10/2024
 
 🗺️ **Bản đồ** — *Thứ Tư, 09/10/2024*
 
 *Những nơi có thể đi tới:*
 
 **Lựa chọn tiếp theo:**
-- [Đi tới: Xưởng Robotics !](#doan-10)
-- [Đi tới: Căng tin (tùy chọn)](#doan-11)
-- [Đi tới: Quán trà đá (tùy chọn)](#doan-12)
-- [Đi tới: Ra cửa xem nốt bảng đăng ký.](#doan-17)
-- [Đi tới: Về báo chị Minh Anh.](#doan-23)
-- [Đi tới: Xem nốt nhật ký đăng nhập.](#doan-16)
+- [Đi tới: Xưởng Robotics !](#doan-33)
+- [Đi tới: Căng tin (tùy chọn)](#doan-34)
+- [Đi tới: Quán trà đá (tùy chọn)](#doan-35)
+- [Đi tới: Về phòng CLB báo chị Minh Anh](#doan-40)
 
 ---
 
-<a id="doan-30"></a>
-### Đoạn 30: Sau khi xem hết các chỗ ở Phòng CLB
+<a id="doan-56"></a>
+### Đoạn 56: Bản đồ Thứ Năm, 10/10/2024
+
+🗺️ **Bản đồ** — *Thứ Năm, 10/10/2024*
+
+*Những nơi có thể đi tới:*
+
+**Lựa chọn tiếp theo:**
+- [Đi tới: Đi cùng Tùng ra căng tin](#doan-15)
+- [Đi tới: Đi cùng Tùng sang xưởng Robotics](#doan-36)
+- [Đi tới: Ra cửa xem nốt bảng đăng ký.](#doan-46)
+- [Đi tới: Về báo chị Minh Anh.](#doan-48)
+- [Đi tới: Xem nốt nhật ký đăng nhập.](#doan-45)
+
+---
+
+<a id="doan-57"></a>
+### Đoạn 57: Bản đồ Thứ Hai, 14/10/2024
+
+🗺️ **Bản đồ** — *Thứ Hai, 14/10/2024*
+
+*Những nơi có thể đi tới:*
+
+**Lựa chọn tiếp theo:**
+- [Đi tới: Phòng CLB !](#doan-16)
+- [Đi tới: Sảnh tòa B (tùy chọn)](#doan-17)
+
+---
+
+<a id="doan-58"></a>
+### Đoạn 58: Bản đồ Thứ Ba, 15/10/2024
+
+🗺️ **Bản đồ** — *Thứ Ba, 15/10/2024*
+
+*Những nơi có thể đi tới:*
+
+**Lựa chọn tiếp theo:**
+- [Đi tới: Đi cùng chị Minh Anh sang phòng Công tác sinh viên](#doan-18)
+- [Đi tới: Về phòng CLB](#doan-31)
+
+---
+
+<a id="doan-60"></a>
+### Đoạn 60: Sau khi xem hết các chỗ ở Phòng CLB
 
 #### 💻 Màn tra dữ liệu: Lọc bằng (thẻ `c-tin-bang`)
 *Đề bài:* Kênh sinh viên chuyền nhau câu tin đồn. Thử tìm xem có tin nào giống hệt câu đó không?
@@ -713,23 +1144,280 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Hà Vy** (suy nghĩ): Vậy thử xem tin nào bắt đầu bằng câu đó. Cậu dùng "%" nhé. (tạm)
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-29)
-- [Đi tiếp](#doan-6)
+- [Mở bản đồ](#doan-54)
+- [Đi tiếp](#doan-12)
 
 ---
 
-<a id="doan-31"></a>
-### Đoạn 31: Sau khi xem hết các chỗ ở Phòng CLB
+<a id="doan-61"></a>
+### Đoạn 61: Tiếp tục: Chiều 15/10, phòng Công tác sinh viên: buổi giải trình, Quân hai nhịp
 
+- **Quân**: Tôi ghi rồi. Một máy, một giờ. Sang ý tiếp. (tạm)
+
+- [Đọc tiếp sang Đoạn 62: Đối chất: Trình Hai lần đăng nhập ngày 07/10](#doan-62)
+
+---
+
+<a id="doan-62"></a>
+### Đoạn 62: Đối chất: Trình Hai lần đăng nhập ngày 07/10
+
+⚖️ **Phản hồi đối chất:**
+- *Suy nghĩ của bạn:* *(Nhật ký đăng nhập của kênh ghi 22 giờ 31 tối mùng 7, tài khoản kênh vào từ máy văn phòng xưởng. Chín phút sau, tin gốc được gửi. (tạm))*
+- **Quân** (sững sờ): Một máy để bàn trong xưởng. Không phải điện thoại. (tạm)
+- **Cô Lan**: Cô ghi lại: một máy, một giờ. (tạm)
+
+✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-29)
-- [Mở bản đồ](#doan-29)
+- [Tiếp tục câu chuyện](#doan-61)
 
 ---
 
-<a id="doan-32"></a>
-### Đoạn 32: Sau khi xem hết các chỗ ở Xưởng CLB Robotics
+<a id="doan-63"></a>
+### Đoạn 63: Đối chất: Trình Tối 07/10 xưởng mở tới 23 giờ
+
+⚖️ **Phản hồi đối chất:**
+- **Minh Anh**: Thưa cô, tối đó xưởng đăng ký mở tới 23 giờ cho đội tập ạ. (tạm)
+- **Quân**: Xưởng mở thì có người. Có người ở xưởng chưa nói tin gửi từ xưởng. (tạm)
+
+⚠️ *Căn cứ này chưa đủ để kết luận.*
+
+**Lựa chọn tiếp theo:**
+- [Quay lại đối chất để chọn thẻ khác](#doan-18)
+
+---
+
+<a id="doan-64"></a>
+### Đoạn 64: Đối chất: Trình Tin gốc: 22:40 tối 07/10
+
+⚖️ **Phản hồi đối chất:**
+- **Quân** (tự đắc): Tờ này cho tôi giờ gửi và tài khoản. Máy nào thì không. (tạm)
+- **Hà Vy** (suy nghĩ): Giờ thì có rồi. Chỗ thì phải tìm ở tờ khác. (tạm)
+
+⚠️ *Căn cứ này chưa đủ để kết luận.*
+
+**Lựa chọn tiếp theo:**
+- [Quay lại đối chất để chọn thẻ khác](#doan-18)
+
+---
+
+<a id="doan-65"></a>
+### Đoạn 65: Đối chất: Trình [Ngày gửi tin gốc]
+
+⚖️ **Phản hồi đối chất:**
+- **Quân**: Ngày gửi thì bên tôi biết rồi. Tôi hỏi chỗ gửi. (tạm)
+
+⚠️ *Căn cứ này chưa đủ để kết luận.*
+
+**Lựa chọn tiếp theo:**
+- [Quay lại đối chất để chọn thẻ khác](#doan-18)
+
+---
+
+<a id="doan-66"></a>
+### Đoạn 66: Đối chất: Chưa đủ căn cứ
+
+⚖️ **Phản hồi khi thừa nhận chưa đủ căn cứ:**
+- **Minh Anh** (lo lắng): Thưa cô, bọn em chưa khoanh được tin gửi từ máy nào ạ. (tạm)
+- **Quân**: Vậy bên tôi ghi: gửi từ một tài khoản nhiều người biết mật khẩu, chưa rõ nơi gửi. (tạm)
+
+**Lựa chọn tiếp theo:**
+- [Quay lại đối chất](#doan-18)
+
+---
+
+<a id="doan-67"></a>
+### Đoạn 67: Đối chất: Thẻ không khớp
+
+⚖️ **Phản hồi khi trình thẻ không liên quan:**
+- **Quân**: Tờ này liên quan gì tới chỗ tin được gửi? (tạm)
+
+**Lựa chọn tiếp theo:**
+- [Quay lại đối chất](#doan-18)
+
+---
+
+<a id="doan-68"></a>
+### Đoạn 68: Tiếp tục: Chiều 15/10, phòng Công tác sinh viên: buổi giải trình, Quân hai nhịp
+
+
+- [Đọc tiếp sang Đoạn 69: Đối chất: Trình Hai lần đăng nhập ngày 07/10](#doan-69)
+
+---
+
+<a id="doan-69"></a>
+### Đoạn 69: Đối chất: Trình Hai lần đăng nhập ngày 07/10
+
+⚖️ **Phản hồi đối chất:**
+- *Suy nghĩ của bạn:* *(Nhật ký đăng nhập ghi tài khoản, máy, ngày, giờ. Không chỗ nào ghi tên người ngồi máy. (tạm))*
+- *Suy nghĩ của bạn:* *(Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi. (tạm))*
+- **Quân** (sững sờ): Các bạn tự chỉ ra chỗ hồ sơ của mình dừng lại. (tạm)
+- **Cô Lan**: Cô ghi: một tài khoản, chưa phải một người. (tạm)
+
+✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
+
+**Lựa chọn tiếp theo:**
+- [Tiếp tục câu chuyện](#doan-68)
+
+---
+
+<a id="doan-70"></a>
+### Đoạn 70: Đối chất: Trình Tin gốc: 22:40 tối 07/10
+
+⚖️ **Phản hồi đối chất:**
+- *Suy nghĩ của bạn:* *(Tin gốc chỉ có tài khoản clb_robotics và giờ gửi. Tên người gửi không có trên phiếu. (tạm))*
+- *Suy nghĩ của bạn:* *(Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi. (tạm))*
+- **Quân** (sững sờ): Vậy là chưa phải Nam. Chưa phải ai cả. (tạm)
+
+✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
+
+**Lựa chọn tiếp theo:**
+- [Tiếp tục câu chuyện](#doan-68)
+
+---
+
+<a id="doan-71"></a>
+### Đoạn 71: Đối chất: Trình Tối 07/10 xưởng mở tới 23 giờ
+
+⚖️ **Phản hồi đối chất:**
+- **Hà Vy**: Bảng xưởng là lịch đăng ký, không phải điểm danh ạ. Tối đó ai có mặt, bảng không ghi. (tạm)
+- **Quân**: Đúng. Nhưng vẫn chưa nói ai ngồi máy. (tạm)
+
+⚠️ *Căn cứ này chưa đủ để kết luận.*
+
+**Lựa chọn tiếp theo:**
+- [Quay lại đối chất để chọn thẻ khác](#doan-18)
+
+---
+
+<a id="doan-72"></a>
+### Đoạn 72: Đối chất: Trình [Tin gốc]
+
+⚖️ **Phản hồi đối chất:**
+- **Quân** (tự đắc): Tờ này nói tin gốc là tin tự viết. Tự viết thì càng phải có người viết. (tạm)
+- **Tùng** (lo lắng): Ờ, tờ này không đỡ được mình. (tạm)
+
+⚠️ *Căn cứ này chưa đủ để kết luận.*
+
+**Lựa chọn tiếp theo:**
+- [Quay lại đối chất để chọn thẻ khác](#doan-18)
+
+---
+
+<a id="doan-73"></a>
+### Đoạn 73: Đối chất: Chưa đủ căn cứ
+
+⚖️ **Phản hồi khi thừa nhận chưa đủ căn cứ:**
+- **Minh Anh** (lo lắng): Thưa cô, bọn em chưa có gì để nói ngược lại ý đó ạ. (tạm)
+- **Quân**: Vậy biên bản ghi tên Nam ở mục người cần làm rõ. (tạm)
+
+**Lựa chọn tiếp theo:**
+- [Quay lại đối chất](#doan-18)
+
+---
+
+<a id="doan-74"></a>
+### Đoạn 74: Đối chất: Thẻ không khớp
+
+⚖️ **Phản hồi khi trình thẻ không liên quan:**
+- **Quân**: Tôi hỏi ai ngồi máy. Tờ này trả lời câu khác. (tạm)
+
+**Lựa chọn tiếp theo:**
+- [Quay lại đối chất](#doan-18)
+
+---
+
+<a id="doan-75"></a>
+### Đoạn 75: Tiếp tục: Đối chất Hiếu: tin có từ lâu, ai cũng chuyển
+
+
+- [Đọc tiếp sang Đoạn 76: Đối chất: Trình Tin gốc: 22:40 tối 07/10](#doan-76)
+
+---
+
+<a id="doan-76"></a>
+### Đoạn 76: Đối chất: Trình Tin gốc: 22:40 tối 07/10
+
+⚖️ **Phản hồi đối chất:**
+- *Suy nghĩ của bạn:* *(Cả bản xuất chỉ có đúng một tin tự viết mang câu ấy, gửi lúc 22 giờ 40 tối thứ Hai. Mấy tin còn lại đều chép lại nó. (tạm))*
+- *Suy nghĩ của bạn:* *(Tin có từ lâu thì tin đầu tiên đã phải là tin chuyển tiếp rồi. (tạm))*
+- **Hiếu** (ngạc nhiên): Tối thứ Hai tuần này á? Thế mà lớp tớ cứ tưởng chuyện từ năm ngoái. (tạm)
+
+✅ **Lập luận vững chắc! Đối thủ đã bị thuyết phục.**
+
+**Lựa chọn tiếp theo:**
+- [Tiếp tục câu chuyện](#doan-75)
+
+---
+
+<a id="doan-77"></a>
+### Đoạn 77: Đối chất: Trình [Tin gốc]
+
+⚖️ **Phản hồi đối chất:**
+- *Suy nghĩ của bạn:* *(Kênh ghi loại của từng tin: tin tự viết, tin bấm chuyển, tin gõ trả lời. (tạm))*
+- **Hiếu**: Thì đấy, bấm chuyển nhiều thế còn gì. (tạm)
+- **Hà Vy** (suy nghĩ): Biết có mấy loại tin là một chuyện. Tin tự viết gửi lúc nào thì phải có phiếu. (tạm)
+
+⚠️ *Căn cứ này chưa đủ để kết luận.*
+
+**Lựa chọn tiếp theo:**
+- [Quay lại đối chất để chọn thẻ khác](#doan-21)
+
+---
+
+<a id="doan-78"></a>
+### Đoạn 78: Đối chất: Trình Các tin mang câu tin đồn
+
+⚖️ **Phản hồi đối chất:**
+- **Hiếu**: Đấy, mấy tài khoản cùng mang một câu. Đúng là ai cũng chuyển. (tạm)
+- **Tùng** (gãi đầu): Ơ, tờ này lại đứng về phía cậu ấy. (tạm)
+
+⚠️ *Căn cứ này chưa đủ để kết luận.*
+
+**Lựa chọn tiếp theo:**
+- [Quay lại đối chất để chọn thẻ khác](#doan-21)
+
+---
+
+<a id="doan-79"></a>
+### Đoạn 79: Đối chất: Trình Ảnh chụp tin đồn
+
+⚖️ **Phản hồi đối chất:**
+- **Hiếu**: Ảnh chụp ghi chuyển tiếp nhiều lần. Đúng ý tớ còn gì. (tạm)
+- **Hà Vy** (suy nghĩ): Ảnh chỉ nói từ tối thứ Hai. Trước đó có hay không thì ảnh chưa nói. (tạm)
+
+⚠️ *Căn cứ này chưa đủ để kết luận.*
+
+**Lựa chọn tiếp theo:**
+- [Quay lại đối chất để chọn thẻ khác](#doan-21)
+
+---
+
+<a id="doan-80"></a>
+### Đoạn 80: Đối chất: Chưa đủ căn cứ
+
+⚖️ **Phản hồi khi thừa nhận chưa đủ căn cứ:**
+- **Tùng** (lo lắng): Bọn tớ chưa chỉ ra được nó bắt đầu từ đâu. (tạm)
+- **Hiếu**: Thế thì tớ vẫn nghĩ như cũ. (tạm)
+
+**Lựa chọn tiếp theo:**
+- [Quay lại đối chất](#doan-21)
+
+---
+
+<a id="doan-81"></a>
+### Đoạn 81: Đối chất: Thẻ không khớp
+
+⚖️ **Phản hồi khi trình thẻ không liên quan:**
+- **Hiếu**: Cái này thì dính gì tới tin đồn? (tạm)
+
+**Lựa chọn tiếp theo:**
+- [Quay lại đối chất](#doan-21)
+
+---
+
+<a id="doan-82"></a>
+### Đoạn 82: Sau khi xem hết các chỗ ở Xưởng CLB Robotics
 
 - **Nam**: Mấy em tìm ai? Ban chủ nhiệm chiều nay đi họp cả rồi.
 - *Suy nghĩ của bạn:* *(Bọn em bên CLB Thám Tử. Kênh của Robotics do ai trực ạ?)*
@@ -773,7 +1461,7 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TR
 - **Nam**: Thế em tưởng mỗi mình anh có mật khẩu à? Cả ban chủ nhiệm đều biết. Giờ đó xưởng còn mở, ai chả vào máy được, sao cứ đổ cho anh.
 - **Tùng** (chỉ tay): Xưởng mở giờ đó á? Ngoài cửa có dán bảng đăng ký kia kìa.
 - **Hà Vy** (suy nghĩ): Còn mật khẩu nhiều người biết thì kênh có ghi ai đăng nhập không? Không có thì bọn em nhờ bên quản trị trường mở.
-- **Nam**: …Khỏi nhờ. Anh là quản trị kênh, anh mở nhật ký đăng nhập được. Xem đi, xem cả bảng ngoài cửa luôn.
+- **Nam**: …Khỏi nhờ. Anh là quản trị kênh, anh mở nhật ký đăng nhập được. Mai các em qua mà xem, xem cả bảng ngoài cửa luôn.
 - **Duy**: Vậy là hai chỗ kiểm được. Xem cả hai, hay xem một rồi về báo chị Minh Anh, tùy mình.
 > [CHIBI chibi-v2-tung-chi-nam (sticker)] (chưa có mô tả)
 - **Khánh**: Nam, ban tổ chức cho đội mình lùi hạn lệ phí tới hết tháng 11 rồi, anh vừa xin được. Cứ tập tiếp đi. Anh lấy tập hồ sơ giải rồi quay lại họp. Có khách à?
@@ -782,11 +1470,10 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TR
 - **Tùng** (ngạc nhiên): Anh Khánh chủ tịch Hội sinh viên đấy.
 - **Nam**: Anh Khánh lo cho đội lắm. Kinh phí đi giải năm nay toàn anh ấy chạy.
 > [CG cg-v2-khanh-xuong] (chưa có mô tả)
-🔀 **Lựa chọn của bạn** (Hà Vy: "Hai chỗ Nam vừa buột miệng nói ra. Xem chỗ nào trước?"):
+- **Nam**: Giờ anh phải dọn chỗ cho đội tập tối nay. Mai chiều các em qua. (tạm)
 
 **Lựa chọn tiếp theo:**
-- [Mở bản đồ](#doan-29)
-- [Chọn: "Nhật ký đăng nhập của kênh."](#doan-16)
-- [Chọn: "Bảng đăng ký dùng xưởng ngoài cửa."](#doan-17)
+- [Mở bản đồ](#doan-55)
+- [Mở bản đồ](#doan-55)
 
 ---

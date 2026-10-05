@@ -10,7 +10,7 @@ Người chơi có thể đọc, đưa ra lựa chọn và xem kết quả SQL c
 | Vụ | Mã | Tên vụ án | Số chuỗi | Số màn tra | Tệp truyện chữ |
 |---|---|---|---|---|---|
 | 1 | `vu1` | **Vụ 1 — Chữ ký H** | 111 | 5 | [Đọc truyện](vu1.md) |
-| 2 | `vu-tin-don` | **Vụ 2 — Tin đồn** | 28 | 8 | [Đọc truyện](vu-tin-don.md) |
+| 2 | `vu-tin-don` | **Vụ 2 — Tin đồn** | 53 | 8 | [Đọc truyện](vu-tin-don.md) |
 | 3 | `vu3` | **Vụ 3 — Tranh cãi trong nhóm** | 25 | 6 | [Đọc truyện](vu3.md) |
 | 4 | `vu4` | **Vụ 4 — Giúp Nam** | 10 | 5 | [Đọc truyện](vu4.md) |
 | 5 | `vu5` | **Vụ 5 — Sổ quỹ** | 24 | 4 | [Đọc truyện](vu5.md) |
@@ -30,7 +30,8 @@ Người chơi có thể đọc, đưa ra lựa chọn và xem kết quả SQL c
 
 - **08/09/2024**: Nhập học, nhận phòng KTX.
 - **24/09/2024**: Vụ 1 — Chữ ký H.
-- **09/10/2024**: Vụ 2 — Tin đồn.
+- **08/10/2024**: Vụ 2 — Tin đồn.
+- **15/10/2024**: Việc ngày lễ — Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam.
 - **22/10/2024**: Vụ 3 — Tranh cãi trong nhóm.
 - **25/10/2024**: Nhiệm vụ phụ — Một lần dẫn lạc (mở sau Vụ 3).
 - **30/10/2024**: Nhiệm vụ phụ — Túi đồ trên ghế đá (mở sau Vụ -tin-don).

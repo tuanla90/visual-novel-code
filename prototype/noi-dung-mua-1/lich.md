@@ -38,11 +38,25 @@
 
 ## Tin đồn {vụ sau: vu-tin-don}
 - Chuỗi: tin-mo
-- Ngày: 2024-10-09 · bắt đầu ở: phong-clb
+- Ngày: 2024-10-08
 - Hạn chót: 2024-10-15
 - Việc chốt: Buổi giải trình chiều 15/10
+- Ngày 2024-10-08: tin-mo · bắt đầu ở: phong-clb
+- Ngày 2024-10-09: tin-n2-mo · bắt đầu ở: phong-clb
+- Ngày 2024-10-10: tin-n3-mo · bắt đầu ở: phong-ktx
+- Ngày 2024-10-14: tin-n5-mo · bắt đầu ở: phong-ktx
+- Ngày 2024-10-15: tin-n6-mo · bắt đầu ở: hoi-truong
 - Tiêu đề kết: Một tài khoản, chưa phải một người
 - Lời kết: Tin gốc đi từ tài khoản kênh của CLB Robotics, lúc 22:40 tối thứ Hai. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
+
+<!-- Việc ngày lễ của Vụ 2 (khung tạm; màn tra và lời đầy đủ để gói B8): 15/10 là Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam (15/10/1956); Hội Sinh viên trường đứng ra tổ chức lễ kỷ niệm buổi sáng, nên Quân bận và buổi giải trình diễn ra sau lễ. -->
+
+## Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam {việc ngày lễ: le-hoi-sv}
+- Ngày: 2024-10-15
+- Thuộc vụ: vu-tin-don
+- Chuỗi: le-hsv-mo
+- Người giao: quan
+- Khi lỡ: le-hsv-lo
 
 ## Tranh cãi trong nhóm {vụ sau: vu3}
 - Chuỗi: v3-qua-2010
