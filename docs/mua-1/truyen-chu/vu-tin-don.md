@@ -38,7 +38,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 
 | Tiêu chí | Ngưỡng thiết kế | Thực tế | Đánh giá |
 |---|---|---|---|
-| Số dòng thoại | ≥ 300 | 163 | ⚠️ Bản mẫu |
+| Số dòng thoại | ≥ 300 | 204 | ⚠️ Bản mẫu |
 | Số chuỗi phân cảnh | ≥ 40 | 53 | ✅ Đạt |
 | Màn tra cứu SQL | ≥ 5 | 8 | ✅ Đạt |
 | Nhịp đối chất | ≥ 3 | 3 | ✅ Đạt |
@@ -63,7 +63,11 @@ Thứ Ba, 08/10/2024 · Còn 7 ngày tới Buổi giải trình chiều 15/10
 - **Hiếu**: Tin này này. Tối thứ Hai mình còn bấm chuyển tiếp. Hồi lá thư mình cũng gật ầm ầm, giờ nghĩ lại thấy chưa kiểm gì cả. Gỡ rồi, sang báo một tiếng.
 - **Hà Vy**: Cảm ơn cậu. Cậu thấy nó đầu tiên ở đâu?
 - **Hiếu**: Trong kênh sinh viên. Ai gửi đầu thì tớ không để ý.
-- **Tùng** (ngạc nhiên): Thế sao tối thứ Hai cậu lại bấm chuyển? (tạm)
+- **Tùng** (ngạc nhiên): Thế sao tối thứ Hai cậu lại bấm chuyển làm gì? (tạm)
+- **Hiếu**: Tin này có từ lâu rồi, lớp nào cũng có, ai cũng chuyển thì tớ bấm theo thôi. (tạm)
+- **Hà Vy** (suy nghĩ): Có từ lâu là từ bao giờ? (tạm)
+- **Hiếu**: Thì tớ nghe bảo thế chứ ngày nào thì ai nhớ. (tạm)
+- **Hiếu**: Tớ báo một câu thế thôi, tớ về lớp đây. (tạm)
 > [CHIBI chibi-v2-hieu-cua (sticker)] (chưa có mô tả)
 > 🗂️ **Tài liệu mới**: **Ảnh chụp tin đồn** — 
 - *Suy nghĩ của bạn:* *("CLB Thám Tử soi dữ liệu sinh viên.")*
@@ -73,7 +77,10 @@ Thứ Ba, 08/10/2024 · Còn 7 ngày tới Buổi giải trình chiều 15/10
 - **Duy**: Tin công khai, ai vào kênh cũng đọc được. Em nạp vào laptop rồi chị. Bản xuất ghi nguyên văn từng tin, kể cả tin bấm chuyển tiếp: bấm chuyển thì chữ giữ y nguyên.
 > 🎯 **NHIỆM VỤ**: Những tin nào trong kênh mang câu tin đồn?
 > 💭 **Nhắc nhở** (Hà Vy): Lọc ra các tin mang câu đó trước đã. Chưa vội đọc tên ai.
-- **Minh Anh** (nghiêm túc): Cô Lan báo thêm: chiều thứ Ba tuần sau, Hội Sinh viên mời CLB mình lên giải trình. (tạm)
+- **Minh Anh** (nghiêm túc): Cô Lan báo thêm: chiều thứ Ba tuần sau, 15/10, Hội Sinh viên mời CLB mình lên giải trình. Ngay sau lễ kỷ niệm buổi sáng ở hội trường. (tạm)
+- **Tùng** (lo lắng): Lên giải trình là mình phải nói gì hở chị? (tạm)
+- **Minh Anh** (nghiêm túc): Nói tin này từ đâu ra, bằng những thứ mình tra được. (tạm)
+- *Duy khoanh ngày 15/10 trên tờ lịch dán cạnh laptop. (tạm)*
 📍 **Đang ở Phòng CLB:**
 *Những chỗ có thể khám phá ở đây:*
 
@@ -95,7 +102,12 @@ Thứ Tư, 09/10/2024 · Còn 6 ngày tới Buổi giải trình chiều 15/10
 📍 **Phòng CLB** — *Chiều 09/10, phòng CLB: Minh Anh ở chỗ cô Lan về*
 
 > 📜 **[THẺ CHỮ]** Thứ Tư, 09/10/2024
-- **Minh Anh**: Chị vừa ở chỗ cô Lan về. Cô hỏi mình đã tới đâu rồi. (tạm)
+- **Minh Anh**: Chị vừa ở chỗ cô Lan về, cô hỏi CLB mình đã tới đâu rồi. (tạm)
+- *Hà Vy chỉ lên bảng. (tạm)*
+- **Hà Vy**: Còn mấy tin người ta gõ thêm chữ, hôm qua chưa gom được. (tạm)
+- **Tùng** (lo lắng): Sáng nay có bạn cùng lớp hỏi đùa tớ: có tra điểm tớ không đấy. (tạm)
+- **Tùng** (gãi đầu): Tớ cười trừ, chẳng biết đáp sao. (tạm)
+- **Minh Anh** (nghiêm túc): Vậy hôm nay gom cho xong mấy tin đó đã. (tạm)
 📍 **Đang ở Phòng CLB:**
 *Những chỗ có thể khám phá ở đây:*
 
@@ -269,7 +281,9 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Hà Vy**: Đừng cá. Mới biết có năm tin mang câu đó. Tin nào có trước thì phiếu chưa nói.
 - **Minh Anh**: Kênh của Robotics thì phải có người trực. Các em sang xưởng hỏi xem.
 > 🎯 **NHIỆM VỤ**: Sang xưởng Robotics hỏi người trực kênh
-- **Duy**: Chiều nay xưởng bên ấy sinh hoạt thành viên tới năm giờ, tờ lịch nhà văn hóa ghi thế. (tạm)
+- **Duy**: Chiều nay xưởng bên ấy sinh hoạt thành viên tới năm giờ chị ạ. Tờ lịch nhà văn hóa ghim trên bảng ghi thế. (tạm)
+- **Minh Anh**: Vậy mai hẵng sang. (tạm)
+- **Minh Anh**: Hôm nay làm cho gọn danh sách tin này đã. (tạm)
 - *Suy nghĩ của bạn:* *(Có 5 tin bắt đầu bằng đoạn này. Từ từ, nhỡ họ viết thêm ở phía trước thì sao? Ví dụ "tớ nghe nói..." (tạm))*
 - **Tùng** (lo lắng): Lại còn thế nữa. Tìm tiếp đi cậu. (tạm)
 
@@ -283,7 +297,9 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 📍 **Phòng CLB** — *Duy chỉ mấy tin lệch chữ (việc chính)*
 
-- **Duy**: Mấy tin này lạ. Cùng câu ấy mà chữ mỗi tin một kiểu, như có người gõ lại bằng tay. (tạm)
+- *Duy mở lại bản xuất tin công khai trên màn hình. (tạm)*
+- **Duy**: Các em nhìn hai tin này đi, chữ khác hẳn các tin kia. (tạm)
+- **Duy**: Như có người ngồi gõ lại bằng tay. (tạm)
 
 **Lựa chọn tiếp theo:**
 - [Đi tiếp](#doan-20)
@@ -295,7 +311,10 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 📍 **Phòng CLB** — *Tùng đọc tin nhắn nhóm lớp*
 
-- **Tùng** (lo lắng): Nhóm lớp tớ có đứa định đăng ký CLB mình, giờ nhắn là thôi để sau. (tạm)
+- **Tùng** (lo lắng): Nhóm lớp tớ có đứa định đăng ký CLB mình. (tạm)
+- **Tùng** (lo lắng): Giờ nó nhắn vào nhóm: thôi để sau. (tạm)
+- *Hà Vy không nói gì. (tạm)*
+- *Chỉ mở vở, ghi thêm một dòng. (tạm)*
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Phòng CLB](#doan-1)
@@ -556,7 +575,12 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 📍 **Phòng CLB** — *Cuối chiều 08/10: khép danh sách, hẹn mai*
 
-- **Minh Anh**: Hôm nay gọn được một phần rồi. Mai ba giờ chiều đủ mặt nhé. (tạm)
+- *Suy nghĩ của bạn:* *(Có một tin nói chuyện khác hẳn, phải bỏ ra. (tạm))*
+- *Suy nghĩ của bạn:* *(Còn hai tin người ta gõ thêm chữ thì để mai tính. (tạm))*
+- **Minh Anh**: Mai ba giờ chiều, đủ mặt nhé. (tạm)
+- *Duy đậy nắp hộp bánh quy BQ-04, gạch thêm một vạch lên nhãn dán. (tạm)*
+- **Tùng** (vui vẻ): Đói quá rồi. (tạm)
+- **Tùng** (vui vẻ): Về phòng ăn tối không? (tạm)
 
 **Lựa chọn tiếp theo:**
 - [Mở bản đồ](#doan-54)
@@ -592,7 +616,11 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
-- *Suy nghĩ của bạn:* *(Hai tin của hai tài khoản này ghi loại khác hẳn: trả lời. (tạm))*
+- *Suy nghĩ của bạn:* *(Hai tin này ghi loại là trả lời. Hai mã sinh viên đều K24 khoa Kế toán, cùng khoa tớ. (tạm))*
+- **Tùng** (chỉ tay): Trả lời bên dưới tin người khác à. Tớ cá là hai bạn ấy... (tạm)
+- **Hà Vy**: Khoan cá đã. Hai bạn ấy cũng chỉ gõ lại câu cũ thôi. (tạm)
+- **Minh Anh** (nghiêm túc): Việc hôm nay là tìm xem tin này bắt đầu từ đâu. (tạm)
+- **Minh Anh** (nghiêm túc): Các em sang xưởng Robotics, hỏi người trực kênh bên đó. (tạm)
 
 **Lựa chọn tiếp theo:**
 - [Mở bản đồ](#doan-55)
@@ -655,7 +683,20 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 
 📍 **Phòng KTX 408** — *Tối 08/10, phòng 408: mất nước nóng, điện thoại rung (không khí ký túc xá, không có manh mối)*
 
-- *Tối, phòng 408. Vòi nước nóng ở tầng lại khô. (tạm)*
+- *Tối, phòng 408. Cả tầng lại mất nước nóng. (tạm)*
+- *Tùng xách xô xuống vòi tầng dưới. Mười phút sau quay lên, xô vẫn rỗng. (tạm)*
+- **Tùng** (gãi đầu): Hàng xô xếp tới tận cầu thang. Thôi, tắm nước lạnh vậy. (tạm)
+- *Điện thoại của Tùng rung trên giường. Rồi rung tiếp. (tạm)*
+- **Tùng** (lo lắng): Nhóm lớp, nhóm quê, đứa nào cũng gửi cái tin kia, kèm cái mặt cười. (tạm)
+- *Tùng tắt tiếng, úp điện thoại xuống gối. (tạm)*
+- *Suy nghĩ của bạn:* *(Cậu có trả lời ai không? (tạm))*
+- **Tùng** (gãi đầu): Định cãi, rồi thôi. Cãi bằng gì bây giờ. (tạm)
+- *Tùng lôi cuốn sổ nợ ra, lật tới dòng chín. (tạm)*
+- **Tùng** (vui vẻ): Nửa gói mì, chủ nợ là cậu. Cho tớ khất tới thứ Sáu nhé. (tạm)
+- **Tùng** (vui vẻ): Mà tớ cá mai có nước nóng lại. (tạm)
+- *Mười một giờ, đèn hành lang tắt. (tạm)*
+- **Tùng** (gãi đầu): Ở nhà giờ này là mẹ tớ quát đi ngủ rồi đấy. (tạm)
+- *Hai đứa cười trong bóng tối. (tạm)*
 
 **Hết ngày.**
 

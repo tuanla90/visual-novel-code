@@ -218,42 +218,83 @@
 
 ## tin-mo-hieu
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 08/10. Nơi: phòng CLB (`phong-clb`), Hiếu còn đứng ở cửa, ngay sau `tin-mo.1`. Có mặt: Hiếu, Minh Anh, Duy, Tùng, Hà Vy, người chơi. Mục đích: Hiếu tự nói ra kết luận sai của vụ, trước mọi màn tra. Nhịp: (1) Tùng hỏi Hiếu tối thứ Hai bấm chuyển tiếp làm gì. (2) Hiếu nói thẳng: tin này có từ lâu rồi, lớp nào cũng có, ai cũng chuyển, Hiếu chỉ bấm theo. (3) Hà Vy hỏi lại một câu ngắn: "có từ lâu" là từ bao giờ. (4) Hiếu không nói được ngày nào, chỉ bảo "nghe bảo thế", rồi chào đi. Phải lộ: ý "tin có từ lâu, ai cũng chuyển" do chính Hiếu nói (tự nhiên, không đọc như khẩu hiệu). Cấm lộ: giờ 22:40, tin gốc, tài khoản Robotics. Trò đùa: không. Số dòng nhắm tới: 5 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
-- **tung** (surprised): Thế sao tối thứ Hai cậu lại bấm chuyển? (tạm)
+- **tung** (surprised): Thế sao tối thứ Hai cậu lại bấm chuyển làm gì? (tạm)
+- **hieu** (neutral): Tin này có từ lâu rồi, lớp nào cũng có, ai cũng chuyển thì tớ bấm theo thôi. (tạm)
+- **ha-vy** (thinking): Có từ lâu là từ bao giờ? (tạm)
+- **hieu** (neutral): Thì tớ nghe bảo thế chứ ngày nào thì ai nhớ. (tạm)
+- **hieu** (neutral): Tớ báo một câu thế thôi, tớ về lớp đây. (tạm)
 
 ## tin-mo-han
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 08/10. Nơi: phòng CLB, sau `tin-mo.2`. Có mặt: Minh Anh, Duy, Tùng, Hà Vy, người chơi. Mục đích: đặt hạn chót của vụ. Nhịp: (1) Minh Anh: cô Lan báo Hội Sinh viên trường sẽ mời CLB lên giải trình chiều thứ Ba tuần sau, sau lễ kỷ niệm Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam do Hội Sinh viên tổ chức. (2) Tùng hỏi giải trình là phải nói gì; Minh Anh: nói tin này từ đâu ra, bằng thứ mình tra được. (3) Duy (cho thấy, không kể) viết "15/10" lên tờ lịch dán cạnh laptop. Phải lộ: ngày 15/10, buổi chiều, sau lễ kỷ niệm. Cấm lộ: Quân sẽ hỏi gì (Quân quen mặt từ Vụ 1, nhắc tên được nhưng không nói nội dung). Trò đùa: không. Số dòng nhắm tới: 4 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
-- **minh-anh** (serious): Cô Lan báo thêm: chiều thứ Ba tuần sau, Hội Sinh viên mời CLB mình lên giải trình. (tạm)
+- **minh-anh** (serious): Cô Lan báo thêm: chiều thứ Ba tuần sau, 15/10, Hội Sinh viên mời CLB mình lên giải trình. Ngay sau lễ kỷ niệm buổi sáng ở hội trường. (tạm)
+- **tung** (worried): Lên giải trình là mình phải nói gì hở chị? (tạm)
+- **minh-anh** (serious): Nói tin này từ đâu ra, bằng những thứ mình tra được. (tạm)
+- **narrator**: Duy khoanh ngày 15/10 trên tờ lịch dán cạnh laptop. (tạm)
 
 ## tin-n1-xuong-mai
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 08/10. Nơi: phòng CLB, sau `tin-mo.3` (Minh Anh vừa bảo sang xưởng hỏi). Có mặt: Minh Anh, Duy, Tùng, Hà Vy, người chơi. Mục đích: lý do chưa sang xưởng ngay hôm nay. Nhịp: (1) Duy nhìn tờ lịch đặt phòng nhà văn hóa ghim trên bảng: chiều nay xưởng Robotics sinh hoạt thành viên tới 5 giờ (khớp sổ `dat_phong`: XR-01 ngày 08/10, 14:00–17:00). (2) Minh Anh: mai hẵng sang, hôm nay làm cho gọn danh sách tin đã. Phải lộ: mai mới sang xưởng. Cấm lộ: lịch tối 07/10 của xưởng (để dành màn `c-tin-xuong`). Trò đùa: không. Số dòng nhắm tới: 3 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
-- **duy** (neutral): Chiều nay xưởng bên ấy sinh hoạt thành viên tới năm giờ, tờ lịch nhà văn hóa ghi thế. (tạm)
+- **duy** (neutral): Chiều nay xưởng bên ấy sinh hoạt thành viên tới năm giờ chị ạ. Tờ lịch nhà văn hóa ghim trên bảng ghi thế. (tạm)
+- **minh-anh** (neutral): Vậy mai hẵng sang. (tạm)
+- **minh-anh** (neutral): Hôm nay làm cho gọn danh sách tin này đã. (tạm)
 
 ## tin-n1-chot.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 08/10. Nơi: phòng CLB, cuối chiều (chuỗi `tin-n1-chot`, sau màn `c-tin-chua`). Có mặt: Minh Anh, Duy, Tùng, Hà Vy, người chơi. Mục đích: khép việc chính ngày 08/10. Nhịp: (1) Người chơi tóm một câu: có một tin tự viết lại (T-08), phải bỏ ra; còn hai tin người ta gõ thêm chữ thì mai tính. (2) Minh Anh dặn mai đủ người, ba giờ chiều. (3) Duy đậy nắp hộp BQ-04, gạch thêm một vạch lên nhãn. (4) Tùng rủ người chơi về ăn tối (dẫn vào nút "Về phòng KTX ăn tối"). Phải lộ: kế hoạch mai. Cấm lộ: số 7 tin của màn chứa cụm dài. Trò đùa: hộp bánh quy BQ-04 (Duy đếm bánh bằng vạch). Số dòng nhắm tới: 6 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
-- **minh-anh** (neutral): Hôm nay gọn được một phần rồi. Mai ba giờ chiều đủ mặt nhé. (tạm)
+- **player**: Có một tin nói chuyện khác hẳn, phải bỏ ra. (tạm)
+- **player**: Còn hai tin người ta gõ thêm chữ thì để mai tính. (tạm)
+- **minh-anh** (neutral): Mai ba giờ chiều, đủ mặt nhé. (tạm)
+- **narrator**: Duy đậy nắp hộp bánh quy BQ-04, gạch thêm một vạch lên nhãn dán. (tạm)
+- **tung** (happy): Đói quá rồi. (tạm)
+- **tung** (happy): Về phòng ăn tối không? (tạm)
 
 ## tin-n1-toi.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 08/10. Nơi: phòng 408 buổi tối (`phong-ktx-dem`). Có mặt: Tùng, người chơi. Mục đích: buổi tối không khí sinh viên, KHÔNG có manh mối. Nhịp: (1) Mất nước nóng cả tầng; Tùng xách xô ra vòi tầng dưới, về kể hàng xô xếp dài tới cầu thang. (2) Điện thoại Tùng rung liên tục: nhóm lớp, nhóm quê, ai cũng gửi cái tin kia kèm mặt cười. Tùng tắt tiếng, úp điện thoại xuống gối (hậu quả của tin đồn hiện ở chuyện nhỏ, không bàn vụ). (3) Người chơi hỏi Tùng có trả lời ai không; Tùng: định cãi, rồi thôi, "cãi bằng gì". (4) Tùng mở sổ nợ (dòng chín: nửa gói mì, chủ nợ là người chơi), xin khất tới thứ Sáu. (5) Tùng cá một câu ("Tớ cá mai có nước nóng"), để Hà Vy đếm sau. (6) Đèn tầng tắt lúc mười một giờ; Tùng nói một câu nhớ nhà, hai đứa cười. Phải lộ: không (cảnh không khí). Cấm lộ: mọi dữ kiện vụ. Trò đùa: sổ nợ của Tùng (dòng chín); Tùng cá. Số dòng nhắm tới: 14 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
-- **narrator**: Tối, phòng 408. Vòi nước nóng ở tầng lại khô. (tạm)
+- **narrator**: Tối, phòng 408. Cả tầng lại mất nước nóng. (tạm)
+- **narrator**: Tùng xách xô xuống vòi tầng dưới. Mười phút sau quay lên, xô vẫn rỗng. (tạm)
+- **tung** (gai-dau): Hàng xô xếp tới tận cầu thang. Thôi, tắm nước lạnh vậy. (tạm)
+- **narrator**: Điện thoại của Tùng rung trên giường. Rồi rung tiếp. (tạm)
+- **tung** (worried): Nhóm lớp, nhóm quê, đứa nào cũng gửi cái tin kia, kèm cái mặt cười. (tạm)
+- **narrator**: Tùng tắt tiếng, úp điện thoại xuống gối. (tạm)
+- **player**: Cậu có trả lời ai không? (tạm)
+- **tung** (gai-dau): Định cãi, rồi thôi. Cãi bằng gì bây giờ. (tạm)
+- **narrator**: Tùng lôi cuốn sổ nợ ra, lật tới dòng chín. (tạm)
+- **tung** (happy): Nửa gói mì, chủ nợ là cậu. Cho tớ khất tới thứ Sáu nhé. (tạm)
+- **tung** (happy): Mà tớ cá mai có nước nóng lại. (tạm)
+- **narrator**: Mười một giờ, đèn hành lang tắt. (tạm)
+- **tung** (gai-dau): Ở nhà giờ này là mẹ tớ quát đi ngủ rồi đấy. (tạm)
+- **narrator**: Hai đứa cười trong bóng tối. (tạm)
 
 <!-- Ngày 09/10 -->
 
 ## tin-n2-mo.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 09/10. Nơi: phòng CLB đầu giờ chiều (chuỗi đầu ngày `tin-n2-mo`). Có mặt: Minh Anh, Duy, Tùng, Hà Vy, người chơi. Mục đích: mở ngày 09/10, cho thấy tin vẫn lan. Nhịp: (1) Minh Anh vừa ở chỗ cô Lan về, cô hỏi CLB đã tới đâu. (2) Hà Vy chỉ lên bảng: còn mấy tin người ta gõ thêm chữ chưa gom được. (3) Tùng kể sáng nay có bạn cùng lớp hỏi đùa "có tra điểm tớ không" (hậu quả). Phải lộ: việc hôm nay: gom nốt các tin gõ thêm chữ. Cấm lộ: số tin của màn chứa cụm dài. Trò đùa: không. Số dòng nhắm tới: 6 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
 - [THẺ CHỮ] **narrator**: Thứ Tư, 09/10/2024
-- **minh-anh** (neutral): Chị vừa ở chỗ cô Lan về. Cô hỏi mình đã tới đâu rồi. (tạm)
+- **minh-anh** (neutral): Chị vừa ở chỗ cô Lan về, cô hỏi CLB mình đã tới đâu rồi. (tạm)
+- **narrator**: Hà Vy chỉ lên bảng. (tạm)
+- **ha-vy** (neutral): Còn mấy tin người ta gõ thêm chữ, hôm qua chưa gom được. (tạm)
+- **tung** (worried): Sáng nay có bạn cùng lớp hỏi đùa tớ: có tra điểm tớ không đấy. (tạm)
+- **tung** (gai-dau): Tớ cười trừ, chẳng biết đáp sao. (tạm)
+- **minh-anh** (serious): Vậy hôm nay gom cho xong mấy tin đó đã. (tạm)
 
 ## tin-n2-duy.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 09/10. Nơi: phòng CLB, điểm bấm Duy "!". Có mặt: Duy, người chơi (cả nhóm ở trong phòng). Mục đích: dẫn vào màn chứa cụm dài (thẻ `c-tin-sach`, mã cũ giữ nguyên). Nhịp: (1) Duy mở lại bản xuất, chỉ hai tin mang câu tin đồn mà chữ khác hẳn các tin kia, như có người gõ lại bằng tay. (2) Duy không giải thích; để người chơi tự nhìn (loại tin sẽ lộ ở `tin-n2-in`). Phải lộ: có hai tin gõ tay. Cấm lộ: cách làm cho các tin khớp nhau (không biến lời thành hướng dẫn); đừng gắn chặt vào kiểu lệch cụ thể (dấu cách, chữ thường), vì dữ liệu hai tin này có thể đổi ở gói sau. Trò đùa: không. Số dòng nhắm tới: 3 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
-- **duy** (neutral): Mấy tin này lạ. Cùng câu ấy mà chữ mỗi tin một kiểu, như có người gõ lại bằng tay. (tạm)
+- **narrator**: Duy mở lại bản xuất tin công khai trên màn hình. (tạm)
+- **duy** (neutral): Các em nhìn hai tin này đi, chữ khác hẳn các tin kia. (tạm)
+- **duy** (neutral): Như có người ngồi gõ lại bằng tay. (tạm)
 
 ## tin-n2-tung.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 09/10. Nơi: phòng CLB, điểm bấm Tùng "?". Có mặt: Tùng, Hà Vy, người chơi. Mục đích: hậu quả của tin đồn, cho thấy không giảng. Nhịp: (1) Tùng đọc tin nhắn nhóm lớp: có đứa định đăng ký CLB Thám Tử giờ nhắn "thôi để sau". (2) Hà Vy không nói gì, ghi một dòng vào vở. Phải lộ: CLB mất người định vào. Cấm lộ: không. Trò đùa: không. Số dòng nhắm tới: 4 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
-- **tung** (worried): Nhóm lớp tớ có đứa định đăng ký CLB mình, giờ nhắn là thôi để sau. (tạm)
+- **tung** (worried): Nhóm lớp tớ có đứa định đăng ký CLB mình. (tạm)
+- **tung** (worried): Giờ nó nhắn vào nhóm: thôi để sau. (tạm)
+- **narrator**: Hà Vy không nói gì. (tạm)
+- **narrator**: Chỉ mở vở, ghi thêm một dòng. (tạm)
 
 ## tin-n2-in
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 09/10. Nơi: phòng CLB, sau màn `c-tin-in` (2 dòng: SV240201, SV240207). Có mặt: Minh Anh, Duy, Tùng, Hà Vy, người chơi. Mục đích: cho người chơi THẤY hai tin lệch chữ là tin gõ tay trả lời, rồi chốt việc sang xưởng. Nhịp: (1) Người chơi đọc cột loại: hai tin này không phải chuyển tiếp mà là trả lời, tức gõ tay dưới tin người khác; cho thấy bằng việc đọc, không giảng. (2) Tùng định cá là hai bạn ấy bịa ra; Hà Vy cắt: hai bạn ấy cũng chỉ gõ lại câu cũ. (3) Minh Anh: việc của hôm nay là tìm chỗ tin bắt đầu, sang xưởng hỏi người trực kênh. Phải lộ: loại tin thứ ba (trả lời); hai mã là K24 khoa Kế toán, cùng khoa người chơi. Cấm lộ: tên hai bạn ấy. Trò đùa: Tùng định cá (chưa kịp cá thì bị cắt, không tính). Số dòng nhắm tới: 5 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
-- **player**: Hai tin của hai tài khoản này ghi loại khác hẳn: trả lời. (tạm)
+- **player**: Hai tin này ghi loại là trả lời. Hai mã sinh viên đều K24 khoa Kế toán, cùng khoa tớ. (tạm)
+- **tung** (chi-tay): Trả lời bên dưới tin người khác à. Tớ cá là hai bạn ấy... (tạm)
+- **ha-vy** (neutral): Khoan cá đã. Hai bạn ấy cũng chỉ gõ lại câu cũ thôi. (tạm)
+- **minh-anh** (serious): Việc hôm nay là tìm xem tin này bắt đầu từ đâu. (tạm)
+- **minh-anh** (serious): Các em sang xưởng Robotics, hỏi người trực kênh bên đó. (tạm)
 
 ## tin-gap-nam-het
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 09/10. Nơi: xưởng Robotics, cuối chuỗi `tin-gap-nam` (sau cảnh Khánh). Có mặt: Nam, Tùng, Hà Vy, Duy, người chơi. Mục đích: hẹn mai quay lại xem hai chỗ kiểm (nhật ký đăng nhập, bảng đăng ký). Nhịp: (1) Nam phải dọn xưởng cho đội tập tối nay (khớp sổ `dat_phong`: XR-01 ngày 09/10, 19:00–21:00), hẹn mai chiều. (2) Hà Vy nhìn lướt tờ bảng đăng ký ngoài cửa, không đọc gì ra miệng. Phải lộ: mai quay lại. Cấm lộ: nội dung nhật ký, nội dung bảng đăng ký. Trò đùa: không. Số dòng nhắm tới: 3 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->

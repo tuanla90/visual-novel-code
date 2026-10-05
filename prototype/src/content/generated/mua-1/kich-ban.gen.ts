@@ -7074,7 +7074,31 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "surprised",
-          "text": "Thế sao tối thứ Hai cậu lại bấm chuyển? (tạm)"
+          "text": "Thế sao tối thứ Hai cậu lại bấm chuyển làm gì? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Tin này có từ lâu rồi, lớp nào cũng có, ai cũng chuyển thì tớ bấm theo thôi. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Có từ lâu là từ bao giờ? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Thì tớ nghe bảo thế chứ ngày nào thì ai nhớ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Tớ báo một câu thế thôi, tớ về lớp đây. (tạm)"
         },
         {
           "type": "image",
@@ -7140,7 +7164,24 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "serious",
-          "text": "Cô Lan báo thêm: chiều thứ Ba tuần sau, Hội Sinh viên mời CLB mình lên giải trình. (tạm)"
+          "text": "Cô Lan báo thêm: chiều thứ Ba tuần sau, 15/10, Hội Sinh viên mời CLB mình lên giải trình. Ngay sau lễ kỷ niệm buổi sáng ở hội trường. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Lên giải trình là mình phải nói gì hở chị? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Nói tin này từ đâu ra, bằng những thứ mình tra được. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Duy khoanh ngày 15/10 trên tờ lịch dán cạnh laptop. (tạm)"
         },
         {
           "type": "explore",
@@ -7332,7 +7373,19 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Chiều nay xưởng bên ấy sinh hoạt thành viên tới năm giờ, tờ lịch nhà văn hóa ghi thế. (tạm)"
+          "text": "Chiều nay xưởng bên ấy sinh hoạt thành viên tới năm giờ chị ạ. Tờ lịch nhà văn hóa ghim trên bảng ghi thế. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Vậy mai hẵng sang. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Hôm nay làm cho gọn danh sách tin này đã. (tạm)"
         },
         {
           "type": "line",
@@ -7392,9 +7445,36 @@ const GOC = {
       "nodes": [
         {
           "type": "line",
+          "speaker": "player",
+          "text": "Có một tin nói chuyện khác hẳn, phải bỏ ra. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Còn hai tin người ta gõ thêm chữ thì để mai tính. (tạm)"
+        },
+        {
+          "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Hôm nay gọn được một phần rồi. Mai ba giờ chiều đủ mặt nhé. (tạm)"
+          "text": "Mai ba giờ chiều, đủ mặt nhé. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Duy đậy nắp hộp bánh quy BQ-04, gạch thêm một vạch lên nhãn dán. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Đói quá rồi. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Về phòng ăn tối không? (tạm)"
         },
         {
           "type": "branch",
@@ -7428,7 +7508,78 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Tối, phòng 408. Vòi nước nóng ở tầng lại khô. (tạm)"
+          "text": "Tối, phòng 408. Cả tầng lại mất nước nóng. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng xách xô xuống vòi tầng dưới. Mười phút sau quay lên, xô vẫn rỗng. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Hàng xô xếp tới tận cầu thang. Thôi, tắm nước lạnh vậy. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Điện thoại của Tùng rung trên giường. Rồi rung tiếp. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Nhóm lớp, nhóm quê, đứa nào cũng gửi cái tin kia, kèm cái mặt cười. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng tắt tiếng, úp điện thoại xuống gối. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Cậu có trả lời ai không? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Định cãi, rồi thôi. Cãi bằng gì bây giờ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng lôi cuốn sổ nợ ra, lật tới dòng chín. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Nửa gói mì, chủ nợ là cậu. Cho tớ khất tới thứ Sáu nhé. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Mà tớ cá mai có nước nóng lại. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Mười một giờ, đèn hành lang tắt. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Ở nhà giờ này là mẹ tớ quát đi ngủ rồi đấy. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hai đứa cười trong bóng tối. (tạm)"
         },
         {
           "type": "xong-viec-chinh"
@@ -7451,7 +7602,36 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Chị vừa ở chỗ cô Lan về. Cô hỏi mình đã tới đâu rồi. (tạm)"
+          "text": "Chị vừa ở chỗ cô Lan về, cô hỏi CLB mình đã tới đâu rồi. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hà Vy chỉ lên bảng. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Còn mấy tin người ta gõ thêm chữ, hôm qua chưa gom được. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Sáng nay có bạn cùng lớp hỏi đùa tớ: có tra điểm tớ không đấy. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Tớ cười trừ, chẳng biết đáp sao. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Vậy hôm nay gom cho xong mấy tin đó đã. (tạm)"
         },
         {
           "type": "explore",
@@ -7489,9 +7669,20 @@ const GOC = {
       "nodes": [
         {
           "type": "line",
+          "speaker": "narrator",
+          "text": "Duy mở lại bản xuất tin công khai trên màn hình. (tạm)"
+        },
+        {
+          "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Mấy tin này lạ. Cùng câu ấy mà chữ mỗi tin một kiểu, như có người gõ lại bằng tay. (tạm)"
+          "text": "Các em nhìn hai tin này đi, chữ khác hẳn các tin kia. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Như có người ngồi gõ lại bằng tay. (tạm)"
         },
         {
           "type": "goto",
@@ -7509,7 +7700,23 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "Nhóm lớp tớ có đứa định đăng ký CLB mình, giờ nhắn là thôi để sau. (tạm)"
+          "text": "Nhóm lớp tớ có đứa định đăng ký CLB mình. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Giờ nó nhắn vào nhóm: thôi để sau. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hà Vy không nói gì. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chỉ mở vở, ghi thêm một dòng. (tạm)"
         }
       ]
     },
@@ -7553,7 +7760,31 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Hai tin của hai tài khoản này ghi loại khác hẳn: trả lời. (tạm)"
+          "text": "Hai tin này ghi loại là trả lời. Hai mã sinh viên đều K24 khoa Kế toán, cùng khoa tớ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Trả lời bên dưới tin người khác à. Tớ cá là hai bạn ấy... (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Khoan cá đã. Hai bạn ấy cũng chỉ gõ lại câu cũ thôi. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Việc hôm nay là tìm xem tin này bắt đầu từ đâu. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Các em sang xưởng Robotics, hỏi người trực kênh bên đó. (tạm)"
         },
         {
           "type": "explore",
