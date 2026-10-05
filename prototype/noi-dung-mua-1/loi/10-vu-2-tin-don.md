@@ -384,29 +384,65 @@
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 14/10. Nơi: phòng 408 buổi trưa (`phong-ktx`). Có mặt: Tùng, người chơi. Mục đích: câu chuyển qua ba ngày trống; mở ngày 14/10. Nhịp: (1) Người kể: ba ngày cuối tuần CLB nghỉ; kênh sinh viên vẫn có người chuyển cái tin ấy, thưa dần. (2) Tùng về quê hai ngày, mang lên túi bánh mẹ gói. (3) Tùng: chiều tập ở phòng CLB. Phải lộ: chiều tập trước. Cấm lộ: thư viện tối thứ Hai (Vụ 4). Trò đùa: không. Số dòng nhắm tới: 5 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
 - [THẺ CHỮ] **narrator**: Thứ Hai, 14/10/2024
 - **narrator**: Ba ngày cuối tuần, CLB nghỉ. Kênh sinh viên vẫn có người chuyển cái tin ấy, thưa dần. (tạm)
+- **narrator**: Trưa thứ Hai, Tùng ở quê lên, xách theo một túi bánh. (tạm)
+- **tung** (happy): Mẹ tớ gói cả rổ bánh khúc, bắt mang đi bằng được. Cậu ăn không? (tạm)
+- **player**: Cho tớ một cái. (tạm)
+- **tung** (neutral): Chiều nay tập ở phòng CLB đấy. Mai là lên giải trình rồi. (tạm)
 
 ## tin-n5-toa-b.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 14/10. Nơi: sảnh tòa B (nơi tùy chọn), bác Thịnh. Có mặt: bác Thịnh, Tùng, Hà Vy, người chơi. Mục đích: nơi tùy chọn: tin đồn lan tới người ngoài trường. Nhịp: (1) Bác Thịnh đang treo băng rôn lễ kỷ niệm ngày mai. (2) Bác hỏi các cháu có "soi điểm" thật không, cháu bác ở quê cũng gửi cho bác cái tin ấy. (3) Tùng chối hơi to; người chơi nói một câu; bác cười, bảo bác hỏi cho biết. Phải lộ: tin lan ra ngoài trường. Cấm lộ: chuyện năm xưa của bác (để Vụ 10); bác chỉ neutral, smile. Trò đùa: không. Số dòng nhắm tới: 6 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
+- **narrator**: Bác Thịnh đứng trên ghế, đang treo băng rôn lễ kỷ niệm ngày mai. (tạm)
 - **bac-tu** (neutral): Mấy đứa CLB Thám Tử đấy à? Giữ hộ bác đầu băng rôn này cái. (tạm)
+- **bac-tu** (neutral): Mà các cháu soi điểm sinh viên thật đấy à? Thằng cháu bác ở quê cũng gửi cho bác cái tin ấy. (tạm)
+- **tung** (worried): Không có đâu bác ơi! (tạm)
+- **narrator**: Mấy bạn đi ngang sảnh quay lại nhìn. (tạm)
+- **player**: Bọn cháu tra gì cũng phải có phiếu, có người ngồi giám sát bác ạ. (tạm)
+- **bac-tu** (smile): Bác hỏi cho biết thôi. Kéo căng đầu bên ấy lên tí nào. (tạm)
 
 ## tin-n5-toa-b-an.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 14/10. Nơi: sảnh tòa B, chi tiết ẩn bảng tin. Có mặt: người chơi. Mục đích: chi tiết ẩn, nối chi tiết bảng tin Vụ 1 ngày 2. Nhịp: (1) Tờ thông báo lễ kỷ niệm Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam (nếu cần số: 68 năm, 1956–2024) dán đè lên góc tờ danh sách CLB năm ngoái có hình kính lúp vẽ thêm. Phải lộ: không. Cấm lộ: không. Trò đùa: không. Số dòng nhắm tới: 2 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
-- **narrator**: Tờ thông báo lễ kỷ niệm ngày truyền thống dán đè lên góc tờ danh sách CLB năm ngoái. (tạm)
+- **narrator**: Trên bảng tin có tờ thông báo mới: lễ kỷ niệm Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam, 15/10. (tạm)
+- **narrator**: Tờ ấy dán đè lên góc tờ danh sách CLB năm ngoái, che mất nửa cái kính lúp ai vẽ thêm. (tạm)
 
 ## tin-n5-phong.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 14/10. Nơi: phòng CLB chiều (chuỗi `tin-n5-phong`). Có mặt: Minh Anh, Duy, Tùng, Hà Vy, người chơi. Mục đích: tập trước buổi giải trình; khép việc chính ngày 14/10. Nhịp: (1) Duy mở hộp BQ-05 mới. (2) Minh Anh đóng vai người hỏi: tin bắt đầu từ đâu, gửi từ đâu. (3) Người chơi trả lời bằng việc đã làm (không đọc tên thẻ, không liệt kê). (4) Minh Anh hỏi câu khó: thế ai gửi. Tùng buột "anh Nam". (5) Hà Vy: "Lần thứ tư cậu cá trật từ đầu năm. Tớ có đếm." (số bốn ở 14/10 theo ghi nhớ của user). (6) Minh Anh không chữa hộ, bảo mai mỗi người chỉ nói điều có tờ giấy đỡ. (7) Duy xếp các tờ kết quả theo thứ tự ngày, kẹp ghim. Phải lộ: câu "ai gửi" sẽ được hỏi. Cấm lộ: câu trả lời đúng ("bản ghi cho biết tài khoản nào gửi…") không được nói ở đây; để người chơi tự nói ở đối chất. Trò đùa: hộp BQ-05; Hà Vy đếm cá trật: bốn. Số dòng nhắm tới: 14 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
-- **duy** (neutral): Hộp BQ-05. Hộp trước hết từ hôm thứ Năm, anh không hỏi ai ăn. (tạm)
+- **narrator**: Duy mở hộp bánh quy BQ-05, đặt ra giữa bàn. (tạm)
+- **duy** (neutral): Hộp trước hết từ hôm thứ Năm. Anh không hỏi ai ăn. (tạm)
+- **minh-anh** (neutral): Tập nhé. Chị hỏi như mai người ta sẽ hỏi. (tạm)
+- **minh-anh** (serious): Tin này bắt đầu từ đâu, gửi từ đâu? (tạm)
+- **player**: Mười giờ bốn mươi tối thứ Hai tuần trước, từ tài khoản kênh của Robotics. Vào kênh bằng máy văn phòng xưởng ạ. (tạm)
+- **minh-anh** (neutral): Thế ai gửi? (tạm)
+- **tung** (chi-tay): Anh Nam chứ ai ạ! (tạm)
+- **ha-vy** (neutral): Cậu lại cá đấy. Từ đầu năm cậu trật bốn lần rồi. (tạm)
+- **tung** (worried): Thì anh ấy trực kênh mà. (tạm)
+- **minh-anh** (serious): Mai chị không đỡ lời cho em được đâu, Tùng. (tạm)
+- **minh-anh** (serious): Mai ai cũng chỉ nói điều có giấy tờ làm chứng. (tạm)
+- **player**: Thế câu "ai gửi" thì trả lời sao hả chị? (tạm)
+- **minh-anh** (neutral): Câu đó mai em tự trả lời. (tạm)
+- **narrator**: Duy xếp các tờ kết quả theo thứ tự ngày, kẹp ghim lại. (tạm)
 
 <!-- Ngày 15/10 -->
 
 ## tin-n6-mo.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 15/10. Nơi: hội trường buổi sáng. Có mặt: Minh Anh, Tùng, Hà Vy, Duy, người chơi; Quân bận trên sân khấu. Mục đích: lễ kỷ niệm; dẫn sang buổi giải trình. Nhịp: (1) Hội trường kín ghế; Hội Sinh viên trường tổ chức lễ kỷ niệm Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam. (2) Người kể nhắc chủ tịch Hội phát biểu (Khánh không nói, không gọi họ tên). (3) Quân chạy qua chạy lại với tập giấy. (4) Minh Anh: hai giờ chiều, phòng Công tác sinh viên. Phải lộ: buổi chiều. Cấm lộ: mọi điều về Khánh ngoài việc đứng phát biểu. Trò đùa: không. Số dòng nhắm tới: 6 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
 - [THẺ CHỮ] **narrator**: Thứ Ba, 15/10/2024
-- **narrator**: Sáng, hội trường kín ghế. Băng rôn lễ kỷ niệm căng ngang sân khấu. (tạm)
+- **narrator**: Sáng, hội trường kín ghế. Băng rôn lễ kỷ niệm Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam căng ngang sân khấu. (tạm)
+- **narrator**: Chủ tịch Hội Sinh viên đang phát biểu trên bục. (tạm)
+- **narrator**: Quân ôm một tập giấy, chạy qua chạy lại bên sân khấu. (tạm)
+- **minh-anh** (neutral): Hai giờ chiều, phòng Công tác sinh viên. Đừng ai tới muộn. (tạm)
+- **tung** (neutral): Giấy tờ hôm qua chị cầm đủ chưa ạ? (tạm)
+- **minh-anh** (neutral): Đủ. Duy kẹp theo thứ tự ngày rồi. (tạm)
 
 ## le-hsv-mo.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 15/10. Nơi: hội trường sau lễ (việc ngày lễ, tạm). Có mặt: Quân, Tùng, người chơi. Mục đích: nhận việc ngày lễ; màn tra để gói B8. Nhịp: (1) Quân nhờ xem danh sách bốc thăm quà của buổi lễ, tên gõ lộn xộn (hoa thường lẫn lộn, dính dấu cách), cần biết ai trúng. (2) Quân nói chiều mới rảnh. (3) Tùng nhận lời trước khi người chơi kịp nói. Phải lộ: việc của Quân. Cấm lộ: SQL; tên người trúng. Trò đùa: không. Số dòng nhắm tới: 8 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->
 - **quan** (neutral): Các bạn bên CLB Thám Tử. Tôi nhờ một việc nhỏ, chiều tôi mới rảnh. (tạm)
+- **quan** (neutral): Danh sách bốc thăm quà của buổi lễ sáng nay đây. (tạm)
+- **quan** (neutral): Mỗi người gõ tên mình một kiểu. Hoa thường lẫn lộn, có tên còn thừa cả dấu cách. (tạm)
+- **quan** (neutral): Tôi cần biết những ai trúng trước buổi chiều. (tạm)
+- **tung** (happy): Để bọn em, anh ạ. (tạm)
+- **player**: Cậu nhận nhanh thế. (tạm)
+- **tung** (happy): Ăn trưa xong làm một lèo là xong ấy mà. (tạm)
+- **narrator**: Tùng đón tờ danh sách từ tay Quân. (tạm)
 
 ## le-hsv-lo.1
 <!-- DÀN Ý (B4.4b; luật viết ở docs/mua-1/brief/b4-4b-dan-y.md mục 0). Ngày 15/10. Nơi: hội trường (khi lỡ việc ngày lễ). Có mặt: người kể. Mục đích: hậu quả nhỏ, cho thấy. Nhịp: (1) Tờ danh sách bốc thăm vẫn kẹp dưới tập giấy của Quân, mép đã quăn. Phải lộ: không. Cấm lộ: không. Trò đùa: không. Số dòng nhắm tới: 1 dòng thoại (máy kiểm chỉ đòi tối thiểu 1). Dòng giữ chỗ bên dưới viết lại hay giữ đều được; mọi dòng mới kết bằng (tạm). -->

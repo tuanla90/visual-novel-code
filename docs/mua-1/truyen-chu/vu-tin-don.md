@@ -38,7 +38,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 
 | Tiêu chí | Ngưỡng thiết kế | Thực tế | Đánh giá |
 |---|---|---|---|
-| Số dòng thoại | ≥ 300 | 243 | ⚠️ Bản mẫu |
+| Số dòng thoại | ≥ 300 | 279 | ⚠️ Bản mẫu |
 | Số chuỗi phân cảnh | ≥ 40 | 53 | ✅ Đạt |
 | Màn tra cứu SQL | ≥ 5 | 8 | ✅ Đạt |
 | Nhịp đối chất | ≥ 3 | 3 | ✅ Đạt |
@@ -146,6 +146,10 @@ Thứ Hai, 14/10/2024 · Còn 1 ngày tới Buổi giải trình chiều 15/10
 
 > 📜 **[THẺ CHỮ]** Thứ Hai, 14/10/2024
 - *Ba ngày cuối tuần, CLB nghỉ. Kênh sinh viên vẫn có người chuyển cái tin ấy, thưa dần. (tạm)*
+- *Trưa thứ Hai, Tùng ở quê lên, xách theo một túi bánh. (tạm)*
+- **Tùng** (vui vẻ): Mẹ tớ gói cả rổ bánh khúc, bắt mang đi bằng được. Cậu ăn không? (tạm)
+- *Suy nghĩ của bạn:* *(Cho tớ một cái. (tạm))*
+- **Tùng**: Chiều nay tập ở phòng CLB đấy. Mai là lên giải trình rồi. (tạm)
 
 **Lựa chọn tiếp theo:**
 - [Mở bản đồ](#doan-54)
@@ -160,7 +164,12 @@ Thứ Ba, 15/10/2024 · Còn 0 ngày tới Buổi giải trình chiều 15/10
 📍 **Hội trường** — *Sáng 15/10, hội trường: lễ kỷ niệm*
 
 > 📜 **[THẺ CHỮ]** Thứ Ba, 15/10/2024
-- *Sáng, hội trường kín ghế. Băng rôn lễ kỷ niệm căng ngang sân khấu. (tạm)*
+- *Sáng, hội trường kín ghế. Băng rôn lễ kỷ niệm Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam căng ngang sân khấu. (tạm)*
+- *Chủ tịch Hội Sinh viên đang phát biểu trên bục. (tạm)*
+- *Quân ôm một tập giấy, chạy qua chạy lại bên sân khấu. (tạm)*
+- **Minh Anh**: Hai giờ chiều, phòng Công tác sinh viên. Đừng ai tới muộn. (tạm)
+- **Tùng**: Giấy tờ hôm qua chị cầm đủ chưa ạ? (tạm)
+- **Minh Anh**: Đủ. Duy kẹp theo thứ tự ngày rồi. (tạm)
 
 **Lựa chọn tiếp theo:**
 - [Đi cùng chị Minh Anh sang phòng Công tác sinh viên](#doan-18)
@@ -175,6 +184,13 @@ Thứ Ba, 15/10/2024 · Còn 0 ngày tới Buổi giải trình chiều 15/10
 📍 **Hội trường** — *Việc ngày lễ 15/10 (tạm): Quân nhờ xem danh sách bốc thăm quà*
 
 - **Quân**: Các bạn bên CLB Thám Tử. Tôi nhờ một việc nhỏ, chiều tôi mới rảnh. (tạm)
+- **Quân**: Danh sách bốc thăm quà của buổi lễ sáng nay đây. (tạm)
+- **Quân**: Mỗi người gõ tên mình một kiểu. Hoa thường lẫn lộn, có tên còn thừa cả dấu cách. (tạm)
+- **Quân**: Tôi cần biết những ai trúng trước buổi chiều. (tạm)
+- **Tùng** (vui vẻ): Để bọn em, anh ạ. (tạm)
+- *Suy nghĩ của bạn:* *(Cậu nhận nhanh thế. (tạm))*
+- **Tùng** (vui vẻ): Ăn trưa xong làm một lèo là xong ấy mà. (tạm)
+- *Tùng đón tờ danh sách từ tay Quân. (tạm)*
 
 Hết việc ngày lễ.
 
@@ -347,7 +363,20 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 📍 **Phòng CLB** — *Chiều 14/10, phòng CLB: tập trước buổi giải trình*
 
-- **Duy**: Hộp BQ-05. Hộp trước hết từ hôm thứ Năm, anh không hỏi ai ăn. (tạm)
+- *Duy mở hộp bánh quy BQ-05, đặt ra giữa bàn. (tạm)*
+- **Duy**: Hộp trước hết từ hôm thứ Năm. Anh không hỏi ai ăn. (tạm)
+- **Minh Anh**: Tập nhé. Chị hỏi như mai người ta sẽ hỏi. (tạm)
+- **Minh Anh** (nghiêm túc): Tin này bắt đầu từ đâu, gửi từ đâu? (tạm)
+- *Suy nghĩ của bạn:* *(Mười giờ bốn mươi tối thứ Hai tuần trước, từ tài khoản kênh của Robotics. Vào kênh bằng máy văn phòng xưởng ạ. (tạm))*
+- **Minh Anh**: Thế ai gửi? (tạm)
+- **Tùng** (chỉ tay): Anh Nam chứ ai ạ! (tạm)
+- **Hà Vy**: Cậu lại cá đấy. Từ đầu năm cậu trật bốn lần rồi. (tạm)
+- **Tùng** (lo lắng): Thì anh ấy trực kênh mà. (tạm)
+- **Minh Anh** (nghiêm túc): Mai chị không đỡ lời cho em được đâu, Tùng. (tạm)
+- **Minh Anh** (nghiêm túc): Mai ai cũng chỉ nói điều có giấy tờ làm chứng. (tạm)
+- *Suy nghĩ của bạn:* *(Thế câu "ai gửi" thì trả lời sao hả chị? (tạm))*
+- **Minh Anh**: Câu đó mai em tự trả lời. (tạm)
+- *Duy xếp các tờ kết quả theo thứ tự ngày, kẹp ghim lại. (tạm)*
 
 **Hết ngày.**
 
@@ -538,7 +567,13 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 📍 **Sảnh tòa B** — *Tới nơi: bác Thịnh hỏi chuyện tin đồn*
 
+- *Bác Thịnh đứng trên ghế, đang treo băng rôn lễ kỷ niệm ngày mai. (tạm)*
 - **Bác Thịnh**: Mấy đứa CLB Thám Tử đấy à? Giữ hộ bác đầu băng rôn này cái. (tạm)
+- **Bác Thịnh**: Mà các cháu soi điểm sinh viên thật đấy à? Thằng cháu bác ở quê cũng gửi cho bác cái tin ấy. (tạm)
+- **Tùng** (lo lắng): Không có đâu bác ơi! (tạm)
+- *Mấy bạn đi ngang sảnh quay lại nhìn. (tạm)*
+- *Suy nghĩ của bạn:* *(Bọn cháu tra gì cũng phải có phiếu, có người ngồi giám sát bác ạ. (tạm))*
+- **Bác Thịnh**: Bác hỏi cho biết thôi. Kéo căng đầu bên ấy lên tí nào. (tạm)
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Sảnh tòa B](#doan-17)
@@ -550,7 +585,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 📍 **Sảnh tòa B** — *Chi tiết ẩn: tờ thông báo lễ kỷ niệm*
 
-- *Tờ thông báo lễ kỷ niệm ngày truyền thống dán đè lên góc tờ danh sách CLB năm ngoái. (tạm)*
+- *Trên bảng tin có tờ thông báo mới: lễ kỷ niệm Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam, 15/10. (tạm)*
+- *Tờ ấy dán đè lên góc tờ danh sách CLB năm ngoái, che mất nửa cái kính lúp ai vẽ thêm. (tạm)*
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Sảnh tòa B](#doan-17)

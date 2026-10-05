@@ -9548,6 +9548,28 @@ const GOC = {
           "text": "Ba ngày cuối tuần, CLB nghỉ. Kênh sinh viên vẫn có người chuyển cái tin ấy, thưa dần. (tạm)"
         },
         {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Trưa thứ Hai, Tùng ở quê lên, xách theo một túi bánh. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Mẹ tớ gói cả rổ bánh khúc, bắt mang đi bằng được. Cậu ăn không? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Cho tớ một cái. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "neutral",
+          "text": "Chiều nay tập ở phòng CLB đấy. Mai là lên giải trình rồi. (tạm)"
+        },
+        {
           "type": "explore",
           "id": "kp-bd-n5",
           "kieu": "ban-do",
@@ -9621,9 +9643,42 @@ const GOC = {
       "nodes": [
         {
           "type": "line",
+          "speaker": "narrator",
+          "text": "Bác Thịnh đứng trên ghế, đang treo băng rôn lễ kỷ niệm ngày mai. (tạm)"
+        },
+        {
+          "type": "line",
           "speaker": "bac-tu",
           "expression": "neutral",
           "text": "Mấy đứa CLB Thám Tử đấy à? Giữ hộ bác đầu băng rôn này cái. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "neutral",
+          "text": "Mà các cháu soi điểm sinh viên thật đấy à? Thằng cháu bác ở quê cũng gửi cho bác cái tin ấy. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Không có đâu bác ơi! (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Mấy bạn đi ngang sảnh quay lại nhìn. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Bọn cháu tra gì cũng phải có phiếu, có người ngồi giám sát bác ạ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "bac-tu",
+          "expression": "smile",
+          "text": "Bác hỏi cho biết thôi. Kéo căng đầu bên ấy lên tí nào. (tạm)"
         }
       ]
     },
@@ -9636,7 +9691,12 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Tờ thông báo lễ kỷ niệm ngày truyền thống dán đè lên góc tờ danh sách CLB năm ngoái. (tạm)"
+          "text": "Trên bảng tin có tờ thông báo mới: lễ kỷ niệm Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam, 15/10. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tờ ấy dán đè lên góc tờ danh sách CLB năm ngoái, che mất nửa cái kính lúp ai vẽ thêm. (tạm)"
         }
       ]
     },
@@ -9648,9 +9708,83 @@ const GOC = {
       "nodes": [
         {
           "type": "line",
+          "speaker": "narrator",
+          "text": "Duy mở hộp bánh quy BQ-05, đặt ra giữa bàn. (tạm)"
+        },
+        {
+          "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Hộp BQ-05. Hộp trước hết từ hôm thứ Năm, anh không hỏi ai ăn. (tạm)"
+          "text": "Hộp trước hết từ hôm thứ Năm. Anh không hỏi ai ăn. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Tập nhé. Chị hỏi như mai người ta sẽ hỏi. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Tin này bắt đầu từ đâu, gửi từ đâu? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Mười giờ bốn mươi tối thứ Hai tuần trước, từ tài khoản kênh của Robotics. Vào kênh bằng máy văn phòng xưởng ạ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Thế ai gửi? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Anh Nam chứ ai ạ! (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Cậu lại cá đấy. Từ đầu năm cậu trật bốn lần rồi. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Thì anh ấy trực kênh mà. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Mai chị không đỡ lời cho em được đâu, Tùng. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Mai ai cũng chỉ nói điều có giấy tờ làm chứng. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Thế câu \"ai gửi\" thì trả lời sao hả chị? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Câu đó mai em tự trả lời. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Duy xếp các tờ kết quả theo thứ tự ngày, kẹp ghim lại. (tạm)"
         },
         {
           "type": "xong-viec-chinh"
@@ -9672,7 +9806,35 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Sáng, hội trường kín ghế. Băng rôn lễ kỷ niệm căng ngang sân khấu. (tạm)"
+          "text": "Sáng, hội trường kín ghế. Băng rôn lễ kỷ niệm Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam căng ngang sân khấu. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Chủ tịch Hội Sinh viên đang phát biểu trên bục. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Quân ôm một tập giấy, chạy qua chạy lại bên sân khấu. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Hai giờ chiều, phòng Công tác sinh viên. Đừng ai tới muộn. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "neutral",
+          "text": "Giấy tờ hôm qua chị cầm đủ chưa ạ? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Đủ. Duy kẹp theo thứ tự ngày rồi. (tạm)"
         },
         {
           "type": "branch",
@@ -9708,6 +9870,46 @@ const GOC = {
           "speaker": "quan",
           "expression": "neutral",
           "text": "Các bạn bên CLB Thám Tử. Tôi nhờ một việc nhỏ, chiều tôi mới rảnh. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Danh sách bốc thăm quà của buổi lễ sáng nay đây. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Mỗi người gõ tên mình một kiểu. Hoa thường lẫn lộn, có tên còn thừa cả dấu cách. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Tôi cần biết những ai trúng trước buổi chiều. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Để bọn em, anh ạ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Cậu nhận nhanh thế. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Ăn trưa xong làm một lèo là xong ấy mà. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng đón tờ danh sách từ tay Quân. (tạm)"
         },
         {
           "type": "end"
