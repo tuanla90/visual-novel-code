@@ -181,7 +181,7 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
       )}
       <div className="mvp-topbar__nhiem-vu" ref={nhiemVuRef}>
       <button type="button" className="topbar__task" aria-expanded={moRongNhiemVu}
-        aria-controls="mvp-chi-tiet-nhiem-vu" aria-label="Xem nhiệm vụ và việc đang làm"
+        aria-controls="mvp-chi-tiet-nhiem-vu" aria-label="Xem nhiệm vụ và việc đang làm" title="Xem nhiệm vụ và việc đang làm"
         onClick={() => { if (!moRongNhiemVu) dungThoai(); setMenuMo(false); setMoRongNhiemVu(!moRongNhiemVu); }}>
         <svg className="topbar__task-icon" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="12" r="7" stroke="currentColor" strokeWidth="1.8" fill="none" />
@@ -200,7 +200,7 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
         <h2>Nhiệm vụ</h2>
         <p>{s.nhiemVu ? dienTen(kb, s, s.nhiemVu) : 'Chưa có nhiệm vụ.'}</p>
         {s.nhacViec ? <><h3>Việc đang làm · {tenNguoiNoi(kb, s.nhacViec.nhanVat, s)}</h3><p>{dienTen(kb, s, s.nhacViec.text)}</p></> : null}
-        <button type="button" onClick={() => setMoRongNhiemVu(false)}>Đóng</button>
+        <button type="button" aria-label="Đóng chi tiết nhiệm vụ" title="Đóng chi tiết nhiệm vụ" onClick={() => setMoRongNhiemVu(false)}>Đóng</button>
       </section> : null}
       </div>
       <div className="topbar__actions">

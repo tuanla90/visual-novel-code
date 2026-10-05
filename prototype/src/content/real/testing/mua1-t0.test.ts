@@ -946,7 +946,7 @@ describe('Gói T1 Mùa 1: Nút ĐI CÙNG', () => {
     const kq = docNoiDungMvp(tep);
     expect(kq.loi).toEqual([]);
     const chuoi = kq.mvp.chuoi.find(c => c.id === 's-tin');
-    expect(chuoi?.items.some((it: any) => it.kind === 'di-cung' && it.den === 's-cat' && it.nhan === 'Đi cùng Tùng ra tòa B')).toBe(true);
+    expect(chuoi?.items.some((it) => (it as { kind?: string; den?: string; nhan?: string }).kind === 'di-cung' && (it as { den?: string }).den === 's-cat' && (it as { nhan?: string }).nhan === 'Đi cùng Tùng ra tòa B')).toBe(true);
   });
 
   // TODO(T1 chưa xong, dừng 05/10): bộ đọc/bộ kiểm [ĐI CÙNG] chưa đạt test này.
