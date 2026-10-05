@@ -1042,7 +1042,7 @@ SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat;
 *... còn 102 dòng nữa*
 
 *Các bẫy và phản hồi từ nhân vật:*
-- Nếu tra đúng → **Hà Vy**: Một trăm mười hai lớp của bốn khóa, bốn cột. Ghim lại. Giờ mới biết mình có gì để lọc.
+- Nếu tra đúng → **Hà Vy**: Ghim lại đã. Giờ mới biết mình có gì để lọc.
 
 > 🗂️ **Bằng chứng thu thập**: **Bảng lớp: 112 lớp, 4 cột** — Cả bảng lớp sinh hoạt: một trăm mười hai lớp của bốn khóa. Mỗi dòng ghi mã lớp, ngành, khóa học và tòa nhà.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
@@ -1076,9 +1076,9 @@ SELECT ma_lop, toa_nha FROM lop_sinh_hoat;
 *... còn 102 dòng nữa*
 
 *Các bẫy và phản hồi từ nhân vật:*
-- Nếu thiếu cột → **Hà Vy** (suy nghĩ): Vẫn đủ một trăm mười hai dòng, nhưng chưa thấy đủ cả lớp lẫn tòa. Cần cột mã lớp và cột tòa nhà.
+- Nếu thiếu cột → **Hà Vy** (suy nghĩ): Vẫn đủ một trăm mười hai dòng, nhưng chưa thấy đủ cả lớp lẫn tòa.
 - Nếu thừa cột → **Hà Vy**: Có đủ rồi, mà thừa. Mình chỉ hỏi lớp nào ở tòa nào, bỏ bớt cột kia cho bảng dễ đọc.
-- Nếu tra đúng → **Hà Vy**: Vẫn một trăm mười hai dòng, chỉ còn hai cột. Chọn cột thì bảng gọn lại chứ không mất dòng nào.
+- Nếu tra đúng → **Hà Vy**: Vẫn một trăm mười hai dòng, chỉ còn hai cột.
 
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 

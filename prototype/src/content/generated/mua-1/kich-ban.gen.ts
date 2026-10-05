@@ -18708,7 +18708,7 @@ const GOC = {
             {
               "speaker": "ha-vy",
               "expression": "neutral",
-              "text": "Một trăm mười hai lớp của bốn khóa, bốn cột. Ghim lại. Giờ mới biết mình có gì để lọc."
+              "text": "Ghim lại đã. Giờ mới biết mình có gì để lọc."
             }
           ]
         }
@@ -18740,7 +18740,7 @@ const GOC = {
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Vẫn đủ một trăm mười hai dòng, nhưng chưa thấy đủ cả lớp lẫn tòa. Cần cột mã lớp và cột tòa nhà."
+              "text": "Vẫn đủ một trăm mười hai dòng, nhưng chưa thấy đủ cả lớp lẫn tòa."
             }
           ]
         },
@@ -18764,7 +18764,7 @@ const GOC = {
             {
               "speaker": "ha-vy",
               "expression": "neutral",
-              "text": "Vẫn một trăm mười hai dòng, chỉ còn hai cột. Chọn cột thì bảng gọn lại chứ không mất dòng nào."
+              "text": "Vẫn một trăm mười hai dòng, chỉ còn hai cột."
             }
           ]
         }

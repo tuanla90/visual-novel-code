@@ -11,9 +11,9 @@
 - [DÀN DỰNG] Tùng rủ nối HOẶC → 33 lớp. Đổi VÀ → 2 lớp (BC24A, BC23A) → phiếu kết quả vào hồ sơ.
 
 ## c-cot-lop.1
-- Khi thiếu cột: **ha-vy** (thinking): Vẫn đủ một trăm mười hai dòng, nhưng chưa thấy đủ cả lớp lẫn tòa. Cần cột mã lớp và cột tòa nhà.
+- Khi thiếu cột: **ha-vy** (thinking): Vẫn đủ một trăm mười hai dòng, nhưng chưa thấy đủ cả lớp lẫn tòa.
 - Khi thừa cột: **ha-vy** (neutral): Có đủ rồi, mà thừa. Mình chỉ hỏi lớp nào ở tòa nào, bỏ bớt cột kia cho bảng dễ đọc.
-- Khi đúng: **ha-vy** (neutral): Vẫn một trăm mười hai dòng, chỉ còn hai cột. Chọn cột thì bảng gọn lại chứ không mất dòng nào.
+- Khi đúng: **ha-vy** (neutral): Vẫn một trăm mười hai dòng, chỉ còn hai cột.
 
 ## c-bang-lop.1
-- Khi đúng: **ha-vy** (neutral): Một trăm mười hai lớp của bốn khóa, bốn cột. Ghim lại. Giờ mới biết mình có gì để lọc.
+- Khi đúng: **ha-vy** (neutral): Ghim lại đã. Giờ mới biết mình có gì để lọc.
