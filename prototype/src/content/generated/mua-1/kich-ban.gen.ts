@@ -1355,7 +1355,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Áo tình nguyện, mũ đi nắng, cầm sẵn sơ đồ. Người này biết đường. Hỏi cậu ấy.)"
+          "text": "(Người của đội đón tân sinh viên hẳn hoi. Chỉ nhầm cho bạn kia thôi, chứ thang bộ ngay trong nhà này thì chắc cậu ấy biết nhỉ?)"
         },
         {
           "type": "goto",
@@ -1585,7 +1585,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh-happy",
-          "text": "Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường."
+          "text": "Tới nơi rồi. Phòng mình đây!"
         },
         {
           "type": "image",
@@ -3013,7 +3013,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Ngăn dưới cùng không kéo ra được. Khóa.)"
+          "text": "(Ơ, ngăn dưới cùng không kéo ra được. Khóa à?)"
         },
         {
           "type": "line",

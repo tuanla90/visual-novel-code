@@ -67,7 +67,7 @@
 - **player**: (Một tờ sơ đồ gấp đôi, mép đã quăn. Cậu ấy cầm để chỉ đường cho người khác.)
 
 ## md-00-soi-tung.1
-- **player**: (Áo tình nguyện, mũ đi nắng, cầm sẵn sơ đồ. Người này biết đường. Hỏi cậu ấy.)
+- **player**: (Người của đội đón tân sinh viên hẳn hoi. Chỉ nhầm cho bạn kia thôi, chứ thang bộ ngay trong nhà này thì chắc cậu ấy biết nhỉ?)
 
 ## md-00-gap-tung.1
 - **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế?
@@ -102,7 +102,7 @@
 - **player**: Ba phút của cậu dài nhỉ.
 - **tung** (ao-xanh-gai-dau): Vali cậu đựng gạch à? …Thôi, tớ nợ cậu một cốc trà đá.
 - [DÀN DỰNG] Tùng đẩy cửa phòng 408.
-- **tung** (ao-xanh-happy): Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường.
+- **tung** (ao-xanh-happy): Tới nơi rồi. Phòng mình đây!
 
 ## md-03-toa-b.1
 > NHIỆM VỤ: Đi một vòng trường với Tùng
@@ -293,7 +293,7 @@
 - **tung** (happy): Dọn tủ cứ để anh Duy với cậu. Tớ mà gặp bụi là hắt xì cả buổi.
 
 ## md-11-tu.1
-- **player**: (Ngăn dưới cùng không kéo ra được. Khóa.)
+- **player**: (Ơ, ngăn dưới cùng không kéo ra được. Khóa à?)
 - **duy** (neutral): Khóa đấy, để anh mở cho.
 - **narrator**: Duy tháo chùm chìa ở thắt lưng, dò mấy mẩu băng dính, tới chìa thứ ba mới mở được. Một đám bụi bay lên làm Tùng ho sặc.
 - **duy** (neutral): Ngăn này anh chưa kiểm kê. Cứ lôi hết ra bàn.

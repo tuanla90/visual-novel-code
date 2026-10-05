@@ -1528,7 +1528,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 - *Bảy phút sau, cả hai mới tới chiếu nghỉ tầng ba, đứng thở.*
 - *Suy nghĩ của bạn:* *(Ba phút của cậu dài nhỉ.)*
 - **Tùng**: Vali cậu đựng gạch à? …Thôi, tớ nợ cậu một cốc trà đá.
-- **Tùng**: Tới nơi rồi. Cất đồ xong tớ dẫn đi một vòng trường.
+- **Tùng**: Tới nơi rồi. Phòng mình đây!
 > [CHIBI chibi-408-vali (sticker)] (chưa có mô tả)
 > [CHIBI chibi-vali-tho (sticker)] (chưa có mô tả)
 
@@ -2068,7 +2068,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 
 📍 **Phòng CLB** — *Phòng CLB: ngăn dưới cùng của tủ hồ sơ*
 
-- *Suy nghĩ của bạn:* *(Ngăn dưới cùng không kéo ra được. Khóa.)*
+- *Suy nghĩ của bạn:* *(Ơ, ngăn dưới cùng không kéo ra được. Khóa à?)*
 - **Duy**: Khóa đấy, để anh mở cho.
 - *Duy tháo chùm chìa ở thắt lưng, dò mấy mẩu băng dính, tới chìa thứ ba mới mở được. Một đám bụi bay lên làm Tùng ho sặc.*
 - **Duy**: Ngăn này anh chưa kiểm kê. Cứ lôi hết ra bàn.
@@ -2295,7 +2295,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 <a id="doan-125"></a>
 ### Đoạn 125: Sau khi xem hết các chỗ ở Sảnh ký túc xá
 
-- *Suy nghĩ của bạn:* *(Áo tình nguyện, mũ đi nắng, cầm sẵn sơ đồ. Người này biết đường. Hỏi cậu ấy.)*
+- *Suy nghĩ của bạn:* *(Người của đội đón tân sinh viên hẳn hoi. Chỉ nhầm cho bạn kia thôi, chứ thang bộ ngay trong nhà này thì chắc cậu ấy biết nhỉ?)*
 
 **Lựa chọn tiếp theo:**
 - [Đi tiếp](#doan-74)
