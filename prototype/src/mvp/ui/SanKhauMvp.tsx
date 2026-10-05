@@ -211,7 +211,7 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
         )}
       </div>
       {!isCard ? (
-        <div className="mvp-stage__canh-ban">
+        <div className="mvp-stage__canh-trai">
         <button
           type="button"
           className={`stage__scene-label stage__scene-label--btn${moDiaDiem ? ' is-expanded' : ''}`}
@@ -226,10 +226,10 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
           </svg>
           <span className="stage__scene-text">{tenCanh}</span>
         </button>
-        {dongHanh}
+        {nhacViec ? <NhacViecMvp kb={kb} nhac={nhacViec} dienTen={dienTen ?? ((t) => t)} tenNguoiChoi={tenNguoiChoi} /> : null}
         </div>
       ) : null}
-      {nhacViec ? <NhacViecMvp kb={kb} nhac={nhacViec} dienTen={dienTen ?? ((t) => t)} tenNguoiChoi={tenNguoiChoi} /> : null}
+      {!isCard && dongHanh ? <div className="mvp-stage__canh-ban">{dongHanh}</div> : null}
       {/* Cảnh có hoạt cảnh: nhân vật đã nằm trong ảnh tách lớp, không vẽ thêm nhân vật đứng (hộp thoại vẫn ghi tên người nói). */}
       <div className="stage__portraits" data-so-nguoi={coDan && !CANH_KHONG_DAN.has(canh) && !coHoatCanh(canh) ? moi.thanhVien.length : 0}>
         {(coDan && !CANH_KHONG_DAN.has(canh) && !coHoatCanh(canh) ? moi.thanhVien : []).map((t, i) => {

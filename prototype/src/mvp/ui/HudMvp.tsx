@@ -11,9 +11,10 @@
 import { useEffect, useRef, useState } from 'react';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { ConfirmDialog } from '../../shared/ui/ConfirmDialog';
-import { IconFolderOpen, IconHistory, IconRotateCcw, IconSave, IconSliders } from '../../shared/ui/icons';
+import { IconChevronLeft, IconEyeOff, IconFastForward, IconFolderOpen, IconHistory, IconPlay, IconRotateCcw, IconSave, IconSliders } from '../../shared/ui/icons';
+import { readLineKey, useVnStore } from '../../shared/vn/vn-store';
 import { dinhDangNgay, hoaDau, homNay, thuCua } from '../engine/lich-ngay';
-import { tenKhungHienTai } from '../engine/may';
+import { dienTen, tenKhungHienTai, tenNguoiNoi } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import './LichMvp.css';
 
@@ -36,6 +37,8 @@ export interface HudMvpProps {
   onMoLich?: () => void;
   onTamDungViecPhu?: () => void;
   onMoBangHoatDong?: () => void;
+  onLui?: () => void;
+  loiThoai?: { speaker: string; text: string };
 }
 
 /** Thanh uy tín: `con` vạch đầy trên `tong`. */
@@ -48,6 +51,7 @@ export function ThanhUyTin({ con, tong }: { con: number; tong: number }) {
           <i key={i} className={`mvp-uytin__o${i < con ? ' is-con' : ''}`} />
         ))}
       </span>
+      <span className="mvp-uytin__so" aria-hidden="true">{con}/{tong}</span>
     </div>
   );
 }
@@ -83,10 +87,17 @@ function mocHud(kb: KichBanMvp, s: TrangThaiMvp): { kicker: string; so: string; 
   return { kicker, so, ten, nhanDai: `${ngayDai} · ${ten}` };
 }
 
-export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onBatDauLai, onVeTieuDe, onMoLich, onTamDungViecPhu, onMoBangHoatDong }: HudMvpProps) {
+export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onBatDauLai, onVeTieuDe, onMoLich, onTamDungViecPhu, onMoBangHoatDong, onLui, loiThoai }: HudMvpProps) {
   const [menuMo, setMenuMo] = useState(false);
   const [xacNhan, setXacNhan] = useState(false);
-  const [moRongNhiemVu, setMoRongNhiemVu] = useState(false);
+  const [chiTiet, setChiTiet] = useState({ nhiemVu: s.nhiemVu, mo: false });
+  if (chiTiet.nhiemVu !== s.nhiemVu) setChiTiet({ nhiemVu: s.nhiemVu, mo: false });
+  const moRongNhiemVu = chiTiet.nhiemVu === s.nhiemVu && chiTiet.mo;
+  const setMoRongNhiemVu = (mo: boolean): void => setChiTiet({ nhiemVu: s.nhiemVu, mo });
+  const nhiemVuRef = useRef<HTMLDivElement>(null);
+  const autoMode = useVnStore((k) => k.autoMode);
+  const skipMode = useVnStore((k) => k.skipMode);
+  const daDoc = useVnStore((k) => !!loiThoai && (k.skipUnread || !!k.readLines[readLineKey(loiThoai.speaker, loiThoai.text)]));
   const menuRef = useRef<HTMLDivElement>(null);
   const moc = mocHud(kb, s);
   const tenNgay = kb.lich.ngay.find((n) => n.so === s.ngay)?.ten ?? '';
@@ -94,21 +105,20 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
   const coUyTin = s.giaiDoan === 'hop' && tong > 0;
   const daXongNgay = (so: number): boolean => s.giaiDoan === 'hop' || s.giaiDoan === 'het' || s.giaiDoan === 'vu-sau' || s.giaiDoan === 'phu' || (s.giaiDoan === 'ngay' && so < s.ngay);
 
-  useEffect(() => {
-    setMoRongNhiemVu(false);
-  }, [s.nhiemVu]);
-
   // Menu: Esc hay bấm ra ngoài thì đóng (không dùng <details> như prototype để bắt được Esc).
   useEffect(() => {
-    if (!menuMo) return;
+    if (!menuMo && !moRongNhiemVu) return;
     const onKey = (e: KeyboardEvent): void => {
       if (e.key === 'Escape') {
         e.preventDefault();
         setMenuMo(false);
+        setChiTiet({ nhiemVu: s.nhiemVu, mo: false });
       }
     };
     const onDown = (e: PointerEvent): void => {
-      if (menuRef.current && e.target instanceof Node && !menuRef.current.contains(e.target)) setMenuMo(false);
+      if (!(e.target instanceof Node)) return;
+      if (menuRef.current && !menuRef.current.contains(e.target)) setMenuMo(false);
+      if (nhiemVuRef.current && !nhiemVuRef.current.contains(e.target)) setChiTiet({ nhiemVu: s.nhiemVu, mo: false });
     };
     window.addEventListener('keydown', onKey);
     window.addEventListener('pointerdown', onDown);
@@ -116,7 +126,12 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
       window.removeEventListener('keydown', onKey);
       window.removeEventListener('pointerdown', onDown);
     };
-  }, [menuMo]);
+  }, [menuMo, moRongNhiemVu, s.nhiemVu]);
+
+  const dungThoai = (): void => {
+    const vn = useVnStore.getState();
+    vn.setAutoMode(false); vn.setSkipMode(false); vn.setGiuTua(false);
+  };
 
   const chon = (viec: () => void) => () => {
     setMenuMo(false);
@@ -153,7 +168,8 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
   );
 
   return (
-    <header className={`topbar mvp-topbar${coUyTin ? ' mvp-topbar--uytin' : ''}`} aria-label="Thanh trạng thái">
+    <header className={`topbar mvp-topbar${coUyTin ? ' mvp-topbar--uytin' : ''}`} aria-label="Thanh trạng thái"
+      onKeyDown={(e) => { if ((menuMo || moRongNhiemVu) && e.key !== 'Escape') e.stopPropagation(); }}>
       {onMoLich ? (
         <button type="button" className="topbar__chapter" aria-label={`Mở lịch — ${moc.nhanDai}`} title="Mở lịch" onClick={onMoLich}>
           {veNgay}
@@ -163,11 +179,10 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
           {veNgay}
         </div>
       )}
-      <div
-        className={`topbar__task${moRongNhiemVu ? ' is-expanded' : ''}`}
-        aria-live="polite"
-        onClick={() => setMoRongNhiemVu((m) => !m)}
-      >
+      <div className="mvp-topbar__nhiem-vu" ref={nhiemVuRef}>
+      <button type="button" className="topbar__task" aria-expanded={moRongNhiemVu}
+        aria-controls="mvp-chi-tiet-nhiem-vu" aria-label="Xem nhiệm vụ và việc đang làm"
+        onClick={() => { if (!moRongNhiemVu) dungThoai(); setMenuMo(false); setMoRongNhiemVu(!moRongNhiemVu); }}>
         <svg className="topbar__task-icon" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="12" r="7" stroke="currentColor" strokeWidth="1.8" fill="none" />
           <circle cx="12" cy="12" r="2.5" fill="currentColor" />
@@ -175,10 +190,18 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
         </svg>
         <div className="topbar__task-content">
           <span className="topbar__task-label">Nhiệm vụ</span>
-          <span className="topbar__task-text" title={s.nhiemVu ?? undefined}>
-            {s.nhiemVu ?? 'Chưa có nhiệm vụ'}
+          <span className="topbar__task-text" title={s.nhiemVu ? dienTen(kb, s, s.nhiemVu) : undefined}>
+            {s.nhiemVu ? dienTen(kb, s, s.nhiemVu) : 'Chưa có nhiệm vụ'}
           </span>
         </div>
+      </button>
+      {moRongNhiemVu ? <section id="mvp-chi-tiet-nhiem-vu" className="mvp-topbar__chi-tiet" aria-label="Nhiệm vụ và việc đang làm">
+        <p className="mvp-topbar__moc">{moc.nhanDai}</p>
+        <h2>Nhiệm vụ</h2>
+        <p>{s.nhiemVu ? dienTen(kb, s, s.nhiemVu) : 'Chưa có nhiệm vụ.'}</p>
+        {s.nhacViec ? <><h3>Việc đang làm · {tenNguoiNoi(kb, s.nhacViec.nhanVat, s)}</h3><p>{dienTen(kb, s, s.nhacViec.text)}</p></> : null}
+        <button type="button" onClick={() => setMoRongNhiemVu(false)}>Đóng</button>
+      </section> : null}
       </div>
       <div className="topbar__actions">
         {coUyTin ? <ThanhUyTin con={s.uyTin} tong={tong} /> : null}
@@ -223,7 +246,7 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
               aria-expanded={menuMo}
               aria-label={menuMo ? 'Đóng menu tạm dừng' : 'Mở menu tạm dừng'}
               title="Menu: lịch sử thoại, lưu, nạp, bắt đầu lại"
-              onClick={() => setMenuMo((m) => !m)}
+              onClick={() => { if (!menuMo) dungThoai(); setMoRongNhiemVu(false); setMenuMo((m) => !m); }}
             >
               <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="4" y1="7" x2="20" y2="7" />
@@ -234,6 +257,23 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
             {menuMo ? (
               <div className="topbar__menu-panel" role="menu" aria-label="Menu tạm dừng">
                 <span className="topbar__menu-title">Tùy chọn</span>
+                {onLui ? <button type="button" role="menuitem" className="topbar__menu-item mvp-topbar__compact-item" onClick={chon(onLui)}>
+                  <IconChevronLeft width={16} height={16} aria-hidden="true" /><span>Lùi lại bước trước</span>
+                </button> : null}
+                {loiThoai ? <>
+                  <button type="button" role="menuitemcheckbox" aria-checked={autoMode} className="topbar__menu-item mvp-topbar__compact-item" onClick={chon(() => useVnStore.getState().toggleAutoMode())}>
+                    <IconPlay width={16} height={16} aria-hidden="true" /><span>Tự chạy thoại</span>
+                  </button>
+                  <button type="button" role="menuitemcheckbox" aria-checked={skipMode} disabled={!skipMode && !daDoc} className="topbar__menu-item mvp-topbar__compact-item" onClick={chon(() => useVnStore.getState().toggleSkipMode())}>
+                    <IconFastForward width={16} height={16} aria-hidden="true" /><span>Tua thoại đã đọc</span>
+                  </button>
+                  <button type="button" role="menuitem" className="topbar__menu-item mvp-topbar__compact-item" onClick={chon(() => useVnStore.getState().toggleHideUi())}>
+                    <IconEyeOff width={16} height={16} aria-hidden="true" /><span>Ẩn giao diện để xem cảnh</span>
+                  </button>
+                </> : null}
+                {soTrangSo > 0 ? <button type="button" role="menuitem" className="topbar__menu-item mvp-topbar__compact-item" onClick={chon(onMoSoTay)}>
+                  <IconFolderOpen width={16} height={16} aria-hidden="true" /><span>Sổ cá nhân ({soTrangSo} trang)</span>
+                </button> : null}
                 {(s.giaiDoan === 'ngay' || s.giaiDoan === 'vu-sau') && onMoBangHoatDong ? (
                   <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onMoBangHoatDong)}>
                     <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

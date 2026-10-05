@@ -532,6 +532,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         onMoLich={() => setLichMo(true)}
         onTamDungViecPhu={() => hanhDong({ type: 'tam-dung-nhiem-vu-phu' })}
         onMoBangHoatDong={() => setBangHoatDongMo(true)}
+        onLui={coTheLui ? lui : undefined}
+        loiThoai={kn.kind === 'line' || kn.kind === 'feedback' ? thanhLine(kb, s, kn.loi) : undefined}
       />
       {bangHoatDongMo && s ? (
         <BangHoatDongMvp
