@@ -2,6 +2,9 @@
  * Góp ý user 03/10/2026: phòng CLB dùng ảnh thành viên ngồi (vùng bấm đúng chỗ ngồi, không còn ảnh đứng), màn Hà Vy soi không
  * mồi kính lúp, không còn dòng đếm "Còn N chỗ chưa xem".
  */
+import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import type { NutMvp } from '../../content/mvp/types';
@@ -38,5 +41,27 @@ describe('khám phá (03/10)', () => {
     expect(soi.length).toBeGreaterThan(0);
     soi.forEach((b) => expect(b).toHaveClass('mvp-soi--an'));
     expect(screen.queryByText(/Còn \d+ chi tiết/)).toBeNull();
+  });
+});
+
+describe('chi tiết ẩn không phát sáng (gói B12, 05/10)', () => {
+  const css = readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'mvp.css'), 'utf8');
+  /** Các khối luật có bộ chọn chứa `chon`. */
+  const khoi = (chon: string): string[] => [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter((m) => (m[1] ?? '').includes(chon)).map((m) => `${m[1]}{${m[2]}}`);
+
+  it('chi tiết ẩn trên cảnh và điểm soi ẩn: không có hoạt cảnh nháy khi để lâu, không vòng sáng sẵn', () => {
+    expect(css).not.toMatch(/mvp-an-nhay|mvp-soi-an-nhay/);
+    for (const k of khoi('.mvp-an__goi-y')) {
+      // Chỉ vùng có dấu "!" / "?" mới có vòng hiện sẵn theo nhịp; chi tiết ẩn chỉ sáng khi người chơi rê / Tab tới.
+      if (/animation:(?!\s*none)/.test(k)) expect(k).toContain('.is-co-dau');
+      if (/opacity:\s*0\.[1-9]/.test(k)) expect(k).toMatch(/is-co-dau|:hover|:focus-visible/);
+    }
+    for (const k of khoi('.mvp-soi--an')) expect(k).not.toMatch(/animation:(?!\s*none)/);
+  });
+
+  it('dấu "!" / "?" của điểm bấm thường vẫn còn', () => {
+    const n = nut('kp-phong-n2');
+    render(<KhamPhaMvp kb={kb} id={n.id} canh="phong-clb" diem={diemDangHien(n, [])} onXem={() => {}} />);
+    expect(document.querySelectorAll('.mvp-dau').length).toBeGreaterThan(0);
   });
 });

@@ -40,7 +40,8 @@ import type {
   VuSauMvp,
 } from '../../content/mvp/types';
 import { MAU_GHIM, type BoiCanhChuoi, type CachChoiMvp, type KhamPhaMvp, type MauGhimMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp, type TiepTucTuyenMvp } from './trang-thai';
-import { cachChoiCua, dongBong, dongChuaGach, ghiTuDong, goiY, hoi, keTiep, khoiThayThe, khungHoiDap, moBuoiHoi, napLaiLuot, roiDi, tienDoCua, toHoiDap, type KhungHoiDapMvp } from './hoi-dap';
+import { laTheHoiDap } from './bang-dieu-tra';
+import { cachChoiCua, dongBong, dongChuaGach, ghiTuDong, goiY, hoi, keTiep, khoiThayThe, khungHoiDap, laLoiDaThay, locHauQuaDaThay, moBuoiHoi, napLaiLuot, roiDi, tienDoCua, toHoiDap, type KhungHoiDapMvp } from './hoi-dap';
 
 /**
  * Tên dự phòng khi trạng thái chưa có tên (chưa qua câu hỏi tên, hay ô lưu hỏng). Không dùng trên đường chạy thường:
@@ -420,7 +421,7 @@ const maHoSo = (s: TrangThaiMvp): string[] => [...s.hoSo.taiLieu, ...s.hoSo.manh
 function luuTuyen(s: TrangThaiMvp): TiepTucTuyenMvp {
   return {
     conTro: s.conTro, canh: s.canh, nhiemVu: s.nhiemVu, nhacViec: s.nhacViec,
-    thuThachDangLam: s.thuThachDangLam, duKienDangLam: s.duKienDangLam, hoiDap: s.hoiDap, buoiHoi: s.buoiHoi ?? null,
+    thuThachDangLam: s.thuThachDangLam, duKienDangLam: s.duKienDangLam, hoiDap: s.hoiDap, buoiHoi: s.buoiHoi ?? null, daThayLoi: s.daThayLoi ?? null,
     khamPha: s.khamPha, doiChat: s.doiChat, choHienTaiLieu: s.choHienTaiLieu, sauKhiHien: s.sauKhiHien,
     bang: s.bang, ngayThang: s.ngayThang ?? null, hoSoCo: maHoSo(s),
   };
@@ -706,6 +707,11 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
       s = hetChuoi(kb, s, boiCanh);
       continue;
     }
+    // Dòng lời mà buổi hỏi vừa xong đã nói thay (tờ khai `loiDaThay`): bỏ qua.
+    if (nut.type === 'line' && laLoiDaThay(kb, s, conTro.chuoi, conTro.nut)) {
+      s = tienNut(s);
+      continue;
+    }
     if (canNguoiChoi(nut)) {
       if (nut.type === 'end') return coKhiKet(kb, s);
       if (nut.type !== 'explore') return s;
@@ -731,7 +737,7 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
         s = thoaDieuKien(kb, s, nut.dieuKien) ? nhayToi(s, nut.to, boiCanh) : tienNut(s);
         break;
       case 'consequence': {
-        const kq = apHauQua(s, nut.hauQua);
+        const kq = apHauQua(s, locHauQuaDaThay(kb, s, conTro.chuoi, nut.hauQua));
         s = kq.daNhay ? kq.s : tienNut(kq.s);
         break;
       }
@@ -755,6 +761,8 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
         s = tienNut({ ...s, ngayThang: nut.date });
         break;
       case 'hoi-dap': {
+        // Gặp một [HỎI ĐÁP] (vào lại cảnh, chuỗi khác): dấu "buổi hỏi đã thay lời" của lần trước hết hiệu lực.
+        if (s.daThayLoi) s = { ...s, daThayLoi: null };
         // Buổi hỏi đang mở ở nút này → chờ người chơi. Không có tờ → chạy qua như dòng thường (đoạn [LỜI] ngay sau).
         if (s.buoiHoi && s.buoiHoi.ma === nut.ma) return s;
         if (!toHoiDap(kb, nut.ma)) {
@@ -932,7 +940,7 @@ function dongBuoiHoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
   const to = b ? toHoiDap(kb, b.ma) : undefined;
   if (!b || !conTro || !to || 'loi' in ht || ht.nut?.type !== 'hoi-dap') return { ...s, buoiHoi: null };
   const { nutSau, hauQua } = khoiThayThe(ht.chuoi.nodes, conTro.nut, to);
-  let moi: TrangThaiMvp = { ...s, buoiHoi: null, conTro: { ...conTro, nut: nutSau } };
+  let moi: TrangThaiMvp = { ...s, buoiHoi: null, conTro: { ...conTro, nut: nutSau }, ...(to.nutDaThay ? { daThayLoi: to.ma } : {}) };
   const kp = moi.khamPha;
   if (kp && dongChuaGach(moi, to).length > 0 && kp.daXem.includes(conTro.chuoi)) {
     moi = { ...moi, khamPha: { ...kp, daXem: kp.daXem.filter((c) => c !== conTro.chuoi) } };
@@ -952,12 +960,12 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
     return { ...s, bang: { ...bang, viTri: { ...bang.viTri, [hd.the]: { x: Math.round(hd.x), y: Math.round(hd.y) } } } };
   }
   if (hd.type === 'doi-mau-ghim') {
-    if (!MAU_GHIM.includes(hd.mau) || !coTrongHoSo(s, hd.the)) return s;
+    if (!MAU_GHIM.includes(hd.mau) || !(coTrongHoSo(s, hd.the) || laTheHoiDap(kb, s, hd.the))) return s;
     const bang = s.bang ?? { day: {}, viTri: {} };
     return { ...s, bang: { ...bang, mau: { ...(bang.mau ?? {}), [hd.the]: hd.mau } } };
   }
   if (hd.type === 'ghim-the') {
-    if (!coTrongHoSo(s, hd.the)) return s;
+    if (!coTrongHoSo(s, hd.the) && !laTheHoiDap(kb, s, hd.the)) return s;
     const bang = s.bang ?? { day: {}, viTri: {} };
     const cu = bang.boGhim ?? [];
     const moiBo = hd.ghim ? cu.filter((x) => x !== hd.the) : cu.includes(hd.the) ? cu : [...cu, hd.the];

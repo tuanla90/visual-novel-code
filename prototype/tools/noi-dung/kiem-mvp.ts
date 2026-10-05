@@ -8,6 +8,7 @@
 import { fileURLToPath } from 'node:url';
 import { chuyenMvp, type DuLieuMvp } from './chuyen-mvp.ts';
 import { dinhDangLoi, type RawMvp } from './doc-mvp.ts';
+import type { DoanLoi, NguonDong } from './ghep-loi.ts';
 import { kiemLuatMvp } from './luat-mvp.ts';
 import { tepLechTrenDia } from './sinh.ts';
 import { THU_MUC_SINH_MVP, vanBanMvp } from './sinh-mvp.ts';
@@ -39,13 +40,13 @@ export async function kiemNoiDungMvp(
   hamVanBan: (d: DuLieuMvp) => Record<string, string> = vanBanMvp,
   nhanThuMuc: string = 'noi-dung-mvp',
   /** Kiểm thêm sau khi đọc (Mùa 1: tờ dữ kiện hỏi nhân chứng, gói B12). Trả lỗi đã định dạng `<tệp>:<dòng>: …` và phần tóm tắt thêm. */
-  kiemThem?: (mvp: RawMvp) => { loi: string[]; tomTat: string },
+  kiemThem?: (mvp: RawMvp, nguonLoi: { banDo: Map<string, NguonDong[]>; doanLoi: readonly DoanLoi[] }) => { loi: string[]; tomTat: string },
 ): Promise<KetQuaKiemMvp> {
   const kq = docThuMucMvp(thuMuc);
   const loiDoc = [...kq.loi];
   const luat = kiemLuatMvp(kq.mvp, { spriteVat: docSpriteVat(), anh: docTenAnh() });
   loiDoc.push(...luat.loi.map((l) => traViTri(l, kq.banDo)));
-  const them = kiemThem ? kiemThem(kq.mvp) : { loi: [], tomTat: '' };
+  const them = kiemThem ? kiemThem(kq.mvp, { banDo: kq.banDo, doanLoi: kq.doanLoi }) : { loi: [], tomTat: '' };
   const loi = [...loiDoc.map(dinhDangLoi), ...them.loi];
   let tepCu: string[] = [];
   let duLieu: DuLieuMvp | null = null;

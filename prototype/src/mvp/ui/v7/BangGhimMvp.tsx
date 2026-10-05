@@ -40,6 +40,8 @@ export interface BangGhimMvpProps {
   onDoiMau?: (the: string, mau: MauGhimMvp) => void;
   /** Gỡ thẻ khỏi bảng / ghim lại (có → nút "Gỡ khỏi bảng" và khay "Chưa ghim"). */
   onGhim?: (the: string, ghim: boolean) => void;
+  /** Vẽ cả giấy nhớ hỏi ra từ nhân chứng (gói B12; chỉ khung Hồ sơ bật). */
+  hoiDap?: boolean;
 }
 
 const TEN_MAU: Record<MauGhimMvp, string> = {
@@ -52,8 +54,8 @@ const TEN_MAU: Record<MauGhimMvp, string> = {
 
 const boNgoac = (t: string): string => t.replace(/^\[|\]$/g, '');
 
-export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chuaXem, onXemThe, onDoiMau, onGhim }: BangGhimMvpProps) {
-  const bang = useMemo(() => dungBang(kb, s, them), [kb, s, them]);
+export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chuaXem, onXemThe, onDoiMau, onGhim, hoiDap = false }: BangGhimMvpProps) {
+  const bang = useMemo(() => dungBang(kb, s, them, { hoiDap }), [kb, s, them, hoiDap]);
   // Local state lưu vị trí người chơi đã kéo, đảm bảo thẻ giữ nguyên vị trí sau khi thả tay, không bị tự động sắp xếp lại hoặc giật về chỗ cũ.
   const [viTriCucBo, setViTriCucBo] = useState<Record<string, { x: number; y: number }>>({});
   useEffect(() => {

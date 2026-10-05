@@ -12,8 +12,10 @@
  *     (`có:`) — chỉ hiện người đã gặp và đã biết lịch (thẻ nhân vật có dòng "Lịch");
  *   - `quan sát <nv>`: chân dung nhân vật phóng to, mỗi điểm `vung:<mã>` là một chi tiết để soi (kiểu Sherlock Holmes).
  *
- * 03/10/2026 (user): màn `· Hà Vy soi` KHÔNG mồi kính lúp nữa — chi tiết ẩn, rê chuột (hay chạm) qua đúng chỗ mới hiện kính;
- * để lâu chưa thấy thì nháy rất nhẹ. Lần soi đầu (mở đầu, chưa có Hà Vy) vẫn hiện kính để dạy thao tác.
+ * 03/10/2026 (user): màn `· Hà Vy soi` KHÔNG mồi kính lúp nữa: chi tiết ẩn, rê chuột (hay chạm) qua đúng chỗ mới hiện kính.
+ * Lần soi đầu (mở đầu, chưa có Hà Vy) vẫn hiện kính để dạy thao tác.
+ * 05/10/2026 (gói B12, user): chi tiết ẩn KHÔNG nháy, không phát sáng dù để lâu; muốn biết việc chính hay cần gợi ý thì hỏi bạn
+ * đi cùng. Dấu "!" / "?" của điểm bấm giữ nguyên.
  */
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { DiemKhamPhaMvp, KichBanMvp } from '../../content/mvp/types';
@@ -274,8 +276,8 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                 );
               }
               if (d.diem.sprite.startsWith('vung:')) {
-                // Chi tiết ẨN trên cảnh: không có dấu, người chơi tự tìm; để lâu mới nháy gợi ý. Vùng có dấu (đầu mối "!" / chuyện
-                // thêm "?", luật 04/10) thì vòng và huy hiệu hiện sẵn như vật bấm.
+                // Chi tiết ẨN trên cảnh: không có dấu, người chơi tự tìm; không nháy dù để lâu (gói B12). Vùng có dấu (đầu mối "!" /
+                // chuyện thêm "?", luật 04/10) thì vòng và huy hiệu hiện sẵn như vật bấm.
                 return (
                   <button
                     key={d.diem.chuoi}

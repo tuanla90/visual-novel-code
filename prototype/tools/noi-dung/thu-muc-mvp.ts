@@ -65,14 +65,14 @@ export function gomTepMvp(goc: string, hienThi?: string): { tep: TepMvp[]; loi: 
 }
 
 /** Đọc cả thư mục: ghép lời vào khung, đọc, rồi trả lỗi về đúng tệp/dòng gốc. `soLoiTam`: số dòng lời còn "(tạm)". */
-export function docThuMucMvp(goc: string, hienThi?: string): KetQuaDocMvp & { tep: TepMvp[]; soLoiTam: number; banDo: Map<string, NguonDong[]> } {
+export function docThuMucMvp(goc: string, hienThi?: string): KetQuaDocMvp & { tep: TepMvp[]; soLoiTam: number; banDo: Map<string, NguonDong[]>; doanLoi: DoanLoi[] } {
   const ht = hienThi ?? (goc.includes('noi-dung-mua-1') ? 'noi-dung-mua-1' : 'noi-dung-mvp');
   const g = gomTepMvp(goc, ht);
   const khung = g.tep.filter((t) => t.loai === 'kich-ban' || t.loai === 'thu-thach');
   const ghep = ghepLoi(khung, g.doanLoi);
   const tep = g.tep.map((t) => (ghep.noiDung.has(t.duongDan) ? { ...t, noiDung: ghep.noiDung.get(t.duongDan) ?? t.noiDung } : t));
   const kq = docNoiDungMvp(tep);
-  return { mvp: kq.mvp, loi: [...g.loi, ...ghep.loi, ...kq.loi.map((l) => traViTri(l, ghep.banDo))], tep, soLoiTam: ghep.soTam, banDo: ghep.banDo };
+  return { mvp: kq.mvp, loi: [...g.loi, ...ghep.loi, ...kq.loi.map((l) => traViTri(l, ghep.banDo))], tep, soLoiTam: ghep.soTam, banDo: ghep.banDo, doanLoi: g.doanLoi };
 }
 
 /** Thư mục gốc mọi ảnh của game (`[ẢNH …]` tra theo tên tệp ở bất kỳ thư mục con nào, như `anh-mvp.ts`). */

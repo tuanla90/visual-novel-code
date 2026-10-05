@@ -13,8 +13,8 @@ export async function kiemNoiDungMua1(
   thuMucSinh: string = THU_MUC_SINH_MUA_1,
 ) {
   let bo: BoHoiDap | null = null;
-  return kiemNoiDungMvp(thuMuc, thuMucSinh, (d) => vanBanMua1(d, bo), 'noi-dung-mua-1', (mvp) => {
-    const kq = docHoiDap(thuMuc, mvp);
+  return kiemNoiDungMvp(thuMuc, thuMucSinh, (d) => vanBanMua1(d, bo), 'noi-dung-mua-1', (mvp, nguonLoi) => {
+    const kq = docHoiDap(thuMuc, mvp, { nguonLoi });
     bo = kq.bo;
     return { loi: kq.loi, tomTat: kq.tomTat };
   });

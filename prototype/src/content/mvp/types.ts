@@ -521,6 +521,13 @@ export interface ToHoiDapMvp {
   moDau: string;
   /** Các dữ kiện đoạn [LỜI] viết sẵn của chuỗi đã nói ra (cách "xem cả đoạn"), theo thứ tự kể. */
   tuDongDuKien: string[];
+  /**
+   * Mã các đoạn `[LỜI]` của chuỗi mà buổi hỏi đã thay (cách bấm / gõ). Có khai thì sau buổi hỏi máy bỏ qua đúng các đoạn ấy ở
+   * bất cứ đâu trong chuỗi (màn soi, ảnh, tài liệu, hậu quả khác vẫn chạy). Thiếu = hành vi cũ: bỏ khối lời liền sau `[HỎI ĐÁP]`.
+   */
+  loiDaThay?: string[];
+  /** Vị trí trong `chuoi.nodes` của các dòng lời thuộc `loiDaThay` (bộ sinh dò sẵn từ bản đồ ghép lời). */
+  nutDaThay?: number[];
   gioiHan: GioiHanHoiDapMvp | null;
   danhSach: DongDanhSachMvp[];
   duKien: DuKienHoiDapMvp[];
@@ -535,6 +542,35 @@ export interface BoHoiDapMvp {
   chung: Record<YDinhChungMvp, string[]>;
   /** Tờ dữ kiện theo mã chuỗi. */
   to: Record<string, ToHoiDapMvp>;
+  /** Câu mẫu và lời viết sẵn khi người chơi hỏi bạn đi cùng "việc chính", "gợi ý" (`hoi-dap/dong-hanh.json`). */
+  dongHanh?: DongHanhHoiDapMvp;
+}
+
+/** Hai ý định người chơi hỏi bạn đi cùng mà máy trả lời bằng lời viết sẵn, không gọi mạng. */
+export type YDinhDongHanhMvp = 'viec-chinh' | 'goi-y';
+export const Y_DINH_DONG_HANH: readonly YDinhDongHanhMvp[] = ['viec-chinh', 'goi-y'];
+
+/** Lời viết sẵn của một bạn đi cùng. `{viec}`: nhiệm vụ hiện tại; `{nhac}`: lời nhắc việc; `{dong}`: các dòng "Cần làm rõ" còn mở. */
+export interface LoiDongHanhMvp {
+  /** Việc chính: có nhiệm vụ. */
+  viecChinh: string;
+  /** Việc chính: câu nối các dòng "Cần làm rõ" còn mở (đặt sau `viecChinh`). */
+  conMo: string;
+  /** Việc chính: chưa có nhiệm vụ nào. */
+  khongViec: string;
+  /** Gợi ý: có lời nhắc việc. */
+  goiY: string;
+  /** Gợi ý: chưa có lời nhắc việc. */
+  khongGoiY: string;
+  /** Câu hỏi ngoài hai ý định mà máy chủ trò chuyện không có. */
+  khongMay: string;
+}
+
+export interface DongHanhHoiDapMvp {
+  /** Câu mẫu cho hai ý định; `khac` (tùy chọn): câu chuyện phiếm để máy không ép vào hai ý định kia. */
+  cauMau: Record<YDinhDongHanhMvp, string[]> & { khac?: string[] };
+  /** Lời theo mã bạn đi cùng (`tung`, `ha-vy`). */
+  loi: Record<string, LoiDongHanhMvp>;
 }
 
 /** Bảng dữ liệu: cột có kiểu SQLite, hàng theo đúng thứ tự cột; `null` = ô NULL. */

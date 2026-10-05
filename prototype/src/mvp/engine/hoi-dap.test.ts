@@ -5,6 +5,7 @@
 import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
 import type { KichBanMvp, ToHoiDapMvp } from '../../content/mvp/types';
+import { dungBang, theHoiDap } from './bang-dieu-tra';
 import { canLamRo, giayNhoHoiDap, tienDoCua } from './hoi-dap';
 import { khungNhin, taoTrangThai, xuLy, type HanhDongMvp, type KhungNhinMvp } from './may';
 import type { CachChoiMvp, TrangThaiMvp } from './trang-thai';
@@ -286,5 +287,119 @@ describe('canCo là mã dữ kiện cùng tờ hay mã bằng chứng', () => {
     s = { ...s, hoSo: { ...s.hoSo, bangChung: [...s.hoSo.bangChung, 'ev-the-lich'] } };
     s = lam(kb, s, hoi('ai mở hộp'), hoi('mấy h bác mở cửa tòa B'));
     expect(loiCuoi(s, kb)).toBe(BT('mo-cua').bienThe.thang);
+  });
+});
+
+describe('loiDaThay: lời của buổi hỏi rải nhiều đoạn (n3-ctsv, n4-ctsv-vao, ket-tra-da)', () => {
+  const TO3 = KB.hoiDap!.to['n3-ctsv']!;
+  const C3 = KB.chuoi.find((c) => c.id === 'n3-ctsv')!;
+  /** Đứng ở đầu chuỗi `chuoi` (nút [HỎI ĐÁP]), không trong cảnh khám phá nào. */
+  const vao = (chuoi: string, cach?: CachChoiMvp): TrangThaiMvp => {
+    const s0 = taoTrangThai(KB, 1);
+    return xuLy(KB, { ...s0, giaiDoan: 'ngay', ngay: 3, conTro: { chuoi, nut: 0, boiCanh: 'truyen' }, ...(cach ? { cachChoi: cach } : {}) }, { type: 'sua-con-tro' });
+  };
+  /** Đọc tiếp: dòng lời bấm tiếp, màn soi xem lần lượt từng chỗ; dừng khi `dung` đúng. */
+  const docTiep = (s: TrangThaiMvp, dung: (kn: KhungNhinMvp) => boolean): { s: TrangThaiMvp; daDoc: string[] } => {
+    const daDoc: string[] = [];
+    for (let i = 0; i < 80; i++) {
+      const kn = khungNhin(KB, s);
+      if (dung(kn)) break;
+      if (kn.kind === 'line') {
+        daDoc.push(kn.loi.text);
+        s = xuLy(KB, s, { type: 'tiep' });
+      } else if (kn.kind === 'explore') {
+        const d = kn.diem.find((x) => !x.daXem);
+        if (!d) throw new Error('khám phá không còn chỗ chưa xem');
+        s = xuLy(KB, s, { type: 'xem-diem', chuoi: d.diem.chuoi });
+      } else if (kn.kind === 'image') s = xuLy(KB, s, { type: 'tiep' });
+      else throw new Error(`gặp ${kn.kind}`);
+    }
+    return { s, daDoc };
+  };
+  const hoiDu = (to: ToHoiDapMvp): HanhDongMvp[] => to.danhSach.flatMap((m) => m.can).map((c) => hoi(to.duKien.find((d) => d.ma === c)!.cauHoiMau[0]!, c));
+  const laQuanCanCu = (kn: KhungNhinMvp): boolean => kn.kind === 'line' && kn.loi.speaker === 'quan' && kn.loi.text.startsWith('Các bạn chỉ được lập căn cứ');
+
+  it('tờ sinh sẵn vị trí các dòng lời đã thay, chỉ dòng lời của các đoạn đã khai', () => {
+    expect(TO3.loiDaThay).toEqual(['n3-ctsv.1', 'n3-ctsv.1b']);
+    expect(TO3.nutDaThay!.every((i) => C3.nodes[i]?.type === 'line')).toBe(true);
+    expect(TO3.nutDaThay!.map((i) => C3.nodes[i]).some((n) => n?.type === 'line' && n.text.startsWith('Các bạn chỉ được lập căn cứ'))).toBe(false);
+    expect(KB.hoiDap!.to['n1-bac-thinh']!.nutDaThay).toBeUndefined();
+  });
+
+  it('cách gõ, hỏi đủ: bỏ các đoạn đã thay ở cả hai phía màn soi; màn soi, nhiệm vụ, nhắc việc vẫn chạy; đoạn kết của Quân vẫn đọc', () => {
+    let s = lam(KB, vao('n3-ctsv'), ...hoiDu(TO3), { type: 'hoi-dap-roi-di' });
+    expect(hd(khungNhin(KB, s)).daRoi).toBe(true);
+    s = lam(KB, s, { type: 'tiep' });
+    expect(s.daThayLoi).toBe('n3-ctsv');
+    expect(s.nhiemVu).toBe('Làm sao để được xem bảng sinh viên?');
+    expect(s.nhacViec?.nhanVat).toBe('minh-anh');
+    const kn = khungNhin(KB, s);
+    expect(kn.kind === 'explore' && kn.nut.id).toBe('kp-soi-quan');
+    const r = docTiep(s, laQuanCanCu);
+    expect(laQuanCanCu(khungNhin(KB, r.s))).toBe(true);
+    // Chỉ đọc lời của ba chỗ soi; không có lời cô Lan nói lại, không có lời đi đường.
+    expect(r.daDoc.some((t) => t.includes('Lại con đường tắt'))).toBe(false);
+    expect(r.daDoc.some((t) => t.includes('Cô ký phiếu tra cứu'))).toBe(false);
+    expect(r.daDoc).toHaveLength(6);
+    expect(r.s.hoSo.manhMoi).toEqual(expect.arrayContaining(['clue-can-ma-va-can-cu', 'clue-phieu-tra-cuu']));
+  });
+
+  it('rời đi khi còn dòng chưa gạch: hậu quả mở manh mối của chuỗi không mở hộ', () => {
+    let s = lam(KB, vao('n3-ctsv'), { type: 'hoi-dap-roi-di' }, { type: 'hoi-dap-roi-di' }, { type: 'tiep' });
+    s = docTiep(s, laQuanCanCu).s;
+    expect(s.hoSo.manhMoi).not.toContain('clue-can-ma-va-can-cu');
+    expect(s.hoSo.manhMoi).not.toContain('clue-phieu-tra-cuu');
+    expect(canLamRo(KB, s)[0]?.dong.map((d) => d.ma)).toEqual(['L1', 'L2', 'L3']);
+  });
+
+  it('cách "xem cả đoạn": chạy đủ các đoạn như trước gói B12', () => {
+    const s = vao('n3-ctsv', 'tu-dong');
+    const kn = khungNhin(KB, s);
+    expect(kn.kind === 'line' && kn.loi.text).toBe('Lại con đường tắt qua sân bóng rổ.');
+    expect(s.daThayLoi ?? null).toBeNull();
+    const r = docTiep(s, laQuanCanCu);
+    expect(r.daDoc.some((t) => t.includes('Cô ký phiếu tra cứu'))).toBe(true);
+    expect(r.s.hoSo.manhMoi).toEqual(expect.arrayContaining(['clue-can-ma-va-can-cu', 'clue-phieu-tra-cuu']));
+  });
+
+  it('ket-tra-da: bỏ các đoạn lời trước và sau ảnh chèn, ảnh vẫn hiện, đoạn sau (Tùng, Hoài đi qua) vẫn đọc', () => {
+    const to = KB.hoiDap!.to['ket-tra-da']!;
+    let s = lam(KB, vao('ket-tra-da'), ...hoiDu(to), { type: 'hoi-dap-roi-di' }, { type: 'tiep' });
+    let kn = khungNhin(KB, s);
+    expect(kn.kind === 'image' && kn.imageId).toBe('chibi-ghi-la-ghi');
+    s = lam(KB, s, { type: 'tiep' });
+    kn = khungNhin(KB, s);
+    expect(kn.kind === 'line' && kn.loi.text).toBe('Cái tủ ấy! "Căn phòng này giữ nhiều hơn em nghĩ."');
+    expect(s.hoSo.manhMoi).toContain('clue-tra-da-1');
+  });
+
+  it('gặp lại một [HỎI ĐÁP] thì dấu "đã thay lời" hết hiệu lực; lưu, nạp giữ dấu', () => {
+    let s = lam(KB, vao('n4-ctsv-vao'), ...hoiDu(KB.hoiDap!.to['n4-ctsv-vao']!), { type: 'hoi-dap-roi-di' }, { type: 'tiep' });
+    let kn = khungNhin(KB, s);
+    expect(kn.kind === 'line' && kn.loi.speaker).toBe('quan');
+    expect(s.daThayLoi).toBe('n4-ctsv-vao');
+    const nap = xuLy(KB, JSON.parse(JSON.stringify(s)) as TrangThaiMvp, { type: 'sua-con-tro' });
+    expect(khungNhin(KB, nap)).toEqual(kn);
+    s = xuLy(KB, { ...s, conTro: { chuoi: 'n4-ctsv-vao', nut: 0, boiCanh: 'truyen' } }, { type: 'sua-con-tro' });
+    expect(s.daThayLoi ?? null).toBeNull();
+    kn = khungNhin(KB, s);
+    expect(kn.kind).toBe('hoi-dap');
+  });
+});
+
+describe('giấy nhớ hỏi ra trong hồ sơ (bảng điều tra)', () => {
+  it('mỗi nhân chứng một tờ giấy nhớ gộp các điều đã hỏi ra; chỉ khung Hồ sơ vẽ; đổi màu ghim, gỡ được như thẻ khác', () => {
+    let s = lam(KB, vaoBacThinh(), hoi('ai mở hộp'), hoi('bác có thấy ai bỏ thư không'));
+    const the = theHoiDap(KB, s);
+    expect(the).toHaveLength(1);
+    expect(the[0]).toMatchObject({ id: 'hoi-dap:bac-tu', loai: 'clue' });
+    expect(the[0]!.quotes['Nội dung hiển thị']).toEqual(giayNhoHoiDap(KB, s).map((g) => (g.an ? `${g.chu} (tự hỏi ra)` : g.chu)));
+    expect(dungBang(KB, s, undefined, { hoiDap: true }).the.map((t) => t.id)).toContain('hoi-dap:bac-tu');
+    expect(dungBang(KB, s).the.map((t) => t.id)).not.toContain('hoi-dap:bac-tu');
+    s = lam(KB, s, { type: 'doi-mau-ghim', the: 'hoi-dap:bac-tu', mau: 'xanh' }, { type: 'ghim-the', the: 'hoi-dap:bac-tu', ghim: false });
+    expect(s.bang?.mau?.['hoi-dap:bac-tu']).toBe('xanh');
+    expect(dungBang(KB, s, undefined, { hoiDap: true }).boGhim.map((t) => t.id)).toContain('hoi-dap:bac-tu');
+    // Mã lạ không đổi gì.
+    expect(lam(KB, s, { type: 'doi-mau-ghim', the: 'hoi-dap:khong-co', mau: 'do' })).toBe(s);
   });
 });

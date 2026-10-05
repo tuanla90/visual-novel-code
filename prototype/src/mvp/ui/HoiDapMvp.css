@@ -1,0 +1,548 @@
+/*
+ * Màn hỏi nhân chứng (HoiDapMvp, gói B12). Khung hỏi đáp phủ nửa dưới sân khấu (absolute theo .stage, như .mvp-canh), bên
+ * trái là nhật ký kiểu chat + khu thao tác, bên phải là trang sổ "Cần làm rõ" và giấy nhớ. Bạn đi cùng (.mvp-hd-ban) nằm ở
+ * góc phải trên, chỗ của khung "Đi cùng" (.mvp-stage__canh-ban). Màu, chữ theo khung trò chuyện bạn đồng hành của game.
+ * Màn dọc: viết RIÊNG cho @media hẹp và .game--portrait (luật của mvp.css: không gộp @media vào danh sách bộ chọn).
+ */
+
+/* Khung phủ tính theo .stage: thả .stage__content ra (static), không tạo ngữ cảnh xếp lớp riêng. */
+.stage__content:has(> .mvp-hoidap) {
+  position: static;
+  z-index: auto;
+}
+
+.mvp-hoidap {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  height: min(54%, 470px);
+  z-index: 30;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 290px);
+  gap: 10px;
+  color: #2a2320;
+  font-family: var(--font-ui);
+  text-align: left;
+  pointer-events: auto;
+}
+.mvp-hoidap__chinh,
+.mvp-hoidap__so {
+  min-height: 0;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 14px;
+  background: rgba(255, 253, 250, 0.97);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.32);
+}
+.mvp-hoidap__chinh {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Đầu khung: tên nhân chứng, số lượt còn (kín đáo), bộ chọn cách chơi. */
+.mvp-hoidap__dau {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 12px;
+  padding: 7px 12px;
+  border-bottom: 1px solid #eadbc5;
+}
+.mvp-hoidap__nhan {
+  display: block;
+  color: #87500e;
+  font: 700 0.64rem/1.2 var(--font-ui);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.mvp-hoidap__ten b {
+  font: 700 1rem/1.25 var(--font-reading);
+  color: #2a2320;
+}
+.mvp-hoidap__luot {
+  margin-left: 8px;
+  color: #75614e;
+  font: 500 0.72rem/1.2 var(--font-ui);
+}
+.mvp-hoidap__cach {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid #ddcdbb;
+  border-radius: 10px;
+  background: #fff;
+}
+.mvp-hoidap__cach button {
+  min-height: 32px;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #704315;
+  font: 600 0.76rem/1.2 var(--font-ui);
+  cursor: pointer;
+}
+.mvp-hoidap__cach button[aria-pressed='true'] {
+  background: #704315;
+  color: #fffdfa;
+}
+.mvp-hoidap__nut-so {
+  display: none;
+  min-height: 32px;
+  padding: 5px 10px;
+  border: 1px solid #e7d8bd;
+  border-radius: 999px;
+  background: #fff7e8;
+  color: #7c4a03;
+  font: 600 0.74rem/1.2 var(--font-ui);
+  cursor: pointer;
+}
+
+/* Nhật ký hỏi đáp kiểu chat. */
+.mvp-hoidap__nhatky {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  padding: 10px 12px;
+  list-style: none;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font: 400 0.96rem/1.45 var(--font-reading);
+  scrollbar-width: thin;
+  scrollbar-color: #bca486 #f7f1e9;
+}
+.mvp-hoidap__dan {
+  color: #75614e;
+  font-style: italic;
+}
+.mvp-hoidap__ban {
+  align-self: flex-end;
+  max-width: 82%;
+}
+.mvp-hoidap__ban p {
+  margin: 0;
+  padding: 7px 11px;
+  border-radius: 12px 12px 3px 12px;
+  background: #e9f0f5;
+  color: #243c50;
+  font: 500 0.9rem/1.4 var(--font-ui);
+  overflow-wrap: anywhere;
+}
+.mvp-hoidap__nc {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  max-width: 94%;
+}
+.mvp-hoidap__nc b {
+  display: block;
+  color: #87500e;
+  font: 700 0.72rem/1.3 var(--font-ui);
+}
+.mvp-hoidap__nc p {
+  margin: 2px 0 0;
+  overflow-wrap: anywhere;
+}
+/* Ô mặt tròn cắt từ chân dung: dùng .nhac-viec__mat (tâm mặt từng nhân vật), đổi cỡ. */
+.mvp-hoidap .nhac-viec__mat.mvp-hd-mat {
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  box-shadow: 0 0 0 2px #fffdfa, 0 0 0 3px #d97706;
+}
+.mvp-hd-mat__chu {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: #fffdfa;
+  font: 700 0.9rem/1 var(--font-ui);
+}
+
+/* Khu thao tác theo cách chơi. */
+.mvp-hoidap__thao-tac {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 8px 12px 10px;
+  border-top: 1px solid #eee8df;
+  background: #faf8f4;
+}
+.mvp-hoidap__go {
+  display: flex;
+  gap: 8px;
+}
+.mvp-hoidap__go input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid #d6d3d1;
+  border-radius: 9px;
+  background: #fff;
+  color: #292524;
+  /* ≥ 16px: Safari iOS không tự phóng to khi chạm vào ô nhập. */
+  font: 500 16px/1.3 var(--font-ui);
+  caret-color: #1f5f8b;
+}
+.mvp-hoidap__go input::placeholder {
+  color: #6c6257;
+  opacity: 1;
+}
+.mvp-hoidap__go input:disabled {
+  background: #f1eee9;
+}
+.mvp-hoidap__hang {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.mvp-hoidap .btn {
+  min-height: 38px;
+}
+.mvp-hoidap__cau-bam {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 128px;
+  overflow-y: auto;
+}
+.mvp-hoidap__chip {
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 1px solid #e7d8bd;
+  border-radius: 10px;
+  background: #fff7e8;
+  color: #5b3a0c;
+  text-align: left;
+  font: 500 0.84rem/1.3 var(--font-ui);
+  cursor: pointer;
+}
+.mvp-hoidap__chip:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.mvp-hoidap__ghi {
+  margin: 0;
+  color: #75614e;
+  font: 400 0.74rem/1.35 var(--font-ui);
+}
+.mvp-hoidap__ghi--cach {
+  color: #8a7a68;
+}
+.mvp-hoidap__ket {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 14px;
+}
+.mvp-hoidap__ket p {
+  flex: 1 1 260px;
+  margin: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #e8f2ea;
+  color: #22513a;
+  font: 500 0.86rem/1.4 var(--font-ui);
+}
+.mvp-hoidap button:focus-visible,
+.mvp-hoidap input:focus-visible,
+.mvp-hd-ban button:focus-visible {
+  outline: 2px solid #1f5f8b;
+  outline-offset: 2px;
+}
+
+/* Trang sổ CLB: "Cần làm rõ" + giấy nhớ đã hỏi ra. */
+.mvp-hoidap__so {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  overflow-y: auto;
+}
+.mvp-hoidap__so-dau {
+  position: relative;
+}
+.mvp-hoidap__so h3 {
+  margin: 0;
+  font: 700 1rem/1.3 var(--font-reading);
+}
+.mvp-hoidap__so h4 {
+  margin: 4px 0 0;
+  color: #75614e;
+  font: 700 0.64rem/1.2 var(--font-ui);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.mvp-hoidap__so-dong {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: #f1eee9;
+  color: #57534e;
+  font: 700 1.1rem/1 var(--font-ui);
+  cursor: pointer;
+}
+.mvp-hoidap__ds,
+.mvp-hoidap__giay {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.mvp-hoidap__ds li {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 7px;
+  align-items: start;
+  font: 400 0.92rem/1.35 var(--font-reading);
+}
+.mvp-hoidap__ds li.is-xong {
+  color: #75614e;
+  text-decoration: line-through;
+  text-decoration-color: #a8a29e;
+}
+.mvp-hoidap__ds small {
+  display: block;
+  color: #87500e;
+  font: 500 0.72rem/1.3 var(--font-ui);
+  text-decoration: none;
+}
+.mvp-hoidap__o {
+  display: grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  margin-top: 3px;
+  border: 1.5px solid #75614e;
+  border-radius: 4px;
+  color: #2f7d4f;
+  font: 700 0.68rem/1 var(--font-ui);
+}
+.mvp-hoidap__ds li.is-xong .mvp-hoidap__o {
+  border-color: #2f7d4f;
+  background: #dcefe3;
+}
+.mvp-hoidap__du {
+  margin: 0;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #e8f2ea;
+  color: #22513a;
+  font: 500 0.78rem/1.35 var(--font-ui);
+}
+.mvp-hoidap__giay li {
+  padding: 5px 8px;
+  border-left: 3px solid #e9c33f;
+  border-radius: 0 6px 6px 0;
+  background: #fff3c4;
+  color: #5a4500;
+  font: 500 0.8rem/1.35 var(--font-ui);
+}
+.mvp-hoidap__giay li small {
+  opacity: 0.75;
+  font-size: 0.7rem;
+}
+.mvp-hoidap__giay li.is-trong {
+  border-left-color: #d6d3d1;
+  background: transparent;
+  color: #75614e;
+}
+
+/* Bạn đi cùng ở góc phải: avatar đứng yên (không nhúc nhích, không nháy), bóng thoại mọc ra phía dưới avatar. */
+.mvp-hd-ban {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  width: min(320px, calc(100vw - 24px));
+}
+.mvp-hd-ban__mat {
+  display: flex;
+  gap: 8px;
+}
+.mvp-hd-ban__nguoi {
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+.mvp-hd-ban__nguoi:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+.mvp-hd-ban .nhac-viec__mat.mvp-hd-mat {
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+}
+.mvp-hd-ban__nguoi.is-noi .nhac-viec__mat.mvp-hd-mat {
+  box-shadow: 0 0 0 3px #fffdfa, 0 0 0 6px #1f5f8b, 0 3px 8px rgba(15, 23, 42, 0.35);
+}
+.mvp-hd-ban__bong {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 14px 3px 14px 14px;
+  background: #fffdfa;
+  color: #2a2320;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.32);
+  font: 500 0.88rem/1.42 var(--font-ui);
+}
+.mvp-hd-ban__bong b {
+  color: #87500e;
+  font: 700 0.72rem/1.3 var(--font-ui);
+}
+.mvp-hd-ban__bong[data-nhan-vat='ha-vy'] b {
+  color: #74506f;
+}
+.mvp-hd-ban__bong p {
+  margin: 0;
+}
+.mvp-hd-ban__bong q {
+  display: block;
+  margin-top: 4px;
+  font-style: italic;
+}
+.mvp-hd-ban__nut {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.mvp-hd-ban__hoi {
+  align-self: flex-start;
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 1px solid #1f5f8b;
+  border-radius: 9px;
+  background: #e9f0f5;
+  color: #243c50;
+  text-align: left;
+  font: 600 0.82rem/1.3 var(--font-ui);
+  cursor: pointer;
+}
+.mvp-hd-ban__hoi:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.mvp-hd-ban__dong {
+  align-self: flex-end;
+  padding: 2px 0;
+  border: 0;
+  background: transparent;
+  color: #75614e;
+  font: 500 0.74rem/1.3 var(--font-ui);
+  cursor: pointer;
+}
+
+/* Điện thoại nằm ngang, máy thấp: khung cao hơn, chữ nhỏ lại. */
+@media (max-height: 500px) {
+  .mvp-hoidap {
+    bottom: 6px;
+    height: 66%;
+  }
+  .mvp-hoidap__nhatky {
+    font-size: 0.88rem;
+  }
+  .mvp-hd-ban .nhac-viec__mat.mvp-hd-mat {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* Màn hẹp / điện thoại cầm dọc: một cột; trang sổ mở bằng nút "Sổ" (phủ lên khung); đang gõ thì khung dời lên nửa trên để bàn
+   phím ảo không che nhật ký, ẩn nhãn cảnh và việc nhắc ở góc trái cho đỡ chật. */
+@media (max-width: 768px) {
+  .mvp-hoidap {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    height: min(58%, 520px);
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .mvp-hoidap__so {
+    display: none;
+  }
+  .mvp-hoidap.is-mo-so .mvp-hoidap__so {
+    display: flex;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+  .mvp-hoidap__so-dong,
+  .mvp-hoidap__nut-so {
+    display: inline-grid;
+    place-items: center;
+  }
+  .mvp-hoidap__cach button {
+    padding: 5px 8px;
+    font-size: 0.72rem;
+  }
+  .mvp-hoidap:has(#mvp-hoidap-o:focus) {
+    top: 64px;
+    bottom: auto;
+    height: min(42dvh, 360px);
+  }
+  .mvp-stage:has(#mvp-hoidap-o:focus) .mvp-stage__canh-trai {
+    display: none;
+  }
+  .mvp-hd-ban {
+    width: min(300px, calc(100vw - 16px));
+  }
+}
+.game--portrait .mvp-hoidap {
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  height: min(58%, 520px);
+  grid-template-columns: minmax(0, 1fr);
+}
+.game--portrait .mvp-hoidap__so {
+  display: none;
+}
+.game--portrait .mvp-hoidap.is-mo-so .mvp-hoidap__so {
+  display: flex;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+.game--portrait .mvp-hoidap__so-dong,
+.game--portrait .mvp-hoidap__nut-so {
+  display: inline-grid;
+  place-items: center;
+}
+.game--portrait .mvp-hoidap__cach button {
+  padding: 5px 8px;
+  font-size: 0.72rem;
+}
+.game--portrait .mvp-hoidap:has(#mvp-hoidap-o:focus) {
+  top: 64px;
+  bottom: auto;
+  height: min(42dvh, 360px);
+}
+.game--portrait .mvp-stage:has(#mvp-hoidap-o:focus) .mvp-stage__canh-trai {
+  display: none;
+}
+.game--portrait .mvp-hd-ban {
+  width: min(300px, calc(100vw - 16px));
+}

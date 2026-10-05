@@ -36,6 +36,7 @@ import { BAN_DO_MVP } from './ban-do-mvp';
 import { BangQuanSatMvp } from './BangQuanSatMvp';
 import { BanDoMvp } from './BanDoMvp';
 import { GioiThieuMvp } from './GioiThieuMvp';
+import { BanDiCungHoiDapMvp, HoiDapMvp } from './HoiDapMvp';
 import { HoSoMvp, type TabHoSoMvp } from './HoSoMvp';
 import { HudMvp } from './HudMvp';
 import { KetMvp } from './KetMvp';
@@ -280,7 +281,10 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         ? { speaker: kn.nut.asker.speaker }
         : kn.kind === 'create-character'
           ? kn.nut.asker
-          : null;
+          : kn.kind === 'hoi-dap'
+            ? // Buổi hỏi: nhân chứng đứng trên dàn như người đang nói chuyện.
+              { speaker: kn.hoiDap.nhanChung }
+            : null;
   const dem = s.giaiDoan === 'ngay' && s.khung >= kb.lich.khung.length;
   const rung = kn.kind === 'effect' || loiHienTai?.expression === 'stunned';
   const laDoc = viewportMode === 'mobile';
@@ -472,6 +476,18 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             onChonNganh={(nganh) => hanhDong({ type: 'chon-nganh', nganh })}
           />
         );
+      case 'hoi-dap':
+        return (
+          <HoiDapMvp
+            key={kn.hoiDap.to.ma}
+            kb={kb}
+            hoiDap={kn.hoiDap}
+            dienTen={dienTen}
+            tenNguoiNoi={(ma) => tenNguoiNoi(kb, ma, s)}
+            tenNguoiChoi={s.tenNguoiChoi}
+            onHanhDong={hanhDong}
+          />
+        );
       case 'explore':
         return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} thu={thuHomNay(kb, s)} gio={kn.nut.gio} dang={kn.nut.dang} haVySoi={kn.nut.haVySoi} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} />;
       case 'end':
@@ -562,12 +578,17 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         nhacViec={laTheChu || ['chon-dia-diem', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick', 'challenge', 'fix-query'].includes(kn.kind) ? null : s.nhacViec}
         dienTen={dienTen}
         isCard={laTheChu}
-        dongHanh={<DongHanhMvp
-          key={JSON.stringify([lanDoiVan, s.batDauLuc, s.conTro, s.hoiDap?.viTri, kn.kind, gioiThieuMo, laTheChu])}
-          kb={kb}
-          s={s}
-          visible={['line', 'feedback', 'question', 'branch', 'doi-chat'].includes(kn.kind) && !gioiThieuMo && !laTheChu}
-        />}
+        dongHanh={kn.kind === 'hoi-dap' ? (
+          // Buổi hỏi (gói B12): góc phải là bạn đi cùng gợi ý bằng bóng thoại, thay cho khung trò chuyện.
+          <BanDiCungHoiDapMvp kb={kb} hoiDap={kn.hoiDap} dienTen={dienTen} tenNguoiNoi={(ma) => tenNguoiNoi(kb, ma, s)} onHanhDong={hanhDong} />
+        ) : (
+          <DongHanhMvp
+            key={JSON.stringify([lanDoiVan, s.batDauLuc, s.conTro, s.hoiDap?.viTri, kn.kind, gioiThieuMo, laTheChu])}
+            kb={kb}
+            s={s}
+            visible={['line', 'feedback', 'question', 'branch', 'doi-chat'].includes(kn.kind) && !gioiThieuMo && !laTheChu}
+          />
+        )}
       >
         {noiDung}
       </SanKhauMvp>

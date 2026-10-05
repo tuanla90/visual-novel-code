@@ -31,6 +31,9 @@
  *     chưa xem (việc chính chưa xong) cho tới khi quay lại hỏi đủ.
  *   - Gạch đủ một dòng có `moManhMoi` → mở manh mối đó. Đóng buổi hỏi thì máy bỏ qua các dòng lời viết sẵn ngay sau `[HỎI ĐÁP]`
  *     và hậu quả mở các manh mối ấy (buổi hỏi đã thay), hậu quả khác vẫn chạy.
+ *   - Tờ khai `loiDaThay` (lời của buổi hỏi rải nhiều đoạn, bị ngắt bởi màn soi, `[ẢNH]`, `[HẬU QUẢ]`): đóng buổi hỏi thì chạy
+ *     tiếp ngay sau `[HỎI ĐÁP]`, máy bỏ qua đúng các dòng lời của các đoạn đã khai ở bất cứ đâu trong chuỗi (`laLoiDaThay`) và
+ *     hậu quả mở manh mối mà danh sách đã lo (`locHauQuaDaThay`); màn soi, ảnh, tài liệu, hậu quả khác vẫn chạy.
  */
 import { Y_DINH_CHUNG, type BoHoiDapMvp, type DuKienHoiDapMvp, type HauQuaMvp, type KichBanMvp, type LopKhacMvp, type NutMvp, type ToHoiDapMvp } from '../../content/mvp/types';
 import type { BongDiCungMvp, BuoiHoiMvp, CachChoiMvp, DongHoiDapMvp, TienDoHoiDapMvp, TrangThaiMvp } from './trang-thai';
@@ -313,7 +316,9 @@ export function dongChuaGach(s: TrangThaiMvp, to: ToHoiDapMvp): ToHoiDapMvp['dan
  * chạy tiếp và các hậu quả còn phải áp (bỏ hậu quả mở manh mối mà danh sách đã lo).
  */
 export function khoiThayThe(nodes: readonly NutMvp[], viTriHoiDap: number, to: ToHoiDapMvp): { nutSau: number; hauQua: HauQuaMvp[] } {
-  const daLo = new Set(to.danhSach.map((d) => d.moManhMoi).filter((x): x is string => !!x));
+  // Tờ khai `loiDaThay`: không bỏ khối liền sau nữa; máy bỏ đúng các đoạn đã khai khi chạy tiếp chuỗi (`laLoiDaThay`).
+  if (to.nutDaThay) return { nutSau: viTriHoiDap + 1, hauQua: [] };
+  const daLo = manhMoiDaLo(to);
   const hauQua: HauQuaMvp[] = [];
   let i = viTriHoiDap + 1;
   for (; i < nodes.length; i++) {
@@ -327,6 +332,29 @@ export function khoiThayThe(nodes: readonly NutMvp[], viTriHoiDap: number, to: T
     break;
   }
   return { nutSau: i, hauQua };
+}
+
+/** Manh mối mà danh sách "Cần làm rõ" của tờ tự mở (thay cho `[HẬU QUẢ] mở manh mối` của chuỗi). */
+function manhMoiDaLo(to: ToHoiDapMvp): Set<string> {
+  return new Set(to.danhSach.map((d) => d.moManhMoi).filter((x): x is string => !!x));
+}
+
+/**
+ * Buổi hỏi đã thay lời (cách bấm / gõ, tờ khai `loiDaThay`): nút ở vị trí `nut` của chuỗi `chuoi` là dòng lời buổi hỏi đã
+ * nói ra, máy bỏ qua.
+ */
+export function laLoiDaThay(kb: KichBanMvp, s: TrangThaiMvp, chuoi: string, nut: number): boolean {
+  if (!s.daThayLoi || s.daThayLoi !== chuoi) return false;
+  return toHoiDap(kb, chuoi)?.nutDaThay?.includes(nut) ?? false;
+}
+
+/** Hậu quả gặp khi chạy tiếp chuỗi đã có buổi hỏi thay lời: bỏ hậu quả mở manh mối mà danh sách đã lo, hậu quả khác giữ. */
+export function locHauQuaDaThay(kb: KichBanMvp, s: TrangThaiMvp, chuoi: string, hauQua: HauQuaMvp[]): HauQuaMvp[] {
+  if (!s.daThayLoi || s.daThayLoi !== chuoi) return hauQua;
+  const to = toHoiDap(kb, chuoi);
+  if (!to?.nutDaThay) return hauQua;
+  const daLo = manhMoiDaLo(to);
+  return hauQua.filter((h) => !(h.kind === 'mo-manh-moi' && daLo.has(h.id)));
 }
 
 /** Làm việc khác trong cảnh (bấm chỗ khác ở [KHÁM PHÁ]): lượt hỏi của các tờ không thuộc chuỗi `chuoiMoi` được nạp lại. */

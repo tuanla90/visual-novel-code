@@ -18,6 +18,7 @@
  * không vẽ, không có sợi, nằm ở `boGhim` để ghim lại; thẻ "?" và phiếu sắp ghim (`them`) không gỡ được.
  */
 import type { KichBanMvp, TheHoSoMvp } from '../../content/mvp/types';
+import { giayNhoHoiDap } from './hoi-dap';
 import type { MauGhimMvp, TrangThaiMvp, GhiChuTruyVanMvp, PhieuTruyVanMvp } from './trang-thai';
 
 export type LoaiTheBang = 'tin' | 'phieu' | 'note' | 'vat' | 'tai-lieu' | 'hoi';
@@ -68,6 +69,35 @@ export interface BangDieuTra {
 
 export const MA_THE_HOI = 'hoi-dang-mo';
 
+/** Tiền tố mã thẻ giấy nhớ hỏi ra từ nhân chứng (gói B12): `hoi-dap:<mã nhân chứng>`. */
+export const TIEN_TO_THE_HOI_DAP = 'hoi-dap:';
+
+/**
+ * Giấy nhớ hỏi ra ở các buổi hỏi nhân chứng (gói B12, `giayNhoHoiDap`), gộp theo nhân chứng: mỗi người một tờ giấy nhớ trong
+ * hồ sơ, các dòng là điều đã hỏi ra (dòng tự hỏi ra ngoài sổ có ghi chú). Bộ không có tờ dữ kiện (MVP) → rỗng.
+ */
+export function theHoiDap(kb: KichBanMvp, s: TrangThaiMvp): TheHoSoMvp[] {
+  const theo = new Map<string, string[]>();
+  for (const g of giayNhoHoiDap(kb, s)) {
+    const nc = kb.hoiDap?.to[g.to]?.nhanChung;
+    if (!nc) continue;
+    const ds = theo.get(nc) ?? [];
+    const dong = g.an ? `${g.chu} (tự hỏi ra)` : g.chu;
+    if (!ds.includes(dong)) ds.push(dong);
+    theo.set(nc, ds);
+  }
+  return [...theo].map(([nc, ds]): TheHoSoMvp => {
+    const nv = kb.nhanVat.find((n) => n.id === nc);
+    const ten = nv?.trongCau || nv?.ten || nc;
+    return { id: TIEN_TO_THE_HOI_DAP + nc, loai: 'clue', heading: `Lời ${ten}`, fields: { 'Nguồn': `Hỏi chuyện ${ten}` }, quotes: { 'Nội dung hiển thị': ds } };
+  });
+}
+
+/** Mã là một thẻ giấy nhớ hỏi ra đang có (đổi màu ghim, gỡ / ghim lại được như thẻ trong hồ sơ). */
+export function laTheHoiDap(kb: KichBanMvp, s: TrangThaiMvp, id: string): boolean {
+  return id.startsWith(TIEN_TO_THE_HOI_DAP) && theHoiDap(kb, s).some((t) => t.id === id);
+}
+
 const tach = (chu: string | undefined): string[] =>
   (chu ?? '')
     .split(/[·,]/)
@@ -78,7 +108,13 @@ const tach = (chu: string | undefined): string[] =>
  * Bảng của ván đang chơi. `them`: mã một phiếu kết quả SẮP vào hồ sơ (màn "ghim lên bảng" ngay sau khi tra đúng, trước khi
  * máy ghi nhận) kèm các thẻ đã dùng.
  */
-export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; dung: string[]; phieu?: PhieuTruyVanMvp; ghiChu?: GhiChuTruyVanMvp[] }): BangDieuTra {
+export function dungBang(
+  kb: KichBanMvp,
+  s: TrangThaiMvp,
+  them?: { id: string; dung: string[]; phieu?: PhieuTruyVanMvp; ghiChu?: GhiChuTruyVanMvp[] },
+  /** `hoiDap`: thêm giấy nhớ hỏi ra từ nhân chứng (khung Hồ sơ; màn tra và đối chất không dùng). */
+  tuyChon: { hoiDap?: boolean } = {},
+): BangDieuTra {
   const the: TheBang[] = [];
   const boGhim: TheBang[] = [];
   const day: DayBang[] = [];
@@ -158,6 +194,12 @@ export function dungBang(kb: KichBanMvp, s: TrangThaiMvp, them?: { id: string; d
 
   for (const id of s.hoSo.taiLieu) themThe(id);
   for (const id of s.hoSo.manhMoi) themThe(id);
+  // Giấy nhớ hỏi ra từ nhân chứng: nằm cạnh các giấy nhớ khác, không kéo vào truy vấn được.
+  if (tuyChon.hoiDap) {
+    for (const hs of theHoiDap(kb, s)) {
+      dat({ id: hs.id, loai: 'tin', nhan: hs.heading, tieuDe: hs.heading, phu: hs.fields['Nguồn'] ?? null, giaTri: [], gach: [], anh: null, khongDuLieu: true, the: hs, mau: mauCua(hs.id) });
+    }
+  }
   for (const id of s.hoSo.bangChung) themThe(id);
   // Phiếu tổng hợp là thẻ gợi ý động, không nhập vào hồ sơ bằng chứng.
   for (const id of Object.keys(s.bang?.phieuTruyVan ?? {})) themThe(id);

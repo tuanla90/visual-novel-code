@@ -3199,7 +3199,7 @@
 .dong-hanh__tin-nhan-muc--user b { text-align: right; color: #345c79; }
 .dong-hanh__tin-nhan-muc--user p { border-radius: 11px 3px 11px 11px; background: #e9f0f5; }
 .dong-hanh__tin-nhan-muc small { font-weight: 400; font-size: inherit; }
-.dong-hanh__goi-y { padding: 7px 0 2px; color: #66503c; }
+.dong-hanh__goi-y { display: flex; flex-wrap: wrap; gap: 6px; padding: 7px 0 2px; color: #66503c; }
 .dong-hanh__goi-y button {
   padding: 5px 8px;
   border: 1px solid #e7d8bd;
@@ -3748,17 +3748,10 @@
   opacity: 1;
   transform: translate(-44%, -35%) scale(1) rotate(0deg);
 }
-@media (prefers-reduced-motion: no-preference) {
-  /* Mười giây đầu không có gì; sau đó nháy rất nhẹ để người chơi không bị kẹt. */
-  .mvp-an:not(.is-da-xem):not(:hover) .mvp-an__goi-y { animation: mvp-an-nhay 2.4s ease-in-out 10s infinite; }
-}
+/* Chi tiết ẩn không nháy, không phát sáng dù để lâu (gói B12, user 05/10/2026): người chơi tự tìm, bí thì hỏi bạn đi cùng.
+   Vòng sáng chỉ hiện khi chính người chơi rê chuột / Tab tới (ở trên). */
 @media (prefers-reduced-motion: reduce) {
-  .mvp-an:not(.is-da-xem) .mvp-an__goi-y { opacity: 0.6; }
   .mvp-an__kinh { transition: none; }
-}
-@keyframes mvp-an-nhay {
-  0%, 100% { opacity: 0; transform: scale(0.9); }
-  50% { opacity: 0.75; transform: scale(1.04); }
 }
 
 .mvp-soinv__vung { position: relative; }
@@ -3907,7 +3900,7 @@
 }
 
 /* Màn Hà Vy soi (03/10/2026): chi tiết ẩn, không kính lúp mồi sẵn. Cả khung ảnh mang con trỏ soi; rê qua đúng chỗ thì kính hiện
-   ra; để lâu (14 giây) chưa thấy thì nháy rất nhẹ. Màn cảm ứng không rê được nên nháy sớm hơn (6 giây). */
+   ra. Để lâu cũng không nháy (gói B12, 05/10/2026): bí thì hỏi bạn đi cùng. */
 .mvp-soinv__vung[data-soi-an] .mvp-soinv__khung { cursor: zoom-in; }
 .mvp-soi--an .mvp-soi__kinh,
 .mvp-soi--an .mvp-soi__vong { opacity: 0; animation: none; transition: opacity 0.25s ease-out; }
@@ -3917,16 +3910,6 @@
 .mvp-soi--an:focus-visible .mvp-soi__vong { opacity: 1; }
 .mvp-soi--an.is-da-xem .mvp-soi__kinh,
 .mvp-soi--an.is-da-xem .mvp-soi__vong { opacity: 0.45; }
-@media (prefers-reduced-motion: no-preference) {
-  .mvp-soi--an:not(.is-da-xem):not(:hover) .mvp-soi__kinh { animation: mvp-soi-an-nhay 3s ease-in-out 14s infinite; }
-}
-@media (hover: none) and (prefers-reduced-motion: no-preference) {
-  .mvp-soi--an:not(.is-da-xem) .mvp-soi__kinh { animation-delay: 6s; }
-}
-@keyframes mvp-soi-an-nhay {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 0.55; }
-}
 .mvp-catcanh__phu {
   display: block;
   margin-top: 4px;

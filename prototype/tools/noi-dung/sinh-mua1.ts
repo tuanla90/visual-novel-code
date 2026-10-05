@@ -74,7 +74,7 @@ export function sinhVanBanMua1(thuMuc: string = THU_MUC_NOI_DUNG_MUA_1): KetQuaS
   const kq = docThuMucMvp(thuMuc);
   const luat = kiemLuatMvp(kq.mvp, { spriteVat: docSpriteVat(), anh: docTenAnh() });
   // Giọng của lời trong tờ dữ kiện do `kiem-noi-dung:mua1` / `kiem-giong:mua1` kiểm (như lời trong loi/); ở đây chỉ luật tờ.
-  const hd = docHoiDap(thuMuc, kq.mvp, { giong: false });
+  const hd = docHoiDap(thuMuc, kq.mvp, { giong: false, nguonLoi: { banDo: kq.banDo, doanLoi: kq.doanLoi } });
   const loi = [...kq.loi, ...luat.loi.map((l) => traViTri(l, kq.banDo))].map(dinhDangLoi).concat(hd.loi);
   if (loi.length > 0) return { tep: {}, duLieu: null, loi };
   try {

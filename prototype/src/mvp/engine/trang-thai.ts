@@ -182,7 +182,7 @@ export interface BuoiHoiMvp {
  * (`bang`, vì vào tuyến khác là gỡ hết thẻ) và mã các thẻ trong hồ sơ lúc cất (`hoSoCo`): thẻ nhận thêm ở tuyến kia khi về
  * nằm trong ngăn gỡ ghim, không chen lên bảng.
  */
-export type TiepTucTuyenMvp = Pick<TrangThaiMvp, 'conTro' | 'canh' | 'nhiemVu' | 'nhacViec' | 'thuThachDangLam' | 'duKienDangLam' | 'hoiDap' | 'buoiHoi' | 'khamPha' | 'doiChat' | 'choHienTaiLieu' | 'sauKhiHien' | 'bang' | 'ngayThang'> & {
+export type TiepTucTuyenMvp = Pick<TrangThaiMvp, 'conTro' | 'canh' | 'nhiemVu' | 'nhacViec' | 'thuThachDangLam' | 'duKienDangLam' | 'hoiDap' | 'buoiHoi' | 'daThayLoi' | 'khamPha' | 'doiChat' | 'choHienTaiLieu' | 'sauKhiHien' | 'bang' | 'ngayThang'> & {
   hoSoCo?: string[];
 };
 export interface TuyenPhuMvp {
@@ -265,6 +265,11 @@ export interface TrangThaiMvp {
   buoiHoi?: BuoiHoiMvp | null;
   /** Tiến độ hỏi theo mã tờ dữ kiện (điều đã hỏi ra giữ qua các lần gặp và khi đổi cách chơi). */
   tienDoHoiDap?: Record<string, TienDoHoiDapMvp>;
+  /**
+   * Chuỗi vừa có buổi hỏi (cách bấm / gõ) thay lời viết sẵn, tờ khai `loiDaThay`: chạy tiếp chuỗi này thì máy bỏ qua các
+   * dòng lời ấy và hậu quả mở manh mối mà danh sách đã lo. Gặp lại một `[HỎI ĐÁP]` thì xóa. Thiếu / `null` = không có.
+   */
+  daThayLoi?: string | null;
   /** Số lần đã thử mỗi câu hỏi / chọn dòng / lọc thử / chép sổ (id → lần). */
   lanThu: Record<string, number>;
 

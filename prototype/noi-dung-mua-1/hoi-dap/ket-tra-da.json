@@ -7,6 +7,7 @@
   "nguoiDiCung": ["ha-vy", "tung"],
   "ghiChu": "Chỉ mẩu chuyện 1 (clue-tra-da-1). Hai cuốn sổ, kết luận sai, cậu trà nóng giờ ở đâu là chuyện Vụ 2, 3, 5: bà hẹn hôm khác kể, không nói không biết.",
   "moDau": "Quán trà đá dưới gốc cây ngoài cổng chính.",
+  "loiDaThay": ["ket-tra-da.1a", "ket-tra-da.1b", "ket-tra-da.1c"],
   "tuDongDuKien": ["gia-tra", "phong-tu-sat", "kho-choi", "cau-sinh-vien", "tra-nong"],
   "danhSach": [
     { "ma": "L1", "cau": "Ngày xưa phòng CLB thế nào?", "can": ["kho-choi", "cau-sinh-vien"], "moManhMoi": "clue-tra-da-1" },

@@ -11,8 +11,10 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { RawMvp } from './doc-mvp.ts';
-import { dongTrongJson } from './hoi-dap-loi.ts';
+import type { DoanLoi, NguonDong } from './ghep-loi.ts';
+import { dongTrongJson, TEP_DONG_HANH } from './hoi-dap-loi.ts';
 import { loiGiongHoiDap } from './kiem-giong.ts';
+import { docThuMucMvp } from './thu-muc-mvp.ts';
 
 /** Giữ khớp với `Y_DINH_CHUNG` của src/content/mvp/types.ts (bộ công cụ không import từ src/). */
 export const Y_DINH_CHUNG = ['chao', 'cam-on', 'tam-biet', 'hoi-mo', 'hoi-rieng-tu', 'pha-game', 'doi-dap-an', 'ngoai-le'] as const;
@@ -55,6 +57,10 @@ export interface ToHoiDap {
   nguoiDiCung: string[];
   moDau: string;
   tuDongDuKien: string[];
+  /** Mã các đoạn [LỜI] của chuỗi mà buổi hỏi đã thay (tùy chọn). Thiếu = máy bỏ khối lời liền sau [HỎI ĐÁP] như cũ. */
+  loiDaThay?: string[];
+  /** Vị trí trong `items` của chuỗi (= `nodes` sau khi chuyển) các dòng lời thuộc `loiDaThay`; bộ đọc dò, không viết tay. */
+  nutDaThay?: number[];
   gioiHan: { soCau: number; lyDo: 'ban' | 'phien'; baoTruoc: { con: number; loi: string }; het: string } | null;
   danhSach: { ma: string; cau: string; can: string[]; moManhMoi: string | null }[];
   duKien: DuKienHoiDap[];
@@ -67,6 +73,21 @@ export interface ToHoiDap {
 export interface BoHoiDap {
   chung: Record<YDinh, string[]>;
   to: Record<string, ToHoiDap>;
+  dongHanh?: DongHanhHoiDap;
+}
+
+/** Giữ khớp `Y_DINH_DONG_HANH` của src/content/mvp/types.ts. */
+export const Y_DINH_DONG_HANH = ['viec-chinh', 'goi-y'] as const;
+/** Bạn đi cùng có lời viết sẵn (giữ khớp `BAN_DONG_HANH` của src/mvp/engine/tri-nho-dong-hanh.ts). */
+export const BAN_DONG_HANH = ['tung', 'ha-vy'] as const;
+const TRUONG_LOI_DONG_HANH = ['viecChinh', 'conMo', 'khongViec', 'goiY', 'khongGoiY', 'khongMay'] as const;
+/** Chỗ điền bắt buộc trong từng lời: nhiệm vụ, các dòng còn mở, lời nhắc việc. */
+const CHO_DIEN: Partial<Record<(typeof TRUONG_LOI_DONG_HANH)[number], string>> = { viecChinh: '{viec}', conMo: '{dong}', goiY: '{nhac}' };
+
+export interface DongHanhHoiDap {
+  /** Câu mẫu cho hai ý định, và (tùy chọn) "khac": câu chuyện phiếm để máy không ép vào hai ý định kia. */
+  cauMau: Record<(typeof Y_DINH_DONG_HANH)[number], string[]> & { khac?: string[] };
+  loi: Record<string, Record<(typeof TRUONG_LOI_DONG_HANH)[number], string>>;
 }
 
 export interface KetQuaHoiDap {
@@ -101,6 +122,7 @@ export function chuanHoaTo(x: Json): ToHoiDap {
     nguoiDiCung: dsChu(x.nguoiDiCung),
     moDau: chu(x.moDau),
     tuDongDuKien: dsChu(x.tuDongDuKien),
+    ...(Array.isArray(x.loiDaThay) ? { loiDaThay: dsChu(x.loiDaThay) } : {}),
     gioiHan: gh
       ? {
           soCau: typeof gh.soCau === 'number' ? gh.soCau : 0,
@@ -243,8 +265,53 @@ export function kiemChung(chung: Json): { kim: string; thongBao: string }[] {
   return loi;
 }
 
-/** Kiểm chéo tờ với kịch bản: chuỗi có `[HỎI ĐÁP]`, nhân vật, thẻ hồ sơ, đoạn [LỜI] viết sẵn chứa đủ chữ bắt buộc. */
-export function kiemCheoTo(to: ToHoiDap, mvp: RawMvp): { kim: string; thongBao: string }[] {
+/** Dò một mục của chuỗi về đoạn [LỜI] gốc: tệp khung đã ghép + dòng (1-based) → mã đoạn lời, không phải dòng lời → `null`. */
+export type DoDoanLoi = (tep: string, dong: number) => string | null;
+
+/** Bộ dò đoạn lời từ bản đồ ghép lời (`docThuMucMvp`: `banDo`, `doanLoi`). */
+export function dungDoDoanLoi(nguon: { banDo: Map<string, NguonDong[]>; doanLoi: readonly DoanLoi[] }): DoDoanLoi {
+  const theoDong = new Map<string, string>();
+  for (const d of nguon.doanLoi) for (const l of d.dong) theoDong.set(`${d.tep}:${l.so}`, d.ma);
+  return (tep, dong) => {
+    const n = nguon.banDo.get(tep)?.[dong - 1];
+    return n ? (theoDong.get(`${n.tep}:${n.dong}`) ?? null) : null;
+  };
+}
+
+/**
+ * Các mục của chuỗi thuộc những đoạn lời `loiDaThay` (sau dòng `[HỎI ĐÁP]`): trả vị trí các DÒNG LỜI (mục `line`, máy bỏ
+ * qua khi buổi hỏi đã thay) và lỗi khi một mã không phải đoạn lời có thật của chuỗi sau `[HỎI ĐÁP]`.
+ */
+export function nutDaThayCua(to: ToHoiDap, chuoi: RawMvp['chuoi'][number], doDoan: DoDoanLoi): { nut: number[]; loi: { kim: string; thongBao: string }[] } {
+  const loi: { kim: string; thongBao: string }[] = [];
+  const ma = to.loiDaThay ?? [];
+  const viTri = chuoi.items.findIndex((it) => it.kind === 'hoi-dap' && it.ma === to.ma);
+  const gap = new Set<string>();
+  const nut: number[] = [];
+  chuoi.items.forEach((it, k) => {
+    const doan = doDoan(chuoi.viTri.tep, chuoi.itemDong[k] ?? 0);
+    if (!doan || !ma.includes(doan)) return;
+    if (k < viTri) {
+      loi.push({ kim: doan, thongBao: `"loiDaThay" có "${doan}" nhưng đoạn này đứng trước dòng [HỎI ĐÁP ${to.ma}]` });
+      return;
+    }
+    gap.add(doan);
+    if (it.kind === 'line') nut.push(k);
+  });
+  const trung = new Set<string>();
+  for (const m of ma) {
+    if (trung.has(m)) loi.push({ kim: m, thongBao: `"loiDaThay" có "${m}" hai lần` });
+    trung.add(m);
+    if (!gap.has(m) && !loi.some((l) => l.kim === m)) loi.push({ kim: m, thongBao: `"loiDaThay" có "${m}" nhưng chuỗi "${to.ma}" không có đoạn [LỜI ${m}] sau dòng [HỎI ĐÁP]` });
+  }
+  return { nut, loi };
+}
+
+/**
+ * Kiểm chéo tờ với kịch bản: chuỗi có `[HỎI ĐÁP]`, nhân vật, thẻ hồ sơ, đoạn [LỜI] viết sẵn chứa đủ chữ bắt buộc; `loiDaThay`
+ * (nếu khai) là các đoạn lời có thật của chuỗi (cần `doDoan`).
+ */
+export function kiemCheoTo(to: ToHoiDap, mvp: RawMvp, doDoan?: DoDoanLoi): { kim: string; thongBao: string }[] {
   const loi: { kim: string; thongBao: string }[] = [];
   const bao = (kim: string, thongBao: string): void => void loi.push({ kim, thongBao });
   const nv = new Set(mvp.nhanVat.map((n) => n.id));
@@ -274,11 +341,64 @@ export function kiemCheoTo(to: ToHoiDap, mvp: RawMvp): { kim: string; thongBao: 
       if (!toanDoan.includes(b.toLowerCase())) bao('"tuDongDuKien"', `"tuDongDuKien" có "${c}" nhưng đoạn [LỜI] của chuỗi không nói "${b}"`);
     }
   }
+  if (to.loiDaThay) {
+    if (!doDoan) bao('"loiDaThay"', '"loiDaThay": thiếu bản đồ ghép lời để dò đoạn lời của chuỗi');
+    else loi.push(...nutDaThayCua(to, chuoi, doDoan).loi);
+  }
   return loi;
 }
 
-/** Đọc + kiểm cả thư mục `hoi-dap/`. `mvp` = kịch bản đã đọc (kiểm chéo); `giong` = cho lời qua máy kiểm giọng. */
-export function docHoiDap(thuMucGoc: string, mvp: RawMvp | null, tuyChon: { hienThi?: string; giong?: boolean } = {}): KetQuaHoiDap {
+/** Kiểm `dong-hanh.json`: câu mẫu đủ hai ý định (6–12 câu), lời đủ trường cho từng bạn đi cùng, đúng chỗ điền, không thuật ngữ SQL. */
+export function kiemDongHanh(j: Json): { kim: string; thongBao: string }[] {
+  const loi: { kim: string; thongBao: string }[] = [];
+  const cm = laObj(j.cauMau) ? j.cauMau : {};
+  for (const y of Y_DINH_DONG_HANH) {
+    const n = dsChu(cm[y]).length;
+    if (n < 6 || n > 12) loi.push({ kim: '"cauMau"', thongBao: `dong-hanh: ý định "${y}" cần 6–12 câu mẫu (đang có ${n})` });
+  }
+  for (const k of Object.keys(cm)) if (![...Y_DINH_DONG_HANH, 'khac'].includes(k)) loi.push({ kim: `"${k}"`, thongBao: `dong-hanh: ý định lạ "${k}" (chỉ: ${Y_DINH_DONG_HANH.join(', ')}, khac)` });
+  const l = laObj(j.loi) ? j.loi : {};
+  for (const ban of BAN_DONG_HANH) {
+    const x = laObj(l[ban]) ? l[ban] : null;
+    if (!x) {
+      loi.push({ kim: '"loi"', thongBao: `dong-hanh: thiếu lời của "${ban}"` });
+      continue;
+    }
+    for (const t of TRUONG_LOI_DONG_HANH) {
+      const c = chu(x[t]);
+      if (!c) loi.push({ kim: `"${ban}"`, thongBao: `dong-hanh: ${ban} thiếu lời "${t}"` });
+      const dien = CHO_DIEN[t];
+      if (c && dien && !c.includes(dien)) loi.push({ kim: c, thongBao: `dong-hanh: ${ban}.${t} phải có chỗ điền "${dien}"` });
+      const m = THUAT_NGU_SQL.exec(c);
+      if (m) loi.push({ kim: c, thongBao: `dong-hanh: ${ban}.${t} có thuật ngữ SQL "${m[0]}"` });
+    }
+  }
+  return loi;
+}
+
+function chuanHoaDongHanh(j: Json): DongHanhHoiDap {
+  const cm = laObj(j.cauMau) ? j.cauMau : {};
+  const l = laObj(j.loi) ? j.loi : {};
+  const loi: DongHanhHoiDap['loi'] = {};
+  for (const ban of BAN_DONG_HANH) {
+    const x = laObj(l[ban]) ? l[ban] : {};
+    loi[ban] = Object.fromEntries(TRUONG_LOI_DONG_HANH.map((t) => [t, chu(x[t])])) as DongHanhHoiDap['loi'][string];
+  }
+  return {
+    cauMau: { 'viec-chinh': dsChu(cm['viec-chinh']), 'goi-y': dsChu(cm['goi-y']), ...(Array.isArray(cm.khac) ? { khac: dsChu(cm.khac) } : {}) },
+    loi,
+  };
+}
+
+/**
+ * Đọc + kiểm cả thư mục `hoi-dap/`. `mvp` = kịch bản đã đọc (kiểm chéo); `giong` = cho lời qua máy kiểm giọng; `nguonLoi` =
+ * bản đồ ghép lời của chính lần đọc `mvp` (để dò `loiDaThay`); thiếu mà có tờ khai `loiDaThay` thì tự đọc lại thư mục.
+ */
+export function docHoiDap(
+  thuMucGoc: string,
+  mvp: RawMvp | null,
+  tuyChon: { hienThi?: string; giong?: boolean; nguonLoi?: { banDo: Map<string, NguonDong[]>; doanLoi: readonly DoanLoi[] } } = {},
+): KetQuaHoiDap {
   const ht = tuyChon.hienThi ?? 'noi-dung-mua-1';
   const thuMuc = join(thuMucGoc, 'hoi-dap');
   const loi: string[] = [];
@@ -312,8 +432,25 @@ export function docHoiDap(thuMucGoc: string, mvp: RawMvp | null, tuyChon: { hien
     } else if (c) loi.push(`${ht}/hoi-dap/chung.json:1: phải là một đối tượng { "<ý định>": [câu mẫu…] }`);
   }
 
+  let dongHanh: DongHanhHoiDap | undefined;
+  if (existsSync(join(thuMuc, TEP_DONG_HANH))) {
+    const d = docJson(TEP_DONG_HANH);
+    if (d && laObj(d.v)) {
+      ghi(TEP_DONG_HANH, d.raw, kiemDongHanh(d.v));
+      dongHanh = chuanHoaDongHanh(d.v);
+    } else if (d) loi.push(`${ht}/hoi-dap/${TEP_DONG_HANH}:1: phải là một đối tượng { "cauMau": …, "loi": … }`);
+  }
+
+  let doDoan: DoDoanLoi | undefined;
+  const layDoDoan = (): DoDoanLoi => {
+    if (!doDoan) {
+      const nguon = tuyChon.nguonLoi ?? docThuMucMvp(thuMucGoc, ht);
+      doDoan = dungDoDoanLoi(nguon);
+    }
+    return doDoan;
+  };
   const to: Record<string, ToHoiDap> = {};
-  for (const f of readdirSync(thuMuc).filter((x) => x.endsWith('.json') && x !== 'chung.json').sort()) {
+  for (const f of readdirSync(thuMuc).filter((x) => x.endsWith('.json') && x !== 'chung.json' && x !== TEP_DONG_HANH).sort()) {
     const j = docJson(f);
     if (!j) continue;
     if (!laObj(j.v)) {
@@ -323,7 +460,13 @@ export function docHoiDap(thuMucGoc: string, mvp: RawMvp | null, tuyChon: { hien
     const t = chuanHoaTo(j.v);
     if (t.ma && `${t.ma}.json` !== f) loi.push(`${ht}/hoi-dap/${f}:${dongTrongJson(j.raw, t.ma)}: tên tệp phải là "<ma>.json" ("${t.ma}.json")`);
     ghi(f, j.raw, kiemTo(t));
-    if (mvp) ghi(f, j.raw, kiemCheoTo(t, mvp));
+    if (mvp) {
+      const dd = t.loiDaThay ? layDoDoan() : undefined;
+      ghi(f, j.raw, kiemCheoTo(t, mvp, dd));
+      const chuoi = mvp.chuoi.find((c) => c.id === t.ma);
+      // Tệp sinh mang sẵn vị trí các dòng lời đã thay, máy game khỏi phải dò lại.
+      if (dd && chuoi) t.nutDaThay = nutDaThayCua(t, chuoi, dd).nut;
+    }
     if (t.ma) to[t.ma] = t;
   }
   for (const { c, it, k } of coDanhDau) {
@@ -333,5 +476,5 @@ export function docHoiDap(thuMucGoc: string, mvp: RawMvp | null, tuyChon: { hien
   if (tuyChon.giong !== false) loi.push(...loiGiongHoiDap(thuMucGoc));
   const so = Object.values(to);
   const tomTat = `${so.length} tờ hỏi đáp (${so.reduce((s, t) => s + t.duKien.length, 0)} dữ kiện, ${so.reduce((s, t) => s + t.chuDeKhongBiet.length, 0)} chủ đề không biết)`;
-  return { bo: { chung, to }, loi, tomTat };
+  return { bo: { chung, to, ...(dongHanh ? { dongHanh } : {}) }, loi, tomTat: `${tomTat}${dongHanh ? ', lời viết sẵn của bạn đi cùng' : ''}` };
 }

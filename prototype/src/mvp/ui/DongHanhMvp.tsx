@@ -1,4 +1,8 @@
-/** Trò chuyện cùng những người đang có mặt; mỗi người giữ ký ức riêng của ván. */
+/**
+ * Trò chuyện cùng những người đang có mặt; mỗi người giữ ký ức riêng của ván.
+ * Bộ mùa 1 (gói B12): câu hỏi "việc chính là gì", "gợi ý đi"… được máy so chữ nhận ra và trả lời ngay bằng lời viết sẵn
+ * (`engine/dong-hanh-viet-san.ts`), không gọi mạng; câu khác mới gọi máy chủ, máy chủ không có thì bạn đáp một câu viết sẵn.
+ */
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import type { KichBanMvp } from '../../content/mvp/types';
 import type { TrangThaiMvp } from '../engine/trang-thai';
@@ -10,7 +14,10 @@ import { anhChanDung } from './anh-mvp';
 import { HighlightText } from '../../shared/highlight/HighlightText';
 import { useVnStore } from '../../shared/vn/vn-store';
 import { dienTen, tenNguoiNoi } from '../engine/may';
+import { loiKhongMay, traLoiVietSan } from '../engine/dong-hanh-viet-san';
 
+/** Máy chủ trò chuyện không có (mạng không tới, 404, 503, trả về không phải JSON). */
+class LoiKhongMay extends Error {}
 function lichSu(s: TrangThaiMvp): TinNhan[] {
   if (s.triNhoDongHanh?.hoiThoaiNhom) return s.triNhoDongHanh.hoiThoaiNhom;
   // Keep conversations from older saves, without making the other character a witness.
@@ -63,6 +70,15 @@ export function DongHanhMvp({ kb, s, visible = true }: { kb: KichBanMvp; s: Tran
     if (!ghiNhanChat(history, keys, store.lanDoiVan)) return;
     const observed = useKhoMvp.getState().trangThai!;
     const requestKeys = Object.fromEntries(present.map((id) => [id, khoaNguCanhDongHanh(observed, id)]));
+    const pending: TinNhan = { role: 'user', content: message, heardBy: present, ...(target ? { target } : {}) };
+    // Hỏi việc chính / xin gợi ý: trả lời ngay bằng lời viết sẵn, không gọi mạng.
+    const vietSan = traLoiVietSan(kb, observed, present, target, message);
+    if (vietSan) {
+      ghiNhanChat([...history, pending, { role: 'assistant', character: vietSan.ban as BanBe, content: vietSan.loi, heardBy: present }], requestKeys, store.lanDoiVan);
+      setNoiDung(''); setLoi('');
+      nhapRef.current?.focus();
+      return;
+    }
     const controller = new AbortController();
     request.current = controller;
     const stillHere = (): boolean => {
@@ -71,7 +87,6 @@ export function DongHanhMvp({ kb, s, visible = true }: { kb: KichBanMvp; s: Tran
         && JSON.stringify(banDangCoMat(kb, latest.trangThai)) === JSON.stringify(present)
         && present.every((id) => khoaNguCanhDongHanh(latest.trangThai!, id) === requestKeys[id]);
     };
-    const pending: TinNhan = { role: 'user', content: message, heardBy: present, ...(target ? { target } : {}) };
     setTinDangGui(pending); setNoiDung(''); setLoi('');
     setDangGui(routeCompanion(present, message, target).primary ?? present[0]!);
     try {
@@ -82,10 +97,22 @@ export function DongHanhMvp({ kb, s, visible = true }: { kb: KichBanMvp; s: Tran
       const bytes = (): number => new TextEncoder().encode(JSON.stringify(payload)).length;
       while (bytes() > 23_000 && payload.history.length) payload.history.shift();
       if (bytes() > 23_000) throw new Error('Cuộc trò chuyện đang quá dài. Thử một câu hỏi ngắn hơn nhé.');
-      const response = await fetch('/api/companion/chat', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: controller.signal,
-      });
-      const data = await response.json() as { replies?: { character?: unknown; content?: unknown }[]; error?: unknown };
+      let response: Response;
+      try {
+        response = await fetch('/api/companion/chat', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: controller.signal,
+        });
+      } catch (error) {
+        if (controller.signal.aborted) throw error;
+        throw new LoiKhongMay();
+      }
+      if (response.status === 404 || response.status === 503) throw new LoiKhongMay();
+      let data: { replies?: { character?: unknown; content?: unknown }[]; error?: unknown };
+      try {
+        data = await response.json() as typeof data;
+      } catch {
+        throw new LoiKhongMay();
+      }
       if (!response.ok) throw new Error(typeof data.error === 'string' ? data.error : 'Chưa nhận được câu trả lời. Thử lại nhé.');
       const replies: TinNhan[] = [];
       for (const item of Array.isArray(data.replies) ? data.replies.slice(0, 2) : []) {
@@ -96,7 +123,13 @@ export function DongHanhMvp({ kb, s, visible = true }: { kb: KichBanMvp; s: Tran
       if (!replies.length) throw new Error('Chưa nhận được câu trả lời. Thử lại nhé.');
       if (stillHere()) ghiNhanChat([...history, pending, ...replies], requestKeys, store.lanDoiVan);
     } catch (error) {
-      if (stillHere()) { setNoiDung(message); setLoi(error instanceof Error ? error.message : 'Chưa kết nối được. Thử lại nhé.'); }
+      // Không có máy chủ trò chuyện: bộ mùa 1 có câu viết sẵn đúng giọng của bạn đi cùng.
+      const khongMay = error instanceof LoiKhongMay ? loiKhongMay(kb, present, target) : null;
+      if (khongMay && stillHere()) {
+        ghiNhanChat([...history, pending, { role: 'assistant', character: khongMay.ban as BanBe, content: khongMay.loi, heardBy: present }], requestKeys, store.lanDoiVan);
+        return;
+      }
+      if (stillHere()) { setNoiDung(message); setLoi(error instanceof LoiKhongMay ? 'Chưa kết nối được. Thử lại nhé.' : error instanceof Error ? error.message : 'Chưa kết nối được. Thử lại nhé.'); }
     } finally {
       if (request.current === controller) {
         request.current = null; setDangGui(null); setTinDangGui(null);
@@ -138,7 +171,10 @@ export function DongHanhMvp({ kb, s, visible = true }: { kb: KichBanMvp; s: Tran
         </button> : null}
         <div ref={tinNhanRef} className="dong-hanh__tin-nhan" role="log" aria-label="Lời trò chuyện" aria-live="polite" aria-relevant="additions text">
           {!tinNhan.length && !tinDangGui ? <div className="dong-hanh__goi-y">
-            <button type="button" onClick={() => { setNoiDung('Mình nên chú ý điều gì ở đây?'); nhapRef.current?.focus(); }}>Mình nên chú ý điều gì?</button>
+            {kb.hoiDap?.dongHanh ? <>
+              <button type="button" onClick={() => { setNoiDung('Việc chính là gì?'); nhapRef.current?.focus(); }}>Việc chính là gì?</button>
+              <button type="button" onClick={() => { setNoiDung('Gợi ý đi.'); nhapRef.current?.focus(); }}>Gợi ý đi</button>
+            </> : <button type="button" onClick={() => { setNoiDung('Mình nên chú ý điều gì ở đây?'); nhapRef.current?.focus(); }}>Mình nên chú ý điều gì?</button>}
           </div> : null}
           {[...tinNhan, ...(tinDangGui ? [tinDangGui] : [])].map((item, index) => <div key={index}
             className={'dong-hanh__tin-nhan-muc dong-hanh__tin-nhan-muc--' + item.role} data-nhan-vat={item.character}>

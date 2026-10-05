@@ -22,6 +22,11 @@ export interface TepLoiHoiDap {
   banDo: number[];
 }
 
+/** Tệp lời viết sẵn của bạn đi cùng ("việc chính", "gợi ý"), không phải tờ dữ kiện. */
+export const TEP_DONG_HANH = 'dong-hanh.json';
+/** Tên tệp lời (thứ tự truyện) dùng cho lời của bạn đi cùng: lời dùng từ Vụ 1. */
+const TEN_DONG_HANH = '01-ngay-1';
+
 type Json = Record<string, unknown>;
 const laObj = (v: unknown): v is Json => typeof v === 'object' && v !== null && !Array.isArray(v);
 const chuoi = (v: unknown): string[] => (typeof v === 'string' ? [v] : Array.isArray(v) ? v.filter((x): x is string => typeof x === 'string') : []);
@@ -101,6 +106,24 @@ export function tepCuaHoiDap(thuMucGoc: string): Map<string, string> {
   return ra;
 }
 
+/** Tệp lời giả của `dong-hanh.json`: mỗi lời viết sẵn một dòng của đúng bạn đi cùng nói nó. */
+export function tepLoiDongHanh(j: Json, raw: string, duongDan: string): TepLoiHoiDap {
+  const dong: string[] = [`# Lời · ${duongDan}`, '## hd.dong-hanh'];
+  const banDo: number[] = [1, 1];
+  const loi = laObj(j.loi) ? j.loi : {};
+  for (const [ban, x] of Object.entries(loi)) {
+    if (!laObj(x)) continue;
+    for (const v of Object.values(x)) {
+      for (const c of chuoi(v)) {
+        if (c.trim() === '') continue;
+        dong.push(`- Khi hỏi bạn đi cùng: **${ban}**: ${c.replace(/\s*\n\s*/g, ' ')}`);
+        banDo.push(dongTrongJson(raw, c));
+      }
+    }
+  }
+  return { ten: TEN_DONG_HANH, duongDan, noiDung: dong.join('\n'), banDo };
+}
+
 /** Tệp lời giả của mọi tờ trong `<thuMucGoc>/hoi-dap/` (bỏ chung.json; tệp JSON hỏng thì bỏ qua — bộ đọc báo lỗi). */
 export function tepLoiHoiDap(thuMucGoc: string, hienThi: string): TepLoiHoiDap[] {
   const thuMuc = join(thuMucGoc, 'hoi-dap');
@@ -108,6 +131,16 @@ export function tepLoiHoiDap(thuMucGoc: string, hienThi: string): TepLoiHoiDap[]
   const tepKb = tepCuaHoiDap(thuMucGoc);
   const ra: TepLoiHoiDap[] = [];
   for (const f of readdirSync(thuMuc).filter((x) => x.endsWith('.json') && x !== 'chung.json').sort()) {
+    if (f === TEP_DONG_HANH) {
+      const raw = readFileSync(join(thuMuc, f), 'utf8');
+      try {
+        const j: unknown = JSON.parse(raw);
+        if (laObj(j)) ra.push(tepLoiDongHanh(j, raw, `${hienThi}/${f}`));
+      } catch {
+        // JSON hỏng: bộ đọc báo lỗi.
+      }
+      continue;
+    }
     const raw = readFileSync(join(thuMuc, f), 'utf8');
     let to: unknown;
     try {

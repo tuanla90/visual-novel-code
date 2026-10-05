@@ -9,7 +9,7 @@ import { join } from 'node:path';
 import { afterAll, describe, expect, it } from 'vitest';
 import type { RawMvp } from '../../../../tools/noi-dung/doc-mvp.ts';
 import { tepLoiTuTo } from '../../../../tools/noi-dung/hoi-dap-loi.ts';
-import { chuanHoaTo, docHoiDap, kiemChung, kiemCheoTo, kiemTo, type ToHoiDap } from '../../../../tools/noi-dung/hoi-dap-mua1.ts';
+import { chuanHoaTo, docHoiDap, dungDoDoanLoi, kiemChung, kiemCheoTo, kiemDongHanh, kiemTo, type ToHoiDap } from '../../../../tools/noi-dung/hoi-dap-mua1.ts';
 import { docLuatGiong, kiemGiong } from '../../../../tools/noi-dung/kiem-giong.ts';
 import { THU_MUC_NOI_DUNG_MUA_1, vanBanMua1 } from '../../../../tools/noi-dung/sinh-mua1.ts';
 import { docThuMucMvp, gomTepMvp } from '../../../../tools/noi-dung/thu-muc-mvp.ts';
@@ -209,5 +209,62 @@ describe('bổ sung 05/10 tối: đoạn lời rải nhiều chỗ, trường l�
     expect(kiemCheoTo(t, mvpTach(items))).toEqual([]);
     dk(t, 'mo-cua').canCo = ['ev-khong-co'];
     expect(kiemCheoTo(t, mvpTach(items)).map((l) => l.thongBao)).toContainEqual(expect.stringContaining('"canCo" trỏ tới thẻ không có trong ho-so/ "ev-khong-co"'));
+  });
+});
+
+describe('loiDaThay: các đoạn [LỜI] mà buổi hỏi đã thay', () => {
+  const kq = docThuMucMvp(THU_MUC_NOI_DUNG_MUA_1);
+  const doDoan = dungDoDoanLoi(kq);
+  const to = (ma: string): ToHoiDap => chuanHoaTo(JSON.parse(readFileSync(join(THU_MUC_NOI_DUNG_MUA_1, `hoi-dap/${ma}.json`), 'utf8')) as Record<string, unknown>);
+
+  it('ba tờ thật khai đúng đoạn lời của chuỗi; bộ đọc ghi sẵn vị trí các dòng lời đã thay', () => {
+    for (const ma of ['n3-ctsv', 'n4-ctsv-vao', 'ket-tra-da']) {
+      expect(to(ma).loiDaThay?.length).toBeGreaterThan(0);
+      expect(kiemCheoTo(to(ma), kq.mvp, doDoan)).toEqual([]);
+    }
+    const hd = docHoiDap(THU_MUC_NOI_DUNG_MUA_1, kq.mvp, { giong: false, nguonLoi: kq });
+    const c = kq.mvp.chuoi.find((x) => x.id === 'n4-ctsv-vao')!;
+    const nut = hd.bo!.to['n4-ctsv-vao']!.nutDaThay!;
+    expect(nut.length).toBeGreaterThan(0);
+    expect(nut.every((k) => c.items[k]?.kind === 'line')).toBe(true);
+    // Không khai thì không có trường, máy game giữ hành vi cũ.
+    expect(hd.bo!.to['n1-bac-thinh']).not.toHaveProperty('nutDaThay');
+    expect(hd.bo!.to['n1-bac-thinh']).not.toHaveProperty('loiDaThay');
+  });
+
+  it('mã không phải đoạn lời của chuỗi thì báo; khai trùng thì báo; thiếu bản đồ ghép lời thì báo', () => {
+    const t = to('n3-ctsv');
+    t.loiDaThay = ['n3-ctsv.1', 'n3-ctsv.9', 'n3-soi-kinh.1', 'n3-ctsv.1'];
+    const bao = kiemCheoTo(t, kq.mvp, doDoan).map((l) => l.thongBao);
+    expect(bao).toContainEqual(expect.stringContaining('"loiDaThay" có "n3-ctsv.9" nhưng chuỗi "n3-ctsv" không có đoạn [LỜI n3-ctsv.9]'));
+    expect(bao).toContainEqual(expect.stringContaining('"loiDaThay" có "n3-soi-kinh.1" nhưng chuỗi "n3-ctsv" không có đoạn'));
+    expect(bao).toContainEqual(expect.stringContaining('"loiDaThay" có "n3-ctsv.1" hai lần'));
+    expect(kiemCheoTo(to('n3-ctsv'), kq.mvp).map((l) => l.thongBao)).toContainEqual(expect.stringContaining('thiếu bản đồ ghép lời'));
+  });
+});
+
+describe('dong-hanh.json: lời viết sẵn khi hỏi bạn đi cùng việc chính, gợi ý', () => {
+  const RAW_DH = readFileSync(join(THU_MUC_NOI_DUNG_MUA_1, 'hoi-dap/dong-hanh.json'), 'utf8');
+  const dh = (): Record<string, unknown> & { cauMau: Record<string, string[]>; loi: Record<string, Record<string, string>> } => JSON.parse(RAW_DH);
+
+  it('tệp thật không lỗi; bộ đọc đưa vào bo.dongHanh, không coi là tờ dữ kiện', () => {
+    expect(kiemDongHanh(dh())).toEqual([]);
+    const hd = docHoiDap(THU_MUC_NOI_DUNG_MUA_1, null, { giong: false });
+    expect(hd.bo!.dongHanh?.cauMau['viec-chinh'].length).toBeGreaterThanOrEqual(6);
+    expect(Object.keys(hd.bo!.dongHanh!.loi).sort()).toEqual(['ha-vy', 'tung']);
+    expect(Object.keys(hd.bo!.to)).not.toContain('dong-hanh');
+  });
+
+  it('thiếu câu mẫu, thiếu chỗ điền, lời có thuật ngữ SQL, thiếu lời của một bạn: báo lỗi', () => {
+    const j = dh();
+    j.cauMau['goi-y'] = ['gợi ý đi'];
+    j.loi['tung']!.viecChinh = 'Việc chính là đi tìm thôi!';
+    j.loi['ha-vy']!.goiY = 'Thử viết câu truy vấn xem: {nhac}';
+    const bao = kiemDongHanh(j).map((l) => l.thongBao);
+    expect(bao).toContainEqual(expect.stringContaining('ý định "goi-y" cần 6–12 câu mẫu (đang có 1)'));
+    expect(bao).toContainEqual(expect.stringContaining('tung.viecChinh phải có chỗ điền "{viec}"'));
+    expect(bao).toContainEqual(expect.stringContaining('ha-vy.goiY có thuật ngữ SQL "truy vấn"'));
+    delete j.loi['tung'];
+    expect(kiemDongHanh(j).map((l) => l.thongBao)).toContainEqual(expect.stringContaining('thiếu lời của "tung"'));
   });
 });

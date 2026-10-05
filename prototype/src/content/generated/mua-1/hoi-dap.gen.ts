@@ -110,6 +110,11 @@ export const HOI_DAP_MUA_1 = {
         "cau-sinh-vien",
         "tra-nong"
       ],
+      "loiDaThay": [
+        "ket-tra-da.1a",
+        "ket-tra-da.1b",
+        "ket-tra-da.1c"
+      ],
       "gioiHan": null,
       "danhSach": [
         {
@@ -487,7 +492,22 @@ export const HOI_DAP_MUA_1 = {
           "ai": "ha-vy",
           "loi": "Được. Chuyện chưa rõ thì để hôm khác ra hỏi bà."
         }
-      }
+      },
+      "nutDaThay": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
     },
     "n1-bac-thinh": {
       "ma": "n1-bac-thinh",
@@ -2245,6 +2265,10 @@ export const HOI_DAP_MUA_1 = {
         "phieu-tra-cuu",
         "phieu-mo-gi"
       ],
+      "loiDaThay": [
+        "n3-ctsv.1",
+        "n3-ctsv.1b"
+      ],
       "gioiHan": {
         "soCau": 8,
         "lyDo": "ban",
@@ -2649,7 +2673,23 @@ export const HOI_DAP_MUA_1 = {
           "ai": "ha-vy",
           "loi": "Ừ. Dòng chưa rõ tớ để nguyên trong sổ."
         }
-      }
+      },
+      "nutDaThay": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        16,
+        17,
+        18
+      ]
     },
     "n4-bd-toa-b-vao": {
       "ma": "n4-bd-toa-b-vao",
@@ -2917,6 +2957,9 @@ export const HOI_DAP_MUA_1 = {
         "ma-khong",
         "khong-ket-luan",
         "moi-hop"
+      ],
+      "loiDaThay": [
+        "n4-ctsv.1v"
       ],
       "gioiHan": {
         "soCau": 7,
@@ -3269,7 +3312,14 @@ export const HOI_DAP_MUA_1 = {
           "ai": "ha-vy",
           "loi": "Được. Dòng chưa rõ tớ để nguyên trong sổ."
         }
-      }
+      },
+      "nutDaThay": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
     },
     "n4-sanh-toa-b": {
       "ma": "n4-sanh-toa-b",
@@ -3934,6 +3984,64 @@ export const HOI_DAP_MUA_1 = {
           "ai": "ha-vy",
           "loi": "Được. Chỗ chưa rõ tớ để nguyên trong sổ."
         }
+      }
+    }
+  },
+  "dongHanh": {
+    "cauMau": {
+      "viec-chinh": [
+        "việc chính là gì",
+        "giờ làm gì",
+        "làm gì tiếp",
+        "giờ mình phải làm gì",
+        "tiếp theo làm gì đây",
+        "nhiệm vụ bây giờ là gì",
+        "mình đang phải làm gì nhỉ",
+        "giờ đi đâu tiếp",
+        "việc cần làm bây giờ",
+        "mình đang tìm cái gì"
+      ],
+      "goi-y": [
+        "gợi ý đi",
+        "bí rồi",
+        "giúp tớ với",
+        "cho tớ gợi ý",
+        "tớ bí quá",
+        "kẹt rồi",
+        "có gợi ý gì không",
+        "chỉ tớ với",
+        "không biết làm sao",
+        "gợi ý cho mình chút"
+      ],
+      "khac": [
+        "cậu nghĩ ai viết lá thư",
+        "anh Quân là người thế nào",
+        "cậu học ngành gì",
+        "hôm nay trời đẹp nhỉ",
+        "tớ nghĩ là Hiếu",
+        "cậu có thích đọc truyện trinh thám không",
+        "tối nay đi ăn gì",
+        "cậu thấy cô Lan có khó tính không",
+        "chào cậu",
+        "cảm ơn cậu nhé"
+      ]
+    },
+    "loi": {
+      "tung": {
+        "viecChinh": "Ơ, việc chính á? Đang phải tìm cho ra câu này: {viec}",
+        "conMo": "Trong sổ còn mấy dòng chưa gạch nữa: {dong}",
+        "khongViec": "Giờ chưa có việc gì gấp đâu! Cứ đi một vòng đã, có gì tớ hô.",
+        "goiY": "Tớ chỉ nhớ mỗi câu nhắc lúc nãy thôi: {nhac}",
+        "khongGoiY": "Tớ cũng đang bí như cậu đây! Hay hỏi Hà Vy xem, cậu ấy để ý kỹ hơn tớ nhiều.",
+        "khongMay": "Ơ, chuyện đó để lúc khác nhé! Giờ cậu hỏi việc chính hay xin gợi ý thì tớ trả lời được ngay."
+      },
+      "ha-vy": {
+        "viecChinh": "Việc chính vẫn là câu này: {viec}",
+        "conMo": "Sổ còn mấy dòng chưa rõ: {dong}",
+        "khongViec": "Chưa có việc gì cần làm ngay đâu. Cứ xem quanh đây đã.",
+        "goiY": "Nhớ lại câu nhắc lúc nãy xem: {nhac}",
+        "khongGoiY": "Tớ chưa thấy gì để gợi ý cả. Cứ nhìn kỹ quanh đây đã nhé.",
+        "khongMay": "Chuyện đó để sau nhé. Giờ cậu muốn hỏi việc chính, hay cần gợi ý?"
       }
     }
   }

@@ -19,7 +19,8 @@ import { CodeText } from '../../shared/ui/CodeText';
 import { IconBriefcase, IconFileText, IconUsers, IconX, ItemVectorIcon } from '../../shared/ui/icons';
 import type { HoSoMvp as HoSo, TrangThaiMvp, MauGhimMvp } from '../engine/trang-thai';
 import { BangGhimMvp } from './v7/BangGhimMvp';
-import { phanTramBiMat } from '../engine/may';
+import { canLamRo } from '../engine/hoi-dap';
+import { phanTramBiMat, tenNguoiNoi } from '../engine/may';
 import { anhChanDung } from './anh-mvp';
 import { NhanVatMvp } from './NhanVatMvp';
 import { useTheChuaXem } from './the-moi';
@@ -162,7 +163,7 @@ export function HoSoMvp({ kb, trangThai, onDoiCho, onDoiMau, onGhim, hoSo, soTay
           </div>
         ) : tab === 'ho-so' && trangThai ? (
           <div className="mvp-kho__bang">
-            <BangGhimMvp kb={kb} s={trangThai} dienTen={dienTen} onDoiCho={onDoiCho} onDoiMau={onDoiMau} onGhim={onGhim} chuaXem={chuaXem} onXemThe={xemThe} />
+            <BangGhimMvp kb={kb} s={trangThai} dienTen={dienTen} onDoiCho={onDoiCho} onDoiMau={onDoiMau} onGhim={onGhim} chuaXem={chuaXem} onXemThe={xemThe} hoiDap />
           </div>
         ) : tab === 'ho-so' ? (
           <NganHoSo
@@ -177,7 +178,7 @@ export function HoSoMvp({ kb, trangThai, onDoiCho, onDoiMau, onGhim, hoSo, soTay
             phanTramBiMat={trangThai ? phanTramBiMat(kb, trangThai) : undefined}
           />
         ) : (
-          <NganSoTay kb={kb} soTay={soTay} dienTen={dienTen} thuThachXong={trangThai?.thuThachXong ?? []} />
+          <NganSoTay kb={kb} soTay={soTay} dienTen={dienTen} thuThachXong={trangThai?.thuThachXong ?? []} conMo={trangThai ? canLamRo(kb, trangThai) : []} />
         )}
       </div>
     </aside>
@@ -356,10 +357,46 @@ function bangDaMo(kb: KichBanMvp, thuThachXong: readonly string[]): { ten: strin
   });
 }
 
-function NganSoTay({ kb, soTay, dienTen, thuThachXong }: { kb: KichBanMvp; soTay: string[]; dienTen: (t: string) => string; thuThachXong: readonly string[] }) {
+function NganSoTay({
+  kb,
+  soTay,
+  dienTen,
+  thuThachXong,
+  conMo = [],
+}: {
+  kb: KichBanMvp;
+  soTay: string[];
+  dienTen: (t: string) => string;
+  thuThachXong: readonly string[];
+  /** Các dòng "Cần làm rõ" còn mở sau những buổi hỏi nhân chứng (gói B12). */
+  conMo?: ReturnType<typeof canLamRo>;
+}) {
   const bang = bangDaMo(kb, thuThachXong);
   return (
     <div className="notebook__journal-container mvp-kho__so">
+      {conMo.length > 0 ? (
+        <div className="notebook__journal-card mvp-kho__can-lam-ro">
+          <div className="notebook__journal-header">
+            <span className="notebook__journal-pill">
+              <IconFileText width={16} height={16} aria-hidden="true" /> CẦN LÀM RÕ
+            </span>
+            <span className="notebook__journal-time">{conMo.reduce((n, x) => n + x.dong.length, 0)} dòng còn mở</span>
+          </div>
+          <div className="notebook__journal-body">
+            {conMo.map((x) => (
+              <div key={x.to} className="notebook__journal-entry">
+                <h4>HỎI {tenNguoiNoi(kb, x.nhanChung).toUpperCase()}</h4>
+                {x.dong.map((d) => (
+                  <p key={d.ma}>
+                    {dienTen(d.cau)}
+                    {d.motPhan ? ' (mới rõ một nửa)' : ''}
+                  </p>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
       {bang.length > 0 ? (
         <div className="notebook__journal-card mvp-kho__bang-da-mo">
           <div className="notebook__journal-header">
