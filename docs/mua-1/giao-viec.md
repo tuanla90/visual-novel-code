@@ -315,6 +315,27 @@ Túi đồ (Tùng, bỏ phần nối, bỏ ngày 30/10), Sổ sử dụng phòng
 - [ ] Máy kiểm kỹ năng xanh theo `mở sau` mới.
 - [ ] "Một lần dẫn lạc" khớp từng chi tiết với cảnh nhập học có Hoài ở Vụ 1 (ngày, nơi tới, nhà xe).
 
+### B11. Người đi cùng (user nêu 05/10/2026; chưa xếp lịch làm)
+
+**User đã chốt:**
+- Avatar của người đang đi cùng **luôn hiện ở góc phải** màn hình. Phải cho cảm giác đang đi với một người bạn thật.
+- **Gợi ý là lời viết sẵn**, không để AI tự sinh. AI chỉ dùng cho trò chuyện tự do (đã có `DongHanhMvp` cho Tùng, Hà Vy).
+- Khi người chơi bí: **bóng thoại hiện ra từ avatar** với vài câu gợi ý. Không nháy vùng cần bấm, avatar cũng không nhúc nhích.
+- Người đi cùng **có mặt cả ở bản đồ**: nhắc nên đi đâu, hoặc bàn xem đi đâu trước. Đây là chỗ mỗi người lộ tính cách (ví dụ Hà Vy cân nhắc, Tùng đòi đi ngay).
+- Người đi cùng **nhắc việc còn dở trước khi người chơi bấm "Hết ngày"**.
+- Về sau có thể có **đoạn đi một mình**: thử thách tự lực, không có gợi ý.
+
+**Đã có sẵn trong MVP (dùng lại):** `src/mvp/ui/DongHanhMvp.tsx` (dải "Đi cùng", chat AI có trí nhớ riêng), `NhacViecMvp` (`> NHẮC VIỆC <ai>: …` hiện mặt ở góc sân khấu), nháy chi tiết ẩn khi để lâu ở `KhamPhaMvp.tsx` (sẽ thay bằng bóng thoại).
+
+**Phải làm:**
+- Cú pháp khai ai đi cùng ở `[ĐI CÙNG]` và ở chuỗi đầu ngày (ví dụ `· cùng: tung`); đi một mình thì khai rõ `· cùng: không`.
+- Cú pháp lời gợi ý theo bậc cho mỗi nhiệm vụ (bậc 1 dùng lại dòng `> NHẮC VIỆC`), lời bàn ở bản đồ, lời nhắc trước "Hết ngày"; mỗi người đi cùng một giọng.
+- Máy kiểm: gợi ý không chứa đáp án màn tra, không thuật ngữ SQL ở miệng Hà Vy, Minh Anh, Tùng; nhiệm vụ nào trên tuyến có người đi cùng cũng có ít nhất một gợi ý; đoạn `cùng: không` thì không có gợi ý.
+- Màn chơi: gộp ô nhắc việc với dải đi cùng thành một ô avatar góc phải có bóng thoại (cả màn dọc); bỏ nháy vùng bấm.
+- Truyện chữ in "Đi cùng: <ai>" ở đầu đoạn và in lời gợi ý, lời bàn ở bản đồ thành khung riêng.
+
+**Chưa chốt:** làm lúc nào (đề xuất: sau khi truyện chữ Vụ 2 được duyệt; riêng lời gợi ý của Vụ 2 thêm ngay sau các lượt lời); điều kiện coi là "bí" (để lâu, nộp sai mấy lần, hay người chơi tự bấm avatar); người chưa có chat AI (Minh Anh, Duy, Nam) có mở chat không.
+
 ---
 
 ## C. Nghiệm thu chung (mọi gói nội dung)
