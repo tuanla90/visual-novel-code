@@ -111,7 +111,7 @@ const CAI = `(async () => {
       o.nhanChung = ten(kn.hoiDap.nhanChung); o.cachChoi = kn.hoiDap.cachChoi;
       o.nhatKy = kn.hoiDap.nhatKy.map((d) => ({ ai: ten(d.ai), chu: may.dienTen(KB, s, d.chu) }));
       o.danhSach = kn.hoiDap.danhSach.map((d) => ({ cau: d.cau, xong: d.xong })); o.daRoi = kn.hoiDap.daRoi;
-    } else if (kn.kind === 'image') { o.anh = kn.imageId ?? kn.nut?.imageId ?? '';
+    } else if (kn.kind === 'image') { o.anhChen = kn.imageId ?? kn.nut?.imageId ?? '';
     } else if (kn.kind === 'show-document') { o.taiLieu = kn.taiLieu?.title ?? kn.taiLieu?.id ?? '';
     } else if (kn.kind === 'create-character') { o.hoi = kn.nut.asker?.text ?? '';
     } else if (kn.kind === 'doi-chat') { o.giaThuyet = kn.nut.giaThuyet ?? ''; o.cauHoi = kn.nut.cauHoi ?? '';

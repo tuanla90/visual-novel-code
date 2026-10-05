@@ -46,7 +46,7 @@ def ta(b):
         ds = '; '.join(('[x] ' if d['xong'] else '[ ] ') + d['cau'] for d in b.get('danhSach', []))
         return f'KHUNG HỎI {b.get("nhanChung", "")} (cách: {b.get("cachChoi", "")}). Dòng mới nhất: {cuoi} | Cần làm rõ: {ds}'
     if k == 'image':
-        return f'ẢNH CHÈN toàn màn: {b.get("anh", "")}'
+        return f'ẢNH CHÈN toàn màn: {b.get("anhChen", "")}'
     if k == 'show-document':
         return f'TÀI LIỆU hiện ra: {b.get("taiLieu", "")}'
     if k == 'create-character':
