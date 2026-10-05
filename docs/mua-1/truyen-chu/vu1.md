@@ -172,7 +172,7 @@ Buổi họp rà soát
 - **Minh Anh** (nghiêm túc): Đừng cuống. Hồ sơ của mình có căn cứ rõ ràng, bình tĩnh xem lại xem.
 - **Hà Vy** (suy nghĩ): Danh sách này bị gộp hai nhóm lại rồi. Họ lấy cả hai thay vì chỉ lấy phần trùng nhau.
 - *Suy nghĩ của bạn:* *(Để tớ lên giải thích cho thầy. Anh Quân đang chọn nhầm điều kiện.)*
-> 💭 **Nhắc nhở** (Hà Vy): Gần sáu trăm dòng… câu của anh Quân lấy rộng ở chỗ nào?
+> 💭 **Nhắc nhở** (Hà Vy): Câu của anh Quân lấy rộng ra ở chỗ nào nhỉ?
 > [CG cg-hop-doi-dau] (chưa có mô tả)
 #### 💻 Màn tra dữ liệu: Câu truy vấn trên màn chiếu (thẻ `c-sua-or-quan`)
 *Đề bài:* Câu của Quân đang chiếu trên màn: "tên là Hoài hoặc lớp BC24A". Hồ sơ CLB nộp chỉ có 1 người.
@@ -958,7 +958,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 
 📍 **Quán trà đá cổng trường** — *Sau kết thật: Tùng khao trà đá; bà Lụa kể về cái tủ sắt*
 
-- *Gốc cây ngoài cổng chính. Một cái ô bạc màu, mấy cái ghế nhựa, cái ấm nhôm to bằng cái xô.*
+- *Quán trà đá dưới gốc cây ngoài cổng chính.*
 - **Tùng** (vui vẻ): Bà ơi, cho cháu ba cốc trà đá! Hôm nay cháu khao.
 - **Bà bán trà đá**: Ba cốc chín nghìn. Khao thế thì bà cũng khao được.
 - **Hà Vy**: Cậu cá thua tớ bao nhiêu lần rồi, trả bằng trà đá thì còn lâu mới hết.

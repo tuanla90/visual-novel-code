@@ -21,7 +21,7 @@
 - **minh-anh** (serious): Đừng cuống. Hồ sơ của mình có căn cứ rõ ràng, bình tĩnh xem lại xem.
 - **ha-vy** (thinking): Danh sách này bị gộp hai nhóm lại rồi. Họ lấy cả hai thay vì chỉ lấy phần trùng nhau.
 - **player**: Để tớ lên giải thích cho thầy. Anh Quân đang chọn nhầm điều kiện.
-> NHẮC VIỆC ha-vy (day-kinh): Gần sáu trăm dòng… câu của anh Quân lấy rộng ở chỗ nào?
+> NHẮC VIỆC ha-vy (day-kinh): Câu của anh Quân lấy rộng ra ở chỗ nào nhỉ?
 - [DÀN DỰNG] Nhân vật chính xin phép thầy Quang, bước lên cạnh máy chiếu để chỉ ra chỗ nhầm lẫn.
 
 ## hop-00.4
@@ -80,7 +80,7 @@
 - **tung** (happy): Thế thì đi uống trà đá thôi. Tớ hứa rồi mà.
 
 ## ket-tra-da.1a
-- **narrator**: Gốc cây ngoài cổng chính. Một cái ô bạc màu, mấy cái ghế nhựa, cái ấm nhôm to bằng cái xô.
+- **narrator**: Quán trà đá dưới gốc cây ngoài cổng chính.
 - **tung** (happy): Bà ơi, cho cháu ba cốc trà đá! Hôm nay cháu khao.
 
 ## ket-tra-da.1b

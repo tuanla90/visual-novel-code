@@ -6161,7 +6161,7 @@ const GOC = {
           "type": "reminder",
           "speaker": "ha-vy",
           "expression": "day-kinh",
-          "text": "Gần sáu trăm dòng… câu của anh Quân lấy rộng ở chỗ nào?"
+          "text": "Câu của anh Quân lấy rộng ra ở chỗ nào nhỉ?"
         },
         {
           "type": "note",
@@ -6778,7 +6778,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Gốc cây ngoài cổng chính. Một cái ô bạc màu, mấy cái ghế nhựa, cái ấm nhôm to bằng cái xô."
+          "text": "Quán trà đá dưới gốc cây ngoài cổng chính."
         },
         {
           "type": "line",
