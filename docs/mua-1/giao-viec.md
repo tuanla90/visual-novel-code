@@ -343,6 +343,8 @@ Túi đồ (Tùng, bỏ phần nối, bỏ ngày 30/10), Sổ sử dụng phòng
 **User đã chốt:**
 - Hướng đi: người chơi **gõ câu hỏi**, máy **xếp câu hỏi vào một dữ kiện** của nhân chứng, rồi trả lời bằng **một trong các biến thể lời đã viết sẵn** cho dữ kiện đó. Biến thể do model viết lúc dựng game, qua soát và duyệt mẫu như lời thường. Không sinh lời lúc chơi cho nhân chứng.
 - Phải **gợi ý cho người chơi biết còn hỏi được gì**: một **danh sách cần điều tra**, hoặc **bạn đi cùng gợi ý câu hỏi** (hai cách dùng được cùng lúc).
+- **Ba cách chơi, người chơi đổi được lúc nào cũng được** (user 05/10 tối): (1) tự động hoàn toàn, bấm rồi đọc cả đoạn như hiện nay; (2) bấm từng câu hỏi mẫu; (3) gõ câu hỏi. Điều đã hỏi ra giữ nguyên khi đổi cách.
+- Đối chất chưa đụng tới, vẫn đưa bằng chứng như cũ. Cảnh thử là bác Thịnh ở sảnh tòa B.
 
 **Đề xuất của Claude (chờ user duyệt):**
 - Mỗi nhân chứng có một **tờ dữ kiện**. Mỗi dữ kiện khai: câu cần làm rõ (dòng hiện ở danh sách), nội dung, chữ bắt buộc (mốc giờ, tên, con số phải có nguyên văn trong mọi biến thể), bốn tới năm biến thể lời, vài câu hỏi mẫu để máy xếp, điều kiện mới chịu nói, và hai bậc gợi ý của bạn đi cùng. Thêm lời "không biết" và lời gạt chuyện ngoài lề.
@@ -354,7 +356,22 @@ Túi đồ (Tùng, bỏ phần nối, bỏ ngày 30/10), Sổ sử dụng phòng
 
 **Căn cứ:** Vaudeville (AI tự do, người chơi ép được nhân vật nói trái dữ kiện), bản thử Portopia (chỉ xếp vào lệnh có sẵn, bị chê cứng), bài nghiên cứu "structured knowledge tree" (arXiv 2609.23043: chi tiết bịa giảm từ 17,8% xuống 6,27%, vẫn chưa đủ cho mốc giờ), Dead Meat (lời AI chỉ tốt bằng phần người viết).
 
-**Chưa chốt:** thử ở cảnh nào (đề xuất: bác Thịnh ở sảnh tòa B, năm dữ kiện); cảnh nào giữ kiểu bấm rồi đọc như cũ; đối chất có dùng gõ chữ không; có cho bấm xem cả danh sách câu hỏi mẫu khi người chơi không muốn gõ không.
+**Màn thử (05/10 tối, chưa vào game):** `tools/thu-hoi-dap/` gồm trang chơi thử `thu-hoi-dap.html` (đăng ở https://claude.ai/artifact/ToGtzTxe1qodiPn2NLzP1z, câu người chơi gõ được ghi vào collection `cau-hoi`), tờ dữ kiện `du-lieu/bac-thinh.json` (7 dữ kiện, trong đó 2 dữ kiện ẩn; 23 biến thể lời; 48 câu hỏi mẫu), bộ câu thử `du-lieu/cau-thu.json` (70 câu do một model khác viết, không biết bác Thịnh biết gì) và máy kiểm `kiem-bien-the.py` (đủ chữ bắt buộc, không mốc giờ lạ, gợi ý bậc 1 không lộ đáp án).
+
+**Kết quả đo máy xếp câu hỏi trên 70 câu thử** (ngưỡng đặt tay, chưa chỉnh):
+
+| Máy | Đúng | Câu nhắm dữ kiện có sẵn (31) | Trả nhầm một dữ kiện cho câu không hỏi tới nó |
+|---|---|---|---|
+| So chữ (không cần model, chạy mọi máy) | 54/70 | 30/31 | 13 |
+| Model so nghĩa trong trình duyệt (multilingual-e5-small, 120 MB) | 44/70 | 30/31 | 20 |
+| Gộp hai máy trên | 55/70 | 30/31 | 12 |
+| Model ngôn ngữ nhỏ (Claude Haiku, xếp cả 70 câu trong một lượt) | 67/70 | 29/31 | 1 |
+
+Con số của model ngôn ngữ là **lạc quan**: đề bài cho nó được viết lại sau khi đã thấy bộ câu thử (ví dụ về thứ bác không biết lấy từ chính bộ câu), và nó xếp cả lô chứ không phải từng câu như lúc chơi. Lượt đầu với đề bài sơ sài, nó trả thiếu một nhãn và dồn 40 trên 70 câu vào "không rõ", không chấm được. Chưa đo với model của đường chat sẵn có (Gemini, DeepSeek) vì máy làm việc không gọi được ra ngoài bằng dòng lệnh.
+
+Bài học: tìm đúng dữ kiện khi người chơi hỏi trúng thì dễ (30/31 với cả ba máy). Chỗ khó là **biết từ chối**: 19 trên 70 câu hỏi về thứ bác không có dữ kiện (camera, ổ khóa hộp, chìa khóa, phong bì, cửa sau…), và máy so độ giống hay ép chúng vào dữ kiện gần nhất. Model so nghĩa chạy trong máy người chơi không giúp gì ở chỗ này. Lời mở bằng "Có", "Không", "Ừ" cũng dễ sai nghĩa khi câu hỏi đảo chiều, nên biến thể phải viết sao cho đứng được với cả hai chiều hỏi.
+
+**Chưa chốt:** dùng máy nào để xếp câu hỏi khi vào game; cảnh nào giữ kiểu bấm rồi đọc như cũ; khi nào đưa vào máy game (`src/mvp/`) và cú pháp tờ dữ kiện trong `noi-dung-mua-1/`.
 ---
 
 ## C. Nghiệm thu chung (mọi gói nội dung)
