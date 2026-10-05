@@ -1354,7 +1354,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         return add(item);
       }
       if ((m = new RegExp(`^- \\[LƯU BẰNG CHỨNG (${MA})\\]$`).exec(line))) return add({ kind: 'save-evidence', id: m[1] ?? '' });
-      if ((m = new RegExp(`^- \\[ĐI CÙNG (${MA})\\] (.+)$`).exec(line))) {
+      if ((m = new RegExp(`^- \\[ĐI CÙNG (${MA})\\](?: (.*))?$`).exec(line))) {
         if (!m[2] || m[2].trim() === '') throw new Error(`[ĐI CÙNG] thiếu nhãn nút`);
         return add({ kind: 'go-with', to: m[1] ?? '', label: m[2].trim() });
       }

@@ -179,7 +179,7 @@ export function kiemKyNangMvp(thuMuc: string | RawMvp = THU_MUC_NOI_DUNG_MUA_1):
   for (const c of mvp.chuoi) {
     if (!lienKetChuoi.has(c.id)) lienKetChuoi.set(c.id, new Set());
     for (const it of c.items) {
-      if (it.kind === 'goto') lienKetChuoi.get(c.id)!.add(it.to);
+      if (it.kind === 'goto' || it.kind === 'go-with') lienKetChuoi.get(c.id)!.add(it.to);
       else if (it.kind === 'jump-if') lienKetChuoi.get(c.id)!.add(it.chuoi);
       else if (it.kind === 'branch') {
         for (const ch of it.branch.choices) {
@@ -297,7 +297,7 @@ export function kiemKyNangMvp(thuMuc: string | RawMvp = THU_MUC_NOI_DUNG_MUA_1):
       if (!it) continue;
       const dong = c.itemDong[idx] ?? c.viTri.dong;
       let dichId: string | null = null;
-      if (it.kind === 'goto') dichId = it.to;
+      if (it.kind === 'goto' || it.kind === 'go-with') dichId = it.to;
       else if (it.kind === 'jump-if') dichId = it.chuoi;
 
       if (dichId) {

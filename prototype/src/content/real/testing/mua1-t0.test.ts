@@ -934,8 +934,8 @@ describe('Gói T0 Mùa 1: Khám phá tách đoạn (B)', () => {
 });
 
 describe('Gói T1 Mùa 1: Nút ĐI CÙNG', () => {
-  // TODO(T1 chưa xong, dừng 05/10): bộ đọc/bộ kiểm [ĐI CÙNG] chưa đạt test này.
-  it.skip('đọc đúng [ĐI CÙNG]', () => {
+  
+  it('đọc đúng [ĐI CÙNG]', () => {
     const tep = taoBoTep({
       'kich-ban/01.md': (s) =>
         s.replace(
@@ -946,11 +946,11 @@ describe('Gói T1 Mùa 1: Nút ĐI CÙNG', () => {
     const kq = docNoiDungMvp(tep);
     expect(kq.loi).toEqual([]);
     const chuoi = kq.mvp.chuoi.find(c => c.id === 's-tin');
-    expect(chuoi?.items.some((it) => (it as { kind?: string; den?: string; nhan?: string }).kind === 'di-cung' && (it as { den?: string }).den === 's-cat' && (it as { nhan?: string }).nhan === 'Đi cùng Tùng ra tòa B')).toBe(true);
+    expect(chuoi?.items.some((it) => (it as { kind?: string; to?: string; label?: string }).kind === 'go-with' && (it as { to?: string }).to === 's-cat' && (it as { label?: string }).label === 'Đi cùng Tùng ra tòa B')).toBe(true);
   });
 
-  // TODO(T1 chưa xong, dừng 05/10): bộ đọc/bộ kiểm [ĐI CÙNG] chưa đạt test này.
-  it.skip('thiếu nhãn thì lỗi', () => {
+  
+  it('thiếu nhãn thì lỗi', () => {
     const tep = taoBoTep({
       'kich-ban/01.md': (s) =>
         s.replace(
@@ -962,8 +962,8 @@ describe('Gói T1 Mùa 1: Nút ĐI CÙNG', () => {
     expect(kq.loi.some(l => l.thongBao.includes('thiếu nhãn') || l.thongBao.includes('cần có nhãn'))).toBe(true);
   });
 
-  // TODO(T1 chưa xong, dừng 05/10): bộ đọc/bộ kiểm [ĐI CÙNG] chưa đạt test này.
-  it.skip('chuỗi đích không có thì lỗi', () => {
+  
+  it('chuỗi đích không có thì lỗi', () => {
     const loi = kiem({
       'kich-ban/01.md': (s) =>
         s.replace(
@@ -971,7 +971,7 @@ describe('Gói T1 Mùa 1: Nút ĐI CÙNG', () => {
           '- [ĐI CÙNG chuoi-khong-ton-tai] Đi tiếp'
         )
     });
-    expect(loi.some(l => l.includes('chuỗi đích không có') || l.includes('chuỗi đích') || l.includes('không tồn tại'))).toBe(true);
+    expect(loi.some(l => l.includes('chuỗi đích không có') || l.includes('chuỗi đích') || l.includes('không tồn tại') || l.includes('không có chuỗi'))).toBe(true);
   });
 
   it('có nút sau nó thì lỗi', () => {
@@ -1019,13 +1019,13 @@ describe('Gói T1 Mùa 1: Nút ĐI CÙNG', () => {
 });
 
 describe('Gói T1 Mùa 1: RẼ NHÁNH lỗi lựa chọn giả', () => {
-  // TODO(T1 chưa xong, dừng 05/10): bộ đọc/bộ kiểm [ĐI CÙNG] chưa đạt test này.
-  it.skip('mọi lựa chọn cùng đích thì lỗi', () => {
+  
+  it('mọi lựa chọn cùng đích thì lỗi', () => {
     const loi = kiem({
       'kich-ban/01.md': (s) =>
         s.replace(
           '- [ĐI TỚI s-cat]',
-          '- [RẼ NHÁNH]\n  - Nút 1 → s-cat\n  - Nút 2 → s-cat'
+          '- [RẼ NHÁNH rn-1] tung: "Đi đâu?"\n  - {id: c1} Nút 1 → hậu quả: đi tới s-cat\n  - {id: c2} Nút 2 → hậu quả: đi tới s-cat'
         )
     });
     expect(loi.some(l => l.includes('mọi lựa chọn cùng dẫn về một chuỗi') || l.includes('mọi lựa chọn cùng đích'))).toBe(true);
@@ -1036,7 +1036,7 @@ describe('Gói T1 Mùa 1: RẼ NHÁNH lỗi lựa chọn giả', () => {
       'kich-ban/01.md': (s) =>
         s.replace(
           '- [ĐI TỚI s-cat]',
-          '- [RẼ NHÁNH]\n  - (Tiếp tục) → s-cat\n  - Nút 2 → n1'
+          '- [RẼ NHÁNH rn-1] tung: "Đi đâu?"\n  - {id: c1} (Tiếp tục) → hậu quả: đi tới s-cat\n  - {id: c2} Nút 2 → hậu quả: đi tới n1'
         )
     });
     expect(loi.some(l => l.includes('(Tiếp tục)') || l.includes('lựa chọn giả'))).toBe(true);
@@ -1047,7 +1047,7 @@ describe('Gói T1 Mùa 1: RẼ NHÁNH lỗi lựa chọn giả', () => {
       'kich-ban/01.md': (s) =>
         s.replace(
           '- [ĐI TỚI s-cat]',
-          '- [RẼ NHÁNH]\n  - (tạm) → s-cat\n  - Nút 2 → n1'
+          '- [RẼ NHÁNH rn-1] tung: "Đi đâu?"\n  - {id: c1} (tạm) → hậu quả: đi tới s-cat\n  - {id: c2} Nút 2 → hậu quả: đi tới n1'
         )
     });
     expect(loi.some(l => l.includes('(tạm)') || l.includes('lựa chọn giả'))).toBe(true);
