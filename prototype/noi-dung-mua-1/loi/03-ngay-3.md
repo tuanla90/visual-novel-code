@@ -24,7 +24,7 @@
 - **player**: Vậy làm sao biết được ai gửi ạ?
 - **co-lan** (neutral): Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô mới tra và trả lời có hoặc không.
 - [DÀN DỰNG] Một anh sinh viên đeo kính, mặc gi lê len xanh than, kẹp cái bìa da, đứng ở cửa từ lúc nào.
-- **narrator**: Ở cửa có một anh sinh viên đeo kính, mặc gi lê len xanh than, kẹp cái bìa da, đứng từ lúc nào không ai để ý.
+- **narrator**: Ở cửa có một anh sinh viên đứng từ lúc nào không ai để ý.
 - **ha-vy** (thinking): Người lạ kìa. Nhìn kỹ một chút trước khi anh ấy mở lời đã.
 
 ## n3-ctsv.1b
@@ -51,7 +51,7 @@
 ## n3-bd-phong-may.1
 - **narrator**: Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ với bác trực sảnh tòa B.
 - **tung** (thinking): Tối Chủ nhật vẫn mở. Thư kia in tối nào nhỉ?
-- **ha-vy** (neutral): Chưa rõ. Nhớ kỹ: vào phải ký sổ.
+- **ha-vy** (neutral): Chưa rõ. Mà vào còn phải ký sổ cơ đấy.
 
 ## n3-bd-toa-b.1
 - **bac-tu** (smile): Hộp vẫn niêm phong nguyên đấy. Nay đi đâu đông thế?
@@ -75,7 +75,7 @@
 - **narrator**: Về phòng CLB. Phiếu tra cứu của cô Lan nằm trên bàn, cạnh cái laptop.
 
 ## n3-phong-duy.1
-- **duy** (neutral): Có phiếu của cô Lan rồi, máy mở thêm được bảng sinh viên. Bốn cột, không hơn.
+- **duy** (neutral): Có phiếu của cô Lan rồi, máy mở thêm được bảng sinh viên.
 
 ## n3-phong-vy.1
 - **ha-vy** (thinking): Câu hỏi mới trên bảng: trong hai lớp ấy, lấy danh sách lớp, rồi tự dò bằng mắt xem ai tên chữ H.
@@ -104,7 +104,7 @@
 - **narrator**: Hai đôi dép lê xếp ngay ngắn trước cửa phòng máy. Phòng trải thảm, vào là phải bỏ giày.
 - **tung** (happy): Trốn tiết nhìn dép là biết. Phòng máy tự điểm danh luôn.
 - **narrator**: Cạnh khung cửa dán tờ danh sách lớp thực hành tuần trước. Ba cái tên bị khoanh đỏ, bên cạnh ghi tay: "Vắng quá 20%, không đủ điều kiện dự thi. Học lại kỳ sau."
-- **tung** (worried): …Thằng phòng bên nằm trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng.
+- **tung** (worried): …Một trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng.
 
 ## n3-bd-toa-b-an.1
 - **narrator**: Tem kiểm định trên bình cứu hỏa ghi tháng 9 năm nay, bên cạnh có chữ ký tắt: "T."

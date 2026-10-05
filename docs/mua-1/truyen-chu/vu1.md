@@ -367,7 +367,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Cô Lan**: Sổ đó niêm phong. Cô cũng không được tự mở.
 - *Suy nghĩ của bạn:* *(Vậy làm sao biết được ai gửi ạ?)*
 - **Cô Lan**: Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô mới tra và trả lời có hoặc không.
-- *Ở cửa có một anh sinh viên đeo kính, mặc gi lê len xanh than, kẹp cái bìa da, đứng từ lúc nào không ai để ý.*
+- *Ở cửa có một anh sinh viên đứng từ lúc nào không ai để ý.*
 - **Hà Vy** (suy nghĩ): Người lạ kìa. Nhìn kỹ một chút trước khi anh ấy mở lời đã.
 📍 **Đang ở Phòng Công tác sinh viên:**
 *Những chỗ có thể khám phá ở đây:*
@@ -774,7 +774,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 
 - *Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ với bác trực sảnh tòa B.*
 - **Tùng** (suy nghĩ): Tối Chủ nhật vẫn mở. Thư kia in tối nào nhỉ?
-- **Hà Vy**: Chưa rõ. Nhớ kỹ: vào phải ký sổ.
+- **Hà Vy**: Chưa rõ. Mà vào còn phải ký sổ cơ đấy.
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Ngoài phòng máy](#doan-17)
@@ -789,7 +789,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - *Hai đôi dép lê xếp ngay ngắn trước cửa phòng máy. Phòng trải thảm, vào là phải bỏ giày.*
 - **Tùng** (vui vẻ): Trốn tiết nhìn dép là biết. Phòng máy tự điểm danh luôn.
 - *Cạnh khung cửa dán tờ danh sách lớp thực hành tuần trước. Ba cái tên bị khoanh đỏ, bên cạnh ghi tay: "Vắng quá 20%, không đủ điều kiện dự thi. Học lại kỳ sau."*
-- **Tùng** (lo lắng): …Thằng phòng bên nằm trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng.
+- **Tùng** (lo lắng): …Một trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng.
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Ngoài phòng máy](#doan-17)
@@ -1284,7 +1284,7 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
 
 📍 **Phòng CLB** — *Duy mở laptop (việc chính)*
 
-- **Duy**: Có phiếu của cô Lan rồi, máy mở thêm được bảng sinh viên. Bốn cột, không hơn.
+- **Duy**: Có phiếu của cô Lan rồi, máy mở thêm được bảng sinh viên.
 
 **Lựa chọn tiếp theo:**
 - [Đi tiếp](#doan-69)

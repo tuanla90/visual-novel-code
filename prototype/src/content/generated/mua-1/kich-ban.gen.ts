@@ -4603,7 +4603,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Ở cửa có một anh sinh viên đeo kính, mặc gi lê len xanh than, kẹp cái bìa da, đứng từ lúc nào không ai để ý."
+          "text": "Ở cửa có một anh sinh viên đứng từ lúc nào không ai để ý."
         },
         {
           "type": "line",
@@ -4767,7 +4767,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Chưa rõ. Nhớ kỹ: vào phải ký sổ."
+          "text": "Chưa rõ. Mà vào còn phải ký sổ cơ đấy."
         }
       ]
     },
@@ -4797,7 +4797,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
-          "text": "…Thằng phòng bên nằm trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng."
+          "text": "…Một trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng."
         }
       ]
     },
@@ -5084,7 +5084,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Có phiếu của cô Lan rồi, máy mở thêm được bảng sinh viên. Bốn cột, không hơn."
+          "text": "Có phiếu của cô Lan rồi, máy mở thêm được bảng sinh viên."
         },
         {
           "type": "goto",
