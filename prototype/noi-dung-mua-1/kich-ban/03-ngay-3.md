@@ -12,6 +12,7 @@
 
 ### n3-ctsv — CTSV: sổ niêm phong, phiếu yêu cầu tra cứu; Quân giám sát {cảnh: phong-ctsv}
 
+- [HỎI ĐÁP n3-ctsv]
 - [LỜI n3-ctsv.1]
 - [KHÁM PHÁ kp-soi-quan · quan sát quan · Hà Vy soi]
   - vung:kinh · x 55% · y 19% · rộng 26% → n3-soi-kinh · nhãn: Cặp kính
@@ -44,6 +45,7 @@
 
 ### n3-bd-toa-b-vao — Tới nơi: Bản đồ ngày 3 (tùy chọn): bác Thịnh ở sảnh tòa B {cảnh: sanh-toa-b}
 
+- [HỎI ĐÁP n3-bd-toa-b-vao]
 - [LỜI n3-bd-toa-b.1]
 
 ### n3-bd-toa-b-an — Chi tiết ẩn: Bình cứu hỏa {cảnh: sanh-toa-b}
@@ -64,6 +66,7 @@
 
 ### n3-cang-tin — Căng tin: Hiếu nói xấu CLB {cảnh: cang-tin}
 
+- [HỎI ĐÁP n3-cang-tin]
 - [LỜI n3-cang-tin.1]
 - [ĐI CÙNG n3-phong] Về phòng CLB
 

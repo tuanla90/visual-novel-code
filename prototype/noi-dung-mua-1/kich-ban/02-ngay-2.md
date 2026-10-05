@@ -20,6 +20,7 @@
 
 ### n2-co-hanh-vao — Tới nơi: Cô Hạnh tạo tài khoản CLB (chỉ bảng lớp) {cảnh: phong-dao-tao}
 
+- [HỎI ĐÁP n2-co-hanh-vao]
 - [LỜI n2-co-hanh.1v]
 - [HIỆN TÀI LIỆU doc-van-ban-thay-quang]
 - [HẬU QUẢ] mở manh mối clue-quyen-du-lieu
@@ -37,6 +38,7 @@
 
 ### n2-bd-toa-b-vao — Tới nơi: Bản đồ ngày 2 (tùy chọn): ghé sảnh tòa B hỏi bác Thịnh {cảnh: sanh-toa-b}
 
+- [HỎI ĐÁP n2-bd-toa-b-vao]
 - [LỜI n2-bd-toa-b.1]
 
 ### n2-bd-toa-b-an — Chi tiết ẩn: Bảng tin cạnh cột {cảnh: sanh-toa-b}

@@ -1,0 +1,226 @@
+{
+  "ma": "n2-co-hanh-vao",
+  "ten": "Hỏi cô cán bộ Phòng Đào tạo về tài khoản của CLB",
+  "ngay": "Thứ Tư, 25/09/2024",
+  "canh": "phong-dao-tao",
+  "nhanChung": "co-hanh",
+  "nguoiDiCung": ["ha-vy", "tung"],
+  "moDau": "Phòng Đào tạo, giờ hành chính. Cô cán bộ ở quầy đã đợi sẵn.",
+  "tuDongDuKien": ["tai-khoan", "chi-bang-lop", "nhu-so-diem-danh", "vai-chuc-bang", "phieu-bang-sinh-vien", "nhat-ky"],
+  "gioiHan": {
+    "soCau": 8,
+    "lyDo": "ban",
+    "baoTruoc": { "con": 2, "loi": "Cô còn việc đang dở, các em hỏi nốt mấy câu thôi nhé." },
+    "het": "Thôi, cô phải làm việc tiếp đây. Cần gì thêm thì trong giờ hành chính các em quay lại."
+  },
+  "danhSach": [
+    { "ma": "L1", "cau": "Tài khoản của CLB được xem những gì?", "can": ["tai-khoan", "chi-bang-lop"], "moManhMoi": "clue-quyen-du-lieu" },
+    { "ma": "L2", "cau": "Muốn xem danh sách sinh viên thì cần gì?", "can": ["phieu-bang-sinh-vien"] },
+    { "ma": "L3", "cau": "Bảng lớp sinh hoạt trông thế nào?", "can": ["nhu-so-diem-danh"] }
+  ],
+  "duKien": [
+    {
+      "ma": "tai-khoan",
+      "noiDung": "Cô tạo cho CLB một tài khoản tên là clb_tham_tu.",
+      "nguon": "loi/02-ngay-2.md n2-co-hanh.1v",
+      "chuBatBuoc": ["clb_tham_tu"],
+      "giayNho": "Tài khoản tra cứu của CLB: clb_tham_tu.",
+      "an": false, "tuKe": true, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Cô tạo cho CLB một tài khoản rồi, tên là clb_tham_tu.",
+        "co-khong": "Cô tạo xong rồi đây. Tài khoản của CLB tên là clb_tham_tu.",
+        "ke": "Tài khoản cô tạo xong rồi đấy, tên là clb_tham_tu. Các em ghi lại kẻo quên.",
+        "lai": "Cô bảo rồi mà, tên tài khoản là clb_tham_tu.",
+        "tu-ke": "Cô tạo cho CLB một tài khoản, tên là clb_tham_tu."
+      },
+      "cauHoiMau": [
+        "Tài khoản của CLB tên là gì ạ?",
+        "tài khoản tên gì",
+        "cô tạo tài khoản cho bọn em chưa ạ",
+        "ten dang nhap la gi co",
+        "tk clb là gì ạ",
+        "bọn em đăng nhập bằng tài khoản nào ạ",
+        "Cô cấp tài khoản cho CLB rồi ạ?"
+      ],
+      "goiY": {
+        "ai": "tung",
+        "bac1": "Tớ cá là cô làm xong tài khoản rồi. Mà nó tên là gì thì mình chưa hỏi.",
+        "bac2": "Tài khoản của CLB tên là gì ạ?"
+      }
+    },
+    {
+      "ma": "chi-bang-lop",
+      "noiDung": "Tài khoản chỉ xem được bảng lớp sinh hoạt (mã lớp, ngành, khóa, tòa nhà); trong đó không có tên ai.",
+      "nguon": "loi/02-ngay-2.md n2-co-hanh.1v",
+      "chuBatBuoc": ["bảng lớp sinh hoạt", "tòa nhà"],
+      "giayNho": "Tài khoản CLB chỉ xem được bảng lớp sinh hoạt: mã lớp, ngành, khóa, tòa nhà. Không có tên ai.",
+      "an": false, "tuKe": true, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Tài khoản này chỉ xem được bảng lớp sinh hoạt: mã lớp, ngành, khóa, tòa nhà. Trong đấy không có tên ai cả.",
+        "co-khong": "Được mỗi bảng lớp sinh hoạt thôi em: mã lớp, ngành, khóa, tòa nhà. Tên người thì trong đấy không có.",
+        "ke": "Em mở ra sẽ thấy bảng lớp sinh hoạt, ghi mã lớp, ngành, khóa, tòa nhà. Trong đấy không có tên ai cả.",
+        "lai": "Cô nói rồi đấy: chỉ bảng lớp sinh hoạt thôi, mã lớp, ngành, khóa, tòa nhà.",
+        "tu-ke": "Tài khoản này chỉ xem được bảng lớp sinh hoạt: mã lớp, ngành, khóa, tòa nhà. Trong đấy không có tên ai cả."
+      },
+      "cauHoiMau": [
+        "Tài khoản của CLB được xem những gì ạ?",
+        "tài khoản này xem được gì",
+        "có tra được hết không cô",
+        "xem dc ten sinh vien ko a",
+        "trong bảng lớp có những gì ạ",
+        "Tài khoản xem được danh sách sinh viên không ạ?",
+        "mở được những bảng nào",
+        "có xem được tên người không"
+      ],
+      "goiY": {
+        "ai": "ha-vy",
+        "bac1": "Có tài khoản chưa chắc đã xem được hết. Mình chưa biết nó cho xem tới đâu.",
+        "bac2": "Tài khoản của CLB được xem những gì ạ?"
+      }
+    },
+    {
+      "ma": "nhu-so-diem-danh",
+      "noiDung": "Bảng giống cuốn sổ điểm danh: cột kẻ sẵn trên đầu, mỗi dòng bên dưới là một lớp; có lớp mới thì thêm dòng, cột không đổi.",
+      "nguon": "loi/02-ngay-2.md n2-co-hanh.1v",
+      "chuBatBuoc": ["sổ điểm danh"],
+      "giayNho": "Bảng lớp như cuốn sổ điểm danh: cột kẻ sẵn trên đầu, mỗi dòng là một lớp.",
+      "an": false, "tuKe": false, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Em cứ hình dung cuốn sổ điểm danh: kẻ sẵn mấy cột trên đầu, mỗi dòng bên dưới là một lớp. Có lớp mới thì thêm một dòng, chứ cột không đổi.",
+        "co-khong": "Gần thế. Em cứ hình dung cuốn sổ điểm danh: cột kẻ sẵn trên đầu, mỗi dòng bên dưới là một lớp.",
+        "ke": "Giống cuốn sổ điểm danh ấy. Trên đầu kẻ mấy cột: mã lớp, ngành, khóa, tòa nhà. Bên dưới mỗi dòng là một lớp.",
+        "lai": "Như cuốn sổ điểm danh đấy em, cột ở trên, mỗi dòng một lớp."
+      },
+      "cauHoiMau": [
+        "Bảng lớp sinh hoạt trông như thế nào ạ?",
+        "Bảng lớp sinh hoạt là một tệp Excel to hả cô?",
+        "bang la cai gi",
+        "cái bảng ấy nhìn ra sao",
+        "bảng có giống file excel không cô",
+        "mỗi dòng trong bảng là gì ạ",
+        "trong bảng xếp kiểu gì"
+      ],
+      "goiY": {
+        "ai": "ha-vy",
+        "bac1": "Mình chưa mở cái bảng ấy bao giờ. Không biết nó xếp thế nào thì lúc ngồi máy dễ rối.",
+        "bac2": "Bảng lớp sinh hoạt trông như thế nào ạ?"
+      }
+    },
+    {
+      "ma": "phieu-bang-sinh-vien",
+      "noiDung": "Bảng sinh viên có thông tin cá nhân; muốn xem phải mang phiếu yêu cầu tra cứu có chữ ký của đơn vị lo vụ việc. Vụ hộp kiến nghị là của Phòng Công tác sinh viên.",
+      "nguon": "loi/02-ngay-2.md n2-co-hanh.1v",
+      "chuBatBuoc": ["phiếu yêu cầu tra cứu", "Phòng Công tác sinh viên"],
+      "giayNho": "Muốn xem bảng sinh viên: cần phiếu yêu cầu tra cứu có chữ ký của Phòng Công tác sinh viên.",
+      "an": false, "tuKe": false, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Bảng sinh viên có thông tin cá nhân. Muốn xem thì mang phiếu yêu cầu tra cứu, có chữ ký của đơn vị lo vụ việc. Vụ hộp kiến nghị là của Phòng Công tác sinh viên.",
+        "co-khong": "Phải có giấy em ạ. Bảng sinh viên có thông tin cá nhân, nên cần phiếu yêu cầu tra cứu có chữ ký bên Phòng Công tác sinh viên, vì vụ hộp kiến nghị là của bên ấy.",
+        "ke": "Bảng sinh viên thì khác, trong đấy có thông tin cá nhân. Các em sang Phòng Công tác sinh viên xin phiếu yêu cầu tra cứu, có chữ ký bên ấy thì mới xem được.",
+        "lai": "Cô dặn rồi: phiếu yêu cầu tra cứu, chữ ký bên Phòng Công tác sinh viên."
+      },
+      "cauHoiMau": [
+        "Muốn xem danh sách sinh viên thì phải làm gì ạ?",
+        "muốn xem tên sinh viên thì sao",
+        "xin bảng sinh viên ở đâu ạ",
+        "can giay to gi de xem danh sach",
+        "phiếu tra cứu xin ở đâu ạ",
+        "bảng sinh viên có xem được không cô",
+        "ai ký cho bọn em xem ạ"
+      ],
+      "goiY": {
+        "ai": "ha-vy",
+        "bac1": "Bảng lớp không có tên người. Mà cuối cùng mình cần biết người, chứ không chỉ biết lớp.",
+        "bac2": "Muốn xem danh sách sinh viên thì phải làm gì ạ?"
+      }
+    },
+    {
+      "ma": "nhat-ky",
+      "noiDung": "Tra gì máy cũng ghi lại; cuối vụ cô xem nhật ký.",
+      "nguon": "loi/02-ngay-2.md n2-co-hanh.1v",
+      "chuBatBuoc": ["ghi lại", "nhật ký"],
+      "giayNho": "Tra gì máy cũng ghi lại. Cuối vụ cô Hạnh xem nhật ký.",
+      "an": true, "tuKe": true, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Tra gì máy cũng ghi lại. Cuối vụ cô xem nhật ký.",
+        "co-khong": "Máy ghi lại hết em ạ. Cuối vụ cô xem nhật ký.",
+        "lai": "Máy ghi lại hết, cuối vụ cô xem nhật ký. Cô nhắc thế thôi.",
+        "tu-ke": "Cô dặn thêm: tra gì máy cũng ghi lại. Cuối vụ cô xem nhật ký."
+      },
+      "cauHoiMau": [
+        "Bọn em tra những gì thì có ai biết không ạ?",
+        "tra xong có bị lưu lại không",
+        "máy có ghi lại không cô",
+        "cô có kiểm tra bọn em tra gì không",
+        "co luu lich su khong a",
+        "tra linh tinh thì sao ạ"
+      ]
+    },
+    {
+      "ma": "vai-chuc-bang",
+      "noiDung": "Trường có vài chục bảng, mỗi bảng ghi một loại việc (bảng lớp, bảng sinh viên, nhật ký in, quẹt thẻ thư viện). Lúc tra thì nói cho máy ba điều: lấy bảng nào, xem cột nào, giữ lại những dòng nào.",
+      "nguon": "loi/02-ngay-2.md n2-co-hanh.1v",
+      "chuBatBuoc": ["vài chục bảng"],
+      "giayNho": "Trường có vài chục bảng, mỗi bảng một loại việc. Tra thì nói ba điều: bảng nào, cột nào, giữ dòng nào.",
+      "an": true, "tuKe": false, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Trường có vài chục bảng như thế, mỗi bảng ghi một loại việc: bảng lớp, bảng sinh viên, nhật ký in, quẹt thẻ thư viện…",
+        "ke": "Trường có vài chục bảng, mỗi bảng một loại việc. Lúc tra, máy không đọc lần từng trang như người. Em nói cho nó ba điều: lấy bảng nào, xem cột nào, giữ lại những dòng nào.",
+        "lai": "Vài chục bảng, cô nói rồi. Mỗi bảng một loại việc."
+      },
+      "cauHoiMau": [
+        "Trường mình có bao nhiêu bảng ạ?",
+        "còn những bảng nào nữa",
+        "ngoài bảng lớp còn bảng gì",
+        "máy tra kiểu gì ạ",
+        "tra thì phải làm sao hả cô",
+        "co nhung bang nao",
+        "máy đọc bảng thế nào hả cô"
+      ]
+    }
+  ],
+  "lopKhac": {
+    "chao": { "loi": ["Ừ, chào các em. Bên CLB Thám Tử đấy à?", "Chào em. Vào đi, cô làm xong rồi đây."] },
+    "cam-on": { "loi": ["Ừ. Dùng đúng việc là được.", "Không có gì. Có gì vướng thì báo cô."] },
+    "hoi-mo": {
+      "hoiTiep": "Cô còn dặn gì bọn em nữa không ạ?",
+      "hetKe": ["Cô dặn có thế thôi. Em hỏi cụ thể thì cô trả lời.", "Hết rồi em. Chỗ nào chưa rõ thì cứ hỏi."]
+    },
+    "tam-biet": { "loi": ["Ừ, các em về đi. Dùng xong thì báo cô một tiếng.", "Ừ, đi cẩn thận nhé các em."] },
+    "khong-ro": { "loi": ["Cái đấy cô không nắm, em ạ.", "Việc ấy không qua phòng cô. Em hỏi bên Công tác sinh viên xem.", "Chuyện ấy cô không có gì để nói với em."] },
+    "ngoai-le": { "loi": ["Cô đang giờ làm việc, em ạ. Hỏi chuyện tài khoản thì cô trả lời.", "Chuyện đấy để lúc khác nhé em.", "Thôi, quay về việc của các em đi."] },
+    "hoi-rieng-tu": { "loi": ["Cô làm ở trường gần ba mươi năm rồi, sắp về hưu. Thôi, việc của các em đâu?", "Hỏi chuyện cô làm gì. Tài khoản đây này."] },
+    "pha-game": { "loi": ["Em nói gì thế? Nói lại cho cô nghe xem.", "Cô không hiểu em nói gì. Hỏi chuyện tài khoản thì cô trả lời."] },
+    "doi-dap-an": { "loi": ["Ai bỏ thư thì cô không biết. Cô chỉ biết tài khoản này xem được gì thôi.", "Đáp án gì hả em? Cô cấp đúng quyền, còn tìm ra hay không là ở các em."] }
+  },
+  "chuDeKhongBiet": [
+    {
+      "ma": "ai-gui-thu",
+      "cauHoiMau": ["ai gửi thư vào hộp", "cô biết ai viết lá thư không", "người gửi thư là ai ạ", "ai ky chu H"],
+      "loi": ["Cái đấy cô không biết. Hộp kiến nghị là việc bên Công tác sinh viên.", "Chuyện lá thư thì cô không nắm, em ạ."]
+    },
+    {
+      "ma": "in-o-dau",
+      "cauHoiMau": ["lá thư được in ở đâu", "máy in có lưu ai in không", "cô xem giúp thư in từ máy nào", "thu in o phong may a"],
+      "loi": ["Thư in ở đâu thì cô chưa xem. Muốn xem gì ngoài bảng lớp thì cũng phải có phiếu, em ạ.", "Cái đấy cô chưa mở ra xem. Có phiếu thì tính."]
+    },
+    {
+      "ma": "camera",
+      "cauHoiMau": ["trường có camera không ạ", "xem camera sảnh tòa B được không", "camera có ghi lại không cô"],
+      "loi": ["Chuyện camera thì cô không nắm, em ạ.", "Cái đấy không qua phòng cô."]
+    },
+    {
+      "ma": "mat-khau",
+      "cauHoiMau": ["mật khẩu là gì ạ", "cho em xin mật khẩu", "pass là gì cô", "mat khau tai khoan"],
+      "loi": ["Mật khẩu thì cô không đọc to ở đây đâu em.", "Cái đấy không nói giữa phòng thế này được, em ạ."]
+    }
+  ],
+  "tuKhoaTrongChuyen": ["tai khoan", "bang", "lop", "sinh vien", "phieu", "tra cuu", "dang nhap", "mat khau", "cot", "dong", "may", "nhat ky", "quyen", "xem", "thu", "hop", "kien nghi", "laptop", "excel", "cong tac sinh vien", "clb", "in"],
+  "roiDi": {
+    "nut": "Chào cô, bọn em về ạ",
+    "loiBan": "Bọn em cảm ơn cô ạ.",
+    "giuLai": { "ai": "ha-vy", "loi": "Khoan, tính lại đã. Trong sổ còn dòng này chưa gạch:" },
+    "du": { "ai": "tung", "loi": "Xong rồi! Về mở laptop thôi!" },
+    "thieu": { "ai": "ha-vy", "loi": "Được. Dòng chưa rõ tớ để nguyên trong sổ." }
+  }
+}

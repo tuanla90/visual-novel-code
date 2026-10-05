@@ -3586,6 +3586,10 @@ const GOC = {
       "mocSomNhat": 21,
       "nodes": [
         {
+          "type": "hoi-dap",
+          "ma": "n2-co-hanh-vao"
+        },
+        {
           "type": "line",
           "speaker": "co-hanh",
           "expression": "neutral",
@@ -3722,6 +3726,10 @@ const GOC = {
       "canh": "sanh-toa-b",
       "mocSomNhat": 21,
       "nodes": [
+        {
+          "type": "hoi-dap",
+          "ma": "n2-bd-toa-b-vao"
+        },
         {
           "type": "line",
           "speaker": "bac-tu",
@@ -4329,6 +4337,10 @@ const GOC = {
       "mocSomNhat": 31,
       "nodes": [
         {
+          "type": "hoi-dap",
+          "ma": "n3-ctsv"
+        },
+        {
           "type": "task",
           "text": "Làm sao để được xem bảng sinh viên?"
         },
@@ -4634,6 +4646,10 @@ const GOC = {
       "mocSomNhat": 31,
       "nodes": [
         {
+          "type": "hoi-dap",
+          "ma": "n3-bd-toa-b-vao"
+        },
+        {
           "type": "line",
           "speaker": "bac-tu",
           "expression": "smile",
@@ -4734,6 +4750,10 @@ const GOC = {
       "canh": "cang-tin",
       "mocSomNhat": 31,
       "nodes": [
+        {
+          "type": "hoi-dap",
+          "ma": "n3-cang-tin"
+        },
         {
           "type": "note",
           "text": "Căng tin, ngay sau khi rời Phòng CTSV. Hiếu ngồi bàn bên, nói to."
@@ -5142,6 +5162,10 @@ const GOC = {
       "mocSomNhat": 41,
       "nodes": [
         {
+          "type": "hoi-dap",
+          "ma": "n4-ctsv-vao"
+        },
+        {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
@@ -5382,6 +5406,10 @@ const GOC = {
       "mocSomNhat": 41,
       "nodes": [
         {
+          "type": "hoi-dap",
+          "ma": "n4-sanh-toa-b"
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "text": "Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đang ngồi ở ghế đá cạnh cửa."
@@ -5513,6 +5541,10 @@ const GOC = {
       "canh": "sanh-toa-b",
       "mocSomNhat": 41,
       "nodes": [
+        {
+          "type": "hoi-dap",
+          "ma": "n4-bd-toa-b-vao"
+        },
         {
           "type": "line",
           "speaker": "bac-tu",
@@ -5708,6 +5740,10 @@ const GOC = {
       "canh": "cong-ktx",
       "mocSomNhat": 51,
       "nodes": [
+        {
+          "type": "hoi-dap",
+          "ma": "n5-chu-cuong"
+        },
         {
           "type": "line",
           "speaker": "tung",
@@ -6562,6 +6598,10 @@ const GOC = {
       "canh": "tra-da",
       "mocSomNhat": 1000,
       "nodes": [
+        {
+          "type": "hoi-dap",
+          "ma": "ket-tra-da"
+        },
         {
           "type": "line",
           "speaker": "narrator",

@@ -21,6 +21,7 @@
 
 ### n4-ctsv-vao — Tới nơi: CTSV tra sổ niêm phong {cảnh: phong-ctsv}
 
+- [HỎI ĐÁP n4-ctsv-vao]
 - [LỜI n4-ctsv.1v]
 - [HẬU QUẢ] mở manh mối clue-hoai-nguoi-nop
 - [LỜI n4-ctsv.2]
@@ -43,6 +44,7 @@
 
 ### n4-sanh-toa-b — Sảnh tòa B: hỏi bác Thịnh về sổ ký {cảnh: sanh-toa-b}
 
+- [HỎI ĐÁP n4-sanh-toa-b]
 - [LỜI n4-sanh-toa-b.1]
 - [ĐI CÙNG n4-toi] Tối họp nhóm bạn ở CLB
 
@@ -59,6 +61,7 @@
 
 ### n4-bd-toa-b-vao — Tới nơi: Bản đồ ngày 4 (tùy chọn): bác Thịnh kể có người xuống xem hộp {cảnh: sanh-toa-b}
 
+- [HỎI ĐÁP n4-bd-toa-b-vao]
 - [LỜI n4-bd-toa-b.1]
 
 ### n4-bd-toa-b-an — Chi tiết ẩn: Ghế đá {cảnh: sanh-toa-b}

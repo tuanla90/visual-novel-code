@@ -64,6 +64,7 @@
 
 ### ket-tra-da — Sau kết thật: Tùng khao trà đá; bà Lụa kể về cái tủ sắt {cảnh: tra-da}
 
+- [HỎI ĐÁP ket-tra-da]
 - [LỜI ket-tra-da.1a]
 - [LỜI ket-tra-da.1b]
 - [ẢNH chibi-ghi-la-ghi]

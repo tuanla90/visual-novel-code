@@ -9,6 +9,7 @@
 
 ### n5-chu-cuong — Chú Cường kể chuyện sáng thứ Hai {cảnh: cong-ktx}
 
+- [HỎI ĐÁP n5-chu-cuong]
 - [LỜI n5-chu-cuong.1]
 - [ẢNH cg-bong-huy-hieu]
 - [HẬU QUẢ] mở manh mối clue-loi-chu-cuong
