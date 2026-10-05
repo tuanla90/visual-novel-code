@@ -147,7 +147,7 @@ details.do summary{cursor:pointer;font-weight:500}
         <h2>Cần làm rõ</h2>
       </div>
       <ul class="ds" id="ds"></ul>
-      <div class="done" id="done" hidden>Đủ bốn điều cần làm rõ. Trong game, tới đây cảnh sẽ đi tiếp.</div>
+      <div class="done" id="done" hidden>Bốn dòng đã gạch cả. Ở lại hỏi thêm hay chào bác mà đi là do bạn quyết.</div>
       <h3>Giấy nhớ</h3>
       <ul class="gn" id="gn"></ul>
       <div class="row">
@@ -173,13 +173,14 @@ details.do summary{cursor:pointer;font-weight:500}
   'use strict';
   const $ = (id) => document.getElementById(id);
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
-  const LOP_KHAC = ['chao', 'cam-on', 'khong-ro', 'ngoai-le'];
+  const LOP_KHAC = ['chao', 'cam-on', 'hoi-mo', 'tam-biet', 'khong-ro', 'ngoai-le'];
   let D = null;                  // dữ liệu cảnh
   let cheDo = 'go';              // 'tu-dong' | 'bam' | 'go'
   let biet = new Set();          // mã dữ kiện đã hỏi ra
   let truot = 0;                 // số câu liền nhau không ra dữ kiện mới (chế độ gõ)
   let bacGoiY = {};              // mã dữ kiện → bậc gợi ý đã hiện (0, 1, 2)
   let viTriTuDong = 0, vuaNoi = false, keNot = false;
+  let daRoi = false, daGiu = false; // đã rời sảnh; bạn đi cùng đã giữ lại một lần
   let xoay = {};                 // xoay vòng lời của các lớp không mang dữ kiện
   let col = null;                // nơi ghi câu người chơi gõ (để Claude đọc lại)
   let nghia = null;              // máy so nghĩa, khi đã tải
@@ -207,7 +208,7 @@ details.do summary{cursor:pointer;font-weight:500}
   function dungMayChu() {
     const mau = [];
     D.duKien.forEach((d) => d.cauHoiMau.forEach((c) => mau.push({ lop: d.ma, cau: c })));
-    ['chao', 'cam-on'].forEach((l) => D.lopKhac[l].cauHoiMau.forEach((c) => mau.push({ lop: l, cau: c })));
+    Object.entries(D.lopKhac).forEach(([l, x]) => (x.cauHoiMau || []).forEach((c) => mau.push({ lop: l, cau: c })));
     const df = new Map();
     mau.forEach((m) => { m.f = dacTrung(chuan(m.cau)); m.f.forEach((_, k) => df.set(k, (df.get(k) || 0) + 1)); });
     idf = new Map([...df].map(([k, n]) => [k, Math.log(1 + mau.length / n)]));
@@ -273,7 +274,7 @@ details.do summary{cursor:pointer;font-weight:500}
   async function xepClaude(cau) {
     const dk = D.duKien.map((d) => '- ' + d.ma + ': ' + d.noiDung + ' (ví dụ câu hỏi: "' + d.cauHoiMau[0] + '")').join('\n');
     const de = 'Bạn là bộ phân loại câu hỏi trong một game thám tử tiếng Việt. Người chơi gõ một câu cho bác bảo vệ tòa B. Bác chỉ có các dữ kiện sau:\n' + dk
-      + '\nNhãn khác: "chao" (lời chào), "cam-on" (lời cảm ơn), "khong-ro" (có liên quan tới cái hộp, lá thư, tòa nhà, vụ việc nhưng KHÔNG nằm trong các dữ kiện trên; đừng ép vào dữ kiện gần giống), "ngoai-le" (không liên quan, phá game, gõ linh tinh).'
+      + '\nNhãn khác: "chao" (lời chào), "cam-on" (lời cảm ơn), "hoi-mo" (câu hỏi mở, không nhắm điều cụ thể nào: bác có biết gì không, bác còn nhớ gì không, kể cháu nghe), "tam-biet" (chào để rời đi), "khong-ro" (có liên quan tới cái hộp, lá thư, tòa nhà, vụ việc nhưng KHÔNG nằm trong các dữ kiện trên; đừng ép vào dữ kiện gần giống), "ngoai-le" (không liên quan, phá game, gõ linh tinh).'
       + '\nChỉ chọn nhãn dữ kiện khi câu thật sự hỏi tới điều đó. Trả về đúng một đối tượng JSON dạng {"lop":"<nhãn>"}, không thêm chữ nào.\nCâu người chơi gõ: ' + JSON.stringify(cau);
     const r = await sample.json(de, { modelTier: 'quick' });
     const lop = r && typeof r.lop === 'string' ? r.lop : null;
@@ -291,12 +292,21 @@ details.do summary{cursor:pointer;font-weight:500}
   }
   function loiCua(lop, cau) {
     const d = D.duKien.find((x) => x.ma === lop);
+    if (lop === 'hoi-mo') {
+      // Cửa câu hỏi mở: bác tự kể điều bác thấy đáng kể (tuKe), sau đó là điều nhắc mới nhớ (nhoRa, khi đã biết điều liên quan).
+      const ke = D.duKien.find((x) => x.tuKe && !biet.has(x.ma));
+      if (ke) return { loi: ke.bienThe['tu-ke'] || ke.bienThe.ke || ke.bienThe.thang, moi: true, them: ke.ma, bienThe: 'tự kể' };
+      const nho = D.duKien.find((x) => x.nhoRa && !biet.has(x.ma) && (x.sauKhi || []).every((c) => biet.has(c)));
+      if (nho) return { loi: nho.bienThe.nho, moi: true, them: nho.ma, bienThe: 'nhắc mới nhớ' };
+      const ds = D.lopKhac[lop].hetKe; const i = (xoay[lop] = (xoay[lop] ?? -1) + 1) % ds.length;
+      return { loi: ds[i], moi: false, bienThe: 'hết điều tự kể' };
+    }
     if (!d) { const ds = D.lopKhac[lop].loi; const i = (xoay[lop] = (xoay[lop] ?? -1) + 1) % ds.length; return { loi: ds[i], moi: false, bienThe: lop }; }
     const k = biet.has(lop) ? 'lai' : kieuHoi(cau);
     const bienThe = d.bienThe[k] ? k : 'thang';
-    return { loi: d.bienThe[bienThe], moi: !biet.has(lop), bienThe };
+    return { loi: d.bienThe[bienThe], moi: !biet.has(lop), them: lop, bienThe };
   }
-  const tenLop = (lop) => ({ 'chao': 'lời chào', 'cam-on': 'lời cảm ơn', 'khong-ro': 'trong chuyện, bác không có dữ kiện', 'ngoai-le': 'ngoài lề' }[lop] || ('dữ kiện "' + lop + '"'));
+  const tenLop = (lop) => ({ 'chao': 'lời chào', 'cam-on': 'lời cảm ơn', 'hoi-mo': 'câu hỏi mở', 'tam-biet': 'lời chào để đi', 'khong-ro': 'trong chuyện, bác không có dữ kiện', 'ngoai-le': 'ngoài lề' }[lop] || ('dữ kiện "' + lop + '"'));
 
   // ---------- Vẽ ----------
   function themDong(kieu, noiDung, phu) {
@@ -342,43 +352,56 @@ details.do summary{cursor:pointer;font-weight:500}
     });
   }
   function dongBong() { $('bong').hidden = true; $('mat').querySelectorAll('button').forEach((b) => b.classList.remove('noi')); }
-  function moBong(ai, loi, cauHoi) {
+  function moBong(ai, loi, cauHoi, nut) {
     const b = $('bong'); b.replaceChildren();
     b.append(el('b', null, D.nguoiDiCung[ai].ten), el('span', null, loi));
     if (cauHoi) { const h = el('button', 'hoi', cauHoi); h.type = 'button'; h.addEventListener('click', () => { dongBong(); hoi(cauHoi, 'goi-y'); }); b.append(h); }
+    (nut || []).forEach(([chu, lam]) => { const h = el('button', 'hoi', chu); h.type = 'button'; h.addEventListener('click', () => { dongBong(); lam(); }); b.append(h); });
     const d = el('button', 'dong', 'Đóng'); d.type = 'button'; d.addEventListener('click', dongBong); b.append(d);
     b.hidden = false;
     $('mat').querySelectorAll('button').forEach((x) => x.classList.toggle('noi', x.dataset.ma === ai));
   }
   // Bạn đi cùng gợi ý cho điều đầu tiên còn chưa rõ trong danh sách. Bậc 1: nói điều nhóm chưa biết. Bậc 2: đưa hẳn câu hỏi.
   function goiY(tuBam) {
+    if (daRoi) return;
     const thieu = D.danhSach.flatMap((m) => m.can).find((c) => !biet.has(c));
-    if (!thieu) { if (tuBam) moBong('ha-vy', 'Bốn điều trong sổ rõ cả rồi. Hỏi thêm cũng được, biết đâu ra điều khác.'); return; }
+    if (!thieu) { if (tuBam) moBong('ha-vy', 'Bốn dòng trong sổ gạch cả rồi. Ở lại hỏi thêm hay đi là tùy cậu.'); return; }
     const d = D.duKien.find((x) => x.ma === thieu);
     const bac = Math.min(2, (bacGoiY[thieu] || 0) + 1); bacGoiY[thieu] = bac;
     if (bac === 1) moBong(d.goiY.ai, d.goiY.bac1); else moBong(d.goiY.ai, 'Thử hỏi bác thế này xem.', d.goiY.bac2);
   }
   function veAct() {
     const a = $('act'); a.replaceChildren();
+    if (daRoi) {
+      const ro = D.danhSach.filter((m) => m.can.every((c) => biet.has(c))).length, an = D.duKien.filter((x) => x.an && biet.has(x.ma)).length;
+      let chu = 'Bạn rời sảnh khi đã rõ ' + ro + ' trên ' + D.danhSach.length + ' điều trong sổ' + (an ? ', và tự hỏi ra thêm ' + an + ' điều ngoài sổ.' : '.');
+      if (ro < D.danhSach.length) chu += ' Trong game, điều còn thiếu vẫn nằm trong sổ; muốn rõ thì phải quay lại gặp bác.';
+      const b = el('button', 'btn pri', 'Chơi lại từ đầu'); b.type = 'button'; b.addEventListener('click', batDau);
+      a.append(el('div', null, chu), b); return;
+    }
+    const nutDi = () => { const b = el('button', 'btn', D.roiDi.nut); b.type = 'button'; b.addEventListener('click', () => roiDi(false)); return b; };
     const con = D.duKien.filter((d) => !biet.has(d.ma));
     if (cheDo === 'tu-dong') {
       const conLoi = D.tuDong.slice(keNot ? 0 : viTriTuDong).some((l) => l.ai === 'bac' && l.duKien.some((c) => !biet.has(c)));
       const b = el('button', 'btn pri', viTriTuDong === 0 ? 'Hỏi chuyện bác bảo vệ' : 'Tiếp'); b.type = 'button'; b.disabled = !conLoi;
       b.addEventListener('click', buocTuDong);
       a.append(b, el('small', null, conLoi ? 'Bấm một lần, bác kể một câu. Đây là cách cảnh này đang chạy trong game.' : 'Bác đã kể hết đoạn viết sẵn.'));
+      if (!conLoi) a.append(nutDi());
     } else if (cheDo === 'bam') {
       const c = el('div', 'chips');
       con.filter((d) => !d.an || (d.sauKhi && d.sauKhi.every((x) => biet.has(x)))).forEach((d) => {
         const b = el('button', 'btn', d.cauHoiMau[0]); b.type = 'button'; b.addEventListener('click', () => hoi(d.cauHoiMau[0], 'bam', d.ma)); c.append(b);
       });
-      a.append(c, el('small', null, c.children.length ? 'Bấm câu nào, hỏi câu ấy. Có câu chỉ hiện ra sau khi biết điều liên quan.' : 'Hết câu hỏi mẫu. Muốn hỏi thêm thì đổi sang "Gõ câu hỏi".'));
+      const mo = D.lopKhac['hoi-mo'], cauMo = biet.size ? mo.hoiTiep : mo.cauHoiMau[0];
+      const bm = el('button', 'btn', cauMo); bm.type = 'button'; bm.addEventListener('click', () => hoi(cauMo, 'bam', 'hoi-mo')); c.prepend(bm);
+      a.append(c, el('small', null, 'Bấm câu nào, hỏi câu ấy. Có câu chỉ hiện ra sau khi biết điều liên quan. Đủ hay chưa là do bạn quyết.'), nutDi());
     } else {
       const f = el('form', 'ask'); const i = el('input'); i.id = 'cauHoi'; i.type = 'text'; i.maxLength = 160; i.autocomplete = 'off';
       i.placeholder = 'Gõ câu hỏi cho bác bảo vệ…'; i.setAttribute('aria-label', 'Câu hỏi cho bác bảo vệ');
       const b = el('button', 'btn pri', 'Hỏi'); b.type = 'submit';
       f.append(i, b);
       f.addEventListener('submit', (e) => { e.preventDefault(); const c = i.value.trim(); if (!c) return; i.value = ''; hoi(c, 'go'); });
-      a.append(f, el('small', null, 'Bí thì bấm vào Hà Vy hoặc Tùng ở góc phải ảnh. Hỏi trượt hai câu liền, các bạn ấy sẽ tự lên tiếng.'));
+      a.append(f, el('small', null, 'Hỏi mở cũng được ("bác có biết gì không ạ"). Bí thì bấm vào Hà Vy hoặc Tùng ở góc phải ảnh. Thấy đủ thì chào bác mà đi.'), nutDi());
     }
   }
   function datCheDo(m) {
@@ -420,9 +443,10 @@ details.do summary{cursor:pointer;font-weight:500}
     const tl = loiCua(kq.lop, cau);
     const phu = el('div', 'may');
     const li = themDong('bac', tl.loi, phu);
-    if (tl.moi) { biet.add(kq.lop); truot = 0; } else if (!['chao', 'cam-on'].includes(kq.lop)) truot++;
+    if (kq.lop === 'tam-biet') { phu.remove(); $('log').lastChild.remove(); luu({ cau, nguon, lop: kq.lop, diem: Number(kq.diem.toFixed(3)), may: kq.may, taoLuc: new Date().toISOString() }); roiDi(true); return null; }
+    if (tl.moi) { biet.add(tl.them); truot = 0; } else if (!['chao', 'cam-on'].includes(kq.lop)) truot++;
     let ghi = null;
-    if (!lopSan) {
+    if (kq.may !== 'san') {
       phu.append(el('span', null, 'máy xếp vào: ' + tenLop(kq.lop) + ' · ' + kq.diem.toFixed(2) + ' · lời kiểu "' + tl.bienThe + '"'));
       const sai = el('button', null, 'Chưa ổn'); sai.type = 'button'; sai.title = 'Đánh dấu câu trả lời này chưa ổn để Claude xem lại';
       sai.addEventListener('click', async () => { sai.disabled = true; sai.textContent = 'Đã đánh dấu'; try { (await ghi)?.update({ danhGia: 'chua-on' }); } catch { /* không ghi được thì thôi */ } });
@@ -434,9 +458,24 @@ details.do summary{cursor:pointer;font-weight:500}
     if (cheDo === 'go') { if (truot >= 2) goiY(false); else if (tl.moi) dongBong(); $('cauHoi')?.focus(); }
     return li;
   }
+  // Người chơi tự quyết lúc rời đi. Còn dòng chưa gạch thì bạn đi cùng giữ lại đúng một lần; vẫn muốn đi thì đi.
+  function roiDi(daNoiLoiChao) {
+    if (daRoi) return;
+    const thieu = D.danhSach.filter((m) => !m.can.every((c) => biet.has(c)));
+    if (thieu.length && !daGiu) {
+      daGiu = true;
+      moBong(D.roiDi.giuLai.ai, D.roiDi.giuLai.loi + ' "' + thieu[0].cau + '"', null, [['Hỏi tiếp', () => $('cauHoi')?.focus()], ['Vẫn đi', () => roiDi(true)]]);
+      return;
+    }
+    if (!daNoiLoiChao) themDong('ban', D.roiDi.loiBan);
+    themDong('bac', D.lopKhac['tam-biet'].loi[0]);
+    daRoi = true;
+    const k = thieu.length ? D.roiDi.thieu : D.roiDi.du; moBong(k.ai, k.loi);
+    veSo(); veAct();
+  }
   async function luu(d) { if (!col) return null; try { return await col.add(d); } catch { return null; } }
   function batDau() {
-    biet = new Set(); truot = 0; bacGoiY = {}; viTriTuDong = 0; vuaNoi = false; keNot = false; xoay = {};
+    biet = new Set(); truot = 0; bacGoiY = {}; viTriTuDong = 0; vuaNoi = false; keNot = false; xoay = {}; daRoi = false; daGiu = false;
     $('log').replaceChildren(); themDong('dan', D.moDau);
     dongBong(); veSo(); veAct();
   }
