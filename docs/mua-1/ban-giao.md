@@ -67,6 +67,13 @@
 
 ## 3. Việc tiếp theo
 
+**ĐANG CHẠY (05/10 tối): gói B12 cho Vụ 1, user giao "làm full chỉ Vụ 1".** Đề bài: `docs/mua-1/brief/b12-vu-1.md` (yêu cầu user, định dạng tờ dữ kiện JSON, luật chơi, luật máy kiểm, bảng cảnh). Màn thử làm đặc tả hành vi: `tools/thu-hoi-dap/` (trang đăng https://claude.ai/artifact/ToGtzTxe1qodiPn2NLzP1z). Dây chuyền:
+1. Agent MÁY (đang chạy nền): bộ đọc `hoi-dap/*.json`, máy kiểm, máy chơi thuần trong `src/mvp/engine/`, tờ `n1-bac-thinh.json` + `chung.json`, test đo trên 70 câu thử. Không làm giao diện.
+2. Agent NỘI DUNG (đang chạy nền, chỉ ghi vào `docs/mua-1/hoi-dap-nhap/` và cuối `nen-loi/persona.md`): persona 7 nhân chứng, tờ dữ kiện cho 10 cảnh còn lại của Vụ 1.
+3. Sau khi agent MÁY xong: agent GIAO DIỆN (màn hỏi đáp trong `ManChoiMvp`, ba cách chơi, sổ "Cần làm rõ", bóng gợi ý, bỏ nháy chi tiết ẩn, bạn đi cùng trả lời "việc chính", "gợi ý" bằng lời viết sẵn).
+4. Người điều phối: soát tờ dữ kiện nháp theo canon rồi chuyển vào `noi-dung-mua-1/hoi-dap/`, chạy đủ lệnh kiểm, chơi Vụ 1 từ đầu tới kết trên trình duyệt với `?bo=mua-1` như người chơi, rồi mới báo user.
+Lưu ý: trong lúc agent đang sửa cây làm việc, commit từng tệp cụ thể, đừng `git add -A`.
+
 **Đang làm (05/10 tối): bộ nền lời.** User muốn chốt văn hóa, persona, bối cảnh, cảm xúc, mục tiêu trước khi máy viết lời (xem `prototype/noi-dung-mua-1/nen-loi/README.md`). Bản đầu đã ở trang đọc, nhóm "Nền lời"; user duyệt theo thứ tự văn hóa, persona, thẻ cảnh. Chưa duyệt xong thì chưa viết lại lời theo thẻ, và chưa bắt đầu Vụ 4. Việc kế sau khi user duyệt: dựng công cụ ghép đề bài và bước model soát trích mã mục, chạy thử trên đoạn Vụ 1 từ Trung thu tới 24/09, đếm số góp ý trên 100 câu. Cùng ngày: đã bỏ mọi màn người chơi tự soi trước bài dạy của Hà Vy ở Trung thu.
 
 1. **Chờ user đọc truyện chữ Vụ 2** và góp ý. Sửa theo góp ý trước khi sang vụ khác.
