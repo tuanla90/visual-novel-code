@@ -20,7 +20,7 @@
 - [LỜI n3-ctsv.1b]
 - [HẬU QUẢ] mở manh mối clue-can-ma-va-can-cu, mở manh mối clue-phieu-tra-cuu
 - [LỜI n3-ctsv.2]
-- [ĐI TỚI n3-cang-tin]
+- [ĐI CÙNG n3-cang-tin] Tạt qua căng tin
 
 ### n3-bd-phong-may — Bản đồ ngày 3 (tùy chọn): phòng máy khóa cửa, tờ giấy giờ mở cửa {cảnh: ngoai-phong-may}
 
@@ -65,7 +65,7 @@
 ### n3-cang-tin — Căng tin: Hiếu nói xấu CLB {cảnh: cang-tin}
 
 - [LỜI n3-cang-tin.1]
-- [ĐI TỚI n3-phong]
+- [ĐI CÙNG n3-phong] Về phòng CLB
 
 ### n3-phong — Phòng CLB buổi chiều ngày 3: ai có việc nấy {cảnh: phong-clb}
 
@@ -94,3 +94,4 @@
 - [THỬ THÁCH c-ten-h]
 - [ẢNH chibi-0-dong]
 - [LỜI n3-laptop.2]
+- [XONG VIỆC CHÍNH]

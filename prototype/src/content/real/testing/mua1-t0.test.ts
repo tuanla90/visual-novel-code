@@ -991,10 +991,13 @@ describe('Gói T1 Mùa 1: Nút ĐI CÙNG', () => {
         s.replace(
           '- [ĐI TỚI s-cat]',
           '- [ĐI CÙNG s-cat] Đi cùng Tùng tới s-cat'
-        )
+        ).replace('{cảnh: c2 · cảnh cắt}', '{cảnh: c2}')
     });
     const kq = docNoiDungMvp(tep);
     const kqKiem = kiemKyNangMvp(kq.mvp);
+    // Đối chứng: cùng chỗ ấy mà dùng [ĐI TỚI] sang nơi khác (không cảnh cắt) thì phải bị bắt.
+    const doiChung = kiemKyNangMvp(docNoiDungMvp(taoBoTep({ 'kich-ban/01.md': (s) => s.replace('{cảnh: c2 · cảnh cắt}', '{cảnh: c2}') })).mvp);
+    expect(doiChung.loi.some((l) => l.thongBao.includes('đứng nguyên chỗ'))).toBe(true);
     const loi = kqKiem.loi.filter((l) => l.thongBao.includes('đứng nguyên chỗ'));
     expect(loi.length).toBe(0);
   });

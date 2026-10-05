@@ -832,6 +832,7 @@ const GOC = {
         "ten": "Tin đồn",
         "chuoi": "tin-mo",
         "ngay": "2024-10-09",
+        "batDauO": "phong-clb",
         "tieuDeKet": "Một tài khoản, chưa phải một người",
         "loiKet": "Tin gốc đi từ tài khoản kênh của CLB Robotics, lúc 22:40 tối thứ Hai. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi."
       },
@@ -840,6 +841,7 @@ const GOC = {
         "ten": "Tranh cãi trong nhóm",
         "chuoi": "v3-qua-2010",
         "ngay": "2024-10-22",
+        "batDauO": "phong-clb",
         "tieuDeKet": "Nam ở thư viện lúc tin được gửi",
         "loiKet": "Bản ghi quẹt thẻ của thư viện và trí nhớ của Hà Vy là hai nguồn riêng, cùng đặt Nam ở thư viện lúc 22:40. Người gửi tin ngồi máy văn phòng xưởng, là ai thì chưa biết."
       },
@@ -848,6 +850,7 @@ const GOC = {
         "ten": "Giúp Nam",
         "chuoi": "v4-mo",
         "ngay": "2024-11-04",
+        "batDauO": "phong-clb",
         "tieuDeKet": "Có người mượn tên Nam",
         "loiKet": "Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng, cùng cái máy đã gửi tin đồn, một đơn đúng tối Nam ở thư viện. Máy thì biết, tay thì chưa. Ba người có chìa phòng."
       },
@@ -856,6 +859,7 @@ const GOC = {
         "ten": "Sổ quỹ",
         "chuoi": "v5-qua-2011",
         "ngay": "2024-11-16",
+        "batDauO": "phong-clb",
         "tieuDeKet": "Mỗi bước là một phiếu",
         "loiKet": "Ba khoản chi không có hàng được ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Người nhận là người nói \"vì sao\". Mùa 1 khép lại ở chỗ chứng cứ dừng."
       }
@@ -961,8 +965,25 @@ const GOC = {
           "text": "(Tới rồi. Phòng 408, đi thôi.)"
         },
         {
-          "type": "goto",
-          "to": "md-00-xe-buyt"
+          "type": "branch",
+          "id": "go-with-md-00-xe-buyt",
+          "asker": {
+            "speaker": "player",
+            "text": "Xuống xe"
+          },
+          "choices": [
+            {
+              "id": "go-md-00-xe-buyt",
+              "text": "Xuống xe",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-00-xe-buyt"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1002,8 +1023,25 @@ const GOC = {
           "text": "(Phòng 408. Ký túc xá ở đâu thì thông báo không ghi… Cứ đi theo đường chính vào trong xem đã.)"
         },
         {
-          "type": "goto",
-          "to": "md-00-cong-ktx"
+          "type": "branch",
+          "id": "go-with-md-00-cong-ktx",
+          "asker": {
+            "speaker": "player",
+            "text": "Tới cổng ký túc xá"
+          },
+          "choices": [
+            {
+              "id": "go-md-00-cong-ktx",
+              "text": "Tới cổng ký túc xá",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-00-cong-ktx"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1028,8 +1066,25 @@ const GOC = {
           "text": "(Phòng 408, tầng bốn. Mong là có thang máy.)"
         },
         {
-          "type": "goto",
-          "to": "md-00-sanh-ktx"
+          "type": "branch",
+          "id": "go-with-md-00-sanh-ktx",
+          "asker": {
+            "speaker": "player",
+            "text": "Vào sảnh"
+          },
+          "choices": [
+            {
+              "id": "go-md-00-sanh-ktx",
+              "text": "Vào sảnh",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-00-sanh-ktx"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1424,8 +1479,25 @@ const GOC = {
           "text": "Kỳ hai dính môn Xác suất Thống kê mới cay chứ. Chưa học đã thấy điềm trượt rồi. Thôi, xách vali lên phòng đã!"
         },
         {
-          "type": "goto",
-          "to": "md-01-ktx"
+          "type": "branch",
+          "id": "go-with-md-01-ktx",
+          "asker": {
+            "speaker": "player",
+            "text": "Lên phòng 408"
+          },
+          "choices": [
+            {
+              "id": "go-md-01-ktx",
+              "text": "Lên phòng 408",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-01-ktx"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1495,8 +1567,25 @@ const GOC = {
           "imageId": "chibi-vali-tho"
         },
         {
-          "type": "goto",
-          "to": "md-03-toa-b"
+          "type": "branch",
+          "id": "go-with-md-03-toa-b",
+          "asker": {
+            "speaker": "player",
+            "text": "Ra sảnh tòa B"
+          },
+          "choices": [
+            {
+              "id": "go-md-03-toa-b",
+              "text": "Ra sảnh tòa B",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-03-toa-b"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1564,8 +1653,25 @@ const GOC = {
           "text": "Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào."
         },
         {
-          "type": "goto",
-          "to": "md-07-cong-ktx-toi"
+          "type": "branch",
+          "id": "go-with-md-07-cong-ktx-toi",
+          "asker": {
+            "speaker": "player",
+            "text": "Tới cổng KTX buổi tối"
+          },
+          "choices": [
+            {
+              "id": "go-md-07-cong-ktx-toi",
+              "text": "Tới cổng KTX buổi tối",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-07-cong-ktx-toi"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1637,8 +1743,25 @@ const GOC = {
           "imageId": "chibi-chuyen-that"
         },
         {
-          "type": "goto",
-          "to": "md-08-tuan-cong-dan"
+          "type": "branch",
+          "id": "go-with-md-08-tuan-cong-dan",
+          "asker": {
+            "speaker": "player",
+            "text": "Đi sinh hoạt công dân"
+          },
+          "choices": [
+            {
+              "id": "go-md-08-tuan-cong-dan",
+              "text": "Đi sinh hoạt công dân",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-08-tuan-cong-dan"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1689,8 +1812,25 @@ const GOC = {
           "documentId": "doc-the-lich-cua-toi"
         },
         {
-          "type": "goto",
-          "to": "md-09-ngay-hoi"
+          "type": "branch",
+          "id": "go-with-md-09-ngay-hoi",
+          "asker": {
+            "speaker": "player",
+            "text": "Dự ngày hội CLB"
+          },
+          "choices": [
+            {
+              "id": "go-md-09-ngay-hoi",
+              "text": "Dự ngày hội CLB",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-09-ngay-hoi"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1865,8 +2005,25 @@ const GOC = {
           "text": "Bảy giờ tối nhé. Tới muộn thì hết bánh đấy."
         },
         {
-          "type": "goto",
-          "to": "md-10-trung-thu"
+          "type": "branch",
+          "id": "go-with-md-10-trung-thu",
+          "asker": {
+            "speaker": "player",
+            "text": "Xuống sân phá cỗ Trung thu"
+          },
+          "choices": [
+            {
+              "id": "go-md-10-trung-thu",
+              "text": "Xuống sân phá cỗ Trung thu",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-10-trung-thu"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -2602,8 +2759,25 @@ const GOC = {
           "text": "Thứ Hai tới, bốn giờ qua phòng CLB dọn tủ nhé. Buổi sinh hoạt thứ hai của mình."
         },
         {
-          "type": "goto",
-          "to": "md-11-phong-clb"
+          "type": "branch",
+          "id": "go-with-md-11-phong-clb",
+          "asker": {
+            "speaker": "player",
+            "text": "Tới phòng CLB"
+          },
+          "choices": [
+            {
+              "id": "go-md-11-phong-clb",
+              "text": "Tới phòng CLB",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-11-phong-clb"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -3172,8 +3346,25 @@ const GOC = {
           "text": "Ngồi đây đoán thì được gì. Ra tận nơi xem đã."
         },
         {
-          "type": "goto",
-          "to": "n1-toa-b"
+          "type": "branch",
+          "id": "go-with-n1-toa-b",
+          "asker": {
+            "speaker": "player",
+            "text": "Đi cùng Tùng ra tòa B"
+          },
+          "choices": [
+            {
+              "id": "go-n1-toa-b",
+              "text": "Đi cùng Tùng ra tòa B",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "n1-toa-b"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -3268,6 +3459,9 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "thinking",
           "text": "Lớp nào vừa ở tòa B, vừa học Báo chí? Mai có tài khoản rồi tính."
+        },
+        {
+          "type": "xong-viec-chinh"
         }
       ]
     },
@@ -4117,8 +4311,25 @@ const GOC = {
           "text": "Hai lớp: BC24A, BC23A. Muốn xem người thì cần phiếu của Phòng Công tác sinh viên."
         },
         {
-          "type": "goto",
-          "to": "n2-toi"
+          "type": "branch",
+          "id": "go-with-n2-toi",
+          "asker": {
+            "speaker": "player",
+            "text": "Về phòng KTX ăn tối"
+          },
+          "choices": [
+            {
+              "id": "go-n2-toi",
+              "text": "Về phòng KTX ăn tối",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "n2-toi"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -4201,6 +4412,9 @@ const GOC = {
         {
           "type": "image",
           "imageId": "chibi-mi-tom"
+        },
+        {
+          "type": "xong-viec-chinh"
         }
       ]
     },
@@ -4459,8 +4673,25 @@ const GOC = {
           "text": "Vậy là cần mã cụ thể. Và căn cứ cho từng mã."
         },
         {
-          "type": "goto",
-          "to": "n3-cang-tin"
+          "type": "branch",
+          "id": "go-with-n3-cang-tin",
+          "asker": {
+            "speaker": "player",
+            "text": "Tạt qua căng tin"
+          },
+          "choices": [
+            {
+              "id": "go-n3-cang-tin",
+              "text": "Tạt qua căng tin",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "n3-cang-tin"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -4754,8 +4985,25 @@ const GOC = {
           "text": "Để tớ mời. Cốc hôm khiêng vali thì cậu vẫn nợ đấy."
         },
         {
-          "type": "goto",
-          "to": "n3-phong"
+          "type": "branch",
+          "id": "go-with-n3-phong",
+          "asker": {
+            "speaker": "player",
+            "text": "Về phòng CLB"
+          },
+          "choices": [
+            {
+              "id": "go-n3-phong",
+              "text": "Về phòng CLB",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "n3-phong"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -4940,6 +5188,9 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Hiếu và Hoài, cùng BC24A. Mai mang hai mã sang Phòng Công tác sinh viên."
+        },
+        {
+          "type": "xong-viec-chinh"
         }
       ]
     },
@@ -5297,8 +5548,25 @@ const GOC = {
           "text": "Thư in từ tài khoản CLB Robotics. Người nộp là Hoài. Hai việc, có khi là hai người."
         },
         {
-          "type": "goto",
-          "to": "n4-sanh-toa-b"
+          "type": "branch",
+          "id": "go-with-n4-sanh-toa-b",
+          "asker": {
+            "speaker": "player",
+            "text": "Sang tòa B gặp bác Thịnh"
+          },
+          "choices": [
+            {
+              "id": "go-n4-sanh-toa-b",
+              "text": "Sang tòa B gặp bác Thịnh",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "n4-sanh-toa-b"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -5332,8 +5600,25 @@ const GOC = {
           "text": "Vâng ạ. Bọn cháu chỉ ghi lại nhật ký in trước."
         },
         {
-          "type": "goto",
-          "to": "n4-toi"
+          "type": "branch",
+          "id": "go-with-n4-toi",
+          "asker": {
+            "speaker": "player",
+            "text": "Tối họp nhóm bạn ở CLB"
+          },
+          "choices": [
+            {
+              "id": "go-n4-toi",
+              "text": "Tối họp nhóm bạn ở CLB",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "n4-toi"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -5362,8 +5647,25 @@ const GOC = {
           "text": "Và cũng chưa biết thư đó được in từ đâu…"
         },
         {
-          "type": "goto",
-          "to": "n4-toi"
+          "type": "branch",
+          "id": "go-with-n4-toi",
+          "asker": {
+            "speaker": "player",
+            "text": "Tối họp nhóm bạn ở CLB"
+          },
+          "choices": [
+            {
+              "id": "go-n4-toi",
+              "text": "Tối họp nhóm bạn ở CLB",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "n4-toi"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -5550,6 +5852,9 @@ const GOC = {
           "speaker": "tung",
           "expression": "gai-dau",
           "text": "Đòi nợ liền tay thế hả anh? Em tưởng biên bản chỉ để tham khảo!"
+        },
+        {
+          "type": "xong-viec-chinh"
         }
       ]
     },
@@ -5665,8 +5970,25 @@ const GOC = {
           "text": "Đừng đoán bừa vội. Cứ ghi lại đã, tính sau."
         },
         {
-          "type": "goto",
-          "to": "n5-toi"
+          "type": "branch",
+          "id": "go-with-n5-toi",
+          "asker": {
+            "speaker": "player",
+            "text": "Tối về phòng CLB"
+          },
+          "choices": [
+            {
+              "id": "go-n5-toi",
+              "text": "Tối về phòng CLB",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "n5-toi"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -5724,6 +6046,9 @@ const GOC = {
         {
           "type": "image",
           "imageId": "chibi-bang-ghim"
+        },
+        {
+          "type": "xong-viec-chinh"
         }
       ]
     },
@@ -6338,8 +6663,25 @@ const GOC = {
           "text": "Tớ nhớ đấy nhé."
         },
         {
-          "type": "goto",
-          "to": "ket-that-clb"
+          "type": "branch",
+          "id": "go-with-ket-that-clb",
+          "asker": {
+            "speaker": "player",
+            "text": "Về phòng CLB"
+          },
+          "choices": [
+            {
+              "id": "go-ket-that-clb",
+              "text": "Về phòng CLB",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "ket-that-clb"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -6393,8 +6735,25 @@ const GOC = {
           "text": "Thế thì đi uống trà đá thôi. Tớ hứa rồi mà."
         },
         {
-          "type": "goto",
-          "to": "ket-tra-da"
+          "type": "branch",
+          "id": "go-with-ket-tra-da",
+          "asker": {
+            "speaker": "player",
+            "text": "Ra quán trà đá cùng Tùng"
+          },
+          "choices": [
+            {
+              "id": "go-ket-tra-da",
+              "text": "Ra quán trà đá cùng Tùng",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "ket-tra-da"
+                }
+              ]
+            }
+          ]
         }
       ]
     },

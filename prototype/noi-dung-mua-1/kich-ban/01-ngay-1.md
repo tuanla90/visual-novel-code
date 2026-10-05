@@ -5,7 +5,7 @@
 ### n1-mo — Sáng ngày 1: Tùng rủ ra tòa B {cảnh: phong-clb}
 
 - [LỜI n1-mo.1]
-- [ĐI TỚI n1-toa-b]
+- [ĐI CÙNG n1-toa-b] Đi cùng Tùng ra tòa B
 
 ### n1-toa-b — Sảnh tòa B: cái hộp, bác bảo vệ, tờ thông báo {cảnh: sanh-toa-b}
 
@@ -15,6 +15,7 @@
   - nv:bac-tu · x 78% · y 100% · rộng 16% → n1-bac-thinh · dấu: ! · nhãn: Hỏi bác bảo vệ
   - obj-thong-bao-hop · x 40.5% · y 43.5% · rộng 2.6% → n1-thong-bao-hop · dấu: ! · nhãn: Đọc thông báo dán trên bảng tin
 - [LỜI n1-toa-b.2]
+- [XONG VIỆC CHÍNH]
 
 ### n1-hop — Khe hộp: mẩu thẻ lịch rách {cảnh: sanh-toa-b}
 

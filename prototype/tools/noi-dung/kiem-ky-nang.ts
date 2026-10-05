@@ -297,7 +297,8 @@ export function kiemKyNangMvp(thuMuc: string | RawMvp = THU_MUC_NOI_DUNG_MUA_1):
       if (!it) continue;
       const dong = c.itemDong[idx] ?? c.viTri.dong;
       let dichId: string | null = null;
-      if (it.kind === 'goto' || it.kind === 'go-with') dichId = it.to;
+      // [ĐI CÙNG] là người chơi tự bấm để đi: đổi nơi hợp lệ (A3 mục 14), không kiểm.
+      if (it.kind === 'goto') dichId = it.to;
       else if (it.kind === 'jump-if') dichId = it.chuoi;
 
       if (dichId) {

@@ -5,19 +5,19 @@
 ### md-00-tren-xe — Chủ nhật tuần 1: trên chuyến xe buýt lên Hà Nội {cảnh: xe-buyt}
 
 - [LỜI md-00-tren-xe.1]
-- [ĐI TỚI md-00-xe-buyt]
+- [ĐI CÙNG md-00-xe-buyt] Xuống xe
 
 ### md-00-xe-buyt — Chủ nhật tuần 1: xuống xe buýt trước cổng trường {cảnh: cong-truong}
 
 - [LỜI md-00-xe-buyt.1]
 
 - [LỜI md-00-xe-buyt.2]
-- [ĐI TỚI md-00-cong-ktx]
+- [ĐI CÙNG md-00-cong-ktx] Tới cổng ký túc xá
 
 ### md-00-cong-ktx — Đi qua sân trường tới cổng ký túc xá {cảnh: cong-ktx}
 
 - [LỜI md-00-cong-ktx.1]
-- [ĐI TỚI md-00-sanh-ktx]
+- [ĐI CÙNG md-00-sanh-ktx] Vào sảnh
 
 ### md-00-sanh-ktx — Sảnh tầng một dãy nhà giữa: dạy bấm vật {cảnh: sanh-ktx}
 
@@ -75,7 +75,7 @@
   - xúc xắc: Ngại nghĩ thì để tớ gieo xúc xắc đặt hộ cho. Đảm bảo không xui.
 - [LỜI md-00-gap-tung.2]
 - [LỜI md-00-gap-tung.3]
-- [ĐI TỚI md-01-ktx]
+- [ĐI CÙNG md-01-ktx] Lên phòng 408
 
 ### md-01-ktx — Phòng KTX 408, Chủ nhật chiều {cảnh: phong-ktx}
 
@@ -84,20 +84,20 @@
 - [LỜI md-01-ktx.2]
 - [ẢNH chibi-408-vali]
 - [ẢNH chibi-vali-tho]
-- [ĐI TỚI md-03-toa-b]
+- [ĐI CÙNG md-03-toa-b] Ra sảnh tòa B
 
 ### md-03-toa-b — Sảnh tòa B: cái hộp tôn cũ {cảnh: sanh-toa-b}
 
 - [LỜI md-03-toa-b.1]
 - [ẢNH obj-hop-kien-nghi-trong]
 - [LỜI md-03-toa-b.2]
-- [ĐI TỚI md-07-cong-ktx-toi]
+- [ĐI CÙNG md-07-cong-ktx-toi] Tới cổng KTX buổi tối
 
 ### md-07-cong-ktx-toi — Cổng KTX, tối: chú Cường {cảnh: cong-ktx-dem}
 
 - [LỜI md-07-cong-ktx-toi.1]
 - [ẢNH chibi-chuyen-that]
-- [ĐI TỚI md-08-tuan-cong-dan]
+- [ĐI CÙNG md-08-tuan-cong-dan] Đi sinh hoạt công dân
 
 ### md-08-tuan-cong-dan — Chuyển cảnh: tuần sinh hoạt công dân {cảnh: hoi-truong}
 
@@ -105,7 +105,7 @@
 - [ẢNH chibi-ngu-gat]
 - [LỜI md-08-tuan-cong-dan.1b]
 - [HIỆN TÀI LIỆU doc-the-lich-cua-toi]
-- [ĐI TỚI md-09-ngay-hoi]
+- [ĐI CÙNG md-09-ngay-hoi] Dự ngày hội CLB
 
 ### md-09-ngay-hoi — Ngày hội CLB, thứ Bảy: lọc thử một lần {cảnh: nha-van-hoa}
 
@@ -121,7 +121,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
 ```
 
 - [LỜI md-09-ngay-hoi.3]
-- [ĐI TỚI md-10-trung-thu]
+- [ĐI CÙNG md-10-trung-thu] Xuống sân phá cỗ Trung thu
 
 ### md-10-gap-duy — Trung thu: người chơi tự tới chào anh đang buộc chân bàn gấp {cảnh: san-ktx-trung-thu}
 
@@ -210,7 +210,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
 ### md-10-doan-dung — Chiếc bánh và chiếc đèn cá chép {cảnh: san-ktx-trung-thu}
 
 - [LỜI md-10-doan-dung.1]
-- [ĐI TỚI md-11-phong-clb]
+- [ĐI CÙNG md-11-phong-clb] Tới phòng CLB
 
 ### md-11-phong-clb — Thứ Hai 23/09, 16h: dọn phòng CLB {cảnh: phong-clb}
 

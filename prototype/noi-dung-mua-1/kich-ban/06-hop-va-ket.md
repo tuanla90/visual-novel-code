@@ -54,13 +54,13 @@
 - [LỜI ket-that.1a]
 - [ẢNH cg-quan-bi-bac]
 - [LỜI ket-that.1b]
-- [ĐI TỚI ket-that-clb]
+- [ĐI CÙNG ket-that-clb] Về phòng CLB
 
 ### ket-that-clb — Chiều muộn ở phòng CLB: mẩu giấy trong sổ CLB {cảnh: phong-clb}
 
 - [HẬU QUẢ] mở manh mối clue-loi-nhan-linh-1
 - [LỜI ket-that.2]
-- [ĐI TỚI ket-tra-da]
+- [ĐI CÙNG ket-tra-da] Ra quán trà đá cùng Tùng
 
 ### ket-tra-da — Sau kết thật: Tùng khao trà đá; bà Lụa kể về cái tủ sắt {cảnh: tra-da}
 

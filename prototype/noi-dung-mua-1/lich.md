@@ -38,25 +38,25 @@
 
 ## Tin đồn {vụ sau: vu2}
 - Chuỗi: tin-mo
-- Ngày: 2024-10-09
+- Ngày: 2024-10-09 · bắt đầu ở: phong-clb
 - Tiêu đề kết: Một tài khoản, chưa phải một người
 - Lời kết: Tin gốc đi từ tài khoản kênh của CLB Robotics, lúc 22:40 tối thứ Hai. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
 
 ## Tranh cãi trong nhóm {vụ sau: vu3}
 - Chuỗi: v3-qua-2010
-- Ngày: 2024-10-22
+- Ngày: 2024-10-22 · bắt đầu ở: phong-clb
 - Tiêu đề kết: Nam ở thư viện lúc tin được gửi
 - Lời kết: Bản ghi quẹt thẻ của thư viện và trí nhớ của Hà Vy là hai nguồn riêng, cùng đặt Nam ở thư viện lúc 22:40. Người gửi tin ngồi máy văn phòng xưởng, là ai thì chưa biết.
 
 ## Giúp Nam {vụ sau: vu4}
 - Chuỗi: v4-mo
-- Ngày: 2024-11-04
+- Ngày: 2024-11-04 · bắt đầu ở: phong-clb
 - Tiêu đề kết: Có người mượn tên Nam
 - Lời kết: Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng, cùng cái máy đã gửi tin đồn, một đơn đúng tối Nam ở thư viện. Máy thì biết, tay thì chưa. Ba người có chìa phòng.
 
 ## Sổ quỹ {vụ sau: vu5}
 - Chuỗi: v5-qua-2011
-- Ngày: 2024-11-16
+- Ngày: 2024-11-16 · bắt đầu ở: phong-clb
 - Tiêu đề kết: Mỗi bước là một phiếu
 - Lời kết: Ba khoản chi không có hàng được ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Người nhận là người nói "vì sao". Mùa 1 khép lại ở chỗ chứng cứ dừng.
 

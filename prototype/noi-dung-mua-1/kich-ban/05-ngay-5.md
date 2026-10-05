@@ -13,9 +13,10 @@
 - [ẢNH cg-bong-huy-hieu]
 - [HẬU QUẢ] mở manh mối clue-loi-chu-cuong
 - [LỜI n5-chu-cuong.2]
-- [ĐI TỚI n5-toi]
+- [ĐI CÙNG n5-toi] Tối về phòng CLB
 
 ### n5-toi — Tối: Hà Vy tóm tắt trước buổi họp {cảnh: phong-clb-dem}
 
 - [LỜI n5-toi.1]
 - [ẢNH chibi-bang-ghim]
+- [XONG VIỆC CHÍNH]

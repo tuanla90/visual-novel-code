@@ -39,17 +39,17 @@
 - [THỬ THÁCH c-in]
 - [ẢNH cg-reo-ho-manh-moi]
 - [LỜI n4-phong-may.2]
-- [ĐI TỚI n4-sanh-toa-b]
+- [ĐI CÙNG n4-sanh-toa-b] Sang tòa B gặp bác Thịnh
 
 ### n4-sanh-toa-b — Sảnh tòa B: hỏi bác Thịnh về sổ ký {cảnh: sanh-toa-b}
 
 - [LỜI n4-sanh-toa-b.1]
-- [ĐI TỚI n4-toi]
+- [ĐI CÙNG n4-toi] Tối họp nhóm bạn ở CLB
 
 ### n4-ve — Về phòng CLB {cảnh: phong-clb}
 
 - [LỜI n4-ve.1]
-- [ĐI TỚI n4-toi]
+- [ĐI CÙNG n4-toi] Tối họp nhóm bạn ở CLB
 
 ### n4-bd-toa-b — Bản đồ ngày 4 (tùy chọn): bác Thịnh kể có người xuống xem hộp {cảnh: sanh-toa-b}
 
@@ -73,3 +73,4 @@
 - [LỜI n4-toi.1b]
 - [LỜI n4-toi.1c]
 - [LỜI n4-toi.1d]
+- [XONG VIỆC CHÍNH]
