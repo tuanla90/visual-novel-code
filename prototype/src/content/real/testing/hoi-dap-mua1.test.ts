@@ -41,7 +41,8 @@ describe('tờ bác Thịnh thật', () => {
     expect(kiemCheoTo(goc(), kq.mvp)).toEqual([]);
     const hd = docHoiDap(THU_MUC_NOI_DUNG_MUA_1, kq.mvp);
     expect(hd.loi).toEqual([]);
-    expect(Object.keys(hd.bo!.to)).toEqual(['n1-bac-thinh']);
+    // Từ khi đưa đủ tờ của Vụ 1 vào (05/10 tối), thư mục có nhiều tờ; ở đây chỉ cần tờ bác Thịnh có mặt.
+    expect(Object.keys(hd.bo!.to)).toContain('n1-bac-thinh');
     expect(hd.bo!.to['n1-bac-thinh']!.chuDeKhongBiet.map((k) => k.ma)).toEqual(expect.arrayContaining(['camera', 'khoa-hop', 'phong-bi', 'cua-sau', 'lao-cong']));
     expect(hd.bo!.to['n1-bac-thinh']!.danhSach.find((d) => d.moManhMoi)?.moManhMoi).toBe('clue-toa-b');
   });
@@ -163,7 +164,8 @@ describe('lỗi về đúng tệp và dòng JSON (npm run kiem-noi-dung:mua1)', 
     const mvp = docThuMucMvp(THU_MUC_NOI_DUNG_MUA_1).mvp;
     const kq = docHoiDap(tam, mvp, { giong: false });
     const dong = hong.split('\n').findIndex((x) => x.includes('"co-khong": "Không, cháu ạ.')) + 1;
-    expect(kq.loi).toEqual([expect.stringMatching(new RegExp(`^noi-dung-mua-1/hoi-dap/n1-bac-thinh\\.json:${dong}: ai-bo/co-khong: không mở bằng`))]);
+    // Thư mục tạm chỉ có tờ bác Thịnh, nên các chuỗi [HỎI ĐÁP] khác của Vụ 1 báo "thiếu tờ": lọc lấy lỗi của riêng tờ này.
+    expect(kq.loi.filter((x) => x.includes('hoi-dap/n1-bac-thinh.json:'))).toEqual([expect.stringMatching(new RegExp(`^noi-dung-mua-1/hoi-dap/n1-bac-thinh\\.json:${dong}: ai-bo/co-khong: không mở bằng`))]);
     rmSync(join(tam, 'hoi-dap/n1-bac-thinh.json'));
     expect(docHoiDap(tam, mvp, { giong: false }).loi).toContainEqual(expect.stringContaining('[HỎI ĐÁP n1-bac-thinh]: thiếu tờ noi-dung-mua-1/hoi-dap/n1-bac-thinh.json'));
   });
