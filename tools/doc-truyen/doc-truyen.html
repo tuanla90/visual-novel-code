@@ -12,6 +12,7 @@
   --ui:"Be Vietnam Pro",system-ui,"Segoe UI",sans-serif; --read:"Literata",Georgia,"Times New Roman",serif;
   --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
   --gut:64px;
+  --veil:rgba(10,14,20,.9); --veil-ink:#E7ECF1;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   color-scheme:dark;
@@ -159,6 +160,14 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
 .nlist p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
 #copyOut{width:calc(100% - 28px);margin:0 14px 12px;min-height:120px;font:12px/1.5 var(--mono);padding:8px;border:1px solid var(--rule);border-radius:6px;background:var(--sunk)}
 .load{padding:40px 0;text-align:center;color:var(--muted)}
+/* Nút xem ảnh và khung phủ */
+.xem{display:inline-block;margin-left:8px;padding:0 9px;border:1px solid var(--accent);border-radius:999px;background:transparent;color:var(--accent);font:500 12px/1.7 var(--ui);cursor:pointer;white-space:nowrap}
+.xem:hover{background:var(--accent-bg)}
+.xem.none{border-color:var(--rule);color:var(--faint);cursor:default}
+.lb{position:fixed;inset:0;z-index:20;background:var(--veil);color:var(--veil-ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:calc(env(safe-area-inset-top, 0px) + 16px) 16px calc(env(safe-area-inset-bottom, 0px) + 16px)}
+.lb img{max-width:100%;max-height:calc(100% - 60px);object-fit:contain;border-radius:6px}
+.lb .cap{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:center;font:500 13px/1.4 var(--mono)}
+.lb .btn{background:transparent;color:var(--veil-ink);border-color:var(--veil-ink)}
 </style>
 
 <div class="wrap">
@@ -210,6 +219,11 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
       <p class="empty" id="notesEmpty">Chưa có góp ý nào.</p>
     </aside>
   </div>
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Xem ảnh">
+  <img id="lbImg" alt="">
+  <div class="cap"><span id="lbCap"></span><button class="btn" id="lbClose" type="button">Đóng</button></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
@@ -333,6 +347,11 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
     const back = el('button', 'btn back', '← Lùi một bước'); back.type = 'button'; back.disabled = path.length < 2;
     back.addEventListener('click', () => luiVe(path.length - 2));
     head.append(back, el('h2', null, d.tieuDe));
+    if (d.nen) {
+      const n = el('button', 'xem', 'Xem ảnh nền của cảnh'); n.type = 'button'; n.style.marginLeft = '0';
+      n.addEventListener('click', () => moAnh(d.nen, 'Ảnh nền · ' + d.nen.replace(/^anh\//, '')));
+      head.append(n);
+    }
 
     const body = el('div', 'body');
     body.innerHTML = window.marked ? window.marked.parse(d.md, { gfm: true, breaks: true }) : '';
@@ -357,6 +376,19 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
       g.append(el('span', 'l', 'Góp ý'), el('span', 's', '+'));
       g.addEventListener('click', () => { openKey = openKey === b.dataset.khoa ? null : b.dataset.khoa; danhDau(); });
       b.append(g);
+    });
+
+    const reAnh = /\[(?:CG|CHIBI|ẢNH) ([a-z][a-z0-9-]+)/g;
+    const w2 = document.createTreeWalker(body, NodeFilter.SHOW_TEXT);
+    const coAnh = []; while (w2.nextNode()) { if (reAnh.test(w2.currentNode.nodeValue)) coAnh.push(w2.currentNode); reAnh.lastIndex = 0; }
+    coAnh.forEach((n) => {
+      const ds = [...n.nodeValue.matchAll(reAnh)].map((m) => m[1]).reverse();
+      ds.forEach((ma) => {
+        const duong = d.anh ? d.anh[ma] : null;
+        const b = el(duong ? 'button' : 'span', 'xem' + (duong ? '' : ' none'), duong ? 'Xem ảnh ' + ma : ma + ': chưa có ảnh');
+        if (duong) { b.type = 'button'; b.addEventListener('click', () => moAnh(duong, ma)); }
+        n.after(b);
+      });
     });
 
     const ch = el('div', 'choices');
@@ -384,6 +416,19 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
     danhDau(); veDuong(); capNhatMucLuc(); veGopY();
     if (cuon) { try { sheet.scrollIntoView({ block: 'start', behavior: 'auto' }); } catch { /* bỏ qua */ } }
   }
+
+  // ---------- Xem ảnh ----------
+  function moAnh(duong, chu) {
+    const im = $('lbImg');
+    // ghi kèm cỡ ảnh thật, để biết ảnh nào còn nhỏ so với màn hình to
+    im.onload = () => { $('lbCap').textContent = chu + ' · ' + im.naturalWidth + '×' + im.naturalHeight; };
+    im.src = duong; im.alt = chu;
+    $('lbCap').textContent = chu; $('lb').hidden = false; $('lbClose').focus();
+  }
+  function dongAnh() { $('lb').hidden = true; $('lbImg').removeAttribute('src'); }
+  $('lbClose').addEventListener('click', dongAnh);
+  $('lb').addEventListener('click', (e) => { if (e.target === $('lb')) dongAnh(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('lb').hidden) dongAnh(); });
 
   // ---------- Giấy nhớ trong đoạn ----------
   function taoForm(khoa, trich, coSan) {
