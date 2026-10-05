@@ -115,14 +115,16 @@ SELECT s.ma_sv, s.ho_dem, s.ten, l.nganh FROM sinh_vien s JOIN lop_sinh_hoat l O
 
 | ma_tin | thoi_diem | tai_khoan | loai | noi_dung |
 |---|---|---|---|---|
-| T-01 | 2024-10-07 22:40 | clb_robotics | GOC | CLB Thám Tử soi dữ liệu sinh viên |
-| T-02 | 2024-10-07 22:55 | SV240254 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên |
-| T-03 | 2024-10-08 07:10 | SV230311 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên |
+| T-01 | 2024-10-07 22:40 | clb_robotics | GOC | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-02 | 2024-10-07 22:55 | SV240254 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
+| T-03 | 2024-10-08 07:10 | SV230311 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
 | T-04 | 2024-10-08 07:30 | SV240213 | GOC | Ai nhặt được thẻ xe ở căng tin |
-| T-05 | 2024-10-08 08:02 | SV220118 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên |
+| T-05 | 2024-10-08 08:02 | SV220118 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
 | T-06 | 2024-10-08 09:15 | clb_robotics | GOC | Tuyển thành viên đội robot |
-| T-07 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên |
+| T-07 | 2024-10-08 11:40 | SV240131 | CHUYEN_TIEP | CLB Thám Tử soi dữ liệu sinh viên đấy |
 | T-08 | 2024-10-08 12:05 | SV240412 | GOC | Nghe nói CLB Thám Tử soi điểm |
+| T-09 | 2024-10-08 12:30 | SV240201 | CHUYEN_TIEP | ␣clb thám tử soi dữ liệu sinh viên đấy |
+| T-10 | 2024-10-08 13:15 | SV240207 | CHUYEN_TIEP | ␣CLB Thám Tử soi dữ liệu sinh viên đấy |
 
 ## dang_nhap_kenh {bảng}
 - Cột: tai_khoan TEXT, may TEXT, ngay TEXT, gio TEXT

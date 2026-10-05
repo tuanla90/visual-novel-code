@@ -7139,7 +7139,121 @@ const GOC = {
         },
         {
           "type": "challenge",
-          "challengeId": "c-tin-don"
+          "challengeId": "c-tin-bang"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Không có tin nào đúng y câu ấy. Chắc là tin còn đoạn sau. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Vậy thử xem tin nào bắt đầu bằng câu đó. Cậu dùng \"%\" nhé. (tạm)"
+        },
+        {
+          "type": "goto",
+          "to": "tin-tra-bat-dau"
+        }
+      ]
+    },
+    {
+      "id": "tin-tra-bat-dau",
+      "title": "Thử bắt đầu bằng",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "challenge",
+          "challengeId": "c-tin-bat-dau"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Có 5 tin bắt đầu bằng đoạn này. Từ từ, nhỡ họ viết thêm ở phía trước thì sao? Ví dụ \"tớ nghe nói...\" (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Lại còn thế nữa. Tìm tiếp đi cậu. (tạm)"
+        },
+        {
+          "type": "goto",
+          "to": "tin-tra-chua"
+        }
+      ]
+    },
+    {
+      "id": "tin-tra-chua",
+      "title": "Thử chứa",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "challenge",
+          "challengeId": "c-tin-chua"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Lên 8 tin rồi. Tin T-08 là \"Nghe nói CLB Thám Tử soi điểm\", T-09 và T-10 thì thêm nội dung lạ. Mình có nên giữ T-08 không? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "T-08 là tự viết lại, không phải copy-paste. Phải loại nó ra, chỉ tìm những tin chép nguyên văn nhưng có thể lỡ tay dính dấu cách hay viết thường thôi. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Vậy bỏ dấu % ở đầu đi, dùng TRIM để xóa dấu cách thừa, và LOWER để đưa về chữ thường giống nhau, rồi tìm xem có tin nào bắt đầu bằng đoạn đó không. (tạm)"
+        },
+        {
+          "type": "goto",
+          "to": "tin-tra-sach"
+        }
+      ]
+    },
+    {
+      "id": "tin-tra-sach",
+      "title": "Thử làm sạch",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "challenge",
+          "challengeId": "c-tin-sach"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Giảm xuống còn 7 tin. T-08 đã bị loại. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Hai ông mã này gửi ngay sau giờ tan học. Xem xem tin nào do hai ông đó gửi? (tạm)"
+        },
+        {
+          "type": "goto",
+          "to": "tin-tra-in"
+        }
+      ]
+    },
+    {
+      "id": "tin-tra-in",
+      "title": "Thử IN hai tài khoản",
+      "canh": "phong-clb",
+      "mocSomNhat": 1000,
+      "nodes": [
+        {
+          "type": "challenge",
+          "challengeId": "c-tin-in"
         },
         {
           "type": "line",
@@ -18107,32 +18221,21 @@ const GOC = {
       },
       "ghiChu": []
     },
-    "c-tin-don": {
-      "id": "c-tin-don",
-      "tieuDe": "Tin đồn trên kênh sinh viên",
-      "deBai": "Kênh sinh viên chuyền nhau một câu về CLB. Những tin nào mang câu đó?",
+    "c-tin-bang": {
+      "id": "c-tin-bang",
+      "tieuDe": "Lọc bằng",
+      "deBai": "Kênh sinh viên chuyền nhau câu tin đồn. Thử tìm xem có tin nào giống hệt câu đó không?",
       "manhMoiLienQuan": [
         "clue-noi-dung-tin"
       ],
-      "mucTieuHoc": "Ôn \"bắt đầu bằng\"; kết quả nhiều dòng được ghim thành phiếu để dùng tiếp.",
-      "soDongKyVong": 5,
-      "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB Thám Tử soi dữ liệu%';",
-      "chonCot": [],
+      "mucTieuHoc": "Dùng phép = với chuỗi dài.",
+      "cotNop": [
+        "ma_tin"
+      ],
+      "soDongKyVong": 0,
+      "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung = 'CLB Thám Tử soi dữ liệu sinh viên';",
       "truyVanNapSan": null,
       "phanUng": [
-        {
-          "khi": {
-            "kind": "so-dong",
-            "n": 0
-          },
-          "loi": [
-            {
-              "speaker": "ha-vy",
-              "expression": "thinking",
-              "text": "Không dòng nào. Tin trong kênh dài hơn mấy chữ trên giấy nhớ, còn đoạn sau nữa. \"Bằng\" thì phải khớp cả câu; mình chỉ có mấy chữ đầu thôi."
-            }
-          ]
-        },
         {
           "khi": {
             "kind": "so-dong",
@@ -18148,13 +18251,13 @@ const GOC = {
         },
         {
           "khi": {
-            "kind": "thieu-cot"
+            "kind": "sai-cot-nop"
           },
           "loi": [
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Đủ năm tin rồi, nhưng phiếu này còn phải lọc tiếp tin gốc. Cần mã tin, lúc gửi, tài khoản gửi, và cột loại tin."
+              "text": "Mình cần tìm mã tin để nộp."
             }
           ]
         },
@@ -18166,7 +18269,7 @@ const GOC = {
             {
               "speaker": "duy",
               "expression": "neutral",
-              "text": "Đủ mà thừa. Nội dung tin thì năm dòng như nhau, khỏi chép vào phiếu. Lấy mã tin, lúc gửi, tài khoản với loại tin thôi."
+              "text": "Thừa cột rồi. Chỉ lấy mã tin, thời điểm, tài khoản, loại và nội dung thôi."
             }
           ]
         },
@@ -18177,34 +18280,226 @@ const GOC = {
           "loi": [
             {
               "speaker": "ha-vy",
-              "expression": "neutral",
-              "text": "Năm tin cùng một câu. Ghim lại đã."
+              "expression": "thinking",
+              "text": "Không có dòng nào. \"Bằng\" thì phải khớp y hệt cả câu; tin đồn chắc còn đoạn sau."
             }
           ]
         }
       ],
-      "vatChung": {
-        "id": "ev-tin-don",
-        "title": "Năm tin mang câu tin đồn",
-        "description": "Kết quả truy vấn: năm tin cùng một câu, từ năm tài khoản. Bốn tài khoản là mã sinh viên, một là clb_robotics. Phiếu chưa nói tin nào có trước.",
-        "giaTri": []
-      },
-      "ghiChu": [
-        "Đường \"sai có ích\": [CLB Thám Tử soi dữ liệu] vào noi_dung với \"bằng\" → 0 dòng → đổi \"bắt đầu bằng\" → 5 dòng."
-      ]
+      "vatChung": null,
+      "ghiChu": []
     },
-    "c-tin-goc": {
-      "id": "c-tin-goc",
-      "tieuDe": "Tin gốc của tin đồn",
-      "deBai": "Năm tin trên phiếu lẫn cả tin chuyển tiếp. Tin nào là tin gốc?",
-      "manhMoiLienQuan": [
-        "clue-tin-goc"
+    "c-tin-bat-dau": {
+      "id": "c-tin-bat-dau",
+      "tieuDe": "Bắt đầu bằng",
+      "deBai": "Có thể người ta viết thêm nội dung phía sau. Tìm những tin bắt đầu bằng câu đó.",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": "Dùng LIKE và % ở cuối chuỗi.",
+      "cotNop": [
+        "ma_tin"
       ],
-      "mucTieuHoc": "Lấy phiếu kết quả đã ghim làm nguồn cho lần tra kế tiếp (WITH … AS): lọc tiếp trên đống đã thu hẹp.",
-      "soDongKyVong": 1,
-      "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';",
-      "kieuTrinhDung": "loc-tiep",
-      "nguon": "ev-tin-don",
+      "soDongKyVong": 5,
+      "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung LIKE 'CLB Thám Tử soi dữ liệu sinh viên%';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Trắng bóc. Có khi nào người ta thêm chữ đằng trước không?"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "sai-cot-nop"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Chọn nhầm cột rồi, cậu chọn lại cột mã tin nhé."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "thua-cot"
+          },
+          "loi": [
+            {
+              "speaker": "duy",
+              "expression": "neutral",
+              "text": "Vẫn thừa cột."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "chi-tay",
+              "text": "Có 5 tin! Bắt đầu lòi ra rồi."
+            }
+          ]
+        }
+      ],
+      "vatChung": null,
+      "ghiChu": []
+    },
+    "c-tin-chua": {
+      "id": "c-tin-chua",
+      "tieuDe": "Có chứa",
+      "deBai": "Nhỡ ai đó viết thêm từ ở phía trước thì sao? Tìm những tin có chứa đoạn \"CLB Thám Tử soi\".",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": "Dùng LIKE và % ở cả hai đầu chuỗi.",
+      "cotNop": [
+        "ma_tin"
+      ],
+      "soDongKyVong": 8,
+      "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung LIKE '%CLB Thám Tử soi%';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Không thấy gì. Dùng phần trăm đúng chưa đấy?"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 5
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Năm dòng là của ban nãy. Nhớ dùng ký hiệu phần trăm ở cả hai đầu nhé."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "sai-cot-nop"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Cậu chưa chọn đúng cột mã tin kìa."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "minh-anh",
+              "expression": "neutral",
+              "text": "Lên 8 tin rồi. Nhìn xem, có một tin bị sửa nội dung."
+            }
+          ]
+        }
+      ],
+      "vatChung": null,
+      "ghiChu": []
+    },
+    "c-tin-sach": {
+      "id": "c-tin-sach",
+      "tieuDe": "Làm sạch",
+      "deBai": "Biết đâu có người cố tình gõ chữ thường hoặc lỡ dính dấu cách ở đầu. Làm sạch nội dung rồi tìm các tin bắt đầu bằng đoạn đó.",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": "Kết hợp LOWER và TRIM.",
+      "cotNop": [
+        "ma_tin"
+      ],
+      "soDongKyVong": 7,
+      "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TRIM(noi_dung)) LIKE 'clb thám tử soi%';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Lại không ra tin nào rồi. Cậu viết đúng hàm làm sạch chưa?"
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 8
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Vẫn tám dòng. Nhớ đưa về chữ thường và bỏ dấu cách thừa, rồi tìm những tin BẮT ĐẦU bằng câu đó."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "sai-cot-nop"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Đừng vội, nộp đúng cột mã tin đã."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "minh-anh",
+              "expression": "serious",
+              "text": "Bảy tin. Lòi ra thêm hai tài khoản lạ."
+            }
+          ]
+        }
+      ],
+      "vatChung": null,
+      "ghiChu": []
+    },
+    "c-tin-in": {
+      "id": "c-tin-in",
+      "tieuDe": "Một trong mấy giá trị",
+      "deBai": "Trong các tin mới tìm thấy, có hai tài khoản lạ. Lọc xem có tin nào gửi từ một trong hai tài khoản đó không?",
+      "manhMoiLienQuan": [],
+      "mucTieuHoc": "Sử dụng IN cho danh sách giá trị.",
+      "cotNop": [
+        "ma_tin"
+      ],
+      "soDongKyVong": 2,
+      "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoan IN ('SV240201', 'SV240207');",
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -18216,20 +18511,106 @@ const GOC = {
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Không dòng nào. Giá trị này có đang nằm đúng cột của nó không nhỉ?"
+              "text": "Chắc gõ sai mã sinh viên."
             }
           ]
         },
         {
           "khi": {
             "kind": "so-dong",
-            "n": 5
+            "n": 7
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "gai-dau",
-              "text": "Vẫn đủ năm tin. Chưa tách được tin gốc ra."
+              "text": "Đây là toàn bộ bảy tin mình vừa lọc ra mà. Dùng IN để lấy hai cái cần tìm thôi."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "sai-cot-nop"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Nộp nhầm cột rồi."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "dung"
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "chi-tay",
+              "text": "Đây rồi! Đúng là hai cái mã này."
+            }
+          ]
+        }
+      ],
+      "vatChung": {
+        "id": "ev-tin-don",
+        "title": "Các tin mang câu tin đồn",
+        "description": "Kết quả truy vấn: nhiều tin chép lại cùng một câu, từ các tài khoản khác nhau. Phiếu chưa nói tin nào có trước.",
+        "giaTri": []
+      },
+      "ghiChu": []
+    },
+    "c-tin-goc": {
+      "id": "c-tin-goc",
+      "tieuDe": "Tin gốc của tin đồn",
+      "deBai": "Bỏ qua các tin chuyển tiếp, tìm duy nhất tin gốc từ những tin chép lại.",
+      "manhMoiLienQuan": [
+        "clue-tin-goc"
+      ],
+      "mucTieuHoc": "Kết hợp điều kiện VÀ.",
+      "cotNop": [
+        "ma_tin"
+      ],
+      "soDongKyVong": 1,
+      "sqlChuan": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TRIM(noi_dung)) LIKE 'clb thám tử soi%' AND loai = 'GOC';",
+      "truyVanNapSan": null,
+      "phanUng": [
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 0
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Không ra tin nào."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 7
+          },
+          "loi": [
+            {
+              "speaker": "tung",
+              "expression": "gai-dau",
+              "text": "Bảy tin này lẫn cả chuyển tiếp. Lọc riêng tin gốc ra chứ."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "sai-cot-nop"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Nhớ chọn cột mã tin."
             }
           ]
         },
@@ -18241,7 +18622,7 @@ const GOC = {
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Còn đúng một tin. Phiếu năm tin vẫn nguyên trên bảng, mình chỉ lọc tiếp trên nó."
+              "text": "Còn lại đúng một tin. Đây chính là gốc gác của tin đồn."
             }
           ]
         }
@@ -18249,7 +18630,7 @@ const GOC = {
       "vatChung": {
         "id": "ev-tin-goc",
         "title": "Tin gốc: 22:40 tối 07/10",
-        "description": "Kết quả lọc tiếp trên phiếu năm tin: một tin gốc, gửi 22:40 thứ Hai 07/10 từ tài khoản clb_robotics. Phiếu cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.",
+        "description": "Kết quả truy vấn bảng gốc: một tin gốc, gửi 22:40 thứ Hai 07/10 từ tài khoản clb_robotics. Phiếu cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.",
         "giaTri": [
           "clb_robotics"
         ]
@@ -18290,7 +18671,7 @@ const GOC = {
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Hai mươi mốt lần, của kênh Robotics suốt ba tuần. Mình cần đúng ngày mùng 7."
+              "text": "Hai mươi mốt lần, của kênh suốt ba tuần. Mình cần đúng ngày mùng 7."
             }
           ]
         },
@@ -18362,7 +18743,7 @@ const GOC = {
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Không dòng nào. Lịch ghi ngày theo dạng năm-tháng-ngày, giấy nhớ cũng vậy. Giá trị có nằm đúng cột không?"
+              "text": "Không dòng nào. Lịch ghi ngày theo dạng năm-tháng-ngày. Giá trị có nằm đúng cột không?"
             }
           ]
         },
@@ -20205,28 +20586,47 @@ const GOC = {
       "sourceResultId": "ev-chi-tham-tu"
     },
     {
-      "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai FROM tin_nhan WHERE noi_dung LIKE 'CLB Thám Tử soi dữ liệu%';",
+      "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung = 'CLB Thám Tử soi dữ liệu sinh viên';",
+      "soDong": 0,
+      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:3 thẻ c-tin-bang, SQL chuẩn"
+    },
+    {
+      "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung LIKE 'CLB Thám Tử soi dữ liệu sinh viên%';",
       "soDong": 5,
-      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:3 thẻ c-tin-don, SQL chuẩn",
+      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:22 thẻ c-tin-bat-dau, SQL chuẩn"
+    },
+    {
+      "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung LIKE '%CLB Thám Tử soi%';",
+      "soDong": 8,
+      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:40 thẻ c-tin-chua, SQL chuẩn"
+    },
+    {
+      "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TRIM(noi_dung)) LIKE 'clb thám tử soi%';",
+      "soDong": 7,
+      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:58 thẻ c-tin-sach, SQL chuẩn"
+    },
+    {
+      "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoan IN ('SV240201', 'SV240207');",
+      "soDong": 2,
+      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:76 thẻ c-tin-in, SQL chuẩn",
       "resultId": "ev-tin-don"
     },
     {
-      "sql": "SELECT ma_tin, thoi_diem, tai_khoan FROM @ev-tin-don WHERE loai = 'GOC';",
+      "sql": "SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE LOWER(TRIM(noi_dung)) LIKE 'clb thám tử soi%' AND loai = 'GOC';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:27 thẻ c-tin-goc, SQL chuẩn",
-      "resultId": "ev-tin-goc",
-      "sourceResultId": "ev-tin-don"
+      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:97 thẻ c-tin-goc, SQL chuẩn",
+      "resultId": "ev-tin-goc"
     },
     {
       "sql": "SELECT may, gio FROM dang_nhap_kenh WHERE tai_khoan = 'clb_robotics' AND ngay = '2024-10-07';",
       "soDong": 2,
-      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:50 thẻ c-tin-may, SQL chuẩn",
+      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:120 thẻ c-tin-may, SQL chuẩn",
       "resultId": "ev-tin-may"
     },
     {
       "sql": "SELECT ngay, tu_gio, den_gio, muc_dich FROM dat_xuong WHERE ngay = '2024-10-07';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:72 thẻ c-tin-xuong, SQL chuẩn",
+      "noi": "noi-dung-mua-1/thu-thach/tin-don.md:142 thẻ c-tin-xuong, SQL chuẩn",
       "resultId": "ev-tin-xuong"
     },
     {
@@ -20757,21 +21157,21 @@ const GOC = {
             "2024-10-07 22:40",
             "clb_robotics",
             "GOC",
-            "CLB Thám Tử soi dữ liệu sinh viên"
+            "CLB Thám Tử soi dữ liệu sinh viên đấy"
           ],
           [
             "T-02",
             "2024-10-07 22:55",
             "SV240254",
             "CHUYEN_TIEP",
-            "CLB Thám Tử soi dữ liệu sinh viên"
+            "CLB Thám Tử soi dữ liệu sinh viên đấy"
           ],
           [
             "T-03",
             "2024-10-08 07:10",
             "SV230311",
             "CHUYEN_TIEP",
-            "CLB Thám Tử soi dữ liệu sinh viên"
+            "CLB Thám Tử soi dữ liệu sinh viên đấy"
           ],
           [
             "T-04",
@@ -20785,7 +21185,7 @@ const GOC = {
             "2024-10-08 08:02",
             "SV220118",
             "CHUYEN_TIEP",
-            "CLB Thám Tử soi dữ liệu sinh viên"
+            "CLB Thám Tử soi dữ liệu sinh viên đấy"
           ],
           [
             "T-06",
@@ -20799,7 +21199,7 @@ const GOC = {
             "2024-10-08 11:40",
             "SV240131",
             "CHUYEN_TIEP",
-            "CLB Thám Tử soi dữ liệu sinh viên"
+            "CLB Thám Tử soi dữ liệu sinh viên đấy"
           ],
           [
             "T-08",
@@ -20807,6 +21207,20 @@ const GOC = {
             "SV240412",
             "GOC",
             "Nghe nói CLB Thám Tử soi điểm"
+          ],
+          [
+            "T-09",
+            "2024-10-08 12:30",
+            "SV240201",
+            "CHUYEN_TIEP",
+            " clb thám tử soi dữ liệu sinh viên đấy"
+          ],
+          [
+            "T-10",
+            "2024-10-08 13:15",
+            "SV240207",
+            "CHUYEN_TIEP",
+            " CLB Thám Tử soi dữ liệu sinh viên đấy"
           ]
         ]
       },

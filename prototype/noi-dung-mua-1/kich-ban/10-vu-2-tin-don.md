@@ -17,7 +17,31 @@
   - nv:ha-vy · x 41% · y 100% · rộng 15% → tin-phong-vy · dấu: ? · nhãn: Hà Vy: câu hỏi trên bảng
   - nv:tung · x 62% · y 100% · rộng 15% → tin-phong-tung · dấu: ? · nhãn: Tùng: chuyện ở căng tin
   - nv:minh-anh · x 83% · y 100% · rộng 15% → tin-phong-minh-anh · dấu: ? · nhãn: Minh Anh: xin dữ liệu
-- [THỬ THÁCH c-tin-don]
+- [THỬ THÁCH c-tin-bang]
+- [LỜI tin-mo-sau-bang]
+- [ĐI TỚI tin-tra-bat-dau]
+
+### tin-tra-bat-dau — Thử bắt đầu bằng {cảnh: phong-clb}
+
+- [THỬ THÁCH c-tin-bat-dau]
+- [LỜI tin-tra-bat-dau.1]
+- [ĐI TỚI tin-tra-chua]
+
+### tin-tra-chua — Thử chứa {cảnh: phong-clb}
+
+- [THỬ THÁCH c-tin-chua]
+- [LỜI tin-tra-chua.1]
+- [ĐI TỚI tin-tra-sach]
+
+### tin-tra-sach — Thử làm sạch {cảnh: phong-clb}
+
+- [THỬ THÁCH c-tin-sach]
+- [LỜI tin-tra-sach.1]
+- [ĐI TỚI tin-tra-in]
+
+### tin-tra-in — Thử IN hai tài khoản {cảnh: phong-clb}
+
+- [THỬ THÁCH c-tin-in]
 - [LỜI tin-mo.3]
 - [KHÁM PHÁ kp-bd-v2 · bản đồ · giờ 16:30]
   - ghim:xuong · x 21% · y 24% · rộng 5% → tin-gap-nam · dấu: ! · nhãn: Xưởng Robotics

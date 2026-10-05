@@ -24,6 +24,23 @@
 > NHIỆM VỤ: Những tin nào trong kênh mang câu tin đồn?
 > NHẮC VIỆC ha-vy (thinking): Lọc ra các tin mang câu đó trước đã. Chưa vội đọc tên ai.
 
+## tin-mo-sau-bang
+- **player**: Không có tin nào đúng y câu ấy. Chắc là tin còn đoạn sau. (tạm)
+- **ha-vy** (thinking): Vậy thử xem tin nào bắt đầu bằng câu đó. Cậu dùng "%" nhé. (tạm)
+
+## tin-tra-bat-dau.1
+- **player**: Có 5 tin bắt đầu bằng đoạn này. Từ từ, nhỡ họ viết thêm ở phía trước thì sao? Ví dụ "tớ nghe nói..." (tạm)
+- **tung** (worried): Lại còn thế nữa. Tìm tiếp đi cậu. (tạm)
+
+## tin-tra-chua.1
+- **player**: Lên 8 tin rồi. Tin T-08 là "Nghe nói CLB Thám Tử soi điểm", T-09 và T-10 thì thêm nội dung lạ. Mình có nên giữ T-08 không? (tạm)
+- **minh-anh** (serious): T-08 là tự viết lại, không phải copy-paste. Phải loại nó ra, chỉ tìm những tin chép nguyên văn nhưng có thể lỡ tay dính dấu cách hay viết thường thôi. (tạm)
+- **ha-vy** (thinking): Vậy bỏ dấu % ở đầu đi, dùng TRIM để xóa dấu cách thừa, và LOWER để đưa về chữ thường giống nhau, rồi tìm xem có tin nào bắt đầu bằng đoạn đó không. (tạm)
+
+## tin-tra-sach.1
+- **player**: Giảm xuống còn 7 tin. T-08 đã bị loại. (tạm)
+- **tung** (chi-tay): Hai ông mã này gửi ngay sau giờ tan học. Xem xem tin nào do hai ông đó gửi? (tạm)
+
 ## tin-mo.3
 - **player**: Năm tin mang câu đó, từ năm tài khoản. Bốn cái là mã sinh viên. Một cái là clb_robotics.
 - **tung** (chi-tay): Lại Robotics! Hôm trước là cái huy hiệu bánh răng, giờ là tài khoản. Tớ cá là…
