@@ -38,7 +38,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 
 | Tiêu chí | Ngưỡng thiết kế | Thực tế | Đánh giá |
 |---|---|---|---|
-| Số dòng thoại | ≥ 300 | 204 | ⚠️ Bản mẫu |
+| Số dòng thoại | ≥ 300 | 243 | ⚠️ Bản mẫu |
 | Số chuỗi phân cảnh | ≥ 40 | 53 | ✅ Đạt |
 | Màn tra cứu SQL | ≥ 5 | 8 | ✅ Đạt |
 | Nhịp đối chất | ≥ 3 | 3 | ✅ Đạt |
@@ -126,6 +126,11 @@ Thứ Năm, 10/10/2024 · Còn 5 ngày tới Buổi giải trình chiều 15/10
 
 > 📜 **[THẺ CHỮ]** Thứ Năm, 10/10/2024
 - **Tùng** (ngạc nhiên): Hiếu nhắn tớ này: "Trưa ra căng tin, tớ có chuyện." (tạm)
+- **Tùng** (lo lắng): Khéo Hiếu định cãi chuyện bấm chuyển hôm nọ. (tạm)
+- *Suy nghĩ của bạn:* *(Chưa gặp mà cậu đã định cá à? (tạm))*
+- **Tùng** (vui vẻ): Cá luôn. Tớ cá Hiếu ra xin lỗi bọn mình. (tạm)
+- **Tùng** (vui vẻ): Trưa nay ra sớm một tí, kẻo hết chỗ. (tạm)
+- *Suy nghĩ của bạn:* *(Ra sớm thì được. Cá thì tớ không theo. (tạm))*
 
 **Lựa chọn tiếp theo:**
 - [Đi cùng Tùng ra căng tin](#doan-15)
@@ -325,7 +330,9 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 📍 **Căng tin** — *Căng tin giờ trưa: Hiếu ngồi bàn trong*
 
-- *Căng tin giờ trưa, bàn nào cũng cúi vào điện thoại. Hiếu ngồi một mình ở bàn trong. (tạm)*
+- *Giờ trưa, căng tin đông nghịt. (tạm)*
+- *Bàn nào cũng có người cúi vào điện thoại. (tạm)*
+- *Hiếu ngồi một mình ở bàn trong cùng, khay cơm còn nguyên. (tạm)*
 📍 **Đang ở Căng tin:**
 *Những chỗ có thể khám phá ở đây:*
 
@@ -491,7 +498,12 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 📍 **Căng tin** — *Đối chất Hiếu: tin có từ lâu, ai cũng chuyển*
 
-- **Hiếu**: Sáng nay lớp tớ bàn chuyện tin ấy suốt giờ giải lao. (tạm)
+- **Hiếu**: Sáng nay lớp tớ bàn cái tin ấy suốt giờ giải lao. (tạm)
+- **Hiếu**: Tớ nói thẳng nhé. Nghe xong tớ càng nghĩ các cậu đang lo thừa. (tạm)
+- **Tùng** (lo lắng): Cậu đã xem bọn tớ tìm được gì đâu. (tạm)
+- **Hiếu**: Thế các cậu tìm được gì nào? (tạm)
+- *Hà Vy đặt điện thoại xuống bàn. (tạm)*
+- **Hà Vy**: Cậu đưa bạn ấy xem thứ mình có đi. (tạm)
 ⚖️ **ĐỐI CHẤT**: Hiếu nêu giả thuyết: "Lớp tớ ai cũng bảo thế. **Tin này có từ lâu rồi, ai cũng chuyển**, các cậu làm to chuyện làm gì."
 *Câu hỏi:* Tin này bắt đầu từ lúc nào, từ một chỗ hay từ khắp nơi? Trình thẻ cho thấy điều đó.
 
@@ -513,7 +525,8 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 
 📍 **Căng tin** — *Chi tiết ẩn: dòng phấn bị xóa nhòe*
 
-- *Dưới dòng phấn ghi nợ có hai chữ "CLB soi", bị ai lấy tay xóa nhòe. (tạm)*
+- *Trên bảng đen, dòng phấn "Nợ quá ba cốc thì ghi tên vào đây" vẫn còn. (tạm)*
+- *Bên dưới có ai viết thêm "CLB soi", rồi lấy tay quẹt nhòe. (tạm)*
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Căng tin](#doan-34)
@@ -630,7 +643,11 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 
 📍 **Căng tin** — *Hiếu gửi tin đính chính vào nhóm lớp*
 
-- *Hiếu mở nhóm lớp, gõ một dòng, xóa đi, rồi gõ lại. (tạm)*
+- *Hiếu mở nhóm lớp, gõ một dòng. Xóa đi. Gõ lại. (tạm)*
+- *Lần này Hiếu bấm gửi. (tạm)*
+- *Lát sau, bàn bên có đứa đọc to dòng đính chính ấy. (tạm)*
+- **Hiếu**: Hôm ấy tớ thấy là bấm chuyển luôn, chẳng kiểm gì. (tạm)
+- **Hiếu**: Tớ sai. Cảm ơn các cậu đã cho xem. (tạm)
 
 **Lựa chọn tiếp theo:**
 - [Đi cùng Tùng sang xưởng Robotics](#doan-36)
@@ -642,7 +659,11 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 
 📍 **Căng tin** — *Hiếu trả khay, bàn bên vẫn đọc to cái tin*
 
-- *Hiếu đứng dậy trả khay. Bàn bên vẫn có đứa đọc to cái tin rồi cười. (tạm)*
+- *Hiếu cầm khay đứng dậy, đi trả. (tạm)*
+- *Bàn bên có mấy đứa đọc to cái tin kia, cười ồ. (tạm)*
+- *Tùng chống tay định đứng lên. (tạm)*
+- *Hà Vy giữ tay áo Tùng lại. (tạm)*
+- **Hà Vy**: Kệ đi. Về phòng đã. (tạm)
 
 **Lựa chọn tiếp theo:**
 - [Đi cùng Tùng sang xưởng Robotics](#doan-36)
@@ -764,7 +785,10 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 
 📍 **Xưởng CLB Robotics** — *Chiều 10/10, xưởng Robotics: Nam mở sẵn nhật ký*
 
-- **Nam**: Nhật ký đăng nhập anh mở sẵn rồi. Bảng đăng ký thì vẫn dán ngoài cửa. (tạm)
+- **Nam**: Nhật ký đăng nhập anh mở sẵn trên máy xưởng số hai rồi. (tạm)
+- **Tùng** (chỉ tay): Biển trên cửa ghi mã phòng này: XR-01. (tạm)
+- *Tùng liếc sang tờ bảng đăng ký dán ngay bên dưới. (tạm)*
+- **Duy**: Hai chỗ đều sẵn cả rồi đấy. (tạm)
 🔀 **Lựa chọn của bạn** (Hà Vy: "Hai chỗ anh Nam chỉ hôm qua. Xem chỗ nào trước?"):
 
 **Lựa chọn tiếp theo:**
@@ -817,7 +841,13 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE tai_khoa
 
 📍 **Phòng CLB** — *Cuối chiều 09/10, phòng CLB: báo giờ gửi, hẹn mai sang xưởng*
 
-- **Minh Anh**: Vậy mai chị báo cô Lan được một điều chắc: giờ gửi. (tạm)
+- **Minh Anh**: Mai chị báo cô Lan được một điều chắc: giờ gửi. (tạm)
+- **Minh Anh**: Gửi từ đâu thì mình chưa biết. (tạm)
+- **Tùng** (chỉ tay): Thế còn anh Nam hả chị? (tạm)
+- **Minh Anh** (nghiêm túc): Chị chưa nói tên ai cả. (tạm)
+- **Minh Anh**: Chỗ đó để ngỏ, mai tính tiếp. (tạm)
+- *Duy viết "22:40" lên góc bảng. (tạm)*
+- *Bên cạnh con số, Duy chừa một khoảng trống. (tạm)*
 
 **Hết ngày.**
 
@@ -1085,7 +1115,14 @@ SELECT ngay, ma_phong, tu_gio, den_gio, muc_dich FROM dat_phong WHERE ngay = '20
 
 📍 **Phòng CLB** — *Cuối chiều 10/10, phòng CLB: giấy mời giải trình*
 
-- **Minh Anh** (nghiêm túc): Giấy mời đây. Hai giờ chiều thứ Ba, phòng Công tác sinh viên. (tạm)
+- *Minh Anh đặt tờ giấy mời lên bàn. (tạm)*
+- **Minh Anh** (nghiêm túc): Hai giờ chiều thứ Ba, 15/10, phòng Công tác sinh viên. (tạm)
+- **Minh Anh** (nghiêm túc): Ban Pháp chế Hội Sinh viên chủ trì, cô Lan cũng dự. (tạm)
+- **Duy**: Tuần này có hai bạn rút đơn đăng ký thành viên mới. (tạm)
+- **Tùng** (gãi đầu): Chuyện ở căng tin trưa nay, lát em kể chị sau ạ. (tạm)
+- **Minh Anh**: Cuối tuần này CLB nghỉ. (tạm)
+- **Minh Anh**: Chiều thứ Hai lên phòng, mình tập trước với nhau. (tạm)
+- **Tùng** (vui vẻ): Vâng ạ. Thế cuối tuần em về quê một chuyến. (tạm)
 
 **Hết ngày.**
 
@@ -1478,7 +1515,9 @@ SELECT ma_tin, thoi_diem, tai_khoan, loai, noi_dung FROM tin_nhan WHERE noi_dung
 - **Tùng** (ngạc nhiên): Anh Khánh chủ tịch Hội sinh viên đấy.
 - **Nam**: Anh Khánh lo cho đội lắm. Kinh phí đi giải năm nay toàn anh ấy chạy.
 > [CG cg-v2-khanh-xuong] (chưa có mô tả)
-- **Nam**: Giờ anh phải dọn chỗ cho đội tập tối nay. Mai chiều các em qua. (tạm)
+- **Nam**: Giờ anh phải dọn chỗ. Tối nay đội ở lại tập tới chín giờ. (tạm)
+- **Nam**: Chiều mai các em qua, anh mở sẵn cho mà xem. (tạm)
+- *Ra tới cửa, Hà Vy nhìn tờ bảng đăng ký dán ở đó một lúc, không nói gì. (tạm)*
 
 **Lựa chọn tiếp theo:**
 - [Mở bản đồ](#doan-55)

@@ -8316,7 +8316,18 @@ const GOC = {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Giờ anh phải dọn chỗ cho đội tập tối nay. Mai chiều các em qua. (tạm)"
+          "text": "Giờ anh phải dọn chỗ. Tối nay đội ở lại tập tới chín giờ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "nam",
+          "expression": "neutral",
+          "text": "Chiều mai các em qua, anh mở sẵn cho mà xem. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Ra tới cửa, Hà Vy nhìn tờ bảng đăng ký dán ở đó một lúc, không nói gì. (tạm)"
         },
         {
           "type": "branch",
@@ -8408,7 +8419,41 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Vậy mai chị báo cô Lan được một điều chắc: giờ gửi. (tạm)"
+          "text": "Mai chị báo cô Lan được một điều chắc: giờ gửi. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Gửi từ đâu thì mình chưa biết. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Thế còn anh Nam hả chị? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Chị chưa nói tên ai cả. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Chỗ đó để ngỏ, mai tính tiếp. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Duy viết \"22:40\" lên góc bảng. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bên cạnh con số, Duy chừa một khoảng trống. (tạm)"
         },
         {
           "type": "xong-viec-chinh"
@@ -8432,6 +8477,34 @@ const GOC = {
           "speaker": "tung",
           "expression": "surprised",
           "text": "Hiếu nhắn tớ này: \"Trưa ra căng tin, tớ có chuyện.\" (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Khéo Hiếu định cãi chuyện bấm chuyển hôm nọ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Chưa gặp mà cậu đã định cá à? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Cá luôn. Tớ cá Hiếu ra xin lỗi bọn mình. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Trưa nay ra sớm một tí, kẻo hết chỗ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Ra sớm thì được. Cá thì tớ không theo. (tạm)"
         },
         {
           "type": "branch",
@@ -8465,7 +8538,17 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Căng tin giờ trưa, bàn nào cũng cúi vào điện thoại. Hiếu ngồi một mình ở bàn trong. (tạm)"
+          "text": "Giờ trưa, căng tin đông nghịt. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bàn nào cũng có người cúi vào điện thoại. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hiếu ngồi một mình ở bàn trong cùng, khay cơm còn nguyên. (tạm)"
         },
         {
           "type": "explore",
@@ -8504,7 +8587,36 @@ const GOC = {
           "type": "line",
           "speaker": "hieu",
           "expression": "neutral",
-          "text": "Sáng nay lớp tớ bàn chuyện tin ấy suốt giờ giải lao. (tạm)"
+          "text": "Sáng nay lớp tớ bàn cái tin ấy suốt giờ giải lao. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Tớ nói thẳng nhé. Nghe xong tớ càng nghĩ các cậu đang lo thừa. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Cậu đã xem bọn tớ tìm được gì đâu. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "annoyed",
+          "text": "Thế các cậu tìm được gì nào? (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hà Vy đặt điện thoại xuống bàn. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Cậu đưa bạn ấy xem thứ mình có đi. (tạm)"
         },
         {
           "type": "doi-chat",
@@ -8643,7 +8755,29 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hiếu mở nhóm lớp, gõ một dòng, xóa đi, rồi gõ lại. (tạm)"
+          "text": "Hiếu mở nhóm lớp, gõ một dòng. Xóa đi. Gõ lại. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Lần này Hiếu bấm gửi. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Lát sau, bàn bên có đứa đọc to dòng đính chính ấy. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Hôm ấy tớ thấy là bấm chuyển luôn, chẳng kiểm gì. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "hieu",
+          "expression": "neutral",
+          "text": "Tớ sai. Cảm ơn các cậu đã cho xem. (tạm)"
         },
         {
           "type": "branch",
@@ -8677,7 +8811,28 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hiếu đứng dậy trả khay. Bàn bên vẫn có đứa đọc to cái tin rồi cười. (tạm)"
+          "text": "Hiếu cầm khay đứng dậy, đi trả. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bàn bên có mấy đứa đọc to cái tin kia, cười ồ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng chống tay định đứng lên. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Hà Vy giữ tay áo Tùng lại. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Kệ đi. Về phòng đã. (tạm)"
         },
         {
           "type": "branch",
@@ -8711,7 +8866,12 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Dưới dòng phấn ghi nợ có hai chữ \"CLB soi\", bị ai lấy tay xóa nhòe. (tạm)"
+          "text": "Trên bảng đen, dòng phấn \"Nợ quá ba cốc thì ghi tên vào đây\" vẫn còn. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Bên dưới có ai viết thêm \"CLB soi\", rồi lấy tay quẹt nhòe. (tạm)"
         }
       ]
     },
@@ -8725,7 +8885,24 @@ const GOC = {
           "type": "line",
           "speaker": "nam",
           "expression": "neutral",
-          "text": "Nhật ký đăng nhập anh mở sẵn rồi. Bảng đăng ký thì vẫn dán ngoài cửa. (tạm)"
+          "text": "Nhật ký đăng nhập anh mở sẵn trên máy xưởng số hai rồi. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "chi-tay",
+          "text": "Biển trên cửa ghi mã phòng này: XR-01. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Tùng liếc sang tờ bảng đăng ký dán ngay bên dưới. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Hai chỗ đều sẵn cả rồi đấy. (tạm)"
         },
         {
           "type": "branch",
@@ -9303,9 +9480,50 @@ const GOC = {
       "nodes": [
         {
           "type": "line",
+          "speaker": "narrator",
+          "text": "Minh Anh đặt tờ giấy mời lên bàn. (tạm)"
+        },
+        {
+          "type": "line",
           "speaker": "minh-anh",
           "expression": "serious",
-          "text": "Giấy mời đây. Hai giờ chiều thứ Ba, phòng Công tác sinh viên. (tạm)"
+          "text": "Hai giờ chiều thứ Ba, 15/10, phòng Công tác sinh viên. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Ban Pháp chế Hội Sinh viên chủ trì, cô Lan cũng dự. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "duy",
+          "expression": "neutral",
+          "text": "Tuần này có hai bạn rút đơn đăng ký thành viên mới. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Chuyện ở căng tin trưa nay, lát em kể chị sau ạ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Cuối tuần này CLB nghỉ. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "neutral",
+          "text": "Chiều thứ Hai lên phòng, mình tập trước với nhau. (tạm)"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Vâng ạ. Thế cuối tuần em về quê một chuyến. (tạm)"
         },
         {
           "type": "xong-viec-chinh"
