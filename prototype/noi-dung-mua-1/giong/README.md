@@ -138,4 +138,9 @@ User đọc cảnh xuống xe buýt và trả lại. Bốn điều, áp cho mọ
 - **Có cảm xúc, giọng sinh viên, không ngây ngô.** "Hết tuần… Nghĩa là cả tuần leo bộ." là câu suy ra khô; "Nhường thì nhường… nhưng tầng bốn cơ đấy. Lại còn cả cái vali." mới là người đang xách vali. "Dây cờ giăng tận cổng thế kia, chắc ký túc xá đây rồi." bị trả lại vì ngây ngô.
 - **Đừng làm thế giới truyện xấu đi vô cớ.** Thang máy "bảo trì đến hết tuần" đúng dịp nhập học làm trường trông kém; đổi thành thang quá tải, nhường phụ huynh lớn tuổi. Chi tiết gây khó cho người chơi phải có lý do đời thường và không bôi xấu nơi chốn, nhân vật.
 - **Lời người ngoài nói theo lệ của nghề họ.** Phụ xe gọi bến bằng tên đầy đủ: "Đại học Chấn Hưng! Ai xuống thì chuẩn bị!", không "Ai xuống cổng Chấn Hưng chuẩn bị!".
+- **Chưa biết thì nói kiểu đoán.** Người mới tới trường không khẳng định: "Mọi người kéo vali vào cả lối này. Chắc ký túc xá đây rồi."; "Phòng 408 chắc ở tầng bốn. Trường to đẹp thế này chắc phải có thang máy chứ nhỉ?" (user 05/10 chiều).
+- **Nhìn ảnh thấy rồi thì không hỏi.** Ảnh sảnh đã vẽ thang máy thì không có câu "Thang máy ở chỗ nào nhỉ?".
+- **Lý do phải xuôi, lời chấp nhận phải gọn.** "Nhường thang cho phụ huynh lớn tuổi" bị chê khiên cưỡng; "Nhường thì nhường…" bị chê không hay. User gợi: "Đành vậy, thế thang bộ ở đâu nhỉ" hoặc "Đen thật, đành đi thang bộ vậy".
+- **Không tự xưng tên khi không ai hỏi.** Ngoài đời ít ai tự xưng nếu không có quan hệ đặc thù hoặc bị hỏi (user 05/10 chiều). Tên nhân vật lộ ra qua người khác gọi ("Hiếu ơi, lấy cơm này!"), qua giấy tờ, hoặc khi bị hỏi.
+- **Lời không hướng dẫn thao tác.** Không "lên hàng LẤY CỘT bấm thêm…"; phần hướng dẫn thuộc về bạn đi cùng / chat bot (giao-viec B11).
 - **Điều đã nói thì không nhắc lại.** Số phòng 408 chỉ nói một lần ở chỗ người chơi cần tới nó (nghĩ ra "tức là tầng bốn"), không lặp ở mỗi cảnh.

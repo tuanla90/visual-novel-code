@@ -7,7 +7,7 @@
 - [THẺ CHỮ] **narrator**: Thứ Tư, 25/09/2024
 - **minh-anh** (neutral): Đơn xin quyền tra cứu, {{nv.thay-quang.trong-cau}} duyệt rồi. Lát nữa sang Phòng Đào tạo, {{nv.co-hanh.trong-cau}} sẽ cấp tài khoản.
 - **duy** (neutral): Laptop CLB đây. Em cầm theo rồi.
-- **tung** (happy): Có tài khoản là tra được hết hả chị? Tớ cá là tìm ra ngay!
+- **tung** (happy): Có tài khoản là tra được hết hả chị? Em cá là tìm ra ngay!
 - **minh-anh** (neutral): Được xem đúng quyền thôi. Tới đó hỏi cô là rõ.
 
 ## n2-co-hanh.1
@@ -73,9 +73,9 @@
 
 ## n2-laptop.05
 > NHIỆM VỤ: Chỉ lấy cột cần xem
-> NHẮC VIỆC duy (neutral): Hàng LẤY CỘT: bấm cột nào thì cột ấy hiện ra. Lấy mã lớp với tòa nhà.
+> NHẮC VIỆC duy (neutral): Bốn cột thì rối. Chỉ cần nhìn lớp với tòa nhà thôi.
 - **player**: Một trăm mười hai lớp, bốn cột. Nhìn hơi rối.
-- **duy** (neutral): Không cần xem hết đâu. Hàng LẤY CỘT ở trên: muốn xem cột nào thì bấm cột ấy.
+- **duy** (neutral): Không cần xem hết đâu. Cần cột nào thì lấy cột ấy.
 - **ha-vy** (neutral): Cái hộp nằm ở tòa B. Vậy trước hết xem lớp nào ở tòa nào đã.
 
 ## n2-laptop.1

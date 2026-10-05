@@ -41,7 +41,7 @@ Sách truyện chữ tương tác tự chọn hướng đi (Choose-Your-Own-Adve
 
 | Tiêu chí | Ngưỡng thiết kế | Thực tế | Đánh giá |
 |---|---|---|---|
-| Số dòng thoại | ≥ 300 | 499 | ✅ Đạt |
+| Số dòng thoại | ≥ 300 | 498 | ✅ Đạt |
 | Số chuỗi phân cảnh | ≥ 40 | 111 | ✅ Đạt |
 | Màn tra cứu SQL | ≥ 5 | 5 | ✅ Đạt |
 | Nhịp đối chất | ≥ 3 | 1 | ⚠️ Bản mẫu |
@@ -91,7 +91,7 @@ Thứ Tư, 25/09/2024 · Còn 5 ngày tới Buổi họp rà soát
 > 📜 **[THẺ CHỮ]** Thứ Tư, 25/09/2024
 - **Minh Anh**: Đơn xin quyền tra cứu, thầy Quang duyệt rồi. Lát nữa sang Phòng Đào tạo, cô Hạnh sẽ cấp tài khoản.
 - **Duy**: Laptop CLB đây. Em cầm theo rồi.
-- **Tùng** (vui vẻ): Có tài khoản là tra được hết hả chị? Tớ cá là tìm ra ngay!
+- **Tùng** (vui vẻ): Có tài khoản là tra được hết hả chị? Em cá là tìm ra ngay!
 - **Minh Anh**: Được xem đúng quyền thôi. Tới đó hỏi cô là rõ.
 
 **Lựa chọn tiếp theo:**
@@ -511,8 +511,8 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 
 📍 **Cổng KTX** — *Đi qua sân trường tới cổng ký túc xá*
 
-- *Suy nghĩ của bạn:* *(Treo cả cờ đón tân sinh viên cơ à. Ký túc xá đây rồi.)*
-- *Suy nghĩ của bạn:* *(Phòng 408, tận tầng bốn. Không biết có thang máy không.)*
+- *Suy nghĩ của bạn:* *(Mọi người kéo vali vào cả lối này. Chắc ký túc xá đây rồi.)*
+- *Suy nghĩ của bạn:* *(Phòng 408 chắc ở tầng bốn. Trường to đẹp thế này chắc phải có thang máy chứ nhỉ?)*
 
 **Lựa chọn tiếp theo:**
 - [Vào sảnh](#doan-54)
@@ -756,7 +756,7 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 - **Hiếu**: Nhóm tôi xin phòng làm bài không được, phải chui rúc thư viện.
 - **Tùng** (lo lắng): Gắt thế… cậu ta gửi thư à?
 - **Hà Vy** (suy nghĩ): Ghét với gửi thư là hai việc khác nhau.
-- **Hiếu**: Nhìn gì? Tôi là Hiếu, lớp BC24A. Có gì hỏi thẳng đây, đừng xì xào sau lưng.
+- **Hiếu**: Nhìn gì? Có gì hỏi thẳng đây, đừng xì xào sau lưng.
 - *Có tiếng gọi từ quầy: "Hiếu ơi, lấy cơm này!" Cậu ta đứng dậy, bỏ đi.*
 - **Tùng** (vui vẻ): Thôi, chuyện thư từ để nhóm mình tự kiểm tra. Tớ ra lấy trà đá, ai uống không?
 - **Tùng** (lo lắng): Khoan, ví còn đúng tiền cơm tối. Thêm cốc trà đá là tối nay nhịn.
@@ -891,7 +891,6 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 > 💭 **Nhắc nhở** (Hà Vy): Thứ Hai họp. Chỉ nói đúng những gì có chứng.
 > 📜 **[THẺ CHỮ]** Tối thứ Bảy
 - *Hà Vy ghim hết giấy tờ lên bảng, Tùng căng chỉ nối từng tờ.*
-- **Hà Vy**: Tổng hợp lại. Thẻ lịch Báo chí ra hai lớp. Lọc tên H có Hiếu với Hoài. Sổ niêm phong có mã của Hoài.
 - **Tùng** (lo lắng): Nhỡ người ta vặn hỏi ai là người viết thư thì sao?
 - **Hà Vy**: Có chứng cứ thì trình. Không có thì bảo chưa biết.
 - **Tùng** (vui vẻ): Rõ rồi. Tối mai tớ ngủ sớm, thứ Hai tỉnh như sáo.
@@ -997,8 +996,8 @@ SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 📍 **Sảnh ký túc xá** — *Sảnh tầng một dãy nhà giữa: dạy bấm vật*
 
 > 🎯 **NHIỆM VỤ**: Tìm đường lên phòng 408
-> 💭 **Nhắc nhở** (Bạn): Thang máy ở chỗ nào nhỉ?
-- *Suy nghĩ của bạn:* *(Mát hẳn. Mà đông quá, chẳng nhìn thấy thang máy đâu cả.)*
+> 💭 **Nhắc nhở** (Bạn): Ra thang máy lên tầng bốn thôi.
+- *Suy nghĩ của bạn:* *(Đông thật đấy. Thang máy ngay kia rồi, ra xếp hàng thôi.)*
 📍 **Đang ở Sảnh ký túc xá:**
 *Những chỗ có thể khám phá ở đây:*
 
@@ -1048,9 +1047,9 @@ SELECT ma_lop, nganh, khoa_hoc, toa_nha FROM lop_sinh_hoat;
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*
 
 > 🎯 **NHIỆM VỤ**: Chỉ lấy cột cần xem
-> 💭 **Nhắc nhở** (Duy): Hàng LẤY CỘT: bấm cột nào thì cột ấy hiện ra. Lấy mã lớp với tòa nhà.
+> 💭 **Nhắc nhở** (Duy): Bốn cột thì rối. Chỉ cần nhìn lớp với tòa nhà thôi.
 - *Suy nghĩ của bạn:* *(Một trăm mười hai lớp, bốn cột. Nhìn hơi rối.)*
-- **Duy**: Không cần xem hết đâu. Hàng LẤY CỘT ở trên: muốn xem cột nào thì bấm cột ấy.
+- **Duy**: Không cần xem hết đâu. Cần cột nào thì lấy cột ấy.
 - **Hà Vy**: Cái hộp nằm ở tòa B. Vậy trước hết xem lớp nào ở tòa nào đã.
 #### 💻 Màn tra dữ liệu: Lớp nào ở tòa nào (thẻ `c-cot-lop`)
 *Đề bài:* Bảng lớp có bốn cột. Lần này chỉ cần biết lớp nào ở tòa nào: bấm lấy hai cột ấy rồi chạy.
@@ -1211,9 +1210,9 @@ SELECT thoi_diem, tai_khoan, ten_tep, so_trang FROM nhat_ky_in WHERE ten_tep = '
 
 📍 **Sảnh ký túc xá** — *Tờ giấy dán trên cửa thang máy*
 
-- *Tờ giấy dán ngay giữa cửa thang máy: "Ngày nhập học thang máy quá tải. Xin nhường thang cho phụ huynh lớn tuổi. Sinh viên vui lòng đi thang bộ."*
-- *Suy nghĩ của bạn:* *(Nhường thì nhường… nhưng tầng bốn cơ đấy. Lại còn cả cái vali.)*
-- *Suy nghĩ của bạn:* *(Thế thang bộ ở chỗ nào nhỉ? Ra bảng tin xem có sơ đồ không.)*
+- *Tờ giấy dán ngay giữa cửa thang máy: "Thang máy quá tải, tạm dừng để kiểm tra. Mời các bạn đi thang bộ."*
+- *Suy nghĩ của bạn:* *(Đen thật. Đành đi thang bộ vậy.)*
+- *Suy nghĩ của bạn:* *(Mà thang bộ ở chỗ nào nhỉ? Ra bảng tin xem có sơ đồ không.)*
 
 **Lựa chọn tiếp theo:**
 - [Quay lại: Đang ở Sảnh ký túc xá](#doan-54)
@@ -1413,7 +1412,7 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_lop = 'BC24A';
 *Các bẫy và phản hồi từ nhân vật:*
 - Nếu lọc ra 30 dòng → **Hà Vy** (suy nghĩ): Ba mươi người lớp BC23A. Dò hết rồi, chẳng ai tên bắt đầu bằng chữ H.
 - Nếu lọc ra 32 dòng → **Hà Vy** (suy nghĩ): Ba mươi hai người lớp BC24A. Dò từng tên một… Có Hiếu với Hoài.
-- Nếu thiếu cột → **Duy**: Thấy hai cái tên rồi. Nhưng trường gần bốn nghìn người, trùng tên là chuyện thường. Lên hàng LẤY CỘT bấm thêm ma_sv, phiếu này mới chỉ đúng người.
+- Nếu thiếu cột → **Duy**: Thấy hai cái tên rồi. Nhưng trường gần bốn nghìn người, trùng tên là chuyện thường. Chỉ có tên thì phiếu này chưa chỉ đúng người.
 
 > 🗂️ **Bằng chứng thu thập**: **Hai mã ứng viên kèm căn cứ** — Kết quả truy vấn: hai sinh viên có tên bắt đầu bằng H, cùng lớp BC24A — Hiếu và Hoài.
 *Bạn tra cứu thành công và có đủ thông tin để tiếp tục.*

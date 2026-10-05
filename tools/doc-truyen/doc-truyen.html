@@ -438,6 +438,7 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
     gopY.filter((g) => g.anh === anhDangXem && hien(g)).sort(theoThoiGian).forEach((g) => {
       const li = el('li'); li.append(el('p', null, g.ghiChu));
       if (g.trangThai === 'da-sua') li.append(el('span', 'done', 'Đã sửa, chờ bạn xem'));
+      if (g.trangThai === 'cho-ve-lai') li.append(el('span', 'done', 'Đã ghi, chờ lượt vẽ lại ảnh'));
       if (g.traLoi) li.append(taoTraLoi(g));
       ul.append(li);
     });
@@ -492,6 +493,7 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
   function taoMemo(g) {
     const m = el('div', 'memo');
     if (g.trangThai === 'da-sua') m.append(el('span', 'done', 'Đã sửa, chờ bạn xem'));
+      if (g.trangThai === 'cho-ve-lai') m.append(el('span', 'done', 'Đã ghi, chờ lượt vẽ lại ảnh'));
     if (daXong(g)) m.append(el('span', 'done', 'Đã xong'));
     m.append(el('p', null, g.ghiChu));
     if (g.traLoi) m.append(taoTraLoi(g));
@@ -593,6 +595,7 @@ details.toc summary{cursor:pointer;padding:12px 14px;font:600 13px/1.3 var(--ui)
       if (g.khoa !== '*' && g.trich) li.append(el('q', null, g.trich));
       li.append(el('p', null, g.ghiChu));
       if (g.trangThai === 'da-sua') li.append(el('span', 'done', 'Đã sửa, chờ bạn xem'));
+      if (g.trangThai === 'cho-ve-lai') li.append(el('span', 'done', 'Đã ghi, chờ lượt vẽ lại ảnh'));
       if (daXong(g)) li.append(el('span', 'done', 'Đã xong'));
       if (g.traLoi) li.append(taoTraLoi(g));
       if (g.trangThai === 'da-sua') {

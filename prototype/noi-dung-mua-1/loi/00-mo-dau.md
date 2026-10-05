@@ -21,21 +21,21 @@
 
 ## md-00-cong-ktx.1
 - [DÀN DỰNG] Nền bg-mvp-cong-ktx: cổng sắt xanh mở, dây cờ đuôi nheo, nhà xe bên trái, phòng trực bên phải; không có người, không có vali.
-- **player**: (Treo cả cờ đón tân sinh viên cơ à. Ký túc xá đây rồi.)
-- **player**: (Phòng 408, tận tầng bốn. Không biết có thang máy không.)
+- **player**: (Mọi người kéo vali vào cả lối này. Chắc ký túc xá đây rồi.)
+- **player**: (Phòng 408 chắc ở tầng bốn. Trường to đẹp thế này chắc phải có thang máy chứ nhỉ?)
 
 ## md-00-sanh-ktx.1
 > NHIỆM VỤ: Tìm đường lên phòng 408
-> NHẮC VIỆC player: Thang máy ở chỗ nào nhỉ?
+> NHẮC VIỆC player: Ra thang máy lên tầng bốn thôi.
 
 ## md-00-sanh-ktx.2
 - [DÀN DỰNG] Sảnh tầng một đông người ngày nhập học: tân sinh viên kéo vali, phụ huynh bê thùng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Lẫn trong đám đông bên phải có một tấm lưng áo xanh tình nguyện, mũ tai bèo đeo sau lưng: chi tiết ẩn, không có dấu, xem xong thang máy và bảng tin thì mới bấm được.
-- **player**: (Mát hẳn. Mà đông quá, chẳng nhìn thấy thang máy đâu cả.)
+- **player**: (Đông thật đấy. Thang máy ngay kia rồi, ra xếp hàng thôi.)
 
 ## md-00-thang-may.1
-- **narrator**: Tờ giấy dán ngay giữa cửa thang máy: "Ngày nhập học thang máy quá tải. Xin nhường thang cho phụ huynh lớn tuổi. Sinh viên vui lòng đi thang bộ."
-- **player**: (Nhường thì nhường… nhưng tầng bốn cơ đấy. Lại còn cả cái vali.)
-- **player**: (Thế thang bộ ở chỗ nào nhỉ? Ra bảng tin xem có sơ đồ không.)
+- **narrator**: Tờ giấy dán ngay giữa cửa thang máy: "Thang máy quá tải, tạm dừng để kiểm tra. Mời các bạn đi thang bộ."
+- **player**: (Đen thật. Đành đi thang bộ vậy.)
+- **player**: (Mà thang bộ ở chỗ nào nhỉ? Ra bảng tin xem có sơ đồ không.)
 
 ## md-00-so-do.1
 - **narrator**: Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ, có chấm "Bạn đang ở đây".

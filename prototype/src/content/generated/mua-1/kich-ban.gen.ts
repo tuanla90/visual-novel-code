@@ -1092,12 +1092,12 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Treo cả cờ đón tân sinh viên cơ à. Ký túc xá đây rồi.)"
+          "text": "(Mọi người kéo vali vào cả lối này. Chắc ký túc xá đây rồi.)"
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Phòng 408, tận tầng bốn. Không biết có thang máy không.)"
+          "text": "(Phòng 408 chắc ở tầng bốn. Trường to đẹp thế này chắc phải có thang máy chứ nhỉ?)"
         },
         {
           "type": "branch",
@@ -1135,7 +1135,7 @@ const GOC = {
         {
           "type": "reminder",
           "speaker": "player",
-          "text": "Thang máy ở chỗ nào nhỉ?"
+          "text": "Ra thang máy lên tầng bốn thôi."
         },
         {
           "type": "note",
@@ -1144,7 +1144,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Mát hẳn. Mà đông quá, chẳng nhìn thấy thang máy đâu cả.)"
+          "text": "(Đông thật đấy. Thang máy ngay kia rồi, ra xếp hàng thôi.)"
         },
         {
           "type": "explore",
@@ -1198,17 +1198,17 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Tờ giấy dán ngay giữa cửa thang máy: \"Ngày nhập học thang máy quá tải. Xin nhường thang cho phụ huynh lớn tuổi. Sinh viên vui lòng đi thang bộ.\""
+          "text": "Tờ giấy dán ngay giữa cửa thang máy: \"Thang máy quá tải, tạm dừng để kiểm tra. Mời các bạn đi thang bộ.\""
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Nhường thì nhường… nhưng tầng bốn cơ đấy. Lại còn cả cái vali.)"
+          "text": "(Đen thật. Đành đi thang bộ vậy.)"
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Thế thang bộ ở chỗ nào nhỉ? Ra bảng tin xem có sơ đồ không.)"
+          "text": "(Mà thang bộ ở chỗ nào nhỉ? Ra bảng tin xem có sơ đồ không.)"
         }
       ]
     },
@@ -3648,7 +3648,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Có tài khoản là tra được hết hả chị? Tớ cá là tìm ra ngay!"
+          "text": "Có tài khoản là tra được hết hả chị? Em cá là tìm ra ngay!"
         },
         {
           "type": "line",
@@ -4235,7 +4235,7 @@ const GOC = {
           "type": "reminder",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Hàng LẤY CỘT: bấm cột nào thì cột ấy hiện ra. Lấy mã lớp với tòa nhà."
+          "text": "Bốn cột thì rối. Chỉ cần nhìn lớp với tòa nhà thôi."
         },
         {
           "type": "line",
@@ -4246,7 +4246,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Không cần xem hết đâu. Hàng LẤY CỘT ở trên: muốn xem cột nào thì bấm cột ấy."
+          "text": "Không cần xem hết đâu. Cần cột nào thì lấy cột ấy."
         },
         {
           "type": "line",
@@ -4978,7 +4978,7 @@ const GOC = {
           "type": "line",
           "speaker": "hieu",
           "expression": "annoyed",
-          "text": "Nhìn gì? Tôi là Hiếu, lớp BC24A. Có gì hỏi thẳng đây, đừng xì xào sau lưng."
+          "text": "Nhìn gì? Có gì hỏi thẳng đây, đừng xì xào sau lưng."
         },
         {
           "type": "line",
@@ -6030,12 +6030,6 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Hà Vy ghim hết giấy tờ lên bảng, Tùng căng chỉ nối từng tờ."
-        },
-        {
-          "type": "line",
-          "speaker": "ha-vy",
-          "expression": "day-kinh",
-          "text": "Tổng hợp lại. Thẻ lịch Báo chí ra hai lớp. Lọc tên H có Hiếu với Hoài. Sổ niêm phong có mã của Hoài."
         },
         {
           "type": "line",
@@ -18927,7 +18921,7 @@ const GOC = {
             {
               "speaker": "duy",
               "expression": "neutral",
-              "text": "Thấy hai cái tên rồi. Nhưng trường gần bốn nghìn người, trùng tên là chuyện thường. Lên hàng LẤY CỘT bấm thêm ma_sv, phiếu này mới chỉ đúng người."
+              "text": "Thấy hai cái tên rồi. Nhưng trường gần bốn nghìn người, trùng tên là chuyện thường. Chỉ có tên thì phiếu này chưa chỉ đúng người."
             }
           ]
         }

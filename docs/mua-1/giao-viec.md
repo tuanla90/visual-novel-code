@@ -324,6 +324,7 @@ Túi đồ (Tùng, bỏ phần nối, bỏ ngày 30/10), Sổ sử dụng phòng
 - Người đi cùng **có mặt cả ở bản đồ**: nhắc nên đi đâu, hoặc bàn xem đi đâu trước. Đây là chỗ mỗi người lộ tính cách (ví dụ Hà Vy cân nhắc, Tùng đòi đi ngay).
 - Người đi cùng **nhắc việc còn dở trước khi người chơi bấm "Hết ngày"**.
 - Về sau có thể có **đoạn đi một mình**: thử thách tự lực, không có gợi ý.
+- **Mọi hướng dẫn thao tác (tutorial) dồn về bạn đi cùng / chat bot** (user 05/10 chiều): lời thoại và lời phản hồi màn tra không chỉ cách bấm ("Lên hàng LẤY CỘT bấm thêm ma_sv"); chúng chỉ tả kết quả. Người chơi cần biết bấm gì thì hỏi bạn đi cùng.
 
 **Đã có sẵn trong MVP (dùng lại):** `src/mvp/ui/DongHanhMvp.tsx` (dải "Đi cùng", chat AI có trí nhớ riêng), `NhacViecMvp` (`> NHẮC VIỆC <ai>: …` hiện mặt ở góc sân khấu), nháy chi tiết ẩn khi để lâu ở `KhamPhaMvp.tsx` (sẽ thay bằng bóng thoại).
 
