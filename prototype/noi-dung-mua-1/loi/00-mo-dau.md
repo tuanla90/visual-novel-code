@@ -241,9 +241,12 @@
 - **player**: Hay có bạn nào bên gian Robotics sang lấy? Gian đấy ngay sát bàn mình.
 - **ha-vy** (neutral): Bên họ đang đông khách, ai cũng bận tay bận chân. Đừng đoán mò khi chưa có chứng cứ.
 
-## md-10-doan-dung.1
+## md-10-doan-dung.1a
 - **player**: Đôi dép bé tí cạnh đèn cá chép, với vệt vụn bánh kéo từ bàn ra. Chắc là một đứa trẻ lấy.
 - **narrator**: Đúng lúc ấy, một bé gái chân đất chạy từ sau sân khấu ra chỗ chiếc đèn cá chép. Má dính vụn bánh, tay cầm nửa chiếc bánh nướng.
+
+## md-10-doan-dung.1b
+- [DÀN DỰNG] Ảnh cg-be-na-den-ca-chep chèn giữa hai khối (06/10, người xem ngoài: muốn thấy bé Na).
 - **chu-cuong** (smile): Na! Bố dặn muốn ăn thì xin các anh chị cơ mà.
 - **minh-anh** (happy): Bé cứ cầm ăn đi nhé. Nãy giờ bọn chị cứ thắc mắc mãi.
 - **tung** (happy): Phù, may quá giải oan cho tớ rồi nhé! Tí chia bánh tớ phải được miếng to nhất.

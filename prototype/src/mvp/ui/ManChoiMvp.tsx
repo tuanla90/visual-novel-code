@@ -38,7 +38,7 @@ import { NhacDanMvp } from './NhacDanMvp';
 import { BAN_DO_MVP } from './ban-do-mvp';
 import { BangQuanSatMvp } from './BangQuanSatMvp';
 import { BanDoMvp } from './BanDoMvp';
-import { GioiThieuMvp } from './GioiThieuMvp';
+import { GioiThieuMvp, NHAN_TRUONG_BIET } from './GioiThieuMvp';
 import { BanDiCungHoiDapMvp, HoiDapMvp } from './HoiDapMvp';
 import { HoSoMvp, type TabHoSoMvp } from './HoSoMvp';
 import { HudMvp } from './HudMvp';
@@ -53,7 +53,7 @@ import { tongKetVu } from '../engine/tong-ket';
 import { DongHanhMvp } from './DongHanhMvp';
 import { PhongTraMvp } from './v7/PhongTraMvp';
 import { NoiMvp } from './NoiMvp';
-import { SanKhauMvp } from './SanKhauMvp';
+import { nguoiThamGia, SanKhauMvp } from './SanKhauMvp';
 import { TaiLieuMvp } from './TaiLieuMvp';
 import { TaoNhanVatMvp } from './TaoNhanVatMvp';
 import { taiTruocTheoVan } from './tai-truoc-mvp';
@@ -203,6 +203,22 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     const dot = theMoiTuMa(kb, s, ids);
     if (dot.length > 0) setDotTheMoi((d) => [...d, dot]);
   }, [s, kb, themChuaXem, boChuaXem]);
+  // Gói B18: vừa biết thêm một ô thẻ nhân vật (`[BIẾT]`) → một dòng báo nhỏ, cùng kênh với "Sổ cá nhân có dòng mới". Chỉ báo
+  // người đã có thẻ (đã giới thiệu); đổi ván (nạp, chơi lại) thì đặt lại mốc, không báo.
+  const bietVeTruoc = useRef<{ van: number; bietVe: TrangThaiMvp['bietVe'] }>({ van: s?.batDauLuc ?? 0, bietVe: s?.bietVe });
+  useEffect(() => {
+    if (!s) return;
+    const truoc = bietVeTruoc.current;
+    bietVeTruoc.current = { van: s.batDauLuc, bietVe: s.bietVe };
+    if (truoc.van !== s.batDauLuc || !s.bietVe || s.bietVe === truoc.bietVe) return;
+    for (const [ma, ds] of Object.entries(s.bietVe)) {
+      const cu = truoc.bietVe?.[ma] ?? [];
+      const moi = ds.filter((t) => !cu.includes(t));
+      if (moi.length === 0 || !(s.daGioiThieu ?? []).includes(ma)) continue;
+      const ten = kb.nhanVat.find((n) => n.id === ma)?.ten ?? ma;
+      baoToast(`Hồ sơ ${ten}: biết thêm ${moi.map((t) => NHAN_TRUONG_BIET[t]).join(', ')}`);
+    }
+  }, [s, kb, baoToast]);
   // Sổ cá nhân tự có dòng mới ([GHI SỔ], QĐ-092) → báo, để người chơi biết mà mở xem.
   const soTrangTruoc = useRef(s ? s.soTay.length : 0);
   useEffect(() => {
@@ -556,7 +572,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     <div className={`game mvp-game${laDoc ? ' game--portrait' : ''}${gioiThieuMo ? ' game--debut' : ''}`}>
       {toast ? <div className="vn-toast" role="status">{toast}</div> : null}
       {dotTheMoi[0] ? <TheMoiMvp key={dotTheMoi[0].map((t) => t.id).join('|')} danhSach={dotTheMoi[0]} dienTen={dienTen} onXong={xongDotTheMoi} /> : null}
-      {gioiThieuMo ? <GioiThieuMvp key={gioiThieuMo} kb={kb} nhanVat={gioiThieuMo} onDong={dongGioiThieu} /> : null}
+      {gioiThieuMo ? <GioiThieuMvp key={gioiThieuMo} kb={kb} nhanVat={gioiThieuMo} bietVe={s.bietVe ?? null} onDong={dongGioiThieu} /> : null}
       <HudMvp
         kb={kb}
         s={s}
@@ -599,6 +615,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         expression={loiHienTai?.expression}
         {...(s.raDan?.length ? { raDan: s.raDan } : {})}
         {...(s.vaoDan?.length ? { vaoDan: s.vaoDan } : {})}
+        // Gói B18: ai có lời trong chuỗi đang chạy thì ở hàng trước, người khác đang trên dàn lùi hàng sau.
+        thamGia={nguoiThamGia(kb, s.conTro?.chuoi, s.vaoDan ?? [], s.raDan ?? [])}
         xoaDan={kn.kind === 'explore' || kn.kind === 'chon-dia-diem'}
         nghi={kn.kind === 'line' && kn.loi.speaker === 'player' && /^\(.*\)$/s.test(kn.loi.text.trim())}
         shaking={rung}

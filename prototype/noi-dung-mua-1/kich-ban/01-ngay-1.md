@@ -21,6 +21,7 @@
 
 - [VÀO tung]
 - [VÀO ha-vy]
+- [ẢNH cg-khe-hop-the-lich]
 - [LỜI n1-hop.1]
 - [LƯU BẰNG CHỨNG ev-the-lich]
 - [HẬU QUẢ] mở manh mối clue-bao-chi-k24
@@ -30,6 +31,7 @@
 <!-- Gói B12: hỏi đáp theo tờ hoi-dap/n1-bac-thinh.json. Cách "xem cả đoạn" chạy [LỜI] rồi [HẬU QUẢ] như cũ; cách bấm / gõ mở buổi hỏi thay cho các dòng lời và hậu quả mở manh mối ngay sau (manh mối mở khi gạch đủ dòng danh sách có moManhMoi). -->
 - [HỎI ĐÁP n1-bac-thinh]
 - [LỜI n1-bac-thinh.1]
+- [BIẾT bac-tu lịch]
 - [HẬU QUẢ] mở manh mối clue-toa-b
 
 ### n1-thong-bao-hop — Thông báo lịch họp rà soát {cảnh: sanh-toa-b}

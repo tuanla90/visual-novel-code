@@ -57,6 +57,7 @@
   - xúc xắc: Ngại nghĩ thì để tớ gieo xúc xắc đặt hộ cho. Đảm bảo không xui.
 - [LỜI md-00-gap-tung.2]
 - [LỜI md-00-gap-tung.3]
+- [BIẾT tung câu nói]
 - [ĐI CÙNG md-01-ktx] Lên phòng 408
 
 ### md-01-ktx — Phòng KTX 408, Chủ nhật chiều {cảnh: phong-ktx}
@@ -73,11 +74,13 @@
 - [LỜI md-03-toa-b.1]
 - [ẢNH obj-hop-kien-nghi-trong]
 - [LỜI md-03-toa-b.2]
+- [BIẾT bac-tu câu nói]
 - [ĐI CÙNG md-07-cong-ktx-toi] Tới cổng KTX buổi tối
 
 ### md-07-cong-ktx-toi — Cổng KTX, tối: chú Cường {cảnh: cong-ktx-dem}
 
 - [LỜI md-07-cong-ktx-toi.1]
+- [BIẾT chu-cuong câu nói]
 - [ẢNH chibi-chuyen-that]
 - [ĐI CÙNG md-08-tuan-cong-dan] Đi sinh hoạt công dân
 
@@ -104,6 +107,7 @@
 SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';
 ```
 
+- [BIẾT tung họ tên]
 - [LỜI md-09-ngay-hoi.3]
 - [ĐI CÙNG md-10-trung-thu] Xuống sân phá cỗ Trung thu
 
@@ -129,6 +133,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
   - vung:ao · x 50% · y 44% · rộng 22% → md-10-soi-ao · nhãn: Cái áo
   - vung:mui · x 57% · y 21% · rộng 14% → md-10-soi-mui · nhãn: Miếng băng trên mũi
 - [LỜI md-10-trung-thu.3]
+- [BIẾT tung lịch]
 - [ĐI TỚI md-10-gap-hoai]
 
 ### md-10-gap-hoai — Hoài xuất hiện hỏi đường {cảnh: san-ktx-trung-thu}
@@ -172,7 +177,9 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
 
 ### md-10-doan-dung — Chiếc bánh và chiếc đèn cá chép {cảnh: san-ktx-trung-thu}
 
-- [LỜI md-10-doan-dung.1]
+- [LỜI md-10-doan-dung.1a]
+- [ẢNH cg-be-na-den-ca-chep]
+- [LỜI md-10-doan-dung.1b]
 - [ẢNH chibi-clb-nhom]
 - [ĐI CÙNG md-11-phong-clb] Tới phòng CLB
 
@@ -180,7 +187,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
 
 - [LỜI md-11-phong-clb.1]
 - [KHÁM PHÁ kp-phong-md11]
-  - nv:duy · x 15% · y 100% · rộng 15% → md-11-duy · dấu: ? · nhãn: Duy: máy bàn
+  - nv:duy · x 15% · y 100% · rộng 15% → md-11-duy · dấu: ? · nhãn: Duy: laptop
   - nv:ha-vy · x 38% · y 100% · rộng 15% → md-11-vy · dấu: ? · nhãn: Hà Vy: cuốn sổ
   - nv:minh-anh · x 62% · y 100% · rộng 15% → md-11-minh-anh · dấu: ? · nhãn: Minh Anh: tờ lịch
   - nv:tung · x 82% · y 100% · rộng 15% → md-11-tung · dấu: ? · nhãn: Tùng
@@ -192,9 +199,10 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
 - [LỜI md-11-phong-clb.3]
 - [ĐI TỚI md-11-la-thu]
 
-### md-11-duy — Phòng CLB: Duy gõ máy bàn {cảnh: phong-clb}
+### md-11-duy — Phòng CLB: Duy gõ laptop {cảnh: phong-clb}
 
 - [LỜI md-11-duy.1]
+- [BIẾT duy câu nói]
 
 ### md-11-vy — Phòng CLB: Hà Vy ghi sổ {cảnh: phong-clb}
 
@@ -210,7 +218,9 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
 
 ### md-11-tu — Phòng CLB: ngăn dưới cùng của tủ hồ sơ {cảnh: phong-clb}
 
+- [ẢNH cg-tu-ho-so-ngan-duoi]
 - [LỜI md-11-tu.1]
+- [BIẾT duy lịch]
 
 ### md-11-la-thu — Phòng CLB, 16h40: bản sao lá thư và giấy mời {cảnh: phong-clb}
 
@@ -222,7 +232,9 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
 - [LỜI md-11-la-thu.2]
 - [HẬU QUẢ] mở manh mối clue-chu-ky-h
 - [LỜI md-11-la-thu.3a]
+- [BIẾT ha-vy câu nói]
 - [LỜI md-11-la-thu.3b]
+- [BIẾT minh-anh câu nói]
 
 ### md-10-soi-ban-do — Quan sát Tùng: tờ bản đồ trên tay {cảnh: san-ktx-trung-thu}
 

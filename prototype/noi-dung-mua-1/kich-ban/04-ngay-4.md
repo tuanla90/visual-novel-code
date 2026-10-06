@@ -26,6 +26,7 @@
 - [LỜI n4-ctsv.1w]
 - [HẬU QUẢ] mở manh mối clue-hoai-nguoi-nop
 - [LỜI n4-ctsv.2]
+- [BIẾT quan câu nói]
 - [RẼ NHÁNH r-phong-may] tung: "Mà thư đánh máy thì phải in ở đâu chứ nhỉ? Phòng Đào tạo ngay cạnh đây, tiện đường ghé hỏi cô Hạnh không?"
   - {id: ghe} Ghé Phòng Đào tạo hỏi cô Hạnh về nhật ký in. → hậu quả: đi tới n4-phong-may
   - {id: ve} Thôi, về CLB báo chị Minh Anh đã. → hậu quả: đi tới n4-ve
@@ -39,7 +40,6 @@
 - [LỜI n4-phong-may.1]
 - [HẬU QUẢ] mở manh mối clue-ten-tep
 - [THỬ THÁCH c-in]
-- [ẢNH cg-reo-ho-manh-moi]
 - [LỜI n4-phong-may.2]
 - [ĐI CÙNG n4-sanh-toa-b] Sang tòa B gặp bác Thịnh
 

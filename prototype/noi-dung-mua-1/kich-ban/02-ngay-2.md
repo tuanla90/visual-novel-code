@@ -22,6 +22,7 @@
 
 - [HỎI ĐÁP n2-co-hanh-vao]
 - [LỜI n2-co-hanh.1v]
+- [BIẾT co-hanh câu nói]
 - [HIỆN TÀI LIỆU doc-van-ban-thay-quang]
 - [HẬU QUẢ] mở manh mối clue-quyen-du-lieu
 - [LỜI n2-co-hanh.2]
@@ -80,10 +81,12 @@
 ### n2-phong-tung — Tùng kể chuyện ngoài lề {cảnh: phong-clb}
 
 - [LỜI n2-phong-tung.1]
+- [BIẾT co-hanh lịch]
 
 ### n2-phong-minh-anh — Minh Anh: muốn xin dữ liệu thì qua chị {cảnh: phong-clb}
 
 - [LỜI n2-phong-minh-anh.1]
+- [BIẾT minh-anh lịch]
 
 ### n2-laptop — Laptop phòng CLB: lớp nào vừa ở tòa B vừa học Báo chí? {cảnh: phong-clb}
 
@@ -92,7 +95,6 @@
 - [LỜI n2-laptop.05]
 - [THỬ THÁCH c-cot-lop]
 - [LỜI n2-laptop.1]
-- [ẢNH cg-nghi-di-tung-ha-vy]
 - [THỬ THÁCH c-lop]
 - [LỜI n2-laptop.2]
 - [HẾT NGÀY n2-toi] Về phòng KTX ăn tối

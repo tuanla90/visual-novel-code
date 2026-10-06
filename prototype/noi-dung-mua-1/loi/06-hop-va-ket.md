@@ -61,11 +61,13 @@
 - **thay-quang** (neutral): Em Hoài, nhật ký in nói lá thư in từ tài khoản của một CLB, không phải tài khoản của em. Phong bì em bỏ vào hộp là từ đâu ra?
 - **hoai** (nervous): Dạ… có một anh em không quen nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký như bình thường vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ. Mặt anh ấy em không nhớ rõ ạ.
 - **ha-vy** (neutral): Vậy là cậu ghi mã của mình vì được dặn. Còn người soạn thư thì không đứng tên ở đâu trên phiếu.
-- **thay-quang** (neutral): Nhật ký in không đặt em vào việc soạn thư, và lời em cho thầy một hướng để hỏi tiếp. Hiện chưa có căn cứ nào nói em là người viết. Thầy không nêu tên em trong hồ sơ.
+- **thay-quang** (neutral): Nhật ký in không đặt em vào việc soạn thư, và lời em cho thầy một hướng để hỏi tiếp. Hiện chưa có căn cứ nào nói em là người viết. Em làm theo lời nhờ nên không bị xử lý gì cả.
 - **thay-quang** (neutral): Mã trên phiếu là để thầy cô tra cứu và phản hồi người gửi. Ở đây người viết giấu tên, mượn chữ ký và mã của một bạn năm nhất. Thư như vậy thầy không nhận vào hồ sơ rà soát.
-- **thay-quang** (neutral): Em làm theo lời nhờ nên không bị xử lý gì cả.
-- **thay-quang** (smile): CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện.
-- **thay-quang** (neutral): Còn thư do ai soạn, thầy sẽ cho hỏi lại. Chưa có căn cứ thì chưa nêu tên ai ở đây.
+- [DÀN DỰNG] User 06/10: thầy báo trước phần giữ phòng, các chi tiết khác kiểm tra rồi gửi văn bản sau; gợi ý kín thầy cũng không muốn CLB đóng cửa (tuyến bí mật, Vụ 8 và Vụ 10: CLB thời thầy lập). Không giải thích.
+- **thay-quang** (smile): Phần phòng thì thầy nói luôn để các em yên tâm. CLB giữ phòng, sinh hoạt đến hết học kỳ, không kèm điều kiện.
+- **thay-quang** (neutral): Những chi tiết còn lại, nhật ký in, chuyện người nhờ nộp, thầy sẽ cho kiểm tra lại. Kết luận chính thức gửi các em bằng văn bản sau. Chưa có căn cứ thì chưa nêu tên ai ở đây.
+- **thay-quang** (neutral): Căn phòng ấy qua tay nhiều khóa rồi. Gỡ cái biển xuống thì dễ, treo lại được thì khó lắm.
+- **narrator**: Câu cuối thầy nói khẽ hơn hẳn, mắt không nhìn ai trong phòng.
 - **hoai** (relieved): Em xin lỗi vì làm mọi người mất công ạ.
 - **minh-anh** (happy): Không sao đâu em. Cảm ơn thầy ạ.
 
@@ -123,5 +125,6 @@
 - **minh-anh** (khoanh-tay): Dạ… bọn em chỉ xác minh được đến đó ạ.
 - **thay-quang** (neutral): Được. Với những gì trình bày ở buổi họp này, thầy chưa đủ căn cứ để biết ai viết thư. Còn em Hoài, em ấy không bị xử lý gì cả.
 - **thay-quang** (neutral): Thư vẫn được tính là một ý kiến sinh viên trong hồ sơ. Chưa thu phòng ngay. CLB được sinh hoạt đến hết học kỳ, nộp báo cáo hoạt động hằng tháng.
+- **thay-quang** (neutral): Phần phòng thầy nói luôn để các em yên tâm. Các chi tiết khác thầy cho kiểm tra lại rồi gửi văn bản sau.
 - **minh-anh** (worried): Dạ, tháng nào bọn em cũng sẽ nộp đủ ạ.
 - [THẺ CHỮ] **narrator**: Một dòng chỉ cho ta chỗ cần đến. Phần còn lại cần thêm bằng chứng, và biết hỏi đúng lúc, đúng cách.

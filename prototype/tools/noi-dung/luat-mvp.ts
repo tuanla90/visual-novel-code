@@ -11,7 +11,7 @@
  */
 import { execFileSync } from 'node:child_process';
 import { danhGiaDieuKien, docMoc, maTrongDieuKien, taThuTu, THU_TU_BUOI_TOI, thuTuMoc, type HauQua, type Moc } from './dieu-kien.ts';
-import { loiTrongChuoi, type MucMvp, type RawChuoiMvp, type RawDuKien, type RawMvp } from './doc-mvp.ts';
+import { CHU_TRUONG_BIET, loiTrongChuoi, TEN_TRUONG_BIET, type MucMvp, type RawChuoiMvp, type RawDuKien, type RawMvp, type RawNhanVat } from './doc-mvp.ts';
 import type { LoiNoiDung, ViTri } from './doc.ts';
 import { docPhanUng } from './phan-ung-mvp.ts';
 
@@ -62,6 +62,28 @@ console.log(JSON.stringify(st.getColumnNames()));
     return JSON.parse(out);
   } catch (_e) {
     return null;
+  }
+}
+
+/** Gói B18: thẻ nhân vật có dữ liệu cho ô này không (ô không có dữ liệu thì không có gì để biết hay giấu). */
+export function coDuLieuTruongBiet(n: RawNhanVat, truong: string): boolean {
+  const gt = n.gioiThieu;
+  if (!gt) return false;
+  switch (truong) {
+    case 'ho-ten':
+      return !!n.hoTen;
+    case 'danh-xung':
+      return gt.danhXung.trim() !== '';
+    case 'nam':
+      return !!gt.nam;
+    case 'nganh':
+      return !!gt.nganh;
+    case 'lich':
+      return !!gt.lich;
+    case 'cau-noi':
+      return gt.cauNoi.trim() !== '';
+    default:
+      return false;
   }
 }
 
@@ -319,6 +341,8 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   const canhBatBuoc = new Map<string, Set<string>>();
   /** Vật phẩm một chuỗi tự tạo khi chạy qua (không tính vật phẩm của một lựa chọn [RẼ NHÁNH]). */
   const taoTrongChuoi = new Map<string, Set<string>>();
+  /** Gói B18: các ô thẻ nhân vật có `[BIẾT]` mở ở đâu đó trong bộ (`<mã>|<trường>`). */
+  const bietMo = new Set<string>();
   for (const c of mvp.chuoi) {
     const dt = new Set<string>();
     const dtChinh = new Set<string>();
@@ -483,6 +507,28 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           // `[RA player]`: người chơi đứng ngoài quan sát, không lên dàn chân dung cho tới khi nói.
           if (!nhanVat.has(it.nhanVat) && !(it.action === 'ra' && it.nhanVat === 'player')) err(vt, `[${it.action === 'vao' ? 'VÀO' : 'RA'} ${it.nhanVat}]: không có nhân vật "${it.nhanVat}"`);
           break;
+        case 'biet': {
+          // Gói B18: mã phải là nhân vật có thẻ giới thiệu; trường phải là ô thẻ có dữ liệu; ô đã biết lúc gặp (hoặc thẻ không khai
+          // "Biết lúc gặp", tức biết hết) thì dòng này thừa.
+          const n = nhanVat.get(it.nhanVat);
+          if (!n) {
+            err(vt, `[BIẾT ${it.nhanVat}]: không có nhân vật "${it.nhanVat}" trong nhan-vat.md`);
+            break;
+          }
+          if (!n.gioiThieu) {
+            err(vt, `[BIẾT ${it.nhanVat}]: nhân vật ${it.nhanVat} không có thẻ giới thiệu`);
+            break;
+          }
+          const gap = n.gioiThieu.bietLucGap;
+          for (const tr of it.truong) {
+            const chu = CHU_TRUONG_BIET[tr] ?? tr;
+            if (!coDuLieuTruongBiet(n, tr)) err(vt, `[BIẾT ${it.nhanVat} ${chu}]: thẻ nhân vật ${it.nhanVat} không có "${chu}" để biết`);
+            else if (!gap) err(vt, `[BIẾT ${it.nhanVat} ${chu}]: thẻ nhân vật ${it.nhanVat} không khai "Biết lúc gặp" nên đã biết hết (dòng thừa)`);
+            else if (gap.includes(tr)) err(vt, `[BIẾT ${it.nhanVat} ${chu}]: "${chu}" đã có trong "Biết lúc gặp" của ${it.nhanVat} (dòng thừa)`);
+            bietMo.add(`${it.nhanVat}|${tr}`);
+          }
+          break;
+        }
         case 'explore': {
           const noi = `[KHÁM PHÁ ${it.id}]`;
           // Bản đồ phải có giờ khi có nhân vật khai "Thường ở": ảnh mặt trên ghim tính theo thứ (ngày trong truyện) và giờ này.
@@ -823,6 +869,16 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     const ghim = new Set<string>();
     for (const c of mvp.chuoi) for (const it of c.items) if (it.kind === 'explore') for (const d of it.diem) if (d.sprite.startsWith('ghim:')) ghim.add(d.sprite.slice(5));
     for (const n of mvp.nhanVat) for (const q of n.gioiThieu?.thuongO ?? []) if (!ghim.has(q.noi)) err(n.viTri, `nhân vật ${n.id}, "Thường ở": không bản đồ nào có ghim "${q.noi}" (có: ${[...ghim].sort().join(', ')})`);
+  }
+
+  // ---------- Thẻ nhân vật chỉ ghi điều đã biết (gói B18) ----------
+  // "Biết lúc gặp" chỉ được liệt kê ô thẻ có dữ liệu; ô có dữ liệu mà chưa biết lúc gặp và cả bộ không có `[BIẾT]` nào mở → cảnh báo.
+  for (const n of mvp.nhanVat) {
+    const gap = n.gioiThieu?.bietLucGap;
+    if (!gap) continue;
+    for (const tr of gap) if (!coDuLieuTruongBiet(n, tr)) err(n.viTri, `nhân vật ${n.id}, "Biết lúc gặp": thẻ không có "${CHU_TRUONG_BIET[tr] ?? tr}" để biết (thừa)`);
+    const chuaMo = Object.values(TEN_TRUONG_BIET).filter((tr) => coDuLieuTruongBiet(n, tr) && !gap.includes(tr) && !bietMo.has(`${n.id}|${tr}`));
+    if (chuaMo.length > 0) canhBao.push({ ...n.viTri, thongBao: `nhân vật ${n.id}: ô ${chuaMo.map((tr) => `"${CHU_TRUONG_BIET[tr] ?? tr}"`).join(', ')} chưa biết lúc gặp mà cả bộ không có dòng [BIẾT ${n.id} …] nào mở` });
   }
 
   // ---------- Kết, true end ----------

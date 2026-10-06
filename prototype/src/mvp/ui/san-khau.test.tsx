@@ -7,7 +7,7 @@ import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
-import { SanKhauMvp } from './SanKhauMvp';
+import { nguoiThamGia, SanKhauMvp, viTriHangSau } from './SanKhauMvp';
 
 const kb = KICH_BAN_MVP as unknown as KichBanMvp;
 
@@ -54,10 +54,11 @@ describe('SanKhauMvp — biểu cảm riêng của MVP', () => {
   });
 });
 
-describe('SanKhauMvp — tối đa 3 người trên dàn', () => {
-  const dan = (container: HTMLElement): string[] => [...container.querySelectorAll('.cast-member')].map((e) => e.getAttribute('data-nhan-vat') ?? '');
+describe('SanKhauMvp — tối đa 3 người hàng trước', () => {
+  // Gói B18: người rời hàng trước lùi xuống hàng sau (data-hang="sau"), nên ở đây chỉ đếm hàng trước.
+  const dan = (container: HTMLElement): string[] => [...container.querySelectorAll('.cast-member[data-hang="truoc"]')].map((e) => e.getAttribute('data-nhan-vat') ?? '');
 
-  it('người thứ tư nói → người nói lâu nhất trước đó rời dàn, người đang nói ở lại, người mới đứng vào chỗ trống', () => {
+  it('người thứ tư nói → người nói lâu nhất trước đó rời hàng trước, người đang nói ở lại, người mới đứng vào chỗ trống', () => {
     const { container, rerender } = render(<SanKhauMvp kb={kb} canh="cong-truong" speaker="tung" />);
     rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker="minh-anh" />);
     rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker="ha-vy" />);
@@ -78,6 +79,86 @@ describe('SanKhauMvp — tối đa 3 người trên dàn', () => {
     const { container, rerender } = render(<SanKhauMvp kb={kb} canh="cong-truong" speaker="tung" />);
     rerender(<SanKhauMvp kb={kb} canh="phong-clb" speaker="minh-anh" />);
     expect(dan(container)).toEqual(['minh-anh']);
+  });
+});
+
+describe('SanKhauMvp — hai hàng chân dung (gói B18)', () => {
+  const hang = (container: HTMLElement, h: 'truoc' | 'sau'): string[] => [...container.querySelectorAll(`.cast-member[data-hang="${h}"]`)].map((e) => e.getAttribute('data-nhan-vat') ?? '');
+  const noiLanLuot = (ten: string[]) => {
+    const kq = render(<SanKhauMvp kb={kb} canh="cong-truong" speaker={ten[0]} />);
+    for (const t of ten.slice(1)) kq.rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker={t} />);
+    return kq;
+  };
+
+  it('người thứ tư nói → người nói lâu nhất lùi hàng sau chứ không mất; hàng sau không nhép môi, không sáng', () => {
+    const { container } = noiLanLuot(['tung', 'minh-anh', 'ha-vy', 'quan']);
+    expect(hang(container, 'truoc')).toEqual(['quan', 'minh-anh', 'ha-vy']);
+    expect(hang(container, 'sau')).toEqual(['tung']);
+    const sau = container.querySelector('.cast-member[data-hang="sau"]');
+    expect(sau?.getAttribute('data-speaking')).toBe('false');
+    expect(sau).toHaveClass('cast-member--idle');
+    expect(sau).toHaveClass('cast-member--hang-sau');
+    expect(container.querySelector('.stage__portraits')?.getAttribute('data-so-nguoi')).toBe('3');
+    expect(container.querySelector('.stage__portraits')?.getAttribute('data-so-hang-sau')).toBe('1');
+  });
+
+  it('người hàng sau nói lại → lên hàng trước, đẩy người nói lâu nhất của hàng trước xuống', () => {
+    const { container, rerender } = noiLanLuot(['tung', 'minh-anh', 'ha-vy', 'quan']);
+    rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker="tung" />);
+    // Minh Anh nói lâu nhất trong hàng trước (Minh Anh < Hà Vy < Quân) → lùi; Tùng đứng vào chỗ đó.
+    expect(hang(container, 'truoc')).toEqual(['quan', 'tung', 'ha-vy']);
+    expect(hang(container, 'sau')).toEqual(['minh-anh']);
+    expect(container.querySelector('[data-nhan-vat="tung"]')?.getAttribute('data-speaking')).toBe('true');
+  });
+
+  it('hàng sau tối đa 3: dư thì người xuống lâu nhất rời hẳn', () => {
+    const { container } = noiLanLuot(['tung', 'minh-anh', 'ha-vy', 'quan', 'duy', 'hoai', 'bac-tu']);
+    // Người mới đứng vào đúng chỗ người vừa lùi (không xê dịch người khác): Quân thế Tùng, Duy thế Minh Anh, Hoài thế Hà Vy, bác Thịnh thế Quân.
+    expect(hang(container, 'truoc')).toEqual(['bac-tu', 'duy', 'hoai']);
+    expect(hang(container, 'sau')).toEqual(['minh-anh', 'ha-vy', 'quan']);
+    expect(container.querySelector('[data-nhan-vat="tung"]')).toBeNull();
+  });
+
+  it('thamGia: người đang trên dàn mà không có lời trong chuỗi mới thì lùi hàng sau', () => {
+    const { container, rerender } = render(<SanKhauMvp kb={kb} canh="cong-truong" speaker="tung" thamGia={['tung', 'ha-vy', 'player']} />);
+    rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker="ha-vy" thamGia={['tung', 'ha-vy', 'player']} />);
+    expect(hang(container, 'truoc')).toEqual(['tung', 'ha-vy']);
+    // Sang chuỗi mới chỉ có Hà Vy và người chơi nói chuyện: Tùng lùi hàng sau.
+    rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker="player" thamGia={['ha-vy', 'player']} />);
+    expect(hang(container, 'truoc')).toEqual(['ha-vy', 'player']);
+    expect(hang(container, 'sau')).toEqual(['tung']);
+  });
+
+  it('[RA x] rời hẳn cả hàng sau; đổi cảnh xóa cả hai hàng', () => {
+    const { container, rerender } = noiLanLuot(['tung', 'minh-anh', 'ha-vy', 'quan']);
+    expect(hang(container, 'sau')).toEqual(['tung']);
+    rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker="quan" raDan={['tung']} />);
+    expect(hang(container, 'sau')).toEqual([]);
+    rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker="duy" />);
+    expect(hang(container, 'sau')).toEqual(['minh-anh']);
+    rerender(<SanKhauMvp kb={kb} canh="phong-clb" speaker="duy" />);
+    expect(hang(container, 'truoc')).toEqual(['duy']);
+    expect(hang(container, 'sau')).toEqual([]);
+  });
+
+  it('vị trí hàng sau nằm ở khe hoặc hai mép theo số người', () => {
+    expect(viTriHangSau(3, 2, 0)).toBeLessThan(0.22);
+    expect(viTriHangSau(3, 2, 1)).toBeGreaterThan(0.78);
+    expect(viTriHangSau(2, 1, 0)).toBe(0.5);
+    expect(viTriHangSau(1, 1, 0)).not.toBe(0.5);
+  });
+
+  it('nguoiThamGia: gồm người nói trong chuỗi và trong phản hồi [ĐỐI CHẤT] / [HỎI], cộng vaoDan, trừ raDan', () => {
+    const chuoi = kb.chuoi.find((c) => c.nodes.some((n) => n.type === 'doi-chat'));
+    expect(chuoi).toBeDefined();
+    const ds = nguoiThamGia(kb, chuoi?.id, ['hoai'], ['tung']) ?? [];
+    const dc = chuoi?.nodes.find((n) => n.type === 'doi-chat');
+    const trongPhanHoi = dc?.type === 'doi-chat' ? dc.bangChung.flatMap((b) => b.feedback.map((l) => l.speaker)) : [];
+    expect(trongPhanHoi.length).toBeGreaterThan(0);
+    for (const x of trongPhanHoi) if (x !== 'tung') expect(ds).toContain(x);
+    expect(ds).toContain('hoai');
+    expect(ds).not.toContain('tung');
+    expect(nguoiThamGia(kb, 'khong-co-chuoi-nay')).toBeNull();
   });
 });
 

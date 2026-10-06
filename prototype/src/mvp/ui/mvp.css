@@ -141,10 +141,32 @@
 .mvp-stage .stage__portraits[data-so-nguoi='3'] .cast-member {
   width: min(580px, 28%);
 }
+/* Hàng sau (gói B18, 06/10/2026): người đã lùi khỏi hàng trước đứng lùi lại — nhỏ hơn (0,78), tối hơn ~30%, dịch lên 4% để
+   thấy "đứng sau", nằm dưới hàng trước (z-index thấp). Chuyển hàng mượt: transform / filter 300 ms. Người hàng sau
+   không nhép môi (SanKhauMvp truyền talking=false). */
+.mvp-stage .stage__portraits .cast-member[data-hang='sau'] {
+  z-index: 0;
+  transform: translateX(-50%) translateY(-4%) scale(0.78);
+  filter: brightness(0.7);
+  transition:
+    left 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.3s ease,
+    opacity 0.2s ease;
+}
+.mvp-stage .stage__portraits .cast-member[data-hang='truoc'] {
+  transition:
+    left 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.3s ease,
+    opacity 0.2s ease;
+}
 /* Khung dọc (user chốt 01/10/2026): chỉ hiện NGƯỜI ĐANG NÓI, đứng giữa, to — như visual novel trên điện thoại; người đã
-   nói nhưng đang im thì ẩn (họ vẫn "có mặt" trong dàn, quay lại khi nói). Viết riêng cho @media và .game--portrait. */
+   nói nhưng đang im thì ẩn (họ vẫn "có mặt" trong dàn, quay lại khi nói). Hàng sau cũng ẩn cho đỡ chật (gói B18). Viết
+   riêng cho @media và .game--portrait. */
 @media (max-width: 768px) {
-  .mvp-stage .stage__portraits .cast-member--idle {
+  .mvp-stage .stage__portraits .cast-member--idle,
+  .mvp-stage .stage__portraits .cast-member[data-hang='sau'] {
     display: none;
   }
   .mvp-stage .stage__portraits .cast-member--speaking {
@@ -152,7 +174,8 @@
     width: min(94vw, 78%) !important;
   }
 }
-.game--portrait .mvp-stage .stage__portraits .cast-member--idle {
+.game--portrait .mvp-stage .stage__portraits .cast-member--idle,
+.game--portrait .mvp-stage .stage__portraits .cast-member[data-hang='sau'] {
   display: none;
 }
 .game--portrait .mvp-stage .stage__portraits .cast-member--speaking {
@@ -3582,6 +3605,12 @@
 }
 @media (prefers-reduced-motion: reduce) { .mvp-soi__vong { animation: none; } }
 .mvp-nhanvat__lich { margin-top: 8px; }
+/* Gói B18: ô họ tên còn "?" trên tab Nhân vật. */
+.mvp-nhanvat__chua-biet {
+  margin: 2px 0 0;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
 
 /* Ảnh giao diện 02/10/2026 (art/nguon/topview-2026-10-02): mặt bàn thám tử cho màn quan sát, kính lúp làm vòng soi, tờ biên bản cho phần chốt hồ sơ. */
 .mvp-canh__mo.mvp-soinv__ban { filter: none; opacity: 1; transform: none; inset: 0; background-size: cover; background-position: center; }

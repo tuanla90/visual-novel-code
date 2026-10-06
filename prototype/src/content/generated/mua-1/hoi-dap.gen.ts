@@ -2701,7 +2701,7 @@ export const HOI_DAP_MUA_1 = {
         11,
         13,
         14,
-        17
+        18
       ]
     },
     "n4-bd-toa-b-vao": {

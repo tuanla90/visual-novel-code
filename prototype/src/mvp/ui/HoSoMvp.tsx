@@ -159,7 +159,7 @@ export function HoSoMvp({ kb, trangThai, onDoiCho, onDoiMau, onGhim, hoSo, soTay
         </header>
         {tab === 'nhan-vat' ? (
           <div className="notebook__chara-container">
-            <NhanVatMvp kb={kb} daGap={daGap} />
+            <NhanVatMvp kb={kb} daGap={daGap} bietVe={trangThai?.bietVe ?? null} />
           </div>
         ) : tab === 'ho-so' && trangThai ? (
           <div className="mvp-kho__bang">

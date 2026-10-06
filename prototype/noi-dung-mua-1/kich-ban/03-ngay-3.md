@@ -24,6 +24,7 @@
 
 - [HỎI ĐÁP n3-ctsv]
 - [LỜI n3-ctsv.1]
+- [BIẾT co-lan câu nói]
 - [VÀO quan]
 - [KHÁM PHÁ kp-soi-quan · quan sát quan · Hà Vy soi]
   - vung:kinh · x 55% · y 19% · rộng 26% → n3-soi-kinh · nhãn: Cặp kính
@@ -88,6 +89,7 @@
 
 - [HỎI ĐÁP n3-cang-tin]
 - [LỜI n3-cang-tin.1]
+- [BIẾT hieu câu nói]
 - [LỜI n3-cang-tin.2]
 
 ### n3-phong — Phòng CLB buổi chiều ngày 3: ai có việc nấy {cảnh: phong-clb}
@@ -115,6 +117,8 @@
 
 - [LỜI n3-laptop.1]
 - [THỬ THÁCH c-ten-h]
+- [BIẾT hoai họ tên]
+- [BIẾT hieu họ tên, danh xưng, năm]
 - [ẢNH chibi-0-dong]
 - [LỜI n3-laptop.2]
 - [XONG VIỆC CHÍNH]

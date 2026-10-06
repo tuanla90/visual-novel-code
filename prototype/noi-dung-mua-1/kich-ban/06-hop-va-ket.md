@@ -31,6 +31,8 @@
 
 - [VÀO hoai]
 - [LỜI hop-02.1]
+- [BIẾT hoai câu nói]
+- [BIẾT thay-quang câu nói]
 - [ĐỐI CHẤT dc-ai-viet] quan: "Mã trong sổ là của Hoài. Thư do Hoài mang tới hộp. Chữ ký bắt đầu bằng H, Hoài cũng H. Bên tôi kết luận: **Hoài là người viết lá thư này.**"
   - [CÂU HỎI] Hoài mang thư tới hộp. Nhưng lá thư được in ra bằng tài khoản của ai? Trình thẻ cho biết điều đó.
   - {ev-nhat-ky-in} [ĐỦ CĂN CỨ] → phản hồi: **minh-anh** (neutral): Thưa thầy, bọn em có nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật, từ tài khoản dùng chung của một CLB, không phải tài khoản của Hoài.<br>**quan** (stunned): …Tài khoản CLB?<br>**thay-quang** (neutral): Tài khoản in thư không phải của người nộp thư. Vậy câu "Hoài viết" chưa đứng được.
@@ -54,13 +56,13 @@
 
 - [ĐIỀU KIỆN] có dc-ai-viet-du
 - [LỜI ket-that.1a]
-- [ẢNH cg-quan-bi-bac]
 - [LỜI ket-that.1b]
 - [ĐI CÙNG ket-that-clb] Về phòng CLB
 
 ### ket-that-clb — Chiều muộn ở phòng CLB: mẩu giấy trong sổ CLB {cảnh: phong-clb}
 
 - [HẬU QUẢ] mở manh mối clue-loi-nhan-linh-1
+- [ẢNH cg-so-clb-giay-gap-tu]
 - [LỜI ket-that.2]
 - [ĐI CÙNG ket-tra-da] Ra quán trà đá cùng Tùng
 
@@ -71,6 +73,7 @@
 - [LỜI ket-tra-da.1b]
 - [ẢNH chibi-ghi-la-ghi]
 - [LỜI ket-tra-da.1c]
+- [BIẾT ba-lua câu nói]
 - [HẬU QUẢ] mở manh mối clue-tra-da-1
 - [LỜI ket-tra-da.2]
 - [RA hoai]

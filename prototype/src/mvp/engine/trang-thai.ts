@@ -8,7 +8,7 @@
  * Tách hẳn với `src/story/engine/state.ts` của prototype: hai bản không dùng chung kiểu, store hay khóa lưu.
  */
 import type { TriNhoDongHanhMvp } from './tri-nho-dong-hanh';
-import type { LoiMvp } from '../../content/mvp/types';
+import type { LoiMvp, TruongBietMvp } from '../../content/mvp/types';
 
 /** Vì sao chuỗi đang chạy được mở — quyết định việc gì xảy ra khi chuỗi hết nút mà không `[ĐI TỚI]`. */
 export type BoiCanhChuoi =
@@ -312,6 +312,11 @@ export interface TrangThaiMvp {
   daGioiThieu?: string[];
   /** Nhân vật đã nói chuyện với người chơi ít nhất một câu (thứ tự gặp) — bản đồ dùng để hiện ảnh mặt người đã biết lịch. Ô lưu cũ: không có = []. */
   daNoi?: string[];
+  /**
+   * Gói B18: các ô thẻ nhân vật người chơi đã biết thêm nhờ `[BIẾT <mã> <trường>]` trong khung (mã nhân vật → trường). Cộng với
+   * "Biết lúc gặp" của thẻ là những ô thẻ ghi ra; thẻ không khai "Biết lúc gặp" thì biết hết, không cần trường này. Ô lưu cũ: không có.
+   */
+  bietVe?: Record<string, TruongBietMvp[]>;
   /** Chuỗi của mọi chỗ đã bấm ở `[KHÁM PHÁ]` trong cả ván (khác `khamPha.daXem` chỉ sống trong một cảnh) — tổng kết đếm chuyện ẩn. Ô lưu cũ: không có = []. */
   daXemDiem?: string[];
   co: string[];

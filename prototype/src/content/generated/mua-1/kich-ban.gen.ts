@@ -42,6 +42,11 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": "Đi đâu cũng cầm bản đồ trường. Chiều hay ở phòng CLB, tối đá bóng ở sân cạnh nhà CLB.",
+        "bietLucGap": [
+          "danh-xung",
+          "nam",
+          "nganh"
+        ],
         "danhXung": "Bạn cùng phòng 408",
         "chuaQuen": "Cậu bạn áo xanh",
         "nam": "Năm nhất",
@@ -68,6 +73,11 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": "Chiều ở phòng CLB. Tối thứ Hai nào cũng ngồi học ở thư viện tới khuya.",
+        "bietLucGap": [
+          "danh-xung",
+          "nam",
+          "nganh"
+        ],
         "danhXung": "Thành viên mới của CLB Thám Tử",
         "chuaQuen": "Bạn nữ đeo kính",
         "nam": "Năm nhất",
@@ -106,6 +116,9 @@ const GOC = {
             "den": "18:00",
             "noi": "nha-clb"
           }
+        ],
+        "bietLucGap": [
+          "danh-xung"
         ],
         "danhXung": "Chủ nhiệm CLB Thám Tử",
         "chuaQuen": "Chị khóa trên",
@@ -147,6 +160,11 @@ const GOC = {
             "noi": "nha-clb"
           }
         ],
+        "bietLucGap": [
+          "danh-xung",
+          "nam",
+          "nganh"
+        ],
         "danhXung": "Thành viên CLB, giữ tài sản",
         "chuaQuen": "Anh khóa trên",
         "nam": "Năm hai",
@@ -173,6 +191,9 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": null,
+        "bietLucGap": [
+          "danh-xung"
+        ],
         "danhXung": "Ban Pháp chế – Kiểm tra, Hội sinh viên",
         "chuaQuen": "Anh sinh viên đeo kính",
         "nam": null,
@@ -197,6 +218,10 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": "Trực cổng ký túc xá ca tối.",
+        "bietLucGap": [
+          "danh-xung",
+          "lich"
+        ],
         "danhXung": "Bảo vệ ký túc xá",
         "chuaQuen": "Chú bảo vệ",
         "nam": null,
@@ -244,6 +269,9 @@ const GOC = {
             "noi": "toa-b"
           }
         ],
+        "bietLucGap": [
+          "danh-xung"
+        ],
         "danhXung": "Bảo vệ giảng đường B",
         "chuaQuen": "Bác bảo vệ",
         "khongXungTen": true,
@@ -282,6 +310,9 @@ const GOC = {
             "den": "17:00",
             "noi": "toa-hanh-chinh"
           }
+        ],
+        "bietLucGap": [
+          "danh-xung"
         ],
         "danhXung": "Phòng Đào tạo",
         "chuaQuen": "Cô cán bộ",
@@ -322,6 +353,10 @@ const GOC = {
             "noi": "toa-hanh-chinh"
           }
         ],
+        "bietLucGap": [
+          "danh-xung",
+          "lich"
+        ],
         "danhXung": "Phòng Công tác sinh viên",
         "chuaQuen": "Cô cán bộ",
         "khongXungTen": true,
@@ -348,6 +383,9 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": null,
+        "bietLucGap": [
+          "danh-xung"
+        ],
         "danhXung": "Phó hiệu trưởng phụ trách sinh viên",
         "chuaQuen": "Thầy chủ trì",
         "nam": null,
@@ -388,6 +426,10 @@ const GOC = {
             "noi": "thu-vien"
           }
         ],
+        "bietLucGap": [
+          "danh-xung",
+          "nam"
+        ],
         "danhXung": "Sinh viên lớp BC24A",
         "chuaQuen": "Bạn nữ đeo túi vải",
         "nam": "Năm nhất",
@@ -415,6 +457,7 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": null,
+        "bietLucGap": [],
         "danhXung": "Sinh viên lớp BC24A",
         "chuaQuen": "Cậu bàn bên",
         "nam": "Năm nhất",
@@ -461,6 +504,9 @@ const GOC = {
             "noi": "thu-vien"
           }
         ],
+        "bietLucGap": [
+          "danh-xung"
+        ],
         "danhXung": "Thành viên CLB Robotics",
         "chuaQuen": "Cậu trực kênh",
         "nam": null,
@@ -484,6 +530,9 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": null,
+        "bietLucGap": [
+          "danh-xung"
+        ],
         "danhXung": "Chủ tịch Hội sinh viên, trưởng CLB Robotics",
         "chuaQuen": "Anh khóa trên",
         "nam": null,
@@ -507,6 +556,10 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": null,
+        "bietLucGap": [
+          "danh-xung",
+          "cau-noi"
+        ],
         "danhXung": "Phó CLB Robotics",
         "chuaQuen": "Anh khóa trên",
         "nam": null,
@@ -530,6 +583,10 @@ const GOC = {
       "chiQuaLoiKe": false,
       "gioiThieu": {
         "lich": null,
+        "bietLucGap": [
+          "danh-xung",
+          "cau-noi"
+        ],
         "danhXung": "Kỹ thuật CLB Robotics",
         "chuaQuen": "Chị khóa trên",
         "nam": null,
@@ -576,6 +633,9 @@ const GOC = {
             "den": "21:00",
             "noi": "tra-da"
           }
+        ],
+        "bietLucGap": [
+          "danh-xung"
         ],
         "danhXung": "Quán trà đá cổng trường",
         "chuaQuen": null,
@@ -1432,6 +1492,13 @@ const GOC = {
           "text": "Tớ cá ba phút là tới tầng bốn. Thua tớ khao trà đá!"
         },
         {
+          "type": "biet",
+          "nhanVat": "tung",
+          "truong": [
+            "cau-noi"
+          ]
+        },
+        {
           "type": "branch",
           "id": "go-with-md-01-ktx",
           "asker": {
@@ -1597,6 +1664,13 @@ const GOC = {
           "text": "Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào."
         },
         {
+          "type": "biet",
+          "nhanVat": "bac-tu",
+          "truong": [
+            "cau-noi"
+          ]
+        },
+        {
           "type": "branch",
           "id": "go-with-md-07-cong-ktx-toi",
           "asker": {
@@ -1681,6 +1755,13 @@ const GOC = {
           "speaker": "tung",
           "expression": "ao-xanh-happy",
           "text": "Thứ Bảy đi với tớ nhé?"
+        },
+        {
+          "type": "biet",
+          "nhanVat": "chu-cuong",
+          "truong": [
+            "cau-noi"
+          ]
         },
         {
           "type": "image",
@@ -1937,6 +2018,13 @@ const GOC = {
             "cot": "ma_sv",
             "giaTri": "SV240251"
           }
+        },
+        {
+          "type": "biet",
+          "nhanVat": "tung",
+          "truong": [
+            "ho-ten"
+          ]
         },
         {
           "type": "line",
@@ -2255,6 +2343,13 @@ const GOC = {
           "speaker": "tung",
           "expression": "happy",
           "text": "Đúng là dân Toán, mắt tinh như cú vọ. Tớ nhìn lướt qua chẳng thấy gì."
+        },
+        {
+          "type": "biet",
+          "nhanVat": "tung",
+          "truong": [
+            "lich"
+          ]
         },
         {
           "type": "goto",
@@ -2595,6 +2690,14 @@ const GOC = {
           "text": "Đúng lúc ấy, một bé gái chân đất chạy từ sau sân khấu ra chỗ chiếc đèn cá chép. Má dính vụn bánh, tay cầm nửa chiếc bánh nướng."
         },
         {
+          "type": "image",
+          "imageId": "cg-be-na-den-ca-chep"
+        },
+        {
+          "type": "note",
+          "text": "Ảnh cg-be-na-den-ca-chep chèn giữa hai khối (06/10, người xem ngoài: muốn thấy bé Na)."
+        },
+        {
           "type": "line",
           "speaker": "chu-cuong",
           "expression": "smile",
@@ -2690,7 +2793,7 @@ const GOC = {
               "rong": 15,
               "chuoi": "md-11-duy",
               "sau": [],
-              "nhan": "Duy: máy bàn",
+              "nhan": "Duy: laptop",
               "dau": "phu"
             },
             {
@@ -2768,7 +2871,7 @@ const GOC = {
     },
     {
       "id": "md-11-duy",
-      "title": "Phòng CLB: Duy gõ máy bàn",
+      "title": "Phòng CLB: Duy gõ laptop",
       "canh": "phong-clb",
       "mocSomNhat": 0,
       "nodes": [
@@ -2783,6 +2886,13 @@ const GOC = {
           "speaker": "duy",
           "expression": "smile",
           "text": "Ai cầm về phòng thì mai mang trả nhé. Anh không ghi tên đâu… lần này thôi."
+        },
+        {
+          "type": "biet",
+          "nhanVat": "duy",
+          "truong": [
+            "cau-noi"
+          ]
         }
       ]
     },
@@ -2852,6 +2962,10 @@ const GOC = {
       "mocSomNhat": 0,
       "nodes": [
         {
+          "type": "image",
+          "imageId": "cg-tu-ho-so-ngan-duoi"
+        },
+        {
           "type": "line",
           "speaker": "player",
           "text": "(Ơ, ngăn dưới cùng không kéo ra được. Khóa à?)"
@@ -2878,6 +2992,13 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "day-kinh",
           "text": "Lôi cả mấy tờ lót dưới đáy ngăn ra nữa nhé."
+        },
+        {
+          "type": "biet",
+          "nhanVat": "duy",
+          "truong": [
+            "lich"
+          ]
         }
       ]
     },
@@ -3001,6 +3122,13 @@ const GOC = {
           "text": "Chị Minh Anh nhìn Tùng, chỉ hai ngón tay vào thái dương như nhắc cậu nghĩ kỹ."
         },
         {
+          "type": "biet",
+          "nhanVat": "ha-vy",
+          "truong": [
+            "cau-noi"
+          ]
+        },
+        {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "serious",
@@ -3011,6 +3139,13 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "serious",
           "text": "Một tuần tìm căn cứ. Mai bắt đầu từ cái hộp ở tòa B."
+        },
+        {
+          "type": "biet",
+          "nhanVat": "minh-anh",
+          "truong": [
+            "cau-noi"
+          ]
         }
       ]
     },
@@ -3353,6 +3488,10 @@ const GOC = {
           "nhanVat": "ha-vy"
         },
         {
+          "type": "image",
+          "imageId": "cg-khe-hop-the-lich"
+        },
+        {
           "type": "note",
           "text": "Mắc ở mép tôn khe hộp là một tấm thẻ lịch, phần in còn nguyên \"Khoa Báo chí – Truyền thông · K24\", dòng viết tay \"Họ tên / Lớp\" bị xé mất."
         },
@@ -3437,6 +3576,13 @@ const GOC = {
           "speaker": "bac-tu",
           "expression": "neutral",
           "text": "Đứa nào bỏ thì bác chịu. Đông thế bác nhớ sao nổi."
+        },
+        {
+          "type": "biet",
+          "nhanVat": "bac-tu",
+          "truong": [
+            "lich"
+          ]
         },
         {
           "type": "consequence",
@@ -3703,6 +3849,13 @@ const GOC = {
           "speaker": "co-hanh",
           "expression": "neutral",
           "text": "Tra gì máy cũng ghi lại. Cuối vụ cô xem nhật ký."
+        },
+        {
+          "type": "biet",
+          "nhanVat": "co-hanh",
+          "truong": [
+            "cau-noi"
+          ]
         },
         {
           "type": "show-document",
@@ -4032,6 +4185,13 @@ const GOC = {
           "speaker": "tung",
           "expression": "happy",
           "text": "Cậu biết không, cô Hạnh ở Phòng Đào tạo chỉ làm giờ hành chính thôi. Muốn gặp cô thì đừng đi buổi tối."
+        },
+        {
+          "type": "biet",
+          "nhanVat": "co-hanh",
+          "truong": [
+            "lich"
+          ]
         }
       ]
     },
@@ -4052,6 +4212,13 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "khoanh-tay",
           "text": "Chiều thứ Hai, thứ Tư, thứ Sáu chị ở phòng này. Khi nào em thấy đủ căn cứ để kết luận thì tìm chị."
+        },
+        {
+          "type": "biet",
+          "nhanVat": "minh-anh",
+          "truong": [
+            "lich"
+          ]
         }
       ]
     },
@@ -4147,10 +4314,6 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Đừng cá vội. Holmes bảo chưa có dữ liệu mà đã đoán là sai từ gốc đấy. Tính đã nào."
-        },
-        {
-          "type": "image",
-          "imageId": "cg-nghi-di-tung-ha-vy"
         },
         {
           "type": "challenge",
@@ -4540,6 +4703,13 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "thinking",
           "text": "Người lạ kìa. Nhìn kỹ một chút trước khi anh ấy mở lời đã."
+        },
+        {
+          "type": "biet",
+          "nhanVat": "co-lan",
+          "truong": [
+            "cau-noi"
+          ]
         },
         {
           "type": "stage",
@@ -4963,6 +5133,13 @@ const GOC = {
           "text": "Nhìn gì? Có gì hỏi thẳng đây, đừng xì xào sau lưng."
         },
         {
+          "type": "biet",
+          "nhanVat": "hieu",
+          "truong": [
+            "cau-noi"
+          ]
+        },
+        {
           "type": "note",
           "text": "Tách khỏi n3-cang-tin.1 và không khai trong \"loiDaThay\" của tờ hoi-dap/n3-cang-tin.json: tiếng gọi lộ tên Hiếu phải chạy ở cả cách bấm / gõ, nếu không Tùng về CLB nói \"cậu gắt ở căng tin tên Hiếu\" mà người chơi chưa nghe tên bao giờ (06/10 vòng 2)."
         },
@@ -5138,6 +5315,22 @@ const GOC = {
         {
           "type": "challenge",
           "challengeId": "c-ten-h"
+        },
+        {
+          "type": "biet",
+          "nhanVat": "hoai",
+          "truong": [
+            "ho-ten"
+          ]
+        },
+        {
+          "type": "biet",
+          "nhanVat": "hieu",
+          "truong": [
+            "ho-ten",
+            "danh-xung",
+            "nam"
+          ]
         },
         {
           "type": "image",
@@ -5408,6 +5601,13 @@ const GOC = {
           "text": "Ai viết thì cô chưa nói được."
         },
         {
+          "type": "biet",
+          "nhanVat": "quan",
+          "truong": [
+            "cau-noi"
+          ]
+        },
+        {
           "type": "branch",
           "id": "r-phong-may",
           "asker": {
@@ -5516,10 +5716,6 @@ const GOC = {
         {
           "type": "challenge",
           "challengeId": "c-in"
-        },
-        {
-          "type": "image",
-          "imageId": "cg-reo-ho-manh-moi"
         },
         {
           "type": "line",
@@ -6427,6 +6623,20 @@ const GOC = {
           "text": "Anh Quân bảo Hoài viết. Trong hồ sơ, thẻ nào bác được câu ấy?"
         },
         {
+          "type": "biet",
+          "nhanVat": "hoai",
+          "truong": [
+            "cau-noi"
+          ]
+        },
+        {
+          "type": "biet",
+          "nhanVat": "thay-quang",
+          "truong": [
+            "cau-noi"
+          ]
+        },
+        {
           "type": "doi-chat",
           "id": "dc-ai-viet",
           "asker": {
@@ -6685,7 +6895,7 @@ const GOC = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Nhật ký in không đặt em vào việc soạn thư, và lời em cho thầy một hướng để hỏi tiếp. Hiện chưa có căn cứ nào nói em là người viết. Thầy không nêu tên em trong hồ sơ."
+          "text": "Nhật ký in không đặt em vào việc soạn thư, và lời em cho thầy một hướng để hỏi tiếp. Hiện chưa có căn cứ nào nói em là người viết. Em làm theo lời nhờ nên không bị xử lý gì cả."
         },
         {
           "type": "line",
@@ -6694,22 +6904,31 @@ const GOC = {
           "text": "Mã trên phiếu là để thầy cô tra cứu và phản hồi người gửi. Ở đây người viết giấu tên, mượn chữ ký và mã của một bạn năm nhất. Thư như vậy thầy không nhận vào hồ sơ rà soát."
         },
         {
-          "type": "line",
-          "speaker": "thay-quang",
-          "expression": "neutral",
-          "text": "Em làm theo lời nhờ nên không bị xử lý gì cả."
+          "type": "note",
+          "text": "User 06/10: thầy báo trước phần giữ phòng, các chi tiết khác kiểm tra rồi gửi văn bản sau; gợi ý kín thầy cũng không muốn CLB đóng cửa (tuyến bí mật, Vụ 8 và Vụ 10: CLB thời thầy lập). Không giải thích."
         },
         {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "smile",
-          "text": "CLB được sinh hoạt đến hết học kỳ, không kèm điều kiện."
+          "text": "Phần phòng thì thầy nói luôn để các em yên tâm. CLB giữ phòng, sinh hoạt đến hết học kỳ, không kèm điều kiện."
         },
         {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Còn thư do ai soạn, thầy sẽ cho hỏi lại. Chưa có căn cứ thì chưa nêu tên ai ở đây."
+          "text": "Những chi tiết còn lại, nhật ký in, chuyện người nhờ nộp, thầy sẽ cho kiểm tra lại. Kết luận chính thức gửi các em bằng văn bản sau. Chưa có căn cứ thì chưa nêu tên ai ở đây."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Căn phòng ấy qua tay nhiều khóa rồi. Gỡ cái biển xuống thì dễ, treo lại được thì khó lắm."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Câu cuối thầy nói khẽ hơn hẳn, mắt không nhìn ai trong phòng."
         },
         {
           "type": "line",
@@ -6722,10 +6941,6 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "happy",
           "text": "Không sao đâu em. Cảm ơn thầy ạ."
-        },
-        {
-          "type": "image",
-          "imageId": "cg-quan-bi-bac"
         },
         {
           "type": "line",
@@ -6792,6 +7007,10 @@ const GOC = {
               "id": "clue-loi-nhan-linh-1"
             }
           ]
+        },
+        {
+          "type": "image",
+          "imageId": "cg-so-clb-giay-gap-tu"
         },
         {
           "type": "line",
@@ -6940,6 +7159,13 @@ const GOC = {
           "text": "Khách của bà, bà nhớ cốc chứ nhớ gì tên. Bà gọi là \"cậu trà nóng\"."
         },
         {
+          "type": "biet",
+          "nhanVat": "ba-lua",
+          "truong": [
+            "cau-noi"
+          ]
+        },
+        {
           "type": "consequence",
           "hauQua": [
             {
@@ -7047,6 +7273,12 @@ const GOC = {
           "speaker": "thay-quang",
           "expression": "neutral",
           "text": "Thư vẫn được tính là một ý kiến sinh viên trong hồ sơ. Chưa thu phòng ngay. CLB được sinh hoạt đến hết học kỳ, nộp báo cáo hoạt động hằng tháng."
+        },
+        {
+          "type": "line",
+          "speaker": "thay-quang",
+          "expression": "neutral",
+          "text": "Phần phòng thầy nói luôn để các em yên tâm. Các chi tiết khác thầy cho kiểm tra lại rồi gửi văn bản sau."
         },
         {
           "type": "line",
@@ -23124,7 +23356,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:186 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:189 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",

@@ -6,7 +6,8 @@
 import '../../evidence/ui/chara-profile.css';
 import { useState } from 'react';
 import { HighlightText } from '../../shared/highlight/HighlightText';
-import type { KichBanMvp } from '../../content/mvp/types';
+import type { KichBanMvp, TruongBietMvp } from '../../content/mvp/types';
+import { truongDaBietTu } from '../engine/may';
 import { anhChanDung, anhNen } from './anh-mvp';
 import { mauNhanVat } from './mau-nhan-vat';
 import { soundEngine } from '../../shared/audio/sound-engine';
@@ -64,7 +65,14 @@ const NEN_NHAN_VAT: Record<string, string> = {
   'hieu': 'sanh-toa-b',
 };
 
-export function NhanVatMvp({ kb, daGap }: { kb: KichBanMvp; daGap: readonly string[] }) {
+export interface NhanVatMvpProps {
+  kb: KichBanMvp;
+  daGap: readonly string[];
+  /** `TrangThaiMvp.bietVe` (gói B18): ô thẻ đã biết thêm nhờ `[BIẾT]`; thẻ không khai "Biết lúc gặp" thì ghi hết như cũ. */
+  bietVe?: Readonly<Record<string, readonly TruongBietMvp[]>> | null;
+}
+
+export function NhanVatMvp({ kb, daGap, bietVe }: NhanVatMvpProps) {
   const ds = daGap.map((id) => kb.nhanVat.find((n) => n.id === id)).filter((n) => n?.gioiThieu != null);
   const [chon, setChon] = useState<string | null>(ds[0]?.id ?? null);
   const nv = ds.find((n) => n?.id === chon) ?? ds[0];
@@ -80,6 +88,9 @@ export function NhanVatMvp({ kb, daGap }: { kb: KichBanMvp; daGap: readonly stri
     );
   }
   const gt = nv.gioiThieu;
+  // Gói B18: ô chưa biết in "?" (họ tên, danh xưng, năm, ngành); lịch và câu nói chưa biết thì ẩn hẳn.
+  const biet = truongDaBietTu(gt, bietVe?.[nv.id]);
+  const bietHoTen = biet.has('ho-ten');
   const bc = bieuCam && nv.bieuCam.includes(bieuCam) ? bieuCam : (nv.bieuCam[0] ?? 'neutral');
   const anh = anhChanDung(nv.id, bc);
   // Nhân vật chỉ có một ảnh (mọi biểu cảm mượn ảnh neo) → không cần tương tác đổi biểu cảm.
@@ -167,39 +178,42 @@ export function NhanVatMvp({ kb, daGap }: { kb: KichBanMvp; daGap: readonly stri
         <div className="chara-profile__info anim-info-enter" key={nv.id}>
           <div className="chara-profile__name-row">
             <h3 className="chara-profile__name">
-              <span>{nv.hoTen ?? nv.ten}</span>
+              <span>{bietHoTen ? (nv.hoTen ?? nv.ten) : nv.ten}</span>
             </h3>
             <div className="chara-profile__role-tag">
-              <span>{gt.danhXung}</span>
+              <span>{biet.has('danh-xung') ? gt.danhXung : '?'}</span>
             </div>
           </div>
+          {nv.hoTen && !bietHoTen ? <p className="mvp-nhanvat__chua-biet">Họ tên: ?</p> : null}
 
           {gt.nam || gt.nganh ? (
             <dl className="chara-profile__specs">
               {gt.nam ? (
                 <div className="chara-profile__spec-item">
                   <dt>KHÓA:</dt>
-                  <dd>{gt.nam}</dd>
+                  <dd>{biet.has('nam') ? gt.nam : '?'}</dd>
                 </div>
               ) : null}
               {gt.nganh ? (
                 <div className="chara-profile__spec-item">
                   <dt>NGÀNH:</dt>
-                  <dd>{gt.nganh}</dd>
+                  <dd>{biet.has('nganh') ? gt.nganh : '?'}</dd>
                 </div>
               ) : null}
             </dl>
           ) : null}
 
-          <blockquote className="chara-profile__quote">
-            <p className="chara-profile__quote-text">“{gt.cauNoi}”</p>
-          </blockquote>
+          {gt.cauNoi && biet.has('cau-noi') ? (
+            <blockquote className="chara-profile__quote">
+              <p className="chara-profile__quote-text">“{gt.cauNoi}”</p>
+            </blockquote>
+          ) : null}
 
           <section className="chara-profile__section">
             <div className="chara-profile__pill-header">GIỚI THIỆU</div>
             <div className="chara-profile__section-content">
               <p><HighlightText text={gt.loi} /></p>
-              {gt.lich ? (
+              {gt.lich && biet.has('lich') ? (
                 <p className="mvp-nhanvat__lich">
                   <b>Thường gặp ở đâu:</b> {gt.lich}
                 </p>

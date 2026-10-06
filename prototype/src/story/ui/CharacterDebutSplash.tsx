@@ -63,6 +63,8 @@ export interface CharacterDebutCardProps {
   /** Mã nhân vật (thuộc tính `data-character`; đổi mã = mở lại màn). */
   id: string;
   fullName: string;
+  /** Dòng nhỏ ngay dưới tên (MVP gói B18: "Họ tên: ?" khi người chơi chưa biết họ tên); bỏ trống = không vẽ. */
+  subName?: string | null;
   title: string;
   /** Hai "chip" dưới chức danh; `null` = bỏ chip đó (nhân vật không phải sinh viên). */
   year: string | null;
@@ -79,7 +81,7 @@ export interface CharacterDebutCardProps {
 }
 
 /** Màn "Nhân vật mới" — phần hiển thị, dùng chung cho prototype (`CharacterDebutSplash`) và bản MVP. */
-export function CharacterDebutCard({ id, fullName, title, year, major, quote, accentColor, intro, textSide, visual, onDismiss }: CharacterDebutCardProps) {
+export function CharacterDebutCard({ id, fullName, subName, title, year, major, quote, accentColor, intro, textSide, visual, onDismiss }: CharacterDebutCardProps) {
   const continueRef = useRef<HTMLButtonElement>(null);
   const onDismissRef = useRef(onDismiss);
   useEffect(() => {
@@ -143,6 +145,7 @@ export function CharacterDebutCard({ id, fullName, title, year, major, quote, ac
             <div className="chara-debut__name-row">
               <h2 className="chara-debut__name">{fullName}</h2>
             </div>
+            {subName ? <div className="chara-debut__subname">{subName}</div> : null}
 
             <div className="chara-debut__role">{title}</div>
 

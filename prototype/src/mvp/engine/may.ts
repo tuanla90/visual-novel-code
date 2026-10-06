@@ -28,23 +28,28 @@
  *     chưa xem; xem hết mọi chỗ thì máy tự đi); rời nơi khi việc chính chưa xong thì ghim còn dấu, chỗ đã xem nhớ trong `dangDo`;
  *     màn tra (trừ buổi họp) lùi về cảnh đã mở nó bằng `roi-thu-thach`, bấm lại chỗ đó là vào thẳng màn tra đang dở.
  */
-import type {
-  ChuoiMvp,
-  DiaDiemMvp,
-  DiemKhamPhaMvp,
-  DieuKienMvp,
-  DuKienMvp,
-  HauQuaMvp,
-  KichBanMvp,
-  LoiMvp,
-  MocMvp,
-  NutMvp,
-  NhiemVuPhuMvp,
-  TheThuThachMvp,
-  VuSauMvp,
+// Gộp import giá trị và import kiểu trong MỘT câu (Vite bỏ import giá trị khi có `import type` cùng module riêng).
+import {
+  CAC_TRUONG_BIET,
+  type ChuoiMvp,
+  type DiaDiemMvp,
+  type DiemKhamPhaMvp,
+  type DieuKienMvp,
+  type DuKienMvp,
+  type GioiThieuNhanVatMvp,
+  type HauQuaMvp,
+  type KichBanMvp,
+  type LoiMvp,
+  type MocMvp,
+  type NutMvp,
+  type NhiemVuPhuMvp,
+  type TheThuThachMvp,
+  type TruongBietMvp,
+  type VuSauMvp,
 } from '../../content/mvp/types';
 import { MAU_GHIM, type BoiCanhChuoi, type CachChoiMvp, type HetNgayMvp, type KhamPhaMvp, type MauGhimMvp, type MucNhapVaiMvp, type MucSqlMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp, type TiepTucTuyenMvp } from './trang-thai';
 import { laTheHoiDap } from './bang-dieu-tra';
+import { apBiet } from './biet-ve';
 import { cachChoiCua, dongBong, dongChuaGach, ghiTuDong, goiY, hoi, keTiep, khoiThayThe, khungHoiDap, laLoiDaThay, locHauQuaDaThay, moBuoiHoi, napLaiLuot, roiDi, tienDoCua, toHoiDap, type KhungHoiDapMvp } from './hoi-dap';
 import { datMuc, laMucNhapVai, laMucSql, quenCachTamThoi } from './muc-choi';
 
@@ -1038,6 +1043,10 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
         // người chơi bấm nút nghe kể (`hoi-dap-ke-tiep`) thì đoạn viết sẵn mới chạy, xem `xemCaDoan`.
         return moBuoiHoi(kb, s, nut.ma);
       }
+      case 'biet':
+        // Gói B18: người chơi vừa biết thêm ô thẻ nhân vật (họ tên, năm…); giao diện đọc `bietVe` để ghi vào thẻ và báo một dòng.
+        s = tienNut(apBiet(s, nut.nhanVat, nut.truong));
+        break;
       case 'stage': {
         // `[RA x]`: x rời dàn chân dung (giao diện đọc `raDan`); `[VÀO x]`: hết rời. Trí nhớ bạn đi cùng đọc thẳng nút này.
         const da = s.raDan ?? [];
@@ -1242,8 +1251,10 @@ function dongBuoiHoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
     const ve: TrangThaiMvp = { ...s, buoiHoi: null, hoiDap: null, khamPha: { ...kp, daXem }, conTro: { ...kp.veLai } };
     return nut ? { ...goNhacCu(kb, { ...ve, conTro }, nut, xongChinhCua(nut, daXem)), conTro: { ...kp.veLai } } : ve;
   }
-  const { nutSau, hauQua } = khoiThayThe(ht.chuoi.nodes, conTro.nut, to);
+  const { nutSau, hauQua, biet } = khoiThayThe(ht.chuoi.nodes, conTro.nut, to);
   let moi: TrangThaiMvp = { ...s, buoiHoi: null, conTro: { ...conTro, nut: nutSau }, ...(to.nutDaThay ? { daThayLoi: to.ma } : {}) };
+  // Gói B18: `[BIẾT]` nằm trong khối lời bị buổi hỏi thay vẫn phải ghi (điều ấy đã lộ qua buổi hỏi).
+  for (const b of biet) moi = apBiet(moi, b.nhanVat, b.truong);
   const kp = moi.khamPha;
   if (kp && dongChuaGach(moi, to).length > 0 && kp.daXem.includes(conTro.chuoi)) {
     moi = { ...moi, khamPha: { ...kp, daXem: kp.daXem.filter((c) => c !== conTro.chuoi) } };
@@ -1704,6 +1715,22 @@ export function canGioiThieu(kb: KichBanMvp, s: TrangThaiMvp, kn: KhungNhinMvp):
     if (viTri >= 0 && kb.chuoi.slice(viTri + 1).some((c) => c.nodes.some(laTuXung))) return null;
   }
   return nguoi;
+}
+
+/**
+ * Gói B18: các ô thẻ nhân vật người chơi đã biết. Thẻ không khai "Biết lúc gặp" → biết hết (bộ MVP, nhân vật chưa khai); có khai →
+ * các ô ấy cộng với ô `[BIẾT]` đã mở (`daBiet`, thường là `s.bietVe[nhanVat]`). Hàm thuần để giao diện thẻ và tab Nhân vật dùng.
+ */
+export function truongDaBietTu(gt: GioiThieuNhanVatMvp | null | undefined, daBiet: readonly string[] | undefined): Set<TruongBietMvp> {
+  if (!gt?.bietLucGap) return new Set(CAC_TRUONG_BIET);
+  const kq = new Set<TruongBietMvp>(gt.bietLucGap);
+  for (const t of daBiet ?? []) if ((CAC_TRUONG_BIET as readonly string[]).includes(t)) kq.add(t as TruongBietMvp);
+  return kq;
+}
+
+/** Gói B18: ô thẻ của `nhanVat` mà người chơi đã biết trong ván `s` (xem `truongDaBietTu`). */
+export function truongDaBiet(kb: KichBanMvp, s: TrangThaiMvp, nhanVat: string): Set<TruongBietMvp> {
+  return truongDaBietTu(kb.nhanVat.find((n) => n.id === nhanVat)?.gioiThieu, s.bietVe?.[nhanVat]);
 }
 
 /**

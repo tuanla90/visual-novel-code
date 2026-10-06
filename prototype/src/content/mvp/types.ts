@@ -62,8 +62,20 @@ export interface QuangLichMvp {
   noi: string;
 }
 
+/**
+ * Một ô trên thẻ nhân vật (gói B18): họ tên, danh xưng, năm, ngành, lịch, câu nói. Thẻ chỉ ghi ô người chơi ĐÃ BIẾT; ô chưa biết
+ * hiện "?" (lịch, câu nói thì ẩn) cho tới khi khung gặp `[BIẾT <mã> <trường>]`.
+ */
+export type TruongBietMvp = 'ho-ten' | 'danh-xung' | 'nam' | 'nganh' | 'lich' | 'cau-noi';
+export const CAC_TRUONG_BIET: readonly TruongBietMvp[] = ['ho-ten', 'danh-xung', 'nam', 'nganh', 'lich', 'cau-noi'];
+
 /** Chữ người chơi thấy về một nhân vật — viết sao cho không lộ tình tiết (nhan-vat.md, đặc tả §18.3). */
 export interface GioiThieuNhanVatMvp {
+  /**
+   * `- Biết lúc gặp:` (gói B18): các ô đã biết khi thẻ mở lần đầu; ô khác chờ `[BIẾT]`. Thiếu dòng = biết hết (bộ MVP và nhân vật
+   * chưa khai giữ hành vi cũ).
+   */
+  bietLucGap?: TruongBietMvp[];
   /** Thói quen đi lại ("Lịch" của nhan-vat.md); có thì ảnh mặt nhân vật hiện trên bản đồ sau khi đã gặp. */
   lich?: string | null;
   /** Lịch theo thứ và giờ ("Thường ở" của nhan-vat.md): bản đồ tính ai đang ở ghim nào (`src/mvp/engine/lich-nhan-vat.ts`). */
@@ -275,6 +287,8 @@ export type NutMvp =
   | { type: 'projector'; id: string; source: { kind: 'sql'; sql: string } | { kind: 'evidence'; evidenceId: string }; run: boolean; expectedRowCount?: number }
   | { type: 'end' }
   | { type: 'stage'; action: 'vao' | 'ra'; nhanVat: string }
+  /** `- [BIẾT <mã> <trường>, <trường>]` (gói B18): người chơi vừa biết thêm ô ấy của thẻ nhân vật; máy tự chạy qua. */
+  | { type: 'biet'; nhanVat: string; truong: TruongBietMvp[] }
   | { type: 'wait'; giay: number }
   | { type: 'set-date'; date: string }
   | { type: 'condition'; dieuKien: DieuKienMvp }

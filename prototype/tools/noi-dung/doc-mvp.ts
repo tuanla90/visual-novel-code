@@ -57,6 +57,11 @@ export interface RawGioiThieu {
   chuaQuen: string | null;
   /** "Không xưng tên: có": nhân vật không tự xưng tên (bà bán trà đá); tên hiện là cách gọi theo việc họ làm. */
   khongXungTen?: boolean;
+  /**
+   * "Biết lúc gặp" (gói B18): các ô của thẻ người chơi đã biết khi thẻ mở lần đầu (mã ASCII: `ho-ten`, `danh-xung`, `nam`, `nganh`,
+   * `lich`, `cau-noi`); ô khác chờ `[BIẾT]` trong khung. Thiếu dòng = biết hết.
+   */
+  bietLucGap?: string[];
   nam: string | null;
   nganh: string | null;
   cauNoi: string;
@@ -293,6 +298,8 @@ export type MucMvp =
   | { kind: 'projector'; id: string; source: NguonChieuMvp; run: boolean; rows: number | null }
   | { kind: 'end' }
   | { kind: 'stage'; action: 'vao' | 'ra'; nhanVat: string }
+  /** `- [BIẾT <mã> <trường>, <trường>]` (gói B18): người chơi vừa biết thêm ô ấy của thẻ nhân vật `nhanVat` (mã trường ASCII). */
+  | { kind: 'biet'; nhanVat: string; truong: string[] }
   | { kind: 'wait'; giay: number }
   | { kind: 'set-date'; date: string }
   | { kind: 'condition'; dieuKien: DieuKien; chu: string }
@@ -421,7 +428,41 @@ export interface KetQuaDocMvp {
 const DANH_XUNG = ['Bác', 'Chú', 'Cô', 'Thầy', 'Anh', 'Chị', 'Em'];
 /** Dòng của thẻ nhân vật: phần cho người viết / bộ kiểm, và phần giới thiệu người chơi thấy. */
 const TRUONG_NHAN_VAT = ['Họ tên', 'Vai', 'Biểu cảm', 'Xuất hiện từ', 'Chỉ qua lời kể', 'Trong câu'];
-const TRUONG_GIOI_THIEU = ['Danh xưng', 'Khi chưa quen', 'Không xưng tên', 'Năm', 'Ngành', 'Câu nói', 'Giới thiệu', 'Lịch', 'Thường ở'];
+const TRUONG_GIOI_THIEU = ['Danh xưng', 'Khi chưa quen', 'Không xưng tên', 'Năm', 'Ngành', 'Câu nói', 'Giới thiệu', 'Lịch', 'Thường ở', 'Biết lúc gặp'];
+
+/** Tên trường trên thẻ nhân vật (chữ trong nội dung) → mã ASCII dùng trong máy (gói B18). */
+export const TEN_TRUONG_BIET: Readonly<Record<string, string>> = {
+  'họ tên': 'ho-ten',
+  'danh xưng': 'danh-xung',
+  'năm': 'nam',
+  'ngành': 'nganh',
+  'lịch': 'lich',
+  'câu nói': 'cau-noi',
+};
+/** Mã ASCII → chữ người viết đọc. */
+export const CHU_TRUONG_BIET: Readonly<Record<string, string>> = Object.fromEntries(Object.entries(TEN_TRUONG_BIET).map(([k, v]) => [v, k]));
+
+/** Đọc một trường ("họ tên", "Ngành"…) → mã ASCII; không nhận → `null`. */
+export function docTruongBiet(chu: string): string | null {
+  return TEN_TRUONG_BIET[chu.normalize('NFC').trim().toLowerCase()] ?? null;
+}
+
+/**
+ * Đọc danh sách trường "họ tên, năm, ngành" (gói B18). "không" (hoặc rỗng) = không trường nào. Trả về mã ASCII theo thứ tự viết;
+ * trường lạ hay lặp lại → thông báo lỗi.
+ */
+export function docDanhSachTruongBiet(chu: string): { truong: string[]; loi: string | null } {
+  const sach = chu.normalize('NFC').trim();
+  if (sach === '' || sach.toLowerCase() === 'không') return { truong: [], loi: null };
+  const truong: string[] = [];
+  for (const phan of sach.split(',')) {
+    const ma = docTruongBiet(phan);
+    if (!ma) return { truong, loi: `trường "${phan.trim()}" không hợp lệ (nhận: ${Object.keys(TEN_TRUONG_BIET).join(', ')})` };
+    if (truong.includes(ma)) return { truong, loi: `trường "${phan.trim()}" lặp lại` };
+    truong.push(ma);
+  }
+  return { truong, loi: null };
+}
 
 export function tenTrongCau(ten: string): string {
   const [dau = '', ...con] = ten.split(' ');
@@ -641,9 +682,13 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         const thuongO = fields['Thường ở'] === undefined ? undefined : docThuongO(fields['Thường ở']);
         if (typeof thuongO === 'string') loi.push({ ...vt, thongBao: `nhân vật ${nv.id}, "Thường ở": ${thuongO}` });
         if (thuongO !== undefined && fields['Lịch'] === undefined) loi.push({ ...vt, thongBao: `nhân vật ${nv.id} có "Thường ở" thì phải có dòng "Lịch" (chữ người chơi đọc)` });
+        // Gói B18: "Biết lúc gặp" — ô đã biết khi thẻ mở; ô liệt kê phải là ô nhân vật có dữ liệu (luat-mvp.ts kiểm).
+        const bietLucGap = fields['Biết lúc gặp'] === undefined ? undefined : docDanhSachTruongBiet(fields['Biết lúc gặp']);
+        if (bietLucGap?.loi) loi.push({ ...vt, thongBao: `nhân vật ${nv.id}, "Biết lúc gặp": ${bietLucGap.loi}` });
         nv.gioiThieu = {
           lich: fields['Lịch'] ?? null,
           ...(Array.isArray(thuongO) ? { thuongO } : {}),
+          ...(bietLucGap ? { bietLucGap: bietLucGap.truong } : {}),
           danhXung: fields['Danh xưng'] ?? '',
           chuaQuen: fields['Khi chưa quen'] ?? null,
           ...(fields['Không xưng tên'] === 'có' ? { khongXungTen: true } : {}),
@@ -1333,6 +1378,11 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       if ((m = new RegExp(`^- \\[HỎI ĐÁP (${MA})\\]$`).exec(line))) return add({ kind: 'hoi-dap', ma: m[1] ?? '' });
       if (line === '- [KẾT THÚC]') return add({ kind: 'end' });
       if ((m = /^- \[(VÀO|RA) ([a-z-]+)\]$/.exec(line))) return add({ kind: 'stage', action: m[1] === 'VÀO' ? 'vao' : 'ra', nhanVat: m[2] ?? '' });
+      if ((m = new RegExp(`^- \\[BIẾT (${MA}) ([^\\]]+)\\]$`).exec(line))) {
+        const ds = docDanhSachTruongBiet(m[2] ?? '');
+        if (ds.loi || ds.truong.length === 0) throw new Error(`[BIẾT ${m[1]}]: ${ds.loi ?? 'cần ít nhất một trường'} — viết "[BIẾT <mã> họ tên, năm]"`);
+        return add({ kind: 'biet', nhanVat: m[1] ?? '', truong: ds.truong });
+      }
       if ((m = /^- \[CHỜ (\d+) giây\]$/.exec(line))) return add({ kind: 'wait', giay: Number(m[1]) });
       if ((m = /^- \[NGÀY (\d{4}-\d{2}-\d{2})\]$/.exec(line))) {
         if (!ngayHopLe(m[1] ?? '')) throw new Error(`[NGÀY] không hợp lệ: "${m[1]}"`);

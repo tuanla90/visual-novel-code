@@ -337,6 +337,16 @@
   position: relative;
 }
 
+/* Dòng nhỏ dưới tên: ô họ tên còn "?" (MVP gói B18). */
+.chara-debut__subname {
+  margin-top: 2px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: rgba(255, 255, 255, 0.72);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
 .chara-debut__name {
   margin: 0;
   font-size: clamp(1.85rem, 4vw, 2.4rem);

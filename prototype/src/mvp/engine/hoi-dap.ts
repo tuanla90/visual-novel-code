@@ -315,25 +315,31 @@ export function dongChuaGach(s: TrangThaiMvp, to: ToHoiDapMvp): ToHoiDapMvp['dan
 
 /**
  * Sau buổi hỏi: các nút ngay sau `[HỎI ĐÁP]` mà buổi hỏi đã thay (dòng lời viết sẵn, ghi chú dàn dựng, hậu quả). Trả vị trí nút
- * chạy tiếp và các hậu quả còn phải áp (bỏ hậu quả mở manh mối mà danh sách đã lo).
+ * chạy tiếp và các hậu quả còn phải áp (bỏ hậu quả mở manh mối mà danh sách đã lo). `biet` (gói B18): các nút `[BIẾT]` nằm trong
+ * khối ấy — bị bỏ qua lúc chạy nhưng điều lộ ra vẫn phải ghi, nơi gọi áp bằng `apBiet`.
  */
-export function khoiThayThe(nodes: readonly NutMvp[], viTriHoiDap: number, to: ToHoiDapMvp): { nutSau: number; hauQua: HauQuaMvp[] } {
+export function khoiThayThe(nodes: readonly NutMvp[], viTriHoiDap: number, to: ToHoiDapMvp): { nutSau: number; hauQua: HauQuaMvp[]; biet: Extract<NutMvp, { type: 'biet' }>[] } {
   // Tờ khai `loiDaThay`: không bỏ khối liền sau nữa; máy bỏ đúng các đoạn đã khai khi chạy tiếp chuỗi (`laLoiDaThay`).
-  if (to.nutDaThay) return { nutSau: viTriHoiDap + 1, hauQua: [] };
+  if (to.nutDaThay) return { nutSau: viTriHoiDap + 1, hauQua: [], biet: [] };
   const daLo = manhMoiDaLo(to);
   const hauQua: HauQuaMvp[] = [];
+  const biet: Extract<NutMvp, { type: 'biet' }>[] = [];
   let i = viTriHoiDap + 1;
   for (; i < nodes.length; i++) {
     const n = nodes[i];
     if (!n) break;
     if (n.type === 'line' || n.type === 'note') continue;
+    if (n.type === 'biet') {
+      biet.push(n);
+      continue;
+    }
     if (n.type === 'consequence') {
       hauQua.push(...n.hauQua.filter((h) => !(h.kind === 'mo-manh-moi' && daLo.has(h.id))));
       continue;
     }
     break;
   }
-  return { nutSau: i, hauQua };
+  return { nutSau: i, hauQua, biet };
 }
 
 /** Manh mối mà danh sách "Cần làm rõ" của tờ tự mở (thay cho `[HẬU QUẢ] mở manh mối` của chuỗi). */

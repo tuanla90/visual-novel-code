@@ -3,8 +3,12 @@
  * Dùng lại lớp CSS `.stage*`, `.cast-member*`, `.portrait` của prototype; KHÔNG dùng `Stage` của prototype vì
  * component đó chỉ nhận `SceneId`/`CharacterId` đóng băng trong `shared/ids.ts`.
  * Dàn chân dung: nhân vật đã nói trong cảnh đứng lại (người đang nói sáng, người khác lùi nhẹ) — cùng luật
- * `visuals/cast.ts`; đổi cảnh thì dàn trống. Tối đa 3 người (`TOI_DA_TREN_DAN`): người thứ tư nói thì người nói
- * lâu nhất trước đó rời dàn; 3 người thì mvp.css thu nhỏ chân dung để không ai bị cắt mép.
+ * `visuals/cast.ts`; đổi cảnh thì dàn trống. Hai hàng (gói B18): HÀNG TRƯỚC tối đa 3 người (`TOI_DA_TREN_DAN`) là những
+ * người trong cuộc nói chuyện (`thamGia`) nói gần đây nhất; người thứ tư nói thì người nói lâu nhất trước đó LÙI xuống
+ * HÀNG SAU (đứng lùi, nhỏ và tối hơn, không nhép môi) chứ không biến mất; hàng sau tối đa 3 (`TOI_DA_HANG_SAU`), dư thì
+ * người cũ nhất rời hẳn; người hàng sau nói lại thì lên hàng trước. Người đang trên dàn mà không thuộc `thamGia` (chuỗi
+ * mới không có lời của họ) cũng lùi hàng sau. `[RA x]` rời hẳn; đổi cảnh xóa cả hai hàng. 3 người hàng trước thì mvp.css
+ * thu nhỏ chân dung để không ai bị cắt mép; màn dọc điện thoại ẩn hàng sau cho đỡ chật.
  * Người chơi (`player`, nam — QĐ-084) cũng lên dàn khi nói (user yêu cầu 29/09: có hình nhân vật chính ở các đoạn
  * nói chuyện), ảnh `char-nguoi-choi` (đã tách nền), nhãn là tên người chơi đặt ở màn tạo nhân vật.
  */
@@ -46,6 +50,11 @@ export interface SanKhauMvpProps {
   raDan?: readonly string[];
   /** Người được `[VÀO x]` đưa lên dàn dù chưa nói (`TrangThaiMvp.vaoDan`): đứng im, không sáng. */
   vaoDan?: readonly string[];
+  /**
+   * Gói B18: người có lời trong chuỗi đang chạy (xem `nguoiThamGia`), cộng `vaoDan`, trừ `raDan`. Ai đang trên dàn mà không
+   * thuộc danh sách này thì lùi hàng sau. Bỏ trống / `null` = không biết, ai trên dàn cũng coi là đang tham gia.
+   */
+  thamGia?: readonly string[] | null;
   /** Tên người chơi (nhãn chân dung của `player`); rỗng → "Bạn". */
   tenNguoiChoi?: string;
   /** Việc đang làm do nhân vật nhắc — góc trên trái (nhãn địa điểm dời sang phải). Bỏ trống = không hiện. */
@@ -64,14 +73,67 @@ interface ThanhVien {
 }
 interface DanDien {
   canh: string;
-  /** Thứ tự đứng trên dàn (trái → phải). */
+  /** Hàng trước: thứ tự đứng trên dàn (trái → phải). */
   thanhVien: ThanhVien[];
-  /** Người trên dàn theo lần nói gần nhất: đầu mảng = nói lâu nhất trước đó, cuối = vừa nói. */
+  /** Người hàng trước theo lần nói gần nhất: đầu mảng = nói lâu nhất trước đó, cuối = vừa nói. */
   thuTuNoi: string[];
+  /** Hàng sau (gói B18): đầu mảng = xuống lâu nhất, cuối = vừa xuống. Giữ biểu cảm cuối. */
+  hangSau: ThanhVien[];
 }
 
-/** Tối đa bấy nhiêu người đứng trên dàn; người thứ tư nói → người nói lâu nhất trước đó rời dàn. */
+/** Tối đa bấy nhiêu người đứng HÀNG TRƯỚC; người thứ tư nói → người nói lâu nhất trước đó lùi hàng sau. */
 export const TOI_DA_TREN_DAN = 3;
+/** Tối đa bấy nhiêu người hàng sau; dư thì người xuống lâu nhất rời hẳn. */
+export const TOI_DA_HANG_SAU = 3;
+
+const danTrong = (canh: string): DanDien => ({ canh, thanhVien: [], thuTuNoi: [], hangSau: [] });
+
+/** Người nói trong một lời (kể cả lời phản hồi) — cho `nguoiThamGia`. */
+function nguoiTrongLoi(loi: readonly { speaker: string }[] | undefined): string[] {
+  return (loi ?? []).map((l) => l.speaker);
+}
+
+/**
+ * Gói B18: tập người có lời trong chuỗi `chuoi` (gồm lời trong phản hồi của `[HỎI]`, `[RẼ NHÁNH]`, `[ĐỐI CHẤT]`, nhân chứng của
+ * `[HỎI ĐÁP]`) cộng `vaoDan`, trừ `raDan`. Không có chuỗi → `null` (sân khấu coi ai trên dàn cũng đang tham gia).
+ */
+export function nguoiThamGia(kb: KichBanMvp, chuoi: string | null | undefined, vaoDan: readonly string[] = [], raDan: readonly string[] = []): string[] | null {
+  const c = chuoi ? kb.chuoi.find((x) => x.id === chuoi) : undefined;
+  if (!c) return null;
+  const co = new Set<string>();
+  for (const n of c.nodes) {
+    switch (n.type) {
+      case 'line':
+        co.add(n.speaker);
+        break;
+      case 'question':
+        co.add(n.asker.speaker);
+        for (const ch of n.choices) for (const x of nguoiTrongLoi(ch.feedback)) co.add(x);
+        break;
+      case 'branch':
+        co.add(n.asker.speaker);
+        break;
+      case 'doi-chat':
+        co.add(n.asker.speaker);
+        for (const b of n.bangChung) for (const x of nguoiTrongLoi(b.feedback)) co.add(x);
+        for (const x of [...nguoiTrongLoi(n.chuaDu), ...nguoiTrongLoi(n.khac), ...nguoiTrongLoi(n.hetLuot)]) co.add(x);
+        break;
+      case 'create-character':
+        co.add(n.asker.speaker);
+        break;
+      case 'hoi-dap': {
+        const nc = kb.hoiDap?.to[n.ma]?.nhanChung;
+        if (nc) co.add(nc);
+        break;
+      }
+      default:
+        break;
+    }
+  }
+  for (const x of vaoDan) co.add(x);
+  for (const x of raDan) co.delete(x);
+  return [...co];
+}
 
 /** Cảnh nền kín, người chơi chỉ độc thoại trong lòng: không vẽ chân dung đứng chắn cảnh (xe buýt mở đầu). */
 const CANH_KHONG_DAN: ReadonlySet<string> = new Set(['xe-buyt']);
@@ -84,31 +146,71 @@ function laNhanVatHien(kb: KichBanMvp, speaker: string | undefined): speaker is 
   return !!nv && !nv.chiQuaLoiKe;
 }
 
+/** Đưa một người xuống cuối hàng sau (bỏ bản cũ của người đó nếu có); hàng sau dư `TOI_DA_HANG_SAU` thì người xuống lâu nhất rời hẳn. */
+function xuongHangSau(hangSau: ThanhVien[], tv: ThanhVien): ThanhVien[] {
+  return [...hangSau.filter((t) => t.nhanVat !== tv.nhanVat), tv].slice(-TOI_DA_HANG_SAU);
+}
+
 /**
  * Dàn sau lời nói này. Không đổi gì → trả lại đúng `truoc` (để không setState vòng lặp).
- * Người mới nói khi dàn đã đủ `TOI_DA_TREN_DAN` người → người nói lâu nhất trước đó rời dàn, người mới đứng
- * vào đúng chỗ đó (người khác không xê dịch).
+ * Người mới nói khi hàng trước đã đủ `TOI_DA_TREN_DAN` người → người nói lâu nhất trước đó lùi hàng sau, người mới đứng
+ * vào đúng chỗ đó (người khác không xê dịch). Người hàng trước không thuộc `thamGia` (và không đang nói) cũng lùi hàng sau.
  */
-function danKe(kb: KichBanMvp, truoc: DanDien | null, canh: string, speaker: string | undefined, expression: string | undefined, raDan: readonly string[] = [], nghi = false, vaoDan: readonly string[] = []): DanDien {
-  let dan: DanDien = truoc && truoc.canh === canh ? truoc : { canh, thanhVien: [], thuTuNoi: [] };
-  // `[VÀO x]`: người chưa nói nhưng đang có mặt trong cuộc nói chuyện đứng vào dàn (đứng im).
+function danKe(
+  kb: KichBanMvp,
+  truoc: DanDien | null,
+  canh: string,
+  speaker: string | undefined,
+  expression: string | undefined,
+  raDan: readonly string[] = [],
+  nghi = false,
+  vaoDan: readonly string[] = [],
+  thamGia: readonly string[] | null = null,
+): DanDien {
+  let dan: DanDien = truoc && truoc.canh === canh ? truoc : danTrong(canh);
+  const trenDan = (d: DanDien, x: string): boolean => d.thanhVien.some((t) => t.nhanVat === x) || d.hangSau.some((t) => t.nhanVat === x);
+  // `[VÀO x]`: người chưa nói nhưng đang có mặt trong cuộc nói chuyện đứng vào dàn (đứng im); hàng trước kín thì đứng hàng sau.
   for (const x of vaoDan) {
-    if (raDan.includes(x) || !laNhanVatHien(kb, x) || dan.thanhVien.some((t) => t.nhanVat === x) || dan.thanhVien.length >= TOI_DA_TREN_DAN) continue;
-    dan = { canh, thanhVien: [...dan.thanhVien, { nhanVat: x, bieuCam: undefined }], thuTuNoi: [x, ...dan.thuTuNoi] };
+    if (raDan.includes(x) || !laNhanVatHien(kb, x) || trenDan(dan, x)) continue;
+    const tv = { nhanVat: x, bieuCam: undefined };
+    dan =
+      dan.thanhVien.length < TOI_DA_TREN_DAN
+        ? { ...dan, thanhVien: [...dan.thanhVien, tv], thuTuNoi: [x, ...dan.thuTuNoi] }
+        : { ...dan, hangSau: xuongHangSau(dan.hangSau, tv) };
   }
-  // `[RA x]`: người đã rời cảnh xuống khỏi dàn (đang nói thì ở lại).
+  // `[RA x]`: người đã rời cảnh xuống khỏi cả hai hàng (đang nói thì ở lại).
   const roi = (x: string): boolean => raDan.includes(x) && x !== speaker;
-  if (dan.thanhVien.some((t) => roi(t.nhanVat))) dan = { canh, thanhVien: dan.thanhVien.filter((t) => !roi(t.nhanVat)), thuTuNoi: dan.thuTuNoi.filter((x) => !roi(x)) };
+  if (dan.thanhVien.some((t) => roi(t.nhanVat)) || dan.hangSau.some((t) => roi(t.nhanVat))) {
+    dan = { canh, thanhVien: dan.thanhVien.filter((t) => !roi(t.nhanVat)), thuTuNoi: dan.thuTuNoi.filter((x) => !roi(x)), hangSau: dan.hangSau.filter((t) => !roi(t.nhanVat)) };
+  }
+  // Người hàng trước không còn trong cuộc nói chuyện (chuỗi mới không có lời của họ) → lùi hàng sau, người nói lâu nhất xuống trước.
+  if (thamGia) {
+    const ngoai = (x: string): boolean => !thamGia.includes(x) && x !== speaker;
+    if (dan.thanhVien.some((t) => ngoai(t.nhanVat))) {
+      const thuTu = [...dan.thuTuNoi, ...dan.thanhVien.map((t) => t.nhanVat).filter((x) => !dan.thuTuNoi.includes(x))];
+      let hangSau = dan.hangSau;
+      for (const x of thuTu) {
+        const tv = dan.thanhVien.find((t) => t.nhanVat === x);
+        if (tv && ngoai(x)) hangSau = xuongHangSau(hangSau, tv);
+      }
+      dan = { canh, thanhVien: dan.thanhVien.filter((t) => !ngoai(t.nhanVat)), thuTuNoi: dan.thuTuNoi.filter((x) => !ngoai(x)), hangSau };
+    }
+  }
   if (!laNhanVatHien(kb, speaker)) return dan;
   const co = dan.thanhVien.find((t) => t.nhanVat === speaker);
   if (nghi && speaker === 'player' && !co) return dan;
-  const bieuCam = expression ?? co?.bieuCam;
+  const oSau = dan.hangSau.find((t) => t.nhanVat === speaker);
+  const bieuCam = expression ?? co?.bieuCam ?? oSau?.bieuCam;
   let thanhVien = dan.thanhVien;
+  let hangSau = dan.hangSau;
   if (!co) {
     const moi = { nhanVat: speaker, bieuCam };
+    if (oSau) hangSau = hangSau.filter((t) => t.nhanVat !== speaker);
     if (thanhVien.length >= TOI_DA_TREN_DAN) {
-      const roi = dan.thuTuNoi[0] ?? thanhVien[0]?.nhanVat;
-      thanhVien = thanhVien.map((t) => (t.nhanVat === roi ? moi : t));
+      const lui = dan.thuTuNoi[0] ?? thanhVien[0]?.nhanVat;
+      const tvLui = thanhVien.find((t) => t.nhanVat === lui);
+      thanhVien = thanhVien.map((t) => (t.nhanVat === lui ? moi : t));
+      if (tvLui) hangSau = xuongHangSau(hangSau, tvLui);
     } else {
       thanhVien = [...thanhVien, moi];
     }
@@ -119,8 +221,8 @@ function danKe(kb: KichBanMvp, truoc: DanDien | null, canh: string, speaker: str
     dan.thuTuNoi[dan.thuTuNoi.length - 1] === speaker
       ? dan.thuTuNoi
       : [...dan.thuTuNoi.filter((x) => x !== speaker && thanhVien.some((t) => t.nhanVat === x)), speaker];
-  if (thanhVien === dan.thanhVien && thuTuNoi === dan.thuTuNoi) return dan;
-  return { canh, thanhVien, thuTuNoi };
+  if (thanhVien === dan.thanhVien && thuTuNoi === dan.thuTuNoi && hangSau === dan.hangSau) return dan;
+  return { canh, thanhVien, thuTuNoi, hangSau };
 }
 
 /**
@@ -131,6 +233,21 @@ function viTri(soNguoi: number, i: number): number {
   if (soNguoi <= 1) return 0.5;
   if (soNguoi === 2) return i === 0 ? 0.35 : 0.65;
   return [0.22, 0.5, 0.78][i] ?? 0.5;
+}
+
+/**
+ * Vị trí hàng sau (gói B18) theo số người hàng trước và hàng sau: đứng ở khe giữa hai người hàng trước hoặc hai mép, không che
+ * mặt hàng trước. Người thứ `i` của hàng sau (0 = xuống lâu nhất) đứng từ trái sang.
+ */
+export function viTriHangSau(soTruoc: number, soSau: number, i: number): number {
+  const bang: Record<number, Record<number, number[]>> = {
+    0: { 1: [0.5], 2: [0.35, 0.65], 3: [0.22, 0.5, 0.78] },
+    1: { 1: [0.18], 2: [0.18, 0.82], 3: [0.14, 0.5, 0.86] },
+    2: { 1: [0.5], 2: [0.1, 0.9], 3: [0.1, 0.5, 0.9] },
+    3: { 1: [0.36], 2: [0.06, 0.94], 3: [0.06, 0.5, 0.94] },
+  };
+  const hang = bang[Math.min(3, Math.max(0, soTruoc))] ?? bang[3];
+  return (hang?.[Math.min(3, Math.max(1, soSau))] ?? [0.5])[i] ?? 0.5;
 }
 
 function ChanDungMvp({
@@ -179,9 +296,13 @@ function ChanDungMvp({
   );
 }
 
-export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, coDan = true, xoaDan = false, raDan, vaoDan, nghi = false, tenNguoiChoi, nhacViec, dienTen, isCard = false, dongHanh, children }: SanKhauMvpProps) {
-  const [dan, setDan] = useState<DanDien>(() => danKe(kb, null, canh, speaker, expression, raDan, nghi, vaoDan));
-  const moi = xoaDan ? (dan.thanhVien.length === 0 && dan.canh === canh ? dan : { canh, thanhVien: [], thuTuNoi: [] }) : danKe(kb, dan, canh, speaker, expression, raDan, nghi, vaoDan);
+export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, coDan = true, xoaDan = false, raDan, vaoDan, thamGia = null, nghi = false, tenNguoiChoi, nhacViec, dienTen, isCard = false, dongHanh, children }: SanKhauMvpProps) {
+  const [dan, setDan] = useState<DanDien>(() => danKe(kb, null, canh, speaker, expression, raDan, nghi, vaoDan, thamGia));
+  const moi = xoaDan
+    ? dan.thanhVien.length === 0 && dan.hangSau.length === 0 && dan.canh === canh
+      ? dan
+      : danTrong(canh)
+    : danKe(kb, dan, canh, speaker, expression, raDan, nghi, vaoDan, thamGia);
   if (moi !== dan) setDan(moi);
   const lineTyping = useVnStore((s) => s.lineTyping);
   const nen = anhNen(canh, dem);
@@ -254,7 +375,26 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
       ) : null}
       {!isCard && dongHanh ? <div className="mvp-stage__canh-ban">{dongHanh}</div> : null}
       {/* Cảnh có hoạt cảnh: nhân vật đã nằm trong ảnh tách lớp, không vẽ thêm nhân vật đứng (hộp thoại vẫn ghi tên người nói). */}
-      <div className="stage__portraits" data-so-nguoi={coDan && !CANH_KHONG_DAN.has(canh) && !coHoatCanh(canh) ? moi.thanhVien.length : 0}>
+      <div className="stage__portraits" data-so-nguoi={coDan && !CANH_KHONG_DAN.has(canh) && !coHoatCanh(canh) ? moi.thanhVien.length : 0} data-so-hang-sau={coDan && !CANH_KHONG_DAN.has(canh) && !coHoatCanh(canh) ? moi.hangSau.length : 0}>
+        {/* Hàng sau (gói B18): đứng lùi, nhỏ và tối hơn, không nhép môi, giữ biểu cảm cuối; vẽ trước để nằm dưới hàng trước. */}
+        {(coDan && !CANH_KHONG_DAN.has(canh) && !coHoatCanh(canh) ? moi.hangSau : []).map((t, i) => {
+          const pos = viTriHangSau(moi.thanhVien.length, moi.hangSau.length, i);
+          const phai = pos > 0.5;
+          const style = { '--cast-x': `${pos * 100}%` } as CSSProperties;
+          return (
+            <div
+              key={t.nhanVat}
+              className={`cast-member cast-member--idle cast-member--hang-sau${phai ? ' cast-member--side-right' : ' cast-member--side-left'}`}
+              style={style}
+              data-nhan-vat={t.nhanVat}
+              data-hang="sau"
+              data-vi-tri={i}
+              data-speaking="false"
+            >
+              <ChanDungMvp kb={kb} nhanVat={t.nhanVat} bieuCam={t.bieuCam} talking={false} tenNguoiChoi={tenNguoiChoi} />
+            </div>
+          );
+        })}
         {(coDan && !CANH_KHONG_DAN.has(canh) && !coHoatCanh(canh) ? moi.thanhVien : []).map((t, i) => {
           const dangNoi = t.nhanVat === speaker;
           const pos = viTri(moi.thanhVien.length, i);
@@ -266,6 +406,7 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
               className={`cast-member${dangNoi ? ' cast-member--speaking' : ' cast-member--idle'}${phai ? ' cast-member--side-right' : ' cast-member--side-left'}`}
               style={style}
               data-nhan-vat={t.nhanVat}
+              data-hang="truoc"
               data-vi-tri={i}
               data-speaking={dangNoi ? 'true' : 'false'}
             >
