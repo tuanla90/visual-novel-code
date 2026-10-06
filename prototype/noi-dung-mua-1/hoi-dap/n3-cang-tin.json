@@ -7,6 +7,7 @@
   "nguoiDiCung": ["ha-vy", "tung"],
   "ghiChu": "Tên Hiếu chỉ lộ qua tiếng gọi từ quầy (n3-cang-tin.1); Hiếu không tự xưng tên, không nói lớp (lớp BC24A để màn tra n3-laptop cho biết).",
   "moDau": "Căng tin. Bàn bên có một cậu đang nói to về tờ thông báo họp rà soát.",
+  "loiDaThay": ["n3-cang-tin.1"],
   "tuDongDuKien": ["thong-bao", "ghet-clb", "nhom-xin-phong"],
   "gioiHan": {
     "soCau": 4,
@@ -99,6 +100,7 @@
     "cam-on": { "loi": ["Ừ.", "Cảm ơn gì, tôi có giúp gì đâu."] },
     "hoi-mo": {
       "hoiTiep": "Còn gì nữa không?",
+      "cauHoiMau": ["Cậu biết gì về chuyện này không?", "còn gì nữa không", "kể tớ nghe với", "cậu còn bực gì nữa"],
       "hetKe": ["Hết rồi. Tôi chỉ nói có thế.", "Thế thôi. Các bạn còn muốn nghe gì nữa?"]
     },
     "tam-biet": { "loi": ["Ừ, đi đi.", "Thế nhé."] },

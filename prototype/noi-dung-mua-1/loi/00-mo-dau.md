@@ -39,14 +39,14 @@
 > NHẮC VIỆC player: Thang bộ ở chỗ nào nhỉ?
 
 ## md-00-so-do.1
-- **narrator**: Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ, có chấm "Bạn đang ở đây".
+- [DÀN DỰNG] Sơ đồ trên bảng tin vẽ ba khối nhà, khối giữa tô đỏ; không có chấm "Bạn đang ở đây" đọc được (06/10 vòng 2).
+- **narrator**: Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ.
 - **player**: (Nhìn mãi chẳng thấy thang bộ đâu.)
 - **player**: (Chịu rồi, phải hỏi ai đó thôi.)
 > NHIỆM VỤ: Tìm người hỏi đường lên tầng bốn
 > NHẮC VIỆC player: Hỏi ai trong sảnh này được nhỉ?
 
 ## md-00-thay-tung.1
-- **player**: (Toàn người lạ, biết hỏi ai bây giờ?)
 - **player**: (Kia có bạn áo xanh tình nguyện. Hỏi bạn ấy chắc được.)
 
 ## md-00-tung-chi-duong.1
@@ -111,7 +111,7 @@
 - [DÀN DỰNG] Tối. Hai người quẹt thẻ ở phòng trực cổng KTX. Nền tối bg-mvp-cong-ktx-dem (DX-02).
 - **narrator**: Về tới cổng ký túc xá thì trời đã tối. Đèn phòng trực vẫn sáng.
 - **chu-cuong** (neutral): Giờ này mới về à? {{nv.tung}} dẫn bạn đi đâu cả buổi thế?
-- **tung** (ao-xanh-happy): Bọn cháu đi xem trường ạ. Chú tớ đấy, {{nv.nguoi-choi}}. Chú trực ở đây lâu lắm rồi.
+- **tung** (ao-xanh-happy): Bọn cháu đi xem trường ạ. {{nv.nguoi-choi}} này, chú tớ đấy. Chú trực ở đây lâu lắm rồi.
 - **chu-cuong** (smile): Chú là Cường. Cần gì thì cứ ra phòng trực gọi chú.
 - **tung** (ao-xanh): Chú ơi, qua nhà văn hóa cháu thấy poster CLB Thám Tử. Chú biết CLB đấy không?
 - **chu-cuong** (smile): CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó lần ra hết.
@@ -142,7 +142,8 @@
 - **tung** (happy): Tớ chỉ đi xem thôi nhé. Không đăng ký CLB nào đâu, năm nhất phải lo học.
 
 ## md-09-ngay-hoi.2b
-- **narrator**: Mười phút sau, trên tay Tùng có bốn tờ đăng ký, một cái quạt giấy của CLB Guitar và nửa cái bánh rán của CLB Nấu ăn.
+- [DÀN DỰNG] Ảnh chibi-ngay-hoi ngay trước đã cho thấy Tùng ôm bốn tờ đăng ký, quạt giấy, bánh rán: lời dẫn không tả lại; chân dung Tùng sau đó chỉ cầm bản đồ (06/10 vòng 2).
+- **narrator**: Mười phút sau, Tùng mới quay lại.
 - **tung** (neutral): Chị ơi, đây là bàn CLB Thám Tử ạ? Chị là thành viên ở đây ạ?
 - **minh-anh** (neutral): Ừ. Chị trực bàn hôm nay.
 - **tung** (neutral): CLB mình đang điều tra vụ nào không chị?
@@ -156,7 +157,7 @@
 - **minh-anh** (worried): Mã này của một bạn Tùng học Kế toán. Phiếu em lại ghi ngành Du lịch?
 - **tung** (worried): Dạ vâng, em Tùng Du lịch ạ… Tên trong này na ná nhau, em nhìn nhầm dòng.
 - **minh-anh** (neutral): Để chị dò lại từng dòng vậy.
-- **player**: Chị cho em thử lọc một cái được không ạ?
+- **player**: Dò thế chắc lâu lắm chị. Chị cho em thử lọc một cái được không ạ?
 
 ## md-09-ngay-hoi.3
 - **player**: Ra rồi chị ạ. Lọc ngành Du lịch còn mấy chục bạn, thêm tên {{nv.tung}} thì còn đúng một người. Mã SV240251.
@@ -172,7 +173,8 @@
 ## md-10-trung-thu.2
 - [THẺ CHỮ] **narrator**: Thứ Ba, 17/09/2024 · 19:00 · Sân ký túc xá
 - [DÀN DỰNG] Ảnh nền đã có dây đèn lồng, bàn bánh, đèn cá chép, gian Robotics: lời dẫn không tả lại (04/10). Sau câu Minh Anh, người chơi tự bấm vào Duy (cạnh bàn bánh) và Hà Vy (mép phải sân) để làm quen. Tới chào là nói chuyện luôn, chưa có màn soi: lần soi đầu tiên là lúc Hà Vy bảo nhìn đồ Tùng mang theo (user 05/10).
-- **narrator**: Hồi trống lân tập vừa dứt, tiếng nói cười quanh sân mới nghe rõ lại.
+- [DÀN DỰNG] Ảnh sân không vẽ một người nào: lời không nhắc tiếng nói cười, đám đông (06/10 vòng 2; ảnh sân có người ghi ở danh sách ảnh cần làm).
+- **narrator**: Hồi trống lân tập vừa dứt.
 - **minh-anh** (happy): Hai em tới đúng giờ. Chị là {{nv.minh-anh}}, chủ nhiệm CLB.
 - **minh-anh** (neutral): Mọi người tới cả rồi đấy. Đi chào một vòng đi, lát chị gọi.
 > NHIỆM VỤ: Đi chào mọi người trong CLB
@@ -182,7 +184,8 @@
 - **ha-vy** (neutral): Để xem. Cậu thử nhìn đồ Tùng mang theo đi.
 
 ## md-10-gap-duy.2
-- **duy** (neutral): Rảnh tay thì giữ hộ anh cái chân bàn này với. Buộc mãi nó vẫn sụp.
+- [DÀN DỰNG] Chân dung Duy đứng, tay ôm tập sổ: lời không tả anh đang cúi buộc (06/10 vòng 2).
+- **duy** (neutral): Rảnh tay thì giữ hộ anh góc bàn này với. Chân bàn buộc tạm, cứ chực sụp.
 - **player**: Vâng, để em giữ.
 - **duy** (smile): Được rồi đấy. Anh là {{nv.duy}}, năm hai Hành chính học, ở CLB từ năm nhất.
 - **tung** (happy): Anh đi liên hoan mà cũng mang cả tập hồ sơ ạ?
@@ -284,8 +287,8 @@
 
 ## md-11-la-thu.1a
 - [DÀN DỰNG] {{nv.minh-anh}} ra ngoài rồi quay lại với hai tờ giấy: thông báo lịch họp rà soát và bản chụp thư đã che thông tin. Nhà trường đã tiếp nhận thư sáng 16/09 và xử lý trước khi chuyển bản sao cho CLB.
-- **narrator**: Bốn rưỡi, cô Lan bên Phòng Công tác sinh viên gọi chị Minh Anh lên. Mười phút sau chị quay về, tay cầm hai tờ giấy có đóng dấu.
-- [DÀN DỰNG] Chị Minh Anh ngồi xuống ghế, hai tay đan trước mặt; tờ thư đặt ngay trên bàn.
+- **narrator**: Bốn rưỡi, cô Lan bên Phòng Công tác sinh viên gọi chị Minh Anh lên. Mười phút sau chị quay về, tay cầm một cái phong bì.
+- [DÀN DỰNG] Chị Minh Anh ngồi xuống ghế, hai tay đan trước mặt; ảnh cg-minh-anh-dan-tay vẽ một phong bì trên bàn (hai tờ giấy nằm trong đó), lời dẫn theo ảnh (06/10 vòng 2).
 
 ## md-11-la-thu.1b
 - **minh-anh** (worried): Thứ Hai tuần sau, 30/09, phòng mình bị đưa ra họp rà soát.
@@ -302,7 +305,7 @@
 
 ## md-11-la-thu.3a
 - **duy** (neutral): Đủ năm người thì CLB chưa bị giải thể ngay. Nhưng phòng vẫn bị xét: báo cáo đã yếu, giờ thêm lá thư này.
-- **minh-anh** (neutral): {{nv.thay-quang}}, phó hiệu trưởng, đồng ý cho CLB tới buổi họp tuần sau để tự tìm căn cứ bảo vệ.
+- **minh-anh** (neutral): Cô Lan bảo {{nv.thay-quang}}, phó hiệu trưởng, đã đồng ý cho CLB tới buổi họp tuần sau để tự tìm căn cứ bảo vệ.
 - **tung** (neutral): Thế giờ mình bắt đầu từ đâu ạ?
 - **ha-vy** (day-kinh): Khoan, tính lại đã. Trong tay mình mới có một chữ H, nửa dòng tên tệp với cái hộp kiến nghị.
 - [DÀN DỰNG] Chị Minh Anh nhìn Tùng, chỉ hai ngón tay vào thái dương như nhắc cậu nghĩ kỹ.
@@ -312,7 +315,7 @@
 > NHẮC VIỆC minh-anh (serious): Một tuần tìm căn cứ. Mai bắt đầu từ cái hộp ở tòa B.
 
 ## md-10-soi-ban-do.1
-- **player**: Bản đồ trường gấp nhiều nếp, có mấy chỗ khoanh bút đỏ.
+- **player**: Bản đồ trường. Gấp đi gấp lại đến hằn nếp rồi.
 - **ha-vy** (thinking): Mới học một tuần mà bản đồ đã nhàu thế kia. Cậu ấy dùng nó hằng ngày để dẫn đường.
 
 ## md-10-soi-ao.1

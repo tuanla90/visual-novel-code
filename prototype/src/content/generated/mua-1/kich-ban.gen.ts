@@ -1225,9 +1225,13 @@ const GOC = {
       "mocSomNhat": 0,
       "nodes": [
         {
+          "type": "note",
+          "text": "Sơ đồ trên bảng tin vẽ ba khối nhà, khối giữa tô đỏ; không có chấm \"Bạn đang ở đây\" đọc được (06/10 vòng 2)."
+        },
+        {
           "type": "line",
           "speaker": "narrator",
-          "text": "Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ, có chấm \"Bạn đang ở đây\"."
+          "text": "Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ."
         },
         {
           "type": "line",
@@ -1256,11 +1260,6 @@ const GOC = {
       "canh": "sanh-ktx",
       "mocSomNhat": 0,
       "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Toàn người lạ, biết hỏi ai bây giờ?)"
-        },
         {
           "type": "line",
           "speaker": "player",
@@ -1645,7 +1644,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh-happy",
-          "text": "Bọn cháu đi xem trường ạ. Chú tớ đấy, {{nv.nguoi-choi}}. Chú trực ở đây lâu lắm rồi."
+          "text": "Bọn cháu đi xem trường ạ. {{nv.nguoi-choi}} này, chú tớ đấy. Chú trực ở đây lâu lắm rồi."
         },
         {
           "type": "line",
@@ -1839,9 +1838,13 @@ const GOC = {
           "nhanVat": "tung"
         },
         {
+          "type": "note",
+          "text": "Ảnh chibi-ngay-hoi ngay trước đã cho thấy Tùng ôm bốn tờ đăng ký, quạt giấy, bánh rán: lời dẫn không tả lại; chân dung Tùng sau đó chỉ cầm bản đồ (06/10 vòng 2)."
+        },
+        {
           "type": "line",
           "speaker": "narrator",
-          "text": "Mười phút sau, trên tay Tùng có bốn tờ đăng ký, một cái quạt giấy của CLB Guitar và nửa cái bánh rán của CLB Nấu ăn."
+          "text": "Mười phút sau, Tùng mới quay lại."
         },
         {
           "type": "line",
@@ -1923,7 +1926,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Chị cho em thử lọc một cái được không ạ?"
+          "text": "Dò thế chắc lâu lắm chị. Chị cho em thử lọc một cái được không ạ?"
         },
         {
           "type": "trial-filter",
@@ -1993,10 +1996,14 @@ const GOC = {
       "mocSomNhat": 0,
       "nodes": [
         {
+          "type": "note",
+          "text": "Chân dung Duy đứng, tay ôm tập sổ: lời không tả anh đang cúi buộc (06/10 vòng 2)."
+        },
+        {
           "type": "line",
           "speaker": "duy",
           "expression": "neutral",
-          "text": "Rảnh tay thì giữ hộ anh cái chân bàn này với. Buộc mãi nó vẫn sụp."
+          "text": "Rảnh tay thì giữ hộ anh góc bàn này với. Chân bàn buộc tạm, cứ chực sụp."
         },
         {
           "type": "line",
@@ -2104,9 +2111,13 @@ const GOC = {
           "text": "Ảnh nền đã có dây đèn lồng, bàn bánh, đèn cá chép, gian Robotics: lời dẫn không tả lại (04/10). Sau câu Minh Anh, người chơi tự bấm vào Duy (cạnh bàn bánh) và Hà Vy (mép phải sân) để làm quen. Tới chào là nói chuyện luôn, chưa có màn soi: lần soi đầu tiên là lúc Hà Vy bảo nhìn đồ Tùng mang theo (user 05/10)."
         },
         {
+          "type": "note",
+          "text": "Ảnh sân không vẽ một người nào: lời không nhắc tiếng nói cười, đám đông (06/10 vòng 2; ảnh sân có người ghi ở danh sách ảnh cần làm)."
+        },
+        {
           "type": "line",
           "speaker": "narrator",
-          "text": "Hồi trống lân tập vừa dứt, tiếng nói cười quanh sân mới nghe rõ lại."
+          "text": "Hồi trống lân tập vừa dứt."
         },
         {
           "type": "line",
@@ -2883,11 +2894,11 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Bốn rưỡi, cô Lan bên Phòng Công tác sinh viên gọi chị Minh Anh lên. Mười phút sau chị quay về, tay cầm hai tờ giấy có đóng dấu."
+          "text": "Bốn rưỡi, cô Lan bên Phòng Công tác sinh viên gọi chị Minh Anh lên. Mười phút sau chị quay về, tay cầm một cái phong bì."
         },
         {
           "type": "note",
-          "text": "Chị Minh Anh ngồi xuống ghế, hai tay đan trước mặt; tờ thư đặt ngay trên bàn."
+          "text": "Chị Minh Anh ngồi xuống ghế, hai tay đan trước mặt; ảnh cg-minh-anh-dan-tay vẽ một phong bì trên bàn (hai tờ giấy nằm trong đó), lời dẫn theo ảnh (06/10 vòng 2)."
         },
         {
           "type": "image",
@@ -2971,7 +2982,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Thầy Quang, phó hiệu trưởng, đồng ý cho CLB tới buổi họp tuần sau để tự tìm căn cứ bảo vệ."
+          "text": "Cô Lan bảo Thầy Quang, phó hiệu trưởng, đã đồng ý cho CLB tới buổi họp tuần sau để tự tìm căn cứ bảo vệ."
         },
         {
           "type": "line",
@@ -3012,7 +3023,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Bản đồ trường gấp nhiều nếp, có mấy chỗ khoanh bút đỏ."
+          "text": "Bản đồ trường. Gấp đi gấp lại đến hằn nếp rồi."
         },
         {
           "type": "line",
@@ -3332,6 +3343,16 @@ const GOC = {
       "mocSomNhat": 11,
       "nodes": [
         {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "tung"
+        },
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "ha-vy"
+        },
+        {
           "type": "note",
           "text": "Mắc ở mép tôn khe hộp là một tấm thẻ lịch, phần in còn nguyên \"Khoa Báo chí – Truyền thông · K24\", dòng viết tay \"Họ tên / Lớp\" bị xé mất."
         },
@@ -3561,9 +3582,9 @@ const GOC = {
         },
         {
           "type": "reminder",
-          "speaker": "minh-anh",
+          "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Được xem đúng quyền thôi. Tới đó hỏi cô là rõ."
+          "text": "Tài khoản xem được gì, vào hỏi cô là rõ."
         },
         {
           "type": "note",
@@ -3864,7 +3885,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "chi-tay",
-          "text": "Tối thứ Hai đi đá bóng về tớ toàn thấy cậu ở thư viện tới lúc đóng cửa đấy, Hà Vy."
+          "text": "Mà nói chuyện ăn mới nhớ. Tối thứ Hai đi đá bóng về, tớ toàn thấy cậu ở thư viện tới lúc đóng cửa đấy, Hà Vy. Thế ăn tối lúc nào?"
         },
         {
           "type": "line",
@@ -4150,7 +4171,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Ừ, thẻ lịch nghiêng về BC24A. Nhưng cứ giữ cả hai lớp, loại sau cũng chưa muộn."
+          "text": "Ừ, thẻ lịch nghiêng về BC24A. Nhưng thẻ mắc ở khe chưa chắc là của người bỏ thư. Cứ giữ cả hai lớp, loại sau cũng chưa muộn."
         },
         {
           "type": "line",
@@ -4203,6 +4224,14 @@ const GOC = {
           "type": "line",
           "speaker": "narrator",
           "text": "Tối, phòng 408. Tùng bóc hai gói mì, bẻ đôi nhét vừa cái bát inox."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-mi-tom"
+        },
+        {
+          "type": "note",
+          "text": "Ảnh chibi-mi-tom (Tùng rắc gia vị vào bát mì) chạy ngay TRƯỚC đoạn này, liền sau câu dẫn bóc mì (06/10 vòng 2, người xem ngoài: ảnh để tận cuối, khi chuyện đã kể xong)."
         },
         {
           "type": "line",
@@ -4268,10 +4297,6 @@ const GOC = {
           "speaker": "tung",
           "expression": "worried",
           "text": "Mai ra căng tin mà ăn nợ. Khoan, cuối tuần còn phải nạp tiền thẻ sinh viên nữa!"
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-mi-tom"
         },
         {
           "type": "xong-viec-chinh"
@@ -4447,37 +4472,36 @@ const GOC = {
         },
         {
           "type": "reminder",
-          "speaker": "minh-anh",
+          "speaker": "ha-vy",
           "expression": "neutral",
           "text": "Kết quả hai lớp hôm qua là căn cứ để xin phiếu tra cứu."
         },
         {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Lại con đường tắt qua sân bóng rổ."
+          "type": "note",
+          "text": "Cả nhóm VỪA TỚI Phòng Công tác sinh viên (nền phòng CTSV); chuyện đi tắt kể ở thì đã qua (06/10 vòng 2, người xem ngoài)."
         },
         {
           "type": "line",
           "speaker": "tung",
-          "expression": "happy",
-          "text": "Hôm qua ba phút, hôm nay tớ cá là hai phút rưỡi."
+          "expression": "chi-tay",
+          "text": "Lại đi tắt qua sân bóng rổ. Hôm qua ba phút, hôm nay tớ cá hai phút rưỡi, thế mà…"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Đừng cá nữa. Để tớ bấm giờ cho."
+          "text": "Tớ bấm giờ rồi: hai phút bốn mươi."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Hai phút bốn mươi. Coi như Tùng thua mười giây."
+          "text": "Coi như Tùng thua mười giây."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "gai-dau",
-          "text": "Tại cậu ấy dừng lại đọc bảng tin!"
+          "text": "Tại cậu dừng lại đọc bảng tin đấy!"
         },
         {
           "type": "line",
@@ -4560,15 +4584,19 @@ const GOC = {
         },
         {
           "type": "line",
-          "speaker": "quan",
-          "expression": "neutral",
-          "text": "Tôi là Quân, bên Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi được cử xuống giám sát việc này."
-        },
-        {
-          "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
           "text": "Hai lớp các em lọc ra hôm qua là căn cứ được. Cô ký phiếu tra cứu: bảng sinh viên, bốn cột, mã, họ đệm, tên, mã lớp. Không hơn."
+        },
+        {
+          "type": "note",
+          "text": "Khối riêng để câu tự xưng của Quân còn ở cách bấm / gõ (khối .1b bị buổi hỏi thay lời)."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Tôi là Quân, bên Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi được cử xuống giám sát việc này."
         },
         {
           "type": "line",
@@ -4819,7 +4847,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Người kỹ tính. Mình viết gì anh ấy cũng sẽ soi từng chữ."
+          "text": "Người kỹ tính. Mình viết gì chắc anh ấy cũng soi từng chữ."
         }
       ]
     },
@@ -4935,6 +4963,10 @@ const GOC = {
           "text": "Nhìn gì? Có gì hỏi thẳng đây, đừng xì xào sau lưng."
         },
         {
+          "type": "note",
+          "text": "Tách khỏi n3-cang-tin.1 và không khai trong \"loiDaThay\" của tờ hoi-dap/n3-cang-tin.json: tiếng gọi lộ tên Hiếu phải chạy ở cả cách bấm / gõ, nếu không Tùng về CLB nói \"cậu gắt ở căng tin tên Hiếu\" mà người chơi chưa nghe tên bao giờ (06/10 vòng 2)."
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "text": "Có tiếng gọi từ quầy: \"Hiếu ơi, lấy cơm này!\" Cậu ta đứng dậy, bỏ đi."
@@ -4973,7 +5005,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Về phòng CLB. Phiếu tra cứu của cô Lan nằm trên bàn, cạnh cái laptop."
+          "text": "Về phòng CLB. Phiếu tra cứu của cô Lan nằm trên bàn."
         },
         {
           "type": "explore",
@@ -5329,6 +5361,20 @@ const GOC = {
           "text": "Sổ niêm phong chỉ xác nhận mã đó có mặt. Cô không kết luận thêm."
         },
         {
+          "type": "note",
+          "text": "Câu quy chế mời họp của cô Lan dời từ n4-ctsv.2 lên đây: tờ hỏi đáp n4-ctsv-vao đã có dữ kiện này nên ở cách bấm / gõ cô không nói lại hai lần (06/10 vòng 2, người xem ngoài)."
+        },
+        {
+          "type": "line",
+          "speaker": "co-lan",
+          "expression": "neutral",
+          "text": "Theo quy chế, sinh viên có mã trong sổ sẽ được mời đến buổi họp. Có gọi vào hay không do buổi họp quyết định."
+        },
+        {
+          "type": "note",
+          "text": "Khối riêng để câu Tùng cá trượt còn ở cách bấm / gõ (khối .1v bị buổi hỏi thay lời)."
+        },
+        {
           "type": "line",
           "speaker": "tung",
           "expression": "gai-dau",
@@ -5359,7 +5405,7 @@ const GOC = {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
-          "text": "Ai viết thì cô chưa nói được. Theo quy chế, sinh viên có mã trong sổ sẽ được mời đến buổi họp, gọi vào hay không do buổi họp quyết định."
+          "text": "Ai viết thì cô chưa nói được."
         },
         {
           "type": "branch",
@@ -5427,7 +5473,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Phòng Đào tạo ngay cạnh đó. Cô Hạnh nhận phiếu yêu cầu."
+          "text": "Phòng Đào tạo ngay cạnh đó. Cô Hạnh nhận tờ phiếu yêu cầu cô Lan vừa ký."
         },
         {
           "type": "line",
@@ -5803,6 +5849,20 @@ const GOC = {
           "text": "Đã có số liệu thì không gọi là vu khống nữa đâu em."
         },
         {
+          "type": "stage",
+          "action": "ra",
+          "nhanVat": "player"
+        },
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "duy"
+        },
+        {
+          "type": "note",
+          "text": "Trước đoạn này khung có [RA player] và [VÀO duy]: Duy đứng trên dàn lúc lời dẫn kể anh ăn cái bánh cuối và mở sổ; người chơi đã nói xong lượt \"ba dữ kiện\" nên xuống dàn (06/10 vòng 2)."
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "text": "Chín giờ tối, hộp bánh hết. Người ăn cái cuối là Duy. Cậu lẳng lặng mở sổ, ghi: \"Nợ CLB một hộp bánh.\""
@@ -5931,6 +5991,15 @@ const GOC = {
               "id": "clue-loi-chu-cuong"
             }
           ]
+        },
+        {
+          "type": "stage",
+          "action": "ra",
+          "nhanVat": "chu-cuong"
+        },
+        {
+          "type": "note",
+          "text": "Khung có [RA chu-cuong] ngay trước đoạn này: chú đã chào \"đi đi\", ba đứa bàn với nhau, chú không đứng nghe (06/10 vòng 2)."
         },
         {
           "type": "line",
@@ -6075,6 +6144,11 @@ const GOC = {
           "text": "Hai giờ sáng. Tớ nằm tập nói \"dạ thưa thầy\" tới lúc quên cả cách thở."
         },
         {
+          "type": "stage",
+          "action": "ra",
+          "nhanVat": "tung"
+        },
+        {
           "type": "note",
           "text": "Thầy Quang ngồi giữa; Cô Lan và Quân một bên, CLB một bên. Hoài ngồi chờ ngoài hành lang theo quy chế, chưa được mời vào."
         },
@@ -6084,10 +6158,14 @@ const GOC = {
           "text": "Bốn giờ chiều. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ."
         },
         {
+          "type": "note",
+          "text": "Khung có [RA tung] ngay trước đoạn này: Tùng ngồi xuống khi buổi họp bắt đầu, dáng gãi đầu không đứng suốt lúc thầy nói; cậu tự lên hình khi kêu \"ba mươi hai người\" (06/10 vòng 2)."
+        },
+        {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Thầy là Quang, phó hiệu trưởng phụ trách sinh viên, chủ trì buổi rà soát này. Hôm nay thầy phải chốt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử. Mời các em trình bày căn cứ."
+          "text": "Thầy là Quang, phó hiệu trưởng phụ trách sinh viên. Hôm nay thầy phải chốt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử. Mời các em trình bày căn cứ."
         },
         {
           "type": "line",
@@ -6155,6 +6233,15 @@ const GOC = {
         {
           "type": "effect",
           "effectId": "co-so-lieu-day"
+        },
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "quan"
+        },
+        {
+          "type": "note",
+          "text": "Khung có [VÀO quan] ngay trước đoạn này: người chơi nói thẳng với anh Quân nên anh đứng trên dàn (06/10 vòng 2)."
         },
         {
           "type": "line",
@@ -6726,7 +6813,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "surprised",
-          "text": "Giữ gì cơ? Phòng có mỗi cái tủ với cái bảng."
+          "text": "Giữ gì cơ? Ngoài cái tủ sắt ra thì phòng này có gì đâu. Tớ cá là ai đó viết đùa thôi."
         },
         {
           "type": "line",
@@ -23037,12 +23124,12 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:185 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:186 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",
       "soDong": 32,
-      "noi": "noi-dung-mua-1/kich-ban/06-hop-va-ket.md:19 [MÀN CHIẾU hop-chieu-or]"
+      "noi": "noi-dung-mua-1/kich-ban/06-hop-va-ket.md:20 [MÀN CHIẾU hop-chieu-or]"
     }
   ],
   "duLieu": {

@@ -5,13 +5,14 @@
 ### hop-00 — Nhịp 1–2: câu HOẶC của Quân → VÀ → "Số liệu đây!" {cảnh: phong-hop}
 
 - [LỜI hop-00.1]
-
+- [RA tung]
 - [LỜI hop-00.2]
 - [MÀN CHIẾU hop-chieu-or · truy vấn nạp sẵn c-sua-or-quan · chạy · 32 dòng]
 - [LỜI hop-00.3]
 - [ẢNH cg-hop-doi-dau]
 - [SỬA TRUY VẤN c-sua-or-quan]
 - [HIỆU ỨNG co-so-lieu-day]
+- [VÀO quan]
 - [LỜI hop-00.4]
 - [ĐI TỚI hop-01]
 

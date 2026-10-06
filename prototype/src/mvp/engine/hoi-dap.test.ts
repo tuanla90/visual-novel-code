@@ -340,7 +340,7 @@ describe('loiDaThay: lời của buổi hỏi rải nhiều đoạn (n3-ctsv, n4
     s = lam(KB, s, { type: 'tiep' });
     expect(s.daThayLoi).toBe('n3-ctsv');
     expect(s.nhiemVu).toBe('Làm sao để được xem bảng sinh viên?');
-    expect(s.nhacViec?.nhanVat).toBe('minh-anh');
+    expect(s.nhacViec?.nhanVat).toBe('ha-vy');
     const kn = khungNhin(KB, s);
     expect(kn.kind === 'explore' && kn.nut.id).toBe('kp-soi-quan');
     const r = docTiep(s, laQuanCanCu);
@@ -348,7 +348,8 @@ describe('loiDaThay: lời của buổi hỏi rải nhiều đoạn (n3-ctsv, n4
     // Chỉ đọc lời của ba chỗ soi; không có lời cô Lan nói lại, không có lời đi đường.
     expect(r.daDoc.some((t) => t.includes('Lại con đường tắt'))).toBe(false);
     expect(r.daDoc.some((t) => t.includes('Cô ký phiếu tra cứu'))).toBe(false);
-    expect(r.daDoc).toHaveLength(6);
+    // Khối n3-ctsv.1c (Quân tự xưng, hai câu) đứng ngoài loiDaThay để còn ở cách bấm / gõ (06/10 vòng 2).
+    expect(r.daDoc).toHaveLength(8);
     expect(r.s.hoSo.manhMoi).toEqual(expect.arrayContaining(['clue-can-ma-va-can-cu', 'clue-phieu-tra-cuu']));
   });
 
@@ -363,7 +364,7 @@ describe('loiDaThay: lời của buổi hỏi rải nhiều đoạn (n3-ctsv, n4
   it('cách "xem cả đoạn": chạy đủ các đoạn như trước gói B12', () => {
     const s = lam(KB, vao('n3-ctsv', 'tu-dong'), { type: 'hoi-dap-ke-tiep' });
     const kn = khungNhin(KB, s);
-    expect(kn.kind === 'line' && kn.loi.text).toBe('Lại con đường tắt qua sân bóng rổ.');
+    expect(kn.kind === 'line' && kn.loi.text).toBe('Lại đi tắt qua sân bóng rổ. Hôm qua ba phút, hôm nay tớ cá hai phút rưỡi, thế mà…');
     expect(s.daThayLoi ?? null).toBeNull();
     const r = docTiep(s, laQuanCanCu);
     expect(r.daDoc.some((t) => t.includes('Cô ký phiếu tra cứu'))).toBe(true);
@@ -384,7 +385,8 @@ describe('loiDaThay: lời của buổi hỏi rải nhiều đoạn (n3-ctsv, n4
   it('gặp lại một [HỎI ĐÁP] thì dấu "đã thay lời" hết hiệu lực; lưu, nạp giữ dấu', () => {
     let s = lam(KB, vao('n4-ctsv-vao'), ...hoiDu(KB.hoiDap!.to['n4-ctsv-vao']!), { type: 'hoi-dap-roi-di' }, { type: 'tiep' });
     let kn = khungNhin(KB, s);
-    expect(kn.kind === 'line' && kn.loi.speaker).toBe('quan');
+    // Sau buổi hỏi là khối n4-ctsv.1w (Tùng cá trượt) rồi mới tới Quân (06/10 vòng 2).
+    expect(kn.kind === 'line' && kn.loi.speaker).toBe('tung');
     expect(s.daThayLoi).toBe('n4-ctsv-vao');
     const nap = xuLy(KB, JSON.parse(JSON.stringify(s)) as TrangThaiMvp, { type: 'sua-con-tro' });
     expect(khungNhin(KB, nap)).toEqual(kn);

@@ -13,7 +13,8 @@
 ## hop-00.2
 - [DÀN DỰNG] {{nv.thay-quang}} ngồi giữa; {{nv.co-lan}} và {{nv.quan}} một bên, CLB một bên. {{nv.hoai}} ngồi chờ ngoài hành lang theo quy chế, chưa được mời vào.
 - **narrator**: Bốn giờ chiều. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ.
-- **thay-quang** (neutral): Thầy là Quang, phó hiệu trưởng phụ trách sinh viên, chủ trì buổi rà soát này. Hôm nay thầy phải chốt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử. Mời các em trình bày căn cứ.
+- [DÀN DỰNG] Khung có [RA tung] ngay trước đoạn này: Tùng ngồi xuống khi buổi họp bắt đầu, dáng gãi đầu không đứng suốt lúc thầy nói; cậu tự lên hình khi kêu "ba mươi hai người" (06/10 vòng 2).
+- **thay-quang** (neutral): Thầy là Quang, phó hiệu trưởng phụ trách sinh viên. Hôm nay thầy phải chốt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử. Mời các em trình bày căn cứ.
 - **minh-anh** (neutral): Dạ, bọn em xin trình bày cách bọn em lọc ra danh sách ạ.
 - **quan** (chi-man): Bên tôi lọc lại cho chắc: tên là Hoài hoặc học lớp BC24A, ra ba mươi hai dòng. Hồ sơ các bạn nộp chỉ có một người.
 
@@ -26,6 +27,7 @@
 - [DÀN DỰNG] Nhân vật chính xin phép thầy Quang, bước lên cạnh máy chiếu để chỉ ra chỗ nhầm lẫn.
 
 ## hop-00.4
+- [DÀN DỰNG] Khung có [VÀO quan] ngay trước đoạn này: người chơi nói thẳng với anh Quân nên anh đứng trên dàn (06/10 vòng 2).
 - **player**: Anh đang gộp chung người tên Hoài và cả lớp BC24A. Bọn em chỉ tìm người vừa tên Hoài, vừa học BC24A.
 - **quan** (neutral): …Một dòng. Vâng. Mời các bạn nói tiếp.
 > NHẮC VIỆC minh-anh (serious): Nói có sách, mách có chứng. Trình đúng những gì đã tra.
@@ -78,7 +80,7 @@
 - **narrator**: Chiều muộn, cả nhóm về phòng CLB dọn bảng. Từ cuốn sổ CLB rơi ra một mẩu giấy gấp tư.
 - **duy** (neutral): Mực xanh, ngả màu cả rồi. Sổ này năm nào cũng kiểm, chưa thấy tờ này bao giờ.
 - **player**: Có một dòng thôi: "Căn phòng này giữ nhiều hơn em nghĩ."
-- **tung** (surprised): Giữ gì cơ? Phòng có mỗi cái tủ với cái bảng.
+- **tung** (surprised): Giữ gì cơ? Ngoài cái tủ sắt ra thì phòng này có gì đâu. Tớ cá là ai đó viết đùa thôi.
 - **ha-vy** (thinking): Đừng cá. Chưa có gì để tính cả.
 - **tung** (happy): Thế thì đi uống trà đá thôi. Tớ hứa rồi mà.
 

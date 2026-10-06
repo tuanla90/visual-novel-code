@@ -101,4 +101,5 @@
 
 - [LỜI n2-toi.1]
 - [ẢNH chibi-mi-tom]
+- [LỜI n2-toi.2]
 - [XONG VIỆC CHÍNH]

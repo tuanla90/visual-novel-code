@@ -23,6 +23,7 @@
 
 - [HỎI ĐÁP n4-ctsv-vao]
 - [LỜI n4-ctsv.1v]
+- [LỜI n4-ctsv.1w]
 - [HẬU QUẢ] mở manh mối clue-hoai-nguoi-nop
 - [LỜI n4-ctsv.2]
 - [RẼ NHÁNH r-phong-may] tung: "Mà thư đánh máy thì phải in ở đâu chứ nhỉ? Phòng Đào tạo ngay cạnh đây, tiện đường ghé hỏi cô Hạnh không?"
@@ -75,5 +76,8 @@
 - [ẢNH chibi-banh-quy]
 - [LỜI n4-toi.1b]
 - [LỜI n4-toi.1c]
+- [RA player]
+- [VÀO duy]
+- [LỜI n4-toi.1c2]
 - [LỜI n4-toi.1d]
 - [XONG VIỆC CHÍNH]

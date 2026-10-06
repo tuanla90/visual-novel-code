@@ -12,7 +12,7 @@
 
 ## n2-co-hanh.1
 > NHIỆM VỤ: Tài khoản của CLB được xem những gì?
-> NHẮC VIỆC minh-anh (neutral): Được xem đúng quyền thôi. Tới đó hỏi cô là rõ.
+> NHẮC VIỆC ha-vy (neutral): Tài khoản xem được gì, vào hỏi cô là rõ.
 - [DÀN DỰNG] Nền là Phòng Đào tạo: cả nhóm VỪA TỚI nơi. Chuyện đi tắt kể ở thì đã qua, không kể "trên đường" (06/10, người xem ngoài: lời đang đi đường mà hình đã ở trong phòng).
 - **tung** (happy): Thấy chưa, tớ dẫn đi tắt qua sân bóng rổ, nhanh hơn ba phút!
 - **ha-vy** (smile): Cậu đo cả thời gian đi bộ à?
@@ -42,7 +42,7 @@
 
 ## n2-bd-cang-tin.1
 - **tung** (happy): Giờ này vắng. Trưa ra đây á, tớ cá là chen bẹp ruột!
-- **tung** (chi-tay): Tối thứ Hai đi đá bóng về tớ toàn thấy cậu ở thư viện tới lúc đóng cửa đấy, Hà Vy.
+- **tung** (chi-tay): Mà nói chuyện ăn mới nhớ. Tối thứ Hai đi đá bóng về, tớ toàn thấy cậu ở thư viện tới lúc đóng cửa đấy, Hà Vy. Thế ăn tối lúc nào?
 - **ha-vy** (neutral): Cậu soi kỹ thật đấy. Ừ, tối thứ Hai tớ rảnh.
 
 ## n2-phong.1
@@ -88,13 +88,16 @@
 ## n2-laptop.2
 - **ha-vy** (neutral): Hai lớp: BC24A với BC23A.
 - **player**: BC23A là khóa trước mà? Thẻ lịch ghi K24.
-- **ha-vy** (thinking): Ừ, thẻ lịch nghiêng về BC24A. Nhưng cứ giữ cả hai lớp, loại sau cũng chưa muộn.
+- **ha-vy** (thinking): Ừ, thẻ lịch nghiêng về BC24A. Nhưng thẻ mắc ở khe chưa chắc là của người bỏ thư. Cứ giữ cả hai lớp, loại sau cũng chưa muộn.
 - **tung** (worried): Hai lớp vẫn đông lắm. Mà mình đâu có xem được danh sách sinh viên.
 - **ha-vy** (neutral): Cô Hạnh bảo rồi đấy: phải có phiếu của Phòng Công tác sinh viên.
 > NHẮC VIỆC ha-vy (neutral): Hai lớp: BC24A, BC23A. Muốn xem người thì cần phiếu của Phòng Công tác sinh viên.
 
 ## n2-toi.1
 - **narrator**: Tối, phòng 408. Tùng bóc hai gói mì, bẻ đôi nhét vừa cái bát inox.
+
+## n2-toi.2
+- [DÀN DỰNG] Ảnh chibi-mi-tom (Tùng rắc gia vị vào bát mì) chạy ngay TRƯỚC đoạn này, liền sau câu dẫn bóc mì (06/10 vòng 2, người xem ngoài: ảnh để tận cuối, khi chuyện đã kể xong).
 - **tung** (happy): Bí kíp này: đổ nước sôi ngập, úp đĩa lên, đếm chuẩn một trăm tám mươi giây.
 - **player**: Cậu đếm thật à?
 - **tung** (chi-tay): Tớ cá là cậu chưa đếm tới năm mươi đã mở ra gắp rồi!

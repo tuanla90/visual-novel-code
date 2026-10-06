@@ -123,7 +123,7 @@ describe('A. hết ngày do người chơi bấm', () => {
     expect(xuLy(KB, s, { type: 'het-ngay' })).toBe(s);
     s = quaLoi(KB, xem(s, 'n2-co-hanh'));
     expect(kp(s).hetNgay ?? null).toBeNull();
-    expect(s.nhacViec?.text).toBe('Được xem đúng quyền thôi. Tới đó hỏi cô là rõ.');
+    expect(s.nhacViec?.text).toBe('Tài khoản xem được gì, vào hỏi cô là rõ.');
     s = hoiHet(xem(s, 'n2-co-hanh-vao'));
     expect(kp(s).xongChinh).toBe(true);
     expect(kp(s).hetNgay ?? null).toBeNull();
@@ -312,7 +312,7 @@ describe('B. nơi đã ghé vào lại được', () => {
     s = quaLoi(KB, s);
     expect(kp(s).xongChinh).toBe(false);
     expect(diem(kp(s), 'n2-co-hanh-vao')?.daXem).toBe(false);
-    expect(s.nhacViec?.nhanVat).toBe('minh-anh');
+    expect(s.nhacViec?.nhanVat).toBe('ha-vy');
     const taiLieu = [...s.hoSo.taiLieu];
 
     s = xem(s, 'n2-co-hanh-vao');

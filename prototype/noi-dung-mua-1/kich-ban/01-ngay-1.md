@@ -19,6 +19,8 @@
 
 ### n1-hop — Khe hộp: mẩu thẻ lịch rách {cảnh: sanh-toa-b}
 
+- [VÀO tung]
+- [VÀO ha-vy]
 - [LỜI n1-hop.1]
 - [LƯU BẰNG CHỨNG ev-the-lich]
 - [HẬU QUẢ] mở manh mối clue-bao-chi-k24

@@ -13,12 +13,12 @@
 
 ## n3-ctsv.1
 > NHIỆM VỤ: Làm sao để được xem bảng sinh viên?
-> NHẮC VIỆC minh-anh (neutral): Kết quả hai lớp hôm qua là căn cứ để xin phiếu tra cứu.
-- **narrator**: Lại con đường tắt qua sân bóng rổ.
-- **tung** (happy): Hôm qua ba phút, hôm nay tớ cá là hai phút rưỡi.
-- **ha-vy** (neutral): Đừng cá nữa. Để tớ bấm giờ cho.
-- **player**: Hai phút bốn mươi. Coi như Tùng thua mười giây.
-- **tung** (gai-dau): Tại cậu ấy dừng lại đọc bảng tin!
+> NHẮC VIỆC ha-vy (neutral): Kết quả hai lớp hôm qua là căn cứ để xin phiếu tra cứu.
+- [DÀN DỰNG] Cả nhóm VỪA TỚI Phòng Công tác sinh viên (nền phòng CTSV); chuyện đi tắt kể ở thì đã qua (06/10 vòng 2, người xem ngoài).
+- **tung** (chi-tay): Lại đi tắt qua sân bóng rổ. Hôm qua ba phút, hôm nay tớ cá hai phút rưỡi, thế mà…
+- **ha-vy** (neutral): Tớ bấm giờ rồi: hai phút bốn mươi.
+- **player**: Coi như Tùng thua mười giây.
+- **tung** (gai-dau): Tại cậu dừng lại đọc bảng tin đấy!
 - **co-lan** (neutral): Hộp kiến nghị là bên cô quản. Người gửi muốn được trả lời thì phải ghi mã sinh viên của mình vào phiếu gửi. Mã đó được chép vào sổ niêm phong.
 - **co-lan** (neutral): Sổ đó niêm phong. Cô cũng không được tự mở.
 - **player**: Vậy làm sao biết được ai gửi ạ?
@@ -28,8 +28,11 @@
 - **ha-vy** (thinking): Người lạ kìa. Nhìn kỹ một chút trước khi anh ấy mở lời đã.
 
 ## n3-ctsv.1b
-- **quan** (neutral): Tôi là Quân, bên Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi được cử xuống giám sát việc này.
 - **co-lan** (neutral): Hai lớp các em lọc ra hôm qua là căn cứ được. Cô ký phiếu tra cứu: bảng sinh viên, bốn cột, mã, họ đệm, tên, mã lớp. Không hơn.
+
+## n3-ctsv.1c
+- [DÀN DỰNG] Khối riêng để câu tự xưng của Quân còn ở cách bấm / gõ (khối .1b bị buổi hỏi thay lời).
+- **quan** (neutral): Tôi là Quân, bên Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi được cử xuống giám sát việc này.
 - **quan** (neutral): Tôi ký giám sát. Các bạn tra những gì, bên tôi xem hết.
 
 ## n3-ctsv.2
@@ -44,7 +47,7 @@
 
 ## n3-soi-kinh.1
 - **player**: Kính gọng mảnh, lau sạch bóng.
-- **ha-vy** (thinking): Người kỹ tính. Mình viết gì anh ấy cũng sẽ soi từng chữ.
+- **ha-vy** (thinking): Người kỹ tính. Mình viết gì chắc anh ấy cũng soi từng chữ.
 
 ## n3-soi-gi-le.1
 - **player**: Gi lê len, sơ mi cài kín cổ. Mặt còn trẻ quá, không phải thầy cô.
@@ -72,6 +75,9 @@
 - **tung** (worried): Gắt thế… cậu ta gửi thư à?
 - **ha-vy** (thinking): Ghét với gửi thư là hai việc khác nhau.
 - **hieu** (annoyed): Nhìn gì? Có gì hỏi thẳng đây, đừng xì xào sau lưng.
+
+## n3-cang-tin.2
+- [DÀN DỰNG] Tách khỏi n3-cang-tin.1 và không khai trong "loiDaThay" của tờ hoi-dap/n3-cang-tin.json: tiếng gọi lộ tên Hiếu phải chạy ở cả cách bấm / gõ, nếu không Tùng về CLB nói "cậu gắt ở căng tin tên Hiếu" mà người chơi chưa nghe tên bao giờ (06/10 vòng 2).
 - **narrator**: Có tiếng gọi từ quầy: "Hiếu ơi, lấy cơm này!" Cậu ta đứng dậy, bỏ đi.
 - **tung** (happy): Thôi, chuyện thư từ để nhóm mình tự kiểm tra. Tớ ra lấy trà đá, ai uống không?
 - **tung** (worried): Khoan, ví còn đúng tiền cơm tối. Thêm cốc trà đá là tối nay nhịn.
@@ -79,7 +85,7 @@
 > NHẮC VIỆC ha-vy (neutral): Phiếu của cô Lan có rồi. Về phòng CLB mở bảng sinh viên thôi.
 
 ## n3-phong.1
-- **narrator**: Về phòng CLB. Phiếu tra cứu của cô Lan nằm trên bàn, cạnh cái laptop.
+- **narrator**: Về phòng CLB. Phiếu tra cứu của cô Lan nằm trên bàn.
 
 ## n3-phong-duy.1
 - **duy** (neutral): Có phiếu của cô Lan rồi, máy mở thêm được bảng sinh viên.

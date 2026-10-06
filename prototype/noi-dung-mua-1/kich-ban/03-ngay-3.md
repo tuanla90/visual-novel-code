@@ -30,6 +30,7 @@
   - vung:gi-le · x 50% · y 46% · rộng 24% → n3-soi-gi-le · nhãn: Áo gi lê len
   - vung:tay · x 14% · y 80% · rộng 20% → n3-soi-tay · nhãn: Hai tay chắp sau lưng
 - [LỜI n3-ctsv.1b]
+- [LỜI n3-ctsv.1c]
 - [HẬU QUẢ] mở manh mối clue-can-ma-va-can-cu, mở manh mối clue-phieu-tra-cuu
 - [LỜI n3-ctsv.2]
 
@@ -87,6 +88,7 @@
 
 - [HỎI ĐÁP n3-cang-tin]
 - [LỜI n3-cang-tin.1]
+- [LỜI n3-cang-tin.2]
 
 ### n3-phong — Phòng CLB buổi chiều ngày 3: ai có việc nấy {cảnh: phong-clb}
 

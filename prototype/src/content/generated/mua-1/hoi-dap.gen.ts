@@ -1978,6 +1978,9 @@ export const HOI_DAP_MUA_1 = {
         "ghet-clb",
         "nhom-xin-phong"
       ],
+      "loiDaThay": [
+        "n3-cang-tin.1"
+      ],
       "gioiHan": {
         "soCau": 4,
         "lyDo": "phien",
@@ -2122,7 +2125,12 @@ export const HOI_DAP_MUA_1 = {
             "Hết rồi. Tôi chỉ nói có thế.",
             "Thế thôi. Các bạn còn muốn nghe gì nữa?"
           ],
-          "cauHoiMau": []
+          "cauHoiMau": [
+            "Cậu biết gì về chuyện này không?",
+            "còn gì nữa không",
+            "kể tớ nghe với",
+            "cậu còn bực gì nữa"
+          ]
         },
         "hoi-rieng-tu": {
           "loi": [
@@ -2247,7 +2255,15 @@ export const HOI_DAP_MUA_1 = {
           "ai": "ha-vy",
           "loi": "Thôi được. Tớ để nguyên dòng ấy trong sổ."
         }
-      }
+      },
+      "nutDaThay": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
     },
     "n3-ctsv": {
       "ma": "n3-ctsv",
@@ -2675,7 +2691,6 @@ export const HOI_DAP_MUA_1 = {
         }
       },
       "nutDaThay": [
-        3,
         4,
         5,
         6,
@@ -2686,9 +2701,7 @@ export const HOI_DAP_MUA_1 = {
         11,
         13,
         14,
-        17,
-        18,
-        19
+        17
       ]
     },
     "n4-bd-toa-b-vao": {
@@ -3317,7 +3330,6 @@ export const HOI_DAP_MUA_1 = {
         1,
         2,
         3,
-        4,
         5
       ]
     },

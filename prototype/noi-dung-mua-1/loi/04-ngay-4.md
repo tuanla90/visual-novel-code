@@ -21,17 +21,22 @@
 - **co-lan** (neutral): Cô tra rồi. SV240317 có trong sổ. SV240228 thì không.
 - **player**: Vậy SV240317 là người nộp thư ạ?
 - **co-lan** (neutral): Sổ niêm phong chỉ xác nhận mã đó có mặt. Cô không kết luận thêm.
+- [DÀN DỰNG] Câu quy chế mời họp của cô Lan dời từ n4-ctsv.2 lên đây: tờ hỏi đáp n4-ctsv-vao đã có dữ kiện này nên ở cách bấm / gõ cô không nói lại hai lần (06/10 vòng 2, người xem ngoài).
+- **co-lan** (neutral): Theo quy chế, sinh viên có mã trong sổ sẽ được mời đến buổi họp. Có gọi vào hay không do buổi họp quyết định.
+
+## n4-ctsv.1w
+- [DÀN DỰNG] Khối riêng để câu Tùng cá trượt còn ở cách bấm / gõ (khối .1v bị buổi hỏi thay lời).
 - **tung** (gai-dau): Mã của Hiếu không có… Tớ cá trượt rồi à?
 - **ha-vy** (neutral): Trượt cũng chẳng sao. Ít ra mình loại được thêm một người.
 
 ## n4-ctsv.2
 - **quan** (neutral): Biết ai nộp chưa có nghĩa là biết ai viết.
-- **co-lan** (neutral): Ai viết thì cô chưa nói được. Theo quy chế, sinh viên có mã trong sổ sẽ được mời đến buổi họp, gọi vào hay không do buổi họp quyết định.
+- **co-lan** (neutral): Ai viết thì cô chưa nói được.
 
 ## n4-phong-may.1
 > NHIỆM VỤ: Lá thư được in từ tài khoản nào?
 > NHẮC VIỆC ha-vy (thinking): Chân trang thư là tên tệp. Nhật ký in sẽ ghi tài khoản nào in nó.
-- **narrator**: Phòng Đào tạo ngay cạnh đó. Cô Hạnh nhận phiếu yêu cầu.
+- **narrator**: Phòng Đào tạo ngay cạnh đó. Cô Hạnh nhận tờ phiếu yêu cầu cô Lan vừa ký.
 - **co-hanh** (neutral): Máy in trường lưu tài khoản, giờ in, tên tệp. Cô mở đúng bảng nhật ký in cho các em xem.
 - **co-hanh** (neutral): Dưới chân bản in thường có tên tệp. Thư của các em có không?
 - **player**: Có ạ. Nhưng bản chụp bị xén, chỉ đọc được chữ: kien-nghi…
@@ -79,6 +84,9 @@
 ## n4-toi.1c
 - **tung** (surprised): Ơ! Thế là vu khống có số liệu à!
 - **minh-anh** (happy): Đã có số liệu thì không gọi là vu khống nữa đâu em.
+
+## n4-toi.1c2
+- [DÀN DỰNG] Trước đoạn này khung có [RA player] và [VÀO duy]: Duy đứng trên dàn lúc lời dẫn kể anh ăn cái bánh cuối và mở sổ; người chơi đã nói xong lượt "ba dữ kiện" nên xuống dàn (06/10 vòng 2).
 - **narrator**: Chín giờ tối, hộp bánh hết. Người ăn cái cuối là Duy. Cậu lẳng lặng mở sổ, ghi: "Nợ CLB một hộp bánh."
 
 ## n4-toi.1d

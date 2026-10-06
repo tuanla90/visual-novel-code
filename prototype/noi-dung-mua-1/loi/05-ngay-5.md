@@ -17,6 +17,7 @@
 - **chu-cuong** (neutral): Không. Cậu ấy đứng xa, trời lại mới sáng, chú chỉ để ý cái huy hiệu thôi. Cái bánh răng sứt mất một răng, trông lệch lệch nên chú nhớ.
 
 ## n5-chu-cuong.2
+- [DÀN DỰNG] Khung có [RA chu-cuong] ngay trước đoạn này: chú đã chào "đi đi", ba đứa bàn với nhau, chú không đứng nghe (06/10 vòng 2).
 - **tung** (surprised): Huy hiệu bánh răng? Hôm Ngày hội CLB, biển của bọn Robotics vẽ đúng hình đấy!
 - **ha-vy** (day-kinh): Huy hiệu thì thành viên nào cũng có. Mới khoanh được là người của Robotics thôi.
 - **tung** (gai-dau): Nhưng Robotics thì liên quan gì tới phòng của mình?
