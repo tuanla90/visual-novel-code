@@ -163,6 +163,13 @@ export interface NhacViecMvp {
 /** Ba cách chơi cảnh hỏi nhân chứng: xem cả đoạn viết sẵn / bấm câu hỏi mẫu / gõ câu hỏi. Thiết lập của người chơi. */
 export type CachChoiMvp = 'tu-dong' | 'bam' | 'go';
 
+// ---------- Hai câu hỏi đầu ván (gói B17, docs/mua-1/brief/b17-hai-cau-hoi-dau-van.md; luật ở `muc-choi.ts`) ----------
+
+/** Mức nhập vai thám tử: "Có người dẫn" / "Tự dò" / "Như thật" (dấu trên ghim và điểm bấm, cách hỏi nhân chứng mặc định, bạn đi cùng). */
+export type MucNhapVaiMvp = 'dan' | 'tu-do' | 'that';
+/** Mức tra dữ liệu: "Ghép khối" / "Ghép khối, chữ SQL" / "Tự viết". */
+export type MucSqlMvp = 'ghep' | 'ghep-sql' | 'tu-viet';
+
 /** Tiến độ hỏi một tờ dữ kiện, giữ qua các lần gặp (lưu cùng ván). */
 export interface TienDoHoiDapMvp {
   /** Mã dữ kiện đã hỏi ra, theo thứ tự. */
@@ -314,8 +321,15 @@ export interface TrangThaiMvp {
   uyTin: number;
   soLanMatVach: number;
   hoiDap: HoiDapMvp | null;
-  /** Thiết lập cách chơi cảnh hỏi nhân chứng (gói B12). Thiếu = 'go' (gõ câu hỏi). Lưu cùng tiến trình. */
+  /**
+   * Thiết lập cách chơi cảnh hỏi nhân chứng (gói B12). Thiếu = theo mức nhập vai (gói B17) nếu có, không thì 'go' (gõ câu hỏi).
+   * Lưu cùng tiến trình. Bộ mùa 1 có mức nhập vai: đổi tại chỗ trong khung hỏi chỉ áp cho buổi hỏi đó (đóng buổi là quên).
+   */
   cachChoi?: CachChoiMvp;
+  /** Gói B17 (bộ mùa 1): mức nhập vai người chơi chọn đầu ván / trong Cài đặt. Thiếu (ô lưu cũ, bộ MVP) = "Tự dò". */
+  mucNhapVai?: MucNhapVaiMvp;
+  /** Gói B17 (bộ mùa 1): mức tra dữ liệu. Thiếu (ô lưu cũ, bộ MVP) = "Ghép khối". */
+  mucSql?: MucSqlMvp;
   /** Buổi hỏi nhân chứng đang mở; ô lưu cũ không có = không có. */
   buoiHoi?: BuoiHoiMvp | null;
   /** Tiến độ hỏi theo mã tờ dữ kiện (điều đã hỏi ra giữ qua các lần gặp và khi đổi cách chơi). */

@@ -141,6 +141,9 @@ const CAI = `(async () => {
 })()`;
 
 const batDau = `(() => {
+  // Gói B17: sau "Chơi mới" là màn hai câu hỏi (mức nhập vai, mức SQL); công cụ quay nhận nấc chọn sẵn ("Tự dò" + "Ghép khối") và bấm "Bắt đầu".
+  const nutBatDau = document.querySelector('.mvp-chon-muc__xong');
+  if (nutBatDau) { nutBatDau.click(); return 'da-bam-bat-dau'; }
   const el = [...document.querySelectorAll('button, [role="button"], a, div, span')].filter((e) => /^\\s*(▶\\s*)?chơi mới\\s*$/i.test(e.textContent || '')).pop();
   if (!el) return 'khong-thay';
   (el.closest('button') ?? el).click();

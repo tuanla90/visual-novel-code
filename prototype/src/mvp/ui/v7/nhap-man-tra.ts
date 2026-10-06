@@ -12,6 +12,8 @@ export interface NhapManTra {
   cotLay: string[];
   bangGocChon: string | null;
   daChonBang: boolean;
+  /** Gói B17, nấc "Tự viết": câu SQL người chơi đang gõ. */
+  goSql?: string;
 }
 
 const NHAP = new Map<string, NhapManTra>();

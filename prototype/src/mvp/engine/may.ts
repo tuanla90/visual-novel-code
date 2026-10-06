@@ -43,9 +43,10 @@ import type {
   TheThuThachMvp,
   VuSauMvp,
 } from '../../content/mvp/types';
-import { MAU_GHIM, type BoiCanhChuoi, type CachChoiMvp, type HetNgayMvp, type KhamPhaMvp, type MauGhimMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp, type TiepTucTuyenMvp } from './trang-thai';
+import { MAU_GHIM, type BoiCanhChuoi, type CachChoiMvp, type HetNgayMvp, type KhamPhaMvp, type MauGhimMvp, type MucNhapVaiMvp, type MucSqlMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp, type TiepTucTuyenMvp } from './trang-thai';
 import { laTheHoiDap } from './bang-dieu-tra';
 import { cachChoiCua, dongBong, dongChuaGach, ghiTuDong, goiY, hoi, keTiep, khoiThayThe, khungHoiDap, laLoiDaThay, locHauQuaDaThay, moBuoiHoi, napLaiLuot, roiDi, tienDoCua, toHoiDap, type KhungHoiDapMvp } from './hoi-dap';
+import { datMuc, laMucNhapVai, laMucSql, quenCachTamThoi } from './muc-choi';
 
 /**
  * Tên dự phòng khi trạng thái chưa có tên (chưa qua câu hỏi tên, hay ô lưu hỏng). Không dùng trên đường chạy thường:
@@ -173,7 +174,9 @@ export type HanhDongMvp =
   /** Gói B13: rời màn tra chưa giải xong, về cảnh khám phá đã mở nó (xem `canhLuiThuThach`). */
   | { type: 'roi-thu-thach' }
   /** Gói B15: người chơi tự bấm hết ngày (chỉ khi khung nhìn cảnh khám phá có `hetNgay`): chạy chuỗi buổi tối rồi sang ngày kế. */
-  | { type: 'het-ngay' };
+  | { type: 'het-ngay' }
+  /** Gói B17 (bộ mùa 1): đặt mức nhập vai / mức SQL (hai câu hỏi đầu ván, menu Cài đặt); áp ngay, không đổi con trỏ. */
+  | { type: 'doi-muc'; nhapVai?: MucNhapVaiMvp; sql?: MucSqlMvp };
 
 // ---------- Khung nhìn ----------
 
@@ -1318,6 +1321,10 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
     // Chỉ đổi thiết lập; khung hỏi đang mở giữ nguyên, nên bấm nhầm thì bấm lại cách cũ là xong.
     return cachChoiCua(s) === hd.cach && s.cachChoi !== undefined ? s : { ...s, cachChoi: hd.cach };
   }
+  if (hd.type === 'doi-muc') {
+    if ((hd.nhapVai !== undefined && !laMucNhapVai(hd.nhapVai)) || (hd.sql !== undefined && !laMucSql(hd.sql))) return s;
+    return datMuc(s, hd);
+  }
   const kn = khungNhin(kb, s);
   let moi: TrangThaiMvp | null = null;
 
@@ -1376,7 +1383,8 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
     case 'tiep': {
       if (kn.kind === 'hoi-dap') {
         if (!kn.hoiDap.daRoi) return s;
-        moi = dongBuoiHoi(kb, s);
+        // Gói B17: cách đổi tại chỗ trong khung hỏi chỉ áp cho buổi vừa đóng; buổi sau lại theo mức nhập vai.
+        moi = quenCachTamThoi(dongBuoiHoi(kb, s));
       } else if (kn.kind === 'feedback') {
         const hoiDap = s.hoiDap;
         if (!hoiDap) return s;
@@ -1628,7 +1636,7 @@ function xemCaDoan(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp | null {
   if (!b || b.daRoi || b.hoiLai || !s.conTro || cachChoiCua(s) !== 'tu-dong') return null;
   const n = timChuoi(kb, s.conTro.chuoi)?.nodes[s.conTro.nut];
   if (n?.type !== 'hoi-dap' || n.ma !== b.ma || tienDoCua(s, b.ma).biet.length > 0) return null;
-  return { ...ghiTuDong(kb, s, b.ma), buoiHoi: null, conTro: { ...s.conTro, nut: s.conTro.nut + 1 } };
+  return quenCachTamThoi({ ...ghiTuDong(kb, s, b.ma), buoiHoi: null, conTro: { ...s.conTro, nut: s.conTro.nut + 1 } });
 }
 
 // ---------- Tiện ích cho giao diện ----------

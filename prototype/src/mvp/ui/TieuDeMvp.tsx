@@ -10,8 +10,10 @@ import { AudioSettingsModal } from '../../shared/audio/AudioSettingsModal';
 import { soundEngine } from '../../shared/audio/sound-engine';
 import { ConfirmDialog } from '../../shared/ui/ConfirmDialog';
 import { taoTrangThai } from '../engine/may';
-import { doiBoNoiDung, KICH_BAN, layMaBoNoiDung, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
+import { MUC_NHAP_VAI_MAC_DINH, MUC_SQL_MAC_DINH } from '../engine/muc-choi';
+import { docMucDaChon, doiBoNoiDung, ghiMucDaChon, KICH_BAN, layMaBoNoiDung, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
 import { anhTheoTen } from './anh-mvp';
+import { ChonMucMvp } from './ChonMucMvp';
 import { LuuNapMvp } from './LuuNapMvp';
 import { taiTruocTheoVan } from './tai-truoc-mvp';
 
@@ -72,7 +74,14 @@ export function TieuDeMvp({ onVao }: TieuDeMvpProps) {
   const [nap, setNap] = useState(false);
   const [caiDat, setCaiDat] = useState(false);
   const [hoiChoiLai, setHoiChoiLai] = useState(false);
+  // Gói B17 (bộ mùa 1): sau "Chơi mới" là màn hai câu hỏi (mức nhập vai, mức SQL); chọn xong mới vào ván.
+  const [chonMuc, setChonMuc] = useState(false);
   const menu = useRef<HTMLElement>(null);
+  const choiMoi = (): void => {
+    if (KICH_BAN.dieuHuongTuDo) setChonMuc(true);
+    else onVao(true);
+  };
+  const mucSan = docMucDaChon() ?? { nhapVai: MUC_NHAP_VAI_MAC_DINH, sql: MUC_SQL_MAC_DINH };
   const coVan = s !== null;
   const coONap = oLuu.some((o) => o !== null);
   const bia = anhTheoTen('cg-bia');
@@ -110,7 +119,7 @@ export function TieuDeMvp({ onVao }: TieuDeMvpProps) {
       </header>
       <nav ref={menu} className="tdm__menu" aria-label="Menu chính" onKeyDown={diChuyen}>
         {coVan ? <Nut ma="tiep" chinh nhan="Chơi tiếp" phu={nhanTienDo(s)} onClick={() => onVao(false)} autoFocus /> : null}
-        <Nut ma="moi" chinh={!coVan} nhan="Chơi mới" onClick={() => (coVan ? setHoiChoiLai(true) : onVao(true))} autoFocus={!coVan} />
+        <Nut ma="moi" chinh={!coVan} nhan="Chơi mới" onClick={() => (coVan ? setHoiChoiLai(true) : choiMoi())} autoFocus={!coVan} />
         <Nut ma="nap" nhan="Nạp ván" disabled={!coONap} title={coONap ? undefined : 'Chưa có ván nào được lưu'} onClick={() => setNap(true)} />
         <Nut ma="cai" nhan="Cài đặt" onClick={() => setCaiDat(true)} />
       </nav>
@@ -149,10 +158,21 @@ export function TieuDeMvp({ onVao }: TieuDeMvpProps) {
         confirmLabel="Xóa và chơi mới"
         onConfirm={() => {
           setHoiChoiLai(false);
-          onVao(true);
+          choiMoi();
         }}
         onCancel={() => setHoiChoiLai(false)}
       />
+      {chonMuc ? (
+        <ChonMucMvp
+          nhapVai={mucSan.nhapVai}
+          sql={mucSan.sql}
+          onXong={(nhapVai, sql) => {
+            ghiMucDaChon({ nhapVai, sql });
+            setChonMuc(false);
+            onVao(true);
+          }}
+        />
+      ) : null}
     </main>
   );
 }

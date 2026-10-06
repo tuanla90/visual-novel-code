@@ -36,9 +36,11 @@
  *     hậu quả mở manh mối mà danh sách đã lo (`locHauQuaDaThay`); màn soi, ảnh, tài liệu, hậu quả khác vẫn chạy.
  */
 import { Y_DINH_CHUNG, type BoHoiDapMvp, type DuKienHoiDapMvp, type HauQuaMvp, type KichBanMvp, type LopKhacMvp, type NutMvp, type ToHoiDapMvp } from '../../content/mvp/types';
+import { CACH_HOI_THEO_MUC, mucNhapVaiCua, tuGoiY } from './muc-choi';
 import type { BongDiCungMvp, BuoiHoiMvp, CachChoiMvp, DongHoiDapMvp, TienDoHoiDapMvp, TrangThaiMvp } from './trang-thai';
 import { dungMaySoChu, kieuHoi, xepCau, type CauMau, type KetQuaXep, type MaySoChu } from './xep-cau-hoi';
 
+/** Cách hỏi mặc định khi ván KHÔNG có mức nhập vai (bộ MVP, ô lưu cũ). Ván có mức (gói B17): theo `CACH_HOI_THEO_MUC`. */
 export const CACH_CHOI_MAC_DINH: CachChoiMvp = 'go';
 /** Số câu trượt liền nhau (cách gõ) thì bạn đi cùng tự gợi ý. */
 export const TRUOT_GOI_Y = 2;
@@ -51,7 +53,7 @@ const KHONG_TINH_LUOT = new Set(['chao', 'cam-on', 'tam-biet']);
 export const NHOM_NGOAI_LE = new Set(['ngoai-le', 'hoi-rieng-tu', 'pha-game', 'doi-dap-an']);
 
 export function cachChoiCua(s: TrangThaiMvp): CachChoiMvp {
-  return s.cachChoi ?? CACH_CHOI_MAC_DINH;
+  return s.cachChoi ?? (s.mucNhapVai !== undefined ? CACH_HOI_THEO_MUC[s.mucNhapVai] : CACH_CHOI_MAC_DINH);
 }
 
 export function toHoiDap(kb: KichBanMvp, ma: string): ToHoiDapMvp | undefined {
@@ -259,8 +261,8 @@ export function hoi(kb: KichBanMvp, s: TrangThaiMvp, cau: string, lopSan?: strin
   if (chon.tl.moi) s = ghiBiet(s, to, chon.tl.moi);
   const truot = chon.tl.moi ? 0 : KHONG_TINH_LUOT.has(kq.lop) ? b.truot : b.truot + 1;
   s = datBuoi(s, { ...b, nhatKy, truot, dong, bong: chon.tl.moi ? null : b.bong });
-  // Cách gõ: trượt hai câu liền thì bạn đi cùng tự gợi ý (bậc tăng dần).
-  if (cachChoiCua(s) === 'go' && !dong && truot >= TRUOT_GOI_Y) s = goiY(kb, s, false);
+  // Cách gõ: trượt hai câu liền thì bạn đi cùng tự gợi ý (bậc tăng dần). Mức "Như thật" (gói B17): chỉ khi người chơi bấm ảnh mặt.
+  if (cachChoiCua(s) === 'go' && !dong && truot >= TRUOT_GOI_Y && tuGoiY(mucNhapVaiCua(s))) s = goiY(kb, s, false);
   return s;
 }
 

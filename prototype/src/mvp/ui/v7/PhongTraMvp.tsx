@@ -19,7 +19,7 @@ import { useMemo, useState } from 'react';
 import type { BoDuLieuMvp, KichBanMvp, TheThuThachMvp } from '../../../content/mvp/types';
 import { soundEngine } from '../../../shared/audio/sound-engine';
 import type { GiaTriHoSo } from '../../engine/giay-nho';
-import type { TrangThaiMvp, GhiChuTruyVanMvp, PhieuTruyVanMvp, MauGhimMvp } from '../../engine/trang-thai';
+import type { TrangThaiMvp, GhiChuTruyVanMvp, PhieuTruyVanMvp, MauGhimMvp, MucNhapVaiMvp, MucSqlMvp } from '../../engine/trang-thai';
 import { loiVietSan } from '../../engine/dong-hanh-viet-san';
 import { nguonBangTongHop, type NguonTongHop } from '../../engine/trinh-dung-tong-hop';
 import { BangGhimMvp } from './BangGhimMvp';
@@ -46,11 +46,14 @@ export interface PhongTraMvpProps {
   onRoi?: () => void;
   /** Tên cảnh lùi về, cho nhãn nút ("Phòng CLB" → "Về phòng CLB"). */
   tenCanhRoi?: string;
+  /** Gói B17 (bộ mùa 1): mức SQL (nhãn SQL / ô gõ tự do ở màn tra v7) và mức nhập vai (bạn đi cùng tự lên tiếng). Thiếu = như cũ. */
+  mucSql?: MucSqlMvp;
+  mucNhapVai?: MucNhapVaiMvp;
 }
 
 type Pha = { ten: 'bang' } | { ten: 'may' } | { ten: 'ghim'; id: string; dung: string[]; phieu?: PhieuTruyVanMvp; ghiChu?: GhiChuTruyVanMvp[] };
 
-export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, onDoiCho, onDoiMau, onXong, onDaXemTruyVan, onRoi, tenCanhRoi }: PhongTraMvpProps) {
+export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, onDoiCho, onDoiMau, onXong, onDaXemTruyVan, onRoi, tenCanhRoi, mucSql, mucNhapVai }: PhongTraMvpProps) {
   const laPhongMay = noi !== undefined && /phòng máy/i.test(noi);
   const canh: CanhTra = mode === 'fix-query' ? 'man-chieu' : laPhongMay ? 'phong-may' : 'phong-clb';
   const [pha, setPha] = useState<Pha>(() => (mode === 'fix-query' || laPhongMay ? { ten: 'may' } : { ten: 'bang' }));
@@ -190,6 +193,8 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
         nguonPhieu={nguonPhieu}
         banDuPhong={banDuPhong}
         {...(khoaNhap ? { khoaNhap } : {})}
+        {...(mucSql ? { mucSql } : {})}
+        {...(mucNhapVai ? { mucNhapVai } : {})}
         onXong={(dung, result) => {
           const isNguonDuocKhaiBao = !!the.vatChung && Object.values(kb.thuThach).some((challenge) => challenge.nguon === the.vatChung?.id);
           const phieu = result && the.vatChung && isNguonDuocKhaiBao

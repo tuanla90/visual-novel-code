@@ -21,11 +21,16 @@
  * 06/10/2026 (gói B15): ghim nơi đã ghé và nhân chứng đã gặp vẫn bấm được (`vaoLai`: vào lại cảnh / hỏi lại). Việc chính của ngày
  * xong thì có nút hết ngày (`hetNgay`) ở góc TRÁI dưới, màu đêm, khác hẳn nút "Về bản đồ" ở góc phải dưới; còn ghim có dấu chưa
  * ghé thì hỏi lại một câu trước khi hết ngày.
+ * 06/10/2026 (gói B17): dấu theo mức nhập vai (`mucNhapVai`, luật ở `engine/muc-choi.ts`): "Có người dẫn" thêm một chấm nhỏ tĩnh
+ * trên mọi vật bấm được (kể cả chi tiết ẩn); "Tự dò" bỏ dấu và viền sáng trên vật; "Như thật" bỏ cả dấu trên ghim và người. Thiếu
+ * (bộ MVP) = như cũ.
  */
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { DiemKhamPhaMvp, KichBanMvp } from '../../content/mvp/types';
 import { soundEngine } from '../../shared/audio/sound-engine';
 import type { DiemKhamPhaHienMvp } from '../engine/may';
+import { dauTheoMuc } from '../engine/muc-choi';
+import type { MucNhapVaiMvp } from '../engine/trang-thai';
 import { danhSoTrung, nhanDiemKhamPha } from '../engine/nhan-cho-xem';
 import { anhChanDung, anhNen, anhSprite, anhTheoTen } from './anh-mvp';
 import { dangO } from '../engine/lich-nhan-vat';
@@ -59,6 +64,8 @@ export interface KhamPhaMvpProps {
   /** Gói B15: nút hết ngày (nhãn của dòng `[HẾT NGÀY]`); `conChuaGhe` > 0 thì hỏi lại trước. `null` / thiếu = không có nút. */
   hetNgay?: { nhan: string; conChuaGhe: number } | null;
   onHetNgay?: () => void;
+  /** Gói B17 (bộ mùa 1): mức nhập vai quyết định dấu nào hiện. Thiếu = như cũ (bộ MVP). */
+  mucNhapVai?: MucNhapVaiMvp;
 }
 
 /** Nút hết ngày (gói B15): bấm là hết ngày; còn nơi có dấu chưa ghé thì mở một câu hỏi lại ngắn ngay trên nút. */
@@ -136,8 +143,8 @@ const DAU: Record<NonNullable<DiemKhamPhaMvp['dau']>, { chu: string; doc: string
   phu: { chu: '?', doc: 'chuyện thêm' },
 };
 
-function HuyHieu({ d }: { d: DiemKhamPhaHienMvp }) {
-  if (!d.diem.dau || d.daXem) return null;
+function HuyHieu({ d, hien = true }: { d: DiemKhamPhaHienMvp; hien?: boolean }) {
+  if (!hien || !d.diem.dau || d.daXem) return null;
   return (
     <span className={`mvp-dau mvp-dau--${d.diem.dau}`} aria-hidden="true">
       {DAU[d.diem.dau].chu}
@@ -157,8 +164,12 @@ function useCatCanhHaVy(bat: boolean): { dang: boolean; boQua: () => void } {
   return { dang, boQua: () => setDang(false) };
 }
 
-export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay, thu, gio, dang, haVySoi, roi, onRoi, hetNgay, onHetNgay }: KhamPhaMvpProps) {
+export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay, thu, gio, dang, haVySoi, roi, onRoi, hetNgay, onHetNgay, mucNhapVai }: KhamPhaMvpProps) {
   const catCanh = useCatCanhHaVy(!!haVySoi && kieu === 'quan-sat' && diem.every((d) => !d.daXem));
+  // Gói B17: dấu "!" / "?" chỉ hiện ở loại điểm mà mức nhập vai cho (ghim / người / vật); không có mức thì hiện hết như cũ.
+  const dauMuc = mucNhapVai ? dauTheoMuc(mucNhapVai) : null;
+  const laGhim = (d: DiemKhamPhaMvp): boolean => kieu === 'ban-do' || d.sprite.startsWith('ghim:');
+  const coDau = (d: DiemKhamPhaMvp): boolean => !dauMuc || dauMuc[laGhim(d) ? 'ghim' : d.sprite.startsWith('nv:') ? 'nguoi' : 'vat'];
   const onXem = (chuoi: string): void => {
     soundEngine.playSfx('select');
     xem(chuoi);
@@ -186,7 +197,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
   const tiLe = laBanDo ? { rong: BAN_DO_MVP.rong, cao: BAN_DO_MVP.cao } : TI_LE_NEN;
   const soDe = { '--ti-le': `${tiLe.rong} / ${tiLe.cao}`, '--ti-le-so': tiLe.rong / tiLe.cao } as CSSProperties;
   const nhan = danhSoTrung(diem.map((d) => nhanDiemKhamPha(kb, d.diem)));
-  const nhanDoc = (i: number, d: DiemKhamPhaHienMvp): string => `${nhan[i] ?? ''}${d.diem.dau && !d.daXem ? ` (${DAU[d.diem.dau].doc})` : ''}`;
+  const nhanDoc = (i: number, d: DiemKhamPhaHienMvp): string => `${nhan[i] ?? ''}${d.diem.dau && !d.daXem && coDau(d.diem) ? ` (${DAU[d.diem.dau].doc})` : ''}`;
   const tieuDe = laBanDo ? 'Đi đâu bây giờ?' : laQuanSat ? `Quan sát ${nv?.trongCau ?? ''}` : tenCanh;
   // Không còn dòng đếm "Còn N chỗ chưa xem" (user 03/10/2026): đếm sẵn làm mất phần tự tìm. Chỉ bản đồ và phòng có dấu ! / ? giữ chú giải.
   const phu = laBanDo
@@ -205,7 +216,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
   const anhMatVy = anhTheoTen('cat-canh-ha-vy-mat');
 
   return (
-    <div className={`mvp-canh mvp-khampha${laBanDo ? ' mvp-bando' : ''}${laQuanSat ? ' mvp-soinv' : ''}`} role="region" aria-label={laBanDo ? 'Bản đồ trường' : laQuanSat ? tieuDe : `Khám phá: ${tenCanh}`}>
+    <div className={`mvp-canh mvp-khampha${laBanDo ? ' mvp-bando' : ''}${laQuanSat ? ' mvp-soinv' : ''}${dauMuc?.cham ? ' mvp-khampha--cham' : ''}${dauMuc && !dauMuc.vat ? ' mvp-khampha--khong-dau-vat' : ''}`} role="region" aria-label={laBanDo ? 'Bản đồ trường' : laQuanSat ? tieuDe : `Khám phá: ${tenCanh}`}>
       {nen ? <div className={`mvp-canh__mo${laBanDo ? ' mvp-bando__mo' : ''}${laQuanSat ? ' mvp-soinv__ban' : ''}`} style={{ backgroundImage: `url("${nen}")` }} aria-hidden="true" /> : null}
       <div className="mvp-canh__dau">
         <div className="mvp-canh__tieude">
@@ -305,13 +316,13 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                     title={`${nhan[i] ?? ''}${d.vaoLai ? ', hỏi lại được' : d.daXem ? ' — đã nói chuyện' : ''}`}
                     disabled={d.daXem && !d.vaoLai}
                     data-diem={d.diem.chuoi}
-                    data-chinh={d.diem.dau === 'chinh' && !d.daXem ? '1' : undefined}
+                    data-chinh={d.diem.dau === 'chinh' && !d.daXem && coDau(d.diem) ? '1' : undefined}
                     onClick={() => onXem(d.diem.chuoi)}
                   >
                     {anhTheoTen(`vien-ngoi-${d.diem.sprite.slice(3)}`) ? (
                       <img className="mvp-ngoi__vien" src={anhTheoTen(`vien-ngoi-${d.diem.sprite.slice(3)}`)} alt="" draggable={false} />
                     ) : null}
-                    <HuyHieu d={d} />
+                    <HuyHieu d={d} hien={coDau(d.diem)} />
                     <span className="mvp-ngoi__ten">{kb.nhanVat.find((n) => n.id === d.diem.sprite.slice(3))?.ten}</span>
                   </button>
                 );
@@ -322,16 +333,16 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                   <button
                     key={d.diem.chuoi}
                     type="button"
-                    className={`mvp-ghim${d.daXem ? ' is-xong' : ''}${d.vaoLai ? ' is-vao-lai' : ''}${d.diem.dau && !d.daXem ? ` is-${d.diem.dau}` : ''}${d.diem.x >= 80 ? ' mvp-ghim--phai' : d.diem.x <= 20 ? ' mvp-ghim--trai' : ''}`}
+                    className={`mvp-ghim${d.daXem ? ' is-xong' : ''}${d.vaoLai ? ' is-vao-lai' : ''}${d.diem.dau && !d.daXem && coDau(d.diem) ? ` is-${d.diem.dau}` : ''}${d.diem.x >= 80 ? ' mvp-ghim--phai' : d.diem.x <= 20 ? ' mvp-ghim--trai' : ''}`}
                     style={{ left: `${d.diem.x}%`, top: `${d.diem.y}%` }}
                     aria-label={`${nhanDoc(i, d)}${nguoi.length > 0 ? ` — đang ở đây: ${nguoi.map((n) => kb.nhanVat.find((x) => x.id === n)?.ten ?? n).join(', ')}` : ''}${d.daXem ? ' — đã ghé' : ''}${d.xemHet ? ', đã xem hết' : ''}${d.vaoLai ? ', vào lại được' : ''}`}
-                    title={`${nhan[i] ?? ''}${d.diem.dau && !d.daXem ? ` (${DAU[d.diem.dau].doc})` : ''}${d.daXem ? ' — đã ghé' : ''}${d.xemHet ? ', đã xem hết' : ''}${d.vaoLai ? ', vào lại được' : ''}`}
+                    title={`${nhan[i] ?? ''}${d.diem.dau && !d.daXem && coDau(d.diem) ? ` (${DAU[d.diem.dau].doc})` : ''}${d.daXem ? ' — đã ghé' : ''}${d.xemHet ? ', đã xem hết' : ''}${d.vaoLai ? ', vào lại được' : ''}`}
                     disabled={d.daXem && !d.vaoLai}
                     data-diem={d.diem.chuoi}
-                    data-chinh={d.diem.dau === 'chinh' && !d.daXem ? '1' : undefined}
+                    data-chinh={d.diem.dau === 'chinh' && !d.daXem && coDau(d.diem) ? '1' : undefined}
                     onClick={() => onXem(d.diem.chuoi)}
                   >
-                    <HuyHieu d={d} />
+                    <HuyHieu d={d} hien={coDau(d.diem)} />
                     {/* Gói B15: nơi đã ghé và đã xem hết mọi chỗ mang dấu tích; nơi đã ghé mà còn chỗ chưa xem thì không dấu. */}
                     {d.daXem && d.xemHet ? (
                       <span className="mvp-dau mvp-dau--het" aria-hidden="true">
@@ -368,7 +379,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                   <button
                     key={d.diem.chuoi}
                     type="button"
-                    className={`mvp-an${d.daXem ? ' is-da-xem' : ''}${d.diem.dau ? ' is-co-dau' : ''}`}
+                    className={`mvp-an${d.daXem ? ' is-da-xem' : ''}${d.diem.dau && coDau(d.diem) ? ' is-co-dau' : ''}`}
                     style={{ left: `${d.diem.x}%`, top: `${d.diem.y}%`, width: `${d.diem.rong}%` }}
                     aria-label={nhanDoc(i, d)}
                     title={`${nhan[i] ?? 'Soi chi tiết'}${d.daXem ? ' — đã xem' : ''}`}
@@ -377,7 +388,9 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                     onClick={() => onXem(d.diem.chuoi)}
                   >
                     <span className="mvp-an__goi-y" aria-hidden="true" />
-                    {d.diem.dau ? <HuyHieu d={d} /> : null}
+                    {d.diem.dau && coDau(d.diem) ? <HuyHieu d={d} /> : null}
+                    {/* Gói B17, "Có người dẫn": chấm nhỏ tĩnh trên cả chi tiết ẩn (ngoại lệ duy nhất của quyết định 05/10). */}
+                    {dauMuc?.cham && !d.daXem ? <span className="mvp-an__cham" aria-hidden="true" /> : null}
                     {kinhLup && !d.daXem ? (
                       <img className="mvp-an__kinh" src={kinhLup} alt="" draggable={false} aria-hidden="true" />
                     ) : null}
@@ -394,14 +407,14 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
                   className={`mvp-diem mvp-diem--khampha is-${d.daXem ? 'da-xem' : 'mo'}${d.vaoLai ? ' is-vao-lai' : ''}${url ? '' : ' is-tam'}${d.diem.sprite.startsWith('nv:') ? ' is-nguoi' : ''}`}
                   style={style}
                   aria-label={nhanDoc(i, d)}
-                  title={`${nhan[i] ?? ''}${d.diem.dau && !d.daXem ? ` (${DAU[d.diem.dau].doc})` : ''}${d.vaoLai ? ', hỏi lại được' : d.daXem ? ' — đã xem' : ''}`}
+                  title={`${nhan[i] ?? ''}${d.diem.dau && !d.daXem && coDau(d.diem) ? ` (${DAU[d.diem.dau].doc})` : ''}${d.vaoLai ? ', hỏi lại được' : d.daXem ? ' — đã xem' : ''}`}
                   disabled={d.daXem && !d.vaoLai}
                   data-diem={d.diem.chuoi}
-                  data-chinh={d.diem.dau === 'chinh' && !d.daXem ? '1' : undefined}
+                  data-chinh={d.diem.dau === 'chinh' && !d.daXem && coDau(d.diem) ? '1' : undefined}
                   onClick={() => onXem(d.diem.chuoi)}
                 >
                   {url ? <img className="mvp-diem__anh" src={url} alt="" draggable={false} /> : <span className="mvp-diem__tam" aria-hidden="true" />}
-                  {d.diem.dau ? <HuyHieu d={d} /> : d.daXem ? null : <span className="mvp-diem__cham" aria-hidden="true" />}
+                  {d.diem.dau && coDau(d.diem) ? <HuyHieu d={d} /> : d.daXem || (dauMuc && !dauMuc.cham) ? null : <span className="mvp-diem__cham" aria-hidden="true" />}
                   {laNguoi && d.diem.dau ? (
                     // Nhãn của điểm (phần trước dấu ":") thay cho tên thật: người chưa tự giới thiệu chỉ hiện cách gọi tạm ("Cô ở quầy").
                     <span className="mvp-diem__ten">{d.diem.nhan ? d.diem.nhan.split(':')[0] : kb.nhanVat.find((n) => n.id === d.diem.sprite.slice(3))?.ten}</span>

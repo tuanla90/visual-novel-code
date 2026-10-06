@@ -26,12 +26,15 @@ import { useVnStore } from '../../shared/vn/vn-store';
 import { ObjectionEffect } from '../../story/ui/ObjectionEffect';
 import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
 import { canGioiThieu, canhLuiThuThach, dienTen as dienTenMay, dieuHuongTuDo, khungNhin, phuMoDuoc, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
+import { mucNhapVaiCua, mucSqlCua } from '../engine/muc-choi';
 import { giaTriTuHoSo } from '../engine/giay-nho';
 import { chonNhacNen, type NhacTruoc } from '../engine/nhac';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import { DIEM_NHAY_MVP, nhayToi, nhayToiDauChuong, type MaDiemNhayMvp } from '../engine/tu-choi';
-import { KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
+import { ghiMucDaChon, KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
 import { AnhChenMvp } from './AnhChenMvp';
+import { ChonMucMvp } from './ChonMucMvp';
+import { NhacDanMvp } from './NhacDanMvp';
 import { BAN_DO_MVP } from './ban-do-mvp';
 import { BangQuanSatMvp } from './BangQuanSatMvp';
 import { BanDoMvp } from './BanDoMvp';
@@ -113,6 +116,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const [lichSuMo, setLichSuMo] = useState(false);
   const [luuNap, setLuuNap] = useState<'save' | 'load' | null>(null);
   const [caiDat, setCaiDat] = useState(false);
+  /** Gói B17 (bộ mùa 1): màn hai câu hỏi mở lại từ menu "Cách chơi". */
+  const [cachChoiMo, setCachChoiMo] = useState(false);
   const [lichMo, setLichMo] = useState(false);
   const [bangHoatDongMo, setBangHoatDongMo] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -276,7 +281,11 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     // câu cũ bắt bấm thêm lần nữa. Bộ MVP giữ như cũ.
     if (dieuHuongTuDo(kb)) hanhDong({ type: 'tiep' });
   };
-  const modalMo = kho !== null || lichSuMo || luuNap !== null || caiDat || lichMo || gioiThieuMo !== null;
+  const modalMo = kho !== null || lichSuMo || luuNap !== null || caiDat || lichMo || gioiThieuMo !== null || cachChoiMo;
+  // Gói B17: hai mức chỉ áp cho bộ mùa 1 (cờ điều hướng tự do); bộ MVP không truyền, các màn chạy như cũ.
+  const coMuc = dieuHuongTuDo(kb);
+  const mucNhapVai = coMuc ? mucNhapVaiCua(s) : undefined;
+  const mucSql = coMuc ? mucSqlCua(s) : undefined;
   const loiHienTai: { speaker: string; expression?: string } | null =
     kn.kind === 'line' || kn.kind === 'feedback'
       ? kn.loi
@@ -462,6 +471,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             onDoiMau={(the, mau) => hanhDong({ type: 'doi-mau-ghim', the, mau })}
             onXong={(dung, phieu, ghiChu) => hanhDong({ type: 'xong-thu-thach', thuThach: kn.thuThach.id, dung, ...(phieu ? { phieu } : {}), ...(ghiChu?.length ? { ghiChu } : {}) })}
             {...(luiVe ? { onRoi: () => hanhDong({ type: 'roi-thu-thach' }), ...(tenCanhRoi ? { tenCanhRoi } : {}) } : {})}
+            {...(mucSql ? { mucSql } : {})}
+            {...(mucNhapVai ? { mucNhapVai } : {})}
           />
         );
       }
@@ -497,7 +508,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           />
         );
       case 'explore':
-        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} thu={thuHomNay(kb, s)} gio={kn.nut.gio} dang={kn.nut.dang} haVySoi={kn.nut.haVySoi} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} roi={kn.roi ?? null} onRoi={() => hanhDong({ type: 'roi-canh' })} hetNgay={kn.hetNgay ?? null} onHetNgay={() => hanhDong({ type: 'het-ngay' })} />;
+        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} thu={thuHomNay(kb, s)} gio={kn.nut.gio} dang={kn.nut.dang} haVySoi={kn.nut.haVySoi} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} roi={kn.roi ?? null} onRoi={() => hanhDong({ type: 'roi-canh' })} hetNgay={kn.hetNgay ?? null} onHetNgay={() => hanhDong({ type: 'het-ngay' })} {...(mucNhapVai ? { mucNhapVai } : {})} />;
       case 'end':
         return (
           <KetMvp
@@ -551,6 +562,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         onMoNap={() => setLuuNap('load')}
         onMoLichSu={() => setLichSuMo(true)}
         onMoCaiDat={() => setCaiDat(true)}
+        {...(coMuc ? { onMoCachChoi: () => setCachChoiMo(true) } : {})}
         onBatDauLai={choiLai}
         onVeTieuDe={onVeTieuDe}
         onMoLich={() => setLichMo(true)}
@@ -593,13 +605,17 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           // Buổi hỏi (gói B12): góc phải là bạn đi cùng gợi ý bằng bóng thoại, thay cho khung trò chuyện.
           <BanDiCungHoiDapMvp kb={kb} hoiDap={kn.hoiDap} dienTen={dienTen} tenNguoiNoi={(ma) => tenNguoiNoi(kb, ma, s)} onHanhDong={hanhDong} />
         ) : (
-          <DongHanhMvp
-            key={JSON.stringify([lanDoiVan, s.batDauLuc, s.conTro, s.hoiDap?.viTri, kn.kind, gioiThieuMo, laTheChu])}
-            kb={kb}
-            s={s}
-            // Có cả ở cảnh khám phá (user 05/10): chi tiết ẩn không còn phát sáng, người chơi bí thì hỏi bạn đi cùng ngay tại đó.
-            visible={['line', 'feedback', 'question', 'branch', 'doi-chat', 'explore'].includes(kn.kind) && !gioiThieuMo && !laTheChu}
-          />
+          <>
+            <DongHanhMvp
+              key={JSON.stringify([lanDoiVan, s.batDauLuc, s.conTro, s.hoiDap?.viTri, kn.kind, gioiThieuMo, laTheChu])}
+              kb={kb}
+              s={s}
+              // Có cả ở cảnh khám phá (user 05/10): chi tiết ẩn không còn phát sáng, người chơi bí thì hỏi bạn đi cùng ngay tại đó.
+              visible={['line', 'feedback', 'question', 'branch', 'doi-chat', 'explore'].includes(kn.kind) && !gioiThieuMo && !laTheChu}
+            />
+            {/* Gói B17, "Có người dẫn": ở cảnh còn việc chính mà 40 giây không bấm gì thì bạn đi cùng tự nhắc. */}
+            {mucNhapVai === 'dan' && kn.kind === 'explore' && !gioiThieuMo ? <NhacDanMvp kb={kb} s={s} kn={kn} tam={modalMo} /> : null}
+          </>
         )}
       >
         {noiDung}
@@ -626,6 +642,19 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       {lichMo ? <LichMvp kb={kb} s={s} onDong={() => setLichMo(false)} /> : null}
       <BacklogModal open={lichSuMo} onClose={() => setLichSuMo(false)} />
       <AudioSettingsModal open={caiDat} onClose={() => setCaiDat(false)} />
+      {cachChoiMo && mucNhapVai && mucSql ? (
+        <ChonMucMvp
+          nhapVai={mucNhapVai}
+          sql={mucSql}
+          nhanNut="Áp dụng"
+          onDong={() => setCachChoiMo(false)}
+          onXong={(nhapVai, sql) => {
+            ghiMucDaChon({ nhapVai, sql });
+            hanhDong({ type: 'doi-muc', nhapVai, sql });
+            setCachChoiMo(false);
+          }}
+        />
+      ) : null}
       {luuNap ? (
         <LuuNapMvp
           mode={luuNap}

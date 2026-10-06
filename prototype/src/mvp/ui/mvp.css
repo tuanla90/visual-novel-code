@@ -3121,6 +3121,10 @@
 .mvp-chot__ds b { font-variant-numeric: tabular-nums; }
 .mvp-chot__loi { margin: 10px 0 0; font-style: italic; }
 
+/* Gói B17, "Có người dẫn": bóng thoại bạn đi cùng tự nhắc ở cảnh (NhacDanMvp), dưới dải ảnh mặt, cùng kiểu bóng của buổi hỏi. */
+.mvp-nhac-dan {
+  width: min(320px, calc(100vw - 24px));
+}
 /* Bạn đồng hành: dải ảnh mặt tròn "Đi cùng" ở góc trên phải sân khấu. */
 .dong-hanh {
   position: relative;
@@ -3829,6 +3833,29 @@
 .mvp-an:not(.is-da-xem):focus-visible .mvp-an__kinh {
   opacity: 1;
   transform: translate(-44%, -35%) scale(1) rotate(0deg);
+}
+/* Gói B17, nấc "Có người dẫn" (.mvp-khampha--cham): một chấm nhỏ TĨNH trên mọi vật bấm được, kể cả chi tiết ẩn — ngoại lệ duy nhất
+   của quyết định 05/10 (chi tiết ẩn không nháy, không phát sáng); chấm của vật thường cũng đứng yên ở nấc này. */
+.mvp-khampha--cham .mvp-diem__cham {
+  animation: none;
+}
+.mvp-an__cham {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: var(--c-topbar-accent, #fbbf24);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 2;
+}
+/* Gói B17, nấc "Tự dò" / "Như thật" (.mvp-khampha--khong-dau-vat): vật trong cảnh không có dấu, không sáng theo nhịp. */
+.mvp-khampha--khong-dau-vat .mvp-diem--khampha.is-mo .mvp-diem__anh {
+  animation: none;
 }
 /* Chi tiết ẩn không nháy, không phát sáng dù để lâu (gói B12, user 05/10/2026): người chơi tự tìm, bí thì hỏi bạn đi cùng.
    Vòng sáng chỉ hiện khi chính người chơi rê chuột / Tab tới (ở trên). */

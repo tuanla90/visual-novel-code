@@ -12,7 +12,8 @@ import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
 import type { KichBanMvp, LoiMvp } from '../../content/mvp/types';
 import { taoTrangThai, tenKhungHienTai, xuLy, type HanhDongMvp } from '../engine/may';
-import type { TrangThaiMvp } from '../engine/trang-thai';
+import { datMuc, laMucNhapVai, laMucSql } from '../engine/muc-choi';
+import type { MucNhapVaiMvp, MucSqlMvp, TrangThaiMvp } from '../engine/trang-thai';
 import { banDangCoMat, ghiNhanTrangThaiDongHanh, ghiNhanTruyVanDongHanh, khoaNguCanhDongHanh, type BanDongHanhMvp, type TinNhanDongHanhMvp, type TinNhanNhomDongHanhMvp, type TruyVanDaXemMvp } from '../engine/tri-nho-dong-hanh';
 
 export const KHOA_BO_NOI_DUNG = 'clb_bo_noi_dung';
@@ -38,6 +39,39 @@ export function doiBoNoiDung(bo: 'mvp' | 'mua-1'): void {
 export const KICH_BAN: KichBanMvp = (
   layMaBoNoiDung() === 'mua-1' ? KICH_BAN_MUA_1 : KICH_BAN_MVP
 ) as unknown as KichBanMvp;
+
+/**
+ * Gói B17: hai mức người chơi chọn ở màn hỏi đầu ván (bộ mùa 1) — ngoài trạng thái ván còn ghi ở đây để lần "Chơi mới" sau chọn sẵn
+ * nấc cũ, và để `batDau` đặt thẳng vào ván mới (màn hỏi chỉ là giao diện, máy tự chơi không qua nó).
+ */
+export const KHOA_MUC_MUA_1 = 'clb_mua1_muc';
+export interface MucDaChon {
+  nhapVai: MucNhapVaiMvp;
+  sql: MucSqlMvp;
+}
+export function docMucDaChon(): MucDaChon | null {
+  try {
+    const tho = typeof sessionStorage !== 'undefined' ? sessionStorage.getItem(KHOA_MUC_MUA_1) : null;
+    if (!tho) return null;
+    const o = JSON.parse(tho) as Partial<MucDaChon>;
+    return laMucNhapVai(o.nhapVai) && laMucSql(o.sql) ? { nhapVai: o.nhapVai, sql: o.sql } : null;
+  } catch {
+    return null;
+  }
+}
+export function ghiMucDaChon(muc: MucDaChon): void {
+  try {
+    if (typeof sessionStorage !== 'undefined') sessionStorage.setItem(KHOA_MUC_MUA_1, JSON.stringify(muc));
+  } catch {
+    // không có sessionStorage: chỉ còn trong trạng thái ván
+  }
+}
+/** Ván mới của bộ mùa 1 mang hai mức đã chọn (nếu có); bộ khác hay chưa chọn thì y như `taoTrangThai`. */
+function vanMoi(kb: KichBanMvp): TrangThaiMvp {
+  const s = taoTrangThai(kb);
+  const muc = kb.dieuHuongTuDo ? docMucDaChon() : null;
+  return muc ? datMuc(s, muc) : s;
+}
 
 export const KHOA_KHO_MVP = 'clb_mvp_tien_do_v1';
 export const KHOA_KHO_MUA_1 = 'clb_mua1_tien_do_v1';
@@ -113,7 +147,7 @@ export function taoKhoMvp(options: { persist?: boolean; storageKey?: string } = 
     lichSuLui: [],
     lanDoiVan: 0,
 
-    batDau: () => set({ trangThai: ghiNhanTrangThaiDongHanh(KICH_BAN, taoTrangThai(KICH_BAN)), lichSuLui: [], lanDoiVan: get().lanDoiVan + 1 }),
+    batDau: () => set({ trangThai: ghiNhanTrangThaiDongHanh(KICH_BAN, vanMoi(KICH_BAN)), lichSuLui: [], lanDoiVan: get().lanDoiVan + 1 }),
     hanhDong: (hd) => {
       const s = get().trangThai;
       if (!s) return;

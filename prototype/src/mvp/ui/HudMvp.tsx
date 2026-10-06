@@ -30,6 +30,8 @@ export interface HudMvpProps {
   onMoLichSu: () => void;
   /** Cài đặt (tốc độ chữ, âm thanh) — cùng bảng `AudioSettingsModal` của prototype. */
   onMoCaiDat: () => void;
+  /** Gói B17 (bộ mùa 1): mục "Cách chơi" mở lại màn hai câu hỏi (mức nhập vai, mức SQL). Bỏ trống (bộ MVP) = không có mục. */
+  onMoCachChoi?: () => void;
   onBatDauLai: () => void;
   /** Bỏ trống = không có màn tiêu đề (bản chơi thử chỉ MVP) → ẩn mục "Về màn tiêu đề". */
   onVeTieuDe?: () => void;
@@ -87,7 +89,7 @@ function mocHud(kb: KichBanMvp, s: TrangThaiMvp): { kicker: string; so: string; 
   return { kicker, so, ten, nhanDai: `${ngayDai} · ${ten}` };
 }
 
-export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onBatDauLai, onVeTieuDe, onMoLich, onTamDungViecPhu, onMoBangHoatDong, onLui, loiThoai }: HudMvpProps) {
+export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onMoCachChoi, onBatDauLai, onVeTieuDe, onMoLich, onTamDungViecPhu, onMoBangHoatDong, onLui, loiThoai }: HudMvpProps) {
   const [menuMo, setMenuMo] = useState(false);
   const [xacNhan, setXacNhan] = useState(false);
   const [chiTiet, setChiTiet] = useState({ nhiemVu: s.nhiemVu, mo: false });
@@ -302,6 +304,16 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
                   <IconFolderOpen width={16} height={16} aria-hidden="true" />
                   <span>Nạp tiến độ (Load)</span>
                 </button>
+                {onMoCachChoi ? (
+                  <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onMoCachChoi)}>
+                    <svg viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7" />
+                      <circle cx="12" cy="17" r="0.6" fill="currentColor" />
+                    </svg>
+                    <span>Cách chơi</span>
+                  </button>
+                ) : null}
                 <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(onMoCaiDat)}>
                   <IconSliders width={16} height={16} aria-hidden="true" />
                   <span>Cài đặt (tốc độ chữ, âm thanh)</span>

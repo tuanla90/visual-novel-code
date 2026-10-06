@@ -19,6 +19,8 @@ export interface KhungNguonBangV7Props {
   cotChung: string[];
   onDoiNoiBang: (bang?: string, cot?: string) => void;
   onMoXemTruoc: () => void;
+  /** Gói B17: đổi nhãn trên màn theo mức SQL (`engine/nhan-man-tra.ts`); thiếu = giữ chữ tiếng Việt. */
+  nhan?: (chu: string) => string;
 }
 
 export function KhungNguonBangV7({
@@ -37,13 +39,14 @@ export function KhungNguonBangV7({
   cotChung,
   onDoiNoiBang,
   onMoXemTruoc,
+  nhan = (chu) => chu,
 }: KhungNguonBangV7Props) {
   const coNhieuBangGoc = danhSachBangChon && danhSachBangChon.length > 1;
   const coNoiBang = !!cauNoiBang?.bang;
 
   return (
     <div className="v7-cot v7-cot--nguon">
-      <span className="v7-cot__nhan">1. NGUỒN BẢNG</span>
+      <span className="v7-cot__nhan">{nhan('1. NGUỒN BẢNG')}</span>
       <div className="v7-cau__bang">
         {nguonPhieu ? (
           <span
@@ -93,7 +96,7 @@ export function KhungNguonBangV7({
       {khoiNoi ? (
         <div className="v7-noi-vung" aria-label="Nối với bảng khác">
           <span className="v7-o v7-o--dau" aria-hidden="true">
-            NỐI VỚI
+            {nhan('NỐI VỚI')}
           </span>
           <button
             type="button"
@@ -111,7 +114,7 @@ export function KhungNguonBangV7({
           {cauNoiBang?.bang ? (
             <>
               <span className="v7-o v7-o--dau" aria-hidden="true">
-                THEO
+                {nhan('THEO')}
               </span>
               <button
                 type="button"

@@ -9,6 +9,8 @@ export interface KhungCotVaXepV7Props {
   cauXep: { cot: string; giam: boolean } | null;
   cot: string[];
   onDoiXep: (updater: (prev: { cot: string; giam: boolean } | null) => { cot: string; giam: boolean } | null) => void;
+  /** Gói B17: đổi nhãn trên màn theo mức SQL (`engine/nhan-man-tra.ts`); thiếu = giữ chữ tiếng Việt. */
+  nhan?: (chu: string) => string;
 }
 
 /**
@@ -27,16 +29,17 @@ export function KhungCotVaXepV7({
   cauXep,
   cot,
   onDoiXep,
+  nhan = (chu) => chu,
 }: KhungCotVaXepV7Props) {
   return (
     <div className="v7-cot v7-cot--phu">
-      <span className="v7-cot__nhan">{chonCot ? '3. CỘT & SẮP XẾP' : '3. SẮP XẾP'}</span>
+      <span className="v7-cot__nhan">{nhan(chonCot ? '3. CỘT & SẮP XẾP' : '3. SẮP XẾP')}</span>
 
       {chonCot && bang ? (
         <div className="v7-lay" role="group" aria-label="Các cột lấy ra">
           <div className="v7-lay__dau-nhan">
             <span className="v7-o v7-o--dau" aria-hidden="true">
-              LẤY CỘT
+              {nhan('LẤY CỘT')}
             </span>
             <button
               type="button"
@@ -84,7 +87,7 @@ export function KhungCotVaXepV7({
       {khoiSapXep ? (
         <div className="v7-dk v7-xep" aria-label="Xếp kết quả">
           <span className="v7-o v7-o--dau" aria-hidden="true">
-            XẾP THEO
+            {nhan('XẾP THEO')}
           </span>
           <button
             type="button"
@@ -122,7 +125,7 @@ export function KhungCotVaXepV7({
                   </svg>
                 )}
               </span>
-              <span>{cauXep.giam ? 'giảm dần' : 'tăng dần'}</span>
+              <span>{nhan(cauXep.giam ? 'giảm dần' : 'tăng dần')}</span>
             </button>
           ) : null}
         </div>
