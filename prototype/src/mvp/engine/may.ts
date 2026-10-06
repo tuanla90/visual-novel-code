@@ -943,7 +943,7 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
     const { chuoi, nut } = ht;
     const conTro = s.conTro;
     const boiCanh = conTro.boiCanh;
-    if (s.canh !== chuoi.canh) s = { ...s, canh: chuoi.canh, ...(s.raDan?.length ? { raDan: [] } : {}) };
+    if (s.canh !== chuoi.canh) s = { ...s, canh: chuoi.canh, ...(s.raDan?.length ? { raDan: [] } : {}), ...(s.vaoDan?.length ? { vaoDan: [] } : {}) };
     if (nut === undefined) {
       const nutCuoi = chuoi.nodes[chuoi.nodes.length - 1];
       if (nutCuoi && nutCuoi.type === 'goto' && conTro.nut >= chuoi.nodes.length) {
@@ -1042,7 +1042,11 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
         // `[RA x]`: x rời dàn chân dung (giao diện đọc `raDan`); `[VÀO x]`: hết rời. Trí nhớ bạn đi cùng đọc thẳng nút này.
         const da = s.raDan ?? [];
         if (nut.action === 'ra' && !da.includes(nut.nhanVat)) s = { ...s, raDan: [...da, nut.nhanVat] };
-        else if (nut.action === 'vao' && da.includes(nut.nhanVat)) s = { ...s, raDan: da.filter((x) => x !== nut.nhanVat) };
+        else if (nut.action === 'vao') {
+          // `[VÀO x]` còn đưa người chưa nói lên dàn (Hà Vy lúc được chào, Quân lúc bị soi, Hoài lúc được gọi vào).
+          const vao = s.vaoDan ?? [];
+          s = { ...s, ...(da.includes(nut.nhanVat) ? { raDan: da.filter((x) => x !== nut.nhanVat) } : {}), ...(vao.includes(nut.nhanVat) ? {} : { vaoDan: [...vao, nut.nhanVat] }) };
+        }
         s = tienNut(s);
         break;
       }
@@ -1598,7 +1602,7 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       // Gói B15: người chơi bấm hết ngày → chuỗi buổi tối (hết chuỗi là sang ngày kế); không có chuỗi tối thì sang ngày kế luôn.
       const h = hetNgayDangCho(kb, s);
       if (kn.kind !== 'explore' || !kn.hetNgay || !h) return s;
-      const sach: TrangThaiMvp = { ...s, hetNgay: { ...h, daBam: true }, hoiDap: null, buoiHoi: null, khamPha: null, canhLui: null };
+      const sach: TrangThaiMvp = { ...s, hetNgay: { ...h, daBam: true }, hoiDap: null, buoiHoi: null, khamPha: null, canhLui: null, nhacViec: null };
       moi = h.chuoi && timChuoi(kb, h.chuoi) ? { ...sach, conTro: { chuoi: h.chuoi, nut: 0, boiCanh: 'truyen' } } : ketThucNgay(kb, sach);
       break;
     }
@@ -1660,6 +1664,13 @@ const TU_GIOI_THIEU = /(?:^|[.!?…]\s+)(?:còn\s+)?(?:tôi|mình|tớ|tui|em|an
  * câu đầu tiên người đó nói (bác bảo vệ, thầy cô, Hoài… không ai tự xưng tên — trước 02/10 thẻ của họ không bao giờ hiện).
  */
 export function canGioiThieu(kb: KichBanMvp, s: TrangThaiMvp, kn: KhungNhinMvp): string | null {
+  // Khung hỏi nhân chứng (B12): người "Không xưng tên" (cô Hạnh, cô Lan, bà trà đá) không có câu tự xưng để chờ, thẻ bật ngay
+  // khi khung hỏi mở lần đầu (người xem thử 06/10: thẻ của họ bật muộn, ở câu đầu họ nói sau buổi hỏi).
+  if (kn.kind === 'hoi-dap') {
+    const nc = kn.hoiDap.nhanChung;
+    const gt = kb.nhanVat.find((n) => n.id === nc)?.gioiThieu;
+    return gt?.khongXungTen && !(s.daGioiThieu ?? []).includes(nc) ? nc : null;
+  }
   if (kn.kind !== 'line') return null;
   const nguoi = kn.loi.speaker;
   if (!nguoi || (s.daGioiThieu ?? []).includes(nguoi)) return null;

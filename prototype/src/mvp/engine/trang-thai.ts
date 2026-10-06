@@ -281,6 +281,8 @@ export interface TrangThaiMvp {
    * Người đó nói lại, `[VÀO <mã>]`, hoặc đổi cảnh thì hết hiệu lực.
    */
   raDan?: string[];
+  /** Nhân vật được `[VÀO <mã>]` đưa lên dàn dù chưa nói câu nào (đứng im nghe); đổi cảnh thì xóa. */
+  vaoDan?: string[];
 
   conTro: ConTroMvp | null;
   /**

@@ -113,6 +113,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
 
 ### md-10-gap-ha-vy — Trung thu: người chơi tự tới chào bạn nữ đứng tách ra cạnh bảng tin {cảnh: san-ktx-trung-thu}
 
+- [VÀO ha-vy]
 - [LỜI md-10-gap-ha-vy.2]
 
 ### md-10-trung-thu — Sân KTX, thứ Ba 17/09 19h: CLB gặp mặt lần đầu {cảnh: san-ktx-trung-thu}

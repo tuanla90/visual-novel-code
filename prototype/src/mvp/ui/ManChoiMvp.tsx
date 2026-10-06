@@ -260,6 +260,12 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     batDau();
   }, [clearBacklog, xoa, batDau]);
 
+  // Khung hỏi nhân chứng "Không xưng tên" mở lần đầu: thẻ "Nhân vật mới" bật ngay (hook phải đứng trước lệnh return sớm).
+  const theNhanChung = s && kn && kn.kind === 'hoi-dap' ? canGioiThieu(kb, s, kn) : null;
+  useEffect(() => {
+    if (theNhanChung) setGioiThieuMo(theNhanChung);
+  }, [theNhanChung]);
+
   if (!s || !kn) return null;
   const laTheChu = kn.kind === 'line' && kn.display === 'card';
   const dienTen = (t: string): string => dienTenMay(kb, s, t);
@@ -423,7 +429,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
                   <CodeText text={dienTen(kn.nut.asker.text)} />
                 </p>
                 <div className="mc__status-bar">
-                  <span className="mc__note">Chọn là chốt — không quay lại được.</span>
+                  <span className="mc__note">Chọn là chốt, không quay lại được.</span>
                 </div>
               </div>
             </div>
@@ -592,6 +598,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         speaker={loiHienTai?.speaker}
         expression={loiHienTai?.expression}
         {...(s.raDan?.length ? { raDan: s.raDan } : {})}
+        {...(s.vaoDan?.length ? { vaoDan: s.vaoDan } : {})}
         xoaDan={kn.kind === 'explore' || kn.kind === 'chon-dia-diem'}
         nghi={kn.kind === 'line' && kn.loi.speaker === 'player' && /^\(.*\)$/s.test(kn.loi.text.trim())}
         shaking={rung}

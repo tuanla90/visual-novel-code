@@ -28,6 +28,7 @@
 
 ### hop-02 — Mời Hoài vào hỏi chuyện nộp thư {cảnh: phong-hop}
 
+- [VÀO hoai]
 - [LỜI hop-02.1]
 - [ĐỐI CHẤT dc-ai-viet] quan: "Mã trong sổ là của Hoài. Thư do Hoài mang tới hộp. Chữ ký bắt đầu bằng H, Hoài cũng H. Bên tôi kết luận: **Hoài là người viết lá thư này.**"
   - [CÂU HỎI] Hoài mang thư tới hộp. Nhưng lá thư được in ra bằng tài khoản của ai? Trình thẻ cho biết điều đó.

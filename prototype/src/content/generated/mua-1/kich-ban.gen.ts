@@ -2036,6 +2036,11 @@ const GOC = {
       "mocSomNhat": 0,
       "nodes": [
         {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "ha-vy"
+        },
+        {
           "type": "line",
           "speaker": "player",
           "text": "Chào cậu. Cậu cũng vào CLB à?"
@@ -4513,6 +4518,11 @@ const GOC = {
           "text": "Người lạ kìa. Nhìn kỹ một chút trước khi anh ấy mở lời đã."
         },
         {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "quan"
+        },
+        {
           "type": "explore",
           "id": "kp-soi-quan",
           "kieu": "quan-sat",
@@ -6273,6 +6283,11 @@ const GOC = {
       "canh": "phong-hop",
       "mocSomNhat": 1000,
       "nodes": [
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "hoai"
+        },
         {
           "type": "note",
           "text": "Hoài được mời vào, đứng nép cạnh cửa, rồi ngồi xuống ghế khi thầy bảo."
