@@ -354,10 +354,10 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   };
   const bangQuanSat = quanSat ? <BangQuanSatMvp kb={kb} s={s} loaiManHinh={kn.kind} onNhay={nhay} /> : null;
 
+  // User 06/10: nút "Hồ sơ" dưới khung trùng với "Hồ sơ" trên HUD nên bỏ; nút "Tiếp tục" vào trong khung thoại.
   const nutVn = {
     keyboardEnabled: !modalMo,
-    onOpenNotebook: () => setKho('ho-so'),
-    notebookCount: soHoSo(s),
+    nutTiepTrongKhung: true,
     onOpenBacklog: () => setLichSuMo(true),
     onOpenSave: () => setLuuNap('save'),
     onOpenLoad: () => setLuuNap('load'),

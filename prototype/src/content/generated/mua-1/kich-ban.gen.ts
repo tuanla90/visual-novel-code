@@ -6180,6 +6180,10 @@ const GOC = {
           "imageId": "cg-bong-huy-hieu"
         },
         {
+          "type": "image",
+          "imageId": "cg-huy-hieu-sang-som"
+        },
+        {
           "type": "consequence",
           "hauQua": [
             {

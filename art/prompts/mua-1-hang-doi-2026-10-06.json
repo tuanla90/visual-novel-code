@@ -1,28 +1,138 @@
 [
- {"id":"clb-dem-laptop","refs":["mvp/nen/bg-mvp-phong-clb-dem.webp"],"ratio":"16:9","res":"2K",
-  "prompt":"Edit Image1. Keep the whole night room pixel-identical EXCEPT one change: on the small side desk at the left, remove the desktop computer completely (monitor, keyboard, mouse and the black tower under the desk) and place one open, slightly worn silver-grey laptop on that desk, its screen glowing softly, facing the blue chair. Same anime background art style, same camera, same night lighting. No people, no text."},
- {"id":"clb-ngoi-duy-laptop","refs":["mvp/nen/bg-mvp-phong-clb-ngoi-duy.webp"],"ratio":"16:9","res":"2K",
-  "prompt":"Edit Image1. Keep everything pixel-identical, including the young man in the grey hoodie sitting at the small side desk (same pose, face, clothes, chair position), EXCEPT: remove the desktop monitor, keyboard, mouse and the black tower and put one open, slightly worn silver-grey laptop on that desk in front of him, his hands on its keyboard. Same anime style, same camera, same colors. No text."},
- {"id":"clb-ngoi-3-laptop","refs":["mvp/nen/bg-mvp-phong-clb-ngoi-duy-ha-vy-minh-anh.webp"],"ratio":"16:9","res":"2K",
-  "prompt":"Edit Image1. Keep everything pixel-identical, including all the people (same poses, faces, clothes, positions), EXCEPT: at the small side desk on the left remove the desktop monitor, keyboard, mouse and the black tower and put one open, slightly worn silver-grey laptop in front of the young man in the grey hoodie, his hands on its keyboard. Same anime style, same camera, same colors. No text."},
- {"id":"clb-ngoi-4-laptop","refs":["mvp/nen/bg-mvp-phong-clb-ngoi-duy-ha-vy-minh-anh-tung.webp"],"ratio":"16:9","res":"2K",
-  "prompt":"Edit Image1. Keep everything pixel-identical, including all four people (same poses, faces, clothes, positions), EXCEPT: at the small side desk on the left remove the desktop monitor, keyboard, mouse and the black tower and put one open, slightly worn silver-grey laptop in front of the young man in the grey hoodie, his hands on its keyboard. Same anime style, same camera, same colors. No text."},
- {"id":"ngay-hoi-laptop","refs":["mvp/nen/bg-mvp-nha-van-hoa.webp"],"ratio":"16:9","res":"2K",
-  "prompt":"Edit Image1. Keep everything pixel-identical (all the students, the Robotics table on the left, the stage, bunting, buildings) EXCEPT: on the empty white-cloth table on the right, place one open dark-grey laptop facing the folding chair behind the table, next to it a small stack of paper registration forms and a pen. Nothing else changes. Same anime style, same camera. No text."},
- {"id":"trung-thu-nguoi","refs":["mvp/nen/bg-mvp-san-ktx-trung-thu.webp"],"ratio":"16:9","res":"2K",
-  "prompt":"Edit Image1. Keep the entire front third of the image pixel-identical: the table with mooncakes, fruit and tea, the glowing carp lantern on the ground, the small yellow slippers, the cake crumbs, the CLB Robotics stall with its star lanterns, the notice board, the blue chair with the backpack, the bicycle. Change only the middle distance and far background: add groups of Vietnamese university students in casual clothes sitting on the edge of the red stage and on the ground around the lion-dance head and the drum, chatting, holding star lanterns and phones; a few small children running with lanterns near the dorm building in the distance; warm festive atmosphere. Nobody in the foreground, nobody near the carp lantern or the stall. Same anime night style, same lantern lighting, same camera. No text."},
- {"id":"intro-tung-trung-tinh","refs":["art/intro-tung.webp"],"ratio":"16:9","res":"2K",
-  "prompt":"Edit Image1. Keep the young man pixel-identical (same face, hair, blue sports jersey, thumbs up, folded campus map in his hand, pose and position on the left). Replace the entire dormitory background with a neutral soft-focus backdrop: a smooth warm cream to light sky-blue gradient with soft out-of-focus bokeh circles and faint diagonal light rays, no furniture, no beds, no window, no recognizable place. Anime style, clean, bright. No text."},
- {"id":"intro-hoai-trung-tinh","refs":["art/intro-hoai.webp"],"ratio":"16:9","res":"2K",
-  "prompt":"Edit Image1. Keep the young woman pixel-identical (same face, low ponytail, white shirt, beige knit vest, tote bag, pose and position on the left). Replace the entire background with a neutral soft-focus backdrop: a smooth pale beige to soft rose gradient with gentle out-of-focus bokeh, no corridor, no railing, no green letterbox, no building, no recognizable place. Anime style, soft, quiet mood. No text."},
- {"id":"la-thu-chu-ky","refs":["mvp/giay/doc-la-thu-nac-danh.webp"],"ratio":"3:4","res":"1K",
-  "prompt":"Edit Image1, same flat illustration style of a folded A4 letter on a dark background, same layout. Changes: the sender name block at the top left (the first three short lines) is covered by one thick black marker bar; the typed body stays as grey placeholder lines; at the bottom right the handwritten signature in blue-black ink clearly starts with a large capital letter H followed by an illegible scribble; along the very bottom edge of the sheet runs one tiny line of grey computer-printed text that is cut off by the paper edge so only the top half of the letters is visible. No other readable text."},
- {"id":"khe-hop-the-lich","refs":["mvp/vat/obj-hop-kien-nghi.webp"],"ratio":"16:9","res":"1K",
-  "prompt":"Anime illustration in the same style and colors as Image1 (the green metal suggestion box): a close-up of the slot of that box seen slightly from below, with the torn corner of a small paper calendar card caught in the slot, cream paper with a printed grid of small squares and a jagged torn edge, a few millimetres sticking out; behind it the soft blurred daylight of a university building lobby, shallow depth of field. No people, no readable text."},
- {"id":"so-clb-giay-gap-tu","refs":["mvp/nen/bg-mvp-phong-clb.webp"],"ratio":"16:9","res":"1K",
-  "prompt":"Anime illustration in the same style as Image1, set on the wooden table of that club room in late afternoon light: a thick old hardcover club notebook lying open on the table, and a small sheet of lined paper folded in four slipping out from between its pages, half unfolded, showing a single short line of handwriting in faded blue ink drawn as an illegible squiggle (no real letters). Shallow depth of field, warm sunset light through the window. No people, no readable text."},
- {"id":"be-na-den-ca-chep","refs":["mvp/nen/bg-mvp-san-ktx-trung-thu.webp"],"ratio":"16:9","res":"2K",
-  "prompt":"Anime CG in the same style, night lighting and setting as Image1: a close view at ground level of the glowing orange carp lantern from Image1; next to it a barefoot Vietnamese girl about five years old in a small flowery dress crouches, holding half a mooncake in both hands, crumbs on her cheek, laughing with her eyes closed; the small yellow slippers lie beside her; warm lantern light on her face, red paper lanterns and festival bokeh blurred behind. No text."},
- {"id":"tu-ho-so-ngan-duoi","refs":["mvp/nen/bg-mvp-phong-clb.webp"],"ratio":"16:9","res":"1K",
-  "prompt":"Close-up anime illustration in the same style and lighting as Image1: the beige steel filing cabinet from the right side of Image1 with its bottom drawer pulled all the way open, a cloud of dust rising in the afternoon sunlight, inside a messy pile of yellowed folders and loose papers, and a few old sheets lining the bottom of the drawer. No people, no readable text."}
+ {
+  "id": "clb-dem-laptop",
+  "refs": [
+   "mvp/nen/bg-mvp-phong-clb-dem.webp"
+  ],
+  "ratio": "16:9",
+  "res": "2K",
+  "prompt": "Edit Image1. Keep the whole night room pixel-identical EXCEPT one change: on the small side desk at the left, remove the desktop computer completely (monitor, keyboard, mouse and the black tower under the desk) and place one open, slightly worn silver-grey laptop on that desk, its screen glowing softly, facing the blue chair. Same anime background art style, same camera, same night lighting. No people, no text."
+ },
+ {
+  "id": "clb-ngoi-duy-laptop",
+  "refs": [
+   "mvp/nen/bg-mvp-phong-clb-ngoi-duy.webp"
+  ],
+  "ratio": "16:9",
+  "res": "2K",
+  "prompt": "Edit Image1. Keep everything pixel-identical, including the young man in the grey hoodie sitting at the small side desk (same pose, face, clothes, chair position), EXCEPT: remove the desktop monitor, keyboard, mouse and the black tower and put one open, slightly worn silver-grey laptop on that desk in front of him, his hands on its keyboard. Same anime style, same camera, same colors. No text."
+ },
+ {
+  "id": "clb-ngoi-3-laptop",
+  "refs": [
+   "mvp/nen/bg-mvp-phong-clb-ngoi-duy-ha-vy-minh-anh.webp"
+  ],
+  "ratio": "16:9",
+  "res": "2K",
+  "prompt": "Edit Image1. Keep everything pixel-identical, including all the people (same poses, faces, clothes, positions), EXCEPT: at the small side desk on the left remove the desktop monitor, keyboard, mouse and the black tower and put one open, slightly worn silver-grey laptop in front of the young man in the grey hoodie, his hands on its keyboard. Same anime style, same camera, same colors. No text."
+ },
+ {
+  "id": "clb-ngoi-4-laptop",
+  "refs": [
+   "mvp/nen/bg-mvp-phong-clb-ngoi-duy-ha-vy-minh-anh-tung.webp"
+  ],
+  "ratio": "16:9",
+  "res": "2K",
+  "prompt": "Edit Image1. Keep everything pixel-identical, including all four people (same poses, faces, clothes, positions), EXCEPT: at the small side desk on the left remove the desktop monitor, keyboard, mouse and the black tower and put one open, slightly worn silver-grey laptop in front of the young man in the grey hoodie, his hands on its keyboard. Same anime style, same camera, same colors. No text."
+ },
+ {
+  "id": "ngay-hoi-laptop",
+  "refs": [
+   "mvp/nen/bg-mvp-nha-van-hoa.webp"
+  ],
+  "ratio": "16:9",
+  "res": "2K",
+  "prompt": "Edit Image1. Keep everything pixel-identical (all the students, the Robotics table on the left, the stage, bunting, buildings) EXCEPT: on the empty white-cloth table on the right, place one open dark-grey laptop facing the folding chair behind the table, next to it a small stack of paper registration forms and a pen. Nothing else changes. Same anime style, same camera. No text."
+ },
+ {
+  "id": "trung-thu-nguoi",
+  "refs": [
+   "mvp/nen/bg-mvp-san-ktx-trung-thu.webp"
+  ],
+  "ratio": "16:9",
+  "res": "2K",
+  "prompt": "Edit Image1. Keep the entire front third of the image pixel-identical: the table with mooncakes, fruit and tea, the glowing carp lantern on the ground, the small yellow slippers, the cake crumbs, the CLB Robotics stall with its star lanterns, the notice board, the blue chair with the backpack, the bicycle. Change only the middle distance and far background: add groups of Vietnamese university students in casual clothes sitting on the edge of the red stage and on the ground around the lion-dance head and the drum, chatting, holding star lanterns and phones; a few small children running with lanterns near the dorm building in the distance; warm festive atmosphere. Nobody in the foreground, nobody near the carp lantern or the stall. Same anime night style, same lantern lighting, same camera. No text."
+ },
+ {
+  "id": "intro-tung-trung-tinh",
+  "refs": [
+   "art/intro-tung.webp"
+  ],
+  "ratio": "16:9",
+  "res": "2K",
+  "prompt": "Edit Image1. Keep the young man pixel-identical (same face, hair, blue sports jersey, thumbs up, folded campus map in his hand, pose and position on the left). Replace the entire dormitory background with a neutral soft-focus backdrop: a smooth warm cream to light sky-blue gradient with soft out-of-focus bokeh circles and faint diagonal light rays, no furniture, no beds, no window, no recognizable place. Anime style, clean, bright. No text."
+ },
+ {
+  "id": "intro-hoai-trung-tinh",
+  "refs": [
+   "art/intro-hoai.webp"
+  ],
+  "ratio": "16:9",
+  "res": "2K",
+  "prompt": "Edit Image1. Keep the young woman pixel-identical (same face, low ponytail, white shirt, beige knit vest, tote bag, pose and position on the left). Replace the entire background with a neutral soft-focus backdrop: a smooth pale beige to soft rose gradient with gentle out-of-focus bokeh, no corridor, no railing, no green letterbox, no building, no recognizable place. Anime style, soft, quiet mood. No text."
+ },
+ {
+  "id": "la-thu-chu-ky",
+  "refs": [
+   "mvp/giay/doc-la-thu-nac-danh.webp"
+  ],
+  "ratio": "3:4",
+  "res": "1K",
+  "prompt": "Edit Image1, same flat illustration style of a folded A4 letter on a dark background, same layout. Changes: the sender name block at the top left (the first three short lines) is covered by one thick black marker bar; the typed body stays as grey placeholder lines; at the bottom right the handwritten signature in blue-black ink clearly starts with a large capital letter H followed by an illegible scribble; along the very bottom edge of the sheet runs one tiny line of grey computer-printed text that is cut off by the paper edge so only the top half of the letters is visible. No other readable text."
+ },
+ {
+  "id": "khe-hop-the-lich",
+  "refs": [
+   "mvp/vat/obj-hop-kien-nghi.webp"
+  ],
+  "ratio": "16:9",
+  "res": "1K",
+  "prompt": "Anime illustration in the same style and colors as Image1 (the green metal suggestion box): a close-up of the slot of that box seen slightly from below, with the torn corner of a small paper calendar card caught in the slot, cream paper with a printed grid of small squares and a jagged torn edge, a few millimetres sticking out; behind it the soft blurred daylight of a university building lobby, shallow depth of field. No people, no readable text."
+ },
+ {
+  "id": "so-clb-giay-gap-tu",
+  "refs": [
+   "mvp/nen/bg-mvp-phong-clb.webp"
+  ],
+  "ratio": "16:9",
+  "res": "1K",
+  "prompt": "Anime illustration in the same style as Image1, set on the wooden table of that club room in late afternoon light: a thick old hardcover club notebook lying open on the table, and a small sheet of lined paper folded in four slipping out from between its pages, half unfolded, showing a single short line of handwriting in faded blue ink drawn as an illegible squiggle (no real letters). Shallow depth of field, warm sunset light through the window. No people, no readable text."
+ },
+ {
+  "id": "be-na-den-ca-chep",
+  "refs": [
+   "mvp/nen/bg-mvp-san-ktx-trung-thu.webp"
+  ],
+  "ratio": "16:9",
+  "res": "2K",
+  "prompt": "Anime CG in the same style, night lighting and setting as Image1: a close view at ground level of the glowing orange carp lantern from Image1; next to it a barefoot Vietnamese girl about five years old in a small flowery dress crouches, holding half a mooncake in both hands, crumbs on her cheek, laughing with her eyes closed; the small yellow slippers lie beside her; warm lantern light on her face, red paper lanterns and festival bokeh blurred behind. No text."
+ },
+ {
+  "id": "tu-ho-so-ngan-duoi",
+  "refs": [
+   "mvp/nen/bg-mvp-phong-clb.webp"
+  ],
+  "ratio": "16:9",
+  "res": "1K",
+  "prompt": "Close-up anime illustration in the same style and lighting as Image1: the beige steel filing cabinet from the right side of Image1 with its bottom drawer pulled all the way open, a cloud of dust rising in the afternoon sunlight, inside a messy pile of yellowed folders and loose papers, and a few old sheets lining the bottom of the drawer. No people, no readable text."
+ },
+ {
+  "id": "phong-hop-nguoi",
+  "refs": [
+   "mvp/nen/bg-mvp-phong-hop.webp"
+  ],
+  "ratio": "16:9",
+  "res": "2K",
+  "prompt": "Edit Image1. Keep the room pixel-identical EXCEPT: seat a few people at the two long side tables, seen mostly from behind or in profile: at the left table two university staff members (a woman in a dark ao dai, a man in a white shirt) looking at papers; at the right table one young man in a grey knit vest with a notebook and one older staff member; leave the center desk and aisle clear. Same anime background style, same camera, same daylight. No text."
+ },
+ {
+  "id": "huy-hieu-balo-sang-som",
+  "refs": [
+   "mvp/giay/doc-huy-hieu-sut.webp",
+   "mvp/nen/bg-mvp-cong-ktx.webp"
+  ],
+  "ratio": "16:9",
+  "res": "2K",
+  "prompt": "Anime CG, early morning at the dormitory gate of Image2, cool bluish 6:45 a.m. light: close-up from the viewpoint of the security guard in his booth, looking at the back and shoulder of a male student in a white short-sleeved shirt wearing a black backpack, face outside the frame; on the backpack shoulder strap is pinned the small metal gear badge from Image1, one tooth chipped; he is handing a brown paper envelope to a girl with a tote bag blurred further away. Shallow depth of field. No text."
+ }
 ]

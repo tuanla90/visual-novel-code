@@ -7,7 +7,7 @@
  * sau khi lời đổi KHÔNG qua lời. Nút "Tiếp tục ▸" là cú bấm chủ ý: nhận ngay cú bấm đơn, chỉ bỏ cú
  * bấm lặp của bấm đúp.
  */
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from 'react';
 import { speakerLabel } from '../display-names';
 import type { DialogueLine } from '../../story/types';
 import { CodeText } from './CodeText';
@@ -47,6 +47,11 @@ export interface DialogBoxProps {
    * `shared/ids.ts`). Không truyền → hành vi cũ của prototype.
    */
   speakerName?: string;
+  /**
+   * Bản MVP (user 06/10): nút "Tiếp tục" nằm TRONG khung thoại (tam giác nhỏ + chữ ở góc phải dưới) thay cho nút to
+   * chiếm một góc màn hình; footer ngoài khung chỉ còn thanh nút nhanh của màn dọc. Không truyền → nút ngoài khung như cũ.
+   */
+  nutTiepTrongKhung?: boolean;
 }
 
 function isTypingTarget(target: EventTarget | null): boolean {
@@ -213,7 +218,9 @@ export function DialogBox({
   onOpenAudio,
   onBack,
   speakerName,
+  nutTiepTrongKhung = false,
 }: DialogBoxProps) {
+  const trongKhung = nutTiepTrongKhung && display !== 'card';
   const rootRef = useRef<HTMLDivElement>(null);
   const label = speakerName ?? speakerLabel(line.speaker);
   const readKey = readLineKey(line.speaker, line.text);
@@ -324,6 +331,21 @@ export function DialogBox({
     }
   }, [isDone, keyboardEnabled, autoMode, skipping, line.text.length, pageIndex, hasMoreText, scrollNextPage, advanceFromLine]);
 
+  // Nút "Tiếp tục" (trong hay ngoài khung): cú bấm chủ ý, nhận ngay cú bấm đơn, chỉ bỏ cú bấm lặp của bấm đúp.
+  const bamTiep = (e: ReactMouseEvent<HTMLButtonElement>): void => {
+    e.stopPropagation();
+    if (!guard.click(e, { immediate: true })) return;
+    if (!isDone) {
+      completeImmediately();
+      return;
+    }
+    if (hasMoreText()) {
+      scrollNextPage();
+      return;
+    }
+    advanceFromLine();
+  };
+
   const handleBoxClick = (e: { detail: number }) => {
     if (!guard.click(e)) return;
     if (!isDone) {
@@ -417,10 +439,16 @@ export function DialogBox({
         <p ref={textRef} className={`dialog__text dialog__text--${dialogueFont}`}>
           <CodeText text={displayedText} />
         </p>
+        {trongKhung ? (
+          <button type="button" className={`dialog__tiep${isDone ? ' is-san-sang' : ''}`} aria-label="Tiếp tục" onKeyDown={guard.holdKey} onClick={bamTiep}>
+            <span className="dialog__tiep-chu">Tiếp tục</span>
+            <span className="dialog__tiep-tam-giac" aria-hidden="true" />
+          </button>
+        ) : null}
       </div>
 
       {/* Button Hồ sơ / QuickBar mobile và Tiếp tục nằm ngoài khung thoại */}
-      <div className={`dialog__footer dialog__footer--external${display === 'card' ? ' dialog__footer--card' : ''}`}>
+      <div className={`dialog__footer dialog__footer--external${display === 'card' ? ' dialog__footer--card' : ''}${trongKhung ? ' dialog__footer--trong-khung' : ''}`}>
         <div className="dialog__footer-left">
           {display !== 'card' && onOpenNotebook ? (
             <button
@@ -458,33 +486,16 @@ export function DialogBox({
         </div>
         {hint ? <span className="dialog__hint">{hint}</span> : null}
         <div className="dialog__footer-right">
-          <button
-            type="button"
-            className="dialog__next"
-            aria-label="Tiếp tục"
-            onKeyDown={guard.holdKey}
-            onClick={(e) => {
-              e.stopPropagation();
-              // Nút chủ ý: nhận ngay cú bấm đơn, chỉ bỏ cú bấm lặp của bấm đúp.
-              if (!guard.click(e, { immediate: true })) return;
-              if (!isDone) {
-                completeImmediately();
-                return;
-              }
-              if (hasMoreText()) {
-                scrollNextPage();
-                return;
-              }
-              advanceFromLine();
-            }}
-          >
-            <span className="dialog__next-text">Tiếp tục</span>
-            <span className="dialog__next-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-            </span>
-          </button>
+          {trongKhung ? null : (
+            <button type="button" className="dialog__next" aria-label="Tiếp tục" onKeyDown={guard.holdKey} onClick={bamTiep}>
+              <span className="dialog__next-text">Tiếp tục</span>
+              <span className="dialog__next-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+            </button>
+          )}
         </div>
       </div>
     </div>

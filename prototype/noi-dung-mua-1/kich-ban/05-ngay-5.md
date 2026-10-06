@@ -12,6 +12,7 @@
 - [HỎI ĐÁP n5-chu-cuong]
 - [LỜI n5-chu-cuong.1]
 - [ẢNH cg-bong-huy-hieu]
+- [ẢNH cg-huy-hieu-sang-som]
 - [HẬU QUẢ] mở manh mối clue-loi-chu-cuong
 - [RA chu-cuong]
 - [LỜI n5-chu-cuong.2]
