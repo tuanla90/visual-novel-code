@@ -23,7 +23,7 @@
       "ev-bang-lop": ["bảng lớp"],
       "ev-hai-lop": ["BC24A", "BC23A"],
       "ev-nhat-ky-in": ["nhật ký in"],
-      "ev-hai-ma": ["bắt đầu bằng H"]
+      "ev-hai-ma": ["SV240228", "SV240317"]
     },
     "relations": ["nộp thư", "in thư", "viết thư", "gửi thư", "niêm phong", "ký nhận", "in lúc", "in vào", "in tối", "đưa phong bì", "nhận phong bì", "đối chiếu", "chứng cứ", "bằng chứng"]
   },
@@ -38,7 +38,7 @@
       "clue-xuong-toi": ["mở tới 23"],
       "clue-loi-nhan-linh-2": ["mẩu giấy"],
       "clue-tra-da-2": ["hai cuốn sổ"],
-      "ev-tin-don": ["năm tài khoản"],
+      "ev-tin-don": ["câu tin đồn"],
       "ev-tin-goc": ["tin gốc"],
       "ev-tin-may": ["máy xưởng số 2"],
       "ev-tin-xuong": ["mở tới 23"]

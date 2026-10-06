@@ -36,8 +36,11 @@ export function doiBoNoiDung(bo: 'mvp' | 'mua-1'): void {
   }
 }
 
+/** Bộ nội dung của phiên này (đổi bộ thì tải lại trang, xem `doiBoNoiDung`). */
+export const BO_NOI_DUNG = layMaBoNoiDung();
+
 export const KICH_BAN: KichBanMvp = (
-  layMaBoNoiDung() === 'mua-1' ? KICH_BAN_MUA_1 : KICH_BAN_MVP
+  BO_NOI_DUNG === 'mua-1' ? KICH_BAN_MUA_1 : KICH_BAN_MVP
 ) as unknown as KichBanMvp;
 
 /**

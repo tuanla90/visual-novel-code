@@ -26,9 +26,10 @@ export function parseTables(markdown) {
   return result;
 }
 
-export async function buildSourceModel(root) {
-  const sourceDir = path.join(root, 'prototype/noi-dung-mvp');
-  const sourcePath = 'prototype/noi-dung-mvp/';
+/** `noiDung`: thư mục nội dung trong prototype/ (mặc định bộ Mùa 1; bộ MVP cũ là `noi-dung-mvp`). */
+export async function buildSourceModel(root, noiDung = 'noi-dung-mua-1') {
+  const sourceDir = path.join(root, 'prototype', noiDung);
+  const sourcePath = `prototype/${noiDung}/`;
   const schedule = await readFile(path.join(sourceDir, 'lich.md'), 'utf8');
   const tables = parseTables(await readFile(path.join(sourceDir, 'du-lieu.md'), 'utf8'));
   const scripts = await Promise.all((await readdir(path.join(sourceDir, 'kich-ban'))).filter((f) => f.endsWith('.md')).sort().map(async (file) => {
@@ -51,14 +52,18 @@ export async function buildSourceModel(root) {
   const events = [];
   const daySections = sections.filter((s) => /ngày:\s*\d/.test(s.meta));
   const tenNgay = (n) => daySections.find((s) => Number(s.meta.match(/ngày:\s*(\d+)/)?.[1]) === n)?.title;
+  // Lịch game không còn nhãn "Ngày n" (user 03/10): nhận ngày điều tra theo ngày thật.
+  const ngayDieuTra = new Map([1, 2, 3, 4, 5].map((k) => [calendar.ngayDieuTra(k), k]));
   for (const m of mocLich({ giaiDoan: 'ngay', ngay: 5 }, { ngayMoDau: openingDate, tenNgay })) {
-    const n = m.ten.match(/^Ngày (\d+)$/)?.[1];
+    const n = m.han ? undefined : ngayDieuTra.get(m.ngay);
     const caseId = n || m.han ? 'vu1' : 'intro';
     const section = n ? daySections.find((s) => Number(s.meta.match(/ngày:\s*(\d+)/)?.[1]) === Number(n)) : m.han ? sections.find((s) => /ngày họp/.test(s.meta)) : null;
     const script = section ? scriptFor(section.chain) : scripts.find((s) => s.file === '00-mo-dau.md');
     events.push({ id: `story-${n ? `vu1-day${n}` : m.han ? 'vu1-meeting' : m.ngay}`, title: n ? `Ngày ${n} — ${tenNgay(Number(n))}` : m.ten, date: m.ngay, end: m.den ?? null, time: m.chiTiet === '16:00' ? m.chiTiet : null, kind: 'story', tracks: ['main'], sourceType: 'canon', caseIds: [caseId], source: `${sourcePath}lich.md`, script: script?.path, chain: section?.chain, summary: n ? 'Ngày điều tra, tính bằng cùng hàm lịch mà game sử dụng.' : m.chiTiet ?? '', condition: n ? Number(n) === 1 ? 'Kết thúc mở đầu và nhận lá thư.' : `Hoàn thành Ngày ${Number(n) - 1}.` : m.han ? 'Đi hết các ngày điều tra của Vụ 1.' : 'Theo tiến độ chuỗi mở đầu.', dateLabel: m.den ? 'Khoảng diễn ra' : 'Ngày diễn ra' });
   }
   let previous = 'vu1';
+  // Số vụ theo thứ tự trong lịch (mã vụ Mùa 1 không còn mang số: `vu-tin-don`).
+  let soVu = 1;
   for (const section of sections) {
     const mainId = section.meta.match(/vụ sau:\s*(\S+)/)?.[1];
     const sideId = section.meta.match(/nhiệm vụ phụ:\s*(\S+)/)?.[1];
@@ -66,7 +71,7 @@ export async function buildSourceModel(root) {
     const id = mainId ?? sideId;
     const script = scriptFor(section.chain);
     if (!script) throw new Error(`Không tìm thấy chuỗi ${section.chain} trong kịch bản.`);
-    const item = { id, title: mainId ? `Vụ ${mainId.replace('vu', '')} — ${section.title}` : section.title, kind: sideId ? 'side' : 'main', date: get(section.body, 'Ngày'), end: null, unlockAfter: sideId ? get(section.body, 'Mở sau') : previous, giver: get(section.body, 'Người giao'), source: `${sourcePath}lich.md`, script: script.path, chain: section.chain, result: get(section.body, 'Lời kết'), tableNames: script.tables, dependsOn: script.dependsOn, evidenceRules: script.evidence.map((r) => r.id) };
+    const item = { id, title: mainId ? `Vụ ${++soVu} — ${section.title}` : section.title, kind: sideId ? 'side' : 'main', date: get(section.body, 'Ngày')?.match(/\d{4}-\d{2}-\d{2}/)?.[0] ?? null, end: null, unlockAfter: sideId ? get(section.body, 'Mở sau') : previous, giver: get(section.body, 'Người giao'), source: `${sourcePath}lich.md`, script: script.path, chain: section.chain, result: get(section.body, 'Lời kết'), tableNames: script.tables, dependsOn: script.dependsOn, evidenceRules: script.evidence.map((r) => r.id) };
     script.caseId = id;
     cases.push(item);
     events.push({ id: `story-${id}`, title: item.title, date: item.date, kind: 'story', tracks: sideId === 'dan-lac' ? ['side', 'relationship'] : [item.kind], sourceType: 'canon', caseIds: [id], source: item.source, script: item.script, chain: item.chain, summary: item.result, dateLabel: sideId ? 'Ngày bối cảnh · không phải ngày mở khóa' : 'Ngày bối cảnh của vụ', condition: sideId ? `Hoàn thành ${item.unlockAfter}; chưa hoàn thành việc này; nhận trong bảng hoạt động hoặc màn kết. Có thể cất và chơi tiếp.` : `Kết thúc ${previous}, chọn chơi vụ kế tiếp.`, unlockAfter: item.unlockAfter });
@@ -141,7 +146,7 @@ export async function buildSourceModel(root) {
     }
   }
   events.push(...hiddenClues.values());
-  return { cases, events, calendar, tables, scripts, sources: [`${sourcePath}lich.md`, `${sourcePath}du-lieu.md`, ...scripts.map((s) => s.path), 'prototype/src/mvp/engine/lich-ngay.ts', 'prototype/src/mvp/engine/may.ts'], rowCount: [...tables.values()].reduce((n, t) => n + t.rows.length, 0) };
+  return { noiDung, cases, events, calendar, tables, scripts, sources: [`${sourcePath}lich.md`, `${sourcePath}du-lieu.md`, ...scripts.map((s) => s.path), 'prototype/src/mvp/engine/lich-ngay.ts', 'prototype/src/mvp/engine/may.ts'], rowCount: [...tables.values()].reduce((n, t) => n + t.rows.length, 0) };
 }
 
 export function applyPlan(model, plan) {

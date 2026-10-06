@@ -1,6 +1,7 @@
 /**
- * LUẬT TÔ MÀU (user 04/10/2026, chi tiết ở noi-dung-mvp/highlight.README.md). Tô = thứ sẽ vào hồ sơ của tuyến đang chơi:
- * - cụm tô khai theo từng thẻ hồ sơ ở highlight.json (`the`), nên không trôi khỏi hồ sơ;
+ * LUẬT TÔ MÀU (user 04/10/2026). Tô = thứ sẽ vào hồ sơ của tuyến đang chơi:
+ * - cụm tô khai theo từng thẻ hồ sơ ở highlight.json của từng bộ nội dung (`noi-dung-mvp/`, `noi-dung-mua-1/`; mã tuyến hai bộ
+ *   khác nhau, vd. `vu2` ↔ `vu-tin-don`), theo thẻ (`the`), nên không trôi khỏi hồ sơ;
  * - người chơi và bốn bạn đồng hành không bao giờ tô; người khác chỉ tô khi tên họ có trong thẻ hồ sơ của tuyến;
  * - người, nơi, giờ chỉ tô trong câu có cụm tô của tuyến (và nơi cần thêm từ ngữ cảnh `relations`).
  * Máy kiểm luật: src/mvp/ui/to-mau-luat.test.ts.
@@ -8,13 +9,16 @@
 import { Engine, type HighlightEntry, type HighlightCategory } from '../../shared/highlight/engine.js';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { tuyenChuoi } from '../engine/tuyen-chuoi';
-import rules from '../../../noi-dung-mvp/highlight.json';
+import luatMvp from '../../../noi-dung-mvp/highlight.json';
+import luatMua1 from '../../../noi-dung-mua-1/highlight.json';
 
 export interface LuatTuyen {
   the: Record<string, string[]>;
   relations: string[];
 }
-export const LUAT_TO_MAU = rules as Record<string, LuatTuyen>;
+export type LuatToMau = Record<string, LuatTuyen>;
+/** Luật tô của từng bộ nội dung; phải đi cùng kịch bản của chính bộ đó (mã tuyến lấy từ lich.md của bộ). */
+export const LUAT_TO_MAU: Record<'mvp' | 'mua-1', LuatToMau> = { mvp: luatMvp as LuatToMau, 'mua-1': luatMua1 as LuatToMau };
 /** Người chơi đi cùng họ suốt game: tô thì câu nào cũng sáng, mất tác dụng. */
 export const DONG_HANH = new Set(['tung', 'ha-vy', 'minh-anh', 'duy']);
 
@@ -72,9 +76,9 @@ export class StoryHighlightEngine extends Engine {
 }
 
 /** Cụm tô, từ ngữ cảnh và người được tô của một tuyến (vụ chính, hoặc việc phụ nếu đang chơi việc phụ). */
-export function storyHighlightProfile(kb: KichBanMvp, caseId: string, sideQuestId: string | null): Profile {
+export function storyHighlightProfile(kb: KichBanMvp, luatBo: LuatToMau, caseId: string, sideQuestId: string | null): Profile {
   const tuyen = sideQuestId ?? caseId;
-  const luat = LUAT_TO_MAU[tuyen];
+  const luat = luatBo[tuyen];
   const chuThe = [...(tuyenChuoi(kb).theCua.get(tuyen)?.values() ?? [])].join(' | ');
   const people: string[] = [];
   for (const nv of kb.nhanVat) {

@@ -133,7 +133,7 @@ describe('lời trong tờ đi qua máy kiểm giọng', () => {
   const giong = (to: Record<string, unknown>): string[] => {
     const raw = JSON.stringify(to, null, 2);
     const tep = tepLoiTuTo(to, raw, '01-ngay-1', 'x/hoi-dap/n1-bac-thinh.json');
-    return kiemGiong(luat, [tep]).loi.filter((l) => l.startsWith('x/hoi-dap/'));
+    return kiemGiong(luat, [tep], THU_MUC_NOI_DUNG_MUA_1).loi.filter((l) => l.startsWith('x/hoi-dap/'));
   };
   const toThat = (): Record<string, unknown> => JSON.parse(RAW) as Record<string, unknown>;
 
