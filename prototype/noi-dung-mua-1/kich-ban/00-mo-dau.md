@@ -63,9 +63,9 @@
 
 - [LỜI md-01-ktx.1]
 
-- [LỜI md-01-ktx.2]
 - [ẢNH chibi-408-vali]
 - [ẢNH chibi-vali-tho]
+- [LỜI md-01-ktx.2]
 - [ĐI CÙNG md-03-toa-b] Ra sảnh tòa B
 
 ### md-03-toa-b — Sảnh tòa B: cái hộp tôn cũ {cảnh: sanh-toa-b}
@@ -85,6 +85,7 @@
 
 - [LỜI md-08-tuan-cong-dan.1]
 - [ẢNH chibi-ngu-gat]
+- [RA tung]
 - [LỜI md-08-tuan-cong-dan.1b]
 - [HIỆN TÀI LIỆU doc-the-lich-cua-toi]
 - [ĐI CÙNG md-09-ngay-hoi] Dự ngày hội CLB
@@ -95,6 +96,7 @@
 
 - [LỜI md-09-ngay-hoi.2]
 - [ẢNH chibi-ngay-hoi]
+- [RA tung]
 - [LỜI md-09-ngay-hoi.2b]
 - [LỌC THỬ lt-ngay-hoi · 1 dòng · chọn ma_sv = SV240251]
 
@@ -131,7 +133,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
 ### md-10-gap-hoai — Hoài xuất hiện hỏi đường {cảnh: san-ktx-trung-thu}
 
 - [LỜI md-10-gap-hoai.1]
-- [ẢNH chibi-clb-nhom]
+- [RA hoai]
 - [ĐI TỚI md-10-mat-banh]
 
 ### md-10-mat-banh — Một chiếc bánh nướng biến mất khỏi đĩa của CLB {cảnh: san-ktx-trung-thu}
@@ -170,6 +172,7 @@ SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND 
 ### md-10-doan-dung — Chiếc bánh và chiếc đèn cá chép {cảnh: san-ktx-trung-thu}
 
 - [LỜI md-10-doan-dung.1]
+- [ẢNH chibi-clb-nhom]
 - [ĐI CÙNG md-11-phong-clb] Tới phòng CLB
 
 ### md-11-phong-clb — Thứ Hai 23/09, 16h: dọn phòng CLB {cảnh: phong-clb}

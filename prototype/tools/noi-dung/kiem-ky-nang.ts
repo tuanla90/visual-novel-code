@@ -180,6 +180,9 @@ export function kiemKyNangMvp(thuMuc: string | RawMvp = THU_MUC_NOI_DUNG_MUA_1):
     if (!lienKetChuoi.has(c.id)) lienKetChuoi.set(c.id, new Set());
     for (const it of c.items) {
       if (it.kind === 'goto' || it.kind === 'go-with') lienKetChuoi.get(c.id)!.add(it.to);
+      else if (it.kind === 'het-ngay') {
+        if (it.to !== null) lienKetChuoi.get(c.id)!.add(it.to);
+      }
       else if (it.kind === 'jump-if') lienKetChuoi.get(c.id)!.add(it.chuoi);
       else if (it.kind === 'branch') {
         for (const ch of it.branch.choices) {

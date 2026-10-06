@@ -1540,3 +1540,54 @@ describe('Gói T1 Mùa 1: Ngày thật cho ngày theo truyện', () => {
     expect(vanBan).toContain('Còn 6 ngày tới Buổi giải trình'); // Vụ 1 Hạn chót 2024-09-30, Ngày 1 là 24/09 -> 30 - 24 = 6 ngày
   });
 });
+
+describe('Gói B15 Mùa 1: dòng [HẾT NGÀY]', () => {
+  type MucHetNgay = { kind?: string; to?: string | null; label?: string };
+  const thay = (moi: string) => taoBoTep({ 'kich-ban/01.md': (s) => s.replace('- [ĐI TỚI s-cat]\n- [KẾT THÚC]', moi) });
+
+  it('đọc đúng [HẾT NGÀY <chuỗi tối>] <nhãn> và [HẾT NGÀY] <nhãn> (không chuỗi)', () => {
+    const co = docNoiDungMvp(thay('- [HẾT NGÀY s-cat] Về phòng KTX ăn tối'));
+    expect(co.loi).toEqual([]);
+    const muc = co.mvp.chuoi.find((c) => c.id === 's-tin')?.items.at(-1) as MucHetNgay;
+    expect(muc).toMatchObject({ kind: 'het-ngay', to: 's-cat', label: 'Về phòng KTX ăn tối' });
+    const khong = docNoiDungMvp(thay('- [HẾT NGÀY] Về ký túc xá nghỉ'));
+    expect(khong.loi).toEqual([]);
+    expect(khong.mvp.chuoi.find((c) => c.id === 's-tin')?.items.at(-1) as MucHetNgay).toMatchObject({ kind: 'het-ngay', to: null, label: 'Về ký túc xá nghỉ' });
+  });
+
+  it('thiếu nhãn thì lỗi; chuỗi tối không có thì lỗi; có dòng sau nó thì lỗi', () => {
+    expect(docNoiDungMvp(thay('- [HẾT NGÀY s-cat]')).loi.some((l) => l.thongBao.includes('[HẾT NGÀY] thiếu nhãn nút'))).toBe(true);
+    const loiCua = (moi: string): string[] => {
+      const kq = docNoiDungMvp(thay(moi));
+      return [...kq.loi, ...kiemLuatMvp(kq.mvp).loi].map(dinhDangLoi);
+    };
+    expect(loiCua('- [HẾT NGÀY chuoi-khong-co] Về').some((l) => l.includes('[HẾT NGÀY]: không có chuỗi "chuoi-khong-co"'))).toBe(true);
+    expect(loiCua('- [HẾT NGÀY s-cat] Về\n- [KẾT THÚC]').some((l) => l.includes('[HẾT NGÀY] phải là dòng cuối của chuỗi'))).toBe(true);
+    expect(loiCua('- [HẾT NGÀY s-cat] Về').some((l) => l.includes('[HẾT NGÀY]'))).toBe(false);
+  });
+
+  it('bộ chuyển dựng thành rẽ nhánh một lựa chọn mang mã het-ngay-…, chuỗi tối là hậu quả "đi tới"', () => {
+    const kq = docNoiDungMvp(thay('- [HẾT NGÀY s-cat] Về phòng KTX ăn tối'));
+    const mvp = chuyenMvp(kq.mvp, kiemLuatMvp(kq.mvp));
+    const nut = (mvp.chuoi.find((c) => c.id === 's-tin') as { nodes: unknown[] }).nodes.at(-1);
+    expect(nut).toEqual({
+      type: 'branch',
+      id: 'het-ngay-s-cat',
+      asker: { speaker: 'player', text: 'Về phòng KTX ăn tối' },
+      choices: [{ id: 'het-ngay', text: 'Về phòng KTX ăn tối', khi: null, hauQua: [{ kind: 'di-toi', chuoi: 's-cat' }] }],
+    });
+    // Dạng không có chuỗi tối: đặt ở cuối chuỗi s-cat (chuỗi s-tin vẫn [ĐI TỚI] nó, kẻo s-cat thành chuỗi lẻ).
+    const kq2 = docNoiDungMvp(taoBoTep({ 'kich-ban/01.md': (s) => s.replace('- **narrator**: Nhớ lại.\n- [KẾT THÚC]', '- **narrator**: Nhớ lại.\n- [HẾT NGÀY] Về ký túc xá nghỉ') }));
+    const nut2 = (chuyenMvp(kq2.mvp, kiemLuatMvp(kq2.mvp)).chuoi.find((c) => c.id === 's-cat') as { nodes: unknown[] }).nodes.at(-1);
+    expect(nut2).toMatchObject({ type: 'branch', id: 'het-ngay-ngay-ke', choices: [{ id: 'het-ngay', hauQua: [] }] });
+  });
+
+  it('truyện chữ: in ghi chú "việc chính hôm nay đã xong" và lựa chọn "Hết ngày: <nhãn>", không in như một rẽ nhánh', () => {
+    const kq = docNoiDungMvp(thay('- [HẾT NGÀY s-cat] Về phòng KTX ăn tối'));
+    const b = new BoXuatTruyenChu(chuyenMvp(kq.mvp, kiemLuatMvp(kq.mvp)), new Map());
+    const vanBan = b.xuatVuHoacViec('vu-tin-don');
+    expect(vanBan).toContain('Việc chính hôm nay đã xong');
+    expect(vanBan).toContain('Hết ngày: Về phòng KTX ăn tối');
+    expect(vanBan).not.toContain('Lựa chọn của bạn** (Bạn: "Về phòng KTX ăn tối")');
+  });
+});

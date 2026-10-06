@@ -50,6 +50,23 @@ export interface KhamPhaMvp {
    * gỡ chỗ đó khỏi `daXem`; trường này vẫn giữ để màn tra mở sau đó biết lùi về đúng chỗ nào.
    */
   dangXem?: string;
+  /**
+   * Gói B15: cảnh của một nơi ĐÃ GHÉ, người chơi vào lại từ ghim bản đồ. Phần còn lại của chuỗi ghim đã chạy ở lần ghé đầu, nên
+   * bấm "Về bản đồ" thì về thẳng bản đồ, không chạy lại.
+   */
+  vaoLai?: boolean;
+}
+
+/**
+ * Gói B15 (bộ mùa 1): việc chính của ngày đã xong, người chơi tự bấm hết ngày. `chuoi` = chuỗi buổi tối chạy khi bấm
+ * (`null` = sang ngày kế luôn); `nhan` = chữ trên nút (nhãn của dòng `[HẾT NGÀY]`); `ngay` = ngày đặt, sang ngày khác là hết hiệu lực.
+ */
+export interface HetNgayMvp {
+  ngay: number;
+  chuoi: string | null;
+  nhan: string;
+  /** Người chơi đã bấm hết ngày, chuỗi buổi tối đang chạy (hết chuỗi là sang ngày kế). */
+  daBam?: boolean;
 }
 
 /**
@@ -133,6 +150,12 @@ export interface NhacViecMvp {
   nhanVat: string;
   bieuCam?: string;
   text: string;
+  /**
+   * Gói B15: chuỗi và vị trí nút đã đặt lời nhắc này. Xong việc chính ở một nơi thì lời nhắc cũ được gỡ; chỉ giữ lời nhắc đặt ở
+   * cuối chính chuỗi vừa chạy (câu dặn việc kế, sau nó không còn dòng lời nào). Ô lưu cũ: không có.
+   */
+  tu?: string;
+  tuNut?: number;
 }
 
 // ---------- Hỏi nhân chứng (gói B12, src/mvp/engine/hoi-dap.ts) ----------
@@ -191,6 +214,8 @@ export interface BuoiHoiMvp {
   /** Đã chào đi: khung còn hiện lời cuối, `tiep` thì đóng hẳn. */
   daRoi: boolean;
   bong: BongDiCungMvp | null;
+  /** Gói B15: hỏi lại một nhân chứng đã gặp (bấm lại chỗ của họ ở cảnh). Đóng buổi hỏi thì về cảnh, không chạy lại chuỗi. */
+  hoiLai?: boolean;
 }
 
 /**
@@ -263,6 +288,8 @@ export interface TrangThaiMvp {
   canhLui?: KhamPhaMvp | null;
   /** Gói B13: việc dở theo chuỗi chỗ bấm (xem `DangDoMvp`). Thiếu = không có. */
   dangDo?: Record<string, DangDoMvp>;
+  /** Gói B15: đang chờ người chơi bấm hết ngày (xem `HetNgayMvp`). Thiếu / `null` = chưa (ô lưu cũ, bộ MVP). */
+  hetNgay?: HetNgayMvp | null;
   /** Dữ kiện đang làm (chuỗi hoặc thử thách); ghi nhận khi xong. */
   duKienDangLam: string | null;
   /** Thử thách đang mở từ dữ kiện kiểu `Thử thách:` (không nằm trong chuỗi). */

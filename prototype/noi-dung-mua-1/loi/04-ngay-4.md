@@ -10,11 +10,12 @@
 ## n4-ctsv.1
 > NHIỆM VỤ: Mã nào có trong sổ niêm phong?
 > NHẮC VIỆC tung (worried): Hai mã. Sổ niêm phong có mã nào đây…
-- **narrator**: Trên đường, không ai nói gì một lúc lâu.
+- [DÀN DỰNG] Nền là Phòng Công tác sinh viên: cả nhóm VỪA TỚI nơi, chuyện dọc đường kể ở thì đã qua (06/10, người xem ngoài: lời đang đi đường mà hình đã ở trong phòng).
+- **narrator**: Cả quãng đường sang đây, không ai nói câu nào.
 - **tung** (worried): Nếu cả hai mã đều không có trong sổ thì sao?
 - **ha-vy** (thinking): Thì chứng tỏ mình sai ở đâu đó. Cũng là một manh mối.
 - **player**: Cậu lúc nào cũng bình tĩnh thế à?
-- **ha-vy** (day-kinh): Không. Tớ đang đếm bậc cầu thang cho đỡ run.
+- **ha-vy** (day-kinh): Không. Nãy giờ tớ đếm bậc cầu thang cho đỡ run đấy.
 
 ## n4-ctsv.1v
 - **co-lan** (neutral): Cô tra rồi. SV240317 có trong sổ. SV240228 thì không.
@@ -25,7 +26,7 @@
 
 ## n4-ctsv.2
 - **quan** (neutral): Biết ai nộp chưa có nghĩa là biết ai viết.
-- **co-lan** (neutral): Theo quy chế, sinh viên có mã trong sổ sẽ được mời đến buổi họp. Có gọi vào hay không do buổi họp quyết định.
+- **co-lan** (neutral): Ai viết thì cô chưa nói được. Theo quy chế, sinh viên có mã trong sổ sẽ được mời đến buổi họp, gọi vào hay không do buổi họp quyết định.
 
 ## n4-phong-may.1
 > NHIỆM VỤ: Lá thư được in từ tài khoản nào?
@@ -48,7 +49,7 @@
 > NHẮC VIỆC ha-vy (thinking): Thư in từ tài khoản CLB Robotics. Người nộp là Hoài. Hai việc, có khi là hai người.
 
 ## n4-sanh-toa-b.1
-- **narrator**: Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đang ngồi ở ghế đá cạnh cửa.
+- **narrator**: Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đứng cạnh ghế đá gần cửa.
 - **tung** (chi-tay): Bác ơi, cho bọn cháu xem sổ ký vào phòng máy tối Chủ nhật được không ạ?
 - **bac-tu** (neutral): Sổ ghi tên người. Không có chữ ký người có thẩm quyền thì bác không mở.
 - **ha-vy** (neutral): Vâng ạ. Bọn cháu chỉ ghi lại nhật ký in trước.
@@ -70,9 +71,9 @@
 ## n4-toi.1b
 - **tung** (happy): Chơi trò "ba dữ kiện" đi! Tớ tả một người qua ba điều, mọi người đoán nhé.
 - **tung** (chi-tay): Một: đeo kính. Hai: hay ôm vở. Ba: từ đầu tuần tới giờ chưa thấy cười.
-- **ha-vy** (day-kinh): Ba điều ấy khớp với cả chục người trên thư viện. Dữ kiện quá lỏng.
+- **ha-vy** (smile): Ba điều ấy khớp với cả chục người trên thư viện. Dữ kiện quá lỏng.
 - **duy** (smile): Đấy, vừa cười xong. Điều thứ ba sai rồi.
-- **ha-vy** (smile): Em không cười. Em đang chỉnh kính.
+- **ha-vy** (day-kinh): Em không cười. Em đang chỉnh kính.
 - **player**: Tới lượt tớ. Một: thuộc đường. Hai: thích cá cược. Ba: cá mười thua chín.
 
 ## n4-toi.1c

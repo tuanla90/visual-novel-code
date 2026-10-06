@@ -44,7 +44,8 @@
       "khongViec": "Giờ chưa có việc gì gấp đâu! Cứ đi một vòng đã, có gì tớ hô.",
       "goiY": "Tớ chỉ nhớ mỗi câu nhắc lúc nãy thôi: {nhac}",
       "khongGoiY": "Tớ cũng đang bí như cậu đây! Hay hỏi Hà Vy xem, cậu ấy để ý kỹ hơn tớ nhiều.",
-      "khongMay": "Ơ, chuyện đó để lúc khác nhé! Giờ cậu hỏi việc chính hay xin gợi ý thì tớ trả lời được ngay."
+      "khongMay": "Ơ, chuyện đó để lúc khác nhé! Giờ cậu hỏi việc chính hay xin gợi ý thì tớ trả lời được ngay.",
+      "hetNgay": "Việc hôm nay xong rồi đấy! Cậu còn muốn ghé đâu thì ghé, không thì mình {nhan} thôi!"
     },
     "ha-vy": {
       "viecChinh": "Việc chính vẫn là câu này: {viec}",
@@ -52,7 +53,8 @@
       "khongViec": "Chưa có việc gì cần làm ngay đâu. Cứ xem quanh đây đã.",
       "goiY": "Nhớ lại câu nhắc lúc nãy xem: {nhac}",
       "khongGoiY": "Tớ chưa thấy gì để gợi ý cả. Cứ nhìn kỹ quanh đây đã nhé.",
-      "khongMay": "Chuyện đó để sau nhé. Giờ cậu muốn hỏi việc chính, hay cần gợi ý?"
+      "khongMay": "Chuyện đó để sau nhé. Giờ cậu muốn hỏi việc chính, hay cần gợi ý?",
+      "hetNgay": "Việc chính hôm nay xong rồi. Cậu còn muốn xem chỗ nào thì cứ đi, xong thì mình {nhan}."
     }
   }
 }

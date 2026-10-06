@@ -97,7 +97,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
       if (it.kind === 'show-document') return `mở tài liệu ${it.id}`;
       if (it.kind === 'save-evidence') return `lưu bằng chứng ${it.id}`;
       if (it.kind === 'challenge' || it.kind === 'trial-filter') return `vào màn tra ${it.id}`;
-      if (it.kind === 'goto' || it.kind === 'go-with' || it.kind === 'jump-if') return 'đi tiếp truyện';
+      if (it.kind === 'goto' || it.kind === 'go-with' || it.kind === 'het-ngay' || it.kind === 'jump-if') return 'đi tiếp truyện';
       if (it.kind === 'consequence') {
         for (const h of it.hauQua) {
           if (h.kind === 'mo-manh-moi') return `mở manh mối ${h.id}`;
@@ -349,6 +349,14 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           canChuoi(it.to, '[ĐI CÙNG]');
           bb.add(it.to);
           if (c.items.indexOf(it) !== c.items.length - 1) err(vt, `[ĐI CÙNG] phải là dòng cuối của chuỗi`);
+          break;
+        case 'het-ngay':
+          // Gói B15: chuỗi tối là một đường đi bắt buộc như [ĐI CÙNG]; dòng này phải khép chuỗi.
+          if (it.to !== null) {
+            canChuoi(it.to, '[HẾT NGÀY]');
+            bb.add(it.to);
+          }
+          if (c.items.indexOf(it) !== c.items.length - 1) err(vt, `[HẾT NGÀY] phải là dòng cuối của chuỗi`);
           break;
         case 'show-document':
           canVatPham(it.id, vt, 'doc-', '[HIỆN TÀI LIỆU]');
@@ -672,7 +680,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     if (!den.some((c) => c.items.some((it) => it.kind === 'end'))) err(v.viTri, `vụ sau ${v.id}: từ chuỗi "${v.chuoi}" không tới được [KẾT THÚC] nào`);
     for (const c of den) {
       const cuoi = c.items[c.items.length - 1];
-      const tuDi = cuoi && (cuoi.kind === 'end' || cuoi.kind === 'goto' || cuoi.kind === 'go-with' || (cuoi.kind === 'consequence' && cuoi.hauQua.some((h) => h.kind === 'di-toi')) || (cuoi.kind === 'branch' && cuoi.branch.choices.every((ch) => ch.hauQua.some((h) => h.kind === 'di-toi'))));
+      const tuDi = cuoi && (cuoi.kind === 'end' || cuoi.kind === 'goto' || cuoi.kind === 'go-with' || (cuoi.kind === 'het-ngay' && cuoi.to !== null) || (cuoi.kind === 'consequence' && cuoi.hauQua.some((h) => h.kind === 'di-toi')) || (cuoi.kind === 'branch' && cuoi.branch.choices.every((ch) => ch.hauQua.some((h) => h.kind === 'di-toi'))));
       // Chuỗi của một chỗ bấm [KHÁM PHÁ] được hết nút (máy quay về cảnh khám phá).
       const laDiemKhamPha = den.some((x) => x.items.some((it) => it.kind === 'explore' && it.diem.some((d) => d.chuoi === c.id)));
       if (!tuDi && !laDiemKhamPha) err(c.viTri, `chuỗi "${c.id}" (vụ sau ${v.id}) phải kết bằng [ĐI TỚI …], [RẼ NHÁNH] có "đi tới" ở mọi lựa chọn, hoặc [KẾT THÚC]`);
@@ -832,7 +840,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
         daQua.add(d.id);
         const cuoi: RawChuoiMvp['items'][number] | undefined = d.items[d.items.length - 1];
         if (cuoi?.kind === 'end') return true;
-        d = cuoi?.kind === 'goto' || cuoi?.kind === 'go-with' ? chuoi.get(cuoi.to) : undefined;
+        d = cuoi?.kind === 'goto' || cuoi?.kind === 'go-with' ? chuoi.get(cuoi.to) : cuoi?.kind === 'het-ngay' && cuoi.to !== null ? chuoi.get(cuoi.to) : undefined;
       }
       return false;
     };

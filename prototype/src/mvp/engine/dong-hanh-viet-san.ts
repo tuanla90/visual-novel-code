@@ -9,7 +9,7 @@
  */
 import { Y_DINH_DONG_HANH, type DongHanhHoiDapMvp, type KichBanMvp, type LoiDongHanhMvp, type YDinhDongHanhMvp } from '../../content/mvp/types';
 import { canLamRo } from './hoi-dap';
-import { dienTen } from './may';
+import { dienNhanHetNgay, dienTen, hetNgayDangCho } from './may';
 import type { TrangThaiMvp } from './trang-thai';
 import { dungMaySoChu, xepCau, type CauMau, type MaySoChu } from './xep-cau-hoi';
 
@@ -39,6 +39,9 @@ const dien = (khuon: string, cho: Record<string, string>): string => khuon.repla
 
 /** Lời viết sẵn của bạn `ban` cho một ý định, điền nhiệm vụ / lời nhắc việc / các dòng còn mở của ván đang chơi. */
 export function loiVietSan(kb: KichBanMvp, s: TrangThaiMvp, loi: LoiDongHanhMvp, yDinh: YDinhDongHanhMvp): string {
+  // Gói B15: việc chính của ngày đã xong, đang chờ người chơi bấm hết ngày → hỏi việc chính hay gợi ý đều nghe câu này.
+  const hn = hetNgayDangCho(kb, s);
+  if (hn && loi.hetNgay) return dienNhanHetNgay(loi.hetNgay, hn.nhan);
   if (yDinh === 'goi-y') return s.nhacViec ? dien(loi.goiY, { nhac: dienTen(kb, s, s.nhacViec.text) }) : loi.khongGoiY;
   const dong = canLamRo(kb, s).flatMap((x) => x.dong.map((d) => d.cau));
   const dau = s.nhiemVu ? dien(loi.viecChinh, { viec: dienTen(kb, s, s.nhiemVu) }) : loi.khongViec;

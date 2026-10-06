@@ -5,7 +5,7 @@
  * (`TheThuThachMvp.goiY`, dòng "- Gợi ý[ khi …]: <bậc 1> <br> <bậc 2>" trong `loi/tt-*.md`), không gọi mạng.
  *
  * Thẻ có nhiều gợi ý thì chọn theo LẦN CHẠY GẦN NHẤT, cùng luật với lời "Khi …" (`sql-mvp.ts` `phanUngSauKhiChay`): thừa cột →
- * đúng → lỗi → sai thứ tự → thiếu cột → "chạy ra n dòng với <cột>" → "chạy ra n dòng"; không dòng nào khớp (hay chưa chạy lần
+ * đúng (đúng mà hẹp hơn trước, gói B15) → lỗi → sai thứ tự → thiếu cột → "chạy ra n dòng với <cột>" → "chạy ra n dòng"; không dòng nào khớp (hay chưa chạy lần
  * nào) thì dùng gợi ý chung. Đã tra đúng mà thẻ không có "Gợi ý khi đúng" thì không còn gì để gợi ý.
  */
 import type { GoiYTheMvp, KhiChayMvp, LoiMvp, TheThuThachMvp } from '../../content/mvp/types';
@@ -27,7 +27,8 @@ export const TRUOT_GOI_Y_MAN_TRA = 2;
 function doKhop(khi: KhiChayMvp, lan: LanChayManTra): number {
   const { kq } = lan;
   if (lan.thuaCot) return khi.kind === 'thua-cot' ? 9 : 0;
-  if (kq.trangThai === 'dung') return khi.kind === 'dung' ? 8 : 0;
+  // Gói B15: đúng bằng câu hẹp hơn → gợi ý "khi đúng mà hẹp hơn" thắng gợi ý "khi đúng" (thẻ không có thì vẫn dùng "khi đúng").
+  if (kq.trangThai === 'dung') return khi.kind === 'dung-hep' ? (kq.so.hepDu ? 9 : 0) : khi.kind === 'dung' ? 8 : 0;
   if (kq.trangThai === 'loi') {
     if (khi.kind === 'loi-cot') return kq.chay.loai === 'khong-co-cot' ? 7 : 0;
     return khi.kind === 'loi' ? 6 : 0;

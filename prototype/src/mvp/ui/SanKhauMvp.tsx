@@ -32,6 +32,16 @@ export interface SanKhauMvpProps {
   shaking?: boolean;
   /** `false` = không vẽ dàn chân dung (bản đồ / màn trong địa điểm phủ kín sân khấu). */
   coDan?: boolean;
+  /**
+   * Đang ở cảnh bấm (khám phá, bản đồ): dàn chân dung xóa trắng, cuộc nói chuyện kế bắt đầu với dàn trống. Model xem thử 06/10:
+   * bấm sang chào Hà Vy mà Duy của cuộc nói chuyện trước vẫn đứng giữa hình.
+   */
+  xoaDan?: boolean;
+  /**
+   * Câu đang hiện là người chơi NGHĨ THẦM (chữ trong ngoặc đơn): không vì thế mà hình người chơi bước lên dàn. Đã đứng sẵn
+   * (đang nói chuyện dở) thì ở lại. Model xem thử 06/10: hình người chơi chắn tờ giấy đang xem, đứng cạnh người chưa bắt chuyện.
+   */
+  nghi?: boolean;
   /** Người đã rời dàn theo lệnh `[RA x]` của khung (`TrangThaiMvp.raDan`): không vẽ, trừ khi chính người đó đang nói. */
   raDan?: readonly string[];
   /** Tên người chơi (nhãn chân dung của `player`); rỗng → "Bạn". */
@@ -77,13 +87,14 @@ function laNhanVatHien(kb: KichBanMvp, speaker: string | undefined): speaker is 
  * Người mới nói khi dàn đã đủ `TOI_DA_TREN_DAN` người → người nói lâu nhất trước đó rời dàn, người mới đứng
  * vào đúng chỗ đó (người khác không xê dịch).
  */
-function danKe(kb: KichBanMvp, truoc: DanDien | null, canh: string, speaker: string | undefined, expression: string | undefined, raDan: readonly string[] = []): DanDien {
+function danKe(kb: KichBanMvp, truoc: DanDien | null, canh: string, speaker: string | undefined, expression: string | undefined, raDan: readonly string[] = [], nghi = false): DanDien {
   let dan: DanDien = truoc && truoc.canh === canh ? truoc : { canh, thanhVien: [], thuTuNoi: [] };
   // `[RA x]`: người đã rời cảnh xuống khỏi dàn (đang nói thì ở lại).
   const roi = (x: string): boolean => raDan.includes(x) && x !== speaker;
   if (dan.thanhVien.some((t) => roi(t.nhanVat))) dan = { canh, thanhVien: dan.thanhVien.filter((t) => !roi(t.nhanVat)), thuTuNoi: dan.thuTuNoi.filter((x) => !roi(x)) };
   if (!laNhanVatHien(kb, speaker)) return dan;
   const co = dan.thanhVien.find((t) => t.nhanVat === speaker);
+  if (nghi && speaker === 'player' && !co) return dan;
   const bieuCam = expression ?? co?.bieuCam;
   let thanhVien = dan.thanhVien;
   if (!co) {
@@ -161,9 +172,9 @@ function ChanDungMvp({
   );
 }
 
-export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, coDan = true, raDan, tenNguoiChoi, nhacViec, dienTen, isCard = false, dongHanh, children }: SanKhauMvpProps) {
-  const [dan, setDan] = useState<DanDien>(() => danKe(kb, null, canh, speaker, expression, raDan));
-  const moi = danKe(kb, dan, canh, speaker, expression, raDan);
+export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, coDan = true, xoaDan = false, raDan, nghi = false, tenNguoiChoi, nhacViec, dienTen, isCard = false, dongHanh, children }: SanKhauMvpProps) {
+  const [dan, setDan] = useState<DanDien>(() => danKe(kb, null, canh, speaker, expression, raDan, nghi));
+  const moi = xoaDan ? (dan.thanhVien.length === 0 && dan.canh === canh ? dan : { canh, thanhVien: [], thuTuNoi: [] }) : danKe(kb, dan, canh, speaker, expression, raDan, nghi);
   if (moi !== dan) setDan(moi);
   const lineTyping = useVnStore((s) => s.lineTyping);
   const nen = anhNen(canh, dem);

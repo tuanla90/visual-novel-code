@@ -6,7 +6,7 @@
   "nhanChung": "bac-tu",
   "nguoiDiCung": ["ha-vy", "tung"],
   "ghiChu": "Lời của chuỗi chỉ có một câu của bác (câu khóa, giữ nguyên văn ở biến thể thang). Ba dữ kiện ẩn lấy từ thẻ nhân vật và tờ giấy trên cửa phòng máy (n3-bd-phong-may.1). Người trong sổ là việc của Vụ 6: bác không nói, không nhận là không nhớ.",
-  "moDau": "Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đang ngồi ở ghế đá cạnh cửa.",
+  "moDau": "Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đứng cạnh ghế đá gần cửa.",
   "tuDongDuKien": ["khong-mo-so"],
   "danhSach": [
     { "ma": "L1", "cau": "Có xem được sổ ký vào phòng máy tối Chủ nhật không?", "can": ["khong-mo-so"] }

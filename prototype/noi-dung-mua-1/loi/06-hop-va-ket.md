@@ -5,13 +5,14 @@
 ## hop-00.1
 > NHIỆM VỤ: Buổi họp rà soát
 > NHẮC VIỆC minh-anh (serious): Nói có sách, mách có chứng. Trình đúng những gì đã tra.
-- **narrator**: Thứ Hai, ba giờ rưỡi chiều, hành lang tầng ba. Tùng ngáp tới cái thứ tư.
+- [DÀN DỰNG] Nền là phòng họp, ghế còn trống: cả nhóm tới sớm nửa tiếng, ngồi chờ ngay trong phòng (06/10, người xem ngoài: lời kể "hành lang" mà hình là phòng họp).
+- **narrator**: Thứ Hai 30/09, ba giờ rưỡi chiều. Phòng họp tầng ba còn vắng, Tùng ngáp tới cái thứ tư.
 - **ha-vy** (neutral): "Ngủ sớm" của cậu là mấy giờ?
 - **tung** (gai-dau): Hai giờ sáng. Tớ nằm tập nói "dạ thưa thầy" tới lúc quên cả cách thở.
 
 ## hop-00.2
 - [DÀN DỰNG] {{nv.thay-quang}} ngồi giữa; {{nv.co-lan}} và {{nv.quan}} một bên, CLB một bên. {{nv.hoai}} ngồi chờ ngoài hành lang theo quy chế, chưa được mời vào.
-- **narrator**: Thứ Hai 30/09, bốn giờ chiều. Phòng họp tầng ba. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ.
+- **narrator**: Bốn giờ chiều. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ.
 - **thay-quang** (neutral): Thầy là Quang, phó hiệu trưởng phụ trách sinh viên, chủ trì buổi rà soát này. Hôm nay thầy phải chốt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử. Mời các em trình bày căn cứ.
 - **minh-anh** (neutral): Dạ, bọn em xin trình bày cách bọn em lọc ra danh sách ạ.
 - **quan** (chi-man): Bên tôi lọc lại cho chắc: tên là Hoài hoặc học lớp BC24A, ra ba mươi hai dòng. Hồ sơ các bạn nộp chỉ có một người.
@@ -27,6 +28,7 @@
 ## hop-00.4
 - **player**: Anh đang gộp chung người tên Hoài và cả lớp BC24A. Bọn em chỉ tìm người vừa tên Hoài, vừa học BC24A.
 - **quan** (neutral): …Một dòng. Vâng. Mời các bạn nói tiếp.
+> NHẮC VIỆC minh-anh (serious): Nói có sách, mách có chứng. Trình đúng những gì đã tra.
 
 ## hop-02.1
 - [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa, rồi ngồi xuống ghế khi thầy bảo.
@@ -54,7 +56,7 @@
 
 ## ket-that.1a
 - [DÀN DỰNG] {{nv.thay-quang}} quay sang {{nv.hoai}}.
-- **thay-quang** (neutral): Em Hoài, nhật ký in nói lá thư in từ tài khoản của một CLB, không phải của em. Phong bì em bỏ vào hộp là từ đâu ra?
+- **thay-quang** (neutral): Em Hoài, nhật ký in nói lá thư in từ tài khoản của một CLB, không phải tài khoản của em. Phong bì em bỏ vào hộp là từ đâu ra?
 - **hoai** (nervous): Dạ… có một anh em không quen nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký như bình thường vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ. Mặt anh ấy em không nhớ rõ ạ.
 - **ha-vy** (neutral): Vậy là cậu ghi mã của mình vì được dặn. Còn người soạn thư thì không đứng tên ở đâu trên phiếu.
 - **thay-quang** (neutral): Nhật ký in không đặt em vào việc soạn thư, và lời em cho thầy một hướng để hỏi tiếp. Hiện chưa có căn cứ nào nói em là người viết. Thầy không nêu tên em trong hồ sơ.
@@ -70,18 +72,19 @@
 - [DÀN DỰNG] {{nv.tung}} thì thầm với {{nv.ha-vy}}.
 - **tung** (happy): Giữ được phòng rồi! Tối nay tớ khao trà đá.
 - **ha-vy** (smile): Tớ nhớ đấy nhé.
+> NHẮC VIỆC tung (happy): Về dọn bảng đã, rồi tớ khao trà đá.
 
 ## ket-that.2
 - **narrator**: Chiều muộn, cả nhóm về phòng CLB dọn bảng. Từ cuốn sổ CLB rơi ra một mẩu giấy gấp tư.
 - **duy** (neutral): Mực xanh, ngả màu cả rồi. Sổ này năm nào cũng kiểm, chưa thấy tờ này bao giờ.
-- **player**: "Căn phòng này giữ nhiều hơn em nghĩ."
+- **player**: Có một dòng thôi: "Căn phòng này giữ nhiều hơn em nghĩ."
 - **tung** (surprised): Giữ gì cơ? Phòng có mỗi cái tủ với cái bảng.
 - **ha-vy** (thinking): Đừng cá. Chưa có gì để tính cả.
 - **tung** (happy): Thế thì đi uống trà đá thôi. Tớ hứa rồi mà.
 
 ## ket-tra-da.1a
 - **narrator**: Quán trà đá dưới gốc cây ngoài cổng chính.
-- **tung** (happy): Bà ơi, cho cháu ba cốc trà đá! Hôm nay cháu khao.
+- **tung** (happy): Bà ơi, cho cháu ba cốc trà đá! CLB cháu vừa giữ được phòng, hôm nay cháu khao.
 
 ## ket-tra-da.1b
 - **ba-lua** (smile): Ba cốc chín nghìn. Khao thế thì bà cũng khao được.
@@ -105,6 +108,9 @@
 - [DÀN DỰNG] Thấy bóng {{nv.hoai}} ôm cặp đi qua bên kia đường, {{nv.tung}} hấp tấp nhổm dậy va vào bàn suýt đổ cốc nước.
 - **tung** (worried): Ơ Hoài ơi! Đợi tớ… chuyện hôm trước tớ…
 - **hoai** (nervous): Ơ… tớ chào các cậu nhé. Tớ phải về kẻo muộn.
+
+## ket-tra-da.3
+- [DÀN DỰNG] Hoài đã rời hình ([RA hoai] trong khung, ngay trước đoạn này): lúc Hà Vy trêu Tùng, bạn ấy không còn đứng đó.
 - **narrator**: Hoài giật mình quay lại, gật đầu một cái rồi đi nhanh hơn.
 - **ha-vy** (smile): Cậu định xin lỗi người ta hay tính bắc loa dọa bạn ấy đấy?
 - **tung** (gai-dau): Oan cho tớ, tớ còn chưa kịp nói xong chữ "xin" mà…

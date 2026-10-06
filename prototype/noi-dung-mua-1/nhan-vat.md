@@ -126,7 +126,7 @@
 - Biểu cảm: neutral, nervous, downcast, relieved
 - Xuất hiện từ: mở đầu
 - Danh xưng: Sinh viên lớp BC24A
-- Khi chưa quen: Bạn nữ kéo vali
+- Khi chưa quen: Bạn nữ đeo túi vải
 - Lịch: Tan học là lên thư viện, ngồi bàn cạnh cửa sổ tới chiều muộn.
 - Thường ở: T2–T6 14:00–17:30 → thu-vien
 - Năm: Năm nhất

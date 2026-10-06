@@ -80,9 +80,9 @@ export interface BoHoiDap {
 export const Y_DINH_DONG_HANH = ['viec-chinh', 'goi-y'] as const;
 /** Bạn đi cùng có lời viết sẵn (giữ khớp `BAN_DONG_HANH` của src/mvp/engine/tri-nho-dong-hanh.ts). */
 export const BAN_DONG_HANH = ['tung', 'ha-vy'] as const;
-const TRUONG_LOI_DONG_HANH = ['viecChinh', 'conMo', 'khongViec', 'goiY', 'khongGoiY', 'khongMay'] as const;
-/** Chỗ điền bắt buộc trong từng lời: nhiệm vụ, các dòng còn mở, lời nhắc việc. */
-const CHO_DIEN: Partial<Record<(typeof TRUONG_LOI_DONG_HANH)[number], string>> = { viecChinh: '{viec}', conMo: '{dong}', goiY: '{nhac}' };
+const TRUONG_LOI_DONG_HANH = ['viecChinh', 'conMo', 'khongViec', 'goiY', 'khongGoiY', 'khongMay', 'hetNgay'] as const;
+/** Chỗ điền bắt buộc trong từng lời: nhiệm vụ, các dòng còn mở, lời nhắc việc, nhãn của dòng `[HẾT NGÀY]` (gói B15). */
+const CHO_DIEN: Partial<Record<(typeof TRUONG_LOI_DONG_HANH)[number], string>> = { viecChinh: '{viec}', conMo: '{dong}', goiY: '{nhac}', hetNgay: '{nhan}' };
 
 export interface DongHanhHoiDap {
   /** Câu mẫu cho hai ý định, và (tùy chọn) "khac": câu chuyện phiếm để máy không ép vào hai ý định kia. */

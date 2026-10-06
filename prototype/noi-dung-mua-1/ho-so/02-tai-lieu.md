@@ -27,7 +27,7 @@
 - Nguồn: Phòng CTSV chuyển về
 - Nội dung hiển thị:
 > Đề nghị thu hồi phòng sinh hoạt của CLB Thám Tử, vì CLB không còn giải quyết được việc gì. Đề nghị Phòng phản hồi chính thức.
-> Ký: (chữ ký tay — chữ H viết hoa rõ, phần sau là một nét lượn dài, không đọc được)
+> Ký: (chữ ký tay: chữ H viết hoa rõ, phần sau là một nét lượn dài, không đọc được)
 > Chân trang (chữ in nhỏ, bản chụp bị xén mất nửa): kien-nghi-…
 
 ### doc-thong-bao-hop — Thông báo lịch họp rà soát

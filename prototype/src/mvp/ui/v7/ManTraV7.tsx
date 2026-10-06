@@ -30,7 +30,7 @@ import { CodeText } from '../../../shared/ui/CodeText';
 import { IconPin, IconPlay, IconPointer, IconSearch } from '../../../shared/ui/icons';
 import type { GiaTriHoSo } from '../../engine/giay-nho';
 import { tenNguoiNoi } from '../../engine/may';
-import { chamThuThach, chaySql, phanUngSauKhiChay, type KetQuaCham } from '../../engine/sql-mvp';
+import { chamThuThach, chaySql, phanUngSauKhiChay, type KetQuaCham, type LuatHep } from '../../engine/sql-mvp';
 import {
   TEN_CHUAN_HOA,
   TEN_PHEP,
@@ -232,6 +232,15 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
 
   const dung = cham?.trangThai === 'dung';
   const khoa = dung || dangChay;
+  /**
+   * Gói B15 (mục E, chỉ bộ mùa 1): thẻ "bấm ô lấy giấy nhớ" có vật chứng nêu giá trị thì nhận cả câu HẸP hơn câu chuẩn miễn là
+   * kết quả còn đủ mọi giá trị ấy (vd `c-ten-h`: lọc thẳng tên bắt đầu bằng H trong lớp, ra đúng Hiếu và Hoài).
+   */
+  const luatHep = useMemo<LuatHep | null>(() => {
+    const giaTri = the.vatChung?.giaTri ?? [];
+    if (!kb.dieuHuongTuDo || mode === 'fix-query' || !the.bamO || giaTri.length === 0) return null;
+    return { cot: the.bamO, giaTri, cotCan: [the.bamO, ...(the.cotNop ?? [])] };
+  }, [kb.dieuHuongTuDo, mode, the.bamO, the.cotNop, the.vatChung]);
 
   /**
    * Sửa câu → kết quả cũ không còn là kết quả của câu đang hiện: bỏ con dấu, nút soi; bảng cũ (nếu có dòng) ở lại, mờ đi và ghi
@@ -328,7 +337,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     }
     soundEngine.playSfx('click');
     try {
-      const tho = await chamThuThach(duLieu, sql, tienTo + sqlChuan);
+      const tho = await chamThuThach(duLieu, sql, tienTo + sqlChuan, luatHep);
       // Bài chọn cột: đủ dòng, đủ cột cần mà lấy thừa cột thì chưa tính là đúng (có lời "Khi thừa cột").
       const thuaCot = !!chonCot && tho.trangThai === 'dung' && cotLay.length > cotChuan.length;
       const kq: KetQuaCham = thuaCot && tho.trangThai === 'dung' ? { ...tho, trangThai: 'sai' } : tho;
@@ -422,7 +431,10 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
       // Thẻ không có lời riêng cho kết quả này: Duy nói khi phiếu còn quá dài, Hà Vy nói khi phiếu gọn mà chưa đúng câu hỏi.
       const soDongKq = kq.trangThai === 'loi' ? 0 : kq.so.soDongNguoiChoi;
       const macDinh: LoiMvp[] =
-        loiThe.length > 0 || kq.trangThai !== 'sai' || nguongDuy === null
+        loiThe.length === 0 && kq.trangThai === 'sai' && kq.so.hepThieu
+          ? // Gói B15: câu hẹp hơn câu chuẩn mà lọc sót thứ cần giữ.
+            [{ speaker: 'ha-vy', expression: 'thinking', text: 'Lọc hẹp thế này thì sót mất dòng cần giữ rồi. Nới điều kiện ra một chút xem.' }]
+          : loiThe.length > 0 || kq.trangThai !== 'sai' || nguongDuy === null
           ? []
           : soDongKq > nguongDuy
             ? [{ speaker: 'duy', expression: 'neutral', text: `Còn ${soDongKq.toLocaleString('vi-VN')} dòng. Phiếu dài thế tớ không dò nổi, tớ chỉ nhận tối đa ${nguongDuy} dòng.` }]
@@ -445,7 +457,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
       banRon.current = false;
       if (song.current) setDangChay(false);
     }
-  }, [duLieu, khung, dung, sql, sqlNgoai, sqlChuan, tienTo, the, tongDong, demToi, cau, chonCot, cotLay, cotChuan, nguongDuy, onDaXemTruyVan, cham, bangCu, boRung, rungDi, xongRung, hoiBan]);
+  }, [duLieu, khung, dung, sql, sqlNgoai, sqlChuan, tienTo, the, tongDong, demToi, cau, chonCot, cotLay, cotChuan, nguongDuy, onDaXemTruyVan, cham, bangCu, boRung, rungDi, xongRung, hoiBan, luatHep]);
 
   if (!duLieu) return <p className="game__error">Vụ này chưa có bộ dữ liệu (du-lieu.md) nên không chạy được.</p>;
   if (!khung || !bang) return <p className="game__error">Thẻ thử thách này thiếu khung SELECT … FROM … hợp lệ.</p>;

@@ -392,6 +392,8 @@ export class BoXuatTruyenChu {
         return 'Nếu gặp lỗi';
       case 'dung':
         return 'Nếu tra đúng';
+      case 'dung-hep':
+        return 'Nếu tra đúng bằng câu hẹp hơn';
       case 'sai-thu-tu':
         return 'Nếu đủ dòng nhưng sai thứ tự';
       case 'sai-cot-nop':
@@ -888,7 +890,14 @@ export class BoXuatTruyenChu {
           }
           case 'branch': {
             const laDiCung = n.id.startsWith('go-with-');
-            if (!laDiCung) {
+            // `[HẾT NGÀY]` (gói B15): việc chính của ngày đã xong, người chơi ở lại tùy ý rồi tự bấm nút hết ngày.
+            const laHetNgay = n.id.startsWith('het-ngay-');
+            if (laHetNgay) {
+              dong.push('');
+              dong.push('> 🌙 **Việc chính hôm nay đã xong.** Bạn vẫn ở lại: đi đâu tùy ý (bản đồ, nơi đã ghé, chỗ chưa xem), khi nào muốn thì tự bấm nút hết ngày.');
+              const banDoNgay = dayToMapData.get(daKhamPha.get(cId)!);
+              if (banDoNgay && !luaChon.some((x) => x.nhan === 'Mở bản đồ')) luaChon.push({ nhan: 'Mở bản đồ', toiSo: banDoNgay.so });
+            } else if (!laDiCung) {
               dong.push(`🔀 **Lựa chọn của bạn** (${this.ten(n.asker.speaker)}: "${this.dienTen(n.asker.text)}"):`);
             }
             for (const ch of n.choices) {
@@ -902,10 +911,12 @@ export class BoXuatTruyenChu {
               const dkText = ch.khi ? this.dkChu(ch.khi) : undefined;
               if (targetSo > 0) {
                 luaChon.push({
-                  nhan: laDiCung ? this.dienTen(ch.text) : `Chọn: "${this.dienTen(ch.text)}"`,
+                  nhan: laHetNgay ? `Hết ngày: ${this.dienTen(ch.text)}` : laDiCung ? this.dienTen(ch.text) : `Chọn: "${this.dienTen(ch.text)}"`,
                   toiSo: targetSo,
                   dieuKien: dkText,
                 });
+              } else if (laHetNgay) {
+                dong.push(`> Nút hết ngày: "${this.dienTen(ch.text)}".`);
               } else {
                 dong.push(`  - Lựa chọn: "${this.dienTen(ch.text)}"${dkText ? ` (chỉ hiện khi ${dkText})` : ''}`);
               }

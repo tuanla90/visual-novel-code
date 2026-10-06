@@ -389,7 +389,7 @@ const GOC = {
           }
         ],
         "danhXung": "Sinh viên lớp BC24A",
-        "chuaQuen": "Bạn nữ kéo vali",
+        "chuaQuen": "Bạn nữ đeo túi vải",
         "nam": "Năm nhất",
         "nganh": null,
         "cauNoi": "Dạ… vâng ạ.",
@@ -1093,12 +1093,12 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Mọi người kéo vali vào cả lối này. Chắc ký túc xá đây rồi.)"
+          "text": "(Cổng treo dây cờ đón tân sinh viên. Chắc ký túc xá đây rồi.)"
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Phòng 408 chắc ở tầng bốn. Trường to đẹp thế này chắc phải có thang máy chứ nhỉ?)"
+          "text": "(Giấy báo ghi phòng 408. Tầng bốn à? Trường to thế này chắc phải có thang máy chứ nhỉ?)"
         },
         {
           "type": "branch",
@@ -1145,7 +1145,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Đông thật đấy. Thang máy ngay kia rồi, ra xếp hàng thôi.)"
+          "text": "(Đông thật đấy. Thang máy ngay kia rồi.)"
         },
         {
           "type": "explore",
@@ -1210,6 +1210,11 @@ const GOC = {
           "type": "line",
           "speaker": "player",
           "text": "(Mà thang bộ ở chỗ nào nhỉ? Ra bảng tin xem có sơ đồ không.)"
+        },
+        {
+          "type": "reminder",
+          "speaker": "player",
+          "text": "Thang bộ ở chỗ nào nhỉ?"
         }
       ]
     },
@@ -1254,12 +1259,12 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Ai cũng tay xách nách mang, hỏi lúc này thì ngại quá.)"
+          "text": "(Toàn người lạ, biết hỏi ai bây giờ?)"
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Kia có một bạn áo xanh tình nguyện, không phải xách gì. Ra hỏi bạn ấy vậy.)"
+          "text": "(Kia có bạn áo xanh tình nguyện. Hỏi bạn ấy chắc được.)"
         },
         {
           "type": "goto",
@@ -1308,12 +1313,12 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Bạn nữ kéo vali lạch cạch đi về hướng cậu ấy vừa chỉ."
+          "text": "Bạn nữ xốc lại quai túi, đi về hướng cậu ấy vừa chỉ."
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Chỉ đường trơn tru thế kia thì chắc rành khu này lắm.)"
+          "text": "(Bạn ấy vừa chỉ đường cho người ta xong. Hỏi luôn.)"
         },
         {
           "type": "goto",
@@ -1363,24 +1368,24 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh-surprised",
-          "text": "…Ơ, tên tớ đây. Thế là cùng phòng thật! Tớ là Tùng, học Du lịch."
+          "text": "…Ơ, tên tớ đây. Thế là cùng phòng thật!"
         },
         {
           "type": "line",
           "speaker": "player",
-          "text": "Cùng phòng á? Tớ tưởng cậu là anh năm hai, năm ba gì đấy, mặc áo tình nguyện thế kia."
+          "text": "Cùng phòng á? Thế cậu cũng năm nhất à? Sao lại mặc áo tình nguyện?"
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh",
-          "text": "Tớ năm nhất thôi. Nhập học đợt một, lên đây từ cuối tháng Tám."
+          "text": "Tớ năm nhất thôi. Tớ là Tùng, học Du lịch."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh-happy",
-          "text": "Đội thiếu người dẫn đường khu ký túc, chú tớ làm bảo vệ nên giới thiệu tớ mượn áo ra phụ hai hôm."
+          "text": "Tớ nhập học đợt một, lên từ cuối tháng Tám. Chú tớ làm bảo vệ ở đây, thấy đội dẫn đường thiếu người nên cho tớ mượn áo ra phụ hai hôm."
         },
         {
           "type": "create-character",
@@ -1413,13 +1418,19 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Du lịch mà cũng cần vở Toán à?"
+          "text": "Du lịch mà cũng phải học Toán á?"
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh-gai-dau",
           "text": "Kỳ hai dính môn Xác suất Thống kê mới cay chứ. Chưa học đã thấy điềm trượt rồi. Thôi, xách vali lên phòng đã!"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "ao-xanh-chi-tay",
+          "text": "Tớ cá ba phút là tới tầng bốn. Thua tớ khao trà đá!"
         },
         {
           "type": "branch",
@@ -1461,24 +1472,21 @@ const GOC = {
           "text": "Cất đồ xong tớ dẫn đi một vòng trường."
         },
         {
+          "type": "image",
+          "imageId": "chibi-408-vali"
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-vali-tho"
+        },
+        {
           "type": "note",
-          "text": "Hai người khiêng vali lên tới tầng bốn, cùng thở dốc. Tùng đẩy cửa phòng 408."
+          "text": "Nền phòng 408. Hai người vừa khiêng vali lên tới nơi, còn thở dốc. Đoạn leo thang không có ảnh nền nên không kể bằng lời; hai ảnh chibi khiêng vali (chibi-408-vali, chibi-vali-tho) chạy TRƯỚC đoạn này thay cho cảnh leo thang (06/10, người xem ngoài: ảnh leo thang hiện sau câu \"Phòng mình đây!\" thì ngược)."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Thang bộ hẹp, mỗi tầng hai đợt dốc."
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "ao-xanh-chi-tay",
-          "text": "Tớ cá là ba phút là tới tầng bốn. Thua tớ khao trà đá!"
-        },
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Bảy phút sau, cả hai mới tới chiếu nghỉ tầng ba, đứng thở."
+          "text": "Mười phút sau, cửa phòng 408 mới mở ra."
         },
         {
           "type": "line",
@@ -1492,22 +1500,10 @@ const GOC = {
           "text": "Vali cậu đựng gạch à? …Thôi, tớ nợ cậu một cốc trà đá."
         },
         {
-          "type": "note",
-          "text": "Tùng đẩy cửa phòng 408."
-        },
-        {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh-happy",
-          "text": "Tới nơi rồi. Phòng mình đây!"
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-408-vali"
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-vali-tho"
+          "text": "Phòng mình đây!"
         },
         {
           "type": "branch",
@@ -1561,7 +1557,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "ao-xanh",
-          "text": "Ơ, cái hộp cạnh cửa kia vẫn còn à?"
+          "text": "Ơ, cái hộp cạnh bảng tin kia vẫn còn à?"
         },
         {
           "type": "image",
@@ -1576,6 +1572,12 @@ const GOC = {
           "speaker": "tung",
           "expression": "ao-xanh",
           "text": "Hộp kiến nghị đấy. Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "ao-xanh-happy",
+          "text": "Cháu chào bác Thịnh ạ!"
         },
         {
           "type": "line",
@@ -1661,7 +1663,7 @@ const GOC = {
           "type": "line",
           "speaker": "chu-cuong",
           "expression": "smile",
-          "text": "CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó đều moi ra bằng chứng."
+          "text": "CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó lần ra hết."
         },
         {
           "type": "line",
@@ -1731,9 +1733,18 @@ const GOC = {
           "imageId": "chibi-ngu-gat"
         },
         {
+          "type": "stage",
+          "action": "ra",
+          "nhanVat": "tung"
+        },
+        {
+          "type": "note",
+          "text": "Ảnh chibi-ngu-gat ngay trước đoạn này đã cho thấy Tùng gục trên bàn, bút còn trong tay: lời dẫn không tả lại. Hình Tùng đứng cười của câu cá trước đó đã rời dàn ([RA tung] trong khung)."
+        },
+        {
           "type": "line",
           "speaker": "narrator",
-          "text": "Thứ Tư. Hàng ghế cuối. Tùng ngủ gục, cuốn sổ trên đùi mới chép được đúng dòng tiêu đề, bút vẫn kẹp trong tay."
+          "text": "Thứ Tư. Hàng ghế cuối. Cuốn sổ của Tùng mới chép được đúng dòng tiêu đề."
         },
         {
           "type": "line",
@@ -1810,7 +1821,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Bàn CLB Thám Tử nằm tận trong góc, chỉ có một chị ngồi trực."
+          "text": "Bàn CLB Thám Tử phủ khăn trắng kê tách ra một góc, chỉ có một chị trực."
         },
         {
           "type": "line",
@@ -1821,6 +1832,11 @@ const GOC = {
         {
           "type": "image",
           "imageId": "chibi-ngay-hoi"
+        },
+        {
+          "type": "stage",
+          "action": "ra",
+          "nhanVat": "tung"
         },
         {
           "type": "line",
@@ -1922,7 +1938,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Ngành Du lịch lọc ra còn mấy chục bạn. Thêm tên Tùng thì đúng một người. Mã ở ô đầu: SV240251."
+          "text": "Ra rồi chị ạ. Lọc ngành Du lịch còn mấy chục bạn, thêm tên Tùng thì còn đúng một người. Mã SV240251."
         },
         {
           "type": "line",
@@ -1991,7 +2007,7 @@ const GOC = {
           "type": "line",
           "speaker": "duy",
           "expression": "smile",
-          "text": "Được rồi đấy. Anh là Duy, năm hai, ở CLB từ năm nhất."
+          "text": "Được rồi đấy. Anh là Duy, năm hai Hành chính học, ở CLB từ năm nhất."
         },
         {
           "type": "line",
@@ -2085,7 +2101,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Tiếng trống lân tập dồn từng nhịp, át cả tiếng nói chuyện."
+          "text": "Hồi trống lân tập vừa dứt, tiếng nói cười quanh sân mới nghe rõ lại."
         },
         {
           "type": "line",
@@ -2289,8 +2305,9 @@ const GOC = {
           "text": "Tớ là Tùng. Lần này tớ thề tớ không chỉ nhầm nữa đâu."
         },
         {
-          "type": "image",
-          "imageId": "chibi-clb-nhom"
+          "type": "stage",
+          "action": "ra",
+          "nhanVat": "hoai"
         },
         {
           "type": "goto",
@@ -2554,12 +2571,12 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Đôi dép bé tí cạnh đèn cá chép, với vệt vụn bánh kéo từ bàn ra. Một đứa trẻ đã lấy bánh."
+          "text": "Đôi dép bé tí cạnh đèn cá chép, với vệt vụn bánh kéo từ bàn ra. Chắc là một đứa trẻ lấy."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Đúng lúc ấy, một bé gái kéo chiếc đèn cá chép chạy từ sau sân khấu ra. Má dính vụn bánh, tay cầm nửa chiếc bánh nướng."
+          "text": "Đúng lúc ấy, một bé gái chân đất chạy từ sau sân khấu ra chỗ chiếc đèn cá chép. Má dính vụn bánh, tay cầm nửa chiếc bánh nướng."
         },
         {
           "type": "line",
@@ -2590,6 +2607,10 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "neutral",
           "text": "Thứ Hai tới, bốn giờ qua phòng CLB dọn tủ nhé. Buổi sinh hoạt thứ hai của mình."
+        },
+        {
+          "type": "image",
+          "imageId": "chibi-clb-nhom"
         },
         {
           "type": "branch",
@@ -2711,7 +2732,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Sổ của CLB đấy, khóa nào cũng chép thêm vài trang. Mấy trang đầu mực xanh là từ hồi mới lập. Năm nay em giữ."
+          "text": "Sổ của CLB đấy, khóa nào cũng chép thêm vài trang. Mấy trang đầu mực xanh là từ hồi mới lập. Năm nay em giữ nhé."
         },
         {
           "type": "show-document",
@@ -2922,8 +2943,9 @@ const GOC = {
         },
         {
           "type": "line",
-          "speaker": "player",
-          "text": "(Cuối trang còn sót một dòng chữ bé tí, bị xén mất nửa. Trông như tên tệp.)"
+          "speaker": "ha-vy",
+          "expression": "day-kinh",
+          "text": "Cậu nhìn cuối trang xem. Còn sót một dòng chữ bé tí, bị xén mất nửa. Trông như tên tệp."
         },
         {
           "type": "consequence",
@@ -2956,7 +2978,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "day-kinh",
-          "text": "Khoan, tính lại đã. Trong tay mình mới có một chữ H với cái hộp kiến nghị."
+          "text": "Khoan, tính lại đã. Trong tay mình mới có một chữ H, nửa dòng tên tệp với cái hộp kiến nghị."
         },
         {
           "type": "note",
@@ -3068,7 +3090,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Đèn cá chép đỏ nằm lệch trên sân. Dây kéo căng về phía sau sân khấu.)"
+          "text": "(Đèn cá chép đỏ nằm lệch giữa sân. Ai kéo ra đây rồi bỏ đấy nhỉ?)"
         }
       ]
     },
@@ -3225,7 +3247,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Nhiều thứ quá… Bắt đầu từ đâu đây.)"
+          "text": "(Vẫn cái hộp hôm nọ. Xem từ đâu trước đây?)"
         },
         {
           "type": "explore",
@@ -3539,15 +3561,14 @@ const GOC = {
           "text": "Được xem đúng quyền thôi. Tới đó hỏi cô là rõ."
         },
         {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Trên đường sang tòa hành chính."
+          "type": "note",
+          "text": "Nền là Phòng Đào tạo: cả nhóm VỪA TỚI nơi. Chuyện đi tắt kể ở thì đã qua, không kể \"trên đường\" (06/10, người xem ngoài: lời đang đi đường mà hình đã ở trong phòng)."
         },
         {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Đi tắt qua sân bóng rổ, nhanh hơn ba phút. Tớ dẫn đường cho!"
+          "text": "Thấy chưa, tớ dẫn đi tắt qua sân bóng rổ, nhanh hơn ba phút!"
         },
         {
           "type": "line",
@@ -3886,7 +3907,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Về tới phòng CLB. Mỗi người một góc: Duy bên cái laptop, Hà Vy trước tấm bảng, chị Minh Anh xếp lại giấy tờ, Tùng ngồi vắt vẻo trên bàn."
+          "text": "Về tới phòng CLB. Mỗi người lại ngồi vào việc của mình."
         },
         {
           "type": "explore",
@@ -4146,14 +4167,14 @@ const GOC = {
         },
         {
           "type": "branch",
-          "id": "go-with-n2-toi",
+          "id": "het-ngay-n2-toi",
           "asker": {
             "speaker": "player",
             "text": "Về phòng KTX ăn tối"
           },
           "choices": [
             {
-              "id": "go-n2-toi",
+              "id": "het-ngay",
               "text": "Về phòng KTX ăn tối",
               "khi": null,
               "hauQua": [
@@ -4309,7 +4330,7 @@ const GOC = {
               "x": 21,
               "y": 54,
               "rong": 5,
-              "chuoi": "n3-ctsv",
+              "chuoi": "n3-noi-ctsv",
               "sau": [],
               "nhan": "Phòng Công tác sinh viên",
               "dau": "chinh",
@@ -4317,6 +4338,30 @@ const GOC = {
                 "co-lan",
                 "co-hanh"
               ]
+            },
+            {
+              "sprite": "ghim:cang-tin",
+              "x": 88,
+              "y": 41,
+              "rong": 5,
+              "chuoi": "n3-noi-cang-tin",
+              "sau": [
+                "n3-noi-ctsv"
+              ],
+              "nhan": "Căng tin",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "ghim:nha-clb",
+              "x": 45,
+              "y": 17,
+              "rong": 5,
+              "chuoi": "n3-phong",
+              "sau": [
+                "n3-noi-cang-tin"
+              ],
+              "nhan": "Phòng CLB",
+              "dau": "chinh"
             },
             {
               "sprite": "ghim:phong-may",
@@ -4340,6 +4385,42 @@ const GOC = {
               "co": [
                 "bac-tu"
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "n3-noi-ctsv",
+      "title": "Tới Phòng Công tác sinh viên: cô Lan ở quầy",
+      "canh": "phong-ctsv",
+      "mocSomNhat": 31,
+      "nodes": [
+        {
+          "type": "explore",
+          "id": "kp-toi-n3-ctsv",
+          "diem": [
+            {
+              "sprite": "nv:co-lan",
+              "x": 35,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "n3-ctsv",
+              "sau": [],
+              "nhan": "Cô Lan",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "nv:quan",
+              "x": 72,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "n3-ctsv-quan",
+              "sau": [
+                "n3-ctsv"
+              ],
+              "nhan": "Anh Quân",
+              "dau": "phu"
             }
           ]
         }
@@ -4511,25 +4592,36 @@ const GOC = {
           "text": "Vậy là cần mã cụ thể. Và căn cứ cho từng mã."
         },
         {
-          "type": "branch",
-          "id": "go-with-n3-cang-tin",
-          "asker": {
-            "speaker": "player",
-            "text": "Tạt qua căng tin"
-          },
-          "choices": [
-            {
-              "id": "go-n3-cang-tin",
-              "text": "Tạt qua căng tin",
-              "khi": null,
-              "hauQua": [
-                {
-                  "kind": "di-toi",
-                  "chuoi": "n3-cang-tin"
-                }
-              ]
-            }
-          ]
+          "type": "reminder",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Có phiếu rồi! Tạt qua căng tin làm cốc trà đá đã, rồi hẵng về phòng CLB."
+        }
+      ]
+    },
+    {
+      "id": "n3-ctsv-quan",
+      "title": "Hỏi thêm anh Quân (tùy chọn, sau khi đã có phiếu)",
+      "canh": "phong-ctsv",
+      "mocSomNhat": 31,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "gai-dau",
+          "text": "Anh đứng xem từ đầu ạ? Bọn em đã làm gì sai đâu."
+        },
+        {
+          "type": "line",
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Chưa sai. Tôi ghi lại để buổi họp có cái mà đối chiếu, thế thôi."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Anh ấy ghi, mình cũng ghi. Về sau đối chiếu cho dễ."
         }
       ]
     },
@@ -4760,6 +4852,30 @@ const GOC = {
       ]
     },
     {
+      "id": "n3-noi-cang-tin",
+      "title": "Tới căng tin: cậu bạn bàn bên đang nói to",
+      "canh": "cang-tin",
+      "mocSomNhat": 31,
+      "nodes": [
+        {
+          "type": "explore",
+          "id": "kp-toi-n3-cang-tin",
+          "diem": [
+            {
+              "sprite": "nv:hieu",
+              "x": 30,
+              "y": 100,
+              "rong": 15,
+              "chuoi": "n3-cang-tin",
+              "sau": [],
+              "nhan": "Cậu bàn bên",
+              "dau": "chinh"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "n3-cang-tin",
       "title": "Căng tin: Hiếu nói xấu CLB",
       "canh": "cang-tin",
@@ -4771,12 +4887,12 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Căng tin, ngay sau khi rời Phòng CTSV. Hiếu ngồi bàn bên, nói to."
+          "text": "Căng tin, sau khi rời Phòng CTSV. Hiếu ngồi bàn bên, nói to."
         },
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Ra khỏi Phòng Công tác sinh viên, cả nhóm tạt vào căng tin. Bàn bên có một cậu đang nói to về tờ thông báo họp rà soát."
+          "text": "Bàn bên có một cậu đang nói to về tờ thông báo họp rà soát."
         },
         {
           "type": "line",
@@ -4831,25 +4947,10 @@ const GOC = {
           "text": "Để tớ mời. Cốc hôm khiêng vali thì cậu vẫn nợ đấy."
         },
         {
-          "type": "branch",
-          "id": "go-with-n3-phong",
-          "asker": {
-            "speaker": "player",
-            "text": "Về phòng CLB"
-          },
-          "choices": [
-            {
-              "id": "go-n3-phong",
-              "text": "Về phòng CLB",
-              "khi": null,
-              "hauQua": [
-                {
-                  "kind": "di-toi",
-                  "chuoi": "n3-phong"
-                }
-              ]
-            }
-          ]
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Phiếu của cô Lan có rồi. Về phòng CLB mở bảng sinh viên thôi."
         }
       ]
     },
@@ -5037,6 +5138,22 @@ const GOC = {
         },
         {
           "type": "xong-viec-chinh"
+        },
+        {
+          "type": "branch",
+          "id": "het-ngay-ngay-ke",
+          "asker": {
+            "speaker": "player",
+            "text": "Về ký túc xá nghỉ"
+          },
+          "choices": [
+            {
+              "id": "het-ngay",
+              "text": "Về ký túc xá nghỉ",
+              "khi": null,
+              "hauQua": []
+            }
+          ]
         }
       ]
     },
@@ -5116,9 +5233,13 @@ const GOC = {
           "text": "Hai mã. Sổ niêm phong có mã nào đây…"
         },
         {
+          "type": "note",
+          "text": "Nền là Phòng Công tác sinh viên: cả nhóm VỪA TỚI nơi, chuyện dọc đường kể ở thì đã qua (06/10, người xem ngoài: lời đang đi đường mà hình đã ở trong phòng)."
+        },
+        {
           "type": "line",
           "speaker": "narrator",
-          "text": "Trên đường, không ai nói gì một lúc lâu."
+          "text": "Cả quãng đường sang đây, không ai nói câu nào."
         },
         {
           "type": "line",
@@ -5141,7 +5262,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "day-kinh",
-          "text": "Không. Tớ đang đếm bậc cầu thang cho đỡ run."
+          "text": "Không. Nãy giờ tớ đếm bậc cầu thang cho đỡ run đấy."
         },
         {
           "type": "explore",
@@ -5228,7 +5349,7 @@ const GOC = {
           "type": "line",
           "speaker": "co-lan",
           "expression": "neutral",
-          "text": "Theo quy chế, sinh viên có mã trong sổ sẽ được mời đến buổi họp. Có gọi vào hay không do buổi họp quyết định."
+          "text": "Ai viết thì cô chưa nói được. Theo quy chế, sinh viên có mã trong sổ sẽ được mời đến buổi họp, gọi vào hay không do buổi họp quyết định."
         },
         {
           "type": "branch",
@@ -5427,7 +5548,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đang ngồi ở ghế đá cạnh cửa."
+          "text": "Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đứng cạnh ghế đá gần cửa."
         },
         {
           "type": "line",
@@ -5449,15 +5570,15 @@ const GOC = {
         },
         {
           "type": "branch",
-          "id": "go-with-n4-toi",
+          "id": "het-ngay-n4-toi",
           "asker": {
             "speaker": "player",
-            "text": "Tối họp nhóm bạn ở CLB"
+            "text": "Về phòng CLB họp nhóm buổi tối"
           },
           "choices": [
             {
-              "id": "go-n4-toi",
-              "text": "Tối họp nhóm bạn ở CLB",
+              "id": "het-ngay",
+              "text": "Về phòng CLB họp nhóm buổi tối",
               "khi": null,
               "hauQua": [
                 {
@@ -5496,15 +5617,15 @@ const GOC = {
         },
         {
           "type": "branch",
-          "id": "go-with-n4-toi",
+          "id": "het-ngay-n4-toi",
           "asker": {
             "speaker": "player",
-            "text": "Tối họp nhóm bạn ở CLB"
+            "text": "Về phòng CLB họp nhóm buổi tối"
           },
           "choices": [
             {
-              "id": "go-n4-toi",
-              "text": "Tối họp nhóm bạn ở CLB",
+              "id": "het-ngay",
+              "text": "Về phòng CLB họp nhóm buổi tối",
               "khi": null,
               "hauQua": [
                 {
@@ -5639,7 +5760,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "ha-vy",
-          "expression": "day-kinh",
+          "expression": "smile",
           "text": "Ba điều ấy khớp với cả chục người trên thư viện. Dữ kiện quá lỏng."
         },
         {
@@ -5651,7 +5772,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "ha-vy",
-          "expression": "smile",
+          "expression": "day-kinh",
           "text": "Em không cười. Em đang chỉnh kính."
         },
         {
@@ -5735,7 +5856,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "neutral",
-          "text": "Sáng thứ Hai 16/09 chú tớ trực cổng. Hỏi chú xem hôm nộp thư có gì lạ không."
+          "text": "Tuần ấy chú tớ đổi sang ca sáng. Sáng thứ Hai 16/09 chú trực cổng đấy, hỏi chú xem hôm nộp thư có gì lạ không."
         },
         {
           "type": "reminder",
@@ -5876,6 +5997,14 @@ const GOC = {
           "text": "Hà Vy ghim hết giấy tờ lên bảng, Tùng căng chỉ nối từng tờ."
         },
         {
+          "type": "image",
+          "imageId": "chibi-bang-ghim"
+        },
+        {
+          "type": "note",
+          "text": "Ảnh chibi-bang-ghim (Hà Vy và Tùng bên tấm bảng ghim căng chỉ đỏ) chạy ngay TRƯỚC đoạn này, liền sau câu dẫn (06/10, người xem ngoài: lời kể ghim bảng mà bảng trên nền trống, ảnh lại để tận cuối)."
+        },
+        {
           "type": "line",
           "speaker": "tung",
           "expression": "worried",
@@ -5892,10 +6021,6 @@ const GOC = {
           "speaker": "tung",
           "expression": "happy",
           "text": "Rõ rồi. Tối mai tớ ngủ sớm, thứ Hai tỉnh như sáo."
-        },
-        {
-          "type": "image",
-          "imageId": "chibi-bang-ghim"
         },
         {
           "type": "xong-viec-chinh"
@@ -5919,9 +6044,13 @@ const GOC = {
           "text": "Nói có sách, mách có chứng. Trình đúng những gì đã tra."
         },
         {
+          "type": "note",
+          "text": "Nền là phòng họp, ghế còn trống: cả nhóm tới sớm nửa tiếng, ngồi chờ ngay trong phòng (06/10, người xem ngoài: lời kể \"hành lang\" mà hình là phòng họp)."
+        },
+        {
           "type": "line",
           "speaker": "narrator",
-          "text": "Thứ Hai, ba giờ rưỡi chiều, hành lang tầng ba. Tùng ngáp tới cái thứ tư."
+          "text": "Thứ Hai 30/09, ba giờ rưỡi chiều. Phòng họp tầng ba còn vắng, Tùng ngáp tới cái thứ tư."
         },
         {
           "type": "line",
@@ -5942,7 +6071,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Thứ Hai 30/09, bốn giờ chiều. Phòng họp tầng ba. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ."
+          "text": "Bốn giờ chiều. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ."
         },
         {
           "type": "line",
@@ -6027,6 +6156,12 @@ const GOC = {
           "speaker": "quan",
           "expression": "neutral",
           "text": "…Một dòng. Vâng. Mời các bạn nói tiếp."
+        },
+        {
+          "type": "reminder",
+          "speaker": "minh-anh",
+          "expression": "serious",
+          "text": "Nói có sách, mách có chứng. Trình đúng những gì đã tra."
         },
         {
           "type": "goto",
@@ -6205,7 +6340,7 @@ const GOC = {
                 {
                   "speaker": "minh-anh",
                   "expression": "neutral",
-                  "text": "Thưa thầy, bọn em có nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật — từ tài khoản dùng chung của một CLB, không phải của Hoài."
+                  "text": "Thưa thầy, bọn em có nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật, từ tài khoản dùng chung của một CLB, không phải tài khoản của Hoài."
                 },
                 {
                   "speaker": "quan",
@@ -6263,7 +6398,7 @@ const GOC = {
                 {
                   "speaker": "quan",
                   "expression": "neutral",
-                  "text": "Hai mã khớp chữ H và lớp — Hoài hoặc Hiếu, mà sổ chỉ có Hoài."
+                  "text": "Hai mã khớp chữ H và lớp: Hoài hoặc Hiếu, mà sổ chỉ có Hoài."
                 },
                 {
                   "speaker": "tung",
@@ -6430,7 +6565,7 @@ const GOC = {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "Em Hoài, nhật ký in nói lá thư in từ tài khoản của một CLB, không phải của em. Phong bì em bỏ vào hộp là từ đâu ra?"
+          "text": "Em Hoài, nhật ký in nói lá thư in từ tài khoản của một CLB, không phải tài khoản của em. Phong bì em bỏ vào hộp là từ đâu ra?"
         },
         {
           "type": "line",
@@ -6513,6 +6648,12 @@ const GOC = {
           "text": "Tớ nhớ đấy nhé."
         },
         {
+          "type": "reminder",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Về dọn bảng đã, rồi tớ khao trà đá."
+        },
+        {
           "type": "branch",
           "id": "go-with-ket-that-clb",
           "asker": {
@@ -6564,7 +6705,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "\"Căn phòng này giữ nhiều hơn em nghĩ.\""
+          "text": "Có một dòng thôi: \"Căn phòng này giữ nhiều hơn em nghĩ.\""
         },
         {
           "type": "line",
@@ -6626,7 +6767,7 @@ const GOC = {
           "type": "line",
           "speaker": "tung",
           "expression": "happy",
-          "text": "Bà ơi, cho cháu ba cốc trà đá! Hôm nay cháu khao."
+          "text": "Bà ơi, cho cháu ba cốc trà đá! CLB cháu vừa giữ được phòng, hôm nay cháu khao."
         },
         {
           "type": "line",
@@ -6737,6 +6878,15 @@ const GOC = {
           "speaker": "hoai",
           "expression": "nervous",
           "text": "Ơ… tớ chào các cậu nhé. Tớ phải về kẻo muộn."
+        },
+        {
+          "type": "stage",
+          "action": "ra",
+          "nhanVat": "hoai"
+        },
+        {
+          "type": "note",
+          "text": "Hoài đã rời hình ([RA hoai] trong khung, ngay trước đoạn này): lúc Hà Vy trêu Tùng, bạn ấy không còn đứng đó."
         },
         {
           "type": "line",
@@ -18897,6 +19047,31 @@ const GOC = {
         },
         {
           "khi": {
+            "kind": "dung-hep"
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "neutral",
+              "text": "Hai người, Hiếu với Hoài. Lọc thẳng thế này gọn hơn tớ nghĩ."
+            }
+          ]
+        },
+        {
+          "khi": {
+            "kind": "so-dong",
+            "n": 1
+          },
+          "loi": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Mới có một người. Chữ ký chỉ đọc được mỗi chữ H, lọc hẹp thế này dễ sót người khác."
+            }
+          ]
+        },
+        {
+          "khi": {
             "kind": "thieu-cot"
           },
           "loi": [
@@ -18958,14 +19133,29 @@ const GOC = {
             "n": 2
           },
           "bac1": {
+            "speaker": "duy",
+            "expression": "neutral",
+            "text": "Hai cái tên thì có rồi. Nhưng cô Lan tra sổ bằng gì? Cô chỉ trả lời cho một mã cụ thể thôi."
+          },
+          "bac2": {
+            "speaker": "duy",
+            "expression": "neutral",
+            "text": "Ở hàng LẤY CỘT, bấm thêm cột ma_sv cho nó sáng lên, rồi bấm CHẠY lại."
+          }
+        },
+        {
+          "khi": {
+            "kind": "dung-hep"
+          },
+          "bac1": {
             "speaker": "ha-vy",
             "expression": "thinking",
-            "text": "Hai cái tên thì thấy rồi. Nhưng cứ để nguyên danh sách cả lớp đã, kẻo mình lọc sót ai."
+            "text": "Đủ cả hai người rồi. Cô Lan tra sổ theo mã, mình chép mã của từng người ra thôi."
           },
           "bac2": {
             "speaker": "ha-vy",
             "expression": "neutral",
-            "text": "Bấm dấu × để bỏ dòng lọc theo tên, chỉ giữ dòng ma_lop với giấy BC24A. Ở hàng LẤY CỘT lấy thêm ma_sv, rồi bấm CHẠY."
+            "text": "Bấm vào ô ma_sv của Hiếu và của Hoài để chép ra giấy nhớ. Đủ hai ô thì bấm \"Ghim lên bảng\"."
           }
         },
         {
@@ -21597,7 +21787,7 @@ const GOC = {
       "quotes": {
         "Nội dung hiển thị": [
           "Đề nghị thu hồi phòng sinh hoạt của CLB Thám Tử, vì CLB không còn giải quyết được việc gì. Đề nghị Phòng phản hồi chính thức.",
-          "Ký: (chữ ký tay — chữ H viết hoa rõ, phần sau là một nét lượn dài, không đọc được)",
+          "Ký: (chữ ký tay: chữ H viết hoa rõ, phần sau là một nét lượn dài, không đọc được)",
           "Chân trang (chữ in nhỏ, bản chụp bị xén mất nửa): kien-nghi-…"
         ]
       }
@@ -22603,7 +22793,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/thu-thach/c-ten-h.md:33 thẻ c-sua-or-quan, SQL chuẩn",
+      "noi": "noi-dung-mua-1/thu-thach/c-ten-h.md:36 thẻ c-sua-or-quan, SQL chuẩn",
       "resultId": "ev-mot-dong-sua"
     },
     {
@@ -22832,12 +23022,12 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:182 [LỌC THỬ lt-ngay-hoi]"
+      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:185 [LỌC THỬ lt-ngay-hoi]"
     },
     {
       "sql": "SELECT ma_sv, ten FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",
       "soDong": 32,
-      "noi": "noi-dung-mua-1/kich-ban/06-hop-va-ket.md:18 [MÀN CHIẾU hop-chieu-or]"
+      "noi": "noi-dung-mua-1/kich-ban/06-hop-va-ket.md:19 [MÀN CHIẾU hop-chieu-or]"
     }
   ],
   "duLieu": {

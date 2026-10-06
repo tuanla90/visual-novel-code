@@ -102,7 +102,7 @@ export const HOI_DAP_MUA_1 = {
         "ha-vy",
         "tung"
       ],
-      "moDau": "Quán trà đá dưới gốc cây ngoài cổng chính.",
+      "moDau": "Quán trà đá dưới gốc cây ngoài cổng chính. Tùng gọi ba cốc, khoe luôn chuyện CLB vừa giữ được phòng.",
       "tuDongDuKien": [
         "gia-tra",
         "phong-tu-sat",
@@ -1972,7 +1972,7 @@ export const HOI_DAP_MUA_1 = {
         "ha-vy",
         "tung"
       ],
-      "moDau": "Căng tin, ngay sau khi rời Phòng Công tác sinh viên. Bàn bên có một cậu đang nói to về tờ thông báo họp rà soát.",
+      "moDau": "Căng tin. Bàn bên có một cậu đang nói to về tờ thông báo họp rà soát.",
       "tuDongDuKien": [
         "thong-bao",
         "ghet-clb",
@@ -2423,8 +2423,8 @@ export const HOI_DAP_MUA_1 = {
           "canCo": [],
           "tuChoi": [],
           "bienThe": {
-            "thang": "Anh ấy bên Hội sinh viên, được cử xuống giám sát việc này. Các em tra gì bên ấy cũng xem.",
-            "co-khong": "Anh ấy bên Hội sinh viên xuống giám sát, em ạ. Các em chỉ được lập căn cứ, còn tra sổ là việc của cô.",
+            "thang": "Anh đứng ở cửa là người bên Hội sinh viên, được cử xuống giám sát việc này. Các em tra gì bên ấy cũng xem.",
+            "co-khong": "Anh đứng ở cửa bên Hội sinh viên xuống giám sát, em ạ. Các em chỉ được lập căn cứ, còn tra sổ là việc của cô.",
             "lai": "Anh ấy giám sát, cô nói rồi. Các em cứ làm đúng phiếu là được."
           },
           "cauHoiMau": [
@@ -2532,7 +2532,7 @@ export const HOI_DAP_MUA_1 = {
         },
         "tam-biet": {
           "loi": [
-            "Ừ, các em về đi.",
+            "Ừ. Cần gì thêm thì mang giấy sang cô.",
             "Đi đi em. Khép cửa giúp cô."
           ],
           "cauHoiMau": []
@@ -3328,7 +3328,7 @@ export const HOI_DAP_MUA_1 = {
         "ha-vy",
         "tung"
       ],
-      "moDau": "Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đang ngồi ở ghế đá cạnh cửa.",
+      "moDau": "Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đứng cạnh ghế đá gần cửa.",
       "tuDongDuKien": [
         "khong-mo-so"
       ],
@@ -4033,7 +4033,8 @@ export const HOI_DAP_MUA_1 = {
         "khongViec": "Giờ chưa có việc gì gấp đâu! Cứ đi một vòng đã, có gì tớ hô.",
         "goiY": "Tớ chỉ nhớ mỗi câu nhắc lúc nãy thôi: {nhac}",
         "khongGoiY": "Tớ cũng đang bí như cậu đây! Hay hỏi Hà Vy xem, cậu ấy để ý kỹ hơn tớ nhiều.",
-        "khongMay": "Ơ, chuyện đó để lúc khác nhé! Giờ cậu hỏi việc chính hay xin gợi ý thì tớ trả lời được ngay."
+        "khongMay": "Ơ, chuyện đó để lúc khác nhé! Giờ cậu hỏi việc chính hay xin gợi ý thì tớ trả lời được ngay.",
+        "hetNgay": "Việc hôm nay xong rồi đấy! Cậu còn muốn ghé đâu thì ghé, không thì mình {nhan} thôi!"
       },
       "ha-vy": {
         "viecChinh": "Việc chính vẫn là câu này: {viec}",
@@ -4041,7 +4042,8 @@ export const HOI_DAP_MUA_1 = {
         "khongViec": "Chưa có việc gì cần làm ngay đâu. Cứ xem quanh đây đã.",
         "goiY": "Nhớ lại câu nhắc lúc nãy xem: {nhac}",
         "khongGoiY": "Tớ chưa thấy gì để gợi ý cả. Cứ nhìn kỹ quanh đây đã nhé.",
-        "khongMay": "Chuyện đó để sau nhé. Giờ cậu muốn hỏi việc chính, hay cần gợi ý?"
+        "khongMay": "Chuyện đó để sau nhé. Giờ cậu muốn hỏi việc chính, hay cần gợi ý?",
+        "hetNgay": "Việc chính hôm nay xong rồi. Cậu còn muốn xem chỗ nào thì cứ đi, xong thì mình {nhan}."
       }
     }
   }

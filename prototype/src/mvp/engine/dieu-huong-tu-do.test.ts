@@ -226,13 +226,16 @@ describe('C. màn tra có đường lùi', () => {
     expect(khungNhin(KB, ket)).toMatchObject({ kind: 'end', ketQua: 'that' });
   });
 
-  it('ngày 3 (phòng CLB không vào từ bản đồ): rời màn tra về phòng, chưa xong việc chính thì không có nút rời cảnh', () => {
+  // Gói B15 (mục C) đổi hành vi: phòng CLB ngày 3 nay là một ghim trên bản đồ (không còn nối liền từ căng tin), nên cảnh phòng có
+  // nút "Về bản đồ" như ngày 2. Trước gói B15 test này khẳng định "không có nút rời cảnh" (`roi` là null).
+  it('ngày 3 (phòng CLB nay vào từ bản đồ): rời màn tra về phòng, Duy còn dấu việc chính, có nút "Về bản đồ"', () => {
     const dau = choiTuDong(KB, taoTrangThai(KB, 1), CT, (_s, kn) => kn.kind === 'challenge' && kn.thuThach.id === 'c-ten-h', 20000);
     const s = lam(KB, dau, { type: 'roi-thu-thach' });
     const kn = kp(KB, s);
     expect(kn.nut.id).toBe('kp-phong-n3');
     expect(daXem(kn, 'n3-phong-duy')).toBe(false);
-    expect(kn.roi).toBeNull();
+    expect(kn.roi).toEqual({ kieu: 've-ban-do', nhan: 'Về bản đồ' });
+    expect(kn.hetNgay ?? null).toBeNull();
     expect(khungNhin(KB, lam(KB, s, { type: 'xem-diem', chuoi: 'n3-phong-duy' }))).toMatchObject({ kind: 'challenge', thuThach: { id: 'c-ten-h' } });
   });
 

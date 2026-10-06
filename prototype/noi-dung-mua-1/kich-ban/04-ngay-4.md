@@ -46,12 +46,12 @@
 
 - [HỎI ĐÁP n4-sanh-toa-b]
 - [LỜI n4-sanh-toa-b.1]
-- [ĐI CÙNG n4-toi] Tối họp nhóm bạn ở CLB
+- [HẾT NGÀY n4-toi] Về phòng CLB họp nhóm buổi tối
 
 ### n4-ve — Về phòng CLB {cảnh: phong-clb}
 
 - [LỜI n4-ve.1]
-- [ĐI CÙNG n4-toi] Tối họp nhóm bạn ở CLB
+- [HẾT NGÀY n4-toi] Về phòng CLB họp nhóm buổi tối
 
 ### n4-bd-toa-b — Bản đồ ngày 4 (tùy chọn): bác Thịnh kể có người xuống xem hộp {cảnh: sanh-toa-b}
 

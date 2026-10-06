@@ -51,8 +51,8 @@ describe('sảnh ký túc xá: người chơi đứng ngoài nhìn Hoài hỏi �
   it('lúc hai người nói với nhau, người chơi không đứng trên dàn; bạn nữ đi rồi mới tới lượt người chơi', () => {
     expect(cau('tòa KTX nữ đi đường nào').raDan).toContain('player');
     expect(cau('rẽ trái là tới luôn').raDan).toContain('player');
-    // Bạn nữ rời hình trước câu kể "kéo vali lạch cạch đi".
-    expect(cau('kéo vali lạch cạch').raDan).toContain('hoai');
+    // Bạn nữ rời hình trước câu kể "xốc lại quai túi".
+    expect(cau('xốc lại quai túi').raDan).toContain('hoai');
     // Người chơi cất lời hỏi thì đã lên dàn; bạn nữ vẫn vắng.
     const hoi = cau('cho tớ hỏi thang bộ');
     expect(hoi.raDan).not.toContain('player');
@@ -63,7 +63,7 @@ describe('sảnh ký túc xá: người chơi đứng ngoài nhìn Hoài hỏi �
     const truocTuXung = canh.slice(0, canh.findIndex((x) => x.chu.includes('Tớ là')));
     expect(truocTuXung.length).toBeGreaterThan(5);
     expect(truocTuXung.map((x) => x.the).filter(Boolean)).toEqual([]);
-    expect(cau('tòa KTX nữ đi đường nào').ten).toBe('Bạn nữ kéo vali');
+    expect(cau('tòa KTX nữ đi đường nào').ten).toBe('Bạn nữ đeo túi vải');
     expect(cau('rẽ trái là tới luôn').ten).toBe('Cậu bạn áo xanh');
     expect(cau('Tớ là').the).toBe('tung');
   });

@@ -381,6 +381,11 @@ export type KhiChayMvp =
   | { kind: 'loi-cot' }
   | { kind: 'loi' }
   | { kind: 'dung' }
+  /**
+   * "Khi đúng mà hẹp hơn" (gói B15 mục E): thẻ "bấm ô lấy giấy nhớ", câu của người chơi hẹp hơn câu chuẩn mà vẫn chứa đủ mọi
+   * giá trị của vật chứng (xem `soHep` trong sql-mvp.ts). Thiếu dòng này thì dùng lời "Khi đúng".
+   */
+  | { kind: 'dung-hep' }
   /** "Khi sai thứ tự": đủ đúng các dòng nhưng thứ tự khác câu chuẩn (thẻ có ORDER BY). */
   | { kind: 'sai-thu-tu' }
   /** Bài chọn cột: đủ đúng dòng nhưng thiếu cột của câu chuẩn / lấy thừa cột. */
@@ -588,6 +593,11 @@ export interface LoiDongHanhMvp {
   khongGoiY: string;
   /** Câu hỏi ngoài hai ý định mà máy chủ trò chuyện không có. */
   khongMay: string;
+  /**
+   * Gói B15: việc chính của ngày đã xong, người chơi tự bấm hết ngày. `{nhan}`: nhãn của dòng `[HẾT NGÀY]`, viết thường chữ đầu
+   * ("về phòng KTX ăn tối"). Dùng cho ô "Việc đang làm" và khi người chơi hỏi bạn đi cùng việc chính / gợi ý.
+   */
+  hetNgay?: string;
 }
 
 export interface DongHanhHoiDapMvp {

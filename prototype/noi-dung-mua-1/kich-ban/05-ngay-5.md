@@ -20,4 +20,5 @@
 
 - [LỜI n5-toi.1]
 - [ẢNH chibi-bang-ghim]
+- [LỜI n5-toi.2]
 - [XONG VIỆC CHÍNH]

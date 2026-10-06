@@ -11,7 +11,7 @@
 > NHIỆM VỤ: Ai đã bỏ lá thư vào cái hộp này?
 > NHẮC VIỆC tung (gai-dau): Chưa biết là ai, lớp nào. Quanh hộp này có manh mối gì không?
 - **narrator**: Chiều thứ Ba, sảnh tòa B vắng tanh. Cạnh cái hộp tôn có một tờ giấy mới dán.
-- **player**: (Nhiều thứ quá… Bắt đầu từ đâu đây.)
+- **player**: (Vẫn cái hộp hôm nọ. Xem từ đâu trước đây?)
 
 ## n1-toa-b.2
 - **ha-vy** (thinking): Sáng thứ Hai chỉ có sinh viên sinh hoạt ở đây ra vào. Thẻ lịch lại của khoa Báo chí.

@@ -13,8 +13,8 @@
 ## n2-co-hanh.1
 > NHIỆM VỤ: Tài khoản của CLB được xem những gì?
 > NHẮC VIỆC minh-anh (neutral): Được xem đúng quyền thôi. Tới đó hỏi cô là rõ.
-- **narrator**: Trên đường sang tòa hành chính.
-- **tung** (happy): Đi tắt qua sân bóng rổ, nhanh hơn ba phút. Tớ dẫn đường cho!
+- [DÀN DỰNG] Nền là Phòng Đào tạo: cả nhóm VỪA TỚI nơi. Chuyện đi tắt kể ở thì đã qua, không kể "trên đường" (06/10, người xem ngoài: lời đang đi đường mà hình đã ở trong phòng).
+- **tung** (happy): Thấy chưa, tớ dẫn đi tắt qua sân bóng rổ, nhanh hơn ba phút!
 - **ha-vy** (smile): Cậu đo cả thời gian đi bộ à?
 - **tung** (chi-tay): Hướng dẫn viên thì phải thuộc đường chứ. Còn cậu đi sau cứ lẩm nhẩm, tớ cá là lại đếm bậc cầu thang!
 - **ha-vy** (neutral): Hai mươi hai bậc.
@@ -48,7 +48,7 @@
 ## n2-phong.1
 > NHIỆM VỤ: Về phòng CLB, mở laptop
 > NHẮC VIỆC duy (neutral): Laptop anh để trên bàn. Muốn tra thì tìm anh.
-- **narrator**: Về tới phòng CLB. Mỗi người một góc: Duy bên cái laptop, Hà Vy trước tấm bảng, chị Minh Anh xếp lại giấy tờ, Tùng ngồi vắt vẻo trên bàn.
+- **narrator**: Về tới phòng CLB. Mỗi người lại ngồi vào việc của mình.
 
 ## n2-phong-duy.1
 - **duy** (neutral): Máy đây. Anh đăng nhập tài khoản cô Hạnh vừa tạo rồi, ngồi vào đi.

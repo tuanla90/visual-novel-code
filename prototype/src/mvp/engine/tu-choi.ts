@@ -68,6 +68,8 @@ function hanhDongTuDong(s: TrangThaiMvp, kn: Exclude<KhungNhinMvp, { kind: 'end'
     case 'explore': {
       // Điều hướng tự do (gói B13): xong việc chính thì máy không tự đẩy đi nữa — máy tự chơi tự bấm rời cảnh ("Về bản đồ" /
       // "Đi tiếp") đúng lúc máy cũ tự đi, nên đường đi và hồ sơ như trước.
+      // Gói B15: việc chính của ngày đã xong thì máy tự chơi bấm hết ngày luôn (như trước đây máy tự sang buổi tối).
+      if (kn.hetNgay) return { type: 'het-ngay' };
       if (kn.roi && kn.xongChinh) return { type: 'roi-canh' };
       // Bấm chỗ đầu tiên chưa xem (theo thứ tự trong kịch bản); chỗ có "sau:" hiện dần.
       const d = kn.diem.find((x) => !x.daXem);

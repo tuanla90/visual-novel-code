@@ -25,7 +25,7 @@ import { BacklogModal } from '../../shared/vn/BacklogModal';
 import { useVnStore } from '../../shared/vn/vn-store';
 import { ObjectionEffect } from '../../story/ui/ObjectionEffect';
 import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
-import { canGioiThieu, canhLuiThuThach, dienTen as dienTenMay, khungNhin, phuMoDuoc, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
+import { canGioiThieu, canhLuiThuThach, dienTen as dienTenMay, dieuHuongTuDo, khungNhin, phuMoDuoc, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
 import { giaTriTuHoSo } from '../engine/giay-nho';
 import { chonNhacNen, type NhacTruoc } from '../engine/nhac';
 import type { TrangThaiMvp } from '../engine/trang-thai';
@@ -272,6 +272,9 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const dongGioiThieu = (nhanVat: string): void => {
     hanhDong({ type: 'da-gioi-thieu', nhanVat });
     setGioiThieuMo(null);
+    // Gói B15 (mục F, bộ mùa 1): thẻ mở sau cú bấm "Tiếp tục" ở câu tự xưng, nên đóng thẻ là sang câu kế luôn, không đứng lại
+    // câu cũ bắt bấm thêm lần nữa. Bộ MVP giữ như cũ.
+    if (dieuHuongTuDo(kb)) hanhDong({ type: 'tiep' });
   };
   const modalMo = kho !== null || lichSuMo || luuNap !== null || caiDat || lichMo || gioiThieuMo !== null;
   const loiHienTai: { speaker: string; expression?: string } | null =
@@ -494,7 +497,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           />
         );
       case 'explore':
-        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} thu={thuHomNay(kb, s)} gio={kn.nut.gio} dang={kn.nut.dang} haVySoi={kn.nut.haVySoi} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} roi={kn.roi ?? null} onRoi={() => hanhDong({ type: 'roi-canh' })} />;
+        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} thu={thuHomNay(kb, s)} gio={kn.nut.gio} dang={kn.nut.dang} haVySoi={kn.nut.haVySoi} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} roi={kn.roi ?? null} onRoi={() => hanhDong({ type: 'roi-canh' })} hetNgay={kn.hetNgay ?? null} onHetNgay={() => hanhDong({ type: 'het-ngay' })} />;
       case 'end':
         return (
           <KetMvp
@@ -577,6 +580,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         speaker={loiHienTai?.speaker}
         expression={loiHienTai?.expression}
         {...(s.raDan?.length ? { raDan: s.raDan } : {})}
+        xoaDan={kn.kind === 'explore' || kn.kind === 'chon-dia-diem'}
+        nghi={kn.kind === 'line' && kn.loi.speaker === 'player' && /^\(.*\)$/s.test(kn.loi.text.trim())}
         shaking={rung}
         coDan={!laTheChu && !['chon-dia-diem', 'explore', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick'].includes(kn.kind)}
         tenNguoiChoi={s.tenNguoiChoi}

@@ -95,7 +95,7 @@
 - [ẢNH cg-nghi-di-tung-ha-vy]
 - [THỬ THÁCH c-lop]
 - [LỜI n2-laptop.2]
-- [ĐI CÙNG n2-toi] Về phòng KTX ăn tối
+- [HẾT NGÀY n2-toi] Về phòng KTX ăn tối
 
 ### n2-toi — Tối ngày 2, phòng 408: mì tôm và nhóm chat của CLB (không khí ký túc xá, không có manh mối) {cảnh: phong-ktx-dem}
 

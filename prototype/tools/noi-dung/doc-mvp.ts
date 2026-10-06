@@ -307,6 +307,11 @@ export type MucMvp =
   | { kind: 'save-evidence'; id: string }
   | { kind: 'ending-branch' }
   | { kind: 'go-with'; to: string; label: string }
+  /**
+   * `- [HẾT NGÀY <chuỗi tối>] <nhãn nút>` (gói B15, bộ mùa 1): việc chính của ngày đã xong. Máy không chạy chuỗi tối ngay mà
+   * chờ người chơi bấm nút mang nhãn này. `- [HẾT NGÀY] <nhãn>` (không chuỗi): bấm là sang ngày kế luôn.
+   */
+  | { kind: 'het-ngay'; to: string | null; label: string }
   | { kind: 'explore'; id: string; diem: RawDiemKhamPha[]; kieu: 'canh' | 'ban-do' | 'quan-sat'; nhanVat: string | null; gio: string | null; dang: string | null; haVySoi: boolean };
 
 export interface RawBangChungDoiChat {
@@ -1360,6 +1365,10 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       if ((m = new RegExp(`^- \\[ĐI CÙNG (${MA})\\](?: (.*))?$`).exec(line))) {
         if (!m[2] || m[2].trim() === '') throw new Error(`[ĐI CÙNG] thiếu nhãn nút`);
         return add({ kind: 'go-with', to: m[1] ?? '', label: m[2].trim() });
+      }
+      if ((m = new RegExp(`^- \\[HẾT NGÀY(?: (${MA}))?\\](?: (.*))?$`).exec(line))) {
+        if (!m[2] || m[2].trim() === '') throw new Error(`[HẾT NGÀY] thiếu nhãn nút`);
+        return add({ kind: 'het-ngay', to: m[1] ?? null, label: m[2].trim() });
       }
       if (line === '- [RẼ KẾT]') return add({ kind: 'ending-branch' });
       // `quan sát <nv>/<dáng>`: soi nhân vật trong một dáng / bộ đồ cụ thể; `· Hà Vy soi`: mở bằng cảnh cắt đôi mắt Hà Vy (kính lóe sáng).

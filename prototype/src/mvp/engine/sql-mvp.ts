@@ -129,6 +129,40 @@ export interface KetQuaSo {
   cotThieu: string[];
   /** Chấm có thứ tự: tập dòng khớp nhưng thứ tự khác câu chuẩn. */
   saiThuTu?: boolean;
+  /** Gói B15 (mục E): đúng nhờ luật "hẹp hơn mà đủ" (xem `soHep`); số dòng người chơi ít hơn câu chuẩn. */
+  hepDu?: boolean;
+  /** Gói B15 (mục E): hẹp hơn câu chuẩn nhưng lọc sót một giá trị của vật chứng → vẫn sai. */
+  hepThieu?: boolean;
+}
+
+/**
+ * Luật "hẹp hơn mà đủ" (gói B15 mục E) của thẻ có `Bấm ô lấy giấy nhớ` mà vật chứng chỉ giữ MỘT PHẦN giá trị của cột ấy
+ * (vd `c-ten-h`: câu chuẩn ra 32 người cả lớp, vật chứng là hai mã). `cot` = cột lấy giấy nhớ, `giaTri` = giá trị của vật chứng,
+ * `cotCan` = các cột kết quả buộc phải có (cột lấy giấy nhớ và cột nộp).
+ */
+export interface LuatHep {
+  cot: string;
+  giaTri: readonly string[];
+  cotCan: readonly string[];
+}
+
+/**
+ * So một kết quả ÍT DÒNG HƠN câu chuẩn theo luật hẹp: `'du'` khi (1) có đủ `cotCan`, (2) mọi dòng nằm trong tập dòng của câu
+ * chuẩn (so theo cột `cot`, không dòng lặp), (3) chứa đủ mọi giá trị của vật chứng; `'thieu'` khi (1), (2) đạt mà sót giá trị;
+ * `null` khi luật không áp được (thiếu cột, có dòng ngoài câu chuẩn, vật chứng giữ hết hay không thuộc kết quả chuẩn).
+ */
+export function soHep(chuan: Extract<KetQuaChay, { ok: true }>, nguoiChoi: Extract<KetQuaChay, { ok: true }>, luat: LuatHep): 'du' | 'thieu' | null {
+  const viTri = (ds: readonly string[], ten: string): number => ds.findIndex((c) => c.toLowerCase() === ten.toLowerCase());
+  const iC = viTri(chuan.cot, luat.cot);
+  const iN = viTri(nguoiChoi.cot, luat.cot);
+  if (iC < 0 || iN < 0 || nguoiChoi.dong.length === 0 || nguoiChoi.dong.length >= chuan.dong.length) return null;
+  const tapChuan = new Set(chuan.dong.map((d) => String(d[iC] ?? '')));
+  const giaTri = [...new Set(luat.giaTri.map(String))];
+  if (giaTri.length === 0 || giaTri.length >= tapChuan.size || !giaTri.every((g) => tapChuan.has(g))) return null;
+  if (!luat.cotCan.every((c) => viTri(nguoiChoi.cot, c) >= 0)) return null;
+  const cua = nguoiChoi.dong.map((d) => (d[iN] === null || d[iN] === undefined ? null : String(d[iN])));
+  if (cua.some((v) => v === null || !tapChuan.has(v)) || new Set(cua).size !== cua.length) return null;
+  return giaTri.every((g) => cua.includes(g)) ? 'du' : 'thieu';
 }
 
 function daTap(dong: GiaTriSql[][], chiSo: number[]): Map<string, number> {
@@ -193,13 +227,21 @@ export type KetQuaCham =
   | { trangThai: 'loi'; chay: Extract<KetQuaChay, { ok: false }> }
   | { trangThai: 'dung' | 'sai'; chay: Extract<KetQuaChay, { ok: true }>; so: KetQuaSo };
 
-/** Chạy câu của người chơi và câu chuẩn của thẻ, so hai tập kết quả. */
-export async function chamThuThach(duLieu: BoDuLieuMvp, sqlNguoiChoi: string, sqlChuan: string): Promise<KetQuaCham> {
+/**
+ * Chạy câu của người chơi và câu chuẩn của thẻ, so hai tập kết quả. `hep` (gói B15 mục E, chỉ màn tra bộ mùa 1 truyền): kết quả
+ * ít dòng hơn câu chuẩn được xét thêm theo luật "hẹp hơn mà đủ" (`soHep`). Thẻ chấm thứ tự (ORDER BY) không dùng luật này.
+ */
+export async function chamThuThach(duLieu: BoDuLieuMvp, sqlNguoiChoi: string, sqlChuan: string, hep?: LuatHep | null): Promise<KetQuaCham> {
   const chay = await chaySql(duLieu, sqlNguoiChoi);
   if (!chay.ok) return { trangThai: 'loi', chay };
   const chuan = await chaySql(duLieu, sqlChuan);
   if (!chuan.ok) return { trangThai: 'loi', chay: { ok: false, loai: 'khac', thongDiep: `SQL chuẩn của thẻ lỗi: ${chuan.thongDiep}` } };
   const so = soVoiChuan(chuan, chay, coThuTu(sqlChuan));
+  if (!so.dung && hep && !coThuTu(sqlChuan)) {
+    const h = soHep(chuan, chay, hep);
+    if (h === 'du') return { trangThai: 'dung', chay, so: { ...so, dung: true, cotThieu: [], hepDu: true } };
+    if (h === 'thieu') return { trangThai: 'sai', chay, so: { ...so, hepThieu: true } };
+  }
   return { trangThai: so.dung ? 'dung' : 'sai', chay, so };
 }
 
@@ -217,7 +259,11 @@ export function phanUngSauKhiChay(the: Pick<TheThuThachMvp, 'phanUng'>, kq: KetQ
   const tim = (f: (k: KhiChayMvp) => boolean): LoiMvp[] => the.phanUng.find((p) => f(p.khi))?.loi ?? [];
   // Bài chọn cột: đủ dòng, đủ cột cần nhưng lấy thừa cột (màn tra báo qua `thuaCot`).
   if (thuaCot) return tim((k) => k.kind === 'thua-cot');
-  if (kq.trangThai === 'dung') return tim((k) => k.kind === 'dung');
+  if (kq.trangThai === 'dung') {
+    // Gói B15: đúng bằng câu hẹp hơn câu chuẩn → lời nhận riêng ("Khi đúng mà hẹp hơn"), không có thì lời "Khi đúng".
+    const hep = kq.so.hepDu ? tim((k) => k.kind === 'dung-hep') : [];
+    return hep.length > 0 ? hep : tim((k) => k.kind === 'dung');
+  }
   if (kq.trangThai === 'loi') {
     const cot = kq.chay.loai === 'khong-co-cot' ? tim((k) => k.kind === 'loi-cot') : [];
     return cot.length > 0 ? cot : tim((k) => k.kind === 'loi');

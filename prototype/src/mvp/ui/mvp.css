@@ -250,6 +250,68 @@
   z-index: 6;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
+/* Nút hết ngày (gói B15): góc TRÁI dưới, màu đêm; khác chỗ, khác màu với "Về bản đồ" (phải dưới) để không bấm nhầm.
+   Góc phải trên là khung "Đi cùng" (z-index 41), góc trái trên là ô "Việc đang làm". */
+.mvp-canh__het-ngay {
+  position: absolute;
+  left: max(16px, env(safe-area-inset-left));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: min(360px, calc(100% - 32px));
+}
+.mvp-canh__het-ngay-nut,
+.mvp-game .mvp-canh__het-ngay-nut:hover:not(:disabled) {
+  background: #312e81;
+  border-color: #a5b4fc;
+  color: #fff;
+  text-align: left;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+.mvp-game .mvp-canh__het-ngay-nut:hover:not(:disabled) {
+  background: #3730a3;
+}
+.mvp-canh__het-ngay-nut svg {
+  flex: none;
+}
+.mvp-canh__het-ngay-hoi {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid #a5b4fc;
+  background: rgba(15, 23, 42, 0.94);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+.mvp-canh__het-ngay-hoi p {
+  margin: 0 0 8px;
+  font-size: var(--fs-sm);
+}
+.mvp-canh__het-ngay-chon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.mvp-canh__het-ngay-chon .btn {
+  min-height: 44px;
+}
+/* Điện thoại dọc: màn hẹp không đủ chỗ cho hai nút cùng hàng, nút hết ngày lên trên nút "Về bản đồ". */
+@media (max-width: 768px) and (orientation: portrait) {
+  .mvp-canh__het-ngay {
+    bottom: calc(max(16px, env(safe-area-inset-bottom)) + 52px);
+  }
+}
+.game--portrait .mvp-canh__het-ngay {
+  bottom: calc(max(16px, env(safe-area-inset-bottom)) + 52px);
+}
+/* Chỗ đã xem mà vẫn bấm được (gói B15: ghim nơi đã ghé, nhân chứng đã gặp). */
+.mvp-ghim.is-vao-lai,
+.mvp-ngoi.is-da-xem.is-vao-lai,
+.mvp-diem.is-vao-lai {
+  cursor: pointer;
+}
 .mvp-canh__vung {
   position: relative;
   flex: 1 1 auto;
@@ -3396,6 +3458,17 @@
   box-shadow: 0 2px 6px rgba(37, 99, 235, 0.45);
 }
 .mvp-ghim .mvp-dau { top: -2px; }
+/* Gói B15: ghim nơi đã ghé và đã xem hết mọi chỗ. Dấu tích nhỏ, xám xanh, không nhấp nháy. */
+.mvp-dau--het {
+  width: 20px;
+  height: 20px;
+  background: #475569;
+  border-color: #e2e8f0;
+  color: #fff;
+  font: 700 12px/1 var(--font-ui);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  animation: none;
+}
 @keyframes mvp-dau-nhun {
   0%, 100% { margin-top: 0; }
   50% { margin-top: -5px; }

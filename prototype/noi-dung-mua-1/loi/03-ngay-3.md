@@ -35,6 +35,12 @@
 ## n3-ctsv.2
 - **quan** (neutral): Các bạn chỉ được lập căn cứ. Tra sổ là việc của cô Lan, không phải của CLB.
 - **ha-vy** (thinking): Vậy là cần mã cụ thể. Và căn cứ cho từng mã.
+> NHẮC VIỆC tung (happy): Có phiếu rồi! Tạt qua căng tin làm cốc trà đá đã, rồi hẵng về phòng CLB.
+
+## n3-ctsv-quan.1
+- **tung** (gai-dau): Anh đứng xem từ đầu ạ? Bọn em đã làm gì sai đâu.
+- **quan** (neutral): Chưa sai. Tôi ghi lại để buổi họp có cái mà đối chiếu, thế thôi.
+- **ha-vy** (neutral): Anh ấy ghi, mình cũng ghi. Về sau đối chiếu cho dễ.
 
 ## n3-soi-kinh.1
 - **player**: Kính gọng mảnh, lau sạch bóng.
@@ -59,8 +65,8 @@
 - **bac-tu** (neutral): Ừ, cùng tầng. Giờ hành chính là có người.
 
 ## n3-cang-tin.1
-- [DÀN DỰNG] Căng tin, ngay sau khi rời Phòng CTSV. Hiếu ngồi bàn bên, nói to.
-- **narrator**: Ra khỏi Phòng Công tác sinh viên, cả nhóm tạt vào căng tin. Bàn bên có một cậu đang nói to về tờ thông báo họp rà soát.
+- [DÀN DỰNG] Căng tin, sau khi rời Phòng CTSV. Hiếu ngồi bàn bên, nói to.
+- **narrator**: Bàn bên có một cậu đang nói to về tờ thông báo họp rà soát.
 - **hieu** (annoyed): Thấy thông báo chưa? CLB Thám Tử chiếm nguyên cái phòng chả để làm gì.
 - **hieu** (annoyed): Nhóm tôi xin phòng làm bài không được, phải chui rúc thư viện.
 - **tung** (worried): Gắt thế… cậu ta gửi thư à?
@@ -70,6 +76,7 @@
 - **tung** (happy): Thôi, chuyện thư từ để nhóm mình tự kiểm tra. Tớ ra lấy trà đá, ai uống không?
 - **tung** (worried): Khoan, ví còn đúng tiền cơm tối. Thêm cốc trà đá là tối nay nhịn.
 - **player**: Để tớ mời. Cốc hôm khiêng vali thì cậu vẫn nợ đấy.
+> NHẮC VIỆC ha-vy (neutral): Phiếu của cô Lan có rồi. Về phòng CLB mở bảng sinh viên thôi.
 
 ## n3-phong.1
 - **narrator**: Về phòng CLB. Phiếu tra cứu của cô Lan nằm trên bàn, cạnh cái laptop.

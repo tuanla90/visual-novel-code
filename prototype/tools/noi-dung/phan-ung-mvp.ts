@@ -8,6 +8,7 @@
  *   - Khi lỗi không có cột: **ha-vy** (thinking): Máy đang đi tìm một cột tên B.
  *   - Khi lỗi: …            (mọi lỗi khác)
  *   - Khi đúng: …           (kết quả khớp, trước nút lưu / đi tiếp)
+ *   - Khi đúng mà hẹp hơn: … (gói B15: thẻ "Bấm ô lấy giấy nhớ", câu hẹp hơn câu chuẩn mà vẫn đủ mọi giá trị của vật chứng)
  *   - Khi sai thứ tự: …     (thẻ có ORDER BY: đủ đúng các dòng nhưng thứ tự khác câu chuẩn)
  * Nhiều lời một lúc: nối bằng `<br>`. Không import gì từ `src/`.
  */
@@ -18,6 +19,7 @@ export type KhiChay =
   | { kind: 'loi-cot' }
   | { kind: 'loi' }
   | { kind: 'dung' }
+  | { kind: 'dung-hep' }
   | { kind: 'sai-thu-tu' }
   | { kind: 'thieu-cot' }
   | { kind: 'thua-cot' }
@@ -39,6 +41,7 @@ export function docKhi(nhan: string): KhiChay | null {
   if (nhan === 'Khi lỗi không có cột') return { kind: 'loi-cot' };
   if (nhan === 'Khi lỗi') return { kind: 'loi' };
   if (nhan === 'Khi đúng') return { kind: 'dung' };
+  if (nhan === 'Khi đúng mà hẹp hơn') return { kind: 'dung-hep' };
   if (nhan === 'Khi sai thứ tự') return { kind: 'sai-thu-tu' };
   if (nhan === 'Khi thiếu cột') return { kind: 'thieu-cot' };
   if (nhan === 'Khi thừa cột') return { kind: 'thua-cot' };
@@ -55,7 +58,7 @@ export function docPhanUng(fields: Readonly<Record<string, string>>): { phanUng:
     if (!nhan.startsWith('Khi ')) continue;
     const khi = docKhi(nhan);
     if (!khi) {
-      loi.push(`dòng "${nhan}" lạ — dùng "Khi chạy ra <n> dòng", "Khi chạy ra <n> dòng với <cột>, <cột>", "Khi lỗi không có cột", "Khi lỗi", "Khi đúng", "Khi sai thứ tự", "Khi thiếu cột", "Khi thừa cột", "Khi chọn sai cột nộp", "Khi xem từng bước"`);
+      loi.push(`dòng "${nhan}" lạ — dùng "Khi chạy ra <n> dòng", "Khi chạy ra <n> dòng với <cột>, <cột>", "Khi lỗi không có cột", "Khi lỗi", "Khi đúng", "Khi đúng mà hẹp hơn", "Khi sai thứ tự", "Khi thiếu cột", "Khi thừa cột", "Khi chọn sai cột nộp", "Khi xem từng bước"`);
       continue;
     }
     try {

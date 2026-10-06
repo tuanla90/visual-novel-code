@@ -116,6 +116,21 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
           }
         ]
       };
+    case 'het-ngay':
+      // Gói B15: dựng như `[ĐI CÙNG]` (rẽ nhánh một lựa chọn) với mã `het-ngay-…`; máy nhận ra qua mã (may.ts `laHetNgay`).
+      return {
+        type: 'branch',
+        id: `het-ngay-${it.to ?? 'ngay-ke'}`,
+        asker: { speaker: 'player', text: it.label },
+        choices: [
+          {
+            id: 'het-ngay',
+            text: it.label,
+            khi: null,
+            hauQua: it.to ? [{ kind: 'di-toi', chuoi: it.to }] : []
+          }
+        ]
+      };
     case 'notebook-lookup':
       return { type: 'notebook-lookup', trang: it.trang, phan: it.phan };
     case 'notebook-note':
