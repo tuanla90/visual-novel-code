@@ -1542,7 +1542,10 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       if (d.daXem) return s;
       const daXemDiem = (s.daXemDiem ?? []).includes(d.diem.chuoi) ? s.daXemDiem : [...(s.daXemDiem ?? []), d.diem.chuoi];
       const kpMoi: KhamPhaMvp = { ...kp, daXem: [...kp.daXem, d.diem.chuoi], ...(tuDo ? { dangXem: d.diem.chuoi } : {}) };
-      moi = { ...s, daXemDiem, khamPha: kpMoi, conTro: { chuoi: d.diem.chuoi, nut: 0, boiCanh: s.conTro.boiCanh } };
+      // Màn quan sát (Hà Vy soi một người): người được soi đứng trên dàn suốt lúc đọc từng chi tiết (người xem thử 06/10:
+      // lời tả áo Tùng mà trên hình chỉ có người chơi).
+      const soi = kn.nut.kieu === 'quan-sat' && kn.nut.nhanVat && !(s.vaoDan ?? []).includes(kn.nut.nhanVat) ? { vaoDan: [...(s.vaoDan ?? []), kn.nut.nhanVat] } : {};
+      moi = { ...s, ...soi, daXemDiem, khamPha: kpMoi, conTro: { chuoi: d.diem.chuoi, nut: 0, boiCanh: s.conTro.boiCanh } };
       // Gói B13: chỗ này có việc dở (nơi đã rời giữa chừng, màn tra đã rời) → chạy tiếp đúng chỗ dở, không lại từ đầu chuỗi.
       const dd = tuDo ? s.dangDo?.[d.diem.chuoi] : undefined;
       if (dd) {
