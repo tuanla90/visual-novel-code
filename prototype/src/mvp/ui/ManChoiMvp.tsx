@@ -59,6 +59,7 @@ import { TaoNhanVatMvp } from './TaoNhanVatMvp';
 import { taiTruocTheoVan } from './tai-truoc-mvp';
 import { maMoi, theMoiTuMa, useTheChuaXem, type TheMoi } from './the-moi';
 import { TheMoiMvp } from './TheMoiMvp';
+import { thuBanPhim, useBanPhimAo } from './ban-phim-ao';
 import { TraSoMvp } from './TrangSoMvp';
 import { DoiChatMvp } from './DoiChatMvp';
 
@@ -125,6 +126,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const [dangO, setDangO] = useState<{ ngay: number; noi: string } | null>(null);
 
   const viewportMode = useVnStore((k) => k.viewportMode);
+  // Điện thoại: bàn phím ảo mở → chế độ gõ (html[data-ban-phim]), kèm nút "Xong" để thu bàn phím (ban-phim-ao.ts).
+  const coBanPhim = useBanPhimAo();
   const setSkipMode = useVnStore((k) => k.setSkipMode);
   const clearBacklog = useVnStore((k) => k.clearBacklog);
   const popBacklog = useVnStore((k) => k.popBacklog);
@@ -571,6 +574,11 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const game = (
     <div className={`game mvp-game${laDoc ? ' game--portrait' : ''}${gioiThieuMo ? ' game--debut' : ''}`}>
       {toast ? <div className="vn-toast" role="status">{toast}</div> : null}
+      {coBanPhim ? (
+        <button type="button" className="mvp-thu-ban-phim" onClick={thuBanPhim} aria-label="Thu bàn phím">
+          Xong
+        </button>
+      ) : null}
       {dotTheMoi[0] ? <TheMoiMvp key={dotTheMoi[0].map((t) => t.id).join('|')} danhSach={dotTheMoi[0]} dienTen={dienTen} onXong={xongDotTheMoi} /> : null}
       {gioiThieuMo ? <GioiThieuMvp key={gioiThieuMo} kb={kb} nhanVat={gioiThieuMo} bietVe={s.bietVe ?? null} onDong={dongGioiThieu} /> : null}
       <HudMvp

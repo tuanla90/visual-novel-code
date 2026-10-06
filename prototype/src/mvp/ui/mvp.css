@@ -4893,3 +4893,61 @@
 @keyframes mvp-tiep-nhay { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
 .mvp-game .dialog__footer--trong-khung { margin-top: 0 !important; }
 @media (prefers-reduced-motion: reduce) { .mvp-game .dialog__tiep.is-san-sang .dialog__tiep-tam-giac { animation: none; } }
+
+/* ===== Chế độ gõ trên điện thoại (ban-phim-ao.ts; user 06/10: bàn phím ảo che gần hết màn) =====
+   html[data-ban-phim="1"] + --vv-tren/--vv-cao = vùng còn thấy được. Khung đang gõ neo vào đúng vùng ấy, che sân khấu,
+   bỏ phần phụ; chỉ còn vài dòng gần nhất + ô nhập. Nút "Xong" thu bàn phím ở góc phải trên vùng thấy. */
+html[data-ban-phim='1'] .mvp-thu-ban-phim {
+  position: fixed; top: calc(var(--vv-tren, 0px) + 6px); right: 8px; z-index: 10060;
+  min-height: 34px; padding: 4px 12px; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9); color: #fde68a; font: 700 0.8rem/1 var(--font-ui); cursor: pointer;
+}
+/* HUD và góc trái (nhãn cảnh, nhắc việc) nhường chỗ cho khung đang gõ. */
+html[data-ban-phim='1'] .mvp-game .mvp-topbar,
+html[data-ban-phim='1'] .mvp-game .mvp-stage__canh-trai,
+html[data-ban-phim='1'] .mvp-game .vn-toast { visibility: hidden; }
+/* Hỏi nhân chứng. */
+html[data-ban-phim='1'] .mvp-hoidap {
+  position: fixed; inset: auto; top: var(--vv-tren, 0px); left: 0; right: 0; height: var(--vv-cao, 50vh);
+  z-index: 10050; grid-template-columns: minmax(0, 1fr); gap: 0; padding: 4px 6px 6px; box-sizing: border-box;
+  background: rgba(8, 12, 20, 0.97);
+}
+html[data-ban-phim='1'] .mvp-hoidap__so,
+html[data-ban-phim='1'] .mvp-hoidap__cach,
+html[data-ban-phim='1'] .mvp-hoidap__nut-so,
+html[data-ban-phim='1'] .mvp-hoidap__ghi,
+html[data-ban-phim='1'] .mvp-hoidap__hang { display: none !important; }
+html[data-ban-phim='1'] .mvp-hoidap__chinh { height: 100%; border-radius: 10px; }
+html[data-ban-phim='1'] .mvp-hoidap__dau { padding: 4px 10px; min-height: 0; }
+html[data-ban-phim='1'] .mvp-hoidap__nhatky { padding: 4px 10px; gap: 4px; font-size: 0.86rem; line-height: 1.35; }
+html[data-ban-phim='1'] .mvp-hoidap__thao-tac { padding: 4px 8px 6px; gap: 0; }
+html[data-ban-phim='1'] .mvp-hoidap .nhac-viec__mat.mvp-hd-mat { width: 26px; height: 26px; }
+/* Chat với bạn đi cùng. */
+html[data-ban-phim='1'] .dong-hanh__chat {
+  position: fixed; top: var(--vv-tren, 0px); left: 0; right: 0; width: auto; height: var(--vv-cao, 50vh); max-height: none;
+  z-index: 10050; border-radius: 0; box-sizing: border-box;
+}
+html[data-ban-phim='1'] .dong-hanh__chat-dau { padding-right: 70px; }
+/* Nhập tên nhân vật. */
+html[data-ban-phim='1'] .mvp-tnv--ten .mvp-tnv__lop {
+  position: fixed; inset: auto; top: var(--vv-tren, 0px) !important; left: 0; right: 0; bottom: auto !important;
+  height: var(--vv-cao, 50vh); z-index: 10050; align-items: center; justify-content: flex-start; padding: 6px 60px 6px 8px;
+  box-sizing: border-box; background: rgba(8, 12, 20, 0.97);
+}
+html[data-ban-phim='1'] .mvp-tnv__anh,
+html[data-ban-phim='1'] .mvp-tnv__goiy { display: none !important; }
+html[data-ban-phim='1'] .mvp-tnv__the { width: min(460px, 100%); padding: 8px 12px; gap: 6px; }
+/* SQL gõ tay (màn tra, mức Tự viết): ô nổi qua portal (ManTraV7, `.v7-san` bị scale nên không neo fixed bên trong được). */
+.v7-go-noi {
+  position: fixed; top: var(--vv-tren, 0px); left: 0; right: 0; height: var(--vv-cao, 50vh); z-index: 10050;
+  display: flex; gap: 8px; align-items: stretch; box-sizing: border-box; padding: 6px 64px 6px 8px; background: #0b141c;
+}
+.v7-go-noi__o {
+  flex: 1; min-width: 0; min-height: 0; resize: none; padding: 8px 10px; border: 1px solid rgba(125, 211, 252, 0.4);
+  border-radius: 8px; background: #0f1c26; color: #e6edf3; font: 600 16px/1.45 var(--font-mono); caret-color: #7dd3fc;
+}
+.v7-go-noi__chay {
+  align-self: flex-end; min-height: 40px; padding: 0 14px; border: 1px solid #c89b52; border-radius: 8px;
+  background: #f5dfa9; color: #3b1d06; font: 800 0.85rem/1 var(--font-ui); cursor: pointer;
+}
+.v7-go-noi__chay:disabled { opacity: 0.5; cursor: default; }

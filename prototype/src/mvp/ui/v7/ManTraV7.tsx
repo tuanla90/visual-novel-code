@@ -30,6 +30,8 @@
  */
 import type { QuanSatTruyVanMvp } from '../../engine/tri-nho-dong-hanh';
 import { useCallback, useEffect, useMemo, useRef, useState, type DragEvent } from 'react';
+import { createPortal } from 'react-dom';
+import { useCheDoGo } from '../ban-phim-ao';
 import type { BoDuLieuMvp, KichBanMvp, LoiMvp, TheThuThachMvp } from '../../../content/mvp/types';
 import { soundEngine } from '../../../shared/audio/sound-engine';
 import { track } from '../../../shared/telemetry/track';
@@ -143,6 +145,15 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   const nh = useMemo(() => nhanManTra(muc), [muc]);
   const tuNoi = tuGoiY(mucNhapVai ?? 'tu-do');
   const [goSql, setGoSql] = useState<string>(() => nhap?.goSql ?? '');
+  // Điện thoại, bàn phím ảo mở (ban-phim-ao.ts): `.v7-san` bị scale nên ô gõ trong đó không neo lên vùng thấy được bằng
+  // position: fixed; vẽ một ô gõ nổi qua portal ở document.body, cùng giá trị, kèm nút CHẠY; thu bàn phím thì ô nổi biến mất.
+  const cheDoGo = useCheDoGo();
+  const [goCoTieuDiem, setGoCoTieuDiem] = useState(false);
+  const oNoiRef = useRef<HTMLTextAreaElement>(null);
+  const hienONoi = cheDoGo && goCoTieuDiem;
+  useEffect(() => {
+    if (hienONoi) oNoiRef.current?.focus();
+  }, [hienONoi]);
   const maOGo = `v7-go-${the.id}`;
   /** Nấc "Tự viết": mã thẻ → chữ đã chèn của các tờ giấy nhớ đã bấm (vẽ sợi chỉ nếu chữ ấy còn trong câu). */
   const [theDaChen, setTheDaChen] = useState<Record<string, string>>({});
@@ -676,6 +687,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
             value={goSql}
             disabled={khoa}
             onChange={(e) => doiGo(e.target.value)}
+            onFocus={() => setGoCoTieuDiem(true)}
             onKeyDown={(e) => {
               e.stopPropagation();
               if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
@@ -684,6 +696,40 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
               }
             }}
           />
+          {hienONoi
+            ? createPortal(
+                <div className="v7-go-noi" role="group" aria-label="Câu SQL gõ tay">
+                  <textarea
+                    ref={oNoiRef}
+                    className="v7-go-noi__o"
+                    spellCheck={false}
+                    autoCapitalize="off"
+                    autoCorrect="off"
+                    placeholder={`SELECT … FROM ${bang.ten}`}
+                    value={goSql}
+                    disabled={khoa}
+                    onChange={(e) => doiGo(e.target.value)}
+                    onBlur={() => {
+                      // Bấm CHẠY trong ô nổi thì giữ (nút chặn mousedown); còn lại là thu bàn phím.
+                      setTimeout(() => {
+                        if (document.activeElement !== oNoiRef.current) setGoCoTieuDiem(false);
+                      }, 60);
+                    }}
+                    onKeyDown={(e) => {
+                      e.stopPropagation();
+                      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                        e.preventDefault();
+                        void chay();
+                      }
+                    }}
+                  />
+                  <button type="button" className="v7-go-noi__chay" disabled={khoa} onMouseDown={(e) => e.preventDefault()} onClick={() => void chay()}>
+                    Chạy
+                  </button>
+                </div>,
+                document.body,
+              )
+            : null}
           {cham?.trangThai === 'loi' ? (
             <p className="v7-go__loi" role="alert">
               {dichLoiSqlite(cham.chay)}
