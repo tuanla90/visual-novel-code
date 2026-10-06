@@ -8,6 +8,7 @@ import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { soundEngine } from '../../shared/audio/sound-engine';
 import type { MucNhapVaiMvp, MucSqlMvp } from '../engine/trang-thai';
 import { CAU_HOI_NHAP_VAI, CAU_HOI_SQL, DONG_DOI_SAU, NAC_NHAP_VAI, NAC_SQL, NUT_BAT_DAU, type NacMvp } from './chon-muc-chu';
+import { GHI_DIEN_THOAI, mucNhapVaiTheoMay, mucSqlTheoMay, useDienThoai } from './dien-thoai';
 import './ChonMucMvp.css';
 
 export interface ChonMucMvpProps {
@@ -18,6 +19,8 @@ export interface ChonMucMvpProps {
   /** Mở từ Cài đặt: có nút "Hủy", Esc đóng. Thiếu = màn đầu ván (không đóng được, chỉ "Bắt đầu"). */
   onDong?: () => void;
   onXong: (nhapVai: MucNhapVaiMvp, sql: MucSqlMvp) => void;
+  /** Đang ở điện thoại (ẩn "Như thật" và "Tự viết", xem dien-thoai.ts). Không truyền → tự nhận biết. */
+  dienThoai?: boolean;
 }
 
 function NhomNac<M extends string>({ id, cauHoi, nac, chon, onChon }: { id: string; cauHoi: string; nac: readonly NacMvp<M>[]; chon: M; onChon: (m: M) => void }) {
@@ -56,9 +59,16 @@ function NhomNac<M extends string>({ id, cauHoi, nac, chon, onChon }: { id: stri
   );
 }
 
-export function ChonMucMvp({ nhapVai: nv0, sql: sql0, nhanNut = NUT_BAT_DAU, onDong, onXong }: ChonMucMvpProps) {
-  const [nhapVai, setNhapVai] = useState<MucNhapVaiMvp>(nv0);
-  const [sql, setSql] = useState<MucSqlMvp>(sql0);
+export function ChonMucMvp({ nhapVai: nv0, sql: sql0, nhanNut = NUT_BAT_DAU, onDong, onXong, dienThoai: dienThoaiProp }: ChonMucMvpProps) {
+  const dienThoaiTuDo = useDienThoai();
+  const dienThoai = dienThoaiProp ?? dienThoaiTuDo;
+  const [nhapVai0, setNhapVai] = useState<MucNhapVaiMvp>(nv0);
+  const [sql0b, setSql] = useState<MucSqlMvp>(sql0);
+  // Điện thoại: nấc phải gõ chữ bị ẩn, nấc đã lưu rơi vào đó thì về nấc còn lại.
+  const nhapVai = mucNhapVaiTheoMay(nhapVai0, dienThoai);
+  const sql = mucSqlTheoMay(sql0b, dienThoai);
+  const nacNhapVai = dienThoai ? NAC_NHAP_VAI.filter((n) => n.muc !== 'that') : NAC_NHAP_VAI;
+  const nacSql = dienThoai ? NAC_SQL.filter((n) => n.muc !== 'tu-viet') : NAC_SQL;
   const hop = useRef<HTMLDivElement>(null);
   useEffect(() => {
     hop.current?.querySelector<HTMLElement>('[data-nhom="nhap-vai"] [aria-checked="true"]')?.focus();
@@ -109,9 +119,10 @@ export function ChonMucMvp({ nhapVai: nv0, sql: sql0, nhanNut = NUT_BAT_DAU, onD
   return (
     <div className={`mvp-chon-muc${onDong ? ' mvp-chon-muc--hop' : ' mvp-chon-muc--man'}`} role="dialog" aria-modal="true" aria-labelledby="nhap-vai-hoi" onClick={(e) => e.stopPropagation()}>
       <div ref={hop} className="mvp-chon-muc__hop" onKeyDown={phim}>
-        <NhomNac id="nhap-vai" cauHoi={CAU_HOI_NHAP_VAI} nac={NAC_NHAP_VAI} chon={nhapVai} onChon={setNhapVai} />
-        <NhomNac id="sql" cauHoi={CAU_HOI_SQL} nac={NAC_SQL} chon={sql} onChon={setSql} />
+        <NhomNac id="nhap-vai" cauHoi={CAU_HOI_NHAP_VAI} nac={nacNhapVai} chon={nhapVai} onChon={setNhapVai} />
+        <NhomNac id="sql" cauHoi={CAU_HOI_SQL} nac={nacSql} chon={sql} onChon={setSql} />
         <footer className="mvp-chon-muc__chan">
+          {dienThoai ? <p className="mvp-chon-muc__ghi mvp-chon-muc__ghi--may">{GHI_DIEN_THOAI}</p> : null}
           <p className="mvp-chon-muc__ghi">{DONG_DOI_SAU}</p>
           <div className="mvp-chon-muc__nut">
             {onDong ? (

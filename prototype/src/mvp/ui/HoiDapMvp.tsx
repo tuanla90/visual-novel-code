@@ -15,6 +15,7 @@ import type { KhungHoiDapMvp } from '../engine/hoi-dap';
 import type { HanhDongMvp } from '../engine/may';
 import type { CachChoiMvp } from '../engine/trang-thai';
 import { anhChanDung } from './anh-mvp';
+import { useDienThoai } from './dien-thoai';
 import './HoiDapMvp.css';
 
 /** Mã ô nhập câu hỏi (nút "Hỏi tiếp" trong bóng thoại đưa tiêu điểm về đây). */
@@ -48,6 +49,9 @@ function MatTron({ kb, ma, lop }: { kb: KichBanMvp; ma: string; lop?: string }) 
 }
 
 export function HoiDapMvp({ kb, hoiDap: h, dienTen, tenNguoiNoi, tenNguoiChoi, onHanhDong }: HoiDapMvpProps) {
+  // Điện thoại: không có cách "Gõ câu hỏi" (dien-thoai.ts); ManChoiMvp đã đổi ván sang "bấm".
+  const dienThoai = useDienThoai();
+  const cachChoiHien = dienThoai ? CACH_CHOI.filter((c) => c.cach !== 'go') : CACH_CHOI;
   const [cau, setCau] = useState('');
   const [moSo, setMoSo] = useState(false);
   const nhatKyRef = useRef<HTMLOListElement>(null);
@@ -169,7 +173,7 @@ export function HoiDapMvp({ kb, hoiDap: h, dienTen, tenNguoiNoi, tenNguoiChoi, o
             {h.conLuot !== null && !h.daRoi ? <small className="mvp-hoidap__luot">{h.daDong ? 'Hết lượt hỏi' : `Còn ${h.conLuot} câu`}</small> : null}
           </div>
           <div className="mvp-hoidap__cach" role="group" aria-label="Cách chơi">
-            {CACH_CHOI.map((c) => (
+            {cachChoiHien.map((c) => (
               <button key={c.cach} type="button" aria-pressed={h.cachChoi === c.cach} title={c.ghi} onClick={() => onHanhDong({ type: 'doi-cach-choi', cach: c.cach })}>
                 {c.chu}
               </button>

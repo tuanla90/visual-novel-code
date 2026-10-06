@@ -60,6 +60,7 @@ import { taiTruocTheoVan } from './tai-truoc-mvp';
 import { maMoi, theMoiTuMa, useTheChuaXem, type TheMoi } from './the-moi';
 import { TheMoiMvp } from './TheMoiMvp';
 import { thuBanPhim, useBanPhimAo } from './ban-phim-ao';
+import { mucNhapVaiTheoMay, mucSqlTheoMay, useDienThoai } from './dien-thoai';
 import { TraSoMvp } from './TrangSoMvp';
 import { DoiChatMvp } from './DoiChatMvp';
 
@@ -128,6 +129,19 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const viewportMode = useVnStore((k) => k.viewportMode);
   // Điện thoại: bàn phím ảo mở → chế độ gõ (html[data-ban-phim]), kèm nút "Xong" để thu bàn phím (ban-phim-ao.ts).
   const coBanPhim = useBanPhimAo();
+  // Điện thoại: không có hai mức phải gõ chữ (dien-thoai.ts). Ván lưu từ máy tính ở mức ấy thì hạ xuống khi mở trên điện thoại.
+  const dienThoai = useDienThoai();
+  const mucNhapVaiVan = s?.mucNhapVai;
+  const mucSqlVan = s?.mucSql;
+  const cachChoiVan = s?.cachChoi;
+  useEffect(() => {
+    if (!dienThoai || !s) return;
+    const nv = mucNhapVaiVan === undefined ? undefined : mucNhapVaiTheoMay(mucNhapVaiVan, true);
+    const sq = mucSqlVan === undefined ? undefined : mucSqlTheoMay(mucSqlVan, true);
+    if (nv !== mucNhapVaiVan || sq !== mucSqlVan) hanhDong({ type: 'doi-muc', ...(nv !== mucNhapVaiVan ? { nhapVai: nv } : {}), ...(sq !== mucSqlVan ? { sql: sq } : {}) });
+    if (cachChoiVan === 'go') hanhDong({ type: 'doi-cach-choi', cach: 'bam' });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dienThoai, mucNhapVaiVan, mucSqlVan, cachChoiVan, !!s]);
   const setSkipMode = useVnStore((k) => k.setSkipMode);
   const clearBacklog = useVnStore((k) => k.clearBacklog);
   const popBacklog = useVnStore((k) => k.popBacklog);
