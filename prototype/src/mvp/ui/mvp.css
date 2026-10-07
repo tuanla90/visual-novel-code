@@ -3442,6 +3442,16 @@
   .game.mvp-game .dialog__footer--external .dialog__next:hover::before { background: #ffeabb; }
   .game.mvp-game .dialog__footer--external .dialog__next:active::before { background: #eacb8a; }
   .game.mvp-game .dialog__footer--external .dialog__next:focus-visible { outline: 2px solid #fbbf24; outline-offset: 2px; filter: none !important; }
+  /* Thẻ chuyển cảnh (ngày giờ, địa điểm trên nền xanh tối): luật nút giấy ở trên xóa nền vàng, luật thẻ lại tắt miếng giấy
+     → nút chỉ còn chữ nâu trên nền tối, gần như không thấy (user 07/10). Trả lại viên vàng, gọn hơn bản máy tính. */
+  .game.mvp-game .dialog__footer--card { margin-top: 12px !important; }
+  .game.mvp-game .dialog__footer--card .dialog__next {
+    min-width: 0; padding: 0 22px !important; border: 1.5px solid #d97706 !important; border-radius: 9999px !important;
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 35%, #fde68a 70%, #f59e0b 100%) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45), 0 0 14px rgba(245, 158, 11, 0.35) !important;
+  }
+  .game.mvp-game .dialog__footer--card .dialog__next span { font-size: 0.95rem !important; color: #3b1d06 !important; }
+  .game.mvp-game .dialog__footer--card .dialog__next:active { transform: translateY(1px) scale(0.98) !important; }
 }
 
 /* Sổ: danh sách bảng đã mở (cấu trúc bảng và các cột). */
