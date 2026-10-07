@@ -60,6 +60,7 @@ import { taiTruocTheoVan } from './tai-truoc-mvp';
 import { maMoi, theMoiTuMa, useTheChuaXem, type TheMoi } from './the-moi';
 import { TheMoiMvp } from './TheMoiMvp';
 import { thuBanPhim, useBanPhimAo } from './ban-phim-ao';
+import { useGiuDeTua } from './giu-tua';
 import { mucNhapVaiTheoMay, mucSqlTheoMay, useDienThoai } from './dien-thoai';
 import { TraSoMvp } from './TrangSoMvp';
 import { DoiChatMvp } from './DoiChatMvp';
@@ -195,6 +196,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       dat(false);
     };
   }, []);
+  // Điện thoại không có Ctrl: nhấn giữ khung thoại để tua (giu-tua.ts).
+  useGiuDeTua();
 
   // Hồ sơ có thêm thẻ → thẻ thu nhỏ rơi xuống dưới nút Hồ sơ rồi bay vào nút (`TheMoiMvp`), kèm tiếng chuông như
   // prototype; thẻ ghi vào danh sách "chưa xem" (nhãn MỚI trong khung Hồ sơ). Thẻ đến khi đợt trước còn bay → xếp hàng.

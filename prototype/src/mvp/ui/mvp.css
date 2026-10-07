@@ -3397,14 +3397,20 @@
   .mvp-game .mvp-topbar .topbar__task-icon { width: 16px; height: 16px; flex: 0 0 16px; }
   .mvp-game .mvp-topbar .topbar__task-text { display: block !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis; font-size: 0.85rem; }
   .mvp-game .mvp-topbar .topbar__actions { grid-column: 3; grid-row: 1; gap: 4px !important; }
-  .mvp-game .mvp-topbar .topbar__capsule-group { gap: 0 !important; padding: 0 !important; }
-  .mvp-game .mvp-topbar .topbar__capsule-btn { height: 44px !important; min-width: 44px; padding: 0 8px !important; }
+  /* Nhộng cao bằng nút (44 px), viền vẽ bằng bóng trong: trước đây nhộng 38 px mà nút 44 px nên vệt sáng tròn của nút
+     menu lòi ra ngoài viền nhộng — thành hai đường cong đè nhau ở góc phải (user 07/10, iPhone). */
+  .mvp-game .mvp-topbar .topbar__capsule-group {
+    gap: 0 !important; padding: 0 !important; height: 44px; border: 0;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14), 0 4px 14px rgba(0, 0, 0, 0.35);
+  }
+  .mvp-game .mvp-topbar .topbar__capsule-btn { height: 44px !important; min-height: 44px !important; min-width: 44px; padding: 0 8px !important; }
+  .mvp-game .mvp-topbar .topbar__capsule-menu .topbar__capsule-btn--menu { width: 44px !important; }
   .mvp-game .mvp-topbar .topbar__capsule-btn::after { display: none; }
   .mvp-game .mvp-topbar .mvp-uytin { height: 32px; padding: 0 7px; gap: 0; font-size: 0.8rem; letter-spacing: 0; }
   .mvp-game .mvp-uytin__nhan, .mvp-game .mvp-uytin__vach { display: none; }
   .mvp-game .mvp-uytin__so { display: inline; }
   .mvp-game .mvp-topbar__compact-item { display: flex; }
-  .mvp-game .mvp-topbar .topbar__menu-panel { max-height: calc(100dvh - 64px); overflow-y: auto; overscroll-behavior: contain; width: min(300px, calc(100vw - 20px)); }
+  .mvp-game .mvp-topbar .topbar__menu-panel { max-height: calc(100dvh - 64px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); overflow-y: auto; overscroll-behavior: contain; width: min(300px, calc(100vw - 20px)); }
   .mvp-game .mvp-topbar .topbar__menu-item { min-height: 44px; }
   .mvp-game .mvp-topbar__chi-tiet { position: fixed; top: 56px; left: 8px; width: min(460px, calc(100vw - 16px)); box-sizing: border-box; }
   .mvp-game .mvp-stage__canh-trai { top: 8px; left: 8px; max-width: calc(100% - 130px); }
@@ -4898,11 +4904,11 @@
 
 /* User 06/10: nút "Tiếp tục" nằm trong khung thoại (tam giác nhỏ + chữ, góc phải dưới), dùng chung điện thoại và máy tính;
    không còn nút to chiếm một góc màn hình, không còn nút "Hồ sơ" dưới khung (HUD đã có). */
-.mvp-game .dialog--glass:has(.dialog__tiep) { padding-bottom: 28px !important; }
+.mvp-game .dialog--glass:has(.dialog__tiep) { padding-bottom: 24px !important; }
 .mvp-game .dialog__tiep {
-  position: absolute; right: 12px; bottom: 4px; z-index: 2;
+  position: absolute; right: 12px; bottom: 2px; z-index: 2;
   display: inline-flex; align-items: center; gap: 7px;
-  min-height: 32px; padding: 4px 8px; border: 0; border-radius: 8px; background: transparent;
+  min-height: 28px; padding: 4px 8px; border: 0; border-radius: 8px; background: transparent;
   color: #fde68a; font-family: var(--font-ui); font-size: 0.78rem; font-weight: 700; line-height: 1; letter-spacing: 0.02em;
   opacity: 0.55; cursor: pointer; touch-action: manipulation; transition: opacity 0.2s ease, color 0.2s ease;
 }
@@ -4913,10 +4919,25 @@
 .mvp-game .dialog__tiep.is-san-sang .dialog__tiep-tam-giac { animation: mvp-tiep-nhay 1.1s ease-in-out infinite; }
 @keyframes mvp-tiep-nhay { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
 .mvp-game .dialog__footer--trong-khung { margin-top: 0 !important; }
-/* User 06/10: dịch chuyển khung thoại xuống sát lề dưới hơn */
+/* User 06/10: dịch chuyển khung thoại xuống sát lề dưới hơn; 07/10: hạ thêm một chút (6 → 2 px, đệm đáy khung 28 → 24 px). */
 .mvp-game .stage:has(.dialog-container) {
-  padding-bottom: 6px !important;
+  padding-bottom: 2px !important;
 }
+/* iPhone chế độ app, cầm ngang: #root chừa vùng vạch home (~21 px) ở đáy. Lúc đang thoại, cho cảnh tràn xuống tận đáy màn
+   để khung thoại không bị đẩy lên — vạch home chỉ đè lên phần đệm trống của khung, chữ vẫn ở trên. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .game.mvp-game:has(> .stage .dialog-container) { height: calc(100% + env(safe-area-inset-bottom, 0px)) !important; }
+}
+/* Nhấn giữ khung thoại để tua (giu-tua.ts): không bật menu chép/tra từ của iOS, không để vuốt nhẹ hủy cú giữ. */
+.mvp-game .dialog--glass { -webkit-touch-callout: none; touch-action: none; }
+.dialog__dang-tua {
+  position: absolute; top: 6px; right: 12px; z-index: 3;
+  display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 9999px;
+  background: rgba(251, 191, 36, 0.18); border: 1px solid rgba(253, 230, 138, 0.5);
+  color: #fde68a; font: 700 0.72rem/1.3 var(--font-ui); letter-spacing: 0.04em; pointer-events: none;
+}
+.dialog__dang-tua-mui { display: inline-block; animation: mvp-dang-tua 0.5s linear infinite; }
+@keyframes mvp-dang-tua { 0% { transform: translateX(-2px); opacity: 0.5; } 100% { transform: translateX(2px); opacity: 1; } }
 .mvp-game .stage__content:has(> .dialog-container) {
   padding-bottom: 0 !important;
 }

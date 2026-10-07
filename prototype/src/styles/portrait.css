@@ -450,15 +450,17 @@
 }
 
 /* MVP mobile games are played in landscape. Give the shorter viewport to the scene,
-   and let landscape viewports use their full width instead of a portrait simulator. */
+   and let landscape viewports use their full width instead of a portrait simulator.
+   Dùng 100% chứ không 100vw/100dvh: #root có đệm vùng an toàn (tai thỏ, vạch home trên iPhone chế độ app);
+   100vw bỏ qua đệm đó → khung bị đẩy sang phải và tràn mất phần menu (user 07/10). */
 @media (max-width: 900px) and (orientation: landscape) {
   html, body, #root { height: 100dvh; }
-  .game { height: 100dvh !important; grid-template-rows: auto minmax(0, 1fr) !important; }
-  .mvp-game { width: 100vw; max-width: none; }
-  .game-simulator-backdrop { height: 100dvh; padding: 0; }
+  .game { height: 100% !important; grid-template-rows: auto minmax(0, 1fr) !important; }
+  .mvp-game { width: 100%; max-width: none; }
+  .game-simulator-backdrop { width: 100%; height: 100%; padding: 0; }
   .game-simulator-bezel {
-    width: 100vw;
-    height: 100dvh;
+    width: 100%;
+    height: 100%;
     max-width: none;
     aspect-ratio: auto;
     border-radius: 0;

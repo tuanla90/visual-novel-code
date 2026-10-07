@@ -436,11 +436,16 @@ export function DialogBox({
             <span>{label}</span>
           </div>
         ) : null}
+        {giuTua ? (
+          <span className="dialog__dang-tua" aria-hidden="true">
+            Đang tua <span className="dialog__dang-tua-mui">▸▸</span>
+          </span>
+        ) : null}
         <p ref={textRef} className={`dialog__text dialog__text--${dialogueFont}`}>
           <CodeText text={displayedText} />
         </p>
         {trongKhung ? (
-          <button type="button" className={`dialog__tiep${isDone ? ' is-san-sang' : ''}`} aria-label="Tiếp tục" onKeyDown={guard.holdKey} onClick={bamTiep}>
+          <button type="button" className={`dialog__tiep${isDone ? ' is-san-sang' : ''}`} aria-label="Tiếp tục" title="Bấm để đi tiếp, nhấn giữ khung thoại để tua" onKeyDown={guard.holdKey} onClick={bamTiep}>
             <span className="dialog__tiep-chu">Tiếp tục</span>
             <span className="dialog__tiep-tam-giac" aria-hidden="true" />
           </button>
