@@ -115,7 +115,7 @@ function VnQuickButtons({
         title="Tự động chạy hội thoại"
       >
         <IconPlay width={14} height={14} />
-        <span>Auto</span>
+        <span>Tự động</span>
       </button>
       <button
         type="button"
@@ -129,7 +129,7 @@ function VnQuickButtons({
         title={alreadyRead || skipMode ? 'Tua nhanh qua thoại đã đọc (giữ Ctrl để tua cả thoại mới)' : 'Chỉ tua được thoại đã đọc — giữ Ctrl để tua cả thoại mới'}
       >
         <IconFastForward width={14} height={14} />
-        <span>Skip</span>
+        <span>Tua</span>
       </button>
       {onOpenBacklog ? (
         <button
@@ -142,7 +142,7 @@ function VnQuickButtons({
           title="Xem lại lịch sử trò chuyện"
         >
           <IconHistory width={14} height={14} />
-          <span>Log</span>
+          <span>Lịch sử</span>
         </button>
       ) : null}
       {onOpenSave ? (

@@ -11,8 +11,8 @@
 import { useEffect, useRef, useState } from 'react';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { ConfirmDialog } from '../../shared/ui/ConfirmDialog';
-import { IconChevronLeft, IconEyeOff, IconFastForward, IconFolderOpen, IconHistory, IconPlay, IconRotateCcw, IconSave, IconSliders } from '../../shared/ui/icons';
-import { readLineKey, useVnStore } from '../../shared/vn/vn-store';
+import { IconFolderOpen, IconHistory, IconRotateCcw, IconSave, IconSliders } from '../../shared/ui/icons';
+import { useVnStore } from '../../shared/vn/vn-store';
 import { dinhDangNgay, hoaDau, homNay, thuCua } from '../engine/lich-ngay';
 import { dienTen, tenKhungHienTai, tenNguoiNoi } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
@@ -89,7 +89,7 @@ function mocHud(kb: KichBanMvp, s: TrangThaiMvp): { kicker: string; so: string; 
   return { kicker, so, ten, nhanDai: `${ngayDai} · ${ten}` };
 }
 
-export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onMoCachChoi, onBatDauLai, onVeTieuDe, onMoLich, onTamDungViecPhu, onMoBangHoatDong, onLui, loiThoai }: HudMvpProps) {
+export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onMoCachChoi, onBatDauLai, onVeTieuDe, onMoLich, onTamDungViecPhu, onMoBangHoatDong }: HudMvpProps) {
   const [menuMo, setMenuMo] = useState(false);
   const [xacNhan, setXacNhan] = useState(false);
   const [chiTiet, setChiTiet] = useState({ nhiemVu: s.nhiemVu, mo: false });
@@ -97,9 +97,6 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
   const moRongNhiemVu = chiTiet.nhiemVu === s.nhiemVu && chiTiet.mo;
   const setMoRongNhiemVu = (mo: boolean): void => setChiTiet({ nhiemVu: s.nhiemVu, mo });
   const nhiemVuRef = useRef<HTMLDivElement>(null);
-  const autoMode = useVnStore((k) => k.autoMode);
-  const skipMode = useVnStore((k) => k.skipMode);
-  const daDoc = useVnStore((k) => !!loiThoai && (k.skipUnread || !!k.readLines[readLineKey(loiThoai.speaker, loiThoai.text)]));
   const menuRef = useRef<HTMLDivElement>(null);
   const moc = mocHud(kb, s);
   const tenNgay = kb.lich.ngay.find((n) => n.so === s.ngay)?.ten ?? '';
@@ -259,20 +256,6 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
             {menuMo ? (
               <div className="topbar__menu-panel" role="menu" aria-label="Menu tạm dừng">
                 <span className="topbar__menu-title">Tùy chọn</span>
-                {onLui ? <button type="button" role="menuitem" className="topbar__menu-item mvp-topbar__compact-item" onClick={chon(onLui)}>
-                  <IconChevronLeft width={16} height={16} aria-hidden="true" /><span>Lùi lại bước trước</span>
-                </button> : null}
-                {loiThoai ? <>
-                  <button type="button" role="menuitemcheckbox" aria-checked={autoMode} className="topbar__menu-item mvp-topbar__compact-item" onClick={chon(() => useVnStore.getState().toggleAutoMode())}>
-                    <IconPlay width={16} height={16} aria-hidden="true" /><span>Tự chạy thoại</span>
-                  </button>
-                  <button type="button" role="menuitemcheckbox" aria-checked={skipMode} disabled={!skipMode && !daDoc} className="topbar__menu-item mvp-topbar__compact-item" onClick={chon(() => useVnStore.getState().toggleSkipMode())}>
-                    <IconFastForward width={16} height={16} aria-hidden="true" /><span>Tua thoại đã đọc</span>
-                  </button>
-                  <button type="button" role="menuitem" className="topbar__menu-item mvp-topbar__compact-item" onClick={chon(() => useVnStore.getState().toggleHideUi())}>
-                    <IconEyeOff width={16} height={16} aria-hidden="true" /><span>Ẩn giao diện để xem cảnh</span>
-                  </button>
-                </> : null}
                 {soTrangSo > 0 ? <button type="button" role="menuitem" className="topbar__menu-item mvp-topbar__compact-item" onClick={chon(onMoSoTay)}>
                   <IconFolderOpen width={16} height={16} aria-hidden="true" /><span>Sổ cá nhân ({soTrangSo} trang)</span>
                 </button> : null}

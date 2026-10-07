@@ -1,5 +1,33 @@
 # Nhật Ký Thay Đổi (.agent/changelog.md)
 
+## [2026-10-07] Tối Ưu Giao Diện Khung Thoại, Bản Đồ Thế Giới & Màn Hỏi Đáp (Live MVP)
+
+### 1. Bối Cảnh & Yêu Cầu:
+- Khung hội thoại chính ở quá cao so với mép dưới màn hình.
+- Các nút thao tác nhanh trên thanh đọc chưa được Việt hóa (`Auto`, `Skip`, `Log`).
+- Trùng lặp tính năng giữa thanh thao tác nhanh dưới khung thoại và ngăn kéo menu (≡).
+- Bản đồ thế giới (`KhamPhaMvp`): thông tin ngày tháng/thời gian bị đè lấn lên pill "Đi cùng"; người dùng yêu cầu bỏ thời gian (đã có góc trái), thêm icon địa chỉ và text "Đại học Chấn Hưng".
+- Màn hỏi đáp nhân chứng (`HoiDapMvp`): các dòng text hướng dẫn (`ghiCach` và gợi ý) chiếm quá nhiều diện tích dọc, khiến phần lịch sử đối thoại bị bó hẹp.
+
+### 2. Thay Đổi Thực Hiện:
+- **Khung Thoại & Thao Tác Nhanh (`DialogBox.tsx`, `mvp.css`)**:
+  - Dịch chuyển khung thoại sát lề đáy: `.mvp-game .stage:has(.dialog-container)` đặt `padding-bottom: 6px !important`, ẩn footer rỗng.
+  - Việt hóa nút nhanh: `Auto` -> `Tự động`, `Skip` -> `Tua`, `Log` -> `Lịch sử`.
+- **Tối Ưu Ngăn Kéo Menu & Phân Định Hành Vi (`HudMvp.tsx`, `ManChoiMvp.tsx`)**:
+  - Thanh dưới chuyên phục vụ việc đọc cốt truyện: chỉ giữ `Lùi`, `Tự động`, `Tua`, `Lịch sử`, `Ẩn UI`.
+  - Ngăn kéo menu (≡) chuyên phục vụ tính năng hệ thống: `Lưu tiến trình`, `Tải lại`, `Thiết lập âm thanh`, `Màn hình chính`.
+- **Bản Đồ Thế Giới (`DongHanhMvp.tsx`, `KhamPhaMvp.tsx`, `mvp.css`)**:
+  - Bỏ text ngày giờ phụ trên bản đồ để tránh trùng lặp với góc trên trái.
+  - Bổ sung prop `diaDiem` vào `DongHanhMvp`: hiển thị icon pin địa chỉ (MapPin) cùng text `Đại học Chấn Hưng` trong cùng flex row với `Đi cùng`.
+- **Màn Hỏi Đáp (`HoiDapMvp.tsx`, `HoiDapMvp.css`)**:
+  - Bỏ dòng giải thích thừa `ghiCach` ("Tự nghĩ câu hỏi và gõ ra").
+  - Đưa gợi ý ngắn gọn sang bên trái và nút rời đi/nghe tiếp sang bên phải trên cùng một hàng flex (`.mvp-hoidap__hang`).
+  - Giảm padding khu vực thao tác xuống `6px 12px 8px`, giải phóng hơn 50px chiều cao cho danh sách câu hỏi - trả lời.
+
+### 3. Kiểm Thử & Xác Nhận:
+- `npm run typecheck`: 0 lỗi.
+- `npm test`: tất cả 1441 tests đều vượt qua thành công.
+
 ## [2026-10-05] Nâng Cấp Trải Nghiệm Thẻ Bảng Ghim, Đối Chất & Khảo Sát Nguồn Phiếu Kết Quả
 
 ### 1. Bối Cảnh & Vấn Đề (Feedback Người Dùng):

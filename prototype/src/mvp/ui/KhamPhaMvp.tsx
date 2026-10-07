@@ -164,7 +164,7 @@ function useCatCanhHaVy(bat: boolean): { dang: boolean; boQua: () => void } {
   return { dang, boQua: () => setDang(false) };
 }
 
-export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay, thu, gio, dang, haVySoi, roi, onRoi, hetNgay, onHetNgay, mucNhapVai }: KhamPhaMvpProps) {
+export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay: _homNay, thu, gio, dang, haVySoi, roi, onRoi, hetNgay, onHetNgay, mucNhapVai }: KhamPhaMvpProps) {
   const catCanh = useCatCanhHaVy(!!haVySoi && kieu === 'quan-sat' && diem.every((d) => !d.daXem));
   // Gói B17: dấu "!" / "?" chỉ hiện ở loại điểm mà mức nhập vai cho (ghim / người / vật); không có mức thì hiện hết như cũ.
   const dauMuc = mucNhapVai ? dauTheoMuc(mucNhapVai) : null;
@@ -199,10 +199,8 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
   const nhan = danhSoTrung(diem.map((d) => nhanDiemKhamPha(kb, d.diem)));
   const nhanDoc = (i: number, d: DiemKhamPhaHienMvp): string => `${nhan[i] ?? ''}${d.diem.dau && !d.daXem && coDau(d.diem) ? ` (${DAU[d.diem.dau].doc})` : ''}`;
   const tieuDe = laBanDo ? 'Đi đâu bây giờ?' : laQuanSat ? `Quan sát ${nv?.trongCau ?? ''}` : tenCanh;
-  // Không còn dòng đếm "Còn N chỗ chưa xem" (user 03/10/2026): đếm sẵn làm mất phần tự tìm. Chỉ bản đồ và phòng có dấu ! / ? giữ chú giải.
-  const phu = laBanDo
-    ? (homNay ? `${homNay}${gio ? `, ${gio}` : ''}` : '')
-    : '';
+  // User 06/10: bỏ thời gian trên bản đồ vì góc trên bên trái HUD đã có; tránh đè với bạn đi cùng.
+  const phu = '';
   /** Người đang ở một nơi mà người chơi ĐÃ BIẾT: đã gặp và thẻ nhân vật có dòng "Lịch". */
   const nguoiBiet = (d: DiemKhamPhaMvp): string[] => {
     // Người kịch bản đặt ở đây (`có:`) cộng người lịch "Thường ở" đặt ở ghim này vào thứ, giờ của bản đồ.

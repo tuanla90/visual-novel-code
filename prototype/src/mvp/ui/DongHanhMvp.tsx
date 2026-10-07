@@ -26,7 +26,7 @@ function lichSu(s: TrangThaiMvp): TinNhan[] {
   })));
 }
 
-export function DongHanhMvp({ kb, s, visible = true }: { kb: KichBanMvp; s: TrangThaiMvp; visible?: boolean }) {
+export function DongHanhMvp({ kb, s, visible = true, diaDiem }: { kb: KichBanMvp; s: TrangThaiMvp; visible?: boolean; diaDiem?: string }) {
   const ds = banDangCoMat(kb, s);
   const ghiNhanChat = useKhoMvp((k) => k.ghiNhanChatNhom);
   const [mo, setMo] = useState(false);
@@ -140,6 +140,15 @@ export function DongHanhMvp({ kb, s, visible = true }: { kb: KichBanMvp; s: Tran
 
   return (
     <aside className="dong-hanh" aria-label={'Đi cùng: ' + ds.map(ten).join(', ')} onClick={(event) => event.stopPropagation()}>
+      {diaDiem ? (
+        <span className="dong-hanh__dia-diem" title={diaDiem}>
+          <svg className="stage__scene-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" fill="#f59e0b" stroke="#d97706" strokeWidth="1.2" />
+            <circle cx="12" cy="10" r="3" fill="#fffdf2" />
+          </svg>
+          <span className="dong-hanh__dia-diem-text">{diaDiem}</span>
+        </span>
+      ) : null}
       <button type="button" className="dong-hanh__nhan" aria-expanded={mo} aria-controls="dong-hanh-tro-chuyen"
         onClick={() => { if (mo) setMo(false); else moChat(); }}>Đi cùng</button>
       {ds.map((id) => {

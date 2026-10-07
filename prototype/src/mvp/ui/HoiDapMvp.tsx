@@ -74,7 +74,6 @@ export function HoiDapMvp({ kb, hoiDap: h, dienTen, tenNguoiNoi, tenNguoiChoi, o
   const daRo = h.danhSach.filter((d) => d.xong).length;
   const conMo = h.danhSach.length - daRo;
   const tuHoiRa = h.giayNho.filter((g) => g.an).length;
-  const ghiCach = CACH_CHOI.find((c) => c.cach === h.cachChoi)?.ghi ?? '';
 
   const nutRoiDi = (
     <button type="button" className="btn mvp-hoidap__di" onClick={() => onHanhDong({ type: 'hoi-dap-roi-di' })}>
@@ -104,15 +103,15 @@ export function HoiDapMvp({ kb, hoiDap: h, dienTen, tenNguoiNoi, tenNguoiChoi, o
     );
   } else if (h.cachChoi === 'tu-dong') {
     thaoTac = (
-      <>
-        <div className="mvp-hoidap__hang">
+      <div className="mvp-hoidap__hang">
+        <p className="mvp-hoidap__ghi">
+          {h.caDoan ? `Bấm để đọc cả đoạn lời kể.` : h.conKe ? `Bấm một lần, ${nc} kể một điều.` : `${tenNc} đã kể hết đoạn.`}
+        </p>
+        <div className="mvp-hoidap__hang-nut">
           {nutKeNot(h.caDoan ? `Nghe ${nc} kể` : h.conKe ? 'Nghe kể tiếp' : 'Đã kể hết đoạn')}
           {nutRoiDi}
         </div>
-        <p className="mvp-hoidap__ghi">
-          {h.caDoan ? `Bấm "Nghe ${nc} kể" để đọc cả đoạn như lời kể thường. Muốn tự hỏi thì chọn "Bấm câu hỏi" hoặc "Gõ câu hỏi" ở trên.` : h.conKe ? `Bấm một lần, ${nc} kể một điều.` : `${tenNc} đã kể hết đoạn viết sẵn.`}
-        </p>
-      </>
+      </div>
     );
   } else if (h.cachChoi === 'bam') {
     thaoTac = (
@@ -125,10 +124,14 @@ export function HoiDapMvp({ kb, hoiDap: h, dienTen, tenNguoiNoi, tenNguoiChoi, o
           ))}
         </div>
         <div className="mvp-hoidap__hang">
-          {h.daDong && h.conKe ? nutKeNot('Nghe kể nốt') : null}
-          {nutRoiDi}
+          <p className="mvp-hoidap__ghi">
+            {h.daDong ? `${tenNc} không trả lời thêm nữa.` : 'Có câu chỉ hiện sau khi biết điều liên quan.'}
+          </p>
+          <div className="mvp-hoidap__hang-nut">
+            {h.daDong && h.conKe ? nutKeNot('Nghe kể nốt') : null}
+            {nutRoiDi}
+          </div>
         </div>
-        <p className="mvp-hoidap__ghi">{h.daDong ? `${tenNc} không trả lời thêm nữa.` : 'Bấm câu nào, hỏi câu ấy. Có câu chỉ hiện ra sau khi biết điều liên quan.'}</p>
       </>
     );
   } else {
@@ -155,10 +158,14 @@ export function HoiDapMvp({ kb, hoiDap: h, dienTen, tenNguoiNoi, tenNguoiChoi, o
           </button>
         </form>
         <div className="mvp-hoidap__hang">
-          {h.daDong && h.conKe ? nutKeNot('Nghe kể nốt') : null}
-          {nutRoiDi}
+          <p className="mvp-hoidap__ghi">
+            {h.daDong ? 'Hết lượt hỏi.' : 'Bí thì bấm vào bạn đi cùng ở góc phải.'}
+          </p>
+          <div className="mvp-hoidap__hang-nut">
+            {h.daDong && h.conKe ? nutKeNot('Nghe kể nốt') : null}
+            {nutRoiDi}
+          </div>
         </div>
-        <p className="mvp-hoidap__ghi">{h.daDong ? 'Hết lượt hỏi. Vẫn có thể nghe kể nốt hoặc chào để đi.' : 'Hỏi mở cũng được. Bí thì bấm vào bạn đi cùng ở góc phải. Thấy đủ thì chào mà đi.'}</p>
       </>
     );
   }
@@ -207,7 +214,6 @@ export function HoiDapMvp({ kb, hoiDap: h, dienTen, tenNguoiNoi, tenNguoiChoi, o
         </ol>
         <div className="mvp-hoidap__thao-tac">
           {thaoTac}
-          {!h.daRoi ? <p className="mvp-hoidap__ghi mvp-hoidap__ghi--cach">{ghiCach}</p> : null}
         </div>
       </div>
       <aside id="mvp-hoidap-so" className="mvp-hoidap__so" aria-label="Sổ CLB: cần làm rõ">
