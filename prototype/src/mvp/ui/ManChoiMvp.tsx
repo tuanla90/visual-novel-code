@@ -734,6 +734,9 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       <span className="mvp-xoay__may" aria-hidden="true" />
       <p className="mvp-xoay__chu">Xoay ngang điện thoại để chơi</p>
       <p className="mvp-xoay__phu">Game được thiết kế để chơi ngang xuyên suốt các màn.</p>
+      <button type="button" className="mvp-xoay__tai-lai" onClick={() => window.location.reload()}>
+        Đã xoay mà vẫn thấy dòng này? Bấm để tải lại
+      </button>
     </div>
   );
 

@@ -10,6 +10,17 @@ body,
   height: 100%;
   margin: 0;
 }
+/* Chế độ app trên điện thoại (viewport-fit=cover): tránh tai thỏ / vạch home; màu nền tối cùng tông game. */
+#root {
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+  background: #1b1612;
+}
+/* Điện thoại: bỏ độ trễ chờ chạm đúp trên nút (nút "Bắt đầu", "Tiếp tục" phản hồi ngay). */
+button,
+[role='button'],
+a {
+  touch-action: manipulation;
+}
 
 body {
   font-family: var(--font-ui);

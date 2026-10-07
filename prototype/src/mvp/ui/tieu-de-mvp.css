@@ -7,9 +7,25 @@
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
   background: #1b1612;
   color: #fff8e8;
   font-family: inherit;
+}
+/* Chế độ app (không có thanh địa chỉ để tải lại): nút nhỏ góc phải dưới. */
+.tdm__tai-lai {
+  position: absolute;
+  right: max(10px, env(safe-area-inset-right, 0px));
+  bottom: max(10px, env(safe-area-inset-bottom, 0px));
+  z-index: 3;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 248, 232, 0.35);
+  border-radius: 999px;
+  background: rgba(20, 12, 4, 0.7);
+  color: rgba(255, 248, 232, 0.85);
+  font: 600 0.78rem/1 var(--font-ui);
+  cursor: pointer;
 }
 .tdm__nen {
   position: absolute;

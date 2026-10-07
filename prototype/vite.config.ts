@@ -1,5 +1,5 @@
 /// <reference types="vitest/config" />
-import { realpathSync } from 'node:fs';
+import { readFileSync, realpathSync } from 'node:fs';
 import { defineConfig, searchForWorkspaceRoot, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import { createCompanionHandler } from './ai-companion.mjs';
@@ -23,6 +23,16 @@ const companionApiPlugin: Plugin = {
   },
 };
 
+// PWA: phát `sw.js` ở gốc dist từ src/pwa/sw.js, thay `__PHIEN_BAN__` bằng mã bản dựng để mỗi lần deploy là một worker mới.
+const swPlugin: Plugin = {
+  name: 'clb-sw',
+  apply: 'build',
+  generateBundle() {
+    const nguon = readFileSync(new URL('./src/pwa/sw.js', import.meta.url), 'utf8').replaceAll('__PHIEN_BAN__', Date.now().toString(36));
+    this.emitFile({ type: 'asset', fileName: 'sw.js', source: nguon });
+  },
+};
+
 // Cấu hình dùng chung cho Vite (dev/build/preview) và Vitest.
 // sql.js: trình duyệt nạp tệp .wasm qua import `?url` (xem src/sql-challenge/engine/sqljs.ts).
 // sql.js là CommonJS (`module.exports = initSqlJs`): ở chế độ dev Vite PHẢI pre-bundle nó thành ESM
@@ -30,7 +40,7 @@ const companionApiPlugin: Plugin = {
 // làm dev vỡ ngay lúc nạp (SyntaxError "does not provide an export named 'default'") trong khi
 // build/preview vẫn chạy vì rolldown tự interop CJS. Canary: src/sql-challenge/engine/sqljs.dev.test.ts.
 export default defineConfig({
-  plugins: [react(), companionApiPlugin],
+  plugins: [react(), companionApiPlugin, swPlugin],
   optimizeDeps: {
     include: ['sql.js'],
   },

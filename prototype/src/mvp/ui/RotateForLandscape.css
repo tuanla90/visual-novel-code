@@ -28,6 +28,10 @@
 
   .mvp-xoay__chu { margin: 0; color: #fde68a; font: 800 1.25rem var(--font-ui); }
   .mvp-xoay__phu { max-width: 34em; margin: 0; color: rgba(248, 250, 252, 0.8); font-size: 0.95rem; }
+  .mvp-xoay__tai-lai {
+    margin-top: 14px; padding: 8px 14px; border: 1px solid rgba(253, 230, 138, 0.5); border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06); color: #fde68a; font: 600 0.85rem/1.2 var(--font-ui); cursor: pointer;
+  }
 }
 
 @keyframes mvp-xoay {

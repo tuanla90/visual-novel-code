@@ -14,6 +14,7 @@ import { MUC_NHAP_VAI_MAC_DINH, MUC_SQL_MAC_DINH } from '../engine/muc-choi';
 import { docMucDaChon, doiBoNoiDung, ghiMucDaChon, KICH_BAN, layMaBoNoiDung, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
 import { anhTheoTen } from './anh-mvp';
 import { ChonMucMvp } from './ChonMucMvp';
+import { laCheDoApp } from '../../pwa/dang-ky-sw';
 import { LuuNapMvp } from './LuuNapMvp';
 import { taiTruocTheoVan } from './tai-truoc-mvp';
 
@@ -112,6 +113,9 @@ export function TieuDeMvp({ onVao }: TieuDeMvpProps) {
         <span className="mvp-xoay__may" aria-hidden="true" />
         <p className="mvp-xoay__chu">Xoay ngang điện thoại để chơi</p>
         <p className="mvp-xoay__phu">Game được thiết kế để chơi ngang xuyên suốt các màn.</p>
+        <button type="button" className="mvp-xoay__tai-lai" onClick={() => window.location.reload()}>
+          Đã xoay mà vẫn thấy dòng này? Bấm để tải lại
+        </button>
       </div>
       <header className="tdm__logo">
         {nhanTren && conLai.length > 0 ? <span className="tdm__nhan">{nhanTren}</span> : null}
@@ -136,6 +140,11 @@ export function TieuDeMvp({ onVao }: TieuDeMvpProps) {
         </footer>
       ) : null}
 
+      {laCheDoApp() ? (
+        <button type="button" className="tdm__tai-lai" onClick={() => window.location.reload()} title="Tải lại game (khi màn hình bị kẹt)">
+          Tải lại
+        </button>
+      ) : null}
       <AudioSettingsModal open={caiDat} onClose={() => setCaiDat(false)} />
       {nap ? (
         <LuuNapMvp
