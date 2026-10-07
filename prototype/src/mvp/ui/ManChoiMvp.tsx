@@ -372,13 +372,11 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const bangQuanSat = quanSat ? <BangQuanSatMvp kb={kb} s={s} loaiManHinh={kn.kind} onNhay={nhay} /> : null;
 
   // User 06/10: nút "Hồ sơ" dưới khung trùng với "Hồ sơ" trên HUD nên bỏ; nút "Tiếp tục" vào trong khung thoại.
+  // Thanh đọc thoại chỉ giữ các điều khiển đọc (Lùi, Tự động, Tua, Lịch sử, Ẩn UI); Lưu / Nạp / Cài đặt quản lý ở Menu ≡.
   const nutVn = {
     keyboardEnabled: !modalMo,
     nutTiepTrongKhung: true,
     onOpenBacklog: () => setLichSuMo(true),
-    onOpenSave: () => setLuuNap('save'),
-    onOpenLoad: () => setLuuNap('load'),
-    onOpenAudio: () => setCaiDat(true),
     onBack: coTheLui ? lui : undefined,
   };
 
@@ -657,6 +655,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
               key={JSON.stringify([lanDoiVan, s.batDauLuc, s.conTro, s.hoiDap?.viTri, kn.kind, gioiThieuMo, laTheChu])}
               kb={kb}
               s={s}
+              diaDiem={kn.kind === 'explore' && kn.nut.kieu === 'ban-do' ? 'Đại học Chấn Hưng' : undefined}
               // Có cả ở cảnh khám phá (user 05/10): chi tiết ẩn không còn phát sáng, người chơi bí thì hỏi bạn đi cùng ngay tại đó.
               visible={['line', 'feedback', 'question', 'branch', 'doi-chat', 'explore'].includes(kn.kind) && !gioiThieuMo && !laTheChu}
             />
