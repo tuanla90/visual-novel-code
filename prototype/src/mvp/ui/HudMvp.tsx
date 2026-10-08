@@ -41,6 +41,8 @@ export interface HudMvpProps {
   onMoBangHoatDong?: () => void;
   onLui?: () => void;
   loiThoai?: { speaker: string; text: string };
+  /** Gói B19: vụ đang chơi có điểm lưu đầu vụ → mục "Chơi lại Vụ n" (hỏi lại trước khi về điểm lưu). Thiếu = không có mục. */
+  choiLaiVu?: { soVu: number; lam: () => void } | null;
 }
 
 /** Thanh uy tín: `con` vạch đầy trên `tong`. */
@@ -89,9 +91,10 @@ function mocHud(kb: KichBanMvp, s: TrangThaiMvp): { kicker: string; so: string; 
   return { kicker, so, ten, nhanDai: `${ngayDai} · ${ten}` };
 }
 
-export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onMoCachChoi, onBatDauLai, onVeTieuDe, onMoLich, onTamDungViecPhu, onMoBangHoatDong }: HudMvpProps) {
+export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu, onMoNap, onMoLichSu, onMoCaiDat, onMoCachChoi, onBatDauLai, onVeTieuDe, onMoLich, onTamDungViecPhu, onMoBangHoatDong, choiLaiVu }: HudMvpProps) {
   const [menuMo, setMenuMo] = useState(false);
   const [xacNhan, setXacNhan] = useState(false);
+  const [xacNhanVu, setXacNhanVu] = useState(false);
   const [chiTiet, setChiTiet] = useState({ nhiemVu: s.nhiemVu, mo: false });
   if (chiTiet.nhiemVu !== s.nhiemVu) setChiTiet({ nhiemVu: s.nhiemVu, mo: false });
   const moRongNhiemVu = chiTiet.nhiemVu === s.nhiemVu && chiTiet.mo;
@@ -310,6 +313,12 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
                     <span>Về màn tiêu đề</span>
                   </button>
                 ) : null}
+                {choiLaiVu ? (
+                  <button type="button" role="menuitem" className="topbar__menu-item" onClick={chon(() => setXacNhanVu(true))}>
+                    <IconRotateCcw width={16} height={16} aria-hidden="true" />
+                    <span>Chơi lại Vụ {choiLaiVu.soVu}</span>
+                  </button>
+                ) : null}
                 <button type="button" role="menuitem" className="topbar__menu-item topbar__menu-item--danger" onClick={chon(() => setXacNhan(true))}>
                   <IconRotateCcw width={16} height={16} aria-hidden="true" />
                   <span>Bắt đầu lại bản MVP</span>
@@ -330,6 +339,19 @@ export function HudMvp({ kb, s, soHoSo, soTrangSo, onMoHoSo, onMoSoTay, onMoLuu,
         }}
         onCancel={() => setXacNhan(false)}
       />
+      {choiLaiVu ? (
+        <ConfirmDialog
+          open={xacNhanVu}
+          title={`Chơi lại Vụ ${choiLaiVu.soVu}?`}
+          message={`Ván quay về đầu Vụ ${choiLaiVu.soVu}: hồ sơ, dòng thời gian và mọi việc từ đó làm lại. Kết quả chấm cũ giữ nguyên tới khi chấm lại.`}
+          confirmLabel={`Chơi lại Vụ ${choiLaiVu.soVu}`}
+          onConfirm={() => {
+            setXacNhanVu(false);
+            choiLaiVu.lam();
+          }}
+          onCancel={() => setXacNhanVu(false)}
+        />
+      ) : null}
     </header>
   );
 }

@@ -127,6 +127,11 @@ export interface ManTraV7Props {
   mucNhapVai?: MucNhapVaiMvp;
   /** Người chơi bấm ghim / đi tiếp sau khi tra đúng; `dung` = mã các thẻ đã kéo vào câu. */
   onXong: (dung: string[], result?: { sql: string; cot: { ten: string; kieu: 'TEXT' | 'INTEGER' }[]; soDong: number }) => void;
+  /**
+   * Gói B19: màn sửa `· tính vạch` ở buổi chấm. Có thì nút chạy thành "Chạy thử" (bao nhiêu lần cũng được, không tính) và thêm nút
+   * "Trình": câu đúng thì đi tiếp (`onXong`); sai thì lời `loiSai()` ("Khi trình sai") hiện ở bóng thoại và `onSai()` (một vạch).
+   */
+  trinh?: { loiSai: () => LoiMvp[]; onSai: () => void };
 }
 
 /** Câu soi của hoạt cảnh trả một dòng cho mỗi dòng của bảng: cho phép bảng lớn hơn hạn 2000 dòng của kết quả thường. */
@@ -137,7 +142,7 @@ export const TOI_DA_DONG_HIEN = 40;
 /** Số giấy nhớ tối đa dán quanh laptop; tờ cũ hơn vào ngăn "Còn trên bảng". */
 export const TOI_DA_GIAY = 10;
 
-export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonPhieu, khoaNhap, banDuPhong, mucSql, mucNhapVai, onXong, onDaXemTruyVan }: ManTraV7Props) {
+export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonPhieu, khoaNhap, banDuPhong, mucSql, mucNhapVai, onXong, onDaXemTruyVan, trinh }: ManTraV7Props) {
   const [nhap] = useState(() => layNhapManTra(khoaNhap));
   // Gói B17: màn cốt truyện (buổi họp) không đổi theo mức; "Tự viết" thay ba cột ghép bằng ô gõ; "chữ SQL" chỉ đổi nhãn.
   const muc: MucSqlMvp = mode === 'fix-query' ? 'ghep' : (mucSql ?? 'ghep');
@@ -581,6 +586,32 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
         soDong: cham.chay.dong.length,
       });
     } else onXong(dungCacThe);
+  };
+  /** Gói B19: "Trình" ở màn sửa `· tính vạch` — chấm câu đang có (không diễn cảnh lọc); đúng thì đi tiếp, sai thì một vạch. */
+  const trinhCau = async (): Promise<void> => {
+    if (!trinh || !duLieu || banRon.current || xongRoi) return;
+    if (dung) {
+      xong();
+      return;
+    }
+    banRon.current = true;
+    setDangChay(true);
+    try {
+      const kq = await chamThuThach(duLieu, sql, tienTo + sqlChuan, luatHep);
+      if (!song.current) return;
+      if (kq.trangThai === 'dung') {
+        soundEngine.playSfx('chime');
+        xong();
+        return;
+      }
+      soundEngine.playSfx('sai');
+      setBong(null);
+      setLoiNoi(trinh.loiSai());
+      trinh.onSai();
+    } finally {
+      banRon.current = false;
+      if (song.current) setDangChay(false);
+    }
   };
 
   // Giấy nhớ quanh viền: nửa trái, nửa phải. Tối đa TOI_DA_GIAY tờ (user chốt 02/10/2026: 8–10 tờ, không thì dàn khắp màn hình):
@@ -1060,7 +1091,18 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
             <IconSearch className="v7-bt" /> Xem từng điều kiện
           </button>
         ) : null}
-        {dung ? (
+        {trinh ? (
+          <>
+            {!dung ? (
+              <button type="button" className="v7-nut v7-nut--chay" disabled={dangChay} onClick={() => void chay()} title="Chạy thử bao nhiêu lần cũng được, không tính">
+                <IconPlay className="v7-bt" /> {dangChay ? 'Đang chạy' : 'Chạy thử'}
+              </button>
+            ) : null}
+            <button type="button" className="v7-nut v7-nut--ghim v7-nut--trinh" disabled={dangChay || xongRoi} onClick={() => void trinhCau()} autoFocus={dung} title="Trình câu đang có trước cuộc họp">
+              Trình
+            </button>
+          </>
+        ) : dung ? (
           <button type="button" className="v7-nut v7-nut--ghim" disabled={xongRoi || conChep > 0} title={conChep > 0 ? `Bấm ${conChep} ô ${the.bamO ?? ''} còn lại để chép ra giấy nhớ` : undefined} onClick={xong} autoFocus>
             {the.vatChung && !laChieu ? (
               <>

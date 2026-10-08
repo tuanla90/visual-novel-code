@@ -19,7 +19,7 @@
  */
 import type { KichBanMvp, TheHoSoMvp } from '../../content/mvp/types';
 import { giayNhoHoiDap } from './hoi-dap';
-import type { MauGhimMvp, TrangThaiMvp, GhiChuTruyVanMvp, PhieuTruyVanMvp } from './trang-thai';
+import type { MauGhimMvp, TrangThaiMvp, GhiChuTruyVanMvp, GhepMauLuuMvp, PhieuTruyVanMvp } from './trang-thai';
 
 export type LoaiTheBang = 'tin' | 'phieu' | 'note' | 'vat' | 'tai-lieu' | 'hoi';
 
@@ -52,7 +52,8 @@ export interface TheBang {
 export interface DayBang {
   tu: string;
   den: string;
-  kieu: 'truy-van' | 'loai-tru' | 'nguon';
+  /** `ghep` (gói B19): chỉ đỏ của `[GHÉP MẪU]`. */
+  kieu: 'truy-van' | 'loai-tru' | 'nguon' | 'ghep';
   /** Nhãn trên sợi chỉ (số dòng của phiếu). */
   nhan: string | null;
   /** Màu sợi = màu ghim của thẻ nguồn `tu`. */
@@ -65,6 +66,8 @@ export interface BangDieuTra {
   day: DayBang[];
   /** Thẻ trong hồ sơ nhưng người chơi đã gỡ khỏi bảng (ghim lại được). */
   boGhim: TheBang[];
+  /** Gói B19: giấy nhớ của các lần ghép mẫu (hai thẻ đều đang trên bảng); `moi` = lần ghép đang diễn. */
+  giayGhep?: { id: string; tu: string; den: string; chu: string; nguoi: string; moi: boolean }[];
 }
 
 export const MA_THE_HOI = 'hoi-dang-mo';
@@ -112,14 +115,18 @@ export function dungBang(
   kb: KichBanMvp,
   s: TrangThaiMvp,
   them?: { id: string; dung: string[]; phieu?: PhieuTruyVanMvp; ghiChu?: GhiChuTruyVanMvp[] },
-  /** `hoiDap`: thêm giấy nhớ hỏi ra từ nhân chứng (khung Hồ sơ; màn tra và đối chất không dùng). */
-  tuyChon: { hoiDap?: boolean } = {},
+  /**
+   * `hoiDap`: thêm giấy nhớ hỏi ra từ nhân chứng (khung Hồ sơ; màn tra và đối chất không dùng). `ghep` (gói B19): lần ghép mẫu đang
+   * diễn (màn `[GHÉP MẪU]`) — hai thẻ luôn lên bảng, có chỉ đỏ và giấy nhớ.
+   */
+  tuyChon: { hoiDap?: boolean; ghep?: GhepMauLuuMvp } = {},
 ): BangDieuTra {
   const the: TheBang[] = [];
   const boGhim: TheBang[] = [];
   const day: DayBang[] = [];
+  const giayGhep: NonNullable<BangDieuTra['giayGhep']> = [];
   const coRoi = new Set<string>();
-  const daGo = new Set(s.bang?.boGhim ?? []);
+  const daGo = new Set((s.bang?.boGhim ?? []).filter((id) => !tuyChon.ghep?.the.includes(id)));
   const mauCua = (id: string): MauGhimMvp => s.bang?.mau?.[id] ?? 'do';
   const phieuCua = (id: string) => (them?.id === id ? them.phieu : undefined) ?? s.bang?.phieuTruyVan?.[id];
   const thuThachCua = (id: string) => Object.values(kb.thuThach).find((t) => t.vatChung?.id === id);
@@ -255,10 +262,19 @@ export function dungBang(
     if (phieu) phieu.gach = [...phieu.gach, ...tach(t.the?.fields['Gạch'])];
   }
 
+  // Gói B19: chỉ đỏ + giấy nhớ của các lần ghép mẫu (đã lưu, và lần đang diễn).
+  const cacGhep = [...(s.bang?.ghepMau ?? []).filter((g) => g.id !== tuyChon.ghep?.id), ...(tuyChon.ghep ? [tuyChon.ghep] : [])];
+  for (const g of cacGhep) {
+    const [tu, den] = g.the;
+    if (!tu || !den || !coRoi.has(tu) || !coRoi.has(den)) continue;
+    day.push({ tu, den, kieu: 'ghep', nhan: null, mau: 'do' });
+    giayGhep.push({ id: g.id, tu, den, chu: g.chu, nguoi: g.nguoi, moi: g === tuyChon.ghep });
+  }
+
   if (s.nhiemVu && s.giaiDoan !== 'het') {
     the.push({ id: MA_THE_HOI, loai: 'hoi', nhan: s.nhiemVu, tieuDe: s.nhiemVu, phu: null, giaTri: [], gach: [], anh: null, khongDuLieu: true, the: null, mau: 'do' });
   }
-  return { the, day, boGhim };
+  return { the, day, boGhim, giayGhep };
 }
 
 // ---------- Chỗ ghim ----------

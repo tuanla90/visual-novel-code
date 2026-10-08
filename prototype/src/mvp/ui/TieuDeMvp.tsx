@@ -135,7 +135,7 @@ export function TieuDeMvp({ onVao }: TieuDeMvpProps) {
             style={{ background: 'rgba(20, 12, 4, 0.75)', border: '1px solid #f5c46b', color: '#fff8e8', borderRadius: '4px', padding: '3px 10px', fontSize: '0.8rem', cursor: 'pointer' }}
             title="Bấm để chuyển giữa bản MVP và Mùa 1"
           >
-            Bộ nội dung: {layMaBoNoiDung() === 'mua-1' ? 'Mùa 1' : 'MVP'} (bấm để đổi)
+            Bộ nội dung: {layMaBoNoiDung() === 'mua-1' ? 'Mùa 1' : layMaBoNoiDung() === 'thu-b19' ? 'Bộ thử B19' : 'MVP'} (bấm để đổi)
           </button>
         </footer>
       ) : null}
