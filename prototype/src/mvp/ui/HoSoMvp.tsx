@@ -25,6 +25,8 @@ import { anhChanDung } from './anh-mvp';
 import { NhanVatMvp } from './NhanVatMvp';
 import { useTheChuaXem } from './the-moi';
 import { TheHoSo } from './TheHoSo';
+import { DongThoiGianMvp } from './DongThoiGianMvp';
+import { useDienThoai } from './dien-thoai';
 
 export type TabHoSoMvp = 'nhan-vat' | 'ho-so' | 'so-tay';
 type Nhom = 'tat-ca' | TheHoSoMvp['loai'];
@@ -163,7 +165,9 @@ export function HoSoMvp({ kb, trangThai, onDoiCho, onDoiMau, onGhim, hoSo, soTay
           </div>
         ) : tab === 'ho-so' && trangThai ? (
           <div className="mvp-kho__bang">
-            <BangGhimMvp kb={kb} s={trangThai} dienTen={dienTen} onDoiCho={onDoiCho} onDoiMau={onDoiMau} onGhim={onGhim} chuaXem={chuaXem} onXemThe={xemThe} hoiDap />
+            <BangGhimMvp kb={kb} s={trangThai} dienTen={dienTen} onDoiCho={onDoiCho} onDoiMau={onDoiMau} onGhim={onGhim} chuaXem={chuaXem} onXemThe={xemThe} hoiDap tenNguoi={(ma) => tenNguoiNoi(kb, ma, trangThai)}>
+              <XemDongThoiGian kb={kb} s={trangThai} dienTen={dienTen} />
+            </BangGhimMvp>
           </div>
         ) : tab === 'ho-so' ? (
           <NganHoSo
@@ -182,6 +186,41 @@ export function HoSoMvp({ kb, trangThai, onDoiCho, onDoiMau, onGhim, hoSo, soTay
         )}
       </div>
     </aside>
+  );
+}
+
+/**
+ * Gói B19: dòng thời gian đã dựng xem lại được từ bảng điều tra — nút "Dòng thời gian" ở góc bảng mở bản đã dựng (chỉ xem); có
+ * nhiều dòng thì chọn dòng ở trên cùng. Chưa dựng dòng nào thì không có nút.
+ */
+function XemDongThoiGian({ kb, s, dienTen }: { kb: KichBanMvp; s: TrangThaiMvp; dienTen: (t: string) => string }) {
+  const dienThoai = useDienThoai();
+  const daDung = Object.entries(s.dongThoiGian ?? {})
+    .filter(([id, d]) => d.xong && kb.dongThoiGian?.[id])
+    .map(([id]) => id);
+  const [mo, setMo] = useState<string | null>(null);
+  if (daDung.length === 0) return null;
+  const dtg = mo ? kb.dongThoiGian?.[mo] : undefined;
+  return (
+    <>
+      <button type="button" className="bang__mo-may" onClick={() => setMo(daDung[daDung.length - 1] ?? null)}>
+        Dòng thời gian
+      </button>
+      {dtg && mo ? (
+        <div className="dtg-xem" role="dialog" aria-modal="true" aria-label="Xem lại dòng thời gian">
+          <DongThoiGianMvp kb={kb} dtg={dtg} the={[]} daDat={s.dongThoiGian?.[mo]?.o ?? {}} xong chiXem dienThoai={dienThoai} dienTen={dienTen} tenNguoiNoi={(ma) => tenNguoiNoi(kb, ma, s)} onTiep={() => setMo(null)} nhanTiep="Đóng" />
+          {daDung.length > 1 ? (
+            <div className="dtg-xem__chon">
+              {daDung.map((id) => (
+                <button key={id} type="button" className={`btn${id === mo ? ' btn--primary' : ''}`} onClick={() => setMo(id)}>
+                  {dienTen(kb.dongThoiGian?.[id]?.ten ?? id)}
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+    </>
   );
 }
 

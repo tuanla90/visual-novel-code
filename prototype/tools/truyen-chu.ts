@@ -490,6 +490,11 @@ export class BoXuatTruyenChu {
     return chuoiThuTu.sort().join(' · ');
   }
 
+  /** Gói B19: lời `[SAI LẦN ĐẦU CẢ BUỔI]` của một lệnh tính vạch. */
+  private inSaiLanDau(tv: { saiLanDau?: LoiMvp[] }, dongOut: string[]): void {
+    if (tv.saiLanDau?.length) dongOut.push(`  - ↳ Nếu đây là lần sai đầu tiên của cả buổi → ${tv.saiLanDau.map((l) => this.dinhDangLoi(l)).join(' / ')}`);
+  }
+
   private inThuThach(t: TheThuThachMvp, dongOut: string[]): void {
     dongOut.push(`#### 💻 Màn tra dữ liệu: ${this.dienTen(t.tieuDe)} (thẻ \`${t.id}\`)`);
     dongOut.push(`*Đề bài:* ${this.dienTen(t.deBai)}`);
@@ -650,6 +655,7 @@ export class BoXuatTruyenChu {
       if (laVu1) {
         if (lich.ket?.that) hangDoi.push({ id: lich.ket.that, dayIndex: -1 });
         if (lich.ket?.thuong) hangDoi.push({ id: lich.ket.thuong, dayIndex: -1 });
+        if (lich.ket?.tam) hangDoi.push({ id: lich.ket.tam, dayIndex: -1 });
       }
 
     // Việc ngày lễ (S4)
@@ -875,19 +881,74 @@ export class BoXuatTruyenChu {
           case 'challenge':
           case 'fix-query': {
             const t = this.duLieu.thuThach[n.challengeId];
+            // Gói B19: màn sửa `· tính vạch` — hai nút, lời khi trình sai.
+            if (n.type === 'fix-query' && n.tinhVach) {
+              dong.push(`> 🖋️ **Câu tính vạch${n.tinhVach.cau ? ` ${n.tinhVach.cau.so}/${n.tinhVach.cau.tong}` : ''}**: Chạy thử bao nhiêu lần cũng được, không tính. Bấm Trình mà câu chưa đúng thì Minh Anh gạch một vạch ở lề sổ.`);
+              if (t?.khiTrinhSai?.length) dong.push(`  - ❌ Nếu trình sai → ${t.khiTrinhSai.map((l) => this.dinhDangLoi(l)).join(' / ')}`);
+              this.inSaiLanDau(n.tinhVach, dong);
+            }
             if (t) this.inThuThach(t, dong);
             break;
           }
           case 'question': {
             dong.push(`❓ **${this.ten(n.asker.speaker)} hỏi**: "${this.dienTen(n.asker.text)}"`);
+            // Gói B19: trắc nghiệm `· tính vạch` — sai thì một vạch, chọn lại tới khi đúng.
+            if (n.tinhVach) dong.push(`> 🖋️ **Câu tính vạch${n.tinhVach.cau ? ` ${n.tinhVach.cau.so}/${n.tinhVach.cau.tong}` : ''}**: mỗi lần chọn sai Minh Anh gạch một vạch ở lề sổ, chọn lại tới khi đúng.`);
             dong.push('*Các lựa chọn trả lời:*');
             for (const ch of n.choices) {
               const fb = ch.feedback.map((l: LoiMvp) => this.dinhDangLoi(l)).join(' / ');
               dong.push(`  - "${this.dienTen(ch.text)}" ${ch.correct ? '✅' : '❌'} → ${fb}`);
             }
+            if (n.tinhVach) this.inSaiLanDau(n.tinhVach, dong);
             dong.push('');
             break;
           }
+          case 'dong-thoi-gian':
+          case 'hien-dong-thoi-gian': {
+            // Gói B19: in bản đã dựng (mỗi ô kèm thẻ nhận đầu tiên); bản dựng in thêm lời nhắc khi kéo sai.
+            const d = this.duLieu.dongThoiGian?.[n.id];
+            if (!d) break;
+            const dung = n.type === 'dong-thoi-gian';
+            dong.push(dung ? `🧩 **Dựng lại dòng thời gian${d.kieu === 'tap-duot' ? ' (tập dượt)' : ''}: ${this.dienTen(d.ten)}** — kéo ${d.kieu === 'tap-duot' ? 'lời kể' : 'bằng chứng trong hồ sơ'} vào ô; xong mới đi tiếp. Bản đã dựng:` : `📋 **Bạn đọc lại dòng thời gian: ${this.dienTen(d.ten)}**`);
+            dong.push('');
+            dong.push('| Giờ | Nơi | Việc | Bằng chứng |');
+            dong.push('| --- | --- | --- | --- |');
+            for (const o of d.o) {
+              const the = o.nhan[0];
+              const tenThe = the ? (d.theTam.find((t) => t.id === the)?.chu ?? this.tenTheHoSo(the)) : '';
+              const bang = o.khoaSan ? (tenThe ? `${tenThe} (có sẵn)` : '(có sẵn)') : tenThe;
+              dong.push(`| ${o.gio ?? ''} | ${o.noi ? this.dienTen(o.noi) : ''} | ${this.dienTen(o.viec).replace('[?]', '**?**')} | ${this.dienTen(bang)} |`);
+            }
+            dong.push('');
+            if (dung) {
+              if (d.keoSai?.length) dong.push(`- Kéo sai: ${d.keoSai.map((l) => this.dinhDangLoi(l)).join(' / ')}`);
+              for (const o of d.o) {
+                if (o.keoSai?.length) dong.push(`- Kéo sai vào ô "${this.dienTen(o.viec)}": ${o.keoSai.map((l) => this.dinhDangLoi(l)).join(' / ')}`);
+                if (o.khongDien) dong.push(`- Ô "${this.dienTen(o.viec).replace('[?]', '?')}": phần "${o.khongDien}" không điền được, để "?"${o.keoVaoTrong?.length ? `; thả vào đó → ${o.keoVaoTrong.map((l) => this.dinhDangLoi(l)).join(' / ')}` : ''}`);
+              }
+              dong.push('');
+            }
+            break;
+          }
+          case 'cham-vu': {
+            // Gói B19: chấm A/B/C, in ba nhánh.
+            const can = n.can.map((id) => (this.duLieu.dongThoiGian?.[id] ? `dòng thời gian "${this.dienTen(this.duLieu.dongThoiGian[id]?.ten ?? id)}"` : `"${this.tenTheHoSo(id)}"`));
+            dong.push(`🏅 **Chấm Vụ ${this.laySoVu(n.vu)}**${can.length ? ` — cần: ${can.join(', ')}` : ''}`);
+            dong.push('  - **A**: đủ căn cứ, 0 vạch → kết thật (có cảnh rank A).');
+            dong.push('  - **B**: đủ căn cứ, 1–2 vạch → kết thật.');
+            dong.push('  - **C**: thiếu căn cứ hoặc từ 3 vạch → kết tạm.');
+            dong.push('');
+            break;
+          }
+          case 'so-tong-ket':
+            dong.push(`> 📕 **Sổ CLB, trang tổng kết Vụ ${this.laySoVu(n.vu)}**: con dấu đỏ A, B hoặc C theo rank; ở lề là các vạch Minh Anh gạch trong buổi họp (hoặc không vạch nào).`);
+            break;
+          case 'diem-luu-vu':
+            dong.push(`> 💾 *Điểm lưu đầu Vụ ${this.laySoVu(n.vu)}: "Chơi lại Vụ ${this.laySoVu(n.vu)}" quay về đây (rank cũ giữ tới khi chấm lại).*`);
+            break;
+          case 'ghep-mau':
+            dong.push(`> 📌 **${this.ten(n.nguoi)} ghép trên bảng điều tra**: "${this.tenTheHoSo(n.the[0] ?? '')}" ⟷ "${this.tenTheHoSo(n.the[1] ?? '')}" (chỉ đỏ); giấy nhớ: "${this.dienTen(n.giayNho)}"`);
+            break;
           case 'branch': {
             const laDiCung = n.id.startsWith('go-with-');
             // `[HẾT NGÀY]` (gói B15): việc chính của ngày đã xong, người chơi ở lại tùy ý rồi tự bấm nút hết ngày.
@@ -983,6 +1044,19 @@ export class BoXuatTruyenChu {
             break;
           }
           case 'doi-chat': {
+            if (n.tinhVach) {
+              // Gói B19: đối chất `· tính vạch` — thẻ đúng đi tiếp; thẻ sai / thẻ khác một vạch, chọn lại.
+              dong.push(`⚖️ **${this.ten(n.asker.speaker)}**: "${this.dienTen(n.asker.text)}"`);
+              dong.push(`> 🖋️ **Câu tính vạch${n.tinhVach.cau ? ` ${n.tinhVach.cau.so}/${n.tinhVach.cau.tong}` : ''}**: trình một thẻ trong hồ sơ; sai thì Minh Anh gạch một vạch, chọn lại tới khi đúng.`);
+              for (const b of n.bangChung) {
+                const fb = b.feedback.length ? ` → ${b.feedback.map((l) => this.dinhDangLoi(l)).join(' / ')}` : '';
+                dong.push(`  - ${b.muc === 'dung' ? '✅' : '❌'} Trình "${this.tenTheHoSo(b.id)}"${fb}`);
+              }
+              if (n.khac.length) dong.push(`  - ❌ Trình thẻ khác → ${n.khac.map((l) => this.dinhDangLoi(l)).join(' / ')}`);
+              this.inSaiLanDau(n.tinhVach, dong);
+              dong.push('');
+              break;
+            }
             dong.push(`⚖️ **ĐỐI CHẤT**: ${this.ten(n.asker.speaker)} nêu giả thuyết: "${this.dienTen(n.asker.text)}"`);
             if (n.cauHoi) dong.push(`*Câu hỏi:* ${this.dienTen(n.cauHoi)}`);
             dong.push('');
@@ -1107,6 +1181,14 @@ export class BoXuatTruyenChu {
           case 'ending-branch': {
             // [RẼ KẾT]: máy chọn kết thật khi thỏa điều kiện của chuỗi kết thật, còn lại là kết thường (T4).
             const ket = lich.ket;
+            // Gói B19: bộ có [CHẤM VỤ] rẽ theo rank.
+            if (ket && this.duLieu.chuoi.some((x) => x.nodes.some((y) => y.type === 'cham-vu'))) {
+              const soThat = chuoiToSo.get(ket.that);
+              const soTam = chuoiToSo.get(ket.tam ?? ket.thuong);
+              if (soThat) luaChon.push({ nhan: 'Rẽ kết: kết thật', toiSo: soThat, dieuKien: 'rank A hoặc B' });
+              if (soTam) luaChon.push({ nhan: 'Rẽ kết: kết tạm', toiSo: soTam, dieuKien: 'rank C' });
+              break;
+            }
             const chuoiThat = ket ? this.duLieu.chuoi.find((x) => x.id === ket.that) : undefined;
             const dkThat = chuoiThat?.nodes.find((x) => x.type === 'condition');
             const dkText = dkThat?.type === 'condition' ? this.dkChu(dkThat.dieuKien) : undefined;
@@ -1537,9 +1619,13 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const arg = process.argv[2];
   const idxNd = process.argv.indexOf('--noi-dung');
   const thuMucNd = idxNd >= 0 ? process.argv[idxNd + 1] : THU_MUC_NOI_DUNG_MUA_1;
+  // Gói B19: `--xuat <thư mục>` xuất ra chỗ khác (vd bộ thử: `--noi-dung noi-dung-thu-b19 --xuat <thư mục tạm>`).
+  const idxXuat = process.argv.indexOf('--xuat');
+  const thuMucXuat = idxXuat >= 0 ? (process.argv[idxXuat + 1] ?? THU_MUC_XUAT_TRUYEN) : THU_MUC_XUAT_TRUYEN;
+  const ma = arg && !arg.startsWith('--') ? arg : undefined;
 
-  console.log('Đang xuất truyện chữ sang docs/mua-1/truyen-chu/ ...');
-  const ketQua = await chayXuatTruyen(arg, thuMucNd);
+  console.log(`Đang xuất truyện chữ sang ${thuMucXuat} ...`);
+  const ketQua = await chayXuatTruyen(ma, thuMucNd, thuMucXuat);
   console.log(`Đã xuất ${ketQua.length} tệp truyện chữ:`);
   for (const k of ketQua) console.log(`  - ${k}`);
 }

@@ -3,11 +3,14 @@
  * bỏ câu hỏi so ba cách nhập của QĐ-092. Tiêu đề không ghi "kết thật / kết thường" — đó là chữ của người làm game.
  */
 import { useEffect, useState } from 'react';
+import type { KetQuaChamVuMvp } from '../../content/mvp/types';
 import { LOI_CHOT, tinhHang, type TongKetVu } from '../engine/tong-ket';
 import { anhTheoTen } from './anh-mvp';
+import { SoTongKetMvp } from './SoTongKetMvp';
 
 export interface KetMvpProps {
-  ketQua: 'that' | 'thuong';
+  /** `tam` (gói B19): kết tạm của bộ có `[CHẤM VỤ]`. */
+  ketQua: 'that' | 'thuong' | 'tam';
   /** Vụ sau vừa kết (từ Vụ 2): chữ màn kết lấy từ lich.md; bỏ trống = màn kết Vụ 1. `so` = số thứ tự vụ (2, 3…);
    * `id` = mã vụ, có ảnh `cg-ket-<mã vụ>` thì hiện làm CG kết. */
   vu?: { id?: string; so: number; ten: string; tieuDeKet: string; loiKet: string } | null;
@@ -26,6 +29,12 @@ export interface KetMvpProps {
   onChoiLai: () => void;
   /** Bỏ trống = không có màn tiêu đề (bản chơi thử chỉ MVP). */
   onVeTieuDe?: () => void;
+  /**
+   * Gói B19: vụ vừa kết có `[CHẤM VỤ]` → màn kết kiểu sổ CLB: "Kết thật" / "Kết tạm", trang tổng kết có dấu A/B/C, nút "Chơi lại
+   * Vụ n" (khi có điểm lưu đầu vụ), dòng "Vụ n+1 đang làm" khi chưa có vụ sau. Không hiện % / hạng S kiểu MVP. Thiếu = màn kết cũ.
+   */
+  chamVu?: { soVu: number; tenVu: string; ket: KetQuaChamVuMvp | null; choiLai: boolean } | null;
+  onChoiLaiVu?: () => void;
 }
 
 export function KetMvp({
@@ -41,6 +50,8 @@ export function KetMvp({
   tongKet,
   onChoiLai,
   onVeTieuDe,
+  chamVu,
+  onChoiLaiVu,
 }: KetMvpProps) {
   const [xemAnhLon, setXemAnhLon] = useState(false);
 
@@ -64,6 +75,44 @@ export function KetMvp({
           <button type="button" className="btn btn--primary" onClick={onXongPhu} autoFocus>
             Quay lại
           </button>
+        </div>
+      </section>
+    );
+  }
+
+  if (chamVu) {
+    const coVuKe = !!vuKe && !!onSangVuSau;
+    return (
+      <section className="endscreen mvp-ket mvp-ket--so" aria-labelledby="mvp-ket-tieude">
+        <p className="mvp-chal__kicker">
+          Hết Vụ {chamVu.soVu} — {chamVu.tenVu}
+        </p>
+        <h2 id="mvp-ket-tieude" className="endscreen__title">
+          {ketQua === 'tam' ? 'Kết tạm' : 'Kết thật'}
+        </h2>
+        <SoTongKetMvp soVu={chamVu.soVu} tenVu={chamVu.tenVu} ket={chamVu.ket} />
+        {coVuKe ? null : <p className="endscreen__lead mvp-ket__dang-lam">Vụ {chamVu.soVu + 1} đang làm.</p>}
+        <div className="endscreen__actions">
+          {coVuKe ? (
+            <button type="button" className="btn btn--primary" onClick={onSangVuSau} autoFocus>
+              Tiếp tục vụ chính · Vụ {vuKe.so}: {vuKe.ten}
+            </button>
+          ) : null}
+          {(phu ?? []).map((p) => (
+            <button key={p.id} type="button" className="btn" onClick={() => onLamPhu?.(p.id)}>
+              {p.nguoiGiao} nhờ · {p.ten}
+            </button>
+          ))}
+          {chamVu.choiLai && onChoiLaiVu ? (
+            <button type="button" className={coVuKe ? 'btn' : 'btn btn--primary'} onClick={onChoiLaiVu} autoFocus={!coVuKe}>
+              Chơi lại Vụ {chamVu.soVu}
+            </button>
+          ) : null}
+          {onVeTieuDe ? (
+            <button type="button" className="btn" onClick={onVeTieuDe}>
+              Về màn tiêu đề
+            </button>
+          ) : null}
         </div>
       </section>
     );

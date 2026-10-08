@@ -37,6 +37,11 @@ export interface DoiChatMvpProps {
   tenNguoiNoi: (ma: string) => string;
   onTrinh: (the: string) => void;
   onChuaDu: () => void;
+  /**
+   * Gói B19: đối chất `· tính vạch` ở buổi chấm — câu hỏi thay cho giả thuyết, không có mức đạt, "chưa đủ căn cứ", uy tín; thẻ trình
+   * sai mờ đi với dấu "Chưa đúng", chọn lại tới khi đúng.
+   */
+  tinhVach?: boolean;
 }
 
 const TEN_MUC: Record<Muc, string> = { khong: 'Chưa có', 'goi-y': 'Gợi ý', 'ho-tro': 'Hỗ trợ', du: 'Đủ căn cứ' };
@@ -48,10 +53,12 @@ const THU_TU: Record<TheBang['loai'], number> = { note: 9, phieu: 0, vat: 1, tin
 
 /** Mức thẻ đã trình (theo kịch bản); thẻ không khai = không liên quan. */
 function mucCuaThe(nut: NutDoiChat, id: string): Muc | 'khac' {
-  return nut.bangChung.find((b) => b.id === id)?.muc ?? 'khac';
+  const m = nut.bangChung.find((b) => b.id === id)?.muc;
+  // Gói B19: đối chất `· tính vạch` không có mức; thẻ [ĐÚNG] đã trình (hiếm: đúng thì đi tiếp ngay) tính như đủ căn cứ.
+  return m === 'dung' ? 'du' : m === 'sai' || m === undefined ? 'khac' : m;
 }
 
-export function DoiChatMvp({ kb, s, nut, daTrinh, muc, conLuot, dienTen, tenNguoiNoi, onTrinh, onChuaDu }: DoiChatMvpProps) {
+export function DoiChatMvp({ kb, s, nut, daTrinh, muc, conLuot, dienTen, tenNguoiNoi, onTrinh, onChuaDu, tinhVach = false }: DoiChatMvpProps) {
   // Thẻ đang trên bảng điều tra, bỏ thẻ "câu hỏi đang mở" và giấy tờ nền (tài liệu) — trừ thẻ chính màn này khai.
   // Thêm thẻ của các vụ trước (đã gỡ khỏi bảng) chỉ khi chính màn này khai: người chơi phải trình được bằng chứng cũ, nhưng
   // khay không độn thẻ của vụ khác. Màn nào cũng khai cả thẻ GỢI Ý (thẻ bẫy) nên khay không lộ riêng đáp án.
@@ -132,7 +139,7 @@ export function DoiChatMvp({ kb, s, nut, daTrinh, muc, conLuot, dienTen, tenNguo
                 aria-selected={chon === t.id}
                 data-the={t.id}
                 className={`dc-the dc-the--${t.loai}${chon === t.id ? ' is-chon' : ''}${daDung ? ' is-da-trinh' : ''}`}
-                title={daDung ? `Đã trình — ${m === 'khac' ? 'không liên quan' : TEN_MUC[m ?? 'khong']}` : `${NHAN_LOAI[t.loai]}: ${tieuDeThe}`}
+                title={daDung ? (tinhVach ? 'Đã trình — chưa đúng' : `Đã trình — ${m === 'khac' ? 'không liên quan' : TEN_MUC[m ?? 'khong']}`) : `${NHAN_LOAI[t.loai]}: ${tieuDeThe}`}
                 onClick={() => {
                   setChon(t.id);
                 }}
@@ -170,8 +177,8 @@ export function DoiChatMvp({ kb, s, nut, daTrinh, muc, conLuot, dienTen, tenNguo
                 {t.tieuDe && maNhan !== t.tieuDe ? <span className="dc-the__ma">{maNhan}</span> : null}
                 {t.phu && t.loai !== 'tin' ? <span className="dc-the__phu">{dienTen(t.phu)}</span> : null}
                 {daDung ? (
-                  <span className={`dc-the__dau dc-the__dau--${m ?? 'khac'}`} aria-hidden="true">
-                    {m === 'khac' ? 'Không liên quan' : TEN_MUC[m ?? 'khong']}
+                  <span className={`dc-the__dau dc-the__dau--${tinhVach ? 'khac' : (m ?? 'khac')}`} aria-hidden="true">
+                    {tinhVach ? 'Chưa đúng' : m === 'khac' ? 'Không liên quan' : TEN_MUC[m ?? 'khong']}
                   </span>
                 ) : null}
               </button>
@@ -205,7 +212,7 @@ export function DoiChatMvp({ kb, s, nut, daTrinh, muc, conLuot, dienTen, tenNguo
         <div className="dialog dialog--glass" data-speaker={nut.asker.speaker}>
           <div className="dialog__speaker">
             <span>{tenNguoiNoi(nut.asker.speaker)}</span>
-            <span className="doi-chat__nhan-gt">Giả thuyết</span>
+            {tinhVach ? null : <span className="doi-chat__nhan-gt">Giả thuyết</span>}
           </div>
           <p className="dialog__text doi-chat__gt">
             {dienTen(nut.asker.text)
@@ -218,9 +225,11 @@ export function DoiChatMvp({ kb, s, nut, daTrinh, muc, conLuot, dienTen, tenNguo
             </p>
           ) : null}
           <div className="doi-chat__thanh">
-            <span className={`doi-chat__muc doi-chat__muc--${muc}`} aria-live="polite">
-              Mức đã đạt: <b>{TEN_MUC[muc]}</b>
-            </span>
+            {tinhVach ? null : (
+              <span className={`doi-chat__muc doi-chat__muc--${muc}`} aria-live="polite">
+                Mức đã đạt: <b>{TEN_MUC[muc]}</b>
+              </span>
+            )}
             {conLuot !== undefined ? (
               <span className={`doi-chat__luot${conLuot <= 1 ? ' is-sap-het' : ''}`} title={`Trình thẻ không liên quan ${SO_LAN_SAI_DOI_CHAT} lần là mất uy tín, phần trình bày dừng ở mức đang đạt.`} aria-label={`Uy tín: còn ${conLuot} trên ${SO_LAN_SAI_DOI_CHAT} lần được trình nhầm`}>
                 Uy tín
@@ -262,9 +271,11 @@ export function DoiChatMvp({ kb, s, nut, daTrinh, muc, conLuot, dienTen, tenNguo
               </button>
             )}
             <span className="doi-chat__nut">
-              <button type="button" className="btn btn--ghost doi-chat__chua-du" onClick={onChuaDu} title="Kết thúc phần trình bày ở mức đang đạt">
-                Chưa đủ căn cứ để nói
-              </button>
+              {tinhVach ? null : (
+                <button type="button" className="btn btn--ghost doi-chat__chua-du" onClick={onChuaDu} title="Kết thúc phần trình bày ở mức đang đạt">
+                  Chưa đủ căn cứ để nói
+                </button>
+              )}
               <button
                 type="button"
                 className="btn btn--primary doi-chat__trinh"

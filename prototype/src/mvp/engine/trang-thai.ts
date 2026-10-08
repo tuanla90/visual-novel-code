@@ -8,7 +8,7 @@
  * Tách hẳn với `src/story/engine/state.ts` của prototype: hai bản không dùng chung kiểu, store hay khóa lưu.
  */
 import type { TriNhoDongHanhMvp } from './tri-nho-dong-hanh';
-import type { LoiMvp, TruongBietMvp } from '../../content/mvp/types';
+import type { KetQuaChamVuMvp, LoiMvp, TruongBietMvp } from '../../content/mvp/types';
 
 /** Vì sao chuỗi đang chạy được mở — quyết định việc gì xảy ra khi chuỗi hết nút mà không `[ĐI TỚI]`. */
 export type BoiCanhChuoi =
@@ -122,6 +122,24 @@ export interface BangGhimLuuMvp {
   phieuTruyVan?: Record<string, PhieuTruyVanMvp>;
   /** Notes người chơi trích từ kết quả nhỏ; giữ ngoài hồ sơ/bằng chứng đối chất. */
   ghiChuTruyVan?: GhiChuTruyVanMvp[];
+  /** Gói B19 `[GHÉP MẪU]`: hai thẻ nối chỉ đỏ kèm tờ giấy nhớ, ở lại trên bảng. */
+  ghepMau?: GhepMauLuuMvp[];
+}
+
+/** Gói B19: một lần ghép mẫu trên bảng (`[GHÉP MẪU] <ai>: a + b · giấy nhớ: "…"`). */
+export interface GhepMauLuuMvp {
+  /** `<a>+<b>`. */
+  id: string;
+  the: string[];
+  chu: string;
+  /** Người ghép (mã nhân vật). */
+  nguoi: string;
+}
+
+/** Gói B19: tiến độ một dòng thời gian của ván (ô → thẻ đã thả đúng); `xong` khi người chơi dựng xong và đi tiếp. */
+export interface DongThoiGianLuuMvp {
+  o: Record<string, string>;
+  xong?: boolean;
 }
 
 export interface PhieuTruyVanMvp {
@@ -364,7 +382,18 @@ export interface TrangThaiMvp {
    * cờ `<mã>-du` / `<mã>-ho-tro` trong `co` để `[ĐIỀU KIỆN]` dùng. Rời nút → `null`. Ô lưu cũ: không có.
    */
   doiChat?: { id: string; daTrinh: string[]; muc: 'khong' | 'goi-y' | 'ho-tro' | 'du'; /** Số lần trình thẻ không liên quan. */ sai?: number } | null;
-  ketQua: 'that' | 'thuong' | null;
+  /** `tam` (gói B19): kết tạm của bộ có `[CHẤM VỤ]` (rank C). */
+  ketQua: 'that' | 'thuong' | 'tam' | null;
   /** Nội dung không nhất quán lúc chạy (chuỗi không tồn tại…); khung nhìn `error`. */
   loi: string | null;
+
+  // ---------- Gói B19 (docs/mua-1/brief/b19-vu-1-ban-6.md mục 4–5); thiếu = chưa có (ô lưu cũ, bộ MVP) ----------
+  /** Số vạch Minh Anh đã gạch ở lề sổ (trình sai ở lệnh `· tính vạch`), tính từ điểm lưu đầu vụ / lần chấm gần nhất. */
+  vach?: number;
+  /** Dòng thời gian đã dựng (mã → tiến độ). */
+  dongThoiGian?: Record<string, DongThoiGianLuuMvp>;
+  /** Bảng rank của ván (mã vụ → kết quả chấm). Điểm lưu không chụp trường này; chỉ `[CHẤM VỤ]` ghi đè. */
+  bangRank?: Record<string, KetQuaChamVuMvp>;
+  /** Điểm lưu đầu vụ (mã vụ → trạng thái chụp ở `[ĐIỂM LƯU VỤ]`, không kèm `bangRank` / `diemLuuVu`). */
+  diemLuuVu?: Record<string, TrangThaiMvp>;
 }

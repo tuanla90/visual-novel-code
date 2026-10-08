@@ -12,8 +12,8 @@
 import { execFileSync } from 'node:child_process';
 import { danhGiaDieuKien, docMoc, maTrongDieuKien, taThuTu, THU_TU_BUOI_TOI, thuTuMoc, type HauQua, type Moc } from './dieu-kien.ts';
 import { CHU_TRUONG_BIET, loiTrongChuoi, TEN_TRUONG_BIET, type MucMvp, type RawChuoiMvp, type RawDuKien, type RawMvp, type RawNhanVat } from './doc-mvp.ts';
-import type { LoiNoiDung, ViTri } from './doc.ts';
-import { docPhanUng } from './phan-ung-mvp.ts';
+import type { LoiNoiDung, RawLine, ViTri } from './doc.ts';
+import { docKhiTrinhSai, docPhanUng } from './phan-ung-mvp.ts';
 
 export interface KetQuaLuat {
   loi: LoiNoiDung[];
@@ -149,6 +149,10 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   for (const c of mvp.challenges) {
     const pu = docPhanUng(c.fields);
     for (const l of pu.loi) err(c.viTri, `thẻ ${c.id}: ${l}`);
+    // Gói B19: "Khi trình sai" (màn sửa `· tính vạch`) kiểm như một phản ứng.
+    const ts = docKhiTrinhSai(c.fields);
+    if (ts.saiQuyUoc) err(c.viTri, `thẻ ${c.id}: ${ts.saiQuyUoc}`);
+    if (ts.loi) pu.phanUng.push({ khi: { kind: 'loi' }, loi: ts.loi });
     for (const p of pu.phanUng)
       for (const l of p.loi) {
         if (l.speaker === 'player' || l.speaker === 'narrator') continue;
@@ -238,6 +242,12 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   // Cờ máy tự đặt khi một vụ tới [KẾT THÚC] (engine/may.ts `coKhiKet`): <mã vụ>-hoan-tat; vụ gốc thêm -ket-that / -ket-thuong.
   // Chỉ khai khi lịch có vụ sau (bộ một vụ không có ai đọc các cờ này).
   const coVu: string[] = lich.vuSau.length > 0 ? [`${lich.vu.id}-hoan-tat`, `${lich.vu.id}-ket-that`, `${lich.vu.id}-ket-thuong`, ...lich.vuSau.map((v) => `${v.id}-hoan-tat`)] : [];
+  // Gói B19: bộ có [CHẤM VỤ] — máy đặt cờ <vụ>-rank-a|b|c lúc chấm; vụ gốc đặt <vụ>-ket-that / -ket-tam lúc [RẼ KẾT] và -hoan-tat ở
+  // [KẾT THÚC], kể cả khi lịch không có vụ sau.
+  const nutChamVu = mvp.chuoi.flatMap((c) => c.items.flatMap((it, k) => (it.kind === 'cham-vu' ? [{ c, it, k }] : [])));
+  const coChamVu = nutChamVu.length > 0;
+  for (const { it } of nutChamVu) coVu.push(`${it.vu}-rank-a`, `${it.vu}-rank-b`, `${it.vu}-rank-c`);
+  if (coChamVu) coVu.push(`${lich.vu.id}-hoan-tat`, `${lich.vu.id}-ket-that`, `${lich.vu.id}-ket-tam`);
   for (const ma of coVu) if (!vatPham.has(ma)) vatPham.set(ma, lich.viTri);
   const canVatPham = (id: string, vt: ViTri, tienTo: string | null, noi: string): void => {
     if (!vatPham.has(id)) err(vt, `${noi}: không có mã "${id}" (chưa khai ở ho-so/ hay thẻ thử thách)`);
@@ -343,6 +353,9 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   const taoTrongChuoi = new Map<string, Set<string>>();
   /** Gói B18: các ô thẻ nhân vật có `[BIẾT]` mở ở đâu đó trong bộ (`<mã>|<trường>`). */
   const bietMo = new Set<string>();
+  /** Gói B19: chỗ (chuỗi, vị trí nút) mỗi thẻ được tạo ra trong chuỗi — để kiểm "mở trước chỗ dùng". */
+  const viTriTao = new Map<string, { chuoi: string; k: number }[]>();
+  const ghiTao = (id: string, chuoiId: string, k: number): void => void (viTriTao.get(id) ?? viTriTao.set(id, []).get(id))?.push({ chuoi: chuoiId, k });
   for (const c of mvp.chuoi) {
     const dt = new Set<string>();
     const dtChinh = new Set<string>();
@@ -357,6 +370,11 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     if (!canh.has(c.canh)) err(c.viTri, `chuỗi ${c.id}: không có cảnh "${c.canh}" trong canh.md`);
     c.items.forEach((it, k) => {
       const vt: ViTri = { tep: c.viTri.tep, dong: c.itemDong[k] ?? c.viTri.dong };
+      // Gói B19: ghi chỗ tạo thẻ (hồ sơ, tài liệu, bằng chứng) trong chuỗi.
+      if (it.kind === 'show-document' || it.kind === 'save-evidence') ghiTao(it.id, c.id, k);
+      if (it.kind === 'consequence') for (const h of it.hauQua) if (h.kind === 'mo-manh-moi' || h.kind === 'hien-tai-lieu' || h.kind === 'luu-bang-chung') ghiTao(h.id, c.id, k);
+      if (it.kind === 'branch') for (const ch of it.branch.choices) for (const h of ch.hauQua) if (h.kind === 'mo-manh-moi' || h.kind === 'hien-tai-lieu' || h.kind === 'luu-bang-chung') ghiTao(h.id, c.id, k);
+      if ((it.kind === 'challenge' || it.kind === 'fix-query') && the.get(it.id)?.evidence) ghiTao(the.get(it.id)?.evidence?.id ?? '', c.id, k);
       const canChuoi = (id: string, noi: string, trenTuyenChinh = true): void => {
         if (!chuoi.has(id)) err(vt, `${noi}: không có chuỗi "${id}"`);
         else {
@@ -433,6 +451,16 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           // Cờ mức đạt do chuỗi này tạo (xét true end); "chính" hay không tính sau, theo các thẻ đủ căn cứ.
           them(`${it.id}-du`, { kind: 'chuoi', id: c.id });
           them(`${it.id}-ho-tro`, { kind: 'chuoi', id: c.id });
+          if (it.tinhVach) {
+            // Gói B19: đối chất `· tính vạch` — thẻ [ĐÚNG] / [SAI], [KHÁC] bắt buộc; không có mức, "chưa đủ", hết lượt, người quen.
+            if (!it.bangChung.some((b) => b.muc === 'dung')) err(vt, `[ĐỐI CHẤT ${it.id} · tính vạch] cần ít nhất một thẻ "{<mã>} [ĐÚNG]"`);
+            if (it.bangChung.some((b) => b.muc === 'du' || b.muc === 'ho-tro' || b.muc === 'goi-y')) err(vt, `[ĐỐI CHẤT ${it.id} · tính vạch] dùng [ĐÚNG] / [SAI], không dùng [ĐỦ CĂN CỨ] / [HỖ TRỢ] / [GỢI Ý]`);
+            if (!it.khac) err(vt, `[ĐỐI CHẤT ${it.id} · tính vạch] thiếu dòng con "[KHÁC] → phản hồi: …" (lời khi trình thẻ khác)`);
+            if (it.chuaDu || it.hetLuot || it.nguoiQuen) err(vt, `[ĐỐI CHẤT ${it.id} · tính vạch] không có [CHƯA ĐỦ], [HẾT LƯỢT], [NGƯỜI QUEN] (sai thì chọn lại tới khi đúng)`);
+            for (const b of it.bangChung) canVatPham(b.id, vt, null, `[ĐỐI CHẤT ${it.id}]`);
+            if (new Set(it.bangChung.map((b) => b.id)).size !== it.bangChung.length) err(vt, `[ĐỐI CHẤT ${it.id}] có thẻ khai hai lần`);
+            break;
+          }
           if (!it.bangChung.some((b) => b.muc === 'du')) err(vt, `[ĐỐI CHẤT ${it.id}] cần ít nhất một thẻ [ĐỦ CĂN CỨ]`);
           if (!it.cauHoi) err(vt, `[ĐỐI CHẤT ${it.id}] thiếu dòng con "[CÂU HỎI] <câu hỏi cụ thể người chơi trả lời bằng thẻ>"`);
           {
@@ -497,10 +525,10 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
         case 'ending-branch':
           reKet.push(vt);
           if (lich.ket) {
-            dt.add(lich.ket.that);
-            dt.add(lich.ket.thuong);
-            dtChinh.add(lich.ket.that);
-            dtChinh.add(lich.ket.thuong);
+            for (const ket of [lich.ket.that, lich.ket.thuong, ...(lich.ket.tam ? [lich.ket.tam] : [])]) {
+              dt.add(ket);
+              dtChinh.add(ket);
+            }
           }
           break;
         case 'stage':
@@ -552,6 +580,16 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
               if (!nhanVat.has(nv)) err(vt, `${noi}: không có nhân vật "${nv}" trong nhan-vat.md`);
             } else if (tuyChon.spriteVat && !tuyChon.spriteVat.has(d.sprite)) {
               err(vt, `${noi}: không có ảnh vật "${d.sprite}" trong src/assets/mvp/vat/`);
+            }
+            if (it.kieu === 'dan') {
+              // Gói B19, `· dàn`: chỉ người (`nv:<mã>[/<biểu cảm>]`), có ảnh chân dung đúng biểu cảm; không có x / y / rộng.
+              const [ma = '', bc] = d.sprite.startsWith('nv:') ? d.sprite.slice(3).split('/') : [''];
+              if (!d.sprite.startsWith('nv:')) err(vt, `${noi}: cảnh dàn chỉ có người "nv:<mã>[/<biểu cảm>]", không có "${d.sprite}"`);
+              else if (nhanVat.has(ma) && tuyChon.anh) {
+                const ung = bc ? [`char-${ma}-${bc}`, `${ma}-${bc}`] : [`char-${ma}-anchor`, `char-${ma}`, `char-${ma}-neutral`];
+                if (!ung.some((t) => tuyChon.anh?.has(t))) err(vt, `${noi}: không có ảnh chân dung ${bc ? `"${ma}" biểu cảm "${bc}"` : `"${ma}"`} (cần ${ung.join(' hoặc ')} trong src/assets/)`);
+              }
+              continue;
             }
             for (const [ten, v] of [['x', d.x], ['y', d.y], ['rộng', d.rong]] as const) {
               if (!(v >= 0 && v <= 100)) err(vt, `${noi}: ${ten} phải trong 0–100%: ${v}%`);
@@ -628,7 +666,8 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   if (lich.ngayHop) canChuoiLich(lich.ngayHop.chuoi, lich.ngayHop.viTri, 'ngày họp, "Chuỗi"');
   if (lich.ket) {
     canChuoiLich(lich.ket.that, lich.ket.viTri, '"Kết thật"');
-    canChuoiLich(lich.ket.thuong, lich.ket.viTri, '"Kết thường"');
+    if (lich.ket.tam) canChuoiLich(lich.ket.tam, lich.ket.viTri, '"Kết tạm"');
+    if (lich.ket.thuong !== lich.ket.tam) canChuoiLich(lich.ket.thuong, lich.ket.viTri, '"Kết thường"');
   }
   for (const v of lich.vuSau) canChuoiLich(v.chuoi, v.viTri, `vụ sau ${v.id}, "Chuỗi"`);
   // Nhiệm vụ phụ: người giao là nhân vật có thật; "Mở sau" là mã vụ gốc hay một vụ sau (không phải nhiệm vụ phụ khác).
@@ -651,7 +690,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   }
   for (const k of duKien.values()) if (k.chuoi) goc.push({ id: k.chuoi, t: thuTuDK(k.id) });
   if (lich.ngayHop) goc.push({ id: lich.ngayHop.chuoi, t: 1000 });
-  if (lich.ket) goc.push({ id: lich.ket.that, t: 1000 }, { id: lich.ket.thuong, t: 1000 });
+  if (lich.ket) goc.push({ id: lich.ket.that, t: 1000 }, { id: lich.ket.thuong, t: 1000 }, ...(lich.ket.tam ? [{ id: lich.ket.tam, t: 1000 }] : []));
   // Vụ sau chạy sau khi vụ gốc kết: cùng mốc "ngày họp" (mọi nhân vật đã xuất hiện).
   for (const v of lich.vuSau) {
     goc.push({ id: v.chuoi, t: 1000 });
@@ -886,7 +925,10 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     const that = chuoi.get(lich.ket.that) as RawChuoiMvp;
     const thuong = chuoi.get(lich.ket.thuong) as RawChuoiMvp;
     const dkThat = that.items[0];
-    if (!dkThat || dkThat.kind !== 'condition') err(that.viTri, `chuỗi kết thật "${that.id}" phải mở đầu bằng "- [ĐIỀU KIỆN] …" (điều kiện true end)`);
+    // Gói B19: bộ có [CHẤM VỤ] rẽ kết theo rank (A/B kết thật, C kết tạm) — không cần [ĐIỀU KIỆN]; có thì máy bỏ qua.
+    if (coChamVu) {
+      if (dkThat?.kind === 'condition') canhBao.push({ ...that.viTri, thongBao: `chuỗi kết thật "${that.id}": bộ có [CHẤM VỤ] rẽ kết theo rank, dòng [ĐIỀU KIỆN] bị bỏ qua (xóa được)` });
+    } else if (!dkThat || dkThat.kind !== 'condition') err(that.viTri, `chuỗi kết thật "${that.id}" phải mở đầu bằng "- [ĐIỀU KIỆN] …" (điều kiện true end)`);
     if (thuong.items.some((it) => it.kind === 'condition')) err(thuong.viTri, `chuỗi kết thường "${thuong.id}" không có [ĐIỀU KIỆN]`);
     // Chuỗi kết được [ĐI TỚI] chuỗi khác để đổi cảnh, miễn là cuối đường vẫn tới [KẾT THÚC] (máy ghi kết ngay lúc rẽ).
     const toiKet = (c: RawChuoiMvp): boolean => {
@@ -901,7 +943,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
       return false;
     };
     for (const c of [that, thuong]) if (!toiKet(c)) err(c.viTri, `chuỗi kết "${c.id}" phải kết thúc bằng [KẾT THÚC]`);
-    if (dkThat && dkThat.kind === 'condition') {
+    if (!coChamVu && dkThat && dkThat.kind === 'condition') {
       const vt: ViTri = { tep: that.viTri.tep, dong: that.itemDong[0] ?? that.viTri.dong };
       const ma = maTrongDieuKien(dkThat.dieuKien);
       const datDuoc = new Set(ma.filter((id) => producers.has(id)));
@@ -985,9 +1027,12 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     if (lich.ket) {
       if (toiDuoc(lich.ket.that).has(chuoiId)) return lich.vu.id;
       if (toiDuoc(lich.ket.thuong).has(chuoiId)) return lich.vu.id;
+      if (lich.ket.tam && toiDuoc(lich.ket.tam).has(chuoiId)) return lich.vu.id;
     }
     return null;
   };
+
+  kiemB19();
 
   // B1. Vụ có hạn chót và ngày
   for (const v of lich.vuSau) {
@@ -1173,7 +1218,7 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
     for (const it of c.items) {
       if (it.kind === 'doi-chat') {
         for (const b of it.bangChung) {
-          if (b.muc === 'du') {
+          if (b.muc === 'du' || b.muc === 'dung') {
             kiemManhMoiBatBuoc(b.id, c.viTri, `[ĐỐI CHẤT ${it.id}]`);
           }
         }
@@ -1182,4 +1227,200 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   }
 
   return kq;
+
+  // ---------- Gói B19: dòng thời gian, tính vạch, chấm vụ, sổ tổng kết, điểm lưu đầu vụ, ghép mẫu ----------
+  function kiemB19(): void {
+    if (!lich) return;
+    const L = lich;
+    const dtg = new Map(mvp.dongThoiGian.map((d) => [d.id, d]));
+    type ViTriNut = { chuoi: string; k: number; vt: ViTri };
+    const nut: Record<'xay' | 'xem' | 'cham' | 'so' | 'luu' | 'ghep' | 'tinh' | 'reKet', (ViTriNut & { ma: string })[]> = { xay: [], xem: [], cham: [], so: [], luu: [], ghep: [], tinh: [], reKet: [] };
+    for (const c of mvp.chuoi) {
+      c.items.forEach((it, k) => {
+        const vt: ViTri = { tep: c.viTri.tep, dong: c.itemDong[k] ?? c.viTri.dong };
+        const p = { chuoi: c.id, k, vt };
+        if (it.kind === 'dong-thoi-gian') nut[it.chiXem ? 'xem' : 'xay'].push({ ...p, ma: it.id });
+        else if (it.kind === 'cham-vu') nut.cham.push({ ...p, ma: it.vu });
+        else if (it.kind === 'so-tong-ket') nut.so.push({ ...p, ma: it.vu });
+        else if (it.kind === 'diem-luu-vu') nut.luu.push({ ...p, ma: it.vu });
+        else if (it.kind === 'ghep-mau') nut.ghep.push({ ...p, ma: it.the.join('+') });
+        else if (it.kind === 'ending-branch') nut.reKet.push({ ...p, ma: '' });
+        else if ((it.kind === 'fix-query' || it.kind === 'question' || it.kind === 'doi-chat') && it.tinhVach) nut.tinh.push({ ...p, ma: it.id });
+      });
+    }
+
+    // Đồ thị theo nút: (chuỗi, vị trí) → các chỗ chạy tiếp. Hết chuỗi của một chỗ bấm [KHÁM PHÁ] thì về nút khám phá ấy.
+    const veKhamPha = new Map<string, { chuoi: string; k: number }[]>();
+    for (const c of mvp.chuoi) c.items.forEach((it, k) => {
+      if (it.kind === 'explore') for (const d of it.diem) (veKhamPha.get(d.chuoi) ?? veKhamPha.set(d.chuoi, []).get(d.chuoi))?.push({ chuoi: c.id, k });
+    });
+    const sau = (cId: string, k: number): { chuoi: string; k: number }[] => {
+      const c = chuoi.get(cId);
+      if (!c) return [];
+      const it = c.items[k];
+      if (!it) return veKhamPha.get(cId) ?? [];
+      const tiep = { chuoi: cId, k: k + 1 };
+      const dich = (hq: readonly HauQua[]): string | undefined => hq.find((h): h is HauQua & { kind: 'di-toi' } => h.kind === 'di-toi')?.chuoi;
+      switch (it.kind) {
+        case 'goto':
+        case 'go-with':
+          return [{ chuoi: it.to, k: 0 }];
+        case 'het-ngay':
+          return it.to ? [{ chuoi: it.to, k: 0 }] : [];
+        case 'jump-if':
+          return [{ chuoi: it.chuoi, k: 0 }, tiep];
+        case 'consequence': {
+          const d = dich(it.hauQua);
+          return d ? [{ chuoi: d, k: 0 }] : [tiep];
+        }
+        case 'branch':
+          return it.branch.choices.map((ch) => {
+            const d = dich(ch.hauQua);
+            return d ? { chuoi: d, k: 0 } : tiep;
+          });
+        case 'explore':
+          return [...it.diem.map((d) => ({ chuoi: d.chuoi, k: 0 })), tiep];
+        case 'ending-branch':
+          return L.ket ? [...new Set([L.ket.that, L.ket.thuong, ...(L.ket.tam ? [L.ket.tam] : [])])].map((x) => ({ chuoi: x, k: 0 })) : [];
+        case 'end':
+          return [];
+        default:
+          return [tiep];
+      }
+    };
+    /** Từ ngay sau nút (a) có chạy tới được nút (b) không (theo đồ thị nút). */
+    const toiNut = (a: { chuoi: string; k: number }, b: { chuoi: string; k: number }): boolean => {
+      const da = new Set<string>();
+      const hang = sau(a.chuoi, a.k);
+      while (hang.length > 0) {
+        const x = hang.pop() as { chuoi: string; k: number };
+        const khoa = `${x.chuoi}#${x.k}`;
+        if (da.has(khoa)) continue;
+        da.add(khoa);
+        if (x.chuoi === b.chuoi && x.k === b.k) return true;
+        hang.push(...sau(x.chuoi, x.k));
+      }
+      return false;
+    };
+    const moc = (cId: string): number => mocChuoi.get(cId) ?? Infinity;
+    /** Nút (a) có thể chạy trước nút (b): mốc sớm hơn, hoặc từ (a) chạy tới được (b). */
+    const truoc = (a: { chuoi: string; k: number }, b: { chuoi: string; k: number }): boolean => moc(a.chuoi) < moc(b.chuoi) || toiNut(a, b);
+    /** Thẻ `id` được mở trước nút (b): một chỗ tạo trong chuỗi chạy trước, hay một dữ kiện mở sớm hơn. */
+    const moTruoc = (id: string, b: { chuoi: string; k: number }): boolean =>
+      (viTriTao.get(id) ?? []).some((p) => truoc(p, b)) || (producers.get(id) ?? []).some((p) => p.kind === 'du-kien' && thuTuDK(p.id) <= moc(b.chuoi));
+    const loiNguoi = (ds: readonly RawLine[] | null, vt: ViTri): void => {
+      for (const l of ds ?? []) kiemNguoiNoi(l.speaker, l.expression, vt, null);
+    };
+    const tenCam = (chu: string, vt: ViTri, noi: string): void => {
+      const t = mvp.tenCam.find((x) => chu.includes(x));
+      if (t) err(vt, `${noi} có tên cấm "${t}" (quy-uoc.md "Tên cấm")`);
+    };
+
+    // dong-thoi-gian.md: người nhắc, thẻ nhận, ô cần kéo.
+    for (const d of mvp.dongThoiGian) {
+      const vt = d.viTri;
+      if (!d.nguoiNhac) err(vt, `dòng thời gian ${d.id} thiếu dòng "- Người nhắc khi kéo sai: <mã nhân vật>"`);
+      else if (!nhanVat.has(d.nguoiNhac)) err(vt, `dòng thời gian ${d.id}: người nhắc "${d.nguoiNhac}" không có trong nhan-vat.md`);
+      loiNguoi(d.keoSai, vt);
+      if (d.o.length === 0) err(vt, `dòng thời gian ${d.id} chưa có ô nào ("### <mã> · <giờ> · <nơi> · <việc>")`);
+      else if (d.o.every((o) => o.khoaSan)) err(vt, `dòng thời gian ${d.id}: ô nào cũng "Khóa sẵn" — cần ít nhất một ô người chơi phải kéo`);
+      const tam = new Set(d.theTam.map((t) => t.id));
+      const daDung = new Set<string>();
+      for (const o of d.o) {
+        if (!o.khoaSan && o.nhan.length === 0) err(o.viTri, `ô ${o.id} (dòng thời gian ${d.id}) cần dòng "- Nhận: <thẻ>" (hoặc "- Khóa sẵn")`);
+        for (const id of o.nhan) {
+          daDung.add(id);
+          if (!tam.has(id) && !vatPham.has(id)) err(o.viTri, `ô ${o.id} (dòng thời gian ${d.id}), "Nhận": không có thẻ "${id}" (không là thẻ tạm của dòng này, chưa khai ở ho-so/ hay thẻ thử thách)`);
+        }
+        if (o.keoVaoTrong && !o.khongDien) err(o.viTri, `ô ${o.id}: "Kéo vào chỗ trống" chỉ dùng cùng "Không điền được: <phần>"`);
+        loiNguoi(o.keoSai, o.viTri);
+        loiNguoi(o.keoVaoTrong, o.viTri);
+        tenCam(`${o.gio ?? ''} ${o.noi ?? ''} ${o.viec}`, o.viTri, `ô ${o.id}`);
+      }
+      for (const t of d.theTam) {
+        if (!daDung.has(t.id)) canhBao.push({ ...vt, thongBao: `dòng thời gian ${d.id}: thẻ tạm "${t.id}" không ô nào nhận` });
+        tenCam(t.chu, vt, `thẻ tạm ${t.id}`);
+      }
+      if (!nut.xay.some((x) => x.ma === d.id)) canhBao.push({ ...vt, thongBao: `dòng thời gian ${d.id} chưa có [DÒNG THỜI GIAN ${d.id}] nào trong kich-ban/` });
+    }
+
+    // [DÒNG THỜI GIAN] / [HIỆN DÒNG THỜI GIAN]: có thật; thẻ nhận mở trước; mỗi dòng dựng ở một chỗ, xem lại sau khi dựng.
+    for (const x of nut.xay) {
+      const d = dtg.get(x.ma);
+      if (!d) {
+        err(x.vt, `[DÒNG THỜI GIAN ${x.ma}]: không có dòng thời gian "${x.ma}" trong dong-thoi-gian.md`);
+        continue;
+      }
+      if (nut.xay.filter((y) => y.ma === x.ma).length > 1 && nut.xay.find((y) => y.ma === x.ma) !== x) err(x.vt, `[DÒNG THỜI GIAN ${x.ma}] xuất hiện hơn một lần (mỗi dòng thời gian dựng ở một chỗ; xem lại dùng [HIỆN DÒNG THỜI GIAN])`);
+      const tam = new Set(d.theTam.map((t) => t.id));
+      for (const o of d.o) for (const id of o.nhan) if (!tam.has(id) && vatPham.has(id) && !moTruoc(id, x)) err(x.vt, `[DÒNG THỜI GIAN ${x.ma}], ô ${o.id}: thẻ "${id}" chưa được mở trước chỗ này`);
+    }
+    for (const x of nut.xem) {
+      if (!dtg.has(x.ma)) err(x.vt, `[HIỆN DÒNG THỜI GIAN ${x.ma}]: không có dòng thời gian "${x.ma}" trong dong-thoi-gian.md`);
+      else if (!nut.xay.some((y) => y.ma === x.ma && truoc(y, x))) err(x.vt, `[HIỆN DÒNG THỜI GIAN ${x.ma}]: chưa có [DÒNG THỜI GIAN ${x.ma}] nào chạy trước chỗ này`);
+    }
+
+    // Tính vạch: chỉ trong vụ có [CHẤM VỤ] (từ lệnh tới được một [CHẤM VỤ]); [SỬA TRUY VẤN · tính vạch] nên có "Khi trình sai".
+    for (const x of nut.tinh) {
+      if (!nut.cham.some((y) => truoc(x, y))) err(x.vt, `"· tính vạch" chỉ dùng trong vụ có [CHẤM VỤ]: từ lệnh này không tới được [CHẤM VỤ] nào`);
+      const it = chuoi.get(x.chuoi)?.items[x.k];
+      if (it?.kind === 'fix-query' && the.get(it.id) && !docKhiTrinhSai(the.get(it.id)?.fields ?? {}).loi) canhBao.push({ ...x.vt, thongBao: `[SỬA TRUY VẤN ${it.id} · tính vạch]: thẻ chưa có dòng "- Khi trình sai: …" (trình sai chỉ thêm vạch, không ai nói gì)` });
+    }
+
+    // [CHẤM VỤ]: mã vụ có thật; "cần:" là thẻ có thật hoặc dòng thời gian có dựng.
+    const maVu = new Set([L.vu.id, ...L.vuSau.map((v) => v.id)]);
+    for (const x of nut.cham) {
+      if (!maVu.has(x.ma)) err(x.vt, `[CHẤM VỤ ${x.ma}]: "${x.ma}" không phải mã vụ (có: ${[...maVu].join(', ')})`);
+      const it = chuoi.get(x.chuoi)?.items[x.k];
+      if (it?.kind !== 'cham-vu') continue;
+      for (const id of it.can) {
+        if (dtg.has(id)) {
+          if (!nut.xay.some((y) => y.ma === id && truoc(y, x))) err(x.vt, `[CHẤM VỤ ${x.ma}], "cần": dòng thời gian "${id}" chưa được dựng ([DÒNG THỜI GIAN ${id}]) trước chỗ chấm`);
+        } else if (!vatPham.has(id)) err(x.vt, `[CHẤM VỤ ${x.ma}], "cần": không có thẻ hay dòng thời gian "${id}"`);
+        else if (!moTruoc(id, x)) err(x.vt, `[CHẤM VỤ ${x.ma}], "cần": thẻ "${id}" không được mở trước chỗ chấm`);
+      }
+    }
+
+    // [RẼ KẾT] theo rank: cần [CHẤM VỤ <vụ gốc>] chạy trước và "Kết tạm" ở lich.md.
+    if (coChamVu) {
+      for (const x of nut.reKet) if (!nut.cham.some((y) => y.ma === L.vu.id && truoc(y, x))) err(x.vt, `[RẼ KẾT] của bộ có [CHẤM VỤ] rẽ theo rank: cần [CHẤM VỤ ${L.vu.id}] chạy trước chỗ này`);
+      if (nut.reKet.length > 0 && L.ket && !L.ket.tam) err(L.ket.viTri, 'bộ có [CHẤM VỤ]: mục "## Kết" cần dòng "- Kết tạm: <chuỗi>" (rank C; A/B đi "Kết thật")');
+      if (L.ket?.tam && chuoi.has(L.ket.tam)) {
+        const tamC = chuoi.get(L.ket.tam) as RawChuoiMvp;
+        const daQua = new Set<string>();
+        let d: RawChuoiMvp | undefined = tamC;
+        let toi = false;
+        while (d && !daQua.has(d.id)) {
+          daQua.add(d.id);
+          const cuoi: MucMvp | undefined = d.items[d.items.length - 1];
+          if (cuoi?.kind === 'end') toi = true;
+          d = cuoi?.kind === 'goto' || cuoi?.kind === 'go-with' ? chuoi.get(cuoi.to) : undefined;
+        }
+        if (!toi) err(tamC.viTri, `chuỗi kết tạm "${tamC.id}" phải kết thúc bằng [KẾT THÚC]`);
+      }
+    }
+
+    // [SỔ TỔNG KẾT]: vụ đã được chấm trước đó.
+    for (const x of nut.so) if (!nut.cham.some((y) => y.ma === x.ma && truoc(y, x))) err(x.vt, `[SỔ TỔNG KẾT ${x.ma}]: cần [CHẤM VỤ ${x.ma}] chạy trước chỗ này`);
+
+    // [ĐIỂM LƯU VỤ]: mã vụ có thật, mỗi vụ một chỗ, đứng trước chỗ chấm của vụ.
+    for (const x of nut.luu) {
+      if (!maVu.has(x.ma)) err(x.vt, `[ĐIỂM LƯU VỤ ${x.ma}]: "${x.ma}" không phải mã vụ (có: ${[...maVu].join(', ')})`);
+      if (nut.luu.find((y) => y.ma === x.ma) !== x) err(x.vt, `[ĐIỂM LƯU VỤ ${x.ma}] xuất hiện hơn một lần (mỗi vụ một điểm lưu)`);
+      const cham = nut.cham.filter((y) => y.ma === x.ma);
+      if (cham.length > 0 && !cham.some((y) => truoc(x, y))) canhBao.push({ ...x.vt, thongBao: `[ĐIỂM LƯU VỤ ${x.ma}]: từ điểm lưu không tới được [CHẤM VỤ ${x.ma}] — chơi lại sẽ không chấm lại` });
+    }
+
+    // [GHÉP MẪU]: người ghép có thật; hai thẻ có thật và mở trước.
+    for (const x of nut.ghep) {
+      const it = chuoi.get(x.chuoi)?.items[x.k];
+      if (it?.kind !== 'ghep-mau') continue;
+      if (!nhanVat.has(it.nguoi)) err(x.vt, `[GHÉP MẪU]: không có nhân vật "${it.nguoi}" trong nhan-vat.md`);
+      for (const id of it.the) {
+        if (!vatPham.has(id)) err(x.vt, `[GHÉP MẪU]: không có thẻ "${id}" (chưa khai ở ho-so/ hay thẻ thử thách)`);
+        else if (!moTruoc(id, x)) err(x.vt, `[GHÉP MẪU]: thẻ "${id}" chưa được mở trước chỗ ghép`);
+      }
+      tenCam(it.giayNho, x.vt, '[GHÉP MẪU] giấy nhớ');
+    }
+  }
 }

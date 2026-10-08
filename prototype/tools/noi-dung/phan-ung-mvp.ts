@@ -55,7 +55,7 @@ export function docPhanUng(fields: Readonly<Record<string, string>>): { phanUng:
   const phanUng: RawPhanUng[] = [];
   const loi: string[] = [];
   for (const [nhan, gt] of Object.entries(fields)) {
-    if (!nhan.startsWith('Khi ')) continue;
+    if (!nhan.startsWith('Khi ') || nhan === NHAN_KHI_TRINH_SAI) continue;
     const khi = docKhi(nhan);
     if (!khi) {
       loi.push(`dòng "${nhan}" lạ — dùng "Khi chạy ra <n> dòng", "Khi chạy ra <n> dòng với <cột>, <cột>", "Khi lỗi không có cột", "Khi lỗi", "Khi đúng", "Khi đúng mà hẹp hơn", "Khi sai thứ tự", "Khi thiếu cột", "Khi thừa cột", "Khi chọn sai cột nộp", "Khi xem từng bước"`);
@@ -68,6 +68,23 @@ export function docPhanUng(fields: Readonly<Record<string, string>>): { phanUng:
     }
   }
   return { phanUng, loi };
+}
+
+/**
+ * Gói B19: dòng "Khi trình sai" của thẻ — lời khi người chơi bấm "Trình" mà câu chưa đúng ở màn sửa `· tính vạch` (không phải
+ * phản ứng sau một lần chạy, nên `docPhanUng` bỏ qua).
+ */
+export const NHAN_KHI_TRINH_SAI = 'Khi trình sai';
+
+/** Đọc dòng "Khi trình sai" (nhiều lời nối `<br>`); không có dòng → `null`. Sai quy ước → `loi`. */
+export function docKhiTrinhSai(fields: Readonly<Record<string, string>>): { loi: RawLine[] | null; saiQuyUoc: string | null } {
+  const gt = fields[NHAN_KHI_TRINH_SAI];
+  if (gt === undefined) return { loi: null, saiQuyUoc: null };
+  try {
+    return { loi: gt.split('<br>').map((p) => parseSpoken(p)), saiQuyUoc: null };
+  } catch (e) {
+    return { loi: null, saiQuyUoc: `dòng "${NHAN_KHI_TRINH_SAI}": ${(e as Error).message} — viết "**<người nói>** (<biểu cảm>): <lời>"` };
+  }
 }
 
 /**

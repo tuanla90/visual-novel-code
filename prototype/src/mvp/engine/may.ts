@@ -27,6 +27,10 @@
  *     cảnh khám phá vẫn ở lại, người chơi tự bấm `roi-canh` ("Về bản đồ" ở nơi tới từ bản đồ, "Đi tiếp" ở cảnh khác khi còn chỗ
  *     chưa xem; xem hết mọi chỗ thì máy tự đi); rời nơi khi việc chính chưa xong thì ghim còn dấu, chỗ đã xem nhớ trong `dangDo`;
  *     màn tra (trừ buổi họp) lùi về cảnh đã mở nó bằng `roi-thu-thach`, bấm lại chỗ đó là vào thẳng màn tra đang dở.
+ *   - Gói B19 (docs/mua-1/brief/b19-vu-1-ban-6.md mục 4–5): `[DÒNG THỜI GIAN]` (kéo thẻ vào ô, `dat-the-dtg`; xong mới đi tiếp),
+ *     `[HIỆN DÒNG THỜI GIAN]`, lệnh `· tính vạch` (trình sai thêm một vạch `s.vach`, chọn lại tới khi đúng; màn sửa truy vấn báo
+ *     `trinh-sai`), `[CHẤM VỤ]` (cờ `<vụ>-rank-a|b|c`, bảng rank `s.bangRank`), `[RẼ KẾT]` theo rank ở bộ có `[CHẤM VỤ]` (A/B kết
+ *     thật, C kết tạm), `[SỔ TỔNG KẾT]`, `[ĐIỂM LƯU VỤ]` (chụp trạng thái; `choi-lai-vu` về đó, bảng rank giữ), `[GHÉP MẪU]`.
  */
 // Gộp import giá trị và import kiểu trong MỘT câu (Vite bỏ import giá trị khi có `import type` cùng module riêng).
 import {
@@ -35,18 +39,23 @@ import {
   type DiaDiemMvp,
   type DiemKhamPhaMvp,
   type DieuKienMvp,
+  type DongThoiGianMvp,
   type DuKienMvp,
   type GioiThieuNhanVatMvp,
   type HauQuaMvp,
+  type KetQuaChamVuMvp,
   type KichBanMvp,
   type LoiMvp,
   type MocMvp,
   type NutMvp,
   type NhiemVuPhuMvp,
   type TheThuThachMvp,
+  type TinhVachMvp,
   type TruongBietMvp,
   type VuSauMvp,
 } from '../../content/mvp/types';
+import { boCoChamVu, chamVu, rankHienTai, soVaTenVu, vuCoChamVu } from './cham-vu';
+import { banDungSan, dongThoiGianXong, thaDung } from './dong-thoi-gian';
 import { MAU_GHIM, type BoiCanhChuoi, type CachChoiMvp, type HetNgayMvp, type KhamPhaMvp, type MauGhimMvp, type MucNhapVaiMvp, type MucSqlMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp, type TiepTucTuyenMvp } from './trang-thai';
 import { laTheHoiDap } from './bang-dieu-tra';
 import { apBiet } from './biet-ve';
@@ -181,7 +190,13 @@ export type HanhDongMvp =
   /** Gói B15: người chơi tự bấm hết ngày (chỉ khi khung nhìn cảnh khám phá có `hetNgay`): chạy chuỗi buổi tối rồi sang ngày kế. */
   | { type: 'het-ngay' }
   /** Gói B17 (bộ mùa 1): đặt mức nhập vai / mức SQL (hai câu hỏi đầu ván, menu Cài đặt); áp ngay, không đổi con trỏ. */
-  | { type: 'doi-muc'; nhapVai?: MucNhapVaiMvp; sql?: MucSqlMvp };
+  | { type: 'doi-muc'; nhapVai?: MucNhapVaiMvp; sql?: MucSqlMvp }
+  /** Gói B19: thả thẻ vào một ô của dòng thời gian đang dựng. Thả sai thì máy đứng yên (giao diện bật thẻ về kèm câu nhắc). */
+  | { type: 'dat-the-dtg'; o: string; the: string }
+  /** Gói B19: màn sửa truy vấn `· tính vạch`, bấm "Trình" mà câu chưa đúng → thêm một vạch (lời do giao diện hiện, `loiTrinhSai`). */
+  | { type: 'trinh-sai' }
+  /** Gói B19: "Chơi lại Vụ n" — về điểm lưu đầu vụ (`vu` thiếu = vụ đang chơi); bảng rank giữ. `luc` = mốc ván mới. */
+  | { type: 'choi-lai-vu'; vu?: string; luc?: number };
 
 // ---------- Khung nhìn ----------
 
@@ -221,7 +236,8 @@ export type KhungNhinMvp =
   | { kind: 'branch'; nut: Extract<NutMvp, { type: 'branch' }>; luaChon: Extract<NutMvp, { type: 'branch' }>['choices'] }
   | { kind: 'show-document'; documentId: string }
   | { kind: 'image'; imageId: string }
-  | { kind: 'challenge' | 'fix-query'; thuThach: TheThuThachMvp }
+  /** `tinhVach` (gói B19): màn sửa `· tính vạch` (hai nút Chạy thử / Trình). */
+  | { kind: 'challenge' | 'fix-query'; thuThach: TheThuThachMvp; tinhVach?: TinhVachMvp }
   | { kind: 'effect'; effectId: string }
   | { kind: 'projector'; nut: Extract<NutMvp, { type: 'projector' }> }
   | { kind: 'notebook-lookup'; trang: string; phan: string }
@@ -243,10 +259,24 @@ export type KhungNhinMvp =
     }
   /** `[HỎI ĐÁP]` (gói B12): buổi hỏi nhân chứng đang mở (xem `hoi-dap.ts`). */
   | { kind: 'hoi-dap'; hoiDap: KhungHoiDapMvp }
+  /**
+   * Gói B19 `[DÒNG THỜI GIAN]` / `[HIỆN DÒNG THỜI GIAN]` (`chiXem`): `daDat` = ô → thẻ đã thả đúng; `xong` = mọi ô cần kéo đã có thẻ.
+   */
+  | { kind: 'dong-thoi-gian'; dtg: DongThoiGianMvp; daDat: Record<string, string>; xong: boolean; chiXem: boolean }
+  /** Gói B19 `[SỔ TỔNG KẾT]`: trang tổng kết vụ trong sổ CLB; `ket` = kết quả chấm (null = vụ chưa chấm). */
+  | { kind: 'so-tong-ket'; vu: string; soVu: number; tenVu: string; ket: KetQuaChamVuMvp | null }
+  /** Gói B19 `[GHÉP MẪU]`: bảng điều tra với hai thẻ vừa ghép, chỉ đỏ và giấy nhớ. */
+  | { kind: 'ghep-mau'; nut: Extract<NutMvp, { type: 'ghep-mau' }> }
   /** `vu`: vụ sau vừa kết (`null` = vụ gốc, dùng `ketQua`); `vuKe`: vụ chơi tiếp được, nếu còn. */
   | {
       kind: 'end';
-      ketQua: 'that' | 'thuong';
+      /** `tam` (gói B19): kết tạm của bộ có `[CHẤM VỤ]`. */
+      ketQua: 'that' | 'thuong' | 'tam';
+      /**
+       * Gói B19: vụ vừa kết có `[CHẤM VỤ]` → màn kết kiểu sổ CLB (kết thật / kết tạm, trang sổ có dấu, "Chơi lại Vụ n").
+       * `null` / thiếu = màn kết cũ (bộ MVP). `choiLai` = có điểm lưu đầu vụ để chơi lại.
+       */
+      chamVu?: { vu: string; soVu: number; tenVu: string; ket: KetQuaChamVuMvp | null; choiLai: boolean } | null;
       vu: VuSauMvp | null;
       vuKe: VuSauMvp | null;
       /** Nhiệm vụ phụ đã mở, có thể nhận từ bảng hoạt động trong mọi đoạn của tuyến chính. */
@@ -513,7 +543,7 @@ function hoiLaiDuoc(kb: KichBanMvp, s: TrangThaiMvp, chuoi: string): { nut: numb
  */
 function canhNoiDaGhe(kb: KichBanMvp, s: TrangThaiMvp, ghim: string, boiCanh: BoiCanhChuoi): KhamPhaMvp | null {
   const nodes = timChuoi(kb, ghim)?.nodes ?? [];
-  const i = nodes.findIndex((n) => n.type === 'explore' && !n.kieu);
+  const i = nodes.findIndex((n) => n.type === 'explore' && laCanhThuong(n));
   const nut = nodes[i];
   if (!nut || nut.type !== 'explore') return null;
   const da = s.daXemDiem ?? [];
@@ -631,16 +661,17 @@ export function vuKeTiep(kb: KichBanMvp, s: TrangThaiMvp): VuSauMvp | null {
 }
 
 /** Kết của vụ gốc tại nút `[KẾT THÚC]` đang đứng. */
-function ketQuaVuGoc(kb: KichBanMvp, s: TrangThaiMvp): 'that' | 'thuong' {
+function ketQuaVuGoc(kb: KichBanMvp, s: TrangThaiMvp): 'that' | 'thuong' | 'tam' {
   return s.ketQua ?? (s.conTro?.chuoi === kb.lich.ket?.that ? 'that' : 'thuong');
 }
 
 /**
  * Cờ máy đặt khi một vụ tới `[KẾT THÚC]`: `<mã vụ>-hoan-tat`; vụ gốc thêm `<mã vụ>-ket-that` hay `-ket-thuong` (vụ sau đọc
- * bằng `[NẾU]` / `[KHI]`). Chỉ đặt khi lịch có vụ sau — bộ một vụ giữ nguyên trạng thái như trước.
+ * bằng `[NẾU]` / `[KHI]`). Chỉ đặt khi lịch có vụ sau — bộ một vụ giữ nguyên trạng thái như trước. Gói B19: bộ có `[CHẤM VỤ]`
+ * luôn đặt (`-ket-that` / `-ket-tam`).
  */
 function coKhiKet(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
-  if ((kb.lich.vuSau ?? []).length === 0 && (kb.lich.nhiemVuPhu ?? []).length === 0) return s;
+  if ((kb.lich.vuSau ?? []).length === 0 && (kb.lich.nhiemVuPhu ?? []).length === 0 && !boCoChamVu(kb)) return s;
   const vu = vuDangChoi(kb, s);
   const moi = s.giaiDoan === 'phu' && s.phu ? [`${s.phu.id}-hoan-tat`] : vu ? [`${vu.id}-hoan-tat`] : [`${kb.lich.vu.id}-hoan-tat`, `${kb.lich.vu.id}-ket-${ketQuaVuGoc(kb, s)}`];
   const thieu = moi.filter((c) => !s.co.includes(c));
@@ -692,6 +723,11 @@ function batDauVuSau(s: TrangThaiMvp, vu: Pick<VuSauMvp, 'id' | 'chuoi'>, phu: T
 
 // ---------- Khám phá ----------
 
+/** Cảnh khám phá "thường" (vật / người trên cảnh): không kiểu, hay kiểu dàn (gói B19: người đứng trên dàn, luật như cảnh thường). */
+function laCanhThuong(n: Extract<NutMvp, { type: 'explore' }>): boolean {
+  return !n.kieu || n.kieu === 'dan';
+}
+
 function nutKhamPha(kb: KichBanMvp, kp: KhamPhaMvp): Extract<NutMvp, { type: 'explore' }> | undefined {
   const n = timChuoi(kb, kp.veLai.chuoi)?.nodes[kp.veLai.nut];
   return n?.type === 'explore' ? n : undefined;
@@ -712,7 +748,7 @@ export function xongChinhCua(nut: Extract<NutMvp, { type: 'explore' }>, daXem: r
 function laNoiTrenBanDo(kb: KichBanMvp, kp: KhamPhaMvp): boolean {
   if (!kp.cha) return false;
   const nut = nutKhamPha(kb, kp);
-  return !!nut && !nut.kieu && nutKhamPha(kb, kp.cha)?.kieu === 'ban-do';
+  return !!nut && laCanhThuong(nut) && nutKhamPha(kb, kp.cha)?.kieu === 'ban-do';
 }
 
 /**
@@ -775,7 +811,7 @@ function goNhacCu(kb: KichBanMvp, s: TrangThaiMvp, nut: Extract<NutMvp, { type: 
   if (laLoiDan) return s;
   const d = nut.diem.find((x) => x.chuoi === chuoi);
   const coChinh = nut.diem.some((x) => x.dau === 'chinh');
-  if (!d || nut.kieu || (coChinh && d.dau !== 'chinh')) return s;
+  if (!d || !laCanhThuong(nut) || (coChinh && d.dau !== 'chinh')) return s;
   return { ...s, nhacViec: null };
 }
 
@@ -921,10 +957,55 @@ function canNguoiChoi(nut: NutMvp): boolean {
     case 'create-character':
     case 'explore':
     case 'end':
+    case 'dong-thoi-gian':
+    case 'hien-dong-thoi-gian':
+    case 'so-tong-ket':
+    case 'ghep-mau':
       return true;
     default:
       return false;
   }
+}
+
+// ---------- Gói B19: vạch, điểm lưu đầu vụ ----------
+
+/** Thông tin `· tính vạch` của nút con trỏ đang đứng (trắc nghiệm, đối chất, sửa truy vấn); không có → `null`. */
+export function tinhVachHienTai(kb: KichBanMvp, s: TrangThaiMvp): TinhVachMvp | null {
+  const n = s.conTro ? timChuoi(kb, s.conTro.chuoi)?.nodes[s.conTro.nut] : undefined;
+  return n && (n.type === 'question' || n.type === 'doi-chat' || n.type === 'fix-query') && n.tinhVach ? n.tinhVach : null;
+}
+
+/** Thêm một vạch; trả kèm lời `[SAI LẦN ĐẦU CẢ BUỔI]` nếu đây là vạch đầu tiên của buổi. */
+function themVach(s: TrangThaiMvp, tv: TinhVachMvp | undefined): { s: TrangThaiMvp; them: LoiMvp[] } {
+  const truoc = s.vach ?? 0;
+  return { s: { ...s, vach: truoc + 1 }, them: truoc === 0 ? (tv?.saiLanDau ?? []) : [] };
+}
+
+/**
+ * Lời hiện khi bấm "Trình" sai ở màn sửa `· tính vạch` đang đứng: "Khi trình sai" của thẻ, cộng `[SAI LẦN ĐẦU CẢ BUỔI]` nếu lần
+ * này là vạch đầu tiên. Giao diện gọi TRƯỚC khi gửi `trinh-sai`.
+ */
+export function loiTrinhSai(kb: KichBanMvp, s: TrangThaiMvp): LoiMvp[] {
+  const n = s.conTro ? timChuoi(kb, s.conTro.chuoi)?.nodes[s.conTro.nut] : undefined;
+  if (n?.type !== 'fix-query' || !n.tinhVach) return [];
+  return [...(kb.thuThach[n.challengeId]?.khiTrinhSai ?? []), ...((s.vach ?? 0) === 0 ? (n.tinhVach.saiLanDau ?? []) : [])];
+}
+
+/** Ảnh chụp của điểm lưu: trạng thái bỏ bảng rank và các điểm lưu (hai thứ này không bị chơi lại chụp đè). */
+function chupDiemLuu(s: TrangThaiMvp): TrangThaiMvp {
+  const chup: TrangThaiMvp = { ...s };
+  delete chup.diemLuuVu;
+  delete chup.bangRank;
+  return chup;
+}
+
+/** Vụ "Chơi lại" được từ trạng thái này (vụ đang chơi có điểm lưu đầu vụ); không → `null`. Việc phụ không có. */
+export function vuChoiLai(kb: KichBanMvp, s: TrangThaiMvp): { vu: string; soVu: number; tenVu: string } | null {
+  if (s.giaiDoan === 'phu') return null;
+  const vu = s.vu ?? kb.lich.vu.id;
+  if (!s.diemLuuVu?.[vu]) return null;
+  const { so, ten } = soVaTenVu(kb, vu);
+  return { vu, soVu: so, tenVu: ten };
 }
 
 function nutHienTai(kb: KichBanMvp, s: TrangThaiMvp): { chuoi: ChuoiMvp; nut: NutMvp | undefined } | { loi: string } {
@@ -1017,9 +1098,31 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
       case 'notebook-note':
         s = tienNut({ ...s, soTay: them(s.soTay, nut.trang) });
         break;
+      case 'diem-luu-vu': {
+        // Gói B19: điểm lưu đầu vụ — vạch về 0, chụp trạng thái ngay sau nút này (không kèm bảng rank / điểm lưu).
+        const sach = tienNut({ ...s, vach: 0 });
+        s = { ...sach, diemLuuVu: { ...(s.diemLuuVu ?? {}), [nut.vu]: chupDiemLuu(sach) } };
+        break;
+      }
+      case 'cham-vu': {
+        // Gói B19: chấm vụ — cờ rank mới thay cờ cũ, bảng rank ghi đè vụ này; vạch về 0 (đã ghi trong bảng rank).
+        const ket = chamVu(kb, s, nut);
+        const co = s.co.filter((c) => !c.startsWith(`${nut.vu}-rank-`));
+        s = tienNut({ ...s, co: [...co, `${nut.vu}-rank-${ket.rank}`], bangRank: { ...(s.bangRank ?? {}), [nut.vu]: ket }, vach: 0 });
+        break;
+      }
       case 'ending-branch': {
         const ket = kb.lich.ket;
         if (!ket) return loi(s, 'Lịch không có mục Kết.');
+        if (boCoChamVu(kb)) {
+          // Gói B19: rẽ theo rank của vụ gốc — A/B kết thật, C kết tạm; cờ <vụ>-ket-that / -ket-tam đặt ngay lúc rẽ.
+          const vu = kb.lich.vu.id;
+          const that = rankHienTai(s, vu) !== 'c';
+          const ketQua = that ? 'that' : 'tam';
+          const co = s.co.filter((c) => c !== `${vu}-ket-that` && c !== `${vu}-ket-tam`);
+          s = { ...nhayToi(kb, s, that ? ket.that : (ket.tam ?? ket.thuong), 'ket'), ketQua, co: [...co, `${vu}-ket-${ketQua}`] };
+          break;
+        }
         const chuoiThat = timChuoi(kb, ket.that);
         const dieuKien = chuoiThat?.nodes.find((n) => n.type === 'condition');
         const that = dieuKien?.type === 'condition' ? thoaDieuKien(kb, s, dieuKien.dieuKien) : false;
@@ -1135,7 +1238,8 @@ export function khungNhin(kb: KichBanMvp, s: TrangThaiMvp): KhungNhinMvp {
     case 'challenge':
     case 'fix-query': {
       const the = kb.thuThach[nut.challengeId];
-      return the ? { kind: nut.type, thuThach: the } : { kind: 'error', message: `Không có thẻ thử thách "${nut.challengeId}".` };
+      if (!the) return { kind: 'error', message: `Không có thẻ thử thách "${nut.challengeId}".` };
+      return nut.type === 'fix-query' && nut.tinhVach ? { kind: nut.type, thuThach: the, tinhVach: nut.tinhVach } : { kind: nut.type, thuThach: the };
     }
     case 'effect':
       return { kind: 'effect', effectId: nut.effectId };
@@ -1174,16 +1278,37 @@ export function khungNhin(kb: KichBanMvp, s: TrangThaiMvp): KhungNhinMvp {
       const hd = khungHoiDap(kb, s, nut.ma);
       return hd ? { kind: 'hoi-dap', hoiDap: hd } : { kind: 'error', message: `Không có tờ dữ kiện "${nut.ma}".` };
     }
-    case 'end':
+    case 'dong-thoi-gian':
+    case 'hien-dong-thoi-gian': {
+      const d = kb.dongThoiGian?.[nut.id];
+      if (!d) return { kind: 'error', message: `Không có dòng thời gian "${nut.id}".` };
+      const luu = s.dongThoiGian?.[nut.id];
+      const chiXem = nut.type === 'hien-dong-thoi-gian';
+      // Xem lại mà ván chưa từng dựng (ô lưu cũ, nhảy tới): hiện bản dựng sẵn.
+      const daDat = chiXem && !luu?.xong ? banDungSan(d) : (luu?.o ?? {});
+      return { kind: 'dong-thoi-gian', dtg: d, daDat, xong: dongThoiGianXong(d, daDat), chiXem };
+    }
+    case 'so-tong-ket': {
+      const { so, ten } = soVaTenVu(kb, nut.vu);
+      return { kind: 'so-tong-ket', vu: nut.vu, soVu: so, tenVu: ten, ket: s.bangRank?.[nut.vu] ?? null };
+    }
+    case 'ghep-mau':
+      return { kind: 'ghep-mau', nut };
+    case 'end': {
+      const vuKet = s.giaiDoan === 'phu' ? null : (vuDangChoi(kb, s)?.id ?? kb.lich.vu.id);
+      const coCham = vuKet !== null && vuCoChamVu(kb).has(vuKet);
+      const sv = vuKet ? soVaTenVu(kb, vuKet) : null;
       return {
         kind: 'end',
         ketQua: s.ketQua ?? ketQuaVuGoc(kb, s),
+        ...(coCham && vuKet && sv ? { chamVu: { vu: vuKet, soVu: sv.so, tenVu: sv.ten, ket: s.bangRank?.[vuKet] ?? null, choiLai: !!s.diemLuuVu?.[vuKet] } } : {}),
         vu: s.giaiDoan === 'phu' ? null : vuDangChoi(kb, s),
         vuKe: s.giaiDoan === 'phu' ? null : vuKeTiep(kb, s),
         phu: phuMoDuoc(kb, s),
         phuXong: s.giaiDoan === 'phu' ? phuDangLam(kb, s) : null,
         phuDangDo: phuDaCat(kb, s),
       };
+    }
     default:
       return { kind: 'error', message: `Nút "${nut.type}" không phải nút cần người chơi.` };
   }
@@ -1289,7 +1414,7 @@ function vaoLaiDiem(kb: KichBanMvp, s: TrangThaiMvp, kp: KhamPhaMvp, nut: Extrac
     const moi: TrangThaiMvp = { ...s, hoiDap: null, canhLui: null, khamPha: { ...trong, cha: { ...kp, dangXem: chuoi } }, conTro: { ...trong.veLai } };
     return napLaiLuot(kb, moi, chuoi);
   }
-  if (nut.kieu) return null;
+  if (!laCanhThuong(nut)) return null;
   const hd = hoiLaiDuoc(kb, s, chuoi);
   const to = hd ? toHoiDap(kb, hd.ma) : undefined;
   if (!hd || !to) return null;
@@ -1339,6 +1464,22 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
   if (hd.type === 'doi-muc') {
     if ((hd.nhapVai !== undefined && !laMucNhapVai(hd.nhapVai)) || (hd.sql !== undefined && !laMucSql(hd.sql))) return s;
     return datMuc(s, hd);
+  }
+  if (hd.type === 'choi-lai-vu') {
+    // Gói B19: về điểm lưu đầu vụ. Bảng rank, các điểm lưu và thiết lập của người chơi (mức, cách hỏi) theo ván hiện tại.
+    const vu = hd.vu ?? vuChoiLai(kb, s)?.vu;
+    const chup = vu ? s.diemLuuVu?.[vu] : undefined;
+    if (!chup) return s;
+    const moi: TrangThaiMvp = {
+      ...chup,
+      batDauLuc: hd.luc ?? s.batDauLuc + 1,
+      diemLuuVu: s.diemLuuVu,
+      ...(s.bangRank ? { bangRank: s.bangRank } : {}),
+      ...(s.mucNhapVai ? { mucNhapVai: s.mucNhapVai } : {}),
+      ...(s.mucSql ? { mucSql: s.mucSql } : {}),
+      ...(s.cachChoi ? { cachChoi: s.cachChoi } : {}),
+    };
+    return chayToiNutCanNguoiChoi(kb, moi);
   }
   const kn = khungNhin(kb, s);
   let moi: TrangThaiMvp | null = null;
@@ -1411,6 +1552,21 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
         if (conLai.length === 0) moi = sauHien(kb, moi, s.sauKhiHien);
       } else if (kn.kind === 'show-document') {
         moi = tienNut(hienTaiLieu(s, kn.documentId));
+      } else if (kn.kind === 'dong-thoi-gian') {
+        // Gói B19: dựng xong mới đi tiếp; bản xem lại thì đi luôn.
+        if (kn.chiXem) moi = tienNut(s);
+        else if (kn.xong) moi = tienNut({ ...s, dongThoiGian: { ...(s.dongThoiGian ?? {}), [kn.dtg.id]: { o: kn.daDat, xong: true } } });
+        else return s;
+      } else if (kn.kind === 'so-tong-ket') {
+        moi = tienNut(s);
+      } else if (kn.kind === 'ghep-mau') {
+        // Gói B19: hai thẻ lên bảng (bỏ khỏi khay "Chưa ghim"), chỉ đỏ và giấy nhớ ở lại.
+        const n = kn.nut;
+        const bang = s.bang ?? { day: {}, viTri: {} };
+        const id = n.the.join('+');
+        const ghep = [...(bang.ghepMau ?? []).filter((g) => g.id !== id), { id, the: [...n.the], chu: n.giayNho, nguoi: n.nguoi }];
+        const boGhim = (bang.boGhim ?? []).filter((x) => !n.the.includes(x));
+        moi = tienNut({ ...s, bang: { ...bang, ghepMau: ghep, ...(bang.boGhim ? { boGhim } : {}) } });
       } else if (kn.kind === 'line' || kn.kind === 'image' || kn.kind === 'effect' || kn.kind === 'projector' || kn.kind === 'notebook-lookup') {
         moi = tienNut(s);
         // Ghi nhận người vừa nói (để bản đồ biết người chơi đã gặp ai).
@@ -1452,6 +1608,12 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       if (kn.kind === 'question') {
         const c = kn.nut.choices.find((x) => x.id === hd.luaChon);
         if (!c) return s;
+        if (kn.nut.tinhVach && !c.correct) {
+          // Gói B19: chọn sai ở trắc nghiệm `· tính vạch` → một vạch, lời của lựa chọn (+ lời "sai lần đầu cả buổi"), chọn lại.
+          const v = themVach(s, kn.nut.tinhVach);
+          moi = batDauPhanHoi(kb, v.s, kn.nut.id, 'question', false, [...c.feedback, ...v.them], false);
+          break;
+        }
         moi = batDauPhanHoi(kb, s, kn.nut.id, 'question', c.correct, c.feedback, kn.nut.truUyTin);
       } else if (kn.kind === 'branch') {
         const c = kn.luaChon.find((x) => x.id === hd.luaChon);
@@ -1467,7 +1629,19 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       if (kn.kind !== 'doi-chat' || kn.daTrinh.includes(hd.the) || !coTrongHoSo(s, hd.the)) return s;
       const nut = kn.nut;
       const b = nut.bangChung.find((x) => x.id === hd.the);
-      const muc = b?.muc ?? 'khac';
+      if (nut.tinhVach) {
+        // Gói B19: đối chất `· tính vạch` — thẻ [ĐÚNG] đi tiếp; thẻ [SAI] / thẻ khác thêm một vạch, lời phản hồi, chọn lại.
+        const dung = b?.muc === 'dung';
+        const sai = (s.doiChat?.id === nut.id ? (s.doiChat.sai ?? 0) : 0) + (dung ? 0 : 1);
+        const s2: TrangThaiMvp = { ...s, doiChat: { id: nut.id, daTrinh: [...kn.daTrinh, hd.the], muc: kn.muc, sai } };
+        if (dung) moi = batDauPhanHoi(kb, s2, nut.id, 'doi-chat', true, b?.feedback ?? [], false);
+        else {
+          const v = themVach(s2, nut.tinhVach);
+          moi = batDauPhanHoi(kb, v.s, nut.id, 'doi-chat', false, [...(b?.muc === 'sai' ? b.feedback : nut.khac), ...v.them], false);
+        }
+        break;
+      }
+      const muc = b?.muc === 'dung' || b?.muc === 'sai' ? 'khac' : (b?.muc ?? 'khac');
       const THU_TU = ['khong', 'goi-y', 'ho-tro', 'du'] as const;
       const mucMoi = muc === 'khac' ? kn.muc : (THU_TU[Math.max(THU_TU.indexOf(kn.muc), THU_TU.indexOf(muc))] ?? kn.muc);
       let co = s.co;
@@ -1485,7 +1659,7 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       break;
     }
     case 'chua-du': {
-      if (kn.kind !== 'doi-chat') return s;
+      if (kn.kind !== 'doi-chat' || kn.nut.tinhVach) return s;
       moi = batDauPhanHoi(kb, s, kn.nut.id, 'doi-chat', true, kn.nut.chuaDu, false);
       break;
     }
@@ -1501,6 +1675,23 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       const id = kn.nut.id;
       const lanThu = { ...s.lanThu, [id]: (s.lanThu[id] ?? 0) + 1 };
       moi = hd.giaTri === kn.nut.chon.giaTri ? tienNut({ ...s, lanThu }) : { ...s, lanThu };
+      break;
+    }
+    case 'trinh-sai': {
+      // Gói B19: màn sửa `· tính vạch` — "Trình" sai: một vạch, ở lại màn (giao diện hiện lời `loiTrinhSai`).
+      const n = s.conTro ? timChuoi(kb, s.conTro.chuoi)?.nodes[s.conTro.nut] : undefined;
+      if (kn.kind !== 'fix-query' || n?.type !== 'fix-query' || !n.tinhVach) return s;
+      moi = { ...s, vach: (s.vach ?? 0) + 1, lanThu: { ...s.lanThu, [kn.thuThach.id]: (s.lanThu[kn.thuThach.id] ?? 0) + 1 } };
+      break;
+    }
+    case 'dat-the-dtg': {
+      // Gói B19: thả đúng thẻ vào ô thì ghi; thả sai thì máy đứng yên.
+      if (kn.kind !== 'dong-thoi-gian' || kn.chiXem) return s;
+      const o = kn.dtg.o.find((x) => x.id === hd.o);
+      if (!o || !thaDung(o, hd.the, kn.daDat)) return s;
+      const tam = kn.dtg.theTam.some((t) => t.id === hd.the);
+      if (!tam && !coTrongHoSo(s, hd.the)) return s;
+      moi = { ...s, dongThoiGian: { ...(s.dongThoiGian ?? {}), [kn.dtg.id]: { o: { ...kn.daDat, [o.id]: hd.the } } } };
       break;
     }
     case 'xong-thu-thach': {

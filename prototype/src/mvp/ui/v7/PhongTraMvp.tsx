@@ -16,7 +16,7 @@
  */
 import { banDangCoMat, type QuanSatTruyVanMvp } from '../../engine/tri-nho-dong-hanh';
 import { useMemo, useState } from 'react';
-import type { BoDuLieuMvp, KichBanMvp, TheThuThachMvp } from '../../../content/mvp/types';
+import type { BoDuLieuMvp, KichBanMvp, LoiMvp, TheThuThachMvp } from '../../../content/mvp/types';
 import { soundEngine } from '../../../shared/audio/sound-engine';
 import type { GiaTriHoSo } from '../../engine/giay-nho';
 import type { TrangThaiMvp, GhiChuTruyVanMvp, PhieuTruyVanMvp, MauGhimMvp, MucNhapVaiMvp, MucSqlMvp } from '../../engine/trang-thai';
@@ -49,11 +49,13 @@ export interface PhongTraMvpProps {
   /** Gói B17 (bộ mùa 1): mức SQL (nhãn SQL / ô gõ tự do ở màn tra v7) và mức nhập vai (bạn đi cùng tự lên tiếng). Thiếu = như cũ. */
   mucSql?: MucSqlMvp;
   mucNhapVai?: MucNhapVaiMvp;
+  /** Gói B19: màn sửa `· tính vạch` (nút "Chạy thử" / "Trình"), xem `ManTraV7Props.trinh`. */
+  trinh?: { loiSai: () => LoiMvp[]; onSai: () => void };
 }
 
 type Pha = { ten: 'bang' } | { ten: 'may' } | { ten: 'ghim'; id: string; dung: string[]; phieu?: PhieuTruyVanMvp; ghiChu?: GhiChuTruyVanMvp[] };
 
-export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, onDoiCho, onDoiMau, onXong, onDaXemTruyVan, onRoi, tenCanhRoi, mucSql, mucNhapVai }: PhongTraMvpProps) {
+export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, onDoiCho, onDoiMau, onXong, onDaXemTruyVan, onRoi, tenCanhRoi, mucSql, mucNhapVai, trinh }: PhongTraMvpProps) {
   const laPhongMay = noi !== undefined && /phòng máy/i.test(noi);
   const canh: CanhTra = mode === 'fix-query' ? 'man-chieu' : laPhongMay ? 'phong-may' : 'phong-clb';
   const [pha, setPha] = useState<Pha>(() => (mode === 'fix-query' || laPhongMay ? { ten: 'may' } : { ten: 'bang' }));
@@ -195,6 +197,7 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
         {...(khoaNhap ? { khoaNhap } : {})}
         {...(mucSql ? { mucSql } : {})}
         {...(mucNhapVai ? { mucNhapVai } : {})}
+        {...(trinh && mode === 'fix-query' ? { trinh } : {})}
         onXong={(dung, result) => {
           const isNguonDuocKhaiBao = !!the.vatChung && Object.values(kb.thuThach).some((challenge) => challenge.nguon === the.vatChung?.id);
           const phieu = result && the.vatChung && isNguonDuocKhaiBao

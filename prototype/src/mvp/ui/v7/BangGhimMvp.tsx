@@ -15,12 +15,13 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react';
 import type { KichBanMvp } from '../../../content/mvp/types';
 import { CO_THE, KHUNG_BANG, dungBang, gocNghieng, MA_THE_HOI, viTriThe, type TheBang } from '../../engine/bang-dieu-tra';
-import { MAU_GHIM, type MauGhimMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp } from '../../engine/trang-thai';
+import { MAU_GHIM, type MauGhimMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type GhepMauLuuMvp, type PhieuTruyVanMvp } from '../../engine/trang-thai';
 import { anhTheoTen } from '../anh-mvp';
 import { TheHoSo } from '../TheHoSo';
 import { chaySql, type GiaTriSql } from '../../engine/sql-mvp';
 import { IconTerminal, IconX } from '../../../shared/ui/icons';
 import './v7.css';
+import '../b19.css';
 
 export interface BangGhimMvpProps {
   kb: KichBanMvp;
@@ -44,6 +45,10 @@ export interface BangGhimMvpProps {
   onGhim?: (the: string, ghim: boolean) => void;
   /** Vẽ cả giấy nhớ hỏi ra từ nhân chứng (gói B12; chỉ khung Hồ sơ bật). */
   hoiDap?: boolean;
+  /** Gói B19: lần ghép mẫu đang diễn (màn `[GHÉP MẪU]`): hai thẻ lên bảng, chỉ đỏ tự kéo, giấy nhớ dán xuống. */
+  ghep?: GhepMauLuuMvp;
+  /** Tên người ghép theo mã (chữ ký nhỏ dưới giấy nhớ ghép mẫu). */
+  tenNguoi?: (ma: string) => string;
 }
 
 const TEN_MAU: Record<MauGhimMvp, string> = {
@@ -56,8 +61,8 @@ const TEN_MAU: Record<MauGhimMvp, string> = {
 
 const boNgoac = (t: string): string => t.replace(/^\[|\]$/g, '');
 
-export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chuaXem, onXemThe, onDoiMau, onGhim, hoiDap = false }: BangGhimMvpProps) {
-  const bang = useMemo(() => dungBang(kb, s, them, { hoiDap }), [kb, s, them, hoiDap]);
+export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chuaXem, onXemThe, onDoiMau, onGhim, hoiDap = false, ghep, tenNguoi }: BangGhimMvpProps) {
+  const bang = useMemo(() => dungBang(kb, s, them, { hoiDap, ...(ghep ? { ghep } : {}) }), [kb, s, them, hoiDap, ghep]);
   // Local state lưu vị trí người chơi đã kéo, đảm bảo thẻ giữ nguyên vị trí sau khi thả tay, không bị tự động sắp xếp lại hoặc giật về chỗ cũ.
   const [viTriCucBo, setViTriCucBo] = useState<Record<string, { x: number; y: number }>>({});
   useEffect(() => {
@@ -200,7 +205,7 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
   }, [xem, hienMenuGhim]);
   const theXem = xem ? bang.the.find((t) => t.id === xem) : undefined;
   const anhXem = theXem?.anh && theXem.loai !== 'tai-lieu' ? anhTheoTen(theXem.anh) : undefined;
-  const KIEU_DAY: Record<string, string> = { 'truy-van': 'dùng để tra', 'loai-tru': 'loại trừ', nguon: 'nguồn' };
+  const KIEU_DAY: Record<string, string> = { 'truy-van': 'dùng để tra', 'loai-tru': 'loại trừ', nguon: 'nguồn', ghep: 'ghép mẫu' };
   const noiXem = theXem
     ? bang.day.flatMap((d) => {
         const kia = d.tu === theXem.id ? d.den : d.den === theXem.id ? d.tu : null;
@@ -241,8 +246,8 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                 const my = (a.y + b.y) / 2 + Math.min(46, Math.hypot(b.x - a.x, b.y - a.y) * 0.1);
                 return (
                   <path
-                    key={`${d.tu}>${d.den}`}
-                    className={`bang__chi bang__chi--${d.kieu} bang__chi--mau-${d.mau}${moi && d.den === moi ? ' is-moi' : ''}`}
+                    key={`${d.tu}>${d.den}:${d.kieu}`}
+                    className={`bang__chi bang__chi--${d.kieu} bang__chi--mau-${d.mau}${(moi && d.den === moi) || (d.kieu === 'ghep' && ghep && ghep.the[1] === d.den && ghep.the[0] === d.tu) ? ' is-moi' : ''}`}
                     d={`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`}
                     pathLength={1}
                   />
@@ -250,6 +255,20 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
               })}
             </svg>
             {bang.the.length === 0 ? <p className="bang__trong">Bảng còn trống.</p> : null}
+            {/* Gói B19: giấy nhớ ghép mẫu, dán giữa hai thẻ đã nối, hơi lệch xuống dưới sợi chỉ. */}
+            {(bang.giayGhep ?? []).map((g) => {
+              const a = ghim(g.tu);
+              const b = ghim(g.den);
+              if (!a || !b) return null;
+              const left = Math.max(8, Math.min(KHUNG_BANG.rong - 222, (a.x + b.x) / 2 - 105));
+              const top = Math.max(8, Math.min(KHUNG_BANG.cao - 150, (a.y + b.y) / 2 + 70));
+              return (
+                <p key={g.id} className={`bang__giay-ghep${g.moi ? ' is-moi' : ''}`} style={{ left, top }} aria-label={`Giấy nhớ ghép mẫu: ${dienTen(g.chu)}`}>
+                  {dienTen(g.chu)}
+                  {tenNguoi ? <span className="bang__giay-ghep-ky">— {tenNguoi(g.nguoi)}</span> : null}
+                </p>
+              );
+            })}
             {bang.the.map((t) => {
               const p = viTri[t.id];
               if (!p) return null;

@@ -25,7 +25,12 @@ import { BacklogModal } from '../../shared/vn/BacklogModal';
 import { useVnStore } from '../../shared/vn/vn-store';
 import { ObjectionEffect } from '../../story/ui/ObjectionEffect';
 import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
-import { canGioiThieu, canhLuiThuThach, dienTen as dienTenMay, dieuHuongTuDo, khungNhin, phuMoDuoc, tenNguoiNoi, type KhungNhinMvp } from '../engine/may';
+import { canGioiThieu, canhLuiThuThach, dienTen as dienTenMay, dieuHuongTuDo, khungNhin, loiTrinhSai, phuMoDuoc, tenNguoiNoi, tinhVachHienTai, vuChoiLai, xuLy, type KhungNhinMvp } from '../engine/may';
+import { theCuaDongThoiGian } from '../engine/dong-thoi-gian';
+import { DongThoiGianMvp } from './DongThoiGianMvp';
+import { LeSoVachMvp } from './LeSoVachMvp';
+import { SoTongKetMvp } from './SoTongKetMvp';
+import { BangGhimMvp } from './v7/BangGhimMvp';
 import { mucNhapVaiCua, mucSqlCua } from '../engine/muc-choi';
 import { giaTriTuHoSo } from '../engine/giay-nho';
 import { chonNhacNen, type NhacTruoc } from '../engine/nhac';
@@ -295,6 +300,17 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
     xoa();
     batDau();
   }, [clearBacklog, xoa, batDau]);
+  /** Gói B19: "Chơi lại Vụ n" — về điểm lưu đầu vụ (bảng rank giữ tới khi chấm lại). */
+  const choiLaiVu = useCallback(() => {
+    const st = useKhoMvp.getState().trangThai;
+    if (!st) return;
+    const moi = xuLy(KICH_BAN, st, { type: 'choi-lai-vu', luc: Date.now() });
+    if (moi === st) return;
+    clearBacklog();
+    setGioiThieuMo(null);
+    setKho(null);
+    datTrangThai(moi);
+  }, [clearBacklog, datTrangThai]);
 
   // Khung hỏi nhân chứng "Không xưng tên" mở lần đầu: thẻ "Nhân vật mới" bật ngay (hook phải đứng trước lệnh return sớm).
   const theNhanChung = s && kn && kn.kind === 'hoi-dap' ? canGioiThieu(kb, s, kn) : null;
@@ -340,6 +356,9 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
               { speaker: kn.hoiDap.nhanChung }
             : null;
   const dem = s.giaiDoan === 'ngay' && s.khung >= kb.lich.khung.length;
+  // Gói B19: lệnh `· tính vạch` đang đứng (lề sổ Minh Anh) và vụ "Chơi lại" được (menu ≡).
+  const tinhVach = tinhVachHienTai(kb, s);
+  const vuLai = vuChoiLai(kb, s);
   const rung = kn.kind === 'effect' || loiHienTai?.expression === 'stunned';
   const laDoc = viewportMode === 'mobile';
   const laGiaLap = laDoc && typeof window !== 'undefined' && window.innerWidth > 768 && window.matchMedia('(orientation: portrait)').matches;
@@ -428,7 +447,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             nut={kn.nut}
             daTrinh={kn.daTrinh}
             muc={kn.muc}
-            conLuot={kn.conLuot}
+            {...(kn.nut.tinhVach ? { tinhVach: true } : { conLuot: kn.conLuot })}
             dienTen={dienTen}
             tenNguoiNoi={(ma) => tenNguoiNoi(kb, ma, s)}
             onTrinh={(the) => hanhDong({ type: 'trinh-the', the })}
@@ -513,9 +532,53 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             {...(luiVe ? { onRoi: () => hanhDong({ type: 'roi-thu-thach' }), ...(tenCanhRoi ? { tenCanhRoi } : {}) } : {})}
             {...(mucSql ? { mucSql } : {})}
             {...(mucNhapVai ? { mucNhapVai } : {})}
+            // Gói B19: màn sửa `· tính vạch` — "Chạy thử" / "Trình"; lời trình sai đọc TRƯỚC khi máy thêm vạch.
+            {...(kn.kind === 'fix-query' && kn.tinhVach
+              ? { trinh: { loiSai: () => loiTrinhSai(kb, useKhoMvp.getState().trangThai ?? s), onSai: () => hanhDong({ type: 'trinh-sai' }) } }
+              : {})}
           />
         );
       }
+      case 'dong-thoi-gian':
+        return (
+          <DongThoiGianMvp
+            key={`${kn.dtg.id}-${kn.chiXem ? 'xem' : 'dung'}`}
+            kb={kb}
+            dtg={kn.dtg}
+            the={kn.chiXem ? [] : theCuaDongThoiGian(kb, s, kn.dtg)}
+            daDat={kn.daDat}
+            xong={kn.xong}
+            chiXem={kn.chiXem}
+            docTungO={kn.chiXem}
+            dienThoai={dienThoai}
+            dienTen={dienTen}
+            tenNguoiNoi={(ma) => tenNguoiNoi(kb, ma, s)}
+            onDat={(o, the) => hanhDong({ type: 'dat-the-dtg', o, the })}
+            onTiep={tiep}
+          />
+        );
+      case 'so-tong-ket':
+        return (
+          <div className="so-tk-man">
+            <SoTongKetMvp key={`${kn.vu}-${s.batDauLuc}`} soVu={kn.soVu} tenVu={kn.tenVu} ket={kn.ket} dienTen={dienTen} onTiep={tiep} />
+          </div>
+        );
+      case 'ghep-mau':
+        return (
+          <div className="ghep-mau phong-tra">
+            <BangGhimMvp
+              kb={kb}
+              s={s}
+              dienTen={dienTen}
+              ghep={{ id: kn.nut.the.join('+'), the: kn.nut.the, chu: kn.nut.giayNho, nguoi: kn.nut.nguoi }}
+              tenNguoi={(ma) => tenNguoiNoi(kb, ma, s)}
+            >
+              <button type="button" className="bang__mo-may bang__mo-may--tiep" onClick={tiep} autoFocus>
+                Tiếp tục
+              </button>
+            </BangGhimMvp>
+          </div>
+        );
       case 'effect':
         return isEffectId(kn.effectId) ? <ObjectionEffect effectId={kn.effectId} onDone={tiep} /> : <HieuUngLa onDone={tiep} />;
       case 'projector':
@@ -570,9 +633,11 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
               clearBacklog();
               hanhDong({ type: 'xong-nhiem-vu-phu' });
             }}
-            tongKet={kn.phuXong ? null : tongKetVu(kb, s, kn.vu ? kn.vu.chuoi : null)}
+            tongKet={kn.phuXong || kn.chamVu ? null : tongKetVu(kb, s, kn.vu ? kn.vu.chuoi : null)}
             onChoiLai={choiLai}
             onVeTieuDe={onVeTieuDe}
+            // Gói B19: bộ có [CHẤM VỤ] — màn kết kiểu sổ CLB, "Chơi lại Vụ n".
+            {...(kn.chamVu && !kn.phuXong ? { chamVu: { soVu: kn.chamVu.soVu, tenVu: dienTen(kn.chamVu.tenVu), ket: kn.chamVu.ket, choiLai: kn.chamVu.choiLai }, onChoiLaiVu: choiLaiVu } : {})}
           />
         );
       case 'error':
@@ -595,6 +660,8 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         </button>
       ) : null}
       {dotTheMoi[0] ? <TheMoiMvp key={dotTheMoi[0].map((t) => t.id).join('|')} danhSach={dotTheMoi[0]} dienTen={dienTen} onXong={xongDotTheMoi} /> : null}
+      {/* Gói B19: lề sổ Minh Anh ở lệnh `· tính vạch` (cả lúc đang nghe lời phản hồi của lệnh ấy). */}
+      {tinhVach && ['question', 'doi-chat', 'fix-query', 'feedback'].includes(kn.kind) ? <LeSoVachMvp vach={s.vach ?? 0} {...(tinhVach.cau ? { cau: tinhVach.cau } : {})} /> : null}
       {gioiThieuMo ? <GioiThieuMvp key={gioiThieuMo} kb={kb} nhanVat={gioiThieuMo} bietVe={s.bietVe ?? null} onDong={dongGioiThieu} /> : null}
       <HudMvp
         kb={kb}
@@ -613,6 +680,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         onMoLich={() => setLichMo(true)}
         onTamDungViecPhu={() => hanhDong({ type: 'tam-dung-nhiem-vu-phu' })}
         onMoBangHoatDong={() => setBangHoatDongMo(true)}
+        choiLaiVu={vuLai ? { soVu: vuLai.soVu, lam: choiLaiVu } : null}
         onLui={coTheLui ? lui : undefined}
         loiThoai={kn.kind === 'line' || kn.kind === 'feedback' ? thanhLine(kb, s, kn.loi) : undefined}
       />
@@ -643,10 +711,10 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         xoaDan={kn.kind === 'explore' || kn.kind === 'chon-dia-diem'}
         nghi={kn.kind === 'line' && kn.loi.speaker === 'player' && /^\(.*\)$/s.test(kn.loi.text.trim())}
         shaking={rung}
-        coDan={!laTheChu && !['chon-dia-diem', 'explore', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick'].includes(kn.kind)}
+        coDan={!laTheChu && !['chon-dia-diem', 'explore', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick', 'dong-thoi-gian', 'so-tong-ket', 'ghep-mau'].includes(kn.kind)}
         tenNguoiChoi={s.tenNguoiChoi}
         // Việc nhắc chỉ hiện khi sân khấu còn là cảnh (màn tra, tài liệu, ảnh chèn, màn chiếu, thẻ chữ… thì ẩn).
-        nhacViec={laTheChu || ['chon-dia-diem', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick', 'challenge', 'fix-query'].includes(kn.kind) ? null : s.nhacViec}
+        nhacViec={laTheChu || ['chon-dia-diem', 'image', 'show-document', 'end', 'projector', 'trial-filter', 'notebook-lookup', 'line-pick', 'challenge', 'fix-query', 'dong-thoi-gian', 'so-tong-ket', 'ghep-mau'].includes(kn.kind) ? null : s.nhacViec}
         dienTen={dienTen}
         isCard={laTheChu}
         dongHanh={kn.kind === 'hoi-dap' ? (

@@ -224,7 +224,8 @@ export interface RawLich {
   viecChot: string | null;
   ngay: RawNgay[];
   ngayHop: { chuoi: string; viTri: ViTri } | null;
-  ket: { that: string; thuong: string; viTri: ViTri } | null;
+  /** `tam` (gói B19): dòng `- Kết tạm:` (kết rank C của bộ có `[CHẤM VỤ]`); chỉ khai "Kết tạm" thì `thuong` = `tam`. */
+  ket: { that: string; thuong: string; tam: string | null; viTri: ViTri } | null;
   /** `## <Tên> {vụ sau: <mã>}`: vụ chơi tiếp sau vụ gốc — một chuỗi, ngày thật (tùy chọn), chữ màn kết. */
   vuSau: RawVuSau[];
   viecNgayLe: RawViecNgayLe[];
@@ -279,7 +280,7 @@ export type MucMvp =
   | { kind: 'show-document'; id: string }
   /** `- [ẢNH <tên tệp>]`: ảnh chèn giữa hội thoại (chibi, CG) — tên tệp ảnh trong src/assets/**, không đuôi. */
   | { kind: 'image'; id: string; chuThich: string | null; moTa: string | null }
-  | { kind: 'question'; id: string; asker: { speaker: string; text: string }; choices: RawChoice[]; truUyTin: boolean }
+  | { kind: 'question'; id: string; asker: { speaker: string; text: string }; choices: RawChoice[]; truUyTin: boolean; /** Gói B19 `· tính vạch`. */ tinhVach: RawTinhVach | null }
   /**
    * `- [ĐỐI CHẤT <mã>( · trừ uy tín)?] <rival>: "<giả thuyết>"` + dòng con:
    *   `  - {<mã thẻ>} [ĐỦ CĂN CỨ|HỖ TRỢ|GỢI Ý] → phản hồi: <lời>[<br><lời>]`
@@ -287,12 +288,23 @@ export type MucMvp =
    *   `  - [KHÁC] → phản hồi: <lời>` (thẻ không khai, bắt buộc)
    *   `  - [NGƯỜI QUEN <mã>] → nói thay: <chuỗi>` (A5)
    */
-  | { kind: 'doi-chat'; id: string; asker: { speaker: string; text: string }; cauHoi: string | null; bangChung: RawBangChungDoiChat[]; chuaDu: RawLine[] | null; khac: RawLine[] | null; hetLuot: RawLine[] | null; truUyTin: boolean; nguoiQuen: { ma: string; noiThay: string } | null }
+  | { kind: 'doi-chat'; id: string; asker: { speaker: string; text: string }; cauHoi: string | null; bangChung: RawBangChungDoiChat[]; chuaDu: RawLine[] | null; khac: RawLine[] | null; hetLuot: RawLine[] | null; truUyTin: boolean; nguoiQuen: { ma: string; noiThay: string } | null; /** Gói B19 `· tính vạch`: dòng con `{thẻ} [ĐÚNG]`, `{thẻ} [SAI] → phản hồi:`, `[KHÁC]`, `[SAI LẦN ĐẦU CẢ BUỔI]`. */ tinhVach: RawTinhVach | null }
   | { kind: 'xong-viec-chinh' }
   /** `- [HỎI ĐÁP <mã>]` (gói B12): cảnh hỏi nhân chứng theo tờ `hoi-dap/<mã>.json`; các dòng lời ngay sau là cách "xem cả đoạn". */
   | { kind: 'hoi-dap'; ma: string }
   | { kind: 'challenge'; id: string }
-  | { kind: 'fix-query'; id: string }
+  /** `- [SỬA TRUY VẤN <thẻ>( · tính vạch( · câu n/m)?)?]` (gói B19: dòng con `[SAI LẦN ĐẦU CẢ BUỔI] → phản hồi: …`). */
+  | { kind: 'fix-query'; id: string; tinhVach: RawTinhVach | null }
+  /** Gói B19: `- [DÒNG THỜI GIAN <mã>]` (màn kéo thả) / `- [HIỆN DÒNG THỜI GIAN <mã>]` (`chiXem`: hiện bản đã dựng). */
+  | { kind: 'dong-thoi-gian'; id: string; chiXem: boolean }
+  /** Gói B19: `- [CHẤM VỤ <vụ>] cần: <thẻ>, <thẻ>, <dòng thời gian>`. */
+  | { kind: 'cham-vu'; vu: string; can: string[] }
+  /** Gói B19: `- [SỔ TỔNG KẾT <vụ>]`. */
+  | { kind: 'so-tong-ket'; vu: string }
+  /** Gói B19: `- [ĐIỂM LƯU VỤ <vụ>]`. */
+  | { kind: 'diem-luu-vu'; vu: string }
+  /** Gói B19: `- [GHÉP MẪU] <ai>: <thẻ> + <thẻ> · giấy nhớ: "<chữ>"`. */
+  | { kind: 'ghep-mau'; nguoi: string; the: string[]; giayNho: string }
   | { kind: 'effect'; id: string }
   | { kind: 'line-pick'; id: string; rows: RawPickRow[]; truUyTin: boolean }
   | { kind: 'projector'; id: string; source: NguonChieuMvp; run: boolean; rows: number | null }
@@ -319,12 +331,96 @@ export type MucMvp =
    * chờ người chơi bấm nút mang nhãn này. `- [HẾT NGÀY] <nhãn>` (không chuỗi): bấm là sang ngày kế luôn.
    */
   | { kind: 'het-ngay'; to: string | null; label: string }
-  | { kind: 'explore'; id: string; diem: RawDiemKhamPha[]; kieu: 'canh' | 'ban-do' | 'quan-sat'; nhanVat: string | null; gio: string | null; dang: string | null; haVySoi: boolean };
+  /** `kieu: 'dan'` (gói B19, `[KHÁM PHÁ <mã> · dàn]`): chân dung những người bấm được đứng trên dàn của cảnh, không cần x / y / rộng. */
+  | { kind: 'explore'; id: string; diem: RawDiemKhamPha[]; kieu: 'canh' | 'ban-do' | 'quan-sat' | 'dan'; nhanVat: string | null; gio: string | null; dang: string | null; haVySoi: boolean };
 
 export interface RawBangChungDoiChat {
   id: string;
-  muc: 'du' | 'ho-tro' | 'goi-y';
+  /** `dung` / `sai`: dòng con `{thẻ} [ĐÚNG]` / `{thẻ} [SAI]` của đối chất `· tính vạch` (gói B19). */
+  muc: 'du' | 'ho-tro' | 'goi-y' | 'dung' | 'sai';
   feedback: RawLine[];
+}
+
+/** Gói B19: đuôi `· tính vạch` (và `· câu n/m`) của `[SỬA TRUY VẤN]`, `[ĐỐI CHẤT]`, `[HỎI]`. */
+export interface RawTinhVach {
+  cau: { so: number; tong: number } | null;
+  /** Dòng con `[SAI LẦN ĐẦU CẢ BUỔI] → phản hồi: …`. */
+  saiLanDau: RawLine[] | null;
+}
+
+/**
+ * Đọc phần ` · …` sau mã của `[HỎI]` / `[ĐỐI CHẤT]` / `[SỬA TRUY VẤN]`: `trừ uy tín` (chỉ khi `choUyTin`), `tính vạch`, `câu n/m`
+ * (gói B19). Sai → ném lỗi.
+ */
+export function docTuyChonLenh(phan: string, ten: string, choUyTin: boolean): { truUyTin: boolean; tinhVach: RawTinhVach | null } {
+  let truUyTin = false;
+  let tinh = false;
+  let cau: { so: number; tong: number } | null = null;
+  for (const p of phan.split(' · ').slice(1).map((x) => x.trim())) {
+    const c = /^câu (\d+)\/(\d+)$/.exec(p);
+    if (p === 'trừ uy tín' && choUyTin) truUyTin = true;
+    else if (p === 'tính vạch') tinh = true;
+    else if (c) {
+      cau = { so: Number(c[1]), tong: Number(c[2]) };
+      if (cau.so < 1 || cau.so > cau.tong) throw new Error(`${ten}: "câu ${cau.so}/${cau.tong}" sai — số câu phải từ 1 tới ${cau.tong}`);
+    } else throw new Error(`${ten}: mục lạ "${p}" — dùng ${choUyTin ? '"trừ uy tín", ' : ''}"tính vạch", "câu <n>/<tổng>"`);
+  }
+  if (cau && !tinh) throw new Error(`${ten}: "câu n/m" chỉ đi cùng "tính vạch"`);
+  if (truUyTin && tinh) throw new Error(`${ten}: không dùng cùng lúc "trừ uy tín" và "tính vạch"`);
+  return { truUyTin, tinhVach: tinh ? { cau, saiLanDau: null } : null };
+}
+
+/** Gói B19: một ô của dòng thời gian (dong-thoi-gian.md). */
+export interface RawODongThoiGian {
+  id: string;
+  gio: string | null;
+  noi: string | null;
+  viec: string;
+  nhan: string[];
+  khoaSan: boolean;
+  khongDien: string | null;
+  keoSai: RawLine[] | null;
+  keoVaoTrong: RawLine[] | null;
+  viTri: ViTri;
+}
+
+/** Gói B19: một dòng thời gian (`## <mã> — <tên> {kiểu: tập dượt|chính}`). */
+export interface RawDongThoiGian {
+  id: string;
+  ten: string;
+  kieu: 'tap-duot' | 'chinh';
+  nguoiNhac: string | null;
+  keoSai: RawLine[] | null;
+  theTam: { id: string; chu: string }[];
+  o: RawODongThoiGian[];
+  viTri: ViTri;
+}
+
+/** Phần giữa của tiêu đề ô là giờ khi là "?" hoặc có dạng giờ "6:44", "trước 9:00", "7:00–9:00". */
+const LA_GIO = /^(?:\?|.*\d{1,2}:\d{2}.*)$/;
+
+/**
+ * Đọc tiêu đề ô `### <mã> · <giờ> · <nơi> · <việc>` (thiếu phần nào thì bỏ phần ấy; một phần giữa là giờ nếu có dạng giờ / "?",
+ * không thì là nơi). Sai → ném lỗi.
+ */
+export function docTieuDeO(tieuDe: string): { id: string; gio: string | null; noi: string | null; viec: string } {
+  const phan = tieuDe.split(' · ').map((x) => x.trim());
+  const id = phan[0] ?? '';
+  if (!/^[a-z0-9-]+$/.test(id)) throw new Error(`ô dòng thời gian: mã "${id}" không hợp lệ — viết "### <mã> · <giờ> · <nơi> · <việc>"`);
+  if (phan.length < 2 || phan.length > 4) throw new Error(`ô ${id}: tiêu đề phải là "### <mã> · <giờ> · <nơi> · <việc>" (bỏ phần thiếu): "${tieuDe}"`);
+  const viec = phan[phan.length - 1] ?? '';
+  const giua = phan.slice(1, -1);
+  let gio: string | null = null;
+  let noi: string | null = null;
+  if (giua.length === 2) {
+    gio = giua[0] ?? null;
+    noi = giua[1] ?? null;
+  } else if (giua.length === 1) {
+    if (LA_GIO.test(giua[0] ?? '')) gio = giua[0] ?? null;
+    else noi = giua[0] ?? null;
+  }
+  if (viec === '') throw new Error(`ô ${id}: thiếu phần việc`);
+  return { id, gio, noi, viec };
 }
 
 const MUC_DOI_CHAT: Record<string, RawBangChungDoiChat['muc']> = { 'ĐỦ CĂN CỨ': 'du', 'HỖ TRỢ': 'ho-tro', 'GỢI Ý': 'goi-y' };
@@ -339,6 +435,35 @@ export interface RawDiemKhamPha extends RawAnhDuKien {
   dau: 'chinh' | 'phu' | null;
   /** `· có: a, b`: nhân vật có mặt ở điểm này (bản đồ: ảnh mặt cạnh ghim khi người chơi đã biết lịch của họ). */
   co: string[];
+}
+
+/**
+ * Gói B19: dòng con của `[KHÁM PHÁ <mã> · dàn]` (đã bỏ `  - `): `nv:<mã>[/<biểu cảm>] → <chuỗi>[ · nhãn: …][ · dấu: !|?]…` — người
+ * đứng trên dàn, không cần x / y / rộng (viết kèm cũng được, máy bỏ qua). Sai cú pháp → ném lỗi.
+ */
+export function docDiemDan(v: string): RawDiemKhamPha {
+  const m = new RegExp(`^(nv:${MA}(?:/${MA})?)(?: · x [^→]+)? → (${MA})((?: · (?:sau|nhãn|dấu|có): [^·]+)*)$`).exec(v.trim());
+  if (!m) throw new Error(`[KHÁM PHÁ · dàn]: dòng con phải là "nv:<mã>[/<biểu cảm>] → <chuỗi>[ · nhãn: <chữ>][ · dấu: !|?]": "${v}"`);
+  return { sprite: m[1] ?? '', x: 0, y: 0, rong: 0, chuoi: m[2] ?? '', ...docPhanThemDiem(m[3] ?? '') };
+}
+
+/** Phần ` · sau: … · nhãn: … · dấu: … · có: …` của một chỗ bấm `[KHÁM PHÁ]`. */
+function docPhanThemDiem(phanThem: string): { sau: string[]; nhan: string | null; dau: 'chinh' | 'phu' | null; co: string[] } {
+  let sau: string[] = [];
+  let nhan: string | null = null;
+  let dau: 'chinh' | 'phu' | null = null;
+  let co: string[] = [];
+  for (const phan of phanThem.split(' · ').slice(1)) {
+    const [khoa, ...con] = phan.split(': ');
+    const gt = con.join(': ').trim();
+    if (khoa === 'sau') sau = chiaDanhSach(gt);
+    else if (khoa === 'có') co = chiaDanhSach(gt);
+    else if (khoa === 'dấu') {
+      if (gt !== '!' && gt !== '?') throw new Error(`[KHÁM PHÁ]: "dấu:" chỉ nhận ! hoặc ?: "${gt}"`);
+      dau = gt === '!' ? 'chinh' : 'phu';
+    } else nhan = gt;
+  }
+  return { sau, nhan, dau, co };
 }
 
 /** Đọc một dòng con của `[KHÁM PHÁ]` (đã bỏ `  - `); sai cú pháp → ném lỗi. */
@@ -408,9 +533,11 @@ export interface RawMvp {
   loiChung: RawLoiChungMvp;
   /** Bộ dữ liệu SQL cố định (du-lieu.md, đọc bằng du-lieu-mvp.ts); `null` = không có tệp. */
   duLieu: BoDuLieuMvp | null;
+  /** Gói B19: dòng thời gian (dong-thoi-gian.md, tùy chọn). */
+  dongThoiGian: RawDongThoiGian[];
 }
 
-export type LoaiTepMvp = 'quy-uoc' | 'nhan-vat' | 'canh' | 'dia-diem' | 'lich' | 'du-lieu' | 'kich-ban' | 'thu-thach' | 'so-tay' | 'loi-chung' | 'ho-so';
+export type LoaiTepMvp = 'quy-uoc' | 'nhan-vat' | 'canh' | 'dia-diem' | 'lich' | 'du-lieu' | 'dong-thoi-gian' | 'kich-ban' | 'thu-thach' | 'so-tay' | 'loi-chung' | 'ho-so';
 
 export interface TepMvp {
   duongDan: string;
@@ -529,6 +656,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
     soTay: [],
     loiChung: { matUyTin: null },
     duLieu: null,
+    dongThoiGian: [],
   };
 
   // Lượt 1: quy-uoc.md (dòng cấu hình) và nhan-vat.md — hai tệp này không được dùng biến.
@@ -572,6 +700,9 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       case 'loi-chung':
         docTheoDong(tep, bangTen, docLoiChung);
         break;
+      case 'dong-thoi-gian':
+        docTheoDong(tep, bangTen, docDongThoiGian);
+        break;
       case 'du-lieu': {
         // Dữ liệu không thay biến {{…}}: giá trị ô là dữ liệu thô.
         const d = docDuLieuMvp(tep);
@@ -592,6 +723,10 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
   kiemTrung(mvp.diaDiem.flatMap((d) => d.duKien).map((k) => [k.id, k.viTri] as const), 'dữ kiện');
   kiemTrung(mvp.chuoi.map((c) => [c.id, c.viTri] as const), 'chuỗi');
   kiemTrung(mvp.soTay.map((s) => [s.id, s.viTri] as const), 'trang sổ');
+  kiemTrung(mvp.dongThoiGian.map((d) => [d.id, d.viTri] as const), 'dòng thời gian');
+  for (const d of mvp.dongThoiGian) {
+    kiemTrung(d.o.map((o) => [o.id, o.viTri] as const), `ô của dòng thời gian ${d.id}:`);
+  }
   return { mvp, loi };
 
   function kiemTrung(ds: readonly (readonly [string, ViTri])[], ten: string): void {
@@ -1000,8 +1135,11 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           break;
         }
         case 'ket': {
-          laNgoai(['Kết thật', 'Kết thường'], 'mục "## Kết"');
-          lich.ket = { that: canCo(f, 'Kết thật', vt, 'mục "## Kết"') ?? '', thuong: canCo(f, 'Kết thường', vt, 'mục "## Kết"') ?? '', viTri: vt };
+          // Gói B19: "Kết tạm" (kết rank C của bộ có [CHẤM VỤ]) thay được "Kết thường"; có cả hai thì rank C đi "Kết tạm".
+          laNgoai(['Kết thật', 'Kết thường', 'Kết tạm'], 'mục "## Kết"');
+          const tam = f['Kết tạm']?.trim() || null;
+          const thuong = tam && f['Kết thường'] === undefined ? tam : (canCo(f, 'Kết thường', vt, 'mục "## Kết"') ?? '');
+          lich.ket = { that: canCo(f, 'Kết thật', vt, 'mục "## Kết"') ?? '', thuong, tam, viTri: vt };
           break;
         }
         case 'vu-sau': {
@@ -1179,6 +1317,8 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
     let pick: (MucMvp & { kind: 'line-pick' }) | null = null;
     let tao: RawTaoNhanVat | null = null;
     let kham: (MucMvp & { kind: 'explore' }) | null = null;
+    /** Gói B19: `[SỬA TRUY VẤN … · tính vạch]` vừa đọc — nhận dòng con `[SAI LẦN ĐẦU CẢ BUỔI]`. */
+    let suaTinhVach: RawTinhVach | null = null;
     let choSql: (MucMvp & { kind: 'trial-filter' }) | (MucMvp & { kind: 'projector' }) | null = null;
 
     const dongCon = (): void => {
@@ -1188,6 +1328,16 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       pick = null;
       tao = null;
       kham = null;
+      suaTinhVach = null;
+    };
+    /** `  - [SAI LẦN ĐẦU CẢ BUỔI] → phản hồi: …` (gói B19); không phải dòng ấy → `null`. */
+    const docSaiLanDau = (line: string, tv: RawTinhVach | null, ten: string): boolean => {
+      const m = /^ {2}- \[SAI LẦN ĐẦU CẢ BUỔI\] → phản hồi: (.+)$/.exec(line);
+      if (!m) return false;
+      if (!tv) throw new Error(`${ten}: dòng con [SAI LẦN ĐẦU CẢ BUỔI] chỉ dùng trong lệnh "· tính vạch"`);
+      if (tv.saiLanDau) throw new Error(`${ten}: [SAI LẦN ĐẦU CẢ BUỔI] lặp lại`);
+      tv.saiLanDau = parseFeedbackDc(m[1] ?? '');
+      return true;
     };
     const hetChoSql = (): void => {
       const cho = choSql;
@@ -1246,6 +1396,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       // Dòng con (thụt 2 khoảng)
       if (line.startsWith('  - ')) {
         if (question) {
+          if (docSaiLanDau(line, question.tinhVach, `[HỎI ${question.id}]`)) return i;
           const c = parseChoice(line);
           if (!c) throw new Error(`lựa chọn sai quy ước "${line}"`);
           question.choices.push(c);
@@ -1262,6 +1413,14 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
             dc.cauHoi = (m2[1] ?? '').trim();
             return i;
           }
+          // Gói B19: đối chất `· tính vạch` — `{thẻ} [ĐÚNG]` (lời tùy chọn), `{thẻ} [SAI] → phản hồi:`, `[SAI LẦN ĐẦU CẢ BUỔI]`.
+          if ((m2 = new RegExp(`^ {2}- \\{(${MA})\\} \\[(ĐÚNG|SAI)\\](?: → phản hồi: (.+))?$`).exec(line))) {
+            if (!dc.tinhVach) throw new Error(`[ĐỐI CHẤT ${dc.id}]: [${m2[2] ?? ''}] chỉ dùng trong đối chất "· tính vạch" — đối chất thường dùng [ĐỦ CĂN CỨ|HỖ TRỢ|GỢI Ý]`);
+            if (m2[2] === 'SAI' && !m2[3]) throw new Error(`[ĐỐI CHẤT ${dc.id}]: {${m2[1] ?? ''}} [SAI] cần "→ phản hồi: …"`);
+            dc.bangChung.push({ id: m2[1] ?? '', muc: m2[2] === 'ĐÚNG' ? 'dung' : 'sai', feedback: m2[3] ? parseFeedbackDc(m2[3]) : [] });
+            return i;
+          }
+          if (docSaiLanDau(line, dc.tinhVach, `[ĐỐI CHẤT ${dc.id}]`)) return i;
           if ((m2 = /^ {2}- \[CHƯA ĐỦ\] → phản hồi: (.+)$/.exec(line))) {
             dc.chuaDu = parseFeedbackDc(m2[1] ?? '');
             return i;
@@ -1278,7 +1437,11 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
             dc.nguoiQuen = { ma: m2[1] ?? '', noiThay: m2[2] ?? '' };
             return i;
           }
-          throw new Error(`dòng con [ĐỐI CHẤT] sai quy ước "${line}" — viết "  - [CÂU HỎI] …", "  - {<mã thẻ>} [ĐỦ CĂN CỨ|HỖ TRỢ|GỢI Ý] → phản hồi: …", "  - [CHƯA ĐỦ] → phản hồi: …", "  - [KHÁC] → phản hồi: …", "  - [HẾT LƯỢT] → phản hồi: …", "  - [NGƯỜI QUEN <mã>] → nói thay: <chuỗi>"`);
+          throw new Error(`dòng con [ĐỐI CHẤT] sai quy ước "${line}" — viết "  - [CÂU HỎI] …", "  - {<mã thẻ>} [ĐỦ CĂN CỨ|HỖ TRỢ|GỢI Ý] → phản hồi: …", "  - [CHƯA ĐỦ] → phản hồi: …", "  - [KHÁC] → phản hồi: …", "  - [HẾT LƯỢT] → phản hồi: …", "  - [NGƯỜI QUEN <mã>] → nói thay: <chuỗi>"; đối chất "· tính vạch": "  - {<mã thẻ>} [ĐÚNG]", "  - {<mã thẻ>} [SAI] → phản hồi: …", "  - [SAI LẦN ĐẦU CẢ BUỔI] → phản hồi: …"`);
+        }
+        if (suaTinhVach) {
+          if (docSaiLanDau(line, suaTinhVach, '[SỬA TRUY VẤN · tính vạch]')) return i;
+          throw new Error(`dòng con của [SỬA TRUY VẤN … · tính vạch] chỉ có "  - [SAI LẦN ĐẦU CẢ BUỔI] → phản hồi: …": "${line}"`);
         }
         if (branch) {
           const m = new RegExp(`^ {2}- \\{id: (${MA})\\}(?: \\[KHI (.+?)\\])? (.+?) → hậu quả: (.+)$`).exec(line);
@@ -1296,7 +1459,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           return i;
         }
         if (kham) {
-          kham.diem.push(docDiemKhamPha(line.slice(4)));
+          kham.diem.push(kham.kieu === 'dan' ? docDiemDan(line.slice(4)) : docDiemKhamPha(line.slice(4)));
           return i;
         }
         throw new Error(`dòng con không thuộc [HỎI], [ĐỐI CHẤT], [RẼ NHÁNH], [TẠO NHÂN VẬT] hay [KHÁM PHÁ]: "${line}"`);
@@ -1347,15 +1510,36 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         }
         return add({ kind: 'image', id: m[1] ?? '', chuThich, moTa });
       }
-      if ((m = new RegExp(`^- \\[HỎI (${MA})( · trừ uy tín)?\\] ([a-z-]+): "(.*)"$`).exec(line))) {
-        question = { kind: 'question', id: m[1] ?? '', asker: { speaker: m[3] ?? '', text: m[4] ?? '' }, choices: [], truUyTin: m[2] !== undefined };
+      if ((m = new RegExp(`^- \\[HỎI (${MA})((?: · [^\\]·]+)*)\\] ([a-z-]+): "(.*)"$`).exec(line))) {
+        const tc = docTuyChonLenh(m[2] ?? '', `[HỎI ${m[1] ?? ''}]`, true);
+        question = { kind: 'question', id: m[1] ?? '', asker: { speaker: m[3] ?? '', text: m[4] ?? '' }, choices: [], truUyTin: tc.truUyTin, tinhVach: tc.tinhVach };
         return add(question);
       }
-      if ((m = new RegExp(`^- \\[ĐỐI CHẤT (${MA})( · trừ uy tín)?\\] ([a-z-]+): "(.*)"$`).exec(line))) {
-        doiChat = { kind: 'doi-chat', id: m[1] ?? '', asker: { speaker: m[3] ?? '', text: m[4] ?? '' }, cauHoi: null, bangChung: [], chuaDu: null, khac: null, hetLuot: null, truUyTin: m[2] !== undefined, nguoiQuen: null };
+      if ((m = new RegExp(`^- \\[ĐỐI CHẤT (${MA})((?: · [^\\]·]+)*)\\] ([a-z-]+): "(.*)"$`).exec(line))) {
+        const tc = docTuyChonLenh(m[2] ?? '', `[ĐỐI CHẤT ${m[1] ?? ''}]`, true);
+        doiChat = { kind: 'doi-chat', id: m[1] ?? '', asker: { speaker: m[3] ?? '', text: m[4] ?? '' }, cauHoi: null, bangChung: [], chuaDu: null, khac: null, hetLuot: null, truUyTin: tc.truUyTin, nguoiQuen: null, tinhVach: tc.tinhVach };
         return add(doiChat);
       }
-      if ((m = new RegExp(`^- \\[(THỬ THÁCH|SỬA TRUY VẤN) (${MA})\\]$`).exec(line))) return add({ kind: m[1] === 'THỬ THÁCH' ? 'challenge' : 'fix-query', id: m[2] ?? '' });
+      if ((m = new RegExp(`^- \\[(THỬ THÁCH|SỬA TRUY VẤN) (${MA})((?: · [^\\]·]+)*)\\]$`).exec(line))) {
+        if (m[1] === 'THỬ THÁCH') {
+          if (m[3]) throw new Error(`[THỬ THÁCH ${m[2] ?? ''}] không có mục thêm (" · tính vạch" chỉ dùng với [SỬA TRUY VẤN], [ĐỐI CHẤT], [HỎI])`);
+          return add({ kind: 'challenge', id: m[2] ?? '' });
+        }
+        const tc = docTuyChonLenh(m[3] ?? '', `[SỬA TRUY VẤN ${m[2] ?? ''}]`, false);
+        suaTinhVach = tc.tinhVach;
+        return add({ kind: 'fix-query', id: m[2] ?? '', tinhVach: tc.tinhVach });
+      }
+      // Gói B19: dòng thời gian, chấm vụ, sổ tổng kết, điểm lưu đầu vụ, ghép mẫu.
+      if ((m = new RegExp(`^- \\[(HIỆN )?DÒNG THỜI GIAN (${MA})\\]$`).exec(line))) return add({ kind: 'dong-thoi-gian', id: m[2] ?? '', chiXem: m[1] !== undefined });
+      if ((m = new RegExp(`^- \\[CHẤM VỤ (${MA})\\](?: cần: (.+))?$`).exec(line))) return add({ kind: 'cham-vu', vu: m[1] ?? '', can: chiaDanhSach(m[2] ?? '') });
+      if (line.startsWith('- [CHẤM VỤ')) throw new Error(`[CHẤM VỤ] sai quy ước "${line}" — viết "- [CHẤM VỤ <vụ>] cần: <thẻ>, <thẻ>, <dòng thời gian>"`);
+      if ((m = new RegExp(`^- \\[SỔ TỔNG KẾT (${MA})\\]$`).exec(line))) return add({ kind: 'so-tong-ket', vu: m[1] ?? '' });
+      if ((m = new RegExp(`^- \\[ĐIỂM LƯU VỤ (${MA})\\]$`).exec(line))) return add({ kind: 'diem-luu-vu', vu: m[1] ?? '' });
+      if ((m = new RegExp(`^- \\[GHÉP MẪU\\] ([a-z][a-z0-9-]*): (${MA}) \\+ (${MA}) · giấy nhớ: "(.+)"$`).exec(line))) {
+        if (m[2] === m[3]) throw new Error(`[GHÉP MẪU]: hai thẻ phải khác nhau ("${m[2] ?? ''}")`);
+        return add({ kind: 'ghep-mau', nguoi: m[1] ?? '', the: [m[2] ?? '', m[3] ?? ''], giayNho: m[4] ?? '' });
+      }
+      if (line.startsWith('- [GHÉP MẪU]')) throw new Error(`[GHÉP MẪU] sai quy ước "${line}" — viết "- [GHÉP MẪU] <ai>: <thẻ> + <thẻ> · giấy nhớ: \\"<chữ>\\""`);
       if ((m = new RegExp(`^- \\[HIỆU ỨNG (${MA})\\]$`).exec(line))) return add({ kind: 'effect', id: m[1] ?? '' });
       if ((m = new RegExp(`^- \\[CHỌN DÒNG (${MA})( · trừ uy tín)?\\]$`).exec(line))) {
         pick = { kind: 'line-pick', id: m[1] ?? '', rows: [], truUyTin: m[2] !== undefined };
@@ -1422,8 +1606,8 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       }
       if (line === '- [RẼ KẾT]') return add({ kind: 'ending-branch' });
       // `quan sát <nv>/<dáng>`: soi nhân vật trong một dáng / bộ đồ cụ thể; `· Hà Vy soi`: mở bằng cảnh cắt đôi mắt Hà Vy (kính lóe sáng).
-      if ((m = new RegExp(`^- \\[KHÁM PHÁ (${MA})(?: · (bản đồ(?: · giờ (\\d\\d:\\d\\d))?|quan sát (${MA})(?:/(${MA}))?( · Hà Vy soi)?))?\\]$`).exec(line))) {
-        kham = { kind: 'explore', id: m[1] ?? '', diem: [], kieu: m[2]?.startsWith('bản đồ') ? 'ban-do' : m[2] ? 'quan-sat' : 'canh', nhanVat: m[4] ?? null, gio: m[3] ?? null, dang: m[5] ?? null, haVySoi: m[6] !== undefined };
+      if ((m = new RegExp(`^- \\[KHÁM PHÁ (${MA})(?: · (bản đồ(?: · giờ (\\d\\d:\\d\\d))?|quan sát (${MA})(?:/(${MA}))?( · Hà Vy soi)?|dàn))?\\]$`).exec(line))) {
+        kham = { kind: 'explore', id: m[1] ?? '', diem: [], kieu: m[2]?.startsWith('bản đồ') ? 'ban-do' : m[2] === 'dàn' ? 'dan' : m[2] ? 'quan-sat' : 'canh', nhanVat: m[4] ?? null, gio: m[3] ?? null, dang: m[5] ?? null, haVySoi: m[6] !== undefined };
         return add(kham);
       }
       if (line.startsWith('- [') && /^- \[[A-ZÀ-Ỹ]/.test(line)) {
@@ -1439,6 +1623,67 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         if (tao && (tao.truong === 'ten' ? tao.xucXac === null : tao.luaChon.length === 0)) throw new Error(`[TẠO NHÂN VẬT ${tao.truong}] thiếu dòng con`);
       },
     };
+  }
+
+  // ---------- dong-thoi-gian.md (gói B19) ----------
+  /**
+   * `## <mã> — <tên> {kiểu: tập dượt|chính}` rồi các dòng đầu mục (`- Người nhắc khi kéo sai:`, `- Thẻ tạm: a = … · b = …`,
+   * `- Kéo sai: <lời>`), rồi các ô `### <mã> · <giờ> · <nơi> · <việc>` với `- Nhận:`, `- Khóa sẵn`, `- Không điền được:`,
+   * `- Kéo sai:`, `- Kéo vào chỗ trống:`.
+   */
+  function docDongThoiGian({ viTri }: { viTri: () => ViTri }) {
+    let dtg: RawDongThoiGian | null = null;
+    let o: RawODongThoiGian | null = null;
+    const dong = (line: string, i: number): number => {
+      if (line.trim() === '' || line === '---' || line.startsWith('# ')) return i;
+      if (line.startsWith('## ')) {
+        const m = new RegExp(`^## (${MA}) — (.+?)(?: \\{kiểu: (tập dượt|chính)\\})?$`).exec(line);
+        if (!m) throw new Error(`tiêu đề dòng thời gian sai quy ước "${line}" — viết "## <mã> — <tên> {kiểu: tập dượt|chính}"`);
+        dtg = { id: m[1] ?? '', ten: (m[2] ?? '').trim(), kieu: m[3] === 'tập dượt' ? 'tap-duot' : 'chinh', nguoiNhac: null, keoSai: null, theTam: [], o: [], viTri: viTri() };
+        mvp.dongThoiGian.push(dtg);
+        o = null;
+        return i;
+      }
+      if (!dtg) throw new Error(`dòng nằm ngoài dòng thời gian "## …": "${line}"`);
+      const d: RawDongThoiGian = dtg;
+      if (line.startsWith('### ')) {
+        const td = docTieuDeO(line.slice(4).trim());
+        o = { ...td, nhan: [], khoaSan: false, khongDien: null, keoSai: null, keoVaoTrong: null, viTri: viTri() };
+        d.o.push(o);
+        return i;
+      }
+      if (line.trim() === '- Khóa sẵn') {
+        if (!o) throw new Error('"- Khóa sẵn" phải nằm trong một ô "### …"');
+        o.khoaSan = true;
+        return i;
+      }
+      const f = /^- ([^:]+): (.+)$/.exec(line);
+      if (!f) throw new Error(`dòng lạ trong dòng thời gian ${d.id}: "${line}"`);
+      const nhan = (f[1] ?? '').trim();
+      const gt = (f[2] ?? '').trim();
+      if (!o) {
+        if (nhan === 'Người nhắc khi kéo sai') {
+          if (!/^[a-z][a-z0-9-]*$/.test(gt)) throw new Error(`dòng thời gian ${d.id}: "Người nhắc khi kéo sai" phải là mã nhân vật: "${gt}"`);
+          d.nguoiNhac = gt;
+        } else if (nhan === 'Thẻ tạm') {
+          for (const phan of gt.split(/\s+·\s+/)) {
+            const t = new RegExp(`^(${MA}) = (.+)$`).exec(phan.trim());
+            if (!t) throw new Error(`dòng thời gian ${d.id}: thẻ tạm phải viết "<mã> = <chữ trên thẻ>", cách nhau bằng " · ": "${phan}"`);
+            if (d.theTam.some((x) => x.id === t[1])) throw new Error(`dòng thời gian ${d.id}: thẻ tạm "${t[1] ?? ''}" khai hai lần`);
+            d.theTam.push({ id: t[1] ?? '', chu: (t[2] ?? '').trim() });
+          }
+        } else if (nhan === 'Kéo sai') d.keoSai = parseFeedbackDc(gt);
+        else throw new Error(`dòng thời gian ${d.id}: dòng lạ "- ${nhan}:" — đầu mục chỉ có "Người nhắc khi kéo sai", "Thẻ tạm", "Kéo sai"`);
+        return i;
+      }
+      if (nhan === 'Nhận') o.nhan = chiaDanhSach(gt);
+      else if (nhan === 'Không điền được') o.khongDien = gt;
+      else if (nhan === 'Kéo sai') o.keoSai = parseFeedbackDc(gt);
+      else if (nhan === 'Kéo vào chỗ trống') o.keoVaoTrong = parseFeedbackDc(gt);
+      else throw new Error(`ô ${o.id}: dòng lạ "- ${nhan}:" — ô có "Nhận", "Khóa sẵn", "Không điền được", "Kéo sai", "Kéo vào chỗ trống"`);
+      return i;
+    };
+    return { dong };
   }
 
   // ---------- so-tay/<trang>.md ----------
@@ -1542,11 +1787,13 @@ export function loiTrongChuoi(c: RawChuoiMvp): { line: RawLine; dong: number }[]
     else if (it.kind === 'question') {
       out.push({ line: { speaker: it.asker.speaker, expression: null, text: it.asker.text }, dong });
       for (const ch of it.choices) for (const f of ch.feedback) out.push({ line: f, dong });
+      for (const f of it.tinhVach?.saiLanDau ?? []) out.push({ line: f, dong });
     } else if (it.kind === 'doi-chat') {
       out.push({ line: { speaker: it.asker.speaker, expression: null, text: it.asker.text }, dong });
       for (const b of it.bangChung) for (const f of b.feedback) out.push({ line: f, dong });
-      for (const f of [...(it.chuaDu ?? []), ...(it.khac ?? []), ...(it.hetLuot ?? [])]) out.push({ line: f, dong });
-    } else if (it.kind === 'branch') out.push({ line: { speaker: it.branch.asker.speaker, expression: null, text: it.branch.asker.text }, dong });
+      for (const f of [...(it.chuaDu ?? []), ...(it.khac ?? []), ...(it.hetLuot ?? []), ...(it.tinhVach?.saiLanDau ?? [])]) out.push({ line: f, dong });
+    } else if (it.kind === 'fix-query') for (const f of it.tinhVach?.saiLanDau ?? []) out.push({ line: f, dong });
+    else if (it.kind === 'branch') out.push({ line: { speaker: it.branch.asker.speaker, expression: null, text: it.branch.asker.text }, dong });
     else if (it.kind === 'create-character') out.push({ line: it.tao.asker, dong });
     else if (it.kind === 'line-pick') for (const r of it.rows) for (const f of r.feedback) out.push({ line: f, dong });
   });

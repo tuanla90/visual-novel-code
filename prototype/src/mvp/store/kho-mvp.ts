@@ -10,6 +10,7 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
+import { KICH_BAN_THU_B19 } from '../../content/generated/thu-b19/kich-ban.gen';
 import type { KichBanMvp, LoiMvp } from '../../content/mvp/types';
 import { taoTrangThai, tenKhungHienTai, xuLy, type HanhDongMvp } from '../engine/may';
 import { datMuc, laMucNhapVai, laMucSql } from '../engine/muc-choi';
@@ -18,10 +19,15 @@ import { banDangCoMat, ghiNhanTrangThaiDongHanh, ghiNhanTruyVanDongHanh, khoaNgu
 
 export const KHOA_BO_NOI_DUNG = 'clb_bo_noi_dung';
 
-export function layMaBoNoiDung(): 'mvp' | 'mua-1' {
+/**
+ * Bộ nội dung đang chơi. `thu-b19` (gói B19): bộ thử nhỏ của các lệnh mới (`noi-dung-thu-b19/`), chỉ mở được ở máy dev bằng
+ * `?bo=thu-b19`.
+ */
+export function layMaBoNoiDung(): 'mvp' | 'mua-1' | 'thu-b19' {
   if (typeof window !== 'undefined') {
     const urlBo = new URLSearchParams(window.location.search).get('bo');
     if (urlBo === 'mua-1' || urlBo === 'mvp') return urlBo;
+    if (urlBo === 'thu-b19' && import.meta.env.DEV) return urlBo;
     const tuStorage = sessionStorage.getItem(KHOA_BO_NOI_DUNG);
     if (tuStorage === 'mua-1' || tuStorage === 'mvp') return tuStorage;
   }
@@ -36,8 +42,10 @@ export function doiBoNoiDung(bo: 'mvp' | 'mua-1'): void {
   }
 }
 
+const MA_BO = layMaBoNoiDung();
 export const KICH_BAN: KichBanMvp = (
-  layMaBoNoiDung() === 'mua-1' ? KICH_BAN_MUA_1 : KICH_BAN_MVP
+  // Bộ thử chỉ ở máy dev: bản dựng bỏ hẳn nhánh này (và tệp sinh của bộ thử) khỏi gói.
+  MA_BO === 'mua-1' ? KICH_BAN_MUA_1 : import.meta.env.DEV && MA_BO === 'thu-b19' ? KICH_BAN_THU_B19 : KICH_BAN_MVP
 ) as unknown as KichBanMvp;
 
 /**
@@ -76,8 +84,10 @@ function vanMoi(kb: KichBanMvp): TrangThaiMvp {
 export const KHOA_KHO_MVP = 'clb_mvp_tien_do_v1';
 export const KHOA_KHO_MUA_1 = 'clb_mua1_tien_do_v1';
 
-export function layKhoaLuu(bo: 'mvp' | 'mua-1' = layMaBoNoiDung()): string {
-  return bo === 'mua-1' ? KHOA_KHO_MUA_1 : KHOA_KHO_MVP;
+export const KHOA_KHO_THU_B19 = 'clb_thub19_tien_do_v1';
+
+export function layKhoaLuu(bo: 'mvp' | 'mua-1' | 'thu-b19' = layMaBoNoiDung()): string {
+  return bo === 'mua-1' ? KHOA_KHO_MUA_1 : bo === 'thu-b19' ? KHOA_KHO_THU_B19 : KHOA_KHO_MVP;
 }
 export const SO_O_LUU_MVP = 6;
 /** Phiên bản dữ liệu lưu; tăng khi nội dung đổi làm ván cũ không chơi tiếp được (xem `migrate`). */
