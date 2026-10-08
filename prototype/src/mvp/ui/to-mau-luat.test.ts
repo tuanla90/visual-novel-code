@@ -1,6 +1,7 @@
 // @vitest-environment node
 /**
- * Máy kiểm LUẬT TÔ MÀU (user 04/10/2026; noi-dung-mvp/highlight.README.md). Chạy riêng: `npm run kiem-to-mau`.
+ * Máy kiểm LUẬT TÔ MÀU (user 04/10/2026), cho cả hai bộ nội dung: Mùa 1 (`noi-dung-mua-1/highlight.json` ↔ generated/mua-1) và
+ * MVP (`noi-dung-mvp/highlight.json` ↔ generated/mvp). Chạy riêng: `npm run kiem-to-mau`.
  * 1. Thẻ hồ sơ nào tuyến mở cũng phải có cụm tô; cụm tô nào cũng gắn với một thẻ của tuyến đó.
  * 2. Cụm tô có mặt trong chính thẻ, và ít nhất một lần trong lời của tuyến (không thì tô cho ai xem).
  * 3. Cụm tô cụ thể: từ hai chữ trở lên, hoặc là mã (có chữ số), hoặc có chữ viết hoa (tên riêng); cụm bắt đầu bằng số
@@ -9,29 +10,35 @@
  * 5. Mật độ: một câu tối đa 3 chỗ tô (bộ máy tự cắt); vụ chính không quá 30%, việc phụ không quá 40% số câu có tô.
  */
 import { describe, expect, it } from 'vitest';
+import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { tuyenChuoi } from '../engine/tuyen-chuoi';
 import { highlightMvp } from './highlight-mvp';
-import { DONG_HANH, LUAT_TO_MAU } from './story-highlight';
+import { DONG_HANH, LUAT_TO_MAU, type LuatToMau } from './story-highlight';
 
-const kb = KICH_BAN_MVP as unknown as KichBanMvp;
 const chuan = (s: string): string => s.normalize('NFC').toLocaleLowerCase('vi');
 const CHU_SO = 'một|hai|ba|bốn|năm|sáu|bảy|tám|chín|mười|mươi|trăm|nghìn|ngàn';
 const SO_DEM = new RegExp(`^(?:${CHU_SO}) `, 'u');
-const { tuyenCua, theCua, viecPhu } = tuyenChuoi(kb);
 
-/** Lời hiện cho người chơi của từng tuyến. */
-const loiCua = new Map<string, string[]>();
-for (const c of kb.chuoi) {
-  const tuyen = tuyenCua.get(c.id);
-  if (!tuyen) continue;
-  const ds = loiCua.get(tuyen) ?? [];
-  for (const n of c.nodes) if (n.type === 'line' && n.speaker !== 'narrator' || (n.type === 'line' && n.display !== 'card')) ds.push(n.text);
-  loiCua.set(tuyen, ds);
-}
+const BO: [string, KichBanMvp, LuatToMau][] = [
+  ['mua-1', KICH_BAN_MUA_1 as unknown as KichBanMvp, LUAT_TO_MAU['mua-1']],
+  ['mvp', KICH_BAN_MVP as unknown as KichBanMvp, LUAT_TO_MAU.mvp],
+];
 
-describe('luật tô màu', () => {
+describe.each(BO)('luật tô màu · bộ %s', (_bo, kb, luatBo) => {
+  const { tuyenCua, theCua, viecPhu } = tuyenChuoi(kb);
+
+  /** Lời hiện cho người chơi của từng tuyến. */
+  const loiCua = new Map<string, string[]>();
+  for (const c of kb.chuoi) {
+    const tuyen = tuyenCua.get(c.id);
+    if (!tuyen) continue;
+    const ds = loiCua.get(tuyen) ?? [];
+    for (const n of c.nodes) if (n.type === 'line' && n.speaker !== 'narrator' || (n.type === 'line' && n.display !== 'card')) ds.push(n.text);
+    loiCua.set(tuyen, ds);
+  }
+
   it('mọi chuỗi đều thuộc một tuyến', () => {
     expect(kb.chuoi.filter((c) => !tuyenCua.has(c.id)).map((c) => c.id)).toEqual([]);
   });
@@ -39,7 +46,7 @@ describe('luật tô màu', () => {
   it('1. thẻ hồ sơ của tuyến ↔ cụm tô khai ở highlight.json khớp nhau', () => {
     const loi: string[] = [];
     for (const [tuyen, the] of theCua) {
-      const luat = LUAT_TO_MAU[tuyen];
+      const luat = luatBo[tuyen];
       if (!luat) {
         loi.push(`${tuyen}: chưa có mục trong highlight.json`);
         continue;
@@ -47,13 +54,13 @@ describe('luật tô màu', () => {
       for (const id of the.keys()) if (!luat.the[id]?.length) loi.push(`${tuyen}: thẻ ${id} chưa có cụm tô`);
       for (const id of Object.keys(luat.the)) if (!the.has(id)) loi.push(`${tuyen}: "${id}" không phải thẻ hồ sơ tuyến này mở`);
     }
-    for (const tuyen of Object.keys(LUAT_TO_MAU)) if (!theCua.has(tuyen)) loi.push(`highlight.json: tuyến "${tuyen}" không có trong lịch`);
+    for (const tuyen of Object.keys(luatBo)) if (!theCua.has(tuyen)) loi.push(`highlight.json: tuyến "${tuyen}" không có trong lịch`);
     expect(loi).toEqual([]);
   });
 
   it('2–3. cụm tô có trong thẻ, có trong lời của tuyến, và đủ cụ thể', () => {
     const loi: string[] = [];
-    for (const [tuyen, luat] of Object.entries(LUAT_TO_MAU)) {
+    for (const [tuyen, luat] of Object.entries(luatBo)) {
       const loiTuyen = chuan((loiCua.get(tuyen) ?? []).join(' | '));
       for (const [id, cum] of Object.entries(luat.the)) {
         const chuThe = theCua.get(tuyen)?.get(id) ?? '';
@@ -75,7 +82,7 @@ describe('luật tô màu', () => {
     const bao: string[] = [];
     for (const [tuyen, ds] of loiCua) {
       const phu = viecPhu.has(tuyen);
-      const eng = highlightMvp(kb, 'Bảo', phu ? 'vu5' : tuyen, phu ? tuyen : null);
+      const eng = highlightMvp(kb, luatBo, 'Bảo', phu ? 'vu5' : tuyen, phu ? tuyen : null);
       let coTo = 0;
       for (const t of ds) {
         const tok = eng.tokenize(t);
@@ -94,7 +101,7 @@ describe('luật tô màu', () => {
       const tran = phu ? 0.4 : 0.3;
       if (tiLe > tran) loi.push(`${tuyen}: ${Math.round(tiLe * 100)}% số câu có tô (tối đa ${tran * 100}%)`);
     }
-    if (process.env.TO_MAU_BAO) console.log(bao.join(' · '));
+    if (process.env.TO_MAU_BAO) console.log(`${_bo}: ${bao.join(' · ')}`);
     expect(loi).toEqual([]);
   });
 });

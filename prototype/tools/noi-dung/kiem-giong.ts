@@ -14,7 +14,7 @@
  * Biểu cảm sai, người nói chưa tới lượt xuất hiện… đã có ở `npm run kiem-noi-dung:mvp`, ở đây không kiểm lại.
  */
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
-import { join, relative, resolve } from 'node:path';
+import { basename, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { docTepLoi, type DoanLoi } from './ghep-loi.ts';
 import { tepLoiHoiDap, traDongHoiDap } from './hoi-dap-loi.ts';
@@ -162,9 +162,9 @@ function tachBong(d: DoanLoi, tep: string, duongDan: string, ten: Map<string, st
   return out;
 }
 
-function docTenNhanVat(): Map<string, string> {
+function docTenNhanVat(thuMucGoc: string): Map<string, string> {
   const ten = new Map<string, string>();
-  for (const m of readFileSync(join(GOC, 'nhan-vat.md'), 'utf8').matchAll(/^### ([a-z0-9-]+) — (.+)$/gm)) ten.set(m[1] ?? '', (m[2] ?? '').trim());
+  for (const m of readFileSync(join(thuMucGoc, 'nhan-vat.md'), 'utf8').matchAll(/^### ([a-z0-9-]+) — (.+)$/gm)) ten.set(m[1] ?? '', (m[2] ?? '').trim());
   return ten;
 }
 
@@ -184,10 +184,11 @@ const boTrich = (s: string): string => s.replace(/"[^"]*"|“[^”]*”/g, ' ');
 const boNgoiBa = (s: string): string => s.replace(/(?<![\p{L}])(cậu|anh|chị|em|bạn) ấy(?![\p{L}])/giu, ' ');
 const soChu = (s: string): number => s.split(/\s+/).filter(Boolean).length;
 
-export function kiemGiong(luat: LuatGiong, tepLoi: { ten: string; duongDan: string; noiDung: string }[]): KetQuaGiong & { bong: Bong[] } {
+/** `thuMucGoc`: thư mục nội dung có `nhan-vat.md` và `giong/luat-giong.md` (mặc định bộ MVP). */
+export function kiemGiong(luat: LuatGiong, tepLoi: { ten: string; duongDan: string; noiDung: string }[], thuMucGoc: string = GOC): KetQuaGiong & { bong: Bong[] } {
   const loi: string[] = [];
   const canhBao: string[] = [];
-  const ten = docTenNhanVat();
+  const ten = docTenNhanVat(thuMucGoc);
   const viTriTep = new Map(luat.thuTu.map((t, i) => [t, i]));
   const bong: Bong[] = [];
 
@@ -289,7 +290,7 @@ export function kiemGiong(luat: LuatGiong, tepLoi: { ten: string; duongDan: stri
   // Câu khóa
   for (const k of luat.cauKhoa) {
     const t = tepLoi.find((x) => x.ten === k.o);
-    if (!t) loi.push(`noi-dung-mvp/giong/luat-giong.md:1: [câu khóa] không có tệp lời "${k.o}"`);
+    if (!t) loi.push(`${basename(thuMucGoc)}/giong/luat-giong.md:1: [câu khóa] không có tệp lời "${k.o}"`);
     else if (!t.noiDung.includes(k.cau)) loi.push(`${t.duongDan}:1: [câu khóa] mất câu "${k.cau}" — ${k.vi}`);
   }
 
@@ -381,7 +382,7 @@ export function chayKiemGiong(thuMucV2?: string, thuMucGoc: string = GOC): KetQu
   }
   // Lời trong tờ dữ kiện hỏi nhân chứng (hoi-dap/*.json, gói B12): kiểm như lời trong loi/, báo về đúng dòng JSON.
   const hoiDap = tepLoiHoiDap(thuMucGoc, relative(process.cwd(), join(thuMucGoc, 'hoi-dap')).split('\\').join('/'));
-  const kq = kiemGiong(luat, [...tep, ...hoiDap]);
+  const kq = kiemGiong(luat, [...tep, ...hoiDap], thuMucGoc);
   const loi = [...them.loi, ...kq.loi].map((l) => traDongHoiDap(l, hoiDap));
   const canhBao = [...them.canhBao, ...kq.canhBao].map((l) => traDongHoiDap(l, hoiDap));
   const tomTat = `kiem-giong: ${tep.length} tệp lời${hoiDap.length ? `, ${hoiDap.length} tờ hỏi đáp` : ''}, ${kq.bong.length} bong bóng — ${loi.length} lỗi, ${canhBao.length} cảnh báo.`;

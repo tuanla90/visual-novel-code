@@ -8,11 +8,13 @@ import { buildSourceModel, applyPlan } from './source-model.mjs';
 import { lichNgay } from '../../prototype/src/mvp/engine/lich-ngay.ts';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+// B19: bộ mùa 1 chỉ còn Vụ 1 bản 6; các test này đo công cụ trên bộ mùa 1 trước B19 (bản đông cứng).
+const CU = 'src/content/real/testing/noi-dung-mua-1-truoc-b19';
 const require = createRequire(new URL('../../prototype/package.json', import.meta.url));
 const { JSDOM, VirtualConsole } = require('jsdom');
 
 test('timeline keeps the game calendar and separates historical evidence from discovery', async () => {
-  const model = await buildSourceModel(root);
+  const model = await buildSourceModel(root, CU);
   const calendar = lichNgay(model.calendar.nhanPhong);
   const day1 = model.events.find((e) => e.id === 'story-vu1-day1');
   const day4 = model.events.find((e) => e.id === 'story-vu1-day4');
@@ -32,14 +34,17 @@ test('timeline keeps the game calendar and separates historical evidence from di
 });
 
 test('moving a case ahead of its logs produces a decision finding', async () => {
-  const model = await buildSourceModel(root);
+  const model = await buildSourceModel(root, CU);
   const latest = model.cases.find((c) => c.id === 'vu4').latestEvidence;
   const dayBefore = new Date(latest + 'T12:00:00Z');
   dayBefore.setUTCDate(dayBefore.getUTCDate() - 1);
   applyPlan(model, { items: [{ ref: 'vu4', date: dayBefore.toISOString().slice(0, 10) }] });
   assert.ok(model.findings.some((f) => f.id === 'late-proposal-vu4'));
   assert.ok(model.findings.some((f) => f.id === 'early-so-phong'));
-  assert.ok(model.findings.some((f) => f.id === 'early-micro'));
+  // Việc phụ mở bằng cờ trước khi dữ liệu của nó đủ theo lịch thì phải có cảnh báo, và ngược lại.
+  for (const c of model.cases.filter((x) => x.window && x.latestEvidence)) {
+    assert.equal(model.findings.some((f) => f.id === `early-${c.id}`), c.window.from < c.latestEvidence, c.id);
+  }
   assert.ok(model.findings.some((f) => f.id === 'undated-hoan-tien'));
 });
 
@@ -62,7 +67,8 @@ test('multi-selection, grouping, availability windows and empty-state recovery w
     assert.ok(doc.querySelectorAll('.event-row').length > 0);
     const day4 = doc.getElementById('story-vu1-day4-vu1');
     assert.match(day4.textContent, /Chứng cứ cần có trước lúc dùng/);
-    assert.match(day4.textContent, /20\/09\/2024/);
+    const printDate = (await buildSourceModel(root, CU)).events.find((e) => e.ruleId === 'thu-in').date.split('-').reverse().join('/');
+    assert.ok(day4.textContent.includes(printDate), printDate);
     selectMany('cases', ['vu3', 'vu4']);
     selectMany('tracks', ['main', 'evidence']);
     const headings = [...doc.querySelectorAll('.group-header h2')].map((n) => n.textContent);

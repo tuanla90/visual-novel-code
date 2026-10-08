@@ -2,7 +2,8 @@ import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 
 export async function buildHighlightLexicon(root, model) {
-  const dir = path.join(root, 'prototype/noi-dung-mvp');
+  const noiDung = model.noiDung ?? 'noi-dung-mua-1';
+  const dir = path.join(root, 'prototype', noiDung);
   const entries = new Map();
   const sources = [];
   const add = (text, category, canonical = text) => {
@@ -12,7 +13,7 @@ export async function buildHighlightLexicon(root, model) {
   };
   for (const file of ['nhan-vat.md', 'canh.md', 'dia-diem.md']) {
     const body = await readFile(path.join(dir, file), 'utf8');
-    sources.push(`prototype/noi-dung-mvp/${file}`);
+    sources.push(`prototype/${noiDung}/${file}`);
     for (const [, , title, rest] of body.matchAll(/^###\s+([\w-]+)\s*[—–]\s*([^\r\n]+)\r?\n?([\s\S]*?)(?=^### |$(?![\s\S]))/gm)) {
       const category = file === 'nhan-vat.md' ? 'person' : 'place';
       add(title, category);
@@ -29,7 +30,7 @@ export async function buildHighlightLexicon(root, model) {
   }
   for (const file of (await readdir(path.join(dir, 'ho-so'))).filter((f) => f.endsWith('.md'))) {
     const body = await readFile(path.join(dir, 'ho-so', file), 'utf8');
-    sources.push(`prototype/noi-dung-mvp/ho-so/${file}`);
+    sources.push(`prototype/${noiDung}/ho-so/${file}`);
     for (const [, title] of body.matchAll(/^- Tiêu đề:\s*(.+)$/gm)) {
       add(title, 'item');
       add(title.replace(/\s*\([^)]*\)/g, ''), 'item', title);

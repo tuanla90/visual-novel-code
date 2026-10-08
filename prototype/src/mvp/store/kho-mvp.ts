@@ -42,10 +42,12 @@ export function doiBoNoiDung(bo: 'mvp' | 'mua-1'): void {
   }
 }
 
-const MA_BO = layMaBoNoiDung();
+/** Bộ nội dung của phiên này (đổi bộ thì tải lại trang, xem `doiBoNoiDung`). */
+export const BO_NOI_DUNG = layMaBoNoiDung();
+
 export const KICH_BAN: KichBanMvp = (
   // Bộ thử chỉ ở máy dev: bản dựng bỏ hẳn nhánh này (và tệp sinh của bộ thử) khỏi gói.
-  MA_BO === 'mua-1' ? KICH_BAN_MUA_1 : import.meta.env.DEV && MA_BO === 'thu-b19' ? KICH_BAN_THU_B19 : KICH_BAN_MVP
+  BO_NOI_DUNG === 'mua-1' ? KICH_BAN_MUA_1 : import.meta.env.DEV && BO_NOI_DUNG === 'thu-b19' ? KICH_BAN_THU_B19 : KICH_BAN_MVP
 ) as unknown as KichBanMvp;
 
 /**

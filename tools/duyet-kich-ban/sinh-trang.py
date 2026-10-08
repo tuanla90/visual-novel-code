@@ -1,9 +1,9 @@
 """Trang duyệt kịch bản chương 1 MVP: mỗi chuỗi một thẻ — nền, người lên hình, chỗ bấm, giấy tài liệu (có / mượn ảnh neo /
 chưa có + kế hoạch ảnh), khung ghép lời (lời tạm đánh dấu), lời hiện tại cạnh lời đề xuất, ô Duyệt / Cần sửa.
 
-    PYTHONUTF8=1 python tools/duyet-kich-ban/sinh-trang.py [--out <thư mục>/index.html]
+    PYTHONUTF8=1 python tools/duyet-kich-ban/sinh-trang.py [--out <thư mục>/index.html] [--noi-dung noi-dung-mua-1|noi-dung-mvp]
 
-Đọc prototype/noi-dung-mvp/: khung `kich-ban/*.md` + `thu-thach/*.md` (phiên logic), lời `loi/*.md` (phiên truyện) ghép theo mã như
+Đọc prototype/<--noi-dung, mặc định noi-dung-mua-1>/: khung `kich-ban/*.md` + `thu-thach/*.md` (phiên logic), lời `loi/*.md` (phiên truyện) ghép theo mã như
 `prototype/tools/noi-dung/ghep-loi.ts` (dòng `- [LỜI mã]` ↔ đoạn `## mã`). Chỗ bấm lấy từ `[KHÁM PHÁ]` của khung. Ảnh dò trong
 prototype/src/assets/ theo luật `src/mvp/ui/anh-mvp.ts`; ảnh chưa vào game trong art/mvp-vu1/. Ghi chú lệch, kế hoạch ảnh, lời đề xuất
 (theo mã lời): tools/duyet-kich-ban/ghi-chu.json.
@@ -25,7 +25,6 @@ from PIL import Image
 
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT = Path(__file__).resolve().parents[2]
-ND = ROOT / "prototype" / "noi-dung-mvp"
 ASSETS = ROOT / "prototype" / "src" / "assets"
 ART = ROOT / "art" / "mvp-vu1"
 HERE = Path(__file__).resolve().parent
@@ -38,6 +37,8 @@ def arg(flag, default=None):
 
 
 OUT = Path(arg("--out", str(ROOT / "out" / "duyet-chuong-1" / "index.html")))
+NOI_DUNG = arg("--noi-dung", "noi-dung-mua-1")
+ND = ROOT / "prototype" / NOI_DUNG
 ANH = OUT.parent / "anh"
 
 
@@ -116,7 +117,7 @@ def parse_loi(text, fname, into):
         t = ln.rstrip()
         m = re.match(r"^## (.+)$", t)
         if m:
-            ma = m.group(1).strip(); into[ma] = {"file": f"prototype/noi-dung-mvp/loi/{fname}", "lines": []}
+            ma = m.group(1).strip(); into[ma] = {"file": f"prototype/{NOI_DUNG}/loi/{fname}", "lines": []}
         elif ma and t and not t.startswith("<!--"):
             into[ma]["lines"].append(t)
 
@@ -125,7 +126,7 @@ LOI, LOI_GOC = {}, {}
 for f in sorted((ND / "loi").glob("*.md")):
     parse_loi(read(f), f.name, LOI)
     try:
-        goc = subprocess.run(["git", "show", f"{GOC}:prototype/noi-dung-mvp/loi/{f.name}"], cwd=ROOT, capture_output=True, check=True).stdout.decode("utf-8")
+        goc = subprocess.run(["git", "show", f"{GOC}:prototype/{NOI_DUNG}/loi/{f.name}"], cwd=ROOT, capture_output=True, check=True).stdout.decode("utf-8")
         parse_loi(goc, f.name, LOI_GOC)
     except subprocess.CalledProcessError:
         pass
@@ -237,7 +238,7 @@ for f in sorted((ND / "kich-ban").glob("*.md")):
         elif ln.startswith("### "):
             m = re.match(r"^### ([a-z0-9-]+) — (.+?)\s*\{cảnh: ([a-z-]+)\}\s*$", ln)
             c = {"id": m.group(1), "title": nv_text(m.group(2)), "canh": m.group(3), "group": grp, "raw": [],
-                 "file": f"prototype/noi-dung-mvp/kich-ban/{f.name}"}
+                 "file": f"prototype/{NOI_DUNG}/kich-ban/{f.name}"}
             chains.append(c)
         elif c is not None:
             c["raw"].append(ln)

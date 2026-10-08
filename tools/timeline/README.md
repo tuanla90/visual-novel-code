@@ -10,7 +10,7 @@ Kiểm tra engine và tích hợp HTML: `node --test --test-isolation=none tools
 
 Sinh HTML độc lập: `npm run timeline:mua-1` ở gốc repository. Trên PowerShell bị giới hạn language mode có thể dùng `npm.cmd run timeline:mua-1`.
 
-Nguồn canon là `prototype/noi-dung-mvp/lich.md`, `du-lieu.md`, `kich-ban/*.md`. Ngày Vụ 1 được tính trực tiếp bằng `lichNgay`/`mocLich` của engine game. Ý nghĩa mở khóa được đối chiếu với `phuMoDuoc` và hành động `lam-nhiem-vu-phu` trong `may.ts`: ngày bối cảnh không phải điều kiện ngày; hiện chỉ có điều kiện tiến độ, chưa có hạn thời gian.
+Nguồn canon là `prototype/noi-dung-mua-1/lich.md`, `du-lieu.md`, `kich-ban/*.md` (`buildSourceModel(root, 'noi-dung-mvp')` đọc bộ MVP cũ). Ngày Vụ 1 được tính trực tiếp bằng `lichNgay`/`mocLich` của engine game. Ý nghĩa mở khóa được đối chiếu với `phuMoDuoc` và hành động `lam-nhiem-vu-phu` trong `may.ts`: ngày bối cảnh không phải điều kiện ngày; hiện chỉ có điều kiện tiến độ, chưa có hạn thời gian.
 
 Trong kịch bản, comment `<!-- timeline-ref {JSON} -->` chọn các bản ghi cần giữ thành mốc quyết định. `where` tham chiếu mã/cột, không sao chép ngày. `dateFrom` lấy ngày của một bản ghi ở bảng khác; `join` nối khóa phiên để lấy giờ; `dependsOn` nối chứng cứ đã có với vụ sau. Ngày/giờ luôn lấy từ bảng chuẩn. Tham chiếu sai mã, cột, cảnh hoặc khóa nối làm generator báo lỗi.
 

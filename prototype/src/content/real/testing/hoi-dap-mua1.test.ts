@@ -30,7 +30,7 @@ const dk = (t: ToHoiDap, ma: string) => t.duKien.find((d) => d.ma === ma)!;
 const bao = (t: ToHoiDap): string[] => kiemTo(t).map((l) => l.thongBao);
 
 describe('tờ bác Thịnh thật', () => {
-  const kq = docThuMucMvp(THU_MUC_NOI_DUNG_MUA_1);
+  const kq = docThuMucMvp(THU_MUC_NOI_DUNG_MUA_1, 'noi-dung-mua-1');
 
   it('bộ đọc nhận dòng [HỎI ĐÁP] trong khung; thư mục hoi-dap/ không bị báo "tệp nằm ngoài"', () => {
     const c = kq.mvp.chuoi.find((x) => x.id === 'n1-bac-thinh')!;
@@ -117,7 +117,7 @@ describe('kiểm chéo với kịch bản', () => {
       dossier: [{ id: 'clue-toa-b' }],
       chuoi: [{ id: 'n1-bac-thinh', items: [{ kind: kieu, ma: 'n1-bac-thinh' }, ...loiDoan.map((text) => ({ kind: 'line', line: { speaker: 'bac-tu', expression: null, text } }))], itemDong: [], viTri: { tep: 'k.md', dong: 1 } }],
     }) as unknown as RawMvp;
-  const doanThat = (): string[] => docThuMucMvp(THU_MUC_NOI_DUNG_MUA_1).mvp.chuoi.find((c) => c.id === 'n1-bac-thinh')!.items.flatMap((it) => (it.kind === 'line' ? [it.line.text] : []));
+  const doanThat = (): string[] => docThuMucMvp(THU_MUC_NOI_DUNG_MUA_1, 'noi-dung-mua-1').mvp.chuoi.find((c) => c.id === 'n1-bac-thinh')!.items.flatMap((it) => (it.kind === 'line' ? [it.line.text] : []));
 
   it('không có chuỗi với dòng [HỎI ĐÁP] cùng mã', () => {
     expect(kiemCheoTo(goc(), mvp(['x'], 'note')).map((l) => l.thongBao)).toContainEqual(expect.stringContaining('không có chuỗi "n1-bac-thinh" với dòng "- [HỎI ĐÁP n1-bac-thinh]"'));
@@ -137,7 +137,7 @@ describe('lời trong tờ đi qua máy kiểm giọng', () => {
   const giong = (to: Record<string, unknown>): string[] => {
     const raw = JSON.stringify(to, null, 2);
     const tep = tepLoiTuTo(to, raw, '01-ngay-1', 'x/hoi-dap/n1-bac-thinh.json');
-    return kiemGiong(luat, [tep]).loi.filter((l) => l.startsWith('x/hoi-dap/'));
+    return kiemGiong(luat, [tep], THU_MUC_NOI_DUNG_MUA_1).loi.filter((l) => l.startsWith('x/hoi-dap/'));
   };
   const toThat = (): Record<string, unknown> => JSON.parse(RAW) as Record<string, unknown>;
 
@@ -165,7 +165,7 @@ describe('lỗi về đúng tệp và dòng JSON (npm run kiem-noi-dung:mua1)', 
     writeFileSync(join(tam, 'hoi-dap/chung.json'), JSON.stringify(CHUNG));
     const hong = RAW.replace('"co-khong": "Bác chịu, cháu ạ.', '"co-khong": "Không, cháu ạ.');
     writeFileSync(join(tam, 'hoi-dap/n1-bac-thinh.json'), hong);
-    const mvp = docThuMucMvp(THU_MUC_NOI_DUNG_MUA_1).mvp;
+    const mvp = docThuMucMvp(THU_MUC_NOI_DUNG_MUA_1, 'noi-dung-mua-1').mvp;
     const kq = docHoiDap(tam, mvp, { giong: false });
     const dong = hong.split('\n').findIndex((x) => x.includes('"co-khong": "Không, cháu ạ.')) + 1;
     // Thư mục tạm chỉ có tờ bác Thịnh, nên các chuỗi [HỎI ĐÁP] khác của Vụ 1 báo "thiếu tờ": lọc lấy lỗi của riêng tờ này.
@@ -183,7 +183,7 @@ describe('bổ sung 05/10 tối: đoạn lời rải nhiều chỗ, trường l�
       chuoi: [{ id: 'n1-bac-thinh', items, itemDong: [], viTri: { tep: 'k.md', dong: 1 } }],
     }) as unknown as RawMvp;
   const line = (text: string) => ({ kind: 'line', line: { speaker: 'bac-tu', expression: null, text } });
-  const doan = (): string[] => docThuMucMvp(THU_MUC_NOI_DUNG_MUA_1).mvp.chuoi.find((c) => c.id === 'n1-bac-thinh')!.items.flatMap((it) => (it.kind === 'line' ? [it.line.text] : []));
+  const doan = (): string[] => docThuMucMvp(THU_MUC_NOI_DUNG_MUA_1, 'noi-dung-mua-1').mvp.chuoi.find((c) => c.id === 'n1-bac-thinh')!.items.flatMap((it) => (it.kind === 'line' ? [it.line.text] : []));
 
   it('chữ bắt buộc nằm rải qua nhiều đoạn [LỜI] bị ngắt bởi mục khác: vẫn đủ', () => {
     const d = doan();
@@ -217,7 +217,7 @@ describe('bổ sung 05/10 tối: đoạn lời rải nhiều chỗ, trường l�
 });
 
 describe('loiDaThay: các đoạn [LỜI] mà buổi hỏi đã thay', () => {
-  const kq = docThuMucMvp(THU_MUC_NOI_DUNG_MUA_1);
+  const kq = docThuMucMvp(THU_MUC_NOI_DUNG_MUA_1, 'noi-dung-mua-1');
   const doDoan = dungDoDoanLoi(kq);
   const to = (ma: string): ToHoiDap => chuanHoaTo(JSON.parse(readFileSync(join(THU_MUC_NOI_DUNG_MUA_1, `hoi-dap/${ma}.json`), 'utf8')) as Record<string, unknown>);
 

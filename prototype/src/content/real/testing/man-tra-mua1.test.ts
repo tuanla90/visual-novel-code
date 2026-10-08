@@ -69,7 +69,7 @@ describe('cú pháp dòng gợi ý', () => {
   it('tệp lời nhận dòng "- Gợi ý…"; máy kiểm giọng soát cả hai bậc, bậc 1 theo luật "không lộ đáp án"', () => {
     const tep = ['## x.1', '- Gợi ý: **ha-vy** (thinking): Lớp nào khớp cả hai, tòa B VÀ Báo chí? <br> **duy** (neutral): Tớ bảo cậu bấm chữ VÀ.'].join('\n');
     expect(docTepLoi('loi/tt-x.md', tep).loi).toEqual([]);
-    const kq = kiemGiong(docLuatGiong(readFileSync(join(THU_MUC_NOI_DUNG_MUA_1, 'giong/luat-giong.md'), 'utf8')), [{ ten: 'tt-c-lop', duongDan: 'loi/tt-x.md', noiDung: tep }]);
+    const kq = kiemGiong(docLuatGiong(readFileSync(join(THU_MUC_NOI_DUNG_MUA_1, 'giong/luat-giong.md'), 'utf8')), [{ ten: 'tt-c-lop', duongDan: 'loi/tt-x.md', noiDung: tep }], THU_MUC_NOI_DUNG_MUA_1);
     expect(kq.bong.filter((b) => b.doan === 'x.1').map((b) => [b.nguoi, b.goiYBac])).toEqual([['ha-vy', 1], ['duy', 2]]);
     // Bậc 1 có từ khóa viết hoa → lỗi; bậc 2 thì được nhắc chữ "VÀ" trên màn hình, nhưng Duy xưng "tớ", "cậu" là lỗi xưng hô.
     expect(kq.loi.some((l) => /\[gợi ý bậc 1\]/.test(l))).toBe(true);

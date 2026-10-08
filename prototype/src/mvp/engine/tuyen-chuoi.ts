@@ -28,7 +28,11 @@ export function tuyenChuoi(kb: KichBanMvp): TuyenChuoi {
   const vu1Them = [...kb.lich.ngay.map((n) => n.chuoi), kb.lich.ngayHop?.chuoi, kb.lich.ket?.that, kb.lich.ket?.thuong].filter((x): x is string => !!x);
   const dau = [
     { tuyen: 'vu1', chuoi: [kb.lich.chuoiDau, ...vu1Them] },
-    ...(kb.lich.vuSau ?? []).map((v) => ({ tuyen: v.id, chuoi: [v.chuoi] })),
+    // Vụ sau nhiều ngày (bộ Mùa 1: `- Ngày YYYY-MM-DD: <chuỗi>`) và việc ngày lễ thuộc vụ (`Thuộc vụ:`) đi cùng tuyến của vụ.
+    ...(kb.lich.vuSau ?? []).map((v) => ({
+      tuyen: v.id,
+      chuoi: [v.chuoi, ...(v.cacNgay ?? []).map((n) => n.chuoi), ...(kb.lich.viecNgayLe ?? []).filter((l) => l.thuocVu === v.id).flatMap((l) => [l.chuoi, l.khiLo])],
+    })),
     ...(kb.lich.nhiemVuPhu ?? []).map((v) => ({ tuyen: v.id, chuoi: [v.chuoi] })),
   ];
   const chuoiDau = new Set(dau.map((d) => d.chuoi[0]));
