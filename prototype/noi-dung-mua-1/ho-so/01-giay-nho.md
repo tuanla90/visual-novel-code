@@ -1,67 +1,21 @@
-## Giấy nhớ (clue-…) — người chơi tự tạo trên bảng hồ sơ vụ
+## Giấy nhớ (clue-…): lời người làm chứng trên bảng hồ sơ Vụ 1
 
-<!-- Chữ do phiên truyện viết (30/09); mã và "Giá trị cho trình dựng" thuộc phiên logic. -->
-<!-- Gói B14 (05/10/2026): "Chữ trên giấy" = câu in trên tờ giấy nhớ dán quanh màn tra, nói giá trị ấy là gì; giá trị kéo vào ô lọc bọc trong **…**. Thẻ nhiều giá trị thì mỗi giá trị một câu, cách nhau bằng " · " như dòng "Giá trị cho trình dựng". Tối đa 60 ký tự một câu (máy kiểm: tools/noi-dung/man-tra-mua1.ts). -->
-<!-- Bảng điều tra: "Ảnh" = tên tệp ảnh của thẻ; "Loại trừ: <mã phiếu>" vẽ sợi chỉ cam tới phiếu đó, "Gạch: <giá trị>" gạch giá trị ấy trên phiếu (engine/bang-dieu-tra.ts). -->
+<!-- Gói B19 (08/10/2026): hồ sơ Vụ 1 bản 6, không thẻ nhiễu (user 07/10: mọi thẻ trong hồ sơ đều thật, cái khó chỉ là đặt đúng chỗ). Ba lời làm chứng: bác Thịnh (7:00 mở sảnh, 9:00 cô Lan thu hộp), cô Lan (chữ ký chỉ là của người nộp), chú Cường (phong bì nâu trao tay ở cổng gần bảy giờ). Dùng ở dòng thời gian dtg-vu1, ở đối chất buổi họp và ở [CHẤM VỤ]. -->
+<!-- "Giá trị cho trình dựng" = tờ giấy nhớ kéo được vào màn tra; "Chữ trên giấy" = câu in trên tờ ấy (gói B14), giá trị bọc **…**, tối đa 60 ký tự. -->
 
-### clue-chu-ky-h — [H]
-- Tiêu đề: Chữ ký tay (chỉ đọc được chữ H)
-- Ảnh: doc-chu-ky-h
-- Giá trị cho trình dựng: H
-- Chữ trên giấy: Chữ ký trên thư bắt đầu bằng chữ **H**
-- Nguồn: Bản chụp thư đã che thông tin, Phòng CTSV chuyển về
-- Nội dung: Chữ ký tay trên phiếu gửi: chữ H viết hoa rõ, phần sau là một nét lượn không đọc được; kèm dòng "đề nghị phản hồi chính thức". Không tên, không mã trên thư.
+### clue-loi-bac-thinh — [Lời bác Thịnh]
+- Tiêu đề: Bảy giờ mở sảnh tòa B, chín giờ cô Lan thu hộp
+- Nguồn: Lời {{nv.bac-tu.trong-cau}}, sảnh tòa B, sáng 24/09
+- Nội dung: Sảnh tòa B bảy giờ sáng bác mới mở. Chín giờ cô Lan xuống thu hộp kiến nghị như mọi ngày. Thư vào hộp sáng thứ Hai thì vào sau bảy giờ, trước chín giờ.
 
-### clue-toa-b — [Tòa B]
-- Tiêu đề: Hộp tòa B, mở 9h sáng thứ Hai
-- Giá trị cho trình dựng: B
-- Chữ trên giấy: Thư được bỏ vào hộp ở tòa **B**
-- Nguồn: Lời {{nv.bac-tu.trong-cau}}, sảnh tòa B
-- Nội dung: Bác Thịnh và cô Lan mở hộp 9h sáng thứ Hai; thư nằm trên cùng. Từ 7 giờ tới lúc mở hộp, ra vào tòa B chỉ có sinh viên các lớp sinh hoạt ở tòa này.
-
-### clue-bao-chi-k24 — [Báo chí K24]
-- Tiêu đề: Thẻ lịch khoa Báo chí K24 mắc ở khe hộp
-- Giá trị cho trình dựng: Báo chí · K24
-- Chữ trên giấy: Thẻ lịch của khoa **Báo chí** · Thẻ lịch của khóa **K24**
-- Nguồn: Khe hộp kiến nghị, sảnh tòa B
-- Nội dung: Phần in còn nguyên "Khoa Báo chí – Truyền thông · K24"; dòng viết tay "Họ tên / Lớp" bị xé mất. Còn biết chủ thẻ học khoa Báo chí; lớp nào thì không.
-
-### clue-quyen-du-lieu — [Tài khoản CLB]
-- Tiêu đề: Tài khoản CLB
-- Nguồn: {{nv.co-hanh}}, Phòng Đào tạo
-- Nội dung: Tài khoản clb_tham_tu trên laptop CLB chỉ xem được bảng lớp sinh hoạt: mã lớp, ngành, khóa, tòa nhà. Bảng có thông tin cá nhân phải có phiếu yêu cầu tra cứu. Tra gì máy cũng ghi lại.
-
-### clue-can-ma-va-can-cu — [Cần mã và căn cứ]
-- Tiêu đề: Cần mã và căn cứ
-- Nguồn: Quy chế phiếu gửi, Phòng CTSV
-- Nội dung: Cô Lan chỉ trả lời có/không cho một mã cụ thể khi có căn cứ bằng văn bản.
-
-### clue-phieu-tra-cuu — [Phiếu tra cứu]
-- Tiêu đề: Phiếu yêu cầu tra cứu
-- Nguồn: {{nv.co-lan}} ký, {{nv.quan}} giám sát, Phòng CTSV
-- Nội dung: Cô Lan ký, anh Quân (Hội sinh viên) ký giám sát. Căn cứ: hai lớp BC24A, BC23A. Mở bảng sinh viên, bốn cột: mã, họ đệm, tên, mã lớp. Chỉ để lập căn cứ; tra sổ niêm phong là việc của cô Lan.
+### clue-loi-co-lan — [Lời cô Lan]
+- Tiêu đề: Chữ ký trên phiếu gửi chỉ là của người nộp
+- Nguồn: Lời {{nv.co-lan}}, Phòng Công tác sinh viên, 26/09
+- Nội dung: Thường thì người viết tự đi nộp, nhưng vẫn có trường hợp nộp hộ. Chữ ký trên phiếu gửi chỉ là của người nộp.
 
 ### clue-loi-chu-cuong — [Lời chú Cường]
-- Tiêu đề: Phong bì nâu trao tay 6:45 sáng thứ Hai
-- Nguồn: {{nv.chu-cuong}}, cổng KTX
-- Nội dung: Một cậu sinh viên, balo đeo huy hiệu bánh răng của CLB Robotics, đưa phong bì nâu cho một bạn nữ; bạn nữ cầm rồi đi thẳng về phía tòa B. Chú không nhìn rõ mặt, chỉ nhớ cái huy hiệu sứt mất một răng.
-
-### clue-hoai-nguoi-nop — [Hoài là người nộp]
-- Tiêu đề: Sổ niêm phong: SV240317 có, SV240228 không
-- Ảnh: doc-so-niem-phong-trang
-- Loại trừ: ev-hai-ma
-- Gạch: SV240228
-- Nguồn: {{nv.co-lan}} tra sổ niêm phong hộp kiến nghị, Phòng CTSV
-- Nội dung: Nguồn độc lập cho biết ai là người nộp; chưa cho biết ai viết.
-
-### clue-ten-tep — [Tên tệp]
-- Tiêu đề: Chân trang lá thư: tên tệp
-- Giá trị cho trình dựng: kien-nghi
-- Chữ trên giấy: Tên tệp ở chân trang thư, đoạn đầu: **kien-nghi**
-- Nguồn: {{nv.co-hanh}}, Phòng Đào tạo
-- Nội dung: Bản in từ máy phòng máy có dòng chân trang ghi tên tệp. Chân trang bản chụp lá thư bị xén, chỉ đọc được đoạn đầu: "kien-nghi-…".
-
-### clue-loi-nhan-linh-1 — [Mẩu giấy trong sổ]
-- Tiêu đề: Mẩu giấy rơi ra từ sổ CLB
-- Nguồn: Rơi ra từ cuốn sổ của CLB, phòng CLB
-- Nội dung: Mực xanh đã ngả màu, không rõ chữ ai, một dòng: "Căn phòng này giữ nhiều hơn em nghĩ." Không ghi ngày, không ghi gửi cho ai.
+- Tiêu đề: Phong bì nâu trao tay ở cổng ký túc xá, gần 7:00 sáng 16/09
+- Giá trị cho trình dựng: 2024-09-16
+- Chữ trên giấy: Ngày chú Cường thấy phong bì nâu: **2024-09-16**
+- Nguồn: Lời {{nv.chu-cuong}}, cổng ký túc xá, 27/09
+- Nội dung: Sáng thứ Hai 16/09, lúc chú sắp giao ca (gần bảy giờ): một bạn nữ sáng nào cũng ra cổng sớm, chú nhớ mặt, vừa quẹt thẻ ra cổng thì có cậu đeo balo đen gọi lại, đưa phong bì nâu. Cậu kia quay lưng về phía chú suốt, rồi đi luôn. Bạn nữ cầm phong bì đi về phía tòa B.

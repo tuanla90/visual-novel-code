@@ -1,40 +1,46 @@
 # Lời · kich-ban/01-ngay-1.md
 
-<!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/01-ngay-1.md. [DÀN DỰNG] không hiện cho người chơi. Không câu hướng dẫn thao tác: người chơi tự thấy ba chỗ bấm, lời chỉ gợi tò mò. -->
+<!-- Gói B19 (08/10/2026): Cảnh 5 của bản thoại 6. Câu nói đúng chữ bản 6 (chỉ đổi ngoặc cong thành ngoặc thẳng). Dòng "(tạm)" là câu mới thêm, chờ user duyệt. -->
 
 ## n1-mo.1
 - [THẺ CHỮ] **narrator**: Thứ Ba, 24/09/2024
-- **tung** (chi-tay): Hộp kiến nghị tòa B thì nhớ rồi! Hôm đầu tới trường tớ với {{nv.nguoi-choi}} vừa đi qua nó.
-- **ha-vy** (thinking): Ngồi đây đoán thì được gì. Ra tận nơi xem đã.
+> NHIỆM VỤ: Ra sảnh tòa B xem cái hộp kiến nghị (tạm)
+> NHẮC VIỆC ha-vy (neutral): Sáng nay mình ra tòa B hỏi bác bảo vệ về cái hộp nhé. (tạm)
 
 ## n1-toa-b.1
-> NHIỆM VỤ: Ai đã bỏ lá thư vào cái hộp này?
-> NHẮC VIỆC tung (gai-dau): Chưa biết là ai, lớp nào. Quanh hộp này có manh mối gì không?
-- **narrator**: Chiều thứ Ba, sảnh tòa B vắng tanh. Cạnh cái hộp tôn có một tờ giấy mới dán.
-- **player**: (Vẫn cái hộp hôm nọ. Xem từ đâu trước đây?)
-
-## n1-toa-b.2
-- **ha-vy** (thinking): Sáng thứ Hai chỉ có sinh viên sinh hoạt ở đây ra vào. Thẻ lịch lại của khoa Báo chí.
-- **ha-vy** (neutral): Lớp nào vừa sinh hoạt ở tòa B, vừa học Báo chí? Khoanh được lớp là bớt được cả trường.
-- **tung** (worried): Tìm kiểu gì? CLB mình làm gì có danh sách sinh viên!
-- **ha-vy** (neutral): Chị Minh Anh làm đơn rồi. Mai có tài khoản.
-> NHẮC VIỆC ha-vy (thinking): Lớp nào vừa ở tòa B, vừa học Báo chí? Mai có tài khoản rồi tính.
-
-## n1-hop.1
-- [DÀN DỰNG] Mắc ở mép tôn khe hộp là một tấm thẻ lịch, phần in còn nguyên "Khoa Báo chí – Truyền thông · K24", dòng viết tay "Họ tên / Lớp" bị xé mất.
-- **narrator**: Mắc ở mép khe hộp là một góc thẻ lịch. Phần in còn rõ: "Khoa Báo chí – Truyền thông · K24". Dòng ghi "Họ tên / Lớp" đã bị xé mất.
-- **player**: Thẻ lịch Tuần sinh hoạt công dân… giống hệt thẻ của tớ, chỉ khác mỗi tên khoa.
-- **tung** (chi-tay): Tớ cá là tên chủ thẻ nằm đúng ở mẩu bị rách! Đen thật.
-- **ha-vy** (thinking): Khoan, tính lại đã. Thẻ mắc ở khe chưa chắc là của người bỏ thư.
+- [THẺ CHỮ] **narrator**: 7:50 · Sảnh tòa B
+- [DÀN DỰNG] Nền sảnh tòa B; bác bảo vệ mở cửa sổ phòng trực, thẻ tên ghi Thịnh (chân dung bác đứng ở điểm bấm). Hộp kiến nghị là ảnh vật, hiện sau khi nói chuyện với bác.
 
 ## n1-bac-thinh.1
-- **bac-tu** (neutral): Cháu hỏi cái hộp à? Chín giờ sáng thứ Hai, bác với cô Lan bên Công tác sinh viên mở. Thư nằm trên cùng.
-- **player**: Nằm trên cùng… tức là được bỏ vào sau cùng ạ?
-- **bac-tu** (neutral): Chắc thế. Mười một rưỡi đêm Chủ nhật bác khóa cửa, ngó qua khe thấy trống trơn.
-- **bac-tu** (neutral): Bảy giờ sáng thứ Hai bác mới mở cửa tòa này.
-- **bac-tu** (neutral): Từ đó tới lúc mở hộp, toàn sinh viên các lớp sinh hoạt ở đây ra vào thôi.
-- **bac-tu** (neutral): Đứa nào bỏ thì bác chịu. Đông thế bác nhớ sao nổi.
+- **ha-vy** (neutral): Cháu chào bác. Bác cho cháu hỏi về cái hộp kiến nghị, hôm thứ Hai tuần trước ạ.
+- **bac-tu** (neutral): Hộp ấy à? Sảnh này bảy giờ sáng bác mới mở, chín giờ cô Lan xuống thu như mọi ngày. Thư nào vào hộp sáng thứ Hai thì cũng vào sau bảy giờ thôi.
 
-## n1-thong-bao-hop.1
-- **player**: "Họp rà soát phòng sinh hoạt CLB: 16:00 thứ Hai 30/09." Dán ngay cạnh hộp luôn.
-- **tung** (worried): Dán tơ hơ thế này! Ai đi qua cũng đọc được. Cả trường sắp biết CLB mình bị đòi phòng rồi.
+## n1-bac-thinh.2
+- **player**: Bảy giờ mở sảnh, chín giờ cô Lan thu. Vậy lá thư vào hộp trong hai tiếng ấy.
+- **narrator**: Hà Vy cúi sát khe hộp.
+- **ha-vy** (day-kinh): Cậu quan sát khe hộp xem. Có một mẩu giấy mắc ở đó. Mép giấy còn mới, không bám bụi, tức là mới bị kẹt gần đây.
+
+## n1-khe-hop.1
+- **narrator**: Một tấm thẻ lịch học, dòng dưới cùng bị xé mất nửa. Còn đọc được: Khoa Báo chí, khóa 2024.
+
+## n1-khe-hop.2
+- **player**: Khoa Báo chí, khóa 2024. Dòng tên bị xé mất rồi.
+- **ha-vy** (thinking): Mép rách xơ thế này là bị giật mạnh. Người bỏ thư vội đến mức không buồn gỡ ra.
+
+## n1-toa-b-quat.1
+- **player**: (Quạt treo tường còn chưa bật. Trưa nay kiểu gì cũng có người tranh chỗ ngồi dưới quạt.) (tạm)
+
+## n1-toa-b.2
+> NHIỆM VỤ: Chiều về phòng CLB kể cho chị Minh Anh (tạm)
+> NHẮC VIỆC ha-vy (neutral): Năm giờ chiều mình mang tấm thẻ về phòng CLB nhé. (tạm)
+
+## n1-clb.1
+- **narrator**: Phòng CLB, 17:00. Minh Anh ghim tấm thẻ lên bảng điều tra, cạnh tờ phiếu gửi.
+- **minh-anh** (neutral): Vậy là chúng ta đã có hai mảnh ghép rất quan trọng: một bạn tên Hoài, và một tấm thẻ lịch khoa Báo chí khóa 2024. Chưa chắc là cùng một người. Nhưng nếu là cùng một người thì có thể là ai?
+
+## n1-clb.2
+- [DÀN DỰNG] Khi có lệnh ghép mẫu (B19-MÁY): ngay trước đoạn này bảng điều tra mở ra, Minh Anh ghim hai thẻ, kéo chỉ đỏ, dán giấy nhớ. Người chơi chỉ xem.
+- **narrator**: Minh Anh kéo một sợi chỉ đỏ nối hai tờ, rồi viết lên giấy nhớ: "Hoài nào học Báo chí, khóa 2024?"
+- **player**: Phải xem bảng sinh viên mới biết ạ.
+- **minh-anh** (neutral): Phiếu chị nộp rồi, sáng mai cô Hạnh ký. Chín giờ mình gặp nhau ở Phòng Đào tạo.
+> NHIỆM VỤ: Chín giờ sáng mai lên Phòng Đào tạo (tạm)

@@ -12,33 +12,15 @@ Tệp lời mới phải thêm vào đây, thiếu là lỗi. -->
 - 00-mo-dau · 08/09–23/09/2024
 - 01-ngay-1 · 24/09
 - 02-ngay-2 · 25/09
-- tt-c-lop
+- tt-c-sinh-vien
 - 03-ngay-3 · 26/09
-- tt-c-ten-h
 - 04-ngay-4 · 27/09
-- tt-c-in
+- tt-c-ra-vao
 - 05-ngay-5 · 28/09
 - 06-hop-va-ket · 30/09
-- 10-vu-2-tin-don · 09/10
-- tt-tin-don
-- 11-vu-3-tranh-cai · 20–22/10
-- tt-tranh-cai
-- 23-phu-dan-lac · 25/10
-- tt-phu-dan-lac
-- 25-phu-tui-do · 30/10
-- tt-phu-tui-do
-- 20-phu-so-phong · 01/11
-- tt-v2-loc-buoi
-- 12-vu-4-giup-nam · 04/11
-- tt-giup-nam
-- 21-phu-micro · 15/11
-- tt-phu-micro
-- 13-vu-5-so-quy · 16–27/11
-- tt-so-quy
-- 24-phu-hoc-tro-cu · 20/11
-- tt-phu-hoc-tro-cu
-- 22-phu-hoan-tien · 29/11
-- tt-phu-hoan-tien
+- tt-c-sua-or-quan
+
+<!-- Gói B19 (08/10/2026): bộ mùa 1 chỉ còn Vụ 1 bản 6; tệp lời Vụ 2–5 và việc phụ đã gỡ (git còn giữ). -->
 
 ## Xưng hô
 
@@ -51,10 +33,7 @@ Chốt 03/10/2026: Duy anh/em với năm nhất; người chơi xưng theo ngư�
 - player · không nói: tôi · vì: tớ/cậu với bạn, em với khóa trên và thầy cô
 - minh-anh · không nói: tớ, cậu, các cậu · vì: năm ba, chị/em với năm nhất và năm hai
 - duy · không nói: tớ, cậu, các cậu · vì: năm hai, anh/em với năm nhất, em/chị với Minh Anh (chốt 03/10)
-- nam · không nói: cậu, các cậu · vì: năm hai, anh/em với năm nhất, tớ/cậu với Duy (Duy gần như không nói chuyện riêng với Nam), em với Minh Anh, Khánh, Bách, Thảo (user chốt 04/10)
 - quan · không nói: tớ, cậu, các cậu · vì: tôi/các bạn, lạnh, công vụ
-- hieu · không nói: tớ, các cậu · trước: 10-vu-2-tin-don · vì: Vụ 1 còn gắt, tôi/các bạn
-- hieu · không nói: tôi · từ: 10-vu-2-tin-don · vì: từ Vụ 2 đã gỡ tin, tớ/các cậu với nhóm (vẫn "em" với cô Lan)
 - thay-quang · không nói: tôi, tớ, cháu · vì: thầy/các em
 - co-hanh · không nói: tôi, tớ, cháu · vì: cô/các em, kể cả cô sắp nghỉ hưu (user chốt 03/10)
 - co-lan · không nói: tôi, tớ, cháu · vì: cô/các em
@@ -102,14 +81,12 @@ Trong lời của những người nói ấy, <tên> phải đứng sau <cách g
 ## Câu khóa
 
 <!-- `- "<câu nguyên văn>" · ở: <tệp> · vì: …` — câu gài / câu chủ đề, phải còn NGUYÊN VĂN trong tệp ấy. Mất là LỖI.
-AI gọt lời hay xóa mất những câu này (duyệt v2 Vụ 1, 03/10). -->
+AI gọt lời hay xóa mất những câu này (duyệt v2 Vụ 1, 03/10). Gói B19 (08/10): câu khóa theo bản thoại 6. -->
 
-- "Căn cứ vào đâu?" · ở: 00-mo-dau · vì: câu cửa miệng thầy Quang, Hà Vy nhại lại; trả ở Vụ 5 qua bà bán trà đá
-- "Căn cứ vào đâu?" · ở: 13-vu-5-so-quy · vì: bà bán trà đá nối "cậu trà nóng" với thầy Quang
-- "Sổ ghi tên người. Không có chữ ký người có thẩm quyền thì bác không mở." · ở: 04-ngay-4 · vì: gài cho Vụ 6
-- "Căn phòng này giữ nhiều hơn em nghĩ." · ở: 06-hop-va-ket · vì: nguyên văn mẩu giấy trong tủ, bí mật của mùa
-- "Chưa thu phòng ngay." · ở: 06-hop-va-ket · vì: quyết định của buổi họp, nối sang Vụ 2
-- "Đang xin mở rộng xưởng thực hành" · ở: 00-mo-dau · vì: gài động cơ của Robotics từ Ngày hội
+- "Chữ ký này chỉ là của người nộp thôi." · ở: 03-ngay-3 · vì: thông điệp của Vụ 1: chữ ký chỉ cho biết ai nộp, không cho biết ai viết
+- "Cậu nhìn, nhưng cậu không quan sát." · ở: 00-mo-dau · vì: câu Sherlock của Hà Vy mở cách chơi quan sát
+- "Muốn còn một thì phải bảo máy thêm hai điều cùng lúc, chứ không phải điều này hoặc điều kia." · ở: tt-c-sinh-vien · vì: gợi ý chính của Duy ở màn tra 1 (bản 6)
+- "Ra quán trà đá mà gọi trà nóng thì bà nhớ lâu." · ở: 06-hop-va-ket · vì: gài "cậu trà nóng", bí mật của mùa
 
 ## Tên đã bỏ
 
@@ -118,6 +95,9 @@ AI gọt lời hay xóa mất những câu này (duyệt v2 Vụ 1, 03/10). -->
 - thầy Khải · vì: bỏ 03/10, việc của thầy chuyển cho cô Hạnh và bác Thịnh
 - chị Linh · vì: bỏ 02/10, cuốn sổ là sổ của CLB
 - Đạt · vì: bỏ 30/09
+- Hiếu · vì: bản 6 (08/10) bỏ Hiếu khỏi Vụ 1
+- Robotics · vì: bản 6 (08/10) bỏ mọi gợi ý Robotics ở Vụ 1 (không lộ người đưa phong bì)
+- huy hiệu · vì: user 07/10 không tả huy hiệu, nói ra là lộ người đưa phong bì
 
 ## Lời nhắc không lộ đáp án
 

@@ -21,8 +21,10 @@
  *    ấy: ba lớp KTVM-03, KTVM-05, KTVM-07 giữ đúng người của truyện (Hiếu, Hồng, Toàn là ba người Báo chí).
  *  - giao_dich: không thêm dòng HOAN. quet_the_thu_vien: KHÔNG thêm (thư viện chỉ in cho mỗi người bản của chính họ).
  * Không import gì (chạy được cả trong công cụ lẫn trong trình duyệt): kich-ban.gen.ts chỉ chứa dòng của truyện, dữ liệu nền
- * được sinh lại lúc nạp trò chơi; bộ kiểm cũng thêm nền trước khi chạy SQL.
+ * được sinh lại lúc nạp trò chơi; bộ kiểm cũng thêm nền trước khi chạy SQL. Ngoại lệ duy nhất: `nhieu-mua1.ts` (cũng không import
+ * gì), nền của bộ mùa 1 (B19: bảng sinh viên sáu cột, sổ ra vào ký túc xá); bộ MVP không có các bảng ấy nên không đổi.
  */
+import { themNhieuMua1 } from './nhieu-mua1.ts';
 type GiaTriO = string | number | null;
 /** Hình dạng tối thiểu của một bảng / bộ dữ liệu (khớp cả kiểu của tools lẫn của src/content/mvp/types.ts). */
 interface BangDuLieuMvp {
@@ -835,6 +837,7 @@ export function themNhieuMvp<T extends BoDuLieuMvp>(d: T): T {
   themLichVaDangKy(d);
   themDanhSachLopCu(d);
   themQuetTheThuVien(d);
+  themNhieuMua1(d);
   return d;
 }
 

@@ -1,276 +1,172 @@
-## Mở đầu — tuần nhập học → Trung thu → chiều thứ Hai 23/09
+## Mở đầu: nhập học → tuần sinh hoạt công dân → Ngày hội CLB → Trung thu → chiều thứ Hai 23/09
 
-<!-- Theo kịch bản khung mục 3, đã áp DX-01 (01/10/2026): bỏ md-02 bản đồ, md-04 căng tin, md-05 phòng máy; md-06 bảng tin gộp vào md-07. Nối: md-01 → md-03 → md-07 → md-08 → md-09. Thoại bản hội đồng v1 (29/09): giọng sinh viên miền Bắc, tớ/cậu. -->
+<!-- Gói B19 (08/10/2026): viết lại theo bản thoại 6 (docs/mua-1/brief/b19-ban-6-thoai.md), Cảnh 0 tới Cảnh 4. Lời ở loi/00-mo-dau.md. -->
+<!-- Mã chuỗi giữ tiền tố md-08 (tuần công dân), md-09 (Ngày hội), md-10 (Trung thu), md-11 (phòng CLB 23/09): lịch trong game suy ngày của mở đầu từ tiền tố này (src/mvp/engine/lich-ngay.ts). Chuỗi có câu Minh Anh tự xưng KHÔNG đặt tên md-09-ngay-hoi (máy chặn thẻ Minh Anh ở chuỗi ấy, may.ts canGioiThieu). -->
+<!-- Lệnh mới của đề bài B19 mục 5 (agent MÁY dựng) nằm trong chú thích "MỚI:"; người điều phối gỡ chú thích khi gộp. -->
 
-### md-00-tren-xe — Chủ nhật tuần 1: trên chuyến xe buýt lên Hà Nội {cảnh: xe-buyt}
+### md-00-tren-xe — Cảnh 0: trên xe buýt lên Hà Nội {cảnh: xe-buyt}
 
 - [LỜI md-00-tren-xe.1]
-- [ĐI CÙNG md-00-xe-buyt] Xuống xe
+- [TẠO NHÂN VẬT ten] player: "(Dòng đầu tờ giấy báo là họ tên mình.)"
+  - xúc xắc: (Thôi, để xúc xắc chọn hộ một cái tên.)
+- [LỜI md-00-tren-xe.2]
+- [ĐI CÙNG md-00-cong-truong] Xuống xe
 
-### md-00-xe-buyt — Chủ nhật tuần 1: xuống xe buýt trước cổng trường {cảnh: cong-truong}
+### md-00-cong-truong — Cảnh 0: xuống xe trước cổng trường {cảnh: cong-truong}
 
-- [LỜI md-00-xe-buyt.1]
+- [LỜI md-00-cong-truong.1]
+- [ĐI CÙNG md-00-sanh-ktx] Theo biển chỉ đường vào ký túc xá
 
-- [LỜI md-00-xe-buyt.2]
-- [ĐI CÙNG md-00-cong-ktx] Tới cổng ký túc xá
+### md-00-sanh-ktx — Cảnh 1: sảnh ký túc xá, người chơi đứng nhìn cậu áo xanh chỉ đường cho bạn nữ kéo vali {cảnh: sanh-ktx}
 
-### md-00-cong-ktx — Đi qua sân trường tới cổng ký túc xá {cảnh: cong-ktx}
-
-- [LỜI md-00-cong-ktx.1]
-- [ĐI CÙNG md-00-sanh-ktx] Vào sảnh
-
-### md-00-sanh-ktx — Sảnh tầng một dãy nhà giữa: dạy bấm vật {cảnh: sanh-ktx}
-
+<!-- Người chơi chỉ ĐỨNG NHÌN (đề bài B19 mục 3): hình người chơi không lên dàn, bạn nữ rời hình trước khi người chơi nói với cậu áo xanh. -->
 - [LỜI md-00-sanh-ktx.1]
-
+- [RA player]
 - [LỜI md-00-sanh-ktx.2]
+- [RA hoai]
+- [LỜI md-00-sanh-ktx.3]
 - [KHÁM PHÁ kp-sanh-ktx]
-  - obj-thong-bao-thang-may · x 10.5% · y 38.5% · rộng 3.6% → md-00-thang-may · dấu: ! · nhãn: Xem tờ giấy trên cửa thang máy
-  - obj-so-do-ktx · x 44% · y 35.5% · rộng 10% → md-00-so-do · sau: md-00-thang-may · dấu: ! · nhãn: Xem bảng tin
-  - vung:lung-ao-xanh · x 87.5% · y 44% · rộng 9% → md-00-thay-tung · sau: md-00-thang-may, md-00-so-do · dấu: ! · nhãn: Tấm lưng áo xanh giữa đám đông
+  - vung:lung-ao-xanh · x 87.5% · y 44% · rộng 9% → md-00-hoi-duong · dấu: ! · nhãn: Cậu áo xanh
+  - obj-thong-bao-thang-may · x 10.5% · y 38.5% · rộng 3.6% → md-00-thang-may · nhãn: Tờ giấy trên cửa thang máy
 
-### md-00-thang-may — Tờ giấy dán trên cửa thang máy {cảnh: sanh-ktx}
+### md-00-thang-may — Chi tiết ẩn: tờ giấy trên cửa thang máy {cảnh: sanh-ktx}
 
 - [LỜI md-00-thang-may.1]
 
-### md-00-so-do — Sơ đồ khu nhà trên bảng tin {cảnh: sanh-ktx}
+### md-00-hoi-duong — Cảnh 1: hỏi đường cậu áo xanh, hóa ra cùng phòng 408 {cảnh: sanh-ktx}
 
-- [LỜI md-00-so-do.1]
+- [LỜI md-00-hoi-duong.1]
+- [ĐI CÙNG md-01-phong-408] Lên phòng 408
 
-### md-00-thay-tung — Chi tiết ẩn đầu tiên: một tấm lưng áo xanh giữa đám đông {cảnh: sanh-ktx}
+### md-01-phong-408 — Cảnh 1: phòng 408 {cảnh: phong-ktx}
 
-- [LỜI md-00-thay-tung.1]
-- [ĐI TỚI md-00-tung-chi-duong]
+- [ẢNH cg-phong-408]
+- [LỜI md-01-phong-408.1]
+- [BIẾT tung câu nói, lịch]
+- [LỜI md-01-phong-408.2]
+- [ĐI CÙNG md-01-cong-ktx] Đi một vòng trường với Tùng
 
-### md-00-tung-chi-duong — Thấy Tùng chỉ đường cho bạn nữ {cảnh: sanh-ktx}
+### md-01-cong-ktx — Cảnh 1: cổng ký túc xá, chú Cường {cảnh: cong-ktx}
 
-- [RA player]
-- [LỜI md-00-tung-chi-duong.1]
-- [RA hoai]
-- [LỜI md-00-tung-chi-duong.2]
-- [ĐI TỚI md-00-gap-tung]
-
-### md-00-gap-tung — Hỏi đường cậu bạn áo xanh: tạo nhân vật {cảnh: sanh-ktx}
-
-- [LỜI md-00-gap-tung.1]
-- [TẠO NHÂN VẬT ten] tung (ao-xanh): "Thế cậu tên gì?"
-  - xúc xắc: Ngại nghĩ thì để tớ gieo xúc xắc đặt hộ cho. Đảm bảo không xui.
-- [LỜI md-00-gap-tung.2]
-- [LỜI md-00-gap-tung.3]
-- [BIẾT tung câu nói]
-- [ĐI CÙNG md-01-ktx] Lên phòng 408
-
-### md-01-ktx — Phòng KTX 408, Chủ nhật chiều {cảnh: phong-ktx}
-
-- [LỜI md-01-ktx.1]
-
-- [ẢNH chibi-408-vali]
-- [ẢNH chibi-vali-tho]
-- [LỜI md-01-ktx.2]
-- [ĐI CÙNG md-03-toa-b] Ra sảnh tòa B
-
-### md-03-toa-b — Sảnh tòa B: cái hộp tôn cũ {cảnh: sanh-toa-b}
-
-- [LỜI md-03-toa-b.1]
-- [ẢNH obj-hop-kien-nghi-trong]
-- [LỜI md-03-toa-b.2]
-- [BIẾT bac-tu câu nói]
-- [ĐI CÙNG md-07-cong-ktx-toi] Tới cổng KTX buổi tối
-
-### md-07-cong-ktx-toi — Cổng KTX, tối: chú Cường {cảnh: cong-ktx-dem}
-
-- [LỜI md-07-cong-ktx-toi.1]
+- [LỜI md-01-cong-ktx.1]
 - [BIẾT chu-cuong câu nói]
-- [ẢNH chibi-chuyen-that]
-- [ĐI CÙNG md-08-tuan-cong-dan] Đi sinh hoạt công dân
+- [ĐI CÙNG md-08-tuan-cong-dan] Sang tuần sinh hoạt công dân
 
-### md-08-tuan-cong-dan — Chuyển cảnh: tuần sinh hoạt công dân {cảnh: hoi-truong}
+### md-08-tuan-cong-dan — Thứ Hai 09/09 tới thứ Sáu 13/09: tuần sinh hoạt công dân, thẻ lịch in theo khoa {cảnh: hoi-truong}
 
 - [LỜI md-08-tuan-cong-dan.1]
 - [ẢNH chibi-ngu-gat]
-- [RA tung]
-- [LỜI md-08-tuan-cong-dan.1b]
-- [HIỆN TÀI LIỆU doc-the-lich-cua-toi]
-- [ĐI CÙNG md-09-ngay-hoi] Dự ngày hội CLB
+- [LỜI md-08-tuan-cong-dan.2]
+- [ẢNH doc-the-lich-cua-toi]
+- [LỜI md-08-tuan-cong-dan.3]
+- [ĐI CÙNG md-09-ngay-hoi] Đi xem Ngày hội CLB với Tùng
 
-### md-09-ngay-hoi — Ngày hội CLB, thứ Bảy: lọc thử một lần {cảnh: nha-van-hoa}
+### md-09-ngay-hoi — Cảnh 2: Ngày hội CLB, bàn CLB Thám Tử vắng tanh, anh sơ mi trắng dừng trước bàn {cảnh: nha-van-hoa}
 
 - [LỜI md-09-ngay-hoi.1]
-
-- [LỜI md-09-ngay-hoi.2]
-- [ẢNH chibi-ngay-hoi]
 - [RA tung]
-- [LỜI md-09-ngay-hoi.2b]
-- [LỌC THỬ lt-ngay-hoi · 1 dòng · chọn ma_sv = SV240251]
-
-```sql
-SELECT ma_sv, ho_dem, ten, nganh FROM tra_cuu_k24 WHERE nganh = 'Du lịch' AND ten = 'Tùng';
-```
-
-- [BIẾT tung họ tên]
+- [LỜI md-09-ngay-hoi.2]
+- [ẢNH cg-ban-clb-vang]
 - [LỜI md-09-ngay-hoi.3]
-- [ĐI CÙNG md-10-trung-thu] Xuống sân phá cỗ Trung thu
+- [RA khanh]
+- [ẢNH cg-phieu-trang]
+- [ĐI TỚI md-09-ban-tham-tu]
 
-### md-10-gap-duy — Trung thu: người chơi tự tới chào anh đang buộc chân bàn gấp {cảnh: san-ktx-trung-thu}
+### md-09-ban-tham-tu — Cảnh 2: Tùng đăng ký; chị giữ bàn là Minh Anh, mời tới Trung thu {cảnh: nha-van-hoa}
 
-- [LỜI md-10-gap-duy.2]
+- [LỜI md-09-ban-tham-tu.1]
+- [BIẾT minh-anh câu nói]
+- [LỜI md-09-ban-tham-tu.2]
+- [ĐI CÙNG md-10-trung-thu] Tối thứ Ba, xuống sân ký túc xá
 
-### md-10-gap-ha-vy — Trung thu: người chơi tự tới chào bạn nữ đứng tách ra cạnh bảng tin {cảnh: san-ktx-trung-thu}
-
-- [VÀO ha-vy]
-- [LỜI md-10-gap-ha-vy.2]
-
-### md-10-trung-thu — Sân KTX, thứ Ba 17/09 19h: CLB gặp mặt lần đầu {cảnh: san-ktx-trung-thu}
+### md-10-trung-thu — Cảnh 3: Trung thu ở sân ký túc xá, 19:00, đĩa bốn bánh {cảnh: san-ktx-trung-thu}
 
 - [LỜI md-10-trung-thu.1]
+- [ẢNH cg-nam-ghe]
 - [LỜI md-10-trung-thu.2]
-- [KHÁM PHÁ kp-lam-quen]
-  - nv:duy · x 30% · y 100% · rộng 15% → md-10-gap-duy · dấu: ! · nhãn: Anh cạnh bàn bánh
-  - nv:ha-vy · x 86% · y 100% · rộng 14% → md-10-gap-ha-vy · dấu: ! · nhãn: Bạn nữ đeo kính
-- [LỜI md-10-trung-thu.2b]
-- [KHÁM PHÁ kp-soi-tung · quan sát tung · Hà Vy soi]
-  - vung:ban-do · x 82% · y 56% · rộng 24% → md-10-soi-ban-do · nhãn: Tờ giấy trên tay
-  - vung:ao · x 50% · y 44% · rộng 22% → md-10-soi-ao · nhãn: Cái áo
-  - vung:mui · x 57% · y 21% · rộng 14% → md-10-soi-mui · nhãn: Miếng băng trên mũi
+- [BIẾT minh-anh lịch]
 - [LỜI md-10-trung-thu.3]
-- [BIẾT tung lịch]
-- [ĐI TỚI md-10-gap-hoai]
+- [KHÁM PHÁ kp-lam-quen]
+  - nv:duy · x 30% · y 100% · rộng 15% → md-10-gap-duy · dấu: ! · nhãn: Anh áo khoác đen
+  - nv:ha-vy · x 80% · y 100% · rộng 14% → md-10-gap-ha-vy · dấu: ! · nhãn: Bạn đeo kính
+- [LỜI md-10-trung-thu.4]
+- [ĐI TỚI md-10-chia-banh]
 
-### md-10-gap-hoai — Hoài xuất hiện hỏi đường {cảnh: san-ktx-trung-thu}
+### md-10-gap-duy — Trung thu: chào anh áo khoác đen dán băng dính lên chìa khóa {cảnh: san-ktx-trung-thu}
 
-- [LỜI md-10-gap-hoai.1]
-- [RA hoai]
-- [ĐI TỚI md-10-mat-banh]
+- [LỜI md-10-gap-duy.1]
 
-### md-10-mat-banh — Một chiếc bánh nướng biến mất khỏi đĩa của CLB {cảnh: san-ktx-trung-thu}
+### md-10-gap-ha-vy — Trung thu: chào bạn đeo kính ghi sổ nhỏ {cảnh: san-ktx-trung-thu}
 
-- [LỜI md-10-mat-banh.1]
-- [KHÁM PHÁ kp-banh-trung-thu]
-  - vung:dia-banh · x 11% · y 70% · rộng 15% → md-10-dia-banh · dấu: ! · nhãn: Đĩa bánh trên bàn gấp
-  - vung:vun-banh · x 36% · y 81% · rộng 10% → md-10-vun-banh · dấu: ! · nhãn: Nền sân gần bàn
-  - vung:den-ca-chep · x 42% · y 68% · rộng 15% → md-10-den-ca-chep · dấu: ! · nhãn: Đèn cá chép đỏ
-  - vung:doi-dep · x 46% · y 80% · rộng 8% → md-10-doi-dep · dấu: ! · nhãn: Đôi dép bên chiếc đèn
-  - vung:dau-lan · x 42% · y 44% · rộng 9% → md-10-dau-lan · nhãn: Đầu lân trên sân khấu
-  - vung:gian-robotics · x 74% · y 50% · rộng 17% → md-10-gian-robotics · dấu: ? · nhãn: Gian đèn ông sao
-  - vung:balo-banh-rang · x 77% · y 70% · rộng 8% → md-10-balo-banh-rang · nhãn: Balo trên ghế xanh
-  - vung:ap-phich · x 89% · y 38% · rộng 9% → md-10-ap-phich · nhãn: Áp phích trên bảng tin
-  - nv:ha-vy · x 58% · y 100% · rộng 14% → md-10-ha-vy-goi · dấu: ? · nhãn: Hà Vy
-- [LỜI md-10-mat-banh.2]
-- [ĐI TỚI md-10-hoi-banh]
+<!-- ẢNH MỚI: cg-so-ha-vy-gio (đang vẽ; khi có tệp thì thay dòng ảnh tạm dưới) -->
+- [ẢNH chibi-ha-vy]
+- [LỜI md-10-gap-ha-vy.1]
 
-### md-10-hoi-banh — Đoán ai lấy bánh từ những gì vừa thấy {cảnh: san-ktx-trung-thu}
+### md-10-chia-banh — Trung thu 19:15: chia bánh còn ba cái; quan sát tay từng người; dòng thời gian tập dượt {cảnh: san-ktx-trung-thu-ba-banh · cảnh cắt}
 
-- [RẼ NHÁNH r-ai-lay-banh] ha-vy: "Theo cậu, ai lấy chiếc bánh nướng?"
-  - {id: tre-con} Một đứa trẻ lấy. → hậu quả: đi tới md-10-doan-dung
-  - {id: tung} Tùng lấy. → hậu quả: đi tới md-10-doan-tung
-  - {id: robotics} Người ở gian Robotics lấy. → hậu quả: đi tới md-10-doan-robotics
-
-### md-10-doan-tung — Tùng bị nghi oan {cảnh: san-ktx-trung-thu}
-
-- [LỜI md-10-doan-tung.1]
-- [ĐI TỚI md-10-hoi-banh]
-
-### md-10-doan-robotics — Chủ gian Robotics bị nghi oan {cảnh: san-ktx-trung-thu}
-
-- [LỜI md-10-doan-robotics.1]
-- [ĐI TỚI md-10-hoi-banh]
-
-### md-10-doan-dung — Chiếc bánh và chiếc đèn cá chép {cảnh: san-ktx-trung-thu}
-
-- [LỜI md-10-doan-dung.1a]
-- [ẢNH cg-be-na-den-ca-chep]
-- [LỜI md-10-doan-dung.1b]
-- [ẢNH chibi-clb-nhom]
-- [ĐI CÙNG md-11-phong-clb] Tới phòng CLB
-
-### md-11-phong-clb — Thứ Hai 23/09, 16h: dọn phòng CLB {cảnh: phong-clb}
-
-- [LỜI md-11-phong-clb.1]
-- [KHÁM PHÁ kp-phong-md11]
-  - nv:duy · x 15% · y 100% · rộng 15% → md-11-duy · dấu: ? · nhãn: Duy: laptop
-  - nv:ha-vy · x 38% · y 100% · rộng 15% → md-11-vy · dấu: ? · nhãn: Hà Vy: cuốn sổ
-  - nv:minh-anh · x 62% · y 100% · rộng 15% → md-11-minh-anh · dấu: ? · nhãn: Minh Anh: tờ lịch
-  - nv:tung · x 82% · y 100% · rộng 15% → md-11-tung · dấu: ? · nhãn: Tùng
-  - vung:tu-ho-so · x 95.5% · y 60% · rộng 7% → md-11-tu · dấu: ! · nhãn: Tủ hồ sơ
-- [HIỆN TÀI LIỆU doc-so-chi-linh]
-- [TRA SỔ kiem-hai-lan · tâm đắc]
-- [LỜI md-11-phong-clb.2]
-- [HIỆN TÀI LIỆU doc-bao-cao-yeu]
-- [LỜI md-11-phong-clb.3]
-- [ĐI TỚI md-11-la-thu]
-
-### md-11-duy — Phòng CLB: Duy gõ laptop {cảnh: phong-clb}
-
-- [LỜI md-11-duy.1]
-- [BIẾT duy câu nói]
-
-### md-11-vy — Phòng CLB: Hà Vy ghi sổ {cảnh: phong-clb}
-
-- [LỜI md-11-vy.1]
-
-### md-11-minh-anh — Phòng CLB: Minh Anh soạn lịch sinh hoạt {cảnh: phong-clb}
-
-- [LỜI md-11-minh-anh.1]
-
-### md-11-tung — Phòng CLB: Tùng ngồi trông ghế {cảnh: phong-clb}
-
-- [LỜI md-11-tung.1]
-
-### md-11-tu — Phòng CLB: ngăn dưới cùng của tủ hồ sơ {cảnh: phong-clb}
-
-- [ẢNH cg-tu-ho-so-ngan-duoi]
-- [LỜI md-11-tu.1]
-- [BIẾT duy lịch]
-
-### md-11-la-thu — Phòng CLB, 16h40: bản sao lá thư và giấy mời {cảnh: phong-clb}
-
-- [LỜI md-11-la-thu.1a]
-- [ẢNH cg-minh-anh-dan-tay]
-- [LỜI md-11-la-thu.1b]
-- [ẢNH chibi-la-thu]
-- [HIỆN TÀI LIỆU doc-thu-che]
-- [LỜI md-11-la-thu.2]
-- [HẬU QUẢ] mở manh mối clue-chu-ky-h
-- [LỜI md-11-la-thu.3a]
+- [LỜI md-10-chia-banh.1]
 - [BIẾT ha-vy câu nói]
-- [LỜI md-11-la-thu.3b]
-- [BIẾT minh-anh câu nói]
+- [LỜI md-10-chia-banh.2]
+<!-- Quan sát (đề bài B19 mục 3, Cảnh 3; user 08/10: cảnh đông người dùng chân dung đã duyệt đứng trên dàn, không dùng ảnh nhóm): bấm từng người, mỗi người một câu ngắn về tay họ, khớp ảnh chân dung (Minh Anh dáng neo: chống hông, đeo đồng hồ; Duy: cầm xấp bìa, chùm chìa ở thắt lưng; Hà Vy dáng neo: ôm cuốn sổ; Tùng happy: giơ ngón cái, tay kia cầm bản đồ; bé Na: giấu hai tay sau lưng, đầu ngón tay dính vụn bánh). Nền bg-mvp-san-ktx-trung-thu-ba-banh. -->
+<!-- MỚI (thay khối [KHÁM PHÁ kp-trung-thu-tay] TẠM ngay dưới): - [KHÁM PHÁ kp-trung-thu-tay · dàn] -->
+<!-- MỚI:   - nv:minh-anh → md-10-tay-minh-anh · nhãn: Chị Minh Anh · dấu: ! -->
+<!-- MỚI:   - nv:duy → md-10-tay-duy · nhãn: Anh Duy · dấu: ! -->
+<!-- MỚI:   - nv:ha-vy → md-10-tay-ha-vy · nhãn: Hà Vy · dấu: ! -->
+<!-- MỚI:   - nv:tung/happy → md-10-tay-tung · nhãn: Tùng · dấu: ! -->
+<!-- MỚI:   - nv:be-na → md-10-tay-be-na · nhãn: Bé gái · dấu: ! -->
+<!-- TẠM (xóa khối [KHÁM PHÁ] dưới khi gộp B19-MÁY): chân dung đặt trên nền theo x/y -->
+- [KHÁM PHÁ kp-trung-thu-tay]
+  - nv:minh-anh · x 10% · y 100% · rộng 14% → md-10-tay-minh-anh · dấu: ! · nhãn: Chị Minh Anh
+  - nv:duy · x 28% · y 100% · rộng 14% → md-10-tay-duy · dấu: ! · nhãn: Anh Duy
+  - nv:ha-vy · x 46% · y 100% · rộng 14% → md-10-tay-ha-vy · dấu: ! · nhãn: Hà Vy
+  - nv:tung/happy · x 64% · y 100% · rộng 14% → md-10-tay-tung · dấu: ! · nhãn: Tùng
+  - nv:be-na · x 84% · y 100% · rộng 9% → md-10-tay-be-na · dấu: ! · nhãn: Bé gái
+- [LỜI md-10-chia-banh.3]
+<!-- MỚI: - [DÒNG THỜI GIAN dtg-banh] -->
+- [LỜI md-10-chia-banh.4]
+- [ĐI CÙNG md-11-phong-clb] Thứ Hai tuần sau, lên phòng CLB
 
-### md-10-soi-ban-do — Quan sát Tùng: tờ bản đồ trên tay {cảnh: san-ktx-trung-thu}
+### md-10-tay-minh-anh — Quan sát: tay chị Minh Anh {cảnh: san-ktx-trung-thu-ba-banh}
 
-- [LỜI md-10-soi-ban-do.1]
+- [LỜI md-10-tay-minh-anh.1]
 
-### md-10-soi-ao — Quan sát Tùng: cái áo {cảnh: san-ktx-trung-thu}
+### md-10-tay-duy — Quan sát: tay anh Duy {cảnh: san-ktx-trung-thu-ba-banh}
 
-- [LỜI md-10-soi-ao.1]
+- [LỜI md-10-tay-duy.1]
 
-### md-10-soi-mui — Quan sát Tùng: miếng băng trên mũi {cảnh: san-ktx-trung-thu}
+### md-10-tay-ha-vy — Quan sát: tay Hà Vy {cảnh: san-ktx-trung-thu-ba-banh}
 
-- [LỜI md-10-soi-mui.1]
+- [LỜI md-10-tay-ha-vy.1]
 
-### md-10-dia-banh — Đĩa bánh hụt một chiếc {cảnh: san-ktx-trung-thu}
-- [LỜI md-10-dia-banh.1]
+### md-10-tay-tung — Quan sát: tay Tùng {cảnh: san-ktx-trung-thu-ba-banh}
 
-### md-10-vun-banh — Vệt vụn trên sân {cảnh: san-ktx-trung-thu}
-- [LỜI md-10-vun-banh.1]
+- [LỜI md-10-tay-tung.1]
 
-### md-10-den-ca-chep — Đèn cá chép nằm lệch {cảnh: san-ktx-trung-thu}
-- [LỜI md-10-den-ca-chep.1]
+### md-10-tay-be-na — Quan sát: bé Na giấu tay sau lưng, ngón tay còn vụn bánh {cảnh: san-ktx-trung-thu-ba-banh}
 
-### md-10-doi-dep — Đôi dép nhựa nhỏ {cảnh: san-ktx-trung-thu}
-- [LỜI md-10-doi-dep.1]
+- [LỜI md-10-tay-be-na.1]
 
-### md-10-dau-lan — Đầu lân chờ biểu diễn {cảnh: san-ktx-trung-thu}
-- [LỜI md-10-dau-lan.1]
+### md-11-phong-clb — Cảnh 4: thứ Hai 23/09, cô Lan mang thư kiến nghị và phiếu gửi tới phòng CLB {cảnh: phong-clb}
 
-### md-10-gian-robotics — Gian Robotics bán đèn LED {cảnh: san-ktx-trung-thu}
-- [LỜI md-10-gian-robotics.1]
+<!-- Điểm lưu đầu Vụ 1 (đề bài B19 mục 2, 5.4): chơi lại Vụ 1 bắt đầu từ đây, không đi lại phần nhập học. -->
+<!-- MỚI: - [ĐIỂM LƯU VỤ vu1] -->
+- [LỜI md-11-phong-clb.1]
+- [KHÁM PHÁ kp-thu-phieu]
+  - vung:la-thu · x 52% · y 47% · rộng 7% → md-11-la-thu · dấu: ! · nhãn: Lá thư kiến nghị
+  - vung:phieu-gui · x 70% · y 50% · rộng 6% → md-11-phieu-gui · dấu: ! · nhãn: Tờ phiếu gửi
+  - vung:tu-sat · x 93% · y 55% · rộng 9% → md-11-tu-sat · nhãn: Cái tủ sắt
+- [LỜI md-11-phong-clb.2]
 
-### md-10-balo-banh-rang — Balo đen trên ghế nhựa xanh {cảnh: san-ktx-trung-thu}
-- [LỜI md-10-balo-banh-rang.1]
+### md-11-la-thu — Quan sát: lá thư kiến nghị không tên người viết {cảnh: phong-clb}
 
-### md-10-ap-phich — Áp phích trên bảng tin {cảnh: san-ktx-trung-thu}
-- [LỜI md-10-ap-phich.1]
+- [HIỆN TÀI LIỆU doc-thu-kien-nghi]
+- [LỜI md-11-la-thu.1]
 
-### md-10-ha-vy-goi — Hà Vy đứng bên mép sân {cảnh: san-ktx-trung-thu}
-- [LỜI md-10-ha-vy-goi.1]
+### md-11-phieu-gui — Quan sát: phiếu gửi, dòng người nộp ký "Hoài" {cảnh: phong-clb}
+
+- [LƯU BẰNG CHỨNG ev-phieu-gui-hoai]
+- [LỜI md-11-phieu-gui.1]
+
+### md-11-tu-sat — Chi tiết ẩn: cái tủ sắt cũ ở góc phòng {cảnh: phong-clb}
+
+- [LỜI md-11-tu-sat.1]

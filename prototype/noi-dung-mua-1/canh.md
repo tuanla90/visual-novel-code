@@ -32,5 +32,9 @@
 ### phong-ktx-dem — Phòng KTX 408
 ### san-dem — Sân trường
 ### sanh-den-pin — Sảnh tòa B
-### ghe-da-tui-do — Ghế đá cạnh lối đi
-- Ảnh nền: bg-mvp-ghe-da-tui-do
+### san-ktx-trung-thu-ba-banh — Sân ký túc xá, đêm Trung thu
+<!-- B19: cùng sân Trung thu, đĩa còn ba bánh (từ 19:15, sau khi Minh Anh chia). Nền bg-mvp-san-ktx-trung-thu-ba-banh. -->
+### cong-ktx-bong-mo — Cổng ký túc xá, gần bảy giờ sáng
+<!-- B19: cảnh bóng mờ tự chạy ở kết thật (hai bóng trao phong bì nâu). Nền bg-mvp-cong-ktx-bong-mo; lớp và chuyển động khai ở src/mvp/ui/hoat-canh-mvp.ts (người điều phối). -->
+### phong-clb-dem-banh-mi — Phòng CLB
+<!-- B19: tối thứ Bảy 28/09 (Cảnh 9): phòng CLB tối có túi bánh mì que, ấm trà, quạt cây, bảng đầy thẻ nối chỉ đỏ; cả đội hiện bằng chân dung. Nền bg-mvp-phong-clb-dem-banh-mi. -->

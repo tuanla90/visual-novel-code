@@ -1,86 +1,153 @@
-## Buổi họp rà soát (thứ Hai tuần 3) và hai kết
+## Buổi họp rà soát (thứ Hai 30/09, 16:00), hai kết, sau họp, quán trà đá
 
-<!-- Khung chương 1 (ĐÃ CHỐT C): đối chất 3 nhịp, không thanh uy tín, sai thì chọn lại. 01/10 (đề xuất gameplay §4–5): sau khi Hoài kể, Quân nêu giả thuyết "Hoài viết" ở [ĐỐI CHẤT dc-ai-viet]; người chơi trình thẻ trong hồ sơ. Nhật ký in (ngày 4, phòng máy) = ĐỦ CĂN CỨ → kết thật; lời chú Cường (ngày 5) = HỖ TRỢ; thẻ chỉ nói ai nộp = GỢI Ý. Chưa đủ căn cứ → kết thường. -->
+<!-- Gói B19 (08/10/2026): Cảnh 10, kết thật / kết tạm, Cảnh 11, Cảnh 12 của bản thoại 6. Bốn câu tính vạch: (1) sửa câu HOẶC của Quân trên màn chiếu, (2) phiếu gửi do ai ký, (3) Hoài có tự mang thư đi không, (4) ai đứng sau lá thư. Chấm A/B/C (đề bài B19 mục 4): A, B kết thật; C kết tạm; Cảnh 12 chỉ ở rank A. Lời ở loi/06-hop-va-ket.md. -->
+<!-- Lệnh mới của đề bài B19 mục 5 (agent MÁY dựng) nằm trong chú thích "MỚI:", viết đủ dòng con. Khối "TẠM" là lệnh cũ tương đương để vụ chơi liền mạch với bộ đọc hiện tại: [ĐỐI CHẤT] cũ (thẻ sai để mức [GỢI Ý] nên chọn lại không mất lượt; bấm "Chưa đủ căn cứ" thì sang chấm luôn, ra kết tạm), [NẾU] theo cờ đối chất, kết thật theo cờ đối chất, Cảnh 12 theo cờ đối chất. Khi gộp B19-MÁY: gỡ chú thích MỚI, xóa các dòng ngay dưới chú thích TẠM tương ứng. -->
 
-### hop-00 — Nhịp 1–2: câu HOẶC của Quân → VÀ → "Số liệu đây!" {cảnh: phong-hop}
+### hop-00 — Cảnh 10: mở họp, Quân trình kết luận và chiếu câu HOẶC; câu 1/4 sửa câu tra; trình dòng thời gian; câu 2/4 phiếu gửi do ai ký {cảnh: phong-hop}
 
 - [LỜI hop-00.1]
-- [RA tung]
+- [MÀN CHIẾU hop-chieu-or · truy vấn nạp sẵn c-sua-or-quan · chạy · 276 dòng]
 - [LỜI hop-00.2]
-- [MÀN CHIẾU hop-chieu-or · truy vấn nạp sẵn c-sua-or-quan · chạy · 32 dòng]
-- [LỜI hop-00.3]
 - [ẢNH cg-hop-doi-dau]
+<!-- MỚI (thay dòng [SỬA TRUY VẤN] ngay dưới): - [SỬA TRUY VẤN c-sua-or-quan · tính vạch · câu 1/4] -->
 - [SỬA TRUY VẤN c-sua-or-quan]
+- [LỜI hop-00.3]
 - [HIỆU ỨNG co-so-lieu-day]
-- [VÀO quan]
 - [LỜI hop-00.4]
-- [ĐI TỚI hop-01]
-
-### hop-01 — Nhịp 3: bạn này là người viết thư? {cảnh: phong-hop}
-
-- [HỎI q-thu-pham] thay-quang: "Vậy bạn này là người viết thư?"
-  - (A) {id: khong-so-niem-phong} Dạ, chưa nói được ạ. Người có mã trong sổ chưa chắc đã là người soạn thư. [ĐÚNG] → phản hồi: **thay-quang** (neutral): Tách được người có mã trong sổ với người viết thư. Được, thầy ghi nhận.
-  - (B) {id: co} Có ạ. Bạn ấy khớp cả tên lẫn lớp của người ký. → phản hồi: **minh-anh** (worried): Thầy cho em nói lại ạ: dữ liệu chỉ giúp thu hẹp thôi.
-  - (C) {id: khong-lien-quan} Không ạ. Hai bạn ấy chỉ trùng tên với lớp thôi. → phản hồi: **ha-vy** (thinking): Chưa loại được đâu. Mã của Hoài có trong sổ mà.
-- [RẼ NHÁNH r-moi-hoai] thay-quang: "Trong hai bạn, sổ chỉ có mã của em Hoài. Em ấy đang ngồi chờ ngoài hành lang. Các em đề nghị bước tiếp theo thế nào?"
-  - {id: dung} Mã trong sổ mới cho biết bạn ấy có nộp, chưa đủ để gọi bạn ấy vào. Xin dừng ở đây. → hậu quả: đi tới ket-thuong
-  - {id: tu-ke} Mời bạn ấy vào, để bạn ấy tự kể chuyện nộp thư. → hậu quả: đi tới hop-02
-  - {id: doi-chat} Mời bạn ấy vào, chiếu dòng có tên bạn ấy lên để bạn ấy xác nhận luôn cho nhanh. → hậu quả: đi tới hop-doi-chat
-
-### hop-02 — Mời Hoài vào hỏi chuyện nộp thư {cảnh: phong-hop}
-
-- [VÀO hoai]
-- [LỜI hop-02.1]
-- [BIẾT hoai câu nói]
+<!-- MỚI: - [HIỆN DÒNG THỜI GIAN dtg-vu1] -->
+<!-- MỚI (thay khối [ĐỐI CHẤT dc-phieu-gui] TẠM ngay dưới): - [ĐỐI CHẤT dc-phieu-gui · tính vạch · câu 2/4] thay-quang: "Thầy nghe hai bên rồi. Thầy chỉ hỏi một câu: **phiếu gửi do ai ký?**" -->
+<!-- MỚI:   - [CÂU HỎI] Phiếu gửi do ai ký? Chọn căn cứ trong hồ sơ. -->
+<!-- MỚI:   - {clue-loi-co-lan} [ĐÚNG] -->
+<!-- MỚI:   - {ev-the-lich-bc24} [SAI] → phản hồi: **thay-quang** (neutral): Tấm thẻ cho biết có một bạn Báo chí tới gần hộp. Thầy hỏi phiếu do ai ký. -->
+<!-- MỚI:   - {ev-mot-hoai} [SAI] → phản hồi: **thay-quang** (neutral): Mã ấy của Hoài, thầy biết rồi. Thầy hỏi người ký phiếu là ký với tư cách gì. -->
+<!-- MỚI:   - [KHÁC] → phản hồi: **thay-quang** (neutral): Thầy hỏi người ký phiếu, ký với tư cách gì. (tạm) -->
+<!-- MỚI:   - [SAI LẦN ĐẦU CẢ BUỔI] → phản hồi: **narrator**: Hà Vy đẩy kính, nói nhỏ. <br> **ha-vy** (day-kinh): Hôm ấy cô Lan nói gì về chữ ký nhỉ? -->
+<!-- TẠM (xóa khối [ĐỐI CHẤT] dưới khi gộp B19-MÁY) -->
+- [ĐỐI CHẤT dc-phieu-gui] thay-quang: "Thầy nghe hai bên rồi. Thầy chỉ hỏi một câu: **phiếu gửi do ai ký?**"
+  - [CÂU HỎI] Phiếu gửi do ai ký? Chọn căn cứ trong hồ sơ.
+  - {clue-loi-co-lan} [ĐỦ CĂN CỨ] → phản hồi: **thay-quang** (neutral): Em trình đi. (tạm)
+  - {ev-the-lich-bc24} [GỢI Ý] → phản hồi: **thay-quang** (neutral): Tấm thẻ cho biết có một bạn Báo chí tới gần hộp. Thầy hỏi phiếu do ai ký.
+  - {ev-mot-hoai} [GỢI Ý] → phản hồi: **thay-quang** (neutral): Mã ấy của Hoài, thầy biết rồi. Thầy hỏi người ký phiếu là ký với tư cách gì.
+  - [CHƯA ĐỦ] → phản hồi: **minh-anh** (worried): Dạ… bọn em xin dừng ở đây ạ. (tạm)
+  - [KHÁC] → phản hồi: **thay-quang** (neutral): Thầy hỏi người ký phiếu, ký với tư cách gì. (tạm)
+  - [HẾT LƯỢT] → phản hồi: **thay-quang** (stern): Thầy hỏi một câu, các em trình lạc ba lần rồi. (tạm)
 - [BIẾT thay-quang câu nói]
-- [ĐỐI CHẤT dc-ai-viet] quan: "Mã trong sổ là của Hoài. Thư do Hoài mang tới hộp. Chữ ký bắt đầu bằng H, Hoài cũng H. Bên tôi kết luận: **Hoài là người viết lá thư này.**"
-  - [CÂU HỎI] Hoài mang thư tới hộp. Nhưng lá thư được in ra bằng tài khoản của ai? Trình thẻ cho biết điều đó.
-  - {ev-nhat-ky-in} [ĐỦ CĂN CỨ] → phản hồi: **minh-anh** (neutral): Thưa thầy, bọn em có nhật ký in của phòng máy ạ. Tệp kiến nghị đòi phòng, một trang, in lúc 23:10 tối Chủ nhật, từ tài khoản dùng chung của một CLB, không phải tài khoản của Hoài.<br>**quan** (stunned): …Tài khoản CLB?<br>**thay-quang** (neutral): Tài khoản in thư không phải của người nộp thư. Vậy câu "Hoài viết" chưa đứng được.
-  - {clue-loi-chu-cuong} [HỖ TRỢ] → phản hồi: **ha-vy** (neutral): Sáng thứ Hai, bác bảo vệ ký túc xá thấy một cậu sinh viên đeo huy hiệu bánh răng đưa phong bì cho một bạn nữ, rồi bạn ấy đi thẳng về phía tòa B ạ.<br>**quan** (neutral): Lời kể thôi. Bác ấy không nhìn rõ mặt, cũng không biết trong phong bì có gì.<br>**thay-quang** (neutral): Thầy ghi nhận. Nhưng mới là một lời kể, chưa đủ để nói ai viết.
-  - {clue-hoai-nguoi-nop} [GỢI Ý] → phản hồi: **quan** (smug): Chính thẻ này nói Hoài là người nộp. Các bạn đang củng cố cho bên tôi đấy.<br>**ha-vy** (thinking): Người nộp thôi. Thẻ này chưa nói ai viết.
-  - {ev-hai-ma} [GỢI Ý] → phản hồi: **quan** (neutral): Hai mã khớp chữ H và lớp: Hoài hoặc Hiếu, mà sổ chỉ có Hoài.<br>**tung** (worried): Ờ… phiếu này chỉ thu hẹp được thôi.
-  - {ev-mot-dong-sua} [GỢI Ý] → phản hồi: **quan** (neutral): Một dòng, một người. Vẫn không nói ai viết.<br>**ha-vy** (neutral): Đúng, phiếu này chỉ cho biết chỗ cần đến.
-  - [CHƯA ĐỦ] → phản hồi: **minh-anh** (neutral): Thưa thầy, đến đây bọn em chỉ nói được ai nộp. Ai viết thì bọn em chưa có căn cứ ạ.<br>**thay-quang** (neutral): Biết dừng ở chỗ chứng cứ dừng. Được.
-  - [KHÁC] → phản hồi: **quan** (neutral): Cái này thì liên quan gì tới việc ai viết thư?<br>**minh-anh** (worried): Em xem lại hồ sơ đã ạ.
-  - [HẾT LƯỢT] → phản hồi: **quan** (smug): Thưa thầy, ba lần đưa ra ba tờ chẳng dính gì tới việc ai viết thư. Bên tôi xin giữ kết luận.<br>**thay-quang** (stern): Các em trình lạc đề ba lần rồi. Thầy ghi nhận tới đây thôi.<br>**minh-anh** (worried): Dạ. Bọn em xin dừng ở chỗ đã có căn cứ ạ.
+<!-- MỚI (thay hai dòng [NẾU], [ĐI TỚI] TẠM ngay dưới): - [ĐI TỚI hop-01] -->
+<!-- TẠM (xóa hai dòng dưới khi gộp B19-MÁY): đối chất cũ chưa đủ căn cứ thì sang chấm luôn (kết tạm). -->
+- [NẾU có dc-phieu-gui-du] → đi tới hop-01
+- [ĐI TỚI hop-cham]
+
+### hop-01 — Câu 3/4: Hoài có tự mang thư đi không {cảnh: phong-hop}
+
+- [LỜI hop-01.1]
+<!-- MỚI (thay khối [ĐỐI CHẤT dc-tu-mang] TẠM ngay dưới): - [ĐỐI CHẤT dc-tu-mang · tính vạch · câu 3/4] quan: "Người nộp là Hoài. **Thư cũng do Hoài tự mang đi bỏ.** Không có người thứ hai nào trong hồ sơ." -->
+<!-- MỚI:   - [CÂU HỎI] Thư có phải Hoài tự mang từ phòng đi không? Chọn căn cứ trong hồ sơ. -->
+<!-- MỚI:   - {clue-loi-chu-cuong} [ĐÚNG] -->
+<!-- MỚI:   - {ev-ra-cong-644} [ĐÚNG] -->
+<!-- MỚI:   - {doc-so-thu-hop} [SAI] → phản hồi: **quan** (neutral): Sổ ấy nói thư vào hộp lúc nào. Không nói ai mang thư tới. -->
+<!-- MỚI:   - {ev-the-lich-bc24} [SAI] → phản hồi: **quan** (smug): Thẻ của một bạn Báo chí mắc ở hộp. Thế thì càng là Hoài tự mang đi. -->
+<!-- MỚI:   - [KHÁC] → phản hồi: **quan** (neutral): Cái ấy không nói ai mang thư tới hộp. (tạm) -->
+<!-- MỚI:   - [SAI LẦN ĐẦU CẢ BUỔI] → phản hồi: **narrator**: Hà Vy đẩy kính, nói nhỏ. <br> **ha-vy** (day-kinh): Sáng hôm ấy, ở cổng ký túc xá, chú Cường thấy gì nhỉ? (tạm) -->
+<!-- TẠM (xóa khối [ĐỐI CHẤT] dưới khi gộp B19-MÁY) -->
+- [ĐỐI CHẤT dc-tu-mang] quan: "Người nộp là Hoài. **Thư cũng do Hoài tự mang đi bỏ.** Không có người thứ hai nào trong hồ sơ."
+  - [CÂU HỎI] Thư có phải Hoài tự mang từ phòng đi không? Chọn căn cứ trong hồ sơ.
+  - {clue-loi-chu-cuong} [ĐỦ CĂN CỨ] → phản hồi: **thay-quang** (neutral): Em trình tiếp đi. (tạm)
+  - {ev-ra-cong-644} [ĐỦ CĂN CỨ] → phản hồi: **thay-quang** (neutral): Em trình tiếp đi. (tạm)
+  - {doc-so-thu-hop} [GỢI Ý] → phản hồi: **quan** (neutral): Sổ ấy nói thư vào hộp lúc nào. Không nói ai mang thư tới.
+  - {ev-the-lich-bc24} [GỢI Ý] → phản hồi: **quan** (smug): Thẻ của một bạn Báo chí mắc ở hộp. Thế thì càng là Hoài tự mang đi.
+  - [CHƯA ĐỦ] → phản hồi: **minh-anh** (worried): Dạ… bọn em xin dừng ở đây ạ. (tạm)
+  - [KHÁC] → phản hồi: **quan** (neutral): Cái ấy không nói ai mang thư tới hộp. (tạm)
+  - [HẾT LƯỢT] → phản hồi: **thay-quang** (stern): Các em trình lạc ba lần rồi. (tạm)
+<!-- MỚI (thay hai dòng [NẾU], [ĐI TỚI] TẠM ngay dưới): - [ĐI TỚI hop-02] -->
+<!-- TẠM (xóa hai dòng dưới khi gộp B19-MÁY) -->
+- [NẾU có dc-tu-mang-du] → đi tới hop-02
+- [ĐI TỚI hop-cham]
+
+### hop-02 — Câu 4/4: vậy ai đứng sau lá thư {cảnh: phong-hop}
+
+- [LỜI hop-02.1]
+<!-- MỚI (thay dòng [HỎI] ngay dưới, giữ các lựa chọn): - [HỎI q-ai-dung-sau · tính vạch · câu 4/4] thay-quang: "Vậy ai đứng sau lá thư?" -->
+<!-- MỚI (dòng con thêm của câu 4/4): - [SAI LẦN ĐẦU CẢ BUỔI] → phản hồi: **narrator**: Hà Vy đẩy kính, nói nhỏ. <br> **ha-vy** (day-kinh): Mình biết có người đưa phong bì. Mình đã biết người ấy là ai chưa? (tạm) -->
+- [HỎI q-ai-dung-sau] thay-quang: "Vậy ai đứng sau lá thư?"
+  - (A) {id: hoai} Lê Thu Hoài → phản hồi: **thay-quang** (stern): Vừa nãy em nói Hoài chỉ là người nộp. Giờ em nói Hoài đứng sau?
+  - (B) {id: balo-den} Cậu đeo balo đen → phản hồi: **thay-quang** (neutral): Trường này bao nhiêu người đeo balo đen? Chú Cường có nhìn thấy mặt không?
+  - (C) {id: chua-du} Chưa đủ căn cứ [ĐÚNG] → phản hồi: **player**: Chưa đủ căn cứ ạ. Bọn em chỉ biết có người đưa phong bì, chưa biết người ấy là ai.
+- [ĐI TỚI hop-cham]
+
+### hop-cham — Chấm vụ: đủ căn cứ và dưới 3 vạch là kết thật, không thì kết tạm {cảnh: phong-hop}
+
+<!-- MỚI: - [CHẤM VỤ vu1] cần: ev-phieu-gui-hoai, doc-thu-kien-nghi, ev-the-lich-bc24, clue-loi-bac-thinh, ev-mot-hoai, clue-loi-co-lan, doc-so-thu-hop, clue-loi-chu-cuong, ev-ra-cong-644, dtg-vu1 -->
 - [RẼ KẾT]
 
-### hop-doi-chat — Hỏi thẳng: Hoài co người lại {cảnh: phong-hop}
+### ket-that — Kết thật (rank A, B): thầy không nhận thư vào hồ sơ; Hoài kể {cảnh: phong-hop}
 
-- [LỜI hop-doi-chat.1]
-- [ĐI TỚI ket-thuong]
-
-<!-- 01/10/2026 (dàn ý mùa 1): phần thưởng kết thật là lời nhắn đầu tiên của chị Linh (lớp bí mật của CLB), không còn là manh mối Robotics — manh mối đó giờ ai cũng có từ ngày 5. -->
-
-### ket-that — True end: Hoài kể chuyện được nhờ; mẩu giấy trong sổ CLB {cảnh: phong-hop}
-
-- [ĐIỀU KIỆN] có dc-ai-viet-du
-- [LỜI ket-that.1a]
-- [LỜI ket-that.1b]
-- [ĐI CÙNG ket-that-clb] Về phòng CLB
-
-### ket-that-clb — Chiều muộn ở phòng CLB: mẩu giấy trong sổ CLB {cảnh: phong-clb}
-
-- [HẬU QUẢ] mở manh mối clue-loi-nhan-linh-1
-- [ẢNH cg-so-clb-giay-gap-tu]
+<!-- MỚI (thay dòng [ĐIỀU KIỆN] TẠM ngay dưới; bộ có [CHẤM VỤ] thì [RẼ KẾT] rẽ theo rank): - [ĐIỀU KIỆN] có vu1-rank-a hoặc có vu1-rank-b -->
+<!-- TẠM (xóa dòng dưới khi gộp B19-MÁY): kết thật cũ theo cờ đối chất; cờ dc-tu-mang-du chỉ có ở chuỗi tới bằng [NẾU] nên không nằm trên đường bắt buộc (QĐ-086). -->
+- [ĐIỀU KIỆN] có dc-phieu-gui-du và có dc-tu-mang-du
+- [LỜI ket-that.1]
+- [VÀO hoai]
 - [LỜI ket-that.2]
-- [ĐI CÙNG ket-tra-da] Ra quán trà đá cùng Tùng
+- [BIẾT hoai câu nói]
+- [ĐI TỚI ket-bong-mo]
 
-### ket-tra-da — Sau kết thật: Tùng khao trà đá; bà Lụa kể về cái tủ sắt {cảnh: tra-da}
+### ket-bong-mo — Kết thật: dựng cảnh bóng mờ tự chạy ở cổng ký túc xá gần bảy giờ sáng 16/09 {cảnh: cong-ktx-bong-mo · cảnh cắt}
 
-- [HỎI ĐÁP ket-tra-da]
-- [LỜI ket-tra-da.1a]
-- [LỜI ket-tra-da.1b]
-- [ẢNH chibi-ghi-la-ghi]
-- [LỜI ket-tra-da.1c]
-- [BIẾT ba-lua câu nói]
-- [HẬU QUẢ] mở manh mối clue-tra-da-1
-- [LỜI ket-tra-da.2]
-- [RA hoai]
-- [LỜI ket-tra-da.3]
+<!-- Hoạt cảnh (src/mvp/ui/hoat-canh-mvp.ts, cảnh cong-ktx-bong-mo): một bóng balo đen, một bóng nhỏ hơn cầm phong bì đi về phía tòa B; tự chạy, người chơi không kéo gì (Vụ 6 mới tự dựng). -->
+- [LỜI ket-bong-mo.1]
+- [CHỜ 6 giây]
+- [ĐI CÙNG ket-that-quan] Trở lại phòng họp
+
+### ket-that-quan — Kết thật: Quân rút kết luận {cảnh: phong-hop}
+
+- [LỜI ket-that-quan.1]
+- [ĐI CÙNG c11-that] Ra hành lang
+
+### ket-tam — Kết tạm (rank C): thầy giữ thư lại; Hoài ôm túi đi về {cảnh: phong-hop}
+
+- [LỜI ket-tam.1]
+- [ĐI CÙNG c11-tam] Ra hành lang
+
+### c11-that — Cảnh 11 (sau kết thật): hành lang, Tùng nhận ra Hoài là bạn kéo vali {cảnh: hanh-lang-phong-hop}
+
+- [LỜI c11-that.1]
+- [RẼ NHÁNH r-xin-loi-hoai] tung: "Phù… tớ nói linh tinh một câu mà suýt làm Hoài mang tiếng. Cậu bảo tớ có nên sang lớp Hoài xin lỗi không?"
+  - {id: sang-ngay} Nên. Sáng thứ Hai lớp Hoài học ở tòa B. → hậu quả: đặt co.vu1-xin-loi-som
+  - {id: doi} Để Hoài bình tĩnh đã, mấy hôm nữa hẵng sang. → hậu quả: đặt co.vu1-xin-loi-sau
+- [ĐI TỚI c11-tiep]
+
+### c11-tam — Cảnh 11 (sau kết tạm): hành lang, Tùng nhận ra Hoài là bạn kéo vali {cảnh: hanh-lang-phong-hop}
+
+- [LỜI c11-tam.1]
+- [RẼ NHÁNH r-xin-loi-hoai-tam] tung: "Phù… tớ nói linh tinh một câu, giờ Hoài mang tiếng thật rồi. Cậu bảo tớ có nên sang lớp Hoài xin lỗi không?"
+  - {id: sang-ngay} Nên. Sáng thứ Hai lớp Hoài học ở tòa B. → hậu quả: đặt co.vu1-xin-loi-som
+  - {id: doi} Để Hoài bình tĩnh đã, mấy hôm nữa hẵng sang. → hậu quả: đặt co.vu1-xin-loi-sau
+- [ĐI TỚI c11-tiep]
+
+### c11-tiep — Cảnh 11: xin lỗi suông thì kỳ lắm {cảnh: hanh-lang-phong-hop}
+
+- [LỜI c11-tiep.1]
+- [ĐI CÙNG c11-phong-clb] Về phòng CLB
+
+### c11-phong-clb — Cảnh 11: phòng CLB chiều muộn, sổ tổng kết đóng dấu, tấm thẻ trắng trên bảng {cảnh: phong-clb}
+
+- [LỜI c11-phong-clb.1]
+<!-- MỚI (thay dòng [ẢNH cg-so-tong-ket] TẠM ngay dưới): - [SỔ TỔNG KẾT vu1] -->
+<!-- TẠM (xóa dòng dưới khi gộp B19-MÁY): ảnh trang tổng kết chưa có dấu -->
+- [ẢNH cg-so-tong-ket]
+- [LỜI c11-phong-clb.2]
+- [ẢNH cg-bang-the-trang]
+<!-- MỚI (thay dòng [NẾU] TẠM ngay dưới): - [NẾU có vu1-rank-a] → đi tới canh-12 -->
+<!-- TẠM (xóa dòng dưới khi gộp B19-MÁY): chưa có rank, kết thật nào cũng sang Cảnh 12 -->
+- [NẾU có dc-tu-mang-du] → đi tới canh-12
 - [KẾT THÚC]
 
-### ket-thuong — Kết thường: chỉ là một ý kiến sinh viên {cảnh: phong-hop}
+### canh-12 — Cảnh 12 (chỉ rank A): quán trà đá cổng trường, "cậu trà nóng" {cảnh: tra-da · cảnh cắt}
 
-- [LỜI ket-thuong.1]
+- [LỜI canh-12.1]
+- [BIẾT ba-lua câu nói]
+- [LỜI canh-12.2]
+- [VÀO hoai]
+- [LỜI canh-12.3]
+- [RA hoai]
+- [LỜI canh-12.4]
 - [KẾT THÚC]

@@ -1,124 +1,37 @@
 # Lời · kich-ban/03-ngay-3.md
 
-<!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/03-ngay-3.md. [DÀN DỰNG] không hiện cho người chơi. Tin sai của chương: Tùng cá là Hiếu (bị bác ở ngày 4). Tên Hiếu người chơi nghe qua tiếng gọi ở căng tin, không phải ai chỉ điểm. -->
+<!-- Gói B19 (08/10/2026): Cảnh 7 của bản thoại 6. Câu nói đúng chữ bản 6. Dòng "(tạm)" là câu mới thêm, chờ user duyệt. -->
 
 ## n3-mo.1
-> NHIỆM VỤ: Sang Phòng Công tác sinh viên xin phiếu tra cứu
 - [THẺ CHỮ] **narrator**: Thứ Năm, 26/09/2024
-- **tung** (happy): Sáng nay tớ có tiết Triết, nhờ thằng cùng lớp điểm danh hộ rồi.
-- **ha-vy** (neutral): Điểm danh hộ là sửa dữ liệu đầu vào đấy.
-- **tung** (gai-dau): Trời đất, cậu nói nghe nghiêm trọng như tớ vừa phạm pháp không bằng.
-- **minh-anh** (khoanh-tay): Chị coi như chưa nghe thấy nhé. Lần sau lo mà đi học đầy đủ đấy.
-- **minh-anh** (neutral): Chị báo cô Lan rồi. Cầm kết quả hôm qua sang, đó là căn cứ xin phiếu.
+> NHIỆM VỤ: Sang Phòng Công tác sinh viên hỏi cô Lan về sổ thu hộp (tạm)
+> NHẮC VIỆC minh-anh (neutral): Hôm nay mình sang Công tác sinh viên hỏi cô Lan nhé. (tạm)
 
 ## n3-ctsv.1
-> NHIỆM VỤ: Làm sao để được xem bảng sinh viên?
-> NHẮC VIỆC ha-vy (neutral): Kết quả hai lớp hôm qua là căn cứ để xin phiếu tra cứu.
-- [DÀN DỰNG] Cả nhóm VỪA TỚI Phòng Công tác sinh viên (nền phòng CTSV); chuyện đi tắt kể ở thì đã qua (06/10 vòng 2, người xem ngoài).
-- **tung** (chi-tay): Lại đi tắt qua sân bóng rổ. Hôm qua ba phút, hôm nay tớ cá hai phút rưỡi, thế mà…
-- **ha-vy** (neutral): Tớ bấm giờ rồi: hai phút bốn mươi.
-- **player**: Coi như Tùng thua mười giây.
-- **tung** (gai-dau): Tại cậu dừng lại đọc bảng tin đấy!
-- **co-lan** (neutral): Hộp kiến nghị là bên cô quản. Người gửi muốn được trả lời thì phải ghi mã sinh viên của mình vào phiếu gửi. Mã đó được chép vào sổ niêm phong.
-- **co-lan** (neutral): Sổ đó niêm phong. Cô cũng không được tự mở.
-- **player**: Vậy làm sao biết được ai gửi ạ?
-- **co-lan** (neutral): Chỉ khi có căn cứ bằng văn bản cho một mã cụ thể, cô mới tra và trả lời có hoặc không.
-- [DÀN DỰNG] Một anh sinh viên đeo kính, mặc gi lê len xanh than, kẹp cái bìa da, đứng ở cửa từ lúc nào.
-- **narrator**: Ở cửa có một anh sinh viên đứng từ lúc nào không ai để ý.
-- **ha-vy** (thinking): Người lạ kìa. Nhìn kỹ một chút trước khi anh ấy mở lời đã.
+- [THẺ CHỮ] **narrator**: Phòng Công tác sinh viên
+- [DÀN DỰNG] Một người ngồi sẵn ở bàn, sơ mi cài kín cổ, cuốn sổ mở trước mặt (chân dung Quân). Lời không tả lại.
+- **quan** (neutral): Tôi là Quân, Ban Kiểm tra của Hội sinh viên. Tôi được cử xuống đây để xem các bạn có dùng dữ liệu đúng mục đích không. Lịch sử tra cứu Hội có lưu lại đấy nhé.
+- **minh-anh** (neutral): Phiếu của CLB đây, cô Hạnh ký hôm qua.
+- **narrator**: Quân đọc phiếu, chép số phiếu vào sổ của mình.
+> NHIỆM VỤ: Hỏi cô Lan về sổ thu hộp sáng thứ Hai 16/09 (tạm)
 
-## n3-ctsv.1b
-- **co-lan** (neutral): Hai lớp các em lọc ra hôm qua là căn cứ được. Cô ký phiếu tra cứu: bảng sinh viên, bốn cột, mã, họ đệm, tên, mã lớp. Không hơn.
+## n3-co-lan.1
+- **minh-anh** (neutral): Cô cho bọn em xem sổ thu hộp sáng thứ Hai 16/09 được không ạ?
+- **co-lan** (neutral): Sổ đây các em. Sáng thứ Hai 16/09, chín giờ, cô thu được ba phong bì. Hai cái kêu wifi với nhà ăn. Cái thứ ba là phong bì nâu này, phiếu gửi kẹp ngoài.
 
-## n3-ctsv.1c
-- [DÀN DỰNG] Khối riêng để câu tự xưng của Quân còn ở cách bấm / gõ (khối .1b bị buổi hỏi thay lời).
-- **quan** (neutral): Tôi là Quân, bên Ban Pháp chế – Kiểm tra Hội sinh viên. Tôi được cử xuống giám sát việc này.
-- **quan** (neutral): Tôi ký giám sát. Các bạn tra những gì, bên tôi xem hết.
+## n3-co-lan.2
+- **ha-vy** (thinking): Cô ơi, phiếu gửi thì ai ký ạ? Người viết thư, hay người mang thư đến hộp?
+- **co-lan** (neutral): Thường thì người viết sẽ tự đi nộp. Nhưng vẫn có trường hợp nộp hộ. Chữ ký này chỉ là của người nộp thôi.
+
+## n3-co-lan.3
+- **tung** (happy): Ơ, thì Hoài ký tên rõ ràng thế kia, Hoài viết chứ còn ai! Để tớ đi tìm Hoài hỏi luôn cho nhanh!
+- **narrator**: Quân viết một dòng vào sổ, không ngẩng lên.
+- **quan** (neutral): Bạn Tùng, thành viên CLB Thám Tử. Tôi ghi lại.
+- **narrator**: Minh Anh liếc sang Tùng. Tùng ngồi im.
+
+## n3-ctsv-an.1
+- **player**: (Khay giấy trên quầy chồng toàn đơn xin ở ký túc xá. Đợt hai chắc đông lắm.) (tạm)
 
 ## n3-ctsv.2
-- **quan** (neutral): Các bạn chỉ được lập căn cứ. Tra sổ là việc của cô Lan, không phải của CLB.
-- **ha-vy** (thinking): Vậy là cần mã cụ thể. Và căn cứ cho từng mã.
-> NHẮC VIỆC tung (happy): Có phiếu rồi! Tạt qua căng tin làm cốc trà đá đã, rồi hẵng về phòng CLB.
-
-## n3-ctsv-quan.1
-- **tung** (gai-dau): Anh đứng xem từ đầu ạ? Bọn em đã làm gì sai đâu.
-- **quan** (neutral): Chưa sai. Tôi ghi lại để buổi họp có cái mà đối chiếu, thế thôi.
-- **ha-vy** (neutral): Anh ấy ghi, mình cũng ghi. Về sau đối chiếu cho dễ.
-
-## n3-soi-kinh.1
-- **player**: Kính gọng mảnh, lau sạch bóng.
-- **ha-vy** (thinking): Người kỹ tính. Mình viết gì chắc anh ấy cũng soi từng chữ.
-
-## n3-soi-gi-le.1
-- **player**: Gi lê len, sơ mi cài kín cổ. Mặt còn trẻ quá, không phải thầy cô.
-- **ha-vy** (neutral): Sinh viên, mà ăn mặc như đi họp. Người của một ban nào đó trong Hội.
-
-## n3-soi-tay.1
-- **player**: Đứng thẳng, hai tay chắp sau lưng, không cầm bút, không cầm sổ.
-- **ha-vy** (thinking): Anh ấy tới để xem mình làm, chứ không phải để giúp đâu.
-
-## n3-bd-phong-may.1
-- **narrator**: Phòng máy đang có lớp thực hành, cửa khép. Trên cửa dán một tờ giấy: mở cửa từ 7 rưỡi sáng tới 9 giờ tối. Tối Chủ nhật mở cho sinh viên in bài, vào phải ký sổ với bác trực sảnh tòa B.
-- **tung** (thinking): Tối Chủ nhật vẫn mở. Thư kia in tối nào nhỉ?
-- **ha-vy** (neutral): Chưa rõ. Mà vào còn phải ký sổ cơ đấy.
-
-## n3-bd-toa-b.1
-- **bac-tu** (smile): Hộp vẫn niêm phong nguyên đấy. Nay đi đâu đông thế?
-- **tung** (happy): Bọn cháu sang Phòng Công tác sinh viên ạ. Cô Lan với cô Hạnh ở cùng tòa nhỉ?
-- **bac-tu** (neutral): Ừ, cùng tầng. Giờ hành chính là có người.
-
-## n3-cang-tin.1
-- [DÀN DỰNG] Căng tin, sau khi rời Phòng CTSV. Hiếu ngồi bàn bên, nói to.
-- **narrator**: Bàn bên có một cậu đang nói to về tờ thông báo họp rà soát.
-- **hieu** (annoyed): Thấy thông báo chưa? CLB Thám Tử chiếm nguyên cái phòng chả để làm gì.
-- **hieu** (annoyed): Nhóm tôi xin phòng làm bài không được, phải chui rúc thư viện.
-- **tung** (worried): Gắt thế… cậu ta gửi thư à?
-- **ha-vy** (thinking): Ghét với gửi thư là hai việc khác nhau.
-- **hieu** (annoyed): Nhìn gì? Có gì hỏi thẳng đây, đừng xì xào sau lưng.
-
-## n3-cang-tin.2
-- [DÀN DỰNG] Tách khỏi n3-cang-tin.1 và không khai trong "loiDaThay" của tờ hoi-dap/n3-cang-tin.json: tiếng gọi lộ tên Hiếu phải chạy ở cả cách bấm / gõ, nếu không Tùng về CLB nói "cậu gắt ở căng tin tên Hiếu" mà người chơi chưa nghe tên bao giờ (06/10 vòng 2).
-- **narrator**: Có tiếng gọi từ quầy: "Hiếu ơi, lấy cơm này!" Cậu ta đứng dậy, bỏ đi.
-- **tung** (happy): Thôi, chuyện thư từ để nhóm mình tự kiểm tra. Tớ ra lấy trà đá, ai uống không?
-- **tung** (worried): Khoan, ví còn đúng tiền cơm tối. Thêm cốc trà đá là tối nay nhịn.
-- **player**: Để tớ mời. Cốc hôm khiêng vali thì cậu vẫn nợ đấy.
-> NHẮC VIỆC ha-vy (neutral): Phiếu của cô Lan có rồi. Về phòng CLB mở bảng sinh viên thôi.
-
-## n3-phong.1
-- **narrator**: Về phòng CLB. Phiếu tra cứu của cô Lan nằm trên bàn.
-
-## n3-phong-duy.1
-- **duy** (neutral): Có phiếu của cô Lan rồi, máy mở thêm được bảng sinh viên.
-
-## n3-phong-vy.1
-- **ha-vy** (thinking): Câu hỏi mới trên bảng: trong hai lớp ấy, lấy danh sách lớp, rồi tự dò bằng mắt xem ai tên chữ H.
-- **ha-vy** (neutral): Tùng cá là Hiếu rồi đấy. Tớ thì chưa dám nói gì.
-
-## n3-phong-minh-anh.1
-- **minh-anh** (neutral): Anh Quân ký giám sát, nghĩa là mình tra gì bên Hội cũng xem được.
-- **minh-anh** (khoanh-tay): Cứ làm đúng. Mình không sai thì họ soi cũng không sao.
-
-## n3-laptop.1
-> NHIỆM VỤ: Trong hai lớp ấy, ai có thể là người ký chữ H?
-> NHẮC VIỆC tung (chi-tay): Tớ cá là Hiếu! Xem trong hai lớp có ai tên H.
-- [DÀN DỰNG] Phòng CLB. Phiếu tra cứu đã mở bảng sinh viên. Trên bàn: [H], phiếu hai lớp.
-- **tung** (chi-tay): Cậu gắt ở căng tin tên Hiếu. Chữ H đấy! Tớ cá là Hiếu!
-- **ha-vy** (thinking): Cá thì để sau. Xem dữ liệu nói gì đã.
-
-## n3-laptop.2
-- **player**: Hai người: Hiếu và Hoài. Cùng lớp BC24A.
-- **tung** (happy): Thấy chưa, có Hiếu!
-- **ha-vy** (neutral): Có cả Hoài. Mới khớp được lớp và tên H thôi.
-- **tung** (gai-dau): Thế giờ làm gì?
-- **ha-vy** (neutral): Mai mang hai mã này sang cô Lan. Tra sổ là rõ.
-> NHẮC VIỆC ha-vy (neutral): Hiếu và Hoài, cùng BC24A. Mai mang hai mã sang Phòng Công tác sinh viên.
-
-## n3-bd-phong-may-an.1
-- **narrator**: Hai đôi dép lê xếp ngay ngắn trước cửa phòng máy. Phòng trải thảm, vào là phải bỏ giày.
-- **tung** (happy): Trốn tiết nhìn dép là biết. Phòng máy tự điểm danh luôn.
-- **narrator**: Cạnh khung cửa dán tờ danh sách lớp thực hành tuần trước. Ba cái tên bị khoanh đỏ, bên cạnh ghi tay: "Vắng quá 20%, không đủ điều kiện dự thi. Học lại kỳ sau."
-- **tung** (worried): …Một trong ba cái tên kia là thằng phòng bên. Hôm trước nó còn khoe trốn tiết đi đá bóng.
-
-## n3-bd-toa-b-an.1
-- **narrator**: Tem kiểm định trên bình cứu hỏa ghi tháng 9 năm nay, bên cạnh có chữ ký tắt: "T."
-- **player**: (Bác Thịnh kiểm cả cái bình này. Ở sảnh này cái gì cũng có người ghi lại.)
+> NHIỆM VỤ: Mai ra cổng ký túc xá hỏi chú Cường (tạm)
+> NHẮC VIỆC tung (worried): Mai ra cổng ký túc xá hỏi chú tớ thử xem. (tạm)
