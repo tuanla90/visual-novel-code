@@ -8,7 +8,8 @@
  *   D. Máy tự chơi hết Vụ 1 tới kết thật ở cả chín tổ hợp (3 × 3); ô lưu không có hai trường nạp lên là mặc định.
  */
 import { describe, expect, it } from 'vitest';
-import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
+// B19 (08/10/2026): test cơ chế máy chạy trên bản đông cứng của bộ mùa 1 trước khi Vụ 1 viết lại (testing/mua1-truoc-b19).
+import { KICH_BAN_MUA_1 } from './testing/mua1-truoc-b19/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { dichLoiSqlite } from './dich-loi-sqlite';
 import { cachChoiCua, khungHoiDap } from './hoi-dap';

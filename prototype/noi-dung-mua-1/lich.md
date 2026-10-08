@@ -1,5 +1,5 @@
-# Vụ 1 — Chữ ký H {vụ: vu1}
-<!-- Chương 1 đi theo truyện (docs/thiet-ke/ban-giao-huong-moi-2026-09-30.md, ĐÃ CHỐT C, user chốt 30/09/2026): mỗi ngày chạy MỘT chuỗi, không bản đồ, không khung giờ, không hạn, không uy tín, không kết xấu. Thứ Ba → thứ Bảy tuần 2 là ngày 1–5; thứ Hai tuần 3 là buổi họp rà soát. -->
+# Vụ 1 — Chữ ký Hoài {vụ: vu1}
+<!-- Gói B19 (08/10/2026): Vụ 1 viết lại theo bản thoại 6 (docs/mua-1/brief/b19-ban-6-thoai.md). User 08/10: bộ mùa 1 dừng sau Vụ 1 (gỡ Vụ 2–5, sáu việc phụ, việc ngày lễ; git còn giữ); ngày 24–27/09 mở bằng bản đồ, hết ngày do người chơi bấm; ngày 28/09 là buổi tối ở phòng CLB; họp rà soát thứ Hai 30/09. -->
 
 ## Luật
 <!-- Khung giờ chỉ còn dùng để đọc mốc "Xuất hiện từ: ngày n <khung>" của nhan-vat.md; ngày theo truyện không tiêu khung. -->
@@ -8,120 +8,31 @@
 ## Mở đầu
 - Hạn chót: 2024-09-30
 - Việc chốt: Buổi họp rà soát
-<!-- Lịch thật: truyện năm 2024 — K24 là tân sinh viên. "Ngày mở đầu" là Chủ nhật nhận phòng KTX; mọi mốc khác tính từ đây (src/mvp/engine/lich-ngay.ts): CN 08/09 nhận phòng → T2–T6 09–13/09 tuần sinh hoạt công dân → T7 14/09 Ngày hội CLB → CN 15/09 23:10 thư in ở phòng máy (du-lieu.md, nhat_ky_in) → sáng T2 16/09 thư được nộp vào hộp kiến nghị → T3 17/09 19h Trung thu ở sân KTX, buổi gặp đầu CLB → T2 23/09 16h phòng CLB, nhận bản sao thư và giấy mời → ngày 1–5 = T3 24/09 … T7 28/09 → T2 30/09 16h họp rà soát. Bộ đọc không nhận mục "## Lịch thật" (tiêu đề lạ) nên ngày ghi ở dòng "- Ngày mở đầu"; thiếu dòng thì lịch dùng 2024-09-08. -->
+<!-- Lịch thật năm 2024: CN 08/09 nhận phòng → T2–T6 09–13/09 tuần sinh hoạt công dân → T7 14/09 Ngày hội CLB → sáng T2 16/09 thư vào hộp kiến nghị tòa B (Hoài ra cổng 6:44, sảnh mở 7:00, cô Lan thu 9:00) → T3 17/09 19h Trung thu ở sân ký túc xá → T2 23/09 16:30 cô Lan mang thư tới phòng CLB (điểm lưu đầu vụ) → ngày 1–4 = T3 24/09 … T6 27/09 (bản đồ) → ngày 5 = tối T7 28/09 → T2 30/09 16h họp rà soát. Lịch trong game suy ngày mở đầu từ tiền tố mã chuỗi md-08, md-09, md-10, md-11 (src/mvp/engine/lich-ngay.ts). -->
 - Chuỗi đầu: md-00-tren-xe
 - Ngày mở đầu: 2024-09-08
 
-## Sảnh tòa B {ngày: 1 · theo truyện · bắt đầu ở: phong-clb}
+## Sảnh tòa B {ngày: 1 · theo truyện · bắt đầu ở: phong-ktx}
 - Chuỗi: n1-mo
 
-## Tài khoản CLB {ngày: 2 · theo truyện · bắt đầu ở: phong-clb}
+## Phòng Đào tạo {ngày: 2 · theo truyện · bắt đầu ở: phong-ktx}
 - Chuỗi: n2-mo
 
-## Phiếu tra cứu {ngày: 3 · theo truyện · bắt đầu ở: phong-clb}
+## Phòng Công tác sinh viên {ngày: 3 · theo truyện · bắt đầu ở: phong-ktx}
 - Chuỗi: n3-mo
 
-## Sổ niêm phong {ngày: 4 · theo truyện · bắt đầu ở: phong-clb}
+## Cổng ký túc xá {ngày: 4 · theo truyện · bắt đầu ở: phong-ktx}
 - Chuỗi: n4-mo
 
-## Cổng KTX {ngày: 5 · theo truyện · bắt đầu ở: cong-ktx}
-- Chuỗi: n5-mo
+## Tối thứ Bảy ở phòng CLB {ngày: 5 · theo truyện · bắt đầu ở: phong-clb-dem-banh-mi}
+- Chuỗi: n5-toi
 
 ## Buổi họp rà soát {ngày họp}
 - Chuỗi: hop-00
 
 ## Kết
+<!-- Kết thật = rank A, B; kết tạm = rank C (luật chấm 08/10, đề bài B19 mục 4). Bộ đọc hiện chỉ có nhãn "Kết thường"; khi có [CHẤM VỤ] (B19-MÁY) nhãn hiện cho người chơi là "Kết tạm". -->
 - Kết thật: ket-that
-- Kết thường: ket-thuong
-
-<!-- Vụ sau (từ Vụ 2): chơi tiếp từ màn kết của vụ trước. Mỗi vụ chạy MỘT chuỗi (tự [ĐI TỚI] các chuỗi khác), kết bằng [KẾT THÚC]. "Ngày" là ngày thật trên màn lịch (truyện năm 2024). Máy tự đặt cờ <mã vụ>-hoan-tat khi một vụ kết; Vụ 1 thêm vu1-ket-that / vu1-ket-thuong. Thẻ của vụ trước được gỡ khỏi bảng điều tra, vẫn nằm trong hồ sơ. Vụ chính nào cũng hé một phần bí ẩn của mùa (docs/mvp/mua-1-dan-y-nam-khanh.md). -->
-
-## Tin đồn {vụ sau: vu-tin-don}
-- Chuỗi: tin-mo
-- Ngày: 2024-10-08
-- Hạn chót: 2024-10-15
-- Việc chốt: Buổi giải trình chiều 15/10
-- Ngày 2024-10-08: tin-mo · bắt đầu ở: phong-clb
-- Ngày 2024-10-09: tin-n2-mo · bắt đầu ở: phong-clb
-- Ngày 2024-10-10: tin-n3-mo · bắt đầu ở: phong-ktx
-- Ngày 2024-10-14: tin-n5-mo · bắt đầu ở: phong-ktx
-- Ngày 2024-10-15: tin-n6-mo · bắt đầu ở: hoi-truong
-- Tiêu đề kết: Một tài khoản, chưa phải một người
-- Lời kết: Tin gốc đi từ tài khoản kênh của CLB Robotics, lúc 22:40 tối thứ Hai. Bản ghi cho biết tài khoản nào gửi, chưa cho biết ai ngồi gửi.
-
-<!-- Việc ngày lễ của Vụ 2 (khung tạm; màn tra và lời đầy đủ để gói B8): 15/10 là Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam (15/10/1956); Hội Sinh viên trường đứng ra tổ chức lễ kỷ niệm buổi sáng, nên Quân bận và buổi giải trình diễn ra sau lễ. -->
-
-## Ngày truyền thống Hội Liên hiệp Thanh niên Việt Nam {việc ngày lễ: le-hoi-sv}
-- Ngày: 2024-10-15
-- Thuộc vụ: vu-tin-don
-- Chuỗi: le-hsv-mo
-- Người giao: quan
-- Khi lỡ: le-hsv-lo
-
-## Tranh cãi trong nhóm {vụ sau: vu3}
-- Chuỗi: v3-qua-2010
-- Ngày: 2024-10-22 · bắt đầu ở: phong-clb
-- Tiêu đề kết: Nam ở thư viện lúc tin được gửi
-- Lời kết: Bản ghi quẹt thẻ của thư viện và trí nhớ của Hà Vy là hai nguồn riêng, cùng đặt Nam ở thư viện lúc 22:40. Người gửi tin ngồi máy văn phòng xưởng, là ai thì chưa biết.
-
-## Giúp Nam {vụ sau: vu4}
-- Chuỗi: v4-mo
-- Ngày: 2024-11-04 · bắt đầu ở: phong-clb
-- Tiêu đề kết: Có người mượn tên Nam
-- Lời kết: Ba đơn đứng tên Nam được tạo ban đêm từ máy văn phòng xưởng, cùng cái máy đã gửi tin đồn, một đơn đúng tối Nam ở thư viện. Máy thì biết, tay thì chưa. Ba người có chìa phòng.
-
-## Sổ quỹ {vụ sau: vu5}
-- Chuỗi: v5-qua-2011
-- Ngày: 2024-11-16 · bắt đầu ở: phong-clb
-- Tiêu đề kết: Mỗi bước là một phiếu
-- Lời kết: Ba khoản chi không có hàng được ghi vào quỹ CLB Thám Tử, do chủ tịch Hội sinh viên duyệt. Người nhận là người nói "vì sao". Mùa 1 khép lại ở chỗ chứng cứ dừng.
-
-<!-- Nhiệm vụ phụ: việc một NPC giao, không dính truyện chính, để rèn kỹ năng. Mở trong bảng hoạt động (menu ≡) hay ở màn kết, sau khi vụ "Mở sau" đã xong; cất giữa chừng được, tuyến chính giữ nguyên cảnh và bảng điều tra; kết bằng [KẾT THÚC] rồi quay lại chỗ đã rời tuyến chính. Máy đặt cờ <mã>-hoan-tat. Vụ chính không được đòi kỹ năng chỉ dạy ở nhiệm vụ phụ. -->
-
-## Bốn mục trong sổ đã ký {nhiệm vụ phụ: so-phong}
-- Chuỗi: v2-mo
-- Người giao: duy
-- Mở sau: vu-tin-don
-- Ngày: 2024-11-01
-- Tiêu đề kết: Bốn mục có trong sổ, không hơn
-- Lời kết: Bản xuất và sổ giấy là hai nguồn riêng, cùng ra bốn buổi đã ký. Hồ sơ ghi đúng điều đó: không nói ai tới dự, không nói buổi nào có ích.
-
-## Chiếc micro ở tủ chung {nhiệm vụ phụ: micro}
-- Chuỗi: p-mic-mo
-- Người giao: duy
-- Mở sau: vu4
-- Ngày: 2024-11-15
-- Tiêu đề kết: Micro không mất, chỉ đổi chỗ
-- Lời kết: Phiếu PX-17 đã có người nhận, chuyển micro không dây sang tủ thiết bị dùng chung; mã dán trên micro trong tủ khớp với mã trên phiếu. Bảng không nói ai quên báo, và hồ sơ cũng không nói thay.
-
-## Một lần hoàn tiền, hai dòng ghi {nhiệm vụ phụ: hoan-tien}
-- Chuỗi: p-hoan-mo
-- Người giao: minh-anh
-- Mở sau: vu5
-- Ngày: 2024-11-29
-- Tiêu đề kết: Một khoản hoàn, bản xuất ghi hai lần
-- Lời kết: Phiếu PH-04 có hai dòng hoàn tiền cùng mã tham chiếu; biên nhận ngân hàng xác nhận một lần hoàn 60.000 đồng. Báo cáo được sửa, bản cũ được giữ. Ai nhập trùng thì bảng không ghi.
-
-## Một lần dẫn lạc {nhiệm vụ phụ: dan-lac}
-- Chuỗi: p-lac-mo
-- Người giao: tung
-- Mở sau: vu3
-- Ngày: 2024-10-25
-- Tiêu đề kết: Chín lượt, một lượt nhầm
-- Lời kết: Sổ đón ghi chín lượt Tùng dẫn: tám lượt tới ký túc xá, một lượt tới nhà xe, là lượt của Hoài. Sổ chỉ ghi nơi tới; vì sao nhầm là điều Tùng tự nhớ lại và tự nói ra.
-
-## Học trò cũ của cô {nhiệm vụ phụ: hoc-tro-cu}
-- Chuỗi: p-hoc-mo
-- Người giao: co-hanh
-- Mở sau: vu4
-- Ngày: 2024-11-20
-- Tiêu đề kết: Hai mươi sáu tên, bốn tên xuất hiện hai lần
-- Lời kết: Từ bốn trăm dòng lớp cũ, 30 dòng ghi ra trường, gom lại còn 26 tên không trùng; bốn tên có hai dòng. Danh sách chỉ cho biết tên trùng, không cho biết là một người hay hai người trùng tên, việc đó cô Hạnh nhận ra từ trí nhớ. Danh sách cũng không cho biết ai còn liên lạc được hay sẽ tới.
-
-## Túi đồ trên ghế đá {nhiệm vụ phụ: tui-do}
-- Chuỗi: p-tui-mo
-- Người giao: tung
-- Mở sau: vu-tin-don
-- Ngày: 2024-10-30
-- Tiêu đề kết: Túi về tay chủ, đơn tới muộn hay kịp
-- Lời kết: Chiếc túi vải trên ghế đá là của Hiếu, lớp BC24A; trong túi có đơn học bổng hạn nộp 17 giờ ngày 30/10. Túi nào cũng về đúng người, chỉ khác tờ đơn tới Phòng Công tác sinh viên lúc nào. Lịch học và danh sách đăng ký nói được ai học lớp nào, không nói ai là người đánh rơi.
+<!-- MỚI (B19-MÁY: bộ có [CHẤM VỤ] + [RẼ KẾT] bắt buộc dòng này; A/B → Kết thật, C → Kết tạm): - Kết tạm: ket-tam -->
+<!-- TẠM (khi có dòng "Kết tạm" ở trên thì xem B19-MÁY còn cần dòng "Kết thường" dưới không; bộ đọc hiện tại cần). -->
+- Kết thường: ket-tam

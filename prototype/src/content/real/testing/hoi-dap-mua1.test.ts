@@ -6,14 +6,18 @@
 import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { afterAll, describe, expect, it } from 'vitest';
 import type { RawMvp } from '../../../../tools/noi-dung/doc-mvp.ts';
 import { tepLoiTuTo } from '../../../../tools/noi-dung/hoi-dap-loi.ts';
 import { chuanHoaTo, docHoiDap, dungDoDoanLoi, kiemChung, kiemCheoTo, kiemDongHanh, kiemTo, type ToHoiDap } from '../../../../tools/noi-dung/hoi-dap-mua1.ts';
 import { docLuatGiong, kiemGiong } from '../../../../tools/noi-dung/kiem-giong.ts';
-import { THU_MUC_NOI_DUNG_MUA_1, vanBanMua1 } from '../../../../tools/noi-dung/sinh-mua1.ts';
+import { vanBanMua1 } from '../../../../tools/noi-dung/sinh-mua1.ts';
 import { docThuMucMvp, gomTepMvp } from '../../../../tools/noi-dung/thu-muc-mvp.ts';
 
+// B19 (08/10/2026): bộ mùa 1 mới không còn tờ hỏi đáp (Vụ 1 bản 6 không dùng hỏi gõ chữ); test máy đọc / máy kiểm tờ chạy trên bản
+// đông cứng của thư mục noi-dung-mua-1 trước B19 (commit 9cead0b).
+const THU_MUC_NOI_DUNG_MUA_1 = fileURLToPath(new URL('./noi-dung-mua-1-truoc-b19/', import.meta.url));
 const RAW = readFileSync(join(THU_MUC_NOI_DUNG_MUA_1, 'hoi-dap/n1-bac-thinh.json'), 'utf8');
 const CHUNG = JSON.parse(readFileSync(join(THU_MUC_NOI_DUNG_MUA_1, 'hoi-dap/chung.json'), 'utf8')) as Record<string, string[]>;
 const goc = (): ToHoiDap => chuanHoaTo(JSON.parse(RAW) as Record<string, unknown>);

@@ -5,7 +5,8 @@
  * nằm trong tập dòng của câu chuẩn và còn đủ mọi giá trị của vật chứng. Chạy sql.js thật trên dữ liệu bộ mùa 1.
  */
 import { describe, expect, it } from 'vitest';
-import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
+// B19 (08/10/2026): test cơ chế máy chạy trên bản đông cứng của bộ mùa 1 trước khi Vụ 1 viết lại (testing/mua1-truoc-b19).
+import { KICH_BAN_MUA_1 } from './testing/mua1-truoc-b19/kich-ban.gen';
 import type { KichBanMvp, TheThuThachMvp } from '../../content/mvp/types';
 import { chonGoiY } from './goi-y-man-tra';
 import { chamThuThach, phanUngSauKhiChay, soHep, type KetQuaChay, type LuatHep } from './sql-mvp';

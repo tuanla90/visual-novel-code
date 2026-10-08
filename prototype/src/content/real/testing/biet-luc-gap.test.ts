@@ -32,24 +32,25 @@ describe('docDanhSachTruongBiet', () => {
 });
 
 describe('bộ mùa 1 thật: Biết lúc gặp và [BIẾT]', () => {
-  it('đọc sạch; thẻ Tùng biết danh xưng, năm, ngành; khung có nút biet "câu nói" của Tùng; cảnh báo ô chưa ai mở', () => {
+  it('đọc sạch; thẻ Tùng biết danh xưng, năm, ngành; khung có nút biet "câu nói, lịch" của Tùng; cảnh báo ô chưa ai mở', () => {
     const { loi, canhBao, mvp } = doc();
     expect(loi).toEqual([]);
     expect(mvp.nhanVat.find((n) => n.id === 'tung')?.gioiThieu?.bietLucGap).toEqual(['danh-xung', 'nam', 'nganh']);
-    expect(mvp.nhanVat.find((n) => n.id === 'hieu')?.gioiThieu?.bietLucGap).toEqual([]);
-    const gapTung = mvp.chuoi.find((c) => c.id === 'md-00-gap-tung');
-    expect(gapTung?.items.some((it) => it.kind === 'biet' && it.nhanVat === 'tung' && it.truong.join() === 'cau-noi')).toBe(true);
+    // B19 (Vụ 1 bản 6): Hoài chưa biết gì lúc gặp; họ tên, ngành… mở sau màn tra bảng sinh viên ngày 2.
+    expect(mvp.nhanVat.find((n) => n.id === 'hoai')?.gioiThieu?.bietLucGap).toEqual([]);
+    const phong408 = mvp.chuoi.find((c) => c.id === 'md-01-phong-408');
+    expect(phong408?.items.some((it) => it.kind === 'biet' && it.nhanVat === 'tung' && it.truong.join() === 'cau-noi,lich')).toBe(true);
     // Ô chưa biết lúc gặp mà cả bộ không có [BIẾT] nào mở → cảnh báo (không lỗi), ví dụ họ tên của Duy.
     expect(canhBao).toEqual(expect.arrayContaining([expect.stringMatching(/nhan-vat\.md:\d+: nhân vật duy: ô "họ tên" chưa biết lúc gặp mà cả bộ không có dòng \[BIẾT duy …\] nào mở/)]));
-    expect(canhBao.some((c) => /nhân vật tung:/.test(c))).toBe(false);
+    expect(canhBao.some((c) => /nhân vật chu-cuong:/.test(c))).toBe(false);
   });
 
   it('[BIẾT] sai: trường đã biết lúc gặp (thừa), ô thẻ không có, nhân vật không có, thẻ không khai "Biết lúc gặp"', () => {
     const { loi } = doc({
       'noi-dung-mua-1/kich-ban/00-mo-dau.md': (s) =>
         s
-          .replace('- [BIẾT tung câu nói]', '- [BIẾT tung năm]\n- [BIẾT quan ngành]\n- [BIẾT khong-co họ tên]\n- [BIẾT narrator họ tên]'),
-      // Hiếu bỏ dòng "Biết lúc gặp" → [BIẾT hieu …] trong ngày 3 thành thừa.
+          .replace('- [BIẾT tung câu nói, lịch]', '- [BIẾT tung năm]\n- [BIẾT quan ngành]\n- [BIẾT khong-co họ tên]\n- [BIẾT narrator họ tên]'),
+      // Hoài bỏ dòng "Biết lúc gặp" → [BIẾT hoai …] sau màn tra ngày 2 thành thừa.
       'noi-dung-mua-1/nhan-vat.md': (s) => s.replace('- Biết lúc gặp: không\n', ''),
     });
     expect(loi).toEqual(
@@ -57,15 +58,15 @@ describe('bộ mùa 1 thật: Biết lúc gặp và [BIẾT]', () => {
         expect.stringMatching(/kich-ban\/00-mo-dau\.md:\d+: \[BIẾT tung năm\]: "năm" đã có trong "Biết lúc gặp" của tung \(dòng thừa\)/),
         expect.stringMatching(/kich-ban\/00-mo-dau\.md:\d+: \[BIẾT quan ngành\]: thẻ nhân vật quan không có "ngành" để biết/),
         expect.stringMatching(/kich-ban\/00-mo-dau\.md:\d+: \[BIẾT khong-co\]: không có nhân vật "khong-co"/),
-        expect.stringMatching(/kich-ban\/03-ngay-3\.md:\d+: \[BIẾT hieu câu nói\]: thẻ nhân vật hieu không khai "Biết lúc gặp" nên đã biết hết \(dòng thừa\)/),
+        expect.stringMatching(/kich-ban\/02-ngay-2\.md:\d+: \[BIẾT hoai họ tên\]: thẻ nhân vật hoai không khai "Biết lúc gặp" nên đã biết hết \(dòng thừa\)/),
       ]),
     );
   });
 
   it('dòng [BIẾT] viết sai (trường lạ, thiếu trường) và "Biết lúc gặp" liệt kê ô thẻ không có → lỗi ở đúng dòng', () => {
     const { loi } = doc({
-      'noi-dung-mua-1/kich-ban/00-mo-dau.md': (s) => s.replace('- [BIẾT tung câu nói]', '- [BIẾT tung bừa]'),
-      'noi-dung-mua-1/nhan-vat.md': (s) => s.replace('- Biết lúc gặp: danh xưng\n- Khi chưa quen: Anh sinh viên đeo kính', '- Biết lúc gặp: danh xưng, năm\n- Khi chưa quen: Anh sinh viên đeo kính'),
+      'noi-dung-mua-1/kich-ban/00-mo-dau.md': (s) => s.replace('- [BIẾT tung câu nói, lịch]', '- [BIẾT tung bừa]'),
+      'noi-dung-mua-1/nhan-vat.md': (s) => s.replace('- Biết lúc gặp: danh xưng, câu nói\n- Khi chưa quen: Người ngồi sẵn', '- Biết lúc gặp: danh xưng, câu nói, năm\n- Khi chưa quen: Người ngồi sẵn'),
     });
     expect(loi).toEqual(
       expect.arrayContaining([

@@ -1,36 +1,19 @@
 # Lời · kich-ban/05-ngay-5.md
 
-<!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/05-ngay-5.md. [DÀN DỰNG] không hiện cho người chơi. Lời chú Cường là cảnh bắt buộc (01/10): không nói năm, không rõ mặt. Lời tối không phụ thuộc người chơi đã có nhật ký in hay chưa. -->
-
-## n5-mo.1
-- [THẺ CHỮ] **narrator**: Thứ Bảy, 28/09/2024
-- [DÀN DỰNG] Sáng sớm ở cổng KTX. {{nv.chu-cuong}} vừa đi tuần về, tay cầm đèn pin.
-- **narrator**: Sáng sớm ở cổng ký túc xá. {{nv.chu-cuong}} vừa đi một vòng kiểm tra về, đèn pin còn cầm trên tay.
-- **tung** (neutral): Tuần ấy chú tớ đổi sang ca sáng. Sáng thứ Hai 16/09 chú trực cổng đấy, hỏi chú xem hôm nộp thư có gì lạ không.
-> NHẮC VIỆC tung (neutral): Sáng thứ Hai ai ra cổng sớm, chú tớ hay để ý lắm.
-
-## n5-chu-cuong.1
-- **tung** (neutral): Chú ơi, sáng thứ Hai chú có để ý ai ra cổng sớm không ạ? Bọn cháu đang lần xem lá thư ở hộp tòa B từ đâu mà ra.
-- **chu-cuong** (neutral): Sáng thứ Hai à… 6 giờ 45, chú thấy một cậu sinh viên, balo đeo huy hiệu bánh răng, đứng ngoài cổng đưa phong bì nâu cho một bạn nữ.
-- **chu-cuong** (neutral): Con bé cầm xong là đi thẳng về phía tòa B luôn.
-- **player**: Còn cậu kia, chú có nhìn rõ mặt không ạ?
-- **chu-cuong** (neutral): Không. Cậu ấy đứng xa, trời lại mới sáng, chú chỉ để ý cái huy hiệu thôi. Cái bánh răng sứt mất một răng, trông lệch lệch nên chú nhớ.
-
-## n5-chu-cuong.2
-- [DÀN DỰNG] Khung có [RA chu-cuong] ngay trước đoạn này: chú đã chào "đi đi", ba đứa bàn với nhau, chú không đứng nghe (06/10 vòng 2).
-- **tung** (surprised): Huy hiệu bánh răng? Hôm Ngày hội CLB, biển của bọn Robotics vẽ đúng hình đấy!
-- **ha-vy** (day-kinh): Huy hiệu thì thành viên nào cũng có. Mới khoanh được là người của Robotics thôi.
-- **tung** (gai-dau): Nhưng Robotics thì liên quan gì tới phòng của mình?
-- **ha-vy** (neutral): Đừng đoán bừa vội. Cứ ghi lại đã, tính sau.
+<!-- Gói B19 (08/10/2026): Cảnh 9 của bản thoại 6. Câu nói đúng chữ bản 6 (chỉ đổi ngoặc cong thành ngoặc thẳng). Dòng "(tạm)" là câu mới thêm, chờ user duyệt. -->
 
 ## n5-toi.1
-> NHIỆM VỤ: Soát lại hồ sơ trước buổi họp
-> NHẮC VIỆC ha-vy (neutral): Thứ Hai họp. Chỉ nói đúng những gì có chứng.
-- [THẺ CHỮ] **narrator**: Tối thứ Bảy
-- **narrator**: Hà Vy ghim hết giấy tờ lên bảng, Tùng căng chỉ nối từng tờ.
+- [THẺ CHỮ] **narrator**: Thứ Bảy, 28/09/2024 · Tối · Phòng CLB
+- [DÀN DỰNG] Nền bg-mvp-phong-clb-dem-banh-mi: phòng CLB buổi tối, túi bánh mì que, ấm trà, quạt cây, bảng đầy thẻ nối chỉ đỏ; cả đội hiện bằng chân dung (user 08/10). Lời không tả lại.
+> NHIỆM VỤ: Dựng lại sáng thứ Hai 16/09 trên bảng (tạm)
 
 ## n5-toi.2
-- [DÀN DỰNG] Ảnh chibi-bang-ghim (Hà Vy và Tùng bên tấm bảng ghim căng chỉ đỏ) chạy ngay TRƯỚC đoạn này, liền sau câu dẫn (06/10, người xem ngoài: lời kể ghim bảng mà bảng trên nền trống, ảnh lại để tận cuối).
-- **tung** (worried): Nhỡ người ta vặn hỏi ai là người viết thư thì sao?
-- **ha-vy** (neutral): Có chứng cứ thì trình. Không có thì bảo chưa biết.
-- **tung** (happy): Rõ rồi. Tối mai tớ ngủ sớm, thứ Hai tỉnh như sáo.
+- [DÀN DỰNG] Khi có dòng thời gian (B19-MÁY): ngay trước đoạn này là màn dòng thời gian 5 ô (dtg-vu1): 6:44 Hoài ra cổng, ? ai đưa phong bì, 7:00 mở sảnh, trước 9:00 Hoài bỏ thư, 9:00 cô Lan thu hộp; kéo bằng chứng vào ô.
+- **tung** (thinking): Hay ghi tạm là "một anh balo đen"? Chú Cường nói thế mà!
+- **ha-vy** (day-kinh): Sherlock Holmes nói: "Tôi không bao giờ đoán mò. Đó là một thói quen tồi tệ, làm hủy hoại tư duy logic." Cậu cứ để trống đi, mình sẽ điều tra sau.
+- **tung** (gai-dau): Lại Sherlock à? Lần thứ bảy rồi đấy!
+- **minh-anh** (neutral): Thứ Hai em trình dòng thời gian. Chị ngồi cạnh, có gì chị đỡ.
+- **minh-anh** (serious): Thầy Quang nói chuyện bằng căn cứ. Em nói sai là thầy không chấp nhận đâu.
+- **player**: Em ạ?
+- **minh-anh** (neutral): Em là người tra ra bốn Hoài với giờ sáu bốn mươi tư. Em trình là hợp lý nhất.
+> NHIỆM VỤ: Thứ Hai trình dòng thời gian ở buổi họp rà soát (tạm)

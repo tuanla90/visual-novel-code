@@ -3,7 +3,8 @@
  * `KICH_BAN_MUA_1`) và trên bản sửa của tờ ấy (giới hạn số câu, từ chối theo `canCo`). Đặc tả: tools/thu-hoi-dap/thu-hoi-dap.html.
  */
 import { describe, expect, it } from 'vitest';
-import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
+// B19 (08/10/2026): test cơ chế máy chạy trên bản đông cứng của bộ mùa 1 trước khi Vụ 1 viết lại (testing/mua1-truoc-b19).
+import { KICH_BAN_MUA_1 } from './testing/mua1-truoc-b19/kich-ban.gen';
 import type { KichBanMvp, ToHoiDapMvp } from '../../content/mvp/types';
 import { dungBang, theHoiDap } from './bang-dieu-tra';
 import { canLamRo, giayNhoHoiDap, tienDoCua } from './hoi-dap';

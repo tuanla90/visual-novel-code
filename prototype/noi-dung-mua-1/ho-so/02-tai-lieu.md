@@ -1,45 +1,19 @@
-## Tài liệu (doc-…)
+## Tài liệu (doc-…) của Vụ 1
 
-### doc-the-lich-cua-toi — Thẻ lịch của khoa mình
-- Tiêu đề: Thẻ lịch Tuần sinh hoạt công dân
-- Ảnh: doc-the-lich-cua-toi
-- Nguồn: Phát ở tuần sinh hoạt công dân
-- Nội dung hiển thị:
-> Phần in theo khoa; dòng viết tay "Họ tên / Lớp".
+<!-- Gói B19 (08/10/2026): thư kiến nghị (cô Lan mang tới phòng CLB 23/09) và sổ thu hộp (Phòng Công tác sinh viên, 26/09). -->
 
-### doc-so-chi-linh — Sổ CLB
-- Tiêu đề: Cuốn sổ của CLB, truyền từ khóa trước
-- Ảnh: doc-so-chi-linh
-- Nguồn: Ngăn dưới tủ hồ sơ phòng CLB
+### doc-thu-kien-nghi — Thư kiến nghị thu hồi phòng CLB
+- Tiêu đề: Thư kiến nghị thu hồi phòng CLB Thám Tử
+- Ảnh: doc-thu-kien-nghi
+- Nguồn: Hộp kiến nghị sảnh tòa B, cô Lan thu sáng thứ Hai 16/09; cô mang tới phòng CLB chiều 23/09
 - Nội dung hiển thị:
-> "Kiểm hai lần, kết luận một lần."
+> Đề nghị thu hồi phòng sinh hoạt của CLB Thám Tử. CLB không còn giải quyết được việc gì.
+> (Cuối thư không có tên người viết.)
 
-### doc-bao-cao-yeu — Báo cáo năm ngoái
-- Tiêu đề: Báo cáo hoạt động năm ngoái
-- Ảnh: doc-bao-cao-yeu
-- Nguồn: Tủ hồ sơ phòng CLB
+### doc-so-thu-hop — Sổ thu hộp kiến nghị
+- Tiêu đề: Sổ thu hộp kiến nghị, sáng thứ Hai 16/09
+- Ảnh: doc-so-thu-hop
+- Nguồn: Cô Lan, Phòng Công tác sinh viên
 - Nội dung hiển thị:
-> CLB Thám Tử Dữ Liệu: hoạt động yếu.
-
-### doc-thu-che — Bản chụp thư đã che thông tin
-- Tiêu đề: Lá thư (bản chụp, đã che)
-- Ảnh: doc-la-thu-nac-danh
-- Nguồn: Phòng CTSV chuyển về
-- Nội dung hiển thị:
-> Đề nghị thu hồi phòng sinh hoạt của CLB Thám Tử, vì CLB không còn giải quyết được việc gì. Đề nghị Phòng phản hồi chính thức.
-> Ký: (chữ ký tay: chữ H viết hoa rõ, phần sau là một nét lượn dài, không đọc được)
-> Chân trang (chữ in nhỏ, bản chụp bị xén mất nửa): kien-nghi-…
-
-### doc-thong-bao-hop — Thông báo lịch họp rà soát
-- Tiêu đề: Thông báo họp rà soát phòng CLB
-- Ảnh: doc-thong-bao-hop
-- Nguồn: Dán cạnh hộp kiến nghị, sảnh tòa B
-- Nội dung hiển thị:
-> Họp rà soát phòng sinh hoạt CLB: 16:00 thứ Hai 30/09/2024.
-
-### doc-van-ban-thay-quang — Văn bản cho phép lập căn cứ
-- Tiêu đề: Văn bản của {{nv.thay-quang}}
-- Ảnh: doc-van-ban-thay-quang
-- Nguồn: Phòng Đào tạo
-- Nội dung hiển thị:
-> CLB chỉ lập danh sách mã ứng viên kèm căn cứ; cô Lan tự tra sổ. Tài khoản CLB chỉ xem bảng lớp; bảng khác cần phiếu yêu cầu tra cứu của Phòng CTSV.
+> Thứ Hai 16/09/2024, 9:00, hộp sảnh tòa B: ba phong bì.
+> Hai phong bì kiến nghị wifi và nhà ăn. Phong bì thứ ba màu nâu, phiếu gửi kẹp ngoài.

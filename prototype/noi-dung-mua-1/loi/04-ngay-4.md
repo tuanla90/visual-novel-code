@@ -1,104 +1,36 @@
 # Lời · kich-ban/04-ngay-4.md
 
-<!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/04-ngay-4.md. [DÀN DỰNG] không hiện cho người chơi. Câu hỏi [RẼ NHÁNH] nằm ở khung. Cô Hạnh không nói ai đã dùng tài khoản chung. -->
+<!-- Gói B19 (08/10/2026): Cảnh 8 của bản thoại 6. Câu nói đúng chữ bản 6. Hai câu nối Tùng xin chú Cường cho xem sổ ra vào là quyết định của user 08/10 (CLB xem nhờ ở máy trong chốt, chỉ đúng mã và sáng cần xem). Dòng "(tạm)" là câu mới thêm, chờ user duyệt. -->
 
 ## n4-mo.1
-> NHIỆM VỤ: Mang hai mã sang Phòng Công tác sinh viên
 - [THẺ CHỮ] **narrator**: Thứ Sáu, 27/09/2024
-- **minh-anh** (neutral): Chị ghi hai mã và các bước lọc vào phiếu yêu cầu rồi. Các em cầm qua Phòng Công tác sinh viên nhé.
+> NHIỆM VỤ: Ra cổng ký túc xá hỏi chú Cường (tạm)
+> NHẮC VIỆC tung (neutral): Chiều nay ra cổng hỏi chú tớ nhé. (tạm)
 
-## n4-ctsv.1
-> NHIỆM VỤ: Mã nào có trong sổ niêm phong?
-> NHẮC VIỆC tung (worried): Hai mã. Sổ niêm phong có mã nào đây…
-- [DÀN DỰNG] Nền là Phòng Công tác sinh viên: cả nhóm VỪA TỚI nơi, chuyện dọc đường kể ở thì đã qua (06/10, người xem ngoài: lời đang đi đường mà hình đã ở trong phòng).
-- **narrator**: Cả quãng đường sang đây, không ai nói câu nào.
-- **tung** (worried): Nếu cả hai mã đều không có trong sổ thì sao?
-- **ha-vy** (thinking): Thì chứng tỏ mình sai ở đâu đó. Cũng là một manh mối.
-- **player**: Cậu lúc nào cũng bình tĩnh thế à?
-- **ha-vy** (day-kinh): Không. Nãy giờ tớ đếm bậc cầu thang cho đỡ run đấy.
+## n4-cong.1
+- [THẺ CHỮ] **narrator**: Cổng ký túc xá
+- **narrator**: Tùng đi trước, vẫy tay từ xa với người trong chốt bảo vệ. Là bố của bé Na.
 
-## n4-ctsv.1v
-- **co-lan** (neutral): Cô tra rồi. SV240317 có trong sổ. SV240228 thì không.
-- **player**: Vậy SV240317 là người nộp thư ạ?
-- **co-lan** (neutral): Sổ niêm phong chỉ xác nhận mã đó có mặt. Cô không kết luận thêm.
-- [DÀN DỰNG] Câu quy chế mời họp của cô Lan dời từ n4-ctsv.2 lên đây: tờ hỏi đáp n4-ctsv-vao đã có dữ kiện này nên ở cách bấm / gõ cô không nói lại hai lần (06/10 vòng 2, người xem ngoài).
-- **co-lan** (neutral): Theo quy chế, sinh viên có mã trong sổ sẽ được mời đến buổi họp. Có gọi vào hay không do buổi họp quyết định.
+## n4-chu-cuong.1
+- **tung** (happy): Chú Cường ơi! Bạn cháu muốn hỏi chuyện sáng thứ Hai tuần trước!
+- **ha-vy** (neutral): Sáng thứ Hai 16/09, chú có để ý ai cầm một cái phong bì nâu đi qua cổng không ạ?
+- **chu-cuong** (neutral): Sáng nào chẳng có người đưa đồ cho nhau ở cổng, chú để ý làm gì. Nhưng cái phong bì nâu to thế thì chú nhớ. Lúc ấy chú sắp giao ca, tức là gần bảy giờ.
+- **player**: Ai cầm phong bì ạ?
+- **chu-cuong** (neutral): Một bạn nữ sáng nào cũng ra cổng sớm, chú nhớ mặt. Bạn ấy vừa quẹt thẻ ra cổng thì có cậu đeo balo đen gọi lại, đưa phong bì. Cậu kia quay lưng về phía chú suốt, rồi đi luôn. Còn bạn ấy cầm phong bì đi về phía tòa B.
 
-## n4-ctsv.1w
-- [DÀN DỰNG] Khối riêng để câu Tùng cá trượt còn ở cách bấm / gõ (khối .1v bị buổi hỏi thay lời).
-- **tung** (gai-dau): Mã của Hiếu không có… Tớ cá trượt rồi à?
-- **ha-vy** (neutral): Trượt cũng chẳng sao. Ít ra mình loại được thêm một người.
+## n4-chu-cuong.2
+- **ha-vy** (thinking): Bạn ấy vừa quẹt thẻ, tức là sổ ra vào có ghi giờ. Cậu xem bạn Hoài ra cổng lúc mấy giờ?
+- **tung** (neutral): Chú ơi, chú cho bọn cháu xem nhờ sổ ra vào một tí được không ạ? (tạm)
+- **chu-cuong** (neutral): Xem ở máy trong chốt này. Đúng mã bạn ấy, đúng sáng hôm ấy thôi đấy. (tạm)
 
-## n4-ctsv.2
-- **quan** (neutral): Biết ai nộp chưa có nghĩa là biết ai viết.
-- **co-lan** (neutral): Ai viết thì cô chưa nói được.
+## n4-chu-cuong.3
+- **player**: Hoài ra cổng lúc sáu giờ bốn mươi tư, đúng lúc chú sắp giao ca. Phong bì đến tay Hoài ở cổng.
+- **tung** (worried): Thế… người đưa phong bì là ai?
+- **narrator**: Không ai trả lời.
 
-## n4-phong-may.1
-> NHIỆM VỤ: Lá thư được in từ tài khoản nào?
-> NHẮC VIỆC ha-vy (thinking): Chân trang thư là tên tệp. Nhật ký in sẽ ghi tài khoản nào in nó.
-- **narrator**: Phòng Đào tạo ngay cạnh đó. Cô Hạnh nhận tờ phiếu yêu cầu cô Lan vừa ký.
-- **co-hanh** (neutral): Máy in trường lưu tài khoản, giờ in, tên tệp. Cô mở đúng bảng nhật ký in cho các em xem.
-- **co-hanh** (neutral): Dưới chân bản in thường có tên tệp. Thư của các em có không?
-- **player**: Có ạ. Nhưng bản chụp bị xén, chỉ đọc được chữ: kien-nghi…
-- **tung** (happy): Thư đánh máy thì phải in. Hôm Trung thu Hoài hỏi tớ đường ra phòng máy in đấy. Chắc chắn Hoài in rồi!
-- **ha-vy** (day-kinh): Hỏi đường chưa phải là in. Cứ kiểm tra nhật ký đã.
+## n4-cong-an.1
+- **player**: (Dây cờ đón tân sinh viên vẫn chưa ai gỡ, gió thổi phần phật.) (tạm)
 
-## n4-phong-may.2
-- **player**: 23 giờ 10 tối Chủ nhật. Tệp kien-nghi-phong-clb.docx, in từ tài khoản clb_robotics.
-- **ha-vy** (day-kinh): Không phải mã sinh viên cá nhân. Đây là tài khoản CLB.
-- **tung** (surprised): Robotics á? Vậy người in không phải Hoài rồi.
-- **ha-vy** (thinking): Thư in từ tài khoản Robotics, nhưng Hoài mang nộp. Có khi là hai người khác nhau.
-- **co-hanh** (neutral): Nhật ký chỉ ghi tài khoản. Cô không có căn cứ nói ai trực tiếp ngồi máy.
-- **tung** (chi-tay): Tối Chủ nhật vào phòng máy phải ký sổ! Xem sổ là biết ngay ai ngồi giờ đó!
-- **co-hanh** (neutral): Sổ ký giấy bác Thịnh tòa B giữ. Nhưng muốn mở phải có chữ ký người có thẩm quyền.
-> NHẮC VIỆC ha-vy (thinking): Thư in từ tài khoản CLB Robotics. Người nộp là Hoài. Hai việc, có khi là hai người.
-
-## n4-sanh-toa-b.1
-- **narrator**: Chiều cùng ngày, cả nhóm ghé sảnh tòa B. Bác Thịnh đứng cạnh ghế đá gần cửa.
-- **tung** (chi-tay): Bác ơi, cho bọn cháu xem sổ ký vào phòng máy tối Chủ nhật được không ạ?
-- **bac-tu** (neutral): Sổ ghi tên người. Không có chữ ký người có thẩm quyền thì bác không mở.
-- **ha-vy** (neutral): Vâng ạ. Bọn cháu chỉ ghi lại nhật ký in trước.
-
-## n4-ve.1
-- **ha-vy** (neutral): Chị ơi, sổ niêm phong có mã của Hoài, không có Hiếu.
-- **minh-anh** (khoanh-tay): Nói có sách, mách có chứng. Mới biết ai nộp chứ chưa biết ai viết.
-- **tung** (gai-dau): Và cũng chưa biết thư đó được in từ đâu…
-
-## n4-bd-toa-b.1
-- **bac-tu** (neutral): Sáng nay có cậu đeo kính bên Hội xuống đứng nhìn cái hộp một lúc rồi đi. Không hỏi bác câu nào.
-- **tung** (thinking): Anh Quân đấy bác ạ.
-- **ha-vy** (neutral): Anh ấy kiểm bọn mình, kiểm cả cái hộp.
-
-## n4-toi.1
-- **narrator**: Tối thứ Sáu, phòng CLB. Duy cắm ấm đun nước. Minh Anh lôi từ ngăn kéo ra hộp bánh quy từ kỳ trước.
-- **minh-anh** (happy): Nhắc lại luật CLB: ai ăn cái cuối cùng thì mua hộp mới nhé.
-
-## n4-toi.1b
-- **tung** (happy): Chơi trò "ba dữ kiện" đi! Tớ tả một người qua ba điều, mọi người đoán nhé.
-- **tung** (chi-tay): Một: đeo kính. Hai: hay ôm vở. Ba: từ đầu tuần tới giờ chưa thấy cười.
-- **ha-vy** (smile): Ba điều ấy khớp với cả chục người trên thư viện. Dữ kiện quá lỏng.
-- **duy** (smile): Đấy, vừa cười xong. Điều thứ ba sai rồi.
-- **ha-vy** (day-kinh): Em không cười. Em đang chỉnh kính.
-- **player**: Tới lượt tớ. Một: thuộc đường. Hai: thích cá cược. Ba: cá mười thua chín.
-
-## n4-toi.1c
-- **tung** (surprised): Ơ! Thế là vu khống có số liệu à!
-- **minh-anh** (happy): Đã có số liệu thì không gọi là vu khống nữa đâu em.
-
-## n4-toi.1c2
-- [DÀN DỰNG] Trước đoạn này khung có [RA player] và [VÀO duy]: Duy đứng trên dàn lúc lời dẫn kể anh ăn cái bánh cuối và mở sổ; người chơi đã nói xong lượt "ba dữ kiện" nên xuống dàn (06/10 vòng 2).
-- **narrator**: Chín giờ tối, hộp bánh hết. Người ăn cái cuối là Duy. Cậu lẳng lặng mở sổ, ghi: "Nợ CLB một hộp bánh."
-
-## n4-toi.1d
-- **tung** (happy): Ghi sổ rồi nhé, nhân chứng đầy đủ! Mai anh Duy nhớ mua loại sô-cô-la đấy!
-- **duy** (smile): Được. Anh mua hộp mới, bù lại tối nay em đi rửa ấm trà.
-- **tung** (happy): Chốt luôn! Em ghi vào biên bản đây.
-- **narrator**: Tùng vừa lật sổ ghi xong thì Duy đặt ngay ấm nước ra trước mặt.
-- **tung** (gai-dau): Đòi nợ liền tay thế hả anh? Em tưởng biên bản chỉ để tham khảo!
-
-## n4-ctsv-an.1
-- **narrator**: Trên khay là phiếu yêu cầu tra cứu của CLB, chữ ký cô Lan còn tươi mực.
-
-## n4-bd-toa-b-an.1
-- **narrator**: Trên ghế đá là ca nhựa và ấm trà của bác Thịnh, nắp vẫn còn ấm.
-- **tung** (happy): Bác trực suốt ngày, chắc phải uống hết hai ấm này.
+## n4-cong.2
+> NHIỆM VỤ: Tối mai cả đội họp ở phòng CLB, dựng lại sáng thứ Hai (tạm)
+> NHẮC VIỆC tung (neutral): Tối mai cả đội họp ở phòng CLB nhé. (tạm)

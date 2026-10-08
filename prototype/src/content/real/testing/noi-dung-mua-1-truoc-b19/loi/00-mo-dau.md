@@ -1,0 +1,357 @@
+# Lời · kich-ban/00-mo-dau.md
+
+<!--Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/00-mo-dau.md. [DÀN DỰNG] không hiện cho người chơi (đặc tả: ghi chú cho người dựng) — thứ người chơi cần biết phải nằm trong lời dẫn / thoại. Không câu hướng dẫn thao tác (ĐÃ CHỐT C). Đã áp DX-01 (01/10): lời md-02, md-04, md-05, md-06 đã xóa. Đã áp bản rà docs/thiet-ke/ra-soat-loi-chuong-1-2026-09-30.md. -->
+
+## md-00-tren-xe.1
+- [THẺ CHỮ] **narrator**: Chủ nhật, 08/09/2024 · Xe buýt lên Hà Nội
+- [DÀN DỰNG] Ảnh bg-mvp-xe-buyt đã vẽ người chơi tựa cửa sổ, vali xanh dưới chân, khách trong xe, xe máy ngoài đường: lời dẫn không tả lại.
+- **narrator**: Xe vào nội thành lúc đầu giờ chiều. Tiếng còi xe máy dồn lên mỗi lúc một dày.
+- **player**: (Vậy là lên Hà Nội thật rồi.)
+- **narrator**: Xe chậm dần. Giọng phụ xe vọng xuống: "Đại học Chấn Hưng! Ai xuống thì chuẩn bị!"
+- **player**: (Tới rồi. Xuống thôi.)
+
+## md-00-xe-buyt.1
+> NHIỆM VỤ: Tìm đường vào ký túc xá
+> NHẮC VIỆC player: Không biết ký túc xá ở chỗ nào nhỉ?
+
+## md-00-xe-buyt.2
+- [THẺ CHỮ] **narrator**: Đại học Chấn Hưng · Cổng trường
+- [DÀN DỰNG] Nền bg-mvp-cong-truong: cổng hai trụ, thanh chắn hạ, chốt bảo vệ, mái chờ xe buýt và quán nước bên trái; trên ảnh KHÔNG có người, KHÔNG có vali (người chơi là góc nhìn). Lời không nhắc vali, không nhắc người khác ở cổng.
+- **player**: (Trường rộng thế này… Thôi, cứ theo đường chính vào xem.)
+
+## md-00-cong-ktx.1
+- [DÀN DỰNG] Nền bg-mvp-cong-ktx: cổng sắt xanh mở, dây cờ đuôi nheo, nhà xe bên trái, phòng trực bên phải; không có người, không có vali.
+- **player**: (Cổng treo dây cờ đón tân sinh viên. Chắc ký túc xá đây rồi.)
+- **player**: (Giấy báo ghi phòng 408. Tầng bốn à? Trường to thế này chắc phải có thang máy chứ nhỉ?)
+
+## md-00-sanh-ktx.1
+> NHIỆM VỤ: Tìm đường lên phòng 408
+> NHẮC VIỆC player: Ra thang máy lên tầng bốn thôi.
+
+## md-00-sanh-ktx.2
+- [DÀN DỰNG] Sảnh tầng một đông người ngày nhập học: tân sinh viên kéo vali, phụ huynh bê thùng. Bên trái là thang máy, trên tường là bảng tin của khu nhà. Lẫn trong đám đông bên phải có một tấm lưng áo xanh tình nguyện, mũ tai bèo đeo sau lưng: chi tiết ẩn, không có dấu, xem xong thang máy và bảng tin thì mới bấm được.
+- **player**: (Đông thật đấy. Thang máy ngay kia rồi.)
+
+## md-00-thang-may.1
+- **narrator**: Tờ giấy dán ngay giữa cửa thang máy: "Thang máy quá tải, tạm dừng để kiểm tra. Mời các bạn đi thang bộ."
+- **player**: (Đen thật. Đành đi thang bộ vậy.)
+- **player**: (Mà thang bộ ở chỗ nào nhỉ? Ra bảng tin xem có sơ đồ không.)
+> NHẮC VIỆC player: Thang bộ ở chỗ nào nhỉ?
+
+## md-00-so-do.1
+- [DÀN DỰNG] Sơ đồ trên bảng tin vẽ ba khối nhà, khối giữa tô đỏ; không có chấm "Bạn đang ở đây" đọc được (06/10 vòng 2).
+- **narrator**: Bảng tin dán sơ đồ khu ký túc xá: ba dãy nhà, dãy giữa tô đỏ.
+- **player**: (Nhìn mãi chẳng thấy thang bộ đâu.)
+- **player**: (Chịu rồi, phải hỏi ai đó thôi.)
+> NHIỆM VỤ: Tìm người hỏi đường lên tầng bốn
+> NHẮC VIỆC player: Hỏi ai trong sảnh này được nhỉ?
+
+## md-00-thay-tung.1
+- **player**: (Kia có bạn áo xanh tình nguyện. Hỏi bạn ấy chắc được.)
+
+## md-00-tung-chi-duong.1
+- **hoai** (nervous): Bạn ơi... tòa KTX nữ đi đường nào ạ?
+- **tung** (ao-xanh-chi-tay): Sang bên nữ á? Cậu cứ ra cửa sảnh, rẽ trái là tới luôn. Ngay kia kìa!
+- **hoai** (relieved): Tớ cảm ơn.
+- [DÀN DỰNG] Người chơi đứng ngoài nhìn: trên hình chỉ có bạn nữ và cậu áo xanh. Hết đoạn này bạn nữ rời hình.
+
+## md-00-tung-chi-duong.2
+- **narrator**: Bạn nữ xốc lại quai túi, đi về hướng cậu ấy vừa chỉ.
+- **player**: (Bạn ấy vừa chỉ đường cho người ta xong. Hỏi luôn.)
+
+## md-00-gap-tung.1
+- **player**: Cậu ơi, cho tớ hỏi thang bộ ở đâu thế?
+- **tung** (ao-xanh-happy): Khuất sau hành lang kia kìa. Lần đầu ai cũng tìm không ra. Cậu lên tầng mấy?
+- **player**: Tầng bốn, phòng 408.
+- **tung** (ao-xanh-thinking): 408 à… Để tớ dò danh sách đã.
+- **narrator**: Cậu ấy lật mặt sau tờ sơ đồ. Một bảng xếp phòng in chữ bé tí, ngón tay dò từ dòng đầu xuống.
+- **player**: Dòng gần cuối kìa. 408, hai tên.
+- **tung** (ao-xanh-surprised): …Ơ, tên tớ đây. Thế là cùng phòng thật!
+- **player**: Cùng phòng á? Thế cậu cũng năm nhất à? Sao lại mặc áo tình nguyện?
+- **tung** (ao-xanh): Tớ năm nhất thôi. Tớ là {{nv.tung}}, học Du lịch.
+- **tung** (ao-xanh-happy): Tớ nhập học đợt một, lên từ cuối tháng Tám. Chú tớ làm bảo vệ ở đây, thấy đội dẫn đường thiếu người nên cho tớ mượn áo ra phụ hai hôm.
+
+## md-00-gap-tung.2
+- **tung** (ao-xanh-happy): {{nv.nguoi-choi}} à. Dễ gọi đấy. Cậu học ngành gì?
+- **player**: {{nv.nguoi-choi.nganh}}.
+
+## md-00-gap-tung.3
+- **tung** (ao-xanh): Lại dân kinh tế à? Thế là phòng mình chẳng mống nào học Toán rồi, sau này biết bấu víu ai đây.
+- **player**: Du lịch mà cũng phải học Toán á?
+- **tung** (ao-xanh-gai-dau): Kỳ hai dính môn Xác suất Thống kê mới cay chứ. Chưa học đã thấy điềm trượt rồi. Thôi, xách vali lên phòng đã!
+- **tung** (ao-xanh-chi-tay): Tớ cá ba phút là tới tầng bốn. Thua tớ khao trà đá!
+
+## md-01-ktx.1
+> NHIỆM VỤ: Nhận phòng KTX
+> NHẮC VIỆC tung (ao-xanh-happy): Cất đồ xong tớ dẫn đi một vòng trường.
+
+## md-01-ktx.2
+- [DÀN DỰNG] Nền phòng 408. Hai người vừa khiêng vali lên tới nơi, còn thở dốc. Đoạn leo thang không có ảnh nền nên không kể bằng lời; hai ảnh chibi khiêng vali (chibi-408-vali, chibi-vali-tho) chạy TRƯỚC đoạn này thay cho cảnh leo thang (06/10, người xem ngoài: ảnh leo thang hiện sau câu "Phòng mình đây!" thì ngược).
+- **narrator**: Mười phút sau, cửa phòng 408 mới mở ra.
+- **player**: Ba phút của cậu dài nhỉ.
+- **tung** (ao-xanh-gai-dau): Vali cậu đựng gạch à? …Thôi, tớ nợ cậu một cốc trà đá.
+- **tung** (ao-xanh-happy): Phòng mình đây!
+
+## md-03-toa-b.1
+> NHIỆM VỤ: Đi một vòng trường với Tùng
+- [DÀN DỰNG] Sảnh tòa B, chiều Chủ nhật (nền sanh-toa-b, trên ảnh chưa có hộp). Bác Thịnh đứng ở chân cầu thang. Ảnh cái hộp CHỈ hiện sau khi Tùng chỉ tay (04/10: hiện ngay khi vào cảnh thì đột ngột, người chơi chưa biết vì sao mình ở đây).
+- **narrator**: {{nv.tung}} dẫn đi hết dãy giảng đường, chỉ từng tòa như hướng dẫn viên. Chiều Chủ nhật, cả tòa B im phăng phắc, chỉ nghe tiếng dép hai đứa.
+- **tung** (ao-xanh-chi-tay): Tòa B đây. Học đại cương kiểu gì cậu cũng mòn gót ở đây.
+- **tung** (ao-xanh): Ơ, cái hộp cạnh bảng tin kia vẫn còn à?
+
+## md-03-toa-b.2
+- [DÀN DỰNG] Ngay sau ảnh obj-hop-kien-nghi-trong (khe trống, chưa có thẻ lịch): ảnh cho thấy cái hộp, lời không tả lại.
+- **tung** (ao-xanh): Hộp kiến nghị đấy. Trường số hóa hết rồi mà vẫn treo cái hộp này nhỉ.
+- **tung** (ao-xanh-happy): Cháu chào bác Thịnh ạ!
+- **bac-tu** (neutral): Hai cháu tìm phòng nào? Chiều Chủ nhật tòa này khóa hết lớp rồi.
+- **tung** (ao-xanh): Dạ không ạ, cháu dẫn bạn đi xem trường thôi.
+- **bac-tu** (neutral): Xem thì cứ xem. Mép hộp sắc đấy, đừng thò tay vào.
+
+## md-07-cong-ktx-toi.1
+- [DÀN DỰNG] Tối. Hai người quẹt thẻ ở phòng trực cổng KTX. Nền tối bg-mvp-cong-ktx-dem (DX-02).
+- **narrator**: Về tới cổng ký túc xá thì trời đã tối. Đèn phòng trực vẫn sáng.
+- **chu-cuong** (neutral): Giờ này mới về à? {{nv.tung}} dẫn bạn đi đâu cả buổi thế?
+- **tung** (ao-xanh-happy): Bọn cháu đi xem trường ạ. {{nv.nguoi-choi}} này, chú tớ đấy. Chú trực ở đây lâu lắm rồi.
+- **chu-cuong** (smile): Chú là Cường. Cần gì thì cứ ra phòng trực gọi chú.
+- **tung** (ao-xanh): Chú ơi, qua nhà văn hóa cháu thấy poster CLB Thám Tử. Chú biết CLB đấy không?
+- **chu-cuong** (smile): CLB đấy ngày xưa ghê lắm. Vụ mất xe, vụ gian lận thi, chúng nó lần ra hết.
+- **chu-cuong** (neutral): Chẳng thần thánh gì, chịu khó đi hỏi rồi đối chiếu giấy tờ thôi. Nhưng giờ số hóa hết, ai nhờ sinh viên đi tra nữa.
+- **chu-cuong** (smile): Thứ Bảy có Ngày hội CLB, thích thì ra xem.
+- **tung** (ao-xanh-happy): Thứ Bảy đi với tớ nhé?
+
+## md-08-tuan-cong-dan.1
+- [THẺ CHỮ] **narrator**: Thứ Hai 09/09 → thứ Sáu 13/09/2024 · Tuần sinh hoạt công dân
+- **tung** (happy): Tuần này tớ ngồi hàng ghế đầu, chép đủ từng chữ. Tớ cá luôn.
+
+## md-08-tuan-cong-dan.1b
+- [DÀN DỰNG] Ảnh chibi-ngu-gat ngay trước đoạn này đã cho thấy Tùng gục trên bàn, bút còn trong tay: lời dẫn không tả lại. Hình Tùng đứng cười của câu cá trước đó đã rời dàn ([RA tung] trong khung).
+- **narrator**: Thứ Tư. Hàng ghế cuối. Cuốn sổ của Tùng mới chép được đúng dòng tiêu đề.
+- **narrator**: Thứ Sáu, cả hội trường xếp hàng chụp ảnh thẻ. Ai cũng bảo ảnh mình xấu, rồi lén xem ảnh người đứng sau.
+- **narrator**: Cả tuần ngồi hội trường nghe nội quy. Buổi cuối, mỗi người được phát một tấm thẻ lịch in theo khoa, dưới cùng có dòng "Họ tên / Lớp" để tự viết.
+- **player**: (Viết tên vào luôn, kẻo lẫn với thẻ của ai.)
+
+## md-09-ngay-hoi.1
+> NHIỆM VỤ: Ghé bàn CLB Thám Tử
+> NHẮC VIỆC tung (chi-tay): Bàn Thám Tử ở góc kia. Tớ cá là vắng nhất sân.
+
+## md-09-ngay-hoi.2
+- [DÀN DỰNG] Nền nhà văn hóa ngày hội, sân đông sinh viên: gian Robotics bên trái đông nhất (bàn gấp trơn, xe robot tự chế, biển bìa vẽ tay bánh răng nhỏ), dọc bậc thềm là mấy gian CLB khác bàn trơn, mỗi gian vài người; bàn Thám Tử khăn trắng bên phải, một ghế gấp, bảng trống, không ai đứng gần.
+- **narrator**: Sân nhà văn hóa đông nghịt. Gian Robotics có chiếc xe robot tự chế trên bàn, mấy bạn đứng chen nhau xem.
+- **narrator**: Một anh đứng sau bàn rao to: "Đang xin mở rộng xưởng thực hành, vào đội là có chỗ ngồi hàn mạch!"
+- **narrator**: Bàn CLB Thám Tử phủ khăn trắng kê tách ra một góc, chỉ có một chị trực.
+- **tung** (happy): Tớ chỉ đi xem thôi nhé. Không đăng ký CLB nào đâu, năm nhất phải lo học.
+
+## md-09-ngay-hoi.2b
+- [DÀN DỰNG] Ảnh chibi-ngay-hoi ngay trước đã cho thấy Tùng ôm bốn tờ đăng ký, quạt giấy, bánh rán: lời dẫn không tả lại; chân dung Tùng sau đó chỉ cầm bản đồ (06/10 vòng 2).
+- **narrator**: Mười phút sau, Tùng mới quay lại.
+- **tung** (neutral): Chị ơi, đây là bàn CLB Thám Tử ạ? Chị là thành viên ở đây ạ?
+- **minh-anh** (neutral): Ừ. Chị trực bàn hôm nay.
+- **tung** (neutral): CLB mình đang điều tra vụ nào không chị?
+- **minh-anh** (neutral): Không em ạ. Hồ sơ giờ tra trên hệ thống là ra hết. Mấy kiểu điều tra ngày xưa hết đất diễn rồi.
+- **tung** (happy): Thế giờ CLB chuyên điều tra… mật khẩu Wi-Fi ạ?
+- **minh-anh** (happy): Tấu hài giỏi đấy em. Muốn diễn hài thì sang bàn CLB Kịch Nghệ bên kia, còn muốn giải mã thật thì điền phiếu này.
+- **minh-anh** (neutral): Ghi rõ ngành với mã sinh viên vào nhé.
+- **tung** (worried): Thẻ bọn em đang đeo là thẻ tạm, chưa in mã chị ạ.
+- **minh-anh** (neutral): Đoàn trường có gửi danh sách tân sinh viên khóa này, mã nằm trong đấy. Tra xong là chị xóa khỏi máy.
+- **narrator**: {{nv.tung}} cúi xuống gõ phím vài giây rồi điền một mạch.
+- **minh-anh** (worried): Mã này của một bạn Tùng học Kế toán. Phiếu em lại ghi ngành Du lịch?
+- **tung** (worried): Dạ vâng, em Tùng Du lịch ạ… Tên trong này na ná nhau, em nhìn nhầm dòng.
+- **minh-anh** (neutral): Để chị dò lại từng dòng vậy.
+- **player**: Dò thế chắc lâu lắm chị. Chị cho em thử lọc một cái được không ạ?
+
+## md-09-ngay-hoi.3
+- **player**: Ra rồi chị ạ. Lọc ngành Du lịch còn mấy chục bạn, thêm tên {{nv.tung}} thì còn đúng một người. Mã SV240251.
+- **narrator**: {{nv.tung}} dán tờ giấy ghi mã lên phiếu, chép lại từng số.
+- **minh-anh** (neutral): …Nhanh thật. Tối thứ Ba Trung thu, CLB liên hoan ở sân ký túc xá. Hai em tới nhé.
+- **tung** (gai-dau): Lại cậu. Hôm nhập học tớ dò bảng xếp phòng cũng chậm hơn cậu.
+- **minh-anh** (neutral): Bảy giờ tối nhé. Tới muộn thì hết bánh đấy.
+
+## md-10-trung-thu.1
+> NHIỆM VỤ: Tới sân ký túc xá gặp CLB tối Trung thu
+> NHẮC VIỆC minh-anh (neutral): Bảy giờ tối thứ Ba, sân ký túc xá. Nhớ tới ăn bánh.
+
+## md-10-trung-thu.2
+- [THẺ CHỮ] **narrator**: Thứ Ba, 17/09/2024 · 19:00 · Sân ký túc xá
+- [DÀN DỰNG] Ảnh nền đã có dây đèn lồng, bàn bánh, đèn cá chép, gian Robotics: lời dẫn không tả lại (04/10). Sau câu Minh Anh, người chơi tự bấm vào Duy (cạnh bàn bánh) và Hà Vy (mép phải sân) để làm quen. Tới chào là nói chuyện luôn, chưa có màn soi: lần soi đầu tiên là lúc Hà Vy bảo nhìn đồ Tùng mang theo (user 05/10).
+- [DÀN DỰNG] Ảnh sân không vẽ một người nào: lời không nhắc tiếng nói cười, đám đông (06/10 vòng 2; ảnh sân có người ghi ở danh sách ảnh cần làm).
+- **narrator**: Hồi trống lân tập vừa dứt.
+- **minh-anh** (happy): Hai em tới đúng giờ. Chị là {{nv.minh-anh}}, chủ nhiệm CLB.
+- **minh-anh** (neutral): Mọi người tới cả rồi đấy. Đi chào một vòng đi, lát chị gọi.
+> NHIỆM VỤ: Đi chào mọi người trong CLB
+
+## md-10-trung-thu.2b
+- **tung** (happy): Thế cậu đoán được tớ học ngành gì không?
+- **ha-vy** (neutral): Để xem. Cậu thử nhìn đồ Tùng mang theo đi.
+
+## md-10-gap-duy.2
+- [DÀN DỰNG] Chân dung Duy đứng, tay ôm tập sổ: lời không tả anh đang cúi buộc (06/10 vòng 2).
+- **duy** (neutral): Rảnh tay thì giữ hộ anh góc bàn này với. Chân bàn buộc tạm, cứ chực sụp.
+- **player**: Vâng, để em giữ.
+- **duy** (smile): Được rồi đấy. Anh là {{nv.duy}}, năm hai Hành chính học, ở CLB từ năm nhất.
+- **tung** (happy): Anh đi liên hoan mà cũng mang cả tập hồ sơ ạ?
+- **duy** (neutral): Sổ mượn đồ. Bàn này của phòng CLB, mai phải trả đủ bốn chân.
+- **duy** (smile): Trà ở đầu bàn, mấy đứa tự rót nhé.
+
+## md-10-gap-ha-vy.2
+- **player**: Chào cậu. Cậu cũng vào CLB à?
+- **ha-vy** (neutral): Mới đăng ký. Tớ là {{nv.ha-vy}}, Toán ứng dụng.
+- **tung** (surprised): Hôm Ngày hội tớ không thấy cậu ở bàn CLB.
+- **ha-vy** (neutral): Tớ điền form trên mạng.
+- **tung** (happy): Toán! Thế là tớ có người cho mượn vở rồi.
+- **ha-vy** (neutral): Mượn thì được, chép thì không.
+
+## md-10-trung-thu.3
+- **ha-vy** (smile): Cầm bản đồ nhàu, thuộc đường, thích dẫn người khác đi. Du lịch chứ gì.
+- **tung** (surprised): Ơ đúng! Sao cậu biết?
+- **ha-vy** (neutral): Bản đồ thì có ích. Còn cái áo không in tên khoa thì tớ chịu.
+- **ha-vy** (smile): Còn cậu… {{nv.nguoi-choi.nganh}} đúng không?
+- **player**: Ơ, Tùng mách cậu à?
+- **ha-vy** (neutral): Tùng còn đang bận nhìn cái đĩa bánh.
+- **ha-vy** (neutral): Phiếu đăng ký cậu gấp trong túi áo, ô ngành học vẫn lộ ra một góc.
+- **tung** (happy): Đúng là dân Toán, mắt tinh như cú vọ. Tớ nhìn lướt qua chẳng thấy gì.
+
+## md-10-gap-hoai.1
+- **hoai** (nervous): Cậu áo xanh ơi...
+- **tung** (surprised): Cậu gọi tớ à?
+- **hoai** (neutral): Hôm nhập học cậu chỉ tớ ra nhà xe, nhưng tớ hỏi người khác tìm được đường lên phòng rồi. Cảm ơn cậu nhé.
+- **tung** (worried): Ơ... tớ chỉ nhầm à? Tớ xin lỗi, tớ không cố ý đâu!
+- **hoai** (nervous): Cho tớ hỏi... phòng máy in của trường ở đâu vậy? Tớ cần in bài tập.
+- **tung** (gai-dau): Máy in à? Ờ... cậu vòng ra sau dãy nhà này, rẽ phải, đi qua căng tin là tới phòng Đào tạo. Có máy in ở đó.
+- [DÀN DỰNG] Hà Vy khẽ nheo mắt nhìn Tùng.
+- **hoai** (relieved): Tớ là Hoài, lớp BC24A. Cảm ơn cậu nhiều.
+- **tung** (happy): Tớ là Tùng. Lần này tớ thề tớ không chỉ nhầm nữa đâu.
+
+## md-10-mat-banh.1
+> NHIỆM VỤ: Tìm chiếc bánh nướng của CLB
+> NHẮC VIỆC ha-vy (neutral): Ai cũng nhìn quanh bàn thôi. Thử để ý dưới đất xem.
+- **minh-anh** (worried): Ơ, đĩa bánh ban nãy chị nhớ có bốn cái cơ mà? Thiếu mất một cái rồi này.
+- **tung** (worried): Ơ tớ thề tớ mới rót trà chứ chưa kịp đụng vào bánh đâu nhé!
+- **ha-vy** (neutral): Đừng đoán vội. Cứ tìm xung quanh xem có rơi rớt đâu không.
+
+## md-10-mat-banh.2
+- **ha-vy** (thinking): Có vài thứ hơi lạ. Cậu thử xâu chuỗi lại xem.
+
+## md-10-doan-tung.1
+- **player**: Tùng lấy chăng? Cậu ấy đứng cạnh bàn.
+- **tung** (worried): Ơ kìa. Tớ chia trà còn chưa uống ngụm nào.
+- **narrator**: Tùng đặt cốc xuống, quay mặt đi. Cả nhóm nhìn nhau, chẳng ai ăn tiếp.
+- **ha-vy** (neutral): Căn cứ vào đâu? Đứng gần bàn chưa đủ đâu.
+
+## md-10-doan-robotics.1
+- **player**: Hay có bạn nào bên gian Robotics sang lấy? Gian đấy ngay sát bàn mình.
+- **ha-vy** (neutral): Bên họ đang đông khách, ai cũng bận tay bận chân. Đừng đoán mò khi chưa có chứng cứ.
+
+## md-10-doan-dung.1a
+- **player**: Đôi dép bé tí cạnh đèn cá chép, với vệt vụn bánh kéo từ bàn ra. Chắc là một đứa trẻ lấy.
+- **narrator**: Đúng lúc ấy, một bé gái chân đất chạy từ sau sân khấu ra chỗ chiếc đèn cá chép. Má dính vụn bánh, tay cầm nửa chiếc bánh nướng.
+
+## md-10-doan-dung.1b
+- [DÀN DỰNG] Ảnh cg-be-na-den-ca-chep chèn giữa hai khối (06/10, người xem ngoài: muốn thấy bé Na).
+- **chu-cuong** (smile): Na! Bố dặn muốn ăn thì xin các anh chị cơ mà.
+- **minh-anh** (happy): Bé cứ cầm ăn đi nhé. Nãy giờ bọn chị cứ thắc mắc mãi.
+- **tung** (happy): Phù, may quá giải oan cho tớ rồi nhé! Tí chia bánh tớ phải được miếng to nhất.
+- **ha-vy** (smile): Quan sát tốt đấy. Lần theo vệt vụn bánh với đôi dép là ra ngay.
+- **minh-anh** (neutral): Thứ Hai tới, bốn giờ qua phòng CLB dọn tủ nhé. Buổi sinh hoạt thứ hai của mình.
+
+## md-11-phong-clb.1
+> NHIỆM VỤ: Dọn tủ hồ sơ cùng CLB
+> NHẮC VIỆC minh-anh (neutral): Ngăn dưới cùng của tủ hồ sơ từ năm ngoái chưa ai mở.
+- [THẺ CHỮ] **narrator**: Thứ Hai, 23/09/2024 · 16:00 · Phòng CLB
+- **minh-anh** (neutral): Hôm nay dọn tủ hồ sơ. Ngăn dưới cùng từ năm ngoái chưa ai đụng tới.
+
+## md-11-duy.1
+- **duy** (neutral): Anh đang chép lại sổ mượn đồ hôm Trung thu. Bàn gấp trả đủ bốn chân, ghế nhựa thì thiếu một cái.
+- **duy** (smile): Ai cầm về phòng thì mai mang trả nhé. Anh không ghi tên đâu… lần này thôi.
+
+## md-11-vy.1
+- **ha-vy** (thinking): Tớ chép lại vụ chiếc bánh hôm Trung thu. Ai đứng đâu, lúc mấy giờ.
+- **player**: Ghi cả giờ á?
+- **ha-vy** (neutral): Không ghi thì một tuần nữa mỗi người nhớ một kiểu.
+
+## md-11-minh-anh.1
+- **minh-anh** (neutral): Chị đang soạn lịch sinh hoạt. Từ tháng sau, thứ Tư nào cũng họp, bốn giờ chiều.
+- **minh-anh** (happy): Đông thế này thì năm nay phòng không còn vắng nữa.
+
+## md-11-tung.1
+- **tung** (happy): Dọn tủ cứ để anh Duy với cậu. Tớ mà gặp bụi là hắt xì cả buổi.
+
+## md-11-tu.1
+- **player**: (Ơ, ngăn dưới cùng không kéo ra được. Khóa à?)
+- **duy** (neutral): Khóa đấy, để anh mở cho.
+- **narrator**: Duy tháo chùm chìa ở thắt lưng, dò mấy mẩu băng dính, tới chìa thứ ba mới mở được. Một đám bụi bay lên làm Tùng ho sặc.
+- **duy** (neutral): Ngăn này anh chưa kiểm kê. Cứ lôi hết ra bàn.
+- **ha-vy** (day-kinh): Lôi cả mấy tờ lót dưới đáy ngăn ra nữa nhé.
+
+## md-11-phong-clb.2
+- **minh-anh** (neutral): Sổ của CLB đấy, khóa nào cũng chép thêm vài trang. Mấy trang đầu mực xanh là từ hồi mới lập. Năm nay em giữ nhé.
+
+## md-11-phong-clb.3
+- **duy** (neutral): Báo cáo năm ngoái đây. Kết luận đúng hai chữ: "hoạt động yếu".
+
+## md-11-la-thu.1a
+- [DÀN DỰNG] {{nv.minh-anh}} ra ngoài rồi quay lại với hai tờ giấy: thông báo lịch họp rà soát và bản chụp thư đã che thông tin. Nhà trường đã tiếp nhận thư sáng 16/09 và xử lý trước khi chuyển bản sao cho CLB.
+- **narrator**: Bốn rưỡi, cô Lan bên Phòng Công tác sinh viên gọi chị Minh Anh lên. Mười phút sau chị quay về, tay cầm một cái phong bì.
+- [DÀN DỰNG] Chị Minh Anh ngồi xuống ghế, hai tay đan trước mặt; ảnh cg-minh-anh-dan-tay vẽ một phong bì trên bàn (hai tờ giấy nằm trong đó), lời dẫn theo ảnh (06/10 vòng 2).
+
+## md-11-la-thu.1b
+- **minh-anh** (worried): Thứ Hai tuần sau, 30/09, phòng mình bị đưa ra họp rà soát.
+- **minh-anh** (neutral): Trường nhận được thư ở hộp kiến nghị sáng 16/09. Giờ họ mới chuyển bản sao cho CLB, kèm giấy mời họp. Tên người gửi bị che.
+- **duy** (serious): Nếu mất phòng, CLB sẽ vào diện chờ giải thể. Hết học kỳ mà chưa có phòng thì giải tán, nộp sổ sách về Hội sinh viên.
+- **narrator**: Duy xoay laptop sang. Mục đặt phòng tháng tới trên hệ thống bị phủ xám, báo dòng "Chờ kết quả rà soát".
+- **minh-anh** (worried): Chưa họp mà đã chặn đặt phòng rồi?
+- **narrator**: Tờ lịch sinh hoạt chị Minh Anh vừa viết còn nằm cạnh bàn phím.
+- **duy** (neutral): Em vừa nhận mail, chị ạ. Cả sao kê quỹ cũng phải gửi cho Hội sinh viên kiểm tra.
+
+## md-11-la-thu.2
+- **player**: Chữ ký lượn thế này, đọc được mỗi chữ H… mà lại còn "đề nghị phản hồi chính thức".
+- **ha-vy** (day-kinh): Cậu nhìn cuối trang xem. Còn sót một dòng chữ bé tí, bị xén mất nửa. Trông như tên tệp.
+
+## md-11-la-thu.3a
+- **duy** (neutral): Đủ năm người thì CLB chưa bị giải thể ngay. Nhưng phòng vẫn bị xét: báo cáo đã yếu, giờ thêm lá thư này.
+- **minh-anh** (neutral): Cô Lan bảo {{nv.thay-quang}}, phó hiệu trưởng, đã đồng ý cho CLB tới buổi họp tuần sau để tự tìm căn cứ bảo vệ.
+- **tung** (neutral): Thế giờ mình bắt đầu từ đâu ạ?
+- **ha-vy** (day-kinh): Khoan, tính lại đã. Trong tay mình mới có một chữ H, nửa dòng tên tệp với cái hộp kiến nghị.
+- [DÀN DỰNG] Chị Minh Anh nhìn Tùng, chỉ hai ngón tay vào thái dương như nhắc cậu nghĩ kỹ.
+
+## md-11-la-thu.3b
+- **minh-anh** (serious): Thì bắt đầu từ cái hộp. Nói có sách, mách có chứng. Mai ra sảnh tòa B.
+> NHẮC VIỆC minh-anh (serious): Một tuần tìm căn cứ. Mai bắt đầu từ cái hộp ở tòa B.
+
+## md-10-soi-ban-do.1
+- **player**: Bản đồ trường. Gấp đi gấp lại đến hằn nếp rồi.
+- **ha-vy** (thinking): Mới học một tuần mà bản đồ đã nhàu thế kia. Cậu ấy dùng nó hằng ngày để dẫn đường.
+
+## md-10-soi-ao.1
+- **player**: Áo thể thao màu lam, không in tên khoa nào.
+- **ha-vy** (neutral): Áo này thì chịu, chẳng đoán được gì.
+
+## md-10-soi-mui.1
+- **player**: Miếng băng cá nhân trên sống mũi.
+- **tung** (happy): Hôm khuân đồ cho tân sinh viên tớ đập mặt vào cổng sắt ký túc. Đội tình nguyện đón tân sinh viên mà!
+
+## md-10-dia-banh.1
+- **player**: (Đĩa trên bàn gấp chỉ còn ba chiếc bánh. Chỗ trống trên đĩa còn dính vụn.)
+
+## md-10-vun-banh.1
+- **player**: (Vụn bánh rơi thành vệt mảnh từ chân bàn chạy ra chỗ đèn cá chép.)
+
+## md-10-den-ca-chep.1
+- **player**: (Đèn cá chép đỏ nằm lệch giữa sân. Ai kéo ra đây rồi bỏ đấy nhỉ?)
+
+## md-10-doi-dep.1
+- **player**: (Đôi dép nhựa trẻ con màu vàng để cạnh chiếc đèn. Quanh đây có trẻ nhỏ chạy chơi à?)
+
+## md-10-dau-lan.1
+- **tung** (happy): Đầu lân quẳng chỏng chơ giữa sân khấu, chắc đội múa lân lại kéo nhau đi mua nước rồi.
+
+## md-10-gian-robotics.1
+- **duy** (smile): Gian Robotics đông khách phết. Mấy cái đèn ông sao họ tự hàn mạch LED nhấp nháy bán chạy ghê.
+
+## md-10-balo-banh-rang.1
+- **player**: (Balo đen đặt trên ghế nhựa. Quai có huy hiệu kim loại hình bánh răng, sứt một răng.)
+
+## md-10-ap-phich.1
+- **minh-anh** (happy): Áp phích Trung thu dán chèn cả lên bảng tin trường. Dán vội thế này khéo mai lại bong ra.
+
+## md-10-ha-vy-goi.1
+- **ha-vy** (neutral): Đám đông mải nhìn lên sân khấu. Cậu thử cúi xuống tìm dấu vết xem.

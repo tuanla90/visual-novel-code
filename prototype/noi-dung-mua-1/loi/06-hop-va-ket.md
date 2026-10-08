@@ -1,130 +1,103 @@
 # Lời · kich-ban/06-hop-va-ket.md
 
-<!-- Phiên truyện sở hữu tệp này. Mỗi đoạn "## mã" gắn vào dòng "- [LỜI mã]" của khung kich-ban/06-hop-va-ket.md. -->
+<!-- Gói B19 (08/10/2026): Cảnh 10, kết thật, kết tạm, Cảnh 11, Cảnh 12 của bản thoại 6. Câu nói đúng chữ bản 6, trừ con số của câu HOẶC: bản 6 ghi 41 là số tạm, dữ liệu cỡ trường thật (tools/noi-dung/nhieu-mua1.ts) ra 276 dòng nên thầy Quang nói "hai trăm bảy mươi sáu", người chơi nói "276 dòng". Lời dẫn "người chơi" viết thành {{nv.nguoi-choi}}. Dòng "(tạm)" là câu mới thêm, chờ user duyệt. Lời trong [ĐỐI CHẤT], [HỎI], [RẼ NHÁNH] nằm ngay trong khung kich-ban/06-hop-va-ket.md. -->
 
 ## hop-00.1
-> NHIỆM VỤ: Buổi họp rà soát
-> NHẮC VIỆC minh-anh (serious): Nói có sách, mách có chứng. Trình đúng những gì đã tra.
-- [DÀN DỰNG] Nền là phòng họp, ghế còn trống: cả nhóm tới sớm nửa tiếng, ngồi chờ ngay trong phòng (06/10, người xem ngoài: lời kể "hành lang" mà hình là phòng họp).
-- **narrator**: Thứ Hai 30/09, ba giờ rưỡi chiều. Phòng họp tầng ba còn vắng, Tùng ngáp tới cái thứ tư.
-- **ha-vy** (neutral): "Ngủ sớm" của cậu là mấy giờ?
-- **tung** (gai-dau): Hai giờ sáng. Tớ nằm tập nói "dạ thưa thầy" tới lúc quên cả cách thở.
+- [THẺ CHỮ] **narrator**: Thứ Hai, 30/09/2024 · 16:00 · Họp rà soát
+- [DÀN DỰNG] Nền phòng họp tầng ba: thầy Quang ở đầu bàn, trước mặt một tờ giấy và một cốc trà nóng; Minh Anh ngồi cạnh người chơi, sổ CLB mở. Lời không tả lại.
+- **minh-anh** (neutral): Em chào thầy ạ. CLB Thám Tử có mặt đủ ạ.
+- **thay-quang** (neutral): Bắt đầu.
+- **quan** (neutral): Kết luận của Ban Kiểm tra: người viết là Lê Thu Hoài, lớp BC24A. Chính bạn Tùng, thành viên CLB Thám Tử, cũng đã xác nhận điều này.
+- **narrator**: Tùng cúi gằm.
+- **quan** (chi-man): Ban Kiểm tra được giao đối chiếu thông tin của CLB với dữ liệu gốc. Tôi đã tự tra lại.
+- [DÀN DỰNG] Màn chiếu ngay sau đoạn này: tên = 'Hoài' HOẶC ngành = 'Báo chí', 276 dòng (bản 6 ghi số tạm 41).
 
 ## hop-00.2
-- [DÀN DỰNG] {{nv.thay-quang}} ngồi giữa; {{nv.co-lan}} và {{nv.quan}} một bên, CLB một bên. {{nv.hoai}} ngồi chờ ngoài hành lang theo quy chế, chưa được mời vào.
-- **narrator**: Bốn giờ chiều. Thầy Quang ngồi giữa, cô Lan và anh Quân một bên, CLB một bên. Ngoài hành lang, Hoài ngồi chờ.
-- [DÀN DỰNG] Khung có [RA tung] ngay trước đoạn này: Tùng ngồi xuống khi buổi họp bắt đầu, dáng gãi đầu không đứng suốt lúc thầy nói; cậu tự lên hình khi kêu "ba mươi hai người" (06/10 vòng 2).
-- **thay-quang** (neutral): Thầy là Quang, phó hiệu trưởng phụ trách sinh viên. Hôm nay thầy phải chốt phương án xếp lại phòng cho các CLB. Trước khi sang bên xưởng thực hành, thầy nghe phần của CLB Thám Tử. Mời các em trình bày căn cứ.
-- **minh-anh** (neutral): Dạ, bọn em xin trình bày cách bọn em lọc ra danh sách ạ.
-- **quan** (chi-man): Bên tôi lọc lại cho chắc: tên là Hoài hoặc học lớp BC24A, ra ba mươi hai dòng. Hồ sơ các bạn nộp chỉ có một người.
+- **thay-quang** (neutral): CLB ra một dòng. Hội ra hai trăm bảy mươi sáu. Vì sao?
+> NHIỆM VỤ: Sửa câu tra trên màn chiếu cho thầy thấy vì sao hai bên khác số (tạm)
 
 ## hop-00.3
-- **tung** (surprised): Ơ… ba mươi hai người! Thế này là cả lớp BC24A rồi còn gì!
-- **minh-anh** (serious): Đừng cuống. Hồ sơ của mình có căn cứ rõ ràng, bình tĩnh xem lại xem.
-- **ha-vy** (thinking): Danh sách này bị gộp hai nhóm lại rồi. Họ lấy cả hai thay vì chỉ lấy phần trùng nhau.
-- **player**: Để tớ lên giải thích cho thầy. Anh Quân đang chọn nhầm điều kiện.
-> NHẮC VIỆC ha-vy (day-kinh): Câu của anh Quân lấy rộng ra ở chỗ nào nhỉ?
-- [DÀN DỰNG] Nhân vật chính xin phép thầy Quang, bước lên cạnh máy chiếu để chỉ ra chỗ nhầm lẫn.
+- **player**: Câu của anh Quân dùng HOẶC nên ra 276 dòng. Đổi thành VÀ thì còn một dòng. Số liệu đây ạ.
 
 ## hop-00.4
-- [DÀN DỰNG] Khung có [VÀO quan] ngay trước đoạn này: người chơi nói thẳng với anh Quân nên anh đứng trên dàn (06/10 vòng 2).
-- **player**: Anh đang gộp chung người tên Hoài và cả lớp BC24A. Bọn em chỉ tìm người vừa tên Hoài, vừa học BC24A.
-- **quan** (neutral): …Một dòng. Vâng. Mời các bạn nói tiếp.
-> NHẮC VIỆC minh-anh (serious): Nói có sách, mách có chứng. Trình đúng những gì đã tra.
+- **narrator**: Quân nhìn màn chiếu một lúc, rồi gạch một dòng trong sổ của mình.
+- **quan** (neutral): Tôi ghi nhận, số đúng là một. Kết luận của Ban Kiểm tra không đổi.
+- **player**: Thưa thầy, em xin trình dòng thời gian ạ.
+- [DÀN DỰNG] Khi có dòng thời gian (B19-MÁY): ngay sau đoạn này người chơi đọc từng ô của dòng thời gian đã dựng: 6:44 Hoài ra cổng, ? có người đưa phong bì, 7:00 mở sảnh, trước 9:00 Hoài bỏ thư, 9:00 cô Lan thu hộp.
+> NHIỆM VỤ: Trả lời thầy Quang bằng căn cứ trong hồ sơ (tạm)
+
+## hop-01.1
+- **player**: Phiếu gửi do người nộp ký ạ. Cô Lan nói người viết thường tự đi nộp, nhưng vẫn có trường hợp nộp hộ. Chữ ký trên phiếu chỉ cho biết Hoài là người nộp.
 
 ## hop-02.1
-- [DÀN DỰNG] {{nv.hoai}} được mời vào, đứng nép cạnh cửa, rồi ngồi xuống ghế khi thầy bảo.
-- **narrator**: Hoài được gọi vào. Bạn ấy đứng nép cạnh cửa, hai tay nắm chặt quai túi.
-- **thay-quang** (neutral): Em Hoài. Em kể lại lúc nộp thư giúp thầy.
-- **hoai** (nervous): Dạ… em là Hoài, lớp BC24A ạ. Sáng thứ Hai em mang phong bì bỏ vào hộp ở tòa B ạ.
-- **thay-quang** (neutral): Chỉ có vậy thôi à em?
-- **hoai** (nervous): Dạ… vâng ạ.
-- **thay-quang** (neutral): Được, em ngồi xuống đi. Các em còn gì trình thêm không?
-- **quan** (chi-man): Thưa thầy, bên em có kết luận.
-> NHẮC VIỆC minh-anh (serious): Anh Quân bảo Hoài viết. Trong hồ sơ, thẻ nào bác được câu ấy?
+- **player**: Sáu giờ bốn mươi tư Hoài ra cổng. Chú Cường thấy một cậu đeo balo đen gọi Hoài lại, đưa phong bì nâu, rồi Hoài đi về phía tòa B. Phong bì đến tay Hoài ở cổng, không phải Hoài mang từ phòng đi.
 
-## hop-doi-chat.1
-- [DÀN DỰNG] {{nv.hoai}} được gọi vào, đứng nép cạnh cửa, nhìn lên màn chiếu có tên mình.
-- **narrator**: Hoài bước vào. Màn chiếu vẫn đang hiện một dòng có tên bạn ấy.
-- **ha-vy** (neutral): Khoan… chiếu tên bạn ấy lên rồi gọi vào, khác gì hỏi cung.
-- **thay-quang** (stern): Không ai đối chất với sinh viên năm nhất ở đây. Thầy hỏi, các em nghe.
-- **thay-quang** (neutral): Em Hoài, lá thư có chữ ký này là em bỏ vào hộp đúng không?
-- **hoai** (nervous): Dạ… vâng ạ. Em mang nộp ạ.
-- [DÀN DỰNG] {{nv.hoai}} cúi gằm, không nói thêm.
-- **narrator**: Hoài cúi gằm, không dám nói thêm câu nào.
-- **quan** (smug): Vậy là chính bạn ấy nộp.
-- **ha-vy** (neutral): Mới biết là mang nộp thôi. Chưa có chứng cứ bạn ấy viết.
-- **thay-quang** (neutral): Em Hoài đang rất căng. Hôm nay thầy không hỏi thêm em ở đây.
-
-## ket-that.1a
-- [DÀN DỰNG] {{nv.thay-quang}} quay sang {{nv.hoai}}.
-- **thay-quang** (neutral): Em Hoài, nhật ký in nói lá thư in từ tài khoản của một CLB, không phải tài khoản của em. Phong bì em bỏ vào hộp là từ đâu ra?
-- **hoai** (nervous): Dạ… có một anh em không quen nhờ em nộp hộ bản kiến nghị. Anh ấy bảo đang gấp, cứ ký như bình thường vào phiếu gửi, rồi ghi mã sinh viên của em để thầy cô tiện phản hồi. Em không mở phong bì ra xem ạ. Mặt anh ấy em không nhớ rõ ạ.
-- **ha-vy** (neutral): Vậy là cậu ghi mã của mình vì được dặn. Còn người soạn thư thì không đứng tên ở đâu trên phiếu.
-- **thay-quang** (neutral): Nhật ký in không đặt em vào việc soạn thư, và lời em cho thầy một hướng để hỏi tiếp. Hiện chưa có căn cứ nào nói em là người viết. Em làm theo lời nhờ nên không bị xử lý gì cả.
-- **thay-quang** (neutral): Mã trên phiếu là để thầy cô tra cứu và phản hồi người gửi. Ở đây người viết giấu tên, mượn chữ ký và mã của một bạn năm nhất. Thư như vậy thầy không nhận vào hồ sơ rà soát.
-- [DÀN DỰNG] User 06/10: thầy báo trước phần giữ phòng, các chi tiết khác kiểm tra rồi gửi văn bản sau; gợi ý kín thầy cũng không muốn CLB đóng cửa (tuyến bí mật, Vụ 8 và Vụ 10: CLB thời thầy lập). Không giải thích.
-- **thay-quang** (smile): Phần phòng thì thầy nói luôn để các em yên tâm. CLB giữ phòng, sinh hoạt đến hết học kỳ, không kèm điều kiện.
-- **thay-quang** (neutral): Những chi tiết còn lại, nhật ký in, chuyện người nhờ nộp, thầy sẽ cho kiểm tra lại. Kết luận chính thức gửi các em bằng văn bản sau. Chưa có căn cứ thì chưa nêu tên ai ở đây.
-- **thay-quang** (neutral): Căn phòng ấy qua tay nhiều khóa rồi. Gỡ cái biển xuống thì dễ, treo lại được thì khó lắm.
-- **narrator**: Câu cuối thầy nói khẽ hơn hẳn, mắt không nhìn ai trong phòng.
-- **hoai** (relieved): Em xin lỗi vì làm mọi người mất công ạ.
-- **minh-anh** (happy): Không sao đâu em. Cảm ơn thầy ạ.
-
-## ket-that.1b
-- **quan** (stunned): …Hóa ra người nộp còn không biết trong thư viết gì. Em xin lỗi thầy, xin lỗi các bạn. Bên em lọc rộng rồi vội nghi cả lớp ạ.
-- [DÀN DỰNG] {{nv.tung}} thì thầm với {{nv.ha-vy}}.
-- **tung** (happy): Giữ được phòng rồi! Tối nay tớ khao trà đá.
-- **ha-vy** (smile): Tớ nhớ đấy nhé.
-> NHẮC VIỆC tung (happy): Về dọn bảng đã, rồi tớ khao trà đá.
+## ket-that.1
+- **thay-quang** (neutral): Thư này không đưa vào hồ sơ. Phòng CLB giữ tới hết học kỳ.
+- **narrator**: Thầy quay sang cô Lan.
+- **thay-quang** (neutral): Cô mời bạn ngoài hành lang vào.
+- **narrator**: Hoài bước vào, hai tay nắm chặt quai túi. Tùng ngẩng lên, khựng lại: bạn nữ kéo vali hôm nhập học.
 
 ## ket-that.2
-- **narrator**: Chiều muộn, cả nhóm về phòng CLB dọn bảng. Từ cuốn sổ CLB rơi ra một mẩu giấy gấp tư.
-- **duy** (neutral): Mực xanh, ngả màu cả rồi. Sổ này năm nào cũng kiểm, chưa thấy tờ này bao giờ.
-- **player**: Có một dòng thôi: "Căn phòng này giữ nhiều hơn em nghĩ."
-- **tung** (surprised): Giữ gì cơ? Ngoài cái tủ sắt ra thì phòng này có gì đâu. Tớ cá là ai đó viết đùa thôi.
-- **ha-vy** (thinking): Đừng cá. Chưa có gì để tính cả.
-- **tung** (happy): Thế thì đi uống trà đá thôi. Tớ hứa rồi mà.
+- **thay-quang** (neutral): Em kể đi.
+- **hoai** (nervous): Em không quen anh ấy ạ. Anh ấy hỏi em có học tòa B không… em bảo có. Thế là… em cầm luôn. Em không nghĩ là thư như thế.
+- **hoai** (downcast): Ở hộp có tờ phiếu gửi… ghi người nộp phải ký… nên em ký tên em. Em xin lỗi ạ…
 
-## ket-tra-da.1a
-- **narrator**: Quán trà đá dưới gốc cây ngoài cổng chính.
-- **tung** (happy): Bà ơi, cho cháu ba cốc trà đá! CLB cháu vừa giữ được phòng, hôm nay cháu khao.
+## ket-bong-mo.1
+- [THẺ CHỮ] **narrator**: Thứ Hai, 16/09 · Gần 7:00 · Cổng ký túc xá
+- [DÀN DỰNG] Cảnh bóng mờ tự chạy theo lời Hoài: cổng ký túc xá gần bảy giờ, một bóng balo đen, một bóng nhỏ hơn cầm phong bì đi về phía tòa B. Không lời; người chơi xem, rồi bấm trở lại phòng họp.
 
-## ket-tra-da.1b
-- **ba-lua** (smile): Ba cốc chín nghìn. Khao thế thì bà cũng khao được.
-- **ha-vy** (smile): Cậu cá thua tớ bao nhiêu lần rồi, trả bằng trà đá thì còn lâu mới hết.
+## ket-that-quan.1
+- **quan** (stunned): Ban Kiểm tra rút kết luận. Tôi ghi lại: người nộp là Lê Thu Hoài, người viết chưa xác định.
 
-## ket-tra-da.1c
-- **tung** (gai-dau): Lần này tớ chừa. Hôm ở chỗ cô Hạnh tớ lỡ mồm nghi cho Hoài. Bạn ấy chỉ hỏi đường thôi mà tớ... Suýt nữa làm bạn ấy mang tiếng.
-- **player**: Cậu cứ khăng khăng "chắc chắn Hoài in". Nhật ký in thì nói khác.
-- **tung** (worried): Ừ. Giờ gặp bạn ấy chẳng biết mở lời thế nào.
-- **ba-lua** (neutral): Mấy đứa ở phòng tầng hai nhà câu lạc bộ đấy hả? Phòng có cái tủ sắt.
+## ket-tam.1
+- **narrator**: Thầy Quang nhìn tờ giấy trước mặt một lúc lâu.
+- **thay-quang** (stern): Một buổi mà CLB trình sai ba lần. Thầy chưa thể coi hồ sơ này là chắc.
+- **thay-quang** (neutral): Phòng CLB giữ tới hết học kỳ, có điều kiện. Mỗi tháng CLB nộp thầy một bản báo cáo.
+- **narrator**: Thầy kẹp lá thư cùng phong bì nâu vào tập hồ sơ, rồi gập lại.
+- **quan** (smug): Ban Kiểm tra giữ nguyên kết luận.
+- **narrator**: Ngoài hành lang, Hoài vẫn ngồi chờ. Cô Lan bước ra, cúi xuống nói gì đó. Hoài gật đầu, ôm túi đi về. Tùng nhìn theo qua khe cửa, khựng lại: bạn nữ kéo vali hôm nhập học.
+
+## c11-that.1
+- [DÀN DỰNG] Nền hành lang tầng ba, nắng chiều.
+- **tung** (worried): Hoài là bạn hôm nhập học tớ kéo vali hộ đấy. Thế mà tớ…
+
+## c11-tam.1
+- [DÀN DỰNG] Nền hành lang tầng ba, nắng chiều.
+- **tung** (worried): Hoài là bạn hôm nhập học tớ kéo vali hộ đấy. Thế mà tớ…
+
+## c11-tiep.1
+- **tung** (gai-dau): Mà xin lỗi suông thì kỳ lắm. Tớ phải nghĩ xem làm được gì cho Hoài đã.
+
+## c11-phong-clb.1
+- **narrator**: Phòng CLB, chiều muộn. Minh Anh đóng dấu lên trang tổng kết Vụ 1 trong sổ CLB.
+- [DÀN DỰNG] Khi có sổ tổng kết (B19-MÁY): ngay sau đoạn này trang tổng kết Vụ 1 hiện ra, con dấu đỏ A, B hoặc C đóng xuống; ở lề trang là những vạch nhỏ gạch trong buổi họp, hoặc không có vạch nào. Lời không đọc số vạch.
+
+## c11-phong-clb.2
+- **narrator**: Rồi chị quay sang bảng điều tra. (tạm)
+- [DÀN DỰNG] Ảnh cg-bang-the-trang ngay sau đoạn này: mọi tấm thẻ đã nối chỉ đỏ với nhau; riêng cạnh tấm thẻ "phong bì nâu", Minh Anh ghim thêm một tấm thẻ trắng chưa viết gì, sợi chỉ đỏ thả lơ lửng. Không lời giải thích.
+
+## canh-12.1
+- [THẺ CHỮ] **narrator**: Quán trà đá cổng trường
+- [DÀN DỰNG] Nền quán trà đá dưới gốc bàng ngoài cổng chính.
+- **tung** (happy): Bà ơi, cho cháu ba cốc trà đá! Hôm nay cháu khao.
+- **ba-lua** (smile): Ba cốc chín nghìn. Có chuyện gì vui mà khao thế?
+- **tung** (happy): CLB cháu vừa giữ được phòng ạ!
+- **ba-lua** (neutral): Mấy đứa ở cái phòng có tủ sắt bên nhà câu lạc bộ đấy hả?
 - **player**: Vâng ạ. Sao bà biết ạ?
-- **ba-lua** (smile): Hồi bà mới ra đây, phòng ấy là kho chổi. Có cậu sinh viên xin được chìa, tự khuân tủ sắt lên. Chiều nào cũng ra đây ghi chép.
+- **ba-lua** (smile): Hồi bà mới ra đây bán, phòng ấy là kho chổi. Có cậu sinh viên xin được chìa, tự khuân cái tủ sắt lên. Chiều nào cũng ra đây ngồi ghi chép.
 - **ba-lua** (smile): Hè cũng như đông, cậu ấy chỉ gọi trà nóng. Ra quán trà đá mà gọi trà nóng thì bà nhớ lâu.
 - **ha-vy** (thinking): Bà có nhớ tên anh ấy không ạ?
-- **ba-lua** (smile): Khách của bà, bà nhớ cốc chứ nhớ gì tên. Bà gọi là "cậu trà nóng".
+- **ba-lua** (smile): Khách của bà, bà nhớ cốc chứ ai nhớ tên. Bà gọi là "cậu trà nóng".
 
-## ket-tra-da.2
-- **tung** (surprised): Cái tủ ấy! "Căn phòng này giữ nhiều hơn em nghĩ."
-- **ha-vy** (thinking): Một người kể, chưa có giấy tờ gì. Cứ ghi lại đã, ghi rõ là lời kể.
-- **player**: Tớ ghi vào sổ. Nguồn: bà bán trà đá ngoài cổng.
-- [DÀN DỰNG] Thấy bóng {{nv.hoai}} ôm cặp đi qua bên kia đường, {{nv.tung}} hấp tấp nhổm dậy va vào bàn suýt đổ cốc nước.
-- **tung** (worried): Ơ Hoài ơi! Đợi tớ… chuyện hôm trước tớ…
-- **hoai** (nervous): Ơ… tớ chào các cậu nhé. Tớ phải về kẻo muộn.
+## canh-12.2
+- **narrator**: Hà Vy ghi vào sổ: "cậu trà nóng". Bên cạnh, một dòng nhỏ hơn: lời bà bán trà đá, chưa có giấy tờ.
+- **narrator**: Bên kia đường, một bạn nữ ôm chồng sách đi ngang. Là Hoài.
 
-## ket-tra-da.3
-- [DÀN DỰNG] Hoài đã rời hình ([RA hoai] trong khung, ngay trước đoạn này): lúc Hà Vy trêu Tùng, bạn ấy không còn đứng đó.
+## canh-12.3
+- **tung** (worried): Hoài ơi! Đợi tớ với… chuyện hôm trước tớ…
 - **narrator**: Hoài giật mình quay lại, gật đầu một cái rồi đi nhanh hơn.
-- **ha-vy** (smile): Cậu định xin lỗi người ta hay tính bắc loa dọa bạn ấy đấy?
-- **tung** (gai-dau): Oan cho tớ, tớ còn chưa kịp nói xong chữ "xin" mà…
-- **ba-lua** (smile): Con trai con lứa xin lỗi con gái mà gọi với qua đường như đòi nợ! Mai mời con bé cốc trà mà tạ lỗi.
-- [THẺ CHỮ] **narrator**: SQL giúp thu hẹp điều cần kiểm tra. Bằng chứng và cách diễn giải mới quyết định ta có thể kết luận đến đâu.
 
-## ket-thuong.1
-- **minh-anh** (khoanh-tay): Dạ… bọn em chỉ xác minh được đến đó ạ.
-- **thay-quang** (neutral): Được. Với những gì trình bày ở buổi họp này, thầy chưa đủ căn cứ để biết ai viết thư. Còn em Hoài, em ấy không bị xử lý gì cả.
-- **thay-quang** (neutral): Thư vẫn được tính là một ý kiến sinh viên trong hồ sơ. Chưa thu phòng ngay. CLB được sinh hoạt đến hết học kỳ, nộp báo cáo hoạt động hằng tháng.
-- **thay-quang** (neutral): Phần phòng thầy nói luôn để các em yên tâm. Các chi tiết khác thầy cho kiểm tra lại rồi gửi văn bản sau.
-- **minh-anh** (worried): Dạ, tháng nào bọn em cũng sẽ nộp đủ ạ.
-- [THẺ CHỮ] **narrator**: Một dòng chỉ cho ta chỗ cần đến. Phần còn lại cần thêm bằng chứng, và biết hỏi đúng lúc, đúng cách.
+## canh-12.4
+- **ba-lua** (smile): Con trai xin lỗi con gái mà gọi với qua đường như đòi nợ! Mai mời con bé cốc trà mà tạ lỗi cho tử tế.
+- **narrator**: Tùng nhìn theo hướng Hoài đi, tay vẫn cầm cốc trà chưa uống.
