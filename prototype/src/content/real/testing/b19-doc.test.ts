@@ -13,6 +13,7 @@ import { chuyenMvp } from '../../../../tools/noi-dung/chuyen-mvp.ts';
 import { tepLechTrenDia } from '../../../../tools/noi-dung/sinh.ts';
 import { sinhVanBanThuB19, THU_MUC_NOI_DUNG_THU_B19, THU_MUC_SINH_THU_B19 } from '../../../../tools/noi-dung/sinh-thu-b19.ts';
 import { gomTepMvp } from '../../../../tools/noi-dung/thu-muc-mvp.ts';
+import { BoXuatTruyenChu } from '../../../../tools/truyen-chu.ts';
 
 const GOC = gomTepMvp(THU_MUC_NOI_DUNG_THU_B19, 'noi-dung-thu-b19').tep;
 const KB_TEP = 'noi-dung-thu-b19/kich-ban/01-vu-thu.md';
@@ -163,5 +164,35 @@ describe('B19 · máy kiểm', () => {
     const the = 'noi-dung-thu-b19/thu-thach/c-sua-or.md';
     expect(doc({ [the]: [['- Khi trình sai: **quan** (smug):', '- Khi trình sai: quan:']] }).loi.join('\n')).toMatch(/dòng "Khi trình sai"/);
     expect(doc({ [the]: [['- Khi trình sai: **quan** (smug): Vẫn chưa ra một dòng. Vậy câu của tôi sai ở đâu?\n', '']] }).canhBao.join('\n')).toMatch(/chưa có dòng "- Khi trình sai: …"/);
+  });
+});
+
+describe('B19 · truyện chữ in lệnh mới', () => {
+  it('dòng thời gian in bản đã dựng; trắc nghiệm in câu đúng và lời khi sai; chấm in ba nhánh A/B/C; rẽ kết theo rank', async () => {
+    const { mvp } = doc();
+    const bo = new BoXuatTruyenChu(chuyenMvp(mvp, kiemLuatMvp(mvp)), new Map(mvp.canh.map((c) => [c.id, { ten: c.ten, moTa: c.moTa ?? null }])));
+    await bo.khoiTaoDb();
+    const vb = bo.xuatVuHoacViec('vu1');
+    bo.dongDb();
+    expect(vb).toContain('| 6:44 | cổng ký túc xá | Hoài ra cổng | Hoài ra cổng lúc 6:44 |');
+    expect(vb).toContain('| ? | cổng ký túc xá | **?** đưa phong bì nâu cho Hoài | Có người đưa phong bì cho Hoài ở cổng |');
+    expect(vb).toContain('| 7:00 | sảnh tòa B | bác Thịnh mở sảnh | (có sẵn) |');
+    expect(vb).toContain('| 19:00 |  | đĩa đủ bốn chiếc | Minh Anh: "Lúc bảy giờ chị đếm còn bốn." |');
+    expect(vb).toContain('Bạn đọc lại dòng thời gian');
+    expect(vb).toMatch(/Câu tính vạch 1\/4\*\*: Chạy thử bao nhiêu lần cũng được/);
+    expect(vb).toContain('❌ Nếu trình sai → **Quân**');
+    expect(vb).toContain('↳ Nếu đây là lần sai đầu tiên của cả buổi → **Hà Vy**');
+    expect(vb).toContain('"Chưa đủ căn cứ" ✅');
+    expect(vb).toContain('"Lê Thu Hoài" ❌ → **Thầy Quang**');
+    expect(vb).toContain('✅ Trình "Phiếu gửi do người nộp ký"');
+    expect(vb).toContain('❌ Trình "Thẻ lịch rách" →');
+    expect(vb).toContain('**A**: đủ căn cứ, 0 vạch → kết thật');
+    expect(vb).toContain('**B**: đủ căn cứ, 1–2 vạch → kết thật.');
+    expect(vb).toContain('**C**: thiếu căn cứ hoặc từ 3 vạch → kết tạm.');
+    expect(vb).toMatch(/Rẽ kết: kết thật.*rank A hoặc B/);
+    expect(vb).toMatch(/Rẽ kết: kết tạm.*rank C/);
+    expect(vb).toContain('ghép trên bảng điều tra');
+    expect(vb).toContain('trang tổng kết Vụ 1');
+    expect(vb).toContain('Điểm lưu đầu Vụ 1');
   });
 });
