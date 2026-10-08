@@ -1,0 +1,117 @@
+{
+  "ma": "n3-bd-toa-b-vao",
+  "ten": "Ghé lại sảnh tòa B hỏi bác bảo vệ (ngày 3, tùy chọn)",
+  "ngay": "Thứ Năm, 26/09/2024",
+  "canh": "sanh-toa-b",
+  "nhanChung": "bac-tu",
+  "nguoiDiCung": ["ha-vy", "tung"],
+  "ghiChu": "Cảnh tùy chọn: danh sách cần làm rõ để trống. Chỉ gồm điều bác nói ở n3-bd-toa-b.1.",
+  "moDau": "Sảnh tòa B, trên đường sang tòa hành chính.",
+  "tuDongDuKien": ["hop-van-niem-phong", "cung-tang", "gio-hanh-chinh"],
+  "danhSach": [],
+  "duKien": [
+    {
+      "ma": "hop-van-niem-phong",
+      "noiDung": "Hộp vẫn niêm phong nguyên.",
+      "nguon": "loi/03-ngay-3.md n3-bd-toa-b.1",
+      "chuBatBuoc": ["niêm phong"],
+      "giayNho": "Hộp kiến nghị vẫn niêm phong nguyên.",
+      "an": true, "tuKe": true, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Hộp vẫn niêm phong nguyên đấy.",
+        "co-khong": "Vẫn niêm phong nguyên đấy, cháu ạ.",
+        "lai": "Niêm phong nguyên, bác bảo rồi.",
+        "tu-ke": "Hộp vẫn niêm phong nguyên đấy. Nay đi đâu đông thế?"
+      },
+      "cauHoiMau": [
+        "Cái hộp vẫn còn niêm phong hả bác?",
+        "hộp thế nào rồi bác",
+        "có ai mở hộp chưa ạ",
+        "hop con niem phong ko",
+        "cái hộp hôm nay sao rồi",
+        "hộp kiến nghị vẫn thế à bác"
+      ]
+    },
+    {
+      "ma": "cung-tang",
+      "noiDung": "Cô Lan với cô Hạnh làm ở cùng tòa, cùng tầng.",
+      "nguon": "loi/03-ngay-3.md n3-bd-toa-b.1",
+      "chuBatBuoc": ["cùng tầng"],
+      "giayNho": "Phòng Công tác sinh viên và Phòng Đào tạo ở cùng tầng.",
+      "an": true, "tuKe": false, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Ừ, cô Lan với cô Hạnh cùng tầng đấy.",
+        "co-khong": "Cô Lan với cô Hạnh cùng tầng đấy, cháu ạ.",
+        "lai": "Cùng tầng, bác nói rồi."
+      },
+      "cauHoiMau": [
+        "Cô Lan với cô Hạnh ở cùng tòa hả bác?",
+        "phòng cô Lan ở đâu ạ",
+        "cô Hạnh ngồi chỗ nào bác",
+        "co lan co hanh o cung toa ko",
+        "Phòng Đào tạo có gần Phòng Công tác sinh viên không ạ",
+        "hai phòng ấy có gần nhau không bác"
+      ]
+    },
+    {
+      "ma": "gio-hanh-chinh",
+      "noiDung": "Giờ hành chính là phòng ban có người.",
+      "nguon": "loi/03-ngay-3.md n3-bd-toa-b.1",
+      "chuBatBuoc": ["giờ hành chính"],
+      "giayNho": "Phòng ban chỉ có người trong giờ hành chính.",
+      "an": true, "tuKe": false, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Giờ hành chính là có người.",
+        "co-khong": "Giờ hành chính thì có người, cháu ạ.",
+        "lai": "Cứ giờ hành chính mà sang."
+      },
+      "cauHoiMau": [
+        "Giờ này các cô có ở phòng không ạ?",
+        "lúc nào sang thì gặp được cô",
+        "phòng ban làm đến mấy giờ",
+        "co lan lam viec gio nao",
+        "bây giờ sang có ai không bác",
+        "buổi tối sang được không ạ"
+      ]
+    }
+  ],
+  "lopKhac": {
+    "chao": { "loi": ["Ừ. Nay đi đâu đông thế?", "Chào cháu."] },
+    "cam-on": { "loi": ["Ừ, không có gì.", "Ừ."] },
+    "hoi-mo": {
+      "hoiTiep": "Bác còn gì kể bọn cháu nữa không ạ?",
+      "hetKe": ["Bác biết có thế thôi. Cháu hỏi cụ thể thì bác nói.", "Hết rồi. Đi đi kẻo các cô hết giờ."]
+    },
+    "tam-biet": { "loi": ["Ừ, đi đi.", "Đi đi cháu."] },
+    "khong-ro": { "loi": ["Cái đấy bác không rõ.", "Bác không tận mắt thấy thì bác không nói.", "Chuyện ấy cháu hỏi các cô ấy."] },
+    "ngoai-le": { "loi": ["Bác đang trực, cháu ạ.", "Chuyện đó thì bác chịu.", "Thôi, cháu hỏi việc của cháu đi."] },
+    "hoi-rieng-tu": { "loi": ["Hỏi chuyện bác làm gì. Ngồi đây cả ngày, có gì đâu mà kể.", "Chuyện nhà bác thì cháu hỏi làm gì."] },
+    "pha-game": { "loi": ["Cháu nói cái gì bác không hiểu.", "Nói gì lạ thế cháu."] },
+    "doi-dap-an": { "loi": ["Ai làm thì bác không biết. Bác chỉ biết giờ mở, giờ khóa.", "Bác không đoán mò cho ai đâu."] }
+  },
+  "chuDeKhongBiet": [
+    {
+      "ma": "ai-bo",
+      "cauHoiMau": ["bác nhớ ra ai bỏ thư chưa", "bác có thấy ai bỏ thư không", "ai bo thu vay bac"],
+      "loi": ["Bác không thấy thì bác không nói, cháu ạ.", "Chuyện ấy bác chịu."]
+    },
+    {
+      "ma": "phieu",
+      "cauHoiMau": ["bác có biết xin phiếu ở đâu không", "phiếu tra cứu là gì bác", "xin giấy tờ thế nào ạ"],
+      "loi": ["Giấy tờ thì cháu hỏi các cô. Bác không nắm.", "Cái đấy bác chịu, cháu sang phòng mà hỏi."]
+    },
+    {
+      "ma": "camera",
+      "cauHoiMau": ["sảnh có camera không bác", "xem camera được không ạ", "camera chỗ cái hộp"],
+      "loi": ["Chuyện máy móc ấy bác không nắm, cháu ạ.", "Cái đấy bác chịu."]
+    }
+  ],
+  "tuKhoaTrongChuyen": ["hop", "niem phong", "co lan", "co hanh", "tang", "toa", "phong", "gio hanh chinh", "cong tac sinh vien", "dao tao", "sanh", "thu", "truc"],
+  "roiDi": {
+    "nut": "Chào bác, đi thôi",
+    "loiBan": "Bọn cháu chào bác ạ.",
+    "giuLai": { "ai": "ha-vy", "loi": "Khoan, còn dòng này chưa rõ:" },
+    "du": { "ai": "tung", "loi": "Đi thôi, kẻo các cô bận mất!" },
+    "thieu": { "ai": "ha-vy", "loi": "Được, đi thôi." }
+  }
+}

@@ -4644,7 +4644,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài' OR nganh = 'Báo chí';",
       "soDong": 276,
-      "noi": "noi-dung-mua-1/kich-ban/06-hop-va-ket.md:16 [MÀN CHIẾU hop-chieu-or]"
+      "noi": "noi-dung-mua-1/kich-ban/06-hop-va-ket.md:17 [MÀN CHIẾU hop-chieu-or]"
     }
   ],
   "duLieu": {

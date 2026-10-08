@@ -8,7 +8,8 @@
  * Bộ MVP không có cờ `dieuHuongTuDo`: chạy như cũ.
  */
 import { describe, expect, it } from 'vitest';
-import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
+// B19 (08/10/2026): test cơ chế máy chạy trên bản đông cứng của bộ mùa 1 trước khi Vụ 1 viết lại (testing/mua1-truoc-b19).
+import { KICH_BAN_MUA_1 } from './testing/mua1-truoc-b19/kich-ban.gen';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { ChuoiMvp, KichBanMvp, NutMvp } from '../../content/mvp/types';
 import { canhLuiThuThach, khungNhin, taoTrangThai, xuLy, type HanhDongMvp, type KhungNhinMvp } from './may';

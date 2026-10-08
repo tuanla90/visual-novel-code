@@ -1,6 +1,7 @@
 ## Buổi họp rà soát (thứ Hai 30/09, 16:00), hai kết, sau họp, quán trà đá
 
 <!-- Gói B19 (08/10/2026): Cảnh 10, kết thật / kết tạm, Cảnh 11, Cảnh 12 của bản thoại 6. Bốn câu tính vạch: (1) sửa câu HOẶC của Quân trên màn chiếu, (2) phiếu gửi do ai ký, (3) Hoài có tự mang thư đi không, (4) ai đứng sau lá thư. Chấm A/B/C (đề bài B19 mục 4): A, B kết thật; C kết tạm; Cảnh 12 chỉ ở rank A. Lời ở loi/06-hop-va-ket.md. -->
+<!-- Cú pháp B19-MÁY (người điều phối báo 08/10): đối chất tính vạch dùng {thẻ} [ĐÚNG] (có hoặc không phản hồi), {thẻ} [SAI] → phản hồi, BẮT BUỘC [KHÁC] → phản hồi; không dùng [CHƯA ĐỦ], [HẾT LƯỢT]; [CÂU HỎI] tùy chọn. [RẼ NHÁNH] đặt cờ: "đặt cờ x" (bộ đọc hiện tại nhận "đặt co.x", giữ nguyên). Cờ vu1-ket-that / vu1-ket-tam đặt lúc [RẼ KẾT]; vu1-rank-a|b|c lúc chấm. -->
 <!-- Lệnh mới của đề bài B19 mục 5 (agent MÁY dựng) nằm trong chú thích "MỚI:", viết đủ dòng con. Khối "TẠM" là lệnh cũ tương đương để vụ chơi liền mạch với bộ đọc hiện tại: [ĐỐI CHẤT] cũ (thẻ sai để mức [GỢI Ý] nên chọn lại không mất lượt; bấm "Chưa đủ căn cứ" thì sang chấm luôn, ra kết tạm), [NẾU] theo cờ đối chất, kết thật theo cờ đối chất, Cảnh 12 theo cờ đối chất. Khi gộp B19-MÁY: gỡ chú thích MỚI, xóa các dòng ngay dưới chú thích TẠM tương ứng. -->
 
 ### hop-00 — Cảnh 10: mở họp, Quân trình kết luận và chiếu câu HOẶC; câu 1/4 sửa câu tra; trình dòng thời gian; câu 2/4 phiếu gửi do ai ký {cảnh: phong-hop}
@@ -81,8 +82,8 @@
 
 ### ket-that — Kết thật (rank A, B): thầy không nhận thư vào hồ sơ; Hoài kể {cảnh: phong-hop}
 
-<!-- MỚI (thay dòng [ĐIỀU KIỆN] TẠM ngay dưới; bộ có [CHẤM VỤ] thì [RẼ KẾT] rẽ theo rank): - [ĐIỀU KIỆN] có vu1-rank-a hoặc có vu1-rank-b -->
-<!-- TẠM (xóa dòng dưới khi gộp B19-MÁY): kết thật cũ theo cờ đối chất; cờ dc-tu-mang-du chỉ có ở chuỗi tới bằng [NẾU] nên không nằm trên đường bắt buộc (QĐ-086). -->
+<!-- MỚI: bộ có [CHẤM VỤ] thì [RẼ KẾT] rẽ theo rank (A, B → ket-that; C → ket-tam, khai "- Kết tạm:" ở lich.md); kết thật KHÔNG cần [ĐIỀU KIỆN] (B19-MÁY). -->
+<!-- TẠM (xóa dòng [ĐIỀU KIỆN] dưới khi gộp B19-MÁY): kết thật cũ theo cờ đối chất; cờ dc-tu-mang-du chỉ có ở chuỗi tới bằng [NẾU] nên không nằm trên đường bắt buộc (QĐ-086). -->
 - [ĐIỀU KIỆN] có dc-phieu-gui-du và có dc-tu-mang-du
 - [LỜI ket-that.1]
 - [VÀO hoai]

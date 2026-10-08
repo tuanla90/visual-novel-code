@@ -5,7 +5,8 @@
  * đủ manh mối của các cảnh hỏi đáp, kẻo màn tra và buổi họp phía sau thiếu thẻ.
  */
 import { describe, expect, it } from 'vitest';
-import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
+// B19 (08/10/2026): test cơ chế máy chạy trên bản đông cứng của bộ mùa 1 trước khi Vụ 1 viết lại (testing/mua1-truoc-b19).
+import { KICH_BAN_MUA_1 } from './testing/mua1-truoc-b19/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { khungNhin, taoTrangThai, xuLy } from './may';
 import type { CachChoiMvp } from './trang-thai';

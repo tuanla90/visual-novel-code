@@ -346,7 +346,8 @@ describe('Gói T4 Mùa 1: liên kết truyện chữ', () => {
 
   it('mọi đoạn truyện thật có liên kết vào (từ đoạn khác) và mọi liên kết có đích', () => {
     const cacTep = readdirSync(THU_MUC_XUAT_TRUYEN).filter((ten) => ten.endsWith('.md') && ten !== 'README.md');
-    expect(cacTep.length).toBe(11);
+    // B19 (08/10/2026): bộ mùa 1 chỉ còn Vụ 1.
+    expect(cacTep.length).toBe(1);
     for (const tenTep of cacTep) {
       const doan = cacDoanTheoSo(readFileSync(join(THU_MUC_XUAT_TRUYEN, tenTep), 'utf8'));
       const coLienKetVao = new Set<number>();
@@ -363,32 +364,7 @@ describe('Gói T4 Mùa 1: liên kết truyện chữ', () => {
     }
   });
 
-  it('vu-tin-don thật: Quay lại không sang ngày khác, việc ngày lễ về đầu ngày 15/10, không còn Đọc tiếp sang', () => {
-    const vanBan = readFileSync(join(THU_MUC_XUAT_TRUYEN, 'vu-tin-don.md'), 'utf8');
-    const doan = cacDoanTheoSo(vanBan);
-    const soCo = (tieuDe: string): number | undefined => [...doan].find(([, noiDung]) => noiDung.includes(`: ${tieuDe}\n`))?.[0];
-    const soNgay8 = soCo('Tin đồn về CLB; lọc các tin mang câu đó');
-    const soNgay9 = soCo('Chiều 09/10, phòng CLB: Minh Anh ở chỗ cô Lan về');
-    const soNgay15 = soCo('Sáng 15/10, hội trường: lễ kỷ niệm');
-    expect([soNgay8, soNgay9, soNgay15].every((so) => so !== undefined)).toBe(true);
-    expect(doan.get(soCo('Tùng đọc tin nhắn nhóm lớp')!)).toContain(`[Quay lại: Đang ở Phòng CLB](#doan-${soNgay9})`);
-    for (const tieuDe of [
-      'Cuối chiều 09/10, phòng CLB: báo giờ gửi, hẹn mai sang xưởng',
-      'Cuối chiều 10/10, phòng CLB: giấy mời giải trình',
-      'Chiều 14/10, phòng CLB: tập trước buổi giải trình',
-    ]) {
-      const so = soCo(tieuDe);
-      expect(so, tieuDe).toBeDefined();
-      expect(doan.get(so!), tieuDe).not.toContain(`](#doan-${soNgay8})`);
-    }
-    for (const tieuDe of ['Việc ngày lễ 15/10 (tạm): Quân nhờ xem danh sách bốc thăm quà', 'Lỡ việc ngày lễ 15/10']) {
-      const so = soCo(tieuDe);
-      expect(so, tieuDe).toBeDefined();
-      expect(doan.get(so!), tieuDe).toContain(`[Trở lại đầu ngày](#doan-${soNgay15})`);
-    }
-    expect(vanBan).not.toContain('Đọc tiếp sang');
-    expect(vanBan).not.toMatch(/Trình \[/);
-  });
+  // B19 (08/10/2026): bỏ test "vu-tin-don thật…" (Vụ 2 đã gỡ khỏi bộ mùa 1, git còn giữ).
 });
 
 describe('Gói T3 Mùa 1: đường đi truyện chữ', () => {
@@ -447,39 +423,7 @@ describe('Gói T3 Mùa 1: đường đi truyện chữ', () => {
     expect(doanBanDo).not.toContain('Đi cùng Tùng sang B');
   });
 
-  it('ngày 10/10 không thể tới xưởng trước khi qua căng tin trong nội dung thật', () => {
-    const vanBan = readFileSync(join(THU_MUC_XUAT_TRUYEN, 'vu-tin-don.md'), 'utf8');
-    const doan = new Map<number, string>();
-    for (const m of vanBan.matchAll(/<a id="doan-(\d+)"><\/a>([\s\S]*?)(?=<a id="doan-\d+"><\/a>|$)/g)) {
-      doan.set(Number(m[1]), m[2]!);
-    }
-    const timSo = (tieuDe: string): number | undefined => [...doan].find(([, noiDung]) => noiDung.includes(`: ${tieuDe}\n`))?.[0];
-    const batDau = timSo('Sáng 10/10, phòng 408: Hiếu nhắn hẹn ra căng tin');
-    const cangTin = timSo('Căng tin giờ trưa: Hiếu ngồi bàn trong');
-    const xuong = timSo('Chiều 10/10, xưởng Robotics: Nam mở sẵn nhật ký');
-    expect(batDau).toBeDefined();
-    expect(cangTin).toBeDefined();
-    expect(xuong).toBeDefined();
-    if (batDau === undefined || cangTin === undefined || xuong === undefined) return;
-    const hangDoi = [{ so: batDau, quaCangTin: false }];
-    const daXem = new Set<string>();
-    let denDuocXuong = false;
-    while (hangDoi.length > 0) {
-      const { so, quaCangTin } = hangDoi.shift()!;
-      const daQua = quaCangTin || so === cangTin;
-      const khoa = `${so}:${daQua}`;
-      if (daXem.has(khoa)) continue;
-      daXem.add(khoa);
-      if (so === xuong) {
-        expect(daQua).toBe(true);
-        denDuocXuong = true;
-      }
-      for (const link of (doan.get(so) ?? '').matchAll(/\]\(#doan-(\d+)\)/g)) {
-        hangDoi.push({ so: Number(link[1]), quaCangTin: daQua });
-      }
-    }
-    expect(denDuocXuong).toBe(true);
-  });
+  // B19 (08/10/2026): bỏ test "ngày 10/10 không thể tới xưởng…" (Vụ 2 đã gỡ khỏi bộ mùa 1).
 });
 
 describe('Gói T2 Mùa 1: vụ sau có các ngày riêng', () => {
@@ -997,7 +941,7 @@ describe('Gói T0 Mùa 1: Xuất truyện chữ và kiểm tra liên kết neo (
   it('mọi liên kết trong toàn bộ các tệp truyện chữ đã xuất đều trỏ tới neo có thật (không liên kết chết)', () => {
     expect(existsSync(THU_MUC_XUAT_TRUYEN)).toBe(true);
     const cacTep = readdirSync(THU_MUC_XUAT_TRUYEN).filter((f) => f.endsWith('.md') && f !== 'README.md');
-    expect(cacTep.length).toBe(11); // 5 vụ + 6 việc phụ
+    expect(cacTep.length).toBe(1); // B19 (08/10/2026): chỉ còn Vụ 1
 
     for (const tenTep of cacTep) {
       const duongDan = join(THU_MUC_XUAT_TRUYEN, tenTep);
@@ -1058,35 +1002,20 @@ describe('Gói T0 Mùa 1: Tách bộ nội dung và khóa lưu (S8)', () => {
 });
 
 describe('Gói T0 Mùa 1: Kiểm tra tính toàn vẹn và sạch sẽ của truyện chữ (S1, S2, S3, S5, S6)', () => {
-  it('thư mục truyen-chu có đúng 12 tệp và không tệp nào chứa "Không tìm thấy nội dung" (S1, S3)', () => {
+  it('thư mục truyen-chu có đúng 2 tệp (B19: chỉ còn Vụ 1) và không tệp nào chứa "Không tìm thấy nội dung" (S1, S3)', () => {
     expect(existsSync(THU_MUC_XUAT_TRUYEN)).toBe(true);
     const tatCaTep = readdirSync(THU_MUC_XUAT_TRUYEN).filter((f) => f.endsWith('.md'));
-    expect(tatCaTep.sort()).toEqual([
-      'README.md',
-      'dan-lac.md',
-      'hoan-tien.md',
-      'hoc-tro-cu.md',
-      'micro.md',
-      'so-phong.md',
-      'tui-do.md',
-      'vu1.md',
-      'vu-tin-don.md',
-      'vu3.md',
-      'vu4.md',
-      'vu5.md',
-    ].sort());
+    expect(tatCaTep.sort()).toEqual(['README.md', 'vu1.md'].sort());
 
     for (const f of tatCaTep) {
       const noiDung = readFileSync(join(THU_MUC_XUAT_TRUYEN, f), 'utf8');
       expect(noiDung).not.toContain('Không tìm thấy nội dung');
     }
 
-    const dsViecPhu = ['so-phong', 'micro', 'hoan-tien', 'dan-lac', 'hoc-tro-cu', 'tui-do'];
-    for (const phu of dsViecPhu) {
-      const noiDung = readFileSync(join(THU_MUC_XUAT_TRUYEN, `${phu}.md`), 'utf8');
-      expect(noiDung).toContain('```sql');
-      expect(noiDung).toContain('| --- |');
-    }
+    // Màn tra của Vụ 1 in câu SQL và bảng kết quả.
+    const vu1 = readFileSync(join(THU_MUC_XUAT_TRUYEN, 'vu1.md'), 'utf8');
+    expect(vu1).toContain('```sql');
+    expect(vu1).toContain('| --- |');
   });
 
   it('quét mọi tệp truyện chữ: không còn [LỜI, [HẬU QUẢ, [XONG VIỆC, [DÀN DỰNG, ev-, clue-, {, hoặc mã biểu cảm (S5)', () => {

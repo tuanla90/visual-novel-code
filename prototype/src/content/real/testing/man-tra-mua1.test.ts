@@ -31,9 +31,10 @@ describe('nội dung thật', () => {
     const kiem = kiemManTraMua1(kq.mvp, { banDo: kq.banDo, doanLoi: kq.doanLoi });
     expect(kiem.loi).toEqual([]);
     expect(kiem.tomTat).toMatch(/^màn tra: \d+ gợi ý hai bậc, \d+ tờ giấy nhớ có chữ/);
-    for (const id of ['c-bang-lop', 'c-cot-lop', 'c-lop', 'c-ten-h', 'c-in', 'c-sua-or-quan']) expect(docGoiY(the(kq.mvp, id).fields).goiY.some((g) => g.khi === null), id).toBe(true);
-    for (const id of ['clue-chu-ky-h', 'clue-toa-b', 'clue-bao-chi-k24', 'clue-ten-tep']) expect(hoSo(kq.mvp, id).fields['Chữ trên giấy'], id).toBeTruthy();
-    expect(the(kq.mvp, 'c-lop').evidence).toMatchObject({ tachGiay: true, chuTrenGiay: expect.stringContaining('**BC24A**') });
+    // B19 (08/10/2026): màn tra của Vụ 1 bản 6.
+    for (const id of ['c-sv-hoai', 'c-sv-hoai-bc24', 'c-ra-vao', 'c-sua-or-quan']) expect(docGoiY(the(kq.mvp, id).fields).goiY.some((g) => g.khi === null), id).toBe(true);
+    for (const id of ['ev-phieu-gui-hoai', 'ev-the-lich-bc24', 'clue-loi-chu-cuong']) expect(hoSo(kq.mvp, id).fields['Chữ trên giấy'], id).toBeTruthy();
+    expect(the(kq.mvp, 'c-sv-hoai-bc24').evidence).toMatchObject({ chuTrenGiay: expect.stringContaining('**SV240317**') });
   });
 
   it('bộ MVP không có dòng gợi ý hay chữ trên giấy nào (bộ sinh ra y như trước)', () => {
@@ -82,29 +83,29 @@ describe('luật gợi ý', () => {
 
   it('màn tra của Vụ 1 thiếu dòng "Gợi ý" chung → lỗi; thẻ vụ sau thì không bắt', () => {
     const loi = loiSau((m) => {
-      delete the(m, 'c-in').fields['Gợi ý'];
+      delete the(m, 'c-ra-vao').fields['Gợi ý'];
     });
-    expect(loi.some((l) => /thẻ c-in: có dòng "Gợi ý khi …" thì phải có dòng "Gợi ý" chung/.test(l))).toBe(true);
-    expect(loi.some((l) => /thẻ c-in: màn tra trên tuyến chính của Vụ 1 phải có dòng "- Gợi ý:/.test(l))).toBe(true);
-    expect(loi.every((l) => /c-in/.test(l))).toBe(true);
+    expect(loi.some((l) => /thẻ c-ra-vao: có dòng "Gợi ý khi …" thì phải có dòng "Gợi ý" chung/.test(l))).toBe(true);
+    expect(loi.some((l) => /thẻ c-ra-vao: màn tra trên tuyến chính của Vụ 1 phải có dòng "- Gợi ý:/.test(l))).toBe(true);
+    expect(loi.every((l) => /c-ra-vao/.test(l))).toBe(true);
   });
 
   it('bậc 1 lộ đáp án: tên cột, chữ trên màn tra, động từ thao tác', () => {
-    expect(loiSau(dat('c-lop', 'Gợi ý', '**ha-vy** (thinking): Xem cột toa_nha đi. <br> **ha-vy** (neutral): Bấm CHẠY.')).join('\n')).toMatch(/bậc 1: lộ đáp án, có tên cột "toa_nha"/);
-    expect(loiSau(dat('c-lop', 'Gợi ý', '**ha-vy** (thinking): Nhìn hàng LẤY CỘT xem. <br> **ha-vy** (neutral): Bấm CHẠY.')).join('\n')).toMatch(/bậc 1: lộ đáp án, có chữ trên màn tra "LẤY CỘT"/);
-    expect(loiSau(dat('c-lop', 'Gợi ý', '**ha-vy** (thinking): Bấm vào tờ giấy đi. <br> **ha-vy** (neutral): Bấm CHẠY.')).join('\n')).toMatch(/bậc 1: nói thao tác \("Bấm"\)/);
+    expect(loiSau(dat('c-ra-vao', 'Gợi ý', '**ha-vy** (thinking): Xem cột ma_sv đi. <br> **ha-vy** (neutral): Bấm CHẠY.')).join('\n')).toMatch(/bậc 1: lộ đáp án, có tên cột "ma_sv"/);
+    expect(loiSau(dat('c-ra-vao', 'Gợi ý', '**ha-vy** (thinking): Nhìn hàng LẤY CỘT xem. <br> **ha-vy** (neutral): Bấm CHẠY.')).join('\n')).toMatch(/bậc 1: lộ đáp án, có chữ trên màn tra "LẤY CỘT"/);
+    expect(loiSau(dat('c-ra-vao', 'Gợi ý', '**ha-vy** (thinking): Bấm vào tờ giấy đi. <br> **ha-vy** (neutral): Bấm CHẠY.')).join('\n')).toMatch(/bậc 1: nói thao tác \("Bấm"\)/);
   });
 
   it('bậc nào cũng không nói từ của câu lệnh, không gạch dài, không mũi tên; bậc 2 không lặp bậc 1', () => {
-    expect(loiSau(dat('c-lop', 'Gợi ý', '**ha-vy** (thinking): Lớp nào khớp cả hai? <br> **ha-vy** (neutral): Thêm WHERE rồi chạy.')).join('\n')).toMatch(/bậc 2: có từ của câu lệnh "WHERE"/);
-    expect(loiSau(dat('c-lop', 'Gợi ý', '**ha-vy** (thinking): Lớp nào khớp cả hai? <br> **ha-vy** (neutral): Đổi HOẶC → VÀ.')).join('\n')).toMatch(/bậc 2: có gạch dài hoặc mũi tên/);
-    expect(loiSau(dat('c-lop', 'Gợi ý', '**ha-vy** (thinking): Lớp nào khớp cả hai? <br> **ha-vy** (neutral): Lớp nào khớp cả hai?')).join('\n')).toMatch(/bậc 2 phải nói rõ hơn bậc 1/);
+    expect(loiSau(dat('c-ra-vao', 'Gợi ý', '**ha-vy** (thinking): Lớp nào khớp cả hai? <br> **ha-vy** (neutral): Thêm WHERE rồi chạy.')).join('\n')).toMatch(/bậc 2: có từ của câu lệnh "WHERE"/);
+    expect(loiSau(dat('c-ra-vao', 'Gợi ý', '**ha-vy** (thinking): Lớp nào khớp cả hai? <br> **ha-vy** (neutral): Đổi HOẶC → VÀ.')).join('\n')).toMatch(/bậc 2: có gạch dài hoặc mũi tên/);
+    expect(loiSau(dat('c-ra-vao', 'Gợi ý', '**ha-vy** (thinking): Lớp nào khớp cả hai? <br> **ha-vy** (neutral): Lớp nào khớp cả hai?')).join('\n')).toMatch(/bậc 2 phải nói rõ hơn bậc 1/);
   });
 
   it('người gợi ý phải là nhân vật có thật, biểu cảm có trong thẻ nhân vật', () => {
-    expect(loiSau(dat('c-lop', 'Gợi ý', '**narrator**: Lớp nào khớp? <br> **ha-vy** (neutral): Để chữ nối là VÀ.')).join('\n')).toMatch(/bậc 1: người gợi ý phải là một nhân vật đi cùng/);
-    expect(loiSau(dat('c-lop', 'Gợi ý', '**ong-ba** (neutral): Lớp nào khớp? <br> **ha-vy** (neutral): Để chữ nối là VÀ.')).join('\n')).toMatch(/bậc 1: người nói lạ "ong-ba"/);
-    expect(loiSau(dat('c-lop', 'Gợi ý', '**ha-vy** (nhay-mua): Lớp nào khớp? <br> **ha-vy** (neutral): Để chữ nối là VÀ.')).join('\n')).toMatch(/không có biểu cảm "nhay-mua"/);
+    expect(loiSau(dat('c-ra-vao', 'Gợi ý', '**narrator**: Lớp nào khớp? <br> **ha-vy** (neutral): Để chữ nối là VÀ.')).join('\n')).toMatch(/bậc 1: người gợi ý phải là một nhân vật đi cùng/);
+    expect(loiSau(dat('c-ra-vao', 'Gợi ý', '**ong-ba** (neutral): Lớp nào khớp? <br> **ha-vy** (neutral): Để chữ nối là VÀ.')).join('\n')).toMatch(/bậc 1: người nói lạ "ong-ba"/);
+    expect(loiSau(dat('c-ra-vao', 'Gợi ý', '**ha-vy** (nhay-mua): Lớp nào khớp? <br> **ha-vy** (neutral): Để chữ nối là VÀ.')).join('\n')).toMatch(/không có biểu cảm "nhay-mua"/);
   });
 });
 
@@ -131,14 +132,14 @@ describe('luật chữ trên giấy', () => {
 
   it('giấy nhớ và phiếu của Vụ 1 bắt buộc có chữ; phiếu tách tờ cần từ hai giá trị', () => {
     const thieu = loiSau((m) => {
-      delete hoSo(m, 'clue-toa-b').fields['Chữ trên giấy'];
-      delete the(m, 'c-in').evidence!.chuTrenGiay;
+      delete hoSo(m, 'clue-loi-chu-cuong').fields['Chữ trên giấy'];
+      delete the(m, 'c-ra-vao').evidence!.chuTrenGiay;
     });
-    expect(thieu.some((l) => /ho-so\/01-giay-nho\.md:\d+: thẻ hồ sơ clue-toa-b: giấy nhớ dùng ở màn tra của Vụ 1 phải có dòng "- Chữ trên giấy/.test(l))).toBe(true);
-    expect(thieu.some((l) => /thu-thach\/c-in\.md:\d+: vật chứng ev-nhat-ky-in của thẻ c-in: phiếu dùng làm giấy nhớ ở màn tra của Vụ 1/.test(l))).toBe(true);
+    expect(thieu.some((l) => /ho-so\/01-giay-nho\.md:\d+: thẻ hồ sơ clue-loi-chu-cuong: giấy nhớ dùng ở màn tra của Vụ 1 phải có dòng "- Chữ trên giấy/.test(l))).toBe(true);
+    expect(thieu.some((l) => /thu-thach\/c-ra-vao\.md:\d+: vật chứng ev-ra-cong-644 của thẻ c-ra-vao: phiếu dùng làm giấy nhớ ở màn tra của Vụ 1/.test(l))).toBe(true);
     expect(thieu).toHaveLength(2);
     const tach = loiSau((m) => {
-      const ev = the(m, 'c-in').evidence!;
+      const ev = the(m, 'c-ra-vao').evidence!;
       ev.tachGiay = true;
     });
     expect(tach.join('\n')).toMatch(/"Giấy nhớ: mỗi giá trị một tờ" cần ít nhất hai giá trị/);

@@ -1,0 +1,217 @@
+{
+  "ma": "ket-tra-da",
+  "ten": "Ngồi quán trà đá, nghe bà bán trà đá kể chuyện phòng CLB",
+  "ngay": "Thứ Hai, 30/09/2024",
+  "canh": "tra-da",
+  "nhanChung": "ba-lua",
+  "nguoiDiCung": ["ha-vy", "tung"],
+  "ghiChu": "Chỉ mẩu chuyện 1 (clue-tra-da-1). Hai cuốn sổ, kết luận sai, cậu trà nóng giờ ở đâu là chuyện Vụ 2, 3, 5: bà hẹn hôm khác kể, không nói không biết.",
+  "moDau": "Quán trà đá dưới gốc cây ngoài cổng chính. Tùng gọi ba cốc, khoe luôn chuyện CLB vừa giữ được phòng.",
+  "loiDaThay": ["ket-tra-da.1a", "ket-tra-da.1b", "ket-tra-da.1c"],
+  "tuDongDuKien": ["gia-tra", "phong-tu-sat", "kho-choi", "cau-sinh-vien", "tra-nong"],
+  "danhSach": [
+    { "ma": "L1", "cau": "Ngày xưa phòng CLB thế nào?", "can": ["kho-choi", "cau-sinh-vien"], "moManhMoi": "clue-tra-da-1" },
+    { "ma": "L2", "cau": "Bà có nhớ tên người ấy không?", "can": ["tra-nong"] }
+  ],
+  "duKien": [
+    {
+      "ma": "gia-tra",
+      "noiDung": "Ba cốc trà đá chín nghìn.",
+      "nguon": "loi/06-hop-va-ket.md ket-tra-da.1b",
+      "chuBatBuoc": ["chín nghìn"],
+      "giayNho": "Ba cốc trà đá: chín nghìn.",
+      "an": true, "tuKe": false, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Ba cốc chín nghìn.",
+        "co-khong": "Ba cốc chín nghìn thôi cháu.",
+        "lai": "Chín nghìn ba cốc, bà nói rồi."
+      },
+      "cauHoiMau": [
+        "Ba cốc bao nhiêu tiền ạ?",
+        "bao nhiêu tiền bà",
+        "hết bao nhiêu ạ",
+        "tinh tien ba oi",
+        "trà đá bao nhiêu một cốc",
+        "cháu trả bà bao nhiêu"
+      ]
+    },
+    {
+      "ma": "phong-tu-sat",
+      "noiDung": "Bà biết nhóm ở phòng tầng hai nhà câu lạc bộ, phòng có cái tủ sắt.",
+      "nguon": "loi/06-hop-va-ket.md ket-tra-da.1c",
+      "chuBatBuoc": ["tầng hai", "tủ sắt"],
+      "giayNho": "Bà bán trà đá biết phòng CLB: tầng hai nhà câu lạc bộ, có tủ sắt.",
+      "an": true, "tuKe": true, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Mấy đứa ở phòng tầng hai nhà câu lạc bộ đấy hả? Phòng có cái tủ sắt.",
+        "co-khong": "Bà biết chứ. Phòng tầng hai nhà câu lạc bộ, cái phòng có tủ sắt.",
+        "ke": "Phòng các cháu ấy à, tầng hai nhà câu lạc bộ, có cái tủ sắt. Bà biết.",
+        "lai": "Thì phòng tầng hai, có cái tủ sắt. Bà bảo rồi.",
+        "tu-ke": "Mấy đứa ở phòng tầng hai nhà câu lạc bộ đấy hả? Phòng có cái tủ sắt."
+      },
+      "cauHoiMau": [
+        "Sao bà biết phòng bọn cháu ạ?",
+        "bà biết phòng CLB cháu à",
+        "ba biet phong clb o dau ko",
+        "bà có biết CLB Thám Tử không",
+        "phòng bọn cháu ở đâu bà biết không",
+        "bà biết bọn cháu à"
+      ]
+    },
+    {
+      "ma": "kho-choi",
+      "noiDung": "Hồi bà mới ra bán, phòng ấy là kho chổi.",
+      "nguon": "loi/06-hop-va-ket.md ket-tra-da.1c; ho-so/04-tra-da.md clue-tra-da-1",
+      "chuBatBuoc": ["kho chổi"],
+      "giayNho": "Lời kể: hồi bà bán trà đá mới ra quán, phòng CLB là kho chổi.",
+      "an": false, "tuKe": true, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Hồi bà mới ra đây, phòng ấy là kho chổi.",
+        "co-khong": "Ngày trước phòng ấy là kho chổi, cháu ạ. Hồi bà mới ra đây.",
+        "ke": "Ngày bà mới ra đây bán, phòng ấy còn là kho chổi cơ.",
+        "lai": "Kho chổi, bà nói rồi.",
+        "tu-ke": "Hồi bà mới ra đây, phòng ấy là kho chổi."
+      },
+      "cauHoiMau": [
+        "Ngày xưa phòng ấy là phòng gì ạ?",
+        "trước kia phòng CLB dùng làm gì",
+        "phong do truoc la gi",
+        "phòng cháu có từ bao giờ ạ",
+        "hồi xưa phòng ấy thế nào bà",
+        "phòng ấy trước có phải phòng CLB không ạ"
+      ],
+      "goiY": {
+        "ai": "tung",
+        "bac1": "Tớ cá là bà biết phòng mình từ hồi xửa hồi xưa! Hỏi xem ngày trước nó thế nào đi.",
+        "bac2": "Ngày xưa phòng ấy là phòng gì ạ?"
+      }
+    },
+    {
+      "ma": "cau-sinh-vien",
+      "noiDung": "Có cậu sinh viên xin được chìa, tự khuân tủ sắt lên; chiều nào cũng ra quán ghi chép.",
+      "nguon": "loi/06-hop-va-ket.md ket-tra-da.1c; ho-so/04-tra-da.md clue-tra-da-1",
+      "chuBatBuoc": ["tủ sắt", "ghi chép"],
+      "giayNho": "Lời kể: một sinh viên xin được chìa, tự khuân tủ sắt lên phòng, chiều nào cũng ra quán ghi chép.",
+      "an": false, "tuKe": true, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Có cậu sinh viên xin được chìa, tự khuân tủ sắt lên. Chiều nào cũng ra đây ghi chép.",
+        "co-khong": "Bà nhớ chứ. Có cậu sinh viên xin được chìa, tự khuân tủ sắt lên, chiều nào cũng ra đây ghi chép.",
+        "ke": "Có một cậu sinh viên xin được chìa phòng ấy, tự khuân cái tủ sắt lên. Rồi chiều nào cũng ra đây ngồi ghi chép.",
+        "lai": "Cậu ấy khuân tủ sắt lên, chiều nào cũng ra đây ghi chép. Bà kể rồi đấy.",
+        "tu-ke": "Có cậu sinh viên xin được chìa, tự khuân tủ sắt lên. Chiều nào cũng ra đây ghi chép."
+      },
+      "cauHoiMau": [
+        "Ai đưa cái tủ sắt lên phòng ạ?",
+        "cái tủ sắt ở đâu ra",
+        "ai dùng phòng ấy đầu tiên",
+        "ai mang tu sat len",
+        "người đầu tiên ở phòng ấy là ai ạ",
+        "ngày xưa ai hay ngồi đây ạ",
+        "bà kể về cái tủ đi"
+      ],
+      "goiY": {
+        "ai": "ha-vy",
+        "bac1": "Cái tủ trong phòng mình phải có người mang lên. Bà có vẻ biết người ấy.",
+        "bac2": "Ai đưa cái tủ sắt lên phòng ạ?"
+      }
+    },
+    {
+      "ma": "tra-nong",
+      "noiDung": "Hè cũng như đông cậu ấy chỉ gọi trà nóng; bà không nhớ tên, gọi là \"cậu trà nóng\".",
+      "nguon": "loi/06-hop-va-ket.md ket-tra-da.1c; nhan-vat.md ba-lua (Câu nói)",
+      "chuBatBuoc": ["cậu trà nóng"],
+      "giayNho": "Lời kể: bà không nhớ tên, gọi người ấy là \"cậu trà nóng\" vì hè cũng gọi trà nóng.",
+      "an": false, "tuKe": true, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Khách của bà, bà nhớ cốc chứ nhớ gì tên. Bà gọi là \"cậu trà nóng\".",
+        "co-khong": "Bà nhớ cốc chứ nhớ gì tên, cháu ạ. Bà gọi là \"cậu trà nóng\".",
+        "ke": "Hè cũng như đông, cậu ấy chỉ gọi trà nóng. Ra quán trà đá mà gọi trà nóng thì bà nhớ lâu. Bà gọi là \"cậu trà nóng\".",
+        "lai": "Cậu trà nóng. Tên thì bà chịu.",
+        "tu-ke": "Hè cũng như đông, cậu ấy chỉ gọi trà nóng. Ra quán trà đá mà gọi trà nóng thì bà nhớ lâu. Bà gọi là \"cậu trà nóng\"."
+      },
+      "cauHoiMau": [
+        "Bà có nhớ tên anh ấy không ạ?",
+        "anh ấy tên gì bà",
+        "ba nho ten ko",
+        "bà gọi anh ấy là gì",
+        "anh ấy hay uống gì ạ",
+        "sao bà nhớ anh ấy lâu thế"
+      ],
+      "goiY": {
+        "ai": "ha-vy",
+        "bac1": "Bà nhớ người ấy kỹ thế, mà mình chưa biết người ấy tên gì.",
+        "bac2": "Bà có nhớ tên anh ấy không ạ?"
+      }
+    },
+    {
+      "ma": "hai-chuc-nam",
+      "noiDung": "Bà bán trà đá ngoài cổng chính đã hai chục năm.",
+      "nguon": "nhan-vat.md ba-lua (Giới thiệu)",
+      "chuBatBuoc": ["hai chục năm"],
+      "giayNho": "Bà bán trà đá ngoài cổng chính đã hai chục năm.",
+      "an": true, "tuKe": false, "nhoRa": false, "sauKhi": [],
+      "bienThe": {
+        "thang": "Bà ngồi đây hai chục năm rồi.",
+        "co-khong": "Bà bán ở gốc cây này hai chục năm rồi, cháu ạ.",
+        "lai": "Hai chục năm, bà nói rồi."
+      },
+      "cauHoiMau": [
+        "Bà bán ở đây lâu chưa ạ?",
+        "bà bán bao lâu rồi",
+        "ba ban o day may nam roi",
+        "quán bà có từ bao giờ",
+        "bà ngồi đây từ hồi nào ạ",
+        "bà biết trường này lâu chưa"
+      ]
+    }
+  ],
+  "lopKhac": {
+    "chao": { "loi": ["Ngồi đi các cháu.", "Ừ, ngồi đi. Uống gì?"] },
+    "cam-on": { "loi": ["Ơn huệ gì. Uống đi cho mát.", "Ừ, uống đi."] },
+    "hoi-mo": {
+      "hoiTiep": "Bà còn nhớ gì nữa không ạ?",
+      "hetKe": ["Hôm nay bà kể thế thôi. Uống đi đã.", "Chuyện thì còn, nhưng để hôm khác. Các cháu cứ ra đây ngồi là bà kể."]
+    },
+    "tam-biet": { "loi": ["Ừ, về đi. Mai lại ra nhé.", "Ừ, đi đường cẩn thận."] },
+    "khong-ro": { "loi": ["Cái đấy bà chịu, cháu ạ.", "Bà bán trà đá ngoài cổng, chuyện trong trường bà biết đâu mà nói.", "Chuyện ấy bà không nhớ."] },
+    "ngoai-le": { "loi": ["Hỏi gì lạ thế. Uống đi cho mát.", "Thôi, chuyện ấy bà chịu.", "Ngồi đây thì uống trà, chuyện trên trời thì bà không biết."] },
+    "hoi-rieng-tu": { "loi": ["Tên bà làm gì. Khách của bà, bà nhớ cốc, các cháu nhớ bà là được.", "Hỏi chuyện bà làm gì, bà già rồi."] },
+    "pha-game": { "loi": ["Cháu nói gì bà nghe chẳng hiểu.", "Nói linh tinh gì đấy? Uống đi."] },
+    "doi-dap-an": { "loi": ["Bà biết gì đâu mà đáp án. Bà chỉ kể cái bà nhớ.", "Hỏi bà làm gì, tự đi mà tìm. Trẻ thì phải chịu khó."] }
+  },
+  "chuDeKhongBiet": [
+    {
+      "ma": "cau-ay-gio-dau",
+      "cauHoiMau": ["anh ấy giờ ở đâu ạ", "bà còn gặp anh ấy không", "cậu trà nóng bây giờ làm gì", "anh ay con o truong ko"],
+      "loi": ["Chuyện ấy để hôm khác bà kể. Uống đi đã kẻo tan đá.", "Hôm nay kể thế thôi. Lúc nào rảnh ra đây bà kể tiếp."]
+    },
+    {
+      "ma": "trong-tu",
+      "cauHoiMau": ["trong tủ sắt có gì ạ", "anh ấy cất gì trong tủ", "tu sat dung gi"],
+      "loi": ["Trong tủ có gì thì bà chịu, cháu ạ.", "Cái đấy các cháu ở phòng ấy phải biết hơn bà chứ."]
+    },
+    {
+      "ma": "la-thu",
+      "cauHoiMau": ["bà có biết ai gửi thư không", "bà biết vụ lá thư không", "bà có biết CLB Robotics không"],
+      "loi": ["Thư từ gì bà không biết. Bà chỉ bán trà thôi.", "Chuyện ấy bà chịu, cháu ạ."]
+    },
+    {
+      "ma": "manh-giay",
+      "cauHoiMau": ["bà có biết mẩu giấy trong sổ không", "căn phòng này giữ nhiều hơn em nghĩ là sao", "ai viết mẩu giấy ấy"],
+      "loi": ["Cái đấy bà chịu. Bà chỉ nhớ cậu ấy ngồi đây ghi chép thôi.", "Giấy má của các cháu thì bà không biết."]
+    },
+    {
+      "ma": "nam-nao",
+      "cauHoiMau": ["chuyện ấy từ năm nào ạ", "anh ấy học khóa nào", "bao nhieu nam truoc"],
+      "loi": ["Lâu lắm rồi, từ hồi bà mới ra đây.", "Khóa nào thì bà chịu. Bà nhớ cốc chứ có nhớ khóa."]
+    }
+  ],
+  "tuKhoaTrongChuyen": ["phong", "tu sat", "tu", "kho choi", "chia", "ghi chep", "tra nong", "tra da", "cau", "ten", "clb", "cau lac bo", "so", "ngay xua", "hoi xua", "sinh vien"],
+  "roiDi": {
+    "nut": "Cháu chào bà ạ",
+    "loiBan": "Bọn cháu cảm ơn bà ạ.",
+    "giuLai": { "ai": "ha-vy", "loi": "Khoan, còn chuyện này chưa hỏi bà:" },
+    "du": { "ai": "tung", "loi": "Thế thì về thôi! Hôm nay tớ khao rồi đấy nhé." },
+    "thieu": { "ai": "ha-vy", "loi": "Được. Chuyện chưa rõ thì để hôm khác ra hỏi bà." }
+  }
+}

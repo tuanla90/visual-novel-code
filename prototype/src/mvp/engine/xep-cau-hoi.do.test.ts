@@ -9,7 +9,8 @@
  */
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
+// B19 (08/10/2026): test cơ chế máy chạy trên bản đông cứng của bộ mùa 1 trước khi Vụ 1 viết lại (testing/mua1-truoc-b19).
+import { KICH_BAN_MUA_1 } from './testing/mua1-truoc-b19/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { CHU_DE, NHOM_NGOAI_LE, xepCauHoi } from './hoi-dap';
 import { dungMaySoChu, xepCau } from './xep-cau-hoi';

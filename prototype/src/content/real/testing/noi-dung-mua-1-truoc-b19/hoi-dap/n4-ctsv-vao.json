@@ -1,0 +1,355 @@
+{
+  "ma": "n4-ctsv-vao",
+  "ten": "Hỏi cô cán bộ Phòng Công tác sinh viên kết quả tra sổ niêm phong",
+  "ngay": "Thứ Sáu, 27/09/2024",
+  "canh": "phong-ctsv",
+  "nhanChung": "co-lan",
+  "nguoiDiCung": [
+    "ha-vy",
+    "tung"
+  ],
+  "ghiChu": "Quân có mặt (n4-ctsv.2) nhưng không phải nhân chứng. Cô Lan chỉ nói theo mã, không nói tên; người chơi tự nối mã với tên từ màn tra ngày 3.",
+  "moDau": "Phòng Công tác sinh viên. Cô cán bộ đã nhận phiếu yêu cầu của CLB.",
+  "loiDaThay": ["n4-ctsv.1v"],
+  "tuDongDuKien": [
+    "ma-co",
+    "ma-khong",
+    "khong-ket-luan",
+    "moi-hop"
+  ],
+  "gioiHan": {
+    "soCau": 7,
+    "lyDo": "ban",
+    "baoTruoc": {
+      "con": 2,
+      "loi": "Cô còn việc phải xong trước trưa, các em hỏi gọn nhé."
+    },
+    "het": "Thôi, cô làm việc tiếp đây. Cần gì thêm thì trong giờ hành chính các em quay lại."
+  },
+  "danhSach": [
+    {
+      "ma": "L1",
+      "cau": "Mã nào có trong sổ niêm phong?",
+      "can": [
+        "ma-co",
+        "ma-khong"
+      ],
+      "moManhMoi": "clue-hoai-nguoi-nop"
+    },
+    {
+      "ma": "L2",
+      "cau": "Có mã trong sổ thì nói được tới đâu?",
+      "can": [
+        "khong-ket-luan"
+      ]
+    }
+  ],
+  "duKien": [
+    {
+      "ma": "ma-co",
+      "noiDung": "Cô tra rồi: SV240317 có trong sổ niêm phong.",
+      "nguon": "loi/04-ngay-4.md n4-ctsv.1v",
+      "chuBatBuoc": [
+        "SV240317"
+      ],
+      "giayNho": "Sổ niêm phong: SV240317 có.",
+      "an": false,
+      "tuKe": true,
+      "nhoRa": false,
+      "sauKhi": [],
+      "bienThe": {
+        "thang": "Cô tra rồi. SV240317 có trong sổ.",
+        "co-khong": "Mã SV240317 thì có trong sổ, em ạ.",
+        "ke": "Cô tra theo phiếu của các em rồi. SV240317 có trong sổ.",
+        "lai": "SV240317 có trong sổ. Cô nói rồi đấy.",
+        "tu-ke": "Cô tra rồi. SV240317 có trong sổ."
+      },
+      "cauHoiMau": [
+        "Mã nào có trong sổ niêm phong ạ?",
+        "cô tra xong chưa ạ",
+        "kết quả tra sổ thế nào ạ",
+        "SV240317 có trong sổ không cô",
+        "ma nao co trong so",
+        "Hoài có trong sổ không ạ",
+        "có mã nào khớp không ạ",
+        "trong sổ có mã bọn em đưa không"
+      ],
+      "goiY": {
+        "ai": "ha-vy",
+        "bac1": "Phiếu ghi hai mã. Cô tra rồi mà mình chưa nghe kết quả.",
+        "bac2": "Mã nào có trong sổ niêm phong ạ?"
+      }
+    },
+    {
+      "ma": "ma-khong",
+      "noiDung": "SV240228 không có trong sổ niêm phong.",
+      "nguon": "loi/04-ngay-4.md n4-ctsv.1v",
+      "chuBatBuoc": [
+        "SV240228"
+      ],
+      "giayNho": "Sổ niêm phong: SV240228 không có.",
+      "an": false,
+      "tuKe": true,
+      "nhoRa": false,
+      "sauKhi": [],
+      "bienThe": {
+        "thang": "SV240228 thì không có trong sổ.",
+        "co-khong": "Mã SV240228 thì không có trong sổ, em ạ.",
+        "ke": "Mã thứ hai, SV240228, cô dò rồi, trong sổ không có.",
+        "lai": "SV240228 không có. Cô tra kỹ rồi.",
+        "tu-ke": "SV240228 thì không."
+      },
+      "cauHoiMau": [
+        "Còn mã kia thì sao ạ?",
+        "SV240228 có trong sổ không cô",
+        "mã của Hiếu thì sao ạ",
+        "ma con lai thi sao",
+        "Hiếu có trong sổ không ạ",
+        "mã thứ hai có không cô"
+      ],
+      "goiY": {
+        "ai": "tung",
+        "bac1": "Tớ cá là mã của Hiếu có trong sổ! Mà cô chưa nói tới mã ấy.",
+        "bac2": "Còn mã kia thì sao ạ?"
+      }
+    },
+    {
+      "ma": "khong-ket-luan",
+      "noiDung": "Sổ niêm phong chỉ xác nhận mã đó có mặt; cô không kết luận thêm.",
+      "nguon": "loi/04-ngay-4.md n4-ctsv.1v",
+      "chuBatBuoc": [
+        "có mặt",
+        "không kết luận"
+      ],
+      "giayNho": "Sổ chỉ xác nhận mã có mặt. Cô Lan không kết luận thêm.",
+      "an": false,
+      "tuKe": false,
+      "nhoRa": false,
+      "sauKhi": [],
+      "bienThe": {
+        "thang": "Sổ niêm phong chỉ xác nhận mã đó có mặt. Cô không kết luận thêm.",
+        "co-khong": "Sổ chỉ xác nhận mã đó có mặt, em ạ. Cô không kết luận thêm.",
+        "ke": "Sổ chỉ cho cô biết mã ấy có mặt trong sổ. Còn ai làm gì thì cô không kết luận thêm.",
+        "lai": "Cô nói rồi: sổ chỉ xác nhận mã có mặt. Cô không kết luận thêm."
+      },
+      "cauHoiMau": [
+        "Vậy SV240317 là người nộp thư ạ?",
+        "thế bạn ấy là người gửi thư à cô",
+        "có trong sổ là người viết thư à",
+        "vay la ban do gui thu a",
+        "người có mã trong sổ là người nộp đúng không ạ",
+        "thế là xong rồi hả cô"
+      ],
+      "goiY": {
+        "ai": "ha-vy",
+        "bac1": "Có mã trong sổ thì biết được tới đâu? Mình chưa hỏi cô điều ấy.",
+        "bac2": "Vậy SV240317 là người nộp thư ạ?"
+      }
+    },
+    {
+      "ma": "moi-hop",
+      "noiDung": "Theo quy chế, sinh viên có mã trong sổ sẽ được mời đến buổi họp; có gọi vào hay không do buổi họp quyết định.",
+      "nguon": "loi/04-ngay-4.md n4-ctsv.2",
+      "chuBatBuoc": [
+        "mời đến buổi họp",
+        "buổi họp quyết định"
+      ],
+      "giayNho": "Sinh viên có mã trong sổ được mời đến buổi họp. Gọi vào hay không do buổi họp quyết định.",
+      "an": true,
+      "tuKe": true,
+      "nhoRa": false,
+      "sauKhi": [],
+      "bienThe": {
+        "thang": "Theo quy chế, sinh viên có mã trong sổ sẽ được mời đến buổi họp. Có gọi vào hay không do buổi họp quyết định.",
+        "co-khong": "Theo quy chế thì bạn ấy được mời đến buổi họp. Còn gọi vào hay không do buổi họp quyết định.",
+        "ke": "Quy chế là thế này: ai có mã trong sổ thì được mời đến buổi họp. Có gọi vào hay không do buổi họp quyết định.",
+        "lai": "Được mời đến buổi họp, còn gọi vào hay không do buổi họp quyết định. Cô nói rồi.",
+        "tu-ke": "Theo quy chế, sinh viên có mã trong sổ sẽ được mời đến buổi họp. Có gọi vào hay không do buổi họp quyết định."
+      },
+      "cauHoiMau": [
+        "Bạn có mã trong sổ có phải đến buổi họp không ạ?",
+        "bạn ấy có bị gọi lên không cô",
+        "người nộp có phải ra họp không",
+        "ban do co bi moi hop ko",
+        "buổi họp có hỏi bạn ấy không ạ",
+        "thứ Hai bạn ấy có phải tới không ạ"
+      ]
+    },
+    {
+      "ma": "tra-theo-phieu",
+      "noiDung": "Cô tra theo phiếu yêu cầu chị Minh Anh gửi sang, ghi hai mã kèm các bước lọc; cô đã ký phiếu.",
+      "nguon": "loi/04-ngay-4.md n4-mo.1 (Minh Anh ghi hai mã và các bước lọc vào phiếu), n4-ctsv-an.1 (phiếu có chữ ký cô Lan còn tươi mực)",
+      "chuBatBuoc": [
+        "hai mã"
+      ],
+      "giayNho": "Cô Lan tra theo phiếu yêu cầu của CLB: hai mã, kèm các bước lọc.",
+      "an": true,
+      "tuKe": false,
+      "nhoRa": false,
+      "sauKhi": [],
+      "bienThe": {
+        "thang": "Cô tra đúng theo phiếu Minh Anh gửi sang: hai mã, kèm các bước lọc. Cô ký nhận rồi.",
+        "co-khong": "Phiếu của Minh Anh cô nhận rồi, ký rồi. Hai mã, cô tra cả hai.",
+        "lai": "Hai mã trên phiếu, cô tra cả hai rồi."
+      },
+      "cauHoiMau": [
+        "Cô tra theo giấy nào ạ?",
+        "phiếu của bọn em cô nhận chưa",
+        "chị Minh Anh gửi phiếu sang chưa ạ",
+        "cô ký phiếu chưa",
+        "phieu yeu cau co nhan chua a",
+        "cô tra mấy mã ạ"
+      ]
+    }
+  ],
+  "lopKhac": {
+    "chao": {
+      "loi": [
+        "Ừ, vào đi các em. Phiếu của Minh Anh cô nhận rồi.",
+        "Chào em. Cô tra xong rồi đây."
+      ]
+    },
+    "cam-on": {
+      "loi": [
+        "Ừ. Còn lại là việc của buổi họp.",
+        "Không có gì em."
+      ]
+    },
+    "hoi-mo": {
+      "hoiTiep": "Còn gì cô dặn bọn em nữa không ạ?",
+      "hetKe": [
+        "Cô tra có thế thôi. Em hỏi cụ thể thì cô trả lời.",
+        "Hết rồi em. Sổ chỉ nói được có thế."
+      ]
+    },
+    "tam-biet": {
+      "loi": [
+        "Ừ, các em về đi.",
+        "Đi đi em. Khép cửa giúp cô."
+      ]
+    },
+    "khong-ro": {
+      "loi": [
+        "Cái đấy cô không nắm, em ạ.",
+        "Việc ấy không qua phòng cô.",
+        "Sổ không ghi chuyện ấy, cô không trả lời được."
+      ]
+    },
+    "ngoai-le": {
+      "loi": [
+        "Cô đang giờ làm việc, em ạ. Hỏi việc của các em thôi.",
+        "Chuyện đấy để lúc khác.",
+        "Thôi, vào việc đi em."
+      ]
+    },
+    "hoi-rieng-tu": {
+      "loi": [
+        "Hỏi chuyện cô làm gì em. Việc của các em đâu?",
+        "Chuyện riêng thì để lúc khác, em ạ."
+      ]
+    },
+    "pha-game": {
+      "loi": [
+        "Em nói gì cô không hiểu. Nói lại xem.",
+        "Giờ làm việc, em nói cho đàng hoàng đi."
+      ]
+    },
+    "doi-dap-an": {
+      "loi": [
+        "Cô không kết luận hộ ai cả. Sổ ghi gì cô nói nấy.",
+        "Đáp án thì cô không có, em ạ. Cô chỉ tra mã."
+      ]
+    }
+  },
+  "chuDeKhongBiet": [
+    {
+      "ma": "ai-viet",
+      "cauHoiMau": [
+        "vậy ai viết thư ạ",
+        "người viết thư là ai",
+        "ai soạn lá thư",
+        "ai viet thu vay co"
+      ],
+      "loi": [
+        "Ai viết thì sổ không ghi, em ạ.",
+        "Cô chỉ tra mã. Chuyện ai viết thì cô không kết luận."
+      ]
+    },
+    {
+      "ma": "ten-chu-ma",
+      "cauHoiMau": [
+        "mã đó là của ai ạ",
+        "SV240317 là ai",
+        "tên bạn ấy là gì cô",
+        "ma do cua ai"
+      ],
+      "loi": [
+        "Cô chỉ tra đúng mã trên phiếu. Mã của ai thì các em có trong danh sách của mình rồi.",
+        "Cô trả lời theo mã thôi, em ạ."
+      ]
+    },
+    {
+      "ma": "phieu-gui",
+      "cauHoiMau": [
+        "cho em xem phiếu gửi được không",
+        "phiếu gửi ghi gì ạ",
+        "chữ ký trên phiếu gửi là của ai",
+        "phieu gui co gi"
+      ],
+      "loi": [
+        "Cái đấy cô không đưa các em xem được. Cô chỉ trả lời theo phiếu yêu cầu.",
+        "Phiếu gửi thì cô không đưa ra, em ạ."
+      ]
+    },
+    {
+      "ma": "may-in",
+      "cauHoiMau": [
+        "thư in ở đâu ạ",
+        "máy in nào in lá thư",
+        "nhật ký in xem ở đâu ạ",
+        "thu in tu may nao"
+      ],
+      "loi": [
+        "Chuyện máy in thì cô không nắm. Phòng Đào tạo ngay cạnh đây, các em sang hỏi xem.",
+        "Máy in không phải việc bên cô, em ạ."
+      ]
+    }
+  ],
+  "tuKhoaTrongChuyen": [
+    "so",
+    "niem phong",
+    "ma",
+    "sv240317",
+    "sv240228",
+    "phieu",
+    "tra",
+    "nop",
+    "gui",
+    "viet",
+    "thu",
+    "hop",
+    "buoi hop",
+    "quy che",
+    "moi",
+    "hoai",
+    "hieu",
+    "ket luan",
+    "ky"
+  ],
+  "roiDi": {
+    "nut": "Chào cô, bọn em xin phép ạ",
+    "loiBan": "Bọn em cảm ơn cô ạ.",
+    "giuLai": {
+      "ai": "ha-vy",
+      "loi": "Khoan đã. Trong sổ còn dòng này chưa gạch:"
+    },
+    "du": {
+      "ai": "tung",
+      "loi": "Xong rồi! Ra ngoài tính tiếp thôi."
+    },
+    "thieu": {
+      "ai": "ha-vy",
+      "loi": "Được. Dòng chưa rõ tớ để nguyên trong sổ."
+    }
+  }
+}
