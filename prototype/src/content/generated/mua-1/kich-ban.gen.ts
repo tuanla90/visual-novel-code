@@ -1396,6 +1396,11 @@ const GOC = {
       "mocSomNhat": 0,
       "nodes": [
         {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "tung"
+        },
+        {
           "type": "line",
           "speaker": "narrator",
           "display": "card",
@@ -1516,7 +1521,7 @@ const GOC = {
       "nodes": [
         {
           "type": "image",
-          "imageId": "chibi-ha-vy"
+          "imageId": "cg-so-ha-vy-gio"
         },
         {
           "type": "note",
@@ -1548,6 +1553,16 @@ const GOC = {
       "canhCat": true,
       "mocSomNhat": 0,
       "nodes": [
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "minh-anh"
+        },
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "duy"
+        },
         {
           "type": "note",
           "text": "Nền bg-mvp-san-ktx-trung-thu-ba-banh: cùng sân, đĩa còn ba chiếc bánh."
@@ -2965,6 +2980,26 @@ const GOC = {
       "canh": "phong-clb-dem-banh-mi",
       "mocSomNhat": 51,
       "nodes": [
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "minh-anh"
+        },
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "duy"
+        },
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "ha-vy"
+        },
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "tung"
+        },
         {
           "type": "line",
           "speaker": "narrator",

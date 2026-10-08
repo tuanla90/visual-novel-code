@@ -81,6 +81,9 @@
 
 ### md-10-trung-thu — Cảnh 3: Trung thu ở sân ký túc xá, 19:00, đĩa bốn bánh {cảnh: san-ktx-trung-thu}
 
+<!-- User 08/10: ở Cảnh 3 người chơi đang tham gia nên đứng trên dàn cùng mọi người (không áp luật đứng nhìn). Luật hiện chỉ cho [RA player]; [VÀO player] là lệnh mới cho B19-MÁY (luat-mvp.ts, case 'stage'). -->
+<!-- MỚI: - [VÀO player] -->
+- [VÀO tung]
 - [LỜI md-10-trung-thu.1]
 - [ẢNH cg-nam-ghe]
 - [LỜI md-10-trung-thu.2]
@@ -98,12 +101,15 @@
 
 ### md-10-gap-ha-vy — Trung thu: chào bạn đeo kính ghi sổ nhỏ {cảnh: san-ktx-trung-thu}
 
-<!-- ẢNH MỚI: cg-so-ha-vy-gio (đang vẽ; khi có tệp thì thay dòng ảnh tạm dưới) -->
-- [ẢNH chibi-ha-vy]
+- [ẢNH cg-so-ha-vy-gio]
 - [LỜI md-10-gap-ha-vy.1]
 
 ### md-10-chia-banh — Trung thu 19:15: chia bánh còn ba cái; quan sát tay từng người; dòng thời gian tập dượt {cảnh: san-ktx-trung-thu-ba-banh · cảnh cắt}
 
+<!-- Đổi cảnh thì dàn xóa hết: cả nhóm đứng lại quanh bàn (người chơi cũng có mặt, xem chú thích ở md-10-trung-thu). -->
+<!-- MỚI: - [VÀO player] -->
+- [VÀO minh-anh]
+- [VÀO duy]
 - [LỜI md-10-chia-banh.1]
 - [BIẾT ha-vy câu nói]
 - [LỜI md-10-chia-banh.2]

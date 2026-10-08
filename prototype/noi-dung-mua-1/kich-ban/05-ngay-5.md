@@ -4,6 +4,12 @@
 
 ### n5-toi — Tối thứ Bảy: cả đội quanh bảng điều tra {cảnh: phong-clb-dem-banh-mi}
 
+<!-- User 08/10: cả năm người, gồm người chơi, có mặt trên dàn (hàng trước tối đa ba người, máy xếp hàng sau). [VÀO player] là lệnh mới cho B19-MÁY. -->
+<!-- MỚI: - [VÀO player] -->
+- [VÀO minh-anh]
+- [VÀO duy]
+- [VÀO ha-vy]
+- [VÀO tung]
 - [LỜI n5-toi.1]
 <!-- MỚI: - [DÒNG THỜI GIAN dtg-vu1] -->
 - [LỜI n5-toi.2]
