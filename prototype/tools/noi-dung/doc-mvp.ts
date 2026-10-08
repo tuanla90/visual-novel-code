@@ -331,7 +331,8 @@ export type MucMvp =
    * chờ người chơi bấm nút mang nhãn này. `- [HẾT NGÀY] <nhãn>` (không chuỗi): bấm là sang ngày kế luôn.
    */
   | { kind: 'het-ngay'; to: string | null; label: string }
-  | { kind: 'explore'; id: string; diem: RawDiemKhamPha[]; kieu: 'canh' | 'ban-do' | 'quan-sat'; nhanVat: string | null; gio: string | null; dang: string | null; haVySoi: boolean };
+  /** `kieu: 'dan'` (gói B19, `[KHÁM PHÁ <mã> · dàn]`): chân dung những người bấm được đứng trên dàn của cảnh, không cần x / y / rộng. */
+  | { kind: 'explore'; id: string; diem: RawDiemKhamPha[]; kieu: 'canh' | 'ban-do' | 'quan-sat' | 'dan'; nhanVat: string | null; gio: string | null; dang: string | null; haVySoi: boolean };
 
 export interface RawBangChungDoiChat {
   id: string;
@@ -434,6 +435,35 @@ export interface RawDiemKhamPha extends RawAnhDuKien {
   dau: 'chinh' | 'phu' | null;
   /** `· có: a, b`: nhân vật có mặt ở điểm này (bản đồ: ảnh mặt cạnh ghim khi người chơi đã biết lịch của họ). */
   co: string[];
+}
+
+/**
+ * Gói B19: dòng con của `[KHÁM PHÁ <mã> · dàn]` (đã bỏ `  - `): `nv:<mã>[/<biểu cảm>] → <chuỗi>[ · nhãn: …][ · dấu: !|?]…` — người
+ * đứng trên dàn, không cần x / y / rộng (viết kèm cũng được, máy bỏ qua). Sai cú pháp → ném lỗi.
+ */
+export function docDiemDan(v: string): RawDiemKhamPha {
+  const m = new RegExp(`^(nv:${MA}(?:/${MA})?)(?: · x [^→]+)? → (${MA})((?: · (?:sau|nhãn|dấu|có): [^·]+)*)$`).exec(v.trim());
+  if (!m) throw new Error(`[KHÁM PHÁ · dàn]: dòng con phải là "nv:<mã>[/<biểu cảm>] → <chuỗi>[ · nhãn: <chữ>][ · dấu: !|?]": "${v}"`);
+  return { sprite: m[1] ?? '', x: 0, y: 0, rong: 0, chuoi: m[2] ?? '', ...docPhanThemDiem(m[3] ?? '') };
+}
+
+/** Phần ` · sau: … · nhãn: … · dấu: … · có: …` của một chỗ bấm `[KHÁM PHÁ]`. */
+function docPhanThemDiem(phanThem: string): { sau: string[]; nhan: string | null; dau: 'chinh' | 'phu' | null; co: string[] } {
+  let sau: string[] = [];
+  let nhan: string | null = null;
+  let dau: 'chinh' | 'phu' | null = null;
+  let co: string[] = [];
+  for (const phan of phanThem.split(' · ').slice(1)) {
+    const [khoa, ...con] = phan.split(': ');
+    const gt = con.join(': ').trim();
+    if (khoa === 'sau') sau = chiaDanhSach(gt);
+    else if (khoa === 'có') co = chiaDanhSach(gt);
+    else if (khoa === 'dấu') {
+      if (gt !== '!' && gt !== '?') throw new Error(`[KHÁM PHÁ]: "dấu:" chỉ nhận ! hoặc ?: "${gt}"`);
+      dau = gt === '!' ? 'chinh' : 'phu';
+    } else nhan = gt;
+  }
+  return { sau, nhan, dau, co };
 }
 
 /** Đọc một dòng con của `[KHÁM PHÁ]` (đã bỏ `  - `); sai cú pháp → ném lỗi. */
@@ -1429,7 +1459,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           return i;
         }
         if (kham) {
-          kham.diem.push(docDiemKhamPha(line.slice(4)));
+          kham.diem.push(kham.kieu === 'dan' ? docDiemDan(line.slice(4)) : docDiemKhamPha(line.slice(4)));
           return i;
         }
         throw new Error(`dòng con không thuộc [HỎI], [ĐỐI CHẤT], [RẼ NHÁNH], [TẠO NHÂN VẬT] hay [KHÁM PHÁ]: "${line}"`);
@@ -1576,8 +1606,8 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       }
       if (line === '- [RẼ KẾT]') return add({ kind: 'ending-branch' });
       // `quan sát <nv>/<dáng>`: soi nhân vật trong một dáng / bộ đồ cụ thể; `· Hà Vy soi`: mở bằng cảnh cắt đôi mắt Hà Vy (kính lóe sáng).
-      if ((m = new RegExp(`^- \\[KHÁM PHÁ (${MA})(?: · (bản đồ(?: · giờ (\\d\\d:\\d\\d))?|quan sát (${MA})(?:/(${MA}))?( · Hà Vy soi)?))?\\]$`).exec(line))) {
-        kham = { kind: 'explore', id: m[1] ?? '', diem: [], kieu: m[2]?.startsWith('bản đồ') ? 'ban-do' : m[2] ? 'quan-sat' : 'canh', nhanVat: m[4] ?? null, gio: m[3] ?? null, dang: m[5] ?? null, haVySoi: m[6] !== undefined };
+      if ((m = new RegExp(`^- \\[KHÁM PHÁ (${MA})(?: · (bản đồ(?: · giờ (\\d\\d:\\d\\d))?|quan sát (${MA})(?:/(${MA}))?( · Hà Vy soi)?|dàn))?\\]$`).exec(line))) {
+        kham = { kind: 'explore', id: m[1] ?? '', diem: [], kieu: m[2]?.startsWith('bản đồ') ? 'ban-do' : m[2] === 'dàn' ? 'dan' : m[2] ? 'quan-sat' : 'canh', nhanVat: m[4] ?? null, gio: m[3] ?? null, dang: m[5] ?? null, haVySoi: m[6] !== undefined };
         return add(kham);
       }
       if (line.startsWith('- [') && /^- \[[A-ZÀ-Ỹ]/.test(line)) {

@@ -210,6 +210,49 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
+          "text": "Bấm vào từng người xem tay ai còn vụn bánh."
+        },
+        {
+          "type": "explore",
+          "id": "kp-trung-thu",
+          "kieu": "dan",
+          "diem": [
+            {
+              "sprite": "nv:minh-anh/worried",
+              "x": 0,
+              "y": 0,
+              "rong": 0,
+              "chuoi": "tt-minh-anh",
+              "sau": [],
+              "nhan": "Minh Anh",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "nv:ha-vy/thinking",
+              "x": 0,
+              "y": 0,
+              "rong": 0,
+              "chuoi": "tt-ha-vy",
+              "sau": [],
+              "nhan": "Hà Vy",
+              "dau": "chinh"
+            },
+            {
+              "sprite": "nv:tung",
+              "x": 0,
+              "y": 0,
+              "rong": 0,
+              "chuoi": "tt-tung",
+              "sau": [],
+              "nhan": "Tùng",
+              "dau": "phu"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
           "text": "Cậu xếp lại xem từng việc xảy ra lúc nào."
         },
         {
@@ -221,6 +264,48 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "happy",
           "text": "Năm người. Sáng mai chị nộp danh sách."
+        }
+      ]
+    },
+    {
+      "id": "tt-minh-anh",
+      "title": "Trung thu: tay Minh Anh",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "minh-anh",
+          "expression": "worried",
+          "text": "Chị đếm lúc bảy giờ, đủ bốn cái."
+        }
+      ]
+    },
+    {
+      "id": "tt-ha-vy",
+      "title": "Trung thu: tay Hà Vy",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Tay tớ sạch. Tớ ngồi ghi sổ suốt."
+        }
+      ]
+    },
+    {
+      "id": "tt-tung",
+      "title": "Trung thu: tay Tùng",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Tớ vừa tới thôi mà!"
         }
       ]
     },

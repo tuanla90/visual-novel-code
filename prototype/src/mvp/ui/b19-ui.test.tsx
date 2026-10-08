@@ -13,6 +13,7 @@ import { taoTrangThai } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import { DongThoiGianMvp } from './DongThoiGianMvp';
 import { KetMvp } from './KetMvp';
+import { KhamPhaMvp } from './KhamPhaMvp';
 import { LeSoVachMvp } from './LeSoVachMvp';
 import { BangGhimMvp } from './v7/BangGhimMvp';
 import { ManTraV7 } from './v7/ManTraV7';
@@ -153,6 +154,25 @@ describe('B19 · màn sửa truy vấn · tính vạch', () => {
     await u.click(screen.getByRole('button', { name: /^Trình/ }));
     await waitFor(() => expect(onXong).toHaveBeenCalledTimes(1));
     expect(onSai).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('B19 · khám phá kiểu dàn', () => {
+  it('chân dung đứng trên dàn, nhãn dưới chân, dấu ! / ?; bấm người thì báo máy; người đã xem thì mờ, không bấm lại', async () => {
+    const kp = KB.chuoi.find((c) => c.id === 'md-00')?.nodes.find((n) => n.type === 'explore');
+    if (kp?.type !== 'explore') throw new Error('thiếu màn dàn');
+    const onXem = vi.fn();
+    render(<KhamPhaMvp kb={KB} id={kp.id} canh="san-ktx-trung-thu" kieu="dan" diem={kp.diem.map((d, i) => ({ diem: d, daXem: i === 1 }))} onXem={onXem} />);
+    const nguoi = document.querySelectorAll('.mvp-dan__nguoi');
+    expect(nguoi).toHaveLength(3);
+    expect([...nguoi].map((n) => n.querySelector('.mvp-dan__ten')?.textContent)).toEqual(['Minh Anh', 'Hà Vy', 'Tùng']);
+    expect(document.querySelectorAll('.mvp-dan__anh')).toHaveLength(3);
+    expect(nguoi[0]?.querySelector('.mvp-dau--chinh')?.textContent).toBe('!');
+    expect(nguoi[2]?.querySelector('.mvp-dau--phu')?.textContent).toBe('?');
+    expect(nguoi[1]).toBeDisabled();
+    await userEvent.click(screen.getByRole('button', { name: /^Minh Anh/ }));
+    expect(onXem).toHaveBeenCalledWith('tt-minh-anh');
+    expect(screen.queryByText('Vuốt ngang để xem cả cảnh')).toBeNull();
   });
 });
 

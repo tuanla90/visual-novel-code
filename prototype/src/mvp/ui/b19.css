@@ -655,3 +655,89 @@
   font-style: italic;
   opacity: 0.85;
 }
+
+/* ---------- Khám phá kiểu dàn: chân dung đứng trên dàn của cảnh ---------- */
+.mvp-canh__mo.mvp-dan__nen {
+  filter: none;
+  transform: none;
+}
+.mvp-dan {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.mvp-dan__hang {
+  width: min(100%, 1100px);
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  gap: 1%;
+}
+.mvp-dan__nguoi {
+  position: relative;
+  flex: 1 1 0;
+  max-width: 220px;
+  height: 92%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: #fff;
+  -webkit-tap-highlight-color: transparent;
+}
+.mvp-dan__hang.is-hai-hang .mvp-dan__nguoi.is-hang-sau {
+  height: 70%;
+  margin-bottom: 12%;
+  filter: brightness(0.82);
+}
+.mvp-dan__anh {
+  display: block;
+  min-height: 0;
+  max-width: 100%;
+  flex: 1 1 auto;
+  object-fit: contain;
+  object-position: bottom;
+  transition: filter 0.18s, transform 0.18s;
+}
+.mvp-dan__tam {
+  flex: 1 1 auto;
+  width: 70%;
+  border-radius: 40% 40% 8px 8px;
+  background: rgba(255, 255, 255, 0.18);
+}
+.mvp-dan__nguoi:hover:not(:disabled) .mvp-dan__anh,
+.mvp-dan__nguoi:focus-visible .mvp-dan__anh,
+.mvp-dan__nguoi:active:not(:disabled) .mvp-dan__anh {
+  filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 12px rgba(255, 214, 102, 0.95));
+  transform: translateY(-4px);
+}
+.mvp-dan__nguoi.is-da-xem .mvp-dan__anh {
+  filter: grayscale(0.35) brightness(0.8);
+}
+.mvp-dan__nguoi:disabled {
+  cursor: default;
+}
+.mvp-dan__ten {
+  margin-top: 4px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.78);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mvp-dan__nguoi .mvp-dau {
+  position: absolute;
+  top: 6%;
+  right: 12%;
+}

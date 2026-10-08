@@ -11,6 +11,8 @@
  *   - `bản đồ`: nền là bản đồ trường, mỗi điểm `ghim:<mã>` là một ghim nơi đến có tên, dấu ! / ?, và ẢNH MẶT những người đang ở đó
  *     (`có:`) — chỉ hiện người đã gặp và đã biết lịch (thẻ nhân vật có dòng "Lịch");
  *   - `quan sát <nv>`: chân dung nhân vật phóng to, mỗi điểm `vung:<mã>` là một chi tiết để soi (kiểu Sherlock Holmes).
+ *   - `dàn` (gói B19, user 08/10: cảnh đông người dùng chân dung đã duyệt, không vẽ ảnh nhóm): nền cảnh đang đứng, chân dung những
+ *     người bấm được đứng một hàng trên dàn (quá 6 người thì hàng sau nhỏ hơn), quầng sáng khi rê / chạm, nhãn dưới chân, dấu ! / ?.
  *
  * 03/10/2026 (user): màn `· Hà Vy soi` KHÔNG mồi kính lúp nữa: chi tiết ẩn, rê chuột (hay chạm) qua đúng chỗ mới hiện kính.
  * Lần soi đầu (mở đầu, chưa có Hà Vy) vẫn hiện kính để dạy thao tác.
@@ -36,6 +38,7 @@ import { anhChanDung, anhNen, anhSprite, anhTheoTen } from './anh-mvp';
 import { dangO } from '../engine/lich-nhan-vat';
 import { BAN_DO_MVP, TI_LE_NEN } from './ban-do-mvp';
 import { DAO_CU_CANH } from './dao-cu-canh';
+import './b19.css';
 
 export interface KhamPhaMvpProps {
   kb: KichBanMvp;
@@ -44,7 +47,8 @@ export interface KhamPhaMvpProps {
   canh: string;
   diem: DiemKhamPhaHienMvp[];
   onXem: (chuoi: string) => void;
-  kieu?: 'ban-do' | 'quan-sat';
+  /** `dan` (gói B19): chân dung những người bấm được đứng trên dàn của cảnh. */
+  kieu?: 'ban-do' | 'quan-sat' | 'dan';
   /** Kiểu `quan-sat`: nhân vật được soi. */
   nhanVat?: string;
   /** Nhân vật đã gặp (đã hiện thẻ giới thiệu) — bản đồ chỉ hiện ảnh mặt của người đã gặp và có "Lịch". */
@@ -191,6 +195,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
   const nv = nhanVat ? kb.nhanVat.find((n) => n.id === nhanVat) : undefined;
   const laBanDo = kieu === 'ban-do';
   const laQuanSat = kieu === 'quan-sat';
+  const laDan = kieu === 'dan';
   // Màn quan sát: mặt bàn thám tử (ảnh ui-nen-quan-sat), chân dung nằm trong khung ảnh ghim; vòng soi là chiếc kính lúp.
   const nen = laBanDo ? BAN_DO_MVP.anh : laQuanSat ? (anhTheoTen('ui-nen-quan-sat') ?? anhNen(canh)) : anhNen(canh);
   const kinhLup = anhTheoTen('ui-kinh-lup');
@@ -215,7 +220,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
 
   return (
     <div className={`mvp-canh mvp-khampha${laBanDo ? ' mvp-bando' : ''}${laQuanSat ? ' mvp-soinv' : ''}${dauMuc?.cham ? ' mvp-khampha--cham' : ''}${dauMuc && !dauMuc.vat ? ' mvp-khampha--khong-dau-vat' : ''}`} role="region" aria-label={laBanDo ? 'Bản đồ trường' : laQuanSat ? tieuDe : `Khám phá: ${tenCanh}`}>
-      {nen ? <div className={`mvp-canh__mo${laBanDo ? ' mvp-bando__mo' : ''}${laQuanSat ? ' mvp-soinv__ban' : ''}`} style={{ backgroundImage: `url("${nen}")` }} aria-hidden="true" /> : null}
+      {nen ? <div className={`mvp-canh__mo${laBanDo ? ' mvp-bando__mo' : ''}${laQuanSat ? ' mvp-soinv__ban' : ''}${laDan ? ' mvp-dan__nen' : ''}`} style={{ backgroundImage: `url("${nen}")` }} aria-hidden="true" /> : null}
       <div className="mvp-canh__dau">
         <div className="mvp-canh__tieude">
           <h2>{tieuDe}</h2>
@@ -248,7 +253,35 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
       {/* Nút hết ngày (gói B15) nằm góc trái dưới: không dưới khung "Đi cùng" (phải trên), không đè "Về bản đồ" (phải dưới). */}
       {hetNgay && onHetNgay && !laQuanSat ? <NutHetNgay key={id} hetNgay={hetNgay} onHetNgay={onHetNgay} /> : null}
 
-      {laQuanSat ? (
+      {laDan ? (
+        <div className="mvp-dan" data-so-nguoi={diem.length}>
+          <div className={`mvp-dan__hang${diem.length > 6 ? ' is-hai-hang' : ''}`}>
+            {diem.map((d, i) => {
+              const [ma = '', bc] = d.diem.sprite.startsWith('nv:') ? d.diem.sprite.slice(3).split('/') : [''];
+              const nvDan = kb.nhanVat.find((n) => n.id === ma);
+              const url = anhChanDung(ma, bc ?? nvDan?.bieuCam[0]);
+              const tenDan = d.diem.nhan ? d.diem.nhan.split(':')[0] : (nvDan?.ten ?? ma);
+              return (
+                <button
+                  key={d.diem.chuoi}
+                  type="button"
+                  className={`mvp-dan__nguoi${d.daXem ? ' is-da-xem' : ''}${d.vaoLai ? ' is-vao-lai' : ''}${diem.length > 6 && i < diem.length - 6 ? ' is-hang-sau' : ''}`}
+                  aria-label={nhanDoc(i, d)}
+                  title={`${nhan[i] ?? ''}${d.diem.dau && !d.daXem && coDau(d.diem) ? ` (${DAU[d.diem.dau].doc})` : ''}${d.vaoLai ? ', hỏi lại được' : d.daXem ? ' — đã xem' : ''}`}
+                  disabled={d.daXem && !d.vaoLai}
+                  data-diem={d.diem.chuoi}
+                  data-chinh={d.diem.dau === 'chinh' && !d.daXem && coDau(d.diem) ? '1' : undefined}
+                  onClick={() => onXem(d.diem.chuoi)}
+                >
+                  {url ? <img className="mvp-dan__anh" src={url} alt="" draggable={false} /> : <span className="mvp-dan__tam" aria-hidden="true" />}
+                  <HuyHieu d={d} hien={coDau(d.diem)} />
+                  <span className="mvp-dan__ten">{tenDan}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      ) : laQuanSat ? (
         <div className={`mvp-soinv__vung${catCanh.dang ? ' dang-cat-canh' : ''}${haVySoi ? ' co-ha-vy' : ''}`} data-soi-an={haVySoi ? '1' : undefined}>
           {catCanh.dang ? (
             <button type="button" className="mvp-catcanh" onClick={catCanh.boQua} aria-label="Hà Vy quan sát — bấm để bỏ qua">
@@ -423,7 +456,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
           </div>
         </div>
       )}
-      {laQuanSat ? null : <p className="mvp-canh__vuot">Vuốt ngang để xem cả cảnh</p>}
+      {laQuanSat || laDan ? null : <p className="mvp-canh__vuot">Vuốt ngang để xem cả cảnh</p>}
 
     </div>
   );

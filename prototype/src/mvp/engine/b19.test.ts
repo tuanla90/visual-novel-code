@@ -45,7 +45,7 @@ describe('B19 · chấm vụ: ranh giới rank', () => {
     expect(s.co).not.toContain('vu1-ket-tam');
     expect(s.ketQua).toBe('that');
     expect(s.conTro?.chuoi).toBe('canh-12');
-    expect(s.daXemDiem ?? []).toEqual([]);
+    expect(s.daXemDiem).toEqual(['tt-minh-anh', 'tt-ha-vy']);
     const kn = khungNhin(KB, s);
     expect(kn.kind).toBe('end');
     if (kn.kind !== 'end') return;
@@ -202,6 +202,25 @@ describe('B19 · dòng thời gian', () => {
     expect(kn.daDat).toEqual({ o1: 'clue-ra-cong', o2: 'clue-loi-chu-cuong', o4: 'ev-phieu-gui', o5: 'clue-loi-co-lan' });
     expect(xuLy(KB, s, { type: 'dat-the-dtg', o: 'o1', the: 'clue-ra-cong' })).toBe(s);
     expect(khungNhin(KB, xuLy(KB, s, { type: 'tiep' })).kind).toBe('doi-chat');
+  });
+});
+
+describe('B19 · khám phá kiểu dàn', () => {
+  it('bấm một người trên dàn: chạy chuỗi rồi về lại màn dàn; xem hết người "!" là việc chính xong', () => {
+    let s = tuDong((_s, kn) => kn.kind === 'explore');
+    let kn = khungNhin(KB, s);
+    if (kn.kind !== 'explore') throw new Error('không tới màn dàn');
+    expect(kn.nut.kieu).toBe('dan');
+    expect(kn.diem.map((d) => d.diem.sprite)).toEqual(['nv:minh-anh/worried', 'nv:ha-vy/thinking', 'nv:tung']);
+    s = xuLy(KB, s, { type: 'xem-diem', chuoi: 'tt-minh-anh' });
+    expect(khungNhin(KB, s).kind).toBe('line');
+    s = xuLy(KB, s, { type: 'tiep' });
+    kn = khungNhin(KB, s);
+    expect(kn.kind === 'explore' && kn.xongChinh).toBe(false);
+    s = xuLy(KB, xuLy(KB, s, { type: 'xem-diem', chuoi: 'tt-ha-vy' }), { type: 'tiep' });
+    kn = khungNhin(KB, s);
+    expect(kn.kind === 'explore' && kn.xongChinh).toBe(true);
+    expect(kn.kind === 'explore' && kn.roi).toEqual({ kieu: 'di-tiep', nhan: 'Đi tiếp' });
   });
 });
 

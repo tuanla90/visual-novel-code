@@ -5,9 +5,26 @@
 - [TẠO NHÂN VẬT ten] minh-anh (neutral): "Em tên gì?"
   - xúc xắc: Chị đặt tạm một tên nhé.
 - **minh-anh** (worried): Ba cái. Lúc bảy giờ chị đếm còn bốn.
+- **ha-vy** (thinking): Bấm vào từng người xem tay ai còn vụn bánh.
+- [KHÁM PHÁ kp-trung-thu · dàn]
+  - nv:minh-anh/worried → tt-minh-anh · nhãn: Minh Anh · dấu: !
+  - nv:ha-vy/thinking → tt-ha-vy · nhãn: Hà Vy · dấu: !
+  - nv:tung → tt-tung · nhãn: Tùng · dấu: ?
 - **ha-vy** (thinking): Cậu xếp lại xem từng việc xảy ra lúc nào.
 - [DÒNG THỜI GIAN dtg-banh]
 - **minh-anh** (happy): Năm người. Sáng mai chị nộp danh sách.
+
+### tt-minh-anh — Trung thu: tay Minh Anh {cảnh: san-ktx-trung-thu}
+
+- **minh-anh** (worried): Chị đếm lúc bảy giờ, đủ bốn cái.
+
+### tt-ha-vy — Trung thu: tay Hà Vy {cảnh: san-ktx-trung-thu}
+
+- **ha-vy** (thinking): Tay tớ sạch. Tớ ngồi ghi sổ suốt.
+
+### tt-tung — Trung thu: tay Tùng {cảnh: san-ktx-trung-thu}
+
+- **tung** (happy): Tớ vừa tới thôi mà!
 
 ### n1-mo — Phòng CLB: thư kiến nghị {cảnh: phong-clb}
 

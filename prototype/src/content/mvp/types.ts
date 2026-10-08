@@ -388,9 +388,10 @@ export type NutMvp =
   | { type: 'ending-branch' }
   /**
    * `kieu` (02/10/2026): thiếu = cảnh thường (vật / người trên nền cảnh); `ban-do` = bản đồ trường, mỗi điểm một ghim nơi đến;
-   * `quan-sat` = soi chi tiết trên chân dung nhân vật `nhanVat` (kiểu Sherlock Holmes: mỗi vùng một chi tiết).
+   * `quan-sat` = soi chi tiết trên chân dung nhân vật `nhanVat` (kiểu Sherlock Holmes: mỗi vùng một chi tiết); `dan` (gói B19) =
+   * chân dung những người bấm được đứng trên dàn của cảnh (không x / y / rộng), luật như cảnh thường.
    */
-  | { type: 'explore'; id: string; diem: DiemKhamPhaMvp[]; kieu?: 'ban-do' | 'quan-sat'; nhanVat?: string; /** Bản đồ: giờ trong truyện ("HH:MM"). */ gio?: string; /** Quan sát: dáng / bộ đồ của nhân vật được soi. */ dang?: string; /** Quan sát: mở bằng cảnh cắt đôi mắt Hà Vy. */ haVySoi?: boolean };
+  | { type: 'explore'; id: string; diem: DiemKhamPhaMvp[]; kieu?: 'ban-do' | 'quan-sat' | 'dan'; nhanVat?: string; /** Bản đồ: giờ trong truyện ("HH:MM"). */ gio?: string; /** Quan sát: dáng / bộ đồ của nhân vật được soi. */ dang?: string; /** Quan sát: mở bằng cảnh cắt đôi mắt Hà Vy. */ haVySoi?: boolean };
 
 /**
  * Một chỗ bấm được của `[KHÁM PHÁ]` (đặc tả §18.6): vật/người đặt trên nền cảnh của chuỗi, bấm → chạy `chuoi`; chuỗi hết

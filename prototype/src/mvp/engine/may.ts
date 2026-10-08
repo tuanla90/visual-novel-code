@@ -543,7 +543,7 @@ function hoiLaiDuoc(kb: KichBanMvp, s: TrangThaiMvp, chuoi: string): { nut: numb
  */
 function canhNoiDaGhe(kb: KichBanMvp, s: TrangThaiMvp, ghim: string, boiCanh: BoiCanhChuoi): KhamPhaMvp | null {
   const nodes = timChuoi(kb, ghim)?.nodes ?? [];
-  const i = nodes.findIndex((n) => n.type === 'explore' && !n.kieu);
+  const i = nodes.findIndex((n) => n.type === 'explore' && laCanhThuong(n));
   const nut = nodes[i];
   if (!nut || nut.type !== 'explore') return null;
   const da = s.daXemDiem ?? [];
@@ -723,6 +723,11 @@ function batDauVuSau(s: TrangThaiMvp, vu: Pick<VuSauMvp, 'id' | 'chuoi'>, phu: T
 
 // ---------- Khám phá ----------
 
+/** Cảnh khám phá "thường" (vật / người trên cảnh): không kiểu, hay kiểu dàn (gói B19: người đứng trên dàn, luật như cảnh thường). */
+function laCanhThuong(n: Extract<NutMvp, { type: 'explore' }>): boolean {
+  return !n.kieu || n.kieu === 'dan';
+}
+
 function nutKhamPha(kb: KichBanMvp, kp: KhamPhaMvp): Extract<NutMvp, { type: 'explore' }> | undefined {
   const n = timChuoi(kb, kp.veLai.chuoi)?.nodes[kp.veLai.nut];
   return n?.type === 'explore' ? n : undefined;
@@ -743,7 +748,7 @@ export function xongChinhCua(nut: Extract<NutMvp, { type: 'explore' }>, daXem: r
 function laNoiTrenBanDo(kb: KichBanMvp, kp: KhamPhaMvp): boolean {
   if (!kp.cha) return false;
   const nut = nutKhamPha(kb, kp);
-  return !!nut && !nut.kieu && nutKhamPha(kb, kp.cha)?.kieu === 'ban-do';
+  return !!nut && laCanhThuong(nut) && nutKhamPha(kb, kp.cha)?.kieu === 'ban-do';
 }
 
 /**
@@ -806,7 +811,7 @@ function goNhacCu(kb: KichBanMvp, s: TrangThaiMvp, nut: Extract<NutMvp, { type: 
   if (laLoiDan) return s;
   const d = nut.diem.find((x) => x.chuoi === chuoi);
   const coChinh = nut.diem.some((x) => x.dau === 'chinh');
-  if (!d || nut.kieu || (coChinh && d.dau !== 'chinh')) return s;
+  if (!d || !laCanhThuong(nut) || (coChinh && d.dau !== 'chinh')) return s;
   return { ...s, nhacViec: null };
 }
 
@@ -1409,7 +1414,7 @@ function vaoLaiDiem(kb: KichBanMvp, s: TrangThaiMvp, kp: KhamPhaMvp, nut: Extrac
     const moi: TrangThaiMvp = { ...s, hoiDap: null, canhLui: null, khamPha: { ...trong, cha: { ...kp, dangXem: chuoi } }, conTro: { ...trong.veLai } };
     return napLaiLuot(kb, moi, chuoi);
   }
-  if (nut.kieu) return null;
+  if (!laCanhThuong(nut)) return null;
   const hd = hoiLaiDuoc(kb, s, chuoi);
   const to = hd ? toHoiDap(kb, hd.ma) : undefined;
   if (!hd || !to) return null;

@@ -167,6 +167,27 @@ describe('B19 · máy kiểm', () => {
   });
 });
 
+describe('B19 · khám phá kiểu dàn', () => {
+  it('[KHÁM PHÁ … · dàn]: người không cần x / y / rộng, có nhãn và dấu', () => {
+    const kp = nut(doc().mvp, 'md-00').find((x) => x.kind === 'explore');
+    expect(kp?.kind === 'explore' && kp.kieu).toBe('dan');
+    expect(kp?.kind === 'explore' && kp.diem.map((d) => [d.sprite, d.chuoi, d.nhan, d.dau])).toEqual([
+      ['nv:minh-anh/worried', 'tt-minh-anh', 'Minh Anh', 'chinh'],
+      ['nv:ha-vy/thinking', 'tt-ha-vy', 'Hà Vy', 'chinh'],
+      ['nv:tung', 'tt-tung', 'Tùng', 'phu'],
+    ]);
+  });
+
+  it('dàn chỉ có người; người phải có ảnh chân dung đúng biểu cảm (máy kiểm có danh sách ảnh)', () => {
+    expect(doc({ [KB_TEP]: [['  - nv:tung → tt-tung', '  - obj-ghe → tt-tung']] }).loi.join('\n')).toMatch(/dòng con phải là "nv:<mã>/);
+    const { mvp } = doc();
+    const thieuAnh = kiemLuatMvp(mvp, { anh: new Set(['char-minh-anh-worried', 'char-tung']) }).loi.map(dinhDangLoi).join('\n');
+    expect(thieuAnh).toMatch(/không có ảnh chân dung "ha-vy" biểu cảm "thinking"/);
+    expect(thieuAnh).not.toMatch(/"tung"/);
+    expect(kiemLuatMvp(mvp, { anh: new Set(['char-minh-anh-worried', 'char-ha-vy-thinking', 'char-tung-anchor']) }).loi).toEqual([]);
+  });
+});
+
 describe('B19 · truyện chữ in lệnh mới', () => {
   it('dòng thời gian in bản đã dựng; trắc nghiệm in câu đúng và lời khi sai; chấm in ba nhánh A/B/C; rẽ kết theo rank', async () => {
     const { mvp } = doc();

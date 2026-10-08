@@ -581,6 +581,16 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
             } else if (tuyChon.spriteVat && !tuyChon.spriteVat.has(d.sprite)) {
               err(vt, `${noi}: không có ảnh vật "${d.sprite}" trong src/assets/mvp/vat/`);
             }
+            if (it.kieu === 'dan') {
+              // Gói B19, `· dàn`: chỉ người (`nv:<mã>[/<biểu cảm>]`), có ảnh chân dung đúng biểu cảm; không có x / y / rộng.
+              const [ma = '', bc] = d.sprite.startsWith('nv:') ? d.sprite.slice(3).split('/') : [''];
+              if (!d.sprite.startsWith('nv:')) err(vt, `${noi}: cảnh dàn chỉ có người "nv:<mã>[/<biểu cảm>]", không có "${d.sprite}"`);
+              else if (nhanVat.has(ma) && tuyChon.anh) {
+                const ung = bc ? [`char-${ma}-${bc}`, `${ma}-${bc}`] : [`char-${ma}-anchor`, `char-${ma}`, `char-${ma}-neutral`];
+                if (!ung.some((t) => tuyChon.anh?.has(t))) err(vt, `${noi}: không có ảnh chân dung ${bc ? `"${ma}" biểu cảm "${bc}"` : `"${ma}"`} (cần ${ung.join(' hoặc ')} trong src/assets/)`);
+              }
+              continue;
+            }
             for (const [ten, v] of [['x', d.x], ['y', d.y], ['rộng', d.rong]] as const) {
               if (!(v >= 0 && v <= 100)) err(vt, `${noi}: ${ten} phải trong 0–100%: ${v}%`);
             }
