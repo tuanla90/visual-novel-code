@@ -655,6 +655,11 @@
   font-style: italic;
   opacity: 0.85;
 }
+/* Màn kết: trang sổ vừa chiều cao màn (điện thoại cầm ngang 812×375 không phải cuộn mới thấy nút). */
+.mvp-ket--so .so-tk__trang {
+  width: min(100%, 760px, calc((100vh - 230px) * 1360 / 768));
+  min-width: 240px;
+}
 
 /* ---------- Khám phá kiểu dàn: chân dung đứng trên dàn của cảnh ---------- */
 .mvp-canh__mo.mvp-dan__nen {
