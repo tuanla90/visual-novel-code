@@ -1,9 +1,6 @@
-# Dòng thời gian Vụ 1 (nháp, gói B19-NỘI DUNG, 08/10/2026)
+# Dòng thời gian Vụ 1
 
-<!-- Định dạng theo đề bài B19 mục 5.1. Người điều phối chuyển phần dưới dòng "---" vào prototype/noi-dung-mua-1/dong-thoi-gian.md khi gộp với B19-MÁY. Thẻ nhận đều là thẻ có thật trong hồ sơ Vụ 1 (ho-so/*.md và vật chứng của thẻ thử thách) và được mở trước chỗ đặt [DÒNG THỜI GIAN] trong kịch bản (dtg-banh: kich-ban/00-mo-dau.md, chuỗi md-10-chia-banh; dtg-vu1: kich-ban/05-ngay-5.md, chuỗi n5-toi; xem lại ở buổi họp: [HIỆN DÒNG THỜI GIAN dtg-vu1], kich-ban/06-hop-va-ket.md, chuỗi hop-00). Mọi câu "Kéo sai" / "Kéo vào chỗ trống" là câu mới, đánh dấu (tạm), chờ user duyệt. -->
-<!-- Chỗ chưa rõ cú pháp, ghi để B19-MÁY quyết: (1) câu kéo sai chung của người nhắc viết ở dòng "- Kéo sai:" ngay dưới "- Người nhắc khi kéo sai:" (đề bài chỉ nói "câu chung của người nhắc"); (2) ô khóa sẵn o3 ghi thẻ làm căn cứ trong chú thích ngay dưới, nếu máy muốn hiện khi người chơi bấm vào ô. -->
-
----
+<!-- Gói B19 (08/10/2026). Thẻ nhận đều là thẻ có thật trong hồ sơ Vụ 1 và được mở trước chỗ đặt [DÒNG THỜI GIAN] (dtg-banh: kich-ban/00-mo-dau.md, chuỗi md-10-chia-banh; dtg-vu1: kich-ban/05-ngay-5.md, chuỗi n5-toi; đọc lại ở buổi họp: [HIỆN DÒNG THỜI GIAN dtg-vu1], chuỗi hop-00). Câu "Kéo sai" / "Kéo vào chỗ trống" là câu mới, đánh dấu (tạm), chờ user duyệt. -->
 
 ## dtg-banh — Đĩa bánh Trung thu {kiểu: tập dượt}
 

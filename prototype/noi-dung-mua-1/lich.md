@@ -33,6 +33,4 @@
 ## Kết
 <!-- Kết thật = rank A, B; kết tạm = rank C (luật chấm 08/10, đề bài B19 mục 4). Bộ đọc hiện chỉ có nhãn "Kết thường"; khi có [CHẤM VỤ] (B19-MÁY) nhãn hiện cho người chơi là "Kết tạm". -->
 - Kết thật: ket-that
-<!-- MỚI (B19-MÁY: bộ có [CHẤM VỤ] + [RẼ KẾT] bắt buộc dòng này; A/B → Kết thật, C → Kết tạm): - Kết tạm: ket-tam -->
-<!-- TẠM (khi có dòng "Kết tạm" ở trên thì xem B19-MÁY còn cần dòng "Kết thường" dưới không; bộ đọc hiện tại cần). -->
-- Kết thường: ket-tam
+- Kết tạm: ket-tam

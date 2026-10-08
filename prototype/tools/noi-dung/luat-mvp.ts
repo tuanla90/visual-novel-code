@@ -533,7 +533,8 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
           break;
         case 'stage':
           // `[RA player]`: người chơi đứng ngoài quan sát, không lên dàn chân dung cho tới khi nói.
-          if (!nhanVat.has(it.nhanVat) && !(it.action === 'ra' && it.nhanVat === 'player')) err(vt, `[${it.action === 'vao' ? 'VÀO' : 'RA'} ${it.nhanVat}]: không có nhân vật "${it.nhanVat}"`);
+          // `[VÀO player]` (B19, user 08/10): người chơi đang tham gia cảnh đông người thì đứng trên dàn cùng mọi người.
+          if (!nhanVat.has(it.nhanVat) && it.nhanVat !== 'player') err(vt, `[${it.action === 'vao' ? 'VÀO' : 'RA'} ${it.nhanVat}]: không có nhân vật "${it.nhanVat}"`);
           break;
         case 'biet': {
           // Gói B18: mã phải là nhân vật có thẻ giới thiệu; trường phải là ô thẻ có dữ liệu; ô đã biết lúc gặp (hoặc thẻ không khai

@@ -4,7 +4,7 @@
  */
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
+import { KICH_BAN_MUA_1 } from '../engine/testing/mua1-truoc-b19/kich-ban.gen';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { GioiThieuMvp } from './GioiThieuMvp';

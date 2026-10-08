@@ -2,7 +2,6 @@
 
 <!-- Gói B19 (08/10/2026): viết lại theo bản thoại 6 (docs/mua-1/brief/b19-ban-6-thoai.md), Cảnh 0 tới Cảnh 4. Lời ở loi/00-mo-dau.md. -->
 <!-- Mã chuỗi giữ tiền tố md-08 (tuần công dân), md-09 (Ngày hội), md-10 (Trung thu), md-11 (phòng CLB 23/09): lịch trong game suy ngày của mở đầu từ tiền tố này (src/mvp/engine/lich-ngay.ts). Chuỗi có câu Minh Anh tự xưng KHÔNG đặt tên md-09-ngay-hoi (máy chặn thẻ Minh Anh ở chuỗi ấy, may.ts canGioiThieu). -->
-<!-- Lệnh mới của đề bài B19 mục 5 (agent MÁY dựng) nằm trong chú thích "MỚI:"; người điều phối gỡ chú thích khi gộp. -->
 
 ### md-00-tren-xe — Cảnh 0: trên xe buýt lên Hà Nội {cảnh: xe-buyt}
 
@@ -82,7 +81,7 @@
 ### md-10-trung-thu — Cảnh 3: Trung thu ở sân ký túc xá, 19:00, đĩa bốn bánh {cảnh: san-ktx-trung-thu}
 
 <!-- User 08/10: ở Cảnh 3 người chơi đang tham gia nên đứng trên dàn cùng mọi người (không áp luật đứng nhìn). Luật hiện chỉ cho [RA player]; [VÀO player] là lệnh mới cho B19-MÁY (luat-mvp.ts, case 'stage'). -->
-<!-- MỚI: - [VÀO player] -->
+- [VÀO player]
 - [VÀO tung]
 - [LỜI md-10-trung-thu.1]
 - [ẢNH cg-nam-ghe]
@@ -107,28 +106,21 @@
 ### md-10-chia-banh — Trung thu 19:15: chia bánh còn ba cái; quan sát tay từng người; dòng thời gian tập dượt {cảnh: san-ktx-trung-thu-ba-banh · cảnh cắt}
 
 <!-- Đổi cảnh thì dàn xóa hết: cả nhóm đứng lại quanh bàn (người chơi cũng có mặt, xem chú thích ở md-10-trung-thu). -->
-<!-- MỚI: - [VÀO player] -->
+- [VÀO player]
 - [VÀO minh-anh]
 - [VÀO duy]
 - [LỜI md-10-chia-banh.1]
 - [BIẾT ha-vy câu nói]
 - [LỜI md-10-chia-banh.2]
 <!-- Quan sát (đề bài B19 mục 3, Cảnh 3; user 08/10: cảnh đông người dùng chân dung đã duyệt đứng trên dàn, không dùng ảnh nhóm): bấm từng người, mỗi người một câu ngắn về tay họ, khớp ảnh chân dung (Minh Anh dáng neo: chống hông, đeo đồng hồ; Duy: cầm xấp bìa, chùm chìa ở thắt lưng; Hà Vy dáng neo: ôm cuốn sổ; Tùng happy: giơ ngón cái, tay kia cầm bản đồ; bé Na: giấu hai tay sau lưng, đầu ngón tay dính vụn bánh). Nền bg-mvp-san-ktx-trung-thu-ba-banh. -->
-<!-- MỚI (thay khối [KHÁM PHÁ kp-trung-thu-tay] TẠM ngay dưới): - [KHÁM PHÁ kp-trung-thu-tay · dàn] -->
-<!-- MỚI:   - nv:minh-anh → md-10-tay-minh-anh · nhãn: Chị Minh Anh · dấu: ! -->
-<!-- MỚI:   - nv:duy → md-10-tay-duy · nhãn: Anh Duy · dấu: ! -->
-<!-- MỚI:   - nv:ha-vy → md-10-tay-ha-vy · nhãn: Hà Vy · dấu: ! -->
-<!-- MỚI:   - nv:tung/happy → md-10-tay-tung · nhãn: Tùng · dấu: ! -->
-<!-- MỚI:   - nv:be-na → md-10-tay-be-na · nhãn: Bé gái · dấu: ! -->
-<!-- TẠM (xóa khối [KHÁM PHÁ] dưới khi gộp B19-MÁY): chân dung đặt trên nền theo x/y -->
-- [KHÁM PHÁ kp-trung-thu-tay]
-  - nv:minh-anh · x 10% · y 100% · rộng 14% → md-10-tay-minh-anh · dấu: ! · nhãn: Chị Minh Anh
-  - nv:duy · x 28% · y 100% · rộng 14% → md-10-tay-duy · dấu: ! · nhãn: Anh Duy
-  - nv:ha-vy · x 46% · y 100% · rộng 14% → md-10-tay-ha-vy · dấu: ! · nhãn: Hà Vy
-  - nv:tung/happy · x 64% · y 100% · rộng 14% → md-10-tay-tung · dấu: ! · nhãn: Tùng
-  - nv:be-na · x 84% · y 100% · rộng 9% → md-10-tay-be-na · dấu: ! · nhãn: Bé gái
+- [KHÁM PHÁ kp-trung-thu-tay · dàn]
+  - nv:minh-anh → md-10-tay-minh-anh · nhãn: Chị Minh Anh · dấu: !
+  - nv:duy → md-10-tay-duy · nhãn: Anh Duy · dấu: !
+  - nv:ha-vy → md-10-tay-ha-vy · nhãn: Hà Vy · dấu: !
+  - nv:tung/happy → md-10-tay-tung · nhãn: Tùng · dấu: !
+  - nv:be-na → md-10-tay-be-na · nhãn: Bé gái · dấu: !
 - [LỜI md-10-chia-banh.3]
-<!-- MỚI: - [DÒNG THỜI GIAN dtg-banh] -->
+- [DÒNG THỜI GIAN dtg-banh]
 - [LỜI md-10-chia-banh.4]
 - [ĐI CÙNG md-11-phong-clb] Thứ Hai tuần sau, lên phòng CLB
 
@@ -155,7 +147,7 @@
 ### md-11-phong-clb — Cảnh 4: thứ Hai 23/09, cô Lan mang thư kiến nghị và phiếu gửi tới phòng CLB {cảnh: phong-clb}
 
 <!-- Điểm lưu đầu Vụ 1 (đề bài B19 mục 2, 5.4): chơi lại Vụ 1 bắt đầu từ đây, không đi lại phần nhập học. -->
-<!-- MỚI: - [ĐIỂM LƯU VỤ vu1] -->
+- [ĐIỂM LƯU VỤ vu1]
 - [LỜI md-11-phong-clb.1]
 - [KHÁM PHÁ kp-thu-phieu]
   - vung:la-thu · x 52% · y 47% · rộng 7% → md-11-la-thu · dấu: ! · nhãn: Lá thư kiến nghị

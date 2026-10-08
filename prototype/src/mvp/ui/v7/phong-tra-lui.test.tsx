@@ -5,7 +5,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { KICH_BAN_MUA_1 } from '../../../content/generated/mua-1/kich-ban.gen';
+import { KICH_BAN_MUA_1 } from '../../engine/testing/mua1-truoc-b19/kich-ban.gen';
 import type { KichBanMvp, NutMvp, TheThuThachMvp } from '../../../content/mvp/types';
 import { giaTriTuHoSo } from '../../engine/giay-nho';
 import { diemDangHien } from '../../engine/may';

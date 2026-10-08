@@ -16,6 +16,8 @@ import { canGioiThieu, dieuHuongTuDo, khungNhin, taoTrangThai, xuLy } from '../e
 import type { TrangThaiMvp } from '../engine/trang-thai';
 import { choiTuDong, RE_NHANH_KET_THAT, reNhanhTheo } from '../engine/tu-choi';
 import { KICH_BAN as kb, useKhoMvp } from '../store/kho-mvp';
+import { KICH_BAN_MUA_1 as KB_CU } from '../engine/testing/mua1-truoc-b19/kich-ban.gen';
+import type { KichBanMvp } from '../../content/mvp/types';
 import { KhamPhaMvp } from './KhamPhaMvp';
 import { ManChoiMvp } from './ManChoiMvp';
 
@@ -100,12 +102,14 @@ describe('gói B15 · A, B: nút hết ngày và ghim đã ghé trên cảnh kh�
   });
 
   it('ghim đã ghé mà vào lại được thì bấm được; ghim đã ghé thường thì vẫn khóa', async () => {
-    const s = banDoNgay2();
-    const kn = khungNhin(kb, s);
+    // Bản đồ ngày 2 nhiều ghim của bộ mùa 1 trước B19 (bản đông cứng); Vụ 1 bản 6 mỗi ngày chỉ một nơi cần tới.
+    const kbCu = KB_CU as unknown as KichBanMvp;
+    const s = choiTuDong(kbCu, taoTrangThai(kbCu, 1), CT, (_s, kn) => kn.kind === 'explore' && kn.nut.id === 'kp-bd-n2', 20000);
+    const kn = khungNhin(kbCu, s);
     if (kn.kind !== 'explore') throw new Error(kn.kind);
     const onXem = vi.fn();
     const diem = kn.diem.map((d) => (d.diem.chuoi === 'n2-co-hanh' ? { ...d, daXem: true, vaoLai: true } : d.diem.chuoi === 'n2-bd-toa-b' ? { ...d, daXem: true } : d.diem.chuoi === 'n2-bd-cang-tin' ? { ...d, daXem: true, vaoLai: true, xemHet: true } : d));
-    render(<KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={diem} kieu={kn.nut.kieu} onXem={onXem} />);
+    render(<KhamPhaMvp kb={kbCu} id={kn.nut.id} canh={s.canh} diem={diem} kieu={kn.nut.kieu} onXem={onXem} />);
     const daGhe = screen.getByRole('button', { name: /^Phòng Đào tạo.*đã ghé, vào lại được/ });
     expect(daGhe).toBeEnabled();
     expect(daGhe).toHaveClass('is-xong', 'is-vao-lai');
@@ -119,16 +123,12 @@ describe('gói B15 · A, B: nút hết ngày và ghim đã ghé trên cảnh kh�
     expect(xemHet.querySelector('.mvp-dau--het')).not.toBeNull();
   });
 
-  it('màn chơi thật: chờ hết ngày ở phòng CLB → có nút hết ngày, bấm (không còn nơi chưa ghé) là sang buổi tối', async () => {
-    let s = choiTuDong(kb, taoTrangThai(kb, 1), CT, (_s, kn) => kn.kind === 'challenge' && kn.thuThach.id === 'c-lop', 20000);
-    s = xuLy(kb, s, { type: 'xong-thu-thach', thuThach: 'c-lop' });
-    for (let i = 0; i < 40 && khungNhin(kb, s).kind !== 'explore'; i++) s = xuLy(kb, s, { type: 'tiep' });
-    expect(khungNhin(kb, s)).toMatchObject({ kind: 'explore', hetNgay: { nhan: 'Về phòng KTX ăn tối', conChuaGhe: 0 } });
+  it('màn chơi thật: xong việc ở sảnh tòa B ngày 1 → về bản đồ có nút hết ngày, bấm (không còn nơi chưa ghé) là sang chiều ở phòng CLB', async () => {
+    const s = choiTuDong(kb, taoTrangThai(kb, 1), CT, (_s, kn) => kn.kind === 'explore' && !!kn.hetNgay, 20000);
+    expect(khungNhin(kb, s)).toMatchObject({ kind: 'explore', hetNgay: { nhan: 'Chiều về phòng CLB', conChuaGhe: 0 } });
     veManChoi(s);
-    expect(screen.getByRole('button', { name: 'Về bản đồ' })).toBeInTheDocument();
-    await userEvent.setup().click(screen.getByRole('button', { name: 'Về phòng KTX ăn tối' }));
+    await userEvent.setup().click(screen.getByRole('button', { name: 'Chiều về phòng CLB' }));
     const sau = useKhoMvp.getState().trangThai!;
-    expect(sau.conTro?.chuoi).toBe('n2-toi');
-    expect(sau.ngay).toBe(2);
+    expect(sau.conTro?.chuoi).toBe('n1-clb');
   });
 });

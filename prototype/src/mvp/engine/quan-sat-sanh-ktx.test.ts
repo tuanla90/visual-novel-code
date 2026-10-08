@@ -75,7 +75,7 @@ describe('sảnh ký túc xá: người chơi đứng ngoài nhìn bạn nữ k�
 
   // B19: bản 6 không có câu Hoài tự xưng về sau, nên máy hiện tại (may.ts canGioiThieu, luật "đứng ngoài nhìn" chỉ chờ khi nhân
   // vật có câu tự xưng ở chuỗi sau) bật thẻ Hoài ngay câu đầu ở sảnh. Chờ B19-MÁY sửa luật bật thẻ; xong thì bỏ .skip.
-  it.skip('không thẻ "Nhân vật mới" nào bật trong lúc đứng nhìn (chờ B19-MÁY: thẻ Hoài)', () => {
+  it('không thẻ "Nhân vật mới" nào bật trong lúc đứng nhìn', () => {
     const truocTuXung = canh.slice(0, canh.findIndex((x) => x.chu.includes('Tớ là')));
     expect(truocTuXung.length).toBeGreaterThan(5);
     expect(truocTuXung.map((x) => x.the).filter(Boolean)).toEqual([]);

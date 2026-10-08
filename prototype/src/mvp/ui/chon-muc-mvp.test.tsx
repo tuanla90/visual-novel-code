@@ -7,7 +7,7 @@
 import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
+import { KICH_BAN_MUA_1 } from '../engine/testing/mua1-truoc-b19/kich-ban.gen';
 import type { KichBanMvp, NutMvp } from '../../content/mvp/types';
 import { loiVietSan } from '../engine/dong-hanh-viet-san';
 import { diemDangHien, khungNhin, taoTrangThai, xuLy, type KhungNhinMvp } from '../engine/may';

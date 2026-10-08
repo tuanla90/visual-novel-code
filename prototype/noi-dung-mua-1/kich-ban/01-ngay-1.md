@@ -39,6 +39,6 @@
 ### n1-clb — 17:00 phòng CLB: Minh Anh ghép hai mảnh trên bảng điều tra {cảnh: phong-clb}
 
 - [LỜI n1-clb.1]
-<!-- MỚI: - [GHÉP MẪU] minh-anh: ev-phieu-gui-hoai + ev-the-lich-bc24 · giấy nhớ: "Hoài nào học Báo chí, khóa 2024?" -->
+- [GHÉP MẪU] minh-anh: ev-phieu-gui-hoai + ev-the-lich-bc24 · giấy nhớ: "Hoài nào học Báo chí, khóa 2024?"
 - [LỜI n1-clb.2]
 - [XONG VIỆC CHÍNH]

@@ -704,7 +704,8 @@ const GOC = {
     },
     "ket": {
       "that": "ket-that",
-      "thuong": "ket-tam"
+      "thuong": "ket-tam",
+      "tam": "ket-tam"
     }
   },
   "chuoi": [
@@ -1398,6 +1399,11 @@ const GOC = {
         {
           "type": "stage",
           "action": "vao",
+          "nhanVat": "player"
+        },
+        {
+          "type": "stage",
+          "action": "vao",
           "nhanVat": "tung"
         },
         {
@@ -1556,6 +1562,11 @@ const GOC = {
         {
           "type": "stage",
           "action": "vao",
+          "nhanVat": "player"
+        },
+        {
+          "type": "stage",
+          "action": "vao",
           "nhanVat": "minh-anh"
         },
         {
@@ -1621,12 +1632,13 @@ const GOC = {
         {
           "type": "explore",
           "id": "kp-trung-thu-tay",
+          "kieu": "dan",
           "diem": [
             {
               "sprite": "nv:minh-anh",
-              "x": 10,
-              "y": 100,
-              "rong": 14,
+              "x": 0,
+              "y": 0,
+              "rong": 0,
               "chuoi": "md-10-tay-minh-anh",
               "sau": [],
               "nhan": "Chị Minh Anh",
@@ -1634,9 +1646,9 @@ const GOC = {
             },
             {
               "sprite": "nv:duy",
-              "x": 28,
-              "y": 100,
-              "rong": 14,
+              "x": 0,
+              "y": 0,
+              "rong": 0,
               "chuoi": "md-10-tay-duy",
               "sau": [],
               "nhan": "Anh Duy",
@@ -1644,9 +1656,9 @@ const GOC = {
             },
             {
               "sprite": "nv:ha-vy",
-              "x": 46,
-              "y": 100,
-              "rong": 14,
+              "x": 0,
+              "y": 0,
+              "rong": 0,
               "chuoi": "md-10-tay-ha-vy",
               "sau": [],
               "nhan": "Hà Vy",
@@ -1654,9 +1666,9 @@ const GOC = {
             },
             {
               "sprite": "nv:tung/happy",
-              "x": 64,
-              "y": 100,
-              "rong": 14,
+              "x": 0,
+              "y": 0,
+              "rong": 0,
               "chuoi": "md-10-tay-tung",
               "sau": [],
               "nhan": "Tùng",
@@ -1664,9 +1676,9 @@ const GOC = {
             },
             {
               "sprite": "nv:be-na",
-              "x": 84,
-              "y": 100,
-              "rong": 9,
+              "x": 0,
+              "y": 0,
+              "rong": 0,
               "chuoi": "md-10-tay-be-na",
               "sau": [],
               "nhan": "Bé gái",
@@ -1684,6 +1696,10 @@ const GOC = {
           "speaker": "ha-vy",
           "expression": "thinking",
           "text": "Chưa được chia mà tay đã có vụn, tức là bé cầm bánh trước lúc chia. Cậu xếp lại xem từng việc xảy ra lúc nào."
+        },
+        {
+          "type": "dong-thoi-gian",
+          "id": "dtg-banh"
         },
         {
           "type": "note",
@@ -1855,6 +1871,10 @@ const GOC = {
       "canh": "phong-clb",
       "mocSomNhat": 0,
       "nodes": [
+        {
+          "type": "diem-luu-vu",
+          "vu": "vu1"
+        },
         {
           "type": "line",
           "speaker": "narrator",
@@ -2271,6 +2291,15 @@ const GOC = {
           "speaker": "minh-anh",
           "expression": "neutral",
           "text": "Vậy là chúng ta đã có hai mảnh ghép rất quan trọng: một bạn tên Hoài, và một tấm thẻ lịch khoa Báo chí khóa 2024. Chưa chắc là cùng một người. Nhưng nếu là cùng một người thì có thể là ai?"
+        },
+        {
+          "type": "ghep-mau",
+          "nguoi": "minh-anh",
+          "the": [
+            "ev-phieu-gui-hoai",
+            "ev-the-lich-bc24"
+          ],
+          "giayNho": "Hoài nào học Báo chí, khóa 2024?"
         },
         {
           "type": "note",
@@ -2983,6 +3012,11 @@ const GOC = {
         {
           "type": "stage",
           "action": "vao",
+          "nhanVat": "player"
+        },
+        {
+          "type": "stage",
+          "action": "vao",
           "nhanVat": "minh-anh"
         },
         {
@@ -3013,6 +3047,10 @@ const GOC = {
         {
           "type": "task",
           "text": "Dựng lại sáng thứ Hai 16/09 trên bảng (tạm)"
+        },
+        {
+          "type": "dong-thoi-gian",
+          "id": "dtg-vu1"
         },
         {
           "type": "note",
@@ -3143,7 +3181,13 @@ const GOC = {
         },
         {
           "type": "fix-query",
-          "challengeId": "c-sua-or-quan"
+          "challengeId": "c-sua-or-quan",
+          "tinhVach": {
+            "cau": {
+              "so": 1,
+              "tong": 4
+            }
+          }
         },
         {
           "type": "line",
@@ -3179,6 +3223,10 @@ const GOC = {
           "text": "Trả lời thầy Quang bằng căn cứ trong hồ sơ (tạm)"
         },
         {
+          "type": "hien-dong-thoi-gian",
+          "id": "dtg-vu1"
+        },
+        {
           "type": "doi-chat",
           "id": "dc-phieu-gui",
           "asker": {
@@ -3189,18 +3237,12 @@ const GOC = {
           "bangChung": [
             {
               "id": "clue-loi-co-lan",
-              "muc": "du",
-              "feedback": [
-                {
-                  "speaker": "thay-quang",
-                  "expression": "neutral",
-                  "text": "Em trình đi. (tạm)"
-                }
-              ]
+              "muc": "dung",
+              "feedback": []
             },
             {
               "id": "ev-the-lich-bc24",
-              "muc": "goi-y",
+              "muc": "sai",
               "feedback": [
                 {
                   "speaker": "thay-quang",
@@ -3211,7 +3253,7 @@ const GOC = {
             },
             {
               "id": "ev-mot-hoai",
-              "muc": "goi-y",
+              "muc": "sai",
               "feedback": [
                 {
                   "speaker": "thay-quang",
@@ -3221,13 +3263,7 @@ const GOC = {
               ]
             }
           ],
-          "chuaDu": [
-            {
-              "speaker": "minh-anh",
-              "expression": "worried",
-              "text": "Dạ… bọn em xin dừng ở đây ạ. (tạm)"
-            }
-          ],
+          "chuaDu": [],
           "khac": [
             {
               "speaker": "thay-quang",
@@ -3235,14 +3271,25 @@ const GOC = {
               "text": "Thầy hỏi người ký phiếu, ký với tư cách gì. (tạm)"
             }
           ],
-          "hetLuot": [
-            {
-              "speaker": "thay-quang",
-              "expression": "stern",
-              "text": "Thầy hỏi một câu, các em trình lạc ba lần rồi. (tạm)"
-            }
-          ],
-          "truUyTin": false
+          "hetLuot": [],
+          "truUyTin": false,
+          "tinhVach": {
+            "cau": {
+              "so": 2,
+              "tong": 4
+            },
+            "saiLanDau": [
+              {
+                "speaker": "narrator",
+                "text": "Hà Vy đẩy kính, nói nhỏ."
+              },
+              {
+                "speaker": "ha-vy",
+                "expression": "day-kinh",
+                "text": "Hôm ấy cô Lan nói gì về chữ ký nhỉ?"
+              }
+            ]
+          }
         },
         {
           "type": "biet",
@@ -3252,16 +3299,8 @@ const GOC = {
           ]
         },
         {
-          "type": "jump-if",
-          "dieuKien": {
-            "kind": "co",
-            "id": "dc-phieu-gui-du"
-          },
-          "to": "hop-01"
-        },
-        {
           "type": "goto",
-          "to": "hop-cham"
+          "to": "hop-01"
         }
       ]
     },
@@ -3287,29 +3326,17 @@ const GOC = {
           "bangChung": [
             {
               "id": "clue-loi-chu-cuong",
-              "muc": "du",
-              "feedback": [
-                {
-                  "speaker": "thay-quang",
-                  "expression": "neutral",
-                  "text": "Em trình tiếp đi. (tạm)"
-                }
-              ]
+              "muc": "dung",
+              "feedback": []
             },
             {
               "id": "ev-ra-cong-644",
-              "muc": "du",
-              "feedback": [
-                {
-                  "speaker": "thay-quang",
-                  "expression": "neutral",
-                  "text": "Em trình tiếp đi. (tạm)"
-                }
-              ]
+              "muc": "dung",
+              "feedback": []
             },
             {
               "id": "doc-so-thu-hop",
-              "muc": "goi-y",
+              "muc": "sai",
               "feedback": [
                 {
                   "speaker": "quan",
@@ -3320,7 +3347,7 @@ const GOC = {
             },
             {
               "id": "ev-the-lich-bc24",
-              "muc": "goi-y",
+              "muc": "sai",
               "feedback": [
                 {
                   "speaker": "quan",
@@ -3330,13 +3357,7 @@ const GOC = {
               ]
             }
           ],
-          "chuaDu": [
-            {
-              "speaker": "minh-anh",
-              "expression": "worried",
-              "text": "Dạ… bọn em xin dừng ở đây ạ. (tạm)"
-            }
-          ],
+          "chuaDu": [],
           "khac": [
             {
               "speaker": "quan",
@@ -3344,26 +3365,29 @@ const GOC = {
               "text": "Cái ấy không nói ai mang thư tới hộp. (tạm)"
             }
           ],
-          "hetLuot": [
-            {
-              "speaker": "thay-quang",
-              "expression": "stern",
-              "text": "Các em trình lạc ba lần rồi. (tạm)"
-            }
-          ],
-          "truUyTin": false
-        },
-        {
-          "type": "jump-if",
-          "dieuKien": {
-            "kind": "co",
-            "id": "dc-tu-mang-du"
-          },
-          "to": "hop-02"
+          "hetLuot": [],
+          "truUyTin": false,
+          "tinhVach": {
+            "cau": {
+              "so": 3,
+              "tong": 4
+            },
+            "saiLanDau": [
+              {
+                "speaker": "narrator",
+                "text": "Hà Vy đẩy kính, nói nhỏ."
+              },
+              {
+                "speaker": "ha-vy",
+                "expression": "day-kinh",
+                "text": "Sáng hôm ấy, ở cổng ký túc xá, chú Cường thấy gì nhỉ? (tạm)"
+              }
+            ]
+          }
         },
         {
           "type": "goto",
-          "to": "hop-cham"
+          "to": "hop-02"
         }
       ]
     },
@@ -3422,7 +3446,24 @@ const GOC = {
               ]
             }
           ],
-          "truUyTin": false
+          "truUyTin": false,
+          "tinhVach": {
+            "cau": {
+              "so": 4,
+              "tong": 4
+            },
+            "saiLanDau": [
+              {
+                "speaker": "narrator",
+                "text": "Hà Vy đẩy kính, nói nhỏ."
+              },
+              {
+                "speaker": "ha-vy",
+                "expression": "day-kinh",
+                "text": "Mình biết có người đưa phong bì. Mình đã biết người ấy là ai chưa? (tạm)"
+              }
+            ]
+          }
         },
         {
           "type": "goto",
@@ -3437,6 +3478,22 @@ const GOC = {
       "mocSomNhat": 1000,
       "nodes": [
         {
+          "type": "cham-vu",
+          "vu": "vu1",
+          "can": [
+            "ev-phieu-gui-hoai",
+            "doc-thu-kien-nghi",
+            "ev-the-lich-bc24",
+            "clue-loi-bac-thinh",
+            "ev-mot-hoai",
+            "clue-loi-co-lan",
+            "doc-so-thu-hop",
+            "clue-loi-chu-cuong",
+            "ev-ra-cong-644",
+            "dtg-vu1"
+          ]
+        },
+        {
           "type": "ending-branch"
         }
       ]
@@ -3447,22 +3504,6 @@ const GOC = {
       "canh": "phong-hop",
       "mocSomNhat": 1000,
       "nodes": [
-        {
-          "type": "condition",
-          "dieuKien": {
-            "kind": "va",
-            "cac": [
-              {
-                "kind": "co",
-                "id": "dc-phieu-gui-du"
-              },
-              {
-                "kind": "co",
-                "id": "dc-tu-mang-du"
-              }
-            ]
-          }
-        },
         {
           "type": "line",
           "speaker": "thay-quang",
@@ -3821,8 +3862,8 @@ const GOC = {
           "text": "Khi có sổ tổng kết (B19-MÁY): ngay sau đoạn này trang tổng kết Vụ 1 hiện ra, con dấu đỏ A, B hoặc C đóng xuống; ở lề trang là những vạch nhỏ gạch trong buổi họp, hoặc không có vạch nào. Lời không đọc số vạch."
         },
         {
-          "type": "image",
-          "imageId": "cg-so-tong-ket"
+          "type": "so-tong-ket",
+          "vu": "vu1"
         },
         {
           "type": "line",
@@ -3841,7 +3882,7 @@ const GOC = {
           "type": "jump-if",
           "dieuKien": {
             "kind": "co",
-            "id": "dc-tu-mang-du"
+            "id": "vu1-rank-a"
           },
           "to": "canh-12"
         },
@@ -4386,6 +4427,17 @@ const GOC = {
           }
         }
       ],
+      "khiTrinhSai": [
+        {
+          "speaker": "quan",
+          "expression": "neutral",
+          "text": "Vẫn chưa ra một dòng. Vậy câu của tôi sai ở đâu?"
+        },
+        {
+          "speaker": "narrator",
+          "text": "Minh Anh gạch một vạch nhỏ ở lề sổ."
+        }
+      ],
       "vatChung": null,
       "ghiChu": []
     }
@@ -4644,7 +4696,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài' OR nganh = 'Báo chí';",
       "soDong": 276,
-      "noi": "noi-dung-mua-1/kich-ban/06-hop-va-ket.md:17 [MÀN CHIẾU hop-chieu-or]"
+      "noi": "noi-dung-mua-1/kich-ban/06-hop-va-ket.md:16 [MÀN CHIẾU hop-chieu-or]"
     }
   ],
   "duLieu": {
@@ -4781,6 +4833,206 @@ const GOC = {
       }
     ],
     "bangAo": []
+  },
+  "dongThoiGian": {
+    "dtg-banh": {
+      "id": "dtg-banh",
+      "ten": "Đĩa bánh Trung thu",
+      "kieu": "tap-duot",
+      "nguoiNhac": "ha-vy",
+      "keoSai": [
+        {
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Chưa khớp giờ. Lời này nói chuyện lúc nào? (tạm)"
+        }
+      ],
+      "theTam": [
+        {
+          "id": "lk-dem-bon",
+          "chu": "Minh Anh: \"Lúc bảy giờ chị đếm còn bốn.\""
+        },
+        {
+          "id": "lk-tay-na",
+          "chu": "Tay bé Na còn vụn bánh"
+        },
+        {
+          "id": "lk-chia-ba",
+          "chu": "Minh Anh: \"Ba cái.\""
+        }
+      ],
+      "o": [
+        {
+          "id": "o1",
+          "gio": "19:00",
+          "noi": null,
+          "viec": "đĩa đủ bốn chiếc",
+          "nhan": [
+            "lk-dem-bon"
+          ],
+          "khoaSan": false,
+          "khongDien": null,
+          "keoSai": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Lúc bảy giờ đĩa còn đủ. Chỗ này cần lời ai đếm bánh lúc ấy. (tạm)"
+            }
+          ],
+          "keoVaoTrong": null
+        },
+        {
+          "id": "o2",
+          "gio": "?",
+          "noi": null,
+          "viec": "bé Na cầm một chiếc",
+          "nhan": [
+            "lk-tay-na"
+          ],
+          "khoaSan": false,
+          "khongDien": null,
+          "keoSai": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Chỗ này là lúc bánh rời đĩa. Tay ai còn dấu vết? (tạm)"
+            }
+          ],
+          "keoVaoTrong": null
+        },
+        {
+          "id": "o3",
+          "gio": "19:15",
+          "noi": null,
+          "viec": "chia còn ba",
+          "nhan": [
+            "lk-chia-ba"
+          ],
+          "khoaSan": false,
+          "khongDien": null,
+          "keoSai": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Lúc chia thì đã thiếu rồi. Chỗ này cần cái gì xảy ra lúc chia cơ. (tạm)"
+            }
+          ],
+          "keoVaoTrong": null
+        }
+      ]
+    },
+    "dtg-vu1": {
+      "id": "dtg-vu1",
+      "ten": "Sáng thứ Hai 16/09",
+      "kieu": "chinh",
+      "nguoiNhac": "ha-vy",
+      "keoSai": [
+        {
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Thẻ này chưa khớp ô ấy. Xem lại nó nói chuyện lúc nào, ở đâu. (tạm)"
+        }
+      ],
+      "theTam": [],
+      "o": [
+        {
+          "id": "o1",
+          "gio": "6:44",
+          "noi": "cổng ký túc xá",
+          "viec": "Hoài ra cổng",
+          "nhan": [
+            "ev-ra-cong-644"
+          ],
+          "khoaSan": false,
+          "khongDien": null,
+          "keoSai": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Ô này cần đúng giờ Hoài ra cổng. Thẻ nào ghi giờ ấy? (tạm)"
+            }
+          ],
+          "keoVaoTrong": null
+        },
+        {
+          "id": "o2",
+          "gio": "?",
+          "noi": "cổng ký túc xá",
+          "viec": "[?] đưa phong bì nâu cho Hoài",
+          "nhan": [
+            "clue-loi-chu-cuong"
+          ],
+          "khoaSan": false,
+          "khongDien": "ai",
+          "keoSai": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Ô này là lúc phong bì đến tay Hoài ở cổng. Ai đã nhìn thấy? (tạm)"
+            }
+          ],
+          "keoVaoTrong": [
+            {
+              "speaker": "ha-vy",
+              "expression": "day-kinh",
+              "text": "Người đưa phong bì là ai thì chưa có căn cứ nào. Chỗ ấy để trống. (tạm)"
+            }
+          ]
+        },
+        {
+          "id": "o3",
+          "gio": "7:00",
+          "noi": "sảnh tòa B",
+          "viec": "bác Thịnh mở sảnh",
+          "nhan": [],
+          "khoaSan": true,
+          "khongDien": null,
+          "keoSai": null,
+          "keoVaoTrong": null
+        },
+        {
+          "id": "o4",
+          "gio": "trước 9:00",
+          "noi": "sảnh tòa B",
+          "viec": "Hoài bỏ thư vào hộp",
+          "nhan": [
+            "ev-phieu-gui-hoai",
+            "ev-the-lich-bc24",
+            "clue-loi-co-lan"
+          ],
+          "khoaSan": false,
+          "khongDien": null,
+          "keoSai": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Ô này là lúc thư vào hộp. Thẻ nào cho thấy Hoài là người nộp? (tạm)"
+            }
+          ],
+          "keoVaoTrong": null
+        },
+        {
+          "id": "o5",
+          "gio": "9:00",
+          "noi": "sảnh tòa B",
+          "viec": "cô Lan thu hộp, có phong bì nâu",
+          "nhan": [
+            "doc-so-thu-hop",
+            "clue-loi-bac-thinh"
+          ],
+          "khoaSan": false,
+          "khongDien": null,
+          "keoSai": [
+            {
+              "speaker": "ha-vy",
+              "expression": "thinking",
+              "text": "Ô này là lúc cô Lan thu hộp. Thẻ nào ghi chín giờ? (tạm)"
+            }
+          ],
+          "keoVaoTrong": null
+        }
+      ]
+    }
   }
 } satisfies KichBanMvp;
 

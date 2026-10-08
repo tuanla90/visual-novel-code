@@ -10,7 +10,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { describe, expect, it } from 'vitest';
-import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
+import { KICH_BAN_MUA_1 } from '../engine/testing/mua1-truoc-b19/kich-ban.gen';
 import type { KichBanMvp, ToHoiDapMvp } from '../../content/mvp/types';
 import { khungNhin, taoTrangThai, tenNguoiNoi, xuLy, type HanhDongMvp } from '../engine/may';
 import type { TrangThaiMvp } from '../engine/trang-thai';

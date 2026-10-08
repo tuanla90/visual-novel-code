@@ -1904,6 +1904,10 @@ export function canGioiThieu(kb: KichBanMvp, s: TrangThaiMvp, kn: KhungNhinMvp):
   if (!nguoiChoiNoi) {
     const viTri = kb.chuoi.findIndex((c) => c.id === chuoi.id);
     if (viTri >= 0 && kb.chuoi.slice(viTri + 1).some((c) => c.nodes.some(laTuXung))) return null;
+    // B19 (Vụ 1 bản 6): người chơi chỉ đứng nhìn mà cả chuỗi không ai gọi tên người này → chưa giới thiệu. Hoài kéo vali ở sảnh
+    // ký túc xá không bao giờ tự xưng, thẻ bật ở câu đầu sẽ lộ tên "Hoài" từ Cảnh 1. Chú Cường ở cổng vẫn bật vì Tùng gọi tên chú.
+    const ten = kb.nhanVat.find((n) => n.id === nguoi)?.ten;
+    if (ten && !chuoi.nodes.some((n) => n.type === 'line' && n.text.normalize('NFC').includes(ten.normalize('NFC')))) return null;
   }
   return nguoi;
 }
