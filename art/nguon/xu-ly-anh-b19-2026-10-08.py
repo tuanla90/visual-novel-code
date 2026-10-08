@@ -27,13 +27,19 @@ _spec = importlib.util.spec_from_file_location('xu_ly_cu', Path(__file__).with_n
 cu = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(cu)
 
+# Chiều cao (px trên khung 768×1360) của nhân vật trẻ con vẽ cả người.
+CAO_TRE_EM = {'char-be-na': 800}
+
 # mã nguồn → (kiểu, tên đích)
 BANG = {
     'trung-thu-4banh-ghep': ('bg', 'bg-mvp-san-ktx-trung-thu'),
     'trung-thu-4banh-b': ('bg', 'bg-mvp-san-ktx-trung-thu-ba-banh'),
-    'cong-bong-mo-3': ('bg', 'bg-mvp-cong-ktx-bong-mo'),
-    'trung-thu-nguoi-ghep': ('bg', 'bg-mvp-san-ktx-trung-thu-nguoi'),
+    'cong-bong-mo-4': ('bg', 'bg-mvp-cong-ktx-bong-mo'),
+    'phong-clb-dem-banh-mi-3': ('bg', 'bg-mvp-phong-clb-dem-banh-mi'),
     'khanh-ban-to-chuc': ('char', 'char-khanh-ban-to-chuc'),
+    'char-tung-om-to-roi-2': ('char', 'char-tung-om-to-roi'),
+    'char-duy-dan-chia-khoa-2': ('char', 'char-duy-dan-chia-khoa'),
+    'char-be-na-2': ('char', 'char-be-na'),
     'phong-408': ('cg', 'cg-phong-408'),
     'ban-clb-vang-2': ('cg', 'cg-ban-clb-vang'),
     'phieu-trang-2': ('cg', 'cg-phieu-trang'),
@@ -42,10 +48,7 @@ BANG = {
     'so-thu-hop-2': ('doc', 'doc-so-thu-hop'),
     'the-lich-rach-2': ('doc', 'doc-the-lich-rach'),
     'nam-ghe-2': ('cg', 'cg-nam-ghe'),
-    'tung-om-to-roi-5': ('cg', 'cg-tung-om-to-roi'),
-    'duy-dan-chia-khoa-4': ('cg', 'cg-duy-dan-chia-khoa'),
-    'ha-vy-ghi-so-4': ('cg', 'cg-ha-vy-ghi-so'),
-    'ca-doi-quanh-bang-3': ('cg', 'cg-ca-doi-quanh-bang'),
+    'so-ha-vy-gio': ('cg', 'cg-so-ha-vy-gio'),
     'bang-the-trang-2': ('cg', 'cg-bang-the-trang'),
     'so-tong-ket-2': ('cg', 'cg-so-tong-ket'),
     'dau-a': ('dau', 'dau-rank-a'),
@@ -88,7 +91,15 @@ def xu_ly(ma: str) -> str:
         w, h = trong.size
         nho = trong.resize((768, round(h * 768 / w)), Image.LANCZOS)
         khung = Image.new('RGBA', (768, 1360), (0, 0, 0, 0))
-        khung.paste(nho, (0, 0))
+        if dich in CAO_TRE_EM:
+            # Trẻ con vẽ cả người: thu nhỏ cho chiều cao bằng CAO_TRE_EM[dich] px, chân chạm đáy khung, căn giữa,
+            # để đứng trên dàn cạnh người lớn (khung người lớn chỉ tới đùi) không cao bằng họ.
+            hop = cu.cat_sat(trong, 0)
+            k = CAO_TRE_EM[dich] / hop.height
+            hop = hop.resize((round(hop.width * k), CAO_TRE_EM[dich]), Image.LANCZOS)
+            khung.paste(hop, ((768 - hop.width) // 2, 1360 - hop.height), hop)
+        else:
+            khung.paste(nho, (0, 0))
         khung.save(ra, quality=90)
     elif kieu == 'dau':
         ra = A / 'giao-dien' / f'{dich}.webp'
