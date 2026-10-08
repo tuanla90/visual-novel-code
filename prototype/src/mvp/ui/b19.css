@@ -24,7 +24,8 @@
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   gap: 10px;
-  padding: 14px 18px 12px;
+  /* Đỉnh chừa chỗ cho nhãn nơi đang đứng (góc trên trái sân khấu) để không đè tiêu đề. */
+  padding: 60px 18px 12px;
   background:
     radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.5), transparent 55%),
     repeating-linear-gradient(0deg, transparent 0 27px, rgba(80, 110, 160, 0.12) 27px 28px),
@@ -256,6 +257,14 @@
 }
 .dtg__the.is-chon {
   outline: 3px solid var(--dtg-vang);
+}
+.dtg__the.is-da-dat {
+  opacity: 0.5;
+  box-shadow: none;
+}
+.dtg__the.is-da-dat .dtg__the-nhan::before {
+  content: '✓ ';
+  color: #3f7d3a;
 }
 .dtg__the.is-bat-ve {
   animation: dtg-bat-ve 0.5s ease-in-out;

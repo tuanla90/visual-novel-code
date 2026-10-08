@@ -44,6 +44,8 @@ const KHOA_KEO = 'text/plain';
 type Dich = { o: string; phan: 'o' | 'trong' };
 
 export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = false, dienThoai, dienTen, tenNguoiNoi, onDat, onTiep, nhanTiep = 'Tiếp tục' }: DongThoiGianMvpProps) {
+  // Thẻ đã nằm trong một ô: vẫn kéo được (một thẻ có thể hợp nhiều ô) nhưng mờ đi để người chơi thấy còn thẻ nào chưa dùng.
+  const daDung = new Set(Object.values(daDat));
   const [nhac, setNhac] = useState<LoiMvp[] | null>(null);
   const [batVe, setBatVe] = useState<string | null>(null);
   const [vuaDat, setVuaDat] = useState<string | null>(null);
@@ -201,7 +203,7 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
                 <li key={t.id}>
                   <button
                     type="button"
-                    className={`dtg__the${t.tam ? ' is-tam' : ''}${theChon === t.id ? ' is-chon' : ''}${batVe === t.id ? ' is-bat-ve' : ''}`}
+                    className={`dtg__the${t.tam ? ' is-tam' : ''}${theChon === t.id ? ' is-chon' : ''}${batVe === t.id ? ' is-bat-ve' : ''}${daDung.has(t.id) ? ' is-da-dat' : ''}`}
                     draggable
                     data-the={t.id}
                     aria-pressed={theChon === t.id}

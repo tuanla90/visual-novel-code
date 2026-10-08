@@ -51,6 +51,15 @@ export interface HoatCanh {
 }
 
 export const HOAT_CANH: Readonly<Record<string, HoatCanh>> = {
+  // Vụ 1 bản 6, kết thật: dựng cảnh bóng mờ tự chạy ở cổng ký túc xá gần 7:00 sáng 16/09 (bóng balo đen đưa phong bì nâu cho
+  // bóng nhỏ hơn). Một ảnh, không lớp người: nền phóng chậm về chỗ trao phong bì; người chơi không kéo gì (B19).
+  'cong-ktx-bong-mo': {
+    tiLe: 2048 / 1152,
+    tam: [53, 42],
+    phong: 1.14,
+    giay: 6,
+    lop: [],
+  },
   // Nhiệm vụ phụ "Một lần dẫn lạc": Tùng và người chơi chạy về cổng ký túc xá, chú Cường soi đèn pin ở chốt.
   'san-dem': {
     tiLe: 1360 / 768,

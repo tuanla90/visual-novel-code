@@ -1,5 +1,7 @@
 # Bàn giao việc mùa 1 cho phiên khác
 
+> **08/10/2026 tối — gói B19 (Vụ 1 bản 6 + cách chơi mới), nhánh `claude/vu1-ban6`, CHƯA gộp `main`, chưa push.** Đề bài và ba dòng: `docs/mua-1/brief/b19-vu-1-ban-6.md`. Bộ `noi-dung-mua-1` giờ CHỈ còn Vụ 1 viết lại theo bản thoại 6 của Story Pilot (user chốt "dừng sau Vụ 1"; Vụ 2–5, việc phụ, tờ hỏi đáp đã gỡ, git còn giữ; bản đông cứng cho test ở `src/content/real/testing/noi-dung-mua-1-truoc-b19/` và `src/mvp/engine/testing/mua1-truoc-b19/`). Cách chơi mới: dòng thời gian kéo thẻ (tập dượt 3 ô ở Trung thu, 5 ô tối 28/09, đọc lại ở buổi họp), khám phá kiểu dàn (bấm từng chân dung), ghép mẫu trên bảng, bốn câu tính vạch ở buổi họp (lề sổ Minh Anh), chấm A/B/C, kết tạm, sổ tổng kết đóng dấu, Cảnh 12 chỉ rank A, điểm lưu đầu Vụ 1 + "Chơi lại Vụ 1". Bộ thử cú pháp: `?bo=thu-b19` (chỉ ở máy dev). Ảnh B19: `art/nguon/topview-2026-10-08/GHI-CHU.md` (user trả lại ảnh nhân vật vẽ bằng chữ: cảnh đông người dùng chân dung trên dàn). Câu `(tạm)` chờ user duyệt: `python docs/mua-1/brief/b19-so-thoai.py --tam`. Mục 2–8 dưới đây là trạng thái TRƯỚC B19 (nói về Vụ 1 cũ, Vụ 2…), chỉ để tra lại.
+
 > Cập nhật 05/10/2026, khoảng 16h30 (bản 9h30 đã cũ: Vụ 2 đã dựng lại xong, cách chia việc đã đổi).
 >
 > Phiên mới chỉ cần đọc tệp này rồi làm tiếp. Các quyết định user đã chốt nằm ở `docs/mua-1/giao-viec.md` mục A3, không được tự đổi.
