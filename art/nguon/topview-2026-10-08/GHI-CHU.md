@@ -28,4 +28,4 @@ Xử lý sang game: `python art/nguon/xu-ly-anh-b19-2026-10-08.py` (bảng ngu�
 
 User 08/10 trả lại các ảnh nhân vật vẽ bằng chữ (sai mẫu, bé Na như hai đầu, cảnh Trung thu thiếu nhân vật chính) và chốt: cảnh đông người dùng CHÂN DUNG đã duyệt đứng trên dàn (bấm từng người), không vẽ ảnh nhóm; ảnh riêng của nhân vật thì sửa thẳng từ chân dung gốc, chỉ đổi tay/đồ cầm.
 
-Bài học (đã ghi memory): ảnh sửa từ ảnh mẫu (Image Edit) chỉ hợp khi đổi ÍT; muốn cảnh mới có nhân vật thì vẽ bằng chữ (không ảnh mẫu) rồi sửa mặt bằng một lượt Image Edit với ảnh neo. Đưa ảnh nền + ảnh nhân vật cùng lúc thì model hay xếp nhân vật đứng tạo dáng trước nền, hoặc trả lại nguyên ảnh nền. Đếm vật (số bánh) model hay sai: kiểm bằng mắt, sửa tay.
+Bài học (đã ghi memory): Image Edit từ ảnh gốc hợp khi đổi ÍT và lời nhắc ngắn, mệnh lệnh ("Edit Image1: take the folder out of his hand…"); câu "Pixel-identical copy … EXCEPT" kèm thay đổi lớn hay bị trả lại nguyên ảnh. Không vẽ nhân vật bằng chữ rồi sửa mặt: nét vẽ và trang phục lệch mẫu. Đưa ảnh nền + chân dung cùng lúc thì model xếp người đứng tạo dáng trước nền. Đếm vật (số bánh) model hay sai: kiểm bằng mắt, sửa tay.
