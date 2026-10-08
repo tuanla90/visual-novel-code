@@ -4,6 +4,14 @@
  */
 
 /* ---------- Dòng thời gian ---------- */
+/* Ba lớp phủ B19 (dòng thời gian, trang sổ tổng kết, ghép mẫu) phủ trọn sân khấu theo .stage như .chal và .mvp-canh:
+   thả .stage__content ra static, không thì khung tính theo ô hộp thoại (cao ~0) và bị bẹp còn một dải. */
+.stage__content:has(> .dtg),
+.stage__content:has(> .so-tk-man),
+.stage__content:has(> .ghep-mau) {
+  position: static;
+}
+
 .dtg {
   --dtg-giay: #f6f0e1;
   --dtg-muc: #2b2418;
@@ -632,8 +640,18 @@
   text-align: right;
   opacity: 0.7;
 }
+/* Màu chỉ của v7.css chỉ áp cho chỉ câu tra (.bang__chi--truy-van); chỉ ghép mẫu phải tự mang màu, không thì stroke: none. */
 .bang__chi--ghep {
+  stroke: #c62828;
   stroke-width: 4;
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 0;
+  animation: ghep-chi 1.1s ease-out 0.5s both;
+}
+@keyframes ghep-chi {
+  from {
+    stroke-dashoffset: 1400;
+  }
 }
 @keyframes ghep-dan {
   from {
