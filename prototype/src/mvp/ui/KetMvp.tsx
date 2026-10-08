@@ -7,7 +7,8 @@ import { LOI_CHOT, tinhHang, type TongKetVu } from '../engine/tong-ket';
 import { anhTheoTen } from './anh-mvp';
 
 export interface KetMvpProps {
-  ketQua: 'that' | 'thuong';
+  /** `tam` (gói B19): kết tạm của bộ có `[CHẤM VỤ]`. */
+  ketQua: 'that' | 'thuong' | 'tam';
   /** Vụ sau vừa kết (từ Vụ 2): chữ màn kết lấy từ lich.md; bỏ trống = màn kết Vụ 1. `so` = số thứ tự vụ (2, 3…);
    * `id` = mã vụ, có ảnh `cg-ket-<mã vụ>` thì hiện làm CG kết. */
   vu?: { id?: string; so: number; ten: string; tieuDeKet: string; loiKet: string } | null;

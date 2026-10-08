@@ -117,14 +117,16 @@ const HAU_QUA_RE: readonly [RegExp, (m: RegExpExecArray) => HauQua][] = [
   [/^mở manh mối ([a-z0-9-]+)$/, (m) => ({ kind: 'mo-manh-moi', id: m[1] ?? '' })],
   [/^hiện tài liệu ([a-z0-9-]+)$/, (m) => ({ kind: 'hien-tai-lieu', id: m[1] ?? '' })],
   [/^lưu bằng chứng ([a-z0-9-]+)$/, (m) => ({ kind: 'luu-bang-chung', id: m[1] ?? '' })],
-  [/^đặt co\.([a-z0-9-]+)$/, (m) => ({ kind: 'dat-co', co: m[1] ?? '' })],
-  [/^bỏ co\.([a-z0-9-]+)$/, (m) => ({ kind: 'bo-co', co: m[1] ?? '' })],
+  // Gói B19: viết "đặt cờ <x>" / "bỏ cờ <x>" cũng được (cùng nghĩa "đặt co.<x>").
+  [/^đặt (?:co\.|cờ )([a-z0-9-]+)$/, (m) => ({ kind: 'dat-co', co: m[1] ?? '' })],
+  [/^bỏ (?:co\.|cờ )([a-z0-9-]+)$/, (m) => ({ kind: 'bo-co', co: m[1] ?? '' })],
   [/^đi tới ([a-z0-9-]+)$/, (m) => ({ kind: 'di-toi', chuoi: m[1] ?? '' })],
   [/^trừ uy tín$/, () => ({ kind: 'tru-uy-tin' })],
 ];
 
 export function docHauQua(chu: string): HauQua[] {
-  return chu.split(',').map((p) => {
+  // Gói B19: ngăn bằng "," hay ";".
+  return chu.split(/[,;]/).map((p) => {
     const s = p.trim();
     for (const [re, lam] of HAU_QUA_RE) {
       const m = re.exec(s);

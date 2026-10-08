@@ -31,8 +31,71 @@ export interface LoiMvp {
   text: string;
 }
 
-/** Mức một thẻ bằng chứng đáp được giả thuyết của rival ở `[ĐỐI CHẤT]`. */
-export type MucDoiChatMvp = 'du' | 'ho-tro' | 'goi-y';
+/**
+ * Mức một thẻ bằng chứng đáp được giả thuyết của rival ở `[ĐỐI CHẤT]`. Gói B19 (đối chất `· tính vạch`): `dung` = thẻ đúng
+ * (`{thẻ} [ĐÚNG]`, đi tiếp), `sai` = thẻ sai có lời riêng (`{thẻ} [SAI] → phản hồi:`, thêm một vạch, chọn lại).
+ */
+export type MucDoiChatMvp = 'du' | 'ho-tro' | 'goi-y' | 'dung' | 'sai';
+
+/**
+ * Gói B19: đuôi `· tính vạch` của `[SỬA TRUY VẤN]`, `[ĐỐI CHẤT]`, `[HỎI]` ở buổi chấm — mỗi lần trình sai Minh Anh gạch một vạch
+ * ở lề sổ (`TrangThaiMvp.vach`), `[CHẤM VỤ]` đọc số vạch để chấm A/B/C. Không có hết lượt: sai thì chọn lại tới khi đúng.
+ */
+export interface TinhVachMvp {
+  /** `· câu n/m`: thứ tự câu trong buổi (hiện "Câu n/m" cạnh lề sổ); thiếu = không hiện. */
+  cau?: { so: number; tong: number };
+  /** Dòng con `[SAI LẦN ĐẦU CẢ BUỔI] → phản hồi:`: lời thêm khi lần sai ở lệnh này là vạch ĐẦU TIÊN của buổi. */
+  saiLanDau?: LoiMvp[];
+}
+
+/** Gói B19: thẻ tạm của một dòng thời gian tập dượt (lời kể, không vào hồ sơ): `<mã> = <chữ trên thẻ>`. */
+export interface TheTamDtgMvp {
+  id: string;
+  chu: string;
+}
+
+/** Gói B19: một ô của dòng thời gian (`### <mã> · <giờ> · <nơi> · <việc>` ở dong-thoi-gian.md). */
+export interface ODongThoiGianMvp {
+  id: string;
+  /** Giờ ("6:44", "trước 9:00", "?"); thiếu = không ghi. */
+  gio: string | null;
+  noi: string | null;
+  /** Việc xảy ra; "[?]" trong chữ là phần không điền được (hiện "?"). */
+  viec: string;
+  /** Thẻ nhận (thẻ hồ sơ hoặc thẻ tạm); thả một thẻ trong danh sách là ô xong. */
+  nhan: string[];
+  /** `- Khóa sẵn`: ô đã điền sẵn, không cần kéo. */
+  khoaSan: boolean;
+  /** `- Không điền được: <phần>`: phần ấy hiện "?" mãi (thả gì vào cũng bật lại). */
+  khongDien: string | null;
+  /** Lời khi kéo sai vào ô này; thiếu = câu chung của dòng thời gian. */
+  keoSai: LoiMvp[] | null;
+  /** Lời khi thả vào phần không điền được; thiếu = câu kéo sai. */
+  keoVaoTrong: LoiMvp[] | null;
+}
+
+/** Gói B19: một dòng thời gian (`## <mã> — <tên> {kiểu: tập dượt|chính}` ở dong-thoi-gian.md). */
+export interface DongThoiGianMvp {
+  id: string;
+  ten: string;
+  /** `tap-duot`: thẻ là thẻ tạm (lời kể); `chinh`: thẻ là thẻ trong hồ sơ. */
+  kieu: 'tap-duot' | 'chinh';
+  /** `- Người nhắc khi kéo sai:` (mã nhân vật). */
+  nguoiNhac: string | null;
+  /** `- Kéo sai:` ở đầu mục: câu nhắc chung khi ô không có câu riêng. */
+  keoSai: LoiMvp[] | null;
+  theTam: TheTamDtgMvp[];
+  o: ODongThoiGianMvp[];
+}
+
+/** Gói B19: kết quả `[CHẤM VỤ]` của một vụ (bảng rank của ván). */
+export interface KetQuaChamVuMvp {
+  rank: 'a' | 'b' | 'c';
+  /** Số vạch lúc chấm. */
+  vach: number;
+  /** Thẻ / dòng thời gian bắt buộc mà ván chưa có lúc chấm. */
+  thieu: string[];
+}
 
 export interface LuaChonMvp {
   id: string;
@@ -198,7 +261,10 @@ export interface LichMvp {
   viecChot?: string | null;
   ngay: NgayMvp[];
   ngayHop: { chuoi: string } | null;
-  ket: { that: string; thuong: string } | null;
+  /**
+   * `tam` (gói B19, dòng `- Kết tạm:`): chuỗi kết rank C của bộ có `[CHẤM VỤ]`. Bộ chỉ khai "Kết tạm" thì `thuong` = `tam`.
+   */
+  ket: { that: string; thuong: string; tam?: string } | null;
   /**
    * Các vụ chơi tiếp sau vụ gốc (`## <Tên> {vụ sau: <mã>}` ở lich.md, từ Vụ 2), theo thứ tự. Mỗi vụ chạy MỘT chuỗi
    * (chuỗi tự `[ĐI TỚI]` các chuỗi khác) và kết bằng `[KẾT THÚC]`. Không có = game chỉ có vụ gốc.
@@ -251,7 +317,7 @@ export type NutMvp =
   | { type: 'show-document'; documentId: string }
   /** `[ẢNH …]`: ảnh chèn giữa hội thoại (chibi, CG), tra theo tên tệp trong src/assets/**. */
   | { type: 'image'; imageId: string; chuThich?: string | null; moTa?: string | null }
-  | { type: 'question'; id: string; asker: { speaker: string; text: string }; choices: LuaChonMvp[]; truUyTin: boolean }
+  | { type: 'question'; id: string; asker: { speaker: string; text: string }; choices: LuaChonMvp[]; truUyTin: boolean; /** Gói B19. */ tinhVach?: TinhVachMvp }
   /**
    * `[ĐỐI CHẤT <mã>]` (01/10/2026, đề xuất gameplay §4–5): rival nêu giả thuyết, người chơi trình thẻ trong hồ sơ để đáp.
    * Mỗi thẻ khai sẵn một mức: `du` (đủ căn cứ — kết thúc đối chất, đặt cờ `<mã>-du`), `ho-tro` (củng cố, đặt cờ `<mã>-ho-tro`,
@@ -272,6 +338,10 @@ export type NutMvp =
       truUyTin: boolean;
       /** Người quen nói thay khi đủ 3 bậc hảo cảm (A5). */
       nguoiQuen?: { ma: string; noiThay: string } | null;
+      /**
+       * Gói B19 (`· tính vạch`): thẻ `dung` đi tiếp, thẻ `sai` / thẻ khác thêm một vạch và chọn lại; không có "chưa đủ", hết lượt.
+       */
+      tinhVach?: TinhVachMvp;
     }
   /** `[XONG VIỆC CHÍNH]` (A5): hiện nút "Hết ngày" */
   | { type: 'xong-viec-chinh' }
@@ -281,7 +351,20 @@ export type NutMvp =
    */
   | { type: 'hoi-dap'; ma: string }
   | { type: 'challenge'; challengeId: string }
-  | { type: 'fix-query'; challengeId: string }
+  /** Gói B19: `tinhVach` = màn sửa có hai nút "Chạy thử" (không tính) và "Trình" (sai thì thêm một vạch, lời "Khi trình sai"). */
+  | { type: 'fix-query'; challengeId: string; tinhVach?: TinhVachMvp }
+  /** Gói B19 `[DÒNG THỜI GIAN <mã>]`: màn kéo thẻ vào ô, xong mới đi tiếp. */
+  | { type: 'dong-thoi-gian'; id: string }
+  /** Gói B19 `[HIỆN DÒNG THỜI GIAN <mã>]`: hiện bản đã dựng (chỉ xem, đọc từng ô). */
+  | { type: 'hien-dong-thoi-gian'; id: string }
+  /** Gói B19 `[CHẤM VỤ <vụ>] cần: …`: đọc số vạch + kiểm thẻ bắt buộc, đặt cờ `<vụ>-rank-a|b|c`, ghi bảng rank. Máy tự chạy qua. */
+  | { type: 'cham-vu'; vu: string; can: string[] }
+  /** Gói B19 `[SỔ TỔNG KẾT <vụ>]`: trang tổng kết trong sổ CLB, con dấu đỏ theo rank, vạch ở lề. */
+  | { type: 'so-tong-ket'; vu: string }
+  /** Gói B19 `[ĐIỂM LƯU VỤ <vụ>]`: chụp trạng thái để "Chơi lại Vụ n". Máy tự chạy qua. */
+  | { type: 'diem-luu-vu'; vu: string }
+  /** Gói B19 `[GHÉP MẪU] <ai>: <thẻ> + <thẻ> · giấy nhớ: "…"`: ghim hai thẻ, kéo chỉ đỏ, dán giấy nhớ lên bảng điều tra. */
+  | { type: 'ghep-mau'; nguoi: string; the: string[]; giayNho: string }
   | { type: 'effect'; effectId: string }
   | { type: 'line-pick'; id: string; lines: { index: number; sql: string; correct: boolean; feedback: LoiMvp[] }[]; truUyTin: boolean }
   | { type: 'projector'; id: string; source: { kind: 'sql'; sql: string } | { kind: 'evidence'; evidenceId: string }; run: boolean; expectedRowCount?: number }
@@ -377,6 +460,8 @@ export interface TheThuThachMvp {
   bamO?: string;
   /** `- Cột nộp: a, b`: các cột nộp (S12). */
   cotNop?: string[];
+  /** Gói B19 `- Khi trình sai:`: lời khi bấm "Trình" mà câu chưa đúng ở màn sửa `· tính vạch`. Thiếu = không có lời riêng. */
+  khiTrinhSai?: LoiMvp[];
 }
 
 /**
@@ -469,6 +554,8 @@ export interface KichBanMvp {
    * ở lại cảnh, người chơi tự bấm rời đi ("Về bản đồ" / "Đi tiếp"); màn tra lùi được về cảnh đã mở nó. Thiếu = như cũ (bộ MVP).
    */
   dieuHuongTuDo?: boolean;
+  /** Gói B19: dòng thời gian (`dong-thoi-gian.md`) theo mã. Thiếu = bộ không có. */
+  dongThoiGian?: Record<string, DongThoiGianMvp>;
 }
 
 // ---------- Hỏi nhân chứng (gói B12, docs/mua-1/brief/b12-vu-1.md) ----------

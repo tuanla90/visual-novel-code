@@ -24,6 +24,8 @@
     "noi-dung:sinh:mvp": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/sinh-mvp.ts",
     "noi-dung:sinh:mua1": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/sinh-mua1.ts",
     "kiem-noi-dung:mua1": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/kiem-mua1.ts",
+    "noi-dung:sinh:thu-b19": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/sinh-thu-b19.ts",
+    "kiem-noi-dung:thu-b19": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/sinh-thu-b19.ts --kiem",
     "kiem-giong:mua1": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/kiem-giong.ts --noi-dung noi-dung-mua-1",
     "kiem-ky-nang:mua1": "node --import ./tools/noi-dung/nap-ts.mjs tools/noi-dung/kiem-ky-nang.ts",
     "truyen-chu:mua1": "node --import ./tools/noi-dung/nap-ts.mjs tools/truyen-chu.ts"

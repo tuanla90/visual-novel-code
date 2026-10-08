@@ -48,7 +48,9 @@ const THU_TU: Record<TheBang['loai'], number> = { note: 9, phieu: 0, vat: 1, tin
 
 /** Mức thẻ đã trình (theo kịch bản); thẻ không khai = không liên quan. */
 function mucCuaThe(nut: NutDoiChat, id: string): Muc | 'khac' {
-  return nut.bangChung.find((b) => b.id === id)?.muc ?? 'khac';
+  const m = nut.bangChung.find((b) => b.id === id)?.muc;
+  // Gói B19: đối chất `· tính vạch` không có mức; thẻ [ĐÚNG] đã trình (hiếm: đúng thì đi tiếp ngay) tính như đủ căn cứ.
+  return m === 'dung' ? 'du' : m === 'sai' || m === undefined ? 'khac' : m;
 }
 
 export function DoiChatMvp({ kb, s, nut, daTrinh, muc, conLuot, dienTen, tenNguoiNoi, onTrinh, onChuaDu }: DoiChatMvpProps) {

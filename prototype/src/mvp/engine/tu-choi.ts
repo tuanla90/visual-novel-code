@@ -45,6 +45,15 @@ function hanhDongTuDong(s: TrangThaiMvp, kn: Exclude<KhungNhinMvp, { kind: 'end'
       return { type: 'chon', luaChon: c.id };
     }
     case 'doi-chat': {
+      if (kn.nut.tinhVach) {
+        // Gói B19: đối chất `· tính vạch` — `traLoi` "sai" thì trình một thẻ chưa trình không phải [ĐÚNG] (thêm một vạch).
+        const muonSai = (ct.traLoi?.(kn.nut.id, kn.lanThu) ?? 'dung') === 'sai';
+        const dung = kn.nut.bangChung.find((x) => x.muc === 'dung' && !kn.daTrinh.includes(x.id) && coTrongHoSo(s, x.id));
+        const khac = [...s.hoSo.bangChung, ...s.hoSo.manhMoi, ...s.hoSo.taiLieu].find((id) => !kn.daTrinh.includes(id) && !kn.nut.bangChung.some((x) => x.id === id && x.muc === 'dung'));
+        const chon = muonSai && khac ? khac : dung?.id;
+        if (!chon) throw new Error(`Đối chất ${kn.nut.id}: hồ sơ không có thẻ [ĐÚNG] nào`);
+        return { type: 'trinh-the', the: chon };
+      }
       // Trình thẻ đủ căn cứ đang có trong hồ sơ; không có thì nhận "chưa đủ căn cứ".
       const b = kn.nut.bangChung.find((x) => x.muc === 'du' && !kn.daTrinh.includes(x.id) && coTrongHoSo(s, x.id));
       return b ? { type: 'trinh-the', the: b.id } : { type: 'chua-du' };
@@ -57,8 +66,23 @@ function hanhDongTuDong(s: TrangThaiMvp, kn: Exclude<KhungNhinMvp, { kind: 'end'
     case 'branch':
       return { type: 'chon', luaChon: ct.reNhanh?.(kn.nut.id) || kn.luaChon[0]?.id || '' };
     case 'challenge':
-    case 'fix-query':
       return { type: 'xong-thu-thach', thuThach: kn.thuThach.id };
+    case 'fix-query': {
+      // Gói B19: màn sửa `· tính vạch` — `traLoi` "sai" thì bấm Trình với câu chưa đúng (thêm một vạch).
+      if (kn.tinhVach && (ct.traLoi?.(kn.thuThach.id, s.lanThu[kn.thuThach.id] ?? 0) ?? 'dung') === 'sai') return { type: 'trinh-sai' };
+      return { type: 'xong-thu-thach', thuThach: kn.thuThach.id };
+    }
+    case 'dong-thoi-gian': {
+      // Gói B19: thả thẻ nhận đầu tiên vào ô đầu tiên còn trống; xong (hay bản xem lại) thì đi tiếp.
+      if (kn.chiXem || kn.xong) return { type: 'tiep' };
+      const o = kn.dtg.o.find((x) => !x.khoaSan && !kn.daDat[x.id]);
+      const the = o?.nhan.find((id) => kn.dtg.theTam.some((t) => t.id === id) || coTrongHoSo(s, id));
+      if (!o || !the) throw new Error(`Dòng thời gian ${kn.dtg.id}: ô ${o?.id ?? '?'} không có thẻ nào trong hồ sơ`);
+      return { type: 'dat-the-dtg', o: o.id, the };
+    }
+    case 'so-tong-ket':
+    case 'ghep-mau':
+      return { type: 'tiep' };
     case 'chon-dia-diem': {
       const chon = ct.chonDuKien?.(s, kn) ?? null;
       return chon ? { type: 'chon-du-kien', ...chon } : { type: 'ket-thuc-ngay' };
