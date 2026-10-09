@@ -194,9 +194,11 @@
 .bcl__o.is-co-viec .bcl__note--o {
   min-height: 0;
 }
+/* Nhãn dài ("trước 9:00") xuống hai dòng thay vì bị cắt mất đầu chữ (justify-content: flex-end + nowrap cắt bên trái). */
 .bcl__gio {
   overflow: hidden;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
   display: flex;
   align-items: center;
   justify-content: flex-end;
