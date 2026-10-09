@@ -389,6 +389,212 @@
 .game--portrait .dtg__than {
   grid-template-columns: minmax(0, 1fr);
 }
+
+/* Bàn ghép dòng thời gian: phân tách rõ trục sự kiện và khay thẻ, giữ nguyên nội dung. */
+.dtg {
+  --dtg-giay: #eee6d5;
+  --dtg-muc: #24333a;
+  --dtg-nhat: #5d6b6b;
+  padding: 62px clamp(20px, 3vw, 44px) 18px;
+  gap: 16px;
+  background:
+    linear-gradient(90deg, transparent 0 34px, rgba(158, 68, 57, 0.19) 34px 36px, transparent 36px),
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(54, 81, 91, 0.1) 31px 32px),
+    #eee6d5;
+}
+.dtg__dau {
+  gap: 5px;
+  padding: 0 0 12px 18px;
+  border-bottom: 1px solid rgba(36, 51, 58, 0.24);
+}
+.dtg__kicker {
+  letter-spacing: 0.12em;
+  font-weight: 800;
+}
+.dtg__ten {
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  line-height: 1.15;
+}
+.dtg__huong-dan {
+  margin-top: 2px;
+  max-width: 70ch;
+}
+.dtg__than {
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 27%);
+  gap: clamp(16px, 2vw, 28px);
+  min-height: 0;
+}
+.dtg__truc {
+  grid-auto-columns: minmax(150px, 1fr);
+  gap: 14px;
+  padding: 30px 10px 12px;
+  scrollbar-color: #8d8067 rgba(36, 51, 58, 0.08);
+}
+.dtg__truc::before {
+  left: 16px;
+  right: 16px;
+  top: 38px;
+  height: 2px;
+  opacity: 0.62;
+  transform: none;
+}
+.dtg__o {
+  gap: 7px;
+  min-height: 190px;
+  padding: 24px 12px 12px;
+  border-radius: 3px;
+  border: 1px solid #c5b99f;
+  background: rgba(255, 253, 247, 0.93);
+  box-shadow: 0 5px 14px rgba(43, 36, 24, 0.11);
+}
+.dtg__o.is-xong {
+  border-color: #63806b;
+  background: #f3f4e9;
+}
+.dtg__o.is-chon,
+.dtg__o.is-sang {
+  border-color: #a87934;
+  box-shadow: 0 0 0 2px rgba(168, 121, 52, 0.28), 0 8px 18px rgba(43, 36, 24, 0.14);
+}
+.dtg__gio {
+  font-size: 1.15rem;
+  color: #263b46;
+}
+.dtg__noi {
+  width: fit-content;
+  padding: 2px 7px;
+  border: 1px solid #c9beaa;
+  border-radius: 2px;
+  background: #ece5d7;
+  color: #4d5c5b;
+}
+.dtg__viec {
+  font-size: 0.96rem;
+  line-height: 1.45;
+}
+.dtg__khe {
+  margin-top: auto;
+  min-height: 48px;
+  border-radius: 3px;
+  border-color: #a99a77;
+  background: rgba(231, 219, 188, 0.42);
+}
+.dtg__the-dat {
+  border-radius: 2px;
+  border-left-width: 3px;
+}
+.dtg__cot {
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #c4b99f;
+  border-radius: 4px;
+  background: rgba(220, 211, 192, 0.76);
+}
+.dtg__cot-nhan {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(36, 51, 58, 0.22);
+  font-weight: 800;
+}
+.dtg__ds {
+  gap: 10px;
+  padding: 3px;
+  scrollbar-color: #8d8067 rgba(36, 51, 58, 0.08);
+}
+.dtg__the {
+  min-height: 56px;
+  padding: 10px 12px;
+  border-radius: 3px;
+  border-color: #c5b376;
+  box-shadow: 0 3px 7px rgba(43, 36, 24, 0.14);
+}
+.dtg__the.is-chon {
+  outline: 2px solid #a87934;
+  outline-offset: 1px;
+}
+.dtg__chan {
+  align-items: center;
+  min-height: 54px;
+  padding-left: 18px;
+  border-top: 1px solid rgba(36, 51, 58, 0.2);
+}
+.dtg__tiep {
+  min-width: 148px;
+}
+.dtg :is(button, [draggable='true']):focus-visible {
+  outline: 3px solid #9b6e2d;
+  outline-offset: 3px;
+}
+@media (max-width: 900px) {
+  .dtg {
+    padding: 54px 16px 12px;
+    gap: 12px;
+  }
+  .dtg__than {
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 30%);
+    gap: 12px;
+  }
+  .dtg__truc {
+    grid-auto-columns: minmax(132px, 1fr);
+    gap: 10px;
+  }
+  .dtg__o {
+    min-height: 168px;
+    padding-inline: 9px;
+  }
+}
+@media (max-width: 768px) {
+  .dtg--cham {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .dtg--cham .dtg__dau {
+    padding: 0 0 8px 12px;
+  }
+  .dtg--cham .dtg__than {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .dtg--cham .dtg__truc {
+    grid-auto-columns: minmax(124px, 1fr);
+    gap: 9px;
+    padding: 24px 6px 8px;
+  }
+  .dtg--cham .dtg__o {
+    min-height: 142px;
+    padding: 20px 8px 8px;
+  }
+  .dtg--cham .dtg__chan {
+    min-height: 44px;
+    padding-left: 12px;
+  }
+}
+.game--portrait .dtg {
+  padding: 52px 14px 12px;
+  gap: 10px;
+}
+.game--portrait .dtg__dau {
+  padding-left: 12px;
+}
+.game--portrait .dtg__truc {
+  grid-auto-flow: row;
+  grid-auto-columns: auto;
+  gap: 12px;
+  padding: 8px 8px 8px 26px;
+}
+.game--portrait .dtg__truc::before {
+  left: 12px;
+  top: 18px;
+  bottom: 18px;
+  width: 2px;
+}
+.game--portrait .dtg__o {
+  min-height: 0;
+  padding: 14px 12px 12px;
+}
+.game--portrait .dtg__cham {
+  left: -15px;
+  top: 24px;
+}
 @keyframes dtg-bat-ve {
   0%,
   100% {

@@ -25,7 +25,7 @@ export function ConfirmDialog({ open, title, message, confirmLabel, cancelLabel 
   if (!open) return null;
   return (
     <div className="modal-backdrop" role="presentation" onClick={onCancel}>
-      <div className="modal" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" onClick={(e) => e.stopPropagation()}>
+      <div className="modal modal--confirm" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title" onClick={(e) => e.stopPropagation()}>
         <h2 id="confirm-title" className="modal__title">
           {title}
         </h2>

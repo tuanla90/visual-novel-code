@@ -26,6 +26,13 @@
   scrollbar-color: rgba(59, 130, 246, 0.5) rgba(224, 242, 254, 0.35);
 }
 
+/* Cửa sổ hồ sơ như một mặt bàn điều tra, tránh cảm giác trang web nổi trên nền. */
+.inventory-modal.mvp-kho {
+  background: rgba(12, 17, 24, 0.7) !important;
+  backdrop-filter: none !important;
+  padding: clamp(12px, 2.5vw, 32px) !important;
+}
+
 /* Lớp phủ màn hình mờ nhẹ cho phép nhìn thấy bối cảnh gốc của game */
 .inventory-modal {
   position: fixed !important;
@@ -74,6 +81,14 @@
   position: relative;
 }
 
+.mvp-kho.inventory-modal .inventory-frame {
+  width: min(1180px, 96vw);
+  height: min(760px, 92vh);
+  border-radius: 8px;
+  background: #e9e1d1;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.48), inset 0 0 0 1px rgba(255, 253, 248, 0.7);
+}
+
 /* Cố định kích thước chuẩn cho tab Hồ sơ & Nhật ký điều tra, hoàn toàn không xuất hiện scrollbar */
 .inventory-frame.is-chara-mode,
 .inventory-frame.is-journal-mode {
@@ -91,6 +106,13 @@
   background: rgba(224, 242, 254, 0.85);
   border-bottom: 1.5px solid rgba(191, 219, 254, 0.9);
   gap: var(--sp-2, 8px);
+}
+
+.mvp-kho.inventory-modal .inventory-nav {
+  min-height: 64px;
+  padding: 10px 18px;
+  background: #26343b;
+  border-bottom: 3px solid #a88752;
 }
 
 .inventory-nav__tabs {
@@ -116,6 +138,15 @@
   box-shadow: 0 1px 3px rgba(30, 58, 138, 0.05);
 }
 
+.mvp-kho.inventory-modal .inventory-nav__tab {
+  min-height: 42px;
+  border-radius: 4px;
+  background: transparent;
+  border-color: rgba(239, 231, 214, 0.26);
+  color: #e9e1d1;
+  letter-spacing: 0.015em;
+}
+
 .inventory-nav__tab:hover {
   background: #eff6ff;
   border-color: #93c5fd;
@@ -128,6 +159,12 @@
   color: #ffffff;
   border-color: #2563eb;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.mvp-kho.inventory-modal .inventory-nav__tab.is-active {
+  background: #e9e1d1;
+  border-color: #e9e1d1;
+  color: #26343b;
 }
 
 .inventory-nav__meta {
@@ -166,6 +203,24 @@
   align-items: center;
   gap: 4px;
   box-shadow: 0 1px 4px rgba(244, 63, 94, 0.25);
+}
+
+.mvp-kho.inventory-modal .inventory-nav__close {
+  min-height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 4px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.mvp-kho.inventory-modal .inventory-nav__close:hover {
+  background: #7f3f39;
+  box-shadow: none;
+}
+
+.mvp-kho.inventory-modal :is(.inventory-nav__tab, .inventory-nav__close):focus-visible {
+  outline: 3px solid #e6bd6a;
+  outline-offset: 2px;
 }
 
 .inventory-nav__close:hover {

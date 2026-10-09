@@ -9,6 +9,7 @@ import './styles/tokens.css';
 import './styles/base.css';
 import './styles/app.css';
 import './styles/portrait.css';
+import './styles/vn-ui.css';
 
 const rootEl = document.getElementById('root');
 if (!rootEl) {
