@@ -10,7 +10,7 @@
 import { useEffect, useState } from "react";
 import type { KichBanMvp } from "../../content/mvp/types";
 import { ConfirmDialog } from "../../shared/ui/ConfirmDialog";
-import { tenKhungHienTai } from "../engine/may";
+import { changHienTai, tenKhungHienTai } from "../engine/may";
 import type { TrangThaiMvp } from "../engine/trang-thai";
 import { dauChuongMvp, DIEM_NHAY_MVP } from "../engine/tu-choi";
 
@@ -39,7 +39,7 @@ function useChuaDaiDay(): void {
 function viTri(kb: KichBanMvp, s: TrangThaiMvp): string {
   if (s.giaiDoan === "mo-dau") return "Mở đầu";
   if (s.giaiDoan === "ngay")
-    return `Ngày ${s.ngay} · ${tenKhungHienTai(kb, s)}`;
+    return `${changHienTai(kb, s) ? "Chặng" : "Ngày"} ${s.ngay} · ${tenKhungHienTai(kb, s)}`;
   if (s.giaiDoan === "hop") return "Buổi họp rà soát";
   if (s.giaiDoan === "vu-sau") return `Vụ sau · ${tenKhungHienTai(kb, s)}`;
   if (s.giaiDoan === "phu") return `Việc phụ · ${tenKhungHienTai(kb, s)}`;

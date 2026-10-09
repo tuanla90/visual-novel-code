@@ -13,7 +13,7 @@ import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
 import { KICH_BAN_THU_B19 } from '../../content/generated/thu-b19/kich-ban.gen';
 import { KICH_BAN_THU_B21 } from '../../content/generated/thu-b21/kich-ban.gen';
 import type { KichBanMvp, LoiMvp } from '../../content/mvp/types';
-import { taoTrangThai, tenKhungHienTai, xuLy, type HanhDongMvp } from '../engine/may';
+import { changHienTai, taoTrangThai, tenKhungHienTai, xuLy, type HanhDongMvp } from '../engine/may';
 import { datMuc, laMucNhapVai, laMucSql } from '../engine/muc-choi';
 import type { MucNhapVaiMvp, MucSqlMvp, TrangThaiMvp } from '../engine/trang-thai';
 import { banDangCoMat, ghiNhanTrangThaiDongHanh, ghiNhanTruyVanDongHanh, khoaNguCanhDongHanh, type BanDongHanhMvp, type TinNhanDongHanhMvp, type TinNhanNhomDongHanhMvp, type TruyVanDaXemMvp } from '../engine/tri-nho-dong-hanh';
@@ -253,7 +253,7 @@ export const useKhoMvp = taoKhoMvp();
 /** Nhãn ngắn của trạng thái cho ô lưu / thông báo. */
 export function nhanTienDo(s: TrangThaiMvp): string {
   if (s.giaiDoan === 'mo-dau') return 'Mở đầu';
-  if (s.giaiDoan === 'ngay') return `Ngày ${s.ngay} · ${tenKhungHienTai(KICH_BAN, s)}`;
+  if (s.giaiDoan === 'ngay') return `${changHienTai(KICH_BAN, s) ? 'Chặng' : 'Ngày'} ${s.ngay} · ${tenKhungHienTai(KICH_BAN, s)}`;
   if (s.giaiDoan === 'hop') return 'Buổi họp rà soát';
   if (s.giaiDoan === 'phu') return `Việc phụ · ${tenKhungHienTai(KICH_BAN, s)}`;
   if (s.giaiDoan === 'vu-sau') {
