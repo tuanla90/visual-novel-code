@@ -983,6 +983,7 @@ const GOC = {
       "kieu": "tap-duot",
       "nguoiNhac": "ha-vy",
       "keoSai": null,
+      "cot": [],
       "theTam": [
         {
           "id": "lk-dem-bon",
@@ -1001,6 +1002,7 @@ const GOC = {
         {
           "id": "o1",
           "gio": "19:00",
+          "cot": null,
           "noi": null,
           "viec": "đĩa đủ bốn chiếc",
           "nhan": [
@@ -1014,6 +1016,7 @@ const GOC = {
         {
           "id": "o2",
           "gio": "?",
+          "cot": null,
           "noi": null,
           "viec": "bé Na cầm một chiếc",
           "nhan": [
@@ -1027,6 +1030,7 @@ const GOC = {
         {
           "id": "o3",
           "gio": "19:15",
+          "cot": null,
           "noi": null,
           "viec": "chia còn ba",
           "nhan": [
@@ -1057,11 +1061,26 @@ const GOC = {
           "text": "Thẻ này nói chuyện ở chỗ khác."
         }
       ],
+      "cot": [
+        {
+          "id": "hoai",
+          "nhan": "Hoài"
+        },
+        {
+          "id": "?",
+          "nhan": "? (chưa biết)"
+        },
+        {
+          "id": "bac-tu",
+          "nhan": "Bác Thịnh"
+        }
+      ],
       "theTam": [],
       "o": [
         {
           "id": "o1",
           "gio": "6:44",
+          "cot": "hoai",
           "noi": "cổng ký túc xá",
           "viec": "Hoài ra cổng",
           "nhan": [
@@ -1074,9 +1093,10 @@ const GOC = {
         },
         {
           "id": "o2",
-          "gio": "?",
+          "gio": "~6:50",
+          "cot": "?",
           "noi": "cổng ký túc xá",
-          "viec": "[?] đưa phong bì nâu cho Hoài",
+          "viec": "đưa phong bì nâu cho Hoài",
           "nhan": [
             "clue-loi-chu-cuong"
           ],
@@ -1094,6 +1114,7 @@ const GOC = {
         {
           "id": "o3",
           "gio": "7:00",
+          "cot": "bac-tu",
           "noi": "sảnh tòa B",
           "viec": "bác Thịnh mở sảnh",
           "nhan": [],
@@ -1105,6 +1126,7 @@ const GOC = {
         {
           "id": "o4",
           "gio": "trước 9:00",
+          "cot": "hoai",
           "noi": "sảnh tòa B",
           "viec": "Hoài bỏ thư, ký phiếu",
           "nhan": [
@@ -1118,8 +1140,9 @@ const GOC = {
         {
           "id": "o5",
           "gio": "9:00",
+          "cot": "bac-tu",
           "noi": "sảnh tòa B",
-          "viec": "cô Lan thu hộp",
+          "viec": "hộp được thu, có phong bì nâu",
           "nhan": [
             "clue-loi-co-lan"
           ],

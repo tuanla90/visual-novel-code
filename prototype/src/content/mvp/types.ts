@@ -59,6 +59,8 @@ export interface ODongThoiGianMvp {
   id: string;
   /** Giờ ("6:44", "trước 9:00", "?"); thiếu = không ghi. */
   gio: string | null;
+  /** `· cột: <mã>` sau giờ: cột (người) của bảng chân lý mà ô nằm; bảng không khai `- Cột:` thì thiếu. */
+  cot: string | null;
   noi: string | null;
   /** Việc xảy ra; "[?]" trong chữ là phần không điền được (hiện "?"). */
   viec: string;
@@ -84,6 +86,11 @@ export interface DongThoiGianMvp {
   nguoiNhac: string | null;
   /** `- Kéo sai:` ở đầu mục: câu nhắc chung khi ô không có câu riêng. */
   keoSai: LoiMvp[] | null;
+  /**
+   * `- Cột: <mã>=<nhãn>, …` (bảng chân lý): cột = người, theo thứ tự khai; mã `?` là cột "chưa biết". Rỗng = ma trận một cột
+   * không tiêu đề (mỗi ô một dòng). Dòng của ma trận = các giờ khác nhau theo thứ tự xuất hiện trong `o`.
+   */
+  cot: { id: string; nhan: string }[];
   theTam: TheTamDtgMvp[];
   o: ODongThoiGianMvp[];
 }

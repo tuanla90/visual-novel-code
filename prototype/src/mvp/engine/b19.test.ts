@@ -8,7 +8,7 @@ import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
 import { KICH_BAN_THU_B19 } from '../../content/generated/thu-b19/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { boCoChamVu, rankTu } from './cham-vu';
-import { dongThoiGianXong, loiKeoSai, tachViec, theCuaDongThoiGian } from './dong-thoi-gian';
+import { boTheSai, dongThoiGianDung, dongThoiGianXong, loiKeoSai, maTran, oDatSai, oTrongCuaCot, tachViec, theCuaDongThoiGian } from './dong-thoi-gian';
 import { khungNhin, loiTrinhSai, taoTrangThai, tinhVachHienTai, vuChoiLai, xuLy, type KhungNhinMvp } from './may';
 import { choiTuDong, type ChienThuat } from './tu-choi';
 import type { TrangThaiMvp } from './trang-thai';
@@ -95,7 +95,10 @@ describe('B19 · chấm vụ: ranh giới rank', () => {
   it('kéo sai ở dòng thời gian, chạy thử, ghép mẫu không tính vạch', () => {
     const tai = tuDong((_s, kn) => kn.kind === 'dong-thoi-gian' && kn.dtg.id === 'dtg-vu1');
     expect(tai.vach ?? 0).toBe(0);
-    expect(xuLy(KB, tai, { type: 'dat-the-dtg', o: 'o1', the: 'ev-the-lich' })).toBe(tai);
+    // Bảng chân lý đặt tự do: thả note "sai" vào ô vẫn được nhận, không tính vạch (chỉ chấm lúc Xong).
+    const sau = xuLy(KB, tai, { type: 'dat-the-dtg', o: 'o1', the: 'ev-the-lich' });
+    expect(sau.dongThoiGian?.['dtg-vu1']?.o).toEqual({ o1: 'ev-the-lich' });
+    expect(sau.vach ?? 0).toBe(0);
   });
 });
 
@@ -146,19 +149,38 @@ describe('B19 · dòng thời gian', () => {
   const tap = KB.dongThoiGian?.['dtg-banh'];
 
   it('bộ đọc: ô khóa sẵn, phần không điền được, thẻ tạm của dòng tập dượt', () => {
-    expect(dtg?.o.map((o) => [o.id, o.gio, o.noi, o.khoaSan])).toEqual([
-      ['o1', '6:44', 'cổng ký túc xá', false],
-      ['o2', '?', 'cổng ký túc xá', false],
-      ['o3', '7:00', 'sảnh tòa B', true],
-      ['o4', 'trước 9:00', 'sảnh tòa B', false],
-      ['o5', '9:00', 'sảnh tòa B', false],
+    expect(dtg?.o.map((o) => [o.id, o.gio, o.cot, o.noi, o.khoaSan])).toEqual([
+      ['o1', '6:44', 'hoai', 'cổng ký túc xá', false],
+      ['o2', '~6:50', '?', 'cổng ký túc xá', false],
+      ['o3', '7:00', 'bac-tu', 'sảnh tòa B', true],
+      ['o4', 'trước 9:00', 'hoai', 'sảnh tòa B', false],
+      ['o5', '9:00', 'bac-tu', 'sảnh tòa B', false],
     ]);
+    expect(dtg?.cot).toEqual([{ id: 'hoai', nhan: 'Hoài' }, { id: '?', nhan: '? (chưa biết)' }, { id: 'bac-tu', nhan: 'Bác Thịnh' }]);
     expect(dtg?.o[1]?.khongDien).toBe('ai');
-    expect(tachViec(dtg?.o[1]?.viec ?? '')).toEqual([null, ' đưa phong bì nâu cho Hoài']);
+    expect(tachViec(dtg?.o[1]?.viec ?? '')).toEqual(['đưa phong bì nâu cho Hoài']);
     expect(tap?.kieu).toBe('tap-duot');
     expect(tap?.theTam.map((t) => t.id)).toEqual(['lk-dem-bon', 'lk-tay-na', 'lk-chia-ba']);
     expect(tap?.o.map((o) => [o.gio, o.noi])).toEqual([['19:00', null], ['?', null], ['19:15', null]]);
+    // Bảng không khai "- Cột:" vẽ như ma trận một cột, mỗi ô một dòng.
+    expect(tap?.cot).toEqual([]);
+    expect(tap && maTran(tap)).toMatchObject({ coTieuDe: false, cot: [{ id: '' }], hang: [{ gio: '19:00' }, { gio: '?' }, { gio: '19:15' }] });
   });
+
+  it('ma trận: cột theo thứ tự khai, dòng = giờ khác nhau theo thứ tự xuất hiện, cột "?" là trống bắt buộc', () => {
+    if (!dtg) throw new Error('thiếu dtg-vu1');
+    const mt = maTran(dtg);
+    expect(mt.coTieuDe).toBe(true);
+    expect(mt.cot.map((c) => [c.id, c.trong])).toEqual([['hoai', false], ['?', true], ['bac-tu', false]]);
+    expect(mt.hang.map((h) => [h.gio, Object.entries(h.o).map(([c, o]) => `${c}:${o.id}`)])).toEqual([
+      ['6:44', ['hoai:o1']],
+      ['~6:50', ['?:o2']],
+      ['7:00', ['bac-tu:o3']],
+      ['trước 9:00', ['hoai:o4']],
+      ['9:00', ['bac-tu:o5']],
+    ]);
+    expect(oTrongCuaCot(dtg, '?')?.id).toBe('o2');
+    expect(oTrongCuaCot(dtg, 'hoai')).toBeNull();  });
 
   it('tập dượt: thẻ là thẻ tạm; kéo đúng thì ô xong, kéo sai máy đứng yên; xong mới đi tiếp', () => {
     let s = tuDong((_s, kn) => kn.kind === 'dong-thoi-gian');
@@ -189,10 +211,49 @@ describe('B19 · dòng thời gian', () => {
     expect(xuLy(KB, thieu, { type: 'dat-the-dtg', o: 'o1', the: 'clue-ra-cong' })).toBe(thieu);
     for (const [o, the] of [['o1', 'clue-ra-cong'], ['o2', 'clue-loi-chu-cuong'], ['o4', 'ev-phieu-gui']] as const) s = xuLy(KB, s, { type: 'dat-the-dtg', o, the });
     expect(dongThoiGianXong(dtg, s.dongThoiGian?.['dtg-vu1']?.o ?? {})).toBe(false);
+    // Chưa đủ ô thì "Xong" (tiep) đứng yên.
+    expect(xuLy(KB, s, { type: 'tiep' })).toBe(s);
     s = xuLy(KB, s, { type: 'dat-the-dtg', o: 'o5', the: 'clue-loi-co-lan' });
     expect(dongThoiGianXong(dtg, s.dongThoiGian?.['dtg-vu1']?.o ?? {})).toBe(true);
-    // Ô đã có thẻ không nhận thẻ khác.
+    expect(dongThoiGianDung(dtg, s.dongThoiGian?.['dtg-vu1']?.o ?? {})).toBe(true);
+    // Đặt lại cùng thẻ vào cùng ô: không đổi.
     expect(xuLy(KB, s, { type: 'dat-the-dtg', o: 'o1', the: 'clue-ra-cong' })).toBe(s);
+  });
+
+  it('bảng chân lý: đặt tự do, đổi chỗ, gỡ; chấm lúc Xong — note sai bật về chồng, đúng hết thì đi tiếp', () => {
+    if (!dtg) throw new Error('thiếu dtg-vu1');
+    let s = tuDong((_s, kn) => kn.kind === 'dong-thoi-gian' && kn.dtg.id === 'dtg-vu1');
+    const o = (st: TrangThaiMvp): Record<string, string> => st.dongThoiGian?.['dtg-vu1']?.o ?? {};
+    // Đặt sai ô vẫn được nhận, máy không báo đúng sai.
+    s = xuLy(KB, s, { type: 'dat-the-dtg', o: 'o1', the: 'ev-phieu-gui' });
+    expect(o(s)).toEqual({ o1: 'ev-phieu-gui' });
+    // Thẻ sang ô khác thì ô cũ trống (đổi chỗ); thả thẻ khác lên ô đã có thì thẻ cũ bật về chồng.
+    s = xuLy(KB, s, { type: 'dat-the-dtg', o: 'o4', the: 'ev-phieu-gui' });
+    expect(o(s)).toEqual({ o4: 'ev-phieu-gui' });
+    s = xuLy(KB, s, { type: 'dat-the-dtg', o: 'o4', the: 'ev-the-lich' });
+    expect(o(s)).toEqual({ o4: 'ev-the-lich' });
+    // Ô khóa sẵn và ô lạ không nhận; gỡ note ở ô trống thì đứng yên.
+    expect(xuLy(KB, s, { type: 'dat-the-dtg', o: 'o3', the: 'clue-ra-cong' })).toBe(s);
+    expect(xuLy(KB, s, { type: 'dat-the-dtg', o: 'o9', the: 'clue-ra-cong' })).toBe(s);
+    expect(xuLy(KB, s, { type: 'go-the-dtg', o: 'o1' })).toBe(s);
+    s = xuLy(KB, s, { type: 'go-the-dtg', o: 'o4' });
+    expect(o(s)).toEqual({});
+    // Đặt đủ bốn ô, có hai ô sai (o4 ↔ o5 đổi nhau): Xong → hai note sai bật về, ở lại màn, câu của ô sai đầu tiên là o4.
+    for (const [ô, the] of [['o1', 'clue-ra-cong'], ['o2', 'clue-loi-chu-cuong'], ['o4', 'clue-loi-co-lan'], ['o5', 'ev-phieu-gui']] as const) s = xuLy(KB, s, { type: 'dat-the-dtg', o: ô, the });
+    expect(dongThoiGianXong(dtg, o(s))).toBe(true);
+    expect(dongThoiGianDung(dtg, o(s))).toBe(false);
+    expect(oDatSai(dtg, o(s)).map((x) => x.id)).toEqual(['o4', 'o5']);
+    expect(boTheSai(dtg, o(s))).toEqual({ o1: 'clue-ra-cong', o2: 'clue-loi-chu-cuong' });
+    const sai = xuLy(KB, s, { type: 'tiep' });
+    expect(o(sai)).toEqual({ o1: 'clue-ra-cong', o2: 'clue-loi-chu-cuong' });
+    expect(sai.dongThoiGian?.['dtg-vu1']?.xong).toBeUndefined();
+    const kn = khungNhin(KB, sai);
+    expect(kn.kind === 'dong-thoi-gian' && kn.dtg.id).toBe('dtg-vu1');
+    // Sửa lại cho đúng rồi Xong: đi tiếp, ván ghi xong.
+    let dung = xuLy(KB, xuLy(KB, sai, { type: 'dat-the-dtg', o: 'o4', the: 'ev-phieu-gui' }), { type: 'dat-the-dtg', o: 'o5', the: 'clue-loi-co-lan' });
+    dung = xuLy(KB, dung, { type: 'tiep' });
+    expect(dung.dongThoiGian?.['dtg-vu1']?.xong).toBe(true);
+    expect(khungNhin(KB, dung).kind).not.toBe('dong-thoi-gian');
   });
 
   it('[HIỆN DÒNG THỜI GIAN] ở buổi họp: bản đã dựng, chỉ xem', () => {

@@ -1325,6 +1325,26 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
       loiNguoi(d.keoSai, vt);
       if (d.o.length === 0) err(vt, `dòng thời gian ${d.id} chưa có ô nào ("### <mã> · <giờ> · <nơi> · <việc>")`);
       else if (d.o.every((o) => o.khoaSan)) err(vt, `dòng thời gian ${d.id}: ô nào cũng "Khóa sẵn" — cần ít nhất một ô người chơi phải kéo`);
+      // Bảng chân lý: ô nằm đúng cột đã khai; tối đa 4 cột × 5 dòng (vừa điện thoại cầm ngang); hai ô không chung cột + giờ.
+      const maCot = new Set(d.cot.map((c) => c.id));
+      if (d.cot.length > 4) err(vt, `dòng thời gian ${d.id}: ${d.cot.length} cột (tối đa 4 để vừa điện thoại cầm ngang)`);
+      if (d.cot.length > 0) {
+        const gioDong = new Set(d.o.map((o) => o.gio ?? ''));
+        if (gioDong.size > 5) err(vt, `dòng thời gian ${d.id}: ${gioDong.size} mốc giờ (tối đa 5 dòng để vừa điện thoại cầm ngang)`);
+        const cap = new Set<string>();
+        for (const o of d.o) {
+          if (!o.cot) err(o.viTri, `ô ${o.id} (dòng thời gian ${d.id}) thiếu "· cột: <mã>" (bảng đã khai "- Cột:")`);
+          else if (!maCot.has(o.cot)) err(o.viTri, `ô ${o.id}: cột "${o.cot}" không có trong "- Cột:" của dòng thời gian ${d.id} (có: ${[...maCot].join(', ')})`);
+          else {
+            const k = `${o.cot}|${o.gio ?? ''}`;
+            if (cap.has(k)) err(o.viTri, `ô ${o.id}: đã có ô khác cùng cột "${o.cot}" và cùng giờ "${o.gio ?? ''}"`);
+            cap.add(k);
+          }
+        }
+        for (const c of d.cot) if (!d.o.some((o) => o.cot === c.id)) canhBao.push({ ...vt, thongBao: `dòng thời gian ${d.id}: cột "${c.id}" không có ô nào` });
+      } else {
+        for (const o of d.o) if (o.cot) err(o.viTri, `ô ${o.id}: có "cột: ${o.cot}" nhưng dòng thời gian ${d.id} chưa khai "- Cột: <mã>=<nhãn>, …"`);
+      }
       const tam = new Set(d.theTam.map((t) => t.id));
       const daDung = new Set<string>();
       for (const o of d.o) {

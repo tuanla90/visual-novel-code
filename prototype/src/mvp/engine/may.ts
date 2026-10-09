@@ -55,7 +55,7 @@ import {
   type VuSauMvp,
 } from '../../content/mvp/types';
 import { boCoChamVu, chamVu, rankHienTai, soVaTenVu, vuCoChamVu } from './cham-vu';
-import { banDungSan, dongThoiGianXong, thaDung } from './dong-thoi-gian';
+import { banDungSan, boTheSai, datTuDo, dongThoiGianDung, dongThoiGianXong, goThe, thaDung } from './dong-thoi-gian';
 import { MAU_GHIM, type BoiCanhChuoi, type CachChoiMvp, type HetNgayMvp, type KhamPhaMvp, type MauGhimMvp, type MucNhapVaiMvp, type MucSqlMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp, type TiepTucTuyenMvp } from './trang-thai';
 import { laTheHoiDap } from './bang-dieu-tra';
 import { apBiet } from './biet-ve';
@@ -193,6 +193,8 @@ export type HanhDongMvp =
   | { type: 'doi-muc'; nhapVai?: MucNhapVaiMvp; sql?: MucSqlMvp }
   /** Gói B19: thả thẻ vào một ô của dòng thời gian đang dựng. Thả sai thì máy đứng yên (giao diện bật thẻ về kèm câu nhắc). */
   | { type: 'dat-the-dtg'; o: string; the: string }
+  /** Bảng chân lý: nhấc note khỏi ô về chồng (dòng chính). */
+  | { type: 'go-the-dtg'; o: string }
   /** Gói B19: màn sửa truy vấn `· tính vạch`, bấm "Trình" mà câu chưa đúng → thêm một vạch (lời do giao diện hiện, `loiTrinhSai`). */
   | { type: 'trinh-sai' }
   /** Gói B19: "Chơi lại Vụ n" — về điểm lưu đầu vụ (`vu` thiếu = vụ đang chơi); bảng rank giữ. `luc` = mốc ván mới. */
@@ -1553,10 +1555,13 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       } else if (kn.kind === 'show-document') {
         moi = tienNut(hienTaiLieu(s, kn.documentId));
       } else if (kn.kind === 'dong-thoi-gian') {
-        // Gói B19: dựng xong mới đi tiếp; bản xem lại thì đi luôn.
+        // Bảng chân lý: bản xem lại đi luôn; dòng chính chấm lúc "Xong" — đúng hết thì đi tiếp, có ô sai thì note sai bật về chồng
+        // (ở lại màn); dòng tập dượt chấm tức thời nên `xong` là đủ.
         if (kn.chiXem) moi = tienNut(s);
-        else if (kn.xong) moi = tienNut({ ...s, dongThoiGian: { ...(s.dongThoiGian ?? {}), [kn.dtg.id]: { o: kn.daDat, xong: true } } });
-        else return s;
+        else if (!kn.xong) return s;
+        else if (kn.dtg.kieu === 'chinh' && !dongThoiGianDung(kn.dtg, kn.daDat)) {
+          return { ...s, dongThoiGian: { ...(s.dongThoiGian ?? {}), [kn.dtg.id]: { o: boTheSai(kn.dtg, kn.daDat) } } };
+        } else moi = tienNut({ ...s, dongThoiGian: { ...(s.dongThoiGian ?? {}), [kn.dtg.id]: { o: kn.daDat, xong: true } } });
       } else if (kn.kind === 'so-tong-ket') {
         moi = tienNut(s);
       } else if (kn.kind === 'ghep-mau') {
@@ -1685,13 +1690,22 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       break;
     }
     case 'dat-the-dtg': {
-      // Gói B19: thả đúng thẻ vào ô thì ghi; thả sai thì máy đứng yên.
+      // Bảng chân lý: dòng chính đặt tự do (không báo đúng sai); dòng tập dượt vẫn chỉ nhận thả đúng. Thẻ phải có trong hồ sơ.
       if (kn.kind !== 'dong-thoi-gian' || kn.chiXem) return s;
       const o = kn.dtg.o.find((x) => x.id === hd.o);
-      if (!o || !thaDung(o, hd.the, kn.daDat)) return s;
+      if (!o) return s;
       const tam = kn.dtg.theTam.some((t) => t.id === hd.the);
       if (!tam && !coTrongHoSo(s, hd.the)) return s;
-      moi = { ...s, dongThoiGian: { ...(s.dongThoiGian ?? {}), [kn.dtg.id]: { o: { ...kn.daDat, [o.id]: hd.the } } } };
+      const daDat = kn.dtg.kieu === 'tap-duot' ? (thaDung(o, hd.the, kn.daDat) ? { ...kn.daDat, [o.id]: hd.the } : null) : datTuDo(kn.dtg, kn.daDat, o.id, hd.the);
+      if (!daDat) return s;
+      moi = { ...s, dongThoiGian: { ...(s.dongThoiGian ?? {}), [kn.dtg.id]: { o: daDat } } };
+      break;
+    }
+    case 'go-the-dtg': {
+      if (kn.kind !== 'dong-thoi-gian' || kn.chiXem || kn.dtg.kieu !== 'chinh') return s;
+      const daDat = goThe(kn.dtg, kn.daDat, hd.o);
+      if (!daDat) return s;
+      moi = { ...s, dongThoiGian: { ...(s.dongThoiGian ?? {}), [kn.dtg.id]: { o: daDat } } };
       break;
     }
     case 'xong-thu-thach': {

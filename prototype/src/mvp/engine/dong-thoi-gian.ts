@@ -1,10 +1,12 @@
 /**
- * DÒNG THỜI GIAN (gói B19, docs/mua-1/brief/b19-vu-1-ban-6.md mục 5.1) — phần thuần, không React.
+ * BẢNG CHÂN LÝ (trước là "dòng thời gian"; gói B19 + B20, docs/mua-1/loi-note-bang-chan-ly.md §4) — phần thuần, không React.
  *
- * Người chơi kéo thẻ vào ô của một dòng thời gian thiếu chỗ. Mỗi ô khai các thẻ nhận (`nhan`); thả một thẻ trong danh sách là ô
- * xong, thả thẻ khác thì thẻ bật về kèm một câu nhắc nhẹ (không phạt, không tính vạch — máy đứng yên). Ô `khoaSan` đã điền sẵn.
- * Phần "không điền được" (`khongDien`, chữ "[?]" trong việc) hiện "?" mãi: thả gì vào đó cũng bật lại, kèm câu `keoVaoTrong`.
- * Xong khi mọi ô (trừ phần không điền được) đã điền.
+ * Ma trận: cột = người (`- Cột:`; có thể có cột "?" chưa biết), dòng = mốc giờ, ô = hành động (giấy note). Người chơi kéo note
+ * "sự thật" từ chồng bên phải vào ô, tự do: kéo ra, đổi chỗ, thay note đều được và máy KHÔNG báo đúng sai từng lần thả. Chấm một
+ * lần khi bấm "Xong" (mọi ô phải đặt đã có note): note sai ô bật về chồng, người nhắc nói câu "Kéo sai" của ô sai đầu tiên.
+ * Ô `khoaSan` đã điền sẵn. Cột mang ô `khongDien` ("trống bắt buộc": chưa có căn cứ ai) có tiêu đề gạch chéo: kéo note vào tiêu
+ * đề ấy bật về ngay kèm câu `keoVaoTrong` (đây là bài học, không phải chấm).
+ * Kiểu `tap-duot` (dtg-banh) giữ luật tức thời cũ: thả đúng thì ô xong, thả sai thì bật về kèm câu nhắc.
  *
  * Thẻ kéo được: dòng tập dượt dùng thẻ tạm (lời kể, không vào hồ sơ); dòng chính dùng thẻ trong hồ sơ của ván (thẻ đang trên
  * bảng, cộng thẻ ô nào đó nhận). Không có thẻ nhiễu: cái khó chỉ là đặt đúng chỗ.
@@ -42,9 +44,92 @@ export function banDungSan(d: DongThoiGianMvp): Record<string, string> {
   return Object.fromEntries(d.o.filter((o) => !o.khoaSan && o.nhan[0]).map((o) => [o.id, o.nhan[0] as string]));
 }
 
-/** Thả thẻ `the` vào ô `o`: đúng khi ô chưa có thẻ, không khóa sẵn và nhận thẻ này. */
+/** Thả thẻ `the` vào ô `o` (luật tức thời của dòng tập dượt): đúng khi ô chưa có thẻ, không khóa sẵn và nhận thẻ này. */
 export function thaDung(o: ODongThoiGianMvp, the: string, daDat: Readonly<Record<string, string>>): boolean {
   return !o.khoaSan && !daDat[o.id] && o.nhan.includes(the);
+}
+
+/**
+ * Đặt tự do (dòng chính): thẻ vào ô `oId`; thẻ đang ở ô khác thì dọn ô ấy (đổi chỗ), thẻ cũ của ô đích bật về chồng. Trả `null`
+ * khi không đổi gì (ô không có / khóa sẵn / thẻ đã nằm đúng ô ấy).
+ */
+export function datTuDo(d: DongThoiGianMvp, daDat: Readonly<Record<string, string>>, oId: string, the: string): Record<string, string> | null {
+  const o = d.o.find((x) => x.id === oId);
+  if (!o || o.khoaSan || daDat[oId] === the) return null;
+  const moi: Record<string, string> = {};
+  for (const [k, v] of Object.entries(daDat)) if (v !== the && k !== oId) moi[k] = v;
+  moi[oId] = the;
+  return moi;
+}
+
+/** Nhấc thẻ khỏi ô (dòng chính): trả `null` khi ô không có thẻ để nhấc. */
+export function goThe(d: DongThoiGianMvp, daDat: Readonly<Record<string, string>>, oId: string): Record<string, string> | null {
+  const o = d.o.find((x) => x.id === oId);
+  if (!o || o.khoaSan || !daDat[oId]) return null;
+  return Object.fromEntries(Object.entries(daDat).filter(([k]) => k !== oId));
+}
+
+/** Các ô người chơi đặt sai thẻ (theo thứ tự khai); ô khóa sẵn và ô chưa đặt không tính. */
+export function oDatSai(d: DongThoiGianMvp, daDat: Readonly<Record<string, string>>): ODongThoiGianMvp[] {
+  return d.o.filter((o) => !o.khoaSan && daDat[o.id] !== undefined && !o.nhan.includes(daDat[o.id] as string));
+}
+
+/** Chấm xong: mọi ô đã có thẻ và không ô nào sai. */
+export function dongThoiGianDung(d: DongThoiGianMvp, daDat: Readonly<Record<string, string>>): boolean {
+  return dongThoiGianXong(d, daDat) && oDatSai(d, daDat).length === 0;
+}
+
+/** Bỏ các thẻ đặt sai khỏi ô (bật về chồng). */
+export function boTheSai(d: DongThoiGianMvp, daDat: Readonly<Record<string, string>>): Record<string, string> {
+  const sai = new Set(oDatSai(d, daDat).map((o) => o.id));
+  return Object.fromEntries(Object.entries(daDat).filter(([k]) => !sai.has(k)));
+}
+
+/** Một cột của ma trận. `trong`: có ô "không điền được" (tiêu đề gạch chéo, "là ai? để trống"). */
+export interface CotMaTran {
+  id: string;
+  nhan: string;
+  trong: boolean;
+}
+/** Một dòng của ma trận: mốc giờ và ô theo cột (thiếu = ô trống mờ, không nhận thả). */
+export interface HangMaTran {
+  khoa: string;
+  gio: string | null;
+  o: Record<string, ODongThoiGianMvp>;
+}
+export interface MaTranDtg {
+  /** Có tiêu đề cột (bảng khai `- Cột:`). Không khai thì một cột không tiêu đề, mỗi ô một dòng. */
+  coTieuDe: boolean;
+  cot: CotMaTran[];
+  hang: HangMaTran[];
+}
+
+/** Dựng ma trận (cột = người khai ở `- Cột:`, dòng = các giờ khác nhau theo thứ tự xuất hiện). */
+export function maTran(d: DongThoiGianMvp): MaTranDtg {
+  if (d.cot.length === 0) {
+    return {
+      coTieuDe: false,
+      cot: [{ id: '', nhan: '', trong: false }],
+      hang: d.o.map((o) => ({ khoa: o.id, gio: o.gio, o: { '': o } })),
+    };
+  }
+  const cot = d.cot.map((c) => ({ id: c.id, nhan: c.nhan, trong: d.o.some((o) => o.cot === c.id && !!o.khongDien) }));
+  const hang: HangMaTran[] = [];
+  for (const o of d.o) {
+    const khoa = o.gio ?? '';
+    let h = hang.find((x) => x.khoa === khoa);
+    if (!h) {
+      h = { khoa, gio: o.gio, o: {} };
+      hang.push(h);
+    }
+    if (o.cot) h.o[o.cot] = o;
+  }
+  return { coTieuDe: true, cot, hang };
+}
+
+/** Ô "không điền được" của một cột (để lấy câu `Kéo vào chỗ trống`). */
+export function oTrongCuaCot(d: DongThoiGianMvp, cotId: string): ODongThoiGianMvp | null {
+  return d.o.find((o) => o.cot === cotId && !!o.khongDien) ?? null;
 }
 
 /**

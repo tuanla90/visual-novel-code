@@ -378,6 +378,7 @@ export function docTuyChonLenh(phan: string, ten: string, choUyTin: boolean): { 
 export interface RawODongThoiGian {
   id: string;
   gio: string | null;
+  cot: string | null;
   noi: string | null;
   viec: string;
   nhan: string[];
@@ -395,6 +396,7 @@ export interface RawDongThoiGian {
   kieu: 'tap-duot' | 'chinh';
   nguoiNhac: string | null;
   keoSai: RawLine[] | null;
+  cot: { id: string; nhan: string }[];
   theTam: { id: string; chu: string }[];
   o: RawODongThoiGian[];
   viTri: ViTri;
@@ -407,11 +409,16 @@ const LA_GIO = /^(?:\?|.*\d{1,2}:\d{2}.*)$/;
  * Đọc tiêu đề ô `### <mã> · <giờ> · <nơi> · <việc>` (thiếu phần nào thì bỏ phần ấy; một phần giữa là giờ nếu có dạng giờ / "?",
  * không thì là nơi). Sai → ném lỗi.
  */
-export function docTieuDeO(tieuDe: string): { id: string; gio: string | null; noi: string | null; viec: string } {
+export function docTieuDeO(tieuDe: string): { id: string; gio: string | null; cot?: string; noi: string | null; viec: string } {
   const phan = tieuDe.split(' · ').map((x) => x.trim());
   const id = phan[0] ?? '';
-  if (!/^[a-z0-9-]+$/.test(id)) throw new Error(`ô dòng thời gian: mã "${id}" không hợp lệ — viết "### <mã> · <giờ> · <nơi> · <việc>"`);
-  if (phan.length < 2 || phan.length > 4) throw new Error(`ô ${id}: tiêu đề phải là "### <mã> · <giờ> · <nơi> · <việc>" (bỏ phần thiếu): "${tieuDe}"`);
+  if (!/^[a-z0-9-]+$/.test(id)) throw new Error(`ô dòng thời gian: mã "${id}" không hợp lệ — viết "### <mã> · <giờ> · cột: <mã cột> · <nơi> · <việc>"`);
+  // Bảng chân lý: phần `cột: <mã>` (ngay sau giờ) tách riêng, phần còn lại đọc như cũ.
+  const iCot = phan.findIndex((x, k) => k > 0 && k < phan.length - 1 && /^cột:\s*\S/.test(x));
+  const cot = iCot > 0 ? (phan[iCot] ?? '').replace(/^cột:\s*/, '').trim() : undefined;
+  if (cot !== undefined && !/^(\?|[a-z][a-z0-9-]*)$/.test(cot)) throw new Error(`ô ${id}: "cột: ${cot}" phải là mã (chữ thường, số, gạch nối) hoặc "?"`);
+  if (iCot > 0) phan.splice(iCot, 1);
+  if (phan.length < 2 || phan.length > 4) throw new Error(`ô ${id}: tiêu đề phải là "### <mã> · <giờ> · cột: <mã cột> · <nơi> · <việc>" (bỏ phần thiếu): "${tieuDe}"`);
   const viec = phan[phan.length - 1] ?? '';
   const giua = phan.slice(1, -1);
   let gio: string | null = null;
@@ -424,7 +431,7 @@ export function docTieuDeO(tieuDe: string): { id: string; gio: string | null; no
     else noi = giua[0] ?? null;
   }
   if (viec === '') throw new Error(`ô ${id}: thiếu phần việc`);
-  return { id, gio, noi, viec };
+  return { id, gio, ...(cot !== undefined ? { cot } : {}), noi, viec };
 }
 
 const MUC_DOI_CHAT: Record<string, RawBangChungDoiChat['muc']> = { 'ĐỦ CĂN CỨ': 'du', 'HỖ TRỢ': 'ho-tro', 'GỢI Ý': 'goi-y' };
@@ -1652,8 +1659,9 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
 
   // ---------- dong-thoi-gian.md (gói B19) ----------
   /**
-   * `## <mã> — <tên> {kiểu: tập dượt|chính}` rồi các dòng đầu mục (`- Người nhắc khi kéo sai:`, `- Thẻ tạm: a = … · b = …`,
-   * `- Kéo sai: <lời>`), rồi các ô `### <mã> · <giờ> · <nơi> · <việc>` với `- Nhận:`, `- Khóa sẵn`, `- Không điền được:`,
+   * `## <mã> — <tên> {kiểu: tập dượt|chính}` rồi các dòng đầu mục (`- Người nhắc khi kéo sai:`, `- Cột: hoai=Hoài, ?=?, …` (bảng
+   * chân lý: cột = người), `- Thẻ tạm: a = … · b = …`, `- Kéo sai: <lời>`), rồi các ô
+   * `### <mã> · <giờ> · cột: <mã cột> · <nơi> · <việc>` (`cột:` có thể bỏ khi bảng không khai `- Cột:`) với `- Nhận:`, `- Khóa sẵn`, `- Không điền được:`,
    * `- Kéo sai:`, `- Kéo vào chỗ trống:`.
    */
   function docDongThoiGian({ viTri }: { viTri: () => ViTri }) {
@@ -1664,7 +1672,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       if (line.startsWith('## ')) {
         const m = new RegExp(`^## (${MA}) — (.+?)(?: \\{kiểu: (tập dượt|chính)\\})?$`).exec(line);
         if (!m) throw new Error(`tiêu đề dòng thời gian sai quy ước "${line}" — viết "## <mã> — <tên> {kiểu: tập dượt|chính}"`);
-        dtg = { id: m[1] ?? '', ten: (m[2] ?? '').trim(), kieu: m[3] === 'tập dượt' ? 'tap-duot' : 'chinh', nguoiNhac: null, keoSai: null, theTam: [], o: [], viTri: viTri() };
+        dtg = { id: m[1] ?? '', ten: (m[2] ?? '').trim(), kieu: m[3] === 'tập dượt' ? 'tap-duot' : 'chinh', nguoiNhac: null, keoSai: null, cot: [], theTam: [], o: [], viTri: viTri() };
         mvp.dongThoiGian.push(dtg);
         o = null;
         return i;
@@ -1673,7 +1681,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       const d: RawDongThoiGian = dtg;
       if (line.startsWith('### ')) {
         const td = docTieuDeO(line.slice(4).trim());
-        o = { ...td, nhan: [], khoaSan: false, khongDien: null, keoSai: null, keoVaoTrong: null, viTri: viTri() };
+        o = { ...td, cot: td.cot ?? null, nhan: [], khoaSan: false, khongDien: null, keoSai: null, keoVaoTrong: null, viTri: viTri() };
         d.o.push(o);
         return i;
       }
@@ -1697,8 +1705,15 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
             if (d.theTam.some((x) => x.id === t[1])) throw new Error(`dòng thời gian ${d.id}: thẻ tạm "${t[1] ?? ''}" khai hai lần`);
             d.theTam.push({ id: t[1] ?? '', chu: (t[2] ?? '').trim() });
           }
+        } else if (nhan === 'Cột') {
+          for (const phan of gt.split(/\s*,\s*/)) {
+            const c = /^(\?|[a-z][a-z0-9-]*)\s*=\s*(.+)$/.exec(phan.trim());
+            if (!c) throw new Error(`dòng thời gian ${d.id}: cột phải viết "<mã>=<nhãn>" (mã nhân vật hoặc ?), cách nhau bằng dấu phẩy: "${phan}"`);
+            if (d.cot.some((x) => x.id === c[1])) throw new Error(`dòng thời gian ${d.id}: cột "${c[1] ?? ''}" khai hai lần`);
+            d.cot.push({ id: c[1] ?? '', nhan: (c[2] ?? '').trim() });
+          }
         } else if (nhan === 'Kéo sai') d.keoSai = parseFeedbackDc(gt);
-        else throw new Error(`dòng thời gian ${d.id}: dòng lạ "- ${nhan}:" — đầu mục chỉ có "Người nhắc khi kéo sai", "Thẻ tạm", "Kéo sai"`);
+        else throw new Error(`dòng thời gian ${d.id}: dòng lạ "- ${nhan}:" — đầu mục chỉ có "Người nhắc khi kéo sai", "Cột", "Thẻ tạm", "Kéo sai"`);
         return i;
       }
       if (nhan === 'Nhận') o.nhan = chiaDanhSach(gt);

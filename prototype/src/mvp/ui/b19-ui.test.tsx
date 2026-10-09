@@ -29,8 +29,9 @@ function vanDuThe(): TrangThaiMvp {
   return { ...s, hoSo: { manhMoi: ['clue-loi-co-lan', 'clue-ra-cong', 'clue-loi-chu-cuong'], taiLieu: [], bangChung: ['ev-phieu-gui', 'ev-the-lich'] } };
 }
 
-function veDtg(o: { dienThoai?: boolean; daDat?: Record<string, string>; chiXem?: boolean } = {}) {
+function veDtg(o: { dienThoai?: boolean; daDat?: Record<string, string>; chiXem?: boolean; xong?: boolean } = {}) {
   const onDat = vi.fn();
+  const onGo = vi.fn();
   const onTiep = vi.fn();
   const s = vanDuThe();
   if (!DTG) throw new Error('thiếu dtg-vu1');
@@ -40,17 +41,18 @@ function veDtg(o: { dienThoai?: boolean; daDat?: Record<string, string>; chiXem?
       dtg={DTG}
       the={theCuaDongThoiGian(KB, s, DTG)}
       daDat={o.daDat ?? {}}
-      xong={false}
+      xong={o.xong ?? false}
       chiXem={o.chiXem ?? false}
       docTungO={o.chiXem ?? false}
       dienThoai={o.dienThoai ?? false}
       dienTen={(t) => t}
       tenNguoiNoi={tenNguoi}
       onDat={onDat}
+      onGo={onGo}
       onTiep={onTiep}
     />,
   );
-  return { onDat, onTiep };
+  return { onDat, onGo, onTiep };
 }
 
 /** Kéo thẻ `id` (theo data-the) thả vào phần tử `dich`. */
@@ -69,64 +71,92 @@ beforeEach(() => {
   vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null);
 });
 
-  it("selected evidence highlights related matrix fields", async () => {
+const DAT_DUNG = { o1: 'clue-ra-cong', o2: 'clue-loi-chu-cuong', o4: 'ev-phieu-gui', o5: 'clue-loi-co-lan' };
+
+describe('B19 · màn bảng chân lý', () => {
+  it('vẽ ma trận: 3 cột người (cột "?" gạch chéo), 5 dòng giờ theo thứ tự xuất hiện, ô không khai thì trống mờ', () => {
     veDtg();
-    const card = document.querySelector<HTMLButtonElement>("[data-the=\"clue-ra-cong\"]");
-    expect(card).not.toBeNull();
-    await userEvent.click(card!);
-    expect(o("o1").querySelector(".dtg__o-thoi-gian")).toHaveClass("is-match");
-    expect(o("o1").querySelector(".dtg__o-dia-diem")).toHaveClass("is-match");
-    expect(o("o1").querySelector(".dtg__o-su-kien")).toHaveClass("is-match");
+    expect([...document.querySelectorAll('.bcl__cot')].map((c) => c.querySelector('.bcl__cot-ten')?.textContent)).toEqual(['Hoài', '? (chưa biết)', 'Bác Thịnh']);
+    expect(document.querySelectorAll('.bcl__cot--trong')).toHaveLength(1);
+    expect(document.querySelector('.bcl__cot--trong')).toHaveTextContent('là ai? để trống');
+    expect([...document.querySelectorAll('.bcl__gio')].map((g) => g.textContent)).toEqual(['6:44', '~6:50', '7:00', 'trước 9:00', '9:00']);
+    expect(document.querySelectorAll('[data-o]')).toHaveLength(5);
+    expect(document.querySelectorAll('.bcl__o--mo')).toHaveLength(10);
+    // Ô khai theo (cột, dòng): o2 ở cột "?" dòng 2; o5 ở cột Bác Thịnh dòng 5.
+    const luoi = document.querySelector('.bcl__luoi') as HTMLElement;
+    expect(luoi.style.getPropertyValue('--n-cot')).toBe('3');
+    expect(luoi.style.getPropertyValue('--n-hang')).toBe('5');
+    const hang = [...document.querySelectorAll('.bcl__hang')];
+    expect(hang[1]?.querySelectorAll('.bcl__o-vo')[1]?.querySelector('[data-o="o2"]')).not.toBeNull();
+    expect(hang[4]?.querySelectorAll('.bcl__o-vo')[2]?.querySelector('[data-o="o5"]')).not.toBeNull();
+    expect(within(o('o3')).getByText('bác Thịnh mở sảnh')).toBeInTheDocument();
+    expect(screen.getByRole('complementary', { name: 'Sự thật chờ đặt' })).toBeInTheDocument();
   });
 
-describe('B19 · màn dòng thời gian', () => {
-  it('máy tính: kéo đúng thẻ vào ô thì báo máy; kéo sai thì không báo, hiện câu nhắc chung', () => {
+  it('kéo thả tự do: thả đúng hay sai đều báo máy, không hiện câu đúng sai; chưa đủ ô thì "Tiếp tục" tắt', () => {
     const { onDat } = veDtg();
     keoTha('clue-ra-cong', o('o1'));
-    expect(onDat).toHaveBeenCalledWith('o1', 'clue-ra-cong');
+    expect(onDat).toHaveBeenLastCalledWith('o1', 'clue-ra-cong');
     keoTha('ev-the-lich', o('o4'));
-    expect(onDat).toHaveBeenCalledTimes(1);
-    expect(screen.getByRole('status')).toHaveTextContent('Thẻ này nói chuyện ở chỗ khác.');
-    expect(screen.getByRole('status')).toHaveTextContent('Hà Vy');
-  });
-
-  it('phần "?" không điền được: thả gì cũng bật lại kèm câu riêng; ô khóa sẵn đã có; chưa xong thì không đi tiếp được', () => {
-    const { onDat } = veDtg();
-    const dauHoi = within(o('o2')).getByRole('button', { name: 'ai: chưa biết' });
-    keoTha('clue-loi-chu-cuong', dauHoi);
-    expect(onDat).not.toHaveBeenCalled();
-    expect(screen.getByRole('status')).toHaveTextContent('Chưa ai biết người ấy. Cứ để trống.');
-    expect(within(o('o3')).getByText('đã có sẵn')).toBeInTheDocument();
+    expect(onDat).toHaveBeenLastCalledWith('o4', 'ev-the-lich');
+    expect(screen.queryByRole('status')).toBeNull();
     expect(screen.getByRole('button', { name: 'Tiếp tục' })).toBeDisabled();
   });
 
-  it('bấm thẻ rồi bấm ô cũng thả được (bàn phím, không kéo)', async () => {
+  it('tiêu đề cột "?" (trống bắt buộc): thả note vào là bật về ngay kèm câu riêng, không báo máy', () => {
     const { onDat } = veDtg();
+    const tieuDe = document.querySelector('[data-cot="?"]') as HTMLElement;
+    expect(within(tieuDe).getByText('là ai? để trống')).toBeInTheDocument();
+    keoTha('clue-loi-chu-cuong', tieuDe);
+    expect(onDat).not.toHaveBeenCalled();
+    expect(screen.getByRole('status')).toHaveTextContent('Chưa ai biết người ấy. Cứ để trống.');
+    expect(screen.getByRole('status')).toHaveTextContent('Hà Vy');
+    expect(document.querySelector('[data-the="clue-loi-chu-cuong"]')).toHaveClass('is-bat-ve');
+  });
+
+  it('chạm note rồi chạm ô để đặt; chạm note trong ô để gỡ về chồng (bàn phím, không kéo)', async () => {
+    const { onDat, onGo } = veDtg({ daDat: { o1: 'clue-ra-cong' } });
     const u = userEvent.setup();
+    // Note đã đặt rời chồng.
+    expect(screen.getByRole('complementary', { name: 'Sự thật chờ đặt' }).querySelector('[data-the="clue-ra-cong"]')).toBeNull();
     await u.click(screen.getByRole('button', { name: /Có người đưa phong bì cho Hoài ở cổng/ }));
     await u.click(within(o('o2')).getByRole('button', { name: /^Ô 2: còn trống/ }));
     expect(onDat).toHaveBeenCalledWith('o2', 'clue-loi-chu-cuong');
+    await u.click(within(o('o1')).getByRole('button', { name: /^Ô 1: Hoài ra cổng lúc 6:44/ }));
+    expect(onGo).toHaveBeenCalledWith('o1');
   });
 
-  it('điện thoại: chạm ô → danh sách thẻ → chạm chọn; chọn sai thì danh sách còn mở kèm câu nhắc', async () => {
+  it('"Xong" chỉ sáng khi mọi ô phải đặt đã có note; ô sai: bấm Xong nói câu "Kéo sai" của ô sai đầu tiên rồi báo máy', async () => {
+    const { onTiep } = veDtg({ daDat: { ...DAT_DUNG, o4: 'ev-the-lich', o5: 'ev-phieu-gui' }, xong: true });
+    const u = userEvent.setup();
+    expect(screen.queryByRole('button', { name: 'Tiếp tục' })).toBeNull();
+    await u.click(screen.getByRole('button', { name: 'Xong' }));
+    expect(screen.getByRole('status')).toHaveTextContent('Thẻ này nói chuyện ở chỗ khác.');
+    expect(onTiep).toHaveBeenCalledTimes(1);
+  });
+
+  it('đúng hết: bấm "Xong" không nói gì, báo máy đi tiếp', async () => {
+    const { onTiep } = veDtg({ daDat: DAT_DUNG, xong: true });
+    await userEvent.click(screen.getByRole('button', { name: 'Xong' }));
+    expect(screen.queryByRole('status')).toBeNull();
+    expect(onTiep).toHaveBeenCalledTimes(1);
+  });
+
+  it('điện thoại: hướng dẫn chạm; chạm note rồi chạm ô vẫn đặt được, không có hộp chọn thẻ', async () => {
     const { onDat } = veDtg({ dienThoai: true });
     const u = userEvent.setup();
-    expect(screen.queryByRole('complementary', { name: 'Thẻ để kéo' })).toBeNull();
-    await u.click(within(o('o5')).getByRole('button', { name: /^Ô 5: còn trống — chạm để chọn thẻ/ }));
-    const hop = screen.getByRole('dialog', { name: 'Chọn thẻ cho ô' });
-    await u.click(within(hop).getByRole('button', { name: /Phiếu gửi ký/ }));
-    expect(onDat).not.toHaveBeenCalled();
-    expect(within(hop).getByRole('status')).toHaveTextContent('Thẻ này nói chuyện ở chỗ khác.');
-    await u.click(within(hop).getByRole('button', { name: /Phiếu gửi do người nộp ký/ }));
+    expect(document.querySelector('.bcl__huong-dan')).toHaveTextContent('Chạm note rồi chạm ô để đặt');
+    await u.click(screen.getByRole('button', { name: /Phiếu gửi do người nộp ký/ }));
+    await u.click(within(o('o5')).getByRole('button', { name: /^Ô 5: còn trống/ }));
     expect(onDat).toHaveBeenCalledWith('o5', 'clue-loi-co-lan');
-    expect(screen.queryByRole('dialog', { name: 'Chọn thẻ cho ô' })).toBeNull();
+    expect(screen.queryByRole('dialog')).toBeNull();
   });
 
-  it('xem lại ở buổi họp: không cột thẻ, đọc từng ô rồi mới "Tiếp tục"', async () => {
-    const { onTiep } = veDtg({ chiXem: true, daDat: { o1: 'clue-ra-cong', o2: 'clue-loi-chu-cuong', o4: 'ev-phieu-gui', o5: 'clue-loi-co-lan' } });
+  it('xem lại ở buổi họp: không chồng note, đọc từng ô rồi mới "Tiếp tục"', async () => {
+    const { onTiep } = veDtg({ chiXem: true, daDat: DAT_DUNG });
     const u = userEvent.setup();
-    expect(screen.queryByRole('complementary', { name: 'Thẻ để kéo' })).toBeNull();
-    expect(within(o('o1')).getByText('Hoài ra cổng lúc 6:44')).toBeInTheDocument();
+    expect(screen.queryByRole('complementary')).toBeNull();
+    expect(within(o('o1')).getByText('Hoài ra cổng lúc 6:44', { selector: '.bcl__note-chu' })).toBeInTheDocument();
     for (let i = 2; i <= 5; i++) await u.click(screen.getByRole('button', { name: `Ô tiếp (${i}/5)` }));
     await u.click(screen.getByRole('button', { name: 'Tiếp tục' }));
     expect(onTiep).toHaveBeenCalledTimes(1);

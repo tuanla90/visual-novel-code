@@ -16,17 +16,18 @@
 ## dtg-vu1 — Sáng thứ Hai 16/09 {kiểu: chính}
 
 - Người nhắc khi kéo sai: ha-vy
+- Cột: hoai=Hoài, ?=? (chưa biết), bac-tu=Bác Thịnh
 - Kéo sai: **ha-vy** (thinking): Thẻ này nói chuyện ở chỗ khác.
 
-### o1 · 6:44 · cổng ký túc xá · Hoài ra cổng
+### o1 · 6:44 · cột: hoai · cổng ký túc xá · Hoài ra cổng
 - Nhận: clue-ra-cong
-### o2 · ? · cổng ký túc xá · [?] đưa phong bì nâu cho Hoài
+### o2 · ~6:50 · cột: ? · cổng ký túc xá · đưa phong bì nâu cho Hoài
 - Nhận: clue-loi-chu-cuong
 - Không điền được: ai
 - Kéo vào chỗ trống: **ha-vy** (thinking): Chưa ai biết người ấy. Cứ để trống.
-### o3 · 7:00 · sảnh tòa B · bác Thịnh mở sảnh
+### o3 · 7:00 · cột: bac-tu · sảnh tòa B · bác Thịnh mở sảnh
 - Khóa sẵn
-### o4 · trước 9:00 · sảnh tòa B · Hoài bỏ thư, ký phiếu
+### o4 · trước 9:00 · cột: hoai · sảnh tòa B · Hoài bỏ thư, ký phiếu
 - Nhận: ev-phieu-gui
-### o5 · 9:00 · sảnh tòa B · cô Lan thu hộp
+### o5 · 9:00 · cột: bac-tu · sảnh tòa B · hộp được thu, có phong bì nâu
 - Nhận: clue-loi-co-lan

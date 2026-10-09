@@ -44,10 +44,12 @@ function dongThoiGian(d: RawDongThoiGian): Obj {
     kieu: d.kieu,
     nguoiNhac: d.nguoiNhac,
     keoSai: d.keoSai ? d.keoSai.map(loi) : null,
+    cot: d.cot.map((c) => ({ id: c.id, nhan: c.nhan })),
     theTam: d.theTam.map((t) => ({ id: t.id, chu: t.chu })),
     o: d.o.map((o) => ({
       id: o.id,
       gio: o.gio,
+      cot: o.cot,
       noi: o.noi,
       viec: o.viec,
       nhan: o.nhan,

@@ -89,6 +89,10 @@ describe('B19 · bộ đọc: cú pháp mới', () => {
     expect(docTieuDeO('o3 · sảnh tòa B · mở sảnh')).toEqual({ id: 'o3', gio: null, noi: 'sảnh tòa B', viec: 'mở sảnh' });
     expect(docTieuDeO('o4 · trước 9:00 · Hoài bỏ thư')).toEqual({ id: 'o4', gio: 'trước 9:00', noi: null, viec: 'Hoài bỏ thư' });
     expect(() => docTieuDeO('O 5 · x')).toThrow();
+    // Bảng chân lý: `cột: <mã>` ngay sau giờ (hoặc "?"), không lẫn vào nơi / việc.
+    expect(docTieuDeO('o1 · 6:44 · cột: hoai · cổng · Hoài ra cổng')).toEqual({ id: 'o1', gio: '6:44', cot: 'hoai', noi: 'cổng', viec: 'Hoài ra cổng' });
+    expect(docTieuDeO('o2 · ~6:50 · cột: ? · đưa phong bì')).toEqual({ id: 'o2', gio: '~6:50', cot: '?', noi: null, viec: 'đưa phong bì' });
+    expect(() => docTieuDeO('o3 · 7:00 · cột: Bác Thịnh · mở sảnh')).toThrow(/cột: Bác Thịnh/);
   });
 
   it('chuyển: lệnh tính vạch, dòng thời gian, "Khi trình sai", kết tạm vào dữ liệu game', () => {
@@ -144,6 +148,15 @@ describe('B19 · máy kiểm', () => {
     const toanKhoa = doc({ [DTG_TEP]: [['- Nhận: lk-dem-bon', '- Khóa sẵn'], ['- Nhận: lk-tay-na', '- Khóa sẵn'], ['- Nhận: lk-chia-ba', '- Khóa sẵn']] }).loi.join('\n');
     expect(toanKhoa).toMatch(/ô nào cũng "Khóa sẵn"/);
     expect(doc({ [DTG_TEP]: [['- Nhận: ev-phieu-gui\n', '\n']] }).loi.join('\n')).toMatch(/ô o4 \(dòng thời gian dtg-vu1\) cần dòng "- Nhận: <thẻ>"/);
+  });
+
+  it('bảng chân lý: "- Cột:" sai quy ước, ô thiếu cột / cột lạ / trùng cột + giờ, "cột:" khi bảng không khai cột', () => {
+    expect(doc({ [DTG_TEP]: [['- Cột: hoai=Hoài, ?=? (chưa biết), bac-tu=Bác Thịnh', '- Cột: hoai Hoài']] }).loi.join('\n')).toMatch(/cột phải viết "<mã>=<nhãn>"/);
+    expect(doc({ [DTG_TEP]: [['- Cột: hoai=Hoài, ?=? (chưa biết), bac-tu=Bác Thịnh', '- Cột: hoai=Hoài, hoai=Hoài nữa']] }).loi.join('\n')).toMatch(/cột "hoai" khai hai lần/);
+    expect(doc({ [DTG_TEP]: [['o3 · 7:00 · cột: bac-tu ·', 'o3 · 7:00 ·']] }).loi.join('\n')).toMatch(/ô o3 \(dòng thời gian dtg-vu1\) thiếu "· cột: <mã>"/);
+    expect(doc({ [DTG_TEP]: [['o3 · 7:00 · cột: bac-tu ·', 'o3 · 7:00 · cột: ai-do ·']] }).loi.join('\n')).toMatch(/ô o3: cột "ai-do" không có trong "- Cột:"/);
+    expect(doc({ [DTG_TEP]: [['o4 · trước 9:00 · cột: hoai ·', 'o4 · 6:44 · cột: hoai ·']] }).loi.join('\n')).toMatch(/ô o4: đã có ô khác cùng cột "hoai" và cùng giờ "6:44"/);
+    expect(doc({ [DTG_TEP]: [['o1 · 19:00 · đĩa', 'o1 · 19:00 · cột: hoai · đĩa']] }).loi.join('\n')).toMatch(/ô o1: có "cột: hoai" nhưng dòng thời gian dtg-banh chưa khai "- Cột:/);
   });
 
   it('thẻ nhận chưa mở trước chỗ [DÒNG THỜI GIAN] là lỗi', () => {
@@ -212,9 +225,9 @@ describe('B19 · truyện chữ in lệnh mới', () => {
     await bo.khoiTaoDb();
     const vb = bo.xuatVuHoacViec('vu1');
     bo.dongDb();
-    expect(vb).toContain('| 6:44 | cổng ký túc xá | Hoài ra cổng | Hoài ra cổng lúc 6:44 |');
-    expect(vb).toContain('| ? | cổng ký túc xá | **?** đưa phong bì nâu cho Hoài | Có người đưa phong bì cho Hoài ở cổng |');
-    expect(vb).toContain('| 7:00 | sảnh tòa B | bác Thịnh mở sảnh | (có sẵn) |');
+    expect(vb).toContain('| 6:44 | Hoài | cổng ký túc xá | Hoài ra cổng | Hoài ra cổng lúc 6:44 |');
+    expect(vb).toContain('| ~6:50 | ? (chưa biết) | cổng ký túc xá | đưa phong bì nâu cho Hoài | Có người đưa phong bì cho Hoài ở cổng |');
+    expect(vb).toContain('| 7:00 | Bác Thịnh | sảnh tòa B | bác Thịnh mở sảnh | (có sẵn) |');
     expect(vb).toContain('| 19:00 |  | đĩa đủ bốn chiếc | Minh Anh: "Lúc bảy giờ chị đếm còn bốn." |');
     expect(vb).toContain('Bạn đọc lại dòng thời gian');
     expect(vb).toMatch(/Câu tính vạch 1\/4\*\*: Chạy thử bao nhiêu lần cũng được/);

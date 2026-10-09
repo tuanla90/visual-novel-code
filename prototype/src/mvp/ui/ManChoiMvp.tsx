@@ -559,6 +559,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             dienTen={dienTen}
             tenNguoiNoi={(ma) => tenNguoiNoi(kb, ma, s)}
             onDat={(o, the) => hanhDong({ type: 'dat-the-dtg', o, the })}
+            onGo={(o) => hanhDong({ type: 'go-the-dtg', o })}
             onTiep={tiep}
           />
         );

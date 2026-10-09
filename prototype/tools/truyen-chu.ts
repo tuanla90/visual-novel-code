@@ -911,13 +911,16 @@ export class BoXuatTruyenChu {
             const dung = n.type === 'dong-thoi-gian';
             dong.push(dung ? `🧩 **Dựng lại dòng thời gian${d.kieu === 'tap-duot' ? ' (tập dượt)' : ''}: ${this.dienTen(d.ten)}** — kéo ${d.kieu === 'tap-duot' ? 'lời kể' : 'bằng chứng trong hồ sơ'} vào ô; xong mới đi tiếp. Bản đã dựng:` : `📋 **Bạn đọc lại dòng thời gian: ${this.dienTen(d.ten)}**`);
             dong.push('');
-            dong.push('| Giờ | Nơi | Việc | Bằng chứng |');
-            dong.push('| --- | --- | --- | --- |');
+            // Bảng chân lý: có cột (người) thì in thêm cột "Người" (nhãn cột khai ở `- Cột:`).
+            const coCot = d.cot.length > 0;
+            dong.push(coCot ? '| Giờ | Người | Nơi | Việc | Bằng chứng |' : '| Giờ | Nơi | Việc | Bằng chứng |');
+            dong.push(coCot ? '| --- | --- | --- | --- | --- |' : '| --- | --- | --- | --- |');
             for (const o of d.o) {
               const the = o.nhan[0];
               const tenThe = the ? (d.theTam.find((t) => t.id === the)?.chu ?? this.tenTheHoSo(the)) : '';
               const bang = o.khoaSan ? (tenThe ? `${tenThe} (có sẵn)` : '(có sẵn)') : tenThe;
-              dong.push(`| ${o.gio ?? ''} | ${o.noi ? this.dienTen(o.noi) : ''} | ${this.dienTen(o.viec).replace('[?]', '**?**')} | ${this.dienTen(bang)} |`);
+              const nguoi = coCot ? ` ${this.dienTen(d.cot.find((c) => c.id === o.cot)?.nhan ?? o.cot ?? '')} |` : '';
+              dong.push(`| ${o.gio ?? ''} |${nguoi} ${o.noi ? this.dienTen(o.noi) : ''} | ${this.dienTen(o.viec).replace('[?]', '**?**')} | ${this.dienTen(bang)} |`);
             }
             dong.push('');
             if (dung) {

@@ -1,25 +1,29 @@
 /**
- * MÀN DÒNG THỜI GIAN (gói B19, docs/mua-1/brief/b19-vu-1-ban-6.md mục 5.1; cách chơi: b19-cach-choi-dong-thoi-gian.md).
+ * MÀN BẢNG CHÂN LÝ (trước là "dòng thời gian"; gói B19 + B20, docs/mua-1/loi-note-bang-chan-ly.md §4).
  *
- *   - Máy tính: trục ngang các ô (giờ · nơi · việc), cột thẻ bên phải; kéo thẻ thả vào ô (bấm thẻ rồi bấm ô cũng được, cho bàn phím).
- *   - Điện thoại (`dienThoai`): chạm ô → danh sách thẻ → chạm chọn.
- *   - Thả đúng (thẻ ô nhận) là ô xong; thả sai thì thẻ bật về (rung) và người nhắc nói một câu nhẹ — không phạt, không tính vạch.
- *   - Ô khóa sẵn đã điền; phần "không điền được" ("[?]" trong việc) hiện "?" mãi, thả gì vào cũng bật lại kèm câu riêng.
- *   - Xong mọi ô mới bấm được "Tiếp tục". Bản xem lại (`chiXem`): không cột thẻ; ở buổi họp (`docTungO`) đọc từng ô một.
- * Luật thuần ở `engine/dong-thoi-gian.ts`; máy ghi thẻ đã thả qua hành động `dat-the-dtg`.
+ *   - Ma trận: cột = người (tiêu đề cột; cột "?" chưa biết), dòng = mốc giờ (cột đầu), ô = hành động hiện bằng giấy note.
+ *     Ô phải đặt: viền nét đứt, trống (ghi sẵn việc bằng chữ mờ). Ô điền sẵn: note xám. Ô không khai: trống mờ, không nhận thả.
+ *   - Bên phải: chồng "Sự thật chờ đặt" — mỗi thẻ nhận được là một giấy note hơi nghiêng. Kéo note vào ô tự do (kéo ra, đổi chỗ,
+ *     thay note); không báo đúng sai từng lần thả. Máy cảm ứng: chạm note rồi chạm ô; chạm note trong ô để gỡ.
+ *   - Mọi ô phải đặt đã có note thì nút đổi nhãn "Xong": bấm là chấm — note sai ô bật về chồng kèm câu "Kéo sai" của ô sai đầu
+ *     tiên; đúng hết thì đi tiếp. Dòng tập dượt (`tap-duot`) vẫn tức thời: thả đúng là xong ô, thả sai thì bật về kèm câu nhắc.
+ *   - Cột có ô "không điền được" ("trống bắt buộc"): tiêu đề gạch chéo "là ai? để trống"; kéo note vào tiêu đề ấy bật về ngay kèm
+ *     câu "Kéo vào chỗ trống" (bài học, không phải chấm).
+ *   - Bản xem lại (`chiXem`): không chồng note; ở buổi họp (`docTungO`) đọc từng ô một.
+ * Luật thuần ở `engine/dong-thoi-gian.ts`; máy ghi note đã đặt qua `dat-the-dtg` / `go-the-dtg`.
  */
-import { useEffect, useRef, useState, type DragEvent } from 'react';
+import { useEffect, useRef, useState, type CSSProperties, type DragEvent } from 'react';
 import type { DongThoiGianMvp as DongThoiGian, KichBanMvp, LoiMvp, ODongThoiGianMvp } from '../../content/mvp/types';
 import { soundEngine } from '../../shared/audio/sound-engine';
 import { CodeText } from '../../shared/ui/CodeText';
-import { loiKeoSai, tachViec, tenTheDongThoiGian, thaDung, theTrongO, type TheDongThoiGianMvp } from '../engine/dong-thoi-gian';
+import { loiKeoSai, maTran, oDatSai, oTrongCuaCot, tenTheDongThoiGian, thaDung, theTrongO, type TheDongThoiGianMvp } from '../engine/dong-thoi-gian';
 import { anhTheoTen } from './anh-mvp';
 import './b19.css';
 
 export interface DongThoiGianMvpProps {
   kb: KichBanMvp;
   dtg: DongThoiGian;
-  /** Thẻ ở cột thẻ (máy dựng: `theCuaDongThoiGian`). */
+  /** Thẻ của kho note (máy dựng: `theCuaDongThoiGian`); thẻ đã nằm trong ô tự rời chồng. */
   the: readonly TheDongThoiGianMvp[];
   daDat: Readonly<Record<string, string>>;
   xong: boolean;
@@ -27,79 +31,87 @@ export interface DongThoiGianMvpProps {
   chiXem: boolean;
   /** Xem lại ở buổi họp: sáng từng ô, bấm "Ô tiếp" tới ô cuối rồi mới "Tiếp tục". */
   docTungO?: boolean;
-  /** Điện thoại: chạm ô → chọn thẻ (không kéo thả). */
+  /** Điện thoại: chạm note rồi chạm ô (không kéo thả). */
   dienThoai: boolean;
   dienTen: (t: string) => string;
   tenNguoiNoi: (ma: string) => string;
-  /** Thả đúng một thẻ vào ô (máy ghi). Thả sai không gọi. */
+  /** Đặt một note vào ô (máy ghi; dòng chính không báo đúng sai). Thả sai ở dòng tập dượt không gọi. */
   onDat?: (o: string, the: string) => void;
+  /** Nhấc note khỏi ô về chồng (dòng chính). */
+  onGo?: (o: string) => void;
   onTiep?: () => void;
-  /** Nhãn nút cuối (mặc định "Tiếp tục"). */
+  /** Nhãn nút cuối khi chưa tới lúc "Xong" (mặc định "Tiếp tục"). */
   nhanTiep?: string;
 }
 
 const KHOA_KEO = 'text/plain';
-const TU_BO_KHOP = new Set(['va', 'hoac', 'cua', 'cho', 'trong', 'mot', 'nhung', 'nguoi', 'nay', 'sang', 'ngay', 'gan', 'luc', 'toi', 'tai', 'tren', 'duoc', 'la', 'co', 'vao']);
+/** Độ nghiêng của chồng note (độ), lặp lại; trong ±1.5°. */
+const NGHIENG = [-1.5, 1.1, -0.6, 1.5, -1.1, 0.7];
 
-function tuKhoa(text: string): Set<string> {
-  return new Set(
-    text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('vi')
-      .split(/[^\p{L}\p{N}:]+/u)
-      .filter((word) => word.length > 2 && !TU_BO_KHOP.has(word)),
-  );
-}
-
-function coThongTinLienQuan(bangChung: string, noiDung: string): boolean {
-  const tuBangChung = tuKhoa(bangChung);
-  return [...tuKhoa(noiDung)].some((word) => tuBangChung.has(word));
-}
-
-/** Ô (hay phần "?" của ô) người chơi đang chọn ở điện thoại / bằng bàn phím. */
-type Dich = { o: string; phan: 'o' | 'trong' };
-
-export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = false, dienThoai, dienTen, tenNguoiNoi, onDat, onTiep, nhanTiep = 'Tiếp tục' }: DongThoiGianMvpProps) {
-  // Thẻ đã nằm trong một ô: vẫn kéo được (một thẻ có thể hợp nhiều ô) nhưng mờ đi để người chơi thấy còn thẻ nào chưa dùng.
-  const daDung = new Set(Object.values(daDat));
+export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = false, dienThoai, dienTen, tenNguoiNoi, onDat, onGo, onTiep, nhanTiep = 'Tiếp tục' }: DongThoiGianMvpProps) {
   const [nhac, setNhac] = useState<LoiMvp[] | null>(null);
-  const [batVe, setBatVe] = useState<string | null>(null);
+  /** Note vừa bật về chồng (rung). */
+  const [batVe, setBatVe] = useState<ReadonlySet<string>>(new Set());
   const [vuaDat, setVuaDat] = useState<string | null>(null);
-  /** Máy tính: thẻ đã bấm chọn (bấm ô để thả). */
+  /** Note đã bấm chọn (bấm ô để đặt). */
   const [theChon, setTheChon] = useState<string | null>(null);
   const [theDangKeo, setTheDangKeo] = useState<string | null>(null);
-  /** Điện thoại: ô đang mở danh sách thẻ. */
-  const [dich, setDich] = useState<Dich | null>(null);
   const [sang, setSang] = useState(0);
   const hen = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => () => {
     if (hen.current) clearTimeout(hen.current);
   }, []);
 
+  const tapDuot = dtg.kieu === 'tap-duot';
   const doc = chiXem && docTungO;
   const oCuoi = dtg.o.length - 1;
+  const mt = maTran(dtg);
   const ten = (id: string): string => dienTen(tenTheDongThoiGian(kb, dtg, id).nhan);
-  const theDangXet = the.find((t) => t.id === (theDangKeo ?? theChon));
-  const noiDungTheDangXet = theDangXet ? `${dienTen(theDangXet.nhan)} ${theDangXet.phu ? dienTen(theDangXet.phu) : ''}` : '';
+  const daDung = new Set(Object.values(daDat));
+  const chong = the.filter((t) => !daDung.has(t.id));
+  const viecO = (o: ODongThoiGianMvp): string => dienTen(o.viec.replace(/\[\?\]/g, '?').trim());
 
-  /** Thử thả `idThe` vào ô / phần "?" của ô. */
-  const tha = (oId: string, phan: 'o' | 'trong', idThe: string): void => {
-    const o = dtg.o.find((x) => x.id === oId);
-    if (!o || chiXem) return;
-    if (phan === 'o' && thaDung(o, idThe, daDat)) {
-      soundEngine.playSfx('select');
-      setNhac(null);
-      setVuaDat(o.id);
-      onDat?.(o.id, idThe);
-      return;
-    }
-    if (phan === 'o' && theTrongO(o, daDat) !== null) return; // ô đã xong: bỏ qua, không nhắc
-    soundEngine.playSfx('sai');
-    setNhac(loiKeoSai(dtg, o, phan));
-    setBatVe(idThe);
+  const bat = (ids: readonly string[]): void => {
+    setBatVe(new Set(ids));
     if (hen.current) clearTimeout(hen.current);
-    hen.current = setTimeout(() => setBatVe(null), 520);
+    hen.current = setTimeout(() => setBatVe(new Set()), 560);
   };
 
-  const keoVao = (oId: string, phan: 'o' | 'trong') => ({
+  /** Đặt note `idThe` vào ô `oId`. Dòng chính: nhận hết (chấm lúc Xong); dòng tập dượt: chỉ nhận thả đúng. */
+  const tha = (oId: string, idThe: string): void => {
+    const o = dtg.o.find((x) => x.id === oId);
+    if (!o || chiXem || o.khoaSan) return;
+    if (tapDuot) {
+      if (theTrongO(o, daDat) !== null) return; // ô đã xong: bỏ qua, không nhắc
+      if (!thaDung(o, idThe, daDat)) {
+        soundEngine.playSfx('sai');
+        setNhac(loiKeoSai(dtg, o));
+        bat([idThe]);
+        return;
+      }
+    }
+    soundEngine.playSfx('select');
+    setNhac(null);
+    setVuaDat(o.id);
+    onDat?.(o.id, idThe);
+  };
+
+  /** Thả note vào tiêu đề cột "?" (trống bắt buộc): bật về ngay kèm câu riêng. */
+  const thaVaoTrong = (cotId: string, idThe: string): void => {
+    if (chiXem) return;
+    soundEngine.playSfx('sai');
+    setNhac(loiKeoSai(dtg, oTrongCuaCot(dtg, cotId), 'trong'));
+    bat([idThe]);
+  };
+
+  const goKhoiO = (oId: string): void => {
+    if (chiXem || tapDuot) return;
+    soundEngine.playSfx('tab');
+    setNhac(null);
+    onGo?.(oId);
+  };
+
+  const nhanDropVao = (xuLy: (idThe: string) => void) => ({
     onDragOver: (e: DragEvent) => {
       if (!chiXem) {
         e.preventDefault();
@@ -110,193 +122,207 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
     onDrop: (e: DragEvent) => {
       e.preventDefault();
       e.stopPropagation();
-      const id = e.dataTransfer.getData(KHOA_KEO);
-      if (id) tha(oId, phan, id);
+      const id = e.dataTransfer.getData(KHOA_KEO) || theDangKeo;
+      if (id) xuLy(id);
       setTheDangKeo(null);
     },
   });
 
-  /** Bấm ô / phần "?": điện thoại mở danh sách thẻ; máy tính thả thẻ đang chọn (nếu có). */
-  const bamO = (oId: string, phan: 'o' | 'trong'): void => {
-    if (chiXem) return;
-    if (dienThoai) {
-      const o = dtg.o.find((x) => x.id === oId);
-      if (phan === 'o' && o && theTrongO(o, daDat) !== null) return;
-      soundEngine.playSfx('tab');
-      setDich({ o: oId, phan });
-      return;
-    }
+  /** Bấm ô trống / note trong ô: đang cầm một note thì đặt; không thì (note trong ô) gỡ ra. */
+  const bamO = (o: ODongThoiGianMvp, coThe: boolean): void => {
+    if (chiXem || o.khoaSan) return;
     if (theChon) {
-      tha(oId, phan, theChon);
+      tha(o.id, theChon);
       setTheChon(null);
-    }
+    } else if (coThe) goKhoiO(o.id);
   };
 
-  const veO = (o: ODongThoiGianMvp, i: number) => {
-    const theO = theTrongO(o, daDat);
-    const daXong = theO !== null;
-    const phan = tachViec(o.viec);
-    const coDauHoi = phan.includes(null);
-    const nutTrong = (k: number) => (
-      <button
-        key={`trong-${k}`}
-        type="button"
-        className="dtg__trong"
-        aria-label={`${o.khongDien ?? 'phần này'}: chưa biết`}
-        title={`${o.khongDien ? `${o.khongDien.charAt(0).toLocaleUpperCase('vi')}${o.khongDien.slice(1)}` : 'Phần này'}: chưa biết`}
-        disabled={chiXem}
-        onClick={(e) => {
-          e.stopPropagation();
-          bamO(o.id, 'trong');
-        }}
-        {...keoVao(o.id, 'trong')}
-      >
-        ?
-      </button>
-    );
+  const bamTrong = (cotId: string): void => {
+    if (chiXem || !theChon) return;
+    thaVaoTrong(cotId, theChon);
+    setTheChon(null);
+  };
+
+  const keoNote = (id: string) => ({
+    draggable: !chiXem,
+    onDragStart: (e: DragEvent) => {
+      e.dataTransfer.setData(KHOA_KEO, id);
+      e.dataTransfer.effectAllowed = 'move';
+      setTheDangKeo(id);
+    },
+    onDragEnd: () => setTheDangKeo(null),
+  });
+
+  const veO = (o: ODongThoiGianMvp) => {
+    const i = dtg.o.findIndex((x) => x.id === o.id);
+    const idThe = theTrongO(o, daDat);
+    const daXong = idThe !== null;
+    const lop = [
+      'bcl__o',
+      o.khoaSan ? 'is-khoa' : '',
+      daXong && !o.khoaSan ? 'is-co-note' : '',
+      !daXong ? 'is-trong' : '',
+      vuaDat === o.id ? 'is-vua-dat' : '',
+      doc && i === sang ? 'is-sang' : '',
+      doc && i > sang ? 'is-cho' : '',
+    ].filter(Boolean).join(' ');
     return (
-      <li
-        key={o.id}
-        className={`dtg__o${daXong ? ' is-xong' : ''}${o.khoaSan ? ' is-khoa' : ''}${vuaDat === o.id ? ' is-vua-dat' : ''}${doc && i === sang ? ' is-sang' : ''}${doc && i > sang ? ' is-cho' : ''}${dich?.o === o.id ? ' is-chon' : ''}${theDangXet && [o.gio, o.noi ? dienTen(o.noi) : "", phan.filter((p): p is string => p !== null).map((p) => dienTen(p)).join(" ")].some((text) => typeof text === 'string' && coThongTinLienQuan(noiDungTheDangXet, text)) ? " is-keo-vao" : ""}`}
-        data-o={o.id}
-        {...keoVao(o.id, 'o')}
-      >
-        <span className="dtg__so-hang" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-        <div className={`dtg__o-thoi-gian${theDangXet && o.gio && coThongTinLienQuan(noiDungTheDangXet, o.gio) ? " is-match" : ""}`} data-label="Thời điểm">
-          <span className="dtg__nhan-cot">Thời điểm</span>
-          <span className={`dtg__gio${o.gio === '?' ? ' is-chua-biet' : ''}`}>{o.gio === '?' ? 'Chưa rõ' : o.gio || '—'}</span>
-        </div>
-        <div className={`dtg__o-dia-diem${theDangXet && o.noi && coThongTinLienQuan(noiDungTheDangXet, dienTen(o.noi)) ? " is-match" : ""}`} data-label="Địa điểm">
-          <span className="dtg__nhan-cot">Địa điểm</span>
-          <span className="dtg__noi">{o.noi ? dienTen(o.noi) : '—'}</span>
-        </div>
-        <div className={`dtg__o-su-kien${theDangXet && coThongTinLienQuan(noiDungTheDangXet, phan.filter((p): p is string => p !== null).map((p) => dienTen(p)).join(" ")) ? " is-match" : ""}`} data-label="Sự kiện cần dựng">
-          <span className="dtg__nhan-cot">Sự kiện cần dựng</span>
-          <p className="dtg__viec">
-            {phan.map((p, k) => (p === null ? nutTrong(k) : <CodeText key={k} text={dienTen(p)} />))}
-            {o.khongDien && !coDauHoi ? <> {nutTrong(99)}</> : null}
-          </p>
-        </div>
-        <div className="dtg__o-can-cu" data-label="Căn cứ">
-          <span className="dtg__nhan-cot">Căn cứ</span>
-        <button
-          type="button"
-          className={`dtg__khe${daXong ? ' is-co' : ''}`}
-          disabled={chiXem || daXong}
-          aria-label={daXong ? `Ô ${i + 1}: ${theO ? ten(theO) : 'đã có sẵn'}` : `Ô ${i + 1}: còn trống — ${dienThoai ? 'chạm để chọn thẻ' : 'thả thẻ vào đây'}`}
-          onClick={() => bamO(o.id, 'o')}
-        >
-          {daXong ? (theO ? <span className="dtg__the-dat">{ten(theO)}</span> : <span className="dtg__the-dat is-san">đã có sẵn</span>) : <span className="dtg__khe-trong">{dienThoai ? 'Chạm để chọn bằng chứng' : 'Thả thẻ'}</span>}
-        </button>
-        </div>
-      </li>
+      <div key={o.id} className={lop} data-o={o.id} title={[o.gio, o.noi, viecO(o)].filter(Boolean).join(' · ')} {...nhanDropVao((id) => tha(o.id, id))}>
+        {o.khoaSan ? (
+          <span className="bcl__note bcl__note--xam">{idThe ? ten(idThe) : viecO(o)}</span>
+        ) : daXong && idThe ? (
+          <button
+            type="button"
+            className="bcl__note bcl__note--o"
+            disabled={chiXem || tapDuot}
+            aria-label={`Ô ${i + 1}: ${ten(idThe)}${chiXem || tapDuot ? '' : ' — bấm để gỡ ra'}`}
+            data-the={idThe}
+            {...(chiXem || tapDuot ? {} : keoNote(idThe))}
+            onClick={() => bamO(o, true)}
+          >
+            <span className="bcl__note-chu">{ten(idThe)}</span>
+            <small className="bcl__note-viec">{viecO(o)}</small>
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="bcl__khe"
+            disabled={chiXem}
+            aria-label={`Ô ${i + 1}: còn trống — ${viecO(o)}`}
+            onClick={() => bamO(o, false)}
+          >
+            <span className="bcl__khe-viec">{viecO(o)}</span>
+          </button>
+        )}
+      </div>
     );
   };
 
   const loi = nhac?.[0];
   const anhNhac = loi ? anhTheoTen(`chibi-${loi.speaker}`) : undefined;
   const khoiNhac = loi ? (
-    <div className="dtg__nhac" role="status" key={`${batVe ?? ''}${loi.text}`}>
-      {anhNhac ? <img className="dtg__nhac-mat" src={anhNhac} alt="" draggable={false} /> : null}
+    <div className="bcl__nhac" role="status" key={`${[...batVe].join('')}${loi.text}`}>
+      {anhNhac ? <img className="bcl__nhac-mat" src={anhNhac} alt="" draggable={false} /> : null}
       <span>
         {tenNguoiNoi(loi.speaker) ? <b>{tenNguoiNoi(loi.speaker)}</b> : null}
         {nhac?.map((l, k) => (
-          <span key={k} className="dtg__nhac-cau">
+          <span key={k} className="bcl__nhac-cau">
             <CodeText text={dienTen(l.text)} />
           </span>
         ))}
       </span>
     </div>
   ) : null;
+
+  /** Bấm "Xong": dòng chính chấm — note sai ô bật về chồng kèm câu của ô sai đầu tiên (máy bỏ các note sai khi nhận `tiep`). */
+  const bamTiep = (): void => {
+    if (!chiXem && !tapDuot && xong) {
+      const sai = oDatSai(dtg, daDat);
+      const dau = sai[0];
+      if (dau) {
+        soundEngine.playSfx('sai');
+        setNhac(loiKeoSai(dtg, dau));
+        bat(sai.map((o) => daDat[o.id] ?? ''));
+      }
+    }
+    onTiep?.();
+  };
+
+  const nhanNut = chiXem ? nhanTiep : !tapDuot && xong ? 'Xong' : nhanTiep;
   const nutTiep = doc && sang < oCuoi ? (
     <button type="button" className="btn btn--primary" onClick={() => setSang((x) => Math.min(oCuoi, x + 1))} autoFocus>
       Ô tiếp ({sang + 2}/{dtg.o.length})
     </button>
   ) : (
-    <button type="button" className="btn btn--primary dtg__tiep" disabled={!chiXem && !xong} onClick={onTiep} title={!chiXem && !xong ? 'Điền hết các ô trước đã' : undefined}>
-      {nhanTiep}
+    <button type="button" className="btn btn--primary bcl__tiep" disabled={!chiXem && !xong} onClick={bamTiep} title={!chiXem && !xong ? 'Đặt hết các ô trước đã' : undefined}>
+      {nhanNut}
     </button>
   );
 
+  const luoi = { '--n-cot': mt.cot.length, '--n-hang': mt.hang.length } as CSSProperties;
+
   return (
-    <section className={`dtg${dienThoai ? ' dtg--cham' : ''}${chiXem ? ' dtg--xem' : ''}`} role="region" aria-label={`Ma trận suy luận: ${dienTen(dtg.ten)}`}>
-      <header className="dtg__dau">
-        <h2 className="dtg__ten">{dienTen(dtg.ten)}</h2>
-        {!chiXem ? <p className="dtg__huong-dan">{dienThoai ? 'Xếp bằng chứng vào sự kiện phù hợp. Chạm ô căn cứ để chọn.' : 'Ghép từng sự kiện với bằng chứng xác nhận nó.'}</p> : null}
+    <section className={`bcl${dienThoai ? ' bcl--cham' : ''}${chiXem ? ' bcl--xem' : ''}${theDangKeo ? ' bcl--dang-keo' : ''}${mt.coTieuDe ? '' : ' bcl--mot-cot'}`} role="region" aria-label={`Bảng chân lý: ${dienTen(dtg.ten)}`}>
+      <header className="bcl__dau">
+        <span className="bcl__kicker">Bảng chân lý</span>
+        <h2 className="bcl__ten">{dienTen(dtg.ten)}</h2>
+        {!chiXem ? (
+          <p className="bcl__huong-dan">
+            {dienThoai ? 'Chạm note rồi chạm ô để đặt. Xong thì bấm Xong để chấm.' : 'Kéo note sự thật vào đúng ô. Xong thì bấm Xong để chấm.'}
+          </p>
+        ) : null}
       </header>
-      <div className="dtg__than">
-        <div className="dtg__bang-wrap">
-          <div className="dtg__bang-dau" aria-hidden="true">
-            <span>Mốc</span><span>Thời điểm</span><span>Địa điểm</span><span>Sự kiện cần dựng</span><span>Căn cứ trong hồ sơ</span>
+      <div className="bcl__than">
+        <div className="bcl__khung">
+          <div className="bcl__luoi" style={luoi} role="group" aria-label="Bảng chân lý: cột là người, dòng là mốc giờ">
+            {mt.coTieuDe ? <span className="bcl__goc" aria-hidden="true">Giờ</span> : null}
+            {mt.coTieuDe
+              ? mt.cot.map((c) =>
+                  c.trong ? (
+                    <button
+                      key={c.id}
+                      type="button"
+                      className="bcl__cot bcl__cot--trong"
+                      data-cot={c.id}
+                      aria-label={`${oTrongCuaCot(dtg, c.id)?.khongDien ?? 'phần này'}: chưa biết`}
+                      title="Chưa có căn cứ nào cho cột này. Chỗ ấy để trống."
+                      disabled={chiXem}
+                      onClick={() => bamTrong(c.id)}
+                      {...nhanDropVao((id) => thaVaoTrong(c.id, id))}
+                    >
+                      <span className="bcl__cot-ten">{dienTen(c.nhan)}</span>
+                      <small className="bcl__cot-nhan">là ai? để trống</small>
+                    </button>
+                  ) : (
+                    <span key={c.id} className="bcl__cot" data-cot={c.id}>
+                      <span className="bcl__cot-ten">{dienTen(c.nhan)}</span>
+                    </span>
+                  ),
+                )
+              : null}
+            {mt.hang.map((h) => (
+              <div key={h.khoa} className="bcl__hang" role="presentation">
+                <span className="bcl__gio">{h.gio ? dienTen(h.gio) : '—'}</span>
+                {mt.cot.map((c) => {
+                  const o = h.o[c.id];
+                  return o ? <span key={c.id} className="bcl__o-vo">{veO(o)}</span> : <span key={c.id} className="bcl__o-vo"><span className="bcl__o bcl__o--mo" aria-hidden="true" /></span>;
+                })}
+              </div>
+            ))}
           </div>
-          <ol className="dtg__truc" aria-label="Ma trận suy luận: ghép thời điểm, địa điểm, sự kiện và căn cứ">
-            {dtg.o.map(veO)}
-          </ol>
         </div>
-        {!chiXem && !dienThoai ? (
-          <aside className="dtg__cot" aria-label="Thẻ để kéo">
-            <span className="dtg__cot-nhan">Bằng chứng có thể dùng</span>
-            <ul className="dtg__ds">
-              {the.map((t) => (
+        {!chiXem ? (
+          <aside className="bcl__chong" aria-label="Sự thật chờ đặt" {...nhanDropVao((id) => {
+            const o = dtg.o.find((x) => daDat[x.id] === id);
+            if (o) goKhoiO(o.id);
+          })}>
+            <span className="bcl__chong-nhan">Sự thật chờ đặt</span>
+            <ul className="bcl__ds">
+              {chong.map((t, k) => (
                 <li key={t.id}>
                   <button
                     type="button"
-                    className={`dtg__the${t.tam ? ' is-tam' : ''}${theChon === t.id ? ' is-chon' : ''}${batVe === t.id ? ' is-bat-ve' : ''}${daDung.has(t.id) ? ' is-da-dat' : ''}`}
-                    draggable
+                    className={`bcl__note bcl__note--chong${t.tam ? ' is-tam' : ''}${theChon === t.id ? ' is-chon' : ''}${batVe.has(t.id) ? ' is-bat-ve' : ''}`}
+                    style={{ '--nghieng': `${NGHIENG[k % NGHIENG.length]}deg` } as CSSProperties}
                     data-the={t.id}
                     aria-pressed={theChon === t.id}
-                    onDragStart={(e) => {
-                      e.dataTransfer.setData(KHOA_KEO, t.id);
-                      e.dataTransfer.effectAllowed = 'move';
-                      setTheDangKeo(t.id);
-                    }}
-                    onDragEnd={() => setTheDangKeo(null)}
+                    {...keoNote(t.id)}
                     onClick={() => setTheChon((c) => (c === t.id ? null : t.id))}
                   >
-                    <span className="dtg__the-nhan">{dienTen(t.nhan)}</span>
-                    {t.phu ? <span className="dtg__the-phu">{dienTen(t.phu)}</span> : null}
+                    <span className="bcl__note-chu">{dienTen(t.nhan)}</span>
+                    {t.phu ? <small className="bcl__note-phu">{dienTen(t.phu)}</small> : null}
                   </button>
                 </li>
               ))}
             </ul>
+            {chong.length === 0 ? <p className="bcl__het">Đã đặt hết. Bấm một note trong ô để gỡ ra.</p> : null}
           </aside>
         ) : null}
       </div>
-      <footer className="dtg__chan">
-        {khoiNhac && !dich ? khoiNhac : <span className="dtg__nhac-trong" />}
+      <footer className="bcl__chan">
+        {khoiNhac ?? <span className="bcl__nhac-trong" />}
         {onTiep ? nutTiep : null}
       </footer>
-      {dich ? (
-        <div className="dtg__chon-nen" role="presentation" onClick={() => setDich(null)}>
-          <div className="dtg__chon" role="dialog" aria-modal="true" aria-label="Chọn thẻ cho ô" onClick={(e) => e.stopPropagation()}>
-            <p className="dtg__chon-hoi">{dich.phan === 'trong' ? 'Chỗ chưa biết — chọn thẻ' : `Ô: ${dienTen(dtg.o.find((x) => x.id === dich.o)?.viec.replace('[?]', '?') ?? '')}`}</p>
-            {khoiNhac}
-            <ul className="dtg__ds">
-              {the.map((t) => (
-                <li key={t.id}>
-                  <button
-                    type="button"
-                    className={`dtg__the${t.tam ? ' is-tam' : ''}${batVe === t.id ? ' is-bat-ve' : ''}`}
-                    data-the={t.id}
-                    onClick={() => {
-                      const d = dich;
-                      tha(d.o, d.phan, t.id);
-                      const o = dtg.o.find((x) => x.id === d.o);
-                      if (d.phan === 'o' && o && thaDung(o, t.id, daDat)) setDich(null);
-                    }}
-                  >
-                    <span className="dtg__the-nhan">{dienTen(t.nhan)}</span>
-                    {t.phu ? <span className="dtg__the-phu">{dienTen(t.phu)}</span> : null}
-                  </button>
-                </li>
-              ))}
-            </ul>
-            <button type="button" className="btn btn--ghost" onClick={() => setDich(null)}>
-              Đóng
-            </button>
-          </div>
-        </div>
-      ) : null}
     </section>
   );
 }
