@@ -39,6 +39,20 @@ export interface DongThoiGianMvpProps {
 }
 
 const KHOA_KEO = 'text/plain';
+const TU_BO_KHOP = new Set(['va', 'hoac', 'cua', 'cho', 'trong', 'mot', 'nhung', 'nguoi', 'nay', 'sang', 'ngay', 'gan', 'luc', 'toi', 'tai', 'tren', 'duoc', 'la', 'co', 'vao']);
+
+function tuKhoa(text: string): Set<string> {
+  return new Set(
+    text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('vi')
+      .split(/[^\p{L}\p{N}:]+/u)
+      .filter((word) => word.length > 2 && !TU_BO_KHOP.has(word)),
+  );
+}
+
+function coThongTinLienQuan(bangChung: string, noiDung: string): boolean {
+  const tuBangChung = tuKhoa(bangChung);
+  return [...tuKhoa(noiDung)].some((word) => tuBangChung.has(word));
+}
 
 /** Ô (hay phần "?" của ô) người chơi đang chọn ở điện thoại / bằng bàn phím. */
 type Dich = { o: string; phan: 'o' | 'trong' };
@@ -51,6 +65,7 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
   const [vuaDat, setVuaDat] = useState<string | null>(null);
   /** Máy tính: thẻ đã bấm chọn (bấm ô để thả). */
   const [theChon, setTheChon] = useState<string | null>(null);
+  const [theDangKeo, setTheDangKeo] = useState<string | null>(null);
   /** Điện thoại: ô đang mở danh sách thẻ. */
   const [dich, setDich] = useState<Dich | null>(null);
   const [sang, setSang] = useState(0);
@@ -62,6 +77,8 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
   const doc = chiXem && docTungO;
   const oCuoi = dtg.o.length - 1;
   const ten = (id: string): string => dienTen(tenTheDongThoiGian(kb, dtg, id).nhan);
+  const theDangXet = the.find((t) => t.id === (theDangKeo ?? theChon));
+  const noiDungTheDangXet = theDangXet ? `${dienTen(theDangXet.nhan)} ${theDangXet.phu ? dienTen(theDangXet.phu) : ''}` : '';
 
   /** Thử thả `idThe` vào ô / phần "?" của ô. */
   const tha = (oId: string, phan: 'o' | 'trong', idThe: string): void => {
@@ -84,13 +101,18 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
 
   const keoVao = (oId: string, phan: 'o' | 'trong') => ({
     onDragOver: (e: DragEvent) => {
-      if (!chiXem) e.preventDefault();
+      if (!chiXem) {
+        e.preventDefault();
+        const id = theDangKeo ?? e.dataTransfer.getData(KHOA_KEO);
+        if (id) setTheDangKeo(id);
+      }
     },
     onDrop: (e: DragEvent) => {
       e.preventDefault();
       e.stopPropagation();
       const id = e.dataTransfer.getData(KHOA_KEO);
       if (id) tha(oId, phan, id);
+      setTheDangKeo(null);
     },
   });
 
@@ -135,17 +157,28 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
     return (
       <li
         key={o.id}
-        className={`dtg__o${daXong ? ' is-xong' : ''}${o.khoaSan ? ' is-khoa' : ''}${vuaDat === o.id ? ' is-vua-dat' : ''}${doc && i === sang ? ' is-sang' : ''}${doc && i > sang ? ' is-cho' : ''}${dich?.o === o.id ? ' is-chon' : ''}`}
+        className={`dtg__o${daXong ? ' is-xong' : ''}${o.khoaSan ? ' is-khoa' : ''}${vuaDat === o.id ? ' is-vua-dat' : ''}${doc && i === sang ? ' is-sang' : ''}${doc && i > sang ? ' is-cho' : ''}${dich?.o === o.id ? ' is-chon' : ''}${theDangXet && [o.gio, o.noi ? dienTen(o.noi) : "", phan.filter((p): p is string => p !== null).map((p) => dienTen(p)).join(" ")].some((text) => typeof text === 'string' && coThongTinLienQuan(noiDungTheDangXet, text)) ? " is-keo-vao" : ""}`}
         data-o={o.id}
         {...keoVao(o.id, 'o')}
       >
-        <span className="dtg__cham" aria-hidden="true" />
-        <span className={`dtg__gio${o.gio === '?' ? ' is-chua-biet' : ''}`}>{o.gio ?? ''}</span>
-        {o.noi ? <span className="dtg__noi">{dienTen(o.noi)}</span> : null}
-        <p className="dtg__viec">
-          {phan.map((p, k) => (p === null ? nutTrong(k) : <CodeText key={k} text={dienTen(p)} />))}
-          {o.khongDien && !coDauHoi ? <> {nutTrong(99)}</> : null}
-        </p>
+        <span className="dtg__so-hang" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+        <div className={`dtg__o-thoi-gian${theDangXet && o.gio && coThongTinLienQuan(noiDungTheDangXet, o.gio) ? " is-match" : ""}`} data-label="Thời điểm">
+          <span className="dtg__nhan-cot">Thời điểm</span>
+          <span className={`dtg__gio${o.gio === '?' ? ' is-chua-biet' : ''}`}>{o.gio === '?' ? 'Chưa rõ' : o.gio || '—'}</span>
+        </div>
+        <div className={`dtg__o-dia-diem${theDangXet && o.noi && coThongTinLienQuan(noiDungTheDangXet, dienTen(o.noi)) ? " is-match" : ""}`} data-label="Địa điểm">
+          <span className="dtg__nhan-cot">Địa điểm</span>
+          <span className="dtg__noi">{o.noi ? dienTen(o.noi) : '—'}</span>
+        </div>
+        <div className={`dtg__o-su-kien${theDangXet && coThongTinLienQuan(noiDungTheDangXet, phan.filter((p): p is string => p !== null).map((p) => dienTen(p)).join(" ")) ? " is-match" : ""}`} data-label="Sự kiện cần dựng">
+          <span className="dtg__nhan-cot">Sự kiện cần dựng</span>
+          <p className="dtg__viec">
+            {phan.map((p, k) => (p === null ? nutTrong(k) : <CodeText key={k} text={dienTen(p)} />))}
+            {o.khongDien && !coDauHoi ? <> {nutTrong(99)}</> : null}
+          </p>
+        </div>
+        <div className="dtg__o-can-cu" data-label="Căn cứ">
+          <span className="dtg__nhan-cot">Căn cứ</span>
         <button
           type="button"
           className={`dtg__khe${daXong ? ' is-co' : ''}`}
@@ -153,8 +186,9 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
           aria-label={daXong ? `Ô ${i + 1}: ${theO ? ten(theO) : 'đã có sẵn'}` : `Ô ${i + 1}: còn trống — ${dienThoai ? 'chạm để chọn thẻ' : 'thả thẻ vào đây'}`}
           onClick={() => bamO(o.id, 'o')}
         >
-          {daXong ? (theO ? <span className="dtg__the-dat">{ten(theO)}</span> : <span className="dtg__the-dat is-san">đã có sẵn</span>) : <span className="dtg__khe-trong">{dienThoai ? 'chạm để chọn thẻ' : 'thả thẻ vào đây'}</span>}
+          {daXong ? (theO ? <span className="dtg__the-dat">{ten(theO)}</span> : <span className="dtg__the-dat is-san">đã có sẵn</span>) : <span className="dtg__khe-trong">{dienThoai ? 'Chạm để chọn bằng chứng' : 'Thả thẻ'}</span>}
         </button>
+        </div>
       </li>
     );
   };
@@ -185,19 +219,23 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
   );
 
   return (
-    <section className={`dtg${dienThoai ? ' dtg--cham' : ''}${chiXem ? ' dtg--xem' : ''}`} role="region" aria-label={`Dòng thời gian: ${dienTen(dtg.ten)}`}>
+    <section className={`dtg${dienThoai ? ' dtg--cham' : ''}${chiXem ? ' dtg--xem' : ''}`} role="region" aria-label={`Ma trận suy luận: ${dienTen(dtg.ten)}`}>
       <header className="dtg__dau">
-        <span className="dtg__kicker">{dtg.kieu === 'tap-duot' ? 'Dòng thời gian · tập dượt' : 'Dòng thời gian'}</span>
         <h2 className="dtg__ten">{dienTen(dtg.ten)}</h2>
-        {!chiXem ? <p className="dtg__huong-dan">{dienThoai ? 'Chạm một ô rồi chọn thẻ hợp với ô ấy.' : 'Kéo thẻ ở cột phải vào ô hợp với nó.'}</p> : null}
+        {!chiXem ? <p className="dtg__huong-dan">{dienThoai ? 'Xếp bằng chứng vào sự kiện phù hợp. Chạm ô căn cứ để chọn.' : 'Ghép từng sự kiện với bằng chứng xác nhận nó.'}</p> : null}
       </header>
       <div className="dtg__than">
-        <ol className="dtg__truc" aria-label="Các ô của dòng thời gian">
-          {dtg.o.map(veO)}
-        </ol>
+        <div className="dtg__bang-wrap">
+          <div className="dtg__bang-dau" aria-hidden="true">
+            <span>Mốc</span><span>Thời điểm</span><span>Địa điểm</span><span>Sự kiện cần dựng</span><span>Căn cứ trong hồ sơ</span>
+          </div>
+          <ol className="dtg__truc" aria-label="Ma trận suy luận: ghép thời điểm, địa điểm, sự kiện và căn cứ">
+            {dtg.o.map(veO)}
+          </ol>
+        </div>
         {!chiXem && !dienThoai ? (
           <aside className="dtg__cot" aria-label="Thẻ để kéo">
-            <span className="dtg__cot-nhan">{dtg.kieu === 'tap-duot' ? 'Lời kể' : 'Hồ sơ'}</span>
+            <span className="dtg__cot-nhan">Bằng chứng có thể dùng</span>
             <ul className="dtg__ds">
               {the.map((t) => (
                 <li key={t.id}>
@@ -210,7 +248,9 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
                     onDragStart={(e) => {
                       e.dataTransfer.setData(KHOA_KEO, t.id);
                       e.dataTransfer.effectAllowed = 'move';
+                      setTheDangKeo(t.id);
                     }}
+                    onDragEnd={() => setTheDangKeo(null)}
                     onClick={() => setTheChon((c) => (c === t.id ? null : t.id))}
                   >
                     <span className="dtg__the-nhan">{dienTen(t.nhan)}</span>

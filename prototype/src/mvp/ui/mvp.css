@@ -5030,3 +5030,6 @@ html[data-ban-phim='1'] .mvp-tnv__the { width: min(460px, 100%); padding: 8px 12
   .mvp-soi.is-dang-soi .mvp-soi__kinh,
   .mvp-soi.is-dang-soi .mvp-soi__vong { animation: none; }
 }
+
+/* Keep facilitator previews visible in the portrait in-app browser. */
+html.facilitator-on .mvp-xoay { display: none !important; }

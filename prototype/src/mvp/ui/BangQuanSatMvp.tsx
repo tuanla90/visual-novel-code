@@ -58,14 +58,16 @@ export function BangQuanSatMvp({
   const [dangNhay, setDangNhay] = useState(false);
   const [bao, setBao] = useState<string | null>(null);
   const chuong = dauChuongMvp(kb);
+  const tenTimeline = 'Ma tr\u1eadn suy lu\u1eadn V\u1ee5 1';
   const nhanCua = (id: string | null): string =>
+    id === 'timeline-vu1' ? tenTimeline :
     DIEM_NHAY_MVP.find((d) => d.id === id)?.nhan ??
     chuong.find((c) => c.id === id)?.nhan ??
     "";
   const tongVach = kb.lich.luat.uyTin ?? 0;
 
   const nhay = (id: string): void => {
-    const nhan = nhanCua(id) || id;
+    const nhan = id === 'timeline-vu1' ? tenTimeline : nhanCua(id) || id;
     setHoi(null);
     setDangNhay(true);
     setBao(`Đang tự chơi tới "${nhan}"…`);
@@ -162,6 +164,26 @@ export function BangQuanSatMvp({
                 ))}
               </ul>
             </section>
+
+            {kb.dongThoiGian?.['dtg-vu1'] ? (
+            <section aria-label={tenTimeline}>
+              <h2 className="facilitator__h">{tenTimeline}</h2>
+              <p className="facilitator__muted">{"D\u1ef1ng nhanh m\u1ed9t v\u00e1n m\u1eabu theo tuy\u1ebfn k\u1ebft th\u1eadt, gom manh m\u1ed1i r\u1ed3i m\u1edf th\u1eb3ng timeline V\u1ee5 1."}</p>
+              <ul className="mvp-quansat__ds">
+                <li className="mvp-quansat__muc">
+                  <button
+                    type="button"
+                    className="btn"
+                    disabled={dangNhay}
+                    onClick={() => setHoi('timeline-vu1')}
+                  >
+                    {tenTimeline}
+                  </button>
+                  <span className="facilitator__muted">{"M\u1edf ma tr\u1eadn v\u1edbi h\u1ed3 s\u01a1 m\u1eabu \u0111\u00e3 \u0111\u01b0\u1ee3c d\u1ef1ng."}</span>
+                </li>
+              </ul>
+            </section>
+            ) : null}
 
             <section aria-labelledby="mvp-qs-nhay">
               <h2 id="mvp-qs-nhay" className="facilitator__h">

@@ -69,6 +69,16 @@ beforeEach(() => {
   vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null);
 });
 
+  it("selected evidence highlights related matrix fields", async () => {
+    veDtg();
+    const card = document.querySelector<HTMLButtonElement>("[data-the=\"clue-ra-cong\"]");
+    expect(card).not.toBeNull();
+    await userEvent.click(card!);
+    expect(o("o1").querySelector(".dtg__o-thoi-gian")).toHaveClass("is-match");
+    expect(o("o1").querySelector(".dtg__o-dia-diem")).toHaveClass("is-match");
+    expect(o("o1").querySelector(".dtg__o-su-kien")).toHaveClass("is-match");
+  });
+
 describe('B19 · màn dòng thời gian', () => {
   it('máy tính: kéo đúng thẻ vào ô thì báo máy; kéo sai thì không báo, hiện câu nhắc chung', () => {
     const { onDat } = veDtg();

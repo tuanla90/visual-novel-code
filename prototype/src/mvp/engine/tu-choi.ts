@@ -179,6 +179,22 @@ export const reNhanhTheo =
 
 export type MaDiemNhayMvp = 'bang-lop' | 'lop' | 'ten-h' | 'nhat-ky-in' | 'hop-sua-or' | 'vu2-tin-don' | 'vu2-tin-goc' | 'vu3-thiet-bi' | 'vu3-toi-07' | 'vu4-noi' | 'vu5-vuot-muc' | 'vu2-buoi' | 'phu-micro' | 'phu-hoan-nhom' | 'vu3-bai-dang' | 'vu4-da-duyet' | 'vu4-may-vp' | 'vu5-kho' | 'vu5-chi' | 'phu-hoan-loc' | 'phu-dan-lac';
 
+/** Dựng một ván thử đã thu thập manh mối, dừng ngay tại ma trận timeline Vụ 1. */
+export function nhayToiTimelineVu1(kb: KichBanMvp, batDauLuc: number = Date.now()): TrangThaiMvp {
+  const id = 'dtg-vu1';
+  const toi = (_s: TrangThaiMvp, kn: KhungNhinMvp): boolean => kn.kind === 'dong-thoi-gian' && kn.dtg.id === id;
+  const ct: ChienThuat = {
+    reNhanh: reNhanhTheo(RE_NHANH_KET_THAT),
+    chonDuKien: chonTheoUuTien([], true),
+    ten: TEN_MAC_DINH,
+    sangVuSau: true,
+    lamPhu: true,
+  };
+  const s = choiTuDong(kb, taoTrangThai(kb, batDauLuc), ct, toi);
+  if (!toi(s, khungNhin(kb, s))) throw new Error(`Tự chơi không tới được ma trận ${id}`);
+  return s;
+}
+
 export interface DiemNhayMvp {
   id: MaDiemNhayMvp;
   /** Nhãn nút trên bảng người quan sát. */

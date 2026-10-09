@@ -6,12 +6,22 @@
  */
 import { describe, expect, it } from 'vitest';
 import { KICH_BAN_MVP } from '../../content/generated/mvp/kich-ban.gen';
+import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { khungNhin, TEN_MAC_DINH } from './may';
-import { choiTuDong, DIEM_NHAY_MVP, nhayToi, RE_NHANH_KET_THAT, reNhanhTheo } from './tu-choi';
+import { choiTuDong, DIEM_NHAY_MVP, nhayToi, nhayToiTimelineVu1, RE_NHANH_KET_THAT, reNhanhTheo } from './tu-choi';
 
 const KB = KICH_BAN_MVP as unknown as KichBanMvp;
 const DUNG_KET_THAT = { reNhanh: reNhanhTheo(RE_NHANH_KET_THAT) };
+
+describe('nhảy thẳng tới ma trận timeline', () => {
+  it('dựng hồ sơ mẫu rồi dừng tại timeline Vụ 1', () => {
+    const kb = KICH_BAN_MUA_1 as unknown as KichBanMvp;
+    const s = nhayToiTimelineVu1(kb, 1);
+    expect(khungNhin(kb, s)).toMatchObject({ kind: 'dong-thoi-gian', dtg: { id: 'dtg-vu1' } });
+    expect(s.hoSo.manhMoi.length + s.hoSo.taiLieu.length + s.hoSo.bangChung.length).toBeGreaterThan(0);
+  });
+});
 
 describe('nhảy tới (MVP)', () => {
   it('có đúng mười một điểm nhảy (bốn của chương 1, hai của Vụ 2, hai của Vụ 3, một của Vụ 4, một của Vụ 5, một của việc phụ), mỗi điểm có nhãn và mô tả', () => {

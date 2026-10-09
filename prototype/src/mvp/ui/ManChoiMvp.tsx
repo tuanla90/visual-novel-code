@@ -36,7 +36,7 @@ import { mucNhapVaiCua, mucSqlCua } from '../engine/muc-choi';
 import { giaTriTuHoSo } from '../engine/giay-nho';
 import { chonNhacNen, type NhacTruoc } from '../engine/nhac';
 import type { TrangThaiMvp } from '../engine/trang-thai';
-import { DIEM_NHAY_MVP, nhayToi, nhayToiDauChuong, type MaDiemNhayMvp } from '../engine/tu-choi';
+import { DIEM_NHAY_MVP, nhayToi, nhayToiDauChuong, nhayToiTimelineVu1, type MaDiemNhayMvp } from '../engine/tu-choi';
 import { BO_NOI_DUNG, ghiMucDaChon, KICH_BAN, nhanTienDo, useKhoMvp } from '../store/kho-mvp';
 import { AnhChenMvp } from './AnhChenMvp';
 import { ChonMucMvp } from './ChonMucMvp';
@@ -370,7 +370,11 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
   const nhay = (id: string): string | null => {
     let moi: TrangThaiMvp;
     try {
-      moi = DIEM_NHAY_MVP.some((d) => d.id === id) ? nhayToi(kb, id as MaDiemNhayMvp) : nhayToiDauChuong(kb, id);
+      moi = id === 'timeline-vu1'
+        ? nhayToiTimelineVu1(kb)
+        : DIEM_NHAY_MVP.some((d) => d.id === id)
+          ? nhayToi(kb, id as MaDiemNhayMvp)
+          : nhayToiDauChuong(kb, id);
     } catch (e) {
       return e instanceof Error ? e.message : String(e);
     }
