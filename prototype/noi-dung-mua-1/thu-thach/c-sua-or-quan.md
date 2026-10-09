@@ -3,21 +3,21 @@
 ### c-sua-or-quan — Câu tra của Ban Kiểm tra trên màn chiếu {challenge: c-sua-or-quan}
 
 - Tiêu đề: Câu tra trên màn chiếu
-- Đề bài hiển thị: CLB ra một dòng. Câu của anh Quân ra hai trăm bảy mươi sáu dòng. Vì sao hai bên khác số?
+- Đề bài hiển thị: CLB ra một dòng. Câu của anh Quân ra ba mươi sáu dòng. Vì sao hai bên khác số?
 - Manh mối liên quan: ev-mot-hoai
 - Mục tiêu học: HOẶC giữ dòng khớp một trong hai điều kiện, nên ra nhiều; VÀ chỉ giữ dòng khớp cả hai.
 - Số dòng kỳ vọng: 1
 - SQL chuẩn:
 
 ```sql
-SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài' AND nganh = 'Báo chí';
+SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 ```
 
 - Truy vấn nạp sẵn:
 
 ```sql
-SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài' OR nganh = 'Báo chí';
+SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';
 ```
 
-- Nguồn điều kiện nạp sẵn: dk-ten ← tu-nhap · dk-nganh ← tu-nhap
+- Nguồn điều kiện nạp sẵn: dk-ten ← tu-nhap · dk-ma-lop ← tu-nhap
 - [LỜI c-sua-or-quan.1]

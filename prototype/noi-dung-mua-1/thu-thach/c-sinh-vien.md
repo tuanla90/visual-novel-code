@@ -6,11 +6,11 @@
 - Đề bài hiển thị: Phiếu gửi ký một chữ: Hoài. Cả trường có những bạn nào tên Hoài?
 - Manh mối liên quan: ev-phieu-gui-hoai
 - Mục tiêu học: Lọc bằng một điều kiện: tên đúng bằng Hoài. Mỗi dòng còn lại là một bạn tên Hoài.
-- Số dòng kỳ vọng: 4
+- Số dòng kỳ vọng: 5
 - SQL chuẩn:
 
 ```sql
-SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài';
+SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài';
 ```
 
 - [LỜI c-sv-hoai.1]
@@ -26,7 +26,7 @@ SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'H
 - SQL chuẩn:
 
 ```sql
-SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài' AND nganh = 'Báo chí' AND khoa_hoc = 2024;
+SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';
 ```
 
 - [LỜI c-sv-hoai-bc24.1]

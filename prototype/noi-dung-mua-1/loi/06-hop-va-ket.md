@@ -10,14 +10,14 @@
 - **quan** (neutral): Kết luận của Ban Kiểm tra: người viết là Lê Thu Hoài, lớp BC24A. Chính bạn Tùng, thành viên CLB Thám Tử, cũng đã xác nhận điều này.
 - **narrator**: Tùng cúi gằm.
 - **quan** (chi-man): Ban Kiểm tra được giao đối chiếu thông tin của CLB với dữ liệu gốc. Tôi đã tự tra lại.
-- [DÀN DỰNG] Màn chiếu ngay sau đoạn này: tên = 'Hoài' HOẶC ngành = 'Báo chí', 276 dòng (bản 6 ghi số tạm 41).
+- [DÀN DỰNG] Màn chiếu ngay sau đoạn này: tên = 'Hoài' HOẶC mã lớp = 'BC24A', 36 dòng (bản 6 ghi số tạm 41).
 
 ## hop-00.2
-- **thay-quang** (neutral): CLB ra một dòng. Hội ra hai trăm bảy mươi sáu. Vì sao?
+- **thay-quang** (neutral): CLB ra một dòng. Hội ra ba mươi sáu. Vì sao?
 > NHIỆM VỤ: Sửa câu tra trên màn chiếu cho thầy thấy vì sao hai bên khác số (tạm)
 
 ## hop-00.3
-- **player**: Câu của anh Quân dùng HOẶC nên ra 276 dòng. Đổi thành VÀ thì còn một dòng. Số liệu đây ạ.
+- **player**: Câu của anh Quân dùng HOẶC nên ra 36 dòng. Đổi thành VÀ thì còn một dòng. Số liệu đây ạ.
 
 ## hop-00.4
 - **narrator**: Quân nhìn màn chiếu một lúc, rồi gạch một dòng trong sổ của mình.

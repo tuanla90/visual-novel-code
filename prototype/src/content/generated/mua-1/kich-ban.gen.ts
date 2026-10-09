@@ -3381,7 +3381,7 @@ const GOC = {
           "type": "line",
           "speaker": "minh-anh",
           "expression": "neutral",
-          "text": "Em là người tra ra bốn Hoài với giờ sáu bốn mươi tư. Em trình là hợp lý nhất."
+          "text": "Em là người tra ra năm Hoài với giờ sáu bốn mươi tư. Em trình là hợp lý nhất."
         },
         {
           "type": "task",
@@ -3439,23 +3439,23 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Màn chiếu ngay sau đoạn này: tên = 'Hoài' HOẶC ngành = 'Báo chí', 276 dòng (bản 6 ghi số tạm 41)."
+          "text": "Màn chiếu ngay sau đoạn này: tên = 'Hoài' HOẶC mã lớp = 'BC24A', 36 dòng (bản 6 ghi số tạm 41)."
         },
         {
           "type": "projector",
           "id": "hop-chieu-or",
           "source": {
             "kind": "sql",
-            "sql": "SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài' OR nganh = 'Báo chí';"
+            "sql": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';"
           },
           "run": true,
-          "expectedRowCount": 276
+          "expectedRowCount": 36
         },
         {
           "type": "line",
           "speaker": "thay-quang",
           "expression": "neutral",
-          "text": "CLB ra một dòng. Hội ra hai trăm bảy mươi sáu. Vì sao?"
+          "text": "CLB ra một dòng. Hội ra ba mươi sáu. Vì sao?"
         },
         {
           "type": "task",
@@ -3478,7 +3478,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "Câu của anh Quân dùng HOẶC nên ra 276 dòng. Đổi thành VÀ thì còn một dòng. Số liệu đây ạ."
+          "text": "Câu của anh Quân dùng HOẶC nên ra 36 dòng. Đổi thành VÀ thì còn một dòng. Số liệu đây ạ."
         },
         {
           "type": "effect",
@@ -4460,8 +4460,8 @@ const GOC = {
       "deBai": "Phiếu gửi ký một chữ: Hoài. Cả trường có những bạn nào tên Hoài?",
       "manhMoiLienQuan": [],
       "mucTieuHoc": "Lọc bằng một điều kiện: tên đúng bằng Hoài. Mỗi dòng còn lại là một bạn tên Hoài.",
-      "soDongKyVong": 4,
-      "sqlChuan": "SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài';",
+      "soDongKyVong": 5,
+      "sqlChuan": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài';",
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -4515,20 +4515,20 @@ const GOC = {
       "manhMoiLienQuan": [],
       "mucTieuHoc": "Ba điều kiện nối bằng VÀ: dòng nào khớp cả ba mới được giữ.",
       "soDongKyVong": 1,
-      "sqlChuan": "SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài' AND nganh = 'Báo chí' AND khoa_hoc = 2024;",
+      "sqlChuan": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';",
       "bamO": "ma_sv",
       "truyVanNapSan": null,
       "phanUng": [
         {
           "khi": {
             "kind": "so-dong",
-            "n": 4
+            "n": 5
           },
           "loi": [
             {
               "speaker": "tung",
               "expression": "thinking",
-              "text": "Vẫn bốn bạn Hoài như lúc nãy. (tạm)"
+              "text": "Vẫn năm bạn Hoài như lúc nãy. (tạm)"
             }
           ]
         },
@@ -4561,7 +4561,7 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 276
+            "n": 36
           },
           "loi": [
             {
@@ -4603,7 +4603,7 @@ const GOC = {
           "bac1": {
             "speaker": "duy",
             "expression": "neutral",
-            "text": "Ra bốn là đúng, cả trường có bốn Hoài. Muốn còn một thì phải bảo máy thêm hai điều cùng lúc, chứ không phải điều này hoặc điều kia."
+            "text": "Ra năm là đúng, cả trường có năm Hoài. Muốn còn một thì phải bảo máy thêm hai điều cùng lúc, chứ không phải điều này hoặc điều kia."
           },
           "bac2": {
             "speaker": "duy",
@@ -4630,7 +4630,7 @@ const GOC = {
         {
           "khi": {
             "kind": "so-dong",
-            "n": 276
+            "n": 36
           },
           "bac1": {
             "speaker": "duy",
@@ -4678,23 +4678,23 @@ const GOC = {
     "c-sua-or-quan": {
       "id": "c-sua-or-quan",
       "tieuDe": "Câu tra trên màn chiếu",
-      "deBai": "CLB ra một dòng. Câu của anh Quân ra hai trăm bảy mươi sáu dòng. Vì sao hai bên khác số?",
+      "deBai": "CLB ra một dòng. Câu của anh Quân ra ba mươi sáu dòng. Vì sao hai bên khác số?",
       "manhMoiLienQuan": [],
       "mucTieuHoc": "HOẶC giữ dòng khớp một trong hai điều kiện, nên ra nhiều; VÀ chỉ giữ dòng khớp cả hai.",
       "soDongKyVong": 1,
-      "sqlChuan": "SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài' AND nganh = 'Báo chí';",
-      "truyVanNapSan": "SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài' OR nganh = 'Báo chí';",
+      "sqlChuan": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';",
+      "truyVanNapSan": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",
       "phanUng": [
         {
           "khi": {
             "kind": "so-dong",
-            "n": 276
+            "n": 36
           },
           "loi": [
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Vẫn hai trăm bảy mươi sáu dòng như anh Quân chiếu. (tạm)"
+              "text": "Vẫn ba mươi sáu dòng như anh Quân chiếu. (tạm)"
             }
           ]
         }
@@ -4978,24 +4978,24 @@ const GOC = {
       "resultId": "ev-ra-cong-644"
     },
     {
-      "sql": "SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài';",
-      "soDong": 4,
+      "sql": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài';",
+      "soDong": 5,
       "noi": "noi-dung-mua-1/thu-thach/c-sinh-vien.md:3 thẻ c-sv-hoai, SQL chuẩn"
     },
     {
-      "sql": "SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài' AND nganh = 'Báo chí' AND khoa_hoc = 2024;",
+      "sql": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';",
       "soDong": 1,
       "noi": "noi-dung-mua-1/thu-thach/c-sinh-vien.md:20 thẻ c-sv-hoai-bc24, SQL chuẩn",
       "resultId": "ev-mot-hoai"
     },
     {
-      "sql": "SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài' AND nganh = 'Báo chí';",
+      "sql": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';",
       "soDong": 1,
       "noi": "noi-dung-mua-1/thu-thach/c-sua-or-quan.md:3 thẻ c-sua-or-quan, SQL chuẩn"
     },
     {
-      "sql": "SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'Hoài' OR nganh = 'Báo chí';",
-      "soDong": 276,
+      "sql": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",
+      "soDong": 36,
       "noi": "noi-dung-mua-1/kich-ban/06-hop-va-ket.md:16 [MÀN CHIẾU hop-chieu-or]"
     }
   ],
@@ -5003,6 +5003,14 @@ const GOC = {
     "bang": [
       {
         "ten": "sinh_vien",
+        "nhan": "Sinh viên",
+        "nhanCot": {
+          "ma_sv": "Mã sinh viên",
+          "ho_dem": "Họ đệm",
+          "ten": "Tên",
+          "ma_lop": "Mã lớp",
+          "noi_o": "Nơi ở"
+        },
         "cot": [
           {
             "ten": "ma_sv",
@@ -5017,15 +5025,11 @@ const GOC = {
             "kieu": "TEXT"
           },
           {
-            "ten": "nganh",
+            "ten": "ma_lop",
             "kieu": "TEXT"
           },
           {
-            "ten": "khoa_hoc",
-            "kieu": "INTEGER"
-          },
-          {
-            "ten": "ma_lop",
+            "ten": "noi_o",
             "kieu": "TEXT"
           }
         ],
@@ -5034,65 +5038,197 @@ const GOC = {
             "SV240317",
             "Lê Thu",
             "Hoài",
-            "Báo chí",
-            2024,
-            "BC24A"
+            "BC24A",
+            "Ký túc xá"
+          ],
+          [
+            "SV240702",
+            "Vũ Ngọc",
+            "Hoài",
+            "BC24C",
+            "Ngoại trú"
           ],
           [
             "SV240588",
             "Nguyễn Thị",
             "Hoài",
-            "Marketing",
-            2024,
-            "MK24B"
+            "MK24B",
+            "Ký túc xá"
           ],
           [
             "SV230264",
             "Phạm Minh",
             "Hoài",
-            "Kế toán",
-            2023,
-            "KT23A"
+            "KT23A",
+            "Ngoại trú"
           ],
           [
             "SV220419",
             "Đỗ Thanh",
             "Hoài",
-            "Du lịch",
-            2022,
-            "DL22A"
+            "DL22A",
+            "Ký túc xá"
           ],
           [
             "SV240251",
             "Trần",
             "Tùng",
-            "Du lịch",
-            2024,
-            "DL24A"
+            "DL24A",
+            "Ký túc xá"
+          ],
+          [
+            "SV240388",
+            "Người",
+            "chơi",
+            "KT24A",
+            "Ký túc xá"
           ],
           [
             "SV240466",
             "Trần Hà",
             "Vy",
-            "Toán ứng dụng",
-            2024,
-            "TU24A"
+            "TU24A",
+            "Ký túc xá"
           ],
           [
             "SV230142",
             "Nguyễn Đức",
             "Duy",
-            "Hành chính học",
-            2023,
-            "HC23A"
+            "HC23A",
+            "Ngoại trú"
           ],
           [
             "SV220337",
             "Lê Minh",
             "Anh",
+            "LK22B",
+            "Ngoại trú"
+          ]
+        ]
+      },
+      {
+        "ten": "lop",
+        "nhan": "Lớp",
+        "nhanCot": {
+          "ma_lop": "Mã lớp",
+          "nganh": "Ngành",
+          "khoa_hoc": "Khóa",
+          "toa": "Tòa",
+          "buoi": "Buổi học"
+        },
+        "cot": [
+          {
+            "ten": "ma_lop",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "nganh",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "khoa_hoc",
+            "kieu": "INTEGER"
+          },
+          {
+            "ten": "toa",
+            "kieu": "TEXT"
+          },
+          {
+            "ten": "buoi",
+            "kieu": "TEXT"
+          }
+        ],
+        "dong": [
+          [
+            "BC24A",
+            "Báo chí",
+            2024,
+            "B",
+            "Sáng thứ Hai"
+          ],
+          [
+            "BC24B",
+            "Báo chí",
+            2024,
+            "C",
+            "Sáng thứ Hai"
+          ],
+          [
+            "BC24C",
+            "Báo chí",
+            2024,
+            "B",
+            "Chiều thứ Hai"
+          ],
+          [
+            "BC23A",
+            "Báo chí",
+            2023,
+            "B",
+            "Sáng thứ Hai"
+          ],
+          [
+            "KT24B",
+            "Kế toán",
+            2024,
+            "B",
+            "Sáng thứ Hai"
+          ],
+          [
+            "KT24A",
+            "Kế toán",
+            2024,
+            "A",
+            "Sáng thứ Năm"
+          ],
+          [
+            "KT23A",
+            "Kế toán",
+            2023,
+            "A",
+            "Sáng thứ Tư"
+          ],
+          [
+            "MK24B",
+            "Marketing",
+            2024,
+            "A",
+            "Sáng thứ Ba"
+          ],
+          [
+            "DL22A",
+            "Du lịch",
+            2022,
+            "C",
+            "Chiều thứ Năm"
+          ],
+          [
+            "DL24A",
+            "Du lịch",
+            2024,
+            "C",
+            "Sáng thứ Sáu"
+          ],
+          [
+            "TU24A",
+            "Toán ứng dụng",
+            2024,
+            "D",
+            "Chiều thứ Ba"
+          ],
+          [
+            "HC23A",
+            "Hành chính học",
+            2023,
+            "A",
+            "Chiều thứ Tư"
+          ],
+          [
+            "LK22B",
             "Luật kinh tế",
             2022,
-            "LK22B"
+            "D",
+            "Sáng thứ Sáu"
           ]
         ]
       },

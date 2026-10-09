@@ -6,7 +6,7 @@
 ### hop-00 — Cảnh 10: mở họp, Quân trình kết luận và chiếu câu HOẶC; câu 1/4 sửa câu tra; trình dòng thời gian; câu 2/4 phiếu gửi do ai ký {cảnh: phong-hop}
 
 - [LỜI hop-00.1]
-- [MÀN CHIẾU hop-chieu-or · truy vấn nạp sẵn c-sua-or-quan · chạy · 276 dòng]
+- [MÀN CHIẾU hop-chieu-or · truy vấn nạp sẵn c-sua-or-quan · chạy · 36 dòng]
 - [LỜI hop-00.2]
 - [ẢNH cg-hop-doi-dau]
 - [SỬA TRUY VẤN c-sua-or-quan · tính vạch · câu 1/4]

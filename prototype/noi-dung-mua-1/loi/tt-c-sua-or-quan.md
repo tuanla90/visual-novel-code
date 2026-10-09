@@ -4,5 +4,5 @@
 
 ## c-sua-or-quan.1
 - Khi trình sai: **quan** (neutral): Vẫn chưa ra một dòng. Vậy câu của tôi sai ở đâu? <br> **narrator**: Minh Anh gạch một vạch nhỏ ở lề sổ.
-- Khi chạy ra 276 dòng: **ha-vy** (thinking): Vẫn hai trăm bảy mươi sáu dòng như anh Quân chiếu. (tạm)
+- Khi chạy ra 36 dòng: **ha-vy** (thinking): Vẫn ba mươi sáu dòng như anh Quân chiếu. (tạm)
 - Gợi ý: **ha-vy** (thinking): Câu ấy lấy cả nhóm tên Hoài lẫn cả nhóm học Báo chí. Mình chỉ cần phần trùng nhau thôi. (tạm) <br> **ha-vy** (neutral): Bấm vào chữ HOẶC giữa hai dòng lọc cho nó đổi thành VÀ, rồi bấm CHẠY. (tạm)

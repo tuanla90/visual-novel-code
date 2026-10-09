@@ -15,5 +15,5 @@
 - **minh-anh** (neutral): Thứ Hai em trình dòng thời gian. Chị ngồi cạnh, có gì chị đỡ.
 - **minh-anh** (serious): Thầy Quang nói chuyện bằng căn cứ. Em nói sai là thầy không chấp nhận đâu.
 - **player**: Em ạ?
-- **minh-anh** (neutral): Em là người tra ra bốn Hoài với giờ sáu bốn mươi tư. Em trình là hợp lý nhất.
+- **minh-anh** (neutral): Em là người tra ra năm Hoài với giờ sáu bốn mươi tư. Em trình là hợp lý nhất.
 > NHIỆM VỤ: Thứ Hai trình dòng thời gian ở buổi họp rà soát (tạm)
