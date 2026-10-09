@@ -303,8 +303,12 @@ export type MucMvp =
   | { kind: 'so-tong-ket'; vu: string }
   /** Gói B19: `- [ĐIỂM LƯU VỤ <vụ>]`. */
   | { kind: 'diem-luu-vu'; vu: string }
-  /** Gói B19: `- [GHÉP MẪU] <ai>: <thẻ> + <thẻ> · giấy nhớ: "<chữ>"`. */
-  | { kind: 'ghep-mau'; nguoi: string; the: string[]; giayNho: string }
+  /**
+   * Gói B19: `- [GHÉP MẪU] <ai>: <thẻ> + <thẻ> · giấy nhớ: "<chữ>"`. User 09/10: thêm `· làm mẫu` ở cuối thì ngay
+   * sau là đúng ba câu thoại rồi `- [HẾT GHÉP MẪU]`; người ghép làm mẫu từng bước (ghim hai thẻ, nối chỉ, viết giấy nhớ),
+   * mỗi bước một câu (`loi`).
+   */
+  | { kind: 'ghep-mau'; nguoi: string; the: string[]; giayNho: string; loi: RawLine[]; dong: boolean }
   | { kind: 'effect'; id: string }
   | { kind: 'line-pick'; id: string; rows: RawPickRow[]; truUyTin: boolean }
   | { kind: 'projector'; id: string; source: NguonChieuMvp; run: boolean; rows: number | null }
@@ -332,7 +336,7 @@ export type MucMvp =
    */
   | { kind: 'het-ngay'; to: string | null; label: string }
   /** `kieu: 'dan'` (gói B19, `[KHÁM PHÁ <mã> · dàn]`): chân dung những người bấm được đứng trên dàn của cảnh, không cần x / y / rộng. */
-  | { kind: 'explore'; id: string; diem: RawDiemKhamPha[]; kieu: 'canh' | 'ban-do' | 'quan-sat' | 'dan'; nhanVat: string | null; gio: string | null; dang: string | null; haVySoi: boolean };
+  | { kind: 'explore'; id: string; diem: RawDiemKhamPha[]; kieu: 'canh' | 'ban-do' | 'quan-sat' | 'dan'; nhanVat: string | null; gio: string | null; dang: string | null; haVySoi: boolean; tuDong: boolean };
 
 export interface RawBangChungDoiChat {
   id: string;
@@ -1345,6 +1349,8 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       choSql = null;
       throw new Error(`[${cho.kind === 'trial-filter' ? 'LỌC THỬ' : 'MÀN CHIẾU'} ${cho.id}] thiếu khối \`\`\`sql ngay dưới`);
     };
+    /** `[GHÉP MẪU]` vừa đọc: các câu thoại liền sau thuộc về nó tới `[HẾT GHÉP MẪU]`. */
+    let ghepMo: (MucMvp & { kind: 'ghep-mau' }) | null = null;
     const push = (it: MucMvp): void => {
       if (!seq) throw new Error('dòng nằm ngoài chuỗi');
       seq.items.push(it);
@@ -1358,6 +1364,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       };
       if (line.trim() === '' || line === '---' || line.startsWith('## ')) return i;
       if (line.startsWith('### ')) {
+        if (ghepMo) throw new Error('[GHÉP MẪU … · làm mẫu] thiếu dòng "- [HẾT GHÉP MẪU]"');
         dongCon();
         hetChoSql();
         const m = new RegExp(`^### (${MA}) — (.+) \\{cảnh: (${MA})(?: · (cảnh cắt))?\\}$`).exec(line);
@@ -1368,6 +1375,21 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         return i;
       }
       if (!seq) throw new Error(`dòng nằm ngoài chuỗi "${line}"`);
+      if (line === '- [HẾT GHÉP MẪU]') {
+        if (!ghepMo) throw new Error('[HẾT GHÉP MẪU] không có [GHÉP MẪU] nào đang mở');
+        if (ghepMo.loi.length !== 3) throw new Error(`[GHÉP MẪU] làm mẫu cần đúng ba câu thoại (ghim, nối chỉ, viết giấy nhớ), đang có ${ghepMo.loi.length}`);
+        ghepMo.dong = true;
+        ghepMo = null;
+        return i;
+      }
+      if (ghepMo) {
+        if (line.startsWith('- **')) {
+          ghepMo.loi.push(parseSpoken(line.slice(2)));
+          return i;
+        }
+        if (line.startsWith('- [DÀN DỰNG] ')) return i;
+        throw new Error(`[GHÉP MẪU … · làm mẫu] chỉ chứa câu thoại tới [HẾT GHÉP MẪU], gặp "${line}"`);
+      }
 
       if (line.startsWith('```')) {
         const lang = line.slice(3);
@@ -1535,9 +1557,11 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
       if (line.startsWith('- [CHẤM VỤ')) throw new Error(`[CHẤM VỤ] sai quy ước "${line}" — viết "- [CHẤM VỤ <vụ>] cần: <thẻ>, <thẻ>, <dòng thời gian>"`);
       if ((m = new RegExp(`^- \\[SỔ TỔNG KẾT (${MA})\\]$`).exec(line))) return add({ kind: 'so-tong-ket', vu: m[1] ?? '' });
       if ((m = new RegExp(`^- \\[ĐIỂM LƯU VỤ (${MA})\\]$`).exec(line))) return add({ kind: 'diem-luu-vu', vu: m[1] ?? '' });
-      if ((m = new RegExp(`^- \\[GHÉP MẪU\\] ([a-z][a-z0-9-]*): (${MA}) \\+ (${MA}) · giấy nhớ: "(.+)"$`).exec(line))) {
+      if ((m = new RegExp(`^- \\[GHÉP MẪU\\] ([a-z][a-z0-9-]*): (${MA}) \\+ (${MA}) · giấy nhớ: "(.+?)"( · làm mẫu)?$`).exec(line))) {
         if (m[2] === m[3]) throw new Error(`[GHÉP MẪU]: hai thẻ phải khác nhau ("${m[2] ?? ''}")`);
-        return add({ kind: 'ghep-mau', nguoi: m[1] ?? '', the: [m[2] ?? '', m[3] ?? ''], giayNho: m[4] ?? '' });
+        const g: MucMvp & { kind: 'ghep-mau' } = { kind: 'ghep-mau', nguoi: m[1] ?? '', the: [m[2] ?? '', m[3] ?? ''], giayNho: m[4] ?? '', loi: [], dong: false };
+        if (m[5]) ghepMo = g;
+        return add(g);
       }
       if (line.startsWith('- [GHÉP MẪU]')) throw new Error(`[GHÉP MẪU] sai quy ước "${line}" — viết "- [GHÉP MẪU] <ai>: <thẻ> + <thẻ> · giấy nhớ: \\"<chữ>\\""`);
       if ((m = new RegExp(`^- \\[HIỆU ỨNG (${MA})\\]$`).exec(line))) return add({ kind: 'effect', id: m[1] ?? '' });
@@ -1605,9 +1629,10 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
         return add({ kind: 'het-ngay', to: m[1] ?? null, label: m[2].trim() });
       }
       if (line === '- [RẼ KẾT]') return add({ kind: 'ending-branch' });
-      // `quan sát <nv>/<dáng>`: soi nhân vật trong một dáng / bộ đồ cụ thể; `· Hà Vy soi`: mở bằng cảnh cắt đôi mắt Hà Vy (kính lóe sáng).
-      if ((m = new RegExp(`^- \\[KHÁM PHÁ (${MA})(?: · (bản đồ(?: · giờ (\\d\\d:\\d\\d))?|quan sát (${MA})(?:/(${MA}))?( · Hà Vy soi)?|dàn))?\\]$`).exec(line))) {
-        kham = { kind: 'explore', id: m[1] ?? '', diem: [], kieu: m[2]?.startsWith('bản đồ') ? 'ban-do' : m[2] === 'dàn' ? 'dan' : m[2] ? 'quan-sat' : 'canh', nhanVat: m[4] ?? null, gio: m[3] ?? null, dang: m[5] ?? null, haVySoi: m[6] !== undefined };
+      // `quan sát <nv>/<dáng>`: soi nhân vật trong một dáng / bộ đồ cụ thể; `· Hà Vy soi`: mở bằng cảnh cắt đôi mắt Hà Vy (kính lóe sáng);
+      // `· tự động` (user 08/10): Hà Vy tự soi lần lượt từng điểm theo thứ tự viết, người chơi chỉ xem.
+      if ((m = new RegExp(`^- \\[KHÁM PHÁ (${MA})(?: · (bản đồ(?: · giờ (\\d\\d:\\d\\d))?|quan sát (${MA})(?:/(${MA}))?( · Hà Vy soi)?( · tự động)?|dàn))?\\]$`).exec(line))) {
+        kham = { kind: 'explore', id: m[1] ?? '', diem: [], kieu: m[2]?.startsWith('bản đồ') ? 'ban-do' : m[2] === 'dàn' ? 'dan' : m[2] ? 'quan-sat' : 'canh', nhanVat: m[4] ?? null, gio: m[3] ?? null, dang: m[5] ?? null, haVySoi: m[6] !== undefined, tuDong: m[7] !== undefined };
         return add(kham);
       }
       if (line.startsWith('- [') && /^- \[[A-ZÀ-Ỹ]/.test(line)) {

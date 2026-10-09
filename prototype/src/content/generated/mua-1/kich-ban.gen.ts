@@ -650,7 +650,7 @@ const GOC = {
     "ngay": [
       {
         "so": 1,
-        "ten": "Sảnh tòa B",
+        "ten": "Hộp kiến nghị",
         "kieu": "theo-truyen",
         "chuoi": "n1-mo",
         "batDauO": "phong-ktx",
@@ -1480,13 +1480,8 @@ const GOC = {
           ]
         },
         {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "19:00. Minh Anh đếm đĩa bánh: bốn. Cả nhóm ngồi xuống, Duy rót trà."
-        },
-        {
           "type": "goto",
-          "to": "md-10-chia-banh"
+          "to": "md-10-vy-soi"
         }
       ]
     },
@@ -1553,8 +1548,149 @@ const GOC = {
       ]
     },
     {
+      "id": "md-10-vy-soi",
+      "title": "Trung thu: Tùng đố, Hà Vy soi Tùng làm mẫu",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "tung"
+        },
+        {
+          "type": "note",
+          "text": "Tùng chạy lại chỗ Hà Vy, tay vẫn cầm tờ bản đồ gấp (chân dung tung happy)."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Vy, cậu nhìn tớ thì đoán được gì không? Trúng thì tớ nhường miếng bánh to nhất."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "day-kinh",
+          "text": "Đứng yên một chút để tớ nhìn đã."
+        },
+        {
+          "type": "explore",
+          "id": "kp-soi-tung",
+          "kieu": "quan-sat",
+          "nhanVat": "tung",
+          "dang": "happy",
+          "haVySoi": true,
+          "tuDong": true,
+          "diem": [
+            {
+              "sprite": "vung:ao",
+              "x": 50,
+              "y": 44,
+              "rong": 22,
+              "chuoi": "md-10-soi-ao",
+              "sau": [],
+              "nhan": "Cái áo"
+            },
+            {
+              "sprite": "vung:mui",
+              "x": 57,
+              "y": 21,
+              "rong": 14,
+              "chuoi": "md-10-soi-mui",
+              "sau": [],
+              "nhan": "Miếng băng trên mũi"
+            },
+            {
+              "sprite": "vung:ban-do",
+              "x": 82,
+              "y": 56,
+              "rong": 24,
+              "chuoi": "md-10-soi-ban-do",
+              "sau": [],
+              "nhan": "Tờ bản đồ trên tay"
+            }
+          ]
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "surprised",
+          "text": "Ơ, đúng thật! Cả tuần nhập học tớ đứng ở sảnh ký túc xá. Thôi, miếng to nhất là của cậu."
+        },
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Mình gặp Tùng đúng hôm ấy. Sao Vy chỉ nhìn qua mà cũng ra được nhỉ?)"
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "19:00. Minh Anh đếm đĩa bánh: bốn. Cả nhóm ngồi xuống, Duy rót trà."
+        },
+        {
+          "type": "goto",
+          "to": "md-10-chia-banh"
+        }
+      ]
+    },
+    {
+      "id": "md-10-soi-ao",
+      "title": "Hà Vy soi Tùng: cái áo",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Áo thể thao lam, không in tên khoa, cũng chẳng in tên đội nào. Cái áo này không nói được gì."
+        }
+      ]
+    },
+    {
+      "id": "md-10-soi-mui",
+      "title": "Hà Vy soi Tùng: miếng băng trên mũi",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Miếng băng trên sống mũi. Cậu va vào đâu đấy à?"
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Hôm khuân đồ cho tân sinh viên, tớ đập mặt vào cổng sắt ký túc xá!"
+        }
+      ]
+    },
+    {
+      "id": "md-10-soi-ban-do",
+      "title": "Hà Vy soi Tùng: tờ bản đồ trên tay",
+      "canh": "san-ktx-trung-thu",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "thinking",
+          "text": "Xuống sân ký túc xá thôi mà cậu vẫn cầm tờ bản đồ trường. Bản đồ gấp đến hằn nếp, mép sờn cả, tức là ngày nào cũng mở ra gấp vào."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "day-kinh",
+          "text": "Cậu vừa kể khuân đồ cho tân sinh viên. Thêm tờ bản đồ này nữa, tớ đoán hôm nhập học cậu ở đội tình nguyện, đứng chỉ đường cho tân sinh viên, đúng không?"
+        }
+      ]
+    },
+    {
       "id": "md-10-chia-banh",
-      "title": "Trung thu 19:15: chia bánh còn ba cái; quan sát tay từng người; dòng thời gian tập dượt",
+      "title": "Trung thu 19:15: chia bánh còn ba cái; người chơi tự soi quanh bàn",
       "canh": "san-ktx-trung-thu-ba-banh",
       "canhCat": true,
       "mocSomNhat": 0,
@@ -1599,7 +1735,7 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Mèo tha thì đĩa phải xô lệch, vụn bánh rơi quanh đĩa. Đĩa vẫn ngay ngắn."
+          "text": "Mèo nhảy lên bàn thì đĩa phải xô lệch, chén trà đổ. Bàn vẫn ngay ngắn."
         },
         {
           "type": "line",
@@ -1623,79 +1759,293 @@ const GOC = {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "neutral",
-          "text": "Từ bảy giờ tới bảy giờ mười lăm, những ai đi qua bàn này? Cậu thử nhìn tay từng người xem."
+          "text": "Ban nãy tớ nhìn Tùng từ cái áo tới tờ bản đồ. Giờ cậu thử nhìn quanh bàn xem, chỗ nào lạ thì soi kỹ."
         },
         {
           "type": "task",
-          "text": "Nhìn tay từng người quanh bàn bánh (tạm)"
+          "text": "Soi quanh bàn bánh (tạm)"
+        },
+        {
+          "type": "reminder",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Mọi người cứ nhìn trên bàn. Cậu thử nhìn cả dưới đất xem. (tạm)"
         },
         {
           "type": "explore",
-          "id": "kp-trung-thu-tay",
-          "kieu": "dan",
+          "id": "kp-banh-trung-thu",
           "diem": [
             {
-              "sprite": "nv:minh-anh",
-              "x": 0,
-              "y": 0,
-              "rong": 0,
-              "chuoi": "md-10-tay-minh-anh",
+              "sprite": "vung:dia-banh",
+              "x": 11,
+              "y": 69,
+              "rong": 14,
+              "chuoi": "md-10-dia-banh",
               "sau": [],
-              "nhan": "Chị Minh Anh",
+              "nhan": "Đĩa bánh trên bàn",
               "dau": "chinh"
             },
             {
-              "sprite": "nv:duy",
-              "x": 0,
-              "y": 0,
-              "rong": 0,
-              "chuoi": "md-10-tay-duy",
+              "sprite": "vung:vun-banh",
+              "x": 33,
+              "y": 85,
+              "rong": 12,
+              "chuoi": "md-10-vun-banh",
               "sau": [],
-              "nhan": "Anh Duy",
+              "nhan": "Nền sân dưới chân bàn",
               "dau": "chinh"
             },
             {
-              "sprite": "nv:ha-vy",
-              "x": 0,
-              "y": 0,
-              "rong": 0,
-              "chuoi": "md-10-tay-ha-vy",
+              "sprite": "vung:den-ca-chep",
+              "x": 42,
+              "y": 66,
+              "rong": 14,
+              "chuoi": "md-10-den-ca-chep",
               "sau": [],
-              "nhan": "Hà Vy",
+              "nhan": "Đèn cá chép đỏ",
               "dau": "chinh"
             },
             {
-              "sprite": "nv:tung/happy",
-              "x": 0,
-              "y": 0,
-              "rong": 0,
-              "chuoi": "md-10-tay-tung",
+              "sprite": "vung:doi-dep",
+              "x": 54,
+              "y": 76,
+              "rong": 7,
+              "chuoi": "md-10-doi-dep",
               "sau": [],
-              "nhan": "Tùng",
+              "nhan": "Đôi dép cạnh đèn",
               "dau": "chinh"
             },
             {
-              "sprite": "nv:be-na",
-              "x": 0,
-              "y": 0,
-              "rong": 0,
-              "chuoi": "md-10-tay-be-na",
+              "sprite": "vung:dau-lan",
+              "x": 42,
+              "y": 44,
+              "rong": 10,
+              "chuoi": "md-10-dau-lan",
               "sau": [],
-              "nhan": "Bé gái",
-              "dau": "chinh"
+              "nhan": "Đầu lân với cái trống"
             }
           ]
         },
         {
+          "type": "goto",
+          "to": "md-10-hoi-banh"
+        }
+      ]
+    },
+    {
+      "id": "md-10-dia-banh",
+      "title": "Soi: đĩa còn ba bánh",
+      "canh": "san-ktx-trung-thu-ba-banh",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
           "type": "line",
           "speaker": "player",
-          "text": "Bé Na… tay còn vụn bánh. Mà lúc chia thì bé chưa được chia."
+          "text": "(Đĩa còn ba chiếc. Chỗ trống trên đĩa còn dính vụn.)"
+        }
+      ]
+    },
+    {
+      "id": "md-10-vun-banh",
+      "title": "Soi: vệt vụn từ chân bàn ra đèn cá chép",
+      "canh": "san-ktx-trung-thu-ba-banh",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Vụn bánh rơi thành vệt mảnh, từ chân bàn chạy ra tới chỗ đèn cá chép.)"
+        }
+      ]
+    },
+    {
+      "id": "md-10-den-ca-chep",
+      "title": "Soi: đèn cá chép giữa sân",
+      "canh": "san-ktx-trung-thu-ba-banh",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Đèn cá chép đỏ nằm giữa sân. Ai kéo ra đây rồi bỏ đấy nhỉ?)"
+        }
+      ]
+    },
+    {
+      "id": "md-10-doi-dep",
+      "title": "Soi: đôi dép trẻ con cạnh đèn",
+      "canh": "san-ktx-trung-thu-ba-banh",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Đôi dép nhựa trẻ con màu vàng bỏ cạnh đèn. Chủ của nó đi đâu rồi?)"
+        }
+      ]
+    },
+    {
+      "id": "md-10-dau-lan",
+      "title": "Chi tiết ẩn: đội múa lân ngồi quanh trống",
+      "canh": "san-ktx-trung-thu-ba-banh",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Mấy anh chị đội múa lân ngồi quanh cái trống, mải nói chuyện, chẳng ai ngó sang bàn mình.)"
+        }
+      ]
+    },
+    {
+      "id": "md-10-hoi-banh",
+      "title": "Đoán ai lấy bánh từ những gì vừa soi",
+      "canh": "san-ktx-trung-thu-ba-banh",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "branch",
+          "id": "r-ai-lay-banh",
+          "asker": {
+            "speaker": "ha-vy",
+            "text": "Theo cậu, ai lấy chiếc bánh?"
+          },
+          "choices": [
+            {
+              "id": "tre-con",
+              "text": "Một đứa trẻ.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-10-doan-dung"
+                }
+              ]
+            },
+            {
+              "id": "tung",
+              "text": "Tùng.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-10-doan-tung"
+                }
+              ]
+            },
+            {
+              "id": "mua-lan",
+              "text": "Một người trong đội múa lân.",
+              "khi": null,
+              "hauQua": [
+                {
+                  "kind": "di-toi",
+                  "chuoi": "md-10-doan-mua-lan"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "md-10-doan-tung",
+      "title": "Đoán Tùng: chưa có căn cứ",
+      "canh": "san-ktx-trung-thu-ba-banh",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Tùng lấy chăng? Lúc ấy cậu ấy đứng gần bàn nhất."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "worried",
+          "text": "Ơ kìa, tớ rót trà còn chưa kịp uống ngụm nào!"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Đứng gần bàn thì chưa đủ đâu. Vệt vụn kia dẫn về phía nào?"
+        },
+        {
+          "type": "goto",
+          "to": "md-10-hoi-banh"
+        }
+      ]
+    },
+    {
+      "id": "md-10-doan-mua-lan",
+      "title": "Đoán đội múa lân: vệt vụn không chạy về phía ấy",
+      "canh": "san-ktx-trung-thu-ba-banh",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Hay ai bên đội múa lân sang lấy?"
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "neutral",
+          "text": "Họ ngồi quanh cái trống từ nãy, chưa ai đứng dậy. Mà vệt vụn đâu có chạy về phía ấy."
+        },
+        {
+          "type": "goto",
+          "to": "md-10-hoi-banh"
+        }
+      ]
+    },
+    {
+      "id": "md-10-doan-dung",
+      "title": "Người chơi tìm ra bé Na cạnh đèn cá chép; dòng thời gian tập dượt; ký phiếu",
+      "canh": "san-ktx-trung-thu-ba-banh",
+      "mocSomNhat": 0,
+      "nodes": [
+        {
+          "type": "line",
+          "speaker": "player",
+          "text": "Vụn bánh rơi thành vệt từ chân bàn ra tới đèn cá chép, cạnh đèn lại có đôi dép trẻ con. Tớ nghĩ một bé nào đó cầm bánh chạy ra đấy, rồi bỏ dép chạy chân đất."
+        },
+        {
+          "type": "line",
+          "speaker": "ha-vy",
+          "expression": "smile",
+          "text": "Dép còn nằm đây thì bé chưa đi xa đâu."
+        },
+        {
+          "type": "line",
+          "speaker": "narrator",
+          "text": "Từ sau cái trống, một bé gái chân đất chạy ra, ngồi xổm cạnh chiếc đèn cá chép."
+        },
+        {
+          "type": "image",
+          "imageId": "cg-be-na-den-ca-chep"
+        },
+        {
+          "type": "stage",
+          "action": "vao",
+          "nhanVat": "be-na"
+        },
+        {
+          "type": "note",
+          "text": "Ảnh cg-be-na-den-ca-chep ngay trước đoạn này: bé Na ngồi xổm, hai tay ôm nửa chiếc bánh, má dính vụn, đôi dép vàng bên cạnh. Lời không tả lại."
+        },
+        {
+          "type": "line",
+          "speaker": "tung",
+          "expression": "happy",
+          "text": "Na! Con gái chú Cường tớ đấy!"
         },
         {
           "type": "line",
           "speaker": "ha-vy",
           "expression": "thinking",
-          "text": "Chưa được chia mà tay đã có vụn, tức là bé cầm bánh trước lúc chia. Cậu xếp lại xem từng việc xảy ra lúc nào."
+          "text": "Lúc bảy giờ đĩa còn đủ bốn, bảy giờ mười lăm còn ba. Bé cầm bánh vào lúc nào? Cậu xếp lại xem từng việc xảy ra lúc nào."
         },
         {
           "type": "dong-thoi-gian",
@@ -1703,7 +2053,7 @@ const GOC = {
         },
         {
           "type": "note",
-          "text": "Khi có dòng thời gian (B19-MÁY): ngay trước đoạn này là màn dòng thời gian tập dượt ba ô (dtg-banh): 19:00 đĩa đủ bốn, ? bé Na cầm một chiếc, 19:15 chia còn ba; kéo lời kể vào ô."
+          "text": "Ngay trước đoạn này là màn dòng thời gian tập dượt ba ô (dtg-banh): 19:00 đĩa đủ bốn, ? bé Na cầm một chiếc, 19:15 chia còn ba; kéo lời kể vào ô."
         },
         {
           "type": "line",
@@ -1754,6 +2104,11 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
+          "text": "(Vệt vụn với đôi dép nằm ngay giữa sân, chịu nhìn kỹ là thấy. Hay mình thử thật nhỉ?)"
+        },
+        {
+          "type": "line",
+          "speaker": "player",
           "text": "Thôi được… cho tớ mượn cái bút."
         },
         {
@@ -1791,77 +2146,6 @@ const GOC = {
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "md-10-tay-minh-anh",
-      "title": "Quan sát: tay chị Minh Anh",
-      "canh": "san-ktx-trung-thu-ba-banh",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Chị Minh Anh một tay chống nạnh, cổ tay đeo đồng hồ. Không dính vụn nào.) (tạm)"
-        }
-      ]
-    },
-    {
-      "id": "md-10-tay-duy",
-      "title": "Quan sát: tay anh Duy",
-      "canh": "san-ktx-trung-thu-ba-banh",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Anh Duy cầm xấp bìa giấy, chùm chìa đeo ở thắt lưng. Tay sạch.) (tạm)"
-        }
-      ]
-    },
-    {
-      "id": "md-10-tay-ha-vy",
-      "title": "Quan sát: tay Hà Vy",
-      "canh": "san-ktx-trung-thu-ba-banh",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Hà Vy hai tay ôm cuốn sổ nhỏ. Ngón tay sạch trơn.) (tạm)"
-        }
-      ]
-    },
-    {
-      "id": "md-10-tay-tung",
-      "title": "Quan sát: tay Tùng",
-      "canh": "san-ktx-trung-thu-ba-banh",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Tùng giơ ngón cái, tay kia cầm tờ bản đồ gấp. Chẳng dính vụn nào.) (tạm)"
-        }
-      ]
-    },
-    {
-      "id": "md-10-tay-be-na",
-      "title": "Quan sát: bé Na giấu tay sau lưng, ngón tay còn vụn bánh",
-      "canh": "san-ktx-trung-thu-ba-banh",
-      "mocSomNhat": 0,
-      "nodes": [
-        {
-          "type": "line",
-          "speaker": "player",
-          "text": "(Một bé gái giấu hai tay sau lưng. Đầu ngón tay ló ra, còn dính vụn bánh.) (tạm)"
-        },
-        {
-          "type": "line",
-          "speaker": "tung",
-          "expression": "happy",
-          "text": "Na đấy, con gái chú Cường tớ! (tạm)"
         }
       ]
     },
@@ -2284,13 +2568,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "narrator",
-          "text": "Phòng CLB, 17:00. Minh Anh ghim tấm thẻ lên bảng điều tra, cạnh tờ phiếu gửi."
-        },
-        {
-          "type": "line",
-          "speaker": "minh-anh",
-          "expression": "neutral",
-          "text": "Vậy là chúng ta đã có hai mảnh ghép rất quan trọng: một bạn tên Hoài, và một tấm thẻ lịch khoa Báo chí khóa 2024. Chưa chắc là cùng một người. Nhưng nếu là cùng một người thì có thể là ai?"
+          "text": "Phòng CLB, 17:00. Minh Anh cầm tấm thẻ lịch, đi ra bảng điều tra."
         },
         {
           "type": "ghep-mau",
@@ -2299,16 +2577,24 @@ const GOC = {
             "ev-phieu-gui-hoai",
             "ev-the-lich-bc24"
           ],
-          "giayNho": "Hoài nào học Báo chí, khóa 2024?"
-        },
-        {
-          "type": "note",
-          "text": "Khi có lệnh ghép mẫu (B19-MÁY): ngay trước đoạn này bảng điều tra mở ra, Minh Anh ghim hai thẻ, kéo chỉ đỏ, dán giấy nhớ. Người chơi chỉ xem."
-        },
-        {
-          "type": "line",
-          "speaker": "narrator",
-          "text": "Minh Anh kéo một sợi chỉ đỏ nối hai tờ, rồi viết lên giấy nhớ: \"Hoài nào học Báo chí, khóa 2024?\""
+          "giayNho": "Hoài nào học Báo chí, khóa 2024?",
+          "lamMau": [
+            {
+              "speaker": "minh-anh",
+              "expression": "neutral",
+              "text": "Một bên là phiếu gửi, người nộp ký \"Hoài\". Một bên là tấm thẻ lịch khoa Báo chí, khóa 2024, mắc ở khe hộp. Chị ghim hai tờ cạnh nhau đã."
+            },
+            {
+              "speaker": "minh-anh",
+              "expression": "serious",
+              "text": "Chưa chắc hai tờ nói về cùng một người. Nhưng nếu đúng là một người thì sao? Chị nối một sợi chỉ để khỏi quên hai tờ này có thể dính nhau."
+            },
+            {
+              "speaker": "minh-anh",
+              "expression": "neutral",
+              "text": "Nối rồi thì ghi luôn câu mình cần trả lời, mai lên Phòng Đào tạo là hỏi đúng câu ấy."
+            }
+          ]
         },
         {
           "type": "line",
@@ -4854,7 +5140,7 @@ const GOC = {
         },
         {
           "id": "lk-tay-na",
-          "chu": "Tay bé Na còn vụn bánh"
+          "chu": "Bé Na ôm nửa chiếc bánh cạnh đèn cá chép"
         },
         {
           "id": "lk-chia-ba",
@@ -4895,7 +5181,7 @@ const GOC = {
             {
               "speaker": "ha-vy",
               "expression": "thinking",
-              "text": "Chỗ này là lúc bánh rời đĩa. Tay ai còn dấu vết? (tạm)"
+              "text": "Chỗ này là lúc bánh rời đĩa. Ai đang cầm bánh? (tạm)"
             }
           ],
           "keoVaoTrong": null

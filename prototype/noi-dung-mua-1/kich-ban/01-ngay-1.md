@@ -39,6 +39,9 @@
 ### n1-clb — 17:00 phòng CLB: Minh Anh ghép hai mảnh trên bảng điều tra {cảnh: phong-clb}
 
 - [LỜI n1-clb.1]
-- [GHÉP MẪU] minh-anh: ev-phieu-gui-hoai + ev-the-lich-bc24 · giấy nhớ: "Hoài nào học Báo chí, khóa 2024?"
+<!-- User 09/10: người chơi phải thấy rõ Minh Anh đang làm và làm thế nào (ghim hai thẻ, nối chỉ đỏ, viết giấy nhớ), để Vụ 3 tự nối được khi không còn ai làm hộ. Ba câu dưới là ba bước. -->
+- [GHÉP MẪU] minh-anh: ev-phieu-gui-hoai + ev-the-lich-bc24 · giấy nhớ: "Hoài nào học Báo chí, khóa 2024?" · làm mẫu
+- [LỜI n1-clb-ghep]
+- [HẾT GHÉP MẪU]
 - [LỜI n1-clb.2]
 - [XONG VIỆC CHÍNH]

@@ -31,7 +31,7 @@ import { theCuaDongThoiGian } from '../engine/dong-thoi-gian';
 import { DongThoiGianMvp } from './DongThoiGianMvp';
 import { LeSoVachMvp } from './LeSoVachMvp';
 import { SoTongKetMvp } from './SoTongKetMvp';
-import { BangGhimMvp } from './v7/BangGhimMvp';
+import { GhepMauMvp } from './GhepMauMvp';
 import { mucNhapVaiCua, mucSqlCua } from '../engine/muc-choi';
 import { giaTriTuHoSo } from '../engine/giay-nho';
 import { chonNhacNen, type NhacTruoc } from '../engine/nhac';
@@ -565,21 +565,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           </div>
         );
       case 'ghep-mau':
-        return (
-          <div className="ghep-mau phong-tra">
-            <BangGhimMvp
-              kb={kb}
-              s={s}
-              dienTen={dienTen}
-              ghep={{ id: kn.nut.the.join('+'), the: kn.nut.the, chu: kn.nut.giayNho, nguoi: kn.nut.nguoi }}
-              tenNguoi={(ma) => tenNguoiNoi(kb, ma, s)}
-            >
-              <button type="button" className="bang__mo-may bang__mo-may--tiep" onClick={tiep} autoFocus>
-                Tiếp tục
-              </button>
-            </BangGhimMvp>
-          </div>
-        );
+        return <GhepMauMvp key={`${s.conTro?.chuoi}:${s.conTro?.nut}`} kb={kb} s={s} nut={kn.nut} dienTen={dienTen} tenNguoi={(ma) => tenNguoiNoi(kb, ma, s)} onTiep={tiep} />;
       case 'effect':
         return isEffectId(kn.effectId) ? <ObjectionEffect effectId={kn.effectId} onDone={tiep} /> : <HieuUngLa onDone={tiep} />;
       case 'projector':
@@ -612,7 +598,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           />
         );
       case 'explore':
-        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} thu={thuHomNay(kb, s)} gio={kn.nut.gio} dang={kn.nut.dang} haVySoi={kn.nut.haVySoi} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} roi={kn.roi ?? null} onRoi={() => hanhDong({ type: 'roi-canh' })} hetNgay={kn.hetNgay ?? null} onHetNgay={() => hanhDong({ type: 'het-ngay' })} {...(mucNhapVai ? { mucNhapVai } : {})} />;
+        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} thu={thuHomNay(kb, s)} gio={kn.nut.gio} dang={kn.nut.dang} haVySoi={kn.nut.haVySoi} tuDong={kn.nut.tuDong} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} roi={kn.roi ?? null} onRoi={() => hanhDong({ type: 'roi-canh' })} hetNgay={kn.hetNgay ?? null} onHetNgay={() => hanhDong({ type: 'het-ngay' })} {...(mucNhapVai ? { mucNhapVai } : {})} />;
       case 'end':
         return (
           <KetMvp
@@ -701,6 +687,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       ) : null}
       <SanKhauMvp
         kb={kb}
+        {...(kn.kind === 'explore' && kn.nut.kieu === 'ban-do' ? { nhanDiaDiem: 'Đại học Chấn Hưng' } : {})}
         canh={noiDangO ? noiDangO.diaDiem.canh : s.canh}
         dem={dem}
         speaker={loiHienTai?.speaker}
@@ -727,7 +714,6 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
               key={JSON.stringify([lanDoiVan, s.batDauLuc, s.conTro, s.hoiDap?.viTri, kn.kind, gioiThieuMo, laTheChu])}
               kb={kb}
               s={s}
-              diaDiem={kn.kind === 'explore' && kn.nut.kieu === 'ban-do' ? 'Đại học Chấn Hưng' : undefined}
               // Có cả ở cảnh khám phá (user 05/10): chi tiết ẩn không còn phát sáng, người chơi bí thì hỏi bạn đi cùng ngay tại đó.
               visible={['line', 'feedback', 'question', 'branch', 'doi-chat', 'explore'].includes(kn.kind) && !gioiThieuMo && !laTheChu}
             />

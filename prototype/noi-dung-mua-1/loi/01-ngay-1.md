@@ -35,12 +35,15 @@
 > NHẮC VIỆC ha-vy (neutral): Năm giờ chiều mình mang tấm thẻ về phòng CLB nhé. (tạm)
 
 ## n1-clb.1
-- **narrator**: Phòng CLB, 17:00. Minh Anh ghim tấm thẻ lên bảng điều tra, cạnh tờ phiếu gửi.
-- **minh-anh** (neutral): Vậy là chúng ta đã có hai mảnh ghép rất quan trọng: một bạn tên Hoài, và một tấm thẻ lịch khoa Báo chí khóa 2024. Chưa chắc là cùng một người. Nhưng nếu là cùng một người thì có thể là ai?
+- **narrator**: Phòng CLB, 17:00. Minh Anh cầm tấm thẻ lịch, đi ra bảng điều tra.
+
+## n1-clb-ghep
+- [DÀN DỰNG] Màn ghép mẫu làm từng bước, mỗi câu một bước: (1) tay Minh Anh ghim hai thẻ cạnh nhau, (2) kéo chỉ đỏ từ phiếu gửi sang thẻ lịch, (3) dán giấy nhớ. Người chơi chỉ xem, bấm Tiếp tục để sang bước sau.
+- **minh-anh** (neutral): Một bên là phiếu gửi, người nộp ký "Hoài". Một bên là tấm thẻ lịch khoa Báo chí, khóa 2024, mắc ở khe hộp. Chị ghim hai tờ cạnh nhau đã.
+- **minh-anh** (serious): Chưa chắc hai tờ nói về cùng một người. Nhưng nếu đúng là một người thì sao? Chị nối một sợi chỉ để khỏi quên hai tờ này có thể dính nhau.
+- **minh-anh** (neutral): Nối rồi thì ghi luôn câu mình cần trả lời, mai lên Phòng Đào tạo là hỏi đúng câu ấy.
 
 ## n1-clb.2
-- [DÀN DỰNG] Khi có lệnh ghép mẫu (B19-MÁY): ngay trước đoạn này bảng điều tra mở ra, Minh Anh ghim hai thẻ, kéo chỉ đỏ, dán giấy nhớ. Người chơi chỉ xem.
-- **narrator**: Minh Anh kéo một sợi chỉ đỏ nối hai tờ, rồi viết lên giấy nhớ: "Hoài nào học Báo chí, khóa 2024?"
 - **player**: Phải xem bảng sinh viên mới biết ạ.
 - **minh-anh** (neutral): Phiếu chị nộp rồi, sáng mai cô Hạnh ký. Chín giờ mình gặp nhau ở Phòng Đào tạo.
 > NHIỆM VỤ: Chín giờ sáng mai lên Phòng Đào tạo (tạm)

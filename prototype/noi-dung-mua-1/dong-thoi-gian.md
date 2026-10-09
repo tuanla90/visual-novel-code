@@ -1,19 +1,19 @@
 # Dòng thời gian Vụ 1
 
-<!-- Gói B19 (08/10/2026). Thẻ nhận đều là thẻ có thật trong hồ sơ Vụ 1 và được mở trước chỗ đặt [DÒNG THỜI GIAN] (dtg-banh: kich-ban/00-mo-dau.md, chuỗi md-10-chia-banh; dtg-vu1: kich-ban/05-ngay-5.md, chuỗi n5-toi; đọc lại ở buổi họp: [HIỆN DÒNG THỜI GIAN dtg-vu1], chuỗi hop-00). Câu "Kéo sai" / "Kéo vào chỗ trống" là câu mới, đánh dấu (tạm), chờ user duyệt. -->
+<!-- Gói B19 (08/10/2026). Thẻ nhận đều là thẻ có thật trong hồ sơ Vụ 1 và được mở trước chỗ đặt [DÒNG THỜI GIAN] (dtg-banh: kich-ban/00-mo-dau.md, chuỗi md-10-doan-dung; dtg-vu1: kich-ban/05-ngay-5.md, chuỗi n5-toi; đọc lại ở buổi họp: [HIỆN DÒNG THỜI GIAN dtg-vu1], chuỗi hop-00). Câu "Kéo sai" / "Kéo vào chỗ trống" là câu mới, đánh dấu (tạm), chờ user duyệt. -->
 
 ## dtg-banh — Đĩa bánh Trung thu {kiểu: tập dượt}
 
 - Người nhắc khi kéo sai: ha-vy
 - Kéo sai: **ha-vy** (thinking): Chưa khớp giờ. Lời này nói chuyện lúc nào? (tạm)
-- Thẻ tạm: lk-dem-bon = Minh Anh: "Lúc bảy giờ chị đếm còn bốn." · lk-tay-na = Tay bé Na còn vụn bánh · lk-chia-ba = Minh Anh: "Ba cái."
+- Thẻ tạm: lk-dem-bon = Minh Anh: "Lúc bảy giờ chị đếm còn bốn." · lk-tay-na = Bé Na ôm nửa chiếc bánh cạnh đèn cá chép · lk-chia-ba = Minh Anh: "Ba cái."
 
 ### o1 · 19:00 · đĩa đủ bốn chiếc
 - Nhận: lk-dem-bon
 - Kéo sai: **ha-vy** (thinking): Lúc bảy giờ đĩa còn đủ. Chỗ này cần lời ai đếm bánh lúc ấy. (tạm)
 ### o2 · ? · bé Na cầm một chiếc
 - Nhận: lk-tay-na
-- Kéo sai: **ha-vy** (thinking): Chỗ này là lúc bánh rời đĩa. Tay ai còn dấu vết? (tạm)
+- Kéo sai: **ha-vy** (thinking): Chỗ này là lúc bánh rời đĩa. Ai đang cầm bánh? (tạm)
 ### o3 · 19:15 · chia còn ba
 - Nhận: lk-chia-ba
 - Kéo sai: **ha-vy** (thinking): Lúc chia thì đã thiếu rồi. Chỗ này cần cái gì xảy ra lúc chia cơ. (tạm)

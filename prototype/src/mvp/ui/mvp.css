@@ -5016,3 +5016,17 @@ html[data-ban-phim='1'] .mvp-tnv__the { width: min(460px, 100%); padding: 8px 12
   background: #f5dfa9; color: #3b1d06; font: 800 0.85rem/1 var(--font-ui); cursor: pointer;
 }
 .v7-go-noi__chay:disabled { opacity: 0.5; cursor: default; }
+
+/* Soi tự động (user 08/10/2026, Hà Vy soi làm mẫu ở Trung thu): điểm chưa tới lượt ẩn hẳn; kính hạ xuống điểm đang soi rồi nhịp. */
+.mvp-soi--cho { opacity: 0; pointer-events: none; }
+.mvp-soi.is-dang-soi .mvp-soi__kinh,
+.mvp-soi.is-dang-soi .mvp-soi__vong { animation: mvp-soi-ha 0.45s ease-out both, mvp-soi-nhip 1.8s ease-in-out 0.45s infinite; }
+/* Chỉ đổi cỡ, không đổi độ mờ: tab chạy nền thì hoạt cảnh đứng yên mà kính vẫn hiện. */
+@keyframes mvp-soi-ha {
+  from { transform: scale(1.6); }
+  to { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mvp-soi.is-dang-soi .mvp-soi__kinh,
+  .mvp-soi.is-dang-soi .mvp-soi__vong { animation: none; }
+}

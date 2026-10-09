@@ -364,7 +364,14 @@ export type NutMvp =
   /** Gói B19 `[ĐIỂM LƯU VỤ <vụ>]`: chụp trạng thái để "Chơi lại Vụ n". Máy tự chạy qua. */
   | { type: 'diem-luu-vu'; vu: string }
   /** Gói B19 `[GHÉP MẪU] <ai>: <thẻ> + <thẻ> · giấy nhớ: "…"`: ghim hai thẻ, kéo chỉ đỏ, dán giấy nhớ lên bảng điều tra. */
-  | { type: 'ghep-mau'; nguoi: string; the: string[]; giayNho: string }
+  | {
+      type: 'ghep-mau';
+      nguoi: string;
+      the: string[];
+      giayNho: string;
+      /** User 09/10: người ghép làm mẫu ba bước (ghim hai thẻ, nối chỉ đỏ, viết giấy nhớ), mỗi bước một câu. Thiếu = diễn một lần. */
+      lamMau?: { speaker: string; expression?: string; text: string }[];
+    }
   | { type: 'effect'; effectId: string }
   | { type: 'line-pick'; id: string; lines: { index: number; sql: string; correct: boolean; feedback: LoiMvp[] }[]; truUyTin: boolean }
   | { type: 'projector'; id: string; source: { kind: 'sql'; sql: string } | { kind: 'evidence'; evidenceId: string }; run: boolean; expectedRowCount?: number }
@@ -391,7 +398,7 @@ export type NutMvp =
    * `quan-sat` = soi chi tiết trên chân dung nhân vật `nhanVat` (kiểu Sherlock Holmes: mỗi vùng một chi tiết); `dan` (gói B19) =
    * chân dung những người bấm được đứng trên dàn của cảnh (không x / y / rộng), luật như cảnh thường.
    */
-  | { type: 'explore'; id: string; diem: DiemKhamPhaMvp[]; kieu?: 'ban-do' | 'quan-sat' | 'dan'; nhanVat?: string; /** Bản đồ: giờ trong truyện ("HH:MM"). */ gio?: string; /** Quan sát: dáng / bộ đồ của nhân vật được soi. */ dang?: string; /** Quan sát: mở bằng cảnh cắt đôi mắt Hà Vy. */ haVySoi?: boolean };
+  | { type: 'explore'; id: string; diem: DiemKhamPhaMvp[]; kieu?: 'ban-do' | 'quan-sat' | 'dan'; nhanVat?: string; /** Bản đồ: giờ trong truyện ("HH:MM"). */ gio?: string; /** Quan sát: dáng / bộ đồ của nhân vật được soi. */ dang?: string; /** Quan sát: mở bằng cảnh cắt đôi mắt Hà Vy. */ haVySoi?: boolean; /** Quan sát: Hà Vy tự soi lần lượt từng điểm, người chơi chỉ xem (user 08/10). */ tuDong?: boolean };
 
 /**
  * Một chỗ bấm được của `[KHÁM PHÁ]` (đặc tả §18.6): vật/người đặt trên nền cảnh của chuỗi, bấm → chạy `chuoi`; chuỗi hết

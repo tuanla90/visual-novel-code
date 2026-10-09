@@ -132,6 +132,26 @@
 - **player**: Ừ. Sao cậu biết?
 - **ha-vy** (smile): Tùng kể trong nhóm chat. Ba lần.
 
+## md-10-vy-soi.1
+- [DÀN DỰNG] Tùng chạy lại chỗ Hà Vy, tay vẫn cầm tờ bản đồ gấp (chân dung tung happy).
+- **tung** (happy): Vy, cậu nhìn tớ thì đoán được gì không? Trúng thì tớ nhường miếng bánh to nhất.
+- **ha-vy** (day-kinh): Đứng yên một chút để tớ nhìn đã.
+
+## md-10-soi-ao.1
+- **ha-vy** (neutral): Áo thể thao lam, không in tên khoa, cũng chẳng in tên đội nào. Cái áo này không nói được gì.
+
+## md-10-soi-mui.1
+- **ha-vy** (thinking): Miếng băng trên sống mũi. Cậu va vào đâu đấy à?
+- **tung** (happy): Hôm khuân đồ cho tân sinh viên, tớ đập mặt vào cổng sắt ký túc xá!
+
+## md-10-soi-ban-do.1
+- **ha-vy** (thinking): Xuống sân ký túc xá thôi mà cậu vẫn cầm tờ bản đồ trường. Bản đồ gấp đến hằn nếp, mép sờn cả, tức là ngày nào cũng mở ra gấp vào.
+- **ha-vy** (day-kinh): Cậu vừa kể khuân đồ cho tân sinh viên. Thêm tờ bản đồ này nữa, tớ đoán hôm nhập học cậu ở đội tình nguyện, đứng chỉ đường cho tân sinh viên, đúng không?
+
+## md-10-vy-soi.2
+- **tung** (surprised): Ơ, đúng thật! Cả tuần nhập học tớ đứng ở sảnh ký túc xá. Thôi, miếng to nhất là của cậu.
+- **player**: (Mình gặp Tùng đúng hôm ấy. Sao Vy chỉ nhìn qua mà cũng ra được nhỉ?)
+
 ## md-10-trung-thu.4
 - **narrator**: 19:00. Minh Anh đếm đĩa bánh: bốn. Cả nhóm ngồi xuống, Duy rót trà.
 
@@ -140,36 +160,51 @@
 - **narrator**: 19:15. Minh Anh cầm dao chia bánh.
 - **minh-anh** (worried): Ba cái. Lúc bảy giờ chị đếm còn bốn.
 - **tung** (surprised): Hay mèo tha? Ký túc xá mình có con mèo vàng to lắm!
-- **ha-vy** (thinking): Mèo tha thì đĩa phải xô lệch, vụn bánh rơi quanh đĩa. Đĩa vẫn ngay ngắn.
+- **ha-vy** (thinking): Mèo nhảy lên bàn thì đĩa phải xô lệch, chén trà đổ. Bàn vẫn ngay ngắn.
 - **narrator**: Hà Vy đẩy kính, quay sang {{nv.nguoi-choi}}.
 - **ha-vy** (day-kinh): Sherlock Holmes nói: "Cậu nhìn, nhưng cậu không quan sát." Sự khác biệt rất rõ ràng đấy.
 
 ## md-10-chia-banh.2
-- **ha-vy** (neutral): Từ bảy giờ tới bảy giờ mười lăm, những ai đi qua bàn này? Cậu thử nhìn tay từng người xem.
-> NHIỆM VỤ: Nhìn tay từng người quanh bàn bánh (tạm)
+- **ha-vy** (neutral): Ban nãy tớ nhìn Tùng từ cái áo tới tờ bản đồ. Giờ cậu thử nhìn quanh bàn xem, chỗ nào lạ thì soi kỹ.
+> NHIỆM VỤ: Soi quanh bàn bánh (tạm)
+> NHẮC VIỆC ha-vy (neutral): Mọi người cứ nhìn trên bàn. Cậu thử nhìn cả dưới đất xem. (tạm)
 
-## md-10-tay-minh-anh.1
-- **player**: (Chị Minh Anh một tay chống nạnh, cổ tay đeo đồng hồ. Không dính vụn nào.) (tạm)
+## md-10-dia-banh.1
+- **player**: (Đĩa còn ba chiếc. Chỗ trống trên đĩa còn dính vụn.)
 
-## md-10-tay-duy.1
-- **player**: (Anh Duy cầm xấp bìa giấy, chùm chìa đeo ở thắt lưng. Tay sạch.) (tạm)
+## md-10-vun-banh.1
+- **player**: (Vụn bánh rơi thành vệt mảnh, từ chân bàn chạy ra tới chỗ đèn cá chép.)
 
-## md-10-tay-ha-vy.1
-- **player**: (Hà Vy hai tay ôm cuốn sổ nhỏ. Ngón tay sạch trơn.) (tạm)
+## md-10-den-ca-chep.1
+- **player**: (Đèn cá chép đỏ nằm giữa sân. Ai kéo ra đây rồi bỏ đấy nhỉ?)
 
-## md-10-tay-tung.1
-- **player**: (Tùng giơ ngón cái, tay kia cầm tờ bản đồ gấp. Chẳng dính vụn nào.) (tạm)
+## md-10-doi-dep.1
+- **player**: (Đôi dép nhựa trẻ con màu vàng bỏ cạnh đèn. Chủ của nó đi đâu rồi?)
 
-## md-10-tay-be-na.1
-- **player**: (Một bé gái giấu hai tay sau lưng. Đầu ngón tay ló ra, còn dính vụn bánh.) (tạm)
-- **tung** (happy): Na đấy, con gái chú Cường tớ! (tạm)
+## md-10-dau-lan.1
+- **player**: (Mấy anh chị đội múa lân ngồi quanh cái trống, mải nói chuyện, chẳng ai ngó sang bàn mình.)
 
-## md-10-chia-banh.3
-- **player**: Bé Na… tay còn vụn bánh. Mà lúc chia thì bé chưa được chia.
-- **ha-vy** (thinking): Chưa được chia mà tay đã có vụn, tức là bé cầm bánh trước lúc chia. Cậu xếp lại xem từng việc xảy ra lúc nào.
+## md-10-doan-tung.1
+- **player**: Tùng lấy chăng? Lúc ấy cậu ấy đứng gần bàn nhất.
+- **tung** (worried): Ơ kìa, tớ rót trà còn chưa kịp uống ngụm nào!
+- **ha-vy** (neutral): Đứng gần bàn thì chưa đủ đâu. Vệt vụn kia dẫn về phía nào?
 
-## md-10-chia-banh.4
-- [DÀN DỰNG] Khi có dòng thời gian (B19-MÁY): ngay trước đoạn này là màn dòng thời gian tập dượt ba ô (dtg-banh): 19:00 đĩa đủ bốn, ? bé Na cầm một chiếc, 19:15 chia còn ba; kéo lời kể vào ô.
+## md-10-doan-mua-lan.1
+- **player**: Hay ai bên đội múa lân sang lấy?
+- **ha-vy** (neutral): Họ ngồi quanh cái trống từ nãy, chưa ai đứng dậy. Mà vệt vụn đâu có chạy về phía ấy.
+
+## md-10-doan-dung.1
+- **player**: Vụn bánh rơi thành vệt từ chân bàn ra tới đèn cá chép, cạnh đèn lại có đôi dép trẻ con. Tớ nghĩ một bé nào đó cầm bánh chạy ra đấy, rồi bỏ dép chạy chân đất.
+- **ha-vy** (smile): Dép còn nằm đây thì bé chưa đi xa đâu.
+- **narrator**: Từ sau cái trống, một bé gái chân đất chạy ra, ngồi xổm cạnh chiếc đèn cá chép.
+
+## md-10-doan-dung.2
+- [DÀN DỰNG] Ảnh cg-be-na-den-ca-chep ngay trước đoạn này: bé Na ngồi xổm, hai tay ôm nửa chiếc bánh, má dính vụn, đôi dép vàng bên cạnh. Lời không tả lại.
+- **tung** (happy): Na! Con gái chú Cường tớ đấy!
+- **ha-vy** (thinking): Lúc bảy giờ đĩa còn đủ bốn, bảy giờ mười lăm còn ba. Bé cầm bánh vào lúc nào? Cậu xếp lại xem từng việc xảy ra lúc nào.
+
+## md-10-doan-dung.3
+- [DÀN DỰNG] Ngay trước đoạn này là màn dòng thời gian tập dượt ba ô (dtg-banh): 19:00 đĩa đủ bốn, ? bé Na cầm một chiếc, 19:15 chia còn ba; kéo lời kể vào ô.
 - **narrator**: Bé Na lí nhí xin lỗi. Chú Cường từ chốt cổng chạy sang, xoa đầu con.
 - **tung** (surprised): Chú! Na lớn thế rồi à?
 - **chu-cuong** (neutral): Các cháu thông cảm, con bé nhà chú thấy đèn với bánh là không đứng yên được.
@@ -178,6 +213,7 @@
 - **narrator**: Hà Vy nhìn tờ phiếu còn trắng trong tay {{nv.nguoi-choi}}.
 - **ha-vy** (smile): Cậu có tố chất thám tử đấy. Có muốn tham gia không?
 - **tung** (happy): Tham gia đi cho vui! Cậu định trơ mắt nhìn CLB giải thể à?
+- **player**: (Vệt vụn với đôi dép nằm ngay giữa sân, chịu nhìn kỹ là thấy. Hay mình thử thật nhỉ?)
 - **player**: Thôi được… cho tớ mượn cái bút.
 - **narrator**: Minh Anh đọc tờ phiếu một lượt, kẹp vào sổ.
 - **minh-anh** (happy): Năm. Sáng mai chị nộp danh sách cho Hội.

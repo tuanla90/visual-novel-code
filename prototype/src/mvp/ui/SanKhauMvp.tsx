@@ -29,6 +29,8 @@ import { DAO_CU_CANH } from './dao-cu-canh';
 export interface SanKhauMvpProps {
   kb: KichBanMvp;
   canh: string;
+  /** Name shown on the location label when the stage displays the world map. */
+  nhanDiaDiem?: string;
   /** Cảnh cuối ngày → dùng nền tối nếu có. */
   dem?: boolean;
   speaker?: string;
@@ -170,13 +172,13 @@ function danKe(
   let dan: DanDien = truoc && truoc.canh === canh ? truoc : danTrong(canh);
   const trenDan = (d: DanDien, x: string): boolean => d.thanhVien.some((t) => t.nhanVat === x) || d.hangSau.some((t) => t.nhanVat === x);
   // `[VÀO x]`: người chưa nói nhưng đang có mặt trong cuộc nói chuyện đứng vào dàn (đứng im); hàng trước kín thì đứng hàng sau.
+  // Cả hai hàng kín thì thôi, không đẩy ai khỏi dàn: đẩy thì lần vẽ sau người bị đẩy lại "chưa trên dàn", được thêm vào và đẩy
+  // người khác ra, vẽ lại mãi (08/10/2026, Trung thu 7 người: React báo "Too many re-renders", màn trắng).
   for (const x of vaoDan) {
     if (raDan.includes(x) || !laNhanVatHien(kb, x) || trenDan(dan, x)) continue;
     const tv = { nhanVat: x, bieuCam: undefined };
-    dan =
-      dan.thanhVien.length < TOI_DA_TREN_DAN
-        ? { ...dan, thanhVien: [...dan.thanhVien, tv], thuTuNoi: [x, ...dan.thuTuNoi] }
-        : { ...dan, hangSau: xuongHangSau(dan.hangSau, tv) };
+    if (dan.thanhVien.length < TOI_DA_TREN_DAN) dan = { ...dan, thanhVien: [...dan.thanhVien, tv], thuTuNoi: [x, ...dan.thuTuNoi] };
+    else if (dan.hangSau.length < TOI_DA_HANG_SAU) dan = { ...dan, hangSau: [...dan.hangSau, tv] };
   }
   // `[RA x]`: người đã rời cảnh xuống khỏi cả hai hàng (đang nói thì ở lại).
   const roi = (x: string): boolean => raDan.includes(x) && x !== speaker;
@@ -296,7 +298,7 @@ function ChanDungMvp({
   );
 }
 
-export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking, coDan = true, xoaDan = false, raDan, vaoDan, thamGia = null, nghi = false, tenNguoiChoi, nhacViec, dienTen, isCard = false, dongHanh, children }: SanKhauMvpProps) {
+export function SanKhauMvp({ kb, canh, nhanDiaDiem, dem = false, speaker, expression, shaking, coDan = true, xoaDan = false, raDan, vaoDan, thamGia = null, nghi = false, tenNguoiChoi, nhacViec, dienTen, isCard = false, dongHanh, children }: SanKhauMvpProps) {
   const [dan, setDan] = useState<DanDien>(() => danKe(kb, null, canh, speaker, expression, raDan, nghi, vaoDan, thamGia));
   const moi = xoaDan
     ? dan.thanhVien.length === 0 && dan.hangSau.length === 0 && dan.canh === canh
@@ -306,7 +308,7 @@ export function SanKhauMvp({ kb, canh, dem = false, speaker, expression, shaking
   if (moi !== dan) setDan(moi);
   const lineTyping = useVnStore((s) => s.lineTyping);
   const nen = anhNen(canh, dem);
-  const tenCanh = kb.canh.find((c) => c.id === canh)?.ten ?? 'Cảnh';
+  const tenCanh = nhanDiaDiem ?? kb.canh.find((c) => c.id === canh)?.ten ?? 'Cảnh';
   const [diaDiem, setDiaDiem] = useState({ canh, mo: false });
   if (diaDiem.canh !== canh) setDiaDiem({ canh, mo: false });
   const moDiaDiem = diaDiem.canh === canh && diaDiem.mo;

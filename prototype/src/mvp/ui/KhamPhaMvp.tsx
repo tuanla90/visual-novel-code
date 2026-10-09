@@ -16,6 +16,8 @@
  *
  * 03/10/2026 (user): màn `· Hà Vy soi` KHÔNG mồi kính lúp nữa: chi tiết ẩn, rê chuột (hay chạm) qua đúng chỗ mới hiện kính.
  * Lần soi đầu (mở đầu, chưa có Hà Vy) vẫn hiện kính để dạy thao tác.
+ * 08/10/2026 (user): `· tự động` = Hà Vy soi làm mẫu ở Trung thu: kính tự tới từng điểm theo thứ tự viết (chi tiết kém quan trọng
+ * trước), dừng một nhịp rồi mở lời của điểm ấy; người chơi chỉ xem, bấm vào kính thì mở ngay khỏi chờ.
  * 05/10/2026 (gói B12, user): chi tiết ẩn KHÔNG nháy, không phát sáng dù để lâu; muốn biết việc chính hay cần gợi ý thì hỏi bạn
  * đi cùng. Dấu "!" / "?" của điểm bấm giữ nguyên.
  * 05/10/2026 (gói B13, user: "cho user freely khám phá"): bộ mùa 1 có nút rời cảnh do máy cho (`roi`): "Về bản đồ" ở nơi tới từ
@@ -62,6 +64,8 @@ export interface KhamPhaMvpProps {
   dang?: string;
   /** Quan sát: mở bằng cảnh cắt đôi mắt Hà Vy, kính lóe sáng, rồi các điểm soi mới hiện (user chốt 02/10/2026). */
   haVySoi?: boolean;
+  /** Quan sát: Hà Vy tự soi lần lượt từng điểm, người chơi chỉ xem (user 08/10/2026). */
+  tuDong?: boolean;
   /** Gói B13: nút rời cảnh ("Về bản đồ" / "Đi tiếp"); `null` / thiếu = không có nút. */
   roi?: { kieu: 've-ban-do' | 'di-tiep'; nhan: string } | null;
   onRoi?: () => void;
@@ -168,8 +172,11 @@ function useCatCanhHaVy(bat: boolean): { dang: boolean; boQua: () => void } {
   return { dang, boQua: () => setDang(false) };
 }
 
-export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay: _homNay, thu, gio, dang, haVySoi, roi, onRoi, hetNgay, onHetNgay, mucNhapVai }: KhamPhaMvpProps) {
+export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay: _homNay, thu, gio, dang, haVySoi, tuDong, roi, onRoi, hetNgay, onHetNgay, mucNhapVai }: KhamPhaMvpProps) {
   const catCanh = useCatCanhHaVy(!!haVySoi && kieu === 'quan-sat' && diem.every((d) => !d.daXem));
+  // Soi tự động: điểm chưa xem đầu tiên (theo thứ tự viết) là chỗ kính đang tới; sau một nhịp thì tự mở lời của điểm ấy.
+  const diemTuDong = tuDong && kieu === 'quan-sat' && !catCanh.dang ? diem.find((d) => !d.daXem) : undefined;
+  const maTuDong = diemTuDong?.diem.chuoi;
   // Gói B17: dấu "!" / "?" chỉ hiện ở loại điểm mà mức nhập vai cho (ghim / người / vật); không có mức thì hiện hết như cũ.
   const dauMuc = mucNhapVai ? dauTheoMuc(mucNhapVai) : null;
   const laGhim = (d: DiemKhamPhaMvp): boolean => kieu === 'ban-do' || d.sprite.startsWith('ghim:');
@@ -178,6 +185,19 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
     soundEngine.playSfx('select');
     xem(chuoi);
   };
+  // `onXem` của màn cha là hàm mới mỗi lần vẽ: giữ qua ref để đồng hồ soi tự động không bị đặt lại.
+  const xemRef = useRef(xem);
+  useEffect(() => {
+    xemRef.current = xem;
+  });
+  useEffect(() => {
+    if (!maTuDong) return;
+    const id = window.setTimeout(() => {
+      soundEngine.playSfx('select');
+      xemRef.current(maTuDong);
+    }, 1500);
+    return () => window.clearTimeout(id);
+  }, [maTuDong]);
   // Không còn nút "Danh sách" (user chốt 02/10/2026): danh sách chữ làm lộ chi tiết ẩn; mỗi chỗ bấm vẫn có nhãn đọc cho trình đọc màn hình.
   const vungRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -301,11 +321,11 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
               <button
                 key={d.diem.chuoi}
                 type="button"
-                className={`mvp-soi${d.daXem ? ' is-da-xem' : ''}${haVySoi ? ' mvp-soi--an' : ''}`}
+                className={`mvp-soi${d.daXem ? ' is-da-xem' : ''}${haVySoi && !tuDong ? ' mvp-soi--an' : ''}${tuDong && !d.daXem ? (d.diem.chuoi === maTuDong ? ' is-dang-soi' : ' mvp-soi--cho') : ''}`}
                 style={{ left: `${d.diem.x}%`, top: `${d.diem.y}%`, width: `${d.diem.rong}%` }}
                 aria-label={nhanDoc(i, d)}
                 title={`${nhan[i] ?? ''}${d.daXem ? ' — đã soi' : ''}`}
-                disabled={d.daXem}
+                disabled={d.daXem || (!!tuDong && d.diem.chuoi !== maTuDong)}
                 data-diem={d.diem.chuoi}
                 onClick={() => onXem(d.diem.chuoi)}
               >

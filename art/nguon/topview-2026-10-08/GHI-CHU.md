@@ -29,3 +29,9 @@ Xử lý sang game: `python art/nguon/xu-ly-anh-b19-2026-10-08.py` (bảng ngu�
 User 08/10 trả lại các ảnh nhân vật vẽ bằng chữ (sai mẫu, bé Na như hai đầu, cảnh Trung thu thiếu nhân vật chính) và chốt: cảnh đông người dùng CHÂN DUNG đã duyệt đứng trên dàn (bấm từng người), không vẽ ảnh nhóm; ảnh riêng của nhân vật thì sửa thẳng từ chân dung gốc, chỉ đổi tay/đồ cầm.
 
 Bài học (đã ghi memory): Image Edit từ ảnh gốc hợp khi đổi ÍT và lời nhắc ngắn, mệnh lệnh ("Edit Image1: take the folder out of his hand…"); câu "Pixel-identical copy … EXCEPT" kèm thay đổi lớn hay bị trả lại nguyên ảnh. Không vẽ nhân vật bằng chữ rồi sửa mặt: nét vẽ và trang phục lệch mẫu. Đưa ảnh nền + chân dung cùng lúc thì model xếp người đứng tạo dáng trước nền. Đếm vật (số bánh) model hay sai: kiểm bằng mắt, sửa tay.
+
+## Tối 08/10: nền ba bánh có vệt vụn và đôi dép (màn người chơi tự soi ở Trung thu)
+
+| nguồn | đích | ghi chú |
+|---|---|---|
+| bg-mvp-san-ktx-trung-thu-ba-banh-vun | nen/bg-mvp-san-ktx-trung-thu-ba-banh (2048×1152) | Image Edit GPT Image 2, 2K, từ nền ba bánh cũ: thêm vệt vụn từ chân bàn ra đèn cá chép và đôi dép nhựa vàng của trẻ con cạnh đèn (khớp cg-be-na-den-ca-chep). Ba bánh giữ đúng. Tốn 0,8 credit. |

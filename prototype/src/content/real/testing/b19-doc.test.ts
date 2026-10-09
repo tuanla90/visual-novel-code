@@ -73,7 +73,7 @@ describe('B19 · bộ đọc: cú pháp mới', () => {
     expect(nut(mvp, 'hop-00').find((x) => x.kind === 'dong-thoi-gian')).toEqual({ kind: 'dong-thoi-gian', id: 'dtg-vu1', chiXem: true });
     expect(nut(mvp, 'sau-hop-hoi').find((x) => x.kind === 'so-tong-ket')).toEqual({ kind: 'so-tong-ket', vu: 'vu1' });
     expect(nut(mvp, 'n1-mo')[0]).toEqual({ kind: 'diem-luu-vu', vu: 'vu1' });
-    expect(nut(mvp, 'n1-mo').find((x) => x.kind === 'ghep-mau')).toEqual({ kind: 'ghep-mau', nguoi: 'minh-anh', the: ['ev-phieu-gui', 'ev-the-lich'], giayNho: 'Hoài nào học Báo chí, khóa 2024?' });
+    expect(nut(mvp, 'n1-mo').find((x) => x.kind === 'ghep-mau')).toEqual({ kind: 'ghep-mau', nguoi: 'minh-anh', the: ['ev-phieu-gui', 'ev-the-lich'], giayNho: 'Hoài nào học Báo chí, khóa 2024?', loi: [], dong: false });
     expect(nut(mvp, 'n1-mo').find((x) => x.kind === 'dong-thoi-gian')).toEqual({ kind: 'dong-thoi-gian', id: 'dtg-vu1', chiXem: false });
   });
 
@@ -99,6 +99,23 @@ describe('B19 · bộ đọc: cú pháp mới', () => {
     expect((d.lich as { ket: unknown }).ket).toEqual({ that: 'ket-that', thuong: 'ket-tam', tam: 'ket-tam' });
     const hop = d.chuoi.find((c) => c.id === 'hop-00') as { nodes: { type: string }[] };
     expect(hop.nodes.map((n) => n.type)).toEqual(['line', 'fix-query', 'line', 'hien-dong-thoi-gian', 'doi-chat', 'line', 'doi-chat', 'question', 'cham-vu', 'ending-branch']);
+  });
+});
+
+describe('B19 · bộ đọc: [GHÉP MẪU … · làm mẫu] (user 09/10)', () => {
+  const GOC_GHEP = '- [GHÉP MẪU] minh-anh: ev-phieu-gui + ev-the-lich · giấy nhớ: "Hoài nào học Báo chí, khóa 2024?"';
+  const BA_CAU = '\n- **minh-anh** (neutral): Ghim hai tờ.\n- **minh-anh** (serious): Nối một sợi chỉ.\n- **minh-anh** (neutral): Ghi câu cần hỏi.';
+  it('gom đúng ba câu tới [HẾT GHÉP MẪU]; câu ấy không thành lời thoại riêng', () => {
+    const kq = doc({ [KB_TEP]: [[GOC_GHEP, `${GOC_GHEP} · làm mẫu${BA_CAU}\n- [HẾT GHÉP MẪU]`]] });
+    expect(kq.loi).toEqual([]);
+    const g = kq.mvp.chuoi.flatMap((c) => c.items).find((x) => x.kind === 'ghep-mau');
+    expect(g && g.kind === 'ghep-mau' && [g.dong, g.loi.map((l) => l.text)]).toEqual([true, ['Ghim hai tờ.', 'Nối một sợi chỉ.', 'Ghi câu cần hỏi.']]);
+    expect(kq.mvp.chuoi.flatMap((c) => c.items).some((x) => x.kind === 'line' && x.line.text === 'Ghim hai tờ.')).toBe(false);
+  });
+  it('lỗi: không đủ ba câu; gặp lệnh khác trước [HẾT GHÉP MẪU]; [HẾT GHÉP MẪU] lẻ', () => {
+    expect(doc({ [KB_TEP]: [[GOC_GHEP, `${GOC_GHEP} · làm mẫu\n- **minh-anh** (neutral): Một câu.\n- [HẾT GHÉP MẪU]`]] }).loi.join('\n')).toMatch(/đúng ba câu thoại/);
+    expect(doc({ [KB_TEP]: [[GOC_GHEP, `${GOC_GHEP} · làm mẫu\n- [XONG VIỆC CHÍNH]`]] }).loi.join('\n')).toMatch(/chỉ chứa câu thoại tới \[HẾT GHÉP MẪU\]/);
+    expect(doc({ [KB_TEP]: [[GOC_GHEP, `${GOC_GHEP}\n- [HẾT GHÉP MẪU]`]] }).loi.join('\n')).toMatch(/không có \[GHÉP MẪU\] nào đang mở/);
   });
 });
 

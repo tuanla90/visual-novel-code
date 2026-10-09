@@ -49,6 +49,11 @@ export interface BangGhimMvpProps {
   ghep?: GhepMauLuuMvp;
   /** Tên người ghép theo mã (chữ ký nhỏ dưới giấy nhớ ghép mẫu). */
   tenNguoi?: (ma: string) => string;
+  /**
+   * Ghép mẫu làm từng bước (user 09/10/2026): 1 = ghim hai thẻ, 2 = nối chỉ đỏ, 3 = dán giấy nhớ. Bàn tay mang tên người ghép
+   * làm thao tác của bước đang diễn. Thiếu = diễn cả ba một lần như cũ.
+   */
+  buocGhep?: 1 | 2 | 3;
 }
 
 const TEN_MAU: Record<MauGhimMvp, string> = {
@@ -61,8 +66,34 @@ const TEN_MAU: Record<MauGhimMvp, string> = {
 
 const boNgoac = (t: string): string => t.replace(/^\[|\]$/g, '');
 
-export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chuaXem, onXemThe, onDoiMau, onGhim, hoiDap = false, ghep, tenNguoi }: BangGhimMvpProps) {
-  const bang = useMemo(() => dungBang(kb, s, them, { hoiDap, ...(ghep ? { ghep } : {}) }), [kb, s, them, hoiDap, ghep]);
+/**
+ * Bàn tay của người làm mẫu (ghép mẫu từng bước, user 09/10/2026): mang tên người ghép để người chơi biết ai đang làm. Bước 1 ấn
+ * đầu ghim thẻ thứ hai, bước 2 kéo từ đầu ghim thẻ thứ nhất sang thẻ thứ hai (đi cùng sợi chỉ), bước 3 dán giấy nhớ dưới sợi chỉ.
+ */
+function TayGhep({ buoc, a, b, ten }: { buoc: 1 | 2 | 3; a: { x: number; y: number } | null; b: { x: number; y: number } | null; ten: string }) {
+  if (!a || !b) return null;
+  // Bước 3: góc dưới phải tờ giấy nhớ (giấy rộng 210, đặt từ giữa sợi chỉ lệch xuống 70), tay không che chữ.
+  const dich = buoc === 3 ? { x: (a.x + b.x) / 2 + 96, y: (a.y + b.y) / 2 + 160 } : b;
+  const tu = buoc === 2 ? a : { x: dich.x + 40, y: dich.y + 60 };
+  const style = { left: dich.x, top: dich.y, ['--dx' as string]: `${tu.x - dich.x}px`, ['--dy' as string]: `${tu.y - dich.y}px` } as CSSProperties;
+  return (
+    <div key={buoc} className={`bang__tay bang__tay--b${buoc}`} style={style} aria-hidden="true">
+      <svg className="bang__tay-hinh" viewBox="0 0 24 24" width="44" height="44">
+        <path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12m0-1.5a1.5 1.5 0 0 1 3 0V12m0-1a1.5 1.5 0 0 1 3 0v1m0 0a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7l-3.3-5a1.6 1.6 0 0 1 2.6-1.8L8 15" fill="#fde7d2" stroke="#3b2a1c" strokeWidth="1.4" strokeLinejoin="round" strokeLinecap="round" />
+      </svg>
+      <span className="bang__tay-ten">{ten}</span>
+    </div>
+  );
+}
+
+export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chuaXem, onXemThe, onDoiMau, onGhim, hoiDap = false, ghep, tenNguoi, buocGhep }: BangGhimMvpProps) {
+  const bangDu = useMemo(() => dungBang(kb, s, them, { hoiDap, ...(ghep ? { ghep } : {}) }), [kb, s, them, hoiDap, ghep]);
+  // Ghép mẫu làm từng bước: chưa tới bước nối thì giấu sợi chỉ của lần ghép này, chưa tới bước viết thì giấu giấy nhớ.
+  const bang = useMemo(() => {
+    if (!ghep || !buocGhep || buocGhep === 3) return bangDu;
+    const laDayGhep = (d: { tu: string; den: string; kieu: string }): boolean => d.kieu === 'ghep' && d.tu === ghep.the[0] && d.den === ghep.the[1];
+    return { ...bangDu, day: buocGhep < 2 ? bangDu.day.filter((d) => !laDayGhep(d)) : bangDu.day, giayGhep: (bangDu.giayGhep ?? []).filter((g) => !g.moi) };
+  }, [bangDu, ghep, buocGhep]);
   // Local state lưu vị trí người chơi đã kéo, đảm bảo thẻ giữ nguyên vị trí sau khi thả tay, không bị tự động sắp xếp lại hoặc giật về chỗ cũ.
   const [viTriCucBo, setViTriCucBo] = useState<Record<string, { x: number; y: number }>>({});
   useEffect(() => {
@@ -255,6 +286,7 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
               })}
             </svg>
             {bang.the.length === 0 ? <p className="bang__trong">Bảng còn trống.</p> : null}
+            {ghep && buocGhep ? <TayGhep buoc={buocGhep} a={ghim(ghep.the[0] ?? '')} b={ghim(ghep.the[1] ?? '')} ten={tenNguoi ? tenNguoi(ghep.nguoi) : ghep.nguoi} /> : null}
             {/* Gói B19: giấy nhớ ghép mẫu, dán giữa hai thẻ đã nối, hơi lệch xuống dưới sợi chỉ. */}
             {(bang.giayGhep ?? []).map((g) => {
               const a = ghim(g.tu);
@@ -278,7 +310,7 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
               return (
                 <article
                   key={t.id}
-                  className={`the the--${t.loai} the--ghim-${t.mau}${t.phu === 'TỔNG HỢP' ? ' the--tong-hop' : ''}${t.khongDuLieu && t.loai === 'tin' ? ' is-khong-du-lieu' : ''}${moi === t.id ? ' is-moi' : ''}${keo?.id === t.id ? ' is-keo' : ''}`}
+                  className={`the the--${t.loai} the--ghim-${t.mau}${t.phu === 'TỔNG HỢP' ? ' the--tong-hop' : ''}${t.khongDuLieu && t.loai === 'tin' ? ' is-khong-du-lieu' : ''}${moi === t.id ? ' is-moi' : ''}${keo?.id === t.id ? ' is-keo' : ''}${buocGhep && ghep?.the.includes(t.id) ? ' is-ghep-mau' : ''}`}
                   style={style}
                   tabIndex={0}
                   aria-label={`${NHAN_LOAI[t.loai]}: ${dienTen(boNgoac(t.nhan))}${chuaXemThe ? ' (mới)' : ''}`}

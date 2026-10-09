@@ -211,3 +211,17 @@ describe('SanKhauMvp — nhãn địa điểm tương tác và bong bóng nhắc
   });
 });
 
+
+describe('SanKhauMvp — [VÀO] khi cả hai hàng đã kín', () => {
+  it('bảy người (bốn người [VÀO] + ba người nói): không vẽ lại mãi, dàn giữ tối đa 3 + 3 người', () => {
+    // 08/10/2026: Trung thu có player, Minh Anh, Duy, bé Na [VÀO] rồi Tùng, Hà Vy, chú Cường lần lượt nói → "Too many re-renders".
+    const vao = ['player', 'minh-anh', 'duy', 'hoai'];
+    const kq = render(<SanKhauMvp kb={kb} canh="cong-truong" speaker="tung" vaoDan={vao} />);
+    for (const t of ['ha-vy', 'chu-cuong', 'tung']) kq.rerender(<SanKhauMvp kb={kb} canh="cong-truong" speaker={t} vaoDan={vao} />);
+    const truoc = kq.container.querySelectorAll('.cast-member[data-hang="truoc"]');
+    const sau = kq.container.querySelectorAll('.cast-member[data-hang="sau"]');
+    expect(truoc.length).toBe(3);
+    expect(sau.length).toBeLessThanOrEqual(3);
+    expect(kq.container.querySelector('.cast-member[data-nhan-vat="tung"][data-hang="truoc"]')).not.toBeNull();
+  });
+});

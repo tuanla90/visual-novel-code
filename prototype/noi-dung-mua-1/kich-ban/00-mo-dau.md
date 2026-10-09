@@ -91,8 +91,7 @@
 - [KHÁM PHÁ kp-lam-quen]
   - nv:duy · x 30% · y 100% · rộng 15% → md-10-gap-duy · dấu: ! · nhãn: Anh áo khoác đen
   - nv:ha-vy · x 80% · y 100% · rộng 14% → md-10-gap-ha-vy · dấu: ! · nhãn: Bạn đeo kính
-- [LỜI md-10-trung-thu.4]
-- [ĐI TỚI md-10-chia-banh]
+- [ĐI TỚI md-10-vy-soi]
 
 ### md-10-gap-duy — Trung thu: chào anh áo khoác đen dán băng dính lên chìa khóa {cảnh: san-ktx-trung-thu}
 
@@ -103,7 +102,32 @@
 - [ẢNH cg-so-ha-vy-gio]
 - [LỜI md-10-gap-ha-vy.1]
 
-### md-10-chia-banh — Trung thu 19:15: chia bánh còn ba cái; quan sát tay từng người; dòng thời gian tập dượt {cảnh: san-ktx-trung-thu-ba-banh · cảnh cắt}
+### md-10-vy-soi — Trung thu: Tùng đố, Hà Vy soi Tùng làm mẫu {cảnh: san-ktx-trung-thu}
+
+<!-- User 08/10 tối: Trung thu là màn dạy soi kính lúp. Lần 1 Hà Vy tự soi Tùng cho người chơi xem: kính tự tới từng điểm theo thứ tự viết, từ chi tiết kém quan trọng tới quan trọng (áo → băng mũi → bản đồ). Lần 2 người chơi tự soi quanh bàn bánh (md-10-chia-banh) và tự tìm ra bé Na, từ đó đủ tự tin ký phiếu. -->
+- [VÀO tung]
+- [LỜI md-10-vy-soi.1]
+- [KHÁM PHÁ kp-soi-tung · quan sát tung/happy · Hà Vy soi · tự động]
+  - vung:ao · x 50% · y 44% · rộng 22% → md-10-soi-ao · nhãn: Cái áo
+  - vung:mui · x 57% · y 21% · rộng 14% → md-10-soi-mui · nhãn: Miếng băng trên mũi
+  - vung:ban-do · x 82% · y 56% · rộng 24% → md-10-soi-ban-do · nhãn: Tờ bản đồ trên tay
+- [LỜI md-10-vy-soi.2]
+- [LỜI md-10-trung-thu.4]
+- [ĐI TỚI md-10-chia-banh]
+
+### md-10-soi-ao — Hà Vy soi Tùng: cái áo {cảnh: san-ktx-trung-thu}
+
+- [LỜI md-10-soi-ao.1]
+
+### md-10-soi-mui — Hà Vy soi Tùng: miếng băng trên mũi {cảnh: san-ktx-trung-thu}
+
+- [LỜI md-10-soi-mui.1]
+
+### md-10-soi-ban-do — Hà Vy soi Tùng: tờ bản đồ trên tay {cảnh: san-ktx-trung-thu}
+
+- [LỜI md-10-soi-ban-do.1]
+
+### md-10-chia-banh — Trung thu 19:15: chia bánh còn ba cái; người chơi tự soi quanh bàn {cảnh: san-ktx-trung-thu-ba-banh · cảnh cắt}
 
 <!-- Đổi cảnh thì dàn xóa hết: cả nhóm đứng lại quanh bàn (người chơi cũng có mặt, xem chú thích ở md-10-trung-thu). -->
 - [VÀO player]
@@ -112,37 +136,61 @@
 - [LỜI md-10-chia-banh.1]
 - [BIẾT ha-vy câu nói]
 - [LỜI md-10-chia-banh.2]
-<!-- Quan sát (đề bài B19 mục 3, Cảnh 3; user 08/10: cảnh đông người dùng chân dung đã duyệt đứng trên dàn, không dùng ảnh nhóm): bấm từng người, mỗi người một câu ngắn về tay họ, khớp ảnh chân dung (Minh Anh dáng neo: chống hông, đeo đồng hồ; Duy: cầm xấp bìa, chùm chìa ở thắt lưng; Hà Vy dáng neo: ôm cuốn sổ; Tùng happy: giơ ngón cái, tay kia cầm bản đồ; bé Na: giấu hai tay sau lưng, đầu ngón tay dính vụn bánh). Nền bg-mvp-san-ktx-trung-thu-ba-banh. -->
-- [KHÁM PHÁ kp-trung-thu-tay · dàn]
-  - nv:minh-anh → md-10-tay-minh-anh · nhãn: Chị Minh Anh · dấu: !
-  - nv:duy → md-10-tay-duy · nhãn: Anh Duy · dấu: !
-  - nv:ha-vy → md-10-tay-ha-vy · nhãn: Hà Vy · dấu: !
-  - nv:tung/happy → md-10-tay-tung · nhãn: Tùng · dấu: !
-  - nv:be-na → md-10-tay-be-na · nhãn: Bé gái · dấu: !
-- [LỜI md-10-chia-banh.3]
+<!-- Lần soi thứ hai (user 08/10 tối: "giống bản cũ"): cảnh khám phá trên nền ba bánh có vệt vụn và đôi dép (ảnh sửa 08/10, art/nguon/topview-2026-10-08). Bốn đầu mối "!", đầu lân là chi tiết ẩn để loại đội múa lân. -->
+- [KHÁM PHÁ kp-banh-trung-thu]
+  - vung:dia-banh · x 11% · y 69% · rộng 14% → md-10-dia-banh · dấu: ! · nhãn: Đĩa bánh trên bàn
+  - vung:vun-banh · x 33% · y 85% · rộng 12% → md-10-vun-banh · dấu: ! · nhãn: Nền sân dưới chân bàn
+  - vung:den-ca-chep · x 42% · y 66% · rộng 14% → md-10-den-ca-chep · dấu: ! · nhãn: Đèn cá chép đỏ
+  - vung:doi-dep · x 54% · y 76% · rộng 7% → md-10-doi-dep · dấu: ! · nhãn: Đôi dép cạnh đèn
+  - vung:dau-lan · x 42% · y 44% · rộng 10% → md-10-dau-lan · nhãn: Đầu lân với cái trống
+- [ĐI TỚI md-10-hoi-banh]
+
+### md-10-dia-banh — Soi: đĩa còn ba bánh {cảnh: san-ktx-trung-thu-ba-banh}
+
+- [LỜI md-10-dia-banh.1]
+
+### md-10-vun-banh — Soi: vệt vụn từ chân bàn ra đèn cá chép {cảnh: san-ktx-trung-thu-ba-banh}
+
+- [LỜI md-10-vun-banh.1]
+
+### md-10-den-ca-chep — Soi: đèn cá chép giữa sân {cảnh: san-ktx-trung-thu-ba-banh}
+
+- [LỜI md-10-den-ca-chep.1]
+
+### md-10-doi-dep — Soi: đôi dép trẻ con cạnh đèn {cảnh: san-ktx-trung-thu-ba-banh}
+
+- [LỜI md-10-doi-dep.1]
+
+### md-10-dau-lan — Chi tiết ẩn: đội múa lân ngồi quanh trống {cảnh: san-ktx-trung-thu-ba-banh}
+
+- [LỜI md-10-dau-lan.1]
+
+### md-10-hoi-banh — Đoán ai lấy bánh từ những gì vừa soi {cảnh: san-ktx-trung-thu-ba-banh}
+
+- [RẼ NHÁNH r-ai-lay-banh] ha-vy: "Theo cậu, ai lấy chiếc bánh?"
+  - {id: tre-con} Một đứa trẻ. → hậu quả: đi tới md-10-doan-dung
+  - {id: tung} Tùng. → hậu quả: đi tới md-10-doan-tung
+  - {id: mua-lan} Một người trong đội múa lân. → hậu quả: đi tới md-10-doan-mua-lan
+
+### md-10-doan-tung — Đoán Tùng: chưa có căn cứ {cảnh: san-ktx-trung-thu-ba-banh}
+
+- [LỜI md-10-doan-tung.1]
+- [ĐI TỚI md-10-hoi-banh]
+
+### md-10-doan-mua-lan — Đoán đội múa lân: vệt vụn không chạy về phía ấy {cảnh: san-ktx-trung-thu-ba-banh}
+
+- [LỜI md-10-doan-mua-lan.1]
+- [ĐI TỚI md-10-hoi-banh]
+
+### md-10-doan-dung — Người chơi tìm ra bé Na cạnh đèn cá chép; dòng thời gian tập dượt; ký phiếu {cảnh: san-ktx-trung-thu-ba-banh}
+
+- [LỜI md-10-doan-dung.1]
+- [ẢNH cg-be-na-den-ca-chep]
+- [VÀO be-na]
+- [LỜI md-10-doan-dung.2]
 - [DÒNG THỜI GIAN dtg-banh]
-- [LỜI md-10-chia-banh.4]
+- [LỜI md-10-doan-dung.3]
 - [ĐI CÙNG md-11-phong-clb] Thứ Hai tuần sau, lên phòng CLB
-
-### md-10-tay-minh-anh — Quan sát: tay chị Minh Anh {cảnh: san-ktx-trung-thu-ba-banh}
-
-- [LỜI md-10-tay-minh-anh.1]
-
-### md-10-tay-duy — Quan sát: tay anh Duy {cảnh: san-ktx-trung-thu-ba-banh}
-
-- [LỜI md-10-tay-duy.1]
-
-### md-10-tay-ha-vy — Quan sát: tay Hà Vy {cảnh: san-ktx-trung-thu-ba-banh}
-
-- [LỜI md-10-tay-ha-vy.1]
-
-### md-10-tay-tung — Quan sát: tay Tùng {cảnh: san-ktx-trung-thu-ba-banh}
-
-- [LỜI md-10-tay-tung.1]
-
-### md-10-tay-be-na — Quan sát: bé Na giấu tay sau lưng, ngón tay còn vụn bánh {cảnh: san-ktx-trung-thu-ba-banh}
-
-- [LỜI md-10-tay-be-na.1]
 
 ### md-11-phong-clb — Cảnh 4: thứ Hai 23/09, cô Lan mang thư kiến nghị và phiếu gửi tới phòng CLB {cảnh: phong-clb}
 

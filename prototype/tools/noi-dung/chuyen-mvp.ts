@@ -116,7 +116,13 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
     case 'diem-luu-vu':
       return { type: 'diem-luu-vu', vu: it.vu };
     case 'ghep-mau':
-      return { type: 'ghep-mau', nguoi: it.nguoi, the: it.the, giayNho: it.giayNho };
+      return {
+        type: 'ghep-mau',
+        nguoi: it.nguoi,
+        the: it.the,
+        giayNho: it.giayNho,
+        ...(it.dong ? { lamMau: it.loi.map((l) => ({ speaker: l.speaker, ...(l.expression !== null ? { expression: l.expression } : {}), text: l.text })) } : {}),
+      };
     case 'effect':
       return { type: 'effect', effectId: it.id };
     case 'line-pick':
@@ -199,6 +205,7 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
         ...(it.gio ? { gio: it.gio } : {}),
         ...(it.dang ? { dang: it.dang } : {}),
         ...(it.haVySoi ? { haVySoi: true } : {}),
+        ...(it.tuDong ? { tuDong: true } : {}),
         diem: it.diem.map((d) => ({ sprite: d.sprite, x: d.x, y: d.y, rong: d.rong, chuoi: d.chuoi, sau: d.sau, nhan: d.nhan, ...(d.dau ? { dau: d.dau } : {}), ...(d.co.length > 0 ? { co: d.co } : {}) })),
       };
   }

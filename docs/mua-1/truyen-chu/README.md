@@ -9,7 +9,7 @@ Người chơi có thể đọc, đưa ra lựa chọn và xem kết quả SQL c
 
 | Vụ | Mã | Tên vụ án | Số chuỗi | Số màn tra | Tệp truyện chữ |
 |---|---|---|---|---|---|
-| 1 | `vu1` | **Vụ 1 — Chữ ký Hoài** | 55 | 3 | [Đọc truyện](vu1.md) |
+| 1 | `vu1` | **Vụ 1 — Chữ ký Hoài** | 63 | 3 | [Đọc truyện](vu1.md) |
 
 ## 🧩 Nhiệm vụ phụ (Rèn luyện kỹ năng)
 

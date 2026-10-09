@@ -12,7 +12,7 @@
 - Chuỗi đầu: md-00-tren-xe
 - Ngày mở đầu: 2024-09-08
 
-## Sảnh tòa B {ngày: 1 · theo truyện · bắt đầu ở: phong-ktx}
+## Hộp kiến nghị {ngày: 1 · theo truyện · bắt đầu ở: phong-ktx}
 - Chuỗi: n1-mo
 
 ## Phòng Đào tạo {ngày: 2 · theo truyện · bắt đầu ở: phong-ktx}
