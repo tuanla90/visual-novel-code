@@ -29,6 +29,7 @@ const NHAN_LOAI: Record<LoaiTheBang, string> = { note: 'Query note',
   vat: 'Vật chứng',
   'tai-lieu': 'Tài liệu',
   hoi: 'Câu hỏi',
+  cau: 'Câu hỏi nối',
 };
 
 const boNgoac = (t: string): string => t.replace(/^\[|\]$/g, '');

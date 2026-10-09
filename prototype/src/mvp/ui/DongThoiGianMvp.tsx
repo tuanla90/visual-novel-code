@@ -12,13 +12,14 @@
  *   - Bản xem lại (`chiXem`): không chồng note; ở buổi họp (`docTungO`) đọc từng ô một.
  * Luật thuần ở `engine/dong-thoi-gian.ts`; máy ghi note đã đặt qua `dat-the-dtg` / `go-the-dtg`.
  */
-import { useEffect, useRef, useState, type CSSProperties, type DragEvent } from 'react';
+import { useEffect, useRef, useState, type CSSProperties, type DragEvent, type KeyboardEvent as ReactKeyEvent } from 'react';
 import type { DongThoiGianMvp as DongThoiGian, KichBanMvp, LoiMvp, ODongThoiGianMvp } from '../../content/mvp/types';
 import { soundEngine } from '../../shared/audio/sound-engine';
 import { CodeText } from '../../shared/ui/CodeText';
 import { loiKeoSai, maTran, oDatSai, oTrongCuaCot, tenTheDongThoiGian, thaDung, theTrongO, type TheDongThoiGianMvp } from '../engine/dong-thoi-gian';
 import { anhTheoTen } from './anh-mvp';
 import './b19.css';
+import { ChuNote, ChuThichMauNote, lopGiayNguon } from './note-ui';
 
 export interface DongThoiGianMvpProps {
   kb: KichBanMvp;
@@ -42,13 +43,18 @@ export interface DongThoiGianMvpProps {
   onTiep?: () => void;
   /** Nhãn nút cuối khi chưa tới lúc "Xong" (mặc định "Tiếp tục"). */
   nhanTiep?: string;
+  /**
+   * Gói B21 (buổi họp chỉ ô, `[ĐỐI CHẤT … · chỉ ô]`): bảng ở chế độ chỉ — đọc ô nào cũng được, bấm một ô (hay tiêu đề cột "?" trống bắt buộc)
+   * là trả lời. Không đầu bảng, không chồng, không nút dưới; `daChon` = các ô đang chỉ dở (`<dtg>:<ô>`).
+   */
+  chiO?: { daChon: readonly string[]; onChi: (o: string) => void; khoa?: boolean };
 }
 
 const KHOA_KEO = 'text/plain';
 /** Độ nghiêng của chồng note (độ), lặp lại; trong ±1.5°. */
 const NGHIENG = [-1.5, 1.1, -0.6, 1.5, -1.1, 0.7];
 
-export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = false, dienThoai, dienTen, tenNguoiNoi, onDat, onGo, onTiep, nhanTiep = 'Tiếp tục' }: DongThoiGianMvpProps) {
+export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = false, dienThoai, dienTen, tenNguoiNoi, onDat, onGo, onTiep, nhanTiep = 'Tiếp tục', chiO }: DongThoiGianMvpProps) {
   const [nhac, setNhac] = useState<LoiMvp[] | null>(null);
   /** Note vừa bật về chồng (rung). */
   const [batVe, setBatVe] = useState<ReadonlySet<string>>(new Set());
@@ -67,6 +73,12 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
   const oCuoi = dtg.o.length - 1;
   const mt = maTran(dtg);
   const ten = (id: string): string => dienTen(tenTheDongThoiGian(kb, dtg, id).nhan);
+  /** Gói B21: chữ note có keyword tô màu; giấy theo nguồn. */
+  const chuNote = (id: string) => {
+    const t = tenTheDongThoiGian(kb, dtg, id);
+    return <ChuNote text={dienTen(t.nhan)} keyword={t.keyword} />;
+  };
+  const giayCua = (id: string): string => lopGiayNguon(tenTheDongThoiGian(kb, dtg, id).nguon);
   const daDung = new Set(Object.values(daDat));
   const chong = the.filter((t) => !daDung.has(t.id));
   const viecO = (o: ODongThoiGianMvp): string => dienTen(o.viec.replace(/\[\?\]/g, '?').trim());
@@ -166,9 +178,12 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
       vuaDat === o.id ? 'is-vua-dat' : '',
       doc && i === sang ? 'is-sang' : '',
       doc && i > sang ? 'is-cho' : '',
+      chiO ? 'is-chi-duoc' : '',
+      chiO?.daChon.includes(`${dtg.id}:${o.id}`) ? 'is-chi' : '',
     ].filter(Boolean).join(' ');
+    const chiVaoO = chiO && !chiO.khoa ? { role: 'button', tabIndex: 0, 'aria-pressed': chiO.daChon.includes(`${dtg.id}:${o.id}`), 'aria-label': `Chỉ ô ${i + 1}: ${[o.gio, viecO(o)].filter(Boolean).join(' · ')}`, onClick: () => chiO.onChi(`${dtg.id}:${o.id}`), onKeyDown: (e: ReactKeyEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); chiO.onChi(`${dtg.id}:${o.id}`); } } } : {};
     return (
-      <div key={o.id} className={lop} data-o={o.id} title={[o.gio, o.noi, viecO(o)].filter(Boolean).join(' · ')} {...nhanDropVao((id) => tha(o.id, id))}>
+      <div key={o.id} className={lop} data-o={o.id} title={[o.gio, o.noi, viecO(o)].filter(Boolean).join(' · ')} {...nhanDropVao((id) => tha(o.id, id))} {...chiVaoO}>
         {o.khoaSan ? (
           <span className="bcl__note bcl__note--xam">{idThe ? ten(idThe) : viecO(o)}</span>
         ) : daXong && idThe ? (
@@ -176,14 +191,14 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
           <span className="bcl__o-viec">{viecO(o)}</span>
           <button
             type="button"
-            className="bcl__note bcl__note--o"
+            className={`bcl__note bcl__note--o ${giayCua(idThe)}`}
             disabled={chiXem || tapDuot}
             aria-label={`Ô ${i + 1}: ${ten(idThe)}${chiXem || tapDuot ? '' : ' — bấm để gỡ ra'}`}
             data-the={idThe}
             {...(chiXem || tapDuot ? {} : keoNote(idThe))}
             onClick={() => bamO(o, true)}
           >
-            <span className="bcl__note-chu">{ten(idThe)}</span>
+            <span className="bcl__note-chu">{chuNote(idThe)}</span>
           </button>
           </>
         ) : (
@@ -245,7 +260,8 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
   const luoi = { '--n-cot': mt.cot.length, '--n-hang': mt.hang.length } as CSSProperties;
 
   return (
-    <section className={`bcl${dienThoai ? ' bcl--cham' : ''}${chiXem ? ' bcl--xem' : ''}${theDangKeo ? ' bcl--dang-keo' : ''}${mt.coTieuDe ? '' : ' bcl--mot-cot'}`} role="region" aria-label={`Bảng chân lý: ${dienTen(dtg.ten)}`}>
+    <section className={`bcl${dienThoai ? ' bcl--cham' : ''}${chiXem ? ' bcl--xem' : ''}${chiO ? ' bcl--chi-o' : ''}${theDangKeo ? ' bcl--dang-keo' : ''}${mt.coTieuDe ? '' : ' bcl--mot-cot'}`} role="region" aria-label={`Bảng chân lý: ${dienTen(dtg.ten)}`}>
+      {chiO ? null : (
       <header className="bcl__dau">
         <span className="bcl__kicker">Bảng chân lý</span>
         <h2 className="bcl__ten">{dienTen(dtg.ten)}</h2>
@@ -255,6 +271,7 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
           </p>
         ) : null}
       </header>
+      )}
       <div className="bcl__than">
         <div className="bcl__khung">
           <div className="bcl__luoi" style={luoi} role="group" aria-label="Bảng chân lý: cột là người, dòng là mốc giờ">
@@ -265,12 +282,13 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
                     <button
                       key={c.id}
                       type="button"
-                      className="bcl__cot bcl__cot--trong"
+                      className={`bcl__cot bcl__cot--trong${chiO ? ' is-chi-duoc' : ''}${chiO?.daChon.includes(`${dtg.id}:?`) ? ' is-chi' : ''}`}
                       data-cot={c.id}
                       aria-label={`${oTrongCuaCot(dtg, c.id)?.khongDien ?? 'phần này'}: chưa biết`}
                       title="Chưa có căn cứ nào cho cột này. Chỗ ấy để trống."
-                      disabled={chiXem}
-                      onClick={() => bamTrong(c.id)}
+                      disabled={(chiXem && !chiO) || !!chiO?.khoa}
+                      aria-pressed={chiO ? chiO.daChon.includes(`${dtg.id}:?`) : undefined}
+                      onClick={() => (chiO ? chiO.onChi(`${dtg.id}:?`) : bamTrong(c.id))}
                       {...nhanDropVao((id) => thaVaoTrong(c.id, id))}
                     >
                       <span className="bcl__cot-ten">{c.id === '?' ? '?' : dienTen(c.nhan)}</span>
@@ -305,7 +323,7 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
                 <li key={t.id}>
                   <button
                     type="button"
-                    className={`bcl__note bcl__note--chong${t.tam ? ' is-tam' : ''}${theChon === t.id ? ' is-chon' : ''}${batVe.has(t.id) ? ' is-bat-ve' : ''}`}
+                    className={`bcl__note bcl__note--chong ${lopGiayNguon(t.nguon)}${t.tam ? ' is-tam' : ''}${theChon === t.id ? ' is-chon' : ''}${batVe.has(t.id) ? ' is-bat-ve' : ''}`}
                     style={{ '--nghieng': `${NGHIENG[k % NGHIENG.length]}deg` } as CSSProperties}
                     data-the={t.id}
                     aria-label={dienTen(t.nhan)}
@@ -313,20 +331,23 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
                     {...keoNote(t.id)}
                     onClick={() => setTheChon((c) => (c === t.id ? null : t.id))}
                   >
-                    <span className="bcl__note-chu">{dienTen(t.nhan)}</span>
+                    <span className="bcl__note-chu"><ChuNote text={dienTen(t.nhan)} keyword={t.keyword} /></span>
                     {t.phu ? <small className="bcl__note-phu">{dienTen(t.phu)}</small> : null}
                   </button>
                 </li>
               ))}
             </ul>
             {chong.length === 0 ? <p className="bcl__het">Đã đặt hết. Bấm một note trong ô để gỡ ra.</p> : null}
+            <ChuThichMauNote className="bcl__chu-thich" />
           </aside>
         ) : null}
       </div>
+      {chiO ? null : (
       <footer className="bcl__chan">
         {khoiNhac ?? <span className="bcl__nhac-trong" />}
         {onTiep ? nutTiep : null}
       </footer>
+      )}
     </section>
   );
 }

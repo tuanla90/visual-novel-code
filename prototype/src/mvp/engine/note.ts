@@ -10,7 +10,7 @@
  * ngà, còn lại vàng); màu chữ keyword theo LOẠI keyword. Tên trường `Nguồn` cũ là chữ tự do ("Lời cô Lan, phòng Công tác sinh
  * viên"): chỉ khi cả giá trị đúng là một trong năm nguồn thì mới là nguồn của note, còn lại vẫn là chữ hiện dưới thẻ.
  */
-import type { KichBanMvp, TheHoSoMvp } from '../../content/mvp/types';
+import type { CauNoiMvp, KichBanMvp, TheHoSoMvp } from '../../content/mvp/types';
 import type { TrangThaiMvp } from './trang-thai';
 
 export type LoaiNote = 'manh-moi' | 'su-that';
@@ -61,16 +61,28 @@ function doTra(kb: KichBanMvp, id: string): boolean {
   return Object.values(kb.thuThach).some((t) => t.vatChung?.id === id);
 }
 
-/** Thông tin gốc của note (chưa tính `[ĐỔI LOẠI]`). Mã lạ (phiếu tra người chơi tự tạo, ghi chú trích) = sự thật / tra. */
-export function thongTinNote(kb: KichBanMvp, id: string): ThongTinNote {
-  const hs: TheHoSoMvp | undefined = kb.hoSo[id];
+/**
+ * Thông tin gốc của một thẻ hồ sơ (chưa tính `[ĐỔI LOẠI]`). `doTra`: thẻ là vật chứng / phiếu do một màn tra lưu. Dùng cả khi chỉ có
+ * thẻ trong tay (hộp xem kỹ, thẻ hồ sơ) mà không có kịch bản.
+ */
+export function thongTinTuThe(hs: Pick<TheHoSoMvp, 'fields'> | undefined, id: string, doTra: boolean): ThongTinNote {
   const f = hs?.fields ?? {};
   const tienTo = id.split('-')[0];
-  const nguonMacDinh: NguonNote = tienTo === 'doc' ? 'tai-lieu' : tienTo === 'ev' ? (doTra(kb, id) ? 'tra' : 'quan-sat') : tienTo === 'clue' || id.startsWith('hoi-dap:') ? 'loi-ke' : 'tra';
+  const nguonMacDinh: NguonNote = tienTo === 'doc' ? 'tai-lieu' : tienTo === 'ev' ? (doTra ? 'tra' : 'quan-sat') : tienTo === 'clue' || id.startsWith('hoi-dap:') ? 'loi-ke' : 'tra';
   const nguon = nguonKhaiCua(f) ?? nguonMacDinh;
   const loaiMacDinh: LoaiNote = nguon === 'tra' || tienTo === 'doc' ? 'su-that' : 'manh-moi';
   const loai = f['Loại'] !== undefined ? (CHU_LOAI_NOTE[chuan(f['Loại'])] ?? loaiMacDinh) : loaiMacDinh;
   return { loai, nguon, keyword: docKeyword(f['Keyword']) };
+}
+
+/** Thông tin gốc của note theo mã. Mã lạ (phiếu tra người chơi tự tạo, ghi chú trích) = sự thật / tra. */
+export function thongTinNote(kb: KichBanMvp, id: string): ThongTinNote {
+  return thongTinTuThe(kb.hoSo[id], id, doTra(kb, id));
+}
+
+/** Các câu hỏi người chơi đã nối ra, theo thứ tự nối (thẻ câu hỏi trên bảng manh mối). */
+export function cauHoiDaNoi(kb: KichBanMvp, s: Pick<TrangThaiMvp, 'cauNoiXong'>): CauNoiMvp[] {
+  return (s.cauNoiXong ?? []).flatMap((id) => (kb.cacCauNoi ?? []).filter((c) => c.id === id));
 }
 
 /** Loại của note trong ván: manh mối có thể đã thành sự thật nhờ `[ĐỔI LOẠI]`. */

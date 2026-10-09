@@ -1,0 +1,76 @@
+/*
+ * NOTE CÓ LOẠI / NGUỒN / KEYWORD (gói B21, docs/mua-1/loi-note-bang-chan-ly.md §2).
+ *   - Màu giấy theo NGUỒN, dùng chung ở bảng chân lý, bảng manh mối, hồ sơ: tra = xanh lơ nhạt, tài liệu = trắng ngà, còn lại = vàng.
+ *   - Keyword trong chữ note tô theo LOẠI keyword: chữ đậm + màu, không nền (đủ tương phản trên giấy sáng).
+ *   - Hình theo LOẠI: manh mối = giấy nhớ góc gấp; sự thật = thẻ cứng ghim tròn (`.note-su-that`).
+ */
+:root {
+  --note-giay-vang: #fbe38e;
+  --note-giay-vang-vien: #e2b93f;
+  --note-giay-tra: #d7eef6;
+  --note-giay-tra-vien: #7dbad0;
+  --note-giay-tai-lieu: #faf6ea;
+  --note-giay-tai-lieu-vien: #cfc4a2;
+  /* Bốn màu keyword: tương phản ≥ 4.5:1 trên cả ba màu giấy. */
+  --nk-nguoi: #a3201a;
+  --nk-thoi-gian: #1a4fa6;
+  --nk-dia-diem: #14683a;
+  --nk-hanh-dong: #82430a;
+}
+
+.note-giay--vang {
+  background-color: var(--note-giay-vang);
+  border-color: var(--note-giay-vang-vien);
+}
+.note-giay--tra {
+  background-color: var(--note-giay-tra);
+  border-color: var(--note-giay-tra-vien);
+}
+.note-giay--tai-lieu {
+  background-color: var(--note-giay-tai-lieu);
+  border-color: var(--note-giay-tai-lieu-vien);
+}
+
+.nk {
+  font-weight: 800;
+}
+.nk--nguoi {
+  color: var(--nk-nguoi);
+}
+.nk--thoi-gian {
+  color: var(--nk-thoi-gian);
+}
+.nk--dia-diem {
+  color: var(--nk-dia-diem);
+}
+.nk--hanh-dong {
+  color: var(--nk-hanh-dong);
+}
+
+/* Dải chú thích ba màu giấy. */
+.note-chu-thich {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: inherit;
+  font-size: 0.66rem;
+  line-height: 1.2;
+  opacity: 0.9;
+}
+.note-chu-thich li {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.note-chu-thich__o {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border: 1.5px solid transparent;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}

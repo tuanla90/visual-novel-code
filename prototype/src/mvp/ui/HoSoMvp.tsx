@@ -39,6 +39,9 @@ export interface HoSoMvpProps {
   /** Đổi màu đầu ghim / gỡ–ghim lại thẻ trên bảng (câu 5 đề xuất gameplay, 01/10). */
   onDoiMau?: (the: string, mau: MauGhimMvp) => void;
   onGhim?: (the: string, ghim: boolean) => void;
+  /** Gói B21: nối hai note thành câu hỏi / mở lại màn tra của câu hỏi đã nối (bảng manh mối). */
+  onNoi?: (a: string, b: string) => void;
+  onMoTra?: (cauId: string) => void;
   hoSo: HoSo;
   soTay: string[];
   tenNguoiChoi: string;
@@ -58,7 +61,7 @@ const SO_O_TOI_THIEU = 12;
 
 const TEN_TAB: Record<TabHoSoMvp, string> = { 'nhan-vat': 'Nhân vật', 'ho-so': 'Bảng điều tra', 'so-tay': 'Sổ cá nhân' };
 
-export function HoSoMvp({ kb, trangThai, onDoiCho, onDoiMau, onGhim, hoSo, soTay, tenNguoiChoi, nganh, daGap, tab, onDoiTab: doiTab, dienTen, onDong: dong }: HoSoMvpProps) {
+export function HoSoMvp({ kb, trangThai, onDoiCho, onDoiMau, onGhim, onNoi, onMoTra, hoSo, soTay, tenNguoiChoi, nganh, daGap, tab, onDoiTab: doiTab, dienTen, onDong: dong }: HoSoMvpProps) {
   // Nhãn MỚI: chụp danh sách thẻ chưa xem lúc mở khung rồi coi như đã xem hết (mở khung là thấy cả bảng) — nhãn vẫn hiện
   // suốt lần mở này, bấm vào thẻ thì tắt nhãn thẻ đó. (Chụp ở `useState` để chế độ dev dựng hai lần không làm mất nhãn.)
   const [chuaXem, setChuaXem] = useState<readonly string[]>(() => useTheChuaXem.getState().chuaXem);
@@ -165,7 +168,7 @@ export function HoSoMvp({ kb, trangThai, onDoiCho, onDoiMau, onGhim, hoSo, soTay
           </div>
         ) : tab === 'ho-so' && trangThai ? (
           <div className="mvp-kho__bang">
-            <BangGhimMvp kb={kb} s={trangThai} dienTen={dienTen} onDoiCho={onDoiCho} onDoiMau={onDoiMau} onGhim={onGhim} chuaXem={chuaXem} onXemThe={xemThe} hoiDap tenNguoi={(ma) => tenNguoiNoi(kb, ma, trangThai)}>
+            <BangGhimMvp kb={kb} s={trangThai} dienTen={dienTen} onDoiCho={onDoiCho} onDoiMau={onDoiMau} onGhim={onGhim} onNoi={onNoi} onMoTra={onMoTra} chuaXem={chuaXem} onXemThe={xemThe} hoiDap tenNguoi={(ma) => tenNguoiNoi(kb, ma, trangThai)}>
               <XemDongThoiGian kb={kb} s={trangThai} dienTen={dienTen} />
             </BangGhimMvp>
           </div>

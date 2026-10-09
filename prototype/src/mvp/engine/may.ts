@@ -61,6 +61,9 @@ import { boCoChamVu, chamVu, rankHienTai, soVaTenVu, vuCoChamVu } from './cham-v
 import { banDungSan, boTheSai, datTuDo, dongThoiGianDung, dongThoiGianXong, goThe, thaDung } from './dong-thoi-gian';
 import { MAU_GHIM, type BoiCanhChuoi, type CachChoiMvp, type HetNgayMvp, type KhamPhaMvp, type MauGhimMvp, type MucNhapVaiMvp, type MucSqlMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp, type TiepTucTuyenMvp } from './trang-thai';
 import { laTheHoiDap } from './bang-dieu-tra';
+import { cauHoiDaNoi } from './note';
+
+export { cauHoiDaNoi };
 import { apBiet } from './biet-ve';
 import { cachChoiCua, dongBong, dongChuaGach, ghiTuDong, goiY, hoi, keTiep, khoiThayThe, khungHoiDap, laLoiDaThay, locHauQuaDaThay, moBuoiHoi, napLaiLuot, roiDi, tienDoCua, toHoiDap, type KhungHoiDapMvp } from './hoi-dap';
 import { datMuc, laMucNhapVai, laMucSql, quenCachTamThoi } from './muc-choi';
@@ -872,11 +875,6 @@ function chotChang(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp | null {
 export function timCauNoi(kb: KichBanMvp, s: TrangThaiMvp, a: string, b: string): CauNoiMvp | null {
   if (a === b || !coMa(s, a) || !coMa(s, b)) return null;
   return (kb.cacCauNoi ?? []).find((c) => (s.cauNoiMo ?? []).includes(c.id) && ((c.the[0] === a && c.the[1] === b) || (c.the[0] === b && c.the[1] === a))) ?? null;
-}
-
-/** Các câu hỏi người chơi đã nối ra, theo thứ tự nối (thẻ câu hỏi trên bảng manh mối). */
-export function cauHoiDaNoi(kb: KichBanMvp, s: TrangThaiMvp): CauNoiMvp[] {
-  return (s.cauNoiXong ?? []).flatMap((id) => (kb.cacCauNoi ?? []).filter((c) => c.id === id));
 }
 
 /** Mở đích của một câu hỏi vừa nối: `→ tra` mở màn tra (đóng thì về chỗ đang đứng); `→ hiện trường` thêm ghim hoặc chạy một chuỗi. */

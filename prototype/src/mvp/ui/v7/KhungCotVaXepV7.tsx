@@ -11,6 +11,8 @@ export interface KhungCotVaXepV7Props {
   onDoiXep: (updater: (prev: { cot: string; giam: boolean } | null) => { cot: string; giam: boolean } | null) => void;
   /** Gói B17: đổi nhãn trên màn theo mức SQL (`engine/nhan-man-tra.ts`); thiếu = giữ chữ tiếng Việt. */
   nhan?: (chu: string) => string;
+  /** Gói B21: chữ tiếng Việt trên khối cột (câu SQL vẫn là tên thật); thiếu = tên cột. */
+  nhanCot?: (ten: string) => string;
 }
 
 /**
@@ -30,6 +32,7 @@ export function KhungCotVaXepV7({
   cot,
   onDoiXep,
   nhan = (chu) => chu,
+  nhanCot = (t) => t,
 }: KhungCotVaXepV7Props) {
   return (
     <div className="v7-cot v7-cot--phu">
@@ -60,7 +63,7 @@ export function KhungCotVaXepV7({
                   className={`v7-o v7-o--lay${bat ? ' is-bat' : ''}`}
                   disabled={khoa}
                   aria-pressed={bat}
-                  aria-label={`Cột ${c.ten}: ${bat ? 'đang lấy — bấm để bỏ' : 'chưa lấy — bấm để lấy'}`}
+                  aria-label={`Cột ${nhanCot(c.ten)}: ${bat ? 'đang lấy — bấm để bỏ' : 'chưa lấy — bấm để lấy'}`}
                   onClick={() => onDoiCot(c.ten)}
                 >
                   <span className="v7-o--lay__icon" aria-hidden="true">
@@ -75,7 +78,7 @@ export function KhungCotVaXepV7({
                       </svg>
                     )}
                   </span>
-                  <span className="v7-o--lay__ten">{c.ten}</span>
+                  <span className="v7-o--lay__ten" title={nhanCot(c.ten) !== c.ten ? c.ten : undefined}>{nhanCot(c.ten)}</span>
                 </button>
               );
             })}
@@ -93,7 +96,7 @@ export function KhungCotVaXepV7({
             type="button"
             className={`v7-o v7-o--cot${cauXep ? '' : ' is-trong'}`}
             disabled={khoa}
-            aria-label={`Xếp theo: ${cauXep ? cauXep.cot : 'chưa xếp'} — bấm để đổi`}
+            aria-label={`Xếp theo: ${cauXep ? nhanCot(cauXep.cot) : 'chưa xếp'} — bấm để đổi`}
             onClick={() =>
               onDoiXep((prev) => {
                 const k = prev ? cot.indexOf(prev.cot) + 1 : 0;
@@ -102,7 +105,7 @@ export function KhungCotVaXepV7({
               })
             }
           >
-            {cauXep ? cauXep.cot : 'chưa xếp'}
+            {cauXep ? nhanCot(cauXep.cot) : 'chưa xếp'}
           </button>
           {cauXep ? (
             <button

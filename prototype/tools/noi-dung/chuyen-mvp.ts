@@ -28,6 +28,8 @@ export interface DuLieuMvp {
   duLieu: { bang: { ten: string; nhan?: string; nhanCot?: Record<string, string>; cot: { ten: string; kieu: string }[]; dong: (string | number | null)[][] }[]; bangAo: { ten: string; sql: string }[] } | null;
   /** Gói B19: dòng thời gian; chỉ có khi bộ có dong-thoi-gian.md (bộ khác sinh ra y như trước). */
   dongThoiGian?: Record<string, Obj>;
+  /** Gói B21: các cặp [NỐI] của cả bộ; chỉ có khi bộ có [CÁC CÂU NỐI]. */
+  cacCauNoi?: Obj[];
 }
 
 const loi = (l: RawLine): Obj => (l.expression === null ? { speaker: l.speaker, text: l.text } : { speaker: l.speaker, expression: l.expression, text: l.text });

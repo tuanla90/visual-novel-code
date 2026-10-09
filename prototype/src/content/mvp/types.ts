@@ -770,7 +770,7 @@ export interface BangDuLieuMvp {
   /** Gói B21 `{bảng · nhãn: Sinh viên}`: chữ tiếng Việt hiện trên khối bảng ở màn tra (câu SQL vẫn là tên thật). */
   nhan?: string;
   /** Gói B21 `- Nhãn: ma_sv=Mã sinh viên, …`: chữ tiếng Việt hiện trên khối cột theo tên cột. */
-  nhanCot?: Record<string, string>;
+  nhanCot?: Record<string, string | undefined>;
   ten: string;
   cot: { ten: string; kieu: 'TEXT' | 'INTEGER' }[];
   dong: (string | number | null)[][];
