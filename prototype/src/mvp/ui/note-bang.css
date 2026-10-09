@@ -29,16 +29,126 @@
   color: var(--vn-paper, #f3ead7);
 }
 
-/* ---------- Bảng chân lý ở chế độ chỉ ô (buổi họp): không đầu bảng, không chồng, ô bấm được; KHÔNG sáng ô đích. ---------- */
+/* ---------- Đối chất CHỈ Ô (buổi họp): lời người hỏi ở TRÊN, bảng chân lý ở dưới, ô bấm được; KHÔNG sáng ô đích. ----------
+   Lớp phủ trọn sân khấu như .bcl (vùng nội dung của sân khấu cao theo nội dung nên không dựa vào 100%). .stage__content có
+   pointer-events: none (để không chắn sân khấu) nên lớp phủ phải TỰ bật pointer-events: auto, không thì mọi ô không bấm được. */
+.stage .stage__content:has(> .doi-chat--chi-o) {
+  position: static;
+}
+.stage__scene-label:has(~ .stage__content > .doi-chat--chi-o),
+.stage:has(.doi-chat--chi-o) .stage__scene-label {
+  display: none;
+}
+.doi-chat.doi-chat--chi-o {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+  /* Sân khấu đã nằm dưới thanh trạng thái; cạnh trái chừa chỗ cho lề sổ vạch. */
+  padding: 4px 8px 6px 64px;
+  pointer-events: auto;
+}
+.doi-chat--chi-o .doi-chat__hop {
+  order: 1;
+  flex: 0 0 auto;
+  height: auto;
+  width: 100%;
+}
+.doi-chat--chi-o .doi-chat__bang {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+}
+/* Các luật điện thoại của .dialog--glass dùng !important (cao, đệm lớn); lượt này cần hộp thấp để nhường chỗ cho bảng. */
+.stage .doi-chat--chi-o .dialog.dialog--glass {
+  display: block !important;
+  padding: 4px 12px 4px !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  height: auto !important;
+  border-radius: 10px !important;
+}
+.stage .doi-chat--chi-o .dialog__speaker {
+  position: static !important;
+  display: inline-flex;
+  margin-bottom: 2px !important;
+  flex: none;
+  min-height: 0 !important;
+  padding: 0 10px !important;
+}
+.stage .doi-chat--chi-o .dialog--glass .dialog__text {
+  flex: 1 1 200px;
+  margin: 0 !important;
+  min-height: 0 !important;
+  font-size: clamp(0.72rem, 2.1vw, 0.9rem) !important;
+  line-height: 1.25 !important;
+}
+/* Dòng hướng dẫn chỉ hiện khi màn đủ cao; màn thấp (điện thoại ngang) nhường chỗ cho bảng. */
+.doi-chat--chi-o .doi-chat__thanh {
+  display: none;
+  flex: 1 0 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 0;
+}
+@media (min-height: 560px) {
+  .doi-chat--chi-o .doi-chat__thanh {
+    display: flex;
+  }
+}
+.doi-chat__chi-o-huong-dan {
+  flex: 1;
+  color: inherit;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  opacity: 0.85;
+}
 .bcl.bcl--chi-o {
   position: relative;
   inset: auto;
   z-index: auto;
   grid-template-rows: minmax(0, 1fr);
-  height: 100%;
+  flex: 1 1 0;
+  height: auto;
   min-height: 0;
-  padding: 2px clamp(8px, 2vw, 24px) 0;
-  background: none;
+  margin: 0;
+  padding: 4px 6px;
+  border-radius: 8px;
+  background: rgba(23, 34, 41, 0.96);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  pointer-events: auto;
+}
+.bcl--chi-o .bcl__than,
+.bcl--chi-o .bcl__khung {
+  min-height: 0;
+  height: 100%;
+}
+.bcl--chi-o .bcl__luoi {
+  --bcl-gio: clamp(44px, 9vw, 70px);
+  min-height: 0;
+  max-height: none;
+  gap: 3px 4px;
+}
+.bcl--chi-o .bcl__cot {
+  min-height: 22px;
+  overflow: hidden;
+  font-size: clamp(0.7rem, 2.2vw, 0.95rem);
+}
+.bcl--chi-o .bcl__cot-ten,
+.bcl--chi-o .bcl__cot-nhan {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .bcl--chi-o .bcl__o > * {
   pointer-events: none;
@@ -46,32 +156,23 @@
 .bcl__o.is-chi-duoc,
 .bcl__cot.is-chi-duoc {
   cursor: pointer;
+  pointer-events: auto;
 }
 .bcl__o.is-chi-duoc:hover,
 .bcl__cot.is-chi-duoc:hover {
   outline: 2px dashed var(--bcl-vang, #d9b86a);
-  outline-offset: 2px;
+  outline-offset: 1px;
 }
 .bcl__o.is-chi,
 .bcl__cot.is-chi {
   outline: 3px solid var(--bcl-vang, #d9b86a);
-  outline-offset: 2px;
+  outline-offset: 1px;
   background: rgba(217, 184, 106, 0.2);
 }
-.doi-chat--chi-o {
-  justify-content: flex-end;
-}
-.doi-chat__bang {
-  flex: 1 1 auto;
-  min-height: 0;
-  width: 100%;
-  overflow: hidden;
-}
-.doi-chat__chi-o-huong-dan {
-  flex: 1;
-  color: inherit;
-  font-size: 0.85rem;
-  opacity: 0.85;
+@media (max-width: 520px) {
+  .doi-chat.doi-chat--chi-o {
+    padding-left: 50px;
+  }
 }
 
 /* ---------- Bảng manh mối: màu giấy theo nguồn, hình theo loại, thẻ đã lên bảng chân lý ---------- */

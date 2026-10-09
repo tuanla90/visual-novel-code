@@ -36,6 +36,24 @@ Trong thư mục `prototype/`:
   ```
   Xuất 11 tệp sách truyện chữ phân đoạn tương tác vào thư mục `docs/mua-1/truyen-chu/`.
 
+## Cú pháp gói B21 (lõi note + bảng manh mối + bảng chân lý)
+
+Thử từng lệnh ở bộ thử `noi-dung-thu-b21/` (`?bo=thu-b21` ở máy dev). Mục ngày cũ (`{ngày: n · theo truyện}`) vẫn chạy.
+
+- **Chặng** (`lich.md`): `## Chặng 1 · Hoài nào? {chặng: 1 · bắt đầu ở: phong-clb · ngày truyện: 2024-09-23 · giờ: 16:30}` + `- Chuỗi:`,
+  `- Chốt khi: có <mã>, <mã>` (VÀ; mã là thẻ hồ sơ, cờ hay mã câu nối), `- Khi chốt: <chuỗi>`, `- Có mặt: <nhân vật> ở <ghim>, …`.
+  Không có nút "Hết ngày". Lệnh `- [HẾT CHẶNG]` sang chặng kế (chặng cuối: sang buổi họp). Chặng phải có lối ra (Chốt khi hoặc [HẾT CHẶNG]).
+- **Note** (`ho-so/`): `- Loại: manh mối|sự thật`, `- Nguồn: tài liệu|quan sát|suy luận|lời kể|tra`, `- Keyword: người:Hoài · thời gian:6:44 · địa điểm:… · hành động:…`
+  (keyword nên có trong `Trên bảng`). Thiếu thì suy: `clue-` manh mối / lời kể, `doc-` sự thật / tài liệu, vật chứng của màn tra sự thật / tra.
+  `Nguồn` chỉ tính là nguồn note khi đúng một trong năm giá trị; còn lại vẫn là chữ nguồn tự do như cũ. `- [ĐỔI LOẠI <thẻ> → sự thật]` đổi manh mối thành
+  sự thật. Bộ có khai `Loại` / [ĐỔI LOẠI] thì chồng "Sự thật chờ đặt" chỉ nhận sự thật.
+- **Nối note**: khối `- [CÁC CÂU NỐI]` … `- [HẾT CÁC CÂU NỐI]`, mỗi dòng `[NỐI <a> + <b> → câu hỏi: "<chữ>"[ · mã: <mã>] · → tra <thẻ thử thách>]` hay
+  `· → hiện trường ghim:<mã ghim>` / `· → hiện trường <chuỗi>`. Mã mặc định `cau-<a>-<b>`. Nối sai cặp: sợi chỉ rơi, không phạt.
+- **Lời đổi theo thẻ**: `- [NẾU có <mã thẻ hồ sơ hay mã câu nối>] → đi tới <chuỗi>`.
+- **Buổi họp chỉ ô**: `- [ĐỐI CHẤT <mã> · chỉ ô · tính vạch[ · câu n/m]] <ai>: "…"` với dòng con `  - {<dtg>:<ô>} [ĐÚNG|SAI] → phản hồi: …`
+  (nhiều ô nối bằng ` + `; ô trống bắt buộc `{<dtg>:?}`), `[KHÁC]`, `[SAI LẦN ĐẦU CẢ BUỔI]`. Lượt mẫu: `· chỉ ô · mẫu` (chạy lời, không tính vạch).
+- **Nhãn khối** (`du-lieu.md`): `## sinh_vien {bảng · nhãn: Sinh viên}` + `- Nhãn: ma_sv=Mã sinh viên, ten=Tên, …`. Câu SQL giữ tên ASCII.
+
 ## Cú pháp mới của Mùa 1 (Gói A5)
 
 1. **Hạn chót và việc chốt** trong `lich.md`:
