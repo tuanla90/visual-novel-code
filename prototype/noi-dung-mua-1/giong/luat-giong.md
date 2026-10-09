@@ -10,17 +10,17 @@ Phần chữ cho người đọc (tính cách, giọng, ví dụ) nằm ở docs
 Tệp lời mới phải thêm vào đây, thiếu là lỗi. -->
 
 - 00-mo-dau · 08/09–23/09/2024
-- 01-ngay-1 · 24/09
-- 02-ngay-2 · 25/09
+- 01-ngay-1 · hoi-dap/dong-hanh.json (tools/noi-dung/hoi-dap-loi.ts còn gọi tệp lời giả của dong-hanh.json là "01-ngay-1")
+- 01-chang-1 · 23/09–24/09
+- 02-chang-2 · 25/09
 - tt-c-sinh-vien
-- 03-ngay-3 · 26/09
-- 04-ngay-4 · 27/09
+- tt-c-lop
+- 03-chang-3 · 27/09–28/09
 - tt-c-ra-vao
-- 05-ngay-5 · 28/09
-- 06-hop-va-ket · 30/09
-- tt-c-sua-or-quan
+- 04-hop-va-ket · 30/09
+- tt-c-sua-or-khanh
 
-<!-- Gói B19 (08/10/2026): bộ mùa 1 chỉ còn Vụ 1 bản 6; tệp lời Vụ 2–5 và việc phụ đã gỡ (git còn giữ). -->
+<!-- Gói B19 (08/10/2026): bộ mùa 1 chỉ còn Vụ 1; tệp lời Vụ 2–5 và việc phụ đã gỡ (git còn giữ). -->
 
 ## Xưng hô
 
@@ -81,18 +81,22 @@ Trong lời của những người nói ấy, <tên> phải đứng sau <cách g
 ## Câu khóa
 
 <!-- `- "<câu nguyên văn>" · ở: <tệp> · vì: …` — câu gài / câu chủ đề, phải còn NGUYÊN VĂN trong tệp ấy. Mất là LỖI.
-AI gọt lời hay xóa mất những câu này (duyệt v2 Vụ 1, 03/10). Gói B19 (08/10): câu khóa theo bản thoại 6. -->
+AI gọt lời hay xóa mất những câu này (duyệt v2 Vụ 1, 03/10). Gói B19 (08/10): câu khóa theo bản thoại 6. Gói B22 (10/10): đổi theo bản 7. -->
 
-- "Chữ ký này chỉ là của người nộp thôi." · ở: 03-ngay-3 · vì: thông điệp của Vụ 1: chữ ký chỉ cho biết ai nộp, không cho biết ai viết
-- "Cậu nhìn, nhưng cậu không quan sát." · ở: 00-mo-dau · vì: câu Sherlock của Hà Vy mở cách chơi quan sát
-- "Muốn còn một thì phải bảo máy thêm hai điều cùng lúc, chứ không phải điều này hoặc điều kia." · ở: tt-c-sinh-vien · vì: gợi ý chính của Duy ở màn tra 1 (bản 6)
-- "Ra quán trà đá mà gọi trà nóng thì bà nhớ lâu." · ở: 06-hop-va-ket · vì: gài "cậu trà nóng", bí mật của mùa
+- "Bỏ thư góp ý thì ký vào phiếu gửi. Ai nộp người ấy ký." · ở: 00-mo-dau · vì: thông điệp của Vụ 1: chữ ký chỉ cho biết ai nộp, không cho biết ai viết (bản 7: bác Thịnh ở nhập học, thay cô Lan)
+- "Cậu nhìn, nhưng cậu chưa quan sát." · ở: 00-mo-dau · vì: câu Sherlock của Hà Vy mở cách chơi quan sát
+- "Muốn còn một thì phải bảo máy thêm hai điều cùng lúc, chứ không phải điều này hoặc điều kia." · ở: tt-c-sinh-vien · vì: gợi ý chính của Duy ở màn tra 1 (bản 6, giữ ở bản 7)
+- "Ra quán trà đá mà gọi trà nóng thì bà nhớ lâu." · ở: 04-hop-va-ket · vì: gài "cậu trà nóng", bí mật của mùa
 
 ## Tên đã bỏ
 
 <!-- `- <cụm> · vì: …` — nhân vật đã cắt; xuất hiện trong lời hiện cho người chơi là LỖI. -->
 
 - thầy Khải · vì: bỏ 03/10, việc của thầy chuyển cho cô Hạnh và bác Thịnh
+- cô Lan · vì: bản 7 (10/10) bỏ cô Lan khỏi Vụ 1, bác Thịnh nói giờ thu hộp
+- cô Hạnh · vì: bản 7 (10/10) bỏ cô Hạnh khỏi Vụ 1, chủ nhiệm CLB có sẵn bảng sinh viên
+- Ban Kiểm tra · vì: bản 7 (10/10) bỏ Quân, Khánh hỏi ở buổi họp
+- anh Quân · vì: bản 7 (10/10) bỏ Quân khỏi Vụ 1
 - chị Linh · vì: bỏ 02/10, cuốn sổ là sổ của CLB
 - Đạt · vì: bỏ 30/09
 - Hiếu · vì: bản 6 (08/10) bỏ Hiếu khỏi Vụ 1

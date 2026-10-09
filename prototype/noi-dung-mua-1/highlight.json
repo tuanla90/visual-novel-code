@@ -3,13 +3,17 @@
     "the": {
       "ev-phieu-gui-hoai": ["phiếu gửi"],
       "doc-thu-kien-nghi": ["thư kiến nghị"],
-      "clue-loi-bac-thinh": ["mở sảnh"],
+      "ev-nam-hoai": ["tên Hoài"],
+      "clue-loi-thinh-7h": ["mở sảnh"],
+      "clue-loi-thinh-9h": ["thu hộp"],
       "ev-the-lich-bc24": ["thẻ lịch", "khe hộp"],
-      "ev-mot-hoai": ["SV240317"],
-      "clue-loi-co-lan": ["người nộp"],
-      "doc-so-thu-hop": ["sổ thu hộp"],
+      "clue-bc24": ["BC-24"],
+      "ev-lop-bc24a": ["BC24A"],
+      "ev-hoai-bc24a": ["Lê Thu Hoài"],
       "clue-loi-chu-cuong": ["phong bì nâu", "balo đen"],
-      "ev-ra-cong-644": ["ra cổng"]
+      "ev-ra-cong-644": ["ra cổng"],
+      "clue-dia-ba-banh": ["còn ba"],
+      "clue-be-cam-banh": ["đèn cá chép"]
     },
     "relations": ["đưa phong bì", "bỏ thư", "thu hộp", "quẹt thẻ", "người nộp", "nộp hộ", "căn cứ", "bằng chứng"]
   }
