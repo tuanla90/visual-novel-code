@@ -26,7 +26,7 @@ import { BacklogModal } from '../../shared/vn/BacklogModal';
 import { useVnStore } from '../../shared/vn/vn-store';
 import { ObjectionEffect } from '../../story/ui/ObjectionEffect';
 import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
-import { canGioiThieu, canhLuiThuThach, dienTen as dienTenMay, dieuHuongTuDo, khungNhin, loiTrinhSai, phuMoDuoc, tenNguoiNoi, tinhVachHienTai, vuChoiLai, xuLy, type KhungNhinMvp } from '../engine/may';
+import { canGioiThieu, canhLuiThuThach, coMatChang, dienTen as dienTenMay, dieuHuongTuDo, khungNhin, loiTrinhSai, phuMoDuoc, tenNguoiNoi, tinhVachHienTai, vuChoiLai, xuLy, type KhungNhinMvp } from '../engine/may';
 import { theCuaDongThoiGian } from '../engine/dong-thoi-gian';
 import { DongThoiGianMvp } from './DongThoiGianMvp';
 import { LeSoVachMvp } from './LeSoVachMvp';
@@ -603,7 +603,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           />
         );
       case 'explore':
-        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} thu={thuHomNay(kb, s)} gio={kn.nut.gio} dang={kn.nut.dang} haVySoi={kn.nut.haVySoi} tuDong={kn.nut.tuDong} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} roi={kn.roi ?? null} onRoi={() => hanhDong({ type: 'roi-canh' })} hetNgay={kn.hetNgay ?? null} onHetNgay={() => hanhDong({ type: 'het-ngay' })} {...(mucNhapVai ? { mucNhapVai } : {})} />;
+        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} thu={thuHomNay(kb, s)} gio={kn.nut.gio} coMat={coMatChang(kb, s)} dang={kn.nut.dang} haVySoi={kn.nut.haVySoi} tuDong={kn.nut.tuDong} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} roi={kn.roi ?? null} onRoi={() => hanhDong({ type: 'roi-canh' })} hetNgay={kn.hetNgay ?? null} onHetNgay={() => hanhDong({ type: 'het-ngay' })} {...(mucNhapVai ? { mucNhapVai } : {})} />;
       case 'end':
         return (
           <KetMvp

@@ -12,6 +12,7 @@
  * bảng, cộng thẻ ô nào đó nhận). Không có thẻ nhiễu: cái khó chỉ là đặt đúng chỗ.
  */
 import type { DongThoiGianMvp, KichBanMvp, LoiMvp, ODongThoiGianMvp } from '../../content/mvp/types';
+import { boCoLoaiNote, loaiNote, nguonKhaiCua, thongTinNote, type KeywordNote, type NguonNote } from './note';
 import type { TrangThaiMvp } from './trang-thai';
 
 /** Một thẻ ở cột thẻ của màn dòng thời gian. */
@@ -23,6 +24,9 @@ export interface TheDongThoiGianMvp {
   phu: string | null;
   /** Thẻ tạm (lời kể của dòng tập dượt). */
   tam: boolean;
+  /** Gói B21: nguồn của note (màu giấy) và keyword (tô màu chữ). */
+  nguon?: NguonNote;
+  keyword?: KeywordNote[];
 }
 
 /** Câu nhắc khi nội dung chưa viết câu nào cho ô / dòng thời gian (máy kiểm đã nhắc thiếu). */
@@ -150,15 +154,18 @@ export function loiKeoSai(d: DongThoiGianMvp, o: ODongThoiGianMvp | null, phan: 
  */
 export function tenTheDongThoiGian(kb: KichBanMvp, d: DongThoiGianMvp, id: string): TheDongThoiGianMvp {
   const tam = d.theTam.find((t) => t.id === id);
-  if (tam) return { id, nhan: tam.chu, phu: null, tam: true };
+  if (tam) return { id, nhan: tam.chu, phu: null, tam: true, nguon: 'loi-ke' };
   const hs = kb.hoSo[id];
   if (hs) {
     const tieuDe = hs.fields['Trên bảng'] ?? hs.fields['Tiêu đề'];
     const nhan = (tieuDe ?? hs.heading).replace(/^\[|\]$/g, '');
-    return { id, nhan, phu: hs.fields['Nguồn trên bảng'] ?? hs.fields['Nguồn'] ?? null, tam: false };
+    const tt = thongTinNote(kb, id);
+    // `Nguồn` là một trong năm nguồn của note thì không phải chữ hiện dưới giấy.
+    const phu = hs.fields['Nguồn trên bảng'] ?? (nguonKhaiCua(hs.fields) ? null : (hs.fields['Nguồn'] ?? null));
+    return { id, nhan, phu, tam: false, nguon: tt.nguon, keyword: tt.keyword };
   }
   const tt = Object.values(kb.thuThach).find((t) => t.vatChung?.id === id);
-  return { id, nhan: tt?.vatChung?.title ?? id, phu: tt ? 'Phiếu tra cứu' : null, tam: false };
+  return { id, nhan: tt?.vatChung?.title ?? id, phu: tt ? 'Phiếu tra cứu' : null, tam: false, nguon: 'tra' };
 }
 
 /**
@@ -169,7 +176,10 @@ export function theCuaDongThoiGian(kb: KichBanMvp, s: TrangThaiMvp, d: DongThoiG
   if (d.kieu === 'tap-duot') return d.theTam.map((t) => tenTheDongThoiGian(kb, d, t.id));
   const nhan = new Set(d.o.flatMap((o) => o.nhan));
   const go = new Set(s.bang?.boGhim ?? []);
-  const ds = [...s.hoSo.bangChung, ...s.hoSo.manhMoi, ...s.hoSo.taiLieu].filter((id) => nhan.has(id) || !go.has(id));
+  // Gói B21: bộ dùng note có loại thì chồng "Sự thật chờ đặt" chỉ nhận sự thật (manh mối thành sự thật nhờ `[ĐỔI LOẠI]`);
+  // bộ cũ giữ như trước (mọi thẻ).
+  const chiSuThat = boCoLoaiNote(kb);
+  const ds = [...s.hoSo.bangChung, ...s.hoSo.manhMoi, ...s.hoSo.taiLieu].filter((id) => (nhan.has(id) || !go.has(id)) && (!chiSuThat || loaiNote(kb, s, id) === 'su-that'));
   // Thẻ tạm một ô của dòng chính nhận (hiếm) cũng có mặt.
   const tam = d.theTam.filter((t) => nhan.has(t.id)).map((t) => t.id);
   return [...new Set([...ds, ...tam])].map((id) => tenTheDongThoiGian(kb, d, id));

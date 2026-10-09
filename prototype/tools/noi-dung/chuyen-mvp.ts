@@ -4,7 +4,7 @@
  * Không import gì từ `src/` (kiểu được ép bằng `satisfies` ở tệp sinh).
  */
 import type { Moc } from './dieu-kien.ts';
-import type { MucMvp, RawChuoiMvp, RawDongThoiGian, RawMvp, RawTinhVach } from './doc-mvp.ts';
+import type { MucMvp, RawCauNoi, RawChuoiMvp, RawDongThoiGian, RawMvp, RawTinhVach } from './doc-mvp.ts';
 import type { RawChallengeCard, RawLine } from './doc.ts';
 import type { KetQuaLuat } from './luat-mvp.ts';
 import { docGoiY, docKhiTrinhSai, docPhanUng } from './phan-ung-mvp.ts';
@@ -25,7 +25,7 @@ export interface DuLieuMvp {
   soTay: Record<string, Obj>;
   loiChung: Obj;
   soDongKhai: { sql: string; soDong: number; noi: string; resultId?: string; sourceResultId?: string; sourceGroupColumn?: string }[];
-  duLieu: { bang: { ten: string; cot: { ten: string; kieu: string }[]; dong: (string | number | null)[][] }[]; bangAo: { ten: string; sql: string }[] } | null;
+  duLieu: { bang: { ten: string; nhan?: string; nhanCot?: Record<string, string>; cot: { ten: string; kieu: string }[]; dong: (string | number | null)[][] }[]; bangAo: { ten: string; sql: string }[] } | null;
   /** Gói B19: dòng thời gian; chỉ có khi bộ có dong-thoi-gian.md (bộ khác sinh ra y như trước). */
   dongThoiGian?: Record<string, Obj>;
 }
@@ -60,6 +60,9 @@ function dongThoiGian(d: RawDongThoiGian): Obj {
     })),
   };
 }
+
+/** Gói B21: một cặp `[NỐI]` → hình dạng `CauNoiMvp`. */
+const cauNoi = (n: RawCauNoi): Obj => ({ id: n.id, the: n.the, cau: n.cau, dich: n.dich });
 
 function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj {
   switch (it.kind) {
@@ -97,18 +100,25 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
         id: it.id,
         asker: it.asker,
         cauHoi: it.cauHoi ?? '',
-        bangChung: it.bangChung.map((b) => ({ id: b.id, muc: b.muc, feedback: b.feedback.map(loi) })),
+        bangChung: it.bangChung.map((b) => ({ id: b.id, muc: b.muc, feedback: b.feedback.map(loi), ...(b.o ? { o: b.o } : {}) })),
         chuaDu: (it.chuaDu ?? []).map(loi),
         khac: (it.khac ?? []).map(loi),
         hetLuot: (it.hetLuot ?? []).map(loi),
         truUyTin: it.truUyTin,
         ...(it.nguoiQuen ? { nguoiQuen: it.nguoiQuen } : {}),
+        ...(it.chiO ? { chiO: true } : {}),
         ...tinhVach(it.tinhVach),
       };
     case 'challenge':
       return { type: it.kind, challengeId: it.id };
     case 'fix-query':
       return { type: it.kind, challengeId: it.id, ...tinhVach(it.tinhVach) };
+    case 'het-chang':
+      return { type: 'het-chang' };
+    case 'doi-loai':
+      return { type: 'doi-loai', the: it.the };
+    case 'cac-cau-noi':
+      return { type: 'cac-cau-noi', cac: it.cac.map(cauNoi) };
     case 'dong-thoi-gian':
       return { type: it.chiXem ? 'hien-dong-thoi-gian' : 'dong-thoi-gian', id: it.id };
     case 'cham-vu':
@@ -220,7 +230,16 @@ function chuoi(c: RawChuoiMvp, mocSomNhat: number, soDongKhai: DuLieuMvp['soDong
     canh: c.canh,
     ...(c.canhCat ? { canhCat: true } : {}),
     mocSomNhat,
-    nodes: c.items.map((it, k) => nut(it, `${c.viTri.tep}:${c.itemDong[k] ?? c.viTri.dong}`, soDongKhai)),
+    nodes: c.items.flatMap((it, k) => {
+      const noi = `${c.viTri.tep}:${c.itemDong[k] ?? c.viTri.dong}`;
+      // Gói B21: lượt mẫu (`[ĐỐI CHẤT … · chỉ ô · mẫu]`) không chờ người chơi — thành lời viết sẵn: câu của người hỏi rồi phản hồi của đáp án [ĐÚNG].
+      if (it.kind === 'doi-chat' && it.mau) {
+        const dung = it.bangChung.find((b) => b.muc === 'dung');
+        const hoi: Obj = { type: 'line', speaker: it.asker.speaker, text: it.asker.text.replace(/\*\*/g, '') };
+        return [hoi, ...(dung?.feedback ?? []).map((l) => nut({ kind: 'line', line: l, card: false }, noi, soDongKhai))];
+      }
+      return [nut(it, noi, soDongKhai)];
+    }),
   };
 }
 
@@ -358,7 +377,7 @@ export function chuyenMvp(mvp: RawMvp, luat: KetQuaLuat): DuLieuMvp {
       ngayMoDau: lich.ngayMoDau,
       ...(lich.hanChot ? { hanChot: lich.hanChot } : {}),
       ...(lich.viecChot ? { viecChot: lich.viecChot } : {}),
-      ngay: lich.ngay.map((n) => ({ so: n.so, ten: n.ten, kieu: n.kieu, chuoi: n.chuoi, ...(n.batDauO ? { batDauO: n.batDauO } : {}), duKienChinh: n.duKienChinh, moNgay: n.moNgay, buoiToi: n.buoiToi })),
+      ngay: lich.ngay.map((n) => ({ so: n.so, ten: n.ten, ...(n.chang ? { chang: n.chang } : {}), kieu: n.kieu, chuoi: n.chuoi, ...(n.batDauO ? { batDauO: n.batDauO } : {}), duKienChinh: n.duKienChinh, moNgay: n.moNgay, buoiToi: n.buoiToi })),
       ngayHop: lich.ngayHop ? { chuoi: lich.ngayHop.chuoi } : null,
       ket: lich.ket ? { that: lich.ket.that, thuong: lich.ket.thuong, ...(lich.ket.tam ? { tam: lich.ket.tam } : {}) } : null,
       // Chỉ ghi khi có vụ sau: bộ một vụ sinh ra y như trước.
@@ -419,11 +438,16 @@ export function chuyenMvp(mvp: RawMvp, luat: KetQuaLuat): DuLieuMvp {
     soDongKhai,
     duLieu: mvp.duLieu
       ? {
-          bang: mvp.duLieu.bang.map((b) => ({ ten: b.ten, cot: b.cot, dong: b.dong })),
+          bang: mvp.duLieu.bang.map((b) => ({ ten: b.ten, ...(b.nhan ? { nhan: b.nhan } : {}), ...(b.nhanCot && Object.keys(b.nhanCot).length > 0 ? { nhanCot: b.nhanCot } : {}), cot: b.cot, dong: b.dong })),
           bangAo: mvp.duLieu.bangAo.map((v) => ({ ten: v.ten, sql: v.sql })),
         }
       : null,
     // Gói B19: chỉ ghi khi bộ có dòng thời gian (bộ MVP, bộ mùa 1 cũ sinh ra y như trước).
     ...(mvp.dongThoiGian.length > 0 ? { dongThoiGian: Object.fromEntries(mvp.dongThoiGian.map((d) => [d.id, dongThoiGian(d)])) } : {}),
+    // Gói B21: các cặp [NỐI] của cả bộ (chỉ ghi khi có; bộ cũ sinh ra như trước).
+    ...(() => {
+      const cac = mvp.chuoi.flatMap((c) => c.items.flatMap((it) => (it.kind === 'cac-cau-noi' ? it.cac.map(cauNoi) : [])));
+      return cac.length > 0 ? { cacCauNoi: cac } : {};
+    })(),
   };
 }

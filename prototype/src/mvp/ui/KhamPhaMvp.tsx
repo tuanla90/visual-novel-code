@@ -60,6 +60,8 @@ export interface KhamPhaMvpProps {
   /** Bản đồ: thứ trong truyện (0 = Chủ nhật) và giờ ("HH:MM") — ai đang ở ghim nào tính theo lịch "Thường ở". */
   thu?: number;
   gio?: string;
+  /** Gói B21: chặng khai "Có mặt" thì ai ở ghim nào theo chặng (thay lịch "Thường ở" theo giờ). */
+  coMat?: readonly { nhanVat: string; noi: string }[] | null;
   /** Quan sát: dáng / bộ đồ của nhân vật được soi (thiếu = dáng đầu tiên). */
   dang?: string;
   /** Quan sát: mở bằng cảnh cắt đôi mắt Hà Vy, kính lóe sáng, rồi các điểm soi mới hiện (user chốt 02/10/2026). */
@@ -172,7 +174,7 @@ function useCatCanhHaVy(bat: boolean): { dang: boolean; boQua: () => void } {
   return { dang, boQua: () => setDang(false) };
 }
 
-export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay: _homNay, thu, gio, dang, haVySoi, tuDong, roi, onRoi, hetNgay, onHetNgay, mucNhapVai }: KhamPhaMvpProps) {
+export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGap = [], homNay: _homNay, thu, gio, coMat, dang, haVySoi, tuDong, roi, onRoi, hetNgay, onHetNgay, mucNhapVai }: KhamPhaMvpProps) {
   const catCanh = useCatCanhHaVy(!!haVySoi && kieu === 'quan-sat' && diem.every((d) => !d.daXem));
   // Soi tự động: điểm chưa xem đầu tiên (theo thứ tự viết) là chỗ kính đang tới; sau một nhịp thì tự mở lời của điểm ấy.
   const diemTuDong = tuDong && kieu === 'quan-sat' && !catCanh.dang ? diem.find((d) => !d.daXem) : undefined;
@@ -229,7 +231,7 @@ export function KhamPhaMvp({ kb, id, canh, diem, onXem: xem, kieu, nhanVat, daGa
   /** Người đang ở một nơi mà người chơi ĐÃ BIẾT: đã gặp và thẻ nhân vật có dòng "Lịch". */
   const nguoiBiet = (d: DiemKhamPhaMvp): string[] => {
     // Người kịch bản đặt ở đây (`có:`) cộng người lịch "Thường ở" đặt ở ghim này vào thứ, giờ của bản đồ.
-    const theoLich = thu !== undefined && gio && d.sprite.startsWith('ghim:') ? dangO(kb.nhanVat, thu, gio, d.sprite.slice(5)) : [];
+    const theoLich = coMat ? coMat.filter((q) => d.sprite === `ghim:${q.noi}`).map((q) => q.nhanVat) : thu !== undefined && gio && d.sprite.startsWith('ghim:') ? dangO(kb.nhanVat, thu, gio, d.sprite.slice(5)) : [];
     return [...new Set([...(d.co ?? []), ...theoLich])].filter((n) => daGap.includes(n) && !!kb.nhanVat.find((x) => x.id === n)?.gioiThieu?.lich);
   };
 

@@ -7,7 +7,7 @@
  * nên Lưu/Nạp và phần chơi tiếp không có gì đặc biệt.
  */
 import type { KichBanMvp } from '../../content/mvp/types';
-import { canGioiThieu, coTrongHoSo, khungNhin, TEN_MAC_DINH, taoTrangThai, xuLy, type HanhDongMvp, type KhungNhinMvp } from './may';
+import { canGioiThieu, coTrongHoSo, khungNhin, TEN_MAC_DINH, taoTrangThai, timCauNoi, xuLy, type HanhDongMvp, type KhungNhinMvp } from './may';
 import type { TrangThaiMvp } from './trang-thai';
 
 /** Chiến thuật chơi tự động: chọn gì ở danh sách địa điểm / rẽ nhánh / câu hỏi. */
@@ -26,7 +26,7 @@ export interface ChienThuat {
 }
 
 /** Hành động tự chơi cho một khung nhìn (không tính `end` / `error`). */
-function hanhDongTuDong(s: TrangThaiMvp, kn: Exclude<KhungNhinMvp, { kind: 'end' | 'error' }>, ct: ChienThuat): HanhDongMvp {
+function hanhDongTuDong(kb: KichBanMvp, s: TrangThaiMvp, kn: Exclude<KhungNhinMvp, { kind: 'end' | 'error' }>, ct: ChienThuat): HanhDongMvp {
   switch (kn.kind) {
     case 'line':
     case 'feedback':
@@ -45,6 +45,17 @@ function hanhDongTuDong(s: TrangThaiMvp, kn: Exclude<KhungNhinMvp, { kind: 'end'
       return { type: 'chon', luaChon: c.id };
     }
     case 'doi-chat': {
+      if (kn.nut.chiO) {
+        // Gói B21: đối chất `· chỉ ô` — chỉ lần lượt các ô của đáp án [ĐÚNG]; `traLoi` "sai" thì chỉ một ô ngoài đáp án (thêm một vạch).
+        const dung = kn.nut.bangChung.find((x) => x.muc === 'dung' && x.o);
+        if (!dung?.o) throw new Error(`Đối chất ${kn.nut.id}: không có đáp án [ĐÚNG] nào`);
+        if ((ct.traLoi?.(kn.nut.id, kn.lanThu) ?? 'dung') === 'sai' && kn.oDangChon.length === 0) {
+          const dtgId = dung.o[0]?.split(':')[0] ?? '';
+          const lac = (kb.dongThoiGian?.[dtgId]?.o ?? []).find((o) => !o.khongDien && !dung.o?.includes(`${dtgId}:${o.id}`));
+          if (lac) return { type: 'chi-o', o: `${dtgId}:${lac.id}` };
+        }
+        return { type: 'chi-o', o: dung.o.find((x) => !kn.oDangChon.includes(x)) ?? dung.o[0] ?? '' };
+      }
       if (kn.nut.tinhVach) {
         // Gói B19: đối chất `· tính vạch` — `traLoi` "sai" thì trình một thẻ chưa trình không phải [ĐÚNG] (thêm một vạch).
         const muonSai = (ct.traLoi?.(kn.nut.id, kn.lanThu) ?? 'dung') === 'sai';
@@ -95,6 +106,11 @@ function hanhDongTuDong(s: TrangThaiMvp, kn: Exclude<KhungNhinMvp, { kind: 'end'
       // Gói B15: việc chính của ngày đã xong thì máy tự chơi bấm hết ngày luôn (như trước đây máy tự sang buổi tối).
       if (kn.hetNgay) return { type: 'het-ngay' };
       if (kn.roi && kn.xongChinh) return { type: 'roi-canh' };
+      // Gói B21: hết chỗ để xem mà chặng chưa chốt → nối nốt một cặp note đã mở (người chơi nối trên bảng manh mối).
+      if (!kn.diem.some((x) => !x.daXem)) {
+        const cau = (kb.cacCauNoi ?? []).find((c) => (s.cauNoiMo ?? []).includes(c.id) && !(s.cauNoiXong ?? []).includes(c.id) && timCauNoi(kb, s, c.the[0], c.the[1]));
+        if (cau) return { type: 'noi-the', a: cau.the[0], b: cau.the[1] };
+      }
       // Bấm chỗ đầu tiên chưa xem (theo thứ tự trong kịch bản); chỗ có "sau:" hiện dần.
       const d = kn.diem.find((x) => !x.daXem);
       return d ? { type: 'xem-diem', chuoi: d.diem.chuoi } : { type: 'tiep' };
@@ -135,7 +151,7 @@ export function choiTuDong(
     // Người chơi thật đóng thẻ "Nhân vật mới" ở câu tự xưng; máy tự chơi cũng ghi nhận, kẻo sau khi nhảy thẻ tên còn là cách gọi tạm.
     const gioiThieu = canGioiThieu(kb, s, kn);
     if (gioiThieu) s = xuLy(kb, s, { type: 'da-gioi-thieu', nhanVat: gioiThieu });
-    const hd = hanhDongTuDong(s, kn, ct);
+    const hd = hanhDongTuDong(kb, s, kn, ct);
     const sau = xuLy(kb, s, hd);
     if (sau === s) throw new Error(`Hành động ${hd.type} bị từ chối ở khung nhìn ${kn.kind} (ngày ${s.ngay}, khung ${s.khung})`);
     s = sau;

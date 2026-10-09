@@ -16,6 +16,10 @@ export type KieuCot = 'TEXT' | 'INTEGER';
 export type GiaTriO = string | number | null;
 
 export interface BangDuLieuMvp {
+  /** Gói B21 `{bảng · nhãn: Sinh viên}`: chữ tiếng Việt trên khối bảng (câu SQL vẫn là tên thật). */
+  nhan?: string;
+  /** Gói B21 `- Nhãn: ma_sv=Mã sinh viên, …`: chữ tiếng Việt trên khối cột. */
+  nhanCot?: Record<string, string>;
   ten: string;
   cot: { ten: string; kieu: KieuCot }[];
   dong: GiaTriO[][];
@@ -103,7 +107,7 @@ export function docDuLieuMvp(tep: { duongDan: string; noiDung: string }): { duLi
 
     if (t.startsWith('## ')) {
       dongBang();
-      const m = new RegExp(`^## (${TEN}) \\{(bảng|bảng ảo)\\}$`).exec(t);
+      const m = new RegExp(`^## (${TEN}) \\{(bảng|bảng ảo)(?: · nhãn: (.+?))?\\}$`).exec(t);
       if (!m) {
         err(so, `tiêu đề mục phải là "## <tên_bảng> {bảng}" hoặc "## <tên_bảng> {bảng ảo}" (tên chữ thường, số, gạch dưới): "${t}"`);
         continue;
@@ -113,7 +117,7 @@ export function docDuLieuMvp(tep: { duongDan: string; noiDung: string }): { duLi
       if (truoc !== undefined) err(so, `bảng "${tenBang}" khai hai lần (lần đầu ở dòng ${truoc})`);
       ten.set(tenBang, so);
       if (m[2] === 'bảng') {
-        bang = { ten: tenBang, cot: [], dong: [], viTri: { tep: tep.duongDan, dong: so } };
+        bang = { ten: tenBang, ...(m[3] ? { nhan: m[3].trim() } : {}), cot: [], dong: [], viTri: { tep: tep.duongDan, dong: so } };
         duLieu.bang.push(bang);
       } else {
         bangAo = { ten: tenBang, sql: '', viTri: { tep: tep.duongDan, dong: so } };
@@ -139,6 +143,22 @@ export function docDuLieuMvp(tep: { duongDan: string; noiDung: string }): { duLi
             if (!c) err(so, `bảng ${cur.ten}: cột phải viết "<tên_cột> TEXT" hoặc "<tên_cột> INTEGER": "${p}"`);
             else if (cur.cot.some((x) => x.ten === c[1])) err(so, `bảng ${cur.ten}: cột "${c[1]}" lặp lại`);
             else cur.cot.push({ ten: c[1] ?? '', kieu: c[2] as KieuCot });
+          }
+        }
+        continue;
+      }
+      // Gói B21: `- Nhãn: ma_sv=Mã sinh viên, ten=Tên, …` — chữ tiếng Việt trên khối cột ở màn tra (câu SQL giữ tên cột ASCII).
+      const mNhan = /^- Nhãn: (.+)$/.exec(t);
+      if (mNhan) {
+        if (cur.nhanCot) err(so, `bảng ${cur.ten}: dòng "- Nhãn:" lặp lại`);
+        else if (cur.cot.length === 0) err(so, `bảng ${cur.ten}: khai "- Cột:" trước "- Nhãn:"`);
+        else {
+          cur.nhanCot = {};
+          for (const p of (mNhan[1] ?? '').split(',').map((x) => x.trim()).filter((x) => x !== '')) {
+            const c = new RegExp(`^(${TEN})\\s*=\\s*(.+)$`).exec(p);
+            if (!c) err(so, `bảng ${cur.ten}: nhãn phải viết "<tên_cột>=<Chữ tiếng Việt>", cách nhau bằng dấu phẩy: "${p}"`);
+            else if (!cur.cot.some((x) => x.ten === c[1])) err(so, `bảng ${cur.ten}: nhãn cho cột "${c[1] ?? ''}" mà bảng không có cột ấy`);
+            else cur.nhanCot[c[1] ?? ''] = (c[2] ?? '').trim();
           }
         }
         continue;
