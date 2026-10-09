@@ -25,7 +25,7 @@
 - Cột: hoai=Hoài, ?=? (chưa biết), bac-tu=Bác Thịnh
 - Kéo sai: **ha-vy** (thinking): Thẻ này chưa khớp ô ấy. Xem lại nó nói chuyện lúc nào, ở đâu. (tạm)
 
-### o1 · 6:44 · cột: hoai · cổng ký túc xá · Hoài ra cổng
+### o1 · 6:44 · cột: hoai · cổng ký túc xá · ra khỏi cổng ký túc xá
 - Nhận: ev-ra-cong-644
 - Kéo sai: **ha-vy** (thinking): Ô này cần đúng giờ Hoài ra cổng. Thẻ nào ghi giờ ấy? (tạm)
 ### o2 · ~6:50 · cột: ? · cổng ký túc xá · đưa phong bì nâu cho Hoài
@@ -33,13 +33,13 @@
 - Không điền được: ai
 - Kéo vào chỗ trống: **ha-vy** (day-kinh): Người đưa phong bì là ai thì chưa có căn cứ nào. Chỗ ấy để trống. (tạm)
 - Kéo sai: **ha-vy** (thinking): Ô này là lúc phong bì đến tay Hoài ở cổng. Ai đã nhìn thấy? (tạm)
-### o3 · 7:00 · cột: bac-tu · sảnh tòa B · bác Thịnh mở sảnh
+### o3 · 7:00 · cột: bac-tu · sảnh tòa B · mở cửa sảnh tòa B
 - Khóa sẵn
 <!-- căn cứ của ô khóa sẵn: clue-loi-bac-thinh (lời bác Thịnh: bảy giờ mở sảnh) -->
-### o4 · trước 9:00 · cột: hoai · sảnh tòa B · Hoài bỏ thư vào hộp
+### o4 · trước 9:00 · cột: hoai · sảnh tòa B · bỏ thư vào hộp, ký phiếu
 - Nhận: ev-phieu-gui-hoai, ev-the-lich-bc24, clue-loi-co-lan
 - Kéo sai: **ha-vy** (thinking): Ô này là lúc thư vào hộp. Thẻ nào cho thấy Hoài là người nộp? (tạm)
-### o5 · 9:00 · cột: bac-tu · sảnh tòa B · hộp được thu, có phong bì nâu
+### o5 · 9:00 · cột: bac-tu · sảnh tòa B · thấy hộp được thu
 - Nhận: doc-so-thu-hop, clue-loi-bac-thinh
 - Kéo sai: **ha-vy** (thinking): Ô này là lúc cô Lan thu hộp. Thẻ nào ghi chín giờ? (tạm)
 

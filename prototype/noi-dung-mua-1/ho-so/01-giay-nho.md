@@ -4,16 +4,22 @@
 <!-- "Giá trị cho trình dựng" = tờ giấy nhớ kéo được vào màn tra; "Chữ trên giấy" = câu in trên tờ ấy (gói B14), giá trị bọc **…**, tối đa 60 ký tự. -->
 
 ### clue-loi-bac-thinh — [Lời bác Thịnh]
+- Trên bảng: Sảnh mở 7:00, hộp thu 9:00
+- Nguồn trên bảng: Bác Thịnh kể
 - Tiêu đề: Bảy giờ mở sảnh tòa B, chín giờ cô Lan thu hộp
 - Nguồn: Lời {{nv.bac-tu.trong-cau}}, sảnh tòa B, sáng 24/09
 - Nội dung: Sảnh tòa B bảy giờ sáng bác mới mở. Chín giờ cô Lan xuống thu hộp kiến nghị như mọi ngày. Thư vào hộp sáng thứ Hai thì vào sau bảy giờ, trước chín giờ.
 
 ### clue-loi-co-lan — [Lời cô Lan]
+- Trên bảng: Ai nộp thư thì người ấy ký phiếu
+- Nguồn trên bảng: Cô Lan kể
 - Tiêu đề: Chữ ký trên phiếu gửi chỉ là của người nộp
 - Nguồn: Lời {{nv.co-lan}}, Phòng Công tác sinh viên, 26/09
 - Nội dung: Thường thì người viết tự đi nộp, nhưng vẫn có trường hợp nộp hộ. Chữ ký trên phiếu gửi chỉ là của người nộp.
 
 ### clue-loi-chu-cuong — [Lời chú Cường]
+- Trên bảng: Gần 7:00, cậu balo đen đưa Hoài phong bì nâu
+- Nguồn trên bảng: Chú Cường kể
 - Tiêu đề: Phong bì nâu trao tay ở cổng ký túc xá, gần 7:00 sáng 16/09
 - Giá trị cho trình dựng: 2024-09-16
 - Chữ trên giấy: Ngày chú Cường thấy phong bì nâu: **2024-09-16**

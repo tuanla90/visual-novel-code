@@ -3,6 +3,8 @@
 <!-- Gói B19 (08/10/2026). Hai phiếu kết quả tra (ev-mot-hoai, ev-ra-cong-644) khai ở thẻ thử thách, không lặp ở đây. -->
 
 ### ev-phieu-gui-hoai — Phiếu gửi ký "Hoài"
+- Trên bảng: Người nộp thư ký tên "Hoài"
+- Nguồn trên bảng: Phiếu gửi kèm thư
 - Tiêu đề: Phiếu gửi kẹp ngoài phong bì nâu, người nộp ký "Hoài"
 - Ảnh: doc-phieu-gui-hoai
 - Giá trị cho trình dựng: Hoài
@@ -10,6 +12,8 @@
 - Nội dung: Kèm theo thư kiến nghị. Dòng người nộp ký một chữ: Hoài, ký đủ chữ, không ký tắt.
 
 ### ev-the-lich-bc24 — Thẻ lịch rách ở khe hộp
+- Trên bảng: Thẻ lịch Báo chí 2024 mắc ở khe hộp
+- Nguồn trên bảng: Nhặt ở sảnh tòa B
 - Tiêu đề: Thẻ lịch khoa Báo chí, khóa 2024, mắc ở khe hộp kiến nghị
 - Ảnh: doc-the-lich-rach
 - Giá trị cho trình dựng: Báo chí · 2024

@@ -31,7 +31,7 @@ SELECT ma_sv, ho_dem, ten, nganh, khoa_hoc, ma_lop FROM sinh_vien WHERE ten = 'H
 
 - [LỜI c-sv-hoai-bc24.1]
 - Vật chứng lưu vào hồ sơ: ev-mot-hoai
-  - Tiêu đề: Một dòng: Lê Thu Hoài, SV240317, BC24A
+  - Tiêu đề: Chỉ một người: Lê Thu Hoài, lớp BC24A
   - Mô tả: Bảng sinh viên, lọc tên Hoài VÀ ngành Báo chí VÀ khóa 2024: một dòng, Lê Thu Hoài, mã SV240317, lớp BC24A. Tên, khoa, khóa khớp; mới cho biết đi tìm ai, chưa nói ai bỏ thư.
   - Giá trị cho trình dựng: SV240317
   - Chữ trên giấy: Mã sinh viên của Lê Thu Hoài: **SV240317**

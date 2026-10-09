@@ -143,15 +143,19 @@ export function loiKeoSai(d: DongThoiGianMvp, o: ODongThoiGianMvp | null, phan: 
   return [{ speaker: d.nguoiNhac ?? 'narrator', text: CAU_NHAC_MAC_DINH }];
 }
 
-/** Chữ hiện trên một thẻ của dòng thời gian (thẻ tạm: chữ khai; thẻ hồ sơ: tiêu đề; phiếu tra: tiêu đề vật chứng). */
+/**
+ * Chữ hiện trên một thẻ của dòng thời gian (thẻ tạm: chữ khai; thẻ hồ sơ: `Trên bảng` nếu có, không thì tiêu đề;
+ * phiếu tra: tiêu đề vật chứng). `Trên bảng` / `Nguồn trên bảng` là câu ngắn riêng cho giấy note (user 09/10: tiêu đề hồ sơ
+ * dài và tối nghĩa khi đặt lên bảng).
+ */
 export function tenTheDongThoiGian(kb: KichBanMvp, d: DongThoiGianMvp, id: string): TheDongThoiGianMvp {
   const tam = d.theTam.find((t) => t.id === id);
   if (tam) return { id, nhan: tam.chu, phu: null, tam: true };
   const hs = kb.hoSo[id];
   if (hs) {
-    const tieuDe = hs.fields['Tiêu đề'];
+    const tieuDe = hs.fields['Trên bảng'] ?? hs.fields['Tiêu đề'];
     const nhan = (tieuDe ?? hs.heading).replace(/^\[|\]$/g, '');
-    return { id, nhan, phu: hs.fields['Nguồn'] ?? null, tam: false };
+    return { id, nhan, phu: hs.fields['Nguồn trên bảng'] ?? hs.fields['Nguồn'] ?? null, tam: false };
   }
   const tt = Object.values(kb.thuThach).find((t) => t.vatChung?.id === id);
   return { id, nhan: tt?.vatChung?.title ?? id, phu: tt ? 'Phiếu tra cứu' : null, tam: false };

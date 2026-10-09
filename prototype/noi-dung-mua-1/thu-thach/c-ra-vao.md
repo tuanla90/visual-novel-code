@@ -16,7 +16,7 @@ SELECT ma_sv, ngay, gio, chieu FROM ra_vao_ktx WHERE ma_sv = 'SV240317' AND ngay
 
 - [LỜI c-ra-vao.1]
 - Vật chứng lưu vào hồ sơ: ev-ra-cong-644
-  - Tiêu đề: Sổ ra vào: SV240317 ra cổng 06:44 sáng 16/09
+  - Tiêu đề: 6:44 sáng 16/09, Hoài quẹt thẻ ra cổng ký túc xá
   - Mô tả: Sổ quẹt thẻ cổng ký túc xá, mã SV240317 VÀ ngày 16/09/2024: hai dòng. Sáng quẹt thẻ ra cổng lúc 06:44; tối 17:52 mới quẹt thẻ vào.
   - Giá trị cho trình dựng: 06:44
   - Chữ trên giấy: Sáng 16/09 Hoài quẹt thẻ ra cổng lúc **06:44**

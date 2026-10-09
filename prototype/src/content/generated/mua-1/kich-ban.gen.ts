@@ -4441,7 +4441,7 @@ const GOC = {
       ],
       "vatChung": {
         "id": "ev-ra-cong-644",
-        "title": "Sổ ra vào: SV240317 ra cổng 06:44 sáng 16/09",
+        "title": "6:44 sáng 16/09, Hoài quẹt thẻ ra cổng ký túc xá",
         "description": "Sổ quẹt thẻ cổng ký túc xá, mã SV240317 VÀ ngày 16/09/2024: hai dòng. Sáng quẹt thẻ ra cổng lúc 06:44; tối 17:52 mới quẹt thẻ vào.",
         "giaTri": [
           "06:44"
@@ -4662,7 +4662,7 @@ const GOC = {
       ],
       "vatChung": {
         "id": "ev-mot-hoai",
-        "title": "Một dòng: Lê Thu Hoài, SV240317, BC24A",
+        "title": "Chỉ một người: Lê Thu Hoài, lớp BC24A",
         "description": "Bảng sinh viên, lọc tên Hoài VÀ ngành Báo chí VÀ khóa 2024: một dòng, Lê Thu Hoài, mã SV240317, lớp BC24A. Tên, khoa, khóa khớp; mới cho biết đi tìm ai, chưa nói ai bỏ thư.",
         "giaTri": [
           "SV240317"
@@ -4734,6 +4734,8 @@ const GOC = {
       "loai": "clue",
       "heading": "[Lời bác Thịnh]",
       "fields": {
+        "Trên bảng": "Sảnh mở 7:00, hộp thu 9:00",
+        "Nguồn trên bảng": "Bác Thịnh kể",
         "Tiêu đề": "Bảy giờ mở sảnh tòa B, chín giờ cô Lan thu hộp",
         "Nguồn": "Lời bác Thịnh, sảnh tòa B, sáng 24/09",
         "Nội dung": "Sảnh tòa B bảy giờ sáng bác mới mở. Chín giờ cô Lan xuống thu hộp kiến nghị như mọi ngày. Thư vào hộp sáng thứ Hai thì vào sau bảy giờ, trước chín giờ."
@@ -4745,6 +4747,8 @@ const GOC = {
       "loai": "clue",
       "heading": "[Lời cô Lan]",
       "fields": {
+        "Trên bảng": "Ai nộp thư thì người ấy ký phiếu",
+        "Nguồn trên bảng": "Cô Lan kể",
         "Tiêu đề": "Chữ ký trên phiếu gửi chỉ là của người nộp",
         "Nguồn": "Lời Cô Lan, Phòng Công tác sinh viên, 26/09",
         "Nội dung": "Thường thì người viết tự đi nộp, nhưng vẫn có trường hợp nộp hộ. Chữ ký trên phiếu gửi chỉ là của người nộp."
@@ -4756,6 +4760,8 @@ const GOC = {
       "loai": "clue",
       "heading": "[Lời chú Cường]",
       "fields": {
+        "Trên bảng": "Gần 7:00, cậu balo đen đưa Hoài phong bì nâu",
+        "Nguồn trên bảng": "Chú Cường kể",
         "Tiêu đề": "Phong bì nâu trao tay ở cổng ký túc xá, gần 7:00 sáng 16/09",
         "Giá trị cho trình dựng": "2024-09-16",
         "Chữ trên giấy": "Ngày chú Cường thấy phong bì nâu: **2024-09-16**",
@@ -4769,6 +4775,8 @@ const GOC = {
       "loai": "doc",
       "heading": "Thư kiến nghị thu hồi phòng CLB",
       "fields": {
+        "Trên bảng": "Thư đòi thu hồi phòng CLB, không ký tên",
+        "Nguồn trên bảng": "Hộp kiến nghị tòa B",
         "Tiêu đề": "Thư kiến nghị thu hồi phòng CLB Thám Tử",
         "Ảnh": "doc-thu-kien-nghi",
         "Nguồn": "Hộp kiến nghị sảnh tòa B, cô Lan thu sáng thứ Hai 16/09; cô mang tới phòng CLB chiều 23/09",
@@ -4786,6 +4794,8 @@ const GOC = {
       "loai": "doc",
       "heading": "Sổ thu hộp kiến nghị",
       "fields": {
+        "Trên bảng": "9:00 thu hộp, trong có phong bì nâu",
+        "Nguồn trên bảng": "Sổ thu hộp",
         "Tiêu đề": "Sổ thu hộp kiến nghị, sáng thứ Hai 16/09",
         "Ảnh": "doc-so-thu-hop",
         "Nguồn": "Cô Lan, Phòng Công tác sinh viên",
@@ -4803,6 +4813,8 @@ const GOC = {
       "loai": "ev",
       "heading": "Phiếu gửi ký \"Hoài\"",
       "fields": {
+        "Trên bảng": "Người nộp thư ký tên \"Hoài\"",
+        "Nguồn trên bảng": "Phiếu gửi kèm thư",
         "Tiêu đề": "Phiếu gửi kẹp ngoài phong bì nâu, người nộp ký \"Hoài\"",
         "Ảnh": "doc-phieu-gui-hoai",
         "Giá trị cho trình dựng": "Hoài",
@@ -4816,6 +4828,8 @@ const GOC = {
       "loai": "ev",
       "heading": "Thẻ lịch rách ở khe hộp",
       "fields": {
+        "Trên bảng": "Thẻ lịch Báo chí 2024 mắc ở khe hộp",
+        "Nguồn trên bảng": "Nhặt ở sảnh tòa B",
         "Tiêu đề": "Thẻ lịch khoa Báo chí, khóa 2024, mắc ở khe hộp kiến nghị",
         "Ảnh": "doc-the-lich-rach",
         "Giá trị cho trình dựng": "Báo chí · 2024",
@@ -5244,7 +5258,7 @@ const GOC = {
           "gio": "6:44",
           "cot": "hoai",
           "noi": "cổng ký túc xá",
-          "viec": "Hoài ra cổng",
+          "viec": "ra khỏi cổng ký túc xá",
           "nhan": [
             "ev-ra-cong-644"
           ],
@@ -5290,7 +5304,7 @@ const GOC = {
           "gio": "7:00",
           "cot": "bac-tu",
           "noi": "sảnh tòa B",
-          "viec": "bác Thịnh mở sảnh",
+          "viec": "mở cửa sảnh tòa B",
           "nhan": [],
           "khoaSan": true,
           "khongDien": null,
@@ -5302,7 +5316,7 @@ const GOC = {
           "gio": "trước 9:00",
           "cot": "hoai",
           "noi": "sảnh tòa B",
-          "viec": "Hoài bỏ thư vào hộp",
+          "viec": "bỏ thư vào hộp, ký phiếu",
           "nhan": [
             "ev-phieu-gui-hoai",
             "ev-the-lich-bc24",
@@ -5324,7 +5338,7 @@ const GOC = {
           "gio": "9:00",
           "cot": "bac-tu",
           "noi": "sảnh tòa B",
-          "viec": "hộp được thu, có phong bì nâu",
+          "viec": "thấy hộp được thu",
           "nhan": [
             "doc-so-thu-hop",
             "clue-loi-bac-thinh"

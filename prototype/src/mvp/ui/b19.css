@@ -446,9 +446,10 @@
   opacity: 0.6;
 }
 
+/* Note thả vào ô "đáp" từ nhỏ ra đúng cỡ. Đừng phóng to quá 1: khung lưới có overflow: auto, note to hơn ô là bật thanh cuộn trong lúc chạy hiệu ứng. */
 @keyframes bcl-dat {
   from {
-    transform: scale(1.12) rotate(-2deg);
+    transform: scale(0.9) rotate(-2deg);
     opacity: 0.6;
   }
 }
