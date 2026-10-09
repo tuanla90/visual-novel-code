@@ -5,13 +5,16 @@
  * `[ĐỐI CHẤT … · chỉ ô · mẫu]`, nhãn khối tiếng Việt (`du-lieu.md`). Nền: bộ thử `noi-dung-thu-b21/` (đọc sạch, tệp sinh khớp);
  * mỗi test sửa một chỗ trong bộ nhớ rồi xem lỗi.
  */
-import { readdirSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readdirSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { docNoiDungMvp, dinhDangLoi, docTuyChonLenh, type MucMvp, type RawMvp, type TepMvp } from '../../../../tools/noi-dung/doc-mvp.ts';
 import { chuyenMvp } from '../../../../tools/noi-dung/chuyen-mvp.ts';
 import { kiemLuatMvp } from '../../../../tools/noi-dung/luat-mvp.ts';
 import { sinhVanBanThuB21, THU_MUC_NOI_DUNG_THU_B21, THU_MUC_SINH_THU_B21 } from '../../../../tools/noi-dung/sinh-thu-b21.ts';
 import { tepLechTrenDia } from '../../../../tools/noi-dung/sinh.ts';
+import { TEN_DONG_HANH_MAC_DINH, tepLoiHoiDap } from '../../../../tools/noi-dung/hoi-dap-loi.ts';
 import { gomTepMvp } from '../../../../tools/noi-dung/thu-muc-mvp.ts';
 
 const GOC = gomTepMvp(THU_MUC_NOI_DUNG_THU_B21, 'noi-dung-thu-b21').tep;
@@ -242,5 +245,28 @@ describe('B21 · nhãn khối tiếng Việt (du-lieu.md)', () => {
     expect(loiGop({ [DL_TEP]: [['ma_sv=Mã sinh viên, ho_dem=Họ đệm', 'ma_sinh_vien=Mã sinh viên, ho_dem=Họ đệm']] })).toMatch(/nhãn cho cột "ma_sinh_vien" mà bảng không có cột ấy/);
     expect(loiGop({ [DL_TEP]: [['ma_sv=Mã sinh viên, ho_dem=Họ đệm', 'Mã sinh viên, ho_dem=Họ đệm']] })).toMatch(/nhãn phải viết/);
     expect(loiGop({ [DL_TEP]: [['- Nhãn: ma_lop=Mã lớp, nganh=Ngành,', '- Nhãn: ma_lop=Mã lớp\n- Nhãn: nganh=Ngành,']] })).toMatch(/dòng "- Nhãn:" lặp lại/);
+  });
+});
+
+describe('B21 · tệp lời của bạn đi cùng theo tên tệp kịch bản thật (hoi-dap-loi.ts)', () => {
+  const tam = (tep: string[], them = ''): string => {
+    const g = mkdtempSync(join(tmpdir(), 'b21-hd-'));
+    mkdirSync(join(g, 'kich-ban'));
+    mkdirSync(join(g, 'hoi-dap'));
+    for (const t of tep) writeFileSync(join(g, 'kich-ban', `${t}.md`), '');
+    writeFileSync(join(g, 'hoi-dap', 'dong-hanh.json'), `{${them}"loi":{"ha-vy":{"viecChinh":"Làm việc chính."}}}`);
+    return g;
+  };
+  it('mặc định: tệp kịch bản đầu tiên không phải 00-… (01-chang-1 thay 01-ngay-1)', () => {
+    expect(tepLoiHoiDap(tam(['00-mo-dau', '01-chang-1', '02-chang-2']), 'x')[0]?.ten).toBe('01-chang-1');
+    expect(tepLoiHoiDap(tam(['00-mo-dau', '01-ngay-1']), 'x')[0]?.ten).toBe('01-ngay-1');
+    expect(tepLoiHoiDap(tam(['chi-mot']), 'x')[0]?.ten).toBe('chi-mot');
+  });
+  it('không có thư mục kich-ban: giữ tên cũ; có khai "tepLoi" trong dong-hanh.json: theo giá trị khai', () => {
+    const g = mkdtempSync(join(tmpdir(), 'b21-hd-'));
+    mkdirSync(join(g, 'hoi-dap'));
+    writeFileSync(join(g, 'hoi-dap', 'dong-hanh.json'), '{"loi":{"ha-vy":{"viecChinh":"x"}}}');
+    expect(tepLoiHoiDap(g, 'x')[0]?.ten).toBe(TEN_DONG_HANH_MAC_DINH);
+    expect(tepLoiHoiDap(tam(['00-mo-dau', '01-chang-1'], '"tepLoi":"02-chang-2",'), 'x')[0]?.ten).toBe('02-chang-2');
   });
 });

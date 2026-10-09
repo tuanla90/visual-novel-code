@@ -10,6 +10,7 @@ import { boCoLoaiNote, loaiNote, thongTinNote, tachKeyword } from './note';
 import { theCuaDongThoiGian } from './dong-thoi-gian';
 import { cauHoiDaNoi, changHienTai, coMatChang, khungNhin, taoTrangThai, timCauNoi, xuLy, type HanhDongMvp, type KhungNhinMvp } from './may';
 import { choiTuDong, type ChienThuat } from './tu-choi';
+import { tuyenChuoi } from './tuyen-chuoi';
 import type { TrangThaiMvp } from './trang-thai';
 
 const KB = KICH_BAN_THU_B21 as unknown as KichBanMvp;
@@ -312,5 +313,13 @@ describe('B21 · [ĐỔI LOẠI], chồng sự thật, [HẾT CHẶNG], chặng 
     s = lam(s, { type: 'tiep' });
     expect(s.giaiDoan).toBe('hop');
     expect(s.conTro?.chuoi).toBe('hop-00');
+  });
+});
+
+describe('B21 · tuyến chuỗi: chuỗi "Khi chốt" thuộc tuyến của vụ', () => {
+  it('c1-chot (chỉ chạy khi chặng 1 chốt) nằm trong tuyến vu1; mọi chuỗi của bộ thử đều thuộc một tuyến', () => {
+    const t = tuyenChuoi(KB);
+    expect(t.tuyenCua.get('c1-chot')).toBe('vu1');
+    expect(KB.chuoi.filter((c) => !t.tuyenCua.has(c.id)).map((c) => c.id)).toEqual([]);
   });
 });

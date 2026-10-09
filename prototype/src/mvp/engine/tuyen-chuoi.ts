@@ -25,7 +25,8 @@ export function tuyenChuoi(kb: KichBanMvp): TuyenChuoi {
   if (daCo) return daCo;
   const ids = new Set(kb.chuoi.map((c) => c.id));
   const theoId = new Map(kb.chuoi.map((c) => [c.id, c]));
-  const vu1Them = [...kb.lich.ngay.map((n) => n.chuoi), kb.lich.ngayHop?.chuoi, kb.lich.ket?.that, kb.lich.ket?.thuong].filter((x): x is string => !!x);
+  // Gói B21: chuỗi `Khi chốt` của chặng chỉ chạy khi chặng chốt — cũng thuộc tuyến vụ chính.
+  const vu1Them = [...kb.lich.ngay.flatMap((n) => [n.chuoi, n.chang?.khiChot]), kb.lich.ngayHop?.chuoi, kb.lich.ket?.that, kb.lich.ket?.thuong].filter((x): x is string => !!x);
   const dau = [
     { tuyen: 'vu1', chuoi: [kb.lich.chuoiDau, ...vu1Them] },
     // Vụ sau nhiều ngày (bộ Mùa 1: `- Ngày YYYY-MM-DD: <chuỗi>`) và việc ngày lễ thuộc vụ (`Thuộc vụ:`) đi cùng tuyến của vụ.
