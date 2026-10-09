@@ -97,7 +97,7 @@
   overflow: auto;
 }
 .bcl__luoi {
-  --bcl-gio: clamp(48px, 8vw, 92px);
+  --bcl-gio: clamp(60px, 8vw, 92px);
   height: 100%;
   min-height: calc(32px + var(--n-hang) * 36px);
   max-height: calc(44px + var(--n-hang) * 92px);
@@ -144,7 +144,7 @@
   color: var(--vn-paper, #f3ead7);
   font-family: var(--font-handwriting, inherit);
   font-size: clamp(0.8rem, 1.15vw, 1.1rem);
-  line-height: 1.15;
+  line-height: 1.05;
   text-align: center;
 }
 .bcl__cot-ten {
@@ -159,6 +159,11 @@
   border: 1.5px dashed rgba(235, 214, 173, 0.75);
   background: repeating-linear-gradient(135deg, rgba(255, 247, 232, 0.04) 0 6px, rgba(255, 247, 232, 0.18) 6px 8px);
   cursor: pointer;
+  min-height: 34px;
+  gap: 1px;
+}
+.bcl__cot--trong .bcl__cot-ten {
+  line-height: 1;
 }
 .bcl__cot--trong:disabled {
   cursor: default;
@@ -173,7 +178,25 @@
   font-size: 0.56rem;
   letter-spacing: 0.03em;
 }
+.bcl__o.is-co-viec {
+  flex-direction: column;
+  gap: 1px;
+}
+.bcl__o-viec {
+  flex: none;
+  overflow: hidden;
+  color: rgba(243, 234, 215, 0.7);
+  font-size: 0.6rem;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bcl__o.is-co-viec .bcl__note--o {
+  min-height: 0;
+}
 .bcl__gio {
+  overflow: hidden;
+  white-space: nowrap;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -181,8 +204,8 @@
   padding-right: 6px;
   color: var(--bcl-vang);
   font-family: var(--font-handwriting, inherit);
-  font-size: clamp(0.74rem, 1.05vw, 1rem);
-  line-height: 1.1;
+  font-size: clamp(0.68rem, 1.05vw, 1rem);
+  line-height: 1;
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
@@ -498,8 +521,11 @@
     grid-template-columns: minmax(0, 1fr);
   }
   .bcl__luoi {
-    --bcl-gio: 46px;
+    --bcl-gio: 58px;
     gap: 3px 4px;
+  }
+  .bcl__cot--trong {
+    min-height: 28px;
   }
   .bcl__cot {
     min-height: 22px;
@@ -513,8 +539,11 @@
     font-size: 0.62rem;
     line-height: 1.15;
   }
-  .bcl__note-viec {
-    display: none;
+  .bcl__o-viec {
+    font-size: 0.54rem;
+  }
+  .bcl__o.is-co-viec .bcl__note-chu {
+    -webkit-line-clamp: 2;
   }
   .bcl__note--chong {
     min-height: 30px;

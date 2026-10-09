@@ -76,7 +76,7 @@ const DAT_DUNG = { o1: 'clue-ra-cong', o2: 'clue-loi-chu-cuong', o4: 'ev-phieu-g
 describe('B19 · màn bảng chân lý', () => {
   it('vẽ ma trận: 3 cột người (cột "?" gạch chéo), 5 dòng giờ theo thứ tự xuất hiện, ô không khai thì trống mờ', () => {
     veDtg();
-    expect([...document.querySelectorAll('.bcl__cot')].map((c) => c.querySelector('.bcl__cot-ten')?.textContent)).toEqual(['Hoài', '? (chưa biết)', 'Bác Thịnh']);
+    expect([...document.querySelectorAll('.bcl__cot')].map((c) => c.querySelector('.bcl__cot-ten')?.textContent)).toEqual(['Hoài', '?', 'Bác Thịnh']);
     expect(document.querySelectorAll('.bcl__cot--trong')).toHaveLength(1);
     expect(document.querySelector('.bcl__cot--trong')).toHaveTextContent('là ai? để trống');
     expect([...document.querySelectorAll('.bcl__gio')].map((g) => g.textContent)).toEqual(['6:44', '~6:50', '7:00', 'trước 9:00', '9:00']);

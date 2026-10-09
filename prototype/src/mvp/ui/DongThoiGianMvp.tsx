@@ -162,6 +162,7 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
       o.khoaSan ? 'is-khoa' : '',
       daXong && !o.khoaSan ? 'is-co-note' : '',
       !daXong ? 'is-trong' : '',
+      daXong && !o.khoaSan ? 'is-co-viec' : '',
       vuaDat === o.id ? 'is-vua-dat' : '',
       doc && i === sang ? 'is-sang' : '',
       doc && i > sang ? 'is-cho' : '',
@@ -171,6 +172,8 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
         {o.khoaSan ? (
           <span className="bcl__note bcl__note--xam">{idThe ? ten(idThe) : viecO(o)}</span>
         ) : daXong && idThe ? (
+          <>
+          <span className="bcl__o-viec">{viecO(o)}</span>
           <button
             type="button"
             className="bcl__note bcl__note--o"
@@ -181,8 +184,8 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
             onClick={() => bamO(o, true)}
           >
             <span className="bcl__note-chu">{ten(idThe)}</span>
-            <small className="bcl__note-viec">{viecO(o)}</small>
           </button>
+          </>
         ) : (
           <button
             type="button"
@@ -270,7 +273,7 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
                       onClick={() => bamTrong(c.id)}
                       {...nhanDropVao((id) => thaVaoTrong(c.id, id))}
                     >
-                      <span className="bcl__cot-ten">{dienTen(c.nhan)}</span>
+                      <span className="bcl__cot-ten">{c.id === '?' ? '?' : dienTen(c.nhan)}</span>
                       <small className="bcl__cot-nhan">là ai? để trống</small>
                     </button>
                   ) : (
@@ -305,6 +308,7 @@ export function DongThoiGianMvp({ kb, dtg, the, daDat, xong, chiXem, docTungO = 
                     className={`bcl__note bcl__note--chong${t.tam ? ' is-tam' : ''}${theChon === t.id ? ' is-chon' : ''}${batVe.has(t.id) ? ' is-bat-ve' : ''}`}
                     style={{ '--nghieng': `${NGHIENG[k % NGHIENG.length]}deg` } as CSSProperties}
                     data-the={t.id}
+                    aria-label={dienTen(t.nhan)}
                     aria-pressed={theChon === t.id}
                     {...keoNote(t.id)}
                     onClick={() => setTheChon((c) => (c === t.id ? null : t.id))}
