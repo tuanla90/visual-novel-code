@@ -19,9 +19,11 @@
  */
 import type { KichBanMvp, TheHoSoMvp } from '../../content/mvp/types';
 import { giayNhoHoiDap } from './hoi-dap';
+import { cauHoiDaNoi, loaiNote, nguonKhaiCua, thongTinNote, type KeywordNote, type LoaiNote, type NguonNote } from './note';
 import type { MauGhimMvp, TrangThaiMvp, GhiChuTruyVanMvp, GhepMauLuuMvp, PhieuTruyVanMvp } from './trang-thai';
 
-export type LoaiTheBang = 'tin' | 'phieu' | 'note' | 'vat' | 'tai-lieu' | 'hoi';
+/** `cau` (gói B21): thẻ câu hỏi người chơi nối ra từ hai note (`[NỐI]`). */
+export type LoaiTheBang = 'tin' | 'phieu' | 'note' | 'vat' | 'tai-lieu' | 'hoi' | 'cau';
 
 export interface TheBang {
   id: string;
@@ -32,6 +34,8 @@ export interface TheBang {
   tieuDe?: string | null;
   /** Dòng nhỏ: nguồn mẩu tin / số dòng của phiếu. */
   phu: string | null;
+  /** Gói B21: chữ ngắn riêng cho note trên bảng (`- Trên bảng:` của thẻ hồ sơ); có thì thẻ chỉ hiện chữ này. */
+  trenBang?: string | null;
   /** Giá trị kéo được vào truy vấn. */
   giaTri: string[];
   /** Giá trị bị một mẩu tin khác gạch đi (loại trừ). */
@@ -45,6 +49,14 @@ export interface TheBang {
   mau: MauGhimMvp;
   /** Câu lệnh SQL chuẩn / đã chạy (với thẻ phiếu truy vấn). */
   sql?: string | null;
+  /** Gói B21: nguồn của note (màu giấy), loại (manh mối = giấy nhớ góc gấp, sự thật = thẻ cứng ghim tròn) và keyword (tô màu chữ). */
+  nguon?: NguonNote;
+  loaiNote?: LoaiNote;
+  keyword?: KeywordNote[];
+  /** Gói B21: sự thật đã đặt lên bảng chân lý — để lại thẻ mờ có dấu tích. */
+  daLenBang?: boolean;
+  /** Gói B21 (`loai: 'cau'`): đích của câu hỏi nối. */
+  cau?: { id: string; dich: 'tra' | 'hien-truong'; thuThach?: string; daTra?: boolean; nguon: [string, string] };
   /** Cột kết quả truy vấn (nếu có). */
   cot?: { ten: string; kieu: 'TEXT' | 'INTEGER' }[];
 }
@@ -53,7 +65,7 @@ export interface DayBang {
   tu: string;
   den: string;
   /** `ghep` (gói B19): chỉ đỏ của `[GHÉP MẪU]`. */
-  kieu: 'truy-van' | 'loai-tru' | 'nguon' | 'ghep';
+  kieu: 'truy-van' | 'loai-tru' | 'nguon' | 'ghep' | 'noi';
   /** Nhãn trên sợi chỉ (số dòng của phiếu). */
   nhan: string | null;
   /** Màu sợi = màu ghim của thẻ nguồn `tu`. */
@@ -71,6 +83,9 @@ export interface BangDieuTra {
 }
 
 export const MA_THE_HOI = 'hoi-dang-mo';
+
+/** Tiền tố mã thẻ câu hỏi nối (gói B21): `cau:<mã câu hỏi>`. */
+export const TIEN_TO_THE_CAU = 'cau:';
 
 /** Tiền tố mã thẻ giấy nhớ hỏi ra từ nhân chứng (gói B12): `hoi-dap:<mã nhân chứng>`. */
 export const TIEN_TO_THE_HOI_DAP = 'hoi-dap:';
@@ -131,7 +146,14 @@ export function dungBang(
   const phieuCua = (id: string) => (them?.id === id ? them.phieu : undefined) ?? s.bang?.phieuTruyVan?.[id];
   const thuThachCua = (id: string) => Object.values(kb.thuThach).find((t) => t.vatChung?.id === id);
   // Thẻ đã gỡ thì vào danh sách chờ ghim lại; phiếu sắp ghim (`them`) luôn lên bảng.
+  // Gói B21: note có loại / nguồn / keyword; sự thật đã đặt lên bảng chân lý để lại thẻ mờ.
+  const daLen = new Set(Object.values(s.dongThoiGian ?? {}).flatMap((d) => Object.values(d.o)));
   const dat = (t: TheBang): void => {
+    if (t.loai !== 'hoi' && t.loai !== 'cau' && !t.nguon) {
+      const tt = thongTinNote(kb, t.id);
+      const tra = t.loai === 'phieu' || t.loai === 'note';
+      t = { ...t, nguon: tra ? 'tra' : t.id.startsWith(TIEN_TO_THE_HOI_DAP) ? 'loi-ke' : tt.nguon, loaiNote: tra ? 'su-that' : loaiNote(kb, s, t.id), keyword: tt.keyword, ...(daLen.has(t.id) ? { daLenBang: true } : {}) };
+    }
     if (daGo.has(t.id) && them?.id !== t.id) boGhim.push(t);
     else {
       coRoi.add(t.id);
@@ -189,7 +211,9 @@ export function dungBang(
       loai,
       nhan: hs.heading,
       tieuDe,
-      phu: hs.fields['Nguồn'] ?? null,
+      // Gói B21: `Trên bảng` / `Nguồn trên bảng` là chữ ngắn riêng cho note trên bảng; `Nguồn` là một trong năm nguồn của note thì không phải chữ hiện.
+      trenBang: hs.fields['Trên bảng'] ?? null,
+      phu: hs.fields['Nguồn trên bảng'] ?? (nguonKhaiCua(hs.fields) ? null : (hs.fields['Nguồn'] ?? null)),
       giaTri,
       gach: [],
       anh: hs.fields['Ảnh'] ?? null,
@@ -271,6 +295,15 @@ export function dungBang(
     giayGhep.push({ id: g.id, tu, den, chu: g.chu, nguoi: g.nguoi, moi: g === tuyChon.ghep });
   }
 
+  // Gói B21: thẻ câu hỏi người chơi đã nối ra (`[NỐI]`): hình riêng, hai sợi chỉ từ hai note nguồn tới thẻ; nhãn ghi đích (tra / ra hiện trường).
+  for (const c of cauHoiDaNoi(kb, s)) {
+    const id = TIEN_TO_THE_CAU + c.id;
+    const tra = c.dich.kind === 'tra' ? c.dich.thuThach : undefined;
+    const daTra = !!tra && s.thuThachXong.includes(tra);
+    the.push({ id, loai: 'cau', nhan: c.cau, tieuDe: c.cau, phu: c.dich.kind === 'tra' ? (daTra ? 'Đã tra xong' : '→ Tra dữ liệu') : '→ Ra hiện trường', giaTri: [], gach: [], anh: null, khongDuLieu: true, the: null, mau: mauCua(id), cau: { id: c.id, dich: c.dich.kind, ...(tra ? { thuThach: tra, daTra } : {}), nguon: [c.the[0], c.the[1]] } });
+    for (const nguon of c.the) if (coRoi.has(nguon)) day.push({ tu: nguon, den: id, kieu: 'noi', nhan: null, mau: mauCua(nguon) });
+  }
+
   if (s.nhiemVu && s.giaiDoan !== 'het') {
     the.push({ id: MA_THE_HOI, loai: 'hoi', nhan: s.nhiemVu, tieuDe: s.nhiemVu, phu: null, giaTri: [], gach: [], anh: null, khongDuLieu: true, the: null, mau: 'do' });
   }
@@ -289,6 +322,7 @@ export const CO_THE: Record<LoaiTheBang, { rong: number; cao: number }> = {
   vat: { rong: 150, cao: 176 },
   'tai-lieu': { rong: 104, cao: 132 },
   hoi: { rong: 178, cao: 178 },
+  cau: { rong: 196, cao: 124 },
 };
 
 /**
@@ -328,6 +362,8 @@ export function viTriThe(bang: BangDieuTra, daKeo: Record<string, { x: number; y
   let tuXep = 0;
   for (const t of bang.the) {
     const keo = daKeo[t.id];
+    // Gói B21: thẻ câu hỏi nối đặt sau, ở giữa hai note nguồn (xem dưới).
+    if (t.loai === 'cau') continue;
     if (t.loai === 'tai-lieu') {
       ra[t.id] = keo ?? { x: 26 + (soTaiLieu % 2) * 14, y: 34 + soTaiLieu * 140 };
       soTaiLieu++;
@@ -341,6 +377,18 @@ export function viTriThe(bang: BangDieuTra, daKeo: Record<string, { x: number; y
     // Tự xếp: lưới 6 cột bắt đầu từ góc trên, tránh cột tài liệu.
     ra[t.id] = keo ?? { x: 190 + (tuXep % 6) * 232, y: 60 + Math.floor(tuXep / 6) * 210 };
     tuXep++;
+  }
+  // Gói B21: thẻ câu hỏi nối nằm giữa hai note nguồn, lệch xuống dưới (nhiều thẻ thì lệch dần để không đè nhau).
+  let soCau = 0;
+  for (const t of bang.the) {
+    if (t.loai !== 'cau') continue;
+    const [a, b] = t.cau?.nguon ?? ['', ''];
+    const pa = a ? ra[a] : undefined;
+    const pb = b ? ra[b] : undefined;
+    const co = CO_THE.cau;
+    const giua = pa && pb ? { x: (pa.x + pb.x) / 2 - co.rong / 2 + 60, y: Math.max(pa.y, pb.y) + 150 + soCau * 24 } : { x: 190 + soCau * 40, y: 600 };
+    ra[t.id] = daKeo[t.id] ?? { x: Math.max(8, Math.min(KHUNG_BANG.rong - co.rong - 8, Math.round(giua.x))), y: Math.max(8, Math.min(KHUNG_BANG.cao - co.cao - 8, Math.round(giua.y))) };
+    soCau++;
   }
   return ra;
 }

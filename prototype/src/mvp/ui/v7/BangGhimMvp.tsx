@@ -15,9 +15,12 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react';
 import type { KichBanMvp } from '../../../content/mvp/types';
 import { CO_THE, KHUNG_BANG, dungBang, gocNghieng, MA_THE_HOI, viTriThe, type TheBang } from '../../engine/bang-dieu-tra';
+import { timCauNoi } from '../../engine/may';
+import { TEN_NGUON_NOTE } from '../../engine/note';
 import { MAU_GHIM, type MauGhimMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type GhepMauLuuMvp, type PhieuTruyVanMvp } from '../../engine/trang-thai';
 import { anhTheoTen } from '../anh-mvp';
 import { TheHoSo } from '../TheHoSo';
+import { ChuNote, lopGiayNguon } from '../note-ui';
 import { chaySql, type GiaTriSql } from '../../engine/sql-mvp';
 import { IconTerminal, IconX } from '../../../shared/ui/icons';
 import './v7.css';
@@ -54,6 +57,13 @@ export interface BangGhimMvpProps {
    * làm thao tác của bước đang diễn. Thiếu = diễn cả ba một lần như cũ.
    */
   buocGhep?: 1 | 2 | 3;
+  /**
+   * Gói B21: nối hai note thành câu hỏi (`[NỐI]`). Có thì bảng có nút "Nối note" (chạm note này rồi chạm note kia) và kéo note này
+   * thả lên note kia cũng nối. Cặp có khai → máy ra thẻ câu hỏi và mở đích; cặp lạ → sợi chỉ rơi, không phạt.
+   */
+  onNoi?: (a: string, b: string) => void;
+  /** Gói B21: mở lại màn tra của một câu hỏi đã nối ("→ tra"). */
+  onMoTra?: (cauId: string) => void;
 }
 
 const TEN_MAU: Record<MauGhimMvp, string> = {
@@ -86,7 +96,7 @@ function TayGhep({ buoc, a, b, ten }: { buoc: 1 | 2 | 3; a: { x: number; y: numb
   );
 }
 
-export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chuaXem, onXemThe, onDoiMau, onGhim, hoiDap = false, ghep, tenNguoi, buocGhep }: BangGhimMvpProps) {
+export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chuaXem, onXemThe, onDoiMau, onGhim, hoiDap = false, ghep, tenNguoi, buocGhep, onNoi, onMoTra }: BangGhimMvpProps) {
   const bangDu = useMemo(() => dungBang(kb, s, them, { hoiDap, ...(ghep ? { ghep } : {}) }), [kb, s, them, hoiDap, ghep]);
   // Ghép mẫu làm từng bước: chưa tới bước nối thì giấu sợi chỉ của lần ghép này, chưa tới bước viết thì giấu giấy nhớ.
   const bang = useMemo(() => {
@@ -107,6 +117,35 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
     return keo ? { ...vt, [keo.id]: { x: keo.x, y: keo.y } } : vt;
   }, [bang, s.bang?.viTri, viTriCucBo, keo]);
   const [xem, datXem] = useState<string | null>(null);
+  // Gói B21: nối note thành câu hỏi. `cheDoNoi`: chạm note này rồi chạm note kia; `noiChon`: note đã chạm; `chiRoi`: sợi chỉ nối sai đang rơi.
+  const [cheDoNoi, setCheDoNoi] = useState(false);
+  const [noiChon, setNoiChon] = useState<string | null>(null);
+  const [chiRoi, setChiRoi] = useState<{ a: string; b: string; k: number } | null>(null);
+  const coCauNoi = !!onNoi && (s.cauNoiMo ?? []).length > 0;
+  const soCauTruoc = useRef((s.cauNoiXong ?? []).length);
+  const [cauMoi, setCauMoi] = useState<string | null>(null);
+  useEffect(() => {
+    const ds = s.cauNoiXong ?? [];
+    if (ds.length > soCauTruoc.current) setCauMoi(ds[ds.length - 1] ?? null);
+    soCauTruoc.current = ds.length;
+  }, [s.cauNoiXong]);
+  useEffect(() => {
+    if (!chiRoi) return;
+    const h = setTimeout(() => setChiRoi(null), 1100);
+    return () => clearTimeout(h);
+  }, [chiRoi]);
+  /** Thử nối hai note: cặp có khai và chưa nối → hành động; cặp lạ → sợi chỉ rơi (chỉ khi bảng đã có cặp nào mở, kẻo lộ chỗ không phải lúc). */
+  const thuNoi = (a: string, b: string): void => {
+    if (!onNoi || a === b || a.startsWith('cau:') || b.startsWith('cau:')) return;
+    const cau = timCauNoi(kb, s, a, b);
+    if (cau && !(s.cauNoiXong ?? []).includes(cau.id)) {
+      onNoi(a, b);
+      setNoiChon(null);
+      return;
+    }
+    if ((s.cauNoiMo ?? []).length > 0) setChiRoi({ a, b, k: Date.now() });
+    setNoiChon(null);
+  };
   const [hienMenuGhim, setHienMenuGhim] = useState(false);
   const nutGhim = useRef<HTMLButtonElement>(null);
   const dayMau = useRef<HTMLDivElement>(null);
@@ -198,8 +237,19 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
       // bỏ qua
     }
     if (!k.daNhich) {
+      if (cheDoNoi && coCauNoi) {
+        if (noiChon === null) setNoiChon(k.id);
+        else if (noiChon === k.id) setNoiChon(null);
+        else thuNoi(noiChon, k.id);
+        return;
+      }
       setXem(k.id);
       return;
+    }
+    // Gói B21: kéo note thả lên note khác = nối hai note.
+    if (coCauNoi && typeof document !== 'undefined' && typeof document.elementsFromPoint === 'function') {
+      const dich = document.elementsFromPoint(e.clientX, e.clientY).map((el) => el.closest<HTMLElement>('[data-the]')?.dataset.the).find((id) => !!id && id !== k.id);
+      if (dich) thuNoi(k.id, dich);
     }
     const cuoiX = k.xHienTai;
     const cuoiY = k.yHienTai;
@@ -284,6 +334,16 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                   />
                 );
               })}
+              {chiRoi
+                ? (() => {
+                    const a = ghim(chiRoi.a);
+                    const b = ghim(chiRoi.b);
+                    if (!a || !b) return null;
+                    const mx = (a.x + b.x) / 2;
+                    const my = (a.y + b.y) / 2 + 30;
+                    return <path key={chiRoi.k} className="bang__chi bang__chi--roi" d={`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`} pathLength={1} />;
+                  })()
+                : null}
             </svg>
             {bang.the.length === 0 ? <p className="bang__trong">Bảng còn trống.</p> : null}
             {ghep && buocGhep ? <TayGhep buoc={buocGhep} a={ghim(ghep.the[0] ?? '')} b={ghim(ghep.the[1] ?? '')} ten={tenNguoi ? tenNguoi(ghep.nguoi) : ghep.nguoi} /> : null}
@@ -310,10 +370,11 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
               return (
                 <article
                   key={t.id}
-                  className={`the the--${t.loai} the--ghim-${t.mau}${t.phu === 'TỔNG HỢP' ? ' the--tong-hop' : ''}${t.khongDuLieu && t.loai === 'tin' ? ' is-khong-du-lieu' : ''}${moi === t.id ? ' is-moi' : ''}${keo?.id === t.id ? ' is-keo' : ''}${buocGhep && ghep?.the.includes(t.id) ? ' is-ghep-mau' : ''}`}
+                  data-the={t.id}
+                  className={`the the--${t.loai} the--ghim-${t.mau}${t.loaiNote ? ` the--${t.loaiNote === 'su-that' ? 'su-that' : 'manh-moi'} ${lopGiayNguon(t.nguon)}` : ''}${t.daLenBang ? ' is-da-len' : ''}${noiChon === t.id ? ' is-noi-chon' : ''}${cheDoNoi && coCauNoi && t.loai !== 'cau' && t.loai !== 'hoi' ? ' is-noi-duoc' : ''}${t.cau && cauMoi === t.cau.id ? ' is-moi' : ''}${t.phu === 'TỔNG HỢP' ? ' the--tong-hop' : ''}${t.khongDuLieu && t.loai === 'tin' ? ' is-khong-du-lieu' : ''}${moi === t.id ? ' is-moi' : ''}${keo?.id === t.id ? ' is-keo' : ''}${buocGhep && ghep?.the.includes(t.id) ? ' is-ghep-mau' : ''}`}
                   style={style}
                   tabIndex={0}
-                  aria-label={`${NHAN_LOAI[t.loai]}: ${dienTen(boNgoac(t.nhan))}${chuaXemThe ? ' (mới)' : ''}`}
+                  aria-label={`${NHAN_LOAI[t.loai]}: ${dienTen(boNgoac(t.trenBang ?? t.nhan))}${chuaXemThe ? ' (mới)' : ''}${t.daLenBang ? ' (đã đặt lên bảng chân lý)' : ''}`}
                   onPointerDown={batDauKeo(t)}
                   onPointerMove={dangDi}
                   onPointerUp={thaRa}
@@ -321,7 +382,11 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
-                      setXem(t.id);
+                      if (cheDoNoi && coCauNoi) {
+                        if (noiChon === null) setNoiChon(t.id);
+                        else if (noiChon === t.id) setNoiChon(null);
+                        else thuNoi(noiChon, t.id);
+                      } else setXem(t.id);
                     }
                   }}
                 >
@@ -356,10 +421,24 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                   ) : t.loai === 'vat' || t.loai === 'tai-lieu' ? (
                     <>
                       {anh ? <img className="the__anh" src={anh} alt="" draggable={false} /> : <span className="the__anh the__anh--trong" aria-hidden="true" />}
-                      <span className="the__chu">{dienTen(boNgoac(t.tieuDe ?? t.nhan))}</span>
+                      <span className="the__chu"><ChuNote text={dienTen(boNgoac(t.trenBang ?? t.tieuDe ?? t.nhan))} keyword={t.keyword} /></span>
                     </>
                   ) : t.loai === 'hoi' ? (
                     <span className="the__cau">{dienTen(t.tieuDe ?? t.nhan)}</span>
+                  ) : t.loai === 'cau' ? (
+                    <>
+                      <span className="the__cau-dau" aria-hidden="true">?</span>
+                      <span className="the__loai">Câu hỏi</span>
+                      <p className="the__cau-chu">{dienTen(t.nhan)}</p>
+                      {t.phu ? <span className={`the__cau-dich${t.cau?.daTra ? ' is-xong' : ''}`}>{t.phu}</span> : null}
+                    </>
+                  ) : t.trenBang ? (
+                    <>
+                      <h3 className="the__nhan the__nhan--ten-bang">
+                        <ChuNote text={dienTen(boNgoac(t.trenBang))} keyword={t.keyword} />
+                      </h3>
+                      {t.phu ? <span className="the__nguon">{dienTen(t.phu)}</span> : null}
+                    </>
                   ) : (
                     <>
                       {t.tieuDe && boNgoac(t.tieuDe) !== boNgoac(t.nhan) ? (
@@ -381,7 +460,30 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
           </div>
         </div>
       </div>
-      {children ? <div className="bang__nut">{children}</div> : null}
+      {children || coCauNoi ? (
+        <div className="bang__nut">
+          {coCauNoi ? (
+            <button
+              type="button"
+              className={`bang__mo-may bang__noi-nut${cheDoNoi ? ' is-bat' : ''}`}
+              aria-pressed={cheDoNoi}
+              title="Nối hai note thành một câu hỏi: chạm note này rồi chạm note kia (trên máy tính kéo note này thả lên note kia cũng được)"
+              onClick={() => {
+                setCheDoNoi((v) => !v);
+                setNoiChon(null);
+              }}
+            >
+              {cheDoNoi ? 'Xong nối' : 'Nối note'}
+            </button>
+          ) : null}
+          {children}
+        </div>
+      ) : null}
+      {cheDoNoi && coCauNoi ? (
+        <p className="bang__noi-huong-dan" role="status">
+          {noiChon ? 'Chạm note thứ hai để nối.' : 'Chạm một note, rồi chạm note muốn nối với nó.'}
+        </p>
+      ) : null}
       {onGhim && bang.boGhim.length > 0 ? (
         <div className="bang__chua-ghim" role="group" aria-label={`Chưa ghim (${bang.boGhim.length} thẻ)`}>
           <span className="bang__chua-ghim-nhan">Chưa ghim</span>
@@ -427,7 +529,7 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
             }}
           >
             {/* Đầu ghim: cố định cho thẻ câu hỏi trung tâm, tương tác đổi màu cho các thẻ khác */}
-            {theXem.loai === 'hoi' || theXem.id === MA_THE_HOI ? (
+            {theXem.loai === 'hoi' || theXem.loai === 'cau' || theXem.id === MA_THE_HOI ? (
               <div className="bang__xem-ghim-khu">
                 <div
                   className="bang__xem-ghim-nut bang__xem-ghim-nut--do bang__xem-ghim-nut--tinh"
@@ -506,7 +608,33 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
 
             {/* Thân thẻ phóng to */}
             <div className={`bang__xem-the-than${theXem.loai === 'hoi' ? ' bang__xem-the-than--hoi' : ''}`}>
-              {theXem.loai === 'hoi' ? (
+              {theXem.loai === 'cau' && theXem.cau ? (
+                <div className="bang__xem-hoi-card bang__xem-cau">
+                  <span className="bang__xem-hoi-dau" aria-hidden="true">?</span>
+                  <span className="bang__xem-hoi-loai">Câu hỏi bạn đã nối</span>
+                  <p className="bang__xem-hoi">{dienTen(theXem.nhan)}</p>
+                  <span className="bang__xem-hoi-nhac">
+                    {theXem.cau.dich === 'tra'
+                      ? theXem.cau.daTra
+                        ? 'Đã tra xong: kết quả nằm ở phiếu trên bảng.'
+                        : 'Đích: tra dữ liệu.'
+                      : 'Đích: ra hiện trường — bản đồ đã có thêm một nơi để tìm.'}
+                  </span>
+                  {theXem.cau.dich === 'tra' && !theXem.cau.daTra && onMoTra ? (
+                    <button
+                      type="button"
+                      className="btn btn--primary bang__xem-cau-tra"
+                      onClick={() => {
+                        const id = theXem.cau?.id;
+                        setXem(null);
+                        if (id) onMoTra(id);
+                      }}
+                    >
+                      Mở màn tra
+                    </button>
+                  ) : null}
+                </div>
+              ) : theXem.loai === 'hoi' ? (
                 <div className="bang__xem-hoi-card">
                   <span className="bang__xem-hoi-dau" aria-hidden="true">?</span>
                   <span className="bang__xem-hoi-loai">Trọng tâm điều tra</span>
@@ -529,6 +657,13 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
                       </span>
                     ))}
                   </div>
+                ) : null}
+
+                {theXem.loaiNote && theXem.nguon ? (
+                  <p className={`bang__xem-phan-loai ${lopGiayNguon(theXem.nguon)}`}>
+                    <b>{theXem.loaiNote === 'su-that' ? 'Sự thật' : 'Manh mối'}</b> · {TEN_NGUON_NOTE[theXem.nguon]}
+                    {theXem.daLenBang ? ' · đã đặt lên bảng chân lý' : ''}
+                  </p>
                 ) : null}
 
                 {theXem.gach.length > 0 ? <p className="bang__xem-ghi">Đã loại: {theXem.gach.join(', ')}</p> : null}
@@ -611,4 +746,5 @@ const NHAN_LOAI: Record<TheBang['loai'], string> = {
   vat: 'Vật chứng',
   'tai-lieu': 'Tài liệu',
   hoi: 'Câu hỏi đang mở',
+  cau: 'Câu hỏi nối',
 };

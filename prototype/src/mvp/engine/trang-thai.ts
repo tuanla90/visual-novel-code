@@ -26,6 +26,8 @@ export type BoiCanhChuoi =
   | 'hop'
   /** Chuỗi kết: kết thúc bằng `[KẾT THÚC]`. */
   | 'ket'
+  /** Gói B21: chuỗi `Khi chốt` của một chặng (máy tự chạy khi đạt điều kiện chốt): hết → sang chặng sau. */
+  | 'chang-chot'
   /** Chuỗi của một vụ sau (`lich.vuSau`): phải tự `[ĐI TỚI]` / `[KẾT THÚC]`; hết nút mà không kết là lỗi nội dung. */
   | 'vu';
 
@@ -381,7 +383,7 @@ export interface TrangThaiMvp {
    * `[ĐỐI CHẤT]` đang mở: các thẻ đã trình (mờ đi, không trình lại) và mức cao nhất đã đạt. Mức đạt cũng được ghi thành
    * cờ `<mã>-du` / `<mã>-ho-tro` trong `co` để `[ĐIỀU KIỆN]` dùng. Rời nút → `null`. Ô lưu cũ: không có.
    */
-  doiChat?: { id: string; daTrinh: string[]; muc: 'khong' | 'goi-y' | 'ho-tro' | 'du'; /** Số lần trình thẻ không liên quan. */ sai?: number } | null;
+  doiChat?: { id: string; daTrinh: string[]; muc: 'khong' | 'goi-y' | 'ho-tro' | 'du'; /** Số lần trình thẻ không liên quan. */ sai?: number; /** Gói B21 (`· chỉ ô`): các ô đang chỉ dở (`<dtg>:<ô>`) của câu trả lời nhiều ô. */ o?: string[] } | null;
   /** `tam` (gói B19): kết tạm của bộ có `[CHẤM VỤ]` (rank C). */
   ketQua: 'that' | 'thuong' | 'tam' | null;
   /** Nội dung không nhất quán lúc chạy (chuỗi không tồn tại…); khung nhìn `error`. */
@@ -396,4 +398,16 @@ export interface TrangThaiMvp {
   bangRank?: Record<string, KetQuaChamVuMvp>;
   /** Điểm lưu đầu vụ (mã vụ → trạng thái chụp ở `[ĐIỂM LƯU VỤ]`, không kèm `bangRank` / `diemLuuVu`). */
   diemLuuVu?: Record<string, TrangThaiMvp>;
+
+  // ---------- Gói B21 (docs/mua-1/loi-note-bang-chan-ly.md): note có loại, nối note thành câu hỏi; thiếu = chưa có (ô lưu cũ) ----------
+  /** `[ĐỔI LOẠI <thẻ> → sự thật]`: các thẻ manh mối đã thành sự thật (sang chồng của bảng chân lý). */
+  doiLoai?: string[];
+  /** Các cặp `[NỐI]` đã mở (do `[CÁC CÂU NỐI]` chạy qua), theo mã câu hỏi. */
+  cauNoiMo?: string[];
+  /** Các câu hỏi người chơi đã nối ra (thẻ câu hỏi trên bảng manh mối; mã dùng được ở `Chốt khi` và `[NẾU có …]`). */
+  cauNoiXong?: string[];
+  /** Ghim / chuỗi `→ hiện trường` đã mở thêm trên bản đồ (mã chuỗi của chỗ bấm). */
+  hienTruong?: string[];
+  /** Thẻ thử thách mở từ một câu hỏi nối `→ tra` (đóng thì về lại chỗ đang đứng, không chạy dữ kiện). */
+  traTuNoi?: string | null;
 }

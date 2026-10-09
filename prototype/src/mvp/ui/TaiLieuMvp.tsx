@@ -5,6 +5,7 @@
  * 03/10/2026 (user: "làm lại cho đẹp hơn, gaming hơn"): kiểu "nhận vật phẩm" — nền tối có tia sáng xoay, ruy băng
  * "Hồ sơ mới", thẻ bật lên kèm ảnh của thẻ (trường `Ảnh`) nếu có, nhãn loại có màu, nút vàng.
  */
+import { nguonKhaiCua, TEN_NGUON_NOTE } from '../engine/note';
 import type { KichBanMvp, TheHoSoMvp } from '../../content/mvp/types';
 import { soundEngine } from '../../shared/audio/sound-engine';
 import { CodeText } from '../../shared/ui/CodeText';
@@ -23,7 +24,8 @@ export function TaiLieuMvp({ kb, id, dienTen, onCat }: TaiLieuMvpProps) {
   const the = kb.hoSo[id];
   if (!the) return <p className="game__error">Không có thẻ hồ sơ này.</p>;
   const anh = the.fields['Ảnh'] ? anhTheoTen(the.fields['Ảnh']) : undefined;
-  const nguon = the.fields['Nguồn'];
+  const nguonKhai = nguonKhaiCua(the.fields);
+  const nguon = nguonKhai ? (the.fields['Nguồn trên bảng'] ?? TEN_NGUON_NOTE[nguonKhai]) : the.fields['Nguồn'];
   const noiDung = the.fields['Nội dung'] ?? (the.quotes['Nội dung hiển thị'] ? undefined : the.fields['Nội dung hiển thị']);
   const trich = the.quotes['Nội dung hiển thị'] ?? [];
   return (

@@ -5,11 +5,23 @@
  */
 import type { TheHoSoMvp } from '../../content/mvp/types';
 import { CodeText } from '../../shared/ui/CodeText';
+import { nguonKhaiCua, TEN_NGUON_NOTE, thongTinTuThe } from '../engine/note';
+import { ChuNote, lopGiayNguon } from './note-ui';
 
 const NHAN_LOAI: Record<TheHoSoMvp['loai'], string> = { clue: 'Giấy nhớ', doc: 'Tài liệu', ev: 'Bằng chứng' };
 
 export function TheHoSo({ the, dienTen }: { the: TheHoSoMvp; dienTen: (t: string) => string }) {
-  const nguon = the.fields['Nguồn'];
+  // Gói B21: `Nguồn` là một trong năm nguồn của note thì hiện chữ nguồn trên bảng (hay tên nguồn), không hiện mã; thẻ có khai loại / nguồn
+  // thì thêm dòng phân loại (manh mối hay sự thật, nguồn nào) và tô keyword.
+  const nguonKhai = nguonKhaiCua(the.fields);
+  const nguon = nguonKhai ? (the.fields['Nguồn trên bảng'] ?? TEN_NGUON_NOTE[nguonKhai]) : the.fields['Nguồn'];
+  const coLoai = the.fields['Loại'] !== undefined || nguonKhai !== null;
+  const tt = thongTinTuThe(the, the.id, false);
+  const phanLoai = coLoai ? (
+    <p className={`mvp-the__phan-loai ${lopGiayNguon(tt.nguon)}`}>
+      <b>{tt.loai === 'su-that' ? 'Sự thật' : 'Manh mối'}</b> · {TEN_NGUON_NOTE[tt.nguon]}
+    </p>
+  ) : null;
   const noiDung = the.fields['Nội dung'] ?? (the.quotes['Nội dung hiển thị'] ? undefined : the.fields['Nội dung hiển thị']);
   const trich = the.quotes['Nội dung hiển thị'] ?? [];
 
@@ -29,11 +41,12 @@ export function TheHoSo({ the, dienTen }: { the: TheHoSoMvp; dienTen: (t: string
         </div>
 
         <header className="mvp-the__dau mvp-doc-to__dau">
-          <h3 className="mvp-the__tieude"><CodeText text={dienTen(tieuDe)} /></h3>
+          <h3 className="mvp-the__tieude"><ChuNote text={dienTen(tieuDe)} keyword={tt.keyword} /></h3>
           {tieuDe !== the.heading && boNgoac(tieuDe) !== boNgoac(the.heading) ? (
             <span className="mvp-the__ma" title="Mã tài liệu">{dienTen(the.heading)}</span>
           ) : null}
           {nguon ? <p className="mvp-the__nguon">Nguồn: <CodeText text={dienTen(nguon)} /></p> : null}
+          {phanLoai}
         </header>
 
         {/* Đoạn văn bản trước dạng fake hình chữ nhật */}
@@ -47,7 +60,7 @@ export function TheHoSo({ the, dienTen }: { the: TheHoSoMvp; dienTen: (t: string
         <div className="mvp-doc-to__trong-tam">
           {noiDung ? (
             <p className="mvp-the__noidung">
-              <CodeText text={dienTen(noiDung)} />
+              <ChuNote text={dienTen(noiDung)} keyword={tt.keyword} />
             </p>
           ) : null}
           {trich.length > 0 ? (
@@ -89,15 +102,16 @@ export function TheHoSo({ the, dienTen }: { the: TheHoSoMvp; dienTen: (t: string
     <article className={`mvp-the mvp-the--${the.loai}`}>
       <header className="mvp-the__dau">
         <span className="mvp-the__loai">{NHAN_LOAI[the.loai]}</span>
-        <h3 className="mvp-the__tieude"><CodeText text={dienTen(tieuDe)} /></h3>
+        <h3 className="mvp-the__tieude"><ChuNote text={dienTen(tieuDe)} keyword={tt.keyword} /></h3>
         {tieuDe !== the.heading && boNgoac(tieuDe) !== boNgoac(the.heading) ? (
           <span className="mvp-the__ma" title="Mã hồ sơ">{dienTen(the.heading)}</span>
         ) : null}
         {nguon ? <p className="mvp-the__nguon">Nguồn: <CodeText text={dienTen(nguon)} /></p> : null}
+        {phanLoai}
       </header>
       {noiDung ? (
         <p className="mvp-the__noidung">
-          <CodeText text={dienTen(noiDung)} />
+          <ChuNote text={dienTen(noiDung)} keyword={tt.keyword} />
         </p>
       ) : null}
       {trich.length > 0 ? (

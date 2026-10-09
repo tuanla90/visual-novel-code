@@ -24,8 +24,18 @@ export interface TepLoiHoiDap {
 
 /** Tệp lời viết sẵn của bạn đi cùng ("việc chính", "gợi ý"), không phải tờ dữ kiện. */
 export const TEP_DONG_HANH = 'dong-hanh.json';
-/** Tên tệp lời (thứ tự truyện) dùng cho lời của bạn đi cùng: lời dùng từ Vụ 1. */
-const TEN_DONG_HANH = '01-ngay-1';
+/**
+ * Tên tệp lời (thứ tự truyện) mà lời của bạn đi cùng xếp vào (lời dùng từ Vụ 1). Mặc định cũ `01-ngay-1`; nội dung đổi tên tệp (vd `01-chang-1`)
+ * thì lấy tệp đầu tiên của kich-ban/ không phải tệp mở đầu `00-…` (không có thì tệp đầu), hay giá trị khai ở `dong-hanh.json` (trường `tepLoi`).
+ */
+export const TEN_DONG_HANH_MAC_DINH = '01-ngay-1';
+export function tenTepDongHanh(thuMucGoc: string, j: Json = {}): string {
+  if (typeof j.tepLoi === 'string' && j.tepLoi.trim() !== '') return j.tepLoi.trim();
+  const kb = join(thuMucGoc, 'kich-ban');
+  if (!existsSync(kb)) return TEN_DONG_HANH_MAC_DINH;
+  const ds = readdirSync(kb).filter((x) => x.endsWith('.md')).sort().map((x) => x.replace(/.md$/, ''));
+  return ds.find((x) => !x.startsWith('00-')) ?? ds[0] ?? TEN_DONG_HANH_MAC_DINH;
+}
 
 type Json = Record<string, unknown>;
 const laObj = (v: unknown): v is Json => typeof v === 'object' && v !== null && !Array.isArray(v);
@@ -107,7 +117,7 @@ export function tepCuaHoiDap(thuMucGoc: string): Map<string, string> {
 }
 
 /** Tệp lời giả của `dong-hanh.json`: mỗi lời viết sẵn một dòng của đúng bạn đi cùng nói nó. */
-export function tepLoiDongHanh(j: Json, raw: string, duongDan: string): TepLoiHoiDap {
+export function tepLoiDongHanh(j: Json, raw: string, duongDan: string, ten: string = TEN_DONG_HANH_MAC_DINH): TepLoiHoiDap {
   const dong: string[] = [`# Lời · ${duongDan}`, '## hd.dong-hanh'];
   const banDo: number[] = [1, 1];
   const loi = laObj(j.loi) ? j.loi : {};
@@ -121,7 +131,7 @@ export function tepLoiDongHanh(j: Json, raw: string, duongDan: string): TepLoiHo
       }
     }
   }
-  return { ten: TEN_DONG_HANH, duongDan, noiDung: dong.join('\n'), banDo };
+  return { ten, duongDan, noiDung: dong.join('\n'), banDo };
 }
 
 /** Tệp lời giả của mọi tờ trong `<thuMucGoc>/hoi-dap/` (bỏ chung.json; tệp JSON hỏng thì bỏ qua — bộ đọc báo lỗi). */
@@ -135,7 +145,7 @@ export function tepLoiHoiDap(thuMucGoc: string, hienThi: string): TepLoiHoiDap[]
       const raw = readFileSync(join(thuMuc, f), 'utf8');
       try {
         const j: unknown = JSON.parse(raw);
-        if (laObj(j)) ra.push(tepLoiDongHanh(j, raw, `${hienThi}/${f}`));
+        if (laObj(j)) ra.push(tepLoiDongHanh(j, raw, `${hienThi}/${f}`, tenTepDongHanh(thuMucGoc, j)));
       } catch {
         // JSON hỏng: bộ đọc báo lỗi.
       }

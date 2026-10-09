@@ -21,6 +21,9 @@ export interface KhungNguonBangV7Props {
   onMoXemTruoc: () => void;
   /** Gói B17: đổi nhãn trên màn theo mức SQL (`engine/nhan-man-tra.ts`); thiếu = giữ chữ tiếng Việt. */
   nhan?: (chu: string) => string;
+  /** Gói B21: chữ tiếng Việt trên khối bảng / cột (câu SQL vẫn là tên thật); thiếu = tên thật. */
+  nhanBang?: (ten: string) => string;
+  nhanCot?: (ten: string) => string;
 }
 
 export function KhungNguonBangV7({
@@ -40,6 +43,8 @@ export function KhungNguonBangV7({
   onDoiNoiBang,
   onMoXemTruoc,
   nhan = (chu) => chu,
+  nhanBang = (t) => t,
+  nhanCot = (t) => t,
 }: KhungNguonBangV7Props) {
   const coNhieuBangGoc = danhSachBangChon && danhSachBangChon.length > 1;
   const coNoiBang = !!cauNoiBang?.bang;
@@ -68,7 +73,7 @@ export function KhungNguonBangV7({
             <option value="">chọn bảng…</option>
             {danhSachBangChon.map((ten) => (
               <option key={ten} value={ten}>
-                {ten}
+                {nhanBang(ten)}
               </option>
             ))}
           </select>
@@ -83,11 +88,11 @@ export function KhungNguonBangV7({
             }}
           >
             <option value="">chọn bảng…</option>
-            <option value={bang.ten}>{bang.ten}</option>
+            <option value={bang.ten}>{nhanBang(bang.ten)}</option>
           </select>
         ) : (
           <span className="v7-o v7-o--bang" title={`Bảng ${bang.ten}`}>
-            <IconLock className="v7-bt" /> {bang.ten}
+            <IconLock className="v7-bt" /> {nhanBang(bang.ten)}
           </span>
         )}
         <small>{daChonBang ? `${tongDong} dòng` : 'chưa chọn bảng'}</small>
@@ -102,14 +107,14 @@ export function KhungNguonBangV7({
             type="button"
             className={`v7-o v7-o--bang v7-o--noi-bang${cauNoiBang?.bang ? '' : ' is-trong'}`}
             disabled={khoa}
-            aria-label={`Nối với bảng: ${cauNoiBang?.bang || 'chưa nối'} — bấm để đổi`}
+            aria-label={`Nối với bảng: ${cauNoiBang?.bang ? nhanBang(cauNoiBang.bang) : 'chưa nối'} — bấm để đổi`}
             onClick={() => {
               const k = cauNoiBang?.bang ? bangNoiDuoc.indexOf(cauNoiBang.bang) + 1 : 0;
               const b = bangNoiDuoc[k % (bangNoiDuoc.length + 1)] ?? undefined;
               onDoiNoiBang(b);
             }}
           >
-            {cauNoiBang?.bang || 'chưa nối'}
+            {cauNoiBang?.bang ? nhanBang(cauNoiBang.bang) : 'chưa nối'}
           </button>
           {cauNoiBang?.bang ? (
             <>
@@ -120,13 +125,13 @@ export function KhungNguonBangV7({
                 type="button"
                 className="v7-o v7-o--cot"
                 disabled={khoa}
-                aria-label={`Khóa nối: ${cauNoiBang.cot} — bấm để đổi`}
+                aria-label={`Khóa nối: ${nhanCot(cauNoiBang.cot)} — bấm để đổi`}
                 onClick={() => {
                   const ke = cotChung[(cotChung.indexOf(cauNoiBang.cot) + 1) % Math.max(1, cotChung.length)];
                   onDoiNoiBang(cauNoiBang.bang, ke ?? '');
                 }}
               >
-                {cauNoiBang.cot || 'chưa chọn cột'}
+                {cauNoiBang.cot ? nhanCot(cauNoiBang.cot) : 'chưa chọn cột'}
               </button>
             </>
           ) : null}

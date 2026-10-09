@@ -73,6 +73,7 @@ import { RUNG_MS, demSo, hepLai, thuocTinhDongRung, useRungBang, type BangKetQua
 import { giamChuyenDong, ngu } from './nhip';
 import { CANH_TRA, type CanhTra, type NguonPhieuV7 } from './canh-tra';
 import { KhungNguonBangV7 } from './KhungNguonBangV7';
+import { nhanKhoi } from '../../engine/nhan-khoi';
 import { KhungCotVaXepV7 } from './KhungCotVaXepV7';
 import { XemTruocBangModal } from './XemTruocBangModal';
 import { boNhapManTra, ghiNhapManTra, layNhapManTra } from './nhap-man-tra';
@@ -148,6 +149,8 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   const muc: MucSqlMvp = mode === 'fix-query' ? 'ghep' : (mucSql ?? 'ghep');
   const tuViet = muc === 'tu-viet';
   const nh = useMemo(() => nhanManTra(muc), [muc]);
+  // Gói B21: chữ tiếng Việt trên khối bảng / cột (câu SQL và ô gõ tay giữ tên thật).
+  const nk = useMemo(() => nhanKhoi(duLieu, muc), [duLieu, muc]);
   const tuNoi = tuGoiY(mucNhapVai ?? 'tu-do');
   const [goSql, setGoSql] = useState<string>(() => nhap?.goSql ?? '');
   // Điện thoại, bàn phím ảo mở (ban-phim-ao.ts): `.v7-san` bị scale nên ô gõ trong đó không neo lên vùng thấy được bằng
@@ -774,6 +777,8 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
         {bang ? (
           <KhungNguonBangV7
             nhan={nh}
+            nhanBang={nk.bang}
+            nhanCot={(t) => nk.cot(t, bang.ten)}
             bang={bang}
             daChonBang={daChonBang}
             chonBang={chonBang}
@@ -844,10 +849,10 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                     className="v7-o v7-o--cot"
                     disabled={khoa || laChieu}
                     title={laChieu ? 'Cột cố định trên màn chiếu' : undefined}
-                    aria-label={`Cột của điều kiện ${i + 1}: ${d.cot}${laChieu ? ' (cố định)' : ' — bấm để đổi'}`}
+                    aria-label={`Cột của điều kiện ${i + 1}: ${nk.cot(d.cot, bang?.ten)}${laChieu ? ' (cố định)' : ' — bấm để đổi'}`}
                     onClick={() => doiDk(i, (x) => ({ ...x, cot: cot[(cot.indexOf(x.cot) + 1) % cot.length] ?? x.cot }))}
                   >
-                    {d.cot}
+                    {nk.cot(d.cot, bang?.ten)}
                   </button>
                   {khoi.chuanHoa && kieuCot(d.cot) === 'TEXT' ? (
                     <button
@@ -855,7 +860,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                       className={`v7-o v7-o--got${d.chuanHoa && d.chuanHoa !== 'khong' ? ' is-bat' : ''}`}
                       disabled={khoa || laChieu}
                       title={laChieu ? 'Gọt cột cố định trên màn chiếu' : 'Làm sạch cột: để nguyên / bỏ cách / chữ thường / cả hai'}
-                      aria-label={`Gọt cột ${d.cot} trước khi so: ${TEN_CHUAN_HOA[d.chuanHoa ?? 'khong']}${laChieu ? ' (cố định)' : ' — bấm để đổi'}`}
+                      aria-label={`Gọt cột ${nk.cot(d.cot, bang?.ten)} trước khi so: ${TEN_CHUAN_HOA[d.chuanHoa ?? 'khong']}${laChieu ? ' (cố định)' : ' — bấm để đổi'}`}
                       onClick={() => doiDk(i, (x) => ({ ...x, chuanHoa: VONG_CHUAN_HOA[(VONG_CHUAN_HOA.indexOf(x.chuanHoa ?? 'khong') + 1) % VONG_CHUAN_HOA.length] ?? 'khong' }))}
                     >
                       <span className="v7-o--got-icon" aria-hidden="true">✨</span> {TEN_CHUAN_HOA[d.chuanHoa ?? 'khong']}
@@ -955,6 +960,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
 
         <KhungCotVaXepV7
           nhan={nh}
+          nhanCot={(t) => nk.cot(t, bang?.ten)}
           chonCot={chonCot}
           bang={bang}
           cotLay={cotLay}

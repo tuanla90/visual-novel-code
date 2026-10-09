@@ -123,13 +123,13 @@ export const HOI_DAP_MUA_1 = {
       ],
       "khac": [
         "cậu nghĩ ai viết lá thư",
-        "anh Quân là người thế nào",
+        "anh Chủ tịch Hội là người thế nào",
         "cậu học ngành gì",
         "hôm nay trời đẹp nhỉ",
         "tớ nghĩ là Hoài viết",
         "cậu có thích đọc truyện trinh thám không",
         "tối nay đi ăn gì",
-        "cậu thấy cô Lan có khó tính không",
+        "cậu thấy bác bảo vệ có khó tính không",
         "chào cậu",
         "cảm ơn cậu nhé"
       ]

@@ -104,6 +104,18 @@ export interface KetQuaChamVuMvp {
   thieu: string[];
 }
 
+/**
+ * Gói B21 `[NỐI <a> + <b> → câu hỏi: "<chữ>" · → tra <thẻ thử thách>|→ hiện trường <ghim:<mã> hoặc chuỗi>]`: người chơi nối hai note
+ * trên bảng manh mối thì ra giấy nhớ câu hỏi và mở đích. Nối sai cặp: sợi chỉ rơi, không phạt.
+ */
+export interface CauNoiMvp {
+  /** Mã câu hỏi (thẻ câu hỏi; dùng được ở `Chốt khi` và `[NẾU có …]`). Mặc định `cau-<a>-<b>`; `· mã: <mã>` đặt lại. */
+  id: string;
+  the: [string, string];
+  cau: string;
+  dich: { kind: 'tra'; thuThach: string } | { kind: 'hien-truong'; ghim: string | null; chuoi: string | null };
+}
+
 export interface LuaChonMvp {
   id: string;
   text: string;
@@ -207,9 +219,29 @@ export interface DiaDiemMvp {
   duKien: DuKienMvp[];
 }
 
+/**
+ * Gói B21 (docs/mua-1/loi-note-bang-chan-ly.md §10): CHẶNG thay "ngày" trong vòng điều tra — `## Chặng n · <Tên> {chặng: n · …}` ở
+ * lich.md. Chặng là một `NgayMvp` kiểu `theo-truyen` mang thêm trường này: trong chặng KHÔNG có nút "Hết ngày"; chặng hết khi đạt
+ * điều kiện chốt (`chotKhi`, máy tự chạy chuỗi `khiChot` rồi sang chặng sau) hoặc khi gặp `[HẾT CHẶNG]`.
+ */
+export interface ChangMvp {
+  /** Ngày truyện của chặng (YYYY-MM-DD); thiếu = giữ ngày hiện tại. */
+  ngayTruyen: string | null;
+  /** Giờ truyện (HH:MM) hiện cạnh tên chặng. */
+  gio: string | null;
+  /** `- Chốt khi: có a, b`: mọi mã (thẻ hồ sơ, cờ, câu hỏi nối) đã có thì chặng chốt (VÀ). Rỗng = chỉ `[HẾT CHẶNG]` mới chốt. */
+  chotKhi: string[];
+  /** `- Khi chốt: <chuỗi>`: chuỗi máy tự chạy khi chặng chốt, hết chuỗi thì sang chặng sau. */
+  khiChot: string | null;
+  /** `- Có mặt: <nhân vật> ở <ghim>, …`: ai đang ở ghim nào của bản đồ suốt chặng (thay lịch "Thường ở" theo giờ). */
+  coMat: { nhanVat: string; noi: string }[];
+}
+
 export interface NgayMvp {
   so: number;
   ten: string;
+  /** Gói B21: ngày này là một chặng. */
+  chang?: ChangMvp;
   /**
    * `dia-diem`: ngày chọn địa điểm × khung giờ (dữ kiện chính, buổi tối — QĐ-086).
    * `theo-truyen` (chương 1, ĐÃ CHỐT C 30/09/2026): chạy MỘT chuỗi `chuoi` từ đầu tới cuối, không bản đồ, không khung giờ;
@@ -337,7 +369,7 @@ export type NutMvp =
       id: string;
       asker: { speaker: string; text: string };
       cauHoi: string;
-      bangChung: { id: string; muc: MucDoiChatMvp; feedback: LoiMvp[] }[];
+      bangChung: { id: string; muc: MucDoiChatMvp; feedback: LoiMvp[]; /** Gói B21 (`· chỉ ô`): các ô của câu trả lời, dạng `<dtg>:<ô>` hoặc `<dtg>:?` (ô trống bắt buộc). */ o?: string[] }[];
       chuaDu: LoiMvp[];
       khac: LoiMvp[];
       /** `[HẾT LƯỢT]` (03/10/2026): lời khi người chơi trình sai (thẻ không liên quan) đủ số lần cho phép — đối chất dừng ở mức đang đạt. */
@@ -349,6 +381,8 @@ export type NutMvp =
        * Gói B19 (`· tính vạch`): thẻ `dung` đi tiếp, thẻ `sai` / thẻ khác thêm một vạch và chọn lại; không có "chưa đủ", hết lượt.
        */
       tinhVach?: TinhVachMvp;
+      /** Gói B21 `· chỉ ô`: người chơi trả lời bằng cách chỉ ô trên bảng chân lý (`bangChung[].o`). */
+      chiO?: boolean;
     }
   /** `[XONG VIỆC CHÍNH]` (A5): hiện nút "Hết ngày" */
   | { type: 'xong-viec-chinh' }
@@ -379,6 +413,12 @@ export type NutMvp =
       /** User 09/10: người ghép làm mẫu ba bước (ghim hai thẻ, nối chỉ đỏ, viết giấy nhớ), mỗi bước một câu. Thiếu = diễn một lần. */
       lamMau?: { speaker: string; expression?: string; text: string }[];
     }
+  /** Gói B21 `[HẾT CHẶNG]`: sang chặng kế (hết chặng cuối thì sang buổi họp). Máy tự chạy qua. */
+  | { type: 'het-chang' }
+  /** Gói B21 `[ĐỔI LOẠI <thẻ> → sự thật]`: manh mối thành sự thật (thẻ chuyển sang chồng của bảng chân lý). Máy tự chạy qua. */
+  | { type: 'doi-loai'; the: string }
+  /** Gói B21 `[CÁC CÂU NỐI]` … `[HẾT CÁC CÂU NỐI]`: mở các cặp note người chơi nối được trên bảng manh mối. Máy tự chạy qua. */
+  | { type: 'cac-cau-noi'; cac: CauNoiMvp[] }
   | { type: 'effect'; effectId: string }
   | { type: 'line-pick'; id: string; lines: { index: number; sql: string; correct: boolean; feedback: LoiMvp[] }[]; truUyTin: boolean }
   | { type: 'projector'; id: string; source: { kind: 'sql'; sql: string } | { kind: 'evidence'; evidenceId: string }; run: boolean; expectedRowCount?: number }
@@ -571,6 +611,8 @@ export interface KichBanMvp {
   dieuHuongTuDo?: boolean;
   /** Gói B19: dòng thời gian (`dong-thoi-gian.md`) theo mã. Thiếu = bộ không có. */
   dongThoiGian?: Record<string, DongThoiGianMvp>;
+  /** Gói B21: mọi cặp `[NỐI]` của bộ (gom từ các `[CÁC CÂU NỐI]`). Thiếu = bộ không có. */
+  cacCauNoi?: CauNoiMvp[];
 }
 
 // ---------- Hỏi nhân chứng (gói B12, docs/mua-1/brief/b12-vu-1.md) ----------
@@ -725,6 +767,10 @@ export interface DongHanhHoiDapMvp {
 
 /** Bảng dữ liệu: cột có kiểu SQLite, hàng theo đúng thứ tự cột; `null` = ô NULL. */
 export interface BangDuLieuMvp {
+  /** Gói B21 `{bảng · nhãn: Sinh viên}`: chữ tiếng Việt hiện trên khối bảng ở màn tra (câu SQL vẫn là tên thật). */
+  nhan?: string;
+  /** Gói B21 `- Nhãn: ma_sv=Mã sinh viên, …`: chữ tiếng Việt hiện trên khối cột theo tên cột. */
+  nhanCot?: Record<string, string | undefined>;
   ten: string;
   cot: { ten: string; kieu: 'TEXT' | 'INTEGER' }[];
   dong: (string | number | null)[][];

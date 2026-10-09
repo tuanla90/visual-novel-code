@@ -35,6 +35,8 @@
 // Gộp import giá trị và import kiểu trong MỘT câu (Vite bỏ import giá trị khi có `import type` cùng module riêng).
 import {
   CAC_TRUONG_BIET,
+  type CauNoiMvp,
+  type ChangMvp,
   type ChuoiMvp,
   type DiaDiemMvp,
   type DiemKhamPhaMvp,
@@ -47,6 +49,7 @@ import {
   type KichBanMvp,
   type LoiMvp,
   type MocMvp,
+  type NgayMvp,
   type NutMvp,
   type NhiemVuPhuMvp,
   type TheThuThachMvp,
@@ -58,6 +61,9 @@ import { boCoChamVu, chamVu, rankHienTai, soVaTenVu, vuCoChamVu } from './cham-v
 import { banDungSan, boTheSai, datTuDo, dongThoiGianDung, dongThoiGianXong, goThe, thaDung } from './dong-thoi-gian';
 import { MAU_GHIM, type BoiCanhChuoi, type CachChoiMvp, type HetNgayMvp, type KhamPhaMvp, type MauGhimMvp, type MucNhapVaiMvp, type MucSqlMvp, type TrangThaiMvp, type GhiChuTruyVanMvp, type PhieuTruyVanMvp, type TiepTucTuyenMvp } from './trang-thai';
 import { laTheHoiDap } from './bang-dieu-tra';
+import { cauHoiDaNoi } from './note';
+
+export { cauHoiDaNoi };
 import { apBiet } from './biet-ve';
 import { cachChoiCua, dongBong, dongChuaGach, ghiTuDong, goiY, hoi, keTiep, khoiThayThe, khungHoiDap, laLoiDaThay, locHauQuaDaThay, moBuoiHoi, napLaiLuot, roiDi, tienDoCua, toHoiDap, type KhungHoiDapMvp } from './hoi-dap';
 import { datMuc, laMucNhapVai, laMucSql, quenCachTamThoi } from './muc-choi';
@@ -195,6 +201,14 @@ export type HanhDongMvp =
   | { type: 'dat-the-dtg'; o: string; the: string }
   /** Bảng chân lý: nhấc note khỏi ô về chồng (dòng chính). */
   | { type: 'go-the-dtg'; o: string }
+  /** Gói B21: nối hai note trên bảng manh mối. Cặp có khai (`[NỐI]` đã mở) → ra câu hỏi và mở đích; không khai → máy đứng yên (giao diện cho sợi chỉ rơi, `timCauNoi`). */
+  | { type: 'noi-the'; a: string; b: string }
+  /** Gói B21: mở lại đích "→ tra" của một câu hỏi đã nối (bấm thẻ câu hỏi trên bảng). */
+  | { type: 'mo-tra-noi'; cau: string }
+  /** Gói B21: rời màn tra mở từ câu hỏi nối (chưa tra xong) về chỗ đang đứng. */
+  | { type: 'dong-tra-noi' }
+  /** Gói B21: `[ĐỐI CHẤT … · chỉ ô]` — chỉ một ô của bảng chân lý (`<dtg>:<ô>`, ô trống bắt buộc là `<dtg>:?`). */
+  | { type: 'chi-o'; o: string }
   /** Gói B19: màn sửa truy vấn `· tính vạch`, bấm "Trình" mà câu chưa đúng → thêm một vạch (lời do giao diện hiện, `loiTrinhSai`). */
   | { type: 'trinh-sai' }
   /** Gói B19: "Chơi lại Vụ n" — về điểm lưu đầu vụ (`vu` thiếu = vụ đang chơi); bảng rank giữ. `luc` = mốc ván mới. */
@@ -233,7 +247,7 @@ export type KhungNhinMvp =
   | { kind: 'chon-dia-diem'; diaDiem: DiaDiemHienMvp[]; khungConLai: number }
   | { kind: 'question'; nut: Extract<NutMvp, { type: 'question' }>; lanThu: number }
   /** `[ĐỐI CHẤT]`: thẻ đã trình (mờ, không trình lại), mức cao nhất đã đạt, số lần trình. */
-  | { kind: 'doi-chat'; nut: Extract<NutMvp, { type: 'doi-chat' }>; daTrinh: string[]; muc: 'khong' | 'goi-y' | 'ho-tro' | 'du'; lanThu: number; /** Lần trình sai còn lại trước khi hết lượt. */ conLuot: number }
+  | { kind: 'doi-chat'; nut: Extract<NutMvp, { type: 'doi-chat' }>; daTrinh: string[]; muc: 'khong' | 'goi-y' | 'ho-tro' | 'du'; lanThu: number; /** Lần trình sai còn lại trước khi hết lượt. */ conLuot: number; /** Gói B21 (`· chỉ ô`): các ô đang chỉ dở của câu trả lời nhiều ô. */ oDangChon: string[] }
   | { kind: 'line-pick'; nut: Extract<NutMvp, { type: 'line-pick' }>; lanThu: number }
   | { kind: 'branch'; nut: Extract<NutMvp, { type: 'branch' }>; luaChon: Extract<NutMvp, { type: 'branch' }>['choices'] }
   | { kind: 'show-document'; documentId: string }
@@ -736,8 +750,9 @@ function nutKhamPha(kb: KichBanMvp, kp: KhamPhaMvp): Extract<NutMvp, { type: 'ex
 }
 
 /** Chỗ bấm hiện khi mọi chuỗi ở "sau:" đã xem. */
-export function diemDangHien(nut: Extract<NutMvp, { type: 'explore' }>, daXem: readonly string[]): DiemKhamPhaHienMvp[] {
-  return nut.diem.filter((d) => d.sau.every((x) => daXem.includes(x))).map((d) => ({ diem: d, daXem: daXem.includes(d.chuoi) }));
+export function diemDangHien(nut: Extract<NutMvp, { type: 'explore' }>, daXem: readonly string[], hienTruong: readonly string[] = []): DiemKhamPhaHienMvp[] {
+  // Gói B21: `→ hiện trường` mở thêm chỗ bấm dù "sau:" chưa đủ (`hienTruong` = chuỗi của chỗ bấm đã mở).
+  return nut.diem.filter((d) => hienTruong.includes(d.chuoi) || d.sau.every((x) => daXem.includes(x))).map((d) => ({ diem: d, daXem: daXem.includes(d.chuoi) }));
 }
 
 /** Việc chính của cảnh đã xong: có điểm đánh dấu ! thì xem hết các điểm ! (điểm ? là tùy chọn); không có dấu nào thì phải xem hết. */
@@ -821,6 +836,65 @@ function loi(s: TrangThaiMvp, message: string): TrangThaiMvp {
   return { ...s, loi: message, conTro: null };
 }
 
+// ---------- Gói B21: chặng ----------
+
+/** Chặng đang chơi (giai đoạn `ngay` mà ngày hiện tại là một chặng); không phải chặng → `undefined`. */
+export function changHienTai(kb: KichBanMvp, s: TrangThaiMvp): (NgayMvp & { chang: ChangMvp }) | undefined {
+  if (s.giaiDoan !== 'ngay') return undefined;
+  const n = kb.lich.ngay.find((x) => x.so === s.ngay);
+  return n?.chang ? (n as NgayMvp & { chang: ChangMvp }) : undefined;
+}
+
+/** Ai đang ở ghim nào trong chặng đang chơi (`- Có mặt:` ở lich.md); không phải chặng hay chặng không khai → `null` (dùng lịch "Thường ở"). */
+export function coMatChang(kb: KichBanMvp, s: TrangThaiMvp): { nhanVat: string; noi: string }[] | null {
+  const ch = changHienTai(kb, s)?.chang;
+  return ch && ch.coMat.length > 0 ? ch.coMat : null;
+}
+
+/** Mã `có <mã>` của điều kiện chốt đều đã có (thẻ hồ sơ, cờ, câu hỏi nối đã nối). */
+function coMa(s: TrangThaiMvp, id: string): boolean {
+  return coTrongHoSo(s, id) || (s.cauNoiXong ?? []).includes(id);
+}
+
+/**
+ * Đạt điều kiện chốt của chặng đang chơi thì chạy chuỗi `Khi chốt` (hết chuỗi → sang chặng sau; không có chuỗi → sang luôn). Chỉ xét
+ * ở chỗ yên (cảnh khám phá, hết chuỗi) để không cắt ngang một đoạn thoại đang đọc; không xét trong chính chuỗi `Khi chốt`.
+ */
+function chotChang(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp | null {
+  const n = changHienTai(kb, s);
+  const ch = n?.chang;
+  if (!n || !ch || ch.chotKhi.length === 0 || s.conTro?.boiCanh === 'chang-chot' || s.thuThachDangLam) return null;
+  if (!ch.chotKhi.every((id) => coMa(s, id))) return null;
+  if (ch.khiChot && timChuoi(kb, ch.khiChot)) return nhayToi(kb, { ...s, nhacViec: null, thuThachDangLam: null, traTuNoi: null }, ch.khiChot, 'chang-chot');
+  return sangChangKe(kb, s);
+}
+
+// ---------- Gói B21: nối note thành câu hỏi ----------
+
+/** Cặp `[NỐI]` đã mở khớp hai thẻ `a`, `b` (thứ tự nào cũng được) mà người chơi đang có cả hai; không có → `null`. */
+export function timCauNoi(kb: KichBanMvp, s: TrangThaiMvp, a: string, b: string): CauNoiMvp | null {
+  if (a === b || !coMa(s, a) || !coMa(s, b)) return null;
+  return (kb.cacCauNoi ?? []).find((c) => (s.cauNoiMo ?? []).includes(c.id) && ((c.the[0] === a && c.the[1] === b) || (c.the[0] === b && c.the[1] === a))) ?? null;
+}
+
+/** Mở đích của một câu hỏi vừa nối: `→ tra` mở màn tra (đóng thì về chỗ đang đứng); `→ hiện trường` thêm ghim hoặc chạy một chuỗi. */
+function apDichNoi(kb: KichBanMvp, s: TrangThaiMvp, cau: CauNoiMvp): TrangThaiMvp {
+  const d = cau.dich;
+  if (d.kind === 'tra') return s.thuThachXong.includes(d.thuThach) || s.thuThachDangLam ? s : { ...s, thuThachDangLam: d.thuThach, traTuNoi: d.thuThach };
+  if (d.chuoi) return timChuoi(kb, d.chuoi) ? nhayToi(kb, s, d.chuoi, s.conTro?.boiCanh ?? 'truyen') : s;
+  // Ghim của bản đồ đang chơi (chuỗi của ngày / chặng hiện tại); không tìm được thì xét mọi bản đồ.
+  const chuoiNgay = kb.lich.ngay.find((n) => n.so === s.ngay)?.chuoi;
+  const timTrong = (chuoiId: string | null | undefined): string[] =>
+    (chuoiId ? (timChuoi(kb, chuoiId)?.nodes ?? []) : []).flatMap((n) => (n.type === 'explore' ? n.diem.filter((p) => p.sprite === `ghim:${d.ghim ?? ''}`).map((p) => p.chuoi) : []));
+  const ids = s.giaiDoan === 'ngay' && timTrong(chuoiNgay).length > 0 ? timTrong(chuoiNgay) : kb.chuoi.flatMap((c) => timTrong(c.id));
+  return { ...s, hienTruong: ids.reduce((ds, id) => them(ds, id), s.hienTruong ?? []) };
+}
+
+/** Cả `[HẾT CHẶNG]` lẫn chặng chốt xong: dọn trạng thái dở của chặng cũ rồi sang chặng kế (hết chặng cuối thì sang buổi họp). */
+function sangChangKe(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
+  return ketThucNgay(kb, { ...s, hoiDap: null, buoiHoi: null, khamPha: null, canhLui: null, nhacViec: null, thuThachDangLam: null, traTuNoi: null });
+}
+
 function batDauNgay(kb: KichBanMvp, s: TrangThaiMvp, so: number): TrangThaiMvp {
   const ngay = kb.lich.ngay.find((n) => n.so === so);
   if (!ngay) return batDauHop(kb, s);
@@ -836,6 +910,8 @@ function batDauNgay(kb: KichBanMvp, s: TrangThaiMvp, so: number): TrangThaiMvp {
     conTro: ngay.moNgay ? { chuoi: ngay.moNgay, nut: 0, boiCanh: 'mo-ngay' } : null,
     nhiemVu: null,
   };
+  // Chặng: ngày truyện của chặng thay ngày tính từ lịch (HUD, lịch nhân vật theo thứ đều đọc `ngayThang`).
+  if (ngay.chang?.ngayTruyen) s = { ...s, ngayThang: ngay.chang.ngayTruyen };
   if (ngay.kieu === 'theo-truyen') return { ...s, conTro: ngay.chuoi ? { chuoi: ngay.chuoi, nut: 0, boiCanh: 'truyen' } : null };
   return s;
 }
@@ -926,9 +1002,14 @@ function hetChuoi(kb: KichBanMvp, s: TrangThaiMvp, boiCanh: BoiCanhChuoi): Trang
       const daBam = !!s.hetNgay?.daBam && s.hetNgay.ngay === s.ngay;
       const ve = dieuHuongTuDo(kb) && s.giaiDoan === 'ngay' && !daBam ? banDoCuaNgay(kb, s, null) : null;
       const nutBanDo = ve ? nutKhamPha(kb, ve) : undefined;
-      if (ve && nutBanDo && !xongChinhCua(nutBanDo, ve.daXem)) return { ...s, khamPha: ve, canhLui: null, hoiDap: null, conTro: { ...ve.veLai } };
+      // Gói B21: chặng không có nút "Hết ngày" — chuỗi hết mà chặng chưa chốt thì về bản đồ (nếu có), xong việc chính cũng vậy.
+      const trongChang = !!changHienTai(kb, s);
+      if (ve && nutBanDo && (trongChang || !xongChinhCua(nutBanDo, ve.daXem))) return { ...s, khamPha: ve, canhLui: null, hoiDap: null, conTro: { ...ve.veLai } };
       return ketThucNgay(kb, s);
     }
+    case 'chang-chot':
+      // Gói B21: hết chuỗi "Khi chốt" của chặng → sang chặng sau.
+      return sangChangKe(kb, s);
     case 'hop':
       return loi(s, `Chuỗi "${s.conTro?.chuoi ?? '?'}" của ngày họp hết nút mà không [ĐI TỚI] hay [RẼ KẾT].`);
     case 'ket':
@@ -1032,6 +1113,14 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
     const conTro = s.conTro;
     const boiCanh = conTro.boiCanh;
     if (s.canh !== chuoi.canh) s = { ...s, canh: chuoi.canh, ...(s.raDan?.length ? { raDan: [] } : {}), ...(s.vaoDan?.length ? { vaoDan: [] } : {}) };
+    // Gói B21: chặng đạt điều kiện chốt (ở chỗ yên: cảnh khám phá, hết chuỗi) → chạy "Khi chốt" rồi sang chặng sau.
+    if (nut === undefined || nut.type === 'explore') {
+      const chot = chotChang(kb, s);
+      if (chot) {
+        s = chot;
+        continue;
+      }
+    }
     if (nut === undefined) {
       const nutCuoi = chuoi.nodes[chuoi.nodes.length - 1];
       if (nutCuoi && nutCuoi.type === 'goto' && conTro.nut >= chuoi.nodes.length) {
@@ -1135,6 +1224,18 @@ function chayToiNutCanNguoiChoi(kb: KichBanMvp, s: TrangThaiMvp): TrangThaiMvp {
       case 'set-date':
         s = tienNut({ ...s, ngayThang: nut.date });
         break;
+      case 'het-chang':
+        // Gói B21: `[HẾT CHẶNG]` — sang chặng kế (hết chặng cuối thì sang buổi họp).
+        s = sangChangKe(kb, s);
+        break;
+      case 'doi-loai':
+        // Gói B21: manh mối thành sự thật — thẻ sang chồng của bảng chân lý.
+        s = tienNut({ ...s, doiLoai: them(s.doiLoai ?? [], nut.the) });
+        break;
+      case 'cac-cau-noi':
+        // Gói B21: mở các cặp người chơi nối được trên bảng manh mối.
+        s = tienNut({ ...s, cauNoiMo: nut.cac.reduce((ds, n) => them(ds, n.id), s.cauNoiMo ?? []) });
+        break;
       case 'hoi-dap': {
         // Gặp một [HỎI ĐÁP] (vào lại cảnh, chuỗi khác): dấu "buổi hỏi đã thay lời" của lần trước hết hiệu lực.
         if (s.daThayLoi) s = { ...s, daThayLoi: null };
@@ -1227,7 +1328,7 @@ export function khungNhin(kb: KichBanMvp, s: TrangThaiMvp): KhungNhinMvp {
       return { kind: 'question', nut, lanThu: lanThu(nut.id) };
     case 'doi-chat': {
       const dc = s.doiChat && s.doiChat.id === nut.id ? s.doiChat : null;
-      return { kind: 'doi-chat', nut, daTrinh: dc?.daTrinh ?? [], muc: dc?.muc ?? 'khong', lanThu: lanThu(nut.id), conLuot: Math.max(0, SO_LAN_SAI_DOI_CHAT - (dc?.sai ?? 0)) };
+      return { kind: 'doi-chat', nut, daTrinh: dc?.daTrinh ?? [], muc: dc?.muc ?? 'khong', lanThu: lanThu(nut.id), conLuot: Math.max(0, SO_LAN_SAI_DOI_CHAT - (dc?.sai ?? 0)), oDangChon: dc?.o ?? [] };
     }
     case 'line-pick':
       return { kind: 'line-pick', nut, lanThu: lanThu(nut.id) };
@@ -1254,7 +1355,7 @@ export function khungNhin(kb: KichBanMvp, s: TrangThaiMvp): KhungNhinMvp {
     case 'create-character':
       return { kind: 'create-character', nut };
     case 'explore': {
-      const diem = diemDangHien(nut, s.khamPha?.daXem ?? []);
+      const diem = diemDangHien(nut, s.khamPha?.daXem ?? [], s.hienTruong ?? []);
       if (!dieuHuongTuDo(kb)) return { kind: 'explore', nut, diem };
       // Gói B15: ghim nơi đã ghé và nhân chứng đã gặp vẫn bấm được (`vaoLai`); cảnh thường và bản đồ có nút hết ngày khi được.
       const boiCanh = s.conTro?.boiCanh ?? 'truyen';
@@ -1395,7 +1496,7 @@ function soNoiChuaGhe(kb: KichBanMvp, s: TrangThaiMvp): number {
   while (goc?.cha) goc = goc.cha;
   const nut = goc ? nutKhamPha(kb, goc) : undefined;
   if (!goc || !nut || nut.kieu !== 'ban-do') return 0;
-  return diemDangHien(nut, goc.daXem).filter((d) => d.diem.dau && !d.daXem).length;
+  return diemDangHien(nut, goc.daXem, s.hienTruong ?? []).filter((d) => d.diem.dau && !d.daXem).length;
 }
 
 /**
@@ -1482,6 +1583,21 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       ...(s.cachChoi ? { cachChoi: s.cachChoi } : {}),
     };
     return chayToiNutCanNguoiChoi(kb, moi);
+  }
+  if (hd.type === 'noi-the') {
+    // Gói B21: cặp đã khai (và đã mở) → ra câu hỏi, mở đích; cặp lạ → máy đứng yên (sợi chỉ rơi do giao diện, không phạt).
+    const cau = timCauNoi(kb, s, hd.a, hd.b);
+    if (!cau || (s.cauNoiXong ?? []).includes(cau.id)) return s;
+    return chayToiNutCanNguoiChoi(kb, apDichNoi(kb, { ...s, cauNoiXong: [...(s.cauNoiXong ?? []), cau.id] }, cau));
+  }
+  if (hd.type === 'mo-tra-noi') {
+    const cau = (kb.cacCauNoi ?? []).find((c) => c.id === hd.cau);
+    if (!cau || cau.dich.kind !== 'tra' || !(s.cauNoiXong ?? []).includes(cau.id) || s.thuThachXong.includes(cau.dich.thuThach) || s.thuThachDangLam) return s;
+    return { ...s, thuThachDangLam: cau.dich.thuThach, traTuNoi: cau.dich.thuThach };
+  }
+  if (hd.type === 'dong-tra-noi') {
+    if (!s.traTuNoi || s.thuThachDangLam !== s.traTuNoi) return s;
+    return { ...s, thuThachDangLam: null, traTuNoi: null };
   }
   const kn = khungNhin(kb, s);
   let moi: TrangThaiMvp | null = null;
@@ -1663,6 +1779,36 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
         : batDauPhanHoi(kb, s2, nut.id, 'doi-chat', muc === 'du', b ? b.feedback : nut.khac, nut.truUyTin && muc === 'khac');
       break;
     }
+    case 'chi-o': {
+      // Gói B21: đối chất `· chỉ ô` — người chơi chỉ ô trên bảng chân lý. Khớp trọn một đáp án [ĐÚNG] → qua; chỉ dở một phần của đáp án
+      // nhiều ô → chờ chỉ tiếp; còn lại → một vạch, lời của đáp án [SAI] khớp (hoặc [KHÁC]), chỉ lại.
+      if (kn.kind !== 'doi-chat' || !kn.nut.chiO) return s;
+      const nut = kn.nut;
+      const dc = s.doiChat && s.doiChat.id === nut.id ? s.doiChat : null;
+      const dangChon = dc?.o ?? [];
+      const luu = (o: string[], sai: number): TrangThaiMvp['doiChat'] => ({ id: nut.id, daTrinh: dc?.daTrinh ?? [], muc: dc?.muc ?? 'khong', sai, o });
+      if (dangChon.includes(hd.o)) {
+        moi = { ...s, doiChat: luu(dangChon.filter((x) => x !== hd.o), dc?.sai ?? 0) };
+        break;
+      }
+      const chon = [...dangChon, hd.o];
+      const khoa = (x: readonly string[]): string => [...x].sort().join('|');
+      const khop = nut.bangChung.find((b) => b.o && khoa(b.o) === khoa(chon));
+      if (khop?.muc === 'dung') {
+        moi = batDauPhanHoi(kb, { ...s, doiChat: luu([], dc?.sai ?? 0) }, nut.id, 'doi-chat', true, khop.feedback, false);
+        break;
+      }
+      if (!khop && nut.bangChung.some((b) => b.muc === 'dung' && b.o && chon.every((x) => b.o?.includes(x)))) {
+        moi = { ...s, doiChat: luu(chon, dc?.sai ?? 0) };
+        break;
+      }
+      const sai = (dc?.sai ?? 0) + 1;
+      const s2: TrangThaiMvp = { ...s, doiChat: luu([], sai) };
+      if (!nut.tinhVach) return s;
+      const v = themVach(s2, nut.tinhVach);
+      moi = batDauPhanHoi(kb, v.s, nut.id, 'doi-chat', false, [...(khop?.muc === 'sai' ? khop.feedback : nut.khac), ...v.them], false);
+      break;
+    }
     case 'chua-du': {
       if (kn.kind !== 'doi-chat' || kn.nut.tinhVach) return s;
       moi = batDauPhanHoi(kb, s, kn.nut.id, 'doi-chat', true, kn.nut.chuaDu, false);
@@ -1722,7 +1868,10 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
         const bang = moi.bang ?? { day: {}, viTri: {} };
         moi = { ...moi, bang: { ...bang, day: { ...bang.day, [kn.thuThach.vatChung.id]: [...new Set(hd.dung)] } } };
       }
-      if (s.thuThachDangLam) {
+      if (s.thuThachDangLam && s.traTuNoi && s.traTuNoi === s.thuThachDangLam) {
+        // Gói B21: màn tra mở từ câu hỏi nối `→ tra`: xong thì về lại chỗ đang đứng (con trỏ giữ nguyên), không chạy dữ kiện.
+        moi = { ...moi, thuThachDangLam: null, traTuNoi: null };
+      } else if (s.thuThachDangLam) {
         // Thử thách mở từ dữ kiện (không trong chuỗi): ghi nhận dữ kiện luôn.
         moi = { ...moi, thuThachDangLam: null };
         moi = s.duKienDangLam ? hoanTatDuKien(kb, moi, s.duKienDangLam, 'sau-du-kien') : kiemHetKhung(kb, moi);

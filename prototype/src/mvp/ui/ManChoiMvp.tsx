@@ -26,7 +26,7 @@ import { BacklogModal } from '../../shared/vn/BacklogModal';
 import { useVnStore } from '../../shared/vn/vn-store';
 import { ObjectionEffect } from '../../story/ui/ObjectionEffect';
 import type { DialogueLine, MultipleChoiceQuestion } from '../../story/types';
-import { canGioiThieu, canhLuiThuThach, dienTen as dienTenMay, dieuHuongTuDo, khungNhin, loiTrinhSai, phuMoDuoc, tenNguoiNoi, tinhVachHienTai, vuChoiLai, xuLy, type KhungNhinMvp } from '../engine/may';
+import { canGioiThieu, canhLuiThuThach, coMatChang, dienTen as dienTenMay, dieuHuongTuDo, khungNhin, loiTrinhSai, phuMoDuoc, tenNguoiNoi, timCauNoi, tinhVachHienTai, vuChoiLai, xuLy, type KhungNhinMvp } from '../engine/may';
 import { theCuaDongThoiGian } from '../engine/dong-thoi-gian';
 import { DongThoiGianMvp } from './DongThoiGianMvp';
 import { LeSoVachMvp } from './LeSoVachMvp';
@@ -70,6 +70,7 @@ import { useGiuDeTua } from './giu-tua';
 import { mucNhapVaiTheoMay, mucSqlTheoMay, useDienThoai } from './dien-thoai';
 import { TraSoMvp } from './TrangSoMvp';
 import { DoiChatMvp } from './DoiChatMvp';
+import { DoiChatChiOMvp } from './DoiChatChiOMvp';
 
 export interface ManChoiMvpProps {
   /** Bỏ trống = bản chơi thử chỉ MVP, không có màn tiêu đề. */
@@ -444,6 +445,22 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
         return <MultipleChoice question={q} attempts={kn.lanThu} gameKey={s.batDauLuc} askerLabel={tenNguoiNoi(kb, kn.nut.asker.speaker, s)} onChoose={(id) => hanhDong({ type: 'chon', luaChon: id })} anNhacChon />;
       }
       case 'doi-chat':
+        // Gói B21: đối chất `· chỉ ô` — người chơi chỉ ô trên bảng chân lý thay vì trình thẻ.
+        if (kn.nut.chiO) {
+          return (
+            <DoiChatChiOMvp
+              key={kn.nut.id}
+              kb={kb}
+              s={s}
+              nut={kn.nut}
+              oDangChon={kn.oDangChon}
+              dienTen={dienTen}
+              tenNguoiNoi={(ma) => tenNguoiNoi(kb, ma, s)}
+              dienThoai={dienThoai}
+              onChi={(o) => hanhDong({ type: 'chi-o', o })}
+            />
+          );
+        }
         return (
           <DoiChatMvp
             key={kn.nut.id}
@@ -518,7 +535,9 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
       case 'fix-query': {
         // Gói B13: màn tra lùi được về cảnh đã mở nó (bộ điều hướng tự do; buổi họp, bộ MVP thì không).
         const luiVe = kn.kind === 'challenge' ? canhLuiThuThach(kb, s) : null;
-        const tenCanhRoi = luiVe ? kb.canh.find((c) => c.id === luiVe.canh)?.ten : undefined;
+        // Gói B21: màn tra mở từ một câu hỏi nối (`→ tra`) — rời được về chỗ đang đứng, câu hỏi vẫn ở bảng manh mối.
+        const traTuNoi = kn.kind === 'challenge' && !!s.traTuNoi && s.thuThachDangLam === s.traTuNoi;
+        const tenCanhRoi = traTuNoi ? 'bảng manh mối' : luiVe ? kb.canh.find((c) => c.id === luiVe.canh)?.ten : undefined;
         return (
           <PhongTraMvp
             onDaXemTruyVan={(query, loi) => ghiNhanTruyVan(query, loi, s, lanDoiVan)}
@@ -534,7 +553,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             onDoiCho={(the, x, y) => hanhDong({ type: 'doi-cho-the', the, x, y })}
             onDoiMau={(the, mau) => hanhDong({ type: 'doi-mau-ghim', the, mau })}
             onXong={(dung, phieu, ghiChu) => hanhDong({ type: 'xong-thu-thach', thuThach: kn.thuThach.id, dung, ...(phieu ? { phieu } : {}), ...(ghiChu?.length ? { ghiChu } : {}) })}
-            {...(luiVe ? { onRoi: () => hanhDong({ type: 'roi-thu-thach' }), ...(tenCanhRoi ? { tenCanhRoi } : {}) } : {})}
+            {...(traTuNoi ? { onRoi: () => hanhDong({ type: 'dong-tra-noi' }), tenCanhRoi: 'bảng manh mối' } : luiVe ? { onRoi: () => hanhDong({ type: 'roi-thu-thach' }), ...(tenCanhRoi ? { tenCanhRoi } : {}) } : {})}
             {...(mucSql ? { mucSql } : {})}
             {...(mucNhapVai ? { mucNhapVai } : {})}
             // Gói B19: màn sửa `· tính vạch` — "Chạy thử" / "Trình"; lời trình sai đọc TRƯỚC khi máy thêm vạch.
@@ -603,7 +622,7 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           />
         );
       case 'explore':
-        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} thu={thuHomNay(kb, s)} gio={kn.nut.gio} dang={kn.nut.dang} haVySoi={kn.nut.haVySoi} tuDong={kn.nut.tuDong} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} roi={kn.roi ?? null} onRoi={() => hanhDong({ type: 'roi-canh' })} hetNgay={kn.hetNgay ?? null} onHetNgay={() => hanhDong({ type: 'het-ngay' })} {...(mucNhapVai ? { mucNhapVai } : {})} />;
+        return <KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} nhanVat={kn.nut.nhanVat} daGap={[...(s.daGioiThieu ?? []), ...(s.daNoi ?? [])]} homNay={homNayChu(kb, s)} thu={thuHomNay(kb, s)} gio={kn.nut.gio} coMat={coMatChang(kb, s)} dang={kn.nut.dang} haVySoi={kn.nut.haVySoi} tuDong={kn.nut.tuDong} onXem={(chuoi) => hanhDong({ type: 'xem-diem', chuoi })} roi={kn.roi ?? null} onRoi={() => hanhDong({ type: 'roi-canh' })} hetNgay={kn.hetNgay ?? null} onHetNgay={() => hanhDong({ type: 'het-ngay' })} {...(mucNhapVai ? { mucNhapVai } : {})} />;
       case 'end':
         return (
           <KetMvp
@@ -737,6 +756,18 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
           onDoiCho={(the, x, y) => hanhDong({ type: 'doi-cho-the', the, x, y })}
           onDoiMau={(the, mau) => hanhDong({ type: 'doi-mau-ghim', the, mau })}
           onGhim={(the, ghim) => hanhDong({ type: 'ghim-the', the, ghim })}
+          // Gói B21: nối hai note thành câu hỏi. Đích "tra" hay "chuỗi" thì đóng bảng để vào màn tra / cảnh; "ghim" thì ở lại bảng, báo bản đồ có thêm nơi.
+          onNoi={(a, b) => {
+            const cau = timCauNoi(kb, s, a, b);
+            hanhDong({ type: 'noi-the', a, b });
+            if (!cau) return;
+            if (cau.dich.kind === 'tra' || cau.dich.chuoi) setKho(null);
+            else baoToast('Bản đồ có thêm một nơi để tìm.');
+          }}
+          onMoTra={(cauId) => {
+            hanhDong({ type: 'mo-tra-noi', cau: cauId });
+            setKho(null);
+          }}
           hoSo={s.hoSo}
           soTay={s.soTay}
           tenNguoiChoi={s.tenNguoiChoi}

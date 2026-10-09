@@ -81,7 +81,11 @@ function mocHud(kb: KichBanMvp, s: TrangThaiMvp): { kicker: string; so: string; 
   const ngayDai = hoaDau(dinhDangNgay(iso));
   let ten = 'Kết thúc';
   if (s.giaiDoan === 'mo-dau') ten = 'Mở đầu';
-  else if (s.giaiDoan === 'ngay') ten = tenKhungHienTai(kb, s);
+  else if (s.giaiDoan === 'ngay') {
+    // Gói B21: chặng thay "khung giờ" — hiện tên chặng và giờ truyện của chặng.
+    const ch = kb.lich.ngay.find((n) => n.so === s.ngay);
+    ten = ch?.chang ? `Chặng ${ch.so} · ${ch.ten}${ch.chang.gio ? ` · ${ch.chang.gio}` : ''}` : tenKhungHienTai(kb, s);
+  }
   else if (s.giaiDoan === 'hop') ten = 'Buổi họp rà soát';
   else if (s.giaiDoan === 'phu') ten = `Việc phụ · ${tenKhungHienTai(kb, s)}`;
   else if (s.giaiDoan === 'vu-sau') {
