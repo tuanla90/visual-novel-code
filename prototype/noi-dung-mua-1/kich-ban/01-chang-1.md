@@ -7,6 +7,10 @@
 - [THỬ THÁCH c-nam-hoai]
 - [LỜI c1-mo.1]
 - [LỜI c1-mo.2]
+<!-- Cặp nối mở ngay từ đầu chặng, không phụ thuộc người chơi ghé phòng CLB trước hay sau sảnh tòa B (ghim đã ghé mà chuỗi không có [KHÁM PHÁ] thì không vào lại được, nên khối nối không đặt ở chuỗi của ghim). -->
+- [CÁC CÂU NỐI]
+  - [NỐI ev-nam-hoai + clue-bc24 → câu hỏi: "Hoài nào học Báo chí 2024, sáng thứ Hai ở tòa B?" · mã: cau-hoai-nao · → hiện trường c1-thieu-bang-lop]
+- [HẾT CÁC CÂU NỐI]
 - [ĐI TỚI c1-ban-do]
 
 ### c1-ban-do — Chặng 1: bản đồ trường (phòng CLB, sảnh tòa B) {cảnh: phong-clb}
@@ -23,11 +27,8 @@
 
 ### c1-clb-noi — Chặng 1: phòng CLB, Minh Anh mời người chơi tự nối hai giấy nhớ thành câu hỏi {cảnh: phong-clb}
 
-<!-- Lần nối đầu tiên người chơi tự làm (Trung thu đã làm mẫu). Cặp nối mở ở đây; nối xong ra thẻ câu hỏi cau-hoai-nao và chạy c1-thieu-bang-lop. -->
+<!-- Lần nối đầu tiên người chơi tự làm (Trung thu đã làm mẫu). Cặp nối (khai ở c1-mo) ra thẻ câu hỏi cau-hoai-nao và chạy c1-thieu-bang-lop. -->
 - [LỜI c1-clb-noi.1]
-- [CÁC CÂU NỐI]
-  - [NỐI ev-nam-hoai + clue-bc24 → câu hỏi: "Hoài nào học Báo chí 2024, sáng thứ Hai ở tòa B?" · mã: cau-hoai-nao · → hiện trường c1-thieu-bang-lop]
-- [HẾT CÁC CÂU NỐI]
 
 ### c1-thieu-bang-lop — Chặng 1: bảng sinh viên chỉ có mã lớp; Minh Anh đi xin thầy Quang bảng lớp {cảnh: phong-clb}
 
