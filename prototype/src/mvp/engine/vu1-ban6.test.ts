@@ -4,7 +4,7 @@
  * trình sai ba lần thì rank C, kết tạm, không có Hoài kể, không Cảnh 12; trình sai một lần thì rank B, kết thật, không Cảnh 12.
  */
 import { describe, expect, it } from 'vitest';
-import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
+import { KICH_BAN_MUA_1 } from './testing/mua1-ban6/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { coTrongHoSo, khungNhin, taoTrangThai } from './may';
 import type { TrangThaiMvp } from './trang-thai';

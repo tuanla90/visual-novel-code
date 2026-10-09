@@ -781,6 +781,8 @@ export function cachRoiCanh(kb: KichBanMvp, s: TrangThaiMvp): { kieu: 've-ban-do
   if (laNoiTrenBanDo(kb, kp)) return { kieu: 've-ban-do', nhan: 'Về bản đồ' };
   // Gói B15: đang chờ hết ngày thì cảnh gốc (bản đồ, cảnh không vào từ bản đồ) không có "Đi tiếp": đường ra là nút hết ngày.
   if (!kp.cha && hetNgayDangCho(kb, s)) return null;
+  // Gói B22: chặng còn chờ chốt (chưa nối ra câu hỏi chốt) thì bản đồ của chặng không có "Đi tiếp": đường ra là chốt chặng.
+  if (!kp.cha && changChoChot(kb, s)) return null;
   return xongChinhCua(nut, kp.daXem) ? { kieu: 'di-tiep', nhan: 'Đi tiếp' } : null;
 }
 
@@ -806,7 +808,7 @@ function veKhamPha(kb: KichBanMvp, s: TrangThaiMvp, kp: KhamPhaMvp): TrangThaiMv
   // Điều hướng tự do (gói B13): xong việc chính vẫn ở lại cảnh. Nơi tới từ bản đồ chỉ rời khi người chơi bấm "Về bản đồ"; cảnh
   // khác tự đi tiếp khi đã xem hết mọi chỗ (chỉ còn một đường), còn chỗ chưa xem thì chờ người chơi bấm "Đi tiếp".
   // Gói B15: đang chờ hết ngày thì cảnh gốc không tự đi tiếp (kẻo hết chuỗi của ngày là sang ngày kế, bỏ mất buổi tối).
-  const choHet = !kp.cha && !!hetNgayDangCho(kb, s);
+  const choHet = !kp.cha && (!!hetNgayDangCho(kb, s) || changChoChot(kb, s));
   const tuDi = !dieuHuongTuDo(kb) || (!laNoiTrenBanDo(kb, kp) && !choHet && nut.diem.every((d) => kp.daXem.includes(d.chuoi)));
   const xong = xongChinhCua(nut, kp.daXem);
   if (xong && tuDi) {
@@ -854,6 +856,12 @@ export function coMatChang(kb: KichBanMvp, s: TrangThaiMvp): { nhanVat: string; 
 /** Mã `có <mã>` của điều kiện chốt đều đã có (thẻ hồ sơ, cờ, câu hỏi nối đã nối). */
 function coMa(s: TrangThaiMvp, id: string): boolean {
   return coTrongHoSo(s, id) || (s.cauNoiXong ?? []).includes(id);
+}
+
+/** Gói B22: chặng đang chơi có điều kiện chốt mà chưa đạt (cảnh gốc của chặng phải giữ người chơi lại, không "Đi tiếp" sang chặng sau). */
+function changChoChot(kb: KichBanMvp, s: TrangThaiMvp): boolean {
+  const ch = changHienTai(kb, s)?.chang;
+  return !!ch && ch.chotKhi.length > 0 && !ch.chotKhi.every((id) => coMa(s, id));
 }
 
 /**

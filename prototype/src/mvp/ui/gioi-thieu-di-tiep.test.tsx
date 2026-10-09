@@ -17,6 +17,7 @@ import type { TrangThaiMvp } from '../engine/trang-thai';
 import { choiTuDong, RE_NHANH_KET_THAT, reNhanhTheo } from '../engine/tu-choi';
 import { KICH_BAN as kb, useKhoMvp } from '../store/kho-mvp';
 import { KICH_BAN_MUA_1 as KB_CU } from '../engine/testing/mua1-truoc-b19/kich-ban.gen';
+import { KICH_BAN_MUA_1 as KB_BAN6 } from '../engine/testing/mua1-ban6/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { KhamPhaMvp } from './KhamPhaMvp';
 import { ManChoiMvp } from './ManChoiMvp';
@@ -65,14 +66,16 @@ describe('gói B15 · F: đóng thẻ "Nhân vật mới" thì đi tiếp', () =
 });
 
 describe('gói B15 · A, B: nút hết ngày và ghim đã ghé trên cảnh khám phá', () => {
-  const banDoNgay2 = (): TrangThaiMvp => choiTuDong(kb, taoTrangThai(kb, 1), CT, (_s, kn) => kn.kind === 'explore' && kn.nut.id === 'kp-bd-n2', 20000);
+  // Vụ 1 bản 7 (B22) chia chặng, không còn hết ngày: các ca hết ngày chạy trên bản đông cứng Vụ 1 bản 6.
+  const kb6 = KB_BAN6 as unknown as KichBanMvp;
+  const banDoNgay2 = (): TrangThaiMvp => choiTuDong(kb6, taoTrangThai(kb, 1), CT, (_s, kn) => kn.kind === 'explore' && kn.nut.id === 'kp-bd-n2', 20000);
 
   it('còn nơi có dấu chưa ghé: bấm nút hết ngày thì hỏi lại; "Ở lại đã" đóng câu hỏi, "Hết ngày" mới hết ngày', async () => {
     const s = banDoNgay2();
-    const kn = khungNhin(kb, s);
+    const kn = khungNhin(kb6, s);
     if (kn.kind !== 'explore') throw new Error(kn.kind);
     const onHetNgay = vi.fn();
-    render(<KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} onXem={vi.fn()} hetNgay={{ nhan: 'Về phòng KTX ăn tối', conChuaGhe: 2 }} onHetNgay={onHetNgay} />);
+    render(<KhamPhaMvp kb={kb6} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} onXem={vi.fn()} hetNgay={{ nhan: 'Về phòng KTX ăn tối', conChuaGhe: 2 }} onHetNgay={onHetNgay} />);
     const u = userEvent.setup();
     const nut = screen.getByRole('button', { name: 'Về phòng KTX ăn tối' });
     expect(nut).toHaveClass('mvp-canh__het-ngay-nut');
@@ -90,14 +93,14 @@ describe('gói B15 · A, B: nút hết ngày và ghim đã ghé trên cảnh kh�
 
   it('đã ghé hết: bấm là hết ngày luôn; không truyền `hetNgay` thì không có nút', async () => {
     const s = banDoNgay2();
-    const kn = khungNhin(kb, s);
+    const kn = khungNhin(kb6, s);
     if (kn.kind !== 'explore') throw new Error(kn.kind);
     const onHetNgay = vi.fn();
-    const { rerender } = render(<KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} onXem={vi.fn()} hetNgay={{ nhan: 'Về phòng KTX ăn tối', conChuaGhe: 0 }} onHetNgay={onHetNgay} />);
+    const { rerender } = render(<KhamPhaMvp kb={kb6} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} onXem={vi.fn()} hetNgay={{ nhan: 'Về phòng KTX ăn tối', conChuaGhe: 0 }} onHetNgay={onHetNgay} />);
     await userEvent.setup().click(screen.getByRole('button', { name: 'Về phòng KTX ăn tối' }));
     expect(screen.queryByRole('alertdialog')).toBeNull();
     expect(onHetNgay).toHaveBeenCalledTimes(1);
-    rerender(<KhamPhaMvp kb={kb} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} onXem={vi.fn()} hetNgay={null} onHetNgay={onHetNgay} />);
+    rerender(<KhamPhaMvp kb={kb6} id={kn.nut.id} canh={s.canh} diem={kn.diem} kieu={kn.nut.kieu} onXem={vi.fn()} hetNgay={null} onHetNgay={onHetNgay} />);
     expect(screen.queryByRole('button', { name: 'Về phòng KTX ăn tối' })).toBeNull();
   });
 
@@ -123,12 +126,10 @@ describe('gói B15 · A, B: nút hết ngày và ghim đã ghé trên cảnh kh�
     expect(xemHet.querySelector('.mvp-dau--het')).not.toBeNull();
   });
 
-  it('màn chơi thật: xong việc ở sảnh tòa B ngày 1 → về bản đồ có nút hết ngày, bấm (không còn nơi chưa ghé) là sang chiều ở phòng CLB', async () => {
-    const s = choiTuDong(kb, taoTrangThai(kb, 1), CT, (_s, kn) => kn.kind === 'explore' && !!kn.hetNgay, 20000);
-    expect(khungNhin(kb, s)).toMatchObject({ kind: 'explore', hetNgay: { nhan: 'Chiều về phòng CLB', conChuaGhe: 0 } });
-    veManChoi(s);
-    await userEvent.setup().click(screen.getByRole('button', { name: 'Chiều về phòng CLB' }));
-    const sau = useKhoMvp.getState().trangThai!;
+  it('máy (bản 6): xong việc ở sảnh tòa B ngày 1 → về bản đồ có nút hết ngày; bấm là sang chiều ở phòng CLB', () => {
+    const s = choiTuDong(kb6, taoTrangThai(kb6, 1), CT, (_s, kn) => kn.kind === 'explore' && !!kn.hetNgay, 20000);
+    expect(khungNhin(kb6, s)).toMatchObject({ kind: 'explore', hetNgay: { nhan: 'Chiều về phòng CLB', conChuaGhe: 0 } });
+    const sau = xuLy(kb6, s, { type: 'het-ngay' });
     expect(sau.conTro?.chuoi).toBe('n1-clb');
   });
 });

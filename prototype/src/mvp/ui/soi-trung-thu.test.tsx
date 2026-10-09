@@ -4,7 +4,7 @@
  */
 import { act, fireEvent, render } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { KICH_BAN_MUA_1 as kb } from '../../content/generated/mua-1/kich-ban.gen';
+import { KICH_BAN_MUA_1 as kb } from '../engine/testing/mua1-ban6/kich-ban.gen';
 import type { NutMvp } from '../../content/mvp/types';
 import { diemDangHien } from '../engine/may';
 import { KhamPhaMvp } from './KhamPhaMvp';

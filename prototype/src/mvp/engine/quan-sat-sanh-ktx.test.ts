@@ -5,7 +5,7 @@
  * thẻ "Nhân vật mới" bật ngay câu đầu; ô "Đi cùng" hiện Tùng khi cậu ấy còn là người lạ.
  */
 import { describe, expect, it } from 'vitest';
-import { KICH_BAN_MUA_1 } from '../../content/generated/mua-1/kich-ban.gen';
+import { KICH_BAN_MUA_1 } from './testing/mua1-ban6/kich-ban.gen';
 import type { KichBanMvp } from '../../content/mvp/types';
 import { canGioiThieu, khungNhin, taoTrangThai, tenNguoiNoi, xuLy } from './may';
 import type { TrangThaiMvp } from './trang-thai';

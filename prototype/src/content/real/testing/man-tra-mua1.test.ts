@@ -31,10 +31,10 @@ describe('nội dung thật', () => {
     const kiem = kiemManTraMua1(kq.mvp, { banDo: kq.banDo, doanLoi: kq.doanLoi });
     expect(kiem.loi).toEqual([]);
     expect(kiem.tomTat).toMatch(/^màn tra: \d+ gợi ý hai bậc, \d+ tờ giấy nhớ có chữ/);
-    // B19 (08/10/2026): màn tra của Vụ 1 bản 6.
-    for (const id of ['c-sv-hoai', 'c-sv-hoai-bc24', 'c-ra-vao', 'c-sua-or-quan']) expect(docGoiY(the(kq.mvp, id).fields).goiY.some((g) => g.khi === null), id).toBe(true);
-    for (const id of ['ev-phieu-gui-hoai', 'ev-the-lich-bc24', 'clue-loi-chu-cuong']) expect(hoSo(kq.mvp, id).fields['Chữ trên giấy'], id).toBeTruthy();
-    expect(the(kq.mvp, 'c-sv-hoai-bc24').evidence).toMatchObject({ chuTrenGiay: expect.stringContaining('**SV240317**') });
+    // B22 (10/10/2026): màn tra của Vụ 1 bản 7.
+    for (const id of ['c-nam-hoai', 'c-lop-bc24a', 'c-hoai-bc24a', 'c-ra-vao', 'c-sua-or-khanh']) expect(docGoiY(the(kq.mvp, id).fields).goiY.some((g) => g.khi === null), id).toBe(true);
+    for (const id of ['ev-phieu-gui-hoai', 'ev-the-lich-bc24', 'clue-bc24', 'clue-loi-chu-cuong']) expect(hoSo(kq.mvp, id).fields['Chữ trên giấy'], id).toBeTruthy();
+    expect(the(kq.mvp, 'c-hoai-bc24a').evidence).toMatchObject({ chuTrenGiay: expect.stringContaining('**SV240317**') });
   });
 
   it('bộ MVP không có dòng gợi ý hay chữ trên giấy nào (bộ sinh ra y như trước)', () => {
