@@ -749,7 +749,7 @@ const GOC = {
         {
           "type": "line",
           "speaker": "player",
-          "text": "(Dòng đầu tờ giấy báo: Nguyễn Minh Khoa. Nhìn mãi vẫn thấy lạ, như tên người khác.)"
+          "text": "(Nguyễn Minh Khoa, sinh viên năm nhất. Đọc lên vẫn chưa quen.)"
         },
         {
           "type": "line",

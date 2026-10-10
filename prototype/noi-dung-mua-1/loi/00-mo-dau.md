@@ -9,7 +9,7 @@
 - **narrator**: Trên đùi là tờ giấy báo nhập học gấp làm tư, mép đã sờn: Ngành Kế toán. Ký túc xá, phòng 408.
 
 ## md-00-tren-xe.1b
-- **player**: (Dòng đầu tờ giấy báo: Nguyễn Minh Khoa. Nhìn mãi vẫn thấy lạ, như tên người khác.)
+- **player**: (Nguyễn Minh Khoa, sinh viên năm nhất. Đọc lên vẫn chưa quen.)
 
 ## md-00-tren-xe.2
 - **player**: (Mười bốn điểm dừng, đã qua mười hai. Ký túc xá ở cổng nào nhỉ?)
