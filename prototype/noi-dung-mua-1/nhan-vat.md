@@ -4,7 +4,7 @@
 <!-- Gói B22 (10/10/2026): Vụ 1 bản 7. Khánh hỏi ở buổi họp. Quân, cô Hạnh, cô Lan không còn trong kịch bản Vụ 1 (thẻ giữ lại cho vụ sau, chưa chuỗi nào dùng). -->
 <!-- Bản 7: Duy ra mắt ở Ngày hội (câu tự xưng "Anh là Duy"), Hà Vy do Minh Anh giới thiệu ở Trung thu. Ô thẻ nào kịch bản chưa nói ra thì để "?" (bỏ khỏi "Biết lúc gặp"). -->
 <!-- Thầy Quang: bản 7 chỉ điều phối và kết luận, không hỏi câu nào. -->
-<!-- Khánh: thẻ không có phần giới thiệu nên thẻ tên luôn là "Anh sơ mi trắng"; ở buổi họp thầy Quang gọi "anh Chủ tịch Hội sinh viên". -->
+<!-- Khánh: thẻ không có phần giới thiệu nên thẻ tên luôn là "Anh Hội sinh viên" (10/10: trước là "Anh sơ mi trắng", ở buổi họp sau lời thầy Quang giới thiệu "anh Chủ tịch Hội" thẻ tên vẫn ghi sơ mi trắng nên lạc; ở Ngày hội anh đeo thẻ ban tổ chức, nói "quy định của Hội", nên tên này không lộ gì thêm). -->
 
 <!-- Dáng đứng (user chốt 01/10): mỗi nhân vật chính 2–3 dáng, mỗi dáng chỉ đổi mặt; dáng đặt tên như biểu cảm để lời dùng ngay: Tùng `gai-dau` (bí / lo), `chi-tay` (chỉ đường), `om-to-roi` (Ngày hội: ôm xấp tờ rơi, ngậm bánh rán, quạt giấy CLB Guitar kẹp nách); Duy `dan-chia-khoa` (Trung thu: dán băng dính có chữ lên chìa khóa); Hà Vy `day-kinh` (đang tính); Minh Anh `khoanh-tay` (nghiêm); Quân `chi-man` (chỉ lên màn chiếu). Ảnh: src/assets/mvp/nhan-vat/char-<mã>-<dáng>. -->
 
@@ -152,7 +152,7 @@
 - Biểu cảm: neutral
 - Xuất hiện từ: mở đầu
 
-### khanh — Anh sơ mi trắng
+### khanh — Anh Hội sinh viên
 - Vai: Chủ tịch Hội sinh viên (mã khanh; họ tên không bao giờ hiện, xem "Tên cấm" ở quy-uoc.md). Ở Vụ 1 nói một câu ở Ngày hội (đeo thẻ ban tổ chức, không đeo balo), rồi hỏi bốn lượt ở buổi họp (thầy Quang giới thiệu "anh Chủ tịch Hội sinh viên"), thua thì rời phòng trước khi Hoài vào; chưa lộ tên. Người đưa phong bì cho Hoài là câu hỏi lớn của mùa, Vụ 1 không trả lời.
 - Biểu cảm: neutral, ban-to-chuc
 - Xuất hiện từ: mở đầu

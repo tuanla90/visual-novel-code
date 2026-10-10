@@ -761,8 +761,10 @@ export function ManChoiMvp({ onVeTieuDe }: ManChoiMvpProps) {
             const cau = timCauNoi(kb, s, a, b);
             hanhDong({ type: 'noi-the', a, b });
             if (!cau) return;
-            if (cau.dich.kind === 'tra' || cau.dich.chuoi) setKho(null);
-            else baoToast('Bản đồ có thêm một nơi để tìm.');
+            // Cho người chơi thấy tờ câu hỏi vừa hiện trên bảng (kèm dòng báo) rồi mới đóng bảng sang màn tra / cảnh.
+            const dong = cau.dich.kind === 'tra' || !!cau.dich.chuoi;
+            baoToast(`Câu hỏi mới: ${dienTen(cau.cau)}${dong ? '' : ' Bản đồ có thêm một nơi để tìm.'}`);
+            if (dong) window.setTimeout(() => setKho(null), 1600);
           }}
           onMoTra={(cauId) => {
             hanhDong({ type: 'mo-tra-noi', cau: cauId });

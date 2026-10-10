@@ -1334,6 +1334,13 @@ span.v7-o--bang:not(.v7-o--phieu) {
   place-items: center start;
   touch-action: pan-x;
 }
+/* Điện thoại cầm ngang: bảng to hơn vùng thấy, cuộn hai chiều từ góc trên trái (BangGhimMvp `gon`). */
+.bang__cuon.is-gon {
+  overflow: auto;
+  place-items: start;
+  touch-action: pan-x pan-y;
+  overscroll-behavior: contain;
+}
 .bang__khung {
   position: relative;
   flex: none;
@@ -3713,4 +3720,137 @@ span.v7-o--bang:not(.v7-o--phieu) {
 }
 .game--portrait .bang__xem-popover-mau {
   gap: 8px;
+}
+
+/* ---------- Điện thoại cầm ngang (`v7--gon`, cao dưới 520px; ManTraV7 VungV7) ----------
+   Bỏ cảnh 1600×900 (co còn dưới một nửa thì chữ, nút trên mặt kính chỉ cao chừng 10px). Dưới thanh HUD: cột trái hẹp chứa nút
+   "Về bảng điều tra" và giấy nhớ (cuộn dọc), mặt kính chiếm phần còn lại, cỡ chữ thật. */
+.v7--gon {
+  flex-direction: row;
+  gap: 8px;
+  padding: 6px max(8px, env(safe-area-inset-right)) 6px max(8px, env(safe-area-inset-left));
+}
+.v7--gon .v7-dai {
+  flex: 0 0 118px;
+  flex-direction: column;
+  gap: 8px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 50px 2px 6px;
+  scrollbar-width: thin;
+}
+.v7--gon .v7-dai:empty {
+  display: none;
+}
+.v7--gon .v7-giay,
+.v7--gon .v7-giay--cau {
+  max-width: none;
+  width: 100%;
+  font-size: 12px;
+  line-height: 1.25;
+}
+.v7--gon .v7-o-kinh {
+  border-width: 3px;
+  border-radius: 8px;
+}
+.v7--gon .v7-kinh {
+  font-size: 14px;
+}
+.phong-tra:has(.v7--gon) .phong-tra__ve-bang {
+  top: 6px;
+  left: max(8px, env(safe-area-inset-left));
+  width: 118px;
+  min-height: 40px;
+  padding: 6px 8px;
+  font-size: 0.8rem;
+  line-height: 1.15;
+  white-space: normal;
+}
+/* Mặt kính cầm ngang: bỏ thanh tiêu đề trang trí; ba cột của câu (nguồn, lọc, sắp xếp) đứng cạnh nhau; nút CHẠY gọn ở góc phải
+   dưới, vẫn dính đáy khi cuộn. */
+.v7--gon .v7-thanh {
+  display: none;
+}
+.v7--gon .v7-de {
+  padding-top: 0.45em;
+  font-size: 1em;
+}
+.v7--gon .v7-kiem {
+  gap: 0.4em;
+  font-size: 12px;
+}
+.v7--gon .v7-kiem__mat {
+  width: 20px;
+  height: 20px;
+}
+.v7--gon .v7-cau.v7-cau--3cot {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.7fr) minmax(0, 0.6fr);
+  gap: 0.45em;
+  padding: 0.45em 0.6em;
+}
+.v7--gon .v7-cot {
+  padding: 0.5em;
+  min-width: 0;
+}
+.v7--gon .v7-cot__nhan {
+  font-size: 11px;
+}
+.v7--gon .v7-day {
+  justify-content: flex-end;
+  padding: 0.4em 0.6em;
+}
+.v7--gon .v7-day > .v7-nut--chay,
+.v7--gon .v7-day > .v7-nut--ghim {
+  width: auto;
+  min-width: 132px;
+  min-height: 40px;
+  font-size: 1em;
+}
+.v7--gon .v7-vung {
+  min-height: 200px;
+}
+/* Bạn đi cùng ở màn tra cầm ngang: xuống đáy cột trái (góc phải trên là góc mặt kính); bong bóng gợi ý mở sang phải, đè lên kính. */
+.phong-tra:has(.v7--gon) .v7-ban,
+.v7--gon ~ .v7-ban,
+.v7--gon .v7-ban {
+  top: auto;
+  right: auto;
+  bottom: 8px;
+  left: max(8px, env(safe-area-inset-left));
+  flex-direction: row;
+  align-items: flex-end;
+  max-width: calc(100% - 24px);
+}
+.phong-tra:has(.v7--gon) .v7-ban__nguoi {
+  width: 40px;
+  height: 40px;
+}
+.phong-tra:has(.v7--gon) .v7-ban__bong {
+  width: min(460px, calc(100vw - 90px));
+  min-width: 0;
+}
+.phong-tra:has(.v7--gon) .v7-dai {
+  padding-bottom: 54px;
+}
+/* Màn chiếu (sửa câu tra ở buổi họp) cầm ngang: ba nút Đặt lại / Chạy thử / Trình nằm một hàng gọn ở đáy, không chồng ba dải
+   to che hết mặt kính. */
+.v7--gon[data-canh='man-chieu'] .v7-day {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  gap: 0.5em;
+}
+.v7--gon[data-canh='man-chieu'] .v7-day > .v7-nut {
+  width: auto;
+  min-width: 0;
+  min-height: 40px;
+  padding-inline: 1em;
+  font-size: 0.95em;
+}
+/* Mặt kính cuộn dọc (màn dọc, cầm ngang): nền của phần mềm tra phải kéo theo nội dung, không dừng ở chiều cao khung. */
+.v7--doc .v7-kinh {
+  flex: 0 0 auto;
+  height: auto;
+  min-height: 100%;
 }

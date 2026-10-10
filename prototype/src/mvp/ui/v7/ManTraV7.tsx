@@ -1288,11 +1288,14 @@ export function VungV7({
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
-  const doc = co !== null && co.w > 0 && co.w / Math.max(1, co.h) < 1.15;
+  // Điện thoại cầm ngang (cao dưới 520px): cảnh 1600×900 co còn dưới một nửa, chữ và nút trên mặt kính chỉ cao chừng 10px, không bấm
+  // được. Khi ấy cũng bỏ cảnh như màn dọc, mặt kính chiếm cả màn (`v7--gon`: giấy nhớ thành cột trái).
+  const gon = co !== null && co.w > 0 && co.h < 520 && co.w / Math.max(1, co.h) >= 1.15;
+  const doc = gon || (co !== null && co.w > 0 && co.w / Math.max(1, co.h) < 1.15);
   const tiLe = co && co.w > 0 ? Math.min(co.w / (1600 + 2 * le), co.h / 900) : 1;
   const [kinh, ...khac] = Array.isArray(children) ? children : [children];
   return (
-    <div ref={goc} className={`v7 ${doc ? 'v7--doc' : 'v7--ngang'}`} data-canh={canh} role="region" aria-label={nhan}>
+    <div ref={goc} className={`v7 ${doc ? 'v7--doc' : 'v7--ngang'}${gon ? ' v7--gon' : ''}`} data-canh={canh} role="region" aria-label={nhan}>
       {doc ? (
         <>
           {giay ? <div className="v7-dai">{giay}</div> : null}

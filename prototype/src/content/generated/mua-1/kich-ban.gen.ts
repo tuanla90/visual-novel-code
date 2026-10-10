@@ -380,9 +380,9 @@ const GOC = {
     },
     {
       "id": "khanh",
-      "ten": "Anh sơ mi trắng",
+      "ten": "Anh Hội sinh viên",
       "hoTen": null,
-      "trongCau": "anh sơ mi trắng",
+      "trongCau": "anh Hội sinh viên",
       "vai": "Chủ tịch Hội sinh viên (mã khanh; họ tên không bao giờ hiện, xem \"Tên cấm\" ở quy-uoc.md). Ở Vụ 1 nói một câu ở Ngày hội (đeo thẻ ban tổ chức, không đeo balo), rồi hỏi bốn lượt ở buổi họp (thầy Quang giới thiệu \"anh Chủ tịch Hội sinh viên\"), thua thì rời phòng trước khi Hoài vào; chưa lộ tên. Người đưa phong bì cho Hoài là câu hỏi lớn của mùa, Vụ 1 không trả lời.",
       "bieuCam": [
         "neutral",
@@ -2501,19 +2501,6 @@ const GOC = {
                 "minh-anh",
                 "duy"
               ]
-            },
-            {
-              "sprite": "ghim:toa-b",
-              "x": 48,
-              "y": 29,
-              "rong": 5,
-              "chuoi": "c1-toa-b",
-              "sau": [],
-              "nhan": "Sảnh tòa B",
-              "dau": "phu",
-              "co": [
-                "bac-tu"
-              ]
             }
           ]
         }
@@ -2600,19 +2587,6 @@ const GOC = {
               "co": [
                 "minh-anh",
                 "duy"
-              ]
-            },
-            {
-              "sprite": "ghim:toa-b",
-              "x": 48,
-              "y": 29,
-              "rong": 5,
-              "chuoi": "c1-toa-b",
-              "sau": [],
-              "nhan": "Sảnh tòa B",
-              "dau": "phu",
-              "co": [
-                "bac-tu"
               ]
             }
           ]
@@ -2915,6 +2889,10 @@ const GOC = {
           "speaker": "khanh",
           "expression": "neutral",
           "text": "Một người. Được."
+        },
+        {
+          "type": "task",
+          "text": "Chỉ ô trên bảng chân lý để bác lời anh Chủ tịch Hội (tạm)"
         },
         {
           "type": "goto",

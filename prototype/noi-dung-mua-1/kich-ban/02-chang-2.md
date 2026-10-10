@@ -20,7 +20,6 @@
 
 - [KHÁM PHÁ c2-bd · bản đồ · giờ 17:00]
   - ghim:phong-clb · x 45% · y 8% · rộng 5% → c2-clb · dấu: ! · có: minh-anh, duy · nhãn: Phòng CLB
-  - ghim:toa-b · x 48% · y 29% · rộng 5% → c1-toa-b · dấu: ? · có: bac-tu · nhãn: Sảnh tòa B
 
 ### c2-clb — Chặng 2: phòng CLB, Minh Anh nhắc lại hai tờ cần đặt cạnh nhau {cảnh: phong-clb}
 

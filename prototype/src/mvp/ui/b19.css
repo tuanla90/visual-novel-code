@@ -207,7 +207,9 @@
   color: var(--bcl-vang);
   font-family: var(--font-handwriting, inherit);
   font-size: clamp(0.68rem, 1.05vw, 1rem);
-  line-height: 1;
+  /* Nhãn hai dòng ("trước 9:00"): chữ viết tay có nét cao, line-height 1 làm hai dòng đè lên nhau. */
+  line-height: 1.2;
+  text-align: right;
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
@@ -926,4 +928,70 @@
   position: absolute;
   top: 6%;
   right: 12%;
+}
+
+/* Dải chú thích màu giấy dính chân chồng "Sự thật chờ đặt" (chồng dài phải cuộn thì vẫn thấy). */
+.bcl__chong > .bcl__chu-thich {
+  position: sticky;
+  bottom: -8px;
+  margin-top: auto;
+  padding: 6px 0 8px;
+  background: #1d2a31;
+}
+
+/* Điện thoại cầm ngang: lề sổ (Câu n/m + vạch) thu nhỏ, nép sát mép trái dưới thanh HUD, không đè giữa mặt kính. */
+@media (max-height: 520px) and (orientation: landscape) {
+  .le-so {
+    top: 56px;
+    left: 2px;
+    transform: rotate(-1.5deg) scale(0.72);
+    transform-origin: top left;
+  }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  /* Có lề sổ ở mép trái (buổi họp) thì màn chiếu chừa chỗ cho nó. */
+  .mvp-game:has(> .le-so) .v7--gon,
+  .mvp-game:has(> .le-so) .doi-chat.doi-chat--chi-o {
+    padding-left: 52px;
+  }
+}
+
+/* Điện thoại cầm ngang (bổ sung 10/10): ép vừa không cuộn làm note trong ô chỉ còn hai dòng cụt chữ. Dòng cao tối thiểu 50px (đủ ba
+   dòng chữ note), khung ma trận cuộn dọc; cột tên người và tên bảng không bị xén; nút Xong / Tiếp tục cỡ thường. */
+@media (max-height: 520px) and (orientation: landscape) {
+  .bcl__luoi {
+    height: auto;
+    min-height: calc(28px + var(--n-hang) * 54px);
+    max-height: none;
+    grid-template-rows: auto repeat(var(--n-hang), minmax(50px, auto));
+  }
+  .bcl--mot-cot .bcl__luoi {
+    grid-template-rows: repeat(var(--n-hang), minmax(50px, auto));
+    min-height: calc(var(--n-hang) * 54px);
+  }
+  .bcl__o.is-co-viec .bcl__note-chu,
+  .bcl__note-chu {
+    -webkit-line-clamp: 3;
+  }
+  .bcl__note {
+    font-size: 0.66rem;
+    line-height: 1.2;
+  }
+  .bcl__cot {
+    overflow: visible;
+  }
+  .bcl__cot-ten {
+    line-height: 1.25;
+    overflow: visible;
+  }
+  .bcl__ten {
+    line-height: 1.4;
+    padding-bottom: 2px;
+  }
+  .mvp-game .bcl .bcl__chan .btn,
+  .mvp-game .bcl .bcl__chan .btn--primary {
+    min-height: 36px;
+    padding: 4px 16px;
+    font-size: 0.9rem;
+  }
 }

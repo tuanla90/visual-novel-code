@@ -22,6 +22,7 @@
 ## hop-01.3
 - **player**: Anh dùng HOẶC nên ra mọi người tên Hoài cộng cả lớp. Bọn em dùng VÀ: vừa tên Hoài, vừa lớp BC24A. Một người.
 - **khanh** (neutral): Một người. Được.
+> NHIỆM VỤ: Chỉ ô trên bảng chân lý để bác lời anh Chủ tịch Hội (tạm)
 
 ## ket-that.1
 - **thay-quang** (neutral): Thầy không nhận lá thư này vào hồ sơ.

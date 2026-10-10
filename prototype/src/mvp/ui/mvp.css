@@ -5033,3 +5033,11 @@ html[data-ban-phim='1'] .mvp-tnv__the { width: min(460px, 100%); padding: 8px 12
 
 /* Keep facilitator previews visible in the portrait in-app browser. */
 html.facilitator-on .mvp-xoay { display: none !important; }
+
+/* Điện thoại cầm ngang: lớp phủ giữa màn (màn chiếu, tài liệu…) chiếm gần hết chiều cao, thẻ địa điểm góc trái trên đè lên tiêu
+   đề của lớp phủ. Có lớp phủ thì ẩn thẻ địa điểm (người chơi đang xem lớp phủ, không cần biết đang đứng đâu). */
+@media (max-height: 520px) and (orientation: landscape) {
+  .mvp-stage:has(.mvp-lop) .mvp-stage__canh-trai {
+    display: none;
+  }
+}

@@ -1801,7 +1801,8 @@ export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangTha
       }
       const chon = [...dangChon, hd.o];
       const khoa = (x: readonly string[]): string => [...x].sort().join('|');
-      const khop = nut.bangChung.find((b) => b.o && khoa(b.o) === khoa(chon));
+      // Đang chỉ dở một đáp án nhiều ô mà chỉ thêm một ô sai: lời [SAI] riêng của ô vừa chỉ (nếu có) thay vì lời [KHÁC] chung.
+      const khop = nut.bangChung.find((b) => b.o && khoa(b.o) === khoa(chon)) ?? nut.bangChung.find((b) => b.muc === 'sai' && b.o && khoa(b.o) === khoa([hd.o]));
       if (khop?.muc === 'dung') {
         moi = batDauPhanHoi(kb, { ...s, doiChat: luu([], dc?.sai ?? 0) }, nut.id, 'doi-chat', true, khop.feedback, false);
         break;

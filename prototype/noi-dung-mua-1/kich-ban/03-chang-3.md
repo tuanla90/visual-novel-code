@@ -7,7 +7,6 @@
 - [KHÁM PHÁ c3-bd · bản đồ · giờ 18:30]
   - ghim:ktx · x 72% · y 30% · rộng 5% → c3-cong · dấu: ! · có: chu-cuong · nhãn: Cổng ký túc xá
   - ghim:phong-clb · x 45% · y 8% · rộng 5% → c3-clb · dấu: ! · sau: c3-cong · có: minh-anh, duy · nhãn: Phòng CLB
-  - ghim:toa-b · x 48% · y 29% · rộng 5% → c1-toa-b · dấu: ? · có: bac-tu · nhãn: Sảnh tòa B
 
 ### c3-cong — Cổng ký túc xá, 18:30: chú Cường kể, sổ ra vào: 6:44 {cảnh: cong-ktx}
 

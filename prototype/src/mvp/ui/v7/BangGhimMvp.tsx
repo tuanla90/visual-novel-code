@@ -180,7 +180,14 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
     return () => ro.disconnect();
   }, []);
   const ngang = co.w / co.h >= 1.15;
-  const tiLe = ngang ? Math.min(co.w / KHUNG_BANG.rong, co.h / KHUNG_BANG.cao) : Math.max(0.5, co.h / KHUNG_BANG.cao);
+  // Điện thoại cầm ngang (vùng bảng thấp dưới 480px): co vừa thì chữ trên note chỉ còn ~4px. Giữ tỉ lệ tối thiểu 0,72 và cho cuộn
+  // cả hai chiều (kéo nền bảng để xem chỗ khác; kéo note vẫn là dời note).
+  const gon = ngang && co.h < 480;
+  const tiLe = gon
+    ? Math.max(0.72, Math.min(co.w / KHUNG_BANG.rong, co.h / KHUNG_BANG.cao))
+    : ngang
+      ? Math.min(co.w / KHUNG_BANG.rong, co.h / KHUNG_BANG.cao)
+      : Math.max(0.5, co.h / KHUNG_BANG.cao);
 
   // Kéo thẻ bằng con trỏ (chuột lẫn cảm ứng); nhích dưới 6px coi là bấm → mở thẻ.
   const dangKeo = useRef<{
@@ -314,7 +321,7 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
 
   return (
     <div className="bang" role="region" aria-label="Bảng điều tra">
-      <div ref={goc} className={`bang__cuon${ngang ? '' : ' is-doc'}`}>
+      <div ref={goc} className={`bang__cuon${ngang ? '' : ' is-doc'}${gon ? ' is-gon' : ''}`}>
         <div className="bang__khung" style={{ width: KHUNG_BANG.rong * tiLe, height: KHUNG_BANG.cao * tiLe }}>
           <div className="bang__mat" style={{ transform: `scale(${tiLe})`, ['--anh-ban' as string]: `url("${anhTheoTen('ui-bang-ni') ?? ''}")` }}>
             <svg className="bang__day" viewBox={`0 0 ${KHUNG_BANG.rong} ${KHUNG_BANG.cao}`} aria-hidden="true">

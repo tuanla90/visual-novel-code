@@ -253,6 +253,16 @@ describe('B21 · buổi họp chỉ ô', () => {
     expect(s.vach).toBe(1);
   });
 
+  it('chỉ dở một ô đúng rồi chỉ thêm một ô sai có lời riêng → lời [SAI] của ô ấy (không phải [KHÁC]), một vạch, bỏ chọn cả hai', () => {
+    let s = toiDoiChat('dc-chi-o', toiHop());
+    s = lam(s, { type: 'chi-o', o: 'dtg-vu1:o1' });
+    s = lam(s, { type: 'chi-o', o: 'dtg-vu1:o3' });
+    const k = khungNhin(KB, s);
+    expect(k.kind === 'feedback' && k.loi.text).toContain('Bác bảo vệ mở sảnh');
+    expect(s.vach).toBe(1);
+    expect(s.doiChat?.o ?? []).toEqual([]);
+  });
+
   it('ô không có trong đáp án → lời [KHÁC]; ô trống bắt buộc (`{dtg:?}`) là đáp án của câu "người đứng sau"', () => {
     let s = toiDoiChat('dc-chi-o', toiHop());
     s = lam(s, { type: 'chi-o', o: 'dtg-vu1:o4' });

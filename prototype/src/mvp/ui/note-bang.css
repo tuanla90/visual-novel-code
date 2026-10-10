@@ -343,3 +343,20 @@
 .bang__xem-cau-tra {
   margin-top: 12px;
 }
+/* Điện thoại cầm ngang: lời hướng dẫn nối là một dải nhỏ góc trái dưới, không đè giữa bảng. */
+@media (max-height: 520px) and (orientation: landscape) {
+  .bang__noi-huong-dan {
+    left: 10px;
+    bottom: 10px;
+    max-width: calc(100% - 170px);
+    padding: 4px 10px;
+    font-size: 0.72rem;
+    text-align: left;
+    transform: none;
+  }
+  .bang__noi-nut {
+    height: 40px;
+    padding: 0 14px;
+    font-size: 0.85rem;
+  }
+}
