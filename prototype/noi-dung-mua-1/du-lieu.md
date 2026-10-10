@@ -17,7 +17,7 @@
 | SV230264 | Phạm Minh | Hoài | KT23A | Ngoại trú |
 | SV220419 | Đỗ Thanh | Hoài | DL22A | Ký túc xá |
 | SV240251 | Trần | Tùng | DL24A | Ký túc xá |
-| SV240388 | Người | chơi | KT24A | Ký túc xá |
+| SV240388 | Nguyễn Minh | Khoa | KT24A | Ký túc xá |
 | SV240466 | Trần Hà | Vy | TU24A | Ký túc xá |
 | SV230142 | Nguyễn Đức | Duy | HC23A | Ngoại trú |
 | SV220337 | Lê Minh | Anh | LK22B | Ngoại trú |

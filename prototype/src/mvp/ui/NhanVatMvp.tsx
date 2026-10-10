@@ -184,7 +184,6 @@ export function NhanVatMvp({ kb, daGap, bietVe }: NhanVatMvpProps) {
               <span>{biet.has('danh-xung') ? gt.danhXung : '?'}</span>
             </div>
           </div>
-          {nv.hoTen && !bietHoTen ? <p className="mvp-nhanvat__chua-biet">Họ tên: ?</p> : null}
 
           {gt.nam || gt.nganh ? (
             <dl className="chara-profile__specs">

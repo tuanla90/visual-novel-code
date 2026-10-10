@@ -1079,8 +1079,8 @@ export function kiemLuatMvp(mvp: RawMvp, tuyChon: TuyChonLuatMvp = {}): KetQuaLu
   // ---------- Tạo nhân vật ----------
   for (const truong of ['ten', 'nganh'] as const) {
     const ds = taoNhanVat.filter((t) => t.truong === truong);
-    // Ngành tùy chọn từ 04/10/2026 (ngành cố định ở may.ts); tên vẫn bắt buộc.
-    if (truong === 'ten' ? ds.length !== 1 : ds.length > 1) err(ds[1]?.vt ?? lich.viTri, `[TẠO NHÂN VẬT ${truong}] phải xuất hiện ${truong === 'ten' ? 'đúng' : 'tối đa'} một lần trong game (hiện ${ds.length})`);
+    // Ngành tùy chọn từ 04/10/2026, tên tùy chọn từ 10/10/2026 (cả hai cố định ở may.ts).
+    if (ds.length > 1) err(ds[1]?.vt ?? lich.viTri, `[TẠO NHÂN VẬT ${truong}] phải xuất hiện tối đa một lần trong game (hiện ${ds.length})`);
     for (const t of ds) if ((mocChuoi.get(t.chuoi) ?? 1) !== 0) err(t.vt, `[TẠO NHÂN VẬT ${truong}] phải ở mở đầu (chuỗi tới được từ "Chuỗi đầu" trước ngày 1)`);
   }
   const ten = taoNhanVat.find((t) => t.truong === 'ten');

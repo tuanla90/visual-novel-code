@@ -14,10 +14,10 @@ const kb = KICH_BAN_MUA_1 as unknown as KichBanMvp;
 const kbMvp = KICH_BAN_MVP as unknown as KichBanMvp;
 
 describe('GioiThieuMvp — thẻ chỉ ghi điều đã biết', () => {
-  it('Tùng mới gặp: tiêu đề là tên ngắn "Tùng", có dòng "Họ tên: ?", vẫn ghi danh xưng, năm, ngành đã biết lúc gặp', () => {
+  it('Tùng mới gặp: tiêu đề là tên ngắn "Tùng", không còn dòng "Họ tên: ?", vẫn ghi danh xưng, năm, ngành đã biết lúc gặp', () => {
     const { container } = render(<GioiThieuMvp kb={kb} nhanVat="tung" onDong={vi.fn()} />);
     expect(container.querySelector('.chara-debut__name')?.textContent).toBe('Tùng');
-    expect(screen.getByText('Họ tên: ?')).toBeInTheDocument();
+    expect(screen.queryByText('Họ tên: ?')).toBeNull();
     expect(screen.queryByText('Trần Tùng')).toBeNull();
     expect(container.querySelector('.chara-debut__role')?.textContent).toBe('Bạn cùng phòng 408');
     expect(screen.getByText('Năm nhất')).toBeInTheDocument();
@@ -53,10 +53,10 @@ describe('GioiThieuMvp — thẻ chỉ ghi điều đã biết', () => {
 });
 
 describe('NhanVatMvp — tab Nhân vật chỉ ghi điều đã biết', () => {
-  it('Tùng mới gặp: tên ngắn, "Họ tên: ?", KHÓA và NGÀNH đã biết; câu nói và "Thường gặp ở đâu" ẩn', () => {
+  it('Tùng mới gặp: tên ngắn (không dòng "Họ tên: ?"), KHÓA và NGÀNH đã biết; câu nói và "Thường gặp ở đâu" ẩn', () => {
     const { container } = render(<NhanVatMvp kb={kb} daGap={['tung']} />);
     expect(container.querySelector('.chara-profile__name')?.textContent).toBe('Tùng');
-    expect(screen.getByText('Họ tên: ?')).toBeInTheDocument();
+    expect(screen.queryByText('Họ tên: ?')).toBeNull();
     expect(container.querySelector('.chara-profile__role-tag')?.textContent).toBe('Bạn cùng phòng 408');
     expect(screen.getByText('Năm nhất')).toBeInTheDocument();
     expect(container.querySelector('.chara-profile__quote')).toBeNull();

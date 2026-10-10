@@ -76,7 +76,9 @@ import { datMuc, laMucNhapVai, laMucSql, quenCachTamThoi } from './muc-choi';
 /** Đối chất: số lần được trình thẻ không liên quan; lần thứ ba là hết lượt (user 03/10/2026: sai mãi phải mất uy tín). */
 export const SO_LAN_SAI_DOI_CHAT = 3;
 
-export const TEN_MAC_DINH = 'Khôi';
+export const TEN_MAC_DINH = 'Khoa';
+/** Họ tên đầy đủ của nhân vật chính (cố định từ 10/10/2026, user chốt); `TEN_MAC_DINH` là tên gọi. */
+export const HO_TEN_NGUOI_CHOI = 'Nguyễn Minh Khoa';
 
 /** Độ dài tối đa của tên người chơi (tính theo ký tự sau khi bỏ khoảng trắng thừa). */
 export const TEN_TOI_DA = 20;
@@ -457,7 +459,7 @@ export function taoTrangThai(kb: KichBanMvp, batDauLuc: number = Date.now()): Tr
   const s: TrangThaiMvp = {
     phienBan: 1,
     batDauLuc,
-    tenNguoiChoi: '',
+    tenNguoiChoi: TEN_MAC_DINH,
     // Ngành cố định (user 04/10/2026): bỏ bước chọn ngành ở mở đầu; Tùng hỏi bằng lời, Hà Vy đoán ở Trung thu, thẻ hồ sơ hiện.
     nganh: NGANH_NGUOI_CHOI,
     giaiDoan: 'mo-dau',
@@ -1546,7 +1548,11 @@ function vaoLaiDiem(kb: KichBanMvp, s: TrangThaiMvp, kp: KhamPhaMvp, nut: Extrac
 
 export function xuLy(kb: KichBanMvp, s: TrangThaiMvp, hd: HanhDongMvp): TrangThaiMvp {
   if (s.loi) return s;
-  if (hd.type === 'sua-con-tro') return chayToiNutCanNguoiChoi(kb, s);
+  if (hd.type === 'sua-con-tro') {
+    // Tên nhân vật chính cố định từ 10/10/2026: ván lưu cũ có tên gõ tay (hay rỗng) thì đổi về tên cố định.
+    const co = s.tenNguoiChoi === TEN_MAC_DINH ? s : { ...s, tenNguoiChoi: TEN_MAC_DINH };
+    return chayToiNutCanNguoiChoi(kb, co);
+  }
   if (hd.type === 'da-gioi-thieu') {
     const da = s.daGioiThieu ?? [];
     return da.includes(hd.nhanVat) ? s : { ...s, daGioiThieu: [...da, hd.nhanVat] };

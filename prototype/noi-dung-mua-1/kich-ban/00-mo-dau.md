@@ -6,8 +6,7 @@
 ### md-00-tren-xe — Cảnh 0: trên xe buýt lên Hà Nội {cảnh: xe-buyt}
 
 - [LỜI md-00-tren-xe.1]
-- [TẠO NHÂN VẬT ten] player: "(Dòng đầu tờ giấy báo là họ tên mình.)"
-  - xúc xắc: (Thôi, để xúc xắc chọn hộ một cái tên.)
+- [LỜI md-00-tren-xe.1b]
 - [LỜI md-00-tren-xe.2]
 - [ĐI CÙNG md-00-cong-truong] Xuống xe
 

@@ -42,7 +42,7 @@ export function GioiThieuMvp({ kb, nhanVat, bietVe, onDong }: GioiThieuMvpProps)
     <CharacterDebutCard
       id={nv.id}
       fullName={bietHoTen ? (nv.hoTen ?? nv.ten) : nv.ten}
-      subName={nv.hoTen && !bietHoTen ? 'Họ tên: ?' : null}
+      subName={null}
       title={biet.has('danh-xung') ? gt.danhXung : '?'}
       year={gt.nam ? (biet.has('nam') ? gt.nam : 'Năm: ?') : null}
       major={gt.nganh ? (biet.has('nganh') ? gt.nganh : 'Ngành: ?') : null}

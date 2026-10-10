@@ -73,7 +73,7 @@ describe('máy MVP: [TẠO NHÂN VẬT ten]', () => {
     expect(kn.nut.asker.speaker).toBe('tung');
     expect(kn.nut.asker.text).toBe('Thế cậu tên gì?');
     expect(kn.nut.xucXac).toMatch(/xúc xắc/);
-    expect(s.tenNguoiChoi).toBe('');
+    expect(s.tenNguoiChoi).toBe(TEN_MAC_DINH);
     // "tiep" không qua được câu hỏi tên.
     expect(xuLy(KB, s, { type: 'tiep' })).toBe(s);
   });
@@ -170,10 +170,20 @@ describe('Lưu / Nạp và ô lưu cũ', () => {
     const cu = { ...taoTrangThai(KB, 1), tenNguoiChoi: TEN_MAC_DINH, nganh: 'Kế toán', conTro: null, giaiDoan: 'ngay' as const, ngay: 1 };
     const nap = JSON.parse(JSON.stringify(cu)) as TrangThaiMvp;
     expect(khungNhin(KB, nap).kind).toBe('chon-dia-diem');
-    expect(dienTen(KB, nap, '{{nv.nguoi-choi}}')).toBe('Khôi');
+    expect(dienTen(KB, nap, '{{nv.nguoi-choi}}')).toBe(TEN_MAC_DINH);
   });
 
   it('chưa có tên (trạng thái hỏng) → {{nv.nguoi-choi}} dùng tên dự phòng, không để trống', () => {
     expect(dienTen(KB, taoTrangThai(KB, 1), '{{nv.nguoi-choi}} à')).toBe(`${TEN_MAC_DINH} à`);
+  });
+});
+
+describe('tên cố định Khoa (10/10/2026)', () => {
+  it('ván mới có sẵn tên Khoa; ván lưu cũ có tên gõ tay hoặc rỗng được đổi về Khoa khi nạp (sua-con-tro)', () => {
+    expect(taoTrangThai(KB, 1).tenNguoiChoi).toBe('Khoa');
+    for (const cu of ['Bảo', '']) {
+      const nap = xuLy(KB, { ...taoTrangThai(KB, 1), tenNguoiChoi: cu }, { type: 'sua-con-tro' });
+      expect(nap.tenNguoiChoi).toBe('Khoa');
+    }
   });
 });

@@ -747,14 +747,9 @@ const GOC = {
           "text": "Trên đùi là tờ giấy báo nhập học gấp làm tư, mép đã sờn: Ngành Kế toán. Ký túc xá, phòng 408."
         },
         {
-          "type": "create-character",
-          "truong": "ten",
-          "asker": {
-            "speaker": "player",
-            "text": "(Dòng đầu tờ giấy báo là họ tên mình.)"
-          },
-          "xucXac": "(Thôi, để xúc xắc chọn hộ một cái tên.)",
-          "luaChon": []
+          "type": "line",
+          "speaker": "player",
+          "text": "(Dòng đầu tờ giấy báo: Nguyễn Minh Khoa. Nhìn mãi vẫn thấy lạ, như tên người khác.)"
         },
         {
           "type": "line",
@@ -4451,7 +4446,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_sv = 'SV240251';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:115 [MÀN CHIẾU md-chieu-ma-tung]"
+      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:114 [MÀN CHIẾU md-chieu-ma-tung]"
     },
     {
       "sql": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",
@@ -4538,8 +4533,8 @@ const GOC = {
           ],
           [
             "SV240388",
-            "Người",
-            "chơi",
+            "Nguyễn Minh",
+            "Khoa",
             "KT24A",
             "Ký túc xá"
           ],

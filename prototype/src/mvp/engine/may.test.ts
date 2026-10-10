@@ -46,12 +46,12 @@ const toiHop = (s: TrangThaiMvp): boolean => s.giaiDoan === 'hop';
 const toiKet = (_s: TrangThaiMvp, kn: KhungNhinMvp): boolean => kn.kind === 'end';
 
 describe('máy MVP: mở đầu', () => {
-  it('khởi tạo đứng ở lời đầu chuỗi mở đầu, chưa có tên (người chơi tự đặt ở [TẠO NHÂN VẬT ten]); ngành cố định', () => {
+  it('khởi tạo đứng ở lời đầu chuỗi mở đầu, tên cố định Khoa; ngành cố định', () => {
     const s = taoTrangThai(KB, 1);
     expect(s.giaiDoan).toBe('mo-dau');
     expect(s.conTro?.chuoi).toBe(KB.lich.chuoiDau);
     expect(khungNhin(KB, s).kind).toBe('line');
-    expect(s.tenNguoiChoi).toBe('');
+    expect(s.tenNguoiChoi).toBe('Khoa');
     expect(s.nganh).toBe('Kế toán');
   });
 

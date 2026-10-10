@@ -8,6 +8,9 @@
 - [DÀN DỰNG] Nền bg-mvp-xe-buyt đã vẽ người chơi tựa cửa sổ, khách trong xe, xe máy ngoài đường: lời dẫn không tả lại.
 - **narrator**: Trên đùi là tờ giấy báo nhập học gấp làm tư, mép đã sờn: Ngành Kế toán. Ký túc xá, phòng 408.
 
+## md-00-tren-xe.1b
+- **player**: (Dòng đầu tờ giấy báo: Nguyễn Minh Khoa. Nhìn mãi vẫn thấy lạ, như tên người khác.)
+
 ## md-00-tren-xe.2
 - **player**: (Mười bốn điểm dừng, đã qua mười hai. Ký túc xá ở cổng nào nhỉ?)
 - **narrator**: Xe chậm dần. Giọng phụ xe vọng xuống: "Đại học Chấn Hưng! Ai xuống thì chuẩn bị!"

@@ -87,7 +87,7 @@ describe('câu hỏi tên (ManChoiMvp)', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Xong' }));
     expect(screen.getByRole('alert')).toHaveTextContent(loi);
     expect(dangOCauTen()).toBe(true);
-    expect(trangThai().tenNguoiChoi).toBe('');
+    expect(trangThai().tenNguoiChoi).toBe('Khoa');
     expect(screen.getByLabelText('Tên nhân vật của bạn')).toHaveAttribute('aria-invalid', 'true');
   });
 
@@ -159,11 +159,11 @@ describe('Lưu / Nạp (kho MVP)', () => {
       useKhoMvp.getState().luuVaoO(2, 'Mở đầu');
       useKhoMvp.getState().batDau();
     });
-    expect(trangThai().tenNguoiChoi).toBe('');
+    expect(trangThai().tenNguoiChoi).toBe('Khoa');
     act(() => {
       useKhoMvp.getState().napTuO(2);
     });
-    expect(trangThai().tenNguoiChoi).toBe('Trần Quốc');
+    expect(trangThai().tenNguoiChoi).toBe('Khoa'); // tên gõ tay cũ bị đổi về tên cố định khi nạp
     expect(trangThai().nganh).toBe('Kế toán');
   });
 });
