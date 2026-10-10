@@ -3783,10 +3783,13 @@ span.v7-o--bang:not(.v7-o--phieu) {
 .v7--gon .v7-kinh {
   font-size: 14px;
 }
-.phong-tra:has(.v7--gon) .phong-tra__ve-bang {
+.phong-tra:has(.v7--gon) .phong-tra__ve-bang,
+.phong-tra[data-pha='may']:has(.v7--gon) .phong-tra__ve-bang {
   top: 6px;
+  bottom: auto;
   left: max(8px, env(safe-area-inset-left));
   width: 118px;
+  max-width: none;
   min-height: 40px;
   padding: 6px 8px;
   font-size: 0.8rem;

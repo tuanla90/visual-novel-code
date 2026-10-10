@@ -821,16 +821,30 @@
   top: max(16px, env(safe-area-inset-top));
   left: max(16px, env(safe-area-inset-left));
   min-height: 44px;
-  padding: 8px 14px;
+  /* Hẹp hai dòng ("Về bảng / điều tra"): nằm gọn ở lề trái ngoài mặt kính laptop, không đè lên đề bài (user 10/10). */
+  max-width: 96px;
+  padding: 6px 10px;
   border: 1px solid #d4d8d2;
   border-radius: 8px;
   background: rgba(255, 253, 248, 0.96);
   color: #253a35;
-  font: 600 0.95rem/1 var(--font-ui);
+  font: 600 0.85rem/1.15 var(--font-ui);
+  white-space: normal;
   box-shadow: 0 3px 12px rgba(22, 35, 30, 0.14);
   cursor: pointer;
 }
 .phong-tra__ve-bang:hover { background: #fff; border-color: #6d8d7b; }
+/* Màn máy (cảnh laptop phủ kín khung, mặt kính sát lề trái): nút lùi xuống góc trái dưới, chỗ trống của chân laptop — nổi ở góc trái
+   trên thì đè đầu đề bài ở mọi cỡ khung (user 10/10). Điện thoại cầm ngang có luật riêng (cột trái) ở v7.css. */
+.phong-tra[data-pha='may'] .phong-tra__ve-bang {
+  top: auto;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  max-width: none;
+  white-space: nowrap;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  line-height: 1;
+}
 .mvp-lop__huongdan,
 .mvp-lop__cho {
   margin: 0;
