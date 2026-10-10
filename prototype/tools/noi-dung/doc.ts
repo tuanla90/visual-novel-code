@@ -214,13 +214,14 @@ export function parseChoice(line: string): RawChoice | null {
 /** `[MÀN CHIẾU <id> · vật chứng <ev> · chạy · 2 dòng]` — các mục sau id theo thứ tự tùy ý. */
 export function parseProjector(
   line: string,
-): { id: string; evidence: string | null; preload: string | null; run: boolean; rows: number | null } | null {
+): { id: string; evidence: string | null; preload: string | null; run: boolean; rows: number | null; lamMau: boolean } | null {
   const m = /^- \[MÀN CHIẾU ([a-z0-9-]+)((?: · [^\]·]+)*)\]$/.exec(line);
   if (!m) return null;
   let evidence: string | null = null;
   let preload: string | null = null;
   let run: boolean | null = null;
   let rows: number | null = null;
+  let lamMau = false;
   for (const raw of (m[2] ?? '').split(' · ').slice(1)) {
     const p = raw.trim();
     const ev = /^vật chứng ([a-z0-9-]+)$/.exec(p);
@@ -230,12 +231,13 @@ export function parseProjector(
     else if (pl) preload = pl[1] ?? '';
     else if (p === 'chạy') run = true;
     else if (p === 'không chạy') run = false;
+    else if (p === 'làm mẫu') lamMau = true;
     else if (r) rows = Number(r[1]);
-    else throw new Error(`[MÀN CHIẾU]: mục lạ "${p}" — dùng "vật chứng <mã>", "truy vấn nạp sẵn <thẻ>", "chạy" / "không chạy", "<n> dòng"`);
+    else throw new Error(`[MÀN CHIẾU]: mục lạ "${p}" — dùng "vật chứng <mã>", "truy vấn nạp sẵn <thẻ>", "chạy" / "không chạy", "<n> dòng", "làm mẫu"`);
   }
   if (run === null) throw new Error('[MÀN CHIẾU]: phải ghi "chạy" hoặc "không chạy"');
   if (evidence !== null && preload !== null) throw new Error('[MÀN CHIẾU]: chỉ một nguồn — "vật chứng <mã>" hoặc "truy vấn nạp sẵn <thẻ>"');
-  return { id: m[1] ?? '', evidence, preload, run, rows };
+  return { id: m[1] ?? '', evidence, preload, run, rows, lamMau };
 }
 
 // ---------- Bộ đọc ----------

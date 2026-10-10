@@ -421,7 +421,7 @@ export type NutMvp =
   | { type: 'cac-cau-noi'; cac: CauNoiMvp[] }
   | { type: 'effect'; effectId: string }
   | { type: 'line-pick'; id: string; lines: { index: number; sql: string; correct: boolean; feedback: LoiMvp[] }[]; truUyTin: boolean }
-  | { type: 'projector'; id: string; source: { kind: 'sql'; sql: string } | { kind: 'evidence'; evidenceId: string }; run: boolean; expectedRowCount?: number }
+  | { type: 'projector'; id: string; source: { kind: 'sql'; sql: string } | { kind: 'evidence'; evidenceId: string }; run: boolean; expectedRowCount?: number; /** `· làm mẫu`: người xem bấm qua từng bước (bảng, thêm điều kiện, CHẠY, kết quả). */ lamMau?: boolean }
   | { type: 'end' }
   | { type: 'stage'; action: 'vao' | 'ra'; nhanVat: string }
   /** `- [BIẾT <mã> <trường>, <trường>]` (gói B18): người chơi vừa biết thêm ô ấy của thẻ nhân vật; máy tự chạy qua. */
@@ -513,6 +513,8 @@ export interface TheThuThachMvp {
   chonCot?: string[];
   /** `- Bấm ô lấy giấy nhớ: <cột>`: tra đúng rồi, người chơi bấm từng ô của cột này để chép ra giấy nhớ, xong mới ghim được (thao tác học ở Ngày hội). */
   bamO?: string;
+  /** `- Gõ giá trị: có` (thử thách tự tra đầu tiên, mã của chính người chơi): ô giá trị của điều kiện là ô gõ chữ, không cần giấy nhớ; màn tra hiện chỉ dẫn từng bước. */
+  goGiaTri?: boolean;
   /** `- Cột nộp: a, b`: các cột nộp (S12). */
   cotNop?: string[];
   /** Gói B19 `- Khi trình sai:`: lời khi bấm "Trình" mà câu chưa đúng ở màn sửa `· tính vạch`. Thiếu = không có lời riêng. */

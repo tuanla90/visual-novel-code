@@ -328,7 +328,7 @@ export type MucMvp =
   | { kind: 'ghep-mau'; nguoi: string; the: string[]; giayNho: string; loi: RawLine[]; dong: boolean }
   | { kind: 'effect'; id: string }
   | { kind: 'line-pick'; id: string; rows: RawPickRow[]; truUyTin: boolean }
-  | { kind: 'projector'; id: string; source: NguonChieuMvp; run: boolean; rows: number | null }
+  | { kind: 'projector'; id: string; source: NguonChieuMvp; run: boolean; rows: number | null; lamMau?: boolean }
   | { kind: 'end' }
   | { kind: 'stage'; action: 'vao' | 'ra'; nhanVat: string }
   /** `- [BIẾT <mã> <trường>, <trường>]` (gói B18): người chơi vừa biết thêm ô ấy của thẻ nhân vật `nhanVat` (mã trường ASCII). */
@@ -1709,6 +1709,7 @@ export function docNoiDungMvp(tepList: readonly TepMvp[]): KetQuaDocMvp {
           source: p.evidence ? { kind: 'evidence', evidenceId: p.evidence } : p.preload ? { kind: 'preload', challengeId: p.preload } : { kind: 'sql', sql: '' },
           run: p.run,
           rows: p.rows,
+          ...(p.lamMau ? { lamMau: true } : {}),
         };
         if (!p.evidence && !p.preload) choSql = item;
         return add(item);

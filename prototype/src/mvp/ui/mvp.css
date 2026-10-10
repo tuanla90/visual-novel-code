@@ -858,6 +858,61 @@
   min-height: 0;
   max-height: 100%;
 }
+/* Màn chiếu làm mẫu (Duy tra mã Tùng): từng bước, người xem bấm "Bước kế". Gọn để vừa điện thoại ngang 844×390. */
+.mvp-chieu-mau {
+  gap: 6px;
+  padding: 10px 14px;
+}
+.mvp-chieu-mau__dau {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 12px;
+  font: 700 15px/1.3 var(--font-ui, system-ui);
+  color: #7a3b12;
+}
+.mvp-chieu-mau__buoc {
+  font-weight: 600;
+  font-size: 14px;
+  color: #5a4630;
+}
+.mvp-chieu-mau__cac-buoc {
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mvp-chieu-mau__cac-buoc li {
+  width: 34px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(90, 70, 48, 0.2);
+}
+.mvp-chieu-mau__cac-buoc li.is-xong {
+  background: #c62828;
+  opacity: 0.55;
+}
+.mvp-chieu-mau__cac-buoc li.is-dang {
+  background: #c62828;
+}
+.mvp-chieu-mau__chay {
+  margin: 0;
+  font: 700 14px/1 var(--font-ui, system-ui);
+  color: #1f6f43;
+}
+.mvp-chieu-mau__cau {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.45;
+}
+.mvp-chieu-mau .mvp-chieu__bang {
+  max-height: 120px;
+}
+.mvp-chieu-mau .mvp-lop__nut .btn {
+  min-height: 44px;
+}
 .mvp-chieu__con {
   flex: none;
   margin: 6px 0 0;

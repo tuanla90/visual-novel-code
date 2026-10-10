@@ -3854,3 +3854,73 @@ span.v7-o--bang:not(.v7-o--phieu) {
   height: auto;
   min-height: 100%;
 }
+
+/* ---------- Thử thách tự tra đầu tiên (`Gõ giá trị: có`, 10/10/2026) ----------
+   Dòng chỉ dẫn dưới đề bài nói bước kế; phần tử của bước ấy có viền vàng nhấp nháy (`is-chi`); ô giá trị là ô gõ chữ thật. */
+.v7-huong-dan {
+  flex: none;
+  margin: 0.35em 1.05em 0;
+  padding: 0.4em 0.75em;
+  border-left: 4px solid var(--v7-vang);
+  border-radius: 0.3em;
+  background: rgba(251, 191, 36, 0.14);
+  color: #fff3c4;
+  font-size: 0.95em;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.v7-khe.v7-khe--go {
+  box-sizing: border-box;
+  border: 3px dashed rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font: 700 1.1em var(--font-ui);
+  letter-spacing: 0.04em;
+  cursor: text;
+  min-width: 8.4em;
+}
+.v7-khe.v7-khe--go::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.v7-khe.v7-khe--go:not(:placeholder-shown) {
+  border-style: solid;
+  border-color: #fbe38e;
+}
+.v7--doc .v7-khe.v7-khe--go {
+  flex: 1 1 calc(100% - 50px);
+  min-width: 0;
+}
+.v7-o.is-chi,
+.v7-khe.is-chi,
+.v7-nut.is-chi {
+  border-color: var(--v7-vang);
+  box-shadow:
+    0 0 0 3px rgba(251, 191, 36, 0.55),
+    0 0 1.4em rgba(251, 191, 36, 0.5);
+  animation: v7-chi 1.1s ease-in-out infinite;
+}
+@keyframes v7-chi {
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(251, 191, 36, 0.25),
+      0 0 0.6em rgba(251, 191, 36, 0.25);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v7-o.is-chi,
+  .v7-khe.is-chi,
+  .v7-nut.is-chi {
+    animation: none;
+  }
+}
+/* Cầm ngang: chỉ dẫn gọn, ô gõ đủ cao để chạm (≥ 44px). */
+.v7--gon .v7-huong-dan {
+  margin: 0.25em 0.6em 0;
+  padding: 0.3em 0.6em;
+  font-size: 13px;
+}
+.v7--gon .v7-khe.v7-khe--go {
+  min-height: 44px;
+}

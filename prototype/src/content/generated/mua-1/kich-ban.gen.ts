@@ -1313,7 +1313,8 @@ const GOC = {
             "sql": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_sv = 'SV240251';"
           },
           "run": true,
-          "expectedRowCount": 1
+          "expectedRowCount": 1,
+          "lamMau": true
         },
         {
           "type": "note",
@@ -3862,6 +3863,7 @@ const GOC = {
       "mucTieuHoc": "Một điều kiện: gõ đúng mã của mình vào ô, bấm CHẠY. Ra một dòng là in phiếu được.",
       "soDongKyVong": 1,
       "sqlChuan": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_sv = 'SV240388';",
+      "goGiaTri": true,
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -4429,13 +4431,13 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài';",
       "soDong": 5,
-      "noi": "noi-dung-mua-1/thu-thach/c-sinh-vien.md:40 thẻ c-nam-hoai, SQL chuẩn",
+      "noi": "noi-dung-mua-1/thu-thach/c-sinh-vien.md:41 thẻ c-nam-hoai, SQL chuẩn",
       "resultId": "ev-nam-hoai"
     },
     {
       "sql": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/thu-thach/c-sinh-vien.md:60 thẻ c-hoai-bc24a, SQL chuẩn",
+      "noi": "noi-dung-mua-1/thu-thach/c-sinh-vien.md:61 thẻ c-hoai-bc24a, SQL chuẩn",
       "resultId": "ev-hoai-bc24a"
     },
     {

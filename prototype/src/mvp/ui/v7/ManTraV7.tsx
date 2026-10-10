@@ -534,6 +534,25 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   if (!khung || !bang) return <p className="game__error">Thẻ thử thách này thiếu khung SELECT … FROM … hợp lệ.</p>;
 
   const laChieu = canh === 'man-chieu';
+  /**
+   * Thử thách tự tra đầu tiên (`- Gõ giá trị: có`, mã của chính người chơi, không có giấy nhớ nào để thả): ô giá trị là ô gõ chữ,
+   * và một dòng chỉ dẫn nói rõ bước kế; bước nào xong thì bước sau sáng. Chỉ thử thách này, các thử thách sau như cũ.
+   */
+  const goDuoc = !!the.goGiaTri && mode !== 'fix-query' && !tuViet;
+  const dich = goDuoc ? /WHERE\s+([a-z_][a-z0-9_]*)\s*=\s*'([^']*)'/i.exec(sqlChuan) : null;
+  const dk0 = cau.dieuKien[0];
+  const buocHD: 'them' | 'cot' | 'go' | 'chay' | null = !dich || dung ? null : !dk0 ? 'them' : dk0.cot !== dich[1] ? 'cot' : !dk0.giaTri ? 'go' : 'chay';
+  const chiHD = (b: 'them' | 'cot' | 'go' | 'chay'): string => (buocHD === b ? ' is-chi' : '');
+  const cauHD =
+    buocHD === 'them'
+      ? 'Bước 1/4: bấm "+ thêm điều kiện". (tạm)'
+      : buocHD === 'cot'
+        ? `Bước 2/4: bấm vào tên cột cho tới khi ra "${nk.cot(dich?.[1] ?? '', bang?.ten)}". (tạm)`
+        : buocHD === 'go'
+          ? `Bước 3/4: gõ mã ${dich?.[2] ?? ''} vào ô bên cạnh, mã in trên giấy báo nhập học. (tạm)`
+          : buocHD === 'chay'
+            ? 'Bước 4/4: bấm CHẠY. (tạm)'
+            : '';
   // Dấu ✓ / ✗ của hai người kiểm sau mỗi lần chạy (chưa chạy: chưa có dấu).
   const soDongChay = cham && cham.trangThai !== 'loi' ? cham.chay.dong.length : null;
   const duyDat = nguongDuy === null || soDongChay === null ? null : soDongChay > 0 && soDongChay <= nguongDuy && (!the.bamO || cham?.trangThai === 'loi' || (cham?.chay.cot ?? []).some((c) => c.toLowerCase() === the.bamO?.toLowerCase()));
@@ -665,6 +684,11 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
         ) : null}
       </div>
       <p className="v7-de">{dienTen(the.deBai)}</p>
+      {cauHD ? (
+        <p className="v7-huong-dan" role="status" data-buoc={buocHD ?? undefined}>
+          {cauHD}
+        </p>
+      ) : null}
       {nguongDuy !== null ? (
         <KiemPhieu duy={`phiếu tối đa ${nguongDuy} dòng${the.bamO ? `, có cột ${the.bamO}` : ''}`} duyDat={duyDat} vy="đúng câu hỏi trên bảng" vyDat={vyDat} />
       ) : null}
@@ -846,7 +870,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                   )}
                   <button
                     type="button"
-                    className="v7-o v7-o--cot"
+                    className={`v7-o v7-o--cot${i === 0 ? chiHD('cot') : ''}`}
                     disabled={khoa || laChieu}
                     title={laChieu ? 'Cột cố định trên màn chiếu' : undefined}
                     aria-label={`Cột của điều kiện ${i + 1}: ${nk.cot(d.cot, bang?.ten)}${laChieu ? ' (cố định)' : ' — bấm để đổi'}`}
@@ -876,6 +900,30 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                   >
                     {nh(nhieu && d.phep === 'bang' ? 'là một trong' : TEN_PHEP[d.phep])}
                   </button>
+                  {goDuoc && !laChieu ? (
+                    <input
+                      type="text"
+                      className={`v7-khe v7-khe--go${i === 0 ? chiHD('go') : ''}`}
+                      value={d.giaTri?.tho ?? ''}
+                      disabled={khoa}
+                      placeholder="gõ mã vào đây"
+                      aria-label={`Giá trị điều kiện ${i + 1}: gõ chữ vào ô`}
+                      autoCapitalize="off"
+                      autoCorrect="off"
+                      spellCheck={false}
+                      onChange={(e) => {
+                        const v = e.target.value.trim();
+                        doiDk(i, (x) => ({ ...x, giaTri: v === '' ? null : { nguon: 'giay-nho', tho: v } }));
+                      }}
+                      onKeyDown={(e) => {
+                        e.stopPropagation();
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          void chay();
+                        }
+                      }}
+                    />
+                  ) : (
                   <button
                     type="button"
                     className={`v7-khe${d.giaTri ? ' is-co' : ''}${dangChon && !d.giaTri ? ' is-moi' : ''}${laChieu ? (d.giaTri ? ' is-co-dinh' : ' is-khoi-phuc') : ''}`}
@@ -916,6 +964,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                       'thả giấy nhớ'
                     )}
                   </button>
+                  )}
                   {!laChieu ? (
                     <button
                       type="button"
@@ -940,7 +989,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                 ) : null}
                 <button
                   type="button"
-                  className={`v7-o v7-o--them${cau.dieuKien.length === 0 ? ' is-dau' : ''}`}
+                  className={`v7-o v7-o--them${cau.dieuKien.length === 0 ? ' is-dau' : ''}${chiHD('them')}`}
                   disabled={khoa}
                   aria-label="Thêm điều kiện"
                   onClick={() =>
@@ -1117,7 +1166,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
             ) : 'Tiếp tục'}
           </button>
         ) : (
-          <button type="button" className="v7-nut v7-nut--chay" disabled={dangChay || !daChonBangHL || (tuViet ? goGon === '' : !!chonCot && cotLay.length === 0)} onClick={() => void chay()}>
+          <button type="button" className={`v7-nut v7-nut--chay${chiHD('chay')}`} disabled={dangChay || !daChonBangHL || (tuViet ? goGon === '' : !!chonCot && cotLay.length === 0)} onClick={() => void chay()}>
             <IconPlay className="v7-bt" /> {nh(dangChay ? 'ĐANG CHẠY' : 'CHẠY')}
           </button>
         )}

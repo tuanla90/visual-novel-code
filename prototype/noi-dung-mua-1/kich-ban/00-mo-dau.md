@@ -77,7 +77,7 @@
 <!-- Duy tra làm mẫu qua [MÀN CHIẾU] (chạy sẵn, một dòng); người chơi tự tra mã mình ở màn tra (c-tra-ma-nguoi-choi), không chấm, không đẻ note. Phiếu in xong là đủ năm tên: lý do Khánh gửi thư hai hôm sau (không nói ra). -->
 - [LỜI md-09-ban-tham-tu.1]
 - [BIẾT minh-anh câu nói]
-- [MÀN CHIẾU md-chieu-ma-tung · truy vấn nạp sẵn c-tra-ma-tung · chạy · 1 dòng]
+- [MÀN CHIẾU md-chieu-ma-tung · truy vấn nạp sẵn c-tra-ma-tung · chạy · 1 dòng · làm mẫu]
 - [LỜI md-09-ban-tham-tu.2]
 - [THỬ THÁCH c-tra-ma-nguoi-choi]
 - [LỜI md-09-ban-tham-tu.3]

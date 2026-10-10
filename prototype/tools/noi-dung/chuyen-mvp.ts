@@ -144,7 +144,7 @@ function nut(it: MucMvp, noi: string, soDongKhai: DuLieuMvp['soDongKhai']): Obj 
     case 'projector': {
       if (it.source.kind === 'preload') throw new Error(`${noi}: [MÀN CHIẾU ${it.id}] chưa gắn câu SQL nạp sẵn (chưa qua kiểm chéo?)`);
       if (it.source.kind === 'sql' && it.rows !== null) soDongKhai.push({ sql: it.source.sql, soDong: it.rows, noi: `${noi} [MÀN CHIẾU ${it.id}]` });
-      return { type: 'projector', id: it.id, source: it.source, run: it.run, ...(it.rows !== null ? { expectedRowCount: it.rows } : {}) };
+      return { type: 'projector', id: it.id, source: it.source, run: it.run, ...(it.rows !== null ? { expectedRowCount: it.rows } : {}), ...(it.lamMau ? { lamMau: true } : {}) };
     }
     case 'end':
       return { type: 'end' };
@@ -289,6 +289,7 @@ function theThuThach(t: RawChallengeCard, soDongKhai: DuLieuMvp['soDongKhai']): 
     ...(t.fields['Bảng chọn'] ? { bangChon: chiaGiaTri(t.fields['Bảng chọn']) } : {}),
     // "Chọn cột: a, b" (hoặc "không"): bài chọn cột của SELECT; giá trị là các cột bật sẵn.
     ...(t.fields['Chọn cột'] !== undefined ? { chonCot: t.fields['Chọn cột'].trim() === 'không' ? [] : t.fields['Chọn cột'].split(',').map((c) => c.trim()).filter((c) => c !== '') } : {}),
+    ...(t.fields['Gõ giá trị'] === 'có' ? { goGiaTri: true } : {}),
     ...(t.fields['Bấm ô lấy giấy nhớ'] ? { bamO: t.fields['Bấm ô lấy giấy nhớ'].trim() } : {}),
     // "Cột nộp: a, b" (S12)
     ...(t.fields['Cột nộp'] !== undefined ? { cotNop: t.fields['Cột nộp'].split(',').map((c) => c.trim()).filter((c) => c !== '') } : {}),
