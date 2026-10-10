@@ -12,7 +12,7 @@
  * Mặt bảng là khung 1600×900 co theo vùng chứa; màn dọc thì bảng cao vừa màn và cuộn ngang.
  * Dữ liệu dựng ở `engine/bang-dieu-tra.ts`.
  */
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type ReactNode } from 'react';
 import type { KichBanMvp } from '../../../content/mvp/types';
 import { CO_THE, KHUNG_BANG, dungBang, gocNghieng, MA_THE_HOI, viTriThe, type TheBang } from '../../engine/bang-dieu-tra';
 import { timCauNoi } from '../../engine/may';
@@ -188,6 +188,21 @@ export function BangGhimMvp({ kb, s, dienTen, them, moi, onDoiCho, children, chu
     : ngang
       ? Math.min(co.w / KHUNG_BANG.rong, co.h / KHUNG_BANG.cao)
       : Math.max(0.5, co.h / KHUNG_BANG.cao);
+
+  // Điện thoại cầm ngang: bảng rộng hơn khung nhìn nên thẻ mới ghim / tờ câu hỏi hay nằm ngoài màn (user 10/10: "tờ câu hỏi ở xa tít,
+  // bị cắt"). Mở bảng là cuộn sẵn để thẻ ấy ở giữa khung nhìn; người chơi cuộn tiếp tùy ý (chỉ cuộn lại khi đổi thẻ đích).
+  const idDich = moi ?? bang.the.find((t) => t.loai === 'hoi')?.id ?? null;
+  useLayoutEffect(() => {
+    if (!gon || !idDich) return;
+    const cuon = goc.current;
+    const el = cuon?.querySelector<HTMLElement>(`[data-the="${idDich.replace(/"/g, '\\"')}"]`);
+    if (!cuon || !el) return;
+    const c = cuon.getBoundingClientRect();
+    const r = el.getBoundingClientRect();
+    if (r.width === 0) return;
+    cuon.scrollLeft += r.left + r.width / 2 - (c.left + c.width / 2);
+    cuon.scrollTop += r.top + r.height / 2 - (c.top + c.height / 2);
+  }, [gon, idDich]);
 
   // Kéo thẻ bằng con trỏ (chuột lẫn cảm ứng); nhích dưới 6px coi là bấm → mở thẻ.
   const dangKeo = useRef<{

@@ -543,15 +543,19 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
   const dk0 = cau.dieuKien[0];
   const buocHD: 'them' | 'cot' | 'go' | 'chay' | null = !dich || dung ? null : !dk0 ? 'them' : dk0.cot !== dich[1] ? 'cot' : !dk0.giaTri ? 'go' : 'chay';
   const chiHD = (b: 'them' | 'cot' | 'go' | 'chay'): string => (buocHD === b ? ' is-chi' : '');
+  // Điều kiện mới mặc định lấy cột đầu của bảng: nếu đó đã là cột cần so thì không có bước "chọn cột" (số bước tự co lại 3).
+  const coBuocCot = !!dich && dich[1] !== cot[0];
+  const tongBuoc = coBuocCot ? 4 : 3;
+  const soBuoc = (b: 'them' | 'cot' | 'go' | 'chay'): number => (b === 'them' ? 1 : b === 'cot' ? 2 : b === 'go' ? (coBuocCot ? 3 : 2) : tongBuoc);
   const cauHD =
     buocHD === 'them'
-      ? 'Bước 1/4: bấm "+ thêm điều kiện". (tạm)'
+      ? `Bước ${soBuoc('them')}/${tongBuoc}: bấm "+ thêm điều kiện". (tạm)`
       : buocHD === 'cot'
-        ? `Bước 2/4: bấm vào tên cột cho tới khi ra "${nk.cot(dich?.[1] ?? '', bang?.ten)}". (tạm)`
+        ? `Bước ${soBuoc('cot')}/${tongBuoc}: bấm vào tên cột cho tới khi ra "${nk.cot(dich?.[1] ?? '', bang?.ten)}". (tạm)`
         : buocHD === 'go'
-          ? `Bước 3/4: gõ mã ${dich?.[2] ?? ''} vào ô bên cạnh, mã in trên giấy báo nhập học. (tạm)`
+          ? `Bước ${soBuoc('go')}/${tongBuoc}: gõ mã ${dich?.[2] ?? ''} vào ô bên cạnh, mã in trên giấy báo nhập học. (tạm)`
           : buocHD === 'chay'
-            ? 'Bước 4/4: bấm CHẠY. (tạm)'
+            ? `Bước ${soBuoc('chay')}/${tongBuoc}: bấm CHẠY. (tạm)`
             : '';
   // Dấu ✓ / ✗ của hai người kiểm sau mỗi lần chạy (chưa chạy: chưa có dấu).
   const soDongChay = cham && cham.trangThai !== 'loi' ? cham.chay.dong.length : null;

@@ -65,18 +65,20 @@ export function ManChieuMvp({ kb, duLieu, nut, onTiep, onDaXemTruyVan }: ManChie
             <li key={i} className={i + 1 < buoc ? 'is-xong' : i + 1 === buoc ? 'is-dang' : undefined} />
           ))}
         </ol>
-        <SqlCode sql={hien} label="Câu SQL trên màn chiếu" />
-        {buoc === 3 ? <p className="mvp-chieu-mau__chay">▶ CHẠY</p> : null}
-        {buoc >= 4 && kq?.ok ? (
-          <div className="mvp-chieu__bang">
-            <ResultTable columns={kq.cot} rows={kq.dong.slice(0, 5)} caption="Kết quả trên màn chiếu" />
-          </div>
-        ) : null}
-        {buoc >= 4 && kq && !kq.ok ? <p className="game__error">Không chạy được: {kq.thongDiep}</p> : null}
-        <p className="mvp-chieu-mau__cau" aria-live="polite">
-          {cau[buoc - 1]}
-        </p>
-        <div className="mvp-lop__nut">
+        <div className="mvp-chieu-mau__khung">
+          <SqlCode sql={hien} label="Câu SQL trên màn chiếu" />
+          {buoc === 3 ? <p className="mvp-chieu-mau__chay">▶ CHẠY</p> : null}
+          {buoc >= 4 && kq?.ok ? (
+            <div className="mvp-chieu__bang">
+              <ResultTable columns={kq.cot} rows={kq.dong.slice(0, 5)} caption="Kết quả trên màn chiếu" />
+            </div>
+          ) : null}
+          {buoc >= 4 && kq && !kq.ok ? <p className="game__error">Không chạy được: {kq.thongDiep}</p> : null}
+        </div>
+        <div className="mvp-chieu-mau__chan">
+          <p className="mvp-chieu-mau__cau" aria-live="polite">
+            {cau[buoc - 1]}
+          </p>
           <button
             type="button"
             className="btn btn--primary"

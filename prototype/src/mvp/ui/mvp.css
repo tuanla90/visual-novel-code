@@ -902,15 +902,29 @@
   font: 700 14px/1 var(--font-ui, system-ui);
   color: #1f6f43;
 }
+/* Khung SQL + kết quả giữ chiều cao cố định để hộp không nhảy khi sang bước kế. */
+.mvp-chieu-mau__khung {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  min-height: 150px;
+}
+.mvp-chieu-mau__chan {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 .mvp-chieu-mau__cau {
+  flex: 1 1 auto;
   margin: 0;
   font-size: 17px;
-  line-height: 1.45;
+  line-height: 1.4;
 }
 .mvp-chieu-mau .mvp-chieu__bang {
   max-height: 120px;
 }
-.mvp-chieu-mau .mvp-lop__nut .btn {
+.mvp-chieu-mau__chan .btn {
+  flex: none;
   min-height: 44px;
 }
 .mvp-chieu__con {

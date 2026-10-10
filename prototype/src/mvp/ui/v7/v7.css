@@ -1684,6 +1684,28 @@ span.v7-o--bang:not(.v7-o--phieu) {
   letter-spacing: 0.03em;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
 }
+/* Dòng chỉ vào nút "Mở laptop" ở lần tự tra đầu tiên: mũi tên nhỏ bên phải trỏ vào nút. */
+.bang__chi-nut {
+  position: relative;
+  max-width: 230px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #fffdf8;
+  color: #3b1d06;
+  font: 600 0.95rem/1.35 var(--font-ui);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.35);
+}
+.bang__chi-nut::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  width: 14px;
+  height: 14px;
+  background: inherit;
+  transform: translateY(-50%) rotate(45deg);
+  border-radius: 2px;
+}
 @keyframes bang-nhap {
   to {
     box-shadow:
@@ -3741,6 +3763,11 @@ span.v7-o--bang:not(.v7-o--phieu) {
 }
 .v7--gon .v7-dai:empty {
   display: none;
+}
+/* Có nút "Về bảng điều tra" / "Về phòng" nổi ở góc trái thì cột trái giữ chỗ cho nút dù không có giấy nhớ, kẻo nút đè lên đề bài
+   (user 10/10: thử thách tự gõ mã không có giấy nhớ nào). */
+.phong-tra:has(.phong-tra__ve-bang) .v7--gon .v7-dai:empty {
+  display: flex;
 }
 .v7--gon .v7-giay,
 .v7--gon .v7-giay--cau {
