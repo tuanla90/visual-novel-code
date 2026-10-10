@@ -6,7 +6,9 @@
 ### md-00-tren-xe — Cảnh 0: trên xe buýt lên Hà Nội {cảnh: xe-buyt}
 
 - [LỜI md-00-tren-xe.1]
+- [ẢNH doc-giay-bao-nhap-hoc]
 - [LỜI md-00-tren-xe.1b]
+- [LƯU BẰNG CHỨNG ev-giay-bao-khoa]
 - [LỜI md-00-tren-xe.2]
 - [ĐI CÙNG md-00-cong-truong] Xuống xe
 

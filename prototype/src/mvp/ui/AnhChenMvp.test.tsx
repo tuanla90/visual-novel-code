@@ -47,7 +47,7 @@ describe('AnhChenMvp', () => {
     render(<AnhChenMvp id="cg-hop-doi-dau" onTiep={vi.fn()} />);
     expect(screen.getByText('Quân')).toBeInTheDocument();
     expect(screen.getByText('Ồ? Thay vì nhận thua, cậu lại dám bước lên đối chất sao?')).toBeInTheDocument();
-    expect(screen.getByText('Bạn')).toBeInTheDocument();
+    expect(screen.getByText('Khoa')).toBeInTheDocument();
     expect(screen.getByText('Không bước lên, sao bẻ được câu truy vấn của anh!')).toBeInTheDocument();
     expect(screen.queryByText('ゴゴゴ MENACING…')).toBeNull();
   });

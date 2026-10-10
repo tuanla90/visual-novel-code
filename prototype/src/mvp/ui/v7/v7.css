@@ -3923,6 +3923,7 @@ span.v7-o--bang:not(.v7-o--phieu) {
   min-width: 0;
 }
 .v7-o.is-chi,
+.v7-giay.is-chi,
 .v7-khe.is-chi,
 .v7-nut.is-chi {
   border-color: var(--v7-vang);
@@ -3940,6 +3941,7 @@ span.v7-o--bang:not(.v7-o--phieu) {
 }
 @media (prefers-reduced-motion: reduce) {
   .v7-o.is-chi,
+  .v7-giay.is-chi,
   .v7-khe.is-chi,
   .v7-nut.is-chi {
     animation: none;

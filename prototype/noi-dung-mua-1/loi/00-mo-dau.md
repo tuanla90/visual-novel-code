@@ -92,9 +92,10 @@
 - [DÀN DỰNG] Ngay trước đoạn này là màn tra mẫu: Duy gõ mã SV240251 của Tùng, ra một dòng.
 - **duy** (neutral): DL24A. DL là Du lịch, 24 là khóa 2024, A là lớp A. Xong.
 - **tung** (happy): Cậu cũng in phiếu tham gia đi. Hôm Trung thu đến họp, ký cái là xong.
+- **player**: (Mã của mình in ngay dưới họ tên: SV240388.)
 
 ## md-09-ban-tham-tu.3
-- [DÀN DỰNG] Ngay trước đoạn này là màn tra: người chơi tự kéo mã của mình vào khối, ra một dòng. Không chấm.
+- [DÀN DỰNG] Ngay trước đoạn này là màn tra: người chơi tự thả tờ giấy báo (mã của mình) vào ô, ra một dòng. Không chấm.
 - **player**: (KT24A. Kế toán, khóa 2024, lớp A.)
 - **minh-anh** (happy): Năm tên rồi! Tối thứ Ba CLB ngồi Trung thu ở sân ký túc xá, hai em xuống nhé.
 > NHIỆM VỤ: Tối thứ Ba tới sân ký túc xá xem CLB sinh hoạt (tạm)

@@ -535,11 +535,14 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
 
   const laChieu = canh === 'man-chieu';
   /**
-   * Thử thách tự tra đầu tiên (`- Gõ giá trị: có`, mã của chính người chơi, không có giấy nhớ nào để thả): ô giá trị là ô gõ chữ,
-   * và một dòng chỉ dẫn nói rõ bước kế; bước nào xong thì bước sau sáng. Chỉ thử thách này, các thử thách sau như cũ.
+   * Thử thách tự tra đầu tiên (`- Chỉ dẫn từng bước: có`, mã của chính người chơi): một dòng chỉ dẫn nói rõ bước kế; bước nào xong thì
+   * bước sau sáng. Giá trị lấy từ tờ giấy nhớ mang đúng giá trị đích (giấy báo nhập học, user 10/10/2026: "thẻ mã sv để kéo vào");
+   * không có tờ ấy thì ô giá trị là ô gõ chữ. Chỉ thử thách này, các thử thách sau như cũ.
    */
-  const goDuoc = !!the.goGiaTri && mode !== 'fix-query' && !tuViet;
-  const dich = goDuoc ? /WHERE\s+([a-z_][a-z0-9_]*)\s*=\s*'([^']*)'/i.exec(sqlChuan) : null;
+  const chiDan = !!the.chiDanBuoc && mode !== 'fix-query' && !tuViet;
+  const dich = chiDan ? /WHERE\s+([a-z_][a-z0-9_]*)\s*=\s*'([^']*)'/i.exec(sqlChuan) : null;
+  const giayDich = dich ? giayNho.find((g) => g.giaTri === dich[2]) : undefined;
+  const goDuoc = chiDan && !giayDich;
   const dk0 = cau.dieuKien[0];
   const buocHD: 'them' | 'cot' | 'go' | 'chay' | null = !dich || dung ? null : !dk0 ? 'them' : dk0.cot !== dich[1] ? 'cot' : !dk0.giaTri ? 'go' : 'chay';
   const chiHD = (b: 'them' | 'cot' | 'go' | 'chay'): string => (buocHD === b ? ' is-chi' : '');
@@ -553,7 +556,9 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
       : buocHD === 'cot'
         ? `Bước ${soBuoc('cot')}/${tongBuoc}: bấm vào tên cột cho tới khi ra "${nk.cot(dich?.[1] ?? '', bang?.ten)}". (tạm)`
         : buocHD === 'go'
-          ? `Bước ${soBuoc('go')}/${tongBuoc}: gõ mã ${dich?.[2] ?? ''} vào ô bên cạnh, mã in trên giấy báo nhập học. (tạm)`
+          ? giayDich
+            ? `Bước ${soBuoc('go')}/${tongBuoc}: bấm tờ giấy nhớ "${dich?.[2] ?? ''}" rồi bấm vào ô trống bên cạnh (hoặc kéo tờ ấy thả vào ô). (tạm)`
+            : `Bước ${soBuoc('go')}/${tongBuoc}: gõ mã ${dich?.[2] ?? ''} vào ô bên cạnh, mã in trên giấy báo nhập học. (tạm)`
           : buocHD === 'chay'
             ? `Bước ${soBuoc('chay')}/${tongBuoc}: bấm CHẠY. (tạm)`
             : '';
@@ -651,7 +656,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
     <button
       key={g.khoa}
       type="button"
-      className={`v7-giay v7-giay--quanh${i >= nua ? ' is-phai' : ''}${dangChon?.khoa === g.khoa ? ' is-chon' : ''}${lopGiay(g)}`}
+      className={`v7-giay v7-giay--quanh${i >= nua ? ' is-phai' : ''}${dangChon?.khoa === g.khoa ? ' is-chon' : ''}${giayDich?.khoa === g.khoa ? chiHD('go') : ''}${lopGiay(g)}`}
       style={viTriGiay(i, giayHien.length, cauHinh.kinh)}
       draggable={!khoa}
       disabled={khoa}
@@ -930,7 +935,7 @@ export function ManTraV7({ kb, duLieu, the, mode, canh, giayNho, dienTen, nguonP
                   ) : (
                   <button
                     type="button"
-                    className={`v7-khe${d.giaTri ? ' is-co' : ''}${dangChon && !d.giaTri ? ' is-moi' : ''}${laChieu ? (d.giaTri ? ' is-co-dinh' : ' is-khoi-phuc') : ''}`}
+                    className={`v7-khe${d.giaTri ? ' is-co' : ''}${dangChon && !d.giaTri ? ' is-moi' : ''}${i === 0 && giayDich && dangChon ? chiHD('go') : ''}${laChieu ? (d.giaTri ? ' is-co-dinh' : ' is-khoi-phuc') : ''}`}
                     disabled={khoa}
                     aria-label={
                       d.giaTri

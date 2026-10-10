@@ -2107,11 +2107,11 @@ export function truongDaBiet(kb: KichBanMvp, s: TrangThaiMvp, nhanVat: string): 
 }
 
 /**
- * Tên hiển thị của người nói (`player` → "Bạn", `narrator` → ""). Truyền `s` (thẻ tên trong hội thoại): nhân vật có thẻ
+ * Tên hiển thị của người nói (`player` → tên người chơi, cố định "Khoa" từ 10/10/2026, `narrator` → ""). Truyền `s` (thẻ tên trong hội thoại): nhân vật có thẻ
  * giới thiệu mà chưa được giới thiệu thì hiện cách gọi tạm ("Chị khóa trên", không có thì "???") thay cho tên.
  */
 export function tenNguoiNoi(kb: KichBanMvp, speaker: string, s?: TrangThaiMvp): string {
-  if (speaker === 'player') return 'Bạn';
+  if (speaker === 'player') return s?.tenNguoiChoi || TEN_MAC_DINH;
   if (speaker === 'narrator') return '';
   const nv = kb.nhanVat.find((n) => n.id === speaker);
   if (s && nv?.gioiThieu && !(s.daGioiThieu ?? []).includes(speaker)) return nv.gioiThieu.khongXungTen ? nv.ten : (nv.gioiThieu.chuaQuen ?? '???');

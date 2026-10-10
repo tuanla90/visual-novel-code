@@ -513,8 +513,11 @@ export interface TheThuThachMvp {
   chonCot?: string[];
   /** `- Bấm ô lấy giấy nhớ: <cột>`: tra đúng rồi, người chơi bấm từng ô của cột này để chép ra giấy nhớ, xong mới ghim được (thao tác học ở Ngày hội). */
   bamO?: string;
-  /** `- Gõ giá trị: có` (thử thách tự tra đầu tiên, mã của chính người chơi): ô giá trị của điều kiện là ô gõ chữ, không cần giấy nhớ; màn tra hiện chỉ dẫn từng bước. */
-  goGiaTri?: boolean;
+  /**
+   * `- Chỉ dẫn từng bước: có` (thử thách tự tra đầu tiên, mã của chính người chơi): màn tra hiện chỉ dẫn từng bước (thêm điều kiện →
+   * chọn cột → thả giấy nhớ mang giá trị đích → CHẠY). Không có giấy nhớ nào mang giá trị đích thì ô giá trị thành ô gõ chữ.
+   */
+  chiDanBuoc?: boolean;
   /** `- Cột nộp: a, b`: các cột nộp (S12). */
   cotNop?: string[];
   /** Gói B19 `- Khi trình sai:`: lời khi bấm "Trình" mà câu chưa đúng ở màn sửa `· tính vạch`. Thiếu = không có lời riêng. */

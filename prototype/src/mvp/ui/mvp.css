@@ -2488,6 +2488,9 @@
   padding: var(--sp-4) var(--sp-4) 76px;
   background: rgba(8, 12, 18, 0.72);
   cursor: pointer;
+  /* Ảnh dọc (giấy tờ) ở màn ngang: max-height 100% của khung không có tác dụng vì khung cao theo nội dung → ảnh tràn,
+     chỉ thấy khúc giữa (10/10/2026). Đo theo vùng chứa của lớp phủ thay. */
+  container-type: size;
 }
 .mvp-anhchen__khung {
   position: relative;
@@ -2501,6 +2504,7 @@
   min-height: 0;
   max-width: 100%;
   max-height: 100%;
+  max-height: 100cqh;
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);

@@ -139,10 +139,10 @@ export function PhongTraMvp({ kb, s, duLieu, the, mode, giayNho, dienTen, noi, o
       <div className="phong-tra" data-pha="bang">
         {nutRoi}
         <BangGhimMvp kb={kb} s={s} dienTen={dienTen} onDoiCho={onDoiCho} {...(onDoiMau ? { onDoiMau } : {})}>
-          {/* Thử thách tự tra đầu tiên (`Gõ giá trị: có`): chỉ vào nút, nói rõ việc cần làm; các thử thách sau không có dòng này. */}
-          {the.goGiaTri ? (
+          {/* Thử thách tự tra đầu tiên (`Chỉ dẫn từng bước: có`): chỉ vào nút, nói rõ việc cần làm; các thử thách sau không có dòng này. */}
+          {the.chiDanBuoc ? (
             <span className="bang__chi-nut" role="status">
-              Bấm "Mở laptop" để tra mã sinh viên của em. (tạm)
+              Bấm "Mở laptop" để tra mã sinh viên của cậu. (tạm)
             </span>
           ) : null}
           <button

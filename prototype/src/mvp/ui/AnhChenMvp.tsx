@@ -32,7 +32,7 @@ const CAU_HINH_MEME: Record<string, CauHinhMeme> = {
       {
         noiDung: 'Không bước lên, sao bẻ được câu truy vấn của anh!',
         kieu: 'bubble-nvc',
-        nguoiNoi: 'Bạn',
+        nguoiNoi: 'Khoa',
       },
     ],
   },

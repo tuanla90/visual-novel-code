@@ -4,7 +4,7 @@
 
 ## c-tra-ma-nguoi-choi.1
 - Khi chạy ra 0 dòng: **duy** (neutral): Không ra ai à? Mã phải đúng từng chữ một, chép lại từ giấy báo nhập học. (tạm)
-- Gợi ý: **duy** (neutral): Mã sinh viên in trên giấy báo nhập học, mỗi người một mã riêng. Em tìm đúng người có mã ấy. (tạm) <br> **duy** (neutral): Bấm "+ thêm điều kiện", bấm vào tên cột cho tới khi ra ma_sv, gõ mã vào ô bên cạnh rồi bấm CHẠY. (tạm)
+- Gợi ý: **duy** (neutral): Mã sinh viên in trên giấy báo nhập học, mỗi người một mã riêng. Em tìm đúng người có mã ấy. (tạm) <br> **duy** (neutral): Bấm "+ thêm điều kiện", bấm vào tên cột cho tới khi ra ma_sv, thả tờ giấy báo nhập học vào ô bên cạnh rồi bấm CHẠY. (tạm)
 
 ## c-nam-hoai.1
 - Khi chạy ra 0 dòng: **tung** (worried): Không ra bạn nào à? Rõ ràng phiếu ký tên Hoài cơ mà. (tạm)

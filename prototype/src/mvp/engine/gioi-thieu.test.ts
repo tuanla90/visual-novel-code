@@ -57,7 +57,7 @@ describe('thẻ giới thiệu nhân vật', () => {
     expect(tenNguoiNoi(kb, 'minh-anh', s0)).toBe('Chị khóa trên');
     expect(tenNguoiNoi(kb, 'minh-anh', { ...s0, daGioiThieu: ['minh-anh'] })).toBe('Minh Anh');
     expect(tenNguoiNoi(kb, 'minh-anh')).toBe('Minh Anh');
-    expect(tenNguoiNoi(kb, 'player', s0)).toBe('Bạn');
+    expect(tenNguoiNoi(kb, 'player', s0)).toBe('Khoa');
   });
 
   it('đã giới thiệu rồi thì không mở lại', () => {

@@ -48,7 +48,7 @@ export function ManChieuMvp({ kb, duLieu, nut, onTiep, onDaXemTruyVan }: ManChie
       `Duy mở bảng ${mau.bang}: cả trường có bao nhiêu người thì bảng có bấy nhiêu dòng. (tạm)`,
       `Muốn tìm đúng một người, Duy thêm điều kiện: cột ${mau.cot} bằng '${mau.giaTri}'. (tạm)`,
       'Rồi Duy bấm CHẠY. (tạm)',
-      'Mỗi mã chỉ của một người, nên ra đúng một dòng. Lát nữa tới lượt em tự tra mã của mình. (tạm)',
+      'Mỗi mã chỉ của một người, nên ra đúng một dòng. Lát nữa tới lượt cậu tự tra mã của mình. (tạm)',
     ] as const;
     const hien = buoc === 1 ? mau.tu : sql;
     const cuoi = buoc >= cau.length;

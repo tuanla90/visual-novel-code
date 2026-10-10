@@ -28,7 +28,8 @@ SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_sv = 'SV240251';
 - Đề bài hiển thị: Giấy báo nhập học in mã sinh viên của bạn: SV240388. Mã ấy thuộc lớp nào?
 - Mục tiêu học: Một điều kiện: gõ đúng mã của mình vào ô, bấm CHẠY. Ra một dòng là in phiếu được.
 - Số dòng kỳ vọng: 1
-- Gõ giá trị: có
+- Manh mối liên quan: ev-giay-bao-khoa
+- Chỉ dẫn từng bước: có
 - SQL chuẩn:
 
 ```sql

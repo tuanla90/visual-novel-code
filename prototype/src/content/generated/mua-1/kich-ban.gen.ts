@@ -747,9 +747,17 @@ const GOC = {
           "text": "Trên đùi là tờ giấy báo nhập học gấp làm tư, mép đã sờn: Ngành Kế toán. Ký túc xá, phòng 408."
         },
         {
+          "type": "image",
+          "imageId": "doc-giay-bao-nhap-hoc"
+        },
+        {
           "type": "line",
           "speaker": "player",
           "text": "(Nguyễn Minh Khoa, sinh viên năm nhất. Đọc lên vẫn chưa quen.)"
+        },
+        {
+          "type": "save-evidence",
+          "evidenceId": "ev-giay-bao-khoa"
         },
         {
           "type": "line",
@@ -1333,12 +1341,17 @@ const GOC = {
           "text": "Cậu cũng in phiếu tham gia đi. Hôm Trung thu đến họp, ký cái là xong."
         },
         {
+          "type": "line",
+          "speaker": "player",
+          "text": "(Mã của mình in ngay dưới họ tên: SV240388.)"
+        },
+        {
           "type": "challenge",
           "challengeId": "c-tra-ma-nguoi-choi"
         },
         {
           "type": "note",
-          "text": "Ngay trước đoạn này là màn tra: người chơi tự kéo mã của mình vào khối, ra một dòng. Không chấm."
+          "text": "Ngay trước đoạn này là màn tra: người chơi tự thả tờ giấy báo (mã của mình) vào ô, ra một dòng. Không chấm."
         },
         {
           "type": "line",
@@ -3863,7 +3876,7 @@ const GOC = {
       "mucTieuHoc": "Một điều kiện: gõ đúng mã của mình vào ô, bấm CHẠY. Ra một dòng là in phiếu được.",
       "soDongKyVong": 1,
       "sqlChuan": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_sv = 'SV240388';",
-      "goGiaTri": true,
+      "chiDanBuoc": true,
       "truyVanNapSan": null,
       "phanUng": [
         {
@@ -3890,7 +3903,7 @@ const GOC = {
           "bac2": {
             "speaker": "duy",
             "expression": "neutral",
-            "text": "Bấm \"+ thêm điều kiện\", bấm vào tên cột cho tới khi ra ma_sv, gõ mã vào ô bên cạnh rồi bấm CHẠY. (tạm)"
+            "text": "Bấm \"+ thêm điều kiện\", bấm vào tên cột cho tới khi ra ma_sv, thả tờ giấy báo nhập học vào ô bên cạnh rồi bấm CHẠY. (tạm)"
           }
         }
       ],
@@ -4255,6 +4268,24 @@ const GOC = {
       },
       "quotes": {}
     },
+    "ev-giay-bao-khoa": {
+      "id": "ev-giay-bao-khoa",
+      "loai": "ev",
+      "heading": "Giấy báo nhập học của Khoa",
+      "fields": {
+        "Loại": "sự thật",
+        "Nguồn": "tài liệu",
+        "Keyword": "người:Nguyễn Minh Khoa",
+        "Trên bảng": "Giấy báo nhập học: Nguyễn Minh Khoa",
+        "Nguồn trên bảng": "Giấy báo nhập học",
+        "Tiêu đề": "Giấy báo nhập học: Nguyễn Minh Khoa, Kế toán, phòng 408",
+        "Ảnh": "doc-giay-bao-nhap-hoc",
+        "Giá trị cho trình dựng": "SV240388",
+        "Chữ trên giấy": "Mã sinh viên trên giấy báo: **SV240388**",
+        "Nội dung": "Giấy báo nhập học Đại học Chấn Hưng. Họ tên Nguyễn Minh Khoa, mã sinh viên SV240388, ngành Kế toán, ký túc xá phòng 408."
+      },
+      "quotes": {}
+    },
     "ev-the-lich-bc24": {
       "id": "ev-the-lich-bc24",
       "loai": "ev",
@@ -4431,13 +4462,13 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài';",
       "soDong": 5,
-      "noi": "noi-dung-mua-1/thu-thach/c-sinh-vien.md:41 thẻ c-nam-hoai, SQL chuẩn",
+      "noi": "noi-dung-mua-1/thu-thach/c-sinh-vien.md:42 thẻ c-nam-hoai, SQL chuẩn",
       "resultId": "ev-nam-hoai"
     },
     {
       "sql": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài' AND ma_lop = 'BC24A';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/thu-thach/c-sinh-vien.md:61 thẻ c-hoai-bc24a, SQL chuẩn",
+      "noi": "noi-dung-mua-1/thu-thach/c-sinh-vien.md:62 thẻ c-hoai-bc24a, SQL chuẩn",
       "resultId": "ev-hoai-bc24a"
     },
     {
@@ -4448,7 +4479,7 @@ const GOC = {
     {
       "sql": "SELECT ma_sv, ho_dem, ten, ma_lop FROM sinh_vien WHERE ma_sv = 'SV240251';",
       "soDong": 1,
-      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:114 [MÀN CHIẾU md-chieu-ma-tung]"
+      "noi": "noi-dung-mua-1/kich-ban/00-mo-dau.md:116 [MÀN CHIẾU md-chieu-ma-tung]"
     },
     {
       "sql": "SELECT ma_sv, ho_dem, ten, ma_lop, noi_o FROM sinh_vien WHERE ten = 'Hoài' OR ma_lop = 'BC24A';",

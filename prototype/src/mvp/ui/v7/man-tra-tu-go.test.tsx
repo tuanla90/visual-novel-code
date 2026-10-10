@@ -1,13 +1,14 @@
 /**
  * Ngày hội CLB (user 10/10, điện thoại ngang): người chơi lần đầu phải biết làm gì mà không ai nói ngoài màn hình.
  *   - Màn chiếu Duy làm mẫu (`· làm mẫu`): từng bước, người xem bấm "Bước kế", không tự trôi; bước cuối mới ra kết quả một dòng.
- *   - Tự tra mã của mình (`Gõ giá trị: có`): ô giá trị là ô gõ chữ; dòng chỉ dẫn đổi theo việc vừa làm; thử thách khác không có chỉ dẫn.
+ *   - Tự tra mã của mình (`Chỉ dẫn từng bước: có`): ô giá trị là ô gõ chữ; dòng chỉ dẫn đổi theo việc vừa làm; thử thách khác không có chỉ dẫn.
  */
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { KICH_BAN_MUA_1 } from '../../../content/generated/mua-1/kich-ban.gen';
 import type { KichBanMvp, NutMvp, TheThuThachMvp } from '../../../content/mvp/types';
+import type { GiaTriHoSo } from '../../engine/giay-nho';
 import { ManChieuMvp } from '../ManChieuMvp';
 import { ManTraV7 } from './ManTraV7';
 
@@ -56,16 +57,16 @@ describe('Màn chiếu Duy làm mẫu từng bước', () => {
 });
 
 describe('Tự tra mã của mình: ô gõ chữ và chỉ dẫn từng bước', () => {
-  function ve(id: string) {
+  function ve(id: string, giayNho: GiaTriHoSo[] = []) {
     const onXong = vi.fn();
-    render(<ManTraV7 kb={kb} duLieu={kb.duLieu} the={the(id)} mode="challenge" canh="phong-clb" giayNho={[]} dienTen={(t) => t} onXong={onXong} />);
+    render(<ManTraV7 kb={kb} duLieu={kb.duLieu} the={the(id)} mode="challenge" canh="phong-clb" giayNho={giayNho} dienTen={(t) => t} onXong={onXong} />);
     return { onXong, u: userEvent.setup() };
   }
   const chiDan = (): string => document.querySelector('.v7-huong-dan')?.textContent ?? '';
 
-  it('thẻ c-tra-ma-nguoi-choi khai `Gõ giá trị` và có dòng chỉ dẫn; thẻ khác thì không', () => {
-    expect(the('c-tra-ma-nguoi-choi').goGiaTri).toBe(true);
-    expect(the('c-nam-hoai').goGiaTri).toBeUndefined();
+  it('thẻ c-tra-ma-nguoi-choi khai `Chỉ dẫn từng bước` và có dòng chỉ dẫn; thẻ khác thì không', () => {
+    expect(the('c-tra-ma-nguoi-choi').chiDanBuoc).toBe(true);
+    expect(the('c-nam-hoai').chiDanBuoc).toBeUndefined();
     ve('c-nam-hoai');
     expect(document.querySelector('.v7-huong-dan')).toBeNull();
   });
@@ -84,5 +85,18 @@ describe('Tự tra mã của mình: ô gõ chữ và chỉ dẫn từng bước'
     await u.click(screen.getByRole('button', { name: /CHẠY/ }));
     await waitFor(() => expect(document.querySelector('.v7-dau')?.textContent).toContain('1 DÒNG'));
     expect(document.querySelector('.v7-huong-dan')).toBeNull();
+  });
+
+  it('có tờ giấy báo mang mã (user 10/10/2026: thẻ để kéo vào): chỉ dẫn bảo bấm giấy rồi bấm ô, không có ô gõ', async () => {
+    const giay: GiaTriHoSo = { khoa: 'ev-giay-bao-khoa:SV240388', giaTri: 'SV240388', nguon: 'Giấy báo nhập học', the: 'ev-giay-bao-khoa' };
+    const { u } = ve('c-tra-ma-nguoi-choi', [giay]);
+    await u.click(screen.getByRole('button', { name: 'Thêm điều kiện' }));
+    expect(chiDan()).toContain('bấm tờ giấy nhớ "SV240388"');
+    expect(screen.queryByRole('textbox', { name: /Giá trị điều kiện 1/ })).toBeNull();
+    const to = [...document.querySelectorAll<HTMLElement>('.v7-giay')].find((e) => e.textContent?.includes('SV240388'));
+    expect(to?.className).toContain('is-chi');
+    await u.click(to!);
+    await u.click(screen.getByRole('button', { name: /giá trị điều kiện 1/i }));
+    expect(chiDan()).toContain('bấm CHẠY');
   });
 });
