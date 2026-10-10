@@ -210,3 +210,48 @@
     border-radius: 0 0 14px 14px;
   }
 }
+
+.mvp-chon-muc__ghi-nhom {
+  display: grid;
+  gap: 4px;
+}
+
+/* Điện thoại nằm ngang (844x390): hai câu hỏi đứng cạnh nhau (mỗi câu một cột, các thẻ xếp dọc), hai dòng chú thích gộp một hàng
+   cạnh nút "Bắt đầu" nên cả màn vừa một khung nhìn, không cuộn, không bị dải dưới đè. Chữ thẻ giữ >= 0.8rem; nút >= 44px.
+   Thêm `.mvp-chon-muc` vào bộ chọn để thắng luật gốc cùng độ ưu tiên ở trên. */
+@media (max-height: 520px) and (min-width: 560px) {
+  .mvp-chon-muc .mvp-chon-muc__hop {
+    width: min(880px, 100%);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 12px;
+    row-gap: 8px;
+    padding: 10px 14px 0;
+    align-content: start;
+  }
+  .mvp-chon-muc .mvp-chon-muc__cau {
+    align-content: start;
+  }
+  .mvp-chon-muc .mvp-chon-muc__nac {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .mvp-chon-muc .mvp-chon-muc__chan {
+    grid-column: 1 / -1;
+    flex-wrap: nowrap;
+    gap: 12px;
+    margin: 0 -14px;
+    padding: 6px 14px 8px;
+  }
+  .mvp-chon-muc .mvp-chon-muc__ghi {
+    font-size: 0.75rem;
+    line-height: 1.25;
+  }
+  .mvp-chon-muc .mvp-chon-muc__nut {
+    width: auto;
+    flex: 0 0 auto;
+  }
+  .mvp-chon-muc .mvp-chon-muc__xong {
+    min-width: 8rem;
+    flex: 0 0 auto;
+  }
+}

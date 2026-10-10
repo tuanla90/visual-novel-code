@@ -26,7 +26,7 @@ export function mucSqlTheoMay(muc: MucSqlMvp, dienThoai: boolean): MucSqlMvp {
 }
 
 /** Dòng ghi ở màn chọn mức khi đang ở điện thoại. */
-export const GHI_DIEN_THOAI = 'Trên điện thoại không có hai mức phải gõ chữ (Như thật, Tự viết): hỏi bằng câu bấm sẵn, tra bằng ghép khối. Chơi trên máy tính thì có đủ.';
+export const GHI_DIEN_THOAI = 'Hai mức gõ chữ (Như thật, Tự viết) chỉ có trên máy tính.';
 
 function doHienTai(): boolean {
   if (typeof window === 'undefined') return false;

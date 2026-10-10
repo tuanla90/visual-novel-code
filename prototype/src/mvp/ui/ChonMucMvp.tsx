@@ -122,8 +122,10 @@ export function ChonMucMvp({ nhapVai: nv0, sql: sql0, nhanNut = NUT_BAT_DAU, onD
         <NhomNac id="nhap-vai" cauHoi={CAU_HOI_NHAP_VAI} nac={nacNhapVai} chon={nhapVai} onChon={setNhapVai} />
         <NhomNac id="sql" cauHoi={CAU_HOI_SQL} nac={nacSql} chon={sql} onChon={setSql} />
         <footer className="mvp-chon-muc__chan">
-          {dienThoai ? <p className="mvp-chon-muc__ghi mvp-chon-muc__ghi--may">{GHI_DIEN_THOAI}</p> : null}
-          <p className="mvp-chon-muc__ghi">{DONG_DOI_SAU}</p>
+          <div className="mvp-chon-muc__ghi-nhom">
+            {dienThoai ? <p className="mvp-chon-muc__ghi mvp-chon-muc__ghi--may">{GHI_DIEN_THOAI}</p> : null}
+            <p className="mvp-chon-muc__ghi">{DONG_DOI_SAU}</p>
+          </div>
           <div className="mvp-chon-muc__nut">
             {onDong ? (
               <button type="button" className="btn" onClick={onDong}>
